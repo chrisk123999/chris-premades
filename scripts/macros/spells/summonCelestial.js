@@ -1,7 +1,8 @@
 import {Summons} from '../../lib/summons.js';
-import {actorUtils, compendiumUtils, constants, dialogUtils, effectUtils, errors, genericUtils, itemUtils, tokenUtils, workflowUtils} from '../../utils.js';
+import {activityUtils, actorUtils, compendiumUtils, constants, dialogUtils, effectUtils, errors, genericUtils, itemUtils, tokenUtils, workflowUtils} from '../../utils.js';
 
 async function use({workflow}) {
+    let activityIdentifier = activityUtils.getIdentifier(workflow.activity);
     let concentrationEffect = effectUtils.getConcentrationEffect(workflow.actor, workflow.item);
     let sourceActor = await compendiumUtils.getActorFromCompendium(constants.packs.summons, 'CPR - Celestial Spirit');
     if (!sourceActor) {
@@ -9,11 +10,12 @@ async function use({workflow}) {
         return;
     }
     let spellLevel = workflow.castData.castLevel;
-    let creatureButtons = [
-        ['CHRISPREMADES.Macros.SummonCelestial.Avenger', 'avenger'],
-        ['CHRISPREMADES.Macros.SummonCelestial.Defender', 'defender']
-    ];
-    let creatureType = await dialogUtils.buttonDialog(workflow.item.name, 'CHRISPREMADES.Macros.SummonCelestial.Type', creatureButtons);
+    let creatureType;
+    if (activityIdentifier === 'summonCelestialAvenger') {
+        creatureType = 'avenger';
+    } else if (activityIdentifier === 'summonCelestialDefender') {
+        creatureType = 'defender';
+    }
     if (!creatureType) {
         if (concentrationEffect) await genericUtils.remove(concentrationEffect);
         return;
@@ -111,7 +113,8 @@ async function late({workflow}) {
 }
 export let summonCelestial = {
     name: 'Summon Celestial',
-    version: '0.12.11',
+    version: '1.1.0',
+    hasAnimation: true,
     midi: {
         item: [
             {

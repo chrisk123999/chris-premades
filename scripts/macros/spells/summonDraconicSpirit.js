@@ -1,7 +1,8 @@
 import {Summons} from '../../lib/summons.js';
-import {actorUtils, compendiumUtils, constants, dialogUtils, effectUtils, errors, genericUtils, itemUtils, rollUtils} from '../../utils.js';
+import {activityUtils, actorUtils, compendiumUtils, constants, dialogUtils, effectUtils, errors, genericUtils, itemUtils, rollUtils} from '../../utils.js';
 
 async function use({workflow}) {
+    let activityIdentifier = activityUtils.getIdentifier(workflow.activity);
     let concentrationEffect = effectUtils.getConcentrationEffect(workflow.actor, workflow.item);
     let sourceActor = await compendiumUtils.getActorFromCompendium(constants.packs.summons, 'CPR - Draconic Spirit');
     if (!sourceActor) {
@@ -9,12 +10,14 @@ async function use({workflow}) {
         return;
     }
     let spellLevel = workflow.castData.castLevel;
-    let creatureButtons = [
-        ['CHRISPREMADES.Macros.SummonDraconicSpirit.Chromatic', 'chromatic'],
-        ['CHRISPREMADES.Macros.SummonDraconicSpirit.Metallic', 'metallic'],
-        ['CHRISPREMADES.Macros.SummonDraconicSpirit.Gem', 'gem']
-    ];
-    let creatureType = await dialogUtils.buttonDialog(workflow.item.name, 'CHRISPREMADES.Macros.SummonDraconicSpirit.Type', creatureButtons);
+    let creatureType;
+    if (activityIdentifier === 'summonDraconicSpiritChromatic') {
+        creatureType = 'chromatic';
+    } else if (activityIdentifier === 'summonDraconicSpiritMetallic') {
+        creatureType = 'metallic';
+    } else if (activityIdentifier === 'summonDraconicSpiritGem') {
+        creatureType = 'gem';
+    }
     if (!creatureType) {
         if (concentrationEffect) await genericUtils.remove(concentrationEffect);
         return;
@@ -105,7 +108,7 @@ async function use({workflow}) {
         changes: [
             {
                 key: 'system.traits.dr.value',
-                mode: 0,
+                mode: 2,
                 priority: 20,
                 value: resistanceType
             }
@@ -129,7 +132,8 @@ async function damage({workflow}) {
 }
 export let summonDraconicSpirit = {
     name: 'Summon Draconic Spirit',
-    version: '0.12.11',
+    version: '1.1.0',
+    hasAnimation: true,
     midi: {
         item: [
             {

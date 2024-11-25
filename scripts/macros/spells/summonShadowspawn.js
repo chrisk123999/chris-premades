@@ -1,7 +1,8 @@
 import {Summons} from '../../lib/summons.js';
-import {actorUtils, compendiumUtils, constants, dialogUtils, effectUtils, errors, genericUtils, itemUtils, tokenUtils, workflowUtils} from '../../utils.js';
+import {activityUtils, actorUtils, compendiumUtils, constants, dialogUtils, effectUtils, errors, genericUtils, itemUtils, tokenUtils, workflowUtils} from '../../utils.js';
 
 async function use({workflow}) {
+    let activityIdentifier = activityUtils.getIdentifier(workflow.activity);
     let concentrationEffect = effectUtils.getConcentrationEffect(workflow.actor, workflow.item);
     let sourceActor = await compendiumUtils.getActorFromCompendium(constants.packs.summons, 'CPR - Shadow Spirit');
     if (!sourceActor) {
@@ -9,12 +10,14 @@ async function use({workflow}) {
         return;
     }
     let spellLevel = workflow.castData.castLevel;
-    let creatureButtons = [
-        ['CHRISPREMADES.Macros.SummonShadowspawn.Fury', 'fury'],
-        ['CHRISPREMADES.Macros.SummonShadowspawn.Despair', 'despair'],
-        ['CHRISPREMADES.Macros.SummonShadowspawn.Fear', 'fear']
-    ];
-    let creatureType = await dialogUtils.buttonDialog(workflow.item.name, 'CHRISPREMADES.Macros.SummonShadowspawn.Type', creatureButtons);
+    let creatureType;
+    if (activityIdentifier === 'summonShadowspawnFury') {
+        creatureType = 'fury';
+    } else if (activityIdentifier === 'summonShadowspawnDespair') {
+        creatureType = 'despair';
+    } else if (activityIdentifier === 'summonShadowspawnFear') {
+        creatureType = 'fear';
+    }
     if (!creatureType) {
         if (concentrationEffect) await genericUtils.remove(concentrationEffect);
         return;
@@ -111,7 +114,8 @@ async function turnStart({trigger: {entity: item, token, target}}) {
 }
 export let summonShadowspawn = {
     name: 'Summon Shadowspawn',
-    version: '0.12.11',
+    version: '1.1.0',
+    hasAnimation: true,
     midi: {
         item: [
             {

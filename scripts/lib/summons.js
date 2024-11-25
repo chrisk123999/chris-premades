@@ -148,8 +148,21 @@ export class Summons {
             flatAttack: flatAttack ? attackBonus : false,
             flatDC: flatDC ? itemUtils.getSaveDC(originItem) : false
         });
-        if (damageBonus) documentData.system.damage.parts[0][0] += ' + ' + damageBonus;
-        if (damageFlat) documentData.system.damage.parts[0][0] = damageFlat;
+        let damagingActivityIds = Object.entries(documentData.system.activities).filter(i => i[1].damage).map(i => i[0]);
+        if (damageBonus) {
+            for (let activityId of damagingActivityIds) {
+                documentData.system.activities[activityId].damage.parts[0].custom.enabled = true;
+                documentData.system.activities[activityId].damage.parts[0].custom.formula += ' + ' + damageBonus;
+            }
+        }
+        if (damageFlat) {
+            for (let activityId of damagingActivityIds) {
+                documentData.system.activities[activityId].damage.parts[0].custom = {
+                    enabled: true,
+                    formula: damageFlat.toString()
+                };
+            }
+        }
         return genericUtils.mergeObject(documentData, updates, {inplace: false});
     }
     async prepareAllData() {

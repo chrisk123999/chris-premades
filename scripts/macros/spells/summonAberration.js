@@ -1,19 +1,22 @@
 import {Summons} from '../../lib/summons.js';
-import {dialogUtils, actorUtils, itemUtils, animationUtils, effectUtils, genericUtils, tokenUtils, compendiumUtils, constants, workflowUtils, errors} from '../../utils.js';
+import {actorUtils, itemUtils, animationUtils, effectUtils, genericUtils, tokenUtils, compendiumUtils, constants, workflowUtils, errors, activityUtils} from '../../utils.js';
 async function use({workflow}){
+    let activityIdentifier = activityUtils.getIdentifier(workflow.activity);
     let concentrationEffect = effectUtils.getConcentrationEffect(workflow.actor, workflow.item);
-    let sourceActor = await compendiumUtils.getActorFromCompendium(constants.packs.summons, 'CPR - Construct Spirit');
+    let sourceActor = await compendiumUtils.getActorFromCompendium(constants.packs.summons, 'CPR - Aberrant Spirit');
     if (!sourceActor) {
         if (concentrationEffect) await genericUtils.remove(concentrationEffect);
         return;
     }
     let spellLevel = workflow.castData.castLevel;
-    let creatureButtons = [
-        ['CHRISPREMADES.Macros.SummonAberration.Beholderkin', 'beholderkin'], 
-        ['CHRISPREMADES.Macros.SummonAberration.Slaad', 'slaad'], 
-        ['CHRISPREMADES.Macros.SummonAberration.StarSpawn', 'starSpawn']
-    ];
-    let creatureType = await dialogUtils.buttonDialog(workflow.item.name, 'CHRISPREMADES.Macros.SummonAberration.Type', creatureButtons);
+    let creatureType;
+    if (activityIdentifier === 'summonAberrationBeholderkin') {
+        creatureType = 'beholderkin';
+    } else if (activityIdentifier === 'summonAberrationSlaad') {
+        creatureType = 'slaad';
+    } else if (activityIdentifier === 'summonAberrationStarSpawn') {
+        creatureType = 'starSpawn';
+    }
     if (!creatureType) {
         if (concentrationEffect) await genericUtils.remove(concentrationEffect);
         return;
@@ -108,7 +111,8 @@ async function turnStart({trigger: {entity: item}}) {
 }
 export let summonAberration = {
     name: 'Summon Aberration',
-    version: '0.12.11',
+    version: '1.1.0',
+    hasAnimation: true,
     midi: {
         item: [
             {

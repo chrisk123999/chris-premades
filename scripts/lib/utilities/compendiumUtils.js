@@ -175,8 +175,24 @@ async function getItemFromCompendium(key, name, {ignoreNotFound, folderId, objec
                 });
             }
             if (identifier) genericUtils.setProperty(documentData, 'flags.chris-premades.info.identifier', identifier);
-            if (flatAttack) genericUtils.setProperty(documentData, 'system.attack', {bonus: flatAttack, flat: true});
-            if (flatDC) genericUtils.setProperty(documentData, 'system.save', {ability: documentData.system.save.ability, dc: flatDC, scaling: 'flat'});
+            let activities = documentData.system.activities;
+            if (flatAttack) {
+                let activityIds = Object.entries(activities).filter(i => i[1].type === 'attack').map(i => i[0]);
+                for (let activityId of activityIds) {
+                    genericUtils.setProperty(documentData, 'system.activities.' + activityId + '.attack.flat', true);
+                    genericUtils.setProperty(documentData, 'system.activities.' + activityId + '.attack.bonus', flatAttack);
+                }
+            }
+            if (flatDC) {
+                let activityIds = Object.entries(activities).filter(i => i[1].type === 'save').map(i => i[0]);
+                for (let activityId of activityIds) {
+                    genericUtils.setProperty(documentData, 'system.activities.' + activityId + '.save.dc', {
+                        calculation: '',
+                        formula: flatDC.toString(),
+                        value: flatDC
+                    });
+                }
+            }
             if (castDataWorkflow) {
                 genericUtils.setProperty(documentData, 'flags.chris-premades.castData', castDataWorkflow.castData);
                 genericUtils.setProperty(documentData, 'flags.chris-premades.castData.school', castDataWorkflow.item.system.school);

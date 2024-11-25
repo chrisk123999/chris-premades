@@ -6,7 +6,7 @@ import {custom} from '../../events/custom.js';
 import {ItemMedkit} from '../../applications/medkit-item.js';
 function getSaveDC(item) {
     if (item.hasSave) return item.system.activities.getByType('save')[0].save.dc.value;
-    let spellDC;
+    let spellDC = item.actor?.system?.abilities?.[item.abilityMod]?.dc;
     // TODO: Should we just look at the ability? Remains to be seen whether we even need the following anymore
     // let scaling = item.system?.save?.scaling;
     // if (scaling === 'spell') {

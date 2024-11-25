@@ -1,8 +1,9 @@
 import {Summons} from '../../lib/summons.js';
 import {Teleport} from '../../lib/teleport.js';
-import {actorUtils, compendiumUtils, constants, dialogUtils, effectUtils, errors, genericUtils, itemUtils, tokenUtils, workflowUtils} from '../../utils.js';
+import {activityUtils, actorUtils, compendiumUtils, constants, dialogUtils, effectUtils, errors, genericUtils, itemUtils, tokenUtils, workflowUtils} from '../../utils.js';
 
 async function use({workflow}) {
+    let activityIdentifier = activityUtils.getIdentifier(workflow.activity);
     let concentrationEffect = effectUtils.getConcentrationEffect(workflow.actor, workflow.item);
     let sourceActor = await compendiumUtils.getActorFromCompendium(constants.packs.summons, 'CPR - Fiendish Spirit');
     if (!sourceActor) {
@@ -10,12 +11,14 @@ async function use({workflow}) {
         return;
     }
     let spellLevel = workflow.castData.castLevel;
-    let creatureButtons = [
-        ['CHRISPREMADES.Macros.SummonFiend.Demon', 'demon'],
-        ['CHRISPREMADES.Macros.SummonFiend.Devil', 'devil'],
-        ['CHRISPREMADES.Macros.SummonFiend.Yugoloth', 'yugoloth']
-    ];
-    let creatureType = await dialogUtils.buttonDialog(workflow.item.name, 'CHRISPREMADES.Macros.SummonFiend.Type', creatureButtons);
+    let creatureType;
+    if (activityIdentifier === 'summonFiendDemon') {
+        creatureType = 'demon';
+    } else if (activityIdentifier === 'summonFiendDevil') {
+        creatureType = 'devil';
+    } else if (activityIdentifier === 'summonFiendYugoloth') {
+        creatureType = 'yugoloth';
+    }
     if (!creatureType) {
         if (concentrationEffect) await genericUtils.remove(concentrationEffect);
         return;
@@ -157,7 +160,8 @@ async function late({workflow}) {
 }
 export let summonFiend = {
     name: 'Summon Fiend',
-    version: '0.12.11',
+    version: '1.1.0',
+    hasAnimation: true,
     midi: {
         item: [
             {

@@ -70,14 +70,15 @@ async function moveOrStart({trigger: {entity: effect, token, target}}) {
     let attackWorkflow = await workflowUtils.syntheticItemRoll(feature, [target]);
     let appliedDamage = Math.floor(attackWorkflow.damageList[0].damageDetail.reduce((acc, i) => acc + i.value, 0));
     if (!appliedDamage) return;
-    await genericUtils.update(feature, {'system.uses.value': feature.system.uses.value - appliedDamage});
+    await genericUtils.update(feature, {'system.uses.spent': feature.system.uses.spent + appliedDamage});
     if (feature.system.uses.value > 0) return;
     Sequencer.EffectManager.endEffects({name: 'GuardionOfFaith-' + token.id});
     await genericUtils.remove(effect);
 }
 export let guardianOfFaith = {
     name: 'Guardian of Faith',
-    version: '0.12.5',
+    version: '1.1.0',
+    hasAnimation: true,
     midi: {
         item: [
             {

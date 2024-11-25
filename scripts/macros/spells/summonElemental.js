@@ -1,7 +1,8 @@
 import {Summons} from '../../lib/summons.js';
-import {actorUtils, compendiumUtils, constants, dialogUtils, effectUtils, errors, genericUtils, itemUtils, tokenUtils, workflowUtils} from '../../utils.js';
+import {activityUtils, actorUtils, compendiumUtils, constants, dialogUtils, effectUtils, errors, genericUtils, itemUtils, tokenUtils, workflowUtils} from '../../utils.js';
 
 async function use({workflow}) {
+    let activityIdentifier = activityUtils.getIdentifier(workflow.activity);
     let concentrationEffect = effectUtils.getConcentrationEffect(workflow.actor, workflow.item);
     let sourceActor = await compendiumUtils.getActorFromCompendium(constants.packs.summons, 'CPR - Elemental Spirit');
     if (!sourceActor) {
@@ -9,13 +10,16 @@ async function use({workflow}) {
         return;
     }
     let spellLevel = workflow.castData.castLevel;
-    let creatureButtons = [
-        ['CHRISPREMADES.Macros.SummonElemental.Air', 'air'],
-        ['CHRISPREMADES.Macros.SummonElemental.Earth', 'earth'],
-        ['CHRISPREMADES.Macros.SummonElemental.Fire', 'fire'],
-        ['CHRISPREMADES.Macros.SummonElemental.Water', 'water']
-    ];
-    let creatureType = await dialogUtils.buttonDialog(workflow.item.name, 'CHRISPREMADES.Macros.SummonElemental.Type', creatureButtons);
+    let creatureType;
+    if (activityIdentifier === 'summonElementalAir') {
+        creatureType = 'air';
+    } else if (activityIdentifier === 'summonElementalEarth') {
+        creatureType = 'earth';
+    } else if (activityIdentifier === 'summonElementalFire') {
+        creatureType = 'fire';
+    } else if (activityIdentifier === 'summonElementalWater') {
+        creatureType = 'water';
+    }
     if (!creatureType) {
         if (concentrationEffect) await genericUtils.remove(concentrationEffect);
         return;
@@ -102,7 +106,8 @@ async function use({workflow}) {
 }
 export let summonElemental = {
     name: 'Summon Elemental',
-    version: '0.12.11',
+    version: '1.1.0',
+    hasAnimation: true,
     midi: {
         item: [
             {

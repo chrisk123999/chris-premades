@@ -1,0 +1,63 @@
+{
+  "name": "Water Breathing (Water Only)",
+  "type": "feat",
+  "img": "icons/magic/air/wind-swirl-purple-blue.webp",
+  "system": {
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "source": {
+      "custom": "",
+      "revision": 1,
+      "rules": "2024"
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "recovery": []
+    },
+    "type": {
+      "value": "monster",
+      "subtype": ""
+    },
+    "requirements": "",
+    "properties": [],
+    "prerequisites": {
+      "level": null
+    },
+    "activities": {},
+    "identifier": "water-breathing-water-only",
+    "enchant": {}
+  },
+  "effects": [],
+  "flags": {
+    "core": {
+      "sourceId": "Item.izAfEZNqgmS0NQWy"
+    },
+    "midiProperties": {
+      "confirmTargets": "default",
+      "autoFailFriendly": false,
+      "autoSaveFriendly": false,
+      "critOther": false,
+      "offHandWeapon": false,
+      "magicdam": false,
+      "magiceffect": false,
+      "noConcentrationCheck": false,
+      "toggleEffect": false,
+      "ignoreTotalCover": false,
+      "idr": false,
+      "idi": false,
+      "idv": false,
+      "ida": false
+    },
+    "midi-qol": {
+      "rollAttackPerTarget": "default",
+      "itemCondition": "",
+      "effectCondition": ""
+    }
+  },
+  "folder": "lHhGlqPOrQEh5rv6",
+  "_id": "qiPRLFT4Ykh2d1pz",
+  "_key": "!items!qiPRLFT4Ykh2d1pz"
+}

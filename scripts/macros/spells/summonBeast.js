@@ -1,7 +1,8 @@
 import {Summons} from '../../lib/summons.js';
-import {actorUtils, compendiumUtils, constants, dialogUtils, effectUtils, errors, genericUtils, itemUtils} from '../../utils.js';
+import {activityUtils, actorUtils, compendiumUtils, constants, dialogUtils, effectUtils, errors, genericUtils, itemUtils} from '../../utils.js';
 
 async function use({workflow}) {
+    let activityIdentifier = activityUtils.getIdentifier(workflow.activity);
     let concentrationEffect = effectUtils.getConcentrationEffect(workflow.actor, workflow.item);
     let sourceActor = await compendiumUtils.getActorFromCompendium(constants.packs.summons, 'CPR - Bestial Spirit');
     if (!sourceActor) {
@@ -9,12 +10,14 @@ async function use({workflow}) {
         return;
     }
     let spellLevel = workflow.castData.castLevel;
-    let creatureButtons = [
-        ['CHRISPREMADES.Macros.SummonBeast.Air', 'air'],
-        ['CHRISPREMADES.Macros.SummonBeast.Land', 'land'],
-        ['CHRISPREMADES.Macros.SummonBeast.Water', 'water']
-    ];
-    let creatureType = await dialogUtils.buttonDialog(workflow.item.name, 'CHRISPREMADES.Macros.SummonBeast.Type', creatureButtons);
+    let creatureType;
+    if (activityIdentifier === 'summonBeastAir') {
+        creatureType = 'air';
+    } else if (activityIdentifier === 'summonBeastLand') {
+        creatureType = 'land';
+    } else if (activityIdentifier === 'summonBeastWater') {
+        creatureType = 'water';
+    }
     if (!creatureType) {
         if (concentrationEffect) await genericUtils.remove(concentrationEffect);
         return;
@@ -112,7 +115,8 @@ async function use({workflow}) {
 }
 export let summonBeast = {
     name: 'Summon Beast',
-    version: '0.12.10',
+    version: '1.1.0',
+    hasAnimation: true,
     midi: {
         item: [
             {
