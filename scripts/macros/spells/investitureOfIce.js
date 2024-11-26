@@ -1,40 +1,29 @@
-import {compendiumUtils, constants, effectUtils, errors, genericUtils, itemUtils} from '../../utils.js';
+import {activityUtils, compendiumUtils, constants, effectUtils, errors, genericUtils, itemUtils, workflowUtils} from '../../utils.js';
 import {start as startAnim, end as endAnim} from './fireShield.js';
 async function use({workflow}) {
+    if (activityUtils.getIdentifier(workflow.activity) !== genericUtils.getIdentifier(workflow.item)) return;
     let concentrationEffect = effectUtils.getConcentrationEffect(workflow.actor, workflow.item);
-    let featureData = await compendiumUtils.getItemFromCompendium(constants.packs.spellFeatures, 'Investiture of Ice: Cone', {object: true, getDescription: true, translate: 'CHRISPREMADES.Macros.InvestitureOfIce.Cone', identifier: 'investitureOfIceCone', castDataWorkflow: workflow});
-    if (!featureData) {
-        errors.missingPackItem();
+    let feature = activityUtils.getActivityByIdentifier(workflow.item, 'investitureOfIceCone', {strict: true});
+    if (!feature) {
         if (concentrationEffect) await genericUtils.remove(concentrationEffect);
         return;
     }
-    featureData.system.save.dc = itemUtils.getSaveDC(workflow.item);
-    let formula = itemUtils.getConfig(workflow.item, 'formula');
-    let damageType = itemUtils.getConfig(workflow.item, 'damageType');
-    featureData.system.damage.parts = [
-        [
-            formula + '[' + damageType + ']',
-            damageType
-        ]
-    ];
     let playAnimation = itemUtils.getConfig(workflow.item, 'playAnimation');
     let effectData = {
         name: workflow.item.name,
         img: workflow.item.img,
         origin: workflow.item.uuid,
-        duration: {
-            seconds: 60 * workflow.item.system.duration.value
-        },
+        duration: itemUtils.convertDuration(workflow.item),
         changes: [
             {
                 key: 'system.traits.dr.value',
-                mode: 0,
+                mode: 2,
                 value: 'fire',
                 priority: 20
             },
             {
                 key: 'system.traits.di.value',
-                mode: 0,
+                mode: 2,
                 value: 'cold',
                 priority: 20
             }
@@ -50,9 +39,23 @@ async function use({workflow}) {
     };
     effectUtils.addMacro(effectData, 'effect', ['investitureOfIceIcy']);
     // TODO: Need to disable autoanims here? If so should we do for others?
-    let effect = await effectUtils.createEffect(workflow.actor, effectData, {concentrationItem: workflow.item, strictlyInterdependent: true, identifier: 'investitureOfIce', vae: [{type: 'use', name: featureData.name, identifier: 'investitureOfIceCone'}]});
-    await itemUtils.createItems(workflow.actor, [featureData], {favorite: true, parentEntity: effect, section: genericUtils.translate('CHRISPREMADES.Section.SpellFeatures')});
-    if (concentrationEffect) await genericUtils.update(concentrationEffect, {'duration.seconds': effectData.duration.seconds});
+    let effect = await effectUtils.createEffect(workflow.actor, effectData, {
+        concentrationItem: workflow.item, 
+        strictlyInterdependent: true, 
+        identifier: 'investitureOfIce', 
+        vae: [{
+            type: 'use', 
+            name: feature.name,
+            identifier: 'investitureOfIce', 
+            activityIdentifier: 'investitureOfIceCone'
+        }],
+        unhideActivities: {
+            itemUuid: workflow.item.uuid,
+            activityIdentifiers: ['investitureOfIceCone'],
+            favorite: true
+        }
+    });
+    if (concentrationEffect) await genericUtils.update(concentrationEffect, {duration: effectData.duration});
     await startAnim({
         trigger: {
             entity: effect
@@ -62,14 +65,24 @@ async function use({workflow}) {
 async function end({trigger}) {
     await endAnim({trigger});
 }
+async function early({workflow}) {
+    if (activityUtils.getIdentifier(workflow.activity) !== 'investitureOfIceCone') return;
+    workflowUtils.skipDialog(workflow);
+}
 export let investitureOfIce = {
     name: 'Investiture of Ice',
-    version: '0.12.0',
+    version: '1.1.0',
+    hasAnimation: true,
     midi: {
         item: [
             {
                 pass: 'rollFinished',
                 macro: use,
+                priority: 50
+            },
+            {
+                pass: 'preTargeting',
+                macro: early,
                 priority: 50
             }
         ]

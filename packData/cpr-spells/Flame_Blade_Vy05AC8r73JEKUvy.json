@@ -6,22 +6,22 @@
       "chat": ""
     },
     "source": {
-      "custom": "Basic Rules, Player's Handbook pg 257",
+      "custom": "Basic Rules, Player's Handbook pg 242",
       "revision": 1,
       "rules": "2024"
     },
     "activation": {
-      "type": "action",
+      "type": "bonus",
       "condition": "",
       "value": 1
     },
     "duration": {
-      "value": "",
-      "units": "inst"
+      "value": "10",
+      "units": "minute"
     },
     "target": {
       "affects": {
-        "type": "creature",
+        "type": "self",
         "count": "",
         "choice": false,
         "special": ""
@@ -33,8 +33,7 @@
       }
     },
     "range": {
-      "value": "120",
-      "units": "ft",
+      "units": "self",
       "special": ""
     },
     "uses": {
@@ -43,10 +42,10 @@
       "recovery": []
     },
     "ability": "",
-    "level": 1,
+    "level": 2,
     "school": "evo",
     "materials": {
-      "value": "",
+      "value": "leaf of sumac",
       "consumed": false,
       "cost": 0,
       "supply": 0
@@ -57,7 +56,9 @@
     },
     "properties": [
       "vocal",
-      "somatic"
+      "somatic",
+      "material",
+      "concentration"
     ],
     "activities": {
       "dnd5eactivity000": {
@@ -77,7 +78,7 @@
           "spellSlot": true
         },
         "description": {
-          "chatFlavor": "[1d4 + 1 - force] 3 Darts"
+          "chatFlavor": ""
         },
         "duration": {
           "units": "inst",
@@ -114,13 +115,16 @@
         "useConditionText": "",
         "forceDialog": false,
         "effectConditionText": "",
-        "name": ""
+        "midiAutomationOnly": false,
+        "name": "Flame Blade",
+        "img": "icons/magic/fire/projectile-bolt-zigzag-orange.webp"
       },
-      "zHpeqUnoKjOjo5aN": {
-        "type": "damage",
+      "XUxXL8BmqvrpnQxc": {
+        "type": "attack",
+        "_id": "XUxXL8BmqvrpnQxc",
         "sort": 0,
         "activation": {
-          "type": "special",
+          "type": "action",
           "value": null,
           "override": true,
           "condition": ""
@@ -133,18 +137,19 @@
           "targets": []
         },
         "description": {
-          "chatFlavor": ""
+          "chatFlavor": "Flame Blade Scimitar"
         },
         "duration": {
           "units": "inst",
           "concentration": false,
-          "override": false
+          "override": true
         },
         "effects": [],
         "range": {
           "override": true,
-          "units": "any",
-          "special": ""
+          "units": "ft",
+          "special": "",
+          "value": "5"
         },
         "target": {
           "template": {
@@ -166,25 +171,39 @@
           "recovery": [],
           "max": ""
         },
+        "attack": {
+          "critical": {
+            "threshold": null
+          },
+          "flat": false,
+          "type": {
+            "value": "melee",
+            "classification": ""
+          },
+          "ability": "",
+          "bonus": ""
+        },
         "damage": {
           "critical": {
-            "allow": false
+            "bonus": ""
           },
+          "includeBase": true,
           "parts": [
             {
               "custom": {
                 "enabled": true,
-                "formula": "1d4[force] + 1"
+                "formula": "3d6[fire]"
               },
               "number": null,
               "denomination": 0,
               "bonus": "",
               "types": [
-                "force"
+                "fire"
               ],
               "scaling": {
-                "mode": "",
-                "number": 1
+                "mode": "half",
+                "number": 1,
+                "formula": ""
               }
             }
           ]
@@ -192,17 +211,21 @@
         "useConditionText": "",
         "forceDialog": false,
         "effectConditionText": "",
-        "name": "Magic Missile Bolt",
-        "_id": "zHpeqUnoKjOjo5aN"
+        "midiAutomationOnly": false,
+        "attackMode": "",
+        "ammunition": "",
+        "otherActivityUuid": "",
+        "name": "Flame Blade Scimitar",
+        "img": "icons/magic/fire/projectile-bolt-zigzag-orange.webp"
       },
-      "VH7HwxXvnFU22CxV": {
-        "type": "damage",
+      "1iCHtkZUVXhJUSep": {
+        "type": "utility",
+        "_id": "1iCHtkZUVXhJUSep",
         "sort": 0,
         "activation": {
-          "type": "special",
+          "type": "action",
           "value": null,
-          "override": true,
-          "condition": ""
+          "override": false
         },
         "consumption": {
           "scaling": {
@@ -212,12 +235,12 @@
           "targets": []
         },
         "description": {
-          "chatFlavor": ""
+          "chatFlavor": "Evoke Flame Blade"
         },
         "duration": {
           "units": "inst",
           "concentration": false,
-          "override": false
+          "override": true
         },
         "effects": [],
         "range": {
@@ -226,16 +249,12 @@
         "target": {
           "template": {
             "contiguous": false,
-            "units": "ft",
-            "type": ""
+            "units": "ft"
           },
           "affects": {
-            "choice": false,
-            "count": "1",
-            "type": "creature",
-            "special": ""
+            "choice": false
           },
-          "override": true,
+          "override": false,
           "prompt": true
         },
         "uses": {
@@ -243,56 +262,44 @@
           "recovery": [],
           "max": ""
         },
-        "damage": {
-          "critical": {
-            "allow": false
-          },
-          "parts": [
-            {
-              "types": [
-                "force"
-              ],
-              "number": null,
-              "denomination": null,
-              "custom": {
-                "enabled": true,
-                "formula": "5"
-              },
-              "scaling": {
-                "number": 1
-              }
-            }
-          ]
+        "roll": {
+          "prompt": false,
+          "visible": false,
+          "name": "",
+          "formula": ""
         },
         "useConditionText": "",
         "forceDialog": false,
         "effectConditionText": "",
-        "name": "Magic Missile Bolt: Flat",
-        "_id": "VH7HwxXvnFU22CxV"
+        "midiAutomationOnly": false,
+        "name": "Evoke Flame Blade",
+        "img": "icons/magic/fire/projectile-bolt-zigzag-orange.webp"
       }
     },
-    "identifier": "magic-missile",
+    "identifier": "flame-blade",
     "sourceClass": "cleric"
   },
-  "name": "Magic Missile",
+  "name": "Flame Blade",
   "flags": {
-    "core": {
-      "sourceId": "Compendium.world.ddb-development-testing-ddb-spells.OPqTuvUbdRsEpjKv"
-    },
     "midi-qol": {
-      "effectActivation": false,
+      "forceCEOff": true,
       "onUseMacroName": "",
+      "effectActivation": false,
       "rollAttackPerTarget": "default",
       "itemCondition": "",
       "effectCondition": "",
+      "-=onUseMacroName": null,
       "AoETargetType": "any",
       "AoETargetTypeIncludeSelf": true,
       "autoTarget": "default",
       "removeAttackDamageButtons": "default",
       "reactionCondition": "",
-      "otherCondition": ""
+      "otherCondition": "",
+      "fumbleThreshold": null
     },
     "midiProperties": {
+      "magicdam": false,
+      "magiceffect": true,
       "nodam": false,
       "fulldam": false,
       "halfdam": false,
@@ -301,8 +308,6 @@
       "rollOther": false,
       "critOther": false,
       "offHandWeapon": false,
-      "magicdam": false,
-      "magiceffect": false,
       "concentration": false,
       "toggleEffect": false,
       "ignoreTotalCover": false,
@@ -313,70 +318,60 @@
       "idv": false,
       "ida": false
     },
+    "core": {
+      "sourceId": "Compendium.world.ddb-development-testing-ddb-spells.Z7Ui0WV3YFuWi3gr"
+    },
     "dnd5e": {
       "persistSourceMigration": true,
       "riders": {
         "activity": [
-          "zHpeqUnoKjOjo5aN",
-          "VH7HwxXvnFU22CxV"
+          "XUxXL8BmqvrpnQxc",
+          "1iCHtkZUVXhJUSep"
         ],
         "effect": []
       },
       "last": {
-        "magicMissileBolt": {
+        "XUxXL8BmqvrpnQxc": {
           "damageType": {
-            "0": "force"
-          }
-        },
-        "boltFlat00000000": {
-          "damageType": {
-            "0": "force"
-          }
-        },
-        "VH7HwxXvnFU22CxV": {
-          "damageType": {
-            "0": "force"
-          }
-        },
-        "zHpeqUnoKjOjo5aN": {
-          "damageType": {
-            "0": "force"
+            "0": "fire"
           }
         }
       }
     },
     "chris-premades": {
       "info": {
-        "name": "Magic Missile",
+        "name": "Flame Blade",
         "version": "1.1.0",
-        "hasAnimation": true,
-        "identifier": "magicMissile",
+        "mutation": {
+          "self": "Flame Blade"
+        },
+        "identifier": "flameBlade",
         "source": "chris-premades"
       },
       "macros": {
         "midi": {
           "item": [
-            "magicMissile"
+            "flameBlade"
           ]
         }
       },
-      "hiddenActivities": [
-        "magicMissileBolt",
-        "magicMissileFlat"
-      ],
       "config": {
-        "rollEach": false
+        "damageType": "fire"
       },
       "activityIdentifiers": {
-        "magicMissileBolt": "zHpeqUnoKjOjo5aN",
-        "magicMissileFlat": "VH7HwxXvnFU22CxV",
-        "magicMissile": "dnd5eactivity000"
-      }
+        "flameBlade": "dnd5eactivity000",
+        "flameBladeScimitar": "XUxXL8BmqvrpnQxc",
+        "flameBladeEvoke": "1iCHtkZUVXhJUSep"
+      },
+      "hiddenActivities": [
+        "flameBladeScimitar",
+        "flameBladeEvoke"
+      ]
     }
   },
   "effects": [],
-  "img": "icons/magic/fire/projectile-meteor-salvo-light-blue.webp",
+  "img": "icons/magic/fire/projectile-bolt-zigzag-orange.webp",
   "folder": null,
-  "_id": "89u3SA1lBLVdE4v7",
-  "_key": "!items!89u3SA1lBLVdE4v7"
+  "_id": "Vy05AC8r73JEKUvy",
+  "_key": "!items!Vy05AC8r73JEKUvy"
 }

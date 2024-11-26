@@ -129,7 +129,7 @@ async function use({workflow}) {
         range: 5,
         animation,
         initiativeType: 'follows',
-        dismissItem: dismissData,
+        dismissActivity: dismissData,
         additionalVaeButtons: [{type: 'use', name: commandFeatureData.name, identifier: 'eldritchCannonCommand'}]
     });
     if (costsSlotType) {

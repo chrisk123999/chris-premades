@@ -84,7 +84,7 @@ async function use({workflow}) {
         range: 15,
         animation,
         initiativeType: 'follows',
-        dismissItem: dismissData,
+        dismissActivity: dismissData,
         additionalVaeButtons: vaeButtons
     });
     if (!spawnedTokens?.length) return;

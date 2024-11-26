@@ -1,25 +1,30 @@
-import {actorUtils, animationUtils, compendiumUtils, constants, dialogUtils, effectUtils, errors, genericUtils, itemUtils, tokenUtils, workflowUtils} from '../../utils.js';
+import {activityUtils, actorUtils, animationUtils, compendiumUtils, constants, dialogUtils, effectUtils, errors, genericUtils, itemUtils, tokenUtils, workflowUtils} from '../../utils.js';
 
 async function use({workflow}) {
-    let selection = await dialogUtils.buttonDialog(workflow.item.name, 'CHRISPREMADES.Macros.FireShield.Select', [['CHRISPREMADES.Macros.FireShield.WarmShield', 'fire'], ['CHRISPREMADES.Macros.FireShield.ChillShield', 'cold']]);
-    if (!selection) return;
-    let featureData = await compendiumUtils.getItemFromCompendium(constants.packs.spellFeatures, 'Fire Shield: Dismiss', {getDescription: true, translate: 'CHRISPREMADES.Macros.FireShield.Dismiss', identifier: 'fireShieldDismiss', object: true});
-    if (!featureData) {
-        errors.missingPackItem();
-        return;
+    let activityIdentifier = activityUtils.getIdentifier(workflow.activity);
+    let selection;
+    if (activityIdentifier === 'fireShieldWarm') {
+        selection = 'fire';
+    } else if (activityIdentifier === 'fireShieldChill') {
+        selection = 'cold';
+    } else if (activityIdentifier === 'fireShieldDismiss') {
+        let effect = effectUtils.getEffectByIdentifier(workflow.actor, 'fireShield');
+        if (effect) await genericUtils.remove(effect);
     }
+    if (!selection) return;
+    let feature = activityUtils.getActivityByIdentifier(workflow.item, 'fireShieldDismiss', {strict: true});
+    if (!feature) return;
+    await genericUtils.update(feature, {'img': workflow.activity.img});
     let playAnimation = itemUtils.getConfig(workflow.item, 'playAnimation');
     let effectData = {
-        name: workflow.item.name,
-        img: workflow.item.img,
+        name: workflow.activity.name,
+        img: workflow.activity.img,
         origin: workflow.item.uuid,
-        duration: {
-            seconds: 60 * workflow.item.system.duration.value
-        },
+        duration: itemUtils.convertDuration(workflow.item),
         changes: [
             {
                 key: 'system.traits.dr.value',
-                mode: 0,
+                mode: 2,
                 value: selection === 'fire' ? 'cold' : 'fire',
                 priority: 20
             },
@@ -47,8 +52,20 @@ async function use({workflow}) {
     };
     effectUtils.addMacro(effectData, 'midi.actor', ['fireShieldShielded']);
     effectUtils.addMacro(effectData, 'effect', ['fireShieldShielded']);
-    let effect = await effectUtils.createEffect(workflow.actor, effectData, {identifier: 'fireShield', vae: [{type: 'use', name: featureData.name, identifier: 'fireShieldDismiss'}]});
-    await itemUtils.createItems(workflow.actor, [featureData], {favorite: true, parentEntity: effect, section: genericUtils.translate('CHRISPREMADES.Section.SpellFeatures')});
+    await effectUtils.createEffect(workflow.actor, effectData, {
+        identifier: 'fireShield', 
+        vae: [{
+            type: 'use', 
+            name: feature.name,
+            identifier: 'fireShield', 
+            activityIdentifier: 'fireShieldDismiss'
+        }],
+        unhideActivities: {
+            itemUuid: workflow.item.uuid,
+            activityIdentifiers: ['fireShieldDismiss'],
+            favorite: true
+        }
+    });
 }
 async function hit({trigger: {entity: effect}, workflow}) {
     if (!workflow.hitTargets.size) return;
@@ -56,17 +73,20 @@ async function hit({trigger: {entity: effect}, workflow}) {
     if (!targetToken) return;
     let distance = tokenUtils.getDistance(workflow.token, targetToken);
     if (distance > 5) return;
-    if (!constants.meleeAttacks.includes(workflow.item.system.actionType)) return;
+    if (!constants.meleeAttacks.includes(workflow.activity.actionType)) return;
     let shieldType = effect.flags['chris-premades']?.fireShield?.selection;
     if (!shieldType) return;
-    let featureName = shieldType === 'fire' ? 'Warm Shield' : 'Chill Shield';
-    let translation = shieldType === 'fire' ? 'CHRISPREMADES.Macros.FireShield.WarmShield' : 'CHRISPREMADES.Macros.FireShield.ChillShield';
-    let featureData = await compendiumUtils.getItemFromCompendium(constants.packs.spellFeatures, featureName, {getDescription: true, translate: translation, object: true});
-    if (!featureData) {
-        errors.missingPackItem();
-        return;
+    let feature = activityUtils.getActivityByIdentifier(fromUuidSync(effect.origin), 'fireShieldDamage', {strict: true});
+    if (!feature) return;
+    let newFormula = feature.damage.parts[0].formula ?? '2d6[fire]';
+    if (shieldType === 'fire') {
+        newFormula = newFormula.replaceAll('cold', 'fire');
+    } else {
+        newFormula = newFormula.replaceAll('fire', 'cold');
     }
-    await workflowUtils.syntheticItemDataRoll(featureData, effect.parent, [workflow.token]);
+    await activityUtils.setDamage(feature, newFormula, [shieldType]);
+    feature.img = effect.img;
+    await workflowUtils.syntheticActivityRoll(feature, [workflow.token]);
 }
 export async function start({trigger: {entity: effect}}) {
     let selection = effect.flags['chris-premades']?.fireShield?.selection;
@@ -160,14 +180,24 @@ async function stop({workflow}) {
     if (!effect) return;
     await genericUtils.remove(effect);
 }
+async function early({workflow}) {
+    if (activityUtils.getIdentifier(workflow.activity) !== 'fireShieldDismiss') return;
+    workflowUtils.skipDialog(workflow);
+}
 export let fireShield = {
     name: 'Fire Shield',
-    version: '0.12.0',
+    version: '1.1.0',
+    hasAnimation: true,
     midi: {
         item: [
             {
                 pass: 'rollFinished',
                 macro: use,
+                priority: 50
+            },
+            {
+                pass: 'preTargeting',
+                macro: early,
                 priority: 50
             }
         ]

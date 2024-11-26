@@ -6,7 +6,7 @@
       "chat": ""
     },
     "source": {
-      "custom": "Basic Rules, Player's Handbook pg 257",
+      "custom": "Basic Rules, Player's Handbook pg 250",
       "revision": 1,
       "rules": "2024"
     },
@@ -16,13 +16,13 @@
       "value": 1
     },
     "duration": {
-      "value": "",
-      "units": "inst"
+      "value": "1",
+      "units": "minute"
     },
     "target": {
       "affects": {
         "type": "creature",
-        "count": "",
+        "count": "1",
         "choice": false,
         "special": ""
       },
@@ -33,7 +33,7 @@
       }
     },
     "range": {
-      "value": "120",
+      "value": "60",
       "units": "ft",
       "special": ""
     },
@@ -43,10 +43,10 @@
       "recovery": []
     },
     "ability": "",
-    "level": 1,
-    "school": "evo",
+    "level": 2,
+    "school": "trs",
     "materials": {
-      "value": "",
+      "value": "a piece of iron and a flame",
       "consumed": false,
       "cost": 0,
       "supply": 0
@@ -57,27 +57,29 @@
     },
     "properties": [
       "vocal",
-      "somatic"
+      "somatic",
+      "material",
+      "concentration"
     ],
     "activities": {
-      "dnd5eactivity000": {
-        "_id": "dnd5eactivity000",
+      "WWhDaDkhdR3vrMCn": {
         "type": "utility",
+        "_id": "WWhDaDkhdR3vrMCn",
+        "sort": 0,
         "activation": {
           "type": "action",
           "value": null,
           "override": false
         },
         "consumption": {
-          "targets": [],
           "scaling": {
-            "allowed": false,
-            "max": ""
+            "allowed": false
           },
-          "spellSlot": true
+          "spellSlot": true,
+          "targets": []
         },
         "description": {
-          "chatFlavor": "[1d4 + 1 - force] 3 Darts"
+          "chatFlavor": ""
         },
         "duration": {
           "units": "inst",
@@ -89,7 +91,6 @@
           "override": false
         },
         "target": {
-          "prompt": true,
           "template": {
             "contiguous": false,
             "units": "ft"
@@ -97,27 +98,30 @@
           "affects": {
             "choice": false
           },
-          "override": false
+          "override": false,
+          "prompt": true
         },
         "uses": {
           "spent": 0,
-          "max": "",
-          "recovery": []
+          "recovery": [],
+          "max": ""
         },
         "roll": {
-          "formula": "",
-          "name": "",
           "prompt": false,
-          "visible": false
+          "visible": false,
+          "name": "",
+          "formula": ""
         },
-        "sort": 0,
         "useConditionText": "",
         "forceDialog": false,
         "effectConditionText": "",
-        "name": ""
+        "midiAutomationOnly": false,
+        "name": "Heat Metal",
+        "img": "icons/magic/fire/flame-burning-chain.webp"
       },
-      "zHpeqUnoKjOjo5aN": {
+      "RPeWu1C4fujXuBti": {
         "type": "damage",
+        "_id": "RPeWu1C4fujXuBti",
         "sort": 0,
         "activation": {
           "type": "special",
@@ -133,12 +137,12 @@
           "targets": []
         },
         "description": {
-          "chatFlavor": ""
+          "chatFlavor": "Heat Metal: Damage"
         },
         "duration": {
           "units": "inst",
           "concentration": false,
-          "override": false
+          "override": true
         },
         "effects": [],
         "range": {
@@ -149,16 +153,12 @@
         "target": {
           "template": {
             "contiguous": false,
-            "units": "ft",
-            "type": ""
+            "units": "ft"
           },
           "affects": {
-            "choice": false,
-            "count": "1",
-            "type": "creature",
-            "special": ""
+            "choice": false
           },
-          "override": true,
+          "override": false,
           "prompt": true
         },
         "uses": {
@@ -174,16 +174,16 @@
             {
               "custom": {
                 "enabled": true,
-                "formula": "1d4[force] + 1"
+                "formula": "2d8[fire]"
               },
               "number": null,
               "denomination": 0,
               "bonus": "",
               "types": [
-                "force"
+                "fire"
               ],
               "scaling": {
-                "mode": "",
+                "mode": "whole",
                 "number": 1
               }
             }
@@ -192,11 +192,13 @@
         "useConditionText": "",
         "forceDialog": false,
         "effectConditionText": "",
-        "name": "Magic Missile Bolt",
-        "_id": "zHpeqUnoKjOjo5aN"
+        "midiAutomationOnly": false,
+        "name": "Heat Metal: Damage",
+        "img": "icons/magic/fire/flame-burning-chain.webp"
       },
-      "VH7HwxXvnFU22CxV": {
-        "type": "damage",
+      "mnxVTmGwcqMENTcj": {
+        "type": "save",
+        "_id": "mnxVTmGwcqMENTcj",
         "sort": 0,
         "activation": {
           "type": "special",
@@ -212,28 +214,96 @@
           "targets": []
         },
         "description": {
-          "chatFlavor": ""
+          "chatFlavor": "Heat Metal: Held"
         },
         "duration": {
           "units": "inst",
           "concentration": false,
-          "override": false
+          "override": true
         },
         "effects": [],
         "range": {
-          "override": false
+          "override": true,
+          "units": "any",
+          "special": ""
         },
         "target": {
           "template": {
             "contiguous": false,
-            "units": "ft",
-            "type": ""
+            "units": "ft"
           },
           "affects": {
-            "choice": false,
-            "count": "1",
-            "type": "creature",
-            "special": ""
+            "choice": false
+          },
+          "override": false,
+          "prompt": true
+        },
+        "uses": {
+          "spent": 0,
+          "recovery": [],
+          "max": ""
+        },
+        "damage": {
+          "parts": [],
+          "critical": {
+            "allow": false
+          },
+          "onSave": "half"
+        },
+        "save": {
+          "ability": [
+            "con"
+          ],
+          "dc": {
+            "calculation": "spellcasting",
+            "formula": ""
+          }
+        },
+        "useConditionText": "",
+        "forceDialog": false,
+        "effectConditionText": "",
+        "midiAutomationOnly": false,
+        "name": "Heat Metal: Held",
+        "img": "icons/magic/fire/flame-burning-chain.webp"
+      },
+      "Uc52ckEpY9w8GddF": {
+        "type": "utility",
+        "_id": "Uc52ckEpY9w8GddF",
+        "sort": 0,
+        "activation": {
+          "type": "bonus",
+          "value": null,
+          "override": true,
+          "condition": ""
+        },
+        "consumption": {
+          "scaling": {
+            "allowed": false
+          },
+          "spellSlot": false,
+          "targets": []
+        },
+        "description": {
+          "chatFlavor": "Heat Metal: Pulse"
+        },
+        "duration": {
+          "units": "inst",
+          "concentration": false,
+          "override": true
+        },
+        "effects": [],
+        "range": {
+          "override": true,
+          "units": "any",
+          "special": ""
+        },
+        "target": {
+          "template": {
+            "contiguous": false,
+            "units": "ft"
+          },
+          "affects": {
+            "choice": false
           },
           "override": true,
           "prompt": true
@@ -243,52 +313,36 @@
           "recovery": [],
           "max": ""
         },
-        "damage": {
-          "critical": {
-            "allow": false
-          },
-          "parts": [
-            {
-              "types": [
-                "force"
-              ],
-              "number": null,
-              "denomination": null,
-              "custom": {
-                "enabled": true,
-                "formula": "5"
-              },
-              "scaling": {
-                "number": 1
-              }
-            }
-          ]
+        "roll": {
+          "prompt": false,
+          "visible": false,
+          "name": "",
+          "formula": ""
         },
         "useConditionText": "",
         "forceDialog": false,
         "effectConditionText": "",
-        "name": "Magic Missile Bolt: Flat",
-        "_id": "VH7HwxXvnFU22CxV"
+        "midiAutomationOnly": false,
+        "name": "Heat Metal: Pulse",
+        "img": "icons/magic/fire/flame-burning-chain.webp"
       }
     },
-    "identifier": "magic-missile",
+    "identifier": "heat-metal",
     "sourceClass": "cleric"
   },
-  "name": "Magic Missile",
+  "name": "Heat Metal",
   "flags": {
-    "core": {
-      "sourceId": "Compendium.world.ddb-development-testing-ddb-spells.OPqTuvUbdRsEpjKv"
-    },
     "midi-qol": {
       "effectActivation": false,
       "onUseMacroName": "",
       "rollAttackPerTarget": "default",
+      "removeAttackDamageButtons": "default",
       "itemCondition": "",
       "effectCondition": "",
+      "-=onUseMacroName": null,
       "AoETargetType": "any",
       "AoETargetTypeIncludeSelf": true,
       "autoTarget": "default",
-      "removeAttackDamageButtons": "default",
       "reactionCondition": "",
       "otherCondition": ""
     },
@@ -313,70 +367,57 @@
       "idv": false,
       "ida": false
     },
+    "core": {
+      "sourceId": "Compendium.world.ddb-development-testing-ddb-spells.TibmTJtCFR1SMANO"
+    },
     "dnd5e": {
       "persistSourceMigration": true,
       "riders": {
         "activity": [
-          "zHpeqUnoKjOjo5aN",
-          "VH7HwxXvnFU22CxV"
+          "RPeWu1C4fujXuBti",
+          "mnxVTmGwcqMENTcj",
+          "Uc52ckEpY9w8GddF"
         ],
         "effect": []
       },
       "last": {
-        "magicMissileBolt": {
+        "RPeWu1C4fujXuBti": {
           "damageType": {
-            "0": "force"
-          }
-        },
-        "boltFlat00000000": {
-          "damageType": {
-            "0": "force"
-          }
-        },
-        "VH7HwxXvnFU22CxV": {
-          "damageType": {
-            "0": "force"
-          }
-        },
-        "zHpeqUnoKjOjo5aN": {
-          "damageType": {
-            "0": "force"
+            "0": "fire"
           }
         }
       }
     },
     "chris-premades": {
       "info": {
-        "name": "Magic Missile",
+        "name": "Heat Metal",
         "version": "1.1.0",
-        "hasAnimation": true,
-        "identifier": "magicMissile",
+        "identifier": "heatMetal",
         "source": "chris-premades"
       },
       "macros": {
         "midi": {
           "item": [
-            "magicMissile"
+            "heatMetal"
           ]
         }
       },
       "hiddenActivities": [
-        "magicMissileBolt",
-        "magicMissileFlat"
+        "heatMetalDamage",
+        "heatMetalHeld",
+        "heatMetalPulse"
       ],
-      "config": {
-        "rollEach": false
-      },
       "activityIdentifiers": {
-        "magicMissileBolt": "zHpeqUnoKjOjo5aN",
-        "magicMissileFlat": "VH7HwxXvnFU22CxV",
-        "magicMissile": "dnd5eactivity000"
+        "heatMetal": "WWhDaDkhdR3vrMCn",
+        "heatMetalDamage": "RPeWu1C4fujXuBti",
+        "heatMetalHeld": "mnxVTmGwcqMENTcj",
+        "heatMetalPulse": "Uc52ckEpY9w8GddF"
       }
     }
   },
   "effects": [],
-  "img": "icons/magic/fire/projectile-meteor-salvo-light-blue.webp",
+  "img": "icons/magic/fire/flame-burning-chain.webp",
   "folder": null,
-  "_id": "89u3SA1lBLVdE4v7",
-  "_key": "!items!89u3SA1lBLVdE4v7"
+  "_id": "xEQ5I9Z3QkCz9VB0",
+  "_key": "!items!xEQ5I9Z3QkCz9VB0"
 }

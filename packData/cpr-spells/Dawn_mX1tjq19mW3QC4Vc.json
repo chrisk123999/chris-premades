@@ -6,7 +6,7 @@
       "chat": ""
     },
     "source": {
-      "custom": "Basic Rules, Player's Handbook pg 257",
+      "custom": "Xanathar's Guide to Everything pg 153",
       "revision": 1,
       "rules": "2024"
     },
@@ -16,24 +16,26 @@
       "value": 1
     },
     "duration": {
-      "value": "",
-      "units": "inst"
+      "value": "1",
+      "units": "minute"
     },
     "target": {
       "affects": {
-        "type": "creature",
-        "count": "",
         "choice": false,
-        "special": ""
+        "count": "",
+        "type": ""
       },
       "template": {
-        "units": "",
+        "units": "ft",
+        "type": "cylinder",
+        "size": "30",
         "contiguous": false,
-        "type": ""
+        "height": "",
+        "count": ""
       }
     },
     "range": {
-      "value": "120",
+      "value": "60",
       "units": "ft",
       "special": ""
     },
@@ -43,12 +45,12 @@
       "recovery": []
     },
     "ability": "",
-    "level": 1,
+    "level": 5,
     "school": "evo",
     "materials": {
-      "value": "",
+      "value": "a sunburst pendant worth at least 100 gp",
       "consumed": false,
-      "cost": 0,
+      "cost": 100,
       "supply": 0
     },
     "preparation": {
@@ -57,12 +59,14 @@
     },
     "properties": [
       "vocal",
-      "somatic"
+      "somatic",
+      "material",
+      "concentration"
     ],
     "activities": {
       "dnd5eactivity000": {
         "_id": "dnd5eactivity000",
-        "type": "utility",
+        "type": "save",
         "activation": {
           "type": "action",
           "value": null,
@@ -77,7 +81,7 @@
           "spellSlot": true
         },
         "description": {
-          "chatFlavor": "[1d4 + 1 - force] 3 Darts"
+          "chatFlavor": ""
         },
         "duration": {
           "units": "inst",
@@ -104,20 +108,110 @@
           "max": "",
           "recovery": []
         },
-        "roll": {
-          "formula": "",
-          "name": "",
-          "prompt": false,
-          "visible": false
+        "damage": {
+          "onSave": "half",
+          "parts": [
+            {
+              "custom": {
+                "enabled": true,
+                "formula": "4d10[radiant]"
+              },
+              "number": null,
+              "denomination": null,
+              "bonus": "",
+              "types": [
+                "radiant"
+              ],
+              "scaling": {
+                "mode": "",
+                "number": 1
+              }
+            }
+          ],
+          "critical": {
+            "allow": false
+          }
+        },
+        "save": {
+          "ability": [
+            "con"
+          ],
+          "dc": {
+            "calculation": "spellcasting",
+            "formula": ""
+          }
         },
         "sort": 0,
         "useConditionText": "",
         "forceDialog": false,
         "effectConditionText": "",
-        "name": ""
+        "midiAutomationOnly": false,
+        "name": "Dawn",
+        "img": "icons/magic/light/projectile-beam-yellow.webp"
       },
-      "zHpeqUnoKjOjo5aN": {
-        "type": "damage",
+      "rufEWHdelB74i4bI": {
+        "type": "utility",
+        "_id": "rufEWHdelB74i4bI",
+        "sort": 0,
+        "activation": {
+          "type": "bonus",
+          "value": null,
+          "override": true,
+          "condition": ""
+        },
+        "consumption": {
+          "scaling": {
+            "allowed": false
+          },
+          "spellSlot": false,
+          "targets": []
+        },
+        "description": {
+          "chatFlavor": "Dawn: Move"
+        },
+        "duration": {
+          "units": "inst",
+          "concentration": false,
+          "override": true
+        },
+        "effects": [],
+        "range": {
+          "override": true,
+          "units": "any",
+          "special": ""
+        },
+        "target": {
+          "template": {
+            "contiguous": false,
+            "units": "ft"
+          },
+          "affects": {
+            "choice": false
+          },
+          "override": true,
+          "prompt": true
+        },
+        "uses": {
+          "spent": 0,
+          "recovery": [],
+          "max": ""
+        },
+        "roll": {
+          "prompt": false,
+          "visible": false,
+          "name": "",
+          "formula": ""
+        },
+        "useConditionText": "",
+        "forceDialog": false,
+        "effectConditionText": "",
+        "midiAutomationOnly": false,
+        "name": "Dawn: Move",
+        "img": "icons/magic/light/projectile-beam-yellow.webp"
+      },
+      "Kanri5d5YFnwdGhM": {
+        "type": "save",
+        "_id": "Kanri5d5YFnwdGhM",
         "sort": 0,
         "activation": {
           "type": "special",
@@ -133,12 +227,12 @@
           "targets": []
         },
         "description": {
-          "chatFlavor": ""
+          "chatFlavor": "Dawn: End Turn"
         },
         "duration": {
           "units": "inst",
           "concentration": false,
-          "override": false
+          "override": true
         },
         "effects": [],
         "range": {
@@ -167,146 +261,85 @@
           "max": ""
         },
         "damage": {
-          "critical": {
-            "allow": false
-          },
           "parts": [
             {
               "custom": {
                 "enabled": true,
-                "formula": "1d4[force] + 1"
+                "formula": "4d10[radiant]"
               },
               "number": null,
               "denomination": 0,
               "bonus": "",
               "types": [
-                "force"
+                "radiant"
               ],
               "scaling": {
                 "mode": "",
                 "number": 1
               }
             }
-          ]
-        },
-        "useConditionText": "",
-        "forceDialog": false,
-        "effectConditionText": "",
-        "name": "Magic Missile Bolt",
-        "_id": "zHpeqUnoKjOjo5aN"
-      },
-      "VH7HwxXvnFU22CxV": {
-        "type": "damage",
-        "sort": 0,
-        "activation": {
-          "type": "special",
-          "value": null,
-          "override": true,
-          "condition": ""
-        },
-        "consumption": {
-          "scaling": {
-            "allowed": false
-          },
-          "spellSlot": false,
-          "targets": []
-        },
-        "description": {
-          "chatFlavor": ""
-        },
-        "duration": {
-          "units": "inst",
-          "concentration": false,
-          "override": false
-        },
-        "effects": [],
-        "range": {
-          "override": false
-        },
-        "target": {
-          "template": {
-            "contiguous": false,
-            "units": "ft",
-            "type": ""
-          },
-          "affects": {
-            "choice": false,
-            "count": "1",
-            "type": "creature",
-            "special": ""
-          },
-          "override": true,
-          "prompt": true
-        },
-        "uses": {
-          "spent": 0,
-          "recovery": [],
-          "max": ""
-        },
-        "damage": {
+          ],
           "critical": {
             "allow": false
           },
-          "parts": [
-            {
-              "types": [
-                "force"
-              ],
-              "number": null,
-              "denomination": null,
-              "custom": {
-                "enabled": true,
-                "formula": "5"
-              },
-              "scaling": {
-                "number": 1
-              }
-            }
-          ]
+          "onSave": "half"
+        },
+        "save": {
+          "ability": [
+            "con"
+          ],
+          "dc": {
+            "calculation": "spellcasting",
+            "formula": ""
+          }
         },
         "useConditionText": "",
         "forceDialog": false,
         "effectConditionText": "",
-        "name": "Magic Missile Bolt: Flat",
-        "_id": "VH7HwxXvnFU22CxV"
+        "midiAutomationOnly": false,
+        "name": "Dawn: End Turn",
+        "img": "icons/magic/light/projectile-beam-yellow.webp"
       }
     },
-    "identifier": "magic-missile",
+    "identifier": "dawn",
     "sourceClass": "cleric"
   },
-  "name": "Magic Missile",
+  "name": "Dawn",
   "flags": {
     "core": {
-      "sourceId": "Compendium.world.ddb-development-testing-ddb-spells.OPqTuvUbdRsEpjKv"
+      "sourceId": "Compendium.world.ddb-development-testing-ddb-spells.Ofq8of2q1jFBBTjD"
     },
     "midi-qol": {
       "effectActivation": false,
       "onUseMacroName": "",
-      "rollAttackPerTarget": "default",
-      "itemCondition": "",
-      "effectCondition": "",
       "AoETargetType": "any",
       "AoETargetTypeIncludeSelf": true,
       "autoTarget": "default",
+      "rollAttackPerTarget": "default",
       "removeAttackDamageButtons": "default",
+      "itemCondition": "",
+      "effectCondition": "",
+      "-=onUseMacroName": null,
       "reactionCondition": "",
       "otherCondition": ""
     },
     "midiProperties": {
       "nodam": false,
       "fulldam": false,
-      "halfdam": false,
+      "halfdam": true,
       "autoFailFriendly": false,
       "autoSaveFriendly": false,
       "rollOther": false,
       "critOther": false,
       "offHandWeapon": false,
-      "magicdam": false,
+      "magicdam": true,
       "magiceffect": false,
       "concentration": false,
       "toggleEffect": false,
       "ignoreTotalCover": false,
       "confirmTargets": "default",
+      "saveDamage": "halfdam",
+      "bonusSaveDamage": "default",
       "noConcentrationCheck": false,
       "idr": false,
       "idi": false,
@@ -317,66 +350,61 @@
       "persistSourceMigration": true,
       "riders": {
         "activity": [
-          "zHpeqUnoKjOjo5aN",
-          "VH7HwxXvnFU22CxV"
+          "Kanri5d5YFnwdGhM",
+          "rufEWHdelB74i4bI"
         ],
         "effect": []
       },
       "last": {
-        "magicMissileBolt": {
+        "dnd5eactivity000": {
           "damageType": {
-            "0": "force"
+            "0": "radiant"
           }
         },
-        "boltFlat00000000": {
+        "Kanri5d5YFnwdGhM": {
           "damageType": {
-            "0": "force"
-          }
-        },
-        "VH7HwxXvnFU22CxV": {
-          "damageType": {
-            "0": "force"
-          }
-        },
-        "zHpeqUnoKjOjo5aN": {
-          "damageType": {
-            "0": "force"
+            "0": "radiant"
           }
         }
       }
     },
     "chris-premades": {
       "info": {
-        "name": "Magic Missile",
+        "name": "Dawn",
         "version": "1.1.0",
-        "hasAnimation": true,
-        "identifier": "magicMissile",
+        "mutation": {
+          "self": "Dawn"
+        },
+        "settings": [
+          "Template Listener"
+        ],
+        "muations": {
+          "self": "Dawn"
+        },
+        "identifier": "dawn",
         "source": "chris-premades"
       },
       "macros": {
         "midi": {
           "item": [
-            "magicMissile"
+            "dawn"
           ]
         }
       },
-      "hiddenActivities": [
-        "magicMissileBolt",
-        "magicMissileFlat"
-      ],
-      "config": {
-        "rollEach": false
-      },
       "activityIdentifiers": {
-        "magicMissileBolt": "zHpeqUnoKjOjo5aN",
-        "magicMissileFlat": "VH7HwxXvnFU22CxV",
-        "magicMissile": "dnd5eactivity000"
-      }
+        "dawn": "dnd5eactivity000",
+        "dawnMove": "rufEWHdelB74i4bI",
+        "dawnEndTurn": "Kanri5d5YFnwdGhM"
+      },
+      "hiddenActivities": [
+        "dawnEndTurn",
+        "dawnMove"
+      ]
     }
   },
   "effects": [],
-  "img": "icons/magic/fire/projectile-meteor-salvo-light-blue.webp",
+  "img": "icons/magic/light/projectile-beam-yellow.webp",
   "folder": null,
-  "_id": "89u3SA1lBLVdE4v7",
-  "_key": "!items!89u3SA1lBLVdE4v7"
+  "_id": "mX1tjq19mW3QC4Vc",
+  "_key": "!items!mX1tjq19mW3QC4Vc"
 }

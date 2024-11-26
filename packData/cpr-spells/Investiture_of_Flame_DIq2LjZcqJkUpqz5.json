@@ -6,7 +6,7 @@
       "chat": ""
     },
     "source": {
-      "custom": "Basic Rules, Player's Handbook pg 257",
+      "custom": "Elemental Evil Player's Companion pg 159",
       "revision": 1,
       "rules": "2024"
     },
@@ -16,12 +16,12 @@
       "value": 1
     },
     "duration": {
-      "value": "",
-      "units": "inst"
+      "value": "10",
+      "units": "minute"
     },
     "target": {
       "affects": {
-        "type": "creature",
+        "type": "self",
         "count": "",
         "choice": false,
         "special": ""
@@ -33,8 +33,7 @@
       }
     },
     "range": {
-      "value": "120",
-      "units": "ft",
+      "units": "self",
       "special": ""
     },
     "uses": {
@@ -43,8 +42,8 @@
       "recovery": []
     },
     "ability": "",
-    "level": 1,
-    "school": "evo",
+    "level": 6,
+    "school": "trs",
     "materials": {
       "value": "",
       "consumed": false,
@@ -57,7 +56,8 @@
     },
     "properties": [
       "vocal",
-      "somatic"
+      "somatic",
+      "concentration"
     ],
     "activities": {
       "dnd5eactivity000": {
@@ -77,7 +77,7 @@
           "spellSlot": true
         },
         "description": {
-          "chatFlavor": "[1d4 + 1 - force] 3 Darts"
+          "chatFlavor": ""
         },
         "duration": {
           "units": "inst",
@@ -114,10 +114,104 @@
         "useConditionText": "",
         "forceDialog": false,
         "effectConditionText": "",
-        "name": ""
+        "midiAutomationOnly": false,
+        "name": "Investiture of Flame",
+        "img": "icons/magic/lightning/bolt-strike-smoke-yellow.webp"
       },
-      "zHpeqUnoKjOjo5aN": {
+      "zmvYF2OfblclYJER": {
+        "type": "save",
+        "_id": "zmvYF2OfblclYJER",
+        "sort": 0,
+        "activation": {
+          "type": "action",
+          "value": null,
+          "override": false
+        },
+        "consumption": {
+          "scaling": {
+            "allowed": false
+          },
+          "spellSlot": false,
+          "targets": []
+        },
+        "description": {
+          "chatFlavor": "Investiture of Flame: Fire"
+        },
+        "duration": {
+          "units": "inst",
+          "concentration": false,
+          "override": true
+        },
+        "effects": [],
+        "range": {
+          "override": false
+        },
+        "target": {
+          "template": {
+            "contiguous": false,
+            "units": "ft",
+            "type": "line",
+            "size": "15",
+            "width": "5",
+            "count": ""
+          },
+          "affects": {
+            "choice": false,
+            "count": "",
+            "type": "creature",
+            "special": ""
+          },
+          "override": true,
+          "prompt": true
+        },
+        "uses": {
+          "spent": 0,
+          "recovery": [],
+          "max": ""
+        },
+        "damage": {
+          "parts": [
+            {
+              "custom": {
+                "enabled": true,
+                "formula": "4d8[fire]"
+              },
+              "number": null,
+              "denomination": 0,
+              "bonus": "",
+              "types": [
+                "fire"
+              ],
+              "scaling": {
+                "mode": "",
+                "number": 1
+              }
+            }
+          ],
+          "critical": {
+            "allow": false
+          },
+          "onSave": "half"
+        },
+        "save": {
+          "ability": [
+            "dex"
+          ],
+          "dc": {
+            "calculation": "spellcasting",
+            "formula": ""
+          }
+        },
+        "useConditionText": "",
+        "forceDialog": false,
+        "effectConditionText": "",
+        "midiAutomationOnly": false,
+        "name": "Investiture of Flame: Fire",
+        "img": "icons/magic/lightning/bolt-strike-smoke-yellow.webp"
+      },
+      "tz9zhEEBYth4aDJx": {
         "type": "damage",
+        "_id": "tz9zhEEBYth4aDJx",
         "sort": 0,
         "activation": {
           "type": "special",
@@ -133,12 +227,12 @@
           "targets": []
         },
         "description": {
-          "chatFlavor": ""
+          "chatFlavor": "Investiture of Flame: Heat"
         },
         "duration": {
           "units": "inst",
           "concentration": false,
-          "override": false
+          "override": true
         },
         "effects": [],
         "range": {
@@ -174,13 +268,13 @@
             {
               "custom": {
                 "enabled": true,
-                "formula": "1d4[force] + 1"
+                "formula": "1d10[fire]"
               },
               "number": null,
               "denomination": 0,
               "bonus": "",
               "types": [
-                "force"
+                "fire"
               ],
               "scaling": {
                 "mode": "",
@@ -192,191 +286,104 @@
         "useConditionText": "",
         "forceDialog": false,
         "effectConditionText": "",
-        "name": "Magic Missile Bolt",
-        "_id": "zHpeqUnoKjOjo5aN"
-      },
-      "VH7HwxXvnFU22CxV": {
-        "type": "damage",
-        "sort": 0,
-        "activation": {
-          "type": "special",
-          "value": null,
-          "override": true,
-          "condition": ""
-        },
-        "consumption": {
-          "scaling": {
-            "allowed": false
-          },
-          "spellSlot": false,
-          "targets": []
-        },
-        "description": {
-          "chatFlavor": ""
-        },
-        "duration": {
-          "units": "inst",
-          "concentration": false,
-          "override": false
-        },
-        "effects": [],
-        "range": {
-          "override": false
-        },
-        "target": {
-          "template": {
-            "contiguous": false,
-            "units": "ft",
-            "type": ""
-          },
-          "affects": {
-            "choice": false,
-            "count": "1",
-            "type": "creature",
-            "special": ""
-          },
-          "override": true,
-          "prompt": true
-        },
-        "uses": {
-          "spent": 0,
-          "recovery": [],
-          "max": ""
-        },
-        "damage": {
-          "critical": {
-            "allow": false
-          },
-          "parts": [
-            {
-              "types": [
-                "force"
-              ],
-              "number": null,
-              "denomination": null,
-              "custom": {
-                "enabled": true,
-                "formula": "5"
-              },
-              "scaling": {
-                "number": 1
-              }
-            }
-          ]
-        },
-        "useConditionText": "",
-        "forceDialog": false,
-        "effectConditionText": "",
-        "name": "Magic Missile Bolt: Flat",
-        "_id": "VH7HwxXvnFU22CxV"
+        "midiAutomationOnly": false,
+        "name": "Investiture of Flame: Heat",
+        "img": "icons/magic/lightning/bolt-strike-smoke-yellow.webp"
       }
     },
-    "identifier": "magic-missile",
+    "identifier": "investiture-of-flame",
     "sourceClass": "cleric"
   },
-  "name": "Magic Missile",
+  "name": "Investiture of Flame",
   "flags": {
-    "core": {
-      "sourceId": "Compendium.world.ddb-development-testing-ddb-spells.OPqTuvUbdRsEpjKv"
-    },
-    "midi-qol": {
-      "effectActivation": false,
-      "onUseMacroName": "",
-      "rollAttackPerTarget": "default",
-      "itemCondition": "",
-      "effectCondition": "",
-      "AoETargetType": "any",
-      "AoETargetTypeIncludeSelf": true,
-      "autoTarget": "default",
-      "removeAttackDamageButtons": "default",
-      "reactionCondition": "",
-      "otherCondition": ""
-    },
     "midiProperties": {
-      "nodam": false,
-      "fulldam": false,
-      "halfdam": false,
+      "magicdam": true,
+      "magiceffect": true,
+      "confirmTargets": "default",
+      "saveDamage": "default",
       "autoFailFriendly": false,
       "autoSaveFriendly": false,
       "rollOther": false,
       "critOther": false,
       "offHandWeapon": false,
-      "magicdam": false,
-      "magiceffect": false,
       "concentration": false,
+      "noConcentrationCheck": false,
       "toggleEffect": false,
       "ignoreTotalCover": false,
-      "confirmTargets": "default",
-      "noConcentrationCheck": false,
       "idr": false,
       "idi": false,
       "idv": false,
       "ida": false
     },
+    "midi-qol": {
+      "removeAttackDamageButtons": "default",
+      "effectActivation": false,
+      "onUseMacroName": "",
+      "rollAttackPerTarget": "default",
+      "itemCondition": "",
+      "effectCondition": "",
+      "-=onUseMacroName": null,
+      "AoETargetType": "any",
+      "AoETargetTypeIncludeSelf": true,
+      "autoTarget": "default",
+      "reactionCondition": "",
+      "otherCondition": ""
+    },
+    "core": {},
     "dnd5e": {
       "persistSourceMigration": true,
       "riders": {
         "activity": [
-          "zHpeqUnoKjOjo5aN",
-          "VH7HwxXvnFU22CxV"
+          "tz9zhEEBYth4aDJx",
+          "zmvYF2OfblclYJER"
         ],
         "effect": []
       },
       "last": {
-        "magicMissileBolt": {
+        "zmvYF2OfblclYJER": {
           "damageType": {
-            "0": "force"
+            "0": "fire"
           }
         },
-        "boltFlat00000000": {
+        "tz9zhEEBYth4aDJx": {
           "damageType": {
-            "0": "force"
-          }
-        },
-        "VH7HwxXvnFU22CxV": {
-          "damageType": {
-            "0": "force"
-          }
-        },
-        "zHpeqUnoKjOjo5aN": {
-          "damageType": {
-            "0": "force"
+            "0": "fire"
           }
         }
       }
     },
     "chris-premades": {
       "info": {
-        "name": "Magic Missile",
+        "name": "Investiture of Flame",
         "version": "1.1.0",
-        "hasAnimation": true,
-        "identifier": "magicMissile",
-        "source": "chris-premades"
+        "mutation": {
+          "self": "Investiture of Flame"
+        },
+        "identifier": "investitureOfFlame",
+        "source": "chris-premades",
+        "hasAnimation": true
       },
       "macros": {
         "midi": {
           "item": [
-            "magicMissile"
+            "investitureOfFlame"
           ]
         }
       },
       "hiddenActivities": [
-        "magicMissileBolt",
-        "magicMissileFlat"
+        "investitureOfFlameHeat",
+        "investitureOfFlameFire"
       ],
-      "config": {
-        "rollEach": false
-      },
       "activityIdentifiers": {
-        "magicMissileBolt": "zHpeqUnoKjOjo5aN",
-        "magicMissileFlat": "VH7HwxXvnFU22CxV",
-        "magicMissile": "dnd5eactivity000"
+        "investitureOfFlame": "dnd5eactivity000",
+        "investitureOfFlameFire": "zmvYF2OfblclYJER",
+        "investitureOfFlameHeat": "tz9zhEEBYth4aDJx"
       }
     }
   },
   "effects": [],
-  "img": "icons/magic/fire/projectile-meteor-salvo-light-blue.webp",
+  "img": "icons/magic/lightning/bolt-strike-smoke-yellow.webp",
   "folder": null,
-  "_id": "89u3SA1lBLVdE4v7",
-  "_key": "!items!89u3SA1lBLVdE4v7"
+  "_id": "DIq2LjZcqJkUpqz5",
+  "_key": "!items!DIq2LjZcqJkUpqz5"
 }

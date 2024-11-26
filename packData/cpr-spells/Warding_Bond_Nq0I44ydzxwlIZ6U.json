@@ -6,7 +6,10 @@
       "chat": ""
     },
     "source": {
-      "custom": "Basic Rules, Player's Handbook pg 257",
+      "book": "Player's Handbook",
+      "page": "287",
+      "license": "",
+      "custom": "",
       "revision": 1,
       "rules": "2024"
     },
@@ -16,13 +19,13 @@
       "value": 1
     },
     "duration": {
-      "value": "",
-      "units": "inst"
+      "value": "1",
+      "units": "hour"
     },
     "target": {
       "affects": {
         "type": "creature",
-        "count": "",
+        "count": "1",
         "choice": false,
         "special": ""
       },
@@ -33,8 +36,7 @@
       }
     },
     "range": {
-      "value": "120",
-      "units": "ft",
+      "units": "touch",
       "special": ""
     },
     "uses": {
@@ -43,22 +45,23 @@
       "recovery": []
     },
     "ability": "",
-    "level": 1,
-    "school": "evo",
+    "level": 2,
+    "school": "abj",
+    "properties": [
+      "vocal",
+      "somatic",
+      "material"
+    ],
     "materials": {
-      "value": "",
+      "value": "a pair of platinum rings worth at least 50 gp each, which you and the target must wear for the duration",
       "consumed": false,
-      "cost": 0,
+      "cost": 50,
       "supply": 0
     },
     "preparation": {
       "mode": "prepared",
       "prepared": false
     },
-    "properties": [
-      "vocal",
-      "somatic"
-    ],
     "activities": {
       "dnd5eactivity000": {
         "_id": "dnd5eactivity000",
@@ -77,7 +80,7 @@
           "spellSlot": true
         },
         "description": {
-          "chatFlavor": "[1d4 + 1 - force] 3 Darts"
+          "chatFlavor": ""
         },
         "duration": {
           "units": "inst",
@@ -114,10 +117,13 @@
         "useConditionText": "",
         "forceDialog": false,
         "effectConditionText": "",
-        "name": ""
+        "midiAutomationOnly": false,
+        "name": "Warding Bond",
+        "img": "icons/skills/targeting/target-strike-triple-blue.webp"
       },
-      "zHpeqUnoKjOjo5aN": {
+      "8Ms5R9w5U4JaZmVt": {
         "type": "damage",
+        "_id": "8Ms5R9w5U4JaZmVt",
         "sort": 0,
         "activation": {
           "type": "special",
@@ -133,12 +139,92 @@
           "targets": []
         },
         "description": {
-          "chatFlavor": ""
+          "chatFlavor": "Warding Bond: Damage"
         },
         "duration": {
           "units": "inst",
           "concentration": false,
-          "override": false
+          "override": true
+        },
+        "effects": [],
+        "range": {
+          "override": true,
+          "units": "self",
+          "special": ""
+        },
+        "target": {
+          "template": {
+            "contiguous": false,
+            "units": "ft",
+            "type": ""
+          },
+          "affects": {
+            "choice": false,
+            "count": "",
+            "type": "self"
+          },
+          "override": true,
+          "prompt": true
+        },
+        "uses": {
+          "spent": 0,
+          "recovery": [],
+          "max": ""
+        },
+        "damage": {
+          "critical": {
+            "allow": false
+          },
+          "parts": [
+            {
+              "custom": {
+                "enabled": true,
+                "formula": "0"
+              },
+              "number": null,
+              "denomination": 0,
+              "bonus": "",
+              "types": [
+                "none"
+              ],
+              "scaling": {
+                "mode": "",
+                "number": 1
+              }
+            }
+          ]
+        },
+        "useConditionText": "",
+        "forceDialog": false,
+        "effectConditionText": "",
+        "midiAutomationOnly": false,
+        "name": "Warding Bond: Damage",
+        "img": "icons/skills/targeting/target-strike-triple-blue.webp"
+      },
+      "lP7h2QXXLeU6ltip": {
+        "type": "utility",
+        "_id": "lP7h2QXXLeU6ltip",
+        "sort": 0,
+        "activation": {
+          "type": "action",
+          "value": null,
+          "override": false,
+          "condition": ""
+        },
+        "consumption": {
+          "scaling": {
+            "allowed": false
+          },
+          "spellSlot": false,
+          "targets": []
+        },
+        "description": {
+          "chatFlavor": "Warding Bond: Dismiss"
+        },
+        "duration": {
+          "units": "inst",
+          "concentration": false,
+          "override": true
         },
         "effects": [],
         "range": {
@@ -154,9 +240,8 @@
           },
           "affects": {
             "choice": false,
-            "count": "1",
-            "type": "creature",
-            "special": ""
+            "count": "",
+            "type": "any"
           },
           "override": true,
           "prompt": true
@@ -166,217 +251,125 @@
           "recovery": [],
           "max": ""
         },
-        "damage": {
-          "critical": {
-            "allow": false
-          },
-          "parts": [
-            {
-              "custom": {
-                "enabled": true,
-                "formula": "1d4[force] + 1"
-              },
-              "number": null,
-              "denomination": 0,
-              "bonus": "",
-              "types": [
-                "force"
-              ],
-              "scaling": {
-                "mode": "",
-                "number": 1
-              }
-            }
-          ]
+        "roll": {
+          "prompt": false,
+          "visible": false,
+          "name": "",
+          "formula": ""
         },
         "useConditionText": "",
         "forceDialog": false,
         "effectConditionText": "",
-        "name": "Magic Missile Bolt",
-        "_id": "zHpeqUnoKjOjo5aN"
-      },
-      "VH7HwxXvnFU22CxV": {
-        "type": "damage",
-        "sort": 0,
-        "activation": {
-          "type": "special",
-          "value": null,
-          "override": true,
-          "condition": ""
-        },
-        "consumption": {
-          "scaling": {
-            "allowed": false
-          },
-          "spellSlot": false,
-          "targets": []
-        },
-        "description": {
-          "chatFlavor": ""
-        },
-        "duration": {
-          "units": "inst",
-          "concentration": false,
-          "override": false
-        },
-        "effects": [],
-        "range": {
-          "override": false
-        },
-        "target": {
-          "template": {
-            "contiguous": false,
-            "units": "ft",
-            "type": ""
-          },
-          "affects": {
-            "choice": false,
-            "count": "1",
-            "type": "creature",
-            "special": ""
-          },
-          "override": true,
-          "prompt": true
-        },
-        "uses": {
-          "spent": 0,
-          "recovery": [],
-          "max": ""
-        },
-        "damage": {
-          "critical": {
-            "allow": false
-          },
-          "parts": [
-            {
-              "types": [
-                "force"
-              ],
-              "number": null,
-              "denomination": null,
-              "custom": {
-                "enabled": true,
-                "formula": "5"
-              },
-              "scaling": {
-                "number": 1
-              }
-            }
-          ]
-        },
-        "useConditionText": "",
-        "forceDialog": false,
-        "effectConditionText": "",
-        "name": "Magic Missile Bolt: Flat",
-        "_id": "VH7HwxXvnFU22CxV"
+        "midiAutomationOnly": false,
+        "name": "Warding Bond: Dismiss",
+        "img": "icons/skills/targeting/target-strike-triple-blue.webp"
       }
     },
-    "identifier": "magic-missile",
+    "identifier": "warding-bond",
     "sourceClass": "cleric"
   },
-  "name": "Magic Missile",
+  "name": "Warding Bond",
   "flags": {
-    "core": {
-      "sourceId": "Compendium.world.ddb-development-testing-ddb-spells.OPqTuvUbdRsEpjKv"
-    },
     "midi-qol": {
-      "effectActivation": false,
-      "onUseMacroName": "",
+      "removeAttackDamageButtons": "default",
+      "forceCEOff": true,
       "rollAttackPerTarget": "default",
       "itemCondition": "",
       "effectCondition": "",
+      "-=onUseMacroName": null,
       "AoETargetType": "any",
       "AoETargetTypeIncludeSelf": true,
       "autoTarget": "default",
-      "removeAttackDamageButtons": "default",
       "reactionCondition": "",
       "otherCondition": ""
     },
     "midiProperties": {
-      "nodam": false,
-      "fulldam": false,
-      "halfdam": false,
+      "confirmTargets": "default",
+      "magicdam": true,
+      "magiceffect": true,
       "autoFailFriendly": false,
       "autoSaveFriendly": false,
-      "rollOther": false,
       "critOther": false,
       "offHandWeapon": false,
-      "magicdam": false,
-      "magiceffect": false,
-      "concentration": false,
+      "noConcentrationCheck": false,
       "toggleEffect": false,
       "ignoreTotalCover": false,
-      "confirmTargets": "default",
-      "noConcentrationCheck": false,
       "idr": false,
       "idi": false,
       "idv": false,
       "ida": false
     },
+    "dae": {
+      "macro": {
+        "name": "Warding Bond",
+        "type": "script",
+        "scope": "global",
+        "command": "",
+        "img": "icons/skills/targeting/target-strike-triple-blue.webp",
+        "author": "Sxnc2j6hSZtjzxy2",
+        "ownership": {
+          "default": 3
+        },
+        "_id": null,
+        "folder": null,
+        "sort": 0,
+        "flags": {},
+        "_stats": {
+          "coreVersion": "12.328",
+          "systemId": "dnd5e",
+          "systemVersion": "3.2.1",
+          "createdTime": null,
+          "modifiedTime": null,
+          "lastModifiedBy": null,
+          "compendiumSource": null,
+          "duplicateSource": null
+        }
+      }
+    },
     "dnd5e": {
       "persistSourceMigration": true,
       "riders": {
         "activity": [
-          "zHpeqUnoKjOjo5aN",
-          "VH7HwxXvnFU22CxV"
+          "8Ms5R9w5U4JaZmVt",
+          "lP7h2QXXLeU6ltip"
         ],
         "effect": []
       },
       "last": {
-        "magicMissileBolt": {
+        "8Ms5R9w5U4JaZmVt": {
           "damageType": {
-            "0": "force"
-          }
-        },
-        "boltFlat00000000": {
-          "damageType": {
-            "0": "force"
-          }
-        },
-        "VH7HwxXvnFU22CxV": {
-          "damageType": {
-            "0": "force"
-          }
-        },
-        "zHpeqUnoKjOjo5aN": {
-          "damageType": {
-            "0": "force"
+            "0": "none"
           }
         }
       }
     },
     "chris-premades": {
       "info": {
-        "name": "Magic Missile",
+        "identifier": "wardingBond",
         "version": "1.1.0",
-        "hasAnimation": true,
-        "identifier": "magicMissile",
         "source": "chris-premades"
       },
       "macros": {
         "midi": {
           "item": [
-            "magicMissile"
+            "wardingBond"
           ]
         }
       },
       "hiddenActivities": [
-        "magicMissileBolt",
-        "magicMissileFlat"
+        "wardingBondDamage",
+        "wardingBondDismiss"
       ],
-      "config": {
-        "rollEach": false
-      },
       "activityIdentifiers": {
-        "magicMissileBolt": "zHpeqUnoKjOjo5aN",
-        "magicMissileFlat": "VH7HwxXvnFU22CxV",
-        "magicMissile": "dnd5eactivity000"
+        "wardingBond": "dnd5eactivity000",
+        "wardingBondDamage": "8Ms5R9w5U4JaZmVt",
+        "wardingBondDismiss": "lP7h2QXXLeU6ltip"
       }
     }
   },
   "effects": [],
-  "img": "icons/magic/fire/projectile-meteor-salvo-light-blue.webp",
+  "img": "icons/skills/targeting/target-strike-triple-blue.webp",
   "folder": null,
-  "_id": "89u3SA1lBLVdE4v7",
-  "_key": "!items!89u3SA1lBLVdE4v7"
+  "_id": "Nq0I44ydzxwlIZ6U",
+  "_key": "!items!Nq0I44ydzxwlIZ6U"
 }

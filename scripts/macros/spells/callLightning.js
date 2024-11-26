@@ -1,38 +1,59 @@
-import {compendiumUtils, constants, dialogUtils, effectUtils, errors, genericUtils, itemUtils, workflowUtils} from '../../utils.js';
+import {activityUtils, compendiumUtils, constants, dialogUtils, effectUtils, errors, genericUtils, itemUtils, workflowUtils} from '../../utils.js';
 
 async function use({workflow}) {
+    if (activityUtils.getIdentifier(workflow.activity) !== genericUtils.getIdentifier(workflow.item)) return;
     let concentrationEffect = await effectUtils.getConcentrationEffect(workflow.actor, workflow.item);
     let storming = await dialogUtils.confirm(workflow.item.name, 'CHRISPREMADES.Macros.CallLightning.Storming');
     let castLevel = workflow.castData.castLevel;
     if (storming) castLevel += 1;
-    let featureData = await compendiumUtils.getItemFromCompendium(constants.packs.spellFeatures, 'Storm Bolt', {getDescription: true, translate: 'CHRISPREMADES.Macros.CallLightning.StormBolt', identifier: 'stormBolt', castDataWorkflow: workflow, object: true});
-    if (!featureData) {
-        errors.missingPackItem();
+    let feature = activityUtils.getActivityByIdentifier(workflow.item, 'stormBolt', {strict: true});
+    if (!feature) {
         if (concentrationEffect) await genericUtils.remove(concentrationEffect);
         return;
     }
-    let damageType = itemUtils.getConfig(workflow.item, 'damageType');
-    featureData.system.damage.parts = [
-        [
-            castLevel + 'd10[' + damageType + ']',
-            damageType
-        ]
-    ];
-    let duration = 60 * workflow.item.system.duration.value;
-    featureData.system.save.dc = itemUtils.getSaveDC(workflow.item);
     let effectData = {
         name: workflow.item.name,
         img: workflow.item.img,
         origin: workflow.item.uuid,
-        duration: {
-            seconds: duration
-        },
+        duration: itemUtils.convertDuration(workflow.item),
+        flags: {
+            'chris-premades': {
+                castData: {
+                    castLevel
+                }
+            }
+        }
     };
-    let effect = await effectUtils.createEffect(workflow.actor, effectData, {concentrationItem: workflow.item, strictlyInterdependent: true, identifier: 'callLightning', vae: [{type: 'use', name: featureData.name, identifier: 'stormBolt'}]});
-    await itemUtils.createItems(workflow.actor, [featureData], {favorite: true, parentEntity: effect, section: genericUtils.translate('CHRISPREMADES.Section.SpellFeatures')});
-    if (concentrationEffect) await genericUtils.update(concentrationEffect, {'duration.seconds': duration});
-    let stormBoltItem = itemUtils.getItemByIdentifier(workflow.actor, 'stormBolt');
-    if (stormBoltItem) await workflowUtils.completeItemUse(stormBoltItem);
+    await effectUtils.createEffect(workflow.actor, effectData, {
+        concentrationItem: workflow.item, 
+        strictlyInterdependent: true, 
+        identifier: 'callLightning', 
+        vae: [{
+            type: 'use', 
+            name: feature.name,
+            identifier: 'callLightning', 
+            activityIdentifier: 'stormBolt'
+        }],
+        unhideActivities: {
+            itemUuid: workflow.item.uuid,
+            activityIdentifiers: ['stormBolt'],
+            favorite: true
+        }
+    });
+    if (concentrationEffect) await genericUtils.update(concentrationEffect, {duration: effectData.duration});
+    await workflowUtils.completeActivityUse(feature);
+}
+async function early({workflow}) {
+    if (activityUtils.getIdentifier(workflow.activity) !== 'stormBolt') return;
+    if (workflow.activity.tempFlag) {
+        workflow.activity.tempFlag = false;
+        return;
+    }
+    let effect = effectUtils.getEffectByIdentifier(workflow.actor, 'callLightning');
+    if (!effect) return true;
+    workflow.activity.tempFlag = true;
+    genericUtils.sleep(100).then(() => workflowUtils.syntheticActivityRoll(workflow.activity, [], {atLevel: effect.flags['chris-premades'].castData.castLevel}));
+    return true;
 }
 export let callLightning = {
     name: 'Call Lightning',
@@ -43,18 +64,12 @@ export let callLightning = {
                 pass: 'rollFinished',
                 macro: use,
                 priority: 50
+            },
+            {
+                pass: 'preTargeting',
+                macro: early,
+                priority: 50
             }
         ]
-    },
-    config: [
-        {
-            value: 'damageType',
-            label: 'CHRISPREMADES.Config.DamageType',
-            type: 'select',
-            default: 'lightning',
-            options: constants.damageTypeOptions,
-            homebrew: true,
-            category: 'homebrew'
-        }
-    ]
+    }
 };

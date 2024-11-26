@@ -1,0 +1,267 @@
+{
+  "type": "spell",
+  "system": {
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "source": {
+      "custom": "Basic Rules, Player's Handbook pg 240",
+      "revision": 1,
+      "rules": "2024"
+    },
+    "activation": {
+      "type": "minute",
+      "condition": "",
+      "value": 10
+    },
+    "duration": {
+      "value": "",
+      "units": "inst"
+    },
+    "target": {
+      "affects": {
+        "choice": false,
+        "count": "",
+        "type": ""
+      },
+      "template": {
+        "units": "",
+        "contiguous": false,
+        "type": ""
+      }
+    },
+    "range": {
+      "value": "30",
+      "units": "ft",
+      "special": ""
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "recovery": []
+    },
+    "ability": "",
+    "level": 2,
+    "school": "con",
+    "materials": {
+      "value": "",
+      "consumed": false,
+      "cost": 0,
+      "supply": 0
+    },
+    "preparation": {
+      "mode": "prepared",
+      "prepared": false
+    },
+    "properties": [
+      "vocal",
+      "somatic"
+    ],
+    "activities": {
+      "dnd5eactivity000": {
+        "_id": "dnd5eactivity000",
+        "type": "utility",
+        "activation": {
+          "type": "action",
+          "value": null,
+          "override": false
+        },
+        "consumption": {
+          "targets": [],
+          "scaling": {
+            "allowed": false,
+            "max": ""
+          },
+          "spellSlot": true
+        },
+        "description": {
+          "chatFlavor": ""
+        },
+        "duration": {
+          "units": "inst",
+          "concentration": false,
+          "override": false
+        },
+        "effects": [],
+        "range": {
+          "override": false
+        },
+        "target": {
+          "prompt": true,
+          "template": {
+            "contiguous": false,
+            "units": "ft"
+          },
+          "affects": {
+            "choice": false
+          },
+          "override": false
+        },
+        "uses": {
+          "spent": 0,
+          "max": "",
+          "recovery": []
+        },
+        "roll": {
+          "formula": "",
+          "name": "",
+          "prompt": false,
+          "visible": false
+        },
+        "sort": 0,
+        "useConditionText": "",
+        "forceDialog": false,
+        "effectConditionText": "",
+        "midiAutomationOnly": false,
+        "name": "Find Steed",
+        "img": "icons/environment/creatures/horse-tan.webp"
+      },
+      "o6Vo2L7efjz0tbp9": {
+        "type": "utility",
+        "_id": "o6Vo2L7efjz0tbp9",
+        "sort": 0,
+        "activation": {
+          "type": "action",
+          "value": null,
+          "override": true,
+          "condition": ""
+        },
+        "consumption": {
+          "scaling": {
+            "allowed": false
+          },
+          "spellSlot": false,
+          "targets": []
+        },
+        "description": {
+          "chatFlavor": "Dismiss Steed"
+        },
+        "duration": {
+          "units": "inst",
+          "concentration": false,
+          "override": false
+        },
+        "effects": [],
+        "range": {
+          "override": true,
+          "units": "any",
+          "special": ""
+        },
+        "target": {
+          "template": {
+            "contiguous": false,
+            "units": "ft"
+          },
+          "affects": {
+            "choice": false
+          },
+          "override": false,
+          "prompt": true
+        },
+        "uses": {
+          "spent": 0,
+          "recovery": [],
+          "max": ""
+        },
+        "roll": {
+          "prompt": false,
+          "visible": false,
+          "formula": "",
+          "name": ""
+        },
+        "useConditionText": "",
+        "forceDialog": false,
+        "effectConditionText": "",
+        "midiAutomationOnly": false,
+        "name": "Dismiss Steed",
+        "img": "icons/environment/creatures/horse-tan.webp"
+      }
+    },
+    "identifier": "find-steed",
+    "sourceClass": "cleric"
+  },
+  "name": "Find Steed",
+  "flags": {
+    "midiProperties": {
+      "magicdam": true,
+      "magiceffect": true,
+      "nodam": false,
+      "fulldam": false,
+      "halfdam": false,
+      "autoFailFriendly": false,
+      "autoSaveFriendly": false,
+      "rollOther": false,
+      "critOther": false,
+      "offHandWeapon": false,
+      "concentration": false,
+      "toggleEffect": false,
+      "ignoreTotalCover": false,
+      "confirmTargets": "default",
+      "noConcentrationCheck": false,
+      "idr": false,
+      "idi": false,
+      "idv": false,
+      "ida": false
+    },
+    "core": {
+      "sourceId": "Compendium.world.ddb-dev-ddb-spells.TBBmulNnUK3t4RPs"
+    },
+    "midi-qol": {
+      "effectActivation": false,
+      "rollAttackPerTarget": "default",
+      "itemCondition": "",
+      "effectCondition": "",
+      "-=onUseMacroName": null,
+      "AoETargetType": "any",
+      "AoETargetTypeIncludeSelf": true,
+      "autoTarget": "default",
+      "removeAttackDamageButtons": "default",
+      "reactionCondition": "",
+      "otherCondition": ""
+    },
+    "dnd5e": {
+      "persistSourceMigration": true,
+      "riders": {
+        "activity": [
+          "o6Vo2L7efjz0tbp9"
+        ],
+        "effect": []
+      }
+    },
+    "chris-premades": {
+      "info": {
+        "name": "Find Steed",
+        "version": "1.1.0",
+        "identifier": "findSteed",
+        "source": "chris-premades",
+        "hasAnimation": true
+      },
+      "macros": {
+        "midi": {
+          "item": [
+            "findSteed"
+          ]
+        }
+      },
+      "config": {
+        "celestialAnimation": "celestial",
+        "feyAnimation": "nature",
+        "fiendAnimation": "fire",
+        "folder": "Steeds"
+      },
+      "activityIdentifiers": {
+        "findSteed": "dnd5eactivity000",
+        "findSteedDismiss": "o6Vo2L7efjz0tbp9"
+      },
+      "hiddenActivities": [
+        "findSteedDismiss"
+      ]
+    }
+  },
+  "effects": [],
+  "img": "icons/environment/creatures/horse-tan.webp",
+  "folder": null,
+  "_id": "SjouT6rm1spfXexa",
+  "_key": "!items!SjouT6rm1spfXexa"
+}

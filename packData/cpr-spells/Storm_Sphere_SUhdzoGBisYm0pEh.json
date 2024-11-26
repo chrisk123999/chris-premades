@@ -6,7 +6,7 @@
       "chat": ""
     },
     "source": {
-      "custom": "Basic Rules, Player's Handbook pg 257",
+      "custom": "Elemental Evil Player's Companion pg 166",
       "revision": 1,
       "rules": "2024"
     },
@@ -16,24 +16,25 @@
       "value": 1
     },
     "duration": {
-      "value": "",
-      "units": "inst"
+      "value": "1",
+      "units": "minute"
     },
     "target": {
       "affects": {
-        "type": "creature",
-        "count": "",
         "choice": false,
-        "special": ""
+        "count": "",
+        "type": ""
       },
       "template": {
-        "units": "",
+        "units": "ft",
+        "type": "sphere",
+        "size": "20",
         "contiguous": false,
-        "type": ""
+        "count": ""
       }
     },
     "range": {
-      "value": "120",
+      "value": "150",
       "units": "ft",
       "special": ""
     },
@@ -43,7 +44,7 @@
       "recovery": []
     },
     "ability": "",
-    "level": 1,
+    "level": 4,
     "school": "evo",
     "materials": {
       "value": "",
@@ -57,12 +58,13 @@
     },
     "properties": [
       "vocal",
-      "somatic"
+      "somatic",
+      "concentration"
     ],
     "activities": {
       "dnd5eactivity000": {
         "_id": "dnd5eactivity000",
-        "type": "utility",
+        "type": "save",
         "activation": {
           "type": "action",
           "value": null,
@@ -77,7 +79,7 @@
           "spellSlot": true
         },
         "description": {
-          "chatFlavor": "[1d4 + 1 - force] 3 Darts"
+          "chatFlavor": ""
         },
         "duration": {
           "units": "inst",
@@ -104,20 +106,149 @@
           "max": "",
           "recovery": []
         },
-        "roll": {
-          "formula": "",
-          "name": "",
-          "prompt": false,
-          "visible": false
+        "damage": {
+          "onSave": "half",
+          "parts": [
+            {
+              "custom": {
+                "enabled": true,
+                "formula": "2d6[bludgeoning]"
+              },
+              "number": null,
+              "denomination": null,
+              "bonus": "",
+              "types": [
+                "bludgeoning"
+              ],
+              "scaling": {
+                "mode": "whole",
+                "number": 1,
+                "formula": ""
+              }
+            }
+          ],
+          "critical": {
+            "allow": false
+          }
+        },
+        "save": {
+          "ability": [
+            "str"
+          ],
+          "dc": {
+            "calculation": "spellcasting",
+            "formula": ""
+          }
         },
         "sort": 0,
         "useConditionText": "",
         "forceDialog": false,
         "effectConditionText": "",
-        "name": ""
+        "midiAutomationOnly": false,
+        "name": "Storm Sphere",
+        "img": "icons/commodities/gems/pearl-storm.webp"
       },
-      "zHpeqUnoKjOjo5aN": {
-        "type": "damage",
+      "8zgZWh9C72Z7vUq7": {
+        "type": "attack",
+        "_id": "8zgZWh9C72Z7vUq7",
+        "sort": 0,
+        "activation": {
+          "type": "bonus",
+          "value": null,
+          "override": true,
+          "condition": ""
+        },
+        "consumption": {
+          "scaling": {
+            "allowed": false
+          },
+          "spellSlot": false,
+          "targets": []
+        },
+        "description": {
+          "chatFlavor": "Storm Sphere: Bolt"
+        },
+        "duration": {
+          "units": "inst",
+          "concentration": false,
+          "override": true
+        },
+        "effects": [],
+        "range": {
+          "override": true,
+          "units": "ft",
+          "special": "",
+          "value": "60"
+        },
+        "target": {
+          "template": {
+            "contiguous": false,
+            "units": "ft",
+            "type": ""
+          },
+          "affects": {
+            "choice": false,
+            "count": "1",
+            "type": "creature",
+            "special": ""
+          },
+          "override": true,
+          "prompt": true
+        },
+        "uses": {
+          "spent": 0,
+          "recovery": [],
+          "max": ""
+        },
+        "attack": {
+          "critical": {
+            "threshold": null
+          },
+          "flat": false,
+          "type": {
+            "value": "ranged",
+            "classification": ""
+          },
+          "ability": "",
+          "bonus": ""
+        },
+        "damage": {
+          "critical": {
+            "bonus": ""
+          },
+          "includeBase": true,
+          "parts": [
+            {
+              "custom": {
+                "enabled": true,
+                "formula": "4d6[lightning]"
+              },
+              "number": null,
+              "denomination": 0,
+              "bonus": "",
+              "types": [
+                "lightning"
+              ],
+              "scaling": {
+                "mode": "whole",
+                "number": 1
+              }
+            }
+          ]
+        },
+        "useConditionText": "",
+        "forceDialog": false,
+        "effectConditionText": "",
+        "midiAutomationOnly": false,
+        "attackMode": "",
+        "ammunition": "",
+        "otherActivityUuid": "",
+        "name": "Storm Sphere: Bolt",
+        "img": "icons/commodities/gems/pearl-storm.webp"
+      },
+      "9dMhkPkA8Se7z0gF": {
+        "type": "save",
+        "_id": "9dMhkPkA8Se7z0gF",
         "sort": 0,
         "activation": {
           "type": "special",
@@ -133,12 +264,12 @@
           "targets": []
         },
         "description": {
-          "chatFlavor": ""
+          "chatFlavor": "Storm Sphere: Turn"
         },
         "duration": {
           "units": "inst",
           "concentration": false,
-          "override": false
+          "override": true
         },
         "effects": [],
         "range": {
@@ -167,130 +298,65 @@
           "max": ""
         },
         "damage": {
-          "critical": {
-            "allow": false
-          },
           "parts": [
             {
               "custom": {
                 "enabled": true,
-                "formula": "1d4[force] + 1"
+                "formula": "2d6[bludgeoning]"
               },
               "number": null,
               "denomination": 0,
               "bonus": "",
               "types": [
-                "force"
+                "bludgeoning"
               ],
               "scaling": {
-                "mode": "",
+                "mode": "whole",
                 "number": 1
               }
             }
-          ]
-        },
-        "useConditionText": "",
-        "forceDialog": false,
-        "effectConditionText": "",
-        "name": "Magic Missile Bolt",
-        "_id": "zHpeqUnoKjOjo5aN"
-      },
-      "VH7HwxXvnFU22CxV": {
-        "type": "damage",
-        "sort": 0,
-        "activation": {
-          "type": "special",
-          "value": null,
-          "override": true,
-          "condition": ""
-        },
-        "consumption": {
-          "scaling": {
-            "allowed": false
-          },
-          "spellSlot": false,
-          "targets": []
-        },
-        "description": {
-          "chatFlavor": ""
-        },
-        "duration": {
-          "units": "inst",
-          "concentration": false,
-          "override": false
-        },
-        "effects": [],
-        "range": {
-          "override": false
-        },
-        "target": {
-          "template": {
-            "contiguous": false,
-            "units": "ft",
-            "type": ""
-          },
-          "affects": {
-            "choice": false,
-            "count": "1",
-            "type": "creature",
-            "special": ""
-          },
-          "override": true,
-          "prompt": true
-        },
-        "uses": {
-          "spent": 0,
-          "recovery": [],
-          "max": ""
-        },
-        "damage": {
+          ],
           "critical": {
             "allow": false
           },
-          "parts": [
-            {
-              "types": [
-                "force"
-              ],
-              "number": null,
-              "denomination": null,
-              "custom": {
-                "enabled": true,
-                "formula": "5"
-              },
-              "scaling": {
-                "number": 1
-              }
-            }
-          ]
+          "onSave": "half"
+        },
+        "save": {
+          "ability": [
+            "str"
+          ],
+          "dc": {
+            "calculation": "spellcasting",
+            "formula": ""
+          }
         },
         "useConditionText": "",
         "forceDialog": false,
         "effectConditionText": "",
-        "name": "Magic Missile Bolt: Flat",
-        "_id": "VH7HwxXvnFU22CxV"
+        "midiAutomationOnly": false,
+        "name": "Storm Sphere: Turn",
+        "img": "icons/commodities/gems/pearl-storm.webp"
       }
     },
-    "identifier": "magic-missile",
+    "identifier": "storm-sphere",
     "sourceClass": "cleric"
   },
-  "name": "Magic Missile",
+  "name": "Storm Sphere",
   "flags": {
-    "core": {
-      "sourceId": "Compendium.world.ddb-development-testing-ddb-spells.OPqTuvUbdRsEpjKv"
-    },
     "midi-qol": {
+      "forceCEOff": true,
       "effectActivation": false,
-      "onUseMacroName": "",
-      "rollAttackPerTarget": "default",
-      "itemCondition": "",
-      "effectCondition": "",
       "AoETargetType": "any",
       "AoETargetTypeIncludeSelf": true,
       "autoTarget": "default",
+      "rollAttackPerTarget": "default",
       "removeAttackDamageButtons": "default",
+      "itemCondition": "",
+      "effectCondition": "",
+      "-=onUseMacroName": null,
       "reactionCondition": "",
-      "otherCondition": ""
+      "otherCondition": "",
+      "fumbleThreshold": null
     },
     "midiProperties": {
       "nodam": false,
@@ -307,76 +373,73 @@
       "toggleEffect": false,
       "ignoreTotalCover": false,
       "confirmTargets": "default",
+      "saveDamage": "default",
+      "bonusSaveDamage": "default",
       "noConcentrationCheck": false,
       "idr": false,
       "idi": false,
       "idv": false,
       "ida": false
     },
+    "core": {
+      "sourceId": "Compendium.world.ddb-development-testing-ddb-spells.xaLcyNq6jeeGFfd1"
+    },
     "dnd5e": {
       "persistSourceMigration": true,
       "riders": {
         "activity": [
-          "zHpeqUnoKjOjo5aN",
-          "VH7HwxXvnFU22CxV"
+          "9dMhkPkA8Se7z0gF",
+          "8zgZWh9C72Z7vUq7"
         ],
         "effect": []
       },
       "last": {
-        "magicMissileBolt": {
+        "dnd5eactivity000": {
           "damageType": {
-            "0": "force"
+            "0": "bludgeoning"
           }
         },
-        "boltFlat00000000": {
+        "8zgZWh9C72Z7vUq7": {
           "damageType": {
-            "0": "force"
+            "0": "lightning"
           }
         },
-        "VH7HwxXvnFU22CxV": {
+        "9dMhkPkA8Se7z0gF": {
           "damageType": {
-            "0": "force"
-          }
-        },
-        "zHpeqUnoKjOjo5aN": {
-          "damageType": {
-            "0": "force"
+            "0": "bludgeoning"
           }
         }
       }
     },
     "chris-premades": {
       "info": {
-        "name": "Magic Missile",
+        "name": "Storm Sphere",
         "version": "1.1.0",
         "hasAnimation": true,
-        "identifier": "magicMissile",
+        "identifier": "stormSphere",
         "source": "chris-premades"
       },
       "macros": {
         "midi": {
           "item": [
-            "magicMissile"
+            "stormSphere"
           ]
         }
       },
       "hiddenActivities": [
-        "magicMissileBolt",
-        "magicMissileFlat"
+        "stormSphereTurn",
+        "stormSphereBolt"
       ],
-      "config": {
-        "rollEach": false
-      },
       "activityIdentifiers": {
-        "magicMissileBolt": "zHpeqUnoKjOjo5aN",
-        "magicMissileFlat": "VH7HwxXvnFU22CxV",
-        "magicMissile": "dnd5eactivity000"
+        "stormSphere": "dnd5eactivity000",
+        "stormSphereBolt": "8zgZWh9C72Z7vUq7",
+        "stormSphereTurn": "9dMhkPkA8Se7z0gF"
       }
     }
   },
   "effects": [],
-  "img": "icons/magic/fire/projectile-meteor-salvo-light-blue.webp",
+  "img": "icons/commodities/gems/pearl-storm.webp",
   "folder": null,
-  "_id": "89u3SA1lBLVdE4v7",
-  "_key": "!items!89u3SA1lBLVdE4v7"
+  "_id": "SUhdzoGBisYm0pEh",
+  "_key": "!items!SUhdzoGBisYm0pEh"
 }

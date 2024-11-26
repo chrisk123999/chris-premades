@@ -1,5 +1,5 @@
 import {Summons} from '../../lib/summons.js';
-import {activityUtils, animationUtils, compendiumUtils, constants, dialogUtils, effectUtils, errors, genericUtils, itemUtils} from '../../utils.js';
+import {activityUtils, animationUtils, compendiumUtils, constants, dialogUtils, effectUtils, errors, genericUtils, itemUtils, workflowUtils} from '../../utils.js';
 
 async function use({workflow}) {
     if (activityUtils.getIdentifier(workflow.activity) !== genericUtils.getIdentifier(workflow.item)) return;
@@ -48,14 +48,23 @@ async function use({workflow}) {
         }
     });
 }
+async function early({workflow}) {
+    if (activityUtils.getIdentifier(workflow.activity) !== 'animateDeadCommand') return;
+    workflowUtils.skipDialog(workflow);
+}
 export let animateDead = {
     name: 'Animate Dead',
-    version: '0.12.2',
+    version: '1.1.0',
     midi: {
         item: [
             {
                 pass: 'rollFinished',
                 macro: use,
+                priority: 50
+            },
+            {
+                pass: 'preTargeting',
+                macro: early,
                 priority: 50
             }
         ]

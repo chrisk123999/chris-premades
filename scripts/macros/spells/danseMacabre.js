@@ -1,7 +1,8 @@
 import {Summons} from '../../lib/summons.js';
-import {animationUtils, compendiumUtils, constants, dialogUtils, effectUtils, errors, genericUtils, itemUtils} from '../../utils.js';
+import {activityUtils, animationUtils, compendiumUtils, constants, dialogUtils, genericUtils, itemUtils, workflowUtils} from '../../utils.js';
 
 async function use({workflow}) {
+    if (activityUtils.getIdentifier(workflow.activity) !== genericUtils.getIdentifier(workflow.item)) return;
     let monsterCompendium = genericUtils.getCPRSetting('monsterCompendium');
     let zombieActorName = itemUtils.getConfig(workflow.item, 'zombieActorName');
     let skeletonActorName = itemUtils.getConfig(workflow.item, 'skeletonActorName');
@@ -26,25 +27,44 @@ async function use({workflow}) {
     };
     let animation = itemUtils.getConfig(workflow.item, 'animation') ?? 'shadow';
     if (animationUtils.jb2aCheck() !== 'patreon') animation = 'none';
-    let featureData = await compendiumUtils.getItemFromCompendium(constants.packs.spellFeatures, 'Danse Macabre: Command Undead', {object: true, getDescription: true, translate: 'CHRISPREMADES.Macros.DanseMacabre.CommandUndead', identifier: 'danseMacabreCommandUndead'});
-    if (!featureData) {
-        errors.missingPackItem();
-        return;
-    }
-    await Summons.spawn(sourceActors, updates, workflow.item, workflow.token, {duration: 3600, range: 10, animation, initiativeType: 'group', additionalVaeButtons: [{type: 'use', name: featureData.name, identifier: 'danseMacabreCommandUndead'}]});
-    if (itemUtils.getItemByIdentifier(workflow.actor, 'danseMacabreCommandUndead')) return;
-    let effect = effectUtils.getEffectByIdentifier(workflow.actor, 'danseMacabre');
-    if (!effect) return;
-    await itemUtils.createItems(workflow.actor, [featureData], {favorite: true, section: genericUtils.translate('CHRISPREMADES.Section.SpellFeatures'), parentEntity: effect});
+    let feature = activityUtils.getActivityByIdentifier(workflow.item, 'danseMacabreCommandUndead', {strict: true});
+    if (!feature) return;
+    await Summons.spawn(sourceActors, updates, workflow.item, workflow.token, {
+        duration: 3600, 
+        range: 10, 
+        animation, 
+        initiativeType: 'group', 
+        additionalVaeButtons: [{
+            type: 'use', 
+            name: feature.name,
+            identifier: 'danseMacabre', 
+            activityIdentifier: 'danseMacabreCommandUndead'
+        }],
+        unhideActivities: {
+            itemUuid: workflow.item.uuid,
+            activityIdentifiers: ['danseMacabreCommandUndead'],
+            favorite: true
+        }
+    });
+}
+async function early({workflow}) {
+    if (activityUtils.getIdentifier(workflow.activity) !== 'danseMacabreCommandUndead') return;
+    workflowUtils.skipDialog(workflow);
 }
 export let danseMacabre = {
     name: 'Danse Macabre',
-    version: '0.12.2',
+    version: '1.1.0',
+    hasAnimation: true,
     midi: {
         item: [
             {
                 pass: 'rollFinished',
                 macro: use,
+                priority: 50
+            },
+            {
+                pass: 'preTargeting',
+                macro: early,
                 priority: 50
             }
         ]

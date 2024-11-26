@@ -30,7 +30,8 @@ async function applyDamage(tokens, value, damageType) {
     return await MidiQOL.applyTokenDamage([{damage: value, type: damageType}], value, new Set(tokens));
 }
 async function completeActivityUse(activity, config={}, dialog={}, message={}) {
-    if (!config.midiOptions.asUser && !socketUtils.hasPermission(activity.actor, game.userId)) {
+    if (!config.midiOptions?.asUser && !socketUtils.hasPermission(activity.actor, game.userId)) {
+        if (!config.midiOptions) config.midiOptions = {};
         config.midiOptions.asUser = socketUtils.firstOwner(activity.actor, true);
         config.midiOptions.checkGMStatus = true;
     }
@@ -208,6 +209,9 @@ function getCastData(workflow) {
     delete castData.itemuuid;
     return castData;
 }
+function skipDialog(workflow) {
+    workflow.workflowOptions.autoConsumeResource = 'both';
+}
 export let workflowUtils = {
     bonusDamage,
     bonusAttack,
@@ -225,5 +229,6 @@ export let workflowUtils = {
     getTotalDamageOfType,
     handleInstantTemplate,
     getCastData,
-    modifyDamageAppliedFlat
+    modifyDamageAppliedFlat,
+    skipDialog
 };

@@ -23,8 +23,8 @@ function createEffectButtons(effect, buttons) {
                                     activity.use();
                                     return;
                                 }
-                                item.use();
                             }
+                            item.use();
                         }
                     }
                 });

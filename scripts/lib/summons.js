@@ -1,4 +1,4 @@
-import {genericUtils, animationUtils, effectUtils, actorUtils, itemUtils, combatUtils, compendiumUtils, constants, dialogUtils} from '../utils.js';
+import {genericUtils, animationUtils, effectUtils, actorUtils, itemUtils, combatUtils, compendiumUtils, constants, dialogUtils, activityUtils} from '../utils.js';
 import {crosshairUtils} from './utilities/crosshairUtils.js';
 import {socket, sockets} from './sockets.js';
 export class Summons {
@@ -11,7 +11,7 @@ export class Summons {
         this.spawnedTokens = [];
         this.currentIndex = 0;
     }
-    static async spawn(sourceActors, updates = [{}], originItem, summonerToken, options = {duration: undefined, callbacks: undefined, range: 100, animation: 'default', onDeleteMacros: undefined, concentrationNonDependent: false, initiativeType: 'separate', additionalVaeButtons: [], additionalSummonVaeButtons: [], dontDismissOnDefeat: false, dismissItem: undefined, unhideActivities: undefined/*dontAnimateOnDismiss: false*/}) {
+    static async spawn(sourceActors, updates = [{}], originItem, summonerToken, options = {duration: undefined, callbacks: undefined, range: 100, animation: 'default', onDeleteMacros: undefined, concentrationNonDependent: false, initiativeType: 'separate', additionalVaeButtons: [], additionalSummonVaeButtons: [], dontDismissOnDefeat: false, dismissActivity: undefined, unhideActivities: undefined/*dontAnimateOnDismiss: false*/}) {
         if (!Array.isArray(sourceActors)) sourceActors = [sourceActors];
         if (sourceActors.length && sourceActors[0]?.documentName !== 'Actor') {
             // Maybe from selectDocumentsDialog, in which case, transform from {document: Actor5e, amount: Int}[] to Actor5e[]:
@@ -427,7 +427,7 @@ export class Summons {
     }
     get summonEffect() {
         let buttons = [];
-        if (!this.options.dismissItem) {
+        if (!this.options.dismissActivity) {
             buttons.push({type: 'dismiss', name: genericUtils.translate('CHRISPREMADES.Summons.DismissSummon')});
         }
         let effectData = {
@@ -456,11 +456,12 @@ export class Summons {
     }
     get casterEffect() {
         let dismissButton;
-        if (this.options.dismissItem) {
+        if (this.options.dismissActivity) {
             dismissButton = {
                 type: 'use',
-                name: this.options.dismissItem.name,
-                identifier: genericUtils.getIdentifier(this.options.dismissItem)
+                name: this.options.dismissActivity.name,
+                identifier: genericUtils.getIdentifier(this.options.dismissActivity.item),
+                activityIdentifier: activityUtils.getIdentifier(this.options.dismissActivity)
             };
         } else {
             dismissButton = {

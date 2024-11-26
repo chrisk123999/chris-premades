@@ -6,23 +6,23 @@
       "chat": ""
     },
     "source": {
-      "custom": "Basic Rules, Player's Handbook pg 257",
+      "custom": "Basic Rules, Player's Handbook pg 251",
       "revision": 1,
       "rules": "2024"
     },
     "activation": {
-      "type": "action",
+      "type": "bonus",
       "condition": "",
       "value": 1
     },
     "duration": {
-      "value": "",
-      "units": "inst"
+      "value": "1",
+      "units": "hour"
     },
     "target": {
       "affects": {
         "type": "creature",
-        "count": "",
+        "count": "1",
         "choice": false,
         "special": ""
       },
@@ -33,7 +33,7 @@
       }
     },
     "range": {
-      "value": "120",
+      "value": "90",
       "units": "ft",
       "special": ""
     },
@@ -44,7 +44,7 @@
     },
     "ability": "",
     "level": 1,
-    "school": "evo",
+    "school": "div",
     "materials": {
       "value": "",
       "consumed": false,
@@ -57,7 +57,7 @@
     },
     "properties": [
       "vocal",
-      "somatic"
+      "concentration"
     ],
     "activities": {
       "dnd5eactivity000": {
@@ -77,7 +77,7 @@
           "spellSlot": true
         },
         "description": {
-          "chatFlavor": "[1d4 + 1 - force] 3 Darts"
+          "chatFlavor": ""
         },
         "duration": {
           "units": "inst",
@@ -114,16 +114,18 @@
         "useConditionText": "",
         "forceDialog": false,
         "effectConditionText": "",
-        "name": ""
+        "midiAutomationOnly": false,
+        "name": "Hunter's Mark",
+        "img": "icons/weapons/bows/shortbow-recurve-yellow.webp"
       },
-      "zHpeqUnoKjOjo5aN": {
-        "type": "damage",
+      "CtwTg5RbWUSlWeM2": {
+        "type": "utility",
+        "_id": "CtwTg5RbWUSlWeM2",
         "sort": 0,
         "activation": {
-          "type": "special",
+          "type": "action",
           "value": null,
-          "override": true,
-          "condition": ""
+          "override": false
         },
         "consumption": {
           "scaling": {
@@ -133,91 +135,12 @@
           "targets": []
         },
         "description": {
-          "chatFlavor": ""
+          "chatFlavor": "Hunter's Mark: Move"
         },
         "duration": {
           "units": "inst",
           "concentration": false,
-          "override": false
-        },
-        "effects": [],
-        "range": {
-          "override": true,
-          "units": "any",
-          "special": ""
-        },
-        "target": {
-          "template": {
-            "contiguous": false,
-            "units": "ft",
-            "type": ""
-          },
-          "affects": {
-            "choice": false,
-            "count": "1",
-            "type": "creature",
-            "special": ""
-          },
-          "override": true,
-          "prompt": true
-        },
-        "uses": {
-          "spent": 0,
-          "recovery": [],
-          "max": ""
-        },
-        "damage": {
-          "critical": {
-            "allow": false
-          },
-          "parts": [
-            {
-              "custom": {
-                "enabled": true,
-                "formula": "1d4[force] + 1"
-              },
-              "number": null,
-              "denomination": 0,
-              "bonus": "",
-              "types": [
-                "force"
-              ],
-              "scaling": {
-                "mode": "",
-                "number": 1
-              }
-            }
-          ]
-        },
-        "useConditionText": "",
-        "forceDialog": false,
-        "effectConditionText": "",
-        "name": "Magic Missile Bolt",
-        "_id": "zHpeqUnoKjOjo5aN"
-      },
-      "VH7HwxXvnFU22CxV": {
-        "type": "damage",
-        "sort": 0,
-        "activation": {
-          "type": "special",
-          "value": null,
-          "override": true,
-          "condition": ""
-        },
-        "consumption": {
-          "scaling": {
-            "allowed": false
-          },
-          "spellSlot": false,
-          "targets": []
-        },
-        "description": {
-          "chatFlavor": ""
-        },
-        "duration": {
-          "units": "inst",
-          "concentration": false,
-          "override": false
+          "override": true
         },
         "effects": [],
         "range": {
@@ -226,16 +149,12 @@
         "target": {
           "template": {
             "contiguous": false,
-            "units": "ft",
-            "type": ""
+            "units": "ft"
           },
           "affects": {
-            "choice": false,
-            "count": "1",
-            "type": "creature",
-            "special": ""
+            "choice": false
           },
-          "override": true,
+          "override": false,
           "prompt": true
         },
         "uses": {
@@ -243,54 +162,43 @@
           "recovery": [],
           "max": ""
         },
-        "damage": {
-          "critical": {
-            "allow": false
-          },
-          "parts": [
-            {
-              "types": [
-                "force"
-              ],
-              "number": null,
-              "denomination": null,
-              "custom": {
-                "enabled": true,
-                "formula": "5"
-              },
-              "scaling": {
-                "number": 1
-              }
-            }
-          ]
+        "roll": {
+          "prompt": false,
+          "visible": false,
+          "name": "",
+          "formula": ""
         },
         "useConditionText": "",
         "forceDialog": false,
         "effectConditionText": "",
-        "name": "Magic Missile Bolt: Flat",
-        "_id": "VH7HwxXvnFU22CxV"
+        "midiAutomationOnly": false,
+        "name": "Hunter's Mark: Move",
+        "img": "icons/weapons/bows/shortbow-recurve-yellow.webp"
       }
     },
-    "identifier": "magic-missile",
+    "identifier": "hunters-mark",
     "sourceClass": "cleric"
   },
-  "name": "Magic Missile",
+  "name": "Hunter's Mark",
   "flags": {
-    "core": {
-      "sourceId": "Compendium.world.ddb-development-testing-ddb-spells.OPqTuvUbdRsEpjKv"
-    },
     "midi-qol": {
+      "forceCEOff": true,
       "effectActivation": false,
+      "forceCEOn": false,
       "onUseMacroName": "",
       "rollAttackPerTarget": "default",
       "itemCondition": "",
       "effectCondition": "",
+      "-=onUseMacroName": null,
       "AoETargetType": "any",
       "AoETargetTypeIncludeSelf": true,
       "autoTarget": "default",
       "removeAttackDamageButtons": "default",
       "reactionCondition": "",
       "otherCondition": ""
+    },
+    "core": {
+      "sourceId": "Compendium.world.ddb-development-testing-ddb-spells.H3AcGWsBPAY6Yx2s"
     },
     "midiProperties": {
       "nodam": false,
@@ -317,66 +225,43 @@
       "persistSourceMigration": true,
       "riders": {
         "activity": [
-          "zHpeqUnoKjOjo5aN",
-          "VH7HwxXvnFU22CxV"
+          "CtwTg5RbWUSlWeM2"
         ],
         "effect": []
-      },
-      "last": {
-        "magicMissileBolt": {
-          "damageType": {
-            "0": "force"
-          }
-        },
-        "boltFlat00000000": {
-          "damageType": {
-            "0": "force"
-          }
-        },
-        "VH7HwxXvnFU22CxV": {
-          "damageType": {
-            "0": "force"
-          }
-        },
-        "zHpeqUnoKjOjo5aN": {
-          "damageType": {
-            "0": "force"
-          }
-        }
       }
     },
     "chris-premades": {
       "info": {
-        "name": "Magic Missile",
+        "name": "Hunter's Mark",
         "version": "1.1.0",
-        "hasAnimation": true,
-        "identifier": "magicMissile",
+        "mutation": {
+          "self": "Hunter's Mark"
+        },
+        "identifier": "huntersMark",
         "source": "chris-premades"
       },
       "macros": {
         "midi": {
           "item": [
-            "magicMissile"
+            "huntersMark"
           ]
         }
       },
-      "hiddenActivities": [
-        "magicMissileBolt",
-        "magicMissileFlat"
-      ],
       "config": {
-        "rollEach": false
+        "formula": "1d6"
       },
+      "hiddenActivities": [
+        "huntersMarkMove"
+      ],
       "activityIdentifiers": {
-        "magicMissileBolt": "zHpeqUnoKjOjo5aN",
-        "magicMissileFlat": "VH7HwxXvnFU22CxV",
-        "magicMissile": "dnd5eactivity000"
+        "huntersMark": "dnd5eactivity000",
+        "huntersMarkMove": "CtwTg5RbWUSlWeM2"
       }
     }
   },
   "effects": [],
-  "img": "icons/magic/fire/projectile-meteor-salvo-light-blue.webp",
+  "img": "icons/weapons/bows/shortbow-recurve-yellow.webp",
   "folder": null,
-  "_id": "89u3SA1lBLVdE4v7",
-  "_key": "!items!89u3SA1lBLVdE4v7"
+  "_id": "0FaJBD2EfiBVGiYg",
+  "_key": "!items!0FaJBD2EfiBVGiYg"
 }

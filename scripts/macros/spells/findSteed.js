@@ -1,7 +1,13 @@
 import {Summons} from '../../lib/summons.js';
-import {compendiumUtils, constants, dialogUtils, effectUtils, errors, genericUtils, itemUtils, tokenUtils} from '../../utils.js';
+import {activityUtils, constants, dialogUtils, effectUtils, genericUtils, itemUtils, tokenUtils, workflowUtils} from '../../utils.js';
 async function use({workflow}) {
-    await findSteedHelper(workflow, 'Steed', 'Steeds', 'findSteed');
+    let activityIdentifier = activityUtils.getIdentifier(workflow.activity);
+    if (activityIdentifier === genericUtils.getIdentifier(workflow.item)) {
+        await findSteedHelper(workflow, 'Steed', 'Steeds', 'findSteed');
+    } else if (activityIdentifier === 'findSteedDismiss') {
+        let effect = effectUtils.getEffectByIdentifier(workflow.actor, 'findSteed');
+        if (effect) await genericUtils.remove(effect);
+    }
 }
 async function early({workflow}) {
     await findSteedEarlyHelper(workflow, 'findSteed');
@@ -10,12 +16,8 @@ export async function findSteedHelper(workflow, defaultNameSuffix, defaultFolder
     let folder = itemUtils.getConfig(workflow.item, 'folder');
     if (!folder || !folder.length) folder = defaultFolder;
     let actors = game.actors.filter(i => i.folder?.name === folder);
-    let dismissData = await compendiumUtils.getItemFromCompendium(constants.featurePacks.spellFeatures, 'Dismiss Steed', {object: true, getDescription: true, translate: 'CHRISPREMADES.Macros.FindSteed.Dismiss', identifier: 'findSteedDismiss'});
-    if (!dismissData) {
-        errors.missingPackItem();
-        return;
-    }
-    dismissData.img = workflow.item.img;
+    let feature = activityUtils.getActivityByIdentifier(workflow.item, 'findSteedDismiss', {strict: true});
+    if (!feature) return;
     if (!actors.length) {
         genericUtils.notify(genericUtils.format('CHRISPREMADES.Error.NoActors', {folder}), 'warn', {localize: false});
         return;
@@ -69,14 +71,20 @@ export async function findSteedHelper(workflow, defaultNameSuffix, defaultFolder
         }
     };
     let animation = itemUtils.getConfig(workflow.item, creatureType + 'Animation') ?? 'none';
-    await Summons.spawn(sourceActor, updates, workflow.item, workflow.token, {duration: 86400, range: 30, animation, dismissItem: dismissData});
+    await Summons.spawn(sourceActor, updates, workflow.item, workflow.token, {
+        duration: 86400, 
+        range: 30, 
+        animation, 
+        dismissActivity: feature,
+        unhideActivities: {
+            itemUuid: workflow.item.uuid,
+            activityIdentifiers: ['findSteedDismiss'],
+            favorite: true
+        }
+    });
     let effect = await effectUtils.getEffectByIdentifier(workflow.actor, identifier);
     if (!effect) return;
     await genericUtils.setFlag(effect, 'chris-premades', 'macros.midi.actor', [identifier + 'Active']);
-    await itemUtils.createItems(workflow.actor, [dismissData], {favorite: true, parentEntity: effect});
-    let dismissItem = itemUtils.getItemByIdentifier(workflow.actor, genericUtils.getIdentifier(dismissData));
-    if (!dismissItem) return;
-    await effectUtils.addDependent(dismissItem, [effect]);
 }
 export async function findSteedEarlyHelper(workflow, identifier) {
     if (workflow.item.type !== 'spell') return;
@@ -93,14 +101,24 @@ export async function findSteedEarlyHelper(workflow, identifier) {
     let selection = await dialogUtils.confirm(originItem.name, 'CHRISPREMADES.Macros.FindSteed.Target');
     if (selection) genericUtils.updateTargets([workflow.token, steedToken]);
 }
+async function veryEarly({workflow}) {
+    if (activityUtils.getIdentifier(workflow.activity) !== 'findSteedDismiss') return;
+    workflowUtils.skipDialog(workflow);
+}
 export let findSteed = {
     name: 'Find Steed',
-    version: '0.12.2',
+    version: '1.1.0',
+    hasAnimation: true,
     midi: {
         item: [
             {
                 pass: 'rollFinished',
                 macro: use,
+                priority: 50
+            },
+            {
+                pass: 'preTargeting',
+                macro: veryEarly,
                 priority: 50
             }
         ]

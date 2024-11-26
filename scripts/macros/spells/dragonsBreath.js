@@ -1,5 +1,6 @@
 import {compendiumUtils, constants, dialogUtils, effectUtils, errors, genericUtils, itemUtils} from '../../utils.js';
 
+// TODO: Refactor this if https://github.com/foundryvtt/dnd5e/issues/4706 gets implemented
 async function use({workflow}) {
     let concentrationEffect = await effectUtils.getConcentrationEffect(workflow.actor, workflow.item);
     if (!workflow.targets.size) {
@@ -22,31 +23,32 @@ async function use({workflow}) {
         return;
     }
     let diceNumber = workflow.castData.castLevel + 1;
-    featureData.system.damage.parts = [
-        [
-            diceNumber + 'd6[' + damageType + ']',
-            damageType
-        ]
-    ];
-    featureData.system.save.dc = itemUtils.getSaveDC(workflow.item);
-    let duration = 60 * workflow.item.system.duration.value;
+    let activityId = Object.keys(featureData.system.activities)[0];
+    featureData.system.activities[activityId].damage.parts[0].custom = {
+        enabled: true,
+        formula: diceNumber + 'd6[' + damageType + ']'
+    };
+    featureData.system.activities[activityId].damage.parts[0].types = [damageType];
+    featureData.system.activities[activityId].save.dc = {
+        calculation: '',
+        formula: itemUtils.getSaveDC(workflow.item).toString(),
+        value: Number(itemUtils.getSaveDC(workflow.item))
+    };
     let effectData = {
         name: workflow.item.name,
         img: workflow.item.img,
         origin: workflow.item.uuid,
-        duration: {
-            seconds: duration
-        }
+        duration: itemUtils.convertDuration(workflow.item)
     };
     for (let target of workflow.targets) {
         let effect = await effectUtils.createEffect(target.actor, effectData, {concentrationItem: workflow.item, interdependent: true, vae: [{type: 'use', name: featureData.name, identifier: 'dragonBreath'}], identifier: 'dragonsBreath'});
         await itemUtils.createItems(target.actor, [featureData], {favorite: true, parentEntity: effect, section: genericUtils.translate('CHRISPREMADES.Section.SpellFeatures')});
     }
-    if (concentrationEffect) await genericUtils.update(concentrationEffect, {'duration.seconds': duration});
+    if (concentrationEffect) await genericUtils.update(concentrationEffect, {duration: effectData.duration});
 }
 export let dragonsBreath = {
     name: 'Dragon\'s Breath',
-    version: '0.12.0',
+    version: '1.1.0',
     midi: {
         item: [
             {

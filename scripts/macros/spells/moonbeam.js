@@ -1,83 +1,84 @@
 import {crosshairUtils} from '../../lib/utilities/crosshairUtils.js';
-import {actorUtils, combatUtils, compendiumUtils, constants, effectUtils, errors, genericUtils, itemUtils, templateUtils, workflowUtils} from '../../utils.js';
+import {activityUtils, actorUtils, combatUtils, compendiumUtils, constants, effectUtils, errors, genericUtils, itemUtils, templateUtils, workflowUtils} from '../../utils.js';
 
 async function use({workflow}) {
-    let concentrationEffect = effectUtils.getConcentrationEffect(workflow.actor, workflow.item);
-    let template = workflow.template;
-    if (!template) {
-        if (concentrationEffect) await genericUtils.remove(concentrationEffect);
-        return;
-    }
-    await genericUtils.update(template, {
-        flags: {
-            'chris-premades': {
-                template: {
-                    name: workflow.item.name
-                },
-                castData: {...workflow.castData, saveDC: itemUtils.getSaveDC(workflow.item)},
-                macros: {
-                    template: ['moonbeamBeam']
-                },
-                damageType: itemUtils.getConfig(workflow.item, 'damageType')
-            }
+    let activityIdentifier = activityUtils.getIdentifier(workflow.activity);
+    if (activityIdentifier === genericUtils.getIdentifier(workflow.item)) {
+        let concentrationEffect = effectUtils.getConcentrationEffect(workflow.actor, workflow.item);
+        let template = workflow.template;
+        if (!template) {
+            if (concentrationEffect) await genericUtils.remove(concentrationEffect);
+            return;
         }
-    });
-    let featureData = await compendiumUtils.getItemFromCompendium(constants.packs.spellFeatures, 'Moonbeam: Move', {object: true, getDescription: true, translate: 'CHRISPREMADES.Macros.Moonbeam.Move', identifier: 'moonbeamMove'});
-    if (!featureData) {
-        errors.missingPackItem();
-        if (concentrationEffect) await genericUtils.remove(concentrationEffect);
-        return;
-    }
-    let effectData = {
-        name: workflow.item.name,
-        img: workflow.item.img,
-        origin: workflow.item.uuid,
-        duration: {
-            seconds: 60 * workflow.item.system.duration.value
-        },
-        flags: {
-            'chris-premades': {
-                moonbeam: {
-                    templateUuid: template.uuid
+        await genericUtils.update(template, {
+            flags: {
+                'chris-premades': {
+                    template: {
+                        name: workflow.item.name
+                    },
+                    castData: {...workflow.castData, saveDC: itemUtils.getSaveDC(workflow.item)},
+                    macros: {
+                        template: ['moonbeamBeam']
+                    }
                 }
             }
+        });
+        let feature = activityUtils.getActivityByIdentifier(workflow.item, 'moonbeamMove', {strict: true});
+        if (!feature) {
+            if (concentrationEffect) await genericUtils.remove(concentrationEffect);
+            return;
         }
-    };
-    let effect = await effectUtils.createEffect(workflow.actor, effectData, {concentrationItem: workflow.item, strictlyInterdependent: true, vae: [{type: 'use', name: featureData.name, identifier: 'moonbeamMove'}], identifier: 'moonbeam'});
-    await itemUtils.createItems(workflow.actor, [featureData], {favorite: true, parentEntity: effect, section: genericUtils.translate('CHRISPREMADES.Section.SpellFeatures')});
-    if (concentrationEffect) await genericUtils.update(concentrationEffect, {'duration.seconds': effectData.duration.seconds});
-}
-async function move({workflow}) {
-    let effect = effectUtils.getEffectByIdentifier(workflow.actor, 'moonbeam');
-    let template = await fromUuid(effect?.flags['chris-premades'].moonbeam.templateUuid);
-    if (!template) return;
-    await workflow.actor.sheet.minimize();
-    let position = await crosshairUtils.aimCrosshair({token: workflow.token, maxRange: 60, centerpoint: template.object.center, crosshairsConfig: {icon: effect.img, resolution: 2, size: template.distance}, drawBoundries: true});
-    await workflow.actor.sheet.maximize();
-    if (position.cancelled) return;
-    await genericUtils.update(template, {
-        x: position.x ?? template.x,
-        y: position.y ?? template.y
-    });
+        let effectData = {
+            name: workflow.item.name,
+            img: workflow.item.img,
+            origin: workflow.item.uuid,
+            duration: itemUtils.convertDuration(workflow.item),
+            flags: {
+                'chris-premades': {
+                    moonbeam: {
+                        templateUuid: template.uuid
+                    }
+                }
+            }
+        };
+        let effect = await effectUtils.createEffect(workflow.actor, effectData, {
+            concentrationItem: workflow.item, 
+            strictlyInterdependent: true, 
+            vae: [{
+                type: 'use', 
+                name: feature.name,
+                identifier: 'moonbeam', 
+                activityIdentifier: 'moonbeamMove'
+            }], 
+            identifier: 'moonbeam',
+            unhideActivities: {
+                itemUuid: workflow.item.uuid,
+                activityIdentifiers: ['moonbeamMove'],
+                favorite: true
+            }
+        });
+        if (concentrationEffect) await genericUtils.update(concentrationEffect, {duration: effectData.duration});
+    } else if (activityIdentifier === 'moonbeamMove') {
+        let effect = effectUtils.getEffectByIdentifier(workflow.actor, 'moonbeam');
+        let template = await fromUuid(effect?.flags['chris-premades'].moonbeam.templateUuid);
+        if (!template) return;
+        await workflow.actor.sheet.minimize();
+        let position = await crosshairUtils.aimCrosshair({token: workflow.token, maxRange: 60, centerpoint: template.object.center, crosshairsConfig: {icon: effect.img, resolution: 2, size: template.distance}, drawBoundries: true});
+        await workflow.actor.sheet.maximize();
+        if (position.cancelled) return;
+        await genericUtils.update(template, {
+            x: position.x ?? template.x,
+            y: position.y ?? template.y
+        });
+    }
 }
 async function enterOrTurn({trigger: {entity: template, castData, token}}) {
     let [targetCombatant] = game.combat.getCombatantsByToken(token.document);
     if (!targetCombatant) return;
     if (!combatUtils.perTurnCheck(targetCombatant, 'moonbeam')) return;
     await combatUtils.setTurnCheck(targetCombatant, 'moonbeam');
-    let featureData = await compendiumUtils.getItemFromCompendium(constants.packs.spellFeatures, 'Moonbeam: Damage', {object: true, getDescription: true, translate: 'CHRISPREMADES.Macros.Moonbeam.Damage', flatDC: castData.saveDC});
-    if (!featureData) {
-        errors.missingPackItem();
-        return;
-    }
-    let damageType = template.flags['chris-premades'].damageType;
-    featureData.system.damage.parts = [
-        [
-            castData.castLevel + 'd10[' + damageType + ']',
-            damageType
-        ]
-    ];
-    let sourceActor = (await templateUtils.getSourceActor(template)) ?? token.actor;
+    let feature = activityUtils.getActivityByIdentifier(fromUuidSync(template.flags.dnd5e.item), 'moonbeamDamage', {strict: true});
+    if (!feature) return;
     if (actorUtils.isShapeChanger(token.actor)) {
         let effectData = {
             name: genericUtils.translate('CHRISPREMADES.GenericEffects.ConditionDisadvantage'),
@@ -109,40 +110,26 @@ async function enterOrTurn({trigger: {entity: template, castData, token}}) {
         };
         await effectUtils.createEffect(token.actor, effectData);
     }
-    await workflowUtils.syntheticItemDataRoll(featureData, sourceActor, [token]);
+    await workflowUtils.syntheticActivityRoll(feature, [token], {atLevel: castData.castLevel});
+}
+async function early({workflow}) {
+    if (activityUtils.getIdentifier(workflow.activity) !== 'moonbeamMove') return;
+    workflowUtils.skipDialog(workflow);
 }
 export let moonbeam = {
     name: 'Moonbeam',
-    version: '0.12.0',
+    version: '1.1.0',
+    hasAnimation: true,
     midi: {
         item: [
             {
                 pass: 'rollFinished',
                 macro: use,
                 priority: 50
-            }
-        ]
-    },
-    config: [
-        {
-            value: 'damageType',
-            label: 'CHRISPREMADES.Config.DamageType',
-            type: 'select',
-            default: 'radiant',
-            options: constants.damageTypeOptions,
-            homebrew: true,
-            category: 'homebrew'
-        },
-    ]
-};
-export let moonbeamMove = {
-    name: 'Moonbeam: Move',
-    version: moonbeam.version,
-    midi: {
-        item: [
+            },
             {
-                pass: 'rollFinished',
-                macro: move,
+                pass: 'preTargeting',
+                macro: early,
                 priority: 50
             }
         ]

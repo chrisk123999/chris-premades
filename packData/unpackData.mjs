@@ -12,7 +12,7 @@ let itemPacks = [
     // 'cpr-race-feature-items',
     // 'cpr-race-features',
     'cpr-spells',
-    // 'cpr-spell-features',
+    'cpr-spell-features',
     'cpr-summon-features',
     // 'cpr-feats',
     // 'cpr-miscellaneous-items',

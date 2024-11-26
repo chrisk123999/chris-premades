@@ -38,7 +38,7 @@ async function use({workflow}) {
         range: 60,
         animation,
         initiativeType: 'none',
-        dismissItem: dismissData,
+        dismissActivity: dismissData,
         additionalVaeButtons: [{type: 'use', name: castFeature.name, identifier: 'manifestMindCastSpell'}, {type: 'use', name: moveFeature.name, identifier: 'manifestMindMove'}]
     });
     let effect = effectUtils.getEffectByIdentifier(workflow.actor, 'manifestMind');

@@ -1,48 +1,19 @@
-import {compendiumUtils, constants, effectUtils, errors, genericUtils, itemUtils} from '../../utils.js';
+import {activityUtils, constants, effectUtils, genericUtils, itemUtils, workflowUtils} from '../../utils.js';
 
 async function use({workflow}) {
+    if (activityUtils.getIdentifier(workflow.activity) !== genericUtils.getIdentifier(workflow.item)) return;
     let concentrationEffect = effectUtils.getConcentrationEffect(workflow.actor, workflow.item);
-    let featureData = await compendiumUtils.getItemFromCompendium(constants.packs.spellFeatures, 'Flame Blade Scimitar', {getDescription: true, translate: 'CHRISPREMADES.Macros.FlameBlade.Scimitar', identifier: 'flameBladeScimitar', object: true});
-    if (!featureData) {
-        errors.missingPackItem();
+    let feature1 = activityUtils.getActivityByIdentifier(workflow.item, 'flameBladeScimitar', {strict: true});
+    let feature2 = activityUtils.getActivityByIdentifier(workflow.item, 'flameBladeEvoke', {strict: true});
+    if (!feature1 || !feature2) {
         if (concentrationEffect) await genericUtils.remove(concentrationEffect);
         return;
     }
-    let featureData2 = await compendiumUtils.getItemFromCompendium(constants.packs.spellFeatures, 'Evoke Flame Blade', {getDescription: true, translate: 'CHRISPREMADES.Macros.FlameBlade.Evoke', identifier: 'flameBladeEvoke', object: true});
-    if (!featureData2) {
-        errors.missingPackItem();
-        if (concentrationEffect) await genericUtils.remove(concentrationEffect);
-        return;
-    }
-    let damageDice = 3;
-    switch (workflow.castData.castLevel) {
-        case 4:
-        case 5:
-            damageDice = 4;
-            break;
-        case 6:
-        case 7:
-            damageDice = 5;
-            break;
-        case 8:
-        case 9:
-            damageDice = 6;
-            break;
-    }
-    let damageType = itemUtils.getConfig(workflow.item, 'damageType');
-    featureData.system.damage.parts = [
-        [
-            damageDice + 'd6[' + damageType + ']',
-            damageType
-        ]
-    ];
     let effectData = {
         name: workflow.item.name,
         img: workflow.item.img,
         origin: workflow.item.uuid,
-        duration: {
-            seconds: 60 * workflow.item.system.duration.value
-        },
+        duration: itemUtils.convertDuration(workflow.item),
         changes: [
             {
                 key: 'ATL.light.dim',
@@ -57,19 +28,64 @@ async function use({workflow}) {
                 priority: 20
             }
         ],
+        flags: {
+            'chris-premades': {
+                castData: workflow.castData
+            }
+        }
     };
-    let effect = await effectUtils.createEffect(workflow.actor, effectData, {concentrationItem: workflow.item, vae: [{type: 'use', name: featureData.name, identifier: 'flameBladeScimitar'}, {type: 'use', name: featureData2.name, identifier: 'flameBladeEvoke'}]});
-    await itemUtils.createItems(workflow.actor, [featureData, featureData2], {favorite: true, parentEntity: effect, section: genericUtils.translate('CHRISPREMADES.Section.SpellFeatures')});
-    if (concentrationEffect) await genericUtils.update(concentrationEffect, {'duration.seconds': effectData.duration.seconds});
+    await effectUtils.createEffect(workflow.actor, effectData, {
+        concentrationItem: workflow.item,
+        identifier: 'flameBlade',
+        vae: [{
+            type: 'use', 
+            name: feature1.name,
+            identifier: 'flameBlade',
+            activityIdentifier: 'flameBladeScimitar'
+        }, {
+            type: 'use', 
+            name: feature2.name,
+            identifier: 'flameBlade', 
+            activityIdentifier: 'flameBladeEvoke'
+        }],
+        unhideActivities: {
+            itemUuid: workflow.item.uuid,
+            activityIdentifiers: ['flameBladeScimitar', 'flameBladeEvoke'],
+            favorite: true
+        }
+    });
+    if (concentrationEffect) await genericUtils.update(concentrationEffect, {duration: effectData.duration});
+}
+async function early({workflow}) {
+    let activityId = activityUtils.getIdentifier(workflow.activity);
+    if (activityId === 'flameBladeEvoke') {
+        workflowUtils.skipDialog(workflow);
+        return;
+    }
+    if (activityId !== 'flameBladeScimitar') return;
+    if (workflow.activity.tempFlag) {
+        workflow.activity.tempFlag = false;
+        return;
+    }
+    let effect = effectUtils.getEffectByIdentifier(workflow.actor, 'flameBlade');
+    if (!effect) return true;
+    workflow.activity.tempFlag = true;
+    genericUtils.sleep(100).then(() => workflowUtils.syntheticActivityRoll(workflow.activity, Array.from(workflow.targets), {atLevel: effect.flags['chris-premades'].castData.castLevel}));
+    return true;
 }
 export let flameBlade = {
     name: 'Flame Blade',
-    version: '0.12.0',
+    version: '1.1.0',
     midi: {
         item: [
             {
                 pass: 'rollFinished',
                 macro: use,
+                priority: 50
+            },
+            {
+                pass: 'preTargeting',
+                macro: early,
                 priority: 50
             }
         ]

@@ -1,19 +1,35 @@
-import {constants} from '../../utils.js';
+import {activityUtils, constants, effectUtils, genericUtils, workflowUtils} from '../../utils.js';
 import {findSteedEarlyHelper, findSteedHelper} from './findSteed.js';
 async function use({workflow}) {
-    await findSteedHelper(workflow, 'Steed', 'Greater Steeds', 'findGreaterSteed');
+    let activityIdentifier = activityUtils.getIdentifier(workflow.activity);
+    if (activityIdentifier === genericUtils.getIdentifier(workflow.item)) {
+        await findSteedHelper(workflow, 'Steed', 'Greater Steeds', 'findGreaterSteed');
+    } else if (activityIdentifier === 'findSteedDismiss') {
+        let effect = effectUtils.getEffectByIdentifier(workflow.actor, 'findGreaterSteed');
+        if (effect) await genericUtils.remove(effect);
+    }
 }
 async function early({workflow}) {
     await findSteedEarlyHelper(workflow, 'findGreaterSteed');
 }
+async function veryEarly({workflow}) {
+    if (activityUtils.getIdentifier(workflow.activity) !== 'findSteedDismiss') return;
+    workflowUtils.skipDialog(workflow);
+}
 export let findGreaterSteed = {
     name: 'Find Greater Steed',
-    version: '0.12.2',
+    version: '1.1.0',
+    hasAnimation: true,
     midi: {
         item: [
             {
                 pass: 'rollFinished',
                 macro: use,
+                priority: 50
+            },
+            {
+                pass: 'preTargeting',
+                macro: veryEarly,
                 priority: 50
             }
         ]

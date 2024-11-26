@@ -1,89 +1,80 @@
-import {actorUtils, compendiumUtils, constants, dialogUtils, effectUtils, errors, genericUtils, itemUtils, socketUtils, workflowUtils} from '../../utils.js';
+import {activityUtils, actorUtils, compendiumUtils, constants, dialogUtils, effectUtils, errors, genericUtils, itemUtils, socketUtils, workflowUtils} from '../../utils.js';
 async function use({workflow}) {
-    let concentrationEffect = effectUtils.getConcentrationEffect(workflow.actor, workflow.item);
-    if (workflow.targets.size !== 1) {
-        if (concentrationEffect) await genericUtils.remove(concentrationEffect);
-        return;
-    }
-    let targetToken = workflow.targets.first();
-    let targetUuid = targetToken.document.uuid;
-    let damageType = itemUtils.getConfig(workflow.item, 'damageType');
-    let damageFormula = workflow.castData.castLevel + 'd8[' + damageType + ']';
-    let featureData = await compendiumUtils.getItemFromCompendium(constants.featurePacks.spellFeatures, 'Heat Metal: Pulse', {getDescription: true, translate: 'CHRISPREMADES.Macros.HeatMetal.Pulse', identifier: 'heatMetalPulse', castDataWorkflow: workflow, object: true});
-    if (!featureData) {
-        errors.missingPackItem();
-        if (concentrationEffect) await genericUtils.remove(concentrationEffect);
-        return;
-    }
-    let spellDC = itemUtils.getSaveDC(workflow.item);
-    genericUtils.setProperty(featureData, 'flags.chris-premades.heatMetal', {
-        damageFormula,
-        targetUuid,
-        spellDC,
-        damageType
-    });
-    let casterEffectData = {
-        name: workflow.item.name,
-        img: workflow.item.img,
-        origin: workflow.item.uuid,
-        duration: {
-            seconds: 60 * workflow.item.system.duration.value
-        },
-        flags: {
-            'chris-premades': {
-                heatMetal: {
-                    targetUuid,
-                    unable: false
+    let activityIdentifier = activityUtils.getIdentifier(workflow.activity);
+    if (activityIdentifier === genericUtils.getIdentifier(workflow.item)) {
+        let concentrationEffect = effectUtils.getConcentrationEffect(workflow.actor, workflow.item);
+        if (workflow.targets.size !== 1) {
+            if (concentrationEffect) await genericUtils.remove(concentrationEffect);
+            return;
+        }
+        let targetToken = workflow.targets.first();
+        let targetUuid = targetToken.document.uuid;
+        let feature = activityUtils.getActivityByIdentifier(workflow.item, 'heatMetalPulse', {strict: true});
+        let damageFeature = activityUtils.getActivityByIdentifier(workflow.item, 'heatMetalDamage', {strict: true});
+        if (!feature || !damageFeature) {
+            if (concentrationEffect) await genericUtils.remove(concentrationEffect);
+            return;
+        }
+        let casterEffectData = {
+            name: workflow.item.name,
+            img: workflow.item.img,
+            origin: workflow.item.uuid,
+            duration: itemUtils.convertDuration(workflow.item),
+            flags: {
+                'chris-premades': {
+                    heatMetal: {
+                        targetUuid,
+                        unable: false
+                    },
+                    castData: workflow.castData
                 }
             }
-        }
-    };
-    let effect = await effectUtils.createEffect(workflow.actor, casterEffectData, {concentrationItem: workflow.item, strictlyInterdependent: true, identifier: 'heatMetal', vae: [{type: 'use', name: featureData.name, identifier: 'heatMetalPulse'}]});
-    await itemUtils.createItems(workflow.actor, [featureData], {favorite: true, parentEntity: effect, section: genericUtils.translate('CHRISPREMADES.Section.SpellFeatures')});
-    if (concentrationEffect) await genericUtils.update(concentrationEffect, {'duration.seconds': casterEffectData.duration.seconds});
-    await dialog(workflow, spellDC, targetToken, effect);
-}
-async function pulse({workflow}) {
-    let chrisFlags = workflow.item.flags['chris-premades']?.heatMetal;
-    let damageFormula = chrisFlags?.damageFormula;
-    let damageType = chrisFlags?.damageType ?? 'fire';
-    let targetTokenUuid = chrisFlags?.targetUuid;
-    let spellDC = chrisFlags?.spellDC;
-    let parentEffect = effectUtils.getEffectByIdentifier(workflow.actor, 'heatMetal');
-    if (!damageFormula || !targetTokenUuid || !spellDC || !parentEffect) return;
-    let targetToken = (await fromUuid(targetTokenUuid))?.object;
-    if (!targetToken) return;
-    let featureData = await compendiumUtils.getItemFromCompendium(constants.featurePacks.spellFeatures, 'Heat Metal: Damage', {getDescription: true, translate: 'CHRISPREMADES.Macros.HeatMetal.Damage', object: true});
-    if (!featureData) {
-        errors.missingPackItem();
-        return;
+        };
+        let effect = await effectUtils.createEffect(workflow.actor, casterEffectData, {
+            concentrationItem: workflow.item, 
+            strictlyInterdependent: true, 
+            identifier: 'heatMetal', 
+            vae: [{
+                type: 'use', 
+                name: feature.name, 
+                identifier: 'heatMetal',
+                activityIdentifier: 'heatMetalPulse'
+            }],
+            unhideActivities: {
+                itemUuid: workflow.item.uuid,
+                activityIdentifiers: ['heatMetalPulse'],
+                favorite: true
+            }
+        });
+        if (concentrationEffect) await genericUtils.update(concentrationEffect, {duration: casterEffectData.duration});
+        await workflowUtils.syntheticActivityRoll(damageFeature, [targetToken], {atLevel: workflow.castData.castLevel});
+        await dialog(workflow, targetToken, effect);
+    } else if (activityIdentifier === 'heatMetalPulse') {
+        let effect = effectUtils.getEffectByIdentifier(workflow.actor, 'heatMetal');
+        if (!effect) return;
+        let targetTokenUuid = effect.flags['chris-premades'].heatMetal.targetUuid;
+        let targetToken = fromUuidSync(targetTokenUuid)?.object;
+        if (!targetToken) return;
+        let feature = activityUtils.getActivityByIdentifier(workflow.item, 'heatMetalDamage', {strict: true});
+        if (!feature) return;
+        await workflowUtils.syntheticActivityRoll(feature, [targetToken], {atLevel: effect.flags['chris-premades'].castData.castLevel});
+        await dialog(workflow, targetToken, effect);
     }
-    featureData.system.damage.parts = [
-        [
-            damageFormula,
-            damageType
-        ]
-    ];
-    await workflowUtils.syntheticItemDataRoll(featureData, workflow.actor, [targetToken]);
-    await dialog(workflow, spellDC, targetToken, parentEffect);
 }
-async function dialog(workflow, spellDC, targetToken, parentEffect) {
+async function dialog(workflow, targetToken, effect) {
     let selection;
-    if (!parentEffect.flags['chris-premades'].heatMetal.unable) {
+    if (!effect.flags['chris-premades'].heatMetal.unable) {
         selection = await dialogUtils.buttonDialog(workflow.item.name, 'CHRISPREMADES.Macros.HeatMetal.Drop', [['CHRISPREMADES.Generic.Yes', true], ['CHRISPREMADES.Generic.No', false], ['CHRISPREMADES.Macros.HeatMetal.Unable', 'unable']], {userId: socketUtils.firstOwner(targetToken.actor, true)});
         if (selection === true) return; // Dropped
         if (selection === 'unable') {
-            await genericUtils.update(parentEffect, {'flags.chris-premades.heatMetal.unable': true});
+            await genericUtils.update(effect, {'flags.chris-premades.heatMetal.unable': true});
         }
     } else {
         selection = 'unable';
     }
-    let featureData = await compendiumUtils.getItemFromCompendium(constants.featurePacks.spellFeatures, 'Heat Metal: Held', {getDescription: true, translate: 'CHRISPREMADES.Macros.HeatMetal.Held', object: true, flatDC: spellDC});
-    if (!featureData) {
-        errors.missingPackItem();
-        return;
-    }
-    let heatMetalWorkflow = await workflowUtils.syntheticItemDataRoll(featureData, workflow.actor, [targetToken]);
+    let feature = activityUtils.getActivityByIdentifier(workflow.item, 'heatMetalHeld', {strict: true});
+    if (!feature) return;
+    let heatMetalWorkflow = await workflowUtils.syntheticActivityRoll(feature, [targetToken]);
     if (heatMetalWorkflow.failedSaves.size && !selection) {
         // Opted not to drop, but failed save (so dropped anyway)
         await ChatMessage.implementation.create({
@@ -121,40 +112,25 @@ async function dialog(workflow, spellDC, targetToken, parentEffect) {
             }
         }
     };
-    await effectUtils.createEffect(targetToken.actor, effectData, {parentEntity: parentEffect, identifier: 'heatMetalHeld'});
+    await effectUtils.createEffect(targetToken.actor, effectData, {parentEntity: effect, identifier: 'heatMetalHeld'});
+}
+async function early({workflow}) {
+    if (activityUtils.getIdentifier(workflow.activity) !== 'heatMetalPulse') return;
+    workflowUtils.skipDialog(workflow);
 }
 export let heatMetal = {
     name: 'Heat Metal',
-    version: '0.12.0',
+    version: '1.1.0',
     midi: {
         item: [
             {
                 pass: 'rollFinished',
                 macro: use,
                 priority: 50
-            }
-        ]
-    },
-    config: [
-        {
-            value: 'damageType',
-            label: 'CHRISPREMADES.Config.DamageType',
-            type: 'select',
-            default: 'fire',
-            options: constants.damageTypeOptions,
-            homebrew: true,
-            category: 'homebrew'
-        }
-    ]
-};
-export let heatMetalPulse = {
-    name: 'Heat Metal: Pulse',
-    version: heatMetal.version,
-    midi: {
-        item: [
+            },
             {
-                pass: 'rollFinished',
-                macro: pulse,
+                pass: 'preTargeting',
+                macro: early,
                 priority: 50
             }
         ]

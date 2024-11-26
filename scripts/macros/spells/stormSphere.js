@@ -1,6 +1,7 @@
-import {animationUtils, compendiumUtils, constants, effectUtils, errors, genericUtils, itemUtils, templateUtils, workflowUtils} from '../../utils.js';
+import {activityUtils, animationUtils, compendiumUtils, constants, effectUtils, errors, genericUtils, itemUtils, templateUtils, workflowUtils} from '../../utils.js';
 
 async function use({workflow}) {
+    if (activityUtils.getIdentifier(workflow.activity) !== genericUtils.getIdentifier(workflow.item)) return;
     let concentrationEffect = effectUtils.getConcentrationEffect(workflow.actor, workflow.item);
     let template = workflow.template;
     if (!template) {
@@ -20,70 +21,74 @@ async function use({workflow}) {
             }
         }
     });
-    let featureData = await compendiumUtils.getItemFromCompendium(constants.packs.spellFeatures, 'Storm Sphere: Bolt', {object: true, getDescription: true, translate: 'CHRISPREMADES.Macros.StormSphere.Bolt', identifier: 'stormSphereBolt', castDataWorkflow: workflow});
-    if (!featureData) {
-        errors.missingPackItem();
+    let feature = activityUtils.getActivityByIdentifier(workflow.item, 'stormSphereBolt', {strict: true});
+    if (!feature) {
         if (concentrationEffect) await genericUtils.remove(concentrationEffect);
         return;
     }
-    let castLevel = workflow.castData.castLevel ?? 4;
-    let damageType = itemUtils.getConfig(workflow.item, 'damageType');
-    featureData.system.damage.parts = [
-        [
-            castLevel + 'd6[' + damageType + ']',
-            damageType
-        ]
-    ];
     let effectData = {
         name: workflow.item.name,
         img: workflow.item.img,
         origin: workflow.item.uuid,
-        duration: {
-            seconds: 60 * workflow.item.system.duration.value
-        },
+        duration: itemUtils.convertDuration(workflow.item),
         flags: {
             'chris-premades': {
                 stormSphere: {
                     templateUuid: template.uuid,
                     alreadyIgnores: workflow.actor.flags['midi-qol']?.ignoreNearbyFoes ?? false,
                     playAnimation: itemUtils.getConfig(workflow.item, 'playAnimation')
-                }
+                },
+                castData: workflow.castData
             }
         }
     };
-    let effect = await effectUtils.createEffect(workflow.actor, effectData, {concentrationItem: workflow.item, strictlyInterdependent: true, identifier: 'stormSphere', vae: [{type: 'use', name: featureData.name, identifier: 'stormSphereBolt'}]});
-    await itemUtils.createItems(workflow.actor, [featureData], {favorite: true, parentEntity: effect, section: genericUtils.translate('CHRISPREMADES.Section.SpellFeatures')});
-    if (concentrationEffect) await genericUtils.update(concentrationEffect, {'duration.seconds': effectData.duration.seconds});
+    await effectUtils.createEffect(workflow.actor, effectData, {
+        concentrationItem: workflow.item, 
+        strictlyInterdependent: true, 
+        identifier: 'stormSphere', 
+        vae: [{
+            type: 'use', 
+            name: feature.name,
+            identifier: 'stormSphere', 
+            activityIdentifier: 'stormSphereBolt'
+        }],
+        unhideActivities: {
+            itemUuid: workflow.item.uuid,
+            activityIdentifiers: ['stormSphereBolt'],
+            favorite: true
+        }
+    });
+    if (concentrationEffect) await genericUtils.update(concentrationEffect, {duration: effectData.duration});
 }
 async function endTurn({trigger: {entity: template, castData, token}}) {
-    let featureData = await compendiumUtils.getItemFromCompendium(constants.packs.spellFeatures, 'Storm Sphere: Turn', {object: true, getDescription: true, translate: 'CHRISPREMADES.Macros.StormSphere.Turn', flatDC: castData.saveDC});
-    if (!featureData) {
-        errors.missingPackItem();
-        return;
-    }
-    featureData.system.damage.parts = [
-        [
-            (castData.castLevel - 2) + 'd6[bludgeoning]',
-            'bludgeoning'
-        ]
-    ];
-    let sourceActor = (await templateUtils.getSourceActor(template)) ?? token.actor;
-    await workflowUtils.syntheticItemDataRoll(featureData, sourceActor, [token]);
+    let feature = activityUtils.getActivityByIdentifier(fromUuidSync(template.flags.dnd5e.item), 'stormSphereTurn', {strict: true});
+    if (!feature) return;
+    await workflowUtils.syntheticActivityRoll(feature, [token], {atLevel: castData.castLevel});
 }
 async function early({workflow}) {
-    if (workflow.targets.size !== 1) return;
-    let targetToken = workflow.targets.first();
+    if (activityUtils.getIdentifier(workflow.activity) !== 'stormSphereBolt') return;
     let effect = effectUtils.getEffectByIdentifier(workflow.actor, 'stormSphere');
-    if (!effect) return;
-    let {templateUuid, alreadyIgnores} = effect.flags['chris-premades'].stormSphere;
-    let template = await fromUuid(templateUuid);
-    if (!template) return;
-    if (!alreadyIgnores) await genericUtils.setFlag(workflow.actor, 'midi-qol', 'ignoreNearbyFoes', 1);
-    if (!templateUtils.getTokensInTemplate(template).has(targetToken)) return;
-    workflow.advantage = true;
-    workflow.attackAdvAttribution.add(genericUtils.translate('DND5E.Advantage') + ': ' + effect.name);
+    if (workflow.activity.tempFlag) {
+        workflow.activity.tempFlag = false;
+        if (workflow.targets.size !== 1) return;
+        let targetToken = workflow.targets.first();
+        if (!effect) return;
+        let {templateUuid, alreadyIgnores} = effect.flags['chris-premades'].stormSphere;
+        let template = await fromUuid(templateUuid);
+        if (!template) return;
+        if (!alreadyIgnores) await genericUtils.setFlag(workflow.actor, 'midi-qol', 'ignoreNearbyFoes', 1);
+        if (!templateUtils.getTokensInTemplate(template).has(targetToken)) return;
+        workflow.advantage = true;
+        workflow.attackAdvAttribution.add(genericUtils.translate('DND5E.Advantage') + ': ' + effect.name);
+        return;
+    }
+    if (!effect) return true;
+    workflow.activity.tempFlag = true;
+    genericUtils.sleep(100).then(() => workflowUtils.syntheticActivityRoll(workflow.activity, Array.from(workflow.targets), {atLevel: effect.flags['chris-premades'].castData.castLevel}));
+    return true;
 }
 async function late({workflow}) {
+    if (activityUtils.getIdentifier(workflow.activity) !== 'stormSphereBolt') return;
     let effect = effectUtils.getEffectByIdentifier(workflow.actor, 'stormSphere');
     if (!effect) return;
     let {templateUuid, alreadyIgnores, playAnimation} = effect.flags['chris-premades'].stormSphere;
@@ -96,40 +101,15 @@ async function late({workflow}) {
 }
 export let stormSphere = {
     name: 'Storm Sphere',
-    version: '0.12.0',
+    version: '1.1.0',
+    hasAnimation: true,
     midi: {
         item: [
             {
                 pass: 'rollFinished',
                 macro: use,
                 priority: 50
-            }
-        ]
-    },
-    config: [
-        {
-            value: 'playAnimation',
-            label: 'CHRISPREMADES.Config.PlayAnimation',
-            type: 'checkbox',
-            default: true,
-            category: 'animation'
-        },
-        {
-            value: 'damageType',
-            label: 'CHRISPREMADES.Config.DamageType',
-            type: 'select',
-            default: 'lightning',
-            options: constants.damageTypeOptions,
-            homebrew: true,
-            category: 'homebrew'
-        },
-    ]
-};
-export let stormSphereBolt = {
-    name: 'Storm Sphere: Bolt',
-    version: stormSphere.version,
-    midi: {
-        item: [
+            },
             {
                 pass: 'preTargeting',
                 macro: early,
@@ -141,7 +121,16 @@ export let stormSphereBolt = {
                 priority: 50
             }
         ]
-    }
+    },
+    config: [
+        {
+            value: 'playAnimation',
+            label: 'CHRISPREMADES.Config.PlayAnimation',
+            type: 'checkbox',
+            default: true,
+            category: 'animation'
+        }
+    ]
 };
 export let stormSphereTemplate = {
     name: 'Storm Sphere: Template',

@@ -24,19 +24,16 @@ async function use({workflow}) {
             diceNum = 5;
     }
     let damageType = itemUtils.getConfig(workflow.item, 'damageType');
-    featureData.system.damage.parts = [
-        [
-            diceNum + 'd8[' + damageType + '] + @mod',
-            damageType
-        ]
-    ];
+    featureData.system.damage.base.custom = {
+        enabled: true,
+        formula: diceNum + 'd8[' + damageType + ']'
+    };
+    featureData.system.damage.base.types = [damageType];
     let effectData = {
         name: workflow.item.name,
         img: workflow.item.img,
         origin: workflow.item.uuid,
-        duration: {
-            seconds: 60 * workflow.item.system.duration.value
-        }
+        duration: itemUtils.convertDuration(workflow.item)
     };
     let effect = await effectUtils.createEffect(workflow.actor, effectData, {concentrationItem: workflow.item, vae: [{type: 'use', name: featureData.name, identifier: 'shadowBladeSword'}]});
     await itemUtils.createItems(workflow.actor, [featureData], {favorite: true, parentEntity: effect});
@@ -44,7 +41,7 @@ async function use({workflow}) {
 }
 export let shadowBlade = {
     name: 'Shadow Blade',
-    version: '0.12.0',
+    version: '1.1.0',
     midi: {
         item: [
             {

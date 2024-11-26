@@ -1,14 +1,53 @@
 {
+  "name": "Gust of Wind",
   "type": "spell",
   "system": {
+    "source": {
+      "custom": "",
+      "book": "PHB",
+      "page": "248",
+      "license": "",
+      "revision": 1,
+      "rules": "2024"
+    },
     "description": {
       "value": "",
       "chat": ""
     },
-    "source": {
-      "custom": "Basic Rules, Player's Handbook pg 257",
-      "revision": 1,
-      "rules": "2024"
+    "level": 2,
+    "school": "evo",
+    "properties": [
+      "vocal",
+      "somatic",
+      "material",
+      "concentration",
+      "mgc"
+    ],
+    "materials": {
+      "value": "a legume seed",
+      "consumed": false,
+      "cost": 0,
+      "supply": 0
+    },
+    "target": {
+      "affects": {
+        "choice": false,
+        "count": "",
+        "type": ""
+      },
+      "template": {
+        "units": "ft",
+        "width": "10",
+        "type": "line",
+        "size": "60",
+        "contiguous": false,
+        "count": ""
+      }
+    },
+    "range": {
+      "value": "0",
+      "units": "self",
+      "special": ""
     },
     "activation": {
       "type": "action",
@@ -16,49 +55,19 @@
       "value": 1
     },
     "duration": {
-      "value": "",
-      "units": "inst"
-    },
-    "target": {
-      "affects": {
-        "type": "creature",
-        "count": "",
-        "choice": false,
-        "special": ""
-      },
-      "template": {
-        "units": "",
-        "contiguous": false,
-        "type": ""
-      }
-    },
-    "range": {
-      "value": "120",
-      "units": "ft",
-      "special": ""
+      "value": "1",
+      "units": "minute"
     },
     "uses": {
       "max": "",
       "spent": 0,
       "recovery": []
     },
-    "ability": "",
-    "level": 1,
-    "school": "evo",
-    "materials": {
-      "value": "",
-      "consumed": false,
-      "cost": 0,
-      "supply": 0
-    },
     "preparation": {
       "mode": "prepared",
-      "prepared": false
+      "prepared": true
     },
-    "properties": [
-      "vocal",
-      "somatic"
-    ],
+    "ability": "",
     "activities": {
       "dnd5eactivity000": {
         "_id": "dnd5eactivity000",
@@ -77,7 +86,7 @@
           "spellSlot": true
         },
         "description": {
-          "chatFlavor": "[1d4 + 1 - force] 3 Darts"
+          "chatFlavor": ""
         },
         "duration": {
           "units": "inst",
@@ -114,10 +123,76 @@
         "useConditionText": "",
         "forceDialog": false,
         "effectConditionText": "",
-        "name": ""
+        "midiAutomationOnly": false,
+        "name": "Gust of Wind",
+        "img": "icons/magic/nature/leaf-juggle-humanoid-green.webp"
       },
-      "zHpeqUnoKjOjo5aN": {
-        "type": "damage",
+      "8XgeeMBhoV28UgPF": {
+        "type": "utility",
+        "_id": "8XgeeMBhoV28UgPF",
+        "sort": 0,
+        "activation": {
+          "type": "bonus",
+          "value": null,
+          "override": true,
+          "condition": ""
+        },
+        "consumption": {
+          "scaling": {
+            "allowed": false
+          },
+          "spellSlot": false,
+          "targets": []
+        },
+        "description": {
+          "chatFlavor": "Gust of Wind: Move"
+        },
+        "duration": {
+          "units": "inst",
+          "concentration": false,
+          "override": true
+        },
+        "effects": [],
+        "range": {
+          "override": true,
+          "units": "any",
+          "special": ""
+        },
+        "target": {
+          "template": {
+            "contiguous": false,
+            "units": "ft",
+            "type": ""
+          },
+          "affects": {
+            "choice": false,
+            "count": "",
+            "type": ""
+          },
+          "override": false,
+          "prompt": true
+        },
+        "uses": {
+          "spent": 0,
+          "recovery": [],
+          "max": ""
+        },
+        "roll": {
+          "prompt": false,
+          "visible": false,
+          "name": "",
+          "formula": ""
+        },
+        "useConditionText": "",
+        "forceDialog": false,
+        "effectConditionText": "",
+        "midiAutomationOnly": false,
+        "name": "Gust of Wind: Move",
+        "img": "icons/magic/nature/leaf-juggle-humanoid-green.webp"
+      },
+      "ueIqmLJxfIHB3pg8": {
+        "type": "save",
+        "_id": "ueIqmLJxfIHB3pg8",
         "sort": 0,
         "activation": {
           "type": "special",
@@ -133,12 +208,12 @@
           "targets": []
         },
         "description": {
-          "chatFlavor": ""
+          "chatFlavor": "Gust of Wind: Push"
         },
         "duration": {
           "units": "inst",
           "concentration": false,
-          "override": false
+          "override": true
         },
         "effects": [],
         "range": {
@@ -167,216 +242,130 @@
           "max": ""
         },
         "damage": {
+          "parts": [],
           "critical": {
             "allow": false
           },
-          "parts": [
-            {
-              "custom": {
-                "enabled": true,
-                "formula": "1d4[force] + 1"
-              },
-              "number": null,
-              "denomination": 0,
-              "bonus": "",
-              "types": [
-                "force"
-              ],
-              "scaling": {
-                "mode": "",
-                "number": 1
-              }
-            }
-          ]
+          "onSave": "half"
+        },
+        "save": {
+          "ability": [
+            "str"
+          ],
+          "dc": {
+            "calculation": "spellcasting",
+            "formula": ""
+          }
         },
         "useConditionText": "",
         "forceDialog": false,
         "effectConditionText": "",
-        "name": "Magic Missile Bolt",
-        "_id": "zHpeqUnoKjOjo5aN"
-      },
-      "VH7HwxXvnFU22CxV": {
-        "type": "damage",
-        "sort": 0,
-        "activation": {
-          "type": "special",
-          "value": null,
-          "override": true,
-          "condition": ""
-        },
-        "consumption": {
-          "scaling": {
-            "allowed": false
-          },
-          "spellSlot": false,
-          "targets": []
-        },
-        "description": {
-          "chatFlavor": ""
-        },
-        "duration": {
-          "units": "inst",
-          "concentration": false,
-          "override": false
-        },
-        "effects": [],
-        "range": {
-          "override": false
-        },
-        "target": {
-          "template": {
-            "contiguous": false,
-            "units": "ft",
-            "type": ""
-          },
-          "affects": {
-            "choice": false,
-            "count": "1",
-            "type": "creature",
-            "special": ""
-          },
-          "override": true,
-          "prompt": true
-        },
-        "uses": {
-          "spent": 0,
-          "recovery": [],
-          "max": ""
-        },
-        "damage": {
-          "critical": {
-            "allow": false
-          },
-          "parts": [
-            {
-              "types": [
-                "force"
-              ],
-              "number": null,
-              "denomination": null,
-              "custom": {
-                "enabled": true,
-                "formula": "5"
-              },
-              "scaling": {
-                "number": 1
-              }
-            }
-          ]
-        },
-        "useConditionText": "",
-        "forceDialog": false,
-        "effectConditionText": "",
-        "name": "Magic Missile Bolt: Flat",
-        "_id": "VH7HwxXvnFU22CxV"
+        "midiAutomationOnly": false,
+        "name": "Gust of Wind: Push",
+        "img": "icons/magic/nature/leaf-juggle-humanoid-green.webp"
       }
     },
-    "identifier": "magic-missile",
+    "identifier": "gust-of-wind",
     "sourceClass": "cleric"
   },
-  "name": "Magic Missile",
+  "img": "icons/magic/nature/leaf-juggle-humanoid-green.webp",
   "flags": {
-    "core": {
-      "sourceId": "Compendium.world.ddb-development-testing-ddb-spells.OPqTuvUbdRsEpjKv"
-    },
-    "midi-qol": {
-      "effectActivation": false,
-      "onUseMacroName": "",
-      "rollAttackPerTarget": "default",
-      "itemCondition": "",
-      "effectCondition": "",
-      "AoETargetType": "any",
-      "AoETargetTypeIncludeSelf": true,
-      "autoTarget": "default",
-      "removeAttackDamageButtons": "default",
-      "reactionCondition": "",
-      "otherCondition": ""
-    },
     "midiProperties": {
+      "magicdam": true,
+      "magiceffect": true,
+      "confirmTargets": "default",
+      "autoFailFriendly": false,
+      "autoSaveFriendly": false,
+      "critOther": false,
+      "offHandWeapon": false,
+      "concentration": true,
+      "noConcentrationCheck": false,
+      "toggleEffect": false,
+      "ignoreTotalCover": false,
       "nodam": false,
       "fulldam": false,
       "halfdam": false,
-      "autoFailFriendly": false,
-      "autoSaveFriendly": false,
-      "rollOther": false,
-      "critOther": false,
-      "offHandWeapon": false,
-      "magicdam": false,
-      "magiceffect": false,
-      "concentration": false,
-      "toggleEffect": false,
-      "ignoreTotalCover": false,
-      "confirmTargets": "default",
-      "noConcentrationCheck": false,
       "idr": false,
       "idi": false,
       "idv": false,
       "ida": false
     },
+    "midi-qol": {
+      "AoETargetType": "any",
+      "AoETargetTypeIncludeSelf": false,
+      "autoTarget": "default",
+      "rollAttackPerTarget": "default",
+      "itemCondition": "",
+      "effectCondition": "",
+      "onUseMacroName": "",
+      "-=onUseMacroName": null,
+      "removeAttackDamageButtons": "default",
+      "reactionCondition": "",
+      "otherCondition": ""
+    },
+    "dae": {
+      "macro": {
+        "name": "Gust of Wind",
+        "img": "icons/magic/nature/leaf-juggle-humanoid-green.webp",
+        "type": "script",
+        "scope": "global",
+        "command": "",
+        "author": "HXuHYV0yiJO8orNX",
+        "ownership": {
+          "default": 3
+        },
+        "_id": null,
+        "folder": null,
+        "sort": 0,
+        "flags": {},
+        "_stats": {
+          "systemId": null,
+          "systemVersion": null,
+          "coreVersion": null,
+          "createdTime": null,
+          "modifiedTime": null,
+          "lastModifiedBy": null
+        }
+      }
+    },
+    "core": {},
     "dnd5e": {
       "persistSourceMigration": true,
       "riders": {
         "activity": [
-          "zHpeqUnoKjOjo5aN",
-          "VH7HwxXvnFU22CxV"
+          "ueIqmLJxfIHB3pg8",
+          "8XgeeMBhoV28UgPF"
         ],
         "effect": []
-      },
-      "last": {
-        "magicMissileBolt": {
-          "damageType": {
-            "0": "force"
-          }
-        },
-        "boltFlat00000000": {
-          "damageType": {
-            "0": "force"
-          }
-        },
-        "VH7HwxXvnFU22CxV": {
-          "damageType": {
-            "0": "force"
-          }
-        },
-        "zHpeqUnoKjOjo5aN": {
-          "damageType": {
-            "0": "force"
-          }
-        }
       }
     },
     "chris-premades": {
       "info": {
-        "name": "Magic Missile",
+        "name": "Gust of Wind",
         "version": "1.1.0",
-        "hasAnimation": true,
-        "identifier": "magicMissile",
+        "identifier": "gustOfWind",
         "source": "chris-premades"
       },
       "macros": {
         "midi": {
           "item": [
-            "magicMissile"
+            "gustOfWind"
           ]
         }
       },
-      "hiddenActivities": [
-        "magicMissileBolt",
-        "magicMissileFlat"
-      ],
-      "config": {
-        "rollEach": false
-      },
       "activityIdentifiers": {
-        "magicMissileBolt": "zHpeqUnoKjOjo5aN",
-        "magicMissileFlat": "VH7HwxXvnFU22CxV",
-        "magicMissile": "dnd5eactivity000"
-      }
+        "gustOfWind": "dnd5eactivity000",
+        "gustOfWindMove": "8XgeeMBhoV28UgPF",
+        "gustOfWindPush": "ueIqmLJxfIHB3pg8"
+      },
+      "hiddenActivities": [
+        "gustOfWindPush",
+        "gustOfWindMove"
+      ]
     }
   },
   "effects": [],
-  "img": "icons/magic/fire/projectile-meteor-salvo-light-blue.webp",
   "folder": null,
-  "_id": "89u3SA1lBLVdE4v7",
-  "_key": "!items!89u3SA1lBLVdE4v7"
+  "_id": "447wkmGCCZ6ncoHZ",
+  "_key": "!items!447wkmGCCZ6ncoHZ"
 }

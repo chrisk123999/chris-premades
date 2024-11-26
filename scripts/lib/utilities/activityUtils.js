@@ -22,6 +22,8 @@ async function setIdentifier(activity, identifier) {
     identifiers.push([identifier, activity.id]);
     await genericUtils.setFlag(item, 'chris-premades', 'activityIdentifiers', Object.fromEntries(identifiers));
 }
+
+// Currently this exists only for use immediately before using an activity
 async function setDamage(activity, formula, types=[], {specificIndex = 0} = {}) {
     let isHeal = activity.type === 'heal';
     // let damagePart = activity.damage.parts[specificIndex].toObject();

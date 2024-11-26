@@ -1,34 +1,51 @@
-import {compendiumUtils, constants, effectUtils, errors, genericUtils, itemUtils, workflowUtils} from '../../utils.js';
+import {activityUtils, effectUtils, genericUtils, itemUtils, workflowUtils} from '../../utils.js';
 
 async function use({workflow}) {
+    if (activityUtils.getIdentifier(workflow.activity) !== genericUtils.getIdentifier(workflow.item)) return;
     let concentrationEffect = effectUtils.getConcentrationEffect(workflow.actor, workflow.item);
-    let featureData = await compendiumUtils.getItemFromCompendium(constants.packs.spellFeatures, 'Aura of Vitality: Healing', {object: true, getDescription: true, translate: 'CHRISPREMADES.Macros.AuraOfVitality.Healing', identifier: 'auraOfVitalityHealing'});
-    if (!featureData) {
-        errors.missingPackItem();
-        if (concentrationEffect) await genericUtils.remove(concentrationEffect);
-        return;
-    }
+    let feature = activityUtils.getActivityByIdentifier(workflow.item, 'auraOfVitalityHealing', {strict: true});
+    if (!feature) return;
     let effectData = {
         name: workflow.item.name,
         img: workflow.item.img,
         origin: workflow.item.uuid,
-        duration: {
-            seconds: 60 * workflow.item.system.duration.value
-        }
+        duration: itemUtils.convertDuration(workflow.item)
     };
-    let effect = await effectUtils.createEffect(workflow.actor, effectData, {concentrationItem: workflow.item, strictlyInterdependent: true, vae: [{type: 'use', name: featureData.name, identifier: 'auraOfVitalityHealing'}], identifier: 'auraOfVitality'});
-
-    await itemUtils.createItems(workflow.actor, [featureData], {favorite: true, parentEntity: effect, section: genericUtils.translate('CHRISPREMADES.Section.SpellFeatures'), castData: workflowUtils.getCastData(workflow)});
-    if (concentrationEffect) await genericUtils.update(concentrationEffect, {'duration.seconds': effectData.duration.seconds});
+    await effectUtils.createEffect(workflow.actor, effectData, {
+        concentrationItem: workflow.item, 
+        strictlyInterdependent: true, 
+        vae: [{
+            type: 'use', 
+            name: feature.name, 
+            identifier: 'auraOfVitality', 
+            activityIdentifier: 'auraOfVitalityHealing'
+        }],
+        identifier: 'auraOfVitality',
+        unhideActivities: {
+            itemUuid: workflow.item.uuid,
+            activityIdentifiers: ['auraOfVitalityHealing'],
+            favorite: true
+        }
+    });
+    if (concentrationEffect) await genericUtils.update(concentrationEffect, {duration: effectData.duration});
+}
+async function early({workflow}) {
+    if (activityUtils.getIdentifier(workflow.activity) !== 'auraOfVitalityHealing') return;
+    workflowUtils.skipDialog(workflow);
 }
 export let auraOfVitality = {
     name: 'Aura of Vitality',
-    version: '0.12.0',
+    version: '1.1.0',
     midi: {
         item: [
             {
                 pass: 'rollFinished',
                 macro: use,
+                priority: 50
+            },
+            {
+                pass: 'preTargeting',
+                macro: early,
                 priority: 50
             }
         ]

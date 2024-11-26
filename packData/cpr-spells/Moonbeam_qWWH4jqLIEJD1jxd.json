@@ -6,7 +6,7 @@
       "chat": ""
     },
     "source": {
-      "custom": "Basic Rules, Player's Handbook pg 257",
+      "custom": "Basic Rules, Player's Handbook pg 261",
       "revision": 1,
       "rules": "2024"
     },
@@ -16,20 +16,22 @@
       "value": 1
     },
     "duration": {
-      "value": "",
-      "units": "inst"
+      "value": "1",
+      "units": "minute"
     },
     "target": {
       "affects": {
-        "type": "creature",
-        "count": "",
         "choice": false,
-        "special": ""
+        "count": "",
+        "type": ""
       },
       "template": {
-        "units": "",
+        "units": "ft",
+        "type": "cylinder",
+        "size": "5",
         "contiguous": false,
-        "type": ""
+        "height": "40",
+        "count": ""
       }
     },
     "range": {
@@ -43,10 +45,10 @@
       "recovery": []
     },
     "ability": "",
-    "level": 1,
+    "level": 2,
     "school": "evo",
     "materials": {
-      "value": "",
+      "value": "several seeds of any moonseed plant and a piece of opalescent feldspar",
       "consumed": false,
       "cost": 0,
       "supply": 0
@@ -57,7 +59,9 @@
     },
     "properties": [
       "vocal",
-      "somatic"
+      "somatic",
+      "material",
+      "concentration"
     ],
     "activities": {
       "dnd5eactivity000": {
@@ -77,7 +81,7 @@
           "spellSlot": true
         },
         "description": {
-          "chatFlavor": "[1d4 + 1 - force] 3 Darts"
+          "chatFlavor": ""
         },
         "duration": {
           "units": "inst",
@@ -114,10 +118,75 @@
         "useConditionText": "",
         "forceDialog": false,
         "effectConditionText": "",
-        "name": ""
+        "midiAutomationOnly": false,
+        "name": "Moonbeam",
+        "img": "icons/magic/light/beam-rays-blue-large.webp"
       },
-      "zHpeqUnoKjOjo5aN": {
-        "type": "damage",
+      "n8LHtbwz9XiYPlfA": {
+        "type": "utility",
+        "_id": "n8LHtbwz9XiYPlfA",
+        "sort": 0,
+        "activation": {
+          "type": "action",
+          "value": null,
+          "override": false
+        },
+        "consumption": {
+          "scaling": {
+            "allowed": false
+          },
+          "spellSlot": false,
+          "targets": []
+        },
+        "description": {
+          "chatFlavor": "Moonbeam: Move"
+        },
+        "duration": {
+          "units": "inst",
+          "concentration": false,
+          "override": true
+        },
+        "effects": [],
+        "range": {
+          "override": true,
+          "units": "any",
+          "special": ""
+        },
+        "target": {
+          "template": {
+            "contiguous": false,
+            "units": "ft",
+            "type": ""
+          },
+          "affects": {
+            "choice": false,
+            "count": "",
+            "type": "any"
+          },
+          "override": true,
+          "prompt": true
+        },
+        "uses": {
+          "spent": 0,
+          "recovery": [],
+          "max": ""
+        },
+        "roll": {
+          "prompt": false,
+          "visible": false,
+          "name": "",
+          "formula": ""
+        },
+        "useConditionText": "",
+        "forceDialog": false,
+        "effectConditionText": "",
+        "midiAutomationOnly": false,
+        "name": "Moonbeam: Move",
+        "img": "icons/magic/light/beam-rays-blue-large.webp"
+      },
+      "ny8jAwG7myN6zsgs": {
+        "type": "save",
+        "_id": "ny8jAwG7myN6zsgs",
         "sort": 0,
         "activation": {
           "type": "special",
@@ -133,12 +202,12 @@
           "targets": []
         },
         "description": {
-          "chatFlavor": ""
+          "chatFlavor": "Moonbeam: Damage"
         },
         "duration": {
           "units": "inst",
           "concentration": false,
-          "override": false
+          "override": true
         },
         "effects": [],
         "range": {
@@ -167,127 +236,62 @@
           "max": ""
         },
         "damage": {
-          "critical": {
-            "allow": false
-          },
           "parts": [
             {
               "custom": {
                 "enabled": true,
-                "formula": "1d4[force] + 1"
+                "formula": "2d10[radiant]"
               },
               "number": null,
               "denomination": 0,
               "bonus": "",
               "types": [
-                "force"
+                "radiant"
               ],
               "scaling": {
-                "mode": "",
+                "mode": "whole",
                 "number": 1
               }
             }
-          ]
-        },
-        "useConditionText": "",
-        "forceDialog": false,
-        "effectConditionText": "",
-        "name": "Magic Missile Bolt",
-        "_id": "zHpeqUnoKjOjo5aN"
-      },
-      "VH7HwxXvnFU22CxV": {
-        "type": "damage",
-        "sort": 0,
-        "activation": {
-          "type": "special",
-          "value": null,
-          "override": true,
-          "condition": ""
-        },
-        "consumption": {
-          "scaling": {
-            "allowed": false
-          },
-          "spellSlot": false,
-          "targets": []
-        },
-        "description": {
-          "chatFlavor": ""
-        },
-        "duration": {
-          "units": "inst",
-          "concentration": false,
-          "override": false
-        },
-        "effects": [],
-        "range": {
-          "override": false
-        },
-        "target": {
-          "template": {
-            "contiguous": false,
-            "units": "ft",
-            "type": ""
-          },
-          "affects": {
-            "choice": false,
-            "count": "1",
-            "type": "creature",
-            "special": ""
-          },
-          "override": true,
-          "prompt": true
-        },
-        "uses": {
-          "spent": 0,
-          "recovery": [],
-          "max": ""
-        },
-        "damage": {
+          ],
           "critical": {
             "allow": false
           },
-          "parts": [
-            {
-              "types": [
-                "force"
-              ],
-              "number": null,
-              "denomination": null,
-              "custom": {
-                "enabled": true,
-                "formula": "5"
-              },
-              "scaling": {
-                "number": 1
-              }
-            }
-          ]
+          "onSave": "half"
+        },
+        "save": {
+          "ability": [
+            "con"
+          ],
+          "dc": {
+            "calculation": "spellcasting",
+            "formula": ""
+          }
         },
         "useConditionText": "",
         "forceDialog": false,
         "effectConditionText": "",
-        "name": "Magic Missile Bolt: Flat",
-        "_id": "VH7HwxXvnFU22CxV"
+        "midiAutomationOnly": false,
+        "name": "Moonbeam: Damage",
+        "img": "icons/magic/light/beam-rays-blue-large.webp"
       }
     },
-    "identifier": "magic-missile",
+    "identifier": "moonbeam",
     "sourceClass": "cleric"
   },
-  "name": "Magic Missile",
+  "name": "Moonbeam",
   "flags": {
-    "core": {
-      "sourceId": "Compendium.world.ddb-development-testing-ddb-spells.OPqTuvUbdRsEpjKv"
-    },
     "midi-qol": {
+      "forceCEOff": true,
       "effectActivation": false,
       "onUseMacroName": "",
-      "rollAttackPerTarget": "default",
-      "itemCondition": "",
-      "effectCondition": "",
       "AoETargetType": "any",
       "AoETargetTypeIncludeSelf": true,
       "autoTarget": "default",
+      "rollAttackPerTarget": "default",
+      "itemCondition": "",
+      "effectCondition": "",
+      "-=onUseMacroName": null,
       "removeAttackDamageButtons": "default",
       "reactionCondition": "",
       "otherCondition": ""
@@ -313,70 +317,60 @@
       "idv": false,
       "ida": false
     },
+    "core": {
+      "sourceId": "Compendium.world.ddb-development-testing-ddb-spells.C3MN3b57dd3R4ZTQ"
+    },
     "dnd5e": {
       "persistSourceMigration": true,
       "riders": {
         "activity": [
-          "zHpeqUnoKjOjo5aN",
-          "VH7HwxXvnFU22CxV"
+          "ny8jAwG7myN6zsgs",
+          "n8LHtbwz9XiYPlfA"
         ],
         "effect": []
       },
       "last": {
-        "magicMissileBolt": {
+        "ny8jAwG7myN6zsgs": {
           "damageType": {
-            "0": "force"
-          }
-        },
-        "boltFlat00000000": {
-          "damageType": {
-            "0": "force"
-          }
-        },
-        "VH7HwxXvnFU22CxV": {
-          "damageType": {
-            "0": "force"
-          }
-        },
-        "zHpeqUnoKjOjo5aN": {
-          "damageType": {
-            "0": "force"
+            "0": "radiant"
           }
         }
       }
     },
     "chris-premades": {
       "info": {
-        "name": "Magic Missile",
+        "name": "Moonbeam",
         "version": "1.1.0",
-        "hasAnimation": true,
-        "identifier": "magicMissile",
+        "settings": [
+          "Template Listener"
+        ],
+        "mutation": {
+          "self": "Moonbeam"
+        },
+        "identifier": "moonbeam",
         "source": "chris-premades"
       },
       "macros": {
         "midi": {
           "item": [
-            "magicMissile"
+            "moonbeam"
           ]
         }
       },
       "hiddenActivities": [
-        "magicMissileBolt",
-        "magicMissileFlat"
+        "moonbeamDamage",
+        "moonbeamMove"
       ],
-      "config": {
-        "rollEach": false
-      },
       "activityIdentifiers": {
-        "magicMissileBolt": "zHpeqUnoKjOjo5aN",
-        "magicMissileFlat": "VH7HwxXvnFU22CxV",
-        "magicMissile": "dnd5eactivity000"
+        "moonbeam": "dnd5eactivity000",
+        "moonbeamMove": "n8LHtbwz9XiYPlfA",
+        "moonbeamDamage": "ny8jAwG7myN6zsgs"
       }
     }
   },
   "effects": [],
-  "img": "icons/magic/fire/projectile-meteor-salvo-light-blue.webp",
+  "img": "icons/magic/light/beam-rays-blue-large.webp",
   "folder": null,
-  "_id": "89u3SA1lBLVdE4v7",
-  "_key": "!items!89u3SA1lBLVdE4v7"
+  "_id": "qWWH4jqLIEJD1jxd",
+  "_key": "!items!qWWH4jqLIEJD1jxd"
 }
