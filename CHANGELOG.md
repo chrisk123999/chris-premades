@@ -1,3 +1,7 @@
+# 1.0.47 Release:
+## Bug Fixes:
+- Alchemical Savant (Thanks MistHelix)
+
 # 1.0.46 Release:
 ## Bug Fixes:
 - Master's Amulet

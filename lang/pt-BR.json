@@ -155,7 +155,9 @@
             "DarknessAnimation": "Animação de Escuridão:",
             "DisplayFormulaRoll": "Exibir Fórmula da Rolagem:",
             "Distance": "Distância:",
+            "DurationSeconds": "Duração (Segundos):",
             "Expire": "Expiração:",
+            "FailedSave": "Salvaguarda Falha:",
             "Formula": "Fórmula:",
             "HideToken": "Ocultar Token:",
             "IgnoredCreatureTypes": "Tipos de Criatura Ignorados:",
@@ -445,6 +447,9 @@
                 "Disadvantage": "Dar desvantagem no teste de escape:",
                 "Name": "Auto-Agarrão"
             },
+            "AutoPush": {
+                "Name": "Auto-Empurrão"
+            },
             "AwakenedSpellbook": {
                 "Select": "Mudar tipo de dano?"
             },
@@ -718,6 +723,10 @@
             },
             "DreadfulAspect": {
                 "Turn": "Aspecto Apavorante: Fim do Turno"
+            },
+            "EffectImmunity": {
+                "Immune": "Imune",
+                "Name": "Imunidade ao Efeito"
             },
             "EldritchBlast": {
                 "Beam": "Raio Místico: Raio",

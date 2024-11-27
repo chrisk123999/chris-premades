@@ -155,7 +155,9 @@
             "DarknessAnimation": "Animazione Oscurità:",
             "DisplayFormulaRoll": "Mostra il Tiro della Formula:",
             "Distance": "Distanza:",
+            "DurationSeconds": "Durata (Secondi):",
             "Expire": "Scadenza:",
+            "FailedSave": "Tiro Salvezza Fallito:",
             "Formula": "Formula:",
             "HideToken": "Nascondi Token:",
             "IgnoredCreatureTypes": "Tipi di creature ignorate:",
@@ -445,6 +447,9 @@
                 "Disadvantage": "Concedi svantaggio sulla prova di fuga:",
                 "Name": "Afferrare Automatico"
             },
+            "AutoPush": {
+                "Name": "Spingere Automatico"
+            },
             "AwakenedSpellbook": {
                 "Select": "Modificare il tipo di danno?"
             },
@@ -719,8 +724,12 @@
             "DreadfulAspect": {
                 "Turn": "Aspetto Terribile: Fine del Turno"
             },
+            "EffectImmunity": {
+                "Immune": "Immune",
+                "Name": "Immunità all'Effetto"
+            },
             "EldritchBlast": {
-                "Beam": "Raggio Eldritch: Raggio",
+                "Beam": "Deflagrazione Occulta: Raggio",
                 "Target": "Quali bersagli?"
             },
             "EldritchCannon": {
@@ -830,15 +839,15 @@
                 "Winter": "Passo Fey (Inverno)"
             },
             "FindFamiliar": {
-                "Choose": "Scegli Familiare",
-                "Command": "Trova Familiare: Comando",
-                "Error": "Nessun token o dato familiare trovato!",
+                "Choose": "Scegli Famiglio",
+                "Command": "Trova Famiglio: Comando",
+                "Error": "Nessun token o dato famiglio trovato!",
                 "InvalidSpell": "Tipo di Incantesimo Non Valido!",
                 "Movement": "Quale Tipo di Movimento?",
-                "PocketDimension": "Trova Familiare: Dimensione Tascabile",
-                "ReactionUsed": "Il familiare ha già usato la sua reazione!",
-                "TooFar": "Familiare Troppo Lontano!",
-                "Touch": "Trova Familiare: Toccare"
+                "PocketDimension": "Trova Famiglio: Dimensione Tascabile",
+                "ReactionUsed": "Il famiglio ha già usato la sua reazione!",
+                "TooFar": "Famiglio Troppo Lontano!",
+                "Touch": "Trova Famiglio: Toccare"
             },
             "FindSteed": {
                 "Choose": "Scegli Destriero",
@@ -871,10 +880,10 @@
                 "RamItem": "Sfera Fiammeggiante: Colpire"
             },
             "FlockOfFamiliars": {
-                "Command": "Sciame di Familiari: Comando",
-                "ReactionUsed": "I familiari sono troppo lontani o hanno già usato la loro reazione!",
-                "TooFar": "I familiari sono troppo lontani!",
-                "Touch": "Sciame di Familiari: Toccare"
+                "Command": "Sciame di Famigli: Comando",
+                "ReactionUsed": "I famigli sono troppo lontani o hanno già usato la loro reazione!",
+                "TooFar": "I famigli sono troppo lontani!",
+                "Touch": "Sciame di Famigli: Toccare"
             },
             "FocusedAim": {
                 "Bonus": "Sì ({kiCost} Ki / +{bonus} per colpire)"
@@ -1073,7 +1082,7 @@
             },
             "InvestmentOfTheChainMaster": {
                 "Command": "Investitura del Padrone della Catena: Comando",
-                "Resistance": "Investitura del Padrone della Catena: Resistenza Familiare"
+                "Resistance": "Investitura del Padrone della Catena: Resistenza Famiglio"
             },
             "JavelinOfLightning": {
                 "Bolt": "Giavellotto del Fulmine: Dardo"
@@ -2400,7 +2409,7 @@
                 "ElementalSpiritEarth": "Spirito Elementale (Terra)",
                 "ElementalSpiritFire": "Spirito Elementale (Fuoco)",
                 "ElementalSpiritWater": "Spirito Elementale (Acqua)",
-                "Familiar": "Familiare",
+                "Familiar": "Famiglio",
                 "FeySpirit": "Spirito Fatato",
                 "FeySpiritFuming": "Spirito Fatato (Iroso)",
                 "FeySpiritMirthful": "Spirito Fatato (Gioioso)",
@@ -2426,7 +2435,7 @@
                 "Shifter": "Mutante",
                 "Skeleton": "Scheletro",
                 "SpiritualWeapon": "Arma Spirituale",
-                "Steed": "Cavallo",
+                "Steed": "Destriero",
                 "SteelDefender": "Difensore d'Acciaio",
                 "TentacleOfTheDeeps": "Tentacolo degli Abissi",
                 "UndeadSpirit": "Spirito Non Morto",
@@ -2442,7 +2451,7 @@
             "CustomToken": "Token Personalizzato {option}",
             "DismissHP": "L'evocazione ha raggiunto 0 punti ferita! Dovrebbe essere dissolta?",
             "DismissSummon": "Dissolvi Evocazione",
-            "FamiliarDefault": "Familiare {option}",
+            "FamiliarDefault": "Famiglio {option}",
             "Folder": "Nome della Cartella",
             "HowMany": "Quanti?",
             "NoMatching": "Nessun attore corrispondente trovato nel compendio specificato!",
