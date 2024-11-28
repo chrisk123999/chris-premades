@@ -47,32 +47,42 @@ function preCreateActiveEffect(effect, updates, options, id) {
     effect.updateSource({description: description});
 }
 function unhideActivities(effect) {
-    let unhideFlags = effect.flags?.['chris-premades']?.unhideActivities;
-    if (!unhideFlags) return;
-    let {itemUuid, activityIdentifiers} = unhideFlags;
-    let item = fromUuidSync(itemUuid);
-    if (!item) return;
-    let cprRiders = genericUtils.getProperty(item, 'flags.chris-premades.hiddenActivities');
-    if (!cprRiders) return;
-    cprRiders = new Set(cprRiders);
-    activityIdentifiers = new Set(activityIdentifiers);
-    let newCprRiders = Array.from(cprRiders.difference(activityIdentifiers));
-    itemUtils.setHiddenActivities(item, newCprRiders);
-    if (unhideFlags.favorite) actorUtils.addFavorites(effect.target, activityIdentifiers.map(i => activityUtils.getActivityByIdentifier(item, i)).filter(i => i), 'activity');
+    let unhideFlagsArr = effect.flags?.['chris-premades']?.unhideActivities;
+    if (!unhideFlagsArr) return;
+    if (!unhideFlagsArr.length) unhideFlagsArr = [unhideFlagsArr];
+    let favorites = [];
+    for (let unhideFlags of unhideFlagsArr) {
+        let {itemUuid, activityIdentifiers} = unhideFlags;
+        let item = fromUuidSync(itemUuid);
+        if (!item) return;
+        let cprRiders = genericUtils.getProperty(item, 'flags.chris-premades.hiddenActivities');
+        if (!cprRiders) return;
+        cprRiders = new Set(cprRiders);
+        activityIdentifiers = new Set(activityIdentifiers);
+        let newCprRiders = Array.from(cprRiders.difference(activityIdentifiers));
+        itemUtils.setHiddenActivities(item, newCprRiders);
+        if (unhideFlags.favorite) favorites.push(activityIdentifiers.map(i => activityUtils.getActivityByIdentifier(item, i)).filter(i => i));
+    }
+    if (favorites.length) actorUtils.addFavorites(effect.target, favorites.flatMap(i => Array.from(i)), 'activity');
 }
 function rehideActivities(effect) {
-    let unhideFlags = effect.flags?.['chris-premades']?.unhideActivities;
-    if (!unhideFlags) return;
-    let {itemUuid, activityIdentifiers} = unhideFlags;
-    let item = fromUuidSync(itemUuid);
-    if (!item) return;
-    let cprRiders = genericUtils.getProperty(item, 'flags.chris-premades.hiddenActivities');
-    if (!cprRiders) return;
-    cprRiders = new Set(cprRiders);
-    activityIdentifiers = new Set(activityIdentifiers);
-    let newCprRiders = Array.from(cprRiders.union(activityIdentifiers));
-    itemUtils.setHiddenActivities(item, newCprRiders);
-    if (unhideFlags.favorite) actorUtils.removeFavorites(effect.target, activityIdentifiers.map(i => activityUtils.getActivityByIdentifier(item, i)).filter(i => i), 'activity');
+    let unhideFlagsArr = effect.flags?.['chris-premades']?.unhideActivities;
+    if (!unhideFlagsArr) return;
+    if (!unhideFlagsArr.length) unhideFlagsArr = [unhideFlagsArr];
+    let favorites = [];
+    for (let unhideFlags of unhideFlagsArr) {
+        let {itemUuid, activityIdentifiers} = unhideFlags;
+        let item = fromUuidSync(itemUuid);
+        if (!item) return;
+        let cprRiders = genericUtils.getProperty(item, 'flags.chris-premades.hiddenActivities');
+        if (!cprRiders) return;
+        cprRiders = new Set(cprRiders);
+        activityIdentifiers = new Set(activityIdentifiers);
+        let newCprRiders = Array.from(cprRiders.union(activityIdentifiers));
+        itemUtils.setHiddenActivities(item, newCprRiders);
+        if (unhideFlags.favorite) favorites.push(activityIdentifiers.map(i => activityUtils.getActivityByIdentifier(item, i)).filter(i => i));
+    }
+    if (favorites.length) actorUtils.removeFavorites(effect.target, favorites.flatMap(i => Array.from(i)), 'activity');
 }
 export let effects = {
     noAnimation,

@@ -2,7 +2,7 @@ import {compilePack, extractPack} from '@foundryvtt/foundryvtt-cli';
 let itemPacks = [
     // 'cpr-actions',
     // 'cpr-class-feature-items',
-    // 'cpr-class-features',
+    'cpr-class-features',
     // 'cpr-feat-features',
     //'cpr-homebrew-feature-items',
     // 'cpr-item-features',

@@ -1,7 +1,8 @@
 import {Summons} from '../../lib/summons.js';
-import {animationUtils, combatUtils, compendiumUtils, constants, dialogUtils, effectUtils, errors, genericUtils, itemUtils, workflowUtils} from '../../utils.js';
+import {activityUtils, actorUtils, animationUtils, combatUtils, compendiumUtils, constants, dialogUtils, effectUtils, errors, genericUtils, itemUtils, workflowUtils} from '../../utils.js';
 
 async function use({workflow}) {
+    if (activityUtils.getIdentifier(workflow.activity) !== genericUtils.getIdentifier(workflow.item)) return;
     let concentrationEffect = effectUtils.getConcentrationEffect(workflow.actor, workflow.item);
     let playAnimation = itemUtils.getConfig(workflow.item, 'playAnimation') && animationUtils.jb2aCheck() === 'patreon';
     let sourceActor = await compendiumUtils.getActorFromCompendium(constants.packs.summons, 'CPR - Healing Spirit');
@@ -15,12 +16,13 @@ async function use({workflow}) {
         if (concentrationEffect) await genericUtils.remove(concentrationEffect);
         return;
     }
-    featureDataSummon.system.damage.parts = [
-        [workflow.castData.castLevel - 1 + 'd6[healing]', 'healing']
-    ];
-    let uses = Math.max(2, itemUtils.getMod(workflow.item) + 1);
+    let healId = Object.keys(featureDataSummon.system.activities)[0];
+    featureDataSummon.system.activities[healId].healing.custom = {
+        enabled: true,
+        formula: workflow.castData.castLevel - 1 + 'd6[healing]'
+    };
+    let uses = Math.max(2, workflow.actor.system.abilities[workflow.item.abilityMod].mod + 1);
     featureDataSummon.system.uses.max = uses;
-    featureDataSummon.system.uses.value = uses;
     let updates = {
         actor: {
             name: workflow.item.name,
@@ -45,9 +47,8 @@ async function use({workflow}) {
         genericUtils.setProperty(updates, 'token.alpha', 0);
         genericUtils.setProperty(updates, 'token.texture.tint', '#beff5c');
     }
-    let featureData = await compendiumUtils.getItemFromCompendium(constants.packs.spellFeatures, 'Healing Spirit: Move', {object: true, getDescription: true, translate: 'CHRISPREMADES.Macros.HealingSpirit.Move', identifier: 'healingSpiritMove'});
-    if (!featureData) {
-        errors.missingPackItem();
+    let feature = activityUtils.getActivityByIdentifier(workflow.item, 'healingSpiritMove', {strict: true});
+    if (!feature) {
         if (concentrationEffect) await genericUtils.remove(concentrationEffect);
         return;
     }
@@ -56,8 +57,13 @@ async function use({workflow}) {
         range: 60, 
         animation: 'none',
         initiativeType: 'none', 
-        additionalVaeButtons: [{type: 'use', name: featureData.name, identifier: 'healingSpiritMove'}], 
-        additionalSummonedVaeButtons: [{type: 'use', name: featureDataSummon.name, identifier: 'healingSpiritHeal'}]
+        additionalVaeButtons: [{type: 'use', name: feature.name, identifier: 'healingSpirit', activityIdentifier: 'healingSpiritMove'}], 
+        additionalSummonedVaeButtons: [{type: 'use', name: featureDataSummon.name, identifier: 'healingSpiritHeal'}],
+        unhideActivities: {
+            itemUuid: workflow.item.uuid,
+            activityIdentifiers: ['healingSpiritMove'],
+            favorite: true
+        }
     });
     if (!spawnedTokens.length) {
         if (concentrationEffect) await genericUtils.remove(concentrationEffect);
@@ -195,14 +201,24 @@ async function moveOrStart({trigger: {entity: effect, castData, token, target}})
     if (!selection) return;
     await workflowUtils.syntheticItemRoll(feature, [target], {config: {consumeUsage: true}});
 }
+async function early({workflow}) {
+    if (activityUtils.getIdentifier(workflow.activity) !== 'healingSpiritMove') return;
+    workflowUtils.skipDialog(workflow);
+}
 export let healingSpirit = {
     name: 'Healing Spirit',
-    version: '0.12.2',
+    version: '1.1.0',
+    hasAnimation: true,
     midi: {
         item: [
             {
                 pass: 'rollFinished',
                 macro: use,
+                priority: 50
+            },
+            {
+                pass: 'preTargeting',
+                macro: early,
                 priority: 50
             }
         ]

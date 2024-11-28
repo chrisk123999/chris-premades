@@ -24,6 +24,11 @@ function createEffectButtons(effect, buttons) {
                                     return;
                                 }
                             }
+                            let activity = item.system.activities?.filter(i => !item.flags?.dnd5e?.riders?.activity?.includes(i.id))?.[0];
+                            if (activity) {
+                                activity.use();
+                                return;
+                            }
                             item.use();
                         }
                     }

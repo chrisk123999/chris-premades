@@ -1,7 +1,8 @@
 import {Summons} from '../../lib/summons.js';
-import {actorUtils, compendiumUtils, constants, dialogUtils, effectUtils, errors, genericUtils, itemUtils, rollUtils, tokenUtils} from '../../utils.js';
+import {activityUtils, actorUtils, compendiumUtils, constants, dialogUtils, effectUtils, errors, genericUtils, itemUtils, rollUtils, tokenUtils, workflowUtils} from '../../utils.js';
 
 async function use({workflow}) {
+    if (activityUtils.getIdentifier(workflow.activity) !== genericUtils.getIdentifier(workflow.item)) return;
     let concentrationEffect = effectUtils.getConcentrationEffect(workflow.actor, workflow.item);
     let sourceActor = await compendiumUtils.getActorFromCompendium(constants.packs.summons, 'CPR - Bigby\'s Hand');
     if (!sourceActor) {
@@ -19,19 +20,25 @@ async function use({workflow}) {
         return;
     }
     let damageType = itemUtils.getConfig(workflow.item, 'damageType');
-    clenchedFistData.system.damage.parts = [
-        [
-            (4 + damageScale) + 'd8[' + damageType + ']',
-            damageType
-        ]
-    ];
-    let casterSpellMod = itemUtils.getMod(workflow.item);
-    let spellAttackBonus = await new Roll(workflow.actor.system.bonuses.msak.attack + ' +0', workflow.actor.getRollData()).evaluate();
+    let casterSpellMod = workflow.actor.system.abilities[workflow.item.abilityMod].mod;
+    let spellAttackBonus = await new Roll(workflow.actor.system.bonuses.msak.attack + ' + 0', workflow.actor.getRollData()).evaluate();
     if (genericUtils.getIdentifier(workflow.item) === 'bigbysBeneficentBracelet') {
         spellAttackBonus = Math.max(spellAttackBonus.total, 13);
     }
-    clenchedFistData.system.attack.bonus = '+' + casterSpellMod + ' +' + spellAttackBonus;
+    let clenchedActivityId = Object.keys(clenchedFistData.system.activities)[0];
+    clenchedFistData.system.activities[clenchedActivityId].damage.parts[0].custom = {
+        enabled: true,
+        formula: (4 + damageScale) + 'd8[' + damageType + ']' 
+    };
+    clenchedFistData.system.activities[clenchedActivityId].damage.types = [damageType];
+    clenchedFistData.system.activities[clenchedActivityId].attack.flat = true;
+    clenchedFistData.system.activities[clenchedActivityId].attack.bonus = casterSpellMod + ' + ' + spellAttackBonus;
     forcefulHandData.name = forcefulHandData.name + ' (' + ((casterSpellMod * 5) + 5) + ' ' + genericUtils.translate('CHRISPREMADES.Units.Feet') + ')';
+    let crushActivityId = Object.entries(graspingHandData.system.activities).find(i => i[1].type === 'damage')[0];
+    graspingHandData.system.activities[crushActivityId].damage.parts[0].custom = {
+        enabled: true,
+        formula: (2 + damageScale) + 'd6[bludgeoning] + ' + casterSpellMod
+    };
     let name = itemUtils.getConfig(workflow.item, 'name');
     if (!name?.length) name = 'Bigby\'s Hand';
     let hpFormula = workflow.actor.system.attributes.hp.max;
@@ -76,9 +83,8 @@ async function use({workflow}) {
         genericUtils.setProperty(updates, 'token.texture.src', tokenImg);
     }
     let animation = itemUtils.getConfig(workflow.item, 'animation') ?? 'earth';
-    let featureData = await compendiumUtils.getItemFromCompendium(constants.packs.spellFeatures, 'Bigby\'s Hand: Move', {object: true, getDescription: true, translate: 'CHRISPREMADES.Macros.BigbysHand.Move', identifier: 'bigbysHandMove'});
-    if (!featureData) {
-        errors.missingPackItem();
+    let feature = activityUtils.getActivityByIdentifier(workflow.item, 'bigbysHandMove', {strict: true});
+    if (!feature) {
         if (concentrationEffect) await genericUtils.remove(concentrationEffect);
         return;
     }
@@ -87,11 +93,14 @@ async function use({workflow}) {
         range: 120,
         animation,
         initiativeType: 'none',
-        additionalVaeButtons: [{type: 'use', name: featureData.name, identifier: 'bigbysHandMove'}]
+        additionalVaeButtons: [{type: 'use', name: feature.name, identifier: 'bigbysHand', activityIdentifier: 'bigbysHandMove'}],
+        additionalSummonVaeButtons: updates.actor.items.map(i => {return {type: 'use', name: i.name, identifier: i.flags['chris-premades'].info.identifier};}),
+        unhideActivities: {
+            itemUuid: workflow.item.uuid,
+            activityIdentifiers: ['bigbysHandMove'],
+            favorite: true
+        }
     });
-    let effect = effectUtils.getEffectByIdentifier(workflow.actor, 'bigbysHand');
-    if (!effect) return;
-    await itemUtils.createItems(workflow.actor, [featureData], {favorite: true, section: genericUtils.translate('CHRISPREMADES.Section.SpellFeatures'), parentEntity: effect});
 }
 async function early({workflow}) {
     let interposingEffect = effectUtils.getEffectByIdentifier(workflow.actor, 'bigbysHandInterposingSource');
@@ -187,7 +196,7 @@ async function late({workflow}) {
         let effect = await effectUtils.createEffect(workflow.actor, effectData, {identifier: 'bigbysHandInterposingSource'});
         effectUtils.addMacro(effectData, 'midi.actor', ['bigbysHandItems']);
         await effectUtils.createEffect(targetActor, effectData, {parentEntity: effect, identifier: 'bigbysHandInterposing'});
-    } else if (identifier === 'graspingHand') {
+    } else if (identifier === 'graspingHand' && activityUtils.getIdentifier(workflow.activity) !== 'graspingHandCrush') {
         if (actorUtils.getSize(targetActor) > constants.sizes.huge) {
             genericUtils.notify('CHRISPREMADES.Macros.BigbysHand.Big', 'info');
             return;
@@ -203,31 +212,33 @@ async function late({workflow}) {
             sourceRollOptions: {advantage: hasAdvantage}
         });
         if (result <= 0) return;
-        let featureData = await compendiumUtils.getItemFromCompendium(constants.packs.summonFeatures, 'Grasping Hand: Crush', {object: true, getDescription: true, translate: 'CHRISPREMADES.Macros.BigbysHand.Crush', identifier: 'bigbysHandCrush'});
-        if (!featureData) {
-            errors.missingPackItem();
-            return;
-        }
-        let {damageScale, casterSpellMod} = workflow.actor.flags['chris-premades'].bigbysHand;
-        featureData.system.damage.parts = [
-            [
-                (2 + damageScale) + 'd6[bludgeoning] + ' + casterSpellMod,
-                'bludgeoning'
-            ]
-        ];
+        let feature = activityUtils.getActivityByIdentifier(workflow.item, 'graspingHandCrush', {strict: true});
+        if (!feature) return;
         let effectData = {
-            name: featureData.name,
-            img: featureData.img,
+            name: feature.name,
+            img: feature.img,
             origin: workflow.item.uuid,
             duration: {
                 seconds: 60
             }
         };
-        let effect = await effectUtils.createEffect(workflow.actor, effectData, {identifier: 'bigbysHandCrush', vae: [{type: 'use', name: featureData.name, identifier: 'bigbysHandCrush'}]});
+        let effect = await effectUtils.createEffect(workflow.actor, effectData, {
+            identifier: 'graspingHand', 
+            vae: [{
+                type: 'use', 
+                name: feature.name,
+                identifier: 'graspingHand', 
+                activityIdentifier: 'graspingHandCrush'
+            }],
+            unhideActivities: {
+                itemUuid: workflow.item.uuid,
+                activityIdentifiers: ['graspingHandCrush'],
+                favorite: true
+            }
+        });
         if (!effect) return;
         genericUtils.setProperty(effectData, 'flags.chris-premades.conditions', ['grappled']);
-        await effectUtils.createEffect(targetActor, effectData, {parentEntity: effect});
-        await itemUtils.createItems(workflow.actor, [featureData], {favorite: true, section: genericUtils.translate('CHRISPREMADES.Section.SpellFeatures'), parentEntity: effect});
+        await effectUtils.createEffect(targetActor, effectData, {parentEntity: effect, strictlyInterdependent: true});
     }
 }
 async function otherEarly({trigger, workflow}) {
@@ -280,14 +291,24 @@ async function otherLate({trigger, workflow}) {
     if (targetHalfCover.origin !== trigger.entity.uuid) return;
     await genericUtils.remove(targetHalfCover);
 }
+async function veryEarly({workflow}) {
+    if (activityUtils.getIdentifier(workflow.activity) !== 'bigbysHandMove') return;
+    workflowUtils.skipDialog(workflow);
+}
 export let bigbysHand = {
     name: 'Bigby\'s Hand',
-    version: '0.12.5',
+    version: '1.1.0',
+    hasAnimation: true,
     midi: {
         item: [
             {
                 pass: 'rollFinished',
                 macro: use,
+                priority: 50
+            },
+            {
+                pass: 'preTargeting',
+                macro: veryEarly,
                 priority: 50
             }
         ]

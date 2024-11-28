@@ -1,4 +1,5 @@
 import {actorUtils, effectUtils, genericUtils, itemUtils} from '../../../../utils.js';
+// TODO: Make the reaction part of this better
 async function late({workflow}) {
     let controllingActor = await fromUuid(workflow.actor.flags['chris-premades'].summons.control.actor);
     if (!controllingActor) return;
@@ -13,7 +14,7 @@ async function late({workflow}) {
     for (let currActor of summonedActors) {
         let resistanceItem = itemUtils.getItemByIdentifier(currActor, 'investmentOfTheChainMasterResistance');
         if (!resistanceItem) continue;
-        await genericUtils.update(resistanceItem, {'system.uses.value': 0});
+        await genericUtils.update(resistanceItem, {'system.uses.spent': 1});
     }
 }
 async function turnStart({trigger: {token}}) {
@@ -26,7 +27,7 @@ async function turnStart({trigger: {token}}) {
     for (let currActor of summonedActors) {
         let resistanceItem = itemUtils.getItemByIdentifier(currActor, 'investmentOfTheChainMasterResistance');
         if (!resistanceItem) continue;
-        await genericUtils.update(resistanceItem, {'system.uses.value': 1});
+        await genericUtils.update(resistanceItem, {'system.uses.spent': 0});
     }
 }
 export let investmentOfTheChainMaster = {

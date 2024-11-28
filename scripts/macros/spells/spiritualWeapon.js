@@ -1,6 +1,7 @@
 import {Summons} from '../../lib/summons.js';
-import {animationUtils, compendiumUtils, constants, dialogUtils, effectUtils, errors, genericUtils, itemUtils, tokenUtils, workflowUtils} from '../../utils.js';
+import {activityUtils, animationUtils, compendiumUtils, constants, dialogUtils, effectUtils, errors, genericUtils, itemUtils, tokenUtils, workflowUtils} from '../../utils.js';
 async function use({workflow}) {
+    if (activityUtils.getIdentifier(workflow.activity) !== genericUtils.getIdentifier(workflow.item)) return;
     let jb2a = animationUtils.jb2aCheck();
     let sourceActor = await compendiumUtils.getActorFromCompendium(constants.packs.summons, 'CPR - Spiritual Weapon');
     if (!sourceActor) return;
@@ -92,26 +93,28 @@ async function use({workflow}) {
         genericUtils.setProperty(updates, 'token.texture.src', tokenImg);
     }
     let animation = itemUtils.getConfig(workflow.item, 'animation');
-    let featureData = await compendiumUtils.getItemFromCompendium(constants.packs.spellFeatures, 'Spiritual Weapon: Attack', {object: true, getDescription: true, translate: 'CHRISPREMADES.Macros.SpiritualWeapon.Attack', identifier: 'spiritualWeaponAttack'});
-    if (!featureData) {
-        errors.missingPackItem();
-        return;
-    }
-    let spellLevel = workflow.castData?.castLevel ?? 2;
-    let numDice = Math.floor(spellLevel / 2);
-    featureData.system.ability = workflow.item.system.ability;
-    let damageType = itemUtils.getConfig(workflow.item, 'damageType');
-    featureData.system.damage.parts = [
-        [
-            numDice + 'd8[' + damageType + '] + @mod',
-            damageType
-        ]
-    ];
-    let summonedTokens = await Summons.spawn(sourceActor, updates, workflow.item, workflow.token, {duration: itemUtils.convertDuration(workflow.item).seconds, range: 60, animation, initiativeType: 'none', additionalVaeButtons: [{type: 'use', name: featureData.name, identifier: 'spiritualWeaponAttack'}]});
+    let feature = activityUtils.getActivityByIdentifier(workflow.item, 'spiritualWeaponAttack', {strict: true});
+    if (!feature) return;
+    let summonedTokens = await Summons.spawn(sourceActor, updates, workflow.item, workflow.token, {
+        duration: itemUtils.convertDuration(workflow.item).seconds, 
+        range: 60, 
+        animation, 
+        initiativeType: 'none', 
+        additionalVaeButtons: [{
+            type: 'use', 
+            name: feature.name,
+            identifier: 'spiritualWeapon', 
+            activityIdentifier: 'spiritualWeaponAttack'
+        }],
+        unhideActivities: {
+            itemUuid: workflow.item.uuid,
+            activityIdentifiers: ['spiritualWeaponAttack'],
+            favorite: true
+        }
+    });
     let effect = effectUtils.getEffectByIdentifier(workflow.actor, 'spiritualWeapon');
     if (!effect) return;
-    let [item] = await itemUtils.createItems(workflow.actor, [featureData], {favorite: true, section: genericUtils.translate('CHRISPREMADES.Section.SpellFeatures'), parentEntity: effect});
-    if (!item) return;
+    await genericUtils.setFlag(effect, 'chris-premades', 'castData', workflow.castData);
     let summonedToken = summonedTokens?.[0];
     if (!summonedToken) return;
     let nearbyTargets = tokenUtils.findNearby(summonedToken, 5, 'any').filter(i => i.document.disposition !== workflow.token.document.disposition);
@@ -120,45 +123,55 @@ async function use({workflow}) {
     if (nearbyTargets.length === 1) {
         target = nearbyTargets[0];
     } else {
-        target = await dialogUtils.selectTargetDialog(item.name, 'CHRISPREMADES.Macros.SpiritualWeapon.Select', nearbyTargets);
+        target = await dialogUtils.selectTargetDialog(feature.name, 'CHRISPREMADES.Macros.SpiritualWeapon.Select', nearbyTargets);
         if (!target?.length) return;
         target = target[0];
     }
     if (!target) return;
-    let tempItemData = genericUtils.duplicate(item.toObject());
-    genericUtils.setProperty(tempItemData, 'system.activation.type', 'special');
-    await workflowUtils.syntheticItemDataRoll(tempItemData, workflow.actor, [target]);
+    feature.activation.type = 'special';
+    await workflowUtils.syntheticActivityRoll(feature, [target]);
+    feature.activation.type = 'bonus';
 }
 async function early({workflow}) {
+    if (activityUtils.getIdentifier(workflow.activity) !== 'spiritualWeaponAttack') return;
     let effect = effectUtils.getEffectByIdentifier(workflow.actor, 'spiritualWeapon');
-    if (!effect) return;
-    let spiritualActor = canvas.scene.tokens.get(effect.flags['chris-premades'].summons.ids[effect.name][0])?.actor;
-    if (!spiritualActor) return;
-
-    let effectData = {
-        name: workflow.item.name,
-        img: workflow.item.img,
-        origin: workflow.item.uuid,
-        changes: [
-            {
-                key: 'flags.midi-qol.rangeOverride.attack.all',
-                mode: 0,
-                value: 1,
-                priority: 20
-            }
-        ],
-        flags: {
-            'chris-premades': {
-                effect: {
-                    noAnimation: true
+    if (workflow.activity.tempFlag) {
+        workflow.activity.tempFlag = false;
+        if (!effect) return;
+        let spiritualActor = canvas.scene.tokens.get(effect.flags['chris-premades'].summons.ids[effect.name][0])?.actor;
+        if (!spiritualActor) return;
+    
+        let effectData = {
+            name: workflow.activity.name,
+            img: workflow.item.img,
+            origin: workflow.item.uuid,
+            changes: [
+                {
+                    key: 'flags.midi-qol.rangeOverride.attack.all',
+                    mode: 0,
+                    value: 1,
+                    priority: 20
+                }
+            ],
+            flags: {
+                'chris-premades': {
+                    effect: {
+                        noAnimation: true
+                    }
                 }
             }
-        }
-    };
-    await effectUtils.createEffect(workflow.actor, effectData, {identifier: 'spiritualWeaponAttack', parentEntity: effect});
-    await effectUtils.createEffect(spiritualActor, effectData, {identifier: 'spiritualWeaponAttack', parentEntity: effect});
+        };
+        await effectUtils.createEffect(workflow.actor, effectData, {identifier: 'spiritualWeaponAttack', parentEntity: effect});
+        await effectUtils.createEffect(spiritualActor, effectData, {identifier: 'spiritualWeaponAttack', parentEntity: effect});
+        return;
+    }
+    if (!effect) return true;
+    workflow.activity.tempFlag = true;
+    genericUtils.sleep(100).then(() => workflowUtils.syntheticActivityRoll(workflow.activity, Array.from(workflow.targets), {atLevel: effect.flags['chris-premades'].castData.castLevel}));
+    return true;
 }
 async function late({workflow}) {
+    if (activityUtils.getIdentifier(workflow.activity) !== 'spiritualWeaponAttack') return;
     let effect = effectUtils.getEffectByIdentifier(workflow.actor, 'spiritualWeapon');
     if (!effect) return;
     let spiritualActor = canvas.scene.tokens.get(effect.flags['chris-premades'].summons.ids[effect.name][0])?.actor;
@@ -170,12 +183,22 @@ async function late({workflow}) {
 }
 export let spiritualWeapon = {
     name: 'Spiritual Weapon',
-    version: '0.12.2',
+    version: '1.1.0',
     midi: {
         item: [
             {
                 pass: 'rollFinished',
                 macro: use,
+                priority: 50
+            },
+            {
+                pass: 'preTargeting',
+                macro: early,
+                priority: 50
+            },
+            {
+                pass: 'attackRollComplete',
+                macro: late,
                 priority: 50
             }
         ]
@@ -230,22 +253,4 @@ export let spiritualWeapon = {
             category: 'animation'
         }
     ]
-};
-export let spiritualWeaponAttack = {
-    name: 'Spiritual Weapon: Attack',
-    version: spiritualWeapon.version,
-    midi: {
-        item: [
-            {
-                pass: 'preTargeting',
-                macro: early,
-                priority: 50
-            },
-            {
-                pass: 'attackRollComplete',
-                macro: late,
-                priority: 50
-            }
-        ]
-    }
 };

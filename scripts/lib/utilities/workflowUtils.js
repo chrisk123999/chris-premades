@@ -48,7 +48,7 @@ async function completeItemUse(item, config={}, options={}) {
     //genericUtils.updateTargets(oldTargets); //Temp Fix
     return workflow;
 }
-async function syntheticActivityRoll(activity, targets, {options = {}, config = {}, atLevel = undefined} = {}) {
+async function syntheticActivityRoll(activity, targets = [], {options = {}, config = {}, atLevel = undefined} = {}) {
     let defaultConfig = {
         consumeUsage: false,
         consumeSpellSlot: false

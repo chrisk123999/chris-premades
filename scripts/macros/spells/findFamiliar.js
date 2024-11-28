@@ -1,123 +1,172 @@
 import {Summons} from '../../lib/summons.js';
-import {actorUtils, compendiumUtils, constants, dialogUtils, effectUtils, errors, genericUtils, itemUtils, tokenUtils} from '../../utils.js';
+import {activityUtils, actorUtils, compendiumUtils, constants, dialogUtils, effectUtils, errors, genericUtils, itemUtils, tokenUtils, workflowUtils} from '../../utils.js';
 
 async function use({workflow}) {
-    let findFamiliarEffect = effectUtils.getEffectByIdentifier(workflow.actor, 'findFamiliar');
-    if (findFamiliarEffect) await genericUtils.remove(findFamiliarEffect);
-    let pocketData = await compendiumUtils.getItemFromCompendium(constants.featurePacks.spellFeatures, 'Find Familiar: Pocket Dimension', {object: true, getDescription: true, translate: 'CHRISPREMADES.Macros.FindFamiliar.PocketDimension', identifier: 'findFamiliarPocketDimension'});
-    let touchData = await compendiumUtils.getItemFromCompendium(constants.featurePacks.spellFeatures, 'Find Familiar: Touch', {object: true, getDescription: true, translate: 'CHRISPREMADES.Macros.FindFamiliar.Touch', identifier: 'findFamiliarTouch'});
-    if (!pocketData || !touchData) {
-        errors.missingPackItem();
-        return;
-    }
-    let itemsToAdd = [pocketData, touchData];
-    let folder = itemUtils.getConfig(workflow.item, 'folder');
-    if (!folder?.length) folder = 'Familiars';
-    let actors = game.actors.filter(i => i.folder?.name === folder);
-    if (!actors.length) {
-        genericUtils.notify(genericUtils.format('CHRISPREMADES.Error.NoActors', {folder}), 'warn', {localize: false});
-        return;
-    }
-    let sourceActor = await dialogUtils.selectDocumentDialog(workflow.item.name, 'CHRISPREMADES.Macros.FindFamiliar.Choose', actors);
-    if (!sourceActor) return;
-    let creatureButtons = [
-        ['DND5E.CreatureCelestial', 'celestial'],
-        ['DND5E.CreatureFey', 'fey'],
-        ['DND5E.CreatureFiend', 'fiend']
-    ];
-    let creatureType = await dialogUtils.buttonDialog(workflow.item.name, 'CHRISPREMADES.Macros.FindSteed.Type', creatureButtons);
-    if (!creatureType) return;
-    let name = itemUtils.getConfig(workflow.item, 'name');
-    if (!name?.length) name = genericUtils.format('CHRISPREMADES.Summons.FamiliarDefault', {option: sourceActor.name});
-    let updates = {
-        actor: {
-            name,
-            system: {
-                details: {
-                    type: {
-                        value: creatureType
+    let activityIdentifier = activityUtils.getIdentifier(workflow.activity);
+    if (activityIdentifier === genericUtils.getIdentifier(workflow.item)) {
+        let findFamiliarEffect = effectUtils.getEffectByIdentifier(workflow.actor, 'findFamiliar');
+        if (findFamiliarEffect) await genericUtils.remove(findFamiliarEffect);
+        let pocketFeature = activityUtils.getActivityByIdentifier(workflow.item, 'findFamiliarPocketDimension', {strict: true});
+        let touchFeature = activityUtils.getActivityByIdentifier(workflow.item, 'findFamiliarTouch', {strict: true});
+        if (!pocketFeature || !touchFeature) return;
+        let unhideActivities = [{
+            itemUuid: workflow.item.uuid,
+            activityIdentifiers: ['findFamiliarTouch', 'findFamiliarPocketDimension'],
+            favorite: true
+        }];
+        let additionalVaeButtons = [
+            {
+                type: 'use',
+                name: pocketFeature.name,
+                identifier: 'findFamiliar',
+                activityIdentifier: 'findFamiliarPocketDimension'
+            },
+            {
+                type: 'use',
+                name: touchFeature.name,
+                identifier: 'findFamiliar',
+                activityIdentifier: 'findFamiliarTouch'
+            }
+        ];
+        let folder = itemUtils.getConfig(workflow.item, 'folder');
+        if (!folder?.length) folder = 'Familiars';
+        let actors = game.actors.filter(i => i.folder?.name === folder);
+        if (!actors.length) {
+            genericUtils.notify(genericUtils.format('CHRISPREMADES.Error.NoActors', {folder}), 'warn', {localize: false});
+            return;
+        }
+        let sourceActor = await dialogUtils.selectDocumentDialog(workflow.activity.name, 'CHRISPREMADES.Macros.FindFamiliar.Choose', actors);
+        if (!sourceActor) return;
+        let creatureButtons = [
+            ['DND5E.CreatureCelestial', 'celestial'],
+            ['DND5E.CreatureFey', 'fey'],
+            ['DND5E.CreatureFiend', 'fiend']
+        ];
+        let creatureType = await dialogUtils.buttonDialog(workflow.activity.name, 'CHRISPREMADES.Macros.FindSteed.Type', creatureButtons);
+        if (!creatureType) return;
+        let name = itemUtils.getConfig(workflow.item, 'name');
+        if (!name?.length) name = genericUtils.format('CHRISPREMADES.Summons.FamiliarDefault', {option: sourceActor.name});
+        let updates = {
+            actor: {
+                name,
+                system: {
+                    details: {
+                        type: {
+                            value: creatureType
+                        }
                     }
+                },
+                prototypeToken: {
+                    name
                 }
             },
-            prototypeToken: {
-                name
+            token: {
+                name,
+                disposition: workflow.token.document.disposition
             }
-        },
-        token: {
-            name,
-            disposition: workflow.token.document.disposition
-        }
-    };
-    let investmentOfTheChainMaster = itemUtils.getItemByIdentifier(workflow.actor, 'investmentOfTheChainMaster');
-    if (investmentOfTheChainMaster) {
-        let movementButtons = [
-            ['DND5E.MovementFly', 'fly'],
-            ['DND5E.MovementSwim', 'swim']
-        ];
-        let movement = await dialogUtils.buttonDialog(investmentOfTheChainMaster.name, 'CHRISPREMADES.Macros.FindFamiliar.Movement', movementButtons);
-        let weaponItems = sourceActor.items.filter(i => i.type === 'weapon');
-        let saveItems = sourceActor.items.filter(i => !!i.system?.save?.dc);
-        let saveDC = itemUtils.getSaveDC(workflow.item);
-        let itemUpdates = [];
-        for (let i of weaponItems) {
-            let properties = Array.from(i.system.properties);
-            properties.push('mgc');
-            itemUpdates.push({_id: i.id, system: {properties}});
-        }
-        for (let i of saveItems) {
-            let currItem = itemUpdates.find(j => j._id === i.id);
-            if (currItem) {
-                currItem.system.save = {dc: saveDC};
-            } else {
-                itemUpdates.push({_id: i.id, system: {save: {dc: saveDC}}});
+        };
+        let investmentOfTheChainMaster = itemUtils.getItemByIdentifier(workflow.actor, 'investmentOfTheChainMaster');
+        if (investmentOfTheChainMaster) {
+            let movementButtons = [
+                ['DND5E.MovementFly', 'fly'],
+                ['DND5E.MovementSwim', 'swim']
+            ];
+            let movement = await dialogUtils.buttonDialog(investmentOfTheChainMaster.name, 'CHRISPREMADES.Macros.FindFamiliar.Movement', movementButtons);
+            let weaponItems = sourceActor.items.filter(i => i.type === 'weapon');
+            let saveItems = sourceActor.items.filter(i => i.hasSave);
+            let saveDC = itemUtils.getSaveDC(workflow.item);
+            let itemUpdates = [];
+            for (let i of weaponItems) {
+                let properties = Array.from(i.system.properties);
+                properties.push('mgc');
+                itemUpdates.push({_id: i.id, system: {properties}});
             }
-        }
-        genericUtils.setProperty(updates, 'actor.system.attributes.movement.' + movement, 40);
-        let commandData = await compendiumUtils.getItemFromCompendium(constants.packs.classFeatureItems, 'Find Familiar: Command', {object: true, getDescription: true, translate: 'CHRISPREMADES.Macros.FindFamiliar.Command', identifier: 'findFamiliarCommand'});
-        if (!commandData) {
-            errors.missingPackItem();
-            return;
-        }
-        itemsToAdd.push(commandData);
-        let resistanceData = await Summons.getSummonItem('Investment of the Chain Master: Familiar Resistance', {}, workflow.item, {translate: 'CHRISPREMADES.Macros.InvestmentOfTheChainMaster.Resistance', identifier: 'investmentOfTheChainMasterResistance'});
-        if (!resistanceData) {
-            errors.missingPackItem();
-            return;
-        }
-        itemUpdates.push(resistanceData);
-        genericUtils.setProperty(updates, 'actor.items', itemUpdates);
-    }
-    let animation = itemUtils.getConfig(workflow.item, creatureType + 'Animation') ?? 'none';
-    await Summons.spawn(sourceActor, updates, workflow.item, workflow.token, {
-        range: 10, 
-        animation,
-        additionalVaeButtons: itemsToAdd.map(i => {return {type: 'use', name: i.name, identifier: i.flags['chris-premades'].info.identifier};})
-    });
-    let casterEffect = effectUtils.getEffectByIdentifier(workflow.actor, 'findFamiliar');
-    if (!casterEffect) return;
-    if (investmentOfTheChainMaster) {
-        await genericUtils.update(casterEffect, {'flags.chris-premades.macros.combat': ['investmentOfTheChainMasterActive']});
-    }
-    // Slice to keep from adding pocket quite yet
-    await itemUtils.createItems(workflow.actor, itemsToAdd.slice(1), {favorite: true, section: genericUtils.translate('CHRISPREMADES.Section.SpellFeatures'), parentEntity: casterEffect});
-    let effectData = {
-        name: pocketData.name,
-        img: pocketData.img,
-        origin: workflow.item.uuid,
-        flags: {
-            'chris-premades': {
-                findFamiliarPocketDimension: {
-                    familiarActorUuid: sourceActor.uuid,
-                    updates,
-                    animation,
-                    sceneId: game.scenes.current.id,
-                    state: false
+            for (let i of saveItems) {
+                let currItem = itemUpdates.find(j => j._id === i.id);
+                let saveActivities = i.system.activities.getByType('save');
+                for (let saveActivity of saveActivities) {
+                    if (currItem) {
+                        genericUtils.setProperty(currItem, 'system.activities.' + saveActivity.id + '.save.dc', {
+                            calculation: '',
+                            formula: saveDC.toString(),
+                            value: saveDC
+                        });
+                    } else {
+                        itemUpdates.push({_id: i.id, system: {
+                            activities: {
+                                [saveActivity.id]: {
+                                    save: {
+                                        dc: {
+                                            calculation: '',
+                                            formula: saveDC.toString(),
+                                            value: saveDC
+                                        }
+                                    }
+                                }
+                            }
+                        }});
+                    }
                 }
             }
+            genericUtils.setProperty(updates, 'actor.system.attributes.movement.' + movement, 40);
+            let commandFeature = activityUtils.getActivityByIdentifier(investmentOfTheChainMaster, 'findFamiliarCommand', {strict: true});
+            if (!commandFeature) return;
+            unhideActivities.push({
+                itemUuid: investmentOfTheChainMaster.uuid,
+                activityIdentifiers: ['findFamiliarCommand'],
+                favorite: true
+            });
+            additionalVaeButtons.push({
+                type: 'use',
+                name: commandFeature.name,
+                identifier: 'investmentOfTheChainMaster',
+                activityIdentifier: 'findFamiliarCommand'
+            });
+            let resistanceData = await Summons.getSummonItem('Investment of the Chain Master: Familiar Resistance', {}, workflow.item, {translate: 'CHRISPREMADES.Macros.InvestmentOfTheChainMaster.Resistance', identifier: 'investmentOfTheChainMasterResistance'});
+            if (!resistanceData) {
+                errors.missingPackItem();
+                return;
+            }
+            itemUpdates.push(resistanceData);
+            genericUtils.setProperty(updates, 'actor.items', itemUpdates);
         }
-    };
-    let newPocketEffect = await effectUtils.createEffect(workflow.actor, effectData, {parentEntity: casterEffect, identifier: 'findFamiliarPocketDimension'});
-    await itemUtils.createItems(workflow.actor, [pocketData], {favorite: true, section: genericUtils.translate('CHRISPREMADES.Section.SpellFeatures'), parentEntity: newPocketEffect});
+        let animation = itemUtils.getConfig(workflow.item, creatureType + 'Animation') ?? 'none';
+        await Summons.spawn(sourceActor, updates, workflow.item, workflow.token, {
+            range: 10, 
+            animation,
+            additionalVaeButtons,
+            unhideActivities
+        });
+        let casterEffect = effectUtils.getEffectByIdentifier(workflow.actor, 'findFamiliar');
+        if (!casterEffect) return;
+        if (investmentOfTheChainMaster) {
+            await genericUtils.update(casterEffect, {'flags.chris-premades.macros.combat': ['investmentOfTheChainMasterActive']});
+        }
+        let effectData = {
+            name: pocketFeature.name,
+            img: pocketFeature.img,
+            origin: workflow.item.uuid,
+            flags: {
+                'chris-premades': {
+                    findFamiliarPocketDimension: {
+                        familiarActorUuid: sourceActor.uuid,
+                        updates,
+                        animation,
+                        sceneId: game.scenes.current.id,
+                        state: false
+                    }
+                }
+            }
+        };
+        await effectUtils.createEffect(workflow.actor, effectData, {
+            parentEntity: casterEffect, 
+            identifier: 'findFamiliarPocketDimension'
+        });
+    } else if (activityIdentifier === 'findFamiliarPocketDimension') {
+        await pocketDimension({workflow});
+    } else if (activityIdentifier === 'findFamiliarTouch') {
+        await late({workflow});
+    }
 }
 async function pocketDimension({workflow}) {
     let pocketDimensionEffect = effectUtils.getEffectByIdentifier(workflow.actor, 'findFamiliarPocketDimension');
@@ -265,8 +314,8 @@ async function late({workflow}) {
         return;
     }
     let effectData = {
-        name: workflow.item.name,
-        img: workflow.item.img,
+        name: workflow.activity.name,
+        img: workflow.activity.img,
         origin: workflow.item.uuid,
         duration: {
             seconds: 1
@@ -310,14 +359,24 @@ async function early({workflow}) {
     }
     await actorUtils.setReactionUsed(familiarToken.actor);
 }
+async function veryEarly({workflow}) {
+    if (!['findFamiliarPocketDimension', 'findFamiliarTouch'].includes(activityUtils.getIdentifier(workflow.activity))) return;
+    workflowUtils.skipDialog(workflow);
+}
 export let findFamiliar = {
     name: 'Find Familiar',
-    version: '0.12.9',
+    version: '1.1.0',
+    hasAnimation: true,
     midi: {
         item: [
             {
                 pass: 'rollFinished',
                 macro: use,
+                priority: 50
+            },
+            {
+                pass: 'preTargeting',
+                macro: veryEarly,
                 priority: 50
             }
         ]
@@ -367,30 +426,10 @@ export let findFamiliar = {
         },
     ]
 };
-export let findFamiliarPocketDimension = {
-    name: 'Find Familiar: Pocket Dimension',
-    version: findFamiliar.version,
-    midi: {
-        item: [
-            {
-                pass: 'rollFinished',
-                macro: pocketDimension,
-                priority: 50
-            }
-        ]
-    }
-};
 export let findFamiliarTouch = {
     name: 'Find Familiar: Touch',
     version: findFamiliar.version,
     midi: {
-        item: [
-            {
-                pass: 'rollFinished',
-                macro: late,
-                priority: 50
-            }
-        ],
         actor: [
             {
                 pass: 'preambleComplete',
