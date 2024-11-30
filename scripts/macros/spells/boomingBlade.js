@@ -109,7 +109,7 @@ export let boomingBlade = {
             {
                 pass: 'rollFinished',
                 macro: use,
-                priority: 50
+                priority: 49
             }
         ]
     },

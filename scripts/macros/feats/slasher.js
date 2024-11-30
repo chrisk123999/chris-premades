@@ -17,7 +17,7 @@ async function lateSpeed({trigger: {entity: item}, workflow}) {
         changes: [
             {
                 key: 'system.attributes.movement.all',
-                mode: 2,
+                mode: 0,
                 value: -10,
                 priority: 20
             }
