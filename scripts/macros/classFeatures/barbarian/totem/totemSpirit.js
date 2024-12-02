@@ -1,4 +1,4 @@
 export let totemSpiritBear = {
     name: 'Totem Spirit: Bear',
-    version: '0.12.20'
+    version: '1.1.0'
 };

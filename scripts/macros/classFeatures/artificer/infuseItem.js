@@ -106,7 +106,8 @@ async function use({workflow}) {
                 errors.missingPackItem();
                 return;
             }
-            featureData.system.consume.target = selectedItem.id;
+            let activityId = Object.keys(featureData.system.activities)[0];
+            featureData.system.activities[activityId].consumption.targets[0].target = selectedItem.id;
             let effectData = {
                 name: workflow.item.name + ': ' + infusionLabel,
                 img: workflow.item.img,
@@ -129,6 +130,12 @@ async function use({workflow}) {
                         mode: 5,
                         value: 'ItemUses.' + selectedItem.name + ' (' + workflow.item.name + ': ' + infusionLabel + ')',
                         priority: 20
+                    },
+                    {
+                        key: 'flags.midi-qol.optional.MagicalStrength.countAlt',
+                        mode: 5,
+                        value: 'reaction',
+                        priority: 20
                     }
                 ]
             };
@@ -150,9 +157,9 @@ async function use({workflow}) {
                         priority: 20
                     },
                     {
-                        key: 'system.uses.per',
+                        key: 'system.uses.recovery',
                         mode: 5,
-                        value: 'dawn',
+                        value: '{period: "dawn", type: "formula", formula: "1d6"}',
                         priority: 20
                     },
                     {
@@ -162,19 +169,7 @@ async function use({workflow}) {
                         priority: 20
                     },
                     {
-                        key: 'system.uses.recovery',
-                        mode: 5,
-                        value: '1d6',
-                        priority: 20
-                    },
-                    {
-                        key: 'system.uses.prompt',
-                        mode: 5,
-                        value: false,
-                        priority: 20
-                    },
-                    {
-                        key: 'system.activation.type',
+                        key: 'activities[utility].activation.type',
                         mode: 5,
                         value: 'special',
                         priority: 20
@@ -190,7 +185,6 @@ async function use({workflow}) {
             let enchantEffect = await itemUtils.enchantItem(selectedItem, enchantData, {identifier: selection});
             await effectUtils.createEffect(selectedItem, effectData, {parentEntity: enchantEffect, strictlyInterdependent: true});
             await itemUtils.createItems(target, [featureData], {favorite: true, parentEntity: enchantEffect});
-            await genericUtils.update(selectedItem, {'system.uses.value': 6});
             break;
         }
         case 'enhancedArcaneFocus': {
@@ -252,7 +246,7 @@ async function use({workflow}) {
                 genericUtils.notify('CHRISPREMADES.Macros.InfuseItem.NoArmor', 'info');
                 return;
             }
-            selectedItem = await dialogUtils.selectDocumentDialog(workflow.item.name, 'CHRISPREMADES.Macros.InfuseItem.WhichWeapon', armor, {addNoneDocument: true});
+            selectedItem = await dialogUtils.selectDocumentDialog(workflow.item.name, 'CHRISPREMADES.Macros.InfuseItem.WhichArmor', armor, {addNoneDocument: true});
             if (!selectedItem) return;
             originalName = selectedItem.name;
             let enchantData = {
@@ -400,6 +394,13 @@ async function use({workflow}) {
                 errors.missingPackItem();
                 return;
             }
+            let activityId = Object.keys(blindFeatureData.system.activities)[0];
+            let spellSave = workflow.actor.system.attributes.spelldc;
+            blindFeatureData.system.activities[activityId].save.dc = {
+                calculation: '',
+                formula: spellSave.toString(),
+                value: spellSave
+            };
             let enchantEffect = await itemUtils.enchantItem(selectedItem, enchantData, {identifier: selection});
             await itemUtils.createItems(target, [lightFeatureData], {favorite: true, parentEntity: enchantEffect});
             await itemUtils.createItems(target, [blindFeatureData], {parentEntity: enchantEffect});
@@ -441,12 +442,6 @@ async function use({workflow}) {
                         key: 'system.magicalBonus',
                         mode: 5,
                         value: 1,
-                        priority: 20
-                    },
-                    {
-                        key: 'system.consume.amount',
-                        mode: 5,
-                        value: 0,
                         priority: 20
                     },
                     {
@@ -588,6 +583,12 @@ async function use({workflow}) {
                         key: 'system.properties',
                         mode: 2,
                         value: 'mgc',
+                        priority: 20
+                    },
+                    {
+                        key: 'system.properties',
+                        mode: 2,
+                        value: 'ret',
                         priority: 20
                     },
                     {
@@ -801,7 +802,8 @@ async function homunculusEarly({workflow}) {
 }
 export let infuseItem = {
     name: 'Infuse Item',
-    version: '0.12.33',
+    version: '1.0.0',
+    hasAnimation: true,
     midi: {
         item: [
             {
@@ -823,12 +825,12 @@ export let infuseItem = {
                     value: 'arcanePropulsionArmor'
                 },
                 {
-                    label: 'CHRISPREMADES.Macros.InfuseItem.EnhancedArcaneFocus',
-                    value: 'enhancedArcaneFocus'
-                },
-                {
                     label: 'CHRISPREMADES.Macros.InfuseItem.ArmorOfMagicalStrength',
                     value: 'armorOfMagicalStrength'
+                },
+                {
+                    label: 'CHRISPREMADES.Macros.InfuseItem.EnhancedArcaneFocus',
+                    value: 'enhancedArcaneFocus'
                 },
                 {
                     label: 'CHRISPREMADES.Macros.InfuseItem.EnhancedDefense',

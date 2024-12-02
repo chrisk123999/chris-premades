@@ -1,4 +1,4 @@
-import {compendiumUtils, constants, dialogUtils, errors, genericUtils, itemUtils} from '../../../../utils.js';
+import {activityUtils, compendiumUtils, constants, dialogUtils, effectUtils, errors, genericUtils, itemUtils, workflowUtils} from '../../../../utils.js';
 
 async function use({workflow}) {
     let classLevel = workflow.actor.classes?.artificer?.system.levels ?? 1;
@@ -49,20 +49,14 @@ async function elixirHelper(elixirType, actor) {
             errors.missingPackItem();
             return;
         }
+        let mainActivityId = itemData.flags['chris-premades']?.activityIdentifiers.experimentalElixirMain;
+        let tempActivityId = itemData.flags['chris-premades']?.activityIdentifiers.experimentalElixirHeal;
         if (elixirType === 'Healing') {
-            itemData.system.damage.parts = [
-                [
-                    '2d4[healing] + ' + actor.system.abilities.int.mod,
-                    'healing'
-                ]
-            ];
+            itemData.system.activities[mainActivityId].healing.custom.formula = '2d4[healing] + ' + actor.system.abilities.int.mod;
         }
         if ((actor.classes?.artificer?.system.levels ?? 1) >= 9) {
-            if (!itemData.system.damage.parts) itemData.system.damage.parts = [];
-            itemData.system.damage.parts.push([
-                '2d6[temphp] + ' + actor.system.abilities.int.mod,
-                'temphp'
-            ]);
+            itemData.system.activities[tempActivityId].healing.custom.formula = '2d6[temphp] + ' + actor.system.abilities.int.mod;
+            effectUtils.addMacro(itemData, 'midi.item', ['experimentalElixirConsumable']);
         }
         await itemUtils.createItems(actor, [itemData]);
     }
@@ -70,9 +64,15 @@ async function elixirHelper(elixirType, actor) {
 async function longRest({trigger: {entity: item}}) {
     await genericUtils.remove(item);
 }
+async function late({workflow}) {
+    if (activityUtils.getIdentifier(workflow.activity) !== 'experimentalElixirMain') return;
+    let feature = activityUtils.getActivityByIdentifier(workflow.item, 'experimentalElixirHeal', {strict: true});
+    if (!feature) return;
+    await workflowUtils.syntheticActivityRoll(feature, Array.from(workflow.targets));
+}
 export let experimentalElixir = {
     name: 'Experimental Elixir',
-    version: '0.12.28',
+    version: '1.1.0',
     midi: {
         item: [
             {
@@ -86,6 +86,15 @@ export let experimentalElixir = {
 export let experimentalElixirConsumable = {
     name: 'Experimental Elixir: Consumable',
     version: experimentalElixir.version,
+    midi: {
+        item: [
+            {
+                pass: 'rollFinished',
+                macro: late,
+                priority: 50
+            }
+        ]
+    },
     rest: [
         {
             pass: 'long',

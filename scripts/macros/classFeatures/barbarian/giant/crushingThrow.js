@@ -1,9 +1,11 @@
 import {itemUtils, tokenUtils, workflowUtils} from '../../../../utils.js';
 
-async function damage({trigger: {entity: item}, workflow}) {
+async function damage({workflow}) {
+    let item = itemUtils.getItemByIdentifier(workflow.actor, 'giantsHavocCrushingThrow');
+    if (!item) return;
     if (workflow.hitTargets.size !== 1 || !workflow.item.system.properties.has('thr')) return;
-    if (!['', 'str'].includes(workflow.item.system.ability)) return;
-    let isFinesse = workflow.item.system.properties.has('fin') && workflow.item.system.ability === '';
+    if (!['', 'str'].includes(workflow.activity.ability)) return;
+    let isFinesse = workflow.item.system.properties.has('fin') && workflow.activity.ability === '';
     if (isFinesse && workflow.actor.system.abilities.dex.mod > workflow.actor.system.abilities.str.mod) return;
     let distance = tokenUtils.getDistance(workflow.token, workflow.hitTargets.first());
     let demiurgicColossus = itemUtils.getItemByIdentifier(workflow.actor, 'demiurgicColossus');
@@ -15,7 +17,7 @@ async function damage({trigger: {entity: item}, workflow}) {
 }
 export let giantsHavocCrushingThrow = {
     name: 'Giant\'s Havoc: Crushing Throw',
-    version: '0.12.20',
+    version: '1.1.0',
     midi: {
         actor: [
             {

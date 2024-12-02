@@ -55,7 +55,7 @@ async function late({workflow}) {
 }
 export let callTheHunt = {
     name: 'Call the Hunt',
-    version: '0.12.20',
+    version: '1.1.0',
     midi: {
         item: [
             {

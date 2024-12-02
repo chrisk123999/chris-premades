@@ -29,7 +29,7 @@ async function use({workflow}) {
 }
 export let mightyImpel = {
     name: 'Mighty Impel',
-    version: '0.12.20',
+    version: '1.1.0',
     midi: {
         item: [
             {

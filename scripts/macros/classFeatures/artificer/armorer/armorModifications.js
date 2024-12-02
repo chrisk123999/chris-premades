@@ -1,4 +1,4 @@
 export let armorModifications = {
     name: 'Armor Modifications',
-    version: '0.12.28'
+    version: '1.1.0'
 };

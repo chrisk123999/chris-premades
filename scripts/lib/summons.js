@@ -11,7 +11,7 @@ export class Summons {
         this.spawnedTokens = [];
         this.currentIndex = 0;
     }
-    static async spawn(sourceActors, updates = [{}], originItem, summonerToken, options = {duration: undefined, callbacks: undefined, range: 100, animation: 'default', onDeleteMacros: undefined, concentrationNonDependent: false, initiativeType: 'separate', additionalVaeButtons: [], additionalSummonVaeButtons: [], dontDismissOnDefeat: false, dismissActivity: undefined, unhideActivities: undefined/*dontAnimateOnDismiss: false*/}) {
+    static async spawn(sourceActors, updates = [{}], originItem, summonerToken, options = {duration: undefined, callbacks: undefined, range: 100, animation: 'default', onDeleteMacros: undefined, concentrationNonDependent: false, initiativeType: 'separate', additionalVaeButtons: [], additionalSummonVaeButtons: [], dontDismissOnDefeat: false, dismissActivity: undefined, unhideActivities: undefined, customIdentifier: undefined/*dontAnimateOnDismiss: false*/}) {
         if (!Array.isArray(sourceActors)) sourceActors = [sourceActors];
         if (sourceActors.length && sourceActors[0]?.documentName !== 'Actor') {
             // Maybe from selectDocumentsDialog, in which case, transform from {document: Actor5e, amount: Int}[] to Actor5e[]:
@@ -313,16 +313,16 @@ export class Summons {
     }
     async handleEffects() {
         // Account for items that can spawn things multiple times
-        let effect = await effectUtils.getEffectByIdentifier(this.originItem.actor, genericUtils.getIdentifier(this.originItem) ?? this.originItem.name);
+        let effect = await effectUtils.getEffectByIdentifier(this.originItem.actor, this.options?.customIdentifier ?? genericUtils.getIdentifier(this.originItem) ?? this.originItem.name);
         if (effect) await genericUtils.update(effect, {
             flags: {
                 'chris-premades': {
                     summons: {
                         ids: {
-                            [this.originItem.name]: effect.flags['chris-premades'].summons.ids[this.originItem.name].concat(this.spawnedTokensIds)
+                            [this.originItem.name]: (effect.flags['chris-premades'].summons?.ids[this.originItem.name] ?? []).concat(this.spawnedTokensIds)
                         },
                         scenes: {
-                            [this.originItem.name]: effect.flags['chris-premades'].summons.scenes[this.originItem.name].concat(this.spawnedTokensScenes)
+                            [this.originItem.name]: (effect.flags['chris-premades'].summons?.scenes[this.originItem.name] ?? []).concat(this.spawnedTokensScenes)
                         }
                     }
                 }
@@ -330,7 +330,7 @@ export class Summons {
         });
         // Options to be added to the created effect
         let effectOptions = {
-            identifier: genericUtils.getIdentifier(this.originItem) ?? this.originItem.name
+            identifier: this.options?.customIdentifier ?? genericUtils.getIdentifier(this.originItem) ?? this.originItem.name
         };
         // For unhiding activities
         if (this.options?.unhideActivities) effectOptions.unhideActivities = this.options.unhideActivities;

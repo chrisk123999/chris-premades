@@ -56,7 +56,7 @@ async function damage({workflow}) {
 }
 export let infiltratorArmor = {
     name: 'Arcane Armor: Infiltrator Model',
-    version: '0.12.28',
+    version: '1.1.0',
     midi: {
         item: [
             {

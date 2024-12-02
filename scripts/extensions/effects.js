@@ -46,11 +46,20 @@ function preCreateActiveEffect(effect, updates, options, id) {
     } else return;
     effect.updateSource({description: description});
 }
-function unhideActivities(effect) {
-    let unhideFlagsArr = effect.flags?.['chris-premades']?.unhideActivities;
-    if (!unhideFlagsArr) return;
-    if (!unhideFlagsArr.length) unhideFlagsArr = [unhideFlagsArr];
-    let favorites = [];
+// Wizardry to ensure nothing screwy happens when multiple effects are deleted/added in quick sequence
+const combinedDebounce = (callback, delay) => {
+    let combined = [];
+    let debounced = foundry.utils.debounce(() => {
+        callback(combined);
+        combined = [];
+    }, delay);
+    return (newArr) => {
+        combined = combined.concat(newArr);
+        debounced(combined);
+    };
+};
+const unhideDebounce = combinedDebounce((unhideFlagsArr) => {
+    let favorites = {};
     for (let unhideFlags of unhideFlagsArr) {
         let {itemUuid, activityIdentifiers} = unhideFlags;
         let item = fromUuidSync(itemUuid);
@@ -61,14 +70,14 @@ function unhideActivities(effect) {
         activityIdentifiers = new Set(activityIdentifiers);
         let newCprRiders = Array.from(cprRiders.difference(activityIdentifiers));
         itemUtils.setHiddenActivities(item, newCprRiders);
-        if (unhideFlags.favorite) favorites.push(activityIdentifiers.map(i => activityUtils.getActivityByIdentifier(item, i)).filter(i => i));
+        let actorUuid = item.actor.uuid;
+        if (unhideFlags.favorite) favorites[actorUuid] = (favorites[actorUuid] ?? new Set([])).union(activityIdentifiers.map(i => activityUtils.getActivityByIdentifier(item, i)).filter(i => i));
     }
-    if (favorites.length) actorUtils.addFavorites(effect.target, favorites.flatMap(i => Array.from(i)), 'activity');
-}
-function rehideActivities(effect) {
-    let unhideFlagsArr = effect.flags?.['chris-premades']?.unhideActivities;
-    if (!unhideFlagsArr) return;
-    if (!unhideFlagsArr.length) unhideFlagsArr = [unhideFlagsArr];
+    for (let [uuid, faves] of Object.entries(favorites)) {
+        actorUtils.addFavorites(fromUuidSync(uuid), Array.from(faves), 'activity');
+    }
+}, 200);
+const rehideDebounce = combinedDebounce((unhideFlagsArr) => {
     let favorites = [];
     for (let unhideFlags of unhideFlagsArr) {
         let {itemUuid, activityIdentifiers} = unhideFlags;
@@ -80,9 +89,24 @@ function rehideActivities(effect) {
         activityIdentifiers = new Set(activityIdentifiers);
         let newCprRiders = Array.from(cprRiders.union(activityIdentifiers));
         itemUtils.setHiddenActivities(item, newCprRiders);
-        if (unhideFlags.favorite) favorites.push(activityIdentifiers.map(i => activityUtils.getActivityByIdentifier(item, i)).filter(i => i));
+        let actorUuid = item.actor.uuid;
+        if (unhideFlags.favorite) favorites[actorUuid] = (favorites[actorUuid] ?? new Set([])).union(activityIdentifiers.map(i => activityUtils.getActivityByIdentifier(item, i)).filter(i => i));
     }
-    if (favorites.length) actorUtils.removeFavorites(effect.target, favorites.flatMap(i => Array.from(i)), 'activity');
+    for (let [uuid, faves] of Object.entries(favorites)) {
+        actorUtils.removeFavorites(fromUuidSync(uuid), Array.from(faves), 'activity');
+    }
+}, 200);
+function unhideActivities(effect) {
+    let unhideFlagsArr = effect.flags?.['chris-premades']?.unhideActivities;
+    if (!unhideFlagsArr) return;
+    if (!unhideFlagsArr.length) unhideFlagsArr = [unhideFlagsArr];
+    unhideDebounce(unhideFlagsArr);
+}
+function rehideActivities(effect) {
+    let unhideFlagsArr = effect.flags?.['chris-premades']?.unhideActivities;
+    if (!unhideFlagsArr) return;
+    if (!unhideFlagsArr.length) unhideFlagsArr = [unhideFlagsArr];
+    rehideDebounce(unhideFlagsArr);
 }
 export let effects = {
     noAnimation,

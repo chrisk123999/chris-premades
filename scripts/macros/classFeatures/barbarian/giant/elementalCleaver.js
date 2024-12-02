@@ -1,25 +1,27 @@
-import {compendiumUtils, constants, dialogUtils, effectUtils, errors, genericUtils, itemUtils} from '../../../../utils.js';
+import {activityUtils, compendiumUtils, constants, dialogUtils, effectUtils, errors, genericUtils, itemUtils} from '../../../../utils.js';
 
 async function use({workflow}) {
-    let weapons = workflow.actor.items.filter(i => i.type === 'weapon' && i.system.equipped && !constants.unarmedAttacks.includes(genericUtils.getIdentifier(i)));
-    if (!weapons.length) return;
-    let selectedWeapon;
-    if (weapons.length === 1) {
-        selectedWeapon = weapons[0];
-    } else {
-        selectedWeapon = await dialogUtils.selectDocumentDialog(workflow.item.name, 'CHRISPREMADES.Macros.ElementalCleaver.SelectWeapon', weapons);
+    let activityIdentifier = activityUtils.getIdentifier(workflow.activity);
+    if (activityIdentifier === genericUtils.getIdentifier(workflow.item)) {
+        let weapons = workflow.actor.items.filter(i => i.type === 'weapon' && i.system.equipped && !constants.unarmedAttacks.includes(genericUtils.getIdentifier(i)));
+        if (!weapons.length) return;
+        let selectedWeapon;
+        if (weapons.length === 1) {
+            selectedWeapon = weapons[0];
+        } else {
+            selectedWeapon = await dialogUtils.selectDocumentDialog(workflow.item.name, 'CHRISPREMADES.Macros.ElementalCleaver.SelectWeapon', weapons);
+        }
+        if (!selectedWeapon) return;
+        await infuseWeapon(workflow, selectedWeapon);
+    } else if (activityIdentifier === 'elementalCleaverChange') {
+        let effect = effectUtils.getEffectByIdentifier(workflow.actor, 'elementalCleaver');
+        if (!effect) return;
+        let weaponId = effect.flags['chris-premades']?.elementalCleaver?.weaponId;
+        let selectedWeapon = workflow.actor.items.get(weaponId);
+        if (!selectedWeapon) return;
+        await genericUtils.remove(effect);
+        await infuseWeapon(workflow, selectedWeapon);
     }
-    if (!selectedWeapon) return;
-    await infuseWeapon(workflow, selectedWeapon);
-}
-async function late({workflow}) {
-    let effect = effectUtils.getEffectByIdentifier(workflow.actor, 'elementalCleaver');
-    if (!effect) return;
-    let weaponId = effect.flags['chris-premades']?.elementalCleaver?.weaponId;
-    let selectedWeapon = workflow.actor.items.get(weaponId);
-    if (!selectedWeapon) return;
-    await genericUtils.remove(effect);
-    await infuseWeapon(workflow, selectedWeapon);
 }
 async function infuseWeapon(workflow, selectedWeapon) {
     let rageEffect = effectUtils.getEffectByIdentifier(workflow.actor, 'rage');
@@ -33,16 +35,15 @@ async function infuseWeapon(workflow, selectedWeapon) {
     ];
     let damageType = await dialogUtils.buttonDialog(workflow.item.name, 'CHRISPREMADES.Dialog.DamageType',buttons);
     if (!damageType) return;
-    let parts = genericUtils.deepClone(selectedWeapon.system.damage.parts);
-    for (let currParts of parts) {
-        currParts[0] = currParts[0].replaceAll(currParts[1], damageType);
-        currParts[1] = damageType;
-    }
-    let versatile = genericUtils.duplicate(selectedWeapon.system.damage.versatile) ?? '';
+    let baseFormula = selectedWeapon.system.damage.base.formula;
+    let baseType = selectedWeapon.system.damage.base.types.first();
+    let newFormula = baseFormula.replaceAll(baseType, damageType);
+    let versatile = selectedWeapon.system.damage.versatile.formula;
+    let versatileType = selectedWeapon.system.damage.versatile.types.first();
     let demiurgicColossus = itemUtils.getItemByIdentifier(workflow.actor, 'demiurgicColossus');
     let bonusDice = demiurgicColossus ? 2 : 1;
-    parts.push([bonusDice + 'd6[' + damageType + ']', damageType]);
-    if (selectedWeapon.system.damage.parts.length) versatile.replaceAll(selectedWeapon.system.damage.parts[0][1], damageType);
+    newFormula += ' + ' + bonusDice + 'd6[' + damageType + ']';
+    if (versatile?.length) versatile.replaceAll(versatileType, damageType);
     if (versatile?.length) versatile += ' + ' + bonusDice + 'd6[' + damageType + ']';
     let enchantData = {
         name: genericUtils.translate('CHRISPREMADES.Macros.ElementalCleaver.ElementalCleaver'),
@@ -59,26 +60,45 @@ async function infuseWeapon(workflow, selectedWeapon) {
                 priority: 20
             },
             {
-                key: 'system.damage.parts',
+                key: 'system.damage.base.custom.enabled',
                 mode: 5,
-                value: JSON.stringify(parts),
+                value: '"true"',
+                priority: 20
+            },
+            {
+                key: 'system.damage.base.custom.formula',
+                mode: 5,
+                value: newFormula,
+                priority: 20
+            },
+            {
+                key: 'system.damage.base.types',
+                mode: 5,
+                value: '["' + damageType + '"]',
                 priority: 20
             }
         ]
     };
     if (versatile?.length) {
         enchantData.changes.push({
-            key: 'system.damage.versatile',
+            key: 'system.damage.versatile.custom.enabled',
+            mode: 5,
+            value: '"true"',
+            priority: 20
+        }, {
+            key: 'system.damage.versatile.custom.formula',
             mode: 5,
             value: versatile,
             priority: 20
+        }, {
+            key: 'system.damage.versatile.types',
+            mode: 5,
+            value: '["' + damageType + '"]',
+            priority: 20
         });
     }
-    let featureData = await compendiumUtils.getItemFromCompendium(constants.featurePacks.classFeatureItems, 'Elemental Cleaver: Change Damage Type', {object: true, getDescription: true, translate: 'CHRISPREMADES.Macros.ElementalCleaver.Change', identifier: 'elementalCleaverChange'});
-    if (!featureData) {
-        errors.missingPackItem();
-        return;
-    }
+    let feature = activityUtils.getActivityByIdentifier(workflow.item, 'elementalCleaverChange', {strict: true});
+    if (!feature) return;
     let effectData = {
         name: genericUtils.translate('CHRISPREMADES.Macros.ElementalCleaver.ElementalCleaver'),
         img: workflow.item.img,
@@ -94,14 +114,22 @@ async function infuseWeapon(workflow, selectedWeapon) {
             }
         }
     };
-    let effect = await effectUtils.createEffect(workflow.actor, effectData, {parentEntity: rageEffect, identifier: 'elementalCleaver', vae: [{type: 'use', name: featureData.name, identifier: 'elementalCleaverChange'}]});
+    let effect = await effectUtils.createEffect(workflow.actor, effectData, {
+        parentEntity: rageEffect, 
+        identifier: 'elementalCleaver', 
+        vae: [{
+            type: 'use', 
+            name: feature.name,
+            identifier: 'elementalCleaver', 
+            activityIdentifier: 'elementalCleaverChange'
+        }]
+    });
     if (!effect) return;
     await itemUtils.enchantItem(selectedWeapon, enchantData, {parentEntity: effect});
-    await itemUtils.createItems(workflow.actor, [featureData], {favorite: true, section: genericUtils.translate('CHRISPREMADES.Section.Rage'), parentEntity: effect});
 }
 export let elementalCleaver = {
     name: 'Elemental Cleaver',
-    version: '0.12.20',
+    version: '1.1.0',
     midi: {
         item: [
             {
@@ -117,18 +145,5 @@ export let elementalCleaver = {
                 'Elemental Cleaver: Change Damage Type'
             ]
         }
-    }
-};
-export let elementalCleaverChange = {
-    name: 'Elemental Cleaver: Change Damage Type',
-    version: elementalCleaver.version,
-    midi: {
-        item: [
-            {
-                pass: 'rollFinished',
-                macro: late,
-                priority: 50
-            }
-        ]
     }
 };

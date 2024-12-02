@@ -33,7 +33,7 @@ async function damage({trigger, workflow}) {
 }
 export let arcaneJolt = {
     name: 'Arcane Jolt',
-    version: '0.12.83',
+    version: '1.1.0',
     midi: {
         actor: [
             {

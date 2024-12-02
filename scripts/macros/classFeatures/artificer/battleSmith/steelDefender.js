@@ -1,8 +1,9 @@
 import {Summons} from '../../../../lib/summons.js';
-import {actorUtils, animationUtils, combatUtils, compendiumUtils, constants, dialogUtils, effectUtils, genericUtils, itemUtils, socketUtils, tokenUtils, workflowUtils} from '../../../../utils.js';
+import {activityUtils, actorUtils, animationUtils, combatUtils, compendiumUtils, constants, dialogUtils, effectUtils, genericUtils, itemUtils, socketUtils, tokenUtils, workflowUtils} from '../../../../utils.js';
 import {arcaneJoltHelper} from './arcaneJolt.js';
 
 async function use({workflow}) {
+    if (activityUtils.getIdentifier(workflow.activity) !== genericUtils.getIdentifier(workflow.item)) return;
     let sourceActor = await compendiumUtils.getActorFromCompendium(constants.packs.summons, 'CPR - Steel Defender');
     if (!sourceActor) return;
     let deflectAttackData = await Summons.getSummonItem('Deflect Attack', {}, workflow.item, {translate: 'CHRISPREMADES.Macros.SteelDefender.DeflectAttack', identifier: 'steelDefenderDeflectAttack'});
@@ -15,9 +16,9 @@ async function use({workflow}) {
     if (!itemsToAdd.every(i => i)) return;
     let classLevel = workflow.actor.classes?.artificer?.system.levels;
     if (!classLevel) return;
-    let repairUses = workflow.item.flags['chris-premades']?.steelDefenderRepair?.uses;
-    if (isNaN(repairUses)) await genericUtils.setFlag(workflow.item, 'chris-premades', 'steelDefenderRepair.uses', 3);
-    repairData.system.uses.value = repairUses;
+    let repairUses = workflow.item.flags['chris-premades']?.steelDefenderRepair?.spent;
+    if (isNaN(repairUses)) await genericUtils.setFlag(workflow.item, 'chris-premades', 'steelDefenderRepair.spent', 0);
+    repairData.system.uses.spent = repairUses;
     let hpValue = 2 + workflow.actor.system.abilities.int.mod + 5 * classLevel;
     let name = itemUtils.getConfig(workflow.item, 'name');
     if (!name?.length) name = genericUtils.translate('CHRISPREMADES.Summons.CreatureNames.SteelDefender');
@@ -74,26 +75,36 @@ async function use({workflow}) {
         genericUtils.setProperty(updates, 'actor.prototypeToken.texture.src', tokenImg);
         genericUtils.setProperty(updates, 'token.texture.src', tokenImg);
     }
+    let deflectActivityId = Object.keys(updates.actor.items[0].system.activities)[0];
     if (classLevel > 14) {
         updates.actor.system.attributes.ac = {flat: 17};
-        updates.actor.items[0].system.damage.parts = [['1d4[force] + ' + workflow.actor.system.abilities.int.mod, 'force']];
+        updates.actor.items[0].system.activities[deflectActivityId].damage.parts[0].formula = '1d4[force] + ' + workflow.actor.system.abilities.int.mod;
+    } else {
+        updates.actor.items[0].system.activities[deflectActivityId].damage.parts = [];
     }
     let animation = itemUtils.getConfig(workflow.item, 'animation') ?? 'none';
-    let commandFeatureData = await compendiumUtils.getItemFromCompendium(constants.featurePacks.classFeatureItems, 'Steel Defender: Command', {object: true, getDescription: true, translate: 'CHRISPREMADES.Macros.SteelDefender.Command', identifier: 'steelDefenderCommand'});
-    if (!commandFeatureData) return;
+    let commandFeature = activityUtils.getActivityByIdentifier(workflow.item, 'steelDefenderCommand', {strict: true});
+    if (!commandFeature) return;
     await Summons.spawn(sourceActor, updates, workflow.item, workflow.token, {
         range: 10,
         animation,
         initiativeType: 'follows',
-        additionalVaeButtons: [{type: 'use', name: commandFeatureData.name, identifier: 'steelDefenderCommand'}],
+        additionalVaeButtons: [{
+            type: 'use', 
+            name: commandFeature.name, 
+            identifier: 'steelDefender', 
+            activityIdentifier: 'steelDefenderCommand'
+        }],
         additionalSummonVaeButtons: 
             itemsToAdd
                 .filter(i => ['steelDefenderForceEmpoweredRend', 'steelDefenderRepair', 'steelDefenderDodge'].includes(i.flags['chris-premades'].info.identifier))
-                .map(i => ({type: 'use', name: i.name, identifier: i.flags['chris-premades'].info.identifier}))
+                .map(i => ({type: 'use', name: i.name, identifier: i.flags['chris-premades'].info.identifier})),
+        unhideActivities: {
+            itemUuid: workflow.item.uuid,
+            activityIdentifiers: ['steelDefenderCommand'],
+            favorite: true
+        }
     });
-    let casterEffect = effectUtils.getEffectByIdentifier(workflow.actor, 'steelDefender');
-    if (!casterEffect) return;
-    await itemUtils.createItems(workflow.actor, [commandFeatureData], {favorite: true, parentEntity: casterEffect});
 }
 async function arcaneJolt({workflow}) {
     if (workflow.hitTargets.size !== 1) return;
@@ -116,17 +127,18 @@ async function early({trigger: {entity: item, token}, workflow}) {
     await workflowUtils.syntheticItemRoll(item, [workflow.token]);
 }
 async function longRest({trigger: {entity: item}}) {
-    await genericUtils.setFlag(item, 'chris-premades', 'steelDefenderRepair.uses', 3);
+    await genericUtils.setFlag(item, 'chris-premades', 'steelDefenderRepair.spent', 0);
 }
 async function repair({workflow}) {
     let effect = effectUtils.getEffectByIdentifier(workflow.actor, 'summonedEffect');
     let originItem = await fromUuid(effect?.origin);
     if (!originItem) return;
-    await genericUtils.setFlag(originItem, 'chris-premades', 'steelDefenderRepair.uses', workflow.item.system.uses.value);
+    await genericUtils.setFlag(originItem, 'chris-premades', 'steelDefenderRepair.spent', workflow.item.system.uses.spent);
 }
 export let steelDefender = {
     name: 'Steel Defender',
-    version: '0.12.28',
+    version: '1.1.0',
+    hasAnimation: true,
     midi: {
         item: [
             {

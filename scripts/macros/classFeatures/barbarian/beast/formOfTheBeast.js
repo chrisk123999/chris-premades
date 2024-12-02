@@ -1,6 +1,7 @@
-import {combatUtils, workflowUtils} from '../../../../utils.js';
+import {activityUtils, combatUtils, workflowUtils} from '../../../../utils.js';
 
 async function use({workflow}) {
+    if (activityUtils.getIdentifier(workflow.activity) !== 'formOfTheBeastBite') return;
     if (!workflow.hitTargets.size) return;
     if (!Math.floor(workflow.damageList[0].damageDetail.reduce((acc, i) => acc + i.value, 0))) return;
     if (!combatUtils.perTurnCheck(workflow.item, 'formOfTheBeastBite', true, workflow.token.id)) return;
@@ -10,9 +11,19 @@ async function use({workflow}) {
     await workflowUtils.applyDamage([workflow.token], workflow.actor.system.attributes.prof, 'healing');
     await combatUtils.setTurnCheck(workflow.item, 'formOfTheBeastBite');
 }
+// TODO: Ensure utility doesn't become an "other activity" once Tim adds a way of confirming that
 export let formOfTheBeast = {
     name: 'Form of the Beast',
-    version: '0.12.20',
+    version: '1.1.0',
+    midi: {
+        item: [
+            {
+                pass: 'rollFinished',
+                macro: use,
+                priority: 50
+            }
+        ]
+    },
     ddbi: {
         removedItems: {
             'Form of the Beast': [
@@ -22,18 +33,5 @@ export let formOfTheBeast = {
                 'Form of the Beast: Tail (reaction)'
             ]
         }
-    }
-};
-export let formOfTheBeastBite = {
-    name: 'Form of the Beast: Bite',
-    version: formOfTheBeast.version,
-    midi: {
-        item: [
-            {
-                pass: 'rollFinished',
-                macro: use,
-                priority: 50
-            }
-        ]
     }
 };

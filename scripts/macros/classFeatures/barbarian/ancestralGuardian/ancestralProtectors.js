@@ -4,7 +4,7 @@ async function sourceAttack({trigger: {entity: item}, workflow}) {
     if (workflow.hitTargets.size !== 1) return;
     let effect = effectUtils.getEffectByIdentifier(workflow.actor, 'rage');
     if (!effect) return;
-    if (!constants.attacks.includes(workflow.item.system.actionType)) return;
+    if (!constants.attacks.includes(workflow.activity.actionType)) return;
     if (!combatUtils.perTurnCheck(item, 'ancestralProtectors', true, workflow.token.id)) return;
     let effectData = {
         name: genericUtils.translate('CHRISPREMADES.Macros.AncestralProtectors.Target'),
@@ -26,7 +26,7 @@ async function sourceAttack({trigger: {entity: item}, workflow}) {
     await combatUtils.setTurnCheck(item, 'ancestralProtectors');
 }
 async function early({workflow}) {
-    if (!constants.attacks.includes(workflow.item.system.actionType)) return;
+    if (!constants.attacks.includes(workflow.activity.actionType)) return;
     let effect = effectUtils.getEffectByIdentifier(workflow.actor, 'ancestralProtectorsTarget');
     let origin = await fromUuid(effect?.origin);
     if (!origin) return;
@@ -37,7 +37,7 @@ async function early({workflow}) {
     workflow.attackAdvAttribution.add(genericUtils.translate('DND5E.Disadvantage') + ': ' + origin.name);
 }
 async function late({workflow}) {
-    if (!constants.attacks.includes(workflow.item.system.actionType)) return;
+    if (!constants.attacks.includes(workflow.activity.actionType)) return;
     if (workflow.hitTargets.size !== 1) return;
     let effect = effectUtils.getEffectByIdentifier(workflow.actor, 'ancestralProtectorsTarget');
     let origin = await fromUuid(effect?.origin);
@@ -76,7 +76,7 @@ async function combatEnd({trigger: {entity: item}}) {
 }
 export let ancestralProtectors = {
     name: 'Ancestral Protectors',
-    version: '0.12.20',
+    version: '1.1.0',
     midi: {
         actor: [
             {

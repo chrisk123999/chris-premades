@@ -1,7 +1,7 @@
 import {combatUtils, constants, effectUtils, genericUtils, itemUtils, workflowUtils} from '../../../../utils.js';
 
 async function damage({trigger: {entity: item}, workflow}) {
-    if (workflow.hitTargets.size !== 1 || !constants.weaponAttacks.includes(workflow.item.system.actionType)) return;
+    if (workflow.hitTargets.size !== 1 || !constants.weaponAttacks.includes(workflow.activity.actionType)) return;
     let rageEffect = effectUtils.getEffectByIdentifier(workflow.actor, 'rage');
     if (!rageEffect) return;
     let damageType = genericUtils.getIdentifier(item) === 'divineFuryNecrotic' ? 'necrotic' : 'radiant';
@@ -16,7 +16,7 @@ async function combatEnd({trigger: {entity: item}}) {
 }
 export let divineFuryNecrotic = {
     name: 'Divine Fury: Necrotic',
-    version: '0.12.20',
+    version: '1.1.0',
     midi: {
         actor: [
             {

@@ -56,7 +56,7 @@ async function use({workflow}) {
 }
 export let bolsteringMagic = {
     name: 'Bolstering Magic',
-    version: '0.12.20',
+    version: '1.1.0',
     midi: {
         item: [
             {

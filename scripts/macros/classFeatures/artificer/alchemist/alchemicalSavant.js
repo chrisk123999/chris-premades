@@ -16,7 +16,7 @@ async function damage({trigger: {entity: item}, workflow}) {
 }
 export let alchemicalSavant = {
     name: 'Alchemical Savant',
-    version: '1.0.37',
+    version: '1.1.0',
     midi: {
         actor: [
             {

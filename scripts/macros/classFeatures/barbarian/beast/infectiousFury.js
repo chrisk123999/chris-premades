@@ -1,13 +1,14 @@
-import {actorUtils, dialogUtils, genericUtils, itemUtils, socketUtils, tokenUtils, workflowUtils} from '../../../../utils.js';
+import {activityUtils, actorUtils, dialogUtils, effectUtils, genericUtils, itemUtils, socketUtils, tokenUtils, workflowUtils} from '../../../../utils.js';
 
-async function attack({workflow}) {
+async function attack({trigger: {entity: item}, workflow}) {
     if (workflow.hitTargets.size !== 1) return;
-    let feature = itemUtils.getItemByIdentifier(workflow.actor, 'infectiousFury');
-    if (!feature || !feature.system.uses.value) return;
-    let selection = await dialogUtils.confirm(feature.name, genericUtils.format('CHRISPREMADES.Dialog.Use', {itemName: feature.name}));
+    if (!item?.system.uses.value) return;
+    let isNatural = workflow.item.system.type.value === 'natural';
+    isNatural ||= activityUtils.getIdentifier(workflow.activity)?.includes('formOfTheBeast');
+    if (!isNatural) return;
+    let selection = await dialogUtils.confirm(item.name, genericUtils.format('CHRISPREMADES.Dialog.Use', {itemName: item.name}));
     if (!selection) return;
-    await genericUtils.update(feature, {'system.uses.value': feature.system.uses.value - 1});
-    await workflowUtils.syntheticItemRoll(feature, [workflow.hitTargets.first()]);
+    await workflowUtils.syntheticItemRoll(item, [workflow.hitTargets.first()]);
 }
 async function use({workflow}) {
     if (!workflow.failedSaves.size) return;
@@ -57,7 +58,7 @@ async function use({workflow}) {
 }
 export let infectiousFury = {
     name: 'Infectious Fury',
-    version: '0.12.20',
+    version: '1.1.0',
     midi: {
         item: [
             {
@@ -65,14 +66,8 @@ export let infectiousFury = {
                 macro: use,
                 priority: 50
             }
-        ]
-    }
-};
-export let infectiousFuryAttack = {
-    name: 'Infectious Fury: Attack',
-    version: infectiousFury.version,
-    midi: {
-        item: [
+        ],
+        actor: [
             {
                 pass: 'attackRollComplete',
                 macro: attack,

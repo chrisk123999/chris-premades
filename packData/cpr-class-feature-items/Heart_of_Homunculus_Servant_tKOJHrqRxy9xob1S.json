@@ -1,0 +1,50 @@
+{
+  "name": "Heart of Homunculus Servant",
+  "type": "loot",
+  "img": "icons/commodities/gems/gem-rough-cushion-red.webp",
+  "system": {
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "source": {
+      "custom": "",
+      "revision": 1,
+      "rules": "2024"
+    },
+    "identified": true,
+    "unidentified": {
+      "description": ""
+    },
+    "container": null,
+    "quantity": 1,
+    "weight": {
+      "value": 0,
+      "units": "lb"
+    },
+    "price": {
+      "value": 0,
+      "denomination": "gp"
+    },
+    "rarity": "",
+    "properties": [
+      "mgc"
+    ],
+    "type": {
+      "value": "gem",
+      "subtype": ""
+    },
+    "identifier": "heart-of-homunculus-servant"
+  },
+  "effects": [],
+  "folder": null,
+  "flags": {
+    "dnd5e": {
+      "riders": {
+        "activity": []
+      }
+    }
+  },
+  "_id": "tKOJHrqRxy9xob1S",
+  "_key": "!items!tKOJHrqRxy9xob1S"
+}

@@ -41,7 +41,7 @@ async function use({workflow}) {
 }
 export let bestialSoul = {
     name: 'Bestial Soul',
-    version: '0.12.20',
+    version: '1.1.0',
     midi: {
         item: [
             {
