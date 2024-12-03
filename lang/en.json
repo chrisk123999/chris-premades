@@ -1750,6 +1750,11 @@
             },
             "Success": "Success"
         },
+        "Mastery": {
+            "Cleave": {
+                "Name": "Cleave"
+            }
+        },
         "Medkit": {
             "Categories": {
                 "animation": {
@@ -2013,6 +2018,10 @@
                 "4": "Gamemaster"
             },
             "SelectCompendium": "Select a compendium:",
+            "activityCSSTweak": {
+                "Hint": "When enabled, activities will have all their information one one tab. Reload required after disabling.",
+                "Name": "Activities CSS Tweak"
+            },
             "addActions": {
                 "0": "Disabled",
                 "1": "Linked Characters",
