@@ -1,8 +1,9 @@
 import {Summons} from '../../../../lib/summons.js';
 import {Teleport} from '../../../../lib/teleport.js';
-import {actorUtils, animationUtils, compendiumUtils, constants, dialogUtils, effectUtils, genericUtils, itemUtils, tokenUtils, workflowUtils} from '../../../../utils.js';
+import {activityUtils, actorUtils, animationUtils, compendiumUtils, constants, dialogUtils, effectUtils, genericUtils, itemUtils, tokenUtils, workflowUtils} from '../../../../utils.js';
 
 async function use({workflow}) {
+    if (activityUtils.getIdentifier(workflow.activity) !== genericUtils.getIdentifier(workflow.item)) return;
     let sourceActor = await compendiumUtils.getActorFromCompendium(constants.packs.summons, 'CPR - Wildfire Spirit');
     if (!sourceActor) return;
     let druidLevel = workflow.actor.classes?.druid?.system?.levels;
@@ -10,11 +11,11 @@ async function use({workflow}) {
     let flameSeedData = await Summons.getSummonItem('Flame Seed', {}, workflow.item, {translate: 'CHRISPREMADES.Macros.SummonWildfireSpirit.FlameSeed', identifier: 'summonWildfireSpiritFlameSeed', flatAttack: true});
     let fieryTeleportationData = await Summons.getSummonItem('Fiery Teleportation', {}, workflow.item, {translate: 'CHRISPREMADES.Macros.SummonWildfireSpirit.FieryTeleportation', identifier: 'summonWildfireSpiritFieryTeleportation'});
     let fieryTeleportationDamageData = await Summons.getSummonItem('Fiery Teleportation: Damage', {}, workflow.item, {translate: 'CHRISPREMADES.Macros.SummonWildfireSpirit.FieryTeleportationDamage', identifier: 'summonWildfireSpiritFieryTeleportationDamage', flatDC: true});
-    let commandData = await compendiumUtils.getItemFromCompendium(constants.featurePacks.classFeatureItems, 'Wildfire Spirit: Command', {object: true, getDescription: true, translate: 'CHRISPREMADES.Macros.SummonWildfireSpirit.Command', identifier: 'summonWildfireSpiritCommand'});
     let initialDamageData = await compendiumUtils.getItemFromCompendium(constants.featurePacks.classFeatureItems, 'Summon Wildfire Spirit: Damage', {object: true, getDescription: true, translate: 'CHRISPREMADES.Macros.SummonWildfireSpirit.Damage', flatDC: itemUtils.getSaveDC(workflow.item)});
     let dodgeData = await compendiumUtils.getItemFromCompendium(constants.packs.actions, 'Dodge', {object: true, getDescription: true, translate: 'CHRISPREMADES.Macros.Actions.Dodge', identifier: 'summonWildfireSpiritDodge'});
     let itemsToAdd = [fieryTeleportationDamageData, flameSeedData, fieryTeleportationData, dodgeData];
-    if (!itemsToAdd.every(i => i) || !commandData || !initialDamageData) return;
+    let commandFeature = activityUtils.getActivityByIdentifier(workflow.item, 'summonWildfireSpiritCommand', {strict: true});
+    if (!itemsToAdd.every(i => i) || !commandFeature || !initialDamageData) return;
     let playAnimation = itemUtils.getConfig(workflow.item, 'playAnimation');
     if (playAnimation) genericUtils.setProperty(fieryTeleportationData, 'flags.chris-premades.config.playAnimation', playAnimation);
     let hpValue = 5 + (druidLevel * 5);
@@ -58,12 +59,19 @@ async function use({workflow}) {
         range: 30,
         animation,
         initiativeType: 'follows',
-        additionalVaeButtons: [{type: 'use', name: commandData.name, identifier: 'summonWildfireSpiritCommand'}],
-        additionalSummonVaeButtons: itemsToAdd.slice(1).map(i => ({type: 'use', name: i.name, identifier: i.flags['chris-premades'].info.identifier}))
+        additionalVaeButtons: [{
+            type: 'use', 
+            name: commandFeature.name, 
+            identifier: 'summonWildfireSpirit',
+            activityIdentifier: 'summonWildfireSpiritCommand'
+        }],
+        additionalSummonVaeButtons: itemsToAdd.slice(1).map(i => ({type: 'use', name: i.name, identifier: i.flags['chris-premades'].info.identifier})),
+        unhideActivities: {
+            itemUuid: workflow.item.uuid,
+            activityIdentifiers: ['summonWildfireSpiritCommand'],
+            favorite: true
+        }
     });
-    let casterEffect = effectUtils.getEffectByIdentifier(workflow.actor, 'summonWildfireSpirit');
-    if (!casterEffect) return;
-    await itemUtils.createItems(workflow.actor, [commandData], {favorite: true, parentEntity: casterEffect});
     if (!spawnedTokens?.length) return;
     let [spawnedToken] = spawnedTokens;
     let nearbyTargets = tokenUtils.findNearby(spawnedToken, 10, 'all', {includeIncapacitated: true, includeToken: false});
@@ -89,7 +97,8 @@ async function teleport({workflow}) {
 }
 export let summonWildfireSpirit = {
     name: 'Summon Wildfire Spirit',
-    version: '0.12.43',
+    version: '1.1.0',
+    hasAnimation: true,
     midi: {
         item: [
             {

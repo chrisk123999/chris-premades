@@ -97,7 +97,8 @@ async function use({trigger, workflow}) {
 }
 export let vigilantBlessing = {
     name: 'Vigilant Blessing',
-    version: '0.12.46',
+    version: '1.1.0',
+    hasAnimation: true,
     midi: {
         item: [
             {
@@ -115,6 +116,5 @@ export let vigilantBlessing = {
             default: true,
             category: 'animation'
         }
-    ],
-    hasAnimation: true
+    ]
 };

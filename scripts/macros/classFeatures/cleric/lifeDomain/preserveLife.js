@@ -25,7 +25,8 @@ async function use({workflow}) {
 }
 export let preserveLife = {
     name: 'Channel Divinity: Preserve Life',
-    version: '0.12.40',
+    version: '1.1.0',
+    hasAnimation: true,
     midi: {
         item: [
             {

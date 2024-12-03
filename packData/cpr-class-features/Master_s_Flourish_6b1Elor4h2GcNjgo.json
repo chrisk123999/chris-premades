@@ -1,0 +1,84 @@
+{
+  "name": "Master's Flourish",
+  "type": "feat",
+  "system": {
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "source": {
+      "book": "Xanathar's Guide to Everything",
+      "page": "16",
+      "license": "",
+      "custom": "",
+      "revision": 1,
+      "rules": "2024"
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "recovery": []
+    },
+    "type": {
+      "value": "class",
+      "subtype": ""
+    },
+    "properties": [],
+    "requirements": "",
+    "prerequisites": {
+      "level": null
+    },
+    "activities": {},
+    "identifier": "masters-flourish",
+    "enchant": {}
+  },
+  "flags": {
+    "midi-qol": {
+      "removeAttackDamageButtons": "default",
+      "rollAttackPerTarget": "default",
+      "itemCondition": "",
+      "effectCondition": "",
+      "AoETargetType": "any",
+      "AoETargetTypeIncludeSelf": true,
+      "autoTarget": "default",
+      "reactionCondition": "",
+      "otherCondition": ""
+    },
+    "midiProperties": {
+      "confirmTargets": "default",
+      "autoFailFriendly": false,
+      "autoSaveFriendly": false,
+      "critOther": false,
+      "offHandWeapon": false,
+      "magicdam": false,
+      "magiceffect": false,
+      "concentration": false,
+      "noConcentrationCheck": false,
+      "toggleEffect": false,
+      "ignoreTotalCover": false,
+      "idr": false,
+      "idi": false,
+      "idv": false,
+      "ida": false
+    },
+    "core": {},
+    "dnd5e": {
+      "riders": {
+        "activity": []
+      }
+    },
+    "chris-premades": {
+      "info": {
+        "name": "Master's Flourish",
+        "version": "1.1.0",
+        "identifier": "mastersFlourish",
+        "source": "chris-premades"
+      }
+    }
+  },
+  "effects": [],
+  "img": "icons/skills/melee/maneuver-daggers-paired-orange.webp",
+  "folder": "uDjz6sj6ARGKxN2O",
+  "_id": "6b1Elor4h2GcNjgo",
+  "_key": "!items!6b1Elor4h2GcNjgo"
+}

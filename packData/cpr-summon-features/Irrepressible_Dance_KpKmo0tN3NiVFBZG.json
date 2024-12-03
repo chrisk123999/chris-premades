@@ -1,0 +1,83 @@
+{
+  "name": "Irrepressible Dance",
+  "type": "feat",
+  "img": "icons/tools/instruments/bell-brass-brown.webp",
+  "system": {
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "source": {
+      "custom": "",
+      "revision": 1,
+      "rules": "2024"
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "recovery": []
+    },
+    "type": {
+      "value": "monster",
+      "subtype": ""
+    },
+    "requirements": "",
+    "properties": [],
+    "prerequisites": {
+      "level": null
+    },
+    "activities": {},
+    "identifier": "irrepressible-dance",
+    "enchant": {}
+  },
+  "effects": [],
+  "flags": {
+    "core": {
+      "sourceId": "Item.eXuenrI2KPh2imxC"
+    },
+    "midiProperties": {
+      "confirmTargets": "default",
+      "autoFailFriendly": false,
+      "autoSaveFriendly": false,
+      "critOther": false,
+      "offHandWeapon": false,
+      "magicdam": false,
+      "magiceffect": false,
+      "concentration": false,
+      "noConcentrationCheck": false,
+      "toggleEffect": false,
+      "ignoreTotalCover": false,
+      "idr": false,
+      "idi": false,
+      "idv": false,
+      "ida": false
+    },
+    "midi-qol": {
+      "rollAttackPerTarget": "default",
+      "effectActivation": false,
+      "itemCondition": "",
+      "effectCondition": "",
+      "AoETargetType": "any",
+      "AoETargetTypeIncludeSelf": true,
+      "autoTarget": "default",
+      "removeAttackDamageButtons": "default",
+      "reactionCondition": "",
+      "otherCondition": ""
+    },
+    "chris-premades": {
+      "macros": {
+        "combat": [
+          "animatingPerformanceDance"
+        ]
+      }
+    },
+    "dnd5e": {
+      "riders": {
+        "activity": []
+      }
+    }
+  },
+  "folder": "yJPsk1Vk9gPDwwan",
+  "_id": "KpKmo0tN3NiVFBZG",
+  "_key": "!items!KpKmo0tN3NiVFBZG"
+}

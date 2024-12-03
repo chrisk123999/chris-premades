@@ -78,10 +78,23 @@ async function targetApplyDamaged({trigger: {entity: effect}, workflow, ditem}) 
             errors.missingPackItem();
             return;
         }
+        let activityId = Object.keys(featureData.system.activities)[0];
         if (expansive) {
-            featureData.system.damage.parts = ditem.rawDamageDetail.map(i => [Math.floor(i.value / 2), 'none']);
+            featureData.system.activities[activityId].damage.parts = ditem.rawDamageDetail.map(i => ({
+                custom: {
+                    enabled: true,
+                    formula: Math.floor(i.value / 2).toString()
+                },
+                types: ['none']
+            }));
         } else {
-            featureData.system.damage.parts = ditem.rawDamageDetail.map(i => [i.value + '[' + i.type + ']', i.type]);
+            featureData.system.activities[activityId].damage.parts = ditem.rawDamageDetail.map(i => ({
+                custom: {
+                    enabled: true,
+                    formula: i.value + '[' + i.type + ']'
+                },
+                types: [i.type]
+            }));
         }
         genericUtils.setProperty(featureData, 'flags.chris-premades.protectiveBond', true);
         let position = await crosshairUtils.aimCrosshair({
@@ -128,7 +141,8 @@ async function bonus({trigger: {roll, entity: effect}}) {
 // But can't just have it always be on the effect, since it's conditional on being in range
 export let emboldeningBond = {
     name: 'Emboldening Bond',
-    version: '0.12.40',
+    version: '1.1.0',
+    hasAnimation: true,
     midi: {
         item: [
             {

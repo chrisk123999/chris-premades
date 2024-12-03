@@ -115,7 +115,8 @@ async function use({trigger, workflow}) {
 }
 export let eyesOfNight = {
     name: 'Eyes of Night',
-    version: '0.12.46',
+    version: '1.1.0',
+    hasAnimation: true,
     midi: {
         item: [
             {
@@ -133,6 +134,5 @@ export let eyesOfNight = {
             default: true,
             category: 'animation'
         }
-    ],
-    hasAnimation: true
+    ]
 };

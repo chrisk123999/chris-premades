@@ -1,7 +1,8 @@
 import {Summons} from '../../../../lib/summons.js';
-import {actorUtils, compendiumUtils, constants, dialogUtils, effectUtils, errors, genericUtils, itemUtils} from '../../../../utils.js';
+import {activityUtils, actorUtils, compendiumUtils, constants, dialogUtils, effectUtils, errors, genericUtils, itemUtils} from '../../../../utils.js';
 
 async function use({workflow}) {
+    if (activityUtils.getIdentifier(workflow.activity) !== genericUtils.getIdentifier(workflow.item)) return;
     let selection = await dialogUtils.buttonDialog(workflow.item.name, 'CHRISPREMADES.Macros.AnimatingPerformance.Size', [
         ['DND5E.SizeLarge', 'lg'],
         ['DND5E.SizeMedium', 'med'],
@@ -14,7 +15,6 @@ async function use({workflow}) {
     let danceData = await Summons.getSummonItem('Irrepressible Dance', {}, workflow.item, {translate: 'CHRISPREMADES.Macros.AnimatingPerformance.Dance', identifier: 'animatingPerformanceIrrepressibleDance'});
     let immutableFormData = await Summons.getSummonItem('Immutable Form', {}, workflow.item, {translate: 'CHRISPREMADES.Macros.AnimatingPerformance.ImmutableForm', identifier: 'animatingPerformanceImmutableForm'});
     let forceSlamData = await Summons.getSummonItem('Force-Empowered Slam', {}, workflow.item, {translate: 'CHRISPREMADES.Macros.AnimatingPerformance.ForceEmpoweredSlam', identifier: 'animatingPerformanceForceEmpoweredSlam', flatAttack: true});
-    let commandData = await compendiumUtils.getItemFromCompendium(constants.featurePacks.classFeatureItems, 'Animating Performance: Command', {object: true, getDescription: true, translate: 'CHRISPREMADES.Macros.AnimatingPerformance.Command', identifier: 'animatingPerformanceCommand'});
     let dodgeData = await compendiumUtils.getItemFromCompendium(constants.packs.actions, 'Dodge', {object: true, getDescription: true, translate: 'CHRISPREMADES.Macros.Actions.Dodge', identifier: 'animatingPerformanceDodge'});
     let itemsToAdd = [danceData, immutableFormData, forceSlamData, dodgeData];
     if (!itemsToAdd.every(i => i) || !dodgeData) return;
@@ -85,20 +85,24 @@ async function use({workflow}) {
         genericUtils.setProperty(updates, 'token.texture.src', tokenImg);
     }
     let animation = itemUtils.getConfig(workflow.item, 'animation') ?? 'none';
+    let commandFeature = activityUtils.getActivityByIdentifier(workflow.item, 'animatingPerformanceCommand', {strict: true});
+    if (!commandFeature) return;
     await Summons.spawn(sourceActor, updates, workflow.item, workflow.token, {
         range: 30,
         duration: 3600,
         animation,
         initiativeType: 'follows',
-        additionalVaeButtons: [{type: 'use', name: commandData.name, identifier: 'animatingPerformanceCommand'}],
+        additionalVaeButtons: [{type: 'use', name: commandFeature.name, identifier: 'animatingPerformance', activityIdentifier: 'animatingPerformanceCommand'}],
         additionalSummonVaeButtons:
             itemsToAdd
                 .filter(i => ['animatingPerformanceForceEmpoweredSlam', 'animatingPerformanceDodge'].includes(i.flags['chris-premades'].info.identifier))
-                .map(i => ({type: 'use', name: i.name, identifier: i.flags['chris-premades'].info.identifier}))
+                .map(i => ({type: 'use', name: i.name, identifier: i.flags['chris-premades'].info.identifier})),
+        unhideActivities: {
+            itemUuid: workflow.item.uuid,
+            activityIdentifiers: ['animatingPerformanceCommand'],
+            favorite: true
+        }
     });
-    let casterEffect = effectUtils.getEffectByIdentifier(workflow.actor, 'animatingPerformance');
-    if (!casterEffect) return;
-    await itemUtils.createItems(workflow.actor, [commandData], {favorite: true, parentEntity: casterEffect});
 }
 async function turnStart({trigger: {entity: item, token, target}}) {
     if (token.actor.system.attributes.hp.value === 0 || effectUtils.getEffectByStatusID(token.actor, 'incapacitated')) return;
@@ -132,7 +136,7 @@ async function turnStart({trigger: {entity: item, token, target}}) {
 }
 export let animatingPerformance = {
     name: 'Animating Performance',
-    version: '0.12.36',
+    version: '1.1.0',
     midi: {
         item: [
             {

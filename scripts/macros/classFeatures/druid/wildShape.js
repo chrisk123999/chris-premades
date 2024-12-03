@@ -1,6 +1,5 @@
 import {DialogApp} from '../../../applications/dialog.js';
 import {actorUtils, compendiumUtils, constants, dialogUtils, effectUtils, errors, genericUtils, itemUtils, workflowUtils} from '../../../utils.js';
-import {compelledDuel} from '../../spells/compelledDuel.js';
 
 async function use({workflow}) {
     if (workflow.actor.isPolymorphed) return;
@@ -174,6 +173,7 @@ async function use({workflow}) {
     await genericUtils.updateEmbeddedDocuments(newActor, 'Item', itemUpdates);
 }
 async function preRevert({workflow}) {
+    // TODO: here or in revert, try to track changed item uses
     let effect = effectUtils.getEffectByIdentifier(workflow.actor, 'wildShapeActive');
     if (effect) await genericUtils.remove(effect);
 }
@@ -207,7 +207,7 @@ async function hit({trigger: {entity: effect}, workflow}) {
 }
 export let wildShape = {
     name: 'Wild Shape',
-    version: '0.12.41',
+    version: '1.1.0',
     midi: {
         item: [
             {

@@ -16,7 +16,7 @@ async function clearUsed({trigger: {entity: item}}) {
 }
 export let blessedStrikes = {
     name: 'Blessed Strikes',
-    version: '0.12.40',
+    version: '1.1.0',
     midi: {
         actor: [
             {

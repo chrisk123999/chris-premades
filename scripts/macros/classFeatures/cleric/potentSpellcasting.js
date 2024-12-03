@@ -8,7 +8,7 @@ async function damage({workflow}) {
 }
 export let potentSpellcasting = {
     name: 'Potent Spellcasting',
-    version: '1.0.37',
+    version: '1.1.0',
     midi: {
         actor: [
             {

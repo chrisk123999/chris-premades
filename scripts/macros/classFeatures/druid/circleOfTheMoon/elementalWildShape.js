@@ -1,6 +1,6 @@
 export let elementalWildShape = {
     name: 'Elemental Wild Shape',
-    version: '0.12.43',
+    version: '1.1.0',
     config: [
         {
             value: 'airName',

@@ -209,7 +209,8 @@ async function damage({trigger: {entity: item}, workflow}) {
 }
 export let divineStrike = {
     name: 'Divine Strike',
-    version: '0.12.46',
+    version: '1.1.0',
+    hasAnimaton: true,
     midi: {
         actor: [
             {
@@ -236,6 +237,5 @@ export let divineStrike = {
             default: true,
             category: 'animation'
         }
-    ],
-    hasAnimaton: true
+    ]
 };

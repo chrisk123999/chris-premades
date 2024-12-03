@@ -44,6 +44,7 @@ async function completeItemUse(item, config={}, options={}) {
         options.asUser = socketUtils.firstOwner(item.actor, true);
         options.checkGMStatus = true;
     }
+    // TODO: Make use completeItemUseV2 instead, once everything's ready
     let workflow = await MidiQOL.completeItemUse(item, config, options);
     //genericUtils.updateTargets(oldTargets); //Temp Fix
     return workflow;
@@ -51,7 +52,10 @@ async function completeItemUse(item, config={}, options={}) {
 async function syntheticActivityRoll(activity, targets = [], {options = {}, config = {}, atLevel = undefined} = {}) {
     let defaultConfig = {
         consumeUsage: false,
-        consumeSpellSlot: false
+        consumeSpellSlot: false,
+        consume: {
+            resources: false
+        }
     };
     let autoRollDamage = MidiQOL.configSettings().autoRollDamage;
     if (!['always', 'onHit'].includes(autoRollDamage)) autoRollDamage = 'onHit';

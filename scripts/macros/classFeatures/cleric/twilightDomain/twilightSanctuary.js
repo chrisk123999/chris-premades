@@ -1,5 +1,6 @@
-import {actorUtils, animationUtils, compendiumUtils, constants, dialogUtils, effectUtils, errors, genericUtils, itemUtils, socketUtils, tokenUtils, workflowUtils} from '../../../../utils.js';
+import {activityUtils, actorUtils, animationUtils, compendiumUtils, constants, dialogUtils, effectUtils, errors, genericUtils, itemUtils, socketUtils, tokenUtils, workflowUtils} from '../../../../utils.js';
 async function use({workflow}) {
+    if (activityUtils.getIdentifier(workflow.activity) !== genericUtils.getIdentifier(workflow.item)) return;
     let effect = effectUtils.getEffectByIdentifier(workflow.actor, 'twilightSanctuary');
     if (effect) return;
     let effectData = {
@@ -186,7 +187,7 @@ async function turnEnd({trigger: {entity: effect, token, target}}) {
     let charmed = effectUtils.getEffectByStatusID(target.actor, 'charmed');
     let frightened = effectUtils.getEffectByStatusID(target.actor, 'frightened');
     let classLevel = token.actor.classes.cleric?.system?.levels ?? 0;
-    let formula = '1d6[temphp] + ' + classLevel;
+    let formula = '1d6 + ' + classLevel;
     let buttons = [
         [genericUtils.format('CHRISPREMADES.Macros.TwilightSanctuary.Heal', {formula}), 'hp']
     ];
@@ -198,13 +199,9 @@ async function turnEnd({trigger: {entity: effect, token, target}}) {
     let selection = await dialogUtils.buttonDialog(effect.name, 'CHRISPREMADES.Dialog.WhatDo', buttons, {userId});
     if (!selection) return;
     if (selection === 'hp') {
-        let featureData = await compendiumUtils.getItemFromCompendium(constants.featurePacks.classFeatureItems, 'Twilight Sanctuary: Temporary HP', {object: true, getDescription: true, translate: 'CHRISPREMADES.Macros.TwilightSanctuary.Temp'});
-        if (!featureData) {
-            errors.missingPackItem();
-            return;
-        }
-        featureData.system.damage.parts[0][0] = formula;
-        await workflowUtils.syntheticItemDataRoll(featureData, token.actor, [target]);
+        let feature = activityUtils.getActivityByIdentifier(fromUuidSync(effect.origin), 'twilightSanctuaryHeal', {strict: true});
+        if (!feature) return;
+        await workflowUtils.syntheticActivityRoll(feature, [target]);
     } else if (selection === 'charmed') {
         await genericUtils.remove(charmed);
     } else if (selection === 'frightened') {
@@ -218,7 +215,8 @@ async function end({trigger}) {
 }
 export let twilightSanctuary = {
     name: 'Channel Divinity: Twilight Sanctuary',
-    version: '0.12.46',
+    version: '1.1.0',
+    hasAnimation: true,
     midi: {
         item: [
             {
@@ -228,7 +226,6 @@ export let twilightSanctuary = {
             }
         ]
     },
-    hasAnimation: true,
     config: [
         {
             value: 'playAnimation',

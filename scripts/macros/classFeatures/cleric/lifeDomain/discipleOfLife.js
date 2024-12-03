@@ -11,7 +11,7 @@ async function heal({trigger, workflow}) {
 }
 export let discipleOfLife = {
     name: 'Disciple of Life',
-    version: '0.12.54',
+    version: '1.1.0',
     midi: {
         actor: [
             {

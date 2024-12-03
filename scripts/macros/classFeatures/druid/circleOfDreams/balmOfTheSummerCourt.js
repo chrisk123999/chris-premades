@@ -33,11 +33,11 @@ async function damage({workflow}) {
     }
     await workflowUtils.replaceDamage(workflow, number + 'd6[healing]', {damageType: 'healing'});
     await workflowUtils.bonusDamage(workflow, number + '[temphp]', {damageType: 'temphp'});
-    await genericUtils.update(workflow.item, {'system.uses.value': uses - number});
+    await genericUtils.update(workflow.item, {'system.uses.spent': workflow.item.system.uses.spent + number});
 }
 export let balmOfTheSummerCourt = {
     name: 'Balm of the Summer Court',
-    version: '0.12.41',
+    version: '1.1.0',
     midi: {
         item: [
             {

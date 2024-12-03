@@ -1,0 +1,97 @@
+{
+  "name": "Circle of Mortality",
+  "type": "feat",
+  "system": {
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "source": {
+      "custom": "",
+      "revision": 1,
+      "rules": "2024"
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "recovery": []
+    },
+    "type": {
+      "value": "class",
+      "subtype": ""
+    },
+    "requirements": "",
+    "properties": [],
+    "prerequisites": {
+      "level": null
+    },
+    "activities": {},
+    "identifier": "circle-of-mortality",
+    "enchant": {}
+  },
+  "flags": {
+    "core": {
+      "sourceId": "Actor.iXZRAxrrFFxPX0g6.Item.cKS3gCzsZIFLkHfe"
+    },
+    "midi-qol": {
+      "effectActivation": false,
+      "rollAttackPerTarget": "default",
+      "itemCondition": "",
+      "effectCondition": "",
+      "AoETargetType": "any",
+      "AoETargetTypeIncludeSelf": true,
+      "autoTarget": "default",
+      "removeAttackDamageButtons": "default",
+      "reactionCondition": "",
+      "otherCondition": ""
+    },
+    "midiProperties": {
+      "nodam": false,
+      "fulldam": false,
+      "halfdam": false,
+      "autoFailFriendly": false,
+      "autoSaveFriendly": false,
+      "rollOther": false,
+      "critOther": false,
+      "offHandWeapon": false,
+      "magicdam": false,
+      "magiceffect": false,
+      "concentration": false,
+      "toggleEffect": false,
+      "ignoreTotalCover": false,
+      "confirmTargets": "default",
+      "noConcentrationCheck": false,
+      "idr": false,
+      "idi": false,
+      "idv": false,
+      "ida": false
+    },
+    "dnd5e": {
+      "persistSourceMigration": true,
+      "riders": {
+        "activity": [],
+        "effect": []
+      }
+    },
+    "chris-premades": {
+      "info": {
+        "name": "Circle of Mortality",
+        "version": "1.1.0",
+        "identifier": "circleOfMortality",
+        "source": "chris-premades"
+      },
+      "macros": {
+        "midi": {
+          "actor": [
+            "circleOfMortality"
+          ]
+        }
+      }
+    }
+  },
+  "effects": [],
+  "img": "icons/skills/wounds/blood-cells-disease-green.webp",
+  "folder": "mWzB59b1RJU90oPo",
+  "_id": "nMXuRFyIXnmwHhPf",
+  "_key": "!items!nMXuRFyIXnmwHhPf"
+}

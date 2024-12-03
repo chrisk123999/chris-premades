@@ -1,4 +1,4 @@
 export let mastersFlourish = {
     name: 'Master\'s Flourish',
-    version: '0.12.37'
+    version: '1.1.0'
 };

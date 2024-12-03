@@ -49,7 +49,7 @@ async function skillBonus({trigger: {skillId, roll}}) {
 }
 export let hearthOfMoonlightAndShadow = {
     name: 'Hearth of Moonlight and Shadow',
-    version: '1.0.37',
+    version: '1.1.0',
     midi: {
         item: [
             {

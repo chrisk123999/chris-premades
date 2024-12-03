@@ -73,7 +73,7 @@ async function use({workflow}) {
 }
 export let arcaneAbjuration = {
     name: 'Channel Divinity: Arcane Abjuration',
-    version: '0.12.40',
+    version: '1.1.0',
     midi: {
         item: [
             {

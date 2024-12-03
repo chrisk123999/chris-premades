@@ -1,155 +1,200 @@
-import {compendiumUtils, constants, dialogUtils, effectUtils, errors, genericUtils, itemUtils, tokenUtils, workflowUtils} from '../../../../utils.js';
+import {activityUtils, compendiumUtils, constants, dialogUtils, effectUtils, errors, genericUtils, itemUtils, tokenUtils, workflowUtils} from '../../../../utils.js';
 
 async function use({workflow}) {
-    let classLevels = workflow.actor.classes.druid?.system.levels;
-    if (!classLevels) return;
-    let selection = await dialogUtils.buttonDialog(workflow.item.name, 'CHRISPREMADES.Macros.StarryForm.Select', [
-        ['CHRISPREMADES.Macros.StarryForm.Archer', 'Archer'],
-        ['CHRISPREMADES.Macros.StarryForm.Dragon', 'Dragon'],
-        ['CHRISPREMADES.Macros.StarryForm.Chalice', 'Chalice'],
-    ]);
-    if (!selection) return;
-    let tier = 1;
-    if (classLevels > 13) {
-        tier = 3;
-    } else if (classLevels > 9) {
-        tier = 2;
-    }
-    let featureName;
-    switch (selection) {
-        case 'Archer':
-            featureName = 'Luminous Arrow';
-            break;
-        case 'Dragon':
-            featureName = 'Wise Dragon';
-            break;
-        case 'Chalice':
-            featureName = 'Healing Chalice';
-            break;
-    }
-    let featureData = await compendiumUtils.getItemFromCompendium(constants.featurePacks.classFeatureItems, 'Starry Form: ' + featureName, {object: true, getDescription: true, translate: 'CHRISPREMADES.Macros.StarryForm.' + selection + 'Feature', identifier: 'starryForm' + selection});
-    if (!featureData) {
-        errors.missingPackItem();
-        return;
-    }
-    if (tier > 1) {
-        if (selection === 'Dragon') {
-            featureData.effects[0].changes.push(
+    let activityIdentifier = activityUtils.getIdentifier(workflow.activity);
+    if (['starryFormArcher', 'starryFormDragon', 'starryFormChalice'].includes(activityIdentifier)) {
+        let classLevels = workflow.actor.classes.druid?.system.levels;
+        if (!classLevels) return;
+        let tier = 1;
+        if (classLevels > 13) {
+            tier = 3;
+        } else if (classLevels > 9) {
+            tier = 2;
+        }
+        let featureIdentifier = 'luminousArrow';
+        if (activityIdentifier === 'starryFormChalice') featureIdentifier = 'healingChalice';
+        let effect = effectUtils.getEffectByIdentifier(workflow.actor, 'starryForm');
+        let effectData = {
+            name: workflow.activity.name,
+            img: effect?.img ?? workflow.item.img,
+            origin: effect?.origin ?? workflow.item.uuid,
+            duration: effect?.duration ?? itemUtils.convertDuration(workflow.item),
+            flags: {
+                'chris-premades': {
+                    starryForm: {
+                        currentForm: activityIdentifier
+                    }
+                }
+            },
+            changes: [
                 {
-                    key: 'system.attributes.movement.fly',
+                    key: 'ATL.light.bright',
+                    value: 10,
+                    mode: 4,
+                    priority: 20
+                },
+                {
+                    key: 'ATL.light.dim',
                     value: 20,
                     mode: 4,
                     priority: 20
                 },
                 {
-                    key: 'system.attributes.movement.hover',
-                    value: 1,
-                    mode: 0,
+                    key: 'ATL.light.color',
+                    value: '#ffffff',
+                    mode: 5,
+                    priority: 20
+                },
+                {
+                    key: 'ATL.light.alpha',
+                    value: 0.25,
+                    mode: 5,
+                    priority: 20
+                },
+                {
+                    key: 'ATL.light.animation',
+                    value: '{type: \'starlight\', speed: 1, intensity: 3}',
+                    mode: 5,
+                    priority: 20
+                }
+            ]
+        };
+        if (tier === 3) {
+            effectData.changes.push(
+                {
+                    key: 'system.traits.dr.value',
+                    value: 'slashing',
+                    mode: 2,
+                    priority: 20
+                }, 
+                {
+                    key: 'system.traits.dr.value',
+                    value: 'piercing',
+                    mode: 2,
+                    priority: 20
+                },
+                {
+                    key: 'system.traits.dr.value',
+                    value: 'bludgeoning',
+                    mode: 2,
                     priority: 20
                 }
             );
-        } else {
-            featureData.system.damage.parts[0][0] = '2' + featureData.system.damage.parts[0][0].slice(1);
         }
-    }
-    let effect = effectUtils.getEffectByIdentifier(workflow.actor, 'starryForm');
-    let effectData = {
-        name: featureData.name,
-        img: effect?.img ?? workflow.item.img,
-        origin: effect?.origin ?? workflow.item.uuid,
-        duration: effect?.duration ?? itemUtils.convertDuration(workflow.item),
-        changes: [
-            {
-                key: 'ATL.light.bright',
-                value: 10,
-                mode: 4,
-                priority: 20
-            },
-            {
-                key: 'ATL.light.dim',
-                value: 20,
-                mode: 4,
-                priority: 20
-            },
-            {
-                key: 'ATL.light.color',
-                value: '#ffffff',
-                mode: 5,
-                priority: 20
-            },
-            {
-                key: 'ATL.light.alpha',
-                value: 0.25,
-                mode: 5,
-                priority: 20
-            },
-            {
-                key: 'ATL.light.animation',
-                value: '{type: \'starlight\', speed: 1, intensity: 3}',
-                mode: 5,
-                priority: 20
+        if (activityIdentifier === 'starryFormDragon') {
+            effectData.changes.push(
+                {
+                    key: 'flags.midi-qol.min.ability.check.wis',
+                    value: 10,
+                    mode: 4,
+                    priority: 20
+                },
+                {
+                    key: 'flags.midi-qol.min.ability.check.int',
+                    value: 10,
+                    mode: 4,
+                    priority: 20
+                },
+                {
+                    key: 'system.attributes.concentration.roll.min',
+                    value: 10,
+                    mode: 4,
+                    priority: 20
+                }
+            );
+            if (tier > 1) {
+                effectData.changes.push(
+                    {
+                        key: 'system.attributes.movement.fly',
+                        value: 20,
+                        mode: 4,
+                        priority: 20
+                    },
+                    {
+                        key: 'system.attributes.movement.hover',
+                        value: 1,
+                        mode: 0,
+                        priority: 20
+                    }
+                );
             }
-        ]
-    };
-    if (tier === 3) {
-        effectData.changes.push(
-            {
-                key: 'system.traits.dr.value',
-                value: 'slashing',
-                mode: 2,
-                priority: 20
-            }, 
-            {
-                key: 'system.traits.dr.value',
-                value: 'piercing',
-                mode: 2,
-                priority: 20
-            },
-            {
-                key: 'system.traits.dr.value',
-                value: 'bludgeoning',
-                mode: 2,
-                priority: 20
-            }
-        );
+        }
+        if (tier > 1) effectUtils.addMacro(effectData, 'combat', ['starryFormActive']);
+        if (activityIdentifier === 'starryFormChalice') effectUtils.addMacro(effectData, 'midi.actor', ['starryFormActive']);
+        if (effect) await genericUtils.remove(effect);
+        let opts = {
+            identifier: 'starryForm'
+        };
+        if (activityIdentifier === 'starryFormArcher') {
+            let feature = activityUtils.getActivityByIdentifier(workflow.item, featureIdentifier, {strict: true});
+            if (!feature) return;
+            opts.vae = [{
+                type: 'use',
+                name: feature.name,
+                identifier: 'starryForm',
+                activityIdentifier: featureIdentifier
+            }];
+            opts.unhideActivities = {
+                itemUuid: workflow.item.uuid,
+                activityIdentifiers: [featureIdentifier],
+                favorite: true
+            };
+        }
+        await effectUtils.createEffect(workflow.actor, effectData, opts);
     }
-    if (tier > 1) effectUtils.addMacro(effectData, 'combat', ['starryFormActive']);
-    if (effect) await genericUtils.remove(effect);
-    let opts = {
-        identifier: 'starryForm'
-    };
-    if (selection !== 'Dragon') opts.vae = [{type: 'use', name: featureData.name, identifier: 'starryForm' + selection}];
-    effect = await effectUtils.createEffect(workflow.actor, effectData, opts);
-    await itemUtils.createItems(workflow.actor, [featureData], {favorite: selection === 'Archer', parentEntity: effect});
 }
-async function turnStart({trigger: {token}}) {
+async function turnStart({trigger: {entity: effect, token}}) {
     let twinklingItem = await itemUtils.getItemByIdentifier(token.actor, 'twinklingConstellations');
-    let selection = await dialogUtils.confirm(twinklingItem.name, 'CHRISPREMADES.Macros.StarryForm.Change');
+    let starryItem = await itemUtils.getItemByIdentifier(token.actor, 'starryForm');
+    let currentForm = effect.flags['chris-premades'].starryForm.currentForm;
+    let formIdentifiers = ['starryFormArcher', 'starryFormChalice', 'starryFormDragon'];
+    formIdentifiers.splice(formIdentifiers.findIndex(i => i === currentForm), 1);
+    let features = formIdentifiers.map(i => activityUtils.getActivityByIdentifier(starryItem, i));
+    let selection = await dialogUtils.buttonDialog(twinklingItem.name, 'CHRISPREMADES.Macros.StarryForm.Change', features.map((i,idx) => [i.name, idx + 1]).concat([['CHRISPREMADES.Generic.No', false]]));
     if (!selection) return;
-    await twinklingItem.use();
+    await workflowUtils.syntheticActivityRoll(features[selection - 1]);
 }
-async function late({workflow}) {
+async function late({trigger: {entity: effect}, workflow}) {
     if (workflow.item.type !== 'spell' || !workflow.targets.size || !workflow.item.system.level) return;
     if (!workflow.damageItem?.damageDetail?.some(i => i.type === 'healing')) return;
-    let chaliceItem = itemUtils.getItemByIdentifier(workflow.actor, 'starryFormChalice');
-    if (!chaliceItem) return;
+    let chaliceFeature = activityUtils.getActivityByIdentifier(fromUuidSync(effect.origin), 'healingChalice', {strict: true});
+    if (!chaliceFeature) return;
     let nearbyTargets = tokenUtils.findNearby(workflow.token, 30, 'ally', {includeIncapacitated: true, includeToken: true});
     let selected;
     if (nearbyTargets.length > 1) {
-        selected = await dialogUtils.selectTargetDialog(chaliceItem.name, 'CHRISPREMADES.Macros.StarryForm.Heal', nearbyTargets);
+        selected = await dialogUtils.selectTargetDialog(chaliceFeature.name, 'CHRISPREMADES.Macros.StarryForm.Heal', nearbyTargets);
         if (selected?.length) selected = selected[0];
     }
     if (!selected) selected = nearbyTargets[0];
-    await workflowUtils.syntheticItemRoll(chaliceItem, [selected]);
+    await workflowUtils.syntheticActivityRoll(chaliceFeature, [selected], {config: {
+        scaling: (workflow.actor.classes.druid?.system.levels >= 10) ? 1 : 0
+    }});
+}
+async function early({workflow}) {
+    if (activityUtils.getIdentifier(workflow.activity) !== 'luminousArrow') return;
+    let scaling = 0;
+    if (workflow.actor.classes.druid?.system.levels >= 10) scaling = 1;
+    if (workflow.activity.tempFlag) {
+        workflow.activity.tempFlag = false;
+        return;
+    }
+    workflow.activity.tempFlag = true;
+    genericUtils.sleep(100).then(() => workflowUtils.syntheticActivityRoll(workflow.activity, Array.from(workflow.targets), {config: {scaling}}));
+    return true;
 }
 export let starryForm = {
     name: 'Starry Form',
-    version: '0.12.43',
+    version: '1.1.0',
     midi: {
         item: [
             {
                 pass: 'rollFinished',
                 macro: use,
+                priority: 20
+            },
+            {
+                pass: 'preTargeting',
+                macro: early,
                 priority: 20
             }
         ]

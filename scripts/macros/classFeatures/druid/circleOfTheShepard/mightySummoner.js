@@ -1,4 +1,4 @@
 export let mightySummoner = {
     name: 'Mighty Summoner',
-    version: '0.12.43'
+    version: '1.1.0'
 };

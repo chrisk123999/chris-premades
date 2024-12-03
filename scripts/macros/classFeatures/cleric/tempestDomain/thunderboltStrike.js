@@ -16,7 +16,7 @@ async function late({trigger: {entity: item}, workflow}) {
 }
 export let thunderboltStrike = {
     name: 'Thunderbolt Strike',
-    version: '0.12.40',
+    version: '1.1.0',
     midi: {
         actor: [
             {

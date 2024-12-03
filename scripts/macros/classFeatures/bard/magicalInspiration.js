@@ -1,4 +1,4 @@
 export let magicalInspiration = {
     name: 'Magical Inspiration',
-    version: '0.12.36'
+    version: '1.1.0'
 };

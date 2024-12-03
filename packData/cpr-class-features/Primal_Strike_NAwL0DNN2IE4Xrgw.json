@@ -1,0 +1,84 @@
+{
+  "name": "Primal Strike",
+  "type": "feat",
+  "system": {
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "source": {
+      "custom": "Druid : Circle of the Moon",
+      "revision": 1,
+      "rules": "2024"
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "recovery": []
+    },
+    "type": {
+      "value": "class",
+      "subtype": ""
+    },
+    "requirements": "",
+    "properties": [],
+    "prerequisites": {
+      "level": null
+    },
+    "activities": {},
+    "identifier": "primal-strike",
+    "enchant": {}
+  },
+  "flags": {
+    "core": {
+      "sourceId": "Actor.012pLonSM9wvybqV.Item.oL1LrJBrfq2o5eHm"
+    },
+    "midiProperties": {
+      "confirmTargets": "default",
+      "autoFailFriendly": false,
+      "autoSaveFriendly": false,
+      "critOther": false,
+      "offHandWeapon": false,
+      "magicdam": false,
+      "magiceffect": false,
+      "concentration": false,
+      "noConcentrationCheck": false,
+      "toggleEffect": false,
+      "ignoreTotalCover": false,
+      "idr": false,
+      "idi": false,
+      "idv": false,
+      "ida": false
+    },
+    "midi-qol": {
+      "rollAttackPerTarget": "default",
+      "effectActivation": false,
+      "itemCondition": "",
+      "effectCondition": "",
+      "AoETargetType": "any",
+      "AoETargetTypeIncludeSelf": true,
+      "autoTarget": "default",
+      "removeAttackDamageButtons": "default",
+      "reactionCondition": "",
+      "otherCondition": ""
+    },
+    "dnd5e": {
+      "riders": {
+        "activity": []
+      }
+    },
+    "chris-premades": {
+      "info": {
+        "name": "Primal Strike",
+        "version": "1.1.0",
+        "identifier": "primalStrike",
+        "source": "chris-premades"
+      }
+    }
+  },
+  "effects": [],
+  "img": "icons/commodities/claws/claw-spiked-gold.webp",
+  "folder": "j6gv47ZcntZs1E4f",
+  "_id": "NAwL0DNN2IE4Xrgw",
+  "_key": "!items!NAwL0DNN2IE4Xrgw"
+}

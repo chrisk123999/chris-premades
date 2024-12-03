@@ -15,7 +15,7 @@ async function heal({trigger, workflow}) {
 }
 export let supremeHealing = {
     name: 'Supreme Healing',
-    version: '0.12.54',
+    version: '1.1.0',
     midi: {
         actor: [
             {

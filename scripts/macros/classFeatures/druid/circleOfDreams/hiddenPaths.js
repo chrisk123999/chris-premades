@@ -12,7 +12,8 @@ async function use({workflow}) {
 }
 export let hiddenPaths = {
     name: 'Hidden Paths',
-    version: '0.12.41',
+    version: '1.1.0',
+    hasAnimation: true,
     midi: {
         item: [
             {

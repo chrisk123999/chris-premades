@@ -10,7 +10,7 @@ async function damage({workflow}) {
 }
 export let wrathOfTheStorm = {
     name: 'Wrath of the Storm',
-    version: '0.12.40',
+    version: '1.1.0',
     midi: {
         item: [
             {

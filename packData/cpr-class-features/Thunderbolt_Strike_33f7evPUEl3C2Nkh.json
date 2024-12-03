@@ -1,0 +1,89 @@
+{
+  "name": "Thunderbolt Strike",
+  "type": "feat",
+  "system": {
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "source": {
+      "custom": "Cleric : Tempest Domain",
+      "revision": 1,
+      "rules": "2024"
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "recovery": []
+    },
+    "type": {
+      "value": "class",
+      "subtype": ""
+    },
+    "requirements": "",
+    "properties": [],
+    "prerequisites": {
+      "level": null
+    },
+    "activities": {},
+    "identifier": "thunderbolt-strike",
+    "enchant": {}
+  },
+  "flags": {
+    "core": {
+      "sourceId": "Actor.OCSpSVGrsMzFwY6i.Item.gWMb0kc3opWFRTGb"
+    },
+    "midiProperties": {
+      "confirmTargets": "default",
+      "autoFailFriendly": false,
+      "autoSaveFriendly": false,
+      "critOther": false,
+      "offHandWeapon": false,
+      "magicdam": false,
+      "magiceffect": false,
+      "noConcentrationCheck": false,
+      "toggleEffect": false,
+      "ignoreTotalCover": false,
+      "idr": false,
+      "idi": false,
+      "idv": false,
+      "ida": false
+    },
+    "midi-qol": {
+      "rollAttackPerTarget": "default",
+      "itemCondition": "",
+      "effectCondition": "",
+      "AoETargetType": "any",
+      "AoETargetTypeIncludeSelf": true,
+      "autoTarget": "default",
+      "removeAttackDamageButtons": "default",
+      "reactionCondition": "",
+      "otherCondition": ""
+    },
+    "dnd5e": {
+      "riders": {
+        "activity": []
+      }
+    },
+    "chris-premades": {
+      "info": {
+        "name": "Thunderbolt Strike",
+        "version": "1.1.0",
+        "identifier": "thunderboltStrike",
+        "source": "chris-premades"
+      },
+      "macros": {
+        "midi": {
+          "actor": [
+            "thunderboltStrike"
+          ]
+        }
+      }
+    }
+  },
+  "effects": [],
+  "img": "icons/magic/lightning/bolt-forked-large-blue.webp",
+  "folder": "HcNZRbfScHul8BH0",
+  "_id": "33f7evPUEl3C2Nkh",
+  "_key": "!items!33f7evPUEl3C2Nkh"
+}

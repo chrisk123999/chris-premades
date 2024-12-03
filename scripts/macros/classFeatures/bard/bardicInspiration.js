@@ -3,10 +3,11 @@ import {actorUtils, compendiumUtils, constants, dialogUtils, effectUtils, errors
 async function use({workflow}) {
     if (workflow.targets.size !== 1) return;
     let classIdentifier = itemUtils.getConfig(workflow.item, 'classIdentifier') ?? 'bard';
-    let scaleIdentifier = itemUtils.getConfig(workflow.item, 'scaleIdentifier') ?? 'bardic-inspiration';
+    let scaleIdentifier = itemUtils.getConfig(workflow.item, 'scaleIdentifier') ?? 'inspiration';
     let scale = workflow.actor.system.scale[classIdentifier]?.[scaleIdentifier];
     if (!scale) {
         genericUtils.notify(genericUtils.format('CHRISPREMADES.Generic.MissingScale', {scaleName: workflow.item.name}), 'warn');
+        return;
     }
     let effectData = {
         name: workflow.item.name,
@@ -55,19 +56,16 @@ async function attack({trigger: {entity: effect}, workflow}) {
             errors.missingPackItem();
             return;
         }
-        featureData.system.damage.parts = [
-            [
-                bardResult + '[' + moteOfPotential.damageType + ']',
-                moteOfPotential.damageType
-            ]
-        ];
+        let activityId = Object.keys(featureData.system.activities)[0];
+        featureData.system.activities[activityId].damage.parts[0].custom.formula = bardResult + '[' + moteOfPotential.damageType + ']';
+        featureData.system.activities[activityId].damage.types = [moteOfPotential.damageType];
         let targets = tokenUtils.findNearby(workflow.targets.first(), 5, 'ally', {includeToken: true});
         await workflowUtils.syntheticItemDataRoll(featureData, workflow.actor, targets);
     }
 }
 async function damage({trigger: {entity: effect}, workflow}) {
     if (!workflow.targets.size || workflow.item.type !== 'spell');
-    if (!workflow.hitTargets.size && constants.spellAttacks.includes(workflow.item.system.actionType)) return;
+    if (!workflow.hitTargets.size && constants.spellAttacks.includes(workflow.activity.actionType)) return;
     let {formula: bardDice, magical} = effect.flags['chris-premades'].bardicInspiration;
     if (!magical?.length) return;
     let result = await dialogUtils.selectTargetDialog(effect.name, genericUtils.format('CHRISPREMADES.Dialog.Use', {itemName: magical}), workflow.targets);
@@ -130,7 +128,7 @@ async function saveBonus({trigger: {saveId, roll, actor, entity: effect}}) {
 }
 export let bardicInspiration = {
     name: 'Bardic Inspiration',
-    version: '0.12.36',
+    version: '1.1.0',
     midi: {
         item: [
             {

@@ -186,7 +186,7 @@ export {balmOfTheSummerCourt} from './macros/classFeatures/druid/circleOfDreams/
 export {bardicInspiration, bardicInspirationInspired} from './macros/classFeatures/bard/bardicInspiration.js';
 export {beguilingTwist} from './macros/classFeatures/ranger/feyWanderer/beguilingTwist.js';
 export {bestialSoul} from './macros/classFeatures/barbarian/beast/bestialSoul.js';
-export {bladeFlourish, bladeFlourishMobile} from './macros/classFeatures/bard/collegeOfSwords/bladeFlourish.js';
+export {bladeFlourish} from './macros/classFeatures/bard/collegeOfSwords/bladeFlourish.js';
 export {bladesong} from './macros/classFeatures/wizard/bladeSinging/bladesong.js';
 export {blessedStrikes} from './macros/classFeatures/cleric/blessedStrikes.js';
 export {blessingOfTheForge} from './macros/classFeatures/cleric/forgeDomain/blessingOfTheForge.js';
