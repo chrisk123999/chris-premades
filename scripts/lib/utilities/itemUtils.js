@@ -177,6 +177,9 @@ async function setHiddenActivities(item, activityIdentifiers, replace=true) {
     await genericUtils.setFlag(item, 'chris-premades', 'hiddenActivities', existingHidden);
     await genericUtils.update(item);
 }
+async function getActivity(item, type) {
+    return item.system.activities.getByType(type)?.[0];
+}
 export let itemUtils = {
     getSaveDC,
     createItems,
@@ -200,5 +203,6 @@ export let itemUtils = {
     getItemByGenericFeature,
     isWeaponProficient,
     itemUpdate,
-    setHiddenActivities
+    setHiddenActivities,
+    getActivity
 };
