@@ -33,6 +33,7 @@ import {rollResolver} from './extensions/rollResolver.js';
 import {dae} from './integrations/dae.js';
 import {abilityCheck} from './events/abilityCheck.js';
 import {itemDirectory} from './applications/itemDirectory.js';
+import {activities} from './extensions/activities.js';
 Hooks.once('socketlib.ready', registerSockets);
 Hooks.once('init', () => {
     registerSettings();
@@ -76,6 +77,7 @@ Hooks.once('ready', () => {
     if (game.modules.get('ddb-importer')?.active) ddbi.workaround(); //Remove this after MrPrimate updates to the new API.
     if (utils.genericUtils.getCPRSetting('manualRollsEnabled')) rollResolver.registerFulfillmentMethod(); 
     tours.checkTour();
+    if (utils.genericUtils.getCPRSetting('activityCSSTweak')) activities.cssTweak();
 });
 globalThis['chrisPremades'] = {
     DialogApp,

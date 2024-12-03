@@ -2340,6 +2340,10 @@
             "vaeButtons": {
                 "Hint": "When enabled, certain macros will add buttons to the VAE interface.",
                 "Name": "Visual Active Effects: Buttons"
+            },
+            "activityCSSTweak": {
+                "Hint": "When enabled, activities will have all their information one one tab. Reload required after disabling.",
+                "Name": "Activities CSS Tweak"
             }
         },
         "SkillCheck": {

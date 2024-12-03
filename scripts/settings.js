@@ -16,6 +16,7 @@ import {automatedAnimations} from './integrations/automatedAnimations.js';
 import {rollResolver} from './extensions/rollResolver.js';
 import {actions} from './extensions/actions.js';
 import {item} from './applications/item.js';
+import {activities} from './extensions/activities.js';
 function addSetting(options) {
     let setting = {
         scope: options.scope ?? 'world',
@@ -844,6 +845,13 @@ export function registerSettings() {
             }
         }
     });
+    addSetting({
+        key: 'activityCSSTweak',
+        type: Boolean,
+        default: false,
+        category: 'interface',
+        onChange: () => activities.cssTweak()
+    })
 }
 export function registerMenus() {
     if (game.settings.get('chris-premades', 'devTools')) addMenu({
