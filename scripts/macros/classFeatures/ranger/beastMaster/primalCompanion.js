@@ -1,24 +1,22 @@
 import {Summons} from '../../../../lib/summons.js';
-import {actorUtils, compendiumUtils, constants, dialogUtils, errors, genericUtils, itemUtils} from '../../../../utils.js';
+import {activityUtils, actorUtils, compendiumUtils, constants, dialogUtils, errors, genericUtils, itemUtils} from '../../../../utils.js';
 
 async function use({workflow}) {
+    let activityIdentifier = activityUtils.getIdentifier(workflow.activity);
+    if (!['primalCompanionLand', 'primalCompanionSea', 'primalCompanionSky'].includes(activityIdentifier)) return;
     let sourceActor = await compendiumUtils.getActorFromCompendium(constants.packs.summons, 'CPR - Primal Companion');
     if (!sourceActor) return;
     let classLevel = workflow.actor.classes?.ranger?.system?.levels;
     if (!classLevel) return;
     let primalBondFeatureData = await Summons.getSummonItem('Primal Bond', {}, workflow.item, {translate: 'CHRISPREMADES.Macros.PrimalCompanion.PrimalBond', identifier: 'primalCompanionPrimalBond'});
-    let commandData = await compendiumUtils.getItemFromCompendium(constants.featurePacks.classFeatureItems, 'Primal Companion: Command', {object: true, getDescription: true, translate: 'CHRISPREMADES.Macros.PrimalCompanion.Command', identifier: 'primalCompanionCommand'});
     let dodgeData = await compendiumUtils.getItemFromCompendium(constants.packs.actions, 'Dodge', {object: true, getDescription: true, translate: 'CHRISPREMADES.Macros.Actions.Dodge', identifier: 'primalCompanionDodge'});
-    if (!primalBondFeatureData || !dodgeData || !commandData) {
+    if (!primalBondFeatureData || !dodgeData) {
         errors.missingPackItem();
         return;
     }
-    let creatureType = await dialogUtils.buttonDialog(workflow.item.name, 'CHRISPREMADES.Macros.PrimalCompanion.Select', [
-        ['CHRISPREMADES.Macros.PrimalCompanion.Land', 'land'],
-        ['CHRISPREMADES.Macros.PrimalCompanion.Sea', 'sea'],
-        ['CHRISPREMADES.Macros.PrimalCompanion.Sky', 'sky']
-    ]);
-    if (!creatureType) return;
+    let commandFeature = activityUtils.getActivityByIdentifier(workflow.item, 'primalCompanionCommand', {strict: true});
+    if (!commandFeature) return;
+    let creatureType = activityIdentifier.slice(15).toLowerCase();
     let hpValue = 5 + (classLevel * 5);
     let name = itemUtils.getConfig(workflow.item, creatureType + 'Name');
     // Only did this weird add so we don't get a false positive for a missing translation
@@ -150,7 +148,17 @@ async function use({workflow}) {
             updates.actor.items
                 .filter(i => identifiersToVae.includes(i.flags['chris-premades'].info.identifier))
                 .map(i => ({type: 'use', name: i.name, identifier: i.flags['chris-premades'].info.identifier})),
-        additionalVaeButtons: [{type: 'use', name: commandData.name, identifier: 'primalCompanionCommand'}]
+        additionalVaeButtons: [{
+            type: 'use', 
+            name: commandFeature.name,
+            identifier: 'primalCompanion',
+            activityIdentifier: 'primalCompanionCommand'
+        }],
+        unhideActivities: {
+            itemUuid: workflow.item.uuid,
+            activityIdentifiers: ['primalCompanionCommand'],
+            favorite: true
+        }
     });
 }
 async function earlySea({workflow}) {
@@ -159,14 +167,12 @@ async function earlySea({workflow}) {
         ['DND5E.DamageBludgeoning', 'bludgeoning']
     ]);
     if (!selection) selection = 'piercing';
-    workflow.item = workflow.item.clone({'system.damage.parts': [workflow.item.system.damage.parts[0][0].replace('none', selection), selection]}, {keepId: true});
-    workflow.item.prepareData();
-    workflow.item.prepareFinalAttributes();
-    workflow.item.applyActiveEffects();
+    await activityUtils.setDamage(workflow.activity, workflow.activity.damage.parts[0].custom.formula.replace('none', selection), [selection]);
 }
 export let primalCompanion = {
     name: 'Primal Companion',
-    version: '0.12.52',
+    version: '1.1.0',
+    hasAnimation: true,
     midi: {
         item: [
             {

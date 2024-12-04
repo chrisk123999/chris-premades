@@ -1,0 +1,183 @@
+{
+  "name": "Charge",
+  "type": "feat",
+  "img": "icons/creatures/mammals/ox-bull-horned-glowing-orange.webp",
+  "system": {
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "source": {
+      "custom": "",
+      "revision": 1,
+      "rules": "2024"
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "recovery": []
+    },
+    "type": {
+      "value": "monster",
+      "subtype": ""
+    },
+    "requirements": "",
+    "properties": [],
+    "activities": {
+      "8OD7y2BTG57c8Dj5": {
+        "type": "save",
+        "_id": "8OD7y2BTG57c8Dj5",
+        "sort": 0,
+        "activation": {
+          "type": "special",
+          "value": null,
+          "override": false,
+          "condition": ""
+        },
+        "consumption": {
+          "scaling": {
+            "allowed": false
+          },
+          "spellSlot": true,
+          "targets": []
+        },
+        "description": {
+          "chatFlavor": ""
+        },
+        "duration": {
+          "units": "inst",
+          "concentration": false,
+          "override": false
+        },
+        "effects": [],
+        "range": {
+          "override": false,
+          "units": "spec",
+          "special": ""
+        },
+        "target": {
+          "template": {
+            "contiguous": false,
+            "units": "ft",
+            "type": ""
+          },
+          "affects": {
+            "choice": false,
+            "count": "1",
+            "type": "creature",
+            "special": ""
+          },
+          "override": false,
+          "prompt": true
+        },
+        "uses": {
+          "spent": 0,
+          "recovery": [],
+          "max": ""
+        },
+        "damage": {
+          "parts": [
+            {
+              "custom": {
+                "enabled": true,
+                "formula": "1d6[slashing]"
+              },
+              "number": null,
+              "denomination": 0,
+              "bonus": "",
+              "types": [
+                "slashing"
+              ],
+              "scaling": {
+                "number": 1
+              }
+            }
+          ],
+          "critical": {
+            "allow": false
+          },
+          "onSave": "full"
+        },
+        "save": {
+          "ability": [
+            "str"
+          ],
+          "dc": {
+            "calculation": "",
+            "formula": "10"
+          }
+        },
+        "useConditionText": "",
+        "forceDialog": false,
+        "effectConditionText": "",
+        "midiAutomationOnly": false,
+        "name": ""
+      }
+    },
+    "identifier": "charge",
+    "enchant": {},
+    "prerequisites": {
+      "level": null
+    }
+  },
+  "effects": [],
+  "flags": {
+    "midi-qol": {
+      "effectActivation": false,
+      "onUseMacroName": "",
+      "rollAttackPerTarget": "default",
+      "removeAttackDamageButtons": "default",
+      "itemCondition": "",
+      "effectCondition": "",
+      "AoETargetType": "any",
+      "AoETargetTypeIncludeSelf": true,
+      "autoTarget": "default",
+      "reactionCondition": "",
+      "otherCondition": ""
+    },
+    "midiProperties": {
+      "nodam": false,
+      "fulldam": true,
+      "halfdam": false,
+      "autoFailFriendly": false,
+      "autoSaveFriendly": false,
+      "rollOther": false,
+      "critOther": false,
+      "offHandWeapon": false,
+      "magicdam": false,
+      "magiceffect": false,
+      "concentration": false,
+      "toggleEffect": false,
+      "ignoreTotalCover": false,
+      "confirmTargets": "default",
+      "saveDamage": "fulldam",
+      "bonusSaveDamage": "default",
+      "noConcentrationCheck": false,
+      "idr": false,
+      "idi": false,
+      "idv": false,
+      "ida": false
+    },
+    "core": {
+      "sourceId": "Item.NB5Cs1YQbOs5G4os"
+    },
+    "dnd5e": {
+      "riders": {
+        "activity": [],
+        "effect": []
+      }
+    },
+    "chris-premades": {
+      "macros": {
+        "midi": {
+          "item": [
+            "proneOnFail"
+          ]
+        }
+      }
+    }
+  },
+  "folder": "41ZpPEmU7uDP91aF",
+  "_id": "r5yhohpfxxGP0zKZ",
+  "_key": "!items!r5yhohpfxxGP0zKZ"
+}

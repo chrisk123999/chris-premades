@@ -20,7 +20,7 @@ async function earlyTarget({trigger: {entity: item}, workflow}) {
 }
 export let umbralSight = {
     name: 'Umbral Sight',
-    version: '0.12.54',
+    version: '1.1.0',
     midi: {
         actor: [
             {

@@ -39,7 +39,7 @@ async function damage({workflow}) {
 }
 export let favoredFoe = {
     name: 'Favored Foe',
-    version: '0.12.52',
+    version: '1.1.0',
     midi: {
         item: [
             {

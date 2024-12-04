@@ -1,0 +1,168 @@
+{
+  "name": "Colossus Slayer",
+  "type": "feat",
+  "system": {
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "recovery": []
+    },
+    "type": {
+      "value": "class",
+      "subtype": ""
+    },
+    "prerequisites": {
+      "level": null
+    },
+    "properties": [],
+    "requirements": "",
+    "source": {
+      "revision": 1,
+      "rules": "2024"
+    },
+    "activities": {
+      "dnd5eactivity000": {
+        "_id": "dnd5eactivity000",
+        "type": "utility",
+        "activation": {
+          "type": "special",
+          "value": 1,
+          "condition": "",
+          "override": false
+        },
+        "consumption": {
+          "targets": [],
+          "scaling": {
+            "allowed": false,
+            "max": ""
+          },
+          "spellSlot": true
+        },
+        "description": {
+          "chatFlavor": ""
+        },
+        "duration": {
+          "concentration": false,
+          "value": "",
+          "units": "",
+          "special": "",
+          "override": false
+        },
+        "effects": [],
+        "range": {
+          "units": "",
+          "special": "",
+          "override": false
+        },
+        "target": {
+          "template": {
+            "count": "",
+            "contiguous": false,
+            "type": "",
+            "size": "",
+            "width": "",
+            "height": "",
+            "units": ""
+          },
+          "affects": {
+            "count": "",
+            "type": "",
+            "choice": false,
+            "special": ""
+          },
+          "prompt": true,
+          "override": false
+        },
+        "uses": {
+          "spent": 0,
+          "max": "",
+          "recovery": []
+        },
+        "roll": {
+          "formula": "",
+          "name": "",
+          "prompt": false,
+          "visible": false
+        },
+        "sort": 0,
+        "useConditionText": "",
+        "forceDialog": false,
+        "effectConditionText": "",
+        "midiAutomationOnly": false
+      }
+    },
+    "identifier": "colossus-slayer",
+    "enchant": {}
+  },
+  "flags": {
+    "infusions": {
+      "infused": false
+    },
+    "obsidian": {
+      "source": {
+        "type": "class",
+        "text": "Ranger"
+      }
+    },
+    "midi-qol": {
+      "removeAttackDamageButtons": "default",
+      "rollAttackPerTarget": "default",
+      "itemCondition": "",
+      "effectCondition": "",
+      "AoETargetType": "any",
+      "AoETargetTypeIncludeSelf": true,
+      "autoTarget": "default",
+      "reactionCondition": "",
+      "otherCondition": ""
+    },
+    "midiProperties": {
+      "confirmTargets": "default",
+      "autoFailFriendly": false,
+      "autoSaveFriendly": false,
+      "critOther": false,
+      "offHandWeapon": false,
+      "magicdam": false,
+      "magiceffect": false,
+      "noConcentrationCheck": false,
+      "toggleEffect": false,
+      "ignoreTotalCover": false,
+      "idr": false,
+      "idi": false,
+      "idv": false,
+      "ida": false
+    },
+    "dnd5e": {
+      "advancementOrigin": "JW4SiJT0qr6FN3Hq",
+      "persistSourceMigration": true,
+      "riders": {
+        "activity": []
+      }
+    },
+    "chris-premades": {
+      "info": {
+        "identifier": "colossusSlayer",
+        "source": "chris-premades",
+        "version": "1.1.0"
+      },
+      "macros": {
+        "midi": {
+          "actor": [
+            "colossusSlayer"
+          ]
+        },
+        "combat": [
+          "colossusSlayer"
+        ]
+      }
+    }
+  },
+  "effects": [],
+  "img": "icons/creatures/magical/humanoid-giant-forest-blue.webp",
+  "folder": "0rFpMT0gzQLEr8Xu",
+  "_id": "eSAEiZPiDGhRTfc3",
+  "_key": "!items!eSAEiZPiDGhRTfc3"
+}

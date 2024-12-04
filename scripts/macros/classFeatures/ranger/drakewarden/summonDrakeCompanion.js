@@ -1,23 +1,24 @@
 import {Summons} from '../../../../lib/summons.js';
-import {actorUtils, compendiumUtils, constants, dialogUtils, effectUtils, errors, genericUtils, itemUtils, socketUtils, tokenUtils, workflowUtils} from '../../../../utils.js';
+import {activityUtils, actorUtils, compendiumUtils, constants, dialogUtils, effectUtils, errors, genericUtils, itemUtils, socketUtils, tokenUtils, workflowUtils} from '../../../../utils.js';
 async function use({workflow}) {
+    if (activityUtils.getIdentifier(workflow.activity) !== genericUtils.getIdentifier(workflow.item)) return;
     let sourceActor = await compendiumUtils.getActorFromCompendium(constants.packs.summons, 'CPR - Drake Companion');
     if (!sourceActor) return;
     let classLevel = workflow.actor.classes?.ranger?.system?.levels;
     if (!classLevel) return;
     let drakeUpgrades = Math.floor((classLevel + 1) / 8);
-    let commandData = await compendiumUtils.getItemFromCompendium(constants.featurePacks.classFeatureItems, 'Drake Companion: Command', {object: true, getDescription: true, translate: 'CHRISPREMADES.Macros.SummonDrakeCompanion.Command', identifier: 'summonDrakeCompanionCommand'});
-    let resistanceData = await compendiumUtils.getItemFromCompendium(constants.featurePacks.classFeatureItems, 'Reflexive Resistance', {object: true, getDescription: true, translate: 'CHRISPREMADES.Macros.SummonDrakeCompanion.Reflexive', identifier: 'summonDrakeCompanionReflexiveResistance'});
     let dodgeData = await compendiumUtils.getItemFromCompendium(constants.packs.actions, 'Dodge', {object: true, getDescription: true, translate: 'CHRISPREMADES.Macros.Actions.Dodge', identifier: 'summonDrakeCompanionDodge'});
     let biteData = await Summons.getSummonItem('Bite (Drake Companion)', {}, workflow.item, {translate: 'CHRISPREMADES.CommonFeatures.Bite', identifier: 'summonDrakeCompanionBite'});
     let essenceData = await Summons.getSummonItem('Draconic Essence', {}, workflow.item, {translate: 'CHRISPREMADES.Macros.SummonDrakeCompanion.Essence', identifier: 'summonDrakeCompanionDraconicEssence'});
     let strikesData = await Summons.getSummonItem('Infused Strikes', {}, workflow.item, {translate: 'CHRISPREMADES.Macros.SummonDrakeCompanion.InfusedStrikes', identifier: 'summonDrakeCompanionInfusedStrikes'});
     let itemsToAdd = [essenceData, strikesData, biteData, dodgeData];
-    if (!commandData || !resistanceData || itemsToAdd.some(i => !i)) {
+    if (itemsToAdd.some(i => !i)) {
         errors.missingPackItem();
         return;
     }
-    resistanceData.system.uses.value = workflow.actor.system.attributes.prof;
+    let commandFeature = activityUtils.getActivityByIdentifier(workflow.item, 'summonDrakeCompanionCommand', {strict: true});
+    let resistanceFeature = activityUtils.getActivityByIdentifier(workflow.item, 'reflexiveResistance', {strict: true});
+    if (!commandFeature || !resistanceFeature) return;
     let damageType = await dialogUtils.buttonDialog(workflow.item.name, 'CHRISPREMADES.Macros.SummonDrakeCompanion.Select', [
         ['DND5E.DamageAcid', 'acid'],
         ['DND5E.DamageCold', 'cold'],
@@ -28,13 +29,26 @@ async function use({workflow}) {
     genericUtils.setProperty(strikesData, 'flags.chris-premades.infusedStrikes.damageType', damageType);
     let scale = 0.8;
     let heightWidth = 1;
+    let biteActivityId = Object.keys(biteData.system.activities)[0];
     switch (drakeUpgrades) {
         case 1:
-            biteData.system.damage.parts.push(['1d6[' + damageType + ']', damageType]);
+            biteData.system.activities[biteActivityId].damage.parts.push({
+                custom: {
+                    enabled: true,
+                    formula: '1d6[' + damageType + ']'
+                },
+                types: [damageType]
+            });
             scale = 1;
             break;
         case 2:
-            biteData.system.damage.parts.push(['2d6[' + damageType + ']', damageType]);
+            biteData.system.activities[biteActivityId].damage.parts.push({
+                custom: {
+                    enabled: true,
+                    formula: '2d6[' + damageType + ']'
+                },
+                types: [damageType]
+            });
             scale = 1;
             heightWidth = 2;
     }
@@ -110,27 +124,47 @@ async function use({workflow}) {
         animation,
         initiativeType: 'follows',
         additionalSummonVaeButtons: itemsToAdd.slice(2).map(i => ({type: 'use', name: i.name, identifier: i.flags['chris-premades'].info.identifier})),
-        additionalVaeButtons: [{type: 'use', name: commandData.name, identifier: 'summonDrakeCompanionCommand'}]
+        additionalVaeButtons: [{
+            type: 'use', 
+            name: commandFeature.name,
+            identifier: 'summonDrakeCompanion', 
+            activityIdentifier: 'summonDrakeCompanionCommand'
+        }],
+        unhideActivities: {
+            itemUuid: workflow.item.uuid,
+            activityIdentifiers: ['summonDrakeCompanionCommand'],
+            favorite: true
+        }
     });
     let effect = effectUtils.getEffectByIdentifier(workflow.actor, 'summonDrakeCompanion');
     if (!effect) return;
     if (drakeUpgrades) {
-        await genericUtils.update(effect, {changes: [
-            {
+        let upgradeUpdates = {
+            changes: [{
                 key: 'system.traits.dr.value',
                 mode: 2,
                 priority: 20,
                 value: damageType
-            }
-        ]});
+            }]
+        };
+        if (drakeUpgrades > 1) {
+            upgradeUpdates.flags = {
+                'chris-premades': {
+                    macros: {
+                        midi: {
+                            actor: ['summonDrakeCompanionResistance']
+                        }
+                    }
+                }
+            };
+        }
+        await genericUtils.update(effect, upgradeUpdates);
     }
-    await itemUtils.createItems(workflow.actor, [commandData], {favorite: true, parentEntity: effect});
-    if (drakeUpgrades > 1) await itemUtils.createItems(workflow.actor, [resistanceData], {parentEntity: effect});
 }
-async function postAttack({trigger: {entity: item, token}, workflow}) {
-    let effect = effectUtils.getEffectByIdentifier(token.actor, 'summonDrakeCompanion');
-    if (!effect) return;
-    if (!item.system.uses.value) return;
+async function postAttack({trigger: {entity: effect, token}, workflow}) {
+    let feature = activityUtils.getActivityByIdentifier(fromUuidSync(effect.origin), 'reflexiveResistance', {strict: true});
+    if (!feature) return;
+    if (!feature.uses.value) return;
     if (!workflow.hitTargets.size) return;
     if (actorUtils.hasUsedReaction(token.actor)) return;
     let summonId = effect.flags['chris-premades'].summons.ids[effect.name][0];
@@ -142,25 +176,25 @@ async function postAttack({trigger: {entity: item, token}, workflow}) {
     if (tokenUtils.getDistance(token, summonToken) > 30) return;
     let selection;
     if (sourceHit && summonHit) {
-        selection = await dialogUtils.buttonDialog(item.name, 'CHRISPREMADES.Macros.SummonDrakeCompanion.Resistance', [
+        selection = await dialogUtils.buttonDialog(feature.name, 'CHRISPREMADES.Macros.SummonDrakeCompanion.Resistance', [
             ['CHRISPREMADES.Macros.SummonDrakeCompanion.Self', 'self'],
             ['CHRISPREMADES.Macros.SummonDrakeCompanion.Summon', 'summon'],
             ['CHRISPREMADES.Generic.No', false]
         ]);
         if (!selection) return;
     } else if (sourceHit) {
-        selection = await dialogUtils.confirm(item.name, 'CHRISPREMADES.Macros.SummonDrakeCompanion.ResistanceSelf');
+        selection = await dialogUtils.confirm(feature.name, 'CHRISPREMADES.Macros.SummonDrakeCompanion.ResistanceSelf');
         if (!selection) return;
         selection = 'self';
     } else {
-        selection = await dialogUtils.confirm(item.name, 'CHRISPREMADES.Macros.SummonDrakeCompanion.Resistance');
+        selection = await dialogUtils.confirm(feature.name, 'CHRISPREMADES.Macros.SummonDrakeCompanion.Resistance');
         if (!selection) return;
         selection = 'summon';
     }
     let effectData = {
-        name: item.name,
-        img: item.img,
-        origin: item.uuid,
+        name: feature.name,
+        img: feature.img,
+        origin: feature.item.uuid,
         changes: [
             {
                 key: 'system.traits.dr.all',
@@ -184,11 +218,11 @@ async function postAttack({trigger: {entity: item, token}, workflow}) {
     };
     await effectUtils.createEffect(selection === 'self' ? token.actor : summonToken.actor, effectData);
     await actorUtils.setReactionUsed(token.actor);
-    await genericUtils.update(item, {'system.uses.value': item.system.uses.value - 1});
+    await genericUtils.update(feature, {'uses.spent': feature.uses.spent + 1});
 }
 async function postDamage({trigger: {entity: item, token}, workflow}) {
     if (!workflow.hitTargets.size) return;
-    if (!constants.weaponAttacks.includes(workflow.item.system.actionType)) return;
+    if (!constants.weaponAttacks.includes(workflow.activity.actionType)) return;
     if (workflow.token.document.disposition * token.document.disposition < 0) return;
     if (actorUtils.hasUsedReaction(token.actor)) return;
     let damageType = item.flags['chris-premades']?.infusedStrikes?.damageType;
@@ -202,7 +236,8 @@ async function postDamage({trigger: {entity: item, token}, workflow}) {
 }
 export let summonDrakeCompanion = {
     name: 'Drake Companion: Summon',
-    version: '0.12.53',
+    version: '1.1.0',
+    hasAnimation: true,
     midi: {
         item: [
             {

@@ -1,0 +1,74 @@
+{
+  "name": "Draconic Essence",
+  "type": "feat",
+  "system": {
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "source": {
+      "custom": "",
+      "revision": 1,
+      "rules": "2024"
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "recovery": []
+    },
+    "type": {
+      "value": "monster",
+      "subtype": ""
+    },
+    "requirements": "",
+    "properties": [],
+    "activities": {},
+    "identifier": "draconic-essence",
+    "enchant": {},
+    "prerequisites": {
+      "level": null
+    }
+  },
+  "img": "icons/magic/light/explosion-glow-spiral-yellow.webp",
+  "effects": [],
+  "flags": {
+    "core": {
+      "sourceId": "Actor.XTa1hL3pg3KsloTb.Item.6mWXaWgSC2F2LwIo"
+    },
+    "midiProperties": {
+      "confirmTargets": "default",
+      "autoFailFriendly": false,
+      "autoSaveFriendly": false,
+      "critOther": false,
+      "offHandWeapon": false,
+      "magicdam": false,
+      "magiceffect": false,
+      "noConcentrationCheck": false,
+      "toggleEffect": false,
+      "ignoreTotalCover": false,
+      "idr": false,
+      "idi": false,
+      "idv": false,
+      "ida": false
+    },
+    "midi-qol": {
+      "rollAttackPerTarget": "default",
+      "itemCondition": "",
+      "effectCondition": "",
+      "AoETargetType": "any",
+      "AoETargetTypeIncludeSelf": true,
+      "autoTarget": "default",
+      "removeAttackDamageButtons": "default",
+      "reactionCondition": "",
+      "otherCondition": ""
+    },
+    "dnd5e": {
+      "riders": {
+        "activity": []
+      }
+    }
+  },
+  "folder": "KgDwmE4chHNG1z1s",
+  "_id": "cAXUnsdtcotKI8SG",
+  "_key": "!items!cAXUnsdtcotKI8SG"
+}

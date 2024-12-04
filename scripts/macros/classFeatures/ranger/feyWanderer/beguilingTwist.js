@@ -7,7 +7,7 @@ async function use({workflow}) {
         ['DND5E.ConFrightened', 'frightened']
     ]);
     if (!selection) return;
-    let dc = itemUtils.getSaveDC(workflow.item);
+    let dc = workflow.activity.save?.dc.value ?? 10;
     let effectData = {
         name: workflow.item.name,
         img: workflow.item.img,
@@ -31,7 +31,7 @@ async function use({workflow}) {
 }
 export let beguilingTwist = {
     name: 'Beguiling Twist',
-    version: '0.12.54',
+    version: '1.1.0',
     midi: {
         item: [
             {
