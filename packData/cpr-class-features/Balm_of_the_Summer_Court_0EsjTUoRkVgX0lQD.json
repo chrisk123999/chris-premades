@@ -43,10 +43,19 @@
           "override": false
         },
         "consumption": {
-          "targets": [],
+          "targets": [
+            {
+              "type": "itemUses",
+              "value": "1",
+              "target": "",
+              "scaling": {
+                "mode": "amount"
+              }
+            }
+          ],
           "scaling": {
-            "allowed": false,
-            "max": ""
+            "allowed": true,
+            "max": "@item.uses.value"
           },
           "spellSlot": true
         },
@@ -96,16 +105,16 @@
           "denomination": null,
           "bonus": "",
           "types": [
-            "healing"
+            "temphp"
           ],
           "custom": {
             "enabled": true,
-            "formula": "0[healing]"
+            "formula": "1d6[healing] + 1"
           },
           "scaling": {
             "mode": "whole",
-            "number": null,
-            "formula": ""
+            "number": 1,
+            "formula": "1"
           }
         },
         "sort": 0,
@@ -128,6 +137,13 @@
       "riders": {
         "activity": [],
         "effect": []
+      },
+      "last": {
+        "dnd5eactivity000": {
+          "damageType": {
+            "0": "temphp"
+          }
+        }
       }
     },
     "core": {},
@@ -156,6 +172,7 @@
       "itemCondition": "",
       "effectCondition": "",
       "onUseMacroName": "",
+      "-=onUseMacroName": null,
       "AoETargetType": "any",
       "AoETargetTypeIncludeSelf": true,
       "autoTarget": "default",
@@ -168,19 +185,12 @@
         "version": "1.1.0",
         "identifier": "balmOfTheSummerCourt",
         "source": "chris-premades"
-      },
-      "macros": {
-        "midi": {
-          "item": [
-            "balmOfTheSummerCourt"
-          ]
-        }
       }
     }
   },
   "effects": [],
   "img": "icons/magic/nature/leaf-glow-triple-orange-purple.webp",
   "folder": "DstdtqsnPI0Vyvib",
-  "_id": "13pLX30UwRm2iliA",
-  "_key": "!items!13pLX30UwRm2iliA"
+  "_id": "0EsjTUoRkVgX0lQD",
+  "_key": "!items!0EsjTUoRkVgX0lQD"
 }
