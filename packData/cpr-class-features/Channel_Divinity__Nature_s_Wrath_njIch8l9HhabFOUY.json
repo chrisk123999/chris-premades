@@ -1,0 +1,476 @@
+{
+  "name": "Channel Divinity: Nature's Wrath",
+  "type": "feat",
+  "system": {
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "recovery": []
+    },
+    "type": {
+      "value": "class",
+      "subtype": "channelDivinity"
+    },
+    "properties": [],
+    "requirements": "",
+    "source": {
+      "custom": "",
+      "revision": 1,
+      "rules": "2024"
+    },
+    "prerequisites": {
+      "level": null
+    },
+    "activities": {
+      "XGfUbuN8zXU3oxzH": {
+        "type": "utility",
+        "_id": "XGfUbuN8zXU3oxzH",
+        "sort": 0,
+        "activation": {
+          "type": "action",
+          "value": null,
+          "override": false,
+          "condition": ""
+        },
+        "consumption": {
+          "scaling": {
+            "allowed": false
+          },
+          "spellSlot": true,
+          "targets": [
+            {
+              "type": "itemUses",
+              "value": "1",
+              "target": "",
+              "scaling": {}
+            }
+          ]
+        },
+        "description": {
+          "chatFlavor": ""
+        },
+        "duration": {
+          "units": "hour",
+          "concentration": false,
+          "override": false,
+          "value": "24"
+        },
+        "effects": [],
+        "range": {
+          "override": false,
+          "units": "ft",
+          "special": "",
+          "value": "10"
+        },
+        "target": {
+          "template": {
+            "contiguous": false,
+            "units": "ft",
+            "type": ""
+          },
+          "affects": {
+            "choice": false,
+            "count": "1",
+            "type": "creature",
+            "special": ""
+          },
+          "override": false,
+          "prompt": true
+        },
+        "uses": {
+          "spent": 0,
+          "recovery": [],
+          "max": ""
+        },
+        "roll": {
+          "prompt": false,
+          "visible": false,
+          "name": "",
+          "formula": ""
+        },
+        "useConditionText": "",
+        "forceDialog": false,
+        "effectConditionText": "",
+        "midiAutomationOnly": false,
+        "name": "Nature's Wrath",
+        "img": "icons/magic/nature/root-vine-entangled-humanoid.webp"
+      },
+      "3dk0B8AT0SMs4u7b": {
+        "type": "save",
+        "_id": "3dk0B8AT0SMs4u7b",
+        "sort": 0,
+        "activation": {
+          "type": "special",
+          "value": null,
+          "override": false,
+          "condition": ""
+        },
+        "consumption": {
+          "scaling": {
+            "allowed": false
+          },
+          "spellSlot": true,
+          "targets": []
+        },
+        "description": {
+          "chatFlavor": ""
+        },
+        "duration": {
+          "units": "inst",
+          "concentration": false,
+          "override": false
+        },
+        "effects": [
+          {
+            "_id": "DadAFOrwuQzfQghg",
+            "onSave": false
+          }
+        ],
+        "range": {
+          "override": false,
+          "units": "any",
+          "special": ""
+        },
+        "target": {
+          "template": {
+            "contiguous": false,
+            "units": "ft",
+            "type": ""
+          },
+          "affects": {
+            "choice": false,
+            "count": "1",
+            "type": "creature",
+            "special": ""
+          },
+          "override": false,
+          "prompt": true
+        },
+        "uses": {
+          "spent": 0,
+          "recovery": [],
+          "max": ""
+        },
+        "damage": {
+          "parts": [],
+          "critical": {
+            "allow": false
+          },
+          "onSave": "half"
+        },
+        "save": {
+          "ability": [
+            "str"
+          ],
+          "dc": {
+            "calculation": "spellcasting",
+            "formula": ""
+          }
+        },
+        "useConditionText": "",
+        "forceDialog": false,
+        "effectConditionText": "",
+        "midiAutomationOnly": false,
+        "name": "Nature's Wrath: Strength Save",
+        "img": "icons/magic/nature/root-vine-entangled-humanoid.webp"
+      },
+      "NCdzcXjfMkbCGYpa": {
+        "type": "save",
+        "sort": 0,
+        "activation": {
+          "type": "special",
+          "value": null,
+          "override": false,
+          "condition": ""
+        },
+        "consumption": {
+          "scaling": {
+            "allowed": false
+          },
+          "spellSlot": true,
+          "targets": []
+        },
+        "description": {
+          "chatFlavor": ""
+        },
+        "duration": {
+          "units": "inst",
+          "concentration": false,
+          "override": false
+        },
+        "effects": [
+          {
+            "_id": "gRGvA2yxdC8ssWu8",
+            "onSave": false
+          }
+        ],
+        "range": {
+          "override": false,
+          "units": "any",
+          "special": ""
+        },
+        "target": {
+          "template": {
+            "contiguous": false,
+            "units": "ft",
+            "type": ""
+          },
+          "affects": {
+            "choice": false,
+            "count": "1",
+            "type": "creature",
+            "special": ""
+          },
+          "override": false,
+          "prompt": true
+        },
+        "uses": {
+          "spent": 0,
+          "recovery": [],
+          "max": ""
+        },
+        "damage": {
+          "parts": [],
+          "critical": {
+            "allow": false
+          },
+          "onSave": "half"
+        },
+        "save": {
+          "ability": [
+            "dex"
+          ],
+          "dc": {
+            "calculation": "spellcasting",
+            "formula": ""
+          }
+        },
+        "useConditionText": "",
+        "forceDialog": false,
+        "effectConditionText": "",
+        "midiAutomationOnly": false,
+        "name": "Nature's Wrath: Dex Save",
+        "img": "icons/magic/nature/root-vine-entangled-humanoid.webp",
+        "_id": "NCdzcXjfMkbCGYpa"
+      }
+    },
+    "identifier": "channel-divinity-natures-wrath",
+    "enchant": {}
+  },
+  "flags": {
+    "midi-qol": {
+      "removeAttackDamageButtons": "default",
+      "rollAttackPerTarget": "default",
+      "effectActivation": false,
+      "itemCondition": "",
+      "effectCondition": "",
+      "onUseMacroName": "",
+      "AoETargetType": "any",
+      "AoETargetTypeIncludeSelf": true,
+      "autoTarget": "default",
+      "reactionCondition": "",
+      "otherCondition": ""
+    },
+    "midiProperties": {
+      "confirmTargets": "default",
+      "autoFailFriendly": false,
+      "autoSaveFriendly": false,
+      "critOther": false,
+      "offHandWeapon": false,
+      "magicdam": false,
+      "magiceffect": false,
+      "concentration": false,
+      "noConcentrationCheck": false,
+      "toggleEffect": false,
+      "ignoreTotalCover": false,
+      "idr": false,
+      "idi": false,
+      "idv": false,
+      "ida": false
+    },
+    "core": {},
+    "dnd5e": {
+      "persistSourceMigration": true,
+      "riders": {
+        "activity": [
+          "3dk0B8AT0SMs4u7b",
+          "NCdzcXjfMkbCGYpa"
+        ],
+        "effect": []
+      },
+      "dependents": [
+        {
+          "uuid": "Scene.6cPoldhdvb1g9GHk.Token.e63TXtRu9BBQz9od.Actor.RIKQZTCGTzYRKnxy.ActiveEffect.8ddZQ6l1qhKqFMm6"
+        }
+      ]
+    },
+    "chris-premades": {
+      "info": {
+        "name": "Channel Divinity: Nature's Wrath",
+        "version": "1.1.0",
+        "identifier": "naturesWrath",
+        "source": "chris-premades"
+      },
+      "macros": {
+        "midi": {
+          "item": [
+            "naturesWrath"
+          ]
+        }
+      },
+      "hiddenActivities": [
+        "naturesWrathStr",
+        "naturesWrathDex"
+      ],
+      "activityIdentifiers": {
+        "naturesWrath": "XGfUbuN8zXU3oxzH",
+        "naturesWrathStr": "3dk0B8AT0SMs4u7b",
+        "naturesWrathDex": "NCdzcXjfMkbCGYpa"
+      }
+    }
+  },
+  "effects": [
+    {
+      "name": "Channel Divinity: Nature's Wrath (Str)",
+      "origin": "Compendium.world.cpr-class-features.Item.9mfRYZb08LaT1N9c",
+      "duration": {
+        "rounds": null,
+        "startTime": null,
+        "seconds": null,
+        "combat": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "disabled": false,
+      "flags": {
+        "dnd5e": {},
+        "dae": {
+          "enableCondition": "",
+          "disableCondition": "",
+          "disableIncapacitated": false,
+          "selfTarget": false,
+          "selfTargetAlways": false,
+          "dontApply": false,
+          "stackable": "noneName",
+          "showIcon": false,
+          "durationExpression": "",
+          "macroRepeat": "none",
+          "specialDuration": []
+        },
+        "core": {
+          "overlay": false
+        },
+        "chris-premades": {
+          "noAnimation": false,
+          "conditions": [
+            "restrained"
+          ]
+        }
+      },
+      "img": "icons/magic/nature/root-vine-entangled-humanoid.webp",
+      "_id": "DadAFOrwuQzfQghg",
+      "type": "base",
+      "system": {},
+      "changes": [
+        {
+          "key": "flags.midi-qol.OverTime",
+          "mode": 0,
+          "value": "turn=end,allowIncapacitated=true,rollType=save,saveAbility=str,saveDC=@attributes.spelldc,saveDamage=nodamage,saveRemove=true,rollMode=publicroll,",
+          "priority": 20
+        }
+      ],
+      "description": "",
+      "tint": "#ffffff",
+      "transfer": false,
+      "statuses": [],
+      "sort": 0,
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "coreVersion": "12.331",
+        "systemId": "dnd5e",
+        "systemVersion": "4.1.2",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!items.effects!njIch8l9HhabFOUY.DadAFOrwuQzfQghg"
+    },
+    {
+      "name": "Channel Divinity: Nature's Wrath (Dex)",
+      "origin": "Compendium.world.cpr-class-features.Item.9mfRYZb08LaT1N9c",
+      "duration": {
+        "rounds": null,
+        "startTime": null,
+        "seconds": null,
+        "combat": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "disabled": false,
+      "flags": {
+        "dnd5e": {},
+        "dae": {
+          "enableCondition": "",
+          "disableCondition": "",
+          "disableIncapacitated": false,
+          "selfTarget": false,
+          "selfTargetAlways": false,
+          "dontApply": false,
+          "stackable": "noneName",
+          "showIcon": false,
+          "durationExpression": "",
+          "macroRepeat": "none",
+          "specialDuration": []
+        },
+        "core": {
+          "overlay": false
+        },
+        "chris-premades": {
+          "noAnimation": false,
+          "conditions": [
+            "restrained"
+          ]
+        }
+      },
+      "img": "icons/magic/nature/root-vine-entangled-humanoid.webp",
+      "type": "base",
+      "system": {},
+      "changes": [
+        {
+          "key": "flags.midi-qol.OverTime",
+          "mode": 0,
+          "value": "turn=end,allowIncapacitated=true,rollType=save,saveAbility=dex,saveDC=@attributes.spelldc,saveDamage=nodamage,saveRemove=true,rollMode=publicroll,",
+          "priority": 20
+        }
+      ],
+      "description": "",
+      "tint": "#ffffff",
+      "transfer": false,
+      "statuses": [],
+      "sort": 0,
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "coreVersion": "12.331",
+        "systemId": "dnd5e",
+        "systemVersion": "4.1.2",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_id": "gRGvA2yxdC8ssWu8",
+      "_key": "!items.effects!njIch8l9HhabFOUY.gRGvA2yxdC8ssWu8"
+    }
+  ],
+  "img": "icons/magic/nature/root-vine-entangled-humanoid.webp",
+  "folder": "JQjWar8Wjz4uGhjI",
+  "_id": "njIch8l9HhabFOUY",
+  "_key": "!items!njIch8l9HhabFOUY"
+}

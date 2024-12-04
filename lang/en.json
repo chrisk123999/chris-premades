@@ -1108,7 +1108,9 @@
                 "Empty": "Your {itemName} pool is empty.",
                 "RemoveCondition": "Remove a Condition:",
                 "RestoreHitpoints": "Restore Hitpoints:",
-                "Select": "How would you like to aid?"
+                "Select": "How would you like to aid?",
+                "TargetNotDiseased": "Target is not diseased!",
+                "TargetNotPoisoned": "Target is not poisoned!"
             },
             "Lifesteal": {
                 "HealingType": "Healing Type:",

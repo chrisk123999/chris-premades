@@ -61,7 +61,7 @@ async function turnStart({trigger: {entity: effect, token}}) {
 }
 export let auraOfConquest = {
     name: 'Aura of Conquest',
-    version: '0.12.28',
+    version: '1.1.0',
     aura: [
         {
             pass: 'create',

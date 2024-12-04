@@ -44,7 +44,7 @@ async function create({trigger: {entity: item, target, identifier}}) {
 }
 export let auraOfHate = {
     name: 'Aura of Hate',
-    version: '0.12.26',
+    version: '1.1.0',
     aura: [
         {
             pass: 'create',

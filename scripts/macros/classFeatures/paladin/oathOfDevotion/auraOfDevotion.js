@@ -15,7 +15,7 @@ async function create({trigger: {entity: item, target, identifier}}) {
         changes: [
             {
                 key: 'system.traits.ci.value',
-                mode: 0,
+                mode: 2,
                 value: 'charmed',
                 priority: 20
             }
@@ -43,7 +43,7 @@ async function create({trigger: {entity: item, target, identifier}}) {
 }
 export let auraOfDevotion = {
     name: 'Aura of Devotion',
-    version: '0.12.24',
+    version: '1.1.0',
     aura: [
         {
             pass: 'create',

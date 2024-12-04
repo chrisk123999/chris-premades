@@ -1,6 +1,7 @@
-import {animationUtils, compendiumUtils, constants, effectUtils, errors, genericUtils, itemUtils, tokenUtils, workflowUtils} from '../../../../utils.js';
+import {activityUtils, animationUtils, compendiumUtils, constants, effectUtils, errors, genericUtils, itemUtils, tokenUtils, workflowUtils} from '../../../../utils.js';
 
 async function use({workflow}) {
+    if (activityUtils.getIdentifier(workflow.activity) !== genericUtils.getIdentifier(workflow.item)) return;
     let effectData = {
         name: workflow.item.name,
         img: workflow.item.img,
@@ -188,18 +189,16 @@ async function turnEnd({trigger: {entity: effect, token}}) {
     let originToken = await fromUuid(effect.flags['chris-premades'].dreadfulAspect.sourceToken);
     if (!originItem || !originToken) return;
     if (tokenUtils.getDistance(originToken.object, token) <= 30) return;
-    let featureData = await compendiumUtils.getItemFromCompendium(constants.featurePacks.classFeatureItems, 'Dreadful Aspect: End of Turn', {object: true, getDescription: true, translate: 'CHRISPREMADES.Macros.DreadfulAspect.Turn', flatDC: itemUtils.getSaveDC(originItem)});
-    if (!featureData) {
-        errors.missingPackItem();
-        return;
-    }
-    let workflow = await workflowUtils.syntheticItemDataRoll(featureData, originToken.actor, [token]);
+    let feature = activityUtils.getActivityByIdentifier(fromUuidSync(effect.origin), 'dreadfulAspectEnd', {strict: true});
+    if (!feature) return;
+    let workflow = await workflowUtils.syntheticActivityRoll(feature, [token]);
     if (workflow.failedSaves.size) return;
     await genericUtils.remove(effect);
 }
 export let dreadfulAspect = {
     name: 'Channel Divinity: Dreadful Aspect',
-    version: '0.12.24',
+    version: '1.1.0',
+    hasAnimation: true,
     midi: {
         item: [
             {

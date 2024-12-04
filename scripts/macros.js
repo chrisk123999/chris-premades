@@ -218,7 +218,7 @@ export {divineFuryNecrotic, divineFuryRadiant} from './macros/classFeatures/barb
 export {divineSmite} from './macros/classFeatures/paladin/divineSmite.js';
 export {divineStrike} from './macros/classFeatures/cleric/divineStrike.js';
 export {draconicStrike} from './macros/classFeatures/monk/wayOfTheAscendantDragon/draconicStrike.js';
-export {dreadLord, dreadLordAura, dreadLordShadowAttack} from './macros/classFeatures/paladin/oathbreaker/dreadLord.js';
+export {dreadLord, dreadLordAura} from './macros/classFeatures/paladin/oathbreaker/dreadLord.js';
 export {dreadAmbusher} from './macros/classFeatures/ranger/gloomStalker/dreadAmbusher.js';
 export {dreadfulAspect, dreadfulAspectFrightened} from './macros/classFeatures/paladin/oathbreaker/dreadfulAspect.js';
 export {dreadfulStrikes} from './macros/classFeatures/ranger/feyWanderer/dreadfulStrikes.js';
@@ -326,7 +326,7 @@ export {repellingBlast} from './macros/classFeatures/warlock/invocations/repelli
 export {riteOfTheDawn, riteOfTheDead, riteOfTheFlame, riteOfTheFrozen, riteOfTheOracle, riteOfTheRoar, riteOfTheStorm} from './macros/classFeatures/bloodHunter/rites.js';
 export {runicJuggernaut} from './macros/classFeatures/fighter/runeKnight/runicJuggernaut.js';
 export {runicShield} from './macros/classFeatures/fighter/runeKnight/runicShield.js';
-export {sacredWeapon, sacredWeaponDismiss} from './macros/classFeatures/paladin/oathOfDevotion/sacredWeapon.js';
+export {sacredWeapon} from './macros/classFeatures/paladin/oathOfDevotion/sacredWeapon.js';
 export {sculptSpells, sculptSpellsTarget} from './macros/classFeatures/wizard/schoolOfEvocation/sculptSpells.js';
 export {shadowStep} from './macros/classFeatures/monk/wayOfShadow/shadowStep.js';
 export {songOfDefense} from './macros/classFeatures/wizard/bladeSinging/songOfDefense.js';

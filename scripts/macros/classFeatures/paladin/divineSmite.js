@@ -7,7 +7,7 @@ async function damage({trigger: {entity: item}, workflow}) {
     if (itemUtils.getConfig(item, 'allowRanged')) {
         validTypes.push('rwak');
     }
-    if (!validTypes.includes(workflow.item.system.actionType)) return;
+    if (!validTypes.includes(workflow.activity.actionType)) return;
     if (!actorUtils.hasSpellSlots(workflow.actor)) return;
     let selection = await dialogUtils.selectSpellSlot(workflow.actor, workflow.item.name, genericUtils.format('CHRISPREMADES.Dialog.Use', {itemName: item.name}), {no: true});
     if (!selection) return;
@@ -24,11 +24,11 @@ async function damage({trigger: {entity: item}, workflow}) {
     let damageType = itemUtils.getConfig(item, 'damageType');
     let bonusDamageFormula = numDice + 'd8[' + damageType + ']';
     await workflowUtils.bonusDamage(workflow, bonusDamageFormula, {damageType});
-    await item.use();
+    await item.displayCard();
 }
 export let divineSmite = {
     name: 'Divine Smite',
-    version: '0.12.23',
+    version: '1.1.0',
     midi: {
         actor: [
             {

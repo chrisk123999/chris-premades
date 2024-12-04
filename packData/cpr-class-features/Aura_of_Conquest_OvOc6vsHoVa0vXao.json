@@ -1,0 +1,88 @@
+{
+  "folder": "X2I8GshQxgyapcNG",
+  "name": "Aura of Conquest",
+  "type": "feat",
+  "img": "icons/skills/melee/weapons-crossed-swords-white-blue.webp",
+  "system": {
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "source": {
+      "custom": "Paladin",
+      "revision": 1,
+      "rules": "2024"
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "recovery": []
+    },
+    "type": {
+      "value": "class",
+      "subtype": ""
+    },
+    "prerequisites": {
+      "level": null
+    },
+    "properties": [],
+    "requirements": "",
+    "activities": {},
+    "identifier": "aura-of-conquest",
+    "enchant": {}
+  },
+  "effects": [],
+  "flags": {
+    "midiProperties": {
+      "confirmTargets": "default",
+      "autoFailFriendly": false,
+      "autoSaveFriendly": false,
+      "critOther": false,
+      "offHandWeapon": false,
+      "magicdam": false,
+      "magiceffect": false,
+      "noConcentrationCheck": false,
+      "toggleEffect": false,
+      "ignoreTotalCover": false,
+      "idr": false,
+      "idi": false,
+      "idv": false,
+      "ida": false
+    },
+    "midi-qol": {
+      "rollAttackPerTarget": "default",
+      "itemCondition": "",
+      "effectCondition": "",
+      "AoETargetType": "any",
+      "AoETargetTypeIncludeSelf": true,
+      "autoTarget": "default",
+      "removeAttackDamageButtons": "default",
+      "reactionCondition": "",
+      "otherCondition": ""
+    },
+    "dnd5e": {
+      "riders": {
+        "activity": []
+      },
+      "dependents": [
+        {
+          "uuid": "Scene.6cPoldhdvb1g9GHk.Token.e63TXtRu9BBQz9od.Actor.RIKQZTCGTzYRKnxy.ActiveEffect.WbmimF3RXo5dXiTV"
+        }
+      ]
+    },
+    "chris-premades": {
+      "info": {
+        "identifier": "auraOfConquest",
+        "version": "1.1.0",
+        "source": "chris-premades"
+      },
+      "macros": {
+        "aura": [
+          "auraOfConquest"
+        ]
+      }
+    }
+  },
+  "_id": "OvOc6vsHoVa0vXao",
+  "_key": "!items!OvOc6vsHoVa0vXao"
+}

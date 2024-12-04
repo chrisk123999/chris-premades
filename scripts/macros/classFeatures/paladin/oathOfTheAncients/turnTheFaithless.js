@@ -6,7 +6,7 @@ async function early({workflow}) {
 }
 export let turnTheFaithless = {
     name: 'Channel Divinity: Turn the Faithless',
-    version: '0.12.24',
+    version: '1.1.0',
     midi: {
         item: [
             {

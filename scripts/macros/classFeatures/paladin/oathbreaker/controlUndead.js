@@ -224,7 +224,8 @@ async function end({trigger: {entity: effect}}) {
 }
 export let controlUndead = {
     name: 'Channel Divinity: Control Undead',
-    version: '0.12.24',
+    version: '1.1.0',
+    hasAnimation: true,
     midi: {
         item: [
             {

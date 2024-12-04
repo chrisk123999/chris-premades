@@ -42,7 +42,7 @@ async function create({trigger: {entity: item, target, identifier}}) {
 }
 export let auraOfProtection = {
     name: 'Aura of Protection',
-    version: '0.12.23',
+    version: '1.1.0',
     aura: [
         {
             pass: 'create',

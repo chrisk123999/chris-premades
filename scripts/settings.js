@@ -851,7 +851,7 @@ export function registerSettings() {
         default: false,
         category: 'interface',
         onChange: () => activities.cssTweak()
-    })
+    });
 }
 export function registerMenus() {
     if (game.settings.get('chris-premades', 'devTools')) addMenu({

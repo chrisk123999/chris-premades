@@ -15,7 +15,7 @@ async function create({trigger: {entity: item, target, identifier}}) {
         changes: [
             {
                 key: 'system.traits.ci.value',
-                mode: 0,
+                mode: 2,
                 value: 'frightened',
                 priority: 20
             }
@@ -43,7 +43,7 @@ async function create({trigger: {entity: item, target, identifier}}) {
 }
 export let auraOfCourage = {
     name: 'Aura of Courage',
-    version: '0.12.23',
+    version: '1.1.0',
     aura: [
         {
             pass: 'create',

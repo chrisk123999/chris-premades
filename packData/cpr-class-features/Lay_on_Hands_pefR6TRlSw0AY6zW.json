@@ -1,0 +1,338 @@
+{
+  "name": "Lay on Hands",
+  "type": "feat",
+  "system": {
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "uses": {
+      "max": "@classes.paladin.levels * 5",
+      "recovery": [
+        {
+          "period": "lr",
+          "type": "recoverAll"
+        }
+      ],
+      "spent": 0
+    },
+    "type": {
+      "value": "class",
+      "subtype": ""
+    },
+    "properties": [],
+    "requirements": "",
+    "source": {
+      "custom": "",
+      "revision": 1,
+      "rules": "2024"
+    },
+    "prerequisites": {
+      "level": null
+    },
+    "activities": {
+      "dnd5eactivity000": {
+        "_id": "dnd5eactivity000",
+        "type": "heal",
+        "activation": {
+          "type": "action",
+          "value": 1,
+          "condition": "",
+          "override": false
+        },
+        "consumption": {
+          "targets": [
+            {
+              "type": "itemUses",
+              "value": "1",
+              "target": "",
+              "scaling": {
+                "mode": "amount",
+                "formula": ""
+              }
+            }
+          ],
+          "scaling": {
+            "allowed": true,
+            "max": "@item.uses.value"
+          },
+          "spellSlot": true
+        },
+        "description": {
+          "chatFlavor": "Lay on Hands: Heal"
+        },
+        "duration": {
+          "concentration": false,
+          "value": "",
+          "units": "inst",
+          "special": "",
+          "override": false
+        },
+        "effects": [],
+        "range": {
+          "units": "touch",
+          "special": "",
+          "override": false
+        },
+        "target": {
+          "template": {
+            "count": "",
+            "contiguous": false,
+            "type": "",
+            "size": "",
+            "width": "",
+            "height": "",
+            "units": ""
+          },
+          "affects": {
+            "count": "1",
+            "type": "creature",
+            "choice": false,
+            "special": ""
+          },
+          "prompt": true,
+          "override": false
+        },
+        "uses": {
+          "spent": 0,
+          "max": "",
+          "recovery": []
+        },
+        "healing": {
+          "number": null,
+          "denomination": null,
+          "bonus": "",
+          "types": [
+            "healing"
+          ],
+          "custom": {
+            "enabled": true,
+            "formula": "@scaling"
+          },
+          "scaling": {
+            "mode": "",
+            "number": null,
+            "formula": ""
+          }
+        },
+        "sort": 0,
+        "useConditionText": "",
+        "forceDialog": false,
+        "effectConditionText": "",
+        "midiAutomationOnly": false,
+        "name": "Lay on Hands: Heal",
+        "img": "icons/magic/light/orbs-hand-gray.webp",
+        "appliedEffects": []
+      },
+      "QShVftxeFlt4iUVR": {
+        "type": "utility",
+        "_id": "QShVftxeFlt4iUVR",
+        "sort": 0,
+        "activation": {
+          "type": "action",
+          "value": null,
+          "override": false,
+          "condition": ""
+        },
+        "consumption": {
+          "scaling": {
+            "allowed": false
+          },
+          "spellSlot": true,
+          "targets": [
+            {
+              "type": "itemUses",
+              "value": "5",
+              "target": "",
+              "scaling": {}
+            }
+          ]
+        },
+        "description": {
+          "chatFlavor": "Lay on Hands: Cure Disease"
+        },
+        "duration": {
+          "units": "inst",
+          "concentration": false,
+          "override": false
+        },
+        "effects": [],
+        "range": {
+          "override": false,
+          "units": "touch",
+          "special": ""
+        },
+        "target": {
+          "template": {
+            "contiguous": false,
+            "units": "ft",
+            "type": ""
+          },
+          "affects": {
+            "choice": false,
+            "count": "1",
+            "type": "creature",
+            "special": ""
+          },
+          "override": false,
+          "prompt": true
+        },
+        "uses": {
+          "spent": 0,
+          "recovery": [],
+          "max": ""
+        },
+        "roll": {
+          "prompt": false,
+          "visible": false,
+          "formula": "",
+          "name": ""
+        },
+        "useConditionText": "",
+        "forceDialog": false,
+        "effectConditionText": "",
+        "midiAutomationOnly": false,
+        "name": "Lay on Hands: Cure Disease",
+        "img": "icons/magic/light/orbs-hand-gray.webp"
+      },
+      "Yb2EL6rB1W7VQxpz": {
+        "type": "utility",
+        "_id": "Yb2EL6rB1W7VQxpz",
+        "sort": 0,
+        "activation": {
+          "type": "action",
+          "value": null,
+          "override": false,
+          "condition": ""
+        },
+        "consumption": {
+          "scaling": {
+            "allowed": false
+          },
+          "spellSlot": true,
+          "targets": [
+            {
+              "type": "itemUses",
+              "value": "5",
+              "target": "",
+              "scaling": {}
+            }
+          ]
+        },
+        "description": {
+          "chatFlavor": "Lay on Hands: Neutralize Poison"
+        },
+        "duration": {
+          "units": "inst",
+          "concentration": false,
+          "override": false
+        },
+        "effects": [],
+        "range": {
+          "override": false,
+          "units": "touch",
+          "special": ""
+        },
+        "target": {
+          "template": {
+            "contiguous": false,
+            "units": "ft",
+            "type": ""
+          },
+          "affects": {
+            "choice": false,
+            "count": "1",
+            "type": "creature",
+            "special": ""
+          },
+          "override": false,
+          "prompt": true
+        },
+        "uses": {
+          "spent": 0,
+          "recovery": [],
+          "max": ""
+        },
+        "roll": {
+          "prompt": false,
+          "visible": false,
+          "formula": "",
+          "name": ""
+        },
+        "useConditionText": "",
+        "forceDialog": false,
+        "effectConditionText": "",
+        "midiAutomationOnly": false,
+        "name": "Lay on Hands: Neutralize Poison",
+        "img": "icons/magic/light/orbs-hand-gray.webp"
+      }
+    },
+    "identifier": "lay-on-hands",
+    "enchant": {}
+  },
+  "flags": {
+    "midi-qol": {
+      "removeAttackDamageButtons": "default",
+      "rollAttackPerTarget": "default",
+      "effectActivation": false,
+      "itemCondition": "",
+      "effectCondition": "",
+      "onUseMacroName": "",
+      "AoETargetType": "any",
+      "AoETargetTypeIncludeSelf": true,
+      "autoTarget": "default",
+      "reactionCondition": "",
+      "otherCondition": ""
+    },
+    "midiProperties": {
+      "confirmTargets": "default",
+      "autoFailFriendly": false,
+      "autoSaveFriendly": false,
+      "critOther": false,
+      "offHandWeapon": false,
+      "magicdam": false,
+      "magiceffect": false,
+      "concentration": false,
+      "noConcentrationCheck": false,
+      "toggleEffect": false,
+      "ignoreTotalCover": false,
+      "idr": false,
+      "idi": false,
+      "idv": false,
+      "ida": false
+    },
+    "core": {},
+    "dnd5e": {
+      "persistSourceMigration": true,
+      "migratedUses": 5,
+      "riders": {
+        "activity": [],
+        "effect": []
+      }
+    },
+    "chris-premades": {
+      "info": {
+        "name": "Lay on Hands Pool",
+        "version": "1.1.0",
+        "identifier": "layOnHands",
+        "source": "chris-premades"
+      },
+      "macros": {
+        "midi": {
+          "item": [
+            "layOnHands"
+          ]
+        }
+      },
+      "activityIdentifiers": {
+        "layOnHandsHeal": "dnd5eactivity000",
+        "layOnHandsDisease": "QShVftxeFlt4iUVR"
+      }
+    }
+  },
+  "effects": [],
+  "img": "icons/magic/light/orbs-hand-gray.webp",
+  "folder": "zPkRF8dbQaQ6ixi0",
+  "_id": "pefR6TRlSw0AY6zW",
+  "_key": "!items!pefR6TRlSw0AY6zW"
+}

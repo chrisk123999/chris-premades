@@ -1,0 +1,87 @@
+{
+  "name": "Aura of Devotion",
+  "type": "feat",
+  "system": {
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "source": {
+      "custom": "Paladin : Oath of Devotion",
+      "revision": 1,
+      "rules": "2024"
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "recovery": []
+    },
+    "type": {
+      "value": "class",
+      "subtype": ""
+    },
+    "requirements": "",
+    "properties": [],
+    "prerequisites": {
+      "level": null
+    },
+    "activities": {},
+    "identifier": "aura-of-devotion",
+    "enchant": {}
+  },
+  "flags": {
+    "core": {
+      "sourceId": "Actor.IlpCynnAcU8YiYdx.Item.FZZzdNzxOpOfLCZ9"
+    },
+    "midiProperties": {
+      "confirmTargets": "default",
+      "autoFailFriendly": false,
+      "autoSaveFriendly": false,
+      "critOther": false,
+      "offHandWeapon": false,
+      "magicdam": false,
+      "magiceffect": false,
+      "noConcentrationCheck": false,
+      "toggleEffect": false,
+      "ignoreTotalCover": false,
+      "idr": false,
+      "idi": false,
+      "idv": false,
+      "ida": false
+    },
+    "midi-qol": {
+      "rollAttackPerTarget": "default",
+      "itemCondition": "",
+      "effectCondition": "",
+      "AoETargetType": "any",
+      "AoETargetTypeIncludeSelf": true,
+      "autoTarget": "default",
+      "removeAttackDamageButtons": "default",
+      "reactionCondition": "",
+      "otherCondition": ""
+    },
+    "dnd5e": {
+      "riders": {
+        "activity": []
+      }
+    },
+    "chris-premades": {
+      "info": {
+        "name": "Aura of Devotion",
+        "version": "1.1.0",
+        "identifier": "auraOfDevotion",
+        "source": "chris-premades"
+      },
+      "macros": {
+        "aura": [
+          "auraOfDevotion"
+        ]
+      }
+    }
+  },
+  "effects": [],
+  "img": "icons/magic/life/heart-glowing-red.webp",
+  "folder": "O3mbtsqIsuMeDSaq",
+  "_id": "u9cv6Th4Ogw7LGQ8",
+  "_key": "!items!u9cv6Th4Ogw7LGQ8"
+}

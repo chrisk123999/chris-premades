@@ -1,8 +1,9 @@
-import {compendiumUtils, constants, effectUtils, errors, itemUtils, workflowUtils} from '../../../../utils.js';
+import {activityUtils, compendiumUtils, constants, effectUtils, errors, genericUtils, itemUtils, workflowUtils} from '../../../../utils.js';
 async function save({trigger}) {
     return {label: 'CHRISPREMADES.Macros.HolyNimbus.Save', type: 'advantage'};
 }
 async function use({workflow}) {
+    if (activityUtils.getIdentifier(workflow.activity) !== genericUtils.getIdentifier(workflow.item)) return;
     let effectData = {
         name: workflow.item.name,
         img: workflow.item.img,
@@ -26,17 +27,14 @@ async function use({workflow}) {
     effectUtils.addMacro(effectData, 'combat', ['holyNimbusActive']);
     await effectUtils.createEffect(workflow.actor, effectData, {identifier: 'holyNimbus'});
 }
-async function turnStart({trigger: {token, target}}) {
-    let featureData = await compendiumUtils.getItemFromCompendium(constants.featurePacks.classFeatureItems, 'Holy Nimbus: Damage', {object: true, getDescription: true, translate: 'CHRISPREMADES.Macros.HolyNimbus.Damage'});
-    if (!featureData) {
-        errors.missingPackItem();
-        return;
-    }
-    await workflowUtils.syntheticItemDataRoll(featureData, token.actor, [target]);
+async function turnStart({trigger: {entity: effect, target}}) {
+    let feature = activityUtils.getActivityByIdentifier(fromUuidSync(effect.origin), 'holyNimbusDamage', {strict: true});
+    if (!feature) return;
+    await workflowUtils.syntheticActivityRoll(feature, [target]);
 }
 export let holyNimbus = {
     name: 'Holy Nimbus',
-    version: '0.12.64',
+    version: '1.1.0',
     midi: {
         item: [
             {
