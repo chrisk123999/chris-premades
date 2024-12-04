@@ -36,7 +36,7 @@ async function completeActivityUse(activity, config={}, dialog={}, message={}) {
         config.midiOptions.checkGMStatus = true;
     }
     let workflow = await MidiQOL.completeActivityUse(activity, config, dialog, message);
-    return workflow;
+    return workflow.workflow ?? workflow;
 }
 async function completeItemUse(item, config={}, options={}) {
     //let oldTargets = Array.from(game.user.targets); //Temp Fix

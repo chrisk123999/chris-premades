@@ -1,7 +1,7 @@
 import {actorUtils, combatUtils, constants, dialogUtils, effectUtils, genericUtils, itemUtils, socketUtils, tokenUtils, workflowUtils} from '../../../../utils.js';
 async function damageFireRune({trigger: {entity: item}, workflow}) {
     if (workflow.hitTargets.size !== 1) return;
-    if (!constants.weaponAttacks.includes(workflow.item.system.actionType)) return;
+    if (!constants.weaponAttacks.includes(workflow.action.actionType)) return;
     if (!item.system.uses.value) return;
     if (!itemUtils.getConfig(item, 'allowUnarmed') && constants.unarmedAttacks.includes(genericUtils.getIdentifier(workflow.item))) return;
     if (actorUtils.hasUsedReaction(workflow.actor)) return;
@@ -55,9 +55,7 @@ async function useStormRune({workflow}) {
         name: workflow.item.name,
         img: workflow.item.img,
         origin: workflow.item.uuid,
-        duration: {
-            seconds: 60
-        }
+        duration: itemUtils.convertDuration(workflow.item)
     };
     effectUtils.addMacro(effectData, 'midi.actor', ['stormRune']);
     await effectUtils.createEffect(workflow.actor, effectData, {identifier: 'stormRune'});
@@ -66,7 +64,7 @@ async function earlyStormRune({trigger: {entity: effect, token}, workflow}) {
     if (actorUtils.hasUsedReaction(token.actor)) return;
     if (tokenUtils.getDistance(token, workflow.token) > 60) return;
     if (!tokenUtils.canSee(token, workflow.token)) return;
-    if (!constants.attacks.includes(workflow.item.system.actionType)) return;
+    if (!constants.attacks.includes(workflow.activity.actionType)) return;
     let selection = await dialogUtils.buttonDialog(effect.name, genericUtils.format('CHRISPREMADES.Macros.StormRune.AdvDis', {tokenName: workflow.token.name, actionType: genericUtils.translate('DND5E.AttackRoll')}), [
         ['DND5E.Advantage', 'advantage'],
         ['DND5E.Disadvantage', 'disadvantage'],
@@ -84,7 +82,7 @@ async function earlyStormRune({trigger: {entity: effect, token}, workflow}) {
 }
 async function cloudRuneAttack({trigger, workflow}) {
     if (!workflow.hitTargets.size || !workflow.item) return;
-    if (!constants.attacks.includes(workflow.item.system.actionType)) return;
+    if (!constants.attacks.includes(workflow.activity.actionType)) return;
     let target = workflow.targets.first();
     let nearbyRunes = tokenUtils.findNearby(target, 30, 'ally', {includeToken: true}).filter(i => {
         let item = itemUtils.getItemByIdentifier(i.actor, 'cloudRune');
@@ -122,7 +120,7 @@ async function cloudRuneAttack({trigger, workflow}) {
 }
 export let cloudRune = {
     name: 'Cloud Rune',
-    version: '0.12.52',
+    version: '1.1.0',
     midi: {
         actor: [
             {
@@ -142,7 +140,7 @@ export let cloudRune = {
 };
 export let fireRune = {
     name: 'Fire Rune',
-    version: '1.0.25',
+    version: '1.1.0',
     midi: {
         actor: [
             {
@@ -172,7 +170,7 @@ export let fireRune = {
 };
 export let frostRune = {
     name: 'Frost Rune',
-    version: '0.12.52',
+    version: '1.1.0',
     ddbi: {
         removedItems: {
             'Frost Rune': [
@@ -183,7 +181,7 @@ export let frostRune = {
 };
 export let stoneRune = {
     name: 'Stone Rune',
-    version: '0.12.52',
+    version: '1.1.0',
     midi: {
         item: [
             {
@@ -212,7 +210,7 @@ export let stoneRune = {
 };
 export let hillRune = {
     name: 'Hill Rune',
-    version: '0.12.52',
+    version: '1.1.0',
     ddbi: {
         removedItems: {
             'Hill Rune': [
@@ -224,7 +222,7 @@ export let hillRune = {
 // TODO: once save/check patching more complete, handle adv/dis for that
 export let stormRune = {
     name: 'Storm Rune',
-    version: '0.12.52',
+    version: '1.1.0',
     midi: {
         item: [
             {

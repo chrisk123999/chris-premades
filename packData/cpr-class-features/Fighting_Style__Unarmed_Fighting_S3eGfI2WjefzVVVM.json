@@ -1,0 +1,180 @@
+{
+  "folder": "1Ivf2mSpAHvNjsbQ",
+  "name": "Fighting Style: Unarmed Fighting",
+  "type": "feat",
+  "img": "icons/skills/melee/strike-weapons-orange.webp",
+  "system": {
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "source": {
+      "custom": "",
+      "revision": 1,
+      "rules": "2024"
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "recovery": []
+    },
+    "type": {
+      "value": "class",
+      "subtype": "fightingStyle"
+    },
+    "prerequisites": {
+      "level": null
+    },
+    "properties": [],
+    "requirements": "",
+    "activities": {
+      "G4Ayj9k4suqCFLAJ": {
+        "type": "damage",
+        "_id": "G4Ayj9k4suqCFLAJ",
+        "sort": 0,
+        "activation": {
+          "type": "special",
+          "value": null,
+          "override": false,
+          "condition": ""
+        },
+        "consumption": {
+          "scaling": {
+            "allowed": false
+          },
+          "spellSlot": true,
+          "targets": []
+        },
+        "description": {
+          "chatFlavor": "Unarmed Fighting: Grapple Damage"
+        },
+        "duration": {
+          "units": "inst",
+          "concentration": false,
+          "override": false
+        },
+        "effects": [],
+        "range": {
+          "override": false,
+          "units": "self",
+          "special": ""
+        },
+        "target": {
+          "template": {
+            "contiguous": false,
+            "units": "ft",
+            "type": ""
+          },
+          "affects": {
+            "choice": false,
+            "count": "1",
+            "type": "creature",
+            "special": ""
+          },
+          "override": false,
+          "prompt": true
+        },
+        "uses": {
+          "spent": 0,
+          "recovery": [],
+          "max": ""
+        },
+        "damage": {
+          "critical": {
+            "allow": false
+          },
+          "parts": [
+            {
+              "custom": {
+                "enabled": true,
+                "formula": "1d4[bludgeoning]"
+              },
+              "number": null,
+              "denomination": 0,
+              "bonus": "",
+              "types": [
+                "bludgeoning"
+              ],
+              "scaling": {
+                "number": 1
+              }
+            }
+          ]
+        },
+        "useConditionText": "",
+        "forceDialog": false,
+        "effectConditionText": "",
+        "midiAutomationOnly": false,
+        "name": "Unarmed Fighting: Grapple Damage",
+        "img": "icons/skills/melee/strike-weapons-orange.webp"
+      }
+    },
+    "identifier": "fighting-style-unarmed-fighting",
+    "enchant": {}
+  },
+  "effects": [],
+  "flags": {
+    "midiProperties": {
+      "confirmTargets": "default",
+      "autoFailFriendly": false,
+      "autoSaveFriendly": false,
+      "critOther": false,
+      "offHandWeapon": false,
+      "magicdam": false,
+      "magiceffect": false,
+      "noConcentrationCheck": false,
+      "toggleEffect": false,
+      "ignoreTotalCover": false,
+      "idr": false,
+      "idi": false,
+      "idv": false,
+      "ida": false
+    },
+    "midi-qol": {
+      "rollAttackPerTarget": "default",
+      "itemCondition": "",
+      "effectCondition": "",
+      "AoETargetType": "any",
+      "AoETargetTypeIncludeSelf": true,
+      "autoTarget": "default",
+      "removeAttackDamageButtons": "default",
+      "reactionCondition": "",
+      "otherCondition": ""
+    },
+    "dnd5e": {
+      "riders": {
+        "activity": [
+          "G4Ayj9k4suqCFLAJ"
+        ],
+        "effect": []
+      },
+      "last": {
+        "G4Ayj9k4suqCFLAJ": {
+          "damageType": {
+            "0": "bludgeoning"
+          }
+        }
+      }
+    },
+    "chris-premades": {
+      "info": {
+        "identifier": "fightingStyleUnarmedFighting",
+        "version": "1.1.0",
+        "source": "chris-premades"
+      },
+      "macros": {
+        "combat": [
+          "fightingStyleUnarmedFighting"
+        ]
+      },
+      "hiddenActivities": [
+        "unarmedFightingDamage"
+      ],
+      "activityIdentifiers": {
+        "unarmedFightingDamage": "G4Ayj9k4suqCFLAJ"
+      }
+    }
+  },
+  "_id": "S3eGfI2WjefzVVVM",
+  "_key": "!items!S3eGfI2WjefzVVVM"
+}

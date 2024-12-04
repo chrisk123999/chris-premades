@@ -11,7 +11,7 @@ async function late({trigger: {entity: item}, workflow}) {
 }
 export let stunningStrike = {
     name: 'Stunning Strike',
-    version: '0.12.46',
+    version: '1.1.0',
     midi: {
         actor: [
             {

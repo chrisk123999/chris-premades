@@ -1,4 +1,4 @@
 export let runicJuggernaut = {
     name: 'Runic Juggernaut',
-    version: '0.12.52'
+    version: '1.1.0'
 };

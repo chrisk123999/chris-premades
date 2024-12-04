@@ -1,31 +1,31 @@
-import {compendiumUtils, constants, dialogUtils, effectUtils, workflowUtils} from '../../../utils.js';
+import {activityUtils, compendiumUtils, constants, dialogUtils, effectUtils, workflowUtils} from '../../../utils.js';
 
 async function turnStart({trigger: {entity: item, token}}) {
     let grapplingEffects = effectUtils.getAllEffectsByIdentifier(token.actor, 'grappling');
     let potentialTargets = grapplingEffects.map(i => token.scene.tokens.get(i.flags['chris-premades'].grapple.tokenId)?.object).filter(i => i);
     if (!potentialTargets.length) return;
-    let featureData = await compendiumUtils.getItemFromCompendium(constants.featurePacks.classFeatureItems, 'Unarmed Fighting: Grapple Damage', {object: true, getDescription: true, translate: 'CHRISPREMADES.Macros.UnarmedFighting.Grapple'});
-    if (!featureData) return;
+    let feature = activityUtils.getActivityByIdentifier(item, 'unarmedFightingDamage', {strict: true});
+    if (!feature) return;
     let targetToken;
     if (potentialTargets.length > 1) {
         let selected = await dialogUtils.selectTargetDialog(item.name, 'CHRISPREMADES.Macros.UnarmedFighting.Select', potentialTargets);
         if (selected?.length) targetToken = selected[0];
     }
     if (!targetToken) targetToken = potentialTargets[0];
-    await workflowUtils.syntheticItemDataRoll(featureData, token.actor, [targetToken]);
+    await workflowUtils.syntheticActivityRoll(feature, [targetToken]);
 }
 async function early({workflow}) {
     let equippedShields = workflow.actor.items.filter(i => i.system.type?.value === 'shield' && i.system.equipped);
     let equippedWeapons = workflow.actor.items.filter(i => i.type === 'weapon' && i.system.equipped && i !== workflow.item);
-    if (!equippedShields.length && !equippedWeapons.length) return;
-    workflow.item = workflow.item.clone({'system.damage.parts': [['1d6[bludgeoning] + @mod', 'bludgeoning'], ...workflow.item.system.damage.parts.slice(1)]}, {keepId: true});
-    workflow.item.prepareData();
-    workflow.item.prepareFinalAttributes();
-    workflow.item.applyActiveEffects();
+    if (!equippedShields.length && !equippedWeapons.length) {
+        await activityUtils.setDamage(workflow.activity, '1d8[bludgeoning]', ['bludgeoning']);
+    } else {
+        await activityUtils.setDamage(workflow.activity, '1d6[bludgeoning]', ['bludgeoning']);
+    }
 }
 export let fightingStyleUnarmedFighting = {
     name: 'Fighting Style: Unarmed Fighting',
-    version: '0.12.51',
+    version: '1.1.0',
     combat: [
         {
             pass: 'turnStart',
@@ -44,7 +44,7 @@ export let fightingStyleUnarmedFighting = {
 };
 export let fightingStyleUnarmedFightingUnarmedStrike = {
     name: 'Unarmed Strike (Unarmed Fighting)',
-    version: '0.12.51',
+    version: '1.1.0',
     midi: {
         item: [
             {

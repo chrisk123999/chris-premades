@@ -30,7 +30,7 @@ async function use({workflow}) {
         flags: {
             'chris-premades': {
                 giantsMight: {
-                    bonusDamage: bonusDamage
+                    bonusDamage
                 }
             }
         }
@@ -60,28 +60,29 @@ async function use({workflow}) {
     if (!playAnimation) return;
     if (effect.flags['chris-premades']?.enlargeReduce) await enlargeReduceStart({trigger: {entity: effect}});
 }
-async function damage({trigger, workflow}) {
-    if (!workflow.hitTargets.size || !workflow.item.system.damage.parts.length) return;
-    if (!constants.weaponAttacks.includes(workflow.item.system.actionType)) return;
+async function damage({trigger: {entity: effect}, workflow}) {
+    if (!workflow.hitTargets.size || !workflow.activity.damage?.parts.length) return;
+    if (!constants.weaponAttacks.includes(workflow.activity.actionType)) return;
     if (combatUtils.inCombat()) {
-        if (!combatUtils.perTurnCheck(trigger.entity, 'giantsMight', true, workflow.token.id)) return;
+        if (!combatUtils.perTurnCheck(effect, 'giantsMight', true, workflow.token.id)) return;
     }
-    let selection = await dialogUtils.confirm(trigger.entity.name, genericUtils.format('CHRISPREMADES.Dialog.Use', {itemName: trigger.entity.name}));
+    let selection = await dialogUtils.confirm(effect.name, genericUtils.format('CHRISPREMADES.Dialog.Use', {itemName: effect.name}));
     if (!selection) return;
-    let feature = await fromUuid(trigger.entity.origin);
+    let feature = await fromUuid(effect.origin);
     if (!feature) return;
     await feature.displayCard({flags: {dnd5e: {use: {consumedUsage: true, consumeResource: true}}}});
-    if (combatUtils.inCombat()) await combatUtils.setTurnCheck(trigger.entity, 'giantsMight');
-    let bonusDamage = trigger.entity.flags['chris-premades']?.giantsMight?.bonusDamage;
+    if (combatUtils.inCombat()) await combatUtils.setTurnCheck(effect, 'giantsMight');
+    let bonusDamage = effect.flags['chris-premades']?.giantsMight?.bonusDamage;
     if (!bonusDamage) return;
     await workflowUtils.bonusDamage(workflow, bonusDamage + '[' + workflow.defaultDamageType + ']', {damageType: workflow.defaultDamageType});
 }
-async function endCombat({trigger}) {
-    await combatUtils.setTurnCheck(trigger.entity, 'giantsMight', true);
+async function endCombat({trigger: {entity: effect}}) {
+    await combatUtils.setTurnCheck(effect, 'giantsMight', true);
 }
 export let giantsMight = {
     name: 'Giant\'s Might',
-    version: '1.0.20',
+    version: '1.1.0',
+    hasAnimation: true,
     midi: {
         item: [
             {

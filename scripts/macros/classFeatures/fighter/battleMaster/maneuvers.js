@@ -1,4 +1,5 @@
-import {actorUtils, compendiumUtils, constants, dialogUtils, effectUtils, errors, genericUtils, itemUtils, socketUtils, tokenUtils, workflowUtils} from '../../../../utils.js';
+import {activityUtils, actorUtils, compendiumUtils, constants, dialogUtils, effectUtils, errors, genericUtils, itemUtils, socketUtils, tokenUtils, workflowUtils} from '../../../../utils.js';
+import {proneOnFail} from '../../../generic/proneOnFail.js';
 import {determineSuperiorityDie} from './superiorityDice.js';
 
 async function useBaitAndSwitch({workflow}) {
@@ -44,13 +45,13 @@ async function useBaitAndSwitch({workflow}) {
         x: workflow.token.document.x,
         y: workflow.token.document.y
     };
-    await genericUtils.update(itemToUse, {'system.uses.value': itemToUse.system.uses.value - 1});
+    await genericUtils.update(itemToUse, {'system.uses.spent': itemToUse.system.uses.spent + 1});
     await genericUtils.updateEmbeddedDocuments(workflow.token.scene, 'Token', [sourceUpdate, targetUpdate]);
     await effectUtils.createEffect(selection ? targetToken.actor : workflow.actor, effectData);
 }
 async function useBrace({workflow}) {
     if (workflow.targets.size !== 1) return;
-    let weapons = workflow.token.actor.items.filter(i => i.type === 'weapon' && i.system.equipped && i.system.actionType === 'mwak');
+    let weapons = workflow.token.actor.items.filter(i => i.type === 'weapon' && i.system.equipped && i.system.activities.getByType('attack').some(j => j.actionType === 'mwak'));
     if (!weapons.length) return;
     let [itemToUse, superiorityDie] = await determineSuperiorityDie(workflow.actor);
     if (!itemToUse?.system.uses.value) return;
@@ -77,7 +78,7 @@ async function useBrace({workflow}) {
     let effect = await effectUtils.createEffect(workflow.actor, effectData);
     await workflowUtils.syntheticItemRoll(selected, [workflow.targets.first()]);
     if (effect) await genericUtils.remove(effect);
-    await genericUtils.update(itemToUse, {'system.uses.value': itemToUse.system.uses.value - 1});
+    await genericUtils.update(itemToUse, {'system.uses.spent': itemToUse.system.uses.spent + 1});
 }
 async function useCommandersStrike({workflow}) {
     let [itemToUse, superiorityDie] = await determineSuperiorityDie(workflow.actor);
@@ -123,7 +124,7 @@ async function useCommandersStrike({workflow}) {
     };
     await effectUtils.createEffect(selected.actor, effectData);
     await actorUtils.setReactionUsed(selected.actor);
-    await genericUtils.update(itemToUse, {'system.uses.value': itemToUse.system.uses.value - 1});
+    await genericUtils.update(itemToUse, {'system.uses.spent': itemToUse.system.uses.spent + 1});
 }
 async function useDistractingStrike({workflow}) {
     if (workflow.targets.size !== 1) return;
@@ -235,6 +236,7 @@ async function useGrapplingStrike({workflow}) {
     await genericUtils.remove(effect);
 }
 async function useManeuveringAttack({workflow}) {
+    // TODO: This. Probably by letting the ally teleport
 }
 async function useParry({workflow}) {
     let [itemToUse, superiorityDie] = await determineSuperiorityDie(workflow.actor);
@@ -274,19 +276,17 @@ async function useParry({workflow}) {
         }
     };
     await effectUtils.createEffect(workflow.actor, effectData);
-    await genericUtils.update(itemToUse, {'system.uses.value': itemToUse.system.uses.value - 1});
+    await genericUtils.update(itemToUse, {'system.uses.spent': itemToUse.system.uses.spent + 1});
 }
 async function usePushingAttack({workflow}) {
+    if (activityUtils.getIdentifier(workflow.activity) !==genericUtils.getIdentifier(workflow.item)) return;
     let targetToken = workflow.targets.first();
     let targetActor = targetToken?.actor;
     if (!targetActor) return;
     if (actorUtils.getSize(targetActor) > 3) return;
-    let featureData = await compendiumUtils.getItemFromCompendium(constants.featurePacks.classFeatureItems, 'Pushing Attack: Attack', {object: true, getDescription: true, translate: 'CHRISPREMADES.Macros.Maneuvers.Pushing', flatDC: itemUtils.getSaveDC(workflow.item)});
-    if (!featureData) {
-        errors.missingPackItem();
-        return;
-    }
-    let pushWorkflow = await workflowUtils.syntheticItemDataRoll(featureData, workflow.actor, [targetToken]);
+    let feature = activityUtils.getActivityByIdentifier(workflow.item, 'pushingAttackAttack', {strict: true});
+    if (!feature) return;
+    let pushWorkflow = await workflowUtils.syntheticActivityRoll(feature, [targetToken]);
     if (!pushWorkflow.failedSaves.size) return;
     let buttons = [5, 10, 15].map(i => [genericUtils.format('CHRISPREMADES.Distance.DistanceFeet', {distance: i}), i]);
     let distance = await dialogUtils.buttonDialog(workflow.item.name, 'CHRISPREMADES.Macros.Maneuvers.PushDistance', buttons);
@@ -294,19 +294,15 @@ async function usePushingAttack({workflow}) {
     await tokenUtils.pushToken(workflow.token, targetToken, distance);
 }
 async function useSweepingAttack({workflow}) {
+    if (activityUtils.getIdentifier(workflow.activity) !== genericUtils.getIdentifier(workflow.item)) return;
     if (!workflow.targets.size) return;
     let superiorityDie = workflow.actor.system.scale?.['battle-master']?.['combat-superiority-die']?.die ?? 'd6';
     let useSmall = genericUtils.getProperty(workflow.actor, 'flags.chris-premades.useSmallSuperiorityDie');
     if (useSmall) superiorityDie = 'd6';
     let {currAttackRoll, currDamageType, currRange} = workflow.item.flags['chris-premades']?.sweepingAttack ?? {};
     if (!currAttackRoll) return;
-    let featureData = await compendiumUtils.getItemFromCompendium(constants.featurePacks.classFeatureItems, 'Sweeping Attack: Attack', {object: true, getDescription: true, translate: 'CHRISPREMADES.Macros.Maneuvers.Sweeping', identifier: 'sweepingAttackAttack'});
-    if (!featureData) {
-        errors.missingPackItem();
-        return;
-    }
-    featureData.system.damage.parts[0] = [superiorityDie, currDamageType];
-    genericUtils.setProperty(featureData, 'flags.chris-premades.sweepingAttack.currAttackRoll', currAttackRoll);
+    let feature = activityUtils.getActivityByIdentifier(workflow.item, 'sweepingAttackAttack', {strict: true});
+    if (!feature) return;
     let nearbyTargets = tokenUtils.findNearby(workflow.targets.first(), 5, 'ally');
     let realNearbyTargets = tokenUtils.findNearby(workflow.token, currRange, 'enemy').filter(i => nearbyTargets.includes(i));
     if (!realNearbyTargets.length) return;
@@ -319,33 +315,34 @@ async function useSweepingAttack({workflow}) {
     if (!target) {
         target = realNearbyTargets[0];
     }
-    await workflowUtils.syntheticItemDataRoll(featureData, workflow.actor, [target]);
+    await activityUtils.setDamage(feature, superiorityDie, [currDamageType]);
+    await workflowUtils.syntheticActivityRoll(feature, [target]);
 }
 async function sweepingAttackAttack({workflow}) {
+    if (activityUtils.getIdentifier(workflow.activity) !== 'sweepingAttackAttack') return;
     let currAttackRoll = workflow.item.flags['chris-premades']?.sweepingAttack?.currAttackRoll;
     if (!currAttackRoll) return;
     let replacementRoll = await new Roll(String(currAttackRoll)).evaluate();
     await workflow.setAttackRoll(replacementRoll);
 }
 async function useTripAttack({workflow}) {
+    if (activityUtils.getIdentifier(workflow.activity) !== genericUtils.getIdentifier(workflow.item)) return;
     let targetToken = workflow.targets.first();
     let targetActor = targetToken?.actor;
     if (!targetActor) return;
     if (actorUtils.getSize(targetActor) > 3) return;
-    let featureData = await compendiumUtils.getItemFromCompendium(constants.featurePacks.classFeatureItems, 'Trip Attack: Attack', {object: true, getDescription: true, translate: 'CHRISPREMADES.Macros.Maneuvers.Tripping', flatDC: itemUtils.getSaveDC(workflow.item)});
-    if (!featureData) {
-        errors.missingPackItem();
-        return;
-    }
-    await workflowUtils.syntheticItemDataRoll(featureData, workflow.actor, [targetToken]);
+    let feature = activityUtils.getActivityByIdentifier(workflow.item, 'tripAttackAttack', {strict: true});
+    if (!feature) return;
+    let featureWorkflow = await workflowUtils.syntheticActivityRoll(feature, [targetToken]);
+    await proneOnFail.midi.item[0].macro({workflow: featureWorkflow});
 }
 export let maneuversAmbush = {
     name: 'Maneuvers: Ambush',
-    version: '0.12.51'
+    version: '1.1.0'
 };
 export let maneuversBaitAndSwitch = {
     name: 'Maneuvers: Bait and Switch',
-    version: '1.0.7',
+    version: '1.1.0',
     midi: {
         item: [
             {
@@ -358,7 +355,7 @@ export let maneuversBaitAndSwitch = {
 };
 export let maneuversBrace = {
     name: 'Maneuvers: Brace',
-    version: '1.0.7',
+    version: '1.1.0',
     midi: {
         item: [
             {
@@ -371,7 +368,7 @@ export let maneuversBrace = {
 };
 export let maneuversCommandersStrike = {
     name: 'Maneuvers: Commander\'s Strike',
-    version: '1.0.7',
+    version: '1.1.0',
     midi: {
         item: [
             {
@@ -384,15 +381,15 @@ export let maneuversCommandersStrike = {
 };
 export let maneuversCommandingPresence = {
     name: 'Maneuvers: Commanding Presence',
-    version: '0.12.43'
+    version: '1.1.0'
 };
 export let maneuversDisarmingAttack = {
     name: 'Maneuvers: Disarming Attack',
-    version: '0.12.43'
+    version: '1.1.0'
 };
 export let maneuversDistractingStrike = {
     name: 'Maneuvers: Distracting Strike',
-    version: '0.12.43',
+    version: '1.1.0',
     midi: {
         item: [
             {
@@ -405,15 +402,15 @@ export let maneuversDistractingStrike = {
 };
 export let maneuversEvasiveFootwork = {
     name: 'Maneuvers: Evasive Footwork',
-    version: '0.12.43'
+    version: '1.1.0'
 };
 export let maneuversFeintingAttack = {
     name: 'Maneuvers: Feinting Attack',
-    version: '0.12.43'
+    version: '1.1.0'
 };
 export let maneuversGoadingAttack = {
     name: 'Maneuvers: Goading Attack',
-    version: '0.12.43',
+    version: '1.1.0',
     midi: {
         item: [
             {
@@ -426,7 +423,7 @@ export let maneuversGoadingAttack = {
 };
 export let maneuversGrapplingStrike = {
     name: 'Maneuvers: Grappling Strike',
-    version: '0.12.43',
+    version: '1.1.0',
     midi: {
         item: [
             {
@@ -439,11 +436,11 @@ export let maneuversGrapplingStrike = {
 };
 export let maneuversLungingAttack = {
     name: 'Maneuvers: Lunging Attack',
-    version: '0.12.43'
+    version: '1.1.0'
 };
 export let maneuversManeuveringAttack = {
     name: 'Maneuvers: Maneuvering Attack',
-    version: '0.12.43',
+    version: '1.1.0',
     midi: {
         item: [
             {
@@ -456,11 +453,11 @@ export let maneuversManeuveringAttack = {
 };
 export let maneuversMenacingAttack = {
     name: 'Maneuvers: Menacing Attack',
-    version: '0.12.43'
+    version: '1.1.0'
 };
 export let maneuversParry = {
     name: 'Maneuvers: Parry',
-    version: '1.0.7',
+    version: '1.1.0',
     midi: {
         item: [
             {
@@ -473,11 +470,11 @@ export let maneuversParry = {
 };
 export let maneuversPrecisionAttack = {
     name: 'Maneuvers: Precision Attack',
-    version: '0.12.43'
+    version: '1.1.0'
 };
 export let maneuversPushingAttack = {
     name: 'Maneuvers: Pushing Attack',
-    version: '0.12.43',
+    version: '1.1.0',
     midi: {
         item: [
             {
@@ -490,15 +487,15 @@ export let maneuversPushingAttack = {
 };
 export let maneuversQuickToss = {
     name: 'Maneuvers: Quick Toss',
-    version: '0.12.43'
+    version: '1.1.0'
 };
 export let maneuversRally = {
     name: 'Maneuvers: Rally',
-    version: '0.12.43'
+    version: '1.1.0'
 };
 export let maneuversRiposte = {
     name: 'Maneuvers: Riposte',
-    version: '0.12.43',
+    version: '1.1.0',
     midi: {
         item: [
             {
@@ -511,22 +508,14 @@ export let maneuversRiposte = {
 };
 export let maneuversSweepingAttack = {
     name: 'Maneuvers: Sweeping Attack',
-    version: '0.12.43',
+    version: '1.1.0',
     midi: {
         item: [
             {
                 pass: 'rollFinished',
                 macro: useSweepingAttack,
                 priority: 50
-            }
-        ]
-    }
-};
-export let maneuversSweepingAttackAttack = {
-    name: 'Sweeping Attack: Attack',
-    version: maneuversSweepingAttack.version,
-    midi: {
-        item: [
+            },
             {
                 pass: 'postAttackRoll',
                 macro: sweepingAttackAttack,
@@ -537,11 +526,11 @@ export let maneuversSweepingAttackAttack = {
 };
 export let maneuversTacticalAssessment = {
     name: 'Maneuvers: Tactical Assessment',
-    version: '0.12.43'
+    version: '1.1.0'
 };
 export let maneuversTripAttack = {
     name: 'Maneuvers: Trip Attack',
-    version: '0.12.43',
+    version: '1.1.0',
     midi: {
         item: [
             {

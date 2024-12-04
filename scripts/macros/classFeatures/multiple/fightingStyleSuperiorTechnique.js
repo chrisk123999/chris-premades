@@ -9,7 +9,7 @@ async function hit({workflow}) {
 }
 export let fightingStyleSuperiorTechnique = {
     name: 'Fighting Style: Superior Technique',
-    version: '1.0.7',
+    version: '1.1.0',
     midi: {
         actor: [
             {

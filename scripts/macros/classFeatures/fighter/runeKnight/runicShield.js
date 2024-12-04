@@ -1,12 +1,11 @@
 import {actorUtils, combatUtils, constants, dialogUtils, genericUtils, itemUtils, rollUtils, socketUtils, tokenUtils, workflowUtils} from '../../../../utils.js';
 async function attack({trigger, workflow}) {
     if (!workflow.hitTargets.size || !workflow.item) return;
-    if (!constants.attacks.includes(workflow.item.system.actionType)) return;
+    if (!constants.attacks.includes(workflow.activity.actionType)) return;
     let target = workflow.targets.first();
     let nearbyShields = tokenUtils.findNearby(target, 60, 'ally').filter(i => {
         let item = itemUtils.getItemByIdentifier(i.actor, 'runicShield');
-        if (!item) return;
-        if (!item.system.uses.value) return;
+        if (!item?.system.uses.value) return;
         if (combatUtils.inCombat() && actorUtils.hasUsedReaction(i.actor)) return;
         return true;
     });
@@ -34,7 +33,7 @@ async function attack({trigger, workflow}) {
 }
 export let runicShield = {
     name: 'Runic Shield',
-    version: '0.12.52',
+    version: '1.1.0',
     midi: {
         actor: [
             {

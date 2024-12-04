@@ -1,4 +1,4 @@
 export let evasion = {
     name: 'Evasion',
-    version: '0.12.77'
+    version: '1.1.0'
 };

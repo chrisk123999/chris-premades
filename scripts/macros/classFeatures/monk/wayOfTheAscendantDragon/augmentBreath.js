@@ -1,4 +1,4 @@
 export let augmentBreath = {
     name: 'Augment Breath',
-    version: '0.12.49'
+    version: '1.1.0'
 };

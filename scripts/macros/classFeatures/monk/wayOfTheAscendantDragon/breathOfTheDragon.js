@@ -1,7 +1,8 @@
 import {DialogApp} from '../../../../applications/dialog.js';
-import {animationUtils, genericUtils, itemUtils, templateUtils, workflowUtils} from '../../../../utils.js';
+import {activityUtils, animationUtils, genericUtils, itemUtils, templateUtils, workflowUtils} from '../../../../utils.js';
 
 async function early({workflow}) {
+    if (activityUtils.getIdentifier(workflow.activity) !== genericUtils.getIdentifier(workflow.item)) return;
     let ki = itemUtils.getItemByIdentifier(workflow.actor, 'ki');
     let augmentBreath = itemUtils.getItemByIdentifier(workflow.actor, 'augmentBreath');
     let classLevel = workflow.actor.classes.monk?.system.levels ?? 1;
@@ -55,26 +56,19 @@ async function early({workflow}) {
     let selection = await DialogApp.dialog(workflow.item.name, 'CHRISPREMADES.Macros.BreathOfTheDragon.Select', inputs, 'okCancel');
     if (!selection?.buttons) return;
     let {shape, damageType, augment} = selection;
-    let parts = genericUtils.duplicate(workflow.item.system.damage.parts);
-    let target = genericUtils.duplicate(workflow.item.system.target);
-    parts[0][0] = String(damageDice + (augment ? 1 : 0)) + '@scale.monk.die.die[' + damageType + ']';
-    parts[0][1] = damageType;
-    target.type = shape;
-    target.value = augment ? 90 : 30;
-    if (shape === 'cone') target.value = 2 * target.value / 3;
+    let target = genericUtils.duplicate(workflow.activity.target.template);
+    let damageFormula = String(damageDice + (augment ? 1 : 0)) + '@scale.monk.die.die[' + damageType + ']';
+    let distance = augment ? 90 : 30;
+    if (shape === 'cone') distance = 2 * distance / 3;
     target.units = 'ft';
     if (augment) {
         await augmentBreath.displayCard();
-        await genericUtils.update(ki, {'system.uses.value': ki.system.uses.value - 1});
+        await genericUtils.update(ki, {'system.uses.spent': ki.system.uses.spent + 1});
     }
-    workflow.item = workflow.item.clone({'system.damage.parts': parts}, {'keepId': true});
-    workflow.item.prepareData();
-    workflow.item.prepareFinalAttributes();
-    workflow.item.applyActiveEffects();
     let templateData = {
         user: game.user,
-        t: target.type === 'cone' ? 'cone' : 'ray',
-        distance: target.value,
+        t: shape === 'cone' ? 'cone' : 'ray',
+        distance,
         fillColor: game.user.color,
         flags: {
             dnd5e: {
@@ -85,12 +79,13 @@ async function early({workflow}) {
             }
         }
     };
-    if (target.type === 'ray') templateData.width = 5;
-    if (target.type === 'cone') templateData.angle = CONFIG.MeasuredTemplate.defaults.angle;
+    if (shape === 'ray') templateData.width = 5;
+    if (shape === 'cone') templateData.angle = CONFIG.MeasuredTemplate.defaults.angle;
     let {template, tokens} = await templateUtils.placeTemplate(templateData, true);
     genericUtils.updateTargets(tokens);
     workflow.template = template;
     await workflowUtils.handleInstantTemplate(workflow);
+    await activityUtils.setDamage(workflow.activity, damageFormula, [damageType]);
     let jb2a = animationUtils.jb2aCheck();
     let playAnimation = itemUtils.getConfig(workflow.item, 'playAnimation') && jb2a;
     if (!playAnimation) return;
@@ -134,7 +129,8 @@ async function early({workflow}) {
 }
 export let breathOfTheDragon = {
     name: 'Breath of the Dragon',
-    version: '1.0.36',
+    version: '1.1.0',
+    hasAnimation: true,
     midi: {
         item: [
             {

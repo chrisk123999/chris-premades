@@ -17,12 +17,12 @@ async function attack({trigger: {entity: item}, workflow}) {
     let useFeature = await dialogUtils.buttonDialog(item.name, genericUtils.format('CHRISPREMADES.Dialog.Missed', {attackTotal, itemName: item.name}), buttons);
     if (!useFeature) return;
     await workflowUtils.bonusAttack(workflow, String(useFeature * 2));
-    await genericUtils.update(ki, {'system.uses.value': uses - useFeature});
+    await genericUtils.update(ki, {'system.uses.spent': ki.system.uses.spent + useFeature});
     await item.use();
 }
 export let focusedAim = {
     name: 'Focused Aim',
-    version: '0.12.46',
+    version: '1.1.0',
     midi: {
         actor: [
             {

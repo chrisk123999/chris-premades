@@ -1,4 +1,4 @@
 export let patientDefense = {
     name: 'Patient Defense',
-    version: '0.12.46'
+    version: '1.1.0'
 };

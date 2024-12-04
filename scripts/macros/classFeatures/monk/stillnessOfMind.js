@@ -19,7 +19,7 @@ async function use({workflow}) {
 }
 export let stillnessOfMind = {
     name: 'Stillness of Mind',
-    version: '0.12.46',
+    version: '1.1.0',
     midi: {
         item: [
             {

@@ -1,4 +1,4 @@
 export let greatStature = {
     name: 'Great Stature',
-    version: '0.12.52'
+    version: '1.1.0'
 };

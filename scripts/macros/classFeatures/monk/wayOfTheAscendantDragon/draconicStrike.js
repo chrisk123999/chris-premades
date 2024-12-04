@@ -18,7 +18,7 @@ async function damage({trigger: {entity: item}, workflow}) {
 }
 export let draconicStrike = {
     name: 'Draconic Strike',
-    version: '0.12.49',
+    version: '1.1.0',
     midi: {
         actor: [
             {
