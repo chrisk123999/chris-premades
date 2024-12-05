@@ -1,4 +1,4 @@
 export let rendMind = {
     name: 'Rend Mind',
-    version: '0.12.54'
+    version: '1.1.0'
 };

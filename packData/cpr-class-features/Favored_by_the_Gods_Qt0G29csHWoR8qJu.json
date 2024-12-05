@@ -1,0 +1,172 @@
+{
+  "name": "Favored by the Gods",
+  "type": "feat",
+  "system": {
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "source": {
+      "custom": "",
+      "revision": 1,
+      "rules": "2024"
+    },
+    "uses": {
+      "max": "1",
+      "recovery": [
+        {
+          "period": "sr",
+          "type": "recoverAll"
+        }
+      ],
+      "spent": 0
+    },
+    "type": {
+      "value": "class",
+      "subtype": ""
+    },
+    "requirements": "",
+    "properties": [],
+    "prerequisites": {
+      "level": null
+    },
+    "activities": {},
+    "identifier": "favored-by-the-gods",
+    "enchant": {}
+  },
+  "flags": {
+    "midi-qol": {
+      "effectActivation": false,
+      "rollAttackPerTarget": "default",
+      "itemCondition": "",
+      "effectCondition": "",
+      "AoETargetType": "any",
+      "AoETargetTypeIncludeSelf": true,
+      "autoTarget": "default",
+      "removeAttackDamageButtons": "default",
+      "reactionCondition": "",
+      "otherCondition": ""
+    },
+    "midiProperties": {
+      "nodam": false,
+      "fulldam": false,
+      "halfdam": false,
+      "rollOther": false,
+      "critOther": false,
+      "magicdam": false,
+      "magiceffect": false,
+      "concentration": false,
+      "toggleEffect": false,
+      "ignoreTotalCover": false,
+      "autoFailFriendly": false,
+      "autoSaveFriendly": false,
+      "offHandWeapon": false,
+      "confirmTargets": "default",
+      "noConcentrationCheck": false,
+      "idr": false,
+      "idi": false,
+      "idv": false,
+      "ida": false
+    },
+    "core": {
+      "sourceId": "Actor.Uqfj6K84fvhdToVg.Item.1kVL2t4vrcOGlhOY"
+    },
+    "dnd5e": {
+      "persistSourceMigration": true,
+      "migratedUses": 1,
+      "riders": {
+        "activity": [],
+        "effect": []
+      }
+    },
+    "chris-premades": {
+      "info": {
+        "name": "Favored by the Gods",
+        "version": "1.1.0",
+        "identifier": "favoredByTheGods",
+        "source": "chris-premades"
+      }
+    }
+  },
+  "effects": [
+    {
+      "name": "Favored by the Gods",
+      "origin": "Compendium.world.cpr-class-features.Item.nwv9Vq0T27GFRwoj",
+      "duration": {
+        "rounds": null,
+        "startTime": 1416,
+        "seconds": null,
+        "combat": null,
+        "turns": null,
+        "startRound": 237,
+        "startTurn": 9
+      },
+      "disabled": false,
+      "flags": {
+        "dnd5e": {},
+        "dae": {
+          "disableCondition": "",
+          "disableIncapacitated": false,
+          "stackable": "noneName",
+          "showIcon": false,
+          "durationExpression": "",
+          "macroRepeat": "none",
+          "specialDuration": []
+        },
+        "core": {
+          "overlay": false
+        }
+      },
+      "img": "icons/magic/light/beam-rays-blue.webp",
+      "_id": "CNNtqowzIxaj5ahc",
+      "type": "base",
+      "system": {},
+      "changes": [
+        {
+          "key": "flags.midi-qol.optional.fbtg.attack.fail.all",
+          "mode": 0,
+          "value": "+2d4",
+          "priority": 20
+        },
+        {
+          "key": "flags.midi-qol.optional.fbtg.label",
+          "mode": 0,
+          "value": "Favored by the Gods",
+          "priority": 20
+        },
+        {
+          "key": "flags.midi-qol.optional.fbtg.count",
+          "mode": 0,
+          "value": "ItemUses.Favored by the Gods",
+          "priority": 20
+        },
+        {
+          "key": "flags.midi-qol.optional.fbtg.save.fail.all",
+          "mode": 0,
+          "value": "+2d4",
+          "priority": 20
+        }
+      ],
+      "description": "",
+      "tint": "#ffffff",
+      "transfer": true,
+      "statuses": [],
+      "sort": 0,
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "coreVersion": "12.331",
+        "systemId": "dnd5e",
+        "systemVersion": "4.1.2",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!items.effects!Qt0G29csHWoR8qJu.CNNtqowzIxaj5ahc"
+    }
+  ],
+  "img": "icons/magic/light/beam-rays-blue.webp",
+  "folder": "2gBNeV8cALnKZNwf",
+  "_id": "Qt0G29csHWoR8qJu",
+  "_key": "!items!Qt0G29csHWoR8qJu"
+}

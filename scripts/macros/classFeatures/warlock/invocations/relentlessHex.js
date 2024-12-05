@@ -25,7 +25,8 @@ async function use({workflow}) {
 }
 export let relentlessHex = {
     name: 'Eldritch Invocations: Relentless Hex',
-    version: '0.12.54',
+    version: '1.1.0',
+    hasAnimation: true,
     midi: {
         item: [
             {

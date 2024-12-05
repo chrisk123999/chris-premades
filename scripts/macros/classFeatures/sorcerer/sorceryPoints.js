@@ -1,4 +1,4 @@
 export let sorceryPoints = {
     name: 'Sorcery Points',
-    version: '0.12.58'
+    version: '1.1.0'
 };

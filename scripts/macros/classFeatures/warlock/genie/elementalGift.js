@@ -1,4 +1,4 @@
-let version = '0.12.55';
+let version = '1.1.0';
 export let elementalGiftDao = {
     name: 'Elemental Gift (Dao)',
     version

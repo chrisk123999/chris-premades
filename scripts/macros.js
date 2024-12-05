@@ -203,7 +203,7 @@ export {circleOfMortality} from './macros/classFeatures/cleric/graveDomain/circl
 export {controlUndead, controlUndeadControlled} from './macros/classFeatures/paladin/oathbreaker/controlUndead.js';
 export {controlledSurge} from './macros/classFeatures/barbarian/wildMagic/controlledSurge.js';
 export {createMutagen} from './macros/classFeatures/bloodHunter/orderOfTheMutant/createMutagen.js';
-export {createPactWeapon, createPactWeaponDismiss} from './macros/classFeatures/warlock/boons/pactOfTheBlade/createPactWeapon.js';
+export {createPactWeapon} from './macros/classFeatures/warlock/boons/pactOfTheBlade/createPactWeapon.js';
 export {crimsonRite} from './macros/classFeatures/bloodHunter/crimsonRite.js';
 export {curseOfBinding} from './macros/classFeatures/bloodHunter/bloodCurses/curseOfBinding.js';
 export {curseOfTheFallenPuppet} from './macros/classFeatures/bloodHunter/bloodCurses/curseOfTheFallenPuppet.js';
@@ -344,7 +344,7 @@ export {summonDrakeCompanion, summonDrakeCompanionResistance, summonDrakeCompani
 export {summonWildfireSpirit, summonWildfireSpiritTeleport} from './macros/classFeatures/druid/circleOfWildfire/summonWildfireSpirit.js';
 export {superiorityDice} from './macros/classFeatures/fighter/battleMaster/superiorityDice.js';
 export {sneakAttack} from './macros/classFeatures/rogue/sneakAttack.js';
-export {tentacleOfTheDeeps, tentacleOfTheDeepsAttack} from './macros/classFeatures/warlock/fathomless/tentacleOfTheDeeps.js';
+export {tentacleOfTheDeeps} from './macros/classFeatures/warlock/fathomless/tentacleOfTheDeeps.js';
 export {thunderboltStrike} from './macros/classFeatures/cleric/tempestDomain/thunderboltStrike.js';
 export {totemSpiritBear} from './macros/classFeatures/barbarian/totem/totemSpirit.js';
 export {turnTheFaithless} from './macros/classFeatures/paladin/oathOfTheAncients/turnTheFaithless.js';

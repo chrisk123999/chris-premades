@@ -9,7 +9,7 @@ async function use({workflow}) {
 }
 export let maddeningHex = {
     name: 'Eldritch Invocations: Maddening Hex',
-    version: '0.12.54',
+    version: '1.1.0',
     midi: {
         item: [
             {

@@ -1,0 +1,140 @@
+{
+  "name": "Eldritch Invocations: Devil's Sight",
+  "type": "feat",
+  "img": "icons/creatures/slimes/slime-movement-dripping-purple.webp",
+  "system": {
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "source": {
+      "custom": "Tasha’s Cauldron of Everything pg 79",
+      "revision": 1,
+      "rules": "2024"
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "recovery": []
+    },
+    "type": {
+      "value": "class",
+      "subtype": "eldritchInvocation"
+    },
+    "requirements": "",
+    "properties": [],
+    "prerequisites": {
+      "level": null
+    },
+    "activities": {},
+    "identifier": "eldritch-invocations-devils-sight",
+    "enchant": {}
+  },
+  "effects": [
+    {
+      "name": "Devil's Sight",
+      "origin": "Compendium.world.cpr-class-features.Item.T5ocL8WMnSneDZ4R",
+      "duration": {
+        "rounds": null,
+        "startTime": 1416,
+        "seconds": null,
+        "combat": null,
+        "turns": null,
+        "startRound": 237,
+        "startTurn": 6
+      },
+      "disabled": false,
+      "flags": {
+        "dnd5e": {},
+        "dae": {
+          "disableCondition": "",
+          "disableIncapacitated": false,
+          "stackable": "noneName",
+          "showIcon": false,
+          "durationExpression": "",
+          "macroRepeat": "none",
+          "specialDuration": []
+        },
+        "core": {
+          "overlay": false
+        }
+      },
+      "img": "icons/creatures/slimes/slime-movement-dripping-purple.webp",
+      "_id": "rUEjGG86zp4AAKkz",
+      "type": "base",
+      "system": {},
+      "changes": [
+        {
+          "key": "flags.chris-premades.senses.magicalDarkness",
+          "mode": 4,
+          "value": "120",
+          "priority": 20
+        }
+      ],
+      "description": "",
+      "tint": "#ffffff",
+      "transfer": true,
+      "statuses": [],
+      "sort": 0,
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "coreVersion": "12.331",
+        "systemId": "dnd5e",
+        "systemVersion": "4.1.2",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!items.effects!WnSK5FEZZczufpLa.rUEjGG86zp4AAKkz"
+    }
+  ],
+  "flags": {
+    "core": {
+      "sourceId": "Actor.puGSiHPeQ84EYsl3.Item.DFVE60nV0Ptey67b"
+    },
+    "midiProperties": {
+      "confirmTargets": "default",
+      "autoFailFriendly": false,
+      "autoSaveFriendly": false,
+      "critOther": false,
+      "offHandWeapon": false,
+      "magicdam": false,
+      "magiceffect": false,
+      "noConcentrationCheck": false,
+      "toggleEffect": false,
+      "ignoreTotalCover": false,
+      "idr": false,
+      "idi": false,
+      "idv": false,
+      "ida": false
+    },
+    "midi-qol": {
+      "rollAttackPerTarget": "default",
+      "itemCondition": "",
+      "effectCondition": "",
+      "AoETargetType": "any",
+      "AoETargetTypeIncludeSelf": true,
+      "autoTarget": "default",
+      "removeAttackDamageButtons": "default",
+      "reactionCondition": "",
+      "otherCondition": ""
+    },
+    "dnd5e": {
+      "riders": {
+        "activity": []
+      }
+    },
+    "chris-premades": {
+      "info": {
+        "name": "Eldritch Invocations: Devil's Sight",
+        "version": "1.1.0",
+        "identifier": "devilsSight",
+        "source": "chris-premades"
+      }
+    }
+  },
+  "folder": "aupqwL1BF6Zl9FGo",
+  "_id": "WnSK5FEZZczufpLa",
+  "_key": "!items!WnSK5FEZZczufpLa"
+}

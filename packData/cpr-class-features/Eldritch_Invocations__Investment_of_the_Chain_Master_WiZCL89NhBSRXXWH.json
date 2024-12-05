@@ -168,7 +168,7 @@
       "AoETargetTypeIncludeSelf": true,
       "autoTarget": "default",
       "removeAttackDamageButtons": "default",
-      "reactionCondition": "",
+      "reactionCondition": "false",
       "otherCondition": ""
     },
     "midiProperties": {

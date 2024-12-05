@@ -145,11 +145,11 @@ async function animation(target, token, attackType) {
             return;
     }
 }
-async function damage({trigger, workflow}) {
+async function damage({trigger: {entity: item}, workflow}) {
     if (workflow.hitTargets.size != 1 || !workflow.item) return;
     let weaponIdentifier = genericUtils.getIdentifier(workflow.item);
-    if (!(workflow.item.system.actionType === 'rwak' || workflow.item.system.properties.has('fin') || weaponIdentifier === 'psychicBlades')) return;
-    if (!combatUtils.perTurnCheck(trigger.entity, 'sneakAttack', false, workflow.token.id)) return;
+    if (!(workflow.activity.actionType === 'rwak' || workflow.item.system.properties.has('fin') || weaponIdentifier === 'psychicBlades')) return;
+    if (!combatUtils.perTurnCheck(item, 'sneakAttack', false, workflow.token.id)) return;
     let doSneak = false;
     let displayRakish = false;
     let rollType = (workflow.advantage && workflow.disadvantage) ? 'normal' : (workflow.advantage && !workflow.disadvantage) ? 'advantage' : (!workflow.advantage && workflow.disadvantage) ? 'disadvantage' : 'normal';
@@ -177,16 +177,16 @@ async function damage({trigger, workflow}) {
         }
     }
     if (!doSneak) return;
-    let autoSneak = itemUtils.getConfig(trigger.entity, 'auto');
+    let autoSneak = itemUtils.getConfig(item, 'auto');
     if (!autoSneak) {
-        let selection = await dialogUtils.confirm(trigger.entity.name, genericUtils.format('CHRISPREMADES.Macros.SneakAttack.Use', {name: trigger.entity.name}));
+        let selection = await dialogUtils.confirm(item.name, genericUtils.format('CHRISPREMADES.Macros.SneakAttack.Use', {name: item.name}));
         if (!selection) return;
     }
     let rendMind = itemUtils.getItemByIdentifier(workflow.actor, 'rendMind');
     let psionicEnergy = itemUtils.getItemByIdentifier(workflow.actor, 'psionicEnergy');
     if (weaponIdentifier === 'psychicBlades' && rendMind && psionicEnergy) await genericUtils.setFlag(workflow.item, 'chris-premades', 'rendMind.prompt', true);
-    await combatUtils.setTurnCheck(trigger.entity, 'sneakAttack');
-    let bonusDamageFormula = itemUtils.getConfig(trigger.entity, 'formula');
+    await combatUtils.setTurnCheck(item, 'sneakAttack');
+    let bonusDamageFormula = itemUtils.getConfig(item, 'formula');
     if (!bonusDamageFormula || bonusDamageFormula === '') {
         if (workflow.actor.type === 'character') {
             let scale = workflow.actor.system.scale?.rogue?.['sneak-attack'];
@@ -207,14 +207,14 @@ async function damage({trigger, workflow}) {
     let eyeFeature = itemUtils.getItemByIdentifier(workflow.actor, 'eyeForWeakness');
     if (iTarget && eyeFeature) bonusDamageFormula += ' + 3d6[' + workflow.defaultDamageType + ']';
     await workflowUtils.bonusDamage(workflow, bonusDamageFormula, {damageType: workflow.defaultDamageType});
-    await trigger.entity.use();
+    await item.use();
     if (displayRakish) await rakishAudacity.use();
     if (iTarget) {
         let feature = itemUtils.getItemByIdentifier(workflow.actor, 'insightfulFighting');
         if (feature) await feature.displayCard();
         if (eyeFeature) eyeFeature.use();
     }
-    let playAnimation = itemUtils.getConfig(trigger.entity, 'playAnimation');
+    let playAnimation = itemUtils.getConfig(item, 'playAnimation');
     if (!animationUtils.aseCheck() || animationUtils.jb2aCheck() != 'patreon') playAnimation = false;
     if (!playAnimation) return;
     let animationType;
@@ -227,7 +227,7 @@ async function combatEnd({trigger}) {
 }
 export let sneakAttack = {
     name: 'Sneak Attack',
-    version: '0.12.41',
+    version: '1.1.0',
     midi: {
         actor: [
             {

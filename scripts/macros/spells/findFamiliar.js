@@ -139,9 +139,6 @@ async function use({workflow}) {
         });
         let casterEffect = effectUtils.getEffectByIdentifier(workflow.actor, 'findFamiliar');
         if (!casterEffect) return;
-        if (investmentOfTheChainMaster) {
-            await genericUtils.update(casterEffect, {'flags.chris-premades.macros.combat': ['investmentOfTheChainMasterActive']});
-        }
         let effectData = {
             name: pocketFeature.name,
             img: pocketFeature.img,

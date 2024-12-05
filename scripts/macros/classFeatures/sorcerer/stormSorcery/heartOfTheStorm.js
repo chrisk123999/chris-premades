@@ -2,9 +2,9 @@ import {dialogUtils, itemUtils, workflowUtils} from '../../../../utils.js';
 
 async function early({trigger: {entity: item}, workflow}) {
     if (!workflow.targets.size || workflow.item.type !== 'spell' || workflow.item.system.level === 0) return;
-    let damageParts = workflow.item.system.damage.parts;
-    if (!damageParts.some(i => ['lightning', 'thunder'].some(j => i[0].includes(j) || i[1] === j))) return;
-    await workflowUtils.completeItemUse(item);
+    let damageParts = workflow.activity.damage.parts;
+    if (!damageParts.some(i => ['lightning', 'thunder'].some(j => i.custom?.formula?.includes(j) || i.types.has(j)))) return;
+    await workflowUtils.completeItemUse(item, {}, {configureDialog: false});
 }
 async function damage({workflow}) {
     if (!workflow.targets.size) return;
@@ -13,11 +13,11 @@ async function damage({workflow}) {
         ['DND5E.DamageThunder', 'thunder']
     ]);
     if (!damageType) damageType = 'lightning';
-    await workflowUtils.replaceDamage(workflow, workflow.item.system.damage.parts[0][0], {damageType});
+    await workflowUtils.replaceDamage(workflow, workflow.activity.damage.parts[0].custom.formula, {damageType});
 }
 export let heartOfTheStorm = {
     name: 'Heart of the Storm',
-    version: '0.12.58',
+    version: '1.1.0',
     midi: {
         actor: [
             {

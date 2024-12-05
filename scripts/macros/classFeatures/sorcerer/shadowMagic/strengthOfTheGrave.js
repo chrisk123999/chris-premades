@@ -8,7 +8,9 @@ async function damageApplication({trigger: {entity: item, token}, workflow, dite
     if (!selection) return;
     let damageDealt = ditem.damageDetail.reduce((acc, i) => acc + (i.value * (i.active.multiplier ?? 1)), 0);
     let featureData = genericUtils.duplicate(item.toObject());
-    featureData.system.save.dc += damageDealt;
+    let activityId = Object.keys(featureData.system.activities)[0];
+    featureData.system.activities[activityId].save.dc.value += damageDealt;
+    featureData.system.activities[activityId].save.dc.formula += ' + ' + damageDealt;
     let featureWorkflow = await workflowUtils.syntheticItemDataRoll(featureData, token.actor, [token], {config: {consumeUsage: true}});
     if (featureWorkflow.failedSaves.size) return;
     let newDamageTotal = ditem.oldHP - 1;
@@ -17,7 +19,7 @@ async function damageApplication({trigger: {entity: item, token}, workflow, dite
 }
 export let strengthOfTheGrave = {
     name: 'Strength of the Grave',
-    version: '0.12.58',
+    version: '1.1.0',
     midi: {
         actor: [
             {

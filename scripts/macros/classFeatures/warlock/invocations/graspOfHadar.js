@@ -1,7 +1,7 @@
-import {dialogUtils, genericUtils, itemUtils, tokenUtils} from '../../../../utils.js';
+import {activityUtils, dialogUtils, genericUtils, itemUtils, tokenUtils} from '../../../../utils.js';
 
 async function late({trigger: {entity: item}, workflow}) {
-    if (genericUtils.getIdentifier(workflow.item) !== 'eldritchBlast') return;
+    if (activityUtils.getIdentifier(workflow.activity) !== 'eldritchBlast') return;
     if (!workflow.hitTargets.size) return;
     let validTargets = Array.from(workflow.hitTargets.filter(i => tokenUtils.getDistance(workflow.token, i) > 5));
     if (!validTargets.length) return;
@@ -21,7 +21,7 @@ async function late({trigger: {entity: item}, workflow}) {
 }
 export let graspOfHadar = {
     name: 'Eldritch Invocations: Grasp of Hadar',
-    version: '0.12.54',
+    version: '1.1.0',
     midi: {
         actor: [
             {

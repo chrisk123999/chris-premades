@@ -2,7 +2,7 @@ import {actorUtils, constants, dialogUtils, effectUtils, genericUtils, itemUtils
 
 async function damage({trigger: {entity: item}, workflow}) {
     if (workflow.hitTargets.size !== 1) return;
-    if (!constants.weaponAttacks.includes(workflow.item.system.actionType)) return;
+    if (!constants.weaponAttacks.includes(workflow.activity.actionType)) return;
     let isSummonedPactWeapon = genericUtils.getIdentifier(workflow.item) === 'pactWeapon';
     let isEnchantedPactWeapon = Array.from(workflow.item.allApplicableEffects()).find(i => genericUtils.getIdentifier(i) === 'pactWeapon');
     if (!isSummonedPactWeapon && !isEnchantedPactWeapon) return;
@@ -23,7 +23,7 @@ async function damage({trigger: {entity: item}, workflow}) {
 }
 export let eldritchSmite = {
     name: 'Eldritch Invocations: Eldritch Smite',
-    version: '0.12.54',
+    version: '1.1.0',
     midi: {
         actor: [
             {

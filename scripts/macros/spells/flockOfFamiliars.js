@@ -165,9 +165,6 @@ async function use({workflow}) {
             if (concentrationEffect) await genericUtils.remove(concentrationEffect);
             return;
         }
-        if (investmentOfTheChainMaster && !findFamiliarEffect) {
-            await genericUtils.update(casterEffect, {'flags.chris-premades.macros.combat': ['investmentOfTheChainMasterActive']});
-        }
     } else if (activityIdentifier === 'flockOfFamiliarsTouch') {
         await late({workflow});
     }

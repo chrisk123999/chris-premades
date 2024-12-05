@@ -34,7 +34,7 @@ async function use({workflow}) {
 }
 export let insightfulFighting ={
     name: 'Insightful Fighting',
-    version: '0.12.54',
+    version: '1.1.0',
     midi: {
         item: [
             {

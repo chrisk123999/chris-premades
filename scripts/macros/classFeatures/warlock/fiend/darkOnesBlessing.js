@@ -7,7 +7,7 @@ async function late({trigger: {entity: item}, workflow}) {
 }
 export let darkOnesBlessing = {
     name: 'Dark One\'s Blessing',
-    version: '0.12.55',
+    version: '1.1.0',
     midi: {
         actor: [
             {

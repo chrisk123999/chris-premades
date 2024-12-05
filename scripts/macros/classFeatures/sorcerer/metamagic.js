@@ -3,7 +3,7 @@ import {actorUtils, constants, dialogUtils, effectUtils, genericUtils, itemUtils
 
 async function useCareful({workflow}) {
     let sorcPoints = itemUtils.getItemByIdentifier(workflow.actor, 'sorceryPoints');
-    if (!sorcPoints || !sorcPoints.system.uses.value) {
+    if (!sorcPoints?.system.uses.value) {
         genericUtils.notify('CHRISPREMADES.Macros.Metamagic.NotEnough', 'info');
         return;
     }
@@ -33,7 +33,7 @@ async function useCareful({workflow}) {
     effectUtils.addMacro(effectData, 'midi.actor', ['carefulSpell']);
     let effect = await effectUtils.createEffect(workflow.actor, effectData, {identifier: 'metamagic'});
     if (!effect) return;
-    await genericUtils.update(sorcPoints, {'system.uses.value': sorcPoints.system.uses.value - 1});
+    await genericUtils.update(sorcPoints, {'system.uses.spent': sorcPoints.system.uses.spent + 1});
     // TODO: targeting?
     await workflowUtils.completeItemUse(selection);
     if (effect) await genericUtils.remove(effect);
@@ -83,7 +83,7 @@ async function earlyCareful({trigger: {entity: effect}, workflow}) {
 }
 async function useDistant({workflow}) {
     let sorcPoints = itemUtils.getItemByIdentifier(workflow.actor, 'sorceryPoints');
-    if (!sorcPoints || !sorcPoints.system.uses.value) {
+    if (!sorcPoints?.system.uses.value) {
         genericUtils.notify('CHRISPREMADES.Macros.Metamagic.NotEnough', 'info');
         return;
     }
@@ -98,7 +98,7 @@ async function useDistant({workflow}) {
         addNoneDocument: true
     });
     if (!selection) return;
-    await genericUtils.update(sorcPoints, {'system.uses.value': sorcPoints.system.uses.value - 1});
+    await genericUtils.update(sorcPoints, {'system.uses.spent': sorcPoints.system.uses.spent + 1});
     let itemUpdate;
     if (selection.system.range.units === 'touch') {
         itemUpdate = {'system.range': {units: 'ft', value: 30}};
@@ -107,7 +107,7 @@ async function useDistant({workflow}) {
     }
     let newItem = selection.clone(itemUpdate, {keepId: true});
     newItem.prepareData();
-    newItem.prepareFinalAttributes();
+    // newItem.prepareFinalAttributes();
     newItem.applyActiveEffects();
     let shouldConsumeSlot = newItem.system.level && !['atwill', 'innate', 'ritual'].includes(newItem.system.preparation?.mode);
     let shouldConsumeUsage = newItem.system.hasLimitedUses;
@@ -123,8 +123,7 @@ async function useDistant({workflow}) {
 async function damageEmpowered({trigger: {entity: item}, workflow}) {
     if (!workflow.hitTargets.size || workflow.item.type !== 'spell') return;
     let sorcPoints = itemUtils.getItemByIdentifier(workflow.actor, 'sorceryPoints');
-    let sorcPointsValue = sorcPoints?.system.uses.value;
-    if (!sorcPointsValue) return;
+    if (!sorcPoints?.system.uses.value) return;
     let max = workflow.actor.system.abilities.cha.mod;
     let newDamageRolls = workflow.damageRolls;
     let lowest = [];
@@ -167,7 +166,7 @@ async function damageEmpowered({trigger: {entity: item}, workflow}) {
     if (!selection?.buttons) return;
     let toReroll = Object.keys(selection).filter(i => i !== 'buttons' && Number(selection[i]) > 0);
     if (!toReroll.length) return;
-    await genericUtils.update(sorcPoints, {'system.uses.value': sorcPointsValue - 1});
+    await genericUtils.update(sorcPoints, {'system.uses.spent': sorcPoints.system.uses.spent + 1});
     for (let curr of toReroll) {
         // curr: 0-0
         let [roll, term] = curr.split('-');
@@ -185,7 +184,8 @@ async function damageEmpowered({trigger: {entity: item}, workflow}) {
         let damageFormula = '1d' + existingRoll.faces + existingRoll.modifiers + (existingRoll.flavor?.length ? '[' + existingRoll.flavor + ']' : '');
         for (let i = 0; i < numRerolls; i++) {
             let currInd = indList[i];
-            let newRoll = await new CONFIG.Dice.DamageRoll(damageFormula, existingRoll.data, existingRoll.options).evaluate();
+            let newRoll = await new Roll(damageFormula, existingRoll.data, existingRoll.options).evaluate();
+            newRoll.dice[0].results[0].hidden = true; // For DSN
             await newRoll.toMessage({
                 speaker: ChatMessage.implementation.getSpeaker({token: workflow.token}),
                 flavor: genericUtils.format('CHRISPREMADES.Generic.Rerolling', {origDie: 'd' + existingRoll.faces, origResult: existingRoll.results[currInd]}),
@@ -198,7 +198,7 @@ async function damageEmpowered({trigger: {entity: item}, workflow}) {
 }
 async function useExtended({workflow}) {
     let sorcPoints = itemUtils.getItemByIdentifier(workflow.actor, 'sorceryPoints');
-    if (!sorcPoints || !sorcPoints.system.uses.value) {
+    if (!sorcPoints?.system.uses.value) {
         genericUtils.notify('CHRISPREMADES.Macros.Metamagic.NotEnough', 'info');
         return;
     }
@@ -213,7 +213,7 @@ async function useExtended({workflow}) {
         addNoneDocument: true
     });
     if (!selection) return;
-    await genericUtils.update(sorcPoints, {'system.uses.value': sorcPoints.system.uses.value - 1});
+    await genericUtils.update(sorcPoints, {'system.uses.spent': sorcPoints.system.uses.spent + 1});
     let oldDuration = itemUtils.convertDuration(selection).seconds;
     let newDuration = Math.min(86400, oldDuration * 2);
     let newItem = selection.clone({
@@ -227,7 +227,7 @@ async function useExtended({workflow}) {
         })
     }, {keepId: true});
     newItem.prepareData();
-    newItem.prepareFinalAttributes();
+    // newItem.prepareFinalAttributes();
     newItem.applyActiveEffects();
     let shouldConsumeSlot = newItem.system.level && !['atwill', 'innate', 'ritual'].includes(newItem.system.preparation?.mode);
     let shouldConsumeUsage = newItem.system.hasLimitedUses;
@@ -272,7 +272,7 @@ async function useHeightened({workflow}) {
     effectUtils.addMacro(effectData, 'midi.actor', ['heightenedSpell']);
     let effect = await effectUtils.createEffect(workflow.actor, effectData, {identifier: 'metamagic'});
     if (!effect) return;
-    await genericUtils.update(sorcPoints, {'system.uses.value': sorcPoints.system.uses.value - 3});
+    await genericUtils.update(sorcPoints, {'system.uses.spent': sorcPoints.system.uses.spent + 3});
     // TODO: targeting?
     await workflowUtils.completeItemUse(selection);
     if (effect) await genericUtils.remove(effect);
@@ -328,10 +328,10 @@ async function useQuickened({workflow}) {
         addNoneDocument: true
     });
     if (!selection) return;
-    await genericUtils.update(sorcPoints, {'system.uses.value': sorcPoints.system.uses.value - 2});
+    await genericUtils.update(sorcPoints, {'system.uses.spent': sorcPoints.system.uses.spent + 2});
     let newItem = selection.clone({'system.activation.type': 'bonus'}, {keepId: true});
     newItem.prepareData();
-    newItem.prepareFinalAttributes();
+    // newItem.prepareFinalAttributes();
     newItem.applyActiveEffects();
     let shouldConsumeSlot = newItem.system.level && !['atwill', 'innate', 'ritual'].includes(newItem.system.preparation?.mode);
     let shouldConsumeUsage = newItem.system.hasLimitedUses;
@@ -352,13 +352,13 @@ async function attackSeeking({trigger: {entity: item}, workflow}) {
     if (Array.from(workflow.targets).every(i => i.actor?.system.attributes.ac.value <= attackTotal)) return;
     let selection = await dialogUtils.confirm(item.name, genericUtils.format('CHRISPREMADES.Dialog.Missed', {attackTotal, itemName: item.name + '(2 ' + sorcPoints.name + ')'}));
     if (!selection) return;
-    await genericUtils.update(sorcPoints, {'system.uses.value': sorcPoints.system.uses.value - 2});
+    await genericUtils.update(sorcPoints, {'system.uses.spent': sorcPoints.system.uses.spent + 2});
     let newAttackRoll = await new Roll(workflow.attackRoll.formula, workflow.attackRoll.data, workflow.attackRoll.options).evaluate();
     await workflow.setAttackRoll(newAttackRoll);
 }
 async function useSubtle({workflow}) {
     let sorcPoints = itemUtils.getItemByIdentifier(workflow.actor, 'sorceryPoints');
-    if (!sorcPoints || sorcPoints.system.uses.value < 1) {
+    if (!sorcPoints?.system.uses.value) {
         genericUtils.notify('CHRISPREMADES.Macros.Metamagic.NotEnough', 'info');
         return;
     }
@@ -374,10 +374,10 @@ async function useSubtle({workflow}) {
         addNoneDocument: true
     });
     if (!selection) return;
-    await genericUtils.update(sorcPoints, {'system.uses.value': sorcPoints.system.uses.value - 1});
+    await genericUtils.update(sorcPoints, {'system.uses.spent': sorcPoints.system.uses.spent + 1});
     let newItem = selection.clone({'system.properties': Array.from(selection.system.properties.difference(new Set(['vocal', 'verbal', 'somatic'])))}, {keepId: true});
     newItem.prepareData();
-    newItem.prepareFinalAttributes();
+    // newItem.prepareFinalAttributes();
     newItem.applyActiveEffects();
     let shouldConsumeSlot = newItem.system.level && !['atwill', 'innate', 'ritual'].includes(newItem.system.preparation?.mode);
     let shouldConsumeUsage = newItem.system.hasLimitedUses;
@@ -390,14 +390,46 @@ async function useSubtle({workflow}) {
         }
     });
 }
+function getDamageTypes(item) {
+    let activities = Array.from(item.system.activities.getByTypes('attack', 'damage'));
+    let flavorTypes = new Set(activities.flatMap(a => a.damage.parts.flatMap(d => new Roll(d.formula).terms.map(i => i.flavor).filter(i => i))));
+    let trueTypes = new Set(activities.flatMap(a => a.damage.parts.flatMap(d => Array.from(d.types))));
+    let allTypes = flavorTypes.union(trueTypes);
+    return allTypes;
+}
+function createUpdateItem(item, oldDamageType, newDamageType) {
+    let activities = Array.from(item.system.activities.getByTypes('attack', 'damage')).filter(a => {
+        if (a.damage.parts.some(d => new Roll(d.formula).terms.some(i => i.flavor === oldDamageType))) return true;
+        if (a.damage.parts.some(d => d.types.has(oldDamageType))) return true;
+        return false;
+    });
+    let activityUpdates = {};
+    for (let activity of activities) {
+        activityUpdates[activity.id] = {
+            damage: {
+                parts: activity.damage.parts.map(i => {
+                    let newPart = {};
+                    if (i.custom.enabled) newPart.custom = {formula: i.custom.formula.replaceAll(oldDamageType, newDamageType)};
+                    if (i.types.has(oldDamageType)) newPart.types = [newDamageType];
+                    return {...i, ...newPart};
+                })
+            }
+        };
+    }
+    return {
+        system: {
+            activities: activityUpdates
+        }
+    };
+}
 async function useTransmuted({workflow}) {
     let sorcPoints = itemUtils.getItemByIdentifier(workflow.actor, 'sorceryPoints');
-    if (!sorcPoints || sorcPoints.system.uses.value < 1) {
+    if (!sorcPoints?.system.uses.value) {
         genericUtils.notify('CHRISPREMADES.Macros.Metamagic.NotEnough', 'info');
         return;
     }
     let damageTypes = ['acid', 'cold', 'fire', 'lightning', 'poison', 'thunder'];
-    let validSpells = actorUtils.getCastableSpells(workflow.actor).filter(i => damageTypes.some(j => i.system.damage?.parts?.some(k => k[0].includes(j) || k[1] === j)));
+    let validSpells = actorUtils.getCastableSpells(workflow.actor).filter(i => damageTypes.some(j => getDamageTypes(i).has(j)));
     if (!validSpells.length) {
         genericUtils.notify('CHRISPREMADES.Macros.Metamagic.NoValid', 'info');
     }
@@ -408,8 +440,8 @@ async function useTransmuted({workflow}) {
         addNoneDocument: true
     });
     if (!selection) return;
-    await genericUtils.update(sorcPoints, {'system.uses.value': sorcPoints.system.uses.value - 1});
-    let replacementOptions = selection.system.damage.parts.map(i => i[1]).filter(j => damageTypes.includes(j));
+    await genericUtils.update(sorcPoints, {'system.uses.spent': sorcPoints.system.uses.spent + 1});
+    let replacementOptions = Array.from(getDamageTypes(selection).intersection(new Set(damageTypes)));
     let damageTypeToChange;
     if (replacementOptions.length > 1) {
         let selection2 = await dialogUtils.buttonDialog(selection.name, 'CHRISPREMADES.Macros.Metamagic.TransmutedFirst', replacementOptions.map(i => ['DND5E.Damage' + i.capitalize(), i]));
@@ -419,27 +451,19 @@ async function useTransmuted({workflow}) {
     let newDamageTypes = damageTypes.filter(i => i !== damageTypeToChange);
     let newDamageType = await dialogUtils.buttonDialog(selection.name, 'CHRISPREMADES.Macros.Metamagic.TransmutedSecond', newDamageTypes.map(i => ['DND5E.Damage' + i.capitalize(), i]));
     if (!newDamageType) newDamageType = newDamageTypes[0];
-    let newDamageParts = [];
-    for (let damageParts of selection.system.damage.parts) {
-        if (damageParts[1] === damageTypeToChange) {
-            newDamageParts.push([damageParts[0].replaceAll(damageTypeToChange, newDamageType), newDamageType]);
-        } else {
-            newDamageParts.push(damageParts);
-        }
-    }
-    let newItem = selection.clone({'system.damage.parts': newDamageParts}, {keepId: true});
+    let newItem = selection.clone(createUpdateItem(selection, damageTypeToChange, newDamageType), {keepId: true});
     await workflowUtils.completeItemUse(newItem);
 }
 const exceptions = ['banishment', 'charmPerson', 'fly', 'heroism', 'holdPerson'];
 async function useTwinned({workflow}) {
     let sorcPoints = itemUtils.getItemByIdentifier(workflow.actor, 'sorceryPoints');
-    if (!sorcPoints || !sorcPoints.system.uses.value) {
+    if (!sorcPoints?.system.uses.value) {
         genericUtils.notify('CHRISPREMADES.Macros.Metamagic.NotEnough', 'info');
         return;
     }
     let validSpells = actorUtils.getCastableSpells(workflow.actor).filter(i => 
         (exceptions.includes(genericUtils.getIdentifier(i)) ||
-        (i.system.target.value === 1 && !i.system.target.units?.length)) && 
+        (i.system.target.affects.count === 1 && !i.system.target.template.count)) && 
         i.system.level <= sorcPoints.system.uses.value);
     if (!validSpells.length) {
         genericUtils.notify('CHRISPREMADES.Macros.Metamagic.NoValid', 'info');
@@ -453,9 +477,9 @@ async function useTwinned({workflow}) {
     if (!selection) return;
     let existingMacro = selection.flags?.['chris-premades']?.macros?.midi?.item ?? [];
     existingMacro.push('twinnedSpellAttack');
-    let newItem = selection.clone({'system.target.value': 2, 'flags.chris-premades.macros.midi.item': existingMacro}, {keepId: true});
+    let newItem = selection.clone({'system.target.affects.count': 2, 'flags.chris-premades.macros.midi.item': existingMacro}, {keepId: true});
     newItem.prepareData();
-    newItem.prepareFinalAttributes();
+    // newItem.prepareFinalAttributes();
     newItem.applyActiveEffects();
     let shouldConsumeSlot = newItem.system.level && !['atwill', 'innate', 'ritual'].includes(newItem.system.preparation?.mode);
     let shouldConsumeUsage = newItem.system.hasLimitedUses;
@@ -471,6 +495,7 @@ async function useTwinned({workflow}) {
 async function earlyTwinned({workflow}) {
     if (exceptions.includes(genericUtils.getIdentifier(workflow.item)) && workflow.castData.baseLevel !== workflow.spellLevel) {
         genericUtils.notify('CHRISPREMADES.Macros.Metamagic.TwinnedUpcastTargets', 'info');
+        // TODO: how do we do this in 4.x?
         if (workflow.dnd5eConsumptionConfig?.consumeSpellSlot) {
             let slotLevel = workflow.dnd5eConsumptionConfig.slotLevel;
             let key = 'system.spells.' + slotLevel + '.value';
@@ -498,11 +523,11 @@ async function earlyTwinned({workflow}) {
         workflow.aborted = true;
         return;
     }
-    await genericUtils.update(sorcPoints, {'system.uses.value': sorcPoints.system.uses.value - cost});
+    await genericUtils.update(sorcPoints, {'system.uses.spent': sorcPoints.system.uses.spent + cost});
 }
 export let carefulSpell = {
     name: 'Metamagic: Careful Spell',
-    version: '0.12.58',
+    version: '1.1.0',
     midi: {
         item: [
             {
@@ -549,7 +574,7 @@ export let carefulSpell = {
 };
 export let distantSpell = {
     name: 'Metamagic: Distant Spell',
-    version: '0.12.58',
+    version: '1.1.0',
     midi: {
         item: [
             {
@@ -580,7 +605,7 @@ export let distantSpell = {
 };
 export let empoweredSpell = {
     name: 'Metamagic: Empowered Spell',
-    version: '0.12.62',
+    version: '1.1.0',
     midi: {
         actor: [
             {
@@ -611,7 +636,7 @@ export let empoweredSpell = {
 };
 export let extendedSpell = {
     name: 'Metamagic: Extended Spell',
-    version: '0.12.58',
+    version: '1.1.0',
     midi: {
         item: [
             {
@@ -642,7 +667,7 @@ export let extendedSpell = {
 };
 export let heightenedSpell = {
     name: 'Metamagic: Heightened Spell',
-    version: '0.12.58',
+    version: '1.1.0',
     midi: {
         item: [
             {
@@ -680,7 +705,7 @@ export let heightenedSpell = {
 };
 export let quickenedSpell = {
     name: 'Metamagic: Quickened Spell',
-    version: '0.12.58',
+    version: '1.1.0',
     midi: {
         item: [
             {
@@ -711,7 +736,7 @@ export let quickenedSpell = {
 };
 export let seekingSpell = {
     name: 'Metamagic: Seeking Spell',
-    version: '0.12.64',
+    version: '1.1.0',
     midi: {
         actor: [
             {
@@ -742,7 +767,7 @@ export let seekingSpell = {
 };
 export let subtleSpell = {
     name: 'Metamagic: Subtle Spell',
-    version: '0.12.58',
+    version: '1.1.0',
     midi: {
         item: [
             {
@@ -773,7 +798,7 @@ export let subtleSpell = {
 };
 export let transmutedSpell = {
     name: 'Metamagic: Transmuted Spell',
-    version: '0.12.64',
+    version: '1.1.0',
     midi: {
         item: [
             {
@@ -804,7 +829,7 @@ export let transmutedSpell = {
 };
 export let twinnedSpell = {
     name: 'Metamagic: Twinned Spell',
-    version: '0.12.58',
+    version: '1.1.0',
     midi: {
         item: [
             {

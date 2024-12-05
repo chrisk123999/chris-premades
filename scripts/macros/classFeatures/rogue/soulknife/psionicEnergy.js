@@ -1,4 +1,4 @@
 export let psionicEnergy = {
     name: 'Psionic Power: Psionic Energy',
-    version: '0.12.54'
+    version: '1.1.0'
 };

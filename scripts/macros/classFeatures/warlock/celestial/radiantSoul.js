@@ -50,7 +50,7 @@ async function late({trigger: {entity: item}, workflow}) {
 }
 export let radiantSoul = {
     name: 'Radiant Soul',
-    version: '0.12.54',
+    version: '1.1.0',
     midi: {
         actor: [
             {

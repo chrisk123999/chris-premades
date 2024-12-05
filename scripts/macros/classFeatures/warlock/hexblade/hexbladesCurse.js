@@ -1,4 +1,4 @@
-import {actorUtils, compendiumUtils, constants, dialogUtils, effectUtils, errors, genericUtils, itemUtils, socketUtils, tokenUtils, workflowUtils} from '../../../../utils.js';
+import {activityUtils, actorUtils, compendiumUtils, constants, dialogUtils, effectUtils, errors, genericUtils, itemUtils, socketUtils, tokenUtils, workflowUtils} from '../../../../utils.js';
 
 async function damage({workflow}) {
     if (workflow.hitTargets.size !== 1) return;
@@ -24,7 +24,7 @@ async function damageApplication({trigger: {token}, workflow, ditem}) {
     ditem.hpDamage += modifiedDamage;
 }
 async function early({workflow}) {
-    if (workflow.targets.size !== 1 || !constants.attacks.includes(workflow.item.system.actionType)) return;
+    if (workflow.targets.size !== 1 || !constants.attacks.includes(workflow.activity.actionType)) return;
     let effect = effectUtils.getEffectByIdentifier(workflow.actor, 'hexbladesCurse');
     if (!effect) return;
     let targetId = effect.flags['chris-premades'].hexbladesCurse.target;
@@ -57,6 +57,7 @@ async function early({workflow}) {
     await effectUtils.createEffect(targetToken.actor, effectData);
 }
 async function use({workflow}) {
+    if (activityUtils.getIdentifier(workflow.activity) !== genericUtils.getIdentifier(workflow.item)) return;
     if (workflow.targets.size !== 1) return;
     let sourceEffectData = {
         name: workflow.item.name,
@@ -82,7 +83,8 @@ async function use({workflow}) {
 }
 async function remove({trigger: {entity: effect}}) {
     if (effect.parent?.system.attributes.hp.value) return;
-    let originActor = fromUuidSync(effect.origin)?.parent;
+    let originItem = fromUuidSync(effect.origin);
+    let originActor = originItem?.parent;
     if (!originActor) return;
     let sourceEffect = effectUtils.getEffectByIdentifier(originActor, 'hexbladesCurse');
     let masterOfHexes = itemUtils.getItemByIdentifier(originActor, 'masterOfHexes');
@@ -101,12 +103,9 @@ async function remove({trigger: {entity: effect}}) {
         }
     }
     if (useHeal) {
-        let featureData = await compendiumUtils.getItemFromCompendium(constants.featurePacks.classFeatureItems, 'Hexblade\'s Curse: Healing', {object: true, getDescription: true, translate: 'CHRISPREMADES.Macros.HexbladesCurse.Healing'});
-        if (!featureData) {
-            errors.missingPackItem();
-            return;
-        }
-        await workflowUtils.syntheticItemDataRoll(featureData, originActor, []);
+        let feature = activityUtils.getActivityByIdentifier(originItem, 'hexbladesCurseHealing', {strict: true});
+        if (!feature) return;
+        await workflowUtils.syntheticActivityRoll(feature, []);
         if (sourceEffect) await genericUtils.remove(sourceEffect);
     } else {
         let effectData = {
@@ -132,7 +131,7 @@ async function remove({trigger: {entity: effect}}) {
 }
 export let hexbladesCurse = {
     name: 'Hexblade\'s Curse',
-    version: '0.12.55',
+    version: '1.1.0',
     midi: {
         item: [
             {

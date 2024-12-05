@@ -1,11 +1,9 @@
-import {actorUtils, combatUtils, compendiumUtils, constants, dialogUtils, effectUtils, errors, genericUtils, itemUtils, workflowUtils} from '../../../../utils.js';
+import {activityUtils, actorUtils, combatUtils, compendiumUtils, constants, dialogUtils, effectUtils, errors, genericUtils, itemUtils, workflowUtils} from '../../../../utils.js';
 
 async function use({workflow}) {
-    let featureData = await compendiumUtils.getItemFromCompendium(constants.featurePacks.classFeatureItems, 'Form of Dread: Fear', {object: true, getDescription: true, translate: 'CHRISPREMADES.Macros.FormOfDread.Fear', identifier: 'formOfDreadFear'});
-    if (!featureData) {
-        errors.missingPackItem();
-        return;
-    }
+    if (activityUtils.getIdentifier(workflow.activity) !== genericUtils.getIdentifier(workflow.item)) return;
+    let feature = activityUtils.getActivityByIdentifier(workflow.item, 'formOfDreadFear', {strict: true});
+    if (!feature) return;
     let effectData = {
         name: workflow.item.name,
         img: workflow.item.img,
@@ -45,8 +43,7 @@ async function use({workflow}) {
         genericUtils.setProperty(updates.actor, 'prototypeToken.texture.src', tokenImg);
         genericUtils.setProperty(updates.token, 'texture.src', tokenImg);
     }
-    let effect = await effectUtils.createEffect(workflow.actor, effectData, {identifier: 'formOfDread'});
-    await itemUtils.createItems(workflow.actor, [featureData], {parentEntity: effect});
+    await effectUtils.createEffect(workflow.actor, effectData, {identifier: 'formOfDread'});
     if (Object.entries(updates.actor)?.length) {
         await genericUtils.update(workflow.actor, updates.actor);
     }
@@ -79,20 +76,21 @@ async function end({trigger: {entity: effect}}) {
 async function endCombat({trigger: {entity: effect}}) {
     await genericUtils.remove(effect);
 }
-async function late({workflow}) {
+async function late({trigger: {entity: effect}, workflow}) {
     if (workflow.hitTargets.size !== 1) return;
-    if (!constants.attacks.includes(workflow.item.system.actionType)) return;
-    let feature = itemUtils.getItemByIdentifier(workflow.actor, 'formOfDreadFear');
+    if (!constants.attacks.includes(workflow.activity.actionType)) return;
+    let item = fromUuidSync(effect.origin);
+    let feature = activityUtils.getActivityByIdentifier(item, 'formOfDreadFear');
     if (!feature) return;
-    if (!combatUtils.perTurnCheck(feature, 'formOfDreadFear', true, workflow.token.id)) return;
+    if (!combatUtils.perTurnCheck(item, 'formOfDreadFear', true, workflow.token.id)) return;
     let selection = await dialogUtils.confirm(feature.name, 'CHRISPREMADES.Macros.FormOfDread.Use');
     if (!selection) return;
-    await combatUtils.setTurnCheck(feature, 'formOfDreadFear');
-    await workflowUtils.syntheticItemRoll(feature, [workflow.hitTargets.first()]);
+    await combatUtils.setTurnCheck(item, 'formOfDreadFear');
+    await workflowUtils.syntheticActivityRoll(feature, Array.from(workflow.hitTargets));
 }
 export let formOfDread = {
     name: 'Form of Dread',
-    version: '0.12.55',
+    version: '1.1.0',
     midi: {
         item: [
             {

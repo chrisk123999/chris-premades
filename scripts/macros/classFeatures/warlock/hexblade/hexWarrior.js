@@ -29,7 +29,7 @@ async function use({workflow}) {
         ]
     };
     let cha = workflow.actor.system.abilities.cha.mod;
-    let ability = selection.system.ability;
+    let ability = selection.system.activities.getByType('attack')[0]?.attack.ability;
     if (!ability?.length) ability = 'str';
     let score = workflow.actor.system.abilities[ability].mod;
     let dex = workflow.actor.system.abilities.dex.mod;
@@ -48,7 +48,7 @@ async function use({workflow}) {
         }
     }
     if (changed) enchantData.changes.push({
-        key: 'system.ability',
+        key: 'activities[attack].attack.ability',
         mode: 5,
         value: ability,
         priority: 20
@@ -57,7 +57,7 @@ async function use({workflow}) {
 }
 export let hexWarrior = {
     name: 'Hex Warrior',
-    version: '0.12.55',
+    version: '1.1.0',
     midi: {
         item: [
             {

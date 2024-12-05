@@ -6,6 +6,9 @@ async function use({workflow}) {
         name: workflow.item.name,
         img: workflow.item.img,
         origin: workflow.item.uuid,
+        duration: {
+            rounds: 1
+        },
         flags: {
             dae: {
                 specialDuration: [
@@ -25,7 +28,8 @@ async function use({workflow}) {
 }
 export let mistyEscape = {
     name: 'Misty Escape',
-    version: '0.12.54',
+    version: '1.1.0',
+    hasAnimation: true,
     midi: {
         item: [
             {

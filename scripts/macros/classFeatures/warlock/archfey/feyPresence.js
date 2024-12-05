@@ -31,7 +31,7 @@ async function use({workflow}) {
 }
 export let feyPresence = {
     name: 'Fey Presence',
-    version: '0.12.54',
+    version: '1.1.0',
     midi: {
         item: [
             {

@@ -187,6 +187,7 @@ async function rollSkill(wrapped, config, dialog = {}, message = {}) {
             overtimeActorUuid = target.dataset.midiOvertimeActorUuid;
     }
     let messageData;
+    let rollMode;
     let messageDataFunc = (config, dialog, message) => {
         let actor = config.subject;
         let skillIdInternal = config.skill;
@@ -196,6 +197,7 @@ async function rollSkill(wrapped, config, dialog = {}, message = {}) {
         }
         messageData = message.data;
         if (overtimeActorUuid) messageData['flags.midi-qol.overtimeActorUuid'] = overtimeActorUuid;
+        rollMode = game.settings.get('core', 'rollMode');
     };
     Hooks.once('dnd5e.preRollSkillV2', messageDataFunc);
     if (Object.entries(options).length) config.rolls = [{options}];
@@ -206,7 +208,7 @@ async function rollSkill(wrapped, config, dialog = {}, message = {}) {
     if (returnData.options) genericUtils.mergeObject(returnData.options, oldOptions);
     //await executeMacroPass(this, 'optionalBonus', skillId, options, returnData);
     if (message.create !== false) {
-        await returnData.toMessage(messageData);
+        await returnData.toMessage(messageData, {rollMode: returnData.options?.rollMode ?? rollMode});
     }
     return [returnData];
 }

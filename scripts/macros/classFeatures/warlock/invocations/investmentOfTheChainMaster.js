@@ -1,56 +1,30 @@
-import {actorUtils, effectUtils, genericUtils, itemUtils} from '../../../../utils.js';
-// TODO: Make the reaction part of this better
-async function late({workflow}) {
-    let controllingActor = await fromUuid(workflow.actor.flags['chris-premades'].summons.control.actor);
-    if (!controllingActor) return;
-    await actorUtils.setReactionUsed(controllingActor);
-    await actorUtils.removeReactionUsed(workflow.actor, true);
-    let findEffect = effectUtils.getEffectByIdentifier(controllingActor, 'findFamiliar');
-    let flockEffect = effectUtils.getEffectByIdentifier(controllingActor, 'flockOfFamiliars');
-    let findActors = findEffect?.flags['chris-premades'].summons.ids[findEffect?.name]?.map(i => canvas.scene.tokens.get(i)?.actor) ?? [];
-    let flockActors = flockEffect?.flags['chris-premades'].summons.ids[flockEffect?.name]?.map(i => canvas.scene.tokens.get(i)?.actor) ?? [];
-    let summonedActors = findActors.concat(flockActors);
-    if (!summonedActors?.length) return;
-    for (let currActor of summonedActors) {
-        let resistanceItem = itemUtils.getItemByIdentifier(currActor, 'investmentOfTheChainMasterResistance');
-        if (!resistanceItem) continue;
-        await genericUtils.update(resistanceItem, {'system.uses.spent': 1});
-    }
-}
-async function turnStart({trigger: {token}}) {
-    let findEffect = effectUtils.getEffectByIdentifier(token.actor, 'findFamiliar');
-    let flockEffect = effectUtils.getEffectByIdentifier(token.actor, 'flockOfFamiliars');
-    let findActors = findEffect?.flags['chris-premades'].summons.ids[findEffect?.name]?.map(i => canvas.scene.tokens.get(i)?.actor) ?? [];
-    let flockActors = flockEffect?.flags['chris-premades'].summons.ids[flockEffect?.name]?.map(i => canvas.scene.tokens.get(i)?.actor) ?? [];
-    let summonedActors = findActors.concat(flockActors);
-    if (!summonedActors?.length) return;
-    for (let currActor of summonedActors) {
-        let resistanceItem = itemUtils.getItemByIdentifier(currActor, 'investmentOfTheChainMasterResistance');
-        if (!resistanceItem) continue;
-        await genericUtils.update(resistanceItem, {'system.uses.spent': 0});
-    }
+import {actorUtils, dialogUtils, effectUtils, genericUtils, itemUtils, socketUtils} from '../../../../utils.js';
+async function hit({trigger: {entity: item, token}, workflow}) {
+    if (!workflow.hitTargets.has(token)) return;
+    let effect = effectUtils.getEffectByIdentifier(token.actor, 'summonedEffect');
+    if (!effect) return;
+    let sourceActor = fromUuidSync(effect.origin)?.actor;
+    if (!sourceActor) return;
+    if (actorUtils.hasUsedReaction(sourceActor)) return;
+    let selection = await dialogUtils.confirm(item.name, genericUtils.format('CHRISPREMADES.Dialog.Use', {itemName: item.name}), {userId: socketUtils.firstOwner(sourceActor, true)});
+    if (!selection) return;
+    await actorUtils.setReactionUsed(sourceActor);
+    await item.use();
 }
 export let investmentOfTheChainMaster = {
     name: 'Eldritch Invocations: Investment of the Chain Master',
-    version: '0.12.55'
+    version: '1.1.0'
 };
 export let investmentOfTheChainMasterActive = {
     name: 'Investment of the Chain Master: Active',
     version: investmentOfTheChainMaster.version,
     midi: {
-        item: [
+        actor: [
             {
-                pass: 'rollFinished',
-                macro: late,
+                pass: 'targetDamageRollComplete',
+                macro: hit,
                 priority: 50
             }
         ]
-    },
-    combat: [
-        {
-            pass: 'turnStart',
-            macro: turnStart,
-            priority: 50
-        }
-    ]
+    }
 };
