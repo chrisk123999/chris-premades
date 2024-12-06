@@ -1,4 +1,4 @@
 export let viciousIntent = {
     name: 'Vicious Intent',
-    version: '0.12.86'
+    version: '1.1.0'
 };

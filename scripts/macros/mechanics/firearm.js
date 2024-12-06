@@ -1,4 +1,4 @@
-import {constants, dialogUtils, effectUtils, genericUtils, itemUtils, workflowUtils} from '../../utils.js';
+import {activityUtils, constants, dialogUtils, effectUtils, genericUtils, itemUtils, workflowUtils} from '../../utils.js';
 async function misfire({trigger, workflow}) {
     let baseItem = workflow.item.system.type?.baseItem;
     let proficient = workflow.item.system.proficient || workflow.actor.system.traits.weaponProf.value.has(baseItem) || workflow.actor.system.traits.weaponProf.value.has('oth');
@@ -63,28 +63,28 @@ async function status({trigger, workflow}) {
     switch (status) {
         case 1:
             genericUtils.notify('CHRISPREMADES.Firearm.IsDamaged', 'info');
+            workflow.aborted = true;
             return true;
         case 2:
             genericUtils.notify('CHRISPREMADES.Firearm.IsBroken', 'info');
+            workflow.aborted = true;
             return true;
     }
     let shotsLeft = workflow.item.system.uses.value;
-    let selectedAmmo = workflow.actor.items.get(workflow.item.system.consume?.target);
+    let selectedAmmo = workflow.actor.items.get(workflow.activity.ammunition);
     let isPiercing = genericUtils.getProperty(workflow.item, 'flags.chris-premades.firearm.piercing');
     if (!isPiercing && (!shotsLeft || !selectedAmmo?.system.quantity)) {
         genericUtils.notify('CHRISPREMADES.Firearm.OutOfAmmo', 'info');
+        workflow.aborted = true;
         return true;
     }
-    if (!isPiercing) await genericUtils.update(workflow.item, {'system.uses.value': shotsLeft - 1});
+    if (!isPiercing) await genericUtils.update(workflow.item, {'system.uses.spent': workflow.item.system.uses.spent + 1});
+    const noConsume = genericUtils.getProperty(workflow.item, 'flags.chris-premades.firearm.noConsume');
+    if (noConsume) await selectedAmmo.update({'system.quantity': selectedAmmo.system.quantity + 1});
     let viciousIntent = itemUtils.getItemByIdentifier(workflow.actor, 'viciousIntent');
     if (!viciousIntent) return;
-    let critical = genericUtils.duplicate(workflow.item.system.critical);
-    if ((critical.threshold ?? 20) < 20) return;
-    critical.threshold = 19;
-    workflow.item = workflow.item.clone({'system.critical': critical}, {keepId: true});
-    workflow.item.prepareData();
-    workflow.item.prepareFinalAttributes();
-    workflow.item.applyActiveEffects();
+    if ((workflow.activity.attack.critical.threshold ?? 20) < 20) return;
+    workflow.activity.attack.critical.threshold = 19;
 }
 async function early({workflow}) {
     let adeptMarksman = itemUtils.getItemByIdentifier(workflow.actor, 'adeptMarksman');
@@ -139,14 +139,8 @@ async function early({workflow}) {
             if (!numSpent?.length) return;
             cost = Number(numSpent);
             let currMisfire = itemUtils.getConfig(workflow.item, 'misfire');
-            let damageParts = genericUtils.duplicate(workflow.item.system.damage.parts);
-            let origRoll = await new Roll(damageParts[0][0], workflow.item.getRollData()).evaluate();
-            let faces = origRoll.terms[0].faces;
-            if (!faces) return;
-            damageParts.push([cost + 'd' + faces + '[' + damageParts[0][1] + ']', damageParts[0][1]]);
-            workflow.item = workflow.item.clone({'system.damage.parts': damageParts, 'flags.chris-premades.config.misfire': Number(currMisfire) + 2 * cost}, {keepId: true});
+            workflow.item = workflow.item.clone({'flags.chris-premades.firearm.violent': cost, 'flags.chris-premades.config.misfire': Number(currMisfire) + 2 * cost}, {keepId: true});
             workflow.item.prepareData();
-            workflow.item.prepareFinalAttributes();
             workflow.item.applyActiveEffects();
             break;
         }
@@ -156,7 +150,7 @@ async function early({workflow}) {
             break;
     }
     await workflowUtils.completeItemUse(selectedShot);
-    await genericUtils.update(adeptMarksman, {'system.uses.value': currUses - cost});
+    await genericUtils.update(adeptMarksman, {'system.uses.spent': adeptMarksman.system.uses.spent + cost});
     if (createEffect) {
         effectUtils.addMacro(effectData, 'midi.actor', ['removeOnMiss']);
         await effectUtils.createEffect(workflow.actor, effectData, {identifier: 'trickShot'});
@@ -209,8 +203,17 @@ async function late({workflow}) {
     let value = adeptMarksman.system.uses.value ?? 0;
     if (value === max) return;
     regained = Math.clamp(regained, 0, max - value);
-    await genericUtils.update(adeptMarksman, {'system.uses.value': value + regained});
+    await genericUtils.update(adeptMarksman, {'system.uses.spent': adeptMarksman.system.uses.spent - regained});
     genericUtils.notify(genericUtils.format('CHRISPREMADES.Firearm.GritRegain', {regained}), 'info');
+}
+async function damage({workflow}) {
+    let violentCost = workflow.item.flags['chris-premades']?.firearm?.violent;
+    if (!violentCost) return;
+    let origRoll = await new Roll(workflow.item.system.damage.base.formula, workflow.item.getRollData()).evaluate();
+    let faces = origRoll.terms[0].faces;
+    if (!faces) return;
+    let extraDamage = violentCost + 'd' + faces + '[' + workflow.defaultDamageType + ']';
+    await workflowUtils.bonusDamage(workflow, extraDamage, {damageType: workflow.defaultDamageType});
 }
 async function repair({workflow}) {
     let repairFirearms = workflow.actor.items.filter(i => itemUtils.getConfig(i, 'status') == 1);
@@ -260,12 +263,12 @@ async function repair({workflow}) {
     });
 }
 async function reload({workflow}) {
-    let ammunition = workflow.actor.items.filter(i => i.system.type?.value === 'ammo' && i.system.type.subtype === 'firearmAmmo' && i.system.quantity);
+    let ammunition = workflow.actor.items.filter(i => i.system.type?.value === 'ammo' && i.system.type.subtype === 'firearmBullet' && i.system.quantity);
     if (!ammunition.length) {
         genericUtils.notify('CHRISPREMADES.Firearm.NoAmmo', 'info');
         return;
     }
-    let weapons = workflow.actor.items.filter(i => i.system.type?.value === 'firearm' && (i.system.uses.value < i.system.uses.max || !i.system.consume?.target?.length || !workflow.actor.items.get(i.system.consume.target)?.system.quantity));
+    let weapons = workflow.actor.items.filter(i => i.system.type?.value === 'firearm' && (i.system.uses.spent || !i.system.activities?.getByType('attack')[0]?.ammunition?.length || !workflow.actor.items.get(i.system.activities?.getByType('attack')[0]?.ammunition)?.system.quantity));
     if (!weapons.length) {
         genericUtils.notify('CHRISPREMADES.Firearm.NoReloads', 'info');
         return;
@@ -279,8 +282,10 @@ async function reload({workflow}) {
     if (!ammo) ammo = await dialogUtils.selectDocumentDialog(workflow.item.name, 'CHRISPREMADES.Firearm.SelectAmmo', ammunition);
     if (!ammo) return;
     await genericUtils.update(weapon, {
-        'system.uses.value': weapon.system.uses.max,
-        'system.consume.target': ammo.id
+        'system.uses.spent': 0
+    });
+    await genericUtils.update(weapon.system.activities.getByType('attack')[0], {
+        'ammunition': ammo.id
     });
 }
 export let firearm = {
@@ -306,6 +311,11 @@ export let firearm = {
             {
                 pass: 'preambleComplete',
                 macro: early,
+                priority: 50
+            },
+            {
+                pass: 'damageRollComplete',
+                macro: damage,
                 priority: 50
             }
         ]

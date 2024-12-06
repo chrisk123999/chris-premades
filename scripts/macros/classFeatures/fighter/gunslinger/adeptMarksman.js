@@ -1,4 +1,4 @@
 export let adeptMarksman = {
     name: 'Adept Marksman',
-    version: '0.12.86'
+    version: '1.1.0'
 };
