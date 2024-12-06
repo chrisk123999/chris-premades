@@ -49,8 +49,8 @@ async function use({workflow}) {
                     priority: 20
                 }
             ];
-            positiveEffectData.duration = itemUtils.convertDuration(workflow.item);
-            negativeEffectData.duration = itemUtils.convertDuration(workflow.item);
+            positiveEffectData.duration = itemUtils.convertDuration(workflow.activity);
+            negativeEffectData.duration = itemUtils.convertDuration(workflow.activity);
             break;
         case 'formulaAlluring':
             positiveEffectData.changes = [
@@ -335,8 +335,8 @@ async function use({workflow}) {
                     priority: 20
                 }
             ];
-            positiveEffectData.duration = itemUtils.convertDuration(workflow.item);
-            negativeEffectData.duration = itemUtils.convertDuration(workflow.item);
+            positiveEffectData.duration = itemUtils.convertDuration(workflow.activity);
+            negativeEffectData.duration = itemUtils.convertDuration(workflow.activity);
             break;
         case 'formulaSagacity':
             positiveEffectData.changes = [
@@ -394,7 +394,7 @@ async function use({workflow}) {
             break;
         case 'formulaVermillion': {
             let feature = itemUtils.getItemByIdentifier(workflow.actor, 'bloodMaledict');
-            if (feature) await genericUtils.update(feature, {'system.uses.value': feature.system.uses.value + 1});
+            if (feature) await genericUtils.update(feature, {'system.uses.spent': feature.system.uses.spent - 1});
             positiveEffectData.changes = [];
             negativeEffectData.changes = [
                 {
