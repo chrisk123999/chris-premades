@@ -1,3 +1,8 @@
+# 1.0.48 Release:
+## Bug Fixes:
+- Auto Push Generic Monster Feature
+- Slasher
+
 # 1.0.47 Release:
 ## Bug Fixes:
 - Alchemical Savant (Thanks MistHelix)

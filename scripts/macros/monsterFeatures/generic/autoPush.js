@@ -4,7 +4,7 @@ async function use({trigger, workflow}) {
     let config = itemUtils.getGenericFeatureConfig(workflow.item, 'autoPush');
     if (isNaN(Number(config.distance))) return;
     workflow.targets.forEach(token => {
-        if (config.fail && !workflow.failedSaves.has(token)) return;
+        if (config.failed && !workflow.failedSaves.has(token)) return;
         tokenUtils.pushToken(workflow.token, token, Number(config.distance));
     });
 }
