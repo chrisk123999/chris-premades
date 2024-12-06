@@ -16,7 +16,7 @@ export async function arcaneWardHelper(item, ditem, token, targetToken) {
         if (!selection) return;
         await workflowUtils.completeItemUse(projectedWard);
     }
-    await genericUtils.update(item, {'system.uses.value': uses - absorbed});
+    await genericUtils.update(item, {'system.uses.spent': item.system.uses.spent + absorbed});
     workflowUtils.setDamageItemDamage(ditem, remainingDamage + ditem.oldTempHP, false);
 }
 async function damageApplication({trigger: {entity: item}, ditem}) {
@@ -33,14 +33,14 @@ async function late({trigger: {entity: item}, workflow}) {
         await genericUtils.setFlag(item, 'chris-premades', 'arcaneWard.alreadyUsed', true);
     }
     let uses = item.system.uses.value;
-    await genericUtils.update(item, {'system.uses': {value: Math.clamp(uses + add, 0, maxUses), max: maxUses}});
+    await genericUtils.update(item, {'system.uses': {spent: Math.clamp(maxUses - (uses + add), 0, maxUses), max: maxUses}});
 }
 async function longRest({trigger: {entity: item}}) {
     await genericUtils.setFlag(item, 'chris-premades', 'arcaneWard.alreadyUsed', false);
 }
 export let arcaneWard = {
     name: 'Arcane Ward',
-    version: '0.12.62',
+    version: '1.1.0',
     midi: {
         actor: [
             {

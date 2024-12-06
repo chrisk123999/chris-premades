@@ -28,7 +28,7 @@ async function late({trigger: {entity: item}, workflow}) {
 }
 export let durableMagic = {
     name: 'Durable Magic',
-    version: '0.12.62',
+    version: '1.1.0',
     midi: {
         actor: [
             {

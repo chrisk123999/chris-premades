@@ -1,4 +1,4 @@
-import {compendiumUtils, constants, dialogUtils, errors, genericUtils, itemUtils, workflowUtils} from '../../../../utils.js';
+import {activityUtils, compendiumUtils, constants, dialogUtils, errors, genericUtils, itemUtils, workflowUtils} from '../../../../utils.js';
 
 async function damage({trigger: {entity: item}, workflow}) {
     if (workflow.item.type !== 'spell') return;
@@ -33,22 +33,17 @@ async function late({trigger: {entity: item}, workflow}) {
     await item.use();
     await genericUtils.setFlag(item, 'chris-premades', 'overchannel.timesUsed', timesUsed + 1);
     if (!damageFormula) return;
-    let featureData = await compendiumUtils.getItemFromCompendium(constants.featurePacks.classFeatureItems, 'Overchannel: Damage', {object: true, getDescription: true, translate: 'CHRISPREMADES.Macros.Overchannel.DamageItem'});
-    if (!featureData) {
-        errors.missingPackItem();
-        return;
-    }
-    featureData.system.damage.parts = [
-        [damageFormula, 'none']
-    ];
-    await workflowUtils.syntheticItemDataRoll(featureData, workflow.actor, [workflow.token]);
+    let feature = activityUtils.getActivityByIdentifier(item, 'overchannelDamage', {strict: true});
+    if (!feature) return;
+    await activityUtils.setDamage(feature, damageFormula, ['none']);
+    await workflowUtils.syntheticActivityRoll(feature, [workflow.token]);
 }
 async function longRest({trigger: {entity: item}}) {
     await genericUtils.setFlag(item, 'chris-premades', 'overchannel.timesUsed', 0);
 }
 export let overchannel = {
     name: 'Overchannel',
-    version: '0.12.62',
+    version: '1.1.0',
     midi: {
         actor: [
             {

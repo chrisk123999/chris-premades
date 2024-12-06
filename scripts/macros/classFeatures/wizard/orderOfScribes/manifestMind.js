@@ -1,59 +1,98 @@
 import {Summons} from '../../../../lib/summons.js';
-import {compendiumUtils, constants, dialogUtils, effectUtils, errors, genericUtils, itemUtils, socketUtils, tokenUtils} from '../../../../utils.js';
+import {activityUtils, compendiumUtils, constants, dialogUtils, effectUtils, errors, genericUtils, itemUtils, socketUtils, tokenUtils} from '../../../../utils.js';
 
 async function use({workflow}) {
-    let sourceActor = await compendiumUtils.getActorFromCompendium(constants.packs.summons, 'CPR - Manifest Mind');
-    if (!sourceActor) return;
-    let castFeature = await compendiumUtils.getItemFromCompendium(constants.featurePacks.classFeatureItems, 'Manifest Mind: Cast Spell', {object: true, getDescription: true, translate: 'CHRISPREMADES.Macros.ManifestMind.Cast', identifier: 'manifestMindCastSpell'});
-    let moveFeature = await compendiumUtils.getItemFromCompendium(constants.featurePacks.classFeatureItems, 'Manifest Mind: Move', {object: true, getDescription: true, translate: 'CHRISPREMADES.Macros.ManifestMind.Move', identifier: 'manifestMindMove'});
-    let dismissData = await compendiumUtils.getItemFromCompendium(constants.featurePacks.classFeatureItems, 'Manifest Mind: Dismiss', {object: true, getDescription: true, translate: 'CHRISPREMADES.Macros.ManifestMind.Dismiss', identifier: 'manifestMindDismiss'});
-    if (!castFeature || !moveFeature || !dismissData) {
-        errors.missingPackItem();
-        return;
-    }
-    let name = itemUtils.getConfig(workflow.item, 'name');
-    if (!name?.length) name = genericUtils.translate('CHRISPREMADES.Summons.CreatureNames.ManifestMind');
-    let updates = {
-        actor: {
-            name,
-            prototypeToken: {
+    let activityIdentifier = activityUtils.getIdentifier(workflow.activity);
+    if (activityIdentifier === genericUtils.getIdentifier(workflow.item)) {
+        let sourceActor = await compendiumUtils.getActorFromCompendium(constants.packs.summons, 'CPR - Manifest Mind');
+        if (!sourceActor) return;
+        let castFeature = activityUtils.getActivityByIdentifier(workflow.item, 'manifestMindCast', {strict: true});
+        let moveFeature = activityUtils.getActivityByIdentifier(workflow.item, 'manifestMindMove', {strict: true});
+        let dismissFeature = activityUtils.getActivityByIdentifier(workflow.item, 'manifestMindDismiss');
+        if (!castFeature || !moveFeature || !dismissFeature) return;
+        let name = itemUtils.getConfig(workflow.item, 'name');
+        if (!name?.length) name = genericUtils.translate('CHRISPREMADES.Summons.CreatureNames.ManifestMind');
+        let updates = {
+            actor: {
+                name,
+                prototypeToken: {
+                    name,
+                    disposition: workflow.token.document.disposition
+                }
+            },
+            token: {
                 name,
                 disposition: workflow.token.document.disposition
             }
-        },
-        token: {
-            name,
-            disposition: workflow.token.document.disposition
+        };
+        let avatarImg = itemUtils.getConfig(workflow.item, 'avatar');
+        let tokenImg = itemUtils.getConfig(workflow.item, 'token');
+        if (avatarImg) updates.actor.img = avatarImg;
+        if (tokenImg) {
+            genericUtils.setProperty(updates, 'actor.prototypeToken.texture.src', tokenImg);
+            genericUtils.setProperty(updates, 'token.texture.src', tokenImg);
         }
-    };
-    let avatarImg = itemUtils.getConfig(workflow.item, 'avatar');
-    let tokenImg = itemUtils.getConfig(workflow.item, 'token');
-    if (avatarImg) updates.actor.img = avatarImg;
-    if (tokenImg) {
-        genericUtils.setProperty(updates, 'actor.prototypeToken.texture.src', tokenImg);
-        genericUtils.setProperty(updates, 'token.texture.src', tokenImg);
+        let animation = itemUtils.getConfig(workflow.item, 'animation') ?? 'none';
+        await Summons.spawn(sourceActor, updates, workflow.item, workflow.token, {
+            range: 60,
+            animation,
+            initiativeType: 'none',
+            dismissActivity: dismissFeature,
+            additionalVaeButtons: [{
+                type: 'use', 
+                name: castFeature.name, 
+                identifier: 'manifestMind',
+                activityIdentifier: 'manifestMindCast'
+            }, {
+                type: 'use', 
+                name: moveFeature.name, 
+                identifier: 'manifestMind',
+                activityIdentifier: 'manifestMindMove'
+            }],
+            unhideActivities: {
+                itemUuid: workflow.item.uuid,
+                activityIdentifiers: ['manifestMindCast', 'manifestMindMove', 'manifestMindDismiss'],
+                favorite: true
+            }
+        });
+        let effect = effectUtils.getEffectByIdentifier(workflow.actor, 'manifestMind');
+        if (!effect) return;
+        await genericUtils.update(effect, {'flags.chris-premades.macros.combat': ['manifestMind']});
+    } else if (activityIdentifier === 'manifestMindCast') {
+        let effect = effectUtils.getEffectByIdentifier(workflow.actor, 'manifestMind');
+        if (!effect) return;
+        let mindToken = canvas.scene.tokens.get(effect.flags['chris-premades'].summons.ids[effect.name][0]);
+        if (!mindToken) return;
+        let effectData = {
+            name: workflow.item.name,
+            img: workflow.item.img,
+            origin: workflow.item.uuid,
+            duration: {
+                seconds: 1
+            },
+            changes: [
+                {
+                    key: 'flags.midi-qol.rangeOverride.attack.all',
+                    mode: 0,
+                    value: 1,
+                    priority: 20
+                }
+            ],
+            flags: {
+                dae: {
+                    specialDuration: [
+                        '1Spell'
+                    ]
+                }
+            }
+        };
+        effectUtils.addMacro(effectData, 'midi.actor', ['manifestMindCast']);
+        let casterEffect = await effectUtils.createEffect(workflow.actor, effectData);
+        await effectUtils.createEffect(mindToken.actor, effectData, {parentEntity: casterEffect});
+    } else if (activityIdentifier === 'manifestMindDismiss') {
+        let effect = effectUtils.getEffectByIdentifier(workflow.actor, 'manifestMind');
+        if (effect) await genericUtils.remove(effect);
     }
-    let animation = itemUtils.getConfig(workflow.item, 'animation') ?? 'none';
-    await Summons.spawn(sourceActor, updates, workflow.item, workflow.token, {
-        range: 60,
-        animation,
-        initiativeType: 'none',
-        dismissActivity: dismissData,
-        additionalVaeButtons: [{type: 'use', name: castFeature.name, identifier: 'manifestMindCastSpell'}, {type: 'use', name: moveFeature.name, identifier: 'manifestMindMove'}]
-    });
-    let effect = effectUtils.getEffectByIdentifier(workflow.actor, 'manifestMind');
-    if (!effect) return;
-    let castUsesRemaining = workflow.item.flags['chris-premades'].manifestMind?.uses ?? -1;
-    if (castUsesRemaining < 0) {
-        castUsesRemaining = workflow.actor.system.attributes.prof;
-        await genericUtils.setFlag(workflow.item, 'chris-premades', 'manifestMind.uses', castUsesRemaining);
-    }
-    castFeature.system.uses.value = castUsesRemaining;
-    await itemUtils.createItems(workflow.actor, [castFeature, moveFeature, dismissData], {favorite: true, parentEntity: effect});
-    let dismissItem = itemUtils.getItemByIdentifier(workflow.actor, genericUtils.getIdentifier(dismissData));
-    if (!dismissItem) return;
-    await effectUtils.addDependent(dismissItem, [effect]);
-    await genericUtils.update(effect, {'flags.chris-premades.macros.combat': ['manifestMind']});
 }
 async function turnEnd({trigger: {entity: effect, token}}) {
     let mindToken = canvas.scene.tokens.get(effect.flags['chris-premades'].summons.ids[effect.name][0]);
@@ -67,38 +106,6 @@ async function turnEnd({trigger: {entity: effect, token}}) {
         await genericUtils.remove(effect);
     }
 }
-async function useCast({workflow}) {
-    let effect = effectUtils.getEffectByIdentifier(workflow.actor, 'manifestMind');
-    if (!effect) return;
-    let mindToken = canvas.scene.tokens.get(effect.flags['chris-premades'].summons.ids[effect.name][0]);
-    if (!mindToken) return;
-    let effectData = {
-        name: workflow.item.name,
-        img: workflow.item.img,
-        origin: workflow.item.uuid,
-        duration: {
-            seconds: 1
-        },
-        changes: [
-            {
-                key: 'flags.midi-qol.rangeOverride.attack.all',
-                mode: 0,
-                value: 1,
-                priority: 20
-            }
-        ],
-        flags: {
-            dae: {
-                specialDuration: [
-                    '1Spell'
-                ]
-            }
-        }
-    };
-    effectUtils.addMacro(effectData, 'midi.actor', ['manifestMindCast']);
-    let casterEffect = await effectUtils.createEffect(workflow.actor, effectData);
-    await effectUtils.createEffect(mindToken.actor, effectData, {parentEntity: casterEffect});
-}
 async function early({workflow}) {
     if (workflow.item.type !== 'spell') {
         genericUtils.notify('CHRISPREMADES.Macros.ManifestMind.Invalid', 'info');
@@ -111,14 +118,10 @@ async function early({workflow}) {
         workflow.aborted = true;
         return;
     }
-    await genericUtils.setFlag(originItem, 'chris-premades', 'manifestMind.uses', workflow.item.system.uses.value);
-}
-async function longRest({trigger: {entity: item}}) {
-    await genericUtils.setFlag(item, 'chris-premades', 'manifestMind.uses', item.actor.system.attributes.prof);
 }
 export let manifestMind = {
     name: 'Manifest Mind: Summon',
-    version: '0.12.62',
+    version: '1.1.0',
     midi: {
         item: [
             {
@@ -128,13 +131,6 @@ export let manifestMind = {
             }
         ]
     },
-    rest: [
-        {
-            pass: 'long',
-            macro: longRest,
-            priority: 50
-        }
-    ],
     combat: [
         {
             pass: 'turnEnd',
@@ -190,13 +186,6 @@ export let manifestMindCast = {
     name: 'Manifest Mind: Cast',
     version: manifestMind.version,
     midi: {
-        item: [
-            {
-                pass: 'rollFinished',
-                macro: useCast,
-                priority: 50
-            }
-        ],
         actor: [
             {
                 pass: 'preTargeting',

@@ -1,4 +1,4 @@
-import {actorUtils, combatUtils, workflowUtils} from '../../../../utils.js';
+import {activityUtils, actorUtils, combatUtils, workflowUtils} from '../../../../utils.js';
 
 async function late({trigger: {entity: item}, workflow}) {
     if (!workflow.hitTargets.size || !workflow.damageList) return;
@@ -24,10 +24,10 @@ async function late({trigger: {entity: item}, workflow}) {
     }
     if (!spellLevel || !spellSchool?.length) return;
     let healingAmount = spellLevel * (spellSchool === 'nec' ? 3 : 2);
-    let tempItem = item.clone({'system.damage.parts': [
-        [healingAmount + '[healing]', 'healing']
-    ]});
-    await workflowUtils.syntheticItemRoll(tempItem, [workflow.token]);
+    let feature = activityUtils.getActivityByIdentifier(item, 'grimHarvest', {strict: true});
+    if (!feature) return;
+    await activityUtils.setDamage(feature, healingAmount);
+    await workflowUtils.syntheticActivityRoll(feature, [workflow.token]);
     await combatUtils.setTurnCheck(item, 'grimHarvest');
 }
 async function combatEnd({trigger: {entity: item}}) {
@@ -35,7 +35,7 @@ async function combatEnd({trigger: {entity: item}}) {
 }
 export let grimHarvest = {
     name: 'Grim Harvest',
-    version: '0.12.62',
+    version: '1.1.0',
     midi: {
         actor: [
             {

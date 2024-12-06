@@ -391,14 +391,14 @@ async function useSubtle({workflow}) {
     });
 }
 function getDamageTypes(item) {
-    let activities = Array.from(item.system.activities.getByTypes('attack', 'damage'));
+    let activities = Array.from(item.system.activities.getByTypes('attack', 'damage', 'save'));
     let flavorTypes = new Set(activities.flatMap(a => a.damage.parts.flatMap(d => new Roll(d.formula).terms.map(i => i.flavor).filter(i => i))));
     let trueTypes = new Set(activities.flatMap(a => a.damage.parts.flatMap(d => Array.from(d.types))));
     let allTypes = flavorTypes.union(trueTypes);
     return allTypes;
 }
 function createUpdateItem(item, oldDamageType, newDamageType) {
-    let activities = Array.from(item.system.activities.getByTypes('attack', 'damage')).filter(a => {
+    let activities = Array.from(item.system.activities.getByTypes('attack', 'damage', 'save')).filter(a => {
         if (a.damage.parts.some(d => new Roll(d.formula).terms.some(i => i.flavor === oldDamageType))) return true;
         if (a.damage.parts.some(d => d.types.has(oldDamageType))) return true;
         return false;

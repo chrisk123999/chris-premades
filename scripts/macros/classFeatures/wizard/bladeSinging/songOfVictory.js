@@ -1,4 +1,4 @@
 export let songOfVictory = {
     name: 'Song of Victory',
-    version: '0.12.62'
+    version: '1.1.0'
 };

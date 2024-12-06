@@ -56,7 +56,7 @@ async function use({trigger, workflow}) {
 }
 export let bladesong = {
     name: 'Bladesong',
-    version: '0.12.13',
+    version: '1.1.0',
     midi: {
         item: [
             {
