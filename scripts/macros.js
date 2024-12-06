@@ -284,7 +284,7 @@ export {lightningReload} from './macros/classFeatures/fighter/gunslinger/lightni
 export {maddeningHex} from './macros/classFeatures/warlock/invocations/maddeningHex.js';
 export {magicalInspiration} from './macros/classFeatures/bard/magicalInspiration.js';
 export {maneuversAmbush, maneuversBaitAndSwitch, maneuversBrace, maneuversCommandersStrike, maneuversCommandingPresence, maneuversDisarmingAttack, maneuversDistractingStrike, maneuversEvasiveFootwork, maneuversFeintingAttack, maneuversGoadingAttack, maneuversGrapplingStrike, maneuversLungingAttack, maneuversManeuveringAttack, maneuversMenacingAttack, maneuversParry, maneuversPrecisionAttack, maneuversPushingAttack, maneuversQuickToss, maneuversRally, maneuversRiposte, maneuversSweepingAttack, maneuversTacticalAssessment, maneuversTripAttack} from './macros/classFeatures/fighter/battleMaster/maneuvers.js';
-export {manifestEcho, manifestEchoActive, manifestEchoTeleport, manifestEchoAttack} from './macros/classFeatures/fighter/echoKnight/manifestEcho.js';
+export {manifestEcho, manifestEchoActive} from './macros/classFeatures/fighter/echoKnight/manifestEcho.js';
 export {manifestMind, manifestMindCast} from './macros/classFeatures/wizard/orderOfScribes/manifestMind.js';
 export {masterOfHexes} from './macros/classFeatures/warlock/hexblade/masterOfHexes.js';
 export {mastersFlourish} from './macros/classFeatures/bard/collegeOfSwords/mastersFlourish.js';

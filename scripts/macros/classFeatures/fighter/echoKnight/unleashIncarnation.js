@@ -1,7 +1,7 @@
 import { attack } from './manifestEcho.js';
 export let unleashIncarnation = {
     name: 'Unleash Incarnation',
-    version: '0.12.46',
+    version: '1.1.0',
     midi: {
         item: [
             {

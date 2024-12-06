@@ -10,7 +10,7 @@ async function use({workflow}) {
         name: workflow.item.name,
         img: workflow.item.img,
         origin: workflow.item.uuid,
-        duration: itemUtils.convertDuration(workflow.item),
+        duration: itemUtils.convertDuration(workflow.activity),
         flags: {
             'chris-premades': {
                 conditions: ['blinded', 'deafened']
@@ -21,7 +21,7 @@ async function use({workflow}) {
 }
 export let echoAvatar = {
     name: 'Echo Avatar',
-    version: '0.12.46',
+    version: '1.1.0',
     midi: {
         item: [
             {
