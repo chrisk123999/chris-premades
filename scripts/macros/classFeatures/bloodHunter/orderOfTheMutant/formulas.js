@@ -407,7 +407,7 @@ async function use({workflow}) {
             break;
         }
     }
-    await genericUtils.update(workflow.item, {'system.uses.max': workflow.item.system.uses.value});
+    await genericUtils.update(workflow.item, {'system.uses.max': workflow.item.system.uses.value, 'system.uses.spent': 0});
     let flushItem = itemUtils.getItemByIdentifier(workflow.actor, 'flushMutagens');
     if (!flushItem) [flushItem] = await itemUtils.createItems(workflow.actor, [flushData], {favorite: true});
     await effectUtils.createEffect(workflow.actor, positiveEffectData, {parentEntity: flushItem, interdependent: true, identifier, vae: [{type: 'use', name: flushData.name, identifier: 'flushMutagens'}]});
@@ -444,7 +444,7 @@ async function turnStartReconstruction({trigger: {token}}) {
 }
 export let formulas = {
     name: 'Formulas: Generic',
-    version: '0.12.64',
+    version: '1.1.0',
     midi: {
         item: [
             {
@@ -455,7 +455,7 @@ export let formulas = {
         ]
     }
 };
-let version = '0.12.64';
+let version = '1.1.0';
 export let formulaAether = {
     name: 'Formulas: Aether',
     version

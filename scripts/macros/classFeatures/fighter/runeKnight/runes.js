@@ -12,6 +12,7 @@ async function damageFireRune({trigger: {entity: item}, workflow}) {
 }
 async function turnEndStoneRune({trigger: {entity: item, token, target}}) {
     if (!item.system.uses.value) return;
+    if (!target.actor.system.attributes.hp.value) return;
     if (actorUtils.hasUsedReaction(token.actor)) return;
     let selection = await dialogUtils.confirm(item.name, genericUtils.format('CHRISPREMADES.Dialog.Use', {itemName: item.name}), {userId: socketUtils.firstOwner(item.parent, true)});
     if (!selection) return;
@@ -55,7 +56,7 @@ async function useStormRune({workflow}) {
         name: workflow.item.name,
         img: workflow.item.img,
         origin: workflow.item.uuid,
-        duration: itemUtils.convertDuration(workflow.item)
+        duration: itemUtils.convertDuration(workflow.activity)
     };
     effectUtils.addMacro(effectData, 'midi.actor', ['stormRune']);
     await effectUtils.createEffect(workflow.actor, effectData, {identifier: 'stormRune'});

@@ -5,6 +5,7 @@ async function use({workflow}) {
     let bloodMaledict = itemUtils.getItemByIdentifier(workflow.actor, 'bloodMaledict');
     if (!bloodMaledict?.system.uses.value) {
         genericUtils.notify('CHRISPREMADES.Generic.NoMoreResource', 'info');
+        return;
     }
     let amplify = await dialogUtils.confirm(workflow.item.name, 'CHRISPREMADES.Macros.BloodCurses.Amplify');
     let effectData = {
@@ -36,7 +37,8 @@ async function use({workflow}) {
             return;
         }
         await genericUtils.setFlag(workflow.item, 'chris-premades', 'curseOfBinding.amplify', true);
-        let damageRoll = await new CONFIG.Dice.DamageRoll(damageDice + '[necrotic]', {}, {type: 'necrotic'}).evaluate();
+        let damageRoll = await new Roll(damageDice + '[necrotic]').evaluate();
+        // let damageRoll = await new CONFIG.Dice.DamageRoll(damageDice + '[necrotic]', {}, {type: 'necrotic'}).evaluate();
         damageRoll.toMessage({
             rollMode: 'roll',
             speaker: ChatMessage.implementation.getSpeaker({token: workflow.token}),
@@ -44,11 +46,12 @@ async function use({workflow}) {
         });
         await workflowUtils.applyDamage([workflow.token], damageRoll.total, 'none');
     }
+    await genericUtils.update(bloodMaledict, {'system.uses.spent': bloodMaledict.system.uses.spent + 1});
     await effectUtils.createEffect(workflow.targets.first().actor, effectData);
 }
 export let curseOfTheMuddledMind = {
     name: 'Blood Curse of the Muddled Mind',
-    version: '0.12.64',
+    version: '1.1.0',
     midi: {
         item: [
             {

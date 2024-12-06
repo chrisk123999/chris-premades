@@ -18,7 +18,7 @@ async function use({workflow}) {
             name: workflow.activity.name,
             img: effect?.img ?? workflow.item.img,
             origin: effect?.origin ?? workflow.item.uuid,
-            duration: effect?.duration ?? itemUtils.convertDuration(workflow.item),
+            duration: effect?.duration ?? itemUtils.convertDuration(workflow.activity),
             flags: {
                 'chris-premades': {
                     starryForm: {

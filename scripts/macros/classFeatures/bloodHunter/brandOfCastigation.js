@@ -1,4 +1,4 @@
-import {actorUtils, compendiumUtils, constants, dialogUtils, effectUtils, errors, genericUtils, itemUtils, tokenUtils, workflowUtils} from '../../../utils.js';
+import {activityUtils, actorUtils, compendiumUtils, constants, dialogUtils, effectUtils, errors, genericUtils, itemUtils, tokenUtils, workflowUtils} from '../../../utils.js';
 
 async function late({trigger: {entity: item}, workflow}) {
     if (!workflow.hitTargets.size) return;
@@ -24,7 +24,9 @@ async function late({trigger: {entity: item}, workflow}) {
             }
         }
     };
-    await item.use();
+    let feature = activityUtils.getActivityByIdentifier(item, 'brandOfCastigation', {strict: true});
+    if (!feature) return;
+    await workflowUtils.syntheticActivityRoll(feature, [], {config: {consumeUsage: true}});
     effect = await effectUtils.createEffect(workflow.actor, effectData, {identifier: 'brandOfCastigationSource'});
     if (!effect) return;
     effectData.flags = {
@@ -41,15 +43,9 @@ async function hit({trigger: {entity: effect}, workflow}) {
     if (!effects.filter(i => i.origin === effect.origin).length) return;
     let originItem = await fromUuid(effect.origin);
     if (!originItem) return;
-    let damage = Math.max(1, itemUtils.getMod(originItem));
-    if (effect.parent.classes?.['blood-hunter']?.system?.levels >= 13) damage *= 2;
-    let featureData = await compendiumUtils.getItemFromCompendium(constants.featurePacks.classFeatureItems, 'Brand of Castigation: Damage', {object: true, getDescription: true, translate: 'CHRISPREMADES.Macros.BrandOfCastigation.Damage'});
-    if (!featureData) {
-        errors.missingPackItem();
-        return;
-    }
-    featureData.system.damage.parts[0][0] = damage + '[psychic]';
-    await workflowUtils.syntheticItemDataRoll(featureData, effect.parent, [workflow.token]);
+    let feature = activityUtils.getActivityByIdentifier(originItem, 'brandOfCastigationDamage', {strict: true});
+    if (!feature) return;
+    await workflowUtils.syntheticActivityRoll(feature, [workflow.token]);
 }
 async function hitNear({trigger: {entity: effect}, workflow}) {
     let effects = effectUtils.getAllEffectsByIdentifier(workflow.actor, 'brandOfCastigation');
@@ -57,23 +53,17 @@ async function hitNear({trigger: {entity: effect}, workflow}) {
     if (!effects.filter(i => i.origin === effect.origin).length) return;
     let originToken = actorUtils.getFirstToken(effect.parent);
     if (!originToken) return;
-    let nearbyTokens = tokenUtils.findNearby(originToken, 5, 'any').filter(i => tokenUtils.canSee(originToken, i));
+    let nearbyTokens = tokenUtils.findNearby(originToken, 5, 'any', {includeIncapacitated: true}).filter(i => tokenUtils.canSee(originToken, i));
     if (!nearbyTokens.some(i => workflow.hitTargets.has(i))) return;
     let originItem = await fromUuid(effect.origin);
     if (!originItem) return;
-    let damage = Math.max(1, itemUtils.getMod(originItem));
-    if (effect.parent.classes?.['blood-hunter']?.system?.levels >= 13) damage *= 2;
-    let featureData = await compendiumUtils.getItemFromCompendium(constants.featurePacks.classFeatureItems, 'Brand of Castigation: Damage', {object: true, getDescription: true, translate: 'CHRISPREMADES.Macros.BrandOfCastigation.Damage'});
-    if (!featureData) {
-        errors.missingPackItem();
-        return;
-    }
-    featureData.system.damage.parts[0][0] = damage + '[psychic]';
-    await workflowUtils.syntheticItemDataRoll(featureData, effect.parent, [workflow.token]);
+    let feature = activityUtils.getActivityByIdentifier(originItem, 'brandOfCastigationDamage', {strict: true});
+    if (!feature) return;
+    await workflowUtils.syntheticActivityRoll(feature, [workflow.token]);
 }
 export let brandOfCastigation = {
     name: 'Brand of Castigation',
-    version: '0.12.64',
+    version: '1.1.0',
     midi: {
         actor: [
             {

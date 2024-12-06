@@ -5,6 +5,7 @@ async function early({workflow}) {
     let bloodMaledict = itemUtils.getItemByIdentifier(workflow.actor, 'bloodMaledict');
     if (!bloodMaledict?.system.uses.value) {
         genericUtils.notify('CHRISPREMADES.Generic.NoMoreResource', 'info');
+        return;
     }
     let amplify = await dialogUtils.confirm(workflow.item.name, 'CHRISPREMADES.Macros.BloodCurses.Amplify');
     if (!amplify) {
@@ -22,7 +23,8 @@ async function early({workflow}) {
         return;
     }
     await genericUtils.setFlag(workflow.item, 'chris-premades', 'curseOfBinding.amplify', true);
-    let damageRoll = await new CONFIG.Dice.DamageRoll(damageDice + '[necrotic]', {}, {type: 'necrotic'}).evaluate();
+    let damageRoll = await new Roll(damageDice + '[necrotic]').evaluate();
+    // let damageRoll = await new CONFIG.Dice.DamageRoll(damageDice + '[necrotic]', {}, {type: 'necrotic'}).evaluate();
     damageRoll.toMessage({
         rollMode: 'roll',
         speaker: ChatMessage.implementation.getSpeaker({token: workflow.token}),
@@ -31,6 +33,9 @@ async function early({workflow}) {
     await workflowUtils.applyDamage([workflow.token], damageRoll.total, 'none');
 }
 async function use({workflow}) {
+    let bloodMaledict = itemUtils.getItemByIdentifier(workflow.actor, 'bloodMaledict');
+    if (!bloodMaledict) return;
+    await genericUtils.update(bloodMaledict, {'system.uses.spent': bloodMaledict.system.uses.spent + 1});
     if (!workflow.failedSaves.size) return;
     let effectData = {
         name: workflow.item.name,
@@ -58,7 +63,7 @@ async function use({workflow}) {
     if (!amplify) {
         effectData.flags.dae.specialDuration = ['turnEndSource'];
     } else {
-        let dc = itemUtils.getSaveDC(workflow.item);
+        let dc = workflow.activity.save.dc.value;
         effectData.duration = {
             seconds: 60
         };
@@ -73,7 +78,7 @@ async function use({workflow}) {
 }
 export let curseOfBinding = {
     name: 'Blood Curse of Binding',
-    version: '0.12.64',
+    version: '1.1.0',
     midi: {
         item: [
             {

@@ -6,7 +6,7 @@ async function skill({trigger}) {
 }
 export let heightenedSenses = {
     name: 'Heightened Senses',
-    version: '0.12.64',
+    version: '1.1.0',
     skill: [
         {
             pass: 'context',

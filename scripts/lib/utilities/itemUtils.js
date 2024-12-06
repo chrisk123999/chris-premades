@@ -135,8 +135,12 @@ async function enchantItem(item, effectData, {effects = [], items = [], concentr
     });
     return await effectUtils.createEffect(item, effectData, {concentrationItem, parentEntity, identifier, vae, interdependent, strictlyInterdependent});
 }
-function convertDuration(item) {
-    return DAE.convertDuration(item.system.duration);
+function convertDuration(entity) {
+    if (entity.documentName === 'Item') {
+        return DAE.convertDuration(entity.system.duration);
+    } else if (entity.documentName === 'Activity') {
+        return DAE.convertDuration(entity.duration);
+    }
 }
 function getEquipmentState(item) {
     let currentlyEquipped = item.system.equipped;

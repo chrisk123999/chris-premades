@@ -5,7 +5,7 @@ async function use({workflow}) {
 }
 export let actionDismissal = {
     name: 'Action Dismissal',
-    version: '0.12.62',
+    version: '1.1.0',
     midi: {
         item: [
             {

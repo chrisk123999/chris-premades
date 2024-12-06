@@ -4,7 +4,7 @@ async function use({trigger, workflow}) {
         name: workflow.item.name,
         img: workflow.item.img,
         origin: workflow.item.uuid,
-        duration: itemUtils.convertDuration(workflow.item),
+        duration: itemUtils.convertDuration(workflow.activity),
         changes: [
             {
                 key: 'system.attributes.ac.bonus',

@@ -32,17 +32,16 @@ async function use({workflow}) {
     if (!feature) return;
     let currUses = feature.system.uses.value;
     await genericUtils.update(feature, {
-        'system.uses.value': currUses + 1,
         'system.uses.max': currUses + 1
     });
 }
 async function rest({trigger: {entity: item}}) {
     let items = formulaList.map(i => itemUtils.getItemByIdentifier(item.actor, i)).filter(j => j?.system.uses.value);
-    await Promise.all(items.map(async i => await genericUtils.update(i, {'system.uses.value': 0, 'system.uses.max': 0})));
+    await Promise.all(items.map(async i => await genericUtils.update(i, {'system.uses.spent': 0, 'system.uses.max': 0})));
 }
 export let createMutagen = {
     name: 'Mutagencraft: Create Mutagen',
-    version: '0.12.64',
+    version: '1.1.0',
     midi: {
         item: [
             {

@@ -117,7 +117,7 @@ async function rest({trigger: {entity: item}}) {
 }
 export let crimsonRite = {
     name: 'Crimson Rite',
-    version: '0.12.64',
+    version: '1.1.0',
     midi: {
         item: [
             {

@@ -2,7 +2,7 @@ import {actorUtils, crosshairUtils, dialogUtils, effectUtils, genericUtils, item
 
 async function late({trigger: {entity: item, token}, workflow}) {
     if (actorUtils.hasUsedReaction(token.actor)) return;
-    let bloodMaledict = itemUtils.getItemByIdentifier(workflow.actor, 'bloodMaledict');
+    let bloodMaledict = itemUtils.getItemByIdentifier(token.actor, 'bloodMaledict');
     if (!bloodMaledict?.system.uses.value) return;
     let userId = socketUtils.firstOwner(token.actor, true);
     let newlyDeadList = workflow.damageList?.filter(i => i.newHP === 0 && i.oldHP > 0);
@@ -10,8 +10,9 @@ async function late({trigger: {entity: item, token}, workflow}) {
     if (!possibleTokens?.length) return;
     let targetToken = await dialogUtils.selectTargetDialog(item.name, genericUtils.format('CHRISPREMADES.Dialog.Use', {itemName: item.name}), possibleTokens, {skipDeadAndUnconscious: false, userId});
     if (!targetToken?.length) return;
+    await genericUtils.update(bloodMaledict, {'system.uses.spent': bloodMaledict.system.uses.spent + 1});
     targetToken = targetToken[0];
-    await workflowUtils.completeItemUse(item, {consumeResource: true}, {configureDialog: false});
+    await workflowUtils.completeItemUse(item, {}, {configureDialog: false});
     let amplify = await dialogUtils.confirm(item.name, 'CHRISPREMADES.Macros.BloodCurses.Amplify', {userId});
     if (amplify) {
         let damageDice = token.actor.system.scale?.['blood-hunter']?.['crimson-rite'];
@@ -19,19 +20,23 @@ async function late({trigger: {entity: item, token}, workflow}) {
             genericUtils.notify(genericUtils.format('CHRISPREMADES.Generic.MissingScale', {scaleName: 'crimson-rite'}), 'warn');
             return;
         }
-        let damageRoll = await new CONFIG.Dice.DamageRoll(damageDice + '[necrotic]', {}, {type: 'necrotic'}).evaluate();
+        let damageRoll = await new Roll(damageDice + '[necrotic]').evaluate();
+        // let damageRoll = await new CONFIG.Dice.DamageRoll(damageDice + '[necrotic]', {}, {type: 'necrotic'}).evaluate();
         damageRoll.toMessage({
             rollMode: 'roll',
             speaker: ChatMessage.implementation.getSpeaker({token}),
             flavor: item.name
         });
         await workflowUtils.applyDamage([token], damageRoll.total, 'none');
-        let modifier = itemUtils.getMod(item);
+        // I hate this but can't think of an "accurate" way to get the hemocraft ability mod
+        let int = item.actor.system.abilities.int.mod;
+        let wis = item.actor.system.abilities.wis.mod;
+        let modifier = Math.max(int, wis);
         let effectData = {
             name: item.name,
             img: item.img,
             origin: item.uuid,
-            duration: itemUtils.convertDuration(item),
+            duration: itemUtils.convertDuration(item.system.activities.find(i => i)),
             changes: [
                 {
                     key: 'system.bonuses.All-Attacks',
@@ -76,7 +81,7 @@ async function late({trigger: {entity: item, token}, workflow}) {
         selectedWeapon = await dialogUtils.selectDocumentDialog(item.name, 'CHRISPREMADES.Macros.Antagonize.SelectWeapon', weapons, {userId});
     }
     if (!selectedWeapon) selectedWeapon = weapons[0];
-    let nearbyTargets = tokenUtils.findNearby(targetToken, selectedWeapon.system.range.value, 'any').filter(i => i.document.disposition !== token.document.disposition);
+    let nearbyTargets = tokenUtils.findNearby(targetToken, selectedWeapon.system.range.value ?? selectedWeapon.system.range.reach, 'any').filter(i => i.document.disposition !== token.document.disposition);
     if (!nearbyTargets.length) {
         genericUtils.notify('CHRISPREMADES.Macros.FallenPuppet.NoTargets', 'info');
         return;
@@ -88,7 +93,7 @@ async function late({trigger: {entity: item, token}, workflow}) {
 }
 export let curseOfTheFallenPuppet = {
     name: 'Blood Curse of the Fallen Puppet',
-    version: '0.12.64',
+    version: '1.1.0',
     midi: {
         actor: [
             {

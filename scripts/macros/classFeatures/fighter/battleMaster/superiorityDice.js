@@ -63,7 +63,7 @@ export async function superiorityHelper(workflow) {
         await genericUtils.update(selected, {'flags.chris-premades.sweepingAttack': {
             currAttackRoll: workflow.attackRoll.total,
             currDamageType: workflow.defaultDamageType,
-            currRange: workflow.item.system.range.value ?? 5
+            currRange: workflow.item.system.range.value ?? workflow.item.system.range.reach ?? 5
         }});
     }
     let useSmall = genericUtils.getProperty(workflow.actor, 'flags.chris-premades.useSmallSuperiorityDie');

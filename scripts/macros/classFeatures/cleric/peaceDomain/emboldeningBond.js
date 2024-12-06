@@ -33,7 +33,7 @@ async function use({workflow}) {
     let effectData = {
         name: workflow.item.name,
         img: workflow.item.img,
-        duration: itemUtils.convertDuration(workflow.item),
+        duration: itemUtils.convertDuration(workflow.activity),
         origin: workflow.item.uuid,
         flags: {
             'chris-premades': {
