@@ -186,7 +186,7 @@ async function remove({trigger}) {
 }
 export let grapple = {
     name: 'Grapple',
-    version: '0.12.12',
+    version: '1.1.0',
     midi: {
         item: [
             {

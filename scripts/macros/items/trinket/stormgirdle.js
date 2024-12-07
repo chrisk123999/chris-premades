@@ -1,5 +1,6 @@
-import {compendiumUtils, constants, effectUtils, genericUtils, itemUtils, rollUtils} from '../../../utils.js';
+import {activityUtils, compendiumUtils, constants, effectUtils, genericUtils, itemUtils, rollUtils} from '../../../utils.js';
 async function use({trigger, workflow}) {
+    if (activityUtils.getIdentifier(workflow.activity) !== genericUtils.getIdentifier(workflow.item)) return;
     if (!itemUtils.getEquipmentState(workflow.item)) return;
     let effectData = {
         name: workflow.item.name + ': ' + genericUtils.translate('CHRISPREMADES.Macros.Stormgridle.Avatar'),
@@ -18,7 +19,7 @@ async function use({trigger, workflow}) {
             }
         ],
         img: workflow.item.img,
-        duration: itemUtils.convertDuration(workflow.item)
+        duration: itemUtils.convertDuration(workflow.activity)
     };
     effectUtils.addMacro(effectData, 'midi.actor', ['stormAvatar']);
     let identifier = genericUtils.getIdentifier(workflow.item);
@@ -31,23 +32,30 @@ async function use({trigger, workflow}) {
         });
         effectData.changes.push({
             key: 'system.attributes.movement.hover',
-            mode: 0,
+            mode: 5,
             value: 1,
             priority: 20
         });
     }
-    let effect = await effectUtils.createEffect(workflow.actor, effectData, {identifier: 'stormAvatar'});
-    let formula = itemUtils.getConfig(workflow.item, 'formula');
-    let damageType = itemUtils.getConfig(workflow.item, 'damageType');
-    let saveDC = itemUtils.getConfig(workflow.item, 'saveDC');
-    let featureData = await compendiumUtils.getItemFromCompendium(constants.packs.itemFeatures, 'Stormgirdle: Lightning Strike', {object: true, getDescription: true, translate: 'CHRISPREMADES.Macros.Stormgirdle.LightningStrike', flatDC: saveDC});
-    if (!featureData) return;
-    featureData.system.damage.parts[0][0] = formula + '[' + damageType + ']';
-    featureData.system.damage.parts[0][1] = damageType;
-    await itemUtils.createItems(workflow.actor, [featureData], {favorite: true, section: workflow.item.name, parentEntity: effect});
+    let feature = activityUtils.getActivityByIdentifier(workflow.item, 'stormgirdleLightningStrike', {strict: true});
+    if (!feature) return;
+    await effectUtils.createEffect(workflow.actor, effectData, {
+        identifier: 'stormAvatar',
+        vae: [{
+            type: 'use',
+            name: feature.name,
+            identifier: 'stormgirdle',
+            activityIdentifier: 'stormgirdleLightningStrike'
+        }],
+        unhideActivities: {
+            itemUuid: workflow.item.uuid,
+            activityIdentifiers: ['stormgirdleLightningStrike'],
+            favorite: true
+        }
+    });
 }
 async function damage({trigger, workflow}) {
-    if (!constants.weaponAttacks.includes(workflow.item?.system?.actionType)) return;
+    if (!constants.weaponAttacks.includes(workflow.activity?.actionType)) return;
     if (!workflow.damageRolls.length) return;
     let rolls = await Promise.all(workflow.damageRolls.map(async roll => {
         switch(roll.options.type) {
@@ -67,7 +75,7 @@ async function damage({trigger, workflow}) {
 }
 export let stormgirdleD = {
     name: 'Stormgirdle (Dormant)',
-    version: '0.12.48',
+    version: '1.1.0',
     midi: {
         item: [
             {
@@ -76,77 +84,30 @@ export let stormgirdleD = {
                 priority: 50
             }
         ]
-    },
-    config: [
-        {
-            value: 'formula',
-            label: 'CHRISPREMADES.Config.Formula',
-            type: 'text',
-            default: '3d6',
-            homebrew: true,
-            category: 'homebrew'
-        },
-        {
-            value: 'damageType',
-            label: 'CHRISPREMADES.Config.DamageType',
-            type: 'select',
-            default: 'lightning',
-            options: constants.damageTypeOptions,
-            homebrew: true,
-            category: 'homebrew'
-        },
-        {
-            value: 'saveDC',
-            label: 'CHRISPREMADES.Config.SaveDC',
-            type: 'text',
-            default: '15',
-            homebrew: true,
-            category: 'homebrew'
-        }
-    ]
+    }
 };
 export let stormgirdleA = {
     name: 'Stormgirdle (Awakened)',
     version: stormgirdleD.version,
-    midi: stormgirdleD.midi,
-    config: [
-        {
-            value: 'formula',
-            label: 'CHRISPREMADES.Config.Formula',
-            type: 'text',
-            default: '4d6',
-            homebrew: true,
-            category: 'homebrew'
-        },
-        stormgirdleD.config[1],
-        stormgirdleD.config[2]
-    ]
+    midi: stormgirdleD.midi
 };
 export let stormgirdleE = {
     name: 'Stormgirdle (Exalted)',
     version: stormgirdleD.version,
     midi: stormgirdleD.midi,
-    config: [
-        {
-            value: 'formula',
-            label: 'CHRISPREMADES.Config.Formula',
-            type: 'text',
-            default: '5d6',
-            homebrew: true,
-            category: 'homebrew'
-        },
-        stormgirdleD.config[1],
-        stormgirdleD.config[2]
-    ],
     equipment: {
         controlWeather: {
             name: 'Control Weather',
             compendium: 'personalSpell',
             uses: {
-                value: 1,
-                per: 'dawn',
+                spent: 0,
                 max: 1,
-                recovery: 1
+                recovery: [
+                    {
+                        period: 'dawn',
+                        type: 'recoverAll'
+                    }
+                ]
             },
             preparation: 'atwill'
         }

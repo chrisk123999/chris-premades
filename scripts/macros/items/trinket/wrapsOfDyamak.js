@@ -1,5 +1,5 @@
 import {Teleport} from '../../../lib/teleport.js';
-import {actorUtils, compendiumUtils, constants, dialogUtils, errors, genericUtils, itemUtils, workflowUtils} from '../../../utils.js';
+import {activityUtils, actorUtils, compendiumUtils, constants, dialogUtils, errors, genericUtils, itemUtils, workflowUtils} from '../../../utils.js';
 
 async function attack({trigger: {entity: item}, workflow}) {
     if (!constants.unarmedAttacks.includes(genericUtils.getIdentifier(workflow.item))) return;
@@ -7,10 +7,10 @@ async function attack({trigger: {entity: item}, workflow}) {
     let bonusFormula = '1';
     if (identifier === 'wrapsOfDyamak1') bonusFormula = '2';
     if (identifier === 'wrapsOfDyamak2') {
-        if (workflow.isCritical && !item.system.uses.value) await genericUtils.update(item, {'system.uses.value': 1}); 
+        if (workflow.isCritical && !item.system.uses.value) await genericUtils.update(item, {'system.uses.spent': 0}); 
         bonusFormula = '3';
     }
-    await workflowUtils.bonusAttack(workflow. bonusFormula);
+    await workflowUtils.bonusAttack(workflow, bonusFormula);
 }
 async function damage({trigger: {entity: item}, workflow}) {
     if (!constants.unarmedAttacks.includes(genericUtils.getIdentifier(workflow.item))) return;
@@ -41,13 +41,10 @@ async function rest({trigger: {entity: item}}) {
     if (!actor) return;
     let ki = itemUtils.getItemByIdentifier(actor, 'ki');
     if (!ki) return;
-    let featureData = await compendiumUtils.getItemFromCompendium(constants.featurePacks.itemFeatures, 'Wraps of Dyamak: Heal', {object: true, getDescription: true, translate: 'CHRISPREMADES.Macros.WrapsOfDyamak.Heal'});
-    if (!featureData) {
-        errors.missingPackItem();
-        return;
-    }
-    featureData.system.damage.parts[0][0] = ki.system.uses.max;
-    await workflowUtils.syntheticItemDataRoll(featureData, actor, [actorUtils.getFirstToken(actor)]);
+    let feature = await activityUtils.getActivityByIdentifier(item, 'wrapsOfDyamakHeal', {strict: true});
+    if (!feature) return;
+    await activityUtils.setDamage(feature, ki.system.uses.max);
+    await workflowUtils.syntheticActivityRoll(feature);
 }
 async function useMist({workflow}) {
     let playAnimation = itemUtils.getConfig(workflow.item, 'playAnimation');
@@ -58,7 +55,7 @@ async function useMist({workflow}) {
 }
 export let wrapsOfDyamak = {
     name: 'Wraps of Dyamak',
-    version: '0.12.70',
+    version: '1.1.0',
     midi: {
         actor: [
             {
@@ -88,11 +85,11 @@ export let wrapsOfDyamak = {
 };
 export let wrapsOfDyamak0 = {
     name: 'Wraps of Dyamak (Dormant)',
-    version: '0.12.70'
+    version: '1.1.0'
 };
 export let wrapsOfDyamak1 = {
     name: 'Wraps of Dyamak (Awakened)',
-    version: '0.12.70',
+    version: '1.1.0',
     equipment: {
         crimsonMist: {
             name: 'Crimson Mist',
@@ -105,11 +102,11 @@ export let wrapsOfDyamak1 = {
 };
 export let wrapsOfDyamak2 = {
     name: 'Wraps of Dyamak (Exalted)',
-    version: '0.12.70'
+    version: '1.1.0'
 };
 export let crimsonMist = {
     name: 'Crimson Mist',
-    version: '0.12.70',
+    version: '1.1.0',
     midi: {
         item: [
             {

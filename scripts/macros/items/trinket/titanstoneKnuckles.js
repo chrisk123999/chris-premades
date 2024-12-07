@@ -1,7 +1,7 @@
 import {genericUtils} from '../../../utils.js';
 export let titanstoneKnucklesD = {
     name: 'Titanstone Knuckles (Dormant)',
-    version: '1.0.11'
+    version: '1.1.0'
 };
 export let titanstoneKnucklesA = {
     name: 'Titanstone Knuckles (Awakened)',
@@ -30,10 +30,15 @@ export let titanstoneKnucklesA = {
                 }
             },
             uses: {
-                value: 1,
+                spent: 0,
                 per: 'lr',
                 max: 1,
-                recovery: 1
+                recovery: [
+                    {
+                        period: 'lr',
+                        type: 'recoverAll'
+                    }
+                ]
             },
             preparation: 'atwill'
         }

@@ -72,11 +72,15 @@ export let bigbysBeneficentBracelet = {
             compendium: 'spell',
             translate: 'CHRISPREMADES.Macros.BigbysBeneficentBracelet.BigbysHand',
             uses: {
-                value: 1,
+                spent: 0,
                 max: 1,
                 per: 'dawn',
-                recovery: 1,
-                prompt: true
+                recovery: [
+                    {
+                        period: 'dawn',
+                        type: 'recoverAll'
+                    }
+                ]
             },
             preparation: 'atwill',
             override: {

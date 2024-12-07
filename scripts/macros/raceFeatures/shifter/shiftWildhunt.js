@@ -5,7 +5,7 @@ async function use({workflow}) {
         name: workflow.item.name,
         img: workflow.item.img,
         origin: workflow.item.uuid,
-        duration: itemUtils.convertDuration(workflow.item),
+        duration: itemUtils.convertDuration(workflow.activity),
         changes: [
             {
                 key: 'flags.midi-qol.advantage.ability.check.wis',

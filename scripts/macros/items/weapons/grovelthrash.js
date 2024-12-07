@@ -1,4 +1,4 @@
-import {actorUtils, compendiumUtils, constants, dialogUtils, errors, genericUtils, itemUtils, socketUtils, tokenUtils, workflowUtils} from '../../../utils.js';
+import {activityUtils, actorUtils, compendiumUtils, constants, dialogUtils, errors, genericUtils, itemUtils, socketUtils, tokenUtils, workflowUtils} from '../../../utils.js';
 
 async function skill({trigger: {entity: item, skillId}}) {
     if (!itemUtils.getEquipmentState(item)) return;
@@ -6,6 +6,7 @@ async function skill({trigger: {entity: item, skillId}}) {
     return {label: 'CHRISPREMADES.Macros.Grovelthrash.Insight', type: 'advantage'};
 }
 async function damage({workflow}) {
+    if (activityUtils.getIdentifier(workflow.activity) !== 'grovelthrash') return;
     if (workflow.hitTargets.size !== 1) return;
     if (genericUtils.getIdentifier(workflow.item) === 'grovelthrash2') {
         if (workflow.actor.system.attributes.hp.value < workflow.actor.system.attributes.hp.max / 2) {
@@ -15,7 +16,8 @@ async function damage({workflow}) {
     let selection = await dialogUtils.confirm(workflow.item.name, 'CHRISPREMADES.Macros.Grovelthrash.Damage');
     if (!selection) return;
     await workflowUtils.bonusDamage(workflow, '2d6[bludgeoning]', {damageType: 'bludgeoning'});
-    let damageRoll = await new CONFIG.Dice.DamageRoll('1d6[psychic]', {}, {type: 'psychic'}).evaluate();
+    let damageRoll = await new Roll('1d6[psychic]').evaluate();
+    // let damageRoll = await new CONFIG.Dice.DamageRoll('1d6[psychic]', {}, {type: 'psychic'}).evaluate();
     damageRoll.toMessage({
         rollMode: 'roll',
         speaker: ChatMessage.implementation.getSpeaker({token: workflow.token}),
@@ -33,18 +35,15 @@ async function damageApplication({trigger: {entity: item, token}, workflow, dite
     if (!damageDealt) return;
     let selection = await dialogUtils.confirm(item.name, genericUtils.format('CHRISPREMADES.Dialog.Use', {itemName: item.name}), {userId: socketUtils.firstOwner(item.actor, true)});
     if (!selection) return;
-    let featureData = await compendiumUtils.getItemFromCompendium(constants.featurePacks.itemFeatures, 'Grovelthrash Reaction', {object: true, getDescription: true, translate: 'CHRISPREMADES.Macros.Grovelthrash.Reaction'});
-    if (!featureData) {
-        errors.missingPackItem();
-        return;
-    }
-    featureData.system.damage.parts[0][0] = damageDealt;
-    await workflowUtils.syntheticItemDataRoll(featureData, item.actor, [workflow.token]);
-    await genericUtils.update(item, {'system.uses.value': item.system.uses.value - 1});
+    let feature = activityUtils.getActivityByIdentifier(item, 'grovelthrashReaction', {strict: true});
+    if (!feature) return;
+    await activityUtils.setDamage(feature, damageDealt);
+    await workflowUtils.syntheticActivityRoll(feature, [workflow.token]);
+    await genericUtils.update(item, {'system.uses.spent': item.system.uses.spent + 1});
 }
 export let grovelthrash = {
     name: 'Grovelthrash',
-    version: '0.12.70',
+    version: '1.1.0',
     midi: {
         item: [
             {
@@ -85,10 +84,14 @@ export let grovelthrash2 = {
             name: 'Earthquake',
             compendium: 'personalSpell',
             uses: {
-                value: 1,
-                per: 'dawn',
+                spent: 0,
                 max: 1,
-                recovery: 1
+                recovery: [
+                    {
+                        period: 'dawn',
+                        type: 'recoverAll'
+                    }
+                ]
             },
             preparation: 'atwill',
             translate: 'CHRISPREMADES.Grovelthrash.Earthquake'
@@ -97,10 +100,14 @@ export let grovelthrash2 = {
             name: 'Meld into Stone',
             compendium: 'personalSpell',
             uses: {
-                value: 1,
-                per: 'dawn',
+                spent: 0,
                 max: 1,
-                recovery: 1
+                recovery: [
+                    {
+                        period: 'dawn',
+                        type: 'recoverAll'
+                    }
+                ]
             },
             preparation: 'atwill',
             translate: 'CHRISPREMADES.Grovelthrash.MeldIntoStone'
@@ -109,10 +116,14 @@ export let grovelthrash2 = {
             name: 'Stone Shape',
             compendium: 'personalSpell',
             uses: {
-                value: 1,
-                per: 'dawn',
+                spent: 0,
                 max: 1,
-                recovery: 1
+                recovery: [
+                    {
+                        period: 'dawn',
+                        type: 'recoverAll'
+                    }
+                ]
             },
             preparation: 'atwill',
             translate: 'CHRISPREMADES.Grovelthrash.StoneShape'

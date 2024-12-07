@@ -1,6 +1,6 @@
 import {compilePack, extractPack} from '@foundryvtt/foundryvtt-cli';
 let itemPacks = [
-    // 'cpr-actions',
+    'cpr-actions',
     'cpr-class-feature-items',
     'cpr-class-features',
     // 'cpr-feat-features',
@@ -18,7 +18,7 @@ let itemPacks = [
     'cpr-miscellaneous-items',
     'cpr-3rd-party-class-features',
     'cpr-3rd-party-items',
-    // 'cpr-3rd-party-feats',
+    'cpr-3rd-party-feats',
     // 'cpr-miscellaneous'
 ];
 let actorPacks = [

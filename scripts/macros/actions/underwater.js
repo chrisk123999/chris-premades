@@ -1,7 +1,7 @@
 import {genericUtils, tokenUtils} from '../../utils.js';
 async function attack({trigger, workflow}) {
     let baseItem = workflow.item.system.type?.baseItem;
-    switch (workflow.item.system.actionType) {
+    switch (workflow.activity.actionType) {
         case 'mwak': {
             if (workflow.actor.system.attributes.movement.swim > 0) return;
             let validMeleeTypes = [
@@ -37,15 +37,15 @@ async function attack({trigger, workflow}) {
 }
 async function range({trigger, workflow}) {
     if (workflow.targets.size != 1) return;
-    if (workflow.item.system.actionType != 'rwak') return;
+    if (workflow.activity.actionType != 'rwak') return;
     let distance = tokenUtils.getDistance(workflow.token, workflow.targets.first());
-    if (distance <= workflow.item.system.range.value) return;
+    if (distance <= (workflow.activity.range.value ?? workflow.activity.range.reach)) return;
     genericUtils.notify('CHRISPREMADES.Macros.Underwater.TooFar', 'warn');
     return true;
 }
 export let underwater = {
     name: 'Underwater',
-    version: '0.12.12'
+    version: '1.1.0'
 };
 export let underwaterEffect = {
     name: underwater.name,

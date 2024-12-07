@@ -6,7 +6,7 @@ async function use({trigger, workflow}) {
     if (dead) return;
     let unconscious = effectUtils.getEffectByStatusID(targetActor, 'unconscious');
     if (!unconscious) return;
-    let roll = await workflow.actor.rollSkill('med');
+    let roll = await workflow.actor.rollSkill({skill: 'med'});
     if (roll.total < 10 || !workflow.targets.size) return;
     let remarkableRecovery = itemUtils.getItemByIdentifier(targetActor, 'remarkableRecovery');
     if (!remarkableRecovery) {
@@ -33,7 +33,7 @@ async function use({trigger, workflow}) {
 }
 export let stabilize = {
     name: 'Stabilize',
-    version: '1.0.11',
+    version: '1.1.0',
     midi: {
         item: [
             {

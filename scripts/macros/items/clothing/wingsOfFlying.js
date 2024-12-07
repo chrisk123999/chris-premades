@@ -3,7 +3,7 @@ async function use({trigger, workflow}) {
     if (!itemUtils.getEquipmentState(workflow.item)) return;
     let effectData = {
         origin: workflow.item.uuid,
-        duration: itemUtils.convertDuration(workflow.item),
+        duration: itemUtils.convertDuration(workflow.activity),
         name: workflow.item.name,
         img: workflow.item.img,
         changes: [

@@ -53,7 +53,7 @@ async function use({trigger, workflow}) {
             let inputs = [['CHRISPREMADES.Macros.Fall.Acr', 'acr'], ['CHRISPREMADES.Macros.Fall.Ath', 'ath'], ['CHRISPREMADES.Generic.No', false]];
             let reaction = await dialogUtils.buttonDialog(workflow.item.name, 'CHRISPREMADES.Macros.Fall.Reaction', inputs, {displayAsRows: true});
             if (!reaction) break;
-            let check = await workflow.actor.rollSkill(reaction, {flavor: CONFIG.DND5E.skills[reaction].label + ' ' + genericUtils.translate('CHRISPREMADES.Macros.Fall.SkillCheck')});
+            let check = await workflow.actor.rollSkill({skill: reaction}, {}, {flavor: CONFIG.DND5E.skills[reaction].label + ' ' + genericUtils.translate('CHRISPREMADES.Macros.Fall.SkillCheck')});
             if (check.total >= 15) damageFormula = 'floor(' + damageFormula + ' / 2)';
             await actorUtils.setReactionUsed(workflow.actor);
             break;
@@ -70,7 +70,7 @@ async function use({trigger, workflow}) {
                 await ground(workflow.actor);
                 break;
             }
-            let save = await targetToken.actor.rollAbilitySave('dex', {flavor: genericUtils.translate('CHRISPREMADES.Macros.Fall.Save'), skipDialog: true});
+            let save = await targetToken.actor.rollSavingThrow({ability: 'dex'}, {}, {flavor: genericUtils.translate('CHRISPREMADES.Macros.Fall.Save'), skipDialog: true});
             if (save.total < 15) {
                 damageFormula = 'floor(' + damageFormula + ' / 2)';
                 otherTarget = true;
@@ -86,7 +86,7 @@ async function use({trigger, workflow}) {
 }
 export let fall = {
     name: 'Fall',
-    version: '0.12.12',
+    version: '1.1.0',
     midi: {
         item: [
             {

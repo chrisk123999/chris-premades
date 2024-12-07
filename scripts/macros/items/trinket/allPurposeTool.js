@@ -30,7 +30,7 @@ async function spell({trigger, workflow}) {
         name: workflow.item.name,
         img: workflow.item.img,
         origin: workflow.item.uuid,
-        duration: itemUtils.convertDuration(workflow.item)
+        duration: itemUtils.convertDuration(workflow.activity)
     };
     let effect = await effectUtils.createEffect(workflow.actor, effectData, {parentEntity: workflow.item});
     await itemUtils.createItems(workflow.actor, [itemData], {parentEntity: effect});
@@ -98,9 +98,13 @@ export let allPurposeTool1 = {
             useJournal: true,
             uses: {
                 max: 1,
-                per: 'dawn',
-                recovery: 1,
-                uses: 1
+                recovery: [
+                    {
+                        period: 'dawn',
+                        type: 'recoverAll'
+                    }
+                ],
+                spent: 0
             },
             translate: 'CHRISPREMADES.Macros.AllPurposeTool.Channel',
             favorite: true

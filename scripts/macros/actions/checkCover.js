@@ -15,7 +15,7 @@ async function use({trigger, workflow}) {
 }
 export let checkCover = {
     name: 'Check Cover',
-    version: '0.12.12',
+    version: '1.1.0',
     midi: {
         item: [
             {

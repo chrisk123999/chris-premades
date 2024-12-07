@@ -6,7 +6,7 @@ async function use({workflow}) {
         name: genericUtils.format('CHRISPREMADES.Auras.Source', {auraName: workflow.item.name}),
         img: workflow.item.img,
         origin: workflow.item.uuid,
-        duration: itemUtils.convertDuration(workflow.item)
+        duration: itemUtils.convertDuration(workflow.activity)
     };
     effectUtils.addMacro(effectData, 'aura', ['leadershipAura']);
     await effectUtils.createEffect(workflow.actor, effectData, {concentrationItem: workflow.item, strictlyInterdependent: true, identifier: 'leadership'});

@@ -57,7 +57,7 @@ async function use({trigger, workflow}) {
 }
 export let help = {
     name: 'Help',
-    version: '0.12.12',
+    version: '1.1.0',
     midi: {
         item: [
             {

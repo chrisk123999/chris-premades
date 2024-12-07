@@ -15,7 +15,7 @@ async function use({trigger, workflow}) {
         name: workflow.item.name,
         img: 'icons/magic/unholy/orb-swirling-teal.webp',
         origin: workflow.item.uuid,
-        duration: itemUtils.convertDuration(workflow.item),
+        duration: itemUtils.convertDuration(workflow.activity),
         changes: [
             {
                 key: 'flags.midi-qol.superSaver.all',
@@ -67,7 +67,7 @@ async function use({trigger, workflow}) {
 }
 export let lastStandArmorBR = {
     name: 'Last Stand Armor, Breastplate',
-    version: '1.0.11',
+    version: '1.1.0',
     midi: {
         item: [
             {

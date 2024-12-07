@@ -113,7 +113,7 @@ async function use({workflow}) {
                     {
                         key: 'system.attributes.movement.hover',
                         value: 1,
-                        mode: 0,
+                        mode: 5,
                         priority: 20
                     }
                 );

@@ -21,7 +21,7 @@ async function skillE({trigger}) {
 }
 export let danothsVisorD = {
     name: 'Danoth\'s Visor (Dormant)',
-    version: '0.12.64',
+    version: '1.1.0',
     skill: [
         {
             pass: 'context',
@@ -32,7 +32,7 @@ export let danothsVisorD = {
 };
 export let danothsVisorA = {
     name: 'Danoth\'s Visor (Awakened)',
-    version: '0.12.64',
+    version: '1.1.0',
     skill: [
         {
             pass: 'context',
@@ -52,10 +52,14 @@ export let danothsVisorA = {
             compendium: 'itemEquipment',
             useJournal: true,
             uses: {
-                value: 1,
-                per: 'dawn',
+                spent: 0,
                 max: 1,
-                recovery: 1
+                recovery: [
+                    {
+                        period: 'dawn',
+                        type: 'recoverAll'
+                    }
+                ]
             },
             translate: 'CHRISPREMADES.Macros.DanothsVisor.XRay'
         }
@@ -63,7 +67,7 @@ export let danothsVisorA = {
 };
 export let danothsVisorE = {
     name: 'Danoth\'s Visor (Exalted)',
-    version: '0.12.64',
+    version: '1.1.0',
     skill: [
         {
             pass: 'context',
@@ -82,20 +86,28 @@ export let danothsVisorE = {
             compendium: 'itemEquipment',
             useJournal: true,
             uses: {
-                value: 1,
-                per: 'dawn',
+                spent: 0,
                 max: 1,
-                recovery: 1
+                recovery: [
+                    {
+                        period: 'dawn',
+                        type: 'recoverAll'
+                    }
+                ]
             }
         },
         antiMagicField: {
             name: 'Antimagic Field',
             compendium: 'personalSpell',
             uses: {
-                value: 1,
-                per: 'dawn',
+                spent: 0,
                 max: 1,
-                recovery: 1
+                recovery: [
+                    {
+                        period: 'dawn',
+                        type: 'recoverAll'
+                    }
+                ]
             },
             preparation: 'atwill'
         }

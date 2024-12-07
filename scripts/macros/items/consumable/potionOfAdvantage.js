@@ -5,7 +5,7 @@ async function use({workflow}) {
         name: workflow.item.name,
         img: workflow.item.img,
         origin: workflow.actor.uuid,
-        duration: itemUtils.convertDuration(workflow.item)
+        duration: itemUtils.convertDuration(workflow.activity)
     };
     effectUtils.addMacro(effectData, 'midi.actor', ['potionOfAdvantage']);
     effectUtils.addMacro(effectData, 'check', ['potionOfAdvantage']);

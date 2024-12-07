@@ -1,9 +1,9 @@
 async function use({trigger, workflow}) {
-    await workflow.actor.rollSkill('ste');
+    await workflow.actor.rollSkill({skill: 'ste'});
 }
 export let hide = {
     name: 'Hide',
-    version: '0.12.12',
+    version: '1.1.0',
     midi: {
         item: [
             {

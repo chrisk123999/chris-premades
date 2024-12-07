@@ -7,9 +7,13 @@ export let armorOfSafeguardingP = {
             compendium: 'spell',
             uses: {
                 max: 1,
-                per: 'dawn',
-                recovery: 1,
-                value: 1
+                recovery: [
+                    {
+                        period: 'dawn',
+                        type: 'recoverAll'
+                    }
+                ],
+                spent: 0
             },
             preparation: 'atwill',
             override: {

@@ -6,7 +6,7 @@ async function use({workflow}) {
         name: workflow.item.name,
         img: workflow.item.img,
         origin: workflow.actor.uuid,
-        duration: itemUtils.convertDuration(workflow.item)
+        duration: itemUtils.convertDuration(workflow.activity)
     };
     effectUtils.addMacro(effectData, 'midi.actor', ['potionOfMaximumPower']);
     await effectUtils.createEffect(actor, effectData);
@@ -24,7 +24,7 @@ async function damage({trigger: {entity: effect}, workflow}) {
 }
 export let potionOfMaximumPower = {
     name: 'Potion of Maximum Power',
-    version: '0.12.70',
+    version: '1.1.0',
     midi: {
         item: [
             {
