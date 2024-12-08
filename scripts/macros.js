@@ -445,7 +445,7 @@ export {leadership, leadershipAura} from './macros/monsterFeatures/fey/hobgoblin
 //export {adultWindDragonTempestBreath, ancientWindDragonTempestBreath, wyrmlingWindDragonTempestBreath, youngWindDragonTempestBreath} from './macros/monsterFeatures/dragon/windDragon/tempestBreath.js';
 // Generic Monster Features
 export {advantageDamageBonus} from './macros/monsterFeatures/generic/advantageDamageBonus.js';
-export {auraDamageEnd} from './macros/monsterFeatures/generic/auraDamageEnd.js';
+export {auraDamageEnd} from './macros/monsterFeatures/generic/auraDamage.js';
 export {autoGrapple} from './macros/monsterFeatures/generic/autoGrapple.js';
 export {berserk} from './macros/monsterFeatures/generic/berserk.js';
 export {contextualBonus} from './macros/monsterFeatures/generic/contextualBonus.js';
