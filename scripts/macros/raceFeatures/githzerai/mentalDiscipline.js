@@ -1,6 +1,6 @@
 export let mentalDisciplineGithzerai = {
     name: 'Mental Discipline (Githzerai)',
-    version: '0.12.64',
+    version: '1.1.0',
     ddbi: {
         restrictedItems: {
             'Mental Discipline 2': {

@@ -3,31 +3,15 @@ import {dialogUtils, effectUtils, genericUtils} from '../../../utils.js';
 async function use({workflow}) {
     let effect = effectUtils.getEffectByIdentifier(workflow.actor, 'astralTrance');
     if (effect) await genericUtils.remove(effect);
-    let tools = {
-        'alchemist': 'Alchemist\'s Supplies',
-        'brewer': 'Brewer\'s Supplies',
-        'calligrapher': 'Calligrapher\'s Supplies',
-        'carpenter': 'Carpenter\'s Tools',
-        'cartographer': 'Cartographer\'s Tools',
-        'cobbler': 'Cobbler\'s Tools',
-        'cook': 'Cook\'s Utensils',
-        'glassblower': 'Glassblower\'s Tools',
-        'jeweler': 'Jeweler\'s Tools',
-        'leatherworker': 'Leatherworker\'s Tools',
-        'mason': 'Mason\'s Tools',
-        'painter': 'Painter\'s Supplies',
-        'potter': 'Potter\'s Tools',
-        'smith': 'Smith\'s Tools',
-        'tinker': 'Tinker\'s Tools',
-        'weaver': 'Weaver\'s Tools',
-        'woodcarver': 'Woodcarver\'s Tools',
-        'disg': 'Disguise Kit',
-        'forg': 'Forgery Kit',
-        'herb': 'Herbalism Kit',
-        'navg': 'Navigator\'s Tools',
-        'pois': 'Poisoner\'s Kit',
-        'thief': 'Thieves\' Tools'
-    };
+    let toolsArray = Object.entries(CONFIG.DND5E.tools).map(i => [i[0], i[1].id]);
+    let tools = {};
+    let basePack = game.packs.get('dnd5e.items');
+    for (let [key, id] of toolsArray) {
+        let name = (await fromUuid(id))?.name;
+        if (!name) name = (await basePack?.getDocument(id))?.name;
+        if (!name) continue;
+        tools[key] = name;
+    }
     let nonProfSkills = Object.entries(CONFIG.DND5E.skills).filter(([key, _]) => workflow.actor.system.skills[key].value < 1);
     let skillInput = [
         'selectOption',
@@ -46,7 +30,7 @@ async function use({workflow}) {
             label: 'CHRISPREMADES.Macros.AstralTrance.WeapToolProf',
             name: 'weapToolSelected',
             options: {
-                options: Object.keys(CONFIG.DND5E.weaponIds).map(i => ({value: i, label: i.capitalize()})).concat(Object.keys(tools).map(i => ({value: i, label: tools[i]})))
+                options: Object.keys(CONFIG.DND5E.weaponIds).map(i => ({value: i, label: i.capitalize()})).concat(Object.keys(toolsArray).map(i => ({value: i, label: toolsArray[i]})))
             }
         }]
     ];
@@ -71,7 +55,6 @@ async function use({workflow}) {
             }
         }
     };
-    let updates;
     if (Object.keys(CONFIG.DND5E.weaponIds).includes(weapToolSelected)) {
         effectData.changes.push({
             key: 'system.traits.weaponProf.value',
@@ -82,31 +65,28 @@ async function use({workflow}) {
     } else {
         let ability = await dialogUtils.buttonDialog(workflow.item.name, 'CHRISPREMADES.Macros.AstralTrance.Ability', Object.values(CONFIG.DND5E.abilities).map(i => [i.label, i.abbreviation]));
         if (!ability) ability = 'int';
-        updates = {['system.tools.' + weapToolSelected]: {ability, value: 1}};
-        let old = genericUtils.getProperty(workflow.actor, 'system.tools.' + weapToolSelected);
-        genericUtils.setProperty(effectData, 'flags.chris-premades.astralTrance', {
-            weapToolSelected,
-            old
+        effectData.changes.push({
+            key: 'system.tools.' + weapToolSelected + '.prof',
+            mode: 4,
+            value: 1,
+            priority: 20
+        }, {
+            key: 'system.tools.' + weapToolSelected + '.roll.mode',
+            mode: 4,
+            value: 0,
+            priority: 20
+        }, {
+            key: 'system.tools.' + weapToolSelected + '.ability',
+            mode: 5,
+            value: ability,
+            priority: 20
         });
-        effectUtils.addMacro(effectData, 'effect', ['astralTrance']);
     }
-    if (updates) await genericUtils.update(workflow.actor, updates);
     await effectUtils.createEffect(workflow.actor, effectData, {identifier: 'astralTrance'});
-}
-async function end({trigger: {entity: effect}}) {
-    let astralFlags = effect.flags['chris-premades'].astralTrance;
-    if (!astralFlags) return;
-    let actor = effect.parent;
-    if (!actor) return;
-    let tool = astralFlags.weapToolSelected;
-    let old = astralFlags.old;
-    if (!tool) return;
-    let updatePath = old ? ('system.tools.' + tool) : ('system.tools.-=' + tool);
-    await genericUtils.update(actor, {[updatePath]: old ?? null});
 }
 export let astralTrance = {
     name: 'Astral Trance',
-    version: '0.12.64',
+    version: '1.1.0',
     midi: {
         item: [
             {
@@ -115,12 +95,5 @@ export let astralTrance = {
                 priority: 50
             }
         ]
-    },
-    effect: [
-        {
-            pass: 'deleted',
-            macro: end,
-            priority: 50
-        }
-    ]
+    }
 };

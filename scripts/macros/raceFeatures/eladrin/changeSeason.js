@@ -39,7 +39,7 @@ async function use({workflow}) {
 }
 export let changeSeason = {
     name: 'Change Season',
-    version: '0.12.64',
+    version: '1.1.0',
     midi: {
         item: [
             {

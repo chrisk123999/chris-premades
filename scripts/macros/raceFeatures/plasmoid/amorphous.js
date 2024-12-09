@@ -1,4 +1,4 @@
 export let amorphous = {
     name: 'Amorphous',
-    version: '0.12.64'
+    version: '1.1.0'
 };

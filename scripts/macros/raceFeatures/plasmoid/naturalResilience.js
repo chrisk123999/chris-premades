@@ -1,4 +1,4 @@
 export let naturalResilience = {
     name: 'Natural Resilience',
-    version: '0.12.64'
+    version: '1.1.0'
 };

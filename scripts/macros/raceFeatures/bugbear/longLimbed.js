@@ -36,7 +36,7 @@ async function turnStart({trigger: {entity: item}}) {
 }
 export let longLimbed = {
     name: 'Long-Limbed',
-    version: '0.12.64',
+    version: '1.1.0',
     combat: [
         {
             pass: 'turnStart',

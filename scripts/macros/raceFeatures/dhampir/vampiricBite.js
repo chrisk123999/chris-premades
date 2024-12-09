@@ -19,7 +19,7 @@ async function late({workflow}) {
     ];
     let selection = await dialogUtils.buttonDialog(workflow.item.name, 'CHRISPREMADES.Macros.VampiricBite.Select', buttons);
     if (!selection) return;
-    await genericUtils.update(workflow.item, {'system.uses.value': workflow.item.system.uses.value - 1});
+    await genericUtils.update(workflow.item, {'system.uses.spent': workflow.item.system.uses.spent + 1});
     if (selection === 'heal') {
         await workflowUtils.applyDamage([workflow.token], damageDealt, 'healing');
         return;
@@ -55,7 +55,7 @@ async function late({workflow}) {
 }
 export let vampiricBite = {
     name: 'Fanged Bite',
-    version: '0.12.64',
+    version: '1.1.0',
     midi: {
         item: [
             {

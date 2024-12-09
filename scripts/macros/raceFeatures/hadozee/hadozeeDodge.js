@@ -1,4 +1,4 @@
 export let hadozeeDodge = {
     name: 'Hadozee Dodge',
-    version: '0.12.70'
+    version: '1.1.0'
 };

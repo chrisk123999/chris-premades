@@ -50,7 +50,6 @@ async function early({trigger: {entity: effect}, workflow}) {
     workflow.rollOptions.advantage = false;
     workflow.flankingAdvantage = false;
     workflow.attackAdvAttribution.add(effect.name);
-
 }
 async function end({trigger: {entity: effect}}) {
     let {originalAvatarImg, originalPrototypeImg, originalTokenImg} = effect.flags['chris-premades'].shifterWildhunt;
@@ -76,7 +75,7 @@ async function end({trigger: {entity: effect}}) {
 }
 export let shiftWildhunt = {
     name: 'Shift: Wildhunt',
-    version: '0.12.64',
+    version: '1.1.0',
     midi: {
         item: [
             {

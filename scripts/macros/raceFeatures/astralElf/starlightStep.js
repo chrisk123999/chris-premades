@@ -9,7 +9,8 @@ async function use({workflow}) {
 }
 export let starlightStep = {
     name: 'Starlight Step',
-    version: '0.12.64',
+    version: '1.1.0',
+    hasAnimation: true,
     midi: {
         item: [
             {

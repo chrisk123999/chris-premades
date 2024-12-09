@@ -1,59 +1,71 @@
-import {actorUtils, combatUtils, compendiumUtils, constants, dialogUtils, effectUtils, errors, genericUtils, itemUtils, workflowUtils} from '../../../utils.js';
+import {activityUtils, actorUtils, combatUtils, compendiumUtils, constants, dialogUtils, effectUtils, errors, genericUtils, itemUtils, workflowUtils} from '../../../utils.js';
 
 async function use({workflow}) {
-    let featureData = await compendiumUtils.getItemFromCompendium(constants.featurePacks.raceFeatureItems, 'Celestial Revelation: End', {object: true, getDescription: true, translate: 'CHRISPREMADES.Macros.CelestialRevelation.End', identifier: 'celestialRevelationEnd'});
-    if (!featureData) {
-        errors.missingPackItem();
-        return;
-    }
-    let effectData = {
-        name: workflow.item.name,
-        img: workflow.item.img,
-        origin: workflow.item.uuid,
-        duration: itemUtils.convertDuration(workflow.activity)
-    };
-    let identifier = genericUtils.getIdentifier(workflow.item);
-    let damageType = itemUtils.getConfig(workflow.item, 'damageType');
-    if (identifier === 'aasimarRadiantSoul') {
-        effectData.changes = [
-            {
-                key: 'system.attributes.movement.fly',
-                mode: 4,
-                value: workflow.actor.system.attributes.movement.walk,
-                priority: 20
+    let activityIdentifier = activityUtils.getIdentifier(workflow.activity);
+    if (activityIdentifier === 'celestialRevelation') {
+        let feature = activityUtils.getActivityByIdentifier(workflow.item, 'celestialRevelationEnd', {strict: true});
+        if (!feature) return;
+        let effectData = {
+            name: workflow.item.name,
+            img: workflow.item.img,
+            origin: workflow.item.uuid,
+            duration: itemUtils.convertDuration(workflow.activity)
+        };
+        let identifier = genericUtils.getIdentifier(workflow.item);
+        let damageType = itemUtils.getConfig(workflow.item, 'damageType');
+        if (identifier === 'aasimarRadiantSoul') {
+            effectData.changes = [
+                {
+                    key: 'system.attributes.movement.fly',
+                    mode: 4,
+                    value: workflow.actor.system.attributes.movement.walk,
+                    priority: 20
+                }
+            ];
+            genericUtils.setProperty(effectData, 'flags.chris-premades.celestialRevelation.damageType', damageType ?? 'radiant');
+        } else if (identifier === 'aasimarRadiantConsumption') {
+            effectData.changes = [
+                {
+                    key: 'ATL.light.bright',
+                    mode: 4,
+                    value: 10,
+                    priority: 20
+                },
+                {
+                    key: 'ATL.light.dim',
+                    mode: 4,
+                    value: 20,
+                    priority: 20
+                }
+            ];
+            effectUtils.addMacro(effectData, 'combat', ['aasimarRadiantConsumption']);
+            genericUtils.setProperty(effectData, 'flags.chris-premades.celestialRevelation.damageType', damageType ?? 'radiant');
+        } else {
+            genericUtils.setProperty(effectData, 'flags.chris-premades.celestialRevelation.damageType', damageType ?? 'necrotic');
+        }
+        effectUtils.addMacro(effectData, 'midi.actor', ['celestialRevelation']);
+        await effectUtils.createEffect(workflow.actor, effectData, {
+            identifier: 'celestialRevelation', 
+            vae: [{
+                type: 'use', 
+                name: feature.name, 
+                identifier, 
+                activityIdentifier: 'celestialRevelationEnd'
+            }],
+            unhideActivities: {
+                itemUuid: workflow.item.uuid,
+                activityIdentifiers: ['celestialRevelationEnd'],
+                favorite: true
             }
-        ];
-        genericUtils.setProperty(effectData, 'flags.chris-premades.celestialRevelation.damageType', damageType ?? 'radiant');
-    } else if (identifier === 'aasimarRadiantConsumption') {
-        effectData.changes = [
-            {
-                key: 'ATL.light.bright',
-                mode: 4,
-                value: 10,
-                priority: 20
-            },
-            {
-                key: 'ATL.light.dim',
-                mode: 4,
-                value: 20,
-                priority: 20
-            }
-        ];
-        effectUtils.addMacro(effectData, 'combat', ['aasimarRadiantConsumption']);
-        genericUtils.setProperty(effectData, 'flags.chris-premades.celestialRevelation.damageType', damageType ?? 'radiant');
-    } else {
-        genericUtils.setProperty(effectData, 'flags.chris-premades.celestialRevelation.damageType', damageType ?? 'necrotic');
+        });
+    } else if (activityIdentifier === 'celestialRevelationEnd') {
+        let effect = effectUtils.getEffectByIdentifier(workflow.actor, 'celestialRevelation');
+        if (effect) await genericUtils.remove(effect);
     }
-    effectUtils.addMacro(effectData, 'midi.actor', ['celestialRevelation']);
-    let effect = await effectUtils.createEffect(workflow.actor, effectData, {identifier, vae: [{type: 'use', name: featureData.name, identifier: 'celestialRevelationEnd'}]});
-    if (!effect) return;
-    let [item] = await itemUtils.createItems(workflow.actor, [featureData], {favorite: true, parentEntity: effect});
-    if (!item) return;
-    await effectUtils.addDependent(item, [effect]);
 }
 async function damage({trigger: {entity: effect}, workflow}) {
     if (workflow.hitTargets.size !== 1) return;
-    if (!constants.attacks.includes(workflow.item.system.actionType)) return;
+    if (!constants.attacks.includes(workflow.activity.actionType)) return;
     if (!combatUtils.perTurnCheck(effect, 'celestialRevelation', true, workflow.token.id)) return;
     let use = await dialogUtils.confirm(effect.name, genericUtils.format('CHRISPREMADES.Dialog.Use', {itemName: effect.name}));
     if (!use) return;
@@ -64,7 +76,7 @@ async function damage({trigger: {entity: effect}, workflow}) {
 }
 async function applyDamage({trigger: {entity: effect}, workflow}) {
     if (workflow.hitTargets.size < 2) return;
-    if (!constants.attacks.includes(workflow.item.system.actionType)) return;
+    if (!constants.attacks.includes(workflow.activity.actionType)) return;
     if (!combatUtils.perTurnCheck(effect, 'celestialRevelation', true, workflow.token.id)) return;
     if (workflow.celestialRevelationChoseNo) return;
     let targetToken = await dialogUtils.selectTargetDialog(effect.name, genericUtils.format('CHRISPREMADES.Dialog.Use', {itemName: effect.name}), Array.from(workflow.hitTargets));
@@ -92,17 +104,14 @@ async function applyDamage({trigger: {entity: effect}, workflow}) {
     ditem.rawDamageDetail.push({value: damageAmount, type: damageType});
     ditem.rawDamageDetail.push({value: Math.floor(damageAmount * multiplier), type: damageType, active: {multiplier}});
 }
-async function turnEnd({trigger: {token}}) {
-    let featureData = await compendiumUtils.getItemFromCompendium(constants.featurePacks.raceFeatureItems, 'Radiant Consumption: Damage', {object: true, getDescription: true, translate: 'CHRISPREMADES.Macros.CelestialRevelation.Damage'});
-    if (!featureData) {
-        errors.missingPackItem();
-        return;
-    }
-    await workflowUtils.syntheticItemDataRoll(featureData, token.actor, []);
+async function turnEnd({trigger: {entity: effect, token}}) {
+    let feature = activityUtils.getActivityByIdentifier(fromUuidSync(effect.origin), 'radiantConsumptionDamage', {strict: true});
+    if (!feature) return;
+    await workflowUtils.syntheticActivityRoll(feature);
 }
 export let aasimarNecroticShroud = {
     name: 'Celestial Revelation (Necrotic Shroud)',
-    version: '0.12.64',
+    version: '1.1.0',
     config: [
         {
             value: 'damageType',
@@ -117,7 +126,7 @@ export let aasimarNecroticShroud = {
 };
 export let aasimarRadiantConsumption = {
     name: 'Celestial Revelation (Radiant Consumption)',
-    version: '0.12.64',
+    version: '1.1.0',
     combat: [
         {
             pass: 'turnEnd',
@@ -139,7 +148,7 @@ export let aasimarRadiantConsumption = {
 };
 export let aasimarRadiantSoul = {
     name: 'Celestial Revelation (Radiant Soul)',
-    version: '0.12.64',
+    version: '1.1.0',
     config: [
         {
             value: 'damageType',
@@ -154,7 +163,7 @@ export let aasimarRadiantSoul = {
 };
 export let celestialRevelation = {
     name: 'Celestial Revelation',
-    version: '0.12.64',
+    version: '1.1.0',
     midi: {
         item: [
             {

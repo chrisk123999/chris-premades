@@ -1,4 +1,4 @@
 export let stonesEndurance = {
     name: 'Stone\'s Endurance',
-    version: '0.12.70'
+    version: '1.1.0'
 };

@@ -1,4 +1,4 @@
 export let giftedScribe = {
     name: 'Gifted Scribe',
-    version: '0.12.64'
+    version: '1.1.0'
 };

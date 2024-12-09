@@ -12,7 +12,7 @@ async function firearm(enabled) {
         let index = await pack.getIndex();
         let item = index.getName('Firearm');
         if (!item) return;
-        CONFIG.DND5E.weaponIds.firearm = pack.metadata.packageName + '.' + pack.metadata.name + '.' + item._id;
+        CONFIG.DND5E.weaponIds.firearm = 'Compendium.' + pack.metadata.packageName + '.' + pack.metadata.name + '.' + item._id;
         CONFIG.DND5E.featureTypes.class.subtypes.trickShot = genericUtils.translate('CHRISPREMADES.Firearm.TrickShot');
         CONFIG.DND5E.weaponProficiencies.oth = genericUtils.translate('CHRISPREMADES.Firearm.Other');
         CONFIG.DND5E.weaponProficienciesMap.firearm = 'oth';

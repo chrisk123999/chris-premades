@@ -379,7 +379,7 @@ export {astralSpark} from './macros/raceFeatures/giff/astralSpark.js';
 export {astralTrance} from './macros/raceFeatures/astralElf/astralTrance.js';
 export {blessingOfTheRavenQueen} from './macros/raceFeatures/shadarKai/blessingOfTheRavenQueen.js';
 export {brave} from './macros/raceFeatures/halfling/brave.js';
-export {breathWeaponAcid, breathWeaponCold, breathWeaponFire, breathWeaponLightning, metallicBreathWeapon, metallicBreathWeaponRepulsion} from './macros/raceFeatures/dragonborn/metallic/breathWeapon.js';
+export {breathWeaponAcid, breathWeaponCold, breathWeaponFire, breathWeaponLightning, metallicBreathWeapon} from './macros/raceFeatures/dragonborn/metallic/breathWeapon.js';
 export {breathWeaponBlack, breathWeaponBlue, breathWeaponBrass, breathWeaponBronze, breathWeaponCopper, breathWeaponGold, breathWeaponGreen, breathWeaponRed, breathWeaponSilver, breathWeaponWhite} from './macros/raceFeatures/dragonborn/legacy/breathWeapon.js';
 export {breathWeaponForce, breathWeaponNecrotic, breathWeaponPsychic, breathWeaponRadiant, breathWeaponThunder} from './macros/raceFeatures/dragonborn/gem/breathWeapon.js';
 export {changeSeason} from './macros/raceFeatures/eladrin/changeSeason.js';

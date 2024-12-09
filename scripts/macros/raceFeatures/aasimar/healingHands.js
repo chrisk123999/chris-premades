@@ -1,4 +1,4 @@
 export let healingHands = {
     name: 'Healing Hands',
-    version: '0.12.64'
+    version: '1.1.0'
 };

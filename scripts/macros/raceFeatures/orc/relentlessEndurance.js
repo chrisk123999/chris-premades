@@ -10,7 +10,7 @@ async function damageApplication({trigger: {entity: item, token}, workflow, dite
 }
 export let relentlessEndurance = {
     name: 'Relentless Endurance',
-    version: '0.12.64',
+    version: '1.1.0',
     midi: {
         actor: [
             {

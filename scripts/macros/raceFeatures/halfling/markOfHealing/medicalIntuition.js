@@ -1,4 +1,4 @@
 export let medicalIntuition = {
     name: 'Medical Intuition',
-    version: '0.12.64'
+    version: '1.1.0'
 };
