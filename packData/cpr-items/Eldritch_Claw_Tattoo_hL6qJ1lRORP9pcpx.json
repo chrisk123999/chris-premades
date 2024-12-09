@@ -1,0 +1,332 @@
+{
+  "name": "Eldritch Claw Tattoo",
+  "type": "equipment",
+  "system": {
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "source": {
+      "book": "Tasha’s Cauldron of Everything",
+      "page": "126",
+      "license": "",
+      "custom": "",
+      "revision": 1,
+      "rules": "2024"
+    },
+    "identified": true,
+    "unidentified": {
+      "description": ""
+    },
+    "container": null,
+    "quantity": 1,
+    "weight": {
+      "value": 0,
+      "units": "lb"
+    },
+    "price": {
+      "value": 0,
+      "denomination": "gp"
+    },
+    "rarity": "uncommon",
+    "attunement": "required",
+    "cover": null,
+    "crewed": false,
+    "uses": {
+      "max": "1",
+      "recovery": [
+        {
+          "period": "dawn",
+          "type": "formula",
+          "formula": "1"
+        }
+      ],
+      "spent": 0
+    },
+    "armor": {
+      "value": null,
+      "dex": null,
+      "magicalBonus": null
+    },
+    "hp": {
+      "value": null,
+      "max": null,
+      "dt": null,
+      "conditions": ""
+    },
+    "type": {
+      "value": "trinket",
+      "baseItem": ""
+    },
+    "properties": [
+      "mgc"
+    ],
+    "speed": {
+      "value": null,
+      "conditions": ""
+    },
+    "strength": 0,
+    "attuned": false,
+    "equipped": false,
+    "proficient": null,
+    "activities": {
+      "dnd5eactivity000": {
+        "_id": "dnd5eactivity000",
+        "type": "utility",
+        "activation": {
+          "type": "bonus",
+          "value": 1,
+          "condition": "",
+          "override": false
+        },
+        "consumption": {
+          "targets": [
+            {
+              "type": "itemUses",
+              "target": "",
+              "value": "1",
+              "scaling": {
+                "mode": "",
+                "formula": ""
+              }
+            }
+          ],
+          "scaling": {
+            "allowed": false,
+            "max": ""
+          },
+          "spellSlot": true
+        },
+        "description": {
+          "chatFlavor": ""
+        },
+        "duration": {
+          "concentration": false,
+          "value": "1",
+          "units": "minute",
+          "special": "",
+          "override": false
+        },
+        "effects": [
+          {
+            "_id": "co1pK03xNYvlDCTx"
+          }
+        ],
+        "range": {
+          "units": "self",
+          "special": "",
+          "override": false
+        },
+        "target": {
+          "template": {
+            "count": "",
+            "contiguous": false,
+            "type": "",
+            "size": "",
+            "width": "",
+            "height": "",
+            "units": ""
+          },
+          "affects": {
+            "count": "",
+            "type": "self",
+            "choice": false,
+            "special": ""
+          },
+          "prompt": true,
+          "override": false
+        },
+        "uses": {
+          "spent": 0,
+          "max": "",
+          "recovery": []
+        },
+        "roll": {
+          "formula": "",
+          "name": "",
+          "prompt": false,
+          "visible": false
+        },
+        "sort": 0,
+        "useConditionText": "",
+        "forceDialog": false,
+        "effectConditionText": "",
+        "midiAutomationOnly": false
+      }
+    },
+    "identifier": "eldritch-claw-tattoo"
+  },
+  "flags": {
+    "midi-qol": {
+      "removeAttackDamageButtons": "default",
+      "onUseMacroName": "",
+      "rollAttackPerTarget": "default",
+      "itemCondition": "",
+      "effectCondition": "",
+      "AoETargetType": "any",
+      "AoETargetTypeIncludeSelf": true,
+      "autoTarget": "default",
+      "reactionCondition": "",
+      "otherCondition": ""
+    },
+    "midiProperties": {
+      "confirmTargets": "default",
+      "autoFailFriendly": false,
+      "autoSaveFriendly": false,
+      "critOther": false,
+      "offHandWeapon": false,
+      "magicdam": false,
+      "magiceffect": false,
+      "noConcentrationCheck": false,
+      "toggleEffect": false,
+      "ignoreTotalCover": false,
+      "idr": false,
+      "idi": false,
+      "idv": false,
+      "ida": false
+    },
+    "chris-premades": {
+      "info": {
+        "identifier": "eldritchClawTattoo",
+        "source": "chris-premades",
+        "version": "1.1.0"
+      },
+      "equipment": {
+        "identifier": "eldritchClawTattoo"
+      }
+    },
+    "dnd5e": {
+      "dependents": [
+        {
+          "uuid": "Actor.FIdg2qF9mgynCpEX.ActiveEffect.d5jYxEnvVmZcikom"
+        },
+        {
+          "uuid": "Actor.FIdg2qF9mgynCpEX.ActiveEffect.YYDiPQAsu7oTNmh3"
+        },
+        {
+          "uuid": "Actor.FIdg2qF9mgynCpEX.ActiveEffect.WxYhcSGCE0FmERBN"
+        },
+        {
+          "uuid": "Actor.FIdg2qF9mgynCpEX.ActiveEffect.l0NIfN2DkennMQHx"
+        },
+        {
+          "uuid": "Actor.FIdg2qF9mgynCpEX.ActiveEffect.hPc6ttpI1mjiTF2C"
+        },
+        {
+          "uuid": "Actor.FIdg2qF9mgynCpEX.ActiveEffect.UYZ1l7XtpRIpn2Fs"
+        },
+        {
+          "uuid": "Actor.FIdg2qF9mgynCpEX.ActiveEffect.SNFkIz60BHWugmZu"
+        },
+        {
+          "uuid": "Actor.FIdg2qF9mgynCpEX.ActiveEffect.l2zFSP0wBMFsRsAh"
+        },
+        {
+          "uuid": "Actor.FIdg2qF9mgynCpEX.ActiveEffect.VxAaneeUQNXje2Ct"
+        },
+        {
+          "uuid": "Actor.yLACiN6Q02CNit1Z.ActiveEffect.v8Ly8Lgy1572sZfI"
+        },
+        {
+          "uuid": "Actor.yLACiN6Q02CNit1Z.ActiveEffect.GHrM8f7X6DX6xskZ"
+        },
+        {
+          "uuid": "Actor.yLACiN6Q02CNit1Z.ActiveEffect.w9p7KWwRpR93KCdy"
+        }
+      ],
+      "persistSourceMigration": true,
+      "migratedUses": 1,
+      "riders": {
+        "activity": []
+      }
+    }
+  },
+  "effects": [
+    {
+      "name": "Eldritch Maul",
+      "changes": [
+        {
+          "key": "flags.midi-qol.range.mwak",
+          "mode": 2,
+          "value": "+10",
+          "priority": 20
+        },
+        {
+          "key": "system.bonuses.mwak.damage",
+          "mode": 2,
+          "value": "+1d6[force]",
+          "priority": 20
+        }
+      ],
+      "transfer": false,
+      "img": "icons/creatures/claws/claw-talons-yellow-red.webp",
+      "_id": "co1pK03xNYvlDCTx",
+      "type": "base",
+      "system": {},
+      "disabled": false,
+      "duration": {
+        "startTime": null,
+        "seconds": null,
+        "combat": null,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "description": "",
+      "origin": null,
+      "tint": "#ffffff",
+      "statuses": [],
+      "sort": 0,
+      "flags": {
+        "dae": {
+          "enableCondition": "",
+          "disableCondition": "",
+          "disableIncapacitated": false,
+          "selfTarget": false,
+          "selfTargetAlways": false,
+          "dontApply": false,
+          "stackable": "noneName",
+          "showIcon": false,
+          "durationExpression": "",
+          "macroRepeat": "none",
+          "specialDuration": []
+        },
+        "core": {
+          "overlay": false
+        },
+        "ActiveAuras": {
+          "isAura": false,
+          "aura": "None",
+          "nameOverride": "",
+          "radius": "",
+          "alignment": "",
+          "type": "",
+          "customCheck": "",
+          "ignoreSelf": false,
+          "height": false,
+          "hidden": false,
+          "displayTemp": false,
+          "hostile": false,
+          "onlyOnce": false,
+          "wallsBlock": "system"
+        }
+      },
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "coreVersion": "12.331",
+        "systemId": "dnd5e",
+        "systemVersion": "4.1.2",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!items.effects!hL6qJ1lRORP9pcpx.co1pK03xNYvlDCTx"
+    }
+  ],
+  "img": "icons/creatures/claws/claw-talons-yellow-red.webp",
+  "folder": "4TYgcjpgCO6kJJ6d",
+  "_id": "hL6qJ1lRORP9pcpx",
+  "_key": "!items!hL6qJ1lRORP9pcpx"
+}

@@ -21,11 +21,11 @@ async function lateGem({trigger: {entity: item}, workflow}) {
 }
 export let dragonTouchedFocusSlumbering = {
     name: 'Dragon-Touched Focus (Slumbering)',
-    version: '0.12.70'
+    version: '1.1.0'
 };
 export let dragonTouchedFocusStirringChromatic = {
     name: 'Dragon-Touched Focus (Stirring / Chromatic)',
-    version: '1.0.37',
+    version: '1.1.0',
     midi: {
         actor: [
             {
@@ -38,7 +38,8 @@ export let dragonTouchedFocusStirringChromatic = {
 };
 export let dragonTouchedFocusStirringGem = {
     name: 'Dragon-Touched Focus (Stirring / Gem)',
-    version: '0.12.70',
+    version: '1.1.0',
+    hasAnimation: true,
     midi: {
         actor: [
             {

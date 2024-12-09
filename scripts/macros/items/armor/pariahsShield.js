@@ -1,4 +1,4 @@
-import {actorUtils, combatUtils, compendiumUtils, constants, dialogUtils, genericUtils, itemUtils, socketUtils, tokenUtils, workflowUtils} from '../../../utils.js';
+import {activityUtils, actorUtils, combatUtils, compendiumUtils, constants, dialogUtils, genericUtils, itemUtils, socketUtils, tokenUtils, workflowUtils} from '../../../utils.js';
 async function moved({trigger}) {
     await Promise.all(trigger.token.document.parent.tokens.map(async i => {
         if (!i.actor) return;
@@ -35,16 +35,16 @@ async function damage({trigger, workflow, ditem}) {
         if (!selection) continue;
         let damage = ditem.hpDamage + ditem.tempDamage;
         workflowUtils.negateDamageItemDamage(ditem);
-        let itemData = await compendiumUtils.getItemFromCompendium(constants.packs.itemFeatures, 'Pariah\'s Shield: Protect', {object: true, getDescription: true, translate: 'CHRISPREMADES.Macros.PariahsShield.Reaction'});
-        if (!itemData) return;
-        itemData.system.damage.parts[0][0] = damage;
-        await workflowUtils.syntheticItemDataRoll(itemData, i.actor, [i]);
+        let activity = activityUtils.getActivityByIdentifier(trigger.entity, 'pariahsShieldProtect', {strict: true});
+        if (!activity) return;
+        await activityUtils.setDamage(activity, damage);
+        await workflowUtils.syntheticActivityRoll(activity, [i]);
         break;
     }
 }
 export let pariahsShield = {
     name: 'Pariah\'s Shield',
-    version: '0.12.51',
+    version: '1.1.0',
     midi: {
         actor: [
             {

@@ -15,7 +15,7 @@ async function use({trigger, workflow}) {
 }
 export let mysteryKey = {
     name: 'Mystery Key',
-    version: '1.0.28',
+    version: '1.1.0',
     midi: {
         item: [
             {

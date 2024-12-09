@@ -4,7 +4,7 @@ async function skill({trigger: {skillId}}) {
 }
 export let eyesOfTheEagle = {
     name: 'Eyes of the Eagle',
-    version: '0.12.70',
+    version: '1.1.0',
     skill: [
         {
             pass: 'context',

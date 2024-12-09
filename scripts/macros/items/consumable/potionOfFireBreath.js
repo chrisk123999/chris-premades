@@ -24,7 +24,7 @@ async function late({workflow}) {
 }
 export let potionOfFireBreath = {
     name: 'Potion of Fire Breath',
-    version: '0.12.70',
+    version: '1.1.0',
     midi: {
         item: [
             {

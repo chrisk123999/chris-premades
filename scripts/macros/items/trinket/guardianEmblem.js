@@ -1,7 +1,7 @@
 import {actorUtils, combatUtils, constants, dialogUtils, genericUtils, itemUtils, socketUtils, tokenUtils, workflowUtils} from '../../../utils.js';
 async function attack({trigger, workflow}) {
     if (!workflow.targets.size || !workflow.isCritical || !workflow.item) return;
-    if (!constants.attacks.includes(workflow.item.system.actionType)) return;
+    if (!constants.attacks.includes(workflow.activity.actionType)) return;
     let target = workflow.targets.first();
     let nearbyShields = tokenUtils.findNearby(target, 30, 'ally', {includeToken: true}).filter(i => {
         let item = itemUtils.getItemByIdentifier(i.actor, 'guardianEmblem');
@@ -15,7 +15,7 @@ async function attack({trigger, workflow}) {
     for (let i of nearbyShields) {
         let item = itemUtils.getItemByIdentifier(i.actor, 'guardianEmblem');
         let userId = socketUtils.firstOwner(i.document, true);
-        let selection = await dialogUtils.confirm(item.name, genericUtils.format('CHRISPREMADES.Macros.GuardianEmblem.Protect', {item: item.name, name: i.actor.name}), {userId: userId});
+        let selection = await dialogUtils.confirm(item.name, genericUtils.format('CHRISPREMADES.Macros.GuardianEmblem.Protect', {item: item.name, name: trigger.targetToken.name}), {userId: userId});
         if (!selection) continue;
         await workflowUtils.syntheticItemRoll(item, [target], {config: {consumeUsage: true}});
         workflow.isCritical = false;
@@ -24,7 +24,7 @@ async function attack({trigger, workflow}) {
 }
 export let guardianEmblem = {
     name: 'Guardian Emblem',
-    version: '0.12.53',
+    version: '1.1.0',
     midi: {
         actor: [
             {

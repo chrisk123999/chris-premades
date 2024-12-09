@@ -33,13 +33,42 @@ async function use({workflow}) {
         delete spellData._id;
         let spellDC = itemUtils.getSaveDC(originalSpell);
         let abilityModifier = workflow.actor.system.abilities[spellData.abilityMod ?? workflow.actor.system.attributes.spellcasting].mod;
-        let bonuses;
-        if (spellData.system.actionType === 'msak') {
-            bonuses = (new Roll(workflow.actor.system.bonuses.msak.attack + ' + @prof', workflow.actor.getRollData()).evaluateSync({strict: false})).total;
-        } else if (spellData.system.actionType === 'rsak') {
-            bonuses = (new Roll(workflow.actor.system.bonuses.rsak.attack + ' + @prof', workflow.actor.getRollData()).evaluateSync({strict: false})).total;
+        let msakBonus = (new Roll(workflow.actor.system.bonuses.msak.attack + ' + @prof', workflow.actor.getRollData()).evaluateSync({strict: false})).total;
+        let rsakBonus = (new Roll(workflow.actor.system.bonuses.rsak.attack + ' + @prof', workflow.actor.getRollData()).evaluateSync({strict: false})).total;
+        let spellMod = workflow.actor.system.attributes.spellmod;
+        let spellActivityData = originalSpell.system.activities.contents;
+        for (let spellActivity of spellActivityData) {
+            if (spellActivity.actionType === 'msak') {
+                spellData.system.activities[spellActivity.id].attack.bonus = msakBonus + abilityModifier;
+                spellData.system.activities[spellActivity.id].attack.flat = true;
+            } else if (spellActivity.actionType === 'rsak') {
+                spellData.system.activities[spellActivity.id].attack.bonus = rsakBonus + abilityModifier;
+                spellData.system.activities[spellActivity.id].attack.flat = true;
+            } else if (spellActivity.actionType === 'save') {
+                spellData.system.activities[spellActivity.id].save.dc = {
+                    calculation: '',
+                    formula: spellDC.toString(),
+                    value: spellDC
+                };
+            }
+            if (spellActivity.damage) {
+                for (let i = 0; i < spellActivity.damage.parts.length; i++) {
+                    spellData.system.activities[spellActivity.id].damage.parts[i].custom = {
+                        enabled: true,
+                        formula: spellActivity.damage.parts[i].formula.replaceAll('@mod', spellMod)
+                    };
+                }
+            } else if (spellActivity.healing) {
+                spellData.system.activities[spellActivity.id].healing.custom = {
+                    enabled: true,
+                    formula: spellActivity.healing.formula.replaceAll('@mod', spellMod)
+                };
+            }
         }
-        if (bonuses) spellData.system.attack = {bonus: bonuses + abilityModifier, flat: true};
+        spellData.system.activities[spellActivityData[0].id].consumption.targets = [{
+            type: 'itemUses',
+            value: '1'
+        }];
         let castLevel = spellData.system.level;
         if (['prepared', 'always', 'pact'].includes(spellData.system.preparation.mode)) {
             let selectedSlot = await dialogUtils.selectSpellSlot(workflow.actor, spellData.name, 'CHRISPREMADES.Macros.RingOfSpellStoring.Upcast', {
@@ -56,34 +85,19 @@ async function use({workflow}) {
                 castLevel = Number(selectedSlot);
             }
         }
-        if (originalSpell.system.uses.max) await genericUtils.update(originalSpell, {'system.uses.value': originalSpell.system.uses.value - 1});
+        if (originalSpell.system.uses.max) await genericUtils.update(originalSpell, {'system.uses.spent': originalSpell.system.uses.spent + 1});
         spellData.name = genericUtils.format('CHRISPREMADES.Macros.RingOfSpellStoring.SpellName', {spellName: spellData.name});
         genericUtils.mergeObject(spellData, {
             system:{
                 uses: {
-                    per: 'charges',
                     max: 1,
-                    value: 1
+                    spent: 0
                 },
                 preparation: {
                     mode: 'atwill',
                     prepared: true
                 }
             }
-        });
-        if (spellData.system.save?.ability?.length) {
-            genericUtils.mergeObject(spellData, {
-                system: {
-                    save: {
-                        scaling: 'flat',
-                        dc: spellDC
-                    }
-                }
-            });
-        }
-        let spellMod = itemUtils.getMod(originalSpell);
-        spellData.system.damage.parts.forEach(i => {
-            i[0] = i[0].replaceAll('@mod', spellMod);
         });
         genericUtils.setProperty(spellData, 'flags.chris-premades.ross', {
             isStored: true,
@@ -166,7 +180,7 @@ async function earlySpell({workflow}) {
 }
 export let ringOfSpellStoring = {
     name: 'Ring of Spell Storing (0/5)',
-    version: '0.12.73',
+    version: '1.1.0',
     midi: {
         item: [
             {

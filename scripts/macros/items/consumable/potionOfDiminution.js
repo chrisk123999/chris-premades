@@ -80,7 +80,8 @@ async function use({workflow}) {
 }
 export let potionOfDiminution = {
     name: 'Potion of Diminution',
-    version: '0.12.70',
+    version: '1.1.0',
+    hasAnimation: true,
     midi: {
         item: [
             {

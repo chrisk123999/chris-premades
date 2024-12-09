@@ -45,11 +45,11 @@ async function end({trigger}) {
 async function recharge({trigger}) {
     let item = await fromUuid(trigger.entity.origin);
     if (!item) return;
-    await genericUtils.update(item, {'system.uses.value': Math.min(item.system.uses.value + 1, item.system.uses.max)});
+    await genericUtils.update(item, {'system.uses.spent': Math.max(item.system.uses.spent - 1, 0)});
 }
 export let wingsOfFlying = {
     name: 'Wings of Flying',
-    version: '0.12.43',
+    version: '1.1.0',
     midi: {
         item: [
             {

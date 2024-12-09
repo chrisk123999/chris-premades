@@ -89,7 +89,7 @@ async function use({workflow}) {
 }
 export let potionOfGrowth = {
     name: 'Potion of Growth',
-    version: '0.12.70',
+    version: '1.1.0',
     midi: {
         item: [
             {

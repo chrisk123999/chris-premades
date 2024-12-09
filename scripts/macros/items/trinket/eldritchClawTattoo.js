@@ -38,7 +38,7 @@ async function unequip(item) {
 }
 export let eldritchClawTattoo = {
     name: 'Eldritch Claw Tattoo',
-    version: '0.12.53',
+    version: '1.1.0',
     equipment: {
         magicalStrikes: {
             equipCallback: equip,

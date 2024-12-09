@@ -4,7 +4,8 @@ async function late({workflow}) {
     if (workflow.hitTargets.size !== 1) return;
     let ditem = workflow.damageList[0];
     if (ditem.newHP || !ditem.oldHP) return;
-    let damageRoll = await new CONFIG.Dice.DamageRoll('2d6[temphp]', {}, {type: 'temphp'}).evaluate();
+    let damageRoll = await new Roll('2d6[temphp]').evaluate();
+    // let damageRoll = await new CONFIG.Dice.DamageRoll('2d6[temphp]', {}, {type: 'temphp'}).evaluate();
     damageRoll.toMessage({
         rollMode: 'roll',
         speaker: ChatMessage.implementation.getSpeaker({token: workflow.token}),
@@ -14,7 +15,7 @@ async function late({workflow}) {
 }
 export let bloodSpear = {
     name: 'Blood Spear',
-    version: '0.12.70',
+    version: '1.1.0',
     midi: {
         item: [
             {

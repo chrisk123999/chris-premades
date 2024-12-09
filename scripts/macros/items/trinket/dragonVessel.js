@@ -70,7 +70,7 @@ async function use({workflow}) {
 }
 export let dragonVessel = {
     name: 'Dragon Vessel',
-    version: '0.12.70',
+    version: '1.1.0',
     midi: {
         item: [
             {
@@ -81,7 +81,7 @@ export let dragonVessel = {
         ]
     }
 };
-let version = '0.12.70';
+let version = '1.1.0';
 export let dragonVessel0 = {
     name: 'Dragon Vessel (Slumbering)',
     version

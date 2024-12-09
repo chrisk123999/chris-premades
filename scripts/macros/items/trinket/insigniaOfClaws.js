@@ -7,12 +7,11 @@ async function early({workflow}) {
     let existingBonus = workflow.item.system.magicalBonus ?? 0;
     workflow.item = workflow.item.clone({'system.properties': Array.from(workflow.item.system.properties).concat('mgc'), 'system.magicalBonus': existingBonus + 1}, {keepId: true});
     workflow.item.prepareData();
-    workflow.item.prepareFinalAttributes();
     workflow.item.applyActiveEffects();
 }
 export let insigniaOfClaws = {
     name: 'Insignia of Claws',
-    version: '0.12.70',
+    version: '1.1.0',
     midi: {
         actor: [
             {

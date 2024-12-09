@@ -1,7 +1,7 @@
 import {constants, tokenUtils, workflowUtils} from '../../../utils.js';
 
 async function early({workflow}) {
-    if (!constants.spellAttacks.includes(workflow.item.system.actionType)) return;
+    if (!constants.spellAttacks.includes(workflow.activity.actionType)) return;
     let targetToken = workflow.targets.first();
     if (!targetToken) return;
     let coverBonus = tokenUtils.checkCover(workflow.token, targetToken, {item: workflow.item});
@@ -10,7 +10,7 @@ async function early({workflow}) {
 }
 export let wandOfTheWarMage = {
     name: 'Wand of the War Mage',
-    version: '0.12.70',
+    version: '1.1.0',
     midi: {
         actor: [
             {
@@ -21,7 +21,7 @@ export let wandOfTheWarMage = {
         ]
     }
 };
-let version = '0.12.70';
+let version = '1.1.0';
 export let wandOfTheWarMage1 = {
     name: 'Wand of the War Mage, +1',
     version

@@ -1,7 +1,9 @@
 import {Summons} from '../../../lib/summons.js';
-import {compendiumUtils, constants, dialogUtils, genericUtils, itemUtils} from '../../../utils.js';
+import {activityUtils, compendiumUtils, constants, dialogUtils, genericUtils, itemUtils} from '../../../utils.js';
 
-async function useSculpture({workflow}) {
+async function late({workflow}) {
+    if (!itemUtils.getEquipmentState(workflow.item)) return;
+    if (activityUtils.getIdentifier(workflow.activity) !== 'forceSculpture') return;
     let sourceActor = await compendiumUtils.getActorFromCompendium(constants.packs.summons, 'CPR - Force Sculpture');
     if (!sourceActor) return;
     let selection = await dialogUtils.buttonDialog(workflow.item.name, 'CHRISPREMADES.Macros.Rage.LargeOrHuge', [
@@ -58,54 +60,12 @@ async function useSculpture({workflow}) {
 }
 export let bigbysBeneficentBracelet = {
     name: 'Bigby\'s Beneficent Bracelet',
-    version: '0.12.70',
-    equipment: {
-        forceSculpture: {
-            name: 'Force Sculpture',
-            compendium: 'itemEquipment',
-            useJournal: true,
-            translate: 'CHRISPREMADES.Macros.BigbysBeneficentBracelet.ForceSculpture',
-            favorite: true
-        },
-        bigbysHandFree: {
-            name: 'Bigby\'s Hand',
-            compendium: 'spell',
-            translate: 'CHRISPREMADES.Macros.BigbysBeneficentBracelet.BigbysHand',
-            uses: {
-                spent: 0,
-                max: 1,
-                per: 'dawn',
-                recovery: [
-                    {
-                        period: 'dawn',
-                        type: 'recoverAll'
-                    }
-                ]
-            },
-            preparation: 'atwill',
-            override: {
-                system: {
-                    level: 9,
-                    properties: ['vocal', 'somatic', 'material', 'mgc']
-                }
-            }
-        },
-        mageHand: {
-            name: 'Mage Hand',
-            compendium: 'personalSpell',
-            translate: 'CHRISPREMADES.Macros.BigbysBeneficentBracelet.MageHand',
-            preparation: 'atwill'
-        }
-    }
-};
-export let forceSculpture = {
-    name: 'Force Sculpture',
-    version: bigbysBeneficentBracelet.version,
+    version: '1.1.0',
     midi: {
         item: [
             {
                 pass: 'rollFinished',
-                macro: useSculpture,
+                macro: late,
                 priority: 50
             }
         ]
@@ -134,5 +94,13 @@ export let forceSculpture = {
             default: '',
             category: 'summons'
         },
-    ]
+    ],
+    equipment: {
+        mageHand: {
+            name: 'Mage Hand',
+            compendium: 'personalSpell',
+            translate: 'CHRISPREMADES.Macros.BigbysBeneficentBracelet.MageHand',
+            preparation: 'atwill'
+        }
+    }
 };

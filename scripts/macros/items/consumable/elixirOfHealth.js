@@ -9,7 +9,7 @@ async function use({workflow}) {
 }
 export let elixirOfHealth = {
     name: 'Elixir of Health',
-    version: '0.12.70',
+    version: '1.1.0',
     midi: {
         item: [
             {

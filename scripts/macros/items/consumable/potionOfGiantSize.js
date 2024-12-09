@@ -49,7 +49,7 @@ async function use({workflow}) {
 async function damage({workflow}) {
     if (workflow.hitTargets.size !== 1) return;
     if (workflow.item.type !== 'weapon') return;
-    let numWeaponDamageRolls = workflow.item.system.damage.parts.length;
+    let numWeaponDamageRolls = workflow.activity.damage.parts.length;
     let newRolls = [];
     for (let i = 0; i < numWeaponDamageRolls; i++) {
         let currRoll = workflow.damageRolls[i];
@@ -84,7 +84,7 @@ async function end({trigger: {entity: effect}}) {
 }
 export let potionOfGiantSize = {
     name: 'Potion of Giant Size',
-    version: '0.12.70',
+    version: '1.1.0',
     midi: {
         item: [
             {

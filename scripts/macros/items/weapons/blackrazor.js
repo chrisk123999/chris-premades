@@ -1,18 +1,17 @@
-import {actorUtils, compendiumUtils, constants, effectUtils, errors, genericUtils, workflowUtils} from '../../../utils.js';
+import {activityUtils, actorUtils, compendiumUtils, constants, effectUtils, errors, genericUtils, workflowUtils} from '../../../utils.js';
 
 async function damage({workflow}) {
+    if (activityUtils.getIdentifier(workflow.activity) !== genericUtils.getIdentifier(workflow.item)) return;
     if (workflow.hitTargets.size !== 1) return;
     if (actorUtils.typeOrRace(workflow.hitTargets.first().actor) !== 'undead') return;
     let damageRoll = await new CONFIG.Dice.DamageRoll('1d10[healing]', {}, {type: 'healing'}).evaluate();
     await workflow.setDamageRolls([damageRoll]);
-    let featureData = await compendiumUtils.getItemFromCompendium(constants.featurePacks.itemFeatures, 'Blackrazor: Backlash', {object: true, getDescription: true, translate: 'CHRISPREMADES.Macros.Blackrazor.Backlash'});
-    if (!featureData) {
-        errors.missingPackItem();
-        return;
-    }
-    await workflowUtils.syntheticItemDataRoll(featureData, workflow.actor, [workflow.token]);
+    let feature = activityUtils.getActivityByIdentifier(workflow.item, 'blackrazorBacklash', {strict: true});
+    if (!feature) return;
+    await workflowUtils.syntheticActivityRoll(feature, [workflow.token]);
 }
 async function late({workflow}) {
+    if (activityUtils.getIdentifier(workflow.activity) !== genericUtils.getIdentifier(workflow.item)) return;
     if (workflow.hitTargets.size !== 1) return;
     let ditem = workflow.damageList[0];
     if (ditem.newHP || !ditem.oldHP) return;
@@ -58,7 +57,7 @@ async function onHit({trigger: {entity: effect}}) {
 }
 export let blackrazor = {
     name: 'Blackrazor',
-    version: '0.12.70',
+    version: '1.1.0',
     midi: {
         item: [
             {

@@ -29,7 +29,7 @@ async function early({trigger: {entity: effect}, workflow}) {
 }
 export let potionOfAdvantage = {
     name: 'Potion of Advantage',
-    version: '0.12.70',
+    version: '1.1.0',
     midi: {
         item: [
             {

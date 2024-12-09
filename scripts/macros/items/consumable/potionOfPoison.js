@@ -1,18 +1,16 @@
-import {compendiumUtils, constants, effectUtils, errors, genericUtils, workflowUtils} from '../../../utils.js';
+import {activityUtils, compendiumUtils, constants, effectUtils, errors, genericUtils, workflowUtils} from '../../../utils.js';
 
 async function damage({workflow}) {
     let damageRoll = await new CONFIG.Dice.DamageRoll('0', {}, {type: 'healing'}).evaluate();
     await workflow.setDamageRolls([damageRoll]);
 }
 async function late({workflow}) {
+    if (activityUtils.getIdentifier(workflow.activity) !== genericUtils.getIdentifier(workflow.item)) return;
     let targetToken = workflow.targets.first() ?? workflow.token;
-    let featureData = await compendiumUtils.getItemFromCompendium(constants.featurePacks.itemFeatures, 'Potion of Poison: Damage', {object: true, getDescription: true, translate: 'CHRISPREMADES.Macros.PotionOfPoison.Damage'});
-    if (!featureData) {
-        errors.missingPackItem();
-        return;
-    }
-    featureData.system.damage.parts[0][0] = '3d6[poison]';
-    let featureWorkflow = await workflowUtils.syntheticItemDataRoll(featureData, workflow.actor, [targetToken]);
+    let feature = await activityUtils.getActivityByIdentifier(workflow.item, 'potionOfPoisonDamage', {strict: true});
+    if (!feature) return;
+    await activityUtils.setDamage(feature, '3d6[poison]', ['poison']);
+    let featureWorkflow = await workflowUtils.syntheticActivityRoll(feature, [targetToken]);
     if (!featureWorkflow.failedSaves.size) return;
     let effectData = {
         name: workflow.item.name,
@@ -34,15 +32,12 @@ async function late({workflow}) {
     await effectUtils.createEffect(targetToken.actor, effectData);
 }
 async function turnStart({trigger: {entity: effect, token}}) {
-    let featureData = await compendiumUtils.getItemFromCompendium(constants.featurePacks.itemFeatures, 'Potion of Poison: Damage', {object: true, getDescription: true, translate: 'CHRISPREMADES.Macros.PotionOfPoison.Damage'});
-    if (!featureData) {
-        errors.missingPackItem();
-        return;
-    }
+    let feature = activityUtils.getActivityByIdentifier(fromUuidSync(effect.origin), 'potionOfPoisonDamage', {strict: true});
+    if (!feature) return;
     let numDice = effect.flags['chris-premades'].potionOfPoison.numDice;
     let rollFormula = numDice + 'd6[poison]';
-    featureData.system.damage.parts[0][0] = rollFormula;
-    let featureWorkflow = await workflowUtils.syntheticItemDataRoll(featureData, token.actor, [token]);
+    await activityUtils.setDamage(feature, rollFormula, ['poison']);
+    let featureWorkflow = await workflowUtils.syntheticActivityRoll(feature, [token]);
     if (featureWorkflow.failedSaves.size) return;
     if (numDice === 1) {
         await genericUtils.remove(effect);
@@ -52,7 +47,7 @@ async function turnStart({trigger: {entity: effect, token}}) {
 }
 export let potionOfPoison = {
     name: 'Potion of Poison',
-    version: '1.0.36',
+    version: '1.1.0',
     midi: {
         item: [
             {

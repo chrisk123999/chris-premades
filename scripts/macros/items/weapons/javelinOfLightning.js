@@ -1,10 +1,11 @@
-import {animationUtils, compendiumUtils, constants, dialogUtils, effectUtils, errors, genericUtils, itemUtils, templateUtils, workflowUtils} from '../../../utils.js';
+import {activityUtils, animationUtils, compendiumUtils, constants, dialogUtils, effectUtils, errors, genericUtils, itemUtils, templateUtils, workflowUtils} from '../../../utils.js';
 
 async function early({workflow}) {
+    if (activityUtils.getIdentifier(workflow.activity) !== genericUtils.getIdentifier(workflow.item)) return;
     if (!workflow.item.system.uses.value || !workflow.targets.size) return;
     let selection = await dialogUtils.confirm(workflow.item.name, genericUtils.format('CHRISPREMADES.Dialog.Use', {itemName: workflow.item.name}));
     if (!selection) return;
-    await genericUtils.update(workflow.item, {'system.uses.value': workflow.item.system.uses.value - 1});
+    await genericUtils.update(workflow.item, {'system.uses.spent': workflow.item.system.uses.spent + 1});
     let targetToken = workflow.targets.first();
     let ray = new Ray(workflow.token.center, targetToken.center);
     if (!ray.distance) return;
@@ -49,12 +50,9 @@ async function early({workflow}) {
     await effectUtils.createEffect(workflow.actor, effectData);
     let targets = Array.from(tokens).filter(i => i.document.uuid !== workflow.token.document.uuid && i.document.uuid !== targetToken.document.uuid);
     if (!targets.length) return;
-    let featureData = await compendiumUtils.getItemFromCompendium(constants.featurePacks.itemFeatures, 'Javelin of Lightning: Bolt', {object: true, getDescription: true, translate: 'CHRISPREMADES.Macros.JavelinOfLightning.Bolt'});
-    if (!featureData) {
-        errors.missingPackItem();
-        return;
-    }
-    await workflowUtils.syntheticItemDataRoll(featureData, workflow.actor, targets, {killAnim: true});
+    let feature = activityUtils.getActivityByIdentifier(workflow.item, 'javelinOfLightningBolt', {strict: true});
+    if (!feature) return;
+    await workflowUtils.syntheticActivityRoll(feature, targets);
     genericUtils.updateTargets(workflow.targets);
 }
 async function damage({workflow}) {
@@ -63,7 +61,8 @@ async function damage({workflow}) {
 }
 export let javelinOfLightning = {
     name: 'Javelin of Lightning',
-    version: '0.12.70',
+    version: '1.1.0',
+    hasAnimation: true,
     midi: {
         item: [
             {
@@ -92,11 +91,14 @@ export let javelinOfLightning = {
             'Javelin of Lightning': {
                 system: {
                     uses: {
-                        value: 1,
+                        spent: 0,
                         max: 1,
-                        per: 'dawn',
-                        recovery: '',
-                        prompt: false
+                        recovery: [
+                            {
+                                period: 'dawn',
+                                type: 'recoverAll'
+                            }
+                        ]
                     }
                 }
             }

@@ -80,7 +80,7 @@ async function create({trigger: {entity: effect, target, identifier}}) {
         changes: [
             {
                 key: 'system.traits.ci.value',
-                mode: 0,
+                mode: 2,
                 value: 'invisible',
                 priority: 20
             }
@@ -103,7 +103,7 @@ async function create({trigger: {entity: effect, target, identifier}}) {
 }
 export let lanternOfRevealing = {
     name: 'Lantern of Revealing',
-    version: '0.12.70',
+    version: '1.1.0',
     midi: {
         item: [
             {
