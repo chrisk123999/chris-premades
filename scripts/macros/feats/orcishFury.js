@@ -2,7 +2,7 @@ import {constants, dialogUtils, genericUtils, workflowUtils} from '../../utils.j
 
 async function damage({trigger: {entity: item}, workflow}) {
     if (!item.system.uses.value) return;
-    if (!constants.weaponAttacks.includes(workflow.item.system.actionType)) return;
+    if (!constants.weaponAttacks.includes(workflow.activity.actionType)) return;
     let selection = await dialogUtils.confirm(item.name, genericUtils.format('CHRISPREMADES.Dialog.Use', {itemName: item.name}));
     if (!selection) return;
     await workflowUtils.completeItemUse(item, {consumeUsage: true}, {configureDialog: false});
@@ -11,7 +11,7 @@ async function damage({trigger: {entity: item}, workflow}) {
 }
 export let orcishFury = {
     name: 'Orcish Fury: Extra Damage',
-    version: '0.12.70',
+    version: '1.1.0',
     midi: {
         actor: [
             {

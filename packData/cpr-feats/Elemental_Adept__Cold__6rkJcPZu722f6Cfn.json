@@ -1,0 +1,104 @@
+{
+  "name": "Elemental Adept (Cold)",
+  "type": "feat",
+  "system": {
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "source": {
+      "custom": "Player's Handbook",
+      "revision": 1,
+      "rules": "2024"
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "recovery": []
+    },
+    "type": {
+      "value": "feat",
+      "subtype": ""
+    },
+    "requirements": "",
+    "properties": [],
+    "prerequisites": {
+      "level": null
+    },
+    "activities": {},
+    "identifier": "elemental-adept-cold",
+    "enchant": {}
+  },
+  "flags": {
+    "obsidian": {
+      "source": {
+        "type": "feat"
+      }
+    },
+    "core": {
+      "sourceId": "Actor.iXZRAxrrFFxPX0g6.Item.9o1F1iT29nfWN3FH"
+    },
+    "midiProperties": {
+      "confirmTargets": "default",
+      "autoFailFriendly": false,
+      "autoSaveFriendly": false,
+      "critOther": false,
+      "offHandWeapon": false,
+      "magicdam": false,
+      "magiceffect": false,
+      "concentration": false,
+      "noConcentrationCheck": false,
+      "toggleEffect": false,
+      "ignoreTotalCover": false,
+      "idr": false,
+      "idi": false,
+      "idv": false,
+      "ida": false
+    },
+    "midi-qol": {
+      "rollAttackPerTarget": "default",
+      "effectActivation": false,
+      "itemCondition": "",
+      "reactionCondition": "",
+      "otherCondition": "",
+      "effectCondition": "",
+      "AoETargetType": "any",
+      "AoETargetTypeIncludeSelf": true,
+      "autoTarget": "default",
+      "removeAttackDamageButtons": "default"
+    },
+    "dnd5e": {
+      "riders": {
+        "activity": []
+      }
+    },
+    "chris-premades": {
+      "info": {
+        "name": "Elemental Adept (Cold)",
+        "version": "1.1.0",
+        "settings": [
+          "Elemental Adept"
+        ],
+        "identifier": "elementalAdeptC",
+        "source": "chris-premades"
+      },
+      "macros": {
+        "midi": {
+          "actor": [
+            "elementalAdeptC"
+          ]
+        }
+      },
+      "config": {
+        "damageTypes": [
+          "cold"
+        ]
+      }
+    }
+  },
+  "effects": [],
+  "img": "icons/magic/water/projectile-ice-chunk-blue.webp",
+  "folder": null,
+  "_id": "6rkJcPZu722f6Cfn",
+  "_key": "!items!6rkJcPZu722f6Cfn"
+}

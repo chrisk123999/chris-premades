@@ -20,7 +20,7 @@ async function useAdaptation({workflow}) {
         changes: [
             {
                 key: 'system.traits.dr.value',
-                mode: 0,
+                mode: 2,
                 value: damageType,
                 priority: 20
             }
@@ -33,15 +33,15 @@ async function useAdaptation({workflow}) {
     };
     await effectUtils.createEffect(workflow.actor, effectData, {identifier: 'planarAdaptation'});
 }
+// TODO: Once midi check damage stuff is verified to be working, can maybe just make this a check activity with no damage on save
 async function useCracker({workflow}) {
-    let roll = await workflow.actor.rollSkill('arc');
-    if (roll.total >= 20) return;
+    if (workflow.saveRolls[0].total >= workflow.saveDC) return;
     let damageRoll = await new CONFIG.Dice.DamageRoll('3d8[psychic]', {}, {type: 'psychic'}).evaluate();
     await workflowUtils.applyWorkflowDamage(workflow.token, damageRoll, 'psychic', [workflow.token], {flavor: workflow.item.name, itemCardId: workflow.itemCardId, sourceItem: workflow.item});
 }
 export let planarAdaptation = {
     name: 'Planar Wanderer: Planar Adaptation',
-    version: '0.12.70',
+    version: '1.1.0',
     midi: {
         item: [
             {
@@ -61,7 +61,7 @@ export let planarAdaptation = {
 };
 export let portalCracker = {
     name: 'Planar Wanderer: Portal Cracker',
-    version: '0.12.70',
+    version: '1.1.0',
     midi: {
         item: [
             {

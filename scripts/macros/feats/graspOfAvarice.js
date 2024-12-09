@@ -11,9 +11,12 @@ async function damage({trigger: {entity: item}, workflow}) {
     let selection = await dialogUtils.confirm(item.name, genericUtils.format('CHRISPREMADES.Dialog.Use', {itemName: item.name}));
     if (!selection) return;
     await combatUtils.setTurnCheck(item, 'graspOfAvarice');
-    let [damageFormula, damageType] = item.system.damage.parts[0];
+    let damageActivity = item.system.activities.getByType('damage')[0];
+    let damageFormula = damageActivity.damage.parts[0].formula;
+    let damageType = damageActivity.damage.parts[0].types.first();
     await workflowUtils.bonusDamage(workflow, damageFormula, {damageType});
-    await workflowUtils.syntheticItemRoll(item.clone({'system.damage.parts': []}, {keepId: true}), [targetToken], {config: {consumeUsage: true}, options: {configureDialog: false}});
+    await genericUtils.update(item, {'system.uses.spent': item.system.uses.spent + 1});
+    await item.displayCard();
     let damageApplied = workflow.damageRolls.at(-1).total;
     damageApplied *= (MidiQOL.getTraitMult(targetToken.actor, damageType) ?? 1);
     damageApplied = Math.floor(damageApplied);
@@ -35,8 +38,11 @@ async function damageApplication({trigger: {entity: item}, workflow}) {
     let targetToken = selection[0];
     let ditem = workflow.damageList.find(i => i.actorUuid === targetToken.actor.uuid);
     if (!ditem) return;
-    let [damageFormula, damageType] = item.system.damage.parts[0];
-    let extraDamageRoll = await new CONFIG.Dice.DamageRoll(damageFormula, item.getRollData(), {type: damageType}).evaluate();
+    let damageActivity = item.system.activities.getByType('damage')[0];
+    let damageFormula = damageActivity.damage.parts[0].formula;
+    let damageType = damageActivity.damage.parts[0].types.first();
+    let extraDamageRoll = await new Roll(damageFormula).evaluate();
+    // let extraDamageRoll = await new CONFIG.Dice.DamageRoll(damageFormula, item.getRollData(), {type: damageType}).evaluate();
     extraDamageRoll.toMessage({
         flavor: item.name,
         speaker: ChatMessage.implementation.getSpeaker({token: workflow.token})
@@ -54,7 +60,8 @@ async function damageApplication({trigger: {entity: item}, workflow}) {
             multiplier
         }
     });
-    await workflowUtils.syntheticItemRoll(item.clone({'system.damage.parts': []}, {keepId: true}), [targetToken], {config: {consumeUsage: true}, options: {configureDialog: false}});
+    await genericUtils.update(item, {'system.uses.spent': item.system.uses.spent + 1});
+    await item.displayCard();
     if (damageApplied) await workflowUtils.applyDamage([workflow.token], damageApplied, 'healing');
 }
 async function combatEnd({trigger: {entity: item}}) {
@@ -62,7 +69,7 @@ async function combatEnd({trigger: {entity: item}}) {
 }
 export let graspOfAvarice = {
     name: 'Baleful Scion: Grasp of Avarice',
-    version: '0.12.83',
+    version: '1.1.0',
     midi: {
         actor: [
             {

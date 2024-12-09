@@ -3,7 +3,7 @@ import {combatUtils, dialogUtils, genericUtils, workflowUtils} from '../../utils
 async function damage({trigger: {entity: item}, workflow}) {
     if (workflow.hitTargets.size !== 1 || workflow.item.system.actionType !== 'mwak') return;
     if (!combatUtils.perTurnCheck(item, 'savageAttacker')) return;
-    let numWeaponDamageRolls = workflow.item.system.damage.parts.length;
+    let numWeaponDamageRolls = workflow.activity.damage.parts.length;
     let damageTotal = 0;
     for (let i = 0; i < numWeaponDamageRolls; i++) {
         damageTotal += workflow.damageRolls[i].total;
@@ -31,7 +31,7 @@ async function combatEnd({trigger: {entity: item}}) {
 }
 export let savageAttacker = {
     name: 'Savage Attacker',
-    version: '0.12.70',
+    version: '1.1.0',
     midi: {
         actor: [
             {

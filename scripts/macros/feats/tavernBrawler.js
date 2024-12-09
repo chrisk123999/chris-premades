@@ -2,7 +2,7 @@ import {actorUtils, compendiumUtils, constants, dialogUtils, effectUtils, errors
 
 async function late({trigger: {entity: item}, workflow}) {
     if (workflow.hitTargets.size !== 1) return;
-    if (workflow.item.system.actionType !== 'mwak') return;
+    if (workflow.activity.actionType !== 'mwak') return;
     if (workflow.item.system.type !== 'improv' && !constants.unarmedAttacks.includes(genericUtils.getIdentifier(workflow.item))) return;
     if (actorUtils.hasUsedBonusAction(workflow.actor)) return;
     let grapplingEffects = effectUtils.getAllEffectsByIdentifier(workflow.actor, 'grappling');
@@ -24,7 +24,7 @@ async function late({trigger: {entity: item}, workflow}) {
 }
 export let tavernBrawler = {
     name: 'Tavern Brawler',
-    version: '0.12.51',
+    version: '1.1.0',
     midi: {
         actor: [
             {
@@ -49,7 +49,7 @@ export let tavernBrawler = {
 };
 export let tavernBrawlerUnarmedStrike = {
     name: 'Unarmed Strike (Tavern Brawler)',
-    version: '0.12.51',
+    version: '1.1.0',
     ddbi: {
         restrictedItems: {
             'Unarmed Strike 3': {

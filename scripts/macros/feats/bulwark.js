@@ -7,7 +7,7 @@ async function use({workflow}) {
 }
 export let bulwark = {
     name: 'Vigor of the Hill Giant: Bulwark',
-    version: '0.12.70',
+    version: '1.1.0',
     midi: {
         item: [
             {

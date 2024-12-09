@@ -1,10 +1,10 @@
 import {actorUtils, constants, effectUtils, genericUtils, itemUtils, rollUtils} from '../../utils.js';
-async function damage({trigger, workflow}) {
+async function damage({trigger: {entity: item}, workflow}) {
     if (!workflow.damageRolls || !workflow.actor || !workflow.item) return;
-    if (itemUtils.getConfig(trigger.entity, 'spellOnly')) {
+    if (itemUtils.getConfig(item, 'spellOnly')) {
         if (!(workflow.item.type === 'spell' || workflow.item.system.type.value === 'spellFeature')) return;
     }
-    let validTypes = itemUtils.getConfig(trigger.entity, 'damageTypes');
+    let validTypes = itemUtils.getConfig(item, 'damageTypes');
     let damageRolls = await Promise.all(workflow.damageRolls.map(async roll => {
         if (!validTypes.includes(roll.options.type)) return roll;
         let newFormula = '';
@@ -19,18 +19,18 @@ async function damage({trigger, workflow}) {
                 newFormula += i.expression + 'min2';
             }
         }
-        return await rollUtils.damageRoll(newFormula, workflow.actor, roll.options);
+        return await rollUtils.damageRoll(newFormula, workflow.item, roll.options);
     }));
     await workflow.setDamageRolls(damageRolls);
     if (!workflow.targets.size) return;
-    let mode = itemUtils.getConfig(trigger.entity, 'mode');
+    let mode = itemUtils.getConfig(item, 'mode');
     switch (mode) {
         case 'none': return;
         case 'ignoreResistance': {
             let effectData = {
-                name: trigger.entity.name,
-                img: trigger.entity.img,
-                origin: trigger.entity.uuid,
+                name: item.name,
+                img: item.img,
+                origin: item.uuid,
                 duration: {
                     seconds: 1
                 },
@@ -54,9 +54,9 @@ async function damage({trigger, workflow}) {
         }
         case 'ignoreImmunity': {
             let effectData = {
-                name: trigger.entity.name,
-                img: trigger.entity.img,
-                origin: trigger.entity.uuid,
+                name: item.name,
+                img: item.img,
+                origin: item.uuid,
                 duration: {
                     seconds: 1
                 },
@@ -80,9 +80,9 @@ async function damage({trigger, workflow}) {
         }
         case 'ignoreResistanceImmunity': {
             let effectData = {
-                name: trigger.entity.name,
-                img: trigger.entity.img,
-                origin: trigger.entity.uuid,
+                name: item.name,
+                img: item.img,
+                origin: item.uuid,
                 duration: {
                     seconds: 1
                 },
@@ -112,9 +112,9 @@ async function damage({trigger, workflow}) {
             await Promise.all(workflow.targets.map(async token => {
                 let downgrades = Array.from(token.actor.system.traits.di.value);
                 let effectData = {
-                    name: trigger.entity.name,
-                    img: trigger.entity.img,
-                    origin: trigger.entity.uuid,
+                    name: item.name,
+                    img: item.img,
+                    origin: item.uuid,
                     duration: {
                         seconds: 1
                     },
@@ -144,9 +144,9 @@ async function damage({trigger, workflow}) {
                 let downgradeImmunity = Array.from(token.actor.system.traits.di.value);
                 let downgradeResistance = Array.from(token.actor.system.traits.dr.value).filter(i => !downgradeImmunity.includes(i));
                 let effectData = {
-                    name: trigger.entity.name,
-                    img: trigger.entity.img,
-                    origin: trigger.entity.uuid,
+                    name: item.name,
+                    img: item.img,
+                    origin: item.uuid,
                     duration: {
                         seconds: 1
                     },
@@ -224,7 +224,7 @@ let spellOnly = {
 };
 export let elementalAdeptA = {
     name: 'Elemental Adept (Acid)',
-    version: '0.12.69',
+    version: '1.1.0',
     midi: {
         actor: [
             {

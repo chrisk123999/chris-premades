@@ -1,9 +1,10 @@
-import {compendiumUtils, constants, dialogUtils, errors, genericUtils, itemUtils, tokenUtils, workflowUtils} from '../../utils.js';
+import {activityUtils, compendiumUtils, constants, dialogUtils, errors, genericUtils, itemUtils, tokenUtils, workflowUtils} from '../../utils.js';
 
 async function use({workflow}) {
+    if (activityUtils.getIdentifier(workflow.activity) !== genericUtils.getIdentifier(workflow.item)) return;
     let spellId = itemUtils.getConfig(workflow.item, 'id');
     if (spellId?.length) return;
-    let validSpells = workflow.actor.items.filter(i => i.type === 'spell' && i.system.uses.max === 1 && ['atwill', 'innate'].includes(i.system.preparation?.mode) && i.system.uses.per === 'sr');
+    let validSpells = workflow.actor.items.filter(i => i.type === 'spell' && i.system.uses.max === 1 && ['atwill', 'innate'].includes(i.system.preparation?.mode) && i.system.uses.recovery.some(j => j.period === 'sr'));
     if (!validSpells?.length) {
         genericUtils.notify('CHRISPREMADES.Macros.AberrantDragonmark.NoValid', 'info');
         return;
@@ -27,15 +28,10 @@ async function late({trigger: {entity: item}, workflow}) {
         flavor: item.name
     });
     let isDamage = die.total % 2;
-    let featureData = await compendiumUtils.getItemFromCompendium(constants.featurePacks.featFeatures, 'Aberrant Dragonmark: Damage', {object: true, getDescription: true, translate: 'CHRISPREMADES.Macros.AberrantDragonmark.' + (isDamage ? 'Damage' : 'Healing')});
-    if (!featureData) {
-        errors.missingPackItem();
-        return;
-    }
-    featureData.system.damage.parts[0] = [
-        die.total + (isDamage ? '[force]' : '[temphp]'),
-        isDamage ? 'force' : 'temphp'
-    ];
+    let healingFeature = activityUtils.getActivityByIdentifier(workflow.item, 'aberrantDragonmarkHealing', {strict: true});
+    let damageFeature = activityUtils.getActivityByIdentifier(workflow.item, 'aberrantDragonmarkDamage', {strict: true});
+    if (!healingFeature || !damageFeature) return;
+    let feature = isDamage ? damageFeature : healingFeature;
     let targetToken = workflow.token;
     if (isDamage) {
         let nearbyTargets = tokenUtils.findNearby(workflow.token, 30, 'any');
@@ -43,11 +39,12 @@ async function late({trigger: {entity: item}, workflow}) {
             targetToken = nearbyTargets[Math.floor((Math.random() * nearbyTargets.length))];
         }
     }
-    await workflowUtils.syntheticItemDataRoll(featureData, workflow.actor, [targetToken]);
+    await activityUtils.setDamage(feature, die.total);
+    await workflowUtils.syntheticActivityRoll(feature, [targetToken]);
 }
 export let aberrantDragonmark = {
     name: 'Aberrant Dragonmark',
-    version: '0.12.70',
+    version: '1.1.0',
     midi: {
         item: [
             {

@@ -32,7 +32,8 @@ async function damageApplication({trigger: {entity: item}, workflow}) {
     let targetToken = selection[0];
     let ditem = workflow.damageList.find(i => i.actorUuid === targetToken.actor.uuid);
     if (!ditem) return;
-    let extraDamageRoll = await new CONFIG.Dice.DamageRoll('1d8[force]', {}, {type: 'force'}).evaluate();
+    let extraDamageRoll = await new Roll('1d8[force]').evaluate();
+    // let extraDamageRoll = await new CONFIG.Dice.DamageRoll('1d8[force]', {}, {type: 'force'}).evaluate();
     extraDamageRoll.toMessage({
         flavor: item.name,
         speaker: ChatMessage.implementation.getSpeaker({token: workflow.token})
@@ -57,7 +58,7 @@ async function combatEnd({trigger: {entity: item}}) {
 }
 export let stasisStrike = {
     name: 'Agent of Order: Stasis Strike',
-    version: '1.0.36',
+    version: '1.1.0',
     midi: {
         actor: [
             {

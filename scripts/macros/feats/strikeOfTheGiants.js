@@ -1,7 +1,7 @@
 import {combatUtils, dialogUtils, genericUtils, tokenUtils, workflowUtils} from '../../utils.js';
 
 async function damage({trigger: {entity: item}, workflow}) {
-    if (workflow.hitTargets.size !== 1 || workflow.item.system.actionType !== 'mwak') return;
+    if (workflow.hitTargets.size !== 1 || workflow.activity.actionType !== 'mwak') return;
     if (!item.system.uses.value) return;
     if (!combatUtils.perTurnCheck(item, 'strikeOfTheGiants')) return;
     let selection = await dialogUtils.confirm(item.name, genericUtils.format('CHRISPREMADES.Dialog.Use', {itemName: item.name}));
@@ -57,7 +57,7 @@ async function useStone({workflow}) {
 }
 export let strikeOfTheGiants = {
     name: 'Strike of the Giants',
-    version: '0.12.70',
+    version: '1.1.0',
     midi: {
         actor: [
             {
@@ -75,7 +75,7 @@ export let strikeOfTheGiants = {
         }
     ]
 };
-let version = '1.0.6';
+let version = '1.1.0';
 export let cloudStrike = {
     name: 'Strike of the Giants: Cloud Strike',
     version,

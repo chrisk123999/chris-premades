@@ -48,7 +48,11 @@ async function useResistance({workflow}) {
         ['DND5E.DamageLightning', 'lightning', {image: 'icons/magic/lightning/bolt-blue.webp'}],
         ['DND5E.DamagePoison', 'poison', {image: 'icons/magic/death/skull-poison-green.webp'}]
     ];
-    let damageType = await dialogUtils.buttonDialog(workflow.item.name, 'CHRISPREMADES.Dialog.DamageType', buttons);
+    // TODO: verify this is intended, otherwise show all buttons
+    buttons = buttons.filter(i => workflow.workflowOptions.damageDetail.some(j => j.type === i[1]));
+    let damageType;
+    if (buttons.length === 1) damageType = buttons[0][1];
+    if (!damageType) damageType = await dialogUtils.buttonDialog(workflow.item.name, 'CHRISPREMADES.Dialog.DamageType', buttons);
     if (!damageType) return;
     let effectData = {
         name: workflow.item.name,
@@ -60,7 +64,7 @@ async function useResistance({workflow}) {
         changes: [
             {
                 key: 'system.traits.dr.value',
-                mode: 0,
+                mode: 2,
                 value: damageType,
                 priority: 20
             }
@@ -75,7 +79,7 @@ async function useResistance({workflow}) {
 }
 export let chromaticInfusion = {
     name: 'Gift of the Chromatic Dragon: Chromatic Infusion',
-    version: '0.12.70',
+    version: '1.1.0',
     midi: {
         item: [
             {
@@ -88,7 +92,7 @@ export let chromaticInfusion = {
 };
 export let reactiveResistance = {
     name: 'Gift of the Chromatic Dragon: Reactive Resistance',
-    version: '0.12.70',
+    version: '1.1.0',
     midi: {
         item: [
             {

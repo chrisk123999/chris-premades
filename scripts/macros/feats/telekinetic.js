@@ -12,7 +12,7 @@ async function use({workflow}) {
 }
 export let telekineticShove = {
     name: 'Telekinetic: Shove',
-    version: '0.12.70',
+    version: '1.1.0',
     midi: {
         item: [
             {

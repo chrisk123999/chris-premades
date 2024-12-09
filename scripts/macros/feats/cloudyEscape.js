@@ -10,7 +10,8 @@ async function use({workflow}) {
 }
 export let cloudyEscape = {
     name: 'Guile of the Cloud Giant: Cloudy Escape',
-    version: '0.12.70',
+    version: '1.1.0',
+    hasAnimation: true,
     midi: {
         item: [
             {

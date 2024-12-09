@@ -1,7 +1,7 @@
 import {actorUtils, combatUtils, constants, crosshairUtils, dialogUtils, effectUtils, genericUtils, workflowUtils} from '../../utils.js';
 
 async function late({trigger: {entity: item}, workflow}) {
-    if (workflow.hitTargets.size !== 1 || !workflow.damageRoll || !constants.attacks.includes(workflow.item.system.actionType)) return;
+    if (workflow.hitTargets.size !== 1 || !workflow.damageRoll || !constants.attacks.includes(workflow.activity.actionType)) return;
     if (!workflowUtils.getDamageTypes(workflow.damageRolls).has('bludgeoning')) return;
     let targetToken = workflow.hitTargets.first();
     if (actorUtils.getSize(targetToken.actor) > actorUtils.getSize(workflow.actor) + 1) return;
@@ -33,11 +33,11 @@ async function late({trigger: {entity: item}, workflow}) {
     let xOffset = targetToken.document.width * canvas.grid.size / 2;
     let yOffset = targetToken.document.height * canvas.grid.size / 2;
     await genericUtils.update(targetToken.document, {x: (position.x ?? targetToken.document.center.x) - xOffset, y: (position.y ?? targetToken.document.center.y) - yOffset});
-    await item.use();
+    await item.displayCard();
 }
 async function lateCrit({trigger: {entity: item}, workflow}) {
     if (!workflow.isCritical) return;
-    if (workflow.hitTargets.size !== 1 || !workflow.damageRoll || !constants.attacks.includes(workflow.item.system.actionType)) return;
+    if (workflow.hitTargets.size !== 1 || !workflow.damageRoll || !constants.attacks.includes(workflow.activity.actionType)) return;
     if (!workflowUtils.getDamageTypes(workflow.damageRolls).has('bludgeoning')) return;
     let effectData = {
         name: item.name,
@@ -61,10 +61,11 @@ async function lateCrit({trigger: {entity: item}, workflow}) {
         }
     };
     await effectUtils.createEffect(workflow.hitTargets.first().actor, effectData);
+    await item.displayCard();
 }
 export let crusher = {
     name: 'Crusher',
-    version: '0.12.70',
+    version: '1.1.0',
     midi: {
         actor: [
             {
@@ -77,7 +78,7 @@ export let crusher = {
 };
 export let crusherCrit = {
     name: 'Crusher: Critical',
-    version: '0.12.70',
+    version: '1.1.0',
     midi: {
         actor: [
             {

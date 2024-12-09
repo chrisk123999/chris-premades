@@ -1,4 +1,4 @@
-let version = '0.12.70';
+let version = '1.1.0';
 export let scionChaotic = {
     name: 'Scion of the Outer Planes (Chaotic Outer Plane)',
     version

@@ -1,6 +1,7 @@
-import {compendiumUtils, constants, effectUtils, itemUtils, workflowUtils} from '../../utils.js';
+import {activityUtils, compendiumUtils, constants, effectUtils, genericUtils, itemUtils, workflowUtils} from '../../utils.js';
 
 async function use({workflow}) {
+    if (activityUtils.getIdentifier(workflow.activity) !== genericUtils.getIdentifier(workflow.item)) return;
     let effectData = {
         name: workflow.item.name,
         img: workflow.item.img,
@@ -41,13 +42,13 @@ async function use({workflow}) {
 async function turnStart({trigger: {entity: effect, token, target}}) {
     let originItem = await fromUuid(effect.origin);
     if (!originItem) return;
-    let featureData = await compendiumUtils.getItemFromCompendium(constants.featurePacks.featFeatures, 'Maelstrom Aura', {object: true, getDescription: true, translate: 'CHRISPREMADES.Macros.MaelstromAura.Aura', flatDC: itemUtils.getSaveDC(originItem)});
-    if (!featureData) return;
-    await workflowUtils.syntheticItemDataRoll(featureData, token.actor, [target]);
+    let feature = activityUtils.getActivityByIdentifier(originItem, 'maelstromAuraSave', {strict: true});
+    if (!feature) return;
+    await workflowUtils.syntheticActivityRoll(feature, [target]);
 }
 export let maelstromAura = {
     name: 'Soul of the Storm Giant: Maelstrom Aura',
-    version: '0.12.70',
+    version: '1.1.0',
     midi: {
         item: [
             {

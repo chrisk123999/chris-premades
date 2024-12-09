@@ -1,0 +1,143 @@
+{
+  "name": "Heavy Armor Master",
+  "type": "feat",
+  "system": {
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "source": {
+      "book": "Player's Handbook",
+      "page": "167",
+      "license": "",
+      "custom": "",
+      "revision": 1,
+      "rules": "2024"
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "recovery": []
+    },
+    "type": {
+      "value": "feat",
+      "subtype": ""
+    },
+    "properties": [],
+    "requirements": "",
+    "prerequisites": {
+      "level": null
+    },
+    "activities": {},
+    "identifier": "heavy-armor-master",
+    "enchant": {}
+  },
+  "flags": {
+    "midi-qol": {
+      "removeAttackDamageButtons": "default",
+      "forceCEOff": true,
+      "rollAttackPerTarget": "default",
+      "effectActivation": false,
+      "itemCondition": "",
+      "effectCondition": "",
+      "AoETargetType": "any",
+      "AoETargetTypeIncludeSelf": true,
+      "autoTarget": "default",
+      "reactionCondition": "",
+      "otherCondition": ""
+    },
+    "midiProperties": {
+      "confirmTargets": "default",
+      "autoFailFriendly": false,
+      "autoSaveFriendly": false,
+      "critOther": false,
+      "offHandWeapon": false,
+      "magicdam": false,
+      "magiceffect": false,
+      "concentration": false,
+      "noConcentrationCheck": false,
+      "toggleEffect": false,
+      "ignoreTotalCover": false,
+      "idr": false,
+      "idi": false,
+      "idv": false,
+      "ida": false
+    },
+    "dnd5e": {
+      "riders": {
+        "activity": []
+      }
+    },
+    "chris-premades": {
+      "info": {
+        "name": "Heavy Armor Master",
+        "version": "1.1.0",
+        "identifier": "heavyArmorMaster",
+        "source": "chris-premades"
+      }
+    }
+  },
+  "effects": [
+    {
+      "name": "Heavy Armor Master",
+      "origin": "Actor.kDqmxm3eMOEcv2gD.Item.j5togf4lruBTRp5d",
+      "duration": {
+        "rounds": null,
+        "startTime": null,
+        "seconds": null,
+        "combat": null,
+        "turns": null,
+        "startRound": 249,
+        "startTurn": 0
+      },
+      "disabled": false,
+      "flags": {
+        "dnd5e": {},
+        "dae": {
+          "disableCondition": "",
+          "disableIncapacitated": false,
+          "stackable": "noneName",
+          "showIcon": false,
+          "durationExpression": "",
+          "macroRepeat": "none",
+          "specialDuration": []
+        },
+        "core": {
+          "overlay": false
+        }
+      },
+      "img": "icons/environment/people/infantry-armored.webp",
+      "_id": "N88xnSzt8VDZyr4w",
+      "type": "base",
+      "system": {},
+      "changes": [
+        {
+          "key": "system.traits.dm.midi.non-magical-physical",
+          "mode": 2,
+          "value": "dae.eval(attributes.ac.equippedArmor.system.type.value === 'heavy' ? -3 : 0)",
+          "priority": 20
+        }
+      ],
+      "description": "",
+      "tint": "#ffffff",
+      "transfer": true,
+      "statuses": [],
+      "sort": 0,
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "coreVersion": "12.331",
+        "systemId": "dnd5e",
+        "systemVersion": "4.1.2",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!items.effects!vQULODKw7ub3k9GL.N88xnSzt8VDZyr4w"
+    }
+  ],
+  "img": "icons/environment/people/infantry-armored.webp",
+  "folder": null,
+  "_id": "vQULODKw7ub3k9GL",
+  "_key": "!items!vQULODKw7ub3k9GL"
+}

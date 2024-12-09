@@ -8,7 +8,7 @@ async function hit({workflow}) {
 }
 export let martialAdept = {
     name: 'Martial Adept',
-    version: '1.0.7',
+    version: '1.1.0',
     midi: {
         actor: [
             {

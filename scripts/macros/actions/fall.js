@@ -54,7 +54,7 @@ async function use({trigger, workflow}) {
             let reaction = await dialogUtils.buttonDialog(workflow.item.name, 'CHRISPREMADES.Macros.Fall.Reaction', inputs, {displayAsRows: true});
             if (!reaction) break;
             let check = await workflow.actor.rollSkill({skill: reaction}, {}, {flavor: CONFIG.DND5E.skills[reaction].label + ' ' + genericUtils.translate('CHRISPREMADES.Macros.Fall.SkillCheck')});
-            if (check.total >= 15) damageFormula = 'floor(' + damageFormula + ' / 2)';
+            if (check[0].total >= 15) damageFormula = 'floor(' + damageFormula + ' / 2)';
             await actorUtils.setReactionUsed(workflow.actor);
             break;
         }
@@ -71,7 +71,7 @@ async function use({trigger, workflow}) {
                 break;
             }
             let save = await targetToken.actor.rollSavingThrow({ability: 'dex'}, {}, {flavor: genericUtils.translate('CHRISPREMADES.Macros.Fall.Save'), skipDialog: true});
-            if (save.total < 15) {
+            if (save[0].total < 15) {
                 damageFormula = 'floor(' + damageFormula + ' / 2)';
                 otherTarget = true;
                 if (targetSize - sourceSize >= 2) break;

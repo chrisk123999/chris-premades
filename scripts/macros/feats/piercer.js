@@ -2,7 +2,7 @@ import {DialogApp} from '../../applications/dialog.js';
 import {combatUtils, constants, genericUtils, workflowUtils} from '../../utils.js';
 
 async function damageReroll({trigger: {entity: item}, workflow}) {
-    if (workflow.hitTargets.size !== 1 || !workflow.damageRoll || !constants.attacks.includes(workflow.item.system.actionType)) return;
+    if (workflow.hitTargets.size !== 1 || !workflow.damageRoll || !constants.attacks.includes(workflow.activity.actionType)) return;
     if (!workflowUtils.getDamageTypes(workflow.damageRolls).has('piercing')) return;
     if (!combatUtils.perTurnCheck(item, 'piercer')) return;
     let newDamageRolls = workflow.damageRolls;
@@ -54,7 +54,8 @@ async function damageReroll({trigger: {entity: item}, workflow}) {
         if (worstInd !== undefined) break;
     }
     let damageFormula = '1d' + existingRoll.faces + existingRoll.modifiers + (existingRoll.flavor?.length ? '[' + existingRoll.flavor + ']' : '');
-    let newRoll = await new CONFIG.Dice.DamageRoll(damageFormula, existingRoll.data, existingRoll.options).evaluate();
+    let newRoll = await new Roll(damageFormula, existingRoll.data).evaluate();
+    //let newRoll = await new CONFIG.Dice.DamageRoll(damageFormula, existingRoll.data, existingRoll.options).evaluate();
     await newRoll.toMessage({
         speaker: ChatMessage.implementation.getSpeaker({token: workflow.token}),
         flavor: genericUtils.format('CHRISPREMADES.Generic.Rerolling', {origDie: 'd' + existingRoll.faces, origResult: existingRoll.results[worstInd]}),
@@ -65,7 +66,7 @@ async function damageReroll({trigger: {entity: item}, workflow}) {
 }
 async function damageCrit({trigger: {entity: item}, workflow}) {
     if (!workflow.isCritical) return;
-    if (workflow.hitTargets.size !== 1 || !workflow.damageRoll || !constants.attacks.includes(workflow.item.system.actionType)) return;
+    if (workflow.hitTargets.size !== 1 || !workflow.damageRoll || !constants.attacks.includes(workflow.activity.actionType)) return;
     if (!workflowUtils.getDamageTypes(workflow.damageRolls).has('piercing')) return;
     let piercingRolls = workflow.damageRolls.filter(i => i.options.type === 'piercing');
     if (!piercingRolls.length) return;
@@ -75,14 +76,14 @@ async function damageCrit({trigger: {entity: item}, workflow}) {
     }, 0)));
     let bonusDamage = '1d' + bestDie + '[piercing]';
     await workflowUtils.bonusDamage(workflow, bonusDamage, {ignoreCrit: true, damageType: 'piercing'});
-    await item.use();
+    await item.displayCard();
 }
 async function combatEnd({trigger: {entity: item}}) {
     await combatUtils.setTurnCheck(item, 'piercer', true);
 }
 export let piercerReroll = {
     name: 'Piercer: Reroll Damage',
-    version: '0.12.83',
+    version: '1.1.0',
     midi: {
         actor: [
             {
@@ -102,7 +103,7 @@ export let piercerReroll = {
 };
 export let piercerCrit = {
     name: 'Piercer: Critical Hit',
-    version: '0.12.83',
+    version: '1.1.0',
     midi: {
         actor: [
             {

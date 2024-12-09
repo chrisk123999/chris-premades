@@ -22,7 +22,7 @@ async function helper(item, ditem, token, targetToken) {
         if (!selection) return;
     }
     await workflowUtils.completeItemUse(item, {consumeUsage: true}, {configureDialog: false});
-    let roll = await new Roll('1d10 + @prof', item.actor.getRollData()).evaluate();
+    let roll = await new Roll('1d10 + @prof', item.getRollData()).evaluate();
     roll.toMessage({
         speaker: ChatMessage.implementation.getSpeaker({actor: item.actor}),
         flavor: item.name
@@ -32,7 +32,7 @@ async function helper(item, ditem, token, targetToken) {
 }
 export let soothePain = {
     name: 'Righteous Heritor: Soothe Pain',
-    version: '0.12.70',
+    version: '1.1.0',
     midi: {
         actor: [
             {

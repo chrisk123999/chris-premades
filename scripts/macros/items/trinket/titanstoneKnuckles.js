@@ -31,7 +31,6 @@ export let titanstoneKnucklesA = {
             },
             uses: {
                 spent: 0,
-                per: 'lr',
                 max: 1,
                 recovery: [
                     {

@@ -16,7 +16,7 @@ async function use({workflow}) {
         name: spellData.name + ' (' + workflow.item.name + ')',
         system: {
             'activation.type': 'bonus',
-            uses: {max: 1, per: 'lr', recovery: '', value: 1},
+            uses: {max: 1, recovery: [{period: 'lr', type: 'recoverAll'}], spent: 0},
             'preparation.mode': 'atwill'
         },
         flags: {
@@ -43,7 +43,7 @@ async function use({workflow}) {
 }
 export let imbueCard = {
     name: 'Cartomancer: Hidden Ace - Imbue Card',
-    version: '0.12.70',
+    version: '1.1.0',
     midi: {
         item: [
             {

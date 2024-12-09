@@ -7,7 +7,7 @@ async function use({trigger, workflow}) {
     let unconscious = effectUtils.getEffectByStatusID(targetActor, 'unconscious');
     if (!unconscious) return;
     let roll = await workflow.actor.rollSkill({skill: 'med'});
-    if (roll.total < 10 || !workflow.targets.size) return;
+    if (roll[0].total < 10 || !workflow.targets.size) return;
     let remarkableRecovery = itemUtils.getItemByIdentifier(targetActor, 'remarkableRecovery');
     if (!remarkableRecovery) {
         await genericUtils.update(targetActor, {'system.attributes.death.success': 0, 'system.attributes.death.failure': 0});

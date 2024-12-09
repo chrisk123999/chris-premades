@@ -1,7 +1,7 @@
 import {actorUtils, constants, dialogUtils, effectUtils, genericUtils, itemUtils, rollUtils, socketUtils} from '../../utils.js';
 
 async function early({trigger: {entity: item}, workflow}) {
-    if (!constants.attacks.includes(workflow.item.system.actionType)) return;
+    if (!constants.attacks.includes(workflow.activity.actionType)) return;
     if (!workflow.targets.size) return;
     let grapplingEffects = effectUtils.getAllEffectsByIdentifier(workflow.actor, 'grappling');
     if (!grapplingEffects.length) return;
@@ -50,7 +50,7 @@ async function use({workflow}) {
 }
 export let grappler = {
     name: 'Grappler',
-    version: '0.12.51',
+    version: '1.1.0',
     midi: {
         actor: [
             {
