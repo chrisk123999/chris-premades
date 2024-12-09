@@ -2,7 +2,7 @@ import {rollUtils} from '../../utils.js';
 async function damage({trigger, workflow}) {
     let flagData = workflow.item.flags['chris-premades']?.setDamageRoll;
     if (!flagData.formula) return;
-    let roll = await rollUtils.damageRoll(String(flagData.formula), workflow.actor);
+    let roll = await rollUtils.damageRoll(String(flagData.formula), workflow.actor, workflow.damageRolls[0].options);
     await workflow.setDamageRolls([roll]);
 }
 export let setDamageRoll = {

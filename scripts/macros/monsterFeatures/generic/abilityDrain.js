@@ -5,6 +5,8 @@ async function use({workflow}) {
     let config = itemUtils.getGenericFeatureConfig(workflow.item, 'abilityDrain');
     let ability = config.ability;
     let formula = config.formula;
+    let checkSave = config.checkSave;
+    if (checkSave && !workflow.failedSaves.size) return;
     let drainRoll = await new Roll(formula).evaluate();
     drainRoll.toMessage({
         flavor: workflow.item.name,
@@ -97,6 +99,12 @@ export let abilityDrain = {
             type: 'select',
             default: 'str',
             options: constants.abilityOptions
+        },
+        {
+            value: 'checkSave',
+            label: 'CHRISPREMADES.Config.CheckSave',
+            type: 'checkbox',
+            default: true
         }
     ]
 };

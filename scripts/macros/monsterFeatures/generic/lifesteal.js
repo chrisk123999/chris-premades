@@ -34,7 +34,7 @@ async function use({trigger, workflow}) {
             testhp += formulaRoll.total;
         } else {
             damageItem.damageDetails.defaultDamage.forEach(i => {
-                if ((!damageTypes.some(i => workflowDamageTypes.has(i)))) return;
+                if (!damageTypes.includes(i.type)) return;
                 totalHeal += i.value;
                 testhp += i.value;
             });
