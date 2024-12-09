@@ -1,3 +1,11 @@
+# 1.0.49 Release:
+## Bug Fixes:
+- Medkit Title Bar Icon
+- DMG Cleave
+- Lifesteal
+## Update Notes:
+- Added a check saves option to the Ability Drain generic monster feature (on by default).
+
 # 1.0.48 Release:
 ## Bug Fixes:
 - Auto Push Generic Monster Feature

@@ -1,8 +1,8 @@
-import * as macros from '../macros.js';
 import {actorUtils, compendiumUtils, dialogUtils, genericUtils, itemUtils} from '../utils.js';
 import {ItemMedkit} from '../applications/medkit-item.js';
 import {EffectMedkit} from '../applications/medkit-effect.js';
 import {ActorMedkit} from '../applications/medkit-actor.js';
+import {custom} from '../events/custom.js';
 export function createHeaderButton(config, buttons) {
     // eslint-disable-next-line no-undef
     if (config instanceof Compendium) {
@@ -60,7 +60,7 @@ export async function renderItemSheet(app, [elem], options) {
         case 1: {
             if (source === 'chris-premades') {
                 let identifier = genericUtils.getIdentifier(item);
-                if (macros[identifier].config) {
+                if (custom.getMacro(identifier)?.config) {
                     headerButton.style.color = 'dodgerblue';
                 } else {
                     headerButton.style.color = 'green';

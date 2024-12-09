@@ -33,7 +33,7 @@ async function use({trigger, workflow}) {
             img: workflow.item.img,
             origin: workflow.item.uuid,
             duration: {
-                seconds: 1
+                seconds: 2
             },
             changes: [
                 {
