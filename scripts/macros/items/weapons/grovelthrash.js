@@ -6,7 +6,6 @@ async function skill({trigger: {entity: item, skillId}}) {
     return {label: 'CHRISPREMADES.Macros.Grovelthrash.Insight', type: 'advantage'};
 }
 async function damage({workflow}) {
-    if (activityUtils.getIdentifier(workflow.activity) !== 'grovelthrash') return;
     if (workflow.hitTargets.size !== 1) return;
     if (genericUtils.getIdentifier(workflow.item) === 'grovelthrash2') {
         if (workflow.actor.system.attributes.hp.value < workflow.actor.system.attributes.hp.max / 2) {
@@ -49,7 +48,8 @@ export let grovelthrash = {
             {
                 pass: 'damageRollComplete',
                 macro: damage,
-                priority: 50
+                priority: 50,
+                activities: ['grovelthrash']
             }
         ],
         actor: [

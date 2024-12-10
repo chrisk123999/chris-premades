@@ -1,6 +1,5 @@
 import {activityUtils, combatUtils, dialogUtils, effectUtils, genericUtils, itemUtils, regionUtils, templateUtils, workflowUtils} from '../../utils.js';
 async function early({trigger, workflow}) {
-    if (activityUtils.getIdentifier(workflow.activity) !== genericUtils.getIdentifier(workflow.item)) return;
     let concentration = effectUtils.getConcentrationEffect(workflow.actor, workflow.item);
     let shape = await dialogUtils.buttonDialog(workflow.item.name, 'CHRISPREMADES.Macros.WallOfFire.Shape', [['REGION.SHAPES.circle', 'circle'], ['DND5E.TargetLine', 'line']], {displayAsRows: true});
     if (!shape) return;
@@ -396,7 +395,8 @@ export let wallOfFire = {
             {
                 pass: 'preambleComplete',
                 macro: early,
-                priority: 50
+                priority: 50,
+                activities: ['wallOfFire']
             }
         ]
     },

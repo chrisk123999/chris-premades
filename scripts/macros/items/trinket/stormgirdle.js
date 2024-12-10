@@ -1,6 +1,5 @@
 import {activityUtils, compendiumUtils, constants, effectUtils, genericUtils, itemUtils, rollUtils} from '../../../utils.js';
 async function use({trigger, workflow}) {
-    if (activityUtils.getIdentifier(workflow.activity) !== genericUtils.getIdentifier(workflow.item)) return;
     if (!itemUtils.getEquipmentState(workflow.item)) return;
     let effectData = {
         name: workflow.item.name + ': ' + genericUtils.translate('CHRISPREMADES.Macros.Stormgridle.Avatar'),
@@ -81,7 +80,8 @@ export let stormgirdleD = {
             {
                 pass: 'rollFinished',
                 macro: use,
-                priority: 50
+                priority: 50,
+                activities: ['stormgirdleD']
             }
         ]
     }
@@ -89,12 +89,30 @@ export let stormgirdleD = {
 export let stormgirdleA = {
     name: 'Stormgirdle (Awakened)',
     version: stormgirdleD.version,
-    midi: stormgirdleD.midi
+    midi: {
+        item: [
+            {
+                pass: 'rollFinished',
+                macro: use,
+                priority: 50,
+                activities: ['stormgirdleA']
+            }
+        ]
+    }
 };
 export let stormgirdleE = {
     name: 'Stormgirdle (Exalted)',
     version: stormgirdleD.version,
-    midi: stormgirdleD.midi,
+    midi: {
+        item: [
+            {
+                pass: 'rollFinished',
+                macro: use,
+                priority: 50,
+                activities: ['stormgirdleE']
+            }
+        ]
+    },
     equipment: {
         controlWeather: {
             name: 'Control Weather',

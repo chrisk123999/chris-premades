@@ -1,89 +1,87 @@
 import {activityUtils, compendiumUtils, constants, dialogUtils, effectUtils, errors, genericUtils, itemUtils, socketUtils, tokenUtils, workflowUtils} from '../../utils.js';
 async function use({trigger, workflow}) {
-    let activityIdentifier = activityUtils.getIdentifier(workflow.activity);
-    if (activityIdentifier === genericUtils.getIdentifier(workflow.item)) {
-        if (!workflow.targets.size) return;
-        let targetEffectData = {
-            name: workflow.item.name,
-            img: workflow.item.img,
-            duration: itemUtils.convertDuration(workflow.item),
-            origin: workflow.item.uuid,
-            changes: [
-                {
-                    key: 'system.traits.dr.all',
-                    mode: 0,
-                    value: 1,
-                    priority: 20
+    if (!workflow.targets.size) return;
+    let targetEffectData = {
+        name: workflow.item.name,
+        img: workflow.item.img,
+        duration: itemUtils.convertDuration(workflow.item),
+        origin: workflow.item.uuid,
+        changes: [
+            {
+                key: 'system.traits.dr.all',
+                mode: 0,
+                value: 1,
+                priority: 20
+            },
+            {
+                key: 'system.attributes.ac.bonus',
+                mode: 2,
+                value: '+1',
+                priority: 20
+            },
+            {
+                key: 'system.bonuses.abilities.save',
+                mode: 2,
+                value: '+1',
+                priority: 20
+            }
+        ],
+        flags: {
+            'chris-premades': {
+                wardingBond: {
+                    bondUuid: workflow.token.document.uuid,
+                    maxDistance: itemUtils.getConfig(workflow.item, 'maxDistance')
                 },
-                {
-                    key: 'system.attributes.ac.bonus',
-                    mode: 2,
-                    value: '+1',
-                    priority: 20
-                },
-                {
-                    key: 'system.bonuses.abilities.save',
-                    mode: 2,
-                    value: '+1',
-                    priority: 20
-                }
-            ],
-            flags: {
-                'chris-premades': {
-                    wardingBond: {
-                        bondUuid: workflow.token.document.uuid,
-                        maxDistance: itemUtils.getConfig(workflow.item, 'maxDistance')
-                    },
-                    macros: {
-                        movement: ['wardingBondTarget'],
-                        midi: {
-                            actor: ['wardingBondTarget']
-                        }
+                macros: {
+                    movement: ['wardingBondTarget'],
+                    midi: {
+                        actor: ['wardingBondTarget']
                     }
                 }
             }
-        };
-        let casterEffectData = {
-            name: workflow.item.name,
-            img: workflow.item.img,
-            duration: targetEffectData.duration,
-            origin: workflow.item.uuid,
-            flags: {
-                'chris-premades': {
-                    wardingBond: {
-                        bondUuids: Array.from(workflow.targets).map(i => i.document.uuid),
-                        maxDistance: itemUtils.getConfig(workflow.item, 'maxDistance')
-                    },
-                    macros: {
-                        movement: ['wardingBondSource']
-                    }
+        }
+    };
+    let casterEffectData = {
+        name: workflow.item.name,
+        img: workflow.item.img,
+        duration: targetEffectData.duration,
+        origin: workflow.item.uuid,
+        flags: {
+            'chris-premades': {
+                wardingBond: {
+                    bondUuids: Array.from(workflow.targets).map(i => i.document.uuid),
+                    maxDistance: itemUtils.getConfig(workflow.item, 'maxDistance')
+                },
+                macros: {
+                    movement: ['wardingBondSource']
                 }
             }
-        };
-        let feature = activityUtils.getActivityByIdentifier(workflow.item, 'wardingBondDismiss', {strict: true});
-        if (!feature) return;
-        let effect = await effectUtils.createEffect(workflow.actor, casterEffectData, {
-            identifier: 'wardingBondSource', 
-            vae: [{
-                type: 'use', 
-                name: feature.name, 
-                identifier: 'wardingBond', 
-                activityIdentifier: 'wardingBondDismiss'
-            }],
-            unhideActivities: {
-                itemUuid: workflow.item.uuid,
-                activityIdentifiers: ['wardingBondDismiss'],
-                favorite: true
-            }
-        });
-        await Promise.all(workflow.targets.map(async token => {
-            await effectUtils.createEffect(token.actor, targetEffectData, {identifier: 'wardingBondTarget', parentEntity: effect, interdependent: true});
-        }));
-    } else if (activityIdentifier === 'wardingBondDismiss') {
-        let effect = effectUtils.getEffectByIdentifier(workflow.actor, 'wardingBondSource');
-        if (!effect) return;
-        await genericUtils.remove(effect);
-    }
+        }
+    };
+    let feature = activityUtils.getActivityByIdentifier(workflow.item, 'wardingBondDismiss', {strict: true});
+    if (!feature) return;
+    let effect = await effectUtils.createEffect(workflow.actor, casterEffectData, {
+        identifier: 'wardingBondSource', 
+        vae: [{
+            type: 'use', 
+            name: feature.name, 
+            identifier: 'wardingBond', 
+            activityIdentifier: 'wardingBondDismiss'
+        }],
+        unhideActivities: {
+            itemUuid: workflow.item.uuid,
+            activityIdentifiers: ['wardingBondDismiss'],
+            favorite: true
+        }
+    });
+    await Promise.all(workflow.targets.map(async token => {
+        await effectUtils.createEffect(token.actor, targetEffectData, {identifier: 'wardingBondTarget', parentEntity: effect, interdependent: true});
+    }));
+}
+async function dismiss({workflow}) {
+    let effect = effectUtils.getEffectByIdentifier(workflow.actor, 'wardingBondSource');
+    if (!effect) return;
+    await genericUtils.remove(effect);
 }
 async function onHit({trigger: {token, entity: effect}, workflow}) {
     if (workflow.hitTargets.size === 0 || !workflow.damageList) return;
@@ -131,7 +129,6 @@ async function movedSource({trigger}) {
     await genericUtils.remove(trigger.entity);
 }
 async function early({workflow}) {
-    if (activityUtils.getIdentifier(workflow.activity) !== 'wardingBondDismiss') return;
     workflowUtils.skipDialog(workflow);
 }
 export let wardingBond = {
@@ -142,12 +139,20 @@ export let wardingBond = {
             {
                 pass: 'rollFinished',
                 macro: use,
-                priority: 50
+                priority: 50,
+                activities: ['wardingBond']
+            },
+            {
+                pass: 'rollFinished',
+                macro: dismiss,
+                priority: 50,
+                activities: ['wardingBondDismiss']
             },
             {
                 pass: 'preTargeting',
                 macro: early,
-                priority: 50
+                priority: 50,
+                activities: ['wardingBondDismiss']
             }
         ]
     },

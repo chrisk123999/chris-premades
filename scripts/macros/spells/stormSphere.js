@@ -1,7 +1,6 @@
 import {activityUtils, animationUtils, compendiumUtils, constants, effectUtils, errors, genericUtils, itemUtils, templateUtils, workflowUtils} from '../../utils.js';
 
 async function use({workflow}) {
-    if (activityUtils.getIdentifier(workflow.activity) !== genericUtils.getIdentifier(workflow.item)) return;
     let concentrationEffect = effectUtils.getConcentrationEffect(workflow.actor, workflow.item);
     let template = workflow.template;
     if (!template) {
@@ -66,7 +65,6 @@ async function endTurn({trigger: {entity: template, castData, token}}) {
     await workflowUtils.syntheticActivityRoll(feature, [token], {atLevel: castData.castLevel});
 }
 async function early({workflow}) {
-    if (activityUtils.getIdentifier(workflow.activity) !== 'stormSphereBolt') return;
     let effect = effectUtils.getEffectByIdentifier(workflow.actor, 'stormSphere');
     if (workflow.activity.tempFlag) {
         workflow.activity.tempFlag = false;
@@ -88,7 +86,6 @@ async function early({workflow}) {
     return true;
 }
 async function late({workflow}) {
-    if (activityUtils.getIdentifier(workflow.activity) !== 'stormSphereBolt') return;
     let effect = effectUtils.getEffectByIdentifier(workflow.actor, 'stormSphere');
     if (!effect) return;
     let {templateUuid, alreadyIgnores, playAnimation} = effect.flags['chris-premades'].stormSphere;
@@ -108,17 +105,20 @@ export let stormSphere = {
             {
                 pass: 'rollFinished',
                 macro: use,
-                priority: 50
+                priority: 50,
+                activities: ['stormSphere']
             },
             {
                 pass: 'preTargeting',
                 macro: early,
-                priority: 50
+                priority: 50,
+                activities: ['stormSphereBolt']
             },
             {
                 pass: 'attackRollComplete',
                 macro: late,
-                priority: 50
+                priority: 50,
+                activities: ['stormSphereBolt']
             }
         ]
     },

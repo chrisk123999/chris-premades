@@ -1,6 +1,5 @@
 import {activityUtils, actorUtils, animationUtils, compendiumUtils, constants, dialogUtils, errors, genericUtils, itemUtils, workflowUtils} from '../../utils.js';
 async function use({trigger, workflow}) {
-    if (activityUtils.getIdentifier(workflow.activity) !== genericUtils.getIdentifier(workflow.item)) return;
     if (!workflow.targets.size) return;
     let level = actorUtils.getLevelOrCR(workflow.actor);
     let boltsLeft = 1 + Math.floor((level + 1) * (1/6)); //Todo: Make this work with twinned spell somehow.
@@ -40,7 +39,6 @@ async function use({trigger, workflow}) {
     }
 }
 async function beam({trigger, workflow}) {
-    if (activityUtils.getIdentifier(workflow.activity) !== 'eldritchBlastBeam') return;
     let color = workflow.item.flags['chris-premades']?.eldritchBlast?.color;
     if (!color) return;
     let sound = workflow.item.flags['chris-premades']?.eldritchBlast?.sound;
@@ -56,12 +54,14 @@ export let eldritchBlast = {
             {
                 pass: 'attackRollComplete',
                 macro: beam,
-                priority: 50
+                priority: 50,
+                activities: ['eldritchBlastBeam']
             },
             {
                 pass: 'rollFinished',
                 macro: use,
-                priority: 50
+                priority: 50,
+                activities: ['eldritchBlast']
             }
         ]
     },

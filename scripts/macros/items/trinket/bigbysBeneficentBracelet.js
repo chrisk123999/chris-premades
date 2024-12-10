@@ -3,7 +3,6 @@ import {activityUtils, compendiumUtils, constants, dialogUtils, genericUtils, it
 
 async function late({workflow}) {
     if (!itemUtils.getEquipmentState(workflow.item)) return;
-    if (activityUtils.getIdentifier(workflow.activity) !== 'forceSculpture') return;
     let sourceActor = await compendiumUtils.getActorFromCompendium(constants.packs.summons, 'CPR - Force Sculpture');
     if (!sourceActor) return;
     let selection = await dialogUtils.buttonDialog(workflow.item.name, 'CHRISPREMADES.Macros.Rage.LargeOrHuge', [
@@ -66,7 +65,8 @@ export let bigbysBeneficentBracelet = {
             {
                 pass: 'rollFinished',
                 macro: late,
-                priority: 50
+                priority: 50,
+                activities: ['forceSculpture']
             }
         ]
     },

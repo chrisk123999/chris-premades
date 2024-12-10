@@ -9,7 +9,7 @@ function getActivityByIdentifier(item, identifier, {strict = false} = {}) {
     return activity;
 }
 function getIdentifier(activity) {
-    let identifiers = Object.entries(activity.item?.flags?.['chris-premades']?.activityIdentifiers ?? {});
+    let identifiers = Object.entries(activity?.item?.flags?.['chris-premades']?.activityIdentifiers ?? {});
     if (!identifiers.length) return;
     return identifiers.find(i => i[1] === activity.id)?.[0];
 }

@@ -57,8 +57,6 @@ async function early({trigger: {entity: effect}, workflow}) {
     properties = Array.from(properties);
     let ability = workflow.activity.ability;
     if (workflow.actor.system.abilities[itemScaling].mod < workflow.actor.system.abilities[scaling].mod) ability = scaling;
-    let activity = workflow.activity.clone().toObject();
-    activity.attack.ability = ability;
     workflow.item = workflow.item.clone({
         'system.properties': properties
     }, {keepId: true});
@@ -75,7 +73,8 @@ export let tashasOtherworldlyGuise = {
             {
                 pass: 'rollFinished',
                 macro: use,
-                priority: 50
+                priority: 50,
+                activities: ['tashasOtherworldlyGuiseLower', 'tashasOtherworldlyGuiseUpper']
             }
         ]
     }

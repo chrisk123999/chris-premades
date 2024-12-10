@@ -1,7 +1,6 @@
 import {activityUtils, dialogUtils, genericUtils, itemUtils, socketUtils, workflowUtils} from '../../../../utils.js';
 
 async function late({workflow}) {
-    if (activityUtils.getIdentifier(workflow.activity) !== genericUtils.getIdentifier(workflow.item)) return;
     if (!workflow.targets.size) return;
     let selection = await dialogUtils.buttonDialog(workflow.item.name, 'CHRISPREMADES.Macros.NaturesWrath.Select', [
         ['DND5E.AbilityStr', 'str'],
@@ -20,7 +19,8 @@ export let naturesWrath = {
             {
                 pass: 'rollFinished',
                 macro: late,
-                priority: 50
+                priority: 50,
+                activities: ['naturesWrath']
             }
         ]
     }

@@ -1,7 +1,6 @@
 import {activityUtils, animationUtils, compendiumUtils, constants, dialogUtils, effectUtils, errors, genericUtils, itemUtils, templateUtils, workflowUtils} from '../../../utils.js';
 
 async function early({workflow}) {
-    if (activityUtils.getIdentifier(workflow.activity) !== genericUtils.getIdentifier(workflow.item)) return;
     if (!workflow.item.system.uses.value || !workflow.targets.size) return;
     let selection = await dialogUtils.confirm(workflow.item.name, genericUtils.format('CHRISPREMADES.Dialog.Use', {itemName: workflow.item.name}));
     if (!selection) return;
@@ -68,7 +67,8 @@ export let javelinOfLightning = {
             {
                 pass: 'preambleComplete',
                 macro: early,
-                priority: 50
+                priority: 50,
+                activities: ['javelinOfLightning']
             },
             {
                 pass: 'damageRollComplete',

@@ -1,7 +1,6 @@
 import {activityUtils, constants, effectUtils, genericUtils, itemUtils, tokenUtils, workflowUtils} from '../../utils.js';
 
 async function use({workflow}) {
-    if (activityUtils.getIdentifier(workflow.activity) !== genericUtils.getIdentifier(workflow.item)) return;
     let concentrationEffect = effectUtils.getConcentrationEffect(workflow.actor, workflow.item);
     let effectData = {
         name: workflow.item.name,
@@ -73,7 +72,8 @@ export let shadowOfMoil = {
             {
                 pass: 'rollFinished',
                 macro: use,
-                priority: 50
+                priority: 50,
+                activities: ['shadowOfMoil']
             }
         ]
     }

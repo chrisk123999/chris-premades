@@ -1,128 +1,126 @@
 import {Summons} from '../../lib/summons.js';
 import {activityUtils, compendiumUtils, constants, crosshairUtils, dialogUtils, effectUtils, errors, genericUtils, itemUtils, tokenUtils, workflowUtils} from '../../utils.js';
 async function use({trigger, workflow}) {
-    let activityIdentifier = activityUtils.getIdentifier(workflow.activity);
-    if (activityIdentifier === genericUtils.getIdentifier(workflow.item)) {
-        let avatarImg = itemUtils.getConfig(workflow.item, 'avatar');
-        let tokenImg = itemUtils.getConfig(workflow.item, 'token');
-        let color = itemUtils.getConfig(workflow.item, 'color');
-        let name = itemUtils.getConfig(workflow.item, 'name');
-        let scale = Number(itemUtils.getConfig(workflow.item, 'scale'));
-        if (isNaN(scale)) scale = 1;
-        if (!name || name === '') name = workflow.item.name;
-        if (!tokenImg || tokenImg === '') tokenImg = Sequencer.Database.getEntry('jb2a.flaming_sphere.400px.' + color + '.02').file;
-        let damageUpdates = {
-            flags: {
-                'chris-premades': {
-                    flamingSphere: {
-                        actorUuid: workflow.actor.uuid
-                    }
+    let avatarImg = itemUtils.getConfig(workflow.item, 'avatar');
+    let tokenImg = itemUtils.getConfig(workflow.item, 'token');
+    let color = itemUtils.getConfig(workflow.item, 'color');
+    let name = itemUtils.getConfig(workflow.item, 'name');
+    let scale = Number(itemUtils.getConfig(workflow.item, 'scale'));
+    if (isNaN(scale)) scale = 1;
+    if (!name || name === '') name = workflow.item.name;
+    if (!tokenImg || tokenImg === '') tokenImg = Sequencer.Database.getEntry('jb2a.flaming_sphere.400px.' + color + '.02').file;
+    let damageUpdates = {
+        flags: {
+            'chris-premades': {
+                flamingSphere: {
+                    actorUuid: workflow.actor.uuid
                 }
             }
-        };
-        let damageFeature = await Summons.getSummonItem('Flaming Sphere: End Turn', damageUpdates, workflow.item, {flatDC: itemUtils.getSaveDC(workflow.item), damageFlat: workflow.castData.castLevel + 'd6[fire]', translate: 'CHRISPREMADES.Macros.FlamingSphere.EndTurn'});
-        if (!damageFeature) {
-            errors.missingPackItem(constants.packs.summonFeatures, 'Flaming Sphere: End Turn');
-            return;
         }
-        let ramFeature = await Summons.getSummonItem('Flaming Sphere: Ram', damageUpdates, workflow.item,{flatDC: itemUtils.getSaveDC(workflow.item), damageFlat: workflow.castData.castLevel + 'd6[fire]', translate: 'CHRISPREMADES.Macros.FlamingSphere.RamItem'});
-        if (!ramFeature) {
-            errors.missingPackItem(constants.packs.summonFeatures, 'Flaming Sphere: Ram');
-            return;
-        }
-        let updates = {
-            actor: {
-                name,
-                prototypeToken: {
-                    name,
-                    texture: {
-                        src: tokenImg,
-                        scaleX: scale,
-                        scaleY: scale
-                    }
-                },
-                items: [
-                    damageFeature,
-                    ramFeature
-                ]
-            },
-            token: {
+    };
+    let damageFeature = await Summons.getSummonItem('Flaming Sphere: End Turn', damageUpdates, workflow.item, {flatDC: itemUtils.getSaveDC(workflow.item), damageFlat: workflow.castData.castLevel + 'd6[fire]', translate: 'CHRISPREMADES.Macros.FlamingSphere.EndTurn'});
+    if (!damageFeature) {
+        errors.missingPackItem(constants.packs.summonFeatures, 'Flaming Sphere: End Turn');
+        return;
+    }
+    let ramFeature = await Summons.getSummonItem('Flaming Sphere: Ram', damageUpdates, workflow.item,{flatDC: itemUtils.getSaveDC(workflow.item), damageFlat: workflow.castData.castLevel + 'd6[fire]', translate: 'CHRISPREMADES.Macros.FlamingSphere.RamItem'});
+    if (!ramFeature) {
+        errors.missingPackItem(constants.packs.summonFeatures, 'Flaming Sphere: Ram');
+        return;
+    }
+    let updates = {
+        actor: {
+            name,
+            prototypeToken: {
                 name,
                 texture: {
                     src: tokenImg,
                     scaleX: scale,
                     scaleY: scale
                 }
+            },
+            items: [
+                damageFeature,
+                ramFeature
+            ]
+        },
+        token: {
+            name,
+            texture: {
+                src: tokenImg,
+                scaleX: scale,
+                scaleY: scale
             }
-        };
-        if (avatarImg) genericUtils.setProperty(updates, 'actor.img', avatarImg);
-        let animation = itemUtils.getConfig(workflow.item, 'animation');
-        let actor = await compendiumUtils.getActorFromCompendium(constants.packs.summons, 'CPR - Flaming Sphere');
-        if (!actor) {
-            errors.missingPackItem(constants.packs.summons, 'CPR - Flaming Sphere');
-            return;
         }
-        let feature = activityUtils.getActivityByIdentifier(workflow.item, 'flamingSphereMove', {strict: true});
-        if (!feature) return;
-        let [token] = await Summons.spawn(actor, updates, workflow.item, workflow.token, {
-            duration: itemUtils.convertDuration(workflow.item).seconds, 
-            range: 60, 
-            animation, 
-            initiativeType: 'none', 
-            additionalVaeButtons: [{
-                type: 'use', 
-                name: feature.name, 
-                identifier: 'flamingSphere',
-                activityIdentifier: 'flamingSphereMove'
-            }],
-            unhideActivities: {
-                itemUuid: workflow.item.uuid,
-                activityIdentifiers: ['flamingSphereMove'],
-                favorite: true
-            }
-        });
-        let effect = effectUtils.getEffectByIdentifier(workflow.actor, 'flamingSphere');
-        if (!effect) return;
-        await genericUtils.update(effect, {
-            'flags.chris-premades.flamingSphere.tokenUuid': token.uuid
-        });
-    } else if (activityIdentifier === 'flamingSphereMove') {
-        let effect = effectUtils.getEffectByIdentifier(workflow.actor, 'flamingSphere');
-        if (!effect) return;
-        let tokenUuid = effect.flags['chris-premades']?.flamingSphere?.tokenUuid;
-        if (!tokenUuid) return;
-        let token = await fromUuid(tokenUuid);
-        if (!token) return;
-        await workflow.actor.sheet.minimize();
-        let position = await crosshairUtils.aimCrosshair({
-            token: token.object, 
-            maxRange: 30, 
-            centerpoint: token.object.center, 
-            drawBoundries: true, 
-            trackDistance: true, 
-            fudgeDistance: token.width * canvas.dimensions.distance / 2,
-            crosshairsConfig: {
-                size: canvas.grid.distance * token.width / 2,
-                icon: token.texture.src,
-                resolution: (token.width % 2) ? 1 : -1
-            }
-        });
-        if (position.cancelled) return;
-        let xOffset = token.width * canvas.grid.size / 2;
-        let yOffset = token.height * canvas.grid.size / 2;
-        await genericUtils.update(token, {x: (position.x ?? token.center.x) - xOffset, y: (position.y ?? token.center.y) - yOffset});
-        // eslint-disable-next-line no-undef
-        await CanvasAnimation.getAnimation(token.object.animationName)?.promise;
-        let nearbyTokens = tokenUtils.findNearby(token.object, 5, 'all', {includeIncapacitated: true});
-        if (!nearbyTokens.length) return;
-        let selection = await dialogUtils.selectTargetDialog(workflow.item.name, 'CHRISPREMADES.Macros.FlamingSphere.Ram', nearbyTokens, {buttons: 'okCancel', skipDeadAndUnconscious: false});
-        if (!selection?.length) return;
-        let ramFeature = itemUtils.getItemByIdentifier(token.actor, 'flamingSphereRam');
-        if (!ramFeature) return;
-        let featureData = duplicate(ramFeature.toObject());
-        await workflowUtils.syntheticItemDataRoll(featureData, token.actor, [selection[0]]);
-        await workflow.actor.sheet.maximize();
+    };
+    if (avatarImg) genericUtils.setProperty(updates, 'actor.img', avatarImg);
+    let animation = itemUtils.getConfig(workflow.item, 'animation');
+    let actor = await compendiumUtils.getActorFromCompendium(constants.packs.summons, 'CPR - Flaming Sphere');
+    if (!actor) {
+        errors.missingPackItem(constants.packs.summons, 'CPR - Flaming Sphere');
+        return;
     }
+    let feature = activityUtils.getActivityByIdentifier(workflow.item, 'flamingSphereMove', {strict: true});
+    if (!feature) return;
+    let [token] = await Summons.spawn(actor, updates, workflow.item, workflow.token, {
+        duration: itemUtils.convertDuration(workflow.item).seconds, 
+        range: 60, 
+        animation, 
+        initiativeType: 'none', 
+        additionalVaeButtons: [{
+            type: 'use', 
+            name: feature.name, 
+            identifier: 'flamingSphere',
+            activityIdentifier: 'flamingSphereMove'
+        }],
+        unhideActivities: {
+            itemUuid: workflow.item.uuid,
+            activityIdentifiers: ['flamingSphereMove'],
+            favorite: true
+        }
+    });
+    let effect = effectUtils.getEffectByIdentifier(workflow.actor, 'flamingSphere');
+    if (!effect) return;
+    await genericUtils.update(effect, {
+        'flags.chris-premades.flamingSphere.tokenUuid': token.uuid
+    });
+}
+async function move({workflow}) {
+    let effect = effectUtils.getEffectByIdentifier(workflow.actor, 'flamingSphere');
+    if (!effect) return;
+    let tokenUuid = effect.flags['chris-premades']?.flamingSphere?.tokenUuid;
+    if (!tokenUuid) return;
+    let token = await fromUuid(tokenUuid);
+    if (!token) return;
+    await workflow.actor.sheet.minimize();
+    let position = await crosshairUtils.aimCrosshair({
+        token: token.object, 
+        maxRange: 30, 
+        centerpoint: token.object.center, 
+        drawBoundries: true, 
+        trackDistance: true, 
+        fudgeDistance: token.width * canvas.dimensions.distance / 2,
+        crosshairsConfig: {
+            size: canvas.grid.distance * token.width / 2,
+            icon: token.texture.src,
+            resolution: (token.width % 2) ? 1 : -1
+        }
+    });
+    if (position.cancelled) return;
+    let xOffset = token.width * canvas.grid.size / 2;
+    let yOffset = token.height * canvas.grid.size / 2;
+    await genericUtils.update(token, {x: (position.x ?? token.center.x) - xOffset, y: (position.y ?? token.center.y) - yOffset});
+    // eslint-disable-next-line no-undef
+    await CanvasAnimation.getAnimation(token.object.animationName)?.promise;
+    let nearbyTokens = tokenUtils.findNearby(token.object, 5, 'all', {includeIncapacitated: true});
+    if (!nearbyTokens.length) return;
+    let selection = await dialogUtils.selectTargetDialog(workflow.item.name, 'CHRISPREMADES.Macros.FlamingSphere.Ram', nearbyTokens, {buttons: 'okCancel', skipDeadAndUnconscious: false});
+    if (!selection?.length) return;
+    let ramFeature = itemUtils.getItemByIdentifier(token.actor, 'flamingSphereRam');
+    if (!ramFeature) return;
+    let featureData = duplicate(ramFeature.toObject());
+    await workflowUtils.syntheticItemDataRoll(featureData, token.actor, [selection[0]]);
+    await workflow.actor.sheet.maximize();
 }
 async function endTurn({trigger}) {
     let actorUuid = trigger.entity.flags['chris-premades']?.flamingSphere?.actorUuid;
@@ -133,7 +131,6 @@ async function endTurn({trigger}) {
     await workflowUtils.syntheticItemDataRoll(featureData, trigger.entity.actor, [trigger.target]);
 }
 async function early({workflow}) {
-    if (activityUtils.getIdentifier(workflow.activity) !== 'flamingSphereMove') return;
     workflowUtils.skipDialog(workflow);
 }
 export let flamingSphere = {
@@ -145,12 +142,20 @@ export let flamingSphere = {
             {
                 pass: 'rollFinished',
                 macro: use,
-                priority: 50
+                priority: 50,
+                activities: ['flamingSphere']
+            },
+            {
+                pass: 'rollFinished',
+                macro: move,
+                priority: 50,
+                activities: ['flamingSphereMove']
             },
             {
                 pass: 'preTargeting',
                 macro: early,
-                priority: 50
+                priority: 50,
+                activities: ['flamingSphereMove']
             }
         ]
     },

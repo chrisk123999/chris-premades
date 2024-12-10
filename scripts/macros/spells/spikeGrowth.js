@@ -1,6 +1,5 @@
 import {activityUtils, effectUtils, genericUtils, itemUtils, templateUtils, workflowUtils} from '../../utils.js';
 async function use({workflow}) {
-    if (activityUtils.getIdentifier(workflow.activity) !== genericUtils.getIdentifier(workflow.item)) return;
     let concentrationEffect = effectUtils.getConcentrationEffect(workflow.actor, workflow.item);
     let template = workflow.template;
     if (!template) {
@@ -94,7 +93,8 @@ export let spikeGrowth = {
             {
                 pass: 'rollFinished',
                 macro: use,
-                priority: 50
+                priority: 50,
+                activities: ['spikeGrowth']
             }
         ]
     }

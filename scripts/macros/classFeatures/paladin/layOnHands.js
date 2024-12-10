@@ -66,7 +66,6 @@ import {activityUtils, effectUtils, genericUtils, workflowUtils} from '../../../
 // }
 function early({workflow}) {
     let activityIdentifier = activityUtils.getIdentifier(workflow.activity);
-    if (!['layOnHandsPoison', 'layOnHandsDisease'].includes(activityIdentifier)) return;
     if (!workflow.targets.size) return;
     let targetToken = workflow.targets.first();
     let poisoned = effectUtils.getEffectByStatusID(targetToken.actor, 'poisoned');
@@ -103,7 +102,8 @@ export let layOnHands = {
             {
                 pass: 'preTargeting',
                 macro: early,
-                priority: 50
+                priority: 50,
+                activities: ['layOnHandsPoison', 'layOnHandsDisease']
             },
             {
                 pass: 'rollFinished',

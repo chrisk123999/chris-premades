@@ -1,6 +1,5 @@
 import {activityUtils, actorUtils, animationUtils, constants, effectUtils, genericUtils, itemUtils, workflowUtils} from '../../utils.js';
 async function use({workflow}) {
-    if (activityUtils.getIdentifier(workflow.activity) !== genericUtils.getIdentifier(workflow.item)) return;
     let effectData = {
         name: workflow.item.name,
         img: workflow.item.img,
@@ -180,7 +179,8 @@ export let armorOfAgathys = {
             {
                 pass: 'rollFinished',
                 macro: use,
-                priority: 50
+                priority: 50,
+                activities: ['armorOfAgathys']
             }
         ]
     },

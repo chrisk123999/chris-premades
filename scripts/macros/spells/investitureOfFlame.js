@@ -2,7 +2,6 @@ import {activityUtils, combatUtils, constants, effectUtils, genericUtils, itemUt
 import {start as startAnim, end as endAnim} from './fireShield.js';
 
 async function use({workflow}) {
-    if (activityUtils.getIdentifier(workflow.activity) !== genericUtils.getIdentifier(workflow.item)) return;
     let concentrationEffect = effectUtils.getConcentrationEffect(workflow.actor, workflow.item);
     let feature = activityUtils.getActivityByIdentifier(workflow.item, 'investitureOfFlameFire', {strict: true});
     if (!feature) {
@@ -109,7 +108,6 @@ async function end({trigger}) {
     await endAnim({trigger});
 }
 async function early({workflow}) {
-    if (activityUtils.getIdentifier(workflow.activity) !== 'investitureOfFlameFire') return;
     workflowUtils.skipDialog(workflow);
 }
 export let investitureOfFlame = {
@@ -121,12 +119,14 @@ export let investitureOfFlame = {
             {
                 pass: 'rollFinished',
                 macro: use,
-                priority: 50
+                priority: 50,
+                activities: ['investitureOfFlame']
             },
             {
                 pass: 'preTargeting',
                 macro: early,
-                priority: 50
+                priority: 50,
+                activities: ['investitureOfFlameFire']
             }
         ]
     },

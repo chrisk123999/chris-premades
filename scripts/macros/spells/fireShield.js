@@ -7,9 +7,6 @@ async function use({workflow}) {
         selection = 'fire';
     } else if (activityIdentifier === 'fireShieldChill') {
         selection = 'cold';
-    } else if (activityIdentifier === 'fireShieldDismiss') {
-        let effect = effectUtils.getEffectByIdentifier(workflow.actor, 'fireShield');
-        if (effect) await genericUtils.remove(effect);
     }
     if (!selection) return;
     let feature = activityUtils.getActivityByIdentifier(workflow.item, 'fireShieldDismiss', {strict: true});
@@ -66,6 +63,10 @@ async function use({workflow}) {
             favorite: true
         }
     });
+}
+async function dismiss({workflow}) {
+    let effect = effectUtils.getEffectByIdentifier(workflow.actor, 'fireShield');
+    if (effect) await genericUtils.remove(effect);
 }
 async function hit({trigger: {entity: effect}, workflow}) {
     if (!workflow.hitTargets.size) return;
@@ -181,7 +182,6 @@ async function stop({workflow}) {
     await genericUtils.remove(effect);
 }
 async function early({workflow}) {
-    if (activityUtils.getIdentifier(workflow.activity) !== 'fireShieldDismiss') return;
     workflowUtils.skipDialog(workflow);
 }
 export let fireShield = {
@@ -193,12 +193,20 @@ export let fireShield = {
             {
                 pass: 'rollFinished',
                 macro: use,
-                priority: 50
+                priority: 50,
+                activities: ['fireShieldWarm', 'fireShieldChill']
+            },
+            {
+                pass: 'rollFinished',
+                macro: dismiss,
+                priority: 50,
+                activities: ['fireShieldDismiss']
             },
             {
                 pass: 'preTargeting',
                 macro: early,
-                priority: 50
+                priority: 50,
+                activities: ['fireShieldDismiss']
             }
         ]
     },

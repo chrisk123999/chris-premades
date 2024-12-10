@@ -3,7 +3,6 @@ import {Teleport} from '../../../../lib/teleport.js';
 import {activityUtils, actorUtils, animationUtils, compendiumUtils, constants, dialogUtils, effectUtils, genericUtils, itemUtils, tokenUtils, workflowUtils} from '../../../../utils.js';
 
 async function use({workflow}) {
-    if (activityUtils.getIdentifier(workflow.activity) !== genericUtils.getIdentifier(workflow.item)) return;
     let sourceActor = await compendiumUtils.getActorFromCompendium(constants.packs.summons, 'CPR - Wildfire Spirit');
     if (!sourceActor) return;
     let druidLevel = workflow.actor.classes?.druid?.system?.levels;
@@ -104,7 +103,8 @@ export let summonWildfireSpirit = {
             {
                 pass: 'rollFinished',
                 macro: use,
-                priority: 50
+                priority: 50,
+                activities: ['summonWildfireSpirit']
             }
         ]
     },

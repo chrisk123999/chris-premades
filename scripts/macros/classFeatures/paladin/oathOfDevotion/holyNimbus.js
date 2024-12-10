@@ -3,7 +3,6 @@ async function save({trigger}) {
     return {label: 'CHRISPREMADES.Macros.HolyNimbus.Save', type: 'advantage'};
 }
 async function use({workflow}) {
-    if (activityUtils.getIdentifier(workflow.activity) !== genericUtils.getIdentifier(workflow.item)) return;
     let effectData = {
         name: workflow.item.name,
         img: workflow.item.img,
@@ -40,7 +39,8 @@ export let holyNimbus = {
             {
                 pass: 'rollFinished',
                 macro: use,
-                priority: 50
+                priority: 50,
+                activities: ['holyNimbus']
             }
         ]
     },

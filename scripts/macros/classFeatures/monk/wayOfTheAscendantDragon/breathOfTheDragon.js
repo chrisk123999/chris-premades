@@ -2,7 +2,6 @@ import {DialogApp} from '../../../../applications/dialog.js';
 import {activityUtils, animationUtils, genericUtils, itemUtils, templateUtils, workflowUtils} from '../../../../utils.js';
 
 async function early({workflow}) {
-    if (activityUtils.getIdentifier(workflow.activity) !== genericUtils.getIdentifier(workflow.item)) return;
     let ki = itemUtils.getItemByIdentifier(workflow.actor, 'ki');
     let augmentBreath = itemUtils.getItemByIdentifier(workflow.actor, 'augmentBreath');
     let classLevel = workflow.actor.classes.monk?.system.levels ?? 1;
@@ -136,7 +135,8 @@ export let breathOfTheDragon = {
             {
                 pass: 'preItemRoll',
                 macro: early,
-                priority: 50
+                priority: 50,
+                activities: ['breathOfTheDragon']
             }
         ]
     },

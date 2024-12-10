@@ -1,7 +1,6 @@
 import {activityUtils, compendiumUtils, constants, dialogUtils, errors, genericUtils, itemUtils, tokenUtils, workflowUtils} from '../../utils.js';
 
 async function use({workflow}) {
-    if (activityUtils.getIdentifier(workflow.activity) !== genericUtils.getIdentifier(workflow.item)) return;
     let spellId = itemUtils.getConfig(workflow.item, 'id');
     if (spellId?.length) return;
     let validSpells = workflow.actor.items.filter(i => i.type === 'spell' && i.system.uses.max === 1 && ['atwill', 'innate'].includes(i.system.preparation?.mode) && i.system.uses.recovery.some(j => j.period === 'sr'));
@@ -50,7 +49,8 @@ export let aberrantDragonmark = {
             {
                 pass: 'rollFinished',
                 macro: use,
-                priority: 50
+                priority: 50,
+                activities: ['aberrantDragonmark']
             }
         ],
         actor: [

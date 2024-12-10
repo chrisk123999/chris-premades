@@ -1,7 +1,6 @@
 import {activityUtils, constants, effectUtils, genericUtils, itemUtils, workflowUtils} from '../../utils.js';
 
 async function use({workflow}) {
-    if (activityUtils.getIdentifier(workflow.activity) !== genericUtils.getIdentifier(workflow.item)) return;
     let concentrationEffect = effectUtils.getConcentrationEffect(workflow.actor, workflow.item);
     let feature1 = activityUtils.getActivityByIdentifier(workflow.item, 'flameBladeScimitar', {strict: true});
     let feature2 = activityUtils.getActivityByIdentifier(workflow.item, 'flameBladeEvoke', {strict: true});
@@ -81,7 +80,8 @@ export let flameBlade = {
             {
                 pass: 'rollFinished',
                 macro: use,
-                priority: 50
+                priority: 50,
+                activities: ['flameBlade']
             },
             {
                 pass: 'preTargeting',

@@ -2,7 +2,6 @@ import {Summons} from '../../../../lib/summons.js';
 import {activityUtils, actorUtils, compendiumUtils, constants, dialogUtils, effectUtils, errors, genericUtils, itemUtils} from '../../../../utils.js';
 
 async function use({workflow}) {
-    if (activityUtils.getIdentifier(workflow.activity) !== genericUtils.getIdentifier(workflow.item)) return;
     let selection = await dialogUtils.buttonDialog(workflow.item.name, 'CHRISPREMADES.Macros.AnimatingPerformance.Size', [
         ['DND5E.SizeLarge', 'lg'],
         ['DND5E.SizeMedium', 'med'],
@@ -142,7 +141,8 @@ export let animatingPerformance = {
             {
                 pass: 'rollFinished',
                 macro: use,
-                priority: 50
+                priority: 50,
+                activities: ['animatingPerformance']
             }
         ]
     },

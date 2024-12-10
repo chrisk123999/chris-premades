@@ -33,7 +33,6 @@ async function enterOrStart({trigger: {token, entity: template}}) {
     await save(token, template);
 }
 async function use({trigger, workflow}) {
-    if (activityUtils.getIdentifier(workflow.activity) !== genericUtils.getIdentifier(workflow.item)) return;
     if (!workflow.template) return;
     await genericUtils.update(workflow.template, {
         flags: {
@@ -66,7 +65,8 @@ export let zoneOfTruth = {
             {
                 pass: 'rollFinished',
                 macro: use,
-                priority: 50
+                priority: 50,
+                activities: ['zoneOfTruth']
             }
         ]
     },

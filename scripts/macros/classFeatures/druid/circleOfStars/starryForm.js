@@ -2,146 +2,144 @@ import {activityUtils, compendiumUtils, constants, dialogUtils, effectUtils, err
 
 async function use({workflow}) {
     let activityIdentifier = activityUtils.getIdentifier(workflow.activity);
-    if (['starryFormArcher', 'starryFormDragon', 'starryFormChalice'].includes(activityIdentifier)) {
-        let classLevels = workflow.actor.classes.druid?.system.levels;
-        if (!classLevels) return;
-        let tier = 1;
-        if (classLevels > 13) {
-            tier = 3;
-        } else if (classLevels > 9) {
-            tier = 2;
-        }
-        let featureIdentifier = 'luminousArrow';
-        if (activityIdentifier === 'starryFormChalice') featureIdentifier = 'healingChalice';
-        let effect = effectUtils.getEffectByIdentifier(workflow.actor, 'starryForm');
-        let effectData = {
-            name: workflow.activity.name,
-            img: effect?.img ?? workflow.item.img,
-            origin: effect?.origin ?? workflow.item.uuid,
-            duration: effect?.duration ?? itemUtils.convertDuration(workflow.activity),
-            flags: {
-                'chris-premades': {
-                    starryForm: {
-                        currentForm: activityIdentifier
-                    }
+    let classLevels = workflow.actor.classes.druid?.system.levels;
+    if (!classLevels) return;
+    let tier = 1;
+    if (classLevels > 13) {
+        tier = 3;
+    } else if (classLevels > 9) {
+        tier = 2;
+    }
+    let featureIdentifier = 'luminousArrow';
+    if (activityIdentifier === 'starryFormChalice') featureIdentifier = 'healingChalice';
+    let effect = effectUtils.getEffectByIdentifier(workflow.actor, 'starryForm');
+    let effectData = {
+        name: workflow.activity.name,
+        img: effect?.img ?? workflow.item.img,
+        origin: effect?.origin ?? workflow.item.uuid,
+        duration: effect?.duration ?? itemUtils.convertDuration(workflow.activity),
+        flags: {
+            'chris-premades': {
+                starryForm: {
+                    currentForm: activityIdentifier
                 }
+            }
+        },
+        changes: [
+            {
+                key: 'ATL.light.bright',
+                value: 10,
+                mode: 4,
+                priority: 20
             },
-            changes: [
+            {
+                key: 'ATL.light.dim',
+                value: 20,
+                mode: 4,
+                priority: 20
+            },
+            {
+                key: 'ATL.light.color',
+                value: '#ffffff',
+                mode: 5,
+                priority: 20
+            },
+            {
+                key: 'ATL.light.alpha',
+                value: 0.25,
+                mode: 5,
+                priority: 20
+            },
+            {
+                key: 'ATL.light.animation',
+                value: '{type: \'starlight\', speed: 1, intensity: 3}',
+                mode: 5,
+                priority: 20
+            }
+        ]
+    };
+    if (tier === 3) {
+        effectData.changes.push(
+            {
+                key: 'system.traits.dr.value',
+                value: 'slashing',
+                mode: 2,
+                priority: 20
+            }, 
+            {
+                key: 'system.traits.dr.value',
+                value: 'piercing',
+                mode: 2,
+                priority: 20
+            },
+            {
+                key: 'system.traits.dr.value',
+                value: 'bludgeoning',
+                mode: 2,
+                priority: 20
+            }
+        );
+    }
+    if (activityIdentifier === 'starryFormDragon') {
+        effectData.changes.push(
+            {
+                key: 'flags.midi-qol.min.ability.check.wis',
+                value: 10,
+                mode: 4,
+                priority: 20
+            },
+            {
+                key: 'flags.midi-qol.min.ability.check.int',
+                value: 10,
+                mode: 4,
+                priority: 20
+            },
+            {
+                key: 'system.attributes.concentration.roll.min',
+                value: 10,
+                mode: 4,
+                priority: 20
+            }
+        );
+        if (tier > 1) {
+            effectData.changes.push(
                 {
-                    key: 'ATL.light.bright',
-                    value: 10,
-                    mode: 4,
-                    priority: 20
-                },
-                {
-                    key: 'ATL.light.dim',
+                    key: 'system.attributes.movement.fly',
                     value: 20,
                     mode: 4,
                     priority: 20
                 },
                 {
-                    key: 'ATL.light.color',
-                    value: '#ffffff',
+                    key: 'system.attributes.movement.hover',
+                    value: 1,
                     mode: 5,
-                    priority: 20
-                },
-                {
-                    key: 'ATL.light.alpha',
-                    value: 0.25,
-                    mode: 5,
-                    priority: 20
-                },
-                {
-                    key: 'ATL.light.animation',
-                    value: '{type: \'starlight\', speed: 1, intensity: 3}',
-                    mode: 5,
-                    priority: 20
-                }
-            ]
-        };
-        if (tier === 3) {
-            effectData.changes.push(
-                {
-                    key: 'system.traits.dr.value',
-                    value: 'slashing',
-                    mode: 2,
-                    priority: 20
-                }, 
-                {
-                    key: 'system.traits.dr.value',
-                    value: 'piercing',
-                    mode: 2,
-                    priority: 20
-                },
-                {
-                    key: 'system.traits.dr.value',
-                    value: 'bludgeoning',
-                    mode: 2,
                     priority: 20
                 }
             );
         }
-        if (activityIdentifier === 'starryFormDragon') {
-            effectData.changes.push(
-                {
-                    key: 'flags.midi-qol.min.ability.check.wis',
-                    value: 10,
-                    mode: 4,
-                    priority: 20
-                },
-                {
-                    key: 'flags.midi-qol.min.ability.check.int',
-                    value: 10,
-                    mode: 4,
-                    priority: 20
-                },
-                {
-                    key: 'system.attributes.concentration.roll.min',
-                    value: 10,
-                    mode: 4,
-                    priority: 20
-                }
-            );
-            if (tier > 1) {
-                effectData.changes.push(
-                    {
-                        key: 'system.attributes.movement.fly',
-                        value: 20,
-                        mode: 4,
-                        priority: 20
-                    },
-                    {
-                        key: 'system.attributes.movement.hover',
-                        value: 1,
-                        mode: 5,
-                        priority: 20
-                    }
-                );
-            }
-        }
-        if (tier > 1) effectUtils.addMacro(effectData, 'combat', ['starryFormActive']);
-        if (activityIdentifier === 'starryFormChalice') effectUtils.addMacro(effectData, 'midi.actor', ['starryFormActive']);
-        if (effect) await genericUtils.remove(effect);
-        let opts = {
-            identifier: 'starryForm'
-        };
-        if (activityIdentifier === 'starryFormArcher') {
-            let feature = activityUtils.getActivityByIdentifier(workflow.item, featureIdentifier, {strict: true});
-            if (!feature) return;
-            opts.vae = [{
-                type: 'use',
-                name: feature.name,
-                identifier: 'starryForm',
-                activityIdentifier: featureIdentifier
-            }];
-            opts.unhideActivities = {
-                itemUuid: workflow.item.uuid,
-                activityIdentifiers: [featureIdentifier],
-                favorite: true
-            };
-        }
-        await effectUtils.createEffect(workflow.actor, effectData, opts);
     }
+    if (tier > 1) effectUtils.addMacro(effectData, 'combat', ['starryFormActive']);
+    if (activityIdentifier === 'starryFormChalice') effectUtils.addMacro(effectData, 'midi.actor', ['starryFormActive']);
+    if (effect) await genericUtils.remove(effect);
+    let opts = {
+        identifier: 'starryForm'
+    };
+    if (activityIdentifier === 'starryFormArcher') {
+        let feature = activityUtils.getActivityByIdentifier(workflow.item, featureIdentifier, {strict: true});
+        if (!feature) return;
+        opts.vae = [{
+            type: 'use',
+            name: feature.name,
+            identifier: 'starryForm',
+            activityIdentifier: featureIdentifier
+        }];
+        opts.unhideActivities = {
+            itemUuid: workflow.item.uuid,
+            activityIdentifiers: [featureIdentifier],
+            favorite: true
+        };
+    }
+    await effectUtils.createEffect(workflow.actor, effectData, opts);
 }
 async function turnStart({trigger: {entity: effect, token}}) {
     let twinklingItem = await itemUtils.getItemByIdentifier(token.actor, 'twinklingConstellations');
@@ -171,7 +169,6 @@ async function late({trigger: {entity: effect}, workflow}) {
     }});
 }
 async function early({workflow}) {
-    if (activityUtils.getIdentifier(workflow.activity) !== 'luminousArrow') return;
     let scaling = 0;
     if (workflow.actor.classes.druid?.system.levels >= 10) scaling = 1;
     if (workflow.activity.tempFlag) {
@@ -190,12 +187,14 @@ export let starryForm = {
             {
                 pass: 'rollFinished',
                 macro: use,
-                priority: 20
+                priority: 50,
+                activities: ['starryFormArcher', 'starryFormDragon', 'starryFormChalice']
             },
             {
                 pass: 'preTargeting',
                 macro: early,
-                priority: 20
+                priority: 50,
+                activities: ['luminousArrow']
             }
         ]
     },

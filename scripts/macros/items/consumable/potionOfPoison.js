@@ -5,7 +5,6 @@ async function damage({workflow}) {
     await workflow.setDamageRolls([damageRoll]);
 }
 async function late({workflow}) {
-    if (activityUtils.getIdentifier(workflow.activity) !== genericUtils.getIdentifier(workflow.item)) return;
     let targetToken = workflow.targets.first() ?? workflow.token;
     let feature = await activityUtils.getActivityByIdentifier(workflow.item, 'potionOfPoisonDamage', {strict: true});
     if (!feature) return;
@@ -58,7 +57,8 @@ export let potionOfPoison = {
             {
                 pass: 'rollFinished',
                 macro: late,
-                priority: 50
+                priority: 50,
+                activities: ['potionOfPoison']
             }
         ]
     },

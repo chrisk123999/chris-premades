@@ -1,7 +1,6 @@
 import {activityUtils, compendiumUtils, constants, effectUtils, errors, genericUtils, itemUtils} from '../../../../utils.js';
 
 async function use({workflow}) {
-    if (activityUtils.getIdentifier(workflow.activity) !== genericUtils.getIdentifier(workflow.item)) return;
     let guardianEffect = effectUtils.getEffectByIdentifier(workflow.actor, 'guardianArmor');
     if (guardianEffect) return;
     let infiltratorEffect = effectUtils.getEffectByIdentifier(workflow.actor, 'infiltratorArmor');
@@ -82,7 +81,8 @@ export let guardianArmor = {
             {
                 pass: 'rollFinished',
                 macro: use,
-                priority: 50
+                priority: 50,
+                activities: ['guardianArmor']
             }
         ]
     },

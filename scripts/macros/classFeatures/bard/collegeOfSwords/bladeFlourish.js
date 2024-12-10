@@ -78,7 +78,8 @@ export let bladeFlourish = {
             {
                 pass: 'rollFinished',
                 macro: mobilePush,
-                priority: 50
+                priority: 50,
+                activities: ['mobileFlourish']
             }
         ],
         actor: [

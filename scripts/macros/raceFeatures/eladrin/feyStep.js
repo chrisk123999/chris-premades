@@ -2,7 +2,6 @@ import {Teleport} from '../../../lib/teleport.js';
 import {activityUtils, animationUtils, compendiumUtils, constants, dialogUtils, effectUtils, errors, genericUtils, itemUtils, tokenUtils, workflowUtils} from '../../../utils.js';
 
 async function use({workflow}) {
-    if (activityUtils.getIdentifier(workflow.activity) !== genericUtils.getIdentifier(workflow.item)) return;
     let seasonItem = itemUtils.getItemByIdentifier(workflow.actor, 'changeSeason');
     let animation = (itemUtils.getConfig(workflow.item, 'playAnimation') && animationUtils.jb2aCheck()) ? 'mistyStep' : 'none';
     if (seasonItem) {
@@ -120,7 +119,8 @@ export let eladrinFeyStep = {
             {
                 pass: 'rollFinished',
                 macro: use,
-                priority: 50
+                priority: 50,
+                activities: ['eladrinFeyStep']
             }
         ]
     },

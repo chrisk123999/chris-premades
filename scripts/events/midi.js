@@ -3,7 +3,7 @@ import {requirements} from '../extensions/requirements.js';
 import {conditionResistance} from '../macros/mechanics/conditionResistance.js';
 import {conditionVulnerability} from '../macros/mechanics/conditionVulnerability.js';
 import {templateVisibility} from '../macros/mechanics/templateVisibility.js';
-import {actorUtils, effectUtils, genericUtils, itemUtils, rollUtils, socketUtils, templateUtils} from '../utils.js';
+import {activityUtils, actorUtils, effectUtils, genericUtils, itemUtils, rollUtils, socketUtils, templateUtils} from '../utils.js';
 import {automatedAnimations} from '../integrations/automatedAnimations.js';
 import {diceSoNice} from '../integrations/diceSoNice.js';
 import {cleave} from '../macros/mechanics/cleave.js';
@@ -14,11 +14,11 @@ import {masteries} from '../macros/mechanics/masteries.js';
 function getItemMacroData(item) {
     return item.flags['chris-premades']?.macros?.midi?.item ?? [];
 }
-function collectItemMacros(item, pass) {
+function collectItemMacros(item, pass, activityIdentifier) {
     let macroList = [];
     macroList.push(...getItemMacroData(item));
     if (!macroList.length) return [];
-    return macroList.map(i => custom.getMacro(i)).filter(j => j).filter(k => k.midi?.item?.find(l => l.pass === pass)).flatMap(m => m.midi.item).filter(n => n.pass === pass);
+    return macroList.map(i => custom.getMacro(i)).filter(j => j).filter(k => k.midi?.item?.find(l => l.pass === pass)).flatMap(m => m.midi.item).filter(n => n.pass === pass && (!n.activities?.length || n.activities.includes(activityIdentifier)));
 }
 function getActorMacroData(entity) {
     return entity.flags['chris-premades']?.macros?.midi?.actor ?? [];
@@ -29,10 +29,10 @@ function collectActorMacros(item, pass) {
     if (!macroList.length) return [];
     return macroList.map(i => custom.getMacro(i)).filter(j => j).filter(k => k.midi?.actor?.find(l => l.pass === pass)).flatMap(m => m.midi.actor).filter(n => n.pass === pass);
 }
-function collectAllMacros({item, token, actor, sourceToken, targetToken}, pass) {
+function collectAllMacros({activity, item, token, actor, sourceToken, targetToken}, pass) {
     let triggers = [];
     if (item) {
-        let macroList = collectItemMacros(item, pass);
+        let macroList = collectItemMacros(item, pass, activityUtils.getIdentifier(activity));
         if (macroList.length) {
             triggers.push({
                 entity: item,
@@ -107,8 +107,8 @@ function collectAllMacros({item, token, actor, sourceToken, targetToken}, pass) 
     }
     return triggers;
 }
-function getSortedTriggers({item, token, actor, sourceToken, targetToken}, pass) {
-    let allTriggers = collectAllMacros({item, token, actor, sourceToken, targetToken}, pass);
+function getSortedTriggers({activity, item, token, actor, sourceToken, targetToken}, pass) {
+    let allTriggers = collectAllMacros({activity, item, token, actor, sourceToken, targetToken}, pass);
     let names = new Set(allTriggers.map(i => i.name));
     allTriggers = Object.fromEntries(names.map(i => [i, allTriggers.filter(j => j.name === i)]));
     let maxMap = {};
@@ -163,7 +163,7 @@ async function executeMacro(trigger, workflow, ditem) {
 }
 async function executeMacroPass(workflow, pass) {
     genericUtils.log('dev', 'Executing Midi Macro Pass: ' + pass + ' for ' + workflow?.item?.name);
-    let triggers = getSortedTriggers({item: workflow.item, actor: workflow.actor, token: workflow.token}, pass);
+    let triggers = getSortedTriggers({activity: workflow.activity, item: workflow.item, actor: workflow.actor, token: workflow.token}, pass);
     if (triggers.length) await genericUtils.sleep(50);
     for (let trigger of triggers) {
         let result = await executeMacro(trigger, workflow);
@@ -255,8 +255,8 @@ async function damageRollComplete(workflow) {
     if (genericUtils.getCPRSetting('explodingHeals')) await explodingHeals(workflow);
     let manualRollsEnabled = genericUtils.getCPRSetting('manualRollsEnabled');
     if (manualRollsEnabled && (workflow.hitTargets?.size === 0 ? genericUtils.getCPRSetting('manualRollsPromptOnMiss') : true)) await _manualRollsNewRolls(workflow);
-    await workflow.displayDamageRolls(game.settings.get('midi-qol', 'ConfigSettings'), true);
-    workflow.damageDetail = MidiQOL.createDamageDetail({roll: workflow.damageRolls, item: workflow.item, defaultType: workflow.defaultDamageType});
+    // await workflow.displayDamageRolls(game.settings.get('midi-qol', 'ConfigSettings'), true);
+    // workflow.damageDetail = MidiQOL.createDamageDetail({roll: workflow.damageRolls, item: workflow.item, defaultType: workflow.defaultDamageType});
 }
 async function _manualRollsNewRolls(workflow) {
     genericUtils.log('dev', 'New Rolls for Midi Workflow');

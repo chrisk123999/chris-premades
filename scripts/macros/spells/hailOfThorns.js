@@ -1,7 +1,6 @@
 import {activityUtils, actorUtils, compendiumUtils, constants, effectUtils, errors, genericUtils, itemUtils, tokenUtils, workflowUtils} from '../../utils.js';
 
 async function use({workflow}) {
-    if (activityUtils.getIdentifier(workflow.activity) !== genericUtils.getIdentifier(workflow.item)) return;
     let concentrationEffect = await effectUtils.getConcentrationEffect(workflow.actor, workflow.item);
     let effectData = {
         name: workflow.item.name,
@@ -39,7 +38,8 @@ export let hailOfThorns = {
             {
                 pass: 'rollFinished',
                 macro: use,
-                priority: 50
+                priority: 50,
+                activities: ['hailOfThorns']
             }
         ]
     }

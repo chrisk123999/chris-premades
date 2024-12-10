@@ -1,7 +1,6 @@
 import {activityUtils, actorUtils, animationUtils, combatUtils, constants, dialogUtils, effectUtils, genericUtils, itemUtils, socketUtils, tokenUtils, workflowUtils} from '../../utils.js';
 
 async function use({workflow}) {
-    if (activityUtils.getIdentifier(workflow.activity) !== genericUtils.getIdentifier(workflow.item)) return;
     if (!workflow.failedSaves.size) {
         let concentrationEffect = effectUtils.getConcentrationEffect(workflow.actor, workflow.item);
         if (concentrationEffect) await genericUtils.remove(concentrationEffect);
@@ -178,7 +177,8 @@ export let compelledDuel = {
             {
                 pass: 'rollFinished',
                 macro: use,
-                priority: 50
+                priority: 50,
+                activities: ['compelledDuel']
             }
         ]
     }

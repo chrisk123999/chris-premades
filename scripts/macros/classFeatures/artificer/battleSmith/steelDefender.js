@@ -3,7 +3,6 @@ import {activityUtils, actorUtils, animationUtils, combatUtils, compendiumUtils,
 import {arcaneJoltHelper} from './arcaneJolt.js';
 
 async function use({workflow}) {
-    if (activityUtils.getIdentifier(workflow.activity) !== genericUtils.getIdentifier(workflow.item)) return;
     let sourceActor = await compendiumUtils.getActorFromCompendium(constants.packs.summons, 'CPR - Steel Defender');
     if (!sourceActor) return;
     let deflectAttackData = await Summons.getSummonItem('Deflect Attack', {}, workflow.item, {translate: 'CHRISPREMADES.Macros.SteelDefender.DeflectAttack', identifier: 'steelDefenderDeflectAttack'});
@@ -144,7 +143,8 @@ export let steelDefender = {
             {
                 pass: 'rollFinished',
                 macro: use,
-                priority: 50
+                priority: 50,
+                activities: ['steelDefender']
             }
         ]
     },

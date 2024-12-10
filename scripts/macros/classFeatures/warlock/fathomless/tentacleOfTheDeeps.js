@@ -2,7 +2,6 @@ import {Summons} from '../../../../lib/summons.js';
 import {activityUtils, compendiumUtils, constants, effectUtils, errors, genericUtils, itemUtils} from '../../../../utils.js';
 
 async function use({workflow}) {
-    if (activityUtils.getIdentifier(workflow.activity) !== genericUtils.getIdentifier(workflow.item)) return;
     let effect = effectUtils.getEffectByIdentifier(workflow.actor, 'tentacleOfTheDeeps');
     if (effect) await genericUtils.remove(effect);
     let sourceActor = await compendiumUtils.getActorFromCompendium(constants.packs.summons, 'CPR - Spectral Tentacle');
@@ -48,7 +47,6 @@ async function use({workflow}) {
     });
 }
 async function early({workflow}) {
-    if (activityUtils.getIdentifier(workflow.activity) !== 'tentacleOfTheDeepsAttack') return;
     let effect = effectUtils.getEffectByIdentifier(workflow.actor, 'tentacleOfTheDeeps');
     if (!effect) return;
     let tentacleActor = workflow.token.scene.tokens.get(effect.flags['chris-premades'].summons.ids[effect.name][0])?.actor;
@@ -82,7 +80,6 @@ async function early({workflow}) {
     await activityUtils.setDamage(workflow.activity, formula);
 }
 async function late({workflow}) {
-    if (activityUtils.getIdentifier(workflow.activity) !== 'tentacleOfTheDeepsAttack') return;
     let effect = effectUtils.getEffectByIdentifier(workflow.actor, 'tentacleOfTheDeeps');
     if (!effect) return;
     let tentacleActor = workflow.token.scene.tokens.get(effect.flags['chris-premades'].summons.ids[effect.name][0])?.actor;
@@ -100,17 +97,20 @@ export let tentacleOfTheDeeps = {
             {
                 pass: 'rollFinished',
                 macro: use,
-                priority: 50
+                priority: 50,
+                activities: ['tentacleOfTheDeeps']
             },
             {
                 pass: 'preTargeting',
                 macro: early,
-                priority: 50
+                priority: 50,
+                activities: ['tentacleOfTheDeepsAttack']
             },
             {
                 pass: 'attackRollComplete',
                 macro: late,
-                priority: 50
+                priority: 50,
+                activities: ['tentacleOfTheDeepsAttack']
             }
         ]
     },

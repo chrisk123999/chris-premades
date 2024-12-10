@@ -2,7 +2,6 @@ import {Summons} from '../../lib/summons.js';
 import {activityUtils, animationUtils, compendiumUtils, constants, dialogUtils, effectUtils, errors, genericUtils, itemUtils, workflowUtils} from '../../utils.js';
 
 async function use({workflow}) {
-    if (activityUtils.getIdentifier(workflow.activity) !== genericUtils.getIdentifier(workflow.item)) return;
     let monsterCompendium = genericUtils.getCPRSetting('monsterCompendium');
     let zombieActorName = itemUtils.getConfig(workflow.item, 'zombieActorName');
     let skeletonActorName = itemUtils.getConfig(workflow.item, 'skeletonActorName');
@@ -49,7 +48,6 @@ async function use({workflow}) {
     });
 }
 async function early({workflow}) {
-    if (activityUtils.getIdentifier(workflow.activity) !== 'animateDeadCommand') return;
     workflowUtils.skipDialog(workflow);
 }
 export let animateDead = {
@@ -60,12 +58,14 @@ export let animateDead = {
             {
                 pass: 'rollFinished',
                 macro: use,
-                priority: 50
+                priority: 50,
+                activities: ['animateDead']
             },
             {
                 pass: 'preTargeting',
                 macro: early,
-                priority: 50
+                priority: 50,
+                activities: ['animateDeadCommand']
             }
         ]
     },

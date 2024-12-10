@@ -1,7 +1,6 @@
 import {activityUtils, effectUtils, genericUtils, itemUtils, workflowUtils} from '../../utils.js';
 
 async function use({workflow}) {
-    if (activityUtils.getIdentifier(workflow.activity) !== genericUtils.getIdentifier(workflow.item)) return;
     let concentrationEffect = effectUtils.getConcentrationEffect(workflow.actor, workflow.item);
     let feature = activityUtils.getActivityByIdentifier(workflow.item, 'auraOfVitalityHealing', {strict: true});
     if (!feature) return;
@@ -30,7 +29,6 @@ async function use({workflow}) {
     if (concentrationEffect) await genericUtils.update(concentrationEffect, {duration: effectData.duration});
 }
 async function early({workflow}) {
-    if (activityUtils.getIdentifier(workflow.activity) !== 'auraOfVitalityHealing') return;
     workflowUtils.skipDialog(workflow);
 }
 export let auraOfVitality = {
@@ -41,12 +39,14 @@ export let auraOfVitality = {
             {
                 pass: 'rollFinished',
                 macro: use,
-                priority: 50
+                priority: 50,
+                activities: ['auraOfVitality']
             },
             {
                 pass: 'preTargeting',
                 macro: early,
-                priority: 50
+                priority: 50,
+                activities: ['auraOfVitalityHealing']
             }
         ]
     }

@@ -139,7 +139,8 @@ export let summonDraconicSpirit = {
             {
                 pass: 'rollFinished',
                 macro: use,
-                priority: 50
+                priority: 50,
+                activities: ['summonDraconicSpiritChromatic', 'summonDraconicSpiritMetallic', 'summonDraconicSpiritGem']
             }
         ]
     },

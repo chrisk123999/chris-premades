@@ -279,7 +279,6 @@ async function useParry({workflow}) {
     await genericUtils.update(itemToUse, {'system.uses.spent': itemToUse.system.uses.spent + 1});
 }
 async function usePushingAttack({workflow}) {
-    if (activityUtils.getIdentifier(workflow.activity) !==genericUtils.getIdentifier(workflow.item)) return;
     let targetToken = workflow.targets.first();
     let targetActor = targetToken?.actor;
     if (!targetActor) return;
@@ -294,7 +293,6 @@ async function usePushingAttack({workflow}) {
     await tokenUtils.pushToken(workflow.token, targetToken, distance);
 }
 async function useSweepingAttack({workflow}) {
-    if (activityUtils.getIdentifier(workflow.activity) !== genericUtils.getIdentifier(workflow.item)) return;
     if (!workflow.targets.size) return;
     let superiorityDie = workflow.actor.system.scale?.['battle-master']?.['combat-superiority-die']?.die ?? 'd6';
     let useSmall = genericUtils.getProperty(workflow.actor, 'flags.chris-premades.useSmallSuperiorityDie');
@@ -319,14 +317,12 @@ async function useSweepingAttack({workflow}) {
     await workflowUtils.syntheticActivityRoll(feature, [target]);
 }
 async function sweepingAttackAttack({workflow}) {
-    if (activityUtils.getIdentifier(workflow.activity) !== 'sweepingAttackAttack') return;
     let currAttackRoll = workflow.item.flags['chris-premades']?.sweepingAttack?.currAttackRoll;
     if (!currAttackRoll) return;
     let replacementRoll = await new Roll(String(currAttackRoll)).evaluate();
     await workflow.setAttackRoll(replacementRoll);
 }
 async function useTripAttack({workflow}) {
-    if (activityUtils.getIdentifier(workflow.activity) !== genericUtils.getIdentifier(workflow.item)) return;
     let targetToken = workflow.targets.first();
     let targetActor = targetToken?.actor;
     if (!targetActor) return;
@@ -480,7 +476,8 @@ export let maneuversPushingAttack = {
             {
                 pass: 'rollFinished',
                 macro: usePushingAttack,
-                priority: 50
+                priority: 50,
+                activities: ['maneuversPushingAttack']
             }
         ]
     }
@@ -514,12 +511,14 @@ export let maneuversSweepingAttack = {
             {
                 pass: 'rollFinished',
                 macro: useSweepingAttack,
-                priority: 50
+                priority: 50,
+                activities: ['maneuversSweepingAttack']
             },
             {
                 pass: 'postAttackRoll',
                 macro: sweepingAttackAttack,
-                priority: 50
+                priority: 50,
+                activities: ['sweepingAttackAttack']
             }
         ]
     }
@@ -536,7 +535,8 @@ export let maneuversTripAttack = {
             {
                 pass: 'rollFinished',
                 macro: useTripAttack,
-                priority: 50
+                priority: 50,
+                activities: ['maneuversTripAttack']
             }
         ]
     }

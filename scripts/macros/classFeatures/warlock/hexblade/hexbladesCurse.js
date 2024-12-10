@@ -57,7 +57,6 @@ async function early({workflow}) {
     await effectUtils.createEffect(targetToken.actor, effectData);
 }
 async function use({workflow}) {
-    if (activityUtils.getIdentifier(workflow.activity) !== genericUtils.getIdentifier(workflow.item)) return;
     if (workflow.targets.size !== 1) return;
     let sourceEffectData = {
         name: workflow.item.name,
@@ -137,7 +136,8 @@ export let hexbladesCurse = {
             {
                 pass: 'rollFinished',
                 macro: use,
-                priority: 50
+                priority: 50,
+                activities: ['hexbladesCurse']
             }
         ]
     }

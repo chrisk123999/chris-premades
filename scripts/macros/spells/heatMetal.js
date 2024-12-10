@@ -1,65 +1,63 @@
 import {activityUtils, actorUtils, compendiumUtils, constants, dialogUtils, effectUtils, errors, genericUtils, itemUtils, socketUtils, workflowUtils} from '../../utils.js';
 async function use({workflow}) {
-    let activityIdentifier = activityUtils.getIdentifier(workflow.activity);
-    if (activityIdentifier === genericUtils.getIdentifier(workflow.item)) {
-        let concentrationEffect = effectUtils.getConcentrationEffect(workflow.actor, workflow.item);
-        if (workflow.targets.size !== 1) {
-            if (concentrationEffect) await genericUtils.remove(concentrationEffect);
-            return;
-        }
-        let targetToken = workflow.targets.first();
-        let targetUuid = targetToken.document.uuid;
-        let feature = activityUtils.getActivityByIdentifier(workflow.item, 'heatMetalPulse', {strict: true});
-        let damageFeature = activityUtils.getActivityByIdentifier(workflow.item, 'heatMetalDamage', {strict: true});
-        if (!feature || !damageFeature) {
-            if (concentrationEffect) await genericUtils.remove(concentrationEffect);
-            return;
-        }
-        let casterEffectData = {
-            name: workflow.item.name,
-            img: workflow.item.img,
-            origin: workflow.item.uuid,
-            duration: itemUtils.convertDuration(workflow.item),
-            flags: {
-                'chris-premades': {
-                    heatMetal: {
-                        targetUuid,
-                        unable: false
-                    },
-                    castData: workflow.castData
-                }
-            }
-        };
-        let effect = await effectUtils.createEffect(workflow.actor, casterEffectData, {
-            concentrationItem: workflow.item, 
-            strictlyInterdependent: true, 
-            identifier: 'heatMetal', 
-            vae: [{
-                type: 'use', 
-                name: feature.name, 
-                identifier: 'heatMetal',
-                activityIdentifier: 'heatMetalPulse'
-            }],
-            unhideActivities: {
-                itemUuid: workflow.item.uuid,
-                activityIdentifiers: ['heatMetalPulse'],
-                favorite: true
-            }
-        });
-        if (concentrationEffect) await genericUtils.update(concentrationEffect, {duration: casterEffectData.duration});
-        await workflowUtils.syntheticActivityRoll(damageFeature, [targetToken], {atLevel: workflow.castData.castLevel});
-        await dialog(workflow, targetToken, effect);
-    } else if (activityIdentifier === 'heatMetalPulse') {
-        let effect = effectUtils.getEffectByIdentifier(workflow.actor, 'heatMetal');
-        if (!effect) return;
-        let targetTokenUuid = effect.flags['chris-premades'].heatMetal.targetUuid;
-        let targetToken = fromUuidSync(targetTokenUuid)?.object;
-        if (!targetToken) return;
-        let feature = activityUtils.getActivityByIdentifier(workflow.item, 'heatMetalDamage', {strict: true});
-        if (!feature) return;
-        await workflowUtils.syntheticActivityRoll(feature, [targetToken], {atLevel: effect.flags['chris-premades'].castData.castLevel});
-        await dialog(workflow, targetToken, effect);
+    let concentrationEffect = effectUtils.getConcentrationEffect(workflow.actor, workflow.item);
+    if (workflow.targets.size !== 1) {
+        if (concentrationEffect) await genericUtils.remove(concentrationEffect);
+        return;
     }
+    let targetToken = workflow.targets.first();
+    let targetUuid = targetToken.document.uuid;
+    let feature = activityUtils.getActivityByIdentifier(workflow.item, 'heatMetalPulse', {strict: true});
+    let damageFeature = activityUtils.getActivityByIdentifier(workflow.item, 'heatMetalDamage', {strict: true});
+    if (!feature || !damageFeature) {
+        if (concentrationEffect) await genericUtils.remove(concentrationEffect);
+        return;
+    }
+    let casterEffectData = {
+        name: workflow.item.name,
+        img: workflow.item.img,
+        origin: workflow.item.uuid,
+        duration: itemUtils.convertDuration(workflow.item),
+        flags: {
+            'chris-premades': {
+                heatMetal: {
+                    targetUuid,
+                    unable: false
+                },
+                castData: workflow.castData
+            }
+        }
+    };
+    let effect = await effectUtils.createEffect(workflow.actor, casterEffectData, {
+        concentrationItem: workflow.item, 
+        strictlyInterdependent: true, 
+        identifier: 'heatMetal', 
+        vae: [{
+            type: 'use', 
+            name: feature.name, 
+            identifier: 'heatMetal',
+            activityIdentifier: 'heatMetalPulse'
+        }],
+        unhideActivities: {
+            itemUuid: workflow.item.uuid,
+            activityIdentifiers: ['heatMetalPulse'],
+            favorite: true
+        }
+    });
+    if (concentrationEffect) await genericUtils.update(concentrationEffect, {duration: casterEffectData.duration});
+    await workflowUtils.syntheticActivityRoll(damageFeature, [targetToken], {atLevel: workflow.castData.castLevel});
+    await dialog(workflow, targetToken, effect);
+}
+async function late({workflow}) {
+    let effect = effectUtils.getEffectByIdentifier(workflow.actor, 'heatMetal');
+    if (!effect) return;
+    let targetTokenUuid = effect.flags['chris-premades'].heatMetal.targetUuid;
+    let targetToken = fromUuidSync(targetTokenUuid)?.object;
+    if (!targetToken) return;
+    let feature = activityUtils.getActivityByIdentifier(workflow.item, 'heatMetalDamage', {strict: true});
+    if (!feature) return;
+    await workflowUtils.syntheticActivityRoll(feature, [targetToken], {atLevel: effect.flags['chris-premades'].castData.castLevel});
+    await dialog(workflow, targetToken, effect);
 }
 async function dialog(workflow, targetToken, effect) {
     let selection;
@@ -115,7 +113,6 @@ async function dialog(workflow, targetToken, effect) {
     await effectUtils.createEffect(targetToken.actor, effectData, {parentEntity: effect, identifier: 'heatMetalHeld'});
 }
 async function early({workflow}) {
-    if (activityUtils.getIdentifier(workflow.activity) !== 'heatMetalPulse') return;
     workflowUtils.skipDialog(workflow);
 }
 export let heatMetal = {
@@ -126,12 +123,20 @@ export let heatMetal = {
             {
                 pass: 'rollFinished',
                 macro: use,
-                priority: 50
+                priority: 50,
+                activities: ['heatMetal']
+            },
+            {
+                pass: 'rollFinished',
+                macro: late,
+                priority: 50,
+                activities: ['heatMetalPulse']
             },
             {
                 pass: 'preTargeting',
                 macro: early,
-                priority: 50
+                priority: 50,
+                activities: ['heatMetalPulse']
             }
         ]
     }

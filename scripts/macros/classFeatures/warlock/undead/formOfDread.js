@@ -1,7 +1,6 @@
 import {activityUtils, actorUtils, combatUtils, compendiumUtils, constants, dialogUtils, effectUtils, errors, genericUtils, itemUtils, workflowUtils} from '../../../../utils.js';
 
 async function use({workflow}) {
-    if (activityUtils.getIdentifier(workflow.activity) !== genericUtils.getIdentifier(workflow.item)) return;
     let feature = activityUtils.getActivityByIdentifier(workflow.item, 'formOfDreadFear', {strict: true});
     if (!feature) return;
     let effectData = {
@@ -96,7 +95,8 @@ export let formOfDread = {
             {
                 pass: 'rollFinished',
                 macro: use,
-                priority: 50
+                priority: 50,
+                activities: ['formOfDread']
             }
         ]
     },

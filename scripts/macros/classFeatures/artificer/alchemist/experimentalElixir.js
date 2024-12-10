@@ -65,7 +65,6 @@ async function longRest({trigger: {entity: item}}) {
     await genericUtils.remove(item);
 }
 async function late({workflow}) {
-    if (activityUtils.getIdentifier(workflow.activity) !== 'experimentalElixirMain') return;
     let feature = activityUtils.getActivityByIdentifier(workflow.item, 'experimentalElixirHeal', {strict: true});
     if (!feature) return;
     await workflowUtils.syntheticActivityRoll(feature, Array.from(workflow.targets));
@@ -91,7 +90,8 @@ export let experimentalElixirConsumable = {
             {
                 pass: 'rollFinished',
                 macro: late,
-                priority: 50
+                priority: 50,
+                activities: ['experimentalElixirMain']
             }
         ]
     },

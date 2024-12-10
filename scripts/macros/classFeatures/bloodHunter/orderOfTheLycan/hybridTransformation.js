@@ -1,140 +1,138 @@
 import {activityUtils, actorUtils, compendiumUtils, constants, effectUtils, errors, genericUtils, itemUtils, workflowUtils} from '../../../../utils.js';
 
 async function use({workflow}) {
-    let activityIdentifier = activityUtils.getIdentifier(workflow.activity);
-    if (activityIdentifier === genericUtils.getIdentifier(workflow.item)) {
-        let classLevel = workflow.actor.classes?.['blood-hunter']?.system.levels;
-        if (!classLevel) return;
-        let weaponData = await compendiumUtils.getItemFromCompendium(constants.featurePacks.classFeatureItems, 'Predatory Strike', {object: true, getDescription: true, translate: 'CHRISPREMADES.Macros.HybridTransformation.PredatoryStrike', identifier: 'predatoryStrike'});
-        if (!weaponData) {
-            errors.missingPackItem();
-            return;
-        }
-        let revertFeature = activityUtils.getActivityByIdentifier(workflow.item, 'hybridTransformationRevert', {strict: true});
-        if (!revertFeature) return;
-        let effectData = {
-            name: workflow.item.name,
-            img: workflow.item.img,
-            origin: workflow.item.uuid,
-            duration: itemUtils.convertDuration(workflow.activity),
-            changes: [
-                {
-                    key: 'flags.midi-qol.advantage.ability.check.str',
-                    mode: 0,
-                    value: 1,
-                    priority: 20
-                },
-                {
-                    key: 'flags.midi-qol.advantage.ability.save.str',
-                    mode: 0,
-                    value: 1,
-                    priority: 20
-                },
-                {
-                    key: 'system.bonuses.mwak.damage',
-                    mode: 2,
-                    value: 1,
-                    priority: 20
-                },
-                {
-                    key: 'system.bonuses.msak.damage',
-                    mode: 2,
-                    value: 1,
-                    priority: 20
-                },
-                {
-                    key: 'system.traits.dr.custom',
-                    mode: 0,
-                    value: 'non-silver-physical',
-                    priority: 20
-                }
-            ],
-            flags: {
-                dae: {
-                    showIcon: true,
-                    specialDuration: [
-                        'zeroHP'
-                    ]
-                },
-                'chris-premades': {
-                    hybridTransformation: {
-                        originalAvatarImg: workflow.actor.img,
-                        originalPrototypeImg: workflow.actor.prototypeToken.texture.src,
-                        originalTokenImg: workflow.token.document.texture.src
-                    }
-                }
-            }
-        };
-        if (workflow.actor.armor?.system.type?.value !== 'heavy') effectData.changes.push(
+    let classLevel = workflow.actor.classes?.['blood-hunter']?.system.levels;
+    if (!classLevel) return;
+    let weaponData = await compendiumUtils.getItemFromCompendium(constants.featurePacks.classFeatureItems, 'Predatory Strike', {object: true, getDescription: true, translate: 'CHRISPREMADES.Macros.HybridTransformation.PredatoryStrike', identifier: 'predatoryStrike'});
+    if (!weaponData) {
+        errors.missingPackItem();
+        return;
+    }
+    let revertFeature = activityUtils.getActivityByIdentifier(workflow.item, 'hybridTransformationRevert', {strict: true});
+    if (!revertFeature) return;
+    let effectData = {
+        name: workflow.item.name,
+        img: workflow.item.img,
+        origin: workflow.item.uuid,
+        duration: itemUtils.convertDuration(workflow.activity),
+        changes: [
             {
-                key: 'system.attributes.ac.bonus',
+                key: 'flags.midi-qol.advantage.ability.check.str',
+                mode: 0,
+                value: 1,
+                priority: 20
+            },
+            {
+                key: 'flags.midi-qol.advantage.ability.save.str',
+                mode: 0,
+                value: 1,
+                priority: 20
+            },
+            {
+                key: 'system.bonuses.mwak.damage',
                 mode: 2,
                 value: 1,
                 priority: 20
+            },
+            {
+                key: 'system.bonuses.msak.damage',
+                mode: 2,
+                value: 1,
+                priority: 20
+            },
+            {
+                key: 'system.traits.dr.custom',
+                mode: 0,
+                value: 'non-silver-physical',
+                priority: 20
             }
-        );
-        effectUtils.addMacro(effectData, 'effect', ['hybridTransformationActive']);
-        effectUtils.addMacro(effectData, 'combat', ['hybridTransformationActive']);
-        let attackActivityId = Object.keys(weaponData.system.activities)[0];
-        if (classLevel >= 18) {
-            weaponData.system.activities[attackActivityId].attack.bonus = '+3';
-            effectData.changes[2].value = 3;
-            effectData.changes[3].value = 3;
-            weaponData.system.damage.base.custom.formula = '1d8';
-            delete effectData.duration;
-        } else if (classLevel >= 11) {
-            weaponData.system.activities[attackActivityId].attack.bonus = '+2';
-            effectData.changes[2].value = 2;
-            effectData.changes[3].value = 2;
-            weaponData.system.damage.base.custom.formula = '1d8';
-        } else if (classLevel >= 7) {
-            weaponData.system.activities[attackActivityId].attack.bonus = '+1';
-        }
-        if (classLevel >= 15) {
-            effectUtils.addMacro(effectData, 'midi.actor', ['hybridTransformationActive']);
-        }
-        let updates = {
-            actor: {},
-            token: {}
-        };
-        let avatarImg = itemUtils.getConfig(workflow.item, 'avatar');
-        let tokenImg = itemUtils.getConfig(workflow.item, 'token');
-        if (avatarImg) {
-            genericUtils.setProperty(updates.actor, 'img', avatarImg);
-        }
-        if (tokenImg) {
-            genericUtils.setProperty(updates.actor, 'prototypeToken.texture.src', tokenImg);
-            genericUtils.setProperty(updates.token, 'texture.src', tokenImg);
-        }
-        let effect = await effectUtils.createEffect(workflow.actor, effectData, {
-            identifier: 'hybridTransformation', 
-            vae: [{
-                type: 'use', 
-                name: weaponData.name, 
-                identifier: 'predatoryStrike'
-            }, {
-                type: 'use', 
-                name: revertFeature.name,
-                identifier: 'hybridTransformation', 
-                activityIdentifier: 'hybridTransformationRevert'
-            }],
-            unhideActivities: {
-                itemUuid: workflow.item.uuid,
-                activityIdentifiers: ['hybridTransformationRevert'],
-                favorite: true
+        ],
+        flags: {
+            dae: {
+                showIcon: true,
+                specialDuration: [
+                    'zeroHP'
+                ]
+            },
+            'chris-premades': {
+                hybridTransformation: {
+                    originalAvatarImg: workflow.actor.img,
+                    originalPrototypeImg: workflow.actor.prototypeToken.texture.src,
+                    originalTokenImg: workflow.token.document.texture.src
+                }
             }
-        });
-        await itemUtils.createItems(workflow.actor, [weaponData], {favorite: true, parentEntity: effect});
-        if (Object.entries(updates.actor)?.length) {
-            await genericUtils.update(workflow.actor, updates.actor);
         }
-        if (Object.entries(updates.token)?.length) {
-            await genericUtils.update(workflow.token.document, updates.token);
+    };
+    if (workflow.actor.armor?.system.type?.value !== 'heavy') effectData.changes.push(
+        {
+            key: 'system.attributes.ac.bonus',
+            mode: 2,
+            value: 1,
+            priority: 20
         }
-    } else if (activityIdentifier === 'hybridTransformationRevert') {
-        let effect = effectUtils.getEffectByIdentifier(workflow.actor, 'hybridTransformation');
-        if (effect) await genericUtils.remove(effect);
+    );
+    effectUtils.addMacro(effectData, 'effect', ['hybridTransformationActive']);
+    effectUtils.addMacro(effectData, 'combat', ['hybridTransformationActive']);
+    let attackActivityId = Object.keys(weaponData.system.activities)[0];
+    if (classLevel >= 18) {
+        weaponData.system.activities[attackActivityId].attack.bonus = '+3';
+        effectData.changes[2].value = 3;
+        effectData.changes[3].value = 3;
+        weaponData.system.damage.base.custom.formula = '1d8';
+        delete effectData.duration;
+    } else if (classLevel >= 11) {
+        weaponData.system.activities[attackActivityId].attack.bonus = '+2';
+        effectData.changes[2].value = 2;
+        effectData.changes[3].value = 2;
+        weaponData.system.damage.base.custom.formula = '1d8';
+    } else if (classLevel >= 7) {
+        weaponData.system.activities[attackActivityId].attack.bonus = '+1';
     }
+    if (classLevel >= 15) {
+        effectUtils.addMacro(effectData, 'midi.actor', ['hybridTransformationActive']);
+    }
+    let updates = {
+        actor: {},
+        token: {}
+    };
+    let avatarImg = itemUtils.getConfig(workflow.item, 'avatar');
+    let tokenImg = itemUtils.getConfig(workflow.item, 'token');
+    if (avatarImg) {
+        genericUtils.setProperty(updates.actor, 'img', avatarImg);
+    }
+    if (tokenImg) {
+        genericUtils.setProperty(updates.actor, 'prototypeToken.texture.src', tokenImg);
+        genericUtils.setProperty(updates.token, 'texture.src', tokenImg);
+    }
+    let effect = await effectUtils.createEffect(workflow.actor, effectData, {
+        identifier: 'hybridTransformation', 
+        vae: [{
+            type: 'use', 
+            name: weaponData.name, 
+            identifier: 'predatoryStrike'
+        }, {
+            type: 'use', 
+            name: revertFeature.name,
+            identifier: 'hybridTransformation', 
+            activityIdentifier: 'hybridTransformationRevert'
+        }],
+        unhideActivities: {
+            itemUuid: workflow.item.uuid,
+            activityIdentifiers: ['hybridTransformationRevert'],
+            favorite: true
+        }
+    });
+    await itemUtils.createItems(workflow.actor, [weaponData], {favorite: true, parentEntity: effect});
+    if (Object.entries(updates.actor)?.length) {
+        await genericUtils.update(workflow.actor, updates.actor);
+    }
+    if (Object.entries(updates.token)?.length) {
+        await genericUtils.update(workflow.token.document, updates.token);
+    }
+}
+async function revert({workflow}) {
+    let effect = effectUtils.getEffectByIdentifier(workflow.actor, 'hybridTransformation');
+    if (effect) await genericUtils.remove(effect);
 }
 async function earlyBrand({workflow}) {
     if (workflow.targets.size !== 1) return;
@@ -238,7 +236,14 @@ export let hybridTransformation = {
             {
                 pass: 'rollFinished',
                 macro: use,
-                priority: 50
+                priority: 50,
+                activities: ['hybridTransformation']
+            },
+            {
+                pass: 'rollFinished',
+                macro: revert,
+                priority: 50,
+                activities: ['hybridTransformationRevert']
             }
         ]
     },

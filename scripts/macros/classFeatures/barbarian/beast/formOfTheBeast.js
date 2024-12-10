@@ -1,7 +1,6 @@
 import {activityUtils, combatUtils, workflowUtils} from '../../../../utils.js';
 
 async function use({workflow}) {
-    if (activityUtils.getIdentifier(workflow.activity) !== 'formOfTheBeastBite') return;
     if (!workflow.hitTargets.size) return;
     if (!Math.floor(workflow.damageList[0].damageDetail.reduce((acc, i) => acc + i.value, 0))) return;
     if (!combatUtils.perTurnCheck(workflow.item, 'formOfTheBeastBite', true, workflow.token.id)) return;
@@ -20,7 +19,8 @@ export let formOfTheBeast = {
             {
                 pass: 'rollFinished',
                 macro: use,
-                priority: 50
+                priority: 50,
+                activities: ['formOfTheBeastBite']
             }
         ]
     },

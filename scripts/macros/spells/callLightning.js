@@ -1,7 +1,6 @@
 import {activityUtils, compendiumUtils, constants, dialogUtils, effectUtils, errors, genericUtils, itemUtils, workflowUtils} from '../../utils.js';
 
 async function use({workflow}) {
-    if (activityUtils.getIdentifier(workflow.activity) !== genericUtils.getIdentifier(workflow.item)) return;
     let concentrationEffect = await effectUtils.getConcentrationEffect(workflow.actor, workflow.item);
     let storming = await dialogUtils.confirm(workflow.item.name, 'CHRISPREMADES.Macros.CallLightning.Storming');
     let castLevel = workflow.castData.castLevel;
@@ -44,7 +43,6 @@ async function use({workflow}) {
     await workflowUtils.completeActivityUse(feature);
 }
 async function early({workflow}) {
-    if (activityUtils.getIdentifier(workflow.activity) !== 'stormBolt') return;
     if (workflow.activity.tempFlag) {
         workflow.activity.tempFlag = false;
         return;
@@ -57,18 +55,20 @@ async function early({workflow}) {
 }
 export let callLightning = {
     name: 'Call Lightning',
-    version: '0.12.0',
+    version: '1.1.0',
     midi: {
         item: [
             {
                 pass: 'rollFinished',
                 macro: use,
-                priority: 50
+                priority: 50,
+                activities: ['callLightning']
             },
             {
                 pass: 'preTargeting',
                 macro: early,
-                priority: 50
+                priority: 50,
+                activities: ['stormBolt']
             }
         ]
     }

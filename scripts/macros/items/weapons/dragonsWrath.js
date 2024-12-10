@@ -1,7 +1,6 @@
 import {activityUtils, compendiumUtils, constants, itemUtils, tokenUtils, workflowUtils} from '../../../utils.js';
 
 async function late({workflow}) {
-    if (activityUtils.getIdentifier(workflow.activity) !== 'dragonsWrath') return;
     if (workflow.hitTargets.size !== 1) return;
     if (workflow.d20AttackRoll !== 20) return;
     let targetToken = workflow.hitTargets.first();
@@ -19,7 +18,8 @@ export let dragonsWrath = {
             {
                 pass: 'rollFinished',
                 macro: late,
-                priority: 50
+                priority: 50,
+                activities: ['dragonsWrath']
             }
         ]
     }

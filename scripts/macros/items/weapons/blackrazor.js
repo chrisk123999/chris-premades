@@ -1,7 +1,6 @@
 import {activityUtils, actorUtils, compendiumUtils, constants, effectUtils, errors, genericUtils, workflowUtils} from '../../../utils.js';
 
 async function damage({workflow}) {
-    if (activityUtils.getIdentifier(workflow.activity) !== genericUtils.getIdentifier(workflow.item)) return;
     if (workflow.hitTargets.size !== 1) return;
     if (actorUtils.typeOrRace(workflow.hitTargets.first().actor) !== 'undead') return;
     let damageRoll = await new CONFIG.Dice.DamageRoll('1d10[healing]', {}, {type: 'healing'}).evaluate();
@@ -11,7 +10,6 @@ async function damage({workflow}) {
     await workflowUtils.syntheticActivityRoll(feature, [workflow.token]);
 }
 async function late({workflow}) {
-    if (activityUtils.getIdentifier(workflow.activity) !== genericUtils.getIdentifier(workflow.item)) return;
     if (workflow.hitTargets.size !== 1) return;
     let ditem = workflow.damageList[0];
     if (ditem.newHP || !ditem.oldHP) return;
@@ -63,12 +61,14 @@ export let blackrazor = {
             {
                 pass: 'damageRollComplete',
                 macro: damage,
-                priority: 50
+                priority: 50,
+                activities: ['blackrazor']
             },
             {
                 pass: 'rollFinished',
                 macro: late,
-                priority: 50
+                priority: 50,
+                activities: ['blackrazor']
             }
         ],
         actor: [

@@ -2,28 +2,26 @@ import {activityUtils, compendiumUtils, constants, dialogUtils, errors, genericU
 import {proneOnFail} from '../../../generic/proneOnFail.js';
 
 async function use({workflow}) {
-    let activityIdentifier = activityUtils.getIdentifier(workflow.activity);
-    if (activityIdentifier === genericUtils.getIdentifier(workflow.item)) {
-        let enervatingFeature = activityUtils.getActivityByIdentifier(workflow.item, 'metallicBreathWeaponEnervating', {strict: true});
-        let repulsionFeature = activityUtils.getActivityByIdentifier(workflow.item, 'metallicBreathWeaponRepulsion', {strict: true});
-        if (!enervatingFeature || !repulsionFeature) return;
-        let selection = await dialogUtils.buttonDialog(workflow.item.name, 'CHRISPREMADES.Macros.MetallicBreathWeapon.Select', [
-            [enervatingFeature.name.name, 'enervating'],
-            [repulsionFeature.name, 'repulsion']
-        ]);
-        if (!selection) return;
-        if (selection === 'enervating') {
-            await workflowUtils.syntheticActivityRoll(enervatingFeature, Array.from(workflow.targets));
-        } else {
-            await workflowUtils.syntheticActivityRoll(repulsionFeature, Array.from(workflow.targets));
-        }
-    } else if (activityIdentifier === 'metallicBreathWeaponRepulsion') {
-        if (!workflow.failedSaves.size) return;
-        await Promise.all(workflow.failedSaves.map(async i => {
-            await tokenUtils.pushToken(workflow.token, i, 20);
-        }));
-        await proneOnFail.midi.item[0].macro({workflow});
+    let enervatingFeature = activityUtils.getActivityByIdentifier(workflow.item, 'metallicBreathWeaponEnervating', {strict: true});
+    let repulsionFeature = activityUtils.getActivityByIdentifier(workflow.item, 'metallicBreathWeaponRepulsion', {strict: true});
+    if (!enervatingFeature || !repulsionFeature) return;
+    let selection = await dialogUtils.buttonDialog(workflow.item.name, 'CHRISPREMADES.Macros.MetallicBreathWeapon.Select', [
+        [enervatingFeature.name.name, 'enervating'],
+        [repulsionFeature.name, 'repulsion']
+    ]);
+    if (!selection) return;
+    if (selection === 'enervating') {
+        await workflowUtils.syntheticActivityRoll(enervatingFeature, Array.from(workflow.targets));
+    } else {
+        await workflowUtils.syntheticActivityRoll(repulsionFeature, Array.from(workflow.targets));
     }
+}
+async function repulsion({workflow}) {
+    if (!workflow.failedSaves.size) return;
+    await Promise.all(workflow.failedSaves.map(async i => {
+        await tokenUtils.pushToken(workflow.token, i, 20);
+    }));
+    await proneOnFail.midi.item[0].macro({workflow});
 }
 export let metallicBreathWeapon = {
     name: 'Metallic Breath Weapon',
@@ -33,7 +31,14 @@ export let metallicBreathWeapon = {
             {
                 pass: 'rollFinished',
                 macro: use,
-                priority: 50
+                priority: 50,
+                activities: ['metallicBreathWeapon']
+            },
+            {
+                pass: 'rollFinished',
+                macro: repulsion,
+                priority: 50,
+                activities: ['metallicBreathWeaponRepulsion']
             }
         ]
     }

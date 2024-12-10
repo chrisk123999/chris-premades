@@ -2,60 +2,56 @@ import {Summons} from '../../../lib/summons.js';
 import {activityUtils, animationUtils, compendiumUtils, constants, effectUtils, errors, genericUtils, itemUtils} from '../../../utils.js';
 
 async function use({workflow}) {
-    let activityIdentifier = activityUtils.getIdentifier(workflow.activity);
-    if (activityIdentifier === 'dancingSwordToss') {
-        let sourceActor = await compendiumUtils.getActorFromCompendium(constants.packs.summons, 'CPR - Dancing Sword');
-        if (!sourceActor) return;
-        let feature = activityUtils.getActivityByIdentifier(workflow.item, 'dancingSwordAttack', {strict: true});
-        if (!feature) return;
-        await genericUtils.update(feature, {'uses.spent': 0});
-        let name = itemUtils.getConfig(workflow.item, 'name');
-        if (!name?.length) name = genericUtils.translate('CHRISPREMADES.Summons.CreatureNames.' + genericUtils.getIdentifier(workflow.item).replace('dancingSword','Dancing'));
-        let updates = {
-            actor: {
-                name,
-                prototypeToken: {
-                    name
-                }
-            },
-            token: {
+    let sourceActor = await compendiumUtils.getActorFromCompendium(constants.packs.summons, 'CPR - Dancing Sword');
+    if (!sourceActor) return;
+    let feature = activityUtils.getActivityByIdentifier(workflow.item, 'dancingSwordAttack', {strict: true});
+    if (!feature) return;
+    await genericUtils.update(feature, {'uses.spent': 0});
+    let name = itemUtils.getConfig(workflow.item, 'name');
+    if (!name?.length) name = genericUtils.translate('CHRISPREMADES.Summons.CreatureNames.' + genericUtils.getIdentifier(workflow.item).replace('dancingSword','Dancing'));
+    let updates = {
+        actor: {
+            name,
+            prototypeToken: {
                 name
             }
-        };
-        let avatarImg = itemUtils.getConfig(workflow.item, 'avatar');
-        let tokenImg = itemUtils.getConfig(workflow.item, 'token');
-        if (!tokenImg) {
-            let weaponType = workflow.item.system.type?.baseItem;
-            if (animationUtils.jb2aCheck() && weaponType) {
-                tokenImg = Sequencer.Database.getEntry('jb2a.spiritual_weapon.' + weaponType + '.01.spectral.02.green', {softFail: true})?.file;
-                if (!tokenImg) tokenImg = Sequencer.Database.getEntry('jb2a.spiritual_weapon.greatsword.01.spectral.02.green', {softFail: true})?.file;
-            }
+        },
+        token: {
+            name
         }
-        if (avatarImg) updates.actor.img = avatarImg;
-        if (tokenImg) {
-            genericUtils.setProperty(updates, 'actor.prototypeToken.texture.src', tokenImg);
-            genericUtils.setProperty(updates, 'token.texture.src', tokenImg);
+    };
+    let avatarImg = itemUtils.getConfig(workflow.item, 'avatar');
+    let tokenImg = itemUtils.getConfig(workflow.item, 'token');
+    if (!tokenImg) {
+        let weaponType = workflow.item.system.type?.baseItem;
+        if (animationUtils.jb2aCheck() && weaponType) {
+            tokenImg = Sequencer.Database.getEntry('jb2a.spiritual_weapon.' + weaponType + '.01.spectral.02.green', {softFail: true})?.file;
+            if (!tokenImg) tokenImg = Sequencer.Database.getEntry('jb2a.spiritual_weapon.greatsword.01.spectral.02.green', {softFail: true})?.file;
         }
-        await Summons.spawn(sourceActor, updates, workflow.item, workflow.token, {
-            range: 30,
-            initiativeType: 'none',
-            customIdentifier: 'dancingSword',
-            additionalVaeButtons: [{
-                type: 'use', 
-                name: feature.name, 
-                identifier: genericUtils.getIdentifier(workflow.item),
-                activityIdentifier: 'dancingSwordAttack'
-            }],
-            unhideActivities: {
-                itemUuid: workflow.item.uuid,
-                activityIdentifiers: ['dancingSwordAttack'],
-                favorite: true
-            }
-        });
     }
+    if (avatarImg) updates.actor.img = avatarImg;
+    if (tokenImg) {
+        genericUtils.setProperty(updates, 'actor.prototypeToken.texture.src', tokenImg);
+        genericUtils.setProperty(updates, 'token.texture.src', tokenImg);
+    }
+    await Summons.spawn(sourceActor, updates, workflow.item, workflow.token, {
+        range: 30,
+        initiativeType: 'none',
+        customIdentifier: 'dancingSword',
+        additionalVaeButtons: [{
+            type: 'use', 
+            name: feature.name, 
+            identifier: genericUtils.getIdentifier(workflow.item),
+            activityIdentifier: 'dancingSwordAttack'
+        }],
+        unhideActivities: {
+            itemUuid: workflow.item.uuid,
+            activityIdentifiers: ['dancingSwordAttack'],
+            favorite: true
+        }
+    });
 }
 async function late({workflow}) {
-    if (activityUtils.getIdentifier(workflow.activity) !== 'dancingSwordAttack') return;
     let effect = effectUtils.getEffectByIdentifier(workflow.actor, 'dancingSword');
     if (!effect) return;
     // This is stupied but workflow.activity doesn't have an up-to-date value at this point
@@ -71,7 +67,6 @@ async function late({workflow}) {
     }
 }
 async function early({workflow}) {
-    if (activityUtils.getIdentifier(workflow.activity) !== 'dancingSwordAttack') return;
     let effect = effectUtils.getEffectByIdentifier(workflow.actor, 'dancingSword');
     if (!effect) return;
     let dancingActor = canvas.scene.tokens.get(effect.flags['chris-premades'].summons.ids[effect.name][0])?.actor;
@@ -108,17 +103,20 @@ export let dancingSword = {
             {
                 pass: 'preTargeting',
                 macro: early,
-                priority: 50
+                priority: 50,
+                activities: ['dancingSwordAttack']
             },
             {
                 pass: 'attackRollComplete',
                 macro: late,
-                priority: 50
+                priority: 50,
+                activities: ['dancingSwordAttack']
             },
             {
                 pass: 'rollFinished',
                 macro: use,
-                priority: 50
+                priority: 50,
+                activities: ['dancingSwordToss']
             }
         ]
     }

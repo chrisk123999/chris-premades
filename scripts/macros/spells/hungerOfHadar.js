@@ -1,7 +1,6 @@
 import {activityUtils, compendiumUtils, constants, effectUtils, genericUtils, itemUtils, templateUtils, workflowUtils} from '../../utils.js';
 
 async function use({workflow}) {
-    if (activityUtils.getIdentifier(workflow.activity) !== genericUtils.getIdentifier(workflow.item)) return;
     let concentrationEffect = effectUtils.getConcentrationEffect(workflow.actor, workflow.item);
     let useRealDarkness = itemUtils.getConfig(workflow.item, 'useRealDarkness');
     let darknessAnimation = itemUtils.getConfig(workflow.item, 'darknessAnimation');
@@ -83,7 +82,8 @@ export let hungerOfHadar = {
             {
                 pass: 'rollFinished',
                 macro: use,
-                priority: 50
+                priority: 50,
+                activities: ['hungerOfHadar']
             }
         ]
     },

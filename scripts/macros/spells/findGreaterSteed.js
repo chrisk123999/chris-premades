@@ -1,19 +1,16 @@
 import {activityUtils, constants, effectUtils, genericUtils, workflowUtils} from '../../utils.js';
 import {findSteedEarlyHelper, findSteedHelper} from './findSteed.js';
 async function use({workflow}) {
-    let activityIdentifier = activityUtils.getIdentifier(workflow.activity);
-    if (activityIdentifier === genericUtils.getIdentifier(workflow.item)) {
-        await findSteedHelper(workflow, 'Steed', 'Greater Steeds', 'findGreaterSteed');
-    } else if (activityIdentifier === 'findSteedDismiss') {
-        let effect = effectUtils.getEffectByIdentifier(workflow.actor, 'findGreaterSteed');
-        if (effect) await genericUtils.remove(effect);
-    }
+    await findSteedHelper(workflow, 'Steed', 'Greater Steeds', 'findGreaterSteed');
+}
+async function dismiss({workflow}) {
+    let effect = effectUtils.getEffectByIdentifier(workflow.actor, 'findGreaterSteed');
+    if (effect) await genericUtils.remove(effect);
 }
 async function early({workflow}) {
     await findSteedEarlyHelper(workflow, 'findGreaterSteed');
 }
 async function veryEarly({workflow}) {
-    if (activityUtils.getIdentifier(workflow.activity) !== 'findSteedDismiss') return;
     workflowUtils.skipDialog(workflow);
 }
 export let findGreaterSteed = {
@@ -25,12 +22,20 @@ export let findGreaterSteed = {
             {
                 pass: 'rollFinished',
                 macro: use,
-                priority: 50
+                priority: 50,
+                activities: ['findGreaterSteed']
+            },
+            {
+                pass: 'rollFinished',
+                macro: dismiss,
+                priority: 50,
+                activities: ['findSteedDismiss']
             },
             {
                 pass: 'preTargeting',
                 macro: veryEarly,
-                priority: 50
+                priority: 50,
+                activities: ['findSteedDismiss']
             }
         ]
     },

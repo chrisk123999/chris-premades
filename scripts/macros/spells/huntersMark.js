@@ -1,114 +1,112 @@
 import {activityUtils, compendiumUtils, constants, dialogUtils, effectUtils, errors, genericUtils, itemUtils, workflowUtils} from '../../utils.js';
 async function use({workflow}) {
-    let activityIdentifier = activityUtils.getIdentifier(workflow.activity);
-    if (activityIdentifier === genericUtils.getIdentifier(workflow.item)) {
-        let concentrationEffect = effectUtils.getConcentrationEffect(workflow.actor, workflow.item);
-        if (!workflow.targets.size) {
-            if (concentrationEffect) await genericUtils.remove(concentrationEffect);
-            return;
+    let concentrationEffect = effectUtils.getConcentrationEffect(workflow.actor, workflow.item);
+    if (!workflow.targets.size) {
+        if (concentrationEffect) await genericUtils.remove(concentrationEffect);
+        return;
+    }
+    let feature = activityUtils.getActivityByIdentifier(workflow.item, 'huntersMarkMove', {strict: true});
+    if (!feature) {
+        if (concentrationEffect) await genericUtils.remove(concentrationEffect);
+        return;
+    }
+    let seconds;
+    switch (workflow.castData.castLevel) {
+        case 3:
+        case 4:
+            seconds = 28800;
+            break;
+        case 5:
+        case 6:
+        case 7:
+        case 8:
+        case 9:
+            seconds = 86400;
+            break;
+        default:
+            seconds = 3600;
+    }
+    let durationScale = workflow.item.system.duration.value;
+    seconds = Math.min(seconds * durationScale, 86400);
+    let targetEffectData = {
+        name: genericUtils.translate('CHRISPREMADES.Macros.HuntersMark.Marked'),
+        img: workflow.item.img,
+        origin: workflow.item.uuid,
+        duration: {
+            seconds
         }
-        let feature = activityUtils.getActivityByIdentifier(workflow.item, 'huntersMarkMove', {strict: true});
-        if (!feature) {
-            if (concentrationEffect) await genericUtils.remove(concentrationEffect);
-            return;
-        }
-        let seconds;
-        switch (workflow.castData.castLevel) {
-            case 3:
-            case 4:
-                seconds = 28800;
-                break;
-            case 5:
-            case 6:
-            case 7:
-            case 8:
-            case 9:
-                seconds = 86400;
-                break;
-            default:
-                seconds = 3600;
-        }
-        let durationScale = workflow.item.system.duration.value;
-        seconds = Math.min(seconds * durationScale, 86400);
-        let targetEffectData = {
-            name: genericUtils.translate('CHRISPREMADES.Macros.HuntersMark.Marked'),
-            img: workflow.item.img,
-            origin: workflow.item.uuid,
-            duration: {
-                seconds
-            }
-        };
-        let casterEffectData = {
-            name: workflow.item.name,
-            img: workflow.item.img,
-            origin: workflow.item.uuid,
-            duration: {
-                seconds
-            },
-            flags: {
-                'chris-premades': {
-                    huntersMark: {
-                        targets: Array.from(workflow.targets).map(i => i.document.uuid),
-                        formula: itemUtils.getConfig(workflow.item, 'formula')
-                    }
+    };
+    let casterEffectData = {
+        name: workflow.item.name,
+        img: workflow.item.img,
+        origin: workflow.item.uuid,
+        duration: {
+            seconds
+        },
+        flags: {
+            'chris-premades': {
+                huntersMark: {
+                    targets: Array.from(workflow.targets).map(i => i.document.uuid),
+                    formula: itemUtils.getConfig(workflow.item, 'formula')
                 }
             }
-        };
-        effectUtils.addMacro(casterEffectData, 'midi.actor', ['huntersMarkSource']);
-        let casterEffect = await effectUtils.createEffect(workflow.actor, casterEffectData, {
-            concentrationItem: workflow.item, 
-            strictlyInterdependent: true, 
-            vae: [{
-                type: 'use', 
-                name: feature.name, 
-                identifier: 'huntersMark',
-                activityIdentifier: 'huntersMarkMove'
-            }], 
+        }
+    };
+    effectUtils.addMacro(casterEffectData, 'midi.actor', ['huntersMarkSource']);
+    let casterEffect = await effectUtils.createEffect(workflow.actor, casterEffectData, {
+        concentrationItem: workflow.item, 
+        strictlyInterdependent: true, 
+        vae: [{
+            type: 'use', 
+            name: feature.name, 
             identifier: 'huntersMark',
-            unhideActivities: {
-                itemUuid: workflow.item.uuid,
-                activityIdentifiers: ['huntersMarkMove'],
-                favorite: true
-            }
-        });
-        for (let i of workflow.targets) {
-            if (i.actor) await effectUtils.createEffect(i.actor, targetEffectData, {parentEntity: casterEffect, identifier: 'huntersMarkMarked'});
+            activityIdentifier: 'huntersMarkMove'
+        }], 
+        identifier: 'huntersMark',
+        unhideActivities: {
+            itemUuid: workflow.item.uuid,
+            activityIdentifiers: ['huntersMarkMove'],
+            favorite: true
         }
-        if (concentrationEffect) await genericUtils.update(concentrationEffect, {'duration.seconds': seconds});
-    } else if (activityIdentifier === 'huntersMarkMove') {
-        if (workflow.targets.size !== 1) return;
-        let effect = effectUtils.getEffectByIdentifier(workflow.actor, 'huntersMark');
-        if (!effect) return;
-        let targetUuids = effect.flags['chris-premades'].huntersMark.targets;
-        let targets = targetUuids.map(i => fromUuidSync(i)?.object).filter(i => i);
-        let selection;
-        if (targets.length) {
-            if (targets.length > 1) {
-                selection = await dialogUtils.selectTargetDialog(workflow.item.name, 'CHRISPREMADES.Macros.HuntersMark.Select', targets, {skipDeadAndUnconscious: false});
-                if (!selection) return;
-                selection = selection[0];
-            } else {
-                selection = targets[0];
-            }
-        }
-        if (selection?.actor) {
-            let effect = effectUtils.getEffectByIdentifier(selection.actor, 'huntersMarkMarked');
-            if (effect) await genericUtils.remove(effect);
-        }
-        targetUuids = targetUuids.filter(i => i !== selection?.document.uuid);
-        targetUuids.push(workflow.targets.first().document.uuid);
-        await genericUtils.setFlag(effect, 'chris-premades', 'huntersMark.targets', targetUuids);
-        let seconds = effect.duration.remaining;
-        let effectData = {
-            name: genericUtils.translate('CHRISPREMADES.Macros.HuntersMark.Marked'),
-            img: workflow.item.img,
-            origin: workflow.item.uuid,
-            duration: {
-                seconds
-            }
-        };
-        await effectUtils.createEffect(workflow.targets.first().actor, effectData, {parentEntity: effect, identifier: 'huntersMarkMarked'});
+    });
+    for (let i of workflow.targets) {
+        if (i.actor) await effectUtils.createEffect(i.actor, targetEffectData, {parentEntity: casterEffect, identifier: 'huntersMarkMarked'});
     }
+    if (concentrationEffect) await genericUtils.update(concentrationEffect, {'duration.seconds': seconds});
+}
+async function move({workflow}) {
+    if (workflow.targets.size !== 1) return;
+    let effect = effectUtils.getEffectByIdentifier(workflow.actor, 'huntersMark');
+    if (!effect) return;
+    let targetUuids = effect.flags['chris-premades'].huntersMark.targets;
+    let targets = targetUuids.map(i => fromUuidSync(i)?.object).filter(i => i);
+    let selection;
+    if (targets.length) {
+        if (targets.length > 1) {
+            selection = await dialogUtils.selectTargetDialog(workflow.item.name, 'CHRISPREMADES.Macros.HuntersMark.Select', targets, {skipDeadAndUnconscious: false});
+            if (!selection) return;
+            selection = selection[0];
+        } else {
+            selection = targets[0];
+        }
+    }
+    if (selection?.actor) {
+        let effect = effectUtils.getEffectByIdentifier(selection.actor, 'huntersMarkMarked');
+        if (effect) await genericUtils.remove(effect);
+    }
+    targetUuids = targetUuids.filter(i => i !== selection?.document.uuid);
+    targetUuids.push(workflow.targets.first().document.uuid);
+    await genericUtils.setFlag(effect, 'chris-premades', 'huntersMark.targets', targetUuids);
+    let seconds = effect.duration.remaining;
+    let effectData = {
+        name: genericUtils.translate('CHRISPREMADES.Macros.HuntersMark.Marked'),
+        img: workflow.item.img,
+        origin: workflow.item.uuid,
+        duration: {
+            seconds
+        }
+    };
+    await effectUtils.createEffect(workflow.targets.first().actor, effectData, {parentEntity: effect, identifier: 'huntersMarkMarked'});
 }
 async function damage({workflow}) {
     if (workflow.hitTargets.size !== 1) return;
@@ -121,7 +119,6 @@ async function damage({workflow}) {
     await workflowUtils.bonusDamage(workflow, formula + '[' + damageType + ']', {damageType});
 }
 async function early({workflow}) {
-    if (activityUtils.getIdentifier(workflow.activity) !== 'huntersMarkMove') return;
     workflowUtils.skipDialog(workflow);
 }
 export let huntersMark = {
@@ -132,12 +129,20 @@ export let huntersMark = {
             {
                 pass: 'rollFinished',
                 macro: use,
-                priority: 50
+                priority: 50,
+                activities: ['huntersMark']
+            },
+            {
+                pass: 'rollFinished',
+                macro: move,
+                priority: 50,
+                activities: ['huntersMarkMove']
             },
             {
                 pass: 'preTargeting',
                 macro: early,
-                priority: 50
+                priority: 50,
+                activities: ['huntersMarkMove']
             }
         ]
     },

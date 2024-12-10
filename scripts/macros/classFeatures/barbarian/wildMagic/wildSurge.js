@@ -3,267 +3,260 @@ import {Teleport} from '../../../../lib/teleport.js';
 import {activityUtils, compendiumUtils, constants, dialogUtils, effectUtils, errors, genericUtils, itemUtils, templateUtils, tokenUtils, workflowUtils} from '../../../../utils.js';
 
 async function use({workflow}) {
-    let activityIdentifier = activityUtils.getIdentifier(workflow.activity);
-    if (activityIdentifier === genericUtils.getIdentifier(workflow.item)) {
-        let rageEffect = effectUtils.getEffectByIdentifier(workflow.actor, 'rage');
-        if (!rageEffect) return;
-        let choices = [
-            ['CHRISPREMADES.Macros.WildSurge.ShadowyTendrils', 'shadowyTendrils'],
-            ['CHRISPREMADES.Macros.WildSurge.Teleport', 'teleport'],
-            ['CHRISPREMADES.Macros.WildSurge.IntangibleSpirit', 'intangibleSpirit'],
-            ['CHRISPREMADES.Macros.WildSurge.MagicInfusion', 'magicInfusion'],
-            ['CHRISPREMADES.Macros.WildSurge.Retribution', 'retribution'],
-            ['CHRISPREMADES.Macros.WildSurge.ProtectiveLights', 'protectiveLights'],
-            ['CHRISPREMADES.Macros.WildSurge.FlowersAndVines', 'flowersAndVines'],
-            ['CHRISPREMADES.Macros.WildSurge.BoltOfLight', 'boltOfLight'],
-        ];
-        let effect = effectUtils.getEffectByIdentifier(workflow.actor, 'wildSurge');
-        if (effect) await genericUtils.remove(effect);
-        let controlledSurge = itemUtils.getItemByIdentifier(workflow.actor, 'controlledSurge');
-        let rollFormula = controlledSurge ? '2d8' : '1d8';
-        let roll = await new Roll(rollFormula).evaluate();
-        roll.toMessage({
-            rollMode: 'roll',
-            speaker: ChatMessage.implementation.getSpeaker({token: workflow.token}),
-            flavor: workflow.item.name + (controlledSurge ? '' : (': ' + genericUtils.translate(choices[roll.total - 1][0])))
-        });
-        let selection;
-        if (controlledSurge) {
-            let roll1 = roll.terms[0].values[0] - 1;
-            let roll2 = roll.terms[0].values[1] - 1;
-            let realChoices;
-            if (roll1 === roll2) {
-                realChoices = choices;
-            } else {
-                realChoices = [choices[roll1], choices[roll2]];
-            }
-            selection = await dialogUtils.buttonDialog(workflow.item.name, 'CHRISPREMADES.Macros.WildSurge.Select', realChoices);
-            if (!selection) selection = realChoices[0][1];
+    let rageEffect = effectUtils.getEffectByIdentifier(workflow.actor, 'rage');
+    if (!rageEffect) return;
+    let choices = [
+        ['CHRISPREMADES.Macros.WildSurge.ShadowyTendrils', 'shadowyTendrils'],
+        ['CHRISPREMADES.Macros.WildSurge.Teleport', 'teleport'],
+        ['CHRISPREMADES.Macros.WildSurge.IntangibleSpirit', 'intangibleSpirit'],
+        ['CHRISPREMADES.Macros.WildSurge.MagicInfusion', 'magicInfusion'],
+        ['CHRISPREMADES.Macros.WildSurge.Retribution', 'retribution'],
+        ['CHRISPREMADES.Macros.WildSurge.ProtectiveLights', 'protectiveLights'],
+        ['CHRISPREMADES.Macros.WildSurge.FlowersAndVines', 'flowersAndVines'],
+        ['CHRISPREMADES.Macros.WildSurge.BoltOfLight', 'boltOfLight'],
+    ];
+    let effect = effectUtils.getEffectByIdentifier(workflow.actor, 'wildSurge');
+    if (effect) await genericUtils.remove(effect);
+    let controlledSurge = itemUtils.getItemByIdentifier(workflow.actor, 'controlledSurge');
+    let rollFormula = controlledSurge ? '2d8' : '1d8';
+    let roll = await new Roll(rollFormula).evaluate();
+    roll.toMessage({
+        rollMode: 'roll',
+        speaker: ChatMessage.implementation.getSpeaker({token: workflow.token}),
+        flavor: workflow.item.name + (controlledSurge ? '' : (': ' + genericUtils.translate(choices[roll.total - 1][0])))
+    });
+    let selection;
+    if (controlledSurge) {
+        let roll1 = roll.terms[0].values[0] - 1;
+        let roll2 = roll.terms[0].values[1] - 1;
+        let realChoices;
+        if (roll1 === roll2) {
+            realChoices = choices;
         } else {
-            selection = choices[roll.total - 1][1];
+            realChoices = [choices[roll1], choices[roll2]];
         }
-        let effectData = {
-            name: workflow.item.name,
-            img: workflow.item.img,
-            origin: workflow.item.uuid,
-            duration: {
-                seconds: rageEffect.duration.remaining
-            }
-        };
-        let feature;
-        switch (selection) {
-            case 'shadowyTendrils': {
-                feature = activityUtils.getActivityByIdentifier(workflow.item, 'shadowyTendrils', {strict: true});
-                if (!feature) return;
-                await workflowUtils.syntheticActivityRoll(feature);
-                let tRoll = await new CONFIG.Dice.DamageRoll('1d12[temphp]', {}, {type: 'temphp'}).evaluate();
-                tRoll.toMessage({
-                    rollMode: 'roll',
-                    speaker: ChatMessage.implementation.getSpeaker({token: workflow.token}),
-                    flavor: feature.name
-                });
-                await workflowUtils.applyDamage([workflow.token], tRoll.total, 'temphp');
-                break;
-            }
-            case 'teleport':
-                feature = activityUtils.getActivityByIdentifier(workflow.item, 'teleport', {strict: true});
-                if (!feature) return;
-                await effectUtils.createEffect(workflow.actor, effectData, {
-                    parentEntity: rageEffect, 
-                    identifier: 'wildSurge', 
-                    vae: [{
-                        type: 'use', 
-                        name: feature.name,
-                        identifier: 'wildSurge',
-                        activityIdentifier: 'teleport'
-                    }],
-                    unhideActivities: {
-                        itemUuid: workflow.item.uuid,
-                        activityIdentifiers: ['teleport'],
-                        favorite: true
-                    }
-                });
-                feature.activation.type = 'special';
-                await workflowUtils.syntheticActivityRoll(feature);
-                feature.activation.type = 'bonuse';
-                break;
-            case 'intangibleSpirit':
-                feature = activityUtils.getActivityByIdentifier(workflow.item, 'intangibleSpirit', {strict: true});
-                if (!feature) return;
-                await effectUtils.createEffect(workflow.actor, effectData, {
-                    parentEntity: rageEffect, 
-                    identifier: 'wildSurge', 
-                    vae: [{
-                        type: 'use', 
-                        name: feature.name, 
-                        identifier: 'wildSurge',
-                        activityIdentifier: 'intangibleSpirit'
-                    }],
-                    unhideActivities: {
-                        itemUuid: workflow.item.uuid,
-                        activityIdentifiers: ['intangibleSpirit'],
-                        favorite: true
-                    }
-                });
-                feature.activation.type = 'special';
-                await workflowUtils.syntheticActivityRoll(feature);
-                feature.activation.type = 'bonus';
-                break;
-            case 'magicInfusion': {
-                let weapons = workflow.actor.items.filter(i => i.type === 'weapon' && i.system.equipped);
-                if (!weapons.length) return;
-                let weapon;
-                if (weapons.length === 1) {
-                    [weapon] = weapons;
-                } else {
-                    weapon = await dialogUtils.selectDocumentDialog(workflow.item.name, 'CHRISPREMADES.Macros.ElementalCleaver.SelectWeapon', weapons);
-                    if (!weapon) return;
+        selection = await dialogUtils.buttonDialog(workflow.item.name, 'CHRISPREMADES.Macros.WildSurge.Select', realChoices);
+        if (!selection) selection = realChoices[0][1];
+    } else {
+        selection = choices[roll.total - 1][1];
+    }
+    let effectData = {
+        name: workflow.item.name,
+        img: workflow.item.img,
+        origin: workflow.item.uuid,
+        duration: {
+            seconds: rageEffect.duration.remaining
+        }
+    };
+    let feature;
+    switch (selection) {
+        case 'shadowyTendrils': {
+            feature = activityUtils.getActivityByIdentifier(workflow.item, 'shadowyTendrils', {strict: true});
+            if (!feature) return;
+            await workflowUtils.syntheticActivityRoll(feature);
+            let tRoll = await new CONFIG.Dice.DamageRoll('1d12[temphp]', {}, {type: 'temphp'}).evaluate();
+            tRoll.toMessage({
+                rollMode: 'roll',
+                speaker: ChatMessage.implementation.getSpeaker({token: workflow.token}),
+                flavor: feature.name
+            });
+            await workflowUtils.applyDamage([workflow.token], tRoll.total, 'temphp');
+            break;
+        }
+        case 'teleport':
+            feature = activityUtils.getActivityByIdentifier(workflow.item, 'teleport', {strict: true});
+            if (!feature) return;
+            await effectUtils.createEffect(workflow.actor, effectData, {
+                parentEntity: rageEffect, 
+                identifier: 'wildSurge', 
+                vae: [{
+                    type: 'use', 
+                    name: feature.name,
+                    identifier: 'wildSurge',
+                    activityIdentifier: 'teleport'
+                }],
+                unhideActivities: {
+                    itemUuid: workflow.item.uuid,
+                    activityIdentifiers: ['teleport'],
+                    favorite: true
                 }
-                let baseType = weapon.system.damage.base.types.first();
-                let newFormula = weapon.system.damage.base.formula.replaceAll(baseType, 'force');
-                let versatileType = weapon.system.damage.versatile.types.first();
-                let versatile = weapon.system.damage.versatile.formula.replaceAll(versatileType, 'force');
-                let enchantData = {
-                    name: workflow.item.name,
-                    img: workflow.item.img,
-                    origin: workflow.item.uuid,
-                    duration: {
-                        seconds: rageEffect.duration.remaining
+            });
+            feature.activation.type = 'special';
+            await workflowUtils.syntheticActivityRoll(feature);
+            feature.activation.type = 'bonuse';
+            break;
+        case 'intangibleSpirit':
+            feature = activityUtils.getActivityByIdentifier(workflow.item, 'intangibleSpirit', {strict: true});
+            if (!feature) return;
+            await effectUtils.createEffect(workflow.actor, effectData, {
+                parentEntity: rageEffect, 
+                identifier: 'wildSurge', 
+                vae: [{
+                    type: 'use', 
+                    name: feature.name, 
+                    identifier: 'wildSurge',
+                    activityIdentifier: 'intangibleSpirit'
+                }],
+                unhideActivities: {
+                    itemUuid: workflow.item.uuid,
+                    activityIdentifiers: ['intangibleSpirit'],
+                    favorite: true
+                }
+            });
+            feature.activation.type = 'special';
+            await workflowUtils.syntheticActivityRoll(feature);
+            feature.activation.type = 'bonus';
+            break;
+        case 'magicInfusion': {
+            let weapons = workflow.actor.items.filter(i => i.type === 'weapon' && i.system.equipped);
+            if (!weapons.length) return;
+            let weapon;
+            if (weapons.length === 1) {
+                [weapon] = weapons;
+            } else {
+                weapon = await dialogUtils.selectDocumentDialog(workflow.item.name, 'CHRISPREMADES.Macros.ElementalCleaver.SelectWeapon', weapons);
+                if (!weapon) return;
+            }
+            let baseType = weapon.system.damage.base.types.first();
+            let newFormula = weapon.system.damage.base.formula.replaceAll(baseType, 'force');
+            let versatileType = weapon.system.damage.versatile.types.first();
+            let versatile = weapon.system.damage.versatile.formula.replaceAll(versatileType, 'force');
+            let enchantData = {
+                name: workflow.item.name,
+                img: workflow.item.img,
+                origin: workflow.item.uuid,
+                duration: {
+                    seconds: rageEffect.duration.remaining
+                },
+                changes: [
+                    {
+                        key: 'name',
+                        mode: 5,
+                        value: '{} (' + genericUtils.translate('CHRISPREMADES.Macros.WildSurge.MagicInfusion') + ')',
+                        priority: 20
                     },
-                    changes: [
-                        {
-                            key: 'name',
-                            mode: 5,
-                            value: '{} (' + genericUtils.translate('CHRISPREMADES.Macros.WildSurge.MagicInfusion') + ')',
-                            priority: 20
-                        },
-                        {
-                            key: 'system.damage.base.custom.enabled',
-                            mode: 5,
-                            value: '"true"',
-                            priority: 20
-                        },
-                        {
-                            key: 'system.damage.base.custom.formula',
-                            mode: 5,
-                            value: newFormula,
-                            priority: 20
-                        },
-                        {
-                            key: 'system.damage.base.types',
-                            mode: 5,
-                            value: '["force"]',
-                            priority: 20
-                        },
-                        {
-                            key: 'system.properties',
-                            mode: 2,
-                            value: '["thr", "lgt"]',
-                            priority: 20
-                        },
-                        {
-                            key: 'system.range.value',
-                            mode: 4,
-                            value: 20,
-                            priority: 20
-                        },
-                        {
-                            key: 'system.range.long',
-                            mode: 4,
-                            value: 60,
-                            priority: 20
-                        }
-                    ]
-                };
-                if (versatile?.length) {
-                    enchantData.changes.push({
-                        key: 'system.damage.versatile.custom.enabled',
+                    {
+                        key: 'system.damage.base.custom.enabled',
                         mode: 5,
                         value: '"true"',
                         priority: 20
-                    }, {
-                        key: 'system.damage.versatile.custom.formula',
+                    },
+                    {
+                        key: 'system.damage.base.custom.formula',
                         mode: 5,
-                        value: versatile,
+                        value: newFormula,
                         priority: 20
-                    }, {
-                        key: 'system.damage.versatile.types',
+                    },
+                    {
+                        key: 'system.damage.base.types',
                         mode: 5,
                         value: '["force"]',
                         priority: 20
-                    });
-                }
-                effect = await effectUtils.createEffect(workflow.actor, effectData, {parentEntity: rageEffect, identifier: 'wildSurge'});
-                await itemUtils.enchantItem(weapon, enchantData, {parentEntity: effect});
-                break;
-            }
-            case 'retribution':
-                feature = activityUtils.getActivityByIdentifier(workflow.item, 'retribution', {strict: true});
-                if (!feature) return;
-                effectUtils.addMacro(effectData, 'midi.actor', ['wildSurgeRetribution']);
-                await effectUtils.createEffect(workflow.actor, effectData, {parentEntity: rageEffect, identifier: 'wildSurge'});
-                break;
-            case 'protectiveLights':
-                effectData.name = genericUtils.format('CHRISPREMADES.Auras.Source', {auraName: effectData.name});
-                effectUtils.addMacro(effectData, 'aura', ['wildSurgeProtectiveLights']);
-                await effectUtils.createEffect(workflow.actor, effectData, {parentEntity: rageEffect, identifier: 'wildSurge'});
-                break;
-            case 'flowersAndVines': {
-                let templateData = {
-                    t: 'circle',
-                    x: workflow.token.center.x,
-                    y: workflow.token.center.y,
-                    distance: 15,
-                    direction: 0,
-                    angle: 0,
-                    user: game.user,
-                    fillColor: game.user.color
-                };
-                // This looks bad but actually it's good, they'll be allowed to do this and it means not socketing game.user
-                let [template] = await canvas.scene.createEmbeddedDocuments('MeasuredTemplate', [templateData]);
-                await tokenUtils.attachToToken(workflow.token, [template.uuid]);
-                effect = await effectUtils.createEffect(workflow.actor, effectData, {parentEntity: rageEffect, identifier: 'wildSurge'});
-                await effectUtils.addDependent(effect, [template]);
-                break;
-            }
-            case 'boltOfLight': {
-                feature = activityUtils.getActivityByIdentifier(workflow.item, 'boltOfLight', {strict: true});
-                if (!feature) return;
-                effect = await effectUtils.createEffect(workflow.actor, effectData, {
-                    parentEntity: rageEffect, 
-                    identifier: 'wildSurge', 
-                    vae: [{
-                        type: 'use', 
-                        name: feature.name,
-                        identifier: 'wildSurge',
-                        activityIdentifier: 'boltOfLight'
-                    }],
-                    unhideActivities: {
-                        itemUuid: workflow.item.uuid,
-                        activityIdentifiers: ['boltOfLight'],
-                        favorite: true
+                    },
+                    {
+                        key: 'system.properties',
+                        mode: 2,
+                        value: '["thr", "lgt"]',
+                        priority: 20
+                    },
+                    {
+                        key: 'system.range.value',
+                        mode: 4,
+                        value: 20,
+                        priority: 20
+                    },
+                    {
+                        key: 'system.range.long',
+                        mode: 4,
+                        value: 60,
+                        priority: 20
                     }
+                ]
+            };
+            if (versatile?.length) {
+                enchantData.changes.push({
+                    key: 'system.damage.versatile.custom.enabled',
+                    mode: 5,
+                    value: '"true"',
+                    priority: 20
+                }, {
+                    key: 'system.damage.versatile.custom.formula',
+                    mode: 5,
+                    value: versatile,
+                    priority: 20
+                }, {
+                    key: 'system.damage.versatile.types',
+                    mode: 5,
+                    value: '["force"]',
+                    priority: 20
                 });
-                let targets;
-                let nearbyTargets = tokenUtils.findNearby(workflow.token, 30, 'enemy');
-                if (!nearbyTargets?.length) return;
-                if (nearbyTargets.length === 1) {
-                    targets = nearbyTargets;
-                } else {
-                    let selection = await dialogUtils.selectTargetDialog(feature.name, 'CHRISPREMADES.Macros.WildSurge.Target', nearbyTargets);
-                    if (!selection?.length) return;
-                    targets = [selection[0]];
-                }
-                feature.activation.type = 'special';
-                await workflowUtils.syntheticActivityRoll(feature, targets);
-                feature.activation.type = 'bonus';
-                break;
             }
+            effect = await effectUtils.createEffect(workflow.actor, effectData, {parentEntity: rageEffect, identifier: 'wildSurge'});
+            await itemUtils.enchantItem(weapon, enchantData, {parentEntity: effect});
+            break;
         }
-    } else if (activityIdentifier === 'teleport') {
-        await teleport({workflow});
-    } else if (activityIdentifier === 'intangibleSpirit') {
-        await intangibleSpirit({workflow});
+        case 'retribution':
+            feature = activityUtils.getActivityByIdentifier(workflow.item, 'retribution', {strict: true});
+            if (!feature) return;
+            effectUtils.addMacro(effectData, 'midi.actor', ['wildSurgeRetribution']);
+            await effectUtils.createEffect(workflow.actor, effectData, {parentEntity: rageEffect, identifier: 'wildSurge'});
+            break;
+        case 'protectiveLights':
+            effectData.name = genericUtils.format('CHRISPREMADES.Auras.Source', {auraName: effectData.name});
+            effectUtils.addMacro(effectData, 'aura', ['wildSurgeProtectiveLights']);
+            await effectUtils.createEffect(workflow.actor, effectData, {parentEntity: rageEffect, identifier: 'wildSurge'});
+            break;
+        case 'flowersAndVines': {
+            let templateData = {
+                t: 'circle',
+                x: workflow.token.center.x,
+                y: workflow.token.center.y,
+                distance: 15,
+                direction: 0,
+                angle: 0,
+                user: game.user,
+                fillColor: game.user.color
+            };
+            // This looks bad but actually it's good, they'll be allowed to do this and it means not socketing game.user
+            let [template] = await canvas.scene.createEmbeddedDocuments('MeasuredTemplate', [templateData]);
+            await tokenUtils.attachToToken(workflow.token, [template.uuid]);
+            effect = await effectUtils.createEffect(workflow.actor, effectData, {parentEntity: rageEffect, identifier: 'wildSurge'});
+            await effectUtils.addDependent(effect, [template]);
+            break;
+        }
+        case 'boltOfLight': {
+            feature = activityUtils.getActivityByIdentifier(workflow.item, 'boltOfLight', {strict: true});
+            if (!feature) return;
+            effect = await effectUtils.createEffect(workflow.actor, effectData, {
+                parentEntity: rageEffect, 
+                identifier: 'wildSurge', 
+                vae: [{
+                    type: 'use', 
+                    name: feature.name,
+                    identifier: 'wildSurge',
+                    activityIdentifier: 'boltOfLight'
+                }],
+                unhideActivities: {
+                    itemUuid: workflow.item.uuid,
+                    activityIdentifiers: ['boltOfLight'],
+                    favorite: true
+                }
+            });
+            let targets;
+            let nearbyTargets = tokenUtils.findNearby(workflow.token, 30, 'enemy');
+            if (!nearbyTargets?.length) return;
+            if (nearbyTargets.length === 1) {
+                targets = nearbyTargets;
+            } else {
+                let selection = await dialogUtils.selectTargetDialog(feature.name, 'CHRISPREMADES.Macros.WildSurge.Target', nearbyTargets);
+                if (!selection?.length) return;
+                targets = [selection[0]];
+            }
+            feature.activation.type = 'special';
+            await workflowUtils.syntheticActivityRoll(feature, targets);
+            feature.activation.type = 'bonus';
+            break;
+        }
     }
 }
 async function teleport({workflow}) {
@@ -366,7 +359,20 @@ export let wildSurge = {
             {
                 pass: 'rollFinished',
                 macro: use,
-                priority: 50
+                priority: 50,
+                activities: ['wildSurge']
+            },
+            {
+                pass: 'rollFinished',
+                macro: teleport,
+                priority: 50,
+                activities: ['teleport']
+            },
+            {
+                pass: 'rollFinished',
+                macro: intangibleSpirit,
+                priority: 50,
+                activities: ['intangibleSpirit']
             }
         ]
     },

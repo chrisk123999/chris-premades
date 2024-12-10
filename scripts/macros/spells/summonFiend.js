@@ -167,7 +167,8 @@ export let summonFiend = {
             {
                 pass: 'rollFinished',
                 macro: use,
-                priority: 50
+                priority: 50,
+                activities: ['summonFiendDemon', 'summonFiendDevil', 'summonFiendYugoloth']
             }
         ]
     },

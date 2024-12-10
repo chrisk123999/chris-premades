@@ -113,7 +113,8 @@ export let summonElemental = {
             {
                 pass: 'rollFinished',
                 macro: use,
-                priority: 50
+                priority: 50,
+                activities: ['summonElementalAir', 'summonElementalEarth', 'summonElementalFire', 'summonElementalWater']
             }
         ]
     },

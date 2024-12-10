@@ -1,6 +1,5 @@
 import {activityUtils, actorUtils, animationUtils, compendiumUtils, constants, dialogUtils, effectUtils, errors, genericUtils, itemUtils, socketUtils, tokenUtils, workflowUtils} from '../../../../utils.js';
 async function use({workflow}) {
-    if (activityUtils.getIdentifier(workflow.activity) !== genericUtils.getIdentifier(workflow.item)) return;
     let effect = effectUtils.getEffectByIdentifier(workflow.actor, 'twilightSanctuary');
     if (effect) return;
     let effectData = {
@@ -222,7 +221,8 @@ export let twilightSanctuary = {
             {
                 pass: 'rollFinished',
                 macro: use,
-                priority: 50
+                priority: 50,
+                activities: ['twilightSanctuary']
             }
         ]
     },

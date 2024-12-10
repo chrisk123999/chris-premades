@@ -1,7 +1,6 @@
 import {activityUtils, actorUtils, combatUtils, compendiumUtils, constants, effectUtils, errors, genericUtils, itemUtils, templateUtils, workflowUtils} from '../../utils.js';
 
 async function use({workflow}) {
-    if (activityUtils.getIdentifier(workflow.activity) !== genericUtils.getIdentifier(workflow.item)) return;
     let useRealDarkness = itemUtils.getConfig(workflow.item, 'useRealDarkness');
     let darknessAnimation = itemUtils.getConfig(workflow.item, 'darknessAnimation');
     let template = workflow.template;
@@ -52,7 +51,8 @@ export let sleetStorm = {
             {
                 pass: 'rollFinished',
                 macro: use,
-                priority: 50
+                priority: 50,
+                activities: ['sleetStorm']
             }
         ]
     },

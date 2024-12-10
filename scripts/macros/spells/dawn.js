@@ -2,76 +2,72 @@ import {crosshairUtils} from '../../lib/utilities/crosshairUtils.js';
 import {activityUtils, compendiumUtils, constants, effectUtils, errors, genericUtils, itemUtils, templateUtils, workflowUtils} from '../../utils.js';
 
 async function use({workflow}) {
-    let activityIdentifier = activityUtils.getIdentifier(workflow.activity);
-    if (activityIdentifier === genericUtils.getIdentifier(workflow.item)) {
-        let concentrationEffect = effectUtils.getConcentrationEffect(workflow.actor, workflow.item);
-        let template = workflow.template;
-        if (!template) {
-            if (concentrationEffect) await genericUtils.remove(concentrationEffect);
-            return;
-        }
-        await genericUtils.update(template, {
-            flags: {
-                'chris-premades': {
-                    template: {
-                        name: workflow.item.name
-                    },
-                    castData: {...workflow.castData, saveDC: itemUtils.getSaveDC(workflow.item)},
-                    macros: {
-                        template: ['dawnShining']
-                    }
-                }
-            }
-        });
-        let feature = activityUtils.getActivityByIdentifier(workflow.item, 'dawnMove', {strict: true});
-        if (!feature) {
-            if (concentrationEffect) await genericUtils.remove(concentrationEffect);
-            return;
-        }
-        let effectData = {
-            name: workflow.item.name,
-            img: workflow.item.img,
-            origin: workflow.item.uuid,
-            duration: itemUtils.convertDuration(workflow.item),
-            flags: {
-                'chris-premades': {
-                    dawn: {
-                        templateUuid: template.uuid
-                    }
-                }
-            }
-        };
-        await effectUtils.createEffect(workflow.actor, effectData, {
-            concentrationItem: workflow.item, 
-            strictlyInterdependent: true, 
-            vae: [{
-                type: 'use', 
-                name: feature.name,
-                identifier: 'dawn', 
-                activityIdentifier: 'dawnMove'
-            }],
-            identifier: 'dawn',
-            unhideActivities: {
-                itemUuid: workflow.item.uuid,
-                activityIdentifiers: ['dawnMove'],
-                favorite: true
-            }
-        });
-        if (concentrationEffect) await genericUtils.update(concentrationEffect, {duration: effectData.duration});
-    } else if (activityIdentifier === 'dawnMove') {
-        if (activityUtils.getIdentifier(workflow.activity) !== 'dawnMove') return;
-        let effect = effectUtils.getEffectByIdentifier(workflow.actor, 'dawn');
-        let template = await fromUuid(effect?.flags['chris-premades'].dawn.templateUuid);
-        if (!template) return;
-        await workflow.actor.sheet.minimize();
-        let position = await crosshairUtils.aimCrosshair({token: workflow.token, maxRange: 60, centerpoint: template.object.center, crosshairsConfig: {icon: effect.img, resolution: 2, size: template.distance}, drawBoundries: true});
-        await workflow.actor.sheet.maximize();
-        if (position.cancelled) return;
-        await genericUtils.update(template, {
-            x: position.x ?? template.x,
-            y: position.y ?? template.y
-        });
+    let concentrationEffect = effectUtils.getConcentrationEffect(workflow.actor, workflow.item);
+    let template = workflow.template;
+    if (!template) {
+        if (concentrationEffect) await genericUtils.remove(concentrationEffect);
+        return;
     }
+    await genericUtils.update(template, {
+        flags: {
+            'chris-premades': {
+                template: {
+                    name: workflow.item.name
+                },
+                castData: {...workflow.castData, saveDC: itemUtils.getSaveDC(workflow.item)},
+                macros: {
+                    template: ['dawnShining']
+                }
+            }
+        }
+    });
+    let feature = activityUtils.getActivityByIdentifier(workflow.item, 'dawnMove', {strict: true});
+    if (!feature) {
+        if (concentrationEffect) await genericUtils.remove(concentrationEffect);
+        return;
+    }
+    let effectData = {
+        name: workflow.item.name,
+        img: workflow.item.img,
+        origin: workflow.item.uuid,
+        duration: itemUtils.convertDuration(workflow.item),
+        flags: {
+            'chris-premades': {
+                dawn: {
+                    templateUuid: template.uuid
+                }
+            }
+        }
+    };
+    await effectUtils.createEffect(workflow.actor, effectData, {
+        concentrationItem: workflow.item, 
+        strictlyInterdependent: true, 
+        vae: [{
+            type: 'use', 
+            name: feature.name,
+            identifier: 'dawn', 
+            activityIdentifier: 'dawnMove'
+        }],
+        identifier: 'dawn',
+        unhideActivities: {
+            itemUuid: workflow.item.uuid,
+            activityIdentifiers: ['dawnMove'],
+            favorite: true
+        }
+    });
+}
+async function move({workflow}) {
+    let effect = effectUtils.getEffectByIdentifier(workflow.actor, 'dawn');
+    let template = await fromUuid(effect?.flags['chris-premades'].dawn.templateUuid);
+    if (!template) return;
+    await workflow.actor.sheet.minimize();
+    let position = await crosshairUtils.aimCrosshair({token: workflow.token, maxRange: 60, centerpoint: template.object.center, crosshairsConfig: {icon: effect.img, resolution: 2, size: template.distance}, drawBoundries: true});
+    await workflow.actor.sheet.maximize();
+    if (position.cancelled) return;
+    await genericUtils.update(template, {
+        x: position.x ?? template.x,
+        y: position.y ?? template.y
+    });
 }
 async function endTurn({trigger: {entity: template, castData, token}}) {
     let feature = activityUtils.getActivityByIdentifier(fromUuidSync(template.flags.dnd5e.item), 'dawnEndTurn', {strict: true});
@@ -79,7 +75,6 @@ async function endTurn({trigger: {entity: template, castData, token}}) {
     await workflowUtils.syntheticActivityRoll(feature, [token], {atLevel: castData.castLevel});
 }
 async function early({workflow}) {
-    if (activityUtils.getIdentifier(workflow.activity) !== 'dawnMove') return;
     workflowUtils.skipDialog(workflow);
 }
 export let dawn = {
@@ -90,12 +85,20 @@ export let dawn = {
             {
                 pass: 'rollFinished',
                 macro: use,
-                priority: 50
+                priority: 50,
+                activities: ['dawn']
+            },
+            {
+                pass: 'rollFinished',
+                macro: move,
+                priority: 50,
+                activities: ['dawnMove']
             },
             {
                 pass: 'preTargeting',
                 macro: early,
-                priority: 50
+                priority: 50,
+                activities: ['dawnMove']
             }
         ]
     }

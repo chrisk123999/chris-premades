@@ -1,13 +1,11 @@
 import {Summons} from '../../lib/summons.js';
 import {activityUtils, constants, dialogUtils, effectUtils, genericUtils, itemUtils, tokenUtils, workflowUtils} from '../../utils.js';
 async function use({workflow}) {
-    let activityIdentifier = activityUtils.getIdentifier(workflow.activity);
-    if (activityIdentifier === genericUtils.getIdentifier(workflow.item)) {
-        await findSteedHelper(workflow, 'Steed', 'Steeds', 'findSteed');
-    } else if (activityIdentifier === 'findSteedDismiss') {
-        let effect = effectUtils.getEffectByIdentifier(workflow.actor, 'findSteed');
-        if (effect) await genericUtils.remove(effect);
-    }
+    await findSteedHelper(workflow, 'Steed', 'Steeds', 'findSteed'); 
+}
+async function dismiss({workflow}) {
+    let effect = effectUtils.getEffectByIdentifier(workflow.actor, 'findSteed');
+    if (effect) await genericUtils.remove(effect);
 }
 async function early({workflow}) {
     await findSteedEarlyHelper(workflow, 'findSteed');
@@ -102,7 +100,6 @@ export async function findSteedEarlyHelper(workflow, identifier) {
     if (selection) genericUtils.updateTargets([workflow.token, steedToken]);
 }
 async function veryEarly({workflow}) {
-    if (activityUtils.getIdentifier(workflow.activity) !== 'findSteedDismiss') return;
     workflowUtils.skipDialog(workflow);
 }
 export let findSteed = {
@@ -114,12 +111,20 @@ export let findSteed = {
             {
                 pass: 'rollFinished',
                 macro: use,
-                priority: 50
+                priority: 50,
+                activities: ['findSteed']
+            },
+            {
+                pass: 'rollFinished',
+                macro: dismiss,
+                priority: 50,
+                activities: ['findSteedDismiss']
             },
             {
                 pass: 'preTargeting',
                 macro: veryEarly,
-                priority: 50
+                priority: 50,
+                activities: ['findSteedDismiss']
             }
         ]
     },

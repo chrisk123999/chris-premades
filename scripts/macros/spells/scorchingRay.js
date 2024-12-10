@@ -1,7 +1,6 @@
 import {activityUtils, animationUtils, dialogUtils, genericUtils, itemUtils, tokenUtils, workflowUtils} from '../../utils.js';
 
 async function use({workflow}) {
-    if (activityUtils.getIdentifier(workflow.activity) !== genericUtils.getIdentifier(workflow.item)) return;
     let maxRays = 1 + workflow.castData.castLevel;
     let feature = activityUtils.getActivityByIdentifier(workflow.item, 'scorchingRayBolt', {strict: true});
     if (!feature) return;
@@ -181,7 +180,8 @@ export let scorchingRay = {
             {
                 pass: 'rollFinished',
                 macro: use,
-                priority: 50
+                priority: 50,
+                activities: ['scorchingRay']
             }
         ]
     },

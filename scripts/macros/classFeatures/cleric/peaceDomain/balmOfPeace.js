@@ -1,7 +1,6 @@
 import {activityUtils, genericUtils, workflowUtils} from '../../../../utils.js';
 
 async function use({workflow}) {
-    if (activityUtils.getIdentifier(workflow.activity) !== genericUtils.getIdentifier(workflow.item)) return;
     if (!workflow.targets.size) return;
     let feature = activityUtils.getActivityByIdentifier(workflow.item, 'balmOfPeaceHeal', {strict: true});
     if (!feature) return;
@@ -17,7 +16,8 @@ export let balmOfPeace = {
             {
                 pass: 'rollFinished',
                 macro: use,
-                priority: 50
+                priority: 50,
+                activities: ['balmOfPeace']
             }
         ]
     }

@@ -1,67 +1,65 @@
 import {activityUtils, actorUtils, combatUtils, compendiumUtils, constants, dialogUtils, effectUtils, errors, genericUtils, itemUtils, workflowUtils} from '../../../utils.js';
 
 async function use({workflow}) {
-    let activityIdentifier = activityUtils.getIdentifier(workflow.activity);
-    if (activityIdentifier === 'celestialRevelation') {
-        let feature = activityUtils.getActivityByIdentifier(workflow.item, 'celestialRevelationEnd', {strict: true});
-        if (!feature) return;
-        let effectData = {
-            name: workflow.item.name,
-            img: workflow.item.img,
-            origin: workflow.item.uuid,
-            duration: itemUtils.convertDuration(workflow.activity)
-        };
-        let identifier = genericUtils.getIdentifier(workflow.item);
-        let damageType = itemUtils.getConfig(workflow.item, 'damageType');
-        if (identifier === 'aasimarRadiantSoul') {
-            effectData.changes = [
-                {
-                    key: 'system.attributes.movement.fly',
-                    mode: 4,
-                    value: workflow.actor.system.attributes.movement.walk,
-                    priority: 20
-                }
-            ];
-            genericUtils.setProperty(effectData, 'flags.chris-premades.celestialRevelation.damageType', damageType ?? 'radiant');
-        } else if (identifier === 'aasimarRadiantConsumption') {
-            effectData.changes = [
-                {
-                    key: 'ATL.light.bright',
-                    mode: 4,
-                    value: 10,
-                    priority: 20
-                },
-                {
-                    key: 'ATL.light.dim',
-                    mode: 4,
-                    value: 20,
-                    priority: 20
-                }
-            ];
-            effectUtils.addMacro(effectData, 'combat', ['aasimarRadiantConsumption']);
-            genericUtils.setProperty(effectData, 'flags.chris-premades.celestialRevelation.damageType', damageType ?? 'radiant');
-        } else {
-            genericUtils.setProperty(effectData, 'flags.chris-premades.celestialRevelation.damageType', damageType ?? 'necrotic');
-        }
-        effectUtils.addMacro(effectData, 'midi.actor', ['celestialRevelation']);
-        await effectUtils.createEffect(workflow.actor, effectData, {
-            identifier: 'celestialRevelation', 
-            vae: [{
-                type: 'use', 
-                name: feature.name, 
-                identifier, 
-                activityIdentifier: 'celestialRevelationEnd'
-            }],
-            unhideActivities: {
-                itemUuid: workflow.item.uuid,
-                activityIdentifiers: ['celestialRevelationEnd'],
-                favorite: true
+    let feature = activityUtils.getActivityByIdentifier(workflow.item, 'celestialRevelationEnd', {strict: true});
+    if (!feature) return;
+    let effectData = {
+        name: workflow.item.name,
+        img: workflow.item.img,
+        origin: workflow.item.uuid,
+        duration: itemUtils.convertDuration(workflow.activity)
+    };
+    let identifier = genericUtils.getIdentifier(workflow.item);
+    let damageType = itemUtils.getConfig(workflow.item, 'damageType');
+    if (identifier === 'aasimarRadiantSoul') {
+        effectData.changes = [
+            {
+                key: 'system.attributes.movement.fly',
+                mode: 4,
+                value: workflow.actor.system.attributes.movement.walk,
+                priority: 20
             }
-        });
-    } else if (activityIdentifier === 'celestialRevelationEnd') {
-        let effect = effectUtils.getEffectByIdentifier(workflow.actor, 'celestialRevelation');
-        if (effect) await genericUtils.remove(effect);
+        ];
+        genericUtils.setProperty(effectData, 'flags.chris-premades.celestialRevelation.damageType', damageType ?? 'radiant');
+    } else if (identifier === 'aasimarRadiantConsumption') {
+        effectData.changes = [
+            {
+                key: 'ATL.light.bright',
+                mode: 4,
+                value: 10,
+                priority: 20
+            },
+            {
+                key: 'ATL.light.dim',
+                mode: 4,
+                value: 20,
+                priority: 20
+            }
+        ];
+        effectUtils.addMacro(effectData, 'combat', ['aasimarRadiantConsumption']);
+        genericUtils.setProperty(effectData, 'flags.chris-premades.celestialRevelation.damageType', damageType ?? 'radiant');
+    } else {
+        genericUtils.setProperty(effectData, 'flags.chris-premades.celestialRevelation.damageType', damageType ?? 'necrotic');
     }
+    effectUtils.addMacro(effectData, 'midi.actor', ['celestialRevelation']);
+    await effectUtils.createEffect(workflow.actor, effectData, {
+        identifier: 'celestialRevelation', 
+        vae: [{
+            type: 'use', 
+            name: feature.name, 
+            identifier, 
+            activityIdentifier: 'celestialRevelationEnd'
+        }],
+        unhideActivities: {
+            itemUuid: workflow.item.uuid,
+            activityIdentifiers: ['celestialRevelationEnd'],
+            favorite: true
+        }
+    });
+}
+async function end({workflow}) {
+    let effect = effectUtils.getEffectByIdentifier(workflow.actor, 'celestialRevelation');
+    if (effect) await genericUtils.remove(effect);
 }
 async function damage({trigger: {entity: effect}, workflow}) {
     if (workflow.hitTargets.size !== 1) return;
@@ -169,7 +167,14 @@ export let celestialRevelation = {
             {
                 pass: 'rollFinished',
                 macro: use,
-                priority: 50
+                priority: 50,
+                activities: ['celestialRevelation']
+            },
+            {
+                pass: 'rollFinished',
+                macro: end,
+                priority: 50,
+                activities: ['celestialRevelationEnd']
             }
         ],
         actor: [

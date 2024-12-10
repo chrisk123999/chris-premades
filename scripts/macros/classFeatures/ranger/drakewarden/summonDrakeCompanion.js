@@ -1,7 +1,6 @@
 import {Summons} from '../../../../lib/summons.js';
 import {activityUtils, actorUtils, compendiumUtils, constants, dialogUtils, effectUtils, errors, genericUtils, itemUtils, socketUtils, tokenUtils, workflowUtils} from '../../../../utils.js';
 async function use({workflow}) {
-    if (activityUtils.getIdentifier(workflow.activity) !== genericUtils.getIdentifier(workflow.item)) return;
     let sourceActor = await compendiumUtils.getActorFromCompendium(constants.packs.summons, 'CPR - Drake Companion');
     if (!sourceActor) return;
     let classLevel = workflow.actor.classes?.ranger?.system?.levels;
@@ -243,7 +242,8 @@ export let summonDrakeCompanion = {
             {
                 pass: 'rollFinished',
                 macro: use,
-                priority: 50
+                priority: 50,
+                activities: ['summonDrakeCompanion']
             }
         ]
     },

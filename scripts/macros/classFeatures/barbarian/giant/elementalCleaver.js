@@ -1,27 +1,25 @@
 import {activityUtils, compendiumUtils, constants, dialogUtils, effectUtils, errors, genericUtils, itemUtils} from '../../../../utils.js';
 
 async function use({workflow}) {
-    let activityIdentifier = activityUtils.getIdentifier(workflow.activity);
-    if (activityIdentifier === genericUtils.getIdentifier(workflow.item)) {
-        let weapons = workflow.actor.items.filter(i => i.type === 'weapon' && i.system.equipped && !constants.unarmedAttacks.includes(genericUtils.getIdentifier(i)));
-        if (!weapons.length) return;
-        let selectedWeapon;
-        if (weapons.length === 1) {
-            selectedWeapon = weapons[0];
-        } else {
-            selectedWeapon = await dialogUtils.selectDocumentDialog(workflow.item.name, 'CHRISPREMADES.Macros.ElementalCleaver.SelectWeapon', weapons);
-        }
-        if (!selectedWeapon) return;
-        await infuseWeapon(workflow, selectedWeapon);
-    } else if (activityIdentifier === 'elementalCleaverChange') {
-        let effect = effectUtils.getEffectByIdentifier(workflow.actor, 'elementalCleaver');
-        if (!effect) return;
-        let weaponId = effect.flags['chris-premades']?.elementalCleaver?.weaponId;
-        let selectedWeapon = workflow.actor.items.get(weaponId);
-        if (!selectedWeapon) return;
-        await genericUtils.remove(effect);
-        await infuseWeapon(workflow, selectedWeapon);
+    let weapons = workflow.actor.items.filter(i => i.type === 'weapon' && i.system.equipped && !constants.unarmedAttacks.includes(genericUtils.getIdentifier(i)));
+    if (!weapons.length) return;
+    let selectedWeapon;
+    if (weapons.length === 1) {
+        selectedWeapon = weapons[0];
+    } else {
+        selectedWeapon = await dialogUtils.selectDocumentDialog(workflow.item.name, 'CHRISPREMADES.Macros.ElementalCleaver.SelectWeapon', weapons);
     }
+    if (!selectedWeapon) return;
+    await infuseWeapon(workflow, selectedWeapon);
+}
+async function change({workflow}) {
+    let effect = effectUtils.getEffectByIdentifier(workflow.actor, 'elementalCleaver');
+    if (!effect) return;
+    let weaponId = effect.flags['chris-premades']?.elementalCleaver?.weaponId;
+    let selectedWeapon = workflow.actor.items.get(weaponId);
+    if (!selectedWeapon) return;
+    await genericUtils.remove(effect);
+    await infuseWeapon(workflow, selectedWeapon);
 }
 async function infuseWeapon(workflow, selectedWeapon) {
     let rageEffect = effectUtils.getEffectByIdentifier(workflow.actor, 'rage');
@@ -135,7 +133,14 @@ export let elementalCleaver = {
             {
                 pass: 'rollFinished',
                 macro: use,
-                priority: 50
+                priority: 50,
+                activities: ['elementalCleaver']
+            },
+            {
+                pass: 'rollFinished',
+                macro: change,
+                priority: 50,
+                activities: ['elementalCleaverChange']
             }
         ]
     },

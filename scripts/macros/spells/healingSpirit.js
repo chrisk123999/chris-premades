@@ -2,7 +2,6 @@ import {Summons} from '../../lib/summons.js';
 import {activityUtils, actorUtils, animationUtils, combatUtils, compendiumUtils, constants, dialogUtils, effectUtils, errors, genericUtils, itemUtils, workflowUtils} from '../../utils.js';
 
 async function use({workflow}) {
-    if (activityUtils.getIdentifier(workflow.activity) !== genericUtils.getIdentifier(workflow.item)) return;
     let concentrationEffect = effectUtils.getConcentrationEffect(workflow.actor, workflow.item);
     let playAnimation = itemUtils.getConfig(workflow.item, 'playAnimation') && animationUtils.jb2aCheck() === 'patreon';
     let sourceActor = await compendiumUtils.getActorFromCompendium(constants.packs.summons, 'CPR - Healing Spirit');
@@ -202,7 +201,6 @@ async function moveOrStart({trigger: {entity: effect, castData, token, target}})
     await workflowUtils.syntheticItemRoll(feature, [target], {config: {consumeUsage: true}});
 }
 async function early({workflow}) {
-    if (activityUtils.getIdentifier(workflow.activity) !== 'healingSpiritMove') return;
     workflowUtils.skipDialog(workflow);
 }
 export let healingSpirit = {
@@ -214,12 +212,14 @@ export let healingSpirit = {
             {
                 pass: 'rollFinished',
                 macro: use,
-                priority: 50
+                priority: 50,
+                activities: ['healingSpirit']
             },
             {
                 pass: 'preTargeting',
                 macro: early,
-                priority: 50
+                priority: 50,
+                activities: ['healingSpiritMove']
             }
         ]
     },

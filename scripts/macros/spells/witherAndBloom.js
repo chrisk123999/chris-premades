@@ -1,6 +1,5 @@
 import {activityUtils, compendiumUtils, constants, dialogUtils, genericUtils, itemUtils, socketUtils, workflowUtils} from '../../utils.js';
 async function use({trigger, workflow}) {
-    if (activityUtils.getIdentifier(workflow.activity) !== genericUtils.getIdentifier(workflow.item)) return;
     if (!workflow.targets.size) return;
     let friendlyTargets = workflow.targets.filter(i => i.document.disposition === workflow.token.document.disposition && i.actor.type === 'character');
     if (!friendlyTargets.size) return;
@@ -27,7 +26,6 @@ async function use({trigger, workflow}) {
     await workflowUtils.syntheticActivityRoll(feature, [selection]);
 }
 async function damage({trigger, workflow, ditem}) {
-    if (activityUtils.getIdentifier(workflow.activity) !== genericUtils.getIdentifier(workflow.item)) return;
     let tokenDocument = await fromUuid(ditem.tokenUuid);
     if (workflow.token.document.disposition != tokenDocument.disposition) return;
     workflowUtils.negateDamageItemDamage(ditem);
@@ -40,12 +38,14 @@ export let witherAndBloom = {
             {
                 pass: 'rollFinished',
                 macro: use,
-                priority: 50
+                priority: 50,
+                activities: ['witherAndBloom']
             },
             {
                 pass: 'applyDamage',
                 macro: damage,
-                priority: 50
+                priority: 50,
+                activities: ['witherAndBloom']
             }
         ]
     }

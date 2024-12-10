@@ -2,7 +2,6 @@ import {Summons} from '../../lib/summons.js';
 import {activityUtils, actorUtils, compendiumUtils, constants, dialogUtils, effectUtils, errors, genericUtils, itemUtils, rollUtils, tokenUtils, workflowUtils} from '../../utils.js';
 
 async function use({workflow}) {
-    if (activityUtils.getIdentifier(workflow.activity) !== genericUtils.getIdentifier(workflow.item)) return;
     let concentrationEffect = effectUtils.getConcentrationEffect(workflow.actor, workflow.item);
     let sourceActor = await compendiumUtils.getActorFromCompendium(constants.packs.summons, 'CPR - Bigby\'s Hand');
     if (!sourceActor) {
@@ -292,7 +291,6 @@ async function otherLate({trigger, workflow}) {
     await genericUtils.remove(targetHalfCover);
 }
 async function veryEarly({workflow}) {
-    if (activityUtils.getIdentifier(workflow.activity) !== 'bigbysHandMove') return;
     workflowUtils.skipDialog(workflow);
 }
 export let bigbysHand = {
@@ -304,12 +302,14 @@ export let bigbysHand = {
             {
                 pass: 'rollFinished',
                 macro: use,
-                priority: 50
+                priority: 50,
+                activities: ['bigbysHand']
             },
             {
                 pass: 'preTargeting',
                 macro: veryEarly,
-                priority: 50
+                priority: 50,
+                activities: ['bigbysHandMove']
             }
         ]
     },

@@ -120,7 +120,8 @@ export let summonCelestial = {
             {
                 pass: 'rollFinished',
                 macro: use,
-                priority: 50
+                priority: 50,
+                activities: ['summonCelestialAvenger', 'summonCelestialDefender']
             }
         ]
     },

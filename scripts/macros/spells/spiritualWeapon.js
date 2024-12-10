@@ -1,7 +1,6 @@
 import {Summons} from '../../lib/summons.js';
 import {activityUtils, animationUtils, compendiumUtils, constants, dialogUtils, effectUtils, errors, genericUtils, itemUtils, tokenUtils, workflowUtils} from '../../utils.js';
 async function use({workflow}) {
-    if (activityUtils.getIdentifier(workflow.activity) !== genericUtils.getIdentifier(workflow.item)) return;
     let jb2a = animationUtils.jb2aCheck();
     let sourceActor = await compendiumUtils.getActorFromCompendium(constants.packs.summons, 'CPR - Spiritual Weapon');
     if (!sourceActor) return;
@@ -133,7 +132,6 @@ async function use({workflow}) {
     feature.activation.type = 'bonus';
 }
 async function early({workflow}) {
-    if (activityUtils.getIdentifier(workflow.activity) !== 'spiritualWeaponAttack') return;
     let effect = effectUtils.getEffectByIdentifier(workflow.actor, 'spiritualWeapon');
     if (workflow.activity.tempFlag) {
         workflow.activity.tempFlag = false;
@@ -171,7 +169,6 @@ async function early({workflow}) {
     return true;
 }
 async function late({workflow}) {
-    if (activityUtils.getIdentifier(workflow.activity) !== 'spiritualWeaponAttack') return;
     let effect = effectUtils.getEffectByIdentifier(workflow.actor, 'spiritualWeapon');
     if (!effect) return;
     let spiritualActor = canvas.scene.tokens.get(effect.flags['chris-premades'].summons.ids[effect.name][0])?.actor;
@@ -189,17 +186,20 @@ export let spiritualWeapon = {
             {
                 pass: 'rollFinished',
                 macro: use,
-                priority: 50
+                priority: 50,
+                activities: ['spiritualWeapon']
             },
             {
                 pass: 'preTargeting',
                 macro: early,
-                priority: 50
+                priority: 50,
+                activities: ['spiritualWeaponAttack']
             },
             {
                 pass: 'attackRollComplete',
                 macro: late,
-                priority: 50
+                priority: 50,
+                activities: ['spiritualWeaponAttack']
             }
         ]
     },

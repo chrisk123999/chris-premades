@@ -134,7 +134,8 @@ export let summonUndead = {
             {
                 pass: 'rollFinished',
                 macro: use,
-                priority: 50
+                priority: 50,
+                activities: ['summonUndeadGhostly', 'summonUndeadPutrid', 'summonUndeadSkeletal']
             }
         ]
     },

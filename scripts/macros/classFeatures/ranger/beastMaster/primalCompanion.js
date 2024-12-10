@@ -3,7 +3,6 @@ import {activityUtils, actorUtils, compendiumUtils, constants, dialogUtils, erro
 
 async function use({workflow}) {
     let activityIdentifier = activityUtils.getIdentifier(workflow.activity);
-    if (!['primalCompanionLand', 'primalCompanionSea', 'primalCompanionSky'].includes(activityIdentifier)) return;
     let sourceActor = await compendiumUtils.getActorFromCompendium(constants.packs.summons, 'CPR - Primal Companion');
     if (!sourceActor) return;
     let classLevel = workflow.actor.classes?.ranger?.system?.levels;
@@ -178,7 +177,8 @@ export let primalCompanion = {
             {
                 pass: 'rollFinished',
                 macro: use,
-                priority: 50
+                priority: 50,
+                activities: ['primalCompanionLand', 'primalCompanionSea', 'primalCompanionSky']
             }
         ]
     },

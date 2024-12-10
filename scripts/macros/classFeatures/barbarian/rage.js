@@ -1,273 +1,271 @@
 import {activityUtils, actorUtils, animationUtils, combatUtils, compendiumUtils, constants, dialogUtils, effectUtils, errors, genericUtils, itemUtils, socketUtils, tokenUtils, workflowUtils} from '../../../utils.js';
 import {start as enlargeReduceStart} from '../../spells/enlargeReduce.js';
 async function use({workflow}) {
-    let activityIdentifier = activityUtils.getIdentifier(workflow.activity);
-    if (activityIdentifier === genericUtils.getIdentifier(workflow.item)) {
-        let concentrationEffects = Array.from(workflow.actor.concentration.effects);
-        await Promise.all(concentrationEffects.map(async effect => await genericUtils.remove(effect)));
-        let featureEnd = activityUtils.getActivityByIdentifier(workflow.item, 'rageEnd', {strict: true});
-        if (!featureEnd) return;
-        let unhideActivities = [{
-            itemUuid: workflow.item.uuid,
-            activityIdentifiers: ['rageEnd'],
-            favorite: true
-        }];
-        let vaeInput = [{
-            type: 'use',
-            name: featureEnd.name,
-            identifier: 'rage',
-            activityIdentifier: 'rageEnd'
-        }];
-        let effectData = {
-            name: workflow.item.name,
-            img: workflow.item.img,
-            origin: workflow.item.uuid,
-            duration: itemUtils.convertDuration(workflow.activity),
-            changes: [
-                {
-                    key: 'flags.midi-qol.advantage.ability.check.str',
-                    mode: 0,
-                    value: 1,
-                    priority: 0
-                },
-                {
-                    key: 'flags.midi-qol.advantage.ability.save.str',
-                    mode: 0,
-                    value: 1,
-                    priority: 0
-                },
-                {
-                    key: 'system.traits.dr.value',
-                    mode: 2,
-                    value: 'slashing',
-                    priority: 20
-                },
-                {
-                    key: 'system.traits.dr.value',
-                    mode: 2,
-                    value: 'piercing',
-                    priority: 20
-                },
-                {
-                    key: 'system.traits.dr.value',
-                    mode: 2,
-                    value: 'bludgeoning',
-                    priority: 20
-                },
-                {
-                    key: 'system.bonuses.mwak.damage',
-                    mode: 2,
-                    value: '+ @scale.barbarian.rage-damage',
-                    priority: 20
-                },
-                {
-                    key: 'flags.midi-qol.fail.spell.vocal',
-                    value: 1,
-                    mode: 0,
-                    priority: 20
-                },
-                {
-                    key: 'flags.midi-qol.fail.spell.somatic',
-                    value: 1,
-                    mode: 0,
-                    priority: 20
-                },
-                {
-                    key: 'flags.midi-qol.fail.spell.material',
-                    value: 1,
-                    mode: 0,
-                    priority: 20
-                }
-            ],
-            flags: {
-                dae: {
-                    specialDuration: [
-                        'zeroHP'
-                    ]
-                }
+    let concentrationEffects = Array.from(workflow.actor.concentration.effects);
+    await Promise.all(concentrationEffects.map(async effect => await genericUtils.remove(effect)));
+    let featureEnd = activityUtils.getActivityByIdentifier(workflow.item, 'rageEnd', {strict: true});
+    if (!featureEnd) return;
+    let unhideActivities = [{
+        itemUuid: workflow.item.uuid,
+        activityIdentifiers: ['rageEnd'],
+        favorite: true
+    }];
+    let vaeInput = [{
+        type: 'use',
+        name: featureEnd.name,
+        identifier: 'rage',
+        activityIdentifier: 'rageEnd'
+    }];
+    let effectData = {
+        name: workflow.item.name,
+        img: workflow.item.img,
+        origin: workflow.item.uuid,
+        duration: itemUtils.convertDuration(workflow.activity),
+        changes: [
+            {
+                key: 'flags.midi-qol.advantage.ability.check.str',
+                mode: 0,
+                value: 1,
+                priority: 0
+            },
+            {
+                key: 'flags.midi-qol.advantage.ability.save.str',
+                mode: 0,
+                value: 1,
+                priority: 0
+            },
+            {
+                key: 'system.traits.dr.value',
+                mode: 2,
+                value: 'slashing',
+                priority: 20
+            },
+            {
+                key: 'system.traits.dr.value',
+                mode: 2,
+                value: 'piercing',
+                priority: 20
+            },
+            {
+                key: 'system.traits.dr.value',
+                mode: 2,
+                value: 'bludgeoning',
+                priority: 20
+            },
+            {
+                key: 'system.bonuses.mwak.damage',
+                mode: 2,
+                value: '+ @scale.barbarian.rage-damage',
+                priority: 20
+            },
+            {
+                key: 'flags.midi-qol.fail.spell.vocal',
+                value: 1,
+                mode: 0,
+                priority: 20
+            },
+            {
+                key: 'flags.midi-qol.fail.spell.somatic',
+                value: 1,
+                mode: 0,
+                priority: 20
+            },
+            {
+                key: 'flags.midi-qol.fail.spell.material',
+                value: 1,
+                mode: 0,
+                priority: 20
             }
-        };
-        effectUtils.addMacro(effectData, 'effect', ['rageRaging']);
-        if (!itemUtils.getItemByIdentifier(workflow.actor, 'persistentRage')) {
-            effectUtils.addMacro(effectData, 'midi.actor', ['rageRaging']);
-            effectUtils.addMacro(effectData, 'combat', ['rageRaging']);
-        }
-        if (itemUtils.getItemByIdentifier(workflow.actor, 'totemSpiritBear')) {
-            effectData.changes.push(...[
-                {
-                    key: 'system.traits.dr.value',
-                    mode: 2,
-                    value: 'acid',
-                    priority: 20
-                },
-                {
-                    key: 'system.traits.dr.value',
-                    mode: 2,
-                    value: 'cold',
-                    priority: 20
-                },
-                {
-                    key: 'system.traits.dr.value',
-                    mode: 2,
-                    value: 'fire',
-                    priority: 20
-                },
-                {
-                    key: 'system.traits.dr.value',
-                    mode: 2,
-                    value: 'force',
-                    priority: 20
-                },
-                {
-                    key: 'system.traits.dr.value',
-                    mode: 2,
-                    value: 'lightning',
-                    priority: 20
-                },
-                {
-                    key: 'system.traits.dr.value',
-                    mode: 2,
-                    value: 'necrotic',
-                    priority: 20
-                },
-                {
-                    key: 'system.traits.dr.value',
-                    mode: 2,
-                    value: 'poison',
-                    priority: 20
-                },
-                {
-                    key: 'system.traits.dr.value',
-                    mode: 2,
-                    value: 'radiant',
-                    priority: 20
-                },
-                {
-                    key: 'system.traits.dr.value',
-                    mode: 2,
-                    value: 'thunder',
-                    priority: 20
-                },
-            ]);
-        }
-        if (itemUtils.getItemByIdentifier(workflow.actor, 'giantsHavocCrushingThrow')) {
-            effectUtils.addMacro(effectData, 'midi.actor', ['giantsHavocCrushingThrow']);
-        }
-        if (itemUtils.getItemByIdentifier(workflow.actor, 'infectiousFury')) {
-            effectUtils.addMacro(effectData, 'midi.actor', ['infectiousFury']);
-        }
-        let giantStature = itemUtils.getItemByIdentifier(workflow.actor, 'giantsHavocGiantStature');
-        let demiurgicColossus = itemUtils.getItemByIdentifier(workflow.actor, 'demiurgicColossus');
-        let currSize = actorUtils.getSize(workflow.actor);
-        if (giantStature && (currSize < (demiurgicColossus ? 4 : 3))) {
-            let canBeLarge = currSize < 3 && Object.values(tokenUtils.checkForRoom(workflow.token, 1)).some(i => i);
-            let newSize = canBeLarge ? 'lg' : false;
-            if (demiurgicColossus) {
-                if (Object.values(tokenUtils.checkForRoom(workflow.token, 4 - Math.max(2, currSize))).some(i => i)) {
-                    if (canBeLarge) {
-                        let selection = await dialogUtils.buttonDialog(demiurgicColossus.name, 'CHRISPREMADES.Macros.Rage.LargeOrHuge', [
-                            ['DND5E.SizeLarge', 'lg'],
-                            ['DND5E.SizeHuge', 'huge']
-                        ]);
-                        if (selection) newSize = selection;
-                    } else {
-                        let selection = await dialogUtils.confirm(demiurgicColossus.name, 'CHRISPREMADES.Macros.Rage.Huge');
-                        if (selection) newSize = 'huge';
-                    }
-                }
+        ],
+        flags: {
+            dae: {
+                specialDuration: [
+                    'zeroHP'
+                ]
             }
-            if (newSize) {
-                if (newSize === 'huge') {
-                    demiurgicColossus.displayCard();
+        }
+    };
+    effectUtils.addMacro(effectData, 'effect', ['rageRaging']);
+    if (!itemUtils.getItemByIdentifier(workflow.actor, 'persistentRage')) {
+        effectUtils.addMacro(effectData, 'midi.actor', ['rageRaging']);
+        effectUtils.addMacro(effectData, 'combat', ['rageRaging']);
+    }
+    if (itemUtils.getItemByIdentifier(workflow.actor, 'totemSpiritBear')) {
+        effectData.changes.push(...[
+            {
+                key: 'system.traits.dr.value',
+                mode: 2,
+                value: 'acid',
+                priority: 20
+            },
+            {
+                key: 'system.traits.dr.value',
+                mode: 2,
+                value: 'cold',
+                priority: 20
+            },
+            {
+                key: 'system.traits.dr.value',
+                mode: 2,
+                value: 'fire',
+                priority: 20
+            },
+            {
+                key: 'system.traits.dr.value',
+                mode: 2,
+                value: 'force',
+                priority: 20
+            },
+            {
+                key: 'system.traits.dr.value',
+                mode: 2,
+                value: 'lightning',
+                priority: 20
+            },
+            {
+                key: 'system.traits.dr.value',
+                mode: 2,
+                value: 'necrotic',
+                priority: 20
+            },
+            {
+                key: 'system.traits.dr.value',
+                mode: 2,
+                value: 'poison',
+                priority: 20
+            },
+            {
+                key: 'system.traits.dr.value',
+                mode: 2,
+                value: 'radiant',
+                priority: 20
+            },
+            {
+                key: 'system.traits.dr.value',
+                mode: 2,
+                value: 'thunder',
+                priority: 20
+            },
+        ]);
+    }
+    if (itemUtils.getItemByIdentifier(workflow.actor, 'giantsHavocCrushingThrow')) {
+        effectUtils.addMacro(effectData, 'midi.actor', ['giantsHavocCrushingThrow']);
+    }
+    if (itemUtils.getItemByIdentifier(workflow.actor, 'infectiousFury')) {
+        effectUtils.addMacro(effectData, 'midi.actor', ['infectiousFury']);
+    }
+    let giantStature = itemUtils.getItemByIdentifier(workflow.actor, 'giantsHavocGiantStature');
+    let demiurgicColossus = itemUtils.getItemByIdentifier(workflow.actor, 'demiurgicColossus');
+    let currSize = actorUtils.getSize(workflow.actor);
+    if (giantStature && (currSize < (demiurgicColossus ? 4 : 3))) {
+        let canBeLarge = currSize < 3 && Object.values(tokenUtils.checkForRoom(workflow.token, 1)).some(i => i);
+        let newSize = canBeLarge ? 'lg' : false;
+        if (demiurgicColossus) {
+            if (Object.values(tokenUtils.checkForRoom(workflow.token, 4 - Math.max(2, currSize))).some(i => i)) {
+                if (canBeLarge) {
+                    let selection = await dialogUtils.buttonDialog(demiurgicColossus.name, 'CHRISPREMADES.Macros.Rage.LargeOrHuge', [
+                        ['DND5E.SizeLarge', 'lg'],
+                        ['DND5E.SizeHuge', 'huge']
+                    ]);
+                    if (selection) newSize = selection;
                 } else {
-                    giantStature.displayCard();
-                }
-                if (itemUtils.getConfig(workflow.item, 'playAnimation') && animationUtils.jb2aCheck() === 'patreon') {
-                    genericUtils.setProperty(effectData, 'flags.chris-premades.enlargeReduce', {
-                        selection: 'enlarge',
-                        playAnimation: true,
-                        origSize: actorUtils.getSize(workflow.actor, true),
-                        newSize
-                    });
-                    genericUtils.setProperty(effectData, 'flags.chris-premades.effect.sizeAnimation', false);
-                } else {
-                    effectData.changes.push({
-                        key: 'system.traits.size',
-                        mode: 5,
-                        value: newSize,
-                        priority: 20
-                    });
+                    let selection = await dialogUtils.confirm(demiurgicColossus.name, 'CHRISPREMADES.Macros.Rage.Huge');
+                    if (selection) newSize = 'huge';
                 }
             }
         }
-        let formOfBeastFeature = itemUtils.getItemByIdentifier(workflow.actor, 'formOfTheBeast');
-        if (formOfBeastFeature) {
-            let selection = await dialogUtils.buttonDialog(formOfBeastFeature.name, 'CHRISPREMADES.Macros.Rage.FormOfBeastWeapon', [
-                ['CHRISPREMADES.CommonFeatures.Bite', 'formOfTheBeastBite'],
-                ['CHRISPREMADES.CommonFeatures.Claws', 'formOfTheBeastClaws'],
-                ['CHRISPREMADES.CommonFeatures.Tail', 'formOfTheBeastTail'],
-                ['DND5E.None', false]
-            ]);
-            if (selection) {
-                let flagsUpdate = {};
-                let featureBeast = activityUtils.getActivityByIdentifier(formOfBeastFeature, selection, {strict: true});
-                if (!featureBeast) return;
-                let magicFlag = formOfBeastFeature.flags?.midiProperties?.magicdam;
-                if (itemUtils.getItemByIdentifier(workflow.actor, 'bestialSoul')) {
-                    if (!magicFlag) genericUtils.setProperty(flagsUpdate, 'flags.midiProperties.magicdam', true);
-                } else {
-                    if (magicFlag) genericUtils.setProperty(flagsUpdate, 'flags.midiProperties.magicdam', false);
-                }
-                unhideActivities.push({
-                    itemUuid: formOfBeastFeature.uuid,
-                    activityIdentifiers: [selection],
-                    favorite: true
+        if (newSize) {
+            if (newSize === 'huge') {
+                demiurgicColossus.displayCard();
+            } else {
+                giantStature.displayCard();
+            }
+            if (itemUtils.getConfig(workflow.item, 'playAnimation') && animationUtils.jb2aCheck() === 'patreon') {
+                genericUtils.setProperty(effectData, 'flags.chris-premades.enlargeReduce', {
+                    selection: 'enlarge',
+                    playAnimation: true,
+                    origSize: actorUtils.getSize(workflow.actor, true),
+                    newSize
                 });
-                vaeInput.unshift({
-                    type: 'use',
-                    name: featureBeast.name,
-                    identifier: 'formOfTheBeast',
-                    activityIdentifier: selection
+                genericUtils.setProperty(effectData, 'flags.chris-premades.effect.sizeAnimation', false);
+            } else {
+                effectData.changes.push({
+                    key: 'system.traits.size',
+                    mode: 5,
+                    value: newSize,
+                    priority: 20
                 });
-                let reactionFlag = formOfBeastFeature.flags?.['midi-qol']?.reactionCondition;
-                if (selection === 'formOfTheBeastTail') {
-                    if (reactionFlag?.length) genericUtils.setProperty(flagsUpdate, 'flags.midi-qol.reactionCondition', '');
-                } else {
-                    if (!reactionFlag?.length) genericUtils.setProperty(flagsUpdate, 'flags.midi-qol.reactionCondition', 'false');
-                }
-                if (Object.keys(flagsUpdate).length) await genericUtils.update(formOfBeastFeature, flagsUpdate);
             }
         }
-        let mightyImpelFeature = itemUtils.getItemByIdentifier(workflow.actor, 'mightyImpel');
-        if (mightyImpelFeature) vaeInput.unshift({type: 'use', name: mightyImpelFeature.name, identifier: 'mightyImpel'});
-        let callTheHunt = itemUtils.getItemByIdentifier(workflow.actor, 'callTheHunt');
-        let wildSurge = itemUtils.getItemByIdentifier(workflow.actor, 'wildSurge');
-        let elementalCleaver = itemUtils.getItemByIdentifier(workflow.actor, 'elementalCleaver');
-        if (elementalCleaver) {
+    }
+    let formOfBeastFeature = itemUtils.getItemByIdentifier(workflow.actor, 'formOfTheBeast');
+    if (formOfBeastFeature) {
+        let selection = await dialogUtils.buttonDialog(formOfBeastFeature.name, 'CHRISPREMADES.Macros.Rage.FormOfBeastWeapon', [
+            ['CHRISPREMADES.CommonFeatures.Bite', 'formOfTheBeastBite'],
+            ['CHRISPREMADES.CommonFeatures.Claws', 'formOfTheBeastClaws'],
+            ['CHRISPREMADES.CommonFeatures.Tail', 'formOfTheBeastTail'],
+            ['DND5E.None', false]
+        ]);
+        if (selection) {
+            let flagsUpdate = {};
+            let featureBeast = activityUtils.getActivityByIdentifier(formOfBeastFeature, selection, {strict: true});
+            if (!featureBeast) return;
+            let magicFlag = formOfBeastFeature.flags?.midiProperties?.magicdam;
+            if (itemUtils.getItemByIdentifier(workflow.actor, 'bestialSoul')) {
+                if (!magicFlag) genericUtils.setProperty(flagsUpdate, 'flags.midiProperties.magicdam', true);
+            } else {
+                if (magicFlag) genericUtils.setProperty(flagsUpdate, 'flags.midiProperties.magicdam', false);
+            }
             unhideActivities.push({
-                itemUuid: elementalCleaver.uuid,
-                activityIdentifiers: ['elementalCleaverChange'],
+                itemUuid: formOfBeastFeature.uuid,
+                activityIdentifiers: [selection],
                 favorite: true
             });
+            vaeInput.unshift({
+                type: 'use',
+                name: featureBeast.name,
+                identifier: 'formOfTheBeast',
+                activityIdentifier: selection
+            });
+            let reactionFlag = formOfBeastFeature.flags?.['midi-qol']?.reactionCondition;
+            if (selection === 'formOfTheBeastTail') {
+                if (reactionFlag?.length) genericUtils.setProperty(flagsUpdate, 'flags.midi-qol.reactionCondition', '');
+            } else {
+                if (!reactionFlag?.length) genericUtils.setProperty(flagsUpdate, 'flags.midi-qol.reactionCondition', 'false');
+            }
+            if (Object.keys(flagsUpdate).length) await genericUtils.update(formOfBeastFeature, flagsUpdate);
         }
-        let effect = await effectUtils.createEffect(workflow.actor, effectData, {
-            identifier: 'rage', 
-            vae: vaeInput,
-            unhideActivities
-        });
-        if (callTheHunt && callTheHunt.system.uses.value) {
-            let selection = await dialogUtils.confirm(callTheHunt.name, genericUtils.format('CHRISPREMADES.Dialog.Use', {itemName: callTheHunt.name}));
-            if (selection) await workflowUtils.completeItemUse(callTheHunt);
-        }
-        if (wildSurge) await workflowUtils.completeItemUse(wildSurge);
-        if (elementalCleaver) await workflowUtils.completeItemUse(elementalCleaver);
-        await combatUtils.setTurnCheck(effect, 'rage');
-    } else if (activityIdentifier === 'rageEnd') {
-        let effect = effectUtils.getEffectByIdentifier(workflow.actor, 'rage');
-        if (effect) await genericUtils.remove(effect);
-        let formOfBeastFeature = itemUtils.getItemByIdentifier(workflow.actor, 'formOfTheBeast');
-        if (formOfBeastFeature) await genericUtils.update(formOfBeastFeature, {'flags.midi-qol.reactionCondition': 'false'});
     }
+    let mightyImpelFeature = itemUtils.getItemByIdentifier(workflow.actor, 'mightyImpel');
+    if (mightyImpelFeature) vaeInput.unshift({type: 'use', name: mightyImpelFeature.name, identifier: 'mightyImpel'});
+    let callTheHunt = itemUtils.getItemByIdentifier(workflow.actor, 'callTheHunt');
+    let wildSurge = itemUtils.getItemByIdentifier(workflow.actor, 'wildSurge');
+    let elementalCleaver = itemUtils.getItemByIdentifier(workflow.actor, 'elementalCleaver');
+    if (elementalCleaver) {
+        unhideActivities.push({
+            itemUuid: elementalCleaver.uuid,
+            activityIdentifiers: ['elementalCleaverChange'],
+            favorite: true
+        });
+    }
+    let effect = await effectUtils.createEffect(workflow.actor, effectData, {
+        identifier: 'rage', 
+        vae: vaeInput,
+        unhideActivities
+    });
+    if (callTheHunt && callTheHunt.system.uses.value) {
+        let selection = await dialogUtils.confirm(callTheHunt.name, genericUtils.format('CHRISPREMADES.Dialog.Use', {itemName: callTheHunt.name}));
+        if (selection) await workflowUtils.completeItemUse(callTheHunt);
+    }
+    if (wildSurge) await workflowUtils.completeItemUse(wildSurge);
+    if (elementalCleaver) await workflowUtils.completeItemUse(elementalCleaver);
+    await combatUtils.setTurnCheck(effect, 'rage');
+}
+async function end({workflow}) {
+    let effect = effectUtils.getEffectByIdentifier(workflow.actor, 'rage');
+    if (effect) await genericUtils.remove(effect);
+    let formOfBeastFeature = itemUtils.getItemByIdentifier(workflow.actor, 'formOfTheBeast');
+    if (formOfBeastFeature) await genericUtils.update(formOfBeastFeature, {'flags.midi-qol.reactionCondition': 'false'});
 }
 async function attack({workflow}) {
     let effect = effectUtils.getEffectByIdentifier(workflow.actor, 'rage');
@@ -550,7 +548,14 @@ export let rage = {
             {
                 pass: 'rollFinished',
                 macro: use,
-                priority: 50
+                priority: 50,
+                activities: ['rage']
+            },
+            {
+                pass: 'rollFinished',
+                macro: end,
+                priority: 50,
+                activities: ['rageEnd']
             }
         ]
     },

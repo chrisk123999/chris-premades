@@ -2,7 +2,6 @@ import {socket, sockets} from '../../lib/sockets.js';
 import {activityUtils, animationUtils, dialogUtils, genericUtils, itemUtils, socketUtils, tokenUtils, workflowUtils} from '../../utils.js';
 
 async function use({workflow}) {
-    if (activityUtils.getIdentifier(workflow.activity) !== genericUtils.getIdentifier(workflow.item)) return;
     let targets = tokenUtils.findNearby(workflow.token, 10, 'ally', {includeIncapacitated: true});
     let toTeleport = [workflow.token];
     if (workflow.actor.sheet.rendered) workflow.actor.sheet.minimize();
@@ -410,7 +409,8 @@ export let teleport = {
             {
                 pass: 'rollFinished',
                 macro: use,
-                priority: 50
+                priority: 50,
+                activities: ['teleport']
             }
         ]
     },

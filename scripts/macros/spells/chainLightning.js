@@ -1,7 +1,6 @@
 import {activityUtils, animationUtils, compendiumUtils, constants, dialogUtils, errors, genericUtils, itemUtils, tokenUtils, workflowUtils} from '../../utils.js';
 
 async function use({workflow}) {
-    if (activityUtils.getIdentifier(workflow.activity) !== genericUtils.getIdentifier(workflow.item)) return;
     if (!workflow.targets.size) return;
     let maxTargets = workflow.castData.castLevel - 3;
     for (let targetToken of workflow.targets) {
@@ -62,7 +61,8 @@ export let chainLightning = {
             {
                 pass: 'rollFinished',
                 macro: use,
-                priority: 50
+                priority: 50,
+                activities: ['chainLightning']
             }
         ]
     },

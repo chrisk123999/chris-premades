@@ -2,106 +2,103 @@ import {Summons} from '../../lib/summons.js';
 import {activityUtils, compendiumUtils, constants, dialogUtils, effectUtils, errors, genericUtils, itemUtils, tokenUtils, workflowUtils} from '../../utils.js';
 
 async function use({workflow}) {
-    let activityIdentifier = activityUtils.getIdentifier(workflow.activity);
-    if (activityIdentifier === genericUtils.getIdentifier(workflow.item)) {
-        let concentrationEffect = effectUtils.getConcentrationEffect(workflow.actor, workflow.item);
-        let sourceActor = await compendiumUtils.getActorFromCompendium(constants.packs.summons, 'CPR - Earthen Hand');
-        if (!sourceActor) {
-            if (concentrationEffect) await genericUtils.remove(concentrationEffect);
-            return;
-        }
-        let name = itemUtils.getConfig(workflow.item, 'name');
-        if (!name?.length) name = 'Earthen Hand';
-        let updates = {
-            actor: {
-                prototypeToken: {
-                    name
-                }
-            },
-            token: {
-                name,
-                disposition: workflow.token.document.disposition
-            }
-        };
-        let avatarImg = itemUtils.getConfig(workflow.item, 'avatar');
-        let tokenImg = itemUtils.getConfig(workflow.item, 'token');
-        if (avatarImg) updates.actor.img = avatarImg;
-        if (tokenImg) {
-            genericUtils.setProperty(updates, 'actor.prototypeToken.texture.src', tokenImg);
-            genericUtils.setProperty(updates, 'token.texture.src', tokenImg);
-        }
-        let animation = itemUtils.getConfig(workflow.item, 'animation') ?? 'earth';
-        let feature = activityUtils.getActivityByIdentifier(workflow.item, 'maximiliansEarthenGraspGrasp', {strict: true});
-        if (!feature) {
-            if (concentrationEffect) await genericUtils.remove(concentrationEffect);
-            return;
-        }
-        await Summons.spawn(sourceActor, updates, workflow.item, workflow.token, {
-            duration: 60,
-            range: 30,
-            animation,
-            initiativeType: 'none',
-            additionalVaeButtons: [{type: 'use', name: feature.name, identifier: 'maximiliansEarthenGrasp', activityIdentifier: 'maximiliansEarthenGraspGrasp'}],
-            unhideActivities: {
-                itemUuid: workflow.item.uuid,
-                activityIdentifiers: ['maximiliansEarthenGraspGrasp'],
-                favorite: true
-            }
-        });
-        await workflowUtils.completeActivityUse(feature, {}, {configure: false});
-    } else if (activityIdentifier === 'maximiliansEarthenGraspGrasp') {
-        let casterEffect = effectUtils.getEffectByIdentifier(workflow.actor, 'maximiliansEarthenGrasp');
-        if (!workflow.failedSaves.size) return;
-        let target = workflow.failedSaves.first();
-        let feature = activityUtils.getActivityByIdentifier(workflow.item, 'maximiliansEarthenGraspCrush', {strict: true});
-        if (!feature) return;
-        let effectData = {
-            name: workflow.activity.name,
-            img: workflow.item.img,
-            origin: workflow.item.uuid,
-            duration: {
-                seconds: 60
-            },
-            flags: {
-                'chris-premades': {
-                    maximiliansEarthenGrasp: {
-                        targetUuid: target.document.uuid
-                    }
-                }
-            }
-        };
-        let effect = await effectUtils.createEffect(workflow.actor, effectData, {
-            parentEntity: casterEffect, 
-            identifier: 'maximiliansEarthenGraspGrasping', 
-            vae: [{
-                type: 'use', 
-                name: feature.name,
-                identifier: 'maximiliansEarthenGrasp', 
-                activityIdentifier: 'maximiliansEarthenGraspCrush'
-            }],
-            unhideActivities: {
-                itemUuid: workflow.item.uuid,
-                activityIdentifiers: ['maximiliansEarthenGraspCrush'],
-                favorite: true
-            }
-        });
-        if (!effect) return;
-        // TODO: also add one to the summon & make it come off if it moves?
-        genericUtils.setProperty(effectData, 'flags.chris-premades.conditions', ['restrained']);
-        effectData.changes = [
-            {
-                key: 'flags.midi-qol.OverTime',
-                mode: 0,
-                value: 'turn=start,label=' + genericUtils.translate('CHRISPREMADES.Macros.MaximiliansEarthenGrasp.Overtime') + ',allowIncapacitated=true,rollType=check,saveDC=' + itemUtils.getSaveDC(workflow.item) + ',saveDamage=nodamage,saveAbility=str,saveRemove=true,actionSave=true,rollMode=publicroll',
-                priority: 20
-            }
-        ];
-        await effectUtils.createEffect(target.actor, effectData, {parentEntity: effect, strictlyInterdependent: true});
+    let concentrationEffect = effectUtils.getConcentrationEffect(workflow.actor, workflow.item);
+    let sourceActor = await compendiumUtils.getActorFromCompendium(constants.packs.summons, 'CPR - Earthen Hand');
+    if (!sourceActor) {
+        if (concentrationEffect) await genericUtils.remove(concentrationEffect);
+        return;
     }
+    let name = itemUtils.getConfig(workflow.item, 'name');
+    if (!name?.length) name = 'Earthen Hand';
+    let updates = {
+        actor: {
+            prototypeToken: {
+                name
+            }
+        },
+        token: {
+            name,
+            disposition: workflow.token.document.disposition
+        }
+    };
+    let avatarImg = itemUtils.getConfig(workflow.item, 'avatar');
+    let tokenImg = itemUtils.getConfig(workflow.item, 'token');
+    if (avatarImg) updates.actor.img = avatarImg;
+    if (tokenImg) {
+        genericUtils.setProperty(updates, 'actor.prototypeToken.texture.src', tokenImg);
+        genericUtils.setProperty(updates, 'token.texture.src', tokenImg);
+    }
+    let animation = itemUtils.getConfig(workflow.item, 'animation') ?? 'earth';
+    let feature = activityUtils.getActivityByIdentifier(workflow.item, 'maximiliansEarthenGraspGrasp', {strict: true});
+    if (!feature) {
+        if (concentrationEffect) await genericUtils.remove(concentrationEffect);
+        return;
+    }
+    await Summons.spawn(sourceActor, updates, workflow.item, workflow.token, {
+        duration: 60,
+        range: 30,
+        animation,
+        initiativeType: 'none',
+        additionalVaeButtons: [{type: 'use', name: feature.name, identifier: 'maximiliansEarthenGrasp', activityIdentifier: 'maximiliansEarthenGraspGrasp'}],
+        unhideActivities: {
+            itemUuid: workflow.item.uuid,
+            activityIdentifiers: ['maximiliansEarthenGraspGrasp'],
+            favorite: true
+        }
+    });
+    await workflowUtils.completeActivityUse(feature, {}, {configure: false});
+}
+async function late({workflow}) {
+    let casterEffect = effectUtils.getEffectByIdentifier(workflow.actor, 'maximiliansEarthenGrasp');
+    if (!workflow.failedSaves.size) return;
+    let target = workflow.failedSaves.first();
+    let feature = activityUtils.getActivityByIdentifier(workflow.item, 'maximiliansEarthenGraspCrush', {strict: true});
+    if (!feature) return;
+    let effectData = {
+        name: workflow.activity.name,
+        img: workflow.item.img,
+        origin: workflow.item.uuid,
+        duration: {
+            seconds: 60
+        },
+        flags: {
+            'chris-premades': {
+                maximiliansEarthenGrasp: {
+                    targetUuid: target.document.uuid
+                }
+            }
+        }
+    };
+    let effect = await effectUtils.createEffect(workflow.actor, effectData, {
+        parentEntity: casterEffect, 
+        identifier: 'maximiliansEarthenGraspGrasping', 
+        vae: [{
+            type: 'use', 
+            name: feature.name,
+            identifier: 'maximiliansEarthenGrasp', 
+            activityIdentifier: 'maximiliansEarthenGraspCrush'
+        }],
+        unhideActivities: {
+            itemUuid: workflow.item.uuid,
+            activityIdentifiers: ['maximiliansEarthenGraspCrush'],
+            favorite: true
+        }
+    });
+    if (!effect) return;
+    // TODO: also add one to the summon & make it come off if it moves?
+    genericUtils.setProperty(effectData, 'flags.chris-premades.conditions', ['restrained']);
+    effectData.changes = [
+        {
+            key: 'flags.midi-qol.OverTime',
+            mode: 0,
+            value: 'turn=start,label=' + genericUtils.translate('CHRISPREMADES.Macros.MaximiliansEarthenGrasp.Overtime') + ',allowIncapacitated=true,rollType=check,saveDC=' + itemUtils.getSaveDC(workflow.item) + ',saveDamage=nodamage,saveAbility=str,saveRemove=true,actionSave=true,rollMode=publicroll',
+            priority: 20
+        }
+    ];
+    await effectUtils.createEffect(target.actor, effectData, {parentEntity: effect, strictlyInterdependent: true});
 }
 async function early({workflow}) {
     let activityIdentifier = activityUtils.getIdentifier(workflow.activity);
-    if (!['maximiliansEarthenGraspGrasp', 'maximiliansEarthenGraspCrush'].includes(activityIdentifier)) return;
     let casterEffect = effectUtils.getEffectByIdentifier(workflow.actor, 'maximiliansEarthenGrasp');
     let summonedToken = canvas.scene.tokens.get(casterEffect?.flags['chris-premades'].summons.ids[casterEffect?.name][0]);
     let summonedActor = summonedToken?.actor;
@@ -130,7 +127,6 @@ async function early({workflow}) {
     }
 }
 async function veryEarly({workflow}) {
-    if (!['maximiliansEarthenGraspGrasp', 'maximiliansEarthenGraspCrush'].includes(activityUtils.getIdentifier(workflow.activity))) return;
     workflowUtils.skipDialog(workflow);
 }
 export let maximiliansEarthenGrasp = {
@@ -142,17 +138,26 @@ export let maximiliansEarthenGrasp = {
             {
                 pass: 'rollFinished',
                 macro: use,
-                priority: 50
+                priority: 50,
+                activities: ['maximiliansEarthenGrasp']
+            },
+            {
+                pass: 'rollFinished',
+                macro: late,
+                priority: 50,
+                activities: ['maximiliansEarthenGraspGrasp']
             },
             {
                 pass: 'preambleComplete',
                 macro: early,
-                priority: 50
+                priority: 50,
+                activities: ['maximiliansEarthenGraspGrasp', 'maximiliansEarthenGraspCrush']
             },
             {
                 pass: 'preTargeting',
                 macro: veryEarly,
-                priority: 50
+                priority: 50,
+                activities: ['maximiliansEarthenGraspGrasp', 'maximiliansEarthenGraspCrush']
             }
         ]
     },

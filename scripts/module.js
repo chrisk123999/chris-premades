@@ -56,7 +56,7 @@ Hooks.once('ready', () => {
     custom.ready();
     effectEvents.ready();
     troubleshooter.startup();
-    workflow.setup();
+    // workflow.setup();
     registerHooks();
     ddbi.ready();
     dae.addFlags();

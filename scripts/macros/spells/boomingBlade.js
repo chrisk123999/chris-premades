@@ -1,6 +1,5 @@
 import {activityUtils, actorUtils, animationUtils, compendiumUtils, constants, dialogUtils, effectUtils, errors, genericUtils, itemUtils, socketUtils, workflowUtils} from '../../utils.js';
 async function use({workflow}) {
-    if (activityUtils.getIdentifier(workflow.activity) !== genericUtils.getIdentifier(workflow.item)) return;
     if (workflow.targets.size !== 1) return;
     let weapons = workflow.actor.items.filter(i => i.type === 'weapon' && i.system.equipped && i.system.actionType === 'mwak');
     if (!weapons.length) {
@@ -101,13 +100,14 @@ async function moved({trigger: {entity: effect}}) {
 }
 export let boomingBlade = {
     name: 'Booming Blade',
-    version: '0.12.0',
+    version: '1.1.0',
     midi: {
         item: [
             {
                 pass: 'rollFinished',
                 macro: use,
-                priority: 49
+                priority: 49,
+                activities: ['boomingBlade']
             }
         ]
     },

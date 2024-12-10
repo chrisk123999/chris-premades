@@ -118,7 +118,8 @@ export let summonConstruct = {
             {
                 pass: 'rollFinished',
                 macro: use,
-                priority: 50
+                priority: 50,
+                activities: ['summonConstructClay', 'summonConstructMetal', 'summonConstructStone']
             }
         ]
     },
