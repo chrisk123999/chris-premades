@@ -31,9 +31,10 @@ async function doSummon(event, uuid) {
         animation: Object.keys(summonEffects)[animation]
     });
     let concentration = genericUtils.getProperty(buttonMap, savedId + '.con') ?? false;
+    let activityId = Object.keys(featureData.system.activities)[0];
     if (concentration) {
         featureData.system.properties.push('concentration');
-        featureData.system.duration = {
+        featureData.system.activities[activityId].duration = {
             value: duration / 60,
             units: 'minute'
         };
@@ -144,7 +145,7 @@ export let spotlightOmnisearch = {
 };
 export let spotlightOmniSearchSummon = {
     name: 'Spotlight Omnisearch Summon',
-    version: '0.12.24',
+    version: '1.1.0',
     midi: {
         item: [
             {

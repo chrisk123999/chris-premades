@@ -1,6 +1,6 @@
 import {compendiumUtils, constants, dialogUtils, genericUtils, tokenUtils, workflowUtils} from '../../utils.js';
 export async function cleave(workflow) {
-    if (!workflow.token || workflow.hitTargets.size != 1 || workflow.item?.system?.actionType != 'mwak' || !workflow.damageList || !workflow.item) return;
+    if (!workflow.token || workflow.hitTargets.size != 1 || workflow.activity?.actionType != 'mwak' || !workflow.damageList || !workflow.item) return;
     let newHP = workflow.damageList[0].newHP;
     if (newHP != 0) return;
     if (workflow.targets.first().actor.items.getName('Minion')) return;
@@ -18,12 +18,9 @@ export async function cleave(workflow) {
     if (!selection?.length) return;
     selection = selection[0];
     let featureData = await compendiumUtils.getItemFromCompendium(constants.packs.miscellaneousItems, 'DMG Cleave', {object: true, getDescription: true});
-    featureData.system.damage.parts = [
-        [
-            leftoverDamage + '[' + workflow.defaultDamageType + ']',
-            workflow.defaultDamageType
-        ]
-    ];
+    let attackId = Object.keys(featureData.system.activities)[0];
+    featureData.system.activities[attackId].damage.parts[0].custom.formula = leftoverDamage + '[' + workflow.defaultDamageType + ']';
+    featureData.system.actionType[attackId].damage.parts[0].types = [workflow.defaultDamageType];
     if (workflow.item.system.properties.has('mgc')) featureData.system.properties.push('mgc');
     genericUtils.setProperty(featureData, 'flags.chris-premades.setAttackRoll.formula', workflow.attackRoll.total);
     genericUtils.setProperty(featureData, 'flags.chris-premades.setDamageRoll.formula', leftoverDamage);

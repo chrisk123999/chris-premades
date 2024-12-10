@@ -30,7 +30,8 @@ let effectData = {
 };
 async function preambleComplete(workflow) {
     if (!workflow.targets.size || !workflow.item) return;
-    if (workflow.item.system.save?.dc === null || workflow.item.system.save === undefined) return;
+    if (workflow.activity.type !== 'save') return;
+    if (!workflow.activity.save.dc.value) return;
     let item = workflow.item;
     let itemConditions = new Set();
     if (workflow.workflowOptions.isOverTime) {
@@ -66,7 +67,7 @@ async function preambleComplete(workflow) {
             let flagData = token.document.actor?.flags?.['chris-premades']?.CR?.[condition];
             if (flagData) {
                 let types = String(flagData).split(',').map(i => i.toLowerCase());
-                if (types.includes('1') || types.includes('true') || types.includes(item.system.save.ability)) {
+                if (types.includes('1') || types.includes('true') || types.includes(workflow.activity.save.ability.first())) {
                     let effect = await effectUtils.createEffect(token.document.actor, effectData);
                     cleanUpList.push(effect.uuid);
                 }
