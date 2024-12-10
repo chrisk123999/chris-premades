@@ -107,10 +107,6 @@ const spellAttacks = [
     'msak',
     'rsak'
 ];
-const turnEdge = [
-    { label: 'Start of Turn',    value: 'start' },
-    { label: 'End of Turn',      value: 'end'   }
-];
 const unarmedAttacks = [
     'unarmedStrike',
     'monkUnarmedStrike',
@@ -430,7 +426,6 @@ export let constants = {
     rangedAttacks,
     weaponAttacks,
     spellAttacks,
-    turnEdge,
     unarmedAttacks,
     damageTypeOptions,
     creatureTypeOptions,

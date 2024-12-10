@@ -3,14 +3,14 @@ import {actorUtils, constants, itemUtils, tokenUtils, workflowUtils} from '../..
 
 async function turnStart({trigger: {entity: item, token, target}}) {
     const config = itemUtils.getGenericFeatureConfig(item, 'auraDamageEnd');
-    if (config.turnEdge != 'start') return;
+    if (config.trigger != 'start') return;
     await damage({trigger: {entity: item, token, target}});
 }
 
 async function turnEnd({trigger: {entity: item, token, target}}) {
     const config = itemUtils.getGenericFeatureConfig(item, 'auraDamageEnd');
     // TODO - cleanup on version update removing the undefined backwards compatibility cornercase
-    if (config.turnEdge && config.turnEdge != 'end') return;
+    if (config.trigger && config.trigger != 'end') return;
     await damage({trigger: {entity: item, token, target}});
 }
 
@@ -60,10 +60,19 @@ export let auraDamageEnd = {
             default: true
         },
         {
-            value: 'turnEdge',
-            label: 'CHRISPREMADES.Config.TurnEdge',
+            value: 'trigger',
+            label: 'CHRISPREMADES.Config.Trigger',
             type: 'select',
-            options: constants.turnEdge,
+            options: [
+                {
+                    label: 'CHRISPREMADES.Generic.TurnStart',
+                    value: 'start'
+                },
+                {
+                    label: 'CHRISPREMADES.Generic.TurnEnd',
+                    value: 'end'
+                }
+            ],
             default: 'end'
         },
     ]
