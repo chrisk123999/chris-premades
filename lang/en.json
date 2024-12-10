@@ -1756,6 +1756,20 @@
         "Mastery": {
             "Cleave": {
                 "Name": "Cleave"
+            },
+            "Push": {
+                "Context": "Push target 10 feet?",
+                "Name": "Push"
+            },
+            "Sap": {
+                "Name": "Sap"
+            },
+            "Slow": {
+                "Name": "Slow"
+            },
+            "Topple": {
+                "Context": "Attempt to knock the target prone?",
+                "Name": "Topple"
             }
         },
         "Medkit": {

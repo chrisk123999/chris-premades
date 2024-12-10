@@ -574,3 +574,5 @@ export {mastersAmulet} from './macros/items/trinket/mastersAmulet.js';
 export {backbreaker, braceMelee, braceMeleeDamage, cleave, concussiveSmash, maimingStrike, disarmingStrike, flourish, heartstopper, lacerate, piercingStrike, piercingStrikeEffect, pommelStrike, prepare, rush, tenacity, topple, weakeningStrike, braceRanged, braceRangedDamage, hamstringShot, mobileShot, piercingShot} from './macros/homebrew/bg3WeaponActions.js';
 //Other
 export {maxDamage, maxDamageEffect, doubleDamage, doubleDamageEffect} from './macros/homebrew/critFumble.js';
+//Masteries
+export {cleaveMastery, grazeMastery, pushMastery, sapMastery, slowMastery} from './macros/mechanics/masteries.js';
