@@ -6,9 +6,12 @@ async function attack({trigger: {entity: item}, workflow}) {
     let identifier = genericUtils.getIdentifier(item);
     let bonusFormula = '1';
     if (identifier === 'wrapsOfDyamak1') bonusFormula = '2';
-    if (identifier === 'wrapsOfDyamak2') {
-        if (workflow.isCritical && !item.system.uses.value) await genericUtils.update(item, {'system.uses.spent': 0}); 
-        bonusFormula = '3';
+    if (identifier === 'wrapsOfDyamak2') bonusFormula = '3';
+    if (workflow.isCritical) {
+        let crimson = activityUtils.getActivityByIdentifier(item, 'crimsonMist');
+        let ravenous = activityUtils.getActivityByIdentifier(item, 'ravenousStrike');
+        if (crimson) await genericUtils.update(crimson, {'uses.spent': 0});
+        if (ravenous) await genericUtils.update(ravenous, {'uses.spent': 0});
     }
     await workflowUtils.bonusAttack(workflow, bonusFormula);
 }
@@ -19,20 +22,21 @@ async function damage({trigger: {entity: item}, workflow}) {
     if (identifier === 'wrapsOfDyamak1') bonusFormula = '2';
     if (identifier === 'wrapsOfDyamak2') {
         bonusFormula = '3';
-        if (item.system.uses.value) {
-            let selection = await dialogUtils.confirm(item.name, genericUtils.format('CHRISPREMADES.Dialog.Use', {itemName: item.name}));
+        let ravenousActivity = activityUtils.getActivityByIdentifier(item, 'ravenousStrike', {strict: true});
+        if (ravenousActivity.uses.value) {
+            let selection = await dialogUtils.confirm(item.name, genericUtils.format('CHRISPREMADES.Dialog.Use', {itemName: ravenousActivity.name}));
             if (selection) {
                 await workflowUtils.bonusDamage(workflow, '6d6[necrotic]', {damageType: 'necrotic'});
                 genericUtils.setProperty(workflow, 'chrisPremades.strikeUsed', true);
-                await workflowUtils.completeItemUse(item, {consumeUsage: true}, {configureDialog: false});
+                await workflowUtils.syntheticActivityRoll(ravenousActivity, [workflow.targets.first()], {config: {consumeUsage: true, consume: {resources: true}}, options: {configureDialog: false}});
             }
         }
     }
-    await workflowUtils.bonusDamage(workflow. bonusFormula, {damageType: workflow.defaultDamageType});
+    await workflowUtils.bonusDamage(workflow, bonusFormula, {damageType: workflow.defaultDamageType});
 }
-async function late({workflow}){
+async function late({workflow}) {
     if (!workflow.chrisPremades?.strikeUsed) return;
-    let necroticDealt = workflow.ditem.damageDetail.filter(i => i.type === 'necrotic').reduce((acc, i) => acc + i.value, 0);
+    let necroticDealt = workflow.damageItem.damageDetail.filter(i => i.type === 'necrotic').reduce((acc, i) => acc + i.value, 0);
     if (!necroticDealt) return;
     await workflowUtils.applyDamage([workflow.token], necroticDealt, 'healing');
 }
@@ -89,16 +93,7 @@ export let wrapsOfDyamak0 = {
 };
 export let wrapsOfDyamak1 = {
     name: 'Wraps of Dyamak (Awakened)',
-    version: '1.1.0',
-    equipment: {
-        crimsonMist: {
-            name: 'Crimson Mist',
-            compendium: 'itemEquipment',
-            useJournal: true,
-            translate: 'CHRISPREMADES.Macros.WrapsOfDyamak.CrimsonMist',
-            favorite: true
-        }
-    }
+    version: '1.1.0'
 };
 export let wrapsOfDyamak2 = {
     name: 'Wraps of Dyamak (Exalted)',

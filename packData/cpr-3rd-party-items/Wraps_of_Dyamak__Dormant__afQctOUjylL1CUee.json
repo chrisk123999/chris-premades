@@ -56,7 +56,9 @@
       "baseItem": ""
     },
     "container": null,
-    "properties": [],
+    "properties": [
+      "mgc"
+    ],
     "attuned": false,
     "activities": {
       "0MqaRSiIJMcYBrGd": {
