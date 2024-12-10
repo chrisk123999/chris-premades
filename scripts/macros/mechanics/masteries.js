@@ -1,7 +1,7 @@
 import {custom} from '../../events/custom.js';
 import {combatUtils} from '../../lib/utilities/combatUtils.js';
-import {actorUtils, constants, dialogUtils, effectUtils, genericUtils, tokenUtils, workflowUtils} from '../../utils.js';
-async function perTurnCheck(actor, mastery) {
+import {actorUtils, compendiumUtils, constants, dialogUtils, effectUtils, genericUtils, itemUtils, tokenUtils, workflowUtils} from '../../utils.js';
+function perTurnCheck(actor, mastery) {
     if (!combatUtils.inCombat()) return true;
     let previousTurn = actor.flags['chris-premades']?.mastery?.[mastery]?.turn;
     return previousTurn !== combatUtils.currentTurn();
@@ -12,7 +12,7 @@ async function setTurnCheck(actor, mastery) {
     await genericUtils.setFlag(actor, 'chris-premades', 'mastery.' + mastery + '.turn', turn);
 }
 async function cleave({workflow}) {
-    if (!perTurnCheck(workflow.actor, mastery)) return;
+    if (!perTurnCheck(workflow.actor, 'cleave')) return;
     if (!workflow.hitTargets.size) return;
     if (workflow.item.flags['chris-premades']?.cleaveMastery) return;
     let target = workflow.hitTargets.first();
@@ -30,11 +30,11 @@ async function cleave({workflow}) {
         itemData.system.activities[workflow.activity.id].damage.parts.push({
             custom: {
                 enabled: true,
-                formula: "-@mod"
+                formula: '-@mod'
             },
             number: null,
             denomination: 0,
-            bonus: "",
+            bonus: '',
             types: [
                 workflow.defaultDamageType
             ],
@@ -66,7 +66,7 @@ async function sap({workflow}) {
     let effectData = {
         changes: [
             {
-                key: "flags.midi-qol.disadvantage.attack.all",
+                key: 'flags.midi-qol.disadvantage.attack.all',
                 mode: 0,
                 value: 1,
                 priority: 20
@@ -81,13 +81,13 @@ async function sap({workflow}) {
         flags: {
             dae: {
                 specialDuration: [
-                    "turnStartSource",
-                    "combatEnd"
+                    'turnStartSource',
+                    'combatEnd'
                 ],
                 stackable: 'noneNameOnly'
             }
         }
-    }
+    };
     await effectUtils.createEffect(workflow.targets.first().actor, effectData);
 }
 async function slow({workflow}) {
@@ -95,7 +95,7 @@ async function slow({workflow}) {
     let effectData = {
         changes: [
             {
-                key: "system.attributes.movement.all",
+                key: 'system.attributes.movement.all',
                 mode: 0,
                 value: -10,
                 priority: 20
@@ -110,28 +110,63 @@ async function slow({workflow}) {
         flags: {
             dae: {
                 specialDuration: [
-                    "turnStartSource",
-                    "combatEnd"
+                    'turnStartSource',
+                    'combatEnd'
                 ],
                 stackable: 'noneNameOnly'
             }
         }
-    }
+    };
     await effectUtils.createEffect(workflow.targets.first().actor, effectData);
 }
 async function topple({workflow}) {
     if (!workflow.hitTargets.size) return;
     let selection = await dialogUtils.confirm('CHRISPREMADES.Mastery.Topple.Name', 'CHRISPREMADES.Mastery.Topple.Context');
     if (!selection) return;
-    //TODO Synthetic item roll here.
+    let featureData = await compendiumUtils.getItemFromCompendium(constants.packs.miscellaneousItems, 'Topple', {object: true, getDescription: true, flatDC: itemUtils.getSaveDC(workflow.item)});
+    await workflowUtils.syntheticItemDataRoll(featureData, workflow.actor, [workflow.targets.first()]);
 }
 async function vex({workflow}) {
-    if (!workflow.hitTargets.size) return;
-    //TODO Finish this.
+    if (!workflow.hitTargets.size || (workflow.damageItem.oldHP === workflow.damageItem.newHP && workflow.damageItem.oldTempHP === workflow.damageItem.newTempHP)) return;
+    let effectData = {
+        changes: [
+            {
+                key: 'flags.midi-qol.advantage.attack.all',
+                mode: 2,
+                value: 'workflow.targets.first().id === "' + workflow.targets.first().id + '"',
+                priority: 20
+            }
+        ],
+        duration: {
+            seconds: 12
+        },
+        img: 'icons/magic/control/fear-fright-mask-yellow.webp',
+        name: genericUtils.translate('CHRISPREMADES.Mastery.Vex.Name'),
+        origin: workflow.item.uuid,
+        flags: {
+            dae: {
+                specialDuration: [
+                    'turnEndSource',
+                    'combatEnd'
+                ],
+                stackable: 'multi'
+            },
+            'chris-premades': {
+                mastery: {
+                    vex: {
+                        target: workflow.targets.first().id
+                    }
+                }
+            }
+        }
+    };
+    await effectUtils.createEffect(workflow.actor, effectData);
 }
 async function RollComplete(workflow) {
     if (!workflow.targets.size || !workflow.item || !workflow.actor || !workflow.token) return;
     if (!constants.weaponAttacks.includes(workflow.item.system.actionType)) return;
+    let effects = actorUtils.getEffects(workflow.actor).filter(i => i.flags['chris-premades']?.mastery?.vex?.target === workflow.targets.first().id);
+    if (effects.length) await genericUtils.deleteEmbeddedDocuments(workflow.actor, 'ActiveEffect', effects.map(i => i.id));
     let baseItem = workflow.item.system.type.baseItem;
     if (baseItem === '') return;
     if (!workflow.actor.system.traits.weaponProf.mastery.value.has(baseItem)) return;
@@ -139,38 +174,54 @@ async function RollComplete(workflow) {
     if (!mastery) return;
     let macro = custom.getMacro(mastery + 'Mastery');
     if (!macro) return;
-    await macro.masteryMacro({workflow});
+    try {
+        await macro.masteryMacro({workflow});
+    } catch (error) {
+        console.error(error);
+    }
+}
+async function combatEnd(combat) {
+    await Promise.all(combat.combatants.map(async combatant => {
+        if (!combatant.actor) return;
+        await genericUtils.update(combatant.actor, {'flags.chris-premades.-=mastery': null});
+    }));
 }
 export let masteries = {
-    RollComplete
+    RollComplete,
+    combatEnd
 };
 export let cleaveMastery = {
     name: 'Mastery: Cleave',
     version: '1.1.0',
     masteryMacro: cleave
-}
+};
 export let grazeMastery = {
     name: 'Mastery: Graze',
     version: '1.1.0',
     masteryMacro: graze
-}
+};
 export let pushMastery = {
     name: 'Mastery: Push',
     version: '1.1.0',
     masteryMacro: push
-}
+};
 export let sapMastery = {
     name: 'Mastery: Sap',
     version: '1.1.0',
     masteryMacro: sap
-}
+};
 export let slowMastery = {
     name: 'Mastery: Slow',
     version: '1.1.0',
     masteryMacro: slow
-}
+};
 export let toppleMastery = {
     name: 'Mastery: Topple',
     version: '1.1.0',
     masteryMacro: topple
-}
+};
+export let vexMastery = {
+    name: 'Mastery: Vex',
+    version: '1.1.0',
+    masteryMacro: vex
+};

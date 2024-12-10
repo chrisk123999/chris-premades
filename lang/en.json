@@ -1770,6 +1770,9 @@
             "Topple": {
                 "Context": "Attempt to knock the target prone?",
                 "Name": "Topple"
+            },
+            "Vex": {
+                "Name": "Vex"
             }
         },
         "Medkit": {
@@ -2118,6 +2121,10 @@
                 "2": "Enabled (Full Health Only)",
                 "Hint": "Enables cleave mechanic from the Dungeon Master's Guide",
                 "Name": "DMG Cleave"
+            },
+            "weaponMastery": {
+                "Hint": "Enable PHB 2024 weapon mastery automation.",
+                "Name": "Weapon Mastery Automation"
             },
             "colorizeAutomatedAnimations": {
                 "Hint": "When enabled, the Automated Animations titlebar icon will be recolored based on the configuration status.",

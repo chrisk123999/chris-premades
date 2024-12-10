@@ -301,7 +301,7 @@ async function rollFinished(workflow) {
     for (let trigger of sceneTriggers) await executeMacro(trigger, workflow);
     if (genericUtils.getCPRSetting('automatedAnimationSounds') && workflow.item) automatedAnimations.aaSound(workflow.item, 'done');
     if (genericUtils.getCPRSetting('cleave')) await cleave(workflow);
-    await masteries.RollComplete(workflow);
+    if (genericUtils.getCPRSetting('weaponMastery')) await masteries.RollComplete(workflow);
 }
 async function postAttackRoll(workflow) {
     let sceneTriggers = [];

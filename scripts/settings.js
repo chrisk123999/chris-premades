@@ -662,6 +662,12 @@ export function registerSettings() {
         onChange: (value) => customTypes.weaponAction(value)
     });
     addSetting({
+        key: 'weaponMastery',
+        type: Boolean,
+        default: false,
+        category: 'mechanics'
+    });
+    addSetting({
         key: 'bg3WeaponActionConfig',
         type: Object,
         default: {

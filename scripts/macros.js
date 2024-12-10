@@ -575,4 +575,4 @@ export {backbreaker, braceMelee, braceMeleeDamage, cleave, concussiveSmash, maim
 //Other
 export {maxDamage, maxDamageEffect, doubleDamage, doubleDamageEffect} from './macros/homebrew/critFumble.js';
 //Masteries
-export {cleaveMastery, grazeMastery, pushMastery, sapMastery, slowMastery} from './macros/mechanics/masteries.js';
+export {cleaveMastery, grazeMastery, pushMastery, sapMastery, slowMastery, toppleMastery, vexMastery} from './macros/mechanics/masteries.js';
