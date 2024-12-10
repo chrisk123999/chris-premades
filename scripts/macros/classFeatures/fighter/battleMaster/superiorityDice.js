@@ -35,7 +35,7 @@ export async function determineSuperiorityDie(actor) {
     return [itemToUse, superiorityDie];
 }
 export async function superiorityHelper(workflow) {
-    if (!constants.weaponAttacks.includes(workflow.item.system.actionType)) return;
+    if (!constants.weaponAttacks.includes(workflow.activity.actionType)) return;
     if (genericUtils.getIdentifier(workflow.item) === 'sweepingAttackAttack') return;
     let [itemToUse, superiorityDie] = await determineSuperiorityDie(workflow.actor);
     if (!itemToUse) return;

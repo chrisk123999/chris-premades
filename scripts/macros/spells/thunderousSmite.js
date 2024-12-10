@@ -1,4 +1,5 @@
 import {activityUtils, actorUtils, compendiumUtils, constants, effectUtils, errors, genericUtils, itemUtils, tokenUtils, workflowUtils} from '../../utils.js';
+import {proneOnFail} from '../generic/proneOnFail.js';
 async function use({workflow}) {
     let effectData = {
         name: workflow.item.name,
@@ -24,9 +25,6 @@ async function damage({trigger: {entity: effect}, workflow}) {
     if (featureWorkflow.failedSaves.size) {
         let targetToken = workflow.targets.first();
         await tokenUtils.pushToken(workflow.token, targetToken, 10);
-        if (!actorUtils.checkTrait(targetToken.actor, 'ci', 'prone') && !effectUtils.getEffectByStatusID(targetToken.actor, 'prone')) {
-            effectUtils.applyConditions(targetToken.actor, ['prone']);
-        }
     }
     await genericUtils.remove(effect);
 }
@@ -40,6 +38,12 @@ export let thunderousSmite = {
                 macro: use,
                 priority: 50,
                 activities: ['thunderousSmite']
+            },
+            {
+                pass: 'rollFinished',
+                macro: proneOnFail.midi.item[0].macro,
+                priority: 50,
+                activities: ['thunderousSmitePush']
             }
         ]
     },

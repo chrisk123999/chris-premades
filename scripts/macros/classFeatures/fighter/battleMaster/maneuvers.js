@@ -329,8 +329,7 @@ async function useTripAttack({workflow}) {
     if (actorUtils.getSize(targetActor) > 3) return;
     let feature = activityUtils.getActivityByIdentifier(workflow.item, 'tripAttackAttack', {strict: true});
     if (!feature) return;
-    let featureWorkflow = await workflowUtils.syntheticActivityRoll(feature, [targetToken]);
-    await proneOnFail.midi.item[0].macro({workflow: featureWorkflow});
+    await workflowUtils.syntheticActivityRoll(feature, [targetToken]);
 }
 export let maneuversAmbush = {
     name: 'Maneuvers: Ambush',
@@ -537,6 +536,12 @@ export let maneuversTripAttack = {
                 macro: useTripAttack,
                 priority: 50,
                 activities: ['maneuversTripAttack']
+            },
+            {
+                pass: 'rollFinished',
+                macro: proneOnFail.midi.item[0].macro,
+                priority: 50,
+                activities: ['tripAttackAttack']
             }
         ]
     }

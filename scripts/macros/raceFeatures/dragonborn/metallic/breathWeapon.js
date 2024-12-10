@@ -16,7 +16,7 @@ async function use({workflow}) {
         await workflowUtils.syntheticActivityRoll(repulsionFeature, Array.from(workflow.targets));
     }
 }
-async function repulsion({workflow}) {
+async function proneOnFailMacro({workflow}) {
     if (!workflow.failedSaves.size) return;
     await Promise.all(workflow.failedSaves.map(async i => {
         await tokenUtils.pushToken(workflow.token, i, 20);
@@ -36,7 +36,7 @@ export let metallicBreathWeapon = {
             },
             {
                 pass: 'rollFinished',
-                macro: repulsion,
+                macro: proneOnFailMacro,
                 priority: 50,
                 activities: ['metallicBreathWeaponRepulsion']
             }

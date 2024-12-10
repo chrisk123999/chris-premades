@@ -1,4 +1,5 @@
-import {effectUtils, constants, genericUtils, actorUtils} from '../../utils.js';
+import {effectUtils, constants, genericUtils, actorUtils, activityUtils} from '../../utils.js';
+import {custom} from '../../events/custom.js';
 let cleanUpList = [];
 let validKeys = [
     'macro.CE',
@@ -48,7 +49,6 @@ async function preambleComplete(workflow) {
             }
         } catch (error) { /* empty */ }
     }
-    let macros = item.flags['chris-premades']?.macros?.midi?.item ?? [];
     item.effects.forEach(effect => {
         effect.changes.forEach(element => {
             if (validKeys.includes(element.key)) itemConditions.add(element.value.toLowerCase());
@@ -58,8 +58,13 @@ async function preambleComplete(workflow) {
         itemConditions = itemConditions.union(effect.statuses ?? new Set());
     });
     let proneMacros = [
-        'proneOnFail'
+        'proneOnFailMacro'
     ];
+    let activityIdentifier = activityUtils.getIdentifier(workflow.activity);
+    let macros = (item.flags['chris-premades']?.macros?.midi?.item ?? [])
+        .flatMap(i => custom.getMacro(i)?.midi?.item)
+        .filter(i => i && (!i.activities?.length || i.activities.includes(activityIdentifier)))
+        .map(i => i.macro.name);
     if (macros.some(i => proneMacros.includes(i))) itemConditions.add('prone');
     if (!itemConditions.size) return;
     await Promise.all(workflow.targets.map(async token => {

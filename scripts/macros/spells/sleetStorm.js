@@ -1,4 +1,5 @@
 import {activityUtils, actorUtils, combatUtils, compendiumUtils, constants, effectUtils, errors, genericUtils, itemUtils, templateUtils, workflowUtils} from '../../utils.js';
+import {proneOnFail} from '../generic/proneOnFail.js';
 
 async function use({workflow}) {
     let useRealDarkness = itemUtils.getConfig(workflow.item, 'useRealDarkness');
@@ -40,8 +41,7 @@ async function enterOrStart({trigger: {entity: template, castData, token}}) {
     if (effectUtils.getEffectByStatusID(token.actor, 'prone')) return;
     let feature = activityUtils.getActivityByIdentifier(fromUuidSync(template.flags.dnd5e.item), 'sleetStormProne', {strict: true});
     if (!feature) return;
-    let saveWorkflow = await workflowUtils.syntheticActivityRoll(feature, [token]);
-    if (saveWorkflow.failedSaves.size) await effectUtils.applyConditions(token.actor, ['prone']);
+    await workflowUtils.syntheticActivityRoll(feature, [token]);
 }
 export let sleetStorm = {
     name: 'Sleet Storm',
@@ -53,6 +53,12 @@ export let sleetStorm = {
                 macro: use,
                 priority: 50,
                 activities: ['sleetStorm']
+            },
+            {
+                pass: 'rollFinished',
+                macro: proneOnFail.midi.item[0].macro,
+                priority: 50,
+                activities: ['sleetStormProne']
             }
         ]
     },

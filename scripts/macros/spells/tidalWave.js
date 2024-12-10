@@ -1,7 +1,7 @@
 import {workflowUtils} from '../../utils.js';
 import {proneOnFail} from '../generic/proneOnFail.js';
 
-async function use({workflow}) {
+async function proneOnFailMacro({workflow}) {
     await workflowUtils.handleInstantTemplate(workflow);
     await proneOnFail.midi.item[0].macro({workflow});
 }
@@ -12,7 +12,7 @@ export let tidalWave = {
         item: [
             {
                 pass: 'rollFinished',
-                macro: use,
+                macro: proneOnFailMacro,
                 priority: 50
             }
         ]
