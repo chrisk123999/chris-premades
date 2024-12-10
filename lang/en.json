@@ -176,6 +176,7 @@
             "ShowRoll": "Show Roll:",
             "Sound": "Sound:",
             "SpecificAnimation": "{option} Animation:",
+            "TurnEdge": "Occurs at:",
             "UseFormula": "Use Formula:"
         },
         "Cover": {
@@ -435,7 +436,7 @@
                 "Which": "Select proficiencies:"
             },
             "AuraDamage": {
-                "Name": "Aura Damage: End of Turn"
+                "Name": "Damaging Aura"
             },
             "AuraOfLife": {
                 "RemoveTempmax": "Temporarily remove existing hp max reduction while in aura:"
