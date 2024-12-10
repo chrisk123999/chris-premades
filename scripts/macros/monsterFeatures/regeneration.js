@@ -8,7 +8,7 @@ async function turnStart({trigger: {entity: item, token}}) {
 
 export let regeneration = {
     name: 'Regeneration',
-    version: '0.12.11',
+    version: '1.1.0',
     combat: [
         {
             pass: 'turnStart',

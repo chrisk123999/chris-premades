@@ -5,8 +5,8 @@ async function use({trigger, workflow}) {
     }));
 }
 export let shieldBash = {
-    name: '1.0.36',
-    version: '0.12.78',
+    name: 'Shield Bash',
+    version: '1.1.0',
     midi: {
         item: [
             {

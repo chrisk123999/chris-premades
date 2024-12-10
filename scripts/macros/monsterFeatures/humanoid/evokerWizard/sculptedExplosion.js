@@ -60,7 +60,7 @@ async function early({trigger, workflow}) {
 }
 export let sculptedExplosion = {
     name: 'Sculpted Explosion',
-    version: '0.12.74',
+    version: '1.1.0',
     midi: {
         item: [
             {

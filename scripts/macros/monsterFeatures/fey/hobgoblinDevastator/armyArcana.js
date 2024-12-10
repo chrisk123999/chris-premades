@@ -34,7 +34,7 @@ async function early({trigger, workflow}) {
 }
 export let armyArcana = {
     name: 'Army Arcana',
-    version: '0.12.78',
+    version: '1.1.0',
     midi: {
         actor: [
             {

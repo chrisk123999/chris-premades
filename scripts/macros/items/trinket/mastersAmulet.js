@@ -1,4 +1,4 @@
-import {actorUtils, genericUtils, itemUtils, tokenUtils, workflowUtils} from '../../../utils.js';
+import {activityUtils, actorUtils, genericUtils, itemUtils, tokenUtils, workflowUtils} from '../../../utils.js';
 async function use({trigger, workflow}) {
     if (workflow.targets.size != 1) return;
     let targetActor = workflow.targets.first().actor;
@@ -31,13 +31,13 @@ async function damageApplication({trigger, workflow, ditem}) {
     if (!bound) return;
     let reduction = Math.ceil(ditem.totalDamage / 2);
     workflowUtils.modifyDamageAppliedFlat(ditem, -reduction);
-    let featureData = genericUtils.duplicate(bound.toObject());
-    featureData.system.damage.parts[0][0] = reduction;
-    await workflowUtils.syntheticItemDataRoll(featureData, actor, [firstToken]);
+    let activity = bound.system.activities.contents[0];
+    await activityUtils.setDamage(activity, reduction);
+    await workflowUtils.syntheticActivityRoll(activity, [firstToken]);
 }
 export let mastersAmulet = {
     name: 'Master\'s Amulet',
-    version: '1.0.36',
+    version: '1.1.0',
     midi: {
         actor: [
             {

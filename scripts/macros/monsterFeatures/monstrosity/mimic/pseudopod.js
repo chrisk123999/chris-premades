@@ -11,7 +11,7 @@ async function use({trigger, workflow}) {
 }
 export let mimicPseudopod = {
     name: 'Pseudopod',
-    version: '1.0.29',
+    version: '1.1.0',
     midi: {
         item: [
             {

@@ -7,12 +7,8 @@ async function turnStart({trigger: {entity: item, token,}}) {
             await genericUtils.remove(effect);
         }
     } else if (token.actor.system.attributes.hp.value <= hpThreshold) {
-        let itemData = genericUtils.duplicate(item.toObject());
-        itemData.system.actionType = 'other';
-        itemData.system.formula = '';
-        genericUtils.setProperty(itemData, 'system.damage.parts', [[diceFormula ?? '1d6', 'midi-none']]);
-        let itemDataWorkflow = await workflowUtils.syntheticItemDataRoll(itemData, token.actor, []);
-        if (itemDataWorkflow.damageRoll.total >= diceThreshold) {
+        let itemWorkflow = await workflowUtils.completeItemUse(item);
+        if (itemWorkflow.utilityRolls[0].total >= diceThreshold) {
             let effectData = {
                 name: item.name,
                 img: item.img,
@@ -43,7 +39,7 @@ async function turnStart({trigger: {entity: item, token,}}) {
 export let berserk = {
     name: 'Berserk',
     translation: 'CHRISPREMADES.Macros.Berserk.Name',
-    version: '12.0',
+    version: '1.1.0',
     combat: [
         {
             pass: 'turnStart',

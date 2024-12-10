@@ -2,7 +2,7 @@ import {constants, effectUtils, itemUtils} from '../../../utils.js';
 
 async function early({trigger: {entity: item}, workflow}) {
     if (workflow.targets.size > 1) return;
-    if (workflow.item.hasAreaTarget) return;
+    if (workflow.activity.target.template.count) return;
     if (workflow.item.type !== 'spell') return;
     if (!itemUtils.getGenericFeatureConfig(item, 'spellTurning').advantage) return;
     let effectData = {
@@ -35,13 +35,13 @@ async function early({trigger: {entity: item}, workflow}) {
 }
 async function postSave({trigger: {entity: item}, workflow}) {
     if (workflow.targets.size > 1) return;
-    if (workflow.item.hasAreaTarget) return;
+    if (workflow.activity.target.template.count) return;
     if (workflow.failedSaves.size) return;
     if (workflow.item.type !== 'spell') return;
     let config = itemUtils.getGenericFeatureConfig(item, 'spellTurning');
     if (!config.targetCaster) return;
     if (workflow.spellLevel > config.spellLevel) return;
-    await item.use();
+    await item.displayCard();
     workflow.targets = new Set([workflow.token]);
     workflow.hitTargets = workflow.targets;
     workflow.failedSaves = workflow.targets;
@@ -49,7 +49,7 @@ async function postSave({trigger: {entity: item}, workflow}) {
 export let spellTurning = {
     name: 'Spell Turning',
     translation: 'CHRISPREMADES.Macros.SpellTurning.Name',
-    version: '0.12.78',
+    version: '1.1.0',
     midi: {
         actor: [
             {

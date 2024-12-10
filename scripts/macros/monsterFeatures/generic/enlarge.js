@@ -84,12 +84,12 @@ async function use({workflow}) {
     await effectUtils.createEffect(workflow.actor, effectData);
 }
 async function damage({workflow}) {
-    if (workflow.hitTargets.size !== 1 || !constants.weaponAttacks.includes(workflow.item.system.actionType)) return;
+    if (workflow.hitTargets.size !== 1 || !constants.weaponAttacks.includes(workflow.activity.actionType)) return;
     let isFin = workflow.item.system.properties.has('fin');
     if (isFin) {
         if (workflow.actor.system.abilities.str.value < workflow.actor.system.abilities.dex.value) return;
     }
-    let numWeaponDamageRolls = workflow.item.system.damage.parts.length;
+    let numWeaponDamageRolls = workflow.activity.damage.parts.length;
     let newWeaponRolls = [];
     for (let i = 0; i < numWeaponDamageRolls; i++) {
         let currRoll = workflow.damageRolls[i];
@@ -102,7 +102,7 @@ async function damage({workflow}) {
 export let enlarge = {
     name: 'Enlarge',
     translation: 'CHRISPREMADES.Macros.Enlarge.Name',
-    version: '0.12.83',
+    version: '1.1.0',
     midi: {
         item: [
             {

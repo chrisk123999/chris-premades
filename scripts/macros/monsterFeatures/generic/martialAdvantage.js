@@ -3,7 +3,7 @@ import {constants, dialogUtils, genericUtils, itemUtils, tokenUtils, workflowUti
 import {sneakAttack} from '../../../macros.js';
 async function damage({trigger, workflow}) {
     if (workflow.hitTargets.size != 1 || !workflow.item) return;
-    if (!constants.weaponAttacks.includes(workflow.item.system.actionType)) return;
+    if (!constants.weaponAttacks.includes(workflow.activity.actionType)) return;
     if (!combatUtils.perTurnCheck(trigger.entity, 'martialAdvantage', false, workflow.token.id)) return;
     let targetToken = workflow.targets.first();
     let nearbyTokens = tokenUtils.findNearby(targetToken, 5, 'enemy', {includeIncapacitated: false}).filter(i => i.id != workflow.token.id);
@@ -16,7 +16,6 @@ async function damage({trigger, workflow}) {
     if (combatUtils.inCombat()) await combatUtils.setTurnCheck(trigger.entity, 'martialAdvantage');
     let bonusDamageFormula = itemUtils.getGenericFeatureConfig(trigger.entity, 'martialAdvantage').formula + '[' + workflow.defaultDamageType + ']';
     await workflowUtils.bonusDamage(workflow, bonusDamageFormula, {damageType: workflow.defaultDamageType});
-    if (trigger.entity.system.damage.parts.length) await genericUtils.update(trigger.entity, {'system.damage.parts': []});
     await trigger.entity.displayCard();
     if (!itemUtils.getGenericFeatureConfig(trigger.entity, 'martialAdvantage').playAnimation) return;
     let animationType;
@@ -30,7 +29,7 @@ async function combatEnd({trigger}) {
 export let martialAdvantage = {
     name: 'Martial Advantage',
     translation: 'CHRISPREMADES.Macros.MartialAdvantage.Name',
-    version: '0.12.78',
+    version: '1.1.0',
     midi: {
         actor: [
             {

@@ -9,7 +9,7 @@ async function use({trigger, workflow}) {
 }
 export let minotaurCharge = {
     name: 'Charge',
-    version: '1.0.36',
+    version: '1.1.0',
     midi: {
         item: [
             {

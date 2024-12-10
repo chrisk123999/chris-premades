@@ -8,7 +8,7 @@ async function skillContext({trigger: {skillId, actor}}) {
 }
 async function early({trigger: {entity: item}, workflow}) {
     if (workflow.disadvantage) return;
-    if (!constants.attacks.includes(workflow.item.system.actionType)) return;
+    if (!constants.attacks.includes(workflow.activity.actionType)) return;
     if (tokenUtils.getLightLevel(workflow.token) !== 'bright') return;
     let config = itemUtils.getGenericFeatureConfig(item, 'sunlightSensitivity');
     if (!config.auto) {
@@ -21,7 +21,7 @@ async function early({trigger: {entity: item}, workflow}) {
 export let sunlightSensitivity = {
     name: 'Sunlight Sensitivity',
     translation: 'CHRISPREMADES.Macros.SunlightSensitivity.Name',
-    version: '0.12.78',
+    version: '1.1.0',
     midi: {
         actor: [
             {

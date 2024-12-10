@@ -17,7 +17,11 @@ async function turnStart({trigger: {entity: item, token}}) {
     let reducedEffect = effectUtils.getEffectByIdentifier(actor, 'regenerationReduced');
     let featureData = genericUtils.duplicate(item.toObject());
     if (reducedEffect) {
-        featureData.system.damage.parts[0][0] = '(' + featureData.system.damage.parts[0][0] + ') / 2';
+        let healingActivity = item.system.activities.getByType('heal')[0];
+        featureData.system.activities[healingActivity.id].healing.custom = {
+            enabled: true,
+            formula: '(' + healingActivity.healing.formula + ') / 2'
+        };
         await genericUtils.remove(reducedEffect);
     }
     let deadEffect = effectUtils.getEffectByIdentifier(actor, 'falseDead');
@@ -137,7 +141,7 @@ async function onHit({trigger: {entity: item, token}, workflow}) {
 export let genericRegeneration = {
     name: 'Regeneration',
     translation: 'CHRISPREMADES.Macros.Regeneration.Name',
-    version: '0.12.82',
+    version: '1.1.0',
     midi: {
         actor: [
             {

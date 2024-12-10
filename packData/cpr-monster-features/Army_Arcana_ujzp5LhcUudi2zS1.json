@@ -1,0 +1,105 @@
+{
+  "name": "Army Arcana",
+  "type": "feat",
+  "system": {
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "source": {
+      "book": "Mordenkainen Presents: Monsters of the Multiverse",
+      "page": "153",
+      "custom": "",
+      "license": "",
+      "revision": 1,
+      "rules": "2024"
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "recovery": []
+    },
+    "type": {
+      "value": "monster",
+      "subtype": ""
+    },
+    "prerequisites": {
+      "level": null
+    },
+    "properties": [],
+    "requirements": "",
+    "activities": {},
+    "identifier": "army-arcana",
+    "enchant": {}
+  },
+  "effects": [],
+  "flags": {
+    "monsterMunch": {
+      "titleHTML": "<em><strong>Army Arcana.</strong></em>",
+      "fullName": "Army Arcana.",
+      "actionCopy": false,
+      "type": "special",
+      "actionInfo": {
+        "damage": {
+          "parts": [],
+          "versatile": ""
+        },
+        "baseAbility": null,
+        "toHit": 0,
+        "proficient": false,
+        "extraAttackBonus": 0
+      }
+    },
+    "midi-qol": {
+      "removeAttackDamageButtons": "default",
+      "rollAttackPerTarget": "default",
+      "itemCondition": "",
+      "effectCondition": "",
+      "AoETargetType": "any",
+      "AoETargetTypeIncludeSelf": true,
+      "autoTarget": "default",
+      "reactionCondition": "",
+      "otherCondition": ""
+    },
+    "midiProperties": {
+      "confirmTargets": "default",
+      "autoFailFriendly": false,
+      "autoSaveFriendly": false,
+      "critOther": false,
+      "offHandWeapon": false,
+      "magicdam": false,
+      "magiceffect": false,
+      "noConcentrationCheck": false,
+      "toggleEffect": false,
+      "ignoreTotalCover": false,
+      "idr": false,
+      "idi": false,
+      "idv": false,
+      "ida": false
+    },
+    "chris-premades": {
+      "info": {
+        "identifier": "armyArcana",
+        "source": "chris-premades",
+        "version": "1.1.0"
+      },
+      "config": {},
+      "macros": {
+        "midi": {
+          "actor": [
+            "armyArcana"
+          ]
+        }
+      }
+    },
+    "dnd5e": {
+      "riders": {
+        "activity": []
+      }
+    }
+  },
+  "img": "icons/magic/control/buff-flight-wings-runes-purple.webp",
+  "folder": "nrOTJnv6hijmMQ5M",
+  "_id": "ujzp5LhcUudi2zS1",
+  "_key": "!items!ujzp5LhcUudi2zS1"
+}

@@ -10,7 +10,7 @@ async function use({trigger, workflow}) {
 }
 export let mimicAdhesive = {
     name: 'Adhesive (Object Form Only)',
-    version: '1.0.29',
+    version: '1.1.0',
     midi: {
         item: [
             {

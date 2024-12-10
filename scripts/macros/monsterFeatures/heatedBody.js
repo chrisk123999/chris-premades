@@ -12,7 +12,7 @@ async function hit({trigger: {entity: feature}, workflow}) {
 }
 export let heatedBody = {
     name: 'Heated Body',
-    version: '0.12.11',
+    version: '1.1.0',
     midi: {
         actor: [
             {

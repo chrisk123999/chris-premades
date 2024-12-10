@@ -1,6 +1,6 @@
 import {actorUtils, constants, dialogUtils, effectUtils, genericUtils, itemUtils, socketUtils, tokenUtils, workflowUtils} from '../../../../utils.js';
 async function attacked({trigger, workflow}) {
-    if (!constants.attacks.includes(workflow.item.system.actionType)) return;
+    if (!constants.attacks.includes(workflow.activity.actionType)) return;
     let nearbyToken = tokenUtils.findNearby(trigger.token, 5, 'ally', {includeIncapacitated: true}).filter(i => itemUtils.getItemByIdentifier(i.actor, 'mastersAmulet') && !actorUtils.hasUsedReaction(i.actor)).find(j => itemUtils.getItemByIdentifier(j.actor, 'mastersAmulet').flags['chris-premades']?.mastersAmulet.actorUuid === trigger.token.actor.uuid);
     if (!nearbyToken) return;
     let attackTotal = workflow.attackTotal;
@@ -41,7 +41,7 @@ async function remove({trigger, workflow}) {
 }
 export let shieldGuardianShield = {
     name: 'Shield',
-    version: '1.0.36',
+    version: '1.1.0',
     midi: {
         actor: [
             {

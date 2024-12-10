@@ -8,19 +8,41 @@ async function apply({trigger, workflow, ditem}) {
     if (bypassDamageTypes.includes(workflow.defaultDamageType)) return;
     let targetActor = trigger.token.actor;
     let damageDealt = ditem.totalDamage;
-    let featureData = genericUtils.duplicate(originItem.toObject());
-    featureData.system.actionType = 'save';
-    featureData.system.save = {
-        ability: 'con',
-        dc: damageDealt + 5,
-        scaling: 'flat'
-    };
-    featureData.system.target = {
-        type: 'creature'
-    };
-    featureData.system.save.dc = damageDealt + 5;
-    delete featureData._id;
-    let featureWorkflow = await workflowUtils.syntheticItemDataRoll(featureData, targetActor, [trigger.token]);
+    let saveActivity = originItem.system.activities.getByType('save')[0];
+    let featureWorkflow;
+    if (saveActivity) {
+        saveActivity.save.dc = {
+            calculation: '',
+            formula: '5 + ' + damageDealt,
+            value: 5 + damageDealt
+        };
+        featureWorkflow = await workflowUtils.syntheticActivityRoll(saveActivity, [trigger.token]);
+    } else {
+        let featureData = genericUtils.duplicate(originItem.toObject());
+        let activityData = {
+            undeadFortitude0: {
+                activation: {
+                    type: 'special'
+                },
+                save: {
+                    ability: ['con'],
+                    dc: {
+                        calculation: '',
+                        formula: '5 + ' + damageDealt,
+                        value: 5 + damageDealt
+                    },
+                    target: {
+                        affects: {
+                            type: 'self'
+                        }
+                    }
+                },
+                type: 'save'
+            }
+        };
+        featureData.system.activities = activityData;
+        featureWorkflow = await workflowUtils.syntheticItemDataRoll(featureData, targetActor, [trigger.token]);
+    }
     if (featureWorkflow.failedSaves.size === 1) {
         return;
     }
@@ -29,7 +51,7 @@ async function apply({trigger, workflow, ditem}) {
 export let undeadFortitude = {
     name: 'Undead Fortitude',
     translation: 'CHRISPREMADES.Macros.UndeadFortitude.Name',
-    version: '0.12.0',
+    version: '1.1.0',
     midi: {
         actor: [
             {

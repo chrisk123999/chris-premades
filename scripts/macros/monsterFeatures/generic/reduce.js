@@ -101,12 +101,12 @@ async function use({workflow}) {
     await effectUtils.createEffect(workflow.actor, effectData);
 }
 async function damage({workflow}) {
-    if (workflow.hitTargets.size !== 1 || !constants.weaponAttacks.includes(workflow.item.system.actionType)) return;
+    if (workflow.hitTargets.size !== 1 || !constants.weaponAttacks.includes(workflow.activity.actionType)) return;
     let isFin = workflow.item.system.properties.has('fin');
     if (isFin) {
         if (workflow.actor.system.abilities.str.value < workflow.actor.system.abilities.dex.value) return;
     }
-    let numWeaponDamageRolls = workflow.item.system.damage.parts.length;
+    let numWeaponDamageRolls = workflow.activity.damage.parts.length;
     let newWeaponDamageRoll = await new CONFIG.Dice.DamageRoll('1', {}, workflow.damageRolls[0].options).evaluate();
     let damageRolls = [newWeaponDamageRoll].concat(workflow.damageRolls.slice(numWeaponDamageRolls));
     await workflow.setDamageRolls(damageRolls);
@@ -114,7 +114,7 @@ async function damage({workflow}) {
 export let reduce = {
     name: 'Reduce',
     translation: 'CHRISPREMADES.Macros.Reduce.Name',
-    version: '0.12.83',
+    version: '1.1.0',
     midi: {
         item: [
             {
