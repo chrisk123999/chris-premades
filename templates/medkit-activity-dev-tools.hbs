@@ -1,0 +1,14 @@
+<div class="tab cpr-medkit-tab active" data-tab="devTools" data-group="main">
+    <fieldset class="cpr-fieldset">
+        <div class="form-group cpr-column">
+            <div class="cpr-row-center">
+                <label for="identifier">Identifier:</label>
+                <input type="text" id="identifier" name="identifier" value="{{config.identifier}}" placeholder="">
+            </div>
+            <div class="cpr-row-center">
+                <label for="cprHide">Hide:</label>
+                <input type="checkbox" id="cprHide" name="cprHide" {{#if config.cprHide}}checked{{/if}}>
+            </div>
+        </div>
+    </div>
+</div>

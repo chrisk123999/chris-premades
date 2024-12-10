@@ -177,9 +177,12 @@ async function itemUpdate(item) {
 }
 async function setHiddenActivities(item, activityIdentifiers, replace=true) {
     let existingHidden = replace ? [] : item.flags?.['chris-premades']?.hiddenActivities ?? [];
-    existingHidden = existingHidden.concat(activityIdentifiers);
-    await genericUtils.setFlag(item, 'chris-premades', 'hiddenActivities', existingHidden);
+    existingHidden = new Set(existingHidden.concat(activityIdentifiers));
+    await genericUtils.setFlag(item, 'chris-premades', 'hiddenActivities', Array.from(existingHidden));
     await genericUtils.update(item);
+}
+function getHiddenActivities(item) {
+    return genericUtils.getProperty(item, 'flags.chris-premades.hiddenActivities');
 }
 async function getActivity(item, type) {
     return item.system.activities.getByType(type)?.[0];
@@ -208,5 +211,6 @@ export let itemUtils = {
     isWeaponProficient,
     itemUpdate,
     setHiddenActivities,
+    getHiddenActivities,
     getActivity
 };

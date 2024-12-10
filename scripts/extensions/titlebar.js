@@ -1,7 +1,8 @@
-import {actorUtils, compendiumUtils, dialogUtils, genericUtils, itemUtils} from '../utils.js';
+import {activityUtils, actorUtils, compendiumUtils, dialogUtils, genericUtils, itemUtils} from '../utils.js';
 import {ItemMedkit} from '../applications/medkit-item.js';
 import {EffectMedkit} from '../applications/medkit-effect.js';
 import {ActorMedkit} from '../applications/medkit-actor.js';
+import {ActivityMedkit} from '../applications/medkit-activity.js';
 import {custom} from '../events/custom.js';
 export function createHeaderButton(config, buttons) {
     // eslint-disable-next-line no-undef
@@ -38,6 +39,9 @@ async function actorMedkit(actor) {
 }
 async function effectMedkit(effect) {
     await EffectMedkit.effect(effect);
+}
+async function activityMedkit(activity) {
+    await ActivityMedkit.activity(activity);
 }
 export async function renderItemSheet(app, [elem], options) {
     let headerButton = elem.closest('.window-app').querySelector('a.header-button.chris-premades-item');
@@ -79,6 +83,27 @@ export async function renderItemSheet(app, [elem], options) {
             headerButton.style.color = 'dodgerblue';
         }
     }
+}
+export async function renderActivitySheet(app, [elem]) {
+    if (!game.settings.get('chris-premades', 'devTools')) return;
+    let activity = app.activity;
+    let existingButton = elem.closest('.window-header').querySelector('button.chris-premades-item');
+    if (existingButton) {
+        if (activityUtils.getIdentifier(activity)) {
+            existingButton.setAttribute('style', 'color: dodgerblue');
+        } else {
+            existingButton.setAttribute('style', '');
+        }
+        return;
+    }
+    let closeButton = elem.closest('.window-header').querySelector('button[data-action="close"]');
+    let medkitButton = document.createElement('button');
+    medkitButton.setAttribute('class', 'header-control fa-solid fa-kit-medical chris-premades-item');
+    medkitButton.onclick = () => {
+        activityMedkit(activity);
+    };
+    if (activityUtils.getIdentifier(activity)) medkitButton.setAttribute('style', 'color: dodgerblue');
+    closeButton.parentNode.insertBefore(medkitButton, closeButton);
 }
 export async function renderEffectConfig(app, [elem], options) {
     let headerButton = elem.closest('.window-app').querySelector('a.header-button.chris-premades-item');

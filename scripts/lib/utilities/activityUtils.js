@@ -17,10 +17,20 @@ async function setIdentifier(activity, identifier) {
     let item = activity.item;
     if (!item) return;
     let identifiers = Object.entries(item.flags?.['chris-premades']?.activityIdentifiers ?? {});
-    let existingIdentifier = identifiers.findIndex(i => i[1] === activity.id);
-    if (existingIdentifier) identifiers.splice(existingIdentifier, 1);
+    let existingIdentifierInd = identifiers.findIndex(i => i[1] === activity.id);
+    let oldIdentifier;
+    if (existingIdentifierInd > -1) {
+        oldIdentifier = identifiers[existingIdentifierInd][0];
+        identifiers = identifiers.toSpliced(existingIdentifierInd, 1);
+    }
     identifiers.push([identifier, activity.id]);
-    await genericUtils.setFlag(item, 'chris-premades', 'activityIdentifiers', Object.fromEntries(identifiers));
+    let updates = {
+        'flags.chris-premades.activityIdentifiers': Object.fromEntries(identifiers)
+    };
+    if (oldIdentifier) {
+        updates['flags.chris-premades.activityIdentifiers.-=' + oldIdentifier] = null;
+    }
+    await genericUtils.update(item, updates);
 }
 
 // Currently this exists only for use immediately before using an activity

@@ -7,7 +7,7 @@ import {midiEvents} from './events/midi.js';
 import {movementEvents} from './events/movement.js';
 import {templateEvents} from './events/template.js';
 import {dae} from './integrations/dae.js';
-import {createHeaderButton, renderItemSheet, renderEffectConfig, renderCompendium} from './extensions/titlebar.js';
+import {createHeaderButton, renderItemSheet, renderEffectConfig, renderCompendium, renderActivitySheet} from './extensions/titlebar.js';
 import {genericUtils} from './utils.js';
 import {chat} from './extensions/chat.js';
 import {sidebar} from './extensions/sidebar.js';
@@ -45,6 +45,7 @@ export function registerHooks() {
     Hooks.on('getActiveEffectConfigHeaderButtons', createHeaderButton);
     Hooks.on('renderCompendium', renderCompendium);
     Hooks.on('renderItemSheet', renderItemSheet);
+    Hooks.on('renderActivitySheet', renderActivitySheet);
     Hooks.on('renderDAEActiveEffectConfig', renderEffectConfig);
     Hooks.on('preCreateActiveEffect', effects.noAnimation);
     Hooks.on('preDeleteActiveEffect', effects.noAnimation);
