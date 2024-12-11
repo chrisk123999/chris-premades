@@ -184,7 +184,7 @@ async function setHiddenActivities(item, activityIdentifiers, replace=true) {
 function getHiddenActivities(item) {
     return genericUtils.getProperty(item, 'flags.chris-premades.hiddenActivities');
 }
-async function getActivity(item, type) {
+function getActivity(item, type) {
     return item.system.activities.getByType(type)?.[0];
 }
 export let itemUtils = {

@@ -123,7 +123,7 @@ async function topple({workflow}) {
     if (!workflow.hitTargets.size) return;
     let selection = await dialogUtils.confirm('CHRISPREMADES.Mastery.Topple.Name', 'CHRISPREMADES.Mastery.Topple.Context');
     if (!selection) return;
-    let featureData = await compendiumUtils.getItemFromCompendium(constants.packs.miscellaneousItems, 'Topple', {object: true, getDescription: true, flatDC: itemUtils.getSaveDC(workflow.item)});
+    let featureData = await compendiumUtils.getItemFromCompendium(constants.packs.miscellaneousItems, 'Mastery: Topple', {object: true, getDescription: true, flatDC: itemUtils.getSaveDC(workflow.item)});
     await workflowUtils.syntheticItemDataRoll(featureData, workflow.actor, [workflow.targets.first()]);
 }
 async function vex({workflow}) {
@@ -163,8 +163,8 @@ async function vex({workflow}) {
     await effectUtils.createEffect(workflow.actor, effectData);
 }
 async function RollComplete(workflow) {
-    if (!workflow.targets.size || !workflow.item || !workflow.actor || !workflow.token) return;
-    if (!constants.weaponAttacks.includes(workflow.item.system.actionType)) return;
+    if (!workflow.targets.size || !workflow.item || !workflow.activity || !workflow.actor || !workflow.token) return;
+    if (!constants.weaponAttacks.includes(workflow.activity.actionType)) return;
     let effects = actorUtils.getEffects(workflow.actor).filter(i => i.flags['chris-premades']?.mastery?.vex?.target === workflow.targets.first().id);
     if (effects.length) await genericUtils.deleteEmbeddedDocuments(workflow.actor, 'ActiveEffect', effects.map(i => i.id));
     let baseItem = workflow.item.system.type.baseItem;

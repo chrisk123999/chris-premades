@@ -58,7 +58,9 @@ async function preambleComplete(workflow) {
         itemConditions = itemConditions.union(effect.statuses ?? new Set());
     });
     let proneMacros = [
-        'proneOnFailMacro'
+        'proneOnFailMacro',
+        'backbreakerUse',
+        'toppleUse'
     ];
     let activityIdentifier = activityUtils.getIdentifier(workflow.activity);
     let macros = (item.flags['chris-premades']?.macros?.midi?.item ?? [])

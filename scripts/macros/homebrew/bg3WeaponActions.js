@@ -10,7 +10,7 @@ async function backbreakerUse({trigger, workflow}) {
 }
 export let backbreaker = {
     name: 'Backbreaker',
-    version: '0.12.84',
+    version: '1.1.0',
     midi: {
         item: [
             {
@@ -42,24 +42,22 @@ async function braceMeleeUse({trigger, workflow}) {
     await effectUtils.createEffect(workflow.actor, effectData, {identifier: 'braceMeleeDamage'});
 }
 async function braceMeleeDamageUse({trigger, workflow}) {
-    if (!workflow.item) return;
-    if (!workflow.item.system.damage) return;
-    if (!constants.meleeAttacks.includes(workflow.item.system.actionType)) return;
-    let parts = workflow.item.system.damage.parts.map(i => {
-        return [
-            'max(' + i[0] + ', ' + i[0] + ')',
-            i[1]
-        ];
-    });
-    let versatile = workflow.item.system.damage.versatile == '' ? '' : 'max(' + workflow.item.system.damage.versatile + ', ' + workflow.item.system.damage.versatile + ')';
-    workflow.item = workflow.item.clone({'system.damage.parts': parts, 'system.damage.versatile': versatile}, {keepId: true});
-    workflow.item.prepareData();
-    workflow.item.prepareFinalAttributes();
-    workflow.item.applyActiveEffects();
+    if (!workflow.activity) return;
+    if (!workflow.activity.damage) return;
+    if (!constants.meleeAttacks.includes(workflow.activity.actionType)) return;
+    let newActivity = genericUtils.deepClone(workflow.activity);
+    for (let i = 0; i < newActivity.damage.parts.length; i++) {
+        let formula = newActivity.damage.parts[i].formula;
+        newActivity.damage.parts[i].custom = {
+            enabled: true,
+            formula: 'max((' + formula + '), (' + formula + '))'
+        };
+    }
+    workflow.activity = newActivity;
 }
 export let braceMelee = {
     name: 'Brace (Melee)',
-    version: '0.12.84',
+    version: '1.1.0',
     midi: {
         item: [
             {
@@ -88,7 +86,7 @@ async function cleaveUse({trigger, workflow}) {
 }
 export let cleave = {
     name: 'Cleave',
-    version: '0.12.84',
+    version: '1.1.0',
     midi: {
         item: [
             {
@@ -144,7 +142,7 @@ async function concussiveSmashUsed({trigger, workflow}) {
 }
 export let concussiveSmash = {
     name: 'Concussive Smash',
-    version: '0.12.84',
+    version: '1.1.0',
     midi: {
         item: [
             {
@@ -212,7 +210,7 @@ async function maimingStrikeUse({trigger, workflow}) {
 }
 export let maimingStrike = {
     name: 'Maiming Strike',
-    version: '0.12.84',
+    version: '1.1.0',
     midi: {
         item: [
             {
@@ -228,7 +226,7 @@ async function disarmingStrikeUse({trigger, workflow}) {
 }
 export let disarmingStrike = {
     name: 'Disarming Strike',
-    version: '0.12.84',
+    version: '1.1.0',
     midi: {
         item: [
             {
@@ -281,7 +279,7 @@ async function flourishUse({trigger, workflow}) {
 }
 export let flourish = {
     name: 'Flourish',
-    version: '0.12.84',
+    version: '1.1.0',
     midi: {
         item: [
             {
@@ -322,7 +320,7 @@ async function heartstopperUse({trigger, workflow}) {
 }
 export let heartstopper = {
     name: 'Heartstopper',
-    version: '0.12.84',
+    version: '1.1.0',
     midi: {
         item: [
             {
@@ -376,7 +374,7 @@ async function lacerateUse({trigger, workflow}) {
 }
 export let lacerate = {
     name: 'Lacerate',
-    version: '0.12.84',
+    version: '1.1.0',
     midi: {
         item: [
             {
@@ -416,13 +414,13 @@ async function piercingStrikeUse({trigger, workflow}) {
     }));
 }
 async function piercingStrikeDamage({trigger, workflow}) {
-    if (!workflow.item) return;
-    if (!constants.attacks.includes(workflow.item.system.actionType)) return;
+    if (!workflow.activity) return;
+    if (!constants.attacks.includes(workflow.activity.actionType)) return;
     await workflowUtils.bonusDamage(workflow, '2', {ignoreCrit: true, damageType: 'piercing'});
 }
 export let piercingStrike = {
     name: 'Piercing Strike',
-    version: '0.12.84',
+    version: '1.1.0',
     midi: {
         item: [
             {
@@ -491,7 +489,7 @@ async function pommelStrikeUse({trigger, workflow}) {
 }
 export let pommelStrike = {
     name: 'Pommel Strike',
-    version: '0.12.84',
+    version: '1.1.0',
     midi: {
         item: [
             {
@@ -524,7 +522,7 @@ async function prepareUse({trigger, workflow}) {
 }
 export let prepare = {
     name: 'Prepare',
-    version: '0.12.84',
+    version: '1.1.0',
     midi: {
         item: [
             {
@@ -577,7 +575,7 @@ async function rushUse({trigger, workflow}) {
 }
 export let rush = {
     name: 'Rush',
-    version: '0.12.84',
+    version: '1.1.0',
     midi: {
         item: [
             {
@@ -593,7 +591,7 @@ async function tenacityUse({trigger, workflow}) {
 }
 export let tenacity = {
     name: 'Tenacity',
-    version: '0.12.84',
+    version: '1.1.0',
     midi: {
         item: [
             {
@@ -610,7 +608,7 @@ async function toppleUse({trigger, workflow}) {
 }
 export let topple = {
     name: 'Topple',
-    version: '0.12.84',
+    version: '1.1.0',
     midi: {
         item: [
             {
@@ -655,7 +653,7 @@ async function weakeningStrikeUse({trigger, workflow}) {
 }
 export let weakeningStrike = {
     name: 'Weakening Strike',
-    version: '0.12.84',
+    version: '1.1.0',
     midi: {
         item: [
             {
@@ -687,24 +685,22 @@ async function braceRangedUse({trigger, workflow}) {
     await effectUtils.createEffect(workflow.actor, effectData, {identifier: 'braceRangedDamage'});
 }
 async function braceRangedDamageUse({trigger, workflow}) {
-    if (!workflow.item) return;
-    if (!workflow.item.system.damage) return;
-    if (!constants.rangedAttacks.includes(workflow.item.system.actionType)) return;
-    let parts = workflow.item.system.damage.parts.map(i => {
-        return [
-            'max(' + i[0] + ', ' + i[0] + ')',
-            i[1]
-        ];
-    });
-    let versatile = workflow.item.system.damage.versatile == '' ? '' : 'max(' + workflow.item.system.damage.versatile + ', ' + workflow.item.system.damage.versatile + ')';
-    workflow.item = workflow.item.clone({'system.damage.parts': parts, 'system.damage.versatile': versatile}, {keepId: true});
-    workflow.item.prepareData();
-    workflow.item.prepareFinalAttributes();
-    workflow.item.applyActiveEffects();
+    if (!workflow.activity) return;
+    if (!workflow.activity.damage) return;
+    if (!constants.rangedAttacks.includes(workflow.activity.actionType)) return;
+    let newActivity = genericUtils.deepClone(workflow.activity);
+    for (let i = 0; i < newActivity.damage.parts.length; i++) {
+        let formula = newActivity.damage.parts[i].formula;
+        newActivity.damage.parts[i].custom = {
+            enabled: true,
+            formula: 'max((' + formula + '), (' + formula + '))'
+        };
+    }
+    workflow.activity = newActivity;
 }
 export let braceRanged = {
     name: 'Brace (Ranged)',
-    version: '0.12.84',
+    version: '1.1.0',
     midi: {
         item: [
             {
@@ -758,7 +754,7 @@ async function hamstringShotUse({trigger, workflow}) {
 }
 export let hamstringShot = {
     name: 'Hamstring Shot',
-    version: '0.12.84',
+    version: '1.1.0',
     midi: {
         item: [
             {
@@ -774,7 +770,7 @@ async function mobileShotUse({trigger, workflow}) {
 }
 export let mobileShot = {
     name: 'Hamstring Shot',
-    version: '0.12.84',
+    version: '1.1.0',
     midi: {
         item: [
             {
@@ -815,7 +811,7 @@ async function piercingShotUse({trigger, workflow}) {
 }
 export let piercingShot = {
     name: 'Piercing Shot',
-    version: '0.12.84',
+    version: '1.1.0',
     midi: {
         item: [
             {
@@ -879,6 +875,9 @@ async function changeItem(item, equipped) {
             if (!feature) return;
             let featureData = await compendiumUtils.getItemFromCompendium(constants.packs.miscellaneousItems, feature.name, {object: true, translate: 'CHRISPREMADES.BG3.' + key.capitalize(), getDescription: true});
             if (!featureData) return;
+            let weaponAttackActivity = itemUtils.getActivity(weapon, 'attack');
+            if (!weaponAttackActivity) return;
+            let attackActivity = featureData.system.activities[Object.entries(featureData.system.activities).find(i => i[1].type === 'attack')?.[0]];
             switch (key) {
                 case 'backbreaker':
                 case 'maimingStrike':
@@ -886,19 +885,19 @@ async function changeItem(item, equipped) {
                 case 'heartstopper':
                 case 'rushAttack':
                 case 'weakeningStrike':
-                    featureData.system.damage.parts = [
-                        [
-                            featureData.system.damage.parts[0][0].replace('bludgeoning', weapon.system.damage.parts[0][1]),
-                            weapon.system.damage.parts[0][1]
-                        ]
-                    ];
+                    attackActivity.damage.parts[0].custom.formula = attackActivity.damage.parts[0].custom.formula.replace('bludgeoning', weapon.system.damage.base.types.first());
+                    attackActivity.damage.parts[0].types = Array.from(weapon.system.damage.base.types);
                     break;
                 case 'cleave':
-                    featureData.system.damage.parts = genericUtils.duplicate(weapon.toObject()).system.damage.parts.map(m => {
-                        return [
-                            '(' + m[0] + ' / 2)',
-                            m[1]
-                        ];
+                    attackActivity.damage.parts = weaponAttackActivity.damage.parts.map(i => {
+                        let formula = i.formula;
+                        return {
+                            ...i.toObject(),
+                            custom: {
+                                enabled: true,
+                                formula: '(' + formula + ') / 2'
+                            }
+                        };
                     });
                     break;
                 case 'concussiveSmash':
@@ -907,7 +906,7 @@ async function changeItem(item, equipped) {
                 case 'hamstringShot':
                 case 'mobileShot':
                 case 'piercingShot':
-                    featureData.system.damage.parts = genericUtils.duplicate(weapon.toObject()).system.damage.parts;
+                    attackActivity.damage.parts = weaponAttackActivity.damage.parts.map(i => i.toObject());
                     break;
             }
             if (weapon.system.properties.has('mgc')) {
@@ -915,22 +914,21 @@ async function changeItem(item, equipped) {
                 if (weapon.system.magicalBonus) featureData.system.magicalBonus = weapon.system.magicalBonus;
             }
             let rangedKeys = [
-                'braceRanged',
                 'hamstringShot',
                 'mobileShot',
                 'piercingShot'
             ];
             if (rangedKeys.includes(key)) {
-                featureData.system.range = weapon.system.range;
+                attackActivity.range = weaponAttackActivity.range;
             } else {
-                featureData.system.range.value = weapon.system.properties.has('thr') ? 5 : weapon.system.range.value;
+                attackActivity.range.value = weapon.system.properties.has('thr') ? 5 : weaponAttackActivity.range.value;
             }
-            featureData.system.ability = weapon.system.ability === '' ? 'str' : weapon.system.ability;
-            if (weapon.system.properties.has('fin') && weapon.system.ability === '' && item.actor.system.abilities.dex.mod >= item.actor.system.abilities.str.mod) {
-                featureData.system.ability = 'dex';
+            if (attackActivity) attackActivity.attack.ability = weaponAttackActivity.ability;
+            let saveActivity =  featureData.system.activities[Object.entries(featureData.system.activities).find(i => i[1].type === 'save')?.[0]];
+            if (saveActivity) {
+                saveActivity.save.dc.calculation = attackActivity.attack.ability;
             }
-            featureData.system.save.scaling = featureData.system.ability;
-            featureData.system.uses.value = item.actor.flags['chris-premades']?.bg3WeaponActions?.[key] ?? maxUses;
+            featureData.system.uses.spent = (item.actor.flags['chris-premades']?.bg3WeaponActions?.[key] ?? maxUses) - maxUses;
             featureData.system.uses.max = maxUses;
             delete featureData._id;
             addItems.push(featureData);
