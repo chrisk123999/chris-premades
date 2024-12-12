@@ -7,17 +7,16 @@ let packs = [
     'cpr-class-feature-items',
     'cpr-class-features',
     'cpr-feats',
-    //'cpr-homebrew-feature-items',
     'cpr-item-features',
     'cpr-items',
+    'cpr-miscellaneous',
     'cpr-miscellaneous-items',
     'cpr-monster-features',
     'cpr-race-features',
     'cpr-spell-features',
     'cpr-spells',
     'cpr-summon-features',
-    'cpr-summons',
-    // 'cpr-miscellaneous'
+    'cpr-summons'
 ];
 for (let i of packs) {
     await compilePack('./packData/' + i, './packs/' + i, {'log': true});

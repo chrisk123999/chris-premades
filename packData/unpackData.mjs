@@ -1,22 +1,21 @@
 import {compilePack, extractPack} from '@foundryvtt/foundryvtt-cli';
 let itemPacks = [
-    'cpr-actions',
-    'cpr-class-feature-items',
-    'cpr-class-features',
-    //'cpr-homebrew-feature-items',
-    'cpr-item-features',
-    'cpr-items',
-    'cpr-monster-features',
-    'cpr-race-features',
-    'cpr-spells',
-    'cpr-spell-features',
-    'cpr-summon-features',
-    'cpr-feats',
-    'cpr-miscellaneous-items',
     'cpr-3rd-party-class-features',
     'cpr-3rd-party-items',
     'cpr-3rd-party-feats',
-    // 'cpr-miscellaneous'
+    'cpr-actions',
+    'cpr-class-feature-items',
+    'cpr-class-features',
+    'cpr-feats',
+    'cpr-item-features',
+    'cpr-items',
+    'cpr-miscellaneous',
+    'cpr-miscellaneous-items',
+    'cpr-monster-features',
+    'cpr-race-features',
+    'cpr-spell-features',
+    'cpr-spells',
+    'cpr-summon-features'
 ];
 let actorPacks = [
     'cpr-summons'

@@ -173,14 +173,6 @@
       "banner": "modules/chris-premades/images/bannerClassFeatures.webp"
     },
     {
-      "name": "CPRFeatFeatures",
-      "label": "CPR Feat Features",
-      "path": "packs/cpr-feat-features",
-      "type": "Item",
-      "module": "chris-premades",
-      "banner": "modules/chris-premades/images/bannerUnknown2.webp"
-    },
-    {
       "name": "CPRFeats",
       "label": "CPR Feats",
       "path": "packs/cpr-feats",
@@ -219,14 +211,6 @@
       "type": "Item",
       "module": "chris-premades",
       "banner": "modules/chris-premades/images/bannerMonsterFeatures.webp"
-    },
-    {
-      "name": "CPRRaceFeatureItems",
-      "label": "CPR Race Feature Items",
-      "path": "packs/cpr-race-feature-items",
-      "type": "Item",
-      "module": "chris-premades",
-      "banner": "modules/chris-premades/images/bannerUnknown1.webp"
     },
     {
       "name": "CPRRaceFeatures",
@@ -274,26 +258,33 @@
       "name": "Cauldron of Plentiful Resources",
       "sorting": "a",
       "color": "#348f2d",
+      "folders": [
+        {
+          "name": "2014",
+          "sorting": "a",
+          "color": "#348f2d",
+          "packs": [
+            "CPRActions",
+            "CPRSpells",
+            "CPRSpellFeatures",
+            "CPRSummons",
+            "CPRSummonFeatures",
+            "CPRItems",
+            "CPRItemFeatures",
+            "CPRClassFeatures",
+            "CPRClassFeatureItems",
+            "CPRFeats",
+            "CPRRaceFeatures",
+            "CPRThirdPartyClassFeatures",
+            "CPRThirdPartyItems",
+            "CPRThirdPartyFeats",
+            "CPRMonsterFeatures"
+          ]
+        }
+      ],
       "packs": [
-        "CPRSpells",
-        "CPRSpellFeatures",
-        "CPRSummonFeatures",
-        "CPRSummons",
-        "CPRItems",
-        "CPRClassFeatures",
-        "CPRClassFeatureItems",
-        "CPRActions",
         "CPRMiscellaneousItems",
-        "CPRItemFeatures",
-        "CPRFeats",
-        "CPRFeatFeatures",
-        "CPRRaceFeatures",
-        "CPRRaceFeatureItems",
-        "CPRThirdPartyClassFeatures",
-        "CPRThirdPartyItems",
-        "CPRMonsterFeatures",
-        "CPRMiscellaneous",
-        "CPRThirdPartyFeats"
+        "CPRMiscellaneous"
       ]
     }
   ],

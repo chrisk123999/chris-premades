@@ -52,7 +52,7 @@ async function maxDamageDamage({trigger, workflow}) {
 }
 export let maxDamage = {
     name: 'Maximize Damage',
-    version: '1.0.2',
+    version: '1.1.0',
     midi: {
         item: [
             {
@@ -94,7 +94,7 @@ async function doubleDamageDamage({trigger, workflow}) {
 }
 export let doubleDamage = {
     name: 'Double Damage',
-    version: '1.0.2',
+    version: '1.1.0',
     midi: {
         item: [
             {
