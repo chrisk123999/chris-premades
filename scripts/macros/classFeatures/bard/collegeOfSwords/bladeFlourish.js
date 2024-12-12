@@ -64,7 +64,6 @@ async function damage({trigger: {entity: item}, workflow}) {
     }
 }
 async function mobilePush({workflow}) {
-    if (activityUtils.getIdentifier(workflow.activity) !== 'mobileFlourish') return;
     let bardicResult = workflow.item.flags['chris-premades'].mobileFlourish.roll;
     let distance = Math.floor((5 + bardicResult) / 5) * 5;
     let push = await dialogUtils.confirm(workflow.item.name, genericUtils.format('CHRISPREMADES.Macros.BladeFlourish.Push', {distance}));
