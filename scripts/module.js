@@ -14,7 +14,6 @@ import {effectHud} from './applications/effectHud.js';
 import {conditions} from './extensions/conditions.js';
 import {Summons} from './lib/summons.js';
 import {registerSockets} from './lib/sockets.js';
-import {workflow} from './extensions/workflow.js';
 import {Teleport} from './lib/teleport.js';
 import {backup} from './extensions/backup.js';
 import {selectTool} from './extensions/selectTool.js';
