@@ -35,7 +35,8 @@ async function use({workflow}) {
             'chris-premades': {
                 dawn: {
                     templateUuid: template.uuid
-                }
+                },
+                castData: workflow.castData
             }
         }
     };

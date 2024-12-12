@@ -1,3 +1,7 @@
+# 1.0.50 Release:
+## Bug Fixes:
+- Dawn
+
 # 1.0.49 Release:
 ## Bug Fixes:
 - Medkit Title Bar Icon
