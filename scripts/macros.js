@@ -62,6 +62,7 @@ export {fly, flyFlying} from './macros/spells/fly.js';
 export {fogCloud} from './macros/spells/fogCloud.js';
 export {frostFingers} from './macros/spells/frostFingers.js';
 export {gaseousForm} from './macros/spells/gaseousForm.js';
+export {globeOfInvulnerability, globeOfInvulnerabilityInvulnerable} from './macros/spells/globeOfInvulnerability.js';
 export {grease, greaseArea} from './macros/spells/grease.js';
 export {greenFlameBlade} from './macros/spells/greenFlameBlade.js';
 export {guardianOfFaith, guardianOfFaithDamage} from './macros/spells/guardianOfFaith.js';

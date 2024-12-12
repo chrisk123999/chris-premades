@@ -123,9 +123,15 @@ async function deleteEmbeddedDocuments(entity, type, ids, options) {
     }
     return documents;
 }
-function updateTargets(targets) {
-    game.user.updateTokenTargets(Array.from(targets).map(target => target.id ?? target));
-    game.user.broadcastActivity({targets: game.user.targets.ids});
+async function updateTargets(targets, user=game.user) {
+    let hasPermission = socketUtils.hasPermission(user, game.user.id);
+    let targetIds = Array.from(targets).map(target => target.id ?? target);
+    if (hasPermission) {
+        user.updateTokenTargets(targetIds);
+        user.broadcastActivity({targets: user.targets.ids});
+    } else {
+        await socket.executeAsGM(sockets.updateTargets.name, targetIds, user.id);
+    }
 }
 function collapseObjects(...objects) {
     let object = {};
