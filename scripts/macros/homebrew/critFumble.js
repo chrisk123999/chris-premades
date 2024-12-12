@@ -21,7 +21,7 @@ async function rollItem(type, token, targets) {
         if (!item) return;
         itemData = await compendiumUtils.getItemFromCompendium(key, item.name, {object: true});
     }
-    let workflowTargets = itemData.system.target.type === 'self' ? [token] : targets;
+    let workflowTargets = Object.values(itemData.system.activities)[0]?.target.affects.type === 'self' ? [token] : targets;
     await workflowUtils.syntheticItemDataRoll(itemData, token.actor, workflowTargets);
 }
 async function attack(workflow) {

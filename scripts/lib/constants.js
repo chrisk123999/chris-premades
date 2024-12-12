@@ -10,9 +10,7 @@ let packs = {
     miscellaneousItems: 'chris-premades.CPRMiscellaneousItems',
     itemFeatures: 'chris-premades.CPRItemFeatures',
     feats: 'chris-premades.CPRFeats',
-    featFeatures: 'chris-premades.CPRFeatFeatures',
     raceFeatures: 'chris-premades.CPRRaceFeatures',
-    raceFeatureItems: 'chris-premades.CPRRaceFeatureItems',
     thirdPartyClassFeatures: 'chris-premades.CPRThirdPartyClassFeatures',
     thirdPartyItems: 'chris-premades.CPRThirdPartyItems',
     monsterFeatures: 'chris-premades.CPRMonsterFeatures',
@@ -25,8 +23,6 @@ let featurePacks = {
     classFeatureItems: 'chris-premades.CPRClassFeatureItems',
     miscellaneousItems: 'chris-premades.CPRMiscellaneousItems',
     itemFeatures: 'chris-premades.CPRItemFeatures',
-    featFeatures: 'chris-premades.CPRFeatFeatures',
-    raceFeatureItems: 'chris-premades.CPRRaceFeatureItems'
 };
 function setUseLocalCompendium(value) {
     if (value) {
@@ -46,11 +42,7 @@ function setUseLocalCompendium(value) {
         packs.itemFeatures = 'world.cpr-item-features';
         featurePacks.itemFeatures = 'world.cpr-item-features';
         packs.feats = 'world.cpr-feats';
-        packs.featFeatures = 'world.cpr-feat-features';
-        featurePacks.featFeatures = 'world.cpr-feat-features';
         packs.raceFeatures = 'world.cpr-race-features';
-        packs.raceFeatureItems = 'world.cpr-race-feature-items';
-        featurePacks.raceFeatureItems = 'world.cpr-race-feature-items';
         packs.thirdPartyClassFeatures = 'world.cpr-3rd-party-class-features';
         packs.thirdPartyItems = 'world.cpr-3rd-party-items';
         packs.monsterFeatures = 'world.cpr-monster-features';
@@ -73,11 +65,7 @@ function setUseLocalCompendium(value) {
         packs.itemFeatures = 'chris-premades.CPRItemFeatures';
         featurePacks.itemFeatures = 'chris-premades.CPRItemFeatures';
         packs.feats = 'chris-premades.CPRFeats';
-        packs.featFeatures = 'chris-premades.CPRFeatFeatures';
-        featurePacks.featFeatures = 'chris-premades.CPRFeatFeatures';
         packs.raceFeatures = 'chris-premades.CPRRaceFeatures';
-        packs.raceFeatureItems = 'chris-premades.CPRRaceFeatureItems';
-        featurePacks.raceFeatureItems = 'chris-premades.CPRRaceFeatureItems';
         packs.thirdPartyClassFeatures = 'chris-premades.CPRThirdPartyClassFeatures';
         packs.thirdPartyItems = 'chris-premades.CPRThirdPartyItems';
         packs.monsterFeatures = 'chris-premades.CPRMonsterFeatures';
