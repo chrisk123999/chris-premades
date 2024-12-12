@@ -9,7 +9,7 @@
     "source": {
       "custom": "",
       "revision": 1,
-      "rules": "2024"
+      "rules": "2014"
     },
     "uses": {
       "max": "1 + min(1, floor(@classes.cleric.levels / 6)) + min(1, floor(@classes.cleric.levels / 18))",

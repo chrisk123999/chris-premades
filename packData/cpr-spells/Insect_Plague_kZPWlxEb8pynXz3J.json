@@ -188,7 +188,7 @@
     "identifier": "new-spell",
     "source": {
       "revision": 1,
-      "rules": "2024"
+      "rules": "2014"
     },
     "activation": {
       "type": "action",

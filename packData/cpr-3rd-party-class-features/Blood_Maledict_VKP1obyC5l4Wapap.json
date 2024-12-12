@@ -10,7 +10,7 @@
     "source": {
       "custom": "",
       "revision": 1,
-      "rules": "2024"
+      "rules": "2014"
     },
     "uses": {
       "max": "1+min(1,floor(@classes.blood-hunter.levels/6))+floor(@classes.blood-hunter.levels/13)+floor(@classes.blood-hunter.levels/17)",
