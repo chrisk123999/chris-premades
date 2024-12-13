@@ -11,8 +11,8 @@ async function use({workflow}) {
     }
     let spellLevel = workflow.castData.castLevel;
     let numAttacks = Math.floor(spellLevel / 2);
-    let multiAttackFeatureData = await Summons.getSummonItem('Multiattack (Spirit of Death)', {}, workflow.item, {translate: genericUtils.format('CHRISPREMADES.CommonFeatures.Multiattack', {numAttacks}), identifier: 'summonBeastMultiattack'});
-    let reapingScytheFeatureData = await Summons.getSummonItem('Reaping Scythe (Spirit of Death)', {}, workflow.item, {translate: 'CHRISPREMADES.Macros.SummonBeast.Maul', identifier: 'summonBeastMaul', flatAttack: true, damageBonus: spellLevel});
+    let multiAttackFeatureData = await Summons.getSummonItem('Multiattack (Reaper Spirit)', {}, workflow.item, {translate: genericUtils.format('CHRISPREMADES.CommonFeatures.Multiattack', {numAttacks}), identifier: 'summonBeastMultiattack'});
+    let reapingScytheFeatureData = await Summons.getSummonItem('Reaping Scythe (Reaper Spirit)', {}, workflow.item, {translate: 'CHRISPREMADES.Macros.SummonBeast.Maul', identifier: 'summonBeastMaul', flatAttack: true, damageBonus: spellLevel});
     if (!multiAttackFeatureData || !reapingScytheFeatureData) {
         errors.missingPackItem();
         if (concentrationEffect) await genericUtils.remove(concentrationEffect);
