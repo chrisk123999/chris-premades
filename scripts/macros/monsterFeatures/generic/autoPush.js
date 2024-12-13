@@ -1,4 +1,4 @@
-import {itemUtils, genericUtils, tokenUtils} from '../../../utils.js';
+import {itemUtils, tokenUtils} from '../../../utils.js';
 async function use({trigger, workflow}) {
     if (!workflow.token || !workflow.targets.size) return;
     let config = itemUtils.getGenericFeatureConfig(workflow.item, 'autoPush');
@@ -7,7 +7,7 @@ async function use({trigger, workflow}) {
         if (config.failed && !workflow.failedSaves.has(token)) return;
         let distance = Number(config.distance);
         if (distance < 0) {
-            let distanceBetween = tokenUtils.getDistance(workflow.token, token, {wallsBlock: true, checkCover: genericUtils.getCPRSetting('movementPerformance') === 3});
+            let distanceBetween = tokenUtils.getDistance(workflow.token, token);
             distance = Math.max(distance, -distanceBetween);
         }
         tokenUtils.pushToken(workflow.token, token, distance);
