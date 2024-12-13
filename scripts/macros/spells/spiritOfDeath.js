@@ -43,7 +43,7 @@ async function use({workflow}) {
                 name,
                 disposition: workflow.token.document.disposition
             },
-            items: [multiAttackFeatureData, maulFeatureData]
+            items: [multiAttackFeatureData, reapingScytheFeatureData, hauntCreatureFeatureData]
         },
         token: {
             name,
