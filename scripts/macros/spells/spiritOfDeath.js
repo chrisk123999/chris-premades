@@ -11,15 +11,16 @@ async function use({workflow}) {
     }
     let spellLevel = workflow.castData.castLevel;
     let numAttacks = Math.floor(spellLevel / 2);
-    let multiAttackFeatureData = await Summons.getSummonItem('Multiattack (Reaper Spirit)', {}, workflow.item, {translate: genericUtils.format('CHRISPREMADES.CommonFeatures.Multiattack', {numAttacks}), identifier: 'summonBeastMultiattack'});
-    let reapingScytheFeatureData = await Summons.getSummonItem('Reaping Scythe (Reaper Spirit)', {}, workflow.item, {translate: 'CHRISPREMADES.Macros.SummonBeast.Maul', identifier: 'summonBeastMaul', flatAttack: true, damageBonus: spellLevel});
+    let multiAttackFeatureData = await Summons.getSummonItem('Multiattack (Reaper Spirit)', {}, workflow.item, {translate: genericUtils.format('CHRISPREMADES.CommonFeatures.Multiattack', {numAttacks}), identifier: 'spiritOfDeathMultiattack'});
+    let reapingScytheFeatureData = await Summons.getSummonItem('Reaping Scythe (Reaper Spirit)', {}, workflow.item, {translate: 'CHRISPREMADES.Macros.SpiritOfDeath.ReapingScythe', identifier: 'spiritOfDeathReapingScythe', flatAttack: true, damageBonus: spellLevel});
+    let hauntCreatureFeatureData = await Summons.getSummonItem('Haunt Creature (Reaper Spirit)', {}, workflow.item, {translate: 'CHRISPREMADES.Macros.SpiritOfDeath.HauntCreature', identifier: 'spiritOfDeathHauntCreature'});
     if (!multiAttackFeatureData || !reapingScytheFeatureData) {
         errors.missingPackItem();
         if (concentrationEffect) await genericUtils.remove(concentrationEffect);
         return;
     }
     let name = itemUtils.getConfig(workflow.item, 'name');
-    if (!name?.length) name = genericUtils.translate('CHRISPREMADES.Summons.CreatureNames.BestialSpirit' + creatureType.capitalize());
+    if (!name?.length) name = genericUtils.translate('CHRISPREMADES.Summons.CreatureNames.ReaperSpirit');
     let updates = {
         actor: {
             name,
@@ -68,7 +69,7 @@ async function use({workflow}) {
         range: 90,
         animation,
         initiativeType: 'follows',
-        additionalSummonVaeButtons: [multiAttackFeatureData, maulFeatureData].map(i => {return {type: 'use', name: i.name, identifier: i.flags['chris-premades'].info.identifier};})
+        additionalSummonVaeButtons: [multiAttackFeatureData, reapingScytheFeatureData, hauntCreatureFeatureData].map(i => {return {type: 'use', name: i.name, identifier: i.flags['chris-premades'].info.identifier};})
     });
 }
 export let spiritOfDeath = {
@@ -112,7 +113,6 @@ export let spiritOfDeath = {
         {
             value: 'animation',
             label: 'CHRISPREMADES.Config.SpecificAnimation',
-            i18nOption: 'CHRISPREMADES.Macros.SpiritOfDeath',
             type: 'select',
             default: 'shadow',
             category: 'animation',
