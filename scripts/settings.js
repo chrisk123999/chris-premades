@@ -29,7 +29,7 @@ function addSetting(options) {
         select: options.select
     };
     game.settings.register('chris-premades', options.key, setting);
-    settings.addMenuSetting(options.key, options.category);
+    if (options.category) settings.addMenuSetting(options.key, options.category);
 }
 function addMenu(options) {
     let menu = {
@@ -44,6 +44,11 @@ function addMenu(options) {
     game.settings.registerMenu('chris-premades', options.key, menu);
 }
 export function registerSettings() {
+    addSetting({
+        key: 'migrationVersion',
+        type: String,
+        default: '0.0.0'
+    });
     addSetting({
         key: 'gmID',
         type: String,

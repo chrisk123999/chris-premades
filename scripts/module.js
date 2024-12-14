@@ -33,6 +33,7 @@ import {dae} from './integrations/dae.js';
 import {abilityCheck} from './events/abilityCheck.js';
 import {itemDirectory} from './applications/itemDirectory.js';
 import {activities} from './extensions/activities.js';
+import {migrate} from './migrations.js';
 Hooks.once('socketlib.ready', registerSockets);
 Hooks.once('init', () => {
     registerSettings();
@@ -77,6 +78,8 @@ Hooks.once('ready', () => {
     if (utils.genericUtils.getCPRSetting('manualRollsEnabled')) rollResolver.registerFulfillmentMethod(); 
     tours.checkTour();
     if (utils.genericUtils.getCPRSetting('activityCSSTweak')) activities.cssTweak();
+    if (!game.user.isGM) return;
+    if (utils.genericUtils.getCPRSetting('migrationVersion') !== game.modules.get('chris-premades').version) migrate();
 });
 globalThis['chrisPremades'] = {
     DialogApp,
