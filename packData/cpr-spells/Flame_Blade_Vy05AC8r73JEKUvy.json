@@ -214,7 +214,7 @@
         "midiAutomationOnly": false,
         "attackMode": "",
         "ammunition": "",
-        "otherActivityUuid": "",
+        "otherActivityId": "none",
         "name": "Flame Blade Scimitar",
         "img": "icons/magic/fire/projectile-bolt-zigzag-orange.webp"
       },

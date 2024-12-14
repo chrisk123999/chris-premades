@@ -214,7 +214,7 @@
         "midiAutomationOnly": false,
         "attackMode": "",
         "ammunition": "",
-        "otherActivityUuid": "",
+        "otherActivityId": "none",
         "name": "Vampiric Touch: Attack",
         "img": "icons/magic/unholy/hand-claw-fog-green.webp"
       }

@@ -210,7 +210,7 @@
         "effectConditionText": "",
         "attackMode": "",
         "ammunition": "",
-        "otherActivityUuid": "",
+        "otherActivityId": "none",
         "name": "Eldritch Blast: Beam"
       }
     },

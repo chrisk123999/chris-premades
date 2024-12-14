@@ -208,7 +208,7 @@
         "effectConditionText": "",
         "attackMode": "",
         "ammunition": "",
-        "otherActivityUuid": ""
+        "otherActivityId": "none"
       }
     },
     "identifier": "scorching-ray",

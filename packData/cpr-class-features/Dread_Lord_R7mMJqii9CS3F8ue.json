@@ -282,7 +282,7 @@
         "midiAutomationOnly": false,
         "attackMode": "",
         "ammunition": "",
-        "otherActivityUuid": "",
+        "otherActivityId": "none",
         "name": "Dread Lord: Shadow Attack",
         "img": "icons/magic/control/fear-fright-monster-grin-red-orange.webp"
       }

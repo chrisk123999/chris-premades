@@ -195,7 +195,7 @@
         "midiAutomationOnly": false,
         "attackMode": "oneHanded",
         "ammunition": "",
-        "otherActivityUuid": "",
+        "otherActivityId": "none",
         "name": "Attack",
         "img": "icons/weapons/swords/sword-guard-serrated.webp",
         "appliedEffects": []

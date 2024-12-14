@@ -194,7 +194,7 @@
         "midiAutomationOnly": false,
         "attackMode": "oneHanded",
         "ammunition": "",
-        "otherActivityUuid": ""
+        "otherActivityId": "none"
       },
       "842ZeZX7yIwRmd9B": {
         "type": "damage",

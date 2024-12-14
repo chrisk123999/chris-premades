@@ -127,7 +127,7 @@
         "midiAutomationOnly": false,
         "attackMode": "",
         "ammunition": "",
-        "otherActivityUuid": "",
+        "otherActivityId": "none",
         "name": "Psychic Blades",
         "img": "icons/skills/melee/strike-sword-blood-red.webp"
       },
@@ -230,7 +230,7 @@
         "midiAutomationOnly": false,
         "attackMode": "",
         "ammunition": "",
-        "otherActivityUuid": "",
+        "otherActivityId": "none",
         "name": "Psychic Blades (Bonus Action)",
         "_id": "h5tNZjwNfemV6cpp",
         "img": "icons/skills/melee/strike-sword-blood-red.webp"

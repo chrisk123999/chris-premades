@@ -198,7 +198,7 @@
         "midiAutomationOnly": false,
         "attackMode": "oneHanded",
         "ammunition": "",
-        "otherActivityUuid": ""
+        "otherActivityId": "none"
       }
     },
     "identifier": "shortsword-fey-spirit",

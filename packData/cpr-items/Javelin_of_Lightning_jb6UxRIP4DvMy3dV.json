@@ -185,7 +185,7 @@
         "midiAutomationOnly": false,
         "attackMode": "oneHanded",
         "ammunition": "",
-        "otherActivityUuid": "",
+        "otherActivityId": "none",
         "name": "Attack",
         "img": "icons/weapons/polearms/javelin-hooked.webp",
         "appliedEffects": []

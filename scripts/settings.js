@@ -860,7 +860,7 @@ export function registerSettings() {
         key: 'activityCSSTweak',
         type: Boolean,
         default: false,
-        category: 'interface',
+        category: 'development',
         onChange: () => activities.cssTweak()
     });
 }

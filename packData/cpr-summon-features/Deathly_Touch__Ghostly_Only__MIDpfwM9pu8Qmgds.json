@@ -127,7 +127,7 @@
         "midiAutomationOnly": false,
         "attackMode": "",
         "ammunition": "",
-        "otherActivityUuid": "Compendium.world.summon-features.Item.MIDpfwM9pu8Qmgds.Activity.dnd5eactivity100",
+        "otherActivityId": "dnd5eactivity100",
         "name": "",
         "img": "",
         "appliedEffects": []

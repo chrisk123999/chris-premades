@@ -202,7 +202,7 @@
         "midiAutomationOnly": false,
         "attackMode": "oneHanded",
         "ammunition": "",
-        "otherActivityUuid": "",
+        "otherActivityId": "none",
         "name": "Attack",
         "img": "icons/commodities/gems/gem-rough-cushion-purple-pink.webp",
         "appliedEffects": []

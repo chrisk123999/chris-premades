@@ -187,7 +187,7 @@
         "midiAutomationOnly": false,
         "attackMode": "",
         "ammunition": "",
-        "otherActivityUuid": "",
+        "otherActivityId": "none",
         "name": "Sweeping Attack: Attack",
         "img": "icons/skills/melee/weapons-crossed-swords-yellow.webp"
       }

@@ -179,7 +179,7 @@
         "midiAutomationOnly": false,
         "attackMode": "oneHanded",
         "ammunition": "RYET4gIeC2EgmML7",
-        "otherActivityUuid": ""
+        "otherActivityId": "none"
       }
     },
     "identifier": "firearm-cr",

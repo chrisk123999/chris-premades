@@ -109,7 +109,7 @@
       "rollAttackPerTarget": "default",
       "removeAttackDamageButtons": "default",
       "itemCondition": "",
-      "reactionCondition": "",
+      "reactionCondition": "false",
       "otherCondition": "",
       "effectCondition": ""
     },

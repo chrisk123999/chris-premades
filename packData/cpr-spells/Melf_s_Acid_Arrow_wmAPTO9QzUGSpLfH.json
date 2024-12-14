@@ -155,7 +155,7 @@
         "effectConditionText": "",
         "attackMode": "",
         "ammunition": "",
-        "otherActivityUuid": "",
+        "otherActivityId": "none",
         "name": ""
       }
     },

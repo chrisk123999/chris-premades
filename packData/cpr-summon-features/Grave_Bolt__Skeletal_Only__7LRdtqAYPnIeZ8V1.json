@@ -129,7 +129,7 @@
         "midiAutomationOnly": false,
         "attackMode": "oneHanded",
         "ammunition": "",
-        "otherActivityUuid": ""
+        "otherActivityId": "none"
       }
     },
     "identifier": "grave-bolt-skeletal-only",

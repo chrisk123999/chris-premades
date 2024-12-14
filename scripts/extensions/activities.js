@@ -1,9 +1,4 @@
 import {activityUtils, genericUtils} from '../utils.js';
-/* 
-Notes on Activities (WIP):
-- activityIdentifiers flag on item contains object of the form { identifier: activityId }
-- hiddenActivities flag on item contains an array of activity identifiers which shouldn't show up when USING the item, only when editing
-*/
 function flagAllRiders(item, updates) {
     let cprRiders = genericUtils.getProperty(item, 'flags.chris-premades.hiddenActivities') ?? [];
     cprRiders = cprRiders.map(i => activityUtils.getActivityByIdentifier(item, i)?.id).filter(i => i);
@@ -18,7 +13,8 @@ function cssTweak() {
     alreadyEnabled = true;
     let el = document.createElement('style');
     el.type = 'text/css';
-    el.innerText = `.dnd5e2.application.activity {
+    el.innerText = `
+    .dnd5e2.application.activity {
         display: grid;
         grid-template-rows: 100px 1fr;
         grid-template-columns: 1fr;
@@ -45,20 +41,30 @@ function cssTweak() {
         }
         .tab[data-tab="identity"] {
             grid-column: identity;
+            grid-row: 1 / 2;
             nav.tabs {
-            display: none !important;
+                display: none !important;
             }
         }
         .tab[data-tab="activation"] {
             grid-column: activation;
+            grid-row: 1 / 3;
             nav.tabs {
-            display: none !important;
+                display: none !important;
             }
         }
         .tab[data-tab="effect"] {
             grid-column: effect;
+            grid-row: 1 / 3;
             nav.tabs {
-            display: none !important;
+                display: none !important;
+            }
+        }
+        .tab[data-tab="midi-qol"] {
+            grid-column: identity;
+            grid-row: 2 / 3;
+            nav.tabs {
+                display: none !important;
             }
         }
     }`;

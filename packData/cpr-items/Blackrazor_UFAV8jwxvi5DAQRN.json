@@ -180,7 +180,7 @@
         "midiAutomationOnly": false,
         "attackMode": "twoHanded",
         "ammunition": "",
-        "otherActivityUuid": "",
+        "otherActivityId": "none",
         "name": "Blackrazor",
         "img": "icons/weapons/swords/greatsword-crossguard-blue.webp",
         "appliedEffects": []

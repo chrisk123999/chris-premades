@@ -751,6 +751,7 @@ export class ItemMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
         this._prepared = false;
         await this.readyData();
         await this._reRender();
+        await this.item.update();
     }
     static async confirm(event, target) {
         await ItemMedkit._apply.bind(this)(event, target);

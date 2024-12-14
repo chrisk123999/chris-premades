@@ -151,7 +151,7 @@
         "effectConditionText": "",
         "attackMode": "oneHanded",
         "ammunition": "",
-        "otherActivityUuid": ""
+        "otherActivityId": "none"
       }
     },
     "identifier": "thorn-whip",

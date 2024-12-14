@@ -137,7 +137,7 @@
         "midiAutomationOnly": false,
         "attackMode": "",
         "ammunition": "",
-        "otherActivityUuid": "",
+        "otherActivityId": "dnd5eactivity100",
         "name": "",
         "img": "",
         "appliedEffects": []

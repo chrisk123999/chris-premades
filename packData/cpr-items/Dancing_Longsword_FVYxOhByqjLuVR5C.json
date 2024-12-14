@@ -179,7 +179,7 @@
         "midiAutomationOnly": false,
         "attackMode": "oneHanded",
         "ammunition": "",
-        "otherActivityUuid": "",
+        "otherActivityId": "none",
         "name": "Attack",
         "img": "icons/weapons/swords/greatsword-flamberge.webp",
         "appliedEffects": []
@@ -272,7 +272,7 @@
         "midiAutomationOnly": false,
         "attackMode": "oneHanded",
         "ammunition": "",
-        "otherActivityUuid": "",
+        "otherActivityId": "none",
         "_id": "Q6bjSzlU9G5pKpbF",
         "name": "Dancing Sword: Attack",
         "img": "icons/weapons/swords/greatsword-flamberge.webp",

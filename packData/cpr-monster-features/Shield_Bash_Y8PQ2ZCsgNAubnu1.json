@@ -179,7 +179,7 @@
         "midiAutomationOnly": false,
         "attackMode": "oneHanded",
         "ammunition": "",
-        "otherActivityUuid": "Compendium.world.monster-features.Item.Y8PQ2ZCsgNAubnu1.Activity.dnd5eactivity100",
+        "otherActivityId": "dnd5eactivity100",
         "name": "",
         "img": "",
         "appliedEffects": []

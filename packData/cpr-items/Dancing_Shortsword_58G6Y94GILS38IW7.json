@@ -180,7 +180,7 @@
         "midiAutomationOnly": false,
         "attackMode": "oneHanded",
         "ammunition": "",
-        "otherActivityUuid": "",
+        "otherActivityId": "none",
         "name": "Attack",
         "img": "icons/weapons/swords/shortsword-broad-blue.webp",
         "appliedEffects": []
@@ -273,7 +273,7 @@
         "midiAutomationOnly": false,
         "attackMode": "oneHanded",
         "ammunition": "",
-        "otherActivityUuid": "",
+        "otherActivityId": "none",
         "name": "Dancing Sword: Attack",
         "img": "icons/weapons/swords/shortsword-broad-blue.webp",
         "_id": "cEHVgUiRuIwrJmFq",

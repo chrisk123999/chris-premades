@@ -162,7 +162,7 @@
         "effectConditionText": "",
         "attackMode": "",
         "ammunition": "",
-        "otherActivityUuid": "",
+        "otherActivityId": "none",
         "name": ""
       },
       "eS1eAw88XejTplXT": {
@@ -265,7 +265,7 @@
         "effectConditionText": "",
         "attackMode": "",
         "ammunition": "",
-        "otherActivityUuid": "",
+        "otherActivityId": "none",
         "name": "Chaos Bolt: Bounce"
       }
     },

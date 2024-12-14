@@ -359,7 +359,7 @@
         "midiAutomationOnly": false,
         "attackMode": "",
         "ammunition": "",
-        "otherActivityUuid": "",
+        "otherActivityId": "none",
         "name": "Luminous Arrow",
         "img": "icons/magic/control/silhouette-hold-change-blue.webp"
       },

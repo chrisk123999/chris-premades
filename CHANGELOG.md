@@ -1,3 +1,17 @@
+# 1.1.0 Release:
+## New Content:
+- 2024 Weapon Masteries
+## Updated Content:
+- Globe of Invulnerability
+## Update Notes:
+- This is the first beta release for dnd5e 4.x. Expect some bugs, both on CPR's side and Midi's side
+- CPR has changed to make use of Activities whenever possible, in many cases obsoleting the need for synthetic item uses. As such, there are some changes (most non-player-facing):
+    - Certain spells/features (such as Bestow Curse) now have activities for each possible variation of them
+    - Temporarily-available features (such as the "Move" functionality of the Dawn spell) are configured as activities on the parent item when possible. These will be dynamically unhidden when necessary (and added to "favorites" when done)
+    - Items which were previously used entirely synthetically (like Scorching Ray's "Bolt" spell feature) are now also configured as activities on the parent item. These will always remain hidden
+    - Regarding "hidden" activities: They will be visible on the item sheet. This means they can be _modified_ if desired (for example, changing the formula or damage type for Magic Missile bolts). This also means however that if they are _deleted_ from the sheet, automations which expect them to exist will fail. Unless you know what you're doing, never _delete_ any activities from a medkitted item
+- With the exception of the new weapon masteries, CPR has not yet implemented any content from the 2024 rulebooks. Nevertheless, in preparation for doing so, the 2014-specific content compendiums have been moved into a "2014" subfolder
+
 # 1.0.50 Release:
 ## Bug Fixes:
 - Dawn

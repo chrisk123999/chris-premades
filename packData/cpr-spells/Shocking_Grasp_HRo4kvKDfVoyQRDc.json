@@ -222,7 +222,7 @@
         "effectConditionText": "",
         "attackMode": "oneHanded",
         "ammunition": "",
-        "otherActivityUuid": ""
+        "otherActivityId": "none"
       }
     },
     "identifier": "shocking-grasp",
