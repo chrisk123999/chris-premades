@@ -169,7 +169,6 @@ export let spiritOfDeath = {
             category: 'summons'
         },
         {
-        {
             value: 'animation',
             label: 'CHRISPREMADES.Config.SpecificAnimation',
             type: 'select',
