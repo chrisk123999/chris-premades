@@ -68,7 +68,7 @@ async function use({workflow}) {
     });
 }
 async function attack({workflow}) {
-    if (workflow.targets.size !== 1 || workflow.disadvantage) return;
+    if (workflow.targets.size !== 1 || workflow.advantage) return;
     let effect = effectUtils.getEffectByIdentifier(workflow.actor, 'spiritOfDeathHauntCreature');
     let {targets: validTargetUuids, formula} = effect.flags['chris-premades'].spiritOfDeathHauntCreature;
     if (!validTargetUuids.includes(workflow.targets.first().document.uuid)) return;
