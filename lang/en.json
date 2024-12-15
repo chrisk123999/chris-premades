@@ -1403,6 +1403,7 @@
             },
             "SpiritOfDeath": {
                 "HauntCreature": "Haunt Creature (Reaper Spirit)",
+                "Haunted": "Haunted",
                 "ReapingScythe": "Reaping Scythe (Reaper Spirit)"
             },
             "SpiritShroud": {
