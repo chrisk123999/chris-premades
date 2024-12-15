@@ -125,8 +125,8 @@ async function late({workflow}) {
 async function turnStart({trigger: {entity: effect, token, target}}) {
     let [targetCombatant] = game.combat.getCombatantsByToken(target.document);
     if (!targetCombatant) return;
-    let effect = effectUtils.getEffectByIdentifier(targetCombatant, 'spiritOfDeathHauntCreatureHaunted');
-    if (!effect) return;
+    let hauntedEffect = effectUtils.getEffectByIdentifier(targetCombatant, 'spiritOfDeathHauntCreatureHaunted');
+    if (!hauntedEffect) return;
     let feature = itemUtils.getItemByIdentifier(token.actor, 'spiritOfDeathHauntCreatureHaunt');
     if (!feature) return;
     let saveWorkflow = await workflowUtils.syntheticItemRoll(feature, [target]);
