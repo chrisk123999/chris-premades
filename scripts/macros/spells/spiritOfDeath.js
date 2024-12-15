@@ -72,9 +72,75 @@ async function use({workflow}) {
         additionalSummonVaeButtons: [multiAttackFeatureData, reapingScytheFeatureData, hauntCreatureFeatureData].map(i => {return {type: 'use', name: i.name, identifier: i.flags['chris-premades'].info.identifier};})
     });
 }
+async function attack({workflow}) {
+    if (workflow.targets.size !== 1 || workflow.disadvantage) return;
+    let effect = effectUtils.getEffectByIdentifier(workflow.actor, 'spiritOfDeathHauntCreature');
+    let {targets: validTargetUuids, formula} = effect.flags['chris-premades'].spiritOfDeathHauntCreature;
+    if (!validTargetUuids.includes(workflow.targets.first().document.uuid)) return;
+    workflow.advantage = true;
+    workflow.attackAdvAttribution.add(genericUtils.translate('DND5E.Advantage') + ': ' + effect.name);
+}
+async function late({workflow}) {
+    let effect = effectUtils.getEffectByIdentifier(workflow.actor, 'summonedEffect');
+    let originItem = fromUuidSync(effect?.origin);
+    let sourceActor = originItem?.actor;
+    if(!sourceActor)
+    {
+        return;
+    }
+    let featureData = await compendiumUtils.getItemFromCompendium(constants.packs.summonFeatures, 'Haunt Creature: Haunt', {object: true, getDescription: true, translate: 'CHRISPREMADES.Macros.SpiritOfDeath.HauntCreatureHaunt', identifier: 'spiritOfDeathHauntCreatureHaunt', flatDC: sourceActor.sytem.attributes.spelldc});
+    if (!featureData) {
+        errors.missingPackItem();
+        return;
+    }
+    let targetEffectData = {
+        name: genericUtils.translate('CHRISPREMADES.Macros.SpiritOfDeath.Haunted'),
+        img: workflow.item.img,
+        origin: workflow.item.uuid,
+        flags: {
+            dae: {
+                "specialDuration": [
+                    "zeroHP"
+                ]
+            }
+        }
+    };
+    let casterEffectData = {
+        name: workflow.item.name,
+        img: workflow.item.img,
+        origin: workflow.item.uuid,
+        duration: {
+            seconds
+        },
+        flags: {
+            'chris-premades': {
+                spiritOfDeathHauntCreature: {
+                    targets: Array.from(workflow.targets).map(i => i.document.uuid),
+                }
+            }
+        }
+    };
+    let casterEffect = await effectUtils.createEffect(workflow.actor, casterEffectData, {concentrationItem: workflow.item, strictlyInterdependent: true, identifier: 'spiritOfDeathHauntCreatureHaunt'});
+    await genericUtils.setFlag(casterEffect, 'chris-premades', 'macros.combat', ['spiritOfDeathHauntCreatureHaunt']);
+    for (let i of workflow.targets) {
+        if (i.actor) await effectUtils.createEffect(i.actor, targetEffectData, {parentEntity: casterEffect, identifier: 'spiritOfDeathHauntCreatureHaunted'});
+    }
+    await itemUtils.createItems(workflow.actor, [featureData], {parentEntity: casterEffect});
+}
+async function turnStart({trigger: {entity: effect, token, target}}) {
+    if (combatUtils.inCombat()) {
+        let [targetCombatant] = game.combat.getCombatantsByToken(target.document);
+        if (!targetCombatant) return;
+        let effect = effectUtils.getEffectByIdentifier(targetCombatant, 'spiritOfDeathHauntCreatureHaunted');
+        if (!effect) return;
+        let feature = itemUtils.getItemByIdentifier(token.actor, 'spiritOfDeathHauntCreatureHaunt');
+        if (!feature) return;
+        let saveWorkflow = await workflowUtils.syntheticItemRoll(feature, [target]);
+    }
+}
 export let spiritOfDeath = {
     name: 'Spirit of Death',
-    version: '0.12.10',
+    version: '',
     midi: {
         item: [
             {
@@ -120,3 +186,41 @@ export let spiritOfDeath = {
         }
     ]
 };
+export let spiritOfDeathReapingScythe = {
+    name: 'Spirit of Death: Reaping Scythe',
+    version: spiritOfDeath.version,
+    midi: {
+        item: [
+            {
+                pass: 'preambleComplete',
+                macro: attack,
+                priority: 50
+            }
+        ]
+    }
+}
+export let spiritOfDeathHauntCreature = {
+    name: 'Spirit of Death: Haunt Creature',
+    version: spiritOfDeath.version,
+    midi: {
+        item: [
+            {
+                pass: 'rollFinished',
+                macro: late,
+                priority: 50
+            }
+        ]
+    }
+}
+export let spiritOfDeathHauntCreatureHaunt = {
+    name: 'Haunt Creature: Haunt',
+    version: spiritOfDeath.version,
+    combat: [
+        {
+            pass: 'turnStartNear',
+            macro: turnStart,
+            distance: 10,
+            priority: 50
+        }
+    ]
+}
