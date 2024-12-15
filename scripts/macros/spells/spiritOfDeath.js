@@ -4,7 +4,7 @@ import {actorUtils, compendiumUtils, constants, dialogUtils, effectUtils, errors
 
 async function use({workflow}) {
     let concentrationEffect = effectUtils.getConcentrationEffect(workflow.actor, workflow.item);
-    let sourceActor = await compendiumUtils.getActorFromCompendium(constants.packs.summons, 'CPR - Bestial Spirit');
+    let sourceActor = await compendiumUtils.getActorFromCompendium(constants.packs.summons, 'CPR - Reaper Spirit');
     if (!sourceActor) {
         if (concentrationEffect) await genericUtils.remove(concentrationEffect);
         return;
