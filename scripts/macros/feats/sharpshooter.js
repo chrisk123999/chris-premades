@@ -1,4 +1,4 @@
-import {dialogUtils, genericUtils, itemUtils, rollUtils} from '../../utils.js';
+import {activityUtils, dialogUtils, genericUtils, itemUtils, rollUtils} from '../../utils.js';
 async function attack({trigger: {entity: item}, workflow}) {
     if (!workflow.item) return;
     if (workflow.activity.actionType != 'rwak' || !workflow.activity.damage?.parts.length) return;
@@ -8,7 +8,7 @@ async function attack({trigger: {entity: item}, workflow}) {
     let bonusFormula = itemUtils.getConfig(item, 'bonus');
     let bonus = workflow.activity.attack.bonus === '' ? bonusFormula : workflow.item.system.attack.bonus + ' + ' + bonusFormula;
     let formula = itemUtils.getConfig(item, 'formula');
-    let newActivity = genericUtils.deepClone(workflow.activity);
+    let newActivity = activityUtils.duplicateActivity(workflow.activity);
     newActivity.attack.bonus = bonus;
     newActivity.damage.parts[0].custom = {
         enabled: true,

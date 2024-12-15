@@ -1,5 +1,5 @@
 import {DialogApp} from '../../applications/dialog.js';
-import {actorUtils, compendiumUtils, constants, effectUtils, genericUtils, itemUtils, workflowUtils} from '../../utils.js';
+import {activityUtils, actorUtils, compendiumUtils, constants, effectUtils, genericUtils, itemUtils, workflowUtils} from '../../utils.js';
 import {proneOnFail} from '../generic/proneOnFail.js';
 async function used(actor, key, value) {
     await genericUtils.setFlag(actor, 'chris-premades', 'bg3WeaponActions.' + key, value);
@@ -45,7 +45,7 @@ async function braceMeleeDamageUse({trigger, workflow}) {
     if (!workflow.activity) return;
     if (!workflow.activity.damage) return;
     if (!constants.meleeAttacks.includes(workflow.activity.actionType)) return;
-    let newActivity = genericUtils.deepClone(workflow.activity);
+    let newActivity = activityUtils.duplicateActivity(workflow.activity);
     for (let i = 0; i < newActivity.damage.parts.length; i++) {
         let formula = newActivity.damage.parts[i].formula;
         newActivity.damage.parts[i].custom = {
@@ -688,7 +688,7 @@ async function braceRangedDamageUse({trigger, workflow}) {
     if (!workflow.activity) return;
     if (!workflow.activity.damage) return;
     if (!constants.rangedAttacks.includes(workflow.activity.actionType)) return;
-    let newActivity = genericUtils.deepClone(workflow.activity);
+    let newActivity = activityUtils.duplicateActivity(workflow.activity);
     for (let i = 0; i < newActivity.damage.parts.length; i++) {
         let formula = newActivity.damage.parts[i].formula;
         newActivity.damage.parts[i].custom = {

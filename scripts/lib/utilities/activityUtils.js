@@ -52,9 +52,16 @@ async function setDamage(activity, formula, types=[], {specificIndex = 0} = {}) 
         if (types.length) activity.damage.parts[specificIndex].types = new Set(types);
     }
 }
+function duplicateActivity(activity) {
+    let newActivity = activity.clone();
+    newActivity.prepareData();
+    newActivity.prepareFinalData();
+    return newActivity;
+}
 export let activityUtils = {
     getActivityByIdentifier,
     getIdentifier,
     setIdentifier,
-    setDamage
+    setDamage,
+    duplicateActivity
 };

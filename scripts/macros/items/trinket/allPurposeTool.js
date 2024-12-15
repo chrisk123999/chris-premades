@@ -49,7 +49,7 @@ async function early({trigger: {entity: item}, workflow}) {
         bonus = 3;
     }
     if (!bonus) return;
-    let newActivity = genericUtils.deepClone(workflow.activity);
+    let newActivity = activityUtils.duplicateActivity(workflow.activity);
     newActivity.save.dc = {
         calculation: '',
         formula: workflow.activity.save.dc.formula + ' + ' + bonus,

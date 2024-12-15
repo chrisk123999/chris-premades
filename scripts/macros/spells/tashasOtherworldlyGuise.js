@@ -62,7 +62,7 @@ async function early({trigger: {entity: effect}, workflow}) {
     }, {keepId: true});
     workflow.item.prepareData();
     workflow.item.applyActiveEffects();
-    workflow.activity = genericUtils.deepClone(workflow.activity);
+    workflow.activity = activityUtils.duplicateActivity(workflow.activity);
     workflow.activity.attack.ability = ability;
 }
 export let tashasOtherworldlyGuise = {

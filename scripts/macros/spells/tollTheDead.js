@@ -4,7 +4,7 @@ async function use ({trigger, workflow}) {
     let validTargets = workflow.targets.filter(i => i.actor.system.attributes.hp.value < i.actor.system.attributes.hp.max);
     if (!validTargets.size) return;
     let formula = itemUtils.getConfig(workflow.item, 'formula');
-    let newActivity = genericUtils.deepClone(workflow.activity);
+    let newActivity = activityUtils.duplicateActivity(workflow.activity);
     await activityUtils.setDamage(newActivity, formula + '[' + newActivity.damage.parts[0].types.first() + ']');
     workflow.activity = newActivity;
 }
