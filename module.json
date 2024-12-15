@@ -1,0 +1,312 @@
+{
+  "id": "chris-premades",
+  "title": "Cauldron of Plentiful Resources",
+  "description": "Premade items for high-automation midi-qol games.",
+  "version": "#{VERSION}#",
+  "library": "false",
+  "socket": true,
+  "compatibility": {
+    "minimum": "12",
+    "verified": "12",
+    "maximum": "12"
+  },
+  "authors": [
+    {
+      "name": "Chris",
+      "url": "https://github.com/chrisk123999",
+      "discord": "chrisk123999",
+      "ko-fi": "chrisk123999"
+    },
+    {
+      "name": "Autumn",
+      "url": "https://github.com/Autumn225",
+      "discord": "autumn225"
+    },
+    {
+      "name": "Michael",
+      "url": "https://github.com/roth-michael",
+      "discord": "hi25114"
+    }
+  ],
+  "esmodules": [
+    "scripts/module.js"
+  ],
+  "styles": [
+    "styles/module.css"
+  ],
+  "languages": [
+    {
+      "lang": "en",
+      "name": "English",
+      "path": "lang/en.json",
+      "flags": {}
+    },
+    {
+      "lang": "pt-BR",
+      "name": "Português (Brasil)",
+      "path": "lang/pt-BR.json",
+      "flags": {}
+    },
+    {
+      "lang": "fr",
+      "name": "Français",
+      "path": "lang/fr.json",
+      "flags": {}
+    },
+    {
+      "lang": "it",
+      "name": "Italiano",
+      "path": "lang/it.json",
+      "flags": {}
+    }
+  ],
+  "relationships": {
+    "systems": [
+      {
+        "id": "dnd5e",
+        "type": "system",
+        "compatibility": {
+          "minimum": "3.3.1",
+          "verified": "3.3.1",
+          "maximum": "3.9.9"
+        }
+      }
+    ],
+    "requires": [
+      {
+        "id": "midi-qol",
+        "type": "module",
+        "compatibility": {
+          "minimum": "11.6.4.1",
+          "verified": "11.6.4.1"
+        }
+      },
+      {
+        "id": "sequencer",
+        "type": "module",
+        "compatibility": {
+          "minimum": "3.2.11",
+          "verified": "3.2.11"
+        }
+      },
+      {
+        "id": "socketlib",
+        "type": "module",
+        "compatibility": {
+          "minimum": "1.1.0",
+          "verified": "1.1.0"
+        }
+      },
+      {
+        "id": "dae",
+        "type": "module",
+        "compatibility": {
+          "minimum": "11.3.52",
+          "verified": "11.3.52"
+        }
+      },
+      {
+        "id": "times-up",
+        "type": "module",
+        "compatibility": {
+          "minimum": "11.3.14",
+          "verified": "11.3.17"
+        }
+      }
+    ]
+  },
+  "packs": [
+    {
+      "name": "CPRSummons",
+      "label": "CPR Summons",
+      "path": "packs/cpr-summons",
+      "type": "Actor",
+      "module": "chris-premades",
+      "banner": "modules/chris-premades/images/bannerSummons.webp"
+    },
+    {
+      "name": "CPRThirdPartyClassFeatures",
+      "label": "CPR 3rd Party Class Features",
+      "path": "packs/cpr-3rd-party-class-features",
+      "type": "Item",
+      "module": "chris-premades",
+      "banner": "modules/chris-premades/images/bannerThirdParty.webp"
+    },
+    {
+      "name": "CPRThirdPartyItems",
+      "label": "CPR 3rd Party Items",
+      "path": "packs/cpr-3rd-party-items",
+      "type": "Item",
+      "module": "chris-premades",
+      "banner": "modules/chris-premades/images/bannerThirdParty.webp"
+    },
+    {
+      "name": "CPRThirdPartyFeats",
+      "label": "CPR 3rd Party Feats",
+      "path": "packs/cpr-3rd-party-feats",
+      "type": "Item",
+      "module": "chris-premades",
+      "banner": "modules/chris-premades/images/bannerThirdParty.webp"
+    },
+    {
+      "name": "CPRActions",
+      "label": "CPR Actions",
+      "path": "packs/cpr-actions",
+      "type": "Item",
+      "module": "chris-premades",
+      "banner": "modules/chris-premades/images/bannerActions.webp"
+    },
+    {
+      "name": "CPRClassFeatureItems",
+      "label": "CPR Class Feature Items",
+      "path": "packs/cpr-class-feature-items",
+      "type": "Item",
+      "module": "chris-premades",
+      "banner": "modules/chris-premades/images/bannerUnknown1.webp"
+    },
+    {
+      "name": "CPRClassFeatures",
+      "label": "CPR Class Features",
+      "path": "packs/cpr-class-features",
+      "type": "Item",
+      "module": "chris-premades",
+      "banner": "modules/chris-premades/images/bannerClassFeatures.webp"
+    },
+    {
+      "name": "CPRFeatFeatures",
+      "label": "CPR Feat Features",
+      "path": "packs/cpr-feat-features",
+      "type": "Item",
+      "module": "chris-premades",
+      "banner": "modules/chris-premades/images/bannerUnknown2.webp"
+    },
+    {
+      "name": "CPRFeats",
+      "label": "CPR Feats",
+      "path": "packs/cpr-feats",
+      "type": "Item",
+      "module": "chris-premades",
+      "banner": "modules/chris-premades/images/bannerFeats.webp"
+    },
+    {
+      "name": "CPRItemFeatures",
+      "label": "CPR Item Features",
+      "path": "packs/cpr-item-features",
+      "type": "Item",
+      "module": "chris-premades",
+      "banner": "modules/chris-premades/images/bannerUnknown3.webp"
+    },
+    {
+      "name": "CPRItems",
+      "label": "CPR Items",
+      "path": "packs/cpr-items",
+      "type": "Item",
+      "module": "chris-premades",
+      "banner": "modules/chris-premades/images/bannerItems.webp"
+    },
+    {
+      "name": "CPRMiscellaneousItems",
+      "label": "CPR Miscellaneous Items",
+      "path": "packs/cpr-miscellaneous-items",
+      "type": "Item",
+      "module": "chris-premades",
+      "banner": "modules/chris-premades/images/bannerUnknown4.webp"
+    },
+    {
+      "name": "CPRMonsterFeatures",
+      "label": "CPR Monster Features",
+      "path": "packs/cpr-monster-features",
+      "type": "Item",
+      "module": "chris-premades",
+      "banner": "modules/chris-premades/images/bannerMonsterFeatures.webp"
+    },
+    {
+      "name": "CPRRaceFeatureItems",
+      "label": "CPR Race Feature Items",
+      "path": "packs/cpr-race-feature-items",
+      "type": "Item",
+      "module": "chris-premades",
+      "banner": "modules/chris-premades/images/bannerUnknown1.webp"
+    },
+    {
+      "name": "CPRRaceFeatures",
+      "label": "CPR Race Features",
+      "path": "packs/cpr-race-features",
+      "type": "Item",
+      "module": "chris-premades",
+      "banner": "modules/chris-premades/images/bannerRaceFeatures.webp"
+    },
+    {
+      "name": "CPRSpellFeatures",
+      "label": "CPR Spell Features",
+      "path": "packs/cpr-spell-features",
+      "type": "Item",
+      "module": "chris-premades",
+      "banner": "modules/chris-premades/images/bannerUnknown2.webp"
+    },
+    {
+      "name": "CPRSpells",
+      "label": "CPR Spells",
+      "path": "packs/cpr-spells",
+      "type": "Item",
+      "module": "chris-premades",
+      "banner": "modules/chris-premades/images/bannerSpells.webp"
+    },
+    {
+      "name": "CPRSummonFeatures",
+      "label": "CPR Summon Features",
+      "path": "packs/cpr-summon-features",
+      "type": "Item",
+      "module": "chris-premades",
+      "banner": "modules/chris-premades/images/bannerUnknown3.webp"
+    },
+    {
+      "name": "CPRMiscellaneous",
+      "label": "CPR Miscellaneous",
+      "path": "packs/cpr-miscellaneous",
+      "type": "Item",
+      "module": "chris-premades",
+      "banner": "modules/chris-premades/images/bannerItems.webp"
+    }
+  ],
+  "packFolders": [
+    {
+      "name": "Cauldron of Plentiful Resources",
+      "sorting": "a",
+      "color": "#348f2d",
+      "packs": [
+        "CPRSpells",
+        "CPRSpellFeatures",
+        "CPRSummonFeatures",
+        "CPRSummons",
+        "CPRItems",
+        "CPRClassFeatures",
+        "CPRClassFeatureItems",
+        "CPRActions",
+        "CPRMiscellaneousItems",
+        "CPRItemFeatures",
+        "CPRFeats",
+        "CPRFeatFeatures",
+        "CPRRaceFeatures",
+        "CPRRaceFeatureItems",
+        "CPRThirdPartyClassFeatures",
+        "CPRThirdPartyItems",
+        "CPRMonsterFeatures",
+        "CPRMiscellaneous",
+        "CPRThirdPartyFeats"
+      ]
+    }
+  ],
+  "changelog": "https://github.com/chrisk123999/chris-premades/blob/master/CHANGELOG.md",
+  "url": "https://github.com/chrisk123999/chris-premades/",
+  "manifest": "#{MANIFEST}#",
+  "download": "#{DOWNLOAD}#",
+  "license": "LICENSE",
+  "readme": "README.md",
+  "media": [
+    {
+      "type": "icon",
+      "url": ""
+    }
+  ]
+}
