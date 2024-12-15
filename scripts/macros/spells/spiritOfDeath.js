@@ -32,11 +32,6 @@ async function use({workflow}) {
                     ac: {
                         flat: 11 + spellLevel
                     },
-                    movement: {
-                        walk: 30,
-                        fly: 30,
-                        hover: true
-                    }
                 }
             },
             prototypeToken: {
