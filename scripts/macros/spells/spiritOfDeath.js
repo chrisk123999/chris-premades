@@ -123,15 +123,13 @@ async function late({workflow}) {
     await itemUtils.createItems(workflow.actor, [featureData], {parentEntity: casterEffect});
 }
 async function turnStart({trigger: {entity: effect, token, target}}) {
-    if (combatUtils.inCombat()) {
-        let [targetCombatant] = game.combat.getCombatantsByToken(target.document);
-        if (!targetCombatant) return;
-        let effect = effectUtils.getEffectByIdentifier(targetCombatant, 'spiritOfDeathHauntCreatureHaunted');
-        if (!effect) return;
-        let feature = itemUtils.getItemByIdentifier(token.actor, 'spiritOfDeathHauntCreatureHaunt');
-        if (!feature) return;
-        let saveWorkflow = await workflowUtils.syntheticItemRoll(feature, [target]);
-    }
+    let [targetCombatant] = game.combat.getCombatantsByToken(target.document);
+    if (!targetCombatant) return;
+    let effect = effectUtils.getEffectByIdentifier(targetCombatant, 'spiritOfDeathHauntCreatureHaunted');
+    if (!effect) return;
+    let feature = itemUtils.getItemByIdentifier(token.actor, 'spiritOfDeathHauntCreatureHaunt');
+    if (!feature) return;
+    let saveWorkflow = await workflowUtils.syntheticItemRoll(feature, [target]);
 }
 export let spiritOfDeath = {
     name: 'Spirit of Death',
