@@ -16,7 +16,7 @@ async function use({trigger, workflow}) {
 export let autoPush = {
     name: 'Auto Push',
     translation: 'CHRISPREMADES.Macros.AutoPush.Name',
-    version: '1.0.50',
+    version: '1.0.45',
     midi: {
         item: [
             {

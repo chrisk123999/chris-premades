@@ -131,7 +131,7 @@ async function turnStart({trigger: {entity: effect, token, target}}) {
 }
 export let spiritOfDeath = {
     name: 'Spirit of Death',
-    version: '',
+    version: '1.0.50',
     midi: {
         item: [
             {
