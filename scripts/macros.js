@@ -112,6 +112,7 @@ export {skillEmpowerment} from './macros/spells/skillEmpowerment.js';
 export {sleetStorm, sleetStormArea} from './macros/spells/sleetStorm.js';
 export {spikeGrowth, spikeGrowthSpikes} from './macros/spells/spikeGrowth.js';
 export {spiritGuardians, spiritGuardiansDamage} from './macros/spells/spiritGuardians.js';
+export {spiritOfDeath, spiritOfDeathReapingScythe, spiritOfDeathHauntCreature, spiritOfDeathHauntCreatureHaunt} from './macros/spells/spiritOfDeath.js';
 export {spiritShroud, spiritShroudShrouded} from './macros/spells/spiritShroud.js';
 export {spiritualWeapon, spiritualWeaponAttack} from './macros/spells/spiritualWeapon.js';
 export {sprayOfCards} from './macros/spells/sprayOfCards.js';

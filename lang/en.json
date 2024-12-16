@@ -1401,6 +1401,12 @@
                 "Spirits": "Spirits",
                 "Variation": "Variation:"
             },
+            "SpiritOfDeath": {
+                "HauntCreature": "Haunt Creature (Reaper Spirit)",
+                "HauntCreatureHaunt": "Haunt Creature: Haunt",
+                "Haunted": "Reaper Spirit: Haunted",
+                "ReapingScythe": "Reaping Scythe (Reaper Spirit)"
+            },
             "SpiritShroud": {
                 "Hit": "Spirit Shroud: Hit",
                 "Slow": "Spirit Shroud: Slow"
@@ -2437,6 +2443,7 @@
                 "HybridTransformation": "Hybrid Transformation",
                 "ManifestMind": "Manifest Mind",
                 "Pixie": "Pixie",
+                "ReaperSpirit": "Reaper Spirit",
                 "ShadowSpirit": "Shadow Spirit",
                 "ShadowSpiritDespair": "Shadow Spirit (Despair)",
                 "ShadowSpiritFear": "Shadow Spirit (Fear)",
