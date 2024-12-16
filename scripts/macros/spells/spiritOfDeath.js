@@ -44,8 +44,8 @@ async function use({workflow}) {
             disposition: workflow.token.document.disposition
         }
     };
-    let avatarImg = itemUtils.getConfig(workflow.item, 'Avatar');
-    let tokenImg = itemUtils.getConfig(workflow.item, 'Token');
+    let avatarImg = itemUtils.getConfig(workflow.item, 'avatar');
+    let tokenImg = itemUtils.getConfig(workflow.item, 'token');
     if (avatarImg) updates.actor.img = avatarImg;
     if (tokenImg) {
         genericUtils.setProperty(updates, 'actor.prototypeToken.texture.src', tokenImg);
@@ -57,7 +57,7 @@ async function use({workflow}) {
         max: hpFormula,
         value: hpFormula
     };
-    let animation = itemUtils.getConfig(workflow.item, 'Animation') ?? 'none';
+    let animation = itemUtils.getConfig(workflow.item, 'animation') ?? 'none';
     await Summons.spawn(sourceActor, updates, workflow.item, workflow.token, {
         duration: 3600,
         range: 90,
