@@ -176,6 +176,8 @@
             "ShowRoll": "Exibir Rolagem:",
             "Sound": "Som:",
             "SpecificAnimation": "Animação {option}:",
+            "Trigger": "Gatilho:",
+            "TurnTrigger": "Gatilho do Turno:",
             "UseFormula": "Usar Fórmula:"
         },
         "Cover": {
@@ -323,6 +325,8 @@
             "Success": "Sucesso",
             "Summon": "Invocação",
             "Total": "Total",
+            "TurnEnd": "Fim do Turno",
+            "TurnStart": "Início do Turno",
             "Uncontested": "Não-Contestado",
             "Update": "Atualizar",
             "Yes": "Sim",
@@ -1401,6 +1405,12 @@
                 "Spirits": "Espíritos",
                 "Variation": "Variações:"
             },
+            "SpiritOfDeath": {
+                "HauntCreature": "Criatura Assombrada (Espírito Ceifador)",
+                "HauntCreatureHaunt": "Criatura Assombrada: Assombrar",
+                "Haunted": "Espírito Ceifador: Assombrado",
+                "ReapingScythe": "Foice Ceifadora (Espírito Ceifador)"
+            },
             "SpiritShroud": {
                 "Hit": "Mortalha Espiritual: Acerto",
                 "Slow": "Mortalha Espiritual: Lentidão"
@@ -2437,6 +2447,7 @@
                 "HybridTransformation": "Transformação Híbrida",
                 "ManifestMind": "Mente Manifestada",
                 "Pixie": "Pixie",
+                "ReaperSpirit": "Espírito Ceifador",
                 "ShadowSpirit": "Espírito das Sombras",
                 "ShadowSpiritDespair": "Espírito das Sombras (Desespero)",
                 "ShadowSpiritFear": "Espírito das Sombras (Medo)",
