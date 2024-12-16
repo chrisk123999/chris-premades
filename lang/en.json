@@ -1412,6 +1412,7 @@
                 "HauntCreature": "Haunt Creature (Reaper Spirit)",
                 "HauntCreatureHaunt": "Haunt Creature: Haunt",
                 "Haunted": "Reaper Spirit: Haunted",
+                "InvalidTarget": "Target must be Haunted!",
                 "ReapingScythe": "Reaping Scythe (Reaper Spirit)"
             },
             "SpiritShroud": {
@@ -2132,10 +2133,6 @@
                 "Hint": "Enables cleave mechanic from the Dungeon Master's Guide",
                 "Name": "DMG Cleave"
             },
-            "weaponMastery": {
-                "Hint": "Enable PHB 2024 weapon mastery automation.",
-                "Name": "Weapon Mastery Automation"
-            },
             "colorizeAutomatedAnimations": {
                 "Hint": "When enabled, the Automated Animations titlebar icon will be recolored based on the configuration status.",
                 "Name": "Automated Animations: Colorize Titlebar Icon"
@@ -2383,6 +2380,10 @@
             "vaeButtons": {
                 "Hint": "When enabled, certain macros will add buttons to the VAE interface.",
                 "Name": "Visual Active Effects: Buttons"
+            },
+            "weaponMastery": {
+                "Hint": "Enable PHB 2024 weapon mastery automation.",
+                "Name": "Weapon Mastery Automation"
             }
         },
         "SkillCheck": {

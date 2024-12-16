@@ -452,14 +452,13 @@
       "race": null,
       "type": {
         "value": "undead",
-        "custom": "",
         "subtype": "",
-        "swarm": ""
+        "swarm": "",
+        "custom": ""
       },
       "environment": "",
       "cr": 1,
-      "spellLevel": 0,
-      "source": {}
+      "spellLevel": 0
     },
     "resources": {
       "legact": {
@@ -474,6 +473,10 @@
         "value": false,
         "initiative": null
       }
+    },
+    "source": {
+      "revision": 1,
+      "rules": "2014"
     },
     "traits": {
       "size": "med",
@@ -606,7 +609,11 @@
   "items": [],
   "effects": [],
   "folder": null,
-  "flags": {},
-  "_id": "kQMKgMHAmqQepOS4",
-  "_key": "!actors!kQMKgMHAmqQepOS4"
+  "flags": {
+    "dnd5e": {
+      "showTokenPortrait": false
+    }
+  },
+  "_id": "3XxBL9IirskVKEul",
+  "_key": "!actors!3XxBL9IirskVKEul"
 }

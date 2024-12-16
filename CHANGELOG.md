@@ -1,3 +1,7 @@
+# 1.1.1 Release:
+## Updated Content:
+- Spirit of Death
+
 # 1.1.0 Release:
 ## New Content:
 - 2024 Weapon Masteries
