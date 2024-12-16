@@ -113,6 +113,7 @@ export {skillEmpowerment} from './macros/spells/skillEmpowerment.js';
 export {sleetStorm, sleetStormArea} from './macros/spells/sleetStorm.js';
 export {spikeGrowth, spikeGrowthSpikes} from './macros/spells/spikeGrowth.js';
 export {spiritGuardians, spiritGuardiansDamage} from './macros/spells/spiritGuardians.js';
+export {spiritOfDeath, spiritOfDeathReapingScythe, spiritOfDeathHauntCreature, spiritOfDeathHauntCreatureHaunt} from './macros/spells/spiritOfDeath.js';
 export {spiritShroud, spiritShroudShrouded} from './macros/spells/spiritShroud.js';
 export {spiritualWeapon} from './macros/spells/spiritualWeapon.js';
 export {sprayOfCards} from './macros/spells/sprayOfCards.js';
@@ -446,7 +447,7 @@ export {leadership, leadershipAura} from './macros/monsterFeatures/fey/hobgoblin
 //export {adultWindDragonTempestBreath, ancientWindDragonTempestBreath, wyrmlingWindDragonTempestBreath, youngWindDragonTempestBreath} from './macros/monsterFeatures/dragon/windDragon/tempestBreath.js';
 // Generic Monster Features
 export {advantageDamageBonus} from './macros/monsterFeatures/generic/advantageDamageBonus.js';
-export {auraDamageEnd} from './macros/monsterFeatures/generic/auraDamageEnd.js';
+export {auraDamageEnd} from './macros/monsterFeatures/generic/auraDamage.js';
 export {autoGrapple} from './macros/monsterFeatures/generic/autoGrapple.js';
 export {berserk} from './macros/monsterFeatures/generic/berserk.js';
 export {contextualBonus} from './macros/monsterFeatures/generic/contextualBonus.js';

@@ -13,8 +13,11 @@
 - With the exception of the new weapon masteries, CPR has not yet implemented any content from the 2024 rulebooks. Nevertheless, in preparation for doing so, the 2014-specific content compendiums have been moved into a "2014" subfolder
 
 # 1.0.50 Release:
+## New Content:
+- Spirit of Death (Thanks SagaTympana)
 ## Bug Fixes:
 - Dawn
+- Push Generic Monster Feature (Thanks aljames-arctic)
 
 # 1.0.49 Release:
 ## Bug Fixes:

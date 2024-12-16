@@ -176,6 +176,8 @@
             "ShowRoll": "Show Roll:",
             "Sound": "Sound:",
             "SpecificAnimation": "{option} Animation:",
+            "Trigger": "Trigger:",
+            "TurnTrigger": "Turn Trigger:",
             "UseFormula": "Use Formula:"
         },
         "Cover": {
@@ -324,6 +326,8 @@
             "Success": "Success",
             "Summon": "Summon",
             "Total": "Total",
+            "TurnEnd": "Turn End",
+            "TurnStart": "Turn Start",
             "Uncontested": "Uncontested",
             "Update": "Update",
             "Yes": "Yes",
@@ -436,7 +440,7 @@
                 "Which": "Select proficiencies:"
             },
             "AuraDamage": {
-                "Name": "Aura Damage: End of Turn"
+                "Name": "Damaging Aura"
             },
             "AuraOfLife": {
                 "RemoveTempmax": "Temporarily remove existing hp max reduction while in aura:"
@@ -1403,6 +1407,12 @@
                 "Ring": "Ring",
                 "Spirits": "Spirits",
                 "Variation": "Variation:"
+            },
+            "SpiritOfDeath": {
+                "HauntCreature": "Haunt Creature (Reaper Spirit)",
+                "HauntCreatureHaunt": "Haunt Creature: Haunt",
+                "Haunted": "Reaper Spirit: Haunted",
+                "ReapingScythe": "Reaping Scythe (Reaper Spirit)"
             },
             "SpiritShroud": {
                 "Hit": "Spirit Shroud: Hit",
@@ -2463,6 +2473,7 @@
                 "HybridTransformation": "Hybrid Transformation",
                 "ManifestMind": "Manifest Mind",
                 "Pixie": "Pixie",
+                "ReaperSpirit": "Reaper Spirit",
                 "ShadowSpirit": "Shadow Spirit",
                 "ShadowSpiritDespair": "Shadow Spirit (Despair)",
                 "ShadowSpiritFear": "Shadow Spirit (Fear)",
