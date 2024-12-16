@@ -1,6 +1,5 @@
 import {Summons} from '../../lib/summons.js';
-import {actorUtils, compendiumUtils, constants, dialogUtils, effectUtils, errors, genericUtils, itemUtils, workflowUtils} from '../../utils.js';
-
+import {actorUtils, compendiumUtils, constants, effectUtils, errors, genericUtils, itemUtils, workflowUtils} from '../../utils.js';
 async function use({workflow}) {
     let concentrationEffect = effectUtils.getConcentrationEffect(workflow.actor, workflow.item);
     let sourceActor = await compendiumUtils.getActorFromCompendium(constants.packs.summons, 'CPR - Reaper Spirit');
@@ -73,7 +72,7 @@ async function attack({workflow}) {
         workflow.aborted = true;   
         return;
     }
-    let {targets: validTargetUuids, formula} = effect.flags['chris-premades'].spiritOfDeathHauntCreature;
+    let {targets: validTargetUuids} = effect.flags['chris-premades'].spiritOfDeathHauntCreature;
     if (!validTargetUuids.includes(workflow.targets.first().document.uuid)) {
         workflow.aborted = true;
         return;
@@ -97,9 +96,9 @@ async function late({workflow}) {
         origin: workflow.item.uuid,
         flags: {
             dae: {
-                "showIcon" : true,
-                "specialDuration": [
-                    "zeroHP"
+                'showIcon' : true,
+                'specialDuration': [
+                    'zeroHP'
                 ]
             }
         }
@@ -118,9 +117,9 @@ async function late({workflow}) {
     };
     effectUtils.addMacro(casterEffectData, 'combat', ['spiritOfDeathHauntCreatureHaunt']);
     let casterEffect = await effectUtils.createEffect(workflow.actor, casterEffectData, {concentrationItem: workflow.item, strictlyInterdependent: true, identifier: 'spiritOfDeathHauntCreature'});
-    for (let i of workflow.targets) {
-        if (i.actor) await effectUtils.createEffect(i.actor, targetEffectData, {strictlyInterdependent: true, parentEntity: casterEffect, identifier: 'spiritOfDeathHauntCreatureHaunted'});
-    }
+    await Promise.all(workflow.targets.map(async target => {
+        if (target.actor) await effectUtils.createEffect(target.actor, targetEffectData, {strictlyInterdependent: true, parentEntity: casterEffect, identifier: 'spiritOfDeathHauntCreatureHaunted'});
+    }));
     await itemUtils.createItems(workflow.actor, [featureData], {parentEntity: casterEffect});
 }
 async function turnStart({trigger: {entity: effect, token, target}}) {
@@ -189,7 +188,7 @@ export let spiritOfDeathReapingScythe = {
             }
         ]
     }
-}
+};
 export let spiritOfDeathHauntCreature = {
     name: 'Spirit of Death: Haunt Creature',
     version: spiritOfDeath.version,
@@ -202,7 +201,7 @@ export let spiritOfDeathHauntCreature = {
             }
         ]
     }
-}
+};
 export let spiritOfDeathHauntCreatureHaunt = {
     name: 'Haunt Creature: Haunt',
     version: spiritOfDeath.version,
@@ -214,4 +213,4 @@ export let spiritOfDeathHauntCreatureHaunt = {
             priority: 50
         }
     ]
-}
+};

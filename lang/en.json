@@ -176,7 +176,8 @@
             "ShowRoll": "Show Roll:",
             "Sound": "Sound:",
             "SpecificAnimation": "{option} Animation:",
-            "Trigger": "Occurs when:",
+            "Trigger": "Trigger:",
+            "TurnTrigger": "Turn Trigger:",
             "UseFormula": "Use Formula:"
         },
         "Cover": {
@@ -324,8 +325,8 @@
             "Success": "Success",
             "Summon": "Summon",
             "Total": "Total",
-            "TurnEnd": "Turn ends",
-            "TurnStart": "Turn starts",
+            "TurnEnd": "Turn End",
+            "TurnStart": "Turn Start",
             "Uncontested": "Uncontested",
             "Update": "Update",
             "Yes": "Yes",

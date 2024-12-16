@@ -1,29 +1,23 @@
-import {actorUtils, constants, itemUtils, tokenUtils, workflowUtils} from '../../../utils.js';
+import {actorUtils, itemUtils, tokenUtils, workflowUtils} from '../../../utils.js';
 // TODO - cleanup on version update auraDamageEnd -> auraDamage
-
 async function turnStart({trigger: {entity: item, token, target}}) {
-    const config = itemUtils.getGenericFeatureConfig(item, 'auraDamageEnd');
+    let config = itemUtils.getGenericFeatureConfig(item, 'auraDamageEnd');
     if (config.trigger != 'start') return;
     await damage({trigger: {entity: item, token, target}});
 }
-
 async function turnEnd({trigger: {entity: item, token, target}}) {
-    const config = itemUtils.getGenericFeatureConfig(item, 'auraDamageEnd');
+    let config = itemUtils.getGenericFeatureConfig(item, 'auraDamageEnd');
     // TODO - cleanup on version update removing the undefined backwards compatibility cornercase
     if (config.trigger && config.trigger != 'end') return;
     await damage({trigger: {entity: item, token, target}});
 }
-
 async function damage({trigger: {entity: item, token, target}}) {
-    const config = itemUtils.getGenericFeatureConfig(item, 'auraDamageEnd');
-    if (!config.affectAllies) {
-        if (token.document.disposition === target.document.disposition) return;
-    }
+    let config = itemUtils.getGenericFeatureConfig(item, 'auraDamageEnd');
+    if (!config.affectAllies) if (token.document.disposition === target.document.disposition) return;
     if (tokenUtils.getDistance(token, target) > config.distance) return;
     if (config.immuneCreatures.includes(actorUtils.typeOrRace(target.actor))) return;
     await workflowUtils.syntheticItemRoll(item, [target]);
 }
-
 export let auraDamageEnd = {
     translation: 'CHRISPREMADES.Macros.AuraDamage.Name',
     version: '1.0.50',
@@ -61,7 +55,7 @@ export let auraDamageEnd = {
         },
         {
             value: 'trigger',
-            label: 'CHRISPREMADES.Config.Trigger',
+            label: 'CHRISPREMADES.Config.TurnTrigger',
             type: 'select',
             options: [
                 {

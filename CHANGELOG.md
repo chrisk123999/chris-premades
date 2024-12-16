@@ -1,6 +1,9 @@
 # 1.0.50 Release:
+## New Content:
+- Spirit of Death (Thanks SagaTympana)
 ## Bug Fixes:
 - Dawn
+- Push Generic Monster Feature (Thanks aljames-arctic)
 
 # 1.0.49 Release:
 ## Bug Fixes:
