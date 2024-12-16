@@ -5,13 +5,18 @@ async function use({trigger, workflow}) {
     if (isNaN(Number(config.distance))) return;
     workflow.targets.forEach(token => {
         if (config.failed && !workflow.failedSaves.has(token)) return;
-        tokenUtils.pushToken(workflow.token, token, Number(config.distance));
+        let distance = Number(config.distance);
+        if (distance < 0) {
+            let distanceBetween = tokenUtils.getDistance(workflow.token, token);
+            distance = Math.max(distance, -distanceBetween);
+        }
+        tokenUtils.pushToken(workflow.token, token, distance);
     });
 }
 export let autoPush = {
     name: 'Auto Push',
     translation: 'CHRISPREMADES.Macros.AutoPush.Name',
-    version: '1.0.45',
+    version: '1.0.50',
     midi: {
         item: [
             {
