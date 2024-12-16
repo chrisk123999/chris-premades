@@ -1,6 +1,5 @@
-
 import {Summons} from '../../lib/summons.js';
-import {actorUtils, compendiumUtils, constants, dialogUtils, effectUtils, errors, genericUtils, itemUtils} from '../../utils.js';
+import {actorUtils, compendiumUtils, constants, dialogUtils, effectUtils, errors, genericUtils, itemUtils, workflowUtils} from '../../utils.js';
 
 async function use({workflow}) {
     let concentrationEffect = effectUtils.getConcentrationEffect(workflow.actor, workflow.item);
@@ -45,8 +44,8 @@ async function use({workflow}) {
             disposition: workflow.token.document.disposition
         }
     };
-    let avatarImg = itemUtils.getConfig(workflow.item, creatureType + 'Avatar');
-    let tokenImg = itemUtils.getConfig(workflow.item, creatureType + 'Token');
+    let avatarImg = itemUtils.getConfig(workflow.item, 'Avatar');
+    let tokenImg = itemUtils.getConfig(workflow.item, 'Token');
     if (avatarImg) updates.actor.img = avatarImg;
     if (tokenImg) {
         genericUtils.setProperty(updates, 'actor.prototypeToken.texture.src', tokenImg);
@@ -58,7 +57,7 @@ async function use({workflow}) {
         max: hpFormula,
         value: hpFormula
     };
-    let animation = itemUtils.getConfig(workflow.item, creatureType + 'Animation') ?? 'none';
+    let animation = itemUtils.getConfig(workflow.item, 'Animation') ?? 'none';
     await Summons.spawn(sourceActor, updates, workflow.item, workflow.token, {
         duration: 3600,
         range: 90,
@@ -70,8 +69,15 @@ async function use({workflow}) {
 async function attack({workflow}) {
     if (workflow.targets.size !== 1 || workflow.advantage) return;
     let effect = effectUtils.getEffectByIdentifier(workflow.actor, 'spiritOfDeathHauntCreature');
+    if (!effect) {
+        workflow.aborted = true;   
+        return;
+    }
     let {targets: validTargetUuids, formula} = effect.flags['chris-premades'].spiritOfDeathHauntCreature;
-    if (!validTargetUuids.includes(workflow.targets.first().document.uuid)) return;
+    if (!validTargetUuids.includes(workflow.targets.first().document.uuid)) {
+        workflow.aborted = true;
+        return;
+    }
     workflow.advantage = true;
     workflow.attackAdvAttribution.add(genericUtils.translate('DND5E.Advantage') + ': ' + effect.name);
 }
@@ -83,7 +89,7 @@ async function late({workflow}) {
     {
         return;
     }
-    let featureData = await compendiumUtils.getItemFromCompendium(constants.packs.summonFeatures, 'Haunt Creature: Haunt', {object: true, getDescription: true, translate: 'CHRISPREMADES.Macros.SpiritOfDeath.HauntCreatureHaunt', identifier: 'spiritOfDeathHauntCreatureHaunt', flatDC: sourceActor.sytem.attributes.spelldc});
+    let featureData = await compendiumUtils.getItemFromCompendium(constants.packs.summonFeatures, 'Haunt Creature: Haunt', {object: true, getDescription: true, translate: 'CHRISPREMADES.Macros.SpiritOfDeath.HauntCreatureHaunt', identifier: 'spiritOfDeathHauntCreatureHaunt', flatDC: sourceActor.system.attributes.spelldc});
     if (!featureData) {
         errors.missingPackItem();
         return;
@@ -104,9 +110,6 @@ async function late({workflow}) {
         name: workflow.item.name,
         img: workflow.item.img,
         origin: workflow.item.uuid,
-        duration: {
-            seconds
-        },
         flags: {
             'chris-premades': {
                 spiritOfDeathHauntCreature: {
@@ -115,17 +118,17 @@ async function late({workflow}) {
             }
         }
     };
-    let casterEffect = await effectUtils.createEffect(workflow.actor, casterEffectData, {concentrationItem: workflow.item, strictlyInterdependent: true, identifier: 'spiritOfDeathHauntCreatureHaunt'});
+    let casterEffect = await effectUtils.createEffect(workflow.actor, casterEffectData, {concentrationItem: workflow.item, strictlyInterdependent: true, identifier: 'spiritOfDeathHauntCreature'});
     await genericUtils.setFlag(casterEffect, 'chris-premades', 'macros.combat', ['spiritOfDeathHauntCreatureHaunt']);
     for (let i of workflow.targets) {
-        if (i.actor) await effectUtils.createEffect(i.actor, targetEffectData, {parentEntity: casterEffect, identifier: 'spiritOfDeathHauntCreatureHaunted'});
+        if (i.actor) await effectUtils.createEffect(i.actor, targetEffectData, {strictlyInterdependent: true, parentEntity: casterEffect, identifier: 'spiritOfDeathHauntCreatureHaunted'});
     }
     await itemUtils.createItems(workflow.actor, [featureData], {parentEntity: casterEffect});
 }
 async function turnStart({trigger: {entity: effect, token, target}}) {
     let [targetCombatant] = game.combat.getCombatantsByToken(target.document);
     if (!targetCombatant) return;
-    let hauntedEffect = effectUtils.getEffectByIdentifier(targetCombatant, 'spiritOfDeathHauntCreatureHaunted');
+    let hauntedEffect = effectUtils.getEffectByIdentifier(targetCombatant.actor, 'spiritOfDeathHauntCreatureHaunted');
     if (!hauntedEffect) return;
     let feature = itemUtils.getItemByIdentifier(token.actor, 'spiritOfDeathHauntCreatureHaunt');
     if (!feature) return;
