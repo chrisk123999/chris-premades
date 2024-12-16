@@ -85,10 +85,7 @@ async function late({workflow}) {
     let effect = effectUtils.getEffectByIdentifier(workflow.actor, 'summonedEffect');
     let originItem = fromUuidSync(effect?.origin);
     let sourceActor = originItem?.actor;
-    if(!sourceActor)
-    {
-        return;
-    }
+    if(!sourceActor) return;
     let featureData = await compendiumUtils.getItemFromCompendium(constants.packs.summonFeatures, 'Haunt Creature: Haunt', {object: true, getDescription: true, translate: 'CHRISPREMADES.Macros.SpiritOfDeath.HauntCreatureHaunt', identifier: 'spiritOfDeathHauntCreatureHaunt', flatDC: sourceActor.system.attributes.spelldc});
     if (!featureData) {
         errors.missingPackItem();
@@ -100,6 +97,7 @@ async function late({workflow}) {
         origin: workflow.item.uuid,
         flags: {
             dae: {
+                "showIcon" : true,
                 "specialDuration": [
                     "zeroHP"
                 ]
@@ -118,21 +116,19 @@ async function late({workflow}) {
             }
         }
     };
+    effectUtils.addMacro(casterEffectData, 'combat', ['spiritOfDeathHauntCreatureHaunt']);
     let casterEffect = await effectUtils.createEffect(workflow.actor, casterEffectData, {concentrationItem: workflow.item, strictlyInterdependent: true, identifier: 'spiritOfDeathHauntCreature'});
-    await genericUtils.setFlag(casterEffect, 'chris-premades', 'macros.combat', ['spiritOfDeathHauntCreatureHaunt']);
     for (let i of workflow.targets) {
         if (i.actor) await effectUtils.createEffect(i.actor, targetEffectData, {strictlyInterdependent: true, parentEntity: casterEffect, identifier: 'spiritOfDeathHauntCreatureHaunted'});
     }
     await itemUtils.createItems(workflow.actor, [featureData], {parentEntity: casterEffect});
 }
 async function turnStart({trigger: {entity: effect, token, target}}) {
-    let [targetCombatant] = game.combat.getCombatantsByToken(target.document);
-    if (!targetCombatant) return;
-    let hauntedEffect = effectUtils.getEffectByIdentifier(targetCombatant.actor, 'spiritOfDeathHauntCreatureHaunted');
+    let hauntedEffect = effectUtils.getEffectByIdentifier(target.actor, 'spiritOfDeathHauntCreatureHaunted');
     if (!hauntedEffect) return;
     let feature = itemUtils.getItemByIdentifier(token.actor, 'spiritOfDeathHauntCreatureHaunt');
     if (!feature) return;
-    let saveWorkflow = await workflowUtils.syntheticItemRoll(feature, [target]);
+    await workflowUtils.syntheticItemRoll(feature, [target]);
 }
 export let spiritOfDeath = {
     name: 'Spirit of Death',
