@@ -47,7 +47,7 @@ export async function renderItemSheet(app, [elem], options) {
     let isTidy = app?.classList?.contains?.('tidy5e-sheet');
     let headerButton;
     if (isTidy) {
-        headerButton = app.element.querySelector('menu.controls-dropdown i.fa-kit-medical');
+        headerButton = app.element.querySelector('menu.controls-dropdown i.chris-premades-item');
     } else {
         headerButton = elem.closest('.window-app').querySelector('a.header-button.chris-premades-item');
     }

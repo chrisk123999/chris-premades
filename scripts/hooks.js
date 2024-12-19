@@ -105,7 +105,7 @@ export function registerHooks() {
         api.registerItemHeaderControls({
             controls: [
                 {
-                    icon: 'fa-solid fa-kit-medical',
+                    icon: 'fa-solid fa-kit-medical chris-premades-item',
                     label: 'CHRISPREMADES.Medkit.Medkit',
                     async onClickAction() {
                         await ItemMedkit.item(this.document);
