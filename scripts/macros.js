@@ -455,6 +455,7 @@ export {deathBurst} from './macros/monsterFeatures/generic/deathBurst.js';
 export {enlarge} from './macros/monsterFeatures/generic/enlarge.js';
 export {gaze} from './macros/monsterFeatures/generic/gaze.js';
 export {genericRegeneration} from './macros/monsterFeatures/generic/regeneration.js';
+export {genericTeleport} from './macros/monsterFeatures/generic/teleport.js';
 export {keenSenses} from './macros/monsterFeatures/generic/keenSenses.js';
 export {packTactics} from './macros/monsterFeatures/generic/packTactics.js';
 export {reduce} from './macros/monsterFeatures/generic/reduce.js';

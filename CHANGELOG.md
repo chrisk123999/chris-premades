@@ -1,3 +1,9 @@
+# 1.0.51 Release:
+## New Content:
+- Generic Monster Feature: Teleport
+## Bug Fixes:
+- Crosshair Utils range fix
+
 # 1.0.50 Release:
 ## New Content:
 - Spirit of Death (Thanks SagaTympana)

@@ -830,6 +830,7 @@
                 "NoTargets": "No valid targets within range!"
             },
             "FarStep": {
+                "Name": "Far Step",
                 "Teleport": "Far Step: Teleport"
             },
             "FeyStep": {
@@ -903,6 +904,9 @@
                 "AvertEffect": "Averted Eyes",
                 "AvertSelect": "Avert your eyes from the {tokenName}?",
                 "Name": "Gaze"
+            },
+            "GenericTeleport": {
+                "Name": "Teleport"
             },
             "Grapple": {
                 "ChooseSkill": "How would you like to contest the grapple?",
@@ -984,6 +988,9 @@
             "HexbladesCurse": {
                 "Healing": "Hexblade's Curse: Healing",
                 "Transfer": "Master of Hexes: Transfer Curse?"
+            },
+            "HiddenPaths": {
+                "Name": "Hidden Paths"
             },
             "HoldPerson": {
                 "Overtime": "Hold Person (End of Turn)"
@@ -1203,6 +1210,9 @@
                 "Hit": "Attack hit a duplicate and destroyed it.",
                 "Miss": "Attack targeted a duplicate and missed."
             },
+            "MistyStep": {
+                "Name": "Misty Step"
+            },
             "Moonbeam": {
                 "Damage": "Moonbeam: Damage",
                 "Move": "Moonbeam: Move"
@@ -1354,6 +1364,9 @@
             },
             "ShadowOfMoil": {
                 "Damage": "Shadow of Moil: Damage"
+            },
+            "ShadowStep": {
+                "Name": "Shadow Step"
             },
             "ShieldGuardianShield": {
                 "Use": "Shield {name}? Attack Roll: {attack}"
@@ -1642,6 +1655,7 @@
                 "Pull": "How far do you pull the target?"
             },
             "ThunderStep": {
+                "Name": "Thunder Step",
                 "Select": "Teleport a Creature?"
             },
             "ThunderboltStrike": {
@@ -1684,6 +1698,9 @@
             "VampiricTouch": {
                 "Attack": "Vampiric Touch: Attack",
                 "HealingModifier": "0.5"
+            },
+            "VortexWarp": {
+                "Name": "Vortex Warp"
             },
             "WallOfFire": {
                 "CircleFacing": "Which way is the fire facing?",
