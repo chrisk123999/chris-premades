@@ -343,38 +343,51 @@ async function farStepPost(token, cornerPosition) {
 }
 export let teleportEffects = {
     none: {
+        name: 'DND5E.None',
         pre: none,
         post: none
     },
     default: {
+        name: 'DND5E.Default',
         pre: defaultPre,
         post: defaultPost
     },
     mistyStep: {
+        name: 'CHRISPREMADES.Macros.MistyStep.Name',
         pre: mistyStepPre,
         post: mistyStepPost
     },
     shadowStep: {
+        name: 'CHRISPREMADES.Macros.ShadowStep.Name',
+        requiredModules: ['jb2a_patreon'],
         pre: shadowStepPre,
         post: shadowStepPost
     },
     crimsonMist: {
+        name: 'CHRISPREMADES.Macros.WrapsOfDyamak.CrimsonMist',
+        requiredModules: ['jb2a_patreon'],
         pre: crimsonMistPre,
         post: crimsonMistPost
     },
     hiddenPaths: {
+        name: 'CHRISPREMADES.Macros.HiddenPaths.Name',
         pre: hiddenPathsPre,
         post: hiddenPathsPost
     },
     vortexWarp: {
+        name: 'CHRISPREMADES.Macros.VortexWarp.Name',
         pre: vortexWarpPre,
         post: vortexWarpPost
     },
     thunderStep: {
+        name: 'CHRISPREMADES.Macros.ThunderStep.Name',
+        requiredModules: ['jb2a_patreon'],
         pre: thunderStepPre,
         post: mistyStepPost
     },
     farStep: {
+        name: 'CHRISPREMADES.Macros.FarStep.Name',
+        requiredModules: ['jb2a_patreon'],
         pre: farStepPre,
         post: farStepPost
     }
