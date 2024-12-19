@@ -4,7 +4,13 @@ function addFlags() {
     DAE.addAutoFields(crFlags.concat(cvFlags));
 }
 function renderItemSheet(app, [elem], options) {
-    let headerButton = elem.closest('.window-app').querySelector('.dae-config-itemsheet');
+    let isTidy = app?.classList?.contains?.('tidy5e-sheet');
+    let headerButton;
+    if (isTidy) {
+        headerButton = app.element.querySelector('menu.controls-dropdown i.fa-wrench');
+    } else {
+        headerButton = elem.closest('.window-app').querySelector('.dae-config-itemsheet');
+    }
     if (!headerButton) return;
     let object = app.object;
     if (!object) return;

@@ -1886,6 +1886,7 @@
                     "Tooltip": "Configure roll types and options"
                 }
             },
+            "Medkit": "CPR Medkit",
             "ModuleIds": {
                 "additionalCompendiums": "Additional Compendiums",
                 "chris-premades": "Cauldron of Plentiful Resources",

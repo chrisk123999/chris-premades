@@ -44,7 +44,13 @@ async function activityMedkit(activity) {
     await ActivityMedkit.activity(activity);
 }
 export async function renderItemSheet(app, [elem], options) {
-    let headerButton = elem.closest('.window-app').querySelector('a.header-button.chris-premades-item');
+    let isTidy = app?.classList?.contains?.('tidy5e-sheet');
+    let headerButton;
+    if (isTidy) {
+        headerButton = app.element.querySelector('menu.controls-dropdown i.fa-kit-medical');
+    } else {
+        headerButton = elem.closest('.window-app').querySelector('a.header-button.chris-premades-item');
+    }
     if (!headerButton) return;
     let item = app.object;
     if (!item) return;

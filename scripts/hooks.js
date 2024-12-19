@@ -23,6 +23,7 @@ import {automatedAnimations} from './integrations/automatedAnimations.js';
 import {actions} from './extensions/actions.js';
 import {item} from './applications/item.js';
 import {activities} from './extensions/activities.js';
+import {ItemMedkit} from './applications/medkit-item.js';
 export function registerHooks() {
     Hooks.on('createSetting', genericUtils.createUpdateSetting);
     Hooks.on('updateSetting', genericUtils.createUpdateSetting);
@@ -44,7 +45,7 @@ export function registerHooks() {
     Hooks.on('getActorSheetHeaderButtons', createHeaderButton);
     Hooks.on('getActiveEffectConfigHeaderButtons', createHeaderButton);
     Hooks.on('renderCompendium', renderCompendium);
-    Hooks.on('renderItemSheet', renderItemSheet);
+    Hooks.on('renderItemSheetV2', renderItemSheet);
     Hooks.on('renderActivitySheet', renderActivitySheet);
     Hooks.on('renderDAEActiveEffectConfig', renderEffectConfig);
     Hooks.on('preCreateActiveEffect', effects.noAnimation);
@@ -62,8 +63,8 @@ export function registerHooks() {
         Hooks.on('preDeleteActiveEffect', tokens.preDeleteActiveEffect);
         Hooks.on('preUpdateActiveEffect', tokens.preCreateUpdateActiveEffect);
     }
-    if (genericUtils.getCPRSetting('colorizeDAE', Hooks.on('renderItemSheet', dae.renderItemSheet)));
-    if (genericUtils.getCPRSetting('colorizeAutomatedAnimations')) Hooks.on('renderItemSheet', automatedAnimations.renderItemSheet);
+    if (genericUtils.getCPRSetting('colorizeDAE', Hooks.on('renderItemSheetV2', dae.renderItemSheet)));
+    if (genericUtils.getCPRSetting('colorizeAutomatedAnimations')) Hooks.on('renderItemSheetV2', automatedAnimations.renderItemSheet);
     if (genericUtils.getCPRSetting('effectDescriptions') !== 'disabled') Hooks.on('preCreateActiveEffect', effects.preCreateActiveEffect);
     if (genericUtils.getCPRSetting('applyConditionChanges') || genericUtils.getCPRSetting('displayNestedConditions')) Hooks.on('preCreateActiveEffect', conditions.preCreateActiveEffect);
     if (genericUtils.getCPRSetting('vaeButtons')) Hooks.on('visual-active-effects.createEffectButtons', vae.createEffectButtons);
@@ -100,4 +101,17 @@ export function registerHooks() {
         }
         if (genericUtils.getCPRSetting('backups')) Hooks.on('preCreateActor', backup.preCreateActor);
     }
+    Hooks.once('tidy5e-sheet.ready', (api) => {
+        api.registerItemHeaderControls({
+            controls: [
+                {
+                    icon: 'fa-solid fa-kit-medical',
+                    label: 'CHRISPREMADES.Medkit.Medkit',
+                    async onClickAction() {
+                        await ItemMedkit.item(this.document);
+                    }
+                }
+            ]
+        });
+    });
 }
