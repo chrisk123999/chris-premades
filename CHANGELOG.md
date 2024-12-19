@@ -1,6 +1,8 @@
 # 1.1.1 Release:
 ## Updated Content:
 - Spirit of Death
+## Bug Fixes:
+- Compatibility with Tidy5e Item Sheet
 
 # 1.1.0 Release:
 ## New Content:
