@@ -3,6 +3,7 @@ async function attacked({trigger, workflow}) {
     if (!constants.attacks.includes(workflow.activity.actionType)) return;
     let nearbyToken = tokenUtils.findNearby(trigger.token, 5, 'ally', {includeIncapacitated: true}).filter(i => itemUtils.getItemByIdentifier(i.actor, 'mastersAmulet') && !actorUtils.hasUsedReaction(i.actor)).find(j => itemUtils.getItemByIdentifier(j.actor, 'mastersAmulet').flags['chris-premades']?.mastersAmulet.actorUuid === trigger.token.actor.uuid);
     if (!nearbyToken) return;
+    if (!workflow.targets.has(nearbyToken)) return;
     let attackTotal = workflow.attackTotal;
     if (nearbyToken.actor.system.attributes.ac.value > attackTotal) return;
     let selection = await dialogUtils.confirm(trigger.entity.name, genericUtils.format('CHRISPREMADES.Macros.ShieldGuardianShield.Use', {name: nearbyToken.actor.name, attack: attackTotal}), {userId: socketUtils.firstOwner(trigger.token.actor, true)});

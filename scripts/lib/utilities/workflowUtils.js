@@ -132,20 +132,21 @@ function setDamageItemDamage(ditem, damageAmount, adjustRaw = true) {
     }
 }
 function modifyDamageAppliedFlat(ditem, modificationAmount) {
+    // We're gonna just assume this isn't healing, only damage
     if (modificationAmount < 0) {
         modificationAmount = Math.max(modificationAmount, -ditem.hpDamage - ditem.tempDamage);
-        if (Math.abs(modificationAmount) > ditem.hpDamage) {
-            ditem.hpDamage = 0;
-            let tempMod = modificationAmount + ditem.hpDamage;
-            ditem.tempDamage += tempMod;
-        }
-    } else if (ditem.newTempHP) {
-        let tempMod = Math.max(0, ditem.newTempHP - modificationAmount);
-        let hpMod = -Math.min(0, ditem.newTempHP - modificationAmount);
-        ditem.tempDamage += tempMod;
-        ditem.hpDamage += hpMod;
-    } else {
-        ditem.hpDamage += modificationAmount;
+        // if (Math.abs(modificationAmount) > ditem.hpDamage) {
+        //     ditem.hpDamage = 0;
+        //     let tempMod = modificationAmount + ditem.hpDamage;
+        //     ditem.tempDamage += tempMod;
+        // }
+    // } else if (ditem.newTempHP) {
+    //     let tempMod = Math.max(0, ditem.newTempHP - modificationAmount);
+    //     let hpMod = -Math.min(0, ditem.newTempHP - modificationAmount);
+    //     ditem.tempDamage += tempMod;
+    //     ditem.hpDamage += hpMod;
+    // } else {
+    //     ditem.hpDamage += modificationAmount;
     }
     // ditem.hpDamage = Math.min(ditem.oldHP, ditem.damageDetail.reduce((acc, i) => acc + i.value, modificationAmount));
     // ditem.hpDamage = Math.sign(ditem.hpDamage) * Math.floor(Math.abs(ditem.hpDamage));
@@ -158,6 +159,12 @@ function modifyDamageAppliedFlat(ditem, modificationAmount) {
         value: modificationAmount,
         type: 'none'
     });
+    let actualTotal = ditem.totalDamage + modificationAmount;
+    ditem.totalDamage = actualTotal;
+    let newTempHP = ditem.oldTempHP - actualTotal;
+    ditem.newTempHP = Math.max(newTempHP, 0);
+    ditem.newHP = Math.clamp(ditem.oldHP + Math.min(0, newTempHP), 0, ditem.oldHP);
+    ditem.hpDamage = ditem.oldHP - ditem.newHP;
 }
 function applyWorkflowDamage(sourceToken, damageRoll, damageType, targets, {flavor = '', itemCardId = 'new', sourceItem} = {}) {
     let itemData = {};

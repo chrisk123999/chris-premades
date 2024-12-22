@@ -8,8 +8,7 @@ async function damage({workflow}) {
     let targetToken = workflow.hitTargets.first();
     if (targetId !== targetToken.id) return;
     let damageType = workflow.defaultDamageType;
-    let bonusFormula = workflow.actor.system.attributes.prof + '[' + damageType + ']';
-    await workflowUtils.bonusDamage(workflow, bonusFormula, {damageType});
+    await workflowUtils.bonusDamage(workflow, '@prof', {damageType});
 }
 async function damageApplication({trigger: {token}, workflow, ditem}) {
     if (workflow.hitTargets.size === 1) return;
