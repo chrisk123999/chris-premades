@@ -3,6 +3,8 @@
 - Generic Monster Feature: Teleport
 ## Bug Fixes:
 - Crosshair Utils range fix
+- Shield Guardian
+- Hexblade's Curse
 
 # 1.0.50 Release:
 ## New Content:
