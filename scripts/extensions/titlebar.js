@@ -48,6 +48,7 @@ export async function renderItemSheet(app, [elem], options) {
     let headerButton;
     if (isTidy) {
         headerButton = app.element.querySelector('menu.controls-dropdown i.chris-premades-item');
+        if (!headerButton) headerButton = elem.closest('.window-header')?.querySelector('.header-control.chris-premades-item');
     } else {
         headerButton = elem.closest('.window-app').querySelector('a.header-button.chris-premades-item');
     }

@@ -255,6 +255,19 @@ async function damageRollComplete(workflow) {
     if (genericUtils.getCPRSetting('explodingHeals')) await explodingHeals(workflow);
     let manualRollsEnabled = genericUtils.getCPRSetting('manualRollsEnabled');
     if (manualRollsEnabled && (workflow.hitTargets?.size === 0 ? genericUtils.getCPRSetting('manualRollsPromptOnMiss') : true)) await _manualRollsNewRolls(workflow);
+    workflow.damageRollHTML = '';
+    for (let roll of workflow.damageRolls) {
+        workflow.damageRollHTML += await MidiQOL.midiRenderDamageRoll(roll);
+    }
+    let searchRe = /<div class="midi-qol-damage-roll">[\s\S]*?<div class="end-midi-qol-damage-roll">/;
+    let replaceString = `<div class="midi-qol-damage-roll"><div style="text-align:center">${workflow.damageFlavor}</div>${workflow.damageRollHTML}<div class="end-midi-qol-damage-roll">`;
+    let newContent = workflow.chatCard.content.replace(searchRe, replaceString);
+    let rolls = [];
+    if (workflow.attackRoll) rolls.push(workflow.attackRoll);
+    rolls.push(...(workflow.damageRolls ?? []));
+    rolls.push(...(workflow.bonusDamageRolls ?? []));
+    rolls.push(...(workflow.otherDamageRolls ?? []));
+    await genericUtils.update(workflow.chatCard, {content: newContent, rolls});
     // await workflow.displayDamageRolls(game.settings.get('midi-qol', 'ConfigSettings'), true);
     // workflow.damageDetail = MidiQOL.createDamageDetail({roll: workflow.damageRolls, item: workflow.item, defaultType: workflow.defaultDamageType});
 }

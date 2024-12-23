@@ -21,6 +21,7 @@ function renderItemSheet(app, [elem], options) {
     let headerButton;
     if (isTidy) {
         headerButton = app.element.querySelector('menu.controls-dropdown i.fa-biohazard');
+        if (!headerButton) headerButton = elem.closest('.window-header')?.querySelector('.header-control.fa-biohazard');
     } else {
         headerButton = elem.closest('.window-app').querySelector('a.header-button.aaItemSettings');
     }

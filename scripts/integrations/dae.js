@@ -8,6 +8,7 @@ function renderItemSheet(app, [elem], options) {
     let headerButton;
     if (isTidy) {
         headerButton = app.element.querySelector('menu.controls-dropdown i.fa-wrench');
+        if (!headerButton) headerButton = elem.closest('.window-header')?.querySelector('.header-control.fa-wrench');
     } else {
         headerButton = elem.closest('.window-app').querySelector('.dae-config-itemsheet');
     }

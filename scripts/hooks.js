@@ -36,7 +36,7 @@ export function registerHooks() {
     Hooks.on('midi-qol.premades.postPreambleComplete', midiEvents.preambleComplete);
     Hooks.on('midi-qol.premades.postWaitForAttackRoll', midiEvents.postAttackRoll); // Check this
     Hooks.on('midi-qol.premades.postAttackRollComplete', midiEvents.attackRollComplete);
-    Hooks.on('midi-qol.premades.preDamageRollComplete', midiEvents.damageRollComplete); // Check this
+    Hooks.on('midi-qol.premades.postDamageRollComplete', midiEvents.damageRollComplete); // Check this
     Hooks.on('midi-qol.premades.postSavesComplete', midiEvents.savesComplete);
     Hooks.on('midi-qol.preTargetDamageApplication', midiEvents.preTargetDamageApplication);
     Hooks.on('midi-qol.premades.postRollFinished', midiEvents.rollFinished);
@@ -107,6 +107,7 @@ export function registerHooks() {
                 {
                     icon: 'fa-solid fa-kit-medical chris-premades-item',
                     label: 'CHRISPREMADES.Medkit.Medkit',
+                    position: 'header',
                     async onClickAction() {
                         await ItemMedkit.item(this.document);
                     }
