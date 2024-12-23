@@ -3,6 +3,12 @@
 - Spirit of Death
 ## Bug Fixes:
 - Compatibility with Tidy5e Item Sheet
+- Spiritual Weapon
+- Starry Form
+- Call Lightning
+- Flame Blade
+- Storm Sphere
+- Vampiric Touch
 
 # 1.1.0 Release:
 ## New Content:

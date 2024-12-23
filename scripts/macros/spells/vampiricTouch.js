@@ -50,16 +50,13 @@ async function late({workflow}) {
     let healing = Math.floor(damage * healingModifier);
     await workflowUtils.applyDamage([workflow.token], healing, 'healing');
 }
+async function veryEarly({workflow}) {
+    workflowUtils.skipDialog(workflow);
+}
 async function early({workflow}) {
-    if (workflow.activity.tempFlag) {
-        workflow.activity.tempFlag = false;
-        return;
-    }
     let effect = effectUtils.getEffectByIdentifier(workflow.actor, 'vampiricTouch');
     if (!effect) return true;
-    workflow.activity.tempFlag = true;
-    genericUtils.sleep(100).then(() => workflowUtils.syntheticActivityRoll(workflow.activity, Array.from(workflow.targets), {atLevel: effect.flags['chris-premades'].castData.castLevel}));
-    return true;
+    workflowUtils.setScaling(workflow, effect.flags['chris-premades'].castData.castLevel);
 }
 export let vampiricTouch = {
     name: 'Vampiric Touch',
@@ -80,11 +77,16 @@ export let vampiricTouch = {
             },
             {
                 pass: 'preTargeting',
+                macro: veryEarly,
+                priority: 50,
+                activities: ['vampiricTouchAttack']
+            },
+            {
+                pass: 'preItemRoll',
                 macro: early,
                 priority: 50,
                 activities: ['vampiricTouchAttack']
             }
-
         ]
     },
     config: [

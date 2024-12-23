@@ -131,42 +131,40 @@ async function use({workflow}) {
     await workflowUtils.syntheticActivityRoll(feature, [target]);
     feature.activation.type = 'bonus';
 }
-async function early({workflow}) {
+async function veryEarly({workflow}) {
+    workflowUtils.skipDialog(workflow);
     let effect = effectUtils.getEffectByIdentifier(workflow.actor, 'spiritualWeapon');
-    if (workflow.activity.tempFlag) {
-        workflow.activity.tempFlag = false;
-        if (!effect) return;
-        let spiritualActor = canvas.scene.tokens.get(effect.flags['chris-premades'].summons.ids[effect.name][0])?.actor;
-        if (!spiritualActor) return;
-    
-        let effectData = {
-            name: workflow.activity.name,
-            img: workflow.item.img,
-            origin: workflow.item.uuid,
-            changes: [
-                {
-                    key: 'flags.midi-qol.rangeOverride.attack.all',
-                    mode: 0,
-                    value: 1,
-                    priority: 20
-                }
-            ],
-            flags: {
-                'chris-premades': {
-                    effect: {
-                        noAnimation: true
-                    }
+    if (!effect) return;
+    let spiritualActor = canvas.scene.tokens.get(effect.flags['chris-premades'].summons.ids[effect.name][0])?.actor;
+    if (!spiritualActor) return;
+
+    let effectData = {
+        name: workflow.activity.name,
+        img: workflow.item.img,
+        origin: workflow.item.uuid,
+        changes: [
+            {
+                key: 'flags.midi-qol.rangeOverride.attack.all',
+                mode: 0,
+                value: 1,
+                priority: 20
+            }
+        ],
+        flags: {
+            'chris-premades': {
+                effect: {
+                    noAnimation: true
                 }
             }
-        };
-        await effectUtils.createEffect(workflow.actor, effectData, {identifier: 'spiritualWeaponAttack', parentEntity: effect});
-        await effectUtils.createEffect(spiritualActor, effectData, {identifier: 'spiritualWeaponAttack', parentEntity: effect});
-        return;
-    }
-    if (!effect) return true;
-    workflow.activity.tempFlag = true;
-    genericUtils.sleep(100).then(() => workflowUtils.syntheticActivityRoll(workflow.activity, Array.from(workflow.targets), {atLevel: effect.flags['chris-premades'].castData.castLevel}));
-    return true;
+        }
+    };
+    await effectUtils.createEffect(workflow.actor, effectData, {identifier: 'spiritualWeaponAttack', parentEntity: effect});
+    await effectUtils.createEffect(spiritualActor, effectData, {identifier: 'spiritualWeaponAttack', parentEntity: effect});
+}
+async function early({workflow}) {
+    let effect = effectUtils.getEffectByIdentifier(workflow.actor, 'spiritualWeapon');
+    if (!effect) return;
+    workflowUtils.setScaling(workflow, effect.flags['chris-premades'].castData.castLevel);
 }
 async function late({workflow}) {
     let effect = effectUtils.getEffectByIdentifier(workflow.actor, 'spiritualWeapon');
@@ -191,13 +189,19 @@ export let spiritualWeapon = {
             },
             {
                 pass: 'preTargeting',
-                macro: early,
+                macro: veryEarly,
                 priority: 50,
                 activities: ['spiritualWeaponAttack']
             },
             {
                 pass: 'attackRollComplete',
                 macro: late,
+                priority: 50,
+                activities: ['spiritualWeaponAttack']
+            },
+            {
+                pass: 'preItemRoll',
+                macro: early,
                 priority: 50,
                 activities: ['spiritualWeaponAttack']
             }

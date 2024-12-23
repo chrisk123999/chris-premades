@@ -42,16 +42,13 @@ async function use({workflow}) {
     if (concentrationEffect) await genericUtils.update(concentrationEffect, {duration: effectData.duration});
     await workflowUtils.completeActivityUse(feature);
 }
+async function veryEarly({workflow}) {
+    workflowUtils.skipDialog(workflow);
+}
 async function early({workflow}) {
-    if (workflow.activity.tempFlag) {
-        workflow.activity.tempFlag = false;
-        return;
-    }
     let effect = effectUtils.getEffectByIdentifier(workflow.actor, 'callLightning');
     if (!effect) return true;
-    workflow.activity.tempFlag = true;
-    genericUtils.sleep(100).then(() => workflowUtils.syntheticActivityRoll(workflow.activity, [], {atLevel: effect.flags['chris-premades'].castData.castLevel}));
-    return true;
+    workflowUtils.setScaling(workflow, effect.flags['chris-premades'].castData.castLevel);
 }
 export let callLightning = {
     name: 'Call Lightning',
@@ -66,6 +63,12 @@ export let callLightning = {
             },
             {
                 pass: 'preTargeting',
+                macro: veryEarly,
+                priority: 50,
+                activities: ['stormBolt']
+            },
+            {
+                pass: 'preItemRoll',
                 macro: early,
                 priority: 50,
                 activities: ['stormBolt']

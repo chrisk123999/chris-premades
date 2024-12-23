@@ -64,26 +64,24 @@ async function endTurn({trigger: {entity: template, castData, token}}) {
     if (!feature) return;
     await workflowUtils.syntheticActivityRoll(feature, [token], {atLevel: castData.castLevel});
 }
+async function veryEarly({workflow}) {
+    workflowUtils.skipDialog(workflow);
+    if (workflow.targets.size !== 1) return;
+    let effect = effectUtils.getEffectByIdentifier(workflow.actor, 'stormSphere');
+    if (!effect) return;
+    let targetToken = workflow.targets.first();
+    let {templateUuid, alreadyIgnores} = effect.flags['chris-premades'].stormSphere;
+    let template = await fromUuid(templateUuid);
+    if (!template) return;
+    if (!alreadyIgnores) await genericUtils.setFlag(workflow.actor, 'midi-qol', 'ignoreNearbyFoes', 1);
+    if (!templateUtils.getTokensInTemplate(template).has(targetToken)) return;
+    workflow.advantage = true;
+    workflow.attackAdvAttribution.add(genericUtils.translate('DND5E.Advantage') + ': ' + effect.name);
+}
 async function early({workflow}) {
     let effect = effectUtils.getEffectByIdentifier(workflow.actor, 'stormSphere');
-    if (workflow.activity.tempFlag) {
-        workflow.activity.tempFlag = false;
-        if (workflow.targets.size !== 1) return;
-        let targetToken = workflow.targets.first();
-        if (!effect) return;
-        let {templateUuid, alreadyIgnores} = effect.flags['chris-premades'].stormSphere;
-        let template = await fromUuid(templateUuid);
-        if (!template) return;
-        if (!alreadyIgnores) await genericUtils.setFlag(workflow.actor, 'midi-qol', 'ignoreNearbyFoes', 1);
-        if (!templateUtils.getTokensInTemplate(template).has(targetToken)) return;
-        workflow.advantage = true;
-        workflow.attackAdvAttribution.add(genericUtils.translate('DND5E.Advantage') + ': ' + effect.name);
-        return;
-    }
     if (!effect) return true;
-    workflow.activity.tempFlag = true;
-    genericUtils.sleep(100).then(() => workflowUtils.syntheticActivityRoll(workflow.activity, Array.from(workflow.targets), {atLevel: effect.flags['chris-premades'].castData.castLevel}));
-    return true;
+    workflowUtils.setScaling(effect.flags['chris-premades'].castData.castLevel);
 }
 async function late({workflow}) {
     let effect = effectUtils.getEffectByIdentifier(workflow.actor, 'stormSphere');
@@ -110,13 +108,19 @@ export let stormSphere = {
             },
             {
                 pass: 'preTargeting',
-                macro: early,
+                macro: veryEarly,
                 priority: 50,
                 activities: ['stormSphereBolt']
             },
             {
                 pass: 'attackRollComplete',
                 macro: late,
+                priority: 50,
+                activities: ['stormSphereBolt']
+            },
+            {
+                pass: 'preItemRoll',
+                macro: early,
                 priority: 50,
                 activities: ['stormSphereBolt']
             }

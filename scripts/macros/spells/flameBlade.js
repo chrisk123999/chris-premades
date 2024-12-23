@@ -55,22 +55,13 @@ async function use({workflow}) {
     });
     if (concentrationEffect) await genericUtils.update(concentrationEffect, {duration: effectData.duration});
 }
+async function veryEarly({workflow}) {
+    workflowUtils.skipDialog(workflow);
+}
 async function early({workflow}) {
-    let activityId = activityUtils.getIdentifier(workflow.activity);
-    if (activityId === 'flameBladeEvoke') {
-        workflowUtils.skipDialog(workflow);
-        return;
-    }
-    if (activityId !== 'flameBladeScimitar') return;
-    if (workflow.activity.tempFlag) {
-        workflow.activity.tempFlag = false;
-        return;
-    }
     let effect = effectUtils.getEffectByIdentifier(workflow.actor, 'flameBlade');
     if (!effect) return true;
-    workflow.activity.tempFlag = true;
-    genericUtils.sleep(100).then(() => workflowUtils.syntheticActivityRoll(workflow.activity, Array.from(workflow.targets), {atLevel: effect.flags['chris-premades'].castData.castLevel}));
-    return true;
+    workflowUtils.setScaling(workflow, effect.flags['chris-premades'].castData.castLevel);
 }
 export let flameBlade = {
     name: 'Flame Blade',
@@ -85,8 +76,15 @@ export let flameBlade = {
             },
             {
                 pass: 'preTargeting',
+                macro: veryEarly,
+                priority: 50,
+                activities: ['flameBladeEvoke', 'flameBladeScimitar']
+            },
+            {
+                pass: 'preItemRoll',
                 macro: early,
-                priority: 50
+                priority: 50,
+                activities: ['flameBladeScimitar']
             }
         ]
     },

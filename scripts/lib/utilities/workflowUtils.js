@@ -223,6 +223,13 @@ function getCastData(workflow) {
 function skipDialog(workflow) {
     workflow.workflowOptions.autoConsumeResource = 'both';
 }
+function setScaling(workflow, atLevel) {
+    let activity = workflow.activity;
+    let origLevel = workflow.item.system.level ?? 0;
+    let item = activity.item.clone({ 'flags.dnd5e.scaling': atLevel - origLevel }, { keepId: true });
+    activity.workflow.activity = item.system.activities.get(activity.id);
+    activity.workflow.activity.workflow = activity.workflow;
+}
 export let workflowUtils = {
     bonusDamage,
     bonusAttack,
@@ -241,5 +248,6 @@ export let workflowUtils = {
     handleInstantTemplate,
     getCastData,
     modifyDamageAppliedFlat,
-    skipDialog
+    skipDialog,
+    setScaling
 };

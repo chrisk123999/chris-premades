@@ -168,16 +168,13 @@ async function late({trigger: {entity: effect}, workflow}) {
         scaling: (workflow.actor.classes.druid?.system.levels >= 10) ? 1 : 0
     }});
 }
+async function veryEarly({workflow}) {
+    workflowUtils.skipDialog(workflow);
+}
 async function early({workflow}) {
     let scaling = 0;
     if (workflow.actor.classes.druid?.system.levels >= 10) scaling = 1;
-    if (workflow.activity.tempFlag) {
-        workflow.activity.tempFlag = false;
-        return;
-    }
-    workflow.activity.tempFlag = true;
-    genericUtils.sleep(100).then(() => workflowUtils.syntheticActivityRoll(workflow.activity, Array.from(workflow.targets), {config: {scaling}}));
-    return true;
+    workflowUtils.setScaling(workflow, scaling);
 }
 export let starryForm = {
     name: 'Starry Form',
@@ -192,6 +189,12 @@ export let starryForm = {
             },
             {
                 pass: 'preTargeting',
+                macro: veryEarly,
+                priority: 50,
+                activities: ['luminousArrow']
+            },
+            {
+                pass: 'preItemRoll',
                 macro: early,
                 priority: 50,
                 activities: ['luminousArrow']
