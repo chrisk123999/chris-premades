@@ -3,7 +3,7 @@ import {socket, sockets} from '../sockets.js';
 import {genericUtils} from './genericUtils.js';
 import {socketUtils} from './socketUtils.js';
 async function getCriticalFormula(formula, rollData) {
-    return new CONFIG.Dice.DamageRoll(formula, rollData, {critical: true, powerfulCritical: game.settings.get('dnd5e', 'criticalDamageMaxDice'), multiplyNumeric: game.settings.get('dnd5e', 'criticalDamageModifiers')}).formula;
+    return new CONFIG.Dice.DamageRoll(formula, rollData, {isCritical: true}).formula;
 }
 async function contestedRoll({sourceToken, targetToken, sourceRollType, targetRollType, sourceAbilities, targetAbilities, sourceRollOptions={}, targetRollOptions={}}) {
     // TODO: add some checks in here to error gracefully
