@@ -6,6 +6,7 @@ export {effectUtils} from './lib/utilities/effectUtils.js';
 export {genericUtils} from './lib/utilities/genericUtils.js';
 export {itemUtils} from './lib/utilities/itemUtils.js';
 export {rollUtils} from './lib/utilities/rollUtils.js';
+export {sceneUtils} from './lib/utilities/sceneUtils.js';
 export {socketUtils} from './lib/utilities/socketUtils.js';
 export {templateUtils} from './lib/utilities/templateUtils.js';
 export {workflowUtils} from './lib/utilities/workflowUtils.js';

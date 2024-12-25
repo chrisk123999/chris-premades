@@ -1,4 +1,4 @@
-import {actorUtils, dialogUtils, effectUtils, genericUtils, itemUtils, socketUtils, workflowUtils} from '../../utils.js';
+import {actorUtils, dialogUtils, effectUtils, genericUtils, itemUtils, sceneUtils, socketUtils, workflowUtils} from '../../utils.js';
 function getDistance(sourceToken, targetToken, {wallsBlock, checkCover} = {}) {
     // return MidiQOL.computeDistance(sourceToken, targetToken, wallsBlock, checkCover);
     if (checkCover) {
@@ -438,19 +438,7 @@ async function attachToToken(token, uuidsToAttach) {
 }
 function getLightLevel(token) {
     if (token.document.parent.environment.globalLight.enabled) return 'bright';
-    let c = Object.values(token.center);
-    let lights = canvas.effects.lightSources.filter(src => !(src instanceof foundry.canvas.sources.GlobalLightSource) && src.shape.contains(...c));
-    if (!lights.length) return 'dark';
-    let inBright = lights.some(light => {
-        let {data: {x, y}, ratio} = light;
-        let bright = ClockwiseSweepPolygon.create({'x': x, 'y': y}, {
-            type: 'light',
-            boundaryShapes: [new PIXI.Circle(x, y, ratio * light.shape.config.radius)]
-        });
-        return bright.contains(...c);
-    });
-    if (inBright) return 'bright';
-    return 'dim';
+    return sceneUtil.getLightLevel({x: token.center.x, y: token.center.y, z: token.elevationZ})
 }
 export let tokenUtils = {
     getDistance,
