@@ -31,12 +31,23 @@ async function applyDamage(tokens, value, damageType) {
 }
 async function completeItemUse(item, config={}, options={}) {
     //let oldTargets = Array.from(game.user.targets); //Temp Fix
+    let fixSets = false;
     if (!options.asUser && !socketUtils.hasPermission(item.actor, game.userId)) {
         options.asUser = socketUtils.firstOwner(item.actor, true);
         options.checkGMStatus = true;
+        options.workflowData = true;
+        fixSets = true;
+    } else if (options.asUser && options.asUser !== game.userId) {
+        options.workflowData = true;
+        fixSets = true;
     }
     let workflow = await MidiQOL.completeItemUse(item, config, options);
     //genericUtils.updateTargets(oldTargets); //Temp Fix
+    if (fixSets) {
+        if (workflow.failedSaves) workflow.failedSaves = new Set(workflow.failedSaves);
+        if (workflow.hitTargets) workflow.hitTargets = new Set(workflow.hitTargets);
+        if (workflow.targets) workflow.targets = new Set(workflow.targets);
+    }
     return workflow;
 }
 async function syntheticItemRoll(item, targets, {options = {}, config = {}} = {}) {

@@ -1,3 +1,15 @@
+# 1.0.52 Release:
+## Bug Fixes:
+- Dreadful Aspect
+- Strength of the Grave
+- Potion of Poison
+- Undead Fortitude
+- Compelled Duel
+- Gust of Wind
+- Sickening Radiance
+- Zone of Truth
+- Maybe others...
+
 # 1.0.51 Release:
 ## New Content:
 - Generic Monster Feature: Teleport
