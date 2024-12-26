@@ -1,6 +1,6 @@
 import {DialogApp} from '../applications/dialog.js';
 import {CPRMultipleRollResolver} from '../applications/rollResolverMultiple.js';
-import {genericUtils} from '../utils.js';
+import {genericUtils, itemUtils, workflowUtils} from '../utils.js';
 import {Summons} from './summons.js';
 import {Teleport} from './teleport.js';
 async function createEffect(entityUuid, effectData, {concentrationItemUuid, parentEntityUuid}) {
@@ -210,6 +210,13 @@ async function remoteDamageRolls(rollJSONs) {
     resolver.close();
     return rolls.map(i => i.toJSON());
 }
+async function syntheticItemDataRoll(itemData, actorUuid, targetUuids, {options = {}, config = {}} = {}) {
+    let actor = fromUuidSync(actorUuid);
+    let targets = targetUuids.map(i => fromUuidSync(i)?.object);
+    let item = await itemUtils.syntheticItem(itemData, actor);
+    let workflow = await workflowUtils.syntheticItemRoll(item, targets, {options, config});
+    return workflow.getMacroData({noWorkflowReference: true});
+}
 export let sockets = {
     createEffect,
     createEffects,
@@ -236,7 +243,8 @@ export let sockets = {
     removeBonusActionUsed,
     polymorph,
     remoteRoll,
-    remoteDamageRolls
+    remoteDamageRolls,
+    syntheticItemDataRoll
 };
 export let socket;
 export function registerSockets() {

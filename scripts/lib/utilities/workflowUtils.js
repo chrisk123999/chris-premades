@@ -1,4 +1,5 @@
 import {actorUtils, effectUtils, genericUtils, itemUtils, rollUtils, socketUtils} from '../../utils.js';
+import {socket, sockets} from '../sockets.js';
 async function bonusDamage(workflow, formula, {ignoreCrit = false, damageType}={}) {
     formula = String(formula);
     if (workflow.isCritical && !ignoreCrit) formula = await rollUtils.getCriticalFormula(formula, workflow.item.getRollData());
@@ -40,13 +41,24 @@ async function completeActivityUse(activity, config={}, dialog={}, message={}) {
 }
 async function completeItemUse(item, config={}, options={}) {
     //let oldTargets = Array.from(game.user.targets); //Temp Fix
+    let fixSets = false;
     if (!options.asUser && !socketUtils.hasPermission(item.actor, game.userId)) {
         options.asUser = socketUtils.firstOwner(item.actor, true);
         options.checkGMStatus = true;
+        options.workflowData = true;
+        fixSets = true;
+    } else if (options.asUser && options.asUser !== game.userId) {
+        options.workflowData = true;
+        fixSets = true;
     }
     // TODO: Make use completeItemUseV2 instead, once everything's ready
     let workflow = await MidiQOL.completeItemUse(item, config, options);
     //genericUtils.updateTargets(oldTargets); //Temp Fix
+    if (fixSets) {
+        if (workflow.failedSaves) workflow.failedSaves = new Set(workflow.failedSaves);
+        if (workflow.hitTargets) workflow.hitTargets = new Set(workflow.hitTargets);
+        if (workflow.targets) workflow.targets = new Set(workflow.targets);
+    }
     return workflow;
 }
 async function syntheticActivityRoll(activity, targets = [], {options = {}, config = {}, atLevel = undefined} = {}) {
@@ -106,8 +118,17 @@ async function syntheticItemDataRoll(itemData, actor, targets, {options = {}, co
         fromAmmo: false,
         version: 5
     }});
-    let item = await itemUtils.syntheticItem(itemData, actor);
-    return await syntheticItemRoll(item, targets, {options, config});
+    let hasPermission = socketUtils.hasPermission(actor, game.user.id);
+    if (hasPermission) {
+        let item = await itemUtils.syntheticItem(itemData, actor);
+        return await syntheticItemRoll(item, targets, {options, config});
+    } else {
+        let workflowData = await socket.executeAsGM(sockets.syntheticItemDataRoll.name, itemData, actor.uuid, targets.map(i => i.document.uuid), {options, config});
+        if (workflowData.failedSaves) workflowData.failedSaves = new Set(workflowData.failedSaves);
+        if (workflowData.hitTargets) workflowData.hitTargets = new Set(workflowData.hitTargets);
+        if (workflowData.targets) workflowData.targets = new Set(workflowData.targets);
+        return workflowData;
+    }
 }
 function negateDamageItemDamage(ditem) {
     ditem.totalDamage = 0;
