@@ -220,9 +220,6 @@ function getCastData(workflow) {
     delete castData.itemuuid;
     return castData;
 }
-function skipDialog(workflow) {
-    workflow.workflowOptions.autoConsumeResource = 'both';
-}
 export let workflowUtils = {
     bonusDamage,
     bonusAttack,
@@ -240,6 +237,5 @@ export let workflowUtils = {
     getTotalDamageOfType,
     handleInstantTemplate,
     getCastData,
-    modifyDamageAppliedFlat,
-    skipDialog
+    modifyDamageAppliedFlat
 };
