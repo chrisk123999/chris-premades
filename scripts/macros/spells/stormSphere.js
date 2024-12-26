@@ -1,4 +1,4 @@
-import {activityUtils, animationUtils, compendiumUtils, constants, effectUtils, errors, genericUtils, itemUtils, templateUtils, workflowUtils} from '../../utils.js';
+import {activityUtils, actorUtils, animationUtils, compendiumUtils, constants, effectUtils, errors, genericUtils, itemUtils, templateUtils, workflowUtils} from '../../utils.js';
 
 async function use({workflow}) {
     let concentrationEffect = effectUtils.getConcentrationEffect(workflow.actor, workflow.item);
@@ -64,24 +64,27 @@ async function endTurn({trigger: {entity: template, castData, token}}) {
     if (!feature) return;
     await workflowUtils.syntheticActivityRoll(feature, [token], {atLevel: castData.castLevel});
 }
-async function veryEarly({workflow}) {
-    workflowUtils.skipDialog(workflow);
-    if (workflow.targets.size !== 1) return;
-    let effect = effectUtils.getEffectByIdentifier(workflow.actor, 'stormSphere');
+async function veryEarly({actor, config, dialog}) {
+    dialog.configure = false;
+    if (game.user.targets.size !== 1) return;
+    let effect = effectUtils.getEffectByIdentifier(actor, 'stormSphere');
     if (!effect) return;
-    let targetToken = workflow.targets.first();
-    let {templateUuid, alreadyIgnores} = effect.flags['chris-premades'].stormSphere;
-    let template = await fromUuid(templateUuid);
-    if (!template) return;
-    if (!alreadyIgnores) await genericUtils.setFlag(workflow.actor, 'midi-qol', 'ignoreNearbyFoes', 1);
-    if (!templateUtils.getTokensInTemplate(template).has(targetToken)) return;
-    workflow.advantage = true;
-    workflow.attackAdvAttribution.add(genericUtils.translate('DND5E.Advantage') + ': ' + effect.name);
+    let {alreadyIgnores} = effect.flags['chris-premades'].stormSphere;
+    if (!alreadyIgnores) await genericUtils.setFlag(actor, 'midi-qol', 'ignoreNearbyFoes', 1);
+    let spellLabel = actorUtils.getEquivalentSpellSlotName(actor, effect.flags['chris-premades'].castData.castLevel);
+    if (spellLabel) config.spell = {slot: spellLabel};
 }
 async function early({workflow}) {
     let effect = effectUtils.getEffectByIdentifier(workflow.actor, 'stormSphere');
     if (!effect) return true;
-    workflowUtils.setScaling(effect.flags['chris-premades'].castData.castLevel);
+    let targetToken = workflow.targets.first();
+    if (!targetToken) return;
+    let {templateUuid} = effect.flags['chris-premades'].stormSphere;
+    let template = await fromUuid(templateUuid);
+    if (!template) return;
+    if (!templateUtils.getTokensInTemplate(template).has(targetToken)) return;
+    workflow.advantage = true;
+    workflow.attackAdvAttribution.add(genericUtils.translate('DND5E.Advantage') + ': ' + effect.name);
 }
 async function late({workflow}) {
     let effect = effectUtils.getEffectByIdentifier(workflow.actor, 'stormSphere');

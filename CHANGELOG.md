@@ -1,3 +1,9 @@
+# 1.1.2 Release:
+## Bug Fixes:
+- Lay on Hands
+## Update Notes:
+- Updated to make use of changes in midi release 12.4.17
+
 # 1.1.1 Release:
 ## Updated Content:
 - Spirit of Death

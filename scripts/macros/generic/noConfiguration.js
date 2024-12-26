@@ -1,9 +1,9 @@
-async function use({trigger, workflow}) {
-    workflow.options.configureDialog = false;
+async function use({dialog}) {
+    dialog.configure = false;
 }
 export let noConfiguration = {
     name: 'No Configuration',
-    version: '0.12.26',
+    version: '1.1.2',
     midi: {
         item: [
             {

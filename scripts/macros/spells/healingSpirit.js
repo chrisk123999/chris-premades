@@ -200,8 +200,8 @@ async function moveOrStart({trigger: {entity: effect, castData, token, target}})
     if (!selection) return;
     await workflowUtils.syntheticItemRoll(feature, [target], {config: {consumeUsage: true}});
 }
-async function early({workflow}) {
-    workflowUtils.skipDialog(workflow);
+async function early({dialog}) {
+    dialog.configure = false;
 }
 export let healingSpirit = {
     name: 'Healing Spirit',

@@ -1,4 +1,4 @@
-import {activityUtils, compendiumUtils, constants, effectUtils, errors, genericUtils, itemUtils, workflowUtils} from '../../utils.js';
+import {activityUtils, actorUtils, compendiumUtils, constants, effectUtils, errors, genericUtils, itemUtils, workflowUtils} from '../../utils.js';
 async function use({trigger, workflow}) {
     let concentrationEffect = effectUtils.getConcentrationEffect(workflow.actor, workflow.item);
     let feature = activityUtils.getActivityByIdentifier(workflow.item, 'vampiricTouchAttack', {strict: true});
@@ -50,13 +50,12 @@ async function late({workflow}) {
     let healing = Math.floor(damage * healingModifier);
     await workflowUtils.applyDamage([workflow.token], healing, 'healing');
 }
-async function veryEarly({workflow}) {
-    workflowUtils.skipDialog(workflow);
-}
-async function early({workflow}) {
-    let effect = effectUtils.getEffectByIdentifier(workflow.actor, 'vampiricTouch');
+async function early({actor, config, dialog}) {
+    dialog.configure = false;
+    let effect = effectUtils.getEffectByIdentifier(actor, 'vampiricTouch');
     if (!effect) return true;
-    workflowUtils.setScaling(workflow, effect.flags['chris-premades'].castData.castLevel);
+    let spellLabel = actorUtils.getEquivalentSpellSlotName(actor, effect.flags['chris-premades'].castData.castLevel);
+    if (spellLabel) config.spell = {slot: spellLabel};
 }
 export let vampiricTouch = {
     name: 'Vampiric Touch',
@@ -77,12 +76,6 @@ export let vampiricTouch = {
             },
             {
                 pass: 'preTargeting',
-                macro: veryEarly,
-                priority: 50,
-                activities: ['vampiricTouchAttack']
-            },
-            {
-                pass: 'preItemRoll',
                 macro: early,
                 priority: 50,
                 activities: ['vampiricTouchAttack']

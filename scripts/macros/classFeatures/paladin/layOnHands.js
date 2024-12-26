@@ -64,10 +64,10 @@ import {activityUtils, effectUtils, genericUtils, workflowUtils} from '../../../
 //     }
 //     await genericUtils.update(workflow.item, {'system.uses.value': uses});
 // }
-function early({workflow}) {
-    let activityIdentifier = activityUtils.getIdentifier(workflow.activity);
-    if (!workflow.targets.size) return;
-    let targetToken = workflow.targets.first();
+function early({activity}) {
+    let activityIdentifier = activityUtils.getIdentifier(activity);
+    let targetToken = game.user.targets.first();
+    if (!targetToken) return;
     let poisoned = effectUtils.getEffectByStatusID(targetToken.actor, 'poisoned');
     let diseased = effectUtils.getEffectByStatusID(targetToken.actor, 'diseased');
     if (activityIdentifier === 'layOnHandsPoison' && !poisoned) {
@@ -96,7 +96,7 @@ async function late({workflow}) {
 }
 export let layOnHands = {
     name: 'Lay on Hands',
-    version: '1.1.0',
+    version: '1.1.2',
     midi: {
         item: [
             {

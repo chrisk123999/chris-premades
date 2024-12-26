@@ -349,8 +349,8 @@ async function early({workflow}) {
     }
     await actorUtils.setReactionUsed(familiarToken.actor);
 }
-async function veryEarly({workflow}) {
-    workflowUtils.skipDialog(workflow);
+async function veryEarly({dialog}) {
+    dialog.configure = false;
 }
 export let findFamiliar = {
     name: 'Find Familiar',

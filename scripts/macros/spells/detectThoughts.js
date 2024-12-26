@@ -36,8 +36,8 @@ async function late({workflow}) {
     let effect = effectUtils.getConcentrationEffect(workflow.actor, workflow.item.origin);
     if (effect) await genericUtils.remove(effect);
 }
-async function early({workflow}) {
-    workflowUtils.skipDialog(workflow);
+async function early({dialog}) {
+    dialog.configure = false;
 }
 export let detectThoughts = {
     name: 'Detect Thoughts',

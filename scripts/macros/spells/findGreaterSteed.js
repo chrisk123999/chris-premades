@@ -10,8 +10,8 @@ async function dismiss({workflow}) {
 async function early({workflow}) {
     await findSteedEarlyHelper(workflow, 'findGreaterSteed');
 }
-async function veryEarly({workflow}) {
-    workflowUtils.skipDialog(workflow);
+async function veryEarly({dialog}) {
+    dialog.configure = false;
 }
 export let findGreaterSteed = {
     name: 'Find Greater Steed',

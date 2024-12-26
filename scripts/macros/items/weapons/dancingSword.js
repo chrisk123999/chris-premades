@@ -66,16 +66,16 @@ async function late({workflow}) {
         await genericUtils.remove(effect);
     }
 }
-async function early({workflow}) {
-    let effect = effectUtils.getEffectByIdentifier(workflow.actor, 'dancingSword');
+async function early({activity, actor}) {
+    let effect = effectUtils.getEffectByIdentifier(actor, 'dancingSword');
     if (!effect) return;
     let dancingActor = canvas.scene.tokens.get(effect.flags['chris-premades'].summons.ids[effect.name][0])?.actor;
     if (!dancingActor) return;
 
     let effectData = {
-        name: workflow.activity.name,
-        img: workflow.item.img,
-        origin: workflow.item.uuid,
+        name: activity.name,
+        img: activity.item.img,
+        origin: activity.item.uuid,
         changes: [
             {
                 key: 'flags.midi-qol.rangeOverride.attack.all',
@@ -92,7 +92,7 @@ async function early({workflow}) {
             }
         }
     };
-    await effectUtils.createEffect(workflow.actor, effectData, {identifier: 'dancingSwordAttack', parentEntity: effect});
+    await effectUtils.createEffect(actor, effectData, {identifier: 'dancingSwordAttack', parentEntity: effect});
     await effectUtils.createEffect(dancingActor, effectData, {identifier: 'dancingSwordAttack', parentEntity: effect});
 }
 export let dancingSword = {

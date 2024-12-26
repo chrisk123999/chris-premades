@@ -118,8 +118,8 @@ async function dismiss({workflow}) {
     let concentrationEffect = effectUtils.getConcentrationEffect(workflow.actor, workflow.item);
     if (concentrationEffect) await genericUtils.remove(concentrationEffect);
 }
-async function early({workflow}) {
-    workflowUtils.skipDialog(workflow);
+async function early({dialog}) {
+    dialog.configure = false;
 }
 export let holyWeapon = {
     name: 'Holy Weapon',

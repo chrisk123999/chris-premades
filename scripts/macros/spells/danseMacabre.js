@@ -46,8 +46,8 @@ async function use({workflow}) {
         }
     });
 }
-async function early({workflow}) {
-    workflowUtils.skipDialog(workflow);
+async function early({dialog}) {
+    dialog.configure = false;
 }
 export let danseMacabre = {
     name: 'Danse Macabre',

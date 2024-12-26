@@ -126,8 +126,8 @@ async function early({workflow}) {
         genericUtils.updateTargets([target.object]);
     }
 }
-async function veryEarly({workflow}) {
-    workflowUtils.skipDialog(workflow);
+async function veryEarly({dialog}) {
+    dialog.configure = false;
 }
 export let maximiliansEarthenGrasp = {
     name: 'Maximilian\'s Earthen Grasp',

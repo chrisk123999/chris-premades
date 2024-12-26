@@ -1,4 +1,4 @@
-import {activityUtils, compendiumUtils, constants, dialogUtils, effectUtils, errors, genericUtils, itemUtils, workflowUtils} from '../../utils.js';
+import {activityUtils, actorUtils, compendiumUtils, constants, dialogUtils, effectUtils, errors, genericUtils, itemUtils, workflowUtils} from '../../utils.js';
 
 async function use({workflow}) {
     let concentrationEffect = await effectUtils.getConcentrationEffect(workflow.actor, workflow.item);
@@ -42,13 +42,12 @@ async function use({workflow}) {
     if (concentrationEffect) await genericUtils.update(concentrationEffect, {duration: effectData.duration});
     await workflowUtils.completeActivityUse(feature);
 }
-async function veryEarly({workflow}) {
-    workflowUtils.skipDialog(workflow);
-}
-async function early({workflow}) {
-    let effect = effectUtils.getEffectByIdentifier(workflow.actor, 'callLightning');
+async function early({actor, config, dialog}) {
+    dialog.configure = false;
+    let effect = effectUtils.getEffectByIdentifier(actor, 'callLightning');
     if (!effect) return true;
-    workflowUtils.setScaling(workflow, effect.flags['chris-premades'].castData.castLevel);
+    let spellLabel = actorUtils.getEquivalentSpellSlotName(actor, effect.flags['chris-premades'].castData.castLevel);
+    if (spellLabel) config.spell = {slot: spellLabel};
 }
 export let callLightning = {
     name: 'Call Lightning',
@@ -63,12 +62,6 @@ export let callLightning = {
             },
             {
                 pass: 'preTargeting',
-                macro: veryEarly,
-                priority: 50,
-                activities: ['stormBolt']
-            },
-            {
-                pass: 'preItemRoll',
                 macro: early,
                 priority: 50,
                 activities: ['stormBolt']

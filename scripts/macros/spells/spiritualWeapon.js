@@ -1,5 +1,5 @@
 import {Summons} from '../../lib/summons.js';
-import {activityUtils, animationUtils, compendiumUtils, constants, dialogUtils, effectUtils, errors, genericUtils, itemUtils, tokenUtils, workflowUtils} from '../../utils.js';
+import {activityUtils, actorUtils, animationUtils, compendiumUtils, constants, dialogUtils, effectUtils, errors, genericUtils, itemUtils, tokenUtils, workflowUtils} from '../../utils.js';
 async function use({workflow}) {
     let jb2a = animationUtils.jb2aCheck();
     let sourceActor = await compendiumUtils.getActorFromCompendium(constants.packs.summons, 'CPR - Spiritual Weapon');
@@ -131,17 +131,17 @@ async function use({workflow}) {
     await workflowUtils.syntheticActivityRoll(feature, [target]);
     feature.activation.type = 'bonus';
 }
-async function veryEarly({workflow}) {
-    workflowUtils.skipDialog(workflow);
-    let effect = effectUtils.getEffectByIdentifier(workflow.actor, 'spiritualWeapon');
+async function early({activity, actor, config, dialog}) {
+    dialog.configure = false;
+    let effect = effectUtils.getEffectByIdentifier(actor, 'spiritualWeapon');
     if (!effect) return;
     let spiritualActor = canvas.scene.tokens.get(effect.flags['chris-premades'].summons.ids[effect.name][0])?.actor;
     if (!spiritualActor) return;
 
     let effectData = {
-        name: workflow.activity.name,
-        img: workflow.item.img,
-        origin: workflow.item.uuid,
+        name: activity.name,
+        img: activity.item.img,
+        origin: activity.item.uuid,
         changes: [
             {
                 key: 'flags.midi-qol.rangeOverride.attack.all',
@@ -158,13 +158,10 @@ async function veryEarly({workflow}) {
             }
         }
     };
-    await effectUtils.createEffect(workflow.actor, effectData, {identifier: 'spiritualWeaponAttack', parentEntity: effect});
+    await effectUtils.createEffect(actor, effectData, {identifier: 'spiritualWeaponAttack', parentEntity: effect});
     await effectUtils.createEffect(spiritualActor, effectData, {identifier: 'spiritualWeaponAttack', parentEntity: effect});
-}
-async function early({workflow}) {
-    let effect = effectUtils.getEffectByIdentifier(workflow.actor, 'spiritualWeapon');
-    if (!effect) return;
-    workflowUtils.setScaling(workflow, effect.flags['chris-premades'].castData.castLevel);
+    let spellLabel = actorUtils.getEquivalentSpellSlotName(actor, effect.flags['chris-premades'].castData.castLevel);
+    if (spellLabel) config.spell = {slot: spellLabel};
 }
 async function late({workflow}) {
     let effect = effectUtils.getEffectByIdentifier(workflow.actor, 'spiritualWeapon');
@@ -189,19 +186,13 @@ export let spiritualWeapon = {
             },
             {
                 pass: 'preTargeting',
-                macro: veryEarly,
+                macro: early,
                 priority: 50,
                 activities: ['spiritualWeaponAttack']
             },
             {
                 pass: 'attackRollComplete',
                 macro: late,
-                priority: 50,
-                activities: ['spiritualWeaponAttack']
-            },
-            {
-                pass: 'preItemRoll',
-                macro: early,
                 priority: 50,
                 activities: ['spiritualWeaponAttack']
             }

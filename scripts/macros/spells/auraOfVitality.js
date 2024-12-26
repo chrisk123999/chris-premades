@@ -28,8 +28,8 @@ async function use({workflow}) {
     });
     if (concentrationEffect) await genericUtils.update(concentrationEffect, {duration: effectData.duration});
 }
-async function early({workflow}) {
-    workflowUtils.skipDialog(workflow);
+async function early({dialog}) {
+    dialog.configure = false;
 }
 export let auraOfVitality = {
     name: 'Aura of Vitality',

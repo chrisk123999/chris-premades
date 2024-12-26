@@ -64,8 +64,8 @@ async function use({workflow}) {
 async function end({trigger}) {
     await endAnim({trigger});
 }
-async function early({workflow}) {
-    workflowUtils.skipDialog(workflow);
+async function early({dialog}) {
+    dialog.configure = false;
 }
 export let investitureOfIce = {
     name: 'Investiture of Ice',

@@ -118,8 +118,8 @@ async function damage({workflow}) {
     let damageType = workflow.defaultDamageType;
     await workflowUtils.bonusDamage(workflow, formula + '[' + damageType + ']', {damageType});
 }
-async function early({workflow}) {
-    workflowUtils.skipDialog(workflow);
+async function early({dialog}) {
+    dialog.configure = false;
 }
 export let huntersMark = {
     name: 'Hunter\'s Mark',

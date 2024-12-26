@@ -1,4 +1,4 @@
-import {activityUtils, constants, effectUtils, genericUtils, itemUtils, workflowUtils} from '../../utils.js';
+import {activityUtils, actorUtils, constants, effectUtils, genericUtils, itemUtils, workflowUtils} from '../../utils.js';
 
 async function use({workflow}) {
     let concentrationEffect = effectUtils.getConcentrationEffect(workflow.actor, workflow.item);
@@ -55,13 +55,12 @@ async function use({workflow}) {
     });
     if (concentrationEffect) await genericUtils.update(concentrationEffect, {duration: effectData.duration});
 }
-async function veryEarly({workflow}) {
-    workflowUtils.skipDialog(workflow);
-}
-async function early({workflow}) {
-    let effect = effectUtils.getEffectByIdentifier(workflow.actor, 'flameBlade');
+async function early({actor, config, dialog}) {
+    dialog.configure = false;
+    let effect = effectUtils.getEffectByIdentifier(actor, 'flameBlade');
     if (!effect) return true;
-    workflowUtils.setScaling(workflow, effect.flags['chris-premades'].castData.castLevel);
+    let spellLabel = actorUtils.getEquivalentSpellSlotName(actor, effect.flags['chris-premades'].castData.castLevel);
+    if (spellLabel) config.spell = {slot: spellLabel};
 }
 export let flameBlade = {
     name: 'Flame Blade',
@@ -76,15 +75,9 @@ export let flameBlade = {
             },
             {
                 pass: 'preTargeting',
-                macro: veryEarly,
-                priority: 50,
-                activities: ['flameBladeEvoke', 'flameBladeScimitar']
-            },
-            {
-                pass: 'preItemRoll',
                 macro: early,
                 priority: 50,
-                activities: ['flameBladeScimitar']
+                activities: ['flameBladeEvoke', 'flameBladeScimitar']
             }
         ]
     },

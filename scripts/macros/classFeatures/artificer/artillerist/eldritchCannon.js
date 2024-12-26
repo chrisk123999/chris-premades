@@ -156,9 +156,9 @@ async function lateExplosiveCannon({workflow}) {
     let effect = effectUtils.getEffectByIdentifier(workflow.actor, 'summonedEffect');
     if (effect) await genericUtils.remove(effect);
 }
-async function early({workflow}) {
-    if (workflow.item.system.uses.prompt && !workflow.item.system.uses.value) {
-        let minSpellSlot = Object.entries(workflow.actor.system.spells).map(i => ({...i[1], type: i[0]})).filter(i => i.value > 0).reduce((lowest, curr) => curr.level < lowest.level ? curr : lowest, {level: 99});
+async function early({activity, token, actor, dialog}) {
+    if (activity.item.system.uses.prompt && !activity.item.system.uses.value) {
+        let minSpellSlot = Object.entries(actor.system.spells).map(i => ({...i[1], type: i[0]})).filter(i => i.value > 0).reduce((lowest, curr) => curr.level < lowest.level ? curr : lowest, {level: 99});
         if (!minSpellSlot.type) {
             genericUtils.notify('CHRISPREMADES.Macros.EldritchCannon.NoSlots', 'info');
             return true;
@@ -170,11 +170,11 @@ async function early({workflow}) {
         } else {
             dialogContent = genericUtils.format('CHRISPREMADES.Macros.EldritchCannon.SpendSlot', {slotLevel, slotValue, slotMax});
         } 
-        let selection = await dialogUtils.confirm(workflow.item.name, dialogContent);
+        let selection = await dialogUtils.confirm(activity.item.name, dialogContent);
         if (!selection) return true;
-        await genericUtils.update(workflow.actor, {['system.spells.' + slotType + '.value']: slotValue - 1});
-        await genericUtils.update(workflow.item, {'system.uses.value': 1});
-        workflow.options.configureDialog = false;
+        await genericUtils.update(actor, {['system.spells.' + slotType + '.value']: slotValue - 1});
+        await genericUtils.update(activity.item, {'system.uses.value': 1});
+        dialog.configure = false;
     }
 }
 async function lateForceBallista({workflow}) {

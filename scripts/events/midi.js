@@ -186,9 +186,22 @@ async function executeTargetMacroPass(workflow, pass, onlyHit = false) {
         if (workflow.aborted) break;
     }
 }
-async function preTargeting(workflow) {
-    let stop = await executeMacroPass(workflow, 'preTargeting');
-    if (stop) return false;
+async function preTargeting({activity, token, config, dialog, message}) {
+    genericUtils.log('dev', 'Executing Midi Macro Pass: preTargeting for ' + activity?.item?.name);
+    if (!token) token = actorUtils.getFirstToken(activity.actor);
+    let triggers = getSortedTriggers({activity, item: activity.item, actor: activity.actor, token}, 'preTargeting');
+    if (triggers.length) await genericUtils.sleep(50);
+    for (let trigger of triggers) {
+        genericUtils.log('dev', 'Executing Midi Macro: ' + trigger.macro.name + ' from ' + trigger.name + ' with a priority of ' + trigger.priority);
+        let result;
+        try {
+            result = await trigger.macro({trigger, activity, token, actor: token.actor, config, dialog, message});
+        } catch (error) {
+            //Add some sort of ui notice here. Maybe even some debug info?
+            console.error(error);
+        }
+        if (result) return false;
+    }
 }
 async function preItemRoll(workflow) {
     let stop = await requirements.versionCheck(workflow);

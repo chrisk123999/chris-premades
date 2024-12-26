@@ -46,16 +46,16 @@ async function use({workflow}) {
         }
     });
 }
-async function early({workflow}) {
-    let effect = effectUtils.getEffectByIdentifier(workflow.actor, 'tentacleOfTheDeeps');
+async function early({activity, token, actor}) {
+    let effect = effectUtils.getEffectByIdentifier(actor, 'tentacleOfTheDeeps');
     if (!effect) return;
-    let tentacleActor = workflow.token.scene.tokens.get(effect.flags['chris-premades'].summons.ids[effect.name][0])?.actor;
+    let tentacleActor = token.scene.tokens.get(effect.flags['chris-premades'].summons.ids[effect.name][0])?.actor;
     if (!tentacleActor) return;
 
     let effectData = {
-        name: workflow.item.name,
-        img: workflow.item.img,
-        origin: workflow.item.uuid,
+        name: activity.item.name,
+        img: activity.item.img,
+        origin: activity.item.uuid,
         changes: [
             {
                 key: 'flags.midi-qol.rangeOverride.attack.all',
@@ -72,12 +72,12 @@ async function early({workflow}) {
             }
         }
     };
-    await effectUtils.createEffect(workflow.actor, effectData, {identifier: 'tentacleOfTheDeepsAttack', parentEntity: effect});
+    await effectUtils.createEffect(actor, effectData, {identifier: 'tentacleOfTheDeepsAttack', parentEntity: effect});
     await effectUtils.createEffect(tentacleActor, effectData, {identifier: 'tentacleOfTheDeepsAttack', parentEntity: effect});
-    let classLevel = workflow.actor.classes.warlock?.system.levels ?? 1;
+    let classLevel = actor.classes.warlock?.system.levels ?? 1;
     let numDice = (classLevel > 9) ? 2 : 1;
-    let formula = numDice + workflow.activity.damage.parts[0].formula.slice(1);
-    await activityUtils.setDamage(workflow.activity, formula);
+    let formula = numDice + activity.damage.parts[0].formula.slice(1);
+    await activityUtils.setDamage(activity, formula);
 }
 async function late({workflow}) {
     let effect = effectUtils.getEffectByIdentifier(workflow.actor, 'tentacleOfTheDeeps');

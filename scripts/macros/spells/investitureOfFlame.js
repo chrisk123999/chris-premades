@@ -107,8 +107,8 @@ async function moveOrTurn({trigger: {entity: effect, castData, token, target}}) 
 async function end({trigger}) {
     await endAnim({trigger});
 }
-async function early({workflow}) {
-    workflowUtils.skipDialog(workflow);
+async function early({dialog}) {
+    dialog.configure = false;
 }
 export let investitureOfFlame = {
     name: 'Investiture of Flame',

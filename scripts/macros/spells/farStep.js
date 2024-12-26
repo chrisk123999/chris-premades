@@ -79,8 +79,8 @@ async function end({trigger: {entity: effect}}) {
     let token = actorUtils.getFirstToken(effect.parent);
     await Sequencer.EffectManager.endEffects({name: 'Far Step', object: token});
 }
-async function early({workflow}) {
-    workflowUtils.skipDialog(workflow);
+async function early({dialog}) {
+    dialog.configure = false;
 }
 export let farStep = {
     name: 'Far Step',

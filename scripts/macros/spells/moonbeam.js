@@ -110,8 +110,8 @@ async function enterOrTurn({trigger: {entity: template, castData, token}}) {
     }
     await workflowUtils.syntheticActivityRoll(feature, [token], {atLevel: castData.castLevel});
 }
-async function early({workflow}) {
-    workflowUtils.skipDialog(workflow);
+async function early({dialog}) {
+    dialog.configure = false;
 }
 export let moonbeam = {
     name: 'Moonbeam',

@@ -181,8 +181,8 @@ async function stop({workflow}) {
     if (!effect) return;
     await genericUtils.remove(effect);
 }
-async function early({workflow}) {
-    workflowUtils.skipDialog(workflow);
+async function early({dialog}) {
+    dialog.configure = false;
 }
 export let fireShield = {
     name: 'Fire Shield',

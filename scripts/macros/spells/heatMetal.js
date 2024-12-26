@@ -112,8 +112,8 @@ async function dialog(workflow, targetToken, effect) {
     };
     await effectUtils.createEffect(targetToken.actor, effectData, {parentEntity: effect, identifier: 'heatMetalHeld'});
 }
-async function early({workflow}) {
-    workflowUtils.skipDialog(workflow);
+async function early({dialog}) {
+    dialog.configure = false;
 }
 export let heatMetal = {
     name: 'Heat Metal',

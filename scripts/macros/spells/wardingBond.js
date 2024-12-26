@@ -128,8 +128,8 @@ async function movedSource({trigger}) {
     if (!selection) return;
     await genericUtils.remove(trigger.entity);
 }
-async function early({workflow}) {
-    workflowUtils.skipDialog(workflow);
+async function early({dialog}) {
+    dialog.configure = false;
 }
 export let wardingBond = {
     name: 'Warding Bond',

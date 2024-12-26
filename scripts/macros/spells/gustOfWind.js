@@ -79,8 +79,8 @@ async function startTurn({trigger: {entity: template, castData, token}}) {
     let ray = Ray.fromAngle(token.center.x, token.center.y, gustAngle, canvas.dimensions.size);
     await tokenUtils.moveTokenAlongRay(token, ray, 15);
 }
-async function early({workflow}) {
-    workflowUtils.skipDialog(workflow);
+async function early({dialog}) {
+    dialog.configure = false;
 }
 export let gustOfWind = {
     name: 'Gust of Wind',

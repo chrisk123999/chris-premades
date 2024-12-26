@@ -142,8 +142,8 @@ async function damage({trigger, workflow}) {
     let formula = effect.flags['chris-premades'].hex.formula;
     await workflowUtils.bonusDamage(workflow, formula, {damageType: damageType});
 }
-async function early({workflow}) {
-    workflowUtils.skipDialog(workflow);
+async function early({dialog}) {
+    dialog.configure = false;
 }
 export let hex = {
     name: 'Hex',

@@ -1,4 +1,4 @@
-import {activityUtils, compendiumUtils, constants, dialogUtils, effectUtils, errors, genericUtils, itemUtils, tokenUtils, workflowUtils} from '../../../../utils.js';
+import {activityUtils, actorUtils, compendiumUtils, constants, dialogUtils, effectUtils, errors, genericUtils, itemUtils, tokenUtils, workflowUtils} from '../../../../utils.js';
 
 async function use({workflow}) {
     let activityIdentifier = activityUtils.getIdentifier(workflow.activity);
@@ -168,13 +168,11 @@ async function late({trigger: {entity: effect}, workflow}) {
         scaling: (workflow.actor.classes.druid?.system.levels >= 10) ? 1 : 0
     }});
 }
-async function veryEarly({workflow}) {
-    workflowUtils.skipDialog(workflow);
-}
-async function early({workflow}) {
-    let scaling = 0;
-    if (workflow.actor.classes.druid?.system.levels >= 10) scaling = 1;
-    workflowUtils.setScaling(workflow, scaling);
+async function early({actor, config, dialog}) {
+    dialog.configure = false;
+    if (actor.classes.druid?.system.levels < 10) return;
+    let spellLabel = actorUtils.getEquivalentSpellSlotName(actor, 1);
+    if (spellLabel) config.spell = {slot: spellLabel};
 }
 export let starryForm = {
     name: 'Starry Form',
@@ -189,12 +187,6 @@ export let starryForm = {
             },
             {
                 pass: 'preTargeting',
-                macro: veryEarly,
-                priority: 50,
-                activities: ['luminousArrow']
-            },
-            {
-                pass: 'preItemRoll',
                 macro: early,
                 priority: 50,
                 activities: ['luminousArrow']

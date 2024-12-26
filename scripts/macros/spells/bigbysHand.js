@@ -290,8 +290,8 @@ async function otherLate({trigger, workflow}) {
     if (targetHalfCover.origin !== trigger.entity.uuid) return;
     await genericUtils.remove(targetHalfCover);
 }
-async function veryEarly({workflow}) {
-    workflowUtils.skipDialog(workflow);
+async function veryEarly({dialog}) {
+    dialog.configure = false;
 }
 export let bigbysHand = {
     name: 'Bigby\'s Hand',

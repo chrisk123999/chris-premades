@@ -130,8 +130,8 @@ async function endTurn({trigger}) {
     let featureData = duplicate(trigger.entity.toObject());
     await workflowUtils.syntheticItemDataRoll(featureData, trigger.entity.actor, [trigger.target]);
 }
-async function early({workflow}) {
-    workflowUtils.skipDialog(workflow);
+async function early({dialog}) {
+    dialog.configure = false;
 }
 export let flamingSphere = {
     name: 'Flaming Sphere',

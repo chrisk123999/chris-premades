@@ -105,17 +105,15 @@ async function turnEnd({trigger: {entity: effect, token}}) {
         await genericUtils.remove(effect);
     }
 }
-async function early({workflow}) {
-    if (workflow.item.type !== 'spell') {
+async function early({activity, actor}) {
+    if (activity.item.type !== 'spell') {
         genericUtils.notify('CHRISPREMADES.Macros.ManifestMind.Invalid', 'info');
-        workflow.aborted = true;
-        return;
+        return true;
     }
-    let effect = effectUtils.getEffectByIdentifier(workflow.actor, 'manifestMind');
-    let originItem = itemUtils.getItemByIdentifier(workflow.actor, 'manifestMind');
+    let effect = effectUtils.getEffectByIdentifier(actor, 'manifestMind');
+    let originItem = itemUtils.getItemByIdentifier(actor, 'manifestMind');
     if (!effect || !originItem) {
-        workflow.aborted = true;
-        return;
+        return true;
     }
 }
 export let manifestMind = {

@@ -99,8 +99,8 @@ export async function findSteedEarlyHelper(workflow, identifier) {
     let selection = await dialogUtils.confirm(originItem.name, 'CHRISPREMADES.Macros.FindSteed.Target');
     if (selection) genericUtils.updateTargets([workflow.token, steedToken]);
 }
-async function veryEarly({workflow}) {
-    workflowUtils.skipDialog(workflow);
+async function veryEarly({dialog}) {
+    dialog.configure = false;
 }
 export let findSteed = {
     name: 'Find Steed',

@@ -75,8 +75,8 @@ async function endTurn({trigger: {entity: template, castData, token}}) {
     if (!feature) return;
     await workflowUtils.syntheticActivityRoll(feature, [token], {atLevel: castData.castLevel});
 }
-async function early({workflow}) {
-    workflowUtils.skipDialog(workflow);
+async function early({dialog}) {
+    dialog.configure = false;
 }
 export let dawn = {
     name: 'Dawn',
