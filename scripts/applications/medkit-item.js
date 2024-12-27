@@ -1,6 +1,6 @@
 let {ApplicationV2, HandlebarsApplicationMixin} = foundry.applications.api;
 import {compendiumUtils, itemUtils, genericUtils, constants} from '../utils.js';
-import * as macros from '../macros.js';
+import * as macros from '../legacyMacros.js';
 import {custom} from '../events/custom.js';
 export class ItemMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
     constructor(item) {

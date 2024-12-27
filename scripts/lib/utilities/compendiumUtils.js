@@ -1,6 +1,6 @@
 import {gambitPremades} from '../../integrations/gambitsPremades.js';
 import {miscPremades} from '../../integrations/miscPremades.js';
-import * as macros from '../../macros.js';
+import * as macros from '../../legacyMacros.js';
 import {constants} from '../constants.js';
 import {errors} from '../errors.js';
 import {genericUtils} from './genericUtils.js';

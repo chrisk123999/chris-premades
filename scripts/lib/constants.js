@@ -24,6 +24,21 @@ let featurePacks = {
     miscellaneousItems: 'chris-premades.CPRMiscellaneousItems',
     itemFeatures: 'chris-premades.CPRItemFeatures',
 };
+let legacyPacks = {
+    spells: 'chris-premades.CPRSpells',
+    items: 'chris-premades.CPRItems',
+    classFeatures: 'chris-premades.CPRClassFeatures',
+    actions: 'chris-premades.CPRActions',
+    feats: 'chris-premades.CPRFeats',
+    raceFeatures: 'chris-premades.CPRRaceFeatures',
+    thirdPartyClassFeatures: 'chris-premades.CPRThirdPartyClassFeatures',
+    thirdPartyItems: 'chris-premades.CPRThirdPartyItems',
+    monsterFeatures: 'chris-premades.CPRMonsterFeatures',
+    thirdPartyFeats: 'chris-premades.CPRThirdPartyFeats'
+};
+let modernPacks = {
+
+};
 function setUseLocalCompendium(value) {
     if (value) {
         packs.spellFeatures = 'world.cpr-spell-features';
@@ -426,5 +441,7 @@ export let constants = {
     itemTypes,
     tempConditionIcon,
     abilityOptions,
-    healingTypeOptions
+    healingTypeOptions,
+    legacyPacks,
+    modernPacks
 };

@@ -1,4 +1,4 @@
-import * as macros from '../../macros.js';
+import * as macros from '../../legacyMacros.js';
 import {constants} from '../constants.js';
 import {genericUtils} from './genericUtils.js';
 async function setMacro(entityUuid, key, values = []) {
