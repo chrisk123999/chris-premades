@@ -209,8 +209,8 @@ async function rollCheck(wrapped, config, dialog = {}, message = {}) {
     Hooks.once('dnd5e.preRollAbilityCheckV2', messageDataFunc);
     if (Object.entries(options).length) config.rolls = [{options}];
     let returnData = await wrapped(config, dialog, {...message, create: false});
-    if (!returnData) return;
-    if (returnData.length) returnData = returnData[0];
+    let shouldBeArray = !!returnData.length;
+    if (shouldBeArray) returnData = returnData[0];
     if (!returnData) return;
     let oldOptions = returnData.options;
     returnData = await executeBonusMacroPass(this, 'bonus', checkId, options, returnData);
@@ -222,7 +222,7 @@ async function rollCheck(wrapped, config, dialog = {}, message = {}) {
         messageData.template = 'modules/midi-qol/templates/roll-base.html';
         await returnData.toMessage(messageData, {rollMode: returnData.options?.rollMode ?? message.rollMode ?? game.settings.get('core', 'rollMode')});
     }
-    return [returnData];
+    return shouldBeArray ? [returnData] : returnData;
 }
 function patch() {
     genericUtils.log('dev', 'Ability Checks Patched!');

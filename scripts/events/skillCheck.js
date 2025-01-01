@@ -209,8 +209,8 @@ async function rollSkill(wrapped, config, dialog = {}, message = {}) {
     Hooks.once('dnd5e.preRollSkillV2', messageDataFunc);
     if (Object.entries(options).length) config.rolls = [{options}];
     let returnData = await wrapped(config, dialog, {...message, create: false});
-    if (!returnData) return;
-    if (returnData.length) returnData = returnData[0];
+    let shouldBeArray = !!returnData.length;
+    if (shouldBeArray) returnData = returnData[0];
     if (!returnData) return;
     let oldOptions = returnData.options;
     returnData = await executeBonusMacroPass(this, 'bonus', skillId, options, returnData);
@@ -219,7 +219,7 @@ async function rollSkill(wrapped, config, dialog = {}, message = {}) {
     if (message.create !== false) {
         await returnData.toMessage(messageData, {rollMode: returnData.options?.rollMode ?? rollMode});
     }
-    return [returnData];
+    return shouldBeArray ? [returnData] : returnData;
 }
 function patch() {
     genericUtils.log('dev', 'Skill Checks Patched!');
