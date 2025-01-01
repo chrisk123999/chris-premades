@@ -156,8 +156,15 @@ async function executeBonusMacroPass(actor, pass, skillId, options, roll) {
     return CONFIG.Dice.D20Roll.fromRoll(roll);
 }
 async function rollSkill(wrapped, config, dialog = {}, message = {}) {
-    let skillId = config.skill;
-    let event = config.event;
+    let skillId;
+    let event;
+    if (foundry.utils.getType(config) === 'Object') {
+        skillId = config.skill;
+        event = config.event;
+    } else {
+        skillId = config;
+        event = dialog?.event;
+    }
     let options = {};
     await executeMacroPass(this, 'situational', skillId, options);
     let selections = await executeContextMacroPass(this, 'context', skillId, options);
@@ -197,11 +204,13 @@ async function rollSkill(wrapped, config, dialog = {}, message = {}) {
         }
         messageData = message.data;
         if (overtimeActorUuid) messageData['flags.midi-qol.overtimeActorUuid'] = overtimeActorUuid;
-        rollMode = game.settings.get('core', 'rollMode');
+        rollMode = message.rollMode ?? game.settings.get('core', 'rollMode');
     };
     Hooks.once('dnd5e.preRollSkillV2', messageDataFunc);
     if (Object.entries(options).length) config.rolls = [{options}];
-    let [returnData] = await wrapped(config, dialog, {...message, create: false});
+    let returnData = await wrapped(config, dialog, {...message, create: false});
+    if (!returnData) return;
+    if (returnData.length) returnData = returnData[0];
     if (!returnData) return;
     let oldOptions = returnData.options;
     returnData = await executeBonusMacroPass(this, 'bonus', skillId, options, returnData);

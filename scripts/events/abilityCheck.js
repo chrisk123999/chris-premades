@@ -156,8 +156,15 @@ async function executeBonusMacroPass(actor, pass, checkId, options, roll) {
     return CONFIG.Dice.D20Roll.fromRoll(roll);
 }
 async function rollCheck(wrapped, config, dialog = {}, message = {}) {
-    let checkId = config.ability;
-    let event = config.event;
+    let checkId;
+    let event;
+    if (foundry.utils.getType(config) === 'Object') {
+        checkId = config.ability;
+        event = config.event;
+    } else {
+        checkId = config;
+        event = dialog?.event;
+    }
     let options = {};
     await executeMacroPass(this, 'situational', checkId, options);
     let selections = await executeContextMacroPass(this, 'context', checkId, options);
@@ -201,7 +208,9 @@ async function rollCheck(wrapped, config, dialog = {}, message = {}) {
     };
     Hooks.once('dnd5e.preRollAbilityCheckV2', messageDataFunc);
     if (Object.entries(options).length) config.rolls = [{options}];
-    let [returnData] = await wrapped(config, dialog, {...message, create: false});
+    let returnData = await wrapped(config, dialog, {...message, create: false});
+    if (!returnData) return;
+    if (returnData.length) returnData = returnData[0];
     if (!returnData) return;
     let oldOptions = returnData.options;
     returnData = await executeBonusMacroPass(this, 'bonus', checkId, options, returnData);
@@ -211,7 +220,7 @@ async function rollCheck(wrapped, config, dialog = {}, message = {}) {
         genericUtils.mergeObject(messageData, {flags: options.flags ?? {} });
         genericUtils.setProperty(messageData, 'flags.midi-qol.lmrtfy.requestId', options.flags?.lmrtfy?.data?.requestId);
         messageData.template = 'modules/midi-qol/templates/roll-base.html';
-        await returnData.toMessage(messageData, {rollMode: returnData.options?.rollMode});
+        await returnData.toMessage(messageData, {rollMode: returnData.options?.rollMode ?? message.rollMode ?? game.settings.get('core', 'rollMode')});
     }
     return [returnData];
 }

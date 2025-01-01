@@ -1,3 +1,8 @@
+# 1.1.3 Release:
+## Bug Fixes:
+- Compatibility with modules which roll checks/saves using legacy format
+- Fixed checks/saves not respecting roll mode
+
 # 1.1.2 Release:
 ## Bug Fixes:
 - Lay on Hands
