@@ -114,7 +114,8 @@
             "ApplyFilter": "Applica Filtro:",
             "AttackBonus": "Bonus Attacco:",
             "Character": "Personaggio",
-            "CheckSaves": "Tiro Salvezza:",
+            "CheckSave": "Tiro Salvezza:",
+            "CheckSaves": "Tiri Salvezza:",
             "ClassIdentifier": "Identificatore di Classe",
             "Color": "Colore:",
             "Colors": {
@@ -175,6 +176,8 @@
             "ShowRoll": "Mostra Tiro:",
             "Sound": "Suono:",
             "SpecificAnimation": "Animazione {option}:",
+            "Trigger": "Attivazione:",
+            "TurnTrigger": "Attivare l'interruttore:",
             "UseFormula": "Utilizzare la formula:"
         },
         "Cover": {
@@ -322,6 +325,8 @@
             "Success": "Successo",
             "Summon": "Evoca",
             "Total": "Totale",
+            "TurnEnd": "Fine Turno",
+            "TurnStart": "Inizio Turno",
             "Uncontested": "Non Contrastato",
             "Update": "Aggiorna",
             "Yes": "Sì",
@@ -825,6 +830,7 @@
                 "NoTargets": "Nessun bersaglio valido a portata!"
             },
             "FarStep": {
+                "Name": "Passo Lontano",
                 "Teleport": "Passo Lontano: Teletrasporto"
             },
             "FeyStep": {
@@ -898,6 +904,9 @@
                 "AvertEffect": "Sguardo Distolto",
                 "AvertSelect": "Distogliere lo sguardo da {tokenName}?",
                 "Name": "Sguardo"
+            },
+            "GenericTeleport": {
+                "Name": "Teletrasporto"
             },
             "Grapple": {
                 "ChooseSkill": "Come vuoi contrastare l'afferramento?",
@@ -979,6 +988,9 @@
             "HexbladesCurse": {
                 "Healing": "Maledizione della Lama Nera: Cura",
                 "Transfer": "Maestro delle Maledizioni: Trasferire Maledizione?"
+            },
+            "HiddenPaths": {
+                "Name": "Sentieri Nascosti"
             },
             "HoldPerson": {
                 "Overtime": "Blocca Persona (Fine del Turno)"
@@ -1198,6 +1210,9 @@
                 "Hit": "L'attacco ha colpito un duplicato e l'ha distrutto.",
                 "Miss": "L'attacco ha mirato a un duplicato e ha mancato."
             },
+            "MistyStep": {
+                "Name": "Passo Velato"
+            },
             "Moonbeam": {
                 "Damage": "Raggio di Luna: Danno",
                 "Move": "Raggio di Luna: Sposta"
@@ -1288,7 +1303,7 @@
             },
             "ReduceMaxHP": {
                 "DamageTypeFilter": "Applica solo determinati tipi di danno alla riduzione del massimo HP:",
-                "Half": "Ridurre a metà il danno/tira:",
+                "Half": "Ridurre a metà il danno / tira:",
                 "Long": "Scade al Riposo Lungo:",
                 "Name": "Ridurre HP Massimi",
                 "ReduceByRoll": "Ridurre dal tiro, non dal danno:",
@@ -1350,6 +1365,9 @@
             "ShadowOfMoil": {
                 "Damage": "Ombra di Moil: Danno"
             },
+            "ShadowStep": {
+                "Name": "Passo dell'Ombra"
+            },
             "ShieldGuardianShield": {
                 "Use": "Scudo {name}? Tiro di Attacco: {attack}"
             },
@@ -1399,6 +1417,12 @@
                 "Ring": "Anello",
                 "Spirits": "Spiriti",
                 "Variation": "Variante:"
+            },
+            "SpiritOfDeath": {
+                "HauntCreature": "Creatura Infestante (Spirito Mietitore)",
+                "HauntCreatureHaunt": "Creatura Infestante: Infestazione",
+                "Haunted": "Spirito Mietitore: Infestato",
+                "ReapingScythe": "Falce Mietitrice (Spirito Mietitore)"
             },
             "SpiritShroud": {
                 "Hit": "Mantello Spirituale: Colpo",
@@ -1631,6 +1655,7 @@
                 "Pull": "Quanto distante tiri il bersaglio?"
             },
             "ThunderStep": {
+                "Name": "Passo del Tuono",
                 "Select": "Teletrasportare una Creatura?"
             },
             "ThunderboltStrike": {
@@ -1674,6 +1699,9 @@
                 "Attack": "Tocco Vampirico: Attacco",
                 "HealingModifier": "0.5"
             },
+            "VortexWarp": {
+                "Name": "Vortex Warp"
+            },
             "WallOfFire": {
                 "CircleFacing": "Quale lato è il fuoco?",
                 "Diameter": "Quale diametro?",
@@ -1692,8 +1720,8 @@
                 "MaxDistance": "Distanza Massima:"
             },
             "WildShape": {
-                "CustomCompendium": "Compendio Forma Selvatica Personalizzato:",
                 "AllowElementals": "Permettere sempre gli elementali:",
+                "CustomCompendium": "Compendio Forma Selvatica Personalizzato:",
                 "Equipment": "Cosa succede al tuo equipaggiamento?",
                 "Ignore": "Ignora CR, Tipo e Restrizioni di Movimento:",
                 "KeepSpells": "Permetti incantesimi durante la trasformazione:",
@@ -2428,6 +2456,7 @@
                 "HybridTransformation": "Trasformazione Ibrida",
                 "ManifestMind": "Mente Manifestata",
                 "Pixie": "Folletto",
+                "ReaperSpirit": "Spirito Mietitore",
                 "ShadowSpirit": "Spirito Ombra",
                 "ShadowSpiritDespair": "Spirito Ombra (Disperazione)",
                 "ShadowSpiritFear": "Spirito Ombra (Paura)",
