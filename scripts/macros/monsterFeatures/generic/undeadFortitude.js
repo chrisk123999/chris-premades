@@ -21,9 +21,7 @@ async function apply({trigger, workflow, ditem}) {
     featureData.system.save.dc = damageDealt + 5;
     delete featureData._id;
     let featureWorkflow = await workflowUtils.syntheticItemDataRoll(featureData, targetActor, [trigger.token]);
-    if (featureWorkflow.failedSaves.size === 1) {
-        return;
-    }
+    if (featureWorkflow.failedSaves.size === 1) return;
     workflowUtils.setDamageItemDamage(ditem, ditem.oldHP - 1);
 }
 export let undeadFortitude = {
