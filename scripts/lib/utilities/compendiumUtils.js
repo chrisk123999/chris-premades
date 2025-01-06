@@ -45,7 +45,7 @@ async function getCPRAutomation(item, {identifier, rules = 'legacy'} = {}) {
         keys.push(constants.packs.monsterFeatures);
     } else return;
     let itemIdentifier = genericUtils.getIdentifier(item);
-    let name = macros[itemIdentifier]?.name ?? item.name;
+    let name = macros[itemIdentifier]?.name ?? CONFIG.chrisPremades.renamedItems[item.name] ?? item.name;
     let folderId;
     if (type === 'npc' && item.type != 'spell') {
         let name = identifier ?? item.actor.prototypeToken.name;
@@ -158,6 +158,10 @@ async function getAllAutomations(item, options) {
 async function getPreferredAutomation(item, options) {
     let items = await getAllAutomations(item, options);
     return items.length ? items[0].document : undefined;
+}
+async function getPreferredAutomationByName(name) {
+    name = CONFIG.chrisPremades.renamedItems[name] ?? name;
+
 }
 async function getItemFromCompendium(key, name, {ignoreNotFound, folderId, object = false, getDescription, translate, identifier, flatAttack, flatDC, castDataWorkflow, matchType} = {}) {
     let pack = game.packs.get(key);
