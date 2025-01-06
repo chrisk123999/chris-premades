@@ -5,14 +5,18 @@ import {constants} from '../constants.js';
 import {errors} from '../errors.js';
 import {genericUtils} from './genericUtils.js';
 import {itemUtils} from './itemUtils.js';
-async function getCPRAutomation(item, {identifier} = {}) {
+async function getCPRAutomation(item, {identifier, rules = 'legacy'} = {}) {
     let keys = [];
     let type = item.actor?.type ?? 'character';
     if (type === 'character' || item.type === 'spell') {
         keys = [];
         switch (item.type) {
             case 'spell':
-                keys.push(constants.packs.spells);
+                if (rules === 'legacy') {
+                    keys.push(constants.packs.spells);
+                } else {
+                    keys.push(constants.modernPacks.spells);
+                }
                 break;
             case 'weapon':
             case 'equipment':

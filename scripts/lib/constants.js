@@ -37,7 +37,7 @@ let legacyPacks = {
     thirdPartyFeats: 'chris-premades.CPRThirdPartyFeats'
 };
 let modernPacks = {
-
+    spells: 'chris-premades.CPRSpells'
 };
 function setUseLocalCompendium(value) {
     if (value) {
@@ -63,6 +63,7 @@ function setUseLocalCompendium(value) {
         packs.monsterFeatures = 'world.cpr-monster-features';
         packs.miscellaneous = 'world.cpr-miscellaneous';
         packs.thirdPartyFeats = 'world.cpr-3rd-party-feats';
+        modernPacks.spells = 'world.cpr-spells-2024';
     } else {
         packs.spellFeatures = 'chris-premades.CPRSpellFeatures';
         featurePacks.spellFeatures = 'chris-premades.CPRSpellFeatures';
@@ -86,6 +87,7 @@ function setUseLocalCompendium(value) {
         packs.monsterFeatures = 'chris-premades.CPRMonsterFeatures';
         packs.miscellaneous = 'chris-premades.CPRMiscellaneous';
         packs.thirdPartyFeats = 'chris-premades.CPRThirdPartyFeats';
+        modernPacks.spells = 'chris-premades.CPRSpells2024';
     }
 }
 const attacks = [

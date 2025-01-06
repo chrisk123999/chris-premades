@@ -256,6 +256,7 @@
             "MissingDescriptionPage": "Missing Description journal page!",
             "NoActors": "No actors found in folder: \"{folder}\"!",
             "OutOfDateItem": "Automation is out of date!",
+            "RulesMismatch": "The automation for this item is mismatched with the rules set on the item!",
             "UpdateItem": "Update Item"
         },
         "Firearm": {
@@ -1950,6 +1951,7 @@
                     "MidiItem": "Midi, Item:",
                     "Movement": "Movement:",
                     "Rest": "Rest:",
+                    "Rules": "Rules:",
                     "Save": "Save:",
                     "Skill": "Skill:",
                     "Source": "Source:",

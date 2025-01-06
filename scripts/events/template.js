@@ -7,7 +7,7 @@ function collectMacros(template) {
     let macroList = [];
     macroList.push(...getTemplateMacroData(template));
     if (!macroList.length) return [];
-    return macroList.map(i => custom.getMacro(i)).filter(j => j);
+    return macroList.map(i => custom.getMacro(i, templateUtils.getRules(template))).filter(j => j);
 }
 function collectTemplatesMacros(templates, pass, token) {
     let triggers = [];

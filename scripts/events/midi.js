@@ -18,7 +18,7 @@ function collectItemMacros(item, pass, activityIdentifier) {
     let macroList = [];
     macroList.push(...getItemMacroData(item));
     if (!macroList.length) return [];
-    return macroList.map(i => custom.getMacro(i)).filter(j => j).filter(k => k.midi?.item?.find(l => l.pass === pass)).flatMap(m => m.midi.item).filter(n => n.pass === pass && (!n.activities?.length || n.activities.includes(activityIdentifier)));
+    return macroList.map(i => custom.getMacro(i, itemUtils.getRules(item))).filter(j => j).filter(k => k.midi?.item?.find(l => l.pass === pass)).flatMap(m => m.midi.item).filter(n => n.pass === pass && (!n.activities?.length || n.activities.includes(activityIdentifier)));
 }
 function getActorMacroData(entity) {
     return entity.flags['chris-premades']?.macros?.midi?.actor ?? [];
@@ -27,7 +27,7 @@ function collectActorMacros(item, pass) {
     let macroList = [];
     macroList.push(...getActorMacroData(item));
     if (!macroList.length) return [];
-    return macroList.map(i => custom.getMacro(i)).filter(j => j).filter(k => k.midi?.actor?.find(l => l.pass === pass)).flatMap(m => m.midi.actor).filter(n => n.pass === pass);
+    return macroList.map(i => custom.getMacro(i, itemUtils.getRules(item))).filter(j => j).filter(k => k.midi?.actor?.find(l => l.pass === pass)).flatMap(m => m.midi.actor).filter(n => n.pass === pass);
 }
 function collectAllMacros({activity, item, token, actor, sourceToken, targetToken}, pass) {
     let triggers = [];
@@ -204,16 +204,18 @@ async function preTargeting({activity, token, config, dialog, message}) {
     }
 }
 async function preItemRoll(workflow) {
-    let stop = await requirements.versionCheck(workflow);
-    if (stop) return true;
+    let stop = await requirements.ruleCheck(workflow);
+    if (stop) return false;
+    stop = await requirements.versionCheck(workflow);
+    if (stop) return false;
     stop = await requirements.automationCheck(workflow);
-    if (stop) return true;
+    if (stop) return false;
     if (genericUtils.getCPRSetting('diceSoNice') && game.modules.get('dice-so-nice')?.active) await diceSoNice.preItemRoll(workflow);
     await genericUtils.sleep(50);
     stop = await executeMacroPass(workflow, 'preItemRoll');
-    if (stop) return true;
+    if (stop) return false;
     stop = await executeTargetMacroPass(workflow, 'targetPreItemRoll');
-    if (stop) return true;
+    if (stop) return false;
     if (workflow.actor.items.get(workflow.item.id) && game.modules.get('autoanimations')?.active) await automatedAnimations.disableAnimation(workflow);
 }
 async function preambleComplete(workflow) {

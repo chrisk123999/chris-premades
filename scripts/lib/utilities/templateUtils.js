@@ -177,6 +177,9 @@ function getIntersections(templateObj, A, B, boolOnly = false) {
 async function getSourceActor(template) {
     return (await fromUuid(template.flags.dnd5e?.origin))?.parent;
 }
+function getRules(template) {
+    return template.flags['chris-premades']?.info?.rules ?? 'legacy';
+}
 export let templateUtils = {
     getTokensInTemplate,
     getTemplatesInToken,
@@ -194,5 +197,6 @@ export let templateUtils = {
     placeTemplate,
     rayIntersectsTemplate,
     getIntersections,
-    getSourceActor
+    getSourceActor,
+    getRules
 };

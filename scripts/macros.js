@@ -1,0 +1,1 @@
+export {armorOfAgathys} from './macros/2024/spells/armorOfAgathys.js';

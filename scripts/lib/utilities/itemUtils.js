@@ -6,17 +6,7 @@ import {custom} from '../../events/custom.js';
 import {ItemMedkit} from '../../applications/medkit-item.js';
 function getSaveDC(item) {
     if (item.hasSave) return item.system.activities.getByType('save')[0].save.dc.value;
-    let spellDC = item.actor?.system?.abilities?.[item.abilityMod]?.dc;
-    // TODO: Should we just look at the ability? Remains to be seen whether we even need the following anymore
-    // let scaling = item.system?.save?.scaling;
-    // if (scaling === 'spell') {
-    //     spellDC = item.actor?.system?.attributes?.spelldc;
-    // } else if (scaling !== 'flat') {
-    //     spellDC = item.actor?.system?.abilities?.[scaling]?.dc;
-    // } else {
-    //     spellDC = item.system?.save?.dc;
-    // }
-    return spellDC ?? 10;
+    return item.actor?.system?.abilities?.[item.abilityMod]?.dc ?? 10;
 }
 function getMod(item) {
     return item.system.save.scaling === 'spell' ? item.actor.system.abilities[item.actor.system.attributes.spellcasting].mod : item.actor.system.abilities[item.system.save.scaling].mod;
@@ -101,7 +91,11 @@ async function isUpToDate(item) {
             break;
         case 'chris-premades': {
             let identifier = genericUtils.getIdentifier(item);
-            sourceVersion = custom.getMacro(identifier)?.version;
+            let rules = getRules(item);
+            let macro = custom.getMacro(identifier, rules);
+            sourceVersion = macro?.version;
+            let savedRules = item.flags['chris-premades']?.info?.rules ?? 'legacy';
+            if (savedRules && (rules != savedRules)) return 0;
             break;
         }
         default: {
@@ -187,6 +181,9 @@ function getHiddenActivities(item) {
 function getActivity(item, type) {
     return item.system.activities.getByType(type)?.[0];
 }
+function getRules(item) {
+    return item.system.source.rules === '' ? 'legacy' : item.system.source.rules === '2014' ? 'legacy' : 'modern';
+}
 export let itemUtils = {
     getSaveDC,
     createItems,
@@ -212,5 +209,6 @@ export let itemUtils = {
     itemUpdate,
     setHiddenActivities,
     getHiddenActivities,
-    getActivity
+    getActivity,
+    getRules
 };

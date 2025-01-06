@@ -189,6 +189,9 @@ async function createEffectFromSidebar(actor, name, options) {
 async function syntheticActiveEffect(effectData, entity) {
     return new CONFIG.ActiveEffect.documentClass(effectData, {parent: entity});
 }
+function getRules(effect) {
+    return effect.flags['chris-premades']?.info?.rules ?? 'legacy';
+}
 export let effectUtils = {
     getCastData,
     getCastLevel,
@@ -211,5 +214,6 @@ export let effectUtils = {
     addSidebarEffect,
     syntheticActiveEffect,
     getSidebarEffectData,
-    createEffectFromSidebar
+    createEffectFromSidebar,
+    getRules
 };

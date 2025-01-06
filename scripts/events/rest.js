@@ -8,7 +8,8 @@ function collectRestMacros(entity, pass) {
     let macroList = [];
     macroList.push(...getRestMacros(entity));
     if (!macroList.length) return [];
-    return macroList.map(i => custom.getMacro(i)).filter(j => j).filter(k => k.rest?.find(l => l.pass === pass)).flatMap(m => m.rest).filter(n => n.pass === pass);
+    let rules = entity.documentName === 'Item' ? itemUtils.getRules(entity) : effectUtils.getRules(entity);
+    return macroList.map(i => custom.getMacro(i, rules)).filter(j => j).filter(k => k.rest?.find(l => l.pass === pass)).flatMap(m => m.rest).filter(n => n.pass === pass);
 }
 function collectAllMacros(actor, pass) {
     let triggers = [];

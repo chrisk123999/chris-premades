@@ -61,7 +61,23 @@ async function automationCheck(workflow) {
     });
     return true;
 }
+async function ruleCheck(workflow) {
+    if (!workflow.item) return;
+    let identifier = genericUtils.getIdentifier(workflow.item);
+    if (!identifier) return;
+    let macro = custom.getMacro(identifier);
+    if (!macro) return;
+    if (!macro.rules) return;
+    if (itemUtils.getRules(workflow.item) === macro.rules) return;
+    let message = '<hr>' + genericUtils.translate('CHRISPREMADES.Error.RulesMismatch');
+    await ChatMessage.create({
+        speaker: {alias: genericUtils.translate('CHRISPREMADES.Generic.CPR')},
+        content: message
+    });
+    return true;
+}
 export let requirements = {
     versionCheck,
-    automationCheck
+    automationCheck,
+    ruleCheck
 };

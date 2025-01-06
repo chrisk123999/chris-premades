@@ -1,6 +1,6 @@
 import {genericUtils} from '../utils.js';
 import * as legacyMacros from '../legacyMacros.js';
-import * as macros from '../legacyMacros.js';
+import * as macros from '../macros.js';
 let customMacroList = [];
 let registeredMacroList = [];
 async function ready() {
@@ -20,10 +20,9 @@ async function ready() {
         return value;
     }))).filter(j => j);
 }
-function getMacro(identifier, rules = 'modern') {
-    let version = game.settings.get('dnd5e', 'rulesVersion');
-    let found = customMacroList.find(i => i.identifier === identifier && i.rules === rules) ?? registeredMacroList.find(j => j.identifier === identifier && j.rules === rules) ?? (version === 'modern' ? macros[identifier] : legacyMacros[identifier])   ; //fix this last part to check the system rules version
-    if (!found && version === 'modern' && genericUtils.getCPRSetting('useFallbackMacros')) found = customMacroList.find(i => i.identifier === identifier && i.rules === 'legacy') ?? registeredMacroList.find(j => j.identifier === identifier  && j.rules === 'legacy') ?? legacyMacros[identifier];
+function getMacro(identifier, rules = 'legacy') {
+    let found = customMacroList.find(i => i.identifier === identifier && i.rules === rules) ?? registeredMacroList.find(j => j.identifier === identifier && j.rules === rules) ?? (rules === 'modern' ? macros[identifier] : legacyMacros[identifier]);
+    if (!found && rules === 'modern' && genericUtils.getCPRSetting('useFallbackMacros')) found = customMacroList.find(i => i.identifier === identifier && i.rules === 'legacy') ?? registeredMacroList.find(j => j.identifier === identifier  && j.rules === 'legacy') ?? legacyMacros[identifier];
     return found;
 }
 function preCreateMacro(document, updates, options, userId) {

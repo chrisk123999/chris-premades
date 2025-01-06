@@ -8,7 +8,8 @@ function collectMacros(entity) {
     let macroList = [];
     macroList.push(...getMacroData(entity));
     if (!macroList.length) return [];
-    return macroList.map(i => custom.getMacro(i)).filter(j => j);
+    let rules = entity.documentName === 'Item' ? itemUtils.getRules(entity) : effectUtils.getRules(entity);
+    return macroList.map(i => custom.getMacro(i, rules)).filter(j => j);
 }
 function collectActorSaveMacros(actor, pass, saveId, options, roll) {
     let triggers = [];

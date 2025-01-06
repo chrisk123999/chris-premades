@@ -7,7 +7,8 @@ function collectDeathMacros(entity, pass) {
     let macroList = [];
     macroList.push(...getDeathMacroData(entity));
     if (!macroList.length) return [];
-    return macroList.map(i => custom.getMacro(i)).filter(j => j).filter(k => k.death?.find(l => l.pass === pass)).flatMap(m => m.death).filter(n => n.pass === pass);
+    let rules = entity.documentName === 'Item' ? itemUtils.getRules(entity) : effectUtils.getRules(entity);
+    return macroList.map(i => custom.getMacro(i, rules)).filter(j => j).filter(k => k.death?.find(l => l.pass === pass)).flatMap(m => m.death).filter(n => n.pass === pass);
 }
 function collectAllMacros({actor}, pass) {
     let triggers = [];

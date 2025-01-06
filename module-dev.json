@@ -251,6 +251,14 @@
       "type": "Item",
       "module": "chris-premades",
       "banner": "modules/chris-premades/images/bannerItems.webp"
+    },
+    {
+      "name": "CPRSpells2024",
+      "label": "CPR Spells",
+      "path": "packs/cpr-spells-2024",
+      "type": "Item",
+      "module": "chris-premades",
+      "banner": "modules/chris-premades/images/bannerSpells.webp"
     }
   ],
   "packFolders": [
@@ -279,6 +287,14 @@
             "CPRThirdPartyItems",
             "CPRThirdPartyFeats",
             "CPRMonsterFeatures"
+          ]
+        },
+        {
+          "name": "2024",
+          "sorting": "a",
+          "color": "#348f2d",
+          "packs": [
+            "CPRSpells2024"
           ]
         }
       ],

@@ -67,7 +67,7 @@ export class Medkit extends HandlebarsApplicationMixin(ApplicationV2) {
             version: itemUtils.getVersion(item),
             source: itemUtils.getSource(item),
             isUpToDate: isUpToDate,
-            availableAutomations: await compendiumUtils.getAllAutomations(item, {identifier: item?.actor?.flags['chris-premades']?.info?.identifier}),
+            availableAutomations: await compendiumUtils.getAllAutomations(item, {identifier: item?.actor?.flags['chris-premades']?.info?.identifier, rules: itemUtils.getRules(item)}),
             status: isUpToDate,
             type: item.type,
             hasAutomation: false,
@@ -133,7 +133,7 @@ export class Medkit extends HandlebarsApplicationMixin(ApplicationV2) {
                 break;
             }
             case -1: {
-                let availableItem = await compendiumUtils.getPreferredAutomation(item, {identifier: item?.actor?.flags['chris-premades']?.info?.identifier});
+                let availableItem = await compendiumUtils.getPreferredAutomation(item, {identifier: item?.actor?.flags['chris-premades']?.info?.identifier, rules: itemUtils.getVersion(item)});
                 if (availableItem) context.medkitColor = 'yellow';
                 break;
             }
