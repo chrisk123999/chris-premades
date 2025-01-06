@@ -1,4 +1,4 @@
-import * as macros from '../macros.js';
+import * as macros from '../legacyMacros.js';
 import {constants, genericUtils} from '../utils.js';
 async function ready() {
     let config = {
