@@ -83,7 +83,7 @@ function getIntersections(region, A, B, boolOnly = false) {
     return totalIntersections;
 }
 function getRules(region) {
-    return region.flags['chris-premades']?.info?.rules ?? 'legacy';
+    return region.flags['chris-premades']?.rules ?? 'legacy';
 }
 export let regionUtils = {
     createRegions,

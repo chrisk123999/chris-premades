@@ -190,7 +190,7 @@ async function syntheticActiveEffect(effectData, entity) {
     return new CONFIG.ActiveEffect.documentClass(effectData, {parent: entity});
 }
 function getRules(effect) {
-    return effect.flags['chris-premades']?.info?.rules ?? 'legacy';
+    return effect.flags['chris-premades']?.rules ?? 'legacy';
 }
 export let effectUtils = {
     getCastData,
