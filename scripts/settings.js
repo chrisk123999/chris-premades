@@ -863,12 +863,6 @@ export function registerSettings() {
         category: 'development',
         onChange: () => activities.cssTweak()
     });
-    addSetting({
-        key: 'useFallbackMacros',
-        type: Boolean,
-        default: true,
-        category: 'general',
-    });
 }
 export function registerMenus() {
     if (game.settings.get('chris-premades', 'devTools')) addMenu({

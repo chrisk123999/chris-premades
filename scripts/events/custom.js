@@ -21,9 +21,7 @@ async function ready() {
     }))).filter(j => j);
 }
 function getMacro(identifier, rules = 'legacy') {
-    let found = customMacroList.find(i => i.identifier === identifier && i.rules === rules) ?? registeredMacroList.find(j => j.identifier === identifier && j.rules === rules) ?? (rules === 'modern' ? macros[identifier] : legacyMacros[identifier]);
-    if (!found && rules === 'modern' && genericUtils.getCPRSetting('useFallbackMacros')) found = customMacroList.find(i => i.identifier === identifier && i.rules === 'legacy') ?? registeredMacroList.find(j => j.identifier === identifier  && j.rules === 'legacy') ?? legacyMacros[identifier];
-    return found;
+    return customMacroList.find(i => i.identifier === identifier && i.rules === rules) ?? registeredMacroList.find(j => j.identifier === identifier && j.rules === rules) ?? (rules === 'modern' ? macros[identifier] : legacyMacros[identifier]);
 }
 function preCreateMacro(document, updates, options, userId) {
     let key = genericUtils.getCPRSetting('macroCompendium');
