@@ -1,3 +1,16 @@
+# 1.1.6 Release:
+## Update Notes:
+- Many under the good changes have been made in preparation to support swapping automations between 2014 and 2024 rules.
+- This version may need more testing before using in a live game. Do not update to this version right before a game. 
+
+# 1.1.5 Release:
+## Update Notes:
+- More under the hood changes to prepare for 2024 content.
+
+# 1.1.4 Release:
+## Update Notes:
+- Under the hood changes to prepare for 2024 content.
+
 # 1.1.3 Release:
 ## Bug Fixes:
 - Compatibility with modules which roll checks/saves using legacy format
