@@ -159,10 +159,6 @@ async function getPreferredAutomation(item, options) {
     let items = await getAllAutomations(item, options);
     return items.length ? items[0].document : undefined;
 }
-async function getPreferredAutomationByName(name) {
-    name = CONFIG.chrisPremades.renamedItems[name] ?? name;
-
-}
 async function getItemFromCompendium(key, name, {ignoreNotFound, folderId, object = false, getDescription, translate, identifier, flatAttack, flatDC, castDataWorkflow, matchType} = {}) {
     let pack = game.packs.get(key);
     if (!pack) {

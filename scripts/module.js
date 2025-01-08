@@ -90,4 +90,7 @@ globalThis['chrisPremades'] = {
     utils,
     macros,
     settingButton,
+    integration: {
+        ddbi: ddbi.getAutomation
+    }
 };
