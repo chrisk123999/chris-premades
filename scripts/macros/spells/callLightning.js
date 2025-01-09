@@ -1,12 +1,12 @@
 import {activityUtils, actorUtils, compendiumUtils, constants, dialogUtils, effectUtils, errors, genericUtils, itemUtils, workflowUtils} from '../../utils.js';
 
 async function use({workflow}) {
-    let concentrationEffect = await effectUtils.getConcentrationEffect(workflow.actor, workflow.item);
     let storming = await dialogUtils.confirm(workflow.item.name, 'CHRISPREMADES.Macros.CallLightning.Storming');
     let castLevel = workflow.castData.castLevel;
     if (storming) castLevel += 1;
     let feature = activityUtils.getActivityByIdentifier(workflow.item, 'stormBolt', {strict: true});
     if (!feature) {
+        let concentrationEffect = await effectUtils.getConcentrationEffect(workflow.actor, workflow.item);
         if (concentrationEffect) await genericUtils.remove(concentrationEffect);
         return;
     }
@@ -39,7 +39,6 @@ async function use({workflow}) {
             favorite: true
         }
     });
-    if (concentrationEffect) await genericUtils.update(concentrationEffect, {duration: effectData.duration});
     await workflowUtils.completeActivityUse(feature);
 }
 async function early({actor, config, dialog}) {

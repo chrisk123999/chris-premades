@@ -24,10 +24,12 @@ async function getCPRAutomation(item, {identifier, rules = 'legacy'} = {}) {
             case 'tool':
             case 'backpack':
             case 'loot':
+                if (rules === 'modern') break;
                 keys.push(constants.packs.items);
                 if (genericUtils.getCPRSetting('thirdParty')) keys.push(constants.packs.thirdPartyItems);
                 break;
             case 'feat':
+                if (rules === 'modern') break;
                 if (item.system.type.value === 'race') {
                     keys.push(constants.packs.raceFeatures);
                     //if (genericUtils.getCPRSetting('thirdParty')) keys.push(constants.packs.thirdPartyRaceFeatures);

@@ -1,3 +1,17 @@
+# 1.1.7 Release:
+## New Modern Rules Content:
+- Acid Splash
+- Aid
+- Alter Self
+## Update Notes:
+- CPR automations will exclusivly check the item's rules before applying automations. If an item is set to the modern rules but only has a legacy automation, it will not be applied!
+- Updated DDBI integration functions.
+## Bug Fixes:
+- Call Lightning (Legacy)
+- Deadeye Shot (Legacy)
+## Known Issues:
+- CPR Manual Roller is missing buttons and advantage / disadvantage breaks things.
+
 # 1.1.6 Release:
 ## Update Notes:
 - Many under the good changes have been made in preparation to support swapping automations between 2014 and 2024 rules.

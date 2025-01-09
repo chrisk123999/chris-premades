@@ -61,6 +61,13 @@
       "riders": {
         "activity": []
       }
+    },
+    "chris-premades": {
+      "info": {
+        "identifier": "deadeyeShot",
+        "version": "1.1.0",
+        "source": "chris-premades"
+      }
     }
   },
   "_id": "TLlErWdz0tp35EH8",

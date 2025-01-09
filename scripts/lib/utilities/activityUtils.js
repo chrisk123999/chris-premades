@@ -1,6 +1,5 @@
 import {errors} from '../errors.js';
 import {genericUtils} from './genericUtils.js';
-
 function getActivityByIdentifier(item, identifier, {strict = false} = {}) {
     let activity = item.system.activities.find(i => getIdentifier(i) === identifier);
     if (!activity && strict) {
