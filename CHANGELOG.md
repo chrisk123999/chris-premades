@@ -1,3 +1,7 @@
+# 1.1.9 Release:
+## New Modern Rules Content:
+- Animal Friendship
+
 # 1.1.8 Release:
 ## Bug Fixes:
 - Item Medkit

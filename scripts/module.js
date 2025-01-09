@@ -7,6 +7,7 @@ import {Crosshairs} from './lib/crosshairs.js';
 import {customTypes} from './extensions/customTypes.js';
 import * as utils from './utils.js';
 import * as macros from './macros.js';
+import * as legacyMacros from './legacyMacros.js';
 import {effectInterface} from './applications/effectInterface.js';
 import {macroInterface} from './applications/macroInterface.js';
 import {settingButton} from './applications/settings.js';
@@ -89,6 +90,7 @@ globalThis['chrisPremades'] = {
     Teleport,
     utils,
     macros,
+    legacyMacros,
     settingButton,
     integration: {
         ddbi: ddbi.getAutomation
