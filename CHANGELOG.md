@@ -3,6 +3,7 @@
 - Acid Splash
 - Aid
 - Alter Self
+- Armor of Agathys
 ## Update Notes:
 - CPR automations will exclusivly check the item's rules before applying automations. If an item is set to the modern rules but only has a legacy automation, it will not be applied!
 - Updated DDBI integration functions.
