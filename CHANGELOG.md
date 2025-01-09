@@ -1,3 +1,7 @@
+# 1.1.8 Release:
+## Bug Fixes:
+- Item Medkit
+
 # 1.1.7 Release:
 ## New Modern Rules Content:
 - Acid Splash

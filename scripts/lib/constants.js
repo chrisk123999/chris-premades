@@ -37,7 +37,7 @@ let legacyPacks = {
     thirdPartyFeats: 'chris-premades.CPRThirdPartyFeats'
 };
 let modernPacks = {
-    spells: 'chris-premades.CPRSpells'
+    spells: 'chris-premades.CPRSpells2024'
 };
 function setUseLocalCompendium(value) {
     if (value) {
