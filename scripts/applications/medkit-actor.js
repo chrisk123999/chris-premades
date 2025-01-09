@@ -2,7 +2,7 @@ let {ApplicationV2, HandlebarsApplicationMixin} = foundry.applications.api;
 import {compendiumUtils, itemUtils, genericUtils, errors} from '../utils.js';
 import {gambitPremades} from '../integrations/gambitsPremades.js';
 import {miscPremades} from '../integrations/miscPremades.js';
-import {Medkit} from './medkit.js';
+import {ItemMedkit} from './medkit-item.js';
 export class ActorMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
     constructor(actor) {
         super({id: 'medkit-window-actor'});
@@ -69,7 +69,7 @@ export class ActorMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
             source: itemUtils.getSource(i), 
             version: itemUtils.getVersion(i),
             isUpToDate: await itemUtils.isUpToDate(i),
-            sourceItem: await compendiumUtils.getAppliedOrPreferredAutomation(i, {identifier: this.identifier})
+            sourceItem: await compendiumUtils.getAppliedOrPreferredAutomation(i, {identifier: this.identifier, rules: itemUtils.getRules(i)})
         })));
         this.amounts = this.actorItems.reduce((accumulator, currentValue) => {
             if (['class', 'subclass'].includes(currentValue.item.type)) return accumulator;
@@ -123,7 +123,7 @@ export class ActorMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
         let source = options.source ?? itemUtils.getSource(sourceItem);
         let summary = '&#8226 ' + item.name + ' - ' + (source.includes('.') ? game.packs.get(source).metadata.label : genericUtils.translate('CHRISPREMADES.Medkit.ModuleIds.' + source)) + '<br/>';
         this.summary += summary;
-        return Medkit.update(item, sourceItem, options);
+        return ItemMedkit.update(item, sourceItem, options);
     }
     static async _update(event, target) {
         await Promise.all(this.actorItems.reduce((accumulator, currentValue) => {
