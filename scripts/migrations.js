@@ -1,5 +1,4 @@
 import {genericUtils} from './utils.js';
-
 export async function migrate() {
     let sortedMigrations = Object.entries(migrations).sort((a, b) => {
         return foundry.utils.isNewerVersion(b[0], a[0]) ? -1 : 1;
@@ -9,11 +8,9 @@ export async function migrate() {
         if (!foundry.utils.isNewerVersion(version, migrationVersion)) continue;
         await migration();
     }
-
     let moduleVersion = game.modules.get('chris-premades').version;
     await genericUtils.setCPRSetting('migrationVersion', moduleVersion);
 }
-
 const migrations = {
     '1.1.0': async () => {
         let oldFolderIds = [];

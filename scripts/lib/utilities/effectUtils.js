@@ -30,7 +30,7 @@ async function setSaveDC(effect, dc) {
     data.saveDC = dc;
     await setCastData(effect, data);
 }
-async function createEffect(entity, effectData, {concentrationItem, parentEntity, identifier, vae, interdependent, strictlyInterdependent, keepId, unhideActivities} = {}) {
+async function createEffect(entity, effectData, {concentrationItem, parentEntity, identifier, vae, interdependent, strictlyInterdependent, unhideActivities, rules} = {}, {animationPath, animationSize = 1, animationFadeIn = 300, animationFadeOut = 300, animationSound} = {}) {
     let hasPermission = socketUtils.hasPermission(entity, game.user.id);
     let concentrationEffect;
     if (concentrationItem) concentrationEffect = getConcentrationEffect(concentrationItem.actor, concentrationItem);
@@ -46,6 +46,7 @@ async function createEffect(entity, effectData, {concentrationItem, parentEntity
         if (existingDependents.length) genericUtils.setProperty(effectData, 'flags.dnd5e.dependents', existingDependents);
     }
     if (vae) genericUtils.setProperty(effectData, 'flags.chris-premades.vae.buttons', vae);
+    if (rules) genericUtils.setProperty(effectData, 'flags.chris-premades.rules', rules);
     let effects;
     if (hasPermission) {
         effects = await entity.createEmbeddedDocuments('ActiveEffect', [effectData]);
@@ -54,6 +55,27 @@ async function createEffect(entity, effectData, {concentrationItem, parentEntity
     } else {
         effects = [await socket.executeAsGM(sockets.createEffect.name, entity.uuid, effectData, {concentrationItemUuid: concentrationItem?.uuid, parentEntityUuid: parentEntity?.uuid})];
         effects = await Promise.all(effects.map(async i => await fromUuid(i)));
+    }
+    if ((animationPath || animationSound) && effects.length) {
+        let token = actorUtils.getFirstToken(effects[0].parent);
+        if (token) {
+            /* eslint-disable indent */
+            new Sequence()
+                .effect()
+                    .playIf(animationPath)
+                    .file(animationPath)
+                    .size(animationSize, {gridUnits: true})
+                    .attachTo(token)
+                    .persist()
+                    .fadeIn(animationFadeIn)
+                    .fadeOut(animationFadeOut)
+                    .tieToDocuments([token.document, effects[0]])
+                .sound()
+                    .playIf(animationSound)
+                    .file(animationSound)
+                .play();
+            /* eslint-enable indent */
+        }
     }
     if (effects?.length) return effects[0];
 }

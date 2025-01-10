@@ -47,7 +47,7 @@ function getConfig(item, key) {
     if (flagValue !== undefined) return flagValue;
     let identifier = genericUtils.getIdentifier(item);
     if (!identifier) return;
-    let value = custom.getMacro(identifier)?.config?.find(i => i.value === key)?.default;
+    let value = custom.getMacro(identifier, getRules(item))?.config?.find(i => i.value === key)?.default;
     return value === '' ? false : value;
 }
 async function setConfig(item, key, value) {

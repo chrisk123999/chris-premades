@@ -1,13 +1,13 @@
-import {actorUtils, constants, effectUtils, genericUtils} from '../../../utils.js';
+import {actorUtils, constants, effectUtils} from '../../../utils.js';
 async function early({trigger, workflow}) {
     if (!workflow.targets.size) return;
     await Promise.all(workflow.targets.map(async token => {
-        if (actorUtils.typeOrRace(token.actor) === 'beast') return;
+        if (actorUtils.typeOrRace(token.actor) === 'beast' && actorUtils.getLevelOrCR(token.actor) === 0) return;
         await effectUtils.createEffect(token.actor, constants.immuneEffectData);
     }));
 }
-export let animalFriendship = {
-    name: 'Animal Friendship',
+export let animalMessenger = {
+    name: 'Animal Messenger',
     version: '1.1.10',
     rules: 'modern',
     midi: {

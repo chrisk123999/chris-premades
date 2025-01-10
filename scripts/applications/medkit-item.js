@@ -113,7 +113,7 @@ export class ItemMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
         return itemUtils.getVersion(this.item);
     }
     get _macro() {
-        return custom.getMacro(this.identifier);
+        return custom.getMacro(this.identifier, itemUtils.getRules(this.item));
     }
     /* Only expected to change when the actual item is changed upon update/apply */
     get name() {

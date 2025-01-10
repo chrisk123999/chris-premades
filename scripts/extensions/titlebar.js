@@ -71,7 +71,7 @@ export async function renderItemSheet(app, [elem], options) {
         case 1: {
             if (source === 'chris-premades') {
                 let identifier = genericUtils.getIdentifier(item);
-                if (custom.getMacro(identifier)?.config) {
+                if (custom.getMacro(identifier, itemUtils.getRules(item))?.config) {
                     headerButton.style.color = 'dodgerblue';
                 } else {
                     headerButton.style.color = 'green';

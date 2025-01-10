@@ -1,6 +1,12 @@
 # 1.1.9 Release:
 ## New Modern Rules Content:
 - Animal Friendship
+- Animal Messenger
+- Animate Dead
+- Antilife Shell
+## Bug Fixes:
+- Actor Medkit
+- Item Medkit
 
 # 1.1.8 Release:
 ## Bug Fixes:

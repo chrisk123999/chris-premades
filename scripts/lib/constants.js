@@ -423,6 +423,33 @@ const itemTypes =  [
     'loot'
 ];
 const tempConditionIcon = 'icons/magic/time/arrows-circling-green.webp';
+const immuneEffectData = {
+    name: 'Immune',
+    img: tempConditionIcon,
+    duration: {
+        turns: 1
+    },
+    changes: [
+        {
+            key: 'flags.midi-qol.min.ability.save.all',
+            value: 100,
+            mode: 5,
+            priority: 120
+        }
+    ],
+    flags: {
+        dae: {
+            specialDuration: [
+                'isSave'
+            ]
+        },
+        'chris-premades': {
+            effect: {
+                noAnimation: true
+            }
+        }
+    }
+};
 export let constants = {
     packs,
     featurePacks,
@@ -445,5 +472,6 @@ export let constants = {
     abilityOptions,
     healingTypeOptions,
     legacyPacks,
-    modernPacks
+    modernPacks,
+    immuneEffectData
 };

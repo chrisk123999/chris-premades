@@ -58,7 +58,7 @@ async function use({trigger, workflow}) {
     new Sequence()
         .effect()
             .file('jb2a.spirit_guardians.' + color + variation)
-            .size(workflow.token.document.width + 6, {'gridUnits': true})
+            .size(workflow.token.document.width + 6, {gridUnits: true})
             .attachTo(workflow.token)
             .persist()
             .name('spiritGuardians')

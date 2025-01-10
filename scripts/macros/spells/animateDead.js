@@ -1,6 +1,5 @@
 import {Summons} from '../../lib/summons.js';
 import {activityUtils, animationUtils, compendiumUtils, constants, dialogUtils, effectUtils, errors, genericUtils, itemUtils, workflowUtils} from '../../utils.js';
-
 async function use({workflow}) {
     let monsterCompendium = genericUtils.getCPRSetting('monsterCompendium');
     let zombieActorName = itemUtils.getConfig(workflow.item, 'zombieActorName');
