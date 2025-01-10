@@ -111,15 +111,15 @@
         }
       },
       "base": {
-        "number": null,
-        "denomination": null,
+        "number": 1,
+        "denomination": 6,
         "bonus": "",
         "types": [
           "lightning"
         ],
         "custom": {
-          "enabled": true,
-          "formula": "1d6[lightning]"
+          "enabled": false,
+          "formula": ""
         },
         "scaling": {
           "mode": "",

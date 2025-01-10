@@ -128,11 +128,11 @@
           "parts": [
             {
               "custom": {
-                "enabled": true,
-                "formula": "4d6[radiant]"
+                "enabled": false,
+                "formula": ""
               },
-              "number": null,
-              "denomination": null,
+              "number": 4,
+              "denomination": 6,
               "bonus": "",
               "types": [
                 "radiant"
@@ -152,7 +152,11 @@
         "attackMode": "",
         "ammunition": "",
         "otherActivityId": "none",
-        "name": ""
+        "name": "",
+        "img": "",
+        "appliedEffects": [
+          "TOA1xaUiNvosLR2h"
+        ]
       }
     },
     "identifier": "guiding-bolt",
@@ -209,7 +213,7 @@
     "chris-premades": {
       "info": {
         "name": "Guiding Bolt",
-        "version": "1.1.0",
+        "version": "1.1.10",
         "identifier": "guidingBolt",
         "source": "chris-premades"
       }

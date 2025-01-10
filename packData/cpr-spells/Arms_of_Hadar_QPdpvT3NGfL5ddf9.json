@@ -59,7 +59,7 @@
     "chris-premades": {
       "info": {
         "name": "Arms of Hadar",
-        "version": "1.1.0",
+        "version": "1.1.10",
         "identifier": "armsOfHadar",
         "source": "chris-premades"
       },
@@ -188,11 +188,11 @@
           "parts": [
             {
               "custom": {
-                "enabled": true,
-                "formula": "2d6[necrotic]"
+                "enabled": false,
+                "formula": ""
               },
-              "number": null,
-              "denomination": null,
+              "number": 2,
+              "denomination": 6,
               "bonus": "",
               "types": [
                 "necrotic"
@@ -221,7 +221,9 @@
         "sort": 0,
         "useConditionText": "",
         "forceDialog": false,
-        "effectConditionText": ""
+        "effectConditionText": "",
+        "img": "",
+        "appliedEffects": []
       }
     },
     "identifier": "arms-of-hadar",

@@ -137,7 +137,12 @@
       "onUseMacroName": "",
       "rollAttackPerTarget": "default",
       "itemCondition": "",
-      "effectCondition": ""
+      "effectCondition": "",
+      "AoETargetType": "any",
+      "autoTarget": "default",
+      "removeAttackDamageButtons": "default",
+      "reactionCondition": "",
+      "otherCondition": ""
     },
     "chris-premades": {
       "info": {

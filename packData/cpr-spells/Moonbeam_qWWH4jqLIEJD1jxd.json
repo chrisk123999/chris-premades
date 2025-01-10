@@ -239,18 +239,19 @@
           "parts": [
             {
               "custom": {
-                "enabled": true,
-                "formula": "2d10[radiant]"
+                "enabled": false,
+                "formula": ""
               },
-              "number": null,
-              "denomination": 0,
+              "number": 2,
+              "denomination": 10,
               "bonus": "",
               "types": [
                 "radiant"
               ],
               "scaling": {
                 "mode": "whole",
-                "number": 1
+                "number": 1,
+                "formula": ""
               }
             }
           ],
@@ -273,7 +274,8 @@
         "effectConditionText": "",
         "midiAutomationOnly": false,
         "name": "Moonbeam: Damage",
-        "img": "icons/magic/light/beam-rays-blue-large.webp"
+        "img": "icons/magic/light/beam-rays-blue-large.webp",
+        "appliedEffects": []
       }
     },
     "identifier": "moonbeam",
@@ -340,7 +342,7 @@
     "chris-premades": {
       "info": {
         "name": "Moonbeam",
-        "version": "1.1.0",
+        "version": "1.1.10",
         "settings": [
           "Template Listener"
         ],

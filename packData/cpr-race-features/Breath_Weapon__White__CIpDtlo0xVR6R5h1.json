@@ -44,12 +44,9 @@
           "targets": [
             {
               "type": "itemUses",
-              "target": "",
               "value": "1",
-              "scaling": {
-                "mode": "",
-                "formula": ""
-              }
+              "target": "",
+              "scaling": {}
             }
           ],
           "scaling": {
@@ -102,20 +99,18 @@
           "onSave": "half",
           "parts": [
             {
+              "custom": {
+                "enabled": true,
+                "formula": "(floor((@details.level - 1)/5)+2)d6"
+              },
               "number": null,
               "denomination": null,
               "bonus": "",
               "types": [
                 "cold"
               ],
-              "custom": {
-                "enabled": true,
-                "formula": "(floor((@details.level - 1)/5)+2)d6[cold]"
-              },
               "scaling": {
-                "mode": "whole",
-                "number": null,
-                "formula": ""
+                "number": 1
               }
             }
           ],
@@ -136,7 +131,10 @@
         "useConditionText": "",
         "forceDialog": false,
         "effectConditionText": "",
-        "midiAutomationOnly": false
+        "midiAutomationOnly": false,
+        "name": "",
+        "img": "",
+        "appliedEffects": []
       }
     },
     "identifier": "breath-weapon-white",
@@ -185,7 +183,7 @@
     "chris-premades": {
       "info": {
         "name": "Breath Weapon (White)",
-        "version": "1.1.0",
+        "version": "1.1.10",
         "identifier": "breathWeaponWhite",
         "source": "chris-premades"
       }
@@ -194,7 +192,8 @@
       "persistSourceMigration": true,
       "migratedUses": 1,
       "riders": {
-        "activity": []
+        "activity": [],
+        "effect": []
       }
     }
   },

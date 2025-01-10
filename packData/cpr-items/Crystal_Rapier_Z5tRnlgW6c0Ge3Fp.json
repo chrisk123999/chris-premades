@@ -60,15 +60,15 @@
         }
       },
       "base": {
-        "number": null,
-        "denomination": null,
+        "number": 1,
+        "denomination": 8,
         "bonus": "",
         "types": [
           "piercing"
         ],
         "custom": {
-          "enabled": true,
-          "formula": "1d8[piercing]"
+          "enabled": false,
+          "formula": ""
         },
         "scaling": {
           "mode": "",
@@ -179,11 +179,11 @@
           "parts": [
             {
               "custom": {
-                "enabled": true,
-                "formula": "1d8[radiant]"
+                "enabled": false,
+                "formula": ""
               },
-              "number": null,
-              "denomination": null,
+              "number": 1,
+              "denomination": 8,
               "bonus": "",
               "types": [
                 "radiant"
@@ -388,13 +388,23 @@
       "idv": false,
       "ida": false
     },
+    "dnd5e": {
+      "persistSourceMigration": true,
+      "migratedUses": 3,
+      "riders": {
+        "activity": [
+          "ktqfAJm7xJOTTong"
+        ],
+        "effect": []
+      }
+    },
     "chris-premades": {
       "equipment": {
         "identifier": "crystalBlade"
       },
       "info": {
         "name": "Crystal Rapier",
-        "version": "1.1.0",
+        "version": "1.1.10",
         "identifier": "crystalBladeRapier",
         "source": "chris-premades"
       },
@@ -412,16 +422,6 @@
         "crystalBlade": "dnd5eactivity000",
         "crystalBladeHeal": "ktqfAJm7xJOTTong",
         "crystalBladeLight": "Q8B0gf33ht2sDWdg"
-      }
-    },
-    "dnd5e": {
-      "persistSourceMigration": true,
-      "migratedUses": 3,
-      "riders": {
-        "activity": [
-          "ktqfAJm7xJOTTong"
-        ],
-        "effect": []
       }
     }
   },

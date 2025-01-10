@@ -205,11 +205,11 @@
           "parts": [
             {
               "custom": {
-                "enabled": true,
-                "formula": "4d6[lightning]"
+                "enabled": false,
+                "formula": ""
               },
-              "number": null,
-              "denomination": 0,
+              "number": 4,
+              "denomination": 6,
               "bonus": "",
               "types": [
                 "lightning"
@@ -291,7 +291,7 @@
       "info": {
         "identifier": "stormgirdleA",
         "source": "chris-premades",
-        "version": "1.1.0"
+        "version": "1.1.10"
       },
       "config": {
         "formula": "4d6",

@@ -101,8 +101,8 @@
           "parts": [
             {
               "custom": {
-                "enabled": true,
-                "formula": "2d8"
+                "enabled": false,
+                "formula": ""
               },
               "number": 2,
               "denomination": 8,
@@ -133,7 +133,9 @@
         "forceDialog": false,
         "effectConditionText": "",
         "midiAutomationOnly": false,
-        "name": ""
+        "name": "",
+        "img": "",
+        "appliedEffects": []
       }
     },
     "identifier": "wrath-of-the-storm",
@@ -197,7 +199,7 @@
     "chris-premades": {
       "info": {
         "name": "Wrath of the Storm",
-        "version": "1.1.0",
+        "version": "1.1.10",
         "identifier": "wrathOfTheStorm",
         "source": "chris-premades"
       },

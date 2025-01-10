@@ -50,7 +50,7 @@
         "duration": {
           "concentration": false,
           "value": "",
-          "units": "",
+          "units": "inst",
           "special": "",
           "override": false
         },
@@ -104,20 +104,18 @@
           "includeBase": true,
           "parts": [
             {
-              "number": null,
-              "denomination": null,
-              "bonus": "",
+              "custom": {
+                "enabled": false,
+                "formula": ""
+              },
+              "number": 1,
+              "denomination": 8,
+              "bonus": "@prof",
               "types": [
                 "force"
               ],
-              "custom": {
-                "enabled": true,
-                "formula": "1d8[force] + @prof"
-              },
               "scaling": {
-                "mode": "whole",
-                "number": null,
-                "formula": ""
+                "number": 1
               }
             }
           ]
@@ -127,9 +125,12 @@
         "forceDialog": false,
         "effectConditionText": "",
         "midiAutomationOnly": false,
-        "attackMode": "oneHanded",
+        "attackMode": "",
         "ammunition": "",
-        "otherActivityId": "none"
+        "otherActivityId": "none",
+        "name": "",
+        "img": "",
+        "appliedEffects": []
       }
     },
     "identifier": "force-empowered-rend",
@@ -176,7 +177,11 @@
       "sourceId": "Item.XRolNjV4zYIkpi2q"
     },
     "dnd5e": {
-      "persistSourceMigration": true
+      "persistSourceMigration": true,
+      "riders": {
+        "activity": [],
+        "effect": []
+      }
     }
   },
   "folder": "H4e6PJXcaRHbITgx",

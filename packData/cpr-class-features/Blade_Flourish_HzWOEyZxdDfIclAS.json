@@ -349,7 +349,12 @@
     },
     "dnd5e": {
       "riders": {
-        "activity": [],
+        "activity": [
+          "b62iMBao4RQNgGBG",
+          "0f38kGferu63k1X8",
+          "ds9Citbr6O0bBcsk",
+          "0nxIsXQuk4Lp2UVh"
+        ],
         "effect": []
       },
       "dependents": [

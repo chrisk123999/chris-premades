@@ -108,20 +108,18 @@
           "includeBase": true,
           "parts": [
             {
-              "number": null,
-              "denomination": null,
-              "bonus": "",
+              "custom": {
+                "enabled": false,
+                "formula": ""
+              },
+              "number": 1,
+              "denomination": 10,
+              "bonus": "3",
               "types": [
                 "slashing"
               ],
-              "custom": {
-                "enabled": true,
-                "formula": "1d10[slashing] + 3"
-              },
               "scaling": {
-                "mode": "whole",
-                "number": null,
-                "formula": ""
+                "number": 1
               }
             }
           ]
@@ -131,9 +129,14 @@
         "forceDialog": false,
         "effectConditionText": "",
         "midiAutomationOnly": false,
-        "attackMode": "oneHanded",
+        "attackMode": "",
         "ammunition": "",
-        "otherActivityId": "none"
+        "otherActivityId": "none",
+        "name": "",
+        "img": "",
+        "appliedEffects": [
+          "jTSlsy7Ghgvfrg9J"
+        ]
       }
     },
     "identifier": "claws-slaad-only",
@@ -243,7 +246,8 @@
     "dnd5e": {
       "persistSourceMigration": true,
       "riders": {
-        "activity": []
+        "activity": [],
+        "effect": []
       }
     }
   },

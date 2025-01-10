@@ -107,16 +107,16 @@
           "onSave": "none",
           "parts": [
             {
-              "number": null,
-              "denomination": null,
+              "custom": {
+                "enabled": false,
+                "formula": ""
+              },
+              "number": 1,
+              "denomination": 8,
               "bonus": "",
               "types": [
                 "lightning"
               ],
-              "custom": {
-                "enabled": true,
-                "formula": "1d8[lightning]"
-              },
               "scaling": {
                 "mode": "whole",
                 "number": 1,
@@ -140,7 +140,10 @@
         "sort": 0,
         "useConditionText": "",
         "forceDialog": false,
-        "effectConditionText": ""
+        "effectConditionText": "",
+        "name": "",
+        "img": "",
+        "appliedEffects": []
       }
     },
     "identifier": "lightning-lure",
@@ -197,13 +200,14 @@
         }
       },
       "riders": {
-        "activity": []
+        "activity": [],
+        "effect": []
       }
     },
     "chris-premades": {
       "info": {
         "name": "Lightning Lure",
-        "version": "1.1.0",
+        "version": "1.1.10",
         "hasAnimation": true,
         "identifier": "lightningLure",
         "source": "chris-premades"

@@ -59,15 +59,15 @@
         }
       },
       "base": {
-        "number": null,
-        "denomination": null,
+        "number": 1,
+        "denomination": 6,
         "bonus": "",
         "types": [
           "piercing"
         ],
         "custom": {
-          "enabled": true,
-          "formula": "1d6[piercing]"
+          "enabled": false,
+          "formula": ""
         },
         "scaling": {
           "mode": "",
@@ -245,11 +245,11 @@
           "parts": [
             {
               "custom": {
-                "enabled": true,
-                "formula": "4d6[lightning]"
+                "enabled": false,
+                "formula": ""
               },
-              "number": null,
-              "denomination": 0,
+              "number": 4,
+              "denomination": 6,
               "bonus": "",
               "types": [
                 "lightning"
@@ -320,10 +320,20 @@
       "ida": false
     },
     "core": {},
+    "dnd5e": {
+      "persistSourceMigration": true,
+      "migratedUses": 1,
+      "riders": {
+        "activity": [
+          "o8I1e5EcrXh2wK1j"
+        ],
+        "effect": []
+      }
+    },
     "chris-premades": {
       "info": {
         "name": "Javelin of Lightning",
-        "version": "1.1.0",
+        "version": "1.1.10",
         "identifier": "javelinOfLightning",
         "source": "chris-premades",
         "hasAnimation": true
@@ -342,16 +352,6 @@
       "hiddenActivities": [
         "javelinOfLightningBolt"
       ]
-    },
-    "dnd5e": {
-      "persistSourceMigration": true,
-      "migratedUses": 1,
-      "riders": {
-        "activity": [
-          "o8I1e5EcrXh2wK1j"
-        ],
-        "effect": []
-      }
     }
   },
   "effects": [],

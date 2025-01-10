@@ -95,17 +95,16 @@
           "parts": [
             {
               "custom": {
-                "enabled": true,
-                "formula": "2d6[bludgeoning]"
+                "enabled": false,
+                "formula": ""
               },
-              "number": null,
-              "denomination": 0,
+              "number": 2,
+              "denomination": 6,
               "bonus": "",
               "types": [
                 "bludgeoning"
               ],
               "scaling": {
-                "mode": "",
                 "number": 1
               }
             }
@@ -116,7 +115,8 @@
         "effectConditionText": "",
         "midiAutomationOnly": false,
         "name": "Grasping Hand: Crush",
-        "img": "icons/magic/earth/strike-fist-stone.webp"
+        "img": "icons/magic/earth/strike-fist-stone.webp",
+        "appliedEffects": []
       },
       "kQom7ZZXCcvx221R": {
         "type": "utility",

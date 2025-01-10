@@ -156,26 +156,27 @@
           "max": ""
         },
         "healing": {
-          "number": null,
-          "denomination": 0,
+          "number": 2,
+          "denomination": "8",
           "types": [
             "healing"
           ],
           "custom": {
-            "enabled": true,
-            "formula": "2d8[healing] + @abilitios.wis.mod"
+            "enabled": false,
+            "formula": ""
           },
           "scaling": {
             "number": 1
           },
-          "bonus": ""
+          "bonus": "@abilities.wis.mod"
         },
         "useConditionText": "",
         "forceDialog": false,
         "effectConditionText": "",
         "midiAutomationOnly": false,
         "name": "Balm of Peace: Heal",
-        "img": "icons/magic/light/explosion-star-pink.webp"
+        "img": "icons/magic/light/explosion-star-pink.webp",
+        "appliedEffects": []
       }
     },
     "identifier": "channel-divinity-balm-of-peace",
@@ -238,7 +239,7 @@
     "chris-premades": {
       "info": {
         "name": "Channel Divinity: Balm of Peace",
-        "version": "1.1.0",
+        "version": "1.1.10",
         "identifier": "balmOfPeace",
         "source": "chris-premades"
       },

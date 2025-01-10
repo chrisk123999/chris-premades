@@ -112,11 +112,11 @@
           "parts": [
             {
               "custom": {
-                "enabled": true,
-                "formula": "2d8[bludgeoning]"
+                "enabled": false,
+                "formula": ""
               },
-              "number": null,
-              "denomination": null,
+              "number": 2,
+              "denomination": 8,
               "bonus": "",
               "types": [
                 "bludgeoning"
@@ -129,11 +129,11 @@
             },
             {
               "custom": {
-                "enabled": true,
-                "formula": "4d6[cold]"
+                "enabled": false,
+                "formula": ""
               },
-              "number": null,
-              "denomination": null,
+              "number": 4,
+              "denomination": 6,
               "bonus": "",
               "types": [
                 "cold"
@@ -161,7 +161,9 @@
         "useConditionText": "",
         "forceDialog": false,
         "effectConditionText": "",
-        "name": ""
+        "name": "",
+        "img": "",
+        "appliedEffects": []
       }
     },
     "identifier": "ice-storm",
@@ -224,7 +226,7 @@
     "chris-premades": {
       "info": {
         "name": "Ice Storm",
-        "version": "1.1.0",
+        "version": "1.1.10",
         "hasAnimation": true,
         "identifier": "iceStorm",
         "source": "chris-premades"

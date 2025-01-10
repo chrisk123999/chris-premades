@@ -109,11 +109,11 @@
           "parts": [
             {
               "custom": {
-                "enabled": true,
-                "formula": "2d8[cold]"
+                "enabled": false,
+                "formula": ""
               },
-              "number": null,
-              "denomination": null,
+              "number": 2,
+              "denomination": 8,
               "bonus": "",
               "types": [
                 "cold"
@@ -142,7 +142,9 @@
         "useConditionText": "",
         "forceDialog": false,
         "effectConditionText": "",
-        "name": ""
+        "name": "",
+        "img": "",
+        "appliedEffects": []
       }
     },
     "identifier": "frost-fingers",
@@ -206,7 +208,7 @@
     "chris-premades": {
       "info": {
         "name": "Frost Fingers",
-        "version": "1.1.0",
+        "version": "1.1.10",
         "hasAnimation": true,
         "identifier": "frostFingers",
         "source": "chris-premades"

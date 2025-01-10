@@ -50,7 +50,7 @@
         "duration": {
           "concentration": false,
           "value": "",
-          "units": "",
+          "units": "inst",
           "special": "",
           "override": false
         },
@@ -104,20 +104,18 @@
           "includeBase": true,
           "parts": [
             {
-              "number": null,
-              "denomination": null,
-              "bonus": "",
+              "custom": {
+                "enabled": false,
+                "formula": ""
+              },
+              "number": 1,
+              "denomination": 10,
+              "bonus": "4",
               "types": [
                 "bludgeoning"
               ],
-              "custom": {
-                "enabled": true,
-                "formula": "1d10[bludgeoning] + 4"
-              },
               "scaling": {
-                "mode": "whole",
-                "number": null,
-                "formula": ""
+                "number": 1
               }
             }
           ]
@@ -127,9 +125,12 @@
         "forceDialog": false,
         "effectConditionText": "",
         "midiAutomationOnly": false,
-        "attackMode": "oneHanded",
+        "attackMode": "",
         "ammunition": "",
-        "otherActivityId": "none"
+        "otherActivityId": "none",
+        "name": "",
+        "img": "",
+        "appliedEffects": []
       }
     },
     "identifier": "slam-elemental-spirit",
@@ -178,7 +179,8 @@
     "dnd5e": {
       "persistSourceMigration": true,
       "riders": {
-        "activity": []
+        "activity": [],
+        "effect": []
       }
     }
   },

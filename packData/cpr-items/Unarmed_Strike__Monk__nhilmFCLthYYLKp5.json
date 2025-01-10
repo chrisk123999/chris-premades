@@ -61,7 +61,7 @@
         ],
         "custom": {
           "enabled": true,
-          "formula": "@scale.monk.die[bludgeoning]"
+          "formula": "@scale.monk.die"
         },
         "scaling": {
           "mode": "",
@@ -232,7 +232,7 @@
     "chris-premades": {
       "info": {
         "name": "Unarmed Strike (Monk)",
-        "version": "1.1.0",
+        "version": "1.1.10",
         "identifier": "monkUnarmedStrike",
         "source": "chris-premades"
       }

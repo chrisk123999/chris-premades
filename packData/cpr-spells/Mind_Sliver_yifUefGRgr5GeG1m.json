@@ -106,13 +106,14 @@
     "dnd5e": {
       "persistSourceMigration": true,
       "riders": {
-        "activity": []
+        "activity": [],
+        "effect": []
       }
     },
     "chris-premades": {
       "info": {
         "name": "Mind Sliver",
-        "version": "1.1.0",
+        "version": "1.1.10",
         "identifier": "mindSliver",
         "source": "chris-premades"
       }
@@ -230,16 +231,16 @@
           "onSave": "none",
           "parts": [
             {
-              "number": null,
-              "denomination": null,
+              "custom": {
+                "enabled": false,
+                "formula": ""
+              },
+              "number": 1,
+              "denomination": 6,
               "bonus": "",
               "types": [
                 "psychic"
               ],
-              "custom": {
-                "enabled": true,
-                "formula": "1d6[psychic]"
-              },
               "scaling": {
                 "mode": "whole",
                 "number": 1,
@@ -263,7 +264,12 @@
         "sort": 0,
         "useConditionText": "",
         "forceDialog": false,
-        "effectConditionText": ""
+        "effectConditionText": "",
+        "name": "",
+        "img": "",
+        "appliedEffects": [
+          "19euxgc9vmso0mdr"
+        ]
       }
     },
     "identifier": "mind-sliver",

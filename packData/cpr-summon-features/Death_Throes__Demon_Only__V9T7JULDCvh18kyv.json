@@ -89,11 +89,11 @@
           "parts": [
             {
               "custom": {
-                "enabled": true,
-                "formula": "2d10[fire]"
+                "enabled": false,
+                "formula": ""
               },
-              "number": null,
-              "denomination": null,
+              "number": 2,
+              "denomination": 10,
               "bonus": "",
               "types": [
                 "fire"

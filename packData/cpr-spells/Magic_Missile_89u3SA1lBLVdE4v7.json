@@ -173,12 +173,12 @@
           "parts": [
             {
               "custom": {
-                "enabled": true,
-                "formula": "1d4[force] + 1"
+                "enabled": false,
+                "formula": ""
               },
-              "number": null,
-              "denomination": 0,
-              "bonus": "",
+              "number": 1,
+              "denomination": 4,
+              "bonus": "1",
               "types": [
                 "force"
               ],
@@ -193,7 +193,9 @@
         "forceDialog": false,
         "effectConditionText": "",
         "name": "Magic Missile Bolt",
-        "_id": "zHpeqUnoKjOjo5aN"
+        "_id": "zHpeqUnoKjOjo5aN",
+        "img": "",
+        "appliedEffects": []
       },
       "VH7HwxXvnFU22CxV": {
         "type": "damage",
@@ -348,7 +350,7 @@
     "chris-premades": {
       "info": {
         "name": "Magic Missile",
-        "version": "1.1.0",
+        "version": "1.1.10",
         "hasAnimation": true,
         "identifier": "magicMissile",
         "source": "chris-premades"

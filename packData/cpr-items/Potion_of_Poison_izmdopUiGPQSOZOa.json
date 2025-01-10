@@ -127,15 +127,15 @@
           "recovery": []
         },
         "healing": {
-          "number": null,
-          "denomination": "",
-          "bonus": "",
+          "number": 2,
+          "denomination": "4",
+          "bonus": "2",
           "types": [
             "healing"
           ],
           "custom": {
-            "enabled": true,
-            "formula": "2d4[healing] + 2"
+            "enabled": false,
+            "formula": ""
           },
           "scaling": {
             "mode": "whole",
@@ -281,10 +281,20 @@
       "ida": false,
       "otherSaveDamage": "default"
     },
+    "dnd5e": {
+      "persistSourceMigration": true,
+      "migratedUses": 1,
+      "riders": {
+        "activity": [
+          "BHWz43AFyZC6vm5S"
+        ],
+        "effect": []
+      }
+    },
     "chris-premades": {
       "info": {
         "name": "Potion of Poison",
-        "version": "1.1.0",
+        "version": "1.1.10",
         "identifier": "potionOfPoison",
         "source": "chris-premades"
       },
@@ -301,16 +311,6 @@
       "activityIdentifiers": {
         "potionOfPoison": "dnd5eactivity000",
         "potionOfPoisonDamage": "BHWz43AFyZC6vm5S"
-      }
-    },
-    "dnd5e": {
-      "persistSourceMigration": true,
-      "migratedUses": 1,
-      "riders": {
-        "activity": [
-          "BHWz43AFyZC6vm5S"
-        ],
-        "effect": []
       }
     }
   },

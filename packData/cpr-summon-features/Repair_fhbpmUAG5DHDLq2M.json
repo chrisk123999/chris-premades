@@ -45,12 +45,9 @@
           "targets": [
             {
               "type": "itemUses",
-              "target": "",
               "value": "1",
-              "scaling": {
-                "mode": "",
-                "formula": ""
-              }
+              "target": "",
+              "scaling": {}
             }
           ],
           "scaling": {
@@ -65,7 +62,7 @@
         "duration": {
           "concentration": false,
           "value": "",
-          "units": "",
+          "units": "inst",
           "special": "",
           "override": false
         },
@@ -101,15 +98,15 @@
           "recovery": []
         },
         "healing": {
-          "number": null,
-          "denomination": null,
-          "bonus": "",
+          "number": 2,
+          "denomination": "8",
+          "bonus": "@prof",
           "types": [
             "healing"
           ],
           "custom": {
-            "enabled": true,
-            "formula": "2d8[healing] + @prof"
+            "enabled": false,
+            "formula": ""
           },
           "scaling": {
             "mode": "whole",
@@ -121,7 +118,10 @@
         "useConditionText": "",
         "forceDialog": false,
         "effectConditionText": "",
-        "midiAutomationOnly": false
+        "midiAutomationOnly": false,
+        "name": "",
+        "img": "",
+        "appliedEffects": []
       }
     },
     "identifier": "repair",
@@ -177,7 +177,11 @@
     },
     "dnd5e": {
       "persistSourceMigration": true,
-      "migratedUses": 3
+      "migratedUses": 3,
+      "riders": {
+        "activity": [],
+        "effect": []
+      }
     }
   },
   "folder": "H4e6PJXcaRHbITgx",

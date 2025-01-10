@@ -113,11 +113,11 @@
           "parts": [
             {
               "custom": {
-                "enabled": true,
-                "formula": "7d6[psychic]"
+                "enabled": false,
+                "formula": ""
               },
-              "number": null,
-              "denomination": null,
+              "number": 7,
+              "denomination": 6,
               "bonus": "",
               "types": [
                 "psychic"
@@ -146,7 +146,11 @@
         "useConditionText": "",
         "forceDialog": false,
         "effectConditionText": "",
-        "name": ""
+        "name": "",
+        "img": "",
+        "appliedEffects": [
+          "xxTdqKyRn3IzYFHc"
+        ]
       }
     },
     "identifier": "raulothims-psychic-lance",
@@ -202,7 +206,7 @@
     "chris-premades": {
       "info": {
         "name": "Raulothim's Psychic Lance",
-        "version": "1.1.0",
+        "version": "1.1.10",
         "identifier": "raulothimsPsychicLance",
         "source": "chris-premades"
       }

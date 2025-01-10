@@ -116,11 +116,11 @@
           "parts": [
             {
               "custom": {
-                "enabled": true,
-                "formula": "5d6[thunder]"
+                "enabled": false,
+                "formula": ""
               },
-              "number": null,
-              "denomination": null,
+              "number": 5,
+              "denomination": 6,
               "bonus": "",
               "types": [
                 "thunder"
@@ -148,7 +148,9 @@
         "useConditionText": "",
         "forceDialog": false,
         "effectConditionText": "",
-        "name": ""
+        "name": "",
+        "img": "",
+        "appliedEffects": []
       }
     },
     "identifier": "destructive-wave",
@@ -216,7 +218,7 @@
     "chris-premades": {
       "info": {
         "name": "Destructive Wave",
-        "version": "1.1.0",
+        "version": "1.1.10",
         "hasAnimation": true,
         "identifier": "destructiveWave",
         "source": "chris-premades"

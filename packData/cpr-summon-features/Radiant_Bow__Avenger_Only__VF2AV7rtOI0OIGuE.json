@@ -50,7 +50,7 @@
         "duration": {
           "concentration": false,
           "value": "",
-          "units": "",
+          "units": "inst",
           "special": "",
           "override": false
         },
@@ -104,20 +104,18 @@
           "includeBase": true,
           "parts": [
             {
-              "number": null,
-              "denomination": null,
-              "bonus": "",
+              "custom": {
+                "enabled": false,
+                "formula": ""
+              },
+              "number": 2,
+              "denomination": 6,
+              "bonus": "2",
               "types": [
                 "radiant"
               ],
-              "custom": {
-                "enabled": true,
-                "formula": "2d6[radiant] + 2"
-              },
               "scaling": {
-                "mode": "whole",
-                "number": null,
-                "formula": ""
+                "number": 1
               }
             }
           ]
@@ -127,9 +125,12 @@
         "forceDialog": false,
         "effectConditionText": "",
         "midiAutomationOnly": false,
-        "attackMode": "oneHanded",
+        "attackMode": "",
         "ammunition": "",
-        "otherActivityId": "none"
+        "otherActivityId": "none",
+        "name": "",
+        "img": "",
+        "appliedEffects": []
       }
     },
     "identifier": "radiant-bow-avenger-only",
@@ -178,7 +179,8 @@
     "dnd5e": {
       "persistSourceMigration": true,
       "riders": {
-        "activity": []
+        "activity": [],
+        "effect": []
       }
     }
   },

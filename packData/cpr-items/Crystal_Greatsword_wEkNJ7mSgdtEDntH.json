@@ -60,15 +60,15 @@
         }
       },
       "base": {
-        "number": null,
-        "denomination": null,
+        "number": 2,
+        "denomination": 6,
         "bonus": "",
         "types": [
           "slashing"
         ],
         "custom": {
-          "enabled": true,
-          "formula": "2d6[slashing]"
+          "enabled": false,
+          "formula": ""
         },
         "scaling": {
           "mode": "",
@@ -180,11 +180,11 @@
           "parts": [
             {
               "custom": {
-                "enabled": true,
-                "formula": "1d8[radiant]"
+                "enabled": false,
+                "formula": ""
               },
-              "number": null,
-              "denomination": null,
+              "number": 1,
+              "denomination": 8,
               "bonus": "",
               "types": [
                 "radiant"
@@ -391,13 +391,23 @@
       "idv": false,
       "ida": false
     },
+    "dnd5e": {
+      "persistSourceMigration": true,
+      "migratedUses": 3,
+      "riders": {
+        "activity": [
+          "mdFyblnXFUvkcsSL"
+        ],
+        "effect": []
+      }
+    },
     "chris-premades": {
       "equipment": {
         "identifier": "crystalBlade"
       },
       "info": {
         "name": "Crystal Greatsword",
-        "version": "1.1.0",
+        "version": "1.1.10",
         "identifier": "crystalBladeGreatsword",
         "source": "chris-premades"
       },
@@ -415,16 +425,6 @@
         "crystalBlade": "dnd5eactivity000",
         "crystalBladeHeal": "mdFyblnXFUvkcsSL",
         "crystalBladeLight": "6fAaNItUqR3FqftS"
-      }
-    },
-    "dnd5e": {
-      "persistSourceMigration": true,
-      "migratedUses": 3,
-      "riders": {
-        "activity": [
-          "mdFyblnXFUvkcsSL"
-        ],
-        "effect": []
       }
     }
   },

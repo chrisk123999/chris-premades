@@ -95,12 +95,12 @@
           "parts": [
             {
               "custom": {
-                "enabled": true,
-                "formula": "2d10[radiant] + @classes.cleric.levels"
+                "enabled": false,
+                "formula": ""
               },
-              "number": null,
-              "denomination": null,
-              "bonus": "",
+              "number": 2,
+              "denomination": 10,
+              "bonus": "@classes.cleric.levels",
               "types": [
                 "radiant"
               ],
@@ -127,7 +127,9 @@
         "forceDialog": false,
         "effectConditionText": "",
         "midiAutomationOnly": false,
-        "name": ""
+        "name": "",
+        "img": "",
+        "appliedEffects": []
       }
     },
     "identifier": "channel-divinity-radiance-of-the-dawn",
@@ -182,7 +184,7 @@
     "chris-premades": {
       "info": {
         "name": "Channel Divinity: Radiance of the Dawn",
-        "version": "1.1.0",
+        "version": "1.1.10",
         "identifier": "radianceOfTheDawn",
         "source": "chris-premades"
       }

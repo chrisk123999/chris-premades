@@ -178,11 +178,11 @@
           "parts": [
             {
               "custom": {
-                "enabled": true,
-                "formula": "2d4[piercing]"
+                "enabled": false,
+                "formula": ""
               },
-              "number": null,
-              "denomination": 0,
+              "number": 2,
+              "denomination": 4,
               "bonus": "",
               "types": [
                 "piercing"
@@ -197,7 +197,9 @@
         "useConditionText": "",
         "forceDialog": false,
         "effectConditionText": "",
-        "name": "Spike Growth: Damage"
+        "name": "Spike Growth: Damage",
+        "img": "",
+        "appliedEffects": []
       }
     },
     "identifier": "spike-growth",
@@ -261,7 +263,7 @@
     "chris-premades": {
       "info": {
         "name": "Spike Growth",
-        "version": "1.1.0",
+        "version": "1.1.10",
         "identifier": "spikeGrowth",
         "source": "chris-premades"
       },

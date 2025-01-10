@@ -127,16 +127,16 @@
           "includeBase": true,
           "parts": [
             {
-              "number": null,
-              "denomination": null,
+              "custom": {
+                "enabled": false,
+                "formula": ""
+              },
+              "number": 1,
+              "denomination": 6,
               "bonus": "",
               "types": [
                 "piercing"
               ],
-              "custom": {
-                "enabled": true,
-                "formula": "1d6[piercing]"
-              },
               "scaling": {
                 "mode": "whole",
                 "number": 1,
@@ -149,9 +149,12 @@
         "useConditionText": "",
         "forceDialog": false,
         "effectConditionText": "",
-        "attackMode": "oneHanded",
+        "attackMode": "",
         "ammunition": "",
-        "otherActivityId": "none"
+        "otherActivityId": "none",
+        "name": "",
+        "img": "",
+        "appliedEffects": []
       }
     },
     "identifier": "thorn-whip",
@@ -197,13 +200,14 @@
         }
       },
       "riders": {
-        "activity": []
+        "activity": [],
+        "effect": []
       }
     },
     "chris-premades": {
       "info": {
         "identifier": "thornWhip",
-        "version": "1.1.0",
+        "version": "1.1.10",
         "source": "chris-premades"
       },
       "macros": {

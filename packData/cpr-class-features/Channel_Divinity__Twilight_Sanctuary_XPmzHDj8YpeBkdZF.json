@@ -156,26 +156,27 @@
           "max": ""
         },
         "healing": {
-          "number": null,
-          "denomination": 0,
+          "number": 1,
+          "denomination": "6",
           "types": [
             "temphp"
           ],
           "custom": {
-            "enabled": true,
-            "formula": "1d6[temphp] + @classes.cleric.levels"
+            "enabled": false,
+            "formula": ""
           },
           "scaling": {
             "number": 1
           },
-          "bonus": ""
+          "bonus": "@classes.cleric.levels"
         },
         "useConditionText": "",
         "forceDialog": false,
         "effectConditionText": "",
         "midiAutomationOnly": false,
         "name": "Twilight Sanctuary: Heal",
-        "img": "icons/magic/light/light-lantern-lit-white.webp"
+        "img": "icons/magic/light/light-lantern-lit-white.webp",
+        "appliedEffects": []
       }
     },
     "identifier": "channel-divinity-twilight-sanctuary",
@@ -238,7 +239,7 @@
     "chris-premades": {
       "info": {
         "name": "Channel Divinity: Twilight Sanctuary",
-        "version": "1.1.0",
+        "version": "1.1.10",
         "identifier": "twilightSanctuary",
         "source": "chris-premades",
         "hasAnimation": true

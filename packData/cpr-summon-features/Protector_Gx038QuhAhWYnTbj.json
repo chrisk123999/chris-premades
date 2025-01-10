@@ -87,15 +87,15 @@
           "recovery": []
         },
         "healing": {
-          "number": null,
-          "denomination": null,
-          "bonus": "",
+          "number": 1,
+          "denomination": "8",
+          "bonus": "@mod",
           "types": [
             "temphp"
           ],
           "custom": {
-            "enabled": true,
-            "formula": "1d8[temphp] + @mod"
+            "enabled": false,
+            "formula": ""
           },
           "scaling": {
             "mode": "whole",

@@ -99,12 +99,12 @@
           "parts": [
             {
               "custom": {
-                "enabled": true,
-                "formula": "1d4[force] + @prof"
+                "enabled": false,
+                "formula": ""
               },
-              "number": null,
-              "denomination": 0,
-              "bonus": "",
+              "number": 1,
+              "denomination": 4,
+              "bonus": "@prof",
               "types": [
                 "force"
               ],

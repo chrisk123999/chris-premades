@@ -60,15 +60,15 @@
         }
       },
       "base": {
-        "number": null,
-        "denomination": null,
+        "number": 1,
+        "denomination": 4,
         "bonus": "",
         "types": [
           "bludgeoning"
         ],
         "custom": {
-          "enabled": true,
-          "formula": "1d4[bludgeoning]"
+          "enabled": false,
+          "formula": ""
         },
         "scaling": {
           "mode": "",

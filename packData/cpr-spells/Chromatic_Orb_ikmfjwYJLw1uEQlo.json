@@ -125,11 +125,11 @@
           "parts": [
             {
               "custom": {
-                "enabled": true,
-                "formula": "3d8"
+                "enabled": false,
+                "formula": ""
               },
-              "number": null,
-              "denomination": null,
+              "number": 3,
+              "denomination": 8,
               "bonus": "",
               "types": [
                 "acid",
@@ -141,8 +141,8 @@
               ],
               "scaling": {
                 "mode": "whole",
-                "number": null,
-                "formula": "1d8"
+                "number": 1,
+                "formula": ""
               }
             }
           ]
@@ -154,7 +154,9 @@
         "attackMode": "",
         "ammunition": "",
         "otherActivityId": "none",
-        "name": ""
+        "name": "",
+        "img": "",
+        "appliedEffects": []
       }
     },
     "identifier": "chromatic-orb",
@@ -218,7 +220,7 @@
     "chris-premades": {
       "info": {
         "name": "Chromatic Orb",
-        "version": "1.1.0",
+        "version": "1.1.10",
         "hasAnimation": true,
         "identifier": "chromaticOrb",
         "source": "chris-premades"

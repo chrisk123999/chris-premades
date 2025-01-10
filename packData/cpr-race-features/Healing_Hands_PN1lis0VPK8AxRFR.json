@@ -44,12 +44,9 @@
           "targets": [
             {
               "type": "itemUses",
-              "target": "",
               "value": "1",
-              "scaling": {
-                "mode": "",
-                "formula": ""
-              }
+              "target": "",
+              "scaling": {}
             }
           ],
           "scaling": {
@@ -64,7 +61,7 @@
         "duration": {
           "concentration": false,
           "value": "",
-          "units": "",
+          "units": "inst",
           "special": "",
           "override": false
         },
@@ -107,7 +104,7 @@
           ],
           "custom": {
             "enabled": true,
-            "formula": "(@prof)d4[healing]"
+            "formula": "(@prof)d4"
           },
           "scaling": {
             "mode": "whole",
@@ -119,7 +116,10 @@
         "useConditionText": "",
         "forceDialog": false,
         "effectConditionText": "",
-        "midiAutomationOnly": false
+        "midiAutomationOnly": false,
+        "name": "",
+        "img": "",
+        "appliedEffects": []
       }
     },
     "identifier": "healing-hands",
@@ -166,13 +166,14 @@
       "persistSourceMigration": true,
       "migratedUses": 1,
       "riders": {
-        "activity": []
+        "activity": [],
+        "effect": []
       }
     },
     "chris-premades": {
       "info": {
         "name": "Healing Hands",
-        "version": "1.1.0",
+        "version": "1.1.10",
         "identifier": "healingHands",
         "source": "chris-premades"
       }

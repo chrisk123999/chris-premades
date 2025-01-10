@@ -125,16 +125,16 @@
           "includeBase": true,
           "parts": [
             {
-              "number": null,
-              "denomination": null,
+              "custom": {
+                "enabled": false,
+                "formula": ""
+              },
+              "number": 1,
+              "denomination": 8,
               "bonus": "",
               "types": [
                 "necrotic"
               ],
-              "custom": {
-                "enabled": true,
-                "formula": "1d8[necrotic]"
-              },
               "scaling": {
                 "mode": "whole",
                 "number": 1,
@@ -147,9 +147,12 @@
         "useConditionText": "",
         "forceDialog": false,
         "effectConditionText": "",
-        "attackMode": "oneHanded",
+        "attackMode": "",
         "ammunition": "",
-        "otherActivityId": "none"
+        "otherActivityId": "none",
+        "name": "",
+        "img": "",
+        "appliedEffects": []
       }
     },
     "identifier": "chill-touch",
@@ -198,7 +201,8 @@
     "dnd5e": {
       "persistSourceMigration": true,
       "riders": {
-        "activity": []
+        "activity": [],
+        "effect": []
       },
       "last": {
         "dnd5eactivity000": {
@@ -211,7 +215,7 @@
     "chris-premades": {
       "info": {
         "name": "Chill Touch",
-        "version": "1.1.0",
+        "version": "1.1.10",
         "source": "chris-premades",
         "identifier": "chillTouch"
       },

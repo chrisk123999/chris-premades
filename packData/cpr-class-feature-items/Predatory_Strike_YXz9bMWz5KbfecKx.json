@@ -99,16 +99,16 @@
       },
       "base": {
         "custom": {
-          "formula": "1d6",
-          "enabled": true
+          "formula": "",
+          "enabled": false
         },
         "types": [
           "bludgeoning",
           "slashing"
         ],
-        "denomination": 0,
+        "denomination": 6,
         "bonus": "",
-        "number": null,
+        "number": 1,
         "scaling": {
           "number": 1
         }

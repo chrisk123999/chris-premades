@@ -95,14 +95,14 @@
           "max": ""
         },
         "healing": {
-          "number": null,
-          "denomination": 0,
+          "number": 1,
+          "denomination": "6",
           "types": [
             "healing"
           ],
           "custom": {
-            "enabled": true,
-            "formula": "1d6[healing]"
+            "enabled": false,
+            "formula": ""
           },
           "scaling": {
             "number": 1,
@@ -115,7 +115,9 @@
         "forceDialog": false,
         "effectConditionText": "",
         "midiAutomationOnly": false,
-        "name": ""
+        "name": "",
+        "img": "",
+        "appliedEffects": []
       }
     },
     "identifier": "healing-light",
@@ -177,7 +179,7 @@
     "chris-premades": {
       "info": {
         "name": "Healing Light",
-        "version": "1.1.0",
+        "version": "1.1.10",
         "identifier": "healingLight",
         "source": "chris-premades"
       },

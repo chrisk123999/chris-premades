@@ -64,7 +64,8 @@
           "affects": {
             "choice": false,
             "count": "",
-            "type": "creature"
+            "type": "creature",
+            "special": ""
           },
           "override": false,
           "prompt": true
@@ -78,12 +79,12 @@
           "parts": [
             {
               "custom": {
-                "enabled": true,
-                "formula": "1d6[fire] + @prof"
+                "enabled": false,
+                "formula": ""
               },
-              "number": null,
-              "denomination": 0,
-              "bonus": "",
+              "number": 1,
+              "denomination": 6,
+              "bonus": "@prof",
               "types": [
                 "fire"
               ],

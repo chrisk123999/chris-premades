@@ -26,7 +26,124 @@
     "prerequisites": {
       "level": null
     },
-    "activities": {},
+    "activities": {
+      "D955NvTXfftZ3Ii4": {
+        "type": "attack",
+        "_id": "D955NvTXfftZ3Ii4",
+        "sort": 0,
+        "activation": {
+          "type": "action",
+          "value": null,
+          "override": false,
+          "condition": ""
+        },
+        "consumption": {
+          "scaling": {
+            "allowed": false
+          },
+          "spellSlot": true,
+          "targets": []
+        },
+        "description": {
+          "chatFlavor": ""
+        },
+        "duration": {
+          "units": "inst",
+          "concentration": false,
+          "override": false
+        },
+        "effects": [],
+        "range": {
+          "override": false,
+          "units": "self",
+          "special": ""
+        },
+        "target": {
+          "template": {
+            "contiguous": false,
+            "units": "ft",
+            "type": ""
+          },
+          "affects": {
+            "choice": false,
+            "count": "",
+            "type": ""
+          },
+          "override": false,
+          "prompt": true
+        },
+        "uses": {
+          "spent": 0,
+          "recovery": [],
+          "max": ""
+        },
+        "attack": {
+          "critical": {
+            "threshold": null
+          },
+          "flat": false,
+          "type": {
+            "value": "melee",
+            "classification": "weapon"
+          },
+          "ability": "",
+          "bonus": ""
+        },
+        "damage": {
+          "critical": {
+            "bonus": ""
+          },
+          "includeBase": true,
+          "parts": [
+            {
+              "custom": {
+                "enabled": false,
+                "formula": ""
+              },
+              "number": 1,
+              "denomination": 10,
+              "bonus": "@prof",
+              "types": [
+                "force"
+              ],
+              "scaling": {
+                "number": 1
+              }
+            }
+          ]
+        },
+        "useConditionText": "",
+        "effectConditionText": "",
+        "macroData": {
+          "name": "",
+          "command": ""
+        },
+        "ignoreTraits": {
+          "idi": false,
+          "idr": false,
+          "idv": false,
+          "ida": false
+        },
+        "midiProperties": {
+          "ignoreTraits": [],
+          "triggeredActivityId": "none",
+          "triggeredActivityConditionText": "",
+          "triggeredActivityTargets": "targets",
+          "triggeredActivityRollAs": "self",
+          "forceDialog": false,
+          "confirmTargets": "default",
+          "automationOnly": false,
+          "identifier": ""
+        },
+        "attackMode": "",
+        "ammunition": "",
+        "otherActivityId": "",
+        "otherActivityUuid": "",
+        "name": "",
+        "img": "",
+        "appliedEffects": []
+      }
+    },
     "identifier": "force-empowered-slam",
     "enchant": {}
   },
@@ -72,7 +189,8 @@
     },
     "dnd5e": {
       "riders": {
-        "activity": []
+        "activity": [],
+        "effect": []
       }
     }
   },

@@ -113,11 +113,11 @@
           "parts": [
             {
               "custom": {
-                "enabled": true,
-                "formula": "4d10[radiant]"
+                "enabled": false,
+                "formula": ""
               },
-              "number": null,
-              "denomination": null,
+              "number": 4,
+              "denomination": 10,
               "bonus": "",
               "types": [
                 "radiant"
@@ -147,7 +147,8 @@
         "effectConditionText": "",
         "midiAutomationOnly": false,
         "name": "Dawn",
-        "img": "icons/magic/light/projectile-beam-yellow.webp"
+        "img": "icons/magic/light/projectile-beam-yellow.webp",
+        "appliedEffects": []
       },
       "rufEWHdelB74i4bI": {
         "type": "utility",
@@ -264,11 +265,11 @@
           "parts": [
             {
               "custom": {
-                "enabled": true,
-                "formula": "4d10[radiant]"
+                "enabled": false,
+                "formula": ""
               },
-              "number": null,
-              "denomination": 0,
+              "number": 4,
+              "denomination": 10,
               "bonus": "",
               "types": [
                 "radiant"
@@ -298,7 +299,8 @@
         "effectConditionText": "",
         "midiAutomationOnly": false,
         "name": "Dawn: End Turn",
-        "img": "icons/magic/light/projectile-beam-yellow.webp"
+        "img": "icons/magic/light/projectile-beam-yellow.webp",
+        "appliedEffects": []
       }
     },
     "identifier": "dawn",
@@ -371,7 +373,7 @@
     "chris-premades": {
       "info": {
         "name": "Dawn",
-        "version": "1.1.0",
+        "version": "1.1.10",
         "mutation": {
           "self": "Dawn"
         },

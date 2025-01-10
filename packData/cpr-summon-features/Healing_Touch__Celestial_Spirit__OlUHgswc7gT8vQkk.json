@@ -45,12 +45,9 @@
           "targets": [
             {
               "type": "itemUses",
-              "target": "",
               "value": "1",
-              "scaling": {
-                "mode": "",
-                "formula": ""
-              }
+              "target": "",
+              "scaling": {}
             }
           ],
           "scaling": {
@@ -65,7 +62,7 @@
         "duration": {
           "concentration": false,
           "value": "",
-          "units": "",
+          "units": "inst",
           "special": "",
           "override": false
         },
@@ -100,15 +97,15 @@
           "recovery": []
         },
         "healing": {
-          "number": null,
-          "denomination": null,
+          "number": 2,
+          "denomination": "8",
           "bonus": "",
           "types": [
             "healing"
           ],
           "custom": {
-            "enabled": true,
-            "formula": "2d8[healing]"
+            "enabled": false,
+            "formula": ""
           },
           "scaling": {
             "mode": "whole",
@@ -120,7 +117,10 @@
         "useConditionText": "",
         "forceDialog": false,
         "effectConditionText": "",
-        "midiAutomationOnly": false
+        "midiAutomationOnly": false,
+        "name": "",
+        "img": "",
+        "appliedEffects": []
       }
     },
     "identifier": "healing-touch-celestial-spirit",
@@ -168,7 +168,8 @@
       "persistSourceMigration": true,
       "migratedUses": 1,
       "riders": {
-        "activity": []
+        "activity": [],
+        "effect": []
       }
     }
   },

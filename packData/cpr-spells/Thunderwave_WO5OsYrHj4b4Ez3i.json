@@ -112,11 +112,11 @@
           "parts": [
             {
               "custom": {
-                "enabled": true,
-                "formula": "2d8[thunder]"
+                "enabled": false,
+                "formula": ""
               },
-              "number": null,
-              "denomination": null,
+              "number": 2,
+              "denomination": 8,
               "bonus": "",
               "types": [
                 "thunder"
@@ -145,7 +145,9 @@
         "useConditionText": "",
         "forceDialog": false,
         "effectConditionText": "",
-        "name": ""
+        "name": "",
+        "img": "",
+        "appliedEffects": []
       }
     },
     "identifier": "thunderwave",
@@ -199,7 +201,7 @@
     "chris-premades": {
       "info": {
         "identifier": "thunderwave",
-        "version": "1.1.0",
+        "version": "1.1.10",
         "source": "chris-premades"
       },
       "macros": {

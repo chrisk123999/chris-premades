@@ -189,18 +189,19 @@
           "parts": [
             {
               "custom": {
-                "enabled": true,
-                "formula": "1d8[force] + @mod"
+                "enabled": false,
+                "formula": ""
               },
-              "number": null,
-              "denomination": 0,
-              "bonus": "",
+              "number": 1,
+              "denomination": 8,
+              "bonus": "@mod",
               "types": [
                 "force"
               ],
               "scaling": {
                 "mode": "half",
-                "number": 1
+                "number": 1,
+                "formula": ""
               }
             }
           ]
@@ -213,7 +214,8 @@
         "ammunition": "",
         "otherActivityId": "none",
         "name": "Spiritual Weapon: Attack",
-        "img": "icons/magic/fire/dagger-rune-enchant-flame-purple-orange.webp"
+        "img": "icons/magic/fire/dagger-rune-enchant-flame-purple-orange.webp",
+        "appliedEffects": []
       }
     },
     "identifier": "spiritual-weapon",
@@ -280,7 +282,7 @@
     "chris-premades": {
       "info": {
         "name": "Spiritual Weapon",
-        "version": "1.1.0",
+        "version": "1.1.10",
         "identifier": "spiritualWeapon",
         "source": "chris-premades"
       },

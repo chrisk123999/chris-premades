@@ -55,15 +55,15 @@
         }
       },
       "base": {
-        "number": null,
-        "denomination": null,
+        "number": 1,
+        "denomination": 8,
         "bonus": "",
         "types": [
           "force"
         ],
         "custom": {
-          "enabled": true,
-          "formula": "1d8[force]"
+          "enabled": false,
+          "formula": ""
         },
         "scaling": {
           "mode": "",

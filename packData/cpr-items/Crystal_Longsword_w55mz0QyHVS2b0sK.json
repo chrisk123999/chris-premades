@@ -46,12 +46,12 @@
     "damage": {
       "versatile": {
         "number": null,
-        "denomination": null,
+        "denomination": 0,
         "bonus": "",
         "types": [],
         "custom": {
-          "enabled": true,
-          "formula": "1d10[slashing]"
+          "enabled": false,
+          "formula": ""
         },
         "scaling": {
           "mode": "",
@@ -60,15 +60,15 @@
         }
       },
       "base": {
-        "number": null,
-        "denomination": null,
+        "number": 1,
+        "denomination": 8,
         "bonus": "",
         "types": [
           "slashing"
         ],
         "custom": {
-          "enabled": true,
-          "formula": "1d8[slashing]"
+          "enabled": false,
+          "formula": ""
         },
         "scaling": {
           "mode": "",
@@ -179,11 +179,11 @@
           "parts": [
             {
               "custom": {
-                "enabled": true,
-                "formula": "1d8[radiant]"
+                "enabled": false,
+                "formula": ""
               },
-              "number": null,
-              "denomination": null,
+              "number": 1,
+              "denomination": 8,
               "bonus": "",
               "types": [
                 "radiant"
@@ -388,13 +388,23 @@
       "idv": false,
       "ida": false
     },
+    "dnd5e": {
+      "persistSourceMigration": true,
+      "migratedUses": 3,
+      "riders": {
+        "activity": [
+          "M0pS5cHu1HGaJQ8M"
+        ],
+        "effect": []
+      }
+    },
     "chris-premades": {
       "equipment": {
         "identifier": "crystalBlade"
       },
       "info": {
         "name": "Crystal Longsword",
-        "version": "1.1.0",
+        "version": "1.1.10",
         "identifier": "crystalBladeLongsword",
         "source": "chris-premades"
       },
@@ -412,16 +422,6 @@
         "crystalBlade": "dnd5eactivity000",
         "crystalBladeHeal": "M0pS5cHu1HGaJQ8M",
         "crystalBladeLight": "YOnYqXSurY1x8ErJ"
-      }
-    },
-    "dnd5e": {
-      "persistSourceMigration": true,
-      "migratedUses": 3,
-      "riders": {
-        "activity": [
-          "M0pS5cHu1HGaJQ8M"
-        ],
-        "effect": []
       }
     }
   },

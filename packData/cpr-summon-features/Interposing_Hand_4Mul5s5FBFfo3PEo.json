@@ -126,7 +126,12 @@
       "rollAttackPerTarget": "default",
       "effectActivation": false,
       "itemCondition": "",
-      "effectCondition": ""
+      "effectCondition": "",
+      "AoETargetType": "any",
+      "autoTarget": "default",
+      "removeAttackDamageButtons": "default",
+      "reactionCondition": "",
+      "otherCondition": ""
     },
     "chris-premades": {
       "macros": {
@@ -138,7 +143,10 @@
       }
     },
     "dnd5e": {
-      "persistSourceMigration": true
+      "persistSourceMigration": true,
+      "riders": {
+        "activity": []
+      }
     }
   },
   "folder": "mnKsB3lJb1672i7A",

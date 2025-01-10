@@ -105,12 +105,12 @@
           "parts": [
             {
               "custom": {
-                "enabled": true,
-                "formula": "1d8[necrotic] + 3"
+                "enabled": false,
+                "formula": ""
               },
-              "number": null,
-              "denomination": null,
-              "bonus": "",
+              "number": 1,
+              "denomination": 8,
+              "bonus": "3",
               "types": [
                 "necrotic"
               ],
@@ -199,20 +199,18 @@
           "onSave": "half",
           "parts": [
             {
-              "number": null,
-              "denomination": null,
-              "bonus": "",
+              "custom": {
+                "enabled": false,
+                "formula": ""
+              },
+              "number": 1,
+              "denomination": 8,
+              "bonus": "3",
               "types": [
                 "necrotic"
               ],
-              "custom": {
-                "enabled": true,
-                "formula": "1d8[necrotic] + 3"
-              },
               "scaling": {
-                "mode": "whole",
-                "number": null,
-                "formula": ""
+                "number": 1
               }
             }
           ],
@@ -233,7 +231,12 @@
         "useConditionText": "",
         "forceDialog": false,
         "effectConditionText": "",
-        "midiAutomationOnly": false
+        "midiAutomationOnly": false,
+        "name": "",
+        "img": "",
+        "appliedEffects": [
+          "MFkhqaYIJVZwa8TC"
+        ]
       }
     },
     "identifier": "deathly-touch-ghostly-only",

@@ -173,18 +173,19 @@
           "parts": [
             {
               "custom": {
-                "enabled": true,
-                "formula": "2d8[fire]"
+                "enabled": false,
+                "formula": ""
               },
-              "number": null,
-              "denomination": 0,
+              "number": 2,
+              "denomination": 8,
               "bonus": "",
               "types": [
                 "fire"
               ],
               "scaling": {
                 "mode": "whole",
-                "number": 1
+                "number": 1,
+                "formula": ""
               }
             }
           ]
@@ -194,7 +195,8 @@
         "effectConditionText": "",
         "midiAutomationOnly": false,
         "name": "Heat Metal: Damage",
-        "img": "icons/magic/fire/flame-burning-chain.webp"
+        "img": "icons/magic/fire/flame-burning-chain.webp",
+        "appliedEffects": []
       },
       "mnxVTmGwcqMENTcj": {
         "type": "save",
@@ -391,7 +393,7 @@
     "chris-premades": {
       "info": {
         "name": "Heat Metal",
-        "version": "1.1.0",
+        "version": "1.1.10",
         "identifier": "heatMetal",
         "source": "chris-premades"
       },

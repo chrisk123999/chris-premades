@@ -111,16 +111,16 @@
           "onSave": "none",
           "parts": [
             {
-              "number": null,
-              "denomination": null,
+              "custom": {
+                "enabled": false,
+                "formula": ""
+              },
+              "number": 1,
+              "denomination": 8,
               "bonus": "",
               "types": [
                 "necrotic"
               ],
-              "custom": {
-                "enabled": true,
-                "formula": "1d8[necrotic]"
-              },
               "scaling": {
                 "mode": "whole",
                 "number": 1,
@@ -144,7 +144,10 @@
         "sort": 0,
         "useConditionText": "",
         "forceDialog": false,
-        "effectConditionText": ""
+        "effectConditionText": "",
+        "name": "",
+        "img": "",
+        "appliedEffects": []
       }
     },
     "identifier": "toll-the-dead",
@@ -192,13 +195,14 @@
         }
       },
       "riders": {
-        "activity": []
+        "activity": [],
+        "effect": []
       }
     },
     "chris-premades": {
       "info": {
         "identifier": "tollTheDead",
-        "version": "1.1.0",
+        "version": "1.1.10",
         "source": "chris-premades"
       },
       "config": {

@@ -27,93 +27,98 @@
       "level": null
     },
     "activities": {
-      "dnd5eactivity000": {
-        "_id": "dnd5eactivity000",
-        "type": "damage",
+      "t796R2cdcZLemEnU": {
+        "type": "heal",
+        "_id": "t796R2cdcZLemEnU",
+        "sort": 0,
         "activation": {
           "type": "special",
           "value": null,
-          "condition": "",
-          "override": false
+          "override": false,
+          "condition": ""
         },
         "consumption": {
-          "targets": [],
           "scaling": {
-            "allowed": false,
-            "max": ""
+            "allowed": false
           },
-          "spellSlot": true
+          "spellSlot": true,
+          "targets": []
         },
         "description": {
           "chatFlavor": ""
         },
         "duration": {
+          "units": "inst",
           "concentration": false,
-          "value": "",
-          "units": "",
-          "special": "",
           "override": false
         },
         "effects": [],
         "range": {
+          "override": false,
           "units": "self",
-          "special": "",
-          "override": false
+          "special": ""
         },
         "target": {
           "template": {
-            "count": "",
             "contiguous": false,
-            "type": "",
-            "size": "",
-            "width": "",
-            "height": "",
-            "units": ""
+            "units": "ft",
+            "type": ""
           },
           "affects": {
+            "choice": false,
             "count": "",
             "type": "self",
-            "choice": false,
             "special": ""
           },
-          "prompt": true,
-          "override": false
+          "override": false,
+          "prompt": true
         },
         "uses": {
           "spent": 0,
-          "max": "",
-          "recovery": []
+          "recovery": [],
+          "max": ""
         },
-        "damage": {
-          "critical": {
-            "allow": false,
-            "bonus": ""
+        "healing": {
+          "number": null,
+          "denomination": "",
+          "types": [
+            "healing"
+          ],
+          "custom": {
+            "enabled": true,
+            "formula": "5"
           },
-          "parts": [
-            {
-              "number": null,
-              "denomination": null,
-              "bonus": "",
-              "types": [
-                "healing"
-              ],
-              "custom": {
-                "enabled": true,
-                "formula": "5[healing]"
-              },
-              "scaling": {
-                "mode": "whole",
-                "number": null,
-                "formula": ""
-              }
-            }
-          ]
+          "scaling": {
+            "number": 1
+          },
+          "bonus": ""
         },
-        "sort": 0,
         "useConditionText": "",
-        "forceDialog": false,
         "effectConditionText": "",
-        "midiAutomationOnly": false
+        "macroData": {
+          "name": "",
+          "command": ""
+        },
+        "ignoreTraits": {
+          "idi": false,
+          "idr": false,
+          "idv": false,
+          "ida": false
+        },
+        "midiProperties": {
+          "ignoreTraits": [],
+          "triggeredActivityId": "none",
+          "triggeredActivityConditionText": "",
+          "triggeredActivityTargets": "targets",
+          "triggeredActivityRollAs": "self",
+          "forceDialog": false,
+          "confirmTargets": "default",
+          "automationOnly": false,
+          "identifier": ""
+        },
+        "name": "",
+        "img": "",
+        "appliedEffects": []
       }
     },
     "identifier": "regeneration-slaad-only",
@@ -126,7 +131,11 @@
       "rollAttackPerTarget": "default",
       "removeAttackDamageButtons": "default",
       "itemCondition": "",
-      "effectCondition": ""
+      "effectCondition": "",
+      "AoETargetType": "any",
+      "autoTarget": "default",
+      "reactionCondition": "",
+      "otherCondition": ""
     },
     "midiProperties": {
       "nodam": false,
@@ -160,7 +169,11 @@
       }
     },
     "dnd5e": {
-      "persistSourceMigration": true
+      "persistSourceMigration": true,
+      "riders": {
+        "activity": [],
+        "effect": []
+      }
     }
   },
   "folder": "FewumOfaPV1m7YpH",

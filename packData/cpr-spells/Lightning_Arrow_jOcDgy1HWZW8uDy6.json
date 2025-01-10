@@ -173,18 +173,19 @@
           "parts": [
             {
               "custom": {
-                "enabled": true,
-                "formula": "2d8[lightning]"
+                "enabled": false,
+                "formula": ""
               },
-              "number": null,
-              "denomination": 0,
+              "number": 2,
+              "denomination": 8,
               "bonus": "",
               "types": [
                 "lightning"
               ],
               "scaling": {
                 "mode": "whole",
-                "number": 1
+                "number": 1,
+                "formula": ""
               }
             }
           ],
@@ -205,7 +206,9 @@
         "useConditionText": "",
         "forceDialog": false,
         "effectConditionText": "",
-        "name": "Lightning Arrow: Burst"
+        "name": "Lightning Arrow: Burst",
+        "img": "",
+        "appliedEffects": []
       }
     },
     "identifier": "lightning-arrow",
@@ -269,7 +272,7 @@
     "chris-premades": {
       "info": {
         "name": "Lightning Arrow",
-        "version": "1.1.0",
+        "version": "1.1.10",
         "hasAnimation": true,
         "identifier": "lightningArrow",
         "source": "chris-premades"

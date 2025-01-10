@@ -59,15 +59,15 @@
         }
       },
       "base": {
-        "number": null,
-        "denomination": null,
+        "number": 1,
+        "denomination": 8,
         "bonus": "",
         "types": [
           "bludgeoning"
         ],
         "custom": {
-          "enabled": true,
-          "formula": "1d8[bludgeoning]"
+          "enabled": false,
+          "formula": ""
         },
         "scaling": {
           "mode": "",
@@ -232,7 +232,7 @@
     "chris-premades": {
       "info": {
         "identifier": "fightingStyleUnarmedFightingUnarmedStrike",
-        "version": "1.1.0",
+        "version": "1.1.10",
         "source": "chris-premades"
       },
       "macros": {

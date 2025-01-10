@@ -115,12 +115,12 @@
           "parts": [
             {
               "custom": {
-                "enabled": true,
-                "formula": "1d4[bludgeoning] + @mod"
+                "enabled": false,
+                "formula": ""
               },
-              "number": null,
-              "denomination": null,
-              "bonus": "",
+              "number": 1,
+              "denomination": 4,
+              "bonus": "@mod",
               "types": [
                 "bludgeoning"
               ],
@@ -237,7 +237,7 @@
       "info": {
         "identifier": "weakeningStrike",
         "source": "chris-premades",
-        "version": "1.1.0"
+        "version": "1.1.10"
       },
       "macros": {
         "midi": {

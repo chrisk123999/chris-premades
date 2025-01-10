@@ -101,7 +101,7 @@
             {
               "custom": {
                 "enabled": true,
-                "formula": "(floor((@details.level+1)/6)+1)d10[poison]"
+                "formula": "(floor((@details.level+1)/6)+1)d10"
               },
               "number": null,
               "denomination": null,
@@ -183,7 +183,7 @@
     "chris-premades": {
       "info": {
         "name": "Poison Breath Weapon",
-        "version": "1.1.0",
+        "version": "1.1.10",
         "identifier": "poisonBreathWeapon",
         "source": "chris-premades"
       }

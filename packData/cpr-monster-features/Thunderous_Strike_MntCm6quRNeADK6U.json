@@ -120,12 +120,12 @@
           "parts": [
             {
               "custom": {
-                "enabled": true,
-                "formula": "2d6[force] + 4"
+                "enabled": false,
+                "formula": ""
               },
-              "number": null,
-              "denomination": null,
-              "bonus": "",
+              "number": 2,
+              "denomination": 6,
+              "bonus": "4",
               "types": [
                 "force"
               ],
@@ -135,11 +135,11 @@
             },
             {
               "custom": {
-                "enabled": true,
-                "formula": "4d10[thunder]"
+                "enabled": false,
+                "formula": ""
               },
-              "number": null,
-              "denomination": 0,
+              "number": 4,
+              "denomination": 10,
               "bonus": "",
               "types": [
                 "thunder"
@@ -328,7 +328,7 @@
       "info": {
         "identifier": "thunderousStrike",
         "source": "chris-premades",
-        "version": "1.1.0"
+        "version": "1.1.10"
       },
       "macros": {
         "midi": {

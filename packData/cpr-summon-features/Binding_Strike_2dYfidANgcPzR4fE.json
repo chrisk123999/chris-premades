@@ -100,12 +100,12 @@
           "parts": [
             {
               "custom": {
-                "enabled": true,
-                "formula": "1d6[none] + 2 + @prof"
+                "enabled": false,
+                "formula": ""
               },
-              "number": null,
-              "denomination": 0,
-              "bonus": "",
+              "number": 1,
+              "denomination": 6,
+              "bonus": "2 + @prof",
               "types": [],
               "scaling": {
                 "number": 1
@@ -120,7 +120,11 @@
         "attackMode": "",
         "ammunition": "",
         "otherActivityId": "none",
-        "name": ""
+        "name": "",
+        "img": "",
+        "appliedEffects": [
+          "nzof8LDA7sNWkH6K"
+        ]
       }
     },
     "identifier": "binding-strike",

@@ -53,15 +53,15 @@
         }
       },
       "base": {
-        "number": null,
-        "denomination": null,
+        "number": 1,
+        "denomination": 10,
         "bonus": "",
         "types": [
           "piercing"
         ],
         "custom": {
-          "enabled": true,
-          "formula": "1d10[piercing]"
+          "enabled": false,
+          "formula": ""
         },
         "scaling": {
           "mode": "",
@@ -240,7 +240,7 @@
     },
     "chris-premades": {
       "info": {
-        "version": "1.1.0",
+        "version": "1.1.10",
         "settings": [
           "Critical Role Firearm Support"
         ],

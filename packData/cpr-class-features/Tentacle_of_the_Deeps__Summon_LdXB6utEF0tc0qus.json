@@ -182,11 +182,11 @@
           "parts": [
             {
               "custom": {
-                "enabled": true,
-                "formula": "1d8[cold]"
+                "enabled": false,
+                "formula": ""
               },
-              "number": null,
-              "denomination": 0,
+              "number": 1,
+              "denomination": 8,
               "bonus": "",
               "types": [
                 "cold"
@@ -205,7 +205,8 @@
         "ammunition": "",
         "otherActivityId": "none",
         "name": "Tentacle of the Deeps: Attack",
-        "img": "icons/commodities/biological/tentacle-purple-white.webp"
+        "img": "icons/commodities/biological/tentacle-purple-white.webp",
+        "appliedEffects": []
       }
     },
     "identifier": "tentacle-of-the-deeps-summon",
@@ -270,7 +271,7 @@
     "chris-premades": {
       "info": {
         "name": "Tentacle of the Deeps: Summon",
-        "version": "1.1.0",
+        "version": "1.1.10",
         "identifier": "tentacleOfTheDeeps",
         "source": "chris-premades",
         "hasAnimation": true

@@ -48,12 +48,9 @@
           "targets": [
             {
               "type": "itemUses",
-              "target": "niiOljUIVNki44AW",
               "value": "1",
-              "scaling": {
-                "mode": "",
-                "formula": ""
-              }
+              "target": "niiOljUIVNki44AW",
+              "scaling": {}
             }
           ],
           "scaling": {
@@ -107,20 +104,18 @@
           "onSave": "half",
           "parts": [
             {
-              "number": null,
-              "denomination": null,
-              "bonus": "",
+              "custom": {
+                "enabled": false,
+                "formula": ""
+              },
+              "number": 9,
+              "denomination": 6,
+              "bonus": "1",
               "types": [
                 "acid"
               ],
-              "custom": {
-                "enabled": true,
-                "formula": "9d6[acid] + 1"
-              },
               "scaling": {
-                "mode": "whole",
-                "number": null,
-                "formula": ""
+                "number": 1
               }
             }
           ],
@@ -141,7 +136,10 @@
         "useConditionText": "",
         "forceDialog": false,
         "effectConditionText": "",
-        "midiAutomationOnly": false
+        "midiAutomationOnly": false,
+        "name": "",
+        "img": "",
+        "appliedEffects": []
       }
     },
     "identifier": "spit-acid",
@@ -199,18 +197,19 @@
       "reactionCondition": "",
       "otherCondition": ""
     },
-    "chris-premades": {
-      "info": {
-        "source": "chris-premades",
-        "identifier": "spittingMimicAcid",
-        "version": "1.1.0"
-      }
-    },
     "dnd5e": {
       "persistSourceMigration": true,
       "migratedUses": null,
       "riders": {
-        "activity": []
+        "activity": [],
+        "effect": []
+      }
+    },
+    "chris-premades": {
+      "info": {
+        "source": "chris-premades",
+        "identifier": "spittingMimicAcid",
+        "version": "1.1.10"
       }
     }
   },

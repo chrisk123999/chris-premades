@@ -96,11 +96,11 @@
           "parts": [
             {
               "custom": {
-                "enabled": true,
-                "formula": "2d4[poison]"
+                "enabled": false,
+                "formula": ""
               },
-              "number": null,
-              "denomination": null,
+              "number": 2,
+              "denomination": 4,
               "bonus": "",
               "types": [
                 "poison"
@@ -129,7 +129,10 @@
         "effectConditionText": "",
         "midiAutomationOnly": false,
         "name": "Poisonous Skin",
-        "img": "icons/commodities/biological/hand-clawed-green.webp"
+        "img": "icons/commodities/biological/hand-clawed-green.webp",
+        "appliedEffects": [
+          "oOFuW0Jv7iVI6NgG"
+        ]
       },
       "j4Ay6WpTNLOciOar": {
         "type": "save",
@@ -186,11 +189,11 @@
           "parts": [
             {
               "custom": {
-                "enabled": true,
-                "formula": "2d4[poison]"
+                "enabled": false,
+                "formula": ""
               },
-              "number": null,
-              "denomination": 0,
+              "number": 2,
+              "denomination": 4,
               "bonus": "",
               "types": [
                 "poison"
@@ -219,7 +222,8 @@
         "effectConditionText": "",
         "midiAutomationOnly": false,
         "name": "Grung: Poison",
-        "img": "icons/commodities/biological/hand-clawed-green.webp"
+        "img": "icons/commodities/biological/hand-clawed-green.webp",
+        "appliedEffects": []
       }
     },
     "identifier": "poisonous-skin",
@@ -261,7 +265,7 @@
     "chris-premades": {
       "info": {
         "name": "Poisonous Skin",
-        "version": "1.1.0",
+        "version": "1.1.10",
         "identifier": "poisonousSkin",
         "source": "chris-premades"
       },

@@ -109,20 +109,20 @@
           "onSave": "half",
           "parts": [
             {
-              "number": null,
-              "denomination": null,
-              "bonus": "",
+              "custom": {
+                "enabled": false,
+                "formula": ""
+              },
+              "number": 10,
+              "denomination": 6,
+              "bonus": "40",
               "types": [
                 "force"
               ],
-              "custom": {
-                "enabled": true,
-                "formula": "10d6[force] + 40"
-              },
               "scaling": {
                 "mode": "whole",
-                "number": null,
-                "formula": "3d6"
+                "number": 3,
+                "formula": ""
               }
             }
           ],
@@ -142,7 +142,10 @@
         "sort": 0,
         "useConditionText": "",
         "forceDialog": false,
-        "effectConditionText": ""
+        "effectConditionText": "",
+        "name": "",
+        "img": "",
+        "appliedEffects": []
       }
     },
     "identifier": "disintegrate",
@@ -199,7 +202,8 @@
         }
       },
       "riders": {
-        "activity": []
+        "activity": [],
+        "effect": []
       }
     },
     "chris-premades": {
@@ -208,7 +212,7 @@
       },
       "info": {
         "name": "Disintegrate",
-        "version": "1.1.0",
+        "version": "1.1.10",
         "hasAnimation": true,
         "identifier": "disintegrate",
         "source": "chris-premades"

@@ -175,18 +175,19 @@
           "parts": [
             {
               "custom": {
-                "enabled": true,
-                "formula": "5d8[poison]"
+                "enabled": false,
+                "formula": ""
               },
-              "number": null,
-              "denomination": 0,
+              "number": 5,
+              "denomination": 8,
               "bonus": "",
               "types": [
                 "poison"
               ],
               "scaling": {
                 "mode": "whole",
-                "number": 1
+                "number": 1,
+                "formula": ""
               }
             }
           ],
@@ -207,7 +208,9 @@
         "useConditionText": "",
         "forceDialog": false,
         "effectConditionText": "",
-        "name": "Cloudkill: Damage"
+        "name": "Cloudkill: Damage",
+        "img": "",
+        "appliedEffects": []
       }
     },
     "identifier": "cloudkill",
@@ -271,7 +274,7 @@
     "chris-premades": {
       "info": {
         "name": "Cloudkill",
-        "version": "1.1.0",
+        "version": "1.1.10",
         "settings": [
           "Template Listener"
         ],

@@ -116,11 +116,11 @@
           "parts": [
             {
               "custom": {
-                "enabled": true,
-                "formula": "10d4[acid]"
+                "enabled": false,
+                "formula": ""
               },
-              "number": null,
-              "denomination": null,
+              "number": 10,
+              "denomination": 4,
               "bonus": "",
               "types": [
                 "acid"
@@ -149,7 +149,11 @@
         "useConditionText": "",
         "forceDialog": false,
         "effectConditionText": "",
-        "name": ""
+        "name": "",
+        "img": "",
+        "appliedEffects": [
+          "JyVcH2Ldy51le3ZY"
+        ]
       }
     },
     "identifier": "vitriolic-sphere",
@@ -206,7 +210,7 @@
     "chris-premades": {
       "info": {
         "name": "Vitriolic Sphere",
-        "version": "1.1.0",
+        "version": "1.1.10",
         "identifier": "vitriolicSphere",
         "source": "chris-premades"
       },

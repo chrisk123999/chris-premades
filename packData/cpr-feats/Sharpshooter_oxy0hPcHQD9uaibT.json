@@ -111,11 +111,28 @@
     "midi-qol": {
       "removeAttackDamageButtons": "default",
       "effectActivation": false,
-      "forceCEOff": true
+      "forceCEOff": true,
+      "AoETargetType": "any",
+      "autoTarget": "default",
+      "rollAttackPerTarget": "default",
+      "itemCondition": "",
+      "reactionCondition": "",
+      "otherCondition": "",
+      "effectCondition": ""
     },
     "midiProperties": {
       "confirmTargets": "default",
-      "toggleEffect": true
+      "toggleEffect": true,
+      "autoFailFriendly": false,
+      "autoSaveFriendly": false,
+      "magicdam": false,
+      "magiceffect": false,
+      "noConcentrationCheck": false,
+      "ignoreTotalCover": false,
+      "idr": false,
+      "idi": false,
+      "idv": false,
+      "ida": false
     },
     "dnd5e": {
       "persistSourceMigration": true,

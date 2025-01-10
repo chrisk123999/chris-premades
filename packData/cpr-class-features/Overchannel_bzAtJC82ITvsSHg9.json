@@ -156,8 +156,8 @@
           "parts": [
             {
               "custom": {
-                "enabled": true,
-                "formula": "0"
+                "enabled": false,
+                "formula": ""
               },
               "number": null,
               "denomination": 0,
@@ -176,7 +176,8 @@
         "effectConditionText": "",
         "midiAutomationOnly": false,
         "name": "Overchannel: Damage",
-        "img": "icons/magic/acid/projectile-faceted-glob.webp"
+        "img": "icons/magic/acid/projectile-faceted-glob.webp",
+        "appliedEffects": []
       }
     },
     "identifier": "overchannel",
@@ -239,7 +240,7 @@
     "chris-premades": {
       "info": {
         "name": "Overchannel",
-        "version": "1.1.0",
+        "version": "1.1.10",
         "identifier": "overchannel",
         "source": "chris-premades"
       },

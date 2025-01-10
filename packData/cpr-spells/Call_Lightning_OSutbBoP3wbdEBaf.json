@@ -177,11 +177,11 @@
           "parts": [
             {
               "custom": {
-                "enabled": true,
-                "formula": "3d10[lightning]"
+                "enabled": false,
+                "formula": ""
               },
-              "number": null,
-              "denomination": 0,
+              "number": 3,
+              "denomination": 10,
               "bonus": "",
               "types": [
                 "lightning"
@@ -212,7 +212,8 @@
         "effectConditionText": "",
         "midiAutomationOnly": false,
         "name": "Storm Bolt",
-        "img": "icons/magic/lightning/bolt-forked-large-blue-yellow.webp"
+        "img": "icons/magic/lightning/bolt-forked-large-blue-yellow.webp",
+        "appliedEffects": []
       }
     },
     "identifier": "call-lightning",
@@ -281,7 +282,7 @@
     "chris-premades": {
       "info": {
         "name": "Call Lightning",
-        "version": "1.1.0",
+        "version": "1.1.10",
         "mutation": {
           "self": "Storm Bolt"
         },

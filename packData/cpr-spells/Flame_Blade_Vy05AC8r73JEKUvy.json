@@ -191,11 +191,11 @@
           "parts": [
             {
               "custom": {
-                "enabled": true,
-                "formula": "3d6[fire]"
+                "enabled": false,
+                "formula": ""
               },
-              "number": null,
-              "denomination": 0,
+              "number": 3,
+              "denomination": 6,
               "bonus": "",
               "types": [
                 "fire"
@@ -216,7 +216,8 @@
         "ammunition": "",
         "otherActivityId": "none",
         "name": "Flame Blade Scimitar",
-        "img": "icons/magic/fire/projectile-bolt-zigzag-orange.webp"
+        "img": "icons/magic/fire/projectile-bolt-zigzag-orange.webp",
+        "appliedEffects": []
       },
       "1iCHtkZUVXhJUSep": {
         "type": "utility",
@@ -341,7 +342,7 @@
     "chris-premades": {
       "info": {
         "name": "Flame Blade",
-        "version": "1.1.0",
+        "version": "1.1.10",
         "mutation": {
           "self": "Flame Blade"
         },

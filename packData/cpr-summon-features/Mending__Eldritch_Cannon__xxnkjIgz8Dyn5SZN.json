@@ -52,7 +52,7 @@
         "duration": {
           "concentration": false,
           "value": "",
-          "units": "",
+          "units": "inst",
           "special": "",
           "override": false
         },
@@ -87,15 +87,15 @@
           "recovery": []
         },
         "healing": {
-          "number": null,
-          "denomination": null,
+          "number": 2,
+          "denomination": "6",
           "bonus": "",
           "types": [
             "healing"
           ],
           "custom": {
-            "enabled": true,
-            "formula": "2d6[healing]"
+            "enabled": false,
+            "formula": ""
           },
           "scaling": {
             "mode": "whole",
@@ -107,7 +107,10 @@
         "useConditionText": "",
         "forceDialog": false,
         "effectConditionText": "",
-        "midiAutomationOnly": false
+        "midiAutomationOnly": false,
+        "name": "",
+        "img": "",
+        "appliedEffects": []
       }
     },
     "identifier": "mending-eldritch-cannon",
@@ -145,7 +148,8 @@
     "dnd5e": {
       "persistSourceMigration": true,
       "riders": {
-        "activity": []
+        "activity": [],
+        "effect": []
       }
     }
   },

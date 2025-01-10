@@ -99,7 +99,7 @@
           ],
           "custom": {
             "enabled": true,
-            "formula": "@scale.monk.die[healing] + @prof"
+            "formula": "@scale.monk.die + @prof"
           },
           "scaling": {
             "mode": "whole",
@@ -174,7 +174,7 @@
     "chris-premades": {
       "info": {
         "name": "Quickened Healing",
-        "version": "1.1.0",
+        "version": "1.1.10",
         "identifier": "quickenedHealing",
         "source": "chris-premades"
       }

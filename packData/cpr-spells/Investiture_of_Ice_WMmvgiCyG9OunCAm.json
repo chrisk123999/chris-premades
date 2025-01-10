@@ -177,11 +177,11 @@
           "parts": [
             {
               "custom": {
-                "enabled": true,
-                "formula": "4d6[cold]"
+                "enabled": false,
+                "formula": ""
               },
-              "number": null,
-              "denomination": 0,
+              "number": 4,
+              "denomination": 6,
               "bonus": "",
               "types": [
                 "cold"
@@ -211,7 +211,10 @@
         "effectConditionText": "",
         "midiAutomationOnly": false,
         "name": "Investiture of Ice: Cone",
-        "img": "icons/magic/water/strike-ice-blade-axe.webp"
+        "img": "icons/magic/water/strike-ice-blade-axe.webp",
+        "appliedEffects": [
+          "rEUmCVOp58mKR5K6"
+        ]
       }
     },
     "identifier": "investiture-of-ice",
@@ -272,7 +275,7 @@
     "chris-premades": {
       "info": {
         "name": "Investiture of Ice",
-        "version": "1.1.0",
+        "version": "1.1.10",
         "mutation": {
           "self": "Investiture of Ice"
         },

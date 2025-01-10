@@ -109,12 +109,14 @@
       },
       "base": {
         "custom": {
-          "formula": "1d8[thunder]",
+          "formula": "",
           "enabled": false
         },
-        "number": null,
-        "denomination": 0,
-        "types": [],
+        "number": 1,
+        "denomination": 8,
+        "types": [
+          "thunder"
+        ],
         "scaling": {
           "number": 1
         },

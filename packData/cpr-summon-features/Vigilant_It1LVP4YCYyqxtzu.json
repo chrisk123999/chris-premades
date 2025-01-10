@@ -119,6 +119,11 @@
       "removeAttackDamageButtons": "default",
       "reactionCondition": "",
       "otherCondition": ""
+    },
+    "dnd5e": {
+      "riders": {
+        "activity": []
+      }
     }
   },
   "folder": "H4e6PJXcaRHbITgx",

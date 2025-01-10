@@ -121,7 +121,12 @@
       "effectActivation": false,
       "rollAttackPerTarget": "default",
       "itemCondition": "",
-      "effectCondition": ""
+      "effectCondition": "",
+      "AoETargetType": "any",
+      "autoTarget": "default",
+      "removeAttackDamageButtons": "default",
+      "reactionCondition": "",
+      "otherCondition": ""
     },
     "midiProperties": {
       "nodam": false,

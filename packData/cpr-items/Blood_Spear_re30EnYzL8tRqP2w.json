@@ -40,12 +40,12 @@
     "damage": {
       "versatile": {
         "number": null,
-        "denomination": null,
+        "denomination": 0,
         "bonus": "",
         "types": [],
         "custom": {
-          "enabled": true,
-          "formula": "1d8[piercing] + 2 + @mod"
+          "enabled": false,
+          "formula": ""
         },
         "scaling": {
           "mode": "",
@@ -54,15 +54,15 @@
         }
       },
       "base": {
-        "number": null,
-        "denomination": null,
+        "number": 1,
+        "denomination": 6,
         "bonus": "",
         "types": [
           "piercing"
         ],
         "custom": {
-          "enabled": true,
-          "formula": "1d6[piercing] + @mod"
+          "enabled": false,
+          "formula": ""
         },
         "scaling": {
           "mode": "",
@@ -224,10 +224,16 @@
       "idv": false,
       "ida": false
     },
+    "dnd5e": {
+      "persistSourceMigration": true,
+      "riders": {
+        "activity": []
+      }
+    },
     "chris-premades": {
       "info": {
         "name": "Blood Spear",
-        "version": "1.1.0",
+        "version": "1.1.10",
         "identifier": "bloodSpear",
         "source": "chris-premades"
       },
@@ -237,12 +243,6 @@
             "bloodSpear"
           ]
         }
-      }
-    },
-    "dnd5e": {
-      "persistSourceMigration": true,
-      "riders": {
-        "activity": []
       }
     }
   },

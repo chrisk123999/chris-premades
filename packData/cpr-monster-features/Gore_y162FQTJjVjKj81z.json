@@ -62,15 +62,15 @@
         }
       },
       "base": {
-        "number": null,
-        "denomination": null,
+        "number": 2,
+        "denomination": 8,
         "bonus": "",
         "types": [
           "piercing"
         ],
         "custom": {
-          "enabled": true,
-          "formula": "2d8[piercing] + @mod"
+          "enabled": false,
+          "formula": ""
         },
         "scaling": {
           "mode": "",
@@ -237,11 +237,17 @@
       "idv": false,
       "ida": false
     },
+    "dnd5e": {
+      "persistSourceMigration": true,
+      "riders": {
+        "activity": []
+      }
+    },
     "chris-premades": {
       "info": {
         "identifier": "minotaurGore",
         "source": "chris-premades",
-        "version": "1.1.0"
+        "version": "1.1.10"
       },
       "macros": {
         "midi": {
@@ -249,12 +255,6 @@
             "minotaurGore"
           ]
         }
-      }
-    },
-    "dnd5e": {
-      "persistSourceMigration": true,
-      "riders": {
-        "activity": []
       }
     }
   },

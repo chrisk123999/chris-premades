@@ -167,11 +167,11 @@
           "parts": [
             {
               "custom": {
-                "enabled": true,
-                "formula": "4d10[psychic]"
+                "enabled": false,
+                "formula": ""
               },
-              "number": null,
-              "denomination": 0,
+              "number": 4,
+              "denomination": 10,
               "bonus": "",
               "types": [
                 "psychic"
@@ -187,7 +187,8 @@
         "effectConditionText": "",
         "midiAutomationOnly": false,
         "name": "Dread Lord: Turn Start",
-        "img": "icons/magic/control/fear-fright-monster-grin-red-orange.webp"
+        "img": "icons/magic/control/fear-fright-monster-grin-red-orange.webp",
+        "appliedEffects": []
       },
       "stdBJRUQD41rPxoW": {
         "type": "attack",
@@ -261,12 +262,12 @@
           "parts": [
             {
               "custom": {
-                "enabled": true,
-                "formula": "3d10[necrotic] + @abilities.cha.mod"
+                "enabled": false,
+                "formula": ""
               },
-              "number": null,
-              "denomination": 0,
-              "bonus": "",
+              "number": 3,
+              "denomination": 10,
+              "bonus": "@abilities.cha.mod",
               "types": [
                 "necrotic"
               ],
@@ -284,7 +285,8 @@
         "ammunition": "",
         "otherActivityId": "none",
         "name": "Dread Lord: Shadow Attack",
-        "img": "icons/magic/control/fear-fright-monster-grin-red-orange.webp"
+        "img": "icons/magic/control/fear-fright-monster-grin-red-orange.webp",
+        "appliedEffects": []
       }
     },
     "identifier": "dread-lord",
@@ -337,7 +339,7 @@
     "chris-premades": {
       "info": {
         "name": "Dread Lord",
-        "version": "1.1.0",
+        "version": "1.1.10",
         "identifier": "dreadLord",
         "source": "chris-premades",
         "hasAnimation": true

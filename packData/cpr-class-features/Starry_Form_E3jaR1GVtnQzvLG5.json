@@ -337,18 +337,19 @@
           "parts": [
             {
               "custom": {
-                "enabled": true,
-                "formula": "1d8[radiant] + @mod"
+                "enabled": false,
+                "formula": ""
               },
-              "number": null,
-              "denomination": 0,
-              "bonus": "",
+              "number": 1,
+              "denomination": 8,
+              "bonus": "@mod",
               "types": [
                 "radiant"
               ],
               "scaling": {
                 "mode": "whole",
-                "number": 1
+                "number": 1,
+                "formula": ""
               }
             }
           ]
@@ -361,7 +362,8 @@
         "ammunition": "",
         "otherActivityId": "none",
         "name": "Luminous Arrow",
-        "img": "icons/magic/control/silhouette-hold-change-blue.webp"
+        "img": "icons/magic/control/silhouette-hold-change-blue.webp",
+        "appliedEffects": []
       },
       "wJHmmjx3QENbF0lq": {
         "type": "heal",
@@ -417,28 +419,29 @@
           "max": ""
         },
         "healing": {
-          "number": null,
-          "denomination": 0,
+          "number": 1,
+          "denomination": "8",
           "types": [
             "healing"
           ],
           "custom": {
-            "enabled": true,
-            "formula": "1d8[healing] + @abilities.wis.mod"
+            "enabled": false,
+            "formula": ""
           },
           "scaling": {
             "number": 1,
             "mode": "whole",
             "formula": ""
           },
-          "bonus": ""
+          "bonus": "@abilities.wis.mod"
         },
         "useConditionText": "",
         "forceDialog": false,
         "effectConditionText": "",
         "midiAutomationOnly": false,
         "name": "Healing Chalice",
-        "img": "icons/magic/control/silhouette-hold-change-blue.webp"
+        "img": "icons/magic/control/silhouette-hold-change-blue.webp",
+        "appliedEffects": []
       }
     },
     "identifier": "starry-form",
@@ -508,7 +511,7 @@
     "chris-premades": {
       "info": {
         "name": "Starry Form",
-        "version": "1.1.0",
+        "version": "1.1.10",
         "identifier": "starryForm",
         "source": "chris-premades"
       },

@@ -54,15 +54,15 @@
         }
       },
       "base": {
-        "number": null,
-        "denomination": null,
+        "number": 2,
+        "denomination": 6,
         "bonus": "",
         "types": [
           "slashing"
         ],
         "custom": {
-          "enabled": true,
-          "formula": "2d6[slashing]"
+          "enabled": false,
+          "formula": ""
         },
         "scaling": {
           "mode": "",
@@ -243,11 +243,11 @@
           "parts": [
             {
               "custom": {
-                "enabled": true,
-                "formula": "1d10[necrotic]"
+                "enabled": false,
+                "formula": ""
               },
-              "number": null,
-              "denomination": 0,
+              "number": 1,
+              "denomination": 10,
               "bonus": "",
               "types": [
                 "necrotic"
@@ -307,10 +307,19 @@
       "idv": false,
       "ida": false
     },
+    "dnd5e": {
+      "persistSourceMigration": true,
+      "riders": {
+        "activity": [
+          "K4vbn304BWFy0m07"
+        ],
+        "effect": []
+      }
+    },
     "chris-premades": {
       "info": {
         "name": "Blackrazor",
-        "version": "1.1.0",
+        "version": "1.1.10",
         "identifier": "blackrazor",
         "source": "chris-premades"
       },
@@ -328,15 +337,6 @@
       "hiddenActivities": [
         "blackrazorBacklash"
       ]
-    },
-    "dnd5e": {
-      "persistSourceMigration": true,
-      "riders": {
-        "activity": [
-          "K4vbn304BWFy0m07"
-        ],
-        "effect": []
-      }
     }
   },
   "effects": [

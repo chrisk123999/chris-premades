@@ -91,11 +91,11 @@
           "parts": [
             {
               "custom": {
-                "enabled": true,
-                "formula": "3d8[force]"
+                "enabled": false,
+                "formula": ""
               },
-              "number": null,
-              "denomination": null,
+              "number": 3,
+              "denomination": 8,
               "bonus": "",
               "types": [
                 "force"

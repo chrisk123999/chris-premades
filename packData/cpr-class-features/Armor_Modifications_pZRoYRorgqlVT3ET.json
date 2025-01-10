@@ -34,14 +34,6 @@
   },
   "flags": {
     "core": {},
-    "chris-premades": {
-      "info": {
-        "name": "Armor Modifications",
-        "version": "0.12.28",
-        "identifier": "armorModifications",
-        "source": "chris-premades"
-      }
-    },
     "midiProperties": {
       "confirmTargets": "default",
       "autoFailFriendly": false,
@@ -72,6 +64,14 @@
     "dnd5e": {
       "riders": {
         "activity": []
+      }
+    },
+    "chris-premades": {
+      "info": {
+        "name": "Armor Modifications",
+        "version": "1.1.0",
+        "identifier": "armorModifications",
+        "source": "chris-premades"
       }
     }
   },

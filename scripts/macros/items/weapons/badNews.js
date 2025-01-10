@@ -2,7 +2,7 @@ import {firearm} from '../../mechanics/firearm.js';
 
 export let badNews = {
     name: 'Bad News (Exandria)',
-    version: '1.1.0',
+    version: '1.1.10',
     midi: firearm.midi,
     config: [
         {

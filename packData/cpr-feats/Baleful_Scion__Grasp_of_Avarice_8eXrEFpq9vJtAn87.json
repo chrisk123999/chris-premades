@@ -44,12 +44,9 @@
           "targets": [
             {
               "type": "itemUses",
-              "target": "",
               "value": "1",
-              "scaling": {
-                "mode": "",
-                "formula": ""
-              }
+              "target": "",
+              "scaling": {}
             }
           ],
           "scaling": {
@@ -106,20 +103,18 @@
           },
           "parts": [
             {
-              "number": null,
-              "denomination": null,
-              "bonus": "",
+              "custom": {
+                "enabled": false,
+                "formula": ""
+              },
+              "number": 1,
+              "denomination": 6,
+              "bonus": "@prof",
               "types": [
                 "necrotic"
               ],
-              "custom": {
-                "enabled": true,
-                "formula": "1d6[necrotic] + @prof"
-              },
               "scaling": {
-                "mode": "whole",
-                "number": null,
-                "formula": ""
+                "number": 1
               }
             }
           ]
@@ -128,7 +123,10 @@
         "useConditionText": "",
         "forceDialog": false,
         "effectConditionText": "",
-        "midiAutomationOnly": false
+        "midiAutomationOnly": false,
+        "name": "",
+        "img": "",
+        "appliedEffects": []
       }
     },
     "identifier": "baleful-scion-grasp-of-avarice",
@@ -172,12 +170,13 @@
       "persistSourceMigration": true,
       "migratedUses": 0,
       "riders": {
-        "activity": []
+        "activity": [],
+        "effect": []
       }
     },
     "chris-premades": {
       "info": {
-        "version": "1.1.0",
+        "version": "1.1.10",
         "identifier": "graspOfAvarice",
         "source": "chris-premades"
       },

@@ -174,11 +174,11 @@
           "parts": [
             {
               "custom": {
-                "enabled": true,
-                "formula": "3d8"
+                "enabled": false,
+                "formula": ""
               },
-              "number": null,
-              "denomination": 0,
+              "number": 3,
+              "denomination": 8,
               "bonus": "",
               "types": [],
               "scaling": {
@@ -205,7 +205,9 @@
         "useConditionText": "",
         "forceDialog": false,
         "effectConditionText": "",
-        "name": "Spirit Guardians: Damage"
+        "name": "Spirit Guardians: Damage",
+        "img": "",
+        "appliedEffects": []
       }
     },
     "identifier": "spirit-guardians",
@@ -260,7 +262,7 @@
       "info": {
         "identifier": "spiritGuardians",
         "source": "chris-premades",
-        "version": "1.1.0",
+        "version": "1.1.10",
         "hasAnimation": true
       },
       "macros": {

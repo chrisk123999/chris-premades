@@ -146,7 +146,11 @@
       "removeAttackDamageButtons": "default",
       "rollAttackPerTarget": "default",
       "itemCondition": "",
-      "effectCondition": ""
+      "effectCondition": "",
+      "AoETargetType": "any",
+      "autoTarget": "default",
+      "reactionCondition": "",
+      "otherCondition": ""
     },
     "midiProperties": {
       "confirmTargets": "default",
@@ -186,7 +190,10 @@
       }
     },
     "dnd5e": {
-      "persistSourceMigration": true
+      "persistSourceMigration": true,
+      "riders": {
+        "activity": []
+      }
     }
   },
   "img": "icons/skills/melee/hand-grip-hammer-spiked-blue.webp",

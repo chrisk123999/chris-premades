@@ -173,11 +173,11 @@
           "parts": [
             {
               "custom": {
-                "enabled": true,
-                "formula": "4d8[fire]"
+                "enabled": false,
+                "formula": ""
               },
-              "number": null,
-              "denomination": 0,
+              "number": 4,
+              "denomination": 8,
               "bonus": "",
               "types": [
                 "fire"
@@ -207,7 +207,8 @@
         "effectConditionText": "",
         "midiAutomationOnly": false,
         "name": "Investiture of Flame: Fire",
-        "img": "icons/magic/lightning/bolt-strike-smoke-yellow.webp"
+        "img": "icons/magic/lightning/bolt-strike-smoke-yellow.webp",
+        "appliedEffects": []
       },
       "tz9zhEEBYth4aDJx": {
         "type": "damage",
@@ -267,11 +268,11 @@
           "parts": [
             {
               "custom": {
-                "enabled": true,
-                "formula": "1d10[fire]"
+                "enabled": false,
+                "formula": ""
               },
-              "number": null,
-              "denomination": 0,
+              "number": 1,
+              "denomination": 10,
               "bonus": "",
               "types": [
                 "fire"
@@ -288,7 +289,8 @@
         "effectConditionText": "",
         "midiAutomationOnly": false,
         "name": "Investiture of Flame: Heat",
-        "img": "icons/magic/lightning/bolt-strike-smoke-yellow.webp"
+        "img": "icons/magic/lightning/bolt-strike-smoke-yellow.webp",
+        "appliedEffects": []
       }
     },
     "identifier": "investiture-of-flame",
@@ -355,7 +357,7 @@
     "chris-premades": {
       "info": {
         "name": "Investiture of Flame",
-        "version": "1.1.0",
+        "version": "1.1.10",
         "mutation": {
           "self": "Investiture of Flame"
         },

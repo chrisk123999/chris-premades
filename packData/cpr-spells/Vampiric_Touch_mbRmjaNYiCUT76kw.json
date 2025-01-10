@@ -192,18 +192,19 @@
           "parts": [
             {
               "custom": {
-                "enabled": true,
-                "formula": "3d6[necrotic]"
+                "enabled": false,
+                "formula": ""
               },
-              "number": null,
-              "denomination": 0,
+              "number": 3,
+              "denomination": 6,
               "bonus": "",
               "types": [
                 "necrotic"
               ],
               "scaling": {
                 "mode": "whole",
-                "number": 1
+                "number": 1,
+                "formula": ""
               }
             }
           ]
@@ -216,7 +217,8 @@
         "ammunition": "",
         "otherActivityId": "none",
         "name": "Vampiric Touch: Attack",
-        "img": "icons/magic/unholy/hand-claw-fog-green.webp"
+        "img": "icons/magic/unholy/hand-claw-fog-green.webp",
+        "appliedEffects": []
       }
     },
     "identifier": "vampiric-touch",
@@ -272,7 +274,7 @@
     "chris-premades": {
       "info": {
         "identifier": "vampiricTouch",
-        "version": "1.1.0",
+        "version": "1.1.10",
         "source": "chris-premades"
       },
       "macros": {

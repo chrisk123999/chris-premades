@@ -62,15 +62,15 @@
         }
       },
       "base": {
-        "number": null,
-        "denomination": null,
+        "number": 1,
+        "denomination": 4,
         "bonus": "",
         "types": [
           "bludgeoning"
         ],
         "custom": {
-          "enabled": true,
-          "formula": "1d4[bludgeoning] + @mod"
+          "enabled": false,
+          "formula": ""
         },
         "scaling": {
           "mode": "",
@@ -337,7 +337,7 @@
       "info": {
         "identifier": "shieldBash",
         "source": "chris-premades",
-        "version": "1.1.0"
+        "version": "1.1.10"
       },
       "macros": {
         "midi": {

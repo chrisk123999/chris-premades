@@ -79,11 +79,11 @@
           "parts": [
             {
               "custom": {
-                "enabled": true,
-                "formula": "1d6[slashing]"
+                "enabled": false,
+                "formula": ""
               },
-              "number": null,
-              "denomination": 0,
+              "number": 1,
+              "denomination": 6,
               "bonus": "",
               "types": [
                 "slashing"
@@ -111,7 +111,9 @@
         "forceDialog": false,
         "effectConditionText": "",
         "midiAutomationOnly": false,
-        "name": ""
+        "name": "",
+        "img": "",
+        "appliedEffects": []
       }
     },
     "identifier": "charge",

@@ -59,7 +59,7 @@
     "chris-premades": {
       "info": {
         "name": "Earth Tremor",
-        "version": "1.1.0",
+        "version": "1.1.10",
         "identifier": "earthTremor",
         "source": "chris-premades"
       },
@@ -186,11 +186,11 @@
           "parts": [
             {
               "custom": {
-                "enabled": true,
-                "formula": "1d6[bludgeoning]"
+                "enabled": false,
+                "formula": ""
               },
-              "number": null,
-              "denomination": null,
+              "number": 1,
+              "denomination": 6,
               "bonus": "",
               "types": [
                 "bludgeoning"
@@ -219,7 +219,9 @@
         "useConditionText": "",
         "forceDialog": false,
         "effectConditionText": "",
-        "name": ""
+        "name": "",
+        "img": "",
+        "appliedEffects": []
       }
     },
     "identifier": "earth-tremor",

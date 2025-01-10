@@ -105,12 +105,12 @@
           "parts": [
             {
               "custom": {
-                "enabled": true,
-                "formula": "1d6[psychic] + @mod"
+                "enabled": false,
+                "formula": ""
               },
-              "number": null,
-              "denomination": null,
-              "bonus": "",
+              "number": 1,
+              "denomination": 6,
+              "bonus": "@mod",
               "types": [
                 "psychic"
               ],
@@ -129,7 +129,8 @@
         "ammunition": "",
         "otherActivityId": "none",
         "name": "Psychic Blades",
-        "img": "icons/skills/melee/strike-sword-blood-red.webp"
+        "img": "icons/skills/melee/strike-sword-blood-red.webp",
+        "appliedEffects": []
       },
       "h5tNZjwNfemV6cpp": {
         "type": "attack",
@@ -208,12 +209,12 @@
           "parts": [
             {
               "custom": {
-                "enabled": true,
-                "formula": "1d4[psychic] + @mod"
+                "enabled": false,
+                "formula": ""
               },
-              "number": null,
-              "denomination": null,
-              "bonus": "",
+              "number": 1,
+              "denomination": 4,
+              "bonus": "@mod",
               "types": [
                 "psychic"
               ],
@@ -233,7 +234,8 @@
         "otherActivityId": "none",
         "name": "Psychic Blades (Bonus Action)",
         "_id": "h5tNZjwNfemV6cpp",
-        "img": "icons/skills/melee/strike-sword-blood-red.webp"
+        "img": "icons/skills/melee/strike-sword-blood-red.webp",
+        "appliedEffects": []
       }
     },
     "identifier": "psychic-blades",
@@ -286,7 +288,7 @@
     "chris-premades": {
       "info": {
         "name": "Psychic Blades",
-        "version": "1.1.0",
+        "version": "1.1.10",
         "identifier": "psychicBlades",
         "source": "chris-premades"
       },

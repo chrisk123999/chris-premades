@@ -45,12 +45,12 @@
     "damage": {
       "versatile": {
         "number": null,
-        "denomination": null,
+        "denomination": 0,
         "bonus": "",
         "types": [],
         "custom": {
-          "enabled": true,
-          "formula": "1d10[bludgeoning] + @mod"
+          "enabled": false,
+          "formula": ""
         },
         "scaling": {
           "mode": "",
@@ -59,15 +59,15 @@
         }
       },
       "base": {
-        "number": null,
-        "denomination": null,
+        "number": 1,
+        "denomination": 8,
         "bonus": "",
         "types": [
           "bludgeoning"
         ],
         "custom": {
-          "enabled": true,
-          "formula": "1d8[bludgeoning] + @mod"
+          "enabled": false,
+          "formula": ""
         },
         "scaling": {
           "mode": "",
@@ -336,7 +336,7 @@
     "chris-premades": {
       "info": {
         "name": "Grovelthrash (Awakened)",
-        "version": "1.1.0",
+        "version": "1.1.10",
         "identifier": "grovelthrash1",
         "source": "chris-premades"
       },

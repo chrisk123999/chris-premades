@@ -82,12 +82,12 @@
           "parts": [
             {
               "custom": {
-                "enabled": true,
-                "formula": "1d8[necrotic] + 3"
+                "enabled": false,
+                "formula": ""
               },
-              "number": null,
-              "denomination": null,
-              "bonus": "",
+              "number": 1,
+              "denomination": 8,
+              "bonus": "3",
               "types": [
                 "necrotic"
               ],
@@ -118,9 +118,11 @@
         },
         "attackMode": "",
         "ammunition": "",
-        "otherActivityId": "Auto",
+        "otherActivityId": "",
         "otherActivityUuid": "",
-        "name": ""
+        "name": "",
+        "img": "",
+        "appliedEffects": []
       }
     },
     "uses": {
@@ -167,6 +169,30 @@
         "activity": [],
         "effect": []
       }
+    },
+    "midi-qol": {
+      "fumbleThreshold": null,
+      "AoETargetType": "any",
+      "autoTarget": "default",
+      "rollAttackPerTarget": "default",
+      "removeAttackDamageButtons": "default",
+      "itemCondition": "",
+      "reactionCondition": "",
+      "otherCondition": "",
+      "effectCondition": ""
+    },
+    "midiProperties": {
+      "autoFailFriendly": false,
+      "autoSaveFriendly": false,
+      "magicdam": false,
+      "magiceffect": false,
+      "noConcentrationCheck": false,
+      "toggleEffect": false,
+      "ignoreTotalCover": false,
+      "idr": false,
+      "idi": false,
+      "idv": false,
+      "ida": false
     }
   },
   "_id": "etECGgcdEZT5pyi4",

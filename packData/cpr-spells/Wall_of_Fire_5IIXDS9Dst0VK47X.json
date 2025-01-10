@@ -113,11 +113,11 @@
           "parts": [
             {
               "custom": {
-                "enabled": true,
-                "formula": "5d8[fire]"
+                "enabled": false,
+                "formula": ""
               },
-              "number": null,
-              "denomination": null,
+              "number": 5,
+              "denomination": 8,
               "bonus": "",
               "types": [
                 "fire"
@@ -146,7 +146,9 @@
         "useConditionText": "",
         "forceDialog": false,
         "effectConditionText": "",
-        "name": ""
+        "name": "",
+        "img": "",
+        "appliedEffects": []
       },
       "3q1oadEkwGxlMeHO": {
         "type": "damage",
@@ -206,11 +208,11 @@
           "parts": [
             {
               "custom": {
-                "enabled": true,
-                "formula": "5d8[fire]"
+                "enabled": false,
+                "formula": ""
               },
-              "number": null,
-              "denomination": 0,
+              "number": 5,
+              "denomination": 8,
               "bonus": "",
               "types": [
                 "fire"
@@ -226,7 +228,9 @@
         "useConditionText": "",
         "forceDialog": false,
         "effectConditionText": "",
-        "name": "Wall of Fire: Damage"
+        "name": "Wall of Fire: Damage",
+        "img": "",
+        "appliedEffects": []
       }
     },
     "identifier": "wall-of-fire",
@@ -288,7 +292,7 @@
       "info": {
         "source": "chris-premades",
         "identifier": "wallOfFire",
-        "version": "1.1.0",
+        "version": "1.1.10",
         "hasAnimation": true
       },
       "macros": {

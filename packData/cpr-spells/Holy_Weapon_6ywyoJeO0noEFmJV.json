@@ -184,11 +184,11 @@
           "parts": [
             {
               "custom": {
-                "enabled": true,
-                "formula": "4d8[radiant]"
+                "enabled": false,
+                "formula": ""
               },
-              "number": null,
-              "denomination": 0,
+              "number": 4,
+              "denomination": 8,
               "bonus": "",
               "types": [
                 "radiant"
@@ -218,7 +218,10 @@
         "effectConditionText": "",
         "midiAutomationOnly": false,
         "name": "Holy Weapon: Burst",
-        "img": "icons/magic/light/projectile-smoke-yellow.webp"
+        "img": "icons/magic/light/projectile-smoke-yellow.webp",
+        "appliedEffects": [
+          "MEK7lh3QKgG0Gu59"
+        ]
       },
       "5wFPAIqhl5IsPrgD": {
         "type": "utility",
@@ -419,7 +422,7 @@
     "chris-premades": {
       "info": {
         "name": "Holy Weapon",
-        "version": "1.1.0",
+        "version": "1.1.10",
         "mutation": {
           "self": "Holy Weapon"
         },

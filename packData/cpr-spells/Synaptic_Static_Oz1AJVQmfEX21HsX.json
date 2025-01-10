@@ -114,20 +114,19 @@
           "onSave": "half",
           "parts": [
             {
-              "number": null,
-              "denomination": null,
+              "custom": {
+                "enabled": false,
+                "formula": ""
+              },
+              "number": 8,
+              "denomination": 6,
               "bonus": "",
               "types": [
                 "psychic"
               ],
-              "custom": {
-                "enabled": true,
-                "formula": "8d6[psychic]"
-              },
               "scaling": {
                 "mode": "",
-                "number": null,
-                "formula": ""
+                "number": 1
               }
             }
           ],
@@ -147,7 +146,12 @@
         "sort": 0,
         "useConditionText": "",
         "forceDialog": false,
-        "effectConditionText": ""
+        "effectConditionText": "",
+        "name": "",
+        "img": "",
+        "appliedEffects": [
+          "Hh7MZaRxbCk1jNHG"
+        ]
       }
     },
     "identifier": "synaptic-static",
@@ -197,7 +201,8 @@
     "dnd5e": {
       "persistSourceMigration": true,
       "riders": {
-        "activity": []
+        "activity": [],
+        "effect": []
       },
       "last": {
         "dnd5eactivity000": {
@@ -215,7 +220,7 @@
     "chris-premades": {
       "info": {
         "name": "Synaptic Static",
-        "version": "1.1.0",
+        "version": "1.1.10",
         "settings": [
           "Active Effect Additions"
         ],

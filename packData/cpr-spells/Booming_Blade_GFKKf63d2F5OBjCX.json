@@ -168,11 +168,11 @@
           "parts": [
             {
               "custom": {
-                "enabled": true,
-                "formula": "1d8[thunder]"
+                "enabled": false,
+                "formula": ""
               },
-              "number": null,
-              "denomination": 0,
+              "number": 1,
+              "denomination": 8,
               "bonus": "",
               "types": [
                 "thunder"
@@ -188,7 +188,9 @@
         "useConditionText": "",
         "forceDialog": false,
         "effectConditionText": "",
-        "name": "Booming Blade: Moved"
+        "name": "Booming Blade: Moved",
+        "img": "",
+        "appliedEffects": []
       }
     },
     "identifier": "booming-blade",
@@ -253,7 +255,7 @@
     "chris-premades": {
       "info": {
         "name": "Booming Blade",
-        "version": "1.1.0",
+        "version": "1.1.10",
         "settings": [
           "Booming Blade"
         ],

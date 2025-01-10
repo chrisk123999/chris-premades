@@ -170,11 +170,11 @@
           "parts": [
             {
               "custom": {
-                "enabled": true,
-                "formula": "1d10[piercing]"
+                "enabled": false,
+                "formula": ""
               },
-              "number": null,
-              "denomination": 0,
+              "number": 1,
+              "denomination": 10,
               "bonus": "",
               "types": [
                 "piercing"
@@ -203,7 +203,9 @@
         "useConditionText": "",
         "forceDialog": false,
         "effectConditionText": "",
-        "name": "Hail of Thorns: Burst"
+        "name": "Hail of Thorns: Burst",
+        "img": "",
+        "appliedEffects": []
       }
     },
     "identifier": "hail-of-thorns",
@@ -266,7 +268,7 @@
     "chris-premades": {
       "info": {
         "name": "Hail of Thorns",
-        "version": "1.1.0",
+        "version": "1.1.10",
         "identifier": "hailOfThorns",
         "source": "chris-premades"
       },

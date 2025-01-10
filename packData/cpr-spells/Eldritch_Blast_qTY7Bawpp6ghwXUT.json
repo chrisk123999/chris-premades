@@ -189,11 +189,11 @@
           "parts": [
             {
               "custom": {
-                "enabled": true,
-                "formula": "1d10[force]"
+                "enabled": false,
+                "formula": ""
               },
-              "number": null,
-              "denomination": 0,
+              "number": 1,
+              "denomination": 10,
               "bonus": "",
               "types": [
                 "force"
@@ -211,7 +211,9 @@
         "attackMode": "",
         "ammunition": "",
         "otherActivityId": "none",
-        "name": "Eldritch Blast: Beam"
+        "name": "Eldritch Blast: Beam",
+        "img": "",
+        "appliedEffects": []
       }
     },
     "identifier": "eldritch-blast",
@@ -274,7 +276,7 @@
       "info": {
         "identifier": "eldritchBlast",
         "source": "chris-premades",
-        "version": "1.1.0",
+        "version": "1.1.10",
         "hasAnimation": true
       },
       "activityIdentifiers": {

@@ -97,7 +97,7 @@
             {
               "custom": {
                 "enabled": true,
-                "formula": "20[radiant]"
+                "formula": "20"
               },
               "number": null,
               "denomination": null,

@@ -174,11 +174,11 @@
           "parts": [
             {
               "custom": {
-                "enabled": true,
-                "formula": "2d8[necrotic]"
+                "enabled": false,
+                "formula": ""
               },
-              "number": null,
-              "denomination": 0,
+              "number": 2,
+              "denomination": 8,
               "bonus": "",
               "types": [
                 "necrotic"
@@ -193,7 +193,9 @@
         "useConditionText": "",
         "forceDialog": false,
         "effectConditionText": "",
-        "name": "Shadow of Moil: Damage"
+        "name": "Shadow of Moil: Damage",
+        "img": "",
+        "appliedEffects": []
       }
     },
     "identifier": "shadow-of-moil",
@@ -257,7 +259,7 @@
     "chris-premades": {
       "info": {
         "name": "Shadow of Moil",
-        "version": "1.1.0",
+        "version": "1.1.10",
         "settings": [
           "Shadow of Moil",
           "On Hit"

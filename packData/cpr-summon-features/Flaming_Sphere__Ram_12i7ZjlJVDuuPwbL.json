@@ -81,11 +81,11 @@
           "parts": [
             {
               "custom": {
-                "enabled": true,
-                "formula": "2d6[fire]"
+                "enabled": false,
+                "formula": ""
               },
-              "number": null,
-              "denomination": 0,
+              "number": 2,
+              "denomination": 6,
               "bonus": "",
               "types": [
                 "fire"
@@ -113,7 +113,9 @@
         "forceDialog": false,
         "effectConditionText": "",
         "midiAutomationOnly": false,
-        "name": ""
+        "name": "",
+        "img": "",
+        "appliedEffects": []
       }
     },
     "identifier": "flaming-sphere-ram",

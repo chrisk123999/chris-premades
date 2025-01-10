@@ -128,8 +128,8 @@
           "parts": [
             {
               "custom": {
-                "enabled": true,
-                "formula": "2d8"
+                "enabled": false,
+                "formula": ""
               },
               "number": 2,
               "denomination": 8,
@@ -142,16 +142,17 @@
             },
             {
               "custom": {
-                "enabled": true,
-                "formula": "1d6"
+                "enabled": false,
+                "formula": ""
               },
-              "number": null,
-              "denomination": 0,
+              "number": 1,
+              "denomination": 6,
               "bonus": "",
               "types": [],
               "scaling": {
                 "mode": "whole",
-                "number": 1
+                "number": 1,
+                "formula": ""
               }
             }
           ]
@@ -163,7 +164,9 @@
         "attackMode": "",
         "ammunition": "",
         "otherActivityId": "none",
-        "name": ""
+        "name": "",
+        "img": "",
+        "appliedEffects": []
       },
       "eS1eAw88XejTplXT": {
         "type": "attack",
@@ -232,11 +235,11 @@
           "parts": [
             {
               "custom": {
-                "enabled": true,
-                "formula": "2d8"
+                "enabled": false,
+                "formula": ""
               },
-              "number": null,
-              "denomination": 0,
+              "number": 2,
+              "denomination": 8,
               "bonus": "",
               "types": [],
               "scaling": {
@@ -246,16 +249,17 @@
             },
             {
               "custom": {
-                "enabled": true,
-                "formula": "1d6"
+                "enabled": false,
+                "formula": ""
               },
-              "number": null,
-              "denomination": 0,
+              "number": 1,
+              "denomination": 6,
               "bonus": "",
               "types": [],
               "scaling": {
                 "mode": "whole",
-                "number": 1
+                "number": 1,
+                "formula": ""
               }
             }
           ]
@@ -266,7 +270,9 @@
         "attackMode": "",
         "ammunition": "",
         "otherActivityId": "none",
-        "name": "Chaos Bolt: Bounce"
+        "name": "Chaos Bolt: Bounce",
+        "img": "",
+        "appliedEffects": []
       }
     },
     "identifier": "chaos-bolt",
@@ -343,7 +349,7 @@
     "chris-premades": {
       "info": {
         "name": "Chaos Bolt",
-        "version": "1.1.0",
+        "version": "1.1.10",
         "identifier": "chaosBolt",
         "source": "chris-premades",
         "hasAnimation": true

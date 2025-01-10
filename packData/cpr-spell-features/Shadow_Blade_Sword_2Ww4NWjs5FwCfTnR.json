@@ -55,15 +55,15 @@
         }
       },
       "base": {
-        "number": null,
-        "denomination": null,
+        "number": 2,
+        "denomination": 8,
         "bonus": "",
         "types": [
           "psychic"
         ],
         "custom": {
-          "enabled": true,
-          "formula": "2d8[psychic ]"
+          "enabled": false,
+          "formula": ""
         },
         "scaling": {
           "mode": "",

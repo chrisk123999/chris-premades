@@ -115,11 +115,11 @@
           "parts": [
             {
               "custom": {
-                "enabled": true,
-                "formula": "2d10[force]"
+                "enabled": false,
+                "formula": ""
               },
-              "number": null,
-              "denomination": null,
+              "number": 2,
+              "denomination": 10,
               "bonus": "",
               "types": [
                 "force"
@@ -148,7 +148,11 @@
         "useConditionText": "",
         "forceDialog": false,
         "effectConditionText": "",
-        "name": ""
+        "name": "",
+        "img": "",
+        "appliedEffects": [
+          "CqyNA2qOdXxXteY9"
+        ]
       }
     },
     "identifier": "spray-of-cards",
@@ -204,7 +208,7 @@
     "chris-premades": {
       "info": {
         "name": "Spray of Cards",
-        "version": "1.1.0",
+        "version": "1.1.10",
         "identifier": "sprayOfCards",
         "source": "chris-premades"
       },

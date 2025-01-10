@@ -40,12 +40,12 @@
     "damage": {
       "versatile": {
         "number": null,
-        "denomination": null,
+        "denomination": 0,
         "bonus": "",
         "types": [],
         "custom": {
-          "enabled": true,
-          "formula": "1d10[slashing] + @mod"
+          "enabled": false,
+          "formula": ""
         },
         "scaling": {
           "mode": "",
@@ -54,15 +54,15 @@
         }
       },
       "base": {
-        "number": null,
-        "denomination": null,
+        "number": 1,
+        "denomination": 8,
         "bonus": "",
         "types": [
           "slashing"
         ],
         "custom": {
-          "enabled": true,
-          "formula": "1d8[slashing] + @mod"
+          "enabled": false,
+          "formula": ""
         },
         "scaling": {
           "mode": "",
@@ -173,11 +173,11 @@
           "parts": [
             {
               "custom": {
-                "enabled": true,
-                "formula": "3d6[cold]"
+                "enabled": false,
+                "formula": ""
               },
-              "number": null,
-              "denomination": 0,
+              "number": 3,
+              "denomination": 6,
               "bonus": "",
               "types": [
                 "cold"
@@ -268,11 +268,11 @@
           "parts": [
             {
               "custom": {
-                "enabled": true,
-                "formula": "12d6[cold]"
+                "enabled": false,
+                "formula": ""
               },
-              "number": null,
-              "denomination": 0,
+              "number": 12,
+              "denomination": 6,
               "bonus": "",
               "types": [
                 "cold"
@@ -426,10 +426,19 @@
       "idv": false,
       "ida": false
     },
+    "dnd5e": {
+      "persistSourceMigration": true,
+      "riders": {
+        "activity": [
+          "SGlACkJ3w5E7YiGu"
+        ],
+        "effect": []
+      }
+    },
     "chris-premades": {
       "info": {
         "name": "Dragon's Wrath Weapon (Ascendant)",
-        "version": "1.1.0",
+        "version": "1.1.10",
         "identifier": "dragonsWrath3",
         "source": "chris-premades"
       },
@@ -451,15 +460,6 @@
       "hiddenActivities": [
         "dragonsWrathCritical"
       ]
-    },
-    "dnd5e": {
-      "persistSourceMigration": true,
-      "riders": {
-        "activity": [
-          "SGlACkJ3w5E7YiGu"
-        ],
-        "effect": []
-      }
     }
   },
   "effects": [],

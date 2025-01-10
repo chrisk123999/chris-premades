@@ -52,18 +52,19 @@
           "parts": [
             {
               "custom": {
-                "enabled": true,
-                "formula": "4d10[piercing]"
+                "enabled": false,
+                "formula": ""
               },
-              "number": null,
-              "denomination": 0,
+              "number": 4,
+              "denomination": 10,
               "bonus": "",
               "types": [
                 "piercing"
               ],
               "scaling": {
                 "mode": "whole",
-                "number": 1
+                "number": 1,
+                "formula": ""
               }
             }
           ],
@@ -84,7 +85,9 @@
         "useConditionText": "",
         "forceDialog": false,
         "effectConditionText": "",
-        "name": ""
+        "name": "",
+        "img": "",
+        "appliedEffects": []
       },
       "6Q8rEpqAk3JFHh95": {
         "type": "save",
@@ -140,18 +143,19 @@
           "parts": [
             {
               "custom": {
-                "enabled": true,
-                "formula": "4d10[piercing]"
+                "enabled": false,
+                "formula": ""
               },
-              "number": null,
-              "denomination": 0,
+              "number": 4,
+              "denomination": 10,
               "bonus": "",
               "types": [
                 "piercing"
               ],
               "scaling": {
                 "mode": "whole",
-                "number": 1
+                "number": 1,
+                "formula": ""
               }
             }
           ],
@@ -173,7 +177,9 @@
         "forceDialog": false,
         "effectConditionText": "",
         "name": "Insect Plague: Damage",
-        "_id": "6Q8rEpqAk3JFHh95"
+        "_id": "6Q8rEpqAk3JFHh95",
+        "img": "",
+        "appliedEffects": []
       }
     },
     "uses": {
@@ -300,7 +306,7 @@
       ],
       "info": {
         "identifier": "insectPlague",
-        "version": "1.1.0",
+        "version": "1.1.10",
         "source": "chris-premades"
       },
       "macros": {

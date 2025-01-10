@@ -154,11 +154,11 @@
           "parts": [
             {
               "custom": {
-                "enabled": true,
-                "formula": "1d12[necrotic]"
+                "enabled": false,
+                "formula": ""
               },
-              "number": null,
-              "denomination": 0,
+              "number": 1,
+              "denomination": 12,
               "bonus": "",
               "types": [
                 "necrotic"
@@ -187,7 +187,8 @@
         "effectConditionText": "",
         "midiAutomationOnly": false,
         "name": "Shadowy Tendrils",
-        "img": "icons/magic/fire/projectile-wave-arrow.webp"
+        "img": "icons/magic/fire/projectile-wave-arrow.webp",
+        "appliedEffects": []
       },
       "eGE1kqW2n2aYFV6n": {
         "type": "utility",
@@ -310,11 +311,11 @@
           "parts": [
             {
               "custom": {
-                "enabled": true,
-                "formula": "1d6[force]"
+                "enabled": false,
+                "formula": ""
               },
-              "number": null,
-              "denomination": 0,
+              "number": 1,
+              "denomination": 6,
               "bonus": "",
               "types": [
                 "force"
@@ -330,7 +331,8 @@
         "effectConditionText": "",
         "midiAutomationOnly": false,
         "name": "Retribution",
-        "img": "icons/magic/fire/projectile-wave-arrow.webp"
+        "img": "icons/magic/fire/projectile-wave-arrow.webp",
+        "appliedEffects": []
       },
       "neBFHkmgFVJTEtwu": {
         "type": "save",
@@ -393,11 +395,11 @@
           "parts": [
             {
               "custom": {
-                "enabled": true,
-                "formula": "1d6[radiant]"
+                "enabled": false,
+                "formula": ""
               },
-              "number": null,
-              "denomination": 0,
+              "number": 1,
+              "denomination": 6,
               "bonus": "",
               "types": [
                 "radiant"
@@ -426,7 +428,10 @@
         "effectConditionText": "",
         "midiAutomationOnly": false,
         "name": "Bolt of Light",
-        "img": "icons/magic/fire/projectile-wave-arrow.webp"
+        "img": "icons/magic/fire/projectile-wave-arrow.webp",
+        "appliedEffects": [
+          "fAzprZz9S9blPq9k"
+        ]
       },
       "AhhrRuNJ9GFV9368": {
         "type": "utility",
@@ -569,7 +574,7 @@
     "chris-premades": {
       "info": {
         "name": "Wild Surge",
-        "version": "1.1.0",
+        "version": "1.1.10",
         "identifier": "wildSurge",
         "source": "chris-premades"
       },

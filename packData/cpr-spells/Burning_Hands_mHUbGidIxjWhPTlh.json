@@ -109,11 +109,11 @@
           "parts": [
             {
               "custom": {
-                "enabled": true,
-                "formula": "3d6[fire]"
+                "enabled": false,
+                "formula": ""
               },
-              "number": null,
-              "denomination": null,
+              "number": 3,
+              "denomination": 6,
               "bonus": "",
               "types": [
                 "fire"
@@ -142,7 +142,9 @@
         "useConditionText": "",
         "forceDialog": false,
         "effectConditionText": "",
-        "name": ""
+        "name": "",
+        "img": "",
+        "appliedEffects": []
       }
     },
     "identifier": "burning-hands",
@@ -209,7 +211,7 @@
       },
       "info": {
         "name": "Burning Hands",
-        "version": "1.1.0",
+        "version": "1.1.10",
         "hasAnimation": true,
         "identifier": "burningHands",
         "source": "chris-premades"

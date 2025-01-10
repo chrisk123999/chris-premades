@@ -108,20 +108,20 @@
           "onSave": "half",
           "parts": [
             {
-              "number": null,
-              "denomination": null,
+              "custom": {
+                "enabled": false,
+                "formula": ""
+              },
+              "number": 3,
+              "denomination": 8,
               "bonus": "",
               "types": [
                 "cold"
               ],
-              "custom": {
-                "enabled": true,
-                "formula": "3d8[cold]"
-              },
               "scaling": {
                 "mode": "whole",
-                "number": null,
-                "formula": "1d8"
+                "number": 1,
+                "formula": ""
               }
             }
           ],
@@ -141,7 +141,10 @@
         "sort": 0,
         "useConditionText": "",
         "forceDialog": false,
-        "effectConditionText": ""
+        "effectConditionText": "",
+        "name": "",
+        "img": "",
+        "appliedEffects": []
       }
     },
     "identifier": "rimes-binding-ice",
@@ -196,13 +199,14 @@
         }
       },
       "riders": {
-        "activity": []
+        "activity": [],
+        "effect": []
       }
     },
     "chris-premades": {
       "info": {
         "name": "Rime's Binding Ice",
-        "version": "1.1.0",
+        "version": "1.1.10",
         "hasAnimation": true,
         "identifier": "rimesBindingIce",
         "source": "chris-premades"

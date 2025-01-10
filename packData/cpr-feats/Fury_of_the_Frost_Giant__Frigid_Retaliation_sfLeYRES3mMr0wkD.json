@@ -106,12 +106,12 @@
           "parts": [
             {
               "custom": {
-                "enabled": true,
-                "formula": "1d8[cold] + @prof"
+                "enabled": false,
+                "formula": ""
               },
-              "number": null,
-              "denomination": null,
-              "bonus": "",
+              "number": 1,
+              "denomination": 8,
+              "bonus": "@prof",
               "types": [
                 "cold"
               ],
@@ -138,7 +138,11 @@
         "forceDialog": false,
         "effectConditionText": "",
         "midiAutomationOnly": false,
-        "name": ""
+        "name": "",
+        "img": "",
+        "appliedEffects": [
+          "0oe8b96umreEOr3p"
+        ]
       }
     },
     "identifier": "fury-of-the-frost-giant-frigid-retaliation",
@@ -191,7 +195,7 @@
     "chris-premades": {
       "info": {
         "name": "Fury of the Frost Giant: Frigid Retaliation",
-        "version": "1.1.0",
+        "version": "1.1.10",
         "identifier": "frigidRetaliation",
         "source": "chris-premades"
       }

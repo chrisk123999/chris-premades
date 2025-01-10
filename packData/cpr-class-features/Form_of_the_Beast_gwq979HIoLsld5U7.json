@@ -98,12 +98,12 @@
           "parts": [
             {
               "custom": {
-                "enabled": true,
-                "formula": "1d8[piercing] + @mod"
+                "enabled": false,
+                "formula": ""
               },
-              "number": null,
-              "denomination": 0,
-              "bonus": "",
+              "number": 1,
+              "denomination": 8,
+              "bonus": "@mod",
               "types": [
                 "piercing"
               ],
@@ -121,7 +121,8 @@
         "ammunition": "",
         "otherActivityId": "none",
         "name": "Form of the Beast: Bite",
-        "img": "icons/commodities/biological/mouth-toothed-purple.webp"
+        "img": "icons/commodities/biological/mouth-toothed-purple.webp",
+        "appliedEffects": []
       },
       "CK1hfWjNaegnj7qR": {
         "type": "attack",
@@ -195,12 +196,12 @@
           "parts": [
             {
               "custom": {
-                "enabled": true,
-                "formula": "1d6[slashing] + @mod"
+                "enabled": false,
+                "formula": ""
               },
-              "number": null,
-              "denomination": 0,
-              "bonus": "",
+              "number": 1,
+              "denomination": 6,
+              "bonus": "@mod",
               "types": [
                 "slashing"
               ],
@@ -218,7 +219,8 @@
         "ammunition": "",
         "otherActivityId": "none",
         "name": "Form of the Beast: Claws",
-        "img": "icons/commodities/claws/claws-white.webp"
+        "img": "icons/commodities/claws/claws-white.webp",
+        "appliedEffects": []
       },
       "uOVU6kpBIbak8XD7": {
         "type": "attack",
@@ -292,12 +294,12 @@
           "parts": [
             {
               "custom": {
-                "enabled": true,
-                "formula": "1d8[piercing] + @mod"
+                "enabled": false,
+                "formula": ""
               },
-              "number": null,
-              "denomination": 0,
-              "bonus": "",
+              "number": 1,
+              "denomination": 8,
+              "bonus": "@mod",
               "types": [
                 "piercing"
               ],
@@ -315,7 +317,8 @@
         "ammunition": "",
         "otherActivityId": "none",
         "name": "Form of the Beast: Tail",
-        "img": "icons/creatures/abilities/cougar-pounce-stalk-black.webp"
+        "img": "icons/creatures/abilities/cougar-pounce-stalk-black.webp",
+        "appliedEffects": []
       },
       "0P2nqXfUJj6WtOTj": {
         "type": "utility",
@@ -453,7 +456,7 @@
     "chris-premades": {
       "info": {
         "name": "Form of the Beast",
-        "version": "1.1.0",
+        "version": "1.1.10",
         "identifier": "formOfTheBeast",
         "source": "chris-premades"
       },

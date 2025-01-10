@@ -111,11 +111,11 @@
           "parts": [
             {
               "custom": {
-                "enabled": true,
-                "formula": "2d6[bludgeoning]"
+                "enabled": false,
+                "formula": ""
               },
-              "number": null,
-              "denomination": null,
+              "number": 2,
+              "denomination": 6,
               "bonus": "",
               "types": [
                 "bludgeoning"
@@ -146,7 +146,8 @@
         "effectConditionText": "",
         "midiAutomationOnly": false,
         "name": "Storm Sphere",
-        "img": "icons/commodities/gems/pearl-storm.webp"
+        "img": "icons/commodities/gems/pearl-storm.webp",
+        "appliedEffects": []
       },
       "8zgZWh9C72Z7vUq7": {
         "type": "attack",
@@ -220,18 +221,19 @@
           "parts": [
             {
               "custom": {
-                "enabled": true,
-                "formula": "4d6[lightning]"
+                "enabled": false,
+                "formula": ""
               },
-              "number": null,
-              "denomination": 0,
+              "number": 4,
+              "denomination": 6,
               "bonus": "",
               "types": [
                 "lightning"
               ],
               "scaling": {
                 "mode": "whole",
-                "number": 1
+                "number": 1,
+                "formula": ""
               }
             }
           ]
@@ -244,7 +246,8 @@
         "ammunition": "",
         "otherActivityId": "none",
         "name": "Storm Sphere: Bolt",
-        "img": "icons/commodities/gems/pearl-storm.webp"
+        "img": "icons/commodities/gems/pearl-storm.webp",
+        "appliedEffects": []
       },
       "9dMhkPkA8Se7z0gF": {
         "type": "save",
@@ -301,18 +304,19 @@
           "parts": [
             {
               "custom": {
-                "enabled": true,
-                "formula": "2d6[bludgeoning]"
+                "enabled": false,
+                "formula": ""
               },
-              "number": null,
-              "denomination": 0,
+              "number": 2,
+              "denomination": 6,
               "bonus": "",
               "types": [
                 "bludgeoning"
               ],
               "scaling": {
                 "mode": "whole",
-                "number": 1
+                "number": 1,
+                "formula": ""
               }
             }
           ],
@@ -335,7 +339,8 @@
         "effectConditionText": "",
         "midiAutomationOnly": false,
         "name": "Storm Sphere: Turn",
-        "img": "icons/commodities/gems/pearl-storm.webp"
+        "img": "icons/commodities/gems/pearl-storm.webp",
+        "appliedEffects": []
       }
     },
     "identifier": "storm-sphere",
@@ -414,7 +419,7 @@
     "chris-premades": {
       "info": {
         "name": "Storm Sphere",
-        "version": "1.1.0",
+        "version": "1.1.10",
         "hasAnimation": true,
         "identifier": "stormSphere",
         "source": "chris-premades"

@@ -89,11 +89,11 @@
           "parts": [
             {
               "custom": {
-                "enabled": true,
-                "formula": "2d6[psychic]"
+                "enabled": false,
+                "formula": ""
               },
-              "number": null,
-              "denomination": null,
+              "number": 2,
+              "denomination": 6,
               "bonus": "",
               "types": [
                 "psychic"

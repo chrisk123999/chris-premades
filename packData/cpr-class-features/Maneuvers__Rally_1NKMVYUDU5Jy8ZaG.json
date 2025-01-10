@@ -92,7 +92,7 @@
           ],
           "custom": {
             "enabled": true,
-            "formula": "@scale.battle-master.combat-superiority-die[temphp] + @abilities.cha.mod"
+            "formula": "@scale.battle-master.combat-superiority-die.die + @abilities.cha.mod"
           },
           "scaling": {
             "number": 1
@@ -159,7 +159,7 @@
     "chris-premades": {
       "info": {
         "name": "Maneuvers: Rally",
-        "version": "1.1.0",
+        "version": "1.1.10",
         "identifier": "maneuversRally",
         "source": "chris-premades"
       }

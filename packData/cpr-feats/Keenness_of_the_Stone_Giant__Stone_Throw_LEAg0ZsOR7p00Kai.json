@@ -118,11 +118,11 @@
           "parts": [
             {
               "custom": {
-                "enabled": true,
-                "formula": "1d10[force]"
+                "enabled": false,
+                "formula": ""
               },
-              "number": null,
-              "denomination": null,
+              "number": 1,
+              "denomination": 10,
               "bonus": "",
               "types": [
                 "force"
@@ -141,7 +141,9 @@
         "attackMode": "",
         "ammunition": "",
         "otherActivityId": "dnd5eactivity100",
-        "name": ""
+        "name": "",
+        "img": "",
+        "appliedEffects": []
       },
       "dnd5eactivity100": {
         "_id": "dnd5eactivity100",
@@ -290,7 +292,7 @@
     "chris-premades": {
       "info": {
         "name": "Keenness of the Stone Giant: Stone Throw",
-        "version": "1.1.0",
+        "version": "1.1.10",
         "identifier": "stoneThrow",
         "source": "chris-premades"
       }

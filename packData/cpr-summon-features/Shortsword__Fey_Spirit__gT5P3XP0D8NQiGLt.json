@@ -55,15 +55,15 @@
         }
       },
       "base": {
-        "number": null,
-        "denomination": null,
-        "bonus": "",
+        "number": 1,
+        "denomination": 6,
+        "bonus": "3",
         "types": [
           "piercing"
         ],
         "custom": {
-          "enabled": true,
-          "formula": "1d6[piercing] + 3"
+          "enabled": false,
+          "formula": ""
         },
         "scaling": {
           "mode": "",
@@ -120,7 +120,7 @@
         "duration": {
           "concentration": false,
           "value": "",
-          "units": "",
+          "units": "inst",
           "special": "",
           "override": false
         },
@@ -173,20 +173,18 @@
           "includeBase": true,
           "parts": [
             {
-              "number": null,
-              "denomination": null,
+              "custom": {
+                "enabled": false,
+                "formula": ""
+              },
+              "number": 1,
+              "denomination": 6,
               "bonus": "",
               "types": [
                 "force"
               ],
-              "custom": {
-                "enabled": true,
-                "formula": "1d6[force]"
-              },
               "scaling": {
-                "mode": "whole",
-                "number": null,
-                "formula": ""
+                "number": 1
               }
             }
           ]
@@ -198,11 +196,15 @@
         "midiAutomationOnly": false,
         "attackMode": "oneHanded",
         "ammunition": "",
-        "otherActivityId": "none"
+        "otherActivityId": "none",
+        "name": "",
+        "img": "",
+        "appliedEffects": []
       }
     },
     "identifier": "shortsword-fey-spirit",
-    "ammunition": {}
+    "ammunition": {},
+    "mastery": ""
   },
   "effects": [],
   "flags": {
@@ -213,7 +215,11 @@
       "rollAttackPerTarget": "default",
       "removeAttackDamageButtons": "default",
       "itemCondition": "",
-      "effectCondition": ""
+      "effectCondition": "",
+      "AoETargetType": "any",
+      "autoTarget": "default",
+      "reactionCondition": "",
+      "otherCondition": ""
     },
     "midiProperties": {
       "nodam": false,
@@ -240,7 +246,11 @@
       "sourceId": "Item.bymFW6pdZ1O5ycHm"
     },
     "dnd5e": {
-      "persistSourceMigration": true
+      "persistSourceMigration": true,
+      "riders": {
+        "activity": [],
+        "effect": []
+      }
     }
   },
   "folder": "ojrTS3JcYt8jOGvx",

@@ -60,15 +60,15 @@
         }
       },
       "base": {
-        "number": null,
-        "denomination": null,
+        "number": 1,
+        "denomination": 6,
         "bonus": "",
         "types": [
           "piercing"
         ],
         "custom": {
-          "enabled": true,
-          "formula": "1d6[piercing]"
+          "enabled": false,
+          "formula": ""
         },
         "scaling": {
           "mode": "",
@@ -180,11 +180,11 @@
           "parts": [
             {
               "custom": {
-                "enabled": true,
-                "formula": "1d8[radiant]"
+                "enabled": false,
+                "formula": ""
               },
-              "number": null,
-              "denomination": null,
+              "number": 1,
+              "denomination": 8,
               "bonus": "",
               "types": [
                 "radiant"
@@ -389,13 +389,23 @@
       "idv": false,
       "ida": false
     },
+    "dnd5e": {
+      "persistSourceMigration": true,
+      "migratedUses": 3,
+      "riders": {
+        "activity": [
+          "3eHCHewIu1mhc96E"
+        ],
+        "effect": []
+      }
+    },
     "chris-premades": {
       "equipment": {
         "identifier": "crystalBlade"
       },
       "info": {
         "name": "Crystal Shortsword",
-        "version": "1.1.0",
+        "version": "1.1.10",
         "identifier": "crystalBladeShortsword",
         "source": "chris-premades"
       },
@@ -413,16 +423,6 @@
         "crystalBlade": "dnd5eactivity000",
         "crystalBladeHeal": "3eHCHewIu1mhc96E",
         "crystalBladeLight": "hKH1Ji3DlFCHFmdc"
-      }
-    },
-    "dnd5e": {
-      "persistSourceMigration": true,
-      "migratedUses": 3,
-      "riders": {
-        "activity": [
-          "3eHCHewIu1mhc96E"
-        ],
-        "effect": []
       }
     }
   },

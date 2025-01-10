@@ -43,6 +43,7 @@
             {
               "type": "itemUses",
               "value": "1",
+              "target": "",
               "scaling": {}
             }
           ]
@@ -82,14 +83,14 @@
           "max": ""
         },
         "healing": {
-          "number": null,
-          "denomination": "",
+          "number": 1,
+          "denomination": "6",
           "types": [
             "healing"
           ],
           "custom": {
-            "enabled": true,
-            "formula": "1d6[healing]"
+            "enabled": false,
+            "formula": ""
           },
           "scaling": {
             "number": 1

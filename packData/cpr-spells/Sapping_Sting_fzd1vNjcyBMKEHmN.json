@@ -108,16 +108,16 @@
           "onSave": "none",
           "parts": [
             {
-              "number": null,
-              "denomination": null,
+              "custom": {
+                "enabled": false,
+                "formula": ""
+              },
+              "number": 1,
+              "denomination": 4,
               "bonus": "",
               "types": [
                 "necrotic"
               ],
-              "custom": {
-                "enabled": true,
-                "formula": "1d4[necrotic]"
-              },
               "scaling": {
                 "mode": "whole",
                 "number": 1,
@@ -141,7 +141,10 @@
         "sort": 0,
         "useConditionText": "",
         "forceDialog": false,
-        "effectConditionText": ""
+        "effectConditionText": "",
+        "name": "",
+        "img": "",
+        "appliedEffects": []
       }
     },
     "identifier": "sapping-sting",
@@ -205,7 +208,7 @@
     "chris-premades": {
       "info": {
         "name": "Sapping Sting",
-        "version": "1.1.0",
+        "version": "1.1.10",
         "identifier": "sappingSting",
         "source": "chris-premades"
       },

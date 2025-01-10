@@ -116,12 +116,12 @@
           "parts": [
             {
               "custom": {
-                "enabled": true,
-                "formula": "1d6[slashing] + @mod"
+                "enabled": false,
+                "formula": ""
               },
-              "number": null,
-              "denomination": null,
-              "bonus": "",
+              "number": 1,
+              "denomination": 6,
+              "bonus": "@mod",
               "types": [
                 "slashing"
               ],
@@ -139,7 +139,9 @@
         "attackMode": "",
         "ammunition": "",
         "otherActivityId": "none",
-        "name": ""
+        "name": "",
+        "img": "",
+        "appliedEffects": []
       }
     },
     "identifier": "hungry-jaws",
@@ -187,7 +189,7 @@
     "chris-premades": {
       "info": {
         "name": "Hungry Jaws",
-        "version": "1.1.0",
+        "version": "1.1.10",
         "identifier": "hungryJaws",
         "source": "chris-premades"
       },

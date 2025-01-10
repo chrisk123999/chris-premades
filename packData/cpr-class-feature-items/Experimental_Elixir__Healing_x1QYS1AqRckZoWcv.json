@@ -80,6 +80,7 @@
             {
               "type": "itemUses",
               "value": "1",
+              "target": "",
               "scaling": {}
             }
           ]
@@ -119,14 +120,14 @@
           "max": ""
         },
         "healing": {
-          "number": null,
-          "denomination": 0,
+          "number": 2,
+          "denomination": "4",
           "types": [
             "healing"
           ],
           "custom": {
-            "enabled": true,
-            "formula": "2d4[healing]"
+            "enabled": false,
+            "formula": ""
           },
           "scaling": {
             "number": 1
@@ -137,7 +138,9 @@
         "forceDialog": false,
         "effectConditionText": "",
         "midiAutomationOnly": false,
-        "name": ""
+        "name": "",
+        "img": "",
+        "appliedEffects": []
       },
       "DZgOrxdYWLzYFZfS": {
         "type": "heal",
@@ -191,14 +194,14 @@
           "max": ""
         },
         "healing": {
-          "number": null,
-          "denomination": 0,
+          "number": 2,
+          "denomination": "6",
           "types": [
             "temphp"
           ],
           "custom": {
-            "enabled": true,
-            "formula": "0"
+            "enabled": false,
+            "formula": ""
           },
           "scaling": {
             "number": 1
@@ -209,7 +212,9 @@
         "forceDialog": false,
         "effectConditionText": "",
         "midiAutomationOnly": false,
-        "name": ""
+        "name": "",
+        "img": "",
+        "appliedEffects": []
       }
     },
     "identifier": "experimental-elixir-healing",

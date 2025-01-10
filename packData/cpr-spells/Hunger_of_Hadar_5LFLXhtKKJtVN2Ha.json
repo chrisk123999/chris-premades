@@ -176,11 +176,11 @@
           "parts": [
             {
               "custom": {
-                "enabled": true,
-                "formula": "2d6[cold]"
+                "enabled": false,
+                "formula": ""
               },
-              "number": null,
-              "denomination": 0,
+              "number": 2,
+              "denomination": 6,
               "bonus": "",
               "types": [
                 "cold"
@@ -195,7 +195,9 @@
         "useConditionText": "",
         "forceDialog": false,
         "effectConditionText": "",
-        "name": "Hunger of Hadar: Cold"
+        "name": "Hunger of Hadar: Cold",
+        "img": "",
+        "appliedEffects": []
       },
       "w7SvOc1YLH8F3fja": {
         "type": "save",
@@ -252,11 +254,11 @@
           "parts": [
             {
               "custom": {
-                "enabled": true,
-                "formula": "2d6[acid]"
+                "enabled": false,
+                "formula": ""
               },
-              "number": null,
-              "denomination": 0,
+              "number": 2,
+              "denomination": 6,
               "bonus": "",
               "types": [
                 "acid"
@@ -284,7 +286,9 @@
         "useConditionText": "",
         "forceDialog": false,
         "effectConditionText": "",
-        "name": "Hunger of Hadar: Tentacles"
+        "name": "Hunger of Hadar: Tentacles",
+        "img": "",
+        "appliedEffects": []
       }
     },
     "identifier": "hunger-of-hadar",
@@ -353,7 +357,7 @@
     "chris-premades": {
       "info": {
         "name": "Hunger of Hadar",
-        "version": "1.1.0",
+        "version": "1.1.10",
         "identifier": "hungerOfHadar",
         "source": "chris-premades"
       },

@@ -109,13 +109,13 @@
           "max": ""
         },
         "healing": {
-          "number": null,
-          "denomination": 0,
+          "number": 2,
+          "denomination": "6",
           "types": [
             "temphp"
           ],
           "custom": {
-            "enabled": true,
+            "enabled": false,
             "formula": "0"
           },
           "scaling": {
@@ -127,7 +127,9 @@
         "forceDialog": false,
         "effectConditionText": "",
         "midiAutomationOnly": false,
-        "name": ""
+        "name": "",
+        "img": "",
+        "appliedEffects": []
       },
       "kVdScT5Wrds0Jo8Q": {
         "type": "utility",
