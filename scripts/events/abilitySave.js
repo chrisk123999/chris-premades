@@ -197,6 +197,7 @@ async function rollSave(wrapped, config, dialog = {}, message = {}) {
         }
     }
     let messageData;
+    let rollMode;
     let messageDataFunc = (config, dialog, message) => {
         let actor = config.subject;
         let saveIdInternal = config.ability;
@@ -206,6 +207,7 @@ async function rollSave(wrapped, config, dialog = {}, message = {}) {
         }
         messageData = message.data;
         if (overtimeActorUuid) messageData['flags.midi-qol.overtimeActorUuid'] = overtimeActorUuid;
+        rollMode = message.rollMode ?? game.settings.get('core', 'rollMode');
     };
     Hooks.once('dnd5e.preRollSavingThrowV2', messageDataFunc);
     if (Object.entries(options).length) config.rolls = [{options}];
@@ -220,7 +222,7 @@ async function rollSave(wrapped, config, dialog = {}, message = {}) {
         genericUtils.mergeObject(messageData, {flags: options.flags ?? {} });
         genericUtils.setProperty(messageData, 'flags.midi-qol.lmrtfy.requestId', options.flags?.lmrtfy?.data?.requestId);
         messageData.template = 'modules/midi-qol/templates/roll-base.html';
-        await returnData.toMessage(messageData, {rollMode: returnData.options?.rollMode ?? message.rollMode ?? game.settings.get('core', 'rollMode')});
+        await returnData.toMessage(messageData, {rollMode: returnData.options?.rollMode ?? rollMode});
     }
     return shouldBeArray ? [returnData] : returnData;
 }

@@ -1,4 +1,6 @@
 # 1.1.10 Release:
+## Bug Fixes:
+- Ability Saves & Checks
 ## Update Notes:
 - Changed a ton of items' damage formulae to not be "custom," instead using the number/denomination/bonus format
 
