@@ -24,10 +24,7 @@ async function use({workflow}) {
             diceNum = 5;
     }
     let damageType = itemUtils.getConfig(workflow.item, 'damageType');
-    featureData.system.damage.base.custom = {
-        enabled: true,
-        formula: diceNum + 'd8[' + damageType + ']'
-    };
+    featureData.system.damage.base.number = diceNum;
     featureData.system.damage.base.types = [damageType];
     let effectData = {
         name: workflow.item.name,

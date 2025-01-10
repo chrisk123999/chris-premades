@@ -10,7 +10,7 @@ async function use({trigger, workflow}) {
 }
 export let hoardMimicPseudopod = {
     name: 'Pseudopod',
-    version: '1.1.0',
+    version: '1.1.10',
     midi: {
         item: [
             {

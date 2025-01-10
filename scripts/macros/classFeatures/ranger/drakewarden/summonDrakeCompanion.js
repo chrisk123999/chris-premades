@@ -29,27 +29,14 @@ async function use({workflow}) {
     let scale = 0.8;
     let heightWidth = 1;
     let biteActivityId = Object.keys(biteData.system.activities)[0];
-    switch (drakeUpgrades) {
-        case 1:
-            biteData.system.activities[biteActivityId].damage.parts.push({
-                custom: {
-                    enabled: true,
-                    formula: '1d6[' + damageType + ']'
-                },
-                types: [damageType]
-            });
-            scale = 1;
-            break;
-        case 2:
-            biteData.system.activities[biteActivityId].damage.parts.push({
-                custom: {
-                    enabled: true,
-                    formula: '2d6[' + damageType + ']'
-                },
-                types: [damageType]
-            });
-            scale = 1;
-            heightWidth = 2;
+    if (drakeUpgrades) {
+        biteData.system.activities[biteActivityId].damage.parts.push({
+            number: drakeUpgrades,
+            denomination: 6,
+            types: [damageType]
+        });
+        scale = 1;
+        heightWidth = drakeUpgrades;
     }
     let hpValue = 5 + (classLevel * 5);
     let name = itemUtils.getConfig(workflow.item, damageType + 'Name');

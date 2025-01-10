@@ -1,6 +1,6 @@
 export let monkUnarmedStrike = {
     name: 'Unarmed Strike (Monk)',
-    version: '1.1.0',
+    version: '1.1.10',
     ddbi: {
         restrictedItems: {
             'Unarmed Strike': {

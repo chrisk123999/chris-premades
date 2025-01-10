@@ -106,7 +106,7 @@ async function damage({workflow, ditem}) {
 }
 export let lightningLure = {
     name: 'Lightning Lure',
-    version: '1.1.0',
+    version: '1.1.10',
     hasAnimation: true,
     midi: {
         item: [

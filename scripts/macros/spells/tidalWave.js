@@ -7,7 +7,7 @@ async function proneOnFailMacro({workflow}) {
 }
 export let tidalWave = {
     name: 'Tidal Wave',
-    version: '1.1.0',
+    version: '1.1.10',
     midi: {
         item: [
             {

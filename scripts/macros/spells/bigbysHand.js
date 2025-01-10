@@ -25,19 +25,16 @@ async function use({workflow}) {
         spellAttackBonus = Math.max(spellAttackBonus.total, 13);
     }
     let clenchedActivityId = Object.keys(clenchedFistData.system.activities)[0];
-    clenchedFistData.system.activities[clenchedActivityId].damage.parts[0].custom = {
-        enabled: true,
-        formula: (4 + damageScale) + 'd8[' + damageType + ']' 
-    };
-    clenchedFistData.system.activities[clenchedActivityId].damage.types = [damageType];
+    let clenchDamagePart = clenchedFistData.system.activities[clenchedActivityId].damage.parts[0];
+    clenchDamagePart.number = 4 + damageScale;
+    clenchDamagePart.types = [damageType];
     clenchedFistData.system.activities[clenchedActivityId].attack.flat = true;
     clenchedFistData.system.activities[clenchedActivityId].attack.bonus = casterSpellMod + ' + ' + spellAttackBonus;
     forcefulHandData.name = forcefulHandData.name + ' (' + ((casterSpellMod * 5) + 5) + ' ' + genericUtils.translate('CHRISPREMADES.Units.Feet') + ')';
     let crushActivityId = Object.entries(graspingHandData.system.activities).find(i => i[1].type === 'damage')[0];
-    graspingHandData.system.activities[crushActivityId].damage.parts[0].custom = {
-        enabled: true,
-        formula: (2 + damageScale) + 'd6[bludgeoning] + ' + casterSpellMod
-    };
+    let crushDamagePart = graspingHandData.system.activities[crushActivityId].damage.parts[0];
+    crushDamagePart.number = 2 + damageScale;
+    crushDamagePart.bonus = casterSpellMod;
     let name = itemUtils.getConfig(workflow.item, 'name');
     if (!name?.length) name = 'Bigby\'s Hand';
     let hpFormula = workflow.actor.system.attributes.hp.max;

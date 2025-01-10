@@ -26,17 +26,17 @@ export let dragonsWrath = {
 };
 export let dragonsWrath0 = {
     name: 'Dragon\'s Wrath Weapon (Slumbering)',
-    version: '1.1.0'
+    version: '1.1.10'
 };
 export let dragonsWrath1 = {
     name: 'Dragon\'s Wrath Weapon (Stirring)',
-    version: '1.1.0'
+    version: '1.1.10'
 };
 export let dragonsWrath2 = {
     name: 'Dragon\'s Wrath Weapon (Wakened)',
-    version: '1.1.0'
+    version: '1.1.10'
 };
 export let dragonsWrath3 = {
     name: 'Dragon\'s Wrath Weapon (Ascendant)',
-    version: '1.1.0'
+    version: '1.1.10'
 };

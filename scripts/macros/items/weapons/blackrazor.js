@@ -55,7 +55,7 @@ async function onHit({trigger: {entity: effect}}) {
 }
 export let blackrazor = {
     name: 'Blackrazor',
-    version: '1.1.0',
+    version: '1.1.10',
     midi: {
         item: [
             {

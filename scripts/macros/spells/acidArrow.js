@@ -24,7 +24,7 @@ async function damage({trigger, workflow}) {
 }
 export let acidArrow = {
     name: 'Melf\'s Acid Arrow',
-    version: '1.1.0',
+    version: '1.1.10',
     hasAnimation: true,
     midi: {
         item: [

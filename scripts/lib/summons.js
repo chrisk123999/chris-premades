@@ -151,8 +151,12 @@ export class Summons {
         let damagingActivityIds = Object.entries(documentData.system.activities).filter(i => i[1].damage).map(i => i[0]);
         if (damageBonus) {
             for (let activityId of damagingActivityIds) {
-                documentData.system.activities[activityId].damage.parts[0].custom.enabled = true;
-                documentData.system.activities[activityId].damage.parts[0].custom.formula += ' + ' + damageBonus;
+                let damagePart = documentData.system.activities[activityId].damage.parts[0];
+                if (damagePart.custom.enabled) {
+                    damagePart.custom.formula += ' + ' + damageBonus;
+                } else {
+                    documentData.system.activities[activityId].damage.parts[0].bonus += ' + ' + damageBonus;
+                }
             }
         }
         if (damageFlat) {

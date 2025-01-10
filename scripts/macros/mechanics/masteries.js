@@ -28,19 +28,12 @@ async function cleave({workflow}) {
         let itemData = workflow.item.toObject();
         delete itemData._id;
         itemData.system.activities[workflow.activity.id].damage.parts.push({
-            custom: {
-                enabled: true,
-                formula: '-@mod'
-            },
             number: null,
             denomination: 0,
-            bonus: '',
+            bonus: '-@mod',
             types: [
                 workflow.defaultDamageType
-            ],
-            scaling: {
-                number: 1
-            }
+            ]
         });
         genericUtils.setProperty(itemData, 'flags.chris-premades.cleaveMastery', true);
         await workflowUtils.syntheticItemDataRoll(itemData, workflow.actor, [selection]);

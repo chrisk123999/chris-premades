@@ -32,7 +32,7 @@ async function damage({trigger, workflow, ditem}) {
 }
 export let witherAndBloom = {
     name: 'Wither and Bloom',
-    version: '1.1.0',
+    version: '1.1.10',
     midi: {
         item: [
             {

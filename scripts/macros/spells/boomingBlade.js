@@ -21,10 +21,8 @@ async function use({workflow}) {
         let attackId = selectedWeapon.system.activities.getByType('attack')?.[0]?.id;
         if (!attackId) return;
         weaponData.system.activities[attackId].damage.parts.push({
-            custom: {
-                enabled: true,
-                formula: diceNumber + 'd8[' + damageType + ']'
-            },
+            number: diceNumber,
+            denomination: 8,
             types: [damageType]
         });
     }
@@ -100,7 +98,7 @@ async function moved({trigger: {entity: effect}}) {
 }
 export let boomingBlade = {
     name: 'Booming Blade',
-    version: '1.1.0',
+    version: '1.1.10',
     midi: {
         item: [
             {

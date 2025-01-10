@@ -52,10 +52,11 @@ async function elixirHelper(elixirType, actor) {
         let mainActivityId = itemData.flags['chris-premades']?.activityIdentifiers.experimentalElixirMain;
         let tempActivityId = itemData.flags['chris-premades']?.activityIdentifiers.experimentalElixirHeal;
         if (elixirType === 'Healing') {
-            itemData.system.activities[mainActivityId].healing.custom.formula = '2d4[healing] + ' + actor.system.abilities.int.mod;
+            itemData.system.activities[mainActivityId].healing.bonus = actor.system.abilities.int.mod;
         }
         if ((actor.classes?.artificer?.system.levels ?? 1) >= 9) {
-            itemData.system.activities[tempActivityId].healing.custom.formula = '2d6[temphp] + ' + actor.system.abilities.int.mod;
+            itemData.system.activities[tempActivityId].healing.bonus = actor.system.activities.int.mod;
+            // itemData.system.activities[tempActivityId].healing.custom.formula = '2d6[temphp] + ' + actor.system.abilities.int.mod;
             effectUtils.addMacro(itemData, 'midi.item', ['experimentalElixirConsumable']);
         }
         await itemUtils.createItems(actor, [itemData]);

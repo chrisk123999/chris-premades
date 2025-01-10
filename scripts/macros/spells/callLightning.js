@@ -50,7 +50,7 @@ async function early({actor, config, dialog}) {
 }
 export let callLightning = {
     name: 'Call Lightning',
-    version: '1.1.0',
+    version: '1.1.10',
     midi: {
         item: [
             {

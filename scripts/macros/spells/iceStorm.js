@@ -126,7 +126,7 @@ async function early({workflow}) {
 
 export let iceStorm = {
     name: 'Ice Storm',
-    version: '1.1.0',
+    version: '1.1.10',
     hasAnimation: true,
     midi: {
         item: [

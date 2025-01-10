@@ -487,7 +487,7 @@ export let maneuversQuickToss = {
 };
 export let maneuversRally = {
     name: 'Maneuvers: Rally',
-    version: '1.1.0'
+    version: '1.1.10'
 };
 export let maneuversRiposte = {
     name: 'Maneuvers: Riposte',

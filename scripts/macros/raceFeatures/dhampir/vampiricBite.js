@@ -55,7 +55,7 @@ async function late({workflow}) {
 }
 export let vampiricBite = {
     name: 'Fanged Bite',
-    version: '1.1.0',
+    version: '1.1.10',
     midi: {
         item: [
             {

@@ -87,7 +87,7 @@ async function damageHelper(pointA, pointB, template, token, {stay, gridless} = 
 }
 export let spikeGrowth = {
     name: 'Spike Growth',
-    version: '1.1.0',
+    version: '1.1.10',
     midi: {
         item: [
             {

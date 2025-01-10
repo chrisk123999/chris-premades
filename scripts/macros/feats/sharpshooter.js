@@ -10,10 +10,12 @@ async function attack({trigger: {entity: item}, workflow}) {
     let formula = itemUtils.getConfig(item, 'formula');
     let newActivity = activityUtils.duplicateActivity(workflow.activity);
     newActivity.attack.bonus = bonus;
-    newActivity.damage.parts[0].custom = {
-        enabled: true,
-        formula: newActivity.damage.parts[0].formula + ' + ' + formula
-    };
+    let damagePart = newActivity.damage.parts[0];
+    if (damagePart.custom.enabled) {
+        damagePart.custom.formula = damagePart.formula + ' + ' + formula;
+    } else {
+        damagePart.bonus += ' + ' + formula;
+    }
     workflow.activity = newActivity;
 }
 export let sharpshooter = {

@@ -24,10 +24,7 @@ async function use({workflow}) {
     }
     let diceNumber = workflow.castData.castLevel + 1;
     let activityId = Object.keys(featureData.system.activities)[0];
-    featureData.system.activities[activityId].damage.parts[0].custom = {
-        enabled: true,
-        formula: diceNumber + 'd6[' + damageType + ']'
-    };
+    featureData.system.activities[activityId].damage.parts[0].number = diceNumber;
     featureData.system.activities[activityId].damage.parts[0].types = [damageType];
     featureData.system.activities[activityId].save.dc = {
         calculation: '',

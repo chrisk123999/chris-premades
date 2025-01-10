@@ -68,7 +68,7 @@ async function early({workflow}) {
 }
 export let fireStorm = {
     name: 'Fire Storm',
-    version: '1.1.0',
+    version: '1.1.10',
     hasAnimation: true,
     midi: {
         item: [

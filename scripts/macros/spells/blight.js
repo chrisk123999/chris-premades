@@ -132,7 +132,7 @@ async function early({workflow}) {
 }
 export let blight = {
     name: 'Blight',
-    version: '1.1.0',
+    version: '1.1.10',
     midi: {
         item: [
             {

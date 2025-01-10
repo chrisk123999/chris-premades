@@ -18,7 +18,7 @@ async function early({workflow}) {
 }
 export let massCureWounds = {
     name: 'Mass Cure Wounds',
-    version: '1.1.0',
+    version: '1.1.10',
     midi: {
         item: [
             {

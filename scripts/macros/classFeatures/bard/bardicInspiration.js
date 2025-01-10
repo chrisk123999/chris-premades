@@ -57,7 +57,7 @@ async function attack({trigger: {entity: effect}, workflow}) {
             return;
         }
         let activityId = Object.keys(featureData.system.activities)[0];
-        featureData.system.activities[activityId].damage.parts[0].custom.formula = bardResult + '[' + moteOfPotential.damageType + ']';
+        featureData.system.activities[activityId].damage.parts[0].bonus = bardResult;
         featureData.system.activities[activityId].damage.types = [moteOfPotential.damageType];
         let targets = tokenUtils.findNearby(workflow.targets.first(), 5, 'ally', {includeToken: true});
         await workflowUtils.syntheticItemDataRoll(featureData, workflow.actor, targets);

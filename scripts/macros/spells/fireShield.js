@@ -79,13 +79,8 @@ async function hit({trigger: {entity: effect}, workflow}) {
     if (!shieldType) return;
     let feature = activityUtils.getActivityByIdentifier(fromUuidSync(effect.origin), 'fireShieldDamage', {strict: true});
     if (!feature) return;
-    let newFormula = feature.damage.parts[0].formula ?? '2d6[fire]';
-    if (shieldType === 'fire') {
-        newFormula = newFormula.replaceAll('cold', 'fire');
-    } else {
-        newFormula = newFormula.replaceAll('fire', 'cold');
-    }
-    await activityUtils.setDamage(feature, newFormula, [shieldType]);
+    let newDamagePart = feature.damage.parts[0] ?? {number: 2, denomination: 6};
+    await activityUtils.setDamage(feature, newDamagePart, [shieldType]);
     feature.img = effect.img;
     await workflowUtils.syntheticActivityRoll(feature, [workflow.token]);
 }
@@ -186,7 +181,7 @@ async function early({dialog}) {
 }
 export let fireShield = {
     name: 'Fire Shield',
-    version: '1.1.0',
+    version: '1.1.10',
     hasAnimation: true,
     midi: {
         item: [

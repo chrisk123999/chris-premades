@@ -52,7 +52,7 @@ async function turnStart({trigger: {entity: effect}}) {
 }
 export let chillTouch = {
     name: 'Chill Touch',
-    version: '1.1.0',
+    version: '1.1.10',
     midi: {
         item: [
             {

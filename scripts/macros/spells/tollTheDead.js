@@ -5,12 +5,12 @@ async function use ({trigger, workflow}) {
     if (!validTargets.size) return;
     let formula = itemUtils.getConfig(workflow.item, 'formula');
     let newActivity = activityUtils.duplicateActivity(workflow.activity);
-    await activityUtils.setDamage(newActivity, formula + '[' + newActivity.damage.parts[0].types.first() + ']');
+    await activityUtils.setDamage(newActivity, formula);
     workflow.activity = newActivity;
 }
 export let tollTheDead = {
     name: 'Toll the Dead',
-    version: '1.1.0',
+    version: '1.1.10',
     midi: {
         item: [
             {

@@ -59,7 +59,7 @@ async function early({actor, config, dialog}) {
 }
 export let vampiricTouch = {
     name: 'Vampiric Touch',
-    version: '1.1.0',
+    version: '1.1.10',
     midi: {
         item: [
             {

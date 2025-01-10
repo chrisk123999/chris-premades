@@ -175,7 +175,7 @@ async function late({workflow}) {
 }
 export let spiritualWeapon = {
     name: 'Spiritual Weapon',
-    version: '1.1.0',
+    version: '1.1.10',
     midi: {
         item: [
             {

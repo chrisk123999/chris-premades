@@ -1,3 +1,7 @@
+# 1.1.10 Release:
+## Update Notes:
+- Changed a ton of items' damage formulae to not be "custom," instead using the number/denomination/bonus format
+
 # 1.1.9 Release:
 ## New Modern Rules Content:
 - Animal Friendship

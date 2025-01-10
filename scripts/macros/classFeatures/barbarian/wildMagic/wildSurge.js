@@ -117,10 +117,6 @@ async function use({workflow}) {
                 weapon = await dialogUtils.selectDocumentDialog(workflow.item.name, 'CHRISPREMADES.Macros.ElementalCleaver.SelectWeapon', weapons);
                 if (!weapon) return;
             }
-            let baseType = weapon.system.damage.base.types.first();
-            let newFormula = weapon.system.damage.base.formula.replaceAll(baseType, 'force');
-            let versatileType = weapon.system.damage.versatile.types.first();
-            let versatile = weapon.system.damage.versatile.formula.replaceAll(versatileType, 'force');
             let enchantData = {
                 name: workflow.item.name,
                 img: workflow.item.img,
@@ -133,18 +129,6 @@ async function use({workflow}) {
                         key: 'name',
                         mode: 5,
                         value: '{} (' + genericUtils.translate('CHRISPREMADES.Macros.WildSurge.MagicInfusion') + ')',
-                        priority: 20
-                    },
-                    {
-                        key: 'system.damage.base.custom.enabled',
-                        mode: 5,
-                        value: '"true"',
-                        priority: 20
-                    },
-                    {
-                        key: 'system.damage.base.custom.formula',
-                        mode: 5,
-                        value: newFormula,
                         priority: 20
                     },
                     {
@@ -173,18 +157,8 @@ async function use({workflow}) {
                     }
                 ]
             };
-            if (versatile?.length) {
+            if (weapon.isVersatile) {
                 enchantData.changes.push({
-                    key: 'system.damage.versatile.custom.enabled',
-                    mode: 5,
-                    value: '"true"',
-                    priority: 20
-                }, {
-                    key: 'system.damage.versatile.custom.formula',
-                    mode: 5,
-                    value: versatile,
-                    priority: 20
-                }, {
                     key: 'system.damage.versatile.types',
                     mode: 5,
                     value: '["force"]',
@@ -353,7 +327,7 @@ async function protectiveLights({trigger: {entity: effect, target, identifier}})
 }
 export let wildSurge = {
     name: 'Wild Surge',
-    version: '1.1.0',
+    version: '1.1.10',
     midi: {
         item: [
             {

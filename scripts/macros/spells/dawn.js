@@ -80,7 +80,7 @@ async function early({dialog}) {
 }
 export let dawn = {
     name: 'Dawn',
-    version: '1.1.0',
+    version: '1.1.10',
     midi: {
         item: [
             {

@@ -60,7 +60,7 @@ async function damage({workflow}) {
 }
 export let javelinOfLightning = {
     name: 'Javelin of Lightning',
-    version: '1.1.0',
+    version: '1.1.10',
     hasAnimation: true,
     midi: {
         item: [

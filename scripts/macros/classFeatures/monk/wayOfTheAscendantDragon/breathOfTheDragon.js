@@ -56,7 +56,7 @@ async function early({workflow}) {
     if (!selection?.buttons) return;
     let {shape, damageType, augment} = selection;
     let target = genericUtils.duplicate(workflow.activity.target.template);
-    let damageFormula = String(damageDice + (augment ? 1 : 0)) + '@scale.monk.die.die[' + damageType + ']';
+    let damageFormula = String(damageDice + (augment ? 1 : 0)) + '@scale.monk.die.die';
     let distance = augment ? 90 : 30;
     if (shape === 'cone') distance = 2 * distance / 3;
     target.units = 'ft';

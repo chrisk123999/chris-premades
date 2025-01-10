@@ -131,7 +131,7 @@ async function veryEarly({dialog}) {
 }
 export let maximiliansEarthenGrasp = {
     name: 'Maximilian\'s Earthen Grasp',
-    version: '1.1.0',
+    version: '1.1.10',
     hasAnimation: true,
     midi: {
         item: [

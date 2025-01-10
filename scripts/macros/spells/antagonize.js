@@ -63,7 +63,7 @@ async function use({workflow}) {
 }
 export let antagonize = {
     name: 'Antagonize',
-    version: '1.1.0',
+    version: '1.1.10',
     midi: {
         item: [
             {

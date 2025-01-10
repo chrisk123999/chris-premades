@@ -6,7 +6,7 @@ async function use({trigger, workflow}) {
 }
 export let thunderwave = {
     name: 'Thunderwave',
-    version: '1.1.0',
+    version: '1.1.10',
     midi: {
         item: [
             {

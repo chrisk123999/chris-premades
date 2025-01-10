@@ -1,4 +1,4 @@
-let version = '1.1.0';
+let version = '1.1.10';
 export let breathWeaponForce = {
     name: 'Breath Weapon (Force)',
     version

@@ -166,7 +166,7 @@ async function earlySea({workflow}) {
         ['DND5E.DamageBludgeoning', 'bludgeoning']
     ]);
     if (!selection) selection = 'piercing';
-    await activityUtils.setDamage(workflow.activity, workflow.activity.damage.parts[0].custom.formula.replace('none', selection), [selection]);
+    await activityUtils.setDamage(workflow.activity, {}, [selection]);
 }
 export let primalCompanion = {
     name: 'Primal Companion',

@@ -6,7 +6,7 @@ async function use({trigger, workflow}) {
     let feature = activityUtils.getActivityByIdentifier(workflow.item, 'eldritchBlastBeam', {strict: true});
     if (!feature) return;
     let agonizingBlast = itemUtils.getItemByIdentifier(workflow.actor, 'agonizingBlast');
-    if (agonizingBlast) feature.damage.parts[0].custom.formula += ' + @abilities.cha.mod';
+    if (agonizingBlast) feature.damage.parts[0].bonus += ' + @abilities.cha.mod';
     let playAnimation = itemUtils.getConfig(workflow.item, 'playAnimation');
     let color = itemUtils.getConfig(workflow.item, 'color');
     let sound = itemUtils.getConfig(workflow.item, 'sound');
@@ -47,7 +47,7 @@ async function beam({trigger, workflow}) {
 }
 export let eldritchBlast = {
     name: 'Eldritch Blast',
-    version: '1.1.0',
+    version: '1.1.10',
     hasAnimation: true,
     midi: {
         item: [

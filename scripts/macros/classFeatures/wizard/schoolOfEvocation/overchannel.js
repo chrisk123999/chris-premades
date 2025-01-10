@@ -28,14 +28,14 @@ async function late({trigger: {entity: item}, workflow}) {
     if (!item.flags['chris-premades'].overchannel?.active) return;
     await genericUtils.setFlag(item, 'chris-premades', 'overchannel.active', false);
     let timesUsed = item.flags['chris-premades'].overchannel?.timesUsed ?? 0;
-    let damageFormula;
-    if (timesUsed) damageFormula = (workflow.spellLevel * (timesUsed + 1)) + 'd12';
+    let numDice;
+    if (timesUsed) numDice = workflow.spellLevel * (timesUsed + 1);
     await item.use();
     await genericUtils.setFlag(item, 'chris-premades', 'overchannel.timesUsed', timesUsed + 1);
-    if (!damageFormula) return;
+    if (!numDice) return;
     let feature = activityUtils.getActivityByIdentifier(item, 'overchannelDamage', {strict: true});
     if (!feature) return;
-    await activityUtils.setDamage(feature, damageFormula, ['none']);
+    await activityUtils.setDamage(feature, {number: numDice, denomination: 12}, ['none']);
     await workflowUtils.syntheticActivityRoll(feature, [workflow.token]);
 }
 async function longRest({trigger: {entity: item}}) {
@@ -43,7 +43,7 @@ async function longRest({trigger: {entity: item}}) {
 }
 export let overchannel = {
     name: 'Overchannel',
-    version: '1.1.0',
+    version: '1.1.10',
     midi: {
         actor: [
             {

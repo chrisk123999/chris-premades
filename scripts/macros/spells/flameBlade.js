@@ -64,7 +64,7 @@ async function early({actor, config, dialog}) {
 }
 export let flameBlade = {
     name: 'Flame Blade',
-    version: '1.1.0',
+    version: '1.1.10',
     midi: {
         item: [
             {

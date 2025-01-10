@@ -78,13 +78,13 @@ async function use({workflow}) {
         weaponData.system.activities[attackActivityId].attack.bonus = '+3';
         effectData.changes[2].value = 3;
         effectData.changes[3].value = 3;
-        weaponData.system.damage.base.custom.formula = '1d8';
+        weaponData.system.damage.base.denomination = 8;
         delete effectData.duration;
     } else if (classLevel >= 11) {
         weaponData.system.activities[attackActivityId].attack.bonus = '+2';
         effectData.changes[2].value = 2;
         effectData.changes[3].value = 2;
-        weaponData.system.damage.base.custom.formula = '1d8';
+        weaponData.system.damage.base.denomination = 8;
     } else if (classLevel >= 7) {
         weaponData.system.activities[attackActivityId].attack.bonus = '+1';
     }

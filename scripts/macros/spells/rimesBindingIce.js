@@ -204,7 +204,7 @@ export async function unfreeze(token, name) {
 }
 export let rimesBindingIce = {
     name: 'Rime\'s Binding Ice',
-    version: '1.1.0',
+    version: '1.1.10',
     hasAnimation: true,
     midi: {
         item: [

@@ -12,7 +12,7 @@ async function damage({trigger, workflow}) {
 }
 export let minotaurGore = {
     name: 'Gore',
-    version: '1.1.0',
+    version: '1.1.10',
     midi: {
         item: [
             {

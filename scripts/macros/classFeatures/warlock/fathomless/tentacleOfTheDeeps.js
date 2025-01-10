@@ -76,8 +76,7 @@ async function early({activity, token, actor}) {
     await effectUtils.createEffect(tentacleActor, effectData, {identifier: 'tentacleOfTheDeepsAttack', parentEntity: effect});
     let classLevel = actor.classes.warlock?.system.levels ?? 1;
     let numDice = (classLevel > 9) ? 2 : 1;
-    let formula = numDice + activity.damage.parts[0].formula.slice(1);
-    await activityUtils.setDamage(activity, formula);
+    await activityUtils.setDamage(activity, {number: numDice, denomination: activity.damage.parts[0].denomination});
 }
 async function late({workflow}) {
     let effect = effectUtils.getEffectByIdentifier(workflow.actor, 'tentacleOfTheDeeps');
@@ -91,7 +90,7 @@ async function late({workflow}) {
 }
 export let tentacleOfTheDeeps = {
     name: 'Tentacle of the Deeps: Summon',
-    version: '1.1.0',
+    version: '1.1.10',
     midi: {
         item: [
             {

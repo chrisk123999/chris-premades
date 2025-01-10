@@ -13,7 +13,7 @@ async function damage({workflow}) {
         ['DND5E.DamageThunder', 'thunder']
     ]);
     if (!damageType) damageType = 'lightning';
-    await workflowUtils.replaceDamage(workflow, workflow.activity.damage.parts[0].custom.formula, {damageType});
+    await workflowUtils.replaceDamage(workflow, workflow.activity.damage.parts[0].formula, {damageType});
 }
 export let heartOfTheStorm = {
     name: 'Heart of the Storm',

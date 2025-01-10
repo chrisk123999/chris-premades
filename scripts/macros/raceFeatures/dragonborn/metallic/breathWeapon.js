@@ -43,7 +43,7 @@ export let metallicBreathWeapon = {
         ]
     }
 };
-let version = '1.1.0';
+let version = '1.1.10';
 export let breathWeaponAcid = {
     name: 'Breath Weapon (Force)',
     version

@@ -33,21 +33,45 @@ async function setIdentifier(activity, identifier) {
 }
 
 // Currently this exists only for use immediately before using an activity
-async function setDamage(activity, formula, types=[], {specificIndex = 0} = {}) {
+async function setDamage(activity, formulaOrObj, types=[], {specificIndex = 0} = {}) {
     let isHeal = activity.type === 'heal';
-    // let damagePart = activity.damage.parts[specificIndex].toObject();
-    // damagePart.custom = {
-    //     enabled: true,
-    //     formula: formula.toString()
-    // };
-    // if (types.length) damagePart.types = types;
-    // await genericUtils.update(activity, {'damage.parts': [damagePart]});
-    // wtf is going on here
+    let isFormula = foundry.utils.getType(formulaOrObj) !== 'Object';
+    let formula, number, denomination, bonus;
+    if (isFormula) {
+        formula = formulaOrObj;
+    } else {
+        number = formulaOrObj.number;
+        denomination = formulaOrObj.denomination;
+        bonus = formulaOrObj.bonus ?? '';
+        formula = '';
+        if (number && denomination) formula += number + 'd' + denomination;
+        if (bonus) formula += ' + ' + bonus;
+    }
     if (isHeal) {
-        if (formula?.toString()?.length) activity.healing.custom.formula = formula.toString();
+        let isCustom = activity.healing.custom.enabled;
+        if (isCustom || isFormula) {
+            if (formula?.toString()?.length) activity.healing.custom = {
+                enabled: true,
+                formula: formula.toString()
+            };
+        } else {
+            activity.healing.number = number;
+            activity.healing.denomination = denomination;
+            activity.healing.bonus = bonus;
+        }
         if (types.length) activity.healing.types = new Set(types);
     } else {
-        if (formula?.toString()?.length) activity.damage.parts[specificIndex].custom.formula = formula.toString();
+        let isCustom = activity.damage.parts[specificIndex].custom.enabled;
+        if (isCustom || isFormula) {
+            if (formula?.toString()?.length) activity.damage.parts[specificIndex].custom = {
+                enabled: true,
+                formula: formula.toString()
+            };
+        } else {
+            activity.damage.parts[specificIndex].number = number;
+            activity.damage.parts[specificIndex].denomination = denomination;
+            activity.damage.parts[specificIndex].bonus = bonus;
+        }
         if (types.length) activity.damage.parts[specificIndex].types = new Set(types);
     }
 }

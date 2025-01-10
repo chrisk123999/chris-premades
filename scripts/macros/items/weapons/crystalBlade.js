@@ -99,7 +99,7 @@ export let crystalBlade = {
         ]
     }
 };
-let version = '1.1.0';
+let version = '1.1.10';
 export let crystalBladeGreatsword = {
     name: 'Crystal Greatsword',
     version

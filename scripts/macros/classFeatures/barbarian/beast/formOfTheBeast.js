@@ -10,10 +10,9 @@ async function use({workflow}) {
     await workflowUtils.applyDamage([workflow.token], workflow.actor.system.attributes.prof, 'healing');
     await combatUtils.setTurnCheck(workflow.item, 'formOfTheBeastBite');
 }
-// TODO: Ensure utility doesn't become an "other activity" once Tim adds a way of confirming that
 export let formOfTheBeast = {
     name: 'Form of the Beast',
-    version: '1.1.0',
+    version: '1.1.10',
     midi: {
         item: [
             {

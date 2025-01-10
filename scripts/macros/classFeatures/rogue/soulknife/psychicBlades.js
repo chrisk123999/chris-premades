@@ -93,7 +93,7 @@ async function attack({workflow}) {
 }
 export let psychicBlades = {
     name: 'Psychic Blades',
-    version: '1.1.0',
+    version: '1.1.10',
     midi: {
         item: [
             {

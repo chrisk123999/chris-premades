@@ -9,7 +9,7 @@ async function use({workflow}) {
 }
 export let synapticStatic = {
     name: 'Synaptic Static',
-    version: '1.1.0',
+    version: '1.1.10',
     midi: {
         item: [
             {

@@ -10,7 +10,7 @@ async function use({workflow}) {
 }
 export let balmOfPeace = {
     name: 'Channel Divinity: Balm of Peace',
-    version: '1.1.0',
+    version: '1.1.10',
     midi: {
         item: [
             {

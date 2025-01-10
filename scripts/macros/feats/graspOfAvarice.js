@@ -69,7 +69,7 @@ async function combatEnd({trigger: {entity: item}}) {
 }
 export let graspOfAvarice = {
     name: 'Baleful Scion: Grasp of Avarice',
-    version: '1.1.0',
+    version: '1.1.10',
     midi: {
         actor: [
             {

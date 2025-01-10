@@ -76,7 +76,7 @@ async function left({trigger: {entity: template, token}}) {
 }
 export let hungerOfHadar = {
     name: 'Hunger of Hadar',
-    version: '1.1.0',
+    version: '1.1.10',
     midi: {
         item: [
             {

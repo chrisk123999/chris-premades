@@ -17,15 +17,12 @@ async function turnStart({trigger: {entity: item, token}}) {
 async function early({workflow}) {
     let equippedShields = workflow.actor.items.filter(i => i.system.type?.value === 'shield' && i.system.equipped);
     let equippedWeapons = workflow.actor.items.filter(i => i.type === 'weapon' && i.system.equipped && i !== workflow.item);
-    if (!equippedShields.length && !equippedWeapons.length) {
-        await activityUtils.setDamage(workflow.activity, '1d8[bludgeoning]', ['bludgeoning']);
-    } else {
-        await activityUtils.setDamage(workflow.activity, '1d6[bludgeoning]', ['bludgeoning']);
-    }
+    let denomination = (!equippedShields.length && !equippedWeapons.length) ? 8 : 6;
+    await activityUtils.setDamage(workflow.activity, {number: 1, denomination}, ['bludgeoning']);
 }
 export let fightingStyleUnarmedFighting = {
     name: 'Fighting Style: Unarmed Fighting',
-    version: '1.1.0',
+    version: '1.1.10',
     combat: [
         {
             pass: 'turnStart',
@@ -44,7 +41,7 @@ export let fightingStyleUnarmedFighting = {
 };
 export let fightingStyleUnarmedFightingUnarmedStrike = {
     name: 'Unarmed Strike (Unarmed Fighting)',
-    version: '1.1.0',
+    version: '1.1.10',
     midi: {
         item: [
             {

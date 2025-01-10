@@ -112,7 +112,7 @@ async function early({dialog}) {
 }
 export let investitureOfFlame = {
     name: 'Investiture of Flame',
-    version: '1.1.0',
+    version: '1.1.10',
     hasAnimation: true,
     midi: {
         item: [

@@ -290,7 +290,7 @@ async function reload({workflow}) {
 }
 export let firearm = {
     name: 'Firearm (CR)',
-    version: '1.0.4',
+    version: '1.1.10',
     midi: {
         item: [
             {

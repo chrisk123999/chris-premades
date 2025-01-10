@@ -10,7 +10,7 @@ async function backbreakerUse({trigger, workflow}) {
 }
 export let backbreaker = {
     name: 'Backbreaker',
-    version: '1.1.0',
+    version: '1.1.10',
     midi: {
         item: [
             {
@@ -226,7 +226,7 @@ async function disarmingStrikeUse({trigger, workflow}) {
 }
 export let disarmingStrike = {
     name: 'Disarming Strike',
-    version: '1.1.0',
+    version: '1.1.10',
     midi: {
         item: [
             {
@@ -279,7 +279,7 @@ async function flourishUse({trigger, workflow}) {
 }
 export let flourish = {
     name: 'Flourish',
-    version: '1.1.0',
+    version: '1.1.10',
     midi: {
         item: [
             {
@@ -489,7 +489,7 @@ async function pommelStrikeUse({trigger, workflow}) {
 }
 export let pommelStrike = {
     name: 'Pommel Strike',
-    version: '1.1.0',
+    version: '1.1.10',
     midi: {
         item: [
             {
@@ -575,7 +575,7 @@ async function rushUse({trigger, workflow}) {
 }
 export let rush = {
     name: 'Rush',
-    version: '1.1.0',
+    version: '1.1.10',
     midi: {
         item: [
             {
@@ -608,7 +608,7 @@ async function toppleUse({trigger, workflow}) {
 }
 export let topple = {
     name: 'Topple',
-    version: '1.1.0',
+    version: '1.1.10',
     midi: {
         item: [
             {
@@ -653,7 +653,7 @@ async function weakeningStrikeUse({trigger, workflow}) {
 }
 export let weakeningStrike = {
     name: 'Weakening Strike',
-    version: '1.1.0',
+    version: '1.1.10',
     midi: {
         item: [
             {
@@ -769,8 +769,8 @@ async function mobileShotUse({trigger, workflow}) {
     await used(workflow.actor, 'mobileShot', trigger.entity.system.uses.value);
 }
 export let mobileShot = {
-    name: 'Hamstring Shot',
-    version: '1.1.0',
+    name: 'Mobile Shot',
+    version: '1.1.10',
     midi: {
         item: [
             {
@@ -885,7 +885,6 @@ async function changeItem(item, equipped) {
                 case 'heartstopper':
                 case 'rushAttack':
                 case 'weakeningStrike':
-                    attackActivity.damage.parts[0].custom.formula = attackActivity.damage.parts[0].custom.formula.replace('bludgeoning', weapon.system.damage.base.types.first());
                     attackActivity.damage.parts[0].types = Array.from(weapon.system.damage.base.types);
                     break;
                 case 'cleave':

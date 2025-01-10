@@ -13,7 +13,7 @@ async function damage({trigger: {entity: item}, workflow}) {
 }
 export let poisonousSkin = {
     name: 'Poisonous Skin',
-    version: '1.1.0',
+    version: '1.1.10',
     midi: {
         actor: [
             {

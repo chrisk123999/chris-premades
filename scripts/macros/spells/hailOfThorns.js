@@ -32,7 +32,7 @@ async function late({trigger: {entity: effect}, workflow}) {
 }
 export let hailOfThorns = {
     name: 'Hail of Thorns',
-    version: '1.1.0',
+    version: '1.1.10',
     midi: {
         item: [
             {
