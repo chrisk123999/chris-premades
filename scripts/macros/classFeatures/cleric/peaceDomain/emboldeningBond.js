@@ -91,7 +91,7 @@ async function targetApplyDamaged({trigger: {entity: effect}, workflow, ditem}) 
             featureData.system.activities[activityId].damage.parts = ditem.rawDamageDetail.map(i => ({
                 custom: {
                     enabled: true,
-                    formula: i.value + '[' + i.type + ']'
+                    formula: i.value
                 },
                 types: [i.type]
             }));

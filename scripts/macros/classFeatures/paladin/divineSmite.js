@@ -22,7 +22,7 @@ async function damage({trigger: {entity: item}, workflow}) {
     let targetActor = workflow.targets.first().actor;
     if (['undead', 'fiend'].includes(actorUtils.typeOrRace(targetActor))) numDice += 1;
     let damageType = itemUtils.getConfig(item, 'damageType');
-    let bonusDamageFormula = numDice + 'd8[' + damageType + ']';
+    let bonusDamageFormula = numDice + 'd8';
     await workflowUtils.bonusDamage(workflow, bonusDamageFormula, {damageType});
     await item.displayCard();
 }

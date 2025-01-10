@@ -36,7 +36,7 @@ async function damage({workflow}) {
     if (!effect) return;
     let diceNum = Math.floor((effect.flags['chris-premades'].spiritShroud.castLevel - 3) / 2) + 1;
     let damageType = effect.flags['chris-premades'].spiritShroud.damageType;
-    await workflowUtils.bonusDamage(workflow, diceNum + 'd8[' + damageType + ']', {damageType});
+    await workflowUtils.bonusDamage(workflow, diceNum + 'd8', {damageType});
     let effectData = {
         name: genericUtils.translate('CHRISPREMADES.Macros.SpiritShroud.Hit'),
         img: effect.img,

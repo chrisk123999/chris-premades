@@ -14,7 +14,7 @@ async function damage({trigger, workflow}) {
         if (!selection) return;
     }
     if (combatUtils.inCombat()) await combatUtils.setTurnCheck(trigger.entity, 'martialAdvantage');
-    let bonusDamageFormula = itemUtils.getGenericFeatureConfig(trigger.entity, 'martialAdvantage').formula + '[' + workflow.defaultDamageType + ']';
+    let bonusDamageFormula = itemUtils.getGenericFeatureConfig(trigger.entity, 'martialAdvantage').formula;
     await workflowUtils.bonusDamage(workflow, bonusDamageFormula, {damageType: workflow.defaultDamageType});
     await trigger.entity.displayCard();
     if (!itemUtils.getGenericFeatureConfig(trigger.entity, 'martialAdvantage').playAnimation) return;

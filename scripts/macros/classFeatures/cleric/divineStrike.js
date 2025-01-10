@@ -42,7 +42,7 @@ async function damage({trigger: {entity: item}, workflow}) {
         }
     }
     let diceNumber = classLevels >= 14 ? 2 : 1;
-    let bonusFormula = diceNumber + 'd8[' + damageType + ']';
+    let bonusFormula = diceNumber + 'd8';
     await workflowUtils.bonusDamage(workflow, bonusFormula, {damageType});
     await combatUtils.setTurnCheck(item, 'divineStrike');
     let playAnimation = itemUtils.getConfig(item, 'playAnimation');

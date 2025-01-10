@@ -212,7 +212,7 @@ async function damage({workflow}) {
     let origRoll = await new Roll(workflow.item.system.damage.base.formula, workflow.item.getRollData()).evaluate();
     let faces = origRoll.terms[0].faces;
     if (!faces) return;
-    let extraDamage = violentCost + 'd' + faces + '[' + workflow.defaultDamageType + ']';
+    let extraDamage = violentCost + 'd' + faces;
     await workflowUtils.bonusDamage(workflow, extraDamage, {damageType: workflow.defaultDamageType});
 }
 async function repair({workflow}) {

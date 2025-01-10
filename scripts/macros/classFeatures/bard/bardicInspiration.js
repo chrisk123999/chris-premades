@@ -72,7 +72,7 @@ async function damage({trigger: {entity: effect}, workflow}) {
     if (!result) return;
     let [token] = result;
     let defaultDamageType = workflow.defaultDamageType;
-    let damageRoll = await new CONFIG.Dice.DamageRoll(bardDice + '[' + defaultDamageType + ']', {}, {type: defaultDamageType}).evaluate();
+    let damageRoll = await new CONFIG.Dice.DamageRoll(bardDice, {}, {type: defaultDamageType}).evaluate();
     damageRoll.toMessage({
         rollMode: 'roll',
         speaker: ChatMessage.implementation.getSpeaker({token: workflow.token}),

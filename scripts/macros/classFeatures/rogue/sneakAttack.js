@@ -192,20 +192,18 @@ async function damage({trigger: {entity: item}, workflow}) {
             let scale = workflow.actor.system.scale?.rogue?.['sneak-attack'];
             if (scale) {
                 let number = scale.number;
-                bonusDamageFormula = number + 'd' + scale.faces + '[' + workflow.defaultDamageType + ']';
+                bonusDamageFormula = number + 'd' + scale.faces;
             } else {
                 genericUtils.notify('CHRISPREMADES.Macros.SneakAttack.Scale', 'warn');
                 return;
             }
         } else if (workflow.actor.type === 'npc') {
             let number = Math.ceil(workflow.actor.system.details.cr / 2);
-            bonusDamageFormula = number + 'd6[' + workflow.defaultDamageType + ']';
+            bonusDamageFormula = number + 'd6';
         }
-    } else {
-        bonusDamageFormula += '[' + workflow.defaultDamageType + ']';
     }
     let eyeFeature = itemUtils.getItemByIdentifier(workflow.actor, 'eyeForWeakness');
-    if (iTarget && eyeFeature) bonusDamageFormula += ' + 3d6[' + workflow.defaultDamageType + ']';
+    if (iTarget && eyeFeature) bonusDamageFormula += ' + 3d6';
     await workflowUtils.bonusDamage(workflow, bonusDamageFormula, {damageType: workflow.defaultDamageType});
     await item.use();
     if (displayRakish) await rakishAudacity.use();

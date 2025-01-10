@@ -116,7 +116,7 @@ async function damage({workflow}) {
     let {targets: validTargetUuids, formula} = effect.flags['chris-premades'].huntersMark;
     if (!validTargetUuids.includes(workflow.hitTargets.first().document.uuid)) return;
     let damageType = workflow.defaultDamageType;
-    await workflowUtils.bonusDamage(workflow, formula + '[' + damageType + ']', {damageType});
+    await workflowUtils.bonusDamage(workflow, formula, {damageType});
 }
 async function early({dialog}) {
     dialog.configure = false;

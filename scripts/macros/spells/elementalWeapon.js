@@ -55,7 +55,7 @@ async function use({trigger, workflow}) {
                 {
                     key: 'system.damage.parts',
                     mode: 2,
-                    value: JSON.stringify([[formula + '[' + selection + ']', selection]]),
+                    value: JSON.stringify([[formula, selection]]),
                     priority: 20
                 }
             ]

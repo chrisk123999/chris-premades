@@ -35,7 +35,6 @@ async function damage({trigger: {entity: item}, workflow}) {
             bonusType = 'lightning';
     }
     if (!bonusFormula) return;
-    bonusFormula += '[' + bonusType + ']';
     await workflowUtils.bonusDamage(workflow, bonusFormula, {damageType: bonusType});
     await workflowUtils.syntheticItemRoll(item, [workflow.hitTargets.first()], {config: {consumeUsage: true}, options: {configureDialog: false}});
 }

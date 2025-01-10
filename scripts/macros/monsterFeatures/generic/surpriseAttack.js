@@ -14,7 +14,7 @@ async function damage({trigger: {entity: item}, workflow}) {
     }
     let damageFormula = config.formula;
     let damageType = workflow.defaultDamageType;
-    await workflowUtils.bonusDamage(workflow, damageFormula + '[' + damageType + ']', {damageType});
+    await workflowUtils.bonusDamage(workflow, damageFormula, {damageType});
     await item.use();
 }
 export let surpriseAttack = {

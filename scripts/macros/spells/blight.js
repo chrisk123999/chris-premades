@@ -9,14 +9,14 @@ async function damage({workflow}) {
             if (term.isDeterministic) {
                 newDamageRoll += term.formula;
             } else {
-                newDamageRoll += term.number + 'd' + term.faces + 'min' + term.faces + '[' + workflow.defaultDamageType + ']';
+                newDamageRoll += term.number + 'd' + term.faces + 'min' + term.faces;
             }
         }
     } else if (creatureTypes.some(type => ['undead', 'construct'].includes(type))) {
         if (!creatureTypes.every(type => ['undead', 'construct'].includes(type))) return;
-        newDamageRoll = '0[' + workflow.defaultDamageType + ']';
+        newDamageRoll = '0';
     }
-    let damageRoll = await new CONFIG.Dice.DamageRoll(newDamageRoll, workflow.item.getRollData()).evaluate();
+    let damageRoll = await new CONFIG.Dice.DamageRoll(newDamageRoll, workflow.item.getRollData(), {type: workflow.defaultDamageType}).evaluate();
     await workflow.setDamageRoll(damageRoll);
 }
 async function damageApplication({trigger, workflow, ditem}) {

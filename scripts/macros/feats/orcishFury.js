@@ -7,7 +7,7 @@ async function damage({trigger: {entity: item}, workflow}) {
     if (!selection) return;
     await workflowUtils.completeItemUse(item, {consumeUsage: true}, {configureDialog: false});
     let dieType = workflow.damageRolls[0].terms[0].faces;
-    await workflowUtils.bonusDamage(workflow, '1d' + dieType + '[' + workflow.defaultDamageType + ']', {damageType: workflow.defaultDamageType});
+    await workflowUtils.bonusDamage(workflow, '1d' + dieType, {damageType: workflow.defaultDamageType});
 }
 export let orcishFury = {
     name: 'Orcish Fury: Extra Damage',

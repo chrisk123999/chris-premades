@@ -8,7 +8,7 @@ async function damage({trigger: {entity: item}, workflow}) {
     let barbDamage = Math.floor((workflow.actor.classes.barbarian?.system.levels ?? 0) / 2);
     if (!combatUtils.perTurnCheck(item, 'divineFury', true, workflow.token.id)) return;
     await combatUtils.setTurnCheck(item, 'divineFury');
-    let bonusDamageFormula = '1d6[' + damageType + '] + ' + barbDamage;
+    let bonusDamageFormula = '1d6 + ' + barbDamage;
     await workflowUtils.bonusDamage(workflow, bonusDamageFormula, {damageType});
 }
 async function combatEnd({trigger: {entity: item}}) {

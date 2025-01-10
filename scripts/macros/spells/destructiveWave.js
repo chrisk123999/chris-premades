@@ -14,7 +14,7 @@ async function damage({workflow}) {
             anim += 'blue';
         }
         new Sequence().effect().atLocation(workflow.token).file(anim).scale(2.2).playbackRate(0.5).play();
-        await workflowUtils.bonusDamage(workflow, '5d6[' + damageType + ']', {damageType});
+        await workflowUtils.bonusDamage(workflow, '5d6', {damageType});
     }
 }
 export let destructiveWave = {

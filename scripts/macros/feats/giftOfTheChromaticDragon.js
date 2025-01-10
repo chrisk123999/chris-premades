@@ -33,7 +33,7 @@ async function useInfusion({workflow}) {
             {
                 key: 'system.damage.parts',
                 mode: 2,
-                value: JSON.stringify([['1d4[' + damageType + ']', damageType]]),
+                value: JSON.stringify([['1d4', damageType]]),
                 priority: 20
             }
         ]

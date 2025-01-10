@@ -11,7 +11,7 @@ async function damage({trigger: {entity: item}, workflow})  {
     let selected = await dialogUtils.buttonDialog(item.name, genericUtils.format('CHRISPREMADES.Dialog.Use', {itemName: item.name}), buttons);
     if (!selected?.length) return;
     await combatUtils.setTurnCheck(item, 'radiantSoul');
-    let bonusFormula = workflow.actor.system.abilities.cha.mod + '[' + selected + ']';
+    let bonusFormula = workflow.actor.system.abilities.cha.mod;
     await workflowUtils.bonusDamage(workflow, bonusFormula, {damageType: selected});
 }
 async function applyDamage({trigger: {entity: item}, workflow}) {

@@ -74,7 +74,7 @@ async function damage({trigger: {entity: effect}, workflow}) {
     if (combatUtils.inCombat()) await combatUtils.setTurnCheck(effect, 'giantsMight');
     let bonusDamage = effect.flags['chris-premades']?.giantsMight?.bonusDamage;
     if (!bonusDamage) return;
-    await workflowUtils.bonusDamage(workflow, bonusDamage + '[' + workflow.defaultDamageType + ']', {damageType: workflow.defaultDamageType});
+    await workflowUtils.bonusDamage(workflow, bonusDamage, {damageType: workflow.defaultDamageType});
 }
 async function endCombat({trigger: {entity: effect}}) {
     await combatUtils.setTurnCheck(effect, 'giantsMight', true);

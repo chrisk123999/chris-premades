@@ -217,7 +217,7 @@ async function postDamage({trigger: {entity: item, token}, workflow}) {
     if (!tokenUtils.canSee(token, workflow.token)) return;
     let selection = await dialogUtils.confirm(item.name, genericUtils.format('CHRISPREMADES.Dialog.UseName', {itemName: item.name, tokenName: token.name}), {userId: socketUtils.firstOwner(token.actor, true)});
     if (!selection) return;
-    await workflowUtils.bonusDamage(workflow, '1d6[' + damageType + ']', {damageType});
+    await workflowUtils.bonusDamage(workflow, '1d6', {damageType});
     await actorUtils.setReactionUsed(token.actor);
 }
 export let summonDrakeCompanion = {

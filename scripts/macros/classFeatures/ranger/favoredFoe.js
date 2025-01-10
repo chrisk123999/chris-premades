@@ -22,7 +22,7 @@ async function damage({workflow}) {
     let classLevel = workflow.actor.classes?.ranger?.system?.levels;
     if (!classLevel) return;
     let numFaces = 4 + 2 * Math.floor((classLevel + 2) / 8);
-    let bonusDamageFormula = '1d' + numFaces + '[' + workflow.defaultDamageType + ']';
+    let bonusDamageFormula = '1d' + numFaces;
     let targetToken = workflow.targets.first();
     if (!effect) {
         if (!originItem.system.uses.value) return;

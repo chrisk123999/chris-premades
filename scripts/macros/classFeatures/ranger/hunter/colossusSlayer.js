@@ -6,7 +6,7 @@ async function damage({trigger: {entity: item}, workflow}) {
     if (!combatUtils.perTurnCheck(item, 'colossusSlayer')) return;
     if (workflow.targets.first().actor.system.attributes.hp.value >= workflow.targets.first().actor.system.attributes.hp.max) return;
     let formula = itemUtils.getConfig(item, 'formula');
-    await workflowUtils.bonusDamage(workflow, formula + '[' + workflow.defaultDamageType + ']', {damageType: workflow.defaultDamageType});
+    await workflowUtils.bonusDamage(workflow, formula, {damageType: workflow.defaultDamageType});
     if (combatUtils.inCombat()) await combatUtils.setTurnCheck(item, 'colossusSlayer');
     await item.use();
 }

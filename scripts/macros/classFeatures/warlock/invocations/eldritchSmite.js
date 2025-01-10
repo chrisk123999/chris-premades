@@ -12,7 +12,7 @@ async function damage({trigger: {entity: item}, workflow}) {
     if (!selection) return;
     await genericUtils.update(workflow.actor, {'system.spells.pact.value': pactInfo.value - 1});
     let damageType = itemUtils.getConfig(item, 'damageType') ?? 'force';
-    let bonusFormula = (1 + pactInfo.level) + 'd8[' + damageType + ']';
+    let bonusFormula = (1 + pactInfo.level) + 'd8';
     await workflowUtils.bonusDamage(workflow, bonusFormula, {damageType});
     await item.displayCard();
     let targetActor = workflow.targets.first().actor;

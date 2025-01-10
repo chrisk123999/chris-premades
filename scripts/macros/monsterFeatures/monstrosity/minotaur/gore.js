@@ -7,7 +7,7 @@ async function damage({trigger, workflow}) {
     if (!selection) return;
     let formula = itemUtils.getConfig(workflow.item, 'formula');
     let damageType = itemUtils.getConfig(workflow.item, 'damageType');
-    await workflowUtils.bonusDamage(workflow, formula + '[' + damageType + ']', {damageType: damageType});
+    await workflowUtils.bonusDamage(workflow, formula, {damageType: damageType});
     await workflowUtils.syntheticItemRoll(charge, Array.from(workflow.targets));
 }
 export let minotaurGore = {

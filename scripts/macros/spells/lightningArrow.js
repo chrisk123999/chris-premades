@@ -32,7 +32,7 @@ async function damage({trigger: {entity: effect}, workflow}) {
     let feature = activityUtils.getActivityByIdentifier(originItem, 'lightningArrowBurst', {strict: true});
     if (!feature) return;
     let damageType = feature.damage.parts[0].types.first();
-    let damageFormula = diceNumber + 'd8[' + damageType + '] + @mod';
+    let damageFormula = diceNumber + 'd8 + @mod';
     await workflowUtils.replaceDamage(workflow, damageFormula, {damageType});
     if (workflow.hitTargets.size === 0) await workflowUtils.applyDamage([targetToken], Math.floor(workflow.damageRolls[0].total / 2), damageType);
     let newTargets = tokenUtils.findNearby(targetToken, 10);

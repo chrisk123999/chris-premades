@@ -43,7 +43,7 @@ async function use({workflow}) {
             {
                 key: 'system.damage.parts',
                 mode: 2,
-                value: JSON.stringify([[formula + '[' + damageType + ']', damageType]]),
+                value: JSON.stringify([[formula, damageType]]),
                 priority: 20
             }
         ]
