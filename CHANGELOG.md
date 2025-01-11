@@ -1,3 +1,7 @@
+# 1.0.53 Release:
+## Bug Fixes:
+- Movement Event
+
 # 1.0.52 Release:
 ## Bug Fixes:
 - Dreadful Aspect
