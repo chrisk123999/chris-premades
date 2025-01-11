@@ -133,6 +133,9 @@ async function getAutomation(itemName, options = {rules: '2014', actorType: 'cha
         system: {
             type: {
                 value: options.featType
+            },
+            source: {
+                rules: options.rules
             }
         },
         flags: {}
@@ -147,6 +150,7 @@ async function getAutomation(itemName, options = {rules: '2014', actorType: 'cha
                 source = i[0];
                 break;
             case 'chris-premades':
+                options.rules = options.rules === '2014' ? 'legacy' : options.rules === '2024' ? 'modern' : options.rules;
                 found = await compendiumUtils.getCPRAutomation(fakeDocument, options);
                 source = 'chris-premades';
                 if (found) version = itemUtils.getVersion(found);
@@ -181,7 +185,7 @@ async function getAutomation(itemName, options = {rules: '2014', actorType: 'cha
     items = items.sort((a, b) => a.priority - b.priority);
     let itemData = genericUtils.duplicate(items[0].document.toObject());
     genericUtils.setProperty(itemData, 'flags.chris-premades.info', {
-        rules: options.rules === '2014' ? 'legacy' : 'modern',
+        rules: options.rules === '2014' ? 'legacy' : options.rules === '2024' ? 'modern' : options.rules,
         source: items[0].source,
         version: items[0].version
     });

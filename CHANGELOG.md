@@ -1,3 +1,7 @@
+# 1.1.11 Release:
+## Bug Fixes:
+- DDBI Integration
+
 # 1.1.10 Release:
 ## Bug Fixes:
 - Ability Saves & Checks
