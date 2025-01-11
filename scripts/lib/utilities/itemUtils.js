@@ -63,7 +63,7 @@ function getVersion(item) {
     return item?.flags['chris-premades']?.info?.version ?? item?._stats?.modifiedTime;
 }
 function getSource(item) {
-    return item.flags['chris-premades']?.info?.source;
+    return item?.flags['chris-premades']?.info?.source;
 }
 async function isUpToDate(item) {
     let version = getVersion(item);

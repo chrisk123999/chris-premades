@@ -1,8 +1,10 @@
 # 1.1.10 Release:
 ## Bug Fixes:
 - Ability Saves & Checks
+- Actor Medkit
 ## Update Notes:
 - Changed a ton of items' damage formulae to not be "custom," instead using the number/denomination/bonus format
+- Added more descriptive tooltips to actor medkit
 
 # 1.1.9 Release:
 ## New Modern Rules Content:

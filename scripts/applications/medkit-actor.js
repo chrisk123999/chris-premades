@@ -73,25 +73,26 @@ export class ActorMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
         })));
         this.amounts = this.actorItems.reduce((accumulator, currentValue) => {
             if (['class', 'subclass'].includes(currentValue.item.type)) return accumulator;
+            let source = currentValue.sourceItem ? this.itemSource(currentValue.sourceItem.pack) : currentValue.source;
             if (currentValue.isUpToDate === 1) {
                 accumulator.upToDate.value += 1;
-                accumulator.upToDate.items.push(currentValue.item.name);
-                accumulator.upToDate.sources = this.countSource(accumulator.upToDate.sources, currentValue.sourceItem ? this.itemSource(currentValue.sourceItem.pack) : currentValue.source);
+                accumulator.upToDate.items.push({name: currentValue.item.name, source});
+                accumulator.upToDate.sources = this.countSource(accumulator.upToDate.sources, source);
             } else if ((!currentValue.source || currentValue?.source?.includes('.')) && currentValue.sourceItem) {
                 accumulator.available.value += 1;
-                accumulator.available.items.push(currentValue.item.name);
-                accumulator.available.sources = this.countSource(accumulator.available.sources, this.itemSource(currentValue.sourceItem.pack));
+                accumulator.available.items.push({name: currentValue.item.name, source});
+                accumulator.available.sources = this.countSource(accumulator.available.sources, source);
             } else if (currentValue.isUpToDate === 0) {
                 accumulator.outOfDate.value += 1;
-                accumulator.outOfDate.items.push(currentValue.item.name);
-                accumulator.outOfDate.sources = this.countSource(accumulator.outOfDate.sources, currentValue.sourceItem ? this.itemSource(currentValue.sourceItem.pack) : currentValue.source);
+                accumulator.outOfDate.items.push({name: currentValue.item.name, source});
+                accumulator.outOfDate.sources = this.countSource(accumulator.outOfDate.sources, source);
             }
             return accumulator;
         }, {upToDate: {value: 0, sources: {}, items: []}, available: {value: 0, sources: {}, items: []}, outOfDate: {value: 0, sources: {}, items: []}});
         this.tooltips = {
-            upToDate: this.generateTooltip(this.amounts.upToDate.sources),
-            available: this.generateTooltip(this.amounts.available.sources),
-            outOfDate: this.generateTooltip(this.amounts.outOfDate.sources)
+            upToDate: this.generateTooltip(this.amounts.upToDate.items),
+            available: this.generateTooltip(this.amounts.available.items),
+            outOfDate: this.generateTooltip(this.amounts.outOfDate.items)
         };
     }
     itemSource(itemPack) {
@@ -114,10 +115,17 @@ export class ActorMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
             return accumulator;
         }
     }
-    generateTooltip(sources) {
-        return Object.entries(sources).reduce((accumulator, [key, value]) => {
-            return accumulator + genericUtils.translate('CHRISPREMADES.Medkit.ModuleIds.' + key) + ': ' + value + '<br>';
-        }, '');
+    generateTooltip(items) {
+        let allSources = new Set(items.map(i => i.source));
+        let finalText = '';
+        for (let source of allSources) {
+            let allNames = items.filter(i => i.source === source).map(i => i.name);
+            finalText += genericUtils.translate('CHRISPREMADES.Medkit.ModuleIds.' + source) + ': ' + allNames.length + '<br>';
+            for (let currName of allNames) {
+                finalText += '&#8226 ' + currName + '<br>';
+            }
+        }
+        return finalText;
     }
     update(item, sourceItem, options) {
         let source = options.source ?? itemUtils.getSource(sourceItem);
@@ -129,14 +137,14 @@ export class ActorMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
         await Promise.all(this.actorItems.reduce((accumulator, currentValue) => {
             if (currentValue.isUpToDate !== 1 && (currentValue.isUpToDate === 0 || ((!currentValue.source || currentValue?.source?.includes('.')) && currentValue.sourceItem))) {
                 let options = {source: undefined, version: undefined};
-                if (currentValue.sourceItem.pack.includes('gambits-premades')) {
+                if (currentValue.sourceItem?.pack.includes('gambits-premades')) {
                     options.source = 'gambits-premades';
                     if (currentValue.item?.actor?.type === 'character' || currentValue.item.type === 'spell') {
                         options.version = gambitPremades.gambitItems.find(i => i.name === currentValue.sourceItem.name)?.version;
                     } else {
                         options.version = gambitPremades.gambitMonsters.find(i => i.name === currentValue.sourceItem.name && i.monster === this.identifier)?.version;
                     }
-                } else if (currentValue.sourceItem.pack.includes('midi-item-showcase-community')) {
+                } else if (currentValue.sourceItem?.pack.includes('midi-item-showcase-community')) {
                     options.source = 'midi-item-showcase-community';
                     options.version = miscPremades.miscItems.find(i => i.name === currentValue.sourceItem.name)?.version;
                     if (currentValue.item?.actor?.type === 'character'  || currentValue.item.type === 'spell') {
@@ -144,8 +152,8 @@ export class ActorMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
                     } else {
                         options.version = miscPremades.miscMonsters.find(i => i.name === currentValue.sourceItem.name && i.monster === this.identifier)?.version;
                     }
-                } else if (!currentValue.sourceItem.pack.includes('chris-premades') && !currentValue.sourceItem.flags['chris-premades']?.info) {
-                    options.source = currentValue.sourceItem.pack;
+                } else if (!currentValue.sourceItem?.pack.includes('chris-premades') && !currentValue.sourceItem?.flags['chris-premades']?.info) {
+                    options.source = currentValue.sourceItem?.pack;
                 }
                 if (!options.source && !itemUtils.getSource(currentValue.sourceItem)) {
                     genericUtils.notify('Error with ' + currentValue.item.name + ', skipping item', 'warn');
