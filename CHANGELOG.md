@@ -1,3 +1,7 @@
+# 1.0.54 Release:
+## Bug Fixes:
+- Midi-Qol Condition Effects
+
 # 1.0.53 Release:
 ## Bug Fixes:
 - Movement Event
