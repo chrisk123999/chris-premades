@@ -108,10 +108,30 @@ function rehideActivities(effect) {
     if (!unhideFlagsArr.length) unhideFlagsArr = [unhideFlagsArr];
     rehideDebounce(unhideFlagsArr);
 }
+async function specialDuration(workflow) {
+    if (!workflow.token) return;
+    await Promise.all(workflow.targets.map(async token => {
+        if (!token.actor) return;
+        await Promise.all(actorUtils.getEffects(token.actor).map(async effect => {
+            let specialDurations = effect.flags['chris-premades']?.specialDuration;
+            if (!specialDurations) return;
+            let remove = false;
+            outerLoop:
+            for (let i of specialDurations) {
+                switch (i) {
+                    case 'damagedByAlly':
+                        if (workflow.token.document.disposition === token.document.disposition && workflow.hitTargets.has(token)) remove = true; break outerLoop;
+                }
+            }
+            if (remove) await genericUtils.remove(effect);
+        }));
+    }));
+}
 export let effects = {
     noAnimation,
     checkInterdependentDeps,
     preCreateActiveEffect,
     unhideActivities,
-    rehideActivities
+    rehideActivities,
+    specialDuration
 };

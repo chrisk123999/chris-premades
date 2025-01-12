@@ -1,3 +1,13 @@
+# 1.1.12 Release:
+## New Modern Content:
+- Arcane Vigor
+- Arms of Hadar
+- Aura of Life
+- Aura of Purity
+## Bug Fixes:
+- Masteries
+- Animal Friendship
+
 # 1.1.11 Release:
 ## Bug Fixes:
 - DDBI Integration

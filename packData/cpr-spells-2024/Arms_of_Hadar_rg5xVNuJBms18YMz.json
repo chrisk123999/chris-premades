@@ -2,9 +2,9 @@
   "type": "spell",
   "system": {
     "activities": {
-      "saveAnimalFriend": {
+      "saveArmsOfHadaII": {
         "type": "save",
-        "_id": "saveAnimalFriend",
+        "_id": "saveArmsOfHadaII",
         "sort": 0,
         "activation": {
           "type": "action",
@@ -27,24 +27,27 @@
           "concentration": false,
           "override": false
         },
-        "effects": [
-          {
-            "_id": "yKnHas7sLimJm3UR",
-            "onSave": false
-          }
-        ],
+        "effects": [],
         "range": {
-          "override": false
+          "override": true,
+          "units": "spec",
+          "special": ""
         },
         "target": {
           "template": {
             "contiguous": false,
-            "units": "ft"
+            "units": "ft",
+            "count": "",
+            "type": "emanationNoTemplate",
+            "size": "10"
           },
           "affects": {
-            "choice": false
+            "choice": false,
+            "count": "",
+            "type": "creature",
+            "special": ""
           },
-          "override": false,
+          "override": true,
           "prompt": true
         },
         "uses": {
@@ -53,7 +56,25 @@
           "max": ""
         },
         "damage": {
-          "parts": [],
+          "parts": [
+            {
+              "number": 2,
+              "denomination": 6,
+              "bonus": "",
+              "types": [
+                "necrotic"
+              ],
+              "custom": {
+                "enabled": false,
+                "formula": ""
+              },
+              "scaling": {
+                "mode": "whole",
+                "number": 1,
+                "formula": ""
+              }
+            }
+          ],
           "onSave": "half",
           "critical": {
             "allow": false
@@ -61,7 +82,7 @@
         },
         "save": {
           "ability": [
-            "wis"
+            "str"
           ],
           "dc": {
             "formula": "",
@@ -91,11 +112,7 @@
           "automationOnly": false,
           "identifier": ""
         },
-        "name": "",
-        "img": "",
-        "appliedEffects": [
-          "yKnHas7sLimJm3UR"
-        ]
+        "name": ""
       }
     },
     "uses": {
@@ -107,7 +124,7 @@
       "value": "",
       "chat": ""
     },
-    "identifier": "animal-friendship",
+    "identifier": "arms-of-hadar",
     "source": {
       "book": "PHB 2024",
       "page": "",
@@ -122,12 +139,12 @@
       "condition": ""
     },
     "duration": {
-      "value": "24",
-      "units": "hour"
+      "value": "0",
+      "units": "inst"
     },
     "level": 1,
     "materials": {
-      "value": "a morsel of food",
+      "value": "",
       "consumed": false,
       "cost": 0,
       "supply": 0
@@ -138,26 +155,24 @@
     },
     "properties": [
       "vocal",
-      "somatic",
-      "material"
+      "somatic"
     ],
     "range": {
-      "value": "30",
-      "units": "ft"
+      "units": "self"
     },
-    "school": "enc",
+    "school": "con",
     "target": {
       "affects": {
         "count": "",
-        "type": "creature",
+        "type": "",
         "choice": false,
         "special": ""
       },
       "template": {
         "count": "",
         "contiguous": false,
-        "type": "",
-        "size": "",
+        "type": "radius",
+        "size": "10",
         "width": "",
         "height": "",
         "units": "ft"
@@ -165,75 +180,11 @@
     },
     "sourceClass": ""
   },
-  "effects": [
-    {
-      "name": "Animal Friendship",
-      "changes": [],
-      "transfer": false,
-      "img": "icons/environment/creatures/frog-spotted-green.webp",
-      "_id": "yKnHas7sLimJm3UR",
-      "type": "base",
-      "system": {},
-      "disabled": false,
-      "duration": {
-        "startTime": null,
-        "seconds": null,
-        "combat": null,
-        "rounds": null,
-        "turns": null,
-        "startRound": null,
-        "startTurn": null
-      },
-      "description": "",
-      "origin": null,
-      "tint": "#ffffff",
-      "statuses": [],
-      "sort": 0,
-      "flags": {
-        "dae": {
-          "enableCondition": "",
-          "disableCondition": "",
-          "disableIncapacitated": false,
-          "selfTarget": false,
-          "selfTargetAlways": false,
-          "dontApply": false,
-          "stackable": "multi",
-          "showIcon": false,
-          "durationExpression": "",
-          "macroRepeat": "none",
-          "specialDuration": []
-        },
-        "core": {
-          "overlay": false
-        },
-        "chris-premades": {
-          "noAnimation": false,
-          "conditions": [
-            "charmed"
-          ],
-          "specialDuration": [
-            "damagedByAlly"
-          ]
-        }
-      },
-      "_stats": {
-        "compendiumSource": null,
-        "duplicateSource": null,
-        "coreVersion": "12.331",
-        "systemId": "dnd5e",
-        "systemVersion": "4.1.2",
-        "createdTime": null,
-        "modifiedTime": 1736683627211,
-        "lastModifiedBy": "I80azqIoQAHVxPwK"
-      },
-      "_key": "!items.effects!eb4Dv0U5D8FWf4WB.yKnHas7sLimJm3UR"
-    }
-  ],
-  "name": "Animal Friendship",
+  "effects": [],
+  "name": "Arms of Hadar",
   "flags": {
     "midi-qol": {
-      "removeAttackDamageButtons": "default",
-      "forceCEOff": true
+      "removeAttackDamageButtons": "default"
     },
     "midiProperties": {
       "confirmTargets": "default",
@@ -244,11 +195,18 @@
       "riders": {
         "activity": [],
         "effect": []
+      },
+      "last": {
+        "saveArmsOfHadaII": {
+          "damageType": {
+            "0": "necrotic"
+          }
+        }
       }
     },
     "chris-premades": {
       "info": {
-        "identifier": "animalFriendship",
+        "identifier": "armsOfHadar",
         "version": "1.1.12",
         "source": "chris-premades",
         "rules": "modern"
@@ -256,14 +214,14 @@
       "macros": {
         "midi": {
           "item": [
-            "animalFriendship"
+            "armsOfHadar"
           ]
         }
       }
     }
   },
-  "img": "icons/environment/creatures/frog-spotted-green.webp",
+  "img": "icons/commodities/biological/tentacle-purple-white.webp",
   "folder": null,
-  "_id": "eb4Dv0U5D8FWf4WB",
-  "_key": "!items!eb4Dv0U5D8FWf4WB"
+  "_id": "rg5xVNuJBms18YMz",
+  "_key": "!items!rg5xVNuJBms18YMz"
 }

@@ -8,7 +8,7 @@ async function early({trigger, workflow}) {
 }
 export let animalFriendship = {
     name: 'Animal Friendship',
-    version: '1.1.10',
+    version: '1.1.12',
     rules: 'modern',
     midi: {
         item: [

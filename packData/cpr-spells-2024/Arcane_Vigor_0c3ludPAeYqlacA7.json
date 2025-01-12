@@ -2,9 +2,9 @@
   "type": "spell",
   "system": {
     "activities": {
-      "saveAnimalFriend": {
-        "type": "save",
-        "_id": "saveAnimalFriend",
+      "1O3xKEvzHIATFqe6": {
+        "type": "heal",
+        "_id": "1O3xKEvzHIATFqe6",
         "sort": 0,
         "activation": {
           "type": "action",
@@ -12,12 +12,11 @@
           "override": false
         },
         "consumption": {
-          "spellSlot": true,
-          "targets": [],
           "scaling": {
-            "allowed": false,
-            "max": ""
-          }
+            "allowed": false
+          },
+          "spellSlot": true,
+          "targets": []
         },
         "description": {
           "chatFlavor": ""
@@ -27,12 +26,7 @@
           "concentration": false,
           "override": false
         },
-        "effects": [
-          {
-            "_id": "yKnHas7sLimJm3UR",
-            "onSave": false
-          }
-        ],
+        "effects": [],
         "range": {
           "override": false
         },
@@ -52,21 +46,20 @@
           "recovery": [],
           "max": ""
         },
-        "damage": {
-          "parts": [],
-          "onSave": "half",
-          "critical": {
-            "allow": false
-          }
-        },
-        "save": {
-          "ability": [
-            "wis"
+        "healing": {
+          "number": null,
+          "denomination": 0,
+          "types": [
+            "healing"
           ],
-          "dc": {
-            "formula": "",
-            "calculation": "spellcasting"
-          }
+          "custom": {
+            "enabled": false
+          },
+          "scaling": {
+            "number": 1,
+            "mode": ""
+          },
+          "bonus": "0"
         },
         "useConditionText": "",
         "effectConditionText": "",
@@ -91,11 +84,7 @@
           "automationOnly": false,
           "identifier": ""
         },
-        "name": "",
-        "img": "",
-        "appliedEffects": [
-          "yKnHas7sLimJm3UR"
-        ]
+        "name": ""
       }
     },
     "uses": {
@@ -107,7 +96,7 @@
       "value": "",
       "chat": ""
     },
-    "identifier": "animal-friendship",
+    "identifier": "arcane-vigor",
     "source": {
       "book": "PHB 2024",
       "page": "",
@@ -117,17 +106,17 @@
       "revision": 1
     },
     "activation": {
-      "type": "action",
+      "type": "bonus",
       "value": 1,
       "condition": ""
     },
     "duration": {
-      "value": "24",
-      "units": "hour"
+      "value": "0",
+      "units": "inst"
     },
-    "level": 1,
+    "level": 2,
     "materials": {
-      "value": "a morsel of food",
+      "value": "",
       "consumed": false,
       "cost": 0,
       "supply": 0
@@ -138,18 +127,16 @@
     },
     "properties": [
       "vocal",
-      "somatic",
-      "material"
+      "somatic"
     ],
     "range": {
-      "value": "30",
-      "units": "ft"
+      "units": "self"
     },
-    "school": "enc",
+    "school": "abj",
     "target": {
       "affects": {
         "count": "",
-        "type": "creature",
+        "type": "self",
         "choice": false,
         "special": ""
       },
@@ -165,71 +152,8 @@
     },
     "sourceClass": ""
   },
-  "effects": [
-    {
-      "name": "Animal Friendship",
-      "changes": [],
-      "transfer": false,
-      "img": "icons/environment/creatures/frog-spotted-green.webp",
-      "_id": "yKnHas7sLimJm3UR",
-      "type": "base",
-      "system": {},
-      "disabled": false,
-      "duration": {
-        "startTime": null,
-        "seconds": null,
-        "combat": null,
-        "rounds": null,
-        "turns": null,
-        "startRound": null,
-        "startTurn": null
-      },
-      "description": "",
-      "origin": null,
-      "tint": "#ffffff",
-      "statuses": [],
-      "sort": 0,
-      "flags": {
-        "dae": {
-          "enableCondition": "",
-          "disableCondition": "",
-          "disableIncapacitated": false,
-          "selfTarget": false,
-          "selfTargetAlways": false,
-          "dontApply": false,
-          "stackable": "multi",
-          "showIcon": false,
-          "durationExpression": "",
-          "macroRepeat": "none",
-          "specialDuration": []
-        },
-        "core": {
-          "overlay": false
-        },
-        "chris-premades": {
-          "noAnimation": false,
-          "conditions": [
-            "charmed"
-          ],
-          "specialDuration": [
-            "damagedByAlly"
-          ]
-        }
-      },
-      "_stats": {
-        "compendiumSource": null,
-        "duplicateSource": null,
-        "coreVersion": "12.331",
-        "systemId": "dnd5e",
-        "systemVersion": "4.1.2",
-        "createdTime": null,
-        "modifiedTime": 1736683627211,
-        "lastModifiedBy": "I80azqIoQAHVxPwK"
-      },
-      "_key": "!items.effects!eb4Dv0U5D8FWf4WB.yKnHas7sLimJm3UR"
-    }
-  ],
-  "name": "Animal Friendship",
+  "effects": [],
+  "name": "Arcane Vigor",
   "flags": {
     "midi-qol": {
       "removeAttackDamageButtons": "default",
@@ -244,11 +168,18 @@
       "riders": {
         "activity": [],
         "effect": []
+      },
+      "last": {
+        "1O3xKEvzHIATFqe6": {
+          "damageType": {
+            "0": "healing"
+          }
+        }
       }
     },
     "chris-premades": {
       "info": {
-        "identifier": "animalFriendship",
+        "identifier": "arcaneVigor",
         "version": "1.1.12",
         "source": "chris-premades",
         "rules": "modern"
@@ -256,14 +187,14 @@
       "macros": {
         "midi": {
           "item": [
-            "animalFriendship"
+            "arcaneVigor"
           ]
         }
       }
     }
   },
-  "img": "icons/environment/creatures/frog-spotted-green.webp",
+  "img": "icons/magic/life/cross-embers-glow-yellow-purple.webp",
   "folder": null,
-  "_id": "eb4Dv0U5D8FWf4WB",
-  "_key": "!items!eb4Dv0U5D8FWf4WB"
+  "_id": "0c3ludPAeYqlacA7",
+  "_key": "!items!0c3ludPAeYqlacA7"
 }

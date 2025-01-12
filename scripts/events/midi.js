@@ -11,6 +11,7 @@ import {critFumble} from '../macros/homebrew/critFumble.js';
 import {explodingHeals} from '../macros/homebrew/explodingHeals.js';
 import {CPRMultipleRollResolver} from '../applications/rollResolverMultiple.js';
 import {masteries} from '../macros/mechanics/masteries.js';
+import {effects} from '../extensions/effects.js';
 function getItemMacroData(item) {
     return item.flags['chris-premades']?.macros?.midi?.item ?? [];
 }
@@ -328,8 +329,9 @@ async function rollFinished(workflow) {
     genericUtils.log('dev', 'Executing Midi Macro Pass: sceneRollFinished');
     for (let trigger of sceneTriggers) await executeMacro(trigger, workflow);
     if (genericUtils.getCPRSetting('automatedAnimationSounds') && workflow.item) automatedAnimations.aaSound(workflow.item, 'done');
-    if (genericUtils.getCPRSetting('cleave')) await cleave(workflow);
     if (genericUtils.getCPRSetting('weaponMastery')) await masteries.RollComplete(workflow);
+    await effects.specialDuration(workflow);
+    if (genericUtils.getCPRSetting('cleave')) await cleave(workflow);
 }
 async function postAttackRoll(workflow) {
     let sceneTriggers = [];

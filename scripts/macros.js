@@ -5,4 +5,8 @@ export {animalFriendship} from './macros/2024/spells/animalFriendship.js';
 export {animalMessenger} from './macros/2024/spells/animalMessenger.js';
 export {animateDead} from './macros/2024/spells/animateDead.js';
 export {antilifeShell, antilifeShellOtherMove} from './macros/2024/spells/antilifeShell.js';
+export {arcaneVigor} from './macros/2024/spells/arcaneVigor.js';
 export {armorOfAgathys} from './macros/2024/spells/armorOfAgathys.js';
+export {armsOfHadar} from './macros/2024/spells/armsOfHadar.js';
+export {auraOfLife} from './macros/2024/spells/auraOfLife.js';
+export {auraOfPurity, auraOfPurityAura} from './macros/2024/spells/auraOfPurity.js';

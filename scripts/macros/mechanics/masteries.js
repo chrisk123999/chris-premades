@@ -162,7 +162,7 @@ async function RollComplete(workflow) {
     if (effects.length) await genericUtils.deleteEmbeddedDocuments(workflow.actor, 'ActiveEffect', effects.map(i => i.id));
     let baseItem = workflow.item.system.type.baseItem;
     if (baseItem === '') return;
-    if (!workflow.actor.system.traits.weaponProf.mastery.value.has(baseItem)) return;
+    if (!workflow.actor.system.traits?.weaponProf?.mastery?.value?.has(baseItem)) return;
     let mastery = workflow.item.system.mastery;
     if (!mastery) return;
     let macro = custom.getMacro(mastery + 'Mastery');

@@ -1,6 +1,5 @@
-import {effectUtils, genericUtils, itemUtils} from '../../utils.js';
+import {effectUtils, genericUtils, itemUtils} from '../../../utils.js';
 async function use({workflow}) {
-    let concentrationEffect = effectUtils.getConcentrationEffect(workflow.actor, workflow.item);
     let effectData = {
         name: genericUtils.format('CHRISPREMADES.Auras.Source', {auraName: workflow.item.name}),
         img: workflow.item.img,
@@ -8,8 +7,7 @@ async function use({workflow}) {
         duration: itemUtils.convertDuration(workflow.item)
     };
     effectUtils.addMacro(effectData, 'aura', ['auraOfPurityAura']);
-    await effectUtils.createEffect(workflow.actor, effectData, {concentrationItem: workflow.item, strictlyInterdependent: true, identifier: 'auraOfPurity'});
-    if (concentrationEffect) await genericUtils.update(concentrationEffect, {duration: effectData.duration});
+    await effectUtils.createEffect(workflow.actor, effectData, {concentrationItem: workflow.item, strictlyInterdependent: true, identifier: 'auraOfPurity', rules: 'modern'});
 }
 async function create({trigger: {entity: effect, target, identifier}}) {
     let targetEffect = effectUtils.getEffectByIdentifier(target.actor, identifier);
@@ -23,12 +21,6 @@ async function create({trigger: {entity: effect, target, identifier}}) {
             seconds: effect.duration.remaining
         },
         changes: [
-            {
-                key: 'system.traits.ci.value',
-                mode: 2,
-                value: 'diseased',
-                priority: 20
-            },
             {
                 key: 'system.traits.dr.value',
                 mode: 2,
@@ -49,7 +41,8 @@ async function create({trigger: {entity: effect, target, identifier}}) {
                 aura: true,
                 effect: {
                     noAnimation: true
-                }
+                },
+                rules: 'modern'
             }
         }
     };
@@ -63,7 +56,8 @@ async function create({trigger: {entity: effect, target, identifier}}) {
 }
 export let auraOfPurity = {
     name: 'Aura of Purity',
-    version: '1.1.0',
+    version: '1.1.12',
+    rules: 'modern',
     midi: {
         item: [
             {
@@ -77,6 +71,7 @@ export let auraOfPurity = {
 export let auraOfPurityAura = {
     name: 'Aura of Purity: Aura',
     version: auraOfPurity.version,
+    rules: 'modern',
     aura: [
         {
             pass: 'create',
