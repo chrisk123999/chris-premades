@@ -1,3 +1,7 @@
+# 1.1.13 Release:
+## Bug Fixes:
+- Actor Medkit
+
 # 1.1.12 Release:
 ## New Modern Content:
 - Arcane Vigor
