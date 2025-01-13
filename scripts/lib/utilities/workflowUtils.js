@@ -39,8 +39,7 @@ async function completeActivityUse(activity, config={}, dialog={}, message={}) {
     let workflow = await MidiQOL.completeActivityUse(activity, config, dialog, message);
     return workflow.workflow ?? workflow;
 }
-async function completeItemUse(item, config={}, options={}) {
-    //let oldTargets = Array.from(game.user.targets); //Temp Fix
+async function completeItemUse(item, config = {}, options = {}) {
     let fixSets = false;
     if (!options.asUser && !socketUtils.hasPermission(item.actor, game.userId)) {
         options.asUser = socketUtils.firstOwner(item.actor, true);
@@ -53,7 +52,6 @@ async function completeItemUse(item, config={}, options={}) {
     }
     // TODO: Make use completeItemUseV2 instead, once everything's ready
     let workflow = await MidiQOL.completeItemUse(item, config, options);
-    //genericUtils.updateTargets(oldTargets); //Temp Fix
     if (fixSets) {
         if (workflow.failedSaves) workflow.failedSaves = new Set(workflow.failedSaves);
         if (workflow.hitTargets) workflow.hitTargets = new Set(workflow.hitTargets);

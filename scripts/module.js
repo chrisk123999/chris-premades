@@ -94,5 +94,6 @@ globalThis['chrisPremades'] = {
     settingButton,
     integration: {
         ddbi: ddbi.getAutomation
-    }
+    },
+    customMacros: custom.getCustomMacroList
 };

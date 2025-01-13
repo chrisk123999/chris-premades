@@ -1,7 +1,7 @@
-import {upcastTargets} from '../generic/upcastTargets.js';
-export let bless = {
-    name: 'Bless',
-    version: '1.1.0',
+import {upcastTargets} from '../../generic/upcastTargets.js';
+export let bane = {
+    name: 'Bane',
+    version: '1.1.13',
     midi: {
         item: [
             {

@@ -10,3 +10,5 @@ export {armorOfAgathys} from './macros/2024/spells/armorOfAgathys.js';
 export {armsOfHadar} from './macros/2024/spells/armsOfHadar.js';
 export {auraOfLife} from './macros/2024/spells/auraOfLife.js';
 export {auraOfPurity, auraOfPurityAura} from './macros/2024/spells/auraOfPurity.js';
+export {auraOfVitality, auraOfVitalityEffect} from './macros/2024/spells/auraOfVitality.js';
+export {bane} from './macros/2024/spells/bane.js';

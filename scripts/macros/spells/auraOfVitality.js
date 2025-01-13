@@ -1,7 +1,5 @@
 import {activityUtils, effectUtils, genericUtils, itemUtils, workflowUtils} from '../../utils.js';
-
 async function use({workflow}) {
-    let concentrationEffect = effectUtils.getConcentrationEffect(workflow.actor, workflow.item);
     let feature = activityUtils.getActivityByIdentifier(workflow.item, 'auraOfVitalityHealing', {strict: true});
     if (!feature) return;
     let effectData = {
@@ -12,7 +10,7 @@ async function use({workflow}) {
     };
     await effectUtils.createEffect(workflow.actor, effectData, {
         concentrationItem: workflow.item, 
-        strictlyInterdependent: true, 
+        strictlyInterdependent: true,
         vae: [{
             type: 'use', 
             name: feature.name, 
@@ -26,7 +24,6 @@ async function use({workflow}) {
             favorite: true
         }
     });
-    if (concentrationEffect) await genericUtils.update(concentrationEffect, {duration: effectData.duration});
 }
 async function early({dialog}) {
     dialog.configure = false;

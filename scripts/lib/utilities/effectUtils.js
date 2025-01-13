@@ -30,7 +30,7 @@ async function setSaveDC(effect, dc) {
     data.saveDC = dc;
     await setCastData(effect, data);
 }
-async function createEffect(entity, effectData, {concentrationItem, parentEntity, identifier, vae, interdependent, strictlyInterdependent, unhideActivities, rules} = {}, {animationPath, animationSize = 1, animationFadeIn = 300, animationFadeOut = 300, animationSound} = {}) {
+async function createEffect(entity, effectData, {concentrationItem, parentEntity, identifier, vae, interdependent, strictlyInterdependent, unhideActivities, rules, macros} = {}, {animationPath, animationSize = 1, animationFadeIn = 300, animationFadeOut = 300, animationSound} = {}) {
     let hasPermission = socketUtils.hasPermission(entity, game.user.id);
     let concentrationEffect;
     if (concentrationItem) concentrationEffect = getConcentrationEffect(concentrationItem.actor, concentrationItem);
@@ -47,6 +47,7 @@ async function createEffect(entity, effectData, {concentrationItem, parentEntity
     }
     if (vae) genericUtils.setProperty(effectData, 'flags.chris-premades.vae.buttons', vae);
     if (rules) genericUtils.setProperty(effectData, 'flags.chris-premades.rules', rules);
+    if (macros) macros.forEach(i => addMacro(effectData, i.type, i.macros));
     let effects;
     if (hasPermission) {
         effects = await entity.createEmbeddedDocuments('ActiveEffect', [effectData]);

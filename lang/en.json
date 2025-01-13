@@ -372,6 +372,11 @@
             "Bright": "Bright",
             "Dim": "Dim"
         },
+        "MACROS": {
+            "AuraOfVitality": {
+                "Select": "Select an ally to heal:"
+            }
+        },
         "Macros": {
             "AberrantDragonmark": {
                 "ConfigId": "Associated Spell ID",
@@ -428,6 +433,9 @@
                 "HarmOrHeal": "Arcane Jolt: Harm or Heal?",
                 "Heal": "Heal",
                 "WhoHeal": "Who to heal?"
+            },
+            "ArcaneVigor": {
+                "Choose": "Select hit dice to use:"
             },
             "ArcaneWard": {
                 "Protect": "Protect {tokenName} with your arcane ward?"

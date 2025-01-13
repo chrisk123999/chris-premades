@@ -4,6 +4,7 @@ async function damage({trigger, workflow}) {
     let formula = '';
     await Promise.all(selection.map(async i => {
         if (!i.amount) return;
+        if (formula.length) formula += ' + ';
         formula += i.amount + i.document.system.hitDice;
         await genericUtils.update(i.document, {'system.hitDiceUsed': i.document.system.hitDiceUsed + i.amount});
     }));

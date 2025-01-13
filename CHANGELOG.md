@@ -1,3 +1,11 @@
+# 1.1.13 Release:
+## New Modern Content:
+- Aura of Vitality
+- Bane
+## Bug Fixes:
+- Actor Medkit
+- Arcane Vigor
+
 # 1.1.12 Release:
 ## New Modern Content:
 - Arcane Vigor
