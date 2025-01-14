@@ -122,21 +122,21 @@ export class CPRSingleRollResolver extends HandlebarsApplicationMixin(Applicatio
                     return modifiersString;
                 }, false),
                 name: this.roll.data.name,
-                flavor: this.roll.options.flavor ?? this.roll.data?.item?.name,
+                flavor: this.roll.options.type ?? this.roll.data?.item?.name,
                 bonusTotal: this.roll.terms.reduce((acc, cur) => {
                     if (cur instanceof CONFIG.Dice.termTypes.NumericTerm) acc += cur.number;
                 }, 0)
             },
             buttons: [{type: 'submit', label: 'CHRISPREMADES.Generic.Submit', name: 'confirm', icon: 'fa-solid fa-check'}]
         };
-        context.options.content = (!context.options.name || !context.options.flavor) ? context.formula : context.options.name + ' - ' + context.options.flavor;
-        if (this.roll.options?.flavor?.toLowerCase()?.includes('attack')) context.quickButtons = [
+        context.options.content = (!context.options.name || !context.options.type) ? context.formula : context.options.name + ' - ' + context.options.type;
+        if (this.roll.options?.type?.toLowerCase()?.includes('attack')) context.quickButtons = [
             {type: 'submit',  label: 'CHRISPREMADES.ManualRolls.Fumble', name: 'attack-fumble', icon: 'fa-solid fa-skull-crossbones'},
             {type: 'submit',  label: 'CHRISPREMADES.ManualRolls.Miss', name: 'attack-miss', icon: 'fa-solid fa-xmark'},
             {type: 'submit',  label: 'CHRISPREMADES.ManualRolls.Hit', name: 'attack-hit', icon: 'fa-solid fa-check'},
             {type: 'submit',  label: 'CHRISPREMADES.ManualRolls.Critical', name: 'attack-critical', icon: 'fa-solid fa-check-double'}
         ];
-        else if (this.roll.options?.flavor?.toLowerCase()?.includes('sav')) context.quickButtons = [
+        else if (this.roll.options?.type?.toLowerCase()?.includes('sav')) context.quickButtons = [
             {type: 'submit',  label: 'CHRISPREMADES.ManualRolls.Failure', name: 'save-failure', icon: 'fa-solid fa-thumbs-down'},
             {type: 'submit',  label: 'CHRISPREMADES.ManualRolls.Success', name: 'save-success', icon: 'fa-solid fa-thumbs-up'}
         ];
@@ -246,7 +246,7 @@ export class CPRSingleRollResolver extends HandlebarsApplicationMixin(Applicatio
                 case 'attack-miss':
                     this.fulfillable.forEach(({term}) => {
                         for (let i = term.results.length; i != term.number; i++) {
-                            const roll = { result: term.faces === 20 ? this.roll.options.fumble + 1 : 1, active: true};
+                            const roll = { result: term.faces === 20 ? this.roll.options.criticalFailure + 1 : 1, active: true};
                             term.results.push(roll);
                         }
                     });
@@ -254,7 +254,7 @@ export class CPRSingleRollResolver extends HandlebarsApplicationMixin(Applicatio
                 case 'attack-hit':
                     this.fulfillable.forEach(({term}) => {
                         for (let i = term.results.length; i != term.number; i++) {
-                            const roll = { result: term.faces === 20 ? this.roll.options.targetValue : 1, active: true};
+                            const roll = { result: term.faces === 20 ? this.roll.options.target : 1, active: true};
                             term.results.push(roll);
                         }
                     });

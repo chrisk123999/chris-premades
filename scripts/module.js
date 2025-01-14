@@ -76,7 +76,10 @@ Hooks.once('ready', () => {
     abilityCheck.patch();
     if (utils.genericUtils.getCPRSetting('manualRollsGMFulfils')) rollResolver.patch(true);
     if (game.modules.get('ddb-importer')?.active) ddbi.workaround(); //Remove this after MrPrimate updates to the new API.
-    if (utils.genericUtils.getCPRSetting('manualRollsEnabled')) rollResolver.registerFulfillmentMethod(); 
+    if (utils.genericUtils.getCPRSetting('manualRollsEnabled')) {
+        rollResolver.registerFulfillmentMethod();
+        rollResolver.patchBuild(true); // Update this for 4.2 when change, remove when able
+    }
     tours.checkTour();
     if (utils.genericUtils.getCPRSetting('activityCSSTweak')) activities.cssTweak();
     if (!game.user.isGM) return;

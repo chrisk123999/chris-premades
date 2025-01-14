@@ -590,6 +590,7 @@ export function registerSettings() {
             } else {
                 rollResolver.unregisterFulfillmentMethod();
             }
+            rollResolver.patchBuild(value); // Remove this when able
         }
     });
     addSetting({
