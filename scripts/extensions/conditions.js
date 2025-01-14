@@ -329,7 +329,7 @@ async function preCreateActiveEffect(effect, updates, options, userId) {
     }
     if (!changes.length && !removeStatuses.length) return;
     let sourceUpdates = {
-        changes: updates.changes.concat(changes),
+        changes: (updates.changes ?? []).concat(changes),
         statuses: updates.statuses.filter(i => !removeStatuses.includes(i))
     };
     if (splitConditions) genericUtils.setProperty(sourceUpdates, 'flags.chris-premades.conditions', removeStatuses);

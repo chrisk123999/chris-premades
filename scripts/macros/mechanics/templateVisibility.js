@@ -1,4 +1,4 @@
-import {constants, genericUtils, itemUtils, templateUtils, tokenUtils} from '../../utils.js';
+import {constants, genericUtils, templateUtils, tokenUtils} from '../../utils.js';
 async function check(workflow) {
     if (!workflow.item || !workflow.token || !workflow.targets.size) return;
     if (!constants.attacks.includes(workflow.activity.actionType)) return;

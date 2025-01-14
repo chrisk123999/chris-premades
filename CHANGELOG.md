@@ -126,6 +126,18 @@
     - Regarding "hidden" activities: They will be visible on the item sheet. This means they can be _modified_ if desired (for example, changing the formula or damage type for Magic Missile bolts). This also means however that if they are _deleted_ from the sheet, automations which expect them to exist will fail. Unless you know what you're doing, never _delete_ any activities from a medkitted item
 - With the exception of the new weapon masteries, CPR has not yet implemented any content from the 2024 rulebooks. Nevertheless, in preparation for doing so, the 2014-specific content compendiums have been moved into a "2014" subfolder
 
+# 1.0.55 Release
+## Bug Fixes:
+- Midi-Qol Condition Effects
+
+# 1.0.54 Release:
+## Bug Fixes:
+- Movement Event
+
+# 1.0.53 Release:
+## Bug Fixes:
+- Movement Event
+
 # 1.0.52 Release:
 ## Bug Fixes:
 - Dreadful Aspect
