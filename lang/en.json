@@ -304,11 +304,11 @@
             "CheckSpelling": "Check Spelling",
             "Close": "Close",
             "ConditionResistance": {
-                "Description": "Condition Resistance to {condition}, roll at advantage to save. Supports 1/true for all saves, or a comma-separated list of abilities (e.g. str,dex).",
+                "Description": "Condition Resistance to {condition}, roll at advantage to save. Supports Override change mode. 1/true for all saves, or a comma-separated list of abilities (e.g. str,dex).",
                 "Name": "{condition} Condition Resistance"
             },
             "ConditionVulnerability": {
-                "Description": "Condition Vulnerability to {condition}, roll at disadvantage to save. Supports 1/true for all saves, or a comma-separated list of abilities (e.g. str,dex).",
+                "Description": "Condition Vulnerability to {condition}, roll at disadvantage to save. Supports Override change mode. 1/true for all saves, or a comma-separated list of abilities (e.g. str,dex).",
                 "Name": "{condition} Condition Vulnerability"
             },
             "Configure": "Configure",
@@ -2648,11 +2648,11 @@
         },
         "flags.chris-premades.turnImmunity": {
             "name": "Turn Immunity",
-            "description": "Immunity to Turn Undead."
+            "description": "Immunity to Turn Undead. Use Override change mode."
         },
         "flags.chris-premades.turnResistance": {
             "name": "Turn Resistance",
-            "description": "Resistance to Turn Undead, rolls at advantage."
+            "description": "Resistance to Turn Undead, rolls at advantage. Use Override change mode."
         }
     }
 }
