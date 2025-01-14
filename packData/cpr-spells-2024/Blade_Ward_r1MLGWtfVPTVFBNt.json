@@ -1,0 +1,248 @@
+{
+  "type": "spell",
+  "system": {
+    "activities": {
+      "utilityBladeWard": {
+        "type": "utility",
+        "_id": "utilityBladeWard",
+        "sort": 0,
+        "activation": {
+          "type": "action",
+          "value": null,
+          "override": false
+        },
+        "consumption": {
+          "spellSlot": true,
+          "targets": [],
+          "scaling": {
+            "allowed": false,
+            "max": ""
+          }
+        },
+        "description": {
+          "chatFlavor": ""
+        },
+        "duration": {
+          "units": "inst",
+          "concentration": false,
+          "override": false
+        },
+        "effects": [
+          {
+            "_id": "ynXhbNOfYRje4keY"
+          }
+        ],
+        "range": {
+          "override": false
+        },
+        "target": {
+          "template": {
+            "contiguous": false,
+            "units": "ft"
+          },
+          "affects": {
+            "choice": false
+          },
+          "override": false,
+          "prompt": true
+        },
+        "uses": {
+          "spent": 0,
+          "recovery": [],
+          "max": ""
+        },
+        "roll": {
+          "prompt": false,
+          "visible": false,
+          "name": "",
+          "formula": ""
+        },
+        "useConditionText": "",
+        "effectConditionText": "",
+        "macroData": {
+          "name": "",
+          "command": ""
+        },
+        "ignoreTraits": {
+          "idi": false,
+          "idr": false,
+          "idv": false,
+          "ida": false
+        },
+        "midiProperties": {
+          "ignoreTraits": [],
+          "triggeredActivityId": "none",
+          "triggeredActivityConditionText": "",
+          "triggeredActivityTargets": "targets",
+          "triggeredActivityRollAs": "self",
+          "forceDialog": false,
+          "confirmTargets": "default",
+          "automationOnly": false,
+          "identifier": ""
+        },
+        "name": ""
+      }
+    },
+    "uses": {
+      "spent": null,
+      "max": "",
+      "recovery": []
+    },
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "identifier": "blade-ward",
+    "source": {
+      "book": "PHB 2024",
+      "page": "",
+      "license": "",
+      "custom": "",
+      "rules": "2024",
+      "revision": 1
+    },
+    "activation": {
+      "type": "action",
+      "value": 1,
+      "condition": ""
+    },
+    "duration": {
+      "value": "1",
+      "units": "minute"
+    },
+    "level": 0,
+    "materials": {
+      "value": "",
+      "consumed": false,
+      "cost": 0,
+      "supply": 0
+    },
+    "preparation": {
+      "mode": "prepared",
+      "prepared": true
+    },
+    "properties": [
+      "vocal",
+      "somatic",
+      "concentration"
+    ],
+    "range": {
+      "units": "self"
+    },
+    "school": "abj",
+    "target": {
+      "affects": {
+        "count": "",
+        "type": "self",
+        "choice": false,
+        "special": ""
+      },
+      "template": {
+        "count": "",
+        "contiguous": false,
+        "type": "",
+        "size": "",
+        "width": "",
+        "height": "",
+        "units": "ft"
+      }
+    },
+    "sourceClass": ""
+  },
+  "effects": [
+    {
+      "name": "Blade Ward",
+      "changes": [
+        {
+          "key": "flags.midi-qol.grants.attack.bonus.all",
+          "mode": 2,
+          "value": "-1d4",
+          "priority": 20
+        }
+      ],
+      "transfer": false,
+      "img": "icons/equipment/shield/buckler-wooden-boss-glowing-blue.webp",
+      "_id": "ynXhbNOfYRje4keY",
+      "type": "base",
+      "system": {},
+      "disabled": false,
+      "duration": {
+        "startTime": null,
+        "seconds": null,
+        "combat": null,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "description": "",
+      "origin": null,
+      "tint": "#ffffff",
+      "statuses": [],
+      "sort": 0,
+      "flags": {
+        "dae": {
+          "enableCondition": "",
+          "disableCondition": "",
+          "disableIncapacitated": false,
+          "selfTarget": false,
+          "selfTargetAlways": false,
+          "dontApply": false,
+          "stackable": "multi",
+          "showIcon": false,
+          "durationExpression": "",
+          "macroRepeat": "none",
+          "specialDuration": []
+        },
+        "core": {
+          "overlay": false
+        }
+      },
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "coreVersion": "12.331",
+        "systemId": "dnd5e",
+        "systemVersion": "4.1.2",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!items.effects!r1MLGWtfVPTVFBNt.ynXhbNOfYRje4keY"
+    }
+  ],
+  "name": "Blade Ward",
+  "flags": {
+    "midi-qol": {
+      "removeAttackDamageButtons": "default"
+    },
+    "midiProperties": {
+      "confirmTargets": "default",
+      "magicdam": true,
+      "magiceffect": true
+    },
+    "dnd5e": {
+      "riders": {
+        "activity": [],
+        "effect": []
+      },
+      "dependents": [
+        {
+          "uuid": "Actor.yy1I4W4hqhw1yaiM.ActiveEffect.j4L3NmQAKYxBeC4a"
+        }
+      ]
+    },
+    "chris-premades": {
+      "info": {
+        "identifier": "bladeWard",
+        "source": "chris-premades",
+        "rules": "modern",
+        "version": "1.1.15"
+      }
+    }
+  },
+  "img": "icons/equipment/shield/buckler-wooden-boss-glowing-blue.webp",
+  "folder": null,
+  "_id": "r1MLGWtfVPTVFBNt",
+  "_key": "!items!r1MLGWtfVPTVFBNt"
+}

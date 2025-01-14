@@ -23,3 +23,7 @@ export {shiningSmite} from './macros/2024/spells/shiningSmite.js';
 export {blindingSmite} from './macros/2024/spells/blindingSmite.js';
 export {staggeringSmite} from './macros/2024/spells/staggeringSmite.js';
 export {banishingSmite} from './macros/2024/spells/banishingSmite.js';
+export {banishment, banishmentBanished} from './macros/2024/spells/banishment.js';
+export {barkskin} from './macros/2024/spells/barkskin.js';
+export {beaconOfHope} from './macros/2024/spells/beaconOfHope.js';
+export {bladeWard} from './macros/2024/spells/bladeWard.js';

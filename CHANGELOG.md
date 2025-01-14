@@ -1,8 +1,15 @@
+# 1.1.15 Release:
+## New Modern Content:
+- Banishment
+- Barkskin
+- Beacon of Hope
+- Blade Ward
+
 # 1.1.14 Release:
 ## New Modern Content:
 - Banishing Smite
 - Blinding Smite
-- Divinte Smite
+- Divine Smite
 - Searing Smite
 - Shining Smite
 - Staggering Smite

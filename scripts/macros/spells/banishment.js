@@ -13,7 +13,6 @@ async function use({workflow}) {
     }
     let otherPlanarTokens = selection[0] ?? [];
     await banishmentHelper(workflow, otherPlanarTokens);
-    if (concentrationEffect) await genericUtils.update(concentrationEffect, {duration: itemUtils.convertDuration(workflow.item)});
 }
 export async function banishmentHelper(workflow, otherPlanarTokens = []) {
     let effectData = {
