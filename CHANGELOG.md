@@ -1,3 +1,10 @@
+# 1.0.56 Release
+## Big Fixes:
+- Missed localization
+- Generic Enlarge
+- Generic Reduce
+- Item Medkit
+
 # 1.0.55 Release
 ## Bug Fixes:
 - Midi-Qol Condition Effects

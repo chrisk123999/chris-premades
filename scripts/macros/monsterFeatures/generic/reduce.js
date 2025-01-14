@@ -34,7 +34,7 @@ async function use({workflow}) {
         }
     };
     if (config.oneDamage) {
-        effectUtils.addMacro(effectData, 'midi.actor', ['reduce']);
+        effectUtils.addMacro(effectData, 'midi.actor', ['reduceReduced']);
     } else {
         effectData.changes.push(
             {
@@ -114,19 +114,12 @@ async function damage({workflow}) {
 export let reduce = {
     name: 'Reduce',
     translation: 'CHRISPREMADES.Macros.Reduce.Name',
-    version: '0.12.83',
+    version: '1.0.56',
     midi: {
         item: [
             {
                 pass: 'rollFinished',
                 macro: use,
-                priority: 50
-            }
-        ],
-        actor: [
-            {
-                pass: 'damageRollComplete',
-                macro: damage,
                 priority: 50
             }
         ]
@@ -164,4 +157,17 @@ export let reduce = {
             default: true
         }
     ]
+};
+export let reduceReduced = {
+    name: 'Reduce: Reduced',
+    version: reduce.version,
+    midi: {
+        actor: [
+            {
+                pass: 'damageRollComplete',
+                macro: damage,
+                priority: 50
+            }
+        ]
+    }
 };
