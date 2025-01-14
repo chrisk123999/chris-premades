@@ -34,7 +34,7 @@ async function use({workflow}) {
         }
     };
     if (config.doubleDice) {
-        effectUtils.addMacro(effectData, 'midi.actor', ['enlarge']);
+        effectUtils.addMacro(effectData, 'midi.actor', ['enlargeEnlarged']);
     } else {
         effectData.changes.push(
             {
@@ -102,19 +102,12 @@ async function damage({workflow}) {
 export let enlarge = {
     name: 'Enlarge',
     translation: 'CHRISPREMADES.Macros.Enlarge.Name',
-    version: '1.1.0',
+    version: '1.1.16',
     midi: {
         item: [
             {
                 pass: 'rollFinished',
                 macro: use,
-                priority: 50
-            }
-        ],
-        actor: [
-            {
-                pass: 'damageRollComplete',
-                macro: damage,
                 priority: 50
             }
         ]
@@ -134,4 +127,17 @@ export let enlarge = {
             default: true
         }
     ]
+};
+export let enlargeEnlarged = {
+    name: 'Enlarge: Enlarged',
+    version: enlarge.version,
+    midi: {
+        actor: [
+            {
+                pass: 'damageRollComplete',
+                macro: damage,
+                priority: 50
+            }
+        ]
+    }
 };

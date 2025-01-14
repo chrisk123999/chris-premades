@@ -654,7 +654,7 @@ export class ItemMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
             sourceItemData.system.attunement = itemData.system.attunement;
             sourceItemData.system.equipped = itemData.system.equipped;
         }
-        if (itemData.system.quantity) sourceItemData.system.quantity;
+        if (itemData.system.quantity) sourceItemData.system.quantity = itemData.system.quantity;
         let ccssSection = itemData.flags['custom-character-sheet-sections']?.sectionName;
         if (ccssSection) genericUtils.setProperty(sourceItemData, 'flags.custom-character-sheet-sections.sectionName', ccssSection);
         if (itemData.flags.ddbimporter) sourceItemData.flags.ddbimporter = itemData.flags.ddbimporter;
