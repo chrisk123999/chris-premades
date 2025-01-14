@@ -917,15 +917,15 @@ async function changeItem(item, equipped) {
                 'mobileShot',
                 'piercingShot'
             ];
-            if (rangedKeys.includes(key)) {
-                attackActivity.range = weaponAttackActivity.range;
-            } else {
-                attackActivity.range.value = weapon.system.properties.has('thr') ? 5 : weaponAttackActivity.range.value;
-            }
-            if (attackActivity) attackActivity.attack.ability = weaponAttackActivity.ability;
-            let saveActivity =  featureData.system.activities[Object.entries(featureData.system.activities).find(i => i[1].type === 'save')?.[0]];
-            if (saveActivity) {
-                saveActivity.save.dc.calculation = attackActivity.attack.ability;
+            let saveActivity = featureData.system.activities[Object.entries(featureData.system.activities).find(i => i[1].type === 'save')?.[0]];
+            if (attackActivity) {
+                if (rangedKeys.includes(key)) {
+                    attackActivity.range = weaponAttackActivity.range;
+                } else {
+                    attackActivity.range.value = weapon.system.properties.has('thr') ? 5 : (weaponAttackActivity.range.value ?? weaponAttackActivity.range.reach);
+                }
+                attackActivity.attack.ability = weaponAttackActivity.ability;
+                if (saveActivity) saveActivity.save.dc.calculation = attackActivity.attack.ability;
             }
             featureData.system.uses.spent = (item.actor.flags['chris-premades']?.bg3WeaponActions?.[key] ?? maxUses) - maxUses;
             featureData.system.uses.max = maxUses;

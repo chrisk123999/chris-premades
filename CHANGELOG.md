@@ -1,3 +1,7 @@
+# 1.1.16 Release:
+## Bug Fixes:
+- BG3 Weapon Actions
+
 # 1.1.15 Release:
 ## New Modern Content:
 - Banishment
