@@ -1,5 +1,5 @@
 # 1.0.56 Release
-## Big Fixes:
+## Bug Fixes:
 - Missed localization
 - Generic Enlarge
 - Generic Reduce
