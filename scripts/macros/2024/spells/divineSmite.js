@@ -1,0 +1,123 @@
+import {activityUtils, actorUtils, combatUtils, constants, dialogUtils, effectUtils, genericUtils, itemUtils, rollUtils, workflowUtils} from '../../../utils.js';
+async function hit({trigger, workflow}) {
+    if (!workflow.hitTargets.size || workflow.activity.actionType != 'mwak' || actorUtils.hasUsedBonusAction(workflow.actor)) return;
+    if (combatUtils.inCombat()) if (combatUtils.getCurrentCombatantToken() != workflow.token) return;
+    let identifiers = [
+        'divineSmite',
+        'searingSmite',
+        'thunderousSmite',
+        'wrathfulSmite',
+        'shiningSmite',
+        'blindingSmite',
+        'staggeringSmite',
+        'banishingSmite'
+    ];
+    let spells = actorUtils.getCastableSpells(workflow.actor).filter(i => identifiers.includes(genericUtils.getIdentifier(i))).sort((a, b) => a.system.level - b.system.level);
+    if (!spells.length) return;
+    let selection = await dialogUtils.selectDocumentDialog(workflow.item.name, 'CHRISPREMADES.Macros.DivineSmite.Context', spells, {addNoneDocument: true});
+    if (!selection) return;
+    let target = workflow.targets.first();
+    let spellWorkflow = await workflowUtils.completeItemUse(selection, undefined, {targetUuids: [target.document.uuid]});
+    if (!spellWorkflow) return;
+    let identifier = genericUtils.getIdentifier(selection);
+    let damageType = itemUtils.getConfig(selection, 'damageType');
+    let diceSize = itemUtils.getConfig(selection, 'diceSize');
+    let diceNumber = Number(itemUtils.getConfig(selection, 'baseDiceNumber'));
+    if (isNaN(diceNumber)) return;
+    if (identifier === 'divineSmite') {
+        let creatureTypes = itemUtils.getConfig(selection, 'creatureTypes');
+        if (creatureTypes.includes(actorUtils.typeOrRace(target.actor))) diceNumber += 1;
+    } else if (identifier === 'banishingSmite') {
+        let effectData = {
+            name: selection.name,
+            img: selection.img,
+            duration: {
+                seconds: 1
+            },
+            origin: selection.uuid,
+            flags: {
+                'chris-premades': {
+                    banishingSmite: {
+                        workflowUuid: workflow.uuid
+                    }
+                }
+            }
+        };
+        await effectUtils.createEffect(workflow.actor, effectData, {identifier: 'banishingSmiteEffect', animate: false});
+    }
+    await workflowUtils.bonusDamage(workflow, ((spellWorkflow.castData.castLevel - spellWorkflow.castData.baseLevel) + diceNumber) + diceSize, {damageType});
+}
+async function complete({trigger, workflow}) {
+    let effect = effectUtils.getEffectByIdentifier(workflow.actor, 'banishingSmiteEffect');
+    if (!effect) return;
+    let workflowUuid = effect.flags['chris-premades']?.banishingSmite?.workflowUuid;
+    if (!workflowUuid) return;
+    if (workflow.uuid != workflowUuid) return;
+    let item = await fromUuid(effect.origin);
+    if (!item) return;
+    let requiredHP = Number(itemUtils.getConfig(item, 'hp'));
+    if (isNaN(requiredHP)) return;
+    await genericUtils.remove(effect);
+    if (workflow.targets.first().actor.system.attributes.hp.value > requiredHP) return;
+    let activity = activityUtils.getActivityByIdentifier(item, 'banish', {strict: true});
+    if (!activity) return;
+    await workflowUtils.syntheticActivityRoll(activity, [workflow.targets.first()]);
+}
+export let divineSmite = {
+    name: 'Divine Smite',
+    version: '1.1.14',
+    rules: 'modern',
+    midi: {
+        actor: [
+            {
+                pass: 'damageRollComplete',
+                macro: hit,
+                priority: 200,
+                unique: 'divineSmite'
+            },
+            {
+                pass: 'rollFinished',
+                macro: complete,
+                priority: 200,
+                unique: 'divineSmiteComplete'
+            }
+        ]
+    },
+    config: [
+        {
+            value: 'creatureTypes',
+            label: 'CHRISPREMADES.Macros.DivineSmite.CreatureTypes',
+            type: 'select-many',
+            default: ['undead', 'fiend'],
+            options: constants.creatureTypeOptions,
+            category: 'homebrew',
+            homebrew: true
+        },
+        {
+            value: 'damageType',
+            label: 'CHRISPREMADES.Config.DamageType',
+            type: 'select',
+            default: 'radiant',
+            category: 'homebrew',
+            homebrew: true,
+            options: constants.damageTypeOptions
+        },
+        {
+            value: 'diceSize',
+            label: 'CHRISPREMADES.Config.DiceSize',
+            type: 'select',
+            default: 'd8',
+            options: constants.diceSizeOptions,
+            category: 'homebrew',
+            homebrew: true
+        },
+        {
+            value: 'baseDiceNumber',
+            label: 'CHRISPREMADES.Config.BaseDiceNumber',
+            type: 'text',
+            default: 2,
+            category: 'homebrew',
+            homebrew: true
+        }
+    ]
+};

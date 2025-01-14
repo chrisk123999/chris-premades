@@ -113,6 +113,7 @@
             },
             "ApplyFilter": "Apply Filter:",
             "AttackBonus": "Attack Bonus:",
+            "BaseDiceNumber": "Base Dice Number:",
             "Character": "Character",
             "CheckSave": "Check Save:",
             "CheckSaves": "Check Saves:",
@@ -154,6 +155,7 @@
             "DamageType": "Damage Type:",
             "DamageTypes": "Damage Types:",
             "DarknessAnimation": "Darkness Animation:",
+            "DiceSize": "Dice Size:",
             "DisplayFormulaRoll": "Display Formula Roll:",
             "Distance": "Distance:",
             "DurationSeconds": "Duration (Seconds):",
@@ -475,6 +477,9 @@
                 "Num": "d6s",
                 "Select": "How many balms?"
             },
+            "BanishingSmite": {
+                "Hp": "Required HP:"
+            },
             "Banishment": {
                 "PlaneSelect": "Select all targets that are not from this plane."
             },
@@ -701,6 +706,8 @@
                 "ProbeDeeper": "Detect Thoughts: Probe Deeper"
             },
             "DivineSmite": {
+                "Context": "Smite Target?",
+                "CreatureTypes": "Extra Damage Creature Types:",
                 "Ranged": "Allow Smites on Ranged Attacks",
                 "Unarmed": "Allow Smites on Unarmed Strikes"
             },

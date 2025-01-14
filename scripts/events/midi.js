@@ -28,7 +28,8 @@ function collectActorMacros(item, pass) {
     let macroList = [];
     macroList.push(...getActorMacroData(item));
     if (!macroList.length) return [];
-    return macroList.map(i => custom.getMacro(i, itemUtils.getRules(item))).filter(j => j).filter(k => k.midi?.actor?.find(l => l.pass === pass)).flatMap(m => m.midi.actor).filter(n => n.pass === pass);
+    let rules = item.documentName === 'Item' ? itemUtils.getRules(item) : effectUtils.getRules(item);
+    return macroList.map(i => custom.getMacro(i, rules)).filter(j => j).filter(k => k.midi?.actor?.find(l => l.pass === pass)).flatMap(m => m.midi.actor).filter(n => n.pass === pass);
 }
 function collectAllMacros({activity, item, token, actor, sourceToken, targetToken}, pass) {
     let triggers = [];
@@ -44,9 +45,9 @@ function collectAllMacros({activity, item, token, actor, sourceToken, targetToke
                 },
                 macros: macroList,
                 name: item.name.slugify(),
-                token: token,
-                sourceToken: sourceToken,
-                targetToken: targetToken
+                token,
+                sourceToken,
+                targetToken
             });
         }
     }
@@ -135,8 +136,13 @@ function getSortedTriggers({activity, item, token, actor, sourceToken, targetTok
         triggers.push(selectedTrigger);
     });
     let sortedTriggers = [];
+    let uniqueMacros = new Set();
     triggers.forEach(trigger => {
         trigger.macros.forEach(macro => {
+            if (macro.unique) {
+                if (uniqueMacros.has(macro.unique)) return;
+                uniqueMacros.add(macro.unique);
+            }
             sortedTriggers.push({
                 castData: trigger.castData,
                 entity: trigger.entity,

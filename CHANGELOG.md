@@ -1,3 +1,15 @@
+# 1.1.14 Release:
+## New Modern Content:
+- Banishing Smite
+- Blinding Smite
+- Divinte Smite
+- Searing Smite
+- Shining Smite
+- Staggering Smite
+- Thunderous Smite
+## Bug Fixes:
+- Midi Event
+
 # 1.1.13 Release:
 ## New Modern Content:
 - Aura of Vitality

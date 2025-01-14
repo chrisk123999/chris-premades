@@ -1,3 +1,6 @@
+//Generic
+export {proneOnFail} from './macros/2024/generic/proneOnFail.js';
+//Spells
 export {acidSplash} from './macros/2024/spells/acidSplash.js';
 export {aid} from './macros/2024/spells/aid.js';
 export {alterSelf} from './macros/2024/spells/alterSelf.js';
@@ -12,3 +15,11 @@ export {auraOfLife} from './macros/2024/spells/auraOfLife.js';
 export {auraOfPurity, auraOfPurityAura} from './macros/2024/spells/auraOfPurity.js';
 export {auraOfVitality, auraOfVitalityEffect} from './macros/2024/spells/auraOfVitality.js';
 export {bane} from './macros/2024/spells/bane.js';
+export {divineSmite} from './macros/2024/spells/divineSmite.js';
+export {searingSmite} from './macros/2024/spells/searingSmite.js';
+export {thunderousSmite} from './macros/2024/spells/thunderousSmite.js';
+export {wrathfulSmite} from './macros/2024/spells/wrathfulSmite.js';
+export {shiningSmite} from './macros/2024/spells/shiningSmite.js';
+export {blindingSmite} from './macros/2024/spells/blindingSmite.js';
+export {staggeringSmite} from './macros/2024/spells/staggeringSmite.js';
+export {banishingSmite} from './macros/2024/spells/banishingSmite.js';
