@@ -1,6 +1,8 @@
 # 1.1.16 Release:
 ## Bug Fixes:
 - BG3 Weapon Actions
+## Update Notes:
+- Registered CPR fields with DAE more cleanly. Requires DAE 12.0.10+
 
 # 1.1.15 Release:
 ## New Modern Content:

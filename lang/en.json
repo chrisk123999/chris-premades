@@ -303,6 +303,14 @@
             "Check": "Ability Check",
             "CheckSpelling": "Check Spelling",
             "Close": "Close",
+            "ConditionResistance": {
+                "Description": "Condition Resistance to {condition}, roll at advantage to save. Supports 1/true for all saves, or a comma-separated list of abilities (e.g. str,dex).",
+                "Name": "{condition} Condition Resistance"
+            },
+            "ConditionVulnerability": {
+                "Description": "Condition Vulnerability to {condition}, roll at disadvantage to save. Supports 1/true for all saves, or a comma-separated list of abilities (e.g. str,dex).",
+                "Name": "{condition} Condition Vulnerability"
+            },
             "Configure": "Configure",
             "Disabled": "Disabled",
             "Distance": "Distance",
@@ -2631,5 +2639,20 @@
         "LightSelect": "Select Lights",
         "SoundSelect": "Select Sounds",
         "TemplateSelect": "Select Templates"
+    },
+    "dae.fieldData.fieldCategories.CPR": "CPR",
+    "dae.CPR.fieldData": {
+        "flags.chris-premades.senses.magicalDarkness": {
+            "name": "Magical Darkness Sense Range",
+            "description": "Distance actor can see through magical darkness. Only affects attack adv/dis with CPR automations which create magical darkness."
+        },
+        "flags.chris-premades.turnImmunity": {
+            "name": "Turn Immunity",
+            "description": "Immunity to Turn Undead."
+        },
+        "flags.chris-premades.turnResistance": {
+            "name": "Turn Resistance",
+            "description": "Resistance to Turn Undead, rolls at advantage."
+        }
     }
 }

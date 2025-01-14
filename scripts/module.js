@@ -60,7 +60,7 @@ Hooks.once('ready', () => {
     // workflow.setup();
     registerHooks();
     ddbi.ready();
-    dae.addFlags();
+    dae.initFlags();
     if (game.modules.get('gambits-premades')?.active) gambitPremades.init(utils.genericUtils.getCPRSetting('gambitPremades'));
     if (game.modules.get('midi-item-showcase-community')?.active) miscPremades.init(utils.genericUtils.getCPRSetting('miscPremades'));
     if (utils.genericUtils.getCPRSetting('disableSpecialEffects')) conditions.disableSpecialEffects(true);
