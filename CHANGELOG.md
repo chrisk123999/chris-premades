@@ -1,3 +1,7 @@
+# 1.1.17 Release:
+## Bug Fixes:
+- Prone condition
+
 # 1.1.16 Release:
 ## Bug Fixes:
 - BG3 Weapon Actions
