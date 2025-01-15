@@ -47,7 +47,7 @@ function getConfig(item, key) {
     if (flagValue !== undefined) return flagValue;
     let identifier = genericUtils.getIdentifier(item);
     if (!identifier) return;
-    let value = custom.getMacro(identifier, getRules(item))?.config?.find(i => i.value === key)?.default;
+    let value = custom.getMacro(identifier, genericUtils.getRules(item))?.config?.find(i => i.value === key)?.default;
     return value === '' ? false : value;
 }
 async function setConfig(item, key, value) {
@@ -91,7 +91,7 @@ async function isUpToDate(item) {
             break;
         case 'chris-premades': {
             let identifier = genericUtils.getIdentifier(item);
-            let rules = getRules(item);
+            let rules = genericUtils.getRules(item);
             let macro = custom.getMacro(identifier, rules);
             sourceVersion = macro?.version;
             let savedRules = item.flags['chris-premades']?.info?.rules ?? 'legacy';
@@ -181,9 +181,6 @@ function getHiddenActivities(item) {
 function getActivity(item, type) {
     return item.system.activities.getByType(type)?.[0];
 }
-function getRules(item) {
-    return item.system.source.rules === '' ? 'legacy' : item.system.source.rules === '2014' ? 'legacy' : 'modern';
-}
 export let itemUtils = {
     getSaveDC,
     createItems,
@@ -209,6 +206,5 @@ export let itemUtils = {
     itemUpdate,
     setHiddenActivities,
     getHiddenActivities,
-    getActivity,
-    getRules
+    getActivity
 };

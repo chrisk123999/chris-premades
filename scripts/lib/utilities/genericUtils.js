@@ -161,6 +161,10 @@ function checkPlayerOwnership(entity) {
         else return false;
     });
 }
+function getRules(entity) {
+    if (entity.documentName === 'Item') return entity.system.source.rules === '' ? 'legacy' : entity.system.source.rules === '2014' ? 'legacy' : 'modern';
+    return entity.flags['chris-premades']?.rules ?? 'legacy';
+}
 export let genericUtils = {
     sleep,
     translate,
@@ -190,5 +194,6 @@ export let genericUtils = {
     titleCase,
     camelCaseToWords,
     getIdentifier,
-    checkPlayerOwnership
+    checkPlayerOwnership,
+    getRules
 };

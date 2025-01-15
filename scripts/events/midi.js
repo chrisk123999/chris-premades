@@ -19,17 +19,16 @@ function collectItemMacros(item, pass, activityIdentifier) {
     let macroList = [];
     macroList.push(...getItemMacroData(item));
     if (!macroList.length) return [];
-    return macroList.map(i => custom.getMacro(i, itemUtils.getRules(item))).filter(j => j).filter(k => k.midi?.item?.find(l => l.pass === pass)).flatMap(m => m.midi.item).filter(n => n.pass === pass && (!n.activities?.length || n.activities.includes(activityIdentifier)));
+    return macroList.map(i => custom.getMacro(i, genericUtils.getRules(item))).filter(j => j).filter(k => k.midi?.item?.find(l => l.pass === pass)).flatMap(m => m.midi.item).filter(n => n.pass === pass && (!n.activities?.length || n.activities.includes(activityIdentifier)));
 }
 function getActorMacroData(entity) {
     return entity.flags['chris-premades']?.macros?.midi?.actor ?? [];
 }
-function collectActorMacros(item, pass) {
+function collectActorMacros(entity, pass) {
     let macroList = [];
-    macroList.push(...getActorMacroData(item));
+    macroList.push(...getActorMacroData(entity));
     if (!macroList.length) return [];
-    let rules = item.documentName === 'Item' ? itemUtils.getRules(item) : effectUtils.getRules(item);
-    return macroList.map(i => custom.getMacro(i, rules)).filter(j => j).filter(k => k.midi?.actor?.find(l => l.pass === pass)).flatMap(m => m.midi.actor).filter(n => n.pass === pass);
+    return macroList.map(i => custom.getMacro(i, genericUtils.getRules(entity))).filter(j => j).filter(k => k.midi?.actor?.find(l => l.pass === pass)).flatMap(m => m.midi.actor).filter(n => n.pass === pass);
 }
 function collectAllMacros({activity, item, token, actor, sourceToken, targetToken}, pass) {
     let triggers = [];

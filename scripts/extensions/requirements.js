@@ -68,7 +68,7 @@ async function ruleCheck(workflow) {
     let macro = custom.getMacro(identifier);
     if (!macro) return;
     if (!macro.rules) return;
-    if (itemUtils.getRules(workflow.item) === macro.rules) return;
+    if (genericUtils.getRules(workflow.item) === macro.rules) return;
     let message = '<hr>' + genericUtils.translate('CHRISPREMADES.Error.RulesMismatch');
     await ChatMessage.create({
         speaker: {alias: genericUtils.translate('CHRISPREMADES.Generic.CPR')},

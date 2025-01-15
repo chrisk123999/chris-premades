@@ -11,7 +11,7 @@ function collectEffectMacros(effect) {
     let macroList = [];
     macroList.push(...getEffectMacroData(effect));
     if (!macroList.length) return [];
-    return macroList.map(i => custom.getMacro(i, effectUtils.getRules(effect))).filter(j => j);
+    return macroList.map(i => custom.getMacro(i, genericUtils.getRules(effect))).filter(j => j);
 }
 function collectMacros(effect, pass) {
     let macroList = collectEffectMacros(effect);

@@ -71,7 +71,7 @@ export async function renderItemSheet(app, [elem], options) {
         case 1: {
             if (source === 'chris-premades') {
                 let identifier = genericUtils.getIdentifier(item);
-                if (custom.getMacro(identifier, itemUtils.getRules(item))?.config) {
+                if (custom.getMacro(identifier, genericUtils.getRules(item))?.config) {
                     headerButton.style.color = 'dodgerblue';
                 } else {
                     headerButton.style.color = 'green';
@@ -82,7 +82,7 @@ export async function renderItemSheet(app, [elem], options) {
             return;
         }
         case -1: {
-            let availableItem = await compendiumUtils.getPreferredAutomation(item, {identifier: item?.actor?.flags['chris-premades']?.info?.identifier, rules: itemUtils.getRules(item)});
+            let availableItem = await compendiumUtils.getPreferredAutomation(item, {identifier: item?.actor?.flags['chris-premades']?.info?.identifier, rules: genericUtils.getRules(item)});
             if (availableItem) headerButton.style.color = 'yellow';
             return;
         }

@@ -10,8 +10,7 @@ function collectMacros(entity) {
     let macroList = [];
     macroList.push(...getMacroData(entity));
     if (!macroList.length) return [];
-    let rules = entity.documentName === 'Item' ? itemUtils.getRules(entity) : effectUtils.getRules(entity);
-    return macroList.map(i => custom.getMacro(i, rules)).filter(j => j);
+    return macroList.map(i => custom.getMacro(i, genericUtils.getRules(entity))).filter(j => j);
 }
 function collectTokenMacros(token, pass, distance, target) {
     let triggers = [];

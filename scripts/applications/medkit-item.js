@@ -113,7 +113,7 @@ export class ItemMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
         return itemUtils.getVersion(this.item);
     }
     get _macro() {
-        return custom.getMacro(this.identifier, itemUtils.getRules(this.item));
+        return custom.getMacro(this.identifier, genericUtils.getRules(this.item));
     }
     /* Only expected to change when the actual item is changed upon update/apply */
     get name() {
@@ -629,7 +629,7 @@ export class ItemMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
     /* Our async function to call before rendering so that we can fetch documents from compendiums */
     async readyData() {
         this.isUpToDate = await itemUtils.isUpToDate(this.item);
-        this.availableAutomations = await compendiumUtils.getAllAutomations(this.item, {identifier: this.item?.actor?.flags['chris-premades']?.info?.identifier, rules: itemUtils.getRules(this.item)});
+        this.availableAutomations = await compendiumUtils.getAllAutomations(this.item, {identifier: this.item?.actor?.flags['chris-premades']?.info?.identifier, rules: genericUtils.getRules(this.item)});
         this._prepared = true;
     }
     /* Outwards facing function that all other medkits will also use to update any given item with another */
@@ -669,7 +669,7 @@ export class ItemMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
         if (CONFIG.DND5E.defaultArtwork.Item[itemType] != itemData.img) sourceItemData.img = itemData.img;
         if (itemData.folder) sourceItemData.folder = itemData.folder;
         if (item.effects.size) await item.deleteEmbeddedDocuments('ActiveEffect', item.effects.map(i => i.id));
-        genericUtils.setProperty(sourceItemData, 'flags.chris-premades.info.rules', itemUtils.getRules(item));
+        genericUtils.setProperty(sourceItemData, 'flags.chris-premades.info.rules', genericUtils.getRules(item));
         await item.update(sourceItemData, {diff: false, recursive: false});
         return item;
     }

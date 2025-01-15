@@ -69,7 +69,7 @@ export class ActorMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
             source: itemUtils.getSource(i), 
             version: itemUtils.getVersion(i),
             isUpToDate: await itemUtils.isUpToDate(i),
-            sourceItem: await compendiumUtils.getAppliedOrPreferredAutomation(i, {identifier: this.identifier, rules: itemUtils.getRules(i)})
+            sourceItem: await compendiumUtils.getAppliedOrPreferredAutomation(i, {identifier: this.identifier, rules: genericUtils.getRules(i)})
         })));
         this.amounts = this.actorItems.reduce((accumulator, currentValue) => {
             if (['class', 'subclass'].includes(currentValue.item.type)) return accumulator;

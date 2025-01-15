@@ -82,9 +82,6 @@ function getIntersections(region, A, B, boolOnly = false) {
     if (boolOnly) return totalIntersections.length ? true : false;
     return totalIntersections;
 }
-function getRules(region) {
-    return region.flags['chris-premades']?.rules ?? 'legacy';
-}
 export let regionUtils = {
     createRegions,
     templateToRegionShape,
@@ -97,6 +94,5 @@ export let regionUtils = {
     getSaveDC,
     setSaveDC,
     rayIntersectsRegion,
-    getIntersections,
-    getRules
+    getIntersections
 };
