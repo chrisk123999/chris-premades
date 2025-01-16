@@ -2,6 +2,7 @@ import {upcastTargets} from '../../generic/upcastTargets.js';
 export let bane = {
     name: 'Bane',
     version: '1.1.13',
+    rules: 'modern',
     midi: {
         item: [
             {

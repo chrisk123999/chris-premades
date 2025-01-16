@@ -1,6 +1,14 @@
 # 1.1.17 Release:
+## New Modern Content:
+- Bless
+- Blight
+- Blindness/Deafness
+- Blink
+- Blur
+## Update Notes:
+- Midi-Qol Condition Effects have been updated to support modern rules.
 ## Bug Fixes:
-- Prone condition
+- Midi-Qol Condition Effects
 
 # 1.1.16 Release:
 ## Bug Fixes:

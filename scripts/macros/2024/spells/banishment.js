@@ -13,40 +13,40 @@ async function use({trigger, workflow}) {
         duration: itemUtils.convertDuration(workflow.item),
         changes: [
             {
-                'key': 'flags.midi-qol.superSaver.all',
-                'mode': 0,
-                'value': 1,
-                'priority': 20
+                key: 'flags.midi-qol.superSaver.all',
+                mode: 0,
+                value: 1,
+                priority: 20
             },
             {
-                'key': 'system.attributes.ac.bonus',
-                'mode': 4,
-                'value': 99,
-                'priority': 20
+                key: 'system.attributes.ac.bonus',
+                mode: 4,
+                value: 99,
+                priority: 20
             },
             {
-                'key': 'flags.midi-qol.min.ability.save.all',
-                'mode': 0,
-                'value': 99,
-                'priority': 20
+                key: 'flags.midi-qol.min.ability.save.all',
+                mode: 0,
+                value: 99,
+                priority: 20
             },
             {
-                'key': 'flags.midi-qol.grants.noCritical.all',
-                'mode': 0,
-                'value': 1,
-                'priority': 20
+                key: 'flags.midi-qol.grants.noCritical.all',
+                mode: 0,
+                value: 1,
+                priority: 20
             },
             {
-                'key': 'flags.midi-qol.neverTarget',
-                'mode': 0,
-                'value': 1,
-                'priority': 20
+                key: 'flags.midi-qol.neverTarget',
+                mode: 0,
+                value: 1,
+                priority: 20
             },
             {
-                'key': 'macro.tokenMagic',
-                'mode': 0,
-                'value': 'spectral-body',
-                'priority': 20
+                key: 'macro.tokenMagic',
+                mode: 0,
+                value: 'spectral-body',
+                priority: 20
             }
         ],
         flags: {
@@ -109,6 +109,7 @@ export let banishment = {
 export let banishmentBanished = {
     name: 'Banished',
     version: banishment.version,
+    rules: 'modern',
     effect: [
         {
             pass: 'deleted',

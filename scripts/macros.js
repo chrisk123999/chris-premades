@@ -1,3 +1,5 @@
+//Mechanics
+export {invisible} from './macros/2024/mechanics/invisible.js';
 //Generic
 export {proneOnFail} from './macros/2024/generic/proneOnFail.js';
 //Spells
@@ -27,3 +29,8 @@ export {banishment, banishmentBanished} from './macros/2024/spells/banishment.js
 export {barkskin} from './macros/2024/spells/barkskin.js';
 export {beaconOfHope} from './macros/2024/spells/beaconOfHope.js';
 export {bladeWard} from './macros/2024/spells/bladeWard.js';
+export {bless} from './macros/2024/spells/bless.js';
+export {blight} from './macros/2024/spells/blight.js';
+export {blindnessDeafness} from './macros/2024/spells/blindnessDeafness.js';
+export {blink, blinkBlinking, blinkBlinkedAway} from './macros/2024/spells/blink.js';
+export {blur, blurEffect} from './macros/2024/spells/blur.js';

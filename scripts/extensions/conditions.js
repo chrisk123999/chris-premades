@@ -57,7 +57,12 @@ let ignoredStatusEffects = [
     'stable',
     'surprised',
     'silenced',
-    'dodging'
+    'dodging',
+    'burning',
+    'dehydration',
+    'falling',
+    'malnutrition',
+    'suffocation'
 ];
 function disableNonConditionStatusEffects() {
     CONFIG.statusEffects = CONFIG.statusEffects.filter(i => !ignoredStatusEffects.includes(i.id));
@@ -78,7 +83,10 @@ async function preCreateActiveEffect(effect, updates, options, userId) {
         });
     }
     let changes = [];
+    let invisibleMacro = false;
     if (genericUtils.getCPRSetting('applyConditionChanges') && statusId) {
+        let rules = game.settings.get('dnd5e', 'rulesVersion');
+        let removeMovement = false;
         statuses.forEach(i => {
             switch(i) {
                 case 'blinded':
@@ -114,20 +122,32 @@ async function preCreateActiveEffect(effect, updates, options, userId) {
                     );
                     return;
                 case 'invisible':
-                    changes.push(
-                        {
-                            key: 'flags.midi-qol.advantage.attack.all',
-                            mode: 0,
-                            value: 1,
-                            priority: 20
-                        },
-                        {
-                            key: 'flags.midi-qol.grants.disadvantage.attack.all',
-                            mode: 0,
-                            value: 1,
-                            priority: 20
-                        }
-                    );
+                    if (rules === 'modern') {
+                        invisibleMacro = true;
+                        changes.push(
+                            {
+                                key: 'flags.dnd5e.initiativeAdv',
+                                mode: 0,
+                                value: 1,
+                                priority: 20
+                            }
+                        );
+                    } else {
+                        changes.push(
+                            {
+                                key: 'flags.midi-qol.advantage.attack.all',
+                                mode: 0,
+                                value: 1,
+                                priority: 20
+                            },
+                            {
+                                key: 'flags.midi-qol.grants.disadvantage.attack.all',
+                                mode: 0,
+                                value: 1,
+                                priority: 20
+                            }
+                        );
+                    }
                     return;
                 case 'paralyzed':
                     changes.push(
@@ -156,6 +176,7 @@ async function preCreateActiveEffect(effect, updates, options, userId) {
                             priority: 20
                         }
                     );
+                    removeMovement = true;
                     return;
                 case 'petrified':
                     changes.push(
@@ -196,6 +217,7 @@ async function preCreateActiveEffect(effect, updates, options, userId) {
                             priority: 20
                         }
                     );
+                    removeMovement = true;
                     return;
                 case 'poisoned':
                     changes.push(
@@ -262,6 +284,10 @@ async function preCreateActiveEffect(effect, updates, options, userId) {
                             priority: 20
                         }
                     );
+                    removeMovement = true;
+                    return;
+                case 'grappled':
+                    removeMovement = true;
                     return;
                 case 'silenced':
                     changes.push(
@@ -323,16 +349,46 @@ async function preCreateActiveEffect(effect, updates, options, userId) {
                             priority: 20
                         }
                     );
+                    removeMovement = true;
                     return;
+                case 'incapacitated':
+                    if (rules != 'modern') return;
+                    changes.push(
+                        {
+                            key: 'flags.dnd5e.initiativeDisadv',
+                            mode: 0,
+                            value: 1,
+                            priority: 20
+                        }
+                    );
             }
         });
+        if (removeMovement) {
+            let movementNames = ['burrow', 'climb', 'fly', 'swim', 'walk'];
+            movementNames.forEach(i => {
+                changes.push(
+                    {
+                        key: 'system.attributes.movement.' + i,
+                        mode: 2,
+                        value: 0,
+                        priority: 20
+                    }
+                );
+            });
+        }
     }
-    if (!changes.length && !removeStatuses.length) return;
+    if (!changes.length && !removeStatuses.length && !invisibleMacro) return;
     let sourceUpdates = {
         changes: (updates.changes ?? []).concat(changes),
         statuses: updates.statuses.filter(i => !removeStatuses.includes(i))
     };
     if (splitConditions) genericUtils.setProperty(sourceUpdates, 'flags.chris-premades.conditions', removeStatuses);
+    if (invisibleMacro) {
+        let actorMacros = updates?.flags?.['chris-premades']?.macros?.midi?.actor ?? [];
+        actorMacros.push('invisible');
+        genericUtils.setProperty(sourceUpdates, 'flags.chris-premades.macros.midi.actor', actorMacros);
+        genericUtils.setProperty(sourceUpdates, 'flags.chris-premades.rules', 'modern');
+    }
     effect.updateSource(sourceUpdates);
 }
 function disableSpecialEffects(enabled) {

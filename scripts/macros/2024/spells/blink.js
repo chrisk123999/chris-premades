@@ -1,6 +1,6 @@
-import {socket, sockets} from '../../lib/sockets.js';
-import {animationUtils, effectUtils, genericUtils, itemUtils, socketUtils} from '../../utils.js';
-async function use({workflow}) {
+import {socket, sockets} from '../../../lib/sockets.js';
+import {animationUtils, effectUtils, genericUtils, itemUtils, socketUtils} from '../../../utils.js';
+async function use({trigger, workflow}) {
     let playAnimation = itemUtils.getConfig(workflow.item, 'playAnimation');
     let effectData = {
         name: workflow.item.name,
@@ -15,8 +15,11 @@ async function use({workflow}) {
             }
         }
     };
-    effectUtils.addMacro(effectData, 'combat', ['blinkBlinking']);
-    await effectUtils.createEffect(workflow.actor, effectData, {identifier: 'blink'});
+    await effectUtils.createEffect(workflow.actor, effectData, {
+        identifier: 'blink',
+        rules: 'modern',
+        macros: [{type: 'combat', macros: ['blinkBlinking']}]
+    });
 }
 async function turnStart({trigger: {entity: effect, token}}) {
     let playAnimation = effect.flags['chris-premades'].blink.playAnimation && animationUtils.jb2aCheck();
@@ -24,7 +27,7 @@ async function turnStart({trigger: {entity: effect, token}}) {
     await genericUtils.remove(effect);
 }
 async function turnEnd({trigger: {entity: effect, token}}) {
-    let blinkRoll = await new Roll('1d20').evaluate();
+    let blinkRoll = await new Roll('1d6').evaluate();
     blinkRoll.toMessage({
         rollMode: 'roll',
         speaker: {
@@ -35,7 +38,7 @@ async function turnEnd({trigger: {entity: effect, token}}) {
         },
         flavor: effect.name
     });
-    if (blinkRoll.total < 11) return;
+    if (blinkRoll.total < 4) return;
     let playAnimation = effect.flags['chris-premades'].blink.playAnimation;
     let effectData = {
         name: genericUtils.translate('CHRISPREMADES.Macros.Blink.Away'),
@@ -47,38 +50,38 @@ async function turnEnd({trigger: {entity: effect, token}}) {
         changes: [
             {
                 key: 'flags.midi-qol.superSaver.all',
+                mode: 0,
                 value: 1,
-                mode: 5,
                 priority: 20
             },
             {
                 key: 'system.attributes.ac.bonus',
-                value: 100,
-                mode: 5,
+                mode: 4,
+                value: 99,
                 priority: 20
             },
             {
                 key: 'flags.midi-qol.min.ability.save.all',
-                value: 100,
-                mode: 5,
+                mode: 0,
+                value: 99,
                 priority: 20
             },
             {
                 key: 'flags.midi-qol.grants.noCritical.all',
-                value: 1,
-                mode: 5,
-                priority: 20
-            },
-            {
-                key: 'macro.tokenMagic',
-                value: 'spectral-body',
                 mode: 0,
+                value: 1,
                 priority: 20
             },
             {
                 key: 'flags.midi-qol.neverTarget',
-                value: true,
                 mode: 0,
+                value: 1,
+                priority: 20
+            },
+            {
+                key: 'macro.tokenMagic',
+                mode: 0,
+                value: 'spectral-body',
                 priority: 20
             }
         ],
@@ -90,12 +93,15 @@ async function turnEnd({trigger: {entity: effect, token}}) {
             }
         }
     };
-    effectUtils.addMacro(effectData, 'combat', ['blinkBlinkedAway']);
-    await effectUtils.createEffect(token.actor, effectData, {identifier: 'blinkBlinkedAway'});
+    await effectUtils.createEffect(token.actor, effectData, {
+        identifier: 'blinkBlinkedAway',
+        rules: 'modern',
+        macros: [{type: 'combat', macros: ['blinkBlinkedAway']}]
+    });
 }
 export let blink = {
     name: 'Blink',
-    version: '1.1.0',
+    version: '1.1.17',
     hasAnimation: true,
     midi: {
         item: [

@@ -86,6 +86,7 @@ export let antilifeShell = {
 export let antilifeShellOtherMove = {
     name: antilifeShell.name,
     version: antilifeShell.version,
+    rules: 'modern',
     movement: [
         {
             pass: 'movedNear',
