@@ -1,3 +1,8 @@
+# 1.1.18 Release:
+## Bug Fixes:
+- Medkit
+- Midi-Qol Condition Effects
+
 # 1.1.17 Release:
 ## New Modern Content:
 - Bless

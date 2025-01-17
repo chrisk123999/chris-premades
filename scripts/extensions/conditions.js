@@ -369,7 +369,7 @@ async function preCreateActiveEffect(effect, updates, options, userId) {
                 changes.push(
                     {
                         key: 'system.attributes.movement.' + i,
-                        mode: 2,
+                        mode: 3,
                         value: 0,
                         priority: 20
                     }
