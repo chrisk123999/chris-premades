@@ -168,7 +168,7 @@ async function selectDocumentDialog(title, content, documents, {displayTooltips 
         });
     }
     let inputFields = documents.map(i => ({
-        label: i.name + (showCR ? ' [' + genericUtils.format('DND5E.CRLabel', {cr: i.system?.details?.cr ?? '?'}) + ']' : (showSpellLevel ? ' [' + genericUtils.translate('DND5E.SpellLevel') + ' ' + (i.system?.level ?? '?') + ']' : '')),
+        label: i.name + (showCR ? ' [' + genericUtils.format('DND5E.CRLabel', {cr: i.system?.details?.cr ?? '?'}) + ']' : (showSpellLevel ? ' [' + genericUtils.translate('DND5E.SpellLevel') + ' ' + (i.system?.level ?? '?') + ']' : '')) + (i.system?.linkedActivity ? ' (' + i.system.linkedActivity.item.name + ')' : ''),
         name: i.uuid ?? i.actor?.uuid,
         options: {
             image: i.img + (i.system?.details?.cr != undefined ? ` (CR ${genericUtils.decimalToFraction(i.system?.details?.cr)})` : ``),

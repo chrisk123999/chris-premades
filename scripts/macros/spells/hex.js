@@ -106,7 +106,7 @@ async function move({workflow}) {
             selection = targets[0];
         }
     }
-    if (selection.actor) {
+    if (selection?.actor) {
         let effect = effectUtils.getEffectByIdentifier(selection.actor, 'hexed');
         if (effect) await genericUtils.remove(effect);
     }

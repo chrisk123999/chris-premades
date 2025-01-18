@@ -139,6 +139,27 @@ function getCastableSpells(actor) {
     validSpells = validSpells.filter(i => !i.system.hasLimitedUses || i.system.uses.value);
     // If no spell slot (and requires), remove
     validSpells = validSpells.filter(i => ['atwill', 'innate'].includes(i.system.preparation.mode) || maxSlot >= i.system.level);
+    // Cast activity shenanigans
+    validSpells = validSpells.filter(i => {
+        let linkedActivity = i.system.linkedActivity;
+        if (!linkedActivity) return true;
+        for (let target of linkedActivity.consumption.targets ?? []) {
+            if (target.type === 'itemUses') {
+                let targetItem;
+                if (!target.target?.length) {
+                    targetItem = linkedActivity.item;
+                } else {
+                    targetItem = actor.items.get(target.target);
+                }
+                if (Number(targetItem?.system.uses.value ?? 0) < Number(target.value ?? 0)) return false;
+            } else if (target.type === 'activityUses') {
+                if (Number(linkedActivity.uses.value ?? 0) < Number(target.value ?? 0)) return false;
+            } else if (target.type === 'material') {
+                if (Number(actor.items.get(target.target)?.system.quantity ?? 0) < Number(target.value ?? 0)) return false;
+            }
+            return true;
+        }
+    });
     return validSpells;
 }
 function isShapeChanger(actor) {

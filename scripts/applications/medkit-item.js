@@ -666,7 +666,15 @@ export class ItemMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
         if (!macrosFlag) genericUtils.setProperty(sourceItemData, 'flags.chris-premades.-=macros', null);
         let config = itemData.flags['chris-premades']?.config;
         if (config) genericUtils.setProperty(sourceItemData, 'flags.chris-premades.config', config);
-        if (CONFIG.DND5E.defaultArtwork.Item[itemType] != itemData.img) sourceItemData.img = itemData.img;
+        if (CONFIG.DND5E.defaultArtwork.Item[itemType] != itemData.img) {
+            for (let sourceEffect of sourceItemData.effects ?? []) {
+                if (sourceEffect.img === sourceItemData.img) sourceEffect.img = itemData.img;
+            }
+            for (let [key, value] of Object.entries(sourceItemData.system.activities) ?? {}) {
+                if (value.img === sourceItemData.img) sourceItemData.system.activities[key].img = itemData.img;
+            }
+            sourceItemData.img = itemData.img;
+        }
         if (itemData.folder) sourceItemData.folder = itemData.folder;
         if (item.effects.size) await item.deleteEmbeddedDocuments('ActiveEffect', item.effects.map(i => i.id));
         genericUtils.setProperty(sourceItemData, 'flags.chris-premades.info.rules', genericUtils.getRules(item));
