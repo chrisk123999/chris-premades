@@ -2,6 +2,7 @@
 ## Bug Fixes:
 - Medkit
 - Midi-Qol Condition Effects
+- DDBI Integration
 
 # 1.1.17 Release:
 ## New Modern Content:
