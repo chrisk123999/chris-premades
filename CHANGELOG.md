@@ -1,3 +1,7 @@
+# 1.1.18 Release:
+## Bug Fixes:
+- DDBI Integration
+
 # 1.1.17 Release:
 ## New Modern Content:
 - Bless

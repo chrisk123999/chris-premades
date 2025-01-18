@@ -184,11 +184,9 @@ async function getAutomation(itemName, options = {rules: '2014', actorType: 'cha
     if (!items.length) return;
     items = items.sort((a, b) => a.priority - b.priority);
     let itemData = genericUtils.duplicate(items[0].document.toObject());
-    genericUtils.setProperty(itemData, 'flags.chris-premades.info', {
-        rules: options.rules === '2014' ? 'legacy' : options.rules === '2024' ? 'modern' : options.rules,
-        source: items[0].source,
-        version: items[0].version
-    });
+    genericUtils.setProperty(itemData, 'flags.chris-premades.info.rules', options.rules === '2014' ? 'legacy' : options.rules === '2024' ? 'modern' : options.rules);
+    genericUtils.setProperty(itemData, 'flags.chris-premades.info.source', items[0].source);
+    genericUtils.setProperty(itemData, 'flags.chris-premades.info.version', items[0].version);
     return itemData;
 }
 export let ddbi = {
