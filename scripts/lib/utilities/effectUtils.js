@@ -170,7 +170,7 @@ async function sidebarEffectHelper(documentId, toggle) {
     selectedTokens.forEach(i => {
         if (!i.actor) return;
         effectData.origin = i.actor.uuid;
-        let effect = actorUtils.getEffects(i.actor).find(i => i.flags['chris-premades']?.effectInterface?.id === document.id);
+        let effect = actorUtils.getEffects(i.actor).find(i => i.flags['chris-premades']?.effectInterface?.id === document.id || i.id === document.id);
         let stackable = effect?.flags.dae?.stackable === 'count';
         let stackCount = effect?.flags.dae?.stacks ?? 1;
         if (effect && toggle) {

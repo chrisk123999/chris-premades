@@ -408,15 +408,24 @@ export function registerSettings() {
         default: false,
         category: 'mechanics',
         onChange: value => {
-            if (!game.user.isGM) return;
             if (value) {
-                Hooks.on('createActiveEffect', tokens.createDeleteUpdateActiveEffect);
-                Hooks.on('deleteActiveEffect', tokens.createDeleteUpdateActiveEffect);
-                Hooks.on('updateActiveEffect', tokens.createDeleteUpdateActiveEffect);
+                Hooks.on('preCreateActiveEffect', tokens.preCreateUpdateActiveEffect);
+                Hooks.on('preDeleteActiveEffect', tokens.preDeleteActiveEffect);
+                Hooks.on('preUpdateActiveEffect', tokens.preCreateUpdateActiveEffect);
+                if (game.user.isGM) {
+                    Hooks.on('createActiveEffect', tokens.createDeleteUpdateActiveEffect);
+                    Hooks.on('deleteActiveEffect', tokens.createDeleteUpdateActiveEffect);
+                    Hooks.on('updateActiveEffect', tokens.createDeleteUpdateActiveEffect);
+                }
             } else {
-                Hooks.off('createActiveEffect', tokens.createDeleteUpdateActiveEffect);
-                Hooks.off('deleteActiveEffect', tokens.createDeleteUpdateActiveEffect);
-                Hooks.off('updateActiveEffect', tokens.createDeleteUpdateActiveEffect);
+                Hooks.off('preCreateActiveEffect', tokens.preCreateUpdateActiveEffect);
+                Hooks.off('preDeleteActiveEffect', tokens.preDeleteActiveEffect);
+                Hooks.off('preUpdateActiveEffect', tokens.preCreateUpdateActiveEffect);
+                if (game.user.isGM) {
+                    Hooks.off('createActiveEffect', tokens.createDeleteUpdateActiveEffect);
+                    Hooks.off('deleteActiveEffect', tokens.createDeleteUpdateActiveEffect);
+                    Hooks.off('updateActiveEffect', tokens.createDeleteUpdateActiveEffect);
+                }
             }
         }
     });
