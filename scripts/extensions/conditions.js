@@ -44,7 +44,6 @@ async function configureStatusEffectIcons() {
     await genericUtils.setCPRSetting('statusEffectIcons', selection);
 }
 let ignoredStatusEffects = [
-    'bleeding',
     'burrowing',
     'cursed',
     'ethereal',
