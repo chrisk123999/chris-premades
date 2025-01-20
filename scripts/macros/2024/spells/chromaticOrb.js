@@ -3,7 +3,7 @@ async function damage({trigger, workflow}) {
     if (!workflow.hitTargets.size) return;
     let damageTypes = itemUtils.getConfig(workflow.item, 'damageTypes');
     if (!damageTypes.length) return;
-    let damageType = workflow.item.flags['chris-premades']?.chromaticOrb?.damageType ?? await dialogUtils.selectDamageType(damageTypes);
+    let damageType = workflow.item.flags['chris-premades']?.chromaticOrb?.damageType ?? await dialogUtils.selectDamageType(damageTypes, workflow.item.name, 'CHRISPREMADES.Generic.SelectDamageType');
     if (!damageType) damageType = damageTypes[0];
     workflow.damageRolls.forEach(roll => roll.options.type = damageType);
     await workflow.setDamageRolls(workflow.damageRolls);
