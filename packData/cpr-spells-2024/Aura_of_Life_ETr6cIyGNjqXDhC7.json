@@ -146,7 +146,7 @@
       }
     },
     "identifier": "aura-of-life",
-    "sourceClass": "cleric"
+    "sourceClass": ""
   },
   "name": "Aura of Life",
   "flags": {

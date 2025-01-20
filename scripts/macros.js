@@ -40,3 +40,5 @@ export {calmEmotions} from './macros/2024/spells/calmEmotions.js';
 export {chainLightning} from './macros/2024/spells/chainLightning.js';
 export {charmMonster} from './macros/2024/spells/charmMonster.js';
 export {charmPerson} from './macros/2024/spells/charmPerson.js';
+export {chillTouch} from './macros/2024/spells/chillTouch.js';
+export {chromaticOrb} from './macros/2024/spells/chromaticOrb.js';

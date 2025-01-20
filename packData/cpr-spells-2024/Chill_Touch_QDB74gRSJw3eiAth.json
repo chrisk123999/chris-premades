@@ -2,9 +2,9 @@
   "type": "spell",
   "system": {
     "activities": {
-      "saveCharmPersonI": {
-        "type": "save",
-        "_id": "saveCharmPersonI",
+      "attackChillTouch": {
+        "type": "attack",
+        "_id": "attackChillTouch",
         "sort": 0,
         "activation": {
           "type": "action",
@@ -23,14 +23,14 @@
           "chatFlavor": ""
         },
         "duration": {
-          "units": "inst",
+          "units": "round",
           "concentration": false,
-          "override": false
+          "override": true,
+          "value": "2"
         },
         "effects": [
           {
-            "_id": "5iDlBsDMm8nzlD0x",
-            "onSave": false
+            "_id": "NKp1kOBasrrPWtTu"
           }
         ],
         "range": {
@@ -52,21 +52,42 @@
           "recovery": [],
           "max": ""
         },
-        "damage": {
-          "parts": [],
-          "onSave": "half",
+        "attack": {
+          "ability": "spellcasting",
+          "bonus": "",
           "critical": {
-            "allow": false
+            "threshold": null
+          },
+          "flat": false,
+          "type": {
+            "value": "melee",
+            "classification": "spell"
           }
         },
-        "save": {
-          "ability": [
-            "wis"
+        "damage": {
+          "parts": [
+            {
+              "number": 1,
+              "denomination": 10,
+              "bonus": "",
+              "types": [
+                "necrotic"
+              ],
+              "custom": {
+                "enabled": false,
+                "formula": ""
+              },
+              "scaling": {
+                "mode": "whole",
+                "number": 1,
+                "formula": ""
+              }
+            }
           ],
-          "dc": {
-            "formula": "",
-            "calculation": "spellcasting"
-          }
+          "critical": {
+            "bonus": ""
+          },
+          "includeBase": true
         },
         "useConditionText": "",
         "effectConditionText": "",
@@ -91,6 +112,10 @@
           "automationOnly": false,
           "identifier": ""
         },
+        "attackMode": "",
+        "ammunition": "",
+        "otherActivityId": "",
+        "otherActivityUuid": "",
         "name": ""
       }
     },
@@ -103,7 +128,7 @@
       "value": "",
       "chat": ""
     },
-    "identifier": "charm-person",
+    "identifier": "chill-touch",
     "source": {
       "book": "PHB 2024",
       "page": "",
@@ -118,10 +143,10 @@
       "condition": ""
     },
     "duration": {
-      "value": "1",
-      "units": "hour"
+      "value": "0",
+      "units": "inst"
     },
-    "level": 1,
+    "level": 0,
     "materials": {
       "value": "",
       "consumed": false,
@@ -130,21 +155,20 @@
     },
     "preparation": {
       "mode": "prepared",
-      "prepared": false
+      "prepared": true
     },
     "properties": [
       "vocal",
       "somatic"
     ],
     "range": {
-      "value": "30",
-      "units": "ft"
+      "units": "touch"
     },
-    "school": "enc",
+    "school": "nec",
     "target": {
       "affects": {
-        "count": "1",
-        "type": "creature",
+        "count": "",
+        "type": "",
         "choice": false,
         "special": ""
       },
@@ -162,55 +186,62 @@
   },
   "effects": [
     {
-      "name": "Charm Person",
-      "changes": [],
-      "transfer": false,
-      "img": "icons/magic/life/heart-shadow-red.webp",
-      "_id": "5iDlBsDMm8nzlD0x",
-      "type": "base",
-      "system": {},
-      "disabled": false,
+      "img": "icons/magic/fire/flame-burning-hand-purple.webp",
+      "name": "Chill Touch",
+      "statuses": [],
+      "changes": [
+        {
+          "key": "system.traits.di.value",
+          "value": "healing",
+          "mode": 2,
+          "priority": 30
+        }
+      ],
       "duration": {
-        "startTime": null,
         "seconds": null,
-        "combat": null,
+        "startTime": null,
         "rounds": null,
         "turns": null,
         "startRound": null,
-        "startTurn": null
+        "startTurn": null,
+        "combat": null
       },
-      "description": "",
-      "origin": null,
       "tint": "#ffffff",
-      "statuses": [],
-      "sort": 0,
+      "transfer": false,
+      "disabled": false,
       "flags": {
-        "chris-premades": {
-          "noAnimation": false,
-          "conditions": [
-            "charmed"
-          ],
-          "specialDuration": [
-            "damagedByEnemy"
-          ]
-        },
         "dae": {
+          "transfer": false,
+          "stackable": "noneName",
+          "specialDuration": [
+            "turnEndSource"
+          ],
           "enableCondition": "",
           "disableCondition": "",
           "disableIncapacitated": false,
           "selfTarget": false,
           "selfTargetAlways": false,
           "dontApply": false,
-          "stackable": "multi",
           "showIcon": false,
           "durationExpression": "",
-          "macroRepeat": "none",
-          "specialDuration": []
+          "macroRepeat": "none"
+        },
+        "ddbimporter": {
+          "disabled": false
+        },
+        "midi-qol": {
+          "forceCEOff": true
         },
         "core": {
           "overlay": false
         }
       },
+      "description": "",
+      "_id": "NKp1kOBasrrPWtTu",
+      "type": "base",
+      "system": {},
+      "origin": null,
+      "sort": 0,
       "_stats": {
         "compendiumSource": null,
         "duplicateSource": null,
@@ -221,10 +252,10 @@
         "modifiedTime": null,
         "lastModifiedBy": null
       },
-      "_key": "!items.effects!zHaAWVlE6hB7camF.5iDlBsDMm8nzlD0x"
+      "_key": "!items.effects!QDB74gRSJw3eiAth.NKp1kOBasrrPWtTu"
     }
   ],
-  "name": "Charm Person",
+  "name": "Chill Touch",
   "flags": {
     "midi-qol": {
       "removeAttackDamageButtons": "default",
@@ -240,30 +271,30 @@
         "activity": [],
         "effect": []
       },
+      "last": {
+        "attackChillTouch": {
+          "damageType": {
+            "0": "necrotic"
+          }
+        }
+      },
       "dependents": [
         {
-          "uuid": "Scene.iGwlIbnzeJk0iHC2.Token.bUQ7ipuEQf8Wt6bb.Actor.szyevsXsdQSq5snz.ActiveEffect.TnYWzNQiTy4wCHGR"
+          "uuid": "Scene.iGwlIbnzeJk0iHC2.Token.bUQ7ipuEQf8Wt6bb.Actor.szyevsXsdQSq5snz.ActiveEffect.oLm3PyxEEUO0NHPM"
         }
       ]
     },
     "chris-premades": {
       "info": {
-        "identifier": "charmPerson",
+        "identifier": "chillTouch",
         "source": "chris-premades",
         "rules": "modern",
-        "version": "1.1.19"
-      },
-      "macros": {
-        "midi": {
-          "item": [
-            "charmPerson"
-          ]
-        }
+        "version": "1.1.20"
       }
     }
   },
-  "img": "icons/magic/life/heart-shadow-red.webp",
+  "img": "icons/magic/fire/flame-burning-hand-purple.webp",
   "folder": null,
-  "_id": "zHaAWVlE6hB7camF",
-  "_key": "!items!zHaAWVlE6hB7camF"
+  "_id": "QDB74gRSJw3eiAth",
+  "_key": "!items!QDB74gRSJw3eiAth"
 }

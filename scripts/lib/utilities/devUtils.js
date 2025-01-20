@@ -35,7 +35,8 @@ export async function stripUnusedFlags(key) {
                 description: {
                     value: '',
                     chat: ''
-                }
+                },
+                sourceClass: ''
             }
         };
         let identifier = i.flags['chris-premades']?.info?.identifier;

@@ -637,6 +637,11 @@
             "ChillTouch": {
                 "Undead": "Chill Touch: Undead Debuff"
             },
+            "ChromaticOrb": {
+                "BaseMaxJumps": "Base Max Jumps:",
+                "Bounce": "Who should the spell bounce to?",
+                "TargetDamageSelection": "Per Target Damage Selection:"
+            },
             "CloudRune": {
                 "Reaction": "Use {item} to redirect the attack from {name}?"
             },

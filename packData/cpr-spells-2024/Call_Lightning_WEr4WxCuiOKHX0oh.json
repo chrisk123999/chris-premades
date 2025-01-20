@@ -257,7 +257,7 @@
       }
     },
     "identifier": "call-lightning",
-    "sourceClass": "cleric"
+    "sourceClass": ""
   },
   "effects": [],
   "flags": {

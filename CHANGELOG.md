@@ -1,3 +1,8 @@
+# 1.1.20 Release:
+## New Modern Content:
+- Chill Touch
+- Chromatic Orb
+
 # 1.1.19 Release:
 ## New Modern Content:
 - Burning Hands

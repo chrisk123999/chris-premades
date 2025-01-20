@@ -220,7 +220,7 @@
       }
     },
     "identifier": "animate-dead",
-    "sourceClass": "cleric"
+    "sourceClass": ""
   },
   "name": "Animate Dead",
   "flags": {

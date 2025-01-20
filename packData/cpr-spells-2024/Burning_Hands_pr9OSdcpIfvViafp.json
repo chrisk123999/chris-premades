@@ -167,7 +167,8 @@
         "height": "",
         "units": "ft"
       }
-    }
+    },
+    "sourceClass": ""
   },
   "effects": [],
   "name": "Burning Hands",

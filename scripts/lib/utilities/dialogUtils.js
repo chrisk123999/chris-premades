@@ -276,6 +276,32 @@ async function selectSpellSlot(actor, title, content, {maxLevel = 9, minLevel = 
     if (no) inputs.push(['CHRISPREMADES.Generic.No', false]);
     return await buttonDialog(title, content, inputs, {displayAsRows: true, userId: userId});
 }
+async function selectDamageType(damageTypes, title, context) {
+    let images = {
+        acid: 'icons/magic/acid/projectile-faceted-glob.webp',
+        bludgeoning: 'icons/magic/earth/projectiles-stone-salvo-gray.webp',
+        cold: 'icons/magic/air/wind-tornado-wall-blue.webp',
+        fire: 'icons/magic/fire/beam-jet-stream-embers.webp',
+        force: 'icons/magic/sonic/projectile-sound-rings-wave.webp',
+        lightning: 'icons/magic/lightning/bolt-blue.webp',
+        necrotic: 'icons/magic/unholy/projectile-bolts-salvo-pink.webp',
+        piercing: 'icons/skills/melee/strike-polearm-light-orange.webp',
+        poison: 'icons/magic/death/skull-poison-green.webp',
+        psychic: 'icons/magic/control/fear-fright-monster-grin-red-orange.webp',
+        radiant: 'icons/magic/holy/projectiles-blades-salvo-yellow.webp',
+        slashing: 'icons/skills/melee/strike-sword-gray.webp',
+        thunder: 'icons/magic/sonic/explosion-shock-wave-teal.webp'
+    };
+    let buttons = damageTypes.map(i => {
+        let image = images[i] ?? 'icons/magic/symbols/question-stone-yellow.webp';
+        return [
+            CONFIG.DND5E.damageTypes[i].label,
+            i,
+            {image}
+        ];
+    });
+    return await buttonDialog(title, context, buttons);
+}
 export let dialogUtils = {
     buttonDialog,
     numberDialog,
@@ -285,5 +311,6 @@ export let dialogUtils = {
     selectDocumentsDialog,
     confirm,
     selectHitDie,
-    selectSpellSlot
+    selectSpellSlot,
+    selectDamageType
 };
