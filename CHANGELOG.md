@@ -1,3 +1,18 @@
+# 1.1.19 Release:
+## New Modern Content:
+- Burning Hands
+- Call Lightning
+- Calm Emotions
+- Chain Lightning
+- Charm Monster
+- Charm Person
+## Bug Fixes:
+- Generic Monster Features Configuration
+- Aid
+- Sync Actor and Token Size setting
+## Update Notes
+- Added "Damaged By Ally" and "Damaged By Enemy" to the CPR Effect Medkit
+
 # 1.1.18 Release:
 ## Bug Fixes:
 - Medkit

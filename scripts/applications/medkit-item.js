@@ -818,7 +818,7 @@ export class ItemMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
     }
     _cleanObject(obj) {
         for (let key in obj) {
-            if (obj[key] && typeof obj[key] === 'object') {
+            if (obj[key] && typeof obj[key] === 'object' && !Array.isArray(obj[key])) {
                 this._cleanObject(obj[key]);
                 if (Object.keys(obj[key]).length === 0) {
                     delete obj[key];

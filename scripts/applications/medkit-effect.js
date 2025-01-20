@@ -69,6 +69,23 @@ export class EffectMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
                     value: effect.flags['chris-premades']?.conditions ?? [],
                     options: CONFIG.statusEffects.map(i => ({label: i.name, value: i.id, isSelected: effect.flags['chris-premades']?.conditions?.includes(i.id) ? true : false}))
                 },
+                specialDuration: {
+                    label: 'CHRISPREMADES.Medkit.Effect.SpecialDuration.Label',
+                    tooltip: 'CHRISPREMADES.Medkit.Effect.SpecialDuration.Tooltip',
+                    value: effect.flags['chris-premades']?.specialDuration ?? [],
+                    options: [
+                        {
+                            label: 'CHRISPREMADES.Medkit.Effect.SpecialDuration.DamagedByAlly',
+                            value: 'damagedByAlly',
+                            isSelected: effect.flags['chris-premades']?.specialDuration.includes('damagedByAlly')
+                        },
+                        {
+                            label: 'CHRISPREMADES.Medkit.Effect.SpecialDuration.DamagedByEnemy',
+                            value: 'damagedByEnemy',
+                            isSelected: effect.flags['chris-premades']?.specialDuration.includes('damagedByEnemy')
+                        }
+                    ]
+                }
             },
             overTime: {
                 original: effect?.changes?.find(i => i.key === 'flags.midi-qol.OverTime')?.value,
@@ -85,7 +102,7 @@ export class EffectMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
             isDev: game.settings.get('chris-premades', 'devTools')
         };
         // Figure out coloring for medkit
-        if (context.configure.noAnimation.value || context.configure.conditions.value.length) context.status = 1;
+        if (context.configure.noAnimation.value || context.configure.conditions.value.length || context.configure.specialDuration.value.lenth) context.status = 1;
         context.medkitColor = '';
         switch (context.status) {
             case 1:
@@ -266,6 +283,7 @@ export class EffectMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
         let flagUpdates = {};
         genericUtils.setProperty(flagUpdates, 'noAnimation', this.context.configure.noAnimation.value);
         genericUtils.setProperty(flagUpdates, 'conditions', this.context.configure.conditions.value);
+        genericUtils.setProperty(flagUpdates, 'specialDuration', this.context.configure.specialDuration.value);
         if (this.context.macros.effect?.length) genericUtils.setProperty(flagUpdates, 'macros.effect', JSON.parse(this.context.macros.effect.replace(/'/g, '"')));
         if (this.context.macros.aura?.length) genericUtils.setProperty(flagUpdates, 'macros.aura', JSON.parse(this.context.macros.aura.replace(/'/g, '"')));
         if (this.context.macros.actor?.length) genericUtils.setProperty(flagUpdates, 'macros.midi.actor', JSON.parse(this.context.macros.actor.replace(/'/g, '"')));
@@ -328,15 +346,18 @@ export class EffectMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
         // Update context data
         switch (currentTabId) {
             case 'configure': {
-                switch (event.target.type) {
-                    case 'checkbox': {
+                switch (event.target.id) {
+                    case 'noAnimation':
                         this.context.configure[event.target.id].value = event.target.checked;
                         break;
-                    }
-                    default: {
+                    case 'conditions':
                         this.context.configure.conditions.options.forEach(i => event.target.value.includes(i.value) ? i.isSelected = true : i.isSelected = false);
                         this.context.configure.conditions.value = event.target.value;
-                    }
+                        break;
+                    case 'specialDuration':
+                        this.context.configure.specialDuration.options.forEach(i => event.target.value.includes(i.value) ? i.isSelected = true : i.isSelected = false);
+                        this.context.configure.specialDuration.value = event.target.value;
+                        break;
                 }
                 break;
             }

@@ -120,7 +120,9 @@ async function specialDuration(workflow) {
             for (let i of specialDurations) {
                 switch (i) {
                     case 'damagedByAlly':
-                        if (workflow.token.document.disposition === token.document.disposition && workflow.hitTargets.has(token)) remove = true; break outerLoop;
+                        if (workflow.token.document.disposition === token.document.disposition && workflow.hitTargets.has(token) && workflow.damageRolls?.length) remove = true; break outerLoop;
+                    case 'damagedByEnemy':
+                        if (workflow.token.document.disposition != token.document.disposition && workflow.hitTargets.has(token) && workflow.damageRolls?.length) remove = true; break outerLoop;
                 }
             }
             if (remove) await genericUtils.remove(effect);

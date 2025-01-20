@@ -451,6 +451,33 @@ const immuneEffectData = {
         }
     }
 };
+const advantageEffectData = {
+    name: 'Advantage',
+    img: tempConditionIcon,
+    duration: {
+        turns: 1
+    },
+    changes: [
+        {
+            key: 'flags.midi-qol.advantage.ability.save.all',
+            value: 1,
+            mode: 5,
+            priority: 120
+        }
+    ],
+    flags: {
+        dae: {
+            specialDuration: [
+                'isSave'
+            ]
+        },
+        'chris-premades': {
+            effect: {
+                noAnimation: true
+            }
+        }
+    }
+};
 export let constants = {
     packs,
     featurePacks,
@@ -475,5 +502,6 @@ export let constants = {
     legacyPacks,
     modernPacks,
     immuneEffectData,
-    diceSizeOptions
+    diceSizeOptions,
+    advantageEffectData
 };

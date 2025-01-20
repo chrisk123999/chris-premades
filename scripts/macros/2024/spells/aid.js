@@ -7,7 +7,7 @@ async function use({trigger, workflow}) {
         duration: itemUtils.convertDuration(workflow.item),
         changes: [
             {
-                key: 'system.attributes.hp.bonuses.overall',
+                key: 'system.attributes.hp.tempmax',
                 mode: 2,
                 value: 5 * (workflow.castData.castLevel - 1),
                 priority: 20

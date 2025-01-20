@@ -331,7 +331,9 @@
             "Replace": "Replace",
             "Rerolling": "Rerolling {origDie} ({origResult}):",
             "Select": "Select",
+            "SelectEffect": "Select an effect:",
             "SelectSpellSlot": "Select a spell slot:",
+            "SelectTargetEffect": "Select an effect for each target:",
             "Skill": "Skill Check",
             "Submit": "Submit",
             "Success": "Success",
@@ -602,6 +604,10 @@
             "CallTheHunt": {
                 "Bonus": "Apply Call the Hunt bonus damage? (1d6)",
                 "Select": "Select targets (max: {maxTargets})"
+            },
+            "CalmEmotions": {
+                "ConditionImmunity": "Condition Immunity",
+                "Indifference": "Indifference"
             },
             "CelestialRevelation": {
                 "Damage": "Radiant Consumption: Damage",
@@ -1907,6 +1913,12 @@
                         "Start": "Start of Turn",
                         "Turn": "Trigger:"
                     }
+                },
+                "SpecialDuration": {
+                    "DamagedByAlly": "Damaged By Ally",
+                    "DamagedByEnemy": "Damaged By Enemy",
+                    "Label": "Special Durations:",
+                    "Tooltip": "Selected conditions will remove the effect."
                 }
             },
             "Fieldsets": {
@@ -2640,19 +2652,19 @@
         "SoundSelect": "Select Sounds",
         "TemplateSelect": "Select Templates"
     },
-    "dae.fieldData.fieldCategories.CPR": "CPR",
     "dae.CPR.fieldData": {
         "flags.chris-premades.senses.magicalDarkness": {
-            "name": "Magical Darkness Sense Range",
-            "description": "Distance actor can see through magical darkness. Only affects attack adv/dis with CPR automations which create magical darkness."
+            "description": "Distance actor can see through magical darkness. Only affects attack adv/dis with CPR automations which create magical darkness.",
+            "name": "Magical Darkness Sense Range"
         },
         "flags.chris-premades.turnImmunity": {
-            "name": "Turn Immunity",
-            "description": "Immunity to Turn Undead. Use Override change mode."
+            "description": "Immunity to Turn Undead. Use Override change mode.",
+            "name": "Turn Immunity"
         },
         "flags.chris-premades.turnResistance": {
-            "name": "Turn Resistance",
-            "description": "Resistance to Turn Undead, rolls at advantage. Use Override change mode."
+            "description": "Resistance to Turn Undead, rolls at advantage. Use Override change mode.",
+            "name": "Turn Resistance"
         }
-    }
+    },
+    "dae.fieldData.fieldCategories.CPR": "CPR"
 }
