@@ -166,6 +166,7 @@
             "IgnoredCreatureTypes": "Ignored Creature Types:",
             "ImmuneCreatures": "Immune Creature Types:",
             "MaxLevel": "Max Level:",
+            "Name": "Name:",
             "Percentage": "Percentage:",
             "PlayAnimation": "Play Animation:",
             "PlayTeleportAnimation": "Play Teleport Animation:",
@@ -331,6 +332,7 @@
             "Replace": "Replace",
             "Rerolling": "Rerolling {origDie} ({origResult}):",
             "Select": "Select",
+            "SelectDamageType": "Select a damage type:",
             "SelectEffect": "Select an effect:",
             "SelectSpellSlot": "Select a spell slot:",
             "SelectTargetEffect": "Select an effect for each target:",
@@ -1867,8 +1869,15 @@
             },
             "Compendium": {
                 "Apply": "Medkit all compendium documents?",
+                "DestinationCompendium": "Destination Compendium:",
                 "Done": "Compendium update complete!",
-                "Start": "Updating documents..."
+                "Merge": "Merge",
+                "MergeUpdate": "Merge & Update",
+                "Mode": "Mode:",
+                "NewCompendium": "New Compendium",
+                "Overwrite": "Overwrite",
+                "Start": "Updating documents...",
+                "sourceCompendiums": "Source Compendiums:"
             },
             "Effect": {
                 "Conditions": {

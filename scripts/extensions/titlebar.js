@@ -4,10 +4,10 @@ import {EffectMedkit} from '../applications/medkit-effect.js';
 import {ActorMedkit} from '../applications/medkit-actor.js';
 import {ActivityMedkit} from '../applications/medkit-activity.js';
 import {custom} from '../events/custom.js';
+import {compendium} from './compendium.js';
 export function createHeaderButton(config, buttons) {
     // eslint-disable-next-line no-undef
     if (config instanceof Compendium) {
-        if (config.collection.locked) return;
         let validTypes = ['Actor', 'Item'];
         if (!validTypes.includes(config.collection.metadata.type)) return;
     }
@@ -146,17 +146,12 @@ async function sceneMedkit(scene) {
     }
     genericUtils.notify('CHRISPREMADES.Medkit.Scene.Done', 'info');
 }
-async function compendiumMedkit(compendium) {
-    let selection = await dialogUtils.buttonDialog(genericUtils.translate('CHRISPREMADES.Generic.CPR') + ': ' + compendium.metadata.label, 'CHRISPREMADES.Medkit.Compendium.Apply', [['CHRISPREMADES.Generic.Yes', true], ['CHRISPREMADES.Generic.No', false]]);
-    if (!selection) return;
-    genericUtils.notify('CHRISPREMADES.Medkit.Compendium.Start', 'info');
-    let documents = await compendium.collection.getDocuments();
-    if (compendium.collection.metadata.type === 'Actor') {
-        for (let i of documents) await actorUtils.updateAll(i);
-    } else if (compendium.collection.metadata.type === 'Item') {
-        for (let i of documents) await itemUtils.itemUpdate(i);
+async function compendiumMedkit(pack) {
+    if (pack.locked) {
+        await compendium.unlocked(pack);
+    } else {
+        await compendium.locked(pack);
     }
-    genericUtils.notify('CHRISPREMADES.Medkit.Compendium.Done', 'info');
 }
 export async function renderCompendium(app, html, data) {
     if (!genericUtils.getCPRSetting('addCompendiumButton')) return;

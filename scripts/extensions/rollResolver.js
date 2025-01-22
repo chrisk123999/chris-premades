@@ -81,21 +81,11 @@ function patch(enabled) {
 // Update this for 4.2 when change, remove when able
 function patchBuild(enabled) {
     if (enabled) {
-        if (foundry.utils.isNewerVersion(game.system.version, '4.2')) {
-            genericUtils.log('dev', 'Build BasicRoll Patched!');
-            libWrapper.register('chris-premades', 'CONFIG.Dice.BasicRoll.build', build, 'WRAPPER');
-        } else {
-            genericUtils.log('dev', 'Build D20Roll Patched!');
-            libWrapper.register('chris-premades', 'CONFIG.Dice.D20Roll.build', build, 'WRAPPER');
-        }
+        genericUtils.log('dev', 'Build D20Roll Patched!');
+        libWrapper.register('chris-premades', 'CONFIG.Dice.D20Roll.build', build, 'WRAPPER');
     } else {
-        if (foundry.utils.isNewerVersion(game.system.version, '4.2')) {
-            genericUtils.log('dev', 'Build BasicRoll Patch Removed!');
-            libWrapper.unregister('chris-premades', 'CONFIG.Dice.BasicRoll.build');
-        } else {
-            genericUtils.log('dev', 'Build D20Roll Patch Removed!');
-            libWrapper.unregister('chris-premades', 'CONFIG.Dice.D20Roll.build');
-        }
+        genericUtils.log('dev', 'Build D20Roll Patch Removed!');
+        libWrapper.unregister('chris-premades', 'CONFIG.Dice.D20Roll.build');
     }
 }
 export let rollResolver = {

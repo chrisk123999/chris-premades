@@ -1,3 +1,10 @@
+# 1.1.21 Release:
+## Update Notes:
+- Requires D&D system version 4.2 or higher.
+- Compendium Medkit will will now prompt you to select a destination commpendium when Medkitting a locked compendium.
+## New Modern Content:
+- Circle of Death
+
 # 1.1.20 Release:
 ## New Modern Content:
 - Chill Touch
