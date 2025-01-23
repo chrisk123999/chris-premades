@@ -1,3 +1,7 @@
+# 1.1.22 Release:
+## Bug Fixes:
+- Manual Rolling
+
 # 1.1.21 Release:
 ## Update Notes:
 - Requires D&D system version 4.2 or higher.
