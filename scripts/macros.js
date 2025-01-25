@@ -43,3 +43,6 @@ export {charmPerson} from './macros/2024/spells/charmPerson.js';
 export {chillTouch} from './macros/2024/spells/chillTouch.js';
 export {chromaticOrb} from './macros/2024/spells/chromaticOrb.js';
 export {circleOfDeath} from './macros/2024/spells/circleOfDeath.js';
+//Class Features
+//Barbarian
+export {rage, rageRaging} from './macros/2024/classFeatures/barbarian/rage.js';

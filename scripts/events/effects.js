@@ -92,6 +92,7 @@ async function createActiveEffect(effect, options, userId) {
     await auras.effectCheck(effect);
     await executeMacroPass(effect, 'created');
     if (effect.statuses.has('dead')) await death.executeMacroPass(effect.parent, 'dead');
+    if (effect.statuses.size) await effects.specialDurationConditions(effect);
 }
 async function deleteActiveEffect(effect, options, userId) {
     if (!socketUtils.isTheGM()) return;

@@ -1,4 +1,4 @@
-import {activityUtils, actorUtils, genericUtils, itemUtils} from '../utils.js';
+import {activityUtils, actorUtils, effectUtils, genericUtils, itemUtils} from '../utils.js';
 function noAnimation(...args) {
     if (!args[0].flags['chris-premades']?.effect?.noAnimation) return;
     switch (this.hook) {
@@ -129,11 +129,33 @@ async function specialDuration(workflow) {
         }));
     }));
 }
+async function specialDurationConditions(effect) {
+    let statusEffectIds = CONFIG.statusEffects.map(i => i.id);
+    await Promise.all(actorUtils.getEffects(effect.parent).filter(i => i.id != effect.id).map(async eff => {
+        let specialDurations = eff.flags['chris-premades']?.specialDuration;
+        if (!specialDurations) return;
+        specialDurations.filter(j => statusEffectIds.includes(j));
+        if (!specialDurations.length) return;
+        if (effect.statuses.some(k => specialDurations.includes(k))) await genericUtils.remove(eff);
+    }));
+}
+async function specialDurationEquipment(item) {
+    let equipmentTypes = Object.keys(CONFIG.DND5E.armorTypes);
+    await Promise.all(actorUtils.getEffects(item.actor).map(async effect => {
+        let specialDurations = effect.flags['chris-premades']?.specialDuration;
+        if (!specialDurations) return;
+        specialDurations.filter(j => equipmentTypes.includes(j));
+        if (!specialDurations.length) return;
+        if (specialDurations.includes(item.system.type?.value)) await genericUtils.remove(effect);
+    }));
+}
 export let effects = {
     noAnimation,
     checkInterdependentDeps,
     preCreateActiveEffect,
     unhideActivities,
     rehideActivities,
-    specialDuration
+    specialDuration,
+    specialDurationConditions,
+    specialDurationEquipment
 };

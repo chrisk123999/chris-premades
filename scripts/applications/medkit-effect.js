@@ -84,7 +84,15 @@ export class EffectMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
                             value: 'damagedByEnemy',
                             isSelected: effect.flags['chris-premades']?.specialDuration.includes('damagedByEnemy')
                         }
-                    ]
+                    ].concat(CONFIG.statusEffects.map(i => ({
+                        label: i.name,
+                        value: i.id,
+                        isSelected: effect.flags['chris-premades']?.specialDuration.includes(i.id)
+                    }))).concat(Object.entries(CONFIG.DND5E.armorTypes).map(([value, label]) => ({
+                        label,
+                        value,
+                        isSelected: effect.flags['chris-premades']?.specialDuration.includes(value)
+                    })))
                 }
             },
             overTime: {

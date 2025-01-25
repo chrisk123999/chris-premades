@@ -1305,6 +1305,11 @@
             "PotionOfPoison": {
                 "Damage": "Potion of Poison: Damage"
             },
+            "PowerOfTheWilds": {
+                "Falcon": "Falcon",
+                "Lion": "Lion",
+                "Ram": "Ram"
+            },
             "PreserveLife": {
                 "Select": "Distribute HP (Amount to Distribute: {maxAmount}. Targets cannot be healed above half health.)"
             },
@@ -1321,15 +1326,27 @@
                 "Save": "This save is from an effect from an aberration, celestial, elemental, fey, fiends, or undead that has charmed, frightened, or possessed you."
             },
             "Rage": {
+                "AllowConcentration": "Allow Concentration:",
+                "AllowHeavyArmor": "Allow Heavy Armor:",
+                "AllowSpellcasting": "Allow Spellcasting:",
                 "End": "Rage: End",
                 "EndEarly": "{actorName} has not attacked an enemy or taken damage since their last turn. Remove Rage?",
+                "EndEarlyModern": "{actorName} has not attacked an enemy, taken damage, or continued their rage since their last turn. Remove Rage?",
                 "FormOfBeastTailReaction": "Form of the Beast: Tail Reaction",
                 "FormOfBeastWeapon": "Manifest a natural weapon?",
                 "FormOfTheBeastBite": "Form of the Beast: Bite",
                 "FormOfTheBeastClaws": "Form of the Beast: Claws",
                 "FormOfTheBeastTail": "Form of the Beast: Tail",
+                "HeavyArmor": "You are wearing heavy armor and can not rage!",
                 "Huge": "Grow to be huge?",
-                "LargeOrHuge": "What size?"
+                "LargeOrHuge": "What size?",
+                "Spellcasting": "You can't spellcast while raging!"
+            },
+            "RageOfTheWilds": {
+                "Bear": "Bear",
+                "Eagle": "Eagle",
+                "Use": "Select a primal animal power:",
+                "Wolf": "Wolf"
             },
             "RayOfEnfeeblement": {
                 "Overtime": "Ray of Enfeeblement (End of Turn)"
