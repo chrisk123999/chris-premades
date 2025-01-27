@@ -5,14 +5,14 @@
 - Feral Instinct
 - Improved Brutal Strike
 - Indomitable Might
-- Persistant Rage
+- Persistent Rage
 - Primal Knowledge
 - Rage
 - Reckless Attack
 - Relentless Rage
 - Unarmored Defense (Barbarian)
 ## Update Notes:
-- Modern class feature automations will not function with legacy sub-classes. Compatability will be added for legacy subclasses upon request / time.
+- Modern class feature automations will not function with legacy sub-classes. Compatibility will be added for legacy subclasses upon request / time.
 - Added all status effects to the CPR Effect Medkit special durations.
 - Added all armor types to the CPR Effect Medkit special durations.
 - Added "Attacked by another creature" to the CPR Effect Medkit special durations.
