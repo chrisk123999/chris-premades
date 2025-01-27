@@ -107,10 +107,11 @@ export class EffectMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
                 movement: JSON?.stringify(effect.flags['chris-premades']?.macros?.midi?.movement) ?? '',
                 rest: JSON?.stringify(effect.flags['chris-premades']?.macros?.midi?.rest) ?? ''
             },
-            isDev: game.settings.get('chris-premades', 'devTools')
+            isDev: game.settings.get('chris-premades', 'devTools'),
+            identifier: effect.flags['chris-premades']?.info?.identifier ?? ''
         };
         // Figure out coloring for medkit
-        if (context.configure.noAnimation.value || context.configure.conditions.value.length || context.configure.specialDuration.value.lenth) context.status = 1;
+        if (context.configure.noAnimation.value || context.configure.conditions.value.length || context.configure.specialDuration.value.length) context.status = 1;
         context.medkitColor = '';
         switch (context.status) {
             case 1:
@@ -292,6 +293,7 @@ export class EffectMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
         genericUtils.setProperty(flagUpdates, 'noAnimation', this.context.configure.noAnimation.value);
         genericUtils.setProperty(flagUpdates, 'conditions', this.context.configure.conditions.value);
         genericUtils.setProperty(flagUpdates, 'specialDuration', this.context.configure.specialDuration.value);
+        if (this.context.identifier) genericUtils.setProperty(flagUpdates, 'info.identifier', this.context.identifier);
         if (this.context.macros.effect?.length) genericUtils.setProperty(flagUpdates, 'macros.effect', JSON.parse(this.context.macros.effect.replace(/'/g, '"')));
         if (this.context.macros.aura?.length) genericUtils.setProperty(flagUpdates, 'macros.aura', JSON.parse(this.context.macros.aura.replace(/'/g, '"')));
         if (this.context.macros.actor?.length) genericUtils.setProperty(flagUpdates, 'macros.midi.actor', JSON.parse(this.context.macros.actor.replace(/'/g, '"')));
@@ -432,14 +434,18 @@ export class EffectMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
                 break;
             }
             case 'devTools': {
-                let value;
-                try {
-                    value = JSON.parse(event.target.value.replace(/'/g, '"'));
-                } catch (error) {
-                    ui.notifications.error('Error with ' + event.target.id + ' field, see console');
-                    console.error(error);
+                if (event.target.id === 'identifier') {
+                    this.context.identifier = event.target.value;
+                } else {
+                    let value;
+                    try {
+                        value = JSON.parse(event.target.value.replace(/'/g, '"'));
+                    } catch (error) {
+                        ui.notifications.error('Error with ' + event.target.id + ' field, see console');
+                        console.error(error);
+                    }
+                    if (value) this.context.macros[event.target.id] = event.target.value;
                 }
-                if (value) this.context.macros[event.target.id] = event.target.value;
             }
         }
         this.render(true);
