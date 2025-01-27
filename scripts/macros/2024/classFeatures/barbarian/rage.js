@@ -372,6 +372,40 @@ export let rage = {
             category: 'homebrew',
             homebrew: true
         }
+    ],
+    scales: [
+        {
+            identifier: 'rage-damage',
+            config: {
+                classIdentifier: 'classIdentifier',
+                scaleIdentifier: 'scaleIdentifier'
+            },
+            data: {
+                type: 'ScaleValue',
+                configuration: {
+                    distance: {
+                        units: ''
+                    },
+                    identifier: 'rage-damage',
+                    type: 'number',
+                    scale: {
+                        1: {
+                            value: 2
+                        },
+                        9: {
+                            value: 3
+                        },
+                        16: {
+                            value: 4
+                        }
+                    }
+                },
+                value: {},
+                title: 'Rage Damage',
+                icon: null
+            }
+        }
+        
     ]
 };
 export let rageRaging = {

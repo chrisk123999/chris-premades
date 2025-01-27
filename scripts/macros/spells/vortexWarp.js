@@ -1,7 +1,7 @@
 import {Teleport} from '../../lib/teleport.js';
-import {itemUtils} from '../../utils.js';
+import {animationUtils, itemUtils} from '../../utils.js';
 async function use({trigger, workflow}) {
-    let animation = itemUtils.getConfig(workflow.item, 'playAnimation') ? 'vortexWarp' : 'none';
+    let animation = itemUtils.getConfig(workflow.item, 'playAnimation') ? (animationUtils.jb2aCheck() === 'patreon' ? 'vortexWarp' : 'mistyStep') : 'none';
     if (!workflow.failedSaves.size) return;
     let range = 90 + (30 * (workflow.castData.castLevel - 2));
     for (let i of workflow.failedSaves) {

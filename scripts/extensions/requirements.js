@@ -76,8 +76,32 @@ async function ruleCheck(workflow) {
     });
     return true;
 }
+async function scaleCheck(item) {
+    let macro = custom.getMacro(genericUtils.getIdentifier(item), genericUtils.getRules(item));
+    if (!macro) return;
+    let scales = macro.scales;
+    if (!scales) return;
+    let missingClass = false;
+    await Promise.all(scales.map(async data => {
+        let classIdentifier = itemUtils.getConfig(item, data.config.classIdentifier);
+        let classItem = item.actor.classes[classIdentifier];
+        if (!classItem) {
+            missingClass = true;
+            return;
+        }
+        let scaleIdentifier = itemUtils.getConfig(item, data.config.scaleIdentifier);
+        let scale = item.actor.system.scale[classIdentifier][scaleIdentifier];
+        if (scale) return;
+        let classData = genericUtils.duplicate(classItem.toObject());
+        classData.system.advancement.push(data.data);
+        await genericUtils.update(classItem, {'system.advancement': classData.system.advancement});
+        let message = genericUtils.format('CHRISPREMADES.Requirements.ScaleAdded', {classIdentifier, scaleIdentifier});
+        genericUtils.notify(message, 'info');
+    }));
+}
 export let requirements = {
     versionCheck,
     automationCheck,
-    ruleCheck
+    ruleCheck,
+    scaleCheck
 };

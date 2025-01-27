@@ -2062,6 +2062,9 @@
         "Movement": {
             "UnableToBeMoved": "Target is unable to be moved!"
         },
+        "Requirements": {
+            "ScaleAdded": "The scale {scaleIdentifier} has been added to the class {classIdentifier}!"
+        },
         "Section": {
             "Rage": "Rage",
             "RingOfSpellStoring": "Ring of Spell Storing",

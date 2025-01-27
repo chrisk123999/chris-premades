@@ -216,6 +216,10 @@ async function preItemRoll(workflow) {
     if (stop) return false;
     stop = await requirements.automationCheck(workflow);
     if (stop) return false;
+    if (workflow.item) {
+        stop = await requirements.scaleCheck(workflow.item);
+        if (stop) return false;
+    }
     if (genericUtils.getCPRSetting('diceSoNice') && game.modules.get('dice-so-nice')?.active) await diceSoNice.preItemRoll(workflow);
     await genericUtils.sleep(50);
     stop = await executeMacroPass(workflow, 'preItemRoll');
