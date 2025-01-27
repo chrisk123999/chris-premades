@@ -83,6 +83,11 @@ export class EffectMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
                             label: 'CHRISPREMADES.Medkit.Effect.SpecialDuration.DamagedByEnemy',
                             value: 'damagedByEnemy',
                             isSelected: effect.flags['chris-premades']?.specialDuration.includes('damagedByEnemy')
+                        },
+                        {
+                            label: 'CHRISPREMADES.Medkit.Effect.SpecialDuration.AttackedByAnotherCreature',
+                            value: 'damagedByAnotherCreature',
+                            isSelected: effect.flags['chris-premades']?.specialDuration.includes('attackedByAnotherCreature')
                         }
                     ].concat(CONFIG.statusEffects.map(i => ({
                         label: i.name,
@@ -108,7 +113,8 @@ export class EffectMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
                 rest: JSON?.stringify(effect.flags['chris-premades']?.macros?.midi?.rest) ?? ''
             },
             isDev: game.settings.get('chris-premades', 'devTools'),
-            identifier: effect.flags['chris-premades']?.info?.identifier ?? ''
+            identifier: effect.flags['chris-premades']?.info?.identifier ?? '',
+            rules: effect.flags['chris-premades']?.info?.rules ?? ''
         };
         // Figure out coloring for medkit
         if (context.configure.noAnimation.value || context.configure.conditions.value.length || context.configure.specialDuration.value.length) context.status = 1;
@@ -294,6 +300,7 @@ export class EffectMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
         genericUtils.setProperty(flagUpdates, 'conditions', this.context.configure.conditions.value);
         genericUtils.setProperty(flagUpdates, 'specialDuration', this.context.configure.specialDuration.value);
         if (this.context.identifier) genericUtils.setProperty(flagUpdates, 'info.identifier', this.context.identifier);
+        if (this.context.rules) genericUtils.setProperty(flagUpdates, 'rules', this.context.rules);
         if (this.context.macros.effect?.length) genericUtils.setProperty(flagUpdates, 'macros.effect', JSON.parse(this.context.macros.effect.replace(/'/g, '"')));
         if (this.context.macros.aura?.length) genericUtils.setProperty(flagUpdates, 'macros.aura', JSON.parse(this.context.macros.aura.replace(/'/g, '"')));
         if (this.context.macros.actor?.length) genericUtils.setProperty(flagUpdates, 'macros.midi.actor', JSON.parse(this.context.macros.actor.replace(/'/g, '"')));
@@ -436,6 +443,8 @@ export class EffectMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
             case 'devTools': {
                 if (event.target.id === 'identifier') {
                     this.context.identifier = event.target.value;
+                } else if (event.target.id === 'rules') {
+                    this.context.rules = event.target.value;
                 } else {
                     let value;
                     try {

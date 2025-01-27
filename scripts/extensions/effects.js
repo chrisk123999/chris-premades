@@ -1,4 +1,4 @@
-import {activityUtils, actorUtils, effectUtils, genericUtils, itemUtils} from '../utils.js';
+import {activityUtils, actorUtils, constants, effectUtils, genericUtils, itemUtils} from '../utils.js';
 function noAnimation(...args) {
     if (!args[0].flags['chris-premades']?.effect?.noAnimation) return;
     switch (this.hook) {
@@ -123,6 +123,16 @@ async function specialDuration(workflow) {
                         if (workflow.token.document.disposition === token.document.disposition && workflow.hitTargets.has(token) && workflow.damageRolls?.length) remove = true; break outerLoop;
                     case 'damagedByEnemy':
                         if (workflow.token.document.disposition != token.document.disposition && workflow.hitTargets.has(token) && workflow.damageRolls?.length) remove = true; break outerLoop;
+                    case 'attackedByAnotherCreature': {
+                        if (!workflow.activity) return;
+                        if (!constants.attacks.includes(workflow.activity.actionType)) break;
+                        if (!effect.origin) break;
+                        let origin = await fromUuid(effect.origin);
+                        if (!origin.actor) break;
+                        if (workflow.actor.id === origin.actor.id) break;
+                        remove = true;
+                        break outerLoop;
+                    }
                 }
             }
             if (remove) await genericUtils.remove(effect);

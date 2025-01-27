@@ -194,7 +194,7 @@ async function selectDocumentDialog(title, content, documents, {displayTooltips 
     if (result?.buttons) return await fromUuid(result.buttons);
     return false;
 }
-async function selectDocumentsDialog(title, content, documents, {max = undefined, displayTooltips = false, sortAlphabetical = false, sortCR = false, userId = game.user.id, showCR = false} = {}) {
+async function selectDocumentsDialog(title, content, documents, {max = undefined, displayTooltips = false, sortAlphabetical = false, sortCR = false, userId = game.user.id, showCR = false, checkbox = false} = {}) {
     if (sortAlphabetical) {
         documents = documents.sort((a, b) => {
             return a.name.localeCompare(b.name, 'en', {'sensitivity': 'base'});
@@ -215,7 +215,7 @@ async function selectDocumentsDialog(title, content, documents, {max = undefined
             maxAmount: max
         }
     }));
-    let inputs = [['selectAmount', inputFields, {displayAsRows: true, totalMax: max}]];
+    let inputs = [[checkbox ? 'checkbox' : 'selectAmount', inputFields, {displayAsRows: true, totalMax: max}]];
     // let height = (inputs[0][1].length * 56 + 46); Come back to when I have a dialog large enough to max out the window
     // if (inputs[0][1].length > 14 ) height = 850;
     let result;

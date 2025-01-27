@@ -600,6 +600,9 @@
                 "Augment": "Augment (1 Ki)",
                 "Select": "Select Breath Details"
             },
+            "BrutalStrike": {
+                "Choose": "Sacrifice advantage to use {item}?"
+            },
             "Bulwark": {
                 "Use": "Use Reaction to avoid being moved?"
             },
@@ -1953,6 +1956,7 @@
                     }
                 },
                 "SpecialDuration": {
+                    "AttackedByAnotherCreature": "Attacked By Another Creature",
                     "DamagedByAlly": "Damaged By Ally",
                     "DamagedByEnemy": "Damaged By Enemy",
                     "Label": "Special Durations:",
