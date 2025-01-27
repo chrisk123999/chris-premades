@@ -375,11 +375,8 @@ export let rage = {
     ],
     scales: [
         {
-            identifier: 'rage-damage',
-            config: {
-                classIdentifier: 'classIdentifier',
-                scaleIdentifier: 'scaleIdentifier'
-            },
+            classIdentifier: 'classIdentifier',
+            scaleIdentifier: 'scaleIdentifier',
             data: {
                 type: 'ScaleValue',
                 configuration: {

@@ -83,13 +83,13 @@ async function scaleCheck(item) {
     if (!scales) return;
     let missingClass = false;
     await Promise.all(scales.map(async data => {
-        let classIdentifier = itemUtils.getConfig(item, data.config.classIdentifier);
+        let classIdentifier = itemUtils.getConfig(item, data.classIdentifier);
         let classItem = item.actor.classes[classIdentifier];
         if (!classItem) {
             missingClass = true;
             return;
         }
-        let scaleIdentifier = itemUtils.getConfig(item, data.config.scaleIdentifier);
+        let scaleIdentifier = itemUtils.getConfig(item, data.scaleIdentifier);
         let scale = item.actor.system.scale[classIdentifier][scaleIdentifier];
         if (scale) return;
         let classData = genericUtils.duplicate(classItem.toObject());
@@ -98,6 +98,7 @@ async function scaleCheck(item) {
         let message = genericUtils.format('CHRISPREMADES.Requirements.ScaleAdded', {classIdentifier, scaleIdentifier});
         genericUtils.notify(message, 'info');
     }));
+    if (missingClass) return true;
 }
 export let requirements = {
     versionCheck,
