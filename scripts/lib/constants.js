@@ -125,6 +125,8 @@ const actorCompendiumPacks = () => [{label: '', value: ''}, ...game.packs.filter
 const itemCompendiumPacks = () => [{label: '', value: ''}, ...game.packs.filter(i => i.documentName === 'Item').map(i => ({label: i.metadata.label, value: i.metadata.id}))];
 const abilityOptions = () => Object.values(CONFIG.DND5E.abilities).map(i => ({label: i.label, value: i.abbreviation}));
 const healingTypeOptions = () => Object.entries(CONFIG.DND5E.healingTypes).map(i => ({label: i[1].label, value: i[0]}));
+const statusOptions = () => CONFIG.statusEffects.map(i => ({label: i.name, value: i.id}));
+const skillOptions = () => Object.entries(CONFIG.DND5E.skills).map(i => ({label: i[1].label, value: i[0]}));
 const diceSizeOptions = [4, 6, 8, 10, 12, 20].map(i => ({label: 'd' + i, value: 'd' + i}));
 const overTimeOptions = [
     {
@@ -503,5 +505,7 @@ export let constants = {
     modernPacks,
     immuneEffectData,
     diceSizeOptions,
-    advantageEffectData
+    advantageEffectData,
+    statusOptions,
+    skillOptions
 };

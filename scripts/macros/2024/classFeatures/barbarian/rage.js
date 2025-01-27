@@ -209,6 +209,8 @@ async function use({trigger, workflow}) {
         rules: 'modern',
         macros
     });
+    let instinctivePounce = itemUtils.getItemByIdentifier(workflow.actor, 'instinctivePounce');
+    if (instinctivePounce) await workflowUtils.completeItemUse(instinctivePounce);
     if (travelAlongTheTree) {
         let selection = await dialogUtils.confirm(travelAlongTheTree.name, genericUtils.format('CHRISPREMADES.Dialog.Use', {itemName: travelAlongTheTree.name}));
         if (selection) await workflowUtils.completeItemUse(travelAlongTheTree);

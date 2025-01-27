@@ -10,7 +10,7 @@ function collectMacros(entity) {
     if (!macroList.length) return [];
     return macroList.map(i => custom.getMacro(i, genericUtils.getRules(entity))).filter(j => j);
 }
-function collectActorSkillMacros(actor, pass, skillId, options, roll) {
+function collectActorSkillMacros(actor, pass, skillId, options, roll, config) {
     let triggers = [];
     let effects = actorUtils.getEffects(actor);
     let token = actorUtils.getFirstToken(actor);
@@ -31,7 +31,8 @@ function collectActorSkillMacros(actor, pass, skillId, options, roll) {
             actor: actor,
             skillId: skillId,
             options: options,
-            roll: roll
+            roll: roll,
+            config: config
         });
     });
     actor.items.forEach(item => {
@@ -50,7 +51,8 @@ function collectActorSkillMacros(actor, pass, skillId, options, roll) {
             actor: actor,
             skillId: skillId,
             options: options,
-            roll: roll
+            roll: roll,
+            config: config
         });
     });
     if (token) {
@@ -72,14 +74,15 @@ function collectActorSkillMacros(actor, pass, skillId, options, roll) {
                 actor: actor,
                 skillId: skillId,
                 options: options,
-                roll: roll
+                roll: roll,
+                config: config
             });
         });
     }
     return triggers;
 }
-function getSortedTriggers(actor, pass, skillId, options, roll) {
-    let allTriggers = collectActorSkillMacros(actor, pass, skillId, options, roll);
+function getSortedTriggers(actor, pass, skillId, options, roll, config) {
+    let allTriggers = collectActorSkillMacros(actor, pass, skillId, options, roll, config);
     let names = new Set(allTriggers.map(i => i.name));
     allTriggers = Object.fromEntries(names.map(i => [i, allTriggers.filter(j => j.name === i)]));
     let maxMap = {};
@@ -116,7 +119,8 @@ function getSortedTriggers(actor, pass, skillId, options, roll) {
                 actor: trigger.actor,
                 skillId: trigger.skillId,
                 options: trigger.options,
-                roll: trigger.roll
+                roll: trigger.roll,
+                config: trigger.config
             });
         });
     });
@@ -140,9 +144,9 @@ async function executeContextMacroPass(actor, pass, skillId, options) {
     for (let i of triggers) results.push(await executeMacro(i));
     return results.filter(i => i);
 }
-async function executeMacroPass(actor, pass, skillId, options, roll) {
+async function executeMacroPass(actor, pass, skillId, options, roll, config) {
     genericUtils.log('dev', 'Executing Skill Macro Pass: ' + pass);
-    let triggers = getSortedTriggers(actor, pass, skillId, options, roll);
+    let triggers = getSortedTriggers(actor, pass, skillId, options, roll, config);
     for (let i of triggers) await executeMacro(i);
 }
 async function executeBonusMacroPass(actor, pass, skillId, options, roll) {
@@ -166,7 +170,7 @@ async function rollSkill(wrapped, config, dialog = {}, message = {}) {
         event = dialog?.event;
     }
     let options = {};
-    await executeMacroPass(this, 'situational', skillId, options);
+    await executeMacroPass(this, 'situational', skillId, options, undefined, config);
     let selections = await executeContextMacroPass(this, 'context', skillId, options);
     if (selections.length) {
         let advantages = selections.filter(i => i.type === 'advantage').map(j => ({label: j.label, name: 'advantage'}));
@@ -215,12 +219,13 @@ async function rollSkill(wrapped, config, dialog = {}, message = {}) {
     let oldOptions = returnData.options;
     returnData = await executeBonusMacroPass(this, 'bonus', skillId, options, returnData);
     if (returnData.options) genericUtils.mergeObject(returnData.options, oldOptions);
-    //await executeMacroPass(this, 'optionalBonus', skillId, options, returnData);
+    //await executeMacroPass(this, 'optionalBonus', skillId, options, returnData, config);
     if (message.create !== false) {
         await returnData.toMessage(messageData, {rollMode: returnData.options?.rollMode ?? rollMode});
     }
     return shouldBeArray ? [returnData] : returnData;
 }
+
 function patch() {
     genericUtils.log('dev', 'Skill Checks Patched!');
     libWrapper.register('chris-premades', 'CONFIG.Actor.documentClass.prototype.rollSkill', rollSkill, 'WRAPPER');

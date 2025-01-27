@@ -114,6 +114,7 @@
             "ApplyFilter": "Apply Filter:",
             "AttackBonus": "Attack Bonus:",
             "BaseDiceNumber": "Base Dice Number:",
+            "BlockingStatuses": "Blocking Statuses:",
             "Character": "Character",
             "CheckSave": "Check Save:",
             "CheckSaves": "Check Saves:",
@@ -172,11 +173,14 @@
             "PlayTeleportAnimation": "Play Teleport Animation:",
             "Range": "Range:",
             "RealDarkness": "Use Real Darkness:",
+            "SaveAbilities": "Save Abilities:",
             "SaveDC": "Save DC:",
+            "Saves": "Saves:",
             "Scale": "Scale:",
             "ScaleIdentifier": "Scale Identifier",
             "ShowIcon": "Always Show Aura Icon",
             "ShowRoll": "Show Roll:",
+            "Skills": "Skills:",
             "Sound": "Sound:",
             "SpecificAnimation": "{option} Animation:",
             "Trigger": "Trigger:",
@@ -1321,6 +1325,9 @@
                 "Sea": "Sea",
                 "Select": "What companion type?",
                 "Sky": "Sky"
+            },
+            "PrimalKnowledge": {
+                "ReplacementAbility": "Replacement Ability:"
             },
             "ProtectionFromEvilAndGood": {
                 "Save": "This save is from an effect from an aberration, celestial, elemental, fey, fiends, or undead that has charmed, frightened, or possessed you."

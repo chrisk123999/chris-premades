@@ -46,3 +46,8 @@ export {circleOfDeath} from './macros/2024/spells/circleOfDeath.js';
 //Class Features
 //Barbarian
 export {rage, rageRaging} from './macros/2024/classFeatures/barbarian/rage.js';
+export {unarmoredDefenseBarbarian} from './macros/2024/classFeatures/barbarian/unarmoredDefense.js';
+export {dangerSense} from './macros/2024/classFeatures/barbarian/dangerSense.js';
+export {recklessAttack} from './macros/2024/classFeatures/barbarian/recklessAttack.js';
+export {primalKnowledge} from './macros/2024/classFeatures/barbarian/primalKnowledge.js';
+export {feralInstinct} from './macros/2024/classFeatures/barbarian/feralInstinct.js';
