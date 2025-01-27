@@ -830,6 +830,7 @@
                 "NoTargets": "Não há alvos válidos dentro do alcance!"
             },
             "FarStep": {
+                "Name": "Passo Distante",
                 "Teleport": "Passo Distante: Teleporte"
             },
             "FeyStep": {
@@ -903,6 +904,9 @@
                 "AvertEffect": "Olhos Desviados",
                 "AvertSelect": "Desviar os olhos de {tokenName}?",
                 "Name": "Olhar"
+            },
+            "GenericTeleport": {
+                "Name": "Teleporte"
             },
             "Grapple": {
                 "ChooseSkill": "Como você quer disputar o agarrão?",
@@ -984,6 +988,9 @@
             "HexbladesCurse": {
                 "Healing": "Maldição da Lâmina Maldita: Cura",
                 "Transfer": "Mestre das Maldições: Transferir Maldição?"
+            },
+            "HiddenPaths": {
+                "Name": "Caminhos Ocultos"
             },
             "HoldPerson": {
                 "Overtime": "Imobilizar Pessoa (Fim do Turno)"
@@ -1203,6 +1210,9 @@
                 "Hit": "O ataque atingiu uma duplicata e a destruiu.",
                 "Miss": "Ataque teve como alvo uma duplicata e errou."
             },
+            "MistyStep": {
+                "Name": "Passo Nebuloso"
+            },
             "Moonbeam": {
                 "Damage": "Raio Lunar: Dano",
                 "Move": "Raio Lunar: Mover"
@@ -1354,6 +1364,9 @@
             },
             "ShadowOfMoil": {
                 "Damage": "Sombra de Transtorno: Dano"
+            },
+            "ShadowStep": {
+                "Name": "Passo Sombrio"
             },
             "ShieldGuardianShield": {
                 "Use": "Dar Escudo para {name}? Rolagem de Ataque: {attack}"
@@ -1642,6 +1655,7 @@
                 "Pull": "Até onde você puxa o alvo?"
             },
             "ThunderStep": {
+                "Name": "Passo Trovejante",
                 "Select": "Teleportar uma Criatura?"
             },
             "ThunderboltStrike": {
@@ -1684,6 +1698,9 @@
             "VampiricTouch": {
                 "Attack": "Toque Vampírico: Ataque",
                 "HealingModifier": "0.5"
+            },
+            "VortexWarp": {
+                "Name": "Vórtice Distorcido"
             },
             "WallOfFire": {
                 "CircleFacing": "Para que lado o fogo está voltado?",
