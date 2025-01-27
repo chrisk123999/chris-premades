@@ -259,6 +259,14 @@
       "type": "Item",
       "module": "chris-premades",
       "banner": "modules/chris-premades/images/bannerSpells.webp"
+    },
+    {
+      "name": "CPRClassFeatures2024",
+      "label": "CPR Class Features",
+      "path": "packs/cpr-class-features-2024",
+      "type": "Item",
+      "module": "chris-premades",
+      "banner": "modules/chris-premades/images/bannerClassFeatures.webp"
     }
   ],
   "packFolders": [
@@ -294,7 +302,8 @@
           "sorting": "a",
           "color": "#348f2d",
           "packs": [
-            "CPRSpells2024"
+            "CPRSpells2024",
+            "CPRClassFeatures2024"
           ]
         }
       ],

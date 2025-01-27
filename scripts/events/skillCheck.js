@@ -28,11 +28,11 @@ function collectActorSkillMacros(actor, pass, skillId, options, roll, config) {
             },
             macros: effectMacros,
             name: effect.name.slugify(),
-            actor: actor,
-            skillId: skillId,
-            options: options,
-            roll: roll,
-            config: config
+            actor,
+            skillId,
+            options,
+            roll,
+            config
         });
     });
     actor.items.forEach(item => {
@@ -48,11 +48,11 @@ function collectActorSkillMacros(actor, pass, skillId, options, roll, config) {
             },
             macros: itemMacros,
             name: item.name.slugify(),
-            actor: actor,
-            skillId: skillId,
-            options: options,
-            roll: roll,
-            config: config
+            actor,
+            skillId,
+            options,
+            roll,
+            config
         });
     });
     if (token) {
@@ -71,11 +71,11 @@ function collectActorSkillMacros(actor, pass, skillId, options, roll, config) {
                 },
                 macros: templateMacros,
                 name: templateUtils.getName(template).slugify(),
-                actor: actor,
-                skillId: skillId,
-                options: options,
-                roll: roll,
-                config: config
+                actor,
+                skillId,
+                options,
+                roll,
+                config
             });
         });
     }
@@ -137,9 +137,9 @@ async function executeMacro(trigger) {
     }
     return result;
 }
-async function executeContextMacroPass(actor, pass, skillId, options) {
+async function executeContextMacroPass(actor, pass, skillId, options, roll, config) {
     genericUtils.log('dev', 'Executing Skill Macro Pass: ' + pass);
-    let triggers = getSortedTriggers(actor, pass, skillId, options);
+    let triggers = getSortedTriggers(actor, pass, skillId, options, roll, config);
     let results = [];
     for (let i of triggers) results.push(await executeMacro(i));
     return results.filter(i => i);
@@ -149,9 +149,9 @@ async function executeMacroPass(actor, pass, skillId, options, roll, config) {
     let triggers = getSortedTriggers(actor, pass, skillId, options, roll, config);
     for (let i of triggers) await executeMacro(i);
 }
-async function executeBonusMacroPass(actor, pass, skillId, options, roll) {
+async function executeBonusMacroPass(actor, pass, skillId, options, roll, config) {
     genericUtils.log('dev', 'Executing Skill Macro Pass: ' + pass);
-    let triggers = getSortedTriggers(actor, pass, skillId, options, roll);
+    let triggers = getSortedTriggers(actor, pass, skillId, options, roll, config);
     for (let i of triggers) {
         i.roll = roll;
         let bonusRoll = await executeMacro(i);
@@ -171,7 +171,7 @@ async function rollSkill(wrapped, config, dialog = {}, message = {}) {
     }
     let options = {};
     await executeMacroPass(this, 'situational', skillId, options, undefined, config);
-    let selections = await executeContextMacroPass(this, 'context', skillId, options);
+    let selections = await executeContextMacroPass(this, 'context', skillId, options, undefined, config);
     if (selections.length) {
         let advantages = selections.filter(i => i.type === 'advantage').map(j => ({label: j.label, name: 'advantage'}));
         let disadvantages = selections.filter(i => i.type === 'disadvantage').map(j => ({label: j.label, name: 'disadvantage'}));
@@ -217,7 +217,7 @@ async function rollSkill(wrapped, config, dialog = {}, message = {}) {
     if (shouldBeArray) returnData = returnData[0];
     if (!returnData) return;
     let oldOptions = returnData.options;
-    returnData = await executeBonusMacroPass(this, 'bonus', skillId, options, returnData);
+    returnData = await executeBonusMacroPass(this, 'bonus', skillId, options, returnData, config);
     if (returnData.options) genericUtils.mergeObject(returnData.options, oldOptions);
     //await executeMacroPass(this, 'optionalBonus', skillId, options, returnData, config);
     if (message.create !== false) {

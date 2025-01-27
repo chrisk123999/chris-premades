@@ -1,6 +1,31 @@
 # 1.1.22 Release:
+## New Modern Content:
+- Brutal Strike
+- Danger Sense
+- Feral Instinct
+- Improved Brutal Strike
+- Indomitable Might
+- Persistant Rage
+- Primal Knowledge
+- Rage
+- Reckless Attack
+- Relentless Rage
+- Unarmored Defense (Barbarian)
+## Update Notes:
+- Modern class feature automations will not function with legacy sub-classes. Compatability will be added for legacy subclasses upon request / time.
+- Added all status effects to the CPR Effect Medkit special durations.
+- Added all armor types to the CPR Effect Medkit special durations.
+- Added "Attacked by another creature" to the CPR Effect Medkit special durations.
+- Added the ability to set the identifier and rules of an effect in the Dev Tools Effect Medkit.
+- 2024 Barbarian subclass automations will be in an upcoming update.
+## API Updates:
+- Skill Check, Ability Check, and Save Events now pass through the config to the trigger.
+- Added the ability for automation configs to automatically apply missing scale values.
+## API Bug Fixes:
+- Moved the postAttackRoll event to the Midi-Qol preAttackRoll hook.
 ## Bug Fixes:
 - Manual Rolling
+- Vortex Warp (Legacy)
 
 # 1.1.21 Release:
 ## Update Notes:

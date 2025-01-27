@@ -10,7 +10,7 @@ function collectMacros(entity) {
     if (!macroList.length) return [];
     return macroList.map(i => custom.getMacro(i, genericUtils.getRules(entity))).filter(j => j);
 }
-function collectActorCheckMacros(actor, pass, checkId, options, roll) {
+function collectActorCheckMacros(actor, pass, checkId, options, roll, config) {
     let triggers = [];
     let effects = actorUtils.getEffects(actor);
     let token = actorUtils.getFirstToken(actor);
@@ -28,10 +28,11 @@ function collectActorCheckMacros(actor, pass, checkId, options, roll) {
             },
             macros: effectMacros,
             name: effect.name.slugify(),
-            actor: actor,
-            checkId: checkId,
-            options: options,
-            roll: roll
+            actor,
+            checkId,
+            options,
+            roll,
+            config
         });
     });
     actor.items.forEach(item => {
@@ -47,10 +48,11 @@ function collectActorCheckMacros(actor, pass, checkId, options, roll) {
             },
             macros: itemMacros,
             name: item.name.slugify(),
-            actor: actor,
-            checkId: checkId,
-            options: options,
-            roll: roll
+            actor,
+            checkId,
+            options,
+            roll,
+            config
         });
     });
     if (token) {
@@ -69,10 +71,11 @@ function collectActorCheckMacros(actor, pass, checkId, options, roll) {
                 },
                 macros: templateMacros,
                 name: templateUtils.getName(template).slugify(),
-                actor: actor,
-                checkId: checkId,
-                options: options,
-                roll: roll
+                actor,
+                checkId,
+                options,
+                roll,
+                config
             });
         });
     }
@@ -116,7 +119,8 @@ function getSortedTriggers(actor, pass, checkId, options, roll) {
                 actor: trigger.actor,
                 checkId: trigger.checkId,
                 options: trigger.options,
-                roll: trigger.roll
+                roll: trigger.roll,
+                config: trigger.config
             });
         });
     });
@@ -133,21 +137,21 @@ async function executeMacro(trigger) {
     }
     return result;
 }
-async function executeContextMacroPass(actor, pass, checkId, options) {
+async function executeContextMacroPass(actor, pass, checkId, options, roll, config) {
     genericUtils.log('dev', 'Executing Check Macro Pass: ' + pass);
-    let triggers = getSortedTriggers(actor, pass, checkId, options);
+    let triggers = getSortedTriggers(actor, pass, checkId, options, roll, config);
     let results = [];
     for (let i of triggers) results.push(await executeMacro(i));
     return results.filter(i => i);
 }
-async function executeMacroPass(actor, pass, checkId, options, roll) {
+async function executeMacroPass(actor, pass, checkId, options, roll, config) {
     genericUtils.log('dev', 'Executing Check Macro Pass: ' + pass);
-    let triggers = getSortedTriggers(actor, pass, checkId, options, roll);
+    let triggers = getSortedTriggers(actor, pass, checkId, options, roll, config);
     for (let i of triggers) await executeMacro(i);
 }
-async function executeBonusMacroPass(actor, pass, checkId, options, roll) {
+async function executeBonusMacroPass(actor, pass, checkId, options, roll, config) {
     genericUtils.log('dev', 'Executing Check Macro Pass: ' + pass);
-    let triggers = getSortedTriggers(actor, pass, checkId, options, roll);
+    let triggers = getSortedTriggers(actor, pass, checkId, options, roll, config);
     for (let i of triggers) {
         i.roll = roll;
         let bonusRoll = await executeMacro(i);
@@ -166,8 +170,8 @@ async function rollCheck(wrapped, config, dialog = {}, message = {}) {
         event = dialog?.event;
     }
     let options = {};
-    await executeMacroPass(this, 'situational', checkId, options);
-    let selections = await executeContextMacroPass(this, 'context', checkId, options);
+    await executeMacroPass(this, 'situational', checkId, options, undefined, config);
+    let selections = await executeContextMacroPass(this, 'context', checkId, options, undefined, config);
     if (selections.length) {
         let advantages = selections.filter(i => i.type === 'advantage').map(j => ({label: j.label, name: 'advantage'}));
         let disadvantages = selections.filter(i => i.type === 'disadvantage').map(j => ({label: j.label, name: 'disadvantage'}));
@@ -215,9 +219,8 @@ async function rollCheck(wrapped, config, dialog = {}, message = {}) {
     if (shouldBeArray) returnData = returnData[0];
     if (!returnData) return;
     let oldOptions = returnData.options;
-    returnData = await executeBonusMacroPass(this, 'bonus', checkId, options, returnData);
+    returnData = await executeBonusMacroPass(this, 'bonus', checkId, options, returnData, config);
     if (returnData.options) genericUtils.mergeObject(returnData.options, oldOptions);
-    //await executeMacroPass(this, 'optionalBonus', checkId, options, returnData);
     if (message.create !== false) {
         genericUtils.mergeObject(messageData, {flags: options.flags ?? {} });
         genericUtils.setProperty(messageData, 'flags.midi-qol.lmrtfy.requestId', options.flags?.lmrtfy?.data?.requestId);

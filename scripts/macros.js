@@ -52,4 +52,7 @@ export {recklessAttack} from './macros/2024/classFeatures/barbarian/recklessAtta
 export {primalKnowledge} from './macros/2024/classFeatures/barbarian/primalKnowledge.js';
 export {feralInstinct} from './macros/2024/classFeatures/barbarian/feralInstinct.js';
 export {brutalStrike, sunderingBlow} from './macros/2024/classFeatures/barbarian/brutalStrike.js';
+export {relentlessRage} from './macros/2024/classFeatures/barbarian/relentlessRage.js';
+export {improvedBrutalStrike} from './macros/2024/classFeatures/barbarian/improvedBrutalStrike.js';
 export {persistentRage} from './macros/2024/classFeatures/barbarian/persistentRage.js';
+export {indomitableMight} from './macros/2024/classFeatures/barbarian/indomitableMight.js';

@@ -89,6 +89,7 @@
             "WeightOfSorrow": "Weight of Sorrow"
         },
         "Config": {
+            "Abilities": "Ability:",
             "Ability": "Ability:",
             "AffectAllies": "Should Affect Allies:",
             "AllowEnemies": "Allow selection of non-allied tokens?",

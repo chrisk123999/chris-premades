@@ -29,16 +29,20 @@ async function getCPRAutomation(item, {identifier, rules = 'legacy'} = {}) {
                 if (genericUtils.getCPRSetting('thirdParty')) keys.push(constants.packs.thirdPartyItems);
                 break;
             case 'feat':
-                if (rules === 'modern') break;
                 if (item.system.type.value === 'race') {
+                    if (rules === 'modern') break;
                     keys.push(constants.packs.raceFeatures);
                     //if (genericUtils.getCPRSetting('thirdParty')) keys.push(constants.packs.thirdPartyRaceFeatures);
                 } else {
-                    keys.push(constants.packs.classFeatures);
-                    if (genericUtils.getCPRSetting('thirdParty')) keys.push(constants.packs.thirdPartyClassFeatures);
-                    keys.push(constants.packs.feats);
-                    keys.push(constants.packs.actions);
-                    keys.push(constants.packs.miscellaneous);
+                    if (rules === 'modern') {
+                        keys.push(constants.modernPacks.classFeatures);
+                    } else {
+                        keys.push(constants.packs.classFeatures);
+                        if (genericUtils.getCPRSetting('thirdParty')) keys.push(constants.packs.thirdPartyClassFeatures);
+                        keys.push(constants.packs.feats);
+                        keys.push(constants.packs.actions);
+                        keys.push(constants.packs.miscellaneous);
+                    }
                 }
                 break;
         }
