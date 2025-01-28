@@ -34,9 +34,9 @@ export function registerHooks() {
     Hooks.on('midi-qol.preTargeting', midiEvents.preTargeting);
     Hooks.on('midi-qol.premades.postNoAction', midiEvents.preItemRoll);
     Hooks.on('midi-qol.premades.postPreambleComplete', midiEvents.preambleComplete);
-    Hooks.on('midi-qol.premades.postWaitForAttackRoll', midiEvents.postAttackRoll); // Check this
+    Hooks.on('midi-qol.premades.postWaitForAttackRoll', midiEvents.postAttackRoll);
     Hooks.on('midi-qol.premades.preAttackRollComplete', midiEvents.attackRollComplete);
-    Hooks.on('midi-qol.premades.postDamageRollComplete', midiEvents.damageRollComplete); // Check this
+    Hooks.on('midi-qol.premades.postDamageRollComplete', midiEvents.damageRollComplete);
     Hooks.on('midi-qol.premades.postSavesComplete', midiEvents.savesComplete);
     Hooks.on('midi-qol.preTargetDamageApplication', midiEvents.preTargetDamageApplication);
     Hooks.on('midi-qol.premades.postRollFinished', midiEvents.rollFinished);
@@ -50,6 +50,7 @@ export function registerHooks() {
     Hooks.on('renderItemSheetV2', renderItemSheet);
     Hooks.on('renderActivitySheet', renderActivitySheet);
     Hooks.on('renderDAEActiveEffectConfig', renderEffectConfig);
+    Hooks.on('preCreateActiveEffect', effects.activityDC);
     Hooks.on('preCreateActiveEffect', effects.noAnimation);
     Hooks.on('preDeleteActiveEffect', effects.noAnimation);
     Hooks.on('createChatMessage', chat.createChatMessage);

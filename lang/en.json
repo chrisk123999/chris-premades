@@ -1128,6 +1128,9 @@
             "InspiringSmite": {
                 "Select": "Distribute Temp HP (Amount to Distribute: {maxAmount})"
             },
+            "IntimidatingPresence": {
+                "Rage": "Consume a usage of rage to use?"
+            },
             "InvestitureOfFlame": {
                 "Fire": "Investiture of Flame: Fire",
                 "Heat": "Investiture of Flame: Heat"
@@ -1316,7 +1319,8 @@
             "PowerOfTheWilds": {
                 "Falcon": "Falcon",
                 "Lion": "Lion",
-                "Ram": "Ram"
+                "Ram": "Ram",
+                "RamProne": "Knock target prone?"
             },
             "PreserveLife": {
                 "Select": "Distribute HP (Amount to Distribute: {maxAmount}. Targets cannot be healed above half health.)"
@@ -1387,6 +1391,9 @@
                 "ShowIcons": "Show icons for regeneration blocked/reduced:",
                 "Threshold": "Damage required to permanently kill if at 0hp:",
                 "ZeroHP": "Creature dies upon reaching 0hp"
+            },
+            "Retaliation": {
+                "Weapon": "Which weapon do you attack with?"
             },
             "RingOfSpellStoring": {
                 "Clear": "Clear used spells",
@@ -1924,6 +1931,7 @@
                         "ActionSaveDialog": "Dialog",
                         "ActionSaveDisabled": "Disabled",
                         "ActionSaveRoll": "Chat Button",
+                        "Activity": "Activity DC",
                         "AllowIncapacitated": "Allow Incapacitated Targets:",
                         "ApplyCondition": "Apply Condition Evaluation Expression:",
                         "BlindRoll": "Blind Roll",

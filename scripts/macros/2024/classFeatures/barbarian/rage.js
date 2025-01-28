@@ -82,6 +82,7 @@ async function use({trigger, workflow}) {
         if (frightenedEffect) await genericUtils.remove(frightenedEffect);
         let effect = mindlessRage.effects.contents?.[0];
         if (effect) effectData.changes.push(...effect.changes);
+        if (charmedEffect || frightenedEffect) await workflowUtils.completeItemUse(mindlessRage);
     }
     let berserkerRetaliation = itemUtils.getItemByIdentifier(workflow.actor, 'berserkerRetaliation');
     if (berserkerRetaliation) {
@@ -102,7 +103,7 @@ async function use({trigger, workflow}) {
     //Path of the Wild Heart
     let rageOfTheWilds = itemUtils.getItemByIdentifier(workflow.actor, 'rageOfTheWilds');
     if (rageOfTheWilds) {
-        let selection = dialogUtils.buttonDialog(rageOfTheWilds.name, 'CHRISPREMADES.Macros.RageOfTheWilds.Use', [
+        let selection = await dialogUtils.buttonDialog(rageOfTheWilds.name, 'CHRISPREMADES.Macros.RageOfTheWilds.Use', [
             ['CHRISPREMADES.Macros.RageOfTheWilds.Bear', 'bear'],
             ['CHRISPREMADES.Macros.RageOfTheWilds.Eagle', 'eagle'],
             ['CHRISPREMADES.Macros.RageOfTheWilds.Wolf', 'wolf']
@@ -118,9 +119,11 @@ async function use({trigger, workflow}) {
                     type: 'midi.actor',
                     macros: 'rageOfTheWildsWolf'
                 });
+                genericUtils.setProperty(effectData, 'flags.chris-premades.rageOfTheWildsWolf', true);
                 break;
             }
         }
+        await workflowUtils.completeItemUse(rageOfTheWilds);
     }
     let powerOfTheWilds = itemUtils.getItemByIdentifier(workflow.actor, 'powerOfTheWilds');
     if (powerOfTheWilds) {
@@ -129,9 +132,9 @@ async function use({trigger, workflow}) {
             ['CHRISPREMADES.Macros.PowerOfTheWilds.Ram', 'ram']
         ];
         let invalidTypes = ['heavy', 'medium', 'light'];
-        let allArmor = workflow.actor.items.filter(item => invalidTypes.includes(item.system.type.value) && item.system.equipped);
+        let allArmor = workflow.actor.items.filter(item => invalidTypes.includes(item.system.type?.value) && item.system.equipped);
         if (!allArmor.length) options.unshift(['CHRISPREMADES.Macros.PowerOfTheWilds.Falcon', 'falcon']);
-        let selection = dialogUtils.buttonDialog(powerOfTheWilds.name, 'CHRISPREMADES.Macros.RageOfTheWilds.Use', options, {displayAsRows: true});
+        let selection = await dialogUtils.buttonDialog(powerOfTheWilds.name, 'CHRISPREMADES.Macros.RageOfTheWilds.Use', options, {displayAsRows: true});
         switch (selection) {
             case 'falcon': {
                 let effect = powerOfTheWilds.effects.contents?.[0];
@@ -141,10 +144,19 @@ async function use({trigger, workflow}) {
             case 'lion': {
                 macros.push({
                     type: 'midi.actor',
+                    macros: ['powerOfTheWildsLion']
+                });
+                genericUtils.setProperty(effectData, 'flags.chris-premades.powerOfTheWildsLion', true);
+                break;
+            }
+            case 'ram': {
+                macros.push({
+                    type: 'midi.actor',
                     macros: ['powerOfTheWildsRam']
                 });
             }
         }
+        await workflowUtils.completeItemUse(powerOfTheWilds);
     }
     //Path of the World Tree
     let vitalityOfTheTree = itemUtils.getItemByIdentifier(workflow.actor, 'vitalityOfTheTree');
@@ -202,6 +214,7 @@ async function use({trigger, workflow}) {
         });
     }
     let rageOfTheGods = itemUtils.getItemByIdentifier(workflow.actor, 'rageOfTheGods');
+    effectData.origin = workflow.item.uuid;
     await effectUtils.createEffect(workflow.actor, effectData, {
         identifier: 'rage',
         vae: vaeInput,

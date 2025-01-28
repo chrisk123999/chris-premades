@@ -114,7 +114,7 @@ export class EffectMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
             },
             isDev: game.settings.get('chris-premades', 'devTools'),
             identifier: effect.flags['chris-premades']?.info?.identifier ?? '',
-            rules: effect.flags['chris-premades']?.info?.rules ?? ''
+            rules: effect.flags['chris-premades']?.rules ?? ''
         };
         // Figure out coloring for medkit
         if (context.configure.noAnimation.value || context.configure.conditions.value.length || context.configure.specialDuration.value.length) context.status = 1;
@@ -211,6 +211,11 @@ export class EffectMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
                             label: 'CHRISPREMADES.Medkit.Effect.OverTime.Labels.Item',
                             value: '@item.save.dc',
                             isSelected: i.value === '@item.save.dc'
+                        },
+                        {
+                            label: 'CHRISPREMADES.Medkit.Effect.OverTime.Labels.Activity',
+                            value: '$activity.dc',
+                            isSelected: i.value === '$activity.dc'
                         },
                         {
                             label: 'CHRISPREMADES.Medkit.Effect.OverTime.Labels.Flat',

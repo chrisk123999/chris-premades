@@ -1,3 +1,20 @@
+# 1.1.23 Release:
+## New Modern Content:
+- Frenzy
+- Mindless Rage
+- Retaliation
+- Intimidating Presence
+- Rage of the Wilds
+- Aspect of the Wilds
+- Power of the Wilds
+## Bug Fixes:
+- Rage
+- Brutal Strike
+- Invisible
+- Pariah's Shield (Legacy)
+## Update Notes:
+- Added the ability for overtimes to more easily use an activity DC.
+
 # 1.1.22 Release:
 ## New Modern Content:
 - Brutal Strike

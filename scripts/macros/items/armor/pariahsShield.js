@@ -9,7 +9,7 @@ async function moved({trigger}) {
         let currentBonus = item.system.armor.magicalBonus ?? 0;
         if (nearbyAllies.length === currentBonus) return;
         let maxBonus = Number(itemUtils.getConfig(item, 'maxBonus'));
-        await genericUtils.update(item, {'system.armor.magicalBonus': Math.min(nearbyAllies.length, maxBonus)});
+        await genericUtils.update(item, {'system.armor.magicalBonus': Math.min(Math.floor(nearbyAllies.length / 2), maxBonus)});
     }));
 }
 async function damage({trigger, workflow, ditem}) {

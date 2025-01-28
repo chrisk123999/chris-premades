@@ -2,10 +2,9 @@ import {combatUtils} from '../../../../lib/utilities/combatUtils.js';
 import {activityUtils, constants, dialogUtils, effectUtils, genericUtils, itemUtils, tokenUtils, workflowUtils} from '../../../../utils.js';
 async function early({trigger: {entity: item}, workflow}) {
     if (!item.system.uses.value) return;
-    if (!workflow.token || !workflow.targets.size || workflow.disadvantage || (workflow.disadvantage && workflow.advantage)) return;
-    if (!constants.attacks.includes(workflow.activity.actionType)) return;
+    if (!workflow.token || !workflow.targets.size || workflow.disadvantage || (workflow.disadvantage && workflow.advantage) || !combatUtils.isOwnTurn(workflow.token) || !constants.attacks.includes(workflow.activity.actionType)) return;
     let effect = effectUtils.getEffectByIdentifier(workflow.actor, 'recklessAttackEffect');
-    if (!effect || !combatUtils.isOwnTurn(workflow.token)) return;
+    if (!effect) return;
     let classIdentifier = itemUtils.getConfig(item, 'classIdentifier');
     let classItem = workflow.actor.classes[classIdentifier];
     if (!classItem) return;

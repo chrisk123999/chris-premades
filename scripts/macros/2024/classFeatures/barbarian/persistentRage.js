@@ -1,7 +1,6 @@
 import {genericUtils, itemUtils} from '../../../../utils.js';
 async function use({trigger, workflow}) {
     let item = itemUtils.getItemByIdentifier(workflow.actor, 'rage');
-    console.log(item);
     if (!item) return;
     await genericUtils.update(item, {'system.uses.spent': 0});
 }

@@ -1,4 +1,20 @@
-import {activityUtils, actorUtils, constants, effectUtils, genericUtils, itemUtils} from '../utils.js';
+import {activityUtils, actorUtils, constants, genericUtils, itemUtils} from '../utils.js';
+function activityDC(effect, updates, options, id) {
+    if (game.user.id != id || effect.transfer || !(effect.parent instanceof Actor) || !effect.origin) return;
+    if (!updates.changes?.length) return;
+    let origin = fromUuidSync(effect.origin, {strict: false});
+    if (!origin) return;
+    if (!(origin instanceof Item)) return;
+    let changed = true;
+    updates.changes.forEach(i => {
+        if (i.key != 'flags.midi-qol.OverTime') return;
+        if (i.value.includes('$activity.dc')) {
+            changed = true;
+            i.value = i.value.replaceAll('$activity.dc', itemUtils.getSaveDC(origin));
+        }
+    });
+    effect.updateSource({changes: updates.changes});
+}
 function noAnimation(...args) {
     if (!args[0].flags['chris-premades']?.effect?.noAnimation) return;
     switch (this.hook) {
@@ -167,5 +183,6 @@ export let effects = {
     rehideActivities,
     specialDuration,
     specialDurationConditions,
-    specialDurationEquipment
+    specialDurationEquipment,
+    activityDC
 };

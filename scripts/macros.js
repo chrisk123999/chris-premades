@@ -56,3 +56,12 @@ export {relentlessRage} from './macros/2024/classFeatures/barbarian/relentlessRa
 export {improvedBrutalStrike} from './macros/2024/classFeatures/barbarian/improvedBrutalStrike.js';
 export {persistentRage} from './macros/2024/classFeatures/barbarian/persistentRage.js';
 export {indomitableMight} from './macros/2024/classFeatures/barbarian/indomitableMight.js';
+//Path of the Berserker
+export {frenzy} from './macros/2024/classFeatures/barbarian/berserker/frenzy.js';
+export {mindlessRage} from './macros/2024/classFeatures/barbarian/berserker/mindlessRage.js';
+export {retaliation} from './macros/2024/classFeatures/barbarian/berserker/retaliation.js';
+export {intimidatingPresence} from './macros/2024/classFeatures/barbarian/berserker/intimidatingPresence.js';
+//Path of the Wild Heart
+export {rageOfTheWilds, rageOfTheWildsWolf} from './macros/2024/classFeatures/barbarian/wildHeart/rageOfTheWilds.js';
+export {aspectOfTheWilds} from './macros/2024/classFeatures/barbarian/wildHeart/aspectOfTheWilds.js';
+export {powerOfTheWilds, powerOfTheWildsLion, powerOfTheWildsRam} from './macros/2024/classFeatures/barbarian/wildHeart/powerOfTheWilds.js';
