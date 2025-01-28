@@ -29,6 +29,8 @@ async function damage({workflow}) {
         let selection = await dialogUtils.confirm(originItem.name, genericUtils.format('CHRISPREMADES.Dialog.Use', {itemName: originItem.name}));
         if (!selection) return;
         await workflowUtils.syntheticItemRoll(originItem, [targetToken], {options: {configureDialog: true}, config: {consumeUsage: true}});
+        effect = effectUtils.getEffectByIdentifier(workflow.actor, 'favoredFoe');
+        if (!effect) return;
     } else {
         if (!combatUtils.perTurnCheck(effect, 'favoredFoe', true, workflow.token.id)) return;
         let targetEffects = effectUtils.getAllEffectsByIdentifier(targetToken.actor, 'favoredFoe');

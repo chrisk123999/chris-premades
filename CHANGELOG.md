@@ -1,3 +1,7 @@
+# 1.1.24 Release:
+## Bug Fixes:
+- Favored Foe (Legacy)
+
 # 1.1.23 Release:
 ## New Modern Content:
 - Frenzy
