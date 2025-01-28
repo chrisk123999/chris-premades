@@ -1,3 +1,7 @@
+# 1.0.59 Release:
+## Bug Fixes:
+- Favored Foe
+
 # 1.0.58 Release:
 ## Bug Fixes:
 - Pariah's Shield
