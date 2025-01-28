@@ -1,3 +1,7 @@
+# 1.0.58 Release:
+## Bug Fixes:
+- Pariah's Shield
+
 # 1.0.57 Release
 ## Bug Fixes:
 - Flaming Sphere
