@@ -7,7 +7,7 @@ async function useBaitAndSwitch({workflow}) {
     if (targetToken.id === workflow.token.id || targetToken.document.disposition * workflow.token.document.disposition < 0) return;
     let [itemToUse, superiorityDie] = await determineSuperiorityDie(workflow.actor);
     if (!itemToUse?.system.uses.value) return;
-    let superiorityRoll = await new Roll(superiorityDie + ' + @abilities.dex.mod', workflow.actor.getRollData()).evaluate();
+    let superiorityRoll = await new Roll(superiorityDie, workflow.actor.getRollData()).evaluate();
     superiorityRoll.toMessage({
         rollType: 'roll',
         speaker: ChatMessage.implementation.getSpeaker({token: workflow.token}),

@@ -1,3 +1,10 @@
+# 1.0.57 Release
+## Bug Fixes:
+- Flaming Sphere
+- Hunter's Mark
+- Maneuvers: Bait and Switch
+- Hex
+
 # 1.0.56 Release
 ## Bug Fixes:
 - Missed localization

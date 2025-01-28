@@ -142,7 +142,7 @@ export let flamingSphere = {
         {
             value: 'token',
             label: 'CHRISPREMADES.Summons.CustomToken',
-            i18nOption: 'CHRISPREMADES.Summons.CreatureNames.SpiritualWeapon',
+            i18nOption: 'CHRISPREMADES.Summons.CreatureNames.FlamingSphere',
             type: 'file',
             default: '',
             category: 'summons'
@@ -150,7 +150,7 @@ export let flamingSphere = {
         {
             value: 'avatar',
             label: 'CHRISPREMADES.Summons.CustomAvatar',
-            i18nOption: 'CHRISPREMADES.Summons.CreatureNames.SpiritualWeapon',
+            i18nOption: 'CHRISPREMADES.Summons.CreatureNames.FlamingSphere',
             type: 'file',
             default: '',
             category: 'summons'
@@ -158,7 +158,7 @@ export let flamingSphere = {
         {
             value: 'name',
             label: 'CHRISPREMADES.Summons.CustomName',
-            i18nOption: 'CHRISPREMADES.Summons.CreatureNames.SpiritualWeapon',
+            i18nOption: 'CHRISPREMADES.Summons.CreatureNames.FlamingSphere',
             type: 'text',
             default: '',
             category: 'summons'

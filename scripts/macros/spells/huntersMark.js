@@ -68,8 +68,12 @@ async function damage({workflow}) {
     if (!effect) return;
     let {targets: validTargetUuids, formula} = effect.flags['chris-premades'].huntersMark;
     if (!validTargetUuids.includes(workflow.hitTargets.first().document.uuid)) return;
-    let damageType = workflow.defaultDamageType;
-    await workflowUtils.bonusDamage(workflow, formula + '[' + damageType + ']', {damageType});
+    let damageType = new Roll(formula).terms[0]?.options?.flavor;
+    if (!damageType) {
+        damageType = workflow.defaultDamageType;
+        formula += '[' + damageType + ']';
+    }
+    await workflowUtils.bonusDamage(workflow, formula, {damageType});
 }
 async function move({workflow}) {
     if (workflow.targets.size !== 1) return;
