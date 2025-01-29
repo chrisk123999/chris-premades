@@ -5,7 +5,7 @@ function activityDC(effect, updates, options, id) {
     let origin = fromUuidSync(effect.origin, {strict: false});
     if (!origin) return;
     if (!(origin instanceof Item)) return;
-    let changed = true;
+    let changed = false;
     updates.changes.forEach(i => {
         if (i.key != 'flags.midi-qol.OverTime') return;
         if (i.value.includes('$activity.dc')) {
@@ -13,6 +13,7 @@ function activityDC(effect, updates, options, id) {
             i.value = i.value.replaceAll('$activity.dc', itemUtils.getSaveDC(origin));
         }
     });
+    if (!changed) return;
     effect.updateSource({changes: updates.changes});
 }
 function noAnimation(...args) {

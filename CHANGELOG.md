@@ -1,3 +1,7 @@
+# 1.1.25 Release:
+## Bug Fixes:
+- Activity DC
+
 # 1.1.24 Release:
 ## Bug Fixes:
 - Favored Foe (Legacy)
