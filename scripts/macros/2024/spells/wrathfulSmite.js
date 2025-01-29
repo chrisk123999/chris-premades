@@ -17,7 +17,7 @@ async function use({trigger, workflow}) {
         ]
     };
     await Promise.all(workflow.failedSaves.map(async token => {
-        if (actorUtils.checkTrait(token.actor, 'CI', 'frightened')) return;
+        if (actorUtils.checkTrait(token.actor, 'ci', 'frightened')) return;
         await effectUtils.createEffect(token.actor, effectData, {conditions: ['frightened']});
     }));
 }

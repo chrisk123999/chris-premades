@@ -434,10 +434,11 @@ export class Summons {
         if (!this.options.dismissActivity) {
             buttons.push({type: 'dismiss', name: genericUtils.translate('CHRISPREMADES.Summons.DismissSummon')});
         }
+        let concentrationEffect = effectUtils.getConcentrationEffect(this.originItem.actor, this.originItem);
         let effectData = {
             name: genericUtils.translate('CHRISPREMADES.Summons.SummonedCreature'),
             img: this.originItem.img,
-            origin: this.originItem.uuid,
+            origin: concentrationEffect?.uuid ?? this.originItem.uuid,
             flags: {
                 'chris-premades': {
                     info: {
@@ -473,10 +474,11 @@ export class Summons {
                 name: genericUtils.translate('CHRISPREMADES.Summons.DismissSummon')
             };
         }
+        let concentrationEffect = effectUtils.getConcentrationEffect(this.originItem.actor, this.originItem);
         let effectData = {
             name: this.originItem.name,
             img: this.originItem.img,
-            origin: this.originItem.uuid,
+            origin: concentrationEffect?.uuid ?? this.originItem.uuid,
             flags: {
                 'chris-premades': {
                     macros: {

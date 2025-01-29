@@ -41,7 +41,7 @@ async function hit({trigger: {entity: effect}, workflow}) {
     let effects = effectUtils.getAllEffectsByIdentifier(workflow.actor, 'brandOfCastigation');
     if (!effects.length) return;
     if (!effects.filter(i => i.origin === effect.origin).length) return;
-    let originItem = await fromUuid(effect.origin);
+    let originItem = await effectUtils.getOriginItem(effect);
     if (!originItem) return;
     let feature = activityUtils.getActivityByIdentifier(originItem, 'brandOfCastigationDamage', {strict: true});
     if (!feature) return;
@@ -55,7 +55,7 @@ async function hitNear({trigger: {entity: effect}, workflow}) {
     if (!originToken) return;
     let nearbyTokens = tokenUtils.findNearby(originToken, 5, 'any', {includeIncapacitated: true}).filter(i => tokenUtils.canSee(originToken, i));
     if (!nearbyTokens.some(i => workflow.hitTargets.has(i))) return;
-    let originItem = await fromUuid(effect.origin);
+    let originItem = await effectUtils.getOriginItem(effect);
     if (!originItem) return;
     let feature = activityUtils.getActivityByIdentifier(originItem, 'brandOfCastigationDamage', {strict: true});
     if (!feature) return;

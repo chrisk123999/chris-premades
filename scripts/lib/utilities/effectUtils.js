@@ -34,6 +34,7 @@ async function createEffect(entity, effectData, {concentrationItem, parentEntity
     let hasPermission = socketUtils.hasPermission(entity, game.user.id);
     let concentrationEffect;
     if (concentrationItem) concentrationEffect = getConcentrationEffect(concentrationItem.actor, concentrationItem);
+    if (concentrationEffect) effectData.origin = concentrationEffect.uuid;
     if (identifier) genericUtils.setProperty(effectData, 'flags.chris-premades.info.identifier', identifier);
     if (unhideActivities) genericUtils.setProperty(effectData, 'flags.chris-premades.unhideActivities', unhideActivities);
     if (parentEntity) genericUtils.setProperty(effectData, 'flags.chris-premades.parentEntityUuid', parentEntity.uuid);
@@ -214,6 +215,14 @@ async function createEffectFromSidebar(actor, name, options) {
 async function syntheticActiveEffect(effectData, entity) {
     return new CONFIG.ActiveEffect.documentClass(effectData, {parent: entity});
 }
+async function getOriginItem(effect) {
+    let origin = await fromUuid(effect?.origin);
+    if (!origin) return;
+    if (origin instanceof Item) return origin;
+    if (origin.parent instanceof Item) return origin.parent;
+    origin = await fromUuid(origin.origin);
+    if (origin instanceof Item) return origin;
+}
 export let effectUtils = {
     getCastData,
     getCastLevel,
@@ -236,5 +245,6 @@ export let effectUtils = {
     addSidebarEffect,
     syntheticActiveEffect,
     getSidebarEffectData,
-    createEffectFromSidebar
+    createEffectFromSidebar,
+    getOriginItem
 };

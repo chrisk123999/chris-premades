@@ -77,7 +77,7 @@ async function hit({trigger: {entity: effect}, workflow}) {
     if (!constants.meleeAttacks.includes(workflow.activity.actionType)) return;
     let shieldType = effect.flags['chris-premades']?.fireShield?.selection;
     if (!shieldType) return;
-    let feature = activityUtils.getActivityByIdentifier(fromUuidSync(effect.origin), 'fireShieldDamage', {strict: true});
+    let feature = activityUtils.getActivityByIdentifier(await effectUtils.getOriginItem(effect), 'fireShieldDamage', {strict: true});
     if (!feature) return;
     let newDamagePart = feature.damage.parts[0] ?? {number: 2, denomination: 6};
     await activityUtils.setDamage(feature, newDamagePart, [shieldType]);

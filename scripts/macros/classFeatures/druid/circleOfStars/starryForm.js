@@ -155,7 +155,7 @@ async function turnStart({trigger: {entity: effect, token}}) {
 async function late({trigger: {entity: effect}, workflow}) {
     if (workflow.item.type !== 'spell' || !workflow.targets.size || !workflow.item.system.level) return;
     if (!workflow.damageItem?.damageDetail?.some(i => i.type === 'healing')) return;
-    let chaliceFeature = activityUtils.getActivityByIdentifier(fromUuidSync(effect.origin), 'healingChalice', {strict: true});
+    let chaliceFeature = activityUtils.getActivityByIdentifier(await effectUtils.getOriginItem(effect), 'healingChalice', {strict: true});
     if (!chaliceFeature) return;
     let nearbyTargets = tokenUtils.findNearby(workflow.token, 30, 'ally', {includeIncapacitated: true, includeToken: true});
     let selected;

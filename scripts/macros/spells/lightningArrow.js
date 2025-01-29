@@ -28,7 +28,7 @@ async function damage({trigger: {entity: effect}, workflow}) {
     if (!workflow.item.system.properties.has('thr') && workflow.item.system.actionType !== 'rwak') return;
     let targetToken = workflow.targets.first();
     let diceNumber = 1 + effect.flags['chris-premades'].castData.castLevel;
-    let originItem = fromUuidSync(effect.origin);
+    let originItem = await effectUtils.getOriginItem(effect);
     let feature = activityUtils.getActivityByIdentifier(originItem, 'lightningArrowBurst', {strict: true});
     if (!feature) return;
     let damageType = feature.damage.parts[0].types.first();

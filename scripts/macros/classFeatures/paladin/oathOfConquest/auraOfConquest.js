@@ -7,13 +7,13 @@ async function create({trigger: {entity: item, target, identifier}}) {
     let frightened = effectUtils.getEffectByStatusID(target.actor, 'frightened');
     if (!frightened) return;
     let validKeys = ['macro.CE', 'macro.CUB', 'macro.StatusEffect', 'StatusEffect'];
-    let frightenedOfActor = actorUtils.getEffects(target.actor).find(i => 
+    let frightenedOfActor = actorUtils.getEffects(target.actor).find(async i => 
         (
             i.statuses.has('frightened') || // Status Effect dropdown on details page
             i.flags['chris-premades']?.conditions?.includes('frightened') || // CPR effect medkit
             i.changes.find(j => validKeys.includes(j.key) && j.value.toLowerCase() === 'frightened') // dae/midi key
         )
-        && fromUuidSync(i.origin)?.actor === item.actor
+        && await effectUtils.getOriginItem(i)?.actor === item.actor
     );
     if (!frightenedOfActor) return;
     let showIcon = itemUtils.getConfig(item, 'showIcon');
@@ -51,7 +51,7 @@ async function create({trigger: {entity: item, target, identifier}}) {
     };
 }
 async function turnStart({trigger: {entity: effect, token}}) {
-    let originItem = await fromUuid(effect.origin);
+    let originItem = await effectUtils.getOriginItem(effect);
     let originActor = originItem?.actor;
     if (!originActor) return;
     let frightened = effectUtils.getEffectByStatusID(token.actor, 'frightened');

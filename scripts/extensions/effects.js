@@ -1,10 +1,17 @@
-import {activityUtils, actorUtils, constants, genericUtils, itemUtils} from '../utils.js';
+import {activityUtils, actorUtils, constants, effectUtils, genericUtils, itemUtils} from '../utils.js';
 function activityDC(effect, updates, options, id) {
     if (game.user.id != id || effect.transfer || !(effect.parent instanceof Actor) || !effect.origin) return;
     if (!updates.changes?.length) return;
-    let origin = fromUuidSync(effect.origin, {strict: false});
+    let origin = fromUuidSync(effect?.origin, {strict: false});
     if (!origin) return;
-    if (!(origin instanceof Item)) return;
+    if (!(origin instanceof Item)) {
+        if (origin.parent instanceof Item) {
+            origin = origin.parent;
+        } else {
+            origin = fromUuidSync(origin.origin);
+            if (!(origin instanceof Item)) return;
+        }
+    }
     let changed = false;
     updates.changes.forEach(i => {
         if (i.key != 'flags.midi-qol.OverTime') return;
@@ -143,9 +150,8 @@ async function specialDuration(workflow) {
                     case 'attackedByAnotherCreature': {
                         if (!workflow.activity) return;
                         if (!constants.attacks.includes(workflow.activity.actionType)) break;
-                        if (!effect.origin) break;
-                        let origin = await fromUuid(effect.origin);
-                        if (!origin.actor) break;
+                        let origin = await effectUtils.getOriginItem(effect);
+                        if (!origin?.actor) break;
                         if (workflow.actor.id === origin.actor.id) break;
                         remove = true;
                         break outerLoop;

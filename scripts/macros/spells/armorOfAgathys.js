@@ -22,7 +22,7 @@ async function hit({trigger: {entity: effect}, workflow}) {
     let tempHP = targetToken.actor.system.attributes.hp.temp;
     if (tempHP === 0) await genericUtils.remove(effect);
     if (!constants.meleeAttacks.includes(workflow.item?.system?.actionType)) return;
-    let originItem = fromUuidSync(effect.origin);
+    let originItem = await effectUtils.getOriginItem(effect);
     let feature = activityUtils.getActivityByIdentifier(originItem, 'armorOfAgathysReflect', {strict: true});
     if (!feature) return;
     await workflowUtils.syntheticActivityRoll(feature, [workflow.token], {atLevel: effect.flags['chris-premades'].castLevel});
@@ -60,7 +60,7 @@ async function hit({trigger: {entity: effect}, workflow}) {
         .play();
 }
 async function start({trigger: {entity}}) {
-    let playAnimation = itemUtils.getConfig(fromUuidSync(entity.origin), 'playAnimation');
+    let playAnimation = itemUtils.getConfig(await effectUtils.getOriginItem(entity), 'playAnimation');
     if (!playAnimation) return;
     let token = actorUtils.getFirstToken(entity.parent);
     if (!token) return;
@@ -153,7 +153,7 @@ async function start({trigger: {entity}}) {
         .play();
 }
 async function end({trigger: {entity}}) {
-    let playAnimation = itemUtils.getConfig(fromUuidSync(entity.origin), 'playAnimation');
+    let playAnimation = itemUtils.getConfig(await effectUtils.getOriginItem(entity), 'playAnimation');
     if (!playAnimation) return;
     let token = actorUtils.getFirstToken(entity.parent);
     if (!token) return;

@@ -28,7 +28,7 @@ async function sourceAttack({trigger: {entity: item}, workflow}) {
 async function early({workflow}) {
     if (!constants.attacks.includes(workflow.activity.actionType)) return;
     let effect = effectUtils.getEffectByIdentifier(workflow.actor, 'ancestralProtectorsTarget');
-    let origin = await fromUuid(effect?.origin);
+    let origin = await effectUtils.getOriginItem(effect);
     if (!origin) return;
     let originActorUuid = origin.actor.uuid;
     let targetActorUuid = workflow.targets.first().actor.uuid;
@@ -40,7 +40,7 @@ async function late({workflow}) {
     if (!constants.attacks.includes(workflow.activity.actionType)) return;
     if (workflow.hitTargets.size !== 1) return;
     let effect = effectUtils.getEffectByIdentifier(workflow.actor, 'ancestralProtectorsTarget');
-    let origin = await fromUuid(effect?.origin);
+    let origin = await effectUtils.getOriginItem(effect);
     if (!origin) return;
     let originActorUuid = origin.actor.uuid;
     let targetActorUuid = workflow.hitTargets.first().actor.uuid;

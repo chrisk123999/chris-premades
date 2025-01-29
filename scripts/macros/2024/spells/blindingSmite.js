@@ -18,7 +18,7 @@ async function use({trigger, workflow}) {
         ]
     };
     await Promise.all(workflow.targets.map(async token => {
-        if (actorUtils.checkTrait(token.actor, 'CI', 'blinded')) return;
+        if (actorUtils.checkTrait(token.actor, 'ci', 'blinded')) return;
         await effectUtils.createEffect(token.actor, effectData, {conditions: ['blinded']});
     }));
 }

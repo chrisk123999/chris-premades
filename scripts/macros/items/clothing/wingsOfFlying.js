@@ -43,7 +43,7 @@ async function end({trigger}) {
     await effectUtils.createEffect(trigger.entity.parent, effectData, {identifier: 'wingsOfFlyingRecharge'});
 }
 async function recharge({trigger}) {
-    let item = await fromUuid(trigger.entity.origin);
+    let item = await effectUtils.getOriginItem(trigger.entity);
     if (!item) return;
     await genericUtils.update(item, {'system.uses.spent': Math.max(item.system.uses.spent - 1, 0)});
 }

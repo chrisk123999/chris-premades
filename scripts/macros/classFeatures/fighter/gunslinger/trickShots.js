@@ -14,7 +14,7 @@ async function lateHelper(workflow, effect, featureName) {
     await genericUtils.remove(effect);
     await genericUtils.sleep(100);
     if (workflow.hitTargets.size !== 1) return;
-    let originItem = await fromUuid(effect.origin);
+    let originItem = await effectUtils.getOriginItem(effect);
     if (!originItem) return;
     let featureData = await compendiumUtils.getItemFromCompendium(constants.featurePacks.classFeatureItems, featureName, {object: true, getDescription: true, translate: effect.name, flatDC: itemUtils.getSaveDC(originItem)});
     let targetToken = workflow.hitTargets.first();

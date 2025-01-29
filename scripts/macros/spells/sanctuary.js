@@ -28,7 +28,7 @@ async function targeted({trigger: {entity: effect}, workflow}) {
     if (invalidTypes.includes(workflow.item.system.target?.type)) return;
     let targetToken = workflow.targets.first();
     if (targetToken.document.disposition === workflow.token.document.disposition) return;
-    let originItem = fromUuidSync(effect.origin);
+    let originItem = await effectUtils.getOriginItem(effect);
     let feature = activityUtils.getActivityByIdentifier(originItem, 'sanctuarySave', {strict: true});
     if (!feature) return;
     let saveWorkflow = await workflowUtils.syntheticActivityRoll(feature, [workflow.token]);

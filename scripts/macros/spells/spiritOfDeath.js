@@ -119,7 +119,7 @@ async function late({workflow}) {
 async function turnStart({trigger: {entity: effect, token, target}}) {
     let hauntedEffect = effectUtils.getEffectByIdentifier(target.actor, 'spiritOfDeathHauntCreatureHaunted');
     if (!hauntedEffect) return;
-    let feature = activityUtils.getActivityByIdentifier(fromUuidSync(effect.origin), 'hauntCreatureSave', {strict: true});
+    let feature = activityUtils.getActivityByIdentifier(await effectUtils.getOriginItem(effect), 'hauntCreatureSave', {strict: true});
     if (!feature) return;
     await workflowUtils.syntheticActivityRoll(feature, [target]);
 }

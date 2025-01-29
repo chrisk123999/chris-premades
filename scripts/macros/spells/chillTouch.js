@@ -39,14 +39,14 @@ async function attack({workflow}) {
     if (workflow.targets.size !== 1) return;
     let effect = effectUtils.getEffectByIdentifier(workflow.actor, 'chillTouchChilled');
     if (!effect) return;
-    let sourceActor = (await fromUuid(effect.origin)).actor;
+    let sourceActor = (await effectUtils.getOriginItem(effect))?.actor;
     if (workflow.targets.first().actor !== sourceActor) return;
     workflow.disadvantage = true;
     workflow.attackAdvAttribution.add(genericUtils.translate('DND5E.Disadvantage') + ': ' + effect.name);
 }
 async function turnStart({trigger: {entity: effect}}) {
     let currActor = combatUtils.getCurrentCombatantToken().actor;
-    let originActor = (await fromUuid(effect.origin))?.parent;
+    let originActor = (await effectUtils.getOriginItem(effect))?.parent;
     if (originActor !== currActor) return;
     await genericUtils.update(effect, {changes: []});
 }

@@ -135,7 +135,7 @@ async function use({workflow}) {
     }
 }
 async function end({trigger: {entity: effect}}) {
-    let playAnimation = itemUtils.getConfig(fromUuidSync(effect.origin), 'playAnimation') && animationUtils.jb2aCheck() === 'patreon';
+    let playAnimation = itemUtils.getConfig(await effectUtils.getOriginItem(effect), 'playAnimation') && animationUtils.jb2aCheck() === 'patreon';
     let token = actorUtils.getFirstToken(effect.parent);
     if (!playAnimation || !token) return;
     await unfreeze(token, 'bindingIce');

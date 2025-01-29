@@ -67,7 +67,7 @@ async function late({workflow}) {
 async function attack({workflow}) {
     if (workflow.targets.size !== 1 || workflow.disadvantage) return;
     let effect = effectUtils.getEffectByIdentifier(workflow.actor, 'thunderGauntletsDistracted');
-    let originItem = await fromUuid(effect?.origin);
+    let originItem = await effectUtils.getOriginItem(effect);
     let originActor = originItem?.actor;
     if (originActor === workflow.targets.first().actor) return;
     workflow.disadvantage = true;

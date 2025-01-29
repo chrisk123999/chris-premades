@@ -29,7 +29,7 @@ async function late({workflow}) {
     }
 }
 async function turnStart({trigger: {entity: effect, token}}) {
-    let originItem = await fromUuid(effect.origin);
+    let originItem = await effectUtils.getOriginItem(effect);
     if (!originItem) return;
     let targetToken = token.scene.tokens.get(effect.flags['chris-premades']?.damageTurnStart?.token);
     if (!targetToken) return;

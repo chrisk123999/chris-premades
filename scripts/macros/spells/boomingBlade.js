@@ -89,9 +89,9 @@ async function use({workflow}) {
 async function moved({trigger: {entity: effect}}) {
     let selection = await dialogUtils.confirm(effect.name, genericUtils.format('CHRISPREMADES.Macros.BoomingBlade.WillingMove', {actorName: effect.parent.name}));
     if (!selection) return;
-    let feature = activityUtils.getActivityByIdentifier(fromUuidSync(effect.origin), 'boomingBladeMoved', {strict: true});
+    let feature = activityUtils.getActivityByIdentifier(await effectUtils.getOriginItem(effect), 'boomingBladeMoved', {strict: true});
     if (!feature) return;
-    let parentActor = (await fromUuid(effect.origin))?.actor;
+    let parentActor = (await effectUtils.getOriginItem(effect))?.actor;
     if (!parentActor) return;
     await workflowUtils.syntheticActivityRoll(feature, [actorUtils.getFirstToken(effect.parent)]);
     await genericUtils.remove(effect);

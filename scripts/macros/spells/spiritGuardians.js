@@ -78,7 +78,7 @@ async function moveOrTurn({trigger: {target, token, entity: effect}}) {
 
         if (used) return;
     }
-    let feature = activityUtils.getActivityByIdentifier(fromUuidSync(effect.origin), 'spiritGuardiansDamage', {strict: true});
+    let feature = activityUtils.getActivityByIdentifier(await effectUtils.getOriginItem(effect), 'spiritGuardiansDamage', {strict: true});
     if (!feature) return;
     let damageType = feature.damage.parts[0].types.first() ?? effect.flags['chris-premades'].spiritGuardians.damageType;
     await activityUtils.setDamage(feature, '', [damageType]);

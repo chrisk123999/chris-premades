@@ -53,7 +53,7 @@ async function complete({trigger, workflow}) {
     let workflowUuid = effect.flags['chris-premades']?.banishingSmite?.workflowUuid;
     if (!workflowUuid) return;
     if (workflow.uuid != workflowUuid) return;
-    let item = await fromUuid(effect.origin);
+    let item = await effectUtils.getOriginItem(effect);
     if (!item) return;
     let requiredHP = Number(itemUtils.getConfig(item, 'hp'));
     if (isNaN(requiredHP)) return;

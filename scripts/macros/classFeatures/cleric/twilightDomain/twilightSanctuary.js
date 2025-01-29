@@ -198,7 +198,7 @@ async function turnEnd({trigger: {entity: effect, token, target}}) {
     let selection = await dialogUtils.buttonDialog(effect.name, 'CHRISPREMADES.Dialog.WhatDo', buttons, {userId});
     if (!selection) return;
     if (selection === 'hp') {
-        let feature = activityUtils.getActivityByIdentifier(fromUuidSync(effect.origin), 'twilightSanctuaryHeal', {strict: true});
+        let feature = activityUtils.getActivityByIdentifier(await effectUtils.getOriginItem(effect), 'twilightSanctuaryHeal', {strict: true});
         if (!feature) return;
         await workflowUtils.syntheticActivityRoll(feature, [target]);
     } else if (selection === 'charmed') {

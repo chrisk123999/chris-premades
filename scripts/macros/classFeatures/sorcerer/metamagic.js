@@ -42,7 +42,7 @@ async function earlyCareful({trigger: {entity: effect}, workflow}) {
     if (!workflow.targets.size) return;
     let max = Math.max(1, workflow.actor.system.abilities.cha.mod ?? 0);
     let targets = Array.from(workflow.targets);
-    let originItem = await fromUuid(effect.origin);
+    let originItem = await effectUtils.getOriginItem(effect);
     if (!originItem) return;
     let allowEnemies = itemUtils.getConfig(originItem, 'allowEnemies');
     if (!allowEnemies) targets = targets.filter(i => i.document.disposition === workflow.token.document.disposition);

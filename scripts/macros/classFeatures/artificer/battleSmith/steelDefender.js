@@ -108,7 +108,7 @@ async function use({workflow}) {
 async function arcaneJolt({workflow}) {
     if (workflow.hitTargets.size !== 1) return;
     let effect = effectUtils.getEffectByIdentifier(workflow.actor, 'steelDefenderArcaneJolt');
-    let originItem = await fromUuid(effect?.origin);
+    let originItem = await effectUtils.getOriginItem(effect);
     if (!originItem || originItem.system.uses.value === 0) return;
     if (!combatUtils.perTurnCheck(originItem, 'arcaneJolt')) return;
     await arcaneJoltHelper(workflow, originItem);
@@ -130,7 +130,7 @@ async function longRest({trigger: {entity: item}}) {
 }
 async function repair({workflow}) {
     let effect = effectUtils.getEffectByIdentifier(workflow.actor, 'summonedEffect');
-    let originItem = await fromUuid(effect?.origin);
+    let originItem = await effectUtils.getOriginItem(effect);
     if (!originItem) return;
     await genericUtils.setFlag(originItem, 'chris-premades', 'steelDefenderRepair.spent', workflow.item.system.uses.spent);
 }

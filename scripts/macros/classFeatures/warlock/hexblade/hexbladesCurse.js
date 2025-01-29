@@ -81,7 +81,7 @@ async function use({workflow}) {
 }
 async function remove({trigger: {entity: effect}}) {
     if (effect.parent?.system.attributes.hp.value) return;
-    let originItem = fromUuidSync(effect.origin);
+    let originItem = await effectUtils.getOriginItem(effect);
     let originActor = originItem?.parent;
     if (!originActor) return;
     let sourceEffect = effectUtils.getEffectByIdentifier(originActor, 'hexbladesCurse');

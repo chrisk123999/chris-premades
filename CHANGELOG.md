@@ -1,3 +1,11 @@
+# 1.1.26 Release:
+## Bug Fixes:
+- Blinding Smite (2024)
+- Wrathful Smite (2024)
+- Searing Smite (2024)
+## Update Notes:
+- Effect "origin"s will now be set to the UUID of the concentration effect if available, otherwise the base effect UUID if it isn't fully programmatically created, otherwise the UUID of the item responsible for the effect being applied (previously, it was always the lattermost)
+
 # 1.1.25 Release:
 ## Bug Fixes:
 - Activity DC

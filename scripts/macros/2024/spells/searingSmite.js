@@ -21,7 +21,7 @@ async function use({trigger, workflow}) {
         ]
     };
     await Promise.all(workflow.targets.map(async token => {
-        await effectUtils.createEffect(workflow.targets.first().actor, effectData);
+        await effectUtils.createEffect(token.actor, effectData);
     }));
 }
 export let searingSmite = {

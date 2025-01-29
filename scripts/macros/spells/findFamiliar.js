@@ -190,13 +190,13 @@ async function pocketDimension({workflow}) {
                     await genericUtils.remove(currEffect);
                     continue;
                 }
-                let originItem = await fromUuid(currEffect.origin);
+                let originItem = await effectUtils.getOriginItem(currEffect);
                 if (originItem) {
                     if (originItem instanceof Item.implementation && effectUtils.getConcentrationEffect(originItem.parent, originItem)) {
                         await genericUtils.remove(currEffect);
                         continue;
                     } else {
-                        originItem = await fromUuid(originItem.origin);
+                        originItem = await effectUtils.getOriginItem(originItem);
                         if (originItem && originItem instanceof Item.implementation && effectUtils.getConcentrationEffect(originItem.parent, originItem)) {
                             await genericUtils.remove(currEffect);
                             continue;
@@ -226,13 +226,13 @@ async function pocketDimension({workflow}) {
                     await genericUtils.remove(currEffect);
                     continue;
                 }
-                let originItem = await fromUuid(currEffect.origin);
+                let originItem = await effectUtils.getOriginItem(currEffect);
                 if (originItem) {
                     if (originItem instanceof Item.implementation && effectUtils.getConcentrationEffect(originItem.parent, originItem)) {
                         await genericUtils.remove(currEffect);
                         continue;
                     } else {
-                        originItem = await fromUuid(originItem.origin);
+                        originItem = await effectUtils.getOriginItem(originItem);
                         if (originItem && originItem instanceof Item.implementation && effectUtils.getConcentrationEffect(originItem.parent, originItem)) {
                             await genericUtils.remove(currEffect);
                             continue;

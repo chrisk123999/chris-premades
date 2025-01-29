@@ -27,7 +27,7 @@ async function damage({trigger: {entity: effect}, workflow}) {
     let damageType = effect.flags['chris-premades'].wrathfulSmite.damageType;
     let formula = '1d6';
     await workflowUtils.bonusDamage(workflow, formula, {damageType: damageType});
-    let feature = activityUtils.getActivityByIdentifier(fromUuidSync(effect.origin), 'wrathfulSmiteFrighten', {strict: true});
+    let feature = activityUtils.getActivityByIdentifier(await effectUtils.getOriginItem(effect), 'wrathfulSmiteFrighten', {strict: true});
     if (!feature) return;
     let featureWorkflow = await workflowUtils.syntheticActivityRoll(feature, [workflow.hitTargets.first()]);
     let targetEffect = featureWorkflow.failedSaves.first()?.actor?.appliedEffects?.find(currEffect => currEffect.origin === featureWorkflow.item.uuid);

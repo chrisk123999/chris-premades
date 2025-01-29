@@ -1,4 +1,4 @@
-import {combatUtils, dialogUtils, genericUtils, tokenUtils, workflowUtils} from '../../utils.js';
+import {combatUtils, dialogUtils, effectUtils, genericUtils, tokenUtils, workflowUtils} from '../../utils.js';
 
 async function damage({trigger: {entity: item}, workflow}) {
     if (workflow.hitTargets.size !== 1 || workflow.activity.actionType !== 'mwak') return;
@@ -44,7 +44,7 @@ async function combatEnd({trigger: {entity: item}}) {
 async function earlyCloud({trigger: {entity: effect}, workflow}) {
     if (workflow.targets.size !== 1) return;
     let targetToken = workflow.targets.first();
-    let originActor = fromUuidSync(effect.origin).actor;
+    let originActor = (await effectUtils.getOriginItem(effect))?.actor;
     if (!originActor?.uuid !== targetToken.actor.uuid) return;
     workflow.disadvantage = true;
     workflow.attackAdvAttribution.add(genericUtils.translate('DND5E.Disadvantage') + ': ' + effect.name);

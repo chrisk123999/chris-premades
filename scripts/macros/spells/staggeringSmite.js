@@ -24,7 +24,7 @@ async function damage({trigger: {entity: effect}, workflow}) {
     let damageType = effect.flags['chris-premades'].staggeringSmite.damageType;
     let formula = '4d6';
     await workflowUtils.bonusDamage(workflow, formula, {damageType: damageType});
-    let feature = activityUtils.getActivityByIdentifier(fromUuidSync(effect.origin), 'staggeringSmiteStagger', {strict: true});
+    let feature = activityUtils.getActivityByIdentifier(await effectUtils.getOriginItem(effect), 'staggeringSmiteStagger', {strict: true});
     if (!feature) return;
     await workflowUtils.syntheticActivityRoll(feature, [workflow.hitTargets.first()]);
     await genericUtils.remove(effect);

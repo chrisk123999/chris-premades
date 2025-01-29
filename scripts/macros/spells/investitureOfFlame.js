@@ -100,7 +100,7 @@ async function moveOrTurn({trigger: {entity: effect, castData, token, target}}) 
         }
     }
     if (!doDamage) return;
-    let feature = activityUtils.getActivityByIdentifier(fromUuidSync(effect.origin), 'investitureOfFlameHeat', {strict: true});
+    let feature = activityUtils.getActivityByIdentifier(await effectUtils.getOriginItem(effect), 'investitureOfFlameHeat', {strict: true});
     if (!feature) return;
     await workflowUtils.syntheticActivityRoll(feature, [target]);
 }

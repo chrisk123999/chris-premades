@@ -295,7 +295,7 @@ async function turnEnd({trigger: {entity: effect, token}}) {
     }
 }
 async function start({trigger: {entity: effect}}, {overrideAnimation = undefined} = {}) {
-    let originItem = await fromUuid(effect.origin);
+    let originItem = await effectUtils.getOriginItem(effect);
     if (!originItem) return;
     let playAnimation = itemUtils.getConfig(originItem, 'playAnimation') && animationUtils.jb2aCheck() === 'patreon';
     if (!playAnimation) return;

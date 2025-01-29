@@ -27,7 +27,7 @@ async function use({workflow}) {
     await effectUtils.createEffect(workflow.actor, effectData, {identifier: 'holyNimbus'});
 }
 async function turnStart({trigger: {entity: effect, target}}) {
-    let feature = activityUtils.getActivityByIdentifier(fromUuidSync(effect.origin), 'holyNimbusDamage', {strict: true});
+    let feature = activityUtils.getActivityByIdentifier(await effectUtils.getOriginItem(effect), 'holyNimbusDamage', {strict: true});
     if (!feature) return;
     await workflowUtils.syntheticActivityRoll(feature, [target]);
 }

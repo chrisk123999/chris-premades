@@ -31,7 +31,7 @@ async function late({workflow}) {
     await effectUtils.createEffect(targetToken.actor, effectData);
 }
 async function turnStart({trigger: {entity: effect, token}}) {
-    let feature = activityUtils.getActivityByIdentifier(fromUuidSync(effect.origin), 'potionOfPoisonDamage', {strict: true});
+    let feature = activityUtils.getActivityByIdentifier(await effectUtils.getOriginItem(effect), 'potionOfPoisonDamage', {strict: true});
     if (!feature) return;
     let numDice = effect.flags['chris-premades'].potionOfPoison.numDice;
     await activityUtils.setDamage(feature, {number: numDice, denomination: 6}, ['poison']);

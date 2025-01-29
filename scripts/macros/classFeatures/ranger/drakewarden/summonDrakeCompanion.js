@@ -148,7 +148,7 @@ async function use({workflow}) {
     }
 }
 async function postAttack({trigger: {entity: effect, token}, workflow}) {
-    let feature = activityUtils.getActivityByIdentifier(fromUuidSync(effect.origin), 'reflexiveResistance', {strict: true});
+    let feature = activityUtils.getActivityByIdentifier(await effectUtils.getOriginItem(effect), 'reflexiveResistance', {strict: true});
     if (!feature) return;
     if (!feature.uses.value) return;
     if (!workflow.hitTargets.size) return;

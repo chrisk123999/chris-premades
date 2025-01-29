@@ -90,7 +90,7 @@ export async function findSteedEarlyHelper(workflow, identifier) {
     if (workflow.targets.first().id !== workflow.token.id) return;
     let effect = effectUtils.getEffectByIdentifier(workflow.actor, identifier);
     if (!effect) return;
-    let originItem = await fromUuid(effect.origin);
+    let originItem = await effectUtils.getOriginItem(effect);
     if (!originItem) return;
     let [steedId] = effect.flags['chris-premades']?.summons.ids[originItem.name] ?? [undefined];
     let steedToken = canvas.scene.tokens.get(steedId);

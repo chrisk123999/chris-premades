@@ -152,14 +152,14 @@ async function turnStart({trigger: {entity: effect, token}}) {
     let halfHP = Math.floor(actor.system.attributes.hp.max / 2);
     let doHealing = classLevel >= 11 && currHP && currHP < halfHP;
     if (doHealing) {
-        let feature = activityUtils.getActivityByIdentifier(fromUuidSync(effect.origin), 'lycanRegeneration', {strict: true});
+        let feature = activityUtils.getActivityByIdentifier(await effectUtils.getOriginItem(effect), 'lycanRegeneration', {strict: true});
         if (!feature) return;
         await workflowUtils.syntheticActivityRoll(feature, [token]);
     }
     if (actor.system.attributes.hp.value >= halfHP) return;
     let bloodlustAdv = classLevel >= 15;
     let isConcentrating = effectUtils.getConcentrationEffect(actor);
-    let feature = activityUtils.getActivityByIdentifier(fromUuidSync(effect.origin), 'bloodlust', {strict: true});
+    let feature = activityUtils.getActivityByIdentifier(await effectUtils.getOriginItem(effect), 'bloodlust', {strict: true});
     if (!feature) return;
     let effectData;
     if (isConcentrating) {

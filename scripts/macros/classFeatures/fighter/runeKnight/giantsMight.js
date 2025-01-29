@@ -68,7 +68,7 @@ async function damage({trigger: {entity: effect}, workflow}) {
     }
     let selection = await dialogUtils.confirm(effect.name, genericUtils.format('CHRISPREMADES.Dialog.Use', {itemName: effect.name}));
     if (!selection) return;
-    let feature = await fromUuid(effect.origin);
+    let feature = await effectUtils.getOriginItem(effect);
     if (!feature) return;
     await feature.displayCard({flags: {dnd5e: {use: {consumedUsage: true, consumeResource: true}}}});
     if (combatUtils.inCombat()) await combatUtils.setTurnCheck(effect, 'giantsMight');

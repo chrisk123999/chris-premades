@@ -22,7 +22,7 @@ async function use({workflow}) {
 async function late({trigger: {entity: effect}, workflow}) {
     if (workflow.hitTargets.size !== 1) return;
     if (workflow.item?.system?.actionType !== 'rwak') return;
-    let feature = await activityUtils.getActivityByIdentifier(fromUuidSync(effect.origin), 'hailOfThornsBurst', {strict: true});
+    let feature = await activityUtils.getActivityByIdentifier(await effectUtils.getOriginItem(effect), 'hailOfThornsBurst', {strict: true});
     if (!feature) return;
     let castLevel = Math.min(effect.flags['chris-premades'].hailOfThorns.castLevel, 6);
     let targetToken = workflow.targets.first();

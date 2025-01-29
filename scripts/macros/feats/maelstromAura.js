@@ -39,7 +39,7 @@ async function use({workflow}) {
     await effectUtils.createEffect(workflow.actor, effectData);
 }
 async function turnStart({trigger: {entity: effect, token, target}}) {
-    let originItem = await fromUuid(effect.origin);
+    let originItem = await effectUtils.getOriginItem(effect);
     if (!originItem) return;
     let feature = activityUtils.getActivityByIdentifier(originItem, 'maelstromAuraSave', {strict: true});
     if (!feature) return;

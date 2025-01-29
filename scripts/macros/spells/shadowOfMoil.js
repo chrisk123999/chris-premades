@@ -60,7 +60,7 @@ async function onHit({trigger, workflow}) {
     if (distance > 10) return;
     let effect = effectUtils.getEffectByIdentifier(trigger.token.actor, 'shadowOfMoil');
     if (!effect) return;
-    let feature = activityUtils.getActivityByIdentifier(fromUuidSync(effect.origin), 'shadowOfMoilDamage', {strict: true});
+    let feature = activityUtils.getActivityByIdentifier(await effectUtils.getOriginItem(effect), 'shadowOfMoilDamage', {strict: true});
     if (!feature) return;
     await workflowUtils.syntheticActivityRoll(feature, [workflow.token]);
 }

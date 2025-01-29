@@ -48,7 +48,7 @@ async function turnStart({trigger}) {
         if (!selection?.length) return;
         selection = selection[0];
     }
-    let origin = await fromUuid(trigger.entity.origin);
+    let origin = await effectUtils.getOriginItem(trigger.entity);
     if (!origin) return;
     let activity = activityUtils.getActivityByIdentifier(origin, 'auraOfVitalityHealing', {strict: true});
     if (!activity) return;

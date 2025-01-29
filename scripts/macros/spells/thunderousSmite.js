@@ -15,7 +15,7 @@ async function use({workflow}) {
 async function damage({trigger: {entity: effect}, workflow}) {
     if (!workflow.hitTargets.size) return;
     if (workflow.activity.actionType !== 'mwak') return;
-    let originItem = fromUuidSync(effect.origin);
+    let originItem = await effectUtils.getOriginItem(effect);
     let damageType = itemUtils.getConfig(originItem, 'damageType');
     let formula = '2d6';
     await workflowUtils.bonusDamage(workflow, formula, {damageType: damageType});

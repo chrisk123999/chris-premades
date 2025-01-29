@@ -329,16 +329,16 @@ async function turnStart({trigger: {entity: effect, token, target}}) {
     let frightened = effectUtils.getEffectByStatusID(target.actor, 'frightened');
     if (!frightened) return;
     let validKeys = ['macro.CE', 'macro.CUB', 'macro.StatusEffect', 'StatusEffect'];
-    let frightenedOfActor = actorUtils.getEffects(target.actor).find(i => 
+    let frightenedOfActor = actorUtils.getEffects(target.actor).find(async i => 
         (
             i.statuses.has('frightened') || // Status Effect dropdown on details page
             i.flags['chris-premades']?.conditions?.includes('frightened') || // CPR effect medkit
             i.changes.find(j => validKeys.includes(j.key) && j.value.toLowerCase() === 'frightened') // dae/midi key
         )
-        && fromUuidSync(i.origin)?.actor === token.actor
+        && await effectUtils.getOriginItem(i)?.actor === token.actor
     );
     if (!frightenedOfActor) return;
-    let feature = activityUtils.getActivityByIdentifier(fromUuidSync(effect.origin), 'dreadLordTurnStart', {strict: true});
+    let feature = activityUtils.getActivityByIdentifier(await effectUtils.getOriginItem(effect), 'dreadLordTurnStart', {strict: true});
     if (!feature) return;
     await workflowUtils.syntheticActivityRoll(feature, [target]);
 }

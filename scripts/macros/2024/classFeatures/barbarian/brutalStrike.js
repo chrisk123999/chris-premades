@@ -58,8 +58,8 @@ async function forcefulBlow({trigger, workflow}) {
 async function sunderingBlowAttacked({trigger: {entity: effect}, workflow}) {
     if (!constants.attacks.includes(workflow.activity.actionType)) return;
     if (!effect.origin) return;
-    let origin = await fromUuid(effect.origin);
-    if (!origin.actor) return;
+    let origin = await effectUtils.getOriginItem(effect);
+    if (!origin?.actor) return;
     if (workflow.actor.id === origin.actor.id) return;
     await workflowUtils.bonusAttack(workflow, '5');
     await genericUtils.remove(effect);

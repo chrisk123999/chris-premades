@@ -35,7 +35,7 @@ async function early({trigger, workflow}) {
     genericUtils.updateTargets(validTargets);
 }
 async function removed({trigger}) {
-    let origin = await fromUuid(trigger.entity.origin);
+    let origin = await effectUtils.getOriginItem(trigger.entity);
     if (!origin) return;
     let config = itemUtils.getGenericFeatureConfig(origin, 'effectImmunity');
     let name = origin.name +  ' ' + genericUtils.translate('CHRISPREMADES.Macros.EffectImmunity.Immune');
