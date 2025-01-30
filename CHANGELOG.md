@@ -3,6 +3,8 @@
 - Blinding Smite (2024)
 - Wrathful Smite (2024)
 - Searing Smite (2024)
+## API Bug Fixes:
+- The previous "Moved the postAttackRoll event to the Midi-Qol preAttackRoll hook" has been reverted - it mistakenly moved attackRollComplete to preAttackRollComplete
 ## Update Notes:
 - Effect "origin"s will now be set to the UUID of the concentration effect if available, otherwise the base effect UUID if it isn't fully programmatically created, otherwise the UUID of the item responsible for the effect being applied (previously, it was always the lattermost)
 

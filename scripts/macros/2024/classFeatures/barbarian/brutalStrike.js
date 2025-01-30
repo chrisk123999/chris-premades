@@ -113,7 +113,7 @@ export let sunderingBlow = {
     midi: {
         actor: [
             {
-                pass: 'targetAttackRollComplete',
+                pass: 'targetPostAttackRoll',
                 macro: sunderingBlowAttacked,
                 priority: 50
             }
