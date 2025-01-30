@@ -242,6 +242,14 @@
     - Regarding "hidden" activities: They will be visible on the item sheet. This means they can be _modified_ if desired (for example, changing the formula or damage type for Magic Missile bolts). This also means however that if they are _deleted_ from the sheet, automations which expect them to exist will fail. Unless you know what you're doing, never _delete_ any activities from a medkitted item
 - With the exception of the new weapon masteries, CPR has not yet implemented any content from the 2024 rulebooks. Nevertheless, in preparation for doing so, the 2014-specific content compendiums have been moved into a "2014" subfolder
 
+# 1.0.59 Release:
+## Bug Fixes:
+- Favored Foe
+
+# 1.0.58 Release:
+## Bug Fixes:
+- Pariah's Shield
+
 # 1.0.57 Release
 ## Bug Fixes:
 - Flaming Sphere
