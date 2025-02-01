@@ -163,8 +163,12 @@ async function use({trigger, workflow}) {
     if (vitalityOfTheTree) {
         macros.push({
             type: 'combat',
-            macros: ['vitalityOfTheTreeEffect']
+            macros: ['lifeGivingForce']
         });
+        let range = Number(itemUtils.getConfig(vitalityOfTheTree, 'range'));
+        if (isNaN(range)) range = 10;
+        genericUtils.setProperty(effectData, 'flags.chris-premades.vitalityOfTheTree.range', range);
+        await workflowUtils.completeItemUse(vitalityOfTheTree);
     }
     let branchesOfTheTree = itemUtils.getItemByIdentifier(workflow.actor, 'branchesOfTheTree');
     if (branchesOfTheTree) {

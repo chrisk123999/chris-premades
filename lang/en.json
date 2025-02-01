@@ -186,7 +186,8 @@
             "SpecificAnimation": "{option} Animation:",
             "Trigger": "Trigger:",
             "TurnTrigger": "Turn Trigger:",
-            "UseFormula": "Use Formula:"
+            "UseFormula": "Use Formula:",
+            "WeaponProperties": "Weapon Properties:"
         },
         "Cover": {
             "Full": "Full Cover",
@@ -504,6 +505,9 @@
                 "MoteAttack": "Mote of Potential Attack",
                 "MoteHeal": "Mote of Potential Heal"
             },
+            "BatteringRoots": {
+                "Mastery": "Use which mastery?"
+            },
             "BeguilingTwist": {
                 "Select": "Which Condition?"
             },
@@ -589,6 +593,9 @@
             },
             "BorrowedKnowledge": {
                 "SelectSkill": "Select a skill to gain temporary proficiency in:"
+            },
+            "BranchesOfTheTree": {
+                "Rage": "You must be raging to use this feature!"
             },
             "BrandOfCastigation": {
                 "Branded": "Brand of Castigation: Branded",
@@ -1775,6 +1782,7 @@
                 "Attack": "Vampiric Touch: Attack",
                 "HealingModifier": "0.5"
             },
+            "VitalityOfTheTree": "Choose an ally to grant temporary hit points to.",
             "VortexWarp": {
                 "Name": "Vortex Warp"
             },

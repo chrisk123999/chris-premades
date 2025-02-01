@@ -65,3 +65,7 @@ export {intimidatingPresence} from './macros/2024/classFeatures/barbarian/berser
 export {rageOfTheWilds, rageOfTheWildsWolf} from './macros/2024/classFeatures/barbarian/wildHeart/rageOfTheWilds.js';
 export {aspectOfTheWilds} from './macros/2024/classFeatures/barbarian/wildHeart/aspectOfTheWilds.js';
 export {powerOfTheWilds, powerOfTheWildsLion, powerOfTheWildsRam} from './macros/2024/classFeatures/barbarian/wildHeart/powerOfTheWilds.js';
+//Path of the World Tree
+export {vitalityOfTheTree, lifeGivingForce} from './macros/2024/classFeatures/barbarian/worldTree/vitalityOfTheTree.js';
+export {branchesOfTheTree} from './macros/2024/classFeatures/barbarian/worldTree/branchesOfTheTree.js';
+export {batteringRoots} from './macros/2024/classFeatures/barbarian/worldTree/batteringRoots.js';

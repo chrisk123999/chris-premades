@@ -1,3 +1,5 @@
+import {teleportEffects} from '../macros/animations/teleportEffects.js';
+
 let packs = {
     spellFeatures: 'chris-premades.CPRSpellFeatures',
     spells: 'chris-premades.CPRSpells',
@@ -131,6 +133,8 @@ const healingTypeOptions = () => Object.entries(CONFIG.DND5E.healingTypes).map(i
 const statusOptions = () => CONFIG.statusEffects.map(i => ({label: i.name, value: i.id}));
 const skillOptions = () => Object.entries(CONFIG.DND5E.skills).map(i => ({label: i[1].label, value: i[0]}));
 const diceSizeOptions = [4, 6, 8, 10, 12, 20].map(i => ({label: 'd' + i, value: 'd' + i}));
+const teleportOptions = () => Object.entries(teleportEffects).map(i => ({label: i[1].name, value: i[0]}));
+const itemProperties = () => Object.entries(CONFIG.DND5E.itemProperties).map(i => ({label: i[1].label, value: i[0]}));
 const overTimeOptions = [
     {
         key: 'turn',
@@ -510,5 +514,7 @@ export let constants = {
     diceSizeOptions,
     advantageEffectData,
     statusOptions,
-    skillOptions
+    skillOptions,
+    teleportOptions,
+    itemProperties
 };
