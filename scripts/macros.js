@@ -75,3 +75,4 @@ export {divineFury, divineFuryAttack} from './macros/2024/classFeatures/barbaria
 export {warriorOfTheGods} from './macros/2024/classFeatures/barbarian/zealot/warriorOfTheGods.js';
 export {fanaticalFocus} from './macros/2024/classFeatures/barbarian/zealot/fanaticalFocus.js';
 export {zealousPresence} from './macros/2024/classFeatures/barbarian/zealot/zealousPresence.js';
+export {rageOfTheGods, rageOfTheGodsEffect} from './macros/2024/classFeatures/barbarian/zealot/rageOfTheGods.js';

@@ -33,7 +33,7 @@ export let relentlessRage = {
             {
                 pass: 'targetApplyDamage',
                 macro: apply,
-                priority: 50
+                priority: 300
             }
         ]
     },

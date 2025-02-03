@@ -1,3 +1,9 @@
+# 1.1.29 Release:
+## New Modern Content:
+- Rage of the Gods
+## Bug Fixes:
+- Vitality of the Tree
+
 # 1.1.28 Release:
 ## New Modern Content:
 - Warrior of the Gods

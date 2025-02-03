@@ -1367,6 +1367,7 @@
                 "LargeOrHuge": "What size?",
                 "Spellcasting": "You can't spellcast while raging!"
             },
+            "RageOfTheGods": "Use {item} to save {token}?",
             "RageOfTheWilds": {
                 "Bear": "Bear",
                 "Eagle": "Eagle",

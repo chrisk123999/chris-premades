@@ -245,7 +245,10 @@ async function use({trigger, workflow}) {
             await workflowUtils.syntheticItemDataRoll(featureData, workflow.actor, []);
         }
     }
-    if (rageOfTheGods) await workflowUtils.completeItemUse(rageOfTheGods);
+    if (rageOfTheGods?.system?.uses?.value) {
+        let selection = await dialogUtils.confirm(rageOfTheGods.name, genericUtils.format('CHRISPREMADES.Dialog.Use', {itemName: rageOfTheGods.name}));
+        if (selection) await workflowUtils.completeItemUse(rageOfTheGods);
+    }
 }
 async function attack({trigger, workflow}) {
     if (!combatUtils.inCombat() || !workflow.token) return;

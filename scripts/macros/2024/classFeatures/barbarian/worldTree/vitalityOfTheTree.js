@@ -15,7 +15,7 @@ async function turnStart({trigger: {entity: effect}}) {
     if (nearbyAllies.length === 1) {
         selection = nearbyAllies[0];
     } else {
-        let targetSelection = dialogUtils.selectTargetDialog(feature.name, 'CHRISPREMADES.Macros.VitalityOfTheTree', nearbyAllies, {skipDeadAndUnconscious: false});
+        let targetSelection = await dialogUtils.selectTargetDialog(feature.name, 'CHRISPREMADES.Macros.VitalityOfTheTree', nearbyAllies, {skipDeadAndUnconscious: false});
         if (!targetSelection?.length) return;
         selection = targetSelection[0];
     }
