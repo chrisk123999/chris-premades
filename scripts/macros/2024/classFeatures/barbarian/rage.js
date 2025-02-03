@@ -41,17 +41,21 @@ async function use({trigger, workflow}) {
         {
             type: 'effect',
             macros: ['rageRaging']
+        },
+        {
+            type: 'midi.actor',
+            macros: ['rageRaging']
         }
     ];
     let persistentRage = itemUtils.getItemByIdentifier(workflow.actor, 'persistentRage');
     if (!persistentRage) {
         macros.push(...[{
-            type: 'midi.actor',
-            macros: ['rageRaging']
+            type: 'combat',
+            macros: ['rageUpkeep']
         },
         {
-            type: 'combat',
-            macros: ['rageRaging']
+            type: 'midi.actor',
+            macros: ['rageUpkeep']
         }]);
     } else {
         let specialDurations = effectData.flags['chris-premades']?.specialDuration ?? [];
@@ -229,27 +233,34 @@ async function use({trigger, workflow}) {
     let instinctivePounce = itemUtils.getItemByIdentifier(workflow.actor, 'instinctivePounce');
     if (instinctivePounce) await workflowUtils.completeItemUse(instinctivePounce);
     if (travelAlongTheTree) {
+        let group = activityUtils.getActivityByIdentifier(travelAlongTheTree, 'group');
+        let path = 'system.activities.' + group.id + '.uses.spent';
+        if (group) await genericUtils.update(travelAlongTheTree, {[path]: 0});
         let selection = await dialogUtils.confirm(travelAlongTheTree.name, genericUtils.format('CHRISPREMADES.Dialog.Use', {itemName: travelAlongTheTree.name}));
-        if (selection) await workflowUtils.completeItemUse(travelAlongTheTree);
+        if (selection) {
+            let single = activityUtils.getActivityByIdentifier(travelAlongTheTree, 'single');
+            let featureData = genericUtils.duplicate(travelAlongTheTree.toObject());
+            if (single) featureData.system.activities[single.id].activation.type = 'special';
+            if (group) featureData.system.activities[group.id].activation.type = 'special';
+            await workflowUtils.syntheticItemDataRoll(featureData, workflow.actor, []);
+        }
     }
     if (rageOfTheGods) await workflowUtils.completeItemUse(rageOfTheGods);
 }
 async function attack({trigger, workflow}) {
-    if (!combatUtils.inCombat()) return;
+    if (!combatUtils.inCombat() || !workflow.token) return;
     let effect = effectUtils.getEffectByIdentifier(workflow.actor, 'rage');
     if (!effect) return;
-    if (!constants.attacks.includes(workflow.activity.actionType)) return;
-    if (!workflow.targets.size) return;
+    if (!constants.attacks.includes(workflow.activity.actionType) || !workflow.targets.size) return;
     if (workflow.targets.first().document.disposition === workflow.token.document.disposition) return;
     await combatUtils.setTurnCheck(effect, 'rage');
 }
-async function damageApplication({workflow, ditem}) {
-    if (!combatUtils.inCombat()) return;
-    let targetActor = await fromUuid(ditem.actorUuid);
-    if (!targetActor) return;
+async function save({trigger, workflow}) {
+    if (!combatUtils.inCombat() || !workflow.token) return;
     let effect = effectUtils.getEffectByIdentifier(workflow.actor, 'rage');
     if (!effect) return;
-    if (ditem.newHP >= ditem.oldHP) return;
+    if (workflow.activity.actionType != 'save' || !workflow.targets.size) return;
+    if (workflow.targets.first().document.disposition === workflow.token.document.disposition) return;
     await combatUtils.setTurnCheck(effect, 'rage');
 }
 async function turnEnd({trigger: {entity: effect, token}}) {
@@ -425,7 +436,7 @@ export let rage = {
     ]
 };
 export let rageRaging = {
-    name: 'Raging',
+    name: rage.name,
     version: rage.version,
     rules: 'modern',
     midi: {
@@ -436,19 +447,40 @@ export let rageRaging = {
                 priority: 50
             },
             {
-                pass: 'attackRollComplete',
+                pass: 'damageRollComplete',
+                macro: damage,
+                priority: 250
+            }
+        ]
+    },
+    effect: [
+        {
+            pass: 'created',
+            macro: rageRagingLegacy.effect[0].macro,
+            priority: 50
+        },
+        {
+            pass: 'deleted',
+            macro: rageRagingLegacy.effect[1].macro,
+            priority: 50
+        }
+    ]
+};
+export let rageUpkeep = {
+    name: rage.name,
+    version: rage.version,
+    rules: 'modern',
+    midi: {
+        actor: [
+            {
+                pass: 'rollFinished',
                 macro: attack,
                 priority: 50
             },
             {
-                pass: 'targetApplyDamage',
-                macro: damageApplication,
-                priority: 250
-            },
-            {
-                pass: 'damageRollComplete',
-                macro: damage,
-                priority: 250
+                pass: 'rollFinished',
+                macro: save,
+                priority: 50
             }
         ]
     },
@@ -461,18 +493,6 @@ export let rageRaging = {
         {
             pass: 'combatEnd',
             macro: combatEnd,
-            priority: 50
-        }
-    ],
-    effect: [
-        {
-            pass: 'created',
-            macro: rageRagingLegacy.effect[0].macro,
-            priority: 50
-        },
-        {
-            pass: 'deleted',
-            macro: rageRagingLegacy.effect[1].macro,
             priority: 50
         }
     ]

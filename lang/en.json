@@ -1353,7 +1353,7 @@
                 "AllowSpellcasting": "Allow Spellcasting:",
                 "End": "Rage: End",
                 "EndEarly": "{actorName} has not attacked an enemy or taken damage since their last turn. Remove Rage?",
-                "EndEarlyModern": "{actorName} has not attacked an enemy, taken damage, or continued their rage since their last turn. Remove Rage?",
+                "EndEarlyModern": "{actorName} has not attacked an enemy, forced an enemy to make a save, or continued their rage since their last turn. Remove Rage?",
                 "FormOfBeastTailReaction": "Form of the Beast: Tail Reaction",
                 "FormOfBeastWeapon": "Manifest a natural weapon?",
                 "FormOfTheBeastBite": "Form of the Beast: Bite",
@@ -1749,6 +1749,9 @@
             },
             "TouchDamage": {
                 "Name": "Touch Damage"
+            },
+            "TravelAlongTheTree": {
+                "WillingCreatures": "Select up to six willing creatures:"
             },
             "TwilightSanctuary": {
                 "Charmed": "Remove the Charmed condition",

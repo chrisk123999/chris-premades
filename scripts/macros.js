@@ -45,7 +45,7 @@ export {chromaticOrb} from './macros/2024/spells/chromaticOrb.js';
 export {circleOfDeath} from './macros/2024/spells/circleOfDeath.js';
 //Class Features
 //Barbarian
-export {rage, rageRaging} from './macros/2024/classFeatures/barbarian/rage.js';
+export {rage, rageRaging, rageUpkeep} from './macros/2024/classFeatures/barbarian/rage.js';
 export {unarmoredDefenseBarbarian} from './macros/2024/classFeatures/barbarian/unarmoredDefense.js';
 export {dangerSense} from './macros/2024/classFeatures/barbarian/dangerSense.js';
 export {recklessAttack} from './macros/2024/classFeatures/barbarian/recklessAttack.js';
@@ -69,3 +69,6 @@ export {powerOfTheWilds, powerOfTheWildsLion, powerOfTheWildsRam} from './macros
 export {vitalityOfTheTree, lifeGivingForce} from './macros/2024/classFeatures/barbarian/worldTree/vitalityOfTheTree.js';
 export {branchesOfTheTree} from './macros/2024/classFeatures/barbarian/worldTree/branchesOfTheTree.js';
 export {batteringRoots} from './macros/2024/classFeatures/barbarian/worldTree/batteringRoots.js';
+export {travelAlongTheTree} from './macros/2024/classFeatures/barbarian/worldTree/travelAlongTheTree.js';
+//Path of the Zealot
+export {divineFury, divineFuryAttack} from './macros/2024/classFeatures/barbarian/zealot/divineFury.js';

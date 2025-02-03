@@ -13,12 +13,13 @@ async function use({trigger, workflow}) {
     let range = Number(itemUtils.getConfig(workflow.item, 'range'));
     if (isNaN(range)) range = 5;
     await Teleport.target(workflow.failedSaves.first(), workflow.token, {animation, range});
-    if (workflow.token.document.disposition === workflow.failedSaves.firset().document.disposition) return;
+    if (workflow.token.document.disposition === workflow.failedSaves.first().document.disposition) return;
     let effect = workflow.item.effects.contents?.[0];
     if (!effect) return;
     let effectData = genericUtils.duplicate(effect.toObject());
     delete effectData._id;
     effectData.duration = itemUtils.convertDuration(workflow.activity);
+    await effectUtils.createEffect(workflow.failedSaves.first().actor, effectData);
 }
 export let branchesOfTheTree = {
     name: 'Branches of the Tree',

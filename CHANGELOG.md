@@ -1,8 +1,18 @@
+# 1.1.27 Release:
+## New Modern Content:
+- Battering Roots
+- Branches of the Tree
+- Travel along the Tree
+- Vitality of the Tree
+- Divine Fury
+## Bug Fixes:
+- Rage (Modern)
+
 # 1.1.26 Release:
 ## Bug Fixes:
-- Blinding Smite (2024)
-- Wrathful Smite (2024)
-- Searing Smite (2024)
+- Blinding Smite (Modern)
+- Wrathful Smite (Modern)
+- Searing Smite (Modern)
 ## API Bug Fixes:
 - The previous "Moved the postAttackRoll event to the Midi-Qol preAttackRoll hook" has been reverted - it mistakenly moved attackRollComplete to preAttackRollComplete
 ## Update Notes:

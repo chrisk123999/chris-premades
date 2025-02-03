@@ -9,7 +9,7 @@ async function turnStart({trigger: {entity: item}}) {
     let effectData = {
         name: item.name,
         img: item.img,
-        origin: item,
+        origin: item.uuid,
         changes: [
             {
                 key: 'system.range.reach',
