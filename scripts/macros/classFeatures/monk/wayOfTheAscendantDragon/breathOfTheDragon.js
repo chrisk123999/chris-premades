@@ -85,7 +85,7 @@ async function early({workflow}) {
             }
         }
     };
-    if (target.type === 'ray') templateData.width = 5;
+    if (target.type === 'line') templateData.width = 5;
     if (target.type === 'cone') templateData.angle = CONFIG.MeasuredTemplate.defaults.angle;
     let {template, tokens} = await templateUtils.placeTemplate(templateData, true);
     genericUtils.updateTargets(tokens);

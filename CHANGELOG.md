@@ -1,3 +1,7 @@
+# 1.0.60 Release:
+## Bug Fixes:
+- Breath of the Dragon
+
 # 1.0.59 Release:
 ## Bug Fixes:
 - Favored Foe
