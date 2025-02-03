@@ -882,6 +882,9 @@
             "FallenPuppet": {
                 "NoTargets": "No valid targets within range!"
             },
+            "FanaticalFocus": {
+                "Use": "Use {item} to re-roll a failed saving throw of {total}?"
+            },
             "FarStep": {
                 "Name": "Far Step",
                 "Teleport": "Far Step: Teleport"

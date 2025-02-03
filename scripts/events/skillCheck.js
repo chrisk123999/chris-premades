@@ -10,7 +10,7 @@ function collectMacros(entity) {
     if (!macroList.length) return [];
     return macroList.map(i => custom.getMacro(i, genericUtils.getRules(entity))).filter(j => j);
 }
-function collectActorSkillMacros(actor, pass, skillId, options, roll, config) {
+function collectActorSkillMacros(actor, pass, skillId, options, roll, config, dialog, message) {
     let triggers = [];
     let effects = actorUtils.getEffects(actor);
     let token = actorUtils.getFirstToken(actor);
@@ -32,7 +32,9 @@ function collectActorSkillMacros(actor, pass, skillId, options, roll, config) {
             skillId,
             options,
             roll,
-            config
+            config,
+            dialog,
+            message
         });
     });
     actor.items.forEach(item => {
@@ -52,7 +54,9 @@ function collectActorSkillMacros(actor, pass, skillId, options, roll, config) {
             skillId,
             options,
             roll,
-            config
+            config,
+            dialog,
+            message
         });
     });
     if (token) {
@@ -75,7 +79,9 @@ function collectActorSkillMacros(actor, pass, skillId, options, roll, config) {
                 skillId,
                 options,
                 roll,
-                config
+                config,
+                dialog,
+                message
             });
         });
     }
@@ -120,7 +126,9 @@ function getSortedTriggers(actor, pass, skillId, options, roll, config) {
                 skillId: trigger.skillId,
                 options: trigger.options,
                 roll: trigger.roll,
-                config: trigger.config
+                config: trigger.config,
+                dialog: trigger.dialog,
+                message: trigger.message
             });
         });
     });
@@ -137,21 +145,21 @@ async function executeMacro(trigger) {
     }
     return result;
 }
-async function executeContextMacroPass(actor, pass, skillId, options, roll, config) {
+async function executeContextMacroPass(actor, pass, skillId, options, roll, config, dialog, message) {
     genericUtils.log('dev', 'Executing Skill Macro Pass: ' + pass);
-    let triggers = getSortedTriggers(actor, pass, skillId, options, roll, config);
+    let triggers = getSortedTriggers(actor, pass, skillId, options, roll, config, dialog, message);
     let results = [];
     for (let i of triggers) results.push(await executeMacro(i));
     return results.filter(i => i);
 }
-async function executeMacroPass(actor, pass, skillId, options, roll, config) {
+async function executeMacroPass(actor, pass, skillId, options, roll, config, dialog, message) {
     genericUtils.log('dev', 'Executing Skill Macro Pass: ' + pass);
-    let triggers = getSortedTriggers(actor, pass, skillId, options, roll, config);
+    let triggers = getSortedTriggers(actor, pass, skillId, options, roll, config, dialog, message);
     for (let i of triggers) await executeMacro(i);
 }
-async function executeBonusMacroPass(actor, pass, skillId, options, roll, config) {
+async function executeBonusMacroPass(actor, pass, skillId, options, roll, config, dialog, message) {
     genericUtils.log('dev', 'Executing Skill Macro Pass: ' + pass);
-    let triggers = getSortedTriggers(actor, pass, skillId, options, roll, config);
+    let triggers = getSortedTriggers(actor, pass, skillId, options, roll, config, dialog, message);
     for (let i of triggers) {
         i.roll = roll;
         let bonusRoll = await executeMacro(i);
@@ -170,8 +178,8 @@ async function rollSkill(wrapped, config, dialog = {}, message = {}) {
         event = dialog?.event;
     }
     let options = {};
-    await executeMacroPass(this, 'situational', skillId, options, undefined, config);
-    let selections = await executeContextMacroPass(this, 'context', skillId, options, undefined, config);
+    await executeMacroPass(this, 'situational', skillId, options, undefined, config, dialog, message);
+    let selections = await executeContextMacroPass(this, 'context', skillId, options, undefined, config, dialog, message);
     if (selections.length) {
         let advantages = selections.filter(i => i.type === 'advantage').map(j => ({label: j.label, name: 'advantage'}));
         let disadvantages = selections.filter(i => i.type === 'disadvantage').map(j => ({label: j.label, name: 'disadvantage'}));
@@ -217,9 +225,8 @@ async function rollSkill(wrapped, config, dialog = {}, message = {}) {
     if (shouldBeArray) returnData = returnData[0];
     if (!returnData) return;
     let oldOptions = returnData.options;
-    returnData = await executeBonusMacroPass(this, 'bonus', skillId, options, returnData, config);
+    returnData = await executeBonusMacroPass(this, 'bonus', skillId, options, returnData, config, dialog, message);
     if (returnData.options) genericUtils.mergeObject(returnData.options, oldOptions);
-    //await executeMacroPass(this, 'optionalBonus', skillId, options, returnData, config);
     if (message.create !== false) {
         await returnData.toMessage(messageData, {rollMode: returnData.options?.rollMode ?? rollMode});
     }

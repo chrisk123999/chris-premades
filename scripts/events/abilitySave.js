@@ -10,7 +10,7 @@ function collectMacros(entity) {
     if (!macroList.length) return [];
     return macroList.map(i => custom.getMacro(i, genericUtils.getRules(entity))).filter(j => j);
 }
-function collectActorSaveMacros(actor, pass, saveId, options, roll, config) {
+function collectActorSaveMacros(actor, pass, saveId, options, roll, config, dialog, message) {
     let triggers = [];
     let effects = actorUtils.getEffects(actor);
     let token = actorUtils.getFirstToken(actor);
@@ -32,7 +32,9 @@ function collectActorSaveMacros(actor, pass, saveId, options, roll, config) {
             saveId,
             options,
             roll,
-            config
+            config,
+            dialog,
+            message
         });
     });
     actor.items.forEach(item => {
@@ -51,7 +53,10 @@ function collectActorSaveMacros(actor, pass, saveId, options, roll, config) {
             actor: actor,
             saveId: saveId,
             options: options,
-            roll: roll
+            roll: roll,
+            config,
+            dialog,
+            message
         });
     });
     if (token) {
@@ -73,14 +78,17 @@ function collectActorSaveMacros(actor, pass, saveId, options, roll, config) {
                 actor: actor,
                 saveId: saveId,
                 options: options,
-                roll: roll
+                roll: roll,
+                config,
+                dialog,
+                message
             });
         });
     }
     return triggers;
 }
-function getSortedTriggers(actor, pass, saveId, options, roll, config) {
-    let allTriggers = collectActorSaveMacros(actor, pass, saveId, options, roll);
+function getSortedTriggers(actor, pass, saveId, options, roll, config, dialog, message) {
+    let allTriggers = collectActorSaveMacros(actor, pass, saveId, options, roll, config, message);
     let names = new Set(allTriggers.map(i => i.name));
     allTriggers = Object.fromEntries(names.map(i => [i, allTriggers.filter(j => j.name === i)]));
     let maxMap = {};
@@ -118,7 +126,9 @@ function getSortedTriggers(actor, pass, saveId, options, roll, config) {
                 saveId: trigger.saveId,
                 options: trigger.options,
                 roll: trigger.roll,
-                config: trigger.config
+                config: trigger.config,
+                dialog: trigger.dialog,
+                message: trigger.message
             });
         });
     });
@@ -135,21 +145,21 @@ async function executeMacro(trigger) {
     }
     return result;
 }
-async function executeContextMacroPass(actor, pass, saveId, options, roll, config) {
+async function executeContextMacroPass(actor, pass, saveId, options, roll, config, dialog, message) {
     genericUtils.log('dev', 'Executing Save Macro Pass: ' + pass);
-    let triggers = getSortedTriggers(actor, pass, saveId, options, roll, config);
+    let triggers = getSortedTriggers(actor, pass, saveId, options, roll, config, dialog, message);
     let results = [];
     for (let i of triggers) results.push(await executeMacro(i));
     return results.filter(i => i);
 }
-async function executeMacroPass(actor, pass, saveId, options, roll, config) {
+async function executeMacroPass(actor, pass, saveId, options, roll, config, dialog, message) {
     genericUtils.log('dev', 'Executing Save Macro Pass: ' + pass);
-    let triggers = getSortedTriggers(actor, pass, saveId, options, roll, config);
+    let triggers = getSortedTriggers(actor, pass, saveId, options, roll, config, dialog, message);
     for (let i of triggers) await executeMacro(i);
 }
-async function executeBonusMacroPass(actor, pass, saveId, options, roll, config) {
+async function executeBonusMacroPass(actor, pass, saveId, options, roll, config, dialog, message) {
     genericUtils.log('dev', 'Executing Save Macro Pass: ' + pass);
-    let triggers = getSortedTriggers(actor, pass, saveId, options, roll, config);
+    let triggers = getSortedTriggers(actor, pass, saveId, options, roll, config, dialog, message);
     for (let i of triggers) {
         i.roll = roll;
         let bonusRoll = await executeMacro(i);
@@ -168,8 +178,8 @@ async function rollSave(wrapped, config, dialog = {}, message = {}) {
         event = dialog?.event;
     }
     let options = {};
-    await executeMacroPass(this, 'situational', saveId, options, undefined, config);
-    let selections = await executeContextMacroPass(this, 'context', saveId, options, undefined, config);
+    await executeMacroPass(this, 'situational', saveId, options, undefined, config, dialog, message);
+    let selections = await executeContextMacroPass(this, 'context', saveId, options, undefined, config, dialog, message);
     if (selections.length) {
         let advantages = selections.filter(i => i.type === 'advantage').map(j => ({label: j.label, name: 'advantage'}));
         let disadvantages = selections.filter(i => i.type === 'disadvantage').map(j => ({label: j.label, name: 'disadvantage'}));
@@ -217,7 +227,7 @@ async function rollSave(wrapped, config, dialog = {}, message = {}) {
     if (shouldBeArray) returnData = returnData[0];
     if (!returnData) return;
     let oldOptions = returnData.options;
-    returnData = await executeBonusMacroPass(this, 'bonus', saveId, options, returnData, config);
+    returnData = await executeBonusMacroPass(this, 'bonus', saveId, options, returnData, config, dialog, message);
     if (returnData.options) genericUtils.mergeObject(returnData.options, oldOptions);
     if (message.create !== false) {
         genericUtils.mergeObject(messageData, {flags: options.flags ?? {} });

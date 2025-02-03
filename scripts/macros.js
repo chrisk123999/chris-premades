@@ -72,3 +72,5 @@ export {batteringRoots} from './macros/2024/classFeatures/barbarian/worldTree/ba
 export {travelAlongTheTree} from './macros/2024/classFeatures/barbarian/worldTree/travelAlongTheTree.js';
 //Path of the Zealot
 export {divineFury, divineFuryAttack} from './macros/2024/classFeatures/barbarian/zealot/divineFury.js';
+export {warriorOfTheGods} from './macros/2024/classFeatures/barbarian/zealot/warriorOfTheGods.js';
+export {fanaticalFocus} from './macros/2024/classFeatures/barbarian/zealot/fanaticalFocus.js';
