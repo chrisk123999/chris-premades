@@ -1,0 +1,252 @@
+{
+  "name": "Zealous Presence",
+  "type": "feat",
+  "effects": [
+    {
+      "name": "Zealous Presence",
+      "img": "icons/creatures/magical/construct-iron-stomping-yellow.webp",
+      "origin": "Actor.yy1I4W4hqhw1yaiM.Item.7dWUkc0vPcws74rN",
+      "transfer": false,
+      "_id": "FDkYgSlsiDzkO7ZH",
+      "type": "base",
+      "system": {},
+      "changes": [
+        {
+          "key": "flags.midi-qol.advantage.attack.all",
+          "mode": 0,
+          "value": "1",
+          "priority": 20
+        },
+        {
+          "key": "flags.midi-qol.advantage.ability.save.all",
+          "mode": 0,
+          "value": "1",
+          "priority": 20
+        }
+      ],
+      "disabled": false,
+      "duration": {
+        "startTime": null,
+        "seconds": null,
+        "combat": null,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "statuses": [],
+      "sort": 0,
+      "flags": {
+        "dae": {
+          "enableCondition": "",
+          "disableCondition": "",
+          "disableIncapacitated": false,
+          "selfTarget": false,
+          "selfTargetAlways": false,
+          "dontApply": false,
+          "stackable": "multi",
+          "showIcon": false,
+          "durationExpression": "",
+          "macroRepeat": "none",
+          "specialDuration": [
+            "turnStartSource"
+          ]
+        },
+        "core": {
+          "overlay": false
+        }
+      },
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "coreVersion": "12.331",
+        "systemId": "dnd5e",
+        "systemVersion": "4.2.2",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!items.effects!qY5OeRzdH8z2pmme.FDkYgSlsiDzkO7ZH"
+    }
+  ],
+  "system": {
+    "activities": {
+      "utilityZePrclNe0": {
+        "name": "",
+        "type": "utility",
+        "_id": "utilityZePrclNe0",
+        "sort": 0,
+        "activation": {
+          "type": "bonus",
+          "value": 1,
+          "condition": "",
+          "override": false
+        },
+        "consumption": {
+          "targets": [
+            {
+              "type": "itemUses",
+              "value": "1",
+              "target": "",
+              "scaling": {}
+            }
+          ],
+          "scaling": {
+            "allowed": false,
+            "max": ""
+          },
+          "spellSlot": true
+        },
+        "description": {
+          "chatFlavor": ""
+        },
+        "duration": {
+          "units": "round",
+          "special": "",
+          "concentration": false,
+          "override": false,
+          "value": "2"
+        },
+        "effects": [
+          {
+            "_id": "FDkYgSlsiDzkO7ZH"
+          }
+        ],
+        "range": {
+          "value": "",
+          "units": "self",
+          "special": "",
+          "override": false
+        },
+        "target": {
+          "prompt": true,
+          "affects": {
+            "count": "",
+            "type": "ally",
+            "choice": false,
+            "special": ""
+          },
+          "template": {
+            "count": "",
+            "contiguous": false,
+            "type": "emanationNoTemplate",
+            "size": "60",
+            "width": "",
+            "height": "",
+            "units": "ft"
+          },
+          "override": false
+        },
+        "uses": {
+          "spent": 0,
+          "recovery": [],
+          "max": ""
+        },
+        "roll": {
+          "prompt": false,
+          "visible": false,
+          "name": "",
+          "formula": ""
+        },
+        "useConditionText": "",
+        "effectConditionText": "",
+        "macroData": {
+          "name": "",
+          "command": ""
+        },
+        "ignoreTraits": {
+          "idi": false,
+          "idr": false,
+          "idv": false,
+          "ida": false
+        },
+        "midiProperties": {
+          "ignoreTraits": [],
+          "triggeredActivityId": "none",
+          "triggeredActivityConditionText": "",
+          "triggeredActivityTargets": "targets",
+          "triggeredActivityRollAs": "self",
+          "forceDialog": false,
+          "confirmTargets": "default",
+          "automationOnly": false,
+          "identifier": "",
+          "autoTargetType": "any",
+          "autoTargetAction": "default",
+          "otherActivityCompatible": false
+        }
+      }
+    },
+    "uses": {
+      "spent": 1,
+      "max": "1",
+      "recovery": [
+        {
+          "period": "lr",
+          "type": "recoverAll"
+        }
+      ]
+    },
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "identifier": "zealous-presence",
+    "source": {
+      "book": "PHB 2024",
+      "page": "",
+      "license": "",
+      "custom": "",
+      "rules": "2024",
+      "revision": 1
+    },
+    "advancement": [],
+    "cover": null,
+    "crewed": false,
+    "enchant": {},
+    "prerequisites": {
+      "level": 10,
+      "repeatable": false
+    },
+    "properties": [],
+    "requirements": "",
+    "type": {
+      "value": "class",
+      "subtype": ""
+    }
+  },
+  "flags": {
+    "dnd5e": {
+      "advancementOrigin": "nwupzjujWuejv7P9",
+      "riders": {
+        "activity": [],
+        "effect": []
+      },
+      "dependents": [
+        {
+          "uuid": "Scene.iGwlIbnzeJk0iHC2.Token.TWHihWvLi9broQd6.Actor.szyevsXsdQSq5snz.ActiveEffect.Iq5JsvOY5a3SNCZv"
+        }
+      ]
+    },
+    "chris-premades": {
+      "info": {
+        "identifier": "zealousPresence",
+        "source": "chris-premades",
+        "rules": "modern",
+        "version": "1.1.28"
+      },
+      "macros": {
+        "midi": {
+          "item": [
+            "zealousPresence"
+          ]
+        }
+      }
+    }
+  },
+  "img": "icons/creatures/magical/construct-iron-stomping-yellow.webp",
+  "folder": "HFbYa3Tc4iBLohVg",
+  "_id": "qY5OeRzdH8z2pmme",
+  "_key": "!items!qY5OeRzdH8z2pmme"
+}

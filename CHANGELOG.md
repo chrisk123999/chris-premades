@@ -1,3 +1,11 @@
+# 1.1.28 Release:
+## New Modern Content:
+- Warrior of the Gods
+- Fanatical Focus
+- Zealous Presence
+## API Updates:
+- Skill Check, Ability Check, and Save events now pass through more information to the trigger.
+
 # 1.1.27 Release:
 ## New Modern Content:
 - Battering Roots
@@ -64,7 +72,7 @@
 - Added the ability to set the identifier and rules of an effect in the Dev Tools Effect Medkit.
 - 2024 Barbarian subclass automations will be in an upcoming update.
 ## API Updates:
-- Skill Check, Ability Check, and Save Events now pass through the config to the trigger.
+- Skill Check, Ability Check, and Save events now pass through the config to the trigger.
 - Added the ability for automation configs to automatically apply missing scale values.
 ## API Bug Fixes:
 - Moved the postAttackRoll event to the Midi-Qol preAttackRoll hook.

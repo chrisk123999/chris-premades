@@ -74,3 +74,4 @@ export {travelAlongTheTree} from './macros/2024/classFeatures/barbarian/worldTre
 export {divineFury, divineFuryAttack} from './macros/2024/classFeatures/barbarian/zealot/divineFury.js';
 export {warriorOfTheGods} from './macros/2024/classFeatures/barbarian/zealot/warriorOfTheGods.js';
 export {fanaticalFocus} from './macros/2024/classFeatures/barbarian/zealot/fanaticalFocus.js';
+export {zealousPresence} from './macros/2024/classFeatures/barbarian/zealot/zealousPresence.js';
