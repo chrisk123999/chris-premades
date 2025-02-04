@@ -10,7 +10,7 @@ function collectMacros(entity) {
     if (!macroList.length) return [];
     return macroList.map(i => custom.getMacro(i, genericUtils.getRules(entity))).filter(j => j);
 }
-function collectActorSaveMacros(actor, pass, saveId, options, roll, config, dialog, message) {
+function collectActorSaveMacros(actor, pass, saveId, options, roll, config, dialog, message, sourceActor) {
     let triggers = [];
     let effects = actorUtils.getEffects(actor);
     let token = actorUtils.getFirstToken(actor);
@@ -34,7 +34,8 @@ function collectActorSaveMacros(actor, pass, saveId, options, roll, config, dial
             roll,
             config,
             dialog,
-            message
+            message,
+            sourceActor
         });
     });
     actor.items.forEach(item => {
@@ -56,7 +57,8 @@ function collectActorSaveMacros(actor, pass, saveId, options, roll, config, dial
             roll: roll,
             config,
             dialog,
-            message
+            message,
+            sourceActor
         });
     });
     if (token) {
@@ -81,14 +83,15 @@ function collectActorSaveMacros(actor, pass, saveId, options, roll, config, dial
                 roll: roll,
                 config,
                 dialog,
-                message
+                message,
+                sourceActor
             });
         });
     }
     return triggers;
 }
-function getSortedTriggers(actor, pass, saveId, options, roll, config, dialog, message) {
-    let allTriggers = collectActorSaveMacros(actor, pass, saveId, options, roll, config, message);
+function getSortedTriggers(actor, pass, saveId, options, roll, config, dialog, message, sourceActor) {
+    let allTriggers = collectActorSaveMacros(actor, pass, saveId, options, roll, config, dialog, message, sourceActor);
     let names = new Set(allTriggers.map(i => i.name));
     allTriggers = Object.fromEntries(names.map(i => [i, allTriggers.filter(j => j.name === i)]));
     let maxMap = {};
@@ -128,7 +131,8 @@ function getSortedTriggers(actor, pass, saveId, options, roll, config, dialog, m
                 roll: trigger.roll,
                 config: trigger.config,
                 dialog: trigger.dialog,
-                message: trigger.message
+                message: trigger.message,
+                sourceActor: trigger.sourceActor
             });
         });
     });
@@ -173,6 +177,10 @@ async function rollSave(wrapped, config, dialog = {}, message = {}) {
     if (foundry.utils.getType(config) === 'Object') {
         saveId = config.ability;
         event = config.event;
+        if (config.midiOptions?.saveItemUuid) {
+            let activityUuid = game.messages.contents.at(-1)?.flags?.dnd5e?.activity?.uuid;
+            if (activityUuid) genericUtils.setProperty(config, 'chris-premades.activityUuid', activityUuid);
+        }
     } else {
         saveId = config;
         event = dialog?.event;
@@ -228,6 +236,20 @@ async function rollSave(wrapped, config, dialog = {}, message = {}) {
     if (!returnData) return;
     let oldOptions = returnData.options;
     returnData = await executeBonusMacroPass(this, 'bonus', saveId, options, returnData, config, dialog, message);
+    if (returnData.data?.token) {
+        let sceneTriggers = [];
+        returnData.data.token.document.parent.tokens.filter(i => i.uuid !== returnData.data.token.document.uuid && i.actor).forEach(j => {
+            sceneTriggers.push(...getSortedTriggers(j.actor, 'sceneBonus', saveId, options, returnData, config, dialog, message, this));
+        });
+        sceneTriggers = sceneTriggers.sort((a, b) => a.priority - b.priority);
+        genericUtils.log('dev', 'Executing Save Macro Pass: sceneBonus');
+        for (let trigger of sceneTriggers) {
+            trigger.roll = returnData;
+            let bonusRoll = await executeMacro(trigger);
+            if (bonusRoll) returnData = CONFIG.Dice.D20Roll.fromRoll(bonusRoll);
+        }
+    }
+    console.log(returnData);
     if (returnData.options) genericUtils.mergeObject(returnData.options, oldOptions);
     if (message.create !== false) {
         genericUtils.mergeObject(messageData, {flags: options.flags ?? {} });

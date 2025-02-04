@@ -5,6 +5,7 @@ export class CPRSingleRollResolver extends HandlebarsApplicationMixin(Applicatio
         super(options);
         genericUtils.log('dev', 'Constructing Single Roll Resolver');
         this.#roll = roll;
+        if (roll.data?.name) this.options.window.title = genericUtils.translate('DICE.RollResolution') + ' - ' + roll.data.name;
     }
     static DEFAULT_OPTIONS = {
         id: 'roll-resolver-{id}',

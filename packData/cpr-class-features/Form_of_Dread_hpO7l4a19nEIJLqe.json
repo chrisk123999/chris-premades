@@ -31,77 +31,6 @@
       "level": null
     },
     "activities": {
-      "Nk6YTKOjbqaRf47m": {
-        "type": "utility",
-        "_id": "Nk6YTKOjbqaRf47m",
-        "sort": 0,
-        "activation": {
-          "type": "bonus",
-          "value": null,
-          "override": false,
-          "condition": ""
-        },
-        "consumption": {
-          "scaling": {
-            "allowed": false
-          },
-          "spellSlot": true,
-          "targets": [
-            {
-              "type": "itemUses",
-              "value": "1",
-              "scaling": {}
-            }
-          ]
-        },
-        "description": {
-          "chatFlavor": ""
-        },
-        "duration": {
-          "units": "minute",
-          "concentration": false,
-          "override": false,
-          "value": "1"
-        },
-        "effects": [],
-        "range": {
-          "override": false,
-          "units": "self",
-          "special": ""
-        },
-        "target": {
-          "template": {
-            "contiguous": false,
-            "units": "ft",
-            "type": ""
-          },
-          "affects": {
-            "choice": false,
-            "count": "",
-            "type": "self",
-            "special": ""
-          },
-          "override": false,
-          "prompt": true
-        },
-        "uses": {
-          "spent": 0,
-          "recovery": [],
-          "max": ""
-        },
-        "roll": {
-          "prompt": false,
-          "visible": false,
-          "name": "",
-          "formula": ""
-        },
-        "useConditionText": "",
-        "forceDialog": false,
-        "effectConditionText": "",
-        "midiAutomationOnly": false,
-        "name": "Form of Dread",
-        "img": "icons/magic/unholy/silhouette-robe-evil-glow.webp"
-      },
       "f0epefNgTy8omTFs": {
         "type": "save",
         "_id": "f0epefNgTy8omTFs",
@@ -180,6 +109,107 @@
         "midiAutomationOnly": false,
         "name": "Form of Dread: Fear",
         "img": "icons/magic/unholy/silhouette-robe-evil-glow.webp"
+      },
+      "oyddQtkU98F2IkVi": {
+        "type": "heal",
+        "_id": "oyddQtkU98F2IkVi",
+        "sort": 0,
+        "activation": {
+          "type": "bonus",
+          "value": null,
+          "override": false,
+          "condition": ""
+        },
+        "consumption": {
+          "scaling": {
+            "allowed": false
+          },
+          "spellSlot": true,
+          "targets": [
+            {
+              "type": "itemUses",
+              "value": "1",
+              "target": ""
+            }
+          ]
+        },
+        "description": {
+          "chatFlavor": ""
+        },
+        "duration": {
+          "units": "minute",
+          "concentration": false,
+          "override": false,
+          "value": "1"
+        },
+        "effects": [],
+        "range": {
+          "override": false,
+          "units": "self",
+          "special": ""
+        },
+        "target": {
+          "template": {
+            "contiguous": false,
+            "units": "ft",
+            "type": ""
+          },
+          "affects": {
+            "choice": false,
+            "type": "self",
+            "special": ""
+          },
+          "override": false,
+          "prompt": true
+        },
+        "uses": {
+          "spent": 0,
+          "recovery": [],
+          "max": ""
+        },
+        "healing": {
+          "number": 1,
+          "denomination": "10",
+          "types": [
+            "temphp"
+          ],
+          "custom": {
+            "enabled": false
+          },
+          "scaling": {
+            "number": 1
+          },
+          "bonus": "@classes.warlock.levels"
+        },
+        "useConditionText": "",
+        "effectConditionText": "",
+        "macroData": {
+          "name": "",
+          "command": ""
+        },
+        "ignoreTraits": {
+          "idi": false,
+          "idr": false,
+          "idv": false,
+          "ida": false
+        },
+        "midiProperties": {
+          "ignoreTraits": [],
+          "triggeredActivityId": "none",
+          "triggeredActivityConditionText": "",
+          "triggeredActivityTargets": "targets",
+          "triggeredActivityRollAs": "self",
+          "forceDialog": false,
+          "confirmTargets": "default",
+          "autoTargetType": "any",
+          "autoTargetAction": "default",
+          "automationOnly": false,
+          "otherActivityCompatible": false,
+          "identifier": ""
+        },
+        "name": "Form of Dread",
+        "img": "icons/magic/unholy/silhouette-robe-evil-glow.webp",
+        "appliedEffects": []
       }
     },
     "identifier": "form-of-dread",
@@ -240,7 +270,7 @@
     "chris-premades": {
       "info": {
         "name": "Form of Dread",
-        "version": "1.1.0",
+        "version": "1.1.31",
         "identifier": "formOfDread",
         "source": "chris-premades"
       },
@@ -252,7 +282,7 @@
         }
       },
       "activityIdentifiers": {
-        "formOfDread": "Nk6YTKOjbqaRf47m",
+        "formOfDread": "oyddQtkU98F2IkVi",
         "formOfDreadFear": "f0epefNgTy8omTFs"
       },
       "hiddenActivities": [

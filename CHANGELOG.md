@@ -1,3 +1,9 @@
+# 1.1.31 Release:
+## Bug Fixes:
+- Form of Dread (Legacy)
+## API Updates:
+- Added "Scene Bonus" to the ability save event.
+
 # 1.1.30 Release:
 ## New Modern Content:
 - Bardic Inspiration

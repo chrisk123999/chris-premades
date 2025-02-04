@@ -89,7 +89,7 @@ async function late({trigger: {entity: effect}, workflow}) {
 }
 export let formOfDread = {
     name: 'Form of Dread',
-    version: '1.1.0',
+    version: '1.1.31',
     midi: {
         item: [
             {
