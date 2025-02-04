@@ -76,3 +76,7 @@ export {warriorOfTheGods} from './macros/2024/classFeatures/barbarian/zealot/war
 export {fanaticalFocus} from './macros/2024/classFeatures/barbarian/zealot/fanaticalFocus.js';
 export {zealousPresence} from './macros/2024/classFeatures/barbarian/zealot/zealousPresence.js';
 export {rageOfTheGods, rageOfTheGodsEffect} from './macros/2024/classFeatures/barbarian/zealot/rageOfTheGods.js';
+//Bard
+export {bardicInspiration, bardicInspirationEffect} from './macros/2024/classFeatures/bard/bardicInspiration.js';
+export {jackOfAllTrades} from './macros/2024/classFeatures/bard/jackOfAllTrades.js';
+export {fontOfInspiration} from './macros/2024/classFeatures/bard/fontOfInspiration.js';

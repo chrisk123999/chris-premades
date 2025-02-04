@@ -91,8 +91,6 @@ async function applyDamage({trigger: {entity: effect}, ditem}) {
     await genericUtils.remove(effect);
 }
 async function checkBonus({trigger: {roll, entity: effect}}) {
-    let d20Roll = roll.dice.find(i => i.faces == 20).results.find(i => i.active).result;
-    if (d20Roll === 1) return;
     let chrisFlags = effect.flags['chris-premades'];
     let potentialFormula = chrisFlags.moteOfPotential ? ('2' + chrisFlags.bardicInspiration.formula + 'kh') : ('1' + chrisFlags.bardicInspiration.formula);
     let detailsText = effect.name + ' (' + potentialFormula + ')';
@@ -102,8 +100,6 @@ async function checkBonus({trigger: {roll, entity: effect}}) {
     return await rollUtils.addToRoll(roll, potentialFormula);
 }
 async function saveBonus({trigger: {saveId, roll, actor, entity: effect}}) {
-    let d20Roll = roll.dice.find(i => i.faces == 20).results.find(i => i.active).result;
-    if (d20Roll === 1) return;
     let oldTotal = roll.total;
     let chrisFlags = effect.flags['chris-premades'];
     let potentialFormula = '1' + chrisFlags.bardicInspiration.formula;

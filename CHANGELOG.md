@@ -1,3 +1,15 @@
+# 1.1.30 Release:
+## New Modern Content:
+- Bardic Inspiration
+- Jack of All Trades
+- Font of Inspiration
+## Bug Fixes:
+- Breath of the Dragon (Legacy)
+- Rage (Modern)
+- Effect Medkit Dev Tools
+## API Updates:
+- Added the "Create Item" event. Which can be used to trigger a macro when an item is first added to an actor. See the "Font of Inspiration" item as an example.
+
 # 1.1.29 Release:
 ## New Modern Content:
 - Rage of the Gods

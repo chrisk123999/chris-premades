@@ -560,6 +560,17 @@ export class ItemMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
                 }
             },
             {
+                id: 'createItem',
+                label: 'CHRISPREMADES.Medkit.Tabs.DevTools.CreateItem',
+                value: JSON?.stringify(this.flags?.macros?.createItem),
+                placeholder: '[&quot;macroNameOne&quot;, &quot;macroNameTwo&quot;]',
+                isText: true,
+                flag: {
+                    key: 'macros.createItem',
+                    value: 'array'
+                }
+            },
+            {
                 id: 'equipment',
                 label: 'CHRISPREMADES.Medkit.Tabs.DevTools.Equipment',
                 value: this.flags?.equipment?.identifier,

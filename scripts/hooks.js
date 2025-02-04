@@ -24,6 +24,7 @@ import {actions} from './extensions/actions.js';
 import {item} from './applications/item.js';
 import {activities} from './extensions/activities.js';
 import {ItemMedkit} from './applications/medkit-item.js';
+import {itemEvent} from './events/createItem.js';
 export function registerHooks() {
     Hooks.on('createSetting', genericUtils.createUpdateSetting);
     Hooks.on('updateSetting', genericUtils.createUpdateSetting);
@@ -94,6 +95,7 @@ export function registerHooks() {
         Hooks.on('createToken', auras.createToken);
         Hooks.on('deleteToken', auras.deleteToken);
         Hooks.on('canvasReady', auras.canvasReady);
+        Hooks.on('createItem', itemEvent.created);
         Hooks.on('getSceneConfigHeaderButtons', createHeaderButton);
         Hooks.on('getCompendiumHeaderButtons', createHeaderButton);
         auras.canvasReady(canvas);

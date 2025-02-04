@@ -107,10 +107,15 @@ export class EffectMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
             macros: {
                 effect: JSON?.stringify(effect.flags['chris-premades']?.macros?.effect) ?? '',
                 aura: JSON?.stringify(effect.flags['chris-premades']?.macros?.aura) ?? '',
-                actor: JSON?.stringify(effect.flags['chris-premades']?.macros?.midi?.actor) ?? '',
-                combat: JSON?.stringify(effect.flags['chris-premades']?.macros?.midi?.combat) ?? '',
-                movement: JSON?.stringify(effect.flags['chris-premades']?.macros?.midi?.movement) ?? '',
-                rest: JSON?.stringify(effect.flags['chris-premades']?.macros?.midi?.rest) ?? ''
+                midi: {
+                    actor: JSON?.stringify(effect.flags['chris-premades']?.macros?.midi?.actor) ?? ''
+                },
+                combat: JSON?.stringify(effect.flags['chris-premades']?.macros?.combat) ?? '',
+                movement: JSON?.stringify(effect.flags['chris-premades']?.macros?.movement) ?? '',
+                rest: JSON?.stringify(effect.flags['chris-premades']?.macros?.rest) ?? '',
+                save: JSON?.stringify(effect.flags['chris-premades']?.macros?.save) ?? '',
+                check: JSON?.stringify(effect.flags['chris-premades']?.macros?.check) ?? '',
+                skill: JSON?.stringify(effect.flags['chris-premades']?.macros?.skill) ?? '',
             },
             isDev: game.settings.get('chris-premades', 'devTools'),
             identifier: effect.flags['chris-premades']?.info?.identifier ?? '',
@@ -308,10 +313,13 @@ export class EffectMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
         if (this.context.rules) genericUtils.setProperty(flagUpdates, 'rules', this.context.rules);
         if (this.context.macros.effect?.length) genericUtils.setProperty(flagUpdates, 'macros.effect', JSON.parse(this.context.macros.effect.replace(/'/g, '"')));
         if (this.context.macros.aura?.length) genericUtils.setProperty(flagUpdates, 'macros.aura', JSON.parse(this.context.macros.aura.replace(/'/g, '"')));
-        if (this.context.macros.actor?.length) genericUtils.setProperty(flagUpdates, 'macros.midi.actor', JSON.parse(this.context.macros.actor.replace(/'/g, '"')));
-        if (this.context.macros.combat?.length) genericUtils.setProperty(flagUpdates, 'macros.midi.combat', JSON.parse(this.context.macros.combat.replace(/'/g, '"')));
-        if (this.context.macros.movement?.length) genericUtils.setProperty(flagUpdates, 'macros.midi.movement', JSON.parse(this.context.macros.movement.replace(/'/g, '"')));
-        if (this.context.macros.rest?.length) genericUtils.setProperty(flagUpdates, 'macros.midi.rest', JSON.parse(this.context.macros.rest.replace(/'/g, '"')));
+        if (this.context.macros.midi?.actor?.length) genericUtils.setProperty(flagUpdates, 'macros.midi.actor', JSON.parse(this.context.macros.midi.actor.replace(/'/g, '"')));
+        if (this.context.macros.combat?.length) genericUtils.setProperty(flagUpdates, 'macros.combat', JSON.parse(this.context.macros.combat.replace(/'/g, '"')));
+        if (this.context.macros.movement?.length) genericUtils.setProperty(flagUpdates, 'macros.movement', JSON.parse(this.context.macros.movement.replace(/'/g, '"')));
+        if (this.context.macros.rest?.length) genericUtils.setProperty(flagUpdates, 'macros.rest', JSON.parse(this.context.macros.rest.replace(/'/g, '"')));
+        if (this.context.macros.save?.length) genericUtils.setProperty(flagUpdates, 'macros.save', JSON.parse(this.context.macros.save.replace(/'/g, '"')));
+        if (this.context.macros.check?.length) genericUtils.setProperty(flagUpdates, 'macros.check', JSON.parse(this.context.macros.check.replace(/'/g, '"')));
+        if (this.context.macros.skill?.length) genericUtils.setProperty(flagUpdates, 'macros.skill', JSON.parse(this.context.macros.skill.replace(/'/g, '"')));
         let effectUpdates = {flags: {'chris-premades': flagUpdates}};
         genericUtils.mergeObject(effectData, effectUpdates);
         let updates = {
@@ -446,6 +454,7 @@ export class EffectMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
                 break;
             }
             case 'devTools': {
+
                 if (event.target.id === 'identifier') {
                     this.context.identifier = event.target.value;
                 } else if (event.target.id === 'rules') {
@@ -458,7 +467,13 @@ export class EffectMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
                         ui.notifications.error('Error with ' + event.target.id + ' field, see console');
                         console.error(error);
                     }
-                    if (value) this.context.macros[event.target.id] = event.target.value;
+                    if (value) {
+                        if (event.target.id === 'actor') {
+                            this.context.macros.midi.actor = event.target.value;
+                        } else {
+                            this.context.macros[event.target.id] = event.target.value;
+                        }
+                    }
                 }
             }
         }

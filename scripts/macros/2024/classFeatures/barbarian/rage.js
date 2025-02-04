@@ -14,7 +14,7 @@ async function use({trigger, workflow}) {
     }
     let sourceEffect = workflow.item.effects.contents?.[0];
     if (!sourceEffect) return;
-    let effectData = sourceEffect.toObject();
+    let effectData = genericUtils.duplicate(sourceEffect.toObject());
     effectData.duration = itemUtils.convertDuration(workflow.activity);
     let continueRage = activityUtils.getActivityByIdentifier(workflow.item, 'rageContinue', {strict: true});
     if (!continueRage) return;

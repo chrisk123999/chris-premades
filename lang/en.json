@@ -502,6 +502,7 @@
                 "PlaneSelect": "Select all targets that are not from this plane."
             },
             "BardicInspiration": {
+                "DC": "What is the DC for this?",
                 "MoteAttack": "Mote of Potential Attack",
                 "MoteHeal": "Mote of Potential Heal"
             },
@@ -2042,6 +2043,7 @@
                     "AutomationInfo": "Configure Automation Info:",
                     "Check": "Check:",
                     "Combat": "Combat:",
+                    "CreateItem": "Create Item:",
                     "Death": "Death:",
                     "Equipment": "Equipment:",
                     "HasAnimation": "Has Animation:",
