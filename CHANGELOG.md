@@ -1,3 +1,7 @@
+# 1.0.61 Release:
+## Bug Fixes:
+- CPR Workflow
+
 # 1.0.60 Release:
 ## Bug Fixes:
 - Breath of the Dragon
