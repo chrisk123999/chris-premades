@@ -96,11 +96,6 @@ let otherModules = [
     'autoanimations',
     'monks-wall-enhancement'
 ];
-let coverModules = [
-    'levelsautocover',
-    'simbuls-cover-calculator',
-    'tokencover'
-];
 export async function run() {
     let output = '';
     function addLine(text) {

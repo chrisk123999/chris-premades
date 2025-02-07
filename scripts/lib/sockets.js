@@ -131,7 +131,6 @@ async function removeFavorites(actorUuid, entityUuids, type='item') {
     }
 }
 async function dialog(...options) {
-    console.log(options);
     let message = await ChatMessage.create({
         speaker: {alias: game.user.name},
         content: '<hr>' + genericUtils.translate('CHRISPREMADES.Dialog.RemoteMessage') + ' ' + game.user.name + '.',
