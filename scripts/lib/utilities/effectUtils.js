@@ -223,6 +223,22 @@ async function getOriginItem(effect) {
     origin = await fromUuid(origin.origin);
     if (origin instanceof Item) return origin;
 }
+function getConditions(effect) {
+    let conditions = new Set();
+    let validKeys = [
+        'macro.CE',
+        'macro.CUB',
+        'macro.StatusEffect',
+        'StatusEffect'
+    ];
+    effect.changes.forEach(element => {
+        if (validKeys.includes(element.key)) conditions.add(element.value.toLowerCase());
+    });
+    let effectConditions = effect.flags['chris-premades']?.conditions;
+    if (effectConditions) effectConditions.forEach(c => conditions.add(c.toLowerCase()));
+    conditions = conditions.union(effect.statuses ?? new Set());
+    return conditions;
+}
 export let effectUtils = {
     getCastData,
     getCastLevel,
@@ -246,5 +262,6 @@ export let effectUtils = {
     syntheticActiveEffect,
     getSidebarEffectData,
     createEffectFromSidebar,
-    getOriginItem
+    getOriginItem,
+    getConditions
 };

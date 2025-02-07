@@ -151,6 +151,7 @@
             },
             "CombatOnly": "Only Enable When in Combat",
             "CompendiumName": "{option} Compendium Name:",
+            "Conditions": "Conditions:",
             "CreatureTypes": "Creature Types:",
             "CriticalOnly": "Critical Only:",
             "DC": "DC:",
@@ -684,6 +685,10 @@
             },
             "ControlUndead": {
                 "Controlled": "Control Undead: Controlled"
+            },
+            "Countercharm": {
+                "AllyFail": "{name} has failed their save ({total})! Use {feature}?",
+                "Use": "You have failed your save ({total})! Use {feature}?"
             },
             "CreatePactWeapon": {
                 "CustomCompendium": "Custom Pact Weapon Compendium:",
@@ -2414,6 +2419,10 @@
             "manualRollsUsers": {
                 "Hint": "Configure which users use Manual Rolls.",
                 "Name": "Manual Rolls Users"
+            },
+            "migrationVersion": {
+                "Hint": "Migration Version",
+                "Name": "Migration Version"
             },
             "miscPremades": {
                 "1": "No Homebrew or Unearthed Arcana",

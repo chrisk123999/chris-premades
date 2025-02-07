@@ -1,3 +1,12 @@
+# 1.1.33 Release:
+## New Modern Content:
+- Countercharm
+## Bug Fixes:
+- Charm Person (Legacy)
+## API Bug Fixes:
+- Midi Events
+- Save Events
+
 # 1.1.32 Release:
 ## Bug Fixes:
 - Effect Medkit

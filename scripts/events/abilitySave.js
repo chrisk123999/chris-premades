@@ -178,7 +178,7 @@ async function rollSave(wrapped, config, dialog = {}, message = {}) {
         saveId = config.ability;
         event = config.event;
         if (config.midiOptions?.saveItemUuid) {
-            let activityUuid = game.messages.contents.at(-1)?.flags?.dnd5e?.activity?.uuid;
+            let activityUuid = game.messages.contents.toReversed().find(i => i.flags.dnd5e?.item?.uuid === config.midiOptions.saveItemUuid)?.flags.dnd5e.activity.uuid;
             if (activityUuid) genericUtils.setProperty(config, 'chris-premades.activityUuid', activityUuid);
         }
     } else {
@@ -241,15 +241,21 @@ async function rollSave(wrapped, config, dialog = {}, message = {}) {
         returnData.data.token.document.parent.tokens.filter(i => i.uuid !== returnData.data.token.document.uuid && i.actor).forEach(j => {
             sceneTriggers.push(...getSortedTriggers(j.actor, 'sceneBonus', saveId, options, returnData, config, dialog, message, this));
         });
-        sceneTriggers = sceneTriggers.sort((a, b) => a.priority - b.priority);
+        let sortedSceneTriggers = [];
+        let names = new Set();
+        sceneTriggers.forEach(i => {
+            if (names.has(i.name)) return;
+            sortedSceneTriggers.push(i);
+            names.add(i.name);
+        });
+        sortedSceneTriggers = sortedSceneTriggers.sort((a, b) => a.priority - b.priority);
         genericUtils.log('dev', 'Executing Save Macro Pass: sceneBonus');
-        for (let trigger of sceneTriggers) {
+        for (let trigger of sortedSceneTriggers) {
             trigger.roll = returnData;
             let bonusRoll = await executeMacro(trigger);
             if (bonusRoll) returnData = CONFIG.Dice.D20Roll.fromRoll(bonusRoll);
         }
     }
-    console.log(returnData);
     if (returnData.options) genericUtils.mergeObject(returnData.options, oldOptions);
     if (message.create !== false) {
         genericUtils.mergeObject(messageData, {flags: options.flags ?? {} });

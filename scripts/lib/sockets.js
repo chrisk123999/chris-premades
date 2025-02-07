@@ -1,6 +1,6 @@
-import {DialogApp} from '../applications/dialog.js';
+import {DialogApp, DialogManager} from '../applications/dialog.js';
 import {CPRMultipleRollResolver} from '../applications/rollResolverMultiple.js';
-import {genericUtils, itemUtils, workflowUtils} from '../utils.js';
+import {actorUtils, dialogUtils, genericUtils, itemUtils, workflowUtils} from '../utils.js';
 import {Summons} from './summons.js';
 import {Teleport} from './teleport.js';
 async function createEffect(entityUuid, effectData, {concentrationItemUuid, parentEntityUuid}) {
@@ -131,6 +131,7 @@ async function removeFavorites(actorUuid, entityUuids, type='item') {
     }
 }
 async function dialog(...options) {
+    console.log(options);
     let message = await ChatMessage.create({
         speaker: {alias: game.user.name},
         content: '<hr>' + genericUtils.translate('CHRISPREMADES.Dialog.RemoteMessage') + ' ' + game.user.name + '.',
@@ -217,6 +218,24 @@ async function syntheticItemDataRoll(itemData, actorUuid, targetUuids, {options 
     let workflow = await workflowUtils.syntheticItemRoll(item, targets, {options, config});
     return workflow.getMacroData({noWorkflowReference: true});
 }
+const dialogManager = new DialogManager;
+async function queuedDialog(dialogOptions, checkOptions) {
+    async function checkValid(checkOptions) {
+        if (!checkOptions.actorUuid || !checkOptions.reason) return false;
+        let actor = await fromUuid(checkOptions.actorUuid);
+        if (!actor) return false;
+        switch(checkOptions.reason) {
+            case 'reaction':
+                if (actorUtils.hasUsedReaction(actor)) return false;
+                break;
+            case 'bonusAction':
+                if (actorUtils.hasUsedBonusAction(actor)) return false;
+                break;
+        }
+        return await dialogUtils.confirm(...dialogOptions);
+    }
+    return await dialogManager.showDialog(checkValid, checkOptions);
+}
 export let sockets = {
     createEffect,
     createEffects,
@@ -244,7 +263,8 @@ export let sockets = {
     polymorph,
     remoteRoll,
     remoteDamageRolls,
-    syntheticItemDataRoll
+    syntheticItemDataRoll,
+    queuedDialog
 };
 export let socket;
 export function registerSockets() {

@@ -132,7 +132,7 @@
       }
     },
     "identifier": "charm-person",
-    "sourceClass": "cleric"
+    "sourceClass": ""
   },
   "name": "Charm Person",
   "flags": {
@@ -183,7 +183,7 @@
     "chris-premades": {
       "info": {
         "name": "Charm Person",
-        "version": "1.1.0",
+        "version": "1.1.32",
         "identifier": "charmPerson",
         "source": "chris-premades"
       },
@@ -203,7 +203,7 @@
       "duration": {
         "rounds": null,
         "startTime": null,
-        "seconds": 3600,
+        "seconds": null,
         "combat": null,
         "turns": null,
         "startRound": null,
@@ -223,12 +223,17 @@
           ],
           "selfTarget": false,
           "selfTargetAlways": false,
-          "dontApply": false
+          "dontApply": false,
+          "enableCondition": "",
+          "disableCondition": ""
         },
         "chris-premades": {
           "conditions": [
             "charmed"
           ]
+        },
+        "core": {
+          "overlay": false
         }
       },
       "img": "icons/magic/life/heart-shadow-red.webp",
@@ -248,8 +253,8 @@
         "systemId": "dnd5e",
         "systemVersion": "4.1.1",
         "createdTime": null,
-        "modifiedTime": null,
-        "lastModifiedBy": null
+        "modifiedTime": 1738820613978,
+        "lastModifiedBy": "I80azqIoQAHVxPwK"
       },
       "_key": "!items.effects!HYOlqkH6CutWw9nF.BN7ATIijJEwtWSm7"
     }

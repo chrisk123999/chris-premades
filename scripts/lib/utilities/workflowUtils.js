@@ -88,7 +88,7 @@ async function syntheticActivityRoll(activity, targets = [], {options = {}, conf
     config.midiOptions = options;
     return await completeActivityUse(activity, config);
 }
-async function syntheticItemRoll(item, targets, {options = {}, config = {}} = {}) {
+async function syntheticItemRoll(item, targets, {options = {}, config = {}, userId} = {}) {
     let defaultConfig = {
         consumeUsage: false,
         consumeSpellSlot: false
@@ -107,6 +107,7 @@ async function syntheticItemRoll(item, targets, {options = {}, config = {}} = {}
     };
     options = genericUtils.mergeObject(defaultOptions, options);
     config = genericUtils.mergeObject(defaultConfig, config);
+    if (userId) genericUtils.setProperty(options, 'asUser', userId);
     return await completeItemUse(item, config, options);
 }
 async function syntheticItemDataRoll(itemData, actor, targets, {options = {}, config = {}, killAnim = false} = {}) {

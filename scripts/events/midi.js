@@ -235,9 +235,16 @@ async function preambleComplete(workflow) {
     workflow.token?.document.parent.tokens.filter(i => i.uuid !== workflow.token?.document.uuid && i.actor).forEach(j => {
         sceneTriggers.push(...getSortedTriggers({token: j.object, actor: j.actor, sourceToken: workflow.token}, 'scenePreambleComplete'));
     });
-    sceneTriggers = sceneTriggers.sort((a, b) => a.priority - b.priority);
+    let sortedSceneTriggers = [];
+    let names = new Set();
+    sceneTriggers.forEach(i => {
+        if (names.has(i.name)) return;
+        sortedSceneTriggers.push(i);
+        names.add(i.name);
+    });
+    sortedSceneTriggers = sortedSceneTriggers.sort((a, b) => a.priority - b.priority);
     genericUtils.log('dev', 'Executing Midi Macro Pass: scenePreambleComplete');
-    for (let trigger of sceneTriggers) await executeMacro(trigger, workflow);
+    for (let trigger of sortedSceneTriggers) await executeMacro(trigger, workflow);
     if (genericUtils.getCPRSetting('conditionResistanceAndVulnerability')) {
         await conditionResistance.preambleComplete(workflow);
         await conditionVulnerability.preambleComplete(workflow);
@@ -251,9 +258,16 @@ async function attackRollComplete(workflow) {
     workflow.token?.document.parent.tokens.filter(i => i.uuid !== workflow.token?.document.uuid && i.actor).forEach(j => {
         sceneTriggers.push(...getSortedTriggers({token: j.object, actor: j.actor, sourceToken: workflow.token}, 'sceneAttackRollComplete'));
     });
-    sceneTriggers = sceneTriggers.sort((a, b) => a.priority - b.priority);
+    let sortedSceneTriggers = [];
+    let names = new Set();
+    sceneTriggers.forEach(i => {
+        if (names.has(i.name)) return;
+        sortedSceneTriggers.push(i);
+        names.add(i.name);
+    });
+    sortedSceneTriggers = sortedSceneTriggers.sort((a, b) => a.priority - b.priority);
     genericUtils.log('dev', 'Executing Midi Macro Pass: sceneAttackRollComplete');
-    for (let trigger of sceneTriggers) {
+    for (let trigger of sortedSceneTriggers) {
         await executeMacro(trigger, workflow);
         if (workflow.aborted) break;
     }
@@ -271,9 +285,16 @@ async function damageRollComplete(workflow) {
     workflow.token?.document.parent.tokens.filter(i => i.uuid !== workflow.token?.document.uuid && i.actor).forEach(j => {
         sceneTriggers.push(...getSortedTriggers({token: j.object, actor: j.actor, sourceToken: workflow.token}, 'sceneDamageRollComplete'));
     });
-    sceneTriggers = sceneTriggers.sort((a, b) => a.priority - b.priority);
+    let sortedSceneTriggers = [];
+    let names = new Set();
+    sceneTriggers.forEach(i => {
+        if (names.has(i.name)) return;
+        sortedSceneTriggers.push(i);
+        names.add(i.name);
+    });
+    sortedSceneTriggers = sortedSceneTriggers.sort((a, b) => a.priority - b.priority);
     genericUtils.log('dev', 'Executing Midi Macro Pass: sceneDamageRollComplete');
-    for (let trigger of sceneTriggers) await executeMacro(trigger, workflow);
+    for (let trigger of sortedSceneTriggers) await executeMacro(trigger, workflow);
     if (genericUtils.getCPRSetting('automatedAnimationSounds') && workflow.item) automatedAnimations.aaSound(workflow.item, 'damage');
     if (genericUtils.getCPRSetting('diceSoNice') && game.modules.get('dice-so-nice')?.active) diceSoNice.damageRollComplete(workflow);
     // Temp (maybe)
@@ -334,9 +355,16 @@ async function rollFinished(workflow) {
     workflow.token?.document.parent.tokens.filter(i => i.uuid !== workflow.token?.document.uuid && i.actor).forEach(j => {
         sceneTriggers.push(...getSortedTriggers({token: j.object, actor: j.actor, sourceToken: workflow.token}, 'sceneRollFinished'));
     });
-    sceneTriggers = sceneTriggers.sort((a, b) => a.priority - b.priority);
+    let sortedSceneTriggers = [];
+    let names = new Set();
+    sceneTriggers.forEach(i => {
+        if (names.has(i.name)) return;
+        sortedSceneTriggers.push(i);
+        names.add(i.name);
+    });
+    sortedSceneTriggers = sortedSceneTriggers.sort((a, b) => a.priority - b.priority);
     genericUtils.log('dev', 'Executing Midi Macro Pass: sceneRollFinished');
-    for (let trigger of sceneTriggers) await executeMacro(trigger, workflow);
+    for (let trigger of sortedSceneTriggers) await executeMacro(trigger, workflow);
     if (genericUtils.getCPRSetting('automatedAnimationSounds') && workflow.item) automatedAnimations.aaSound(workflow.item, 'done');
     if (genericUtils.getCPRSetting('weaponMastery')) await masteries.RollComplete(workflow);
     await effects.specialDuration(workflow);
@@ -347,9 +375,16 @@ async function postAttackRoll(workflow) {
     workflow.token?.document.parent.tokens.filter(i => i.uuid !== workflow.token?.document.uuid && i.actor).forEach(j => {
         sceneTriggers.push(...getSortedTriggers({token: j.object, actor: j.actor, sourceToken: workflow.token}, 'scenePostAttackRoll'));
     });
-    sceneTriggers = sceneTriggers.sort((a, b) => a.priority - b.priority);
+    let sortedSceneTriggers = [];
+    let names = new Set();
+    sceneTriggers.forEach(i => {
+        if (names.has(i.name)) return;
+        sortedSceneTriggers.push(i);
+        names.add(i.name);
+    });
+    sortedSceneTriggers = sortedSceneTriggers.sort((a, b) => a.priority - b.priority);
     genericUtils.log('dev', 'Executing Midi Macro Pass: scenePostAttackRoll');
-    for (let trigger of sceneTriggers) await executeMacro(trigger, workflow);
+    for (let trigger of sortedSceneTriggers) await executeMacro(trigger, workflow);
     await executeMacroPass(workflow, 'postAttackRoll');
     await executeTargetMacroPass(workflow, 'targetPostAttackRoll');
 }
@@ -361,7 +396,14 @@ async function preTargetDamageApplication(token, {workflow, ditem}) {
     token.document.parent.tokens.filter(i => i.uuid != token.document.uuid && i.actor).forEach(j => {
         sceneTriggers.push(...getSortedTriggers({token: j.object, actor: j.actor, sourceToken: workflow.token, targetToken: token}, 'sceneApplyDamage'));
     });
-    let triggers = [...targetTriggers, ...selfTriggers, ...sceneTriggers].sort((a, b) => a.priority - b.priority);
+    let sortedSceneTriggers = [];
+    let names = new Set();
+    sceneTriggers.forEach(i => {
+        if (names.has(i.name)) return;
+        sortedSceneTriggers.push(i);
+        names.add(i.name);
+    });
+    let triggers = [...targetTriggers, ...selfTriggers, ...sortedSceneTriggers].sort((a, b) => a.priority - b.priority);
     genericUtils.log('dev', 'Executing Midi Macro Pass: applyDamage, targetApplyDamage, sceneApplyDamage');
     for (let trigger of triggers) await executeMacro(trigger, workflow, ditem);
 }

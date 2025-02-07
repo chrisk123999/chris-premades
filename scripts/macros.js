@@ -80,3 +80,4 @@ export {rageOfTheGods, rageOfTheGodsEffect} from './macros/2024/classFeatures/ba
 export {bardicInspiration, bardicInspirationEffect} from './macros/2024/classFeatures/bard/bardicInspiration.js';
 export {jackOfAllTrades} from './macros/2024/classFeatures/bard/jackOfAllTrades.js';
 export {fontOfInspiration} from './macros/2024/classFeatures/bard/fontOfInspiration.js';
+export {countercharm} from './macros/2024/classFeatures/bard/countercharm.js';

@@ -1,4 +1,5 @@
 import {errors} from '../errors.js';
+import {effectUtils} from './effectUtils.js';
 import {genericUtils} from './genericUtils.js';
 function getActivityByIdentifier(item, identifier, {strict = false} = {}) {
     let activity = item.system.activities.find(i => getIdentifier(i) === identifier);
@@ -81,10 +82,19 @@ function duplicateActivity(activity) {
     newActivity.prepareFinalData();
     return newActivity;
 }
+function getConditions(activity) {
+    let conditions = new Set();
+    activity.effects.forEach(i => {
+        let effectConditions = effectUtils.getConditions(i.effect);
+        effectConditions.forEach(j => conditions.add(j));
+    });
+    return conditions;
+}
 export let activityUtils = {
     getActivityByIdentifier,
     getIdentifier,
     setIdentifier,
     setDamage,
-    duplicateActivity
+    duplicateActivity,
+    getConditions
 };

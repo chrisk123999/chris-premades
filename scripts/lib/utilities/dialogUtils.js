@@ -302,6 +302,15 @@ async function selectDamageType(damageTypes, title, context) {
     });
     return await buttonDialog(title, context, buttons);
 }
+async function queuedConfirmDialog(title, content, {actor, reason, userId} = {}) {
+    let selection;
+    if (userId !== game.user.id) {
+        selection = await socket.executeAsUser(sockets.queuedDialog.name, userId, [title, content], {actorUuid: actor.uuid, reason});
+    } else {
+        selection = await sockets.queuedDialog([title, content], {actorUuid: actor.uuid, reason});
+    }
+    return selection;
+}
 export let dialogUtils = {
     buttonDialog,
     numberDialog,
@@ -312,5 +321,6 @@ export let dialogUtils = {
     confirm,
     selectHitDie,
     selectSpellSlot,
-    selectDamageType
+    selectDamageType,
+    queuedConfirmDialog
 };
