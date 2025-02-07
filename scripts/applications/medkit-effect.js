@@ -77,26 +77,26 @@ export class EffectMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
                         {
                             label: 'CHRISPREMADES.Medkit.Effect.SpecialDuration.DamagedByAlly',
                             value: 'damagedByAlly',
-                            isSelected: effect.flags['chris-premades']?.specialDuration.includes('damagedByAlly')
+                            isSelected: effect.flags['chris-premades']?.specialDuration?.includes('damagedByAlly')
                         },
                         {
                             label: 'CHRISPREMADES.Medkit.Effect.SpecialDuration.DamagedByEnemy',
                             value: 'damagedByEnemy',
-                            isSelected: effect.flags['chris-premades']?.specialDuration.includes('damagedByEnemy')
+                            isSelected: effect.flags['chris-premades']?.specialDuration?.includes('damagedByEnemy')
                         },
                         {
                             label: 'CHRISPREMADES.Medkit.Effect.SpecialDuration.AttackedByAnotherCreature',
                             value: 'damagedByAnotherCreature',
-                            isSelected: effect.flags['chris-premades']?.specialDuration.includes('attackedByAnotherCreature')
+                            isSelected: effect.flags['chris-premades']?.specialDuration?.includes('attackedByAnotherCreature')
                         }
                     ].concat(CONFIG.statusEffects.map(i => ({
                         label: i.name,
                         value: i.id,
-                        isSelected: effect.flags['chris-premades']?.specialDuration.includes(i.id)
+                        isSelected: effect.flags['chris-premades']?.specialDuration?.includes(i.id)
                     }))).concat(Object.entries(CONFIG.DND5E.armorTypes).map(([value, label]) => ({
                         label,
                         value,
-                        isSelected: effect.flags['chris-premades']?.specialDuration.includes(value)
+                        isSelected: effect.flags['chris-premades']?.specialDuration?.includes(value)
                     })))
                 }
             },

@@ -1,3 +1,7 @@
+# 1.1.32 Release:
+## Bug Fixes:
+- Effect Medkit
+
 # 1.1.31 Release:
 ## Bug Fixes:
 - Form of Dread (Legacy)
