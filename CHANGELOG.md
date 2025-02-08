@@ -1,3 +1,13 @@
+# 1.1.34 Release:
+## New Modern Content:
+- Power Word Heal
+- Power Word Kill
+- Superior Inspiration
+- Words of Creation
+## Bug Fixes:
+- Countercharm
+- Compendium Medkit
+
 # 1.1.33 Release:
 ## New Modern Content:
 - Countercharm

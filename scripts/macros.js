@@ -43,6 +43,8 @@ export {charmPerson} from './macros/2024/spells/charmPerson.js';
 export {chillTouch} from './macros/2024/spells/chillTouch.js';
 export {chromaticOrb} from './macros/2024/spells/chromaticOrb.js';
 export {circleOfDeath} from './macros/2024/spells/circleOfDeath.js';
+export {powerWordHeal} from './macros/2024/spells/powerWordHeal.js';
+export {powerWordKill} from './macros/2024/spells/powerWordKill.js';
 //Class Features
 //Barbarian
 export {rage, rageRaging, rageUpkeep} from './macros/2024/classFeatures/barbarian/rage.js';
@@ -81,3 +83,5 @@ export {bardicInspiration, bardicInspirationEffect} from './macros/2024/classFea
 export {jackOfAllTrades} from './macros/2024/classFeatures/bard/jackOfAllTrades.js';
 export {fontOfInspiration} from './macros/2024/classFeatures/bard/fontOfInspiration.js';
 export {countercharm} from './macros/2024/classFeatures/bard/countercharm.js';
+export {superiorInspiration} from './macros/2024/classFeatures/bard/superiorInspiration.js';
+export {wordsOfCreation} from './macros/2024/classFeatures/bard/wordsOfCreation.js';

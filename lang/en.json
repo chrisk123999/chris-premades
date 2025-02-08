@@ -166,10 +166,12 @@
             "FailedSave": "Failed Save:",
             "Formula": "Formula:",
             "HideToken": "Hide Token:",
+            "HitPoints": "Hit Points:",
             "IgnoredCreatureTypes": "Ignored Creature Types:",
             "ImmuneCreatures": "Immune Creature Types:",
             "MaxLevel": "Max Level:",
             "Name": "Name:",
+            "Number": "Number:",
             "Percentage": "Percentage:",
             "PlayAnimation": "Play Animation:",
             "PlayTeleportAnimation": "Play Teleport Animation:",
@@ -1338,6 +1340,9 @@
                 "Ram": "Ram",
                 "RamProne": "Knock target prone?"
             },
+            "PowerWordHeal": {
+                "Prone": "Use your reaction to stands up from prone?"
+            },
             "PreserveLife": {
                 "Select": "Distribute HP (Amount to Distribute: {maxAmount}. Targets cannot be healed above half health.)"
             },
@@ -1845,6 +1850,9 @@
                 "Heal": "Wither And Bloom: Heal",
                 "SelectHitDie": "Select how many Hit Dice to roll.",
                 "SelectTarget": "Who can roll unspent Hit Dice?"
+            },
+            "WordsOfCreation": {
+                "Target": "Select an additional target:"
             },
             "WrapsOfDyamak": {
                 "CrimsonMist": "Crimson Mist",

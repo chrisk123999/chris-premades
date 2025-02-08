@@ -1,0 +1,202 @@
+{
+  "type": "spell",
+  "system": {
+    "activities": {
+      "2Tn5mrRIRO7KVgPa": {
+        "type": "heal",
+        "_id": "2Tn5mrRIRO7KVgPa",
+        "sort": 0,
+        "activation": {
+          "type": "action",
+          "value": null,
+          "override": false
+        },
+        "consumption": {
+          "scaling": {
+            "allowed": false
+          },
+          "spellSlot": true,
+          "targets": []
+        },
+        "description": {
+          "chatFlavor": ""
+        },
+        "duration": {
+          "units": "inst",
+          "concentration": false,
+          "override": false
+        },
+        "effects": [],
+        "range": {
+          "override": false
+        },
+        "target": {
+          "template": {
+            "contiguous": false,
+            "units": "ft"
+          },
+          "affects": {
+            "choice": false
+          },
+          "override": false,
+          "prompt": true
+        },
+        "uses": {
+          "spent": 0,
+          "recovery": [],
+          "max": ""
+        },
+        "healing": {
+          "number": null,
+          "denomination": 0,
+          "types": [
+            "healing"
+          ],
+          "custom": {
+            "enabled": false
+          },
+          "scaling": {
+            "number": 1,
+            "mode": ""
+          },
+          "bonus": "10000"
+        },
+        "useConditionText": "",
+        "effectConditionText": "",
+        "macroData": {
+          "name": "",
+          "command": ""
+        },
+        "ignoreTraits": {
+          "idi": false,
+          "idr": false,
+          "idv": false,
+          "ida": false
+        },
+        "midiProperties": {
+          "ignoreTraits": [],
+          "triggeredActivityId": "none",
+          "triggeredActivityConditionText": "",
+          "triggeredActivityTargets": "targets",
+          "triggeredActivityRollAs": "self",
+          "forceDialog": false,
+          "confirmTargets": "default",
+          "autoTargetType": "any",
+          "autoTargetAction": "default",
+          "automationOnly": false,
+          "otherActivityCompatible": false,
+          "identifier": ""
+        },
+        "name": ""
+      }
+    },
+    "uses": {
+      "spent": null,
+      "max": "",
+      "recovery": []
+    },
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "identifier": "power-word-heal",
+    "source": {
+      "book": "PHB 2024",
+      "page": "",
+      "license": "",
+      "custom": "",
+      "rules": "2024",
+      "revision": 1
+    },
+    "activation": {
+      "type": "action",
+      "value": 1,
+      "condition": ""
+    },
+    "duration": {
+      "value": "0",
+      "units": "inst"
+    },
+    "level": 9,
+    "materials": {
+      "value": "",
+      "consumed": false,
+      "cost": 0,
+      "supply": 0
+    },
+    "preparation": {
+      "mode": "prepared",
+      "prepared": false
+    },
+    "properties": [
+      "vocal"
+    ],
+    "range": {
+      "value": "60",
+      "units": "ft"
+    },
+    "school": "enc",
+    "target": {
+      "affects": {
+        "count": "1",
+        "type": "creature",
+        "choice": false,
+        "special": ""
+      },
+      "template": {
+        "count": "",
+        "contiguous": false,
+        "type": "",
+        "size": "",
+        "width": "",
+        "height": "",
+        "units": "ft"
+      }
+    },
+    "sourceClass": ""
+  },
+  "effects": [],
+  "name": "Power Word Heal",
+  "flags": {
+    "midi-qol": {
+      "removeAttackDamageButtons": "default"
+    },
+    "midiProperties": {
+      "confirmTargets": "default",
+      "magicdam": true,
+      "magiceffect": true
+    },
+    "dnd5e": {
+      "riders": {
+        "activity": [],
+        "effect": []
+      },
+      "last": {
+        "2Tn5mrRIRO7KVgPa": {
+          "damageType": {
+            "0": "healing"
+          }
+        }
+      }
+    },
+    "chris-premades": {
+      "info": {
+        "identifier": "powerWordHeal",
+        "source": "chris-premades",
+        "rules": "modern",
+        "version": "1.1.34"
+      },
+      "macros": {
+        "midi": {
+          "item": [
+            "powerWordHeal"
+          ]
+        }
+      }
+    }
+  },
+  "img": "icons/magic/water/heart-ice-freeze.webp",
+  "folder": null,
+  "_id": "iJdwzVKzGMbOuXmD",
+  "_key": "!items!iJdwzVKzGMbOuXmD"
+}

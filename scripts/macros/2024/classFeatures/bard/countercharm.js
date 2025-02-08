@@ -1,4 +1,4 @@
-import {activityUtils, actorUtils, dialogUtils, genericUtils, itemUtils, socketUtils, tokenUtils, workflowUtils} from '../../../../utils.js';
+import {activityUtils, actorUtils, constants, dialogUtils, genericUtils, itemUtils, socketUtils, tokenUtils, workflowUtils} from '../../../../utils.js';
 async function selfSave({trigger: {entity: item, config, actor, roll}}) {
     if (config['chris-premades']?.countercharm) return;
     if (actorUtils.hasUsedReaction(actor)) return;
@@ -83,6 +83,7 @@ export let countercharm = {
             label: 'CHRISPREMADES.Config.Conditions',
             type: 'select-many',
             default: ['charmed', 'frightened'],
+            options: constants.statusOptions,
             category: 'homebrew',
             homebrew: true
         }
