@@ -148,9 +148,9 @@ async function sceneMedkit(scene) {
 }
 async function compendiumMedkit(pack) {
     if (pack.locked) {
-        await compendium.unlocked(pack);
-    } else {
         await compendium.locked(pack);
+    } else {
+        await compendium.unlocked(pack);
     }
 }
 export async function renderCompendium(app, html, data) {
