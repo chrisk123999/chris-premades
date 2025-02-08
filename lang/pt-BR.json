@@ -1955,7 +1955,7 @@
                 "OverTime": {
                     "Add": "Adicionar Overtime",
                     "Labels": {
-                        "Ability": "Atributo Baseado da CD",
+                        "Ability": "CD Baseada em Atributo",
                         "ActionSave": "Salvaguarda é uma Ação:",
                         "ActionSaveDialog": "Diálogo",
                         "ActionSaveDisabled": "Desabilitado",
@@ -1982,7 +1982,7 @@
                         "RollType": "Tipo de Rolagem:",
                         "SaveAbility": "Atributo ou Perícia para rolar:",
                         "SaveDC": "Classe de Dificuldade da rolagem:",
-                        "SaveDCAbility": "Atributo Baseado da CD:",
+                        "SaveDCAbility": "CD Baseada em Atributo:",
                         "SaveDCNumber": "CD Fixa:",
                         "SaveDamage": "Quantidade de Dano em Sucesso:",
                         "SaveMagic": "Salvaguarda Mágica:",
