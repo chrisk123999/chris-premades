@@ -1,3 +1,7 @@
+# 1.1.35 Release:
+## New Modern Content:
+- Unarmed Strike
+
 # 1.1.34 Release:
 ## New Modern Content:
 - Power Word Heal

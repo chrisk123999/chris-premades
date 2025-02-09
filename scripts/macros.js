@@ -45,6 +45,8 @@ export {chromaticOrb} from './macros/2024/spells/chromaticOrb.js';
 export {circleOfDeath} from './macros/2024/spells/circleOfDeath.js';
 export {powerWordHeal} from './macros/2024/spells/powerWordHeal.js';
 export {powerWordKill} from './macros/2024/spells/powerWordKill.js';
+//Items
+export {unarmedStrike} from './macros/2024/items/misc/unarmedStrike.js';
 //Class Features
 //Barbarian
 export {rage, rageRaging, rageUpkeep} from './macros/2024/classFeatures/barbarian/rage.js';

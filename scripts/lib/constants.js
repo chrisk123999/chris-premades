@@ -1,5 +1,4 @@
 import {teleportEffects} from '../macros/animations/teleportEffects.js';
-
 let packs = {
     spellFeatures: 'chris-premades.CPRSpellFeatures',
     spells: 'chris-premades.CPRSpells',
@@ -40,7 +39,8 @@ let legacyPacks = {
 };
 let modernPacks = {
     spells: 'chris-premades.CPRSpells2024',
-    classFeatures: 'chris-premades.CPRClassFeatures2024'
+    classFeatures: 'chris-premades.CPRClassFeatures2024',
+    items: 'chris-premades.CPRItems2024'
 };
 function setUseLocalCompendium(value) {
     if (value) {
@@ -68,6 +68,7 @@ function setUseLocalCompendium(value) {
         packs.thirdPartyFeats = 'world.cpr-3rd-party-feats';
         modernPacks.spells = 'world.cpr-spells-2024';
         modernPacks.classFeatures = 'world.cpr-class-features-2024';
+        modernPacks.items = 'world.cpr-items-2024';
     } else {
         packs.spellFeatures = 'chris-premades.CPRSpellFeatures';
         featurePacks.spellFeatures = 'chris-premades.CPRSpellFeatures';
@@ -93,6 +94,7 @@ function setUseLocalCompendium(value) {
         packs.thirdPartyFeats = 'chris-premades.CPRThirdPartyFeats';
         modernPacks.spells = 'chris-premades.CPRSpells2024';
         modernPacks.classFeatures = 'chris-premades.CPRClassFeatures2024';
+        modernPacks.items = 'chris-premades.CPRItems2024';
     }
 }
 const attacks = [

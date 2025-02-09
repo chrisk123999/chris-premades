@@ -2728,6 +2728,10 @@
             "EndOfTurn": "End of Turn",
             "StartOfTurn": "Start of Turn"
         },
+        "UnarmedStrike": {
+            "GrappleContest": "How do you contest the grapple?",
+            "ShoveContest": "How do you contest the shove?"
+        },
         "Units": {
             "Feet": "Feet",
             "Miles": "Miles",
