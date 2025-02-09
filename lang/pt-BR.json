@@ -2082,7 +2082,7 @@
                             "Tooltip": "Adiciona Características Genéricas Configuráveis de Monstros"
                         }
                     },
-                    "Tooltip": "Add and Configure Generic Features for this Item"
+                    "Tooltip": "Adicionar e Configurar Característica Genérica para este Item"
                 },
                 "Info": {
                     "Label": "Info",
@@ -2727,6 +2727,10 @@
         "Turns": {
             "EndOfTurn": "Fim do Turno",
             "StartOfTurn": "Início do Turno"
+        },
+        "UnarmedStrike": {
+            "GrappleContest": "Como você resiste ao agarrão?",
+            "ShoveContest": "Como você resiste ao empurrão?"
         },
         "Units": {
             "Feet": "Pés",
