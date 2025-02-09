@@ -41,7 +41,7 @@ async function use({workflow}) {
     let classLevels = workflow.actor.classes.cleric?.system?.levels ?? 0;
     let target = workflow.targets.first();
     if (classLevels >= 5) {
-        let maxCR = workflow.actor.system.scale.cleric?.['destroy-undead'];
+        let maxCR = workflow.actor.system.scale.cleric?.['destroy-undead']?.value;
         if (!maxCR) maxCR = Math.clamp(Math.floor((classLevels - 5) / 3), 0.5, 4);
         let CR = actorUtils.getLevelOrCR(target.actor);
         if (CR <= maxCR) {

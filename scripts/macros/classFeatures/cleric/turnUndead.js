@@ -70,7 +70,7 @@ async function use({workflow}) {
     let classIdentifier = itemUtils.getConfig(workflow.item, 'classIdentifier') ?? 'cleric';
     let classLevels = workflow.actor.classes[classIdentifier]?.system?.levels;
     if (!classLevels || classLevels < 5) return;
-    let destroyLevel = workflow.actor.system.scale[classIdentifier]?.['destroy-undead'];
+    let destroyLevel = workflow.actor.system.scale[classIdentifier]?.['destroy-undead']?.value;
     if (!destroyLevel) destroyLevel = Math.clamp(Math.floor((classLevels - 5) / 3), 0.5, 4);
     let destroyTokens = [];
     let playAnimation = itemUtils.getConfig(workflow.item, 'playAnimation') && animationUtils.jb2aCheck();

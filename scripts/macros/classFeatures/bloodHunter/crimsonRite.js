@@ -1,7 +1,7 @@
 import {dialogUtils, effectUtils, genericUtils, itemUtils, workflowUtils} from '../../../utils.js';
 
 async function use({workflow}) {
-    let damageDice = workflow.actor.system.scale?.['blood-hunter']?.['crimson-rite'];
+    let damageDice = workflow.actor.system.scale?.['blood-hunter']?.['crimson-rite']?.formula;
     if (!damageDice) {
         genericUtils.notify(genericUtils.format('CHRISPREMADES.Generic.MissingScale', {scaleName: 'crimson-rite'}), 'warn');
         workflow.aborted = true;

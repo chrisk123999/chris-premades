@@ -15,7 +15,7 @@ async function late({trigger: {entity: item, token}, workflow}) {
     await workflowUtils.completeItemUse(item, {}, {configureDialog: false});
     let amplify = await dialogUtils.confirm(item.name, 'CHRISPREMADES.Macros.BloodCurses.Amplify', {userId});
     if (amplify) {
-        let damageDice = token.actor.system.scale?.['blood-hunter']?.['crimson-rite'];
+        let damageDice = token.actor.system.scale?.['blood-hunter']?.['crimson-rite']?.formula;
         if (!damageDice) {
             genericUtils.notify(genericUtils.format('CHRISPREMADES.Generic.MissingScale', {scaleName: 'crimson-rite'}), 'warn');
             return;

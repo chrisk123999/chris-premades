@@ -6,7 +6,7 @@ async function damageDawn({workflow}) {
     let enchant = Array.from(workflow.item.allApplicableEffects()).find(i => genericUtils.getIdentifier(i) === 'crimsonRite');
     if (!enchant) return;
     if (enchant.flags['chris-premades']?.crimsonRite?.chosenRite !== 'riteOfTheDawn') return;
-    let damageDice = workflow.actor.system.scale?.['blood-hunter']?.['crimson-rite'];
+    let damageDice = workflow.actor.system.scale?.['blood-hunter']?.['crimson-rite']?.formula;
     if (!damageDice) return;
     await workflowUtils.bonusDamage(workflow, damageDice + '[radiant]', {damageType: 'radiant'});
 }

@@ -2189,7 +2189,7 @@
             },
             "SelectCompendium": "Select a compendium:",
             "activityCSSTweak": {
-                "Hint": "When enabled, activities will have all their information one one tab. Reload required after disabling.",
+                "Hint": "When enabled, activities will have all their information one tab. Reload required after disabling.",
                 "Name": "Activities CSS Tweak"
             },
             "addActions": {

@@ -1,3 +1,10 @@
+# 1.1.36 Release:
+## Bug Fixes:
+- Crimson Rite
+- Blood Curses
+- Turn Undead
+- Arcane Abjuration
+
 # 1.1.35 Release:
 ## New Modern Content:
 - Unarmed Strike
