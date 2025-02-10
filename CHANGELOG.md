@@ -9,6 +9,7 @@
 - Turn Undead (Legacy)
 - Arcane Abjuration (Legacy)
 - Insignia of Claws (Legacy)
+- Bardic Inspiration (Modern)
 ## API Update Notes:
 - Added a "number" type config option to the medkit.
 
