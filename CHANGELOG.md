@@ -1,3 +1,8 @@
+# 1.1.37 Release:
+## Bug Fixes:
+- DSN Compatibility
+- Bardic Inspiration
+
 # 1.1.36 Release:
 ## New Modern Content:
 - Dazzling Footwork

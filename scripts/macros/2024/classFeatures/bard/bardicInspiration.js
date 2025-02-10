@@ -16,7 +16,7 @@ async function attack({trigger: {entity: effect}, workflow}) {
     if (workflow.targets.first().actor.system.attributes.ac.value <= workflow.attackTotal) return;
     let formula = effect.flags['chris-premades']?.bardicInspiration?.formula;
     if (!formula) return;
-    let selection = await dialogUtils.confirm(effect.name, genericUtils.format('CHRISPREMADES.Dialog.UseAttack', {itemName: effect.name + ' (' + formula + ')', rollTotal: workflow.attackTotal}));
+    let selection = await dialogUtils.confirm(effect.name, genericUtils.format('CHRISPREMADES.Dialog.UseAttack', {itemName: effect.name + ' (' + formula + ')', attackTotal: workflow.attackTotal}));
     if (!selection) return;
     await genericUtils.remove(effect);
     await workflowUtils.bonusAttack(workflow, formula);
