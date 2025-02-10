@@ -189,6 +189,15 @@ async function updateAll(actor) {
 function getEquivalentSpellSlotName(actor, level) {
     return Object.entries(actor.system.spells)?.find(i => i[1].level == level)?.[0];
 }
+function getEquippedArmor(actor, types = ['heavy', 'medium', 'light']) {
+    return actor.items.find(i => types.includes(i.system.type?.value) && i.system.equipped);
+}
+function getEquippedShield(actor) {
+    return actor.items.find(i => i.system.type?.value === 'shield' && i.system.equipped);
+}
+function getAllEquippedArmor(actor) {
+    return actor.items.find(i => Object.keys(CONFIG.DND5E.armorTypes).includes(i.system.type?.value) && i.system.equipped);
+}
 export let actorUtils = {
     getEffects,
     addFavorites,
@@ -214,5 +223,8 @@ export let actorUtils = {
     doConcentrationCheck,
     polymorph,
     updateAll,
-    getEquivalentSpellSlotName
+    getEquivalentSpellSlotName,
+    getEquippedArmor,
+    getEquippedShield,
+    getAllEquippedArmor
 };

@@ -182,6 +182,9 @@ function getHiddenActivities(item) {
 function getActivity(item, type) {
     return item.system.activities.getByType(type)?.[0];
 }
+function getEffectByIdentifier(item, identifier) {
+    return item.effects.find(i => genericUtils.getIdentifier(i) === identifier);
+}
 export let itemUtils = {
     getSaveDC,
     createItems,
@@ -207,5 +210,6 @@ export let itemUtils = {
     itemUpdate,
     setHiddenActivities,
     getHiddenActivities,
-    getActivity
+    getActivity,
+    getEffectByIdentifier
 };

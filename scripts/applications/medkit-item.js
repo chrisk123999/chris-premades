@@ -251,6 +251,10 @@ export class ItemMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
                     configOption.type = config?.fileType ?? 'any';
                     break;
                 }
+                case 'number': {
+                    configOption.isNumber = true;
+                    break;
+                }
                 case 'text': {
                     configOption.isText = true;
                     break;
@@ -887,7 +891,12 @@ export class ItemMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
                 }
                 case 'value':
                 default:
-                    genericUtils.setProperty(this.flags, option.flag.key, option.value);
+                    if (option?.isNumber) {
+                        let value = Number(option.value);
+                        if (!isNaN(value)) genericUtils.setProperty(this.flags, option.flag.key, value);
+                    } else {
+                        genericUtils.setProperty(this.flags, option.flag.key, option.value);
+                    }
             }
         }
         /* Special casing for selecting an automation */

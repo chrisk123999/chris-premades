@@ -1,9 +1,16 @@
 # 1.1.36 Release:
+## New Modern Content:
+- Dazzling Footwork
+- Inspiring Movement
+- Tandem Footwork
 ## Bug Fixes:
-- Crimson Rite
-- Blood Curses
-- Turn Undead
-- Arcane Abjuration
+- Crimson Rite (Legacy)
+- Blood Curses (Legacy)
+- Turn Undead (Legacy)
+- Arcane Abjuration (Legacy)
+- Insignia of Claws (Legacy)
+## API Update Notes:
+- Added a "number" type config option to the medkit.
 
 # 1.1.35 Release:
 ## New Modern Content:

@@ -1,8 +1,7 @@
 import {itemUtils, workflowUtils} from '../../../utils.js';
 async function damage({trigger: {entity: item}, workflow, ditem}) {
     if (!ditem.isHit) return;
-    let maxHP = Number(itemUtils.getConfig(item, 'hp'));
-    if (isNaN(maxHP)) maxHP = 100;
+    let maxHP = itemUtils.getConfig(item, 'hp');
     if (ditem.oldHP > maxHP) return;
     workflowUtils.setDamageItemDamage(ditem, 10000);
     ditem.newHP = 0;
@@ -24,7 +23,7 @@ export let powerWordKill = {
         {
             value: 'hp',
             label: 'CHRISPREMADES.Config.HitPoints',
-            type: 'text',
+            type: 'number',
             default: 100,
             category: 'homebrew',
             homebrew: true

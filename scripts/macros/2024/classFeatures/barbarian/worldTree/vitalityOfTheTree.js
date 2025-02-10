@@ -29,7 +29,7 @@ export let vitalityOfTheTree = {
         {
             value: 'range',
             label: 'CHRISPREMADES.Config.Range',
-            type: 'text',
+            type: 'number',
             default: 10,
             homebrew: true,
             category: 'homebrew'

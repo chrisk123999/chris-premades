@@ -1,5 +1,4 @@
 import {compendiumUtils, constants, genericUtils, itemUtils} from '../utils.js';
-import * as macros from '../macros.js';
 import {custom} from './custom.js';
 import {bg3} from '../macros/homebrew/bg3WeaponActions.js';
 import {effects} from '../extensions/effects.js';
@@ -11,7 +10,7 @@ async function addOrUpdate(item, updates, options, id) {
     if ((previouslyEquipped != currentlyEquipped) && item.type === 'weapon' && genericUtils.getCPRSetting('bg3WeaponActionsEnabled')) await bg3.changeItem(item, currentlyEquipped);
     let identifier = item.flags['chris-premades']?.equipment?.identifier;
     if (!identifier) return;
-    let equipmentData = custom.getCustomMacroList().find(i => i.identifier === identifier)?.equipment ?? macros[identifier]?.equipment;
+    let equipmentData = custom.getMacro(identifier, genericUtils.getRules(item))?.equipment;
     if (!equipmentData) return;
     let currentlyAttuned = updates.system?.attuned ?? item.system.attuned;
     let previouslyAttuned = item.system?.attuned;

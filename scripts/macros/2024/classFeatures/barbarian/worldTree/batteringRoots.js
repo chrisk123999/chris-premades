@@ -3,8 +3,7 @@ import {pushMastery, toppleMastery} from '../../../../mechanics/masteries.js';
 async function turnStart({trigger: {entity: item}}) {
     let weaponProperties = itemUtils.getConfig(item, 'weaponProperties');
     if (!weaponProperties.length) return;
-    let range = Number(itemUtils.getConfig(item, 'range'));
-    if (isNaN(range)) range = 10;
+    let range = itemUtils.getConfig(item, 'range');
     let validWeapons = item.actor.items.filter(i => i.type === 'weapon' && i.system.properties?.some(j => weaponProperties.includes(j)));
     let effectData = {
         name: item.name,
@@ -77,7 +76,7 @@ export let batteringRoots = {
         {
             value: 'range',
             label: 'CHRISPREMADES.Config.Range',
-            type: 'text',
+            type: 'number',
             default: 10,
             category: 'homebrew',
             homebrew: true

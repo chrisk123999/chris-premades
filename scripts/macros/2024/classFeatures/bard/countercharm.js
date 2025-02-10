@@ -20,7 +20,6 @@ async function selfSave({trigger: {entity: item, config, actor, roll}}) {
     await workflowUtils.syntheticItemRoll(item, [token]);
     genericUtils.setProperty(config, 'chris-premades.countercharm', true);
     genericUtils.setProperty(config, 'midiOptions.advantage', true);
-    genericUtils.setProperty(config, 'midiOptions.disadvantage', false); //Confirm if this is right?
     let returnRoll = (await actor.rollSavingThrow(config, undefined, {create: false}))?.[0];
     return returnRoll;
 }
@@ -56,7 +55,6 @@ async function save({trigger: {config, sourceActor, roll}}) {
         await workflowUtils.syntheticItemRoll(feature, [token], {userId});
         genericUtils.setProperty(config, 'chris-premades.countercharm', true);
         genericUtils.setProperty(config, 'midiOptions.advantage', true);
-        genericUtils.setProperty(config, 'midiOptions.disadvantage', false); //Confirm if this is right?
         returnRoll = (await sourceActor.rollSavingThrow(config, undefined, {create: false}))?.[0];
     }
     return returnRoll;

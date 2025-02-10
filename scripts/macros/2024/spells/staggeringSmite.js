@@ -29,7 +29,7 @@ export let staggeringSmite = {
         {
             value: 'baseDiceNumber',
             label: 'CHRISPREMADES.Config.BaseDiceNumber',
-            type: 'text',
+            type: 'number',
             default: 4,
             category: 'homebrew',
             homebrew: true

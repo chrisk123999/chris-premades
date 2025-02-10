@@ -40,7 +40,7 @@ export let banishingSmite = {
         {
             value: 'baseDiceNumber',
             label: 'CHRISPREMADES.Config.BaseDiceNumber',
-            type: 'text',
+            type: 'number',
             default: 5,
             category: 'homebrew',
             homebrew: true
@@ -48,7 +48,7 @@ export let banishingSmite = {
         {
             value: 'hp',
             label: 'CHRISPREMADES.Macros.BanishingSmite.Hp',
-            type: 'text',
+            type: 'number',
             default: 50,
             category: 'homebrew',
             homebrew: true

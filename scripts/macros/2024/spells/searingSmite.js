@@ -4,7 +4,7 @@ async function use({trigger, workflow}) {
     if (!workflow.targets.size) return;
     let damageType = itemUtils.getConfig(workflow.item, 'damageType');
     let diceSize = itemUtils.getConfig(workflow.item, 'diceSize');
-    let diceNumber = Number(itemUtils.getConfig(workflow.item, 'baseDiceNumber'));
+    let diceNumber = itemUtils.getConfig(workflow.item, 'baseDiceNumber');
     let formula = ((workflow.castData.castLevel - 1) + diceNumber) + diceSize;
     let effectData = {
         name: workflow.item.name,
@@ -60,7 +60,7 @@ export let searingSmite = {
         {
             value: 'baseDiceNumber',
             label: 'CHRISPREMADES.Config.BaseDiceNumber',
-            type: 'text',
+            type: 'number',
             default: 1,
             category: 'homebrew',
             homebrew: true

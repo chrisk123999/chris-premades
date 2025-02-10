@@ -1,4 +1,4 @@
-import {dialogUtils, effectUtils, genericUtils, itemUtils, rollUtils, socketUtils, workflowUtils} from '../../../../utils.js';
+import {activityUtils, actorUtils, dialogUtils, effectUtils, genericUtils, itemUtils, rollUtils, socketUtils, tokenUtils, workflowUtils} from '../../../../utils.js';
 async function saveCheckSkill({trigger: {config, roll, entity: effect}}) {
     let targetValue = config?.midiOptions?.targetValue;
     if (targetValue) {
@@ -33,6 +33,25 @@ async function use({trigger, workflow}) {
     effectData.duration = itemUtils.convertDuration(workflow.activity);
     genericUtils.setProperty(effectData, 'flags.chris-premades.bardicInspiration.formula', scale.formula);
     await Promise.all(workflow.targets.map(async token => await effectUtils.createEffect(token.actor, effectData)));
+    let dazzlingFootwork = itemUtils.getItemByIdentifier(workflow.actor, 'dazzlingFootwork');
+    if (dazzlingFootwork && workflow.token && !actorUtils.getEquippedArmor(workflow.actor) && !actorUtils.getEquippedShield(workflow.actor)) {
+        let unarmedStrike = itemUtils.getItemByIdentifier(workflow.actor, 'unarmedStrike');
+        if (unarmedStrike) {
+            let nearbyTargets = tokenUtils.findNearby(workflow.token, unarmedStrike.system.range.reach, 'enemy', {includeIncapacitated: true});
+            if (nearbyTargets.length) {
+                let selection = await dialogUtils.selectTargetDialog(dazzlingFootwork.name, 'CHRISPREMADES.Macros.DazzlingFootwork.AgileStrikes', nearbyTargets, {skipDeadAndUnconscious: false, buttons: 'yesNo'});
+                if (selection?.[0]) {
+                    let activity = activityUtils.getActivityByIdentifier(unarmedStrike, 'punch', {strict: true});
+                    if (activity) {
+                        let itemData = genericUtils.duplicate(unarmedStrike.toObject());
+                        itemData.system.activities[activity.id].activation.type = 'special';
+                        await workflowUtils.syntheticItemRoll(dazzlingFootwork, [workflow.token]);
+                        await workflowUtils.syntheticItemDataRoll(itemData, workflow.actor, [selection[0]]);
+                    }
+                }
+            }
+        }
+    }
 }
 export let bardicInspiration = {
     name: 'Bardic Inspiration',
@@ -67,39 +86,43 @@ export let bardicInspiration = {
     ],
     scales: [
         {
-            type: 'ScaleValue',
-            configuration: {
-                distance: {
-                    units: ''
-                },
-                identifier: 'bardic-inspiration',
-                type: 'dice',
-                scale: {
-                    1: {
-                        number: 1,
-                        faces: 6,
-                        modifiers: []
+            classIdentifier: 'classIdentifier',
+            scaleIdentifier: 'scaleIdentifier',
+            data: {
+                type: 'ScaleValue',
+                configuration: {
+                    distance: {
+                        units: ''
                     },
-                    5: {
-                        number: 1,
-                        faces: 8,
-                        modifiers: []
-                    },
-                    10: {
-                        number: 1,
-                        faces: 10,
-                        modifiers: []
-                    },
-                    15: {
-                        number: 1,
-                        faces: 12,
-                        modifiers: []
+                    identifier: 'bardic-inspiration',
+                    type: 'dice',
+                    scale: {
+                        1: {
+                            number: 1,
+                            faces: 6,
+                            modifiers: []
+                        },
+                        5: {
+                            number: 1,
+                            faces: 8,
+                            modifiers: []
+                        },
+                        10: {
+                            number: 1,
+                            faces: 10,
+                            modifiers: []
+                        },
+                        15: {
+                            number: 1,
+                            faces: 12,
+                            modifiers: []
+                        }
                     }
-                }
-            },
-            value: {},
-            title: 'Bardic Inspiration',
-            icon: null
+                },
+                value: {},
+                title: 'Bardic Inspiration',
+                icon: null
+            }
         }
     ]
 };

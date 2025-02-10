@@ -87,3 +87,7 @@ export {fontOfInspiration} from './macros/2024/classFeatures/bard/fontOfInspirat
 export {countercharm} from './macros/2024/classFeatures/bard/countercharm.js';
 export {superiorInspiration} from './macros/2024/classFeatures/bard/superiorInspiration.js';
 export {wordsOfCreation} from './macros/2024/classFeatures/bard/wordsOfCreation.js';
+//College of Dance
+export {dazzlingFootwork} from './macros/2024/classFeatures/bard/dance/dazzlingFootwork.js';
+export {inspiringMovement} from './macros/2024/classFeatures/bard/dance/inspiringMovement.js';
+export {tandemFootwork} from './macros/2024/classFeatures/bard/dance/tandemFootwork.js';

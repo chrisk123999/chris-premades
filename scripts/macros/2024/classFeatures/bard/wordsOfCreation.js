@@ -6,8 +6,7 @@ async function target({trigger: {entity: item}, workflow}) {
     if (!identifier) return;
     if (!validIdentifiers.includes(identifier)) return;
     let nearbyTargets = [];
-    let range = Number(itemUtils.getConfig(item, 'range'));
-    if (isNaN(range)) range = 10;
+    let range = itemUtils.getConfig(item, 'range');
     workflow.targets.forEach(token => {
         nearbyTargets.push(...tokenUtils.findNearby(token, range, 'ally', {includeIncapacitated: true}));
     });
@@ -42,7 +41,7 @@ export let wordsOfCreation = {
         {
             value: 'range',
             label: 'CHRISPREMADES.Config.Range',
-            type: 'text',
+            type: 'number',
             default: 10,
             category: 'homebrew',
             homebrew: true

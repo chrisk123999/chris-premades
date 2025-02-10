@@ -29,7 +29,7 @@ export let shiningSmite = {
         {
             value: 'baseDiceNumber',
             label: 'CHRISPREMADES.Config.BaseDiceNumber',
-            type: 'text',
+            type: 'number',
             default: 2,
             category: 'homebrew',
             homebrew: true

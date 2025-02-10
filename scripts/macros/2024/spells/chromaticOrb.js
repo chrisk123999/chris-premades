@@ -42,8 +42,7 @@ async function use({trigger, workflow}) {
         await reset(workflow.item); 
         return;
     }
-    let baseMaxJumps = Number(itemUtils.getConfig(workflow.item, 'baseMaxJumps'));
-    if (isNaN(baseMaxJumps)) baseMaxJumps = 1;
+    let baseMaxJumps = itemUtils.getConfig(workflow.item, 'baseMaxJumps');
     let castLevel = workflow.item.flags['chris-premades']?.chromaticOrb?.castLevel ?? workflow.castData.castLevel ?? 0;
     let bouncesLeft = workflow.item.flags['chris-premades']?.chromaticOrb?.bouncesLeft ?? (castLevel - 1 + baseMaxJumps);
     if (!bouncesLeft) {
@@ -52,8 +51,7 @@ async function use({trigger, workflow}) {
     }
     bouncesLeft--;
     let ignoredTargetUuids = workflow.item.flags['chris-premades']?.chromaticOrb?.ignoredTargetUuids ?? [];
-    let range = Number(itemUtils.getConfig(workflow.item, 'range'));
-    if (!isNaN(range)) range = 30;
+    let range = itemUtils.getConfig(workflow.item, 'range');
     let nearbyTargets = tokenUtils.findNearby(workflow.targets.first(), range, 'ally', {includeIncapacitated: true}).filter(i => !ignoredTargetUuids.includes(i.document.uuid));
     if (!nearbyTargets.length) {
         await reset(workflow.item); 
@@ -119,7 +117,7 @@ export let chromaticOrb = {
         {
             value: 'baseMaxJumps',
             label: 'CHRISPREMADES.Macros.ChromaticOrb.BaseMaxJumps',
-            type: 'text',
+            type: 'number',
             default: 1,
             homebrew: true,
             category: 'homebrew'
@@ -144,7 +142,7 @@ export let chromaticOrb = {
         {
             value: 'range',
             label: 'CHRISPREMADES.Config.Range',
-            type: 'text',
+            type: 'number',
             default: 30,
             homebrew: true,
             category: 'homebrew'

@@ -8,6 +8,7 @@ async function early({workflow}) {
     workflow.item = workflow.item.clone({'system.properties': Array.from(workflow.item.system.properties).concat('mgc'), 'system.magicalBonus': existingBonus + 1}, {keepId: true});
     workflow.item.prepareData();
     workflow.item.applyActiveEffects();
+    workflow.activity = workflow.item.system.activities.get(workflow.activity.id);
 }
 export let insigniaOfClaws = {
     name: 'Insignia of Claws',

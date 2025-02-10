@@ -58,7 +58,7 @@ export let blindingSmite = {
         {
             value: 'baseDiceNumber',
             label: 'CHRISPREMADES.Config.BaseDiceNumber',
-            type: 'text',
+            type: 'number',
             default: 3,
             category: 'homebrew',
             homebrew: true

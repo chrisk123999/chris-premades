@@ -8,6 +8,9 @@
                         {{#if isCheckbox}}
                             <label for="{{id}}">{{localize label option=i18nOption}}</label>
                             <input type="checkbox" id="{{id}}" name="{{name}}" {{#if value}}checked{{/if}} {{#if isDisabled}}disabled{{/if}} {{#if tooltip}}data-tooltip="{{tooltip}}"{{/if}}>
+                        {{else if isNumber}}
+                            <label for="{{id}}">{{localize label option=i18nOption}}</label>
+                            <input type="number" id="{{id}}" name="{{name}}" value="{{value}}" {{#if isDisabled}}disabled{{/if}} {{#if tooltip}}data-tooltip="{{tooltip}}"{{/if}}>
                         {{else if isText}}
                             <label for="{{id}}">{{localize label option=i18nOption}}</label>
                             <input type="text" id="{{id}}" name="{{name}}" value="{{value}}" {{#if isDisabled}}disabled{{/if}} {{#if tooltip}}data-tooltip="{{tooltip}}"{{/if}}>

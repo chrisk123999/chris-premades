@@ -10,8 +10,7 @@ async function use({trigger, workflow}) {
     if (!workflow.failedSaves.size) return;
     let animation = itemUtils.getConfig(workflow.item, 'animation');
     if (animationUtils.jb2aCheck() === 'free' && animation != 'none') animation = 'mistyStep'; 
-    let range = Number(itemUtils.getConfig(workflow.item, 'range'));
-    if (isNaN(range)) range = 5;
+    let range = itemUtils.getConfig(workflow.item, 'range');
     await Teleport.target(workflow.failedSaves.first(), workflow.token, {animation, range});
     if (workflow.token.document.disposition === workflow.failedSaves.first().document.disposition) return;
     let effect = workflow.item.effects.contents?.[0];
@@ -51,7 +50,7 @@ export let branchesOfTheTree = {
         {
             value: 'range',
             label: 'CHRISPREMADES.Config.Range',
-            type: 'text',
+            type: 'number',
             default: 5,
             category: 'homebrew',
             homebrew: true

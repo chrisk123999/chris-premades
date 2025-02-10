@@ -22,8 +22,7 @@ async function hit({trigger, workflow}) {
     let identifier = genericUtils.getIdentifier(selection);
     let damageType = itemUtils.getConfig(selection, 'damageType');
     let diceSize = itemUtils.getConfig(selection, 'diceSize');
-    let diceNumber = Number(itemUtils.getConfig(selection, 'baseDiceNumber'));
-    if (isNaN(diceNumber)) return;
+    let diceNumber = itemUtils.getConfig(selection, 'baseDiceNumber');
     if (identifier === 'divineSmite') {
         let creatureTypes = itemUtils.getConfig(selection, 'creatureTypes');
         if (creatureTypes.includes(actorUtils.typeOrRace(target.actor))) diceNumber += 1;
@@ -55,8 +54,7 @@ async function complete({trigger, workflow}) {
     if (workflow.uuid != workflowUuid) return;
     let item = await effectUtils.getOriginItem(effect);
     if (!item) return;
-    let requiredHP = Number(itemUtils.getConfig(item, 'hp'));
-    if (isNaN(requiredHP)) return;
+    let requiredHP = itemUtils.getConfig(item, 'hp');
     await genericUtils.remove(effect);
     if (workflow.targets.first().actor.system.attributes.hp.value > requiredHP) return;
     let activity = activityUtils.getActivityByIdentifier(item, 'banish', {strict: true});
@@ -114,7 +112,7 @@ export let divineSmite = {
         {
             value: 'baseDiceNumber',
             label: 'CHRISPREMADES.Config.BaseDiceNumber',
-            type: 'text',
+            type: 'number',
             default: 2,
             category: 'homebrew',
             homebrew: true

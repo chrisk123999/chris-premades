@@ -2,8 +2,7 @@ import {constants, itemUtils, tokenUtils} from '../../../utils.js';
 import {divineSmite} from './divineSmite.js';
 async function use({trigger, workflow}) {
     if (!workflow.failedSaves.size || !workflow.token) return;
-    let distance = Number(itemUtils.getConfig(workflow.item, 'distance'));
-    if (isNaN(distance)) return;
+    let distance = itemUtils.getConfig(workflow.item, 'distance');
     await Promise.all(workflow.failedSaves.map(async token => await tokenUtils.pushToken(workflow.token, token, distance)));
 }
 export let thunderousSmite = {
@@ -42,7 +41,7 @@ export let thunderousSmite = {
         {
             value: 'baseDiceNumber',
             label: 'CHRISPREMADES.Config.BaseDiceNumber',
-            type: 'text',
+            type: 'number',
             default: 2,
             category: 'homebrew',
             homebrew: true
@@ -50,7 +49,7 @@ export let thunderousSmite = {
         {
             value: 'distance',
             label: 'CHRISPREMADES.Config.Distance',
-            type: 'text',
+            type: 'number',
             default: 10,
             category: 'homebrew',
             homebrew: true

@@ -1,5 +1,5 @@
 import {activityUtils, genericUtils, itemUtils} from '../../../../utils.js';
-async function added({trigger: {entity: item, identifier, actor}}) {
+async function added({trigger: {entity: item, actor}}) {
     let bardicInspiration = itemUtils.getItemByIdentifier(actor, 'bardicInspiration');
     if (!bardicInspiration) return;
     if (!bardicInspiration.system.uses.recovery.find(i => i.period === 'sr')) {

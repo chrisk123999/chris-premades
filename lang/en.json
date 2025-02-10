@@ -113,6 +113,7 @@
                 "Water": "Water"
             },
             "ApplyFilter": "Apply Filter:",
+            "ArmoTypes": "Armor Types:",
             "AttackBonus": "Attack Bonus:",
             "BaseDiceNumber": "Base Dice Number:",
             "BlockingStatuses": "Blocking Statuses:",
@@ -175,6 +176,7 @@
             "Percentage": "Percentage:",
             "PlayAnimation": "Play Animation:",
             "PlayTeleportAnimation": "Play Teleport Animation:",
+            "PromptToUse": "Prompt to use:",
             "Range": "Range:",
             "RealDarkness": "Use Real Darkness:",
             "SaveAbilities": "Save Abilities:",
@@ -742,6 +744,10 @@
             "Dawn": {
                 "EndTurn": "Dawn: End Turn",
                 "Move": "Dawn: Move"
+            },
+            "DazzlingFootwork": {
+                "AgileStrikes": "Unarmed Strike a nearby foe?",
+                "DanceVirtuoso": "This check involes you dancing."
             },
             "DeathBurst": {
                 "Name": "Death Burst"

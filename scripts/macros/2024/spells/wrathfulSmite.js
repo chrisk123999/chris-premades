@@ -57,7 +57,7 @@ export let wrathfulSmite = {
         {
             value: 'baseDiceNumber',
             label: 'CHRISPREMADES.Config.BaseDiceNumber',
-            type: 'text',
+            type: 'number',
             default: 1,
             category: 'homebrew',
             homebrew: true
