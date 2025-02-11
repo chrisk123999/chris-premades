@@ -7,7 +7,7 @@ async function use({workflow}) {
         duration: itemUtils.convertDuration(workflow.item),
         flags: {
             'chris-premades': {
-                castLevel: workflow.castData.castLevel
+                castLevel: workflowUtils.getCastLevel(workflow)
             }
         }
     };

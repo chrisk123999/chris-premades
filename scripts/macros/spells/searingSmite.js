@@ -9,7 +9,7 @@ async function use({workflow}) {
             'chris-premades': {
                 searingSmite: {
                     dc: itemUtils.getSaveDC(workflow.item),
-                    level: workflow.castData.castLevel,
+                    level: workflowUtils.getCastLevel(workflow),
                     used: false,
                     damageType: itemUtils.getConfig(workflow.item, 'damageType')
                 }

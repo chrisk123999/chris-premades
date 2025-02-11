@@ -8,7 +8,7 @@ async function use({workflow}) {
         flags: {
             'chris-premades': {
                 brandingSmite: {
-                    level: workflow.castData.castLevel,
+                    level: workflowUtils.getCastLevel(workflow),
                     used: false,
                     damageType: itemUtils.getConfig(workflow.item, 'damageType')
                 }

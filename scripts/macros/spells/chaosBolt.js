@@ -1,5 +1,4 @@
-import {activityUtils, animationUtils, compendiumUtils, constants, dialogUtils, errors, genericUtils, itemUtils, tokenUtils, workflowUtils} from '../../utils.js';
-
+import {activityUtils, animationUtils, dialogUtils, genericUtils, itemUtils, tokenUtils, workflowUtils} from '../../utils.js';
 async function use({workflow}) {
     if (activityUtils.getIdentifier(workflow.activity) === genericUtils.getIdentifier(workflow.item)) {
         // Clear flags
@@ -20,7 +19,7 @@ async function use({workflow}) {
     let currentTarget = workflow.targets.first();
     let origTargetUuid = chrisFlags?.chaosBolt?.targetUuid;
     let animSource = origTargetUuid ? (await fromUuid(origTargetUuid)).object : workflow.token;
-    let castLevel = chrisFlags?.chaosBolt?.castLevel ?? workflow.castData.castLevel;
+    let castLevel = chrisFlags?.chaosBolt?.castLevel ?? workflowUtils.getCastLevel(workflow);
     let ignoreList = chrisFlags?.chaosBolt?.ignoreList ?? [];
     let alwaysBounce = chrisFlags?.chaosBolt?.alwaysBounce ?? itemUtils.getConfig(workflow.item, 'alwaysBounce');
     let playAnimation = chrisFlags?.chaosBolt?.playAnimation ?? itemUtils.getConfig(workflow.item, 'playAnimation');

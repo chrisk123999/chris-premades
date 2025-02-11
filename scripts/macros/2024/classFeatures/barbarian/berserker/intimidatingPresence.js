@@ -4,7 +4,7 @@ async function veryEarly({activity, dialog, actor, config}) {
     dialog.configure = false;
     let rage = itemUtils.getItemByIdentifier(actor, 'rage');
     if (!rage?.system?.uses?.value) return true;
-    let selection = await dialogUtils.confirm(activity.item.name, 'CHRISPREMADES.Macros.IntimidatingPresence.Rage');
+    let selection = await dialogUtils.confirm(activity.item.name, genericUtils.format('CHRISPREMADES.Generic.ConsumeItemToUse', {item: rage.name}));
     if (!selection) return true;
     genericUtils.setProperty(config, 'consume.resources', false);
     await genericUtils.update(rage, {'system.uses.spent': rage.system.uses.spent + 1});

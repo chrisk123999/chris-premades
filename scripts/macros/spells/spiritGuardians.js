@@ -34,7 +34,7 @@ async function use({trigger, workflow}) {
                 },
                 castData: {
                     baseLevel: workflow.castData.baseLevel,
-                    castLevel: workflow.castData.castLevel,
+                    castLevel: workflowUtils.getCastLevel(workflow),
                     saveDC: itemUtils.getSaveDC(workflow.item)
                 }
             }

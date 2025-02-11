@@ -12,7 +12,7 @@ async function use({trigger, workflow}) {
         selection = selection[0];
     }
     let ownerId = socketUtils.firstOwner(selection, true);
-    let classSelection = await dialogUtils.selectHitDie(selection.actor, workflow.item.name, 'CHRISPREMADES.Macros.WitherAndBloom.SelectHitDie', {userId: ownerId, max: workflow.castData.castLevel - 1});
+    let classSelection = await dialogUtils.selectHitDie(selection.actor, workflow.item.name, 'CHRISPREMADES.Macros.WitherAndBloom.SelectHitDie', {userId: ownerId, max: workflowUtils.getCastLevel(workflow) - 1});
     if (!classSelection) return;
     let formula = '';
     for (let i of classSelection) {

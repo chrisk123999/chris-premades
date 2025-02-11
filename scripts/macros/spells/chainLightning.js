@@ -1,8 +1,7 @@
-import {activityUtils, animationUtils, compendiumUtils, constants, dialogUtils, errors, genericUtils, itemUtils, tokenUtils, workflowUtils} from '../../utils.js';
-
+import {activityUtils, animationUtils, dialogUtils, genericUtils, itemUtils, tokenUtils, workflowUtils} from '../../utils.js';
 async function use({workflow}) {
     if (!workflow.targets.size) return;
-    let maxTargets = workflow.castData.castLevel - 3;
+    let maxTargets = workflowUtils.getCastLevel(workflow) - 3;
     for (let targetToken of workflow.targets) {
         let nearbyTokens = tokenUtils.findNearby(targetToken, 30, 'ally', {});
         let newTargets = nearbyTokens;

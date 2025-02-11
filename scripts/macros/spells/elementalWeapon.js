@@ -1,4 +1,4 @@
-import {dialogUtils, genericUtils, itemUtils} from '../../utils.js';
+import {dialogUtils, genericUtils, itemUtils, workflowUtils} from '../../utils.js';
 async function use({trigger, workflow}) {
     if (!workflow.targets.size) return;
     let validTypes = itemUtils.getConfig(workflow.item, 'damageTypes');
@@ -21,7 +21,7 @@ async function use({trigger, workflow}) {
             selectedWeapon = await dialogUtils.selectDocumentDialog(workflow.item.name, 'CHRISPREMADES.Macros.ElementalWeapon.SelectWeapon', weapons);
             if (!selectedWeapon) return;
         }
-        let castLevel = workflow.castData.castLevel;
+        let castLevel = workflowUtils.getCastLevel(workflow);
         let bonus = 1;
         if (castLevel >= 5 && castLevel < 7) {
             bonus = 2;

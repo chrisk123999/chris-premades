@@ -1,10 +1,9 @@
 import {Summons} from '../../lib/summons.js';
-import {compendiumUtils, constants, dialogUtils, effectUtils, genericUtils, itemUtils, socketUtils} from '../../utils.js';
-
+import {compendiumUtils, constants, dialogUtils, effectUtils, genericUtils, itemUtils, socketUtils, workflowUtils} from '../../utils.js';
 async function use({workflow}) {
     let concentrationEffect = effectUtils.getConcentrationEffect(workflow.actor, workflow.item);
     let monsterCompendium = genericUtils.getCPRSetting('monsterCompendium');
-    let totalSummons = Math.floor((workflow.castData.castLevel - 1) / 2);
+    let totalSummons = Math.floor((workflowUtils.getCastLevel(workflow) - 1) / 2);
     let typePl = genericUtils.translate('DND5E.CreatureBeastPl');
     let optionButtons = [
         [genericUtils.format('CHRISPREMADES.Summons.CRSelection', {numSummons: totalSummons, typePl, cr: 2}), 2],

@@ -1,11 +1,11 @@
-import {constants, effectUtils, genericUtils, itemUtils} from '../../../utils.js';
+import {constants, effectUtils, genericUtils, itemUtils, workflowUtils} from '../../../utils.js';
 import {divineSmite} from './divineSmite.js';
 async function use({trigger, workflow}) {
     if (!workflow.targets.size) return;
     let damageType = itemUtils.getConfig(workflow.item, 'damageType');
     let diceSize = itemUtils.getConfig(workflow.item, 'diceSize');
     let diceNumber = itemUtils.getConfig(workflow.item, 'baseDiceNumber');
-    let formula = ((workflow.castData.castLevel - 1) + diceNumber) + diceSize;
+    let formula = ((workflowUtils.getCastLevel(workflow) - 1) + diceNumber) + diceSize;
     let effectData = {
         name: workflow.item.name,
         img: workflow.item.img,

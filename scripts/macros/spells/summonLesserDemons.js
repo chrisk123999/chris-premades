@@ -1,10 +1,9 @@
 import {Summons} from '../../lib/summons.js';
-import {animationUtils, compendiumUtils, constants, dialogUtils, effectUtils, genericUtils, itemUtils, socketUtils, templateUtils} from '../../utils.js';
-
+import {animationUtils, compendiumUtils, constants, dialogUtils, effectUtils, genericUtils, itemUtils, socketUtils, templateUtils, workflowUtils} from '../../utils.js';
 async function use({workflow}) {
     let concentrationEffect = effectUtils.getConcentrationEffect(workflow.actor, workflow.item);
     let monsterCompendium = genericUtils.getCPRSetting('monsterCompendium');
-    let spellLevel = workflow.castData.castLevel;
+    let spellLevel = workflowUtils.getCastLevel(workflow);
     let summonsMultiplier = spellLevel > 7 ? 3 : (spellLevel > 5 ? 2 : 1);
     let typePl = genericUtils.translate('CHRISPREMADES.Macros.SummonLesserDemons.Demons');
     let roll = await new Roll('1d6').evaluate();

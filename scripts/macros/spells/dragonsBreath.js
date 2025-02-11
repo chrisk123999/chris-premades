@@ -1,4 +1,4 @@
-import {compendiumUtils, constants, dialogUtils, effectUtils, errors, genericUtils, itemUtils} from '../../utils.js';
+import {compendiumUtils, constants, dialogUtils, effectUtils, errors, genericUtils, itemUtils, workflowUtils} from '../../utils.js';
 
 // TODO: Refactor this if https://github.com/foundryvtt/dnd5e/issues/4706 gets implemented
 async function use({workflow}) {
@@ -22,7 +22,7 @@ async function use({workflow}) {
         if (concentrationEffect) await genericUtils.remove(concentrationEffect);
         return;
     }
-    let diceNumber = workflow.castData.castLevel + 1;
+    let diceNumber = workflowUtils.getCastLevel(workflow) + 1;
     let activityId = Object.keys(featureData.system.activities)[0];
     featureData.system.activities[activityId].damage.parts[0].number = diceNumber;
     featureData.system.activities[activityId].damage.parts[0].types = [damageType];

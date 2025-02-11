@@ -1,6 +1,5 @@
 import {Summons} from '../../lib/summons.js';
-import {activityUtils, actorUtils, animationUtils, combatUtils, compendiumUtils, constants, dialogUtils, effectUtils, errors, genericUtils, itemUtils, workflowUtils} from '../../utils.js';
-
+import {activityUtils, animationUtils, combatUtils, compendiumUtils, constants, dialogUtils, effectUtils, errors, genericUtils, itemUtils, workflowUtils} from '../../utils.js';
 async function use({workflow}) {
     let concentrationEffect = effectUtils.getConcentrationEffect(workflow.actor, workflow.item);
     let playAnimation = itemUtils.getConfig(workflow.item, 'playAnimation') && animationUtils.jb2aCheck() === 'patreon';
@@ -16,7 +15,7 @@ async function use({workflow}) {
         return;
     }
     let healId = Object.keys(featureDataSummon.system.activities)[0];
-    featureDataSummon.system.activities[healId].healing.number = workflow.castData.castLevel - 1;
+    featureDataSummon.system.activities[healId].healing.number = workflowUtils.getCastLevel(workflow) - 1;
     let uses = Math.max(2, workflow.actor.system.abilities[workflow.item.abilityMod].mod + 1);
     featureDataSummon.system.uses.max = uses;
     let updates = {

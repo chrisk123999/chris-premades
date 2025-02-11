@@ -18,12 +18,12 @@ async function use({trigger, workflow}) {
             }
         }
     };
-    let damageFeature = await Summons.getSummonItem('Flaming Sphere: End Turn', damageUpdates, workflow.item, {flatDC: itemUtils.getSaveDC(workflow.item), damageFlat: workflow.castData.castLevel + 'd6[fire]', translate: 'CHRISPREMADES.Macros.FlamingSphere.EndTurn'});
+    let damageFeature = await Summons.getSummonItem('Flaming Sphere: End Turn', damageUpdates, workflow.item, {flatDC: itemUtils.getSaveDC(workflow.item), damageFlat: workflowUtils.getCastLevel(workflow) + 'd6[fire]', translate: 'CHRISPREMADES.Macros.FlamingSphere.EndTurn'});
     if (!damageFeature) {
         errors.missingPackItem(constants.packs.summonFeatures, 'Flaming Sphere: End Turn');
         return;
     }
-    let ramFeature = await Summons.getSummonItem('Flaming Sphere: Ram', damageUpdates, workflow.item,{flatDC: itemUtils.getSaveDC(workflow.item), damageFlat: workflow.castData.castLevel + 'd6[fire]', translate: 'CHRISPREMADES.Macros.FlamingSphere.RamItem'});
+    let ramFeature = await Summons.getSummonItem('Flaming Sphere: Ram', damageUpdates, workflow.item,{flatDC: itemUtils.getSaveDC(workflow.item), damageFlat: workflowUtils.getCastLevel(workflow) + 'd6[fire]', translate: 'CHRISPREMADES.Macros.FlamingSphere.RamItem'});
     if (!ramFeature) {
         errors.missingPackItem(constants.packs.summonFeatures, 'Flaming Sphere: Ram');
         return;

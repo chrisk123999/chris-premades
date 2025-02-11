@@ -1,9 +1,8 @@
 import {Summons} from '../../lib/summons.js';
-import {compendiumUtils, constants, dialogUtils, effectUtils, genericUtils, itemUtils, socketUtils} from '../../utils.js';
-
+import {compendiumUtils, constants, dialogUtils, effectUtils, genericUtils, itemUtils, socketUtils, workflowUtils} from '../../utils.js';
 async function use({workflow}) {
     let concentrationEffect = effectUtils.getConcentrationEffect(workflow.actor, workflow.item);
-    let spellLevel = workflow.castData.castLevel;
+    let spellLevel = workflowUtils.getCastLevel(workflow);
     let cr = spellLevel >= 9 ? 5 : 4;
     let monsterCompendium = genericUtils.getCPRSetting('monsterCompendium');
     let compendiumDocs = await compendiumUtils.getFilteredActorDocumentsFromCompendium(monsterCompendium, {maxCR: cr, actorTypes: ['npc'], creatureTypes: ['celestial']});

@@ -38,7 +38,7 @@ async function use({trigger, workflow}) {
         flags: {
             'chris-premades': {
                 castData: {
-                    castLevel: workflow.castData.castLevel,
+                    castLevel: workflowUtils.getCastLevel(workflow),
                     baseLevel: workflow.castData.baseLevel,
                     saveDC: itemUtils.getSaveDC(workflow.item)
                 },

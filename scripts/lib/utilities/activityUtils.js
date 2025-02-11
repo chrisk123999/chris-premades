@@ -1,6 +1,7 @@
 import {errors} from '../errors.js';
 import {effectUtils} from './effectUtils.js';
 import {genericUtils} from './genericUtils.js';
+import {itemUtils} from './itemUtils.js';
 function getActivityByIdentifier(item, identifier, {strict = false} = {}) {
     let activity = item.system.activities.find(i => getIdentifier(i) === identifier);
     if (!activity && strict) {
@@ -95,6 +96,14 @@ function hasSave(activity) {
     if (activity.type === 'save') return true;
     if (activity._otherActivity) return hasSave(activity._otherActivity);
 }
+function isSpellActivity(activity) {
+    let identifier = getIdentifier(activity);
+    if (!identifier) {
+        return genericUtils.getProperty(activity, 'midiProperties.automationOnly');
+    }
+    let spellActivities = itemUtils.getSpellActivities(activity.item) ?? [];
+    return spellActivities.includes(identifier);
+}
 export let activityUtils = {
     getActivityByIdentifier,
     getIdentifier,
@@ -102,5 +111,6 @@ export let activityUtils = {
     setDamage,
     duplicateActivity,
     getConditions,
-    hasSave
+    hasSave,
+    isSpellActivity
 };

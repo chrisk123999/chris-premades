@@ -1,7 +1,6 @@
 import {activityUtils, animationUtils, dialogUtils, genericUtils, itemUtils, tokenUtils, workflowUtils} from '../../utils.js';
-
 async function use({workflow}) {
-    let maxRays = 1 + workflow.castData.castLevel;
+    let maxRays = 1 + workflowUtils.getCastLevel(workflow);
     let feature = activityUtils.getActivityByIdentifier(workflow.item, 'scorchingRayBolt', {strict: true});
     if (!feature) return;
     let jb2a = animationUtils.jb2aCheck();

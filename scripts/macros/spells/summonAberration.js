@@ -1,5 +1,5 @@
 import {Summons} from '../../lib/summons.js';
-import {actorUtils, itemUtils, animationUtils, effectUtils, genericUtils, tokenUtils, compendiumUtils, constants, workflowUtils, errors, activityUtils} from '../../utils.js';
+import {actorUtils, itemUtils, effectUtils, genericUtils, compendiumUtils, constants, workflowUtils, errors, activityUtils} from '../../utils.js';
 async function use({workflow}){
     let activityIdentifier = activityUtils.getIdentifier(workflow.activity);
     let concentrationEffect = effectUtils.getConcentrationEffect(workflow.actor, workflow.item);
@@ -8,7 +8,7 @@ async function use({workflow}){
         if (concentrationEffect) await genericUtils.remove(concentrationEffect);
         return;
     }
-    let spellLevel = workflow.castData.castLevel;
+    let spellLevel = workflowUtils.getCastLevel(workflow);
     let creatureType;
     if (activityIdentifier === 'summonAberrationBeholderkin') {
         creatureType = 'beholderkin';
@@ -24,7 +24,7 @@ async function use({workflow}){
     let numAttacks = Math.floor(spellLevel / 2);
     let multiAttackFeatureData = await Summons.getSummonItem('Multiattack (Aberrant Spirit)', {}, workflow.item, {translate: genericUtils.format('CHRISPREMADES.CommonFeatures.Multiattack', {numAttacks}), identifier: 'summonAberrationMultiattack'});
     if (!multiAttackFeatureData) return;
-    let hpFormula = 40 + ((workflow.castData.castLevel - 4) * 10);
+    let hpFormula = 40 + ((workflowUtils.getCastLevel(workflow) - 4) * 10);
     let name = itemUtils.getConfig(workflow.item, creatureType + 'Name');
     if (!name?.length) name = genericUtils.translate('CHRISPREMADES.Summons.CreatureNames.AberrantSpirit' + creatureType.capitalize());
     let updates = {

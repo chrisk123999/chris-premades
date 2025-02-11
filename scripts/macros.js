@@ -93,3 +93,5 @@ export {dazzlingFootwork} from './macros/2024/classFeatures/bard/dance/dazzlingF
 export {inspiringMovement} from './macros/2024/classFeatures/bard/dance/inspiringMovement.js';
 export {tandemFootwork} from './macros/2024/classFeatures/bard/dance/tandemFootwork.js';
 export {leadingEvasion} from './macros/2024/classFeatures/bard/dance/leadingEvasion.js';
+//College of Glamour
+export {beguilingMagic} from './macros/2024/classFeatures/bard/glamour/beguilingMagic.js';

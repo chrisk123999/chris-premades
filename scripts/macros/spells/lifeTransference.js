@@ -1,8 +1,7 @@
 import {workflowUtils} from '../../utils.js';
-
 async function damage({workflow}) {
     if (workflow.targets.size !== 1) return;
-    let damageFormula = (workflow.castData.castLevel + 1) + 'd8[necrotic]';
+    let damageFormula = (workflowUtils.getCastLevel(workflow) + 1) + 'd8[necrotic]';
     let damageRoll = await new CONFIG.Dice.DamageRoll(damageFormula, {}, {type: 'necrotic'}).evaluate();
     damageRoll.toMessage({
         rollMode: 'roll',

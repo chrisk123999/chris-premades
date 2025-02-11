@@ -1,5 +1,4 @@
-import {compendiumUtils, constants, effectUtils, errors, genericUtils, itemUtils} from '../../utils.js';
-
+import {compendiumUtils, constants, effectUtils, errors, genericUtils, itemUtils, workflowUtils} from '../../utils.js';
 async function use({workflow}) {
     let concentrationEffect = effectUtils.getConcentrationEffect(workflow.actor, workflow.item);
     let featureData = await compendiumUtils.getItemFromCompendium(constants.packs.spellFeatures, 'Shadow Blade Sword', {object: true, getDescription: true, translate: 'CHRISPREMADES.Macros.ShadowBlade.Sword', identifier: 'shadowBladeSword'});
@@ -9,7 +8,7 @@ async function use({workflow}) {
         return;
     }
     let diceNum = 2;
-    switch (workflow.castData.castLevel) {
+    switch (workflowUtils.getCastLevel(workflow)) {
         case 3:
         case 4:
             diceNum = 3;

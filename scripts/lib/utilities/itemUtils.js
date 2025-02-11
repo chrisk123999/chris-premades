@@ -170,14 +170,23 @@ function isWeaponProficient(item) {
 async function itemUpdate(item) {
     return await ItemMedkit.itemUpdate(item);
 }
-async function setHiddenActivities(item, activityIdentifiers, replace=true) {
+async function setHiddenActivities(item, activityIdentifiers, replace = true) {
     let existingHidden = replace ? [] : item.flags?.['chris-premades']?.hiddenActivities ?? [];
     existingHidden = new Set(existingHidden.concat(activityIdentifiers));
     await genericUtils.setFlag(item, 'chris-premades', 'hiddenActivities', Array.from(existingHidden));
     await genericUtils.update(item);
 }
+async function setSpellActivities(item, activityIdentifiers, replace = true) {
+    let existingSpells = replace ? [] : item.flags?.['chris-premades']?.spellActivities ?? [];
+    existingSpells = new Set(existingSpells.concat(activityIdentifiers));
+    await genericUtils.setFlag(item, 'chris-premades', 'spellActivities', Array.from(existingSpells));
+    await genericUtils.update(item);
+}
 function getHiddenActivities(item) {
     return genericUtils.getProperty(item, 'flags.chris-premades.hiddenActivities');
+}
+function getSpellActivities(item) {
+    return genericUtils.getProperty(item, 'flags.chris-premades.spellActivities');
 }
 function getActivity(item, type) {
     return item.system.activities.getByType(type)?.[0];
@@ -211,5 +220,7 @@ export let itemUtils = {
     setHiddenActivities,
     getHiddenActivities,
     getActivity,
-    getEffectByIdentifier
+    getEffectByIdentifier,
+    getSpellActivities,
+    setSpellActivities
 };

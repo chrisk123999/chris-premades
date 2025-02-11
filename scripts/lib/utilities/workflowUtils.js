@@ -240,6 +240,9 @@ function getCastData(workflow) {
     delete castData.itemuuid;
     return castData;
 }
+function getCastLevel(workflow) {
+    return Math.max(workflow.castData.castLevel, workflow.castData.baseLevel);
+}
 export let workflowUtils = {
     bonusDamage,
     bonusAttack,
@@ -257,5 +260,6 @@ export let workflowUtils = {
     getTotalDamageOfType,
     handleInstantTemplate,
     getCastData,
-    modifyDamageAppliedFlat
+    modifyDamageAppliedFlat,
+    getCastLevel
 };

@@ -39,7 +39,7 @@ async function use({trigger, workflow}) {
     });
     // TODO: looks like this doesn't happen currently
     if (game.user.targets.first() !=  workflow.token) {
-        await workflowUtils.syntheticActivityRoll(feature, [game.user.targets.first()], {atLevel: workflow.castData.castLevel});
+        await workflowUtils.syntheticActivityRoll(feature, [game.user.targets.first()], {atLevel: workflowUtils.getCastLevel(workflow)});
     }
 }
 async function late({workflow}) {

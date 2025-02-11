@@ -189,6 +189,7 @@
             "Skills": "Skills:",
             "Sound": "Sound:",
             "SpecificAnimation": "{option} Animation:",
+            "SpellSchools": "Spell Schools:",
             "Trigger": "Trigger:",
             "TurnTrigger": "Turn Trigger:",
             "UseFormula": "Use Formula:",
@@ -324,6 +325,7 @@
                 "Name": "{condition} Condition Vulnerability"
             },
             "Configure": "Configure",
+            "ConsumeItemToUse": "Consume a usage of {item} to use?",
             "Disabled": "Disabled",
             "Distance": "Distance",
             "Edit": "Edit",
@@ -356,6 +358,7 @@
             "TurnStart": "Turn Start",
             "Uncontested": "Uncontested",
             "Update": "Update",
+            "UseItem": "Use {item}?",
             "Yes": "Yes",
             "You": "You"
         },
@@ -671,6 +674,14 @@
             "Cloudkill": {
                 "Damage": "Cloudkill: Damage",
                 "NoRoom": "No room to move cloudkill!"
+            },
+            "Command": {
+                "Approach": "Approach",
+                "Drop": "Drop",
+                "Flee": "Flee",
+                "Grovel": "Grovel",
+                "Halt": "Halt",
+                "YouMust": "You must: "
             },
             "CompelledDuel": {
                 "EndEffect": "Caster has ended their turn more than 30 feet away from their target. Remove effect?",
@@ -1151,9 +1162,6 @@
             },
             "InspiringSmite": {
                 "Select": "Distribute Temp HP (Amount to Distribute: {maxAmount})"
-            },
-            "IntimidatingPresence": {
-                "Rage": "Consume a usage of rage to use?"
             },
             "InvestitureOfFlame": {
                 "Fire": "Investiture of Flame: Fire",
@@ -1872,14 +1880,6 @@
             },
             "ZoneOfTruth": {
                 "Save": "Zone of Truth: Save"
-            },
-            "Command": {
-                "YouMust": "You must: ",
-                "Approach": "Approach",
-                "Drop": "Drop",
-                "Flee": "Flee",
-                "Grovel": "Grovel",
-                "Halt": "Halt"
             }
         },
         "ManualRolls": {

@@ -1,8 +1,7 @@
 import {activityUtils, actorUtils, animationUtils, dialogUtils, effectUtils, errors, genericUtils, itemUtils, socketUtils, workflowUtils} from '../../utils.js';
-
 async function use({workflow}) {
     if (!workflow.targets.size) return;
-    let maxMissiles = 2 + workflow.castData.castLevel;
+    let maxMissiles = 2 + workflowUtils.getCastLevel(workflow);
     let [selection] = await dialogUtils.selectTargetDialog(workflow.item.name, genericUtils.format('CHRISPREMADES.Macros.MagicMissile.Select', {maxMissiles}), workflow.targets, {
         type: 'selectAmount',
         maxAmount: maxMissiles

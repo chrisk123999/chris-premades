@@ -2,7 +2,7 @@ import {combatUtils, constants, dialogUtils, genericUtils, itemUtils, workflowUt
 async function damage({trigger: {entity: item}, workflow}) {
     if (!workflow.hitTargets.size || !workflow.damageRoll) return;
     let itemType = workflow.item.type;
-    if (!(itemType === 'weapon' || (itemType === 'spell' && workflow.castData.castLevel === 0))) return;
+    if (!(itemType === 'weapon' || (itemType === 'spell' && workflowUtils.getCastLevel(workflow) === 0))) return;
     if (item.flags['chris-premades']?.blessedStrikes?.used) return;
     let selection = await dialogUtils.confirm(item.name, genericUtils.format('CHRISPREMADES.Dialog.Use', {itemName: item.name}));
     if (!selection) return;

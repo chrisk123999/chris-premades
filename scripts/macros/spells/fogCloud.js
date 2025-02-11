@@ -1,5 +1,4 @@
-import {animationUtils, effectUtils, genericUtils, itemUtils, templateUtils} from '../../utils.js';
-
+import {animationUtils, effectUtils, genericUtils, itemUtils, templateUtils, workflowUtils} from '../../utils.js';
 async function early({workflow}) {
     let concentrationEffect = effectUtils.getConcentrationEffect(workflow.actor, workflow.item);
     let useRealDarkness = itemUtils.getConfig(workflow.item, 'useRealDarkness');
@@ -8,7 +7,7 @@ async function early({workflow}) {
     let templateData = {
         t: 'circle',
         user: game.user,
-        distance: workflow.castData.castLevel * 20,
+        distance: workflowUtils.getCastLevel(workflow) * 20,
         direction: 0,
         fillColor: game.user.color,
         flags: {

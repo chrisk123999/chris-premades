@@ -1,6 +1,6 @@
 import {dialogUtils, genericUtils, rollUtils, workflowUtils} from '../../../utils.js';
 async function damage({trigger, workflow}) {
-    let selection = await dialogUtils.selectHitDie(workflow.actor, workflow.item.name, 'CHRISPREMADES.Macros.ArcaneVigor.Choose', {max: workflow.castData.castLevel});
+    let selection = await dialogUtils.selectHitDie(workflow.actor, workflow.item.name, 'CHRISPREMADES.Macros.ArcaneVigor.Choose', {max: workflowUtils.getCastLevel(workflow)});
     let formula = '';
     await Promise.all(selection.map(async i => {
         if (!i.amount) return;

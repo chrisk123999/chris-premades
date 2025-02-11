@@ -9,7 +9,7 @@ async function use({workflow}) {
         if (concentrationEffect) await genericUtils.remove(concentrationEffect);
         return;
     }
-    let spellLevel = workflow.castData.castLevel;
+    let spellLevel = workflowUtils.getCastLevel(workflow);
     let creatureType;
     if (activityIdentifier === 'summonElementalAir') {
         creatureType = 'air';

@@ -45,7 +45,7 @@ async function use({workflow}) {
         }
     });
     if (concentrationEffect) await genericUtils.update(concentrationEffect, {duration: casterEffectData.duration});
-    await workflowUtils.syntheticActivityRoll(damageFeature, [targetToken], {atLevel: workflow.castData.castLevel});
+    await workflowUtils.syntheticActivityRoll(damageFeature, [targetToken], {atLevel: workflowUtils.getCastLevel(workflow)});
     await dialog(workflow, targetToken, effect);
 }
 async function late({workflow}) {

@@ -1,6 +1,5 @@
 import {Summons} from '../../lib/summons.js';
-import {activityUtils, actorUtils, compendiumUtils, constants, dialogUtils, effectUtils, errors, genericUtils, itemUtils, tokenUtils, workflowUtils} from '../../utils.js';
-
+import {activityUtils, actorUtils, compendiumUtils, constants, effectUtils, errors, genericUtils, itemUtils, workflowUtils} from '../../utils.js';
 async function use({workflow}) {
     let activityIdentifier = activityUtils.getIdentifier(workflow.activity);
     let concentrationEffect = effectUtils.getConcentrationEffect(workflow.actor, workflow.item);
@@ -9,7 +8,7 @@ async function use({workflow}) {
         if (concentrationEffect) await genericUtils.remove(concentrationEffect);
         return;
     }
-    let spellLevel = workflow.castData.castLevel;
+    let spellLevel = workflowUtils.getCastLevel(workflow);
     let creatureType;
     if (activityIdentifier === 'summonUndeadGhostly') {
         creatureType = 'ghostly';

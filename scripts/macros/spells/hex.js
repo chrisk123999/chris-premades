@@ -12,7 +12,7 @@ async function use({trigger, workflow}) {
         return;
     }
     let seconds;
-    switch (workflow.castData.castLevel) {
+    switch (workflowUtils.getCastLevel(workflow)) {
         case 3:
         case 4:
             seconds = 28800;

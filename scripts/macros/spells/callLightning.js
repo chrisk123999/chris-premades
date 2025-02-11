@@ -2,7 +2,7 @@ import {activityUtils, actorUtils, compendiumUtils, constants, dialogUtils, effe
 
 async function use({workflow}) {
     let storming = await dialogUtils.confirm(workflow.item.name, 'CHRISPREMADES.Macros.CallLightning.Storming');
-    let castLevel = workflow.castData.castLevel;
+    let castLevel = workflowUtils.getCastLevel(workflow);
     if (storming) castLevel += 1;
     let feature = activityUtils.getActivityByIdentifier(workflow.item, 'stormBolt', {strict: true});
     if (!feature) {

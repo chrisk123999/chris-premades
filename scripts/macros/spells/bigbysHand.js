@@ -8,7 +8,7 @@ async function use({workflow}) {
         if (concentrationEffect) await genericUtils.remove(concentrationEffect);
         return;
     }
-    let damageScale = ((workflow.castData.castLevel - 5) * 2);
+    let damageScale = ((workflowUtils.getCastLevel(workflow) - 5) * 2);
     let clenchedFistData = await compendiumUtils.getItemFromCompendium(constants.packs.summonFeatures, 'Clenched Fist', {object: true, getDescription: true, translate: 'CHRISPREMADES.Macros.BigbysHand.Clenched', identifier: 'clenchedFist'});
     let forcefulHandData = await compendiumUtils.getItemFromCompendium(constants.packs.summonFeatures, 'Forceful Hand', {object: true, getDescription: true, translate: 'CHRISPREMADES.Macros.BigbysHand.Forceful', identifier: 'forcefulHand'});
     let graspingHandData = await compendiumUtils.getItemFromCompendium(constants.packs.summonFeatures, 'Grasping Hand', {object: true, getDescription: true, translate: 'CHRISPREMADES.Macros.BigbysHand.Grasping', identifier: 'graspingHand'});

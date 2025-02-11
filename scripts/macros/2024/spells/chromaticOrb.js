@@ -43,7 +43,7 @@ async function use({trigger, workflow}) {
         return;
     }
     let baseMaxJumps = itemUtils.getConfig(workflow.item, 'baseMaxJumps');
-    let castLevel = workflow.item.flags['chris-premades']?.chromaticOrb?.castLevel ?? workflow.castData.castLevel ?? 0;
+    let castLevel = workflow.item.flags['chris-premades']?.chromaticOrb?.castLevel ?? workflowUtils.getCastLevel(workflow) ?? 0;
     let bouncesLeft = workflow.item.flags['chris-premades']?.chromaticOrb?.bouncesLeft ?? (castLevel - 1 + baseMaxJumps);
     if (!bouncesLeft) {
         await reset(workflow.item); 

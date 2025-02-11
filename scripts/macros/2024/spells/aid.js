@@ -1,4 +1,4 @@
-import {effectUtils, itemUtils} from '../../../utils.js';
+import {effectUtils, itemUtils, workflowUtils} from '../../../utils.js';
 async function use({trigger, workflow}) {
     if (!workflow.targets.size) return;
     let effectData = {
@@ -9,7 +9,7 @@ async function use({trigger, workflow}) {
             {
                 key: 'system.attributes.hp.tempmax',
                 mode: 2,
-                value: 5 * (workflow.castData.castLevel - 1),
+                value: 5 * (workflowUtils.getCastLevel(workflow) - 1),
                 priority: 20
             }
         ],

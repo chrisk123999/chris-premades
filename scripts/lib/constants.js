@@ -138,6 +138,7 @@ const diceSizeOptions = [4, 6, 8, 10, 12, 20].map(i => ({label: 'd' + i, value: 
 const teleportOptions = () => Object.entries(teleportEffects).map(i => ({label: i[1].name, value: i[0]}));
 const itemProperties = () => Object.entries(CONFIG.DND5E.itemProperties).map(i => ({label: i[1].label, value: i[0]}));
 const armorOptions = () => Object.entries(CONFIG.DND5E.armorTypes).map(i => ({label: i[1].label, value: i[0]}));
+const spellSchoolOptions = () => Object.entries(CONFIG.DND5E.spellSchools).map(i => ({label: i[1].label, value: i[0]}));
 const overTimeOptions = [
     {
         key: 'turn',
@@ -520,5 +521,6 @@ export let constants = {
     skillOptions,
     teleportOptions,
     itemProperties,
-    armorOptions
+    armorOptions,
+    spellSchoolOptions
 };

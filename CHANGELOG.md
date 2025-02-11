@@ -1,3 +1,9 @@
+# 1.1.39 Release:
+## New Mondern Content:
+- Beguiling Magic
+## Bug Fixes:
+- Many Spells (Legacy & Modern)
+
 # 1.1.38 Release:
 ## New Modern Content:
 - Leading Evasion

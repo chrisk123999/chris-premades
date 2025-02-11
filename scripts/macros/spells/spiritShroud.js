@@ -18,7 +18,7 @@ async function use({workflow}) {
             'chris-premades': {
                 spiritShroud: {
                     damageType,
-                    castLevel: workflow.castData.castLevel
+                    castLevel: workflowUtils.getCastLevel(workflow)
                 }
             }
         }

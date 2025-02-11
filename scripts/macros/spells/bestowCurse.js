@@ -11,7 +11,7 @@ async function use({workflow}) {
     };
     let concentration = true;
     let duration = 60;
-    let castLevel = workflow.castData.castLevel;
+    let castLevel = workflowUtils.getCastLevel(workflow);
     switch (castLevel) {
         case 4:
             duration = 600;

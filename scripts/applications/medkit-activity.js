@@ -47,7 +47,8 @@ export class ActivityMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
             status: '', // Will indicate the label/color of medkit
             config: {
                 identifier: activityIdentifier,
-                cprHide: activity?.item?.flags?.['chris-premades']?.hiddenActivities?.includes(activityIdentifier) ? true: false
+                cprHide: activity?.item?.flags?.['chris-premades']?.hiddenActivities?.includes(activityIdentifier) ? true: false,
+                spellActivity: activity?.item?.flags?.['chris-premades']?.spellActivities?.includes(activityIdentifier) ? true : false
             },
         };
         // Figure out coloring for medkit
@@ -68,22 +69,34 @@ export class ActivityMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
             return;
         }
         let hiddenActivities = itemUtils.getHiddenActivities(item) ?? [];
+        let spellActivities = itemUtils.getSpellActivities(item) ?? [];
         let prevIdentifier = activityUtils.getIdentifier(this.activityDocument);
         let newIdentifier = this.context.config.identifier;
         let prevHidden = hiddenActivities.includes(prevIdentifier) ? true : false;
+        let prevspellActivity = spellActivities.includes(prevIdentifier) ? true : false;
         let newHidden = this.context.config.cprHide;
+        let newSpellActivity = this.context.config.spellActivity;
         if (prevIdentifier === newIdentifier) {
-            if (prevHidden === newHidden) {
+            if (prevHidden === newHidden && prevspellActivity === newSpellActivity) {
                 this.close();
                 return;
             }
-            // Same identifier, changed hidden
-            if (newHidden) {
-                hiddenActivities.push(newIdentifier);
-            } else {
-                hiddenActivities = hiddenActivities.toSpliced(hiddenActivities.findIndex(i => i === prevIdentifier), 1);
+            if (prevHidden != newHidden) {
+                if (newHidden) {
+                    hiddenActivities.push(newIdentifier);
+                } else {
+                    hiddenActivities = hiddenActivities.toSpliced(hiddenActivities.findIndex(i => i === prevIdentifier), 1);
+                }
+                await itemUtils.setHiddenActivities(item, hiddenActivities);
             }
-            await itemUtils.setHiddenActivities(item, hiddenActivities);
+            if (prevspellActivity != newSpellActivity) {
+                if (newSpellActivity) {
+                    spellActivities.push(newIdentifier);
+                } else {
+                    spellActivities = spellActivities.toSpliced(spellActivities.findIndex(i => i === prevIdentifier), 1);
+                }
+                await itemUtils.setSpellActivities(item, spellActivities);
+            }
             await genericUtils.update(item);
             this.close();
             return;
@@ -93,6 +106,8 @@ export class ActivityMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
         if (prevHidden) hiddenActivities = hiddenActivities.toSpliced(hiddenActivities.findIndex(i => i === prevIdentifier), 1);
         if (newHidden) hiddenActivities.push(newIdentifier);
         await itemUtils.setHiddenActivities(item, hiddenActivities);
+        if (prevspellActivity) spellActivities = spellActivities.toSpliced(spellActivities.findIndex(i => i === prevIdentifier), 1);
+        if (newSpellActivity) spellActivities.push(newIdentifier);
         await activityUtils.setIdentifier(this.activityDocument, newIdentifier);
         await genericUtils.update(item);
         this.close();
