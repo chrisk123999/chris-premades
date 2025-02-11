@@ -1,5 +1,5 @@
 # 1.1.39 Release:
-## New Mondern Content:
+## New Modern Content:
 - Beguiling Magic
 ## Bug Fixes:
 - Many Spells (Legacy & Modern)
