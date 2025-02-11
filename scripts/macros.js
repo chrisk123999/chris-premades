@@ -45,6 +45,7 @@ export {chromaticOrb} from './macros/2024/spells/chromaticOrb.js';
 export {circleOfDeath} from './macros/2024/spells/circleOfDeath.js';
 export {powerWordHeal} from './macros/2024/spells/powerWordHeal.js';
 export {powerWordKill} from './macros/2024/spells/powerWordKill.js';
+export {command, commandTurnStart, commandGrovel} from './macros/2024/spells/command.js';
 //Items
 export {unarmedStrike} from './macros/2024/items/misc/unarmedStrike.js';
 //Class Features
@@ -91,3 +92,4 @@ export {wordsOfCreation} from './macros/2024/classFeatures/bard/wordsOfCreation.
 export {dazzlingFootwork} from './macros/2024/classFeatures/bard/dance/dazzlingFootwork.js';
 export {inspiringMovement} from './macros/2024/classFeatures/bard/dance/inspiringMovement.js';
 export {tandemFootwork} from './macros/2024/classFeatures/bard/dance/tandemFootwork.js';
+export {leadingEvasion} from './macros/2024/classFeatures/bard/dance/leadingEvasion.js';

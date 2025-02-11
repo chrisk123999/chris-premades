@@ -1,3 +1,14 @@
+# 1.1.38 Release:
+## New Modern Content:
+- Leading Evasion
+- Command
+## Bug Fixes:
+- Condition Resistance
+- Condition Vulnerability
+## Update Notes:
+- Removed outdated DDBI integration. Make sure your DDBI module is up to date if you're using it.
+- Condition Resistance & Vulnerability have been updated to support Midi-Qol's other activity field.
+
 # 1.1.37 Release:
 ## Bug Fixes:
 - DSN Compatibility

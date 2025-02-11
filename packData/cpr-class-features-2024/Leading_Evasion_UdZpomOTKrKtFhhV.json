@@ -1,0 +1,183 @@
+{
+  "name": "Leading Evasion",
+  "type": "feat",
+  "effects": [
+    {
+      "name": "Leading Evasion",
+      "changes": [
+        {
+          "key": "flags.midi-qol.superSaver.dex",
+          "mode": 0,
+          "value": "1",
+          "priority": 20
+        }
+      ],
+      "transfer": false,
+      "img": "icons/skills/movement/feet-winged-boots-glowing-yellow.webp",
+      "_id": "P0wSjQQs6koQLFXO",
+      "type": "base",
+      "system": {},
+      "disabled": false,
+      "duration": {
+        "startTime": null,
+        "seconds": null,
+        "combat": null,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "description": "",
+      "origin": null,
+      "tint": "#ffffff",
+      "statuses": [],
+      "sort": 0,
+      "flags": {
+        "dae": {
+          "enableCondition": "",
+          "disableCondition": "",
+          "disableIncapacitated": false,
+          "selfTarget": false,
+          "selfTargetAlways": false,
+          "dontApply": true,
+          "stackable": "multi",
+          "showIcon": false,
+          "durationExpression": "",
+          "macroRepeat": "none",
+          "specialDuration": []
+        },
+        "core": {
+          "overlay": false
+        }
+      },
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "coreVersion": "12.331",
+        "systemId": "dnd5e",
+        "systemVersion": "4.2.2",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!items.effects!UdZpomOTKrKtFhhV.P0wSjQQs6koQLFXO"
+    },
+    {
+      "name": "Leading Evasion - Self",
+      "changes": [
+        {
+          "key": "flags.midi-qol.superSaver.dex",
+          "mode": 0,
+          "value": "!statusesSet.has('incapacitated')",
+          "priority": 20
+        }
+      ],
+      "transfer": true,
+      "img": "icons/skills/movement/feet-winged-boots-glowing-yellow.webp",
+      "_id": "BMboKUNm6DbUo9RE",
+      "type": "base",
+      "system": {},
+      "disabled": false,
+      "duration": {
+        "startTime": null,
+        "seconds": null,
+        "combat": null,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "description": "",
+      "origin": "Actor.yy1I4W4hqhw1yaiM.Item.XVpd4B7Yd7WJz65i",
+      "tint": "#ffffff",
+      "statuses": [],
+      "sort": 0,
+      "flags": {
+        "dae": {
+          "disableCondition": "",
+          "disableIncapacitated": false,
+          "stackable": "multi",
+          "showIcon": false,
+          "durationExpression": "",
+          "macroRepeat": "none",
+          "specialDuration": []
+        },
+        "core": {
+          "overlay": false
+        }
+      },
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "coreVersion": "12.331",
+        "systemId": "dnd5e",
+        "systemVersion": "4.2.2",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!items.effects!UdZpomOTKrKtFhhV.BMboKUNm6DbUo9RE"
+    }
+  ],
+  "system": {
+    "activities": {},
+    "uses": {
+      "spent": 0,
+      "recovery": []
+    },
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "identifier": "leading-evasion",
+    "source": {
+      "book": "PHB 2024",
+      "page": "",
+      "license": "",
+      "custom": "",
+      "rules": "2024",
+      "revision": 1
+    },
+    "advancement": [],
+    "cover": null,
+    "crewed": false,
+    "enchant": {},
+    "prerequisites": {
+      "level": 14,
+      "repeatable": false
+    },
+    "properties": [],
+    "requirements": "",
+    "type": {
+      "value": "class",
+      "subtype": ""
+    }
+  },
+  "flags": {
+    "dnd5e": {
+      "advancementOrigin": "wLL6TnmxaO2tTpKg",
+      "riders": {
+        "activity": []
+      }
+    },
+    "chris-premades": {
+      "info": {
+        "identifier": "leadingEvasion",
+        "source": "chris-premades",
+        "rules": "modern",
+        "version": "1.1.38"
+      },
+      "macros": {
+        "midi": {
+          "actor": [
+            "leadingEvasion"
+          ]
+        }
+      }
+    }
+  },
+  "img": "icons/skills/movement/feet-winged-boots-glowing-yellow.webp",
+  "folder": "uQXGY1jd5KlL70BZ",
+  "_id": "UdZpomOTKrKtFhhV",
+  "_key": "!items!UdZpomOTKrKtFhhV"
+}

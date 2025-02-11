@@ -1872,6 +1872,14 @@
             },
             "ZoneOfTruth": {
                 "Save": "Zone of Truth: Save"
+            },
+            "Command": {
+                "YouMust": "You must: ",
+                "Approach": "Approach",
+                "Drop": "Drop",
+                "Flee": "Flee",
+                "Grovel": "Grovel",
+                "Halt": "Halt"
             }
         },
         "ManualRolls": {

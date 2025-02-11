@@ -149,11 +149,11 @@ async function selectTargetDialog(title, content, targets, {type = 'one', select
     }
     return ([result, skip]);
 }
-async function confirm(title, content, {userId = game.user.id} = {}) {
+async function confirm(title, content, {userId = game.user.id, buttons = 'yesNo'} = {}) {
     let selection;
     if (userId !== game.user.id) {
-        selection = await socket.executeAsUser(sockets.dialog.name, userId, title, content, [], 'yesNo');
-    } else selection = await DialogApp.dialog(title, content, [], 'yesNo');
+        selection = await socket.executeAsUser(sockets.dialog.name, userId, title, content, [], buttons);
+    } else selection = await DialogApp.dialog(title, content, [], buttons);
     return selection?.buttons;
 }
 async function selectDocumentDialog(title, content, documents, {displayTooltips = false, sortAlphabetical = false, sortCR = false, userId = game.user.id, addNoneDocument = false, showCR = false, showSpellLevel = false} = {}) {

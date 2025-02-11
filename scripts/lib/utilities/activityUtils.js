@@ -88,7 +88,12 @@ function getConditions(activity) {
         let effectConditions = effectUtils.getConditions(i.effect);
         effectConditions.forEach(j => conditions.add(j));
     });
+    if (activity._otherActivity) conditions = conditions.union(getConditions(activity._otherActivity));
     return conditions;
+}
+function hasSave(activity) {
+    if (activity.type === 'save') return true;
+    if (activity._otherActivity) return hasSave(activity._otherActivity);
 }
 export let activityUtils = {
     getActivityByIdentifier,
@@ -96,5 +101,6 @@ export let activityUtils = {
     setIdentifier,
     setDamage,
     duplicateActivity,
-    getConditions
+    getConditions,
+    hasSave
 };

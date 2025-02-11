@@ -59,7 +59,7 @@ export class DialogApp extends HandlebarsApplicationMixin(ApplicationV2) {
          * @param {Array} inputs Form parts of the dialog
          * [typeOfField, [fields], globalOptionsForThisField]
          * @param {string} buttons String corresponding to localized buttons to confirm/cancel dialog
-         * 'yesNo' or 'okayCancel'
+         * 'yesNo', 'okayCancel', or 'ok'
      */
     /**
      * 
@@ -320,6 +320,8 @@ export class DialogApp extends HandlebarsApplicationMixin(ApplicationV2) {
             case 'yesNo': context.buttons.push(this.makeButton('CHRISPREMADES.Generic.Yes', 'true'), this.makeButton('CHRISPREMADES.Generic.No', 'false'));
                 break;
             case 'okCancel': context.buttons.push(this.makeButton('CHRISPREMADES.Generic.Ok', 'true'), this.makeButton('CHRISPREMADES.Generic.Cancel', 'false'));
+                break;
+            case 'ok': context.buttons.push(this.makeButton('CHRISPREMADES.Generic.Ok', 'true'));
                 break;
         }
         this.context = context;

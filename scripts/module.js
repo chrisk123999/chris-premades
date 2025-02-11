@@ -75,10 +75,9 @@ Hooks.once('ready', () => {
     skillCheck.patch();
     abilityCheck.patch();
     if (utils.genericUtils.getCPRSetting('manualRollsGMFulfils')) rollResolver.patch(true);
-    if (game.modules.get('ddb-importer')?.active) ddbi.workaround(); //Remove this after MrPrimate updates to the new API.
     if (utils.genericUtils.getCPRSetting('manualRollsEnabled')) {
         rollResolver.registerFulfillmentMethod();
-        rollResolver.patchBuild(true); // Update this for 4.2 when change, remove when able
+        rollResolver.patchBuild(true);
     }
     tours.checkTour();
     if (utils.genericUtils.getCPRSetting('activityCSSTweak')) activities.cssTweak();
@@ -98,5 +97,6 @@ globalThis['chrisPremades'] = {
     integration: {
         ddbi: ddbi.getAutomation
     },
-    customMacros: custom.getCustomMacroList
+    customMacros: custom.getCustomMacroList,
+    doBackup: backup.doBackup
 };
