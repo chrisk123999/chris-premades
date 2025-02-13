@@ -1,3 +1,11 @@
+# 1.1.40 Release:
+## New Modern Content:
+- Mantle of Inspiration
+- Mantle of Majesty
+## Bug Fixes:
+- Sap Mastery
+- Dread Lord (Legacy)
+
 # 1.1.39 Release:
 ## New Modern Content:
 - Beguiling Magic

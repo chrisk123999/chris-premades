@@ -1,4 +1,4 @@
-import {activityUtils, genericUtils, itemUtils} from '../utils.js';
+import {activityUtils, genericUtils, itemUtils, workflowUtils} from '../utils.js';
 function createEffectButtons(effect, buttons) {
     let buttonData = effect.flags['chris-premades']?.vae?.buttons;
     if (!buttonData) return;
@@ -24,12 +24,7 @@ function createEffectButtons(effect, buttons) {
                                     return;
                                 }
                             }
-                            let activity = item.system.activities?.filter(i => !item.flags?.dnd5e?.riders?.activity?.includes(i.id))?.[0];
-                            if (activity) {
-                                activity.use();
-                                return;
-                            }
-                            item.use();
+                            workflowUtils.completeItemUse(item);
                         }
                     }
                 });

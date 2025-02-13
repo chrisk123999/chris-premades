@@ -491,6 +491,28 @@ const advantageEffectData = {
         }
     }
 };
+const autoFailSaveEffectData = {
+    name: 'Auto Fail',
+    img: tempConditionIcon,
+    duration: {
+        seconds: 1
+    },
+    changes: [
+        {
+            key: 'flags.midi-qol.fail.ability.save.all',
+            value: 1,
+            mode: 0,
+            priority: 20
+        }
+    ],
+    flags: {
+        dae: {
+            specialDuration: [
+                'isSave'
+            ]
+        }
+    }
+};
 export let constants = {
     packs,
     featurePacks,
@@ -522,5 +544,6 @@ export let constants = {
     teleportOptions,
     itemProperties,
     armorOptions,
-    spellSchoolOptions
+    spellSchoolOptions,
+    autoFailSaveEffectData
 };

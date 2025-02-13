@@ -1,5 +1,6 @@
 //Mechanics
 export {invisible} from './macros/2024/mechanics/invisible.js';
+export {cleaveMastery, grazeMastery, pushMastery, sapMastery, slowMastery, toppleMastery, vexMastery} from './macros/2024/mechanics/masteries.js';
 //Generic
 export {proneOnFail} from './macros/2024/generic/proneOnFail.js';
 //Spells
@@ -95,3 +96,5 @@ export {tandemFootwork} from './macros/2024/classFeatures/bard/dance/tandemFootw
 export {leadingEvasion} from './macros/2024/classFeatures/bard/dance/leadingEvasion.js';
 //College of Glamour
 export {beguilingMagic} from './macros/2024/classFeatures/bard/glamour/beguilingMagic.js';
+export {mantleOfInspiration} from './macros/2024/classFeatures/bard/glamour/mantleOfInspiration.js';
+export {mantleOfMajesty, mantleOfMajestyCommand} from './macros/2024/classFeatures/bard/glamour/mantleOfMajesty.js';

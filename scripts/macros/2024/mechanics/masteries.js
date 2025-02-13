@@ -1,6 +1,6 @@
-import {custom} from '../../events/custom.js';
-import {combatUtils} from '../../lib/utilities/combatUtils.js';
-import {actorUtils, compendiumUtils, constants, dialogUtils, effectUtils, genericUtils, itemUtils, tokenUtils, workflowUtils} from '../../utils.js';
+import {custom} from '../../../events/custom.js';
+import {combatUtils} from '../../../lib/utilities/combatUtils.js';
+import {actorUtils, compendiumUtils, constants, dialogUtils, effectUtils, genericUtils, itemUtils, tokenUtils, workflowUtils} from '../../../utils.js';
 function perTurnCheck(actor, mastery) {
     if (!combatUtils.inCombat()) return true;
     let previousTurn = actor.flags['chris-premades']?.mastery?.[mastery]?.turn;
@@ -75,7 +75,8 @@ async function sap({workflow}) {
             dae: {
                 specialDuration: [
                     'turnStartSource',
-                    'combatEnd'
+                    'combatEnd',
+                    '1Attack'
                 ],
                 stackable: 'noneNameOnly'
             }
@@ -165,7 +166,7 @@ async function RollComplete(workflow) {
     if (!workflow.actor.system.traits?.weaponProf?.mastery?.value?.has(baseItem)) return;
     let mastery = workflow.item.system.mastery;
     if (!mastery) return;
-    let macro = custom.getMacro(mastery + 'Mastery');
+    let macro = custom.getMacro(mastery + 'Mastery', 'modern');
     if (!macro) return;
     try {
         await macro.masteryMacro({workflow});

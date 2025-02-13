@@ -329,7 +329,7 @@ async function turnStart({trigger: {entity: effect, token, target}}) {
     let frightened = effectUtils.getEffectByStatusID(target.actor, 'frightened');
     if (!frightened) return;
     let validKeys = ['macro.CE', 'macro.CUB', 'macro.StatusEffect', 'StatusEffect'];
-    let frightenedOfActor = actorUtils.getEffects(target.actor).find(async i => 
+    let frightenedOfActor = await actorUtils.getEffects(target.actor).find(async i => 
         (
             i.statuses.has('frightened') || // Status Effect dropdown on details page
             i.flags['chris-premades']?.conditions?.includes('frightened') || // CPR effect medkit

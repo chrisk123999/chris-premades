@@ -10,7 +10,7 @@ import {cleave} from '../macros/mechanics/cleave.js';
 import {critFumble} from '../macros/homebrew/critFumble.js';
 import {explodingHeals} from '../macros/homebrew/explodingHeals.js';
 import {CPRMultipleRollResolver} from '../applications/rollResolverMultiple.js';
-import {masteries} from '../macros/mechanics/masteries.js';
+import {masteries} from '../macros/2024/mechanics/masteries.js';
 import {effects} from '../extensions/effects.js';
 function getItemMacroData(item) {
     return item.flags['chris-premades']?.macros?.midi?.item ?? [];

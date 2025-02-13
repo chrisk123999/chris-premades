@@ -326,6 +326,7 @@
             },
             "Configure": "Configure",
             "ConsumeItemToUse": "Consume a usage of {item} to use?",
+            "ConsumeSpellSlotToUse": "Consume a spell slot to use?",
             "Disabled": "Disabled",
             "Distance": "Distance",
             "Edit": "Edit",
@@ -1253,6 +1254,10 @@
                 "Far": "{actorName}'s Manifest Mind is too far away. Remove it?",
                 "Invalid": "Invalid Action Type!",
                 "Move": "Manifest Mind: Move"
+            },
+            "MantleOfInspiration": {
+                "Reaction": "Use your reaction to move?",
+                "Targets": "Select up to {maxtargets} targets:"
             },
             "MartialAdvantage": {
                 "Name": "Martial Advantage"

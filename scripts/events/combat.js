@@ -2,7 +2,7 @@ import {custom} from './custom.js';
 import {actorUtils, socketUtils, templateUtils, effectUtils, genericUtils, tokenUtils, itemUtils, regionUtils} from '../utils.js';
 import {templateEvents} from './template.js';
 import {regionEvents} from './region.js';
-import {masteries} from '../macros/mechanics/masteries.js';
+import {masteries} from '../macros/2024/mechanics/masteries.js';
 function getMacroData(entity) {
     return entity.flags['chris-premades']?.macros?.combat ?? [];
 }
