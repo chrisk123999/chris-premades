@@ -1,3 +1,9 @@
+# 1.0.62 Release:
+## Bug Fixes:
+- Distracting Strike
+- Sanctuary
+- Warding Bond
+
 # 1.0.61 Release:
 ## Bug Fixes:
 - CPR Workflow

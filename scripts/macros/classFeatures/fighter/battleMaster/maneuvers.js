@@ -147,13 +147,20 @@ async function useDistractingStrike({workflow}) {
         flags: {
             dae: {
                 specialDuration: [
-                    'turnStartSource',
-                    'isAttacked'
+                    'turnStartSource'
                 ]
             }
         }
     };
+    await effectUtils.addMacro(effectData, 'midi.actor', ['distractingStrikeEffect']);
     await effectUtils.createEffect(targetActor, effectData);
+}
+async function distractingStrikeEffectHit({trigger: {entity: effect}, workflow}) {
+    if (!workflow.targets.size) return;
+    if (!constants.attacks.includes(workflow.item.system.actionType)) return;
+    let originItem = await fromUuid(effect.origin);
+    if (originItem.actor === workflow.actor) return;
+    await genericUtils.remove(effect);
 }
 async function useGoadingAttack({workflow}) {
     if (!workflow.failedSaves.size) return;
@@ -547,6 +554,19 @@ export let maneuversTripAttack = {
             {
                 pass: 'rollFinished',
                 macro: useTripAttack,
+                priority: 50
+            }
+        ]
+    }
+};
+export let distractingStrikeEffect = {
+    name: 'Distracting Strike: Effect',
+    version: '1.0.62',
+    midi: {
+        actor: [
+            {
+                pass: 'targetRollFinished',
+                macro: distractingStrikeEffectHit,
                 priority: 50
             }
         ]

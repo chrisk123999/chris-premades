@@ -28,6 +28,7 @@ async function targeted({workflow}) {
     if (workflow.targets.size !== 1) return;
     let invalidTypes = Object.keys(CONFIG.DND5E.areaTargetTypes);
     if (invalidTypes.includes(workflow.item.system.target?.type)) return;
+    if (workflow.item.system.type?.value === 'spellFeature') return;
     let targetToken = workflow.targets.first();
     if (targetToken.document.disposition === workflow.token.document.disposition) return;
     let effect = effectUtils.getEffectByIdentifier(targetToken.actor, 'sanctuarySafe');

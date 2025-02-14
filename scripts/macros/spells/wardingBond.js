@@ -84,7 +84,7 @@ async function onHit({trigger, workflow}) {
     let damageInfo = workflow.damageList.find(i => i.actorId === trigger.token.actor.id);
     if (!damageInfo) return;
     let appliedDamage = Math.floor(damageInfo.damageDetail.reduce((acc, i) => acc + i.value, 0)) ?? 0;
-    if (!appliedDamage) return;
+    if (!appliedDamage || appliedDamage < 0) return;
     let featureData = await compendiumUtils.getItemFromCompendium(constants.featurePacks.spellFeatures, 'Warding Bond: Damage', {object: true, getDescription: true, translate: 'CHRISPREMADES.Macros.WardingBond.Damage'});
     if (!featureData) return;
     featureData.system.damage.parts[0][0] = appliedDamage;

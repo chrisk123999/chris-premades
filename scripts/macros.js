@@ -284,7 +284,7 @@ export {legionOfOne} from './macros/classFeatures/fighter/echoKnight/legionOfOne
 export {lightningReload} from './macros/classFeatures/fighter/gunslinger/lightningReload.js';
 export {maddeningHex} from './macros/classFeatures/warlock/invocations/maddeningHex.js';
 export {magicalInspiration} from './macros/classFeatures/bard/magicalInspiration.js';
-export {maneuversAmbush, maneuversBaitAndSwitch, maneuversBrace, maneuversCommandersStrike, maneuversCommandingPresence, maneuversDisarmingAttack, maneuversDistractingStrike, maneuversEvasiveFootwork, maneuversFeintingAttack, maneuversGoadingAttack, maneuversGrapplingStrike, maneuversLungingAttack, maneuversManeuveringAttack, maneuversMenacingAttack, maneuversParry, maneuversPrecisionAttack, maneuversPushingAttack, maneuversQuickToss, maneuversRally, maneuversRiposte, maneuversSweepingAttack, maneuversSweepingAttackAttack, maneuversTacticalAssessment, maneuversTripAttack} from './macros/classFeatures/fighter/battleMaster/maneuvers.js';
+export {maneuversAmbush, maneuversBaitAndSwitch, maneuversBrace, maneuversCommandersStrike, maneuversCommandingPresence, maneuversDisarmingAttack, maneuversDistractingStrike, maneuversEvasiveFootwork, maneuversFeintingAttack, maneuversGoadingAttack, maneuversGrapplingStrike, maneuversLungingAttack, maneuversManeuveringAttack, maneuversMenacingAttack, maneuversParry, maneuversPrecisionAttack, maneuversPushingAttack, maneuversQuickToss, maneuversRally, maneuversRiposte, maneuversSweepingAttack, maneuversSweepingAttackAttack, maneuversTacticalAssessment, maneuversTripAttack, distractingStrikeEffect} from './macros/classFeatures/fighter/battleMaster/maneuvers.js';
 export {manifestEcho, manifestEchoActive, manifestEchoTeleport, manifestEchoAttack} from './macros/classFeatures/fighter/echoKnight/manifestEcho.js';
 export {manifestMind, manifestMindCast} from './macros/classFeatures/wizard/orderOfScribes/manifestMind.js';
 export {masterOfHexes} from './macros/classFeatures/warlock/hexblade/masterOfHexes.js';
@@ -442,8 +442,6 @@ export {shieldGuardianBound} from './macros/monsterFeatures/construct/shieldGuar
 export {shieldGuardianShield, shieldGuardianShieldEffect} from './macros/monsterFeatures/construct/shieldGuardian/shield.js';
 export {shieldGuardianSpellStoring} from './macros/monsterFeatures/construct/shieldGuardian/spellStoring.js';
 export {leadership, leadershipAura} from './macros/monsterFeatures/fey/hobgoblin/leadership.js';
-//export {adultWindDragonFrightfulPresence, ancientWindDragonFrightfulPresence} from './macros/monsterFeatures/dragon/windDragon/frightfulPresence.js';
-//export {adultWindDragonTempestBreath, ancientWindDragonTempestBreath, wyrmlingWindDragonTempestBreath, youngWindDragonTempestBreath} from './macros/monsterFeatures/dragon/windDragon/tempestBreath.js';
 // Generic Monster Features
 export {advantageDamageBonus} from './macros/monsterFeatures/generic/advantageDamageBonus.js';
 export {auraDamageEnd} from './macros/monsterFeatures/generic/auraDamage.js';
