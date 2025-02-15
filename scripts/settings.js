@@ -599,7 +599,7 @@ export function registerSettings() {
             } else {
                 rollResolver.unregisterFulfillmentMethod();
             }
-            rollResolver.patchBuild(value); // Remove this when able
+            if (foundry.utils.isNewerVersion('4.3', game.system.version)) rollResolver.patchBuild(value); // remove when 4.3+ only
         }
     });
     addSetting({

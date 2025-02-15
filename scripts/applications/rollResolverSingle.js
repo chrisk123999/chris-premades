@@ -123,7 +123,7 @@ export class CPRSingleRollResolver extends HandlebarsApplicationMixin(Applicatio
                     return modifiersString;
                 }, false),
                 name: this.roll.data.name,
-                flavor: this.roll.options.type ?? this.roll.data?.item?.name,
+                flavor: this.roll.options.rollType ?? this.roll.data?.item?.name,
                 bonusTotal: this.roll.terms.reduce((acc, cur) => {
                     if (cur instanceof CONFIG.Dice.termTypes.NumericTerm) acc += cur.number;
                 }, 0)
@@ -131,13 +131,13 @@ export class CPRSingleRollResolver extends HandlebarsApplicationMixin(Applicatio
             buttons: [{type: 'submit', label: 'CHRISPREMADES.Generic.Submit', name: 'confirm', icon: 'fa-solid fa-check'}]
         };
         context.options.content = (!context.options.name || !context.options.type) ? context.formula : context.options.name + ' - ' + context.options.type;
-        if (this.roll.options?.type?.toLowerCase()?.includes('attack')) context.quickButtons = [
+        if (this.roll.options?.rollType?.toLowerCase()?.includes('attack')) context.quickButtons = [
             {type: 'submit',  label: 'CHRISPREMADES.ManualRolls.Fumble', name: 'attack-fumble', icon: 'fa-solid fa-skull-crossbones'},
             {type: 'submit',  label: 'CHRISPREMADES.ManualRolls.Miss', name: 'attack-miss', icon: 'fa-solid fa-xmark'},
             {type: 'submit',  label: 'CHRISPREMADES.ManualRolls.Hit', name: 'attack-hit', icon: 'fa-solid fa-check'},
             {type: 'submit',  label: 'CHRISPREMADES.ManualRolls.Critical', name: 'attack-critical', icon: 'fa-solid fa-check-double'}
         ];
-        else if (this.roll.options?.type?.toLowerCase()?.includes('sav')) context.quickButtons = [
+        else if (this.roll.options?.rollType?.toLowerCase()?.includes('sav')) context.quickButtons = [
             {type: 'submit',  label: 'CHRISPREMADES.ManualRolls.Failure', name: 'save-failure', icon: 'fa-solid fa-thumbs-down'},
             {type: 'submit',  label: 'CHRISPREMADES.ManualRolls.Success', name: 'save-success', icon: 'fa-solid fa-thumbs-up'}
         ];

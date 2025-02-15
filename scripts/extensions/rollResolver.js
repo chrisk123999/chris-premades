@@ -64,7 +64,7 @@ async function buildConfigure(wrapped, config={}, dialog={}, message={}) {
     if (rollType) {
         for (let roll of config.rolls ?? []) {
             roll.options ??= {};
-            roll.options.type ??= rollType;
+            roll.options.rollType ??= rollType;
         }
     }
     return await wrapped(config, dialog, message);

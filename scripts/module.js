@@ -77,7 +77,7 @@ Hooks.once('ready', () => {
     if (utils.genericUtils.getCPRSetting('manualRollsGMFulfils')) rollResolver.patch(true);
     if (utils.genericUtils.getCPRSetting('manualRollsEnabled')) {
         rollResolver.registerFulfillmentMethod();
-        rollResolver.patchBuild(true);
+        if (foundry.utils.isNewerVersion('4.3', game.system.version)) rollResolver.patchBuild(true); // remove when 4.3+ only
     }
     tours.checkTour();
     if (utils.genericUtils.getCPRSetting('activityCSSTweak')) activities.cssTweak();
