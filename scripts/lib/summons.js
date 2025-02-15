@@ -347,7 +347,8 @@ export class Summons {
         if (!effect) effect = await effectUtils.createEffect(this.originItem.actor, this.casterEffect, effectOptions);
         // Make summon effects dependent on caster effect
         let summonEffects = this.spawnedTokens.map(i => actorUtils.getEffects(i.actor).find(e => e.name === genericUtils.translate('CHRISPREMADES.Summons.SummonedCreature')));
-        await effectUtils.addDependent(effect, summonEffects);
+        // I think doesn't need to be dependent since when parent effect is deleted we destroy all the summoned tokens anyway
+        // await effectUtils.addDependent(effect, summonEffects);
         
         // Make caster effect dependent on each summon effect
         // await Promise.all(summonEffects.map(async e => await effectUtils.addDependent(e, [effect])));

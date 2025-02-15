@@ -27,9 +27,6 @@ async function remove({trigger: {entity: effect}}) {
     }
     await genericUtils.update(parentEffect, {
         flags: {
-            dnd5e: {
-                dependents: parentEffect.flags.dnd5e.dependents.filter(i => !childEffectUuids.includes(i.uuid))
-            },
             'chris-premades': {
                 macros: {
                     effect: []
