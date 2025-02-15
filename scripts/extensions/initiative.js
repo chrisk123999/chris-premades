@@ -19,15 +19,26 @@ function updateCompanionInitiative(actor, [combatant]) {
     companions.forEach(c => combatantLoop(c, combatant));
 }
 function combatantLoop(c, combatant) {
-    if (c.initiative === null) {
-        if (game.user.isGM) c.update({'initiative': combatant.initiative - 0.01});
-        else updateInitiative(c, combatant.initiative - 0.01);
+    if (c.initiative === null) genericUtils.update(combatant, {initiative: initiative});
+}
+function patchedGetGroupingKey(wrapped, ...args) {
+    let result = wrapped(args);
+    let controlActorUuid = this.actor.flags['chris-premades']?.summons?.control?.actor;
+    if (!result || controlActorUuid) {
+        let actor = controlActorUuid ? (fromUuidSync(controlActorUuid) ?? this.actor) : this.actor;
+        result = (Math.round(this.initiative)).paddedString(4) + ':' + this?.token?.disposition + ':' + actor.id;
+    }
+    return result;    
+}
+function patch(enabled) {
+    if (enabled) {
+        libWrapper.register('chris-premades', 'CONFIG.Combatant.documentClass.prototype.getGroupingKey', patchedGetGroupingKey, 'MIXED');
+    } else {
+        libWrapper.unregister('chris-premades', 'CONFIG.Combatant.documentClass.prototype.getGroupingKey');
     }
 }
-function updateInitiative(combatant, initiative) {
-    genericUtils.update(combatant, {initiative: initiative});
-}
 export let initiative = {
-    updateCompanionInitiative: updateCompanionInitiative,
-    updateSummonInitiative: updateSummonInitiative
+    updateCompanionInitiative,
+    updateSummonInitiative,
+    patch
 };

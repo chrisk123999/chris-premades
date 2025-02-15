@@ -35,6 +35,7 @@ import {abilityCheck} from './events/abilityCheck.js';
 import {itemDirectory} from './applications/itemDirectory.js';
 import {activities} from './extensions/activities.js';
 import {migrate} from './migrations.js';
+import {initiative} from './extensions/initiative.js';
 Hooks.once('socketlib.ready', registerSockets);
 Hooks.once('init', () => {
     registerSettings();
@@ -74,6 +75,7 @@ Hooks.once('ready', () => {
     abilitySave.patch();
     skillCheck.patch();
     abilityCheck.patch();
+    initiative.patch(true);
     if (utils.genericUtils.getCPRSetting('manualRollsGMFulfils')) rollResolver.patch(true);
     if (utils.genericUtils.getCPRSetting('manualRollsEnabled')) {
         rollResolver.registerFulfillmentMethod();

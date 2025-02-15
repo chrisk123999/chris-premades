@@ -177,11 +177,11 @@ export class Summons {
         this.currentIndex = 0;
     }
     async prepareData() {
-        if (this.options.animation != 'none' && !this.options.callbacks?.post) {
+        if (this.options.animation != 'none') {
             let callbackFunction = animationUtils.summonEffects[this.options.animation];
             // TODO: Do we need this check here? Should be taking care of it per summoning spell/item
             if (typeof callbackFunction === 'function' && animationUtils.jb2aCheck() === 'patreon' && animationUtils.aseCheck()) {
-                genericUtils.setProperty(this.options, 'callbacks.post', callbackFunction);
+                if (!this.options.callbacks?.post) genericUtils.setProperty(this.options, 'callbacks.post', callbackFunction);
                 this.mergeUpdates({token: {alpha: 0}});
             }
         }
