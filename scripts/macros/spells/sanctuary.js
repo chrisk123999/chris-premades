@@ -28,6 +28,9 @@ async function targeted({trigger: {entity: effect}, workflow}) {
     if (invalidTypes.includes(workflow.item.system.target?.type)) return;
     let targetToken = workflow.targets.first();
     if (targetToken.document.disposition === workflow.token.document.disposition) return;
+    if (workflow.item.type === 'spell') {
+        if (!activityUtils.isSpellActivity(workflow.activity)) return;
+    }
     let originItem = await effectUtils.getOriginItem(effect);
     let feature = activityUtils.getActivityByIdentifier(originItem, 'sanctuarySave', {strict: true});
     if (!feature) return;

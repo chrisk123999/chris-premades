@@ -1,3 +1,9 @@
+# 1.1.41 Release:
+## Bug Fixes:
+- Distracting Strike (Legacy)
+- Sanctuary (Legacy)
+- Warding Bond (Legacy)
+
 # 1.1.40 Release:
 ## New Modern Content:
 - Mantle of Inspiration

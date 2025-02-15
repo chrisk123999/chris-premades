@@ -92,7 +92,7 @@ async function onHit({trigger: {token, entity: effect}, workflow}) {
     let damageInfo = workflow.damageList.find(i => i.actorId === token.actor.id);
     if (!damageInfo) return;
     let appliedDamage = Math.floor(damageInfo.damageDetail.reduce((acc, i) => acc + i.value, 0)) ?? 0;
-    if (!appliedDamage) return;
+    if (appliedDamage <= 0) return;
     let feature = activityUtils.getActivityByIdentifier(await effectUtils.getOriginItem(effect), 'wardingBondDamage', {strict: true});
     if (!feature) return;
     await activityUtils.setDamage(feature, appliedDamage.toString());

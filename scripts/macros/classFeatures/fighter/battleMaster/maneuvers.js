@@ -1,7 +1,6 @@
 import {activityUtils, actorUtils, compendiumUtils, constants, dialogUtils, effectUtils, errors, genericUtils, itemUtils, socketUtils, tokenUtils, workflowUtils} from '../../../../utils.js';
 import {proneOnFail} from '../../../generic/proneOnFail.js';
 import {determineSuperiorityDie} from './superiorityDice.js';
-
 async function useBaitAndSwitch({workflow}) {
     if (workflow.targets.size !== 1) return;
     let targetToken = workflow.targets.first();
@@ -148,13 +147,20 @@ async function useDistractingStrike({workflow}) {
         flags: {
             dae: {
                 specialDuration: [
-                    'turnStartSource',
-                    'isAttacked'
+                    'turnStartSource'
                 ]
             }
         }
     };
+    await effectUtils.addMacro(effectData, 'midi.actor', ['distractingStrikeEffect']);
     await effectUtils.createEffect(targetActor, effectData);
+}
+async function distractingStrikeEffectHit({trigger: {entity: effect}, workflow}) {
+    if (!workflow.targets.size) return;
+    if (!constants.attacks.includes(workflow.activity.actionType)) return;
+    let originItem = await fromUuid(effect.origin);
+    if (originItem.actor === workflow.actor) return;
+    await genericUtils.remove(effect);
 }
 async function useGoadingAttack({workflow}) {
     if (!workflow.failedSaves.size) return;
@@ -542,6 +548,19 @@ export let maneuversTripAttack = {
                 macro: proneOnFail.midi.item[0].macro,
                 priority: 50,
                 activities: ['tripAttackAttack']
+            }
+        ]
+    }
+};
+export let distractingStrikeEffect = {
+    name: 'Distracting Strike: Effect',
+    version: '1.1.41',
+    midi: {
+        actor: [
+            {
+                pass: 'targetRollFinished',
+                macro: distractingStrikeEffectHit,
+                priority: 50
             }
         ]
     }
