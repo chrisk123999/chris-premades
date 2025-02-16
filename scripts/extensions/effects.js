@@ -187,10 +187,18 @@ function preImageCreate(effect, updates, options, id) {
     if (!(effect.parent instanceof Actor)) return;
     let actorImg = effect.flags['chris-premades']?.image?.actor?.value;
     let tokenImg = effect.flags['chris-premades']?.image?.token?.value;
-    if (actorImg) effect.updateSource({'flags.chris-premades.image.actor.previous': effect.parent.img});
-    if (tokenImg) {
-        let token = actorUtils.getFirstToken(effect.parent);
-        if (token) effect.updateSource({'flags.chris-premades.image.token.previous': token.document.texture.src});
+    let otherActorEffects = actorUtils.getEffects(effect.parent).filter(i => i.flags['chris-premades']?.image?.actor && i.id != effect.id).sort((a, b) => b.flags['chris-premades'].image.actor.priority - a.flags['chris-premades'].image.actor.priority);
+    let otherTokenEffects = actorUtils.getEffects(effect.parent).filter(i => i.flags['chris-premades']?.image?.token && i.id != effect.id).sort((a, b) => b.flags['chris-premades'].image.token.priority - a.flags['chris-premades'].image.token.priority);
+    console.log(otherActorEffects);
+    if (actorImg && !otherActorEffects.length) {
+        effect.updateSource({'flags.chris-premades.image.actor.original': effect.parent.img});
+    } else if (actorImg) {
+        effect.updateSource({'flags.chris-premades.image.actor.original': otherActorEffects[0].flags['chris-premades'].image.actor.original});
+    }
+    if (tokenImg && !otherTokenEffects.length) {
+        effect.updateSource({'flags.chris-premades.image.token.original': effect.parent.img});
+    } else if (tokenImg) {
+        effect.updateSource({'flags.chris-premades.image.token.original': otherTokenEffects[0].flags['chris-premades'].image.token.original});
     }
 }
 async function imageCreate(effect, options, id) {
@@ -198,21 +206,43 @@ async function imageCreate(effect, options, id) {
     if (!(effect.parent instanceof Actor)) return;
     let actorImg = effect.flags['chris-premades']?.image?.actor?.value;
     let tokenImg = effect.flags['chris-premades']?.image?.token?.value;
-    if (actorImg) await genericUtils.update(effect.parent, {img: actorImg});
+    if (actorImg) {
+        let otherActorEffects = actorUtils.getEffects(effect.parent).filter(i => i.flags['chris-premades']?.image?.actor&& i.id != effect.id).sort((a, b) => b.flags['chris-premades'].image.actor.priority - a.flags['chris-premades'].image.actor.priority);
+        if (!otherActorEffects.length) {
+            await genericUtils.update(effect.parent, {img: actorImg});
+        } else if (otherActorEffects[0]?.id != effect.id) {
+            await genericUtils.update(effect.parent, {img: otherActorEffects[0].flags['chris-premades'].image.actor.value});
+        }
+    }
     if (tokenImg) {
-        let tokens = effect.parent.getActiveTokens();
-        if (tokens.length) await Promise.all(tokens.map(async token => await genericUtils.update(token.document, {'texture.src': tokenImg})));
+        let otherTokenEffects = actorUtils.getEffects(effect.parent).filter(i => i.flags['chris-premades']?.image?.token&& i.id != effect.id).sort((a, b) => b.flags['chris-premades'].image.token.priority - a.flags['chris-premades'].image.token.priority);
+        if (!otherTokenEffects.length) {
+            let tokens = effect.parent.getActiveTokens();
+            if (tokens.length) await Promise.all(tokens.map(async token => await genericUtils.update(token.document, {'texture.src': tokenImg})));
+        } else if (otherTokenEffects[0]?.id === effect.id) {
+            let tokens = effect.parent.getActiveTokens();
+            if (tokens.length) await Promise.all(tokens.map(async token => await genericUtils.update(token.document, {'texture.src': otherTokenEffects[0].flags['chris-premades'].image.token.value})));
+        }
     }
 }
 async function imageRemove(effect, options, id) {
     if (!socketUtils.isTheGM()) return;
     if (!(effect.parent instanceof Actor)) return;
-    let actorImg = effect.flags['chris-premades']?.image?.actor?.previous;
-    let tokenImg = effect.flags['chris-premades']?.image?.token?.previous;
-    if (actorImg) await genericUtils.update(effect.parent, {img: actorImg});
-    if (tokenImg) {
+    let actorImg = effect.flags['chris-premades']?.image?.actor?.value;
+    let tokenImg = effect.flags['chris-premades']?.image?.token?.value;
+    let otherActorEffects = actorUtils.getEffects(effect.parent).filter(i => i.flags['chris-premades']?.image?.actor && i.id != effect.id).sort((a, b) => b.flags['chris-premades'].image.actor.priority - a.flags['chris-premades'].image.actor.priority);
+    let otherTokenEffects = actorUtils.getEffects(effect.parent).filter(i => i.flags['chris-premades']?.image?.token && i.id != effect.id).sort((a, b) => b.flags['chris-premades'].image.token.priority - a.flags['chris-premades'].image.token.priority);
+    if (actorImg && !otherActorEffects.length) {
+        await genericUtils.update(effect.parent, {img: effect.flags['chris-premades'].image.actor.original});
+    } else if (actorImg && otherActorEffects[0].id != effect.id) {
+        await genericUtils.update(effect.parent, {img: otherActorEffects[0].flags['chris-premades'].image.actor.value});
+    }
+    if (tokenImg && !otherTokenEffects.length) {
         let tokens = effect.parent.getActiveTokens();
-        if (tokens.length) await Promise.all(tokens.map(async token => await genericUtils.update(token.document, {'texture.src': tokenImg})));
+        if (tokens.length) await Promise.all(tokens.map(async token => await genericUtils.update(token.document, {'texture.src': effect.flags['chris-premades'].image.token.original})));
+    } else if (tokenImg && otherTokenEffects[0].id != effect.id) {
+        let tokens = effect.parent.getActiveTokens();
+        if (tokens.length) await Promise.all(tokens.map(async token => await genericUtils.update(token.document, {'texture.src': otherTokenEffects[0].flags['chris-premades'].image.token.value})));
     }
 }
 export let effects = {
