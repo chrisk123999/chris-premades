@@ -6,6 +6,7 @@ async function attacked({trigger: {entity: effect}, workflow}) {
     let item = await effectUtils.getOriginItem(effect);
     if (!item?.system?.uses?.value) return;
     let activity = activityUtils.getActivityByIdentifier('save');
+    //Finish this
 }
 
 export let unbreakableMajesty = {

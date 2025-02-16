@@ -28,7 +28,8 @@
     "requirements": "",
     "properties": [],
     "prerequisites": {
-      "level": null
+      "level": null,
+      "repeatable": false
     },
     "activities": {
       "dnd5eactivity000": {
@@ -117,13 +118,38 @@
         },
         "sort": 0,
         "useConditionText": "",
-        "forceDialog": false,
         "effectConditionText": "",
-        "midiAutomationOnly": false
+        "macroData": {
+          "name": "",
+          "command": ""
+        },
+        "ignoreTraits": {
+          "idi": false,
+          "idr": false,
+          "idv": false,
+          "ida": false
+        },
+        "midiProperties": {
+          "ignoreTraits": [],
+          "triggeredActivityId": "none",
+          "triggeredActivityConditionText": "",
+          "triggeredActivityTargets": "targets",
+          "triggeredActivityRollAs": "self",
+          "forceDialog": false,
+          "confirmTargets": "default",
+          "autoTargetType": "any",
+          "autoTargetAction": "default",
+          "automationOnly": false,
+          "otherActivityCompatible": true,
+          "identifier": ""
+        }
       }
     },
     "identifier": "shift-wildhunt",
-    "enchant": {}
+    "enchant": {},
+    "advancement": [],
+    "cover": null,
+    "crewed": false
   },
   "flags": {
     "midi-qol": {
@@ -204,7 +230,7 @@
   },
   "effects": [],
   "img": "icons/creatures/abilities/cougar-pounce-stalk-black.webp",
-  "folder": "ZquFmNYhZRRbosGy",
-  "_id": "JA1OT7B5479veO4B",
-  "_key": "!items!JA1OT7B5479veO4B"
+  "folder": "pwpb9kM0BTFBNaDq",
+  "_id": "Xit8q8sg8sjkeOHH",
+  "_key": "!items!Xit8q8sg8sjkeOHH"
 }

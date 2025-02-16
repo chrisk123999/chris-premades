@@ -1,3 +1,12 @@
+# 1.1.42 Releaes:
+## Bug Fixes:
+- Help Action
+- Many Legacy Spells
+# Update Notes:
+- Slasher, Piercer, and Crusher have been reworked to be one item each, to match how they import from DDBI now (previously they imported as two features each). The old features may not medkit correctly into the new ones. Adding them manually from the CPR compendium or using the medkit on a previously non-medkit feature will fix this.
+- Added a feature to group summoned actors together with their creator in the combat tracker.
+- This version of CPR requires the D&D 4.3.1 system!
+
 # 1.1.41 Release:
 ## Bug Fixes:
 - Distracting Strike (Legacy)

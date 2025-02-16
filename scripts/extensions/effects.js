@@ -189,7 +189,6 @@ function preImageCreate(effect, updates, options, id) {
     let tokenImg = effect.flags['chris-premades']?.image?.token?.value;
     let otherActorEffects = actorUtils.getEffects(effect.parent).filter(i => i.flags['chris-premades']?.image?.actor && i.id != effect.id).sort((a, b) => b.flags['chris-premades'].image.actor.priority - a.flags['chris-premades'].image.actor.priority);
     let otherTokenEffects = actorUtils.getEffects(effect.parent).filter(i => i.flags['chris-premades']?.image?.token && i.id != effect.id).sort((a, b) => b.flags['chris-premades'].image.token.priority - a.flags['chris-premades'].image.token.priority);
-    console.log(otherActorEffects);
     if (actorImg && !otherActorEffects.length) {
         effect.updateSource({'flags.chris-premades.image.actor.original': effect.parent.img});
     } else if (actorImg) {
