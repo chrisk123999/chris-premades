@@ -30,7 +30,7 @@ async function setSaveDC(effect, dc) {
     data.saveDC = dc;
     await setCastData(effect, data);
 }
-async function createEffect(entity, effectData, {concentrationItem, parentEntity, identifier, vae, interdependent, strictlyInterdependent, unhideActivities, rules, macros, conditions, animate = true} = {}, {animationPath, animationSize = 1, animationFadeIn = 300, animationFadeOut = 300, animationSound} = {}) {
+async function createEffect(entity, effectData, {concentrationItem, parentEntity, identifier, vae, interdependent, strictlyInterdependent, unhideActivities, rules, macros, conditions, animate = true, tokenImg, avatarImg, tokenImgPriority = 50, avatarImgPriority = 50} = {}, {animationPath, animationSize = 1, animationFadeIn = 300, animationFadeOut = 300, animationSound} = {}) {
     let hasPermission = socketUtils.hasPermission(entity, game.user.id);
     let concentrationEffect;
     if (concentrationItem) concentrationEffect = getConcentrationEffect(concentrationItem.actor, concentrationItem);
@@ -51,6 +51,14 @@ async function createEffect(entity, effectData, {concentrationItem, parentEntity
     if (macros) macros.forEach(i => addMacro(effectData, i.type, i.macros));
     if (conditions) genericUtils.setProperty(effectData, 'flags.chris-premades.conditions', conditions);
     if (!animate) genericUtils.setProperty(effectData, 'flags.chris-premades.effect.noAnimation', true);
+    if (tokenImg) {
+        genericUtils.setProperty(effectData, 'flags.chris-premades.image.token.value', tokenImg);
+        genericUtils.setProperty(effectData, 'flags.chris-premades.image.token.priority', tokenImgPriority);
+    }
+    if (avatarImg) {
+        genericUtils.setProperty(effectData, 'flags.chris-premades.image.actor.value', avatarImg);
+        genericUtils.setProperty(effectData, 'flags.chris-premades.image.actor.priority', avatarImgPriority);
+    }
     let effects;
     if (hasPermission) {
         effects = await entity.createEmbeddedDocuments('ActiveEffect', [effectData]);

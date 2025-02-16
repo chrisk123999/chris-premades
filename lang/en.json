@@ -115,6 +115,8 @@
             "ApplyFilter": "Apply Filter:",
             "ArmoTypes": "Armor Types:",
             "AttackBonus": "Attack Bonus:",
+            "AvatarImg": "Avatar Image:",
+            "AvatarImgPriority": "Avatar Image Priority:",
             "BaseDiceNumber": "Base Dice Number:",
             "BlockingStatuses": "Blocking Statuses:",
             "Character": "Character",
@@ -190,6 +192,8 @@
             "Sound": "Sound:",
             "SpecificAnimation": "{option} Animation:",
             "SpellSchools": "Spell Schools:",
+            "TokenImg": "Token Image:",
+            "TokenImgPriority": "Token Image Priority:",
             "Trigger": "Trigger:",
             "TurnTrigger": "Turn Trigger:",
             "UseFormula": "Use Formula:",
@@ -2381,6 +2385,10 @@
                 "Hint": "The Gamemaster ID used for sockets. Automatically set.",
                 "Name": "Gamemaster User ID"
             },
+            "groupSummonsWithOwner": {
+                "Hint": "When enabled, summons created via the CPR API will be grouped together in the combat tracker if their initative is the same.",
+                "Name": "Group Summons With Owner"
+            },
             "hiddenCompendiumFolders": {
                 "Hint": "Selected compendium folders will be hidden.",
                 "Name": "Hidden Compendium Folders"
@@ -2546,10 +2554,6 @@
             "weaponMastery": {
                 "Hint": "Enable PHB 2024 weapon mastery automation.",
                 "Name": "Weapon Mastery Automation"
-            },
-            "groupSummonsWithOwner": {
-                "Hint": "When enabled, summons created via the CPR API will be grouped together in the combat tracker if their initative is the same.",
-                "Name": "Group Summons With Owner"
             }
         },
         "SkillCheck": {

@@ -28,7 +28,11 @@ async function use({trigger, workflow}) {
                 identifier: 'mantleOfMajestyCommand'
             }
         ],
-        concentrationItem: workflow.item
+        concentrationItem: workflow.item,
+        avatarImg: itemUtils.getConfig(workflow.item, 'avatarImg'),
+        tokenImg: itemUtils.getConfig(workflow.item, 'tokenImg'),
+        avatarImgPriority: itemUtils.getConfig(workflow.item, 'avatarImgPriority'),
+        tokenImgPriority: itemUtils.getConfig(workflow.item, 'tokenImgPriority')
     });
     await workflowUtils.syntheticItemDataRoll(spellData, workflow.actor, Array.from(workflow.targets));
     spellData.system.activation.type = 'bonus';
@@ -48,10 +52,11 @@ async function veryEarly({activity, dialog, actor, config}) {
     let selection = await dialogUtils.selectSpellSlot(actor, activity.item.name, 'CHRISPREMADES.Generic.ConsumeSpellSlotToUse', {minLevel: 3, no: true});
     if (!selection) return true;
     await genericUtils.update(actor, {['system.spells.spell' + selection + '.value']: actor.system.spells['spell' + selection].value - 1});
+    genericUtils.setProperty(config, 'consume.resources', false);
 }
 export let mantleOfMajesty = {
     name: 'Mantle of Majesty',
-    version: '1.1.40',
+    version: '1.1.43',
     rules: 'modern',
     midi: {
         item: [
@@ -66,7 +71,37 @@ export let mantleOfMajesty = {
                 priority: 50
             }
         ]
-    }
+    },
+    config: [
+        {
+            value: 'tokenImg',
+            label: 'CHRISPREMADES.Config.TokenImg',
+            type: 'file',
+            default: '',
+            category: 'visuals'
+        },
+        {
+            value: 'tokenImgPriority',
+            label: 'CHRISPREMADES.Config.TokenImgPriority',
+            type: 'number',
+            default: 50,
+            category: 'visuals'
+        },
+        {
+            value: 'avatarImg',
+            label: 'CHRISPREMADES.Config.AvatarImg',
+            type: 'file',
+            default: '',
+            category: 'visuals'
+        },
+        {
+            value: 'avatarImgPriority',
+            label: 'CHRISPREMADES.Config.AvatarImgPriority',
+            type: 'number',
+            default: 50,
+            category: 'visuals'
+        }
+    ]
 };
 export let mantleOfMajestyCommand = {
     name: 'Mantle of Majesty: Command',

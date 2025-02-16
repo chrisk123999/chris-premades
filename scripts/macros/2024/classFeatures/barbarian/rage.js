@@ -227,7 +227,11 @@ async function use({trigger, workflow}) {
         vae: vaeInput,
         unhideActivities,
         rules: 'modern',
-        macros
+        macros,
+        avatarImg: itemUtils.getConfig(workflow.item, 'avatarImg'),
+        tokenImg: itemUtils.getConfig(workflow.item, 'tokenImg'),
+        avatarImgPriority: itemUtils.getConfig(workflow.item, 'avatarImgPriority'),
+        tokenImgPriority: itemUtils.getConfig(workflow.item, 'tokenImgPriority')
     });
     let instinctivePounce = itemUtils.getItemByIdentifier(workflow.actor, 'instinctivePounce');
     if (instinctivePounce) await workflowUtils.completeItemUse(instinctivePounce);
@@ -403,6 +407,34 @@ export let rage = {
             default: 'rage-damage',
             category: 'homebrew',
             homebrew: true
+        },
+        {
+            value: 'tokenImg',
+            label: 'CHRISPREMADES.Config.TokenImg',
+            type: 'file',
+            default: '',
+            category: 'visuals'
+        },
+        {
+            value: 'tokenImgPriority',
+            label: 'CHRISPREMADES.Config.TokenImgPriority',
+            type: 'number',
+            default: 50,
+            category: 'visuals'
+        },
+        {
+            value: 'avatarImg',
+            label: 'CHRISPREMADES.Config.AvatarImg',
+            type: 'file',
+            default: '',
+            category: 'visuals'
+        },
+        {
+            value: 'avatarImgPriority',
+            label: 'CHRISPREMADES.Config.AvatarImgPriority',
+            type: 'number',
+            default: 50,
+            category: 'visuals'
         }
     ],
     scales: [

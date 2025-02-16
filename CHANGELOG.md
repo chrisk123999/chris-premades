@@ -1,3 +1,8 @@
+# 1.1.43 Release:
+## Bug Fixes:
+- Rage (Modern)
+- Mantle of Majesty (Modern)
+
 # 1.1.42 Releaes:
 ## Bug Fixes:
 - Help Action
