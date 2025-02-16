@@ -1,5 +1,4 @@
 import {actorUtils, combatUtils, constants, crosshairUtils, dialogUtils, effectUtils, genericUtils, workflowUtils} from '../../utils.js';
-
 async function late({trigger: {entity: item}, workflow}) {
     if (workflow.hitTargets.size !== 1 || !workflow.damageRoll || !constants.attacks.includes(workflow.activity.actionType)) return;
     if (!workflowUtils.getDamageTypes(workflow.damageRolls).has('bludgeoning')) return;
@@ -65,22 +64,14 @@ async function lateCrit({trigger: {entity: item}, workflow}) {
 }
 export let crusher = {
     name: 'Crusher',
-    version: '1.1.0',
+    version: '1.1.42',
     midi: {
         actor: [
             {
                 pass: 'rollFinished',
                 macro: late,
                 priority: 50
-            }
-        ]
-    }
-};
-export let crusherCrit = {
-    name: 'Crusher: Critical',
-    version: '1.1.0',
-    midi: {
-        actor: [
+            },
             {
                 pass: 'rollFinished',
                 macro: lateCrit,

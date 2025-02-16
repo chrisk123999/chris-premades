@@ -1,6 +1,5 @@
 import {DialogApp} from '../../applications/dialog.js';
 import {combatUtils, constants, genericUtils, workflowUtils} from '../../utils.js';
-
 async function damageReroll({trigger: {entity: item}, workflow}) {
     if (workflow.hitTargets.size !== 1 || !workflow.damageRoll || !constants.attacks.includes(workflow.activity.actionType)) return;
     if (!workflowUtils.getDamageTypes(workflow.damageRolls).has('piercing')) return;
@@ -55,7 +54,6 @@ async function damageReroll({trigger: {entity: item}, workflow}) {
     }
     let damageFormula = '1d' + existingRoll.faces + existingRoll.modifiers + (existingRoll.flavor?.length ? '[' + existingRoll.flavor + ']' : '');
     let newRoll = await new Roll(damageFormula, existingRoll.data).evaluate();
-    //let newRoll = await new CONFIG.Dice.DamageRoll(damageFormula, existingRoll.data, existingRoll.options).evaluate();
     await newRoll.toMessage({
         speaker: ChatMessage.implementation.getSpeaker({token: workflow.token}),
         flavor: genericUtils.format('CHRISPREMADES.Generic.Rerolling', {origDie: 'd' + existingRoll.faces, origResult: existingRoll.results[worstInd]}),
@@ -81,15 +79,20 @@ async function damageCrit({trigger: {entity: item}, workflow}) {
 async function combatEnd({trigger: {entity: item}}) {
     await combatUtils.setTurnCheck(item, 'piercer', true);
 }
-export let piercerReroll = {
-    name: 'Piercer: Reroll Damage',
-    version: '1.1.0',
+export let piercer = {
+    name: 'Piercer',
+    version: '1.1.42',
     midi: {
         actor: [
             {
                 pass: 'damageRollComplete',
                 macro: damageReroll,
                 priority: 50
+            },
+            {
+                pass: 'damageRollComplete',
+                macro: damageCrit,
+                priority: 51
             }
         ]
     },
@@ -100,17 +103,4 @@ export let piercerReroll = {
             priority: 50
         }
     ]
-};
-export let piercerCrit = {
-    name: 'Piercer: Critical Hit',
-    version: '1.1.0',
-    midi: {
-        actor: [
-            {
-                pass: 'damageRollComplete',
-                macro: damageCrit,
-                priority: 51
-            }
-        ]
-    }
 };

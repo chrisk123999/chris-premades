@@ -63,7 +63,7 @@ async function turnEnd({trigger}) {
 }
 async function targetAttack({workflow}) {
     if (workflow.targets.size !== 1) return;
-    if (!constants.attacks.includes(workflow.item.system.actionType)) return;
+    if (!constants.attacks.includes(workflow.activity.actionType)) return;
     let effect = effectUtils.getEffectByIdentifier(workflow.actor, 'compelledDuelTarget');
     if (!effect) return;
     let origin = await effectUtils.getOriginItem(effect);
@@ -82,7 +82,7 @@ async function sourceAttack({workflow}) {
     if (!targetUuids) return;
     let endSpell = false;
     for (let target of workflow.targets) {
-        if (constants.attacks.includes(workflow.item.system.actionType)) {
+        if (constants.attacks.includes(workflow.activity.actionType)) {
             if (!targetUuids.includes(target.document.uuid)) {
                 endSpell = true;
                 break;

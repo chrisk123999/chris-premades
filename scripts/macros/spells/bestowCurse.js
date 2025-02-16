@@ -148,7 +148,7 @@ async function use({workflow}) {
 }
 async function attack({workflow}) {
     if (!workflow.targets.size) return;
-    if (!constants.attacks.includes(workflow.item.system.actionType)) return;
+    if (!constants.attacks.includes(workflow.activity.actionType)) return;
     let effect = effectUtils.getEffectByIdentifier(workflow.actor, 'bestowCurseAttack');
     if (!effect) return;
     let sourceActorUuid = effect.flags['chris-premades'].bestowCurse.sourceActor;
@@ -159,7 +159,7 @@ async function attack({workflow}) {
 }
 async function damage({workflow}) {
     if (!workflow.hitTargets.size) return;
-    if (!constants.attacks.includes(workflow.item.system.actionType)) return;
+    if (!constants.attacks.includes(workflow.activity.actionType)) return;
     let effect = effectUtils.getEffectByIdentifier(workflow.actor, 'bestowCurseSource');
     if (!effect) return;
     let {targets: validTargetUuids, damageType, formula} = effect.flags['chris-premades'].bestowCurse;
@@ -168,7 +168,7 @@ async function damage({workflow}) {
 }
 async function damageApplication({trigger, workflow, ditem}) {
     if (!workflow.hitTargets.size) return;
-    if (constants.attacks.includes(workflow.item.system.actionType)) return;
+    if (constants.attacks.includes(workflow.activity.actionType)) return;
     let casterEffect = effectUtils.getEffectByIdentifier(workflow.actor, 'bestowCurseSource');
     if (!casterEffect) return;
     let {targets: validTargetUuids, damageType, formula} = casterEffect.flags['chris-premades'].bestowCurse;

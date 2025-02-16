@@ -20,7 +20,7 @@ export async function cleave(workflow) {
     let featureData = await compendiumUtils.getItemFromCompendium(constants.packs.miscellaneousItems, 'DMG Cleave', {object: true, getDescription: true});
     let attackId = Object.keys(featureData.system.activities)[0];
     featureData.system.activities[attackId].damage.parts[0].bonus = leftoverDamage;
-    featureData.system.actionType[attackId].damage.parts[0].types = [workflow.defaultDamageType];
+    featureData.system.activities[attackId].damage.parts[0].types = [workflow.defaultDamageType];
     if (workflow.item.system.properties.has('mgc')) featureData.system.properties.push('mgc');
     genericUtils.setProperty(featureData, 'flags.chris-premades.setAttackRoll.formula', workflow.attackRoll.total);
     genericUtils.setProperty(featureData, 'flags.chris-premades.setDamageRoll.formula', leftoverDamage);

@@ -22,7 +22,7 @@ async function use({workflow}) {
 }
 async function damage({workflow}) {
     if (!workflow.hitTargets.size) return;
-    if (!constants.weaponAttacks.includes(workflow.item.system.actionType)) return;
+    if (!constants.weaponAttacks.includes(workflow.activity.actionType)) return;
     let effect = effectUtils.getEffectByIdentifier(workflow.actor, 'brandingSmite');
     if (!effect) return;
     if (effect.flags['chris-premades'].brandingSmite.used) return;

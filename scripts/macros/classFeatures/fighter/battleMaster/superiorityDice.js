@@ -49,7 +49,7 @@ export async function superiorityHelper(workflow) {
         'maneuversPushingAttack',
         'maneuversTripAttack'
     ];
-    if (workflow.item.system.actionType === 'mwak') triggerManeuvers.push('maneuversSweepingAttack');
+    if (workflow.activity.actionType === 'mwak') triggerManeuvers.push('maneuversSweepingAttack');
     let validManeuvers = triggerManeuvers.map(i => itemUtils.getItemByIdentifier(workflow.actor, i)).filter(i => i);
     if (!validManeuvers.length) return;
     let selected = await dialogUtils.selectDocumentDialog(itemToUse.name, 'CHRISPREMADES.Macros.Maneuvers.SelectManeuver', validManeuvers, {addNoneDocument: true});

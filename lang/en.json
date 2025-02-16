@@ -2546,6 +2546,10 @@
             "weaponMastery": {
                 "Hint": "Enable PHB 2024 weapon mastery automation.",
                 "Name": "Weapon Mastery Automation"
+            },
+            "groupSummonsWithOwner": {
+                "Hint": "When enabled, summons created via the CPR API will be grouped together in the combat tracker if their initative is the same.",
+                "Name": "Group Summons With Owner"
             }
         },
         "SkillCheck": {

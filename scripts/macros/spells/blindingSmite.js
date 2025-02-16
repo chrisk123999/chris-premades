@@ -21,7 +21,7 @@ async function use({workflow}) {
 }
 async function damage({trigger: {entity: effect}, workflow}) {
     if (!workflow.hitTargets.size) return;
-    if (workflow.item.system.actionType !== 'mwak') return;
+    if (workflow.activity.actionType !== 'mwak') return;
     if (effect.flags['chris-premades'].blindingSmite.used) return;
     await genericUtils.setFlag(effect, 'chris-premades', 'blindingSmite.used', true);
     let damageType = effect.flags['chris-premades'].blindingSmite.damageType;

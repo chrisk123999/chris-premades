@@ -1,7 +1,7 @@
 import {activityUtils, dialogUtils, genericUtils, workflowUtils} from '../../../../../utils.js';
 async function use({trigger, workflow}) {
     if (workflow.targets.size !== 1) return;
-    let weapons = workflow.actor.items.filter(i => i.type === 'weapon' && i.system.equipped && i.system.actionType === 'mwak');
+    let weapons = workflow.actor.items.filter(i => i.type === 'weapon' && i.system.equipped && ['simpleM', 'martialM'].includes(i.system.type?.value));
     if (!weapons.length) {
         genericUtils.notify('CHRISPREMADES.Macros.BoomingBlade.NoWeapons', 'warn');
         return;

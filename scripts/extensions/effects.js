@@ -1,4 +1,4 @@
-import {activityUtils, actorUtils, constants, effectUtils, genericUtils, itemUtils} from '../utils.js';
+import {activityUtils, actorUtils, constants, effectUtils, genericUtils, itemUtils, socketUtils} from '../utils.js';
 function activityDC(effect, updates, options, id) {
     if (game.user.id != id || effect.transfer || !(effect.parent instanceof Actor) || !effect.origin) return;
     if (!updates.changes?.length) return;
@@ -182,6 +182,39 @@ async function specialDurationEquipment(item) {
         if (specialDurations.includes(item.system.type?.value)) await genericUtils.remove(effect);
     }));
 }
+function preImageCreate(effect, updates, options, id) {
+    if (game.user.id != id) return;
+    if (!(effect.parent instanceof Actor)) return;
+    let actorImg = effect.flags['chris-premades']?.image?.actor?.value;
+    let tokenImg = effect.flags['chris-premades']?.image?.token?.value;
+    if (actorImg) effect.updateSource({'flags.chris-premades.image.actor.previous': effect.parent.img});
+    if (tokenImg) {
+        let token = actorUtils.getFirstToken(effect.parent);
+        if (token) effect.updateSource({'flags.chris-premades.image.token.previous': token.document.texture.src});
+    }
+}
+async function imageCreate(effect, options, id) {
+    if (!socketUtils.isTheGM()) return;
+    if (!(effect.parent instanceof Actor)) return;
+    let actorImg = effect.flags['chris-premades']?.image?.actor?.value;
+    let tokenImg = effect.flags['chris-premades']?.image?.token?.value;
+    if (actorImg) await genericUtils.update(effect.parent, {img: actorImg});
+    if (tokenImg) {
+        let tokens = effect.parent.getActiveTokens();
+        if (tokens.length) await Promise.all(tokens.map(async token => await genericUtils.update(token.document, {'texture.src': tokenImg})));
+    }
+}
+async function imageRemove(effect, options, id) {
+    if (!socketUtils.isTheGM()) return;
+    if (!(effect.parent instanceof Actor)) return;
+    let actorImg = effect.flags['chris-premades']?.image?.actor?.previous;
+    let tokenImg = effect.flags['chris-premades']?.image?.token?.previous;
+    if (actorImg) await genericUtils.update(effect.parent, {img: actorImg});
+    if (tokenImg) {
+        let tokens = effect.parent.getActiveTokens();
+        if (tokens.length) await Promise.all(tokens.map(async token => await genericUtils.update(token.document, {'texture.src': tokenImg})));
+    }
+}
 export let effects = {
     noAnimation,
     checkInterdependentDeps,
@@ -191,5 +224,8 @@ export let effects = {
     specialDuration,
     specialDurationConditions,
     specialDurationEquipment,
-    activityDC
+    activityDC,
+    preImageCreate,
+    imageCreate,
+    imageRemove
 };

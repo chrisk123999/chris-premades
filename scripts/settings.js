@@ -873,6 +873,13 @@ export function registerSettings() {
         category: 'development',
         onChange: () => activities.cssTweak()
     });
+    addSetting({
+        key: 'groupSummonsWithOwner',
+        type: Boolean,
+        default: false,
+        category: 'mechanics',
+        onChange: (value) => initiative.patch(value)
+    });
 }
 export function registerMenus() {
     if (game.settings.get('chris-premades', 'devTools')) addMenu({

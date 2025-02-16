@@ -59,6 +59,9 @@ export function registerHooks() {
     Hooks.on('preUpdateActiveEffect', effectEvents.preUpdateActiveEffect);
     Hooks.on('preCreateActiveEffect', effects.unhideActivities);
     Hooks.on('preDeleteActiveEffect', effects.rehideActivities);
+    Hooks.on('preCreateActiveEffect', effects.preImageCreate);
+    Hooks.on('createActiveEffect', effects.imageCreate);
+    Hooks.on('deleteActiveEffect', effects.imageRemove);
     Hooks.on('preCreateMacro', custom.preCreateMacro);
     Hooks.on('updateMacro', custom.updateOrDeleteMacro);
     Hooks.on('deleteMacro', custom.updateOrDeleteMacro);

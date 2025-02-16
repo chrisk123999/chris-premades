@@ -1,4 +1,4 @@
-import {effectUtils} from '../../utils.js';
+import {combatUtils, effectUtils} from '../../utils.js';
 async function use({trigger, workflow}) {
     if (!workflow.targets.size) return;
     let targetToken = workflow.targets.first();
@@ -9,7 +9,7 @@ async function use({trigger, workflow}) {
             img: workflow.item.img,
             origin: workflow.item.uuid,
             duration: {
-                seconds: 3600
+                seconds: combatUtils.inCombat() ? 12 : 3600
             },
             changes: [
                 {
@@ -22,7 +22,8 @@ async function use({trigger, workflow}) {
             flags: {
                 dae: {
                     specialDuration: [
-                        'isSkill'
+                        'isSkill',
+                        'turnStartSource'
                     ]
                 }
             }
@@ -33,7 +34,7 @@ async function use({trigger, workflow}) {
             img: workflow.item.img,
             origin: workflow.item.uuid,
             duration: {
-                seconds: 2
+                seconds: 12
             },
             changes: [
                 {

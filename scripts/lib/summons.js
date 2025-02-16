@@ -117,14 +117,12 @@ export class Summons {
                 sceneAndIdsTuple.push([scenes[i], [summons[i]]]);
             }
         }
+        if (combatUtils.inCombat()) {
+            let validIds = summons.map(i => game.combat.combatants.find(j => j.tokenId === i)?.id).filter(k => k);
+            if (validIds.length) await genericUtils.deleteEmbeddedDocuments(game.combat, 'Combatant', validIds);
+        }
         for (let [scene, sceneSummons] of sceneAndIdsTuple) {
-            // if (scene.active && playAnim) {
-            //     for (let currId of sceneSummons) {
-            //         let currToken = scene.tokens.get(currId);
-            //         if (currToken) animFunction(undefined, currToken);
-            //     }
-            // }
-            await scene.deleteEmbeddedDocuments('Token', sceneSummons.filter(i => scene.tokens.has(i)));
+            await genericUtils.deleteEmbeddedDocuments(scene, 'Token', sceneSummons.filter(i => scene.tokens.has(i)));
         }
     }
     static async dismissIfDead({trigger, ditem}) {

@@ -19,13 +19,13 @@ async function use({workflow}) {
 }
 async function early({workflow}) {
     if (workflow.targets.size !== 1) return;
-    if (!workflow.item.system.properties.has('thr') && workflow.item.system.actionType !== 'rwak') return;
+    if (!workflow.item.system.properties.has('thr') && workflow.activity.actionType !== 'rwak') return;
     genericUtils.setProperty(workflow, 'workflowOptions.autoRollDamage', 'always');
 }
 async function damage({trigger: {entity: effect}, workflow}) {
     if (activityUtils.getIdentifier(workflow.activity) === 'lightningArrowBurst') return;
     if (workflow.targets.size !== 1) return;
-    if (!workflow.item.system.properties.has('thr') && workflow.item.system.actionType !== 'rwak') return;
+    if (!workflow.item.system.properties.has('thr') && workflow.activity.actionType !== 'rwak') return;
     let targetToken = workflow.targets.first();
     let diceNumber = 1 + effect.flags['chris-premades'].castData.castLevel;
     let originItem = await effectUtils.getOriginItem(effect);
