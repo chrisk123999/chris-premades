@@ -1,5 +1,4 @@
 import {activityUtils, actorUtils, dialogUtils, effectUtils, socketUtils, tokenUtils, workflowUtils} from '../../../../utils.js';
-import {grappleHelper} from '../../../actions/grapple.js';
 async function grapple({trigger, workflow}) {
     if (!workflow.targets.size) return;
     let size = actorUtils.getSize(workflow.actor, false);
@@ -18,14 +17,14 @@ async function grapple({trigger, workflow}) {
         let activity = activityUtils.getActivityByIdentifier(workflow.item, 'dexSave', {strict: true});
         if (activity) {
             let results = await workflowUtils.syntheticActivityRoll(activity, dexTargets);
-            await Promise.all(results.failedSaves.map(async token => await grappleHelper(workflow.token, token, workflow.item, {noContest: true, flatDC: activity.save.dc.value})));
+            await Promise.all(results.failedSaves.map(async token => await tokenUtils.grappleHelper(workflow.token, token, workflow.item, {noContest: true, flatDC: activity.save.dc.value})));
         }
     }
     if (strTargets.length) {
         let activity = activityUtils.getActivityByIdentifier(workflow.item, 'strSave', {strict: true});
         if (activity) {
             let results = await workflowUtils.syntheticActivityRoll(activity, strTargets);
-            await Promise.all(results.failedSaves.map(async token => await grappleHelper(workflow.token, token, workflow.item, {noContest: true, flatDC: activity.save.dc.value})));
+            await Promise.all(results.failedSaves.map(async token => await tokenUtils.grappleHelper(workflow.token, token, workflow.item, {noContest: true, flatDC: activity.save.dc.value})));
         }
     }
 }

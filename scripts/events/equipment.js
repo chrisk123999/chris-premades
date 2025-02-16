@@ -1,6 +1,6 @@
 import {compendiumUtils, constants, genericUtils, itemUtils} from '../utils.js';
 import {custom} from './custom.js';
-import {bg3} from '../macros/homebrew/bg3WeaponActions.js';
+import {bg3} from '../macros/2014/homebrew/bg3WeaponActions.js';
 import {effects} from '../extensions/effects.js';
 async function addOrUpdate(item, updates, options, id) {
     if (!item.actor) return;

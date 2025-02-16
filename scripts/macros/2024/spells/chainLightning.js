@@ -1,4 +1,4 @@
-import {chainLightning as chainLightningLegacy} from '../../spells/chainLightning.js';
+import {chainLightning as chainLightningLegacy} from '../../2014/spells/chainLightning.js';
 export let chainLightning = {
     name: 'Chain Lightning',
     version: '1.1.19',
