@@ -12,7 +12,7 @@
 - Automation of modern (2024) content is a work in progress. Please refer to Pulse bot on the CPR or Midi-Qol Discord server to lookup available automations.
 - Modern class feature automations will not function with legacy sub-classes. Compatibility may be added for legacy subclasses upon request.
 - If you are updating from the D&D 3.x system and encounter problems when trying to medkit update already-automated items, try applying automations to fresh (non-automated) items instead and see if the problems persist.
-- As always, please report any found bugs on the CPR Discord server or Github.
+- Please report any found bugs on the CPR Discord server or make a Github issue.
 
 # 1.1.45 Release:
 ## Bug Fixes:
