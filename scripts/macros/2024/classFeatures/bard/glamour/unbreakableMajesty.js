@@ -9,7 +9,9 @@ async function attacked({trigger: {entity: effect}, workflow}) {
     if (!activity?.uses?.value) return;
     let result = await workflowUtils.syntheticActivityRoll(activity, [workflow.token], {consumeResources: true});
     if (!result.failedSaves.size) return;
-    workflow.rollToggle = true;
+    workflow.rollToggle = true; //Remove this after 12.4.27 is out.
+    workflow.keepActivityCard = true;
+    //workflow.aborted = true;
 }
 async function use({trigger, workflow}) {
     let sourceEffect = workflow.item.effects.contents?.[0];

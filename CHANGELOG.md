@@ -1,3 +1,9 @@
+# 1.1.45 Release:
+## Bug Fixes:
+- Crusher (Legacy)
+- Piercer (Legacy)
+- Slasher (Legacy)
+
 # 1.1.44 Release:
 ## New Modern Content:
 - Unbreakable Majesty

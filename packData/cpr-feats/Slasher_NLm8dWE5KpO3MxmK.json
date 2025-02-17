@@ -1,5 +1,5 @@
 {
-  "name": "Piercer: Reroll Damage",
+  "name": "Slasher",
   "type": "feat",
   "system": {
     "description": {
@@ -26,32 +26,12 @@
       "level": null
     },
     "activities": {},
-    "identifier": "piercer-reroll-damage",
+    "identifier": "slasher-critical-hit",
     "enchant": {}
   },
   "flags": {
-    "midiProperties": {
-      "nodam": false,
-      "fulldam": false,
-      "halfdam": false,
-      "autoFailFriendly": false,
-      "autoSaveFriendly": false,
-      "rollOther": false,
-      "critOther": false,
-      "offHandWeapon": false,
-      "magicdam": false,
-      "magiceffect": false,
-      "concentration": false,
-      "toggleEffect": false,
-      "ignoreTotalCover": false,
-      "confirmTargets": "default",
-      "noConcentrationCheck": false,
-      "idr": false,
-      "idi": false,
-      "idv": false,
-      "ida": false
-    },
     "midi-qol": {
+      "forceCEOff": true,
       "rollAttackPerTarget": "default",
       "itemCondition": "",
       "effectCondition": "",
@@ -62,6 +42,22 @@
       "reactionCondition": "",
       "otherCondition": ""
     },
+    "midiProperties": {
+      "confirmTargets": "default",
+      "autoFailFriendly": false,
+      "autoSaveFriendly": false,
+      "critOther": false,
+      "offHandWeapon": false,
+      "magicdam": false,
+      "magiceffect": false,
+      "noConcentrationCheck": false,
+      "toggleEffect": false,
+      "ignoreTotalCover": false,
+      "idr": false,
+      "idi": false,
+      "idv": false,
+      "ida": false
+    },
     "dnd5e": {
       "persistSourceMigration": true,
       "riders": {
@@ -71,25 +67,22 @@
     },
     "chris-premades": {
       "info": {
-        "version": "1.1.0",
-        "identifier": "piercerReroll",
-        "source": "chris-premades"
+        "identifier": "slasher",
+        "source": "chris-premades",
+        "version": "1.1.42"
       },
       "macros": {
         "midi": {
           "actor": [
-            "piercerReroll"
+            "slasher"
           ]
-        },
-        "combat": [
-          "piercerReroll"
-        ]
+        }
       }
     }
   },
   "effects": [],
-  "img": "icons/weapons/polearms/spear-ornate-gold.webp",
+  "img": "icons/skills/melee/blade-tips-triple-bent-white.webp",
   "folder": null,
-  "_id": "MnzQZhpjIaIV2u2J",
-  "_key": "!items!MnzQZhpjIaIV2u2J"
+  "_id": "NLm8dWE5KpO3MxmK",
+  "_key": "!items!NLm8dWE5KpO3MxmK"
 }
