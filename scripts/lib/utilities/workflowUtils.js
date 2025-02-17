@@ -59,12 +59,12 @@ async function completeItemUse(item, config = {}, options = {}) {
     }
     return workflow;
 }
-async function syntheticActivityRoll(activity, targets = [], {options = {}, config = {}, atLevel = undefined} = {}) {
+async function syntheticActivityRoll(activity, targets = [], {options = {}, config = {}, atLevel = undefined, consumeUsage = false, consumeResources = false} = {}) {
     let defaultConfig = {
-        consumeUsage: false,
+        consumeUsage,
         consumeSpellSlot: false,
         consume: {
-            resources: false
+            resources: consumeResources
         }
     };
     let autoRollDamage = MidiQOL.configSettings().autoRollDamage;

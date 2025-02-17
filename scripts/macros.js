@@ -98,3 +98,4 @@ export {leadingEvasion} from './macros/2024/classFeatures/bard/dance/leadingEvas
 export {beguilingMagic} from './macros/2024/classFeatures/bard/glamour/beguilingMagic.js';
 export {mantleOfInspiration} from './macros/2024/classFeatures/bard/glamour/mantleOfInspiration.js';
 export {mantleOfMajesty, mantleOfMajestyCommand} from './macros/2024/classFeatures/bard/glamour/mantleOfMajesty.js';
+export {unbreakableMajesty, unbreakableMajestyEffect} from './macros/2024/classFeatures/bard/glamour/unbreakableMajesty.js';

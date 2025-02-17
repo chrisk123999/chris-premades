@@ -1,3 +1,7 @@
+# 1.1.44 Release:
+## New Modern Content:
+- Unbreakable Majesty
+
 # 1.1.43 Release:
 ## Bug Fixes:
 - Rage (Modern)
