@@ -7,8 +7,8 @@
   "socket": true,
   "compatibility": {
     "minimum": "12",
-    "verified": "12",
-    "maximum": "12"
+    "verified": "12.331",
+    "maximum": "12.999"
   },
   "authors": [
     {
@@ -77,40 +77,35 @@
         "id": "midi-qol",
         "type": "module",
         "compatibility": {
-          "minimum": "12.4.17",
-          "verified": "12.4.17"
+          "minimum": "12.4.27"
         }
       },
       {
         "id": "sequencer",
         "type": "module",
         "compatibility": {
-          "minimum": "3.3.2",
-          "verified": "3.3.8"
+          "minimum": "3.3.2"
         }
       },
       {
         "id": "socketlib",
         "type": "module",
         "compatibility": {
-          "minimum": "1.1.0",
-          "verified": "1.1.0"
+          "minimum": "1.1.0"
         }
       },
       {
         "id": "dae",
         "type": "module",
         "compatibility": {
-          "minimum": "12.0.10",
-          "verified": "12.0.10"
+          "minimum": "12.0.17"
         }
       },
       {
         "id": "times-up",
         "type": "module",
         "compatibility": {
-          "minimum": "11.3.19",
-          "verified": "11.3.19"
+          "minimum": "11.3.19"
         }
       }
     ]
