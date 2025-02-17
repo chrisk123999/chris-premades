@@ -18,10 +18,15 @@ async function setTurnCheck(entity, name, reset) {
 function getCurrentCombatantToken() {
     return game.combat.scene?.tokens.get(game.combat.current.tokenId)?.object;
 }
+function isOwnTurn(token) {
+    if (!inCombat()) return true;
+    return token.document.id === game.combat.current.tokenId;
+}
 export let combatUtils = {
     currentTurn,
     inCombat,
     perTurnCheck,
     setTurnCheck,
-    getCurrentCombatantToken
+    getCurrentCombatantToken,
+    isOwnTurn
 };

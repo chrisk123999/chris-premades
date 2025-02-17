@@ -2,6 +2,7 @@ import {custom} from './custom.js';
 import {actorUtils, socketUtils, templateUtils, effectUtils, genericUtils, tokenUtils, itemUtils, regionUtils} from '../utils.js';
 import {templateEvents} from './template.js';
 import {regionEvents} from './region.js';
+import {masteries} from '../macros/2024/mechanics/masteries.js';
 function getMacroData(entity) {
     return entity.flags['chris-premades']?.macros?.combat ?? [];
 }
@@ -9,7 +10,7 @@ function collectMacros(entity) {
     let macroList = [];
     macroList.push(...getMacroData(entity));
     if (!macroList.length) return [];
-    return macroList.map(i => custom.getMacro(i)).filter(j => j);
+    return macroList.map(i => custom.getMacro(i, genericUtils.getRules(entity))).filter(j => j);
 }
 function collectTokenMacros(token, pass, distance, target) {
     let triggers = [];
@@ -216,6 +217,7 @@ async function deleteCombat(combat, changes, context) {
     for (let i of tokens) await executeMacroPass([i], 'combatEnd'); //The last turnEnd macro may need to be run before this?
     await templateEvents.executeMacroPass(combat.scene?.templates ?? [], 'combatEnd');
     await regionEvents.executeMacroPass(combat.scene?.regions ?? [], 'combatEnd');
+    if (genericUtils.getCPRSetting('weaponMastery')) await masteries.combatEnd(combat);
 }
 export let combatEvents = {
     combatStart,

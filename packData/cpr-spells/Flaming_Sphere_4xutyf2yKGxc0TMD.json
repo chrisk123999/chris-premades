@@ -1,0 +1,260 @@
+{
+  "type": "spell",
+  "system": {
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "source": {
+      "book": "Player's Handbook",
+      "page": "242",
+      "license": "",
+      "custom": "",
+      "revision": 1,
+      "rules": "2014"
+    },
+    "activation": {
+      "type": "action",
+      "condition": "",
+      "value": 1
+    },
+    "duration": {
+      "value": "1",
+      "units": "minute"
+    },
+    "target": {
+      "affects": {
+        "choice": false,
+        "count": "",
+        "type": ""
+      },
+      "template": {
+        "units": "",
+        "contiguous": false,
+        "type": ""
+      }
+    },
+    "range": {
+      "value": "60",
+      "units": "ft",
+      "special": ""
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "recovery": []
+    },
+    "ability": "",
+    "level": 2,
+    "school": "con",
+    "properties": [
+      "vocal",
+      "somatic",
+      "material",
+      "concentration"
+    ],
+    "materials": {
+      "value": "a bit of tallow, a pinch of brimstone, and a dusting of powdered iron",
+      "consumed": false,
+      "cost": 0,
+      "supply": 0
+    },
+    "preparation": {
+      "mode": "prepared",
+      "prepared": false
+    },
+    "activities": {
+      "e1mCIrR78dOTWlMv": {
+        "type": "utility",
+        "_id": "e1mCIrR78dOTWlMv",
+        "sort": 0,
+        "activation": {
+          "type": "action",
+          "value": null,
+          "override": false
+        },
+        "consumption": {
+          "scaling": {
+            "allowed": false
+          },
+          "spellSlot": true,
+          "targets": []
+        },
+        "description": {
+          "chatFlavor": ""
+        },
+        "duration": {
+          "units": "inst",
+          "concentration": false,
+          "override": false
+        },
+        "effects": [],
+        "range": {
+          "override": false
+        },
+        "target": {
+          "template": {
+            "contiguous": false,
+            "units": "ft"
+          },
+          "affects": {
+            "choice": false
+          },
+          "override": false,
+          "prompt": true
+        },
+        "uses": {
+          "spent": 0,
+          "recovery": [],
+          "max": ""
+        },
+        "roll": {
+          "prompt": false,
+          "visible": false,
+          "name": "",
+          "formula": ""
+        },
+        "useConditionText": "",
+        "forceDialog": false,
+        "effectConditionText": "",
+        "midiAutomationOnly": false,
+        "name": "Flaming Sphere",
+        "img": "icons/magic/light/explosion-star-orange.webp"
+      },
+      "nwAFaDn6e3VQsM6s": {
+        "type": "utility",
+        "_id": "nwAFaDn6e3VQsM6s",
+        "sort": 0,
+        "activation": {
+          "type": "bonus",
+          "value": null,
+          "override": true,
+          "condition": ""
+        },
+        "consumption": {
+          "scaling": {
+            "allowed": false
+          },
+          "spellSlot": false,
+          "targets": []
+        },
+        "description": {
+          "chatFlavor": "Flaming Sphere: Move"
+        },
+        "duration": {
+          "units": "inst",
+          "concentration": false,
+          "override": true
+        },
+        "effects": [],
+        "range": {
+          "override": true,
+          "units": "any",
+          "special": ""
+        },
+        "target": {
+          "template": {
+            "contiguous": false,
+            "units": "ft"
+          },
+          "affects": {
+            "choice": false
+          },
+          "override": false,
+          "prompt": true
+        },
+        "uses": {
+          "spent": 0,
+          "recovery": [],
+          "max": ""
+        },
+        "roll": {
+          "prompt": false,
+          "visible": false,
+          "name": "",
+          "formula": ""
+        },
+        "useConditionText": "",
+        "forceDialog": false,
+        "effectConditionText": "",
+        "midiAutomationOnly": false,
+        "name": "Flaming Sphere: Move",
+        "img": "icons/magic/light/explosion-star-orange.webp"
+      }
+    },
+    "identifier": "flaming-sphere",
+    "sourceClass": "cleric"
+  },
+  "name": "Flaming Sphere",
+  "flags": {
+    "midi-qol": {
+      "removeAttackDamageButtons": "default",
+      "AoETargetType": "any",
+      "AoETargetTypeIncludeSelf": true,
+      "autoTarget": "default",
+      "rollAttackPerTarget": "default",
+      "itemCondition": "",
+      "effectCondition": "",
+      "-=onUseMacroName": null,
+      "reactionCondition": "",
+      "otherCondition": ""
+    },
+    "midiProperties": {
+      "confirmTargets": "default",
+      "magicdam": true,
+      "magiceffect": true,
+      "saveDamage": "default",
+      "bonusSaveDamage": "default",
+      "autoFailFriendly": false,
+      "autoSaveFriendly": false,
+      "critOther": false,
+      "offHandWeapon": false,
+      "noConcentrationCheck": false,
+      "toggleEffect": false,
+      "ignoreTotalCover": false,
+      "idr": false,
+      "idi": false,
+      "idv": false,
+      "ida": false
+    },
+    "region-attacher": {
+      "attachRegionToTemplate": false
+    },
+    "dnd5e": {
+      "persistSourceMigration": true,
+      "riders": {
+        "activity": [
+          "nwAFaDn6e3VQsM6s"
+        ],
+        "effect": []
+      }
+    },
+    "chris-premades": {
+      "info": {
+        "identifier": "flamingSphere",
+        "source": "chris-premades",
+        "version": "1.1.0",
+        "hasAnimation": true
+      },
+      "macros": {
+        "midi": {
+          "item": [
+            "flamingSphere"
+          ]
+        }
+      },
+      "hiddenActivities": [
+        "flamingSphereMove"
+      ],
+      "activityIdentifiers": {
+        "flamingSphere": "e1mCIrR78dOTWlMv",
+        "flamingSphereMove": "nwAFaDn6e3VQsM6s"
+      }
+    }
+  },
+  "effects": [],
+  "img": "icons/magic/light/explosion-star-orange.webp",
+  "folder": null,
+  "_id": "4xutyf2yKGxc0TMD",
+  "_key": "!items!4xutyf2yKGxc0TMD"
+}

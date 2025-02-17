@@ -1,0 +1,146 @@
+{
+  "name": "Mental Discipline (Githzerai)",
+  "type": "feat",
+  "system": {
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "source": {
+      "custom": "Mordenkainen Presents: Monsters of the Multiverse pg 19",
+      "revision": 1,
+      "rules": "2014"
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "recovery": []
+    },
+    "type": {
+      "value": "race",
+      "subtype": ""
+    },
+    "requirements": "",
+    "properties": [],
+    "prerequisites": {
+      "level": null
+    },
+    "activities": {},
+    "identifier": "mental-discipline-githzerai",
+    "enchant": {}
+  },
+  "flags": {
+    "chris-premades": {
+      "info": {
+        "name": "Mental Discipline (Githzerai)",
+        "version": "1.1.0",
+        "identifier": "mentalDisciplineGithzerai",
+        "source": "chris-premades"
+      }
+    },
+    "core": {
+      "sourceId": "Actor.IlpCynnAcU8YiYdx.Item.wfsTY3HGHeXzBOpU"
+    },
+    "midiProperties": {
+      "confirmTargets": "default",
+      "autoFailFriendly": false,
+      "autoSaveFriendly": false,
+      "critOther": false,
+      "offHandWeapon": false,
+      "magicdam": false,
+      "magiceffect": false,
+      "noConcentrationCheck": false,
+      "toggleEffect": false,
+      "ignoreTotalCover": false,
+      "idr": false,
+      "idi": false,
+      "idv": false,
+      "ida": false
+    },
+    "midi-qol": {
+      "rollAttackPerTarget": "default",
+      "itemCondition": "",
+      "effectCondition": "",
+      "AoETargetType": "any",
+      "AoETargetTypeIncludeSelf": true,
+      "autoTarget": "default",
+      "removeAttackDamageButtons": "default",
+      "reactionCondition": "",
+      "otherCondition": ""
+    },
+    "dnd5e": {
+      "riders": {
+        "activity": []
+      }
+    }
+  },
+  "effects": [
+    {
+      "name": "Mental Discipline (Githzerai)",
+      "origin": "Compendium.world.cpr-race-features.Item.UvMOOwI6Haft3VOS",
+      "duration": {
+        "rounds": null,
+        "startTime": 1488,
+        "seconds": null,
+        "combat": null,
+        "turns": null,
+        "startRound": 249,
+        "startTurn": 0
+      },
+      "disabled": false,
+      "flags": {
+        "dnd5e": {},
+        "dae": {
+          "disableCondition": "",
+          "disableIncapacitated": false,
+          "stackable": "noneName",
+          "showIcon": false,
+          "durationExpression": "",
+          "macroRepeat": "none",
+          "specialDuration": []
+        },
+        "core": {
+          "overlay": false
+        }
+      },
+      "img": "icons/magic/defensive/shield-barrier-glowing-triangle-teal.webp",
+      "_id": "eLSEM4K6pODdJXCk",
+      "type": "base",
+      "system": {},
+      "changes": [
+        {
+          "key": "flags.chris-premades.CR.charmed",
+          "mode": 5,
+          "value": "1",
+          "priority": 20
+        },
+        {
+          "key": "flags.chris-premades.CR.frightened",
+          "mode": 5,
+          "value": "1",
+          "priority": 20
+        }
+      ],
+      "description": "",
+      "tint": "#ffffff",
+      "transfer": true,
+      "statuses": [],
+      "sort": 0,
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "coreVersion": "12.331",
+        "systemId": "dnd5e",
+        "systemVersion": "4.1.2",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!items.effects!oIl3ETicUoLNVvla.eLSEM4K6pODdJXCk"
+    }
+  ],
+  "img": "icons/magic/defensive/shield-barrier-glowing-triangle-teal.webp",
+  "folder": "C7eMmjMPdyljnfc7",
+  "_id": "oIl3ETicUoLNVvla",
+  "_key": "!items!oIl3ETicUoLNVvla"
+}

@@ -1,0 +1,996 @@
+{
+  "type": "spell",
+  "system": {
+    "activities": {
+      "pd3grECrkVOivDuh": {
+        "type": "save",
+        "_id": "pd3grECrkVOivDuh",
+        "sort": 0,
+        "activation": {
+          "type": "action",
+          "value": null,
+          "override": false
+        },
+        "consumption": {
+          "scaling": {
+            "allowed": false
+          },
+          "spellSlot": true,
+          "targets": []
+        },
+        "description": {
+          "chatFlavor": "Command: Approach"
+        },
+        "duration": {
+          "units": "round",
+          "concentration": false,
+          "override": true,
+          "value": "1"
+        },
+        "effects": [
+          {
+            "_id": "SOTIXYPUzcm24eB1",
+            "onSave": false
+          }
+        ],
+        "range": {
+          "override": false,
+          "units": "self",
+          "special": ""
+        },
+        "target": {
+          "template": {
+            "contiguous": false,
+            "units": "ft",
+            "type": ""
+          },
+          "affects": {
+            "choice": false,
+            "type": "creature",
+            "count": "",
+            "special": ""
+          },
+          "override": true,
+          "prompt": true
+        },
+        "uses": {
+          "spent": 0,
+          "recovery": [],
+          "max": ""
+        },
+        "damage": {
+          "parts": [],
+          "critical": {
+            "allow": false
+          },
+          "onSave": "half"
+        },
+        "save": {
+          "ability": [
+            "wis"
+          ],
+          "dc": {
+            "calculation": "spellcasting",
+            "formula": ""
+          }
+        },
+        "useConditionText": "",
+        "effectConditionText": "",
+        "macroData": {
+          "name": "",
+          "command": ""
+        },
+        "ignoreTraits": {
+          "idi": false,
+          "idr": false,
+          "idv": false,
+          "ida": false
+        },
+        "midiProperties": {
+          "ignoreTraits": [],
+          "triggeredActivityId": "none",
+          "triggeredActivityConditionText": "",
+          "triggeredActivityTargets": "targets",
+          "triggeredActivityRollAs": "self",
+          "forceDialog": false,
+          "confirmTargets": "default",
+          "autoTargetType": "any",
+          "autoTargetAction": "default",
+          "automationOnly": false,
+          "otherActivityCompatible": false,
+          "identifier": ""
+        },
+        "name": "Approach"
+      },
+      "qnK53bkjbuxbTAqi": {
+        "type": "save",
+        "_id": "qnK53bkjbuxbTAqi",
+        "sort": 0,
+        "activation": {
+          "type": "action",
+          "value": null,
+          "override": false
+        },
+        "consumption": {
+          "scaling": {
+            "allowed": false
+          },
+          "spellSlot": true,
+          "targets": []
+        },
+        "description": {
+          "chatFlavor": "Command: Drop"
+        },
+        "duration": {
+          "units": "round",
+          "concentration": false,
+          "override": true,
+          "value": "1"
+        },
+        "effects": [
+          {
+            "_id": "ut5o4sHbHGh5BHOf",
+            "onSave": false
+          }
+        ],
+        "range": {
+          "override": false
+        },
+        "target": {
+          "template": {
+            "contiguous": false,
+            "units": "ft",
+            "type": ""
+          },
+          "affects": {
+            "choice": false,
+            "type": "creature",
+            "count": "",
+            "special": ""
+          },
+          "override": true,
+          "prompt": true
+        },
+        "uses": {
+          "spent": 0,
+          "recovery": [],
+          "max": ""
+        },
+        "damage": {
+          "parts": [],
+          "critical": {
+            "allow": false
+          },
+          "onSave": "half"
+        },
+        "save": {
+          "ability": [
+            "wis"
+          ],
+          "dc": {
+            "calculation": "spellcasting",
+            "formula": ""
+          }
+        },
+        "useConditionText": "",
+        "effectConditionText": "",
+        "macroData": {
+          "name": "",
+          "command": ""
+        },
+        "ignoreTraits": {
+          "idi": false,
+          "idr": false,
+          "idv": false,
+          "ida": false
+        },
+        "midiProperties": {
+          "ignoreTraits": [],
+          "triggeredActivityId": "none",
+          "triggeredActivityConditionText": "",
+          "triggeredActivityTargets": "targets",
+          "triggeredActivityRollAs": "self",
+          "forceDialog": false,
+          "confirmTargets": "default",
+          "autoTargetType": "any",
+          "autoTargetAction": "default",
+          "automationOnly": false,
+          "otherActivityCompatible": false,
+          "identifier": ""
+        },
+        "name": "Drop"
+      },
+      "yYbbsuLD8FivztBy": {
+        "type": "save",
+        "_id": "yYbbsuLD8FivztBy",
+        "sort": 0,
+        "activation": {
+          "type": "action",
+          "value": null,
+          "override": false
+        },
+        "consumption": {
+          "scaling": {
+            "allowed": false
+          },
+          "spellSlot": true,
+          "targets": []
+        },
+        "description": {
+          "chatFlavor": "Command: Flee"
+        },
+        "duration": {
+          "units": "round",
+          "concentration": false,
+          "override": true,
+          "value": "1"
+        },
+        "effects": [
+          {
+            "_id": "dgKDpkVZdETfhvBG",
+            "onSave": false
+          }
+        ],
+        "range": {
+          "override": false
+        },
+        "target": {
+          "template": {
+            "contiguous": false,
+            "units": "ft",
+            "type": ""
+          },
+          "affects": {
+            "choice": false,
+            "type": "creature",
+            "count": "1",
+            "special": ""
+          },
+          "override": true,
+          "prompt": true
+        },
+        "uses": {
+          "spent": 0,
+          "recovery": [],
+          "max": ""
+        },
+        "damage": {
+          "parts": [],
+          "critical": {
+            "allow": false
+          },
+          "onSave": "half"
+        },
+        "save": {
+          "ability": [
+            "wis"
+          ],
+          "dc": {
+            "calculation": "spellcasting",
+            "formula": ""
+          }
+        },
+        "useConditionText": "",
+        "effectConditionText": "",
+        "macroData": {
+          "name": "",
+          "command": ""
+        },
+        "ignoreTraits": {
+          "idi": false,
+          "idr": false,
+          "idv": false,
+          "ida": false
+        },
+        "midiProperties": {
+          "ignoreTraits": [],
+          "triggeredActivityId": "none",
+          "triggeredActivityConditionText": "",
+          "triggeredActivityTargets": "targets",
+          "triggeredActivityRollAs": "self",
+          "forceDialog": false,
+          "confirmTargets": "default",
+          "autoTargetType": "any",
+          "autoTargetAction": "default",
+          "automationOnly": false,
+          "otherActivityCompatible": false,
+          "identifier": ""
+        },
+        "name": "Flee"
+      },
+      "iYsD9kVdDvJM77VQ": {
+        "type": "save",
+        "_id": "iYsD9kVdDvJM77VQ",
+        "sort": 0,
+        "activation": {
+          "type": "action",
+          "value": null,
+          "override": false
+        },
+        "consumption": {
+          "scaling": {
+            "allowed": false
+          },
+          "spellSlot": true,
+          "targets": []
+        },
+        "description": {
+          "chatFlavor": "Command: Grovel"
+        },
+        "duration": {
+          "units": "round",
+          "concentration": false,
+          "override": true,
+          "value": "1"
+        },
+        "effects": [
+          {
+            "_id": "4smn6quV2K7jJRkV",
+            "onSave": false
+          }
+        ],
+        "range": {
+          "override": false
+        },
+        "target": {
+          "template": {
+            "contiguous": false,
+            "units": "ft",
+            "type": ""
+          },
+          "affects": {
+            "choice": false,
+            "type": "creature",
+            "count": "",
+            "special": ""
+          },
+          "override": true,
+          "prompt": true
+        },
+        "uses": {
+          "spent": 0,
+          "recovery": [],
+          "max": ""
+        },
+        "damage": {
+          "parts": [],
+          "critical": {
+            "allow": false
+          },
+          "onSave": "half"
+        },
+        "save": {
+          "ability": [
+            "wis"
+          ],
+          "dc": {
+            "calculation": "spellcasting",
+            "formula": ""
+          }
+        },
+        "useConditionText": "",
+        "effectConditionText": "",
+        "macroData": {
+          "name": "",
+          "command": ""
+        },
+        "ignoreTraits": {
+          "idi": false,
+          "idr": false,
+          "idv": false,
+          "ida": false
+        },
+        "midiProperties": {
+          "ignoreTraits": [],
+          "triggeredActivityId": "none",
+          "triggeredActivityConditionText": "",
+          "triggeredActivityTargets": "targets",
+          "triggeredActivityRollAs": "self",
+          "forceDialog": false,
+          "confirmTargets": "default",
+          "autoTargetType": "any",
+          "autoTargetAction": "default",
+          "automationOnly": false,
+          "otherActivityCompatible": false,
+          "identifier": ""
+        },
+        "name": "Grovel"
+      },
+      "VnczBnc1P5ttfyp3": {
+        "type": "save",
+        "_id": "VnczBnc1P5ttfyp3",
+        "sort": 0,
+        "activation": {
+          "type": "action",
+          "value": null,
+          "override": false
+        },
+        "consumption": {
+          "scaling": {
+            "allowed": false
+          },
+          "spellSlot": true,
+          "targets": []
+        },
+        "description": {
+          "chatFlavor": "Command: Halt"
+        },
+        "duration": {
+          "units": "round",
+          "concentration": false,
+          "override": true,
+          "value": "1"
+        },
+        "effects": [
+          {
+            "_id": "1ZpzHVhZAuJdU7ap",
+            "onSave": false
+          }
+        ],
+        "range": {
+          "override": false
+        },
+        "target": {
+          "template": {
+            "contiguous": false,
+            "units": "ft",
+            "type": ""
+          },
+          "affects": {
+            "choice": false,
+            "type": "creature",
+            "count": "",
+            "special": ""
+          },
+          "override": true,
+          "prompt": true
+        },
+        "uses": {
+          "spent": 0,
+          "recovery": [],
+          "max": ""
+        },
+        "damage": {
+          "parts": [],
+          "critical": {
+            "allow": false
+          },
+          "onSave": "half"
+        },
+        "save": {
+          "ability": [
+            "wis"
+          ],
+          "dc": {
+            "calculation": "spellcasting",
+            "formula": ""
+          }
+        },
+        "useConditionText": "",
+        "effectConditionText": "",
+        "macroData": {
+          "name": "",
+          "command": ""
+        },
+        "ignoreTraits": {
+          "idi": false,
+          "idr": false,
+          "idv": false,
+          "ida": false
+        },
+        "midiProperties": {
+          "ignoreTraits": [],
+          "triggeredActivityId": "none",
+          "triggeredActivityConditionText": "",
+          "triggeredActivityTargets": "targets",
+          "triggeredActivityRollAs": "self",
+          "forceDialog": false,
+          "confirmTargets": "default",
+          "autoTargetType": "any",
+          "autoTargetAction": "default",
+          "automationOnly": false,
+          "otherActivityCompatible": false,
+          "identifier": ""
+        },
+        "name": "Halt"
+      }
+    },
+    "uses": {
+      "spent": null,
+      "max": "",
+      "recovery": []
+    },
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "identifier": "command",
+    "source": {
+      "book": "PHB 2024",
+      "page": "",
+      "license": "",
+      "custom": "",
+      "rules": "2024",
+      "revision": 1
+    },
+    "activation": {
+      "type": "action",
+      "value": 1,
+      "condition": ""
+    },
+    "duration": {
+      "value": "0",
+      "units": "inst"
+    },
+    "level": 1,
+    "materials": {
+      "value": "",
+      "consumed": false,
+      "cost": 0,
+      "supply": 0
+    },
+    "preparation": {
+      "mode": "prepared",
+      "prepared": false
+    },
+    "properties": [
+      "vocal"
+    ],
+    "range": {
+      "value": "60",
+      "units": "ft"
+    },
+    "school": "enc",
+    "target": {
+      "affects": {
+        "count": "1",
+        "type": "creature",
+        "choice": false,
+        "special": ""
+      },
+      "template": {
+        "count": "",
+        "contiguous": false,
+        "type": "",
+        "size": "",
+        "width": "",
+        "height": "",
+        "units": "ft"
+      }
+    },
+    "sourceClass": ""
+  },
+  "effects": [
+    {
+      "name": "Command: Approach",
+      "img": "icons/skills/social/wave-halt-stop.webp",
+      "origin": "Item.dHBUxnunqwgQwUrQ",
+      "transfer": false,
+      "_id": "SOTIXYPUzcm24eB1",
+      "type": "base",
+      "system": {},
+      "changes": [],
+      "disabled": false,
+      "duration": {
+        "startTime": null,
+        "seconds": null,
+        "combat": null,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "statuses": [],
+      "sort": 0,
+      "flags": {
+        "chris-premades": {
+          "noAnimation": false,
+          "conditions": [],
+          "specialDuration": [],
+          "info": {
+            "identifier": "commandApproach"
+          },
+          "macros": {
+            "combat": [
+              "commandTurnStart"
+            ]
+          },
+          "rules": "modern"
+        },
+        "dae": {
+          "enableCondition": "",
+          "disableCondition": "",
+          "disableIncapacitated": false,
+          "selfTarget": false,
+          "selfTargetAlways": false,
+          "dontApply": false,
+          "stackable": "noneName",
+          "showIcon": false,
+          "durationExpression": "",
+          "macroRepeat": "none",
+          "specialDuration": [
+            "turnEnd"
+          ]
+        },
+        "core": {
+          "overlay": false
+        },
+        "dnd5e": {
+          "dependents": [
+            {
+              "uuid": "Scene.iGwlIbnzeJk0iHC2.Token.814H5swGSqJITzez.Actor.szyevsXsdQSq5snz.ActiveEffect.bk0rAOAHnsdakgOz"
+            },
+            {
+              "uuid": "Scene.iGwlIbnzeJk0iHC2.Token.814H5swGSqJITzez.Actor.szyevsXsdQSq5snz.ActiveEffect.ZYfVNDh0ZlaUDace"
+            },
+            {
+              "uuid": "Scene.iGwlIbnzeJk0iHC2.Token.YO2vfoSD0nu3iHfy.Actor.szyevsXsdQSq5snz.ActiveEffect.lrvo4hTS1WVljUf1"
+            }
+          ]
+        }
+      },
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "coreVersion": "12.331",
+        "systemId": "dnd5e",
+        "systemVersion": "4.2.2",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!items.effects!mKFv2wJLCSLzY2IG.SOTIXYPUzcm24eB1"
+    },
+    {
+      "name": "Command: Drop",
+      "img": "icons/skills/social/wave-halt-stop.webp",
+      "origin": "Item.dHBUxnunqwgQwUrQ",
+      "transfer": false,
+      "_id": "ut5o4sHbHGh5BHOf",
+      "type": "base",
+      "system": {},
+      "changes": [],
+      "disabled": false,
+      "duration": {
+        "startTime": null,
+        "seconds": null,
+        "combat": null,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "statuses": [],
+      "sort": 0,
+      "flags": {
+        "dae": {
+          "enableCondition": "",
+          "disableCondition": "",
+          "disableIncapacitated": false,
+          "selfTarget": false,
+          "selfTargetAlways": false,
+          "dontApply": false,
+          "stackable": "noneName",
+          "showIcon": false,
+          "durationExpression": "",
+          "macroRepeat": "none",
+          "specialDuration": [
+            "turnEnd"
+          ]
+        },
+        "core": {
+          "overlay": false
+        },
+        "chris-premades": {
+          "noAnimation": false,
+          "conditions": [],
+          "specialDuration": [],
+          "info": {
+            "identifier": "commandDrop"
+          },
+          "rules": "modern",
+          "macros": {
+            "combat": [
+              "commandTurnStart"
+            ]
+          }
+        },
+        "dnd5e": {
+          "dependents": [
+            {
+              "uuid": "Scene.iGwlIbnzeJk0iHC2.Token.814H5swGSqJITzez.Actor.szyevsXsdQSq5snz.ActiveEffect.xcVvLtIknTXRxGPA"
+            },
+            {
+              "uuid": "Scene.iGwlIbnzeJk0iHC2.Token.YO2vfoSD0nu3iHfy.Actor.szyevsXsdQSq5snz.ActiveEffect.Skjrh5VTXFAsWd0C"
+            }
+          ]
+        }
+      },
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "coreVersion": "12.331",
+        "systemId": "dnd5e",
+        "systemVersion": "4.2.2",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!items.effects!mKFv2wJLCSLzY2IG.ut5o4sHbHGh5BHOf"
+    },
+    {
+      "name": "Command: Flee",
+      "img": "icons/skills/social/wave-halt-stop.webp",
+      "origin": "Item.dHBUxnunqwgQwUrQ",
+      "transfer": false,
+      "_id": "dgKDpkVZdETfhvBG",
+      "type": "base",
+      "system": {},
+      "changes": [],
+      "disabled": false,
+      "duration": {
+        "startTime": null,
+        "seconds": null,
+        "combat": null,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "statuses": [],
+      "sort": 0,
+      "flags": {
+        "dae": {
+          "enableCondition": "",
+          "disableCondition": "",
+          "disableIncapacitated": false,
+          "selfTarget": false,
+          "selfTargetAlways": false,
+          "dontApply": false,
+          "stackable": "noneName",
+          "showIcon": false,
+          "durationExpression": "",
+          "macroRepeat": "none",
+          "specialDuration": [
+            "turnEnd"
+          ]
+        },
+        "core": {
+          "overlay": false
+        },
+        "chris-premades": {
+          "noAnimation": false,
+          "conditions": [],
+          "specialDuration": [],
+          "info": {
+            "identifier": "commandFlee"
+          },
+          "rules": "modern",
+          "macros": {
+            "combat": [
+              "commandTurnStart"
+            ]
+          }
+        }
+      },
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "coreVersion": "12.331",
+        "systemId": "dnd5e",
+        "systemVersion": "4.2.2",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!items.effects!mKFv2wJLCSLzY2IG.dgKDpkVZdETfhvBG"
+    },
+    {
+      "name": "Command: Grovel",
+      "img": "icons/skills/social/wave-halt-stop.webp",
+      "origin": "Item.dHBUxnunqwgQwUrQ",
+      "transfer": false,
+      "_id": "4smn6quV2K7jJRkV",
+      "type": "base",
+      "system": {},
+      "changes": [],
+      "disabled": false,
+      "duration": {
+        "startTime": null,
+        "seconds": null,
+        "combat": null,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "statuses": [],
+      "sort": 0,
+      "flags": {
+        "dae": {
+          "enableCondition": "",
+          "disableCondition": "",
+          "disableIncapacitated": false,
+          "selfTarget": false,
+          "selfTargetAlways": false,
+          "dontApply": false,
+          "stackable": "noneName",
+          "showIcon": false,
+          "durationExpression": "",
+          "macroRepeat": "none",
+          "specialDuration": [
+            "turnEnd"
+          ]
+        },
+        "core": {
+          "overlay": false
+        },
+        "chris-premades": {
+          "noAnimation": false,
+          "conditions": [],
+          "specialDuration": [],
+          "info": {
+            "identifier": "commandGrovel"
+          },
+          "rules": "modern",
+          "macros": {
+            "combat": [
+              "commandTurnStart",
+              "commandGrovel"
+            ]
+          }
+        },
+        "dnd5e": {
+          "dependents": [
+            {
+              "uuid": "Scene.iGwlIbnzeJk0iHC2.Token.814H5swGSqJITzez.Actor.szyevsXsdQSq5snz.ActiveEffect.ikFD54RXan1DRUso"
+            },
+            {
+              "uuid": "Scene.iGwlIbnzeJk0iHC2.Token.814H5swGSqJITzez.Actor.szyevsXsdQSq5snz.ActiveEffect.FzZpU7WCICxwsPrU"
+            },
+            {
+              "uuid": "Scene.iGwlIbnzeJk0iHC2.Token.814H5swGSqJITzez.Actor.szyevsXsdQSq5snz.ActiveEffect.fn7YbyrswNAJJzOF"
+            },
+            {
+              "uuid": "Scene.iGwlIbnzeJk0iHC2.Token.YO2vfoSD0nu3iHfy.Actor.szyevsXsdQSq5snz.ActiveEffect.UYLyiQrjbCDQhs5C"
+            }
+          ]
+        }
+      },
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "coreVersion": "12.331",
+        "systemId": "dnd5e",
+        "systemVersion": "4.2.2",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!items.effects!mKFv2wJLCSLzY2IG.4smn6quV2K7jJRkV"
+    },
+    {
+      "name": "Command: Halt",
+      "img": "icons/skills/social/wave-halt-stop.webp",
+      "origin": "Item.dHBUxnunqwgQwUrQ",
+      "transfer": false,
+      "_id": "1ZpzHVhZAuJdU7ap",
+      "type": "base",
+      "system": {},
+      "changes": [],
+      "disabled": false,
+      "duration": {
+        "startTime": null,
+        "seconds": null,
+        "combat": null,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "statuses": [],
+      "sort": 0,
+      "flags": {
+        "dae": {
+          "enableCondition": "",
+          "disableCondition": "",
+          "disableIncapacitated": false,
+          "selfTarget": false,
+          "selfTargetAlways": false,
+          "dontApply": false,
+          "stackable": "noneName",
+          "showIcon": false,
+          "durationExpression": "",
+          "macroRepeat": "none",
+          "specialDuration": [
+            "turnEnd"
+          ]
+        },
+        "core": {
+          "overlay": false
+        },
+        "chris-premades": {
+          "noAnimation": false,
+          "conditions": [],
+          "specialDuration": [],
+          "info": {
+            "identifier": "commandHalt"
+          },
+          "rules": "modern",
+          "macros": {
+            "combat": [
+              "commandTurnStart"
+            ]
+          }
+        }
+      },
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "coreVersion": "12.331",
+        "systemId": "dnd5e",
+        "systemVersion": "4.2.2",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!items.effects!mKFv2wJLCSLzY2IG.1ZpzHVhZAuJdU7ap"
+    }
+  ],
+  "name": "Command",
+  "flags": {
+    "midi-qol": {
+      "removeAttackDamageButtons": "default",
+      "forceCEOff": true
+    },
+    "midiProperties": {
+      "confirmTargets": "default",
+      "magicdam": true,
+      "magiceffect": true
+    },
+    "dnd5e": {
+      "riders": {
+        "activity": [],
+        "effect": []
+      }
+    },
+    "chris-premades": {
+      "hiddenActivities": [],
+      "activityIdentifiers": {
+        "approach": "pd3grECrkVOivDuh",
+        "drop": "qnK53bkjbuxbTAqi",
+        "flee": "yYbbsuLD8FivztBy",
+        "grovel": "iYsD9kVdDvJM77VQ",
+        "halt": "VnczBnc1P5ttfyp3"
+      },
+      "info": {
+        "source": "chris-premades",
+        "identifier": "command",
+        "hasAnimation": false,
+        "rules": "modern",
+        "version": "1.1.38"
+      },
+      "macros": {
+        "midi": {
+          "item": [
+            "command"
+          ]
+        }
+      }
+    }
+  },
+  "img": "icons/skills/social/wave-halt-stop.webp",
+  "folder": null,
+  "_id": "mKFv2wJLCSLzY2IG",
+  "_key": "!items!mKFv2wJLCSLzY2IG"
+}

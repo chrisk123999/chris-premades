@@ -1,0 +1,140 @@
+{
+  "name": "Stalker's Prowess",
+  "type": "feat",
+  "system": {
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "source": {
+      "custom": "Blood Hunter : Order of the Lycan",
+      "revision": 1,
+      "rules": "2014"
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "recovery": []
+    },
+    "type": {
+      "value": "class",
+      "subtype": ""
+    },
+    "requirements": "",
+    "properties": [],
+    "prerequisites": {
+      "level": null
+    },
+    "activities": {},
+    "identifier": "stalkers-prowess",
+    "enchant": {}
+  },
+  "flags": {
+    "core": {
+      "sourceId": "Actor.8ziTn2ZG6kNjkfnS.Item.eN5jMnSRcET8XzB2"
+    },
+    "midiProperties": {
+      "confirmTargets": "default",
+      "autoFailFriendly": false,
+      "autoSaveFriendly": false,
+      "critOther": false,
+      "offHandWeapon": false,
+      "magicdam": false,
+      "magiceffect": false,
+      "noConcentrationCheck": false,
+      "toggleEffect": false,
+      "ignoreTotalCover": false,
+      "idr": false,
+      "idi": false,
+      "idv": false,
+      "ida": false
+    },
+    "midi-qol": {
+      "rollAttackPerTarget": "default",
+      "itemCondition": "",
+      "effectCondition": "",
+      "AoETargetType": "any",
+      "AoETargetTypeIncludeSelf": true,
+      "autoTarget": "default",
+      "removeAttackDamageButtons": "default",
+      "reactionCondition": "",
+      "otherCondition": ""
+    },
+    "dnd5e": {
+      "riders": {
+        "activity": []
+      }
+    },
+    "chris-premades": {
+      "info": {
+        "name": "Stalker's Prowess",
+        "version": "1.1.0",
+        "identifier": "stalkersProwess",
+        "source": "chris-premades"
+      }
+    }
+  },
+  "effects": [
+    {
+      "name": "Stalker's Prowess",
+      "origin": "Compendium.world.cpr-class-features.Item.9BCXuAmNZxJambn8",
+      "duration": {
+        "rounds": null,
+        "startTime": 1476,
+        "seconds": null,
+        "combat": null,
+        "turns": null,
+        "startRound": 247,
+        "startTurn": 4
+      },
+      "disabled": false,
+      "flags": {
+        "dnd5e": {},
+        "dae": {
+          "disableCondition": "",
+          "disableIncapacitated": false,
+          "stackable": "noneName",
+          "showIcon": false,
+          "durationExpression": "",
+          "macroRepeat": "none",
+          "specialDuration": []
+        },
+        "core": {
+          "overlay": false
+        }
+      },
+      "img": "icons/creatures/abilities/cougar-pounce-stalk-black.webp",
+      "_id": "SKtLqcorKO5aNMXK",
+      "type": "base",
+      "system": {},
+      "changes": [
+        {
+          "key": "system.attributes.movement.all",
+          "mode": 0,
+          "value": "+10",
+          "priority": 20
+        }
+      ],
+      "description": "",
+      "tint": "#ffffff",
+      "transfer": true,
+      "statuses": [],
+      "sort": 0,
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "coreVersion": "12.331",
+        "systemId": "dnd5e",
+        "systemVersion": "4.1.2",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!items.effects!9853lSmH18OrCuYN.SKtLqcorKO5aNMXK"
+    }
+  ],
+  "img": "icons/creatures/abilities/cougar-pounce-stalk-black.webp",
+  "folder": "DlX1JRbVtUrXIQGw",
+  "_id": "9853lSmH18OrCuYN",
+  "_key": "!items!9853lSmH18OrCuYN"
+}

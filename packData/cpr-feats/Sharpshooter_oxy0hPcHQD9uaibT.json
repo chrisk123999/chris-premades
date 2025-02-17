@@ -1,0 +1,243 @@
+{
+  "name": "Sharpshooter",
+  "type": "feat",
+  "system": {
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "source": {
+      "book": "Player’s Handbook (2014)",
+      "page": "170",
+      "license": "",
+      "custom": "",
+      "revision": 1,
+      "rules": "2014"
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "recovery": []
+    },
+    "type": {
+      "value": "feat",
+      "subtype": ""
+    },
+    "prerequisites": {
+      "level": null
+    },
+    "properties": [],
+    "requirements": "",
+    "activities": {
+      "dnd5eactivity000": {
+        "_id": "dnd5eactivity000",
+        "type": "utility",
+        "activation": {
+          "type": "",
+          "value": 1,
+          "condition": "",
+          "override": false
+        },
+        "consumption": {
+          "targets": [],
+          "scaling": {
+            "allowed": false,
+            "max": ""
+          },
+          "spellSlot": true
+        },
+        "description": {
+          "chatFlavor": ""
+        },
+        "duration": {
+          "concentration": false,
+          "value": "",
+          "units": "",
+          "special": "",
+          "override": false
+        },
+        "effects": [],
+        "range": {
+          "units": "self",
+          "special": "",
+          "override": false
+        },
+        "target": {
+          "template": {
+            "count": "",
+            "contiguous": false,
+            "type": "",
+            "size": "",
+            "width": "",
+            "height": "",
+            "units": ""
+          },
+          "affects": {
+            "count": "",
+            "type": "self",
+            "choice": false,
+            "special": ""
+          },
+          "prompt": true,
+          "override": false
+        },
+        "uses": {
+          "spent": 0,
+          "max": "",
+          "recovery": []
+        },
+        "roll": {
+          "formula": "",
+          "name": "",
+          "prompt": false,
+          "visible": false
+        },
+        "sort": 0,
+        "useConditionText": "",
+        "forceDialog": false,
+        "effectConditionText": "",
+        "midiAutomationOnly": false
+      }
+    },
+    "identifier": "sharpshooter",
+    "enchant": {}
+  },
+  "flags": {
+    "obsidian": {
+      "source": {
+        "type": "feat"
+      }
+    },
+    "midi-qol": {
+      "removeAttackDamageButtons": "default",
+      "effectActivation": false,
+      "forceCEOff": true,
+      "AoETargetType": "any",
+      "autoTarget": "default",
+      "rollAttackPerTarget": "default",
+      "itemCondition": "",
+      "reactionCondition": "",
+      "otherCondition": "",
+      "effectCondition": ""
+    },
+    "midiProperties": {
+      "confirmTargets": "default",
+      "toggleEffect": true,
+      "autoFailFriendly": false,
+      "autoSaveFriendly": false,
+      "magicdam": false,
+      "magiceffect": false,
+      "noConcentrationCheck": false,
+      "ignoreTotalCover": false,
+      "idr": false,
+      "idi": false,
+      "idv": false,
+      "ida": false
+    },
+    "dnd5e": {
+      "persistSourceMigration": true,
+      "riders": {
+        "activity": []
+      }
+    },
+    "chris-premades": {
+      "info": {
+        "identifier": "sharpshooter",
+        "source": "chris-premades",
+        "version": "1.2.1"
+      },
+      "macros": {
+        "midi": {
+          "actor": [
+            "sharpshooter"
+          ]
+        }
+      }
+    }
+  },
+  "effects": [
+    {
+      "img": "icons/skills/ranged/arrow-flying-white-blue.webp",
+      "changes": [
+        {
+          "key": "flags.dnd5e.sharpShooter",
+          "mode": 0,
+          "value": "1",
+          "priority": 30
+        }
+      ],
+      "duration": {
+        "seconds": null,
+        "startTime": 1488,
+        "rounds": null,
+        "turns": null,
+        "startRound": 249,
+        "startTurn": 0,
+        "combat": null
+      },
+      "tint": "#ffffff",
+      "transfer": true,
+      "disabled": false,
+      "flags": {
+        "dae": {
+          "transfer": true,
+          "stackable": "noneName",
+          "disableCondition": "",
+          "disableIncapacitated": false,
+          "showIcon": false,
+          "durationExpression": "",
+          "macroRepeat": "none",
+          "specialDuration": []
+        },
+        "ddbimporter": {
+          "disabled": false
+        },
+        "midi-qol": {
+          "forceCEOff": true
+        },
+        "core": {
+          "overlay": false
+        },
+        "ActiveAuras": {
+          "isAura": false,
+          "aura": "None",
+          "nameOverride": "",
+          "radius": "",
+          "alignment": "",
+          "type": "",
+          "customCheck": "",
+          "ignoreSelf": false,
+          "height": false,
+          "hidden": false,
+          "displayTemp": false,
+          "hostile": false,
+          "onlyOnce": false,
+          "wallsBlock": "system"
+        }
+      },
+      "name": "Sharpshooter - Range Adjustment",
+      "statuses": [],
+      "_id": "XNHZUZWx8ulIFnkz",
+      "type": "base",
+      "system": {},
+      "description": "",
+      "origin": "Actor.yLACiN6Q02CNit1Z.Item.9rmWZ2WsSJ3ONHn9",
+      "sort": 0,
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "coreVersion": "12.331",
+        "systemId": "dnd5e",
+        "systemVersion": "4.1.2",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!items.effects!oxy0hPcHQD9uaibT.XNHZUZWx8ulIFnkz"
+    }
+  ],
+  "img": "icons/skills/ranged/arrow-flying-white-blue.webp",
+  "folder": null,
+  "_id": "oxy0hPcHQD9uaibT",
+  "_key": "!items!oxy0hPcHQD9uaibT"
+}

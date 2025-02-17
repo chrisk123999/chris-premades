@@ -1,0 +1,160 @@
+{
+  "name": "Lucky Footwork",
+  "type": "feat",
+  "system": {
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "source": {
+      "custom": "",
+      "revision": 1,
+      "rules": "2014"
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "recovery": []
+    },
+    "type": {
+      "value": "race",
+      "subtype": ""
+    },
+    "requirements": "",
+    "properties": [],
+    "prerequisites": {
+      "level": null
+    },
+    "activities": {},
+    "identifier": "lucky-footwork",
+    "enchant": {}
+  },
+  "flags": {
+    "core": {
+      "sourceId": "Actor.IlpCynnAcU8YiYdx.Item.GLfqDRJ3BcOsG8xn"
+    },
+    "midi-qol": {
+      "effectActivation": false,
+      "rollAttackPerTarget": "default",
+      "removeAttackDamageButtons": "default",
+      "itemCondition": "",
+      "reactionCondition": "",
+      "effectCondition": "",
+      "AoETargetType": "any",
+      "AoETargetTypeIncludeSelf": true,
+      "autoTarget": "default",
+      "otherCondition": ""
+    },
+    "midiProperties": {
+      "nodam": false,
+      "fulldam": false,
+      "halfdam": false,
+      "autoFailFriendly": false,
+      "autoSaveFriendly": false,
+      "rollOther": false,
+      "critOther": false,
+      "offHandWeapon": false,
+      "magicdam": false,
+      "magiceffect": false,
+      "concentration": false,
+      "toggleEffect": false,
+      "ignoreTotalCover": false,
+      "confirmTargets": "default",
+      "noConcentrationCheck": false,
+      "idr": false,
+      "idi": false,
+      "idv": false,
+      "ida": false
+    },
+    "chris-premades": {
+      "info": {
+        "name": "Lucky Footwork",
+        "version": "1.1.0",
+        "identifier": "luckyFootwork",
+        "source": "chris-premades"
+      }
+    },
+    "dnd5e": {
+      "persistSourceMigration": true,
+      "riders": {
+        "activity": [],
+        "effect": []
+      }
+    }
+  },
+  "effects": [
+    {
+      "name": "Lucky Footwork",
+      "origin": "Compendium.world.cpr-race-features.Item.WA0L167QopK809Cr",
+      "duration": {
+        "rounds": null,
+        "startTime": 1488,
+        "seconds": null,
+        "combat": null,
+        "turns": null,
+        "startRound": 249,
+        "startTurn": 0
+      },
+      "disabled": false,
+      "flags": {
+        "dnd5e": {},
+        "dae": {
+          "disableCondition": "",
+          "disableIncapacitated": false,
+          "stackable": "noneName",
+          "showIcon": false,
+          "durationExpression": "",
+          "macroRepeat": "none",
+          "specialDuration": []
+        },
+        "core": {
+          "overlay": false
+        }
+      },
+      "img": "icons/equipment/neck/necklace-charm-clover.webp",
+      "_id": "KUSgh1AReAjkrGY8",
+      "type": "base",
+      "system": {},
+      "changes": [
+        {
+          "key": "flags.midi-qol.optional.luckyFootwork.label",
+          "mode": 0,
+          "value": "Lucky Footwork",
+          "priority": 20
+        },
+        {
+          "key": "flags.midi-qol.optional.luckyFootwork.save.fail.dex",
+          "mode": 0,
+          "value": "1d4",
+          "priority": 20
+        },
+        {
+          "key": "flags.midi-qol.optional.luckyFootwork.count",
+          "mode": 0,
+          "value": "reaction",
+          "priority": 20
+        }
+      ],
+      "description": "",
+      "tint": "#ffffff",
+      "transfer": true,
+      "statuses": [],
+      "sort": 0,
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "coreVersion": "12.331",
+        "systemId": "dnd5e",
+        "systemVersion": "4.1.2",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!items.effects!4V0OHmtTsWWyliGw.KUSgh1AReAjkrGY8"
+    }
+  ],
+  "img": "icons/equipment/neck/necklace-charm-clover.webp",
+  "folder": "ucXLuMuU7BAiVFON",
+  "_id": "4V0OHmtTsWWyliGw",
+  "_key": "!items!4V0OHmtTsWWyliGw"
+}

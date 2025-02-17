@@ -61,7 +61,48 @@ async function automationCheck(workflow) {
     });
     return true;
 }
+async function ruleCheck(workflow) {
+    if (!workflow.item) return;
+    let identifier = genericUtils.getIdentifier(workflow.item);
+    if (!identifier) return;
+    let macro = custom.getMacro(identifier);
+    if (!macro) return;
+    if (!macro.rules) return;
+    if (genericUtils.getRules(workflow.item) === macro.rules) return;
+    let message = '<hr>' + genericUtils.translate('CHRISPREMADES.Error.RulesMismatch');
+    await ChatMessage.create({
+        speaker: {alias: genericUtils.translate('CHRISPREMADES.Generic.CPR')},
+        content: message
+    });
+    return true;
+}
+async function scaleCheck(item) {
+    let macro = custom.getMacro(genericUtils.getIdentifier(item), genericUtils.getRules(item));
+    if (!macro) return;
+    let scales = macro.scales;
+    if (!scales) return;
+    let missingClass = false;
+    await Promise.all(scales.map(async data => {
+        let classIdentifier = itemUtils.getConfig(item, data.classIdentifier);
+        let classItem = item.actor.classes[classIdentifier];
+        if (!classItem) {
+            missingClass = true;
+            return;
+        }
+        let scaleIdentifier = itemUtils.getConfig(item, data.scaleIdentifier);
+        let scale = item.actor.system.scale[classIdentifier][scaleIdentifier];
+        if (scale) return;
+        let classData = genericUtils.duplicate(classItem.toObject());
+        classData.system.advancement.push(data.data);
+        await genericUtils.update(classItem, {'system.advancement': classData.system.advancement});
+        let message = genericUtils.format('CHRISPREMADES.Requirements.ScaleAdded', {classIdentifier, scaleIdentifier});
+        genericUtils.notify(message, 'info');
+    }));
+    if (missingClass) return true;
+}
 export let requirements = {
     versionCheck,
-    automationCheck
+    automationCheck,
+    ruleCheck,
+    scaleCheck
 };

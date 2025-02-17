@@ -1,0 +1,214 @@
+{
+  "name": "Mindless Rage",
+  "type": "feat",
+  "effects": [
+    {
+      "name": "Mindless Rage",
+      "statuses": [],
+      "changes": [
+        {
+          "key": "system.traits.ci.value",
+          "value": "frighened",
+          "mode": 2,
+          "priority": 20
+        },
+        {
+          "key": "system.traits.ci.value",
+          "value": "charmed",
+          "mode": 2,
+          "priority": 20
+        }
+      ],
+      "duration": {
+        "seconds": null,
+        "startTime": null,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null,
+        "combat": null
+      },
+      "tint": "#ffffff",
+      "transfer": false,
+      "disabled": false,
+      "flags": {
+        "dae": {
+          "transfer": false,
+          "stackable": "noneNameOnly",
+          "specialDuration": []
+        },
+        "ddbimporter": {
+          "disabled": false
+        },
+        "midi-qol": {
+          "forceCEOff": true
+        },
+        "core": {}
+      },
+      "description": "",
+      "img": "icons/magic/fire/flame-burning-eye.webp",
+      "_id": "xxZmKfSpUHGG2oIn",
+      "type": "base",
+      "system": {},
+      "origin": null,
+      "sort": 0,
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "coreVersion": "12.331",
+        "systemId": "dnd5e",
+        "systemVersion": "4.2.2",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!items.effects!QSWI1laAnATG6I7e.xxZmKfSpUHGG2oIn"
+    }
+  ],
+  "system": {
+    "activities": {
+      "Y3SFJwMOsVWQPhpX": {
+        "type": "utility",
+        "_id": "Y3SFJwMOsVWQPhpX",
+        "sort": 0,
+        "activation": {
+          "type": "special",
+          "value": null,
+          "override": false,
+          "condition": ""
+        },
+        "consumption": {
+          "scaling": {
+            "allowed": false
+          },
+          "spellSlot": true,
+          "targets": []
+        },
+        "description": {
+          "chatFlavor": ""
+        },
+        "duration": {
+          "units": "inst",
+          "concentration": false,
+          "override": false
+        },
+        "effects": [],
+        "range": {
+          "override": false,
+          "units": "self",
+          "special": ""
+        },
+        "target": {
+          "template": {
+            "contiguous": false,
+            "units": "ft",
+            "type": ""
+          },
+          "affects": {
+            "choice": false,
+            "type": ""
+          },
+          "override": false,
+          "prompt": true
+        },
+        "uses": {
+          "spent": 0,
+          "recovery": [],
+          "max": ""
+        },
+        "roll": {
+          "prompt": false,
+          "visible": false,
+          "name": "",
+          "formula": ""
+        },
+        "useConditionText": "",
+        "effectConditionText": "",
+        "macroData": {
+          "name": "",
+          "command": ""
+        },
+        "ignoreTraits": {
+          "idi": false,
+          "idr": false,
+          "idv": false,
+          "ida": false
+        },
+        "midiProperties": {
+          "ignoreTraits": [],
+          "triggeredActivityId": "none",
+          "triggeredActivityConditionText": "",
+          "triggeredActivityTargets": "targets",
+          "triggeredActivityRollAs": "self",
+          "forceDialog": false,
+          "confirmTargets": "default",
+          "autoTargetType": "any",
+          "autoTargetAction": "default",
+          "automationOnly": false,
+          "otherActivityCompatible": false,
+          "identifier": ""
+        },
+        "name": ""
+      }
+    },
+    "uses": {
+      "spent": 0,
+      "recovery": []
+    },
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "identifier": "mindless-rage",
+    "source": {
+      "book": "PHB 2024",
+      "page": "",
+      "license": "",
+      "custom": "",
+      "rules": "2024",
+      "revision": 1
+    },
+    "advancement": [],
+    "cover": null,
+    "crewed": false,
+    "enchant": {},
+    "prerequisites": {
+      "level": 6,
+      "repeatable": false
+    },
+    "properties": [],
+    "requirements": "",
+    "type": {
+      "value": "class",
+      "subtype": ""
+    }
+  },
+  "flags": {
+    "midi-qol": {
+      "removeAttackDamageButtons": "default",
+      "forceCEOff": true
+    },
+    "midiProperties": {
+      "confirmTargets": "default"
+    },
+    "dnd5e": {
+      "riders": {
+        "activity": [],
+        "effect": []
+      },
+      "advancementOrigin": "nwupzjujWuejv7P9"
+    },
+    "chris-premades": {
+      "info": {
+        "identifier": "mindlessRage",
+        "source": "chris-premades",
+        "rules": "modern",
+        "version": "1.1.23"
+      }
+    }
+  },
+  "img": "icons/magic/fire/flame-burning-eye.webp",
+  "folder": "N37OuKFecWTC4LE4",
+  "_id": "QSWI1laAnATG6I7e",
+  "_key": "!items!QSWI1laAnATG6I7e"
+}

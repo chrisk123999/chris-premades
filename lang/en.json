@@ -89,6 +89,7 @@
             "WeightOfSorrow": "Weight of Sorrow"
         },
         "Config": {
+            "Abilities": "Ability:",
             "Ability": "Ability:",
             "AffectAllies": "Should Affect Allies:",
             "AllowEnemies": "Allow selection of non-allied tokens?",
@@ -112,7 +113,12 @@
                 "Water": "Water"
             },
             "ApplyFilter": "Apply Filter:",
+            "ArmoTypes": "Armor Types:",
             "AttackBonus": "Attack Bonus:",
+            "AvatarImg": "Avatar Image:",
+            "AvatarImgPriority": "Avatar Image Priority:",
+            "BaseDiceNumber": "Base Dice Number:",
+            "BlockingStatuses": "Blocking Statuses:",
             "Character": "Character",
             "CheckSave": "Check Save:",
             "CheckSaves": "Check Saves:",
@@ -148,12 +154,14 @@
             },
             "CombatOnly": "Only Enable When in Combat",
             "CompendiumName": "{option} Compendium Name:",
+            "Conditions": "Conditions:",
             "CreatureTypes": "Creature Types:",
             "CriticalOnly": "Critical Only:",
             "DC": "DC:",
             "DamageType": "Damage Type:",
             "DamageTypes": "Damage Types:",
             "DarknessAnimation": "Darkness Animation:",
+            "DiceSize": "Dice Size:",
             "DisplayFormulaRoll": "Display Formula Roll:",
             "Distance": "Distance:",
             "DurationSeconds": "Duration (Seconds):",
@@ -161,24 +169,35 @@
             "FailedSave": "Failed Save:",
             "Formula": "Formula:",
             "HideToken": "Hide Token:",
+            "HitPoints": "Hit Points:",
             "IgnoredCreatureTypes": "Ignored Creature Types:",
             "ImmuneCreatures": "Immune Creature Types:",
             "MaxLevel": "Max Level:",
+            "Name": "Name:",
+            "Number": "Number:",
             "Percentage": "Percentage:",
             "PlayAnimation": "Play Animation:",
             "PlayTeleportAnimation": "Play Teleport Animation:",
+            "PromptToUse": "Prompt to use:",
             "Range": "Range:",
             "RealDarkness": "Use Real Darkness:",
+            "SaveAbilities": "Save Abilities:",
             "SaveDC": "Save DC:",
+            "Saves": "Saves:",
             "Scale": "Scale:",
             "ScaleIdentifier": "Scale Identifier",
             "ShowIcon": "Always Show Aura Icon",
             "ShowRoll": "Show Roll:",
+            "Skills": "Skills:",
             "Sound": "Sound:",
             "SpecificAnimation": "{option} Animation:",
+            "SpellSchools": "Spell Schools:",
+            "TokenImg": "Token Image:",
+            "TokenImgPriority": "Token Image Priority:",
             "Trigger": "Trigger:",
             "TurnTrigger": "Turn Trigger:",
-            "UseFormula": "Use Formula:"
+            "UseFormula": "Use Formula:",
+            "WeaponProperties": "Weapon Properties:"
         },
         "Cover": {
             "Full": "Full Cover",
@@ -246,6 +265,7 @@
             "StatusRemove": "Remove from Status Effects"
         },
         "Error": {
+            "ActivityNotFound": "Activity (identifier {identifier}) not found on item!",
             "ActorNotFound": "Required sidebar actor not found!",
             "CompendiumItemNotFound": "Compendium item not found!",
             "CompendiumNotFound": "Invalid compendium specified!",
@@ -255,6 +275,7 @@
             "MissingDescriptionPage": "Missing Description journal page!",
             "NoActors": "No actors found in folder: \"{folder}\"!",
             "OutOfDateItem": "Automation is out of date!",
+            "RulesMismatch": "The automation for this item is mismatched with the rules set on the item!",
             "UpdateItem": "Update Item"
         },
         "Firearm": {
@@ -299,7 +320,17 @@
             "Check": "Ability Check",
             "CheckSpelling": "Check Spelling",
             "Close": "Close",
+            "ConditionResistance": {
+                "Description": "Condition Resistance to {condition}, roll at advantage to save. Supports Override change mode. 1/true for all saves, or a comma-separated list of abilities (e.g. str,dex).",
+                "Name": "{condition} Condition Resistance"
+            },
+            "ConditionVulnerability": {
+                "Description": "Condition Vulnerability to {condition}, roll at disadvantage to save. Supports Override change mode. 1/true for all saves, or a comma-separated list of abilities (e.g. str,dex).",
+                "Name": "{condition} Condition Vulnerability"
+            },
             "Configure": "Configure",
+            "ConsumeItemToUse": "Consume a usage of {item} to use?",
+            "ConsumeSpellSlotToUse": "Consume a spell slot to use?",
             "Disabled": "Disabled",
             "Distance": "Distance",
             "Edit": "Edit",
@@ -319,7 +350,10 @@
             "Replace": "Replace",
             "Rerolling": "Rerolling {origDie} ({origResult}):",
             "Select": "Select",
+            "SelectDamageType": "Select a damage type:",
+            "SelectEffect": "Select an effect:",
             "SelectSpellSlot": "Select a spell slot:",
+            "SelectTargetEffect": "Select an effect for each target:",
             "Skill": "Skill Check",
             "Submit": "Submit",
             "Success": "Success",
@@ -329,6 +363,7 @@
             "TurnStart": "Turn Start",
             "Uncontested": "Uncontested",
             "Update": "Update",
+            "UseItem": "Use {item}?",
             "Yes": "Yes",
             "You": "You"
         },
@@ -369,6 +404,11 @@
         "Light": {
             "Bright": "Bright",
             "Dim": "Dim"
+        },
+        "MACROS": {
+            "AuraOfVitality": {
+                "Select": "Select an ally to heal:"
+            }
         },
         "Macros": {
             "AberrantDragonmark": {
@@ -427,6 +467,9 @@
                 "Heal": "Heal",
                 "WhoHeal": "Who to heal?"
             },
+            "ArcaneVigor": {
+                "Choose": "Select hit dice to use:"
+            },
             "ArcaneWard": {
                 "Protect": "Protect {tokenName} with your arcane ward?"
             },
@@ -465,12 +508,19 @@
                 "Num": "d6s",
                 "Select": "How many balms?"
             },
+            "BanishingSmite": {
+                "Hp": "Required HP:"
+            },
             "Banishment": {
                 "PlaneSelect": "Select all targets that are not from this plane."
             },
             "BardicInspiration": {
+                "DC": "What is the DC for this?",
                 "MoteAttack": "Mote of Potential Attack",
                 "MoteHeal": "Mote of Potential Heal"
+            },
+            "BatteringRoots": {
+                "Mastery": "Use which mastery?"
             },
             "BeguilingTwist": {
                 "Select": "Which Condition?"
@@ -558,6 +608,9 @@
             "BorrowedKnowledge": {
                 "SelectSkill": "Select a skill to gain temporary proficiency in:"
             },
+            "BranchesOfTheTree": {
+                "Rage": "You must be raging to use this feature!"
+            },
             "BrandOfCastigation": {
                 "Branded": "Brand of Castigation: Branded",
                 "Damage": "Brand of Castigation: Damage"
@@ -569,6 +622,9 @@
                 "Augment": "Augment (1 Ki)",
                 "Select": "Select Breath Details"
             },
+            "BrutalStrike": {
+                "Choose": "Sacrifice advantage to use {item}?"
+            },
             "Bulwark": {
                 "Use": "Use Reaction to avoid being moved?"
             },
@@ -579,6 +635,10 @@
             "CallTheHunt": {
                 "Bonus": "Apply Call the Hunt bonus damage? (1d6)",
                 "Select": "Select targets (max: {maxTargets})"
+            },
+            "CalmEmotions": {
+                "ConditionImmunity": "Condition Immunity",
+                "Indifference": "Indifference"
             },
             "CelestialRevelation": {
                 "Damage": "Radiant Consumption: Damage",
@@ -608,12 +668,25 @@
             "ChillTouch": {
                 "Undead": "Chill Touch: Undead Debuff"
             },
+            "ChromaticOrb": {
+                "BaseMaxJumps": "Base Max Jumps:",
+                "Bounce": "Who should the spell bounce to?",
+                "TargetDamageSelection": "Per Target Damage Selection:"
+            },
             "CloudRune": {
                 "Reaction": "Use {item} to redirect the attack from {name}?"
             },
             "Cloudkill": {
                 "Damage": "Cloudkill: Damage",
                 "NoRoom": "No room to move cloudkill!"
+            },
+            "Command": {
+                "Approach": "Approach",
+                "Drop": "Drop",
+                "Flee": "Flee",
+                "Grovel": "Grovel",
+                "Halt": "Halt",
+                "YouMust": "You must: "
             },
             "CompelledDuel": {
                 "EndEffect": "Caster has ended their turn more than 30 feet away from their target. Remove effect?",
@@ -632,6 +705,10 @@
             },
             "ControlUndead": {
                 "Controlled": "Control Undead: Controlled"
+            },
+            "Countercharm": {
+                "AllyFail": "{name} has failed their save ({total})! Use {feature}?",
+                "Use": "You have failed your save ({total})! Use {feature}?"
             },
             "CreatePactWeapon": {
                 "CustomCompendium": "Custom Pact Weapon Compendium:",
@@ -684,6 +761,10 @@
                 "EndTurn": "Dawn: End Turn",
                 "Move": "Dawn: Move"
             },
+            "DazzlingFootwork": {
+                "AgileStrikes": "Unarmed Strike a nearby foe?",
+                "DanceVirtuoso": "This check involes you dancing."
+            },
             "DeathBurst": {
                 "Name": "Death Burst"
             },
@@ -691,6 +772,8 @@
                 "ProbeDeeper": "Detect Thoughts: Probe Deeper"
             },
             "DivineSmite": {
+                "Context": "Smite Target?",
+                "CreatureTypes": "Extra Damage Creature Types:",
                 "Ranged": "Allow Smites on Ranged Attacks",
                 "Unarmed": "Allow Smites on Unarmed Strikes"
             },
@@ -828,6 +911,9 @@
             },
             "FallenPuppet": {
                 "NoTargets": "No valid targets within range!"
+            },
+            "FanaticalFocus": {
+                "Use": "Use {item} to re-roll a failed saving throw of {total}?"
             },
             "FarStep": {
                 "Name": "Far Step",
@@ -1119,7 +1205,9 @@
                 "Empty": "Your {itemName} pool is empty.",
                 "RemoveCondition": "Remove a Condition:",
                 "RestoreHitpoints": "Restore Hitpoints:",
-                "Select": "How would you like to aid?"
+                "Select": "How would you like to aid?",
+                "TargetNotDiseased": "Target is not diseased!",
+                "TargetNotPoisoned": "Target is not poisoned!"
             },
             "Lifesteal": {
                 "HealingType": "Healing Type:",
@@ -1170,6 +1258,10 @@
                 "Far": "{actorName}'s Manifest Mind is too far away. Remove it?",
                 "Invalid": "Invalid Action Type!",
                 "Move": "Manifest Mind: Move"
+            },
+            "MantleOfInspiration": {
+                "Reaction": "Use your reaction to move?",
+                "Targets": "Select up to {maxtargets} targets:"
             },
             "MartialAdvantage": {
                 "Name": "Martial Advantage"
@@ -1265,6 +1357,15 @@
             "PotionOfPoison": {
                 "Damage": "Potion of Poison: Damage"
             },
+            "PowerOfTheWilds": {
+                "Falcon": "Falcon",
+                "Lion": "Lion",
+                "Ram": "Ram",
+                "RamProne": "Knock target prone?"
+            },
+            "PowerWordHeal": {
+                "Prone": "Use your reaction to stands up from prone?"
+            },
             "PreserveLife": {
                 "Select": "Distribute HP (Amount to Distribute: {maxAmount}. Targets cannot be healed above half health.)"
             },
@@ -1277,19 +1378,35 @@
                 "Select": "What companion type?",
                 "Sky": "Sky"
             },
+            "PrimalKnowledge": {
+                "ReplacementAbility": "Replacement Ability:"
+            },
             "ProtectionFromEvilAndGood": {
                 "Save": "This save is from an effect from an aberration, celestial, elemental, fey, fiends, or undead that has charmed, frightened, or possessed you."
             },
             "Rage": {
+                "AllowConcentration": "Allow Concentration:",
+                "AllowHeavyArmor": "Allow Heavy Armor:",
+                "AllowSpellcasting": "Allow Spellcasting:",
                 "End": "Rage: End",
                 "EndEarly": "{actorName} has not attacked an enemy or taken damage since their last turn. Remove Rage?",
+                "EndEarlyModern": "{actorName} has not attacked an enemy, forced an enemy to make a save, or continued their rage since their last turn. Remove Rage?",
                 "FormOfBeastTailReaction": "Form of the Beast: Tail Reaction",
                 "FormOfBeastWeapon": "Manifest a natural weapon?",
                 "FormOfTheBeastBite": "Form of the Beast: Bite",
                 "FormOfTheBeastClaws": "Form of the Beast: Claws",
                 "FormOfTheBeastTail": "Form of the Beast: Tail",
+                "HeavyArmor": "You are wearing heavy armor and can not rage!",
                 "Huge": "Grow to be huge?",
-                "LargeOrHuge": "What size?"
+                "LargeOrHuge": "What size?",
+                "Spellcasting": "You can't spellcast while raging!"
+            },
+            "RageOfTheGods": "Use {item} to save {token}?",
+            "RageOfTheWilds": {
+                "Bear": "Bear",
+                "Eagle": "Eagle",
+                "Use": "Select a primal animal power:",
+                "Wolf": "Wolf"
             },
             "RayOfEnfeeblement": {
                 "Overtime": "Ray of Enfeeblement (End of Turn)"
@@ -1319,6 +1436,9 @@
                 "ShowIcons": "Show icons for regeneration blocked/reduced:",
                 "Threshold": "Damage required to permanently kill if at 0hp:",
                 "ZeroHP": "Creature dies upon reaching 0hp"
+            },
+            "Retaliation": {
+                "Weapon": "Which weapon do you attack with?"
             },
             "RingOfSpellStoring": {
                 "Clear": "Clear used spells",
@@ -1422,6 +1542,7 @@
                 "HauntCreature": "Haunt Creature (Reaper Spirit)",
                 "HauntCreatureHaunt": "Haunt Creature: Haunt",
                 "Haunted": "Reaper Spirit: Haunted",
+                "InvalidTarget": "Target must be Haunted!",
                 "ReapingScythe": "Reaping Scythe (Reaper Spirit)"
             },
             "SpiritShroud": {
@@ -1667,6 +1788,9 @@
             "TouchDamage": {
                 "Name": "Touch Damage"
             },
+            "TravelAlongTheTree": {
+                "WillingCreatures": "Select up to six willing creatures:"
+            },
             "TwilightSanctuary": {
                 "Charmed": "Remove the Charmed condition",
                 "Frightened": "Remove the Frightened condition",
@@ -1699,6 +1823,7 @@
                 "Attack": "Vampiric Touch: Attack",
                 "HealingModifier": "0.5"
             },
+            "VitalityOfTheTree": "Choose an ally to grant temporary hit points to.",
             "VortexWarp": {
                 "Name": "Vortex Warp"
             },
@@ -1749,6 +1874,9 @@
                 "SelectHitDie": "Select how many Hit Dice to roll.",
                 "SelectTarget": "Who can roll unspent Hit Dice?"
             },
+            "WordsOfCreation": {
+                "Target": "Select an additional target:"
+            },
             "WrapsOfDyamak": {
                 "CrimsonMist": "Crimson Mist",
                 "Heal": "Wraps of Dyamak: Heal"
@@ -1776,6 +1904,28 @@
                 "Tooltip": "Shortcuts to complete the roll with the desired result"
             },
             "Success": "Success"
+        },
+        "Mastery": {
+            "Cleave": {
+                "Name": "Cleave"
+            },
+            "Push": {
+                "Context": "Push target 10 feet?",
+                "Name": "Push"
+            },
+            "Sap": {
+                "Name": "Sap"
+            },
+            "Slow": {
+                "Name": "Slow"
+            },
+            "Topple": {
+                "Context": "Attempt to knock the target prone?",
+                "Name": "Topple"
+            },
+            "Vex": {
+                "Name": "Vex"
+            }
         },
         "Medkit": {
             "Categories": {
@@ -1806,8 +1956,15 @@
             },
             "Compendium": {
                 "Apply": "Medkit all compendium documents?",
+                "DestinationCompendium": "Destination Compendium:",
                 "Done": "Compendium update complete!",
-                "Start": "Updating documents..."
+                "Merge": "Merge",
+                "MergeUpdate": "Merge & Update",
+                "Mode": "Mode:",
+                "NewCompendium": "New Compendium",
+                "Overwrite": "Overwrite",
+                "Start": "Updating documents...",
+                "sourceCompendiums": "Source Compendiums:"
             },
             "Effect": {
                 "Conditions": {
@@ -1826,6 +1983,7 @@
                         "ActionSaveDialog": "Dialog",
                         "ActionSaveDisabled": "Disabled",
                         "ActionSaveRoll": "Chat Button",
+                        "Activity": "Activity DC",
                         "AllowIncapacitated": "Allow Incapacitated Targets:",
                         "ApplyCondition": "Apply Condition Evaluation Expression:",
                         "BlindRoll": "Blind Roll",
@@ -1857,6 +2015,13 @@
                         "Start": "Start of Turn",
                         "Turn": "Trigger:"
                     }
+                },
+                "SpecialDuration": {
+                    "AttackedByAnotherCreature": "Attacked By Another Creature",
+                    "DamagedByAlly": "Damaged By Ally",
+                    "DamagedByEnemy": "Damaged By Enemy",
+                    "Label": "Special Durations:",
+                    "Tooltip": "Selected conditions will remove the effect."
                 }
             },
             "Fieldsets": {
@@ -1877,6 +2042,7 @@
                     "Tooltip": "Configure roll types and options"
                 }
             },
+            "Medkit": "CPR Medkit",
             "ModuleIds": {
                 "additionalCompendiums": "Additional Compendiums",
                 "chris-premades": "Cauldron of Plentiful Resources",
@@ -1913,6 +2079,7 @@
                     "AutomationInfo": "Configure Automation Info:",
                     "Check": "Check:",
                     "Combat": "Combat:",
+                    "CreateItem": "Create Item:",
                     "Death": "Death:",
                     "Equipment": "Equipment:",
                     "HasAnimation": "Has Animation:",
@@ -1923,6 +2090,7 @@
                     "MidiItem": "Midi, Item:",
                     "Movement": "Movement:",
                     "Rest": "Rest:",
+                    "Rules": "Rules:",
                     "Save": "Save:",
                     "Skill": "Skill:",
                     "Source": "Source:",
@@ -1966,6 +2134,9 @@
         },
         "Movement": {
             "UnableToBeMoved": "Target is unable to be moved!"
+        },
+        "Requirements": {
+            "ScaleAdded": "The scale {scaleIdentifier} has been added to the class {classIdentifier}!"
         },
         "Section": {
             "Rage": "Rage",
@@ -2040,6 +2211,10 @@
                 "4": "Gamemaster"
             },
             "SelectCompendium": "Select a compendium:",
+            "activityCSSTweak": {
+                "Hint": "When enabled, activities will have all their information one tab. Reload required after disabling.",
+                "Name": "Activities CSS Tweak"
+            },
             "addActions": {
                 "0": "Disabled",
                 "1": "Linked Characters",
@@ -2069,10 +2244,6 @@
             "automatedAnimationSounds": {
                 "Hint": "When enabled, items that have Automated Animations disabled will still play sounds setup in the Automatic Recognition menu.",
                 "Name": "Automated Animations: Play Sounds"
-            },
-            "babonusOverlappingEffects": {
-                "Hint": "When enabled, Build A Bonus aura bonuses will respect the overlapping spell effect and combining game effects rules.",
-                "Name": "Build A Bonus: Overlapping Spell Effects"
             },
             "backupCompendium": {
                 "Hint": "Select your actor backup compendium.",
@@ -2127,10 +2298,6 @@
             "colorizeAutomatedAnimations": {
                 "Hint": "When enabled, the Automated Animations titlebar icon will be recolored based on the configuration status.",
                 "Name": "Automated Animations: Colorize Titlebar Icon"
-            },
-            "colorizeBuildABonus": {
-                "Hint": "When enabled, the Build A Bonus titlebar icon will be recolored if a bonus is on the item or effect.",
-                "Name": "Build A Bonus: Colorize Titlebar Icon"
             },
             "colorizeDAE": {
                 "Hint": "When enabled, the DAE titlebar icon will be recolored if an effect is on the item.",
@@ -2218,6 +2385,10 @@
                 "Hint": "The Gamemaster ID used for sockets. Automatically set.",
                 "Name": "Gamemaster User ID"
             },
+            "groupSummonsWithOwner": {
+                "Hint": "When enabled, summons created via the CPR API will be grouped together in the combat tracker if their initative is the same.",
+                "Name": "Group Summons With Owner"
+            },
             "hiddenCompendiumFolders": {
                 "Hint": "Selected compendium folders will be hidden.",
                 "Name": "Hidden Compendium Folders"
@@ -2283,6 +2454,10 @@
             "manualRollsUsers": {
                 "Hint": "Configure which users use Manual Rolls.",
                 "Name": "Manual Rolls Users"
+            },
+            "migrationVersion": {
+                "Hint": "Migration Version",
+                "Name": "Migration Version"
             },
             "miscPremades": {
                 "1": "No Homebrew or Unearthed Arcana",
@@ -2375,6 +2550,10 @@
             "vaeButtons": {
                 "Hint": "When enabled, certain macros will add buttons to the VAE interface.",
                 "Name": "Visual Active Effects: Buttons"
+            },
+            "weaponMastery": {
+                "Hint": "Enable PHB 2024 weapon mastery automation.",
+                "Name": "Weapon Mastery Automation"
             }
         },
         "SkillCheck": {
@@ -2576,6 +2755,10 @@
             "EndOfTurn": "End of Turn",
             "StartOfTurn": "Start of Turn"
         },
+        "UnarmedStrike": {
+            "GrappleContest": "How do you contest the grapple?",
+            "ShoveContest": "How do you contest the shove?"
+        },
         "Units": {
             "Feet": "Feet",
             "Miles": "Miles",
@@ -2587,5 +2770,20 @@
         "LightSelect": "Select Lights",
         "SoundSelect": "Select Sounds",
         "TemplateSelect": "Select Templates"
-    }
+    },
+    "dae.CPR.fieldData": {
+        "flags.chris-premades.senses.magicalDarkness": {
+            "description": "Distance actor can see through magical darkness. Only affects attack adv/dis with CPR automations which create magical darkness.",
+            "name": "Magical Darkness Sense Range"
+        },
+        "flags.chris-premades.turnImmunity": {
+            "description": "Immunity to Turn Undead. Use Override change mode.",
+            "name": "Turn Immunity"
+        },
+        "flags.chris-premades.turnResistance": {
+            "description": "Resistance to Turn Undead, rolls at advantage. Use Override change mode.",
+            "name": "Turn Resistance"
+        }
+    },
+    "dae.fieldData.fieldCategories.CPR": "CPR"
 }

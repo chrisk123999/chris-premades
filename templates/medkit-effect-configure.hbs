@@ -12,5 +12,13 @@
             {{/each}}
             </multi-select>
         </div>
+        <div class="cpr-row-center">
+            <label for="specialDuration" data-tooltip="{{localize configure.specialDuration.tooltip}}">{{localize configure.specialDuration.label}}</label>
+            <multi-select id="specialDuration" name="specialDuration">
+            {{#each configure.specialDuration.options}}
+                <option value="{{value}}" {{#if isSelected}}selected{{/if}}>{{localize label}}</option>
+            {{/each}}
+            </multi-select>
+        </div>
     </div>
 </div>

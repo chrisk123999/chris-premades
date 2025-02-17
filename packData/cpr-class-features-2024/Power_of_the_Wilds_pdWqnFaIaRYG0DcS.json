@@ -1,0 +1,209 @@
+{
+  "name": "Power of the Wilds",
+  "type": "feat",
+  "effects": [
+    {
+      "name": "Power of the Wilds",
+      "statuses": [],
+      "changes": [
+        {
+          "key": "system.attributes.movement.fly",
+          "value": "@attributes.movement.walk",
+          "mode": 4,
+          "priority": 20
+        }
+      ],
+      "duration": {
+        "seconds": null,
+        "startTime": null,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null,
+        "combat": null
+      },
+      "tint": "#ffffff",
+      "transfer": false,
+      "disabled": false,
+      "flags": {
+        "dae": {
+          "transfer": false,
+          "stackable": "noneNameOnly",
+          "specialDuration": [],
+          "enableCondition": "",
+          "disableCondition": "",
+          "disableIncapacitated": false,
+          "selfTarget": false,
+          "selfTargetAlways": false,
+          "dontApply": true,
+          "showIcon": false,
+          "durationExpression": "",
+          "macroRepeat": "none"
+        },
+        "ddbimporter": {
+          "disabled": false,
+          "activityMatch": "Falcoln"
+        },
+        "midi-qol": {
+          "forceCEOff": true
+        },
+        "core": {
+          "overlay": false
+        }
+      },
+      "description": "",
+      "img": "icons/creatures/birds/corvid-flying-wings-purple.webp",
+      "_id": "SGUFeCEVkl6ul69c",
+      "type": "base",
+      "system": {},
+      "origin": null,
+      "sort": 0,
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "coreVersion": "12.331",
+        "systemId": "dnd5e",
+        "systemVersion": "4.2.2",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!items.effects!pdWqnFaIaRYG0DcS.SGUFeCEVkl6ul69c"
+    }
+  ],
+  "system": {
+    "activities": {
+      "PbW6BxG8KGmyqeMI": {
+        "type": "utility",
+        "_id": "PbW6BxG8KGmyqeMI",
+        "sort": 0,
+        "activation": {
+          "type": "action",
+          "value": null,
+          "override": false
+        },
+        "consumption": {
+          "scaling": {
+            "allowed": false
+          },
+          "spellSlot": true,
+          "targets": []
+        },
+        "description": {},
+        "duration": {
+          "units": "inst",
+          "concentration": false,
+          "override": false
+        },
+        "effects": [],
+        "range": {
+          "override": false
+        },
+        "target": {
+          "template": {
+            "contiguous": false,
+            "units": "ft"
+          },
+          "affects": {
+            "choice": false
+          },
+          "override": false,
+          "prompt": true
+        },
+        "uses": {
+          "spent": 0,
+          "recovery": []
+        },
+        "roll": {
+          "prompt": false,
+          "visible": false
+        },
+        "useConditionText": "",
+        "effectConditionText": "",
+        "macroData": {
+          "name": "",
+          "command": ""
+        },
+        "ignoreTraits": {
+          "idi": false,
+          "idr": false,
+          "idv": false,
+          "ida": false
+        },
+        "midiProperties": {
+          "ignoreTraits": [],
+          "triggeredActivityId": "none",
+          "triggeredActivityConditionText": "",
+          "triggeredActivityTargets": "targets",
+          "triggeredActivityRollAs": "self",
+          "forceDialog": false,
+          "confirmTargets": "default",
+          "autoTargetType": "any",
+          "autoTargetAction": "default",
+          "automationOnly": false,
+          "otherActivityCompatible": true,
+          "identifier": ""
+        }
+      }
+    },
+    "uses": {
+      "spent": 0,
+      "recovery": []
+    },
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "identifier": "power-of-the-wilds",
+    "source": {
+      "book": "PHB 2024",
+      "page": "",
+      "license": "",
+      "custom": "",
+      "rules": "2024",
+      "revision": 1
+    },
+    "advancement": [],
+    "cover": null,
+    "crewed": false,
+    "enchant": {},
+    "prerequisites": {
+      "level": 14,
+      "repeatable": false
+    },
+    "properties": [],
+    "requirements": "",
+    "type": {
+      "value": "class",
+      "subtype": ""
+    }
+  },
+  "flags": {
+    "midi-qol": {
+      "removeAttackDamageButtons": "default",
+      "forceCEOff": true
+    },
+    "midiProperties": {
+      "confirmTargets": "default"
+    },
+    "dnd5e": {
+      "riders": {
+        "activity": [],
+        "effect": []
+      },
+      "advancementOrigin": "nwupzjujWuejv7P9"
+    },
+    "chris-premades": {
+      "info": {
+        "identifier": "powerOfTheWilds",
+        "source": "chris-premades",
+        "rules": "modern",
+        "version": "1.1.23"
+      }
+    }
+  },
+  "img": "icons/creatures/birds/corvid-flying-wings-purple.webp",
+  "folder": "qSAs7whspnYRp9nE",
+  "_id": "pdWqnFaIaRYG0DcS",
+  "_key": "!items!pdWqnFaIaRYG0DcS"
+}

@@ -1,4 +1,28 @@
-import {genericUtils} from '../utils.js';
+import {activityUtils, actorUtils, constants, effectUtils, genericUtils, itemUtils, socketUtils} from '../utils.js';
+function activityDC(effect, updates, options, id) {
+    if (game.user.id != id || effect.transfer || !(effect.parent instanceof Actor) || !effect.origin) return;
+    if (!updates.changes?.length) return;
+    let origin = fromUuidSync(effect?.origin, {strict: false});
+    if (!origin) return;
+    if (!(origin instanceof Item)) {
+        if (origin.parent instanceof Item) {
+            origin = origin.parent;
+        } else {
+            origin = fromUuidSync(origin.origin);
+            if (!(origin instanceof Item)) return;
+        }
+    }
+    let changed = false;
+    updates.changes.forEach(i => {
+        if (i.key != 'flags.midi-qol.OverTime') return;
+        if (i.value.includes('$activity.dc')) {
+            changed = true;
+            i.value = i.value.replaceAll('$activity.dc', itemUtils.getSaveDC(origin));
+        }
+    });
+    if (!changed) return;
+    effect.updateSource({changes: updates.changes});
+}
 function noAnimation(...args) {
     if (!args[0].flags['chris-premades']?.effect?.noAnimation) return;
     switch (this.hook) {
@@ -46,8 +70,191 @@ function preCreateActiveEffect(effect, updates, options, id) {
     } else return;
     effect.updateSource({description: description});
 }
+// Wizardry to ensure nothing screwy happens when multiple effects are deleted/added in quick sequence
+const combinedDebounce = (callback, delay) => {
+    let combined = [];
+    let debounced = foundry.utils.debounce(() => {
+        callback(combined);
+        combined = [];
+    }, delay);
+    return (newArr) => {
+        combined = combined.concat(newArr);
+        debounced(combined);
+    };
+};
+const unhideDebounce = combinedDebounce((unhideFlagsArr) => {
+    let favorites = {};
+    for (let unhideFlags of unhideFlagsArr) {
+        let {itemUuid, activityIdentifiers} = unhideFlags;
+        let item = fromUuidSync(itemUuid);
+        if (!item) return;
+        let cprRiders = genericUtils.getProperty(item, 'flags.chris-premades.hiddenActivities');
+        if (!cprRiders) return;
+        cprRiders = new Set(cprRiders);
+        activityIdentifiers = new Set(activityIdentifiers);
+        let newCprRiders = Array.from(cprRiders.difference(activityIdentifiers));
+        itemUtils.setHiddenActivities(item, newCprRiders);
+        let actorUuid = item.actor.uuid;
+        if (unhideFlags.favorite) favorites[actorUuid] = (favorites[actorUuid] ?? new Set([])).union(activityIdentifiers.map(i => activityUtils.getActivityByIdentifier(item, i)).filter(i => i));
+    }
+    for (let [uuid, faves] of Object.entries(favorites)) {
+        actorUtils.addFavorites(fromUuidSync(uuid), Array.from(faves), 'activity');
+    }
+}, 200);
+const rehideDebounce = combinedDebounce((unhideFlagsArr) => {
+    let favorites = [];
+    for (let unhideFlags of unhideFlagsArr) {
+        let {itemUuid, activityIdentifiers} = unhideFlags;
+        let item = fromUuidSync(itemUuid);
+        if (!item) return;
+        let cprRiders = genericUtils.getProperty(item, 'flags.chris-premades.hiddenActivities');
+        if (!cprRiders) return;
+        cprRiders = new Set(cprRiders);
+        activityIdentifiers = new Set(activityIdentifiers);
+        let newCprRiders = Array.from(cprRiders.union(activityIdentifiers));
+        itemUtils.setHiddenActivities(item, newCprRiders);
+        let actorUuid = item.actor.uuid;
+        if (unhideFlags.favorite) favorites[actorUuid] = (favorites[actorUuid] ?? new Set([])).union(activityIdentifiers.map(i => activityUtils.getActivityByIdentifier(item, i)).filter(i => i));
+    }
+    for (let [uuid, faves] of Object.entries(favorites)) {
+        actorUtils.removeFavorites(fromUuidSync(uuid), Array.from(faves), 'activity');
+    }
+}, 200);
+function unhideActivities(effect) {
+    let unhideFlagsArr = effect.flags?.['chris-premades']?.unhideActivities;
+    if (!unhideFlagsArr) return;
+    if (!unhideFlagsArr.length) unhideFlagsArr = [unhideFlagsArr];
+    unhideDebounce(unhideFlagsArr);
+}
+function rehideActivities(effect) {
+    let unhideFlagsArr = effect.flags?.['chris-premades']?.unhideActivities;
+    if (!unhideFlagsArr) return;
+    if (!unhideFlagsArr.length) unhideFlagsArr = [unhideFlagsArr];
+    rehideDebounce(unhideFlagsArr);
+}
+async function specialDuration(workflow) {
+    if (!workflow.token) return;
+    await Promise.all(workflow.targets.map(async token => {
+        if (!token.actor) return;
+        await Promise.all(actorUtils.getEffects(token.actor).map(async effect => {
+            let specialDurations = effect.flags['chris-premades']?.specialDuration;
+            if (!specialDurations) return;
+            let remove = false;
+            outerLoop:
+            for (let i of specialDurations) {
+                switch (i) {
+                    case 'damagedByAlly':
+                        if (workflow.token.document.disposition === token.document.disposition && workflow.hitTargets.has(token) && workflow.damageRolls?.length) remove = true; break outerLoop;
+                    case 'damagedByEnemy':
+                        if (workflow.token.document.disposition != token.document.disposition && workflow.hitTargets.has(token) && workflow.damageRolls?.length) remove = true; break outerLoop;
+                    case 'attackedByAnotherCreature': {
+                        if (!workflow.activity) return;
+                        if (!constants.attacks.includes(workflow.activity.actionType)) break;
+                        let origin = await effectUtils.getOriginItem(effect);
+                        if (!origin?.actor) break;
+                        if (workflow.actor.id === origin.actor.id) break;
+                        remove = true;
+                        break outerLoop;
+                    }
+                }
+            }
+            if (remove) await genericUtils.remove(effect);
+        }));
+    }));
+}
+async function specialDurationConditions(effect) {
+    let statusEffectIds = CONFIG.statusEffects.map(i => i.id);
+    await Promise.all(actorUtils.getEffects(effect.parent).filter(i => i.id != effect.id).map(async eff => {
+        let specialDurations = eff.flags['chris-premades']?.specialDuration;
+        if (!specialDurations) return;
+        specialDurations.filter(j => statusEffectIds.includes(j));
+        if (!specialDurations.length) return;
+        if (effect.statuses.some(k => specialDurations.includes(k))) await genericUtils.remove(eff);
+    }));
+}
+async function specialDurationEquipment(item) {
+    let equipmentTypes = Object.keys(CONFIG.DND5E.armorTypes);
+    await Promise.all(actorUtils.getEffects(item.actor).map(async effect => {
+        let specialDurations = effect.flags['chris-premades']?.specialDuration;
+        if (!specialDurations) return;
+        specialDurations.filter(j => equipmentTypes.includes(j));
+        if (!specialDurations.length) return;
+        if (specialDurations.includes(item.system.type?.value)) await genericUtils.remove(effect);
+    }));
+}
+function preImageCreate(effect, updates, options, id) {
+    if (game.user.id != id) return;
+    if (!(effect.parent instanceof Actor)) return;
+    let actorImg = effect.flags['chris-premades']?.image?.actor?.value;
+    let tokenImg = effect.flags['chris-premades']?.image?.token?.value;
+    let otherActorEffects = actorUtils.getEffects(effect.parent).filter(i => i.flags['chris-premades']?.image?.actor && i.id != effect.id).sort((a, b) => b.flags['chris-premades'].image.actor.priority - a.flags['chris-premades'].image.actor.priority);
+    let otherTokenEffects = actorUtils.getEffects(effect.parent).filter(i => i.flags['chris-premades']?.image?.token && i.id != effect.id).sort((a, b) => b.flags['chris-premades'].image.token.priority - a.flags['chris-premades'].image.token.priority);
+    if (actorImg && !otherActorEffects.length) {
+        effect.updateSource({'flags.chris-premades.image.actor.original': effect.parent.img});
+    } else if (actorImg) {
+        effect.updateSource({'flags.chris-premades.image.actor.original': otherActorEffects[0].flags['chris-premades'].image.actor.original});
+    }
+    if (tokenImg && !otherTokenEffects.length) {
+        effect.updateSource({'flags.chris-premades.image.token.original': effect.parent.img});
+    } else if (tokenImg) {
+        effect.updateSource({'flags.chris-premades.image.token.original': otherTokenEffects[0].flags['chris-premades'].image.token.original});
+    }
+}
+async function imageCreate(effect, options, id) {
+    if (!socketUtils.isTheGM()) return;
+    if (!(effect.parent instanceof Actor)) return;
+    let actorImg = effect.flags['chris-premades']?.image?.actor?.value;
+    let tokenImg = effect.flags['chris-premades']?.image?.token?.value;
+    if (actorImg) {
+        let otherActorEffects = actorUtils.getEffects(effect.parent).filter(i => i.flags['chris-premades']?.image?.actor&& i.id != effect.id).sort((a, b) => b.flags['chris-premades'].image.actor.priority - a.flags['chris-premades'].image.actor.priority);
+        if (!otherActorEffects.length) {
+            await genericUtils.update(effect.parent, {img: actorImg});
+        } else if (otherActorEffects[0]?.id != effect.id) {
+            await genericUtils.update(effect.parent, {img: otherActorEffects[0].flags['chris-premades'].image.actor.value});
+        }
+    }
+    if (tokenImg) {
+        let otherTokenEffects = actorUtils.getEffects(effect.parent).filter(i => i.flags['chris-premades']?.image?.token&& i.id != effect.id).sort((a, b) => b.flags['chris-premades'].image.token.priority - a.flags['chris-premades'].image.token.priority);
+        if (!otherTokenEffects.length) {
+            let tokens = effect.parent.getActiveTokens();
+            if (tokens.length) await Promise.all(tokens.map(async token => await genericUtils.update(token.document, {'texture.src': tokenImg})));
+        } else if (otherTokenEffects[0]?.id === effect.id) {
+            let tokens = effect.parent.getActiveTokens();
+            if (tokens.length) await Promise.all(tokens.map(async token => await genericUtils.update(token.document, {'texture.src': otherTokenEffects[0].flags['chris-premades'].image.token.value})));
+        }
+    }
+}
+async function imageRemove(effect, options, id) {
+    if (!socketUtils.isTheGM()) return;
+    if (!(effect.parent instanceof Actor)) return;
+    let actorImg = effect.flags['chris-premades']?.image?.actor?.value;
+    let tokenImg = effect.flags['chris-premades']?.image?.token?.value;
+    let otherActorEffects = actorUtils.getEffects(effect.parent).filter(i => i.flags['chris-premades']?.image?.actor && i.id != effect.id).sort((a, b) => b.flags['chris-premades'].image.actor.priority - a.flags['chris-premades'].image.actor.priority);
+    let otherTokenEffects = actorUtils.getEffects(effect.parent).filter(i => i.flags['chris-premades']?.image?.token && i.id != effect.id).sort((a, b) => b.flags['chris-premades'].image.token.priority - a.flags['chris-premades'].image.token.priority);
+    if (actorImg && !otherActorEffects.length) {
+        await genericUtils.update(effect.parent, {img: effect.flags['chris-premades'].image.actor.original});
+    } else if (actorImg && otherActorEffects[0].id != effect.id) {
+        await genericUtils.update(effect.parent, {img: otherActorEffects[0].flags['chris-premades'].image.actor.value});
+    }
+    if (tokenImg && !otherTokenEffects.length) {
+        let tokens = effect.parent.getActiveTokens();
+        if (tokens.length) await Promise.all(tokens.map(async token => await genericUtils.update(token.document, {'texture.src': effect.flags['chris-premades'].image.token.original})));
+    } else if (tokenImg && otherTokenEffects[0].id != effect.id) {
+        let tokens = effect.parent.getActiveTokens();
+        if (tokens.length) await Promise.all(tokens.map(async token => await genericUtils.update(token.document, {'texture.src': otherTokenEffects[0].flags['chris-premades'].image.token.value})));
+    }
+}
 export let effects = {
     noAnimation,
     checkInterdependentDeps,
-    preCreateActiveEffect
+    preCreateActiveEffect,
+    unhideActivities,
+    rehideActivities,
+    specialDuration,
+    specialDurationConditions,
+    specialDurationEquipment,
+    activityDC,
+    preImageCreate,
+    imageCreate,
+    imageRemove
 };

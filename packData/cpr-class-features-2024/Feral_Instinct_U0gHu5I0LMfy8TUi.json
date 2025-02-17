@@ -1,0 +1,130 @@
+{
+  "name": "Feral Instinct",
+  "type": "feat",
+  "effects": [
+    {
+      "name": "Feral Instinct",
+      "statuses": [],
+      "changes": [
+        {
+          "key": "flags.dnd5e.initiativeAdv",
+          "value": "1",
+          "mode": 2,
+          "priority": 20
+        }
+      ],
+      "duration": {
+        "seconds": null,
+        "startTime": 678,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null,
+        "combat": null
+      },
+      "tint": "#ffffff",
+      "transfer": true,
+      "disabled": false,
+      "flags": {
+        "dae": {
+          "transfer": true,
+          "stackable": "noneNameOnly"
+        },
+        "ddbimporter": {
+          "disabled": false,
+          "passive": true,
+          "itemId": 10292160,
+          "itemEntityTypeId": 12168134
+        },
+        "midi-qol": {
+          "forceCEOff": true
+        },
+        "core": {}
+      },
+      "description": "You have Advantage on Initiative rolls.",
+      "img": "icons/creatures/mammals/wolf-howl-moon-forest-blue.webp",
+      "_id": "W4ahieFxNoGDgfnA",
+      "type": "base",
+      "system": {},
+      "origin": null,
+      "sort": 0,
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "coreVersion": "12.331",
+        "systemId": "dnd5e",
+        "systemVersion": "4.2.2",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!items.effects!U0gHu5I0LMfy8TUi.W4ahieFxNoGDgfnA"
+    }
+  ],
+  "system": {
+    "activities": {},
+    "uses": {
+      "spent": 0,
+      "recovery": []
+    },
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "identifier": "feral-instinct",
+    "source": {
+      "book": "PHB 2024",
+      "page": "",
+      "license": "",
+      "custom": "",
+      "rules": "2024",
+      "revision": 1
+    },
+    "advancement": [],
+    "cover": null,
+    "crewed": false,
+    "enchant": {},
+    "prerequisites": {
+      "level": 7,
+      "repeatable": false
+    },
+    "properties": [],
+    "requirements": "",
+    "type": {
+      "value": "class",
+      "subtype": ""
+    }
+  },
+  "flags": {
+    "dae": {
+      "alwaysActive": false,
+      "activeEquipped": false
+    },
+    "midi-qol": {
+      "removeAttackDamageButtons": "default",
+      "forceCEOff": true
+    },
+    "midiProperties": {
+      "confirmTargets": "default"
+    },
+    "dnd5e": {
+      "riders": {
+        "activity": [],
+        "effect": []
+      },
+      "advancementOrigin": "nwupzjujWuejv7P9"
+    },
+    "chris-premades": {
+      "info": {
+        "identifier": "feralInstinct",
+        "source": "chris-premades",
+        "version": "1.1.22",
+        "rules": "modern"
+      }
+    }
+  },
+  "img": "icons/creatures/mammals/wolf-howl-moon-forest-blue.webp",
+  "folder": "epodEYV6OzWsQdIP",
+  "_id": "U0gHu5I0LMfy8TUi",
+  "_key": "!items!U0gHu5I0LMfy8TUi"
+}

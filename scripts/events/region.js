@@ -7,7 +7,7 @@ function collectMacros(region) {
     let macroList = [];
     macroList.push(...getRegionMacroData(region));
     if (!macroList.length) return [];
-    return macroList.map(i => custom.getMacro(i)).filter(j => j);
+    return macroList.map(i => custom.getMacro(i, genericUtils.getRules(region))).filter(j => j);
 }
 function collectRegionsMacros(regions, pass, token) {
     let triggers = [];

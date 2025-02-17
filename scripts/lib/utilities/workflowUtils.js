@@ -1,4 +1,5 @@
 import {actorUtils, effectUtils, genericUtils, itemUtils, rollUtils, socketUtils} from '../../utils.js';
+import {socket, sockets} from '../sockets.js';
 async function bonusDamage(workflow, formula, {ignoreCrit = false, damageType}={}) {
     formula = String(formula);
     if (workflow.isCritical && !ignoreCrit) formula = await rollUtils.getCriticalFormula(formula, workflow.item.getRollData());
@@ -29,8 +30,16 @@ async function replaceDamage(workflow, formula, {ignoreCrit = false, damageType}
 async function applyDamage(tokens, value, damageType) {
     return await MidiQOL.applyTokenDamage([{damage: value, type: damageType}], value, new Set(tokens));
 }
-async function completeItemUse(item, config={}, options={}) {
-    //let oldTargets = Array.from(game.user.targets); //Temp Fix
+async function completeActivityUse(activity, config={}, dialog={}, message={}) {
+    if (!config.midiOptions?.asUser && !socketUtils.hasPermission(activity.actor, game.userId)) {
+        if (!config.midiOptions) config.midiOptions = {};
+        config.midiOptions.asUser = socketUtils.firstOwner(activity.actor, true);
+        config.midiOptions.checkGMStatus = true;
+    }
+    let workflow = await MidiQOL.completeActivityUse(activity, config, dialog, message);
+    return workflow.workflow ?? workflow;
+}
+async function completeItemUse(item, config = {}, options = {}) {
     let fixSets = false;
     if (!options.asUser && !socketUtils.hasPermission(item.actor, game.userId)) {
         options.asUser = socketUtils.firstOwner(item.actor, true);
@@ -41,8 +50,8 @@ async function completeItemUse(item, config={}, options={}) {
         options.workflowData = true;
         fixSets = true;
     }
+    // TODO: Make use completeItemUseV2 instead, once everything's ready
     let workflow = await MidiQOL.completeItemUse(item, config, options);
-    //genericUtils.updateTargets(oldTargets); //Temp Fix
     if (fixSets) {
         if (workflow.failedSaves) workflow.failedSaves = new Set(workflow.failedSaves);
         if (workflow.hitTargets) workflow.hitTargets = new Set(workflow.hitTargets);
@@ -50,7 +59,36 @@ async function completeItemUse(item, config={}, options={}) {
     }
     return workflow;
 }
-async function syntheticItemRoll(item, targets, {options = {}, config = {}} = {}) {
+async function syntheticActivityRoll(activity, targets = [], {options = {}, config = {}, atLevel = undefined, consumeUsage = false, consumeResources = false} = {}) {
+    let defaultConfig = {
+        consumeUsage,
+        consumeSpellSlot: false,
+        consume: {
+            resources: consumeResources
+        }
+    };
+    let autoRollDamage = MidiQOL.configSettings().autoRollDamage;
+    if (!['always', 'onHit'].includes(autoRollDamage)) autoRollDamage = 'onHit';
+    let defaultOptions = {
+        targetUuids: targets.map(i => i.document.uuid),
+        configureDialog: false,
+        ignoreUserTargets: true,
+        workflowOptions: {
+            autoRollDamage,
+            autoFastDamage: true,
+            autoRollAttack: true
+        }
+    };
+    if (atLevel) {
+        let spellLabel = actorUtils.getEquivalentSpellSlotName(activity.actor, atLevel);
+        if (spellLabel) defaultConfig.spell = {slot: spellLabel};
+    }
+    options = genericUtils.mergeObject(defaultOptions, options);
+    config = genericUtils.mergeObject(defaultConfig, config);
+    config.midiOptions = options;
+    return await completeActivityUse(activity, config);
+}
+async function syntheticItemRoll(item, targets, {options = {}, config = {}, userId} = {}) {
     let defaultConfig = {
         consumeUsage: false,
         consumeSpellSlot: false
@@ -69,6 +107,7 @@ async function syntheticItemRoll(item, targets, {options = {}, config = {}} = {}
     };
     options = genericUtils.mergeObject(defaultOptions, options);
     config = genericUtils.mergeObject(defaultConfig, config);
+    if (userId) genericUtils.setProperty(options, 'asUser', userId);
     return await completeItemUse(item, config, options);
 }
 async function syntheticItemDataRoll(itemData, actor, targets, {options = {}, config = {}, killAnim = false} = {}) {
@@ -78,8 +117,17 @@ async function syntheticItemDataRoll(itemData, actor, targets, {options = {}, co
         fromAmmo: false,
         version: 5
     }});
-    let item = await itemUtils.syntheticItem(itemData, actor);
-    return await syntheticItemRoll(item, targets, {options, config});
+    let hasPermission = socketUtils.hasPermission(actor, game.user.id);
+    if (hasPermission) {
+        let item = await itemUtils.syntheticItem(itemData, actor);
+        return await syntheticItemRoll(item, targets, {options, config});
+    } else {
+        let workflowData = await socket.executeAsGM(sockets.syntheticItemDataRoll.name, itemData, actor.uuid, targets.map(i => i.document.uuid), {options, config});
+        if (workflowData.failedSaves) workflowData.failedSaves = new Set(workflowData.failedSaves);
+        if (workflowData.hitTargets) workflowData.hitTargets = new Set(workflowData.hitTargets);
+        if (workflowData.targets) workflowData.targets = new Set(workflowData.targets);
+        return workflowData;
+    }
 }
 function negateDamageItemDamage(ditem) {
     ditem.totalDamage = 0;
@@ -192,12 +240,17 @@ function getCastData(workflow) {
     delete castData.itemuuid;
     return castData;
 }
+function getCastLevel(workflow) {
+    return Math.max(workflow.castData.castLevel, workflow.castData.baseLevel);
+}
 export let workflowUtils = {
     bonusDamage,
     bonusAttack,
     replaceDamage,
     applyDamage,
+    completeActivityUse,
     completeItemUse,
+    syntheticActivityRoll,
     syntheticItemRoll,
     syntheticItemDataRoll,
     negateDamageItemDamage,
@@ -207,5 +260,6 @@ export let workflowUtils = {
     getTotalDamageOfType,
     handleInstantTemplate,
     getCastData,
-    modifyDamageAppliedFlat
+    modifyDamageAppliedFlat,
+    getCastLevel
 };

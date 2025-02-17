@@ -59,6 +59,16 @@ async function evaluate(wrapped, options) {
     this._total = remoteRoll._total;
     return this;
 }
+async function buildConfigure(wrapped, config={}, dialog={}, message={}) {
+    let rollType = genericUtils.getProperty(message, 'data.flags.dnd5e.roll.type');
+    if (rollType) {
+        for (let roll of config.rolls ?? []) {
+            roll.options ??= {};
+            roll.options.rollType ??= rollType;
+        }
+    }
+    return await wrapped(config, dialog, message);
+}
 function patch(enabled) {
     if (enabled) {
         genericUtils.log('dev', 'Evaluate Roll Patched!');
@@ -68,9 +78,19 @@ function patch(enabled) {
         libWrapper.unregister('chris-premades', 'Roll.prototype.evaluate');
     }
 }
+function patchBuild(enabled) {
+    if (enabled) {
+        genericUtils.log('dev', 'BuildConfigure BasicRoll Patched!');
+        libWrapper.register('chris-premades', 'CONFIG.Dice.BasicRoll.buildConfigure', buildConfigure, 'WRAPPER');
+    } else {
+        genericUtils.log('dev', 'BuildConfigure BasicRoll Patch Removed!');
+        libWrapper.unregister('chris-premades', 'CONFIG.Dice.BasicRoll.buildConfigure');
+    }
+}
 export let rollResolver = {
     registerFulfillmentMethod,
     unregisterFulfillmentMethod,
     manualRollsUsersDialog,
-    patch
+    patch,
+    patchBuild
 };

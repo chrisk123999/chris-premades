@@ -1,0 +1,299 @@
+{
+  "name": "All-Purpose Tool, +3",
+  "type": "equipment",
+  "system": {
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "source": {
+      "book": "Tasha’s Cauldron of Everything",
+      "page": "119",
+      "license": "",
+      "custom": "",
+      "revision": 1,
+      "rules": "2014"
+    },
+    "identified": true,
+    "unidentified": {
+      "description": ""
+    },
+    "container": null,
+    "quantity": 1,
+    "weight": {
+      "value": 0,
+      "units": "lb"
+    },
+    "price": {
+      "value": 0,
+      "denomination": "gp"
+    },
+    "rarity": "uncommon",
+    "attunement": "required",
+    "cover": null,
+    "crewed": false,
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "recovery": []
+    },
+    "armor": {
+      "value": null,
+      "dex": null,
+      "magicalBonus": null
+    },
+    "hp": {
+      "value": null,
+      "max": null,
+      "dt": null,
+      "conditions": ""
+    },
+    "type": {
+      "value": "trinket",
+      "baseItem": ""
+    },
+    "properties": [
+      "mgc"
+    ],
+    "speed": {
+      "value": null,
+      "conditions": ""
+    },
+    "strength": 0,
+    "attuned": false,
+    "equipped": false,
+    "proficient": null,
+    "activities": {
+      "cbYMCLgtRQSmWsSj": {
+        "type": "utility",
+        "activation": {
+          "type": "action",
+          "value": 1,
+          "condition": "",
+          "override": false
+        },
+        "consumption": {
+          "targets": [],
+          "scaling": {
+            "allowed": false,
+            "max": ""
+          },
+          "spellSlot": true
+        },
+        "description": {
+          "chatFlavor": "Transform Tool"
+        },
+        "duration": {
+          "concentration": false,
+          "value": "",
+          "units": "inst",
+          "special": "",
+          "override": false
+        },
+        "effects": [],
+        "range": {
+          "units": "self",
+          "special": "",
+          "override": false
+        },
+        "target": {
+          "template": {
+            "count": "",
+            "contiguous": false,
+            "type": "",
+            "size": "",
+            "width": "",
+            "height": "",
+            "units": ""
+          },
+          "affects": {
+            "count": "",
+            "type": "",
+            "choice": false,
+            "special": ""
+          },
+          "prompt": true,
+          "override": false
+        },
+        "uses": {
+          "spent": 0,
+          "max": "",
+          "recovery": []
+        },
+        "roll": {
+          "formula": "",
+          "name": "",
+          "prompt": false,
+          "visible": false
+        },
+        "sort": 0,
+        "useConditionText": "",
+        "forceDialog": false,
+        "effectConditionText": "",
+        "midiAutomationOnly": false,
+        "name": "Transform Tool",
+        "img": "icons/weapons/sickles/sickle-hooked-wood.webp",
+        "_id": "cbYMCLgtRQSmWsSj"
+      },
+      "TLfbvxGA9TUiGLaB": {
+        "type": "utility",
+        "sort": 0,
+        "activation": {
+          "type": "action",
+          "value": null,
+          "override": false,
+          "condition": ""
+        },
+        "consumption": {
+          "scaling": {
+            "allowed": false
+          },
+          "spellSlot": true,
+          "targets": [
+            {
+              "type": "activityUses",
+              "value": "1",
+              "scaling": {}
+            }
+          ]
+        },
+        "description": {
+          "chatFlavor": "Channel Creative Forces"
+        },
+        "duration": {
+          "units": "inst",
+          "concentration": false,
+          "override": false
+        },
+        "effects": [],
+        "range": {
+          "override": false,
+          "units": "self",
+          "special": ""
+        },
+        "target": {
+          "template": {
+            "contiguous": false,
+            "units": "ft",
+            "type": ""
+          },
+          "affects": {
+            "choice": false,
+            "count": "",
+            "type": ""
+          },
+          "override": false,
+          "prompt": true
+        },
+        "uses": {
+          "spent": 0,
+          "recovery": [
+            {
+              "period": "dawn",
+              "type": "recoverAll"
+            }
+          ],
+          "max": "1"
+        },
+        "roll": {
+          "prompt": false,
+          "visible": false,
+          "name": "",
+          "formula": ""
+        },
+        "useConditionText": "",
+        "forceDialog": false,
+        "effectConditionText": "",
+        "midiAutomationOnly": false,
+        "name": "Channel Creative Forces",
+        "img": "icons/weapons/sickles/sickle-hooked-wood.webp",
+        "_id": "TLfbvxGA9TUiGLaB"
+      }
+    },
+    "identifier": "all-purpose-tool-3"
+  },
+  "flags": {
+    "midi-qol": {
+      "removeAttackDamageButtons": "default",
+      "forceCEOff": true,
+      "rollAttackPerTarget": "default",
+      "itemCondition": "",
+      "effectCondition": "",
+      "AoETargetType": "any",
+      "AoETargetTypeIncludeSelf": true,
+      "autoTarget": "default",
+      "reactionCondition": "",
+      "otherCondition": ""
+    },
+    "midiProperties": {
+      "confirmTargets": "default",
+      "autoFailFriendly": false,
+      "autoSaveFriendly": false,
+      "critOther": false,
+      "offHandWeapon": false,
+      "magicdam": false,
+      "magiceffect": false,
+      "noConcentrationCheck": false,
+      "toggleEffect": false,
+      "ignoreTotalCover": false,
+      "idr": false,
+      "idi": false,
+      "idv": false,
+      "ida": false
+    },
+    "dae": {
+      "alwaysActive": false,
+      "activeEquipped": true
+    },
+    "chris-premades": {
+      "info": {
+        "identifier": "allPurposeTool3",
+        "source": "chris-premades",
+        "version": "1.1.0"
+      },
+      "macros": {
+        "midi": {
+          "item": [
+            "allPurposeTool3"
+          ],
+          "actor": [
+            "allPurposeTool3"
+          ]
+        }
+      },
+      "equipment": {
+        "identifier": "allPurposeTool3"
+      },
+      "activityIdentifiers": {
+        "allPurposeTool": "cbYMCLgtRQSmWsSj",
+        "channelCreativeForces": "TLfbvxGA9TUiGLaB"
+      }
+    },
+    "dnd5e": {
+      "dependents": [
+        {
+          "uuid": "Actor.PYSFJR0Md69AwZsB.Item.MtFdd2SUQKcE4J4g"
+        },
+        {
+          "uuid": "Actor.PYSFJR0Md69AwZsB.Item.9iYHzinYM7us7HH9"
+        },
+        {
+          "uuid": "Actor.PYSFJR0Md69AwZsB.Item.MKcKrMWpSmNtjpcy"
+        },
+        {
+          "uuid": "Actor.PYSFJR0Md69AwZsB.Item.WxfNtqlybodElG66"
+        }
+      ],
+      "persistSourceMigration": true,
+      "riders": {
+        "activity": [],
+        "effect": []
+      }
+    }
+  },
+  "effects": [],
+  "img": "icons/weapons/sickles/sickle-hooked-wood.webp",
+  "folder": "4TYgcjpgCO6kJJ6d",
+  "_id": "ENupEvNGC8FUZZyY",
+  "_key": "!items!ENupEvNGC8FUZZyY"
+}

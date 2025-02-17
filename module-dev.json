@@ -7,8 +7,8 @@
   "socket": true,
   "compatibility": {
     "minimum": "12",
-    "verified": "12",
-    "maximum": "12"
+    "verified": "12.331",
+    "maximum": "12.999"
   },
   "authors": [
     {
@@ -66,9 +66,9 @@
         "id": "dnd5e",
         "type": "system",
         "compatibility": {
-          "minimum": "3.3.1",
-          "verified": "3.3.1",
-          "maximum": "3.9.9"
+          "minimum": "4.3.1",
+          "verified": "4.3.1",
+          "maximum": "4.9.9"
         }
       }
     ],
@@ -77,40 +77,35 @@
         "id": "midi-qol",
         "type": "module",
         "compatibility": {
-          "minimum": "11.6.4.1",
-          "verified": "11.6.4.1"
+          "minimum": "12.4.27"
         }
       },
       {
         "id": "sequencer",
         "type": "module",
         "compatibility": {
-          "minimum": "3.2.11",
-          "verified": "3.2.11"
+          "minimum": "3.3.2"
         }
       },
       {
         "id": "socketlib",
         "type": "module",
         "compatibility": {
-          "minimum": "1.1.0",
-          "verified": "1.1.0"
+          "minimum": "1.1.0"
         }
       },
       {
         "id": "dae",
         "type": "module",
         "compatibility": {
-          "minimum": "11.3.52",
-          "verified": "11.3.52"
+          "minimum": "12.0.17"
         }
       },
       {
         "id": "times-up",
         "type": "module",
         "compatibility": {
-          "minimum": "11.3.14",
-          "verified": "11.3.17"
+          "minimum": "11.3.19"
         }
       }
     ]
@@ -173,14 +168,6 @@
       "banner": "modules/chris-premades/images/bannerClassFeatures.webp"
     },
     {
-      "name": "CPRFeatFeatures",
-      "label": "CPR Feat Features",
-      "path": "packs/cpr-feat-features",
-      "type": "Item",
-      "module": "chris-premades",
-      "banner": "modules/chris-premades/images/bannerUnknown2.webp"
-    },
-    {
       "name": "CPRFeats",
       "label": "CPR Feats",
       "path": "packs/cpr-feats",
@@ -221,14 +208,6 @@
       "banner": "modules/chris-premades/images/bannerMonsterFeatures.webp"
     },
     {
-      "name": "CPRRaceFeatureItems",
-      "label": "CPR Race Feature Items",
-      "path": "packs/cpr-race-feature-items",
-      "type": "Item",
-      "module": "chris-premades",
-      "banner": "modules/chris-premades/images/bannerUnknown1.webp"
-    },
-    {
       "name": "CPRRaceFeatures",
       "label": "CPR Race Features",
       "path": "packs/cpr-race-features",
@@ -267,6 +246,30 @@
       "type": "Item",
       "module": "chris-premades",
       "banner": "modules/chris-premades/images/bannerItems.webp"
+    },
+    {
+      "name": "CPRSpells2024",
+      "label": "CPR Spells",
+      "path": "packs/cpr-spells-2024",
+      "type": "Item",
+      "module": "chris-premades",
+      "banner": "modules/chris-premades/images/bannerSpells.webp"
+    },
+    {
+      "name": "CPRClassFeatures2024",
+      "label": "CPR Class Features",
+      "path": "packs/cpr-class-features-2024",
+      "type": "Item",
+      "module": "chris-premades",
+      "banner": "modules/chris-premades/images/bannerClassFeatures.webp"
+    },
+    {
+      "name": "CPRItems2024",
+      "label": "CPR Items",
+      "path": "packs/cpr-items-2024",
+      "type": "Item",
+      "module": "chris-premades",
+      "banner": "modules/chris-premades/images/bannerItems.webp"
     }
   ],
   "packFolders": [
@@ -274,26 +277,43 @@
       "name": "Cauldron of Plentiful Resources",
       "sorting": "a",
       "color": "#348f2d",
+      "folders": [
+        {
+          "name": "2014",
+          "sorting": "a",
+          "color": "#348f2d",
+          "packs": [
+            "CPRActions",
+            "CPRSpells",
+            "CPRSpellFeatures",
+            "CPRSummons",
+            "CPRSummonFeatures",
+            "CPRItems",
+            "CPRItemFeatures",
+            "CPRClassFeatures",
+            "CPRClassFeatureItems",
+            "CPRFeats",
+            "CPRRaceFeatures",
+            "CPRThirdPartyClassFeatures",
+            "CPRThirdPartyItems",
+            "CPRThirdPartyFeats",
+            "CPRMonsterFeatures"
+          ]
+        },
+        {
+          "name": "2024",
+          "sorting": "a",
+          "color": "#348f2d",
+          "packs": [
+            "CPRSpells2024",
+            "CPRClassFeatures2024",
+            "CPRItems2024"
+          ]
+        }
+      ],
       "packs": [
-        "CPRSpells",
-        "CPRSpellFeatures",
-        "CPRSummonFeatures",
-        "CPRSummons",
-        "CPRItems",
-        "CPRClassFeatures",
-        "CPRClassFeatureItems",
-        "CPRActions",
         "CPRMiscellaneousItems",
-        "CPRItemFeatures",
-        "CPRFeats",
-        "CPRFeatFeatures",
-        "CPRRaceFeatures",
-        "CPRRaceFeatureItems",
-        "CPRThirdPartyClassFeatures",
-        "CPRThirdPartyItems",
-        "CPRMonsterFeatures",
-        "CPRMiscellaneous",
-        "CPRThirdPartyFeats"
+        "CPRMiscellaneous"
       ]
     }
   ],

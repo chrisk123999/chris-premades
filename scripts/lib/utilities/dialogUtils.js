@@ -149,11 +149,11 @@ async function selectTargetDialog(title, content, targets, {type = 'one', select
     }
     return ([result, skip]);
 }
-async function confirm(title, content, {userId = game.user.id} = {}) {
+async function confirm(title, content, {userId = game.user.id, buttons = 'yesNo'} = {}) {
     let selection;
     if (userId !== game.user.id) {
-        selection = await socket.executeAsUser(sockets.dialog.name, userId, title, content, [], 'yesNo');
-    } else selection = await DialogApp.dialog(title, content, [], 'yesNo');
+        selection = await socket.executeAsUser(sockets.dialog.name, userId, title, content, [], buttons);
+    } else selection = await DialogApp.dialog(title, content, [], buttons);
     return selection?.buttons;
 }
 async function selectDocumentDialog(title, content, documents, {displayTooltips = false, sortAlphabetical = false, sortCR = false, userId = game.user.id, addNoneDocument = false, showCR = false, showSpellLevel = false} = {}) {
@@ -168,7 +168,7 @@ async function selectDocumentDialog(title, content, documents, {displayTooltips 
         });
     }
     let inputFields = documents.map(i => ({
-        label: i.name + (showCR ? ' [' + genericUtils.format('DND5E.CRLabel', {cr: i.system?.details?.cr ?? '?'}) + ']' : (showSpellLevel ? ' [' + genericUtils.translate('DND5E.SpellLevel') + ' ' + (i.system?.level ?? '?') + ']' : '')),
+        label: i.name + (showCR ? ' [' + genericUtils.format('DND5E.CRLabel', {cr: i.system?.details?.cr ?? '?'}) + ']' : (showSpellLevel ? ' [' + genericUtils.translate('DND5E.SpellLevel') + ' ' + (i.system?.level ?? '?') + ']' : '')) + (i.system?.linkedActivity ? ' (' + i.system.linkedActivity.item.name + ')' : ''),
         name: i.uuid ?? i.actor?.uuid,
         options: {
             image: i.img + (i.system?.details?.cr != undefined ? ` (CR ${genericUtils.decimalToFraction(i.system?.details?.cr)})` : ``),
@@ -194,7 +194,7 @@ async function selectDocumentDialog(title, content, documents, {displayTooltips 
     if (result?.buttons) return await fromUuid(result.buttons);
     return false;
 }
-async function selectDocumentsDialog(title, content, documents, {max = undefined, displayTooltips = false, sortAlphabetical = false, sortCR = false, userId = game.user.id, showCR = false} = {}) {
+async function selectDocumentsDialog(title, content, documents, {max = undefined, displayTooltips = false, sortAlphabetical = false, sortCR = false, userId = game.user.id, showCR = false, checkbox = false} = {}) {
     if (sortAlphabetical) {
         documents = documents.sort((a, b) => {
             return a.name.localeCompare(b.name, 'en', {'sensitivity': 'base'});
@@ -215,7 +215,7 @@ async function selectDocumentsDialog(title, content, documents, {max = undefined
             maxAmount: max
         }
     }));
-    let inputs = [['selectAmount', inputFields, {displayAsRows: true, totalMax: max}]];
+    let inputs = [[checkbox ? 'checkbox' : 'selectAmount', inputFields, {displayAsRows: true, totalMax: max}]];
     // let height = (inputs[0][1].length * 56 + 46); Come back to when I have a dialog large enough to max out the window
     // if (inputs[0][1].length > 14 ) height = 850;
     let result;
@@ -276,6 +276,41 @@ async function selectSpellSlot(actor, title, content, {maxLevel = 9, minLevel = 
     if (no) inputs.push(['CHRISPREMADES.Generic.No', false]);
     return await buttonDialog(title, content, inputs, {displayAsRows: true, userId: userId});
 }
+async function selectDamageType(damageTypes, title, context) {
+    let images = {
+        acid: 'icons/magic/acid/projectile-faceted-glob.webp',
+        bludgeoning: 'icons/magic/earth/projectiles-stone-salvo-gray.webp',
+        cold: 'icons/magic/air/wind-tornado-wall-blue.webp',
+        fire: 'icons/magic/fire/beam-jet-stream-embers.webp',
+        force: 'icons/magic/sonic/projectile-sound-rings-wave.webp',
+        lightning: 'icons/magic/lightning/bolt-blue.webp',
+        necrotic: 'icons/magic/unholy/projectile-bolts-salvo-pink.webp',
+        piercing: 'icons/skills/melee/strike-polearm-light-orange.webp',
+        poison: 'icons/magic/death/skull-poison-green.webp',
+        psychic: 'icons/magic/control/fear-fright-monster-grin-red-orange.webp',
+        radiant: 'icons/magic/holy/projectiles-blades-salvo-yellow.webp',
+        slashing: 'icons/skills/melee/strike-sword-gray.webp',
+        thunder: 'icons/magic/sonic/explosion-shock-wave-teal.webp'
+    };
+    let buttons = damageTypes.map(i => {
+        let image = images[i] ?? 'icons/magic/symbols/question-stone-yellow.webp';
+        return [
+            CONFIG.DND5E.damageTypes[i].label,
+            i,
+            {image}
+        ];
+    });
+    return await buttonDialog(title, context, buttons);
+}
+async function queuedConfirmDialog(title, content, {actor, reason, userId} = {}) {
+    let selection;
+    if (userId !== game.user.id) {
+        selection = await socket.executeAsUser(sockets.queuedDialog.name, userId, [title, content], {actorUuid: actor.uuid, reason});
+    } else {
+        selection = await sockets.queuedDialog([title, content], {actorUuid: actor.uuid, reason});
+    }
+    return selection;
+}
 export let dialogUtils = {
     buttonDialog,
     numberDialog,
@@ -285,5 +320,7 @@ export let dialogUtils = {
     selectDocumentsDialog,
     confirm,
     selectHitDie,
-    selectSpellSlot
+    selectSpellSlot,
+    selectDamageType,
+    queuedConfirmDialog
 };

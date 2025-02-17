@@ -6,7 +6,6 @@ let names = {
     'about-time': 'About Time',
     'animated-spell-effects-cartoon': 'Animated Spell Effects: Cartoon',
     'autoanimations': 'Automated Animations',
-    'babonus': 'Build A Bonus',
     'compendium-folders': 'Compendium Folders',
     'custom-character-sheet-sections': 'Custom Character Sheet Sections',
     'dae': 'Dynamic Active Effects',
@@ -96,11 +95,6 @@ let otherModules = [
     'bugs',
     'autoanimations',
     'monks-wall-enhancement'
-];
-let coverModules = [
-    'levelsautocover',
-    'simbuls-cover-calculator',
-    'tokencover'
 ];
 export async function run() {
     let output = '';

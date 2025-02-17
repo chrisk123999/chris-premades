@@ -4,7 +4,6 @@ import {backup} from './extensions/backup.js';
 import {conditions} from './extensions/conditions.js';
 import {effects} from './extensions/effects.js';
 import {tokens} from './extensions/tokens.js';
-import {buildABonus} from './integrations/buildABonus.js';
 import {dae} from './integrations/dae.js';
 import {gambitPremades} from './integrations/gambitsPremades.js';
 import {miscPremades} from './integrations/miscPremades.js';
@@ -17,6 +16,7 @@ import {automatedAnimations} from './integrations/automatedAnimations.js';
 import {rollResolver} from './extensions/rollResolver.js';
 import {actions} from './extensions/actions.js';
 import {item} from './applications/item.js';
+import {activities} from './extensions/activities.js';
 function addSetting(options) {
     let setting = {
         scope: options.scope ?? 'world',
@@ -29,7 +29,7 @@ function addSetting(options) {
         select: options.select
     };
     game.settings.register('chris-premades', options.key, setting);
-    settings.addMenuSetting(options.key, options.category);
+    if (options.category) settings.addMenuSetting(options.key, options.category);
 }
 function addMenu(options) {
     let menu = {
@@ -44,6 +44,11 @@ function addMenu(options) {
     game.settings.registerMenu('chris-premades', options.key, menu);
 }
 export function registerSettings() {
+    addSetting({
+        key: 'migrationVersion',
+        type: String,
+        default: '0.0.0'
+    });
     addSetting({
         key: 'gmID',
         type: String,
@@ -173,23 +178,6 @@ export function registerSettings() {
         }
     });
     addSetting({
-        key: 'colorizeBuildABonus',
-        type: Boolean,
-        default: false,
-        category: 'integration',
-        onChange: value => {
-            if (value) {
-                Hooks.on('renderItemSheet', buildABonus.renderItemSheet);
-                Hooks.on('renderDAEActiveEffectConfig', buildABonus.renderDAEActiveEffectConfig);
-                Hooks.on('renderActorSheet5e', buildABonus.renderActorSheet5e);
-            } else {
-                Hooks.off('renderItemSheet', buildABonus.renderItemSheet);
-                Hooks.off('renderDAEActiveEffectConfig', buildABonus.renderDAEActiveEffectConfig);
-                Hooks.off('renderActorSheet5e', buildABonus.renderActorSheet5e);
-            }
-        }
-    });
-    addSetting({
         key: 'colorizeAutomatedAnimations',
         type: Boolean,
         default: false,
@@ -207,19 +195,6 @@ export function registerSettings() {
         type: Boolean,
         default: false,
         category: 'integration'
-    });
-    addSetting({
-        key: 'babonusOverlappingEffects',
-        type: Boolean,
-        default: true,
-        category: 'integration',
-        onChange: value => {
-            if (value) {
-                Hooks.on('babonus.filterBonuses', buildABonus.filterBonuses);
-            } else {
-                Hooks.off('babonus.filterBonuses', buildABonus.filterBonuses);
-            }
-        }
     });
     addSetting({
         key: 'colorizeDAE',
@@ -433,15 +408,24 @@ export function registerSettings() {
         default: false,
         category: 'mechanics',
         onChange: value => {
-            if (!game.user.isGM) return;
             if (value) {
-                Hooks.on('createActiveEffect', tokens.createDeleteUpdateActiveEffect);
-                Hooks.on('deleteActiveEffect', tokens.createDeleteUpdateActiveEffect);
-                Hooks.on('updateActiveEffect', tokens.createDeleteUpdateActiveEffect);
+                Hooks.on('preCreateActiveEffect', tokens.preCreateUpdateActiveEffect);
+                Hooks.on('preDeleteActiveEffect', tokens.preDeleteActiveEffect);
+                Hooks.on('preUpdateActiveEffect', tokens.preCreateUpdateActiveEffect);
+                if (game.user.isGM) {
+                    Hooks.on('createActiveEffect', tokens.createDeleteUpdateActiveEffect);
+                    Hooks.on('deleteActiveEffect', tokens.createDeleteUpdateActiveEffect);
+                    Hooks.on('updateActiveEffect', tokens.createDeleteUpdateActiveEffect);
+                }
             } else {
-                Hooks.off('createActiveEffect', tokens.createDeleteUpdateActiveEffect);
-                Hooks.off('deleteActiveEffect', tokens.createDeleteUpdateActiveEffect);
-                Hooks.off('updateActiveEffect', tokens.createDeleteUpdateActiveEffect);
+                Hooks.off('preCreateActiveEffect', tokens.preCreateUpdateActiveEffect);
+                Hooks.off('preDeleteActiveEffect', tokens.preDeleteActiveEffect);
+                Hooks.off('preUpdateActiveEffect', tokens.preCreateUpdateActiveEffect);
+                if (game.user.isGM) {
+                    Hooks.off('createActiveEffect', tokens.createDeleteUpdateActiveEffect);
+                    Hooks.off('deleteActiveEffect', tokens.createDeleteUpdateActiveEffect);
+                    Hooks.off('updateActiveEffect', tokens.createDeleteUpdateActiveEffect);
+                }
             }
         }
     });
@@ -615,6 +599,7 @@ export function registerSettings() {
             } else {
                 rollResolver.unregisterFulfillmentMethod();
             }
+            if (foundry.utils.isNewerVersion('4.3', game.system.version)) rollResolver.patchBuild(value); // remove when 4.3+ only
         }
     });
     addSetting({
@@ -690,6 +675,12 @@ export function registerSettings() {
         default: false,
         category: 'homebrew',
         onChange: (value) => customTypes.weaponAction(value)
+    });
+    addSetting({
+        key: 'weaponMastery',
+        type: Boolean,
+        default: false,
+        category: 'mechanics'
     });
     addSetting({
         key: 'bg3WeaponActionConfig',
@@ -874,6 +865,20 @@ export function registerSettings() {
                 Hooks.off('dnd5e.getItemContextOptions', item.send);
             }
         }
+    });
+    addSetting({
+        key: 'activityCSSTweak',
+        type: Boolean,
+        default: false,
+        category: 'development',
+        onChange: () => activities.cssTweak()
+    });
+    addSetting({
+        key: 'groupSummonsWithOwner',
+        type: Boolean,
+        default: false,
+        category: 'mechanics',
+        onChange: (value) => initiative.patch(value)
     });
 }
 export function registerMenus() {

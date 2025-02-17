@@ -6,9 +6,8 @@ import {effectEvents} from './events/effects.js';
 import {midiEvents} from './events/midi.js';
 import {movementEvents} from './events/movement.js';
 import {templateEvents} from './events/template.js';
-import {buildABonus} from './integrations/buildABonus.js';
 import {dae} from './integrations/dae.js';
-import {createHeaderButton, renderItemSheet, renderEffectConfig, renderCompendium} from './extensions/titlebar.js';
+import {createHeaderButton, renderItemSheet, renderEffectConfig, renderCompendium, renderActivitySheet} from './extensions/titlebar.js';
 import {genericUtils} from './utils.js';
 import {chat} from './extensions/chat.js';
 import {sidebar} from './extensions/sidebar.js';
@@ -23,24 +22,49 @@ import {custom} from './events/custom.js';
 import {automatedAnimations} from './integrations/automatedAnimations.js';
 import {actions} from './extensions/actions.js';
 import {item} from './applications/item.js';
+import {activities} from './extensions/activities.js';
+import {ItemMedkit} from './applications/medkit-item.js';
+import {itemEvent} from './events/createItem.js';
 export function registerHooks() {
     Hooks.on('createSetting', genericUtils.createUpdateSetting);
     Hooks.on('updateSetting', genericUtils.createUpdateSetting);
-    if (genericUtils.getCPRSetting('effectInterface')) effectInterface.ready();
+    if (genericUtils.getCPRSetting('effectInterface')) {
+        effectInterface.ready();
+        Hooks.on('midi-qol.ready', effectInterface.checkEffectItem);
+    }
     Hooks.on('changeSidebarTab', sidebar.removeCompendiums);
     Hooks.on('renderCompendiumDirectory', sidebar.removeCompendiums);
+
     Hooks.on('midi-qol.preTargeting', midiEvents.preTargeting);
+    Hooks.on('midi-qol.premades.postNoAction', midiEvents.preItemRoll);
+    Hooks.on('midi-qol.premades.postPreambleComplete', midiEvents.preambleComplete);
+    Hooks.on('midi-qol.premades.postWaitForAttackRoll', midiEvents.postAttackRoll);
+    Hooks.on('midi-qol.premades.postAttackRollComplete', midiEvents.attackRollComplete);
+    Hooks.on('midi-qol.premades.postDamageRollComplete', midiEvents.damageRollComplete);
+    Hooks.on('midi-qol.premades.postSavesComplete', midiEvents.savesComplete);
+    Hooks.on('midi-qol.preTargetDamageApplication', midiEvents.preTargetDamageApplication);
+    Hooks.on('midi-qol.premades.postRollFinished', midiEvents.rollFinished);
+
+    Hooks.on('dae.setFieldData', dae.addFlags);
+
     Hooks.on('getItemSheetHeaderButtons', createHeaderButton);
     Hooks.on('getActorSheetHeaderButtons', createHeaderButton);
     Hooks.on('getActiveEffectConfigHeaderButtons', createHeaderButton);
     Hooks.on('renderCompendium', renderCompendium);
-    Hooks.on('renderItemSheet', renderItemSheet);
+    Hooks.on('renderItemSheetV2', renderItemSheet);
+    Hooks.on('renderActivitySheet', renderActivitySheet);
     Hooks.on('renderDAEActiveEffectConfig', renderEffectConfig);
+    Hooks.on('preCreateActiveEffect', effects.activityDC);
     Hooks.on('preCreateActiveEffect', effects.noAnimation);
     Hooks.on('preDeleteActiveEffect', effects.noAnimation);
     Hooks.on('createChatMessage', chat.createChatMessage);
     Hooks.on('preCreateActiveEffect', effectEvents.preCreateActiveEffect);
     Hooks.on('preUpdateActiveEffect', effectEvents.preUpdateActiveEffect);
+    Hooks.on('preCreateActiveEffect', effects.unhideActivities);
+    Hooks.on('preDeleteActiveEffect', effects.rehideActivities);
+    Hooks.on('preCreateActiveEffect', effects.preImageCreate);
+    Hooks.on('createActiveEffect', effects.imageCreate);
+    Hooks.on('deleteActiveEffect', effects.imageRemove);
     Hooks.on('preCreateMacro', custom.preCreateMacro);
     Hooks.on('updateMacro', custom.updateOrDeleteMacro);
     Hooks.on('deleteMacro', custom.updateOrDeleteMacro);
@@ -49,20 +73,15 @@ export function registerHooks() {
         Hooks.on('preDeleteActiveEffect', tokens.preDeleteActiveEffect);
         Hooks.on('preUpdateActiveEffect', tokens.preCreateUpdateActiveEffect);
     }
-    if (genericUtils.getCPRSetting('colorizeBuildABonus')) {
-        Hooks.on('renderItemSheet', buildABonus.renderItemSheet);
-        Hooks.on('renderDAEActiveEffectConfig', buildABonus.renderDAEActiveEffectConfig);
-        Hooks.on('renderActorSheet5e', buildABonus.renderActorSheet5e);
-    }
-    if (genericUtils.getCPRSetting('babonusOverlappingEffects')) Hooks.on('babonus.filterBonuses', buildABonus.filterBonuses);
-    if (genericUtils.getCPRSetting('colorizeDAE', Hooks.on('renderItemSheet', dae.renderItemSheet)));
-    if (genericUtils.getCPRSetting('colorizeAutomatedAnimations')) Hooks.on('renderItemSheet', automatedAnimations.renderItemSheet);
+    if (genericUtils.getCPRSetting('colorizeDAE', Hooks.on('renderItemSheetV2', dae.renderItemSheet)));
+    if (genericUtils.getCPRSetting('colorizeAutomatedAnimations')) Hooks.on('renderItemSheetV2', automatedAnimations.renderItemSheet);
     if (genericUtils.getCPRSetting('effectDescriptions') !== 'disabled') Hooks.on('preCreateActiveEffect', effects.preCreateActiveEffect);
     if (genericUtils.getCPRSetting('applyConditionChanges') || genericUtils.getCPRSetting('displayNestedConditions')) Hooks.on('preCreateActiveEffect', conditions.preCreateActiveEffect);
     if (genericUtils.getCPRSetting('vaeButtons')) Hooks.on('visual-active-effects.createEffectButtons', vae.createEffectButtons);
     if (genericUtils.getCPRSetting('updateSummonInitiative')) Hooks.on('dnd5e.rollInitiative', initiative.updateSummonInitiative);
     if (genericUtils.getCPRSetting('updateCompanionInitiative')) Hooks.on('dnd5e.rollInitiative', initiative.updateCompanionInitiative);
     Hooks.on('preUpdateToken', movementEvents.preUpdateToken);
+    Hooks.on('preUpdateItem', activities.flagAllRiders);
     Hooks.on('preUpdateItem', equipment.addOrUpdate);
     Hooks.on('preDeleteItem', equipment.remove);
     Hooks.on('preCreateItem', equipment.addOrUpdate);
@@ -82,6 +101,7 @@ export function registerHooks() {
         Hooks.on('createToken', auras.createToken);
         Hooks.on('deleteToken', auras.deleteToken);
         Hooks.on('canvasReady', auras.canvasReady);
+        Hooks.on('createItem', itemEvent.created);
         Hooks.on('getSceneConfigHeaderButtons', createHeaderButton);
         Hooks.on('getCompendiumHeaderButtons', createHeaderButton);
         auras.canvasReady(canvas);
@@ -92,4 +112,18 @@ export function registerHooks() {
         }
         if (genericUtils.getCPRSetting('backups')) Hooks.on('preCreateActor', backup.preCreateActor);
     }
+    Hooks.once('tidy5e-sheet.ready', (api) => {
+        api.registerItemHeaderControls({
+            controls: [
+                {
+                    icon: 'fa-solid fa-kit-medical chris-premades-item',
+                    label: 'CHRISPREMADES.Medkit.Medkit',
+                    position: 'header',
+                    async onClickAction() {
+                        await ItemMedkit.item(this.document);
+                    }
+                }
+            ]
+        });
+    });
 }

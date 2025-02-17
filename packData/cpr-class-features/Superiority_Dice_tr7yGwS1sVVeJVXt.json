@@ -1,0 +1,103 @@
+{
+  "name": "Superiority Dice",
+  "type": "feat",
+  "system": {
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "source": {
+      "custom": "",
+      "revision": 1,
+      "rules": "2014"
+    },
+    "uses": {
+      "max": "4 + clamp(floor((@classes.fighter.levels + 1) / 8),0,2)",
+      "recovery": [
+        {
+          "period": "sr",
+          "type": "recoverAll"
+        }
+      ],
+      "spent": 0
+    },
+    "type": {
+      "value": "class",
+      "subtype": ""
+    },
+    "requirements": "",
+    "properties": [],
+    "prerequisites": {
+      "level": null
+    },
+    "activities": {},
+    "identifier": "superiority-dice",
+    "enchant": {}
+  },
+  "flags": {
+    "core": {
+      "sourceId": "Actor.XauTPmdt4Drmy2f5.Item.CNvsz1fyoElM0Gwa"
+    },
+    "midi-qol": {
+      "effectActivation": false,
+      "rollAttackPerTarget": "default",
+      "itemCondition": "",
+      "effectCondition": "",
+      "AoETargetType": "any",
+      "AoETargetTypeIncludeSelf": true,
+      "autoTarget": "default",
+      "removeAttackDamageButtons": "default",
+      "reactionCondition": "",
+      "otherCondition": ""
+    },
+    "midiProperties": {
+      "nodam": false,
+      "fulldam": false,
+      "halfdam": false,
+      "autoFailFriendly": false,
+      "autoSaveFriendly": false,
+      "rollOther": false,
+      "critOther": false,
+      "offHandWeapon": false,
+      "magicdam": false,
+      "magiceffect": false,
+      "concentration": false,
+      "toggleEffect": false,
+      "ignoreTotalCover": false,
+      "confirmTargets": "default",
+      "noConcentrationCheck": false,
+      "idr": false,
+      "idi": false,
+      "idv": false,
+      "ida": false
+    },
+    "dnd5e": {
+      "persistSourceMigration": true,
+      "migratedUses": 3,
+      "riders": {
+        "activity": [],
+        "effect": []
+      }
+    },
+    "chris-premades": {
+      "info": {
+        "name": "Superiority Dice",
+        "version": "1.1.0",
+        "identifier": "superiorityDice",
+        "source": "chris-premades"
+      },
+      "macros": {
+        "midi": {
+          "actor": [
+            "superiorityDice"
+          ]
+        }
+      }
+    }
+  },
+  "effects": [],
+  "img": "icons/magic/fire/dagger-rune-enchant-flame-strong-blue-yellow.webp",
+  "folder": "RCIjyxdjc38xl9LB",
+  "_id": "tr7yGwS1sVVeJVXt",
+  "_key": "!items!tr7yGwS1sVVeJVXt"
+}

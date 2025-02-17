@@ -1,0 +1,124 @@
+{
+  "name": "Jack of All Trades",
+  "type": "feat",
+  "effects": [
+    {
+      "name": "Jack of All Trades",
+      "statuses": [],
+      "changes": [
+        {
+          "key": "flags.dnd5e.jackOfAllTrades",
+          "value": "true",
+          "mode": 5,
+          "priority": 20
+        }
+      ],
+      "duration": {
+        "seconds": null,
+        "startTime": 1050,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null,
+        "combat": null
+      },
+      "tint": "#ffffff",
+      "transfer": true,
+      "disabled": false,
+      "flags": {
+        "dae": {
+          "transfer": true,
+          "stackable": "noneNameOnly",
+          "specialDuration": []
+        },
+        "ddbimporter": {
+          "disabled": false
+        },
+        "midi-qol": {
+          "forceCEOff": true
+        },
+        "core": {}
+      },
+      "description": "",
+      "img": "icons/commodities/tech/cog-steel.webp",
+      "_id": "pBLjSqL7D7GusuoD",
+      "type": "base",
+      "system": {},
+      "origin": null,
+      "sort": 0,
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "coreVersion": "12.331",
+        "systemId": "dnd5e",
+        "systemVersion": "4.2.2",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!items.effects!NuECRrK7SxE0ylq2.pBLjSqL7D7GusuoD"
+    }
+  ],
+  "system": {
+    "activities": {},
+    "uses": {
+      "spent": 0,
+      "recovery": []
+    },
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "identifier": "jack-of-all-trades",
+    "source": {
+      "book": "PHB 2024",
+      "page": "",
+      "license": "",
+      "custom": "",
+      "rules": "2024",
+      "revision": 1
+    },
+    "advancement": [],
+    "cover": null,
+    "crewed": false,
+    "enchant": {},
+    "prerequisites": {
+      "level": 2,
+      "repeatable": false
+    },
+    "properties": [],
+    "requirements": "",
+    "type": {
+      "value": "class",
+      "subtype": ""
+    }
+  },
+  "flags": {
+    "midi-qol": {
+      "removeAttackDamageButtons": "default",
+      "forceCEOff": true
+    },
+    "midiProperties": {
+      "confirmTargets": "default"
+    },
+    "dnd5e": {
+      "riders": {
+        "activity": [],
+        "effect": []
+      },
+      "advancementOrigin": "wLL6TnmxaO2tTpKg"
+    },
+    "chris-premades": {
+      "info": {
+        "identifier": "jackOfAllTrades",
+        "source": "chris-premades",
+        "rules": "modern",
+        "version": "1.1.30"
+      }
+    }
+  },
+  "img": "icons/commodities/tech/cog-steel.webp",
+  "folder": "jv1qLsd4LTtCBvYj",
+  "_id": "NuECRrK7SxE0ylq2",
+  "_key": "!items!NuECRrK7SxE0ylq2"
+}

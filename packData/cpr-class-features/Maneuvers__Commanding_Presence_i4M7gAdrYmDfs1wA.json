@@ -1,0 +1,171 @@
+{
+  "name": "Maneuvers: Commanding Presence",
+  "type": "feat",
+  "system": {
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "source": {
+      "custom": "",
+      "revision": 1,
+      "rules": "2014"
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "recovery": []
+    },
+    "type": {
+      "value": "class",
+      "subtype": "maneuver"
+    },
+    "requirements": "",
+    "properties": [],
+    "prerequisites": {
+      "level": null
+    },
+    "activities": {},
+    "identifier": "maneuvers-commanding-presence",
+    "enchant": {}
+  },
+  "flags": {
+    "midi-qol": {
+      "forceCEOff": true,
+      "effectActivation": false,
+      "rollAttackPerTarget": "default",
+      "itemCondition": "",
+      "effectCondition": "",
+      "AoETargetType": "any",
+      "AoETargetTypeIncludeSelf": true,
+      "autoTarget": "default",
+      "removeAttackDamageButtons": "default",
+      "reactionCondition": "",
+      "otherCondition": ""
+    },
+    "core": {
+      "sourceId": "Actor.XauTPmdt4Drmy2f5.Item.OWhbYcXFPBjst5Hn"
+    },
+    "midiProperties": {
+      "nodam": false,
+      "fulldam": false,
+      "halfdam": false,
+      "autoFailFriendly": false,
+      "autoSaveFriendly": false,
+      "rollOther": false,
+      "critOther": false,
+      "offHandWeapon": false,
+      "magicdam": false,
+      "magiceffect": false,
+      "concentration": false,
+      "toggleEffect": false,
+      "ignoreTotalCover": false,
+      "confirmTargets": "default",
+      "noConcentrationCheck": false,
+      "idr": false,
+      "idi": false,
+      "idv": false,
+      "ida": false
+    },
+    "dnd5e": {
+      "riders": {
+        "activity": []
+      }
+    },
+    "chris-premades": {
+      "info": {
+        "name": "Maneuvers: Ambush",
+        "version": "1.1.0",
+        "identifier": "maneuversCommandingPresence",
+        "source": "chris-premades"
+      }
+    }
+  },
+  "effects": [
+    {
+      "name": "Maneuvers: Commanding Presence",
+      "origin": "Compendium.world.cpr-class-features.Item.9oX8Yas9rf2ACvAe",
+      "duration": {
+        "rounds": null,
+        "startTime": 1368,
+        "seconds": null,
+        "combat": null,
+        "turns": null,
+        "startRound": 229,
+        "startTurn": 1
+      },
+      "disabled": false,
+      "flags": {
+        "dnd5e": {},
+        "dae": {
+          "disableCondition": "",
+          "disableIncapacitated": false,
+          "stackable": "noneName",
+          "showIcon": false,
+          "durationExpression": "",
+          "macroRepeat": "none",
+          "specialDuration": []
+        },
+        "core": {
+          "overlay": false
+        }
+      },
+      "img": "icons/skills/melee/weapons-crossed-swords-yellow.webp",
+      "_id": "sIjtKTjzNUCNEOyk",
+      "type": "base",
+      "system": {},
+      "changes": [
+        {
+          "key": "flags.midi-qol.optional.CommandingPresence.label",
+          "mode": 0,
+          "value": "Commanding Presence",
+          "priority": 20
+        },
+        {
+          "key": "flags.midi-qol.optional.CommandingPresence.count",
+          "mode": 0,
+          "value": "ItemUses.Superiority Dice",
+          "priority": 20
+        },
+        {
+          "key": "flags.midi-qol.optional.CommandingPresence.skill.itm",
+          "mode": 0,
+          "value": "@scale.battle-master.combat-superiority-die",
+          "priority": 20
+        },
+        {
+          "key": "flags.midi-qol.optional.CommandingPresence.skill.prf",
+          "mode": 0,
+          "value": "@scale.battle-master.combat-superiority-die",
+          "priority": 20
+        },
+        {
+          "key": "flags.midi-qol.optional.CommandingPresence.skill.per",
+          "mode": 0,
+          "value": "@scale.battle-master.combat-superiority-die",
+          "priority": 20
+        }
+      ],
+      "description": "",
+      "tint": "#ffffff",
+      "transfer": true,
+      "statuses": [],
+      "sort": 0,
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "coreVersion": "12.331",
+        "systemId": "dnd5e",
+        "systemVersion": "4.1.2",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!items.effects!i4M7gAdrYmDfs1wA.sIjtKTjzNUCNEOyk"
+    }
+  ],
+  "img": "icons/skills/melee/weapons-crossed-swords-yellow.webp",
+  "folder": "aMstBUc2lUQZSNyK",
+  "_id": "i4M7gAdrYmDfs1wA",
+  "_key": "!items!i4M7gAdrYmDfs1wA"
+}

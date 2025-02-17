@@ -8,9 +8,9 @@ function collectMacros(entity) {
     let macroList = [];
     macroList.push(...getMacroData(entity));
     if (!macroList.length) return [];
-    return macroList.map(i => custom.getMacro(i)).filter(j => j);
+    return macroList.map(i => custom.getMacro(i, genericUtils.getRules(entity))).filter(j => j);
 }
-function collectActorSaveMacros(actor, pass, saveId, options, roll) {
+function collectActorSaveMacros(actor, pass, saveId, options, roll, config, dialog, message, sourceActor) {
     let triggers = [];
     let effects = actorUtils.getEffects(actor);
     let token = actorUtils.getFirstToken(actor);
@@ -28,10 +28,14 @@ function collectActorSaveMacros(actor, pass, saveId, options, roll) {
             },
             macros: effectMacros,
             name: effect.name.slugify(),
-            actor: actor,
-            saveId: saveId,
-            options: options,
-            roll: roll
+            actor,
+            saveId,
+            options,
+            roll,
+            config,
+            dialog,
+            message,
+            sourceActor
         });
     });
     actor.items.forEach(item => {
@@ -50,7 +54,11 @@ function collectActorSaveMacros(actor, pass, saveId, options, roll) {
             actor: actor,
             saveId: saveId,
             options: options,
-            roll: roll
+            roll: roll,
+            config,
+            dialog,
+            message,
+            sourceActor
         });
     });
     if (token) {
@@ -72,14 +80,18 @@ function collectActorSaveMacros(actor, pass, saveId, options, roll) {
                 actor: actor,
                 saveId: saveId,
                 options: options,
-                roll: roll
+                roll: roll,
+                config,
+                dialog,
+                message,
+                sourceActor
             });
         });
     }
     return triggers;
 }
-function getSortedTriggers(actor, pass, saveId, options, roll) {
-    let allTriggers = collectActorSaveMacros(actor, pass, saveId, options, roll);
+function getSortedTriggers(actor, pass, saveId, options, roll, config, dialog, message, sourceActor) {
+    let allTriggers = collectActorSaveMacros(actor, pass, saveId, options, roll, config, dialog, message, sourceActor);
     let names = new Set(allTriggers.map(i => i.name));
     allTriggers = Object.fromEntries(names.map(i => [i, allTriggers.filter(j => j.name === i)]));
     let maxMap = {};
@@ -116,7 +128,11 @@ function getSortedTriggers(actor, pass, saveId, options, roll) {
                 actor: trigger.actor,
                 saveId: trigger.saveId,
                 options: trigger.options,
-                roll: trigger.roll
+                roll: trigger.roll,
+                config: trigger.config,
+                dialog: trigger.dialog,
+                message: trigger.message,
+                sourceActor: trigger.sourceActor
             });
         });
     });
@@ -133,21 +149,21 @@ async function executeMacro(trigger) {
     }
     return result;
 }
-async function executeContextMacroPass(actor, pass, saveId, options) {
+async function executeContextMacroPass(actor, pass, saveId, options, roll, config, dialog, message) {
     genericUtils.log('dev', 'Executing Save Macro Pass: ' + pass);
-    let triggers = getSortedTriggers(actor, pass, saveId, options);
+    let triggers = getSortedTriggers(actor, pass, saveId, options, roll, config, dialog, message);
     let results = [];
     for (let i of triggers) results.push(await executeMacro(i));
     return results.filter(i => i);
 }
-async function executeMacroPass(actor, pass, saveId, options, roll) {
+async function executeMacroPass(actor, pass, saveId, options, roll, config, dialog, message) {
     genericUtils.log('dev', 'Executing Save Macro Pass: ' + pass);
-    let triggers = getSortedTriggers(actor, pass, saveId, options, roll);
+    let triggers = getSortedTriggers(actor, pass, saveId, options, roll, config, dialog, message);
     for (let i of triggers) await executeMacro(i);
 }
-async function executeBonusMacroPass(actor, pass, saveId, options, roll) {
+async function executeBonusMacroPass(actor, pass, saveId, options, roll, config, dialog, message) {
     genericUtils.log('dev', 'Executing Save Macro Pass: ' + pass);
-    let triggers = getSortedTriggers(actor, pass, saveId, options, roll);
+    let triggers = getSortedTriggers(actor, pass, saveId, options, roll, config, dialog, message);
     for (let i of triggers) {
         i.roll = roll;
         let bonusRoll = await executeMacro(i);
@@ -155,9 +171,23 @@ async function executeBonusMacroPass(actor, pass, saveId, options, roll) {
     }
     return CONFIG.Dice.D20Roll.fromRoll(roll);
 }
-async function save(wrapped, saveId, options = {}) {
-    await executeMacroPass(this, 'situational', saveId, options);
-    let selections = await executeContextMacroPass(this, 'context', saveId, options);
+async function rollSave(wrapped, config, dialog = {}, message = {}) {
+    let saveId;
+    let event;
+    if (foundry.utils.getType(config) === 'Object') {
+        saveId = config.ability;
+        event = config.event;
+        if (config.midiOptions?.saveItemUuid) {
+            let activityUuid = game.messages.contents.toReversed().find(i => i.flags.dnd5e?.item?.uuid === config.midiOptions.saveItemUuid)?.flags.dnd5e.activity.uuid;
+            if (activityUuid) genericUtils.setProperty(config, 'chris-premades.activityUuid', activityUuid);
+        }
+    } else {
+        saveId = config;
+        event = dialog?.event;
+    }
+    let options = {};
+    await executeMacroPass(this, 'situational', saveId, options, undefined, config, dialog, message);
+    let selections = await executeContextMacroPass(this, 'context', saveId, options, undefined, config, dialog, message);
     if (selections.length) {
         let advantages = selections.filter(i => i.type === 'advantage').map(j => ({label: j.label, name: 'advantage'}));
         let disadvantages = selections.filter(i => i.type === 'disadvantage').map(j => ({label: j.label, name: 'disadvantage'}));
@@ -178,39 +208,66 @@ async function save(wrapped, saveId, options = {}) {
         }
     }
     let overtimeActorUuid;
-    if (options.event) {
-        let target = options.event?.target?.closest('.roll-link, [data-action="rollRequest"], [data-action="concentration"]');
+    if (event) {
+        let target = event.target?.closest('.roll-link, [data-action="rollRequest"], [data-action="concentration"]');
         if (target?.dataset?.midiOvertimeActorUuid) {
             overtimeActorUuid = target.dataset.midiOvertimeActorUuid;
-            options.rollMode = target.dataset.midiRollMode ?? options.rollMode;
+            options.rollMode = target.dataset.midiRollMode ?? target.dataset.rollMode ?? options.rollMode;
         }
     }
     let messageData;
-    let messageDataFunc = (actor, rollData, saveIdInternal) => {
+    let rollMode;
+    let messageDataFunc = (config, dialog, message) => {
+        let actor = config.subject;
+        let saveIdInternal = config.ability;
         if (actor.uuid !== this.uuid || saveIdInternal !== saveId) {
-            Hooks.once('dnd5e.preRollAbilitySave', messageDataFunc);
+            Hooks.once('dnd5e.preRollSavingThrowV2', messageDataFunc);
             return;
         }
-        messageData = rollData.messageData;
+        messageData = message.data;
         if (overtimeActorUuid) messageData['flags.midi-qol.overtimeActorUuid'] = overtimeActorUuid;
+        rollMode = message.rollMode ?? game.settings.get('core', 'rollMode');
     };
-    Hooks.once('dnd5e.preRollAbilitySave', messageDataFunc);
-    let returnData = await wrapped(saveId, {...options, chatMessage: false});
+    Hooks.once('dnd5e.preRollSavingThrowV2', messageDataFunc);
+    if (Object.entries(options).length) config.rolls = [{options}];
+    let returnData = await wrapped(config, dialog, {...message, create: false});
+    let shouldBeArray = !!returnData?.length;
+    if (shouldBeArray) returnData = returnData[0];
     if (!returnData) return;
     let oldOptions = returnData.options;
-    returnData = await executeBonusMacroPass(this, 'bonus', saveId, options, returnData);
+    returnData = await executeBonusMacroPass(this, 'bonus', saveId, options, returnData, config, dialog, message);
+    if (returnData.data?.token) {
+        let sceneTriggers = [];
+        returnData.data.token.document.parent.tokens.filter(i => i.uuid !== returnData.data.token.document.uuid && i.actor).forEach(j => {
+            sceneTriggers.push(...getSortedTriggers(j.actor, 'sceneBonus', saveId, options, returnData, config, dialog, message, this));
+        });
+        let sortedSceneTriggers = [];
+        let names = new Set();
+        sceneTriggers.forEach(i => {
+            if (names.has(i.name)) return;
+            sortedSceneTriggers.push(i);
+            names.add(i.name);
+        });
+        sortedSceneTriggers = sortedSceneTriggers.sort((a, b) => a.priority - b.priority);
+        genericUtils.log('dev', 'Executing Save Macro Pass: sceneBonus');
+        for (let trigger of sortedSceneTriggers) {
+            trigger.roll = returnData;
+            let bonusRoll = await executeMacro(trigger);
+            if (bonusRoll) returnData = CONFIG.Dice.D20Roll.fromRoll(bonusRoll);
+        }
+    }
     if (returnData.options) genericUtils.mergeObject(returnData.options, oldOptions);
-    if (options.chatMessage !== false) {
+    if (message.create !== false) {
         genericUtils.mergeObject(messageData, {flags: options.flags ?? {} });
         genericUtils.setProperty(messageData, 'flags.midi-qol.lmrtfy.requestId', options.flags?.lmrtfy?.data?.requestId);
         messageData.template = 'modules/midi-qol/templates/roll-base.html';
-        await returnData.toMessage(messageData);
+        await returnData.toMessage(messageData, {rollMode: returnData.options?.rollMode ?? rollMode});
     }
-    return returnData;
+    return shouldBeArray ? [returnData] : returnData;
 }
 function patch() {
     genericUtils.log('dev', 'Ability Saves Patched!');
-    libWrapper.register('chris-premades', 'CONFIG.Actor.documentClass.prototype.rollAbilitySave', save, 'WRAPPER');
+    libWrapper.register('chris-premades', 'CONFIG.Actor.documentClass.prototype.rollSavingThrow', rollSave, 'WRAPPER');
 }
 export let abilitySave = {
     patch

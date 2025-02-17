@@ -1,0 +1,97 @@
+{
+  "name": "Divine Fury: Necrotic",
+  "type": "feat",
+  "system": {
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "source": {
+      "custom": "Barbarian : Path of the Zealot",
+      "revision": 1,
+      "rules": "2014"
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "recovery": []
+    },
+    "type": {
+      "value": "class",
+      "subtype": ""
+    },
+    "requirements": "",
+    "properties": [],
+    "prerequisites": {
+      "level": null
+    },
+    "activities": {},
+    "identifier": "divine-fury-necrotic",
+    "enchant": {}
+  },
+  "flags": {
+    "core": {
+      "sourceId": "Actor.iXZRAxrrFFxPX0g6.Item.7appQkrMAFL4bSSi"
+    },
+    "midiProperties": {
+      "confirmTargets": "default",
+      "autoFailFriendly": false,
+      "autoSaveFriendly": false,
+      "critOther": false,
+      "offHandWeapon": false,
+      "magicdam": false,
+      "magiceffect": false,
+      "concentration": false,
+      "noConcentrationCheck": false,
+      "toggleEffect": false,
+      "ignoreTotalCover": false,
+      "idr": false,
+      "idi": false,
+      "idv": false,
+      "ida": false
+    },
+    "midi-qol": {
+      "rollAttackPerTarget": "default",
+      "effectActivation": false,
+      "itemCondition": "",
+      "effectCondition": "",
+      "AoETargetType": "any",
+      "AoETargetTypeIncludeSelf": true,
+      "autoTarget": "default",
+      "removeAttackDamageButtons": "default",
+      "reactionCondition": "",
+      "otherCondition": ""
+    },
+    "dnd5e": {
+      "riders": {
+        "activity": []
+      }
+    },
+    "chris-premades": {
+      "info": {
+        "name": "Divine Fury: Necrotic",
+        "version": "1.1.0",
+        "identifier": "divineFuryNecrotic",
+        "source": "chris-premades"
+      },
+      "macros": {
+        "combat": [
+          "divineFuryNecrotic"
+        ],
+        "midi": {
+          "actor": [
+            "divineFuryNecrotic"
+          ]
+        }
+      },
+      "divineFury": {
+        "turn": "187-4"
+      }
+    }
+  },
+  "effects": [],
+  "img": "icons/magic/fire/projectile-wave-arrow.webp",
+  "folder": "w8l6T061e0iPR1cQ",
+  "_id": "75jpyf9pxM79Ggz3",
+  "_key": "!items!75jpyf9pxM79Ggz3"
+}

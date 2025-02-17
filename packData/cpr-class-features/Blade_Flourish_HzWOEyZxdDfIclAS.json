@@ -1,0 +1,541 @@
+{
+  "name": "Blade Flourish",
+  "type": "feat",
+  "system": {
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "source": {
+      "custom": "Bard : College of Swords",
+      "revision": 1,
+      "rules": "2014"
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "recovery": []
+    },
+    "type": {
+      "value": "class",
+      "subtype": ""
+    },
+    "requirements": "",
+    "properties": [],
+    "prerequisites": {
+      "level": null
+    },
+    "activities": {
+      "b62iMBao4RQNgGBG": {
+        "type": "utility",
+        "_id": "b62iMBao4RQNgGBG",
+        "sort": 0,
+        "activation": {
+          "type": "special",
+          "value": null,
+          "override": false,
+          "condition": ""
+        },
+        "consumption": {
+          "scaling": {
+            "allowed": false
+          },
+          "spellSlot": true,
+          "targets": []
+        },
+        "description": {
+          "chatFlavor": "Blade Flourish: Movement"
+        },
+        "duration": {
+          "units": "turn",
+          "concentration": false,
+          "override": false,
+          "value": "1"
+        },
+        "effects": [
+          {
+            "_id": "Af6EzuqfJi0N11ZV"
+          }
+        ],
+        "range": {
+          "override": false,
+          "units": "self",
+          "special": ""
+        },
+        "target": {
+          "template": {
+            "contiguous": false,
+            "units": "ft",
+            "type": ""
+          },
+          "affects": {
+            "choice": false,
+            "count": "",
+            "type": "self"
+          },
+          "override": false,
+          "prompt": true
+        },
+        "uses": {
+          "spent": 0,
+          "recovery": [],
+          "max": ""
+        },
+        "roll": {
+          "prompt": false,
+          "visible": false,
+          "name": "",
+          "formula": ""
+        },
+        "useConditionText": "",
+        "forceDialog": false,
+        "effectConditionText": "",
+        "midiAutomationOnly": false,
+        "name": "Blade Flourish: Movement",
+        "img": "icons/skills/melee/maneuver-greatsword-yellow.webp"
+      },
+      "0f38kGferu63k1X8": {
+        "type": "utility",
+        "_id": "0f38kGferu63k1X8",
+        "sort": 0,
+        "activation": {
+          "type": "special",
+          "value": null,
+          "override": false,
+          "condition": ""
+        },
+        "consumption": {
+          "scaling": {
+            "allowed": false
+          },
+          "spellSlot": true,
+          "targets": []
+        },
+        "description": {
+          "chatFlavor": "Defensive Flourish"
+        },
+        "duration": {
+          "units": "round",
+          "concentration": false,
+          "override": false,
+          "value": "1"
+        },
+        "effects": [
+          {
+            "_id": "oEZfMtlWEIV3pBRC"
+          }
+        ],
+        "range": {
+          "override": false,
+          "units": "self",
+          "special": ""
+        },
+        "target": {
+          "template": {
+            "contiguous": false,
+            "units": "ft",
+            "type": ""
+          },
+          "affects": {
+            "choice": false,
+            "count": "",
+            "type": ""
+          },
+          "override": false,
+          "prompt": true
+        },
+        "uses": {
+          "spent": 0,
+          "recovery": [],
+          "max": ""
+        },
+        "roll": {
+          "prompt": false,
+          "visible": false,
+          "name": "",
+          "formula": ""
+        },
+        "useConditionText": "",
+        "forceDialog": false,
+        "effectConditionText": "",
+        "midiAutomationOnly": false,
+        "name": "Defensive Flourish",
+        "img": "icons/weapons/swords/scimitar-guard-wood.webp"
+      },
+      "0nxIsXQuk4Lp2UVh": {
+        "type": "damage",
+        "_id": "0nxIsXQuk4Lp2UVh",
+        "sort": 0,
+        "activation": {
+          "type": "special",
+          "value": null,
+          "override": false,
+          "condition": ""
+        },
+        "consumption": {
+          "scaling": {
+            "allowed": false
+          },
+          "spellSlot": true,
+          "targets": []
+        },
+        "description": {
+          "chatFlavor": "Slashing Flourish"
+        },
+        "duration": {
+          "units": "inst",
+          "concentration": false,
+          "override": false
+        },
+        "effects": [],
+        "range": {
+          "override": false,
+          "units": "self",
+          "special": ""
+        },
+        "target": {
+          "template": {
+            "contiguous": false,
+            "units": "ft",
+            "type": "",
+            "size": "5",
+            "count": ""
+          },
+          "affects": {
+            "choice": false,
+            "count": "",
+            "type": "enemy",
+            "special": ""
+          },
+          "override": false,
+          "prompt": true
+        },
+        "uses": {
+          "spent": 0,
+          "recovery": [],
+          "max": ""
+        },
+        "damage": {
+          "critical": {
+            "allow": false
+          },
+          "parts": [
+            {
+              "custom": {
+                "enabled": true,
+                "formula": "0"
+              },
+              "number": null,
+              "denomination": 0,
+              "bonus": "",
+              "types": [],
+              "scaling": {
+                "number": 1
+              }
+            }
+          ]
+        },
+        "useConditionText": "",
+        "forceDialog": false,
+        "effectConditionText": "",
+        "midiAutomationOnly": false,
+        "name": "Slashing Flourish",
+        "img": "icons/weapons/swords/scimitar-guard-wood.webp"
+      },
+      "ds9Citbr6O0bBcsk": {
+        "type": "utility",
+        "_id": "ds9Citbr6O0bBcsk",
+        "sort": 0,
+        "activation": {
+          "type": "special",
+          "value": null,
+          "override": false,
+          "condition": ""
+        },
+        "consumption": {
+          "scaling": {
+            "allowed": false
+          },
+          "spellSlot": true,
+          "targets": []
+        },
+        "description": {
+          "chatFlavor": "Mobile Flourish"
+        },
+        "duration": {
+          "units": "inst",
+          "concentration": false,
+          "override": false
+        },
+        "effects": [],
+        "range": {
+          "override": false,
+          "units": "self",
+          "special": ""
+        },
+        "target": {
+          "template": {
+            "contiguous": false,
+            "units": "ft",
+            "type": ""
+          },
+          "affects": {
+            "choice": false,
+            "count": "1",
+            "type": "creature",
+            "special": ""
+          },
+          "override": false,
+          "prompt": true
+        },
+        "uses": {
+          "spent": 0,
+          "recovery": [],
+          "max": ""
+        },
+        "roll": {
+          "prompt": false,
+          "visible": false,
+          "name": "",
+          "formula": ""
+        },
+        "useConditionText": "",
+        "forceDialog": false,
+        "effectConditionText": "",
+        "midiAutomationOnly": false,
+        "name": "Mobile Flourish",
+        "img": "icons/skills/movement/feet-winged-boots-brown.webp"
+      }
+    },
+    "identifier": "blade-flourish",
+    "enchant": {}
+  },
+  "flags": {
+    "core": {
+      "sourceId": "Actor.l6eb8WvXXKNkH2Mo.Item.sl9ixUiOfD1MqIe3"
+    },
+    "midi-qol": {
+      "effectActivation": false,
+      "rollAttackPerTarget": "default",
+      "itemCondition": "",
+      "effectCondition": "",
+      "AoETargetType": "any",
+      "AoETargetTypeIncludeSelf": true,
+      "autoTarget": "default",
+      "removeAttackDamageButtons": "default",
+      "reactionCondition": "",
+      "otherCondition": ""
+    },
+    "midiProperties": {
+      "nodam": false,
+      "fulldam": false,
+      "halfdam": false,
+      "rollOther": false,
+      "critOther": false,
+      "magicdam": false,
+      "magiceffect": false,
+      "concentration": false,
+      "toggleEffect": false,
+      "ignoreTotalCover": false,
+      "confirmTargets": "default",
+      "autoFailFriendly": false,
+      "autoSaveFriendly": false,
+      "offHandWeapon": false,
+      "noConcentrationCheck": false,
+      "idr": false,
+      "idi": false,
+      "idv": false,
+      "ida": false
+    },
+    "dnd5e": {
+      "riders": {
+        "activity": [
+          "b62iMBao4RQNgGBG",
+          "0f38kGferu63k1X8",
+          "ds9Citbr6O0bBcsk",
+          "0nxIsXQuk4Lp2UVh"
+        ],
+        "effect": []
+      },
+      "dependents": [
+        {
+          "uuid": "Actor.PA2DQWi7RFACDjdx.ActiveEffect.LS45U8ABHwjOHuIL"
+        }
+      ],
+      "last": {
+        "0nxIsXQuk4Lp2UVh": {
+          "damageType": {
+            "0": "piercing"
+          }
+        }
+      }
+    },
+    "chris-premades": {
+      "info": {
+        "name": "Blade Flourish",
+        "version": "1.1.0",
+        "identifier": "bladeFlourish",
+        "source": "chris-premades"
+      },
+      "macros": {
+        "midi": {
+          "actor": [
+            "bladeFlourish"
+          ],
+          "item": [
+            "bladeFlourish"
+          ]
+        }
+      },
+      "hiddenActivities": [
+        "bladeFlourishMovement",
+        "defensiveFlourish",
+        "mobileFlourish",
+        "slashingFlourish"
+      ],
+      "activityIdentifiers": {
+        "bladeFlourishMovement": "b62iMBao4RQNgGBG",
+        "defensiveFlourish": "0f38kGferu63k1X8",
+        "slashingFlourish": "0nxIsXQuk4Lp2UVh",
+        "mobileFlourish": "ds9Citbr6O0bBcsk"
+      },
+      "bladeFlourishMovement": {
+        "turn": "212-4"
+      },
+      "bladeFlourish": {
+        "turn": "212-4"
+      },
+      "mobileFlourish": {
+        "roll": 4
+      }
+    }
+  },
+  "effects": [
+    {
+      "name": "Blade Flourish: Movement",
+      "img": "icons/skills/melee/maneuver-greatsword-yellow.webp",
+      "origin": "Actor.PA2DQWi7RFACDjdx.Item.TZvz9B3XTFaegN07",
+      "transfer": false,
+      "_id": "Af6EzuqfJi0N11ZV",
+      "type": "base",
+      "system": {},
+      "changes": [
+        {
+          "key": "system.attributes.movement.walk",
+          "mode": 2,
+          "value": "10",
+          "priority": 20
+        }
+      ],
+      "disabled": false,
+      "duration": {
+        "startTime": null,
+        "seconds": null,
+        "combat": null,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "statuses": [],
+      "sort": 0,
+      "flags": {
+        "dae": {
+          "enableCondition": "",
+          "disableCondition": "",
+          "disableIncapacitated": false,
+          "selfTarget": false,
+          "selfTargetAlways": false,
+          "dontApply": false,
+          "stackable": "multi",
+          "showIcon": false,
+          "durationExpression": "",
+          "macroRepeat": "none",
+          "specialDuration": []
+        },
+        "core": {
+          "overlay": false
+        }
+      },
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "coreVersion": "12.331",
+        "systemId": "dnd5e",
+        "systemVersion": "4.1.2",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!items.effects!HzWOEyZxdDfIclAS.Af6EzuqfJi0N11ZV"
+    },
+    {
+      "name": "Defensive Flourish",
+      "img": "icons/skills/melee/maneuver-greatsword-yellow.webp",
+      "origin": "Actor.PA2DQWi7RFACDjdx.Item.TZvz9B3XTFaegN07",
+      "transfer": false,
+      "_id": "oEZfMtlWEIV3pBRC",
+      "type": "base",
+      "system": {},
+      "changes": [
+        {
+          "key": "system.attributes.ac.bonus",
+          "mode": 2,
+          "value": "2",
+          "priority": 20
+        }
+      ],
+      "disabled": false,
+      "duration": {
+        "startTime": null,
+        "seconds": null,
+        "combat": null,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "statuses": [],
+      "sort": 0,
+      "flags": {
+        "dae": {
+          "enableCondition": "",
+          "disableCondition": "",
+          "disableIncapacitated": false,
+          "selfTarget": false,
+          "selfTargetAlways": false,
+          "dontApply": false,
+          "stackable": "multi",
+          "showIcon": false,
+          "durationExpression": "",
+          "macroRepeat": "none",
+          "specialDuration": [
+            "turnStartSource"
+          ]
+        },
+        "core": {
+          "overlay": false
+        }
+      },
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "coreVersion": "12.331",
+        "systemId": "dnd5e",
+        "systemVersion": "4.1.2",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!items.effects!HzWOEyZxdDfIclAS.oEZfMtlWEIV3pBRC"
+    }
+  ],
+  "img": "icons/skills/melee/maneuver-greatsword-yellow.webp",
+  "folder": "uDjz6sj6ARGKxN2O",
+  "_id": "HzWOEyZxdDfIclAS",
+  "_key": "!items!HzWOEyZxdDfIclAS"
+}

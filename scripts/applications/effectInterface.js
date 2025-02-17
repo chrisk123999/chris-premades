@@ -160,7 +160,9 @@ class EffectDirectory extends DocumentDirectory {
                 condition: (header) => {
                     let document = getDocument(header);
                     if (!document) return;
-                    return (document.flags['chris-premades']?.effectInterface?.status || !game.user.isGM) ? false : true;
+                    if (!game.user.isGM) return false;
+                    if (document.flags['chris-premades']?.effectInterface?.status && CONFIG.statusEffects.find(i => i?._id === document.id)) return false;
+                    return true;
                 },
                 icon: '<i class="fas fa-trash"></i>',
                 name: 'SIDEBAR.Delete'

@@ -1,0 +1,273 @@
+{
+  "name": "Bigby's Beneficent Bracelet",
+  "type": "equipment",
+  "system": {
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "source": {
+      "book": "Bigby Presents: Glory of the Giants",
+      "page": "111",
+      "license": "",
+      "custom": "",
+      "revision": 1,
+      "rules": "2014"
+    },
+    "identified": true,
+    "unidentified": {
+      "description": ""
+    },
+    "container": null,
+    "quantity": 1,
+    "weight": {
+      "value": 0,
+      "units": "lb"
+    },
+    "price": {
+      "value": 0,
+      "denomination": "gp"
+    },
+    "rarity": "artifact",
+    "attunement": "required",
+    "cover": null,
+    "crewed": false,
+    "uses": {
+      "max": "",
+      "recovery": [],
+      "spent": 0
+    },
+    "armor": {
+      "value": null,
+      "dex": null,
+      "magicalBonus": null
+    },
+    "hp": {
+      "value": null,
+      "max": null,
+      "dt": null,
+      "conditions": ""
+    },
+    "type": {
+      "value": "trinket",
+      "baseItem": ""
+    },
+    "properties": [
+      "mgc"
+    ],
+    "speed": {
+      "value": null,
+      "conditions": ""
+    },
+    "strength": 0,
+    "equipped": false,
+    "proficient": null,
+    "attuned": false,
+    "activities": {
+      "lea5Ll4CurRsrz2g": {
+        "type": "utility",
+        "_id": "lea5Ll4CurRsrz2g",
+        "sort": 0,
+        "activation": {
+          "type": "minute",
+          "value": 1,
+          "override": false,
+          "condition": ""
+        },
+        "consumption": {
+          "scaling": {
+            "allowed": false
+          },
+          "spellSlot": true,
+          "targets": [
+            {
+              "type": "activityUses",
+              "value": "1",
+              "scaling": {}
+            }
+          ]
+        },
+        "description": {
+          "chatFlavor": "Force Sculpture"
+        },
+        "duration": {
+          "units": "hour",
+          "concentration": false,
+          "override": false,
+          "value": "8"
+        },
+        "effects": [],
+        "range": {
+          "override": false,
+          "units": "self",
+          "special": ""
+        },
+        "target": {
+          "template": {
+            "contiguous": false,
+            "units": "ft",
+            "type": ""
+          },
+          "affects": {
+            "choice": false,
+            "count": "",
+            "type": ""
+          },
+          "override": false,
+          "prompt": true
+        },
+        "uses": {
+          "spent": 0,
+          "recovery": [
+            {
+              "period": "dawn",
+              "type": "recoverAll"
+            }
+          ],
+          "max": "3"
+        },
+        "roll": {
+          "prompt": false,
+          "visible": false,
+          "name": "",
+          "formula": ""
+        },
+        "useConditionText": "",
+        "forceDialog": false,
+        "effectConditionText": "",
+        "midiAutomationOnly": false,
+        "name": "Force Sculpture",
+        "img": "icons/magic/earth/construct-stone-long-arms.webp",
+        "appliedEffects": []
+      },
+      "g1Iqw1iuXSzRtE4U": {
+        "type": "cast",
+        "_id": "g1Iqw1iuXSzRtE4U",
+        "sort": 0,
+        "activation": {
+          "type": "action",
+          "value": null,
+          "override": false
+        },
+        "consumption": {
+          "scaling": {
+            "allowed": false
+          },
+          "spellSlot": true,
+          "targets": [
+            {
+              "type": "activityUses",
+              "value": "1",
+              "scaling": {}
+            }
+          ]
+        },
+        "description": {
+          "chatFlavor": ""
+        },
+        "duration": {
+          "units": "inst",
+          "concentration": false,
+          "override": false
+        },
+        "range": {
+          "override": false
+        },
+        "target": {
+          "template": {
+            "contiguous": false,
+            "units": "ft"
+          },
+          "affects": {
+            "choice": false
+          },
+          "override": false,
+          "prompt": true
+        },
+        "uses": {
+          "spent": 0,
+          "recovery": [
+            {
+              "period": "dawn",
+              "type": "recoverAll"
+            }
+          ],
+          "max": "1"
+        },
+        "spell": {
+          "challenge": {
+            "attack": null,
+            "save": null,
+            "override": false
+          },
+          "level": "9",
+          "properties": [
+            "concentration"
+          ],
+          "spellbook": true,
+          "uuid": "Compendium.chris-premades.CPRSpells.Item.6WGX5BcYogtSpEIt"
+        },
+        "name": "",
+        "img": ""
+      }
+    },
+    "identifier": "bigbys-beneficent-bracelet"
+  },
+  "flags": {
+    "midi-qol": {
+      "removeAttackDamageButtons": "default",
+      "rollAttackPerTarget": "default",
+      "effectActivation": false,
+      "itemCondition": "",
+      "effectCondition": "",
+      "AoETargetType": "any",
+      "AoETargetTypeIncludeSelf": true,
+      "autoTarget": "default",
+      "reactionCondition": "",
+      "otherCondition": ""
+    },
+    "midiProperties": {
+      "confirmTargets": "default",
+      "autoFailFriendly": false,
+      "autoSaveFriendly": false,
+      "critOther": false,
+      "offHandWeapon": false,
+      "magicdam": false,
+      "magiceffect": false,
+      "concentration": false,
+      "noConcentrationCheck": false,
+      "toggleEffect": false,
+      "ignoreTotalCover": false,
+      "idr": false,
+      "idi": false,
+      "idv": false,
+      "ida": false
+    },
+    "chris-premades": {
+      "equipment": {
+        "identifier": "bigbysBeneficentBracelet"
+      },
+      "info": {
+        "name": "Bigby's Beneficent Bracelet",
+        "version": "1.1.0",
+        "identifier": "bigbysBeneficentBracelet",
+        "source": "chris-premades"
+      },
+      "activityIdentifiers": {
+        "forceSculpture": "lea5Ll4CurRsrz2g"
+      }
+    },
+    "dnd5e": {
+      "migratedUses": 1,
+      "riders": {
+        "activity": [],
+        "effect": []
+      }
+    }
+  },
+  "effects": [],
+  "img": "icons/equipment/hand/glove-studded-leather-yellow.webp",
+  "folder": "4TYgcjpgCO6kJJ6d",
+  "_id": "SC99hpNYTppsVv0U",
+  "_key": "!items!SC99hpNYTppsVv0U"
+}

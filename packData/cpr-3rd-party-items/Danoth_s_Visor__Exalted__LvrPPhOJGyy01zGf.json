@@ -1,0 +1,124 @@
+{
+  "name": "Danoth's Visor (Exalted)",
+  "type": "equipment",
+  "system": {
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "source": {
+      "book": "Explorer's Guide to Wildemount",
+      "page": "270",
+      "license": "",
+      "custom": "",
+      "revision": 1,
+      "rules": "2014"
+    },
+    "identified": true,
+    "unidentified": {
+      "description": ""
+    },
+    "container": null,
+    "quantity": 1,
+    "weight": {
+      "value": 0,
+      "units": "lb"
+    },
+    "price": {
+      "value": 0,
+      "denomination": "gp"
+    },
+    "rarity": "legendary",
+    "attunement": "required",
+    "cover": null,
+    "crewed": false,
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "recovery": []
+    },
+    "armor": {
+      "value": null,
+      "dex": null,
+      "magicalBonus": null
+    },
+    "hp": {
+      "value": null,
+      "max": null,
+      "dt": null,
+      "conditions": ""
+    },
+    "type": {
+      "value": "trinket",
+      "baseItem": ""
+    },
+    "properties": [
+      "mgc"
+    ],
+    "speed": {
+      "value": null,
+      "conditions": ""
+    },
+    "strength": 0,
+    "attuned": false,
+    "equipped": false,
+    "proficient": null,
+    "activities": {},
+    "identifier": "danoths-visor-exalted"
+  },
+  "flags": {
+    "midi-qol": {
+      "removeAttackDamageButtons": "default",
+      "onUseMacroName": "",
+      "rollAttackPerTarget": "default",
+      "itemCondition": "",
+      "effectCondition": "",
+      "AoETargetType": "any",
+      "AoETargetTypeIncludeSelf": true,
+      "autoTarget": "default",
+      "reactionCondition": "",
+      "otherCondition": ""
+    },
+    "midiProperties": {
+      "confirmTargets": "default",
+      "autoFailFriendly": false,
+      "autoSaveFriendly": false,
+      "critOther": false,
+      "offHandWeapon": false,
+      "magicdam": false,
+      "magiceffect": false,
+      "noConcentrationCheck": false,
+      "toggleEffect": false,
+      "ignoreTotalCover": false,
+      "idr": false,
+      "idi": false,
+      "idv": false,
+      "ida": false
+    },
+    "chris-premades": {
+      "info": {
+        "identifier": "danothsVisorE",
+        "version": "1.1.0",
+        "source": "chris-premades"
+      },
+      "equipment": {
+        "identifier": "danothsVisorE"
+      },
+      "macros": {
+        "skill": [
+          "danothsVisorE"
+        ]
+      }
+    },
+    "dnd5e": {
+      "riders": {
+        "activity": []
+      }
+    }
+  },
+  "effects": [],
+  "img": "icons/equipment/head/goggles-leather-blue.webp",
+  "folder": "l9lGxARY0Wspxe7c",
+  "_id": "LvrPPhOJGyy01zGf",
+  "_key": "!items!LvrPPhOJGyy01zGf"
+}

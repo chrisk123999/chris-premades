@@ -1,0 +1,72 @@
+{
+  "name": "Battering Roots",
+  "type": "feat",
+  "effects": [],
+  "system": {
+    "activities": {},
+    "uses": {
+      "spent": 0,
+      "recovery": []
+    },
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "identifier": "battering-roots",
+    "source": {
+      "book": "PHB 2024",
+      "page": "",
+      "license": "",
+      "custom": "",
+      "rules": "2024",
+      "revision": 1
+    },
+    "advancement": [],
+    "cover": null,
+    "crewed": false,
+    "enchant": {},
+    "prerequisites": {
+      "level": 10,
+      "repeatable": false
+    },
+    "properties": [],
+    "requirements": "",
+    "type": {
+      "value": "class",
+      "subtype": ""
+    }
+  },
+  "flags": {
+    "midi-qol": {
+      "removeAttackDamageButtons": "default",
+      "forceCEOff": true
+    },
+    "midiProperties": {
+      "confirmTargets": "default"
+    },
+    "dnd5e": {
+      "riders": {
+        "activity": [],
+        "effect": []
+      },
+      "advancementOrigin": "nwupzjujWuejv7P9"
+    },
+    "chris-premades": {
+      "info": {
+        "identifier": "batteringRoots",
+        "source": "chris-premades",
+        "rules": "modern",
+        "version": "1.1.26"
+      },
+      "macros": {
+        "combat": [
+          "batteringRoots"
+        ]
+      }
+    }
+  },
+  "img": "icons/magic/nature/root-vine-beanstolk-green.webp",
+  "folder": "zYMyq0dxwgthMiRb",
+  "_id": "tXtyXl1oq15Gvy92",
+  "_key": "!items!tXtyXl1oq15Gvy92"
+}

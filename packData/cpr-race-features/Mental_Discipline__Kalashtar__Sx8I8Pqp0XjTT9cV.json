@@ -1,0 +1,140 @@
+{
+  "name": "Mental Discipline (Kalashtar)",
+  "type": "feat",
+  "system": {
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "source": {
+      "custom": "Eberron: Rising from the Last War",
+      "revision": 1,
+      "rules": "2014"
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "recovery": []
+    },
+    "type": {
+      "value": "race",
+      "subtype": ""
+    },
+    "requirements": "",
+    "properties": [],
+    "prerequisites": {
+      "level": null
+    },
+    "activities": {},
+    "identifier": "mental-discipline-kalashtar",
+    "enchant": {}
+  },
+  "flags": {
+    "core": {
+      "sourceId": "Actor.57T1iaC28BNqvhSo.Item.SrBARhNl7zuPydBD"
+    },
+    "chris-premades": {
+      "info": {
+        "name": "Mental Discipline (Kalashtar)",
+        "version": "1.1.0",
+        "identifier": "mentalDisciplineKalashtar",
+        "source": "chris-premades"
+      }
+    },
+    "midiProperties": {
+      "confirmTargets": "default",
+      "autoFailFriendly": false,
+      "autoSaveFriendly": false,
+      "critOther": false,
+      "offHandWeapon": false,
+      "magicdam": false,
+      "magiceffect": false,
+      "noConcentrationCheck": false,
+      "toggleEffect": false,
+      "ignoreTotalCover": false,
+      "idr": false,
+      "idi": false,
+      "idv": false,
+      "ida": false
+    },
+    "midi-qol": {
+      "rollAttackPerTarget": "default",
+      "itemCondition": "",
+      "effectCondition": "",
+      "AoETargetType": "any",
+      "AoETargetTypeIncludeSelf": true,
+      "autoTarget": "default",
+      "removeAttackDamageButtons": "default",
+      "reactionCondition": "",
+      "otherCondition": ""
+    },
+    "dnd5e": {
+      "riders": {
+        "activity": []
+      }
+    }
+  },
+  "effects": [
+    {
+      "name": "Mental Discipline (Kalashtar)",
+      "origin": "Compendium.world.cpr-race-features.Item.QaDPr7YTFdwVIVLy",
+      "duration": {
+        "rounds": null,
+        "startTime": 1488,
+        "seconds": null,
+        "combat": null,
+        "turns": null,
+        "startRound": 249,
+        "startTurn": 0
+      },
+      "disabled": false,
+      "flags": {
+        "dnd5e": {},
+        "dae": {
+          "disableCondition": "",
+          "disableIncapacitated": false,
+          "stackable": "noneName",
+          "showIcon": false,
+          "durationExpression": "",
+          "macroRepeat": "none",
+          "specialDuration": []
+        },
+        "core": {
+          "overlay": false
+        }
+      },
+      "img": "icons/magic/defensive/shield-barrier-glowing-triangle-teal.webp",
+      "_id": "EUUHCSjOIxMcM9Q9",
+      "type": "base",
+      "system": {},
+      "changes": [
+        {
+          "key": "system.traits.dr.value",
+          "mode": 2,
+          "value": "psychic",
+          "priority": 20
+        }
+      ],
+      "description": "",
+      "tint": "#ffffff",
+      "transfer": true,
+      "statuses": [],
+      "sort": 0,
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "coreVersion": "12.331",
+        "systemId": "dnd5e",
+        "systemVersion": "4.1.2",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!items.effects!Sx8I8Pqp0XjTT9cV.EUUHCSjOIxMcM9Q9"
+    }
+  ],
+  "img": "icons/magic/defensive/shield-barrier-glowing-triangle-teal.webp",
+  "folder": "VP6Yc6999UJflMkV",
+  "_id": "Sx8I8Pqp0XjTT9cV",
+  "_key": "!items!Sx8I8Pqp0XjTT9cV"
+}

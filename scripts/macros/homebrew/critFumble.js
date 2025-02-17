@@ -21,7 +21,7 @@ async function rollItem(type, token, targets) {
         if (!item) return;
         itemData = await compendiumUtils.getItemFromCompendium(key, item.name, {object: true});
     }
-    let workflowTargets = itemData.system.target.type === 'self' ? [token] : targets;
+    let workflowTargets = Object.values(itemData.system.activities)[0]?.target.affects.type === 'self' ? [token] : targets;
     await workflowUtils.syntheticItemDataRoll(itemData, token.actor, workflowTargets);
 }
 async function attack(workflow) {
@@ -52,7 +52,7 @@ async function maxDamageDamage({trigger, workflow}) {
 }
 export let maxDamage = {
     name: 'Maximize Damage',
-    version: '1.0.2',
+    version: '1.1.0',
     midi: {
         item: [
             {
@@ -94,7 +94,7 @@ async function doubleDamageDamage({trigger, workflow}) {
 }
 export let doubleDamage = {
     name: 'Double Damage',
-    version: '1.0.2',
+    version: '1.1.0',
     midi: {
         item: [
             {

@@ -1,0 +1,180 @@
+{
+  "type": "spell",
+  "system": {
+    "activities": {
+      "K5hmhWVrvVOXtw3z": {
+        "type": "utility",
+        "_id": "K5hmhWVrvVOXtw3z",
+        "sort": 0,
+        "activation": {
+          "type": "action",
+          "value": null,
+          "override": false
+        },
+        "consumption": {
+          "scaling": {
+            "allowed": false
+          },
+          "spellSlot": true,
+          "targets": []
+        },
+        "description": {},
+        "duration": {
+          "units": "inst",
+          "concentration": false,
+          "override": false
+        },
+        "effects": [],
+        "range": {
+          "override": false
+        },
+        "target": {
+          "template": {
+            "contiguous": false,
+            "units": "ft"
+          },
+          "affects": {
+            "choice": false
+          },
+          "override": false,
+          "prompt": true
+        },
+        "uses": {
+          "spent": 0,
+          "recovery": []
+        },
+        "roll": {
+          "prompt": false,
+          "visible": false
+        },
+        "useConditionText": "",
+        "effectConditionText": "",
+        "macroData": {
+          "name": "",
+          "command": ""
+        },
+        "ignoreTraits": {
+          "idi": false,
+          "idr": false,
+          "idv": false,
+          "ida": false
+        },
+        "midiProperties": {
+          "ignoreTraits": [],
+          "triggeredActivityId": "none",
+          "triggeredActivityConditionText": "",
+          "triggeredActivityTargets": "targets",
+          "triggeredActivityRollAs": "self",
+          "forceDialog": false,
+          "confirmTargets": "default",
+          "automationOnly": false,
+          "identifier": ""
+        }
+      }
+    },
+    "uses": {
+      "spent": null,
+      "max": "",
+      "recovery": []
+    },
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "identifier": "blinding-smite",
+    "source": {
+      "book": "PHB 2024",
+      "page": "",
+      "license": "",
+      "custom": "",
+      "rules": "2024",
+      "revision": 1
+    },
+    "activation": {
+      "type": "bonus",
+      "value": 1,
+      "condition": "which you take immediately after hitting a creature with a Melee weapon or an Unarmed Strike"
+    },
+    "duration": {
+      "value": "1",
+      "units": "minute"
+    },
+    "level": 3,
+    "materials": {
+      "value": "",
+      "consumed": false,
+      "cost": 0,
+      "supply": 0
+    },
+    "preparation": {
+      "mode": "prepared",
+      "prepared": true
+    },
+    "properties": [
+      "vocal"
+    ],
+    "range": {
+      "units": "self"
+    },
+    "school": "evo",
+    "target": {
+      "affects": {
+        "count": "",
+        "type": "creature",
+        "choice": false,
+        "special": ""
+      },
+      "template": {
+        "count": "",
+        "contiguous": false,
+        "type": "",
+        "size": "",
+        "width": "",
+        "height": "",
+        "units": "ft"
+      }
+    },
+    "sourceClass": ""
+  },
+  "effects": [],
+  "name": "Blinding Smite",
+  "flags": {
+    "midi-qol": {
+      "removeAttackDamageButtons": "default",
+      "forceCEOff": true
+    },
+    "midiProperties": {
+      "confirmTargets": "default",
+      "magicdam": true,
+      "magiceffect": true
+    },
+    "dnd5e": {
+      "riders": {
+        "activity": [],
+        "effect": []
+      }
+    },
+    "chris-premades": {
+      "info": {
+        "identifier": "blindingSmite",
+        "rules": "modern",
+        "source": "chris-premades",
+        "version": "1.1.14"
+      },
+      "macros": {
+        "midi": {
+          "item": [
+            "blindingSmite"
+          ],
+          "actor": [
+            "blindingSmite"
+          ]
+        }
+      }
+    }
+  },
+  "img": "icons/magic/fire/dagger-rune-enchant-flame-strong-blue-yellow.webp",
+  "folder": null,
+  "_id": "Zz7Xj9mjog401VND",
+  "_key": "!items!Zz7Xj9mjog401VND"
+}

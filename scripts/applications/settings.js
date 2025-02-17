@@ -8,7 +8,7 @@ import {tours} from './tour.js';
 import {troubleshooter} from './troubleshooter.js';
 import {rollResolver} from '../extensions/rollResolver.js';
 import {spellList} from '../extensions/spellList.js';
-import {bg3} from '../macros/homebrew/bg3WeaponActions.js';
+import {bg3} from '../macros/2014/homebrew/bg3WeaponActions.js';
 let settingCategories = {};
 let buttonLabels = {
     additionalCompendiums: 'CHRISPREMADES.Generic.Configure',

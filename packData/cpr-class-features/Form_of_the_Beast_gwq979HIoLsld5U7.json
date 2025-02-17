@@ -1,0 +1,552 @@
+{
+  "name": "Form of the Beast",
+  "type": "feat",
+  "system": {
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "source": {
+      "custom": "Barbarian : Path of the Beast",
+      "revision": 1,
+      "rules": "2014"
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "recovery": []
+    },
+    "type": {
+      "value": "class",
+      "subtype": ""
+    },
+    "requirements": "",
+    "properties": [],
+    "prerequisites": {
+      "level": null
+    },
+    "activities": {
+      "XpofnO4WGyo7wUhw": {
+        "type": "attack",
+        "_id": "XpofnO4WGyo7wUhw",
+        "sort": 0,
+        "activation": {
+          "type": "action",
+          "value": null,
+          "override": false,
+          "condition": ""
+        },
+        "consumption": {
+          "scaling": {
+            "allowed": false
+          },
+          "spellSlot": true,
+          "targets": []
+        },
+        "description": {
+          "chatFlavor": "Form of the Beast: Bite"
+        },
+        "duration": {
+          "units": "inst",
+          "concentration": false,
+          "override": false
+        },
+        "effects": [],
+        "range": {
+          "override": false,
+          "units": "ft",
+          "special": "",
+          "value": "5"
+        },
+        "target": {
+          "template": {
+            "contiguous": false,
+            "units": "ft",
+            "type": ""
+          },
+          "affects": {
+            "choice": false,
+            "count": "1",
+            "type": "creature",
+            "special": ""
+          },
+          "override": false,
+          "prompt": true
+        },
+        "uses": {
+          "spent": 0,
+          "recovery": [],
+          "max": ""
+        },
+        "attack": {
+          "critical": {
+            "threshold": null
+          },
+          "flat": false,
+          "type": {
+            "value": "melee",
+            "classification": "weapon"
+          },
+          "ability": "",
+          "bonus": ""
+        },
+        "damage": {
+          "critical": {
+            "bonus": ""
+          },
+          "includeBase": true,
+          "parts": [
+            {
+              "custom": {
+                "enabled": false,
+                "formula": ""
+              },
+              "number": 1,
+              "denomination": 8,
+              "bonus": "@mod",
+              "types": [
+                "piercing"
+              ],
+              "scaling": {
+                "number": 1
+              }
+            }
+          ]
+        },
+        "useConditionText": "",
+        "forceDialog": false,
+        "effectConditionText": "",
+        "midiAutomationOnly": false,
+        "attackMode": "",
+        "ammunition": "",
+        "otherActivityId": "none",
+        "name": "Form of the Beast: Bite",
+        "img": "icons/commodities/biological/mouth-toothed-purple.webp",
+        "appliedEffects": []
+      },
+      "CK1hfWjNaegnj7qR": {
+        "type": "attack",
+        "_id": "CK1hfWjNaegnj7qR",
+        "sort": 0,
+        "activation": {
+          "type": "action",
+          "value": null,
+          "override": false,
+          "condition": ""
+        },
+        "consumption": {
+          "scaling": {
+            "allowed": false
+          },
+          "spellSlot": true,
+          "targets": []
+        },
+        "description": {
+          "chatFlavor": "Form of the Beast: Claws"
+        },
+        "duration": {
+          "units": "inst",
+          "concentration": false,
+          "override": false
+        },
+        "effects": [],
+        "range": {
+          "override": false,
+          "units": "ft",
+          "special": "",
+          "value": "5"
+        },
+        "target": {
+          "template": {
+            "contiguous": false,
+            "units": "ft",
+            "type": ""
+          },
+          "affects": {
+            "choice": false,
+            "count": "1",
+            "type": "creature",
+            "special": ""
+          },
+          "override": false,
+          "prompt": true
+        },
+        "uses": {
+          "spent": 0,
+          "recovery": [],
+          "max": ""
+        },
+        "attack": {
+          "critical": {
+            "threshold": null
+          },
+          "flat": false,
+          "type": {
+            "value": "melee",
+            "classification": "weapon"
+          },
+          "ability": "",
+          "bonus": ""
+        },
+        "damage": {
+          "critical": {
+            "bonus": ""
+          },
+          "includeBase": true,
+          "parts": [
+            {
+              "custom": {
+                "enabled": false,
+                "formula": ""
+              },
+              "number": 1,
+              "denomination": 6,
+              "bonus": "@mod",
+              "types": [
+                "slashing"
+              ],
+              "scaling": {
+                "number": 1
+              }
+            }
+          ]
+        },
+        "useConditionText": "",
+        "forceDialog": false,
+        "effectConditionText": "",
+        "midiAutomationOnly": false,
+        "attackMode": "",
+        "ammunition": "",
+        "otherActivityId": "none",
+        "name": "Form of the Beast: Claws",
+        "img": "icons/commodities/claws/claws-white.webp",
+        "appliedEffects": []
+      },
+      "uOVU6kpBIbak8XD7": {
+        "type": "attack",
+        "_id": "uOVU6kpBIbak8XD7",
+        "sort": 0,
+        "activation": {
+          "type": "action",
+          "value": null,
+          "override": false,
+          "condition": ""
+        },
+        "consumption": {
+          "scaling": {
+            "allowed": false
+          },
+          "spellSlot": true,
+          "targets": []
+        },
+        "description": {
+          "chatFlavor": "Form of the Beast: Tail"
+        },
+        "duration": {
+          "units": "inst",
+          "concentration": false,
+          "override": false
+        },
+        "effects": [],
+        "range": {
+          "override": false,
+          "units": "ft",
+          "special": "",
+          "value": "10"
+        },
+        "target": {
+          "template": {
+            "contiguous": false,
+            "units": "ft",
+            "type": ""
+          },
+          "affects": {
+            "choice": false,
+            "count": "1",
+            "type": "creature",
+            "special": ""
+          },
+          "override": false,
+          "prompt": true
+        },
+        "uses": {
+          "spent": 0,
+          "recovery": [],
+          "max": ""
+        },
+        "attack": {
+          "critical": {
+            "threshold": null
+          },
+          "flat": false,
+          "type": {
+            "value": "melee",
+            "classification": "weapon"
+          },
+          "ability": "",
+          "bonus": ""
+        },
+        "damage": {
+          "critical": {
+            "bonus": ""
+          },
+          "includeBase": true,
+          "parts": [
+            {
+              "custom": {
+                "enabled": false,
+                "formula": ""
+              },
+              "number": 1,
+              "denomination": 8,
+              "bonus": "@mod",
+              "types": [
+                "piercing"
+              ],
+              "scaling": {
+                "number": 1
+              }
+            }
+          ]
+        },
+        "useConditionText": "",
+        "forceDialog": false,
+        "effectConditionText": "",
+        "midiAutomationOnly": false,
+        "attackMode": "",
+        "ammunition": "",
+        "otherActivityId": "none",
+        "name": "Form of the Beast: Tail",
+        "img": "icons/creatures/abilities/cougar-pounce-stalk-black.webp",
+        "appliedEffects": []
+      },
+      "0P2nqXfUJj6WtOTj": {
+        "type": "utility",
+        "_id": "0P2nqXfUJj6WtOTj",
+        "sort": 0,
+        "activation": {
+          "type": "reaction",
+          "value": null,
+          "override": false,
+          "condition": ""
+        },
+        "consumption": {
+          "scaling": {
+            "allowed": false
+          },
+          "spellSlot": true,
+          "targets": []
+        },
+        "description": {
+          "chatFlavor": "Form of the Beast: Tail Reaction"
+        },
+        "duration": {
+          "units": "inst",
+          "concentration": false,
+          "override": false
+        },
+        "effects": [
+          {
+            "_id": "dg8SEwPpDY7VDhxW"
+          }
+        ],
+        "range": {
+          "override": false,
+          "units": "self",
+          "special": ""
+        },
+        "target": {
+          "template": {
+            "contiguous": false,
+            "units": "ft",
+            "type": ""
+          },
+          "affects": {
+            "choice": false,
+            "count": "",
+            "type": "self"
+          },
+          "override": false,
+          "prompt": true
+        },
+        "uses": {
+          "spent": 0,
+          "recovery": [],
+          "max": ""
+        },
+        "roll": {
+          "prompt": false,
+          "visible": false,
+          "name": "",
+          "formula": ""
+        },
+        "useConditionText": "",
+        "forceDialog": false,
+        "effectConditionText": "",
+        "midiAutomationOnly": false,
+        "name": "Form of the Beast: Tail Reaction",
+        "img": "icons/creatures/abilities/cougar-pounce-stalk-black.webp"
+      }
+    },
+    "identifier": "form-of-the-beast",
+    "enchant": {}
+  },
+  "flags": {
+    "core": {
+      "sourceId": "Actor.IlpCynnAcU8YiYdx.Item.OeiTpVqR3KJvyPuC"
+    },
+    "midiProperties": {
+      "confirmTargets": "default",
+      "autoFailFriendly": false,
+      "autoSaveFriendly": false,
+      "critOther": false,
+      "offHandWeapon": false,
+      "magicdam": true,
+      "magiceffect": false,
+      "concentration": false,
+      "noConcentrationCheck": false,
+      "toggleEffect": false,
+      "ignoreTotalCover": false,
+      "idr": false,
+      "idi": false,
+      "idv": false,
+      "ida": false
+    },
+    "midi-qol": {
+      "rollAttackPerTarget": "default",
+      "effectActivation": false,
+      "itemCondition": "",
+      "effectCondition": "",
+      "AoETargetType": "any",
+      "AoETargetTypeIncludeSelf": true,
+      "autoTarget": "default",
+      "removeAttackDamageButtons": "default",
+      "reactionCondition": "false",
+      "otherCondition": "",
+      "fumbleThreshold": null
+    },
+    "dnd5e": {
+      "riders": {
+        "activity": [
+          "XpofnO4WGyo7wUhw",
+          "0P2nqXfUJj6WtOTj",
+          "uOVU6kpBIbak8XD7",
+          "CK1hfWjNaegnj7qR"
+        ],
+        "effect": []
+      },
+      "last": {
+        "uOVU6kpBIbak8XD7": {
+          "damageType": {
+            "0": "piercing"
+          }
+        },
+        "CK1hfWjNaegnj7qR": {
+          "damageType": {
+            "0": "slashing"
+          }
+        }
+      },
+      "dependents": [
+        {
+          "uuid": "Scene.6cPoldhdvb1g9GHk.Token.LxBU8ksRvzr8t78r.Actor.RIKQZTCGTzYRKnxy.ActiveEffect.NS3mwPLaVlMINAIN"
+        }
+      ]
+    },
+    "chris-premades": {
+      "info": {
+        "name": "Form of the Beast",
+        "version": "1.1.10",
+        "identifier": "formOfTheBeast",
+        "source": "chris-premades"
+      },
+      "hiddenActivities": [
+        "formOfTheBeastBite",
+        "formOfTheBeastTailReaction",
+        "formOfTheBeastTail",
+        "formOfTheBeastClaws"
+      ],
+      "activityIdentifiers": {
+        "formOfTheBeastBite": "XpofnO4WGyo7wUhw",
+        "formOfTheBeastClaws": "CK1hfWjNaegnj7qR",
+        "formOfTheBeastTail": "uOVU6kpBIbak8XD7",
+        "formOfTheBeastTailReaction": "0P2nqXfUJj6WtOTj"
+      },
+      "macros": {
+        "midi": {
+          "item": [
+            "formOfTheBeast"
+          ]
+        }
+      }
+    }
+  },
+  "effects": [
+    {
+      "name": "Form of the Beast: Tail (reaction)",
+      "img": "icons/creatures/abilities/cougar-pounce-stalk-black.webp",
+      "origin": "Actor.i3cBufLteKdSFXIp.Item.5s7CJD02Lid695rM",
+      "transfer": false,
+      "_id": "dg8SEwPpDY7VDhxW",
+      "type": "base",
+      "system": {},
+      "changes": [
+        {
+          "key": "system.attributes.ac.bonus",
+          "mode": 2,
+          "value": "+[[1d8]]",
+          "priority": 20
+        }
+      ],
+      "disabled": false,
+      "duration": {
+        "startTime": null,
+        "seconds": null,
+        "combat": null,
+        "rounds": null,
+        "turns": 1,
+        "startRound": null,
+        "startTurn": null
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "statuses": [],
+      "sort": 0,
+      "flags": {
+        "dae": {
+          "enableCondition": "",
+          "disableCondition": "",
+          "disableIncapacitated": false,
+          "selfTarget": false,
+          "selfTargetAlways": false,
+          "dontApply": false,
+          "stackable": "multi",
+          "showIcon": false,
+          "durationExpression": "",
+          "macroRepeat": "none",
+          "specialDuration": [
+            "isAttacked"
+          ]
+        },
+        "core": {
+          "overlay": false
+        }
+      },
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "coreVersion": "12.331",
+        "systemId": "dnd5e",
+        "systemVersion": "4.1.2",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!items.effects!gwq979HIoLsld5U7.dg8SEwPpDY7VDhxW"
+    }
+  ],
+  "img": "icons/creatures/abilities/cougar-pounce-stalk-black.webp",
+  "folder": "BIGnFEp07xNCAloK",
+  "_id": "gwq979HIoLsld5U7",
+  "_key": "!items!gwq979HIoLsld5U7"
+}
