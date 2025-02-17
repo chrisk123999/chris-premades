@@ -1,3 +1,17 @@
+# 1.2.0 Release:
+## Update Notes:
+- This version of CPR requires the D&D 4.3.1 system!
+- The following update notes only apply to those who haven't been using the beta version of CPR.
+- CPR has been updated to make use of activities whenever possible, in many cases obsoleting the need for synthetic item uses. This allows many automations to be more easily modified and homebrewed.
+- Temporarily available features (such as the "Move" functionality of the Dawn spell) are configured as activities on the parent item when possible. These will be dynamically unhidden when necessary (and added to "favorites" when done).
+- Items which were previously used entirely synthetically (like Scorching Ray's "Bolt" spell feature) are now also configured as activities on the parent item. These will always remain hidden.
+- Hidden activities will be visible on the item sheet. This means they can be _modified_ if desired (for example, changing the formula or damage type for Magic Missile bolts). This also means however that if they are _deleted_ from the sheet, automations which expect them to exist will fail. Unless you know what you're doing, never _delete_ any activities from a medkit item.
+- All 2024 weapon masteries are automated. Make sure your actors and weapons have their mastery selections set.
+- CPR automations will exclusively check the item's rules before applying automations via the medkit. If an item is set to the modern rules but only has a legacy automation, it will not be detected or applied!
+- All previously automated legacy items have been updated. If you've previously modified any macros, you'll likely need to update them.
+- Automation of modern content is a work in progress. Please refer to Pulse bot on the CPR or Midi-Qol Discord server to lookup available automations.
+- Modern class feature automations will not function with legacy sub-classes. Compatibility will be added for legacy subclasses upon request.
+
 # 1.1.45 Release:
 ## Bug Fixes:
 - Crusher (Legacy)
