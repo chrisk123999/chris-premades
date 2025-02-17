@@ -113,7 +113,10 @@
                 "Water": "Água"
             },
             "ApplyFilter": "Aplicar Filtro:",
+            "ArmoTypes": "Tipos de Armadura:",
             "AttackBonus": "Bônus Ataque:",
+            "AvatarImg": "Imagem Avatar:",
+            "AvatarImgPriority": "Prioridade Imagem Avatar:",
             "BaseDiceNumber": "Número Dado Base:",
             "BlockingStatuses": "Condições Bloqueadas:",
             "Character": "Personagem",
@@ -175,6 +178,7 @@
             "Percentage": "Porcentagem:",
             "PlayAnimation": "Reproduzir Animação:",
             "PlayTeleportAnimation": "Tocar Animação de Teleporte:",
+            "PromptToUse": "Avisar para usar:",
             "Range": "Alcance:",
             "RealDarkness": "Usar Escuridão Real:",
             "SaveAbilities": "Atributos Salv.:",
@@ -187,6 +191,9 @@
             "Skills": "Perícias:",
             "Sound": "Som:",
             "SpecificAnimation": "Animação {option}:",
+            "SpellSchools": "Escola de Magia:",
+            "TokenImg": "Imagem Token:",
+            "TokenImgPriority": "Prioridade Imagem Token:",
             "Trigger": "Gatilho:",
             "TurnTrigger": "Gatilho do Turno:",
             "UseFormula": "Usar Fórmula:",
@@ -322,6 +329,8 @@
                 "Name": "Vulnerabilidade à Condição {condition}"
             },
             "Configure": "Configurar",
+            "ConsumeItemToUse": "Consumir um uso de {item} para usar?",
+            "ConsumeSpellSlotToUse": "Consumir um espaço de magia para usar?",
             "Disabled": "Desabilitar",
             "Distance": "Distância",
             "Edit": "Editar",
@@ -354,6 +363,7 @@
             "TurnStart": "Início do Turno",
             "Uncontested": "Não-Contestado",
             "Update": "Atualizar",
+            "UseItem": "Usar {item}?",
             "Yes": "Sim",
             "You": "Você"
         },
@@ -670,6 +680,14 @@
                 "Damage": "Névoa Mortal: Dano",
                 "NoRoom": "Sem espaço para a névoa mortal se mover!"
             },
+            "Command": {
+                "Approach": "Aproximar",
+                "Drop": "Largar",
+                "Flee": "Fugir",
+                "Grovel": "Abaixar",
+                "Halt": "Parar",
+                "YouMust": "Você deve: "
+            },
             "CompelledDuel": {
                 "EndEffect": "O conjurador terminou o turno a mais de 30 pés de distância do alvo. Remover efeito?",
                 "Moved": "Duelo Compelido: Movido",
@@ -742,6 +760,10 @@
             "Dawn": {
                 "EndTurn": "Aurora: Fim do Turno",
                 "Move": "Aurora: Mover"
+            },
+            "DazzlingFootwork": {
+                "AgileStrikes": "Ataque Desarmado em um inimigo próximo?",
+                "DanceVirtuoso": "Este teste envolve você dançando."
             },
             "DeathBurst": {
                 "Name": "Explosão da Morte"
@@ -1146,9 +1168,6 @@
             "InspiringSmite": {
                 "Select": "Distribuir PV Temporário (Quantidade a Distribuir: {maxAmount})"
             },
-            "IntimidatingPresence": {
-                "Rage": "Consumir um uso de Fúria para usar?"
-            },
             "InvestitureOfFlame": {
                 "Fire": "Manto de Chamas: Fogo",
                 "Heat": "Manto de Chamas: Calor"
@@ -1239,6 +1258,10 @@
                 "Far": "A Mente Manifestada de {actorName} está lnge demais. Removê-la?",
                 "Invalid": "Tipo de Ação Inválida!",
                 "Move": "Mente Manifestada: Mover"
+            },
+            "MantleOfInspiration": {
+                "Reaction": "Usar sua reação para se mover?",
+                "Targets": "Selecione até {maxtargets} alvos:"
             },
             "MartialAdvantage": {
                 "Name": "Vantagem Marcial"
@@ -2361,6 +2384,10 @@
             "gmID": {
                 "Hint": "O ID do Mestre de Jogo usado para soquetes. Definir automaticamente.",
                 "Name": "ID de Usuário do Mestre"
+            },
+            "groupSummonsWithOwner": {
+                "Hint": "Quando ativado, invocações criadas através da API CPR serão agrupadas no rastreador de combate se a sua iniciativa for a mesma.",
+                "Name": "Agrupar Invocações com Dono"
             },
             "hiddenCompendiumFolders": {
                 "Hint": "As pastas do compêndio selecionadas ficarão ocultas.",
