@@ -1,4 +1,5 @@
 export {constants} from './lib/constants.js';
+export {activityUtils} from './lib/utilities/activityUtils.js';
 export {actorUtils} from './lib/utilities/actorUtils.js';
 export {devUtils} from './lib/utilities/devUtils.js';
 export {dialogUtils} from './lib/utilities/dialogUtils.js';

@@ -25,8 +25,8 @@ function deepClone(object) {
 function mergeObject(original, other, options={}) {
     return foundry.utils.mergeObject(original, other, options);
 }
-async function update(entity, updates, options={}) {
-    let hasPermission = socketUtils.hasPermission(entity, game.user.id);
+async function update(entity, updates={}, options={}) {
+    let hasPermission = socketUtils.hasPermission(entity.documentName === 'Activity' ? entity.item : entity, game.user.id);
     if (hasPermission) return await entity.update(updates, options);
     return await socket.executeAsGM(sockets.updateEntity.name, entity.uuid, updates);
 }
@@ -123,9 +123,15 @@ async function deleteEmbeddedDocuments(entity, type, ids, options) {
     }
     return documents;
 }
-function updateTargets(targets) {
-    game.user.updateTokenTargets(Array.from(targets).map(target => target.id ?? target));
-    game.user.broadcastActivity({targets: game.user.targets.ids});
+async function updateTargets(targets, user=game.user) {
+    let hasPermission = socketUtils.hasPermission(user, game.user.id);
+    let targetIds = Array.from(targets).map(target => target.id ?? target);
+    if (hasPermission) {
+        user.updateTokenTargets(targetIds);
+        user.broadcastActivity({targets: user.targets.ids});
+    } else {
+        await socket.executeAsGM(sockets.updateTargets.name, targetIds, user.id);
+    }
 }
 function collapseObjects(...objects) {
     let object = {};
@@ -154,6 +160,10 @@ function checkPlayerOwnership(entity) {
         else if (permission === 3) return true;
         else return false;
     });
+}
+function getRules(entity) {
+    if (entity.documentName === 'Item') return entity.system.source.rules === '' ? 'legacy' : entity.system.source.rules === '2014' ? 'legacy' : 'modern';
+    return entity.flags['chris-premades']?.rules ?? 'legacy';
 }
 export let genericUtils = {
     sleep,
@@ -184,5 +194,6 @@ export let genericUtils = {
     titleCase,
     camelCaseToWords,
     getIdentifier,
-    checkPlayerOwnership
+    checkPlayerOwnership,
+    getRules
 };

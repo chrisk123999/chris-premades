@@ -1,0 +1,104 @@
+{
+  "name": "Adhesive (Object Form Only)",
+  "type": "feat",
+  "system": {
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "source": {
+      "book": "Basic Rules (2014)",
+      "page": "332",
+      "custom": "",
+      "license": "",
+      "revision": 1,
+      "rules": "2014"
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "recovery": []
+    },
+    "type": {
+      "value": "monster",
+      "subtype": ""
+    },
+    "prerequisites": {
+      "level": null
+    },
+    "properties": [],
+    "requirements": "",
+    "activities": {},
+    "identifier": "adhesive-object-form-only",
+    "enchant": {}
+  },
+  "effects": [],
+  "flags": {
+    "monsterMunch": {
+      "titleHTML": "<em><strong>Adhesive (Object Form Only).</strong></em>",
+      "fullName": "Adhesive (Object Form Only).",
+      "actionCopy": false,
+      "type": "special",
+      "actionInfo": {
+        "damage": {
+          "parts": [],
+          "versatile": ""
+        },
+        "baseAbility": null,
+        "toHit": 0,
+        "proficient": false,
+        "extraAttackBonus": 0
+      }
+    },
+    "midi-qol": {
+      "removeAttackDamageButtons": "default",
+      "rollAttackPerTarget": "default",
+      "itemCondition": "",
+      "effectCondition": "",
+      "AoETargetType": "any",
+      "AoETargetTypeIncludeSelf": true,
+      "autoTarget": "default",
+      "reactionCondition": "",
+      "otherCondition": ""
+    },
+    "midiProperties": {
+      "confirmTargets": "default",
+      "autoFailFriendly": false,
+      "autoSaveFriendly": false,
+      "critOther": false,
+      "offHandWeapon": false,
+      "magicdam": false,
+      "magiceffect": false,
+      "noConcentrationCheck": false,
+      "toggleEffect": false,
+      "ignoreTotalCover": false,
+      "idr": false,
+      "idi": false,
+      "idv": false,
+      "ida": false
+    },
+    "chris-premades": {
+      "info": {
+        "source": "chris-premades",
+        "identifier": "mimicAdhesive",
+        "version": "1.1.0"
+      },
+      "macros": {
+        "midi": {
+          "item": [
+            "mimicAdhesive"
+          ]
+        }
+      }
+    },
+    "dnd5e": {
+      "riders": {
+        "activity": []
+      }
+    }
+  },
+  "img": "icons/commodities/materials/slime-white.webp",
+  "folder": "fOXEkKRrPcygmiut",
+  "_id": "0wHMI3vpbjAMs0YV",
+  "_key": "!items!0wHMI3vpbjAMs0YV"
+}

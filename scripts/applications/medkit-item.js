@@ -1,6 +1,6 @@
 let {ApplicationV2, HandlebarsApplicationMixin} = foundry.applications.api;
 import {compendiumUtils, itemUtils, genericUtils, constants} from '../utils.js';
-import * as macros from '../macros.js';
+import * as macros from '../legacyMacros.js';
 import {custom} from '../events/custom.js';
 export class ItemMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
     constructor(item) {
@@ -113,7 +113,7 @@ export class ItemMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
         return itemUtils.getVersion(this.item);
     }
     get _macro() {
-        return custom.getMacro(this.identifier);
+        return custom.getMacro(this.identifier, genericUtils.getRules(this.item));
     }
     /* Only expected to change when the actual item is changed upon update/apply */
     get name() {
@@ -249,6 +249,10 @@ export class ItemMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
                 case 'file': {
                     configOption.isFile = true;
                     configOption.type = config?.fileType ?? 'any';
+                    break;
+                }
+                case 'number': {
+                    configOption.isNumber = true;
                     break;
                 }
                 case 'text': {
@@ -436,6 +440,16 @@ export class ItemMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
                     key: 'info.hasAnimation',
                     value: 'value'
                 }
+            },
+            {
+                id: 'rules',
+                label: 'CHRISPREMADES.Medkit.Tabs.DevTools.Rules',
+                value: this.flags?.info?.rules,
+                isText: true,
+                flag: {
+                    key: 'info.rules',
+                    value: 'value'
+                }
             }
         ];
         let macroInfo = [
@@ -550,6 +564,17 @@ export class ItemMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
                 }
             },
             {
+                id: 'createItem',
+                label: 'CHRISPREMADES.Medkit.Tabs.DevTools.CreateItem',
+                value: JSON?.stringify(this.flags?.macros?.createItem),
+                placeholder: '[&quot;macroNameOne&quot;, &quot;macroNameTwo&quot;]',
+                isText: true,
+                flag: {
+                    key: 'macros.createItem',
+                    value: 'array'
+                }
+            },
+            {
                 id: 'equipment',
                 label: 'CHRISPREMADES.Medkit.Tabs.DevTools.Equipment',
                 value: this.flags?.equipment?.identifier,
@@ -619,7 +644,7 @@ export class ItemMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
     /* Our async function to call before rendering so that we can fetch documents from compendiums */
     async readyData() {
         this.isUpToDate = await itemUtils.isUpToDate(this.item);
-        this.availableAutomations = await compendiumUtils.getAllAutomations(this.item, {identifier: this.item?.actor?.flags['chris-premades']?.info?.identifier});
+        this.availableAutomations = await compendiumUtils.getAllAutomations(this.item, {identifier: this.item?.actor?.flags['chris-premades']?.info?.identifier, rules: genericUtils.getRules(this.item)});
         this._prepared = true;
     }
     /* Outwards facing function that all other medkits will also use to update any given item with another */
@@ -656,9 +681,18 @@ export class ItemMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
         if (!macrosFlag) genericUtils.setProperty(sourceItemData, 'flags.chris-premades.-=macros', null);
         let config = itemData.flags['chris-premades']?.config;
         if (config) genericUtils.setProperty(sourceItemData, 'flags.chris-premades.config', config);
-        if (CONFIG.DND5E.defaultArtwork.Item[itemType] != itemData.img) sourceItemData.img = itemData.img;
+        if (CONFIG.DND5E.defaultArtwork.Item[itemType] != itemData.img) {
+            for (let sourceEffect of sourceItemData.effects ?? []) {
+                if (sourceEffect.img === sourceItemData.img) sourceEffect.img = itemData.img;
+            }
+            for (let [key, value] of Object.entries(sourceItemData.system.activities) ?? {}) {
+                if (value.img === sourceItemData.img) sourceItemData.system.activities[key].img = itemData.img;
+            }
+            sourceItemData.img = itemData.img;
+        }
         if (itemData.folder) sourceItemData.folder = itemData.folder;
         if (item.effects.size) await item.deleteEmbeddedDocuments('ActiveEffect', item.effects.map(i => i.id));
+        genericUtils.setProperty(sourceItemData, 'flags.chris-premades.info.rules', genericUtils.getRules(item));
         await item.update(sourceItemData, {diff: false, recursive: false});
         return item;
     }
@@ -751,6 +785,7 @@ export class ItemMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
         this._prepared = false;
         await this.readyData();
         await this._reRender();
+        await this.item.update();
     }
     static async confirm(event, target) {
         await ItemMedkit._apply.bind(this)(event, target);
@@ -798,7 +833,7 @@ export class ItemMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
     }
     _cleanObject(obj) {
         for (let key in obj) {
-            if (obj[key] && typeof obj[key] === 'object') {
+            if (obj[key] && typeof obj[key] === 'object' && !Array.isArray(obj[key])) {
                 this._cleanObject(obj[key]);
                 if (Object.keys(obj[key]).length === 0) {
                     delete obj[key];
@@ -856,7 +891,12 @@ export class ItemMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
                 }
                 case 'value':
                 default:
-                    genericUtils.setProperty(this.flags, option.flag.key, option.value);
+                    if (option?.isNumber) {
+                        let value = Number(option.value);
+                        if (!isNaN(value)) genericUtils.setProperty(this.flags, option.flag.key, value);
+                    } else {
+                        genericUtils.setProperty(this.flags, option.flag.key, option.value);
+                    }
             }
         }
         /* Special casing for selecting an automation */

@@ -1,4 +1,4 @@
-import {genericUtils, animationUtils, effectUtils, actorUtils, itemUtils, combatUtils, compendiumUtils, constants, dialogUtils} from '../utils.js';
+import {genericUtils, animationUtils, effectUtils, actorUtils, itemUtils, combatUtils, compendiumUtils, constants, dialogUtils, activityUtils} from '../utils.js';
 import {crosshairUtils} from './utilities/crosshairUtils.js';
 import {socket, sockets} from './sockets.js';
 export class Summons {
@@ -11,7 +11,7 @@ export class Summons {
         this.spawnedTokens = [];
         this.currentIndex = 0;
     }
-    static async spawn(sourceActors, updates = [{}], originItem, summonerToken, options = {duration: undefined, callbacks: undefined, range: 100, animation: 'default', onDeleteMacros: undefined, concentrationNonDependent: false, initiativeType: 'separate', additionalVaeButtons: [], additionalSummonVaeButtons: [], dontDismissOnDefeat: false, dismissItem: undefined/*dontAnimateOnDismiss: false*/}) {
+    static async spawn(sourceActors, updates = [{}], originItem, summonerToken, options = {duration: undefined, callbacks: undefined, range: 100, animation: 'default', onDeleteMacros: undefined, concentrationNonDependent: false, initiativeType: 'separate', additionalVaeButtons: [], additionalSummonVaeButtons: [], dontDismissOnDefeat: false, dismissActivity: undefined, unhideActivities: undefined, customIdentifier: undefined/*dontAnimateOnDismiss: false*/}) {
         if (!Array.isArray(sourceActors)) sourceActors = [sourceActors];
         if (sourceActors.length && sourceActors[0]?.documentName !== 'Actor') {
             // Maybe from selectDocumentsDialog, in which case, transform from {document: Actor5e, amount: Int}[] to Actor5e[]:
@@ -117,14 +117,12 @@ export class Summons {
                 sceneAndIdsTuple.push([scenes[i], [summons[i]]]);
             }
         }
+        if (combatUtils.inCombat()) {
+            let validIds = summons.map(i => game.combat.combatants.find(j => j.tokenId === i)?.id).filter(k => k);
+            if (validIds.length) await genericUtils.deleteEmbeddedDocuments(game.combat, 'Combatant', validIds);
+        }
         for (let [scene, sceneSummons] of sceneAndIdsTuple) {
-            // if (scene.active && playAnim) {
-            //     for (let currId of sceneSummons) {
-            //         let currToken = scene.tokens.get(currId);
-            //         if (currToken) animFunction(undefined, currToken);
-            //     }
-            // }
-            await scene.deleteEmbeddedDocuments('Token', sceneSummons.filter(i => scene.tokens.has(i)));
+            await genericUtils.deleteEmbeddedDocuments(scene, 'Token', sceneSummons.filter(i => scene.tokens.has(i)));
         }
     }
     static async dismissIfDead({trigger, ditem}) {
@@ -148,8 +146,25 @@ export class Summons {
             flatAttack: flatAttack ? attackBonus : false,
             flatDC: flatDC ? itemUtils.getSaveDC(originItem) : false
         });
-        if (damageBonus) documentData.system.damage.parts[0][0] += ' + ' + damageBonus;
-        if (damageFlat) documentData.system.damage.parts[0][0] = damageFlat;
+        let damagingActivityIds = Object.entries(documentData.system.activities).filter(i => i[1].damage).map(i => i[0]);
+        if (damageBonus) {
+            for (let activityId of damagingActivityIds) {
+                let damagePart = documentData.system.activities[activityId].damage.parts[0];
+                if (damagePart.custom.enabled) {
+                    damagePart.custom.formula += ' + ' + damageBonus;
+                } else {
+                    documentData.system.activities[activityId].damage.parts[0].bonus += ' + ' + damageBonus;
+                }
+            }
+        }
+        if (damageFlat) {
+            for (let activityId of damagingActivityIds) {
+                documentData.system.activities[activityId].damage.parts[0].custom = {
+                    enabled: true,
+                    formula: damageFlat.toString()
+                };
+            }
+        }
         return genericUtils.mergeObject(documentData, updates, {inplace: false});
     }
     async prepareAllData() {
@@ -160,11 +175,11 @@ export class Summons {
         this.currentIndex = 0;
     }
     async prepareData() {
-        if (this.options.animation != 'none' && !this.options.callbacks?.post) {
+        if (this.options.animation != 'none') {
             let callbackFunction = animationUtils.summonEffects[this.options.animation];
             // TODO: Do we need this check here? Should be taking care of it per summoning spell/item
             if (typeof callbackFunction === 'function' && animationUtils.jb2aCheck() === 'patreon' && animationUtils.aseCheck()) {
-                genericUtils.setProperty(this.options, 'callbacks.post', callbackFunction);
+                if (!this.options.callbacks?.post) genericUtils.setProperty(this.options, 'callbacks.post', callbackFunction);
                 this.mergeUpdates({token: {alpha: 0}});
             }
         }
@@ -300,16 +315,16 @@ export class Summons {
     }
     async handleEffects() {
         // Account for items that can spawn things multiple times
-        let effect = await effectUtils.getEffectByIdentifier(this.originItem.actor, genericUtils.getIdentifier(this.originItem) ?? this.originItem.name);
+        let effect = await effectUtils.getEffectByIdentifier(this.originItem.actor, this.options?.customIdentifier ?? genericUtils.getIdentifier(this.originItem) ?? this.originItem.name);
         if (effect) await genericUtils.update(effect, {
             flags: {
                 'chris-premades': {
                     summons: {
                         ids: {
-                            [this.originItem.name]: effect.flags['chris-premades'].summons.ids[this.originItem.name].concat(this.spawnedTokensIds)
+                            [this.originItem.name]: (effect.flags['chris-premades'].summons?.ids[this.originItem.name] ?? []).concat(this.spawnedTokensIds)
                         },
                         scenes: {
-                            [this.originItem.name]: effect.flags['chris-premades'].summons.scenes[this.originItem.name].concat(this.spawnedTokensScenes)
+                            [this.originItem.name]: (effect.flags['chris-premades'].summons?.scenes[this.originItem.name] ?? []).concat(this.spawnedTokensScenes)
                         }
                     }
                 }
@@ -317,8 +332,10 @@ export class Summons {
         });
         // Options to be added to the created effect
         let effectOptions = {
-            identifier: genericUtils.getIdentifier(this.originItem) ?? this.originItem.name
+            identifier: this.options?.customIdentifier ?? genericUtils.getIdentifier(this.originItem) ?? this.originItem.name
         };
+        // For unhiding activities
+        if (this.options?.unhideActivities) effectOptions.unhideActivities = this.options.unhideActivities;
         // Account for concentration special cases
         let concentrationEffect = effectUtils.getConcentrationEffect(this.originItem.actor, this.originItem);
         if (this.originItem.requiresConcentration && !this.options?.concentrationNonDependent && concentrationEffect) {
@@ -328,7 +345,8 @@ export class Summons {
         if (!effect) effect = await effectUtils.createEffect(this.originItem.actor, this.casterEffect, effectOptions);
         // Make summon effects dependent on caster effect
         let summonEffects = this.spawnedTokens.map(i => actorUtils.getEffects(i.actor).find(e => e.name === genericUtils.translate('CHRISPREMADES.Summons.SummonedCreature')));
-        await effectUtils.addDependent(effect, summonEffects);
+        // I think doesn't need to be dependent since when parent effect is deleted we destroy all the summoned tokens anyway
+        // await effectUtils.addDependent(effect, summonEffects);
         
         // Make caster effect dependent on each summon effect
         // await Promise.all(summonEffects.map(async e => await effectUtils.addDependent(e, [effect])));
@@ -412,13 +430,14 @@ export class Summons {
     }
     get summonEffect() {
         let buttons = [];
-        if (!this.options.dismissItem) {
+        if (!this.options.dismissActivity) {
             buttons.push({type: 'dismiss', name: genericUtils.translate('CHRISPREMADES.Summons.DismissSummon')});
         }
+        let concentrationEffect = effectUtils.getConcentrationEffect(this.originItem.actor, this.originItem);
         let effectData = {
             name: genericUtils.translate('CHRISPREMADES.Summons.SummonedCreature'),
             img: this.originItem.img,
-            origin: this.originItem.uuid,
+            origin: concentrationEffect?.uuid ?? this.originItem.uuid,
             flags: {
                 'chris-premades': {
                     info: {
@@ -441,11 +460,12 @@ export class Summons {
     }
     get casterEffect() {
         let dismissButton;
-        if (this.options.dismissItem) {
+        if (this.options.dismissActivity) {
             dismissButton = {
                 type: 'use',
-                name: this.options.dismissItem.name,
-                identifier: genericUtils.getIdentifier(this.options.dismissItem)
+                name: this.options.dismissActivity.name,
+                identifier: genericUtils.getIdentifier(this.options.dismissActivity.item),
+                activityIdentifier: activityUtils.getIdentifier(this.options.dismissActivity)
             };
         } else {
             dismissButton = {
@@ -453,10 +473,11 @@ export class Summons {
                 name: genericUtils.translate('CHRISPREMADES.Summons.DismissSummon')
             };
         }
+        let concentrationEffect = effectUtils.getConcentrationEffect(this.originItem.actor, this.originItem);
         let effectData = {
             name: this.originItem.name,
             img: this.originItem.img,
-            origin: this.originItem.uuid,
+            origin: concentrationEffect?.uuid ?? this.originItem.uuid,
             flags: {
                 'chris-premades': {
                     macros: {

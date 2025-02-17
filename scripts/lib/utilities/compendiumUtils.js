@@ -1,18 +1,22 @@
 import {gambitPremades} from '../../integrations/gambitsPremades.js';
 import {miscPremades} from '../../integrations/miscPremades.js';
-import * as macros from '../../macros.js';
+import * as macros from '../../legacyMacros.js';
 import {constants} from '../constants.js';
 import {errors} from '../errors.js';
 import {genericUtils} from './genericUtils.js';
 import {itemUtils} from './itemUtils.js';
-async function getCPRAutomation(item, {identifier} = {}) {
+async function getCPRAutomation(item, {identifier, rules = 'legacy'} = {}) {
     let keys = [];
     let type = item.actor?.type ?? 'character';
     if (type === 'character' || item.type === 'spell') {
         keys = [];
         switch (item.type) {
             case 'spell':
-                keys.push(constants.packs.spells);
+                if (rules === 'legacy') {
+                    keys.push(constants.packs.spells);
+                } else {
+                    keys.push(constants.modernPacks.spells);
+                }
                 break;
             case 'weapon':
             case 'equipment':
@@ -20,19 +24,28 @@ async function getCPRAutomation(item, {identifier} = {}) {
             case 'tool':
             case 'backpack':
             case 'loot':
-                keys.push(constants.packs.items);
-                if (genericUtils.getCPRSetting('thirdParty')) keys.push(constants.packs.thirdPartyItems);
+                if (rules === 'legacy') {
+                    keys.push(constants.packs.items);
+                    if (genericUtils.getCPRSetting('thirdParty')) keys.push(constants.packs.thirdPartyItems);
+                } else {
+                    keys.push(constants.modernPacks.items);
+                }
                 break;
             case 'feat':
                 if (item.system.type.value === 'race') {
+                    if (rules === 'modern') break;
                     keys.push(constants.packs.raceFeatures);
                     //if (genericUtils.getCPRSetting('thirdParty')) keys.push(constants.packs.thirdPartyRaceFeatures);
                 } else {
-                    keys.push(constants.packs.classFeatures);
-                    if (genericUtils.getCPRSetting('thirdParty')) keys.push(constants.packs.thirdPartyClassFeatures);
-                    keys.push(constants.packs.feats);
-                    keys.push(constants.packs.actions);
-                    keys.push(constants.packs.miscellaneous);
+                    if (rules === 'modern') {
+                        keys.push(constants.modernPacks.classFeatures);
+                    } else {
+                        keys.push(constants.packs.classFeatures);
+                        if (genericUtils.getCPRSetting('thirdParty')) keys.push(constants.packs.thirdPartyClassFeatures);
+                        keys.push(constants.packs.feats);
+                        keys.push(constants.packs.actions);
+                        keys.push(constants.packs.miscellaneous);
+                    }
                 }
                 break;
         }
@@ -41,7 +54,7 @@ async function getCPRAutomation(item, {identifier} = {}) {
         keys.push(constants.packs.monsterFeatures);
     } else return;
     let itemIdentifier = genericUtils.getIdentifier(item);
-    let name = macros[itemIdentifier]?.name ?? item.name;
+    let name = macros[itemIdentifier]?.name ?? CONFIG.chrisPremades.renamedItems[item.name] ?? item.name;
     let folderId;
     if (type === 'npc' && item.type != 'spell') {
         let name = identifier ?? item.actor.prototypeToken.name;
@@ -175,8 +188,24 @@ async function getItemFromCompendium(key, name, {ignoreNotFound, folderId, objec
                 });
             }
             if (identifier) genericUtils.setProperty(documentData, 'flags.chris-premades.info.identifier', identifier);
-            if (flatAttack) genericUtils.setProperty(documentData, 'system.attack', {bonus: flatAttack, flat: true});
-            if (flatDC) genericUtils.setProperty(documentData, 'system.save', {ability: documentData.system.save.ability, dc: flatDC, scaling: 'flat'});
+            let activities = documentData.system.activities;
+            if (flatAttack) {
+                let activityIds = Object.entries(activities).filter(i => i[1].type === 'attack').map(i => i[0]);
+                for (let activityId of activityIds) {
+                    genericUtils.setProperty(documentData, 'system.activities.' + activityId + '.attack.flat', true);
+                    genericUtils.setProperty(documentData, 'system.activities.' + activityId + '.attack.bonus', flatAttack);
+                }
+            }
+            if (flatDC) {
+                let activityIds = Object.entries(activities).filter(i => i[1].type === 'save').map(i => i[0]);
+                for (let activityId of activityIds) {
+                    genericUtils.setProperty(documentData, 'system.activities.' + activityId + '.save.dc', {
+                        calculation: '',
+                        formula: flatDC.toString(),
+                        value: flatDC
+                    });
+                }
+            }
             if (castDataWorkflow) {
                 genericUtils.setProperty(documentData, 'flags.chris-premades.castData', castDataWorkflow.castData);
                 genericUtils.setProperty(documentData, 'flags.chris-premades.castData.school', castDataWorkflow.item.system.school);
@@ -227,13 +256,13 @@ async function getFilteredActorDocumentsFromCompendium(key, {maxCR, actorTypes, 
     filteredIndex = filteredIndex.map(i => foundry.utils.mergeObject(i, {img: 'icons/svg/mystery-man.svg'}, {overwrite: !i.img}));
     return filteredIndex;
 }
-async function getFilteredItemDocumentsFromCompendium(key, {specificNames, types, actionTypes, badProperties}={}) {
+async function getFilteredItemDocumentsFromCompendium(key, {specificNames, types, typeValues, badProperties}={}) {
     let pack = game.packs.get(key);
-    let packIndex = await pack.getIndex({fields: ['name', 'type', 'img', 'system.actionType', 'system.properties']});
+    let packIndex = await pack.getIndex({fields: ['name', 'type', 'img', 'system.type.value', 'system.properties']});
     let filteredIndex = packIndex.filter(i => 
         (!specificNames?.length || specificNames.includes(i.name)) &&
         (!types?.length || types.includes(i.type)) &&
-        (!actionTypes?.length || actionTypes.includes(i.system?.actionType)) &&
+        (!typeValues?.length || typeValues.includes(i.system?.type?.value)) &&
         (!badProperties?.length || badProperties.every(j => !i.system?.properties.includes(j)))
     );
     filteredIndex = game.dnd5e.moduleArt.apply(filteredIndex);

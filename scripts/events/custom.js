@@ -1,4 +1,5 @@
 import {genericUtils} from '../utils.js';
+import * as legacyMacros from '../legacyMacros.js';
 import * as macros from '../macros.js';
 let customMacroList = [];
 let registeredMacroList = [];
@@ -15,18 +16,19 @@ async function ready() {
             return;
         }
         if (!value.identifier) value.identifier = i.name.slugify();
+        if (!value.rules) value.rules = 'modern';
         return value;
     }))).filter(j => j);
 }
-function getMacro(identifier) {
-    return customMacroList.find(i => i.identifier === identifier) ?? registeredMacroList.find(j => j.identifier === identifier) ?? macros[identifier];
+function getMacro(identifier, rules = 'legacy') {
+    return customMacroList.find(i => i.identifier === identifier && i.rules === rules) ?? registeredMacroList.find(j => j.identifier === identifier && j.rules === rules) ?? (rules === 'modern' ? macros[identifier] : legacyMacros[identifier]);
 }
 function preCreateMacro(document, updates, options, userId) {
     let key = genericUtils.getCPRSetting('macroCompendium');
     if (!key) return;
     if (key != document.pack) return;
     if (document.command != '') return;
-    let script = `const {DialogApp, Crosshairs, Summons, Teleport, utils: {actorUtils, animationUtils, combatUtils, compendiumUtils, constants, crosshairUtils, dialogUtils, effectUtils, errors, genericUtils, itemUtils, rollUtils, socketUtils, templateUtils, tokenUtils, workflowUtils, spellUtils, regionUtils}} = chrisPremades;
+    let script = `const {DialogApp, Crosshairs, Summons, Teleport, utils: {activityUtils, actorUtils, animationUtils, combatUtils, compendiumUtils, constants, crosshairUtils, dialogUtils, effectUtils, errors, genericUtils, itemUtils, macroUtils, rollUtils, socketUtils, templateUtils, tokenUtils, workflowUtils, spellUtils, regionUtils}} = chrisPremades;
     `;
     document.updateSource({command: script});
 }

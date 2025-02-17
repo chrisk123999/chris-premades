@@ -30,11 +30,13 @@ async function setSaveDC(effect, dc) {
     data.saveDC = dc;
     await setCastData(effect, data);
 }
-async function createEffect(entity, effectData, {concentrationItem, parentEntity, identifier, vae, interdependent, strictlyInterdependent, keepId} = {}) {
+async function createEffect(entity, effectData, {concentrationItem, parentEntity, identifier, vae, interdependent, strictlyInterdependent, unhideActivities, rules, macros, conditions, animate = true, tokenImg, avatarImg, tokenImgPriority = 50, avatarImgPriority = 50} = {}, {animationPath, animationSize = 1, animationFadeIn = 300, animationFadeOut = 300, animationSound} = {}) {
     let hasPermission = socketUtils.hasPermission(entity, game.user.id);
     let concentrationEffect;
     if (concentrationItem) concentrationEffect = getConcentrationEffect(concentrationItem.actor, concentrationItem);
+    if (concentrationEffect) effectData.origin = concentrationEffect.uuid;
     if (identifier) genericUtils.setProperty(effectData, 'flags.chris-premades.info.identifier', identifier);
+    if (unhideActivities) genericUtils.setProperty(effectData, 'flags.chris-premades.unhideActivities', unhideActivities);
     if (parentEntity) genericUtils.setProperty(effectData, 'flags.chris-premades.parentEntityUuid', parentEntity.uuid);
     if (concentrationEffect) genericUtils.setProperty(effectData, 'flags.chris-premades.concentrationEffectUuid', concentrationEffect.uuid);
     if (interdependent && (parentEntity || concentrationItem)) genericUtils.setProperty(effectData, 'flags.chris-premades.interdependent', true);
@@ -45,6 +47,18 @@ async function createEffect(entity, effectData, {concentrationItem, parentEntity
         if (existingDependents.length) genericUtils.setProperty(effectData, 'flags.dnd5e.dependents', existingDependents);
     }
     if (vae) genericUtils.setProperty(effectData, 'flags.chris-premades.vae.buttons', vae);
+    if (rules) genericUtils.setProperty(effectData, 'flags.chris-premades.rules', rules);
+    if (macros) macros.forEach(i => addMacro(effectData, i.type, i.macros));
+    if (conditions) genericUtils.setProperty(effectData, 'flags.chris-premades.conditions', conditions);
+    if (!animate) genericUtils.setProperty(effectData, 'flags.chris-premades.effect.noAnimation', true);
+    if (tokenImg) {
+        genericUtils.setProperty(effectData, 'flags.chris-premades.image.token.value', tokenImg);
+        genericUtils.setProperty(effectData, 'flags.chris-premades.image.token.priority', tokenImgPriority);
+    }
+    if (avatarImg) {
+        genericUtils.setProperty(effectData, 'flags.chris-premades.image.actor.value', avatarImg);
+        genericUtils.setProperty(effectData, 'flags.chris-premades.image.actor.priority', avatarImgPriority);
+    }
     let effects;
     if (hasPermission) {
         effects = await entity.createEmbeddedDocuments('ActiveEffect', [effectData]);
@@ -53,6 +67,27 @@ async function createEffect(entity, effectData, {concentrationItem, parentEntity
     } else {
         effects = [await socket.executeAsGM(sockets.createEffect.name, entity.uuid, effectData, {concentrationItemUuid: concentrationItem?.uuid, parentEntityUuid: parentEntity?.uuid})];
         effects = await Promise.all(effects.map(async i => await fromUuid(i)));
+    }
+    if ((animationPath || animationSound) && effects.length) {
+        let token = actorUtils.getFirstToken(effects[0].parent);
+        if (token) {
+            /* eslint-disable indent */
+            new Sequence()
+                .effect()
+                    .playIf(animationPath)
+                    .file(animationPath)
+                    .size(animationSize, {gridUnits: true})
+                    .attachTo(token)
+                    .persist()
+                    .fadeIn(animationFadeIn)
+                    .fadeOut(animationFadeOut)
+                    .tieToDocuments([token.document, effects[0]])
+                .sound()
+                    .playIf(animationSound)
+                    .file(animationSound)
+                .play();
+            /* eslint-enable indent */
+        }
     }
     if (effects?.length) return effects[0];
 }
@@ -144,7 +179,7 @@ async function sidebarEffectHelper(documentId, toggle) {
     selectedTokens.forEach(i => {
         if (!i.actor) return;
         effectData.origin = i.actor.uuid;
-        let effect = actorUtils.getEffects(i.actor).find(i => i.flags['chris-premades']?.effectInterface?.id === document.id);
+        let effect = actorUtils.getEffects(i.actor).find(i => i.flags['chris-premades']?.effectInterface?.id === document.id || i.id === document.id);
         let stackable = effect?.flags.dae?.stackable === 'count';
         let stackCount = effect?.flags.dae?.stacks ?? 1;
         if (effect && toggle) {
@@ -188,6 +223,30 @@ async function createEffectFromSidebar(actor, name, options) {
 async function syntheticActiveEffect(effectData, entity) {
     return new CONFIG.ActiveEffect.documentClass(effectData, {parent: entity});
 }
+async function getOriginItem(effect) {
+    let origin = await fromUuid(effect?.origin);
+    if (!origin) return;
+    if (origin instanceof Item) return origin;
+    if (origin.parent instanceof Item) return origin.parent;
+    origin = await fromUuid(origin.origin);
+    if (origin instanceof Item) return origin;
+}
+function getConditions(effect) {
+    let conditions = new Set();
+    let validKeys = [
+        'macro.CE',
+        'macro.CUB',
+        'macro.StatusEffect',
+        'StatusEffect'
+    ];
+    effect.changes.forEach(element => {
+        if (validKeys.includes(element.key)) conditions.add(element.value.toLowerCase());
+    });
+    let effectConditions = effect.flags['chris-premades']?.conditions;
+    if (effectConditions) effectConditions.forEach(c => conditions.add(c.toLowerCase()));
+    conditions = conditions.union(effect.statuses ?? new Set());
+    return conditions;
+}
 export let effectUtils = {
     getCastData,
     getCastLevel,
@@ -210,5 +269,7 @@ export let effectUtils = {
     addSidebarEffect,
     syntheticActiveEffect,
     getSidebarEffectData,
-    createEffectFromSidebar
+    createEffectFromSidebar,
+    getOriginItem,
+    getConditions
 };

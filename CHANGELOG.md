@@ -1,3 +1,391 @@
+# 1.1.45 Release:
+## Bug Fixes:
+- Crusher (Legacy)
+- Piercer (Legacy)
+- Slasher (Legacy)
+
+# 1.1.44 Release:
+## New Modern Content:
+- Unbreakable Majesty
+
+# 1.1.43 Release:
+## Bug Fixes:
+- Rage (Modern)
+- Mantle of Majesty (Modern)
+
+# 1.1.42 Releaes:
+## Bug Fixes:
+- Help Action
+- Many Legacy Spells
+# Update Notes:
+- Slasher, Piercer, and Crusher have been reworked to be one item each, to match how they import from DDBI now (previously they imported as two features each). The old features may not medkit correctly into the new ones. Adding them manually from the CPR compendium or using the medkit on a previously non-medkit feature will fix this.
+- Added a feature to group summoned actors together with their creator in the combat tracker.
+- This version of CPR requires the D&D 4.3.1 system!
+
+# 1.1.41 Release:
+## Bug Fixes:
+- Distracting Strike (Legacy)
+- Sanctuary (Legacy)
+- Warding Bond (Legacy)
+
+# 1.1.40 Release:
+## New Modern Content:
+- Mantle of Inspiration
+- Mantle of Majesty
+## Bug Fixes:
+- Sap Mastery
+- Dread Lord (Legacy)
+
+# 1.1.39 Release:
+## New Modern Content:
+- Beguiling Magic
+## Bug Fixes:
+- Many Spells (Legacy & Modern)
+
+# 1.1.38 Release:
+## New Modern Content:
+- Leading Evasion
+- Command
+## Bug Fixes:
+- Condition Resistance
+- Condition Vulnerability
+## Update Notes:
+- Removed outdated DDBI integration. Make sure your DDBI module is up to date if you're using it.
+- Condition Resistance & Vulnerability have been updated to support Midi-Qol's other activity field.
+
+# 1.1.37 Release:
+## Bug Fixes:
+- DSN Compatibility
+- Bardic Inspiration (Modern)
+
+# 1.1.36 Release:
+## New Modern Content:
+- Dazzling Footwork
+- Inspiring Movement
+- Tandem Footwork
+## Bug Fixes:
+- Crimson Rite (Legacy)
+- Blood Curses (Legacy)
+- Turn Undead (Legacy)
+- Arcane Abjuration (Legacy)
+- Insignia of Claws (Legacy)
+- Bardic Inspiration (Modern)
+## API Update Notes:
+- Added a "number" type config option to the medkit.
+
+# 1.1.35 Release:
+## New Modern Content:
+- Unarmed Strike
+
+# 1.1.34 Release:
+## New Modern Content:
+- Power Word Heal
+- Power Word Kill
+- Superior Inspiration
+- Words of Creation
+## Bug Fixes:
+- Countercharm
+- Compendium Medkit
+
+# 1.1.33 Release:
+## New Modern Content:
+- Countercharm
+## Bug Fixes:
+- Charm Person (Legacy)
+## API Bug Fixes:
+- Midi Events
+- Save Events
+
+# 1.1.32 Release:
+## Bug Fixes:
+- Effect Medkit
+
+# 1.1.31 Release:
+## Bug Fixes:
+- Form of Dread (Legacy)
+## API Updates:
+- Added "Scene Bonus" to the ability save event.
+
+# 1.1.30 Release:
+## New Modern Content:
+- Bardic Inspiration
+- Jack of All Trades
+- Font of Inspiration
+## Bug Fixes:
+- Breath of the Dragon (Legacy)
+- Rage (Modern)
+- Effect Medkit Dev Tools
+## API Updates:
+- Added the "Create Item" event. Which can be used to trigger a macro when an item is first added to an actor. See the "Font of Inspiration" item as an example.
+
+# 1.1.29 Release:
+## New Modern Content:
+- Rage of the Gods
+## Bug Fixes:
+- Vitality of the Tree
+
+# 1.1.28 Release:
+## New Modern Content:
+- Warrior of the Gods
+- Fanatical Focus
+- Zealous Presence
+## API Updates:
+- Skill Check, Ability Check, and Save events now pass through more information to the trigger.
+
+# 1.1.27 Release:
+## New Modern Content:
+- Battering Roots
+- Branches of the Tree
+- Travel along the Tree
+- Vitality of the Tree
+- Divine Fury
+## Bug Fixes:
+- Rage (Modern)
+
+# 1.1.26 Release:
+## Bug Fixes:
+- Blinding Smite (Modern)
+- Wrathful Smite (Modern)
+- Searing Smite (Modern)
+## API Bug Fixes:
+- The previous "Moved the postAttackRoll event to the Midi-Qol preAttackRoll hook" has been reverted - it mistakenly moved attackRollComplete to preAttackRollComplete
+## Update Notes:
+- Effect "origin"s will now be set to the UUID of the concentration effect if available, otherwise the base effect UUID if it isn't fully programmatically created, otherwise the UUID of the item responsible for the effect being applied (previously, it was always the lattermost)
+
+# 1.1.25 Release:
+## Bug Fixes:
+- Activity DC
+
+# 1.1.24 Release:
+## Bug Fixes:
+- Favored Foe (Legacy)
+
+# 1.1.23 Release:
+## New Modern Content:
+- Frenzy
+- Mindless Rage
+- Retaliation
+- Intimidating Presence
+- Rage of the Wilds
+- Aspect of the Wilds
+- Power of the Wilds
+## Bug Fixes:
+- Rage
+- Brutal Strike
+- Invisible
+- Pariah's Shield (Legacy)
+## Update Notes:
+- Added the ability for overtimes to more easily use an activity DC.
+
+# 1.1.22 Release:
+## New Modern Content:
+- Brutal Strike
+- Danger Sense
+- Feral Instinct
+- Improved Brutal Strike
+- Indomitable Might
+- Persistent Rage
+- Primal Knowledge
+- Rage
+- Reckless Attack
+- Relentless Rage
+- Unarmored Defense (Barbarian)
+## Update Notes:
+- Modern class feature automations will not function with legacy sub-classes. Compatibility will be added for legacy subclasses upon request / time.
+- Added all status effects to the CPR Effect Medkit special durations.
+- Added all armor types to the CPR Effect Medkit special durations.
+- Added "Attacked by another creature" to the CPR Effect Medkit special durations.
+- Added the ability to set the identifier and rules of an effect in the Dev Tools Effect Medkit.
+- 2024 Barbarian subclass automations will be in an upcoming update.
+## API Updates:
+- Skill Check, Ability Check, and Save events now pass through the config to the trigger.
+- Added the ability for automation configs to automatically apply missing scale values.
+## API Bug Fixes:
+- Moved the postAttackRoll event to the Midi-Qol preAttackRoll hook.
+## Bug Fixes:
+- Manual Rolling
+- Vortex Warp (Legacy)
+
+# 1.1.21 Release:
+## Update Notes:
+- Requires D&D system version 4.2 or higher.
+- Compendium Medkit will will now prompt you to select a destination compendium when Medkitting a locked compendium.
+## New Modern Content:
+- Circle of Death
+
+# 1.1.20 Release:
+## New Modern Content:
+- Chill Touch
+- Chromatic Orb
+
+# 1.1.19 Release:
+## New Modern Content:
+- Burning Hands
+- Call Lightning
+- Calm Emotions
+- Chain Lightning
+- Charm Monster
+- Charm Person
+## Bug Fixes:
+- Generic Monster Features Configuration
+- Aid
+- Sync Actor and Token Size setting
+## Update Notes
+- Added "Damaged By Ally" and "Damaged By Enemy" to the CPR Effect Medkit
+
+# 1.1.18 Release:
+## Bug Fixes:
+- Medkit
+- Midi-Qol Condition Effects
+- DDBI Integration
+
+# 1.1.17 Release:
+## New Modern Content:
+- Bless
+- Blight
+- Blindness/Deafness
+- Blink
+- Blur
+## Update Notes:
+- Midi-Qol Condition Effects have been updated to support modern rules.
+## Bug Fixes:
+- Midi-Qol Condition Effects
+
+# 1.1.16 Release:
+## Bug Fixes:
+- BG3 Weapon Actions
+- Manual Rolling
+## Update Notes:
+- Registered CPR fields with DAE more cleanly. Requires DAE 12.0.10+
+
+# 1.1.15 Release:
+## New Modern Content:
+- Banishment
+- Barkskin
+- Beacon of Hope
+- Blade Ward
+
+# 1.1.14 Release:
+## New Modern Content:
+- Banishing Smite
+- Blinding Smite
+- Divine Smite
+- Searing Smite
+- Shining Smite
+- Staggering Smite
+- Thunderous Smite
+## Bug Fixes:
+- Midi Event
+
+# 1.1.13 Release:
+## New Modern Content:
+- Aura of Vitality
+- Bane
+## Bug Fixes:
+- Actor Medkit
+- Arcane Vigor
+
+# 1.1.12 Release:
+## New Modern Content:
+- Arcane Vigor
+- Arms of Hadar
+- Aura of Life
+- Aura of Purity
+## Bug Fixes:
+- Masteries
+- Animal Friendship
+
+# 1.1.11 Release:
+## Bug Fixes:
+- DDBI Integration
+
+# 1.1.10 Release:
+## Bug Fixes:
+- Ability Saves & Checks
+- Actor Medkit
+## Update Notes:
+- Changed a ton of items' damage formulae to not be "custom," instead using the number/denomination/bonus format.
+- Added more descriptive tooltips to actor medkit.
+
+# 1.1.9 Release:
+## New Modern Rules Content:
+- Animal Friendship
+- Animal Messenger
+- Animate Dead
+- Antilife Shell
+## Bug Fixes:
+- Actor Medkit
+- Item Medkit
+
+# 1.1.8 Release:
+## Bug Fixes:
+- Item Medkit
+
+# 1.1.7 Release:
+## New Modern Rules Content:
+- Acid Splash
+- Aid
+- Alter Self
+- Armor of Agathys
+## Update Notes:
+- CPR automations will exclusivly check the item's rules before applying automations. If an item is set to the modern rules but only has a legacy automation, it will not be applied!
+- Updated DDBI integration functions.
+## Bug Fixes:
+- Call Lightning (Legacy)
+- Deadeye Shot (Legacy)
+## Known Issues:
+- CPR Manual Roller is missing buttons and advantage / disadvantage breaks things.
+
+# 1.1.6 Release:
+## Update Notes:
+- Many under the good changes have been made in preparation to support swapping automations between 2014 and 2024 rules.
+- This version may need more testing before using in a live game. Do not update to this version right before a game. 
+
+# 1.1.5 Release:
+## Update Notes:
+- More under the hood changes to prepare for 2024 content.
+
+# 1.1.4 Release:
+## Update Notes:
+- Under the hood changes to prepare for 2024 content.
+
+# 1.1.3 Release:
+## Bug Fixes:
+- Compatibility with modules which roll checks/saves using legacy format
+- Fixed checks/saves not respecting roll mode
+
+# 1.1.2 Release:
+## Bug Fixes:
+- Lay on Hands
+## Update Notes:
+- Updated to make use of changes in midi release 12.4.17
+
+# 1.1.1 Release:
+## Updated Content:
+- Spirit of Death
+## Bug Fixes:
+- Compatibility with Tidy5e Item Sheet
+- Spiritual Weapon
+- Starry Form
+- Call Lightning
+- Flame Blade
+- Storm Sphere
+- Vampiric Touch
+
+# 1.1.0 Release:
+## New Content:
+- 2024 Weapon Masteries
+## Updated Content:
+- Globe of Invulnerability
+## Update Notes:
+- This is the first beta release for dnd5e 4.x. Expect some bugs, both on CPR's side and Midi's side
+- CPR has changed to make use of Activities whenever possible, in many cases obsoleting the need for synthetic item uses. As such, there are some changes (most non-player-facing):
+    - Certain spells/features (such as Bestow Curse) now have activities for each possible variation of them
+    - Temporarily-available features (such as the "Move" functionality of the Dawn spell) are configured as activities on the parent item when possible. These will be dynamically unhidden when necessary (and added to "favorites" when done)
+    - Items which were previously used entirely synthetically (like Scorching Ray's "Bolt" spell feature) are now also configured as activities on the parent item. These will always remain hidden
+    - Regarding "hidden" activities: They will be visible on the item sheet. This means they can be _modified_ if desired (for example, changing the formula or damage type for Magic Missile bolts). This also means however that if they are _deleted_ from the sheet, automations which expect them to exist will fail. Unless you know what you're doing, never _delete_ any activities from a medkitted item
+- With the exception of the new weapon masteries, CPR has not yet implemented any content from the 2024 rulebooks. Nevertheless, in preparation for doing so, the 2014-specific content compendiums have been moved into a "2014" subfolder
+
 # 1.0.62 Release:
 ## Bug Fixes:
 - Distracting Strike

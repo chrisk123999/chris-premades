@@ -5,7 +5,7 @@
                 <h1 data-tooltip="{{npc.tooltips.upToDate}}">{{localize 'CHRISPREMADES.Medkit.Status.1'}}: {{npc.amounts.upToDate.value}}</h1>
                 <ul>
                     {{#each npc.amounts.upToDate.items}}
-                        <li>{{this}}</li>
+                        <li>{{name}}</li>
                     {{/each}}
                 </ul>
             </div>
@@ -15,7 +15,7 @@
                 <h1 data-tooltip="{{npc.tooltips.available}}">{{localize 'CHRISPREMADES.Generic.Available'}}: {{npc.amounts.available.value}}</h1>
                 <ul>
                     {{#each npc.amounts.available.items}}
-                        <li>{{this}}</li>
+                        <li>{{name}}</li>
                     {{/each}}
                 </ul>
             </div>
@@ -25,7 +25,7 @@
                 <h1 data-tooltip="{{npc.tooltips.outOfDate}}">{{localize 'CHRISPREMADES.Medkit.Status.0'}}: {{npc.amounts.outOfDate.value}}</h1>
                 <ul>
                     {{#each npc.amounts.outOfDate.items}}
-                        <li>{{this}}</li>
+                        <li>{{name}}</li>
                     {{/each}}
                 </ul>
             </div>

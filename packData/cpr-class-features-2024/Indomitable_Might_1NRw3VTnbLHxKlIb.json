@@ -1,0 +1,70 @@
+{
+  "name": "Indomitable Might",
+  "type": "feat",
+  "effects": [],
+  "system": {
+    "activities": {},
+    "uses": {
+      "spent": 0,
+      "recovery": []
+    },
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "identifier": "indomitable-might",
+    "source": {
+      "book": "PHB 2024",
+      "page": "",
+      "license": "",
+      "custom": "",
+      "rules": "2024",
+      "revision": 1
+    },
+    "advancement": [],
+    "cover": null,
+    "crewed": false,
+    "enchant": {},
+    "prerequisites": {
+      "level": 18,
+      "repeatable": false
+    },
+    "properties": [],
+    "requirements": "",
+    "type": {
+      "value": "class",
+      "subtype": ""
+    }
+  },
+  "flags": {
+    "dnd5e": {
+      "advancementOrigin": "nwupzjujWuejv7P9",
+      "riders": {
+        "activity": []
+      }
+    },
+    "chris-premades": {
+      "info": {
+        "identifier": "indomitableMight",
+        "source": "chris-premades",
+        "rules": "modern",
+        "version": "1.1.22"
+      },
+      "macros": {
+        "check": [
+          "indomitableMight"
+        ],
+        "save": [
+          "indomitableMight"
+        ],
+        "skill": [
+          "indomitableMight"
+        ]
+      }
+    }
+  },
+  "img": "icons/skills/melee/unarmed-punch-fist-yellow-red.webp",
+  "folder": "epodEYV6OzWsQdIP",
+  "_id": "1NRw3VTnbLHxKlIb",
+  "_key": "!items!1NRw3VTnbLHxKlIb"
+}

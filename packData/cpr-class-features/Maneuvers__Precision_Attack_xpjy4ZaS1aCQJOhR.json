@@ -1,0 +1,164 @@
+{
+  "name": "Maneuvers: Precision Attack",
+  "type": "feat",
+  "system": {
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "source": {
+      "custom": "",
+      "revision": 1,
+      "rules": "2014"
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "recovery": []
+    },
+    "type": {
+      "value": "class",
+      "subtype": "maneuver"
+    },
+    "requirements": "",
+    "properties": [],
+    "prerequisites": {
+      "level": null
+    },
+    "activities": {},
+    "identifier": "maneuvers-precision-attack",
+    "enchant": {}
+  },
+  "flags": {
+    "core": {
+      "sourceId": "Actor.XauTPmdt4Drmy2f5.Item.dG4A8nfOs4lQr6tb"
+    },
+    "midi-qol": {
+      "effectActivation": false,
+      "rollAttackPerTarget": "default",
+      "itemCondition": "",
+      "effectCondition": "",
+      "AoETargetType": "any",
+      "AoETargetTypeIncludeSelf": true,
+      "autoTarget": "default",
+      "removeAttackDamageButtons": "default",
+      "reactionCondition": "",
+      "otherCondition": ""
+    },
+    "midiProperties": {
+      "nodam": false,
+      "fulldam": false,
+      "halfdam": false,
+      "autoFailFriendly": false,
+      "autoSaveFriendly": false,
+      "rollOther": false,
+      "critOther": false,
+      "offHandWeapon": false,
+      "magicdam": false,
+      "magiceffect": false,
+      "concentration": false,
+      "toggleEffect": false,
+      "ignoreTotalCover": false,
+      "confirmTargets": "default",
+      "noConcentrationCheck": false,
+      "idr": false,
+      "idi": false,
+      "idv": false,
+      "ida": false
+    },
+    "dnd5e": {
+      "riders": {
+        "activity": []
+      }
+    },
+    "chris-premades": {
+      "info": {
+        "name": "Maneuvers: Precision Attack",
+        "version": "1.1.0",
+        "identifier": "maneuversPrecisionAttack",
+        "source": "chris-premades"
+      }
+    }
+  },
+  "effects": [
+    {
+      "name": "Maneuvers: Precision Attack",
+      "origin": "Compendium.world.cpr-class-features.Item.KZmWxfvlO3vaSa9b",
+      "duration": {
+        "rounds": null,
+        "startTime": 1368,
+        "seconds": null,
+        "combat": null,
+        "turns": null,
+        "startRound": 229,
+        "startTurn": 1
+      },
+      "disabled": false,
+      "flags": {
+        "dnd5e": {},
+        "dae": {
+          "disableCondition": "",
+          "disableIncapacitated": false,
+          "stackable": "noneName",
+          "showIcon": false,
+          "durationExpression": "",
+          "macroRepeat": "none",
+          "specialDuration": []
+        },
+        "core": {
+          "overlay": false
+        }
+      },
+      "img": "icons/skills/melee/weapons-crossed-swords-yellow.webp",
+      "_id": "vZAWNv8IrkcveeE4",
+      "type": "base",
+      "system": {},
+      "changes": [
+        {
+          "key": "flags.midi-qol.optional.PrecisionAttack.label",
+          "mode": 0,
+          "value": "Precision Attack",
+          "priority": 20
+        },
+        {
+          "key": "flags.midi-qol.optional.PrecisionAttack.count",
+          "mode": 0,
+          "value": "ItemUses.Superiority Dice",
+          "priority": 20
+        },
+        {
+          "key": "flags.midi-qol.optional.PrecisionAttack.attack.mwak",
+          "mode": 0,
+          "value": "@scale.battle-master.combat-superiority-die",
+          "priority": 20
+        },
+        {
+          "key": "flags.midi-qol.optional.PrecisionAttack.attack.rwak",
+          "mode": 0,
+          "value": "@scale.battle-master.combat-superiority-die",
+          "priority": 20
+        }
+      ],
+      "description": "",
+      "tint": "#ffffff",
+      "transfer": true,
+      "statuses": [],
+      "sort": 0,
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "coreVersion": "12.331",
+        "systemId": "dnd5e",
+        "systemVersion": "4.1.2",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!items.effects!xpjy4ZaS1aCQJOhR.vZAWNv8IrkcveeE4"
+    }
+  ],
+  "img": "icons/skills/melee/weapons-crossed-swords-yellow.webp",
+  "folder": "aMstBUc2lUQZSNyK",
+  "_id": "xpjy4ZaS1aCQJOhR",
+  "_key": "!items!xpjy4ZaS1aCQJOhR"
+}

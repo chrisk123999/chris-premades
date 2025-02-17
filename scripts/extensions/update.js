@@ -23,7 +23,9 @@ export async function updateCheck() {
             .replaceAll('Update Notes:', '<b><u>Update Notes:</u></b>')
             .replaceAll('New Enhanced Animations:', '<b><u>New Enhanced Animations:</u></b>')
             .replaceAll('API Bug Fixes:', '<b><u>API Bug Fixes:</u></b>')
-            .replaceAll('API Updates', '<b><u>API Updates:</u></b>');
+            .replaceAll('API Updates', '<b><u>API Updates:</u></b>')
+            .replaceAll('New Modern Rules Content:', '<b><u>New Modern Rules Content</u></b>')
+            .replaceAll('New Legacy Rules Content:', '<b><u>New Modern Legacy Content</u></b>');
         let message = '<hr>Cauldron of Plentiful Resources update <b>' + info.tag_name + '</b> available!<hr>' + body;
         await ChatMessage.create({
             speaker: {alias: name},

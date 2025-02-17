@@ -1,0 +1,178 @@
+{
+  "name": "Dark One's Own Luck",
+  "type": "feat",
+  "system": {
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "source": {
+      "custom": "",
+      "revision": 1,
+      "rules": "2014"
+    },
+    "uses": {
+      "max": "1",
+      "recovery": [
+        {
+          "period": "sr",
+          "type": "recoverAll"
+        }
+      ],
+      "spent": 0
+    },
+    "type": {
+      "value": "class",
+      "subtype": ""
+    },
+    "requirements": "",
+    "properties": [],
+    "prerequisites": {
+      "level": null
+    },
+    "activities": {},
+    "identifier": "dark-ones-own-luck",
+    "enchant": {}
+  },
+  "flags": {
+    "midi-qol": {
+      "effectActivation": false,
+      "rollAttackPerTarget": "default",
+      "itemCondition": "",
+      "effectCondition": "",
+      "AoETargetType": "any",
+      "AoETargetTypeIncludeSelf": true,
+      "autoTarget": "default",
+      "removeAttackDamageButtons": "default",
+      "reactionCondition": "",
+      "otherCondition": ""
+    },
+    "midiProperties": {
+      "nodam": false,
+      "fulldam": false,
+      "halfdam": false,
+      "autoFailFriendly": false,
+      "autoSaveFriendly": false,
+      "rollOther": false,
+      "critOther": false,
+      "offHandWeapon": false,
+      "magicdam": false,
+      "magiceffect": false,
+      "concentration": false,
+      "toggleEffect": false,
+      "ignoreTotalCover": false,
+      "confirmTargets": "default",
+      "noConcentrationCheck": false,
+      "idr": false,
+      "idi": false,
+      "idv": false,
+      "ida": false
+    },
+    "core": {
+      "sourceId": "Actor.yGnx4qCR7ZGEfJkV.Item.ULmGqbhDwIiYlDAj"
+    },
+    "dnd5e": {
+      "persistSourceMigration": true,
+      "migratedUses": 1,
+      "riders": {
+        "activity": [],
+        "effect": []
+      }
+    },
+    "chris-premades": {
+      "info": {
+        "name": "Dark One's Own Luck",
+        "version": "1.1.0",
+        "identifier": "darkOnesOwnLuck",
+        "source": "chris-premades"
+      }
+    }
+  },
+  "effects": [
+    {
+      "name": "Dark One's Own Luck",
+      "origin": "Compendium.world.cpr-class-features.Item.qDgkaHXic7Zhu3VL",
+      "duration": {
+        "rounds": null,
+        "startTime": 1416,
+        "seconds": null,
+        "combat": null,
+        "turns": null,
+        "startRound": 237,
+        "startTurn": 6
+      },
+      "disabled": false,
+      "flags": {
+        "dnd5e": {},
+        "dae": {
+          "disableCondition": "",
+          "disableIncapacitated": false,
+          "stackable": "noneName",
+          "showIcon": false,
+          "durationExpression": "",
+          "macroRepeat": "none",
+          "specialDuration": []
+        },
+        "core": {
+          "overlay": false
+        }
+      },
+      "img": "icons/commodities/gems/gem-rough-square-red.webp",
+      "_id": "7C3wK1T9ainJVNK4",
+      "type": "base",
+      "system": {},
+      "changes": [
+        {
+          "key": "flags.midi-qol.optional.dool.label",
+          "mode": 0,
+          "value": "Dark One's Own Luck",
+          "priority": 20
+        },
+        {
+          "key": "flags.midi-qol.optional.dool.count",
+          "mode": 0,
+          "value": "ItemUses.Dark One's Own Luck",
+          "priority": 20
+        },
+        {
+          "key": "flags.midi-qol.optional.dool.save.all",
+          "mode": 0,
+          "value": "+1d10",
+          "priority": 20
+        },
+        {
+          "key": "flags.midi-qol.optional.dool.skill.all",
+          "mode": 0,
+          "value": "+1d10",
+          "priority": 20
+        },
+        {
+          "key": "flags.midi-qol.optional.dool.check.all",
+          "mode": 0,
+          "value": "+1d10",
+          "priority": 20
+        }
+      ],
+      "description": "",
+      "tint": "#ffffff",
+      "transfer": true,
+      "statuses": [],
+      "sort": 0,
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "coreVersion": "12.331",
+        "systemId": "dnd5e",
+        "systemVersion": "4.1.2",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!items.effects!Oey02shLOkLK544M.7C3wK1T9ainJVNK4"
+    }
+  ],
+  "img": "icons/commodities/gems/gem-rough-square-red.webp",
+  "folder": "nzah7ehBnIsoq4ms",
+  "_id": "Oey02shLOkLK544M",
+  "_key": "!items!Oey02shLOkLK544M"
+}

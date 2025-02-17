@@ -1,0 +1,107 @@
+{
+  "name": "Adhesive (Object or Terrain Form Only)",
+  "type": "feat",
+  "system": {
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "source": {
+      "book": "Tome of Beasts 1",
+      "page": "268",
+      "custom": "",
+      "license": "",
+      "revision": 1,
+      "rules": "2014"
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "recovery": []
+    },
+    "type": {
+      "value": "monster",
+      "subtype": ""
+    },
+    "prerequisites": {
+      "level": null
+    },
+    "properties": [],
+    "requirements": "",
+    "activities": {},
+    "identifier": "adhesive-object-or-terrain-form-only",
+    "enchant": {}
+  },
+  "effects": [],
+  "flags": {
+    "monsterMunch": {
+      "titleHTML": "<em><strong>Adhesive (Object or Terrain Form Only).</strong></em>",
+      "fullName": "Adhesive (Object or Terrain Form Only).",
+      "actionCopy": false,
+      "type": "special",
+      "actionInfo": {
+        "damage": {
+          "parts": [],
+          "versatile": ""
+        },
+        "baseAbility": null,
+        "toHit": 0,
+        "proficient": false,
+        "extraAttackBonus": 0
+      }
+    },
+    "midi-qol": {
+      "removeAttackDamageButtons": "default",
+      "rollAttackPerTarget": "default",
+      "itemCondition": "",
+      "effectCondition": "",
+      "AoETargetType": "any",
+      "AoETargetTypeIncludeSelf": true,
+      "autoTarget": "default",
+      "reactionCondition": "",
+      "otherCondition": ""
+    },
+    "midiProperties": {
+      "confirmTargets": "default",
+      "autoFailFriendly": false,
+      "autoSaveFriendly": false,
+      "critOther": false,
+      "offHandWeapon": false,
+      "magicdam": false,
+      "magiceffect": false,
+      "noConcentrationCheck": false,
+      "toggleEffect": false,
+      "ignoreTotalCover": false,
+      "idr": false,
+      "idi": false,
+      "idv": false,
+      "ida": false
+    },
+    "dnd5e": {
+      "riders": {
+        "activity": []
+      }
+    },
+    "chris-premades": {
+      "info": {
+        "source": "chris-premades",
+        "identifier": "mimicAdhesive",
+        "version": "1.1.0"
+      },
+      "macros": {
+        "midi": {
+          "item": [
+            "mimicAdhesive"
+          ]
+        }
+      },
+      "config": {
+        "dc": "15"
+      }
+    }
+  },
+  "img": "icons/commodities/materials/slime-white.webp",
+  "folder": "vHGA0hLZrCmoqceO",
+  "_id": "bxLQdxtHy9WYFbEH",
+  "_key": "!items!bxLQdxtHy9WYFbEH"
+}

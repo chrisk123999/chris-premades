@@ -1,6 +1,6 @@
-import {DialogApp} from '../applications/dialog.js';
+import {DialogApp, DialogManager} from '../applications/dialog.js';
 import {CPRMultipleRollResolver} from '../applications/rollResolverMultiple.js';
-import {genericUtils} from '../utils.js';
+import {actorUtils, dialogUtils, genericUtils, itemUtils, workflowUtils} from '../utils.js';
 import {Summons} from './summons.js';
 import {Teleport} from './teleport.js';
 async function createEffect(entityUuid, effectData, {concentrationItemUuid, parentEntityUuid}) {
@@ -92,26 +92,43 @@ async function deleteEmbeddedDocuments(entityUuid, type, ids, options) {
     let documents = await entity.deleteEmbeddedDocuments(type, ids, options ?? undefined);
     return documents.map(i => i.uuid);
 }
-async function addFavorites(actorUuid, itemUuids) {
+async function updateTargets(targetIds, userId) {
+    let user = game.users.get(userId);
+    if (!user) return;
+    user.updateTokenTargets(targetIds);
+    user.broadcastActivity({targets: user.targets.ids});
+}
+async function addFavorites(actorUuid, entityUuids, type='item') {
     let actor = await fromUuid(actorUuid);
     if (!actor) return;
     if (!actor.system.addFavorite) return;
-    let items = await Promise.all(itemUuids.map(async i => {
+    let entities = await Promise.all(entityUuids.map(async i => {
         return await fromUuid(i);
     }).filter(j => j));
-    for (let i of items) await actor.system.addFavorite({
-        id: i.getRelativeUUID(i.actor),
-        type: 'item'
-    });
+    if (type === 'item') {
+        for (let i of entities) await actor.system.addFavorite({
+            id: i.getRelativeUUID(i.actor),
+            type: 'item'
+        });
+    } else if (type === 'activity') {
+        for (let i of entities) await actor.system.addFavorite({
+            id: i.relativeUUID,
+            type: 'activity'
+        });
+    }
 }
-async function removeFavorites(actorUuid, itemUuids) {
+async function removeFavorites(actorUuid, entityUuids, type='item') {
     let actor = await fromUuid(actorUuid);
     if (!actor) return;
     if (!actor.system.removeFavorite) return;
-    let items = await Promise.all(itemUuids.map(async i => {
+    let entities = await Promise.all(entityUuids.map(async i => {
         return await fromUuid(i);
     }).filter(j => j));
-    for (let i of items) await actor.system.removeFavorite(i.getRelativeUUID(i.actor));
+    if (type === 'item') {
+        for (let i of entities) await actor.system.removeFavorite(i.getRelativeUUID(i.actor));
+    } else if (type === 'activity') {
+        for (let i of entities) await actor.system.removeFavorite(i.relativeUUID);
+    }
 }
 async function dialog(...options) {
     let message = await ChatMessage.create({
@@ -193,6 +210,31 @@ async function remoteDamageRolls(rollJSONs) {
     resolver.close();
     return rolls.map(i => i.toJSON());
 }
+async function syntheticItemDataRoll(itemData, actorUuid, targetUuids, {options = {}, config = {}} = {}) {
+    let actor = fromUuidSync(actorUuid);
+    let targets = targetUuids.map(i => fromUuidSync(i)?.object);
+    let item = await itemUtils.syntheticItem(itemData, actor);
+    let workflow = await workflowUtils.syntheticItemRoll(item, targets, {options, config});
+    return workflow.getMacroData({noWorkflowReference: true});
+}
+const dialogManager = new DialogManager;
+async function queuedDialog(dialogOptions, checkOptions) {
+    async function checkValid(checkOptions) {
+        if (!checkOptions.actorUuid || !checkOptions.reason) return false;
+        let actor = await fromUuid(checkOptions.actorUuid);
+        if (!actor) return false;
+        switch(checkOptions.reason) {
+            case 'reaction':
+                if (actorUtils.hasUsedReaction(actor)) return false;
+                break;
+            case 'bonusAction':
+                if (actorUtils.hasUsedBonusAction(actor)) return false;
+                break;
+        }
+        return await dialogUtils.confirm(...dialogOptions);
+    }
+    return await dialogManager.showDialog(checkValid, checkOptions);
+}
 export let sockets = {
     createEffect,
     createEffects,
@@ -210,6 +252,7 @@ export let sockets = {
     createSidebarActor,
     updateEmbeddedDocuments,
     deleteEmbeddedDocuments,
+    updateTargets,
     teleport,
     spawnSummon,
     setReactionUsed,
@@ -218,7 +261,9 @@ export let sockets = {
     removeBonusActionUsed,
     polymorph,
     remoteRoll,
-    remoteDamageRolls
+    remoteDamageRolls,
+    syntheticItemDataRoll,
+    queuedDialog
 };
 export let socket;
 export function registerSockets() {

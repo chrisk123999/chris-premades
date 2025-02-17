@@ -5,17 +5,8 @@ import {miscPremades} from '../../integrations/miscPremades.js';
 import {custom} from '../../events/custom.js';
 import {ItemMedkit} from '../../applications/medkit-item.js';
 function getSaveDC(item) {
-    if (item.hasSave) return item.getSaveDC();
-    let spellDC;
-    let scaling = item.system?.save?.scaling;
-    if (scaling === 'spell') {
-        spellDC = item.actor?.system?.attributes?.spelldc;
-    } else if (scaling !== 'flat') {
-        spellDC = item.actor?.system?.abilities?.[scaling]?.dc;
-    } else {
-        spellDC = item.system?.save?.dc;
-    }
-    return spellDC ?? 10;
+    if (item.hasSave) return item.system.activities.getByType('save')[0].save.dc.value;
+    return item.actor?.system?.abilities?.[item.abilityMod]?.dc ?? 10;
 }
 function getMod(item) {
     return item.system.save.scaling === 'spell' ? item.actor.system.abilities[item.actor.system.attributes.spellcasting].mod : item.actor.system.abilities[item.system.save.scaling].mod;
@@ -56,7 +47,7 @@ function getConfig(item, key) {
     if (flagValue !== undefined) return flagValue;
     let identifier = genericUtils.getIdentifier(item);
     if (!identifier) return;
-    let value = custom.getMacro(identifier)?.config?.find(i => i.value === key)?.default;
+    let value = custom.getMacro(identifier, genericUtils.getRules(item))?.config?.find(i => i.value === key)?.default;
     return value === '' ? false : value;
 }
 async function setConfig(item, key, value) {
@@ -72,7 +63,7 @@ function getVersion(item) {
     return item?.flags['chris-premades']?.info?.version ?? item?._stats?.modifiedTime;
 }
 function getSource(item) {
-    return item.flags['chris-premades']?.info?.source;
+    return item?.flags['chris-premades']?.info?.source;
 }
 async function isUpToDate(item) {
     let version = getVersion(item);
@@ -100,7 +91,11 @@ async function isUpToDate(item) {
             break;
         case 'chris-premades': {
             let identifier = genericUtils.getIdentifier(item);
-            sourceVersion = custom.getMacro(identifier)?.version;
+            let rules = genericUtils.getRules(item);
+            let macro = custom.getMacro(identifier, rules);
+            sourceVersion = macro?.version;
+            let savedRules = item.flags['chris-premades']?.info?.rules ?? 'legacy';
+            if (savedRules && (rules != savedRules)) return 0;
             break;
         }
         default: {
@@ -120,8 +115,9 @@ async function syntheticItem(itemData, actor) {
     item.applyActiveEffects();
     return item;
 }
-async function enchantItem(item, effectData, {effects = [], items = [], concentrationItem, parentEntity, identifier, vae, interdependent, strictlyInterdependent}) {
-    genericUtils.setProperty(effectData, 'flags.dnd5e.type', 'enchantment');
+async function enchantItem(item, effectData, {effects = [], items = [], concentrationItem, parentEntity, identifier, vae, interdependent, strictlyInterdependent} = {}) {
+    genericUtils.setProperty(effectData, 'type', 'enchantment');
+    effectData.transfer = false;
     genericUtils.setProperty(effectData, 'flags.dnd5e.enchantment', {
         level: {
             min: null,
@@ -134,8 +130,12 @@ async function enchantItem(item, effectData, {effects = [], items = [], concentr
     });
     return await effectUtils.createEffect(item, effectData, {concentrationItem, parentEntity, identifier, vae, interdependent, strictlyInterdependent});
 }
-function convertDuration(item) {
-    return DAE.convertDuration(item.system.duration);
+function convertDuration(entity) {
+    if (entity.documentName === 'Item') {
+        return DAE.convertDuration(entity.system.duration);
+    } else if (entity.documentName === 'Activity') {
+        return DAE.convertDuration(entity.duration);
+    }
 }
 function getEquipmentState(item) {
     let currentlyEquipped = item.system.equipped;
@@ -170,6 +170,30 @@ function isWeaponProficient(item) {
 async function itemUpdate(item) {
     return await ItemMedkit.itemUpdate(item);
 }
+async function setHiddenActivities(item, activityIdentifiers, replace = true) {
+    let existingHidden = replace ? [] : item.flags?.['chris-premades']?.hiddenActivities ?? [];
+    existingHidden = new Set(existingHidden.concat(activityIdentifiers));
+    await genericUtils.setFlag(item, 'chris-premades', 'hiddenActivities', Array.from(existingHidden));
+    await genericUtils.update(item);
+}
+async function setSpellActivities(item, activityIdentifiers, replace = true) {
+    let existingSpells = replace ? [] : item.flags?.['chris-premades']?.spellActivities ?? [];
+    existingSpells = new Set(existingSpells.concat(activityIdentifiers));
+    await genericUtils.setFlag(item, 'chris-premades', 'spellActivities', Array.from(existingSpells));
+    await genericUtils.update(item);
+}
+function getHiddenActivities(item) {
+    return genericUtils.getProperty(item, 'flags.chris-premades.hiddenActivities');
+}
+function getSpellActivities(item) {
+    return genericUtils.getProperty(item, 'flags.chris-premades.spellActivities');
+}
+function getActivity(item, type) {
+    return item.system.activities.getByType(type)?.[0];
+}
+function getEffectByIdentifier(item, identifier) {
+    return item.effects.find(i => genericUtils.getIdentifier(i) === identifier);
+}
 export let itemUtils = {
     getSaveDC,
     createItems,
@@ -192,5 +216,11 @@ export let itemUtils = {
     getGenericFeatureConfig,
     getItemByGenericFeature,
     isWeaponProficient,
-    itemUpdate
+    itemUpdate,
+    setHiddenActivities,
+    getHiddenActivities,
+    getActivity,
+    getEffectByIdentifier,
+    getSpellActivities,
+    setSpellActivities
 };

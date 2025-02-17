@@ -1,3 +1,4 @@
+import {teleportEffects} from '../macros/animations/teleportEffects.js';
 let packs = {
     spellFeatures: 'chris-premades.CPRSpellFeatures',
     spells: 'chris-premades.CPRSpells',
@@ -10,9 +11,7 @@ let packs = {
     miscellaneousItems: 'chris-premades.CPRMiscellaneousItems',
     itemFeatures: 'chris-premades.CPRItemFeatures',
     feats: 'chris-premades.CPRFeats',
-    featFeatures: 'chris-premades.CPRFeatFeatures',
     raceFeatures: 'chris-premades.CPRRaceFeatures',
-    raceFeatureItems: 'chris-premades.CPRRaceFeatureItems',
     thirdPartyClassFeatures: 'chris-premades.CPRThirdPartyClassFeatures',
     thirdPartyItems: 'chris-premades.CPRThirdPartyItems',
     monsterFeatures: 'chris-premades.CPRMonsterFeatures',
@@ -25,8 +24,23 @@ let featurePacks = {
     classFeatureItems: 'chris-premades.CPRClassFeatureItems',
     miscellaneousItems: 'chris-premades.CPRMiscellaneousItems',
     itemFeatures: 'chris-premades.CPRItemFeatures',
-    featFeatures: 'chris-premades.CPRFeatFeatures',
-    raceFeatureItems: 'chris-premades.CPRRaceFeatureItems'
+};
+let legacyPacks = {
+    spells: 'chris-premades.CPRSpells',
+    items: 'chris-premades.CPRItems',
+    classFeatures: 'chris-premades.CPRClassFeatures',
+    actions: 'chris-premades.CPRActions',
+    feats: 'chris-premades.CPRFeats',
+    raceFeatures: 'chris-premades.CPRRaceFeatures',
+    thirdPartyClassFeatures: 'chris-premades.CPRThirdPartyClassFeatures',
+    thirdPartyItems: 'chris-premades.CPRThirdPartyItems',
+    monsterFeatures: 'chris-premades.CPRMonsterFeatures',
+    thirdPartyFeats: 'chris-premades.CPRThirdPartyFeats'
+};
+let modernPacks = {
+    spells: 'chris-premades.CPRSpells2024',
+    classFeatures: 'chris-premades.CPRClassFeatures2024',
+    items: 'chris-premades.CPRItems2024'
 };
 function setUseLocalCompendium(value) {
     if (value) {
@@ -46,16 +60,15 @@ function setUseLocalCompendium(value) {
         packs.itemFeatures = 'world.cpr-item-features';
         featurePacks.itemFeatures = 'world.cpr-item-features';
         packs.feats = 'world.cpr-feats';
-        packs.featFeatures = 'world.cpr-feat-features';
-        featurePacks.featFeatures = 'world.cpr-feat-features';
         packs.raceFeatures = 'world.cpr-race-features';
-        packs.raceFeatureItems = 'world.cpr-race-feature-items';
-        featurePacks.raceFeatureItems = 'world.cpr-race-feature-items';
         packs.thirdPartyClassFeatures = 'world.cpr-3rd-party-class-features';
         packs.thirdPartyItems = 'world.cpr-3rd-party-items';
         packs.monsterFeatures = 'world.cpr-monster-features';
         packs.miscellaneous = 'world.cpr-miscellaneous';
         packs.thirdPartyFeats = 'world.cpr-3rd-party-feats';
+        modernPacks.spells = 'world.cpr-spells-2024';
+        modernPacks.classFeatures = 'world.cpr-class-features-2024';
+        modernPacks.items = 'world.cpr-items-2024';
     } else {
         packs.spellFeatures = 'chris-premades.CPRSpellFeatures';
         featurePacks.spellFeatures = 'chris-premades.CPRSpellFeatures';
@@ -73,16 +86,15 @@ function setUseLocalCompendium(value) {
         packs.itemFeatures = 'chris-premades.CPRItemFeatures';
         featurePacks.itemFeatures = 'chris-premades.CPRItemFeatures';
         packs.feats = 'chris-premades.CPRFeats';
-        packs.featFeatures = 'chris-premades.CPRFeatFeatures';
-        featurePacks.featFeatures = 'chris-premades.CPRFeatFeatures';
         packs.raceFeatures = 'chris-premades.CPRRaceFeatures';
-        packs.raceFeatureItems = 'chris-premades.CPRRaceFeatureItems';
-        featurePacks.raceFeatureItems = 'chris-premades.CPRRaceFeatureItems';
         packs.thirdPartyClassFeatures = 'chris-premades.CPRThirdPartyClassFeatures';
         packs.thirdPartyItems = 'chris-premades.CPRThirdPartyItems';
         packs.monsterFeatures = 'chris-premades.CPRMonsterFeatures';
         packs.miscellaneous = 'chris-premades.CPRMiscellaneous';
         packs.thirdPartyFeats = 'chris-premades.CPRThirdPartyFeats';
+        modernPacks.spells = 'chris-premades.CPRSpells2024';
+        modernPacks.classFeatures = 'chris-premades.CPRClassFeatures2024';
+        modernPacks.items = 'chris-premades.CPRItems2024';
     }
 }
 const attacks = [
@@ -120,6 +132,13 @@ const actorCompendiumPacks = () => [{label: '', value: ''}, ...game.packs.filter
 const itemCompendiumPacks = () => [{label: '', value: ''}, ...game.packs.filter(i => i.documentName === 'Item').map(i => ({label: i.metadata.label, value: i.metadata.id}))];
 const abilityOptions = () => Object.values(CONFIG.DND5E.abilities).map(i => ({label: i.label, value: i.abbreviation}));
 const healingTypeOptions = () => Object.entries(CONFIG.DND5E.healingTypes).map(i => ({label: i[1].label, value: i[0]}));
+const statusOptions = () => CONFIG.statusEffects.map(i => ({label: i.name, value: i.id}));
+const skillOptions = () => Object.entries(CONFIG.DND5E.skills).map(i => ({label: i[1].label, value: i[0]}));
+const diceSizeOptions = [4, 6, 8, 10, 12, 20].map(i => ({label: 'd' + i, value: 'd' + i}));
+const teleportOptions = () => Object.entries(teleportEffects).map(i => ({label: i[1].name, value: i[0]}));
+const itemProperties = () => Object.entries(CONFIG.DND5E.itemProperties).map(i => ({label: i[1].label, value: i[0]}));
+const armorOptions = () => Object.entries(CONFIG.DND5E.armorTypes).map(i => ({label: i[1].label, value: i[0]}));
+const spellSchoolOptions = () => Object.entries(CONFIG.DND5E.spellSchools).map(i => ({label: i[1].label, value: i[0]}));
 const overTimeOptions = [
     {
         key: 'turn',
@@ -418,6 +437,82 @@ const itemTypes =  [
     'loot'
 ];
 const tempConditionIcon = 'icons/magic/time/arrows-circling-green.webp';
+const immuneEffectData = {
+    name: 'Immune',
+    img: tempConditionIcon,
+    duration: {
+        turns: 1
+    },
+    changes: [
+        {
+            key: 'flags.midi-qol.min.ability.save.all',
+            value: 100,
+            mode: 5,
+            priority: 120
+        }
+    ],
+    flags: {
+        dae: {
+            specialDuration: [
+                'isSave'
+            ]
+        },
+        'chris-premades': {
+            effect: {
+                noAnimation: true
+            }
+        }
+    }
+};
+const advantageEffectData = {
+    name: 'Advantage',
+    img: tempConditionIcon,
+    duration: {
+        turns: 1
+    },
+    changes: [
+        {
+            key: 'flags.midi-qol.advantage.ability.save.all',
+            value: 1,
+            mode: 5,
+            priority: 120
+        }
+    ],
+    flags: {
+        dae: {
+            specialDuration: [
+                'isSave'
+            ]
+        },
+        'chris-premades': {
+            effect: {
+                noAnimation: true
+            }
+        }
+    }
+};
+const autoFailSaveEffectData = {
+    name: 'Auto Fail',
+    img: tempConditionIcon,
+    duration: {
+        seconds: 1
+    },
+    changes: [
+        {
+            key: 'flags.midi-qol.fail.ability.save.all',
+            value: 1,
+            mode: 0,
+            priority: 20
+        }
+    ],
+    flags: {
+        dae: {
+            specialDuration: [
+                'isSave'
+            ]
+        }
+    }
+};
 export let constants = {
     packs,
     featurePacks,
@@ -438,5 +533,17 @@ export let constants = {
     itemTypes,
     tempConditionIcon,
     abilityOptions,
-    healingTypeOptions
+    healingTypeOptions,
+    legacyPacks,
+    modernPacks,
+    immuneEffectData,
+    diceSizeOptions,
+    advantageEffectData,
+    statusOptions,
+    skillOptions,
+    teleportOptions,
+    itemProperties,
+    armorOptions,
+    spellSchoolOptions,
+    autoFailSaveEffectData
 };

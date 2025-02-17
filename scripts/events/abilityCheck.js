@@ -8,9 +8,9 @@ function collectMacros(entity) {
     let macroList = [];
     macroList.push(...getMacroData(entity));
     if (!macroList.length) return [];
-    return macroList.map(i => custom.getMacro(i)).filter(j => j);
+    return macroList.map(i => custom.getMacro(i, genericUtils.getRules(entity))).filter(j => j);
 }
-function collectActorCheckMacros(actor, pass, checkId, options, roll) {
+function collectActorCheckMacros(actor, pass, checkId, options, roll, config, dialog, message) {
     let triggers = [];
     let effects = actorUtils.getEffects(actor);
     let token = actorUtils.getFirstToken(actor);
@@ -28,10 +28,13 @@ function collectActorCheckMacros(actor, pass, checkId, options, roll) {
             },
             macros: effectMacros,
             name: effect.name.slugify(),
-            actor: actor,
-            checkId: checkId,
-            options: options,
-            roll: roll
+            actor,
+            checkId,
+            options,
+            roll,
+            config,
+            dialog,
+            message
         });
     });
     actor.items.forEach(item => {
@@ -47,10 +50,13 @@ function collectActorCheckMacros(actor, pass, checkId, options, roll) {
             },
             macros: itemMacros,
             name: item.name.slugify(),
-            actor: actor,
-            checkId: checkId,
-            options: options,
-            roll: roll
+            actor,
+            checkId,
+            options,
+            roll,
+            config,
+            dialog,
+            message
         });
     });
     if (token) {
@@ -69,17 +75,20 @@ function collectActorCheckMacros(actor, pass, checkId, options, roll) {
                 },
                 macros: templateMacros,
                 name: templateUtils.getName(template).slugify(),
-                actor: actor,
-                checkId: checkId,
-                options: options,
-                roll: roll
+                actor,
+                checkId,
+                options,
+                roll,
+                config,
+                dialog,
+                message
             });
         });
     }
     return triggers;
 }
-function getSortedTriggers(actor, pass, checkId, options, roll) {
-    let allTriggers = collectActorCheckMacros(actor, pass, checkId, options, roll);
+function getSortedTriggers(actor, pass, checkId, options, roll, config, dialog, message) {
+    let allTriggers = collectActorCheckMacros(actor, pass, checkId, options, roll, config, dialog, message);
     let names = new Set(allTriggers.map(i => i.name));
     allTriggers = Object.fromEntries(names.map(i => [i, allTriggers.filter(j => j.name === i)]));
     let maxMap = {};
@@ -116,7 +125,10 @@ function getSortedTriggers(actor, pass, checkId, options, roll) {
                 actor: trigger.actor,
                 checkId: trigger.checkId,
                 options: trigger.options,
-                roll: trigger.roll
+                roll: trigger.roll,
+                config: trigger.config,
+                dialog: trigger.dialog,
+                message: trigger.message
             });
         });
     });
@@ -133,21 +145,21 @@ async function executeMacro(trigger) {
     }
     return result;
 }
-async function executeContextMacroPass(actor, pass, checkId, options) {
+async function executeContextMacroPass(actor, pass, checkId, options, roll, config, dialog, message) {
     genericUtils.log('dev', 'Executing Check Macro Pass: ' + pass);
-    let triggers = getSortedTriggers(actor, pass, checkId, options);
+    let triggers = getSortedTriggers(actor, pass, checkId, options, roll, config, dialog, message);
     let results = [];
     for (let i of triggers) results.push(await executeMacro(i));
     return results.filter(i => i);
 }
-async function executeMacroPass(actor, pass, checkId, options, roll) {
+async function executeMacroPass(actor, pass, checkId, options, roll, config, dialog, message) {
     genericUtils.log('dev', 'Executing Check Macro Pass: ' + pass);
-    let triggers = getSortedTriggers(actor, pass, checkId, options, roll);
+    let triggers = getSortedTriggers(actor, pass, checkId, options, roll, config, dialog, message);
     for (let i of triggers) await executeMacro(i);
 }
-async function executeBonusMacroPass(actor, pass, checkId, options, roll) {
+async function executeBonusMacroPass(actor, pass, checkId, options, roll, config, dialog, message) {
     genericUtils.log('dev', 'Executing Check Macro Pass: ' + pass);
-    let triggers = getSortedTriggers(actor, pass, checkId, options, roll);
+    let triggers = getSortedTriggers(actor, pass, checkId, options, roll, config, dialog, message);
     for (let i of triggers) {
         i.roll = roll;
         let bonusRoll = await executeMacro(i);
@@ -155,9 +167,19 @@ async function executeBonusMacroPass(actor, pass, checkId, options, roll) {
     }
     return CONFIG.Dice.D20Roll.fromRoll(roll);
 }
-async function rollCheck(wrapped, checkId, options = {}) {
-    await executeMacroPass(this, 'situational', checkId, options);
-    let selections = await executeContextMacroPass(this, 'context', checkId, options);
+async function rollCheck(wrapped, config, dialog = {}, message = {}) {
+    let checkId;
+    let event;
+    if (foundry.utils.getType(config) === 'Object') {
+        checkId = config.ability;
+        event = config.event;
+    } else {
+        checkId = config;
+        event = dialog?.event;
+    }
+    let options = {};
+    await executeMacroPass(this, 'situational', checkId, options, undefined, config, dialog, message);
+    let selections = await executeContextMacroPass(this, 'context', checkId, options, undefined, config, dialog, message);
     if (selections.length) {
         let advantages = selections.filter(i => i.type === 'advantage').map(j => ({label: j.label, name: 'advantage'}));
         let disadvantages = selections.filter(i => i.type === 'disadvantage').map(j => ({label: j.label, name: 'disadvantage'}));
@@ -178,40 +200,46 @@ async function rollCheck(wrapped, checkId, options = {}) {
         }
     }
     let overtimeActorUuid;
-    if (options.event) {
-        let target = options.event?.target?.closest('.roll-link, [data-action="rollRequest"], [data-action="concentration"]');
+    if (event) {
+        let target = event.target?.closest('.roll-link, [data-action="rollRequest"], [data-action="concentration"]');
         if (target?.dataset?.midiOvertimeActorUuid) {
             overtimeActorUuid = target.dataset.midiOvertimeActorUuid;
-            options.rollMode = target.dataset.midiRollMode ?? options.rollMode;
+            options.rollMode = target.dataset.midiRollMode ?? target.dataset.rollMode ?? options.rollMode;
         }
     }
     let messageData;
-    let messageDataFunc = (actor, rollData, checkIdInternal) => {
+    let rollMode;
+    let messageDataFunc = (config, dialog, message) => {
+        let actor = config.subject;
+        let checkIdInternal = config.ability;
         if (actor.uuid !== this.uuid || checkIdInternal !== checkId) {
-            Hooks.once('dnd5e.preRollAbilityTest', messageDataFunc);
+            Hooks.once('dnd5e.preRollAbilityCheckV2', messageDataFunc);
             return;
         }
-        messageData = rollData.messageData;
+        messageData = message.data;
         if (overtimeActorUuid) messageData['flags.midi-qol.overtimeActorUuid'] = overtimeActorUuid;
+        rollMode = message.rollMode ?? game.settings.get('core', 'rollMode');
     };
-    Hooks.once('dnd5e.preRollAbilityTest', messageDataFunc);
-    let returnData = await wrapped(checkId, {...options, chatMessage: false});
+    Hooks.once('dnd5e.preRollAbilityCheckV2', messageDataFunc);
+    if (Object.entries(options).length) config.rolls = [{options}];
+    let returnData = await wrapped(config, dialog, {...message, create: false});
+    let shouldBeArray = !!returnData.length;
+    if (shouldBeArray) returnData = returnData[0];
     if (!returnData) return;
     let oldOptions = returnData.options;
-    returnData = await executeBonusMacroPass(this, 'bonus', checkId, options, returnData);
+    returnData = await executeBonusMacroPass(this, 'bonus', checkId, options, returnData, config, dialog, message);
     if (returnData.options) genericUtils.mergeObject(returnData.options, oldOptions);
-    //await executeMacroPass(this, 'optionalBonus', checkId, options, returnData);
-    if (options.chatMessage !== false) {
+    if (message.create !== false) {
         genericUtils.mergeObject(messageData, {flags: options.flags ?? {} });
         genericUtils.setProperty(messageData, 'flags.midi-qol.lmrtfy.requestId', options.flags?.lmrtfy?.data?.requestId);
         messageData.template = 'modules/midi-qol/templates/roll-base.html';
-        await returnData.toMessage(messageData);
+        await returnData.toMessage(messageData, {rollMode: returnData.options?.rollMode ?? rollMode});
     }
-    return returnData;
+    return shouldBeArray ? [returnData] : returnData;
 }
 function patch() {
     genericUtils.log('dev', 'Ability Checks Patched!');
-    libWrapper.register('chris-premades', 'CONFIG.Actor.documentClass.prototype.rollAbilityTest', rollCheck, 'WRAPPER');
+    libWrapper.register('chris-premades', 'CONFIG.Actor.documentClass.prototype.rollAbilityCheck', rollCheck, 'WRAPPER');
 }
 export let abilityCheck = {
     patch

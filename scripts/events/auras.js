@@ -7,7 +7,7 @@ function collectAuraMacros(entity) {
     let macroList = [];
     macroList.push(...getAuraMacroData(entity));
     if (!macroList.length) return [];
-    return macroList.map(i => custom.getMacro(i)).filter(j => j);
+    return macroList.map(i => custom.getMacro(i, genericUtils.getRules(entity))).filter(j => j);
 }
 function collectTokenMacros(token, pass, target) {
     let distance;

@@ -1,10 +1,40 @@
-function addFlags() {
-    let crFlags = Object.keys(CONFIG.DND5E.conditionTypes).map(i => 'flags.chris-premades.CR.' + i);
-    let cvFlags = Object.keys(CONFIG.DND5E.conditionTypes).map(i => 'flags.chris-premades.CV.' + i);
-    DAE.addAutoFields(crFlags.concat(cvFlags));
+import {genericUtils} from '../utils.js';
+
+const daeFieldBrowserFields = [];
+
+function initFlags() {
+    let browserFields = [
+        'flags.chris-premades.senses.magicalDarkness',
+        'flags.chris-premades.turnImmunity',
+        'flags.chris-premades.turnResistance'
+    ];
+    for (let [condition, {label}] of Object.entries(CONFIG.DND5E.conditionTypes)) {
+        browserFields.push('flags.chris-premades.CR.' + condition);
+        browserFields.push('flags.chris-premades.CV.' + condition);
+        foundry.utils.setProperty(game.i18n.translations, 'dae.CPR.fieldData.flags.chris-premades.CV.' + condition, {
+            name: genericUtils.format('CHRISPREMADES.Generic.ConditionVulnerability.Name', {condition: label}),
+            description: genericUtils.format('CHRISPREMADES.Generic.ConditionVulnerability.Description', {condition: label})
+        });
+        foundry.utils.setProperty(game.i18n.translations, 'dae.CPR.fieldData.flags.chris-premades.CR.' + condition, {
+            name: genericUtils.format('CHRISPREMADES.Generic.ConditionResistance.Name', {condition: label}),
+            description: genericUtils.format('CHRISPREMADES.Generic.ConditionResistance.Description', {condition: label})
+        });
+    }
+    daeFieldBrowserFields.push(...Array.from(new Set(browserFields)).sort());
+    DAE.addAutoFields(daeFieldBrowserFields);
+}
+function addFlags(fieldData) {
+    fieldData['CPR'] = daeFieldBrowserFields;
 }
 function renderItemSheet(app, [elem], options) {
-    let headerButton = elem.closest('.window-app').querySelector('.dae-config-itemsheet');
+    let isTidy = app?.classList?.contains?.('tidy5e-sheet');
+    let headerButton;
+    if (isTidy) {
+        headerButton = app.element.querySelector('menu.controls-dropdown i.fa-wrench');
+        if (!headerButton) headerButton = elem.closest('.window-header')?.querySelector('.header-control.fa-wrench');
+    } else {
+        headerButton = elem.closest('.window-app').querySelector('.dae-config-itemsheet');
+    }
     if (!headerButton) return;
     let object = app.object;
     if (!object) return;
@@ -28,6 +58,8 @@ function renderItemSheet(app, [elem], options) {
     headerButton.style.color = color;
 }
 export let dae = {
+    initFlags,
     addFlags,
-    renderItemSheet
+    renderItemSheet,
+    daeFieldBrowserFields
 };

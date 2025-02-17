@@ -1,0 +1,66 @@
+{
+  "name": "Superior Inspiration",
+  "type": "feat",
+  "effects": [],
+  "system": {
+    "activities": {},
+    "uses": {
+      "spent": null,
+      "recovery": [],
+      "max": ""
+    },
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "identifier": "superior-inspiration",
+    "source": {
+      "book": "PHB 2024",
+      "page": "",
+      "license": "",
+      "custom": "",
+      "rules": "2024",
+      "revision": 1
+    },
+    "advancement": [],
+    "cover": null,
+    "crewed": false,
+    "enchant": {},
+    "prerequisites": {
+      "level": 18,
+      "repeatable": false
+    },
+    "properties": [],
+    "requirements": "",
+    "type": {
+      "value": "class",
+      "subtype": ""
+    }
+  },
+  "flags": {
+    "dnd5e": {
+      "advancementOrigin": "wLL6TnmxaO2tTpKg",
+      "riders": {
+        "activity": [],
+        "effect": []
+      }
+    },
+    "chris-premades": {
+      "info": {
+        "identifier": "superiorInspiration",
+        "source": "chris-premades",
+        "rules": "modern",
+        "version": "1.1.34"
+      },
+      "macros": {
+        "combat": [
+          "superiorInspiration"
+        ]
+      }
+    }
+  },
+  "img": "icons/magic/earth/explosion-lava-stone-green.webp",
+  "folder": "jv1qLsd4LTtCBvYj",
+  "_id": "S4YTwKY5KbO6GY94",
+  "_key": "!items!S4YTwKY5KbO6GY94"
+}

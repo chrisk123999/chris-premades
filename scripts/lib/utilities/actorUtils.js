@@ -1,28 +1,39 @@
 import {socket, sockets} from '../sockets.js';
-import {genericUtils, socketUtils} from '../../utils.js';
+import {effectUtils, genericUtils, socketUtils} from '../../utils.js';
 import {ActorMedkit} from '../../applications/medkit-actor.js';
 function getEffects(actor) {
     return Array.from(actor.allApplicableEffects());
 }
-async function addFavorites(actor, items) {
+async function addFavorites(actor, entities, type='item') {
     if (!actor.system.addFavorite) return;
     let hasPermission = socketUtils.hasPermission(actor, game.user.id);
     if (hasPermission) {
-        for (let i of items) await actor.system.addFavorite({
-            id: i.getRelativeUUID(i.actor),
-            type: 'item'
-        });
+        if (type === 'item') {
+            for (let i of entities) await actor.system.addFavorite({
+                id: i.getRelativeUUID(i.actor),
+                type: 'item'
+            });
+        } else if (type === 'activity') {
+            for (let i of entities) await actor.system.addFavorite({
+                id: i.relativeUUID,
+                type: 'activity'
+            });
+        }
     } else {
-        await socket.executeAsGM(sockets.addFavorites.name, actor.uuid, items.map(i => i.uuid));
+        await socket.executeAsGM(sockets.addFavorites.name, actor.uuid, entities.map(i => i.uuid));
     }
 }
-async function removeFavorites(actor, items) {
+async function removeFavorites(actor, entities, type='item') {
     if (!actor.system.removeFavorite) return;
     let hasPermission = socketUtils.hasPermission(actor, game.user.id);
     if (hasPermission) {
-        for (let i of items) await actor.system.removeFavorite(i.getRelativeUUID(i.actor));
+        if (type === 'item') {
+            for (let i of entities) await actor.system.removeFavorite(i.getRelativeUUID(i.actor));
+        } else if (type === 'activity') {
+            for (let i of entities) await actor.system.removeFavorite(i.relativeUUID);
+        }
     } else {
-        await socket.executeAsGM(sockets.removeFavorites.name, actor.uuid, items.map(i => i.uuid));
+        await socket.executeAsGM(sockets.removeFavorites.name, actor.uuid, entities.map(i => i.uuid));
     }
 }
 function getTokens(actor) {
@@ -128,6 +139,27 @@ function getCastableSpells(actor) {
     validSpells = validSpells.filter(i => !i.system.hasLimitedUses || i.system.uses.value);
     // If no spell slot (and requires), remove
     validSpells = validSpells.filter(i => ['atwill', 'innate'].includes(i.system.preparation.mode) || maxSlot >= i.system.level);
+    // Cast activity shenanigans
+    validSpells = validSpells.filter(i => {
+        let linkedActivity = i.system.linkedActivity;
+        if (!linkedActivity) return true;
+        for (let target of linkedActivity.consumption.targets ?? []) {
+            if (target.type === 'itemUses') {
+                let targetItem;
+                if (!target.target?.length) {
+                    targetItem = linkedActivity.item;
+                } else {
+                    targetItem = actor.items.get(target.target);
+                }
+                if (Number(targetItem?.system.uses.value ?? 0) < Number(target.value ?? 0)) return false;
+            } else if (target.type === 'activityUses') {
+                if (Number(linkedActivity.uses.value ?? 0) < Number(target.value ?? 0)) return false;
+            } else if (target.type === 'material') {
+                if (Number(actor.items.get(target.target)?.system.quantity ?? 0) < Number(target.value ?? 0)) return false;
+            }
+            return true;
+        }
+    });
     return validSpells;
 }
 function isShapeChanger(actor) {
@@ -154,6 +186,32 @@ async function updateAll(actor) {
     let summary = await ActorMedkit.actorUpdateAll(actor);
     return summary;
 }
+function getEquivalentSpellSlotName(actor, level) {
+    return Object.entries(actor.system.spells)?.find(i => i[1].level == level)?.[0];
+}
+function getEquippedArmor(actor, types = ['heavy', 'medium', 'light']) {
+    return actor.items.find(i => types.includes(i.system.type?.value) && i.system.equipped);
+}
+function getEquippedShield(actor) {
+    return actor.items.find(i => i.system.type?.value === 'shield' && i.system.equipped);
+}
+function getAllEquippedArmor(actor) {
+    return actor.items.find(i => Object.keys(CONFIG.DND5E.armorTypes).includes(i.system.type?.value) && i.system.equipped);
+}
+async function hasConditionBy(sourceActor, targetActor, statusId) {
+    let condition = effectUtils.getEffectByStatusID(targetActor, statusId);
+    if (!condition) return false;
+    let validKeys = ['macro.CE', 'macro.CUB', 'macro.StatusEffect', 'StatusEffect'];
+    let hasCondition = await actorUtils.getEffects(targetActor).find(async effect => {
+        let originItem = await effectUtils.getOriginItem(effect);
+        if (!originItem) return;
+        if (originItem?.actor != sourceActor) return;
+        if (effect.statuses.has(statusId)) return true;
+        if (effect.flags['chris-premades']?.conditions?.includes(statusId)) return true;
+        if (effect.changes.find(i => validKeys.includes(i.key) && i.value.toLowerCase() === statusId)) return true;
+    });
+    return hasCondition ? true : false;
+}
 export let actorUtils = {
     getEffects,
     addFavorites,
@@ -178,5 +236,10 @@ export let actorUtils = {
     isShapeChanger,
     doConcentrationCheck,
     polymorph,
-    updateAll
+    updateAll,
+    getEquivalentSpellSlotName,
+    getEquippedArmor,
+    getEquippedShield,
+    getAllEquippedArmor,
+    hasConditionBy
 };

@@ -1,4 +1,4 @@
-import {genericUtils, itemUtils} from '../utils.js';
+import {activityUtils, genericUtils, itemUtils, workflowUtils} from '../utils.js';
 function createEffectButtons(effect, buttons) {
     let buttonData = effect.flags['chris-premades']?.vae?.buttons;
     if (!buttonData) return;
@@ -16,7 +16,16 @@ function createEffectButtons(effect, buttons) {
                         } else {
                             item = actor.items.getName(i.name);
                         }
-                        if (item) item.use();
+                        if (item) {
+                            if (i.activityIdentifier) {
+                                let activity = activityUtils.getActivityByIdentifier(item, i.activityIdentifier);
+                                if (activity) {
+                                    activity.use();
+                                    return;
+                                }
+                            }
+                            workflowUtils.completeItemUse(item);
+                        }
                     }
                 });
                 break;

@@ -1,0 +1,483 @@
+{
+  "name": "Beguiling Magic",
+  "type": "feat",
+  "effects": [
+    {
+      "name": "Beguiling Magic: Charmed",
+      "img": "icons/magic/control/hypnosis-mesmerism-eye.webp",
+      "origin": "Actor.yy1I4W4hqhw1yaiM.Item.XcBdesP0caMmVZiA",
+      "transfer": false,
+      "_id": "kIF50ciAuOZn7GG9",
+      "type": "base",
+      "system": {},
+      "changes": [
+        {
+          "key": "flags.midi-qol.OverTime",
+          "value": "turn=end,allowIncapacitated=true,rollType=save,saveAbility=wis,saveDC=$activity.dc,saveDamage=nodamage,saveRemove=true,rollMode=publicroll,",
+          "mode": 0,
+          "priority": 20
+        }
+      ],
+      "disabled": false,
+      "duration": {
+        "startTime": null,
+        "seconds": null,
+        "combat": null,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "statuses": [],
+      "sort": 0,
+      "flags": {
+        "dae": {
+          "enableCondition": "",
+          "disableCondition": "",
+          "disableIncapacitated": false,
+          "selfTarget": false,
+          "selfTargetAlways": false,
+          "dontApply": false,
+          "stackable": "multi",
+          "showIcon": false,
+          "durationExpression": "",
+          "macroRepeat": "none",
+          "specialDuration": []
+        },
+        "core": {
+          "overlay": false
+        },
+        "chris-premades": {
+          "noAnimation": false,
+          "conditions": [
+            "charmed"
+          ],
+          "specialDuration": []
+        },
+        "dnd5e": {
+          "dependents": [
+            {
+              "uuid": "Scene.iGwlIbnzeJk0iHC2.Token.814H5swGSqJITzez.Actor.szyevsXsdQSq5snz.ActiveEffect.zOdrDhYbywj4XOvZ"
+            },
+            {
+              "uuid": "Scene.iGwlIbnzeJk0iHC2.Token.814H5swGSqJITzez.Actor.szyevsXsdQSq5snz.ActiveEffect.Qb6sraHi61qyGm2b"
+            },
+            {
+              "uuid": "Scene.iGwlIbnzeJk0iHC2.Token.814H5swGSqJITzez.Actor.szyevsXsdQSq5snz.ActiveEffect.gGMMNKoETj98rY7t"
+            },
+            {
+              "uuid": "Scene.iGwlIbnzeJk0iHC2.Token.814H5swGSqJITzez.Actor.szyevsXsdQSq5snz.ActiveEffect.wf8vW4cPXj30nmm4"
+            },
+            {
+              "uuid": "Scene.iGwlIbnzeJk0iHC2.Token.814H5swGSqJITzez.Actor.szyevsXsdQSq5snz.ActiveEffect.cnZ4k9tiMNk3HDMO"
+            },
+            {
+              "uuid": "Scene.iGwlIbnzeJk0iHC2.Token.814H5swGSqJITzez.Actor.szyevsXsdQSq5snz.ActiveEffect.gEVkYKV6YvAgDod1"
+            },
+            {
+              "uuid": "Scene.iGwlIbnzeJk0iHC2.Token.814H5swGSqJITzez.Actor.szyevsXsdQSq5snz.ActiveEffect.boRrO0q2xgLjoeyG"
+            },
+            {
+              "uuid": "Scene.iGwlIbnzeJk0iHC2.Token.814H5swGSqJITzez.Actor.szyevsXsdQSq5snz.ActiveEffect.br0NefzbRA9P856L"
+            },
+            {
+              "uuid": "Scene.iGwlIbnzeJk0iHC2.Token.814H5swGSqJITzez.Actor.szyevsXsdQSq5snz.ActiveEffect.d4ZtIHLOWniJYyK4"
+            }
+          ]
+        }
+      },
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "coreVersion": "12.331",
+        "systemId": "dnd5e",
+        "systemVersion": "4.2.2",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!items.effects!MYMzSKW3VzMM2mWs.kIF50ciAuOZn7GG9"
+    },
+    {
+      "name": "Beguiling Magic: Frightened",
+      "img": "icons/magic/control/hypnosis-mesmerism-eye.webp",
+      "origin": "Actor.yy1I4W4hqhw1yaiM.Item.XcBdesP0caMmVZiA",
+      "transfer": false,
+      "_id": "PgxKbV7Wg2O8HDBA",
+      "type": "base",
+      "system": {},
+      "changes": [
+        {
+          "key": "flags.midi-qol.OverTime",
+          "value": "turn=end,allowIncapacitated=true,rollType=save,saveAbility=wis,saveDC=$activity.dc,saveDamage=nodamage,saveRemove=true,rollMode=publicroll,",
+          "mode": 0,
+          "priority": 20
+        }
+      ],
+      "disabled": false,
+      "duration": {
+        "startTime": null,
+        "seconds": null,
+        "combat": null,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "statuses": [],
+      "sort": 0,
+      "flags": {
+        "chris-premades": {
+          "noAnimation": false,
+          "conditions": [
+            "frightened"
+          ],
+          "specialDuration": []
+        },
+        "dae": {
+          "enableCondition": "",
+          "disableCondition": "",
+          "disableIncapacitated": false,
+          "selfTarget": false,
+          "selfTargetAlways": false,
+          "dontApply": false,
+          "stackable": "multi",
+          "showIcon": false,
+          "durationExpression": "",
+          "macroRepeat": "none",
+          "specialDuration": []
+        },
+        "core": {
+          "overlay": false
+        },
+        "dnd5e": {
+          "dependents": [
+            {
+              "uuid": "Scene.iGwlIbnzeJk0iHC2.Token.814H5swGSqJITzez.Actor.szyevsXsdQSq5snz.ActiveEffect.Flp8Zss1UkTD4wzX"
+            },
+            {
+              "uuid": "Scene.iGwlIbnzeJk0iHC2.Token.814H5swGSqJITzez.Actor.szyevsXsdQSq5snz.ActiveEffect.GYsAIEYVIxj3h1o2"
+            },
+            {
+              "uuid": "Scene.iGwlIbnzeJk0iHC2.Token.814H5swGSqJITzez.Actor.szyevsXsdQSq5snz.ActiveEffect.1RGACypjT8rTmiz9"
+            },
+            {
+              "uuid": "Scene.iGwlIbnzeJk0iHC2.Token.814H5swGSqJITzez.Actor.szyevsXsdQSq5snz.ActiveEffect.Le5mLZf7qnvOM1I5"
+            }
+          ]
+        }
+      },
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "coreVersion": "12.331",
+        "systemId": "dnd5e",
+        "systemVersion": "4.2.2",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!items.effects!MYMzSKW3VzMM2mWs.PgxKbV7Wg2O8HDBA"
+    }
+  ],
+  "system": {
+    "activities": {
+      "9C9dvr6FwMeOu1cn": {
+        "type": "save",
+        "_id": "9C9dvr6FwMeOu1cn",
+        "sort": 0,
+        "activation": {
+          "type": "special",
+          "value": null,
+          "override": false,
+          "condition": ""
+        },
+        "consumption": {
+          "scaling": {
+            "allowed": false
+          },
+          "spellSlot": true,
+          "targets": [
+            {
+              "type": "itemUses",
+              "value": "1",
+              "target": "",
+              "scaling": {}
+            }
+          ]
+        },
+        "description": {
+          "chatFlavor": "Beguiling Magic: Charm"
+        },
+        "duration": {
+          "units": "minute",
+          "concentration": false,
+          "override": false,
+          "value": "1"
+        },
+        "effects": [
+          {
+            "_id": "kIF50ciAuOZn7GG9",
+            "onSave": false
+          }
+        ],
+        "range": {
+          "override": false,
+          "units": "ft",
+          "special": "",
+          "value": "60"
+        },
+        "target": {
+          "template": {
+            "contiguous": false,
+            "units": "ft",
+            "type": ""
+          },
+          "affects": {
+            "choice": false,
+            "type": "creature",
+            "count": "1",
+            "special": ""
+          },
+          "override": false,
+          "prompt": true
+        },
+        "uses": {
+          "spent": 0,
+          "recovery": [],
+          "max": ""
+        },
+        "damage": {
+          "parts": [],
+          "critical": {
+            "allow": false
+          },
+          "onSave": "half"
+        },
+        "save": {
+          "ability": [
+            "wis"
+          ],
+          "dc": {
+            "calculation": "cha",
+            "formula": ""
+          }
+        },
+        "useConditionText": "",
+        "effectConditionText": "",
+        "macroData": {
+          "name": "",
+          "command": ""
+        },
+        "ignoreTraits": {
+          "idi": false,
+          "idr": false,
+          "idv": false,
+          "ida": false
+        },
+        "midiProperties": {
+          "ignoreTraits": [],
+          "triggeredActivityId": "none",
+          "triggeredActivityConditionText": "",
+          "triggeredActivityTargets": "targets",
+          "triggeredActivityRollAs": "self",
+          "forceDialog": false,
+          "confirmTargets": "default",
+          "autoTargetType": "any",
+          "autoTargetAction": "default",
+          "automationOnly": false,
+          "otherActivityCompatible": false,
+          "identifier": ""
+        },
+        "name": "Charm"
+      },
+      "K1E9eK2Dy5J3yinS": {
+        "type": "save",
+        "sort": 0,
+        "activation": {
+          "type": "special",
+          "value": null,
+          "override": false,
+          "condition": ""
+        },
+        "consumption": {
+          "scaling": {
+            "allowed": false
+          },
+          "spellSlot": true,
+          "targets": [
+            {
+              "type": "itemUses",
+              "value": "1",
+              "scaling": {}
+            }
+          ]
+        },
+        "description": {
+          "chatFlavor": "Beguiling Magic: Frighten"
+        },
+        "duration": {
+          "units": "minute",
+          "concentration": false,
+          "override": false,
+          "value": "1"
+        },
+        "effects": [
+          {
+            "_id": "PgxKbV7Wg2O8HDBA",
+            "onSave": false
+          }
+        ],
+        "range": {
+          "override": false,
+          "value": "60",
+          "units": "ft",
+          "special": ""
+        },
+        "target": {
+          "template": {
+            "contiguous": false,
+            "units": "ft",
+            "type": ""
+          },
+          "affects": {
+            "choice": false,
+            "count": "1",
+            "type": "creature",
+            "special": ""
+          },
+          "override": false,
+          "prompt": true
+        },
+        "uses": {
+          "spent": 0,
+          "recovery": [],
+          "max": ""
+        },
+        "damage": {
+          "parts": [],
+          "critical": {
+            "allow": false
+          },
+          "onSave": "half"
+        },
+        "save": {
+          "ability": [
+            "wis"
+          ],
+          "dc": {
+            "calculation": "cha",
+            "formula": ""
+          }
+        },
+        "useConditionText": "",
+        "effectConditionText": "",
+        "macroData": {
+          "name": "",
+          "command": ""
+        },
+        "ignoreTraits": {
+          "idi": false,
+          "idr": false,
+          "idv": false,
+          "ida": false
+        },
+        "midiProperties": {
+          "ignoreTraits": [],
+          "triggeredActivityId": "none",
+          "triggeredActivityConditionText": "",
+          "triggeredActivityTargets": "targets",
+          "triggeredActivityRollAs": "self",
+          "forceDialog": false,
+          "confirmTargets": "default",
+          "autoTargetType": "any",
+          "autoTargetAction": "default",
+          "automationOnly": false,
+          "otherActivityCompatible": false,
+          "identifier": ""
+        },
+        "name": "Fear",
+        "_id": "K1E9eK2Dy5J3yinS"
+      }
+    },
+    "uses": {
+      "spent": 1,
+      "max": "1",
+      "recovery": [
+        {
+          "period": "lr",
+          "type": "recoverAll"
+        }
+      ]
+    },
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "identifier": "beguiling-magic",
+    "source": {
+      "book": "PHB 2024",
+      "page": "",
+      "license": "",
+      "custom": "",
+      "rules": "2024",
+      "revision": 1
+    },
+    "advancement": [],
+    "cover": null,
+    "crewed": false,
+    "enchant": {},
+    "prerequisites": {
+      "level": 3,
+      "repeatable": false
+    },
+    "properties": [],
+    "requirements": "",
+    "type": {
+      "value": "class",
+      "subtype": ""
+    }
+  },
+  "flags": {
+    "midi-qol": {
+      "removeAttackDamageButtons": "default",
+      "forceCEOff": true
+    },
+    "midiProperties": {
+      "confirmTargets": "default"
+    },
+    "dnd5e": {
+      "riders": {
+        "activity": [],
+        "effect": []
+      },
+      "advancementOrigin": "wLL6TnmxaO2tTpKg"
+    },
+    "chris-premades": {
+      "info": {
+        "identifier": "beguilingMagic",
+        "source": "chris-premades",
+        "rules": "modern",
+        "version": "1.1.39"
+      },
+      "macros": {
+        "midi": {
+          "item": [
+            "beguilingMagic"
+          ],
+          "actor": [
+            "beguilingMagic"
+          ]
+        }
+      }
+    }
+  },
+  "img": "icons/magic/control/hypnosis-mesmerism-eye.webp",
+  "folder": "fEbXNrR2Eeul7xhp",
+  "_id": "MYMzSKW3VzMM2mWs",
+  "_key": "!items!MYMzSKW3VzMM2mWs"
+}

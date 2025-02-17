@@ -1,0 +1,128 @@
+{
+  "name": "Unarmored Defense (Barbarian)",
+  "type": "feat",
+  "effects": [
+    {
+      "name": "Unarmored Defense",
+      "changes": [
+        {
+          "key": "system.attributes.ac.calc",
+          "mode": 5,
+          "value": "unarmoredBarb",
+          "priority": 20
+        }
+      ],
+      "transfer": true,
+      "img": "icons/magic/control/buff-flight-wings-runes-red.webp",
+      "_id": "AzipgfcbXdVtqFvX",
+      "type": "base",
+      "system": {},
+      "disabled": false,
+      "duration": {
+        "startTime": null,
+        "seconds": null,
+        "combat": null,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "description": "",
+      "origin": "Actor.yy1I4W4hqhw1yaiM.Item.S2RQX3ozBTpaR6b2",
+      "tint": "#ffffff",
+      "statuses": [],
+      "sort": 0,
+      "flags": {
+        "dae": {
+          "disableCondition": "",
+          "disableIncapacitated": false,
+          "stackable": "multi",
+          "showIcon": false,
+          "durationExpression": "",
+          "macroRepeat": "none",
+          "specialDuration": []
+        },
+        "core": {
+          "overlay": false
+        }
+      },
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "coreVersion": "12.331",
+        "systemId": "dnd5e",
+        "systemVersion": "4.2.2",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!items.effects!y5cAI01kFeDPZehc.AzipgfcbXdVtqFvX"
+    }
+  ],
+  "system": {
+    "activities": {},
+    "uses": {
+      "spent": 0,
+      "recovery": []
+    },
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "identifier": "unarmored-defense",
+    "source": {
+      "book": "PHB 2024",
+      "page": "",
+      "license": "",
+      "custom": "",
+      "rules": "2024",
+      "revision": 1
+    },
+    "enchant": {},
+    "type": {
+      "value": "class",
+      "subtype": ""
+    },
+    "prerequisites": {
+      "level": 1,
+      "repeatable": false
+    },
+    "properties": [],
+    "requirements": "",
+    "advancement": [],
+    "cover": null,
+    "crewed": false
+  },
+  "flags": {
+    "midi-qol": {
+      "removeAttackDamageButtons": "default",
+      "forceCEOff": true
+    },
+    "midiProperties": {
+      "confirmTargets": "default"
+    },
+    "dae": {
+      "alwaysActive": false,
+      "activeEquipped": false
+    },
+    "dnd5e": {
+      "riders": {
+        "activity": [],
+        "effect": []
+      },
+      "advancementOrigin": "nwupzjujWuejv7P9"
+    },
+    "chris-premades": {
+      "info": {
+        "identifier": "unarmoredDefenseBarbarian",
+        "source": "chris-premades",
+        "rules": "modern",
+        "version": "1.1.22"
+      }
+    }
+  },
+  "img": "icons/magic/control/buff-flight-wings-runes-red.webp",
+  "folder": "epodEYV6OzWsQdIP",
+  "_id": "y5cAI01kFeDPZehc",
+  "_key": "!items!y5cAI01kFeDPZehc"
+}

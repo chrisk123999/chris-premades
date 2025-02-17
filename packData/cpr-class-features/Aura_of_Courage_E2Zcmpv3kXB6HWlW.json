@@ -1,0 +1,94 @@
+{
+  "name": "Aura of Courage",
+  "type": "feat",
+  "system": {
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "source": {
+      "custom": "Paladin",
+      "revision": 1,
+      "rules": "2014"
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "recovery": []
+    },
+    "type": {
+      "value": "class",
+      "subtype": ""
+    },
+    "requirements": "",
+    "properties": [],
+    "prerequisites": {
+      "level": null
+    },
+    "activities": {},
+    "identifier": "aura-of-courage",
+    "enchant": {}
+  },
+  "flags": {
+    "core": {
+      "sourceId": "Actor.iXZRAxrrFFxPX0g6.Item.jQv0irz21RRIUj5d"
+    },
+    "midiProperties": {
+      "confirmTargets": "default",
+      "autoFailFriendly": false,
+      "autoSaveFriendly": false,
+      "critOther": false,
+      "offHandWeapon": false,
+      "magicdam": false,
+      "magiceffect": false,
+      "concentration": false,
+      "noConcentrationCheck": false,
+      "toggleEffect": false,
+      "ignoreTotalCover": false,
+      "idr": false,
+      "idi": false,
+      "idv": false,
+      "ida": false
+    },
+    "midi-qol": {
+      "rollAttackPerTarget": "default",
+      "effectActivation": false,
+      "itemCondition": "",
+      "reactionCondition": "",
+      "otherCondition": "",
+      "effectCondition": "",
+      "AoETargetType": "any",
+      "AoETargetTypeIncludeSelf": true,
+      "autoTarget": "default",
+      "removeAttackDamageButtons": "default"
+    },
+    "dnd5e": {
+      "dependents": [
+        {
+          "uuid": "Actor.zSNpJfaQtnGKbIvI.ActiveEffect.KcFl8iCU0RJDtSsz"
+        }
+      ],
+      "riders": {
+        "activity": []
+      }
+    },
+    "chris-premades": {
+      "info": {
+        "name": "Aura of Courage",
+        "version": "1.1.0",
+        "identifier": "auraOfCourage",
+        "source": "chris-premades"
+      },
+      "macros": {
+        "aura": [
+          "auraOfCourage"
+        ]
+      }
+    }
+  },
+  "effects": [],
+  "img": "icons/magic/light/explosion-beam-impact-silhouette.webp",
+  "folder": "zPkRF8dbQaQ6ixi0",
+  "_id": "E2Zcmpv3kXB6HWlW",
+  "_key": "!items!E2Zcmpv3kXB6HWlW"
+}

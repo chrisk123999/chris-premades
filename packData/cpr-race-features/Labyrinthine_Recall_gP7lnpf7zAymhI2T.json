@@ -1,0 +1,87 @@
+{
+  "name": "Labyrinthine Recall",
+  "type": "feat",
+  "system": {
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "source": {
+      "custom": "Mordenkainen Presents: Monsters of the Multiverse pg 27",
+      "revision": 1,
+      "rules": "2014"
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "recovery": []
+    },
+    "type": {
+      "value": "race",
+      "subtype": ""
+    },
+    "requirements": "",
+    "properties": [],
+    "prerequisites": {
+      "level": null
+    },
+    "activities": {},
+    "identifier": "labyrinthine-recall",
+    "enchant": {}
+  },
+  "flags": {
+    "core": {
+      "sourceId": "Actor.IlpCynnAcU8YiYdx.Item.m7DZALufzgkHcdUY"
+    },
+    "chris-premades": {
+      "info": {
+        "name": "Labyrinthine Recall",
+        "version": "1.1.0",
+        "identifier": "labyrinthineRecall",
+        "source": "chris-premades"
+      },
+      "macros": {
+        "skill": [
+          "labyrinthineRecall"
+        ]
+      }
+    },
+    "midiProperties": {
+      "confirmTargets": "default",
+      "autoFailFriendly": false,
+      "autoSaveFriendly": false,
+      "critOther": false,
+      "offHandWeapon": false,
+      "magicdam": false,
+      "magiceffect": false,
+      "noConcentrationCheck": false,
+      "toggleEffect": false,
+      "ignoreTotalCover": false,
+      "idr": false,
+      "idi": false,
+      "idv": false,
+      "ida": false
+    },
+    "midi-qol": {
+      "rollAttackPerTarget": "default",
+      "itemCondition": "",
+      "effectCondition": "",
+      "AoETargetType": "any",
+      "AoETargetTypeIncludeSelf": true,
+      "autoTarget": "default",
+      "removeAttackDamageButtons": "default",
+      "reactionCondition": "",
+      "otherCondition": ""
+    },
+    "dnd5e": {
+      "riders": {
+        "activity": []
+      }
+    }
+  },
+  "effects": [],
+  "img": "icons/environment/settlement/fence-stone-brick.webp",
+  "folder": "SmPRBnJyelcElCkV",
+  "_id": "gP7lnpf7zAymhI2T",
+  "_key": "!items!gP7lnpf7zAymhI2T"
+}

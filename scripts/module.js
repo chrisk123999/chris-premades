@@ -7,6 +7,7 @@ import {Crosshairs} from './lib/crosshairs.js';
 import {customTypes} from './extensions/customTypes.js';
 import * as utils from './utils.js';
 import * as macros from './macros.js';
+import * as legacyMacros from './legacyMacros.js';
 import {effectInterface} from './applications/effectInterface.js';
 import {macroInterface} from './applications/macroInterface.js';
 import {settingButton} from './applications/settings.js';
@@ -14,7 +15,6 @@ import {effectHud} from './applications/effectHud.js';
 import {conditions} from './extensions/conditions.js';
 import {Summons} from './lib/summons.js';
 import {registerSockets} from './lib/sockets.js';
-import {workflow} from './extensions/workflow.js';
 import {Teleport} from './lib/teleport.js';
 import {backup} from './extensions/backup.js';
 import {selectTool} from './extensions/selectTool.js';
@@ -33,6 +33,9 @@ import {rollResolver} from './extensions/rollResolver.js';
 import {dae} from './integrations/dae.js';
 import {abilityCheck} from './events/abilityCheck.js';
 import {itemDirectory} from './applications/itemDirectory.js';
+import {activities} from './extensions/activities.js';
+import {migrate} from './migrations.js';
+import {initiative} from './extensions/initiative.js';
 Hooks.once('socketlib.ready', registerSockets);
 Hooks.once('init', () => {
     registerSettings();
@@ -55,10 +58,10 @@ Hooks.once('ready', () => {
     custom.ready();
     effectEvents.ready();
     troubleshooter.startup();
-    workflow.setup();
+    // workflow.setup();
     registerHooks();
     ddbi.ready();
-    dae.addFlags();
+    dae.initFlags();
     if (game.modules.get('gambits-premades')?.active) gambitPremades.init(utils.genericUtils.getCPRSetting('gambitPremades'));
     if (game.modules.get('midi-item-showcase-community')?.active) miscPremades.init(utils.genericUtils.getCPRSetting('miscPremades'));
     if (utils.genericUtils.getCPRSetting('disableSpecialEffects')) conditions.disableSpecialEffects(true);
@@ -72,10 +75,16 @@ Hooks.once('ready', () => {
     abilitySave.patch();
     skillCheck.patch();
     abilityCheck.patch();
+    if (utils.genericUtils.getCPRSetting('groupSummonsWithOwner')) initiative.patch(true);
     if (utils.genericUtils.getCPRSetting('manualRollsGMFulfils')) rollResolver.patch(true);
-    if (game.modules.get('ddb-importer')?.active) ddbi.workaround(); //Remove this after MrPrimate updates to the new API.
-    if (utils.genericUtils.getCPRSetting('manualRollsEnabled')) rollResolver.registerFulfillmentMethod(); 
+    if (utils.genericUtils.getCPRSetting('manualRollsEnabled')) {
+        rollResolver.registerFulfillmentMethod();
+        if (foundry.utils.isNewerVersion('4.3', game.system.version)) rollResolver.patchBuild(true); // remove when 4.3+ only
+    }
     tours.checkTour();
+    if (utils.genericUtils.getCPRSetting('activityCSSTweak')) activities.cssTweak();
+    if (!game.user.isGM) return;
+    if (utils.genericUtils.getCPRSetting('migrationVersion') !== game.modules.get('chris-premades').version) migrate();
 });
 globalThis['chrisPremades'] = {
     DialogApp,
@@ -85,5 +94,11 @@ globalThis['chrisPremades'] = {
     Teleport,
     utils,
     macros,
+    legacyMacros,
     settingButton,
+    integration: {
+        ddbi: ddbi.getAutomation
+    },
+    customMacros: custom.getCustomMacroList,
+    doBackup: backup.doBackup
 };

@@ -1,6 +1,6 @@
 import {custom} from './custom.js';
 import {actorUtils, effectUtils, genericUtils, itemUtils} from '../utils.js';
-import {bg3} from '../macros/homebrew/bg3WeaponActions.js';
+import {bg3} from '../macros/2014/homebrew/bg3WeaponActions.js';
 function getRestMacros(entity) {
     return entity.flags['chris-premades']?.macros?.rest ?? [];
 }
@@ -8,7 +8,7 @@ function collectRestMacros(entity, pass) {
     let macroList = [];
     macroList.push(...getRestMacros(entity));
     if (!macroList.length) return [];
-    return macroList.map(i => custom.getMacro(i)).filter(j => j).filter(k => k.rest?.find(l => l.pass === pass)).flatMap(m => m.rest).filter(n => n.pass === pass);
+    return macroList.map(i => custom.getMacro(i, genericUtils.getRules(entity))).filter(j => j).filter(k => k.rest?.find(l => l.pass === pass)).flatMap(m => m.rest).filter(n => n.pass === pass);
 }
 function collectAllMacros(actor, pass) {
     let triggers = [];
