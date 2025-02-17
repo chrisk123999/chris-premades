@@ -28,7 +28,10 @@ import {itemEvent} from './events/createItem.js';
 export function registerHooks() {
     Hooks.on('createSetting', genericUtils.createUpdateSetting);
     Hooks.on('updateSetting', genericUtils.createUpdateSetting);
-    if (genericUtils.getCPRSetting('effectInterface')) effectInterface.ready();
+    if (genericUtils.getCPRSetting('effectInterface')) {
+        effectInterface.ready();
+        Hooks.on('midi-qol.ready', effectInterface.checkEffectItem);
+    }
     Hooks.on('changeSidebarTab', sidebar.removeCompendiums);
     Hooks.on('renderCompendiumDirectory', sidebar.removeCompendiums);
 

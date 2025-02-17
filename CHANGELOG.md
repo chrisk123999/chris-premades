@@ -3,6 +3,7 @@
 - Sharpshooter (Legacy)
 - Piercer (Legacy)
 - Sneak Attack (Legacy)
+- Effect Interface
 
 # 1.2.0 Release:
 ## Update Notes:
