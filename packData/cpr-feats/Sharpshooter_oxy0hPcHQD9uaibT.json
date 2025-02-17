@@ -144,7 +144,7 @@
       "info": {
         "identifier": "sharpshooter",
         "source": "chris-premades",
-        "version": "1.1.0"
+        "version": "1.2.1"
       },
       "macros": {
         "midi": {
@@ -160,7 +160,7 @@
       "img": "icons/skills/ranged/arrow-flying-white-blue.webp",
       "changes": [
         {
-          "key": "flags.midi-qol.sharpShooter",
+          "key": "flags.dnd5e.sharpShooter",
           "mode": 0,
           "value": "1",
           "priority": 30

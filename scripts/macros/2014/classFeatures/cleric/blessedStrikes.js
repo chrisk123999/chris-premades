@@ -9,7 +9,7 @@ async function damage({trigger: {entity: item}, workflow}) {
     let damageType = itemUtils.getConfig(item, 'damageType');
     await workflowUtils.bonusDamage(workflow, '1d8[radiant]', {damageType});
     if (combatUtils.inCombat()) await genericUtils.setFlag(item, 'chris-premades', 'blessedStrikes.used', true);
-    await item.use();
+    await workflowUtils.completeItemUse(item);
 }
 async function clearUsed({trigger: {entity: item}}) {
     await genericUtils.setFlag(item, 'chris-premades', 'blessedStrikes.used', false);

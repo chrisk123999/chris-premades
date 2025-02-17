@@ -10,7 +10,7 @@ async function save({trigger: {config, roll, actor, entity: item}}) {
     if (roll.total >= targetValue) return;
     let selection = await dialogUtils.confirm(item.name, genericUtils.format('CHRISPREMADES.Macros.FanaticalFocus.Use', {item: item.name, total: roll.total}));
     if (!selection) return;
-    await item.use();
+    await workflowUtils.completeItemUse(item);
     genericUtils.setProperty(config, 'chris-premades.fanaticalFocus', true);
     let newSave = await actor.rollSavingThrow(config, undefined, {create: false});
     let classIdentifier = itemUtils.getConfig(item, 'classIdentifier');

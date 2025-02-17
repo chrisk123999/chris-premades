@@ -9,7 +9,7 @@ async function late({trigger: {entity: item}, workflow}) {
     let selected = await dialogUtils.selectTargetDialog(workflow.item.name, genericUtils.format('CHRISPREMADES.Dialog.Use', {itemName: item.name}), nearbyTargets);
     if (!selected?.length) return;
     let newTarget = selected[0];
-    await item.use();
+    await workflowUtils.completeItemUse(item);
     let newFeatureData = genericUtils.duplicate(workflow.item.toObject());
     genericUtils.setProperty(newFeatureData, 'flags.chris-premades.reap', true);
     await workflowUtils.syntheticItemDataRoll(newFeatureData, workflow.actor, [newTarget]);

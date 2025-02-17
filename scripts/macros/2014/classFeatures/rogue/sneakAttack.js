@@ -205,12 +205,12 @@ async function damage({trigger: {entity: item}, workflow}) {
     let eyeFeature = itemUtils.getItemByIdentifier(workflow.actor, 'eyeForWeakness');
     if (iTarget && eyeFeature) bonusDamageFormula += ' + 3d6';
     await workflowUtils.bonusDamage(workflow, bonusDamageFormula, {damageType: workflow.defaultDamageType});
-    await item.use();
-    if (displayRakish) await rakishAudacity.use();
+    await workflowUtils.completeItemUse(item);
+    if (displayRakish) await workflowUtils.completeItemUse(rakishAudacity);
     if (iTarget) {
         let feature = itemUtils.getItemByIdentifier(workflow.actor, 'insightfulFighting');
         if (feature) await feature.displayCard();
-        if (eyeFeature) eyeFeature.use();
+        if (eyeFeature) await workflowUtils.completeItemUse(eyeFeature);
     }
     let playAnimation = itemUtils.getConfig(item, 'playAnimation');
     if (!animationUtils.aseCheck() || animationUtils.jb2aCheck() != 'patreon') playAnimation = false;

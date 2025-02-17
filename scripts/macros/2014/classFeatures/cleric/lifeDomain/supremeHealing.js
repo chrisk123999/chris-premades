@@ -11,7 +11,7 @@ async function heal({trigger, workflow}) {
         return roll;
     }));
     await workflow.setDamageRolls(damageRolls);
-    await trigger.entity.use();
+    await workflowUtils.completeItemUse(trigger.entity);
 }
 export let supremeHealing = {
     name: 'Supreme Healing',

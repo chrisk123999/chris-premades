@@ -1,4 +1,4 @@
-import {actorUtils, dialogUtils, genericUtils, itemUtils, socketUtils} from '../../../../../utils.js';
+import {actorUtils, dialogUtils, genericUtils, itemUtils, socketUtils, workflowUtils} from '../../../../../utils.js';
 async function damageApplication({trigger: {token}, ditem}) {
     if (!actorUtils.hasSpellSlots(token.actor)) return;
     if (actorUtils.hasUsedReaction(token.actor)) return;
@@ -22,7 +22,7 @@ async function damageApplication({trigger: {token}, ditem}) {
         type: 'none'
     });
     ditem.hpDamage = totalDone - damageReduction;
-    await originItem.use();
+    await workflowUtils.completeItemUse(originItem);
 }
 export let songOfDefense = {
     name: 'Song of Defense',

@@ -6,7 +6,7 @@ async function damage({trigger: {entity: item}, workflow}) {
     if (!combatUtils.perTurnCheck(item, 'graveTouched', true, workflow.token.id)) return;
     let selection = await dialogUtils.confirm(item.name, genericUtils.format('CHRISPREMADES.Dialog.Use', {itemName: item.name}));
     if (!selection) return;
-    await item.use();
+    await workflowUtils.completeItemUse(item);
     await combatUtils.setTurnCheck(item, 'graveTouched');
     let newRolls = [];
     for (let roll of workflow.damageRolls) {

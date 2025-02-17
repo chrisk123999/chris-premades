@@ -20,7 +20,7 @@ async function attack({trigger: {entity: item}, workflow}) {
 }
 export let sharpshooter = {
     name: 'Sharpshooter',
-    version: '1.1.0',
+    version: '1.2.1',
     midi: {
         actor: [
             {

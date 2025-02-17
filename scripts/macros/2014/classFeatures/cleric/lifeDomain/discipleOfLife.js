@@ -7,7 +7,7 @@ async function heal({trigger, workflow}) {
     if (!workflowUtils.getDamageTypes(workflow.damageRolls).has('healing')) return;
     let formula = 2 + castData.castLevel;
     await workflowUtils.bonusDamage(workflow, formula, {damageType: 'healing'});
-    await trigger.entity.use();
+    await workflowUtils.completeItemUse(trigger.entity);
 }
 export let discipleOfLife = {
     name: 'Disciple of Life',

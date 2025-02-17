@@ -13,7 +13,7 @@ async function damage({workflow}) {
     let formula = workflow.actor.system.scale.barbarian?.['rage-damage']?.value;
     if (!formula) return;
     await workflowUtils.bonusDamage(workflow, formula);
-    await item.use();
+    await workflowUtils.completeItemUse(item);
 }
 export let giantsHavocCrushingThrow = {
     name: 'Giant\'s Havoc: Crushing Throw',

@@ -30,7 +30,7 @@ async function late({trigger: {entity: item}, workflow}) {
     let timesUsed = item.flags['chris-premades'].overchannel?.timesUsed ?? 0;
     let numDice;
     if (timesUsed) numDice = workflow.spellLevel * (timesUsed + 1);
-    await item.use();
+    await workflowUtils.completeItemUse(item);
     await genericUtils.setFlag(item, 'chris-premades', 'overchannel.timesUsed', timesUsed + 1);
     if (!numDice) return;
     let feature = activityUtils.getActivityByIdentifier(item, 'overchannelDamage', {strict: true});

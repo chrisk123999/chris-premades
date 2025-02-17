@@ -8,7 +8,7 @@ async function damage({trigger: {entity: item}, workflow}) {
     let formula = itemUtils.getConfig(item, 'formula');
     await workflowUtils.bonusDamage(workflow, formula, {damageType: workflow.defaultDamageType});
     if (combatUtils.inCombat()) await combatUtils.setTurnCheck(item, 'colossusSlayer');
-    await item.use();
+    await workflowUtils.completeItemUse(item);
 }
 async function combatEnd({trigger}) {
     await combatUtils.setTurnCheck(trigger.entity, 'colossusSlayer', true);

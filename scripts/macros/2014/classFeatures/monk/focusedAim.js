@@ -18,7 +18,7 @@ async function attack({trigger: {entity: item}, workflow}) {
     if (!useFeature) return;
     await workflowUtils.bonusAttack(workflow, String(useFeature * 2));
     await genericUtils.update(ki, {'system.uses.spent': ki.system.uses.spent + useFeature});
-    await item.use();
+    await workflowUtils.completeItemUse(item);
 }
 export let focusedAim = {
     name: 'Focused Aim',

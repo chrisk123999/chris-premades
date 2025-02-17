@@ -1,6 +1,8 @@
+import {workflowUtils} from '../../../utils.js';
+
 async function use({trigger}) {
     if (trigger.entity.system.equipped === false) return;
-    await trigger.entity.use();
+    await workflowUtils.completeItemUse(trigger.entity);
 }
 export let useOnDeath = {
     name: 'Use on Death',

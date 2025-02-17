@@ -1,3 +1,9 @@
+# 1.2.1 Release:
+## Bug Fixes:
+- Sharpshooter (Legacy)
+- Piercer (Legacy)
+- Sneak Attack (Legacy)
+
 # 1.2.0 Release:
 ## Update Notes:
 - This version of CPR requires the D&D 4.3.1 system!

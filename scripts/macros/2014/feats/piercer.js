@@ -33,10 +33,10 @@ async function damageReroll({trigger: {entity: item}, workflow}) {
     let selection = await DialogApp.dialog(item.name, 'CHRISPREMADES.Macros.Piercer.Reroll', [[
         'checkbox',
         lowest.map(i => ({
-            label: i.expression + (i.flavor ? '[' + i.flavor + ']: ' : ': ') + i.results.join(', '),
+            label: i.expression + (i.flavor ? '[' + i.flavor + ']: ' : ': ') + Math.min(...i.results),
             name: i.roll + '-' + i.term,
         })),
-        {displayAsRows: true}
+        {displayAsRows: true, totalMax: 1}
     ]], 'yesNo');
     if (!selection?.buttons) return;
     let toReroll = Object.keys(selection).find(i => i !== 'buttons' && selection[i]);
@@ -87,7 +87,7 @@ export let piercer = {
             {
                 pass: 'damageRollComplete',
                 macro: damageReroll,
-                priority: 50
+                priority: 350
             },
             {
                 pass: 'damageRollComplete',

@@ -1,4 +1,4 @@
-import {activityUtils, dialogUtils, genericUtils, itemUtils, tokenUtils} from '../../../../../utils.js';
+import {activityUtils, dialogUtils, genericUtils, itemUtils, tokenUtils, workflowUtils} from '../../../../../utils.js';
 
 async function late({trigger: {entity: item}, workflow}) {
     if (activityUtils.getIdentifier(workflow.activity) !== 'eldritchBlastBeam') return;
@@ -6,7 +6,7 @@ async function late({trigger: {entity: item}, workflow}) {
     let targetToken = workflow.targets.first();
     let selection = await dialogUtils.confirm(item.name, genericUtils.format('CHRISPREMADES.Dialog.UseOn', {itemName: item.name, tokenName: targetToken.name}));
     if (!selection) return;
-    await item.use();
+    await workflowUtils.completeItemUse(item);
     await tokenUtils.pushToken(workflow.token, targetToken, 10);
 }
 export let repellingBlast = {

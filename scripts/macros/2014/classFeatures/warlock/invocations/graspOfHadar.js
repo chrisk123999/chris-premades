@@ -1,4 +1,4 @@
-import {activityUtils, dialogUtils, genericUtils, itemUtils, tokenUtils} from '../../../../../utils.js';
+import {activityUtils, dialogUtils, genericUtils, itemUtils, tokenUtils, workflowUtils} from '../../../../../utils.js';
 
 async function late({trigger: {entity: item}, workflow}) {
     if (activityUtils.getIdentifier(workflow.activity) !== 'eldritchBlast') return;
@@ -16,7 +16,7 @@ async function late({trigger: {entity: item}, workflow}) {
     if (!target) target = validTargets[0];
     let distance = tokenUtils.getDistance(workflow.token, target);
     let toMove = distance <= 10 ? -5 : -10;
-    await item.use();
+    await workflowUtils.completeItemUse(item);
     await tokenUtils.pushToken(workflow.token, target, toMove);
 }
 export let graspOfHadar = {
