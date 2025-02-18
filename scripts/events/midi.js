@@ -296,26 +296,11 @@ async function damageRollComplete(workflow) {
     genericUtils.log('dev', 'Executing Midi Macro Pass: sceneDamageRollComplete');
     for (let trigger of sortedSceneTriggers) await executeMacro(trigger, workflow);
     if (genericUtils.getCPRSetting('automatedAnimationSounds') && workflow.item) automatedAnimations.aaSound(workflow.item, 'damage');
-    if (genericUtils.getCPRSetting('diceSoNice') && game.modules.get('dice-so-nice')?.active) diceSoNice.damageRollComplete(workflow);
+    if (genericUtils.getCPRSetting('diceSoNice') && game.modules.get('dice-so-nice')?.active) await diceSoNice.damageRollComplete(workflow);
     // Temp (maybe)
     if (genericUtils.getCPRSetting('explodingHeals')) await explodingHeals(workflow);
     let manualRollsEnabled = genericUtils.getCPRSetting('manualRollsEnabled');
     if (manualRollsEnabled && (workflow.hitTargets?.size === 0 ? genericUtils.getCPRSetting('manualRollsPromptOnMiss') : true)) await _manualRollsNewRolls(workflow);
-    workflow.damageRollHTML = '';
-    for (let roll of workflow.damageRolls) {
-        workflow.damageRollHTML += await MidiQOL.midiRenderDamageRoll(roll);
-    }
-    let searchRe = /<div class="midi-qol-damage-roll">[\s\S]*?<div class="end-midi-qol-damage-roll">/;
-    let replaceString = `<div class="midi-qol-damage-roll"><div style="text-align:center">${workflow.damageFlavor}</div>${workflow.damageRollHTML}<div class="end-midi-qol-damage-roll">`;
-    let newContent = workflow.chatCard.content.replace(searchRe, replaceString);
-    let rolls = [];
-    if (workflow.attackRoll) rolls.push(workflow.attackRoll);
-    rolls.push(...(workflow.damageRolls ?? []));
-    rolls.push(...(workflow.bonusDamageRolls ?? []));
-    rolls.push(...(workflow.otherDamageRolls ?? []));
-    await genericUtils.update(workflow.chatCard, {content: newContent, rolls});
-    // await workflow.displayDamageRolls(game.settings.get('midi-qol', 'ConfigSettings'), true);
-    // workflow.damageDetail = MidiQOL.createDamageDetail({roll: workflow.damageRolls, item: workflow.item, defaultType: workflow.defaultDamageType});
 }
 async function _manualRollsNewRolls(workflow) {
     genericUtils.log('dev', 'New Rolls for Midi Workflow');

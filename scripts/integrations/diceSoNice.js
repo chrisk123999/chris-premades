@@ -1,11 +1,9 @@
 async function preItemRoll(workflow) {
-    if (game.settings.get('dice-so-nice', 'immediatelyDisplayChatMessages')) workflow.workflowOptions.damageRollDSN = false;
+    workflow.workflowOptions.damageRollDSN = false;
 }
-function damageRollComplete(workflow) {
-    if (game.settings.get('dice-so-nice', 'immediatelyDisplayChatMessages')) {
-        MidiQOL.displayDSNForRoll(workflow.damageRoll, 'damageRoll');
-        if (workflow.bonusDamageRoll) MidiQOL.displayDSNForRoll(workflow.bonusDamageRoll, 'damageRoll');
-    }
+async function damageRollComplete(workflow) {
+    let damageRolls = [...workflow.damageRolls, ...(workflow.bonusDamageRolls ?? []), ...(workflow.otherDamageRolls ?? [])];
+    await MidiQOL.displayDSNForRoll(damageRolls, 'damageRoll');
 }
 export let diceSoNice = {
     preItemRoll,

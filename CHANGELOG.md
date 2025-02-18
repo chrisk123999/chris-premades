@@ -1,3 +1,7 @@
+# 1.2.2 Release:
+## Bug Fixes:
+- DSN Compatibility
+
 # 1.2.1 Release:
 ## New Legacy Content:
 - Eldritch Invocations: Lance of Lethargy
