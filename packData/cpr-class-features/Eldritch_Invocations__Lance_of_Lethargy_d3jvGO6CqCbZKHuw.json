@@ -1,0 +1,275 @@
+{
+  "_id": "d3jvGO6CqCbZKHuw",
+  "name": "Eldritch Invocations: Lance of Lethargy",
+  "type": "feat",
+  "effects": [
+    {
+      "name": "Lance of Lethargy",
+      "img": "icons/magic/movement/chevrons-down-yellow.webp",
+      "origin": "Actor.yy1I4W4hqhw1yaiM.Item.ydGo64LqmF84hlBI",
+      "transfer": false,
+      "_id": "ATeMeLl2JSzhJHvG",
+      "type": "base",
+      "system": {},
+      "changes": [
+        {
+          "key": "system.attributes.movement.all",
+          "mode": 0,
+          "value": "-10",
+          "priority": 20
+        }
+      ],
+      "disabled": false,
+      "duration": {
+        "startTime": null,
+        "seconds": null,
+        "combat": null,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "statuses": [],
+      "sort": 0,
+      "flags": {
+        "dae": {
+          "enableCondition": "",
+          "disableCondition": "",
+          "disableIncapacitated": false,
+          "selfTarget": false,
+          "selfTargetAlways": false,
+          "dontApply": false,
+          "stackable": "noneName",
+          "showIcon": false,
+          "durationExpression": "",
+          "macroRepeat": "none",
+          "specialDuration": [
+            "turnEndSource"
+          ]
+        },
+        "dnd5e": {
+          "riders": {
+            "statuses": []
+          },
+          "dependents": [
+            {
+              "uuid": "Scene.iGwlIbnzeJk0iHC2.Token.veHIbWNe5zuYPl1N.Actor.szyevsXsdQSq5snz.ActiveEffect.5c2g0AmJrCOyAABQ"
+            },
+            {
+              "uuid": "Scene.iGwlIbnzeJk0iHC2.Token.veHIbWNe5zuYPl1N.Actor.szyevsXsdQSq5snz.ActiveEffect.CU6UlK7c8LYUqhjk"
+            },
+            {
+              "uuid": "Scene.iGwlIbnzeJk0iHC2.Token.veHIbWNe5zuYPl1N.Actor.szyevsXsdQSq5snz.ActiveEffect.SikA1MsZ3KeFNTrG"
+            },
+            {
+              "uuid": "Scene.iGwlIbnzeJk0iHC2.Token.veHIbWNe5zuYPl1N.Actor.szyevsXsdQSq5snz.ActiveEffect.3JwHBz0siqDNlHiA"
+            },
+            {
+              "uuid": "Scene.iGwlIbnzeJk0iHC2.Token.veHIbWNe5zuYPl1N.Actor.szyevsXsdQSq5snz.ActiveEffect.FqpzzgklSlwDVg3B"
+            },
+            {
+              "uuid": "Scene.iGwlIbnzeJk0iHC2.Token.veHIbWNe5zuYPl1N.Actor.szyevsXsdQSq5snz.ActiveEffect.fIcfEB4KyXDMWsWN"
+            }
+          ]
+        },
+        "core": {
+          "overlay": false
+        }
+      },
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "coreVersion": "12.331",
+        "systemId": "dnd5e",
+        "systemVersion": "4.3.1",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!items.effects!d3jvGO6CqCbZKHuw.ATeMeLl2JSzhJHvG"
+    }
+  ],
+  "system": {
+    "activities": {
+      "xhuTtPSB8SY3mpTq": {
+        "type": "utility",
+        "_id": "xhuTtPSB8SY3mpTq",
+        "sort": 0,
+        "activation": {
+          "type": "special",
+          "value": null,
+          "override": false,
+          "condition": ""
+        },
+        "consumption": {
+          "scaling": {
+            "allowed": false
+          },
+          "spellSlot": true,
+          "targets": [
+            {
+              "type": "itemUses",
+              "value": "1",
+              "scaling": {}
+            }
+          ]
+        },
+        "description": {
+          "chatFlavor": ""
+        },
+        "duration": {
+          "units": "round",
+          "concentration": false,
+          "override": false,
+          "value": "2"
+        },
+        "effects": [
+          {
+            "_id": "ATeMeLl2JSzhJHvG"
+          }
+        ],
+        "range": {
+          "override": false,
+          "units": "spec",
+          "special": ""
+        },
+        "target": {
+          "template": {
+            "contiguous": false,
+            "units": "ft",
+            "type": ""
+          },
+          "affects": {
+            "choice": false,
+            "type": "creature",
+            "count": "1",
+            "special": ""
+          },
+          "override": false,
+          "prompt": true
+        },
+        "uses": {
+          "spent": 0,
+          "recovery": [],
+          "max": ""
+        },
+        "roll": {
+          "prompt": false,
+          "visible": false,
+          "name": "",
+          "formula": ""
+        },
+        "useConditionText": "",
+        "effectConditionText": "",
+        "macroData": {
+          "name": "",
+          "command": ""
+        },
+        "ignoreTraits": {
+          "idi": false,
+          "idr": false,
+          "idv": false,
+          "ida": false
+        },
+        "midiProperties": {
+          "ignoreTraits": [],
+          "triggeredActivityId": "none",
+          "triggeredActivityConditionText": "",
+          "triggeredActivityTargets": "targets",
+          "triggeredActivityRollAs": "self",
+          "forceDialog": false,
+          "confirmTargets": "default",
+          "autoTargetType": "any",
+          "autoTargetAction": "default",
+          "automationOnly": false,
+          "otherActivityCompatible": false,
+          "identifier": ""
+        },
+        "name": ""
+      }
+    },
+    "uses": {
+      "spent": 0,
+      "recovery": [
+        {
+          "period": "turnStart",
+          "type": "recoverAll"
+        }
+      ],
+      "max": "1"
+    },
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "identifier": "eldritch-invocations-legacy",
+    "source": {
+      "book": "PHB",
+      "page": "",
+      "license": "",
+      "custom": "",
+      "rules": "2014",
+      "revision": 1
+    },
+    "advancement": [],
+    "cover": null,
+    "crewed": false,
+    "enchant": {},
+    "prerequisites": {
+      "level": 2,
+      "repeatable": false
+    },
+    "properties": [],
+    "requirements": "",
+    "type": {
+      "value": "class",
+      "subtype": ""
+    }
+  },
+  "flags": {
+    "dnd5e": {
+      "advancementOrigin": "Vt52bh3f3B5CZ5WN",
+      "riders": {
+        "activity": [],
+        "effect": []
+      }
+    },
+    "chris-premades": {
+      "info": {
+        "identifier": "lanceOfLethargy",
+        "source": "chris-premades",
+        "rules": "legacy",
+        "version": "2.0.1"
+      },
+      "macros": {
+        "midi": {
+          "actor": [
+            "lanceOfLethargy"
+          ]
+        }
+      }
+    },
+    "midi-qol": {
+      "rollAttackPerTarget": "default",
+      "removeAttackDamageButtons": "default",
+      "itemCondition": "",
+      "reactionCondition": "",
+      "otherCondition": "",
+      "effectCondition": ""
+    },
+    "midiProperties": {
+      "autoFailFriendly": false,
+      "autoSaveFriendly": false,
+      "magicdam": false,
+      "magiceffect": false,
+      "noConcentrationCheck": false,
+      "toggleEffect": false,
+      "ignoreTotalCover": false
+    }
+  },
+  "img": "icons/magic/movement/chevrons-down-yellow.webp",
+  "folder": "aupqwL1BF6Zl9FGo",
+  "_key": "!items!d3jvGO6CqCbZKHuw"
+}
