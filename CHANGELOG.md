@@ -1,4 +1,6 @@
 # 1.2.1 Release:
+## New Legacy Content:
+- Eldritch Invocations: Lance of Lethargy
 ## Bug Fixes:
 - Sharpshooter (Legacy)
 - Piercer (Legacy)

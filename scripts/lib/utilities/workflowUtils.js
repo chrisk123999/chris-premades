@@ -88,10 +88,13 @@ async function syntheticActivityRoll(activity, targets = [], {options = {}, conf
     config.midiOptions = options;
     return await completeActivityUse(activity, config);
 }
-async function syntheticItemRoll(item, targets, {options = {}, config = {}, userId} = {}) {
+async function syntheticItemRoll(item, targets, {options = {}, config = {}, userId, consumeUsage = false, consumeResources = false} = {}) {
     let defaultConfig = {
-        consumeUsage: false,
-        consumeSpellSlot: false
+        consumeUsage,
+        consumeSpellSlot: false,
+        consume: {
+            resources: consumeResources
+        }
     };
     let autoRollDamage = MidiQOL.configSettings().autoRollDamage;
     if (!['always', 'onHit'].includes(autoRollDamage)) autoRollDamage = 'onHit';
