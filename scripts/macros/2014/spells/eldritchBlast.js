@@ -5,8 +5,6 @@ async function use({trigger, workflow}) {
     let boltsLeft = 1 + Math.floor((level + 1) * (1/6)); //Todo: Make this work with twinned spell somehow.
     let feature = activityUtils.getActivityByIdentifier(workflow.item, 'eldritchBlastBeam', {strict: true});
     if (!feature) return;
-    let agonizingBlast = itemUtils.getItemByIdentifier(workflow.actor, 'agonizingBlast');
-    if (agonizingBlast) feature.damage.parts[0].bonus += ' + @abilities.cha.mod';
     let playAnimation = itemUtils.getConfig(workflow.item, 'playAnimation');
     let color = itemUtils.getConfig(workflow.item, 'color');
     let sound = itemUtils.getConfig(workflow.item, 'sound');
@@ -45,6 +43,11 @@ async function beam({trigger, workflow}) {
     let animation = 'jb2a.eldritch_blast.' + color;
     animationUtils.simpleAttack(workflow.token, workflow.targets.first(), animation, {sound: sound, missed: !workflow.hitTargets.has(workflow.targets.first())});
 }
+async function damage({trigger, workflow}) {
+    let agonizingBlast = itemUtils.getItemByIdentifier(workflow.actor, 'agonizingBlast');
+    if (!agonizingBlast) return;
+    await workflowUtils.bonusDamage(workflow, String(workflow.actor.system.abilities.cha.mod), {ignoreCrit: true, damageType: workflow.defaultDamageType});
+}
 export let eldritchBlast = {
     name: 'Eldritch Blast',
     version: '1.1.10',
@@ -62,6 +65,12 @@ export let eldritchBlast = {
                 macro: use,
                 priority: 50,
                 activities: ['eldritchBlast']
+            },
+            {
+                pass: 'damageRollComplete',
+                macro: damage,
+                priority: 50,
+                activities: ['eldritchBlastBeam']
             }
         ]
     },
