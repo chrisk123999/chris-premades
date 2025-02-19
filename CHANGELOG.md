@@ -4,6 +4,7 @@
 - Generic Monster Features
 - Agonizing Blast (Legacy)
 - Vitality of the Tree (Modern)
+- Condition Resistance and Vulnerability
 
 # 1.2.1 Release:
 ## New Legacy Content:
