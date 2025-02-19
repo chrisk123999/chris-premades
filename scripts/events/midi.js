@@ -356,6 +356,7 @@ async function rollFinished(workflow) {
     if (genericUtils.getCPRSetting('cleave')) await cleave(workflow);
 }
 async function postAttackRoll(workflow) {
+    if (!workflow.attackRoll) return;
     let sceneTriggers = [];
     workflow.token?.document.parent.tokens.filter(i => i.uuid !== workflow.token?.document.uuid && i.actor).forEach(j => {
         sceneTriggers.push(...getSortedTriggers({token: j.object, actor: j.actor, sourceToken: workflow.token}, 'scenePostAttackRoll'));
