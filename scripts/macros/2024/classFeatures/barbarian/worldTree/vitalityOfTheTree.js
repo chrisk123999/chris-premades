@@ -1,4 +1,4 @@
-import {activityUtils, actorUtils, dialogUtils, itemUtils, tokenUtils, workflowUtils} from '../../../../../utils.js';
+import {activityUtils, actorUtils, dialogUtils, itemUtils, socketUtils, tokenUtils, workflowUtils} from '../../../../../utils.js';
 import {rage} from '../rage.js';
 async function turnStart({trigger: {entity: effect}}) {
     let token = actorUtils.getFirstToken(effect.parent);
@@ -15,7 +15,7 @@ async function turnStart({trigger: {entity: effect}}) {
     if (nearbyAllies.length === 1) {
         selection = nearbyAllies[0];
     } else {
-        let targetSelection = await dialogUtils.selectTargetDialog(feature.name, 'CHRISPREMADES.Macros.VitalityOfTheTree', nearbyAllies, {skipDeadAndUnconscious: false});
+        let targetSelection = await dialogUtils.selectTargetDialog(feature.name, 'CHRISPREMADES.Macros.VitalityOfTheTree', nearbyAllies, {skipDeadAndUnconscious: false, userId: socketUtils.firstOwner(token.actor, true)});
         if (!targetSelection?.length) return;
         selection = targetSelection[0];
     }

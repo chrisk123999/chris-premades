@@ -1,6 +1,9 @@
 # 1.2.2 Release:
 ## Bug Fixes:
 - DSN Compatibility
+- Generic Monster Features
+- Agonizing Blast (Legacy)
+- Vitality of the Tree (Modern)
 
 # 1.2.1 Release:
 ## New Legacy Content:

@@ -86,6 +86,7 @@ function duplicateActivity(activity) {
 function getConditions(activity) {
     let conditions = new Set();
     activity.effects.forEach(i => {
+        if (!i.effect) return;
         let effectConditions = effectUtils.getConditions(i.effect);
         effectConditions.forEach(j => conditions.add(j));
     });

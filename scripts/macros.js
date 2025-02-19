@@ -1,3 +1,31 @@
+// Generic Monster Features
+export {advantageDamageBonus} from './macros/2014/monsterFeatures/generic/advantageDamageBonus.js';
+export {auraDamageEnd} from './macros/2014/monsterFeatures/generic/auraDamage.js';
+export {autoGrapple} from './macros/2014/monsterFeatures/generic/autoGrapple.js';
+export {berserk} from './macros/2014/monsterFeatures/generic/berserk.js';
+export {contextualBonus} from './macros/2014/monsterFeatures/generic/contextualBonus.js';
+export {damageTurnStart} from './macros/2014/monsterFeatures/generic/damageTurnStart.js';
+export {deathBurst} from './macros/2014/monsterFeatures/generic/deathBurst.js';
+export {enlarge, enlargeEnlarged} from './macros/2014/monsterFeatures/generic/enlarge.js';
+export {gaze} from './macros/2014/monsterFeatures/generic/gaze.js';
+export {genericRegeneration} from './macros/2014/monsterFeatures/generic/regeneration.js';
+export {genericTeleport} from './macros/2014/monsterFeatures/generic/teleport.js';
+export {keenSenses} from './macros/2014/monsterFeatures/generic/keenSenses.js';
+export {packTactics} from './macros/2014/monsterFeatures/generic/packTactics.js';
+export {reduce, reduceReduced} from './macros/2014/monsterFeatures/generic/reduce.js';
+export {reduceMaxHP} from './macros/2014/monsterFeatures/generic/reduceMaxHP.js';
+export {spellTurning} from './macros/2014/monsterFeatures/generic/spellTurning.js';
+export {abilityDrain} from './macros/2014/monsterFeatures/generic/abilityDrain.js';
+export {sunlightSensitivity} from './macros/2014/monsterFeatures/generic/sunlightSensitivity.js';
+export {surpriseAttack} from './macros/2014/monsterFeatures/generic/surpriseAttack.js';
+export {swarmDamage} from './macros/2014/monsterFeatures/generic/swarmDamage.js';
+export {touchDamage} from './macros/2014/monsterFeatures/generic/touchDamage.js';
+export {undeadFortitude} from './macros/2014/monsterFeatures/generic/undeadFortitude.js';
+export {martialAdvantage} from './macros/2014/monsterFeatures/generic/martialAdvantage.js';
+export {parry} from './macros/2014/monsterFeatures/generic/parry.js';
+export {lifesteal} from './macros/2014/monsterFeatures/generic/lifesteal.js';
+export {effectImmunity, effectImmunityRemove} from './macros/2014/monsterFeatures/generic/effectImmunity.js';
+export {autoPush} from './macros/2014/monsterFeatures/generic/autoPush.js';
 //Mechanics
 export {invisible} from './macros/2024/mechanics/invisible.js';
 export {cleaveMastery, grazeMastery, pushMastery, sapMastery, slowMastery, toppleMastery, vexMastery} from './macros/2024/mechanics/masteries.js';
