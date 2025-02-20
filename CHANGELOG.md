@@ -1,6 +1,7 @@
 # 1.2.3 Release:
 ## Bug Fixes:
 - Monk's Token Bar Compatibility
+- Healing Spirit (Legacy)
 
 # 1.2.2 Release:
 ## Bug Fixes:

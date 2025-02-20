@@ -194,7 +194,7 @@ async function moveOrStart({trigger: {entity: effect, castData, token, target}})
     let numUses = feature.system.uses.value;
     let selection = await dialogUtils.confirm(target.name, genericUtils.format('CHRISPREMADES.Macros.HealingSpirit.Apply', {numUses}));
     if (!selection) return;
-    await workflowUtils.syntheticItemRoll(feature, [target], {config: {consumeUsage: true}});
+    await workflowUtils.syntheticItemRoll(feature, [target], {consumeResources: true, consunsumeUsage: true});
 }
 async function early({dialog}) {
     dialog.configure = false;
