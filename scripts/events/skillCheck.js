@@ -176,6 +176,7 @@ async function rollSkill(wrapped, config, dialog = {}, message = {}) {
     } else {
         skillId = config;
         event = dialog?.event;
+        message.create ??= dialog?.chatMessage;
     }
     let options = {};
     await executeMacroPass(this, 'situational', skillId, options, undefined, config, dialog, message);

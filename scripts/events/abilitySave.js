@@ -184,6 +184,7 @@ async function rollSave(wrapped, config, dialog = {}, message = {}) {
     } else {
         saveId = config;
         event = dialog?.event;
+        message.create ??= dialog?.chatMessage;
     }
     let options = {};
     await executeMacroPass(this, 'situational', saveId, options, undefined, config, dialog, message);

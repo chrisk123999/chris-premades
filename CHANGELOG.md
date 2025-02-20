@@ -1,3 +1,7 @@
+# 1.2.3 Release:
+## Bug Fixes:
+- Monk's Token Bar Compatibility
+
 # 1.2.2 Release:
 ## Bug Fixes:
 - DSN Compatibility

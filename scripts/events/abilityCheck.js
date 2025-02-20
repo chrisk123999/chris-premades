@@ -176,6 +176,7 @@ async function rollCheck(wrapped, config, dialog = {}, message = {}) {
     } else {
         checkId = config;
         event = dialog?.event;
+        message.create ??= dialog?.chatMessage;
     }
     let options = {};
     await executeMacroPass(this, 'situational', checkId, options, undefined, config, dialog, message);
