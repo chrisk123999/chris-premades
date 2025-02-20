@@ -2053,7 +2053,7 @@
             "Scene": {
                 "Done": "Scene update complete!",
                 "Start": "Updating tokens...",
-                "UpdateAll": "Update all Characterse and NPCs",
+                "UpdateAll": "Update all Characters and NPCs",
                 "UpdateCharacters": "Update all Characters",
                 "UpdateNPCs": "Update all NPCs"
             },
