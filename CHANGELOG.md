@@ -1,3 +1,7 @@
+# 1.2.6 Release:
+## Bug Fixes:
+- Cutting Words (Modern)
+
 # 1.2.5 Release:
 ## Bug Fixes:
 - Cutting Words (Modern)

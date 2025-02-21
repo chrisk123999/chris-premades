@@ -10,7 +10,7 @@
         "_id": "Q2KR4D5Pq9ZIrS3o",
         "sort": 0,
         "activation": {
-          "type": "action",
+          "type": "reaction",
           "value": null,
           "override": false,
           "condition": ""
@@ -183,7 +183,7 @@
         "identifier": "cuttingWords",
         "source": "chris-premades",
         "rules": "modern",
-        "version": "1.2.5"
+        "version": "1.2.6"
       },
       "macros": {
         "midi": {
