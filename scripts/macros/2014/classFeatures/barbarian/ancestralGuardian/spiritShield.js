@@ -1,5 +1,5 @@
 import {actorUtils, dialogUtils, effectUtils, genericUtils, itemUtils, socketUtils, tokenUtils, workflowUtils} from '../../../../../utils.js';
-async function shieldHelper(token, targetToken, ditem) {
+async function shieldHelper(token, sourceToken, targetToken, ditem) {
     if (actorUtils.hasUsedReaction(token.actor)) return;
     let rageEffect = effectUtils.getEffectByIdentifier(token.actor, 'rage');
     if (!rageEffect) return;
@@ -9,12 +9,16 @@ async function shieldHelper(token, targetToken, ditem) {
     if (!selection) return;
     let result = await workflowUtils.syntheticItemRoll(spiritShield, [token], {consumeResources: true, userId: socketUtils.firstOwner(token.actor, true)});
     workflowUtils.modifyDamageAppliedFlat(ditem, result.damageRolls[0].total);
+    let vengefulAncestors = itemUtils.getItemByIdentifier(token.actor, 'vengefulAncestors');
+    if (vengefulAncestors) {
+        workflowUtils.applyDamage([sourceToken], result.damageRolls[0].total, 'force');
+    }
     return true;
 }
-async function damageApplication({trigger: {targetToken}, ditem}) {
+async function damageApplication({trigger: {sourceToken, targetToken}, ditem}) {
     let nearbyTokens = tokenUtils.findNearby(targetToken, 30, 'ally', {includeIncapacitated: false, includeToken: true});
     for (let i of nearbyTokens) {
-        let shielded = await shieldHelper(i, targetToken, ditem);
+        let shielded = await shieldHelper(i, sourceToken, targetToken, ditem);
         if (shielded) break;
     }
 }
