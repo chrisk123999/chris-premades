@@ -1,3 +1,9 @@
+# 1.2.4 Release:
+## New Modern Content:
+- Cutting Words
+## API Update Notes:
+- Ability Check and Skill Check events now have a sceneBonus trigger. 
+
 # 1.2.3 Release:
 ## Bug Fixes:
 - Monk's Token Bar Compatibility

@@ -10,7 +10,7 @@ function collectMacros(entity) {
     if (!macroList.length) return [];
     return macroList.map(i => custom.getMacro(i, genericUtils.getRules(entity))).filter(j => j);
 }
-function collectActorSkillMacros(actor, pass, skillId, options, roll, config, dialog, message) {
+function collectActorSkillMacros(actor, pass, skillId, options, roll, config, dialog, message, sourceActor) {
     let triggers = [];
     let effects = actorUtils.getEffects(actor);
     let token = actorUtils.getFirstToken(actor);
@@ -34,7 +34,8 @@ function collectActorSkillMacros(actor, pass, skillId, options, roll, config, di
             roll,
             config,
             dialog,
-            message
+            message,
+            sourceActor
         });
     });
     actor.items.forEach(item => {
@@ -56,7 +57,8 @@ function collectActorSkillMacros(actor, pass, skillId, options, roll, config, di
             roll,
             config,
             dialog,
-            message
+            message,
+            sourceActor
         });
     });
     if (token) {
@@ -81,14 +83,15 @@ function collectActorSkillMacros(actor, pass, skillId, options, roll, config, di
                 roll,
                 config,
                 dialog,
-                message
+                message,
+                sourceActor
             });
         });
     }
     return triggers;
 }
-function getSortedTriggers(actor, pass, skillId, options, roll, config) {
-    let allTriggers = collectActorSkillMacros(actor, pass, skillId, options, roll, config);
+function getSortedTriggers(actor, pass, skillId, options, roll, config, dialog, message, sourceActor) {
+    let allTriggers = collectActorSkillMacros(actor, pass, skillId, options, roll, config, dialog, message, sourceActor);
     let names = new Set(allTriggers.map(i => i.name));
     allTriggers = Object.fromEntries(names.map(i => [i, allTriggers.filter(j => j.name === i)]));
     let maxMap = {};
@@ -128,7 +131,8 @@ function getSortedTriggers(actor, pass, skillId, options, roll, config) {
                 roll: trigger.roll,
                 config: trigger.config,
                 dialog: trigger.dialog,
-                message: trigger.message
+                message: trigger.message,
+                sourceActor: trigger.sourceActor
             });
         });
     });
@@ -154,7 +158,7 @@ async function executeContextMacroPass(actor, pass, skillId, options, roll, conf
 }
 async function executeMacroPass(actor, pass, skillId, options, roll, config, dialog, message) {
     genericUtils.log('dev', 'Executing Skill Macro Pass: ' + pass);
-    let triggers = getSortedTriggers(actor, pass, skillId, options, roll, config, dialog, message);
+    let triggers = getSortedTriggers(actor, pass, skillId, options, roll, config, dialog, message, this);
     for (let i of triggers) await executeMacro(i);
 }
 async function executeBonusMacroPass(actor, pass, skillId, options, roll, config, dialog, message) {
@@ -227,6 +231,27 @@ async function rollSkill(wrapped, config, dialog = {}, message = {}) {
     if (!returnData) return;
     let oldOptions = returnData.options;
     returnData = await executeBonusMacroPass(this, 'bonus', skillId, options, returnData, config, dialog, message);
+    let token = actorUtils.getFirstToken(this);
+    if (token) {
+        let sceneTriggers = [];
+        token.document.parent.tokens.filter(i => i.uuid !== token.document.uuid && i.actor).forEach(j => {
+            sceneTriggers.push(...getSortedTriggers(j.actor, 'sceneBonus', skillId, options, returnData, config, dialog, message, this));
+        });
+        let sortedSceneTriggers = [];
+        let names = new Set();
+        sceneTriggers.forEach(i => {
+            if (names.has(i.name)) return;
+            sortedSceneTriggers.push(i);
+            names.add(i.name);
+        });
+        sortedSceneTriggers = sortedSceneTriggers.sort((a, b) => a.priority - b.priority);
+        genericUtils.log('dev', 'Executing Skill Macro Pass: sceneBonus');
+        for (let trigger of sortedSceneTriggers) {
+            trigger.roll = returnData;
+            let bonusRoll = await executeMacro(trigger);
+            if (bonusRoll) returnData = CONFIG.Dice.D20Roll.fromRoll(bonusRoll);
+        }
+    }
     if (returnData.options) genericUtils.mergeObject(returnData.options, oldOptions);
     if (message.create !== false) {
         await returnData.toMessage(messageData, {rollMode: returnData.options?.rollMode ?? rollMode});

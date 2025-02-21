@@ -122,7 +122,7 @@
             "Character": "Character",
             "CheckSave": "Check Save:",
             "CheckSaves": "Check Saves:",
-            "ClassIdentifier": "Class Identifier",
+            "ClassIdentifier": "Class Identifier:",
             "Color": "Color:",
             "Colors": {
                 "Blue": "Blue",
@@ -185,7 +185,7 @@
             "SaveDC": "Save DC:",
             "Saves": "Saves:",
             "Scale": "Scale:",
-            "ScaleIdentifier": "Scale Identifier",
+            "ScaleIdentifier": "Scale Identifier:",
             "ShowIcon": "Always Show Aura Icon",
             "ShowRoll": "Show Roll:",
             "Skills": "Skills:",
@@ -733,6 +733,15 @@
                 "Douse": "Douse Blade",
                 "Heal": "Crystal Blade: Heal",
                 "Light": "Crystal Blade: Light"
+            },
+            "CuttingWords": {
+                "AbilityCheck": "Use {item} to reduce a sucessful ability check from {name} (Total: {total})?",
+                "AbilityChecksEnabled": "Ability Checks Enabled:",
+                "Attack": "Use {item} to reduce the attack from {name} (Total: {attack})?",
+                "AttackRollsEnabled": "Attack Rolls Enabled:",
+                "Damage": "Use {item} to reduce the damage from {name}?",
+                "DamageRollsEnabled": "Damage Rolls Enabled:",
+                "SkillCheck": "Use {item} to reduce a sucessful skill check from {name} (Total: {total})?"
             },
             "DamageTurnStart": {
                 "Name": "Damage on Turn Start",

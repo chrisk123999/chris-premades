@@ -64,8 +64,8 @@ function collectAllMacros({activity, item, token, actor, sourceToken, targetToke
                 macros: macroList,
                 name: i.name.slugify(),
                 token: token,
-                sourceToken: sourceToken,
-                targetToken: targetToken
+                sourceToken,
+                targetToken
             });
         });
         actorUtils.getEffects(actor).forEach(i => {
@@ -81,8 +81,8 @@ function collectAllMacros({activity, item, token, actor, sourceToken, targetToke
                 macros: macroList,
                 name: i.name.slugify(),
                 token: token,
-                sourceToken: sourceToken,
-                targetToken: targetToken
+                sourceToken,
+                targetToken
             });
         });
     }

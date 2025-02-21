@@ -127,3 +127,5 @@ export {beguilingMagic} from './macros/2024/classFeatures/bard/glamour/beguiling
 export {mantleOfInspiration} from './macros/2024/classFeatures/bard/glamour/mantleOfInspiration.js';
 export {mantleOfMajesty, mantleOfMajestyCommand} from './macros/2024/classFeatures/bard/glamour/mantleOfMajesty.js';
 export {unbreakableMajesty, unbreakableMajestyEffect} from './macros/2024/classFeatures/bard/glamour/unbreakableMajesty.js';
+//College of Lore
+export {cuttingWords} from './macros/2024/classFeatures/bard/lore/cuttingWords.js';
