@@ -8,19 +8,7 @@ async function shieldHelper(token, targetToken, ditem) {
     let selection = await dialogUtils.confirm(spiritShield.name, genericUtils.format('CHRISPREMADES.Macros.SpiritShield.Damage', {item: spiritShield.name, name: targetToken.document.name}, {userId: socketUtils.firstOwner(token.actor, true)}));
     if (!selection) return;
     let result = await workflowUtils.syntheticItemRoll(spiritShield, [token], {consumeResources: true, userId: socketUtils.firstOwner(token.actor, true)});
-    let newDamage = Math.max(ditem.totalDamage - result.damageRolls[0].total, 0);
-    let tempHPDamage = newDamage;
-    let newHPDamage = newDamage;
-    ditem.totalDamage = newDamage;
-    if (ditem.oldTempHP > 0) {
-        tempHPDamage = Math.min(newDamage, ditem.oldTempHP);
-        ditem.newTempHP = ditem.oldTempHP - tempHPDamage;
-        newHPDamage -= tempHPDamage;
-    }
-    ditem.newHP = ditem.oldHP - newHPDamage;
-    ditem.hpDamage = newHPDamage;
-    ditem.damageDetail.forEach(i => i.value = 0);
-    ditem.damageDetail[0].value = ditem.totalDamage;
+    workflowUtils.modifyDamageAppliedFlat(ditem, result.damageRolls[0].total);
     return true;
 }
 async function damageApplication({trigger: {targetToken}, ditem}) {
