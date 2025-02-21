@@ -1,27 +1,33 @@
 import {actorUtils, dialogUtils, effectUtils, genericUtils, itemUtils, socketUtils, tokenUtils, workflowUtils} from '../../../../../utils.js';
-async function damage({trigger, workflow}) {
-    if (!workflow.hitTargets.size || !workflow.damageRolls || !workflow.item || workflow.defaultDamageType === 'midi-none') return;
-    let damageTypes = workflowUtils.getDamageTypes(workflow.damageRolls);
-    if (['healing', 'temphp'].find(i => damageTypes.has(i))) return;
-    let nearbyTokens = tokenUtils.findNearby(workflow.token, 30, 'enemy').filter(token => {
-        if (actorUtils.hasUsedReaction(token.actor)) return;
-        let rageEffect = effectUtils.getEffectByIdentifier(token.actor, 'rage');
-        if (!rageEffect) return;
-        let spiritShield = itemUtils.getItemByIdentifier(token.actor, 'spiritShield');
-        if (!spiritShield) return;
-        return true;
-    });
-    if (!nearbyTokens.length) return;
-    for (let token of nearbyTokens) {
-        let item = itemUtils.getItemByIdentifier(token.actor, 'spiritShield');
-        let selection = await dialogUtils.confirm(item.name, genericUtils.format('CHRISPREMADES.Macros.SpiritShield.Damage', {item: item.name, name: token.document.name}, {userId: socketUtils.firstOwner(token.actor, true)}));
-        if (!selection) continue;
-        let result = await workflowUtils.syntheticItemRoll(item, [workflow.token], {consumeResources: true, userId: socketUtils.firstOwner(token.actor, true)});
-        let total = -result.damageRolls[0].total;
-        let value = workflow.damageTotal + total;
-        if (value < 0) total -= value;
-        await workflowUtils.bonusDamage(workflow, String(total), {damageType: workflow.defaultDamageType, ignoreCrit: true});
-        break;
+async function shieldHelper(token, targetToken, ditem) {
+    if (actorUtils.hasUsedReaction(token.actor)) return;
+    let rageEffect = effectUtils.getEffectByIdentifier(token.actor, 'rage');
+    if (!rageEffect) return;
+    let spiritShield = itemUtils.getItemByIdentifier(token.actor, 'spiritShield');
+    if (!spiritShield) return;
+    let selection = await dialogUtils.confirm(spiritShield.name, genericUtils.format('CHRISPREMADES.Macros.SpiritShield.Damage', {item: spiritShield.name, name: targetToken.document.name}, {userId: socketUtils.firstOwner(token.actor, true)}));
+    if (!selection) return;
+    let result = await workflowUtils.syntheticItemRoll(spiritShield, [token], {consumeResources: true, userId: socketUtils.firstOwner(token.actor, true)});
+    let newDamage = Math.max(ditem.totalDamage - result.damageRolls[0].total, 0);
+    let tempHPDamage = newDamage;
+    let newHPDamage = newDamage;
+    ditem.totalDamage = newDamage;
+    if (ditem.oldTempHP > 0) {
+        tempHPDamage = Math.min(newDamage, ditem.oldTempHP);
+        ditem.newTempHP = ditem.oldTempHP - tempHPDamage;
+        newHPDamage -= tempHPDamage;
+    }
+    ditem.newHP = ditem.oldHP - newHPDamage;
+    ditem.hpDamage = newHPDamage;
+    ditem.damageDetail.forEach(i => i.value = 0);
+    ditem.damageDetail[0].value = ditem.totalDamage;
+    return true;
+}
+async function damageApplication({trigger: {targetToken}, ditem}) {
+    let nearbyTokens = tokenUtils.findNearby(targetToken, 30, 'ally', {includeIncapacitated: false, includeToken: true});
+    for (let i of nearbyTokens) {
+        let shielded = await shieldHelper(i, targetToken, ditem);
+        if (shielded) break;
     }
 }
 export let spiritShield = {
@@ -31,8 +37,8 @@ export let spiritShield = {
     midi: {
         actor: [
             {
-                pass: 'sceneDamageRollComplete',
-                macro: damage,
+                pass: 'sceneApplyDamage',
+                macro: damageApplication,
                 priority: 250
             }
         ]
