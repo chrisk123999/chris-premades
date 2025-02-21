@@ -95,7 +95,7 @@ async function added({trigger: {entity: item, identifier, actor}}) {
 }
 export let cuttingWords = {
     name: 'Cutting Words',
-    version: '1.2.2',
+    version: '1.2.5',
     rules: 'modern',
     midi: {
         actor: [
