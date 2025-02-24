@@ -734,6 +734,15 @@
                 "Heal": "Lâmina de Cristal: Cura",
                 "Light": "Lâmina de Cristal: Luz"
             },
+            "CuttingWords": {
+                "AbilityCheck": "Usar {item} para reduzir um teste de atributo bem-sucedido de {name} (Total: {total})?",
+                "AbilityChecksEnabled": "Testede Atributo Habilitado:",
+                "Attack": "Usar {item} para reduzir o ataque de {name} (Total: {attack})?",
+                "AttackRollsEnabled": "Jogadas de Ataque Habilitado:",
+                "Damage": "Usar {item} para reduzir o dano de {name}?",
+                "DamageRollsEnabled": "Jogada de Dano Habilitado:",
+                "SkillCheck": "Usar {item} para reduzir um teste de perícia bem-sucedido de {name} (Total: {total})?"
+            },
             "DamageTurnStart": {
                 "Name": "Dano no Início do Turno",
                 "SpecificDamage": "Use fórmula ao invés do dano do item:",
