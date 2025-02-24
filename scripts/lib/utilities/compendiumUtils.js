@@ -71,7 +71,8 @@ async function getCPRAutomation(item, {identifier, rules = 'legacy'} = {}) {
         if (found) return found;
     }
 }
-async function getGPSAutomation(item, {identifier} = {}) {
+async function getGPSAutomation(item, {identifier, rules = 'legacy'} = {}) {
+    if (rules === 'modern') return;
     let found;
     let type = item.actor?.type ?? 'character';
     if (type === 'character' || item.type === 'spell') {
@@ -93,7 +94,8 @@ async function getGPSAutomation(item, {identifier} = {}) {
     if (!found) return;
     return await fromUuid(found.uuid);
 }
-async function getMISCAutomation(item, {identifier} = {}) {
+async function getMISCAutomation(item, {identifier, rules = 'legacy'} = {}) {
+    if (rules === 'modern') return;
     let found;
     let type = item.actor?.type ?? 'character';
     if (type === 'character' || item.type === 'spell') {
@@ -128,7 +130,7 @@ async function getAllAutomations(item, options) {
         let version;
         switch (i[0]) {
             default:
-                found = await getItemFromCompendium(i[0], item.name, {ignoreNotFound: true, matchType: item.type});
+                found = await getItemFromCompendium(i[0], item.name, {ignoreNotFound: true, matchType: item.type, rules: options?.rules});
                 source = i[0];
                 break;
             case 'chris-premades':
@@ -168,14 +170,14 @@ async function getPreferredAutomation(item, options) {
     let items = await getAllAutomations(item, options);
     return items.length ? items[0].document : undefined;
 }
-async function getItemFromCompendium(key, name, {ignoreNotFound, folderId, object = false, getDescription, translate, identifier, flatAttack, flatDC, castDataWorkflow, matchType} = {}) {
+async function getItemFromCompendium(key, name, {ignoreNotFound, folderId, object = false, getDescription, translate, identifier, flatAttack, flatDC, castDataWorkflow, matchType, rules} = {}) {
     let pack = game.packs.get(key);
     if (!pack) {
         if (!ignoreNotFound) errors.missingPack();
         return undefined;
     }
-    let packIndex = await pack.getIndex({'fields': ['name', 'type', 'folder']});
-    let match = packIndex.find(item => item.name === name && (!folderId || (folderId && item.folder === folderId)) && (!matchType || (item.type === matchType)));
+    let packIndex = await pack.getIndex({'fields': ['name', 'type', 'folder', 'system.source.rules']});
+    let match = packIndex.find(item => item.name === name && (!folderId || (folderId && item.folder === folderId)) && (!matchType || (item.type === matchType)) && (!rules || (item.system.source.rules === (rules === 'modern' ? '2024' : '2012'))));
     if (match) {
         let document = await pack.getDocument(match._id);
         if (object) {
@@ -269,7 +271,7 @@ async function getFilteredItemDocumentsFromCompendium(key, {specificNames, types
     filteredIndex = filteredIndex.map(i => foundry.utils.mergeObject(i, {img: 'systems/dnd5e/icons/svg/items/weapon.svg'}, {overwrite: !i.img}));
     return filteredIndex;
 }
-async function getAppliedOrPreferredAutomation(item, options) { // need to finish this - autumn
+async function getAppliedOrPreferredAutomation(item, options) {
     let source = itemUtils.getSource(item);
     if (source) {
         switch (source) {
@@ -283,7 +285,7 @@ async function getAppliedOrPreferredAutomation(item, options) { // need to finis
                 return await getMISCAutomation(item, options);
             }
             default: {
-                let document = await getItemFromCompendium(source, item.name, {ignoreNotFound: true});
+                let document = await getItemFromCompendium(source, item.name, {ignoreNotFound: true, rules: options?.rules});
                 if (!document) document = await getPreferredAutomation(item);
                 return document;
             }

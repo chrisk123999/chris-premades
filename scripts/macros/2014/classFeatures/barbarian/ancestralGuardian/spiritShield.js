@@ -1,4 +1,4 @@
-import {actorUtils, dialogUtils, effectUtils, genericUtils, itemUtils, socketUtils, tokenUtils, workflowUtils} from '../../../../../utils.js';
+import {activityUtils, actorUtils, dialogUtils, effectUtils, genericUtils, itemUtils, socketUtils, tokenUtils, workflowUtils} from '../../../../../utils.js';
 async function shieldHelper(token, sourceToken, targetToken, ditem) {
     if (actorUtils.hasUsedReaction(token.actor)) return;
     let rageEffect = effectUtils.getEffectByIdentifier(token.actor, 'rage');
@@ -11,7 +11,11 @@ async function shieldHelper(token, sourceToken, targetToken, ditem) {
     workflowUtils.modifyDamageAppliedFlat(ditem, result.damageRolls[0].total);
     let vengefulAncestors = itemUtils.getItemByIdentifier(token.actor, 'vengefulAncestors');
     if (vengefulAncestors) {
-        workflowUtils.applyDamage([sourceToken], result.damageRolls[0].total, 'force');
+        let activity = activityUtils.getActivityByIdentifier(vengefulAncestors, 'use', {strict: true});
+        if (!activity) return true;
+        let featureData = genericUtils.duplicate(vengefulAncestors.toObject());
+        featureData.system.activities[activity.id].damage.parts[0].bonus = result.damageRolls[0].total;
+        await workflowUtils.syntheticItemDataRoll(featureData, token.actor, [sourceToken]);
     }
     return true;
 }

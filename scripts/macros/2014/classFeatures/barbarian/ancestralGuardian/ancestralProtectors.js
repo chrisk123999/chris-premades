@@ -1,5 +1,4 @@
 import {combatUtils, constants, effectUtils, genericUtils, itemUtils} from '../../../../../utils.js';
-
 async function sourceAttack({trigger: {entity: item}, workflow}) {
     if (workflow.hitTargets.size !== 1) return;
     let effect = effectUtils.getEffectByIdentifier(workflow.actor, 'rage');

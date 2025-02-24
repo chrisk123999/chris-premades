@@ -1555,7 +1555,7 @@
                 "ReapingScythe": "Reaping Scythe (Reaper Spirit)"
             },
             "SpiritShield": {
-                "Damage": "Use {item} to reduce the damage dealt to {name}?",
+                "Damage": "Use {item} to reduce the damage dealt to {name}?"
             },
             "SpiritShroud": {
                 "Hit": "Spirit Shroud: Hit",

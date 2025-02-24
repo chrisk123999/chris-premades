@@ -1,3 +1,10 @@
+# 1.2.7 Release:
+## New Legacy Content:
+- Spirit Shield (Thanks SagaTympana)
+- Vengeful Ancestors (Thanks SagaTympana)
+## Update Notes:
+- The CPR Medkit will now always check the rules on an item for matches. Previously only CPR automations were checked.
+
 # 1.2.6 Release:
 ## Bug Fixes:
 - Cutting Words (Modern)
