@@ -1554,6 +1554,9 @@
                 "InvalidTarget": "Target must be Haunted!",
                 "ReapingScythe": "Reaping Scythe (Reaper Spirit)"
             },
+            "SpiritShield": {
+                "Damage": "Use {item} to reduce the damage dealt to {name}?",
+            },
             "SpiritShroud": {
                 "Hit": "Spirit Shroud: Hit",
                 "Slow": "Spirit Shroud: Slow"
