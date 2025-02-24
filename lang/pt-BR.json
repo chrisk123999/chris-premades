@@ -1554,6 +1554,9 @@
                 "InvalidTarget": "O alvo deve estar Assombrado!",
                 "ReapingScythe": "Foice Ceifadora (Espírito Ceifador)"
             },
+            "SpiritShield": {
+                "Damage": "Usar {item} para reduzir o dano causado por {name}?"
+            },
             "SpiritShroud": {
                 "Hit": "Mortalha Espiritual: Acerto",
                 "Slow": "Mortalha Espiritual: Lentidão"
