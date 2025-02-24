@@ -239,7 +239,7 @@ async function grappleHelper(sourceToken, targetToken, item, {noContest = false,
             return;
         }
     }
-    let escapeData = await compendiumUtils.getItemFromCompendium(constants.packs.miscellaneousItems, 'Grapple: Escape', {object: true, translate: 'CHRISPREMADES.Macros.Actions.GrappleEscape', identifier: 'grappleEscape'});
+    let escapeData = await compendiumUtils.getItemFromCompendium(constants.featurePacks.miscellaneousItems, 'Grapple: Escape', {object: true, translate: 'CHRISPREMADES.Macros.Actions.GrappleEscape', identifier: 'grappleEscape'});
     if (!escapeData) return;
     if (flatDC || escapeDisadvantage) {
         genericUtils.setProperty(escapeData, 'flags.chris-premades.grapple.' + sourceToken.id, {

@@ -1,3 +1,7 @@
+# 1.2.8 Release:
+## Bug Fixes:
+- Grapple (Legacy)
+
 # 1.2.7 Release:
 ## New Legacy Content:
 - Spirit Shield (Thanks SagaTympana)

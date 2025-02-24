@@ -50,7 +50,7 @@ async function escape({workflow}) {
     if (effect) await genericUtils.remove(effect);
     let remainingGrappledEffects = grappledEffects.filter(i => i.id !== effect.id);
     if (remainingGrappledEffects.length) {
-        let escapeData = await compendiumUtils.getItemFromCompendium(constants.packs.miscellaneous, 'Grapple: Escape', {object: true, translate: 'CHRISPREMADES.Macros.Actions.GrappleEscape', identifier: 'grappleEscape'});
+        let escapeData = await compendiumUtils.getItemFromCompendium(constants.featurePacks.miscellaneousItems, 'Grapple: Escape', {object: true, translate: 'CHRISPREMADES.Macros.Actions.GrappleEscape', identifier: 'grappleEscape'});
         if (!escapeData) return;
         await itemUtils.createItems(targetToken.actor, [escapeData], {favorite: true, parentEntity: remainingGrappledEffects[0]});
     }
