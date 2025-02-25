@@ -1,3 +1,7 @@
+# 1.2.9 Release:
+## Bug Fixes:
+- Magic Missile (Legacy)
+
 # 1.2.8 Release:
 ## Bug Fixes:
 - Grapple (Legacy)

@@ -18,12 +18,11 @@ async function use({workflow}) {
     }
     let rollEach = itemUtils.getConfig(workflow.item, 'rollEach');
     let damageFormula = feature.damage.parts[0].formula;
-    if (itemUtils.getItemByIdentifier(workflow.actor, 'empoweredEvocation')) damageFormula += ' + ' + workflow.actor.system.abilities.int.mod;
     let damageType = feature.damage.parts[0].types.first();
     if (!rollEach) {
         let damageRoll = await new CONFIG.Dice.DamageRoll(damageFormula, workflow.item.getRollData(), {type: damageType}).evaluate();
         await MidiQOL.displayDSNForRoll(damageRoll);
-        await activityUtils.setDamage(featureFlat, damageRoll.total.toString(), ['force']);
+        await activityUtils.setDamage(featureFlat, damageRoll.total.toString(), [damageType]);
     }
     let shieldedFeature = feature.clone({'damage.parts': []}, {keepId: true});
     let playAnimation = itemUtils.getConfig(workflow.item, 'playAnimation') && animationUtils.jb2aCheck();
