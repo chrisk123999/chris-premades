@@ -169,7 +169,7 @@ async function updateToken(token, updates, options, userId) {
     let coords = {x: updates.x ?? token.x, y: updates.y ?? token.y};
     let destination = canvas.controls.getRulerForUser(userId)?.destination;
     let tokenBounds = token.object.bounds;
-    let isFinalMovement = !destination || (coords.x + tokenBounds.width / 2 === Math.round(destination.x) && coords.y + tokenBounds.height / 2 === Math.round(destination.y));
+    let isFinalMovement = !destination || (Math.round(coords.x + tokenBounds.width / 2) === Math.round(destination.x) && Math.round(coords.y + tokenBounds.height / 2) === Math.round(destination.y));
     let previousCoords = genericUtils.getProperty(options, 'chris-premades.coords.previous');
     if (!previousCoords) return;
     let xDiff = token.width * canvas.grid.size / 2;
@@ -185,6 +185,7 @@ async function updateToken(token, updates, options, userId) {
     let startTime = performance.now();
     let count = 0;
     if (!ignore) {
+        // TODO: move this into the skipMove check? Was there a reason we put this here?
         if (isFinalMovement) await auras.updateAuras(token, options);
         if (!skipMove) {
             count += await executeMacroPass([token], 'moved', undefined, options);

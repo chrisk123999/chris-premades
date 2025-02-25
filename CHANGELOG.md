@@ -1,6 +1,7 @@
 # 1.2.9 Release:
 ## Bug Fixes:
 - Magic Missile (Legacy)
+- Auras
 
 # 1.2.8 Release:
 ## Bug Fixes:
