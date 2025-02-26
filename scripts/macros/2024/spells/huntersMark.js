@@ -47,7 +47,8 @@ async function use({workflow}) {
             'chris-premades': {
                 huntersMark: {
                     targets: Array.from(workflow.targets).map(i => i.document.uuid),
-                    formula: itemUtils.getConfig(workflow.item, 'formula')
+                    formula: itemUtils.getConfig(workflow.item, 'formula'),
+                    damageType: itemUtils.getConfig(workflow.item, 'damageType')
                 }
             }
         }
@@ -67,7 +68,8 @@ async function use({workflow}) {
             itemUuid: workflow.item.uuid,
             activityIdentifiers: ['huntersMarkMove'],
             favorite: true
-        }
+        },
+        rules: 'modern'
     });
     for (let i of workflow.targets) {
         if (i.actor) await effectUtils.createEffect(i.actor, targetEffectData, {parentEntity: casterEffect, identifier: 'huntersMarkMarked'});
