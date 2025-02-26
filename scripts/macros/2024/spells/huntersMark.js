@@ -113,9 +113,8 @@ async function damage({workflow}) {
     if (!constants.weaponAttacks.includes(workflow.activity.actionType)) return;
     let effect = effectUtils.getEffectByIdentifier(workflow.actor, 'huntersMark');
     if (!effect) return;
-    let {targets: validTargetUuids, formula} = effect.flags['chris-premades'].huntersMark;
+    let {targets: validTargetUuids, formula, damageType} = effect.flags['chris-premades'].huntersMark;
     if (!validTargetUuids.includes(workflow.hitTargets.first().document.uuid)) return;
-    let damageType = workflow.defaultDamageType;
     await workflowUtils.bonusDamage(workflow, formula, {damageType});
 }
 async function early({dialog}) {
@@ -154,7 +153,16 @@ export let huntersMark = {
             default: '1d6',
             homebrew: true,
             category: 'homebrew'
-        }
+        },
+        {
+            value: 'damageType',
+            label: 'CHRISPREMADES.Config.DamageType',
+            type: 'select',
+            default: 'force',
+            options: constants.damageTypeOptions,
+            homebrew: true,
+            category: 'homebrew'
+        },
     ]
 };
 export let huntersMarkSource = {
