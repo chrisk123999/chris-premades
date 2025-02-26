@@ -37,7 +37,7 @@ async function hit({trigger, workflow}) {
             flags: {
                 'chris-premades': {
                     banishingSmite: {
-                        workflowUuid: workflow.uuid
+                        workflowId: workflow.id
                     }
                 }
             }
@@ -49,9 +49,9 @@ async function hit({trigger, workflow}) {
 async function complete({trigger, workflow}) {
     let effect = effectUtils.getEffectByIdentifier(workflow.actor, 'banishingSmiteEffect');
     if (!effect) return;
-    let workflowUuid = effect.flags['chris-premades']?.banishingSmite?.workflowUuid;
-    if (!workflowUuid) return;
-    if (workflow.uuid != workflowUuid) return;
+    let workflowId = effect.flags['chris-premades']?.banishingSmite?.workflowId;
+    if (!workflowId) return;
+    if (workflow.id != workflowId) return;
     let item = await effectUtils.getOriginItem(effect);
     if (!item) return;
     let requiredHP = itemUtils.getConfig(item, 'hp');

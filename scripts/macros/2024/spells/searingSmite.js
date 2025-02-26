@@ -9,7 +9,7 @@ async function use({trigger, workflow}) {
     let effectData = {
         name: workflow.item.name,
         img: workflow.item.img,
-        origin: workflow.uuid,
+        origin: workflow.item.uuid,
         duration: itemUtils.convertDuration(workflow.item),
         changes: [
             {
