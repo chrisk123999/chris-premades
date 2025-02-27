@@ -32,7 +32,7 @@ async function attack({trigger: {entity: item}, workflow}) {
     if (!workflow.item.system.properties.some(i => weaponProperties.includes(i))) return;
     let selection;
     if (workflow.item.system.mastery != 'push' && workflow.item.system.mastery != 'topple') {
-        selection = await dialogUtils.buttonDialog(item, 'CHRISPREMADES.Macros.BatteringRoots.Mastery', [['CHRISPREMADES.Mastery.Push', 'push'], ['CHRISPREMADES.Mastery.Topple', 'topple']]);
+        selection = await dialogUtils.buttonDialog(item, 'CHRISPREMADES.Macros.BatteringRoots.Mastery', [['CHRISPREMADES.Mastery.Push.Name', 'push'], ['CHRISPREMADES.Mastery.Topple.Name', 'topple']]);
         if (!selection) return;
     } else if (workflow.item.system.mastery === 'push') {
         selection = 'topple';

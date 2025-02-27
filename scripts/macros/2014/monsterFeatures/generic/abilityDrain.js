@@ -80,15 +80,15 @@ export let abilityDrain = {
             default: 'short',
             options: [
                 {
-                    label: 'DND5E.ShortRest',
+                    label: 'DND5E.REST.Short.Label',
                     value: 'short'
                 },
                 {
-                    label: 'DND5E.LongRest',
+                    label: 'DND5E.REST.Long.Label',
                     value: 'long'
                 },
                 {
-                    label: 'DND5E.UsesPeriods.Never',
+                    label: 'DND5E.USES.Recovery.Never',
                     value: 'never'
                 }
             ]

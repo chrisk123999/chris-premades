@@ -13,6 +13,14 @@
             "Lawful": "Lawful",
             "Neutral": "Neutral"
         },
+        "AlterSelf": {
+            "NaturalWeapons": {
+                "Claws": "Claws (slashing)",
+                "Fangs": "Fangs (piercing)",
+                "Hooves": "Hooves (bludgeoning)",
+                "Select": "Grow which natural weapon?"
+            }
+        },
         "Auras": {
             "Source": "{auraName}: Source"
         },
@@ -1897,6 +1905,7 @@
                 "Frighten": "Wrathful Smite: Frighten"
             },
             "ZealousPresence": {
+                "Rage": "Use at the cost of 1 Rage use?",
                 "Select": "Who should get targeted? (Max: {maxTargets})"
             },
             "ZoneOfTruth": {

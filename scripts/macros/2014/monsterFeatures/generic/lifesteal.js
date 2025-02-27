@@ -146,11 +146,11 @@ export let lifesteal = {
                     value: false
                 },
                 {
-                    label: 'DND5E.LongRest',
+                    label: 'DND5E.REST.Long.Label',
                     value: 'longRest'
                 },
                 {
-                    label: 'DND5E.ShortRest',
+                    label: 'DND5E.REST.Short.Label',
                     value: 'shortRest'
                 }
             ]
