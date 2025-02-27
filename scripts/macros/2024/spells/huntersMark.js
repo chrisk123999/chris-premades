@@ -53,7 +53,6 @@ async function use({workflow}) {
             }
         }
     };
-    effectUtils.addMacro(casterEffectData, 'midi.actor', ['huntersMarkSource']);
     let casterEffect = await effectUtils.createEffect(workflow.actor, casterEffectData, {
         concentrationItem: workflow.item, 
         strictlyInterdependent: true, 
@@ -64,16 +63,15 @@ async function use({workflow}) {
             activityIdentifier: 'huntersMarkMove'
         }], 
         identifier: 'huntersMark',
+        rules: 'modern',
+        macros: [{type: 'midi.actor', macros: ['huntersMarkSource']}],
         unhideActivities: {
             itemUuid: workflow.item.uuid,
             activityIdentifiers: ['huntersMarkMove'],
             favorite: true
-        },
-        rules: 'modern'
+        }
     });
-    for (let i of workflow.targets) {
-        if (i.actor) await effectUtils.createEffect(i.actor, targetEffectData, {parentEntity: casterEffect, identifier: 'huntersMarkMarked'});
-    }
+    await Promise.all(workflow.targets.map(async i => await effectUtils.createEffect(i.actor, targetEffectData, {parentEntity: casterEffect, identifier: 'huntersMarkMarked'})));
     if (concentrationEffect) await genericUtils.update(concentrationEffect, {'duration.seconds': seconds});
 }
 async function move({workflow}) {
