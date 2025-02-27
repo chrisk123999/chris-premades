@@ -13,6 +13,14 @@
             "Lawful": "Legale",
             "Neutral": "Neutrale"
         },
+        "AlterSelf": {
+            "NaturalWeapons": {
+                "Claws": "Artigli (tagliente)",
+                "Fangs": "Zanne (perforante)",
+                "Hooves": "Zoccoli (contundente)",
+                "Select": "Quale arma naturale sviluppare?"
+            }
+        },
         "Auras": {
             "Source": "{auraName}: Origine"
         },
@@ -733,6 +741,15 @@
                 "Douse": "Spegnere la Lama",
                 "Heal": "Lama di Cristallo: Cura",
                 "Light": "Lama di Cristallo: Luce"
+            },
+            "CuttingWords": {
+                "AbilityCheck": "Usare {item} prova di caratteristica {name} (Totale: {total})?",
+                "AbilityChecksEnabled": "Prove di caratteristica abilitate:",
+                "Attack": "Usare {item} per ridurre un attacco di {name} (Totale: {attack})?",
+                "AttackRollsEnabled": "Tiri d'attacco abilitati:",
+                "Damage": "Usare {item} per ridurre il danno di {name}?",
+                "DamageRollsEnabled": "Tiri di danno abilitati:",
+                "SkillCheck": "Usare {item} prova di abilità {name} (Totale: {total})?"
             },
             "DamageTurnStart": {
                 "Name": "Danno all'Inizio del Turno",
@@ -1545,6 +1562,9 @@
                 "InvalidTarget": "Il bersaglio deve essere Infestato!",
                 "ReapingScythe": "Falce Mietitrice (Spirito Mietitore)"
             },
+            "SpiritShield": {
+                "Damage": "Usare {item} per ridurre il danno inflitto a {name}?"
+            },
             "SpiritShroud": {
                 "Hit": "Mantello Spirituale: Colpo",
                 "Slow": "Mantello Spirituale: Rallentare"
@@ -1885,6 +1905,7 @@
                 "Frighten": "Colpo Irato: Impaurire"
             },
             "ZealousPresence": {
+                "Rage": "Usare al costo di 1 uso di Rabbia?",
                 "Select": "Chi dovrebbe essere bersagliato? (Max: {maxTargets})"
             },
             "ZoneOfTruth": {
