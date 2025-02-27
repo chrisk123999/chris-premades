@@ -164,7 +164,7 @@ async function RollComplete(workflow) {
     let baseItem = workflow.item.system.type.baseItem;
     if (baseItem === '') return;
     if (!workflow.actor.system.traits?.weaponProf?.mastery?.value?.has(baseItem)) return;
-    let mastery = workflow.item.system.mastery;
+    let mastery = workflow.attackRoll.options.mastery;
     if (!mastery) return;
     let macro = custom.getMacro(mastery + 'Mastery', 'modern');
     if (!macro) return;
