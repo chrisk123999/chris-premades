@@ -685,7 +685,7 @@ export class ItemMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
             for (let sourceEffect of sourceItemData.effects ?? []) {
                 if (sourceEffect.img === sourceItemData.img) sourceEffect.img = itemData.img;
             }
-            for (let [key, value] of Object.entries(sourceItemData.system.activities) ?? {}) {
+            for (let [key, value] of Object.entries(sourceItemData.system.activities ?? {})) {
                 if (value.img === sourceItemData.img) sourceItemData.system.activities[key].img = itemData.img;
             }
             sourceItemData.img = itemData.img;

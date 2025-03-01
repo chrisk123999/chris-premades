@@ -2,6 +2,7 @@
 ## Bug Fixes:
 - Magic Missile (Legacy)
 - Auras
+- Item Medkit
 
 # 1.2.8 Release:
 ## Bug Fixes:
