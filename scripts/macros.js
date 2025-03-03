@@ -130,3 +130,4 @@ export {mantleOfMajesty, mantleOfMajestyCommand} from './macros/2024/classFeatur
 export {unbreakableMajesty, unbreakableMajestyEffect} from './macros/2024/classFeatures/bard/glamour/unbreakableMajesty.js';
 //College of Lore
 export {cuttingWords} from './macros/2024/classFeatures/bard/lore/cuttingWords.js';
+export {peerlessSkill} from './macros/2024/classFeatures/bard/lore/peerlessSkill.js';
