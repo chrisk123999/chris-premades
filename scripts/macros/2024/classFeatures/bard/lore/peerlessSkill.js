@@ -21,7 +21,7 @@ async function attackLate({trigger, workflow}) {
     if (!bardicInspiration) return;
     await genericUtils.update(bardicInspiration, {'system.uses.spent': bardicInspiration.system.uses.spent + 1});
 }
-async function checkSkill({trigger: {entity: item, config, roll, actor}}) {
+async function checkSkill({trigger: {entity: item, config, roll, actor, options}}) {
     let targetValue = config?.midiOptions?.targetValue;
     if (targetValue) {
         if (roll.total >= targetValue) return;
@@ -34,11 +34,22 @@ async function checkSkill({trigger: {entity: item, config, roll, actor}}) {
     if (!scale) return;
     let selection = await dialogUtils.confirm(item.name, genericUtils.format('CHRISPREMADES.Dialog.UseRollTotal', {itemName: item.name + ' (' + scale.formula + ')', rollTotal: roll.total}));
     if (!selection) return;
-    let newRoll = await rollUtils.addToRoll(roll, scale.formula);
     await workflowUtils.syntheticItemRoll(item, []);
+    genericUtils.setProperty(options, 'chris-premades.peerlessSkill', true);
+    return await rollUtils.addToRoll(roll, scale.formula);
+}
+async function checkSkillLate({trigger: {entity: item, config, roll, actor, options}}) {
+    if (!options?.['chris-premades']?.peerlessSkill) return;
+    let targetValue = config?.midiOptions?.targetValue;
     if (targetValue) {
-        if (newRoll.total >= targetValue) await genericUtils.update(bardicInspiration, {'system.uses.spent': bardicInspiration.system.uses.spent + 1});
+        if (roll.total < targetValue) return;
+    } else {
+        let selection = await dialogUtils.confirm(item.name, 'CHRISPREMADES.Macros.PeerlessSkill.Confirm', {buttons: 'yesNo'});
+        if (!selection) return;
     }
+    let bardicInspiration = itemUtils.getItemByIdentifier(actor, 'bardicInspiration');
+    if (!bardicInspiration) return;
+    await genericUtils.update(bardicInspiration, {'system.uses.spent': bardicInspiration.system.uses.spent + 1});
 }
 export let peerlessSkill = {
     name: 'Peerless Skill',
@@ -63,12 +74,22 @@ export let peerlessSkill = {
             pass: 'bonus',
             macro: checkSkill,
             priority: 50
+        },
+        {
+            pass: 'post',
+            macro: checkSkillLate,
+            priority: 50
         }
     ],
     check: [
         {
             pass: 'bonus',
             macro: checkSkill,
+            priority: 50
+        },
+        {
+            pass: 'post',
+            macro: checkSkillLate,
             priority: 50
         }
     ],

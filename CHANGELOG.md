@@ -1,3 +1,9 @@
+# 1.2.10 Release:
+## New Modern Content:
+- Peerless Skill
+## API Updates:
+Added a post event for check, save, and skill events.
+
 # 1.2.9 Release:
 ## Bug Fixes:
 - Magic Missile (Legacy)

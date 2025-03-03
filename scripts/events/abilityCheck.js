@@ -263,6 +263,7 @@ async function rollCheck(wrapped, config, dialog = {}, message = {}) {
         messageData.template = 'modules/midi-qol/templates/roll-base.html';
         await returnData.toMessage(messageData, {rollMode: returnData.options?.rollMode ?? rollMode});
     }
+    await executeMacroPass(this, 'post', checkId, options, returnData, config, dialog, message);
     return shouldBeArray ? [returnData] : returnData;
 }
 function patch() {

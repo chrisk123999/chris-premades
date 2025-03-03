@@ -258,6 +258,7 @@ async function rollSkill(wrapped, config, dialog = {}, message = {}) {
         if (messageId) genericUtils.mergeObject(messageData, {'flags.dnd5e.originatingMessage': messageId});
         await returnData.toMessage(messageData, {rollMode: returnData.options?.rollMode ?? rollMode});
     }
+    await executeMacroPass(this, 'post', skillId, options, returnData, config, dialog, message);
     return shouldBeArray ? [returnData] : returnData;
 }
 

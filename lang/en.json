@@ -1359,6 +1359,9 @@
             "Parry": {
                 "Name": "Parry"
             },
+            "PeerlessSkill": {
+                "Confirm": "Did the check succeed?"
+            },
             "Piercer": {
                 "Reroll": "Reroll which lowest die?"
             },

@@ -17,14 +17,7 @@
           "override": false
         },
         "consumption": {
-          "targets": [
-            {
-              "type": "itemUses",
-              "value": "1",
-              "target": "CTlm1E3rfsKSp32i",
-              "scaling": {}
-            }
-          ],
+          "targets": [],
           "scaling": {
             "allowed": false,
             "max": ""
