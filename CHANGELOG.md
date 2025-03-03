@@ -3,6 +3,7 @@
 - Magic Missile (Legacy)
 - Auras
 - Item Medkit
+- Masteries
 
 # 1.2.8 Release:
 ## Bug Fixes:
