@@ -2,7 +2,7 @@
 ## New Modern Content:
 - Peerless Skill
 ## API Updates:
-Added a post event for check, save, and skill events.
+- Added a post event for check, save, and skill events.
 
 # 1.2.9 Release:
 ## Bug Fixes:
