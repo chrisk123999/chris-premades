@@ -1,3 +1,7 @@
+# 1.2.11 Release:
+## New Modern Content:
+- Combat Inspiration
+
 # 1.2.10 Release:
 ## New Modern Content:
 - Peerless Skill

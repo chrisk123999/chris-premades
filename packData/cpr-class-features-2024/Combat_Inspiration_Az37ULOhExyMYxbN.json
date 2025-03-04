@@ -1,0 +1,168 @@
+{
+  "_id": "Az37ULOhExyMYxbN",
+  "name": "Combat Inspiration",
+  "type": "feat",
+  "effects": [
+    {
+      "name": "Combat Inspiration",
+      "changes": [
+        {
+          "key": "flags.midi-qol.optional.combatinspiration.label",
+          "mode": 0,
+          "value": "",
+          "priority": 20
+        },
+        {
+          "key": "flags.midi-qol.optional.combatinspiration.damage.msak",
+          "mode": 0,
+          "value": "",
+          "priority": 20
+        },
+        {
+          "key": "flags.midi-qol.optional.combatinspiration.damage.mwak",
+          "mode": 0,
+          "value": "",
+          "priority": 20
+        },
+        {
+          "key": "flags.midi-qol.optional.combatinspiration.damage.rsak",
+          "mode": 0,
+          "value": "",
+          "priority": 20
+        },
+        {
+          "key": "flags.midi-qol.optional.combatinspiration.damage.rwak",
+          "mode": 0,
+          "value": "",
+          "priority": 20
+        },
+        {
+          "key": "flags.midi-qol.optional.combatinspiration.label",
+          "mode": 0,
+          "value": "",
+          "priority": 20
+        },
+        {
+          "key": "flags.midi-qol.optional.combatinspiration.ac",
+          "mode": 2,
+          "value": "",
+          "priority": 20
+        },
+        {
+          "key": "flags.midi-qol.optional.combatinspiration.count",
+          "mode": 0,
+          "value": "1",
+          "priority": 20
+        }
+      ],
+      "transfer": false,
+      "img": "icons/magic/control/buff-flight-wings-runes-red-yellow.webp",
+      "_id": "n07KtWUMtZuIIvNu",
+      "type": "base",
+      "system": {},
+      "disabled": false,
+      "duration": {
+        "startTime": null,
+        "seconds": null,
+        "combat": null,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "description": "",
+      "origin": null,
+      "tint": "#ffffff",
+      "statuses": [],
+      "sort": 0,
+      "flags": {
+        "dae": {
+          "enableCondition": "",
+          "disableCondition": "",
+          "disableIncapacitated": false,
+          "selfTarget": false,
+          "selfTargetAlways": false,
+          "dontApply": true,
+          "stackable": "multi",
+          "showIcon": false,
+          "durationExpression": "",
+          "macroRepeat": "none",
+          "specialDuration": []
+        },
+        "dnd5e": {
+          "riders": {
+            "statuses": []
+          }
+        },
+        "core": {
+          "overlay": false
+        }
+      },
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "coreVersion": "12.331",
+        "systemId": "dnd5e",
+        "systemVersion": "4.3.3",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!items.effects!Az37ULOhExyMYxbN.n07KtWUMtZuIIvNu"
+    }
+  ],
+  "system": {
+    "activities": {},
+    "uses": {
+      "spent": 0,
+      "recovery": []
+    },
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "identifier": "combat-inspiration",
+    "source": {
+      "book": "PHB 2024",
+      "page": "",
+      "license": "",
+      "custom": "",
+      "rules": "2024",
+      "revision": 1
+    },
+    "advancement": [],
+    "cover": null,
+    "crewed": false,
+    "enchant": {},
+    "prerequisites": {
+      "level": 3,
+      "repeatable": false
+    },
+    "properties": [],
+    "requirements": "",
+    "type": {
+      "value": "class",
+      "subtype": ""
+    }
+  },
+  "flags": {
+    "dnd5e": {
+      "advancementOrigin": "eEDieBJzOwPke9Pk",
+      "riders": {
+        "activity": [],
+        "effect": []
+      }
+    },
+    "chris-premades": {
+      "info": {
+        "identifier": "combatInspiration",
+        "source": "chris-premades",
+        "rules": "modern",
+        "version": "1.2.11"
+      }
+    }
+  },
+  "img": "icons/magic/control/buff-flight-wings-runes-red-yellow.webp",
+  "folder": "edygeg10l4CVm7uh",
+  "_key": "!items!Az37ULOhExyMYxbN"
+}

@@ -31,6 +31,23 @@ async function use({trigger, workflow}) {
     if (!sourceEffect) return;
     let effectData = genericUtils.duplicate(sourceEffect.toObject());
     effectData.duration = itemUtils.convertDuration(workflow.activity);
+    let combatInspiration = itemUtils.getItemByIdentifier(workflow.actor, 'combatInspiration');
+    if (combatInspiration) {
+        let combatInspirationEffect = combatInspiration.effects.contents?.[0];
+        if (combatInspirationEffect) {
+            let combatInspirationEffectData = genericUtils.duplicate(combatInspirationEffect.toObject());
+            combatInspirationEffectData.changes[0].value = combatInspiration.name;
+            combatInspirationEffectData.changes.forEach(i => {
+                if (i.key === 'flags.midi-qol.optional.combatinspiration.label') {
+                    i.value = combatInspiration.name;
+                } else if (i.key != 'flags.midi-qol.optional.combatinspiration.count') {
+                    i.value = scale.formula;
+                }
+            });
+            effectData.changes.push(...combatInspirationEffectData.changes);
+        }
+        await combatInspiration.displayCard();
+    }
     genericUtils.setProperty(effectData, 'flags.chris-premades.bardicInspiration.formula', scale.formula);
     await Promise.all(workflow.targets.map(async token => await effectUtils.createEffect(token.actor, effectData)));
     let dazzlingFootwork = itemUtils.getItemByIdentifier(workflow.actor, 'dazzlingFootwork');

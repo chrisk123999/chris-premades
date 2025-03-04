@@ -131,3 +131,5 @@ export {unbreakableMajesty, unbreakableMajestyEffect} from './macros/2024/classF
 //College of Lore
 export {cuttingWords} from './macros/2024/classFeatures/bard/lore/cuttingWords.js';
 export {peerlessSkill} from './macros/2024/classFeatures/bard/lore/peerlessSkill.js';
+//College of Valor
+export {combatInspiration} from './macros/2024/classFeatures/bard/valor/combatInspiration.js';
