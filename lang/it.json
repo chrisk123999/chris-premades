@@ -617,7 +617,7 @@
                 "SelectSkill": "Seleziona un'abilità per ottenere competenza temporanea:"
             },
             "BranchesOfTheTree": {
-                "Rage": "Devi essere in preda alla rabbia per utilizzare questa caratteristica!"
+                "Rage": "Devi essere in preda all'ira per utilizzare questa caratteristica!"
             },
             "BrandOfCastigation": {
                 "Branded": "Marchio di Castigo: Marchiato",
@@ -1359,6 +1359,9 @@
             "Parry": {
                 "Name": "Parata"
             },
+            "PeerlessSkill": {
+                "Confirm": "La prova ha avuto successo?"
+            },
             "Piercer": {
                 "Reroll": "Ritirare quale dado minore?"
             },
@@ -1405,18 +1408,18 @@
                 "AllowConcentration": "Consentire la concentrazione:",
                 "AllowHeavyArmor": "Consentire le armature pesanti:",
                 "AllowSpellcasting": "Consentire il lancio di incantesimi:",
-                "End": "Rabbia: Fine",
-                "EndEarly": "{actorName} non ha attaccato un nemico o subito danni dall'ultimo turno. Rimuovere Rabbia?",
-                "EndEarlyModern": "{actorName} non ha attaccato un nemico, non ha costretto un nemico a effettuare un tiro salvezza e non ha proseguito la sua rabbia dall'ultimo turno. Rimuovere la Rabbia?",
+                "End": "Ira: Fine",
+                "EndEarly": "{actorName} non ha attaccato un nemico o subito danni dall'ultimo turno. Rimuovere Ira?",
+                "EndEarlyModern": "{actorName} non ha attaccato un nemico, non ha costretto un nemico a effettuare un tiro salvezza e non ha proseguito la sua ira dall'ultimo turno. Rimuovere Ira?",
                 "FormOfBeastTailReaction": "Forma della Bestia: Reazione della Coda",
                 "FormOfBeastWeapon": "Manifestare un'arma naturale?",
                 "FormOfTheBeastBite": "Forma della Bestia: Morso",
                 "FormOfTheBeastClaws": "Forma della Bestia: Artigli",
                 "FormOfTheBeastTail": "Forma della Bestia: Coda",
-                "HeavyArmor": "Indossi un'armatura pesante e non puoi andare in Rabbia!",
+                "HeavyArmor": "Indossi un'armatura pesante e non puoi andare in Ira!",
                 "Huge": "Diventare enorme?",
                 "LargeOrHuge": "Quale taglia?",
-                "Spellcasting": "Non puoi lanciare incantesimi mentre sei in Rabbia!"
+                "Spellcasting": "Non puoi lanciare incantesimi mentre sei in Ira!"
             },
             "RageOfTheGods": "Utilizzare {item} per salvare {token}?",
             "RageOfTheWilds": {
@@ -1905,7 +1908,7 @@
                 "Frighten": "Colpo Irato: Impaurire"
             },
             "ZealousPresence": {
-                "Rage": "Usare al costo di 1 uso di Rabbia?",
+                "Rage": "Usare al costo di 1 uso di Ira?",
                 "Select": "Chi dovrebbe essere bersagliato? (Max: {maxTargets})"
             },
             "ZoneOfTruth": {
@@ -2160,7 +2163,7 @@
             "ScaleAdded": "Il valore di scala {scaleIdentifier} è stato aggiunto alla classe {classIdentifier}!"
         },
         "Section": {
-            "Rage": "Rabbia",
+            "Rage": "Ira",
             "RingOfSpellStoring": "Anello di Conservazione degli Incantesimi",
             "SpellFeatures": "Caratteristiche "
         },

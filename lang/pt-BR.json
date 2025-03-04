@@ -13,6 +13,14 @@
             "Lawful": "Ordeiro",
             "Neutral": "Neutro"
         },
+        "AlterSelf": {
+            "NaturalWeapons": {
+            "Claws": "Garras (Cortante)",
+            "Fangs": "Presas (Perfurante)",
+            "Hooves": "Cascos (Contundente)",
+            "Select": "Crescer qual arma natural?"
+            }
+        },
         "Auras": {
             "Source": "{auraName}: Origem"
         },
@@ -1897,6 +1905,7 @@
                 "Frighten": "Destruição Colérica: Amedrontado"
             },
             "ZealousPresence": {
+                "Rage": "Usar ao custo de 1 uso de Fúria?",
                 "Select": "Quem deve ser o alvo? (Máx: {maxTargets})"
             },
             "ZoneOfTruth": {

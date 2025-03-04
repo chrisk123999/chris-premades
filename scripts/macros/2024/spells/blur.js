@@ -1,7 +1,7 @@
 import {constants, effectUtils, itemUtils, tokenUtils} from '../../../utils.js';
 async function attacked({trigger, workflow}) {
     if (!workflow.targets.size || !constants.attacks.includes(workflow.activity.actionType) || !workflow.token) return;
-    if (tokenUtils.canSense(workflow.targets.first(), workflow.token, ['blindsight', 'seeAll'])) return;
+    if (tokenUtils.canSense(workflow.token, workflow.targets.first(), ['blindsight', 'seeAll'])) return;
     workflow.disadvantage = true;
     workflow.rollOptions.disadvantage = false;
     workflow.attackAdvAttribution.add('DIS: ' + trigger.entity.name);
