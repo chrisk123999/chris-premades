@@ -2770,7 +2770,7 @@
             "Discord": "Open Discord Support Channel",
             "Hint": "Open the troubleshooter.",
             "MissingModule": "Cauldron of Plentiful Resources requires the module {module} to be installed!",
-            "MovementLag": "Movement Events appears to be taking a long time! Try setting \"Movement Event Performance\" lower in the CPR general settings.",
+            "MovementLag": "Movement Events appear to be taking a long time! Try setting \"Movement Event Accuracy\" lower in the CPR general settings.",
             "Open": "Open Troubleshooter:",
             "SaveToFile": "Save to File",
             "Title": "Troubleshooter"
