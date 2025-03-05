@@ -11,9 +11,6 @@ async function misfire({trigger, workflow}) {
         speaker: ChatMessage.implementation.getSpeaker({token: workflow.token}),
         content: workflow.item.name + ' ' + genericUtils.translate('CHRISPREMADES.Firearm.HasMisfired')
     });
-    if (workflow.item.id) {
-        await itemUtils.setConfig(workflow.item, 'status', 1);
-    }
     let damagedEnchant = {
         name: genericUtils.translate('CHRISPREMADES.Firearm.Damaged'),
         img: workflow.item.img,
@@ -23,6 +20,12 @@ async function misfire({trigger, workflow}) {
                 key: 'name',
                 mode: 5,
                 value: '{} (' + genericUtils.translate('CHRISPREMADES.Firearm.Damaged') + ')',
+                priority: 20
+            },
+            {
+                key: 'flags.chris-premades.config.status',
+                mode: 5,
+                value: 1,
                 priority: 20
             }
         ]
@@ -230,12 +233,12 @@ async function repair({workflow}) {
         genericUtils.notify('CHRISPREMADES.Firearm.NoTinkers', 'info');
         return;
     }
-    let roll = await workflow.actor.rollToolCheck('tinker');
+    let roll = await workflow.actor.rollToolCheck({tool: 'tinker'});
     let misfireDC = 8 + (Number(itemUtils.getConfig(weapon, 'misfire')) ?? 1);
     let effect = Array.from(weapon.allApplicableEffects()).find(i => genericUtils.getIdentifier(i) === 'damaged');
     if (effect) await genericUtils.remove(effect);
     let content;
-    if (roll.total >= misfireDC) {
+    if (roll[0].total >= misfireDC) {
         await itemUtils.setConfig(weapon, 'status', 0);
         content = genericUtils.format('CHRISPREMADES.Firearm.RepairSuccess', {weaponName: weapon.name});
     } else {
@@ -249,12 +252,17 @@ async function repair({workflow}) {
                     mode: 5,
                     value: '{} (' + genericUtils.translate('CHRISPREMADES.Firearm.Broken') + ')',
                     priority: 20
+                },
+                {
+                    key: 'flags.chris-premades.config.status',
+                    mode: 5,
+                    value: 2,
+                    priority: 20
                 }
             ]
         };
         content = genericUtils.format('CHRISPREMADES.Firearm.RepairFailure', {weaponName: weapon.name});
         await itemUtils.enchantItem(weapon, brokenEffectData, {identifier: 'broken'});
-        await itemUtils.setConfig(weapon, 'status', 2);
     }
     await ChatMessage.create({
         speaker: ChatMessage.implementation.getSpeaker({token: workflow.token}),

@@ -1,4 +1,4 @@
-import {compendiumUtils, constants, dialogUtils, effectUtils, genericUtils, itemUtils, templateUtils, tokenUtils, workflowUtils} from '../../../../../utils.js';
+import {activityUtils, compendiumUtils, constants, dialogUtils, effectUtils, genericUtils, itemUtils, templateUtils, tokenUtils, workflowUtils} from '../../../../../utils.js';
 
 async function skillBullying({trigger: {entity: item, skillId, options}}) {
     if (skillId !== 'itm') return;
@@ -10,15 +10,16 @@ async function skillBullying({trigger: {entity: item, skillId, options}}) {
     await genericUtils.update(feature, {'system.uses.spent': feature.system.uses.spent + 1});
     options.advantage = true;
 }
-async function lateHelper(workflow, effect, featureName) {
+async function lateHelper(workflow, effect, activityIdentifier) {
     await genericUtils.remove(effect);
     await genericUtils.sleep(100);
     if (workflow.hitTargets.size !== 1) return;
     let originItem = await effectUtils.getOriginItem(effect);
     if (!originItem) return;
-    let featureData = await compendiumUtils.getItemFromCompendium(constants.featurePacks.classFeatureItems, featureName, {object: true, getDescription: true, translate: effect.name, flatDC: itemUtils.getSaveDC(originItem)});
+    let feature = await activityUtils.getActivityByIdentifier(originItem, activityIdentifier, {strict: true});
+    if (!feature) return;
     let targetToken = workflow.hitTargets.first();
-    return await workflowUtils.syntheticItemDataRoll(featureData, workflow.actor, [targetToken]);
+    return await workflowUtils.syntheticActivityRoll(feature, [targetToken]);
 }
 async function lateDazing({trigger: {entity: effect}, workflow}) {
     await lateHelper(workflow, effect, 'dazingShotSave');

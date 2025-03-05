@@ -1,3 +1,7 @@
+# 1.2.12 Release:
+## Bug Fixes:
+- Gunslinger (Legacy)
+
 # 1.2.11 Release:
 ## New Modern Content:
 - Combat Inspiration
