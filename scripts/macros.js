@@ -133,3 +133,11 @@ export {cuttingWords} from './macros/2024/classFeatures/bard/lore/cuttingWords.j
 export {peerlessSkill} from './macros/2024/classFeatures/bard/lore/peerlessSkill.js';
 //College of Valor
 export {combatInspiration} from './macros/2024/classFeatures/bard/valor/combatInspiration.js';
+//Cleric
+export {thaumaturge} from './macros/2024/classFeatures/cleric/thaumaturge.js';
+export {channelDivinity} from './macros/2024/classFeatures/cleric/channelDivinity.js';
+export {searUndead} from './macros/2024/classFeatures/cleric/searUndead.js';
+export {divineStrike} from './macros/2024/classFeatures/cleric/divineStrike.js';
+export {potentSpellcasting} from './macros/2024/classFeatures/cleric/potentSpellcasting.js';
+export {improvedDivineStrike} from './macros/2024/classFeatures/cleric/improvedDivineStrike.js';
+export {improvedPotentSpellcasting} from './macros/2024/classFeatures/cleric/improvedPotentSpellcasting.js';

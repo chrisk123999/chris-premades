@@ -1128,6 +1128,9 @@
             "ImbueCard": {
                 "Select": "Which spell to imbue a card with?"
             },
+            "ImprovedPotentSpellcasting": {
+                "Target": "Select an ally to give temporary hit points to:"
+            },
             "InfectiousFury": {
                 "Attack": "Attack a Nearby Target",
                 "Curse": "How do you curse your target?",

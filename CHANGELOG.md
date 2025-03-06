@@ -1,4 +1,12 @@
 # 1.2.12 Release:
+## New Modern Content:
+- Divine Order: Thaumaturge
+- Channel Divinity
+- Blessed Strikes: Divine Strike
+- Blessed Strikes: Potent Spellcasting
+- Sear Undead
+- Improved Blessed Strikes: Divine Strike
+- Improved Blessed Strikes: Potent Spellcasting
 ## Bug Fixes:
 - Gunslinger (Legacy)
 

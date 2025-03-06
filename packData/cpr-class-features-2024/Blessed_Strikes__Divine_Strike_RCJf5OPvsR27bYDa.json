@@ -1,0 +1,224 @@
+{
+  "_id": "RCJf5OPvsR27bYDa",
+  "name": "Blessed Strikes: Divine Strike",
+  "type": "feat",
+  "effects": [],
+  "system": {
+    "activities": {
+      "cchhheYfxala1dJF": {
+        "type": "utility",
+        "_id": "cchhheYfxala1dJF",
+        "sort": 0,
+        "activation": {
+          "type": "special",
+          "value": null,
+          "override": false,
+          "condition": ""
+        },
+        "consumption": {
+          "scaling": {
+            "allowed": false
+          },
+          "spellSlot": true,
+          "targets": [
+            {
+              "type": "itemUses",
+              "value": "1",
+              "scaling": {}
+            }
+          ]
+        },
+        "description": {
+          "chatFlavor": ""
+        },
+        "duration": {
+          "units": "inst",
+          "concentration": false,
+          "override": false
+        },
+        "effects": [],
+        "range": {
+          "override": false,
+          "units": "self",
+          "special": ""
+        },
+        "target": {
+          "template": {
+            "contiguous": false,
+            "units": "ft",
+            "type": ""
+          },
+          "affects": {
+            "choice": false,
+            "type": ""
+          },
+          "override": false,
+          "prompt": true
+        },
+        "uses": {
+          "spent": 0,
+          "recovery": [],
+          "max": ""
+        },
+        "roll": {
+          "prompt": false,
+          "visible": false,
+          "name": "",
+          "formula": ""
+        },
+        "useConditionText": "",
+        "effectConditionText": "",
+        "macroData": {
+          "name": "",
+          "command": ""
+        },
+        "ignoreTraits": {
+          "idi": false,
+          "idr": false,
+          "idv": false,
+          "ida": false
+        },
+        "midiProperties": {
+          "ignoreTraits": [],
+          "triggeredActivityId": "none",
+          "triggeredActivityConditionText": "",
+          "triggeredActivityTargets": "targets",
+          "triggeredActivityRollAs": "self",
+          "forceDialog": false,
+          "confirmTargets": "default",
+          "autoTargetType": "any",
+          "autoTargetAction": "default",
+          "automationOnly": false,
+          "otherActivityCompatible": false,
+          "identifier": ""
+        },
+        "name": ""
+      }
+    },
+    "uses": {
+      "spent": 1,
+      "recovery": [
+        {
+          "period": "turnStart",
+          "type": "recoverAll"
+        }
+      ],
+      "max": "1"
+    },
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "identifier": "blessed-strikes-divine-strike",
+    "source": {
+      "book": "PHB 2024",
+      "page": "",
+      "license": "",
+      "custom": "",
+      "rules": "2024",
+      "revision": 1
+    },
+    "advancement": [],
+    "cover": null,
+    "crewed": false,
+    "enchant": {},
+    "prerequisites": {
+      "level": 7,
+      "repeatable": false
+    },
+    "properties": [],
+    "requirements": "",
+    "type": {
+      "value": "class",
+      "subtype": ""
+    }
+  },
+  "flags": {
+    "ddbimporter": {
+      "id": 10292211,
+      "type": "class",
+      "entityTypeId": 12168134,
+      "is2014": false,
+      "is2024": true,
+      "originalName": "Blessed Strikes: Divine Strike",
+      "dndbeyond": {
+        "requiredLevel": 7,
+        "displayOrder": 8,
+        "featureType": 1,
+        "class": "Cleric",
+        "classId": 2190877,
+        "entityType": "class-feature",
+        "choice": {
+          "parentName": "Blessed Strikes",
+          "label": "Divine Strike",
+          "choiceId": "3-1675301-426172919",
+          "componentId": 10292211,
+          "componentTypeId": 12168134,
+          "parentChoiceId": null,
+          "subType": null,
+          "wasOption": false,
+          "type": "class"
+        }
+      },
+      "summons": {
+        "folder": "Blessed Strikes"
+      },
+      "class": "Cleric",
+      "classId": 2190877,
+      "initialFeature": {
+        "value": "<p>Once on each of your turns when you hit a creature with an attack roll using a weapon, you can cause the target to take an extra 1d8 Necrotic or Radiant damage (your choice).</p>",
+        "chat": ""
+      },
+      "noEffectIds": [
+        "ruln87xh8rY9MwLb"
+      ],
+      "effectsApplied": true,
+      "importId": "PEqK7PgPdAcZ69Gy"
+    },
+    "midi-qol": {
+      "removeAttackDamageButtons": "default",
+      "forceCEOff": true,
+      "rollAttackPerTarget": "default",
+      "itemCondition": "",
+      "reactionCondition": "",
+      "otherCondition": "",
+      "effectCondition": ""
+    },
+    "midiProperties": {
+      "confirmTargets": "default",
+      "autoFailFriendly": false,
+      "autoSaveFriendly": false,
+      "magicdam": false,
+      "magiceffect": false,
+      "noConcentrationCheck": false,
+      "toggleEffect": false,
+      "ignoreTotalCover": false
+    },
+    "dnd5e": {
+      "riders": {
+        "activity": [],
+        "effect": []
+      },
+      "advancementOrigin": "t57rY4j3LOKqpszq"
+    },
+    "chris-premades": {
+      "info": {
+        "identifier": "divineStrike",
+        "source": "chris-premades",
+        "rules": "modern",
+        "version": "1.2.12",
+        "hasAnimation": true
+      },
+      "macros": {
+        "midi": {
+          "actor": [
+            "divineStrike"
+          ]
+        }
+      }
+    }
+  },
+  "img": "icons/magic/holy/prayer-hands-glowing-yellow.webp",
+  "folder": "zpnSU81c3nPjSzE1",
+  "_key": "!items!RCJf5OPvsR27bYDa"
+}

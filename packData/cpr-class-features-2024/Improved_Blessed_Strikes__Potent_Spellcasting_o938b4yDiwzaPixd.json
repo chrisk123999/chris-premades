@@ -1,0 +1,178 @@
+{
+  "_id": "o938b4yDiwzaPixd",
+  "name": "Improved Blessed Strikes: Potent Spellcasting",
+  "type": "feat",
+  "effects": [],
+  "system": {
+    "activities": {
+      "healImpBSPSclass": {
+        "type": "heal",
+        "_id": "healImpBSPSclass",
+        "sort": 0,
+        "activation": {
+          "type": "special",
+          "value": 1,
+          "condition": "",
+          "override": false
+        },
+        "consumption": {
+          "targets": [],
+          "scaling": {
+            "allowed": false,
+            "max": ""
+          },
+          "spellSlot": true
+        },
+        "description": {
+          "chatFlavor": ""
+        },
+        "duration": {
+          "units": "inst",
+          "special": "",
+          "concentration": false,
+          "override": false
+        },
+        "effects": [],
+        "range": {
+          "value": "60",
+          "units": "ft",
+          "special": "",
+          "override": false
+        },
+        "target": {
+          "prompt": true,
+          "affects": {
+            "count": "1",
+            "type": "creature",
+            "choice": false,
+            "special": ""
+          },
+          "template": {
+            "count": "",
+            "contiguous": false,
+            "type": "",
+            "size": "",
+            "width": "",
+            "height": "",
+            "units": "ft"
+          },
+          "override": false
+        },
+        "uses": {
+          "spent": 0,
+          "recovery": [],
+          "max": ""
+        },
+        "healing": {
+          "number": null,
+          "denomination": 0,
+          "bonus": "@abilities.wis.mod * 2",
+          "types": [
+            "temphp"
+          ],
+          "custom": {
+            "enabled": false,
+            "formula": ""
+          },
+          "scaling": {
+            "mode": "whole",
+            "number": 1,
+            "formula": ""
+          }
+        },
+        "useConditionText": "",
+        "effectConditionText": "",
+        "macroData": {
+          "name": "",
+          "command": ""
+        },
+        "ignoreTraits": {
+          "idi": false,
+          "idr": false,
+          "idv": false,
+          "ida": false
+        },
+        "midiProperties": {
+          "ignoreTraits": [],
+          "triggeredActivityId": "none",
+          "triggeredActivityConditionText": "",
+          "triggeredActivityTargets": "targets",
+          "triggeredActivityRollAs": "self",
+          "forceDialog": false,
+          "confirmTargets": "default",
+          "automationOnly": false,
+          "identifier": "",
+          "autoTargetType": "any",
+          "autoTargetAction": "default",
+          "otherActivityCompatible": false
+        },
+        "name": ""
+      }
+    },
+    "uses": {
+      "spent": 0,
+      "recovery": []
+    },
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "identifier": "improved-blessed-strikes",
+    "source": {
+      "book": "PHB 2024",
+      "page": "",
+      "license": "",
+      "custom": "",
+      "rules": "2024",
+      "revision": 1
+    },
+    "advancement": [],
+    "cover": null,
+    "crewed": false,
+    "enchant": {},
+    "prerequisites": {
+      "level": 14,
+      "repeatable": false
+    },
+    "properties": [],
+    "requirements": "",
+    "type": {
+      "value": "class",
+      "subtype": ""
+    }
+  },
+  "flags": {
+    "dnd5e": {
+      "advancementOrigin": "t57rY4j3LOKqpszq",
+      "riders": {
+        "activity": [],
+        "effect": []
+      },
+      "last": {
+        "healImpBSPSclass": {
+          "damageType": {
+            "0": "temphp"
+          }
+        }
+      }
+    },
+    "chris-premades": {
+      "info": {
+        "identifier": "improvedPotentSpellcasting",
+        "source": "chris-premades",
+        "rules": "modern",
+        "version": "1.2.12"
+      },
+      "macros": {
+        "midi": {
+          "actor": [
+            "improvedPotentSpellcasting"
+          ]
+        }
+      }
+    }
+  },
+  "img": "icons/magic/holy/prayer-hands-glowing-yellow-white.webp",
+  "folder": "zpnSU81c3nPjSzE1",
+  "_key": "!items!o938b4yDiwzaPixd"
+}

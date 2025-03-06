@@ -1,0 +1,66 @@
+{
+  "_id": "gPee05fI7DN4VMLY",
+  "name": "Blessed Strikes: Potent Spellcasting",
+  "type": "feat",
+  "effects": [],
+  "system": {
+    "activities": {},
+    "uses": {
+      "spent": 0,
+      "recovery": []
+    },
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "identifier": "blessed-strikes-potent-spellcasting",
+    "source": {
+      "book": "PHB 2024",
+      "page": "",
+      "license": "",
+      "custom": "",
+      "rules": "2024",
+      "revision": 1
+    },
+    "advancement": [],
+    "cover": null,
+    "crewed": false,
+    "enchant": {},
+    "prerequisites": {
+      "level": 7,
+      "repeatable": false
+    },
+    "properties": [],
+    "requirements": "",
+    "type": {
+      "value": "class",
+      "subtype": ""
+    }
+  },
+  "flags": {
+    "dnd5e": {
+      "advancementOrigin": "t57rY4j3LOKqpszq",
+      "riders": {
+        "activity": []
+      }
+    },
+    "chris-premades": {
+      "info": {
+        "identifier": "potentSpellcasting",
+        "source": "chris-premades",
+        "rules": "modern",
+        "version": "1.2.12"
+      },
+      "macros": {
+        "midi": {
+          "actor": [
+            "potentSpellcasting"
+          ]
+        }
+      }
+    }
+  },
+  "img": "icons/magic/life/cross-yellow-green.webp",
+  "folder": "zpnSU81c3nPjSzE1",
+  "_key": "!items!gPee05fI7DN4VMLY"
+}

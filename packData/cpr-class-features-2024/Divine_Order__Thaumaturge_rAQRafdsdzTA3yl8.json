@@ -1,0 +1,234 @@
+{
+  "_id": "rAQRafdsdzTA3yl8",
+  "name": "Divine Order: Thaumaturge",
+  "type": "feat",
+  "effects": [
+    {
+      "name": "Divine Order: Thaumaturge",
+      "statuses": [],
+      "changes": [
+        {
+          "key": "system.skills.arc.bonuses.check",
+          "mode": 2,
+          "value": "@abilities.wis.mod",
+          "priority": 12
+        },
+        {
+          "key": "system.skills.rel.bonuses.check",
+          "mode": 2,
+          "value": "@abilities.wis.mod",
+          "priority": 12
+        }
+      ],
+      "duration": {
+        "seconds": null,
+        "startTime": 3744,
+        "rounds": null,
+        "turns": null,
+        "startRound": 1,
+        "startTurn": 0,
+        "combat": null
+      },
+      "tint": "#ffffff",
+      "transfer": true,
+      "disabled": false,
+      "flags": {
+        "dae": {
+          "transfer": true,
+          "stackable": "noneNameOnly",
+          "disableCondition": "",
+          "disableIncapacitated": false,
+          "showIcon": false,
+          "durationExpression": "",
+          "macroRepeat": "none",
+          "specialDuration": []
+        },
+        "ddbimporter": {
+          "disabled": false,
+          "passive": true,
+          "itemId": 10292197,
+          "itemEntityTypeId": 12168134
+        },
+        "midi-qol": {
+          "forceCEOff": true
+        },
+        "core": {
+          "overlay": false
+        },
+        "dnd5e": {
+          "riders": {
+            "statuses": []
+          }
+        }
+      },
+      "description": "<p>You know one extra cantrip from the Cleric spell list. In addition, your mystical connection to the divine gives you a bonus to your Intelligence (&amp;Reference[arc]{Arcana} or &amp;Reference[rel]{Religion}) checks. The bonus equals your Wisdom modifier (minimum of +1).</p>",
+      "img": "icons/magic/life/ankh-shadow-green.webp",
+      "_id": "u8RT6Qnjhtg4RkAV",
+      "type": "base",
+      "system": {},
+      "origin": "Actor.yy1I4W4hqhw1yaiM.Item.1woKTdujE4nYOWLz",
+      "sort": 0,
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "coreVersion": "12.331",
+        "systemId": "dnd5e",
+        "systemVersion": "4.3.6",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!items.effects!rAQRafdsdzTA3yl8.u8RT6Qnjhtg4RkAV"
+    }
+  ],
+  "system": {
+    "activities": {
+      "utilityDiOTclass": {
+        "type": "utility",
+        "_id": "utilityDiOTclass",
+        "sort": 0,
+        "activation": {
+          "type": "action",
+          "value": null,
+          "override": false
+        },
+        "consumption": {
+          "targets": [],
+          "scaling": {
+            "allowed": false,
+            "max": ""
+          },
+          "spellSlot": true
+        },
+        "description": {},
+        "duration": {
+          "units": "inst",
+          "special": "",
+          "concentration": false,
+          "override": false
+        },
+        "effects": [],
+        "range": {
+          "units": "self",
+          "special": "",
+          "override": false
+        },
+        "target": {
+          "prompt": true,
+          "affects": {
+            "count": "",
+            "type": "",
+            "choice": false,
+            "special": ""
+          },
+          "template": {
+            "count": "",
+            "contiguous": false,
+            "type": "",
+            "size": "",
+            "width": "",
+            "height": "",
+            "units": "ft"
+          },
+          "override": false
+        },
+        "uses": {
+          "spent": 0,
+          "recovery": []
+        },
+        "roll": {
+          "prompt": false,
+          "visible": false
+        },
+        "useConditionText": "",
+        "effectConditionText": "",
+        "macroData": {
+          "name": "",
+          "command": ""
+        },
+        "ignoreTraits": {
+          "idi": false,
+          "idr": false,
+          "idv": false,
+          "ida": false
+        },
+        "midiProperties": {
+          "ignoreTraits": [],
+          "triggeredActivityId": "none",
+          "triggeredActivityConditionText": "",
+          "triggeredActivityTargets": "targets",
+          "triggeredActivityRollAs": "self",
+          "forceDialog": false,
+          "confirmTargets": "default",
+          "automationOnly": false,
+          "identifier": "",
+          "autoTargetType": "any",
+          "autoTargetAction": "default",
+          "otherActivityCompatible": true
+        }
+      }
+    },
+    "uses": {
+      "spent": 0,
+      "recovery": []
+    },
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "identifier": "divine-order-thaumaturge",
+    "source": {
+      "book": "PHB 2024",
+      "page": "",
+      "license": "",
+      "custom": "",
+      "rules": "2024",
+      "revision": 1
+    },
+    "advancement": [],
+    "cover": null,
+    "crewed": false,
+    "enchant": {},
+    "prerequisites": {
+      "level": 1,
+      "repeatable": false
+    },
+    "properties": [],
+    "requirements": "",
+    "type": {
+      "value": "class",
+      "subtype": ""
+    }
+  },
+  "flags": {
+    "dae": {
+      "alwaysActive": false,
+      "activeEquipped": false
+    },
+    "midi-qol": {
+      "removeAttackDamageButtons": "default",
+      "forceCEOff": true
+    },
+    "midiProperties": {
+      "confirmTargets": "default"
+    },
+    "dnd5e": {
+      "riders": {
+        "activity": [],
+        "effect": []
+      },
+      "advancementOrigin": "t57rY4j3LOKqpszq"
+    },
+    "chris-premades": {
+      "info": {
+        "identifier": "thaumaturge",
+        "source": "chris-premades",
+        "rules": "modern",
+        "version": "1.2.12"
+      }
+    }
+  },
+  "img": "icons/magic/life/ankh-shadow-green.webp",
+  "folder": "zpnSU81c3nPjSzE1",
+  "_key": "!items!rAQRafdsdzTA3yl8"
+}

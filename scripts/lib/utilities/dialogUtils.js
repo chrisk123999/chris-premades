@@ -276,7 +276,7 @@ async function selectSpellSlot(actor, title, content, {maxLevel = 9, minLevel = 
     if (no) inputs.push(['CHRISPREMADES.Generic.No', false]);
     return await buttonDialog(title, content, inputs, {displayAsRows: true, userId: userId});
 }
-async function selectDamageType(damageTypes, title, context) {
+async function selectDamageType(damageTypes, title, context, {addNo = false} = {}) {
     let images = {
         acid: 'icons/magic/acid/projectile-faceted-glob.webp',
         bludgeoning: 'icons/magic/earth/projectiles-stone-salvo-gray.webp',
@@ -290,7 +290,8 @@ async function selectDamageType(damageTypes, title, context) {
         psychic: 'icons/magic/control/fear-fright-monster-grin-red-orange.webp',
         radiant: 'icons/magic/holy/projectiles-blades-salvo-yellow.webp',
         slashing: 'icons/skills/melee/strike-sword-gray.webp',
-        thunder: 'icons/magic/sonic/explosion-shock-wave-teal.webp'
+        thunder: 'icons/magic/sonic/explosion-shock-wave-teal.webp',
+        no: 'icons/svg/cancel.svg'
     };
     let buttons = damageTypes.map(i => {
         let image = images[i] ?? 'icons/magic/symbols/question-stone-yellow.webp';
@@ -300,6 +301,7 @@ async function selectDamageType(damageTypes, title, context) {
             {image}
         ];
     });
+    if (addNo) buttons.push(['CHRISPREMADES.Generic.No', false, {image: images.no}]);
     return await buttonDialog(title, context, buttons);
 }
 async function queuedConfirmDialog(title, content, {actor, reason, userId} = {}) {
