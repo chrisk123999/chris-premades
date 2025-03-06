@@ -7,7 +7,7 @@
 - Channel Divinity
 ## API Updates:
 - The combat event will now pass along the turn information to the trigger.
-- Templates will now be flagged with the rules version of the item they're tied to, when relevent.
+- Templates will now be flagged with the rules version of the item they're tied to, when relevant.
 
 # 1.2.12 Release:
 ## New Modern Content:
