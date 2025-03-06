@@ -119,7 +119,7 @@ function collectTokenMacros(token, pass, distance, target) {
     });
     return triggers;
 }
-function getSortedTriggers(tokens, pass, token) {
+function getSortedTriggers(tokens, pass, token, details) {
     let allTriggers = [];
     tokens.forEach(i => {
         let distance;
@@ -164,7 +164,11 @@ function getSortedTriggers(tokens, pass, token) {
                 name: trigger.name,
                 token: trigger.token,
                 distance: trigger.distance,
-                target: trigger.target
+                target: trigger.target,
+                currentTurn: details?.currentTurn,
+                previousTurn: details?.previousTurn,
+                previousRound: details?.previousRound,
+                currentRound: details?.currentRound
             });
         });
     });
@@ -179,9 +183,9 @@ async function executeMacro(trigger) {
         console.error(error);
     }
 }
-async function executeMacroPass(tokens, pass, token) {
+async function executeMacroPass(tokens, pass, token, details) {
     genericUtils.log('dev', 'Executing Combat Macro Pass: ' + pass + ' for ' + (token?.name ?? tokens[0].name));
-    let triggers = getSortedTriggers(tokens, pass, token);
+    let triggers = getSortedTriggers(tokens, pass, token, details);
     if (triggers.length) await genericUtils.sleep(50);
     for (let i of triggers) await executeMacro(i);
 }
@@ -197,11 +201,17 @@ async function updateCombat(combat, changes, context) {
     let sceneTokens = combat.scene?.tokens ?? [];
     let currentToken = sceneTokens.get(combat.current.tokenId);
     let previousToken = sceneTokens.get(combat.previous.tokenId);
-    if (previousToken) await executeMacroPass([previousToken], 'turnEnd');
-    if (currentToken) await executeMacroPass([currentToken], 'turnStart');
-    for (let token of (sceneTokens ?? [])) await executeMacroPass([token], 'everyTurn');
-    if (previousToken) await executeMacroPass(sceneTokens.filter(i => i != previousToken), 'turnEndNear', previousToken);
-    if (currentToken) await executeMacroPass(sceneTokens.filter(i => i != currentToken), 'turnStartNear', currentToken);
+    let details = {
+        currentTurn,
+        previousTurn,
+        currentRound,
+        previousRound
+    };
+    if (previousToken) await executeMacroPass([previousToken], 'turnEnd', undefined, details);
+    if (currentToken) await executeMacroPass([currentToken], 'turnStart', undefined, details);
+    for (let token of (sceneTokens ?? [])) await executeMacroPass([token], 'everyTurn', undefined, details);
+    if (previousToken) await executeMacroPass(sceneTokens.filter(i => i != previousToken), 'turnEndNear', previousToken, details);
+    if (currentToken) await executeMacroPass(sceneTokens.filter(i => i != currentToken), 'turnStartNear', currentToken, details);
 }
 async function combatStart(combat, changes) {
     if (!socketUtils.isTheGM()) return;

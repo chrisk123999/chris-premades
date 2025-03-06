@@ -1,0 +1,189 @@
+{
+  "_id": "5RzfKlFm01B59UuG",
+  "name": "Preserve Life",
+  "type": "feat",
+  "effects": [],
+  "system": {
+    "activities": {
+      "WpKQvVUgM3DriM5s": {
+        "type": "utility",
+        "_id": "WpKQvVUgM3DriM5s",
+        "sort": 0,
+        "activation": {
+          "type": "action",
+          "value": null,
+          "override": false,
+          "condition": ""
+        },
+        "consumption": {
+          "scaling": {
+            "allowed": false
+          },
+          "spellSlot": true,
+          "targets": []
+        },
+        "description": {
+          "chatFlavor": ""
+        },
+        "duration": {
+          "units": "inst",
+          "concentration": false,
+          "override": false
+        },
+        "effects": [],
+        "range": {
+          "override": false,
+          "units": "self",
+          "special": ""
+        },
+        "target": {
+          "template": {
+            "contiguous": false,
+            "units": "ft",
+            "type": "emanationNoTemplate",
+            "size": "30",
+            "count": ""
+          },
+          "affects": {
+            "choice": false,
+            "type": "ally",
+            "count": "",
+            "special": ""
+          },
+          "override": false,
+          "prompt": true
+        },
+        "uses": {
+          "spent": 0,
+          "recovery": [],
+          "max": ""
+        },
+        "roll": {
+          "prompt": false,
+          "visible": false,
+          "name": "",
+          "formula": ""
+        },
+        "useConditionText": "",
+        "effectConditionText": "",
+        "macroData": {
+          "name": "",
+          "command": ""
+        },
+        "ignoreTraits": {
+          "idi": false,
+          "idr": false,
+          "idv": false,
+          "ida": false
+        },
+        "midiProperties": {
+          "ignoreTraits": [],
+          "triggeredActivityId": "none",
+          "triggeredActivityConditionText": "",
+          "triggeredActivityTargets": "targets",
+          "triggeredActivityRollAs": "self",
+          "forceDialog": false,
+          "confirmTargets": "default",
+          "autoTargetType": "any",
+          "autoTargetAction": "default",
+          "automationOnly": false,
+          "otherActivityCompatible": false,
+          "identifier": ""
+        },
+        "name": ""
+      }
+    },
+    "uses": {
+      "spent": null,
+      "recovery": [],
+      "max": ""
+    },
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "identifier": "preserve-life",
+    "source": {
+      "book": "PHB 2024",
+      "page": "",
+      "license": "",
+      "custom": "",
+      "rules": "2024",
+      "revision": 1
+    },
+    "advancement": [],
+    "cover": null,
+    "crewed": false,
+    "enchant": {},
+    "prerequisites": {
+      "level": 3,
+      "repeatable": false
+    },
+    "properties": [],
+    "requirements": "",
+    "type": {
+      "value": "class",
+      "subtype": ""
+    }
+  },
+  "flags": {
+    "ddbimporter": {
+      "id": 10292420,
+      "type": "class",
+      "entityTypeId": 12168134,
+      "is2014": false,
+      "is2024": true,
+      "originalName": "Preserve Life",
+      "dndbeyond": {
+        "requiredLevel": 3,
+        "displayOrder": 300,
+        "featureType": 1,
+        "class": "Cleric",
+        "classId": 2190892,
+        "entityType": "class-feature",
+        "levelScale": null,
+        "levelScales": [],
+        "limitedUse": [
+          {
+            "level": null,
+            "uses": 1
+          }
+        ]
+      },
+      "class": "Cleric",
+      "classId": 2190877,
+      "subClass": "Life Domain",
+      "subClassId": 2190892,
+      "importId": "PEqK7PgPdAcZ69Gy"
+    },
+    "dnd5e": {
+      "advancementOrigin": "t57rY4j3LOKqpszq",
+      "riders": {
+        "activity": [],
+        "effect": []
+      }
+    },
+    "chris-premades": {
+      "info": {
+        "identifier": "preserveLife",
+        "rules": "modern",
+        "source": "chris-premades",
+        "version": "1.2.13",
+        "hasAnimation": true
+      },
+      "macros": {
+        "midi": {
+          "item": [
+            "preserveLife"
+          ]
+        },
+        "createItem": [
+          "preserveLife"
+        ]
+      }
+    }
+  },
+  "img": "icons/magic/life/heart-hand-gold-green.webp",
+  "folder": "ajmGBA5GHs18BaY5",
+  "_key": "!items!5RzfKlFm01B59UuG"
+}

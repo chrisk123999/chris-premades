@@ -141,3 +141,6 @@ export {divineStrike} from './macros/2024/classFeatures/cleric/divineStrike.js';
 export {potentSpellcasting} from './macros/2024/classFeatures/cleric/potentSpellcasting.js';
 export {improvedDivineStrike} from './macros/2024/classFeatures/cleric/improvedDivineStrike.js';
 export {improvedPotentSpellcasting} from './macros/2024/classFeatures/cleric/improvedPotentSpellcasting.js';
+//Life Cleric
+export {discipleOfLife} from './macros/2024/classFeatures/cleric/life/discipleOfLife.js';
+export {preserveLife} from './macros/2024/classFeatures/cleric/life/preserveLife.js';

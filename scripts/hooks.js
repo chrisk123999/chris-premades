@@ -25,6 +25,7 @@ import {item} from './applications/item.js';
 import {activities} from './extensions/activities.js';
 import {ItemMedkit} from './applications/medkit-item.js';
 import {itemEvent} from './events/createItem.js';
+import {template} from './extensions/template.js';
 export function registerHooks() {
     Hooks.on('createSetting', genericUtils.createUpdateSetting);
     Hooks.on('updateSetting', genericUtils.createUpdateSetting);
@@ -34,7 +35,6 @@ export function registerHooks() {
     }
     Hooks.on('changeSidebarTab', sidebar.removeCompendiums);
     Hooks.on('renderCompendiumDirectory', sidebar.removeCompendiums);
-
     Hooks.on('midi-qol.preTargeting', midiEvents.preTargeting);
     Hooks.on('midi-qol.premades.postNoAction', midiEvents.preItemRoll);
     Hooks.on('midi-qol.premades.postPreambleComplete', midiEvents.preambleComplete);
@@ -44,9 +44,7 @@ export function registerHooks() {
     Hooks.on('midi-qol.premades.postSavesComplete', midiEvents.savesComplete);
     Hooks.on('midi-qol.preTargetDamageApplication', midiEvents.preTargetDamageApplication);
     Hooks.on('midi-qol.premades.postRollFinished', midiEvents.rollFinished);
-
     Hooks.on('dae.setFieldData', dae.addFlags);
-
     Hooks.on('getItemSheetHeaderButtons', createHeaderButton);
     Hooks.on('getActorSheetHeaderButtons', createHeaderButton);
     Hooks.on('getActiveEffectConfigHeaderButtons', createHeaderButton);
@@ -86,6 +84,7 @@ export function registerHooks() {
     Hooks.on('preDeleteItem', equipment.remove);
     Hooks.on('preCreateItem', equipment.addOrUpdate);
     Hooks.on('dnd5e.restCompleted', rest);
+    Hooks.on('preCreateMeasuredTemplate', template.rules);
     if (genericUtils.getCPRSetting('addActions')) Hooks.on('createToken', actions.createToken);
     if (genericUtils.getCPRSetting('itemContext')) Hooks.on('dnd5e.getItemContextOptions', item.send);
     if (game.user.isGM) {

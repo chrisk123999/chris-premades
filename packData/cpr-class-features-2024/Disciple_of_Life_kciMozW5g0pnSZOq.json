@@ -1,0 +1,78 @@
+{
+  "_id": "kciMozW5g0pnSZOq",
+  "name": "Disciple of Life",
+  "type": "feat",
+  "effects": [],
+  "system": {
+    "activities": {},
+    "uses": {
+      "spent": 0,
+      "recovery": []
+    },
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "identifier": "disciple-of-life",
+    "source": {
+      "book": "PHB 2024",
+      "page": "",
+      "license": "",
+      "custom": "",
+      "rules": "2024",
+      "revision": 1
+    },
+    "advancement": [],
+    "cover": null,
+    "crewed": false,
+    "enchant": {},
+    "prerequisites": {
+      "level": 3,
+      "repeatable": false
+    },
+    "properties": [],
+    "requirements": "",
+    "type": {
+      "value": "class",
+      "subtype": ""
+    }
+  },
+  "flags": {
+    "dae": {
+      "alwaysActive": false,
+      "activeEquipped": false
+    },
+    "midi-qol": {
+      "removeAttackDamageButtons": "default",
+      "forceCEOff": true
+    },
+    "midiProperties": {
+      "confirmTargets": "default"
+    },
+    "dnd5e": {
+      "riders": {
+        "activity": [],
+        "effect": []
+      },
+      "advancementOrigin": "t57rY4j3LOKqpszq"
+    },
+    "chris-premades": {
+      "info": {
+        "identifier": "discipleOfLife",
+        "source": "chris-premades",
+        "rules": "modern",
+        "version": "1.2.13"
+      },
+      "macros": {
+        "midi": {
+          "actor": [
+            "discipleOfLife"
+          ]
+        }
+      }
+    }
+  },
+  "img": "icons/magic/light/hand-sparks-smoke-teal.webp",
+  "folder": "ajmGBA5GHs18BaY5",
+  "_key": "!items!kciMozW5g0pnSZOq"
+}

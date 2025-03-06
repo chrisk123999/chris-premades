@@ -1,13 +1,12 @@
+import {custom} from '../../events/custom.js';
 import {gambitPremades} from '../../integrations/gambitsPremades.js';
 import {miscPremades} from '../../integrations/miscPremades.js';
-import * as macros from '../../legacyMacros.js';
 import {constants} from '../constants.js';
 import {errors} from '../errors.js';
 import {genericUtils} from './genericUtils.js';
 import {itemUtils} from './itemUtils.js';
-async function getCPRAutomation(item, {identifier, rules = 'legacy'} = {}) {
+async function getCPRAutomation(item, {identifier, rules = 'legacy', type = 'character'} = {}) {
     let keys = [];
-    let type = item.actor?.type ?? 'character';
     if (type === 'character' || item.type === 'spell') {
         keys = [];
         switch (item.type) {
@@ -54,7 +53,7 @@ async function getCPRAutomation(item, {identifier, rules = 'legacy'} = {}) {
         keys.push(constants.packs.monsterFeatures);
     } else return;
     let itemIdentifier = genericUtils.getIdentifier(item);
-    let name = macros[itemIdentifier]?.name ?? CONFIG.chrisPremades.renamedItems[item.name] ?? item.name;
+    let name = custom.getMacro(itemIdentifier, rules)?.name ?? CONFIG.chrisPremades.renamedItems[item.name] ?? item.name;
     let folderId;
     if (type === 'npc' && item.type != 'spell') {
         let name = identifier ?? item.actor.prototypeToken.name;
@@ -71,10 +70,9 @@ async function getCPRAutomation(item, {identifier, rules = 'legacy'} = {}) {
         if (found) return found;
     }
 }
-async function getGPSAutomation(item, {identifier, rules = 'legacy'} = {}) {
+async function getGPSAutomation(item, {identifier, rules = 'legacy', type = 'character'} = {}) {
     if (rules === 'modern') return;
     let found;
-    let type = item.actor?.type ?? 'character';
     if (type === 'character' || item.type === 'spell') {
         switch(item.type) {
             case 'spell': found = gambitPremades.gambitItems.find(i => i.name === item.name && i.type === 'spell'); break;
@@ -94,10 +92,10 @@ async function getGPSAutomation(item, {identifier, rules = 'legacy'} = {}) {
     if (!found) return;
     return await fromUuid(found.uuid);
 }
-async function getMISCAutomation(item, {identifier, rules = 'legacy'} = {}) {
+async function getMISCAutomation(item, {identifier, rules = 'legacy', type = 'character'} = {}) {
     if (rules === 'modern') return;
     let found;
-    let type = item.actor?.type ?? 'character';
+    //let type = item.actor?.type ?? 'character';
     if (type === 'character' || item.type === 'spell') {
         switch(item.type) {
             case 'spell': found = miscPremades.miscItems.find(i => i.name === item.name && i.type === 'spell'); break;
@@ -122,8 +120,13 @@ async function getAllAutomations(item, options) {
     let items = [];
     let type = item.actor?.type ?? 'character';
     if (type != 'character' && type != 'npc') return [];
+    if (item.actor) {
+        let classItem = item.actor.items.find(i => i.type === 'class');
+        if (classItem) type = 'character';
+    }
     let monster;
     if (type === 'npc') monster = item.actor.prototypeToken.name;
+    options.type = type;
     await Promise.all(Object.entries(setting).map(async i => {
         let found;
         let source;
