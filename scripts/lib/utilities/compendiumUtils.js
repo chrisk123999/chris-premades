@@ -115,7 +115,7 @@ async function getMISCAutomation(item, {identifier, rules = 'legacy', type = 'ch
     if (!found) return;
     return await fromUuid(found.uuid);
 }
-async function getAllAutomations(item, options) {
+async function getAllAutomations(item, options = {}) {
     let setting = genericUtils.getCPRSetting('additionalCompendiums');
     let items = [];
     let type = item.actor?.type ?? 'character';
@@ -289,7 +289,7 @@ async function getAppliedOrPreferredAutomation(item, options) {
             }
             default: {
                 let document = await getItemFromCompendium(source, item.name, {ignoreNotFound: true, rules: options?.rules});
-                if (!document) document = await getPreferredAutomation(item);
+                if (!document) document = await getPreferredAutomation(item, options);
                 return document;
             }
         }
