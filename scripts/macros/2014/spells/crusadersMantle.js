@@ -24,7 +24,13 @@ async function create({trigger: {entity: effect, target, identifier}}) {
         },
         changes: [
             {
-                key: 'system.bonuses.All-Damage',
+                key: 'system.bonuses.mwak.damage',
+                mode: 2,
+                value: '1d4[radiant]',
+                priority: 20
+            },
+            {
+                key: 'system.bonuses.rwak.damage',
                 mode: 2,
                 value: '1d4[radiant]',
                 priority: 20
