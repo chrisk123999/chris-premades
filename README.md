@@ -7,7 +7,8 @@ A collection of automated items including spells, class features, monster featur
 ### Authors:
 [Chris](https://github.com/chrisk123999) <br> 
 [Autumn](https://github.com/Autumn225) <br>
-[Michael](https://github.com/roth-michael)
+[Michael](https://github.com/roth-michael) <br>
+[SagaTympana](https://github.com/SagaTympana)
 
 ### Support:
 [<img src="images/chris-kofi.svg" width=237px />](https://ko-fi.com/O5O5G582S) <br>

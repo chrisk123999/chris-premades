@@ -1,6 +1,6 @@
 import {activityUtils, dialogUtils, itemUtils, tokenUtils, workflowUtils} from '../../../../utils.js';
 async function use({trigger: {entity: item}, workflow}) {
-    if (workflow.item?.type != 'spell' || !workflow.activity || !workflow.token) return;
+    if (workflow.item?.type != 'spell' || !workflow.activity || !workflow.token || !workflow.castData) return;
     if (workflowUtils.getCastLevel(workflow) != 0) return;
     let classIdentifier = itemUtils.getConfig(item, 'classIdentifier');
     if (workflow.item.system.sourceClass != classIdentifier) return;

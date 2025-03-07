@@ -1,3 +1,9 @@
+# 1.2.14 Release
+## New Modern Content:
+- Moonbeam
+## Bug Fixes:
+- Item Medkit
+
 # 1.2.14 Release:
 ## Bug Fixes:
 - Actor Medkit

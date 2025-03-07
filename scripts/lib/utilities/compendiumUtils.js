@@ -180,7 +180,7 @@ async function getItemFromCompendium(key, name, {ignoreNotFound, folderId, objec
         return undefined;
     }
     let packIndex = await pack.getIndex({'fields': ['name', 'type', 'folder', 'system.source.rules']});
-    let match = packIndex.find(item => item.name === name && (!folderId || (folderId && item.folder === folderId)) && (!matchType || (item.type === matchType)) && (!rules || (item.system.source.rules === (rules === 'modern' ? '2024' : '2012'))));
+    let match = packIndex.find(item => item.name === name && (!folderId || (folderId && item.folder === folderId)) && (!matchType || (item.type === matchType)) && (!rules || (item.system.source.rules === (rules === 'modern' ? '2024' : '2014'))));
     if (match) {
         let document = await pack.getDocument(match._id);
         if (object) {

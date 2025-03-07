@@ -1,6 +1,5 @@
 import {crosshairUtils} from '../../../lib/utilities/crosshairUtils.js';
 import {activityUtils, combatUtils, effectUtils, genericUtils, itemUtils, templateUtils, workflowUtils} from '../../../utils.js';
-
 async function use({workflow}) {
     let concentrationEffect = effectUtils.getConcentrationEffect(workflow.actor, workflow.item);
     let template = workflow.template;
@@ -40,7 +39,7 @@ async function use({workflow}) {
             }
         }
     };
-    let effect = await effectUtils.createEffect(workflow.actor, effectData, {
+    await effectUtils.createEffect(workflow.actor, effectData, {
         concentrationItem: workflow.item,
         strictlyInterdependent: true,
         rules: 'modern',
@@ -57,7 +56,6 @@ async function use({workflow}) {
             favorite: true
         }
     });
-    if (concentrationEffect) await genericUtils.update(concentrationEffect, {duration: effectData.duration});
 }
 async function move({trigger: {castData}, workflow}) {
     let effect = effectUtils.getEffectByIdentifier(workflow.actor, 'moonbeam');
