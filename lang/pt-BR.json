@@ -1128,6 +1128,9 @@
             "ImbueCard": {
                 "Select": "Com qual magia você quer imbuir uma carta?"
             },
+            "ImprovedPotentSpellcasting": {
+                "Target": "Escolha um aliado para dar pontos de vida temporária:"
+            },
             "InfectiousFury": {
                 "Attack": "Atacar Um Alvo Próximo",
                 "Curse": "Como você amaldiçoa o alvo?",
@@ -1358,6 +1361,9 @@
             },
             "Parry": {
                 "Name": "Aparar"
+            },
+            "PeerlessSkill": {
+                "Confirm": "O teste foi um sucesso?"
             },
             "Piercer": {
                 "Reroll": "Rerolar qual dado mais baixo?"
