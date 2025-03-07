@@ -108,7 +108,7 @@ async function early({dialog}) {
 }
 export let moonbeam = {
     name: 'Moonbeam',
-    version: '1.2.13',
+    version: '1.2.14',
     hasAnimation: true,
     midi: {
         item: [
