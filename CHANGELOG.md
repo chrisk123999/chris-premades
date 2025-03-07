@@ -1,4 +1,4 @@
-# 1.2.14 Release
+# 1.2.15 Release
 ## New Modern Content:
 - Moonbeam
 ## Bug Fixes:
