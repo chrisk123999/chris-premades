@@ -93,10 +93,12 @@ async function enter({trigger: {entity: template, castData, token}}) {
     if (!feature) return;
     await workflowUtils.syntheticActivityRoll(feature, [token], {atLevel: castData.castLevel});
 }
-async function turnEnd({trigger: {entity: template, castData, token}}) {
+async function turnEnd({trigger: {entity: template, castData, token, previousRound, previousTurn}}) {
     let [targetCombatant] = game.combat.getCombatantsByToken(token.document);
     if (!targetCombatant) return;
-
+    let turnToCheck = previousRound + '-' + previousTurn;
+    let lastDamagedTurn = targetCombatant.flags['chris-premades']?.['moonbeam']?.turn;
+    if (lastDamagedTurn == turnToCheck) return;
     let feature = activityUtils.getActivityByIdentifier(fromUuidSync(template.flags.dnd5e.item), 'moonbeamDamage', {strict: true});
     if (!feature) return;
     await workflowUtils.syntheticActivityRoll(feature, [token], {atLevel: castData.castLevel});
