@@ -3,6 +3,7 @@
 - Moonbeam
 ## Bug Fixes:
 - Item Medkit
+- Improved Blessed Strikes: Potent Spellcasting (Modern)
 
 # 1.2.14 Release:
 ## Bug Fixes:
