@@ -73,6 +73,7 @@ export {chillTouch} from './macros/2024/spells/chillTouch.js';
 export {chromaticOrb} from './macros/2024/spells/chromaticOrb.js';
 export {circleOfDeath} from './macros/2024/spells/circleOfDeath.js';
 export {huntersMark, huntersMarkSource} from './macros/2024/spells/huntersMark.js';
+export {moonbeam, moonbeamBeam} from './macros/2024/spells/moonbeam.js';
 export {powerWordHeal} from './macros/2024/spells/powerWordHeal.js';
 export {powerWordKill} from './macros/2024/spells/powerWordKill.js';
 export {command, commandTurnStart, commandGrovel} from './macros/2024/spells/command.js';
