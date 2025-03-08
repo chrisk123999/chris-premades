@@ -10,10 +10,11 @@ export async function determineSuperiorityDie(actor) {
     let martialAdept = itemUtils.getItemByIdentifier(actor,'martialAdept');
     let superiorTechnique = itemUtils.getItemByIdentifier(actor, 'fightingStyleSuperiorTechnique');
     let itemToUse;
-    if (!allSameDice && superiorityDiceItem.system.uses.value && (martialAdept?.system.uses.value || superiorTechnique?.system.uses.value)) {
-        let buttons = [
-            [superiorityDiceItem.name + ': ' + superiorityDie + ' (' + superiorityDiceItem.system.uses.value + '/' + superiorityDiceItem.system.uses.max + ')', 'superiorityDice'],
-        ];
+    if (!allSameDice && superiorityDiceItem?.system.uses.value && (martialAdept?.system.uses.value || superiorTechnique?.system.uses.value)) {
+        let buttons = [];
+        if (superiorityDiceItem?.system.uses.value) {
+            buttons.push([superiorityDiceItem.name + ': ' + superiorityDie + ' (' + superiorityDiceItem.system.uses.value + '/' + superiorityDiceItem.system.uses.max + ')', 'superiorityDice']);
+        }
         if (martialAdept?.system.uses.value) {
             buttons.push([martialAdept.name + ': d6 (' + martialAdept.system.uses.value + '/' + martialAdept.system.uses.max + ')', 'martialAdept']);
         }

@@ -1,6 +1,7 @@
 # 1.2.16 Release:
 ## Bug Fixes:
 - Crusader's Mantle (Legacy)
+- Superiority Dice (Legacy)
 
 # 1.2.15 Release
 ## New Modern Content:
