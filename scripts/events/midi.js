@@ -377,7 +377,7 @@ async function postAttackRoll(workflow) {
 async function preTargetDamageApplication(token, {workflow, ditem}) {
     genericUtils.log('dev', 'Executing Midi Macro Pass: applyDamage for ' + token.document.name);
     let targetTriggers = getSortedTriggers({token: token, actor: token.actor}, 'targetApplyDamage');
-    let selfTriggers = getSortedTriggers({item: workflow.item, token: workflow.token, actor: workflow.actor}, 'applyDamage');
+    let selfTriggers = getSortedTriggers({item: workflow.item, token: workflow.token, actor: workflow.actor, activity: workflow.activity}, 'applyDamage');
     let sceneTriggers = [];
     token.document.parent.tokens.filter(i => i.uuid != token.document.uuid && i.actor).forEach(j => {
         sceneTriggers.push(...getSortedTriggers({token: j.object, actor: j.actor, sourceToken: workflow.token, targetToken: token}, 'sceneApplyDamage'));

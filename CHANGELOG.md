@@ -4,6 +4,10 @@
 - Superiority Dice (Legacy)
 - Metallic Breath Weapon (Legacy)
 - Favored Foe (Legacy)
+- Master's Amulet (Legacy)
+- Overtime Creator
+## API Bug Fixes:
+- Midi Apply Damage Event
 
 # 1.2.15 Release
 ## New Modern Content:

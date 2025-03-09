@@ -210,7 +210,7 @@ export class EffectMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
                         {
                             label: 'CHRISPREMADES.Medkit.Effect.OverTime.Labels.Spellcasting',
                             value: '@attributes.spelldc',
-                            isSelected: i.value === '@attributes.spelldc'
+                            isSelected: i.value === '@attributes.spell.dc'
                         },
                         {
                             label: 'CHRISPREMADES.Medkit.Effect.OverTime.Labels.Item',

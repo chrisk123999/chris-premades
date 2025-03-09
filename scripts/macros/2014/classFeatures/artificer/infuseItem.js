@@ -772,7 +772,7 @@ async function homunculusLate({workflow}) {
         flags: {
             dae: {
                 specialDuration: [
-                    '1Attack'
+                    '1Spell'
                 ]
             }
         }

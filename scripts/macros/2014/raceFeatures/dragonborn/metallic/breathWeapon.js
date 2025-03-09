@@ -1,6 +1,5 @@
-import {activityUtils, compendiumUtils, constants, dialogUtils, errors, genericUtils, itemUtils, tokenUtils, workflowUtils} from '../../../../../utils.js';
+import {activityUtils, dialogUtils, tokenUtils, workflowUtils} from '../../../../../utils.js';
 import {proneOnFail} from '../../../generic/proneOnFail.js';
-
 async function use({workflow}) {
     let enervatingFeature = activityUtils.getActivityByIdentifier(workflow.item, 'metallicBreathWeaponEnervating', {strict: true});
     let repulsionFeature = activityUtils.getActivityByIdentifier(workflow.item, 'metallicBreathWeaponRepulsion', {strict: true});

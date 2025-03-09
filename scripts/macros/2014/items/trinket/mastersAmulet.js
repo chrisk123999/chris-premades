@@ -43,7 +43,7 @@ export let mastersAmulet = {
             {
                 pass: 'targetApplyDamage',
                 macro: damageApplication,
-                priority: 25
+                priority: 250
             }
         ],
         item: [
