@@ -3,6 +3,7 @@
 - Crusader's Mantle (Legacy)
 - Superiority Dice (Legacy)
 - Metallic Breath Weapon (Legacy)
+- Favored Foe (Legacy)
 
 # 1.2.15 Release
 ## New Modern Content:

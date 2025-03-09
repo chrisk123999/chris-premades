@@ -34,7 +34,7 @@ async function damage({workflow}) {
     } else {
         if (!combatUtils.perTurnCheck(effect, 'favoredFoe', true, workflow.token.id)) return;
         let targetEffects = effectUtils.getAllEffectsByIdentifier(targetToken.actor, 'favoredFoe');
-        if (!targetEffects.some(i => i.origin === originItem.uuid)) return;
+        if (!targetEffects.some(async i => await effectUtils.getOriginItem(i) === originItem.uuid)) return;
     }
     await workflowUtils.bonusDamage(workflow, bonusDamageFormula, {damageType: workflow.defaultDamageType});
     await combatUtils.setTurnCheck(effect, 'favoredFoe');
