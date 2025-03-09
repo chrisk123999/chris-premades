@@ -234,7 +234,7 @@
       }
     },
     "identifier": "wall-of-fire",
-    "sourceClass": "cleric"
+    "sourceClass": ""
   },
   "name": "Wall of Fire",
   "flags": {

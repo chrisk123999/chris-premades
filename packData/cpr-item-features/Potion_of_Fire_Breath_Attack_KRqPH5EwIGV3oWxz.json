@@ -40,9 +40,7 @@
       "idv": false,
       "ida": false
     },
-    "core": {
-      "sourceId": "Item.OAWbGaSLnUJYEJNY"
-    },
+    "core": {},
     "chris-premades": {
       "macros": {
         "midi": {

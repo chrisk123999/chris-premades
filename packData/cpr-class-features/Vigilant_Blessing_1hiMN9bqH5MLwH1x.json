@@ -118,9 +118,7 @@
       "reactionCondition": "",
       "otherCondition": ""
     },
-    "core": {
-      "sourceId": "Actor.iXZRAxrrFFxPX0g6.Item.Qrj6Itc6Lm10fXAW"
-    },
+    "core": {},
     "midiProperties": {
       "confirmTargets": "default",
       "autoFailFriendly": false,

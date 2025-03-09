@@ -131,9 +131,7 @@
       "reactionCondition": "",
       "otherCondition": ""
     },
-    "core": {
-      "sourceId": "Actor.IlpCynnAcU8YiYdx.Item.9kertDu4zmB19KS8"
-    },
+    "core": {},
     "midiProperties": {
       "nodam": false,
       "fulldam": false,

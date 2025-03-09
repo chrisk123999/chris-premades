@@ -200,7 +200,7 @@
       }
     },
     "identifier": "wrathful-smite",
-    "sourceClass": "cleric"
+    "sourceClass": ""
   },
   "img": "icons/magic/fire/dagger-rune-enchant-flame-purple-orange.webp",
   "flags": {

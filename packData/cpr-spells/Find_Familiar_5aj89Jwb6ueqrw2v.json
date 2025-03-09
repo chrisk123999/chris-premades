@@ -246,7 +246,7 @@
       }
     },
     "identifier": "find-familiar",
-    "sourceClass": "cleric"
+    "sourceClass": ""
   },
   "name": "Find Familiar",
   "flags": {
@@ -271,9 +271,7 @@
       "idv": false,
       "ida": false
     },
-    "core": {
-      "sourceId": "Compendium.world.ddb-dev-ddb-spells.d0BXLN6DihnT9eqU"
-    },
+    "core": {},
     "midi-qol": {
       "effectActivation": false,
       "onUseMacroName": "",

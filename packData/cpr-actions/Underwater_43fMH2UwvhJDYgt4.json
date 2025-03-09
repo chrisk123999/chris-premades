@@ -193,9 +193,7 @@
     }
   ],
   "flags": {
-    "core": {
-      "sourceId": "Item.ZTCrWHYrzbkr1tIE"
-    },
+    "core": {},
     "midi-qol": {
       "effectActivation": false,
       "AoETargetType": "any",

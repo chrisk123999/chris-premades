@@ -212,9 +212,7 @@
       "idv": false,
       "ida": false
     },
-    "core": {
-      "sourceId": "Item.BNj6CU3YeeA7R3wU"
-    },
+    "core": {},
     "chris-premades": {
       "macros": {
         "combat": [

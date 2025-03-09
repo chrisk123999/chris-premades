@@ -276,7 +276,7 @@
       }
     },
     "identifier": "chaos-bolt",
-    "sourceClass": "cleric"
+    "sourceClass": ""
   },
   "name": "Chaos Bolt",
   "flags": {

@@ -129,7 +129,7 @@
       }
     },
     "identifier": "enlarge-reduce",
-    "sourceClass": "cleric"
+    "sourceClass": ""
   },
   "name": "Enlarge/Reduce",
   "flags": {
@@ -148,9 +148,7 @@
       "reactionCondition": "",
       "otherCondition": ""
     },
-    "core": {
-      "sourceId": "Compendium.world.ddb-development-testing-ddb-spells.AmjDDUYLWndEu3ZM"
-    },
+    "core": {},
     "midiProperties": {
       "nodam": false,
       "fulldam": false,

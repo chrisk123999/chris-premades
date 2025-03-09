@@ -37,9 +37,7 @@
       "idv": false,
       "ida": false
     },
-    "core": {
-      "sourceId": "Compendium.world.ddb-homebrew-spells.c8jCRgqPMW2vI82w"
-    },
+    "core": {},
     "dnd5e": {
       "persistSourceMigration": true,
       "riders": {
@@ -179,7 +177,7 @@
       }
     },
     "identifier": "blink",
-    "sourceClass": "cleric"
+    "sourceClass": ""
   },
   "folder": null,
   "_id": "huykUpLG2Bku09p5",

@@ -118,7 +118,7 @@
       }
     },
     "identifier": "detect-magic",
-    "sourceClass": "cleric"
+    "sourceClass": ""
   },
   "name": "Detect Magic",
   "flags": {
@@ -155,9 +155,7 @@
       "idv": false,
       "ida": false
     },
-    "core": {
-      "sourceId": "Actor.hLfAV9vGQ6jcx50Y.Item.Afz68Ut6gSnJNLBP"
-    },
+    "core": {},
     "dnd5e": {
       "persistSourceMigration": true,
       "riders": {

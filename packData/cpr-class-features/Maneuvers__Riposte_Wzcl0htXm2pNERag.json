@@ -123,9 +123,7 @@
       "removeAttackDamageButtons": "default",
       "otherCondition": ""
     },
-    "core": {
-      "sourceId": "Actor.XauTPmdt4Drmy2f5.Item.iXhmaFUEC74Om45D"
-    },
+    "core": {},
     "midiProperties": {
       "nodam": false,
       "fulldam": false,

@@ -234,13 +234,11 @@
       }
     },
     "identifier": "summon-shadowspawn",
-    "sourceClass": "cleric"
+    "sourceClass": ""
   },
   "name": "Summon Shadowspawn",
   "flags": {
-    "core": {
-      "sourceId": "Compendium.world.ddb-development-testing-ddb-spells.x9GbHQ2gvsQTn0tG"
-    },
+    "core": {},
     "midi-qol": {
       "effectActivation": false,
       "onUseMacroName": "",

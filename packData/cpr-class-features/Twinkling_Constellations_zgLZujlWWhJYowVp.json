@@ -30,9 +30,7 @@
     "enchant": {}
   },
   "flags": {
-    "core": {
-      "sourceId": "Actor.iXZRAxrrFFxPX0g6.Item.yZCmbyBs6qLMPbj8"
-    },
+    "core": {},
     "midi-qol": {
       "effectActivation": false,
       "onUseMacroName": "",

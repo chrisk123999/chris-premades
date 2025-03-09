@@ -154,7 +154,7 @@
       }
     },
     "identifier": "destructive-wave",
-    "sourceClass": "cleric"
+    "sourceClass": ""
   },
   "name": "Destructive Wave",
   "flags": {
@@ -181,9 +181,7 @@
       "idv": false,
       "ida": false
     },
-    "core": {
-      "sourceId": "Compendium.world.ddb-dev-ddb-spells.UfO2SL6yEysBJtMa"
-    },
+    "core": {},
     "midi-qol": {
       "effectActivation": false,
       "AoETargetType": "any",

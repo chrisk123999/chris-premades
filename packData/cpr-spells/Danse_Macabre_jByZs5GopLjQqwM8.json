@@ -181,13 +181,11 @@
       }
     },
     "identifier": "danse-macabre",
-    "sourceClass": "cleric"
+    "sourceClass": ""
   },
   "name": "Danse Macabre",
   "flags": {
-    "core": {
-      "sourceId": "Compendium.world.ddb-development-testing-ddb-spells.EZcNy1NJx0tkwWPu"
-    },
+    "core": {},
     "midi-qol": {
       "effectActivation": false,
       "rollAttackPerTarget": "default",

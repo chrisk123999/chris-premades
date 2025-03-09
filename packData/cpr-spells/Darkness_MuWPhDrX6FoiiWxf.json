@@ -121,7 +121,7 @@
       }
     },
     "identifier": "darkness",
-    "sourceClass": "cleric"
+    "sourceClass": ""
   },
   "effects": [],
   "flags": {
@@ -159,9 +159,7 @@
       "idv": false,
       "ida": false
     },
-    "core": {
-      "sourceId": "Compendium.world.ddb-homebrew-spells.1fIdPlWbCxTLfhs9"
-    },
+    "core": {},
     "dnd5e": {
       "persistSourceMigration": true,
       "riders": {

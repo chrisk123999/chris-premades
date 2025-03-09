@@ -291,13 +291,11 @@
       }
     },
     "identifier": "summon-elemental",
-    "sourceClass": "cleric"
+    "sourceClass": ""
   },
   "name": "Summon Elemental",
   "flags": {
-    "core": {
-      "sourceId": "Compendium.world.ddb-development-testing-ddb-spells.2XwmNmqZYJLI0kI2"
-    },
+    "core": {},
     "midi-qol": {
       "effectActivation": false,
       "onUseMacroName": "",

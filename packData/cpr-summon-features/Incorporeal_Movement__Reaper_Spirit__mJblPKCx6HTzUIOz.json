@@ -33,9 +33,7 @@
   "effects": [],
   "folder": "5Xlp5AJbQJnDcSbD",
   "flags": {
-    "core": {
-      "sourceId": "Item.jAjU4bVgxtAhSeoj"
-    },
+    "core": {},
     "midiProperties": {
       "confirmTargets": "default",
       "autoFailFriendly": false,

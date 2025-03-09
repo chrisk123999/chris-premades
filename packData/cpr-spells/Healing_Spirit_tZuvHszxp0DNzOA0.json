@@ -179,7 +179,7 @@
       }
     },
     "identifier": "healing-spirit",
-    "sourceClass": "cleric"
+    "sourceClass": ""
   },
   "name": "Healing Spirit",
   "flags": {
@@ -217,9 +217,7 @@
       "idv": false,
       "ida": false
     },
-    "core": {
-      "sourceId": "Compendium.world.ddb-development-testing-ddb-spells.bi2glgWoijUSYmoN"
-    },
+    "core": {},
     "dnd5e": {
       "persistSourceMigration": true,
       "riders": {

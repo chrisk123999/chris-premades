@@ -179,7 +179,7 @@
       }
     },
     "identifier": "find-steed",
-    "sourceClass": "cleric"
+    "sourceClass": ""
   },
   "name": "Find Steed",
   "flags": {
@@ -204,9 +204,7 @@
       "idv": false,
       "ida": false
     },
-    "core": {
-      "sourceId": "Compendium.world.ddb-dev-ddb-spells.TBBmulNnUK3t4RPs"
-    },
+    "core": {},
     "midi-qol": {
       "effectActivation": false,
       "rollAttackPerTarget": "default",

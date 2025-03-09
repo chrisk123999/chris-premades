@@ -116,13 +116,11 @@
       }
     },
     "identifier": "guardian-of-nature",
-    "sourceClass": "cleric"
+    "sourceClass": ""
   },
   "name": "Guardian of Nature",
   "flags": {
-    "core": {
-      "sourceId": "Compendium.world.ddb-development-testing-ddb-spells.zrkqxZ4qYIBZh0p0"
-    },
+    "core": {},
     "midi-qol": {
       "effectActivation": false,
       "onUseMacroName": "",

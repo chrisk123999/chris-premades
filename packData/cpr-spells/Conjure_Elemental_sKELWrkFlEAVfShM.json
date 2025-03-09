@@ -118,7 +118,7 @@
       }
     },
     "identifier": "conjure-elemental",
-    "sourceClass": "cleric"
+    "sourceClass": ""
   },
   "name": "Conjure Elemental",
   "flags": {
@@ -143,9 +143,7 @@
       "idv": false,
       "ida": false
     },
-    "core": {
-      "sourceId": "Compendium.world.ddb-dev-ddb-spells.NEnjw6NLBFs9Ymea"
-    },
+    "core": {},
     "midi-qol": {
       "effectActivation": false,
       "onUseMacroName": "",

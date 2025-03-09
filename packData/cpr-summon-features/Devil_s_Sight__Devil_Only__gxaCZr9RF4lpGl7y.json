@@ -32,9 +32,7 @@
   },
   "effects": [],
   "flags": {
-    "core": {
-      "sourceId": "Item.rFdCNX32NwBeWBvx"
-    },
+    "core": {},
     "midiProperties": {
       "confirmTargets": "default",
       "autoFailFriendly": false,

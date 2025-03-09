@@ -128,13 +128,11 @@
       }
     },
     "identifier": "life-transference",
-    "sourceClass": "cleric"
+    "sourceClass": ""
   },
   "name": "Life Transference",
   "flags": {
-    "core": {
-      "sourceId": "Compendium.world.ddb-development-testing-ddb-spells.l8I9WeblnuNTFtKz"
-    },
+    "core": {},
     "midi-qol": {
       "effectActivation": false,
       "onUseMacroName": "",

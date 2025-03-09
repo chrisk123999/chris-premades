@@ -62,9 +62,7 @@
     }
   ],
   "flags": {
-    "core": {
-      "sourceId": "Compendium.world.ddb-homebrew-spells.rKgAuDjA4nFR6C20"
-    },
+    "core": {},
     "midi-qol": {
       "effectActivation": false,
       "onUseMacroName": "",
@@ -260,7 +258,7 @@
       }
     },
     "identifier": "tashas-caustic-brew",
-    "sourceClass": "cleric"
+    "sourceClass": ""
   },
   "folder": null,
   "_id": "kFUuuwXH2cKOdO0e",

@@ -117,7 +117,7 @@
       }
     },
     "identifier": "conjure-celestial",
-    "sourceClass": "cleric"
+    "sourceClass": ""
   },
   "name": "Conjure Celestial",
   "flags": {
@@ -142,9 +142,7 @@
       "idv": false,
       "ida": false
     },
-    "core": {
-      "sourceId": "Compendium.world.ddb-dev-ddb-spells.TVWwKjpK2PC6f5mi"
-    },
+    "core": {},
     "midi-qol": {
       "effectActivation": false,
       "onUseMacroName": "",

@@ -45,8 +45,7 @@
             {
               "type": "itemUses",
               "value": "1",
-              "target": "",
-              "scaling": {}
+              "target": ""
             }
           ],
           "scaling": {
@@ -155,7 +154,8 @@
           "affects": {
             "choice": false,
             "count": "",
-            "type": "creature"
+            "type": "creature",
+            "special": ""
           },
           "override": false,
           "prompt": true
@@ -187,7 +187,9 @@
         "midiAutomationOnly": false,
         "name": "Enervating Breath",
         "img": "icons/creatures/abilities/dragon-fire-breath-orange.webp",
-        "appliedEffects": []
+        "appliedEffects": [
+          "FZ74mcN9Lz1l0N51"
+        ]
       },
       "e6JHlj41kNFWFlO3": {
         "type": "save",
@@ -247,9 +249,11 @@
           "onSave": "half"
         },
         "save": {
-          "ability": [],
+          "ability": [
+            "str"
+          ],
           "dc": {
-            "calculation": "",
+            "calculation": "con",
             "formula": ""
           }
         },
@@ -300,9 +304,7 @@
       "idv": false,
       "ida": false
     },
-    "core": {
-      "sourceId": "Actor.IlpCynnAcU8YiYdx.Item.CkhTUvhiGEDa7D9K"
-    },
+    "core": {},
     "dnd5e": {
       "persistSourceMigration": true,
       "migratedUses": 1,

@@ -148,7 +148,7 @@
       }
     },
     "identifier": "blight",
-    "sourceClass": "cleric"
+    "sourceClass": ""
   },
   "name": "Blight",
   "flags": {
@@ -188,9 +188,7 @@
       "idv": false,
       "ida": false
     },
-    "core": {
-      "sourceId": "Compendium.world.ddb-development-testing-ddb-spells.9LuveFDUR1TidLwE"
-    },
+    "core": {},
     "dnd5e": {
       "persistSourceMigration": true,
       "last": {

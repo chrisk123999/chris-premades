@@ -97,9 +97,7 @@
   },
   "effects": [],
   "flags": {
-    "core": {
-      "sourceId": "Item.z4vGWJ7WPghvYi5x"
-    },
+    "core": {},
     "midi-qol": {
       "AoETargetType": "any",
       "AoETargetTypeIncludeSelf": true,

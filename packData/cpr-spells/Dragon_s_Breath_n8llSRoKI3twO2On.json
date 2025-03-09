@@ -39,9 +39,7 @@
       "idv": false,
       "ida": false
     },
-    "core": {
-      "sourceId": "Compendium.world.ddb-homebrew-spells.ihUp8O0yJCATb7Tx"
-    },
+    "core": {},
     "dnd5e": {
       "persistSourceMigration": true,
       "riders": {
@@ -188,7 +186,7 @@
       }
     },
     "identifier": "dragons-breath",
-    "sourceClass": "cleric"
+    "sourceClass": ""
   },
   "folder": null,
   "_id": "n8llSRoKI3twO2On",

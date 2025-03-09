@@ -234,13 +234,11 @@
       }
     },
     "identifier": "summon-beast",
-    "sourceClass": "cleric"
+    "sourceClass": ""
   },
   "name": "Summon Beast",
   "flags": {
-    "core": {
-      "sourceId": "Compendium.world.ddb-development-testing-ddb-spells.Q2g7wWeIvux6paBC"
-    },
+    "core": {},
     "midi-qol": {
       "effectActivation": false,
       "onUseMacroName": "",

@@ -1,38 +1,16 @@
 {
-  "name": "Regeneration (Slaad Only)",
+  "name": "Homunculus Servant: Command",
   "type": "feat",
-  "img": "icons/magic/life/heart-cross-strong-purple-orange.webp",
+  "_id": "c6LZdmYgKlaYBakV",
+  "img": "icons/commodities/stone/ore-pile-purple.webp",
   "system": {
-    "description": {
-      "value": "",
-      "chat": ""
-    },
-    "source": {
-      "custom": "",
-      "revision": 1,
-      "rules": "2014"
-    },
-    "uses": {
-      "max": "",
-      "spent": 0,
-      "recovery": []
-    },
-    "type": {
-      "value": "monster",
-      "subtype": ""
-    },
-    "requirements": "",
-    "properties": [],
-    "prerequisites": {
-      "level": null
-    },
     "activities": {
-      "t796R2cdcZLemEnU": {
-        "type": "heal",
-        "_id": "t796R2cdcZLemEnU",
+      "AgL5Ll1KCq2AEwjw": {
+        "type": "utility",
+        "_id": "AgL5Ll1KCq2AEwjw",
         "sort": 0,
         "activation": {
-          "type": "special",
+          "type": "bonus",
           "value": null,
           "override": false,
           "condition": ""
@@ -66,8 +44,7 @@
           },
           "affects": {
             "choice": false,
-            "count": "",
-            "type": "self",
+            "type": "",
             "special": ""
           },
           "override": false,
@@ -78,22 +55,14 @@
           "recovery": [],
           "max": ""
         },
-        "healing": {
-          "number": null,
-          "denomination": "",
-          "types": [
-            "healing"
-          ],
-          "custom": {
-            "enabled": true,
-            "formula": "5"
-          },
-          "scaling": {
-            "number": 1
-          },
-          "bonus": ""
+        "roll": {
+          "prompt": false,
+          "visible": false,
+          "formula": "",
+          "name": ""
         },
         "useConditionText": "",
+        "useConditionReason": "",
         "effectConditionText": "",
         "macroData": {
           "name": "",
@@ -113,68 +82,87 @@
           "triggeredActivityRollAs": "self",
           "forceDialog": false,
           "confirmTargets": "default",
+          "autoTargetType": "any",
+          "autoTargetAction": "default",
           "automationOnly": false,
-          "identifier": ""
+          "otherActivityCompatible": false,
+          "identifier": "",
+          "displayActivityName": false,
+          "rollMode": "default",
+          "chooseEffects": false
         },
-        "name": "",
-        "img": "",
-        "appliedEffects": []
+        "isOverTimeFlag": false,
+        "overTimeProperties": {
+          "saveRemoves": true,
+          "preRemoveConditionText": "",
+          "postRemoveConditionText": ""
+        },
+        "name": ""
       }
     },
-    "identifier": "regeneration-slaad-only",
-    "enchant": {}
+    "uses": {
+      "spent": 0,
+      "recovery": [],
+      "max": ""
+    },
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "identifier": "homunculus-servant-command",
+    "source": {
+      "revision": 1,
+      "rules": "2014",
+      "custom": "",
+      "book": "",
+      "page": "",
+      "license": ""
+    },
+    "advancement": [],
+    "cover": null,
+    "crewed": false,
+    "enchant": {},
+    "prerequisites": {
+      "level": null,
+      "repeatable": false
+    },
+    "properties": [],
+    "requirements": "",
+    "type": {
+      "value": "",
+      "subtype": ""
+    }
   },
   "effects": [],
+  "folder": null,
   "flags": {
-    "midi-qol": {
-      "effectActivation": false,
-      "rollAttackPerTarget": "default",
-      "removeAttackDamageButtons": "default",
-      "itemCondition": "",
-      "effectCondition": "",
-      "AoETargetType": "any",
-      "autoTarget": "default",
-      "reactionCondition": "",
-      "otherCondition": ""
-    },
     "midiProperties": {
-      "nodam": false,
-      "fulldam": false,
-      "halfdam": false,
+      "confirmTargets": "default",
       "autoFailFriendly": false,
       "autoSaveFriendly": false,
-      "rollOther": false,
       "critOther": false,
       "offHandWeapon": false,
       "magicdam": false,
       "magiceffect": false,
-      "concentration": false,
+      "noConcentrationCheck": false,
       "toggleEffect": false,
       "ignoreTotalCover": false,
-      "confirmTargets": "default",
-      "noConcentrationCheck": false,
       "idr": false,
       "idi": false,
       "idv": false,
       "ida": false
     },
-    "core": {},
-    "chris-premades": {
-      "macros": {
-        "combat": [
-          "regeneration"
-        ]
-      }
+    "midi-qol": {
+      "rollAttackPerTarget": "default",
+      "itemCondition": "",
+      "effectCondition": ""
     },
     "dnd5e": {
-      "persistSourceMigration": true,
       "riders": {
         "activity": [],
         "effect": []
       }
     }
   },
-  "folder": "FewumOfaPV1m7YpH",
-  "_id": "Ow8up54fQsIU70CJ",
-  "_key": "!items!Ow8up54fQsIU70CJ"
+  "_key": "!items!c6LZdmYgKlaYBakV"
 }

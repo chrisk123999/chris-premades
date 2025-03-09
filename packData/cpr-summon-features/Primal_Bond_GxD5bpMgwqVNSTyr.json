@@ -32,9 +32,7 @@
   },
   "effects": [],
   "flags": {
-    "core": {
-      "sourceId": "Item.Cgpu9IjoRWZGuTXR"
-    },
+    "core": {},
     "midiProperties": {
       "confirmTargets": "default",
       "autoFailFriendly": false,

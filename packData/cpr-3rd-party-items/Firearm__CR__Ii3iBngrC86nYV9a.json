@@ -213,9 +213,7 @@
       "reactionCondition": "",
       "otherCondition": ""
     },
-    "core": {
-      "sourceId": "Compendium.world.ddb-development-testing-ddb-items.vJHvwqfVpej7wUVL"
-    },
+    "core": {},
     "midiProperties": {
       "nodam": false,
       "fulldam": false,

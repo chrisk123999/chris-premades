@@ -234,13 +234,11 @@
       }
     },
     "identifier": "summon-undead",
-    "sourceClass": "cleric"
+    "sourceClass": ""
   },
   "name": "Summon Undead",
   "flags": {
-    "core": {
-      "sourceId": "Compendium.world.ddb-development-testing-ddb-spells.FY6PpXfIHTcIUnGY"
-    },
+    "core": {},
     "midi-qol": {
       "effectActivation": false,
       "onUseMacroName": "",

@@ -117,13 +117,11 @@
       }
     },
     "identifier": "fog-cloud",
-    "sourceClass": "cleric"
+    "sourceClass": ""
   },
   "name": "Fog Cloud",
   "flags": {
-    "core": {
-      "sourceId": "Compendium.world.ddb-development-testing-ddb-spells.b04AzM1Do7Wm7M1A"
-    },
+    "core": {},
     "midi-qol": {
       "effectActivation": false,
       "onUseMacroName": "",

@@ -102,9 +102,7 @@
     "enchant": {}
   },
   "flags": {
-    "core": {
-      "sourceId": "Actor.puGSiHPeQ84EYsl3.Item.oIdTlrMwnxF1r8Hd"
-    },
+    "core": {},
     "midi-qol": {
       "effectActivation": false,
       "onUseMacroName": "",

@@ -157,7 +157,7 @@
       }
     },
     "identifier": "vitriolic-sphere",
-    "sourceClass": "cleric"
+    "sourceClass": ""
   },
   "name": "Vitriolic Sphere",
   "flags": {
@@ -197,9 +197,7 @@
       "idv": false,
       "ida": false
     },
-    "core": {
-      "sourceId": "Compendium.world.ddb-development-testing-ddb-spells.7jzmL5wD4HWUHzgn"
-    },
+    "core": {},
     "dnd5e": {
       "persistSourceMigration": true,
       "riders": {

@@ -212,7 +212,7 @@
       }
     },
     "identifier": "lightning-arrow",
-    "sourceClass": "cleric"
+    "sourceClass": ""
   },
   "effects": [],
   "flags": {
@@ -250,9 +250,7 @@
       "idv": false,
       "ida": false
     },
-    "core": {
-      "sourceId": "Compendium.world.ddb-homebrew-spells.6K40SC4N31O4RdzE"
-    },
+    "core": {},
     "dnd5e": {
       "persistSourceMigration": true,
       "riders": {

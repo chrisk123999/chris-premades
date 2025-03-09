@@ -39,9 +39,7 @@
       "idv": false,
       "ida": false
     },
-    "core": {
-      "sourceId": "Compendium.world.ddb-homebrew-spells.uGQhZewQLJC0q8ky"
-    },
+    "core": {},
     "dnd5e": {
       "persistSourceMigration": true,
       "riders": {
@@ -225,7 +223,7 @@
       }
     },
     "identifier": "earth-tremor",
-    "sourceClass": "cleric"
+    "sourceClass": ""
   },
   "folder": null,
   "_id": "J9fweMD18JE61Tuw",

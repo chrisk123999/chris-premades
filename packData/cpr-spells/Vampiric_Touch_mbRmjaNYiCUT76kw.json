@@ -222,7 +222,7 @@
       }
     },
     "identifier": "vampiric-touch",
-    "sourceClass": "cleric"
+    "sourceClass": ""
   },
   "name": "Vampiric Touch",
   "flags": {

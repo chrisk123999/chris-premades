@@ -147,13 +147,11 @@
       }
     },
     "identifier": "fire-storm",
-    "sourceClass": "cleric"
+    "sourceClass": ""
   },
   "name": "Fire Storm",
   "flags": {
-    "core": {
-      "sourceId": "Compendium.world.ddb-development-testing-ddb-spells.SfMtfUoE2VMMtmDC"
-    },
+    "core": {},
     "midi-qol": {
       "effectActivation": false,
       "onUseMacroName": "",

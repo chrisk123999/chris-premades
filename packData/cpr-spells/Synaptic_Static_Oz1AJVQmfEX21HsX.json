@@ -155,7 +155,7 @@
       }
     },
     "identifier": "synaptic-static",
-    "sourceClass": "cleric"
+    "sourceClass": ""
   },
   "name": "Synaptic Static",
   "flags": {
@@ -182,9 +182,7 @@
       "idv": false,
       "ida": false
     },
-    "core": {
-      "sourceId": "Compendium.world.ddb-development-testing-ddb-spells.V890b8Sfrpz9oSst"
-    },
+    "core": {},
     "midi-qol": {
       "effectActivation": false,
       "onUseMacroName": "",

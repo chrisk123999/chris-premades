@@ -30,9 +30,7 @@
     "enchant": {}
   },
   "flags": {
-    "core": {
-      "sourceId": "Actor.NR1qVNdrCxtFHQXJ.Item.PvDh5ShLCc1hwl0p"
-    },
+    "core": {},
     "chris-premades": {
       "info": {
         "name": "Telepathic Insight",

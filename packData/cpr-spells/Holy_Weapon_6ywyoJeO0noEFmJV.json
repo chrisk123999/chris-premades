@@ -288,7 +288,7 @@
       }
     },
     "identifier": "holy-weapon",
-    "sourceClass": "cleric"
+    "sourceClass": ""
   },
   "effects": [
     {
@@ -394,9 +394,7 @@
       "idv": false,
       "ida": false
     },
-    "core": {
-      "sourceId": "Item.GiGHoTv9nuivU9wC"
-    },
+    "core": {},
     "dnd5e": {
       "persistSourceMigration": true,
       "riders": {

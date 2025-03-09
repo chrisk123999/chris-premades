@@ -192,7 +192,7 @@
       }
     },
     "identifier": "staggering-smite",
-    "sourceClass": "cleric",
+    "sourceClass": "",
     "ability": ""
   },
   "img": "icons/magic/fire/dagger-rune-enchant-flame-strong-green.webp",

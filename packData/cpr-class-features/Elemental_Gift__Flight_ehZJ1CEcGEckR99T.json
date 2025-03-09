@@ -152,9 +152,7 @@
       "idv": false,
       "ida": false
     },
-    "core": {
-      "sourceId": "Actor.iXZRAxrrFFxPX0g6.Item.afhoYsm8oAPkLCci"
-    },
+    "core": {},
     "dnd5e": {
       "persistSourceMigration": true,
       "migratedUses": 3,

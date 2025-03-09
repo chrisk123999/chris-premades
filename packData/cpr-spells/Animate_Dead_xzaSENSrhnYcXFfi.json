@@ -179,7 +179,7 @@
       }
     },
     "identifier": "animate-dead",
-    "sourceClass": "cleric"
+    "sourceClass": ""
   },
   "name": "Animate Dead",
   "flags": {
@@ -204,9 +204,7 @@
       "idv": false,
       "ida": false
     },
-    "core": {
-      "sourceId": "Compendium.world.ddb-dev-ddb-spells.4MTsjErjIXx4LQ1B"
-    },
+    "core": {},
     "midi-qol": {
       "effectActivation": false,
       "onUseMacroName": "",

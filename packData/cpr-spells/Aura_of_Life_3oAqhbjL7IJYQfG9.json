@@ -116,7 +116,7 @@
       }
     },
     "identifier": "aura-of-life",
-    "sourceClass": "cleric"
+    "sourceClass": ""
   },
   "name": "Aura of Life",
   "flags": {
@@ -154,9 +154,7 @@
       "idv": false,
       "ida": false
     },
-    "core": {
-      "sourceId": "Compendium.world.ddb-development-testing-ddb-spells.wyowntFFTb619jZw"
-    },
+    "core": {},
     "dnd5e": {
       "persistSourceMigration": true,
       "riders": {

@@ -199,7 +199,7 @@
       }
     },
     "identifier": "shadow-of-moil",
-    "sourceClass": "cleric"
+    "sourceClass": ""
   },
   "name": "Shadow of Moil",
   "flags": {
@@ -224,9 +224,7 @@
       "idv": false,
       "ida": false
     },
-    "core": {
-      "sourceId": "Compendium.world.ddb-dev-ddb-spells.qVMEBwwnj6of3yAs"
-    },
+    "core": {},
     "midi-qol": {
       "effectActivation": false,
       "onUseMacroName": "",

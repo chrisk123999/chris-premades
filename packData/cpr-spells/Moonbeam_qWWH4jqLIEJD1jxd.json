@@ -279,7 +279,7 @@
       }
     },
     "identifier": "moonbeam",
-    "sourceClass": "cleric"
+    "sourceClass": ""
   },
   "name": "Moonbeam",
   "flags": {
@@ -319,9 +319,7 @@
       "idv": false,
       "ida": false
     },
-    "core": {
-      "sourceId": "Compendium.world.ddb-development-testing-ddb-spells.C3MN3b57dd3R4ZTQ"
-    },
+    "core": {},
     "dnd5e": {
       "persistSourceMigration": true,
       "riders": {

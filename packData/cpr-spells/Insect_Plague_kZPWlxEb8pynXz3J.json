@@ -228,7 +228,7 @@
       "value": "300"
     },
     "school": "con",
-    "sourceClass": "cleric",
+    "sourceClass": "",
     "target": {
       "template": {
         "contiguous": false,

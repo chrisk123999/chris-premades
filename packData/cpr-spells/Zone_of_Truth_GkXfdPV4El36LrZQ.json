@@ -193,7 +193,7 @@
       }
     },
     "identifier": "zone-of-truth",
-    "sourceClass": "cleric"
+    "sourceClass": ""
   },
   "name": "Zone of Truth",
   "flags": {

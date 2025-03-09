@@ -30,9 +30,7 @@
     "enchant": {}
   },
   "flags": {
-    "core": {
-      "sourceId": "Actor.57T1iaC28BNqvhSo.Item.SrBARhNl7zuPydBD"
-    },
+    "core": {},
     "chris-premades": {
       "info": {
         "name": "Mental Discipline (Kalashtar)",

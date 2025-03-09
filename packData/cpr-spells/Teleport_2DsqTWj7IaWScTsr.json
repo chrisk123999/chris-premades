@@ -192,7 +192,7 @@
       }
     },
     "identifier": "teleport",
-    "sourceClass": "cleric"
+    "sourceClass": ""
   },
   "name": "Teleport",
   "flags": {
@@ -230,9 +230,7 @@
       "idv": false,
       "ida": false
     },
-    "core": {
-      "sourceId": "Compendium.world.ddb-development-testing-ddb-spells.CUX7CLFzPINaMtDa"
-    },
+    "core": {},
     "dnd5e": {
       "persistSourceMigration": true,
       "riders": {

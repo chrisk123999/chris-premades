@@ -115,9 +115,7 @@
     "enchant": {}
   },
   "flags": {
-    "core": {
-      "sourceId": "Actor.iXZRAxrrFFxPX0g6.Item.j37E7aDowCBPr9dk"
-    },
+    "core": {},
     "midiProperties": {
       "nodam": false,
       "fulldam": false,

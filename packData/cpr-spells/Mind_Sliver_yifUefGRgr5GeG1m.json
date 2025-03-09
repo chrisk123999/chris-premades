@@ -100,9 +100,7 @@
       "idv": false,
       "ida": false
     },
-    "core": {
-      "sourceId": "Item.DlMji8WdsqSOTJj4"
-    },
+    "core": {},
     "dnd5e": {
       "persistSourceMigration": true,
       "riders": {
@@ -273,7 +271,7 @@
       }
     },
     "identifier": "mind-sliver",
-    "sourceClass": "cleric"
+    "sourceClass": ""
   },
   "folder": null,
   "_id": "yifUefGRgr5GeG1m",

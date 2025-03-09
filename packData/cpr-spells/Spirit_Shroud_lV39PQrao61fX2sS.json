@@ -119,7 +119,7 @@
       }
     },
     "identifier": "spirit-shroud",
-    "sourceClass": "cleric"
+    "sourceClass": ""
   },
   "effects": [],
   "flags": {
@@ -158,9 +158,7 @@
       "idv": false,
       "ida": false
     },
-    "core": {
-      "sourceId": "Actor.ajuA7OJxItBFhlyB.Item.ESJiGNZfGumETFjB"
-    },
+    "core": {},
     "dnd5e": {
       "persistSourceMigration": true,
       "riders": {

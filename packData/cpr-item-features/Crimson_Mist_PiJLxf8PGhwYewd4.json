@@ -123,7 +123,8 @@
         "midiAutomationOnly": false
       }
     },
-    "identifier": "crimson-mist"
+    "identifier": "crimson-mist",
+    "sourceClass": ""
   },
   "name": "Crimson Mist",
   "flags": {

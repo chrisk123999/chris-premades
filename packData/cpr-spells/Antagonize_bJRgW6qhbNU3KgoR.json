@@ -149,7 +149,7 @@
       }
     },
     "identifier": "antagonize",
-    "sourceClass": "cleric"
+    "sourceClass": ""
   },
   "name": "Antagonize",
   "flags": {
@@ -176,9 +176,7 @@
       "idv": false,
       "ida": false
     },
-    "core": {
-      "sourceId": "Compendium.world.ddb-development-testing-ddb-spells.m4y8PsKc3ttYso7P"
-    },
+    "core": {},
     "midi-qol": {
       "effectActivation": false,
       "onUseMacroName": "",

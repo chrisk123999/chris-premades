@@ -148,7 +148,7 @@
       }
     },
     "identifier": "thunder-step",
-    "sourceClass": "cleric"
+    "sourceClass": ""
   },
   "name": "Thunder Step",
   "flags": {
@@ -175,9 +175,7 @@
       "idv": false,
       "ida": false
     },
-    "core": {
-      "sourceId": "Compendium.world.ddb-dev-ddb-spells.MD59ebOmI7fuyLb7"
-    },
+    "core": {},
     "midi-qol": {
       "effectActivation": false,
       "onUseMacroName": "",

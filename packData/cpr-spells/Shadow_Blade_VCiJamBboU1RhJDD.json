@@ -119,7 +119,7 @@
       }
     },
     "identifier": "shadow-blade",
-    "sourceClass": "cleric"
+    "sourceClass": ""
   },
   "name": "Shadow Blade",
   "flags": {
@@ -159,9 +159,7 @@
       "idv": false,
       "ida": false
     },
-    "core": {
-      "sourceId": "Compendium.world.ddb-development-testing-ddb-spells.blltw6ooD7p6LMOE"
-    },
+    "core": {},
     "dnd5e": {
       "persistSourceMigration": true,
       "riders": {

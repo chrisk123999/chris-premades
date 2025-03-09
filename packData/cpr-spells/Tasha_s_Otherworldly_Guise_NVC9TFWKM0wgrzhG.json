@@ -175,7 +175,7 @@
       }
     },
     "identifier": "tashas-otherworldly-guise",
-    "sourceClass": "cleric"
+    "sourceClass": ""
   },
   "name": "Tasha's Otherworldly Guise",
   "flags": {
@@ -213,9 +213,7 @@
       "idv": false,
       "ida": false
     },
-    "core": {
-      "sourceId": "Compendium.world.ddb-development-testing-ddb-spells.AITntKFid0Ux0Ki0"
-    },
+    "core": {},
     "dnd5e": {
       "persistSourceMigration": true,
       "riders": {

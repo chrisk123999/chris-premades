@@ -217,9 +217,7 @@
       "idv": false,
       "ida": false
     },
-    "core": {
-      "sourceId": "Actor.B9wbmJEB3qVTIKUY.Item.NztmHGy9ueQRJKud"
-    },
+    "core": {},
     "dnd5e": {
       "persistSourceMigration": true,
       "riders": {

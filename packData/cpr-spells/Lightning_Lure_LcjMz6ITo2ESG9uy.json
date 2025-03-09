@@ -147,13 +147,11 @@
       }
     },
     "identifier": "lightning-lure",
-    "sourceClass": "cleric"
+    "sourceClass": ""
   },
   "name": "Lightning Lure",
   "flags": {
-    "core": {
-      "sourceId": "Compendium.world.ddb-development-testing-ddb-spells.zPITKpHUJH0zUrAW"
-    },
+    "core": {},
     "midi-qol": {
       "effectActivation": false,
       "onUseMacroName": "",

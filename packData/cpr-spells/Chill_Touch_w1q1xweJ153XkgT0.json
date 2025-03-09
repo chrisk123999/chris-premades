@@ -156,7 +156,7 @@
       }
     },
     "identifier": "chill-touch",
-    "sourceClass": "cleric"
+    "sourceClass": ""
   },
   "effects": [],
   "flags": {
@@ -195,9 +195,7 @@
       "idv": false,
       "ida": false
     },
-    "core": {
-      "sourceId": "Actor.ajuA7OJxItBFhlyB.Item.Jj2BRp0Q7aRqCjkP"
-    },
+    "core": {},
     "dnd5e": {
       "persistSourceMigration": true,
       "riders": {

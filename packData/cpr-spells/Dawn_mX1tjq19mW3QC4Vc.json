@@ -304,13 +304,11 @@
       }
     },
     "identifier": "dawn",
-    "sourceClass": "cleric"
+    "sourceClass": ""
   },
   "name": "Dawn",
   "flags": {
-    "core": {
-      "sourceId": "Compendium.world.ddb-development-testing-ddb-spells.Ofq8of2q1jFBBTjD"
-    },
+    "core": {},
     "midi-qol": {
       "effectActivation": false,
       "onUseMacroName": "",

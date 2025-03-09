@@ -4,9 +4,7 @@
   "img": "icons/commodities/biological/tentacle-purple-white.webp",
   "effects": [],
   "flags": {
-    "core": {
-      "sourceId": "Compendium.world.ddb-homebrew-spells.ykC1dPr6sctsmJ9e"
-    },
+    "core": {},
     "midi-qol": {
       "effectActivation": false,
       "rollAttackPerTarget": "default",
@@ -227,7 +225,7 @@
       }
     },
     "identifier": "arms-of-hadar",
-    "sourceClass": "cleric"
+    "sourceClass": ""
   },
   "folder": null,
   "_id": "QPdpvT3NGfL5ddf9",

@@ -176,13 +176,11 @@
       }
     },
     "identifier": "far-step",
-    "sourceClass": "cleric"
+    "sourceClass": ""
   },
   "name": "Far Step",
   "flags": {
-    "core": {
-      "sourceId": "Compendium.world.ddb-development-testing-ddb-spells.IvzdHakuNpOTBe9l"
-    },
+    "core": {},
     "midi-qol": {
       "effectActivation": false,
       "onUseMacroName": "",

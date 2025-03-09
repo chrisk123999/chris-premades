@@ -181,7 +181,7 @@
       }
     },
     "identifier": "bigbys-hand",
-    "sourceClass": "cleric"
+    "sourceClass": ""
   },
   "name": "Bigby's Hand",
   "flags": {
@@ -220,9 +220,7 @@
       "reactionCondition": "",
       "otherCondition": ""
     },
-    "core": {
-      "sourceId": "Compendium.world.ddb-dev-ddb-spells.15tZ6vsCyl1lH8w1"
-    },
+    "core": {},
     "dnd5e": {
       "persistSourceMigration": true,
       "riders": {

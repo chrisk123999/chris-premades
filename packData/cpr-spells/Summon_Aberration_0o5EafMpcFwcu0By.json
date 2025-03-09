@@ -234,13 +234,11 @@
       }
     },
     "identifier": "summon-aberration",
-    "sourceClass": "cleric"
+    "sourceClass": ""
   },
   "name": "Summon Aberration",
   "flags": {
-    "core": {
-      "sourceId": "Compendium.world.ddb-development-testing-ddb-spells.BVRso0nm6WepHaBz"
-    },
+    "core": {},
     "midi-qol": {
       "effectActivation": false,
       "onUseMacroName": "",

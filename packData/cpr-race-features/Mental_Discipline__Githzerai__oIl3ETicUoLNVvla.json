@@ -38,9 +38,7 @@
         "source": "chris-premades"
       }
     },
-    "core": {
-      "sourceId": "Actor.IlpCynnAcU8YiYdx.Item.wfsTY3HGHeXzBOpU"
-    },
+    "core": {},
     "midiProperties": {
       "confirmTargets": "default",
       "autoFailFriendly": false,

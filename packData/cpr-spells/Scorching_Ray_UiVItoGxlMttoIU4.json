@@ -214,13 +214,11 @@
       }
     },
     "identifier": "scorching-ray",
-    "sourceClass": "cleric"
+    "sourceClass": ""
   },
   "name": "Scorching Ray",
   "flags": {
-    "core": {
-      "sourceId": "Compendium.world.ddb-development-testing-ddb-spells.PpIfijZn5s0ZRXvp"
-    },
+    "core": {},
     "midi-qol": {
       "fumbleThreshold": null,
       "effectActivation": false,

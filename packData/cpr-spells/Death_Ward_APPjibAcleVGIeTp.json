@@ -117,7 +117,7 @@
       }
     },
     "identifier": "death-ward",
-    "sourceClass": "cleric"
+    "sourceClass": ""
   },
   "effects": [],
   "flags": {
@@ -154,9 +154,7 @@
       "idv": false,
       "ida": false
     },
-    "core": {
-      "sourceId": "Actor.ajuA7OJxItBFhlyB.Item.KqBhPV75DfFHIJLb"
-    },
+    "core": {},
     "dnd5e": {
       "persistSourceMigration": true,
       "riders": {

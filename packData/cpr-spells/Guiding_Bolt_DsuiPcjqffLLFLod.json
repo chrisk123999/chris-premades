@@ -160,7 +160,7 @@
       }
     },
     "identifier": "guiding-bolt",
-    "sourceClass": "cleric"
+    "sourceClass": ""
   },
   "name": "Guiding Bolt",
   "flags": {
@@ -200,9 +200,7 @@
       "idv": false,
       "ida": false
     },
-    "core": {
-      "sourceId": "Compendium.world.ddb-development-testing-ddb-spells.UCRPhpJj5H3v4bjj"
-    },
+    "core": {},
     "dnd5e": {
       "persistSourceMigration": true,
       "riders": {

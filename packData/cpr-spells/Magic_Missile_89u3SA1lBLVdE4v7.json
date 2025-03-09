@@ -274,13 +274,11 @@
       }
     },
     "identifier": "magic-missile",
-    "sourceClass": "cleric"
+    "sourceClass": ""
   },
   "name": "Magic Missile",
   "flags": {
-    "core": {
-      "sourceId": "Compendium.world.ddb-development-testing-ddb-spells.OPqTuvUbdRsEpjKv"
-    },
+    "core": {},
     "midi-qol": {
       "effectActivation": false,
       "onUseMacroName": "",

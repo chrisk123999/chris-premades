@@ -210,13 +210,11 @@
       }
     },
     "identifier": "sickening-radiance",
-    "sourceClass": "cleric"
+    "sourceClass": ""
   },
   "name": "Sickening Radiance",
   "flags": {
-    "core": {
-      "sourceId": "Compendium.world.ddb-development-testing-ddb-spells.MgCzDzTzJUcoqpSD"
-    },
+    "core": {},
     "midi-qol": {
       "effectActivation": false,
       "AoETargetType": "any",

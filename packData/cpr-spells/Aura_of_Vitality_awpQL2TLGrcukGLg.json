@@ -194,13 +194,11 @@
       }
     },
     "identifier": "aura-of-vitality",
-    "sourceClass": "cleric"
+    "sourceClass": ""
   },
   "name": "Aura of Vitality",
   "flags": {
-    "core": {
-      "sourceId": "Compendium.world.ddb-development-testing-ddb-spells.dGIqRVhR08gJvtAG"
-    },
+    "core": {},
     "midi-qol": {
       "effectActivation": false,
       "rollAttackPerTarget": "default",

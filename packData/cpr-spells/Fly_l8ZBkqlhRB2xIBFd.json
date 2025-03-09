@@ -118,7 +118,7 @@
       }
     },
     "identifier": "fly",
-    "sourceClass": "cleric"
+    "sourceClass": ""
   },
   "name": "Fly",
   "flags": {
@@ -136,9 +136,7 @@
       "autoTarget": "default",
       "removeAttackDamageButtons": "default"
     },
-    "core": {
-      "sourceId": "Compendium.world.ddb-development-testing-ddb-spells.VZlPLIDE8cm5ad70"
-    },
+    "core": {},
     "midiProperties": {
       "nodam": false,
       "fulldam": false,

@@ -237,7 +237,7 @@
       }
     },
     "identifier": "chain-lightning",
-    "sourceClass": "cleric"
+    "sourceClass": ""
   },
   "name": "Chain Lightning",
   "flags": {
@@ -277,9 +277,7 @@
       "idv": false,
       "ida": false
     },
-    "core": {
-      "sourceId": "Compendium.world.ddb-development-testing-ddb-spells.P9ml0vec7axSHESo"
-    },
+    "core": {},
     "dnd5e": {
       "persistSourceMigration": true,
       "riders": {

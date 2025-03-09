@@ -131,7 +131,8 @@
         "type": "any",
         "special": ""
       }
-    }
+    },
+    "sourceClass": ""
   },
   "effects": [],
   "folder": null,

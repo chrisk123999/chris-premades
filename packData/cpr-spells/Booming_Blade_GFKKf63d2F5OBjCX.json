@@ -194,7 +194,7 @@
       }
     },
     "identifier": "booming-blade",
-    "sourceClass": "cleric"
+    "sourceClass": ""
   },
   "name": "Booming Blade",
   "flags": {
@@ -233,9 +233,7 @@
       "idv": false,
       "ida": false
     },
-    "core": {
-      "sourceId": "Compendium.world.ddb-development-testing-ddb-spells.lJymK0KswulxuQO7"
-    },
+    "core": {},
     "dnd5e": {
       "persistSourceMigration": true,
       "riders": {

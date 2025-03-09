@@ -126,9 +126,7 @@
     "enchant": {}
   },
   "flags": {
-    "core": {
-      "sourceId": "Actor.ppLnZGfc7SvmovGv.Item.QgHH6kfWd7tAnTJI"
-    },
+    "core": {},
     "midi-qol": {
       "effectActivation": false,
       "rollAttackPerTarget": "default",

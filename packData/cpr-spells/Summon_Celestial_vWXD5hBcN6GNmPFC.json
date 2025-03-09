@@ -177,13 +177,11 @@
       }
     },
     "identifier": "summon-celestial",
-    "sourceClass": "cleric"
+    "sourceClass": ""
   },
   "name": "Summon Celestial",
   "flags": {
-    "core": {
-      "sourceId": "Compendium.world.ddb-development-testing-ddb-spells.VqBFKvJsVhHH1CxU"
-    },
+    "core": {},
     "midi-qol": {
       "effectActivation": false,
       "onUseMacroName": "",

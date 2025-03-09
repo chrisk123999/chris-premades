@@ -234,13 +234,11 @@
       }
     },
     "identifier": "summon-fiend",
-    "sourceClass": "cleric"
+    "sourceClass": ""
   },
   "name": "Summon Fiend",
   "flags": {
-    "core": {
-      "sourceId": "Compendium.world.ddb-development-testing-ddb-spells.sOibzREnC1r8HBwP"
-    },
+    "core": {},
     "midi-qol": {
       "effectActivation": false,
       "onUseMacroName": "",

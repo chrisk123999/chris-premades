@@ -234,13 +234,11 @@
       }
     },
     "identifier": "summon-fey",
-    "sourceClass": "cleric"
+    "sourceClass": ""
   },
   "name": "Summon Fey",
   "flags": {
-    "core": {
-      "sourceId": "Compendium.world.ddb-development-testing-ddb-spells.jqGl5gkM9KxYW8ig"
-    },
+    "core": {},
     "midi-qol": {
       "effectActivation": false,
       "onUseMacroName": "",

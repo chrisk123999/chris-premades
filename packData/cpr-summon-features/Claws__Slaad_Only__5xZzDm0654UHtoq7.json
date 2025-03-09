@@ -240,9 +240,7 @@
       "idv": false,
       "ida": false
     },
-    "core": {
-      "sourceId": "Item.1AbNKfK7sRGBjY9f"
-    },
+    "core": {},
     "dnd5e": {
       "persistSourceMigration": true,
       "riders": {

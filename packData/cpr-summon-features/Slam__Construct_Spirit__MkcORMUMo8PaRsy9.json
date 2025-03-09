@@ -173,9 +173,7 @@
       "idv": false,
       "ida": false
     },
-    "core": {
-      "sourceId": "Item.N85usi7YujRfx4ry"
-    },
+    "core": {},
     "dnd5e": {
       "persistSourceMigration": true,
       "riders": {

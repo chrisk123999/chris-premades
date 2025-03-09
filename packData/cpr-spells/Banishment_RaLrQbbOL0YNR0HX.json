@@ -133,7 +133,7 @@
       }
     },
     "identifier": "banishment",
-    "sourceClass": "cleric"
+    "sourceClass": ""
   },
   "name": "Banishment",
   "flags": {

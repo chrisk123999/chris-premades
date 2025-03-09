@@ -214,7 +214,7 @@
       }
     },
     "identifier": "cloudkill",
-    "sourceClass": "cleric"
+    "sourceClass": ""
   },
   "effects": [],
   "flags": {
@@ -252,9 +252,7 @@
       "idv": false,
       "ida": false
     },
-    "core": {
-      "sourceId": "Actor.iDTsfmjce9HF9WmK.Item.ELsVomopMwIhXcWT"
-    },
+    "core": {},
     "dnd5e": {
       "persistSourceMigration": true,
       "riders": {

@@ -177,7 +177,7 @@
       }
     },
     "identifier": "hunters-mark",
-    "sourceClass": "cleric"
+    "sourceClass": ""
   },
   "name": "Hunter's Mark",
   "flags": {
@@ -197,9 +197,7 @@
       "reactionCondition": "",
       "otherCondition": ""
     },
-    "core": {
-      "sourceId": "Compendium.world.ddb-development-testing-ddb-spells.H3AcGWsBPAY6Yx2s"
-    },
+    "core": {},
     "midiProperties": {
       "nodam": false,
       "fulldam": false,

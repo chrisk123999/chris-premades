@@ -219,7 +219,7 @@
       }
     },
     "identifier": "spiritual-weapon",
-    "sourceClass": "cleric"
+    "sourceClass": ""
   },
   "name": "Spiritual Weapon",
   "flags": {
@@ -260,9 +260,7 @@
       "otherCondition": "",
       "fumbleThreshold": null
     },
-    "core": {
-      "sourceId": "Compendium.world.ddb-dev-ddb-spells.qO2LwymnF06vp7qW"
-    },
+    "core": {},
     "dnd5e": {
       "persistSourceMigration": true,
       "riders": {

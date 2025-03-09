@@ -203,7 +203,7 @@
       }
     },
     "identifier": "spike-growth",
-    "sourceClass": "cleric"
+    "sourceClass": ""
   },
   "effects": [],
   "flags": {
@@ -241,9 +241,7 @@
       "idv": false,
       "ida": false
     },
-    "core": {
-      "sourceId": "Actor.gAdp7h5dQr03DikB.Item.xiYLS8xoQOwHdMLW"
-    },
+    "core": {},
     "dnd5e": {
       "persistSourceMigration": true,
       "riders": {

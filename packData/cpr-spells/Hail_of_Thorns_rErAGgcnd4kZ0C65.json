@@ -209,7 +209,7 @@
       }
     },
     "identifier": "hail-of-thorns",
-    "sourceClass": "cleric"
+    "sourceClass": ""
   },
   "name": "Hail of Thorns",
   "flags": {
@@ -246,9 +246,7 @@
       "idv": false,
       "ida": false
     },
-    "core": {
-      "sourceId": "Compendium.world.ddb-development-testing-ddb-spells.GB9CtghgOl0XgnAX"
-    },
+    "core": {},
     "dnd5e": {
       "persistSourceMigration": true,
       "riders": {

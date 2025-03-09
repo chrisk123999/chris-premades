@@ -4,9 +4,7 @@
   "img": "icons/skills/melee/strike-hammer-destructive-blue.webp",
   "effects": [],
   "flags": {
-    "core": {
-      "sourceId": "Item.20aT1iPzWayOKg4G"
-    },
+    "core": {},
     "midi-qol": {
       "fumbleThreshold": null,
       "effectActivation": false,
@@ -179,7 +177,7 @@
       }
     },
     "identifier": "crusaders-mantle",
-    "sourceClass": "cleric"
+    "sourceClass": ""
   },
   "folder": null,
   "_id": "ByxQSHLzINqphWXt",

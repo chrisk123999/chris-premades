@@ -42,9 +42,7 @@
       "reactionCondition": "",
       "otherCondition": ""
     },
-    "core": {
-      "sourceId": "Actor.IlpCynnAcU8YiYdx.Item.u9CAJdpzgBDBxnLZ"
-    },
+    "core": {},
     "midiProperties": {
       "confirmTargets": "default",
       "autoFailFriendly": false,

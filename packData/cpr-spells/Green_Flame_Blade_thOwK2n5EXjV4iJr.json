@@ -192,7 +192,7 @@
       }
     },
     "identifier": "green-flame-blade",
-    "sourceClass": "cleric"
+    "sourceClass": ""
   },
   "name": "Green-Flame Blade",
   "flags": {
@@ -231,9 +231,7 @@
       "idv": false,
       "ida": false
     },
-    "core": {
-      "sourceId": "Compendium.world.ddb-development-testing-ddb-spells.hhJsWeSPgP9uD10u"
-    },
+    "core": {},
     "dnd5e": {
       "persistSourceMigration": true,
       "riders": {

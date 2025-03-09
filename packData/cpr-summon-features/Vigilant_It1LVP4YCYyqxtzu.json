@@ -90,9 +90,7 @@
     }
   ],
   "flags": {
-    "core": {
-      "sourceId": "Item.5X0ByDuAxCePq5qU"
-    },
+    "core": {},
     "midiProperties": {
       "confirmTargets": "default",
       "autoFailFriendly": false,

@@ -149,13 +149,11 @@
       }
     },
     "identifier": "disintegrate",
-    "sourceClass": "cleric"
+    "sourceClass": ""
   },
   "name": "Disintegrate",
   "flags": {
-    "core": {
-      "sourceId": "Compendium.world.ddb-development-testing-ddb-spells.SlVOFvBVNWGB91Rr"
-    },
+    "core": {},
     "midi-qol": {
       "effectActivation": false,
       "onUseMacroName": "",

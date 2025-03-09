@@ -156,7 +156,7 @@
       }
     },
     "identifier": "spray-of-cards",
-    "sourceClass": "cleric"
+    "sourceClass": ""
   },
   "name": "Spray of Cards",
   "flags": {
@@ -183,9 +183,7 @@
       "idv": false,
       "ida": false
     },
-    "core": {
-      "sourceId": "Compendium.world.ddb-development-testing-ddb-spells.3qaWg0Uec3ujAbL9"
-    },
+    "core": {},
     "midi-qol": {
       "effectActivation": false,
       "AoETargetType": "any",

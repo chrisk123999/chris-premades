@@ -330,7 +330,7 @@
       }
     },
     "identifier": "heat-metal",
-    "sourceClass": "cleric"
+    "sourceClass": ""
   },
   "name": "Heat Metal",
   "flags": {
@@ -369,9 +369,7 @@
       "idv": false,
       "ida": false
     },
-    "core": {
-      "sourceId": "Compendium.world.ddb-development-testing-ddb-spells.TibmTJtCFR1SMANO"
-    },
+    "core": {},
     "dnd5e": {
       "persistSourceMigration": true,
       "riders": {

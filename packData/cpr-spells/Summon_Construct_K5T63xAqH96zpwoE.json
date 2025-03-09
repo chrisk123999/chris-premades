@@ -234,7 +234,7 @@
       }
     },
     "identifier": "summon-construct",
-    "sourceClass": "cleric"
+    "sourceClass": ""
   },
   "name": "Summon Construct",
   "flags": {
@@ -272,9 +272,7 @@
       "idv": false,
       "ida": false
     },
-    "core": {
-      "sourceId": "Compendium.world.ddb-development-testing-ddb-spells.qyXE4fL38stkc3HL"
-    },
+    "core": {},
     "dnd5e": {
       "persistSourceMigration": true,
       "riders": {

@@ -266,7 +266,7 @@
       }
     },
     "identifier": "gust-of-wind",
-    "sourceClass": "cleric"
+    "sourceClass": ""
   },
   "img": "icons/magic/nature/leaf-juggle-humanoid-green.webp",
   "flags": {

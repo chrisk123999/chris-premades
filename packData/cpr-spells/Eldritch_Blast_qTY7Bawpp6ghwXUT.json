@@ -217,7 +217,7 @@
       }
     },
     "identifier": "eldritch-blast",
-    "sourceClass": "cleric"
+    "sourceClass": ""
   },
   "name": "Eldritch Blast",
   "flags": {

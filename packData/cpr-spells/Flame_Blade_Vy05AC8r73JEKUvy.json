@@ -278,7 +278,7 @@
       }
     },
     "identifier": "flame-blade",
-    "sourceClass": "cleric"
+    "sourceClass": ""
   },
   "name": "Flame Blade",
   "flags": {
@@ -319,9 +319,7 @@
       "idv": false,
       "ida": false
     },
-    "core": {
-      "sourceId": "Compendium.world.ddb-development-testing-ddb-spells.Z7Ui0WV3YFuWi3gr"
-    },
+    "core": {},
     "dnd5e": {
       "persistSourceMigration": true,
       "riders": {

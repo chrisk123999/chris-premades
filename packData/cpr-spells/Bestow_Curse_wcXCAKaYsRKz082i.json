@@ -391,7 +391,7 @@
       }
     },
     "identifier": "bestow-curse",
-    "sourceClass": "cleric"
+    "sourceClass": ""
   },
   "name": "Bestow Curse",
   "flags": {
@@ -429,9 +429,7 @@
       "idv": false,
       "ida": false
     },
-    "core": {
-      "sourceId": "Compendium.world.ddb-development-testing-ddb-spells.VgsDJcoswkExuqXS"
-    },
+    "core": {},
     "dnd5e": {
       "persistSourceMigration": true,
       "riders": {

@@ -251,7 +251,8 @@
         "name": "Bigby's Beneficent Bracelet",
         "version": "1.1.0",
         "identifier": "bigbysBeneficentBracelet",
-        "source": "chris-premades"
+        "source": "chris-premades",
+        "hasAnimation": true
       },
       "activityIdentifiers": {
         "forceSculpture": "lea5Ll4CurRsrz2g"

@@ -199,13 +199,11 @@
       }
     },
     "identifier": "compelled-duel",
-    "sourceClass": "cleric"
+    "sourceClass": ""
   },
   "name": "Compelled Duel",
   "flags": {
-    "core": {
-      "sourceId": "Compendium.world.ddb-development-testing-ddb-spells.9vZgosF159dAVWEA"
-    },
+    "core": {},
     "midi-qol": {
       "effectActivation": false,
       "onUseMacroName": "",

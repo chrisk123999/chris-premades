@@ -39,9 +39,7 @@
       "idv": false,
       "ida": false
     },
-    "core": {
-      "sourceId": "Compendium.world.ddb-homebrew-spells.PyODBMfIZ0kFNacu"
-    },
+    "core": {},
     "dnd5e": {
       "persistSourceMigration": true,
       "riders": {
@@ -222,7 +220,7 @@
       }
     },
     "identifier": "tidal-wave",
-    "sourceClass": "cleric"
+    "sourceClass": ""
   },
   "folder": null,
   "_id": "88BDPjCotisXf8hD",

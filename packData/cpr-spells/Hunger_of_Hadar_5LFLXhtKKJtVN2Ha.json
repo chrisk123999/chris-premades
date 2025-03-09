@@ -292,7 +292,7 @@
       }
     },
     "identifier": "hunger-of-hadar",
-    "sourceClass": "cleric"
+    "sourceClass": ""
   },
   "name": "Hunger of Hadar",
   "flags": {
@@ -317,9 +317,7 @@
       "idv": false,
       "ida": false
     },
-    "core": {
-      "sourceId": "Compendium.world.ddb-development-testing-ddb-spells.qikGjLMqHecV9zGl"
-    },
+    "core": {},
     "midi-qol": {
       "effectActivation": false,
       "AoETargetType": "any",

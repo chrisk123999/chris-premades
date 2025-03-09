@@ -134,7 +134,7 @@
       }
     },
     "identifier": "ray-of-enfeeblement",
-    "sourceClass": "cleric"
+    "sourceClass": ""
   },
   "name": "Ray of Enfeeblement",
   "flags": {
@@ -173,9 +173,7 @@
       "idv": false,
       "ida": false
     },
-    "core": {
-      "sourceId": "Compendium.world.ddb-development-testing-ddb-spells.wnPszodWevtWXB6x"
-    },
+    "core": {},
     "dnd5e": {
       "persistSourceMigration": true,
       "riders": {

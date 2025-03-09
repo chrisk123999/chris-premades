@@ -32,9 +32,7 @@
   "img": "icons/magic/light/explosion-glow-spiral-yellow.webp",
   "effects": [],
   "flags": {
-    "core": {
-      "sourceId": "Actor.XTa1hL3pg3KsloTb.Item.6mWXaWgSC2F2LwIo"
-    },
+    "core": {},
     "midiProperties": {
       "confirmTargets": "default",
       "autoFailFriendly": false,

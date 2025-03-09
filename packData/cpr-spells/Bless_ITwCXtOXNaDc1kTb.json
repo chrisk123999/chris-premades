@@ -126,7 +126,7 @@
       }
     },
     "identifier": "bless",
-    "sourceClass": "cleric"
+    "sourceClass": ""
   },
   "name": "Bless",
   "flags": {

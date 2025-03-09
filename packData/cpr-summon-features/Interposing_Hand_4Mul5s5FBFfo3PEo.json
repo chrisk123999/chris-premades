@@ -102,9 +102,7 @@
   },
   "effects": [],
   "flags": {
-    "core": {
-      "sourceId": "Item.FQLtUXhUznGWL21B"
-    },
+    "core": {},
     "midiProperties": {
       "confirmTargets": "default",
       "autoFailFriendly": false,

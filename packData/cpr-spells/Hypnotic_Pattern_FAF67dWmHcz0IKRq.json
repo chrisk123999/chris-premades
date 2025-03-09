@@ -101,9 +101,7 @@
       "idv": false,
       "ida": false
     },
-    "core": {
-      "sourceId": "Compendium.world.ddb-homebrew-spells.qUB1dOy05FDcYGHm"
-    },
+    "core": {},
     "dnd5e": {
       "persistSourceMigration": true,
       "riders": {
@@ -260,7 +258,7 @@
       }
     },
     "identifier": "hypnotic-pattern",
-    "sourceClass": "cleric"
+    "sourceClass": ""
   },
   "folder": null,
   "_id": "FAF67dWmHcz0IKRq",

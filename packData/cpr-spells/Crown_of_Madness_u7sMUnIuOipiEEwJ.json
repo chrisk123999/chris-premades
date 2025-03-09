@@ -101,9 +101,7 @@
       "idv": false,
       "ida": false
     },
-    "core": {
-      "sourceId": "Item.kBxT64wY3ib8DmDO"
-    },
+    "core": {},
     "dnd5e": {
       "persistSourceMigration": true,
       "riders": {
@@ -252,7 +250,7 @@
       }
     },
     "identifier": "crown-of-madness",
-    "sourceClass": "cleric"
+    "sourceClass": ""
   },
   "folder": null,
   "_id": "u7sMUnIuOipiEEwJ",

@@ -47,9 +47,7 @@
       "autoTarget": "default",
       "removeAttackDamageButtons": "default"
     },
-    "core": {
-      "sourceId": "Actor.iXZRAxrrFFxPX0g6.Item.niBoNwXBJyxZFFyC"
-    },
+    "core": {},
     "midiProperties": {
       "nodam": false,
       "fulldam": false,

@@ -194,7 +194,7 @@
       }
     },
     "identifier": "blinding-smite",
-    "sourceClass": "cleric"
+    "sourceClass": ""
   },
   "img": "icons/magic/fire/dagger-rune-enchant-flame-strong-blue-yellow.webp",
   "flags": {

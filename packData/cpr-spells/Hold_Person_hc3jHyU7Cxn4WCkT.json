@@ -91,9 +91,7 @@
       "reactionCondition": "",
       "otherCondition": ""
     },
-    "core": {
-      "sourceId": "Compendium.world.ddb-homebrew-spells.qrM8dh5nk0RUoSvk"
-    },
+    "core": {},
     "midiProperties": {
       "nodam": false,
       "fulldam": false,
@@ -272,7 +270,7 @@
       }
     },
     "identifier": "hold-person",
-    "sourceClass": "cleric"
+    "sourceClass": ""
   },
   "folder": null,
   "_id": "hc3jHyU7Cxn4WCkT",

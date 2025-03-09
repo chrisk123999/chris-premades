@@ -138,9 +138,7 @@
       "idv": false,
       "ida": false
     },
-    "core": {
-      "sourceId": "Actor.puGSiHPeQ84EYsl3.Item.FlBqKzAxeQmTvhyt"
-    },
+    "core": {},
     "dnd5e": {
       "persistSourceMigration": true,
       "dependents": [

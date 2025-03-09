@@ -159,9 +159,7 @@
       "reactionCondition": "",
       "otherCondition": ""
     },
-    "core": {
-      "sourceId": "Compendium.world.ddb-development-testing-ddb-spells.yPCtbr7RQqD23VLc"
-    },
+    "core": {},
     "midiProperties": {
       "nodam": false,
       "fulldam": false,

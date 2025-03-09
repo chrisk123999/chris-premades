@@ -116,7 +116,7 @@
       }
     },
     "identifier": "aura-of-purity",
-    "sourceClass": "cleric"
+    "sourceClass": ""
   },
   "name": "Aura of Purity",
   "flags": {
@@ -153,9 +153,7 @@
       "idv": false,
       "ida": false
     },
-    "core": {
-      "sourceId": "Compendium.world.ddb-development-testing-ddb-spells.CAZNPGd8Q55TqSo2"
-    },
+    "core": {},
     "dnd5e": {
       "persistSourceMigration": true,
       "riders": {

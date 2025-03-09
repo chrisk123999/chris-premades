@@ -128,7 +128,7 @@
       }
     },
     "identifier": "faerie-fire",
-    "sourceClass": "cleric"
+    "sourceClass": ""
   },
   "name": "Faerie Fire",
   "flags": {
@@ -168,9 +168,7 @@
       "idv": false,
       "ida": false
     },
-    "core": {
-      "sourceId": "Compendium.world.ddb-development-testing-ddb-spells.UhXzF9nlF61fy0AA"
-    },
+    "core": {},
     "dnd5e": {
       "persistSourceMigration": true,
       "riders": {

@@ -134,7 +134,7 @@
       }
     },
     "identifier": "mass-cure-wounds",
-    "sourceClass": "cleric"
+    "sourceClass": ""
   },
   "effects": [],
   "flags": {
@@ -172,9 +172,7 @@
       "idv": false,
       "ida": false
     },
-    "core": {
-      "sourceId": "Compendium.world.ddb-homebrew-spells.raq6RJZkRBtFjxqJ"
-    },
+    "core": {},
     "dnd5e": {
       "persistSourceMigration": true,
       "last": {

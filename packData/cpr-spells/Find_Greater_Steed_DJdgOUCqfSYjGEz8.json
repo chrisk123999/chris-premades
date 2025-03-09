@@ -179,7 +179,7 @@
       }
     },
     "identifier": "find-greater-steed",
-    "sourceClass": "cleric"
+    "sourceClass": ""
   },
   "name": "Find Greater Steed",
   "flags": {
@@ -204,9 +204,7 @@
       "idv": false,
       "ida": false
     },
-    "core": {
-      "sourceId": "Compendium.world.ddb-dev-ddb-spells.DpCzzbX9YDOblyBD"
-    },
+    "core": {},
     "midi-qol": {
       "effectActivation": false,
       "rollAttackPerTarget": "default",

@@ -90,9 +90,7 @@
     }
   ],
   "flags": {
-    "core": {
-      "sourceId": "Actor.puGSiHPeQ84EYsl3.Item.DFVE60nV0Ptey67b"
-    },
+    "core": {},
     "midiProperties": {
       "confirmTargets": "default",
       "autoFailFriendly": false,

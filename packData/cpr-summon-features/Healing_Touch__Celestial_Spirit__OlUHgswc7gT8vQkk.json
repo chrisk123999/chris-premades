@@ -161,9 +161,7 @@
       "idv": false,
       "ida": false
     },
-    "core": {
-      "sourceId": "Item.1f9R1PmTN01DXZzA"
-    },
+    "core": {},
     "dnd5e": {
       "persistSourceMigration": true,
       "migratedUses": 1,

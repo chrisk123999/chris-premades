@@ -113,9 +113,7 @@
       "idv": false,
       "ida": false
     },
-    "core": {
-      "sourceId": "Item.MM74sW7poIW7uv9t"
-    },
+    "core": {},
     "dnd5e": {
       "persistSourceMigration": true,
       "riders": {
@@ -251,7 +249,7 @@
       }
     },
     "identifier": "blade-ward",
-    "sourceClass": "cleric"
+    "sourceClass": ""
   },
   "folder": null,
   "_id": "pZ8DbfDL7hzra9ob",

@@ -121,9 +121,7 @@
       "fullName": "Leadership (Recharges after a Short or Long Rest).",
       "actionCopy": false
     },
-    "core": {
-      "sourceId": "Actor.4vST5SDv2GGweqGv.Item.6hyvKFyFaU2m0jYm"
-    },
+    "core": {},
     "link-item-resource-5e": {
       "resource-link": ""
     },

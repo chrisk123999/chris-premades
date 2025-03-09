@@ -176,9 +176,7 @@
       "idv": false,
       "ida": false
     },
-    "core": {
-      "sourceId": "Item.UE4A2LA9q42kmBUs"
-    },
+    "core": {},
     "chris-premades": {
       "info": {
         "name": "Ready Spell",

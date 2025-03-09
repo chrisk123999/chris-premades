@@ -129,11 +129,12 @@
       "idv": false,
       "ida": false
     },
-    "core": {
-      "sourceId": "Item.PX0fECjdUH1IaJp8"
-    },
+    "core": {},
     "dnd5e": {
-      "persistSourceMigration": true
+      "persistSourceMigration": true,
+      "riders": {
+        "activity": []
+      }
     }
   },
   "folder": "j66Pj3ko1tcAG3HY",

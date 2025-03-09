@@ -118,7 +118,7 @@
       }
     },
     "identifier": "conjure-woodland-beings",
-    "sourceClass": "cleric"
+    "sourceClass": ""
   },
   "name": "Conjure Woodland Beings",
   "flags": {
@@ -143,9 +143,7 @@
       "idv": false,
       "ida": false
     },
-    "core": {
-      "sourceId": "Compendium.world.ddb-dev-ddb-spells.OUmBoLR34YbjnyOT"
-    },
+    "core": {},
     "midi-qol": {
       "effectActivation": false,
       "onUseMacroName": "",

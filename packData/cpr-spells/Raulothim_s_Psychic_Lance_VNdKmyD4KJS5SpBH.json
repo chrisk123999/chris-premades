@@ -154,7 +154,7 @@
       }
     },
     "identifier": "raulothims-psychic-lance",
-    "sourceClass": "cleric"
+    "sourceClass": ""
   },
   "name": "Raulothim's Psychic Lance",
   "flags": {
@@ -193,9 +193,7 @@
       "idv": false,
       "ida": false
     },
-    "core": {
-      "sourceId": "Actor.1H14h0SQNzrcWOKY.Item.al2arGeA7U24o9hQ"
-    },
+    "core": {},
     "dnd5e": {
       "persistSourceMigration": true,
       "riders": {

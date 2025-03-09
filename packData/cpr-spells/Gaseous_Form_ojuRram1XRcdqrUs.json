@@ -158,9 +158,7 @@
       "idv": false,
       "ida": false
     },
-    "core": {
-      "sourceId": "Compendium.world.ddb-homebrew-spells.8EebBw5tKGO83koS"
-    },
+    "core": {},
     "dnd5e": {
       "persistSourceMigration": true,
       "riders": {
@@ -297,7 +295,7 @@
       }
     },
     "identifier": "gaseous-form",
-    "sourceClass": "cleric"
+    "sourceClass": ""
   },
   "folder": null,
   "_id": "ojuRram1XRcdqrUs",

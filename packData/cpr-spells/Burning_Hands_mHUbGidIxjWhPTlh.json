@@ -148,13 +148,11 @@
       }
     },
     "identifier": "burning-hands",
-    "sourceClass": "cleric"
+    "sourceClass": ""
   },
   "name": "Burning Hands",
   "flags": {
-    "core": {
-      "sourceId": "Compendium.world.ddb-development-testing-ddb-spells.PQkeExFhz3sDchhR"
-    },
+    "core": {},
     "midi-qol": {
       "effectActivation": false,
       "onUseMacroName": "",

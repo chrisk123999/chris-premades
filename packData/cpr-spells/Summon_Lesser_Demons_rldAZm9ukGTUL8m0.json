@@ -118,7 +118,7 @@
       }
     },
     "identifier": "summon-lesser-demons",
-    "sourceClass": "cleric"
+    "sourceClass": ""
   },
   "name": "Summon Lesser Demons",
   "flags": {
@@ -143,9 +143,7 @@
       "idv": false,
       "ida": false
     },
-    "core": {
-      "sourceId": "Compendium.world.ddb-dev-ddb-spells.43SygTLPE1ZWvPaA"
-    },
+    "core": {},
     "midi-qol": {
       "effectActivation": false,
       "onUseMacroName": "",

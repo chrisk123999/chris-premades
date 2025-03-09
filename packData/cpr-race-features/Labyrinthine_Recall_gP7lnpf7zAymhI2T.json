@@ -30,9 +30,7 @@
     "enchant": {}
   },
   "flags": {
-    "core": {
-      "sourceId": "Actor.IlpCynnAcU8YiYdx.Item.m7DZALufzgkHcdUY"
-    },
+    "core": {},
     "chris-premades": {
       "info": {
         "name": "Labyrinthine Recall",

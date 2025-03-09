@@ -123,7 +123,7 @@
       }
     },
     "identifier": "protection-from-evil-and-good",
-    "sourceClass": "cleric"
+    "sourceClass": ""
   },
   "effects": [
     {
@@ -228,9 +228,7 @@
       "idv": false,
       "ida": false
     },
-    "core": {
-      "sourceId": "Actor.hLfAV9vGQ6jcx50Y.Item.uhaywn9K88UxQ0Kg"
-    },
+    "core": {},
     "dnd5e": {
       "persistSourceMigration": true,
       "riders": {

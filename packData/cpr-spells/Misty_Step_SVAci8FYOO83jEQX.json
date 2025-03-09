@@ -115,7 +115,7 @@
       }
     },
     "identifier": "misty-step",
-    "sourceClass": "cleric"
+    "sourceClass": ""
   },
   "name": "Misty Step",
   "flags": {
@@ -153,9 +153,7 @@
       "idv": false,
       "ida": false
     },
-    "core": {
-      "sourceId": "Compendium.world.ddb-development-testing-ddb-spells.MuhslTlMZhrLXqAS"
-    },
+    "core": {},
     "dnd5e": {
       "persistSourceMigration": true,
       "riders": {

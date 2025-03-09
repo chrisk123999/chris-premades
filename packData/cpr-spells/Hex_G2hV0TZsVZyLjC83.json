@@ -182,7 +182,7 @@
       }
     },
     "identifier": "hex",
-    "sourceClass": "cleric"
+    "sourceClass": ""
   },
   "name": "Hex",
   "flags": {

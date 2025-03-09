@@ -317,7 +317,7 @@
       }
     },
     "identifier": "fire-shield",
-    "sourceClass": "cleric"
+    "sourceClass": ""
   },
   "name": "Fire Shield",
   "flags": {
@@ -338,9 +338,7 @@
       "reactionCondition": "",
       "otherCondition": ""
     },
-    "core": {
-      "sourceId": "Compendium.world.ddb-development-testing-ddb-spells.b0bTr6IsU32Cxc3i"
-    },
+    "core": {},
     "midiProperties": {
       "nodam": false,
       "fulldam": false,

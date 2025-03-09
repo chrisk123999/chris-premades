@@ -118,13 +118,11 @@
       }
     },
     "identifier": "pass-without-trace",
-    "sourceClass": "cleric"
+    "sourceClass": ""
   },
   "name": "Pass without Trace",
   "flags": {
-    "core": {
-      "sourceId": "Compendium.world.ddb-development-testing-ddb-spells.xZ8Bpcgr0KbiVGeO"
-    },
+    "core": {},
     "midi-qol": {
       "effectActivation": false,
       "forceCEOff": true,

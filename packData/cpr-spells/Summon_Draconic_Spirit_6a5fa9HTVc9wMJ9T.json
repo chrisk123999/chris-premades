@@ -234,13 +234,11 @@
       }
     },
     "identifier": "summon-draconic-spirit",
-    "sourceClass": "cleric"
+    "sourceClass": ""
   },
   "name": "Summon Draconic Spirit",
   "flags": {
-    "core": {
-      "sourceId": "Compendium.world.ddb-development-testing-ddb-spells.GdXeZ1pnQWPsK1nD"
-    },
+    "core": {},
     "midi-qol": {
       "effectActivation": false,
       "onUseMacroName": "",

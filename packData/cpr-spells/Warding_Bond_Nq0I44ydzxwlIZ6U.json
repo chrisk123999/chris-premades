@@ -266,7 +266,7 @@
       }
     },
     "identifier": "warding-bond",
-    "sourceClass": "cleric"
+    "sourceClass": ""
   },
   "name": "Warding Bond",
   "flags": {

@@ -344,7 +344,7 @@
       }
     },
     "identifier": "storm-sphere",
-    "sourceClass": "cleric"
+    "sourceClass": ""
   },
   "name": "Storm Sphere",
   "flags": {
@@ -386,9 +386,7 @@
       "idv": false,
       "ida": false
     },
-    "core": {
-      "sourceId": "Compendium.world.ddb-development-testing-ddb-spells.xaLcyNq6jeeGFfd1"
-    },
+    "core": {},
     "dnd5e": {
       "persistSourceMigration": true,
       "riders": {

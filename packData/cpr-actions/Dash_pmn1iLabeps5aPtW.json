@@ -143,9 +143,7 @@
     }
   ],
   "flags": {
-    "core": {
-      "sourceId": "Item.ppRCjd1jqTkEmu40"
-    },
+    "core": {},
     "midi-qol": {
       "effectActivation": false,
       "rollAttackPerTarget": "default",

@@ -24,7 +24,13 @@ let actorPacks = [
     'cpr-summons'
 ];
 for (let i of itemPacks) {
-    await extractPack('packs/' + i, 'packData/' + i, {'log': true, 'documentType': 'Item', transformEntry: (entry) => {delete entry._stats; delete entry.sort; delete entry.ownership; if (entry.system?.source?.sourceClass) delete entry.system.source.sourceClass;}});
+    await extractPack('packs/' + i, 'packData/' + i, {'log': true, 'documentType': 'Item', transformEntry: (entry) => {
+        delete entry._stats;
+        delete entry.sort;
+        delete entry.ownership;
+        if (entry.system?.source?.sourceClass) delete entry.system.source.sourceClass;
+        if (entry.flags.core?.sourceId) delete entry.flags.core.sourceId;
+    }});
 }
 for (let i of actorPacks) {
     await extractPack('packs/' + i, 'packData/' + i, {'log': true, 'documentType': 'Actor', transformEntry: (entry) => {delete entry._stats; delete entry.sort; delete entry.ownership;}});

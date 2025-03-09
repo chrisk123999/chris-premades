@@ -43,9 +43,7 @@
       "reactionCondition": "",
       "otherCondition": ""
     },
-    "core": {
-      "sourceId": "Actor.XauTPmdt4Drmy2f5.Item.ZxF3vhn8N4MiUbQN"
-    },
+    "core": {},
     "midiProperties": {
       "nodam": false,
       "fulldam": false,

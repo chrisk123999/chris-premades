@@ -116,7 +116,7 @@
       }
     },
     "identifier": "guardian-of-faith",
-    "sourceClass": "cleric"
+    "sourceClass": ""
   },
   "name": "Guardian of Faith",
   "flags": {
@@ -153,9 +153,7 @@
       "idv": false,
       "ida": false
     },
-    "core": {
-      "sourceId": "Compendium.world.ddb-development-testing-ddb-spells.HKVNdhqPdgqPNr5K"
-    },
+    "core": {},
     "dnd5e": {
       "persistSourceMigration": true,
       "riders": {

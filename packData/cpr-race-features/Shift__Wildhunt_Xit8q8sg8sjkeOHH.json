@@ -199,9 +199,7 @@
       "rechargeUnit": "r1",
       "sorting": "l"
     },
-    "core": {
-      "sourceId": "Actor.puGSiHPeQ84EYsl3.Item.5EBqsyv7gyboU0tl"
-    },
+    "core": {},
     "chris-premades": {
       "info": {
         "name": "Shift - Wildhunt",

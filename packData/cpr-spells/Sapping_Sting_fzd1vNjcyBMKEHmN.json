@@ -148,13 +148,11 @@
       }
     },
     "identifier": "sapping-sting",
-    "sourceClass": "cleric"
+    "sourceClass": ""
   },
   "name": "Sapping Sting",
   "flags": {
-    "core": {
-      "sourceId": "Compendium.world.ddb-development-testing-ddb-spells.41q157cAoTKlBgcg"
-    },
+    "core": {},
     "midi-qol": {
       "effectActivation": false,
       "onUseMacroName": "",

@@ -148,7 +148,7 @@
       }
     },
     "identifier": "frost-fingers",
-    "sourceClass": "cleric"
+    "sourceClass": ""
   },
   "name": "Frost Fingers",
   "flags": {
@@ -188,9 +188,7 @@
       "reactionCondition": "",
       "otherCondition": ""
     },
-    "core": {
-      "sourceId": "Actor.rAa12hSQCubqogK8.Item.qSM55eSSIgIPJfel"
-    },
+    "core": {},
     "dnd5e": {
       "persistSourceMigration": true,
       "riders": {

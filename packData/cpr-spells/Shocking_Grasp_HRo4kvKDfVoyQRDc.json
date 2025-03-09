@@ -39,9 +39,7 @@
       "idv": false,
       "ida": false
     },
-    "core": {
-      "sourceId": "Compendium.world.ddb-homebrew-spells.FIgw57jzmGaRJLsX"
-    },
+    "core": {},
     "dnd5e": {
       "persistSourceMigration": true,
       "last": {
@@ -230,7 +228,7 @@
       }
     },
     "identifier": "shocking-grasp",
-    "sourceClass": "cleric"
+    "sourceClass": ""
   },
   "folder": null,
   "_id": "HRo4kvKDfVoyQRDc",

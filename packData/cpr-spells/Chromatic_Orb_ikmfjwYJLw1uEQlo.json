@@ -160,7 +160,7 @@
       }
     },
     "identifier": "chromatic-orb",
-    "sourceClass": "cleric"
+    "sourceClass": ""
   },
   "name": "Chromatic Orb",
   "flags": {
@@ -200,9 +200,7 @@
       "idv": false,
       "ida": false
     },
-    "core": {
-      "sourceId": "Compendium.world.ddb-development-testing-ddb-spells.QKBHoWPbTHN2ZRTL"
-    },
+    "core": {},
     "dnd5e": {
       "persistSourceMigration": true,
       "riders": {
