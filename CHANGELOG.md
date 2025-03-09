@@ -2,6 +2,7 @@
 ## Bug Fixes:
 - Crusader's Mantle (Legacy)
 - Superiority Dice (Legacy)
+- Metallic Breath Weapon (Legacy)
 
 # 1.2.15 Release
 ## New Modern Content:

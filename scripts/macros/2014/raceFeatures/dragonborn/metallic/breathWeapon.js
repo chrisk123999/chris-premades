@@ -6,7 +6,7 @@ async function use({workflow}) {
     let repulsionFeature = activityUtils.getActivityByIdentifier(workflow.item, 'metallicBreathWeaponRepulsion', {strict: true});
     if (!enervatingFeature || !repulsionFeature) return;
     let selection = await dialogUtils.buttonDialog(workflow.item.name, 'CHRISPREMADES.Macros.MetallicBreathWeapon.Select', [
-        [enervatingFeature.name.name, 'enervating'],
+        [enervatingFeature.name, 'enervating'],
         [repulsionFeature.name, 'repulsion']
     ]);
     if (!selection) return;
