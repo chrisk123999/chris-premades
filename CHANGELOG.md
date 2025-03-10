@@ -1,6 +1,7 @@
 # 1.2.19 Release:
 ## Bug Fixes:
 - Focused Aim (Legacy)
+- Compendium Medkit
 
 # 1.2.18 Release:
 ## New Modern Content:
