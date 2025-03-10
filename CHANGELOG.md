@@ -2,6 +2,7 @@
 ## Bug Fixes:
 - Focused Aim (Legacy)
 - Compendium Medkit
+- Integration with MISC (including modern content)
 
 # 1.2.18 Release:
 ## New Modern Content:

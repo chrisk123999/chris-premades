@@ -93,24 +93,23 @@ async function getGPSAutomation(item, {identifier, rules = 'legacy', type = 'cha
     return await fromUuid(found.uuid);
 }
 async function getMISCAutomation(item, {identifier, rules = 'legacy', type = 'character'} = {}) {
-    if (rules === 'modern') return;
     let found;
     //let type = item.actor?.type ?? 'character';
     if (type === 'character' || item.type === 'spell') {
         switch(item.type) {
-            case 'spell': found = miscPremades.miscItems.find(i => i.name === item.name && i.type === 'spell'); break;
+            case 'spell': found = miscPremades.miscItems.find(i => i.name === item.name && i.type === 'spell' && i.rules === rules); break;
             case 'weapon':
             case 'equipment':
             case 'consumable':
             case 'tool':
             case 'backpack':
             case 'loot':
-                found = miscPremades.miscItems.find(i => i.name === item.name && constants.itemTypes.includes(i.type)); break;
-            case 'feat': found = miscPremades.miscItems.find(i => i.name === item.name && i.type === 'feat'); break;
+                found = miscPremades.miscItems.find(i => i.name === item.name && constants.itemTypes.includes(i.type) && i.rules === rules); break;
+            case 'feat': found = miscPremades.miscItems.find(i => i.name === item.name && i.type === 'feat' && i.rules === rules); break;
         }
     } else if (type === 'npc') {
         let monster = identifier ?? item.actor.prototypeToken.name;
-        found = miscPremades.miscMonsters.find(i => i.monster === monster && item.name === i.name);
+        found = miscPremades.miscMonsters.find(i => i.monster === monster && item.name === i.name && i.rules === rules);
     }
     if (!found) return;
     return await fromUuid(found.uuid);
