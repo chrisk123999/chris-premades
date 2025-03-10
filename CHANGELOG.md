@@ -1,3 +1,7 @@
+# 1.2.17 Release:
+## Bug Fixes:
+- Astral Trance (Legacy)
+
 # 1.2.16 Release:
 ## Bug Fixes:
 - Crusader's Mantle (Legacy)

@@ -30,7 +30,7 @@ async function use({workflow}) {
             label: 'CHRISPREMADES.Macros.AstralTrance.WeapToolProf',
             name: 'weapToolSelected',
             options: {
-                options: Object.keys(CONFIG.DND5E.weaponIds).map(i => ({value: i, label: i.capitalize()})).concat(Object.keys(toolsArray).map(i => ({value: i, label: toolsArray[i]})))
+                options: Object.keys(CONFIG.DND5E.weaponIds).map(i => ({value: i, label: i.capitalize()})).concat(Object.keys(tools).map(i => ({value: i, label: tools[i]})))
             }
         }]
     ];
@@ -67,7 +67,7 @@ async function use({workflow}) {
         if (!ability) ability = 'int';
         effectData.changes.push({
             key: 'system.tools.' + weapToolSelected + '.prof',
-            mode: 4,
+            mode: 0,
             value: 1,
             priority: 20
         }, {
