@@ -16,6 +16,7 @@ async function attack({trigger: {entity: item}, workflow}) {
     buttons.push(['CHRISPREMADES.Generic.No', false]);
     let useFeature = await dialogUtils.buttonDialog(item.name, genericUtils.format('CHRISPREMADES.Dialog.Missed', {attackTotal, itemName: item.name}), buttons);
     if (!useFeature) return;
+    useFeature = Number(useFeature);
     await workflowUtils.bonusAttack(workflow, String(useFeature * 2));
     await genericUtils.update(ki, {'system.uses.spent': ki.system.uses.spent + useFeature});
     await workflowUtils.completeItemUse(item);
