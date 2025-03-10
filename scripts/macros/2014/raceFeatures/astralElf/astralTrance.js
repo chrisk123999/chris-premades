@@ -66,8 +66,8 @@ async function use({workflow}) {
         let ability = await dialogUtils.buttonDialog(workflow.item.name, 'CHRISPREMADES.Macros.AstralTrance.Ability', Object.values(CONFIG.DND5E.abilities).map(i => [i.label, i.abbreviation]));
         if (!ability) ability = 'int';
         effectData.changes.push({
-            key: 'system.tools.' + weapToolSelected + '.prof',
-            mode: 0,
+            key: 'system.tools.' + weapToolSelected + '.value',
+            mode: 4,
             value: 1,
             priority: 20
         }, {
