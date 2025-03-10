@@ -1,5 +1,4 @@
 import {activityUtils, genericUtils, itemUtils, workflowUtils} from '../../../../../utils.js';
-
 async function heal({trigger: {entity: item}, workflow}) {
     if (!workflow.targets.size || !workflow.item || !workflow.damageRolls) return;
     if (!(workflow.item.type === 'spell' || workflow.item.system.type?.value === 'spellfeature')) return;

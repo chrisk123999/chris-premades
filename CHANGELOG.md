@@ -1,3 +1,10 @@
+# 1.2.18 Release:
+## New Modern Content:
+- Blessed Healer
+## Bug Fixes:
+- Psionic Sorcery (Modern)
+- Metallic Breath Weapon (Legacy)
+
 # 1.2.17 Release:
 ## New Legacy Content:
 - Psionic Spells

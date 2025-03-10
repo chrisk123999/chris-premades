@@ -11,7 +11,12 @@ async function use({trigger, workflow}) {
     let selection = await dialogUtils.selectDocumentDialog(workflow.item.name, 'CHRISPREMADES.Macros.PsionicSorcery.Select', spells, {sortAlphabetical: true});
     if (!selection) return;
     await genericUtils.update(sorceryPoints, {'system.uses.spent': sorceryPoints.system.uses.spent + selection.system.level});
-    await workflowUtils.completeItemUse(selection, {consumeSpellSlot: false}, {configureDialog: false});
+    let itemData = genericUtils.duplicate(selection.toObject());
+    itemData.system.properties = itemData.system.properties.filter(i => !['vocal', 'somatic'].includes(i));
+    if (!itemData.system.materials.consumed) itemData.system.properties = itemData.system.properties.filter(i => i != 'material');
+    itemData.system.preparation.mode = 'innate';
+    let item = await itemUtils.syntheticItem(itemData, workflow.actor);
+    await workflowUtils.completeItemUse(item, undefined, {configureDialog: false});
 }
 export let psionicSorcery = {
     name: 'Psionic Sorcery',

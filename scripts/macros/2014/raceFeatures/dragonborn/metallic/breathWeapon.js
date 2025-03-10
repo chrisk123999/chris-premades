@@ -24,7 +24,7 @@ async function proneOnFailMacro({workflow}) {
 }
 export let metallicBreathWeapon = {
     name: 'Metallic Breath Weapon',
-    version: '1.1.0',
+    version: '1.2.18',
     midi: {
         item: [
             {

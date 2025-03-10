@@ -145,3 +145,4 @@ export {improvedPotentSpellcasting} from './macros/2024/classFeatures/cleric/imp
 //Life Cleric
 export {discipleOfLife} from './macros/2024/classFeatures/cleric/life/discipleOfLife.js';
 export {preserveLife} from './macros/2024/classFeatures/cleric/life/preserveLife.js';
+export {blessedHealer} from './macros/2024/classFeatures/cleric/life/blessedHealer.js';

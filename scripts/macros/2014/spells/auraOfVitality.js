@@ -24,6 +24,18 @@ async function use({workflow}) {
             favorite: true
         }
     });
+    let blessedHealer = itemUtils.getItemByIdentifier(workflow.actor, 'blessedHealer');
+    if (!blessedHealer) return;
+    let validTypes = ['prepared', 'pact', 'always'];
+    if (!validTypes.includes(workflow.item.system.preparation.mode)) return;
+    let castLevel = workflowUtils.getCastLevel(workflow);
+    if (!castLevel) return;
+    if (workflow.targets.size === 1 && workflow.targets.first().document.uuid === workflow.token.document.uuid) return;
+    let activity = activityUtils.getActivityByIdentifier(blessedHealer, 'heal', {strict: true});
+    if (!activity) return;
+    let itemData = genericUtils.duplicate(blessedHealer.toObject());
+    itemData.system.activities[activity.id].healing.bonus = itemUtils.getConfig(blessedHealer, 'baseHealing') + castLevel;
+    await workflowUtils.syntheticItemDataRoll(itemData, workflow.actor, [workflow.token]);
 }
 async function early({dialog}) {
     dialog.configure = false;

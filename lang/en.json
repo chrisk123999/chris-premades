@@ -126,6 +126,7 @@
             "AvatarImg": "Avatar Image:",
             "AvatarImgPriority": "Avatar Image Priority:",
             "BaseDiceNumber": "Base Dice Number:",
+            "BaseHealing": "Base Healing:",
             "BlockingStatuses": "Blocking Statuses:",
             "Character": "Character",
             "CheckSave": "Check Save:",
