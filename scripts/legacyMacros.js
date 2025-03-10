@@ -374,6 +374,12 @@ export {supremeHealing} from './macros/2014/classFeatures/cleric/lifeDomain/supr
 export {colossusSlayer} from './macros/2014/classFeatures/ranger/hunter/colossusSlayer.js';
 export {lanceOfLethargy} from './macros/2014/classFeatures/warlock/invocations/lanceOfLethargy.js';
 export {vengefulAncestors} from './macros/2014/classFeatures/barbarian/ancestralGuardian/vengefulAncestors.js';
+export {psionicSpells} from './macros/2014/classFeatures/sorcerer/aberrantMind/psionicSpells.js';
+export {telepathicSpeech} from './macros/2014/classFeatures/sorcerer/aberrantMind/telepathicSpeech.js';
+export {psionicSorcery} from './macros/2014/classFeatures/sorcerer/aberrantMind/psionicSorcery.js';
+export {psychicDefenses} from './macros/2014/classFeatures/sorcerer/aberrantMind/psychicDefenses.js';
+export {revelationInFlesh} from './macros/2014/classFeatures/sorcerer/aberrantMind/revelationInFlesh.js';
+export {warpingImplosion} from './macros/2014/classFeatures/sorcerer/aberrantMind/warpingImplosion.js';
 // Race Features
 export {aasimarNecroticShroud, aasimarRadiantConsumption, aasimarRadiantSoul, celestialRevelation} from './macros/2014/raceFeatures/aasimar/celestialRevelation.js';
 export {acidBreathWeapon, coldBreathWeapon, fireBreathWeapon, lightningBreathWeapon, poisonBreathWeapon} from './macros/2014/raceFeatures/dragonborn/chromatic/breathWeapon.js';

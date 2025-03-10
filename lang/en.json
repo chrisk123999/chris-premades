@@ -1407,6 +1407,12 @@
             "ProtectionFromEvilAndGood": {
                 "Save": "This save is from an effect from an aberration, celestial, elemental, fey, fiends, or undead that has charmed, frightened, or possessed you."
             },
+            "PsionicSorcery": {
+                "Select": "Select which spell to cast:"
+            },
+            "PsionicSpells": {
+                "Select": "Select which spells are you Psionic Spells:"
+            },
             "Rage": {
                 "AllowConcentration": "Allow Concentration:",
                 "AllowHeavyArmor": "Allow Heavy Armor:",
@@ -1462,6 +1468,9 @@
             },
             "Retaliation": {
                 "Weapon": "Which weapon do you attack with?"
+            },
+            "RevelationInFlesh": {
+                "Select": "Select which benefits to gain:"
             },
             "RingOfSpellStoring": {
                 "Clear": "Clear used spells",
@@ -1869,6 +1878,9 @@
                 "Dismiss": "Warding Bond: Dismiss",
                 "Distance": "Bond distance is too far away, remove bond?",
                 "MaxDistance": "Max Distance:"
+            },
+            "WarpingImplosion": {
+                "Consume": "Consume five {item} to use?"
             },
             "WildShape": {
                 "AllowElementals": "Always allow elementals:",

@@ -1,4 +1,11 @@
 # 1.2.17 Release:
+## New Legacy Content:
+- Psionic Spells
+- Telepathic Speech
+- Psionic Sorcery
+- Psychic Defenses
+- Revelation in Flesh
+- Warping Implosion
 ## Bug Fixes:
 - Astral Trance (Legacy)
 
