@@ -35,7 +35,7 @@ async function use({workflow}) {
         let abilityModifier = workflow.actor.system.abilities[spellData.abilityMod ?? workflow.actor.system.attributes.spellcasting].mod;
         let msakBonus = (new Roll(workflow.actor.system.bonuses.msak.attack + ' + @prof', workflow.actor.getRollData()).evaluateSync({strict: false})).total;
         let rsakBonus = (new Roll(workflow.actor.system.bonuses.rsak.attack + ' + @prof', workflow.actor.getRollData()).evaluateSync({strict: false})).total;
-        let spellMod = workflow.actor.system.attributes.spellmod;
+        let spellMod = workflow.actor.system.attributes.spell.mod;
         let spellActivityData = originalSpell.system.activities.contents;
         for (let spellActivity of spellActivityData) {
             if (spellActivity.actionType === 'msak') {

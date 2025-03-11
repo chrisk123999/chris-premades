@@ -389,13 +389,13 @@ async function use({workflow}) {
                 ]
             };
             let lightFeatureData = await compendiumUtils.getItemFromCompendium(constants.featurePacks.classFeatureItems, 'Radiant Weapon: Light', {object: true, getDescription: true, translate: 'CHRISPREMADES.Macros.InfuseItem.RadiantLight', identifier: 'radiantWeaponLight'});
-            let blindFeatureData = await compendiumUtils.getItemFromCompendium(constants.featurePacks.classFeatureItems, 'Radiant Weapon: Blind', {object: true, getDescription: true, translate: 'CHRISPREMADES.Macros.InfuseItem.RadiantBlind', identifier: 'radiantWeaponBlind', flatDC: target.system.attributes.spelldc});
+            let blindFeatureData = await compendiumUtils.getItemFromCompendium(constants.featurePacks.classFeatureItems, 'Radiant Weapon: Blind', {object: true, getDescription: true, translate: 'CHRISPREMADES.Macros.InfuseItem.RadiantBlind', identifier: 'radiantWeaponBlind', flatDC: target.system.attributes.spell.dc});
             if (!lightFeatureData || !blindFeatureData) {
                 errors.missingPackItem();
                 return;
             }
             let activityId = Object.keys(blindFeatureData.system.activities)[0];
-            let spellSave = workflow.actor.system.attributes.spelldc;
+            let spellSave = workflow.actor.system.attributes.spell.dc;
             blindFeatureData.system.activities[activityId].save.dc = {
                 calculation: '',
                 formula: spellSave.toString(),

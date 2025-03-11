@@ -138,7 +138,7 @@
         {
           "key": "flags.midi-qol.OverTime",
           "mode": 0,
-          "value": "turn=end,label=Dreadful Scream (End of Turn),allowIncapacitated=true,rollType=save,saveAbility=wis,saveDC=@item.save.dc,saveDamage=nodamage,saveRemove=true,saveMagic=true,rollMode=publicroll,",
+          "value": "turn=end,label=Dreadful Scream (End of Turn),allowIncapacitated=true,rollType=save,saveAbility=wis,saveDC=$activity.dc,saveDamage=nodamage,saveRemove=true,saveMagic=true,rollMode=publicroll,",
           "priority": 20
         }
       ],

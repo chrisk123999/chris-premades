@@ -267,7 +267,7 @@
     "chris-premades": {
       "info": {
         "name": "Blinding Smite",
-        "version": "1.1.0",
+        "version": "1.2.21",
         "identifier": "blindingSmite",
         "source": "chris-premades"
       },
@@ -303,7 +303,7 @@
         {
           "key": "flags.midi-qol.OverTime",
           "mode": 2,
-          "value": "turn=end, rollType=save, saveAbility=con, saveDC=@attributes.spelldc, saveRemove=true, saveMagic=false, rollMode=publicroll, allowIncapacitated=true, name=Blinding Smite (End of Turn)",
+          "value": "turn=end, rollType=save, saveAbility=con, saveDC=@attributes.spell.dc, saveRemove=true, saveMagic=false, rollMode=publicroll, allowIncapacitated=true, name=Blinding Smite (End of Turn)",
           "priority": 20
         }
       ],

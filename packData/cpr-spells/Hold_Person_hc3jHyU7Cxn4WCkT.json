@@ -43,7 +43,7 @@
         {
           "key": "flags.midi-qol.OverTime",
           "mode": 0,
-          "value": "turn=end,label=Hold Person (End of Turn),allowIncapacitated=true,rollType=save,saveAbility=wis,saveDC=@item.save.dc,saveDamage=nodamage,saveRemove=true,saveMagic=true,rollMode=publicroll,",
+          "value": "turn=end,label=Hold Person (End of Turn),allowIncapacitated=true,rollType=save,saveAbility=wis,saveDC=$activity.dc,saveDamage=nodamage,saveRemove=true,saveMagic=true,rollMode=publicroll,",
           "priority": 20
         },
         {
@@ -122,7 +122,7 @@
     "chris-premades": {
       "info": {
         "name": "Hold Person",
-        "version": "1.1.0",
+        "version": "1.2.21",
         "identifier": "holdPerson",
         "source": "chris-premades"
       },

@@ -13,7 +13,7 @@ async function late({workflow}) {
 }
 export let naturesWrath = {
     name: 'Channel Divinity: Nature\'s Wrath',
-    version: '1.1.0',
+    version: '1.2.21',
     midi: {
         item: [
             {

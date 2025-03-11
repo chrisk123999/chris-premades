@@ -209,7 +209,7 @@ export class EffectMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
                     genericUtils.setProperty(i, 'options', [
                         {
                             label: 'CHRISPREMADES.Medkit.Effect.OverTime.Labels.Spellcasting',
-                            value: '@attributes.spelldc',
+                            value: '@attributes.spell.dc',
                             isSelected: i.value === '@attributes.spell.dc'
                         },
                         {

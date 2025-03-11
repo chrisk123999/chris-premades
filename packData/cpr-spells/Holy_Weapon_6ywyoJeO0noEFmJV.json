@@ -303,7 +303,7 @@
         {
           "key": "flags.midi-qol.OverTime",
           "mode": 2,
-          "value": "label=Holy Weapon: Burst (End of Turn),turn=end,saveDC=10,saveAbility=con,savingThrow=@attributes.spelldc,saveMagic=true,saveRemove=true",
+          "value": "label=Holy Weapon: Burst (End of Turn),turn=end,saveDC=10,saveAbility=con,savingThrow=@attributes.spell.dc,saveMagic=true,saveRemove=true",
           "priority": 20
         }
       ],
@@ -420,7 +420,7 @@
     "chris-premades": {
       "info": {
         "name": "Holy Weapon",
-        "version": "1.1.10",
+        "version": "1.2.21",
         "mutation": {
           "self": "Holy Weapon"
         },

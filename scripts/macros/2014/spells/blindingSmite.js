@@ -44,7 +44,7 @@ async function damage({trigger: {entity: effect}, workflow}) {
 }
 export let blindingSmite = {
     name: 'Blinding Smite',
-    version: '0.12.0',
+    version: '1.2.21',
     midi: {
         item: [
             {

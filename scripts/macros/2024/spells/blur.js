@@ -38,7 +38,7 @@ export let blur = {
 export let blurEffect = {
     name: blur.name,
     version: blur.version,
-    rules: blur.version,
+    rules: blur.rules,
     midi: {
         actor: [
             {

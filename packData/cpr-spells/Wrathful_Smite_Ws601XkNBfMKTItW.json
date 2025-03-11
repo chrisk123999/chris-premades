@@ -278,7 +278,7 @@
     "chris-premades": {
       "info": {
         "name": "Wrathful Smite",
-        "version": "1.1.0",
+        "version": "1.2.21",
         "identifier": "wrathfulSmite",
         "source": "chris-premades"
       },
@@ -311,7 +311,7 @@
         {
           "key": "flags.midi-qol.OverTime",
           "mode": 0,
-          "value": "turn=start, rollType=check, saveAbility=wis, saveDC=@attributes.spelldc, saveRemove=true, saveMagic=false, actionSave=roll, rollMode=publicroll, allowIncapacitated=true, name=Wrathful Smite: Frighten",
+          "value": "turn=start, rollType=check, saveAbility=wis, saveDC=@attributes.spell.dc, saveRemove=true, saveMagic=false, actionSave=roll, rollMode=publicroll, allowIncapacitated=true, name=Wrathful Smite: Frighten",
           "priority": 20
         }
       ],

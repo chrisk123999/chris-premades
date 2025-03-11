@@ -161,7 +161,7 @@
     "chris-premades": {
       "info": {
         "name": "Rend Mind",
-        "version": "1.1.0",
+        "version": "1.2.21",
         "identifier": "rendMind",
         "source": "chris-premades"
       }
@@ -213,7 +213,7 @@
       "changes": [
         {
           "key": "flags.midi-qol.OverTime",
-          "value": "turn=end,label=Rend Mind (End of Turn),allowIncapacitated=true,rollType=save,saveAbility=wis,saveDC=@item.save.dc,saveDamage=nodamage,saveRemove=true,rollMode=publicroll,",
+          "value": "turn=end,label=Rend Mind (End of Turn),allowIncapacitated=true,rollType=save,saveAbility=wis,saveDC=$activity.dc,saveDamage=nodamage,saveRemove=true,rollMode=publicroll,",
           "mode": 0,
           "priority": 20
         }

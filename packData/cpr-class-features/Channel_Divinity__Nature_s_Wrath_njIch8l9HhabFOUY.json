@@ -311,7 +311,7 @@
     "chris-premades": {
       "info": {
         "name": "Channel Divinity: Nature's Wrath",
-        "version": "1.1.0",
+        "version": "1.2.21",
         "identifier": "naturesWrath",
         "source": "chris-premades"
       },
@@ -380,7 +380,7 @@
         {
           "key": "flags.midi-qol.OverTime",
           "mode": 0,
-          "value": "turn=end,allowIncapacitated=true,rollType=save,saveAbility=str,saveDC=@attributes.spelldc,saveDamage=nodamage,saveRemove=true,rollMode=publicroll,",
+          "value": "turn=end,allowIncapacitated=true,rollType=save,saveAbility=str,saveDC=@attributes.spell.dc,saveDamage=nodamage,saveRemove=true,rollMode=publicroll,",
           "priority": 20
         }
       ],
@@ -446,7 +446,7 @@
         {
           "key": "flags.midi-qol.OverTime",
           "mode": 0,
-          "value": "turn=end,allowIncapacitated=true,rollType=save,saveAbility=dex,saveDC=@attributes.spelldc,saveDamage=nodamage,saveRemove=true,rollMode=publicroll,",
+          "value": "turn=end,allowIncapacitated=true,rollType=save,saveAbility=dex,saveDC=@attributes.spell.dc,saveDamage=nodamage,saveRemove=true,rollMode=publicroll,",
           "priority": 20
         }
       ],

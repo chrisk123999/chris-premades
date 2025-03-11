@@ -21,7 +21,7 @@ async function use({trigger, workflow}) {
     let abilityModifier = targetActor.system.abilities[spellData.abilityMod ?? targetActor.system.attributes.spellcasting].mod;
     let msakBonus = (new Roll(targetActor.system.bonuses.msak.attack + ' + @prof', targetActor.getRollData()).evaluateSync({strict: false})).total;
     let rsakBonus = (new Roll(targetActor.system.bonuses.rsak.attack + ' + @prof', targetActor.getRollData()).evaluateSync({strict: false})).total;
-    let spellMod = targetActor.system.attributes.spellmod;
+    let spellMod = targetActor.system.attributes.spell.mod;
     let spellActivityData = originalSpell.system.activities.contents;
     for (let spellActivity of spellActivityData) {
         if (spellActivity.actionType === 'msak') {

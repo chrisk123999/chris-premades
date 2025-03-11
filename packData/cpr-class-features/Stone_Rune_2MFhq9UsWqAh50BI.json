@@ -255,7 +255,7 @@
         {
           "key": "flags.midi-qol.OverTime",
           "mode": 0,
-          "value": "turn=end,allowIncapacitated=true,rollType=save,saveAbility=wis,saveDC=@item.save.dc,saveDamage=nodamage,saveRemove=true,rollMode=publicroll,",
+          "value": "turn=end,allowIncapacitated=true,rollType=save,saveAbility=wis,saveDC=$activity.dc,saveDamage=nodamage,saveRemove=true,rollMode=publicroll,",
           "priority": 20
         },
         {
@@ -321,7 +321,7 @@
     "chris-premades": {
       "info": {
         "identifier": "stoneRune",
-        "version": "1.1.0",
+        "version": "1.2.21",
         "source": "chris-premades"
       },
       "macros": {

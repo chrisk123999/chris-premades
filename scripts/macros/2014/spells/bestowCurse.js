@@ -129,7 +129,6 @@ async function use({workflow}) {
     if (concentration) {
         casterEffectOptions.concentrationItem = workflow.item;
         casterEffectOptions.interdependent = true;
-        targetEffectOptions.concentrationItem = workflow.item;
     }
     let casterEffect;
     if (casterEffectData) casterEffect = await effectUtils.createEffect(workflow.actor, casterEffectData, casterEffectOptions);

@@ -1,3 +1,21 @@
+# 1.2.21 Release:
+## New Modern Content:
+- Aura of Purity
+- Bestow Curse
+- Cloudkill
+- Compelled Duel
+## Bug Fixes:
+- Bestow Curse (Legacy)
+- Blinding Smite (Legacy)
+- Crown of Madness (Legacy)
+- Green-Flame Blade (Legacy)
+- Hold Person (Legacy)
+- Holy Weapon (Legacy)
+- Wrathful Smite (Legacy)
+- Channel Divinity: Nature's Wrath (Legacy)
+- Rend Mind (Legacy)
+- Stone Rune (Legacy)
+
 # 1.2.20 Release:
 ## Bug Fixes:
 - Wish (Modern)

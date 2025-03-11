@@ -6,18 +6,21 @@
       "chat": ""
     },
     "source": {
-      "custom": "Sword Coast Adventurer's Guide pg 142",
+      "custom": "",
       "revision": 1,
-      "rules": "2014"
+      "rules": "2024",
+      "book": "PHB 2024",
+      "page": "",
+      "license": ""
     },
     "activation": {
-      "type": "action",
+      "type": "bonus",
       "condition": "",
       "value": 1
     },
     "duration": {
-      "value": "",
-      "units": "inst"
+      "value": "1",
+      "units": "minute"
     },
     "target": {
       "affects": {
@@ -33,7 +36,8 @@
       }
     },
     "range": {
-      "units": "self",
+      "value": "30",
+      "units": "ft",
       "special": ""
     },
     "uses": {
@@ -42,26 +46,26 @@
       "recovery": []
     },
     "ability": "",
-    "level": 0,
-    "school": "evo",
+    "level": 1,
+    "school": "enc",
     "materials": {
-      "value": "a melee weapon worth at least 1 sp",
+      "value": "",
       "consumed": false,
       "cost": 0,
       "supply": 0
     },
     "preparation": {
       "mode": "prepared",
-      "prepared": true
+      "prepared": false
     },
     "properties": [
-      "somatic",
-      "material"
+      "vocal",
+      "concentration"
     ],
     "activities": {
       "dnd5eactivity000": {
         "_id": "dnd5eactivity000",
-        "type": "utility",
+        "type": "save",
         "activation": {
           "type": "action",
           "value": null,
@@ -76,7 +80,7 @@
           "spellSlot": true
         },
         "description": {
-          "chatFlavor": "[fire] To Second Target"
+          "chatFlavor": ""
         },
         "duration": {
           "units": "inst",
@@ -103,103 +107,73 @@
           "max": "",
           "recovery": []
         },
-        "roll": {
-          "formula": "",
-          "name": "",
-          "prompt": false,
-          "visible": false
-        },
-        "sort": 0,
-        "useConditionText": "",
-        "forceDialog": false,
-        "effectConditionText": ""
-      },
-      "AfLqTos8ge57mcJT": {
-        "type": "damage",
-        "_id": "AfLqTos8ge57mcJT",
-        "sort": 0,
-        "activation": {
-          "type": "special",
-          "value": null,
-          "override": true,
-          "condition": ""
-        },
-        "consumption": {
-          "scaling": {
-            "allowed": false
-          },
-          "spellSlot": true,
-          "targets": []
-        },
-        "description": {
-          "chatFlavor": ""
-        },
-        "duration": {
-          "units": "inst",
-          "concentration": false,
-          "override": false
-        },
-        "effects": [],
-        "range": {
-          "override": true,
-          "units": "any",
-          "special": ""
-        },
-        "target": {
-          "template": {
-            "contiguous": false,
-            "units": "ft"
-          },
-          "affects": {
-            "choice": false
-          },
-          "override": false,
-          "prompt": true
-        },
-        "uses": {
-          "spent": 0,
-          "recovery": [],
-          "max": ""
-        },
         "damage": {
+          "onSave": "half",
+          "parts": [],
           "critical": {
             "allow": false
-          },
-          "parts": [
-            {
-              "custom": {
-                "enabled": true,
-                "formula": "@attributes.spell.mod"
-              },
-              "number": null,
-              "denomination": 0,
-              "bonus": "",
-              "types": [
-                "fire"
-              ],
-              "scaling": {
-                "mode": "whole",
-                "number": null,
-                "formula": "d8"
-              }
-            }
-          ]
+          }
         },
+        "save": {
+          "ability": [
+            "wis"
+          ],
+          "dc": {
+            "calculation": "spellcasting",
+            "formula": ""
+          }
+        },
+        "sort": 0,
         "useConditionText": "",
-        "forceDialog": false,
         "effectConditionText": "",
-        "name": ""
+        "useConditionReason": "",
+        "macroData": {
+          "name": "",
+          "command": ""
+        },
+        "ignoreTraits": {
+          "idi": false,
+          "idr": false,
+          "idv": false,
+          "ida": false
+        },
+        "midiProperties": {
+          "ignoreTraits": [],
+          "triggeredActivityId": "none",
+          "triggeredActivityConditionText": "",
+          "triggeredActivityTargets": "targets",
+          "triggeredActivityRollAs": "self",
+          "forceDialog": false,
+          "confirmTargets": "default",
+          "autoTargetType": "any",
+          "autoTargetAction": "default",
+          "automationOnly": false,
+          "otherActivityCompatible": true,
+          "identifier": "",
+          "displayActivityName": false,
+          "rollMode": "default",
+          "chooseEffects": false
+        },
+        "isOverTimeFlag": false,
+        "overTimeProperties": {
+          "saveRemoves": true,
+          "preRemoveConditionText": "",
+          "postRemoveConditionText": ""
+        },
+        "name": "",
+        "img": "",
+        "appliedEffects": []
       }
     },
-    "identifier": "green-flame-blade",
+    "identifier": "compelled-duel",
     "sourceClass": ""
   },
-  "name": "Green-Flame Blade",
+  "name": "Compelled Duel",
   "flags": {
+    "core": {},
     "midi-qol": {
-      "onUseMacroName": "",
-      "forceCEOff": true,
       "effectActivation": false,
+      "onUseMacroName": "",
       "rollAttackPerTarget": "default",
       "itemCondition": "",
       "effectCondition": "",
@@ -211,8 +185,6 @@
       "otherCondition": ""
     },
     "midiProperties": {
-      "magicdam": false,
-      "magiceffect": false,
       "nodam": false,
       "fulldam": false,
       "halfdam": false,
@@ -221,6 +193,8 @@
       "rollOther": false,
       "critOther": false,
       "offHandWeapon": false,
+      "magicdam": false,
+      "magiceffect": false,
       "concentration": false,
       "toggleEffect": false,
       "ignoreTotalCover": false,
@@ -231,52 +205,40 @@
       "idv": false,
       "ida": false
     },
-    "core": {},
     "dnd5e": {
       "persistSourceMigration": true,
       "riders": {
-        "activity": [
-          "AfLqTos8ge57mcJT"
-        ],
+        "activity": [],
         "effect": []
-      },
-      "last": {
-        "AfLqTos8ge57mcJT": {
-          "damageType": {
-            "0": "fire"
-          }
-        }
       }
     },
     "chris-premades": {
       "info": {
-        "name": "Green-Flame Blade",
+        "name": "Compelled Duel",
         "version": "1.2.21",
-        "identifier": "greenFlameBlade",
-        "source": "chris-premades"
+        "identifier": "compelledDuel",
+        "source": "chris-premades",
+        "rules": "modern"
       },
       "macros": {
         "midi": {
           "item": [
-            "greenFlameBlade"
+            "compelledDuel"
           ]
         }
       },
-      "config": {
-        "damageType": "fire"
-      },
       "activityIdentifiers": {
-        "greenFlameBlade": "dnd5eactivity000",
-        "greenFlameBladeLeap": "AfLqTos8ge57mcJT"
+        "compelledDuelMoved": "2xnYUd891b0vOwZN",
+        "compelledDuel": "dnd5eactivity000"
       },
       "hiddenActivities": [
-        "greenFlameBladeLeap"
+        "compelledDuelMoved"
       ]
     }
   },
   "effects": [],
-  "img": "icons/skills/melee/blade-tip-energy-green.webp",
+  "img": "icons/skills/melee/weapons-crossed-swords-white-blue.webp",
   "folder": null,
-  "_id": "thOwK2n5EXjV4iJr",
-  "_key": "!items!thOwK2n5EXjV4iJr"
+  "_id": "EkzkGFHAQL86Ec0M",
+  "_key": "!items!EkzkGFHAQL86Ec0M"
 }

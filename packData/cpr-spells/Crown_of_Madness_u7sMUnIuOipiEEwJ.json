@@ -9,7 +9,7 @@
         {
           "key": "flags.midi-qol.OverTime",
           "mode": 0,
-          "value": "label=Crown of Madness (End of Turn),turn=end,saveDC=@attributes.spelldc,saveAbility=wis,savingThrow=true,saveMagic=true",
+          "value": "label=Crown of Madness (End of Turn),turn=end,saveDC=@attributes.spell.dc,saveAbility=wis,savingThrow=true,saveMagic=true",
           "priority": 20
         }
       ],
@@ -113,7 +113,7 @@
         "name": "Crown of Madness",
         "source": "chris-premades",
         "identifier": "crownOfMadness",
-        "version": "1.1.0"
+        "version": "1.2.21"
       }
     }
   },

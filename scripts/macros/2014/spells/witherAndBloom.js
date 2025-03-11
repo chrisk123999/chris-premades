@@ -19,7 +19,7 @@ async function use({trigger, workflow}) {
         formula += i.amount + i.document.system.hitDice + ' + ';
         await genericUtils.update(i.document, {'system.hitDiceUsed': i.document.system.hitDiceUsed + i.amount});
     }
-    formula += workflow.actor.system.attributes.spellmod;
+    formula += workflow.actor.system.attributes.spell.mod;
     let feature = activityUtils.getActivityByIdentifier(workflow.item, 'witherAndBloomHeal', {strict: true});
     if (!feature) return;
     await activityUtils.setDamage(feature, formula);

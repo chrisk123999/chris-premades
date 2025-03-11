@@ -166,11 +166,11 @@ async function updateToken(token, updates, options, userId) {
     if (token.actor.type === 'group') return;
     if (token.parent.id != canvas.scene.id) return;
     if (!updates.x && !updates.y && !updates.elevation) return;
-    let coords = {x: updates.x ?? token.x, y: updates.y ?? token.y};
+    let coords = genericUtils.duplicate({x: updates.x ?? token.x, y: updates.y ?? token.y});
     let destination = canvas.controls.getRulerForUser(userId)?.destination;
     let tokenBounds = token.object.bounds;
     let isFinalMovement = !destination || (Math.round(coords.x + tokenBounds.width / 2) === Math.round(destination.x) && Math.round(coords.y + tokenBounds.height / 2) === Math.round(destination.y));
-    let previousCoords = genericUtils.getProperty(options, 'chris-premades.coords.previous');
+    let previousCoords = genericUtils.duplicate(genericUtils.getProperty(options, 'chris-premades.coords.previous'));
     if (!previousCoords) return;
     let xDiff = token.width * canvas.grid.size / 2;
     let yDiff = token.height * canvas.grid.size / 2;
