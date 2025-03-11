@@ -92,7 +92,10 @@ async function duplicateSpell({trigger, workflow}) {
         return a.name.localeCompare(b.name, 'en', {'sensitivity': 'base'});
     }));
     if (!selection) return;
-    let itemData = genericUtils.duplicate(selection.toObject());
+    let itemUuid = selection.uuid;
+    let document = await fromUuid(itemUuid);
+    if (!document) return;
+    let itemData = genericUtils.duplicate(document.toObject());
     itemData.system.properties = itemData.system.properties.filter(i => !['vocal', 'somatic', 'material'].includes(i));
     itemData.system.materials = {
         value: '',

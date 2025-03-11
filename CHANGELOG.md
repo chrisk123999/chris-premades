@@ -1,3 +1,7 @@
+# 1.2.20 Release:
+## Bug Fixes:
+- Wish (Modern)
+
 # 1.2.19 Release:
 ## New Modern Content:
 - Wish
