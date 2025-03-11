@@ -1,6 +1,6 @@
 import {constants, itemUtils, workflowUtils} from '../../../../utils.js';
 async function damage({trigger: {entity: item}, workflow}) {
-    if (workflow.item?.type != 'spell') return;
+    if (workflow.item?.type != 'spell' || !workflow.castData) return;
     if (workflowUtils.getCastLevel(workflow) != 0) return;
     let classIdentifier = itemUtils.getConfig(item, 'classIdentifier');
     if (workflow.item.system.sourceClass != classIdentifier) return;

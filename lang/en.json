@@ -1908,6 +1908,17 @@
                 "Target": "Select a target:",
                 "Teleport": "Teleport"
             },
+            "Wish": {
+                "Blocked": "Wish Use Blocked:",
+                "BlockedWarn": "You are unable to cast this spell!",
+                "ChanceFormula": "Blocked Chance Formula:",
+                "ChanceNumber": "Blocked Chance:",
+                "InstantHealthConditions": "Instant Health Conditions:",
+                "MaxLevel": "Max Spell Level:",
+                "Rest": "Did you spend the day only doing light activity?",
+                "SelectSpell": "Select a Spell:",
+                "StressDuration": "Stress Duration Formula:"
+            },
             "WitherAndBloom": {
                 "Heal": "Wither And Bloom: Heal",
                 "SelectHitDie": "Select how many Hit Dice to roll.",

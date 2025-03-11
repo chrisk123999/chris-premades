@@ -77,6 +77,7 @@ export {moonbeam, moonbeamBeam} from './macros/2024/spells/moonbeam.js';
 export {powerWordHeal} from './macros/2024/spells/powerWordHeal.js';
 export {powerWordKill} from './macros/2024/spells/powerWordKill.js';
 export {command, commandTurnStart, commandGrovel} from './macros/2024/spells/command.js';
+export {wish, wishStress, wishImmunity} from './macros/2024/spells/wish.js';
 //Items
 export {unarmedStrike} from './macros/2024/items/misc/unarmedStrike.js';
 //Class Features

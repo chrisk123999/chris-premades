@@ -1,3 +1,10 @@
+# 1.2.19 Release:
+## New Modern Content:
+- Wish
+## Bug Fixes:
+- Potent Spellcasting (Modern)
+- Blessed Healer (Modern)
+
 # 1.2.18 Release:
 ## New Modern Content:
 - Blessed Healer
