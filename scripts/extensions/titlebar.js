@@ -26,7 +26,7 @@ export function createHeaderButton(config, buttons) {
                 sceneMedkit(config.object);
             // eslint-disable-next-line no-undef
             } else if (config instanceof Compendium) {
-                compendiumMedkit(config);
+                compendiumMedkit(config.collection);
             }
         }
     });

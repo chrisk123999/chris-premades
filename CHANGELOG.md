@@ -4,6 +4,9 @@
 ## Bug Fixes:
 - Potent Spellcasting (Modern)
 - Blessed Healer (Modern)
+- Focused Aim (Legacy)
+- Compendium Medkit
+- Integration with MISC (Modern Content)
 
 # 1.2.18 Release:
 ## New Modern Content:
