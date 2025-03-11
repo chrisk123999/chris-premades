@@ -4,6 +4,7 @@
 - Bestow Curse
 - Cloudkill
 - Compelled Duel
+- Hunter's Mark
 ## Bug Fixes:
 - Bestow Curse (Legacy)
 - Blinding Smite (Legacy)
