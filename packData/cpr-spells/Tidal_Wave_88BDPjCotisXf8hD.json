@@ -118,7 +118,7 @@
     "level": 3,
     "school": "con",
     "materials": {
-      "value": "a drop of water",
+      "value": "",
       "consumed": false,
       "cost": 0,
       "supply": 0

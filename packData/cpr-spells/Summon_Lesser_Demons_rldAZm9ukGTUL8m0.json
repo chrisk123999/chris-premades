@@ -45,7 +45,7 @@
     "level": 3,
     "school": "con",
     "materials": {
-      "value": "a vial of blood from a humanoid killed within the past 24 hours",
+      "value": "",
       "consumed": false,
       "cost": 0,
       "supply": 0

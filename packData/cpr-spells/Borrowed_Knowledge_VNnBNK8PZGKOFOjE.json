@@ -45,7 +45,7 @@
     "level": 2,
     "school": "div",
     "materials": {
-      "value": "a book worth at least 25 gp",
+      "value": "",
       "consumed": false,
       "cost": 25,
       "supply": 0

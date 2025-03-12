@@ -45,7 +45,7 @@
     "level": 2,
     "school": "con",
     "materials": {
-      "value": "a feather, tuft of fur, and fish tail inside a gilded acorn worth at least 200 gp",
+      "value": "",
       "consumed": false,
       "cost": 200,
       "supply": 0

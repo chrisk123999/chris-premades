@@ -170,7 +170,7 @@
     "level": 1,
     "school": "evo",
     "materials": {
-      "value": "a bit of rotten food",
+      "value": "",
       "consumed": false,
       "cost": 0,
       "supply": 0

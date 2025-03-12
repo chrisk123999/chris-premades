@@ -47,7 +47,7 @@
     "level": 2,
     "school": "div",
     "materials": {
-      "value": "a copper piece",
+      "value": "",
       "consumed": false,
       "cost": 0,
       "supply": 0

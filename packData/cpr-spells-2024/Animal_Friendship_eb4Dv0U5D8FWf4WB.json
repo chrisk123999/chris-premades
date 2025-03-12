@@ -127,7 +127,7 @@
     },
     "level": 1,
     "materials": {
-      "value": "a morsel of food",
+      "value": "",
       "consumed": false,
       "cost": 0,
       "supply": 0

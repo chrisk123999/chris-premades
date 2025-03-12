@@ -48,7 +48,7 @@
     "level": 3,
     "school": "con",
     "materials": {
-      "value": "a pinch of dust and a few drops of water",
+      "value": "",
       "consumed": false,
       "cost": 0,
       "supply": 0

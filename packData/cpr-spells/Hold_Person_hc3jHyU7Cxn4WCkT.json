@@ -181,7 +181,7 @@
     "level": 2,
     "school": "enc",
     "materials": {
-      "value": "a small, straight piece of iron",
+      "value": "",
       "consumed": false,
       "cost": 0,
       "supply": 0

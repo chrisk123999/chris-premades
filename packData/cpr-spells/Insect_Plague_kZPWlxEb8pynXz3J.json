@@ -207,7 +207,7 @@
     },
     "level": 5,
     "materials": {
-      "value": "A few grains of sugar, some kernels of grain, and a smear of fat",
+      "value": "",
       "consumed": false,
       "cost": 0,
       "supply": 0

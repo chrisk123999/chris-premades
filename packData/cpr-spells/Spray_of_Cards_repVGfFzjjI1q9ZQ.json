@@ -46,7 +46,7 @@
     "level": 2,
     "school": "con",
     "materials": {
-      "value": "a deck of cards",
+      "value": "",
       "consumed": false,
       "cost": 0,
       "supply": 0

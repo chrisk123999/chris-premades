@@ -46,7 +46,7 @@
     "level": 2,
     "school": "evo",
     "materials": {
-      "value": "a vial of meltwater",
+      "value": "",
       "consumed": false,
       "cost": 0,
       "supply": 0

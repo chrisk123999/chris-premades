@@ -111,7 +111,7 @@
     "level": 2,
     "school": "trs",
     "materials": {
-      "value": "a hot pepper",
+      "value": "",
       "consumed": false,
       "cost": 0,
       "supply": 0

@@ -45,7 +45,7 @@
     "level": 6,
     "school": "con",
     "materials": {
-      "value": "humanoid blood inside a ruby vial worth at least 600 gp",
+      "value": "",
       "consumed": false,
       "cost": 600,
       "supply": 0

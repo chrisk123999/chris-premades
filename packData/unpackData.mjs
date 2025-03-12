@@ -30,7 +30,7 @@ for (let i of itemPacks) {
         delete entry.ownership;
         if (entry.system?.source?.sourceClass) delete entry.system.source.sourceClass;
         if (entry.flags.core?.sourceId) delete entry.flags.core.sourceId;
-        if (entry.system?.materials?.value) delete entry.system.materials.value;
+        if (entry.system?.materials?.value) entry.system.materials.value = '';
     }});
 }
 for (let i of actorPacks) {

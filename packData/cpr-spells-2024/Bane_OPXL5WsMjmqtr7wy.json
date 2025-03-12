@@ -126,7 +126,7 @@
     },
     "level": 1,
     "materials": {
-      "value": "a drop of blood",
+      "value": "",
       "consumed": false,
       "cost": 0,
       "supply": 0

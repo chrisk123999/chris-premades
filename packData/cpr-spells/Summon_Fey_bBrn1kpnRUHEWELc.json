@@ -45,7 +45,7 @@
     "level": 3,
     "school": "con",
     "materials": {
-      "value": "a gilded flower worth at least 300 gp",
+      "value": "",
       "consumed": false,
       "cost": 300,
       "supply": 0

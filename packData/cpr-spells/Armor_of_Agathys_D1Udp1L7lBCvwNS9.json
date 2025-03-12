@@ -45,7 +45,7 @@
     "level": 1,
     "school": "abj",
     "materials": {
-      "value": "a cup of water",
+      "value": "",
       "consumed": false,
       "cost": 0,
       "supply": 0

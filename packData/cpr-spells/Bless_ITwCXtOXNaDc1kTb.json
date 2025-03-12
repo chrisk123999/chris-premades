@@ -55,7 +55,7 @@
       "concentration"
     ],
     "materials": {
-      "value": "a sprinkling of holy water",
+      "value": "",
       "consumed": false,
       "cost": 0,
       "supply": 0

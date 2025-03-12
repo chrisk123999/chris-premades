@@ -45,7 +45,7 @@
     "level": 4,
     "school": "con",
     "materials": {
-      "value": "air, a pebble, ash, and water inside a gold-inlaid vial worth at least 400 gp",
+      "value": "",
       "consumed": false,
       "cost": 400,
       "supply": 0

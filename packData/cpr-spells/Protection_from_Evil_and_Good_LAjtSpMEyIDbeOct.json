@@ -46,7 +46,7 @@
     "level": 1,
     "school": "abj",
     "materials": {
-      "value": "holy water or powdered silver and iron, which the spell consumes",
+      "value": "",
       "consumed": true,
       "cost": 0,
       "supply": 0

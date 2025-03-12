@@ -45,7 +45,7 @@
     "level": 4,
     "school": "con",
     "materials": {
-      "value": "an ornate stone and metal lockbox worth at least 400 gp",
+      "value": "",
       "consumed": false,
       "cost": 400,
       "supply": 0

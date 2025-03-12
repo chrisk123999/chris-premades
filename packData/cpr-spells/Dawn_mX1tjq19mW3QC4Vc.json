@@ -48,7 +48,7 @@
     "level": 5,
     "school": "evo",
     "materials": {
-      "value": "a sunburst pendant worth at least 100 gp",
+      "value": "",
       "consumed": false,
       "cost": 100,
       "supply": 0

@@ -46,7 +46,7 @@
     "level": 1,
     "school": "evo",
     "materials": {
-      "value": "a diamond worth at least 50 gp",
+      "value": "",
       "consumed": false,
       "cost": 50,
       "supply": 0

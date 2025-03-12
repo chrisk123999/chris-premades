@@ -119,7 +119,7 @@
     },
     "level": 2,
     "materials": {
-      "value": "a strip of white cloth",
+      "value": "",
       "consumed": false,
       "cost": 0,
       "supply": 0

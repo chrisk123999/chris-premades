@@ -45,7 +45,7 @@
     "level": 5,
     "school": "con",
     "materials": {
-      "value": "an object with the image of a dragon engraved on it, worth at least 500 gp",
+      "value": "",
       "consumed": false,
       "cost": 500,
       "supply": 0

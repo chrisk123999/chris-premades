@@ -45,7 +45,7 @@
     "level": 6,
     "school": "trs",
     "materials": {
-      "value": "an object engraved with a symbol of the Outer Planes, worth at least 500 gp",
+      "value": "",
       "consumed": false,
       "cost": 500,
       "supply": 0

@@ -45,7 +45,7 @@
     "level": 4,
     "school": "nec",
     "materials": {
-      "value": "an undead eyeball encased in a gem worth at least 150 gp",
+      "value": "",
       "consumed": false,
       "cost": 150,
       "supply": 0

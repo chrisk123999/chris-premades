@@ -112,7 +112,7 @@
     },
     "level": 2,
     "materials": {
-      "value": "a handful of oak bark",
+      "value": "",
       "consumed": false,
       "cost": 0,
       "supply": 0

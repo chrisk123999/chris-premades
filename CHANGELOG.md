@@ -30,7 +30,6 @@
 - Warding Bond (Legacy)
 - Wither and Bloom (Legacy)
 - Wrathful Smite (Legacy)
-
 - Aberrant Dragonmark (Legacy)
 - Blade Flourish (Legacy)
 - Blessed Healer (Legacy)
@@ -44,14 +43,12 @@
 - Rend Mind (Legacy)
 - Stone Rune (Legacy)
 - Celestial Revelation (Radiant Consumption) (Legacy)
-
 - Crystal Blade (Legacy)
 - Grovelthrash (Legacy)
 - Master's Amulet (Legacy)
 - Pariah's Shield (Legacy)
 - Potion of Poison (Legacy)
 - Wraps of Dyamak (Legacy)
-
 - Ability Drain (Generic)
 - Damage Turn Start (Generic)
 - Lifesteal (Generic)
@@ -59,7 +56,7 @@
 - Compendium Medkit
 - Manual Rolling
 ## Update Notes:
-- The Item Medkit will now inform you if the item you're looking at has a valid automation for the _other_ ruleset, and offers a button to swap versions in that case
+- The Item Medkit will now inform you if the item you're looking at has a valid automation for the _other_ ruleset, and offers a button to swap versions in that case.
 
 # 1.2.20 Release:
 ## Bug Fixes:

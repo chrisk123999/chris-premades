@@ -45,7 +45,7 @@
     "level": 4,
     "school": "con",
     "materials": {
-      "value": "one holly berry per creature summoned",
+      "value": "",
       "consumed": false,
       "cost": 0,
       "supply": 0

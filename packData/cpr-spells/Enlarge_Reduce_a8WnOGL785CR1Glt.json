@@ -46,7 +46,7 @@
     "level": 2,
     "school": "trs",
     "materials": {
-      "value": "a pinch of powdered iron",
+      "value": "",
       "consumed": false,
       "cost": 0,
       "supply": 0
