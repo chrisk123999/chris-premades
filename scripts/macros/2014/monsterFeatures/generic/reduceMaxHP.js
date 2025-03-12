@@ -25,7 +25,7 @@ async function late({workflow}) {
     if (config.halfDamage) damageApplied = Math.floor(damageApplied / 2);
     if (!damageApplied) return;
     let totalMax = target.actor.system.attributes.hp.max;
-    let effect = effectUtils.getAllEffectsByIdentifier(target.actor, 'reduceMaxHP').find(i => i.origin === workflow.item.uuid);
+    let effect = await effectUtils.getAllEffectsByIdentifier(target.actor, 'reduceMaxHP').find(async i => (await effectUtils.getOriginItem(i))?.uuid === workflow.item.uuid);
     if (effect) {
         let currReduction = parseInt(effect.changes[0].value);
         await genericUtils.update(effect, {

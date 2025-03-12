@@ -1946,7 +1946,7 @@
             "Critical": "Critical",
             "Failure": "Failure",
             "Fumble": "Fumble",
-            "HasModifers": "Roll has modifers",
+            "HasModifers": "Roll has modifiers",
             "Hit": "Hit",
             "Miss": "Miss",
             "PleaseResolve": "please resolve manually before entering total",
@@ -2005,6 +2005,7 @@
                     "Tooltip": "Customize certain visuals"
                 }
             },
+            "ChangeRules": "Switch Rules on Item",
             "Compendium": {
                 "Apply": "Medkit all compendium documents?",
                 "DestinationCompendium": "Destination Compendium:",
@@ -2101,6 +2102,7 @@
                 "midi-item-showcase-community": "Midi Item Showcase Community"
             },
             "NoPermission": "You do not have permissions to change this",
+            "OtherRulesAvailable": "There is an automation for this item using the \"{rules}\" ruleset.",
             "Scene": {
                 "Done": "Scene update complete!",
                 "Start": "Updating tokens...",

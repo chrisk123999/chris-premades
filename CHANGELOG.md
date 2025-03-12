@@ -16,6 +16,15 @@
 - Channel Divinity: Nature's Wrath (Legacy)
 - Rend Mind (Legacy)
 - Stone Rune (Legacy)
+- Celestial Revelation (Radiant Consumption) (Legacy)
+- Ability Drain (Generic)
+- Damage Turn Start (Generic)
+- Lifesteal (Generic)
+- Reduce Max HP (Generic)
+- Compendium Medkit
+- Manual Rolling
+## Update Notes:
+- The Item Medkit will now inform you if the item you're looking at has a valid automation for the _other_ ruleset, and offers a button to swap versions in that case
 
 # 1.2.20 Release:
 ## Bug Fixes:

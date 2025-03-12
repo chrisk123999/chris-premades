@@ -7,7 +7,7 @@ async function late({workflow}) {
         return;
     }
     for (let target of workflow.failedSaves) {
-        let effect = Array.from(target.actor.allApplicableEffects()).find(i => i.origin === workflow.item.uuid);
+        let effect = await Array.from(target.actor.allApplicableEffects()).find(async i => (await effectUtils.getOriginItem(i))?.uuid === workflow.item.uuid);
         if (!effect) continue;
         let effectData = {
             name: workflow.item.name + ': ' + target.name,

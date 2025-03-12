@@ -191,7 +191,7 @@ export class CPRSingleRollResolver extends HandlebarsApplicationMixin(Applicatio
                 let total = genericUtils.duplicate(originalTotal);
                 let dice = (this.roll.terms.reduce((dice, die) => {
                     if (die instanceof CONFIG.Dice.termTypes.DiceTerm) {
-                        let dieAmount = (die.options.advantage || die.options.disadvantage) ? 1 : die.number;
+                        let dieAmount = (die.options.advantageMode !== 0) ? 1 : die.number;
                         dice.max += (die.faces * dieAmount);
                         for (let i = 0; i < dieAmount; i++) {
                             dice.terms.push(die.faces);
@@ -226,10 +226,11 @@ export class CPRSingleRollResolver extends HandlebarsApplicationMixin(Applicatio
                     this.fulfillable.forEach(({term}) => {
                         for (let i = term.results.length; i != term.number; i++) {
                             let index = results.findIndex(i => i.faces === term.faces);
-                            let result = results[index].result;
-                            const roll = { result: result, active: true };
+                            let useLast = index === -1;
+                            let result = useLast ? term.results.at(-1)?.result : results[index]?.result;
+                            const roll = { result: result, active: !useLast };
                             term.results.push(roll);
-                            results.splice(index, 1);
+                            if (!useLast) results.splice(index, 1);
                         }
                     });
                 }

@@ -367,6 +367,25 @@ form .cpr-row-center .cpr-input-short {
     flex-basis: 100%;
 }
 
+.cpr-medkit-tab .cpr-notification {
+    padding: 0.5rem 1rem;
+    line-height: 1rem;
+    border-radius: 5px;
+    text-shadow: 1px 1px black;
+    position: relative;
+    top: -1rem;
+}
+
+.cpr-medkit-tab .cpr-notification.warning {
+    background: var(--color-level-warning-bg);
+    border: 1px solid var(--color-level-warning-border);
+}
+
+.cpr-medkit-tab .cpr-notification.error {
+    background: var(--color-level-error-bg);
+    border: 1px solid var(--color-level-error-border);
+}
+
 /* Just some flex values */
 
 .cpr-config-flex {

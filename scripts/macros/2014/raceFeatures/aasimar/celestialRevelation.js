@@ -124,7 +124,7 @@ export let aasimarNecroticShroud = {
 };
 export let aasimarRadiantConsumption = {
     name: 'Celestial Revelation (Radiant Consumption)',
-    version: '1.1.0',
+    version: '1.2.21',
     combat: [
         {
             pass: 'turnEnd',

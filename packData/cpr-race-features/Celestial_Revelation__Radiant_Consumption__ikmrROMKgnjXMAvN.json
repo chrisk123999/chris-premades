@@ -172,6 +172,120 @@
         "midiAutomationOnly": false,
         "name": "Celestial Revelation: End",
         "img": "icons/magic/control/buff-flight-wings-runes-purple-orange.webp"
+      },
+      "oadAkrrIioexwmps": {
+        "type": "damage",
+        "_id": "oadAkrrIioexwmps",
+        "sort": 0,
+        "activation": {
+          "type": "special",
+          "value": null,
+          "override": false,
+          "condition": ""
+        },
+        "consumption": {
+          "scaling": {
+            "allowed": false
+          },
+          "spellSlot": true,
+          "targets": []
+        },
+        "description": {
+          "chatFlavor": "Radiant Consumption: Damage"
+        },
+        "duration": {
+          "units": "inst",
+          "concentration": false,
+          "override": false
+        },
+        "effects": [],
+        "range": {
+          "override": false,
+          "units": "self",
+          "special": ""
+        },
+        "target": {
+          "template": {
+            "contiguous": false,
+            "units": "ft",
+            "count": "",
+            "type": "emanationNoTemplate",
+            "size": "10"
+          },
+          "affects": {
+            "choice": false,
+            "count": "",
+            "type": "creature",
+            "special": ""
+          },
+          "override": false,
+          "prompt": true
+        },
+        "uses": {
+          "spent": 0,
+          "recovery": [],
+          "max": ""
+        },
+        "damage": {
+          "critical": {
+            "allow": false
+          },
+          "parts": [
+            {
+              "custom": {
+                "enabled": false,
+                "formula": ""
+              },
+              "number": null,
+              "denomination": 0,
+              "bonus": "@prof",
+              "types": [
+                "radiant"
+              ],
+              "scaling": {
+                "number": 1
+              }
+            }
+          ]
+        },
+        "useConditionText": "",
+        "useConditionReason": "",
+        "effectConditionText": "",
+        "macroData": {
+          "name": "",
+          "command": ""
+        },
+        "ignoreTraits": {
+          "idi": false,
+          "idr": false,
+          "idv": false,
+          "ida": false
+        },
+        "midiProperties": {
+          "ignoreTraits": [],
+          "triggeredActivityId": "none",
+          "triggeredActivityConditionText": "",
+          "triggeredActivityTargets": "targets",
+          "triggeredActivityRollAs": "self",
+          "forceDialog": false,
+          "confirmTargets": "default",
+          "autoTargetType": "any",
+          "autoTargetAction": "default",
+          "automationOnly": false,
+          "otherActivityCompatible": true,
+          "identifier": "",
+          "displayActivityName": false,
+          "rollMode": "default",
+          "chooseEffects": false
+        },
+        "isOverTimeFlag": false,
+        "overTimeProperties": {
+          "saveRemoves": true,
+          "preRemoveConditionText": "",
+          "postRemoveConditionText": ""
+        },
+        "name": "Radiant Consumption: Damage",
+        "img": "icons/magic/control/buff-flight-wings-runes-purple-orange.webp"
       }
     },
     "identifier": "celestial-revelation-radiant-consumption",
@@ -224,7 +338,7 @@
     "chris-premades": {
       "info": {
         "name": "Celestial Revelation (Radiant Consumption)",
-        "version": "1.1.0",
+        "version": "1.2.21",
         "identifier": "aasimarRadiantConsumption",
         "source": "chris-premades"
       },
@@ -236,11 +350,13 @@
         }
       },
       "hiddenActivities": [
-        "celestialRevelationEnd"
+        "celestialRevelationEnd",
+        "celestialRevelationDamage"
       ],
       "activityIdentifiers": {
         "celestialRevelation": "dnd5eactivity000",
-        "celestialRevelationEnd": "6fMSd6TaKHC828xU"
+        "celestialRevelationEnd": "6fMSd6TaKHC828xU",
+        "celestialRevelationDamage": "oadAkrrIioexwmps"
       }
     }
   },

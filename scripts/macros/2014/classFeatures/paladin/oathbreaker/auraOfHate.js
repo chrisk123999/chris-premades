@@ -5,7 +5,8 @@ async function create({trigger: {entity: item, target, identifier}}) {
     if (target.actor !== item.actor && !['undead', 'fiend'].includes(actorUtils.typeOrRace(target.actor))) return;
     let targetEffect = effectUtils.getEffectByIdentifier(target.actor, identifier);
     if (targetEffect) {
-        if (targetEffect.origin === item.uuid) return;
+        let effectOriginItem = await effectUtils.getOriginItem(targetEffect);
+        if (effectOriginItem.uuid === item.uuid) return;
         await genericUtils.remove(targetEffect);
     }
     let showIcon = itemUtils.getConfig(item, 'showIcon');

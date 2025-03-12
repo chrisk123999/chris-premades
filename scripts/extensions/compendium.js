@@ -1,13 +1,13 @@
 import {DialogApp} from '../applications/dialog.js';
 import {actorUtils, dialogUtils, genericUtils, itemUtils} from '../utils.js';
-async function unlocked(compendium) {
-    let selection = await dialogUtils.buttonDialog(genericUtils.translate('CHRISPREMADES.Generic.CPR') + ': ' + compendium.metadata.label, 'CHRISPREMADES.Medkit.Compendium.Apply', [['CHRISPREMADES.Generic.Yes', true], ['CHRISPREMADES.Generic.No', false]]);
+async function unlocked(pack) {
+    let selection = await dialogUtils.buttonDialog(genericUtils.translate('CHRISPREMADES.Generic.CPR') + ': ' + pack.metadata.label, 'CHRISPREMADES.Medkit.Compendium.Apply', [['CHRISPREMADES.Generic.Yes', true], ['CHRISPREMADES.Generic.No', false]]);
     if (!selection) return;
     genericUtils.notify('CHRISPREMADES.Medkit.Compendium.Start', 'info');
-    let documents = await compendium.collection.getDocuments();
-    if (compendium.collection.metadata.type === 'Actor') {
+    let documents = await pack.getDocuments();
+    if (pack.metadata.type === 'Actor') {
         for (let i of documents) await actorUtils.updateAll(i);
-    } else if (compendium.collection.metadata.type === 'Item') {
+    } else if (pack.metadata.type === 'Item') {
         for (let i of documents) await itemUtils.itemUpdate(i);
     }
     genericUtils.notify('CHRISPREMADES.Medkit.Compendium.Done', 'info');
@@ -98,7 +98,7 @@ async function locked(pack) {
     }
     if (!destPack) return;
     if (destPack.locked) return;
-    genericUtils.notify('CHRISPREMADES.Medkit.Compendium.Start', 'info');
+    genericUtils.notify('CHRISPREMADES.Medkit.Compendium.Start', 'info', {permanent: true});
     let toDelete = [];
     let destIndex = await destPack.getIndex({fields: ['name']});
     if (selection.mode === 'overwrite') {
@@ -127,6 +127,8 @@ async function locked(pack) {
     await Promise.all(selection.sourceCompendiums.map(async id => {
         let sourcePack = game.packs.get(id);
         if (!sourcePack) return;
+        let oldFolders = Array.from(sourcePack.folders?.values() ?? []).map(i => i.toObject());
+        await Folder.createDocuments(oldFolders, {pack: selection.destinationCompendium, keepId: true});
         let sourceDocuments = await sourcePack.getDocuments();
         sourceDocuments.forEach(item => {
             if (sourceCompendiums.find(i => i.name === item.name)) return;
@@ -163,6 +165,7 @@ async function locked(pack) {
         }
     }));
     genericUtils.log('log', 'Done updating documents!');
+    ui.notifications.clear();
     genericUtils.notify('CHRISPREMADES.Medkit.Compendium.Done', 'info');
 }
 export let compendium = {

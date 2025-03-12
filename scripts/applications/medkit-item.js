@@ -44,7 +44,8 @@ export class ItemMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
         actions: {
             update: ItemMedkit._update,
             apply: ItemMedkit._apply,
-            confirm: ItemMedkit.confirm
+            confirm: ItemMedkit.confirm,
+            changeRules: ItemMedkit._changeRules
         },
         window: {
             icon: 'fa-solid fa-kit-medical',
@@ -124,6 +125,9 @@ export class ItemMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
     }
     get hasAutomation() {
         return (this.isUpToDate === 1 | this.isUpToDate === 0) ? true : false;
+    }
+    get otherRulesAutomationAvailable() {
+        return !this?.availableAutomations?.length && this?.unavailableAutomations?.length > 0;
     }
     get status() {
         if (!this._prepared) return null; // Return null if prepareData with our async functions hasn't been called yet.
@@ -644,7 +648,9 @@ export class ItemMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
     /* Our async function to call before rendering so that we can fetch documents from compendiums */
     async readyData() {
         this.isUpToDate = await itemUtils.isUpToDate(this.item);
-        this.availableAutomations = await compendiumUtils.getAllAutomations(this.item, {identifier: this.item?.actor?.flags['chris-premades']?.info?.identifier, rules: genericUtils.getRules(this.item)});
+        let rules = genericUtils.getRules(this.item);
+        this.availableAutomations = await compendiumUtils.getAllAutomations(this.item, {identifier: this.item?.actor?.flags['chris-premades']?.info?.identifier, rules});
+        this.unavailableAutomations = await compendiumUtils.getAllAutomations(this.item, {identifier: this.item?.actor?.flags['chris-premades']?.info?.identifier, rules: rules === 'modern' ? 'legacy' : 'modern'});
         this._prepared = true;
     }
     /* Outwards facing function that all other medkits will also use to update any given item with another */
@@ -679,6 +685,10 @@ export class ItemMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
         if (identifier) genericUtils.setProperty(sourceItemData, 'flags.chris-premades.info.identifier', identifier);
         let macrosFlag = genericUtils.getProperty(sourceItemData, 'flags.chris-premades.macros');
         if (!macrosFlag) genericUtils.setProperty(sourceItemData, 'flags.chris-premades.-=macros', null);
+        let compendiumSource = genericUtils.getProperty(itemData, '_stats.compendiumSource');
+        if (compendiumSource) genericUtils.setProperty(sourceItemData, '_stats.compendiumSource', compendiumSource);
+        let cachedFor = genericUtils.getProperty(itemData, 'flags.dnd5e.cachedFor');
+        if (cachedFor) genericUtils.setProperty(sourceItemData, 'flags.dnd5e.cachedFor', cachedFor);
         let config = itemData.flags['chris-premades']?.config;
         if (config) genericUtils.setProperty(sourceItemData, 'flags.chris-premades.config', config);
         if (CONFIG.DND5E.defaultArtwork.Item[itemType] != itemData.img) {
@@ -791,8 +801,17 @@ export class ItemMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
         await ItemMedkit._apply.bind(this)(event, target);
         this.close();
     }
+    static async _changeRules(event, target) {
+        await this.item.update({
+            'system.source.rules': this.item.system.source.rules === '2014' ? '2024' : '2014'
+        });
+        this._prepared = false;
+        await this.readyData();
+        await this._reRender();
+    }
     /* Internally called functions */
     async _prepareContext(options) {
+        let rules = genericUtils.getRules(this.item);
         let context = {
             label: this.label,
             statusLabel: this.statusLabel,
@@ -803,7 +822,9 @@ export class ItemMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
                 canUpdate: this.constants.canUpdate,
                 canApplyAutomation: this.canApplyAutomation,
                 canAutomate: this.constants.canAutomate,
-                automationOptions: this.automationOptions
+                automationOptions: this.automationOptions,
+                otherRulesAutomationAvailable: this.otherRulesAutomationAvailable,
+                otherRules: rules === 'modern' ? 'legacy' : 'modern'
             },
             configure: {
                 configurationOptions: this.configurationOptions

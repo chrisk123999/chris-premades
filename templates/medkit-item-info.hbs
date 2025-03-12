@@ -1,4 +1,14 @@
 <div class="tab cpr-medkit-tab {{tabs.info.cssClass}}" data-tab="info" data-group="main">
+    {{#if info.otherRulesAutomationAvailable}}
+    <div class="form-group cpr-row-center">
+        <div class="cpr-column">
+            <li class="cpr-notification warning">{{localize "CHRISPREMADES.Medkit.OtherRulesAvailable" rules=info.otherRules}}</li>
+            <button type="button" data-action="changeRules" id="changeRules" {{#unless info.canUpdate.value}}disabled data-tooltip="{{localize info.canUpdate.tooltip}}"{{/unless}}>
+                <label for="changeRules">{{localize "CHRISPREMADES.Medkit.ChangeRules"}}</label>
+            </button>
+        </div>
+    </div>
+    {{/if}}
     {{#if info.hasAutomation}}
         {{#unless info.isUpToDate}}
             <div class="form-group cpr-row-center">

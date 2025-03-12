@@ -40,7 +40,7 @@ async function use({trigger, workflow}) {
             });
         }
         if (reduceMaxHP) {
-            let effect = effectUtils.getAllEffectsByIdentifier(token.actor, 'reduceMaxHP').find(i => i.origin === trigger.entity.uuid);
+            let effect = await effectUtils.getAllEffectsByIdentifier(token.actor, 'reduceMaxHP').find(async i => (await effectUtils.getOriginItem(i))?.uuid === trigger.entity.uuid);
             let totalMax = token.actor.system.attributes.hp.max;
             if (effect) {
                 let currReduction = parseInt(effect.changes[0].value);
