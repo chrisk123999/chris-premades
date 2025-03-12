@@ -26,7 +26,7 @@ async function use({trigger, workflow}) {
 }
 export let searingSmite = {
     name: 'Searing Smite',
-    version: '1.1.14',
+    version: '1.2.21',
     rules: 'modern',
     midi: {
         actor: divineSmite.midi.actor,

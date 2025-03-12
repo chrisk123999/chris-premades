@@ -6,6 +6,7 @@
 - Compelled Duel
 - Hunter's Mark
 ## Bug Fixes:
+- Searing Smite
 - Bestow Curse (Legacy)
 - Blinding Smite (Legacy)
 - Crown of Madness (Legacy)
