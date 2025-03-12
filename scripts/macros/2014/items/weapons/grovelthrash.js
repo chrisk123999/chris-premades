@@ -36,8 +36,8 @@ async function damageApplication({trigger: {entity: item, token}, workflow, dite
     if (!selection) return;
     let feature = activityUtils.getActivityByIdentifier(item, 'grovelthrashReaction', {strict: true});
     if (!feature) return;
-    await activityUtils.setDamage(feature, damageDealt);
-    await workflowUtils.syntheticActivityRoll(feature, [workflow.token]);
+    let activityData = activityUtils.withChangedDamage(feature, damageDealt);
+    await workflowUtils.syntheticActivityDataRoll(activityData, item, item.actor, [workflow.token]);
     await genericUtils.update(item, {'system.uses.spent': item.system.uses.spent + 1});
 }
 export let grovelthrash = {

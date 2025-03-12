@@ -32,8 +32,8 @@ async function damageApplication({trigger, workflow, ditem}) {
     let reduction = Math.ceil(ditem.totalDamage / 2);
     workflowUtils.modifyDamageAppliedFlat(ditem, -reduction);
     let activity = bound.system.activities.contents[0];
-    await activityUtils.setDamage(activity, reduction);
-    await workflowUtils.syntheticActivityRoll(activity, [firstToken]);
+    let activityData = activityUtils.withChangedDamage(activity, reduction);
+    await workflowUtils.syntheticActivityDataRoll(activityData, bound, bound.actor, [firstToken]);
 }
 export let mastersAmulet = {
     name: 'Master\'s Amulet',

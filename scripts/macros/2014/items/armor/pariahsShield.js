@@ -37,8 +37,8 @@ async function damage({trigger, workflow, ditem}) {
         workflowUtils.negateDamageItemDamage(ditem);
         let activity = activityUtils.getActivityByIdentifier(trigger.entity, 'pariahsShieldProtect', {strict: true});
         if (!activity) return;
-        await activityUtils.setDamage(activity, damage);
-        await workflowUtils.syntheticActivityRoll(activity, [i]);
+        let activityData = activityUtils.withChangedDamage(activity, damage);
+        await workflowUtils.syntheticActivityDataRoll(activityData, trigger.entity, trigger.entity.actor, [i]);
         break;
     }
 }

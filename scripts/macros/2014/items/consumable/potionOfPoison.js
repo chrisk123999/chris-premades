@@ -8,8 +8,8 @@ async function late({workflow}) {
     let targetToken = workflow.targets.first() ?? workflow.token;
     let feature = await activityUtils.getActivityByIdentifier(workflow.item, 'potionOfPoisonDamage', {strict: true});
     if (!feature) return;
-    await activityUtils.setDamage(feature, {number: 3, denomination: 6}, ['poison']);
-    let featureWorkflow = await workflowUtils.syntheticActivityRoll(feature, [targetToken]);
+    let activityData = activityUtils.withChangedDamage(feature, {number: 3, denomination: 6}, ['poison']);
+    let featureWorkflow = await workflowUtils.syntheticActivityDataRoll(activityData, workflow.item, workflow.actor, [targetToken]);
     if (!featureWorkflow.failedSaves.size) return;
     let effectData = {
         name: workflow.item.name,
@@ -31,11 +31,12 @@ async function late({workflow}) {
     await effectUtils.createEffect(targetToken.actor, effectData);
 }
 async function turnStart({trigger: {entity: effect, token}}) {
-    let feature = activityUtils.getActivityByIdentifier(await effectUtils.getOriginItem(effect), 'potionOfPoisonDamage', {strict: true});
+    let originItem = await effectUtils.getOriginItem(effect);
+    let feature = activityUtils.getActivityByIdentifier(originItem, 'potionOfPoisonDamage', {strict: true});
     if (!feature) return;
     let numDice = effect.flags['chris-premades'].potionOfPoison.numDice;
-    await activityUtils.setDamage(feature, {number: numDice, denomination: 6}, ['poison']);
-    let featureWorkflow = await workflowUtils.syntheticActivityRoll(feature, [token]);
+    let activityData = activityUtils.withChangedDamage(feature, {number: numDice, denomination: 6}, ['poison']);
+    let featureWorkflow = await workflowUtils.syntheticActivityDataRoll(activityData, originItem, originItem.actor, [token]);
     if (featureWorkflow.failedSaves.size) return;
     if (numDice === 1) {
         await genericUtils.remove(effect);

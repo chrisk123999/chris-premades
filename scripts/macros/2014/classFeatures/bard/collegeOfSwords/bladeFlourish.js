@@ -56,9 +56,9 @@ async function damage({trigger: {entity: item}, workflow}) {
             await workflowUtils.syntheticActivityRoll(mobileFeature, [workflow.hitTargets.first()]);
             break;
         case 'SF': {
-            await activityUtils.setDamage(slashingFeature, rollResult, [damageType]);
+            let activityData = activityUtils.withChangedDamage(slashingFeature, rollResult, [damageType]);
             let nearbyTargets = tokenUtils.findNearby(workflow.token, 5, 'enemy').filter(i => i.document.uuid !== workflow.hitTargets.first().document.uuid);
-            if (nearbyTargets.length) await workflowUtils.syntheticActivityRoll(slashingFeature, nearbyTargets);
+            if (nearbyTargets.length) await workflowUtils.syntheticActivityDataRoll(activityData, item, item.actor, nearbyTargets);
             break;
         }
     }

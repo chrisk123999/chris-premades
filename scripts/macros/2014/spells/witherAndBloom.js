@@ -22,8 +22,8 @@ async function use({trigger, workflow}) {
     formula += workflow.actor.system.attributes.spell.mod;
     let feature = activityUtils.getActivityByIdentifier(workflow.item, 'witherAndBloomHeal', {strict: true});
     if (!feature) return;
-    await activityUtils.setDamage(feature, formula);
-    await workflowUtils.syntheticActivityRoll(feature, [selection]);
+    let activityData = activityUtils.withChangedDamage(feature, formula);
+    await workflowUtils.syntheticActivityDataRoll(activityData, workflow.item, workflow.actor, [selection]);
 }
 async function damage({trigger, workflow, ditem}) {
     let tokenDocument = await fromUuid(ditem.tokenUuid);

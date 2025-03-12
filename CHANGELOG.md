@@ -6,20 +6,52 @@
 - Compelled Duel
 - Crown of Madness
 - Crusader's Mantle
+- Darkness
+- Death Ward
+- Destructive Wave
+- Detect Magic
+- Disintegrate
+- Dragon's Breath
 - Hunter's Mark
 ## Bug Fixes:
 - Searing Smite
 - Bestow Curse (Legacy)
 - Blinding Smite (Legacy)
+- Chain Lightning (Legacy)
 - Crown of Madness (Legacy)
+- Fire Shield (Legacy)
 - Green-Flame Blade (Legacy)
 - Hold Person (Legacy)
 - Holy Weapon (Legacy)
+- Magic Missile (Legacy)
+- Spirit Guardians (Legacy)
+- Teleport (Legacy)
+- Toll the Dead (Legacy)
+- Warding Bond (Legacy)
+- Wither and Bloom (Legacy)
 - Wrathful Smite (Legacy)
+
+- Aberrant Dragonmark (Legacy)
+- Blade Flourish (Legacy)
+- Blessed Healer (Legacy)
+- Breath of the Dragon (Legacy)
 - Channel Divinity: Nature's Wrath (Legacy)
+- Fighting Style: Unarmed Fighting (Legacy)
+- Grim Harvest (Legacy)
+- Maneuvers: Sweeping Attack (Legacy)
+- Overchannel (Legacy)
+- Primal Companion (Legacy)
 - Rend Mind (Legacy)
 - Stone Rune (Legacy)
 - Celestial Revelation (Radiant Consumption) (Legacy)
+
+- Crystal Blade (Legacy)
+- Grovelthrash (Legacy)
+- Master's Amulet (Legacy)
+- Pariah's Shield (Legacy)
+- Potion of Poison (Legacy)
+- Wraps of Dyamak (Legacy)
+
 - Ability Drain (Generic)
 - Damage Turn Start (Generic)
 - Lifesteal (Generic)

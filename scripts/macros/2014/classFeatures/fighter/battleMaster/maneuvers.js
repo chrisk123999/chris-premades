@@ -319,8 +319,8 @@ async function useSweepingAttack({workflow}) {
     if (!target) {
         target = realNearbyTargets[0];
     }
-    await activityUtils.setDamage(feature, superiorityDie, [currDamageType]);
-    await workflowUtils.syntheticActivityRoll(feature, [target]);
+    let activityData = activityUtils.withChangedDamage(feature, superiorityDie, [currDamageType]);
+    await workflowUtils.syntheticActivityDataRoll(activityData, workflow.item, workflow.actor, [target]);
 }
 async function sweepingAttackAttack({workflow}) {
     let currAttackRoll = workflow.item.flags['chris-premades']?.sweepingAttack?.currAttackRoll;

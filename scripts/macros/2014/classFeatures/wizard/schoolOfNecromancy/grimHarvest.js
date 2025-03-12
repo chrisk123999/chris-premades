@@ -26,8 +26,8 @@ async function late({trigger: {entity: item}, workflow}) {
     let healingAmount = spellLevel * (spellSchool === 'nec' ? 3 : 2);
     let feature = activityUtils.getActivityByIdentifier(item, 'grimHarvest', {strict: true});
     if (!feature) return;
-    await activityUtils.setDamage(feature, healingAmount);
-    await workflowUtils.syntheticActivityRoll(feature, [workflow.token]);
+    let activityData = activityUtils.withChangedDamage(feature, healingAmount);
+    await workflowUtils.syntheticActivityDataRoll(activityData, item, item.actor, [workflow.token]);
     await combatUtils.setTurnCheck(item, 'grimHarvest');
 }
 async function combatEnd({trigger: {entity: item}}) {

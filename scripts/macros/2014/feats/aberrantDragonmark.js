@@ -38,8 +38,8 @@ async function late({trigger: {entity: item}, workflow}) {
             targetToken = nearbyTargets[Math.floor((Math.random() * nearbyTargets.length))];
         }
     }
-    await activityUtils.setDamage(feature, die.total);
-    await workflowUtils.syntheticActivityRoll(feature, [targetToken]);
+    let activityData = activityUtils.withChangedDamage(feature, die.total);
+    await workflowUtils.syntheticActivityDataRoll(activityData, workflow.item, workflow.actor, [targetToken]);
 }
 export let aberrantDragonmark = {
     name: 'Aberrant Dragonmark',

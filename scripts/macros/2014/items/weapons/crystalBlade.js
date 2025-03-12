@@ -10,8 +10,8 @@ async function late({workflow}) {
     let selection = await dialogUtils.confirm(workflow.item.name, genericUtils.format('CHRISPREMADES.Dialog.Use', {itemName: feature.name}));
     if (!selection) return;
     await genericUtils.update(workflow.item, {'system.uses.spent': workflow.item.system.uses.spent + 1});
-    await activityUtils.setDamage(feature, radiantDone);
-    await workflowUtils.syntheticActivityRoll(feature, [workflow.token]);
+    let activityData = activityUtils.withChangedDamage(feature, radiantDone);
+    await workflowUtils.syntheticActivityDataRoll(activityData, workflow.item, workflow.actor, [workflow.token]);
 }
 async function light({workflow}) {
     let brightEffect = effectUtils.getEffectByIdentifier(workflow.actor, 'crystalBladeBright');

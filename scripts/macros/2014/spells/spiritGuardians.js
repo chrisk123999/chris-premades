@@ -78,11 +78,12 @@ async function moveOrTurn({trigger: {target, token, entity: effect}}) {
 
         if (used) return;
     }
-    let feature = activityUtils.getActivityByIdentifier(await effectUtils.getOriginItem(effect), 'spiritGuardiansDamage', {strict: true});
+    let originItem = await effectUtils.getOriginItem(effect);
+    let feature = activityUtils.getActivityByIdentifier(originItem, 'spiritGuardiansDamage', {strict: true});
     if (!feature) return;
     let damageType = feature.damage.parts[0].types.first() ?? effect.flags['chris-premades'].spiritGuardians.damageType;
-    await activityUtils.setDamage(feature, '', [damageType]);
-    await workflowUtils.syntheticActivityRoll(feature, [target], {atLevel: effect.flags['chris-premades'].castData.castLevel});
+    let activityData = activityUtils.withChangedDamage(feature, '', [damageType]);
+    await workflowUtils.syntheticActivityDataRoll(activityData, originItem, originItem.actor, [target], {atLevel: effect.flags['chris-premades'].castData.castLevel});
     if (combatUtils.inCombat()) {
         let turn = combatUtils.currentTurn();
         let touchedTokenIds = effect.flags['chris-premades'].spiritGuardians.touchedTokenIds[turn] ?? [];

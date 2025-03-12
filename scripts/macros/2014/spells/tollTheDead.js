@@ -1,12 +1,16 @@
 import {activityUtils, genericUtils, itemUtils} from '../../../utils.js';
-async function use ({trigger, workflow}) {
+async function use({trigger, workflow}) {
     if (!workflow.targets.size) return;
     let validTargets = workflow.targets.filter(i => i.actor.system.attributes.hp.value < i.actor.system.attributes.hp.max);
     if (!validTargets.size) return;
     let formula = itemUtils.getConfig(workflow.item, 'formula');
-    let newActivity = activityUtils.duplicateActivity(workflow.activity);
-    await activityUtils.setDamage(newActivity, formula);
-    workflow.activity = newActivity;
+    let activityData = activityUtils.withChangedDamage(workflow.activity, formula);
+    workflow.item = workflow.item.clone({
+        ['system.activities.' + workflow.activity.id]: activityData
+    }, {keepId: true});
+    workflow.item.prepareData();
+    workflow.item.applyActiveEffects();
+    workflow.activity = workflow.item.system.activities.get(workflow.activity.id);
 }
 export let tollTheDead = {
     name: 'Toll the Dead',

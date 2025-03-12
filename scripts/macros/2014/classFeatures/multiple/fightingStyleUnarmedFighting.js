@@ -18,7 +18,13 @@ async function early({workflow}) {
     let equippedShields = workflow.actor.items.filter(i => i.system.type?.value === 'shield' && i.system.equipped);
     let equippedWeapons = workflow.actor.items.filter(i => i.type === 'weapon' && i.system.equipped && i !== workflow.item);
     let denomination = (!equippedShields.length && !equippedWeapons.length) ? 8 : 6;
-    await activityUtils.setDamage(workflow.activity, {number: 1, denomination}, ['bludgeoning']);
+    let activityData = activityUtils.withChangedDamage(workflow.activity, {number: 1, denomination}, ['bludgeoning']);
+    workflow.item = workflow.item.clone({
+        ['system.activities.' + workflow.activity.id]: activityData
+    }, {keepId: true});
+    workflow.item.prepareData();
+    workflow.item.applyActiveEffects();
+    workflow.activity = workflow.item.system.activities.get(workflow.activity.id);
 }
 export let fightingStyleUnarmedFighting = {
     name: 'Fighting Style: Unarmed Fighting',

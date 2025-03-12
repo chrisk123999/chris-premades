@@ -103,8 +103,8 @@ async function use({workflow}) {
             if (workflow.actor.sheet.rendered) workflow.actor.sheet.maximize();
             return;
         }
-        await activityUtils.setDamage(feature, {number: totalDamage, denomination: 10}, ['force']);
-        await workflowUtils.syntheticActivityRoll(feature, toTeleport);
+        let activityData = activityUtils.withChangedDamage(feature, {number: totalDamage, denomination: 10}, ['force']);
+        await workflowUtils.syntheticActivityDataRoll(activityData, workflow.item, workflow.actor, toTeleport);
     }
     if (flavor === 'offTarget') {
         let roll = await new Roll('1d10 * 1d10').evaluate();

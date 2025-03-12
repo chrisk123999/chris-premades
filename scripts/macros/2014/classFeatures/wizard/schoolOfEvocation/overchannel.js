@@ -35,8 +35,8 @@ async function late({trigger: {entity: item}, workflow}) {
     if (!numDice) return;
     let feature = activityUtils.getActivityByIdentifier(item, 'overchannelDamage', {strict: true});
     if (!feature) return;
-    await activityUtils.setDamage(feature, {number: numDice, denomination: 12}, ['none']);
-    await workflowUtils.syntheticActivityRoll(feature, [workflow.token]);
+    let activityData = activityUtils.withChangedDamage(feature, {number: numDice, denomination: 12}, ['none']);
+    await workflowUtils.syntheticActivityDataRoll(activityData, item, item.actor, [workflow.token]);
 }
 async function longRest({trigger: {entity: item}}) {
     await genericUtils.setFlag(item, 'chris-premades', 'overchannel.timesUsed', 0);

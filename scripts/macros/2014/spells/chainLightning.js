@@ -47,8 +47,8 @@ async function use({workflow}) {
         }
         let feature = activityUtils.getActivityByIdentifier(workflow.item, 'chainLightningLeap', {strict: true});
         if (!feature) return;
-        await activityUtils.setDamage(feature, workflow.damageTotal);
-        await workflowUtils.syntheticActivityRoll(feature, newTargets);
+        let activityData = activityUtils.withChangedDamage(feature, workflow.damageTotal);
+        await workflowUtils.syntheticActivityDataRoll(activityData, workflow.item, workflow.actor, newTargets);
     }
 }
 export let chainLightning = {

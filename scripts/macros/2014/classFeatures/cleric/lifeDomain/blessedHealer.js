@@ -8,8 +8,8 @@ async function heal({trigger: {entity: item}, workflow}) {
     if (workflow.targets.size === 1 && workflow.targets.first().document.uuid === workflow.token.document.uuid) return;
     let feature = activityUtils.getActivityByIdentifier(item, 'blessedHealer', {strict: true});
     if (!feature) return;
-    await activityUtils.setDamage(feature, 2 + castData.castLevel);
-    await workflowUtils.syntheticActivityRoll(feature, [workflow.token]);
+    let activityData = activityUtils.withChangedDamage(feature, 2 + castData.castLevel);
+    await workflowUtils.syntheticActivityDataRoll(activityData, item, item.actor, [workflow.token]);
 }
 export let blessedHealer = {
     name: 'Blessed Healer',

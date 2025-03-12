@@ -77,12 +77,13 @@ async function hit({trigger: {entity: effect}, workflow}) {
     if (!constants.meleeAttacks.includes(workflow.activity.actionType)) return;
     let shieldType = effect.flags['chris-premades']?.fireShield?.selection;
     if (!shieldType) return;
-    let feature = activityUtils.getActivityByIdentifier(await effectUtils.getOriginItem(effect), 'fireShieldDamage', {strict: true});
+    let originItem = await effectUtils.getOriginItem(effect);
+    let feature = activityUtils.getActivityByIdentifier(originItem, 'fireShieldDamage', {strict: true});
     if (!feature) return;
     let newDamagePart = feature.damage.parts[0] ?? {number: 2, denomination: 6};
-    await activityUtils.setDamage(feature, newDamagePart, [shieldType]);
-    feature.img = effect.img;
-    await workflowUtils.syntheticActivityRoll(feature, [workflow.token]);
+    let activityData = activityUtils.withChangedDamage(feature, newDamagePart, [shieldType]);
+    activityData.img = effect.img;
+    await workflowUtils.syntheticActivityDataRoll(activityData, originItem, originItem.actor, [workflow.token]);
 }
 export async function start({trigger: {entity: effect}}) {
     let selection = effect.flags['chris-premades']?.fireShield?.selection;

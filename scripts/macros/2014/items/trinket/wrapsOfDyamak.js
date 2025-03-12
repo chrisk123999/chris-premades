@@ -47,8 +47,8 @@ async function rest({trigger: {entity: item}}) {
     if (!ki) return;
     let feature = await activityUtils.getActivityByIdentifier(item, 'wrapsOfDyamakHeal', {strict: true});
     if (!feature) return;
-    await activityUtils.setDamage(feature, ki.system.uses.max);
-    await workflowUtils.syntheticActivityRoll(feature);
+    let activityData = activityUtils.withChangedDamage(feature, ki.system.uses.max);
+    await workflowUtils.syntheticActivityDataRoll(activityData, item, item.actor);
 }
 async function useMist({workflow}) {
     let playAnimation = itemUtils.getConfig(workflow.item, 'playAnimation');

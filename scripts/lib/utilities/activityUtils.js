@@ -34,9 +34,9 @@ async function setIdentifier(activity, identifier) {
     await genericUtils.update(item, updates);
 }
 
-// Currently this exists only for use immediately before using an activity
-async function setDamage(activity, formulaOrObj, types=[], {specificIndex = 0} = {}) {
-    let isHeal = activity.type === 'heal';
+function withChangedDamage(activity, formulaOrObj, types=[], {specificIndex = 0} = {}) {
+    let activityData = activity.toObject();
+    let isHeal = activityData.type === 'heal';
     let isFormula = foundry.utils.getType(formulaOrObj) !== 'Object';
     let formula, number, denomination, bonus;
     if (isFormula) {
@@ -50,32 +50,33 @@ async function setDamage(activity, formulaOrObj, types=[], {specificIndex = 0} =
         if (bonus) formula += ' + ' + bonus;
     }
     if (isHeal) {
-        let isCustom = activity.healing.custom.enabled;
+        let isCustom = activityData.healing.custom.enabled;
         if (isCustom || isFormula) {
-            if (formula?.toString()?.length) activity.healing.custom = {
+            if (formula?.toString()?.length) activityData.healing.custom = {
                 enabled: true,
                 formula: formula.toString()
             };
         } else {
-            activity.healing.number = number;
-            activity.healing.denomination = denomination;
-            activity.healing.bonus = bonus;
+            activityData.healing.number = number;
+            activityData.healing.denomination = denomination;
+            activityData.healing.bonus = bonus;
         }
-        if (types.length) activity.healing.types = new Set(types);
+        if (types.length) activityData.healing.types = new Set(types);
     } else {
-        let isCustom = activity.damage.parts[specificIndex].custom.enabled;
+        let isCustom = activityData.damage.parts[specificIndex].custom.enabled;
         if (isCustom || isFormula) {
-            if (formula?.toString()?.length) activity.damage.parts[specificIndex].custom = {
+            if (formula?.toString()?.length) activityData.damage.parts[specificIndex].custom = {
                 enabled: true,
                 formula: formula.toString()
             };
         } else {
-            activity.damage.parts[specificIndex].number = number;
-            activity.damage.parts[specificIndex].denomination = denomination;
-            activity.damage.parts[specificIndex].bonus = bonus;
+            activityData.damage.parts[specificIndex].number = number;
+            activityData.damage.parts[specificIndex].denomination = denomination;
+            activityData.damage.parts[specificIndex].bonus = bonus;
         }
-        if (types.length) activity.damage.parts[specificIndex].types = new Set(types);
+        if (types.length) activityData.damage.parts[specificIndex].types = new Set(types);
     }
+    return activityData;
 }
 function duplicateActivity(activity) {
     let newActivity = activity.clone();
@@ -109,7 +110,7 @@ export let activityUtils = {
     getActivityByIdentifier,
     getIdentifier,
     setIdentifier,
-    setDamage,
+    withChangedDamage,
     duplicateActivity,
     getConditions,
     hasSave,

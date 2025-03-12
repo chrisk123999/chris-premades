@@ -93,10 +93,11 @@ async function onHit({trigger: {token, entity: effect}, workflow}) {
     if (!damageInfo) return;
     let appliedDamage = Math.floor(damageInfo.damageDetail.reduce((acc, i) => acc + i.value, 0)) ?? 0;
     if (appliedDamage <= 0) return;
-    let feature = activityUtils.getActivityByIdentifier(await effectUtils.getOriginItem(effect), 'wardingBondDamage', {strict: true});
+    let originItem = await effectUtils.getOriginItem(effect);
+    let feature = activityUtils.getActivityByIdentifier(originItem, 'wardingBondDamage', {strict: true});
     if (!feature) return;
-    await activityUtils.setDamage(feature, appliedDamage.toString());
-    let targetWorkflow = await workflowUtils.syntheticActivityRoll(feature, [bond.object]);
+    let activityData = activityUtils.withChangedDamage(feature, appliedDamage.toString());
+    let targetWorkflow = await workflowUtils.syntheticActivityDataRoll(activityData, originItem, originItem.actor, [bond.object]);
     if (targetWorkflow.targets.first().actor.system.attributes.hp.value != 0) return;
     await genericUtils.remove(effect);
 }

@@ -19,10 +19,11 @@ async function use({workflow}) {
     let rollEach = itemUtils.getConfig(workflow.item, 'rollEach');
     let damageFormula = feature.damage.parts[0].formula;
     let damageType = feature.damage.parts[0].types.first();
+    let activityData;
     if (!rollEach) {
         let damageRoll = await new CONFIG.Dice.DamageRoll(damageFormula, workflow.item.getRollData(), {type: damageType}).evaluate();
         await MidiQOL.displayDSNForRoll(damageRoll);
-        await activityUtils.setDamage(featureFlat, damageRoll.total.toString(), [damageType]);
+        activityData = activityUtils.withChangedDamage(featureFlat, damageRoll.total.toString(), [damageType]);
     }
     let shieldedFeature = feature.clone({'damage.parts': []}, {keepId: true});
     let playAnimation = itemUtils.getConfig(workflow.item, 'playAnimation') && animationUtils.jb2aCheck();
@@ -62,7 +63,13 @@ async function use({workflow}) {
                 }
                 new Sequence().effect().file(path).atLocation(workflow.token).stretchTo(targetToken).randomizeMirrorY().missed(isShielded).play();
             }
-            await workflowUtils.syntheticActivityRoll(isShielded ? shieldedFeature : (rollEach ? feature : featureFlat), [targetToken], {options: {workflowOptions: {targetConfirmation: 'none'}}});
+            if (isShielded) {
+                await workflowUtils.syntheticActivityRoll(shieldedFeature, [targetToken], {options: {workflowOptions: {targetConfirmation: 'none'}}});
+            } else if (rollEach) {
+                await workflowUtils.syntheticActivityRoll(feature, [targetToken], {options: {workflowOptions: {targetConfirmation: 'none'}}});
+            } else {
+                await workflowUtils.syntheticActivityDataRoll(activityData, workflow.item, workflow.actor, [targetToken], {options: {workflowOptions: {targetConfirmation: 'none'}}});
+            }
         }
     }
 }
