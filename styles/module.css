@@ -141,6 +141,7 @@ form .cpr-row-center .cpr-input-short {
 .cpr-fieldset .cpr-column {
     display: flex;
     flex-direction: column;
+    width: 100%
 }
 
 .cpr-fieldset .cpr-row {
@@ -374,6 +375,9 @@ form .cpr-row-center .cpr-input-short {
     text-shadow: 1px 1px black;
     position: relative;
     top: -1rem;
+    margin: 0;
+    text-align: center;
+    text-wrap: auto;
 }
 
 .cpr-medkit-tab .cpr-notification.warning {
