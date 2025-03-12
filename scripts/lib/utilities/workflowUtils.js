@@ -132,6 +132,13 @@ async function syntheticItemDataRoll(itemData, actor, targets, {options = {}, co
         return workflowData;
     }
 }
+async function syntheticActivityDataRoll(activityData, item, actor, targets, {options = {}, config = {}, atLevel = undefined, consumeUsage = false, consumeResources = false} = {}) {
+    let itemData = genericUtils.duplicate(item.toObject());
+    itemData.system.activities[activityData.id] = activityData;
+    let newItem = await itemUtils.syntheticItem(itemData, actor);
+    let newActivity = newItem.system.activities.get(activityData.id);
+    return await syntheticActivityRoll(newActivity, targets, {options, config, atLevel, consumeUsage, consumeResources});
+}
 function negateDamageItemDamage(ditem) {
     ditem.totalDamage = 0;
     ditem.newHP = ditem.oldHP;
@@ -264,5 +271,6 @@ export let workflowUtils = {
     handleInstantTemplate,
     getCastData,
     modifyDamageAppliedFlat,
-    getCastLevel
+    getCastLevel,
+    syntheticActivityDataRoll
 };
