@@ -85,11 +85,9 @@ async function early({workflow}) {
     workflow.template = template;
     await workflowUtils.handleInstantTemplate(workflow);
     let activityData = activityUtils.withChangedDamage(workflow.activity, damageFormula, [damageType]);
-    workflow.item = workflow.item.clone({
+    workflow.item = itemUtils.cloneItem(workflow.item, {
         ['system.activities.' + workflow.activity.id]: activityData
-    }, {keepId: true});
-    workflow.item.prepareData();
-    workflow.item.applyActiveEffects();
+    });
     workflow.activity = workflow.item.system.activities.get(workflow.activity.id);
     let jb2a = animationUtils.jb2aCheck();
     let playAnimation = itemUtils.getConfig(workflow.item, 'playAnimation') && jb2a;

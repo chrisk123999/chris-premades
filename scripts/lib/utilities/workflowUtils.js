@@ -136,7 +136,7 @@ async function syntheticActivityDataRoll(activityData, item, actor, targets, {op
     let itemData = genericUtils.duplicate(item.toObject());
     itemData.system.activities[activityData.id] = activityData;
     let newItem = await itemUtils.syntheticItem(itemData, actor);
-    let newActivity = newItem.system.activities.get(activityData.id ?? activityData._id);
+    let newActivity = newItem.system.activities.get(activityData._id);
     return await syntheticActivityRoll(newActivity, targets, {options, config, atLevel, consumeUsage, consumeResources});
 }
 function negateDamageItemDamage(ditem) {

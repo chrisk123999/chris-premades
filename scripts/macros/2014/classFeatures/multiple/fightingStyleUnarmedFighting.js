@@ -1,4 +1,4 @@
-import {activityUtils, compendiumUtils, constants, dialogUtils, effectUtils, workflowUtils} from '../../../../utils.js';
+import {activityUtils, compendiumUtils, constants, dialogUtils, effectUtils, itemUtils, workflowUtils} from '../../../../utils.js';
 
 async function turnStart({trigger: {entity: item, token}}) {
     let grapplingEffects = effectUtils.getAllEffectsByIdentifier(token.actor, 'grappling');
@@ -19,11 +19,9 @@ async function early({workflow}) {
     let equippedWeapons = workflow.actor.items.filter(i => i.type === 'weapon' && i.system.equipped && i !== workflow.item);
     let denomination = (!equippedShields.length && !equippedWeapons.length) ? 8 : 6;
     let activityData = activityUtils.withChangedDamage(workflow.activity, {number: 1, denomination}, ['bludgeoning']);
-    workflow.item = workflow.item.clone({
+    workflow.item = itemUtils.cloneItem(workflow.item, {
         ['system.activities.' + workflow.activity.id]: activityData
-    }, {keepId: true});
-    workflow.item.prepareData();
-    workflow.item.applyActiveEffects();
+    });
     workflow.activity = workflow.item.system.activities.get(workflow.activity.id);
 }
 export let fightingStyleUnarmedFighting = {

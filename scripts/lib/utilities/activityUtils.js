@@ -35,7 +35,7 @@ async function setIdentifier(activity, identifier) {
 }
 
 function withChangedDamage(activity, formulaOrObj, types=[], {specificIndex = 0} = {}) {
-    let activityData = activity.toObject();
+    let activityData = genericUtils.duplicate(activity.toObject());
     let isHeal = activityData.type === 'heal';
     let isFormula = foundry.utils.getType(formulaOrObj) !== 'Object';
     let formula, number, denomination, bonus;

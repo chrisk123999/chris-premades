@@ -194,6 +194,12 @@ function getActivity(item, type) {
 function getEffectByIdentifier(item, identifier) {
     return item.effects.find(i => genericUtils.getIdentifier(i) === identifier);
 }
+function cloneItem(item, updates = {}, options = {keepId: true}) {
+    let clone = item.clone(updates, options);
+    clone.prepareData();
+    clone.applyActiveEffects();
+    return clone;
+}
 export let itemUtils = {
     getSaveDC,
     createItems,
@@ -222,5 +228,6 @@ export let itemUtils = {
     getActivity,
     getEffectByIdentifier,
     getSpellActivities,
-    setSpellActivities
+    setSpellActivities,
+    cloneItem
 };

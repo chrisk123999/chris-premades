@@ -5,11 +5,9 @@ async function use({trigger, workflow}) {
     if (!validTargets.size) return;
     let formula = itemUtils.getConfig(workflow.item, 'formula');
     let activityData = activityUtils.withChangedDamage(workflow.activity, formula);
-    workflow.item = workflow.item.clone({
+    workflow.item = itemUtils.cloneItem(workflow.item, {
         ['system.activities.' + workflow.activity.id]: activityData
-    }, {keepId: true});
-    workflow.item.prepareData();
-    workflow.item.applyActiveEffects();
+    });
     workflow.activity = workflow.item.system.activities.get(workflow.activity.id);
 }
 export let tollTheDead = {

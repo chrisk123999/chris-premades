@@ -691,6 +691,8 @@ export class ItemMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
         if (cachedFor) genericUtils.setProperty(sourceItemData, 'flags.dnd5e.cachedFor', cachedFor);
         let config = itemData.flags['chris-premades']?.config;
         if (config) genericUtils.setProperty(sourceItemData, 'flags.chris-premades.config', config);
+        let materials = genericUtils.getProperty(itemData, 'system.materials');
+        if (materials) genericUtils.setProperty(sourceItemData, 'system.materials', materials);
         if (CONFIG.DND5E.defaultArtwork.Item[itemType] != itemData.img) {
             for (let sourceEffect of sourceItemData.effects ?? []) {
                 if (sourceEffect.img === sourceItemData.img) sourceEffect.img = itemData.img;
