@@ -49,6 +49,8 @@ export {bane} from './macros/2024/spells/bane.js';
 export {bestowCurse} from './macros/2024/spells/bestowCurse.js';
 export {cloudkill, cloudkillSource, cloudkillCloud} from './macros/2024/spells/cloudkill.js';
 export {compelledDuel, compelledDuelCompelled, compelledDuelSource} from './macros/2024/spells/compelledDuel.js';
+export {crownOfMadness} from './macros/2024/spells/crownOfMadness.js';
+export {crusadersMantle, crusadersMantleAura} from './macros/2024/spells/crusadersMantle.js';
 export {divineSmite} from './macros/2024/spells/divineSmite.js';
 export {searingSmite} from './macros/2024/spells/searingSmite.js';
 export {thunderousSmite} from './macros/2024/spells/thunderousSmite.js';

@@ -4,6 +4,8 @@
 - Bestow Curse
 - Cloudkill
 - Compelled Duel
+- Crown of Madness
+- Crusader's Mantle
 - Hunter's Mark
 ## Bug Fixes:
 - Searing Smite
