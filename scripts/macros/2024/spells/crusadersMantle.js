@@ -1,13 +1,6 @@
-import {crusadersMantle as crusadersMantleLegacy, crusadersMantleAura as crusadersMantleAuraLegacy} from '../../../legacyMacros.js';
+import {crusadersMantle as crusadersMantleLegacy} from '../../../legacyMacros.js';
 export let crusadersMantle = {
-    name: 'Crusader\'s Mantle',
+    ...crusadersMantleLegacy,
     version: '1.2.21',
-    rules: 'modern',
-    midi: crusadersMantleLegacy.midi
-};
-export let crusadersMantleAura = {
-    name: 'Crusader\'s Mantle: Aura',
-    version: crusadersMantle.version,
-    rules: crusadersMantle.rules,
-    aura: crusadersMantleAuraLegacy.aura
+    rules: 'modern'
 };
