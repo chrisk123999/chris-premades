@@ -126,6 +126,7 @@
             "AvatarImg": "Imagem Avatar:",
             "AvatarImgPriority": "Prioridade Imagem Avatar:",
             "BaseDiceNumber": "Número Dado Base:",
+            "BaseHealing": "Cura Base:",
             "BlockingStatuses": "Condições Bloqueadas:",
             "Character": "Personagem",
             "CheckSave": "Verificar Salvaguarda:",
@@ -1407,6 +1408,12 @@
             "ProtectionFromEvilAndGood": {
                 "Save": "Esta salvaguarda é contra um efeito de uma Aberração, Celestial, Elemental, Feérico, Ínfero ou Morto-Vivo que te Enfeitiçou, Amedrontou ou Possuiu você."
             },
+            "PsionicSorcery": {
+                "Select": "Escolha qual magia para conjurar:"
+            },
+            "PsionicSpells": {
+                "Select": "Escolha quais magias serão suas Magias Psiônicas:"
+            },
             "Rage": {
                 "AllowConcentration": "Permitir Concentração:",
                 "AllowHeavyArmor": "Permitir Armadura Pesada:",
@@ -1462,6 +1469,9 @@
             },
             "Retaliation": {
                 "Weapon": "Com qual arma você quer atacar?"
+            },
+            "RevelationInFlesh": {
+                "Select": "Escolha quais benefícios ganhar:"
             },
             "RingOfSpellStoring": {
                 "Clear": "Limpar magias usadas",
@@ -1869,6 +1879,9 @@
                 "Dismiss": "Vínculo Protetor: Dispansar",
                 "Distance": "A distância da ligação está muito grande. Remover a ligação?",
                 "MaxDistance": "Distância Máxima:"
+            },
+            "WarpingImplosion": {
+                "Consume": "Consumir cinco {item} para usar?"
             },
             "WildShape": {
                 "AllowElementals": "Sempre permitir elementais:",
