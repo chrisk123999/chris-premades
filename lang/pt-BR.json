@@ -1908,6 +1908,17 @@
                 "Target": "Selecione um alvo:",
                 "Teleport": "Teleporte"
             },
+            "Wish": {
+                "Blocked": "Uso de Desejo Bloqueado:",
+                "BlockedWarn": "Você está impossibilitado de conjurar esta magia!",
+                "ChanceFormula": "Fórmula de Chance de Bloqueio:",
+                "ChanceNumber": "Chance de Bloqueio:",
+                "InstantHealthConditions": "Condições de Vida Instantânea:",
+                "MaxLevel": "Nível Máx. de Magia:",
+                "Rest": "Você passou o dia fazendo apenas atividades leves?",
+                "SelectSpell": "Escolha uma Magia:",
+                "StressDuration": "Fórmula de Duração do Estresse:"
+            },
             "WitherAndBloom": {
                 "Heal": "Murchar e Florescer: Cura",
                 "SelectHitDie": "Selecione quantos Dados de Vida serão jogados.",
@@ -1994,6 +2005,7 @@
                     "Tooltip": "Personalize certos visuais"
                 }
             },
+            "ChangeRules": "Trocar Regras no Item",
             "Compendium": {
                 "Apply": "Usar Medkit em todos os documentos do compêndio?",
                 "DestinationCompendium": "Compêndio de Destino:",
@@ -2090,6 +2102,7 @@
                 "midi-item-showcase-community": "Midi Item Showcase Community"
             },
             "NoPermission": "Você não tem permissão para alterar isso",
+            "OtherRulesAvailable": "Há uma automação para este item usando o conjunto de regras \"{rules}\".",
             "Scene": {
                 "Done": "Atualização de cena concluída!",
                 "Start": "Atualizando tokens...",
