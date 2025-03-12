@@ -14,7 +14,7 @@
 - Dragon's Breath
 - Hunter's Mark
 ## Bug Fixes:
-- Searing Smite
+- Searing Smite (Legacy)
 - Bestow Curse (Legacy)
 - Blinding Smite (Legacy)
 - Chain Lightning (Legacy)
