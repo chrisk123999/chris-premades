@@ -101,9 +101,9 @@
     "source": {
       "revision": 1,
       "rules": "2024",
-      "book": "PHB 2024",
+      "book": "",
       "page": "",
-      "custom": "",
+      "custom": "PHB 2024",
       "license": ""
     },
     "activation": {

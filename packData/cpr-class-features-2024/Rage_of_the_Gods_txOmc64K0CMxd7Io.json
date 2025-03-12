@@ -305,10 +305,10 @@
     },
     "identifier": "rage-of-the-gods",
     "source": {
-      "book": "PHB 2024",
+      "book": "",
       "page": "",
       "license": "",
-      "custom": "",
+      "custom": "PHB 2024",
       "rules": "2024",
       "revision": 1
     },

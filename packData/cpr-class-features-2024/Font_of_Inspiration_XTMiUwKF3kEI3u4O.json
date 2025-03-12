@@ -125,10 +125,10 @@
     },
     "identifier": "font-of-inspiration",
     "source": {
-      "book": "PHB 2024",
+      "book": "",
       "page": "",
       "license": "",
-      "custom": "",
+      "custom": "PHB 2024",
       "rules": "2024",
       "revision": 1
     },
