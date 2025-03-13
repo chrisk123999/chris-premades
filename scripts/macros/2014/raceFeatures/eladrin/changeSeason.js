@@ -36,6 +36,10 @@ async function use({workflow}) {
         await genericUtils.update(workflow.token.document, updates.token);
     }
     await genericUtils.setFlag(workflow.item, 'chris-premades', 'eladrin.season', season);
+    let seasonLabel = genericUtils.translate(buttons.find(i => i[1] === season)[0]);
+    let chatAddition = genericUtils.format('CHRISPREMADES.Macros.ChangeSeason.Chat', {season: seasonLabel});
+    let existingChatContent = workflow.chatCard.content;
+    await workflow.chatCard.update({content: existingChatContent.replace('<div class="midi-results">', '<p>' + chatAddition + '</p><div class="midi-results">')});
 }
 export let changeSeason = {
     name: 'Change Season',

@@ -1,6 +1,8 @@
 # 1.2.22 Release:
+## New Enhanced Animations:
+- Fey Step (Thanks Eskiemoh)
 ## Bug Fixes:
-Celestial Revelation (Radiant Consumption) (Legacy)
+- Celestial Revelation (Radiant Consumption) (Legacy)
 
 # 1.2.21 Release:
 ## New Modern Content:

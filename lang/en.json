@@ -659,6 +659,7 @@
             },
             "ChangeSeason": {
                 "Autumn": "Autumn",
+                "Chat": "New Season: {season}",
                 "Select": "Which season?",
                 "Spring": "Spring",
                 "Summer": "Summer",
