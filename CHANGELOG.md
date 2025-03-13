@@ -1,4 +1,38 @@
 # 1.2.22 Release:
+## New Modern Content:
+- Eldritch Blast
+- Elemental Weapon
+- Enlarge/Reduce
+- Faerie Fire
+- Find Familiar
+- Fire Shield
+- Fire Storm
+- Flaming Sphere
+- Fly
+- Fog Cloud
+- Grease
+- Guardian of Faith
+- Guiding Bolt
+- Heat Metal
+- Hold Person
+- Hypnotic Pattern
+- Magic Missile
+- Melf's Acid Arrow
+- Mind Sliver
+- Misty Step
+- Pass without Trace
+- Protection from Evil and Good
+- Scorching Ray
+- Shield
+- Shield of Faith
+- Spike Growth
+- Thorn Whip
+- Thunderwave
+- Toll the Dead
+- Vampiric Touch
+- Vitriolic Sphere
+- Wall of Fire
+- Zone of Truth
 ## New Enhanced Animations:
 - Fey Step (Thanks Eskiemoh)
 ## Bug Fixes:
