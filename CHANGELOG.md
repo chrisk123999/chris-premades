@@ -1,3 +1,7 @@
+# 1.2.22 Release:
+## Bug Fixes:
+Celestial Revelation (Radiant Consumption) (Legacy)
+
 # 1.2.21 Release:
 ## New Modern Content:
 - Aura of Purity

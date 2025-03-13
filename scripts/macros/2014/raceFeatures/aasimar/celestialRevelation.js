@@ -103,7 +103,7 @@ async function applyDamage({trigger: {entity: effect}, workflow}) {
     ditem.rawDamageDetail.push({value: Math.floor(damageAmount * multiplier), type: damageType, active: {multiplier}});
 }
 async function turnEnd({trigger: {entity: effect, token}}) {
-    let feature = activityUtils.getActivityByIdentifier(await effectUtils.getOriginItem(effect), 'radiantConsumptionDamage', {strict: true});
+    let feature = activityUtils.getActivityByIdentifier(await effectUtils.getOriginItem(effect), 'celestialRevelationDamage', {strict: true});
     if (!feature) return;
     await workflowUtils.syntheticActivityRoll(feature);
 }
