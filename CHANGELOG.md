@@ -1,3 +1,7 @@
+# 1.2.23 Release:
+## Bug Fixes:
+- Fey Step (Legacy)
+
 # 1.2.22 Release:
 ## New Modern Content:
 - Eldritch Blast
@@ -34,7 +38,7 @@
 - Wall of Fire
 - Zone of Truth
 ## New Enhanced Animations:
-- Fey Step (Thanks Eskiemoh)
+- Fey Step (Legacy) (Thanks Eskiemoh)
 ## Bug Fixes:
 - Celestial Revelation (Radiant Consumption) (Legacy)
 

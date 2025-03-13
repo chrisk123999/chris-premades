@@ -59,23 +59,22 @@ async function use({workflow}) {
             case 'winter': {
                 if (!feature) break;
                 let nearbyTargets = tokenUtils.findNearby(workflow.token, 5, 'enemy').filter(i => tokenUtils.canSee(workflow.token, i));
-                if (!nearbyTargets.length) break;
                 let targetToken = nearbyTargets[0];
                 if (nearbyTargets.length > 1) {
                     targetToken = await dialogUtils.selectTargetDialog(feature.name, 'CHRISPREMADES.Macros.FeyStep.SelectWinter', nearbyTargets);
-                    if (!targetToken) break;
-                    targetToken = targetToken[0];
+                    if (targetToken) targetToken = targetToken[0];
                 }
-                let featureWorkflow = await workflowUtils.syntheticActivityRoll(feature, [targetToken]);
+                let featureWorkflow;
+                if (targetToken) featureWorkflow = await workflowUtils.syntheticActivityRoll(feature, [targetToken]);
                 if (playComplex) {
-                    await combinedAnimation('winter', workflow.token, workflow.token, [targetToken]);
+                    await combinedAnimation('winter', workflow.token, workflow.token, targetToken ? [targetToken]: []);
                 } else {
                     await Teleport.target(workflow.token, workflow.token, {
                         animation,
                         range: 30
                     });
                 }
-                if (!featureWorkflow.failedSaves.size) break;
+                if (!featureWorkflow?.failedSaves.size) return;
                 let effectData = {
                     name: genericUtils.translate('CHRISPREMADES.Macros.FeyStep.Frightened'),
                     img: feature.img,
@@ -96,9 +95,9 @@ async function use({workflow}) {
             case 'spring': {
                 if (!feature) break;
                 let nearbyTargets = tokenUtils.findNearby(workflow.token, 5, 'ally', {includeIncapacitated: false, includeToken: true});
-                if (nearbyTargets.length === 1) break;
-                let selection = await dialogUtils.selectTargetDialog(feature.name, 'CHRISPREMADES.Macros.FeyStep.SelectSpring', nearbyTargets);
-                if (!selection) break;
+                let selection = nearbyTargets;
+                if (selection.length > 1) selection = await dialogUtils.selectTargetDialog(feature.name, 'CHRISPREMADES.Macros.FeyStep.SelectSpring', nearbyTargets);
+                if (!selection) selection = [workflow.token];
                 selection = selection[0];
                 await workflowUtils.syntheticActivityRoll(feature, [selection]);
                 if (playComplex) {
