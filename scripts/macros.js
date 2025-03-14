@@ -116,6 +116,7 @@ export {thornWhip} from './macros/2024/spells/thornWhip.js';
 export {thunderousSmite} from './macros/2024/spells/thunderousSmite.js';
 export {thunderwave} from './macros/2024/spells/thunderwave.js';
 export {tollTheDead} from './macros/2024/spells/tollTheDead.js';
+export {trueStrike} from './macros/2024/spells/trueStrike.js';
 export {vampiricTouch} from './macros/2024/spells/vampiricTouch.js';
 export {vitriolicSphere} from './macros/2024/spells/vitriolicSphere.js';
 export {wallOfFire} from './macros/2024/spells/wallOfFire.js';

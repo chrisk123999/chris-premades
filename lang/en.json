@@ -1828,6 +1828,11 @@
             "TravelAlongTheTree": {
                 "WillingCreatures": "Select up to six willing creatures:"
             },
+            "TrueStrike": {
+                "NoWeapons": "No equipped weapons found!",
+                "SelectWeapon": "Attack with what weapon?",
+                "ReplaceDamage": "Replace damage with {type}?"
+            },
             "TwilightSanctuary": {
                 "Charmed": "Remove the Charmed condition",
                 "Frightened": "Remove the Frightened condition",
