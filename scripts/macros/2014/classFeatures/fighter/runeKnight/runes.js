@@ -8,7 +8,7 @@ async function damageFireRune({trigger: {entity: item}, workflow}) {
     let selection = await dialogUtils.confirm(item.name, genericUtils.format('CHRISPREMADES.Dialog.Use', {itemName: item.name}));
     if (!selection) return;
     await workflowUtils.bonusDamage(workflow, '2d6[fire]', {damageType: 'fire'});
-    await workflowUtils.syntheticItemRoll(item, [workflow.targets.first()], {config: {consumeUsage: true}});
+    await workflowUtils.syntheticItemRoll(item, [workflow.targets.first()], {consumeResources: true});
 }
 async function turnEndStoneRune({trigger: {entity: item, token, target}}) {
     if (!item.system.uses.value) return;
@@ -16,7 +16,7 @@ async function turnEndStoneRune({trigger: {entity: item, token, target}}) {
     if (actorUtils.hasUsedReaction(token.actor)) return;
     let selection = await dialogUtils.confirm(item.name, genericUtils.format('CHRISPREMADES.Dialog.Use', {itemName: item.name}), {userId: socketUtils.firstOwner(item.parent, true)});
     if (!selection) return;
-    await workflowUtils.syntheticItemRoll(item, [target], {config: {consumeUsage: true}});
+    await workflowUtils.syntheticItemRoll(item, [target], {consumeResources: true});
 }
 async function earlyStoneRune({workflow}) {
     let effectData = {
@@ -110,7 +110,7 @@ async function cloudRuneAttack({trigger, workflow}) {
             long: null,
             units: ''
         };
-        await workflowUtils.syntheticItemRoll(item, [target], {config: {consumeUsage: true}});
+        await workflowUtils.syntheticItemRoll(item, [target], {consumeResources: true});
         genericUtils.setProperty(itemData, 'flags.chris-premades.setAttackRoll', {rollJSON: workflow.attackRoll.toJSON()});
         let macros = workflow.item.flags['chris-premades']?.macros?.midi?.item ?? [];
         macros.push('setAttackRoll');

@@ -1,6 +1,10 @@
 # 1.2.24 Release:
 ## New Modern Content:
 - True Strike
+## Bug Fixes:
+- Cloud Rune (Legacy)
+- Fire Rune (Legacy)
+- Stone Rune (Legacy)
 
 # 1.2.23 Release:
 ## Bug Fixes:
