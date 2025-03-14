@@ -1,6 +1,32 @@
-import {massCureWounds as massCureWoundsLegacy} from '../../../legacyMacros.js';
+import {dialogUtils, genericUtils} from '../../../utils.js';
+async function early({workflow}) {
+    if (!workflow.targets.size) return;
+    let sourceDisposition = workflow.token.document.disposition;
+    let targetTokens = Array.from(workflow.targets.filter(i => i.document.disposition === sourceDisposition));
+    if (!targetTokens.length || targetTokens.length <= 6) {
+        genericUtils.updateTargets(targetTokens);
+        return;
+    }
+    let [selection] = await dialogUtils.selectTargetDialog(workflow.item.name, 'CHRISPREMADES.Macros.MassCureWounds.Select', targetTokens, {type: 'multiple', maxAmount: 6});
+    let newTargets;
+    if (!selection) {
+        newTargets = targetTokens.slice(0, 6);
+    } else {
+        newTargets = selection ?? [];
+    }
+    genericUtils.updateTargets(newTargets);
+}
 export let massCureWounds = {
-    ...massCureWoundsLegacy,
+    name: 'Mass Cure Wounds',
     version: '1.2.24',
-    rules: 'modern'
+    rules: 'modern',
+    midi: {
+        item: [
+            {
+                pass: 'preambleComplete',
+                macro: early,
+                priority: 50
+            }
+        ]
+    }
 };
