@@ -41,7 +41,7 @@ async function use({workflow}) {
 }
 export let trueStrike = {
     name: 'True Strike',
-    version: '1.2.21',
+    version: '1.2.24',
     midi: {
         item: [
             {
