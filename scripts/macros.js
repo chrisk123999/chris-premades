@@ -91,6 +91,7 @@ export {flameBlade} from './macros/2024/spells/flameBlade.js';
 export {flamingSphere} from './macros/2024/spells/flamingSphere.js';
 export {fly} from './macros/2024/spells/fly.js';
 export {fogCloud} from './macros/2024/spells/fogCloud.js';
+export {gaseousForm} from './macros/2024/spells/gaseousForm.js';
 export {grease} from './macros/2024/spells/grease.js';
 export {guardianOfFaith} from './macros/2024/spells/guardianOfFaith.js';
 export {guidingBolt} from './macros/2024/spells/guidingBolt.js';

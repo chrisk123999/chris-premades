@@ -4,6 +4,7 @@
 - Mass Cure Wounds
 - Spiritual Weapons
 - Flame Blade
+- Gaseous Form
 
 ## Bug Fixes:
 - Cloudkill
@@ -11,6 +12,7 @@
 - Cloud Rune (Legacy)
 - Fire Rune (Legacy)
 - Stone Rune (Legacy)
+- Gaseous Form (Legacy)
 
 # 1.2.23 Release:
 ## Bug Fixes:

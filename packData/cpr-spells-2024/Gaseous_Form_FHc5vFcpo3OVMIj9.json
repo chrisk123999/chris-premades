@@ -37,22 +37,34 @@
           "priority": 20
         },
         {
-          "key": "system.traits.dr.midi.non-magical",
-          "mode": 0,
-          "value": "1",
+          "key": "system.traits.dr.value",
+          "mode": 2,
+          "value": "bludgeoning",
           "priority": 20
+        },
+        {
+          "key": "system.traits.dr.value",
+          "mode": 2,
+          "value": "piercing",
+          "priority": 25
+        },
+        {
+          "key": "system.traits.dr.value",
+          "mode": 2,
+          "value": "slashing",
+          "priority": 25
         },
         {
           "key": "system.attributes.movement.swim",
           "mode": 5,
           "value": "0",
-          "priority": 25
+          "priority": 20
         },
         {
           "key": "system.attributes.movement.climb",
           "mode": 5,
           "value": "0",
-          "priority": 25
+          "priority": 20
         }
       ],
       "disabled": false,
@@ -125,7 +137,7 @@
       "type": "base",
       "system": {},
       "sort": 0,
-      "_key": "!items.effects!ojuRram1XRcdqrUs.41aqlsmnj4fdh9gm"
+      "_key": "!items.effects!FHc5vFcpo3OVMIj9.41aqlsmnj4fdh9gm"
     }
   ],
   "flags": {
@@ -173,9 +185,10 @@
     "chris-premades": {
       "info": {
         "name": "Gaseous Form",
-        "version": "1.1.0",
+        "version": "1.2.24",
         "identifier": "gaseousForm",
-        "source": "chris-premades"
+        "source": "chris-premades",
+        "rules": "modern"
       }
     }
   },
@@ -185,9 +198,11 @@
       "chat": ""
     },
     "source": {
-      "custom": "Basic Rules, Player's Handbook pg 244",
+      "custom": "PHB 2024",
       "revision": 1,
-      "rules": "2014"
+      "rules": "2024",
+      "book": "",
+      "page": ""
     },
     "activation": {
       "type": "action",
@@ -295,14 +310,47 @@
         },
         "sort": 0,
         "useConditionText": "",
-        "forceDialog": false,
-        "effectConditionText": ""
+        "effectConditionText": "",
+        "useConditionReason": "",
+        "macroData": {
+          "name": "",
+          "command": ""
+        },
+        "ignoreTraits": {
+          "idi": false,
+          "idr": false,
+          "idv": false,
+          "ida": false
+        },
+        "midiProperties": {
+          "ignoreTraits": [],
+          "triggeredActivityId": "none",
+          "triggeredActivityConditionText": "",
+          "triggeredActivityTargets": "targets",
+          "triggeredActivityRollAs": "self",
+          "forceDialog": false,
+          "confirmTargets": "default",
+          "autoTargetType": "any",
+          "autoTargetAction": "default",
+          "automationOnly": false,
+          "otherActivityCompatible": true,
+          "identifier": "",
+          "displayActivityName": false,
+          "rollMode": "default",
+          "chooseEffects": false
+        },
+        "isOverTimeFlag": false,
+        "overTimeProperties": {
+          "saveRemoves": true,
+          "preRemoveConditionText": "",
+          "postRemoveConditionText": ""
+        }
       }
     },
     "identifier": "gaseous-form",
     "sourceClass": ""
   },
   "folder": null,
-  "_id": "ojuRram1XRcdqrUs",
-  "_key": "!items!ojuRram1XRcdqrUs"
+  "_id": "FHc5vFcpo3OVMIj9",
+  "_key": "!items!FHc5vFcpo3OVMIj9"
 }
