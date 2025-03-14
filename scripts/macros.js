@@ -98,6 +98,7 @@ export {holdPerson} from './macros/2024/spells/holdPerson.js';
 export {huntersMark, huntersMarkSource} from './macros/2024/spells/huntersMark.js';
 export {hypnoticPattern} from './macros/2024/spells/hypnoticPattern.js';
 export {magicMissile} from './macros/2024/spells/magicMissile.js';
+export {massCureWounds} from './macros/2024/spells/massCureWounds.js';
 export {mindSliver} from './macros/2024/spells/mindSliver.js';
 export {mistyStep} from './macros/2024/spells/mistyStep.js';
 export {moonbeam, moonbeamBeam} from './macros/2024/spells/moonbeam.js';

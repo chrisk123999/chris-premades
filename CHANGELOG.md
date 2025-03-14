@@ -1,6 +1,7 @@
 # 1.2.24 Release:
 ## New Modern Content:
 - True Strike
+- Mass Cure Wounds
 ## Bug Fixes:
 - Cloudkill
 - Eldritch Blast
