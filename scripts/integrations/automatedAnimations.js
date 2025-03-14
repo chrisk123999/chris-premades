@@ -58,7 +58,7 @@ function playItemSound(soundDetails) {
         .play();
 }
 async function aaSound(item, pass) {
-    let autoModule = game.module.get('autoanimations');
+    let autoModule = game.modules.get('autoanimations');
     if (!autoModule?.active) return;
     if (item.flags?.autoanimations?.isEnabled ?? true) return;
     let damageSetting = foundry.utils.isNewerVersion(autoModule.version, '5.1.0') ? 'playonDamageCore' : 'playonDamage';
