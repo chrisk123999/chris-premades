@@ -1,3 +1,7 @@
+# 1.2.24 Release:
+## New Modern Content:
+- True Strike
+
 # 1.2.23 Release:
 ## Bug Fixes:
 - Fey Step (Legacy)
