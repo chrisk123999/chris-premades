@@ -82,7 +82,7 @@
           "spellSlot": true
         },
         "description": {
-          "chatFlavor": "[3d8 - healing] Unaffected: undead, constructs"
+          "chatFlavor": ""
         },
         "duration": {
           "units": "inst",

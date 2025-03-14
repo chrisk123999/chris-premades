@@ -1,23 +1,20 @@
 import {genericUtils} from './genericUtils.js';
-function getTokensInTemplate(template) {
+function getTokensInShape(shape, scene, {x: offsetX, y: offsetY}={x: 0, y: 0}) {
     let tokens = new Set();
-    let scene = template.parent;
-    if (!scene) return tokens;
+    if (!shape && !scene) return tokens;
     let {size} = scene.grid;
-    let {x: tempx, y: tempy, object} = template;
     let sceneTokens = scene.tokens;
-    if (!scene) return tokens;
     for (let token of sceneTokens) {
-        let {width, height, x: tokx, y: toky} = token;
+        let {width, height, x: tokX, y: tokY} = token;
         let startX = width >= 1 ? 0.5 : width / 2;
         let startY = height >= 1 ? 0.5 : height / 2;
         for (let x = startX; x < width; x++) {
             for (let y = startY; y < width; y++) {
                 let curr = {
-                    x: tokx + x * size - tempx,
-                    y: toky + y * size - tempy
+                    x: tokX + x * size - offsetX,
+                    y: tokY + y * size - offsetY
                 };
-                let contains = object.shape?.contains(curr.x, curr.y);
+                let contains = shape.contains(curr.x, curr.y);
                 if (contains) {
                     tokens.add(token.object);
                     continue;
@@ -26,6 +23,9 @@ function getTokensInTemplate(template) {
         }
     }
     return tokens;
+}
+function getTokensInTemplate(template) {
+    return getTokensInShape(template?.object?.shape, template?.parent, template);
 }
 function getTemplatesInToken(token) {
     let templates = new Set();
@@ -178,6 +178,7 @@ async function getSourceActor(template) {
     return (await fromUuid(template.flags.dnd5e?.origin))?.parent;
 }
 export let templateUtils = {
+    getTokensInShape,
     getTokensInTemplate,
     getTemplatesInToken,
     findGrids,

@@ -1,4 +1,4 @@
-import {actorUtils, compendiumUtils, constants, dialogUtils, effectUtils, errors, genericUtils, itemUtils, rollUtils, socketUtils, workflowUtils} from '../../utils.js';
+import {actorUtils, compendiumUtils, constants, dialogUtils, effectUtils, errors, genericUtils, itemUtils, rollUtils, socketUtils, templateUtils, workflowUtils} from '../../utils.js';
 function getDistance(sourceToken, targetToken, {wallsBlock, checkCover} = {}) {
     return MidiQOL.computeDistance(sourceToken, targetToken, {wallsBlock, includeCover: checkCover});
 }
@@ -279,6 +279,46 @@ async function grappleHelper(sourceToken, targetToken, item, {noContest = false,
     if (grappledEffect) await effectUtils.addDependent(grappledEffect, [targetEffect]);
     if (game.modules.get('Rideable')?.active) game.Rideable.Mount([targetToken.document], sourceToken.document, {'Grappled': true, 'MountingEffectsOverride': ['Grappled']});
 }
+function getNewlyHitTokens(startPoint, endPoint, radius, collisionType='move') {
+    function getIntersection(ray, intersectShape) {
+        let ptsLength = intersectShape.points.length;
+        for (let i = 0; i < ptsLength - 1; i+=2) {
+            let intersect = ray.intersectSegment([
+                intersectShape.points[i],
+                intersectShape.points[i + 1],
+                intersectShape.points[(i + 2) % ptsLength],
+                intersectShape.points[(i + 3) % ptsLength]
+            ]);
+            if (intersect) return intersect;
+        }
+    }
+    function getMaybeAffectedTokens(startPoint={x: 0, y: 0}, endPoint={x: 0, y: 0}, radius=0) {
+        if (!radius) return new Set();
+        // eslint-disable-next-line no-undef
+        let shape = new PIXI.Polygon(canvas.grid.getCircle({x: 0, y: 0}, radius));
+        let rayMovement = new Ray(startPoint, endPoint);
+        let ray1 = Ray.fromAngle(0, 0, rayMovement.angle - Math.toRadians(90), radius * 2 * canvas.dimensions.distancePixels);
+        let ray2 = Ray.fromAngle(0, 0, rayMovement.angle + Math.toRadians(90), radius * 2 * canvas.dimensions.distancePixels);
+        let p1 = getIntersection(ray1, shape);
+        let p2 = getIntersection(ray2, shape);
+        let p3 = {x: p2.x + rayMovement.dx, y: p2.y + rayMovement.dy};
+        let p4 = {x: p1.x + rayMovement.dx, y: p1.y + rayMovement.dy};
+        let shapeMid = new PIXI.Polygon(p1, p2, p3, p4);
+        let setStart = templateUtils.getTokensInShape(shape, canvas.scene, startPoint).filter(i => !ClockwiseSweepPolygon.testCollision(startPoint, i.center, {type: collisionType}).length);
+        let setMid = templateUtils.getTokensInShape(shapeMid, canvas.scene, startPoint);
+        let setEnd = templateUtils.getTokensInShape(shape, canvas.scene, endPoint).filter(i => !ClockwiseSweepPolygon.testCollision(endPoint, i.center, {type: collisionType}).length);
+        let setPutative = setEnd.union(setMid).difference(setStart);
+        return setPutative;
+    }
+    let maybeTokens = getMaybeAffectedTokens(startPoint, endPoint, radius);
+    let yesTokens = new Set();
+    for (let token of maybeTokens) {
+        let tri = new PIXI.Polygon(startPoint, endPoint, token.center);
+        let csp = ClockwiseSweepPolygon.create(token.center, {type: collisionType, boundaryShapes: [tri]});
+        if (getIntersection(new Ray(startPoint, endPoint), csp)) yesTokens.add(token);
+    }
+    return yesTokens;
+}
 export let tokenUtils = {
     getDistance,
     checkCover,
@@ -293,5 +333,6 @@ export let tokenUtils = {
     canSense,
     attachToToken,
     getLightLevel,
-    grappleHelper
+    grappleHelper,
+    getNewlyHitTokens
 };
