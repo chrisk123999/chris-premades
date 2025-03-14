@@ -5,7 +5,7 @@
 - Spiritual Weapons
 - Flame Blade
 - Gaseous Form
-
+- Spirit Guardians
 ## Bug Fixes:
 - Cloudkill
 - Eldritch Blast
