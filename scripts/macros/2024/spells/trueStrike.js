@@ -29,8 +29,6 @@ async function use({workflow}) {
         );
     }
     if (diceNumber) {
-        let attackId = selectedWeapon.system.activities.getByType('attack')?.[0]?.id;
-        if (!attackId) return;
         weaponData.system.activities[attackId].damage.parts.push({
             number: diceNumber,
             denomination: 6,
