@@ -3,6 +3,7 @@
 - True Strike
 - Mass Cure Wounds
 - Spiritual Weapons
+- Flame Blade
 
 ## Bug Fixes:
 - Cloudkill

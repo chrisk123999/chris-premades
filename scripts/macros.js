@@ -87,6 +87,7 @@ export {faerieFire} from './macros/2024/spells/faerieFire.js';
 export {findFamiliar} from './macros/2024/spells/findFamiliar.js';
 export {fireShield} from './macros/2024/spells/fireShield.js';
 export {fireStorm} from './macros/2024/spells/fireStorm.js';
+export {flameBlade} from './macros/2024/spells/flameBlade.js';
 export {flamingSphere} from './macros/2024/spells/flamingSphere.js';
 export {fly} from './macros/2024/spells/fly.js';
 export {fogCloud} from './macros/2024/spells/fogCloud.js';
