@@ -65,6 +65,10 @@ function getVersion(item) {
 function getSource(item) {
     return item?.flags['chris-premades']?.info?.source;
 }
+// -1: None applied
+// 0: Out of Date
+// 1: Up to Date
+// 2: Generic
 async function isUpToDate(item) {
     let version = getVersion(item);
     let source = getSource(item);

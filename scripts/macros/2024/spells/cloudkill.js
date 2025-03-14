@@ -16,10 +16,10 @@ async function use({workflow}) {
                         obscured: true
                     },
                     rules: 'modern',
-                    castData: {...workflow.castData, saveDC: itemUtils.getSaveDC(workflow.item)},
-                    macros: {
-                        template: ['cloudkillCloud']
-                    }
+                },
+                castData: {...workflow.castData, saveDC: itemUtils.getSaveDC(workflow.item)},
+                macros: {
+                    template: ['cloudkillCloud']
                 }
             }
         }

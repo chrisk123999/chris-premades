@@ -2,10 +2,11 @@
 ## New Modern Content:
 - True Strike
 ## Bug Fixes:
+- Cloudkill
+- Eldritch Blast
 - Cloud Rune (Legacy)
 - Fire Rune (Legacy)
 - Stone Rune (Legacy)
-- Eldritch Blast
 
 # 1.2.23 Release:
 ## Bug Fixes:
