@@ -37,6 +37,7 @@ async function use({trigger, workflow}) {
     }
 }
 async function beam({trigger, workflow}) {
+    if (!itemUtils.getConfig(workflow.item, 'playAnimation')) return;
     let color = workflow.item.flags['chris-premades']?.eldritchBlast?.color;
     if (!color) return;
     let sound = workflow.item.flags['chris-premades']?.eldritchBlast?.sound;

@@ -5,6 +5,7 @@
 - Cloud Rune (Legacy)
 - Fire Rune (Legacy)
 - Stone Rune (Legacy)
+- Eldritch Blast
 
 # 1.2.23 Release:
 ## Bug Fixes:
