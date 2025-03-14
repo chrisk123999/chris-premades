@@ -112,6 +112,7 @@ export {shield} from './macros/2024/spells/shield.js';
 export {shieldOfFaith} from './macros/2024/spells/shieldOfFaith.js';
 export {shiningSmite} from './macros/2024/spells/shiningSmite.js';
 export {spikeGrowth} from './macros/2024/spells/spikeGrowth.js';
+export {spiritualWeapon} from './macros/2024/spells/spiritualWeapon.js';
 export {staggeringSmite} from './macros/2024/spells/staggeringSmite.js';
 export {thornWhip} from './macros/2024/spells/thornWhip.js';
 export {thunderousSmite} from './macros/2024/spells/thunderousSmite.js';

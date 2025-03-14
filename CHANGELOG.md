@@ -2,6 +2,8 @@
 ## New Modern Content:
 - True Strike
 - Mass Cure Wounds
+- Spiritual Weapons
+
 ## Bug Fixes:
 - Cloudkill
 - Eldritch Blast
