@@ -7,8 +7,8 @@
 - Gaseous Form
 - Spirit Guardians
 ## Bug Fixes:
-- Cloudkill
-- Eldritch Blast
+- Cloudkill (Modern)
+- Eldritch Blast (Legacy)
 - Cloud Rune (Legacy)
 - Fire Rune (Legacy)
 - Stone Rune (Legacy)
