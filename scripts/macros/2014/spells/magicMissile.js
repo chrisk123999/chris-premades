@@ -30,6 +30,7 @@ async function use({workflow}) {
     let colors = [ 'grey', 'dark_red', 'orange', 'yellow', 'green', 'blue', 'purple'];
     let lastColor = Math.floor((Math.random() * colors.length));
     let colorSelection = itemUtils.getConfig(workflow.item, 'color');
+    let sound = itemUtils.getConfig(workflow.item, 'sound');
     if (playAnimation && colorSelection === 'random' || colorSelection === 'cycle') await Sequencer.Preloader.preloadForClients('jb2a.magic_missile');
     for (let {document: targetToken, value: numBolts} of selection) {
         if (isNaN(numBolts) || numBolts == 0) continue;
@@ -61,7 +62,19 @@ async function use({workflow}) {
                 } else {
                     path += colorSelection;
                 }
-                new Sequence().effect().file(path).atLocation(workflow.token).stretchTo(targetToken).randomizeMirrorY().missed(isShielded).play();
+                new Sequence()
+                    .effect()
+                    .file(path)
+                    .atLocation(workflow.token)
+                    .stretchTo(targetToken)
+                    .randomizeMirrorY()
+                    .missed(isShielded)
+                    
+                    .sound()
+                    .playIf(sound)
+                    .file(sound)
+                    
+                    .play();
             }
             if (isShielded) {
                 await workflowUtils.syntheticActivityRoll(shieldedFeature, [targetToken], {options: {workflowOptions: {targetConfirmation: 'none'}}});
@@ -155,5 +168,12 @@ export let magicMissile = {
                 }
             ]
         },
+        {
+            value: 'sound',
+            label: 'CHRISPREMADES.Config.Sound',
+            type: 'file',
+            default: '',
+            category: 'sound'
+        }
     ]
 };

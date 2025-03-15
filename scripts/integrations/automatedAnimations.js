@@ -47,38 +47,6 @@ function renderItemSheet(app, [elem], options) {
     } else return;
     headerButton.style.color = color;
 }
-function playItemSound(soundDetails) {
-    new Sequence()
-        .sound()
-        .file(soundDetails.file)
-        .startTime(soundDetails.startTime)
-        .volume(soundDetails.volume)
-        .delay(soundDetails.delay)
-        .repeats(soundDetails.repeat, soundDetails.repeatDelay)
-        .play();
-}
-async function aaSound(item, pass) {
-    let autoModule = game.modules.get('autoanimations');
-    if (!autoModule?.active) return;
-    if (item.flags?.autoanimations?.isEnabled ?? true) return;
-    let damageSetting = foundry.utils.isNewerVersion(autoModule.version, '5.1.0') ? 'playonDamageCore' : 'playonDamage';
-    let playOnDamage = game.settings.get('autoanimations', damageSetting);
-    switch (pass) {
-        case 'attack': if (item.hasAreaTarget || (item.hasDamage && playOnDamage)) return; break;
-        case 'damage': if (item.hasAreaTarget || (item.hasAttack && !playOnDamage)) return; break;
-        case 'done': if (item.hasAreaTarget || item.hasAttack || item.hasDamage) return; break;
-    }
-    let autoRec = getAutoRec(item.name);
-    if (!autoRec) return;
-    if (autoRec.primary?.sound?.enable) playItemSound(autoRec.primary.sound);
-    if (autoRec.secondary?.sound?.enable) playItemSound(autoRec.secondary.sound);
-}
-async function disableAnimation(workflow) {
-    if (workflow.item?.flags?.['chris-premades']?.info?.hasAnimation && itemUtils.getConfig(workflow.item, 'playAnimation') && !workflow.item.flags.autoanimations?.killAnim) await genericUtils.setFlag(workflow.item, 'autoanimations', 'killAnim', true);
-    if (workflow.item?.flags?.autoanimations?.killAnim && !itemUtils.getConfig(workflow.item, 'playAnimation')) await genericUtils.setFlag(workflow.item, 'autoanimations', 'killAnim', false);
-}
 export let automatedAnimations = {
-    renderItemSheet,
-    aaSound,
-    disableAnimation
+    renderItemSheet
 };

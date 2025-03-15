@@ -226,7 +226,6 @@ async function preItemRoll(workflow) {
     if (stop) return false;
     stop = await executeTargetMacroPass(workflow, 'targetPreItemRoll');
     if (stop) return false;
-    if (workflow.actor.items.get(workflow.item.id) && game.modules.get('autoanimations')?.active) await automatedAnimations.disableAnimation(workflow);
 }
 async function preambleComplete(workflow) {
     await executeMacroPass(workflow, 'preambleComplete');
@@ -271,7 +270,6 @@ async function attackRollComplete(workflow) {
         await executeMacro(trigger, workflow);
         if (workflow.aborted) break;
     }
-    if (genericUtils.getCPRSetting('automatedAnimationSounds') && workflow.item) automatedAnimations.aaSound(workflow.item, 'attack');
     if (genericUtils.getCPRSetting('criticalFumbleMode')) await critFumble.attack(workflow);
 }
 async function savesComplete(workflow) {
@@ -295,7 +293,6 @@ async function damageRollComplete(workflow) {
     sortedSceneTriggers = sortedSceneTriggers.sort((a, b) => a.priority - b.priority);
     genericUtils.log('dev', 'Executing Midi Macro Pass: sceneDamageRollComplete');
     for (let trigger of sortedSceneTriggers) await executeMacro(trigger, workflow);
-    if (genericUtils.getCPRSetting('automatedAnimationSounds') && workflow.item) automatedAnimations.aaSound(workflow.item, 'damage');
     if (genericUtils.getCPRSetting('diceSoNice') && game.modules.get('dice-so-nice')?.active) await diceSoNice.damageRollComplete(workflow);
     // Temp (maybe)
     if (genericUtils.getCPRSetting('explodingHeals')) await explodingHeals(workflow);
@@ -350,7 +347,6 @@ async function rollFinished(workflow) {
     sortedSceneTriggers = sortedSceneTriggers.sort((a, b) => a.priority - b.priority);
     genericUtils.log('dev', 'Executing Midi Macro Pass: sceneRollFinished');
     for (let trigger of sortedSceneTriggers) await executeMacro(trigger, workflow);
-    if (genericUtils.getCPRSetting('automatedAnimationSounds') && workflow.item) automatedAnimations.aaSound(workflow.item, 'done');
     if (genericUtils.getCPRSetting('weaponMastery')) await masteries.RollComplete(workflow);
     await effects.specialDuration(workflow);
     if (genericUtils.getCPRSetting('cleave')) await cleave(workflow);

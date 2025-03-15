@@ -8,7 +8,7 @@ import {movementEvents} from './events/movement.js';
 import {templateEvents} from './events/template.js';
 import {dae} from './integrations/dae.js';
 import {createHeaderButton, renderItemSheet, renderEffectConfig, renderCompendium, renderActivitySheet} from './extensions/titlebar.js';
-import {genericUtils} from './utils.js';
+import {genericUtils, itemUtils} from './utils.js';
 import {chat} from './extensions/chat.js';
 import {sidebar} from './extensions/sidebar.js';
 import {tokens} from './extensions/tokens.js';
@@ -124,5 +124,27 @@ export function registerHooks() {
                 }
             ]
         });
+    });
+    Hooks.on('aa.preDataSanitize', (handler, data) => {
+        let shouldCPRAnimate = handler.item?.flags?.['chris-premades']?.info?.hasAnimation && itemUtils.getConfig(handler.item, 'playAnimation');
+        if (shouldCPRAnimate) {
+            if (genericUtils.getCPRSetting('automatedAnimationSounds')) {
+                if (!data.soundOnly?.sound?.enable) {
+                    let sound = data.primary?.sound?.enable 
+                        ? data.primary.sound 
+                        : data.secondary?.sound?.enable
+                            ? data.secondary.sound
+                            : null;
+                    if (sound) genericUtils.setProperty(data, 'soundOnly.sound', sound);
+                }
+            }
+            Hooks.once('aa.preAnimationStart', (sanitizedData) => {
+                sanitizedData.macro = false;
+                sanitizedData.primary = false;
+                sanitizedData.secondary = false;
+                sanitizedData.sourceFX = false;
+                sanitizedData.tokenFX = false;
+            });
+        }
     });
 }

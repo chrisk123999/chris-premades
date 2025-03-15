@@ -5,9 +5,6 @@ async function use({trigger, workflow}) {
     let boltsLeft = 1 + Math.floor((level + 1) * (1/6)); //Todo: Make this work with twinned spell somehow.
     let feature = activityUtils.getActivityByIdentifier(workflow.item, 'eldritchBlastBeam', {strict: true});
     if (!feature) return;
-    let playAnimation = itemUtils.getConfig(workflow.item, 'playAnimation');
-    let color = itemUtils.getConfig(workflow.item, 'color');
-    let sound = itemUtils.getConfig(workflow.item, 'sound');
     while (boltsLeft) {
         let selection, skip;
         if (workflow.targets.size > 1) {
@@ -15,16 +12,6 @@ async function use({trigger, workflow}) {
             if (!selection) return;
         } else {
             selection = [{document: workflow.targets.first(), value: 1}];
-        }
-        if (playAnimation) {
-            if (color === 'random') {
-                let colors = eldritchBlast.config.find(i => i.value === 'color').options.map(j => j.value).filter(k => k !== 'random');
-                color = colors[Math.floor(Math.random() * colors.length)];
-            }
-            await genericUtils.setFlag(workflow.item, 'chris-premades', 'eldritchBlast', {
-                color,
-                sound
-            });
         }
         for (let i of selection) {
             for (let j = 0; j < i.value; j++) {
@@ -37,10 +24,15 @@ async function use({trigger, workflow}) {
     }
 }
 async function beam({trigger, workflow}) {
-    if (!itemUtils.getConfig(workflow.item, 'playAnimation')) return;
-    let color = workflow.item.flags['chris-premades']?.eldritchBlast?.color;
+    let playAnimation = itemUtils.getConfig(workflow.item, 'playAnimation');
+    if (!playAnimation) return;
+    let color = itemUtils.getConfig(workflow.item, 'color');
+    let sound = itemUtils.getConfig(workflow.item, 'sound');
+    if (color === 'random') {
+        let colors = eldritchBlast.config.find(i => i.value === 'color').options.map(j => j.value).filter(k => k !== 'random');
+        color = colors[Math.floor(Math.random() * colors.length)];
+    }
     if (!color) return;
-    let sound = workflow.item.flags['chris-premades']?.eldritchBlast?.sound;
     let animation = 'jb2a.eldritch_blast.' + color;
     animationUtils.simpleAttack(workflow.token, workflow.targets.first(), animation, {sound: sound, missed: !workflow.hitTargets.has(workflow.targets.first())});
 }
