@@ -4,6 +4,7 @@
 - Magic Missile (Legacy & Modern)
 - Eldritch Blast (Legacy & Modern)
 - Unarmed Strike (Tavern Brawler) (Legacy)
+- Dragon Vessel (Legacy)
 
 # 1.2.24 Release:
 ## New Modern Content:

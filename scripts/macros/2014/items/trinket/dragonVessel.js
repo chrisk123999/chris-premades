@@ -41,6 +41,7 @@ async function use({workflow}) {
     }
     let selection = await dialogUtils.buttonDialog(workflow.item.name, 'CHRISPREMADES.Macros.DragonVessel.Select', buttons);
     if (!selection) return;
+    let itemName = nameMap[selection];
     let itemData;
     if (selection === 'PotionOfFireBreath') {
         itemData = await compendiumUtils.getItemFromCompendium(constants.packs.items, 'Potion of Fire Breath', {object: true, translate: 'CHRISPREMADES.Macros.DragonVessel.PotionOfFireBreath'});
@@ -50,7 +51,11 @@ async function use({workflow}) {
             errors.missingPack();
             return;
         }
-        itemData = await compendiumUtils.getItemFromCompendium(itemCompendium, nameMap[selection], {object: true, translate: 'CHRISPREMADES.Macros.DragonVessel.' + selection});
+        if (selection === 'PotionOfHealingNormal') {
+            itemData = await compendiumUtils.getItemFromCompendium(itemCompendium, itemName, {ignoreNotFound: true, object: true, translate: 'CHRISPREMADES.Macros.DragonVessel.' + selection});
+            itemName = 'Potion of Healing';
+        }
+        if (!itemData) itemData = await compendiumUtils.getItemFromCompendium(itemCompendium, itemName, {object: true, translate: 'CHRISPREMADES.Macros.DragonVessel.' + selection});
     }
     if (!itemData) {
         errors.missingPackItem();

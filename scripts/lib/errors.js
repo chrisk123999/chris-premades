@@ -5,7 +5,7 @@ function missingPack() {
 }
 function missingPackItem(key, name) {
     if (!key || !name) return;
-    genericUtils.notify('CHRISPREMADES.Error.CompendiumItemNotFound' + ' ' + key + ': ' + name, 'warn');
+    genericUtils.notify(genericUtils.translate('CHRISPREMADES.Error.CompendiumItemNotFound') + ' ' + key + ': ' + name, 'warn');
 }
 function missingActivity(identifier) {
     genericUtils.notify(genericUtils.format('CHRISPREMADES.Error.ActivityNotFound', {identifier}), 'warn');
