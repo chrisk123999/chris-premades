@@ -1,8 +1,9 @@
 # 1.2.25 Release:
 ## Bug Fixes:
+- Automated Animations integration
 - Magic Missile (Legacy & Modern)
 - Eldritch Blast (Legacy & Modern)
-- Automated Animations integration
+- Unarmed Strike (Tavern Brawler) (Legacy)
 
 # 1.2.24 Release:
 ## New Modern Content:
