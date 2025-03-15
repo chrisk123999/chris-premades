@@ -1,6 +1,14 @@
-import {gaseousForm as gaseousFormLegacy} from '../../../legacyMacros.js';
+import {upcastTargets} from '../../generic/upcastTargets.js';
 export let gaseousForm = {
-    ...gaseousFormLegacy,
     version: '1.2.24',
-    rules: 'modern'
+    rules: 'modern',
+    midi: {
+        item: [
+            {
+                pass: 'preambleComplete',
+                macro: upcastTargets.plusOne,
+                priority: 50
+            }
+        ]
+    }
 };

@@ -189,6 +189,13 @@
         "identifier": "gaseousForm",
         "source": "chris-premades",
         "rules": "modern"
+      },
+      "macros": {
+        "midi": {
+          "item": [
+            "gaseousForm"
+          ]
+        }
       }
     }
   },
