@@ -464,9 +464,11 @@ async function useTwinned({workflow}) {
     let validSpells = actorUtils.getCastableSpells(workflow.actor).filter(i => 
         (exceptions.includes(genericUtils.getIdentifier(i)) ||
         (i.system.target.affects.count === 1 && !i.system.target.template.count)) && 
-        i.system.level <= sorcPoints.system.uses.value);
+        i.system.level <= sorcPoints.system.uses.value &&
+        i.system.source.rules === '2014');
     if (!validSpells.length) {
         genericUtils.notify('CHRISPREMADES.Macros.Metamagic.NoValid', 'info');
+        return;
     }
     validSpells = validSpells.sort((a, b) => a.name.localeCompare(b.name, 'en', {sensitivity: 'base'}));
     validSpells = validSpells.sort((a, b) => a.system.level - b.system.level);
@@ -483,7 +485,7 @@ async function useTwinned({workflow}) {
     newItem.applyActiveEffects();
     let shouldConsumeSlot = newItem.system.level && !['atwill', 'innate', 'ritual'].includes(newItem.system.preparation?.mode);
     let shouldConsumeUsage = newItem.system.hasLimitedUses;
-    workflowUtils.syntheticItemRoll(newItem, Array.from(workflow.targets), {
+    await workflowUtils.syntheticItemRoll(newItem, Array.from(workflow.targets), {
         options: {
             configureDialog: (shouldConsumeSlot || shouldConsumeUsage) ? true : null
         }, config: {
@@ -491,6 +493,7 @@ async function useTwinned({workflow}) {
             consumeUsage: shouldConsumeUsage ? true : null
         }
     });
+    //TODO: Fix twinned spells when they have attack rolls.
 }
 async function earlyTwinned({workflow}) {
     if (exceptions.includes(genericUtils.getIdentifier(workflow.item)) && workflow.castData.baseLevel !== workflow.spellLevel) {
