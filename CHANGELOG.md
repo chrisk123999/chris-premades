@@ -5,6 +5,11 @@
 - Eldritch Blast (Legacy & Modern)
 - Unarmed Strike (Tavern Brawler) (Legacy)
 - Dragon Vessel (Legacy)
+- Shield (Legacy)
+- Twinned Spell (Legacy)
+- Grease (Modern)
+## Update Notes:
+- Due to how CPR macros function, legacy twinned spell can only be used with legacy spells. The spell selection dialog for it has been updated to reflect this.
 
 # 1.2.24 Release:
 ## New Modern Content:
