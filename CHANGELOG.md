@@ -1,3 +1,7 @@
+# 1.2.26 Release:
+## Bug Fixes:
+- Zone of Truth (Modern)
+
 # 1.2.25 Release:
 ## Bug Fixes:
 - Automated Animations integration
