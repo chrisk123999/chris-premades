@@ -659,6 +659,7 @@
             },
             "ChangeSeason": {
                 "Autumn": "Outono",
+                "Chat": "Mudar Estação: {season}",
                 "Select": "Qual estação?",
                 "Spring": "Primavera",
                 "Summer": "Verão",
@@ -1826,6 +1827,11 @@
             },
             "TravelAlongTheTree": {
                 "WillingCreatures": "Escolha até seis criaturas dispostas:"
+            },
+            "TrueStrike": {
+                "NoWeapons": "Nenhuma arma equipada encontrada!",
+                "SelectWeapon": "Atacar com qual arma?",
+                "ReplaceDamage": "Substitua o dano por {type}?"
             },
             "TwilightSanctuary": {
                 "Charmed": "Remover a condição Enfeitiçado",
