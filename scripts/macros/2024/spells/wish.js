@@ -1,4 +1,3 @@
-import {DialogApp} from '../../../applications/dialog.js';
 import {activityUtils, constants, dialogUtils, effectUtils, errors, genericUtils, itemUtils, rollUtils, socketUtils, workflowUtils} from '../../../utils.js';
 async function stress({trigger, workflow}) {
     let activityIdentifier = activityUtils.getIdentifier(workflow.activity);
@@ -67,7 +66,7 @@ async function spellImmunity({trigger, workflow}) {
     }
     let index = await pack.getIndex();
     if (!index.size) return;
-    let item = await dialogUtils.selectDocumentDialog('CHRISPREMADES.Macros.Wish.SelectSpell', undefined, index.contents.sort((a, b) => {
+    let item = await dialogUtils.selectDocumentDialog('CHRISPREMADES.Generic.SelectSpell', undefined, index.contents.sort((a, b) => {
         return a.name.localeCompare(b.name, 'en', {'sensitivity': 'base'});
     }));
     if (!item) return;
@@ -88,7 +87,7 @@ async function duplicateSpell({trigger, workflow}) {
     }
     let index = await pack.getIndex({fields: ['system.level']});
     if (!index.size) return;
-    let selection = await dialogUtils.selectDocumentDialog('CHRISPREMADES.Macros.Wish.SelectSpell', undefined, index.contents.filter(i => i.system.level <= itemUtils.getConfig(workflow.item, 'maxLevel')).sort((a, b) => {
+    let selection = await dialogUtils.selectDocumentDialog('CHRISPREMADES.Generic.SelectSpell', undefined, index.contents.filter(i => i.system.level <= itemUtils.getConfig(workflow.item, 'maxLevel')).sort((a, b) => {
         return a.name.localeCompare(b.name, 'en', {'sensitivity': 'base'});
     }));
     if (!selection) return;

@@ -13,7 +13,7 @@ function collectTokenMacros(token, pass, target) {
     let distance;
     let triggers = [];
     if (token.actor) {
-        let effects = actorUtils.getEffects(token.actor);
+        let effects = actorUtils.getEffects(token.actor, {includeItemEffects: true});
         effects.forEach(effect => {
             let macroList = collectAuraMacros(effect);
             if (!macroList.length) return;

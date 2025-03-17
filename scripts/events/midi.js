@@ -68,7 +68,7 @@ function collectAllMacros({activity, item, token, actor, sourceToken, targetToke
                 targetToken
             });
         });
-        actorUtils.getEffects(actor).forEach(i => {
+        actorUtils.getEffects(actor, {includeItemEffects: true}).forEach(i => {
             let macroList = collectActorMacros(i, pass);
             if (!macroList.length) return;
             triggers.push({

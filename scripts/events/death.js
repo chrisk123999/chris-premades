@@ -28,7 +28,7 @@ function collectAllMacros({actor}, pass) {
             actor: actor
         });
     });
-    actorUtils.getEffects(actor).forEach(effect => {
+    actorUtils.getEffects(actor, {includeItemEffects: true}).forEach(effect => {
         let macroList = collectDeathMacros(effect, pass);
         if (!macroList.length) return;
         triggers.push({

@@ -361,6 +361,7 @@
             "Select": "Select",
             "SelectDamageType": "Select a damage type:",
             "SelectEffect": "Select an effect:",
+            "SelectSpell": "Select a Spell:",
             "SelectSpellSlot": "Select a spell slot:",
             "SelectTargetEffect": "Select an effect for each target:",
             "Skill": "Skill Check",
@@ -1029,6 +1030,9 @@
             },
             "Grease": {
                 "Fall": "Grease: Fall"
+            },
+            "GreaterDivineIntervention": {
+                "RestFormula": "Rest Formula:"
             },
             "GreenFlameBlade": {
                 "Leap": "Where does the fire leap?",
@@ -1830,8 +1834,8 @@
             },
             "TrueStrike": {
                 "NoWeapons": "No equipped weapons found!",
-                "SelectWeapon": "Attack with what weapon?",
-                "ReplaceDamage": "Replace damage with {type}?"
+                "ReplaceDamage": "Replace damage with {type}?",
+                "SelectWeapon": "Attack with what weapon?"
             },
             "TwilightSanctuary": {
                 "Charmed": "Remove the Charmed condition",
@@ -1922,7 +1926,6 @@
                 "InstantHealthConditions": "Instant Health Conditions:",
                 "MaxLevel": "Max Spell Level:",
                 "Rest": "Did you spend the day only doing light activity?",
-                "SelectSpell": "Select a Spell:",
                 "StressDuration": "Stress Duration Formula:"
             },
             "WitherAndBloom": {

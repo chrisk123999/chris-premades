@@ -12,7 +12,7 @@ function collectMacros(entity) {
 }
 function collectActorCheckMacros(actor, pass, checkId, options, roll, config, dialog, message, sourceActor) {
     let triggers = [];
-    let effects = actorUtils.getEffects(actor);
+    let effects = actorUtils.getEffects(actor, {includeItemEffects: true});
     let token = actorUtils.getFirstToken(actor);
     effects.forEach(effect => {
         let macroList = collectMacros(effect);

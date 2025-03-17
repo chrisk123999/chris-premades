@@ -1,8 +1,11 @@
 import {socket, sockets} from '../sockets.js';
 import {effectUtils, genericUtils, socketUtils} from '../../utils.js';
 import {ActorMedkit} from '../../applications/medkit-actor.js';
-function getEffects(actor) {
-    return Array.from(actor.allApplicableEffects());
+function getEffects(actor, {includeItemEffects = false} = {}) {
+    let effects = Array.from(actor.allApplicableEffects());
+    if (!includeItemEffects) return effects;
+    let enchantmentEffects = actor.items.contents.flatMap(item => item.effects.contents).filter(effect => effect.type === 'enchantment' && effect.isAppliedEnchantment);
+    return effects.concat(enchantmentEffects);
 }
 async function addFavorites(actor, entities, type='item') {
     if (!actor.system.addFavorite) return;

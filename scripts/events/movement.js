@@ -17,7 +17,7 @@ function collectMovementMacros(entity) {
 function collectTokenMacros(token, pass, distance, target) {
     let triggers = [];
     if (token.actor) {
-        let effects = actorUtils.getEffects(token.actor);
+        let effects = actorUtils.getEffects(token.actor, {includeItemEffects: true});
         effects.forEach(effect => {
             let macroList = collectMovementMacros(effect);
             if (!macroList.length) return;

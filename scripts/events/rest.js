@@ -27,7 +27,7 @@ function collectAllMacros(actor, pass) {
             name: item.name.slugify()
         });
     });
-    actorUtils.getEffects(actor).forEach(effect => {
+    actorUtils.getEffects(actor, {includeItemEffects: true}).forEach(effect => {
         let macroList = collectRestMacros(effect, pass);
         if (pass === 'long') macroList.push(...collectRestMacros(effect, 'short'));
         if (!macroList.length) return;

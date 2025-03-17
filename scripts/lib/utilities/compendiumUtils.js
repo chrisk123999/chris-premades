@@ -172,14 +172,19 @@ async function getPreferredAutomation(item, options) {
     let items = await getAllAutomations(item, options);
     return items.length ? items[0].document : undefined;
 }
-async function getItemFromCompendium(key, name, {ignoreNotFound, folderId, object = false, getDescription, translate, identifier, flatAttack, flatDC, castDataWorkflow, matchType, rules} = {}) {
+async function getItemFromCompendium(key, name, {ignoreNotFound, folderId, object = false, getDescription, translate, identifier, flatAttack, flatDC, castDataWorkflow, matchType, rules, byIdentifier} = {}) {
     let pack = game.packs.get(key);
     if (!pack) {
         if (!ignoreNotFound) errors.missingPack();
         return undefined;
     }
-    let packIndex = await pack.getIndex({'fields': ['name', 'type', 'folder', 'system.source.rules']});
-    let match = packIndex.find(item => item.name === name && (!folderId || (folderId && item.folder === folderId)) && (!matchType || (item.type === matchType)) && (!rules || (item.system.source.rules === (rules === 'modern' ? '2024' : '2014'))));
+    let packIndex = await pack.getIndex({'fields': ['name', 'type', 'folder', 'system.source.rules', 'flags.chris-premades.info.identifier']});
+    let match;
+    if (!byIdentifier) {
+        match = packIndex.find(item => item.name === name && (!folderId || (folderId && item.folder === folderId)) && (!matchType || (item.type === matchType)) && (!rules || (item.system.source.rules === (rules === 'modern' ? '2024' : '2014'))));
+    } else {
+        match = packIndex.find(item => item.flags['chris-premades']?.info?.identifier === name && (!folderId || (folderId && item.folder === folderId)) && (!matchType || (item.type === matchType)) && (!rules || (item.system.source.rules === (rules === 'modern' ? '2024' : '2014'))));
+    }
     if (match) {
         let document = await pack.getDocument(match._id);
         if (object) {

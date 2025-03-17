@@ -1,3 +1,10 @@
+# 1.2.27 Release:
+## New Modern Content:
+- Divine Intervention
+- Greater Divine Intervention
+## API Bug Fixes:
+- Enchantments applied to items will now trigger CPR macros attached to them.
+
 # 1.2.26 Release:
 ## Bug Fixes:
 - Zone of Truth (Modern)
