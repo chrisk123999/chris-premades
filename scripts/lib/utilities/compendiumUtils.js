@@ -65,8 +65,14 @@ async function getCPRAutomation(item, {identifier, rules = 'legacy', type = 'cha
         folderId = pack.folders.find(i => i.name === name)?.id;
         if (!folderId) return;
     }
+    let cprIdentifier = genericUtils.getCPRIdentifier(name, rules);
     for (let key of keys) {
-        let found = await getItemFromCompendium(key, name, {ignoreNotFound: true, folderId: folderId});
+        let found;
+        if (cprIdentifier) {
+            found = await getItemFromCompendium(key, cprIdentifier, {ignoreNotFound: true, folderId: folderId, byIdentifier: true});
+        } else {
+            found = await getItemFromCompendium(key, name, {ignoreNotFound: true, folderId: folderId});
+        }
         if (found) return found;
     }
 }
@@ -181,7 +187,8 @@ async function getItemFromCompendium(key, name, {ignoreNotFound, folderId, objec
     let packIndex = await pack.getIndex({'fields': ['name', 'type', 'folder', 'system.source.rules', 'flags.chris-premades.info.identifier']});
     let match;
     if (!byIdentifier) {
-        match = packIndex.find(item => item.name === name && (!folderId || (folderId && item.folder === folderId)) && (!matchType || (item.type === matchType)) && (!rules || (item.system.source.rules === (rules === 'modern' ? '2024' : '2014'))));
+        let names = 
+        match = packIndex.find(item => (item.flags['chris-premades']?.info?.aliases ?? []).concat(item.name).includes(name) && (!folderId || (folderId && item.folder === folderId)) && (!matchType || (item.type === matchType)) && (!rules || (item.system.source.rules === (rules === 'modern' ? '2024' : '2014'))));
     } else {
         match = packIndex.find(item => item.flags['chris-premades']?.info?.identifier === name && (!folderId || (folderId && item.folder === folderId)) && (!matchType || (item.type === matchType)) && (!rules || (item.system.source.rules === (rules === 'modern' ? '2024' : '2014'))));
     }

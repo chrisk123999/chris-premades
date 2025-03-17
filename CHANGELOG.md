@@ -1,3 +1,9 @@
+# 1.2.28 Release:
+## Modern Content Changes:
+- Improved Blessed Strikes: Potent Spellcasting and Divine Strike should be re-medkitted
+## Bug Fixes:
+- Item Medkit
+
 # 1.2.27 Release:
 ## New Modern Content:
 - Divine Intervention

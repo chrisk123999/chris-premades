@@ -1,6 +1,5 @@
 {
-  "_id": "o938b4yDiwzaPixd",
-  "name": "Improved Blessed Strikes: Potent Spellcasting",
+  "name": "Improved Blessed Strikes",
   "type": "feat",
   "effects": [],
   "system": {
@@ -65,7 +64,7 @@
         },
         "healing": {
           "number": null,
-          "denomination": 0,
+          "denomination": "",
           "bonus": "@abilities.wis.mod * 2",
           "types": [
             "temphp"
@@ -104,14 +103,27 @@
           "identifier": "",
           "autoTargetType": "any",
           "autoTargetAction": "default",
-          "otherActivityCompatible": false
+          "otherActivityCompatible": false,
+          "displayActivityName": false,
+          "rollMode": "default",
+          "chooseEffects": false
         },
-        "name": ""
+        "name": "",
+        "useConditionReason": "",
+        "isOverTimeFlag": false,
+        "overTimeProperties": {
+          "saveRemoves": true,
+          "preRemoveConditionText": "",
+          "postRemoveConditionText": ""
+        },
+        "img": "",
+        "appliedEffects": []
       }
     },
     "uses": {
       "spent": 0,
-      "recovery": []
+      "recovery": [],
+      "max": ""
     },
     "description": {
       "value": "",
@@ -158,15 +170,15 @@
     },
     "chris-premades": {
       "info": {
-        "identifier": "improvedPotentSpellcasting",
+        "identifier": "improvedBlessedStrikes",
         "source": "chris-premades",
         "rules": "modern",
-        "version": "1.2.12"
+        "version": "1.2.28"
       },
       "macros": {
         "midi": {
           "actor": [
-            "improvedPotentSpellcasting"
+            "improvedBlessedStrikes"
           ]
         }
       }
@@ -174,5 +186,6 @@
   },
   "img": "icons/magic/holy/prayer-hands-glowing-yellow-white.webp",
   "folder": "zpnSU81c3nPjSzE1",
-  "_key": "!items!o938b4yDiwzaPixd"
+  "_id": "nIYI0JJ9oP5POekZ",
+  "_key": "!items!nIYI0JJ9oP5POekZ"
 }

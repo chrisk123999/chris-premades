@@ -9,7 +9,7 @@ async function damage({trigger: {entity: item}, workflow}) {
     let selection = await dialogUtils.selectDamageType(damageTypes, item.name, genericUtils.format('CHRISPREMADES.Generic.UseItem', {item: item.name}), {addNo: true});
     if (!selection) return;
     let baseDiceNumber = itemUtils.getConfig(item, 'baseDiceNumber');
-    if (itemUtils.getItemByIdentifier(workflow.actor, 'improvedDivineStrike')) baseDiceNumber += 1;
+    if (itemUtils.getItemByIdentifier(workflow.actor, 'improvedBlessedStrikes')) baseDiceNumber += 1;
     let dieSize = itemUtils.getConfig(item, 'dieSize');
     await workflowUtils.bonusDamage(workflow, baseDiceNumber + dieSize, {damageType: selection});
     await workflowUtils.syntheticItemRoll(item, [], {consumeResources: true});

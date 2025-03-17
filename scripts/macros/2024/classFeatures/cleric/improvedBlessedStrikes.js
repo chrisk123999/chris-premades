@@ -1,11 +1,13 @@
 import {activityUtils, dialogUtils, itemUtils, tokenUtils, workflowUtils} from '../../../../utils.js';
+
 async function use({trigger: {entity: item}, workflow}) {
     if (workflow.item?.type != 'spell' || !workflow.activity || !workflow.token || !workflow.castData) return;
+    if (!itemUtils.getItemByIdentifier(workflow.actor, 'potentSpellcasting')) return;
     if (workflowUtils.getCastLevel(workflow) != 0) return;
     let classIdentifier = itemUtils.getConfig(item, 'classIdentifier');
     if (workflow.item.system.sourceClass != classIdentifier) return;
     if (activityUtils.isSpellActivity(workflow.activity)) return;
-    let range = itemUtils.getConfig(item, 'range');
+    let range = itemUtils.getActivity(item, 'heal').range.value ?? 60;
     let nearbyTokens = tokenUtils.findNearby(workflow.token, range, 'ally', {includeIncapacitated: true, includeToken: true});
     let selection;
     if (nearbyTokens.length === 1) {
@@ -17,10 +19,11 @@ async function use({trigger: {entity: item}, workflow}) {
     }
     await workflowUtils.syntheticItemRoll(item, [selection]);
 }
-export let improvedPotentSpellcasting = {
-    name: 'Improved Blessed Strikes: Potent Spellcasting',
-    version: '1.2.12',
+export let improvedBlessedStrikes = {
+    name: 'Improved Blessed Strikes',
+    version: '1.2.28',
     rules: 'modern',
+    aliases: ['Improved Blessed Strikes: Divine Strike', 'Improved Blessed Strikes: Potent Spellcasting'],
     midi: {
         actor: [
             {
@@ -38,14 +41,6 @@ export let improvedPotentSpellcasting = {
             default: 'cleric',
             category: 'homebrew',
             homebrew: true
-        },
-        {
-            value: 'range',
-            label: 'CHRISPREMADES.Config.Range',
-            type: 'number',
-            default: 60,
-            homebrew: true,
-            category: 'homebrew'
         }
     ]
 };

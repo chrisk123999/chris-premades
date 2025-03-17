@@ -661,10 +661,8 @@ export class ItemMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
         sourceItemData.name = itemData.name;
         sourceItemData.system.description = itemData.system.description;
         sourceItemData.system.chatFlavor = itemData.system.chatFlavor;
-        if (itemData.system.uses) {
-            let realPrompt = sourceItemData.system?.uses?.prompt;
+        if (itemData.system.uses.max?.length) {
             sourceItemData.system.uses = itemData.system.uses;
-            sourceItemData.system.uses.prompt = realPrompt;
         }
         let advancementOrigin = itemData.flags.dnd5e?.advancementOrigin;
         if (advancementOrigin) genericUtils.setProperty(sourceItemData, 'flags.dnd5e.advancementOrigin', advancementOrigin);
@@ -689,6 +687,8 @@ export class ItemMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
         if (compendiumSource) genericUtils.setProperty(sourceItemData, '_stats.compendiumSource', compendiumSource);
         let cachedFor = genericUtils.getProperty(itemData, 'flags.dnd5e.cachedFor');
         if (cachedFor) genericUtils.setProperty(sourceItemData, 'flags.dnd5e.cachedFor', cachedFor);
+        let sourceId = genericUtils.getProperty(itemData, 'flags.dnd5e.sourceId');
+        if (sourceId) genericUtils.setProperty(sourceItemData, 'flags.dnd5e.sourceId', sourceId);
         let config = itemData.flags['chris-premades']?.config;
         if (config) genericUtils.setProperty(sourceItemData, 'flags.chris-premades.config', config);
         let materials = genericUtils.getProperty(itemData, 'system.materials');
