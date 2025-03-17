@@ -7,7 +7,9 @@ async function use({trigger: {entity: item}, workflow}) {
     let classIdentifier = itemUtils.getConfig(item, 'classIdentifier');
     if (workflow.item.system.sourceClass != classIdentifier) return;
     if (activityUtils.isSpellActivity(workflow.activity)) return;
-    let range = itemUtils.getActivity(item, 'heal').range.value ?? 60;
+    let feature = activityUtils.getActivityByIdentifier(item, 'improvedPotentSpellcasting', {strict: true});
+    if (!feature) return;
+    let range = feature.range?.value ?? 60;
     let nearbyTokens = tokenUtils.findNearby(workflow.token, range, 'ally', {includeIncapacitated: true, includeToken: true});
     let selection;
     if (nearbyTokens.length === 1) {
@@ -17,7 +19,7 @@ async function use({trigger: {entity: item}, workflow}) {
         if (!selected?.length) return;
         selection = selected[0];
     }
-    await workflowUtils.syntheticItemRoll(item, [selection]);
+    await workflowUtils.syntheticActivityRoll(feature, [selection]);
 }
 export let improvedBlessedStrikes = {
     name: 'Improved Blessed Strikes',
