@@ -255,7 +255,9 @@
           "saveRemoves": true,
           "preRemoveConditionText": "",
           "postRemoveConditionText": ""
-        }
+        },
+        "img": "",
+        "appliedEffects": []
       }
     },
     "identifier": "zone-of-truth",
@@ -318,6 +320,9 @@
         "zoneOfTruth": "dnd5eactivity000"
       },
       "hiddenActivities": [
+        "zoneOfTruthSave"
+      ],
+      "spellActivities": [
         "zoneOfTruthSave"
       ]
     }

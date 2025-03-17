@@ -184,7 +184,7 @@
                 "formula": ""
               },
               "number": 3,
-              "denomination": 8,
+              "denomination": "8",
               "bonus": "",
               "types": [
                 "none"
@@ -224,7 +224,9 @@
         "ammunition": "",
         "otherActivityId": "",
         "otherActivityUuid": "",
-        "name": "Chromatic Orb: Bounce"
+        "name": "Chromatic Orb: Bounce",
+        "img": "",
+        "appliedEffects": []
       }
     },
     "uses": {
@@ -272,7 +274,8 @@
     ],
     "range": {
       "value": "90",
-      "units": "ft"
+      "units": "ft",
+      "special": ""
     },
     "school": "evo",
     "target": {
@@ -327,12 +330,23 @@
       "effectsApplied": true
     },
     "midi-qol": {
-      "removeAttackDamageButtons": "default"
+      "removeAttackDamageButtons": "default",
+      "fumbleThreshold": null,
+      "rollAttackPerTarget": "default",
+      "itemCondition": "",
+      "reactionCondition": "",
+      "otherCondition": "",
+      "effectCondition": ""
     },
     "midiProperties": {
       "confirmTargets": "default",
       "magicdam": true,
-      "magiceffect": true
+      "magiceffect": true,
+      "autoFailFriendly": false,
+      "autoSaveFriendly": false,
+      "noConcentrationCheck": false,
+      "toggleEffect": false,
+      "ignoreTotalCover": false
     },
     "dnd5e": {
       "riders": {
@@ -376,7 +390,10 @@
         "chromaticOrbBounce": "FppS3cgYVXIYGTVf",
         "chromaticOrb": "attackChromOrbII"
       },
-      "chromaticOrb": null
+      "chromaticOrb": null,
+      "spellActivities": [
+        "chromaticOrbBounce"
+      ]
     }
   },
   "img": "icons/magic/unholy/orb-beam-pink.webp",

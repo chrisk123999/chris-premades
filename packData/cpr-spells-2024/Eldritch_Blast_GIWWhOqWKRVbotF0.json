@@ -226,14 +226,13 @@
                 "formula": ""
               },
               "number": 1,
-              "denomination": 10,
+              "denomination": "10",
               "bonus": "",
               "types": [
                 "force"
               ],
               "scaling": {
-                "mode": "",
-                "number": 1
+                "mode": ""
               }
             }
           ]
@@ -278,7 +277,9 @@
           "preRemoveConditionText": "",
           "postRemoveConditionText": ""
         },
-        "otherActivityUuid": ""
+        "otherActivityUuid": "",
+        "img": "",
+        "appliedEffects": []
       }
     },
     "identifier": "eldritch-blast",
@@ -355,7 +356,10 @@
       "eldritchBlast": {
         "color": "purple",
         "sound": false
-      }
+      },
+      "spellActivities": [
+        "eldritchBlastBeam"
+      ]
     }
   },
   "effects": [],

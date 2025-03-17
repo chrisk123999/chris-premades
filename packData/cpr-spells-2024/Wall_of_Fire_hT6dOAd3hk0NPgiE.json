@@ -243,7 +243,7 @@
                 "formula": ""
               },
               "number": 5,
-              "denomination": 8,
+              "denomination": "8",
               "bonus": "",
               "types": [
                 "fire"
@@ -292,7 +292,9 @@
           "saveRemoves": true,
           "preRemoveConditionText": "",
           "postRemoveConditionText": ""
-        }
+        },
+        "img": "",
+        "appliedEffects": []
       }
     },
     "identifier": "wall-of-fire",
@@ -370,6 +372,9 @@
         "wallOfFireDamage": "3q1oadEkwGxlMeHO"
       },
       "hiddenActivities": [
+        "wallOfFireDamage"
+      ],
+      "spellActivities": [
         "wallOfFireDamage"
       ]
     }

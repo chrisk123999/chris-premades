@@ -243,7 +243,8 @@
           "saveRemoves": true,
           "preRemoveConditionText": "",
           "postRemoveConditionText": ""
-        }
+        },
+        "appliedEffects": []
       }
     },
     "identifier": "flaming-sphere",
@@ -314,7 +315,10 @@
       "activityIdentifiers": {
         "flamingSphere": "e1mCIrR78dOTWlMv",
         "flamingSphereMove": "nwAFaDn6e3VQsM6s"
-      }
+      },
+      "spellActivities": [
+        "flamingSphereMove"
+      ]
     }
   },
   "effects": [],

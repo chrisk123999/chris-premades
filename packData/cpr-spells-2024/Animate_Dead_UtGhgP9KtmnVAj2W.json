@@ -140,7 +140,8 @@
           "confirmTargets": "default",
           "automationOnly": false,
           "identifier": ""
-        }
+        },
+        "appliedEffects": []
       },
       "oNI74bBH5dh1mcnV": {
         "type": "utility",
@@ -292,6 +293,9 @@
         "animateDead": "oNI74bBH5dh1mcnV"
       },
       "hiddenActivities": [
+        "animateDeadCommand"
+      ],
+      "spellActivities": [
         "animateDeadCommand"
       ]
     }

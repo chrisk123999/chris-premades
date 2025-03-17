@@ -348,7 +348,10 @@
       "activityIdentifiers": {
         "spiritGuardians": "dnd5eactivity000",
         "spiritGuardiansDamage": "lPHL3nOMjsIHZuBI"
-      }
+      },
+      "spellActivities": [
+        "spiritGuardiansDamage"
+      ]
     }
   },
   "effects": [],
