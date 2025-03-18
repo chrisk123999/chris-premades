@@ -81,7 +81,7 @@ async function use({trigger, workflow}) {
 }
 export let chromaticOrb = {
     name: 'Chromatic Orb',
-    version: '1.1.20',
+    version: '1.2.28',
     rules: 'modern',
     hasAnimation: true,
     midi: {

@@ -59,7 +59,7 @@ async function early({dialog}) {
 }
 export let auraOfVitality = {
     name: 'Aura of Vitality',
-    version: '1.0.13',
+    version: '1.2.28',
     rules: 'modern',
     midi: {
         item: [

@@ -326,7 +326,7 @@
     },
     "chris-premades": {
       "info": {
-        "version": "1.2.22",
+        "version": "1.2.28",
         "identifier": "grease",
         "source": "chris-premades",
         "rules": "modern"

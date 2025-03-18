@@ -106,7 +106,7 @@ async function endCombat({trigger}) {
 }
 export let cloudkill = {
     name: 'Cloudkill',
-    version: '1.2.21',
+    version: '1.2.28',
     hasAnimation: true,
     rules: 'modern',
     midi: {

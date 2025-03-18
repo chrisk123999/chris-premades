@@ -344,7 +344,7 @@
     "chris-premades": {
       "info": {
         "name": "Cloudkill",
-        "version": "1.2.21",
+        "version": "1.2.28",
         "identifier": "cloudkill",
         "source": "chris-premades",
         "hasAnimation": true,

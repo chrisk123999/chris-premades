@@ -271,7 +271,7 @@
     "chris-premades": {
       "info": {
         "name": "Animate Dead",
-        "version": "1.1.10",
+        "version": "1.2.28",
         "identifier": "animateDead",
         "source": "chris-premades",
         "rules": "modern"

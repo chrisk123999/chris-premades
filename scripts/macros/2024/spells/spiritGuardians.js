@@ -120,7 +120,7 @@ async function damageHelper(affectedTokens, effect, token) {
 }
 export let spiritGuardians = {
     name: 'Spirit Guardians',
-    version: '1.2.24',
+    version: '1.2.28',
     rules: 'modern',
     hasAnimation: true,
     midi: {

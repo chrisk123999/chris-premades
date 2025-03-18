@@ -373,7 +373,7 @@
         "identifier": "chromaticOrb",
         "source": "chris-premades",
         "rules": "modern",
-        "version": "1.1.20",
+        "version": "1.2.28",
         "hasAnimation": true
       },
       "macros": {
