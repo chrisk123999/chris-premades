@@ -329,7 +329,8 @@
           "saveRemoves": true,
           "preRemoveConditionText": "",
           "postRemoveConditionText": ""
-        }
+        },
+        "appliedEffects": []
       },
       "tAjeZyBWfeVS9wtD": {
         "type": "damage",
@@ -393,14 +394,13 @@
                 "formula": ""
               },
               "number": 2,
-              "denomination": 6,
+              "denomination": "6",
               "bonus": "",
               "types": [
                 "fire"
               ],
               "scaling": {
-                "mode": "",
-                "number": 1
+                "mode": ""
               }
             }
           ]
@@ -442,7 +442,8 @@
           "saveRemoves": true,
           "preRemoveConditionText": "",
           "postRemoveConditionText": ""
-        }
+        },
+        "appliedEffects": []
       }
     },
     "identifier": "fire-shield",
@@ -533,6 +534,10 @@
       "hiddenActivities": [
         "fireShieldDamage",
         "fireShieldDismiss"
+      ],
+      "spellActivities": [
+        "fireShieldDismiss",
+        "fireShieldDamage"
       ]
     }
   },

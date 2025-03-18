@@ -228,7 +228,7 @@
                 "formula": ""
               },
               "number": 3,
-              "denomination": 6,
+              "denomination": "6",
               "bonus": "",
               "types": [
                 "necrotic"
@@ -282,7 +282,8 @@
           "preRemoveConditionText": "",
           "postRemoveConditionText": ""
         },
-        "otherActivityUuid": ""
+        "otherActivityUuid": "",
+        "appliedEffects": []
       }
     },
     "identifier": "vampiric-touch",
@@ -355,7 +356,10 @@
       "activityIdentifiers": {
         "vampiricTouch": "dnd5eactivity000",
         "vampiricTouchAttack": "dVDb1NqKUitfS4oK"
-      }
+      },
+      "spellActivities": [
+        "vampiricTouchAttack"
+      ]
     }
   },
   "effects": [],

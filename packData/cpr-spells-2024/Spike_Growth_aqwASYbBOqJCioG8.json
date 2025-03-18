@@ -217,14 +217,13 @@
                 "formula": ""
               },
               "number": 2,
-              "denomination": 4,
+              "denomination": "4",
               "bonus": "",
               "types": [
                 "piercing"
               ],
               "scaling": {
-                "mode": "",
-                "number": 1
+                "mode": ""
               }
             }
           ]
@@ -265,7 +264,9 @@
           "saveRemoves": true,
           "preRemoveConditionText": "",
           "postRemoveConditionText": ""
-        }
+        },
+        "img": "",
+        "appliedEffects": []
       }
     },
     "identifier": "spike-growth",
@@ -344,7 +345,10 @@
       "activityIdentifiers": {
         "spikeGrowth": "dnd5eactivity000",
         "spikeGrowthDamage": "TqUZRrgRnDNmwqAZ"
-      }
+      },
+      "spellActivities": [
+        "spikeGrowthDamage"
+      ]
     }
   },
   "folder": null,

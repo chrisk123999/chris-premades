@@ -228,7 +228,7 @@
                 "formula": ""
               },
               "number": 1,
-              "denomination": 8,
+              "denomination": "8",
               "bonus": "@mod",
               "types": [
                 "force"
@@ -282,7 +282,8 @@
           "preRemoveConditionText": "",
           "postRemoveConditionText": ""
         },
-        "otherActivityUuid": ""
+        "otherActivityUuid": "",
+        "appliedEffects": []
       }
     },
     "identifier": "spiritual-weapon",
@@ -368,7 +369,10 @@
       },
       "config": {
         "useDefault": true
-      }
+      },
+      "spellActivities": [
+        "spiritualWeaponAttack"
+      ]
     }
   },
   "effects": [],

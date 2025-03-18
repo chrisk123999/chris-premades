@@ -246,7 +246,9 @@
           "confirmTargets": "default",
           "automationOnly": false,
           "identifier": ""
-        }
+        },
+        "img": "",
+        "appliedEffects": []
       }
     },
     "identifier": "armor-of-agathys",
@@ -337,6 +339,9 @@
         "armorOfAgathys": "hiRV6ph1Qb0WqrDI"
       },
       "hiddenActivities": [
+        "armorOfAgathysReflect"
+      ],
+      "spellActivities": [
         "armorOfAgathysReflect"
       ]
     }

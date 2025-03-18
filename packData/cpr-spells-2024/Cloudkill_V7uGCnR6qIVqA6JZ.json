@@ -363,6 +363,9 @@
       },
       "hiddenActivities": [
         "cloudkillDamage"
+      ],
+      "spellActivities": [
+        "cloudkillDamage"
       ]
     }
   },

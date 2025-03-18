@@ -211,7 +211,7 @@
                 "formula": ""
               },
               "number": 2,
-              "denomination": 8,
+              "denomination": "8",
               "bonus": "",
               "types": [
                 "fire"
@@ -261,7 +261,8 @@
           "saveRemoves": true,
           "preRemoveConditionText": "",
           "postRemoveConditionText": ""
-        }
+        },
+        "appliedEffects": []
       },
       "mnxVTmGwcqMENTcj": {
         "type": "save",
@@ -363,7 +364,8 @@
           "saveRemoves": true,
           "preRemoveConditionText": "",
           "postRemoveConditionText": ""
-        }
+        },
+        "appliedEffects": []
       },
       "Uc52ckEpY9w8GddF": {
         "type": "utility",
@@ -399,10 +401,12 @@
         "target": {
           "template": {
             "contiguous": false,
-            "units": "ft"
+            "units": "ft",
+            "type": ""
           },
           "affects": {
-            "choice": false
+            "choice": false,
+            "type": ""
           },
           "override": true,
           "prompt": true
@@ -455,7 +459,8 @@
           "saveRemoves": true,
           "preRemoveConditionText": "",
           "postRemoveConditionText": ""
-        }
+        },
+        "appliedEffects": []
       }
     },
     "identifier": "heat-metal",
@@ -541,7 +546,12 @@
         "heatMetalDamage": "RPeWu1C4fujXuBti",
         "heatMetalHeld": "mnxVTmGwcqMENTcj",
         "heatMetalPulse": "Uc52ckEpY9w8GddF"
-      }
+      },
+      "spellActivities": [
+        "heatMetalDamage",
+        "heatMetalHeld",
+        "heatMetalPulse"
+      ]
     }
   },
   "effects": [],

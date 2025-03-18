@@ -248,7 +248,8 @@
           "saveRemoves": true,
           "preRemoveConditionText": "",
           "postRemoveConditionText": ""
-        }
+        },
+        "appliedEffects": []
       },
       "S5yJQt7Z9un20Drv": {
         "type": "utility",
@@ -340,7 +341,8 @@
           "saveRemoves": true,
           "preRemoveConditionText": "",
           "postRemoveConditionText": ""
-        }
+        },
+        "appliedEffects": []
       }
     },
     "identifier": "find-familiar",
@@ -417,7 +419,11 @@
         "findFamiliar": "dnd5eactivity000",
         "findFamiliarTouch": "Aw56bbUPaozKIi2r",
         "findFamiliarPocketDimension": "S5yJQt7Z9un20Drv"
-      }
+      },
+      "spellActivities": [
+        "findFamiliarTouch",
+        "findFamiliarPocketDimension"
+      ]
     }
   },
   "effects": [],

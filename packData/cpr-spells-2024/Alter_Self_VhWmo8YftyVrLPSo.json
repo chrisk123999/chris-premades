@@ -81,7 +81,10 @@
           "confirmTargets": "default",
           "automationOnly": false,
           "identifier": ""
-        }
+        },
+        "appliedEffects": [
+          "r2nkQcLlBddzDEVv"
+        ]
       },
       "addChangeAppear1": {
         "name": "Change Appearance",
@@ -310,7 +313,8 @@
           "identifier": ""
         },
         "name": "Change Appearance Again",
-        "img": "icons/creatures/magical/spirit-undead-ghost-blue.webp"
+        "img": "icons/creatures/magical/spirit-undead-ghost-blue.webp",
+        "appliedEffects": []
       }
     },
     "uses": {
@@ -357,7 +361,8 @@
       "concentration"
     ],
     "range": {
-      "units": "self"
+      "units": "self",
+      "special": ""
     },
     "school": "trs",
     "target": {
@@ -454,12 +459,22 @@
   "flags": {
     "midi-qol": {
       "removeAttackDamageButtons": "default",
-      "forceCEOff": true
+      "forceCEOff": true,
+      "rollAttackPerTarget": "default",
+      "itemCondition": "",
+      "reactionCondition": "",
+      "otherCondition": "",
+      "effectCondition": ""
     },
     "midiProperties": {
       "confirmTargets": "default",
       "magicdam": true,
-      "magiceffect": true
+      "magiceffect": true,
+      "autoFailFriendly": false,
+      "autoSaveFriendly": false,
+      "noConcentrationCheck": false,
+      "toggleEffect": false,
+      "ignoreTotalCover": false
     },
     "dnd5e": {
       "riders": {
@@ -491,7 +506,10 @@
             "alterSelf"
           ]
         }
-      }
+      },
+      "spellActivities": [
+        "changeAppearanceAgain"
+      ]
     }
   },
   "img": "icons/magic/control/debuff-energy-hold-green.webp",

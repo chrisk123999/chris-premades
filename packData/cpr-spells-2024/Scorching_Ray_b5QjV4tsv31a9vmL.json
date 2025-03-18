@@ -226,14 +226,13 @@
                 "formula": ""
               },
               "number": 2,
-              "denomination": 6,
+              "denomination": "6",
               "bonus": "",
               "types": [
                 "fire"
               ],
               "scaling": {
-                "mode": "",
-                "number": 1
+                "mode": ""
               }
             }
           ]
@@ -277,7 +276,9 @@
           "preRemoveConditionText": "",
           "postRemoveConditionText": ""
         },
-        "otherActivityUuid": ""
+        "otherActivityUuid": "",
+        "img": "",
+        "appliedEffects": []
       }
     },
     "identifier": "scorching-ray",
@@ -362,6 +363,9 @@
         "scorchingRay": "dnd5eactivity000"
       },
       "hiddenActivities": [
+        "scorchingRayBolt"
+      ],
+      "spellActivities": [
         "scorchingRayBolt"
       ]
     }

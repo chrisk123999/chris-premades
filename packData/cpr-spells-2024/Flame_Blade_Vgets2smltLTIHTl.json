@@ -229,7 +229,7 @@
                 "formula": ""
               },
               "number": 3,
-              "denomination": 6,
+              "denomination": "6",
               "bonus": "@mod",
               "types": [
                 "fire"
@@ -283,7 +283,8 @@
           "preRemoveConditionText": "",
           "postRemoveConditionText": ""
         },
-        "otherActivityUuid": ""
+        "otherActivityUuid": "",
+        "appliedEffects": []
       },
       "1iCHtkZUVXhJUSep": {
         "type": "utility",
@@ -372,7 +373,8 @@
           "saveRemoves": true,
           "preRemoveConditionText": "",
           "postRemoveConditionText": ""
-        }
+        },
+        "appliedEffects": []
       }
     },
     "identifier": "flame-blade",
@@ -462,6 +464,10 @@
         "flameBladeEvoke": "1iCHtkZUVXhJUSep"
       },
       "hiddenActivities": [
+        "flameBladeScimitar",
+        "flameBladeEvoke"
+      ],
+      "spellActivities": [
         "flameBladeScimitar",
         "flameBladeEvoke"
       ]

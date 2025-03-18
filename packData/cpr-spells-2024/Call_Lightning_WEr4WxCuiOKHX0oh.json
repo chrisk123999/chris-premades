@@ -203,7 +203,7 @@
                 "formula": ""
               },
               "number": 3,
-              "denomination": 10,
+              "denomination": "10",
               "bonus": "",
               "types": [
                 "lightning"
@@ -253,7 +253,8 @@
           "confirmTargets": "default",
           "automationOnly": false,
           "identifier": ""
-        }
+        },
+        "appliedEffects": []
       }
     },
     "identifier": "call-lightning",
@@ -341,7 +342,10 @@
       "activityIdentifiers": {
         "callLightning": "dnd5eactivity000",
         "stormBolt": "zlDhux2rffASd60x"
-      }
+      },
+      "spellActivities": [
+        "stormBolt"
+      ]
     }
   },
   "folder": null,

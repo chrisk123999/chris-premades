@@ -182,7 +182,8 @@
           "preRemoveConditionText": "",
           "postRemoveConditionText": ""
         },
-        "useConditionReason": ""
+        "useConditionReason": "",
+        "appliedEffects": []
       }
     },
     "uses": {
@@ -323,7 +324,10 @@
       "activityIdentifiers": {
         "huntersMark": "dnd5eactivity000",
         "huntersMarkMove": "CtwTg5RbWUSlWeM2"
-      }
+      },
+      "spellActivities": [
+        "huntersMarkMove"
+      ]
     }
   },
   "_key": "!items!6CSEfZqZzUdUG88Q"

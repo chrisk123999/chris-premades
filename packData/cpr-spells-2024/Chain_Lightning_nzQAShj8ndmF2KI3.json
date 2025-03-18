@@ -207,7 +207,8 @@
           "affects": {
             "choice": false,
             "count": "",
-            "type": "creature"
+            "type": "creature",
+            "special": ""
           },
           "override": true,
           "prompt": true
@@ -231,8 +232,7 @@
                 "lightning"
               ],
               "scaling": {
-                "mode": "",
-                "number": 1
+                "mode": ""
               }
             }
           ],
@@ -274,7 +274,9 @@
           "confirmTargets": "default",
           "automationOnly": false,
           "identifier": ""
-        }
+        },
+        "img": "",
+        "appliedEffects": []
       }
     },
     "identifier": "chain-lightning",
@@ -366,6 +368,9 @@
         "chainLightningLeap": "KkFRJcVOIhNDuWvP"
       },
       "hiddenActivities": [
+        "chainLightningLeap"
+      ],
+      "spellActivities": [
         "chainLightningLeap"
       ]
     }

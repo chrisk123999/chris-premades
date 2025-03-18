@@ -269,7 +269,9 @@
           "saveRemoves": true,
           "preRemoveConditionText": "",
           "postRemoveConditionText": ""
-        }
+        },
+        "img": "",
+        "appliedEffects": []
       }
     },
     "identifier": "grease",
@@ -341,6 +343,9 @@
         "greaseFall": "cQBqdt9RLVannwfI"
       },
       "hiddenActivities": [
+        "greaseFall"
+      ],
+      "spellActivities": [
         "greaseFall"
       ]
     }

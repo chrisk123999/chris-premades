@@ -143,7 +143,7 @@
         },
         "healing": {
           "number": 2,
-          "denomination": 6,
+          "denomination": "6",
           "types": [
             "healing"
           ],
@@ -179,7 +179,9 @@
           "automationOnly": false,
           "identifier": ""
         },
-        "name": "Aura of Vitality: Heal"
+        "name": "Aura of Vitality: Heal",
+        "img": "",
+        "appliedEffects": []
       }
     },
     "uses": {
@@ -225,7 +227,8 @@
       "concentration"
     ],
     "range": {
-      "units": "self"
+      "units": "self",
+      "special": ""
     },
     "school": "abj",
     "target": {
@@ -251,12 +254,22 @@
   "name": "Aura of Vitality",
   "flags": {
     "midi-qol": {
-      "removeAttackDamageButtons": "default"
+      "removeAttackDamageButtons": "default",
+      "rollAttackPerTarget": "default",
+      "itemCondition": "",
+      "reactionCondition": "",
+      "otherCondition": "",
+      "effectCondition": ""
     },
     "midiProperties": {
       "confirmTargets": "default",
       "magicdam": true,
-      "magiceffect": true
+      "magiceffect": true,
+      "autoFailFriendly": false,
+      "autoSaveFriendly": false,
+      "noConcentrationCheck": false,
+      "toggleEffect": false,
+      "ignoreTotalCover": false
     },
     "dnd5e": {
       "riders": {
@@ -293,7 +306,10 @@
       "activityIdentifiers": {
         "auraOfVitality": "6CwnELQaYAmzXkox",
         "auraOfVitalityHealing": "AKDhT9uFmO6Zbwu2"
-      }
+      },
+      "spellActivities": [
+        "auraOfVitalityHealing"
+      ]
     }
   },
   "img": "icons/magic/life/cross-area-circle-green-white.webp",
