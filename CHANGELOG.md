@@ -3,6 +3,7 @@
 - Improved Blessed Strikes: Potent Spellcasting and Divine Strike should be re-medkitted
 ## Bug Fixes:
 - Item Medkit
+- Spirit Guardians (Modern)
 
 # 1.2.27 Release:
 ## New Modern Content:

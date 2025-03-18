@@ -292,7 +292,7 @@ function getNewlyHitTokens(startPoint, endPoint, radius, collisionType='move') {
             if (intersect) return intersect;
         }
     }
-    function getMaybeAffectedTokens(startPoint={x: 0, y: 0}, endPoint={x: 0, y: 0}, radius=0) {
+    function getAffectedTokens(startPoint={x: 0, y: 0}, endPoint={x: 0, y: 0}, radius=0) {
         if (!radius) return new Set();
         // eslint-disable-next-line no-undef
         let shape = new PIXI.Polygon(canvas.grid.getCircle({x: 0, y: 0}, radius));
@@ -306,18 +306,17 @@ function getNewlyHitTokens(startPoint, endPoint, radius, collisionType='move') {
         let shapeMid = new PIXI.Polygon(p1, p2, p3, p4);
         let setStart = templateUtils.getTokensInShape(shape, canvas.scene, startPoint).filter(i => !ClockwiseSweepPolygon.testCollision(startPoint, i.center, {type: collisionType}).length);
         let setMid = templateUtils.getTokensInShape(shapeMid, canvas.scene, startPoint);
+        setMid = setMid.filter(token => {
+            let tri = new PIXI.Polygon(startPoint, endPoint, token.center);
+            let csp = ClockwiseSweepPolygon.create(token.center, {type: collisionType, boundaryShapes: [tri]});
+            return getIntersection(new Ray(startPoint, endPoint), csp);
+        });
         let setEnd = templateUtils.getTokensInShape(shape, canvas.scene, endPoint).filter(i => !ClockwiseSweepPolygon.testCollision(endPoint, i.center, {type: collisionType}).length);
-        let setPutative = setEnd.union(setMid).difference(setStart);
-        return setPutative;
+        let setCombined = setEnd.union(setMid).difference(setStart);
+        return setCombined;
     }
-    let maybeTokens = getMaybeAffectedTokens(startPoint, endPoint, radius);
-    let yesTokens = new Set();
-    for (let token of maybeTokens) {
-        let tri = new PIXI.Polygon(startPoint, endPoint, token.center);
-        let csp = ClockwiseSweepPolygon.create(token.center, {type: collisionType, boundaryShapes: [tri]});
-        if (getIntersection(new Ray(startPoint, endPoint), csp)) yesTokens.add(token);
-    }
-    return yesTokens;
+    let tokens = getAffectedTokens(startPoint, endPoint, radius);
+    return tokens;
 }
 export let tokenUtils = {
     getDistance,
