@@ -4,6 +4,8 @@
 ## Bug Fixes:
 - Item Medkit
 - Spirit Guardians (Modern)
+## Update Notes:
+- Updated all Modern spells to have their non-initial-cast activities marked as spell activities.
 
 # 1.2.27 Release:
 ## New Modern Content:
