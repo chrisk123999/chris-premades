@@ -68,11 +68,7 @@
           "special": "",
           "override": false
         },
-        "effects": [
-          {
-            "_id": "lIcyHRXk9n0MGXLQ"
-          }
-        ],
+        "effects": [],
         "range": {
           "value": "60",
           "units": "ft",
@@ -164,7 +160,7 @@
     "chris-premades": {
       "info": {
         "name": "Misty Escape",
-        "version": "1.1.0",
+        "version": "1.2.28",
         "identifier": "mistyEscape",
         "source": "chris-premades",
         "hasAnimation": true

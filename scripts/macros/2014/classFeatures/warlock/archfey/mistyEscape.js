@@ -28,7 +28,7 @@ async function use({workflow}) {
 }
 export let mistyEscape = {
     name: 'Misty Escape',
-    version: '1.1.0',
+    version: '1.2.28',
     hasAnimation: true,
     midi: {
         item: [

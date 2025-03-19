@@ -176,7 +176,7 @@ async function early({actor, config, dialog}) {
 }
 export let starryForm = {
     name: 'Starry Form',
-    version: '1.1.10',
+    version: '1.2.28',
     midi: {
         item: [
             {

@@ -215,11 +215,7 @@
           "special": "",
           "override": false
         },
-        "effects": [
-          {
-            "_id": "VA89AP2TdexXoFVf"
-          }
-        ],
+        "effects": [],
         "range": {
           "units": "self",
           "special": "",
@@ -509,7 +505,7 @@
     "chris-premades": {
       "info": {
         "name": "Starry Form",
-        "version": "1.1.10",
+        "version": "1.2.28",
         "identifier": "starryForm",
         "source": "chris-premades"
       },

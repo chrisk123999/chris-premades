@@ -3,7 +3,11 @@
 - Improved Blessed Strikes: Potent Spellcasting and Divine Strike should be re-medkitted
 ## Bug Fixes:
 - Item Medkit
+- Blur (Modern)
 - Spirit Guardians (Modern)
+- Misty Escape (Legacy)
+- Shield (Legacy)
+- Starry Form (Legacy)
 ## Update Notes:
 - Updated all spell automations to have their non-initial-cast activities marked as spell activities.
 

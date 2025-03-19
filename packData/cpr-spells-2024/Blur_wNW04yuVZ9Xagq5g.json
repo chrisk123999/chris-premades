@@ -25,11 +25,7 @@
           "concentration": false,
           "override": false
         },
-        "effects": [
-          {
-            "_id": "1DORMCCYcvDnDaYI"
-          }
-        ],
+        "effects": [],
         "range": {
           "override": false
         },
