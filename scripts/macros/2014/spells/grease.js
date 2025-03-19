@@ -27,7 +27,7 @@ async function enterOrEnd({trigger: {entity: template, castData, token}}) {
 }
 export let grease = {
     name: 'Grease',
-    version: '1.1.0',
+    version: '1.2.28',
     midi: {
         item: [
             {

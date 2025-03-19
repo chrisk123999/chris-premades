@@ -180,14 +180,13 @@
                 "formula": ""
               },
               "number": 2,
-              "denomination": 6,
+              "denomination": "6",
               "bonus": "",
               "types": [
                 "cold"
               ],
               "scaling": {
-                "mode": "",
-                "number": 1
+                "mode": ""
               }
             }
           ]
@@ -258,14 +257,13 @@
                 "formula": ""
               },
               "number": 2,
-              "denomination": 6,
+              "denomination": "6",
               "bonus": "",
               "types": [
                 "acid"
               ],
               "scaling": {
-                "mode": "",
-                "number": 1
+                "mode": ""
               }
             }
           ],
@@ -355,7 +353,7 @@
     "chris-premades": {
       "info": {
         "name": "Hunger of Hadar",
-        "version": "1.1.10",
+        "version": "1.2.28",
         "identifier": "hungerOfHadar",
         "source": "chris-premades"
       },
@@ -372,6 +370,10 @@
         "hungerOfHadarTentacles": "w7SvOc1YLH8F3fja"
       },
       "hiddenActivities": [
+        "hungerOfHadarCold",
+        "hungerOfHadarTentacles"
+      ],
+      "spellActivities": [
         "hungerOfHadarCold",
         "hungerOfHadarTentacles"
       ]

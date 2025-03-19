@@ -239,12 +239,11 @@
                 "formula": ""
               },
               "number": 2,
-              "denomination": 8,
+              "denomination": "8",
               "bonus": "",
               "types": [],
               "scaling": {
-                "mode": "",
-                "number": 1
+                "mode": ""
               }
             },
             {
@@ -253,7 +252,7 @@
                 "formula": ""
               },
               "number": 1,
-              "denomination": 6,
+              "denomination": "6",
               "bonus": "",
               "types": [],
               "scaling": {
@@ -349,7 +348,7 @@
     "chris-premades": {
       "info": {
         "name": "Chaos Bolt",
-        "version": "1.1.10",
+        "version": "1.2.28",
         "identifier": "chaosBolt",
         "source": "chris-premades",
         "hasAnimation": true
@@ -370,7 +369,10 @@
       ],
       "config": {
         "alwaysBounce": false
-      }
+      },
+      "spellActivities": [
+        "chaosBoltBounce"
+      ]
     }
   },
   "effects": [],

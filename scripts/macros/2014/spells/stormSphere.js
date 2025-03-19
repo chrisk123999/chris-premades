@@ -99,7 +99,7 @@ async function late({workflow}) {
 }
 export let stormSphere = {
     name: 'Storm Sphere',
-    version: '1.1.10',
+    version: '1.2.28',
     hasAnimation: true,
     midi: {
         item: [

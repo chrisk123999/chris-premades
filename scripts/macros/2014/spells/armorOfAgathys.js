@@ -172,7 +172,7 @@ async function end({trigger: {entity}}) {
 }
 export let armorOfAgathys = {
     name: 'Armor of Agathys',
-    version: '1.1.0',
+    version: '1.2.28',
     hasAnimation: true,
     midi: {
         item: [

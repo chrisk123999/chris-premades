@@ -201,7 +201,7 @@ async function early({dialog}) {
 }
 export let healingSpirit = {
     name: 'Healing Spirit',
-    version: '1.1.0',
+    version: '1.2.28',
     hasAnimation: true,
     midi: {
         item: [

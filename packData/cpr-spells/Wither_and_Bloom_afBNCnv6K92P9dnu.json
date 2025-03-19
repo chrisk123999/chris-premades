@@ -222,7 +222,9 @@
         "useConditionText": "",
         "forceDialog": false,
         "effectConditionText": "",
-        "name": "Wither and Bloom: Heal"
+        "name": "Wither and Bloom: Heal",
+        "img": "",
+        "appliedEffects": []
       }
     },
     "identifier": "wither-and-bloom",
@@ -283,7 +285,7 @@
     "chris-premades": {
       "info": {
         "source": "chris-premades",
-        "version": "1.1.10",
+        "version": "1.2.28",
         "identifier": "witherAndBloom"
       },
       "macros": {
@@ -298,6 +300,9 @@
         "witherAndBloom": "dnd5eactivity000"
       },
       "hiddenActivities": [
+        "witherAndBloomHeal"
+      ],
+      "spellActivities": [
         "witherAndBloomHeal"
       ]
     }

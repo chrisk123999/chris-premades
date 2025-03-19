@@ -175,7 +175,8 @@
         "effectConditionText": "",
         "midiAutomationOnly": false,
         "name": "Dismiss Steed",
-        "img": "icons/environment/creatures/horse-white.webp"
+        "img": "icons/environment/creatures/horse-white.webp",
+        "appliedEffects": []
       }
     },
     "identifier": "find-greater-steed",
@@ -230,7 +231,7 @@
     "chris-premades": {
       "info": {
         "name": "Find Greater Steed",
-        "version": "1.1.0",
+        "version": "1.2.28",
         "identifier": "findGreaterSteed",
         "source": "chris-premades",
         "hasAnimation": true
@@ -253,6 +254,9 @@
         "findSteedDismiss": "IkWyeqnY3JkEiOFo"
       },
       "hiddenActivities": [
+        "findSteedDismiss"
+      ],
+      "spellActivities": [
         "findSteedDismiss"
       ]
     }

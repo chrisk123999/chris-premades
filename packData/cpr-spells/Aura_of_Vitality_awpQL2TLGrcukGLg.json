@@ -252,7 +252,7 @@
     "chris-premades": {
       "info": {
         "name": "Aura of Vitality",
-        "version": "1.1.10",
+        "version": "1.2.28",
         "identifier": "auraOfVitality",
         "source": "chris-premades"
       },
@@ -269,7 +269,10 @@
       "activityIdentifiers": {
         "auraOfVitality": "bMMNAx1oSfwFo1i8",
         "auraOfVitalityHealing": "hfIZBfENFDaHal84"
-      }
+      },
+      "spellActivities": [
+        "auraOfVitalityHealing"
+      ]
     }
   },
   "effects": [],

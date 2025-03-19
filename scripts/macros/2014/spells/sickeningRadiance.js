@@ -79,7 +79,7 @@ async function end({trigger: {entity: effect}}) {
 }
 export let sickeningRadiance = {
     name: 'Sickening Radiance',
-    version: '1.1.10',
+    version: '1.2.28',
     midi: {
         item: [
             {

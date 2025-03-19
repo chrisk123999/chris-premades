@@ -98,7 +98,7 @@ async function moved({trigger: {entity: effect}}) {
 }
 export let boomingBlade = {
     name: 'Booming Blade',
-    version: '1.1.10',
+    version: '1.2.28',
     midi: {
         item: [
             {

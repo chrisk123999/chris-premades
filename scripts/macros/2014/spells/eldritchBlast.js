@@ -43,7 +43,7 @@ async function damage({trigger, workflow}) {
 }
 export let eldritchBlast = {
     name: 'Eldritch Blast',
-    version: '1.1.10',
+    version: '1.2.28',
     hasAnimation: true,
     midi: {
         item: [

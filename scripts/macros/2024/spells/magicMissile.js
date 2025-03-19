@@ -1,7 +1,7 @@
 import {magicMissile as magicMissileLegacy} from '../../../legacyMacros.js';
 export let magicMissile = {
     ...magicMissileLegacy,
-    version: '1.2.22',
+    version: '1.2.28',
     rules: 'modern',
     config: [
         {

@@ -212,7 +212,7 @@
                 "formula": ""
               },
               "number": 5,
-              "denomination": 8,
+              "denomination": "8",
               "bonus": "",
               "types": [
                 "fire"
@@ -292,7 +292,7 @@
       "info": {
         "source": "chris-premades",
         "identifier": "wallOfFire",
-        "version": "1.1.10",
+        "version": "1.2.28",
         "hasAnimation": true
       },
       "macros": {
@@ -307,6 +307,9 @@
         "wallOfFireDamage": "3q1oadEkwGxlMeHO"
       },
       "hiddenActivities": [
+        "wallOfFireDamage"
+      ],
+      "spellActivities": [
         "wallOfFireDamage"
       ]
     }

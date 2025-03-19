@@ -41,7 +41,7 @@ async function early({dialog}) {
 }
 export let detectThoughts = {
     name: 'Detect Thoughts',
-    version: '1.1.0',
+    version: '1.2.28',
     midi: {
         item: [
             {

@@ -188,7 +188,8 @@
         "effectConditionText": "",
         "midiAutomationOnly": false,
         "name": "Gust of Wind: Move",
-        "img": "icons/magic/nature/leaf-juggle-humanoid-green.webp"
+        "img": "icons/magic/nature/leaf-juggle-humanoid-green.webp",
+        "appliedEffects": []
       },
       "ueIqmLJxfIHB3pg8": {
         "type": "save",
@@ -262,7 +263,8 @@
         "effectConditionText": "",
         "midiAutomationOnly": false,
         "name": "Gust of Wind: Push",
-        "img": "icons/magic/nature/leaf-juggle-humanoid-green.webp"
+        "img": "icons/magic/nature/leaf-juggle-humanoid-green.webp",
+        "appliedEffects": []
       }
     },
     "identifier": "gust-of-wind",
@@ -342,7 +344,7 @@
     "chris-premades": {
       "info": {
         "name": "Gust of Wind",
-        "version": "1.1.0",
+        "version": "1.2.28",
         "identifier": "gustOfWind",
         "source": "chris-premades"
       },
@@ -361,6 +363,10 @@
       "hiddenActivities": [
         "gustOfWindPush",
         "gustOfWindMove"
+      ],
+      "spellActivities": [
+        "gustOfWindMove",
+        "gustOfWindPush"
       ]
     }
   },

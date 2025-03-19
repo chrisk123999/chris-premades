@@ -231,7 +231,8 @@
         "effectConditionText": "",
         "midiAutomationOnly": false,
         "name": "Fire Shield: Dismiss",
-        "img": "icons/magic/defensive/shield-barrier-flaming-pentagon-blue.webp"
+        "img": "icons/magic/defensive/shield-barrier-flaming-pentagon-blue.webp",
+        "appliedEffects": []
       },
       "tAjeZyBWfeVS9wtD": {
         "type": "damage",
@@ -295,14 +296,13 @@
                 "formula": ""
               },
               "number": 2,
-              "denomination": 6,
+              "denomination": "6",
               "bonus": "",
               "types": [
                 "fire"
               ],
               "scaling": {
-                "mode": "",
-                "number": 1
+                "mode": ""
               }
             }
           ]
@@ -380,7 +380,7 @@
     "chris-premades": {
       "info": {
         "name": "Fire Shield",
-        "version": "1.1.10",
+        "version": "1.2.28",
         "settings": [
           "On Hit"
         ],
@@ -410,6 +410,10 @@
       "hiddenActivities": [
         "fireShieldDamage",
         "fireShieldDismiss"
+      ],
+      "spellActivities": [
+        "fireShieldDismiss",
+        "fireShieldDamage"
       ]
     }
   },

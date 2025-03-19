@@ -196,7 +196,11 @@
         "useConditionText": "",
         "forceDialog": false,
         "effectConditionText": "",
-        "name": "Wrathful Smite: Frighten"
+        "name": "Wrathful Smite: Frighten",
+        "img": "",
+        "appliedEffects": [
+          "n2VVRAdaW5ZkMoSJ"
+        ]
       }
     },
     "identifier": "wrathful-smite",
@@ -278,7 +282,7 @@
     "chris-premades": {
       "info": {
         "name": "Wrathful Smite",
-        "version": "1.2.21",
+        "version": "1.2.28",
         "identifier": "wrathfulSmite",
         "source": "chris-premades"
       },
@@ -294,6 +298,9 @@
         "wrathfulSmite": "dnd5eactivity000"
       },
       "hiddenActivities": [
+        "wrathfulSmiteFrighten"
+      ],
+      "spellActivities": [
         "wrathfulSmiteFrighten"
       ]
     }

@@ -176,7 +176,8 @@
         "effectConditionText": "",
         "midiAutomationOnly": false,
         "name": "Flock of Familiars: Touch",
-        "img": "icons/creatures/mammals/bats-movement-flying-black.webp"
+        "img": "icons/creatures/mammals/bats-movement-flying-black.webp",
+        "appliedEffects": []
       }
     },
     "identifier": "flock-of-familiars",
@@ -232,7 +233,7 @@
     "chris-premades": {
       "info": {
         "identifier": "flockOfFamiliars",
-        "version": "1.1.0",
+        "version": "1.2.28",
         "source": "chris-premades",
         "hasAnimation": true
       },
@@ -249,7 +250,10 @@
       "activityIdentifiers": {
         "flockOfFamiliarsTouch": "RmjynbQJ98B1lbQp",
         "flockOfFamiliars": "dnd5eactivity000"
-      }
+      },
+      "spellActivities": [
+        "flockOfFamiliarsTouch"
+      ]
     }
   },
   "effects": [],

@@ -84,7 +84,7 @@ async function early({dialog}) {
 }
 export let gustOfWind = {
     name: 'Gust of Wind',
-    version: '1.1.0',
+    version: '1.2.28',
     midi: {
         item: [
             {

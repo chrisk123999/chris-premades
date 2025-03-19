@@ -134,7 +134,7 @@ async function early({dialog}) {
 }
 export let wardingBond = {
     name: 'Warding Bond',
-    version: '1.1.0',
+    version: '1.2.28',
     midi: {
         item: [
             {

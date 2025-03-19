@@ -177,14 +177,13 @@
                 "formula": ""
               },
               "number": 4,
-              "denomination": 8,
+              "denomination": "8",
               "bonus": "",
               "types": [
                 "fire"
               ],
               "scaling": {
-                "mode": "",
-                "number": 1
+                "mode": ""
               }
             }
           ],
@@ -272,14 +271,13 @@
                 "formula": ""
               },
               "number": 1,
-              "denomination": 10,
+              "denomination": "10",
               "bonus": "",
               "types": [
                 "fire"
               ],
               "scaling": {
-                "mode": "",
-                "number": 1
+                "mode": ""
               }
             }
           ]
@@ -357,7 +355,7 @@
     "chris-premades": {
       "info": {
         "name": "Investiture of Flame",
-        "version": "1.1.10",
+        "version": "1.2.28",
         "mutation": {
           "self": "Investiture of Flame"
         },
@@ -380,7 +378,11 @@
         "investitureOfFlame": "dnd5eactivity000",
         "investitureOfFlameFire": "zmvYF2OfblclYJER",
         "investitureOfFlameHeat": "tz9zhEEBYth4aDJx"
-      }
+      },
+      "spellActivities": [
+        "investitureOfFlameFire",
+        "investitureOfFlameHeat"
+      ]
     }
   },
   "effects": [],

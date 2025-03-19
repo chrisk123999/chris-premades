@@ -184,7 +184,9 @@
         "useConditionText": "",
         "forceDialog": false,
         "effectConditionText": "",
-        "name": "Sanctuary: Save"
+        "name": "Sanctuary: Save",
+        "img": "",
+        "appliedEffects": []
       }
     },
     "identifier": "sanctuary",
@@ -239,7 +241,7 @@
     "chris-premades": {
       "info": {
         "name": "Sanctuary",
-        "version": "1.1.0",
+        "version": "1.2.28",
         "settings": [
           "Sanctuary"
         ],
@@ -259,6 +261,9 @@
         "sanctuarySave": "92U7Q3QWpPW1oiWl"
       },
       "hiddenActivities": [
+        "sanctuarySave"
+      ],
+      "spellActivities": [
         "sanctuarySave"
       ]
     }

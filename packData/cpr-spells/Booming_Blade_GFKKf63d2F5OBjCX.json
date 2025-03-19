@@ -172,7 +172,7 @@
                 "formula": ""
               },
               "number": 1,
-              "denomination": 8,
+              "denomination": "8",
               "bonus": "",
               "types": [
                 "thunder"
@@ -253,7 +253,7 @@
     "chris-premades": {
       "info": {
         "name": "Booming Blade",
-        "version": "1.1.10",
+        "version": "1.2.28",
         "settings": [
           "Booming Blade"
         ],
@@ -273,6 +273,9 @@
         "boomingBladeMoved": "3Qk6T9Nk9U62oqdw"
       },
       "hiddenActivities": [
+        "boomingBladeMoved"
+      ],
+      "spellActivities": [
         "boomingBladeMoved"
       ]
     }

@@ -201,7 +201,9 @@
         "useConditionText": "",
         "forceDialog": false,
         "effectConditionText": "",
-        "name": "Grease: Fall"
+        "name": "Grease: Fall",
+        "img": "",
+        "appliedEffects": []
       }
     },
     "identifier": "grease",
@@ -257,7 +259,7 @@
     "chris-premades": {
       "info": {
         "name": "Grease",
-        "version": "1.1.0",
+        "version": "1.2.28",
         "identifier": "grease",
         "source": "chris-premades"
       },
@@ -273,6 +275,9 @@
         "greaseFall": "cQBqdt9RLVannwfI"
       },
       "hiddenActivities": [
+        "greaseFall"
+      ],
+      "spellActivities": [
         "greaseFall"
       ]
     }

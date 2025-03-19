@@ -147,7 +147,7 @@
                 "formula": ""
               },
               "number": 4,
-              "denomination": 10,
+              "denomination": "10",
               "bonus": "",
               "types": [
                 "piercing"
@@ -306,7 +306,7 @@
       ],
       "info": {
         "identifier": "insectPlague",
-        "version": "1.1.10",
+        "version": "1.2.28",
         "source": "chris-premades"
       },
       "macros": {
@@ -315,7 +315,10 @@
             "insectPlague"
           ]
         }
-      }
+      },
+      "spellActivities": [
+        "insectPlagueDamage"
+      ]
     }
   },
   "_id": "kZPWlxEb8pynXz3J",

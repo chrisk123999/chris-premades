@@ -194,7 +194,8 @@
         "effectConditionText": "",
         "midiAutomationOnly": false,
         "name": "Detect Thoughts: Probe Deeper",
-        "img": "icons/commodities/biological/organ-brain-pink.webp"
+        "img": "icons/commodities/biological/organ-brain-pink.webp",
+        "appliedEffects": []
       }
     },
     "identifier": "detect-thoughts",
@@ -250,7 +251,7 @@
     "chris-premades": {
       "info": {
         "name": "Detect Thoughts",
-        "version": "1.1.0",
+        "version": "1.2.28",
         "identifier": "detectThoughts",
         "source": "chris-premades"
       },
@@ -266,6 +267,9 @@
         "probeDeeper": "vu324GsRInbjGN99"
       },
       "hiddenActivities": [
+        "probeDeeper"
+      ],
+      "spellActivities": [
         "probeDeeper"
       ]
     }

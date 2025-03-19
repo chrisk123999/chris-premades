@@ -232,7 +232,7 @@ async function early({workflow}) {
 }
 export let flockOfFamiliars = {
     name: 'Flock of Familiars',
-    version: '1.1.0',
+    version: '1.2.28',
     hasAnimation: true,
     midi: {
         item: [

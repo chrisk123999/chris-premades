@@ -161,7 +161,8 @@
           "affects": {
             "choice": false,
             "count": "",
-            "type": "any"
+            "type": "any",
+            "special": ""
           },
           "override": true,
           "prompt": true
@@ -182,7 +183,8 @@
         "effectConditionText": "",
         "midiAutomationOnly": false,
         "name": "Moonbeam: Move",
-        "img": "icons/magic/light/beam-rays-blue-large.webp"
+        "img": "icons/magic/light/beam-rays-blue-large.webp",
+        "appliedEffects": []
       },
       "ny8jAwG7myN6zsgs": {
         "type": "save",
@@ -243,7 +245,7 @@
                 "formula": ""
               },
               "number": 2,
-              "denomination": 10,
+              "denomination": "10",
               "bonus": "",
               "types": [
                 "radiant"
@@ -340,7 +342,7 @@
     "chris-premades": {
       "info": {
         "name": "Moonbeam",
-        "version": "1.1.10",
+        "version": "1.2.28",
         "settings": [
           "Template Listener"
         ],
@@ -365,7 +367,11 @@
         "moonbeam": "dnd5eactivity000",
         "moonbeamMove": "n8LHtbwz9XiYPlfA",
         "moonbeamDamage": "ny8jAwG7myN6zsgs"
-      }
+      },
+      "spellActivities": [
+        "moonbeamMove",
+        "moonbeamDamage"
+      ]
     }
   },
   "effects": [],

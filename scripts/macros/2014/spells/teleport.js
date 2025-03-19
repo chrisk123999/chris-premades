@@ -402,7 +402,7 @@ async function use({workflow}) {
 }
 export let teleport = {
     name: 'Teleport',
-    version: '1.1.0',
+    version: '1.2.28',
     hasAnimation: true,
     midi: {
         item: [

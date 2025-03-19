@@ -178,7 +178,8 @@
         "effectConditionText": "",
         "midiAutomationOnly": false,
         "name": "Hex: Move",
-        "img": "icons/magic/perception/silhouette-stealth-shadow.webp"
+        "img": "icons/magic/perception/silhouette-stealth-shadow.webp",
+        "appliedEffects": []
       }
     },
     "identifier": "hex",
@@ -233,7 +234,7 @@
       },
       "info": {
         "identifier": "hex",
-        "version": "1.1.0",
+        "version": "1.2.28",
         "source": "chris-premades"
       },
       "activityIdentifiers": {
@@ -241,6 +242,9 @@
         "hexMove": "3MqdZ8mSbQ1IXyQI"
       },
       "hiddenActivities": [
+        "hexMove"
+      ],
+      "spellActivities": [
         "hexMove"
       ]
     }

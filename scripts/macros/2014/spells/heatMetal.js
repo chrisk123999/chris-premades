@@ -117,7 +117,7 @@ async function early({dialog}) {
 }
 export let heatMetal = {
     name: 'Heat Metal',
-    version: '1.1.10',
+    version: '1.2.28',
     midi: {
         item: [
             {

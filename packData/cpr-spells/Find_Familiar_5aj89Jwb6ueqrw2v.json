@@ -182,7 +182,8 @@
         "effectConditionText": "",
         "midiAutomationOnly": false,
         "name": "Find Familiar: Touch",
-        "img": "icons/commodities/materials/feathers-brown.webp"
+        "img": "icons/commodities/materials/feathers-brown.webp",
+        "appliedEffects": []
       },
       "S5yJQt7Z9un20Drv": {
         "type": "utility",
@@ -242,7 +243,8 @@
         "effectConditionText": "",
         "midiAutomationOnly": false,
         "name": "Find Familiar: Pocket Dimension",
-        "img": "icons/magic/control/debuff-chains-orb-movement-blue.webp"
+        "img": "icons/magic/control/debuff-chains-orb-movement-blue.webp",
+        "appliedEffects": []
       }
     },
     "identifier": "find-familiar",
@@ -299,7 +301,7 @@
     "chris-premades": {
       "info": {
         "name": "Find Familiar",
-        "version": "1.1.0",
+        "version": "1.2.28",
         "identifier": "findFamiliar",
         "source": "chris-premades",
         "hasAnimation": true
@@ -319,7 +321,11 @@
         "findFamiliar": "dnd5eactivity000",
         "findFamiliarTouch": "Aw56bbUPaozKIi2r",
         "findFamiliarPocketDimension": "S5yJQt7Z9un20Drv"
-      }
+      },
+      "spellActivities": [
+        "findFamiliarTouch",
+        "findFamiliarPocketDimension"
+      ]
     }
   },
   "effects": [],

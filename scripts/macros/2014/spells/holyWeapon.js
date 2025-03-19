@@ -123,7 +123,7 @@ async function early({dialog}) {
 }
 export let holyWeapon = {
     name: 'Holy Weapon',
-    version: '1.2.21',
+    version: '1.2.28',
     midi: {
         item: [
             {

@@ -193,14 +193,13 @@
                 "formula": ""
               },
               "number": 1,
-              "denomination": 10,
+              "denomination": "10",
               "bonus": "",
               "types": [
                 "force"
               ],
               "scaling": {
-                "mode": "",
-                "number": 1
+                "mode": ""
               }
             }
           ]
@@ -276,7 +275,7 @@
       "info": {
         "identifier": "eldritchBlast",
         "source": "chris-premades",
-        "version": "1.1.10",
+        "version": "1.2.28",
         "hasAnimation": true
       },
       "activityIdentifiers": {
@@ -289,7 +288,10 @@
       "eldritchBlast": {
         "color": "purple",
         "sound": false
-      }
+      },
+      "spellActivities": [
+        "eldritchBlastBeam"
+      ]
     }
   },
   "effects": [],

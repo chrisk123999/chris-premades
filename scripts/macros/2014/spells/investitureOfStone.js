@@ -45,7 +45,7 @@ async function early({dialog}) {
 }
 export let investitureOfStone = {
     name: 'Investiture of Stone',
-    version: '1.1.0',
+    version: '1.2.28',
     midi: {
         item: [
             {

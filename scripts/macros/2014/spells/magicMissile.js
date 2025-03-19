@@ -88,7 +88,7 @@ async function use({workflow}) {
 }
 export let magicMissile = {
     name: 'Magic Missile',
-    version: '1.1.10',
+    version: '1.2.28',
     midi: {
         item: [
             {

@@ -177,7 +177,8 @@
         "effectConditionText": "",
         "midiAutomationOnly": false,
         "name": "Bigby's Hand: Move",
-        "img": "icons/magic/unholy/strike-hand-glow-pink.webp"
+        "img": "icons/magic/unholy/strike-hand-glow-pink.webp",
+        "appliedEffects": []
       }
     },
     "identifier": "bigbys-hand",
@@ -233,7 +234,7 @@
     "chris-premades": {
       "info": {
         "name": "Bigby's Hand",
-        "version": "1.1.0",
+        "version": "1.2.28",
         "identifier": "bigbysHand",
         "source": "chris-premades",
         "hasAnimation": true
@@ -253,6 +254,9 @@
         "bigbysHand": "dnd5eactivity000"
       },
       "hiddenActivities": [
+        "bigbysHandMove"
+      ],
+      "spellActivities": [
         "bigbysHandMove"
       ]
     }

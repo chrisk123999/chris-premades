@@ -161,7 +161,8 @@
           "affects": {
             "choice": false,
             "count": "",
-            "type": "self"
+            "type": "self",
+            "special": ""
           },
           "override": true,
           "prompt": true
@@ -188,8 +189,7 @@
                 "none"
               ],
               "scaling": {
-                "mode": "",
-                "number": 1
+                "mode": ""
               }
             }
           ]
@@ -199,7 +199,8 @@
         "effectConditionText": "",
         "midiAutomationOnly": false,
         "name": "Warding Bond: Damage",
-        "img": "icons/skills/targeting/target-strike-triple-blue.webp"
+        "img": "icons/skills/targeting/target-strike-triple-blue.webp",
+        "appliedEffects": []
       },
       "lP7h2QXXLeU6ltip": {
         "type": "utility",
@@ -241,7 +242,8 @@
           "affects": {
             "choice": false,
             "count": "",
-            "type": "any"
+            "type": "any",
+            "special": ""
           },
           "override": true,
           "prompt": true
@@ -262,7 +264,8 @@
         "effectConditionText": "",
         "midiAutomationOnly": false,
         "name": "Warding Bond: Dismiss",
-        "img": "icons/skills/targeting/target-strike-triple-blue.webp"
+        "img": "icons/skills/targeting/target-strike-triple-blue.webp",
+        "appliedEffects": []
       }
     },
     "identifier": "warding-bond",
@@ -346,7 +349,7 @@
     "chris-premades": {
       "info": {
         "identifier": "wardingBond",
-        "version": "1.1.0",
+        "version": "1.2.28",
         "source": "chris-premades"
       },
       "macros": {
@@ -364,7 +367,11 @@
         "wardingBond": "dnd5eactivity000",
         "wardingBondDamage": "8Ms5R9w5U4JaZmVt",
         "wardingBondDismiss": "lP7h2QXXLeU6ltip"
-      }
+      },
+      "spellActivities": [
+        "wardingBondDamage",
+        "wardingBondDismiss"
+      ]
     }
   },
   "effects": [],

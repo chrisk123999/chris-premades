@@ -195,7 +195,7 @@
                 "formula": ""
               },
               "number": 3,
-              "denomination": 6,
+              "denomination": "6",
               "bonus": "",
               "types": [
                 "fire"
@@ -274,7 +274,8 @@
         "effectConditionText": "",
         "midiAutomationOnly": false,
         "name": "Evoke Flame Blade",
-        "img": "icons/magic/fire/projectile-bolt-zigzag-orange.webp"
+        "img": "icons/magic/fire/projectile-bolt-zigzag-orange.webp",
+        "appliedEffects": []
       }
     },
     "identifier": "flame-blade",
@@ -340,7 +341,7 @@
     "chris-premades": {
       "info": {
         "name": "Flame Blade",
-        "version": "1.1.10",
+        "version": "1.2.28",
         "mutation": {
           "self": "Flame Blade"
         },
@@ -363,6 +364,10 @@
         "flameBladeEvoke": "1iCHtkZUVXhJUSep"
       },
       "hiddenActivities": [
+        "flameBladeScimitar",
+        "flameBladeEvoke"
+      ],
+      "spellActivities": [
         "flameBladeScimitar",
         "flameBladeEvoke"
       ]

@@ -135,7 +135,7 @@ async function early({dialog}) {
 }
 export let flamingSphere = {
     name: 'Flaming Sphere',
-    version: '1.1.0',
+    version: '1.2.28',
     hasAnimation: true,
     midi: {
         item: [

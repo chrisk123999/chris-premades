@@ -177,7 +177,7 @@
                 "formula": ""
               },
               "number": 2,
-              "denomination": 8,
+              "denomination": "8",
               "bonus": "",
               "types": [
                 "fire"
@@ -266,7 +266,8 @@
         "effectConditionText": "",
         "midiAutomationOnly": false,
         "name": "Heat Metal: Held",
-        "img": "icons/magic/fire/flame-burning-chain.webp"
+        "img": "icons/magic/fire/flame-burning-chain.webp",
+        "appliedEffects": []
       },
       "Uc52ckEpY9w8GddF": {
         "type": "utility",
@@ -302,10 +303,12 @@
         "target": {
           "template": {
             "contiguous": false,
-            "units": "ft"
+            "units": "ft",
+            "type": ""
           },
           "affects": {
-            "choice": false
+            "choice": false,
+            "type": ""
           },
           "override": true,
           "prompt": true
@@ -326,7 +329,8 @@
         "effectConditionText": "",
         "midiAutomationOnly": false,
         "name": "Heat Metal: Pulse",
-        "img": "icons/magic/fire/flame-burning-chain.webp"
+        "img": "icons/magic/fire/flame-burning-chain.webp",
+        "appliedEffects": []
       }
     },
     "identifier": "heat-metal",
@@ -391,7 +395,7 @@
     "chris-premades": {
       "info": {
         "name": "Heat Metal",
-        "version": "1.1.10",
+        "version": "1.2.28",
         "identifier": "heatMetal",
         "source": "chris-premades"
       },
@@ -412,7 +416,12 @@
         "heatMetalDamage": "RPeWu1C4fujXuBti",
         "heatMetalHeld": "mnxVTmGwcqMENTcj",
         "heatMetalPulse": "Uc52ckEpY9w8GddF"
-      }
+      },
+      "spellActivities": [
+        "heatMetalDamage",
+        "heatMetalHeld",
+        "heatMetalPulse"
+      ]
     }
   },
   "effects": [],

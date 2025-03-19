@@ -147,7 +147,7 @@ async function early({dialog}) {
 }
 export let hex = {
     name: 'Hex',
-    version: '1.1.0',
+    version: '1.2.28',
     midi: {
         item: [
             {

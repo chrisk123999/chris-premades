@@ -136,7 +136,8 @@
         "duration": {
           "units": "spec",
           "concentration": false,
-          "override": true
+          "override": true,
+          "special": ""
         },
         "effects": [
           {
@@ -188,7 +189,11 @@
         "useConditionText": "",
         "forceDialog": false,
         "effectConditionText": "",
-        "name": "Staggering Smite: Stagger"
+        "name": "Staggering Smite: Stagger",
+        "img": "",
+        "appliedEffects": [
+          "vRubZXNSzOcxjsgY"
+        ]
       }
     },
     "identifier": "staggering-smite",
@@ -246,7 +251,7 @@
     "chris-premades": {
       "info": {
         "name": "Staggering Smite",
-        "version": "1.1.0",
+        "version": "1.2.28",
         "identifier": "staggeringSmite",
         "source": "chris-premades"
       },
@@ -263,7 +268,10 @@
       "activityIdentifiers": {
         "staggeringSmite": "azuoZ5g8ebgFPjUH",
         "staggeringSmiteStagger": "96bwOirqaXMrMx0E"
-      }
+      },
+      "spellActivities": [
+        "staggeringSmiteStagger"
+      ]
     }
   },
   "effects": [

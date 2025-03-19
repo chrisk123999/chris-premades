@@ -59,7 +59,7 @@ async function use({trigger, workflow}) {
 }
 export let zoneOfTruth = {
     name: 'Zone of Truth',
-    version: '1.1.0',
+    version: '1.2.28',
     midi: {
         item: [
             {

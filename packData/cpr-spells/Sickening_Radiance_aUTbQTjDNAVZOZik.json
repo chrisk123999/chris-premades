@@ -176,14 +176,13 @@
                 "formula": ""
               },
               "number": 4,
-              "denomination": 10,
+              "denomination": "10",
               "bonus": "",
               "types": [
                 "radiant"
               ],
               "scaling": {
-                "mode": "",
-                "number": 1
+                "mode": ""
               }
             }
           ],
@@ -267,7 +266,7 @@
     "chris-premades": {
       "info": {
         "name": "Sickening Radiance",
-        "version": "1.1.10",
+        "version": "1.2.28",
         "identifier": "sickeningRadiance",
         "source": "chris-premades"
       },
@@ -283,6 +282,9 @@
         "sickeningRadianceDamage": "gATi3EgZG2Mh4GCk"
       },
       "hiddenActivities": [
+        "sickeningRadianceDamage"
+      ],
+      "spellActivities": [
         "sickeningRadianceDamage"
       ]
     }

@@ -184,7 +184,9 @@
         "useConditionText": "",
         "forceDialog": false,
         "effectConditionText": "",
-        "name": "Thunderous Smite: Push"
+        "name": "Thunderous Smite: Push",
+        "img": "",
+        "appliedEffects": []
       }
     },
     "identifier": "thunderous-smite",
@@ -265,7 +267,7 @@
     "chris-premades": {
       "info": {
         "name": "Thunderous Smite",
-        "version": "1.1.0",
+        "version": "1.2.28",
         "identifier": "thunderousSmite",
         "source": "chris-premades"
       },
@@ -282,7 +284,10 @@
       "activityIdentifiers": {
         "thunderousSmite": "dnd5eactivity000",
         "thunderousSmitePush": "JGOeVtHzEWoVsdIw"
-      }
+      },
+      "spellActivities": [
+        "thunderousSmitePush"
+      ]
     }
   },
   "effects": [],

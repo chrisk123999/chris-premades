@@ -188,7 +188,9 @@
         "useConditionText": "",
         "forceDialog": false,
         "effectConditionText": "",
-        "name": ""
+        "name": "",
+        "img": "",
+        "appliedEffects": []
       }
     },
     "identifier": "green-flame-blade",
@@ -251,7 +253,7 @@
     "chris-premades": {
       "info": {
         "name": "Green-Flame Blade",
-        "version": "1.2.21",
+        "version": "1.2.28",
         "identifier": "greenFlameBlade",
         "source": "chris-premades"
       },
@@ -270,6 +272,9 @@
         "greenFlameBladeLeap": "AfLqTos8ge57mcJT"
       },
       "hiddenActivities": [
+        "greenFlameBladeLeap"
+      ],
+      "spellActivities": [
         "greenFlameBladeLeap"
       ]
     }

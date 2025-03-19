@@ -175,7 +175,8 @@
         "effectConditionText": "",
         "midiAutomationOnly": false,
         "name": "Healing Spirit: Move",
-        "img": "icons/magic/light/beam-rays-yellow-blue-small.webp"
+        "img": "icons/magic/light/beam-rays-yellow-blue-small.webp",
+        "appliedEffects": []
       }
     },
     "identifier": "healing-spirit",
@@ -230,7 +231,7 @@
     "chris-premades": {
       "info": {
         "name": "Healing Spirit",
-        "version": "1.1.0",
+        "version": "1.2.28",
         "identifier": "healingSpirit",
         "source": "chris-premades",
         "hasAnimation": true
@@ -248,7 +249,10 @@
       "activityIdentifiers": {
         "healingSpirit": "dnd5eactivity000",
         "healingSpiritMove": "isywerxrNlQLHU5L"
-      }
+      },
+      "spellActivities": [
+        "healingSpiritMove"
+      ]
     }
   },
   "effects": [],

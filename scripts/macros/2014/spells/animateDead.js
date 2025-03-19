@@ -51,7 +51,7 @@ async function early({dialog}) {
 }
 export let animateDead = {
     name: 'Animate Dead',
-    version: '1.1.0',
+    version: '1.2.28',
     midi: {
         item: [
             {

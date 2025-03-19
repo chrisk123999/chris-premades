@@ -212,14 +212,13 @@
                 "formula": ""
               },
               "number": 1,
-              "denomination": 4,
+              "denomination": "4",
               "bonus": "1",
               "types": [
                 "force"
               ],
               "scaling": {
-                "mode": "",
-                "number": 1
+                "mode": ""
               }
             }
           ]
@@ -261,7 +260,9 @@
           "saveRemoves": true,
           "preRemoveConditionText": "",
           "postRemoveConditionText": ""
-        }
+        },
+        "img": "",
+        "appliedEffects": []
       },
       "VH7HwxXvnFU22CxV": {
         "type": "damage",
@@ -317,17 +318,18 @@
           },
           "parts": [
             {
-              "types": [
-                "force"
-              ],
-              "number": null,
-              "denomination": null,
               "custom": {
                 "enabled": true,
                 "formula": "5"
               },
+              "number": null,
+              "denomination": null,
+              "bonus": "",
+              "types": [
+                "force"
+              ],
               "scaling": {
-                "number": 1
+                "mode": ""
               }
             }
           ]
@@ -369,7 +371,9 @@
           "saveRemoves": true,
           "preRemoveConditionText": "",
           "postRemoveConditionText": ""
-        }
+        },
+        "img": "",
+        "appliedEffects": []
       }
     },
     "identifier": "magic-missile",
@@ -446,7 +450,7 @@
     },
     "chris-premades": {
       "info": {
-        "version": "1.2.22",
+        "version": "1.2.28",
         "hasAnimation": true,
         "identifier": "magicMissile",
         "source": "chris-premades",
@@ -470,7 +474,11 @@
         "magicMissileBolt": "zHpeqUnoKjOjo5aN",
         "magicMissileFlat": "VH7HwxXvnFU22CxV",
         "magicMissile": "dnd5eactivity000"
-      }
+      },
+      "spellActivities": [
+        "magicMissileBolt",
+        "magicMissileFlat"
+      ]
     }
   },
   "effects": [],

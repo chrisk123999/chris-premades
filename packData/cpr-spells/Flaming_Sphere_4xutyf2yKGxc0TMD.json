@@ -179,7 +179,8 @@
         "effectConditionText": "",
         "midiAutomationOnly": false,
         "name": "Flaming Sphere: Move",
-        "img": "icons/magic/light/explosion-star-orange.webp"
+        "img": "icons/magic/light/explosion-star-orange.webp",
+        "appliedEffects": []
       }
     },
     "identifier": "flaming-sphere",
@@ -233,7 +234,7 @@
       "info": {
         "identifier": "flamingSphere",
         "source": "chris-premades",
-        "version": "1.1.0",
+        "version": "1.2.28",
         "hasAnimation": true
       },
       "macros": {
@@ -249,7 +250,10 @@
       "activityIdentifiers": {
         "flamingSphere": "e1mCIrR78dOTWlMv",
         "flamingSphereMove": "nwAFaDn6e3VQsM6s"
-      }
+      },
+      "spellActivities": [
+        "flamingSphereMove"
+      ]
     }
   },
   "effects": [],

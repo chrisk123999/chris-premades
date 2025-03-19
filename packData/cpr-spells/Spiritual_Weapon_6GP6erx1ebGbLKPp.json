@@ -193,7 +193,7 @@
                 "formula": ""
               },
               "number": 1,
-              "denomination": 8,
+              "denomination": "8",
               "bonus": "@mod",
               "types": [
                 "force"
@@ -280,7 +280,7 @@
     "chris-premades": {
       "info": {
         "name": "Spiritual Weapon",
-        "version": "1.1.10",
+        "version": "1.2.28",
         "identifier": "spiritualWeapon",
         "source": "chris-premades"
       },
@@ -300,7 +300,10 @@
       },
       "config": {
         "useDefault": true
-      }
+      },
+      "spellActivities": [
+        "spiritualWeaponAttack"
+      ]
     }
   },
   "effects": [],

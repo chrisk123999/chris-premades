@@ -51,7 +51,7 @@ async function early({dialog}) {
 }
 export let danseMacabre = {
     name: 'Danse Macabre',
-    version: '1.1.0',
+    version: '1.2.28',
     hasAnimation: true,
     midi: {
         item: [

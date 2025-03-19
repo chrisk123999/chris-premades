@@ -196,7 +196,7 @@
                 "formula": ""
               },
               "number": 3,
-              "denomination": 6,
+              "denomination": "6",
               "bonus": "",
               "types": [
                 "necrotic"
@@ -274,7 +274,7 @@
     "chris-premades": {
       "info": {
         "identifier": "vampiricTouch",
-        "version": "1.1.10",
+        "version": "1.2.28",
         "source": "chris-premades"
       },
       "macros": {
@@ -290,7 +290,10 @@
       "activityIdentifiers": {
         "vampiricTouch": "dnd5eactivity000",
         "vampiricTouchAttack": "dVDb1NqKUitfS4oK"
-      }
+      },
+      "spellActivities": [
+        "vampiricTouchAttack"
+      ]
     }
   },
   "effects": [],

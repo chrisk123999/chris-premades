@@ -52,7 +52,7 @@ async function damage({trigger: {entity: effect}, workflow}) {
 }
 export let lightningArrow = {
     name: 'Lightning Arrow',
-    version: '1.1.10',
+    version: '1.2.28',
     hasAnimation: true,
     midi: {
         item: [

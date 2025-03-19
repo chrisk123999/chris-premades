@@ -173,7 +173,8 @@
         "effectConditionText": "",
         "midiAutomationOnly": false,
         "name": "Hunter's Mark: Move",
-        "img": "icons/weapons/bows/shortbow-recurve-yellow.webp"
+        "img": "icons/weapons/bows/shortbow-recurve-yellow.webp",
+        "appliedEffects": []
       }
     },
     "identifier": "hunters-mark",
@@ -231,7 +232,7 @@
     "chris-premades": {
       "info": {
         "name": "Hunter's Mark",
-        "version": "1.1.0",
+        "version": "1.2.28",
         "mutation": {
           "self": "Hunter's Mark"
         },
@@ -254,7 +255,10 @@
       "activityIdentifiers": {
         "huntersMark": "dnd5eactivity000",
         "huntersMarkMove": "CtwTg5RbWUSlWeM2"
-      }
+      },
+      "spellActivities": [
+        "huntersMarkMove"
+      ]
     }
   },
   "effects": [],

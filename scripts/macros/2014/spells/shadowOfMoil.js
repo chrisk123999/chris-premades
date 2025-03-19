@@ -66,7 +66,7 @@ async function onHit({trigger, workflow}) {
 }
 export let shadowOfMoil = {
     name: 'Shadow of Moil',
-    version: '1.1.10',
+    version: '1.2.28',
     midi: {
         item: [
             {

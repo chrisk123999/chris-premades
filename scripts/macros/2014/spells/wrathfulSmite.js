@@ -44,7 +44,7 @@ async function damage({trigger: {entity: effect}, workflow}) {
 }
 export let wrathfulSmite = {
     name: 'Wrathful Smite',
-    version: '1.2.21',
+    version: '1.2.28',
     midi: {
         item: [
             {

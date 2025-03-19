@@ -129,7 +129,8 @@
       "affects": {
         "choice": false,
         "type": "any",
-        "special": ""
+        "special": "",
+        "count": ""
       }
     },
     "sourceClass": ""

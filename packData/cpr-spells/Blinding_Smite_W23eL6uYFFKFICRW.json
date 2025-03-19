@@ -141,7 +141,11 @@
         "useConditionText": "",
         "forceDialog": false,
         "effectConditionText": "",
-        "name": "Blinding Smite: Blind"
+        "name": "Blinding Smite: Blind",
+        "img": "",
+        "appliedEffects": [
+          "GMNbfRmCxQMUgJYc"
+        ]
       },
       "iss9JADFQRJqRIqW": {
         "type": "utility",
@@ -267,7 +271,7 @@
     "chris-premades": {
       "info": {
         "name": "Blinding Smite",
-        "version": "1.2.21",
+        "version": "1.2.28",
         "identifier": "blindingSmite",
         "source": "chris-premades"
       },
@@ -286,6 +290,9 @@
         "blindingSmiteBlind": "dnd5eactivity100"
       },
       "hiddenActivities": [
+        "blindingSmiteBlind"
+      ],
+      "spellActivities": [
         "blindingSmiteBlind"
       ]
     }

@@ -181,7 +181,7 @@
                 "formula": ""
               },
               "number": 3,
-              "denomination": 10,
+              "denomination": "10",
               "bonus": "",
               "types": [
                 "lightning"
@@ -280,7 +280,7 @@
     "chris-premades": {
       "info": {
         "name": "Call Lightning",
-        "version": "1.1.10",
+        "version": "1.2.28",
         "mutation": {
           "self": "Storm Bolt"
         },
@@ -300,7 +300,10 @@
       "activityIdentifiers": {
         "callLightning": "dnd5eactivity000",
         "stormBolt": "zlDhux2rffASd60x"
-      }
+      },
+      "spellActivities": [
+        "stormBolt"
+      ]
     }
   },
   "folder": null,

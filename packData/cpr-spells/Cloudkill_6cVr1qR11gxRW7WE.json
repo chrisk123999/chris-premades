@@ -179,7 +179,7 @@
                 "formula": ""
               },
               "number": 5,
-              "denomination": 8,
+              "denomination": "8",
               "bonus": "",
               "types": [
                 "poison"
@@ -272,7 +272,7 @@
     "chris-premades": {
       "info": {
         "name": "Cloudkill",
-        "version": "1.1.10",
+        "version": "1.2.28",
         "settings": [
           "Template Listener"
         ],
@@ -292,6 +292,9 @@
         "cloudkill": "dnd5eactivity000"
       },
       "hiddenActivities": [
+        "cloudkillDamage"
+      ],
+      "spellActivities": [
         "cloudkillDamage"
       ]
     }

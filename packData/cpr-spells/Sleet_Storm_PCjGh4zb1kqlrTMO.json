@@ -189,7 +189,9 @@
         "useConditionText": "",
         "forceDialog": false,
         "effectConditionText": "",
-        "name": "Sleet Storm: Prone"
+        "name": "Sleet Storm: Prone",
+        "img": "",
+        "appliedEffects": []
       }
     },
     "identifier": "sleet-storm",
@@ -244,7 +246,7 @@
     "chris-premades": {
       "info": {
         "name": "Sleet Storm",
-        "version": "1.1.0",
+        "version": "1.2.28",
         "identifier": "sleetStorm",
         "source": "chris-premades"
       },
@@ -261,7 +263,10 @@
       "activityIdentifiers": {
         "sleetStorm": "dnd5eactivity000",
         "sleetStormProne": "J8iDwMUelCh5xbIN"
-      }
+      },
+      "spellActivities": [
+        "sleetStormProne"
+      ]
     }
   },
   "effects": [],

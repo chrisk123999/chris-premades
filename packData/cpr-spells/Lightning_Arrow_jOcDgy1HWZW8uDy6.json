@@ -177,7 +177,7 @@
                 "formula": ""
               },
               "number": 2,
-              "denomination": 8,
+              "denomination": "8",
               "bonus": "",
               "types": [
                 "lightning"
@@ -270,7 +270,7 @@
     "chris-premades": {
       "info": {
         "name": "Lightning Arrow",
-        "version": "1.1.10",
+        "version": "1.2.28",
         "hasAnimation": true,
         "identifier": "lightningArrow",
         "source": "chris-premades"
@@ -287,6 +287,9 @@
         "lightningArrowBurst": "u3RB5D5RyAK9VmES"
       },
       "hiddenActivities": [
+        "lightningArrowBurst"
+      ],
+      "spellActivities": [
         "lightningArrowBurst"
       ]
     }

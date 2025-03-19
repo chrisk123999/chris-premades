@@ -184,10 +184,12 @@
         "target": {
           "template": {
             "contiguous": false,
-            "units": "ft"
+            "units": "ft",
+            "type": ""
           },
           "affects": {
-            "choice": false
+            "choice": false,
+            "type": ""
           },
           "override": true,
           "prompt": true
@@ -208,7 +210,8 @@
         "effectConditionText": "",
         "midiAutomationOnly": false,
         "name": "Dawn: Move",
-        "img": "icons/magic/light/projectile-beam-yellow.webp"
+        "img": "icons/magic/light/projectile-beam-yellow.webp",
+        "appliedEffects": []
       },
       "Kanri5d5YFnwdGhM": {
         "type": "save",
@@ -269,14 +272,13 @@
                 "formula": ""
               },
               "number": 4,
-              "denomination": 10,
+              "denomination": "10",
               "bonus": "",
               "types": [
                 "radiant"
               ],
               "scaling": {
-                "mode": "",
-                "number": 1
+                "mode": ""
               }
             }
           ],
@@ -371,7 +373,7 @@
     "chris-premades": {
       "info": {
         "name": "Dawn",
-        "version": "1.1.10",
+        "version": "1.2.28",
         "mutation": {
           "self": "Dawn"
         },
@@ -399,6 +401,10 @@
       "hiddenActivities": [
         "dawnEndTurn",
         "dawnMove"
+      ],
+      "spellActivities": [
+        "dawnMove",
+        "dawnEndTurn"
       ]
     }
   },

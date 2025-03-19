@@ -188,14 +188,13 @@
                 "formula": ""
               },
               "number": 4,
-              "denomination": 8,
+              "denomination": "8",
               "bonus": "",
               "types": [
                 "radiant"
               ],
               "scaling": {
-                "mode": "",
-                "number": 1
+                "mode": ""
               }
             }
           ],
@@ -263,7 +262,8 @@
           "affects": {
             "choice": false,
             "count": "",
-            "type": "any"
+            "type": "any",
+            "special": ""
           },
           "override": true,
           "prompt": true
@@ -284,7 +284,8 @@
         "effectConditionText": "",
         "midiAutomationOnly": false,
         "name": "Holy Weapon: Dismiss",
-        "img": "icons/skills/melee/weapons-crossed-swords-yellow-teal.webp"
+        "img": "icons/skills/melee/weapons-crossed-swords-yellow-teal.webp",
+        "appliedEffects": []
       }
     },
     "identifier": "holy-weapon",
@@ -420,7 +421,7 @@
     "chris-premades": {
       "info": {
         "name": "Holy Weapon",
-        "version": "1.2.21",
+        "version": "1.2.28",
         "mutation": {
           "self": "Holy Weapon"
         },
@@ -444,6 +445,10 @@
         "holyWeaponBurst": "RlP3i72tgXrqH7aQ"
       },
       "hiddenActivities": [
+        "holyWeaponBurst",
+        "holyWeaponDismiss"
+      ],
+      "spellActivities": [
         "holyWeaponBurst",
         "holyWeaponDismiss"
       ]

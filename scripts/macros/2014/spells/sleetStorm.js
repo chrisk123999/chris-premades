@@ -45,7 +45,7 @@ async function enterOrStart({trigger: {entity: template, castData, token}}) {
 }
 export let sleetStorm = {
     name: 'Sleet Storm',
-    version: '1.1.0',
+    version: '1.2.28',
     midi: {
         item: [
             {
