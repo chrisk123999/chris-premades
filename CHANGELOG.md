@@ -1,6 +1,4 @@
 # 1.2.28 Release:
-## Modern Content Changes:
-- Improved Blessed Strikes: Potent Spellcasting and Divine Strike should be re-medkitted
 ## Bug Fixes:
 - Item Medkit
 - Blur (Modern)
@@ -10,6 +8,7 @@
 - Starry Form (Legacy)
 ## Update Notes:
 - Updated all spell automations to have their non-initial-cast activities marked as spell activities.
+- Improved Blessed Strikes: Potent Spellcasting and Divine Strike should be re-medkitted.
 
 # 1.2.27 Release:
 ## New Modern Content:
