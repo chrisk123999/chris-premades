@@ -237,6 +237,7 @@
             "UseRollTotal": "Use {itemName}? (Roll Total: {rollTotal})",
             "UseRollTotalDetail": "Use {itemName} for an extra {bonusFormula}? (Roll Total: {rollTotal})",
             "UseWeaponDamageTotal": "Use {itemName}? (Weapon Damage: {damageTotal})",
+            "UseWeaponDamageTotalWithAverage": "Use {itemName}? (Weapon Damage: {damageTotal}; Average Damage: {damageAverage})",
             "WhatDo": "What would you like to do?",
             "YesDetail": "Yes ({detail})"
         },

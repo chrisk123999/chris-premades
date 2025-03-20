@@ -5,10 +5,15 @@ async function damage({trigger: {entity: item}, workflow}) {
     if (!combatUtils.perTurnCheck(item, 'savageAttacker')) return;
     let numWeaponDamageRolls = workflow.activity.damage.parts.length;
     let damageTotal = 0;
+    let damageAverage = 0;
     for (let i = 0; i < numWeaponDamageRolls; i++) {
         damageTotal += workflow.damageRolls[i].total;
+        const minRoll = await Roll.create(workflow.damageRolls[i].formula).evaluate({ minimize: true });
+        const maxRoll = await Roll.create(workflow.damageRolls[i].formula).evaluate({ maximize: true });
+        damageAverage += ((await minRoll).total + (await maxRoll).total) / 2;
     }
-    let selection = await dialogUtils.confirm(item.name, genericUtils.format('CHRISPREMADES.Dialog.UseWeaponDamageTotal', {itemName: item.name, damageTotal: damageTotal}));
+    damageAverage = Math.ceil(damageAverage);
+    let selection = await dialogUtils.confirm(item.name, genericUtils.format('CHRISPREMADES.Dialog.UseWeaponDamageTotalWithAverage', {itemName: item.name, damageTotal: damageTotal, damageAverage: damageAverage}));
     if (!selection) return;
     await workflowUtils.completeItemUse(item);
     await combatUtils.setTurnCheck(item, 'savageAttacker');
