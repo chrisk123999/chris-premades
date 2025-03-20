@@ -237,6 +237,7 @@
             "UseRollTotal": "Usar {itemName}? (Total: {rollTotal})",
             "UseRollTotalDetail": "Usar {itemName} para {bonusFormula} adicional? (Total da Rolagem: {rollTotal})",
             "UseWeaponDamageTotal": "Usar {itemName}? (Dano da Arma: {damageTotal})",
+            "UseWeaponDamageTotalWithAverage": "Usar {itemName}? (Dano da Arma: {damageTotal}; Média de Dano: {damageAverage})",
             "WhatDo": "O que você quer fazer?",
             "YesDetail": "Sim ({detail})"
         },
@@ -361,6 +362,7 @@
             "Select": "Selecionar",
             "SelectDamageType": "Escolha um tipo de dano:",
             "SelectEffect": "Escolha um efeito:",
+            "SelectSpell": "Escolha uma Magia:",
             "SelectSpellSlot": "Escolha um espaço de magia:",
             "SelectTargetEffect": "Escolha um efeito para cada alvo:",
             "Skill": "Teste de Perícia",
@@ -1029,6 +1031,9 @@
             },
             "Grease": {
                 "Fall": "Área Escorregadia: Queda"
+            },
+            "GreaterDivineIntervention": {
+                "RestFormula": "Fórmula do Descanso:"
             },
             "GreenFlameBlade": {
                 "Leap": "Onde o fogo saltou?",
