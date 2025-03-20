@@ -276,8 +276,8 @@ async function turnEnd({trigger: {entity: effect, token}}) {
         return;
     }
     if (lastTurnString === '') lastTurnString = '0-0';
-    let [lastRound, lastTurn] = lastTurnString.split('-');
-    let [currentRound, currentTurn] = combatUtils.currentTurn().split('-');
+    let [lastRound, lastTurn] = lastTurnString.split('-').map(i => Number(i));
+    let [currentRound, currentTurn] = combatUtils.currentTurn().split('-').map(i => Number(i));
     if (currentTurn === 0) lastRound++;
     let roundDiff = currentRound - lastRound;
     if (roundDiff >= 1) {

@@ -1,6 +1,7 @@
 # 1.2.29 Release:
 ## Bug Fixes:
 - Wrathful Smite (Modern)
+- Rage (Modern)
 
 # 1.2.28 Release:
 ## Bug Fixes:
