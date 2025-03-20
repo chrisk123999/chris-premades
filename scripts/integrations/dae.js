@@ -8,9 +8,14 @@ function initFlags() {
         'flags.chris-premades.turnImmunity',
         'flags.chris-premades.turnResistance'
     ];
-    for (let [condition, {label}] of Object.entries(CONFIG.DND5E.conditionTypes)) {
+    for (let condition of Object.keys(CONFIG.DND5E.conditionTypes)) {
         browserFields.push('flags.chris-premades.CR.' + condition);
         browserFields.push('flags.chris-premades.CV.' + condition);
+    }
+    daeFieldBrowserFields.push(...Array.from(new Set(browserFields)).sort());
+}
+function injectFlags() {
+    for (let [condition, {label}] of Object.entries(CONFIG.DND5E.conditionTypes)) {
         foundry.utils.setProperty(game.i18n.translations, 'dae.CPR.fieldData.flags.chris-premades.CV.' + condition, {
             name: genericUtils.format('CHRISPREMADES.Generic.ConditionVulnerability.Name', {condition: label}),
             description: genericUtils.format('CHRISPREMADES.Generic.ConditionVulnerability.Description', {condition: label})
@@ -20,11 +25,16 @@ function initFlags() {
             description: genericUtils.format('CHRISPREMADES.Generic.ConditionResistance.Description', {condition: label})
         });
     }
-    daeFieldBrowserFields.push(...Array.from(new Set(browserFields)).sort());
-    DAE.addAutoFields(daeFieldBrowserFields);
+    DAE.addAutoFields(['flags.chris-premades.senses.magicalDarkness']);
 }
 function addFlags(fieldData) {
     fieldData['CPR'] = daeFieldBrowserFields;
+}
+function modifySpecials(specKey, specials) {
+    for (let field of daeFieldBrowserFields) {
+        specials[field] = [new foundry.data.fields.StringField(), 5];
+    }
+    delete specials['flags.chris-premades.senses.magicalDarkness'];
 }
 function renderItemSheet(app, [elem], options) {
     let isTidy = app?.classList?.contains?.('tidy5e-sheet');
@@ -59,7 +69,9 @@ function renderItemSheet(app, [elem], options) {
 }
 export let dae = {
     initFlags,
+    injectFlags,
     addFlags,
+    modifySpecials,
     renderItemSheet,
     daeFieldBrowserFields
 };

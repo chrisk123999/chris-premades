@@ -38,6 +38,8 @@ import {migrate} from './migrations.js';
 import {initiative} from './extensions/initiative.js';
 Hooks.once('socketlib.ready', registerSockets);
 Hooks.once('init', () => {
+    dae.initFlags();
+    Hooks.on('dae.modifySpecials', dae.modifySpecials);
     registerSettings();
     if (utils.genericUtils.getCPRSetting('useLocalCompendiums')) utils.constants.setUseLocalCompendium(true);
     registerMenus();
@@ -60,7 +62,7 @@ Hooks.once('ready', () => {
     troubleshooter.startup();
     registerHooks();
     ddbi.ready();
-    dae.initFlags();
+    dae.injectFlags();
     if (game.modules.get('gambits-premades')?.active) gambitPremades.init(utils.genericUtils.getCPRSetting('gambitPremades'));
     if (game.modules.get('midi-item-showcase-community')?.active) miscPremades.init(utils.genericUtils.getCPRSetting('miscPremades'));
     if (utils.genericUtils.getCPRSetting('disableSpecialEffects')) conditions.disableSpecialEffects(true);
