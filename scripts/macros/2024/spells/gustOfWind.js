@@ -1,4 +1,4 @@
-import {activityUtils, effectUtils, genericUtils, itemUtils, tokenUtils, workflowUtils} from '../../../utils.js';
+import {activityUtils, effectUtils, genericUtils, itemUtils, templateUtils, tokenUtils, workflowUtils} from '../../../utils.js';
 
 async function use({workflow}) {
     let concentrationEffect = effectUtils.getConcentrationEffect(workflow.actor, workflow.item);
@@ -14,6 +14,7 @@ async function use({workflow}) {
                 template: {
                     name: workflow.item.name
                 },
+                rules: 'modern',
                 castData: {...workflow.castData, saveDC: itemUtils.getSaveDC(workflow.item)},
                 macros: {
                     template: ['gustOfWindGust']
@@ -42,7 +43,8 @@ async function use({workflow}) {
     };
     await effectUtils.createEffect(workflow.actor, effectData, {
         concentrationItem: workflow.item, 
-        strictlyInterdependent: true, 
+        strictlyInterdependent: true,
+        rules: 'modern',
         vae: [{
             type: 'use', 
             name: feature.name,
@@ -56,7 +58,10 @@ async function use({workflow}) {
             favorite: true
         }
     });
-    if (concentrationEffect) await genericUtils.update(concentrationEffect, {duration: effectData.duration});
+    let featurePush = activityUtils.getActivityByIdentifier(fromUuidSync(template.flags.dnd5e.item), 'gustOfWindPush', {strict: true});
+    if (!featurePush) return;
+    let targets = templateUtils.getTokensInTemplate(template);
+    await pushHelper(featurePush, targets, template);
 }
 async function move({workflow}) {
     let effect = effectUtils.getEffectByIdentifier(workflow.actor, 'gustOfWind');
@@ -69,22 +74,34 @@ async function move({workflow}) {
         direction: newTemplate.direction
     });
     await genericUtils.remove(newTemplate);
+    if (itemUtils.getConfig(workflow.item, 'pushOnMove')) {
+        let feature = activityUtils.getActivityByIdentifier(workflow.item, 'gustOfWindPush', {strict: true});
+        if (!feature) return;
+        let targets = templateUtils.getTokensInTemplate(template);
+        await pushHelper(feature, targets, template);
+    }
 }
-async function startTurn({trigger: {entity: template, castData, token}}) {
+async function endTurn({trigger: {entity: template, castData, token}}) {
     let feature = activityUtils.getActivityByIdentifier(fromUuidSync(template.flags.dnd5e.item), 'gustOfWindPush', {strict: true});
     if (!feature) return;
-    let featureWorkflow = await workflowUtils.syntheticActivityRoll(feature, [token]);
+    await pushHelper(feature, [token], template);
+}
+async function pushHelper(feature, targets, template) {
+    let featureWorkflow = await workflowUtils.syntheticActivityRoll(feature, Array.from(targets));
     if (!featureWorkflow.failedSaves.size) return;
     let gustAngle = template.object.ray.angle;
-    let ray = Ray.fromAngle(token.center.x, token.center.y, gustAngle, canvas.dimensions.size);
-    await tokenUtils.moveTokenAlongRay(token, ray, 15);
+    let ray = Ray.fromAngle(0, 0, gustAngle, canvas.dimensions.size);
+    return Promise.all(featureWorkflow.failedSaves.map(async token => {
+        return tokenUtils.moveTokenAlongRay(token, ray, 15);
+    }));
 }
 async function early({dialog}) {
     dialog.configure = false;
 }
 export let gustOfWind = {
     name: 'Gust of Wind',
-    version: '1.2.28',
+    version: '1.2.29',
+    rules: 'modern',
     midi: {
         item: [
             {
@@ -106,15 +123,26 @@ export let gustOfWind = {
                 activities: ['gustOfWindMove']
             }
         ]
-    }
+    },
+    config: [
+        {
+            value: 'pushOnMove',
+            label: 'CHRISPREMADES.Macros.GustOfWind.PushOnMove',
+            type: 'checkbox',
+            default: false,
+            category: 'homebrew',
+            homebrew: true
+        }
+    ]
 };
 export let gustOfWindGust = {
     name: 'Gust of Wind: Gust',
     version: gustOfWind.version,
+    rules: gustOfWind.rules,
     template: [
         {
-            pass: 'turnStart',
-            macro: startTurn,
+            pass: 'turnEnd',
+            macro: endTurn,
             priority: 50
         }
     ]

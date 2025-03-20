@@ -1064,7 +1064,8 @@
             },
             "GustOfWind": {
                 "Move": "Gust of Wind: Move",
-                "Push": "Gust of Wind: Push"
+                "Push": "Gust of Wind: Push",
+                "PushOnMove": "Push Targets After \"Move\":"
             },
             "HailOfThorns": {
                 "Burst": "Hail of Thorns: Burst"
@@ -1118,6 +1119,8 @@
                 "Target": "Holy Weapon: Target"
             },
             "HungerOfHadar": {
+                "Buff": "Increase Damage for {name}",
+                "BuffTitle": "Select Upcast Bonus",
                 "Cold": "Hunger of Hadar: Cold",
                 "Tentacles": "Hunger of Hadar: Tentacles"
             },
@@ -1797,6 +1800,7 @@
                 "FalseDestination": "False Destination",
                 "Familiarity": "What is the familiarity?",
                 "HowFar": "How far away is the destination?",
+                "LinkedObject": "Linked Object",
                 "Mishap": "Mishap",
                 "OffTarget": "Off Target",
                 "OffTargetString": "Destination is {distance} {units} {direction} of the intended location.",
@@ -1807,7 +1811,8 @@
                 "SelectDestination": "Select Destination?",
                 "SimilarArea": "Similar Area",
                 "VeryFamiliar": "Very Familiar",
-                "ViewedOnce": "Viewed Once"
+                "ViewedOnce": "Viewed Once",
+                "ViewedOnceDescribed": "Viewed Once or Described"
             },
             "TentacleOfTheDeeps": {
                 "Attack": "Tentacle of the Deeps: Attack",

@@ -1,7 +1,22 @@
 # 1.2.29 Release:
+## New Modern Content:
+- Globe of Invulnerability
+- Gust of Wind
+- Heroism
+- Hex
+- Hunger of Hadar
+- Ice Storm
+- Insect Plague
+- Sanctuary
+- Shocking Grasp
+- Sleet Storm
+- Synaptic Static
+- Teleport
+- Warding Bond
 ## Bug Fixes:
 - Wrathful Smite (Modern)
 - Rage (Modern)
+- Globe of Invulnerability (Legacy)
 ## Update Notes:
 - Savage Attacker now provides the average damage of the attack.
 
