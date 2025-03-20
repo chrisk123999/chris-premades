@@ -36,7 +36,7 @@ async function combatEnd({trigger: {entity: item}}) {
 }
 export let savageAttacker = {
     name: 'Savage Attacker',
-    version: '1.1.0',
+    version: '1.2.29',
     midi: {
         actor: [
             {

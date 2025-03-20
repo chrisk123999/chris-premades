@@ -2,6 +2,8 @@
 ## Bug Fixes:
 - Wrathful Smite (Modern)
 - Rage (Modern)
+## Update Notes:
+- Savage Attacker now provides the average damage of the attack.
 
 # 1.2.28 Release:
 ## Bug Fixes:
