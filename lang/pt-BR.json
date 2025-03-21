@@ -237,6 +237,7 @@
             "UseRollTotal": "Usar {itemName}? (Total: {rollTotal})",
             "UseRollTotalDetail": "Usar {itemName} para {bonusFormula} adicional? (Total da Rolagem: {rollTotal})",
             "UseWeaponDamageTotal": "Usar {itemName}? (Dano da Arma: {damageTotal})",
+            "UseWeaponDamageTotalWithAverage": "Usar {itemName}? (Dano da Arma: {damageTotal}; Média de Dano: {damageAverage})",
             "WhatDo": "O que você quer fazer?",
             "YesDetail": "Sim ({detail})"
         },
@@ -361,6 +362,7 @@
             "Select": "Selecionar",
             "SelectDamageType": "Escolha um tipo de dano:",
             "SelectEffect": "Escolha um efeito:",
+            "SelectSpell": "Escolha uma Magia:",
             "SelectSpellSlot": "Escolha um espaço de magia:",
             "SelectTargetEffect": "Escolha um efeito para cada alvo:",
             "Skill": "Teste de Perícia",
@@ -1030,6 +1032,9 @@
             "Grease": {
                 "Fall": "Área Escorregadia: Queda"
             },
+            "GreaterDivineIntervention": {
+                "RestFormula": "Fórmula do Descanso:"
+            },
             "GreenFlameBlade": {
                 "Leap": "Onde o fogo saltou?",
                 "LeapFeature": "Lâmina da Chama Esverdeada: Salto",
@@ -1059,7 +1064,8 @@
             },
             "GustOfWind": {
                 "Move": "Lufada de Vento: Mover",
-                "Push": "Lufada de Vento: Empurrar"
+                "Push": "Lufada de Vento: Empurrar",
+                "PushOnMove": "Empurar Alvos Após \"Mover\":"
             },
             "HailOfThorns": {
                 "Burst": "Saraivada de Espinhos: Explosão"
@@ -1113,6 +1119,8 @@
                 "Target": "Arma Sagrada: Alvo"
             },
             "HungerOfHadar": {
+                "Buff": "Aumentar Dano para {name}",
+                "BuffTitle": "Escolha Bônus de Upcast",
                 "Cold": "Fome de Hadar: Gélido",
                 "Tentacles": "Fome de Hadar: Tentáculos"
             },
@@ -1792,6 +1800,7 @@
                 "FalseDestination": "Destino Falso",
                 "Familiarity": "Qual é a familiaridade?",
                 "HowFar": "O quão distante é o destino?",
+                "LinkedObject": "Objeto Vinculado",
                 "Mishap": "Equívoco",
                 "OffTarget": "Fora do Alvo",
                 "OffTargetString": "O destino está a {distance} {units} ao {direction} do local pretendido.",
@@ -1802,7 +1811,8 @@
                 "SelectDestination": "Selecionar Destino?",
                 "SimilarArea": "Área Similar",
                 "VeryFamiliar": "Muito Familiar",
-                "ViewedOnce": "Visto uma Vez"
+                "ViewedOnce": "Visto uma Vez",
+                "ViewedOnceDescribed": "Visto ou Descrito Uma Vez"
             },
             "TentacleOfTheDeeps": {
                 "Attack": "Tentáculo das Profundezas: Ataque",
@@ -1922,7 +1932,6 @@
                 "InstantHealthConditions": "Condições de Vida Instantânea:",
                 "MaxLevel": "Nível Máx. de Magia:",
                 "Rest": "Você passou o dia fazendo apenas atividades leves?",
-                "SelectSpell": "Escolha uma Magia:",
                 "StressDuration": "Fórmula de Duração do Estresse:"
             },
             "WitherAndBloom": {
