@@ -1,3 +1,7 @@
+# 1.2.30 Release:
+## Bug Fixes:
+- Spirit Guardians (Modern)
+
 # 1.2.29 Release:
 ## New Modern Content:
 - Globe of Invulnerability

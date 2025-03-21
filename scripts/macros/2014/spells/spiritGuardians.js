@@ -70,7 +70,19 @@ async function use({trigger, workflow}) {
         .play();
     /* eslint-enable indent */
 }
-async function moveOrTurn({trigger: {target, token, entity: effect}}) {
+async function moveOrTurn({trigger: {target, token, entity: effect}, options}) {
+    if (options) {
+        let tempToken = await target.actor.getTokenDocument({
+            x: options['chris-premades']?.coords?.previous?.x ?? target.x,
+            y: options['chris-premades']?.coords?.previous?.y ?? target.y,
+            elevation: options['chris-premades']?.coords?.previous?.elevation ?? target.elevation,
+            actorLink: false,
+            hidden: true,
+            delta: {ownership: target.actor.ownership}
+        }, {parent: canvas.scene});
+        let oldDistance = tokenUtils.getDistance(token, tempToken);
+        if (oldDistance <= 15) return;
+    }
     if (combatUtils.inCombat()) {
         let turn = combatUtils.currentTurn();
         let nearbySpiritGuardianEffects = tokenUtils.findNearby(target, 15, 'enemy', {includeToken: true}).filter(i => effectUtils.getEffectByIdentifier(i.actor, 'spiritGuardiansDamage')).map(j => effectUtils.getEffectByIdentifier(j.actor, 'spiritGuardiansDamage'));
