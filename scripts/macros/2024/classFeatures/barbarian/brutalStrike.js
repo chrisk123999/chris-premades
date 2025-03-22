@@ -43,7 +43,7 @@ async function damage({trigger: {entity: item}, workflow}) {
     await workflowUtils.bonusDamage(workflow, formula, {damageType: workflow.defaultDamageType});
 }
 async function late({trigger: {entity: item}, workflow}) {
-    if (!workflow.targets.size) return;
+    if (!workflow.hitTargets.size) return;
     let activitiesIdentifiers = workflow['chris-premades']?.brutalStrike;
     if (!activitiesIdentifiers) return;
     let activities = activitiesIdentifiers.map(i => activityUtils.getActivityByIdentifier(item, i, {strict: true}));
@@ -66,7 +66,7 @@ async function sunderingBlowAttacked({trigger: {entity: effect}, workflow}) {
 }
 export let brutalStrike = {
     name: 'Brutal Strike',
-    version: '1.1.22',
+    version: '1.2.30',
     rules: 'modern',
     midi: {
         item: [
