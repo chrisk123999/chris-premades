@@ -1,5 +1,5 @@
 import {custom} from './custom.js';
-import {genericUtils, socketUtils, templateUtils} from '../utils.js';
+import {genericUtils, macroUtils, socketUtils, templateUtils} from '../utils.js';
 function getTemplateMacroData(template) {
     return template.flags['chris-premades']?.macros?.template ?? [];
 }
@@ -13,20 +13,33 @@ function collectTemplatesMacros(templates, pass, token) {
     let triggers = [];
     templates.forEach(template => {
         let macroList = collectMacros(template);
-        if (!macroList.length) return;
-        let templateMacros = macroList.filter(i => i.template?.find(j => j.pass === pass)).flatMap(k => k.template).filter(l => l.pass === pass);
-        if (!templateMacros.length) return;
-        let trigger = {
-            entity: template,
-            castData: {
-                castLevel: templateUtils.getCastLevel(template),
-                saveDC: templateUtils.getSaveDC(template)
-            },
-            macros: templateMacros,
-            name: templateUtils.getName(template).slugify(),
-            token: token
-        };
-        triggers.push(trigger);
+        if (macroList.length) {
+            let templateMacros = macroList.filter(i => i.template?.find(j => j.pass === pass)).flatMap(k => k.template).filter(l => l.pass === pass);
+            if (!templateMacros.length) return;
+            triggers.push({
+                entity: template,
+                castData: {
+                    castLevel: templateUtils.getCastLevel(template) ?? -1,
+                    saveDC: templateUtils.getSaveDC(template) ?? -1
+                },
+                macros: templateMacros,
+                name: templateUtils.getName(template).slugify(),
+                token: token
+            });
+        }
+        let embeddedMacros = macroUtils.getEmbeddedMacros(template, 'template', {pass});
+        if (embeddedMacros.length) {
+            triggers.push({
+                entity: template,
+                castData: {
+                    castLevel: templateUtils.getCastLevel(template) ?? -1,
+                    saveDC: templateUtils.getSaveDC(template) ?? -1
+                },
+                macros: embeddedMacros,
+                name: templateUtils.getName(template).slugify(),
+                token: token
+            });
+        }
     });
     return triggers;
 }
@@ -65,18 +78,22 @@ function getSortedTriggers(templates, pass, token) {
                 macro: macro.macro,
                 priority: macro.priority,
                 name: trigger.name,
-                token: trigger.token
+                token: trigger.token,
+                macroName: typeof macro.macro === 'string' ? macro.name : macro.macro.name
             });
         });
     });
     return sortedTriggers.sort((a, b) => a.priority - b.priority);
 }
 async function executeMacro(trigger, options) {
-    genericUtils.log('dev', 'Executing Template Macro: ' + trigger.macro.name);
+    genericUtils.log('dev', 'Executing Template Macro: ' + trigger.macroName);
     try {
-        await trigger.macro({trigger, options});
+        if (typeof trigger.macro === 'string') {
+            await custom.executeScript({script: trigger.macro, trigger, options});
+        } else {
+            await trigger.macro({trigger, options});
+        }
     } catch (error) {
-        //Add some sort of ui notice here. Maybe even some debug info?
         console.error(error);
     }
 }
@@ -87,16 +104,10 @@ async function executeMacroPass(templates, pass, token, options) {
     for (let i of triggers) await executeMacro(i, options);
     return triggers.length;
 }
-/*function preUpdateTemplate(template, updates, context, userId) {
-    if (!socketUtils.isTheGM()) return;
-    genericUtils.setProperty(context, 'chris-premades.coords.previous', {x: template.x, y: template.y});
-}*/
 async function updateMeasuredTemplate(template, updates, context, userId) {
     if (!socketUtils.isTheGM()) return;
     let moved = updates.x || updates.y;
     if (!moved) return;
-    //let previous = context?.['chris-premades']?.coords?.previous;
-    //let current = {x: template.x, y: template.y};
     await executeMacroPass([template], 'moved');
 }
 export let templateEvents = {

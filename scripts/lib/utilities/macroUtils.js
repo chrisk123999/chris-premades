@@ -42,10 +42,27 @@ async function removeEmbeddedMacro(entity, type, name) {
         await genericUtils.setFlag(entity, 'chris-premades', 'embeddedMacros.' + type, flagData);
     }
 }
+function getEmbeddedActivityShapeMacros(activity, entityType) {
+    return genericUtils.getProperty(activity.item, 'flags.chris-premades.embeddedActivityShapeMacros.' + activity.id + '.' + entityType) ?? [];
+}
+async function addEmbeddedActivityShapeMacro(activity, entityType, type, macroData) {
+    let flagData = genericUtils.getProperty(activity.item, 'flags.chris-premades.embeddedActivityShapeMacros.' + activity.id + '.' + entityType) ?? [];
+    macroData.type = type;
+    flagData.push(macroData);
+    await genericUtils.setFlag(activity.item, 'chris-premades', 'embeddedActivityShapeMacros.' + activity.id + '.' + entityType, flagData);
+}
+async function removeEmbeddedActivityShapeMacro(activity, entityType, name) {
+    let flagData = genericUtils.getProperty(activity.item, 'flags.chris-premades.embeddedActivityShapeMacros.' + activity.id + '.' + entityType) ?? [];
+    flagData = flagData.filter(i => i.name !== name);
+    await genericUtils.setFlag(activity.item, 'chris-premades', 'embeddedActivityShapeMacros.' + activity.id + '.' + entityType, flagData);
+}
 export let macroUtils = {
     registerMacros: custom.registerMacros,
     getMacro: custom.getMacro,
     getEmbeddedMacros,
     addEmbeddedMacro,
-    removeEmbeddedMacro
+    removeEmbeddedMacro,
+    getEmbeddedActivityShapeMacros,
+    addEmbeddedActivityShapeMacro,
+    removeEmbeddedActivityShapeMacro
 };

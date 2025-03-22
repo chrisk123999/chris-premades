@@ -26,6 +26,7 @@ import {activities} from './extensions/activities.js';
 import {ItemMedkit} from './applications/medkit-item.js';
 import {itemEvent} from './events/createItem.js';
 import {template} from './extensions/template.js';
+import {region} from './extensions/region.js';
 export function registerHooks() {
     Hooks.on('createSetting', genericUtils.createUpdateSetting);
     Hooks.on('updateSetting', genericUtils.createUpdateSetting);
@@ -84,7 +85,8 @@ export function registerHooks() {
     Hooks.on('preDeleteItem', equipment.remove);
     Hooks.on('preCreateItem', equipment.addOrUpdate);
     Hooks.on('dnd5e.restCompleted', rest);
-    Hooks.on('preCreateMeasuredTemplate', template.rules);
+    Hooks.on('preCreateMeasuredTemplate', template.preCreateMeasuredTemplate);
+    //Hooks.on('preCreateRegion', region.preCreateRegion);
     if (genericUtils.getCPRSetting('addActions')) Hooks.on('createToken', actions.createToken);
     if (genericUtils.getCPRSetting('itemContext')) Hooks.on('dnd5e.getItemContextOptions', item.send);
     if (game.user.isGM) {
