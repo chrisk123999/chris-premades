@@ -1,9 +1,6 @@
 import {DialogApp} from '../../applications/dialog.js';
 import {tokenUtils, genericUtils} from '../../utils.js';
 import {socket, sockets} from '../sockets.js';
-/*
-        useSpellWhenEmpty - 1
-*/
 async function buttonDialog(title, content, buttons, {displayAsRows = true, userId = game.user.id} = {}) {
     let inputs = [
         ['button', [], {displayAsRows: displayAsRows}]

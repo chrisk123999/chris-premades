@@ -3,8 +3,7 @@ import {requirements} from '../extensions/requirements.js';
 import {conditionResistance} from '../macros/mechanics/conditionResistance.js';
 import {conditionVulnerability} from '../macros/mechanics/conditionVulnerability.js';
 import {templateVisibility} from '../macros/mechanics/templateVisibility.js';
-import {activityUtils, actorUtils, effectUtils, genericUtils, itemUtils, rollUtils, socketUtils, templateUtils} from '../utils.js';
-import {automatedAnimations} from '../integrations/automatedAnimations.js';
+import {activityUtils, actorUtils, effectUtils, genericUtils, itemUtils, macroUtils, regionUtils, rollUtils, socketUtils, templateUtils} from '../utils.js';
 import {diceSoNice} from '../integrations/diceSoNice.js';
 import {cleave} from '../macros/mechanics/cleave.js';
 import {critFumble} from '../macros/homebrew/critFumble.js';
@@ -50,60 +49,163 @@ function collectAllMacros({activity, item, token, actor, sourceToken, targetToke
             });
         }
     }
+    if (activity && item) {
+        let embeddedMacros = macroUtils.getEmbeddedMacros(activity, 'midi.item', {pass});
+        if (embeddedMacros.length) {
+            triggers.push({
+                entity: item,
+                castData: {
+                    castLevel: item.system.level ?? -1,
+                    baseLevel: item.system.level ?? -1,
+                    saveDC: itemUtils.getSaveDC(item) ?? -1
+                },
+                macros: embeddedMacros,
+                name: item.name.slugify(),
+                token,
+                sourceToken,
+                targetToken
+            });
+        }
+    }
     if (actor) {
         actor.items.forEach(i => {
             let macroList = collectActorMacros(i, pass);
-            if (!macroList.length) return;
-            triggers.push({
-                entity: i,
-                castData: {
-                    castLevel: i.system.level ?? -1,
-                    baseLevel: i.system.level ?? -1,
-                    saveDC: itemUtils.getSaveDC(i) ?? -1
-                },
-                macros: macroList,
-                name: i.name.slugify(),
-                token: token,
-                sourceToken,
-                targetToken
-            });
+            if (macroList.length) {
+                triggers.push({
+                    entity: i,
+                    castData: {
+                        castLevel: i.system.level ?? -1,
+                        baseLevel: i.system.level ?? -1,
+                        saveDC: itemUtils.getSaveDC(i) ?? -1
+                    },
+                    macros: macroList,
+                    name: i.name.slugify(),
+                    token: token,
+                    sourceToken,
+                    targetToken
+                });
+            }
+            let embeddedMacros = macroUtils.getEmbeddedMacros(i, 'midi.actor', {pass});
+            if (embeddedMacros.length) {
+                triggers.push({
+                    entity: item,
+                    castData: {
+                        castLevel: item.system.level ?? -1,
+                        baseLevel: item.system.level ?? -1,
+                        saveDC: itemUtils.getSaveDC(item) ?? -1
+                    },
+                    macros: embeddedMacros,
+                    name: item.name.slugify(),
+                    token,
+                    sourceToken,
+                    targetToken
+                });
+            }
         });
         actorUtils.getEffects(actor, {includeItemEffects: true}).forEach(i => {
             let macroList = collectActorMacros(i, pass);
-            if (!macroList.length) return;
-            triggers.push({
-                entity: i,
-                castData: {
-                    castLevel: effectUtils.getCastLevel(i) ?? -1,
-                    baseLevel: effectUtils.getBaseLevel(i) ?? -1,
-                    saveDC: effectUtils.getSaveDC(i) ?? -1
-                },
-                macros: macroList,
-                name: i.name.slugify(),
-                token: token,
-                sourceToken,
-                targetToken
-            });
+            if (macroList.length) {
+                triggers.push({
+                    entity: i,
+                    castData: {
+                        castLevel: effectUtils.getCastLevel(i) ?? -1,
+                        baseLevel: effectUtils.getBaseLevel(i) ?? -1,
+                        saveDC: effectUtils.getSaveDC(i) ?? -1
+                    },
+                    macros: macroList,
+                    name: i.name.slugify(),
+                    token: token,
+                    sourceToken,
+                    targetToken
+                });
+            }
+            let embeddedMacros = macroUtils.getEmbeddedMacros(i, 'midi.actor', {pass});
+            if (embeddedMacros.length) {
+                triggers.push({
+                    entity: i,
+                    castData: {
+                        castLevel: effectUtils.getCastLevel(i) ?? -1,
+                        baseLevel: effectUtils.getBaseLevel(i) ?? -1,
+                        saveDC: effectUtils.getSaveDC(i) ?? -1
+                    },
+                    macros: embeddedMacros,
+                    name: item.name.slugify(),
+                    token,
+                    sourceToken,
+                    targetToken
+                });
+            }
         });
     }
     if (token) {
         let templates = templateUtils.getTemplatesInToken(token);
         templates.forEach(i => {
             let macroList = collectActorMacros(i, pass);
-            if (!macroList.length) return;
-            triggers.push({
-                entity: i,
-                castData: {
-                    castLevel: templateUtils.getCastLevel(i) ?? -1,
-                    baseLevel: templateUtils.getBaseLevel(i) ?? -1,
-                    saveDC: templateUtils.getSaveDC(i) ?? -1
-                },
-                macros: macroList,
-                name: templateUtils.getName(i).slugify(),
-                token: token,
-                sourceToken: sourceToken,
-                targetToken: targetToken
-            });
+            if (macroList.length) {
+                triggers.push({
+                    entity: i,
+                    castData: {
+                        castLevel: templateUtils.getCastLevel(i) ?? -1,
+                        baseLevel: templateUtils.getBaseLevel(i) ?? -1,
+                        saveDC: templateUtils.getSaveDC(i) ?? -1
+                    },
+                    macros: macroList,
+                    name: templateUtils.getName(i).slugify(),
+                    token: token,
+                    sourceToken: sourceToken,
+                    targetToken: targetToken
+                });
+            }
+            let embeddedMacros = macroUtils.getEmbeddedMacros(i, 'midi.actor', {pass});
+            if (embeddedMacros.length) {
+                triggers.push({
+                    entity: i,
+                    castData: {
+                        castLevel: templateUtils.getCastLevel(i) ?? -1,
+                        baseLevel: templateUtils.getBaseLevel(i) ?? -1,
+                        saveDC: templateUtils.getSaveDC(i) ?? -1
+                    },
+                    macros: embeddedMacros,
+                    name: templateUtils.getName(i).slugify(),
+                    token: token,
+                    sourceToken: sourceToken,
+                    targetToken: targetToken
+                });
+            }
+        });
+        token.document.regions.forEach(i => {
+            let macroList = collectActorMacros(i, pass);
+            if (macroList.length) {
+                triggers.push({
+                    entity: i,
+                    castData: {
+                        castLevel: regionUtils.getCastLevel(i) ?? -1,
+                        baseLevel: regionUtils.getBaseLevel(i) ?? -1,
+                        saveDC: regionUtils.getSaveDC(i) ?? -1
+                    },
+                    macros: macroList,
+                    name: i.name.slugify(),
+                    token: token,
+                    sourceToken: sourceToken,
+                    targetToken: targetToken
+                });
+            }
+            let embeddedMacros = macroUtils.getEmbeddedMacros(i, 'midi.actor', {pass});
+            if (embeddedMacros.length) {
+                triggers.push({
+                    entity: i,
+                    castData: {
+                        castLevel: regionUtils.getCastLevel(i) ?? -1,
+                        baseLevel: regionUtils.getBaseLevel(i) ?? -1,
+                        saveDC: regionUtils.getSaveDC(i) ?? -1
+                    },
+                    macros: embeddedMacros,
+                    name: i.name.slugify(),
+                    token: token,
+                    sourceToken: sourceToken,
+                    targetToken: targetToken
+                });
+            }
         });
     }
     return triggers;
@@ -150,19 +252,24 @@ function getSortedTriggers({activity, item, token, actor, sourceToken, targetTok
                 name: trigger.name,
                 sourceToken: trigger.sourceToken,
                 targetToken: trigger.targetToken,
-                token: trigger.token
+                token: trigger.token,
+                macroName: typeof macro.macro === 'string' ? macro.name : macro.macro.name
             });
         });
     });
     return sortedTriggers.sort((a, b) => a.priority - b.priority);
 }
 async function executeMacro(trigger, workflow, ditem) {
-    genericUtils.log('dev', 'Executing Midi Macro: ' + trigger.macro.name + ' from ' + trigger.name + ' with a priority of ' + trigger.priority);
     let result;
     try {
-        result = await trigger.macro({trigger, workflow, ditem});
+        if (typeof trigger.macro === 'string') {
+            genericUtils.log('dev', 'Executing Embedded Midi Macro: ' + trigger.macroName + ' from ' + trigger.name + ' with a priority of ' + trigger.priority);
+            result = await custom.executeScript({script: trigger.macro, trigger, workflow, ditem});
+        } else {
+            genericUtils.log('dev', 'Executing Midi Macro: ' + trigger.macro.name + ' from ' + trigger.name + ' with a priority of ' + trigger.priority);
+            result = await trigger.macro({trigger, workflow, ditem});
+        }
     } catch (error) {
-        //Add some sort of ui notice here. Maybe even some debug info?
         console.error(error);
     }
     return result;
@@ -203,7 +310,6 @@ async function preTargeting({activity, token, config, dialog, message}) {
         try {
             result = await trigger.macro({trigger, activity, token, actor: token.actor, config, dialog, message});
         } catch (error) {
-            //Add some sort of ui notice here. Maybe even some debug info?
             console.error(error);
         }
         if (result) return false;

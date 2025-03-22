@@ -1,6 +1,8 @@
 # 1.2.30 Release:
 ## Bug Fixes:
 - Spirit Guardians (Modern)
+## API Update Notes:
+- Regions can now apply CPR midi actor events.
 
 # 1.2.29 Release:
 ## New Modern Content:

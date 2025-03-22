@@ -1,6 +1,10 @@
-import {genericUtils} from '../utils.js';
+import {activityUtils, actorUtils, animationUtils, combatUtils, compendiumUtils, constants, crosshairUtils, dialogUtils, effectUtils, genericUtils, itemUtils, macroUtils, rollUtils, socketUtils, spellUtils, templateUtils, tokenUtils, workflowUtils} from '../utils.js';
 import * as legacyMacros from '../legacyMacros.js';
 import * as macros from '../macros.js';
+import {Crosshairs} from '../lib/crosshairs.js';
+import {Summons} from '../lib/summons.js';
+import {Teleport} from '../lib/teleport.js';
+import {DialogApp} from '../applications/dialog.js';
 let customMacroList = [];
 let registeredMacroList = [];
 async function ready() {
@@ -50,11 +54,51 @@ function registerMacros(input) {
     });
     registeredMacroList.push(...validatedMacros);
 }
+async function executeScript({script, ...scope} = {}) {
+    const defaultScope = {
+        activityUtils,
+        actorUtils,
+        animationUtils,
+        combatUtils,
+        compendiumUtils,
+        crosshairUtils,
+        dialogUtils,
+        effectUtils,
+        genericUtils,
+        itemUtils,
+        macroUtils,
+        rollUtils,
+        socketUtils,
+        spellUtils,
+        templateUtils,
+        tokenUtils,
+        workflowUtils,
+        constants,
+        Crosshairs,
+        Summons,
+        Teleport,
+        DialogApp
+    };
+    scope = {...defaultScope, ...scope};
+    let argNames = Object.keys(scope);
+    if (argNames.some(k => Number.isNumeric(k))) throw new Error('Illegal numeric Macro parameter passed to execution scope.');
+    let argValues = Object.values(scope);
+    let fn = new foundry.utils.AsyncFunction(...argNames, `{${script}}\n`);
+    let result;
+    try {
+        result = await fn(...argValues);
+    } catch (error) {
+        console.error(error);
+    }
+    fn = null;
+    return result;
+}
 export let custom = {
     ready,
     getMacro,
     preCreateMacro,
     updateOrDeleteMacro,
     getCustomMacroList,
-    registerMacros
+    registerMacros,
+    executeScript
 };
