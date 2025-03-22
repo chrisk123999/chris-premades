@@ -19,7 +19,7 @@ async function use({workflow}) {
     let attackId = selectedWeapon.system.activities.getByType('attack')?.[0]?.id;
     if (!attackId) return;
     let weaponData = genericUtils.duplicate(selectedWeapon.toObject());
-    weaponData.system.activities[attackId].attack.ability = workflow.item.system.ability.length != 0 ? workflow.item.system.ability : workflow.actor.system.attributes.spellcasting;
+    weaponData.system.activities[attackId].attack.ability = workflow.item.system.ability.length ? workflow.item.system.ability : workflow.actor.system.attributes.spellcasting;
     let damageType = itemUtils.getConfig(workflow.item, 'damageType');
     let selection = await dialogUtils.confirm(workflow.item.name, genericUtils.format('CHRISPREMADES.Macros.TrueStrike.ReplaceDamage', {type: damageType}));
     if (selection) {
