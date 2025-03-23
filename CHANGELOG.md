@@ -1,4 +1,6 @@
 # 1.2.30 Release:
+## New Modern Content:
+- Mirror Image
 ## Bug Fixes:
 - Spirit Guardians (Modern)
 - Brutal Strike (Modern)

@@ -109,6 +109,7 @@ export {insectPlague, insectPlagueTemplate} from './macros/2024/spells/insectPla
 export {magicMissile} from './macros/2024/spells/magicMissile.js';
 export {massCureWounds} from './macros/2024/spells/massCureWounds.js';
 export {mindSliver} from './macros/2024/spells/mindSliver.js';
+export {mirrorImage, mirrorImageMirrored} from './macros/2024/spells/mirrorImage.js';
 export {mistyStep} from './macros/2024/spells/mistyStep.js';
 export {moonbeam, moonbeamBeam} from './macros/2024/spells/moonbeam.js';
 export {passWithoutTrace} from './macros/2024/spells/passWithoutTrace.js';
