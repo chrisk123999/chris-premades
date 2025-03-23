@@ -4,6 +4,7 @@
 ## Bug Fixes:
 - Spirit Guardians (Modern)
 - Brutal Strike (Modern)
+- Battering Roots (Modern)
 ## API Update Notes:
 - Regions can now apply CPR midi actor events.
 

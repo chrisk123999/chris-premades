@@ -6,7 +6,8 @@
     "activities": {},
     "uses": {
       "spent": 0,
-      "recovery": []
+      "recovery": [],
+      "max": ""
     },
     "description": {
       "value": "",
@@ -39,10 +40,22 @@
   "flags": {
     "midi-qol": {
       "removeAttackDamageButtons": "default",
-      "forceCEOff": true
+      "forceCEOff": true,
+      "rollAttackPerTarget": "default",
+      "itemCondition": "",
+      "reactionCondition": "",
+      "otherCondition": "",
+      "effectCondition": ""
     },
     "midiProperties": {
-      "confirmTargets": "default"
+      "confirmTargets": "default",
+      "autoFailFriendly": false,
+      "autoSaveFriendly": false,
+      "magicdam": false,
+      "magiceffect": false,
+      "noConcentrationCheck": false,
+      "toggleEffect": false,
+      "ignoreTotalCover": false
     },
     "dnd5e": {
       "riders": {
@@ -56,12 +69,17 @@
         "identifier": "batteringRoots",
         "source": "chris-premades",
         "rules": "modern",
-        "version": "1.1.26"
+        "version": "1.2.30"
       },
       "macros": {
         "combat": [
           "batteringRoots"
-        ]
+        ],
+        "midi": {
+          "actor": [
+            "batteringRoots"
+          ]
+        }
       }
     }
   },

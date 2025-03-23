@@ -30,11 +30,12 @@ async function attack({trigger: {entity: item}, workflow}) {
     let weaponProperties = itemUtils.getConfig(item, 'weaponProperties');
     if (!weaponProperties.length) return;
     if (!workflow.item.system.properties.some(i => weaponProperties.includes(i))) return;
+    let attackMastery = workflow.attackRoll.options.mastery;
     let selection;
-    if (workflow.item.system.mastery != 'push' && workflow.item.system.mastery != 'topple') {
-        selection = await dialogUtils.buttonDialog(item, 'CHRISPREMADES.Macros.BatteringRoots.Mastery', [['CHRISPREMADES.Mastery.Push.Name', 'push'], ['CHRISPREMADES.Mastery.Topple.Name', 'topple']]);
+    if (attackMastery != 'push' && attackMastery != 'topple') {
+        selection = await dialogUtils.buttonDialog(item.name, 'CHRISPREMADES.Macros.BatteringRoots.Mastery', [['CHRISPREMADES.Mastery.Push.Name', 'push'], ['CHRISPREMADES.Mastery.Topple.Name', 'topple']]);
         if (!selection) return;
-    } else if (workflow.item.system.mastery === 'push') {
+    } else if (attackMastery === 'push') {
         selection = 'topple';
     }
     if (selection === 'topple') {
@@ -45,7 +46,7 @@ async function attack({trigger: {entity: item}, workflow}) {
 }
 export let batteringRoots = {
     name: 'Battering Roots',
-    version: '1.1.26',
+    version: '1.2.30',
     rules: 'modern',
     midi: {
         actor: [
