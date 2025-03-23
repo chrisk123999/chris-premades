@@ -66,7 +66,7 @@ async function sunderingBlowAttacked({trigger: {entity: effect}, workflow}) {
 }
 export let brutalStrike = {
     name: 'Brutal Strike',
-    version: '1.2.30',
+    version: '1.1.22',
     rules: 'modern',
     midi: {
         item: [
