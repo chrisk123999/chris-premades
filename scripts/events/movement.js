@@ -19,133 +19,64 @@ function collectTokenMacros(token, pass, distance, target) {
     if (token.actor) {
         let effects = actorUtils.getEffects(token.actor, {includeItemEffects: true});
         effects.forEach(effect => {
-            let macroList = collectMovementMacros(effect);
-            if (macroList.length) {
-                let movementMacros = macroList.filter(i => i.movement?.find(j => j.pass === pass)).flatMap(k => k.movement).filter(l => l.pass === pass);
-                if (movementMacros.length) {
-                    let validMovementMacros = [];
-                    movementMacros.forEach(i => {
-                        if (distance && i.distance < distance) return;
-                        if (i.disposition) {
-                            if (i.disposition === 'ally' && token.disposition != target?.disposition) return;
-                            if (i.disposition === 'enemy' && token.disposition === target?.disposition) return;
-                        }
-                        validMovementMacros.push({
-                            macro: i.macro,
-                            priority: i.priority
-                        });
-                    });
-                    if (validMovementMacros.length) {
-                        triggers.push({
-                            entity: effect,
-                            castData: {
-                                castLevel: effectUtils.getCastLevel(effect) ?? -1,
-                                baseLevel: effectUtils.getBaseLevel(effect) ?? -1,
-                                saveDC: effectUtils.getSaveDC(effect) ?? -1
-                            },
-                            macros: validMovementMacros,
-                            name: effect.name.slugify(),
-                            token: token.object,
-                            target: target?.object,
-                            distance: distance
-                        });
-                    }
+            let macroList = collectMovementMacros(effect).filter(i => i.movement?.find(j => j.pass === pass)).flatMap(k => k.movement).filter(l => l.pass === pass).concat(macroUtils.getEmbeddedMacros(effect, 'movement', {pass}));
+            if (!macroList.length) return;
+            let validMovementMacros = [];
+            macroList.forEach(i => {
+                if (distance && i.distance < distance) return;
+                if (i.disposition) {
+                    if (i.disposition === 'ally' && token.disposition != target?.disposition) return;
+                    if (i.disposition === 'enemy' && token.disposition === target?.disposition) return;
                 }
-            }
-            let embeddedMacros = macroUtils.getEmbeddedMacros(effect, 'effect', {pass});
-            if (embeddedMacros.length) {
-                let validMovementMacros = [];
-                embeddedMacros.forEach(i => {
-                    if (distance && i.distance < distance) return;
-                    if (i.disposition) {
-                        if (i.disposition === 'ally' && token.disposition != target?.disposition) return;
-                        if (i.disposition === 'enemy' && token.disposition === target?.disposition) return;
-                    }
-                    validMovementMacros.push({
-                        macro: i.macro,
-                        priority: i.priority
-                    });
+                validMovementMacros.push({
+                    macro: i.macro,
+                    priority: i.priority
                 });
-                if (validMovementMacros.length) {
-                    triggers.push({
-                        entity: effect,
-                        castData: {
-                            castLevel: effectUtils.getCastLevel(effect) ?? -1,
-                            baseLevel: effectUtils.getBaseLevel(effect) ?? -1,
-                            saveDC: effectUtils.getSaveDC(effect) ?? -1
-                        },
-                        macros: validMovementMacros,
-                        name: effect.name.slugify(),
-                        token: token.object,
-                        target: target?.object,
-                        distance: distance
-                    });
-                }
-            }
+            });
+            if (!validMovementMacros.length) return;
+            triggers.push({
+                entity: effect,
+                castData: {
+                    castLevel: effectUtils.getCastLevel(effect) ?? -1,
+                    baseLevel: effectUtils.getBaseLevel(effect) ?? -1,
+                    saveDC: effectUtils.getSaveDC(effect) ?? -1
+                },
+                macros: validMovementMacros,
+                name: effect.name.slugify(),
+                token: token.object,
+                target: target?.object,
+                distance: distance
+            });
         });
         token.actor.items.forEach(item => {
-            let macroList = collectMovementMacros(item);
-            if (macroList.length) {
-                let itemMacros = macroList.filter(i => i.movement?.find(j => j.pass === pass)).flatMap(k => k.movement).filter(l => l.pass === pass);
-                if (itemMacros.length) {
-                    let validMovementMacros = [];
-                    itemMacros.forEach(i => {
-                        if (distance && i.distance < distance) return;
-                        if (i.disposition) {
-                            if (i.disposition === 'ally' && token.disposition != target?.disposition) return;
-                            if (i.disposition === 'enemy' && token.disposition === target?.disposition) return;
-                        }
-                        validMovementMacros.push({
-                            macro: i.macro,
-                            priority: i.priority
-                        });
-                    });
-                    if (validMovementMacros.length) {
-                        triggers.push({
-                            entity: item,
-                            castData: {
-                                castLevel: item.system.level ?? -1,
-                                baseLevel: item.system.level ?? -1,
-                                saveDC: itemUtils.getSaveDC(item) ?? -1
-                            },
-                            macros: validMovementMacros,
-                            name: item.name.slugify(),
-                            token: token.object,
-                            target: target?.object,
-                            distance: distance
-                        });
-                    }
+            let macroList = collectMovementMacros(item).filter(i => i.movement?.find(j => j.pass === pass)).flatMap(k => k.movement).filter(l => l.pass === pass).concat(macroUtils.getEmbeddedMacros(item, 'movement', {pass}));
+            if (!macroList.length) return;
+            let validMovementMacros = [];
+            macroList.forEach(i => {
+                if (distance && i.distance < distance) return;
+                if (i.disposition) {
+                    if (i.disposition === 'ally' && token.disposition != target?.disposition) return;
+                    if (i.disposition === 'enemy' && token.disposition === target?.disposition) return;
                 }
-            }
-            let embeddedMacros = macroUtils.getEmbeddedMacros(item, 'item', {pass});
-            if (embeddedMacros.length) {
-                let validMovementMacros = [];
-                embeddedMacros.forEach(i => {
-                    if (distance && i.distance < distance) return;
-                    if (i.disposition) {
-                        if (i.disposition === 'ally' && token.disposition != target?.disposition) return;
-                        if (i.disposition === 'enemy' && token.disposition === target?.disposition) return;
-                    }
-                    validMovementMacros.push({
-                        macro: i.macro,
-                        priority: i.priority
-                    });
+                validMovementMacros.push({
+                    macro: i.macro,
+                    priority: i.priority
                 });
-                if (validMovementMacros.length) {
-                    triggers.push({
-                        entity: item,
-                        castData: {
-                            castLevel: item.system.level ?? -1,
-                            baseLevel: item.system.level ?? -1,
-                            saveDC: itemUtils.getSaveDC(item) ?? -1
-                        },
-                        macros: validMovementMacros,
-                        name: item.name.slugify(),
-                        token: token.object,
-                        target: target?.object,
-                        distance: distance
-                    });
-                }
+            });
+            if (validMovementMacros.length) {
+                triggers.push({
+                    entity: item,
+                    castData: {
+                        castLevel: item.system.level ?? -1,
+                        baseLevel: item.system.level ?? -1,
+                        saveDC: itemUtils.getSaveDC(item) ?? -1
+                    },
+                    macros: validMovementMacros,
+                    name: item.name.slugify(),
+                    token: token.object,
+                    target: target?.object,
+                    distance: distance
+                });
             }
         });
     }
