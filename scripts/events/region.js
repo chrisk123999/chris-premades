@@ -12,37 +12,19 @@ function collectMacros(region) {
 function collectRegionsMacros(regions, pass, token) {
     let triggers = [];
     regions.forEach(region => {
-        let macroList = collectMacros(region);
-        if (macroList.length) {
-            let regionMacros = macroList.filter(i => i.region?.find(j => j.pass === pass)).flatMap(k => k.region).filter(l => l.pass === pass);
-            if (regionMacros.length) {
-                let trigger = {
-                    entity: region,
-                    castData: {
-                        castLevel: regionUtils.getCastLevel(region),
-                        saveDC: regionUtils.getSaveDC(region)
-                    },
-                    macros: regionMacros,
-                    name: region.name,
-                    token: token
-                };
-                triggers.push(trigger);
-            }
-        }
-        let embeddedMacros = macroUtils.getEmbeddedMacros(region, 'region', {pass});
-        if (embeddedMacros.length) {
-            let trigger = {
-                entity: region,
-                castData: {
-                    castLevel: regionUtils.getCastLevel(region),
-                    saveDC: regionUtils.getSaveDC(region)
-                },
-                macros: embeddedMacros,
-                name: region.name,
-                token: token
-            };
-            triggers.push(trigger);
-        }
+        let macroList = collectMacros(region).filter(i => i.region?.find(j => j.pass === pass)).flatMap(k => k.region).filter(l => l.pass === pass).concat(macroUtils.getEmbeddedMacros(region, 'region', {pass}));
+        if (!macroList.length) return;
+        let trigger = {
+            entity: region,
+            castData: {
+                castLevel: regionUtils.getCastLevel(region),
+                saveDC: regionUtils.getSaveDC(region)
+            },
+            macros: macroList,
+            name: region.name,
+            token: token
+        };
+        triggers.push(trigger);
     });
     return triggers;
 }
