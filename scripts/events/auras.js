@@ -12,73 +12,33 @@ function collectAuraMacros(entity) {
 function collectTokenMacros(token, pass, target) {
     let distance;
     let triggers = [];
+    function checkValid(macro, token, target) {
+        if (macro.conscious) {
+            if (!token.actor.system.attributes.hp.value) return;
+            if (effectUtils.getEffectByStatusID(token.actor, 'unconscious') || effectUtils.getEffectByStatusID(token.actor, 'dead')) return;
+        }
+        if (macro.distance === 'paladin') {
+            let paladinLevels = token.actor.classes?.paladin?.system?.levels;
+            if (!paladinLevels) return;
+            let maxRange = paladinLevels >= 18 ? 30 : 10;
+            if (maxRange < distance) return;
+        } else if (macro.distance < distance) return;
+        if (macro.disposition) {
+            if (macro.disposition === 'ally' && token.disposition != target?.disposition) return;
+            if (macro.disposition === 'enemy' && token.disposition === target?.disposition) return;
+        }
+        return true;
+    }
     if (token.actor) {
         let effects = actorUtils.getEffects(token.actor, {includeItemEffects: true});
         effects.forEach(effect => {
-            let macroList = collectAuraMacros(effect);
+            let macroList = collectAuraMacros(effect).filter(i => i.aura?.find(j => j.pass === pass)).flatMap(k => k.aura).filter(l => l.pass === pass).concat(macroUtils.getEmbeddedMacros(effect, 'aura', {pass}));
             if (!macroList.length) return;
             if (isNaN(distance) && target) distance = tokenUtils.getDistance(token.object, target.object, {wallsBlock: true, checkCover: genericUtils.getCPRSetting('movementPerformance') === 3});
             if (distance < 0) return;
-            let auraMacros = macroList.filter(i => i.aura?.find(j => j.pass === pass)).flatMap(k => k.aura).filter(l => l.pass === pass);
-            if (!auraMacros.length) return;
             let validAuraMacros = [];
-            auraMacros.forEach(i => {
-                if (i.conscious) {
-                    if (!token.actor.system.attributes.hp.value) return;
-                    if (effectUtils.getEffectByStatusID(token.actor, 'unconscious') || effectUtils.getEffectByStatusID(token.actor, 'dead')) return;
-                }
-                if (i.distance === 'paladin') {
-                    let paladinLevels = token.actor.classes?.paladin?.system?.levels;
-                    if (!paladinLevels) return;
-                    let maxRange = paladinLevels >= 18 ? 30 : 10;
-                    if (maxRange < distance) return;
-                } else if (i.distance < distance) return;
-                if (i.disposition) {
-                    if (i.disposition === 'ally' && token.disposition != target?.disposition) return;
-                    if (i.disposition === 'enemy' && token.disposition === target?.disposition) return;
-                }
-                validAuraMacros.push({
-                    macro: i.macro,
-                    priority: i.priority,
-                    identifier: i.identifier
-                });
-            });
-            if (!validAuraMacros.length) return;
-            triggers.push({
-                entity: effect,
-                castData: {
-                    castLevel: effectUtils.getCastLevel(effect) ?? -1,
-                    baseLevel: effectUtils.getBaseLevel(effect) ?? -1,
-                    saveDC: effectUtils.getSaveDC(effect) ?? -1
-                },
-                macros: validAuraMacros,
-                name: effect.name.slugify(),
-                token: token.object,
-                target: target?.object,
-                distance: distance
-            });
-        });
-        effects.forEach(effect => {
-            let embeddedMacros = macroUtils.getEmbeddedMacros(effect, 'aura', {pass});
-            if (!embeddedMacros.length) return;
-            if (isNaN(distance) && target) distance = tokenUtils.getDistance(token.object, target.object, {wallsBlock: true, checkCover: genericUtils.getCPRSetting('movementPerformance') === 3});
-            if (distance < 0) return;
-            let validAuraMacros = [];
-            embeddedMacros.forEach(i => {
-                if (i.conscious) {
-                    if (!token.actor.system.attributes.hp.value) return;
-                    if (effectUtils.getEffectByStatusID(token.actor, 'unconscious') || effectUtils.getEffectByStatusID(token.actor, 'dead')) return;
-                }
-                if (i.distance === 'paladin') {
-                    let paladinLevels = token.actor.classes?.paladin?.system?.levels;
-                    if (!paladinLevels) return;
-                    let maxRange = paladinLevels >= 18 ? 30 : 10;
-                    if (maxRange < distance) return;
-                } else if (i.distance < distance) return;
-                if (i.disposition) {
-                    if (i.disposition === 'ally' && token.disposition != target?.disposition) return;
-                    if (i.disposition === 'enemy' && token.disposition === target?.disposition) return;
-                }
+            macroList.forEach(i => {
+                if (!checkValid(i, token, target)) return;
                 validAuraMacros.push({
                     macro: i.macro,
                     priority: i.priority,
@@ -103,69 +63,13 @@ function collectTokenMacros(token, pass, target) {
         let inCombat = combatUtils.inCombat();
         token.actor.items.forEach(item => {
             if (!inCombat && itemUtils.getConfig(item, 'combatOnly')) return;
-            let macroList = collectAuraMacros(item);
+            let macroList = collectAuraMacros(item).filter(i => i.aura?.find(j => j.pass === pass)).flatMap(k => k.aura).filter(l => l.pass === pass).concat(macroUtils.getEmbeddedMacros(item, 'aura', {pass}));
             if (!macroList.length) return;
             if (isNaN(distance) && target) distance = tokenUtils.getDistance(token.object, target.object, {wallsBlock: true, checkCover: genericUtils.getCPRSetting('movementPerformance') === 3});
             if (distance < 0) return;
-            let auraMacros = macroList.filter(i => i.aura?.find(j => j.pass === pass)).flatMap(k => k.aura).filter(l => l.pass === pass);
-            if (!auraMacros.length) return;
             let validAuraMacros = [];
-            auraMacros.forEach(i => {
-                if (i.conscious) {
-                    if (!token.actor.system.attributes.hp.value) return;
-                    if (effectUtils.getEffectByStatusID(token.actor, 'unconscious') || effectUtils.getEffectByStatusID(token.actor, 'dead')) return;
-                }
-                if (i.distance === 'paladin') {
-                    let paladinLevels = token.actor.classes?.paladin?.system?.levels;
-                    if (!paladinLevels) return;
-                    let maxRange = paladinLevels >= 18 ? 30 : 10;
-                    if (maxRange < distance) return;
-                } else if (i.distance < distance) return;
-                if (i.disposition) {
-                    if (i.disposition === 'ally' && token.disposition != target?.disposition) return;
-                    if (i.disposition === 'enemy' && token.disposition === target?.disposition) return;
-                }
-                validAuraMacros.push({
-                    macro: i.macro,
-                    priority: i.priority,
-                    identifier: i.identifier
-                });
-            });
-            if (!validAuraMacros.length) return;
-            triggers.push({
-                entity: item,
-                castData: {
-                    castLevel: -1,
-                    saveDC: itemUtils.getSaveDC(item) ?? -1
-                },
-                macros: validAuraMacros,
-                name: item.name.slugify(),
-                token: token.object,
-                target: target?.object,
-                distance: distance
-            });
-        });
-        token.actor.items.forEach(item => {
-            let embeddedMacros = macroUtils.getEmbeddedMacros(item, 'aura', {pass});
-            if (!embeddedMacros.length) return;
-            if (isNaN(distance) && target) distance = tokenUtils.getDistance(token.object, target.object, {wallsBlock: true, checkCover: genericUtils.getCPRSetting('movementPerformance') === 3});
-            if (distance < 0) return;
-            let validAuraMacros = [];
-            embeddedMacros.forEach(i => {
-                if (i.conscious) {
-                    if (!token.actor.system.attributes.hp.value) return;
-                    if (effectUtils.getEffectByStatusID(token.actor, 'unconscious') || effectUtils.getEffectByStatusID(token.actor, 'dead')) return;
-                }
-                if (i.distance === 'paladin') {
-                    let paladinLevels = token.actor.classes?.paladin?.system?.levels;
-                    if (!paladinLevels) return;
-                    let maxRange = paladinLevels >= 18 ? 30 : 10;
-                    if (maxRange < distance) return;
-                } else if (i.distance < distance) return;
-                if (i.disposition) {
-                    if (i.disposition === 'ally' && token.disposition != target?.disposition) return;
-                    if (i.disposition === 'enemy' && token.disposition === target?.disposition) return;
-                }
+            macroList.forEach(i => {
+                if (!checkValid(i, token, target)) return;
                 validAuraMacros.push({
                     macro: i.macro,
                     priority: i.priority,
