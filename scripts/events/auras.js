@@ -1,5 +1,5 @@
 import {custom} from './custom.js';
-import {actorUtils, combatUtils, effectUtils, genericUtils, itemUtils, socketUtils, tokenUtils} from '../utils.js';
+import {actorUtils, combatUtils, effectUtils, genericUtils, itemUtils, macroUtils, socketUtils, tokenUtils} from '../utils.js';
 function getAuraMacroData(entity) {
     return entity.flags['chris-premades']?.macros?.aura ?? [];
 }
@@ -17,14 +17,54 @@ function collectTokenMacros(token, pass, target) {
         effects.forEach(effect => {
             let macroList = collectAuraMacros(effect);
             if (!macroList.length) return;
-            if (isNaN(distance) && target) {
-                distance = tokenUtils.getDistance(token.object, target.object, {wallsBlock: true, checkCover: genericUtils.getCPRSetting('movementPerformance') === 3});
-            }
-            if (distance < 0) return [];
+            if (isNaN(distance) && target) distance = tokenUtils.getDistance(token.object, target.object, {wallsBlock: true, checkCover: genericUtils.getCPRSetting('movementPerformance') === 3});
+            if (distance < 0) return;
             let auraMacros = macroList.filter(i => i.aura?.find(j => j.pass === pass)).flatMap(k => k.aura).filter(l => l.pass === pass);
             if (!auraMacros.length) return;
             let validAuraMacros = [];
             auraMacros.forEach(i => {
+                if (i.conscious) {
+                    if (!token.actor.system.attributes.hp.value) return;
+                    if (effectUtils.getEffectByStatusID(token.actor, 'unconscious') || effectUtils.getEffectByStatusID(token.actor, 'dead')) return;
+                }
+                if (i.distance === 'paladin') {
+                    let paladinLevels = token.actor.classes?.paladin?.system?.levels;
+                    if (!paladinLevels) return;
+                    let maxRange = paladinLevels >= 18 ? 30 : 10;
+                    if (maxRange < distance) return;
+                } else if (i.distance < distance) return;
+                if (i.disposition) {
+                    if (i.disposition === 'ally' && token.disposition != target?.disposition) return;
+                    if (i.disposition === 'enemy' && token.disposition === target?.disposition) return;
+                }
+                validAuraMacros.push({
+                    macro: i.macro,
+                    priority: i.priority,
+                    identifier: i.identifier
+                });
+            });
+            if (!validAuraMacros.length) return;
+            triggers.push({
+                entity: effect,
+                castData: {
+                    castLevel: effectUtils.getCastLevel(effect) ?? -1,
+                    baseLevel: effectUtils.getBaseLevel(effect) ?? -1,
+                    saveDC: effectUtils.getSaveDC(effect) ?? -1
+                },
+                macros: validAuraMacros,
+                name: effect.name.slugify(),
+                token: token.object,
+                target: target?.object,
+                distance: distance
+            });
+        });
+        effects.forEach(effect => {
+            let embeddedMacros = macroUtils.getEmbeddedMacros(effect, 'aura', {pass});
+            if (!embeddedMacros.length) return;
+            if (isNaN(distance) && target) distance = tokenUtils.getDistance(token.object, target.object, {wallsBlock: true, checkCover: genericUtils.getCPRSetting('movementPerformance') === 3});
+            if (distance < 0) return;
+            let validAuraMacros = [];
+            embeddedMacros.forEach(i => {
                 if (i.conscious) {
                     if (!token.actor.system.attributes.hp.value) return;
                     if (effectUtils.getEffectByStatusID(token.actor, 'unconscious') || effectUtils.getEffectByStatusID(token.actor, 'dead')) return;
@@ -65,14 +105,53 @@ function collectTokenMacros(token, pass, target) {
             if (!inCombat && itemUtils.getConfig(item, 'combatOnly')) return;
             let macroList = collectAuraMacros(item);
             if (!macroList.length) return;
-            if (isNaN(distance) && target) {
-                distance = tokenUtils.getDistance(token.object, target.object, {wallsBlock: true, checkCover: genericUtils.getCPRSetting('movementPerformance') === 3});
-            }
-            if (distance < 0) return [];
+            if (isNaN(distance) && target) distance = tokenUtils.getDistance(token.object, target.object, {wallsBlock: true, checkCover: genericUtils.getCPRSetting('movementPerformance') === 3});
+            if (distance < 0) return;
             let auraMacros = macroList.filter(i => i.aura?.find(j => j.pass === pass)).flatMap(k => k.aura).filter(l => l.pass === pass);
             if (!auraMacros.length) return;
             let validAuraMacros = [];
             auraMacros.forEach(i => {
+                if (i.conscious) {
+                    if (!token.actor.system.attributes.hp.value) return;
+                    if (effectUtils.getEffectByStatusID(token.actor, 'unconscious') || effectUtils.getEffectByStatusID(token.actor, 'dead')) return;
+                }
+                if (i.distance === 'paladin') {
+                    let paladinLevels = token.actor.classes?.paladin?.system?.levels;
+                    if (!paladinLevels) return;
+                    let maxRange = paladinLevels >= 18 ? 30 : 10;
+                    if (maxRange < distance) return;
+                } else if (i.distance < distance) return;
+                if (i.disposition) {
+                    if (i.disposition === 'ally' && token.disposition != target?.disposition) return;
+                    if (i.disposition === 'enemy' && token.disposition === target?.disposition) return;
+                }
+                validAuraMacros.push({
+                    macro: i.macro,
+                    priority: i.priority,
+                    identifier: i.identifier
+                });
+            });
+            if (!validAuraMacros.length) return;
+            triggers.push({
+                entity: item,
+                castData: {
+                    castLevel: -1,
+                    saveDC: itemUtils.getSaveDC(item) ?? -1
+                },
+                macros: validAuraMacros,
+                name: item.name.slugify(),
+                token: token.object,
+                target: target?.object,
+                distance: distance
+            });
+        });
+        token.actor.items.forEach(item => {
+            let embeddedMacros = macroUtils.getEmbeddedMacros(item, 'aura', {pass});
+            if (!embeddedMacros.length) return;
+            if (isNaN(distance) && target) distance = tokenUtils.getDistance(token.object, target.object, {wallsBlock: true, checkCover: genericUtils.getCPRSetting('movementPerformance') === 3});
+            if (distance < 0) return;
+            let validAuraMacros = [];
+            embeddedMacros.forEach(i => {
                 if (i.conscious) {
                     if (!token.actor.system.attributes.hp.value) return;
                     if (effectUtils.getEffectByStatusID(token.actor, 'unconscious') || effectUtils.getEffectByStatusID(token.actor, 'dead')) return;
@@ -151,18 +230,22 @@ function getSortedTriggers(tokens, pass, token) {
                 name: trigger.name,
                 token: trigger.token,
                 target: trigger.target,
-                distance: trigger.distance
+                distance: trigger.distance,
+                macroName: typeof macro.macro === 'string' ? macro.macro : macro.macro.name
             });
         });
     });
     return sortedTriggers.sort((a, b) => a.priority - b.priority);
 }
 async function executeMacro(trigger, options) {
-    genericUtils.log('dev', 'Executing Aura Macro: ' + trigger.macro.name);
+    genericUtils.log('dev', 'Executing Aura Macro: ' + trigger.macroName);
     try {
-        return await trigger.macro({trigger, options});
+        if (typeof trigger.macro === 'string') {
+            return await custom.executeScript({script: trigger.macro, trigger, options});
+        } else {
+            return await trigger.macro({trigger, options});
+        }
     } catch (error) {
-        //Add some sort of ui notice here. Maybe even some debug info?
         console.error(error);
     }
 }
@@ -185,11 +268,8 @@ async function executeMacroPass(tokens, pass, token, options) {
         }
         if (trigger.entity.uuid != effect.origin) removedEffects.push(effect);
     }));
-    // TODO: need to ensure it still exists?
     let removedEffectIds = removedEffects.map(i => i.id);
     await genericUtils.deleteEmbeddedDocuments(token.actor, 'ActiveEffect', removedEffectIds);
-    // Uncomment if this leads to trouble I guess
-    // if (triggers.length) await genericUtils.sleep(50);
     let effectDataArray = [];
     let effectOptionsArray = [];
     for (let i of triggers) {

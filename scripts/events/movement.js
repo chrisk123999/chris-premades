@@ -1,6 +1,6 @@
 import {attach} from '../extensions/attach.js';
 import {custom} from './custom.js';
-import {actorUtils, effectUtils, genericUtils, itemUtils, regionUtils, socketUtils, templateUtils, tokenUtils} from '../utils.js';
+import {actorUtils, effectUtils, genericUtils, itemUtils, macroUtils, regionUtils, socketUtils, templateUtils, tokenUtils} from '../utils.js';
 import {auras} from './auras.js';
 import {templateEvents} from './template.js';
 import {regionEvents} from './region.js';
@@ -20,67 +20,133 @@ function collectTokenMacros(token, pass, distance, target) {
         let effects = actorUtils.getEffects(token.actor, {includeItemEffects: true});
         effects.forEach(effect => {
             let macroList = collectMovementMacros(effect);
-            if (!macroList.length) return;
-            let movementMacros = macroList.filter(i => i.movement?.find(j => j.pass === pass)).flatMap(k => k.movement).filter(l => l.pass === pass);
-            if (!movementMacros.length) return;
-            let validMovementMacros = [];
-            movementMacros.forEach(i => {
-                if (distance && i.distance < distance) return;
-                if (i.disposition) {
-                    if (i.disposition === 'ally' && token.disposition != target?.disposition) return;
-                    if (i.disposition === 'enemy' && token.disposition === target?.disposition) return;
+            if (macroList.length) {
+                let movementMacros = macroList.filter(i => i.movement?.find(j => j.pass === pass)).flatMap(k => k.movement).filter(l => l.pass === pass);
+                if (movementMacros.length) {
+                    let validMovementMacros = [];
+                    movementMacros.forEach(i => {
+                        if (distance && i.distance < distance) return;
+                        if (i.disposition) {
+                            if (i.disposition === 'ally' && token.disposition != target?.disposition) return;
+                            if (i.disposition === 'enemy' && token.disposition === target?.disposition) return;
+                        }
+                        validMovementMacros.push({
+                            macro: i.macro,
+                            priority: i.priority
+                        });
+                    });
+                    if (validMovementMacros.length) {
+                        triggers.push({
+                            entity: effect,
+                            castData: {
+                                castLevel: effectUtils.getCastLevel(effect) ?? -1,
+                                baseLevel: effectUtils.getBaseLevel(effect) ?? -1,
+                                saveDC: effectUtils.getSaveDC(effect) ?? -1
+                            },
+                            macros: validMovementMacros,
+                            name: effect.name.slugify(),
+                            token: token.object,
+                            target: target?.object,
+                            distance: distance
+                        });
+                    }
                 }
-                validMovementMacros.push({
-                    macro: i.macro,
-                    priority: i.priority
+            }
+            let embeddedMacros = macroUtils.getEmbeddedMacros(effect, 'effect', {pass});
+            if (embeddedMacros.length) {
+                let validMovementMacros = [];
+                embeddedMacros.forEach(i => {
+                    if (distance && i.distance < distance) return;
+                    if (i.disposition) {
+                        if (i.disposition === 'ally' && token.disposition != target?.disposition) return;
+                        if (i.disposition === 'enemy' && token.disposition === target?.disposition) return;
+                    }
+                    validMovementMacros.push({
+                        macro: i.macro,
+                        priority: i.priority
+                    });
                 });
-            });
-            if (!validMovementMacros.length) return;
-            triggers.push({
-                entity: effect,
-                castData: {
-                    castLevel: effectUtils.getCastLevel(effect) ?? -1,
-                    baseLevel: effectUtils.getBaseLevel(effect) ?? -1,
-                    saveDC: effectUtils.getSaveDC(effect) ?? -1
-                },
-                macros: validMovementMacros,
-                name: effect.name.slugify(),
-                token: token.object,
-                target: target?.object,
-                distance: distance
-            });
+                if (validMovementMacros.length) {
+                    triggers.push({
+                        entity: effect,
+                        castData: {
+                            castLevel: effectUtils.getCastLevel(effect) ?? -1,
+                            baseLevel: effectUtils.getBaseLevel(effect) ?? -1,
+                            saveDC: effectUtils.getSaveDC(effect) ?? -1
+                        },
+                        macros: validMovementMacros,
+                        name: effect.name.slugify(),
+                        token: token.object,
+                        target: target?.object,
+                        distance: distance
+                    });
+                }
+            }
         });
         token.actor.items.forEach(item => {
             let macroList = collectMovementMacros(item);
-            if (!macroList.length) return;
-            let itemMacros = macroList.filter(i => i.movement?.find(j => j.pass === pass)).flatMap(k => k.movement).filter(l => l.pass === pass);
-            if (!itemMacros.length) return;
-            let validMovementMacros = [];
-            itemMacros.forEach(i => {
-                if (distance && i.distance < distance) return;
-                if (i.disposition) {
-                    if (i.disposition === 'ally' && token.disposition != target?.disposition) return;
-                    if (i.disposition === 'enemy' && token.disposition === target?.disposition) return;
+            if (macroList.length) {
+                let itemMacros = macroList.filter(i => i.movement?.find(j => j.pass === pass)).flatMap(k => k.movement).filter(l => l.pass === pass);
+                if (itemMacros.length) {
+                    let validMovementMacros = [];
+                    itemMacros.forEach(i => {
+                        if (distance && i.distance < distance) return;
+                        if (i.disposition) {
+                            if (i.disposition === 'ally' && token.disposition != target?.disposition) return;
+                            if (i.disposition === 'enemy' && token.disposition === target?.disposition) return;
+                        }
+                        validMovementMacros.push({
+                            macro: i.macro,
+                            priority: i.priority
+                        });
+                    });
+                    if (validMovementMacros.length) {
+                        triggers.push({
+                            entity: item,
+                            castData: {
+                                castLevel: item.system.level ?? -1,
+                                baseLevel: item.system.level ?? -1,
+                                saveDC: itemUtils.getSaveDC(item) ?? -1
+                            },
+                            macros: validMovementMacros,
+                            name: item.name.slugify(),
+                            token: token.object,
+                            target: target?.object,
+                            distance: distance
+                        });
+                    }
                 }
-                validMovementMacros.push({
-                    macro: i.macro,
-                    priority: i.priority
+            }
+            let embeddedMacros = macroUtils.getEmbeddedMacros(item, 'item', {pass});
+            if (embeddedMacros.length) {
+                let validMovementMacros = [];
+                embeddedMacros.forEach(i => {
+                    if (distance && i.distance < distance) return;
+                    if (i.disposition) {
+                        if (i.disposition === 'ally' && token.disposition != target?.disposition) return;
+                        if (i.disposition === 'enemy' && token.disposition === target?.disposition) return;
+                    }
+                    validMovementMacros.push({
+                        macro: i.macro,
+                        priority: i.priority
+                    });
                 });
-            });
-            if (!validMovementMacros.length) return;
-            triggers.push({
-                entity: item,
-                castData: {
-                    castLevel: item.system.level ?? -1,
-                    baseLevel: item.system.level ?? -1,
-                    saveDC: itemUtils.getSaveDC(item) ?? -1
-                },
-                macros: validMovementMacros,
-                name: item.name.slugify(),
-                token: token.object,
-                target: target?.object,
-                distance: distance
-            });
+                if (validMovementMacros.length) {
+                    triggers.push({
+                        entity: item,
+                        castData: {
+                            castLevel: item.system.level ?? -1,
+                            baseLevel: item.system.level ?? -1,
+                            saveDC: itemUtils.getSaveDC(item) ?? -1
+                        },
+                        macros: validMovementMacros,
+                        name: item.name.slugify(),
+                        token: token.object,
+                        target: target?.object,
+                        distance: distance
+                    });
+                }
+            }
         });
     }
     return triggers;
@@ -131,18 +197,22 @@ function getSortedTriggers(tokens, pass, token) {
                 name: trigger.name,
                 token: trigger.token,
                 target: trigger.target,
-                distance: trigger.distance
+                distance: trigger.distance,
+                macroName: typeof macro.macro === 'string' ? macro.macro : macro.macro.name
             });
         });
     });
     return sortedTriggers.sort((a, b) => a.priority - b.priority);
 }
 async function executeMacro(trigger, options) {
-    genericUtils.log('dev', 'Executing Movement Macro: ' + trigger.macro.name);
+    genericUtils.log('dev', 'Executing Movement Macro: ' + trigger.macroName);
     try {
-        await trigger.macro({trigger, options});
+        if (typeof trigger.macro === 'string') {
+            await custom.executeScript({script: trigger.macro, trigger, options});
+        } else {
+            await trigger.macro({trigger, options});
+        }
     } catch (error) {
-        //Add some sort of ui notice here. Maybe even some debug info?
         console.error(error);
     }
 }

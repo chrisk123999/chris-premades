@@ -1,5 +1,5 @@
 import {custom} from './custom.js';
-import {actorUtils, effectUtils, genericUtils, itemUtils} from '../utils.js';
+import {actorUtils, effectUtils, genericUtils, itemUtils, macroUtils} from '../utils.js';
 import {bg3} from '../macros/2014/homebrew/bg3WeaponActions.js';
 function getRestMacros(entity) {
     return entity.flags['chris-premades']?.macros?.rest ?? [];
@@ -15,32 +15,62 @@ function collectAllMacros(actor, pass) {
     actor.items.forEach(item => {
         let macroList = collectRestMacros(item, pass);
         if (pass === 'long') macroList.push(...collectRestMacros(item, 'short'));
-        if (!macroList.length) return;
-        triggers.push({
-            entity: item,
-            castData: {
-                castLevel: item.system.level ?? -1,
-                baseLevel: item.system.level ?? -1,
-                saveDC: itemUtils.getSaveDC(item) ?? -1
-            },
-            macros: macroList,
-            name: item.name.slugify()
-        });
+        if (macroList.length) {
+            triggers.push({
+                entity: item,
+                castData: {
+                    castLevel: item.system.level ?? -1,
+                    baseLevel: item.system.level ?? -1,
+                    saveDC: itemUtils.getSaveDC(item) ?? -1
+                },
+                macros: macroList,
+                name: item.name.slugify()
+            });
+        }
+        let embeddedMacros = macroUtils.getEmbeddedMacros(item, 'rest', {pass});
+        if (pass === 'long') embeddedMacros.push(...macroUtils.getEmbeddedMacros(item, 'rest', {pass: 'short'}));
+        if (embeddedMacros.length) {
+            triggers.push({
+                entity: item,
+                castData: {
+                    castLevel: item.system.level ?? -1,
+                    baseLevel: item.system.level ?? -1,
+                    saveDC: itemUtils.getSaveDC(item) ?? -1
+                },
+                macros: embeddedMacros,
+                name: item.name.slugify()
+            });
+        }
     });
     actorUtils.getEffects(actor, {includeItemEffects: true}).forEach(effect => {
         let macroList = collectRestMacros(effect, pass);
         if (pass === 'long') macroList.push(...collectRestMacros(effect, 'short'));
-        if (!macroList.length) return;
-        triggers.push({
-            entity: effect,
-            castData: {
-                castLevel: effectUtils.getCastLevel(effect) ?? -1,
-                baseLevel: effectUtils.getBaseLevel(effect) ?? -1,
-                saveDC: effectUtils.getSaveDC(effect) ?? -1
-            },
-            macros: macroList,
-            name: effect.name.slugify()
-        });
+        if (macroList.length) {
+            triggers.push({
+                entity: effect,
+                castData: {
+                    castLevel: effectUtils.getCastLevel(effect) ?? -1,
+                    baseLevel: effectUtils.getBaseLevel(effect) ?? -1,
+                    saveDC: effectUtils.getSaveDC(effect) ?? -1
+                },
+                macros: macroList,
+                name: effect.name.slugify()
+            });
+        }
+        let embeddedMacros = macroUtils.getEmbeddedMacros(effect, 'rest', {pass});
+        if (pass === 'long') embeddedMacros.push(...macroUtils.getEmbeddedMacros(effect, 'rest', {pass: 'short'}));
+        if (embeddedMacros.length) {
+            triggers.push({
+                entity: effect,
+                castData: {
+                    castLevel: effectUtils.getCastLevel(effect) ?? -1,
+                    baseLevel: effectUtils.getBaseLevel(effect) ?? -1,
+                    saveDC: effectUtils.getSaveDC(effect) ?? -1
+                },
+                macros: embeddedMacros,
+                name: effect.name.slugify()
+            });
+        }
     });
     return triggers;
 }
@@ -78,16 +108,21 @@ function getSortedTriggers(actor, pass) {
                 castData: trigger.castData,
                 macro: macro.macro,
                 priority: macro.priority,
-                name: trigger.name
+                name: trigger.name,
+                macroName: typeof macro.macro === 'string' ? macro.macro : macro.macro.name
             });
         });
     });
     return sortedTriggers.sort((a, b) => a.priority - b.priority);
 }
 async function executeMacro(trigger, actor) {
-    genericUtils.log('dev', 'Executing Rest Macro: ' + trigger.macro.name + ' from ' + trigger.name + ' with a priority of ' + trigger.priority);
+    genericUtils.log('dev', 'Executing Rest Macro: ' + trigger.macroName + ' from ' + trigger.name + ' with a priority of ' + trigger.priority);
     try {
-        await trigger.macro({trigger, actor});
+        if (typeof trigger.macro === 'string') {
+            await custom.executeScript({script: trigger.macro, trigger, actor});
+        } else {
+            await trigger.macro({trigger, actor});
+        }
     } catch (error) {
         console.error(error);
     }

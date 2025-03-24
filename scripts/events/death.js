@@ -1,4 +1,4 @@
-import {actorUtils, effectUtils, genericUtils, itemUtils, templateUtils} from '../utils.js';
+import {actorUtils, effectUtils, genericUtils, itemUtils, macroUtils, regionUtils, templateUtils} from '../utils.js';
 import {custom} from './custom.js';
 function getDeathMacroData(entity) {
     return entity.flags['chris-premades']?.macros?.death ?? [];
@@ -14,53 +14,133 @@ function collectAllMacros({actor}, pass) {
     let token = actorUtils.getFirstToken(actor);
     actor.items.forEach(item => {
         let macroList = collectDeathMacros(item, pass);
-        if (!macroList.length) return;
-        triggers.push({
-            entity: item,
-            castData: {
-                castLevel: item.system.level ?? -1,
-                baseLevel: item.system.level ?? -1,
-                saveDC: itemUtils.getSaveDC(item) ?? -1
-            },
-            macros: macroList,
-            name: item.name.slugify(),
-            token: token,
-            actor: actor
-        });
+        if (macroList.length) {
+            triggers.push({
+                entity: item,
+                castData: {
+                    castLevel: item.system.level ?? -1,
+                    baseLevel: item.system.level ?? -1,
+                    saveDC: itemUtils.getSaveDC(item) ?? -1
+                },
+                macros: macroList,
+                name: item.name.slugify(),
+                token: token,
+                actor: actor
+            });
+        }
+        let embeddedMacros = macroUtils.getEmbeddedMacros(item, 'death', {pass});
+        if (embeddedMacros.length) {
+            triggers.push({
+                entity: item,
+                castData: {
+                    castLevel: item.system.level ?? -1,
+                    baseLevel: item.system.level ?? -1,
+                    saveDC: itemUtils.getSaveDC(item) ?? -1
+                },
+                macros: macroList,
+                name: item.name.slugify(),
+                token: token,
+                actor: actor
+            });
+        }
     });
     actorUtils.getEffects(actor, {includeItemEffects: true}).forEach(effect => {
         let macroList = collectDeathMacros(effect, pass);
-        if (!macroList.length) return;
-        triggers.push({
-            entity: effect,
-            castData: {
-                castLevel: effectUtils.getCastLevel(effect) ?? -1,
-                baseLevel: effectUtils.getBaseLevel(effect) ?? -1,
-                saveDC: effectUtils.getSaveDC(effect) ?? -1
-            },
-            macros: macroList,
-            name: effect.name.slugify(),
-            token: token,
-            actor: actor
-        });
+        if (macroList.length) {
+            triggers.push({
+                entity: effect,
+                castData: {
+                    castLevel: effectUtils.getCastLevel(effect) ?? -1,
+                    baseLevel: effectUtils.getBaseLevel(effect) ?? -1,
+                    saveDC: effectUtils.getSaveDC(effect) ?? -1
+                },
+                macros: macroList,
+                name: effect.name.slugify(),
+                token: token,
+                actor: actor
+            });
+        }
+        let embeddedMacros = macroUtils.getEmbeddedMacros(effect, 'death', {pass});
+        if (embeddedMacros.length) {
+            triggers.push({
+                entity: effect,
+                castData: {
+                    castLevel: effectUtils.getCastLevel(effect) ?? -1,
+                    baseLevel: effectUtils.getBaseLevel(effect) ?? -1,
+                    saveDC: effectUtils.getSaveDC(effect) ?? -1
+                },
+                macros: macroList,
+                name: effect.name.slugify(),
+                token: token,
+                actor: actor
+            });
+        }
     });
     if (token) {
         let templates = templateUtils.getTemplatesInToken(token);
         templates.forEach(template => {
             let macroList = collectDeathMacros(template, pass);
-            if (!macroList.length) return;
-            triggers.push({
-                entity: template,
-                castData: {
-                    castLevel: templateUtils.getCastLevel(template) ?? -1,
-                    baseLevel: templateUtils.getBaseLevel(template) ?? -1,
-                    saveDC: templateUtils.getSaveDC(template) ?? -1
-                },
-                macros: macroList,
-                name: templateUtils.getName(template).slugify(),
-                token: token,
-                actor: actor
-            });
+            if (macroList.length) {
+                triggers.push({
+                    entity: template,
+                    castData: {
+                        castLevel: templateUtils.getCastLevel(template) ?? -1,
+                        baseLevel: templateUtils.getBaseLevel(template) ?? -1,
+                        saveDC: templateUtils.getSaveDC(template) ?? -1
+                    },
+                    macros: macroList,
+                    name: templateUtils.getName(template).slugify(),
+                    token: token,
+                    actor: actor
+                });
+            }
+            let embeddedMacros = macroUtils.getEmbeddedMacros(template, 'death', {pass});
+            if (embeddedMacros.length) {
+                triggers.push({
+                    entity: template,
+                    castData: {
+                        castLevel: templateUtils.getCastLevel(template) ?? -1,
+                        baseLevel: templateUtils.getBaseLevel(template) ?? -1,
+                        saveDC: templateUtils.getSaveDC(template) ?? -1
+                    },
+                    macros: macroList,
+                    name: templateUtils.getName(template).slugify(),
+                    token: token,
+                    actor: actor
+                });
+            }
+        });
+        token.document.regions.forEach(region => {
+            let macroList = collectDeathMacros(region, pass);
+            if (macroList.length) {
+                triggers.push({
+                    entity: region,
+                    castData: {
+                        castLevel: regionUtils.getCastLevel(region) ?? -1,
+                        baseLevel: regionUtils.getBaseLevel(region) ?? -1,
+                        saveDC: regionUtils.getSaveDC(region) ?? -1
+                    },
+                    macros: macroList,
+                    name: regionUtils.getName(region).slugify(),
+                    token: token,
+                    actor: actor
+                });
+            }
+            let embeddedMacros = macroUtils.getEmbeddedMacros(region, 'death', {pass});
+            if (embeddedMacros.length) {
+                triggers.push({
+                    entity: region,
+                    castData: {
+                        castLevel: regionUtils.getCastLevel(region) ?? -1,
+                        baseLevel: regionUtils.getBaseLevel(region) ?? -1,
+                        saveDC: regionUtils.getSaveDC(region) ?? -1
+                    },
+                    macros: macroList,
+                    name: regionUtils.getName(region).slugify(),
+                    token: token,
+                    actor: actor
+                });
+            }
         });
     }
     return triggers;

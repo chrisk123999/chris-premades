@@ -1,5 +1,5 @@
 import {custom} from './custom.js';
-import {genericUtils, regionUtils} from '../utils.js';
+import {genericUtils, macroUtils, regionUtils} from '../utils.js';
 function getRegionMacroData(region) {
     return region.flags['chris-premades']?.macros?.region ?? [];
 }
@@ -13,20 +13,36 @@ function collectRegionsMacros(regions, pass, token) {
     let triggers = [];
     regions.forEach(region => {
         let macroList = collectMacros(region);
-        if (!macroList.length) return;
-        let regionMacros = macroList.filter(i => i.region?.find(j => j.pass === pass)).flatMap(k => k.region).filter(l => l.pass === pass);
-        if (!regionMacros.length) return;
-        let trigger = {
-            entity: region,
-            castData: {
-                castLevel: regionUtils.getCastLevel(region),
-                saveDC: regionUtils.getSaveDC(region)
-            },
-            macros: regionMacros,
-            name: region.name,
-            token: token
-        };
-        triggers.push(trigger);
+        if (macroList.length) {
+            let regionMacros = macroList.filter(i => i.region?.find(j => j.pass === pass)).flatMap(k => k.region).filter(l => l.pass === pass);
+            if (regionMacros.length) {
+                let trigger = {
+                    entity: region,
+                    castData: {
+                        castLevel: regionUtils.getCastLevel(region),
+                        saveDC: regionUtils.getSaveDC(region)
+                    },
+                    macros: regionMacros,
+                    name: region.name,
+                    token: token
+                };
+                triggers.push(trigger);
+            }
+        }
+        let embeddedMacros = macroUtils.getEmbeddedMacros(region, 'region', {pass});
+        if (embeddedMacros.length) {
+            let trigger = {
+                entity: region,
+                castData: {
+                    castLevel: regionUtils.getCastLevel(region),
+                    saveDC: regionUtils.getSaveDC(region)
+                },
+                macros: embeddedMacros,
+                name: region.name,
+                token: token
+            };
+            triggers.push(trigger);
+        }
     });
     return triggers;
 }
@@ -65,18 +81,22 @@ function getSortedTriggers(regions, pass, token) {
                 macro: macro.macro,
                 priority: macro.priority,
                 name: trigger.name,
-                token: trigger.token
+                token: trigger.token,
+                macroName: typeof macro.macro === 'string' ? macro.macro : macro.macro.name
             });
         });
     });
     return sortedTriggers.sort((a, b) => a.priority - b.priority);
 }
 async function executeMacro(trigger, options) {
-    genericUtils.log('dev', 'Executing Region Macro: ' + trigger.macro.name);
+    genericUtils.log('dev', 'Executing Region Macro: ' + trigger.macroName);
     try {
-        await trigger.macro({trigger, options});
+        if (typeof trigger.macro === 'string') {
+            await custom.executeScript({script: trigger.macro, trigger, options});
+        } else {
+            await trigger.macro({trigger, options});
+        }
     } catch (error) {
-        //Add some sort of ui notice here. Maybe even some debug info?
         console.error(error);
     }
 }

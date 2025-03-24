@@ -113,9 +113,36 @@ function collectTokenMacros(token, pass, distance, target) {
                         });
                     }
                 }
-                
             }
-            
+            let embeddedMacros = macroUtils.getEmbeddedMacros(item, 'combat', {pass});
+            if (embeddedMacros.length) {
+                let validItemMacros = [];
+                embeddedMacros.forEach(i => {
+                    if (distance && i.distance < distance) return;
+                    if (i.disposition) {
+                        if (i.disposition === 'ally' && token.disposition != target?.disposition) return;
+                        if (i.disposition === 'enemy' && token.disposition === target?.disposition) return;
+                    }
+                    validItemMacros.push({
+                        macro: i.macro,
+                        priority: i.priority
+                    });
+                });
+                if (validItemMacros.length) {
+                    triggers.push({
+                        entity: item,
+                        castData: {
+                            castLevel: -1,
+                            saveDC: itemUtils.getSaveDC(item)
+                        },
+                        macros: validItemMacros,
+                        name: item.name,
+                        token: token.object,
+                        target: target?.object,
+                        distance: distance
+                    });
+                }
+            }
         });
     }
     let templates = templateUtils.getTemplatesInToken(token.object);

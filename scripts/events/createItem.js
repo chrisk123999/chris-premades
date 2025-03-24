@@ -1,4 +1,4 @@
-import {genericUtils, socketUtils} from '../utils.js';
+import {genericUtils, macroUtils, socketUtils} from '../utils.js';
 import {custom} from './custom.js';
 function getItemMacroData(item) {
     return item.flags['chris-premades']?.macros?.createItem ?? [];
@@ -19,6 +19,14 @@ function collectAllMacros(item, pass) {
             name: item.name.slugify()
         });
     }
+    let embeddedMacros = macroUtils.getEmbeddedMacros(item, 'createItem', {pass});
+    if (embeddedMacros.length) {
+        triggers.push({
+            entity: item,
+            macros: embeddedMacros,
+            name: item.name.slugify()
+        });
+    }
     return triggers;
 }
 function getSortedTriggers(item, pass) {
@@ -36,16 +44,21 @@ function getSortedTriggers(item, pass) {
                 macro: macro.macro,
                 name: trigger.name,
                 identifier: genericUtils.getIdentifier(item),
-                actor: item.actor
+                actor: item.actor,
+                macroName: typeof macro.macro === 'string' ? macro.macro : macro.macro.name
             });
         });
     });
     return sortedTriggers;
 }
 async function executeMacro(trigger) {
-    genericUtils.log('dev', 'Executing Create Item Macro: ' + trigger.macro.name + ' from ' + trigger.name);
+    genericUtils.log('dev', 'Executing Create Item Macro: ' + trigger.macroName + ' from ' + trigger.name);
     try {
-        await trigger.macro({trigger});
+        if (typeof trigger.macro === 'string') {            
+            await custom.executeScript({script: trigger.macro, trigger});
+        } else {
+            await trigger.macro({trigger});
+        }
     } catch (error) {
         console.error(error);
     }

@@ -1,7 +1,7 @@
 import {custom} from './custom.js';
 import {effects} from '../extensions/effects.js';
 import * as macros from '../macros.js';
-import {effectUtils, genericUtils, socketUtils} from '../utils.js';
+import {effectUtils, genericUtils, macroUtils, socketUtils} from '../utils.js';
 import {auras} from './auras.js';
 import {death} from './death.js';
 function getEffectMacroData(effect) {
@@ -15,20 +15,35 @@ function collectEffectMacros(effect) {
 }
 function collectMacros(effect, pass) {
     let macroList = collectEffectMacros(effect);
-    if (!macroList.length) return [];
     let triggers = [];
-    let effectMacros = macroList.filter(i => i.effect?.find(j => j.pass === pass)).flatMap(k => k.effect).filter(l => l.pass === pass);
-    if (!effectMacros.length) return [];
-    triggers.push({
-        entity: effect,
-        castData: {
-            castLevel: effectUtils.getCastLevel(effect) ?? -1,
-            baseLevel: effectUtils.getBaseLevel(effect) ?? -1,
-            saveDC: effectUtils.getSaveDC(effect) ?? -1
-        },
-        macros: effectMacros,
-        name: effect.name.slugify()
-    });
+    if (macroList.length) {
+        let effectMacros = macroList.filter(i => i.effect?.find(j => j.pass === pass)).flatMap(k => k.effect).filter(l => l.pass === pass);
+        if (effectMacros.length) {
+            triggers.push({
+                entity: effect,
+                castData: {
+                    castLevel: effectUtils.getCastLevel(effect) ?? -1,
+                    baseLevel: effectUtils.getBaseLevel(effect) ?? -1,
+                    saveDC: effectUtils.getSaveDC(effect) ?? -1
+                },
+                macros: effectMacros,
+                name: effect.name.slugify()
+            });
+        }
+    }
+    let embeddedMacros = macroUtils.getEmbeddedMacros(effect, 'effect', {pass});
+    if (embeddedMacros.length) {
+        triggers.push({
+            entity: effect,
+            castData: {
+                castLevel: effectUtils.getCastLevel(effect) ?? -1,
+                baseLevel: effectUtils.getBaseLevel(effect) ?? -1,
+                saveDC: effectUtils.getSaveDC(effect) ?? -1
+            },
+            macros: embeddedMacros,
+            name: effect.name.slugify()
+        });
+    }
     return triggers;
 }
 function getSortedTriggers(effect, pass) {
@@ -65,18 +80,22 @@ function getSortedTriggers(effect, pass) {
                 castData: trigger.castData,
                 macro: macro.macro,
                 priority: macro.priority,
-                name: trigger.name
+                name: trigger.name,
+                macroName: typeof macro.macro === 'string' ? macro.macro : macro.macro.name
             });
         });
     });
     return sortedTriggers.sort((a, b) => a.priority - b.priority);
 }
 async function executeMacro(trigger) {
-    genericUtils.log('dev', 'Executing Effect Macro: ' + trigger.macro.name + ' from ' + trigger.name + ' with a priority of ' + trigger.priority);
+    genericUtils.log('dev', 'Executing Effect Macro: ' + trigger.macroName + ' from ' + trigger.name + ' with a priority of ' + trigger.priority);
     try {
-        await trigger.macro({trigger});
+        if (typeof trigger.macro === 'string') {
+            await custom.executeScript({script: trigger.macro, trigger});
+        } else {
+            await trigger.macro({trigger});
+        }
     } catch (error) {
-        //Add some sort of ui notice here. Maybe even some debug info?
         console.error(error);
     }
 }
