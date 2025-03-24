@@ -13,64 +13,34 @@ function collectRestMacros(entity, pass) {
 function collectAllMacros(actor, pass) {
     let triggers = [];
     actor.items.forEach(item => {
-        let macroList = collectRestMacros(item, pass);
-        if (pass === 'long') macroList.push(...collectRestMacros(item, 'short'));
-        if (macroList.length) {
-            triggers.push({
-                entity: item,
-                castData: {
-                    castLevel: item.system.level ?? -1,
-                    baseLevel: item.system.level ?? -1,
-                    saveDC: itemUtils.getSaveDC(item) ?? -1
-                },
-                macros: macroList,
-                name: item.name.slugify()
-            });
-        }
-        let embeddedMacros = macroUtils.getEmbeddedMacros(item, 'rest', {pass});
-        if (pass === 'long') embeddedMacros.push(...macroUtils.getEmbeddedMacros(item, 'rest', {pass: 'short'}));
-        if (embeddedMacros.length) {
-            triggers.push({
-                entity: item,
-                castData: {
-                    castLevel: item.system.level ?? -1,
-                    baseLevel: item.system.level ?? -1,
-                    saveDC: itemUtils.getSaveDC(item) ?? -1
-                },
-                macros: embeddedMacros,
-                name: item.name.slugify()
-            });
-        }
+        let macroList = collectRestMacros(item, pass).concat(macroUtils.getEmbeddedMacros(item, 'rest', {pass}));
+        if (pass === 'long') macroList.push(...collectRestMacros(item, 'short').concat(macroUtils.getEmbeddedMacros(item, 'rest', {pass: 'short'})));
+        if (!macroList.length) return;
+        triggers.push({
+            entity: item,
+            castData: {
+                castLevel: item.system.level ?? -1,
+                baseLevel: item.system.level ?? -1,
+                saveDC: itemUtils.getSaveDC(item) ?? -1
+            },
+            macros: macroList,
+            name: item.name.slugify()
+        });
     });
     actorUtils.getEffects(actor, {includeItemEffects: true}).forEach(effect => {
-        let macroList = collectRestMacros(effect, pass);
-        if (pass === 'long') macroList.push(...collectRestMacros(effect, 'short'));
-        if (macroList.length) {
-            triggers.push({
-                entity: effect,
-                castData: {
-                    castLevel: effectUtils.getCastLevel(effect) ?? -1,
-                    baseLevel: effectUtils.getBaseLevel(effect) ?? -1,
-                    saveDC: effectUtils.getSaveDC(effect) ?? -1
-                },
-                macros: macroList,
-                name: effect.name.slugify()
-            });
-        }
-        let embeddedMacros = macroUtils.getEmbeddedMacros(effect, 'rest', {pass});
-        if (pass === 'long') embeddedMacros.push(...macroUtils.getEmbeddedMacros(effect, 'rest', {pass: 'short'}));
-        if (embeddedMacros.length) {
-            triggers.push({
-                entity: effect,
-                castData: {
-                    castLevel: effectUtils.getCastLevel(effect) ?? -1,
-                    baseLevel: effectUtils.getBaseLevel(effect) ?? -1,
-                    saveDC: effectUtils.getSaveDC(effect) ?? -1
-                },
-                macros: embeddedMacros,
-                name: effect.name.slugify()
-            });
-        }
+        let macroList = collectRestMacros(effect, pass).concat(macroUtils.getEmbeddedMacros(effect, 'rest', {pass}));
+        if (pass === 'long') macroList.push(...collectRestMacros(effect, 'short').concat(macroUtils.getEmbeddedMacros(effect, 'rest', {pass: 'short'})));
+        if (!macroList.length) return;
+        triggers.push({
+            entity: effect,
+            castData: {
+                castLevel: effectUtils.getCastLevel(effect) ?? -1,
+                baseLevel: effectUtils.getBaseLevel(effect) ?? -1,
+                saveDC: effectUtils.getSaveDC(effect) ?? -1
+            },
+            macros: macroList,
+            name: effect.name.slugify()
+        });
     });
     return triggers;
 }
