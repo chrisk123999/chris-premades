@@ -14,25 +14,10 @@ function collectEffectMacros(effect) {
     return macroList.map(i => custom.getMacro(i, genericUtils.getRules(effect))).filter(j => j);
 }
 function collectMacros(effect, pass) {
-    let macroList = collectEffectMacros(effect);
+    let macroList = collectEffectMacros(effect).filter(i => i.effect?.find(j => j.pass === pass)).flatMap(k => k.effect).filter(l => l.pass === pass).concat(macroUtils.getEmbeddedMacros(effect, 'effect', {pass}));
+    if (!macroList.length) return [];
     let triggers = [];
     if (macroList.length) {
-        let effectMacros = macroList.filter(i => i.effect?.find(j => j.pass === pass)).flatMap(k => k.effect).filter(l => l.pass === pass);
-        if (effectMacros.length) {
-            triggers.push({
-                entity: effect,
-                castData: {
-                    castLevel: effectUtils.getCastLevel(effect) ?? -1,
-                    baseLevel: effectUtils.getBaseLevel(effect) ?? -1,
-                    saveDC: effectUtils.getSaveDC(effect) ?? -1
-                },
-                macros: effectMacros,
-                name: effect.name.slugify()
-            });
-        }
-    }
-    let embeddedMacros = macroUtils.getEmbeddedMacros(effect, 'effect', {pass});
-    if (embeddedMacros.length) {
         triggers.push({
             entity: effect,
             castData: {
@@ -40,7 +25,7 @@ function collectMacros(effect, pass) {
                 baseLevel: effectUtils.getBaseLevel(effect) ?? -1,
                 saveDC: effectUtils.getSaveDC(effect) ?? -1
             },
-            macros: embeddedMacros,
+            macros: macroList,
             name: effect.name.slugify()
         });
     }
