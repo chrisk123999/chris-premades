@@ -10,180 +10,73 @@ function collectMacros(entity) {
     if (!macroList.length) return [];
     return macroList.map(i => custom.getMacro(i, genericUtils.getRules(entity))).filter(j => j);
 }
-function collectActorCheckMacros(actor, pass, checkId, options, roll, config, dialog, message, sourceActor) {
+function collectActorCheckMacros(actor, pass) {
     let triggers = [];
     let effects = actorUtils.getEffects(actor, {includeItemEffects: true});
     let token = actorUtils.getFirstToken(actor);
     effects.forEach(effect => {
-        let macroList = collectMacros(effect);
-        if (macroList.length) {
-            let effectMacros = macroList.filter(i => i.check?.find(j => j.pass === pass)).flatMap(k => k.check).filter(l => l.pass === pass);
-            if (effectMacros.length) {
-                triggers.push({
-                    entity: effect,
-                    castData: {
-                        castLevel: effectUtils.getCastLevel(effect) ?? -1,
-                        baseLevel: effectUtils.getBaseLevel(effect) ?? -1,
-                        saveDC: effectUtils.getSaveDC(effect) ?? -1
-                    },
-                    macros: effectMacros,
-                    name: effect.name.slugify(),
-                    actor,
-                    checkId,
-                    options,
-                    roll,
-                    config,
-                    dialog,
-                    message,
-                    sourceActor
-                });
+        let macroList = collectMacros(effect).filter(i => i.check?.find(j => j.pass === pass)).flatMap(k => k.check).filter(l => l.pass === pass).concat(macroUtils.getEmbeddedMacros(effect, 'check', {pass}));
+        if (!macroList.length) return;
+        triggers.push({
+            entity: effect,
+            macros: macroList,
+            name: effect.name.slugify(),
+            castData: {
+                castLevel: effectUtils.getCastLevel(effect) ?? -1,
+                baseLevel: effectUtils.getBaseLevel(effect) ?? -1,
+                saveDC: effectUtils.getSaveDC(effect) ?? -1
             }
-        }
-        let embeddedMacros = macroUtils.getEmbeddedMacros(effect, 'check', {pass});
-        if (embeddedMacros.length) {
-            triggers.push({
-                entity: effect,
-                castData: {
-                    castLevel: effectUtils.getCastLevel(effect) ?? -1,
-                    baseLevel: effectUtils.getBaseLevel(effect) ?? -1,
-                    saveDC: effectUtils.getSaveDC(effect) ?? -1
-                },
-                macros: embeddedMacros,
-                name: effect.name.slugify(),
-                actor,
-                checkId,
-                options,
-                roll,
-                config,
-                dialog,
-                message,
-                sourceActor
-            });
-        }
+        });
     });
     actor.items.forEach(item => {
-        let macroList = collectMacros(item);
-        if (macroList.length) {
-            let itemMacros = macroList.filter(i => i.check?.find(j => j.pass === pass)).flatMap(k => k.check).filter(l => l.pass === pass);
-            if (itemMacros.length) {
-                triggers.push({
-                    entity: item,
-                    castData: {
-                        castLevel: -1,
-                        saveDC: itemUtils.getSaveDC(item)
-                    },
-                    macros: itemMacros,
-                    name: item.name.slugify(),
-                    actor,
-                    checkId,
-                    options,
-                    roll,
-                    config,
-                    dialog,
-                    message,
-                    sourceActor
-                });
+        let macroList = collectMacros(item).filter(i => i.check?.find(j => j.pass === pass)).flatMap(k => k.check).filter(l => l.pass === pass).concat(macroUtils.getEmbeddedMacros(item, 'check', {pass}));
+        if (!macroList.length) return;
+        triggers.push({
+            entity: item,
+            macros: macroList,
+            name: item.name.slugify(),
+            castData: {
+                castLevel: -1,
+                baseLevel: -1,
+                saveDC: itemUtils.getSaveDC(item) ?? -1
             }
-        }
-        let embeddedMacros = macroUtils.getEmbeddedMacros(item, 'check', {pass});
-        if (embeddedMacros.length) {
-            triggers.push({
-                entity: item,
-                castData: {
-                    castLevel: -1,
-                    saveDC: itemUtils.getSaveDC(item)
-                },
-                macros: embeddedMacros,
-                name: item.name.slugify(),
-                actor,
-                checkId,
-                options,
-                roll,
-                config,
-                dialog,
-                message,
-                sourceActor
-            });
-        }
+        });
     });
     if (token) {
         let templates = templateUtils.getTemplatesInToken(token);
         templates.forEach(template => {
-            let macroList = collectMacros(template);
+            let macroList = collectMacros(template).filter(i => i.check?.find(j => j.pass === pass)).flatMap(k => k.check).filter(l => l.pass === pass).concat(macroUtils.getEmbeddedMacros(template, 'check', {pass}));
             if (!macroList.length) return;
-            let templateMacros = macroList.filter(i => i.check?.find(j => j.pass === pass)).flatMap(k => k.check).filter(l => l.pass === pass);
-            if (!templateMacros.length) return;
             triggers.push({
                 entity: template,
-                castData: {
-                    castLevel: templateUtils.getCastLevel(template),
-                    baseLevel: templateUtils.getBaseLevel(template),
-                    saveDC: templateUtils.getSaveDC(template)
-                },
-                macros: templateMacros,
+                macroList,
                 name: templateUtils.getName(template).slugify(),
-                actor,
-                checkId,
-                options,
-                roll,
-                config,
-                dialog,
-                message,
-                sourceActor
+                castData: {
+                    castLevel: templateUtils.getCastLevel(template) ?? -1,
+                    baseLevel: templateUtils.getBaseLevel(template) ?? -1,
+                    saveDC: templateUtils.getSaveDC(template) ?? -1
+                }
             });
         });
         token.document.regions.forEach(region => {
-            let macroList = collectMacros(region);
-            if (macroList.length) {
-                let regionMacros = macroList.filter(i => i.check?.find(j => j.pass === pass)).flatMap(k => k.check).filter(l => l.pass === pass);
-                if (!regionMacros.length) {
-                    triggers.push({
-                        entity: region,
-                        castData: {
-                            castLevel: regionUtils.getCastLevel(region),
-                            baseLevel: regionUtils.getBaseLevel(region),
-                            saveDC: regionUtils.getSaveDC(region)
-                        },
-                        macros: regionMacros,
-                        name: region.name.slugify(),
-                        actor,
-                        checkId,
-                        options,
-                        roll,
-                        config,
-                        dialog,
-                        message,
-                        sourceActor
-                    });
+            let macroList = collectMacros(region).filter(i => i.check?.find(j => j.pass === pass)).flatMap(k => k.check).filter(l => l.pass === pass).concat(macroUtils.getEmbeddedMacros(region, 'check', {pass}));
+            if (!macroList.length) return;
+            triggers.push({
+                entity: region,
+                macroList,
+                name: regionUtils.getName(region).slugify(),
+                castData: {
+                    castLevel: regionUtils.getCastLevel(region) ?? -1,
+                    baseLevel: regionUtils.getBaseLevel(region) ?? -1,
+                    saveDC: regionUtils.getSaveDC(region) ?? -1
                 }
-            }
-            let embeddedMacros = macroUtils.getEmbeddedMacros(region, 'check', {pass});
-            if (embeddedMacros.length) {
-                triggers.push({
-                    entity: region,
-                    castData: {
-                        castLevel: regionUtils.getCastLevel(region),
-                        baseLevel: regionUtils.getBaseLevel(region),
-                        saveDC: regionUtils.getSaveDC(region)
-                    },
-                    macros: embeddedMacros,
-                    name: region.name.slugify(),
-                    actor,
-                    checkId,
-                    options,
-                    roll,
-                    config,
-                    dialog,
-                    message,
-                    sourceActor
-                });
-            }
+            });
         });
     }
     return triggers;
 }
 function getSortedTriggers(actor, pass, checkId, options, roll, config, dialog, message, sourceActor) {
-    let allTriggers = collectActorCheckMacros(actor, pass, checkId, options, roll, config, dialog, message, sourceActor);
+    let allTriggers = collectActorCheckMacros(actor, pass);
     let names = new Set(allTriggers.map(i => i.name));
     allTriggers = Object.fromEntries(names.map(i => [i, allTriggers.filter(j => j.name === i)]));
     let maxMap = {};
@@ -213,18 +106,17 @@ function getSortedTriggers(actor, pass, checkId, options, roll, config, dialog, 
         trigger.macros.forEach(macro => {
             sortedTriggers.push({
                 entity: trigger.entity,
-                castData: trigger.castData,
                 macro: macro.macro,
                 priority: macro.priority,
                 name: trigger.name,
-                actor: trigger.actor,
-                checkId: trigger.checkId,
-                options: trigger.options,
-                roll: trigger.roll,
-                config: trigger.config,
-                dialog: trigger.dialog,
-                message: trigger.message,
-                sourceActor: trigger.sourceActor,
+                actor,
+                checkId,
+                options,
+                roll,
+                config,
+                dialog,
+                message,
+                sourceActor,
                 macroName: typeof macro.macro === 'string' ? macro.macro : macro.macro.name
             });
         });
