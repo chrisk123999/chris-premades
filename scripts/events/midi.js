@@ -169,7 +169,7 @@ async function executeMacro(trigger, workflow, ditem) {
             genericUtils.log('dev', 'Executing Embedded Midi Macro: ' + trigger.macroName + ' from ' + trigger.name + ' with a priority of ' + trigger.priority);
             result = await custom.executeScript({script: trigger.macro, trigger, workflow, ditem});
         } else {
-            genericUtils.log('dev', 'Executing Midi Macro: ' + trigger.macro.name + ' from ' + trigger.name + ' with a priority of ' + trigger.priority);
+            genericUtils.log('dev', 'Executing Midi Macro: ' + trigger.macroName + ' from ' + trigger.name + ' with a priority of ' + trigger.priority);
             result = await trigger.macro({trigger, workflow, ditem});
         }
     } catch (error) {

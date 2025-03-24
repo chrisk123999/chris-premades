@@ -136,11 +136,12 @@ function getSortedTriggers(tokens, pass, token) {
     return sortedTriggers.sort((a, b) => a.priority - b.priority);
 }
 async function executeMacro(trigger, options) {
-    genericUtils.log('dev', 'Executing Movement Macro: ' + trigger.macroName);
     try {
         if (typeof trigger.macro === 'string') {
+            genericUtils.log('dev', 'Executing Embedded Movement Macro: ' + trigger.macroName);
             await custom.executeScript({script: trigger.macro, trigger, options});
         } else {
+            genericUtils.log('dev', 'Executing Movement Macro: ' + trigger.macroName);
             await trigger.macro({trigger, options});
         }
     } catch (error) {

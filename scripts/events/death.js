@@ -125,11 +125,12 @@ function getSortedTriggers(actor, pass) {
     return sortedTriggers.sort((a, b) => a.priority - b.priority);
 }
 async function executeMacro(trigger) {
-    genericUtils.log('dev', 'Executing Death Macro: ' + trigger.macroName + ' from ' + trigger.name + ' with a priority of ' + trigger.priority);
     try {
         if (typeof trigger.macro === 'string') {
+            genericUtils.log('dev', 'Executing Embedded Death Macro: ' + trigger.macroName + ' from ' + trigger.name + ' with a priority of ' + trigger.priority);
             await custom.executeScript({script: trigger.macro, trigger});
         } else {
+            genericUtils.log('dev', 'Executing Death Macro: ' + trigger.macroName + ' from ' + trigger.name + ' with a priority of ' + trigger.priority);
             await trigger.macro({trigger});
         }
     } catch (error) {

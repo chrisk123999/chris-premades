@@ -86,11 +86,12 @@ function getSortedTriggers(actor, pass) {
     return sortedTriggers.sort((a, b) => a.priority - b.priority);
 }
 async function executeMacro(trigger, actor) {
-    genericUtils.log('dev', 'Executing Rest Macro: ' + trigger.macroName + ' from ' + trigger.name + ' with a priority of ' + trigger.priority);
     try {
         if (typeof trigger.macro === 'string') {
+            genericUtils.log('dev', 'Executing Embedded Rest Macro: ' + trigger.macroName + ' from ' + trigger.name + ' with a priority of ' + trigger.priority);
             await custom.executeScript({script: trigger.macro, trigger, actor});
         } else {
+            genericUtils.log('dev', 'Executing Rest Macro: ' + trigger.macroName + ' from ' + trigger.name + ' with a priority of ' + trigger.priority);
             await trigger.macro({trigger, actor});
         }
     } catch (error) {

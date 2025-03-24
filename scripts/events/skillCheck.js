@@ -124,12 +124,13 @@ function getSortedTriggers(actor, pass, skillId, options, roll, config, dialog, 
     return sortedTriggers.sort((a, b) => a.priority - b.priority);
 }
 async function executeMacro(trigger) {
-    genericUtils.log('dev', 'Executing Skill Macro: ' + trigger.macroName + ' from ' + trigger.name + ' with a priority of ' + trigger.priority);
     let result;
     try {
         if (typeof trigger.macro === 'string') {
+            genericUtils.log('dev', 'Executing Embedded Skill Check Macro: ' + trigger.macroName + ' from ' + trigger.name + ' with a priority of ' + trigger.priority);
             await custom.executeScript({script: trigger.macro, trigger});
         } else {
+            genericUtils.log('dev', 'Executing Skill Check Macro: ' + trigger.macroName + ' from ' + trigger.name + ' with a priority of ' + trigger.priority);
             result = await trigger.macro({trigger});
         }
     } catch (error) {
@@ -138,19 +139,19 @@ async function executeMacro(trigger) {
     return result;
 }
 async function executeContextMacroPass(actor, pass, skillId, options, roll, config, dialog, message) {
-    genericUtils.log('dev', 'Executing Skill Macro Pass: ' + pass);
+    genericUtils.log('dev', 'Executing Skill Check Macro Pass: ' + pass);
     let triggers = getSortedTriggers(actor, pass, skillId, options, roll, config, dialog, message);
     let results = [];
     for (let i of triggers) results.push(await executeMacro(i));
     return results.filter(i => i);
 }
 async function executeMacroPass(actor, pass, skillId, options, roll, config, dialog, message) {
-    genericUtils.log('dev', 'Executing Skill Macro Pass: ' + pass);
+    genericUtils.log('dev', 'Executing Skill Check Macro Pass: ' + pass);
     let triggers = getSortedTriggers(actor, pass, skillId, options, roll, config, dialog, message, this);
     for (let i of triggers) await executeMacro(i);
 }
 async function executeBonusMacroPass(actor, pass, skillId, options, roll, config, dialog, message) {
-    genericUtils.log('dev', 'Executing Skill Macro Pass: ' + pass);
+    genericUtils.log('dev', 'Executing Skill Check Macro Pass: ' + pass);
     let triggers = getSortedTriggers(actor, pass, skillId, options, roll, config, dialog, message);
     for (let i of triggers) {
         i.roll = roll;

@@ -52,11 +52,12 @@ function getSortedTriggers(item, pass) {
     return sortedTriggers;
 }
 async function executeMacro(trigger) {
-    genericUtils.log('dev', 'Executing Create Item Macro: ' + trigger.macroName + ' from ' + trigger.name);
     try {
-        if (typeof trigger.macro === 'string') {            
+        if (typeof trigger.macro === 'string') {   
+            genericUtils.log('dev', 'Executing Embedded Create Item Macro: ' + trigger.macroName + ' from ' + trigger.name);         
             await custom.executeScript({script: trigger.macro, trigger});
         } else {
+            genericUtils.log('dev', 'Executing Create Item Macro: ' + trigger.macroName + ' from ' + trigger.name);
             await trigger.macro({trigger});
         }
     } catch (error) {
