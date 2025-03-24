@@ -10,182 +10,72 @@ function collectMacros(entity) {
     if (!macroList.length) return [];
     return macroList.map(i => custom.getMacro(i, genericUtils.getRules(entity))).filter(j => j);
 }
-function collectActorSkillMacros(actor, pass, skillId, options, roll, config, dialog, message, sourceActor) {
+function collectActorSkillMacros(actor, pass) {
     let triggers = [];
     let effects = actorUtils.getEffects(actor, {includeItemEffects: true});
     let token = actorUtils.getFirstToken(actor);
     effects.forEach(effect => {
-        let macroList = collectMacros(effect);
-        if (macroList.length) {
-            let effectMacros = macroList.filter(i => i.skill?.find(j => j.pass === pass)).flatMap(k => k.skill).filter(l => l.pass === pass);
-            if (effectMacros.length) {
-                triggers.push({
-                    entity: effect,
-                    castData: {
-                        castLevel: effectUtils.getCastLevel(effect) ?? -1,
-                        baseLevel: effectUtils.getBaseLevel(effect) ?? -1,
-                        saveDC: effectUtils.getSaveDC(effect) ?? -1
-                    },
-                    macros: effectMacros,
-                    name: effect.name.slugify(),
-                    actor,
-                    skillId,
-                    options,
-                    roll,
-                    config,
-                    dialog,
-                    message,
-                    sourceActor
-                });
-            }
-        }
-        let embeddedMacros = macroUtils.getEmbeddedMacros(effect, 'skill', {pass});
-        if (embeddedMacros.length) {
-            triggers.push({
-                entity: effect,
-                castData: {
-                    castLevel: effectUtils.getCastLevel(effect) ?? -1,
-                    baseLevel: effectUtils.getBaseLevel(effect) ?? -1,
-                    saveDC: effectUtils.getSaveDC(effect) ?? -1
-                },
-                macros: embeddedMacros,
-                name: effect.name.slugify(),
-                actor,
-                skillId,
-                options,
-                roll,
-                config,
-                dialog,
-                message,
-                sourceActor
-            });
-        }
+        let macroList = collectMacros(effect).filter(i => i.skill?.find(j => j.pass === pass)).flatMap(k => k.skill).filter(l => l.pass === pass).concat(macroUtils.getEmbeddedMacros(effect, 'skill', {pass}));
+        if (!macroList.length) return;
+        triggers.push({
+            entity: effect,
+            castData: {
+                castLevel: effectUtils.getCastLevel(effect) ?? -1,
+                baseLevel: effectUtils.getBaseLevel(effect) ?? -1,
+                saveDC: effectUtils.getSaveDC(effect) ?? -1
+            },
+            macros: macroList,
+            name: effect.name.slugify()
+        });
     });
     actor.items.forEach(item => {
-        let macroList = collectMacros(item);
-        if (macroList.length) {
-            let itemMacros = macroList.filter(i => i.skill?.find(j => j.pass === pass)).flatMap(k => k.skill).filter(l => l.pass === pass);
-            if (itemMacros.length) {
-                triggers.push({
-                    entity: item,
-                    castData: {
-                        castLevel: -1,
-                        saveDC: itemUtils.getSaveDC(item)
-                    },
-                    macros: itemMacros,
-                    name: item.name.slugify(),
-                    actor,
-                    skillId,
-                    options,
-                    roll,
-                    config,
-                    dialog,
-                    message,
-                    sourceActor
-                });
-            }
-        }
-        let embeddedMacros = macroUtils.getEmbeddedMacros(item, 'skill', {pass});
-        if (embeddedMacros.length) {
-            triggers.push({
-                entity: item,
-                castData: {
-                    castLevel: -1,
-                    saveDC: itemUtils.getSaveDC(item)
-                },
-                macros: embeddedMacros,
-                name: item.name.slugify(),
-                actor,
-                skillId,
-                options,
-                roll,
-                config,
-                dialog,
-                message,
-                sourceActor
-            });
-        }
+        let macroList = collectMacros(item).filter(i => i.skill?.find(j => j.pass === pass)).flatMap(k => k.skill).filter(l => l.pass === pass).concat(macroUtils.getEmbeddedMacros(item, 'skill', {pass}));
+        if (!macroList.length) return;
+        triggers.push({
+            entity: item,
+            castData: {
+                castLevel: -1,
+                saveDC: itemUtils.getSaveDC(item)
+            },
+            macros: macroList,
+            name: item.name.slugify()
+        });
     });
     if (token) {
         let templates = templateUtils.getTemplatesInToken(token);
         templates.forEach(template => {
-            let macroList = collectMacros(template);
-            if (macroList.length) {
-                let templateMacros = macroList.filter(i => i.skill?.find(j => j.pass === pass)).flatMap(k => k.skill).filter(l => l.pass === pass);
-                if (templateMacros.length) {
-                    triggers.push({
-                        entity: template,
-                        castData: {
-                            castLevel: templateUtils.getCastLevel(template),
-                            baseLevel: templateUtils.getBaseLevel(template),
-                            saveDC: templateUtils.getSaveDC(template)
-                        },
-                        macros: templateMacros,
-                        name: templateUtils.getName(template).slugify(),
-                        actor,
-                        skillId,
-                        options,
-                        roll,
-                        config,
-                        dialog,
-                        message,
-                        sourceActor
-                    });
-                }
-            }
+            let macroList = collectMacros(template).filter(i => i.skill?.find(j => j.pass === pass)).flatMap(k => k.skill).filter(l => l.pass === pass).concat(macroUtils.getEmbeddedMacros(template, 'skill', {pass}));
+            if (!macroList.length) return;
+            triggers.push({
+                entity: template,
+                castData: {
+                    castLevel: templateUtils.getCastLevel(template),
+                    baseLevel: templateUtils.getBaseLevel(template),
+                    saveDC: templateUtils.getSaveDC(template)
+                },
+                macros: macroList,
+                name: templateUtils.getName(template).slugify()
+            });
         });
         token.document.regions.forEach(region => {
-            let macroList = collectMacros(region);
-            if (macroList.length) {
-                let regionMacros = macroList.filter(i => i.skill?.find(j => j.pass === pass)).flatMap(k => k.skill).filter(l => l.pass === pass);
-                if (regionMacros.length) {
-                    triggers.push({
-                        entity: region,
-                        castData: {
-                            castLevel: regionUtils.getCastLevel(region),
-                            baseLevel: regionUtils.getBaseLevel(region),
-                            saveDC: regionUtils.getSaveDC(region)
-                        },
-                        macros: regionMacros,
-                        name: region.name.slugify(),
-                        actor,
-                        skillId,
-                        options,
-                        roll,
-                        config,
-                        dialog,
-                        message,
-                        sourceActor
-                    });
-                }
-            }
-            let embeddedMacros = macroUtils.getEmbeddedMacros(region, 'skill', {pass});
-            if (embeddedMacros.length) {
-                triggers.push({
-                    entity: region,
-                    castData: {
-                        castLevel: regionUtils.getCastLevel(region),
-                        baseLevel: regionUtils.getBaseLevel(region),
-                        saveDC: regionUtils.getSaveDC(region)
-                    },
-                    macros: embeddedMacros,
-                    name: region.name.slugify(),
-                    actor,
-                    skillId,
-                    options,
-                    roll,
-                    config,
-                    dialog,
-                    message,
-                    sourceActor
-                });
-            }
+            let macroList = collectMacros(region).filter(i => i.skill?.find(j => j.pass === pass)).flatMap(k => k.skill).filter(l => l.pass === pass).concat(macroUtils.getEmbeddedMacros(region, 'skill', {pass}));
+            if (!macroList.length) return;
+            triggers.push({
+                entity: region,
+                castData: {
+                    castLevel: regionUtils.getCastLevel(region),
+                    baseLevel: regionUtils.getBaseLevel(region),
+                    saveDC: regionUtils.getSaveDC(region)
+                },
+                macros: macroList,
+                name: region.name.slugify()
+            });
         });
     }
     return triggers;
 }
 function getSortedTriggers(actor, pass, skillId, options, roll, config, dialog, message, sourceActor) {
-    let allTriggers = collectActorSkillMacros(actor, pass, skillId, options, roll, config, dialog, message, sourceActor);
+    let allTriggers = collectActorSkillMacros(actor, pass);
     let names = new Set(allTriggers.map(i => i.name));
     allTriggers = Object.fromEntries(names.map(i => [i, allTriggers.filter(j => j.name === i)]));
     let maxMap = {};
@@ -219,14 +109,14 @@ function getSortedTriggers(actor, pass, skillId, options, roll, config, dialog, 
                 macro: macro.macro,
                 priority: macro.priority,
                 name: trigger.name,
-                actor: trigger.actor,
-                skillId: trigger.skillId,
-                options: trigger.options,
-                roll: trigger.roll,
-                config: trigger.config,
-                dialog: trigger.dialog,
-                message: trigger.message,
-                sourceActor: trigger.sourceActor,
+                actor,
+                skillId,
+                options,
+                roll,
+                config,
+                dialog,
+                message,
+                sourceActor,
                 macroName: typeof macro.macro === 'string' ? macro.macro : macro.macro.name
             });
         });
