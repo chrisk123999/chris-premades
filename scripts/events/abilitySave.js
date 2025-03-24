@@ -10,203 +10,73 @@ function collectMacros(entity) {
     if (!macroList.length) return [];
     return macroList.map(i => custom.getMacro(i, genericUtils.getRules(entity))).filter(j => j);
 }
-function collectActorSaveMacros(actor, pass, saveId, options, roll, config, dialog, message, sourceActor) {
+function collectActorSaveMacros(actor, pass) {
     let triggers = [];
     let effects = actorUtils.getEffects(actor, {includeItemEffects: true});
     let token = actorUtils.getFirstToken(actor);
     effects.forEach(effect => {
-        let macroList = collectMacros(effect);
-        if (macroList.length) {
-            let effectMacros = macroList.filter(i => i.save?.find(j => j.pass === pass)).flatMap(k => k.save).filter(l => l.pass === pass);
-            if (effectMacros.length) {
-                triggers.push({
-                    entity: effect,
-                    castData: {
-                        castLevel: effectUtils.getCastLevel(effect) ?? -1,
-                        baseLevel: effectUtils.getBaseLevel(effect) ?? -1,
-                        saveDC: effectUtils.getSaveDC(effect) ?? -1
-                    },
-                    macros: effectMacros,
-                    name: effect.name.slugify(),
-                    actor,
-                    saveId,
-                    options,
-                    roll,
-                    config,
-                    dialog,
-                    message,
-                    sourceActor
-                });
+        let macroList = collectMacros(effect).filter(i => i.save?.find(j => j.pass === pass)).flatMap(k => k.save).filter(l => l.pass === pass).concat(macroUtils.getEmbeddedMacros(effect, 'save', {pass}));
+        if (!macroList.length) return;
+        triggers.push({
+            entity: effect,
+            macros: macroList,
+            name: effect.name.slugify(),
+            castData: {
+                castLevel: effectUtils.getCastLevel(effect) ?? -1,
+                baseLevel: effectUtils.getBaseLevel(effect) ?? -1,
+                saveDC: effectUtils.getSaveDC(effect) ?? -1
             }
-        }
-        let embeddedMacros = macroUtils.getEmbeddedMacros(effect, 'save', {pass});
-        if (embeddedMacros.length) {
-            triggers.push({
-                entity: effect,
-                castData: {
-                    castLevel: effectUtils.getCastLevel(effect) ?? -1,
-                    baseLevel: effectUtils.getBaseLevel(effect) ?? -1,
-                    saveDC: effectUtils.getSaveDC(effect) ?? -1
-                },
-                macros: embeddedMacros,
-                name: effect.name.slugify(),
-                actor,
-                saveId,
-                options,
-                roll,
-                config,
-                dialog,
-                message,
-                sourceActor
-            });
-        }
+        });
     });
     actor.items.forEach(item => {
-        let macroList = collectMacros(item);
-        if (macroList.length) {
-            let itemMacros = macroList.filter(i => i.save?.find(j => j.pass === pass)).flatMap(k => k.save).filter(l => l.pass === pass);
-            if (itemMacros.length) {
-                triggers.push({
-                    entity: item,
-                    castData: {
-                        castLevel: -1,
-                        saveDC: itemUtils.getSaveDC(item)
-                    },
-                    macros: itemMacros,
-                    name: item.name.slugify(),
-                    actor: actor,
-                    saveId: saveId,
-                    options: options,
-                    roll: roll,
-                    config,
-                    dialog,
-                    message,
-                    sourceActor
-                });
+        let macroList = collectMacros(item).filter(i => i.save?.find(j => j.pass === pass)).flatMap(k => k.save).filter(l => l.pass === pass).concat(macroUtils.getEmbeddedMacros(item, 'save', {pass}));
+        if (!macroList.length) return;
+        triggers.push({
+            entity: item,
+            macros: macroList,
+            name: item.name.slugify(),
+            castData: {
+                castLevel: -1,
+                baseLevel: -1,
+                saveDC: itemUtils.getSaveDC(item) ?? -1
             }
-        }
-        let embeddedMacros = macroUtils.getEmbeddedMacros(item, 'save', {pass});
-        if (embeddedMacros.length) {
-            triggers.push({
-                entity: item,
-                castData: {
-                    castLevel: -1,
-                    saveDC: itemUtils.getSaveDC(item)
-                },
-                macros: embeddedMacros,
-                name: item.name.slugify(),
-                actor: actor,
-                saveId: saveId,
-                options: options,
-                roll: roll,
-                config,
-                dialog,
-                message,
-                sourceActor
-            });
-        }
+        });
     });
     if (token) {
         let templates = templateUtils.getTemplatesInToken(token);
         templates.forEach(template => {
-            let macroList = collectMacros(template);
-            if (macroList.length) {
-                let templateMacros = macroList.filter(i => i.save?.find(j => j.pass === pass)).flatMap(k => k.save).filter(l => l.pass === pass);
-                if (templateMacros.length) {
-                    triggers.push({
-                        entity: template,
-                        castData: {
-                            castLevel: templateUtils.getCastLevel(template),
-                            baseLevel: templateUtils.getBaseLevel(template),
-                            saveDC: templateUtils.getSaveDC(template)
-                        },
-                        macros: templateMacros,
-                        name: templateUtils.getName(template).slugify(),
-                        actor: actor,
-                        saveId: saveId,
-                        options: options,
-                        roll: roll,
-                        config,
-                        dialog,
-                        message,
-                        sourceActor
-                    });
+            let macroList = collectMacros(template).filter(i => i.save?.find(j => j.pass === pass)).flatMap(k => k.save).filter(l => l.pass === pass).concat(macroUtils.getEmbeddedMacros(template, 'save', {pass}));
+            if (!macroList.length) return;
+            triggers.push({
+                entity: template,
+                macros: macroList,
+                name: templateUtils.getName(template).slugify(),
+                castData: {
+                    castLevel: templateUtils.getCastLevel(template) ?? -1,
+                    baseLevel: templateUtils.getBaseLevel(template) ?? -1,
+                    saveDC: templateUtils.getSaveDC(template) ?? -1
                 }
-            }
-            let embeddedMacros = macroUtils.getEmbeddedMacros(template, 'save', {pass});
-            if (embeddedMacros.length) {
-                triggers.push({
-                    entity: template,
-                    castData: {
-                        castLevel: templateUtils.getCastLevel(template),
-                        baseLevel: templateUtils.getBaseLevel(template),
-                        saveDC: templateUtils.getSaveDC(template)
-                    },
-                    macros: embeddedMacros,
-                    name: templateUtils.getName(template).slugify(),
-                    actor: actor,
-                    saveId: saveId,
-                    options: options,
-                    roll: roll,
-                    config,
-                    dialog,
-                    message,
-                    sourceActor
-                });
-            }
+            });
         });
         token.document.regions.forEach(region => {
-            let macroList = collectMacros(region);
-            if (macroList.length) {
-                let regionMacros = macroList.filter(i => i.save?.find(j => j.pass === pass)).flatMap(k => k.save).filter(l => l.pass === pass);
-                if (!regionMacros.length) {
-                    triggers.push({
-                        entity: region,
-                        castData: {
-                            castLevel: regionUtils.getCastLevel(region),
-                            baseLevel: regionUtils.getBaseLevel(region),
-                            saveDC: regionUtils.getSaveDC(region)
-                        },
-                        macros: regionMacros,
-                        name: region.name.slugify(),
-                        actor: actor,
-                        saveId: saveId,
-                        options: options,
-                        roll: roll,
-                        config,
-                        dialog,
-                        message,
-                        sourceActor
-                    });
+            let macroList = collectMacros(region).filter(i => i.save?.find(j => j.pass === pass)).flatMap(k => k.save).filter(l => l.pass === pass).concat(macroUtils.getEmbeddedMacros(region, 'save', {pass}));
+            if (!macroList.length) return;
+            triggers.push({
+                entity: region,
+                macros: macroList,
+                name: region.name,
+                castData: {
+                    castLevel: regionUtils.getCastLevel(region),
+                    baseLevel: regionUtils.getBaseLevel(region),
+                    saveDC: regionUtils.getSaveDC(region)
                 }
-            }
-            let embeddedMacros = macroUtils.getEmbeddedMacros(region, 'save', {pass});
-            if (embeddedMacros.length) {
-                triggers.push({
-                    entity: region,
-                    castData: {
-                        castLevel: regionUtils.getCastLevel(region),
-                        baseLevel: regionUtils.getBaseLevel(region),
-                        saveDC: regionUtils.getSaveDC(region)
-                    },
-                    macros: embeddedMacros,
-                    name: region.name.slugify(),
-                    actor: actor,
-                    saveId: saveId,
-                    options: options,
-                    roll: roll,
-                    config,
-                    dialog,
-                    message,
-                    sourceActor
-                });
-            }
+            });
         });
     }
     return triggers;
 }
 function getSortedTriggers(actor, pass, saveId, options, roll, config, dialog, message, sourceActor) {
-    let allTriggers = collectActorSaveMacros(actor, pass, saveId, options, roll, config, dialog, message, sourceActor);
+    let allTriggers = collectActorSaveMacros(actor, pass);
     let names = new Set(allTriggers.map(i => i.name));
     allTriggers = Object.fromEntries(names.map(i => [i, allTriggers.filter(j => j.name === i)]));
     let maxMap = {};
@@ -240,14 +110,14 @@ function getSortedTriggers(actor, pass, saveId, options, roll, config, dialog, m
                 macro: macro.macro,
                 priority: macro.priority,
                 name: trigger.name,
-                actor: trigger.actor,
-                saveId: trigger.saveId,
-                options: trigger.options,
-                roll: trigger.roll,
-                config: trigger.config,
-                dialog: trigger.dialog,
-                message: trigger.message,
-                sourceActor: trigger.sourceActor,
+                actor,
+                saveId,
+                options,
+                roll,
+                config,
+                dialog,
+                message,
+                sourceActor,
                 macroName: typeof macro.macro === 'string' ? macro.macro : macro.macro.name
             });
         });
