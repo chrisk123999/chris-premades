@@ -258,6 +258,7 @@ async function preambleComplete(workflow) {
         await conditionVulnerability.preambleComplete(workflow);
     }
     await templateVisibility.check(workflow);
+    //TODO: Region Visibility Check Here!
 }
 async function attackRollComplete(workflow) {
     await executeMacroPass(workflow, 'attackRollComplete');

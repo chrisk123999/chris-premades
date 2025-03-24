@@ -1,6 +1,7 @@
 import {custom} from './custom.js';
 import {effects} from '../extensions/effects.js';
 import * as macros from '../macros.js';
+import * as legacyMacros from '../legacyMacros.js';
 import {effectUtils, genericUtils, macroUtils, socketUtils} from '../utils.js';
 import {auras} from './auras.js';
 import {death} from './death.js';
@@ -112,6 +113,8 @@ let preUpdateMacros = [];
 function ready() {
     preCreateMacros = Object.values(macros).filter(i => i.preCreateEffect).flatMap(j => j.preCreateEffect).map(k => k.macro);
     preUpdateMacros = Object.values(macros).filter(i => i.preUpdateEffect).flatMap(j => j.preUpdateEffect).map(k => k.macro);
+    preCreateMacros.push(...Object.values(legacyMacros).filter(i => i.preCreateEffect).flatMap(j => j.preCreateEffect).map(k => k.macro));
+    preUpdateMacros.push(...Object.values(legacyMacros).filter(i => i.preUpdateEffect).flatMap(j => j.preUpdateEffect).map(k => k.macro));
     preCreateMacros.push(...custom.getCustomMacroList().filter(i => i.preCreateEffect).flatMap(j => j.preCreateEffect).map(k => k.macro));
     preUpdateMacros.push(...custom.getCustomMacroList().filter(i => i.preUpdateEffect).flatMap(j => j.preUpdateEffect).map(k => k.macro));
 }

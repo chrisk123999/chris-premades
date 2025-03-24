@@ -1,3 +1,4 @@
+import {getAllDocumentPasses, getDocumentPasses, getEventTypes} from '../../applications/embeddedMacros.js';
 import {custom} from '../../events/custom.js';
 import {genericUtils} from './genericUtils.js';
 function getEmbeddedMacros(entity, type, {pass}) {
@@ -64,5 +65,8 @@ export let macroUtils = {
     removeEmbeddedMacro,
     getEmbeddedActivityShapeMacros,
     addEmbeddedActivityShapeMacro,
-    removeEmbeddedActivityShapeMacro
+    removeEmbeddedActivityShapeMacro,
+    getDocumentPasses,
+    getEventTypes,
+    getAllDocumentPasses
 };
