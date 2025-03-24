@@ -9,42 +9,25 @@ function collectMacros(template) {
     if (!macroList.length) return [];
     return macroList.map(i => custom.getMacro(i, genericUtils.getRules(template))).filter(j => j);
 }
-function collectTemplatesMacros(templates, pass, token) {
+function collectTemplatesMacros(templates, pass) {
     let triggers = [];
     templates.forEach(template => {
-        let macroList = collectMacros(template);
-        if (macroList.length) {
-            let templateMacros = macroList.filter(i => i.template?.find(j => j.pass === pass)).flatMap(k => k.template).filter(l => l.pass === pass);
-            if (!templateMacros.length) return;
-            triggers.push({
-                entity: template,
-                castData: {
-                    castLevel: templateUtils.getCastLevel(template) ?? -1,
-                    saveDC: templateUtils.getSaveDC(template) ?? -1
-                },
-                macros: templateMacros,
-                name: templateUtils.getName(template).slugify(),
-                token: token
-            });
-        }
-        let embeddedMacros = macroUtils.getEmbeddedMacros(template, 'template', {pass});
-        if (embeddedMacros.length) {
-            triggers.push({
-                entity: template,
-                castData: {
-                    castLevel: templateUtils.getCastLevel(template) ?? -1,
-                    saveDC: templateUtils.getSaveDC(template) ?? -1
-                },
-                macros: embeddedMacros,
-                name: templateUtils.getName(template).slugify(),
-                token: token
-            });
-        }
+        let macroList = collectMacros(template).filter(i => i.template?.find(j => j.pass === pass)).flatMap(k => k.template).filter(l => l.pass === pass).concat(macroUtils.getEmbeddedMacros(template, 'template', {pass}));
+        if (!macroList.length) return;
+        triggers.push({
+            entity: template,
+            castData: {
+                castLevel: templateUtils.getCastLevel(template) ?? -1,
+                saveDC: templateUtils.getSaveDC(template) ?? -1
+            },
+            macros: macroList,
+            name: templateUtils.getName(template).slugify()
+        });
     });
     return triggers;
 }
 function getSortedTriggers(templates, pass, token) {
-    let allTriggers = collectTemplatesMacros(templates, pass, token);
+    let allTriggers = collectTemplatesMacros(templates, pass);
     let names = new Set(allTriggers.map(i => i.name));
     allTriggers = Object.fromEntries(names.map(i => [i, allTriggers.filter(j => j.name === i)]));
     let maxMap = {};
@@ -78,7 +61,7 @@ function getSortedTriggers(templates, pass, token) {
                 macro: macro.macro,
                 priority: macro.priority,
                 name: trigger.name,
-                token: trigger.token,
+                token: token,
                 macroName: typeof macro.macro === 'string' ? macro.name : macro.macro.name
             });
         });
@@ -86,11 +69,12 @@ function getSortedTriggers(templates, pass, token) {
     return sortedTriggers.sort((a, b) => a.priority - b.priority);
 }
 async function executeMacro(trigger, options) {
-    genericUtils.log('dev', 'Executing Template Macro: ' + trigger.macroName);
     try {
         if (typeof trigger.macro === 'string') {
+            genericUtils.log('dev', 'Executing Embedded Template Macro: ' + trigger.macroName);
             await custom.executeScript({script: trigger.macro, trigger, options});
         } else {
+            genericUtils.log('dev', 'Executing Template Macro: ' + trigger.macroName);
             await trigger.macro({trigger, options});
         }
     } catch (error) {
