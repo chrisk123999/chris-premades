@@ -47,6 +47,29 @@ function renderItemSheet(app, [elem], options) {
     } else return;
     headerButton.style.color = color;
 }
+function preDataSanitize(handler, data) {
+    let shouldCPRAnimate = handler.item?.flags?.['chris-premades']?.info?.hasAnimation && itemUtils.getConfig(handler.item, 'playAnimation');
+    if (shouldCPRAnimate) {
+        if (genericUtils.getCPRSetting('automatedAnimationSounds')) {
+            if (!data.soundOnly?.sound?.enable) {
+                let sound = data.primary?.sound?.enable 
+                    ? data.primary.sound 
+                    : data.secondary?.sound?.enable
+                        ? data.secondary.sound
+                        : null;
+                if (sound) genericUtils.setProperty(data, 'soundOnly.sound', sound);
+            }
+        }
+        Hooks.once('aa.preAnimationStart', (sanitizedData) => {
+            sanitizedData.macro = false;
+            sanitizedData.primary = false;
+            sanitizedData.secondary = false;
+            sanitizedData.sourceFX = false;
+            sanitizedData.tokenFX = false;
+        });
+    }
+}
 export let automatedAnimations = {
-    renderItemSheet
+    renderItemSheet,
+    preDataSanitize
 };

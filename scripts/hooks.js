@@ -23,10 +23,9 @@ import {automatedAnimations} from './integrations/automatedAnimations.js';
 import {actions} from './extensions/actions.js';
 import {item} from './applications/item.js';
 import {activities} from './extensions/activities.js';
-import {ItemMedkit} from './applications/medkit-item.js';
 import {itemEvent} from './events/createItem.js';
 import {template} from './extensions/template.js';
-import {region} from './extensions/region.js';
+import {tidy5e} from './integrations/tidy5e.js';
 export function registerHooks() {
     Hooks.on('createSetting', genericUtils.createUpdateSetting);
     Hooks.on('updateSetting', genericUtils.createUpdateSetting);
@@ -113,40 +112,6 @@ export function registerHooks() {
         }
         if (genericUtils.getCPRSetting('backups')) Hooks.on('preCreateActor', backup.preCreateActor);
     }
-    Hooks.once('tidy5e-sheet.ready', (api) => {
-        api.registerItemHeaderControls({
-            controls: [
-                {
-                    icon: 'fa-solid fa-kit-medical chris-premades-item',
-                    label: 'CHRISPREMADES.Medkit.Medkit',
-                    position: 'header',
-                    async onClickAction() {
-                        await ItemMedkit.item(this.document);
-                    }
-                }
-            ]
-        });
-    });
-    Hooks.on('aa.preDataSanitize', (handler, data) => {
-        let shouldCPRAnimate = handler.item?.flags?.['chris-premades']?.info?.hasAnimation && itemUtils.getConfig(handler.item, 'playAnimation');
-        if (shouldCPRAnimate) {
-            if (genericUtils.getCPRSetting('automatedAnimationSounds')) {
-                if (!data.soundOnly?.sound?.enable) {
-                    let sound = data.primary?.sound?.enable 
-                        ? data.primary.sound 
-                        : data.secondary?.sound?.enable
-                            ? data.secondary.sound
-                            : null;
-                    if (sound) genericUtils.setProperty(data, 'soundOnly.sound', sound);
-                }
-            }
-            Hooks.once('aa.preAnimationStart', (sanitizedData) => {
-                sanitizedData.macro = false;
-                sanitizedData.primary = false;
-                sanitizedData.secondary = false;
-                sanitizedData.sourceFX = false;
-                sanitizedData.tokenFX = false;
-            });
-        }
-    });
+    Hooks.once('tidy5e-sheet.ready', tidy5e.itemTitleBar);
+    Hooks.on('aa.preDataSanitize', automatedAnimations.preDataSanitize);
 }

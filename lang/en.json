@@ -2091,6 +2091,9 @@
                     "Tooltip": "Selected conditions will remove the effect."
                 }
             },
+            "EmbeddedMacros": {
+                "Label": "CPR Embedded Macros"
+            },
             "Fieldsets": {
                 "damage": {
                     "Label": "Damage",
@@ -2456,6 +2459,10 @@
             "groupSummonsWithOwner": {
                 "Hint": "When enabled, summons created via the CPR API will be grouped together in the combat tracker if their initative is the same.",
                 "Name": "Group Summons With Owner"
+            },
+            "enableEmbeddedMacrosEditing": {
+                "Hint": "When enabled, the embedded macros editor will be available.",
+                "Name": "Enable Embedded Macros Editing"
             },
             "hiddenCompendiumFolders": {
                 "Hint": "Selected compendium folders will be hidden.",

@@ -1,7 +1,7 @@
-import {getAllDocumentPasses, getDocumentPasses, getEventTypes} from '../../applications/embeddedMacros.js';
+import {eventStructure, getAllDocumentPasses, getDocumentPasses, getEventTypes} from '../../applications/embeddedMacros.js';
 import {custom} from '../../events/custom.js';
 import {genericUtils} from './genericUtils.js';
-function getEmbeddedMacros(entity, type, {pass}) {
+function getEmbeddedMacros(entity, type, {pass} = {}) {
     let flagData;
     if (entity.documentName === 'Activity') {
         flagData = genericUtils.getProperty(entity.item, 'flags.chris-premades.embeddedActivityMacros.' + entity.id + '.' + type);
@@ -57,6 +57,18 @@ async function removeEmbeddedActivityShapeMacro(activity, entityType, name) {
     flagData = flagData.filter(i => i.name !== name);
     await genericUtils.setFlag(activity.item, 'chris-premades', 'embeddedActivityShapeMacros.' + activity.id + '.' + entityType, flagData);
 }
+function getAllEmbeddedMacros(entity) {
+    let allMacros = {};
+    Object.keys(eventStructure).forEach(i => {
+        if (i === 'midi') {
+            genericUtils.setProperty(allMacros, 'midi-item', getEmbeddedMacros(entity, 'midi.item'));
+            genericUtils.setProperty(allMacros, 'midi-actor', getEmbeddedMacros(entity, 'midi.actor'));
+        } else {
+            genericUtils.setProperty(allMacros, i, getEmbeddedMacros(entity, i));
+        }
+    });
+    return allMacros;
+}
 export let macroUtils = {
     registerMacros: custom.registerMacros,
     getMacro: custom.getMacro,
@@ -68,5 +80,6 @@ export let macroUtils = {
     removeEmbeddedActivityShapeMacro,
     getDocumentPasses,
     getEventTypes,
-    getAllDocumentPasses
+    getAllDocumentPasses,
+    getAllEmbeddedMacros
 };

@@ -880,6 +880,12 @@ export function registerSettings() {
         category: 'mechanics',
         onChange: (value) => initiative.patch(value)
     });
+    addSetting({
+        key: 'enableEmbeddedMacrosEditing',
+        type: Boolean,
+        default: false,
+        category: 'general'
+    });
 }
 export function registerMenus() {
     if (game.settings.get('chris-premades', 'devTools')) addMenu({

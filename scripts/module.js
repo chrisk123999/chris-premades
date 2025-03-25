@@ -36,6 +36,7 @@ import {itemDirectory} from './applications/itemDirectory.js';
 import {activities} from './extensions/activities.js';
 import {migrate} from './migrations.js';
 import {initiative} from './extensions/initiative.js';
+import {EmbeddedMacros} from './applications/embeddedMacros.js';
 Hooks.once('socketlib.ready', registerSockets);
 Hooks.once('init', () => {
     dae.initFlags();
@@ -101,5 +102,6 @@ globalThis['chrisPremades'] = {
         ddbi: ddbi.getAutomation
     },
     customMacros: custom.getCustomMacroList,
-    doBackup: backup.doBackup
+    doBackup: backup.doBackup,
+    EmbeddedMacros
 };
