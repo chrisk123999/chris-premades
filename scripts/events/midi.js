@@ -32,9 +32,9 @@ function collectActorMacros(entity, pass) {
 function collectAllMacros({activity, item, token, actor}, pass) {
     let triggers = [];
     if (item) {
-        let macroList = collectItemMacros(item, pass, activityUtils.getIdentifier(activity));
+        let macroList = collectItemMacros(item, pass, activityUtils.getIdentifier(activity)).concat(macroUtils.getEmbeddedMacros(item, 'midi.item', {pass}));
         if (activity) macroList = macroList.concat(macroUtils.getEmbeddedMacros(activity, 'midi.item', {pass}));
-        if (!macroList.length) triggers.push({
+        if (macroList.length) triggers.push({
             entity: item,
             castData: {
                 castLevel: item.system.level ?? -1,
