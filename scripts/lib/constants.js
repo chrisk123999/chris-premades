@@ -24,6 +24,7 @@ let featurePacks = {
     classFeatureItems: 'chris-premades.CPRClassFeatureItems',
     miscellaneousItems: 'chris-premades.CPRMiscellaneousItems',
     itemFeatures: 'chris-premades.CPRItemFeatures',
+    featFeatures: 'chris-premades.CPRFeatFeatures'
 };
 let legacyPacks = {
     spells: 'chris-premades.CPRSpells',

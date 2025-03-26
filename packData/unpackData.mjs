@@ -7,6 +7,7 @@ let itemPacks = [
     'cpr-class-feature-items',
     'cpr-class-features',
     'cpr-feats',
+    'cpr-feat-features',
     'cpr-item-features',
     'cpr-items',
     'cpr-miscellaneous',

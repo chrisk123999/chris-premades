@@ -181,6 +181,14 @@
       "banner": "modules/chris-premades/images/bannerFeats.webp"
     },
     {
+      "name": "CPRFeatFeatures",
+      "label": "CPR Feat Features",
+      "path": "packs/cpr-feat-features",
+      "type": "Item",
+      "module": "chris-premades",
+      "banner": "modules/chris-premades/images/bannerUnknown3.webp"
+    },
+    {
       "name": "CPRItemFeatures",
       "label": "CPR Item Features",
       "path": "packs/cpr-item-features",
@@ -298,6 +306,7 @@
             "CPRClassFeatures",
             "CPRClassFeatureItems",
             "CPRFeats",
+            "CPRFeatFeatures",
             "CPRRaceFeatures",
             "CPRThirdPartyClassFeatures",
             "CPRThirdPartyItems",

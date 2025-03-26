@@ -1,5 +1,4 @@
-import {actorUtils, constants, dialogUtils, effectUtils, genericUtils, itemUtils, rollUtils, socketUtils} from '../../../utils.js';
-
+import {constants, dialogUtils, effectUtils, genericUtils, rollUtils, socketUtils} from '../../../utils.js';
 async function early({trigger: {entity: item}, workflow}) {
     if (!constants.attacks.includes(workflow.activity.actionType)) return;
     if (!workflow.targets.size) return;
