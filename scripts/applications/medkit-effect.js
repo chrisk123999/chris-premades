@@ -97,7 +97,18 @@ export class EffectMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
                         label,
                         value,
                         isSelected: effect.flags['chris-premades']?.specialDuration?.includes(value)
-                    })))
+                    }))).concat([
+                        {
+                            label: 'CHRISPREMADES.Medkit.Effect.SpecialDuration.TempHP',
+                            value: 'tempHP',
+                            isSelected: effect.flags['chris-premades']?.specialDuration?.includes('tempHP')
+                        },
+                        {
+                            label: 'CHRISPREMADES.Medkit.Effect.SpecialDuration.TempMaxHP',
+                            value: 'tempMaxHP',
+                            isSelected: effect.flags['chris-premades']?.specialDuration?.includes('tempMaxHP')
+                        }
+                    ])
                 }
             },
             overTime: {

@@ -104,6 +104,7 @@ export function registerHooks() {
         Hooks.on('createItem', itemEvent.created);
         Hooks.on('getSceneConfigHeaderButtons', createHeaderButton);
         Hooks.on('getCompendiumHeaderButtons', createHeaderButton);
+        Hooks.on('updateActor', effects.specialDurationHitPoints);
         auras.canvasReady(canvas);
         if (genericUtils.getCPRSetting('syncActorSizeToTokens')) {
             Hooks.on('createActiveEffect', tokens.createDeleteUpdateActiveEffect);

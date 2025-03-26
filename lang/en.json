@@ -2088,6 +2088,8 @@
                     "DamagedByAlly": "Damaged By Ally",
                     "DamagedByEnemy": "Damaged By Enemy",
                     "Label": "Special Durations:",
+                    "TempHP": "Zero Temporary Hitpoints",
+                    "TempMaxHP": "Zero Temporary Max Hitpoints",
                     "Tooltip": "Selected conditions will remove the effect."
                 }
             },
@@ -2424,6 +2426,10 @@
                 "Hint": "Adds a sidebar tab for Active Effects. Reload required after enabling.",
                 "Name": "Enable Effect Interface"
             },
+            "enableEmbeddedMacrosEditing": {
+                "Hint": "When enabled, the embedded macros editor will be available.",
+                "Name": "Enable Embedded Macros Editing"
+            },
             "epicRolls": {
                 "Hint": "When enabled, certain macros will use Epic Rolls when possible.",
                 "Name": "Epic Rolls: Enabled"
@@ -2459,10 +2465,6 @@
             "groupSummonsWithOwner": {
                 "Hint": "When enabled, summons created via the CPR API will be grouped together in the combat tracker if their initative is the same.",
                 "Name": "Group Summons With Owner"
-            },
-            "enableEmbeddedMacrosEditing": {
-                "Hint": "When enabled, the embedded macros editor will be available.",
-                "Name": "Enable Embedded Macros Editing"
             },
             "hiddenCompendiumFolders": {
                 "Hint": "Selected compendium folders will be hidden.",

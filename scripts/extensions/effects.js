@@ -182,6 +182,18 @@ async function specialDurationEquipment(item) {
         if (specialDurations.includes(item.system.type?.value)) await genericUtils.remove(effect);
     }));
 }
+async function specialDurationHitPoints(actor, updates, options, id) {
+    if (game.user.id != socketUtils.gmID()) return;
+    let validTypes = [];
+    if (updates.system?.attributes?.hp?.temp === 0) validTypes.push('tempHP');
+    if (updates.system?.attributes?.hp?.tempmax === 0) validTypes.push('tempMaxHP');
+    if (!validTypes.length) return;
+    await Promise.all(actorUtils.getEffects(actor).map(async effect => {
+        let specialDurations = effect.flags['chris-premades']?.specialDuration;
+        if (!specialDurations) return;
+        if (specialDurations.find(i => validTypes.includes(i))) await genericUtils.remove(effect);
+    }));
+}
 function preImageCreate(effect, updates, options, id) {
     if (game.user.id != id) return;
     if (!(effect.parent instanceof Actor)) return;
@@ -256,5 +268,6 @@ export let effects = {
     activityDC,
     preImageCreate,
     imageCreate,
-    imageRemove
+    imageRemove,
+    specialDurationHitPoints
 };
