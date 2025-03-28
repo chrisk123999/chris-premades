@@ -82,7 +82,7 @@ function collectAllMacros(actor, pass) {
     return triggers;
 }
 function getSortedTriggers(actor, pass) {
-    let allTriggers = collectAllMacros({actor}, pass);
+    let allTriggers = collectAllMacros(actor, pass);
     let names = new Set(allTriggers.map(i => i.name));
     allTriggers = Object.fromEntries(names.map(i => [i, allTriggers.filter(j => j.name === i)]));
     let maxMap = {};
