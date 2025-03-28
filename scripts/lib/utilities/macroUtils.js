@@ -59,14 +59,7 @@ async function removeEmbeddedActivityShapeMacro(activity, entityType, name) {
 }
 function getAllEmbeddedMacros(entity) {
     let allMacros = {};
-    Object.keys(eventStructure).forEach(i => {
-        if (i === 'midi') {
-            genericUtils.setProperty(allMacros, 'midi-item', getEmbeddedMacros(entity, 'midi.item'));
-            genericUtils.setProperty(allMacros, 'midi-actor', getEmbeddedMacros(entity, 'midi.actor'));
-        } else {
-            genericUtils.setProperty(allMacros, i, getEmbeddedMacros(entity, i));
-        }
-    });
+    Object.keys(eventStructure).forEach(i => genericUtils.setProperty(allMacros, i, getEmbeddedMacros(entity, i.replaceAll('-', '.'))));
     return allMacros;
 }
 export let macroUtils = {

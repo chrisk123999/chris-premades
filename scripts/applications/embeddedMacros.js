@@ -1,5 +1,4 @@
 import {genericUtils, macroUtils} from '../utils.js';
-
 export const eventStructure = {
     check: [
         {
@@ -238,7 +237,7 @@ export const eventStructure = {
             documents: []
         }
     ],
-    midi: [
+    'midi-item': [
         {
             pass: 'preTargeting',
             documents: [
@@ -353,6 +352,119 @@ export const eventStructure = {
                 'template',
                 'region',
                 'activity'
+            ],
+            options: [
+                'target',
+                'scene'
+            ]
+        }
+    ],
+    'midi-actor': [
+        {
+            pass: 'preTargeting',
+            documents: [
+                'item',
+                'effect',
+                'template',
+                'region'
+            ]
+        },
+        {
+            pass: 'preItemRoll',
+            documents: [
+                'item',
+                'effect',
+                'template',
+                'region'
+            ],
+            options: [
+                'target'
+            ]
+        },
+        {
+            pass: 'preambleComplete',
+            documents: [
+                'item',
+                'effect',
+                'template',
+                'region'
+            ],
+            options: [
+                'target',
+                'scene'
+            ]
+        },
+        {
+            pass: 'postAttackRoll',
+            documents: [
+                'item',
+                'effect',
+                'template',
+                'region'
+            ],
+            options: [
+                'target',
+                'scene'
+            ]
+        },
+        {
+            pass: 'attackRollComplete',
+            documents: [
+                'item',
+                'effect',
+                'template',
+                'region'
+            ],
+            options: [
+                'target',
+                'scene'
+            ]
+        },
+        {
+            pass: 'savesComplete',
+            documents: [
+                'item',
+                'effect',
+                'template',
+                'region'
+            ],
+            options: [
+                'target'
+            ]
+        },
+        {
+            pass: 'damageRollComplete',
+            documents: [
+                'item',
+                'effect',
+                'template',
+                'region'
+            ],
+            options: [
+                'target',
+                'scene'
+            ]
+        },
+        {
+            pass: 'rollFinished',
+            documents: [
+                'item',
+                'effect',
+                'template',
+                'region'
+            ],
+            options: [
+                'target',
+                'scene'
+            ]
+        },
+        {
+            pass: 'applyDamage',
+            documents: [
+                'item',
+                'effect',
+                'template',
+                'region'
             ],
             options: [
                 'target',
@@ -525,11 +637,12 @@ let {ApplicationV2, HandlebarsApplicationMixin} = foundry.applications.api;
 export class EmbeddedMacros extends HandlebarsApplicationMixin(ApplicationV2) {
     constructor(document) {
         super({id: 'cpr-embedded-macros-window'});
-        this.position.width = 'auto';
+        this.position.width = 700;
         this.position.height = 'auto';
         this.windowTitle = 'Embedded Macros';
         this.content = 'Change this.';
         this.document = document;
+        this.documentName = document.documentName;
         this.context = {
             macros: Object.entries(macroUtils.getAllEmbeddedMacros(this.document)).filter(([key, value]) => value.length).flatMap(([key, value]) => {
                 return value.map(i => ({type: key, ...i}));
@@ -591,14 +704,7 @@ export class EmbeddedMacros extends HandlebarsApplicationMixin(ApplicationV2) {
         this._context = value;
     }
     get tabsData() {
-        let tabsData = {
-            zzzNewTab: {
-                icon: 'fa-solid fa-hammer',
-                label: 'CHRISPREMADES.EmbeddedMacros.Tabs.New.Label',
-                tooltip: 'CHRISPREMADES.EmbeddedMacros.Tabs.New.Tooltip',
-                cssClass: 'new-macro'
-            }
-        };
+        let tabsData = {};
         this.context.macros.forEach(i => {
             genericUtils.setProperty(tabsData, i.name, {
                 icon: 'fa-solid fa-hammer',
@@ -606,7 +712,12 @@ export class EmbeddedMacros extends HandlebarsApplicationMixin(ApplicationV2) {
                 cssClass: this.activeTab === i.name ? 'active' : ''
             });
         });
-        console.log(tabsData);
+        genericUtils.setProperty(tabsData, 'zzzNewTab', {
+            icon: 'fa-solid fa-hammer',
+            label: 'CHRISPREMADES.EmbeddedMacros.Tabs.New.Label',
+            tooltip: 'CHRISPREMADES.EmbeddedMacros.Tabs.New.Tooltip',
+            cssClass: 'new-macro'
+        });
         return tabsData;
     }
     get activeTab() {
@@ -619,17 +730,100 @@ export class EmbeddedMacros extends HandlebarsApplicationMixin(ApplicationV2) {
         return {type: 'submit', action: 'confirm', label: label, name: name};
     }
     formatInputs() {
-        return {
-            macro: this.context.macros.find(i => i.name === this.activeTab)
+        let macro = this.context.macros.find(i => i.name === this.activeTab);
+        console.log(macro);
+        if (!macro) {
+            return {
+                content: {
+                    isContent: true,
+                    value: 'CHRISPREMADES.EmbeddedMacros.NoMacros.Content'
+                }
+            };
+        }
+        let inputs = {
+            macro: {
+                isTextArea: true,
+                value: macro.macro,
+                label: 'CHRISPREMADES.EmbeddedMacros.Macro.Label'
+            },
+            name: {
+                isText: true,
+                value: macro.name,
+                label: 'CHRISPREMADES.EmbeddedMacros.Name.Label'
+            },
+            type: {
+                isSelectOption: true,
+                value: macro.type,
+                label: 'CHRISPREMADES.EmbeddedMacros.Type.Label',
+                options: Object.entries(this.context.passes).map(([key, value]) => ({
+                    label: 'CHRISPREMADES.EmbeddedMacros.Type.' + key,
+                    value: key,
+                    isDisabled: !value.length
+                }))
+            },
+            priority: {
+                isNumber: true,
+                value: macro.priority,
+                label: 'CHRISPREMADES.EmbeddedMacros.Priority.Label'
+            }
         };
+        if (macro.type) {
+            genericUtils.setProperty(inputs, 'pass', {
+                isSelectOption: true,
+                value: macro.pass,
+                label: 'CHRISPREMADES.EmbeddedMacros.Pass.Label',
+                options: this.context.passes[macro.type].map(i => ({
+                    label: 'CHRISPREMADES.EmbeddedMacros.Pass.' + i + '.Label',
+                    value: i,
+                    isSelected: macro.pass === i
+                }))
+            });
+        }
+        if (macro.distance) {
+            genericUtils.setProperty(inputs, 'distance', {
+                isNumber: true,
+                value: macro.distance,
+                label: 'CHRISPREMADES.EmbeddedMacros.Distance.Label'
+            });
+        }
+        if (macro.disposition) {
+            genericUtils.setProperty(inputs, 'disposition', {
+                isSelectOption: true,
+                value: macro.disposition,
+                label: 'CHRISPREMADES.EmbeddedMacros.Disposition.Label',
+                options: [
+                    {label: 'CHRISPREMADES.EmbeddedMacros.Disposition.All.Label', value: 'all'},
+                    {label: 'CHRISPREMADES.EmbeddedMacros.Disposition.Ally.Label', value: 'ally'},
+                    {label: 'CHRISPREMADES.EmbeddedMacros.Disposition.Enemy.Label', value: 'enemy'}
+                ]
+            });
+        }
+        if (macro.conscious) {
+            genericUtils.setProperty(inputs, 'conscious', {
+                isCheckbox: true,
+                value: macro.conscious,
+                label: 'CHRISPREMADES.EmbeddedMacros.Conscious.Label'
+            });
+        }
+        if (macro.identifier) {
+            genericUtils.setProperty(inputs, 'identifier', {
+                isText: true,
+                value: macro.identifier,
+                label: 'CHRISPREMADES.EmbeddedMacros.Identifier.Label'
+            });
+        }
+        console.log(inputs);
+        return inputs;
     }
     async _prepareContext(options) {
-        let context = this.formatInputs();
-        let buttons = [
-            {type: 'button', action: 'apply', label: 'DND5E.Apply', name: 'apply', icon: 'fa-solid fa-download'},
-            {type: 'submit', action: 'confirm', label: 'DND5E.Confirm', name: 'confirm', icon: 'fa-solid fa-check'}
-        ];
-        let tabs = this.tabsData;
+        let context = {
+            inputs: this.formatInputs(),
+            buttons:[
+                {type: 'button', action: 'apply', label: 'DND5E.Apply', name: 'apply', icon: 'fa-solid fa-download'},
+                {type: 'submit', action: 'confirm', label: 'DND5E.Confirm', name: 'confirm', icon: 'fa-solid fa-check'}
+            ],
+            tabs: this.tabsData
+        };
         return context;
     }
     async _reRender() {
@@ -642,14 +836,19 @@ export class EmbeddedMacros extends HandlebarsApplicationMixin(ApplicationV2) {
     }
     async _onChangeForm(formConfig, event) {
         let targetInput = event.target;
-        let currentContext = this.context;
-        /*if (targetInput.type === 'checkbox') {
-            foundry.utils.setProperty(currentContext, 'compendiums.' + targetInput.name + '.isChecked', targetInput?.checked);
+        let currentMacro = this.context.macros.find(i => i.name === this.activeTab);
+        switch (targetInput.type) {
+            case 'checkbox':
+                genericUtils.setProperty(currentMacro, targetInput.name, targetInput.checked);
+                break;
+            case 'number':
+            case 'text':
+            case 'textarea':
+            case 'select-one':
+                if (targetInput.name === 'name') this.activeTab = targetInput.value;
+                genericUtils.setProperty(currentMacro, targetInput.name, targetInput.value);
+                break;
         }
-        else if (targetInput.type === 'number') {
-            foundry.utils.setProperty(currentContext, 'compendiums.' + targetInput.name, Number(targetInput?.value));
-        } */
-        this.context = currentContext;
         this.render(true);
     }
     async _onSubmitForm(formConfig, event) {

@@ -274,6 +274,219 @@
             "StatusAdd": "Add to Status Effects",
             "StatusRemove": "Remove from Status Effects"
         },
+        "EmbeddedMacros": {
+            "Conscious": {
+                "Label": "Conscious:"
+            },
+            "Disposition": {
+                "All": {
+                    "Label": "All"
+                },
+                "Ally": {
+                    "Label": "Ally"
+                },
+                "Enemy": {
+                    "Label": "Enemy"
+                },
+                "Label": "Disposition:"
+            },
+            "Distance": {
+                "Label": "Distance:"
+            },
+            "Identifier": {
+                "Label": "Identifier:"
+            },
+            "Macro": {
+                "Label": "Macro:"
+            },
+            "Name": {
+                "Label": "Name:"
+            },
+            "NoMacros": {
+                "Content": "Change this!"
+            },
+            "Pass": {
+                "Label": "Pass:",
+                "applyDamage": {
+                    "Label": "Apply Damage",
+                    "Tooltip": "Change This!"
+                },
+                "attackRollComplete": {
+                    "Label": "Attack Roll Complete",
+                    "Tooltip": "Change This!"
+                },
+                "bonus": {
+                    "Label": "Bonus",
+                    "Tooltip": "Change This!"
+                },
+                "combatEnd": {
+                    "Label": "Combat End",
+                    "Tooltip": "Change This!"
+                },
+                "combatStart": {
+                    "Label": "Combat Start",
+                    "Tooltip": "Change This!"
+                },
+                "context": {
+                    "Label": "Context",
+                    "Tooltip": "Change This!"
+                },
+                "create": {
+                    "Label": "Create",
+                    "Tooltip": "Change This!"
+                },
+                "created": {
+                    "Label": "Created",
+                    "Tooltip": "Change This!"
+                },
+                "damageRollComplete": {
+                    "Label": "Damage Roll Complete",
+                    "Tooltip": "Change This!"
+                },
+                "dead": {
+                    "Label": "Dead",
+                    "Tooltip": "Change This!"
+                },
+                "deleted": {
+                    "Label": "Deleted",
+                    "Tooltip": "Change This!"
+                },
+                "everyTurn": {
+                    "Label": "Every Turn",
+                    "Tooltip": "Change This!"
+                },
+                "post": {
+                    "Label": "Post",
+                    "Tooltip": "Change This!"
+                },
+                "postAttackRoll": {
+                    "Label": "Post-Attack Roll",
+                    "Tooltip": "Change This!"
+                },
+                "preItemRoll": {
+                    "Label": "Pre-Item Roll",
+                    "Tooltip": "Change This!"
+                },
+                "preTargeting": {
+                    "Label": "Pre-Targeting",
+                    "Tooltip": "Change This!"
+                },
+                "preambleComplete": {
+                    "Label": "Preamble Complete",
+                    "Tooltip": "Change This!"
+                },
+                "rollFinished": {
+                    "Label": "Roll Finished",
+                    "Tooltip": "Change This!"
+                },
+                "savesComplete": {
+                    "Label": "Saves Complete",
+                    "Tooltip": "Change This!"
+                },
+                "sceneApplyDamage": {
+                    "Label": "Scene Apply Damage",
+                    "Tooltip": "Change This!"
+                },
+                "sceneAttackRollComplete": {
+                    "Label": "Scene Attack Roll Complete",
+                    "Tooltip": "Change This!"
+                },
+                "sceneDamageRollComplete": {
+                    "Label": "Scene Damage Roll Complete",
+                    "Tooltip": "Change This!"
+                },
+                "scenePostAttackRoll": {
+                    "Label": "Scene Post-Attack Roll",
+                    "Tooltip": "Change This!"
+                },
+                "scenePreambleComplete": {
+                    "Label": "Scene Preamble Complete",
+                    "Tooltip": "Change This!"
+                },
+                "sceneRollFinished": {
+                    "Label": "Scene Roll Finished",
+                    "Tooltip": "Change This!"
+                },
+                "situational": {
+                    "Label": "Situational",
+                    "Tooltip": "Change This!"
+                },
+                "targetApplyDamage": {
+                    "Label": "Target Apply Damage",
+                    "Tooltip": "Change This!"
+                },
+                "targetAttackRollComplete": {
+                    "Label": "Target Attack Roll Complete",
+                    "Tooltip": "Change This!"
+                },
+                "targetDamageRollComplete": {
+                    "Label": "Target Damage Roll Complete",
+                    "Tooltip": "Change This!"
+                },
+                "targetPostAttackRoll": {
+                    "Label": "Target Post-Attack Roll",
+                    "Tooltip": "Change This!"
+                },
+                "targetPreItemRoll": {
+                    "Label": "Target Pre-Item Roll",
+                    "Tooltip": "Change This!"
+                },
+                "targetPreambleComplete": {
+                    "Label": "Target Preamble Complete",
+                    "Tooltip": "Change This!"
+                },
+                "targetRollFinished": {
+                    "Label": "Target Roll Finished",
+                    "Tooltip": "Change This!"
+                },
+                "targetSavesComplete": {
+                    "Label": "Target Saves Complete",
+                    "Tooltip": "Change This!"
+                },
+                "turnEnd": {
+                    "Label": "Turn End",
+                    "Tooltip": "Change This!"
+                },
+                "turnEndNear": {
+                    "Label": "Turn End Near",
+                    "Tooltip": "Change This!"
+                },
+                "turnStart": {
+                    "Label": "Turn Start",
+                    "Tooltip": "Change This!"
+                },
+                "turnStartNear": {
+                    "Label": "Turn Start Near",
+                    "Tooltip": "Change This!"
+                }
+            },
+            "Priority": {
+                "Label": "Priority:"
+            },
+            "Tabs": {
+                "New": {
+                    "Label": "New Macro",
+                    "Tooltip": "Click to add a macro."
+                }
+            },
+            "Type": {
+                "Label": "Type:",
+                "aura": "Aura",
+                "check": "Check",
+                "combat": "Combat",
+                "createItem": "Item Created",
+                "death": "Death",
+                "effect": "Effect",
+                "midi-actor": "Midi-Qol Actor",
+                "midi-item": "Midi-Qol Item",
+                "movement": "Movement",
+                "region": "Region",
+                "rest": "Rest",
+                "save": "Save",
+                "skill": "Skill",
+                "template": "Template"
+            }
+        },
         "Error": {
             "ActivityNotFound": "Activity (identifier {identifier}) not found on item!",
             "ActorNotFound": "Required sidebar actor not found!",
