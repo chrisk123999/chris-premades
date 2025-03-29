@@ -10,7 +10,7 @@
         "_id": "Csden2h20yLr6x8T",
         "sort": 0,
         "activation": {
-          "type": "action",
+          "type": "reaction",
           "value": null,
           "override": false,
           "condition": ""
@@ -65,14 +65,11 @@
                 "formula": ""
               },
               "number": null,
-              "denomination": 0,
+              "denomination": "",
               "bonus": "@scale.ancestral-guardian.spirit-shield",
               "types": [
                 "midi-none"
-              ],
-              "scaling": {
-                "number": 1
-              }
+              ]
             }
           ]
         },
@@ -110,12 +107,15 @@
           "saveRemoves": true,
           "preRemoveConditionText": "",
           "postRemoveConditionText": ""
-        }
+        },
+        "img": "",
+        "appliedEffects": []
       }
     },
     "uses": {
       "spent": 0,
-      "recovery": []
+      "recovery": [],
+      "max": ""
     },
     "description": {
       "value": "",
@@ -188,7 +188,7 @@
     "chris-premades": {
       "info": {
         "identifier": "spiritShield",
-        "version": "1.2.6",
+        "version": "1.2.30",
         "rules": "legacy",
         "source": "chris-premades"
       },

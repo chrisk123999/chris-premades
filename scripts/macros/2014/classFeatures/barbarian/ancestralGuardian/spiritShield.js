@@ -8,7 +8,7 @@ async function shieldHelper(token, sourceToken, targetToken, ditem) {
     let selection = await dialogUtils.confirm(spiritShield.name, genericUtils.format('CHRISPREMADES.Macros.SpiritShield.Damage', {item: spiritShield.name, name: targetToken.document.name}, {userId: socketUtils.firstOwner(token.actor, true)}));
     if (!selection) return;
     let result = await workflowUtils.syntheticItemRoll(spiritShield, [token], {consumeResources: true, userId: socketUtils.firstOwner(token.actor, true)});
-    workflowUtils.modifyDamageAppliedFlat(ditem, result.damageRolls[0].total);
+    workflowUtils.modifyDamageAppliedFlat(ditem, -result.damageRolls[0].total);
     let vengefulAncestors = itemUtils.getItemByIdentifier(token.actor, 'vengefulAncestors');
     if (vengefulAncestors) {
         let activity = activityUtils.getActivityByIdentifier(vengefulAncestors, 'use', {strict: true});
@@ -28,7 +28,7 @@ async function damageApplication({trigger: {sourceToken, targetToken}, ditem}) {
 }
 export let spiritShield = {
     name: 'Spirit Shield',
-    version: '1.2.6',
+    version: '1.2.30',
     rules: 'legacy',
     midi: {
         actor: [

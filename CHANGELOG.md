@@ -6,6 +6,7 @@
 - Brutal Strike (Modern)
 - Battering Roots (Modern)
 - Grappler (Legacy)
+- Spirit Shield (Legacy)
 ## API Update Notes:
 - Regions can now apply CPR midi actor events.
 
