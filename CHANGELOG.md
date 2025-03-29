@@ -10,6 +10,8 @@
 - MTB compatibility
 ## API Update Notes:
 - Regions can now apply CPR midi actor events.
+## Update Notes:
+- There have been many under the hood changes to the event system. Don't update to this version right before your game!
 
 # 1.2.29 Release:
 ## New Modern Content:
