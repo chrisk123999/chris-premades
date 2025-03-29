@@ -1,7 +1,6 @@
 import {DialogApp} from '../applications/dialog.js';
 import {custom} from './custom.js';
 import {actorUtils, effectUtils, genericUtils, itemUtils, macroUtils, regionUtils, templateUtils} from '../utils.js';
-import {_applyDeprecatedD20Configs} from '/systems/dnd5e/module/dice/d20-roll.mjs';
 function getMacroData(entity) {
     return entity.flags['chris-premades']?.macros?.check ?? [];
 }
@@ -161,6 +160,51 @@ async function executeBonusMacroPass(actor, pass, checkId, options, roll, config
     }
     return CONFIG.Dice.D20Roll.fromRoll(roll);
 }
+function _applyDeprecatedD20Configs(rollConfig, dialogConfig, messageConfig, options) {
+    const set = (config, keyPath, value) => {
+        if ( value === undefined ) return;
+        foundry.utils.setProperty(config, keyPath, value);
+    };
+  
+    let roll = rollConfig.rolls?.[0] ?? {};
+    set(roll, 'parts', options.parts);
+    set(roll, 'data', options.data);
+    set(rollConfig, 'event', options.event);
+    set(roll, 'options.advantage', options.advantage);
+    set(roll, 'options.disadvantage', options.disadvantage);
+    set(roll, 'options.criticalSuccess', options.critical);
+    set(roll, 'options.criticalFailure', options.fumble);
+    set(rollConfig, 'target', options.targetValue);
+    set(rollConfig, 'ammunition', options.ammunition);
+    set(rollConfig, 'attackMode', options.attackMode);
+    set(rollConfig, 'mastery', options.mastery);
+    set(rollConfig, 'elvenAccuracy', options.elvenAccuracy);
+    set(rollConfig, 'halflingLucky', options.halflingLucky);
+    set(rollConfig, 'reliableTalent', options.reliableTalent);
+    set(rollConfig, 'midiOptions', {});
+    set(rollConfig, 'midiOptions.simulate', options.simulate);
+    set(rollConfig, 'midiOptions.isMagicalSave', options.isMagicalSave);
+    set(rollConfig, 'midiOptions.isConcentrationCheck', options.isConcentrationCheck);
+    set(rollConfig, 'midiOptions.saveItemUuid', options.saveItemUuid);
+    set(rollConfig, 'midiOptions.fromMars5eChatCard', options.fromMars5eChatCard);
+    if ( 'fastForward' in options ) dialogConfig.configure = !options.fastForward;
+    set(dialogConfig, 'options', options.dialogOptions);
+    set(dialogConfig, 'options.ammunitionOptions', options.ammunitionOptions);
+    set(dialogConfig, 'options.attackModeOptions', options.attackModes);
+    set(dialogConfig, 'options.chooseAbility', options.chooseModifier);
+    set(dialogConfig, 'options.masteryOptions', options.masteryOptions);
+    set(dialogConfig, 'options.title', options.title);
+    set(messageConfig, 'create', options.chatMessage);
+    set(messageConfig, 'data', options.messageData);
+    set(messageConfig, 'rollMode', options.rollMode);
+    set(messageConfig, 'data.flavor', options.flavor);
+  
+    if ( !foundry.utils.isEmpty(roll) ) {
+        rollConfig.rolls ??= [];
+        if ( rollConfig.rolls[0] ) rollConfig.rolls[0] = roll;
+        else rollConfig.rolls.push(roll);
+    }
+}
 async function rollCheck(wrapped, config, dialog = {}, message = {}) {
     let event;
     let shouldBeArray = true;
@@ -169,14 +213,10 @@ async function rollCheck(wrapped, config, dialog = {}, message = {}) {
         let options = genericUtils.duplicate(dialog);
         event = dialog.event;
         config = {
-            ability: config,
-            midiOptions: {}
+            ability: config
         };
         dialog = {};
         message = {};
-        for (let prop of ['simulate', 'isMagicalSave', 'isConcentrationCheck', 'saveItemUuid', 'fromMars5eChatCard']) {
-            if (options[prop]) config.midiOptions[prop] = options[prop];
-        }
         // _applyDeprecatedD20Configs from 5e system
         _applyDeprecatedD20Configs(config, dialog, message, options);
         config.event = event;
