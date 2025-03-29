@@ -12,15 +12,17 @@ export function createHeaderButton(config, buttons) {
         let validTypes = ['Actor', 'Item'];
         if (!validTypes.includes(config.collection.metadata.type)) return;
     }
-    let documentType = config.object?.documentType;
-    if (documentType) {
-        let validTypes = ['Activity', 'Item', 'Effect', 'Template', 'Region'];
-        if (genericUtils.getCPRSetting('enableEmbeddedMacrosEditing') && validTypes.includes(config.object.documentType)) {
-            buttons.unshift({
-                class: 'chris-premades-embedded-macros',
-                icon: 'fa-solid fa-feather-pointed',
-                onClick: () => new EmbeddedMacros(config.object).render(true)
-            });
+    if (genericUtils.getCPRSetting('enableEmbeddedMacrosEditing')) {
+        let documentType = config.object?.documentType;
+        if (documentType) {
+            let validTypes = ['Activity', 'Item', 'Effect', 'Template', 'Region'];
+            if (genericUtils.getCPRSetting('enableEmbeddedMacrosEditing') && validTypes.includes(config.object.documentType)) {
+                buttons.unshift({
+                    class: 'chris-premades-embedded-macros',
+                    icon: 'fa-solid fa-feather-pointed',
+                    onClick: () => new EmbeddedMacros(config.object).render(true)
+                });
+            }
         }
     }
     buttons.unshift({
@@ -124,7 +126,6 @@ export async function renderActivitySheet(app, [elem]) {
         if (activityUtils.getIdentifier(activity)) medkitButton.setAttribute('style', 'color: dodgerblue');
         closeButton.parentNode.insertBefore(medkitButton, closeButton);
     }
-
     if (!genericUtils.getCPRSetting('enableEmbeddedMacrosEditing')) return;
     let existingMacroButton = elem.closest('.window-header').querySelector('button.chris-premades-embedded-macros');
     if (existingMacroButton) return;

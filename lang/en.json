@@ -2640,7 +2640,7 @@
                 "Name": "Enable Effect Interface"
             },
             "enableEmbeddedMacrosEditing": {
-                "Hint": "When enabled, the embedded macros editor will be available.",
+                "Hint": "When enabled, the embedded macros editor will be available. (Not ready for use!)",
                 "Name": "Enable Embedded Macros Editing"
             },
             "epicRolls": {
