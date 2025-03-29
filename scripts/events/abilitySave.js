@@ -1,6 +1,7 @@
 import {DialogApp} from '../applications/dialog.js';
 import {custom} from './custom.js';
 import {actorUtils, effectUtils, genericUtils, itemUtils, macroUtils, regionUtils, templateUtils} from '../utils.js';
+import {_applyDeprecatedD20Configs} from '/systems/dnd5e/module/dice/d20-roll.mjs';
 function getMacroData(entity) {
     return entity.flags['chris-premades']?.macros?.save ?? [];
 }
@@ -162,19 +163,30 @@ async function executeBonusMacroPass(actor, pass, saveId, options, roll, config,
     return CONFIG.Dice.D20Roll.fromRoll(roll);
 }
 async function rollSave(wrapped, config, dialog = {}, message = {}) {
-    let saveId;
     let event;
-    if (foundry.utils.getType(config) === 'Object') {
-        saveId = config.ability;
-        event = config.event;
-        if (config.midiOptions?.saveItemUuid) {
-            let activityUuid = game.messages.contents.toReversed().find(i => i.flags.dnd5e?.item?.uuid === config.midiOptions.saveItemUuid)?.flags.dnd5e.activity.uuid;
-            if (activityUuid) genericUtils.setProperty(config, 'chris-premades.activityUuid', activityUuid);
+    let shouldBeArray = true;
+    if (foundry.utils.getType(config) !== 'Object') {
+        shouldBeArray = false;
+        let options = genericUtils.duplicate(dialog);
+        event = dialog.event;
+        config = {
+            ability: config,
+            midiOptions: {}
+        };
+        dialog = {};
+        message = {};
+        for (let prop of ['simulate', 'isMagicalSave', 'isConcentrationCheck', 'saveItemUuid', 'fromMars5eChatCard']) {
+            if (options[prop]) config.midiOptions[prop] = options[prop];
         }
-    } else {
-        saveId = config;
-        event = dialog?.event;
-        message.create ??= dialog?.chatMessage;
+        // _applyDeprecatedD20Configs from 5e system
+        _applyDeprecatedD20Configs(config, dialog, message, options);
+        config.event = event;
+    }
+    let saveId = config.ability;
+    event = config.event;
+    if (config.midiOptions?.saveItemUuid) {
+        let activityUuid = game.messages.contents.toReversed().find(i => i.flags.dnd5e?.item?.uuid === config.midiOptions.saveItemUuid)?.flags.dnd5e.activity.uuid;
+        if (activityUuid) genericUtils.setProperty(config, 'chris-premades.activityUuid', activityUuid);
     }
     let options = {};
     await executeMacroPass(this, 'situational', saveId, options, undefined, config, dialog, message);
@@ -221,9 +233,12 @@ async function rollSave(wrapped, config, dialog = {}, message = {}) {
     };
     Hooks.once('dnd5e.preRollSavingThrowV2', messageDataFunc);
     if (Object.entries(options).length) config.rolls = [{options}];
+    config = {
+        ...config,
+        ...options
+    };
     let returnData = await wrapped(config, dialog, {...message, create: false});
-    let shouldBeArray = !!returnData?.length;
-    if (shouldBeArray) returnData = returnData[0];
+    if (!shouldBeArray) returnData = returnData[0];
     if (!returnData) return;
     let oldOptions = returnData.options;
     returnData = await executeBonusMacroPass(this, 'bonus', saveId, options, returnData, config, dialog, message);

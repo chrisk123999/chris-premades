@@ -1,6 +1,7 @@
 import {DialogApp} from '../applications/dialog.js';
 import {custom} from './custom.js';
 import {actorUtils, effectUtils, genericUtils, itemUtils, macroUtils, regionUtils, templateUtils} from '../utils.js';
+import {_applyDeprecatedD20Configs} from '/systems/dnd5e/module/dice/d20-roll.mjs';
 function getMacroData(entity) {
     return entity.flags['chris-premades']?.macros?.check ?? [];
 }
@@ -161,16 +162,27 @@ async function executeBonusMacroPass(actor, pass, checkId, options, roll, config
     return CONFIG.Dice.D20Roll.fromRoll(roll);
 }
 async function rollCheck(wrapped, config, dialog = {}, message = {}) {
-    let checkId;
     let event;
-    if (foundry.utils.getType(config) === 'Object') {
-        checkId = config.ability;
-        event = config.event;
-    } else {
-        checkId = config;
-        event = dialog?.event;
-        message.create ??= dialog?.chatMessage;
+    let shouldBeArray = true;
+    if (foundry.utils.getType(config) !== 'Object') {
+        shouldBeArray = false;
+        let options = genericUtils.duplicate(dialog);
+        event = dialog.event;
+        config = {
+            ability: config,
+            midiOptions: {}
+        };
+        dialog = {};
+        message = {};
+        for (let prop of ['simulate', 'isMagicalSave', 'isConcentrationCheck', 'saveItemUuid', 'fromMars5eChatCard']) {
+            if (options[prop]) config.midiOptions[prop] = options[prop];
+        }
+        // _applyDeprecatedD20Configs from 5e system
+        _applyDeprecatedD20Configs(config, dialog, message, options);
+        config.event = event;
     }
+    let checkId = config.ability;
+    event = config.event;
     let options = {};
     await executeMacroPass(this, 'situational', checkId, options, undefined, config, dialog, message);
     let selections = await executeContextMacroPass(this, 'context', checkId, options, undefined, config, dialog, message);
@@ -216,9 +228,12 @@ async function rollCheck(wrapped, config, dialog = {}, message = {}) {
     };
     Hooks.once('dnd5e.preRollAbilityCheckV2', messageDataFunc);
     if (Object.entries(options).length) config.rolls = [{options}];
+    config = {
+        ...config,
+        ...options
+    };
     let returnData = await wrapped(config, dialog, {...message, create: false});
-    let shouldBeArray = !!returnData.length;
-    if (shouldBeArray) returnData = returnData[0];
+    if (!shouldBeArray) returnData = returnData[0];
     if (!returnData) return;
     let oldOptions = returnData.options;
     returnData = await executeBonusMacroPass(this, 'bonus', checkId, options, returnData, config, dialog, message);

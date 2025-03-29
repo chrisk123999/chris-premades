@@ -7,6 +7,7 @@
 - Battering Roots (Modern)
 - Grappler (Legacy)
 - Spirit Shield (Legacy)
+- MTB compatibility
 ## API Update Notes:
 - Regions can now apply CPR midi actor events.
 
