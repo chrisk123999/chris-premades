@@ -75,6 +75,16 @@ let monsterPacks = [
 let gambitItems = [];
 let gambitMonsters = [];
 async function init(mode) {
+    let rulesVariants = [
+        {
+            suffix: '',
+            rules: 'legacy'
+        },
+        {
+            suffix: '-2024',
+            rules: 'modern'
+        }
+    ];
     let validPacks;
     switch(mode) {
         case 1: validPacks = packs.filter(i => !i.homebrew && !i.thirdParty); break;
@@ -82,42 +92,46 @@ async function init(mode) {
         case 3: validPacks = packs.filter(i => !i.thirdParty); break;
         case 4: validPacks = packs;
     }
-    await Promise.all(validPacks.map(async i => {
-        let pack = game.packs.get('gambits-premades.' + i.key);
-        if (!pack) return;
-        let index = await pack.getIndex({fields: ['name', 'system.source.custom', 'type']});
-        index.forEach(j => {
-            let version = j.system.source.custom;
-            if (!version) {
-                genericUtils.log('dev', j.name + ' from GPS is missing version info.');
-            }
-            gambitItems.push({
-                name: j.name,
-                version: j.system.source.custom,
-                uuid: j.uuid,
-                type: j.type
+    for (let {suffix, rules} of rulesVariants) {
+        await Promise.all(validPacks.map(async i => {
+            let pack = game.packs.get('gambits-premades.' + i.key + suffix);
+            if (!pack) return;
+            let index = await pack.getIndex({fields: ['name', 'system.source.custom', 'type']});
+            index.forEach(j => {
+                let version = j.system.source.custom;
+                if (!version) {
+                    genericUtils.log('dev', j.name + ' from GPS is missing version info.');
+                }
+                gambitItems.push({
+                    name: j.name,
+                    version: j.system.source.custom,
+                    uuid: j.uuid,
+                    type: j.type,
+                    rules
+                });
             });
-        });
-    }));
-    await Promise.all(monsterPacks.map(async i => {
-        let pack = game.packs.get('gambits-premades.' + i.key);
-        if (!pack) return;
-        let index = await pack.getIndex({fields: ['name', 'system.source.custom', 'folder']});
-        index.forEach(j => {
-            let version = j.system.source.custom;
-            if (!version) {
-                genericUtils.log('dev', j.name + ' from GPS is missing version info.');
-            }
-            let folder = pack.folders.contents.find(k => k.id === j.folder);
-            if (!folder) return;
-            gambitMonsters.push({
-                name: j.name,
-                version: j.system.source.custom,
-                uuid: j.uuid,
-                monster: folder.name
+        }));
+        await Promise.all(monsterPacks.map(async i => {
+            let pack = game.packs.get('gambits-premades.' + i.key + suffix);
+            if (!pack) return;
+            let index = await pack.getIndex({fields: ['name', 'system.source.custom', 'folder']});
+            index.forEach(j => {
+                let version = j.system.source.custom;
+                if (!version) {
+                    genericUtils.log('dev', j.name + ' from GPS is missing version info.');
+                }
+                let folder = pack.folders.contents.find(k => k.id === j.folder);
+                if (!folder) return;
+                gambitMonsters.push({
+                    name: j.name,
+                    version: j.system.source.custom,
+                    uuid: j.uuid,
+                    monster: folder.name,
+                    rules
+                });
             });
-        });
-    }));
+        }));
+    }
 }
 export let gambitPremades = {
     init,

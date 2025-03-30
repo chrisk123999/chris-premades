@@ -77,23 +77,22 @@ async function getCPRAutomation(item, {identifier, rules = 'legacy', type = 'cha
     }
 }
 async function getGPSAutomation(item, {identifier, rules = 'legacy', type = 'character'} = {}) {
-    if (rules === 'modern') return;
     let found;
     if (type === 'character' || item.type === 'spell') {
         switch(item.type) {
-            case 'spell': found = gambitPremades.gambitItems.find(i => i.name === item.name && i.type === 'spell'); break;
+            case 'spell': found = gambitPremades.gambitItems.find(i => i.name === item.name && i.type === 'spell' && i.rules === rules); break;
             case 'weapon':
             case 'equipment':
             case 'consumable':
             case 'tool':
             case 'backpack':
             case 'loot':
-                found = gambitPremades.gambitItems.find(i => i.name === item.name && constants.itemTypes.includes(i.type)); break;
-            case 'feat': found = gambitPremades.gambitItems.find(i => i.name === item.name && i.type === 'feat'); break;
+                found = gambitPremades.gambitItems.find(i => i.name === item.name && constants.itemTypes.includes(i.type) && i.rules === rules); break;
+            case 'feat': found = gambitPremades.gambitItems.find(i => i.name === item.name && i.type === 'feat' && i.rules === rules); break;
         }
     } else if (type === 'npc') {
         let monster = identifier ?? item.actor.prototypeToken.name;
-        found = gambitPremades.gambitMonsters.find(i => i.monster === monster && item.name === i.name);
+        found = gambitPremades.gambitMonsters.find(i => i.monster === monster && item.name === i.name && i.rules === rules);
     }
     if (!found) return;
     return await fromUuid(found.uuid);
