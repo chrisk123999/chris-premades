@@ -273,7 +273,7 @@ async function rollCheck(wrapped, config, dialog = {}, message = {}) {
         ...options
     };
     let returnData = await wrapped(config, dialog, {...message, create: false});
-    if (!shouldBeArray) returnData = returnData[0];
+    returnData = returnData[0];
     if (!returnData) return;
     let oldOptions = returnData.options;
     returnData = await executeBonusMacroPass(this, 'bonus', checkId, options, returnData, config, dialog, message);
