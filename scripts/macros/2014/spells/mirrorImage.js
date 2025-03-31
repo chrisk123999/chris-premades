@@ -64,6 +64,13 @@ async function attacked({trigger: {entity: effect}, workflow}) {
             await genericUtils.remove(effect);
         } else {
             await genericUtils.setFlag(effect, 'chris-premades', 'mirrorImage.images', duplicates - 1);
+            if (globalThis.TokenMagic?.hasFilterId(targetToken, 'images')) {
+                await globalThis.TokenMagic.updateFiltersByPlaceable(targetToken, [{
+                    filterId: 'images',
+                    filterType: 'images',
+                    nbImage: duplicates
+                }]);
+            }
         }
     } else {
         ChatMessage.create({
