@@ -658,41 +658,47 @@ export class ItemMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
         let itemData = genericUtils.duplicate(item.toObject());
         let sourceItemData = genericUtils.duplicate(sourceItem.toObject());
         let itemType = item.type;
-        sourceItemData.name = itemData.name;
-        sourceItemData.system.description = itemData.system.description;
-        sourceItemData.system.chatFlavor = itemData.system.chatFlavor;
+        const keepPaths = [
+            'name',
+            'system.description',
+            'system.chatFlavor',
+            'flags.dnd5e.advancementOrigin',
+            'system.quantity',
+            'flags.custom-character-sheet-sections.sectionName',
+            'flags.ddbimporter',
+            'flags.tidy5e-sheet',
+            '_stats.compendiumSource',
+            'flags.dnd5e.cachedFor',
+            'flags.dnd5e.sourceId',
+            'flags.chris-premades.config',
+            'system.materials',
+            'folder',
+            'system.sourceClass',
+            'system.preparation',
+            'system.attunement',
+            'system.equipped'
+        ];
+        const cleanPaths = [
+            'flags.midi-qol.onUseMacroName',
+            'flags.chris-premades.macros'
+        ];
+        for (let field of keepPaths) {
+            let fieldValue = genericUtils.getProperty(itemData, field);
+            if (fieldValue) genericUtils.setProperty(sourceItemData, field, fieldValue);
+        }
+        for (let field of cleanPaths) {
+            let fieldValue = genericUtils.getProperty(sourceItemData, field);
+            if (fieldValue) continue;
+            let fieldArray = field.split('.');
+            let newPath = fieldArray.slice(0, -1).concat('-=' + fieldArray.slice(-1)).join('.');
+            if (!fieldValue) genericUtils.setProperty(sourceItemData, newPath, null);
+        }
         if (itemData.system.uses.max?.length) {
             sourceItemData.system.uses = itemData.system.uses;
         }
-        let advancementOrigin = itemData.flags.dnd5e?.advancementOrigin;
-        if (advancementOrigin) genericUtils.setProperty(sourceItemData, 'flags.dnd5e.advancementOrigin', advancementOrigin);
-        let onUseFlag = genericUtils.getProperty(sourceItemData, 'flags.midi-qol.onUseMacroName');
-        if (!onUseFlag) genericUtils.setProperty(sourceItemData, 'flags.midi-qol.-=onUseMacroName', null);
-        if (itemType === 'spell') sourceItemData.system.preparation = itemData.system.preparation;
-        if (itemType != 'spell' && itemType != 'feat') {
-            sourceItemData.system.attunement = itemData.system.attunement;
-            sourceItemData.system.equipped = itemData.system.equipped;
-        }
-        if (itemData.system.quantity) sourceItemData.system.quantity = itemData.system.quantity;
-        let ccssSection = itemData.flags['custom-character-sheet-sections']?.sectionName;
-        if (ccssSection) genericUtils.setProperty(sourceItemData, 'flags.custom-character-sheet-sections.sectionName', ccssSection);
-        if (itemData.flags.ddbimporter) sourceItemData.flags.ddbimporter = itemData.flags.ddbimporter;
-        if (itemData.flags['tidy5e-sheet']) sourceItemData.flags['tidy5e-sheet'] = itemData.flags['tidy5e-sheet'];
         if (source) genericUtils.setProperty(sourceItemData, 'flags.chris-premades.info.source', source);
         if (version) genericUtils.setProperty(sourceItemData, 'flags.chris-premades.info.version', version);
         if (identifier) genericUtils.setProperty(sourceItemData, 'flags.chris-premades.info.identifier', identifier);
-        let macrosFlag = genericUtils.getProperty(sourceItemData, 'flags.chris-premades.macros');
-        if (!macrosFlag) genericUtils.setProperty(sourceItemData, 'flags.chris-premades.-=macros', null);
-        let compendiumSource = genericUtils.getProperty(itemData, '_stats.compendiumSource');
-        if (compendiumSource) genericUtils.setProperty(sourceItemData, '_stats.compendiumSource', compendiumSource);
-        let cachedFor = genericUtils.getProperty(itemData, 'flags.dnd5e.cachedFor');
-        if (cachedFor) genericUtils.setProperty(sourceItemData, 'flags.dnd5e.cachedFor', cachedFor);
-        let sourceId = genericUtils.getProperty(itemData, 'flags.dnd5e.sourceId');
-        if (sourceId) genericUtils.setProperty(sourceItemData, 'flags.dnd5e.sourceId', sourceId);
-        let config = itemData.flags['chris-premades']?.config;
-        if (config) genericUtils.setProperty(sourceItemData, 'flags.chris-premades.config', config);
-        let materials = genericUtils.getProperty(itemData, 'system.materials');
-        if (materials) genericUtils.setProperty(sourceItemData, 'system.materials', materials);
         if (CONFIG.DND5E.defaultArtwork.Item[itemType] != itemData.img) {
             for (let sourceEffect of sourceItemData.effects ?? []) {
                 if (sourceEffect.img === sourceItemData.img) sourceEffect.img = itemData.img;
@@ -702,7 +708,6 @@ export class ItemMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
             }
             sourceItemData.img = itemData.img;
         }
-        if (itemData.folder) sourceItemData.folder = itemData.folder;
         if (item.effects.size) await item.deleteEmbeddedDocuments('ActiveEffect', item.effects.map(i => i.id));
         genericUtils.setProperty(sourceItemData, 'flags.chris-premades.info.rules', genericUtils.getRules(item));
         await item.update(sourceItemData, {diff: false, recursive: false});
