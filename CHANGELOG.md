@@ -1,3 +1,9 @@
+# 1.2.31 Release:
+## Bug Fixes:
+- Bardic Inspiration (Legacy)
+- Disintegrate (Legacy)
+- Lifesteal (Generic)
+
 # 1.2.30 Release:
 ## New Modern Content:
 - Mirror Image

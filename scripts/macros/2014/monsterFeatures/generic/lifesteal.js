@@ -27,7 +27,7 @@ async function use({trigger, workflow}) {
     }
     await Promise.all(validTargets.map(async token => {
         let testhp = 0;
-        let damageItem = workflow.damageList.find(i => i.tokenId === token.id);
+        let damageItem = workflow.damageList.find(i => i.targetUuid === token.document.uuid);
         if (!damageItem) return;
         if (formula != '' && formula) {
             totalHeal += formulaRoll.total;

@@ -79,11 +79,11 @@ async function damage({trigger: {entity: effect}, workflow}) {
         flavor: magical
     });
     let damageTotal = damageRoll.total;
-    await genericUtils.update(effect, {'flags.chris-premades.bardicInspiration': {magicalTarget: token.id, magicalDamage: damageTotal}});
+    await genericUtils.update(effect, {'flags.chris-premades.bardicInspiration': {magicalTarget: token.document.uuid, magicalDamage: damageTotal}});
 }
 async function applyDamage({trigger: {entity: effect}, ditem}) {
     let {magicalTarget, magicalDamage} = effect.flags['chris-premades'].bardicInspiration;
-    if (magicalTarget !== ditem.tokenId || !magicalDamage) return;
+    if (magicalTarget !== ditem.targetUuid || !magicalDamage) return;
     ditem.rawDamageDetail[0].value += magicalDamage;
     let modifiedTotal = magicalDamage * (ditem.damageDetail[0].active.multiplier ?? 1);
     ditem.damageDetail[0].value += modifiedTotal;
