@@ -29,7 +29,7 @@ function collectTokenMacros(token, pass, distance, target) {
             if (!macroList.length) return;
             let validEffectMacros = [];
             macroList.forEach(i => {
-                if (!checkValid(i, token, target)) return;
+                if (!checkValid(i, token, target, distance)) return;
                 validEffectMacros.push({
                     macro: i.macro,
                     priority: i.priority

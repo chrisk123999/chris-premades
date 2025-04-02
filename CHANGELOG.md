@@ -3,6 +3,7 @@
 - Bardic Inspiration (Legacy)
 - Disintegrate (Legacy)
 - Lifesteal (Generic)
+- Combat API
 
 # 1.2.30 Release:
 ## New Modern Content:
