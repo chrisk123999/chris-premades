@@ -126,6 +126,7 @@
             "AvatarImg": "Immagine dell'Avatar:",
             "AvatarImgPriority": "Priorità dell'Immagine dell'Avatar:",
             "BaseDiceNumber": "Numero di dadi base:",
+            "BaseHealing": "Guarigione Base:",
             "BlockingStatuses": "Stati di blocco:",
             "Character": "Personaggio",
             "CheckSave": "Tiro Salvezza:",
@@ -236,6 +237,7 @@
             "UseRollTotal": "Usare {itemName}? (Tiro Totale: {rollTotal})",
             "UseRollTotalDetail": "Usare {itemName} per un bonus extra di {bonusFormula}? (Tiro Totale: {rollTotal})",
             "UseWeaponDamageTotal": "Usare {itemName}? (Danno Arma: {damageTotal})",
+            "UseWeaponDamageTotalWithAverage": "Usa {itemName}? (Danno Arma: {damageTotal}; Danno Medio: {damageAverage})",
             "WhatDo": "Cosa vorresti fare?",
             "YesDetail": "Sì ({detail})"
         },
@@ -271,6 +273,219 @@
             "SelectToken": "Seleziona prima un token!",
             "StatusAdd": "Aggiungi agli Effetti di Stato",
             "StatusRemove": "Rimuovi dagli Effetti di Stato"
+        },
+            "EmbeddedMacros": {
+            "Conscious": {
+                "Label": "Cosciente:"
+            },
+            "Disposition": {
+                "All": {
+                    "Label": "Tutto"
+                },
+                "Ally": {
+                    "Label": "Alleato"
+                },
+                "Enemy": {
+                    "Label": "Nemico"
+                },
+                "Label": "Disposizione:"
+            },
+            "Distance": {
+                "Label": "Distanza:"
+            },
+            "Identifier": {
+                "Label": "Identificatore:"
+            },
+            "Macro": {
+                "Label": "Macro:"
+            },
+            "Name": {
+                "Label": "Nome:"
+            },
+            "NoMacros": {
+                "Content": "Cambia questo!"
+            },
+            "Pass": {
+                "Label": "Pass:",
+                "applyDamage": {
+                    "Label": "Applica Danno",
+                    "Tooltip": "Cambia questo!"
+                },
+                "attackRollComplete": {
+                    "Label": "Tiro Attacco Completato",
+                    "Tooltip": "Cambia questo!"
+                },
+                "bonus": {
+                    "Label": "Bonus",
+                    "Tooltip": "Cambia questo!"
+                },
+                "combatEnd": {
+                    "Label": "Fine Combattimento",
+                    "Tooltip": "Cambia questo!"
+                },
+                "combatStart": {
+                    "Label": "Inizio Combattimento",
+                    "Tooltip": "Cambia questo!"
+                },
+                "context": {
+                    "Label": "Contesto",
+                    "Tooltip": "Cambia questo!"
+                },
+                "create": {
+                    "Label": "Crea",
+                    "Tooltip": "Cambia questo!"
+                },
+                "created": {
+                    "Label": "Creato",
+                    "Tooltip": "Cambia questo!"
+                },
+                "damageRollComplete": {
+                    "Label": "Tiro Danno Completato",
+                    "Tooltip": "Cambia questo!"
+                },
+                "dead": {
+                    "Label": "Morto",
+                    "Tooltip": "Cambia questo!"
+                },
+                "deleted": {
+                    "Label": "Cancellato",
+                    "Tooltip": "Cambia questo!"
+                },
+                "everyTurn": {
+                    "Label": "Ogni Turno",
+                    "Tooltip": "Cambia questo!"
+                },
+                "post": {
+                    "Label": "Post",
+                    "Tooltip": "Cambia questo!"
+                },
+                "postAttackRoll": {
+                    "Label": "Post-Tiro Attacco",
+                    "Tooltip": "Cambia questo!"
+                },
+                "preItemRoll": {
+                    "Label": "Pre-Tiro Oggetto",
+                    "Tooltip": "Cambia questo!"
+                },
+                "preTargeting": {
+                    "Label": "Pre-Targeting",
+                    "Tooltip": "Cambia questo!"
+                },
+                "preambleComplete": {
+                    "Label": "Preambolo Completato",
+                    "Tooltip": "Cambia questo!"
+                },
+                "rollFinished": {
+                    "Label": "Tiro Finito",
+                    "Tooltip": "Cambia questo!"
+                },
+                "savesComplete": {
+                    "Label": "TS Completati",
+                    "Tooltip": "Cambia questo!"
+                },
+                "sceneApplyDamage": {
+                    "Label": "Scena Applica Danno",
+                    "Tooltip": "Cambia questo!"
+                },
+                "sceneAttackRollComplete": {
+                    "Label": "Scena Tiro Attacco Completato",
+                    "Tooltip": "Cambia questo!"
+                },
+                "sceneDamageRollComplete": {
+                    "Label": "Scene Damage Roll Complete",
+                    "Tooltip": "Cambia questo!"
+                },
+                "scenePostAttackRoll": {
+                    "Label": "Scena Post-Tiro Attacco",
+                    "Tooltip": "Cambia questo!"
+                },
+                "scenePreambleComplete": {
+                    "Label": "Scena Preambolo Completato",
+                    "Tooltip": "Cambia questo!"
+                },
+                "sceneRollFinished": {
+                    "Label": "Scena Tiro Finito",
+                    "Tooltip": "Cambia questo!"
+                },
+                "situational": {
+                    "Label": "Situazionale",
+                    "Tooltip": "Cambia questo!"
+                },
+                "targetApplyDamage": {
+                    "Label": "Applica Danno Bersaglio",
+                    "Tooltip": "Cambia questo!"
+                },
+                "targetAttackRollComplete": {
+                    "Label": "Tiro Attacco Completato Bersaglio",
+                    "Tooltip": "Cambia questo!"
+                },
+                "targetDamageRollComplete": {
+                    "Label": "Tiro Danno Completato Bersaglio",
+                    "Tooltip": "Cambia questo!"
+                },
+                "targetPostAttackRoll": {
+                    "Label": "Post-Tiro Attacco Bersaglio",
+                    "Tooltip": "Cambia questo!"
+                },
+                "targetPreItemRoll": {
+                    "Label": "Pre-Tiro Oggetto Bersaglio",
+                    "Tooltip": "Cambia questo!"
+                },
+                "targetPreambleComplete": {
+                    "Label": "Preambolo Completo Bersaglio",
+                    "Tooltip": "Cambia questo!"
+                },
+                "targetRollFinished": {
+                    "Label": "Tiro Finito Bersaglio",
+                    "Tooltip": "Cambia questo!"
+                },
+                "targetSavesComplete": {
+                    "Label": "TS Completi Bersaglio",
+                    "Tooltip": "Cambia questo!"
+                },
+                "turnEnd": {
+                    "Label": "Fine Turno",
+                    "Tooltip": "Cambia questo!"
+                },
+                "turnEndNear": {
+                    "Label": "Fine Turno Vicino",
+                    "Tooltip": "Cambia questo!"
+                },
+                "turnStart": {
+                    "Label": "Inizio Turno",
+                    "Tooltip": "Cambia questo!"
+                },
+                "turnStartNear": {
+                    "Label": "Inizio Turno Vicino",
+                    "Tooltip": "Cambia questo!"
+                }
+            },
+            "Priority": {
+                "Label": "Priorità:"
+            },
+            "Tabs": {
+                "New": {
+                    "Label": "Nuova Macro",
+                    "Tooltip": "Clic per aggiungere una macro."
+                }
+            },
+            "Type": {
+                "Label": "Tipo:",
+                "aura": "Aura",
+                "check": "Check",
+                "combat": "Combatti",
+                "createItem": "Oggetto Creato",
+                "death": "Morte",
+                "effect": "Effetto",
+                "midi-actor": "Personaggio Midi-Qol",
+                "midi-item": "Oggetto Midi-Qol",
+                "movement": "Movimento",
+                "region": "Regione",
+                "rest": "Riposo",
+                "save": "Tiro Salvezza",
+                "skill": "Abilità",
+                "template": "Template"
+            }
         },
         "Error": {
             "ActivityNotFound": "Attività (identificativo {identifier}) non trovataz sull'oggetto!",
@@ -322,6 +537,7 @@
         "Generic": {
             "Actions": "Azioni",
             "Available": "Disponibile",
+            "CPR": "Calderone Risorse Abbondanti",
             "Cancel": "Annulla",
             "Chat": "Chat",
             "Check": "Prova di Abilità",
@@ -658,6 +874,7 @@
             },
             "ChangeSeason": {
                 "Autumn": "Autunno",
+                "Chat": "Cambia Stagione: {season}",
                 "Select": "Quale stagione?",
                 "Spring": "Primavera",
                 "Summer": "Estate",
@@ -1028,6 +1245,9 @@
             "Grease": {
                 "Fall": "Grasso: Caduta"
             },
+            "GreaterDivineIntervention": {
+                "RestFormula": "Formula Riposo:"
+            },
             "GreenFlameBlade": {
                 "Leap": "Dove salta il fuoco?",
                 "LeapFeature": "Lama della Fiamma Verde: Salto",
@@ -1057,7 +1277,8 @@
             },
             "GustOfWind": {
                 "Move": "Soffio di Vento: Spostare",
-                "Push": "Soffio di Vento: Spingere"
+                "Push": "Soffio di Vento: Spingere",
+                "PushOnMove": "Spingi bersagli dopo \"Movimento\":"
             },
             "HailOfThorns": {
                 "Burst": "Pioggia di Spine: Esplosione"
@@ -1111,6 +1332,8 @@
                 "Target": "Arma Sacra: Bersaglio"
             },
             "HungerOfHadar": {
+                "Buff": "Aumenta Danno per {name}",
+                "BuffTitle": "Seleziona Bonus Upcast",
                 "Cold": "Fame di Hadar: Freddo",
                 "Tentacles": "Fame di Hadar: Tentacoli"
             },
@@ -1127,6 +1350,9 @@
             },
             "ImbueCard": {
                 "Select": "Quale incantesimo infondere in una carta?"
+            },
+            "ImprovedPotentSpellcasting": {
+                "Target": "Seleziona un alleato a cui dare punti ferita temporanei:"
             },
             "InfectiousFury": {
                 "Attack": "Attaccare un Bersaglio Vicino",
