@@ -1630,6 +1630,12 @@
             "ProtectionFromEvilAndGood": {
                 "Save": "Questo tiro salvezza è dovuto a un effetto di un'aberrazione, celestiale, elementale, fey, demone o non morto che ti ha affascinato, spaventato o posseduto."
             },
+            "PsionicSorcery": {
+                "Select": "Seleziona quale incantesimo lanciare:"
+            },
+            "PsionicSpells": {
+                "Select": Seleziona quali incantesimi sono i tuoi Incantesimi Psionici:"
+            },
             "Rage": {
                 "AllowConcentration": "Consentire la concentrazione:",
                 "AllowHeavyArmor": "Consentire le armature pesanti:",
@@ -1685,6 +1691,9 @@
             },
             "Retaliation": {
                 "Weapon": "Con quale arma vuoi attaccare?"
+            },
+            "RevelationInFlesh": {
+                "Select": "Scegli quali benefici ottenere:"
             },
             "RingOfSpellStoring": {
                 "Clear": "Cancella incantesimi usati",
@@ -2004,6 +2013,7 @@
                 "FalseDestination": "Destinazione Falsa",
                 "Familiarity": "Qual è il grado di familiarità?",
                 "HowFar": "Quanto è lontana la destinazione?",
+                "LinkedObject": "Oggetto Collegato",
                 "Mishap": "Disavventura",
                 "OffTarget": "Fuori Bersaglio",
                 "OffTargetString": "La destinazione è {distance} {units} {direction} rispetto alla posizione prevista.",
@@ -2014,7 +2024,8 @@
                 "SelectDestination": "Seleziona Destinazione?",
                 "SimilarArea": "Area Simile",
                 "VeryFamiliar": "Molto Familiare",
-                "ViewedOnce": "Visto una Volta"
+                "ViewedOnce": "Visto una Volta",
+                "ViewedOnceDescribed": "Visto una Volta o Descritto"
             },
             "TentacleOfTheDeeps": {
                 "Attack": "Tentacolo delle Profondità: Attacco",
@@ -2039,6 +2050,11 @@
             },
             "TravelAlongTheTree": {
                 "WillingCreatures": "Selezionare fino a sei creature consenzienti:"
+            },
+            "TrueStrike": {
+                "NoWeapons": "Nessuna arma equipaggiata trovata!",
+                "ReplaceDamage": "Sostituisci danno con {type}?",
+                "SelectWeapon": "Con quale arma attaccare?"
             },
             "TwilightSanctuary": {
                 "Charmed": "Rimuovi la condizione Affascinato",
@@ -2093,6 +2109,9 @@
                 "Distance": "La distanza del legame è troppo lontana, rimuovere il legame?",
                 "MaxDistance": "Distanza Massima:"
             },
+            "WarpingImplosion": {
+                "Consume": "Consuma 5 {item} per usarlo?"
+            },
             "WildShape": {
                 "AllowElementals": "Permettere sempre gli elementali:",
                 "CustomCompendium": "Compendio Forma Selvatica Personalizzato:",
@@ -2117,6 +2136,16 @@
                 "ShadowyTendrils": "Tentacoli Oscuri",
                 "Target": "Seleziona un bersaglio:",
                 "Teleport": "Teletrasporto"
+            },
+             "Wish": {
+                "Blocked": "Uso Desiderio Bloccato:",
+                "BlockedWarn": "Non puoi lanciare questo incantesimo!",
+                "ChanceFormula": "Formula Possibilità Bloccata:",
+                "ChanceNumber": "Possibilità Bloccata:",
+                "InstantHealthConditions": "Condizioni di salute immediate:",
+                "MaxLevel": "Livello max incantesimo:",
+                "Rest": "Hai trascorso la giornata svolgendo solo attività leggere?",
+                "StressDuration": "Formula Durata Stress:"
             },
             "WitherAndBloom": {
                 "Heal": "Appassire e Fiorire: Cura",
@@ -2204,6 +2233,7 @@
                     "Tooltip": "Personalizza alcuni aspetti visivi"
                 }
             },
+            "ChangeRules": "Cambia Regole su Oggetto",
             "Compendium": {
                 "Apply": "Applicare il Medkit a tutti i documenti del compendio?",
                 "DestinationCompendium": "Compendio di destinatione:",
@@ -2271,8 +2301,13 @@
                     "DamagedByAlly": "Danneggiato da un alleato",
                     "DamagedByEnemy": "Danneggiato da un nemico",
                     "Label": "Durata Speciale:",
+                    "TempHP": "Zero Punti Ferita Temporanei",
+                    "TempMaxHP": "Zero Punti Ferita Massimi Temporanei",
                     "Tooltip": "Le condizioni selezionate rimuoveranno l'effetto."
                 }
+            },
+            "EmbeddedMacros": {
+                "Label": "CPR Macro Incorporate"
             },
             "Fieldsets": {
                 "damage": {
@@ -2300,6 +2335,7 @@
                 "midi-item-showcase-community": "Vetrina Midi Item Comunità"
             },
             "NoPermission": "Non hai permessi per cambiare questo",
+            "OtherRulesAvailable": "Esiste un'automazione per questo elemento che utilizza il set di regole \"{rules}\".",
             "Scene": {
                 "Done": "Aggiornamento della scena completato!",
                 "Start": "Aggiornamento dei token...",
@@ -2602,6 +2638,10 @@
             "effectInterface": {
                 "Hint": "Aggiunge una scheda laterale per gli Effetti Attivi. Ricarica richiesta dopo l'abilitazione.",
                 "Name": "Abilita Interfaccia Effetti"
+            },
+             "enableEmbeddedMacrosEditing": {
+                "Hint": "Se abilitato, l'editor di macro incorporato sarà disponibile. (Non pronto per l'uso!)",
+                "Name": "Abilita Modifica Macro Incorporate"
             },
             "epicRolls": {
                 "Hint": "Quando abilitato, alcune macro utilizzeranno i tiri Epici quando possibile.",
