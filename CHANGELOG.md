@@ -1,3 +1,7 @@
+# 1.2.32 Release:
+## Bug Fixes:
+- Shield (Modern)
+
 # 1.2.31 Release:
 ## Bug Fixes:
 - Bardic Inspiration (Legacy)
