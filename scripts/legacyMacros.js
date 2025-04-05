@@ -330,6 +330,7 @@ export {runicJuggernaut} from './macros/2014/classFeatures/fighter/runeKnight/ru
 export {runicShield} from './macros/2014/classFeatures/fighter/runeKnight/runicShield.js';
 export {sacredWeapon} from './macros/2014/classFeatures/paladin/oathOfDevotion/sacredWeapon.js';
 export {sculptSpells, sculptSpellsTarget} from './macros/2014/classFeatures/wizard/schoolOfEvocation/sculptSpells.js';
+export {sentinelAtDeathsDoor} from './macros/2014/classFeatures/cleric/graveDomain/sentinelAtDeathsDoor.js';
 export {shadowStep} from './macros/2014/classFeatures/monk/wayOfShadow/shadowStep.js';
 export {songOfDefense} from './macros/2014/classFeatures/wizard/bladeSinging/songOfDefense.js';
 export {songOfVictory} from './macros/2014/classFeatures/wizard/bladeSinging/songOfVictory.js';

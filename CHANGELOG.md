@@ -1,4 +1,6 @@
 # 1.2.32 Release:
+## New Legacy Content:
+- Sentinel at Death's Door
 ## Bug Fixes:
 - Shield (Modern)
 

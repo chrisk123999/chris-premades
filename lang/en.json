@@ -1734,6 +1734,9 @@
             "SearingSmite": {
                 "Fire": "Searing Smite: Fire"
             },
+            "SentinelAtDeathsDoor": {
+                "Attack": "Use {item} to convert critical against {name} to normal hit?"
+            },
             "ShadowBlade": {
                 "Sword": "Shadow Blade Sword"
             },
