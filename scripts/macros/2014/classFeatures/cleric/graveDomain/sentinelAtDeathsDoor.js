@@ -14,7 +14,7 @@ async function attack({trigger, workflow}) {
     for (let token of nearbyTokens) {
         let item = itemUtils.getItemByIdentifier(token.actor, 'sentinelAtDeathsDoor');
         let target = workflow.targets.first()
-        let selection = await dialogUtils.confirm(item.name, genericUtils.format('CHRISPREMADES.Macros.SentinelAtDeathsDoor.Attack', {item: item.name, name: target.document.name}, {userId: socketUtils.firstOwner(token.actor, true)}));
+        let selection = await dialogUtils.confirm(item.name, genericUtils.format('CHRISPREMADES.Macros.SentinelAtDeathsDoor.Attack', {item: item.name, name: target.document.name}), {userId: socketUtils.firstOwner(token.actor, true)});
         if (!selection) continue;
         await workflowUtils.syntheticItemRoll(item, [target], {consumeResources: true, userId: socketUtils.firstOwner(token.actor, true)});
         workflow.isCritical = false;

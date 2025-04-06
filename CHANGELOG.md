@@ -3,6 +3,8 @@
 - Sentinel at Death's Door
 ## Bug Fixes:
 - Shield (Modern)
+- Spirit Shield (Legacy)
+- Cutting Words (Modern)
 
 # 1.2.31 Release:
 ## Bug Fixes:
