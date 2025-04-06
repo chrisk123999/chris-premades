@@ -67,7 +67,7 @@ async function use({trigger, workflow}) {
 }
 export let lastStandArmorBR = {
     name: 'Last Stand Armor, Breastplate',
-    version: '1.1.0',
+    version: '1.2.32',
     midi: {
         item: [
             {

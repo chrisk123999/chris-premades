@@ -5,6 +5,8 @@
 - Shield (Modern)
 - Spirit Shield (Legacy)
 - Cutting Words (Modern)
+- Beacon of Hope (Legacy & Modern)
+- Last Stand Armor (Legacy)
 
 # 1.2.31 Release:
 ## Bug Fixes:
