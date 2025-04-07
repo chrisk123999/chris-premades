@@ -1,4 +1,3 @@
-import {socket} from '../sockets.js';
 import {actorUtils, effectUtils, genericUtils, socketUtils, errors, compendiumUtils} from '../../utils.js';
 import {gambitPremades} from '../../integrations/gambitsPremades.js';
 import {miscPremades} from '../../integrations/miscPremades.js';
@@ -20,7 +19,7 @@ async function createItems(actor, updates, {favorite, section, parentEntity, ide
     if (hasPermission) {
         items = await actor.createEmbeddedDocuments('Item', updates);
     } else {
-        items = await socket.createEmbeddedDocuments(actor.uuid, 'Item', updates);
+        items = await genericUtils.createEmbeddedDocuments(actor, 'Item', updates);
     }
     if (favorite) await actorUtils.addFavorites(actor, items);
     if (parentEntity) await effectUtils.addDependent(parentEntity, items);
