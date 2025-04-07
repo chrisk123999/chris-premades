@@ -293,12 +293,12 @@
       "banner": "modules/chris-premades/images/bannerSummons.webp"
     },
     {
-        "name": "CPRSummonFeatures2024",
-        "label": "CPR Summon Features",
-        "path": "packs/cpr-summon-features-2024",
-        "type": "Item",
-        "module": "chris-premades",
-        "banner": "modules/chris-premades/images/bannerUnknown3.webp"
+      "name": "CPRSummonFeatures2024",
+      "label": "CPR Summon Features",
+      "path": "packs/cpr-summon-features-2024",
+      "type": "Item",
+      "module": "chris-premades",
+      "banner": "modules/chris-premades/images/bannerUnknown3.webp"
     }
   ],
   "packFolders": [
@@ -337,7 +337,9 @@
           "packs": [
             "CPRSpells2024",
             "CPRClassFeatures2024",
-            "CPRItems2024"
+            "CPRItems2024",
+            "CPRSummons2024",
+            "CPRSummonFeatures2024"
           ]
         }
       ],
