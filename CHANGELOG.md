@@ -1,3 +1,15 @@
+# 1.2.32 Release:
+## New Modern Content:
+- Summon Beast
+## New Legacy Content:
+- Sentinel at Death's Door
+## Bug Fixes:
+- Shield (Modern)
+- Spirit Shield (Legacy)
+- Cutting Words (Modern)
+- Beacon of Hope (Legacy & Modern)
+- Last Stand Armor (Legacy)
+
 # 1.2.31 Release:
 ## Bug Fixes:
 - Bardic Inspiration (Legacy)

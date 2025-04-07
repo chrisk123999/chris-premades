@@ -128,6 +128,7 @@ export {spikeGrowth} from './macros/2024/spells/spikeGrowth.js';
 export {spiritGuardians, spiritGuardiansDamage} from './macros/2024/spells/spiritGuardians.js';
 export {spiritualWeapon} from './macros/2024/spells/spiritualWeapon.js';
 export {staggeringSmite} from './macros/2024/spells/staggeringSmite.js';
+export {summonBeast} from './macros/2024/spells/summonBeast.js';
 export {synapticStatic} from './macros/2024/spells/synapticStatic.js';
 export {teleport} from './macros/2024/spells/teleport.js';
 export {thornWhip} from './macros/2024/spells/thornWhip.js';

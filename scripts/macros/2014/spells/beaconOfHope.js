@@ -57,7 +57,7 @@ async function damageApplication({workflow, ditem}) {
 }
 export let beaconOfHope = {
     name: 'Beacon of Hope',
-    version: '1.1.0',
+    version: '1.2.32',
     midi: {
         item: [
             {

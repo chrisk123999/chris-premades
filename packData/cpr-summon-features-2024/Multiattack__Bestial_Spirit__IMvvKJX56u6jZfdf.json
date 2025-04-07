@@ -1,5 +1,7 @@
 {
-  "type": "spell",
+  "name": "Multiattack (Bestial Spirit)",
+  "type": "feat",
+  "img": "icons/skills/melee/strike-weapons-orange.webp",
   "system": {
     "description": {
       "value": "",
@@ -13,64 +15,29 @@
       "page": "",
       "license": ""
     },
-    "activation": {
-      "type": "action",
-      "condition": "",
-      "value": 1
-    },
-    "duration": {
-      "value": "1",
-      "units": "minute"
-    },
-    "target": {
-      "affects": {
-        "type": "ally",
-        "count": "",
-        "choice": false,
-        "special": ""
-      },
-      "template": {
-        "units": "ft",
-        "contiguous": false,
-        "type": "emanationNoTemplate",
-        "size": "30"
-      }
-    },
-    "range": {
-      "units": "ft",
-      "value": "",
-      "special": ""
-    },
     "uses": {
       "max": "",
       "spent": 0,
       "recovery": []
     },
-    "ability": "",
-    "level": 3,
-    "school": "abj",
-    "materials": {
-      "value": "",
-      "consumed": false,
-      "cost": 0,
-      "supply": 0
+    "type": {
+      "value": "monster",
+      "subtype": ""
     },
-    "preparation": {
-      "mode": "prepared",
-      "prepared": false
+    "requirements": "",
+    "properties": [],
+    "prerequisites": {
+      "level": null,
+      "repeatable": false
     },
-    "properties": [
-      "vocal",
-      "somatic",
-      "concentration"
-    ],
     "activities": {
       "dnd5eactivity000": {
         "_id": "dnd5eactivity000",
         "type": "utility",
         "activation": {
           "type": "action",
-          "value": null,
+          "value": 1,
+          "condition": "",
           "override": false
         },
         "consumption": {
@@ -85,23 +52,35 @@
           "chatFlavor": ""
         },
         "duration": {
-          "units": "inst",
           "concentration": false,
+          "value": "",
+          "units": "",
+          "special": "",
           "override": false
         },
         "effects": [],
         "range": {
+          "units": "",
+          "special": "",
           "override": false
         },
         "target": {
-          "prompt": true,
           "template": {
+            "count": "",
             "contiguous": false,
-            "units": "ft"
+            "type": "",
+            "size": "",
+            "width": "",
+            "height": "",
+            "units": ""
           },
           "affects": {
-            "choice": false
+            "count": "",
+            "type": "",
+            "choice": false,
+            "special": ""
           },
+          "prompt": true,
           "override": false
         },
         "uses": {
@@ -118,6 +97,7 @@
         "sort": 0,
         "useConditionText": "",
         "effectConditionText": "",
+        "useConditionReason": "",
         "macroData": {
           "name": "",
           "command": ""
@@ -136,31 +116,43 @@
           "triggeredActivityRollAs": "self",
           "forceDialog": false,
           "confirmTargets": "default",
+          "autoTargetType": "any",
+          "autoTargetAction": "default",
           "automationOnly": false,
-          "identifier": ""
-        }
+          "otherActivityCompatible": true,
+          "identifier": "",
+          "displayActivityName": false,
+          "rollMode": "default",
+          "chooseEffects": false,
+          "toggleEffect": false,
+          "ignoreFullCover": false
+        },
+        "isOverTimeFlag": false,
+        "overTimeProperties": {
+          "saveRemoves": true,
+          "preRemoveConditionText": "",
+          "postRemoveConditionText": ""
+        },
+        "otherActivityId": "none"
       }
     },
-    "identifier": "beacon-of-hope",
-    "sourceClass": ""
+    "identifier": "multiattack-bestial-spirit",
+    "enchant": {},
+    "advancement": [],
+    "cover": null,
+    "crewed": false
   },
-  "name": "Beacon of Hope",
+  "effects": [],
   "flags": {
     "midi-qol": {
-      "forceCEOff": true,
       "effectActivation": false,
-      "forceCEOn": false,
       "rollAttackPerTarget": "default",
       "itemCondition": "",
       "effectCondition": "",
-      "AoETargetType": "any",
-      "AoETargetTypeIncludeSelf": true,
-      "autoTarget": "default",
       "removeAttackDamageButtons": "default",
       "reactionCondition": "",
       "otherCondition": ""
     },
-    "core": {},
     "midiProperties": {
       "nodam": false,
       "fulldam": false,
@@ -182,32 +174,15 @@
       "idv": false,
       "ida": false
     },
+    "core": {},
     "dnd5e": {
       "persistSourceMigration": true,
       "riders": {
         "activity": []
       }
-    },
-    "chris-premades": {
-      "info": {
-        "name": "Beacon of Hope",
-        "version": "1.2.32",
-        "identifier": "beaconOfHope",
-        "source": "chris-premades",
-        "rules": "modern"
-      },
-      "macros": {
-        "midi": {
-          "item": [
-            "beaconOfHope"
-          ]
-        }
-      }
     }
   },
-  "effects": [],
-  "img": "icons/magic/light/explosion-star-blue-yellow.webp",
-  "folder": null,
-  "_id": "nHYjBLU9wB2QGTBC",
-  "_key": "!items!nHYjBLU9wB2QGTBC"
+  "folder": "lHhGlqPOrQEh5rv6",
+  "_id": "IMvvKJX56u6jZfdf",
+  "_key": "!items!IMvvKJX56u6jZfdf"
 }

@@ -20,7 +20,9 @@ let packs = [
     'cpr-summons',
     'cpr-spells-2024',
     'cpr-class-features-2024',
-    'cpr-items-2024'
+    'cpr-items-2024',
+    'cpr-summons-2024',
+    'cpr-summon-features-2024'
 ];
 for (let i of packs) {
     await compilePack('./packData/' + i, './packs/' + i, {'log': true});

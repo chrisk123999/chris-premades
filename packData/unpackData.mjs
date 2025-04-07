@@ -19,10 +19,12 @@ let itemPacks = [
     'cpr-summon-features',
     'cpr-spells-2024',
     'cpr-class-features-2024',
-    'cpr-items-2024'
+    'cpr-items-2024',
+    'cpr-summon-features-2024'
 ];
 let actorPacks = [
-    'cpr-summons'
+    'cpr-summons',
+    'cpr-summons-2024'
 ];
 for (let i of itemPacks) {
     await extractPack('packs/' + i, 'packData/' + i, {'log': true, 'documentType': 'Item', transformEntry: (entry) => {

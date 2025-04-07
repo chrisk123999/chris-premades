@@ -1734,6 +1734,9 @@
             "SearingSmite": {
                 "Fire": "Searing Smite: Fire"
             },
+            "SentinelAtDeathsDoor": {
+                "Attack": "Use {item} to convert critical against {name} to normal hit?"
+            },
             "ShadowBlade": {
                 "Sword": "Shadow Blade Sword"
             },
@@ -1880,6 +1883,7 @@
                 "Flyby": "Flyby",
                 "Land": "Land",
                 "Maul": "Maul (Bestial Spirit)",
+                "Rend": "Rend (Bestial Spirit)",
                 "Type": "What Beast type?",
                 "Water": "Water"
             },
