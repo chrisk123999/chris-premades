@@ -1872,6 +1872,7 @@
             "SummonAberration": {
                 "Beholderkin": "Beholderkin",
                 "EyeRay": "Eye Ray",
+                "MindFlayer": "Mind Flayer",
                 "PsychicSlam": "Psychic Slam",
                 "Slaad": "Slaad",
                 "StarSpawn": "Star Spawn",
@@ -2878,6 +2879,7 @@
                 "AberrantSpiritBeholderkin": "Aberrant Spirit (Beholderkin)",
                 "AberrantSpiritSlaad": "Aberrant Spirit (Slaad)",
                 "AberrantSpiritStarSpawn": "Aberrant Spirit (Star Spawn)",
+                "AberrantSpiritMindFlayer": "Aberrant Spirit (Mind Flayer)",
                 "AirElemental": "Air Elemental",
                 "BeastOfTheLand": "Beast of the Land",
                 "BeastOfTheSea": "Beast of the Sea",
