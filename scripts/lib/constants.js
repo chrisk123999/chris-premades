@@ -41,7 +41,9 @@ let legacyPacks = {
 let modernPacks = {
     spells: 'chris-premades.CPRSpells2024',
     classFeatures: 'chris-premades.CPRClassFeatures2024',
-    items: 'chris-premades.CPRItems2024'
+    items: 'chris-premades.CPRItems2024',
+    summonFeatures: 'chris-premades.CPRSummonFeatures2024',
+    summons: 'chris-premades.CPRSummons2024'
 };
 function setUseLocalCompendium(value) {
     if (value) {
@@ -70,6 +72,8 @@ function setUseLocalCompendium(value) {
         modernPacks.spells = 'world.cpr-spells-2024';
         modernPacks.classFeatures = 'world.cpr-class-features-2024';
         modernPacks.items = 'world.cpr-items-2024';
+        modernPacks.summonFeatures=  'world.cpr-summon-features-2024';
+        modernPacks.summons = 'world.cpr-summons-2024';
     } else {
         packs.spellFeatures = 'chris-premades.CPRSpellFeatures';
         featurePacks.spellFeatures = 'chris-premades.CPRSpellFeatures';
@@ -96,6 +100,8 @@ function setUseLocalCompendium(value) {
         modernPacks.spells = 'chris-premades.CPRSpells2024';
         modernPacks.classFeatures = 'chris-premades.CPRClassFeatures2024';
         modernPacks.items = 'chris-premades.CPRItems2024';
+        modernPacks.summonFeatures=  'chris-premades.CPRSummonFeatures2024';
+        modernPacks.summons = 'chris-premades.CPRSummons2024';
     }
 }
 const attacks = [
