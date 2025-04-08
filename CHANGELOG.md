@@ -3,6 +3,7 @@
 - Summon Beast
 - Summon Aberration
 - Summon Celestial
+- Summon Fey
 ## New Legacy Content:
 - Sentinel at Death's Door
 ## Bug Fixes:
@@ -11,6 +12,7 @@
 - Cutting Words (Modern)
 - Beacon of Hope (Legacy & Modern)
 - Last Stand Armor (Legacy)
+- Summon Fey (Legacy)
 
 # 1.2.31 Release:
 ## Bug Fixes:
