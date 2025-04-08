@@ -4,34 +4,42 @@ import {activityUtils, actorUtils, compendiumUtils, constants, dialogUtils, effe
 async function use({workflow}) {
     let activityIdentifier = activityUtils.getIdentifier(workflow.activity);
     let concentrationEffect = effectUtils.getConcentrationEffect(workflow.actor, workflow.item);
-    let sourceActor = await compendiumUtils.getActorFromCompendium(constants.packs.summons, 'CPR - Elemental Spirit');
+    let sourceActor = await compendiumUtils.getActorFromCompendium(constants.modernPacks.summons, 'CPR - Elemental Spirit');
     if (!sourceActor) {
         if (concentrationEffect) await genericUtils.remove(concentrationEffect);
         return;
     }
     let spellLevel = workflowUtils.getCastLevel(workflow);
     let creatureType;
+    let slamDamageType;
     if (activityIdentifier === 'summonElementalAir') {
         creatureType = 'air';
+        slamDamageType = 'lightning';
     } else if (activityIdentifier === 'summonElementalEarth') {
         creatureType = 'earth';
+        slamDamageType = 'bludgeoning';
     } else if (activityIdentifier === 'summonElementalFire') {
         creatureType = 'fire';
+        slamDamageType = 'fire';
     } else if (activityIdentifier === 'summonElementalWater') {
         creatureType = 'water';
+        slamDamageType = 'acid';
     }
     if (!creatureType) {
         if (concentrationEffect) await genericUtils.remove(concentrationEffect);
         return;
     }
     let numAttacks = Math.floor(spellLevel / 2);
-    let multiAttackFeatureData = await Summons.getSummonItem('Multiattack (Elemental Spirit)', {}, workflow.item, {translate: genericUtils.format('CHRISPREMADES.CommonFeatures.Multiattack', {numAttacks}), identifier: 'summonElementalMultiattack'});
-    let slamFeatureData = await Summons.getSummonItem('Slam (Elemental Spirit)', {}, workflow.item, {translate: 'CHRISPREMADES.Macros.SummonElemental.Slam', identifier: 'summonElementalSlam', flatAttack: true, damageBonus: spellLevel});
+    let multiAttackFeatureData = await Summons.getSummonItem('Multiattack (Elemental Spirit)', {}, workflow.item, {translate: genericUtils.format('CHRISPREMADES.CommonFeatures.Multiattack', {numAttacks}), identifier: 'summonElementalMultiattack', rules: 'modern'});
+    let slamFeatureData = await Summons.getSummonItem('Slam (Elemental Spirit)', {}, workflow.item, {translate: 'CHRISPREMADES.Macros.SummonElemental.Slam', identifier: 'summonElementalSlam', flatAttack: true, damageBonus: spellLevel, rules: 'modern'});
     if (!multiAttackFeatureData || !slamFeatureData) {
         errors.missingPackItem();
         if (concentrationEffect) await genericUtils.remove(concentrationEffect);
         return;
     }
+    let slamAttackId = Object.keys(slamFeatureData.system.activities)[0];
+    let slamAttackActivity = slamFeatureData.system.activities[slamAttackId];
+    slamAttackActivity.damage.parts[0].types = [slamDamageType];
     let name = itemUtils.getConfig(workflow.item, creatureType + 'Name');
     if (!name?.length) name = genericUtils.translate('CHRISPREMADES.Summons.CreatureNames.ElementalSpirit' + creatureType.capitalize());
     let hpFormula = 50 + ((spellLevel - 4) * 10);
@@ -90,9 +98,6 @@ async function use({workflow}) {
             genericUtils.setProperty(updates, 'actor.system.traits.dr.value', 'acid');
         } else {
             genericUtils.setProperty(updates, 'actor.system.traits.di.value', 'fire');
-            let slamAttackId = Object.keys(slamFeatureData.system.activities)[0];
-            let slamAttackActivity = slamFeatureData.system.activities[slamAttackId];
-            slamAttackActivity.damage.parts[0].types = ['fire'];
         }
     }
     let animation = itemUtils.getConfig(workflow.item, creatureType + 'Animation') ?? 'none';
@@ -106,7 +111,8 @@ async function use({workflow}) {
 }
 export let summonElemental = {
     name: 'Summon Elemental',
-    version: '1.1.0',
+    version: '1.2.32',
+    rules: 'modern',
     hasAnimation: true,
     midi: {
         item: [

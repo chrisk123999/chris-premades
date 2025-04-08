@@ -15,6 +15,7 @@
 - Beacon of Hope (Legacy & Modern)
 - Last Stand Armor (Legacy)
 - Summon Fey (Legacy)
+- Summon Elemental (Legacy)
 
 # 1.2.31 Release:
 ## Bug Fixes:

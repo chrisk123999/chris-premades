@@ -131,6 +131,7 @@ export {staggeringSmite} from './macros/2024/spells/staggeringSmite.js';
 export {summonAberration, summonAberrationWhisperingAura} from './macros/2024/spells/summonAberration.js';
 export {summonBeast} from './macros/2024/spells/summonBeast.js';
 export {summonCelestial, summonCelestialMace} from './macros/2024/spells/summonCelestial.js';
+export {summonElemental} from './macros/2024/spells/summonElemental.js';
 export {summonFey, summonFeyFeyStep} from './macros/2024/spells/summonFey.js';
 export {summonFiend, summonFiendClaws, summonFiendDeathThroes} from './macros/2024/spells/summonFiend.js';
 export {summonUndead, summonUndeadPutrid} from './macros/2024/spells/summonUndead.js';
