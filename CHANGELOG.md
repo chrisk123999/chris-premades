@@ -3,6 +3,7 @@
 - Summon Aberration
 - Summon Beast
 - Summon Celestial
+- Summon Dragon
 - Summon Fey
 - Summon Fiend
 - Summon Undead

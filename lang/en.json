@@ -1914,6 +1914,11 @@
                 "SharedResistances": "Shared Resistances",
                 "Type": "What Dragon type?"
             },
+            "SummonDragon": {
+                "Rend": "Rend (Draconic Spirit)",
+                "ResistanceType": "Shared Resistances: What damage type?",
+                "SharedResistances": "Shared Resistances"
+            },
             "SummonDrakeCompanion": {
                 "Command": "Drake Companion: Command",
                 "Essence": "Draconic Essence",
