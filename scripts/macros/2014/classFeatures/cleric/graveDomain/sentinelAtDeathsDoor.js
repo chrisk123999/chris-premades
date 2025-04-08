@@ -13,6 +13,7 @@ async function attack({trigger, workflow}) {
     if (!nearbyTokens.length) return;
     for (let token of nearbyTokens) {
         let item = itemUtils.getItemByIdentifier(token.actor, 'sentinelAtDeathsDoor');
+        if (!item || !item.system.uses.value) continue;
         let target = workflow.targets.first()
         let selection = await dialogUtils.confirm(item.name, genericUtils.format('CHRISPREMADES.Macros.SentinelAtDeathsDoor.Attack', {item: item.name, name: target.document.name}), {userId: socketUtils.firstOwner(token.actor, true)});
         if (!selection) continue;
