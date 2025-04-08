@@ -1,9 +1,10 @@
 # 1.2.32 Release:
 ## New Modern Content:
-- Summon Beast
 - Summon Aberration
+- Summon Beast
 - Summon Celestial
 - Summon Fey
+- Summon Fiend
 ## New Legacy Content:
 - Sentinel at Death's Door
 ## Bug Fixes:
