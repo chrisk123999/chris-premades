@@ -3,6 +3,7 @@
 - Summon Aberration
 - Summon Beast
 - Summon Celestial
+- Summon Construct
 - Summon Dragon
 - Summon Fey
 - Summon Fiend

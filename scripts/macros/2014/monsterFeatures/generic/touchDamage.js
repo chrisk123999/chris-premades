@@ -1,8 +1,10 @@
-import {constants, tokenUtils, workflowUtils} from '../../../../utils.js';
+import {constants, itemUtils, tokenUtils, workflowUtils} from '../../../../utils.js';
 
 async function hit({trigger:{entity: item, token}, workflow}) {
     if (!constants.meleeAttacks.includes(workflow.activity.actionType)) return;
-    if (tokenUtils.getDistance(token, workflow.token) > 5) return;
+    let config = itemUtils.getGenericFeatureConfig(item, 'touchDamage');
+    let range = config.range;
+    if (range > 0 && tokenUtils.getDistance(token, workflow.token) > range) return;
     await workflowUtils.syntheticItemRoll(item, [workflow.token]);
 }
 export let touchDamage = {
@@ -19,5 +21,12 @@ export let touchDamage = {
         ]
     },
     isGenericFeature: true,
-    genericConfig: []
+    genericConfig: [
+        {
+            value: 'range',
+            label: 'CHRISPREMADES.Config.Range',
+            type: 'number',
+            default: 5
+        },
+    ]
 };
