@@ -5,6 +5,7 @@
 - Summon Celestial
 - Summon Fey
 - Summon Fiend
+- Summon Undead
 ## New Legacy Content:
 - Sentinel at Death's Door
 ## Bug Fixes:
