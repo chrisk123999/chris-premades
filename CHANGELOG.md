@@ -14,6 +14,7 @@ Heroism (Legacy & Modern)
 - Summon Undead
 ## New Legacy Content:
 - Sentinel at Death's Door
+- Aura of Clarity
 ## Bug Fixes:
 - Shield (Modern)
 - Spirit Shield (Legacy)
@@ -22,6 +23,7 @@ Heroism (Legacy & Modern)
 - Last Stand Armor (Legacy)
 - Summon Fey (Legacy)
 - Summon Elemental (Legacy)
+- Legacy Paladin Auras
 
 # 1.2.31 Release:
 ## Bug Fixes:
