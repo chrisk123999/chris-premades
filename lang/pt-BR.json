@@ -1734,6 +1734,9 @@
             "SearingSmite": {
                 "Fire": "Destruição Lancinante: Ígneo"
             },
+            "SentinelAtDeathsDoor": {
+                "Attack": "Usar {item} para converter acerto crítico contra {name} em acerto normal?"
+            },
             "ShadowBlade": {
                 "Sword": "Espada da Lâmina Sombria"
             },
@@ -1869,6 +1872,7 @@
             "SummonAberration": {
                 "Beholderkin": "Observador",
                 "EyeRay": "Raio Ocular",
+                "MindFlayer": "Mind Flayer",
                 "PsychicSlam": "Pancada Psíquica",
                 "Slaad": "Slaad",
                 "StarSpawn": "Prole Estelar",
@@ -1880,6 +1884,7 @@
                 "Flyby": "Sobrevoo",
                 "Land": "Terra",
                 "Maul": "Mandíbula (Espírito Feral)",
+                "Rend": "Laceração (Espírito Bestial)",
                 "Type": "Qual tipo de Fera?",
                 "Water": "Água"
             },
@@ -1909,6 +1914,11 @@
                 "SharedResistances": "Resistências Compartilhadas",
                 "Type": "Qual tipo de Dragão?"
             },
+            "SummonDragon": {
+                "Rend": "Laceração (Espírito Dracônico)",
+                "ResistanceType": "Resistências Compartilhadas: Que tipo de dano?",
+                "SharedResistances": "Resistências Compartilhadas"
+            },
             "SummonDrakeCompanion": {
                 "Command": "Companheiro Dragão: Comando",
                 "Essence": "Essência Dracônica",
@@ -1930,6 +1940,7 @@
                 "Water": "Água"
             },
             "SummonFey": {
+                "FeyBlade": "Lâmina Feérica",
                 "FeyStep": "Passo Feérico",
                 "Fuming": "Irritadiço",
                 "Mirthful": "Jubiloso",
@@ -1942,6 +1953,7 @@
                 "DeathThroes": "Espasmos de Morte",
                 "Demon": "Demônio",
                 "Devil": "Diabo",
+                "FieryStrike": "Golpe Ardente",
                 "HurlFlame": "Arremessar Chama",
                 "Type": "Qual tipo de Ínfero?",
                 "UseTeleportation": "Usar Teleporte?",
@@ -2874,6 +2886,7 @@
                 "AberrantSpiritBeholderkin": "Espírito Aberrante (Observador)",
                 "AberrantSpiritSlaad": "Espírito Aberrante (Slaad)",
                 "AberrantSpiritStarSpawn": "Espírito Aberrante (Prole Estelar)",
+                "AberrantSpiritMindFlayer": "Espírito Aberrante (Mind Flayer)",
                 "AirElemental": "Elemental do Ar",
                 "BeastOfTheLand": "Fera da Terra",
                 "BeastOfTheSea": "Fera do Mar",
