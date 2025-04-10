@@ -1,6 +1,8 @@
 # 1.2.33 Release:
 ## Bug Fixes:
 Heroism (Legacy & Modern)
+## API Update Notes:
+- itemUtils.getMod is now activityUtils.getMod
 
 # 1.2.32 Release:
 ## New Modern Content:
