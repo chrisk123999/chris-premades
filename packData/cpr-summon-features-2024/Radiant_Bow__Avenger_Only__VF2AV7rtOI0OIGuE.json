@@ -1,7 +1,7 @@
 {
-  "name": "Shortsword (Fey Spirit)",
-  "type": "weapon",
-  "img": "icons/weapons/swords/sword-guard-brown.webp",
+  "name": "Radiant Bow (Avenger Only)",
+  "type": "feat",
+  "img": "icons/weapons/bows/longbow-leather-green.webp",
   "system": {
     "description": {
       "value": "",
@@ -10,92 +10,26 @@
     "source": {
       "custom": "",
       "revision": 1,
-      "rules": "2014"
-    },
-    "quantity": 1,
-    "weight": {
-      "value": 0,
-      "units": "lb"
-    },
-    "price": {
-      "value": 0,
-      "denomination": "gp"
-    },
-    "attunement": "",
-    "equipped": true,
-    "rarity": "",
-    "identified": true,
-    "cover": null,
-    "crewed": false,
-    "range": {
-      "value": null,
-      "long": null,
-      "units": "ft",
-      "reach": null
+      "rules": "2024",
+      "book": "",
+      "page": "",
+      "license": ""
     },
     "uses": {
       "max": "",
       "spent": 0,
       "recovery": []
     },
-    "damage": {
-      "versatile": {
-        "number": null,
-        "denomination": null,
-        "bonus": "",
-        "types": [],
-        "custom": {
-          "enabled": false,
-          "formula": ""
-        },
-        "scaling": {
-          "mode": "",
-          "number": null,
-          "formula": ""
-        }
-      },
-      "base": {
-        "number": 1,
-        "denomination": 6,
-        "bonus": "3",
-        "types": [
-          "piercing"
-        ],
-        "custom": {
-          "enabled": false,
-          "formula": ""
-        },
-        "scaling": {
-          "mode": "",
-          "number": null,
-          "formula": ""
-        }
-      }
-    },
-    "armor": {
-      "value": null
-    },
-    "hp": {
-      "value": null,
-      "max": null,
-      "dt": null,
-      "conditions": ""
-    },
-    "properties": [
-      "fin",
-      "lgt"
-    ],
-    "proficient": 1,
-    "unidentified": {
-      "description": ""
-    },
     "type": {
-      "value": "martialM",
-      "baseItem": "shortsword"
+      "value": "monster",
+      "subtype": ""
     },
-    "container": null,
-    "attuned": false,
-    "magicalBonus": null,
+    "requirements": "",
+    "properties": [],
+    "prerequisites": {
+      "level": null,
+      "repeatable": false
+    },
     "activities": {
       "dnd5eactivity000": {
         "_id": "dnd5eactivity000",
@@ -126,6 +60,7 @@
         },
         "effects": [],
         "range": {
+          "value": "600",
           "units": "ft",
           "special": "",
           "override": false
@@ -155,14 +90,14 @@
           "recovery": []
         },
         "attack": {
-          "ability": "",
+          "ability": "wis",
           "bonus": "",
           "critical": {
             "threshold": null
           },
           "flat": false,
           "type": {
-            "value": "melee",
+            "value": "ranged",
             "classification": "weapon"
           }
         },
@@ -177,34 +112,68 @@
                 "enabled": false,
                 "formula": ""
               },
-              "number": 1,
-              "denomination": 6,
-              "bonus": "",
+              "number": 2,
+              "denomination": "6",
+              "bonus": "2",
               "types": [
-                "force"
-              ],
-              "scaling": {
-                "number": 1
-              }
+                "radiant"
+              ]
             }
           ]
         },
         "sort": 0,
         "useConditionText": "",
-        "forceDialog": false,
         "effectConditionText": "",
-        "midiAutomationOnly": false,
-        "attackMode": "oneHanded",
+        "attackMode": "",
         "ammunition": "",
         "otherActivityId": "none",
         "name": "",
+        "useConditionReason": "",
+        "macroData": {
+          "name": "",
+          "command": ""
+        },
+        "ignoreTraits": {
+          "idi": false,
+          "idr": false,
+          "idv": false,
+          "ida": false
+        },
+        "midiProperties": {
+          "ignoreTraits": [],
+          "triggeredActivityId": "none",
+          "triggeredActivityConditionText": "",
+          "triggeredActivityTargets": "targets",
+          "triggeredActivityRollAs": "self",
+          "forceDialog": false,
+          "confirmTargets": "default",
+          "autoTargetType": "any",
+          "autoTargetAction": "default",
+          "automationOnly": false,
+          "otherActivityCompatible": true,
+          "identifier": "",
+          "displayActivityName": false,
+          "rollMode": "default",
+          "chooseEffects": false,
+          "toggleEffect": false,
+          "ignoreFullCover": false
+        },
+        "isOverTimeFlag": false,
+        "overTimeProperties": {
+          "saveRemoves": true,
+          "preRemoveConditionText": "",
+          "postRemoveConditionText": ""
+        },
+        "otherActivityUuid": "",
         "img": "",
         "appliedEffects": []
       }
     },
-    "identifier": "shortsword-fey-spirit",
-    "ammunition": {},
-    "mastery": ""
+    "identifier": "radiant-bow-avenger-only",
+    "enchant": {},
+    "advancement": [],
+    "cover": null,
+    "crewed": false
   },
   "effects": [],
   "flags": {
@@ -217,6 +186,7 @@
       "itemCondition": "",
       "effectCondition": "",
       "AoETargetType": "any",
+      "AoETargetTypeIncludeSelf": true,
       "autoTarget": "default",
       "reactionCondition": "",
       "otherCondition": ""
@@ -251,7 +221,7 @@
       }
     }
   },
-  "folder": "ojrTS3JcYt8jOGvx",
-  "_id": "gT5P3XP0D8NQiGLt",
-  "_key": "!items!gT5P3XP0D8NQiGLt"
+  "folder": "lrTc5F6l6B3nHBDw",
+  "_id": "VF2AV7rtOI0OIGuE",
+  "_key": "!items!VF2AV7rtOI0OIGuE"
 }

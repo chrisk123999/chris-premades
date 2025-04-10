@@ -1,0 +1,227 @@
+{
+  "_id": "raQQugxMR3pMvgFj",
+  "name": "Aura of Clarity",
+  "type": "feat",
+  "effects": [
+    {
+      "name": "Aura of Clarity - Ally",
+      "changes": [
+        {
+          "key": "system.traits.ci.value",
+          "mode": 2,
+          "value": "bleeding",
+          "priority": 20
+        }
+      ],
+      "transfer": false,
+      "img": "icons/magic/perception/orb-crystal-ball-scrying-blue.webp",
+      "_id": "qNhoUlGDKksarnps",
+      "type": "base",
+      "system": {},
+      "disabled": false,
+      "duration": {
+        "startTime": null,
+        "seconds": null,
+        "combat": null,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "description": "",
+      "origin": null,
+      "tint": "#ffffff",
+      "statuses": [],
+      "sort": 0,
+      "flags": {
+        "dae": {
+          "enableCondition": "",
+          "disableCondition": "",
+          "disableIncapacitated": false,
+          "selfTarget": false,
+          "selfTargetAlways": false,
+          "dontApply": true,
+          "stackable": "multi",
+          "showIcon": false,
+          "durationExpression": "",
+          "macroRepeat": "none",
+          "specialDuration": []
+        },
+        "dnd5e": {
+          "riders": {
+            "statuses": []
+          }
+        },
+        "core": {
+          "overlay": false
+        },
+        "chris-premades": {
+          "noAnimation": false,
+          "conditions": [],
+          "specialDuration": [],
+          "info": {
+            "identifier": "auraOfClarityAllyAura"
+          },
+          "rules": "modern"
+        }
+      },
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "coreVersion": "12.331",
+        "systemId": "dnd5e",
+        "systemVersion": "4.3.6",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!items.effects!raQQugxMR3pMvgFj.qNhoUlGDKksarnps"
+    },
+    {
+      "name": "Aura of Clarity - Enemy",
+      "changes": [
+        {
+          "key": "system.traits.ci.value",
+          "mode": 2,
+          "value": "invisible",
+          "priority": 20
+        }
+      ],
+      "transfer": false,
+      "img": "icons/magic/perception/orb-crystal-ball-scrying-blue.webp",
+      "_id": "ciGpAlA3HKB2Ee5O",
+      "type": "base",
+      "system": {},
+      "disabled": false,
+      "duration": {
+        "startTime": null,
+        "seconds": null,
+        "combat": null,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "description": "",
+      "origin": null,
+      "tint": "#ffffff",
+      "statuses": [],
+      "sort": 0,
+      "flags": {
+        "chris-premades": {
+          "noAnimation": false,
+          "conditions": [],
+          "specialDuration": [],
+          "info": {
+            "identifier": "auraOfClarityEnemyAura"
+          },
+          "rules": "modern"
+        },
+        "dae": {
+          "enableCondition": "",
+          "disableCondition": "",
+          "disableIncapacitated": false,
+          "selfTarget": false,
+          "selfTargetAlways": false,
+          "dontApply": true,
+          "stackable": "multi",
+          "showIcon": false,
+          "durationExpression": "",
+          "macroRepeat": "none",
+          "specialDuration": []
+        },
+        "dnd5e": {
+          "riders": {
+            "statuses": []
+          }
+        },
+        "core": {
+          "overlay": false
+        }
+      },
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "coreVersion": "12.331",
+        "systemId": "dnd5e",
+        "systemVersion": "4.3.6",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!items.effects!raQQugxMR3pMvgFj.ciGpAlA3HKB2Ee5O"
+    }
+  ],
+  "system": {
+    "activities": {},
+    "uses": {
+      "spent": 0,
+      "recovery": []
+    },
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "identifier": "aura-of-clarity-legacy",
+    "source": {
+      "book": "GHPP",
+      "page": "",
+      "license": "",
+      "custom": "",
+      "rules": "2014",
+      "revision": 1
+    },
+    "advancement": [],
+    "cover": null,
+    "crewed": false,
+    "enchant": {},
+    "prerequisites": {
+      "level": 7,
+      "repeatable": false
+    },
+    "properties": [],
+    "requirements": "",
+    "type": {
+      "value": "class",
+      "subtype": ""
+    }
+  },
+  "flags": {
+    "midi-qol": {
+      "removeAttackDamageButtons": "default"
+    },
+    "midiProperties": {
+      "confirmTargets": "default"
+    },
+    "dnd5e": {
+      "advancementOrigin": "B3yQttneHcVzIQID",
+      "riders": {
+        "activity": []
+      },
+      "dependents": [
+        {
+          "uuid": "Actor.yy1I4W4hqhw1yaiM.ActiveEffect.CvYlvwXCG8WxcAbF"
+        },
+        {
+          "uuid": "Scene.iGwlIbnzeJk0iHC2.Token.HbvwP9Ft0s6yyHpS.Actor.szyevsXsdQSq5snz.ActiveEffect.PXIrqU2ARRxfPgHB"
+        }
+      ]
+    },
+    "chris-premades": {
+      "info": {
+        "identifier": "auraOfClarity",
+        "version": "1.2.32",
+        "source": "chris-premades",
+        "rules": "legacy"
+      },
+      "macros": {
+        "aura": [
+          "auraOfClarity"
+        ]
+      }
+    }
+  },
+  "img": "icons/magic/perception/orb-crystal-ball-scrying-blue.webp",
+  "folder": "ZuOA3Eh3lfy1jxir",
+  "_key": "!items!raQQugxMR3pMvgFj"
+}

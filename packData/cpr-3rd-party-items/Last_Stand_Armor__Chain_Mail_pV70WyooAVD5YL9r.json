@@ -102,14 +102,14 @@
           "template": {
             "count": "",
             "contiguous": false,
-            "type": "",
-            "size": "",
+            "type": "emanationNoTemplate",
+            "size": "30",
             "width": "",
             "height": "",
             "units": "ft"
           },
           "affects": {
-            "count": "30",
+            "count": "",
             "type": "creature",
             "choice": false,
             "special": ""
@@ -186,7 +186,7 @@
       "info": {
         "identifier": "lastStandArmorCM",
         "source": "chris-premades",
-        "version": "1.1.0"
+        "version": "1.2.32"
       },
       "macros": {
         "midi": {

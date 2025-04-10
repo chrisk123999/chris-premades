@@ -1,3 +1,40 @@
+# 1.2.33 Release:
+## Bug Fixes:
+Heroism (Legacy & Modern)
+## API Update Notes:
+- itemUtils.getMod is now activityUtils.getMod
+
+# 1.2.32 Release:
+## New Modern Content:
+- Summon Aberration
+- Summon Beast
+- Summon Celestial
+- Summon Construct
+- Summon Dragon
+- Summon Fey
+- Summon Fiend
+- Summon Undead
+## New Legacy Content:
+- Sentinel at Death's Door
+- Aura of Clarity
+## Bug Fixes:
+- Shield (Modern)
+- Spirit Shield (Legacy)
+- Cutting Words (Modern)
+- Beacon of Hope (Legacy & Modern)
+- Last Stand Armor (Legacy)
+- Summon Fey (Legacy)
+- Summon Elemental (Legacy)
+- Legacy Paladin Auras
+
+# 1.2.31 Release:
+## Bug Fixes:
+- Bardic Inspiration (Legacy)
+- Disintegrate (Legacy)
+- Lifesteal (Generic)
+## API Bug Fixes:
+- Combat Event
+
 # 1.2.30 Release:
 ## New Modern Content:
 - Mirror Image

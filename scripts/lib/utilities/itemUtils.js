@@ -1,4 +1,3 @@
-import {socket} from '../sockets.js';
 import {actorUtils, effectUtils, genericUtils, socketUtils, errors, compendiumUtils} from '../../utils.js';
 import {gambitPremades} from '../../integrations/gambitsPremades.js';
 import {miscPremades} from '../../integrations/miscPremades.js';
@@ -7,9 +6,6 @@ import {ItemMedkit} from '../../applications/medkit-item.js';
 function getSaveDC(item) {
     if (item.hasSave) return item.system.activities.getByType('save')[0].save.dc.value;
     return item.actor?.system?.abilities?.[item.abilityMod]?.dc ?? 10;
-}
-function getMod(item) {
-    return item.system.save.scaling === 'spell' ? item.actor.system.abilities[item.actor.system.attributes.spellcasting].mod : item.actor.system.abilities[item.system.save.scaling].mod;
 }
 async function createItems(actor, updates, {favorite, section, parentEntity, identifier, castData} = {}) {
     let hasPermission = socketUtils.hasPermission(actor, game.user.id);
@@ -20,7 +16,7 @@ async function createItems(actor, updates, {favorite, section, parentEntity, ide
     if (hasPermission) {
         items = await actor.createEmbeddedDocuments('Item', updates);
     } else {
-        items = await socket.createEmbeddedDocuments(actor.uuid, 'Item', updates);
+        items = await genericUtils.createEmbeddedDocuments(actor, 'Item', updates);
     }
     if (favorite) await actorUtils.addFavorites(actor, items);
     if (parentEntity) await effectUtils.addDependent(parentEntity, items);
@@ -217,7 +213,6 @@ export let itemUtils = {
     isUpToDate,
     syntheticItem,
     enchantItem,
-    getMod,
     convertDuration,
     setConfig,
     getEquipmentState,

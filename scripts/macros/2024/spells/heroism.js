@@ -1,4 +1,4 @@
-import {effectUtils, genericUtils, itemUtils, workflowUtils} from '../../../utils.js';
+import {activityUtils, effectUtils, genericUtils, itemUtils, workflowUtils} from '../../../utils.js';
 import {upcastTargets} from '../../generic/upcastTargets.js';
 
 async function use({workflow}) {
@@ -23,7 +23,7 @@ async function use({workflow}) {
         flags: {
             'chris-premades': {
                 heroism: {
-                    spellMod: itemUtils.getMod(workflow.item)
+                    spellMod: activityUtils.getMod(workflow.activity)
                 }
             }
         }
@@ -38,7 +38,7 @@ async function use({workflow}) {
         });
     }
 }
-async function turnStart({trigger: {effect, token}}) {
+async function turnStart({trigger: {entity: effect, token}}) {
     let actor = token?.actor;
     if (!actor) return;
     let tempHP = effect.flags['chris-premades']?.heroism?.spellMod;

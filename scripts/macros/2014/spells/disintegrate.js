@@ -4,7 +4,7 @@ async function use({workflow}) {
     // Animations by: eskiemoh
     if (!workflow.targets.size) return;
     for (let target of workflow.targets) {
-        let targetDeath = workflow.damageList.find(i => i.tokenId === target.id)?.newHP === 0;
+        let targetDeath = workflow.damageList.find(i => i.targetUuid === target.document.id)?.newHP === 0;
         if (targetDeath && target.actor.type === 'character') await effectUtils.applyConditions(target.actor, ['dead']);
         let playAnimation = itemUtils.getConfig(workflow.item, 'playAnimation');
         if (!playAnimation || animationUtils.jb2aCheck() !== 'patreon' || !animationUtils.aseCheck()) continue;

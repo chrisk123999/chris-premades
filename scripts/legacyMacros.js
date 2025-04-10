@@ -330,6 +330,7 @@ export {runicJuggernaut} from './macros/2014/classFeatures/fighter/runeKnight/ru
 export {runicShield} from './macros/2014/classFeatures/fighter/runeKnight/runicShield.js';
 export {sacredWeapon} from './macros/2014/classFeatures/paladin/oathOfDevotion/sacredWeapon.js';
 export {sculptSpells, sculptSpellsTarget} from './macros/2014/classFeatures/wizard/schoolOfEvocation/sculptSpells.js';
+export {sentinelAtDeathsDoor} from './macros/2014/classFeatures/cleric/graveDomain/sentinelAtDeathsDoor.js';
 export {shadowStep} from './macros/2014/classFeatures/monk/wayOfShadow/shadowStep.js';
 export {songOfDefense} from './macros/2014/classFeatures/wizard/bladeSinging/songOfDefense.js';
 export {songOfVictory} from './macros/2014/classFeatures/wizard/bladeSinging/songOfVictory.js';
@@ -380,6 +381,7 @@ export {psionicSorcery} from './macros/2014/classFeatures/sorcerer/aberrantMind/
 export {psychicDefenses} from './macros/2014/classFeatures/sorcerer/aberrantMind/psychicDefenses.js';
 export {revelationInFlesh} from './macros/2014/classFeatures/sorcerer/aberrantMind/revelationInFlesh.js';
 export {warpingImplosion} from './macros/2014/classFeatures/sorcerer/aberrantMind/warpingImplosion.js';
+export {auraOfClarity} from './macros/2014/classFeatures/paladin/oathOfZeal/auraOfClarity.js';
 // Race Features
 export {aasimarNecroticShroud, aasimarRadiantConsumption, aasimarRadiantSoul, celestialRevelation} from './macros/2014/raceFeatures/aasimar/celestialRevelation.js';
 export {acidBreathWeapon, coldBreathWeapon, fireBreathWeapon, lightningBreathWeapon, poisonBreathWeapon} from './macros/2014/raceFeatures/dragonborn/chromatic/breathWeapon.js';
@@ -453,8 +455,6 @@ export {shieldGuardianBound} from './macros/2014/monsterFeatures/construct/shiel
 export {shieldGuardianShield, shieldGuardianShieldEffect} from './macros/2014/monsterFeatures/construct/shieldGuardian/shield.js';
 export {shieldGuardianSpellStoring} from './macros/2014/monsterFeatures/construct/shieldGuardian/spellStoring.js';
 export {leadership, leadershipAura} from './macros/2014/monsterFeatures/fey/hobgoblin/leadership.js';
-//export {adultWindDragonFrightfulPresence, ancientWindDragonFrightfulPresence} from './macros/2014/monsterFeatures/dragon/windDragon/frightfulPresence.js';
-//export {adultWindDragonTempestBreath, ancientWindDragonTempestBreath, wyrmlingWindDragonTempestBreath, youngWindDragonTempestBreath} from './macros/2014/monsterFeatures/dragon/windDragon/tempestBreath.js';
 // Generic Monster Features
 export {advantageDamageBonus} from './macros/2014/monsterFeatures/generic/advantageDamageBonus.js';
 export {auraDamageEnd} from './macros/2014/monsterFeatures/generic/auraDamage.js';

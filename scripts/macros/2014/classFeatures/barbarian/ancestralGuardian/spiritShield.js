@@ -5,7 +5,7 @@ async function shieldHelper(token, sourceToken, targetToken, ditem) {
     if (!rageEffect) return;
     let spiritShield = itemUtils.getItemByIdentifier(token.actor, 'spiritShield');
     if (!spiritShield) return;
-    let selection = await dialogUtils.confirm(spiritShield.name, genericUtils.format('CHRISPREMADES.Macros.SpiritShield.Damage', {item: spiritShield.name, name: targetToken.document.name}, {userId: socketUtils.firstOwner(token.actor, true)}));
+    let selection = await dialogUtils.confirm(spiritShield.name, genericUtils.format('CHRISPREMADES.Macros.SpiritShield.Damage', {item: spiritShield.name, name: targetToken.document.name}), {userId: socketUtils.firstOwner(token.actor, true)});
     if (!selection) return;
     let result = await workflowUtils.syntheticItemRoll(spiritShield, [token], {consumeResources: true, userId: socketUtils.firstOwner(token.actor, true)});
     workflowUtils.modifyDamageAppliedFlat(ditem, -result.damageRolls[0].total);

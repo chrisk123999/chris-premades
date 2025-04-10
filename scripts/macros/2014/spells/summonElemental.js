@@ -90,9 +90,9 @@ async function use({workflow}) {
             genericUtils.setProperty(updates, 'actor.system.traits.dr.value', 'acid');
         } else {
             genericUtils.setProperty(updates, 'actor.system.traits.di.value', 'fire');
-            updates.actor.items[1].system.damage.parts = [
-                [slamFeatureData.system.damage.parts[0][0].replace('bludgeoning', 'fire'), 'fire']
-            ];
+            let slamAttackId = Object.keys(slamFeatureData.system.activities)[0];
+            let slamAttackActivity = slamFeatureData.system.activities[slamAttackId];
+            slamAttackActivity.damage.parts[0].types = ['fire'];
         }
     }
     let animation = itemUtils.getConfig(workflow.item, creatureType + 'Animation') ?? 'none';
