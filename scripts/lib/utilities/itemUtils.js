@@ -7,9 +7,6 @@ function getSaveDC(item) {
     if (item.hasSave) return item.system.activities.getByType('save')[0].save.dc.value;
     return item.actor?.system?.abilities?.[item.abilityMod]?.dc ?? 10;
 }
-function getMod(item) {
-    return item.system.save.scaling === 'spell' ? item.actor.system.abilities[item.actor.system.attributes.spellcasting].mod : item.actor.system.abilities[item.system.save.scaling].mod;
-}
 async function createItems(actor, updates, {favorite, section, parentEntity, identifier, castData} = {}) {
     let hasPermission = socketUtils.hasPermission(actor, game.user.id);
     if (section) updates.forEach(i => genericUtils.setProperty(i, 'flags.tidy5e-sheet.section', section));
@@ -216,7 +213,6 @@ export let itemUtils = {
     isUpToDate,
     syntheticItem,
     enchantItem,
-    getMod,
     convertDuration,
     setConfig,
     getEquipmentState,

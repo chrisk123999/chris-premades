@@ -1,3 +1,7 @@
+# 1.2.33 Release:
+## Bug Fixes:
+Heroism (Legacy & Modern)
+
 # 1.2.32 Release:
 ## New Modern Content:
 - Summon Aberration

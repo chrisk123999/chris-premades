@@ -94,6 +94,9 @@ function getConditions(activity) {
     if (activity._otherActivity) conditions = conditions.union(getConditions(activity._otherActivity));
     return conditions;
 }
+function getMod(activity) {
+    return activity.actor.system.abilities[activity.ability].mod;
+}
 function hasSave(activity) {
     if (activity.type === 'save') return true;
     if (activity._otherActivity) return hasSave(activity._otherActivity);
@@ -113,6 +116,7 @@ export let activityUtils = {
     withChangedDamage,
     duplicateActivity,
     getConditions,
+    getMod,
     hasSave,
     isSpellActivity
 };

@@ -1,4 +1,4 @@
-import {effectUtils, genericUtils, itemUtils, workflowUtils} from '../../../utils.js';
+import {activityUtils, effectUtils, genericUtils, itemUtils, workflowUtils} from '../../../utils.js';
 import {upcastTargets} from '../../generic/upcastTargets.js';
 
 async function use({workflow}) {
@@ -23,7 +23,7 @@ async function use({workflow}) {
         flags: {
             'chris-premades': {
                 heroism: {
-                    spellMod: itemUtils.getMod(workflow.item)
+                    spellMod: activityUtils.getMod(workflow.activity)
                 }
             }
         }
