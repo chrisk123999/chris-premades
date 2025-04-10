@@ -1,13 +1,9 @@
 import {combatUtils, effectUtils, genericUtils, itemUtils} from '../../../../utils.js';
 
 async function create({trigger: {entity: item, target, identifier}}) {
-    if (itemUtils.getConfig(item, 'combatOnly') && !combatUtils.inCombat()) return;
     let targetEffect = effectUtils.getEffectByIdentifier(target.actor, identifier);
-    if (targetEffect) {
-        let effectOriginItem = await effectUtils.getOriginItem(targetEffect);
-        if (effectOriginItem.uuid === item.uuid) return;
-        await genericUtils.remove(targetEffect);
-    }
+    if (targetEffect) return;
+    if (itemUtils.getConfig(item, 'combatOnly') && !combatUtils.inCombat()) return;
     let showIcon = itemUtils.getConfig(item, 'showIcon');
     let effectData = {
         name: item.name,
@@ -33,7 +29,6 @@ async function create({trigger: {entity: item, target, identifier}}) {
             }
         }
     };
-    // await effectUtils.createEffect(target.actor, effectData, {parentEntity: item, identifier});
     return {
         effectData,
         effectOptions: {
