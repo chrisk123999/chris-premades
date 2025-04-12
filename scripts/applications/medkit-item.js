@@ -693,7 +693,7 @@ export class ItemMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
             let newPath = fieldArray.slice(0, -1).concat('-=' + fieldArray.slice(-1)).join('.');
             if (!fieldValue) genericUtils.setProperty(sourceItemData, newPath, null);
         }
-        if (itemData.system.uses.max?.length) {
+        if (itemData.system.uses?.max?.length) {
             sourceItemData.system.uses = itemData.system.uses;
         }
         if (source) genericUtils.setProperty(sourceItemData, 'flags.chris-premades.info.source', source);
