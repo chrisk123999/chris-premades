@@ -198,6 +198,15 @@ export class ItemMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
                 });
             });
         }
+        if (this.source?.length && !options.find(i => i.id === this.source)) {
+            options.push({
+                label: this.source,
+                value: null,
+                id: this.source,
+                isSelected: this.selectedSource === this.source,
+                version: this.version
+            });
+        }
         if (this.constants._isDev) options.push({
             label: 'Development',
             value: 'development',
