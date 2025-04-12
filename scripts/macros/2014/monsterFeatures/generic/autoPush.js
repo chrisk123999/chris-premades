@@ -5,6 +5,7 @@ async function use({trigger, workflow}) {
     if (isNaN(Number(config.distance))) return;
     workflow.targets.forEach(token => {
         if (config.failed && !workflow.failedSaves.has(token)) return;
+        if (config.hit && !workflow.hitTargets.has(token)) return;
         let distance = Number(config.distance);
         if (distance < 0) {
             let distanceBetween = tokenUtils.getDistance(workflow.token, token);
@@ -37,6 +38,12 @@ export let autoPush = {
         {
             value: 'failed',
             label: 'CHRISPREMADES.Config.FailedSave',
+            type: 'checkbox',
+            default: true
+        },
+        {
+            value: 'hit',
+            label: 'CHRISPREMADES.Config.HitTarget',
             type: 'checkbox',
             default: true
         }

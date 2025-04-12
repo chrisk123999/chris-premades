@@ -179,6 +179,7 @@
             "Formula": "Formula:",
             "HideToken": "Hide Token:",
             "HitPoints": "Hit Points:",
+            "HitTarget": "Hit Target:",
             "IgnoredCreatureTypes": "Ignored Creature Types:",
             "ImmuneCreatures": "Immune Creature Types:",
             "MaxLevel": "Max Level:",
