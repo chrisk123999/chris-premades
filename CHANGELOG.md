@@ -2,6 +2,9 @@
 ## Bug Fixes:
 Heroism (Legacy & Modern)
 Hunter's Mark (Modern)
+True Strike (Modern)
+Green-Flame Blade (Legacy)
+Booming Blade (Legacy)
 ## API Update Notes:
 - itemUtils.getMod is now activityUtils.getMod
 

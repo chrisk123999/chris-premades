@@ -19,12 +19,14 @@ async function use({workflow}) {
     let weaponData = genericUtils.duplicate(selectedWeapon.toObject());
     let damageType = itemUtils.getConfig(workflow.item, 'damageType');
     if (diceNumber) {
-        let attackId = selectedWeapon.system.activities.getByType('attack')?.[0]?.id;
-        if (!attackId) return;
-        weaponData.system.activities[attackId].damage.parts.push({
-            number: diceNumber,
-            denomination: 8,
-            types: [damageType]
+        let attacks = selectedWeapon.system.activities.getByType('attack');
+        if (!attacks.length) return;
+        attacks.forEach((attack) => {
+            weaponData.system.activities[attack.id].damage.parts.push({
+                number: diceNumber,
+                denomination: 8,
+                types: [damageType]
+            });
         });
     }
     let attackWorkflow = await workflowUtils.syntheticItemDataRoll(weaponData, workflow.actor, [workflow.targets.first()]);

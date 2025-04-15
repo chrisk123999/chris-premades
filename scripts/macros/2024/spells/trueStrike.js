@@ -2,7 +2,7 @@ import {actorUtils, constants, dialogUtils, genericUtils, itemUtils, workflowUti
 
 async function use({workflow}) {
     if (workflow.targets.size !== 1) return;
-    let weapons = workflow.actor.items.filter(i => i.type === 'weapon' && i.system.equipped && ['simpleM', 'simpleR', 'martialM', 'martialR'].includes(i.system.type?.value));
+    let weapons = workflow.actor.items.filter(i => i.type === 'weapon' && i.system.equipped && i.system.prof.hasProficiency && ['simpleM', 'simpleR', 'martialM', 'martialR'].includes(i.system.type?.value));
     if (!weapons.length) {
         genericUtils.notify('CHRISPREMADES.Macros.TrueStrike.NoWeapons', 'warn');
         return;
@@ -16,23 +16,27 @@ async function use({workflow}) {
     if (!selectedWeapon) return;
     let level = actorUtils.getLevelOrCR(workflow.actor);
     let diceNumber = Math.floor((level + 1) / 6);
-    let attackId = selectedWeapon.system.activities.getByType('attack')?.[0]?.id;
-    if (!attackId) return;
+    let attacks = selectedWeapon.system.activities.getByType('attack');
+    if (!attacks.length) return;
     let weaponData = genericUtils.duplicate(selectedWeapon.toObject());
-    weaponData.system.activities[attackId].attack.ability = workflow.item.system.ability.length ? workflow.item.system.ability : workflow.actor.system.attributes.spellcasting;
     let damageType = itemUtils.getConfig(workflow.item, 'damageType');
     let selection = await dialogUtils.confirm(workflow.item.name, genericUtils.format('CHRISPREMADES.Macros.TrueStrike.ReplaceDamage', {type: damageType}));
-    if (selection) {
-        weaponData.system.damage.base.types = [damageType];
-        weaponData.system.activities[attackId].damage.parts.forEach(part => 
-            part.types = [damageType]
-        );
-    }
     if (diceNumber) {
-        weaponData.system.activities[attackId].damage.parts.push({
-            number: diceNumber,
-            denomination: 6,
-            types: [damageType]
+        attacks.forEach((attack) => {
+            weaponData.system.activities[attack.id].attack.ability = workflow.item.system.ability.length ? workflow.item.system.ability : workflow.actor.system.attributes.spellcasting;
+            if (selection) {
+                weaponData.system.damage.base.types = [damageType];
+                weaponData.system.activities[attack.id].damage.parts.forEach(part => 
+                    part.types = [damageType]
+                );
+            }
+            if (diceNumber) {
+                weaponData.system.activities[attack.id].damage.parts.push({
+                    number: diceNumber,
+                    denomination: 6,
+                    types: [damageType]
+                });
+            }
         });
     }
     await workflowUtils.syntheticItemDataRoll(weaponData, workflow.actor, [workflow.targets.first()]);
