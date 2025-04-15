@@ -16,28 +16,26 @@ async function use({workflow}) {
     if (!selectedWeapon) return;
     let level = actorUtils.getLevelOrCR(workflow.actor);
     let diceNumber = Math.floor((level + 1) / 6);
-    let attacks = selectedWeapon.system.activities.getByType('attack');
-    if (!attacks.length) return;
     let weaponData = genericUtils.duplicate(selectedWeapon.toObject());
     let damageType = itemUtils.getConfig(workflow.item, 'damageType');
     let selection = await dialogUtils.confirm(workflow.item.name, genericUtils.format('CHRISPREMADES.Macros.TrueStrike.ReplaceDamage', {type: damageType}));
-    if (diceNumber) {
-        attacks.forEach((attack) => {
-            weaponData.system.activities[attack.id].attack.ability = workflow.item.system.ability.length ? workflow.item.system.ability : workflow.actor.system.attributes.spellcasting;
-            if (selection) {
-                weaponData.system.damage.base.types = [damageType];
-                weaponData.system.activities[attack.id].damage.parts.forEach(part => 
-                    part.types = [damageType]
-                );
-            }
-            if (diceNumber) {
-                weaponData.system.activities[attack.id].damage.parts.push({
-                    number: diceNumber,
-                    denomination: 6,
-                    types: [damageType]
-                });
-            }
-        });
+    for (let activity of selectedWeapon.system.activities.getByType('attack')) {
+        let attackId = activity.id;
+        if (!attackId) return;
+        weaponData.system.activities[attackId].attack.ability = workflow.item.system.ability.length ? workflow.item.system.ability : workflow.actor.system.attributes.spellcasting;
+        if (selection) {
+            weaponData.system.damage.base.types = [damageType];
+            weaponData.system.activities[attackId].damage.parts.forEach(part => 
+                part.types = [damageType]
+            );
+        }
+        if (diceNumber) {
+            weaponData.system.activities[attackId].damage.parts.push({
+                number: diceNumber,
+                denomination: 6,
+                types: [damageType]
+            });
+        }
     }
     await workflowUtils.syntheticItemDataRoll(weaponData, workflow.actor, [workflow.targets.first()]);
 }
