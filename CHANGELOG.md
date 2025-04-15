@@ -1,10 +1,11 @@
 # 1.2.33 Release:
 ## Bug Fixes:
-Heroism (Legacy & Modern)
-Hunter's Mark (Modern)
-True Strike (Modern)
-Green-Flame Blade (Legacy)
-Booming Blade (Legacy)
+- Heroism (Legacy & Modern)
+- Hunter's Mark (Modern)
+- True Strike (Modern)
+- Green-Flame Blade (Legacy)
+- Booming Blade (Legacy)
+- Strike of the Giants (Legacy)
 ## API Update Notes:
 - itemUtils.getMod is now activityUtils.getMod
 
