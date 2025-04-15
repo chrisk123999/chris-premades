@@ -77,6 +77,7 @@ export let strikeOfTheGiants = {
 let version = '1.1.0';
 export let cloudStrike = {
     name: 'Strike of the Giants: Cloud Strike',
+    aliases: ['Strike of the Giants (Cloud Strike)'],
     version,
     midi: {
         actor: [
@@ -90,18 +91,22 @@ export let cloudStrike = {
 };
 export let fireStrike = {
     name: 'Strike of the Giants: Fire Strike',
+    aliases: ['Strike of the Giants (Fire Strike)'],
     version
 };
 export let frostStrike = {
     name: 'Strike of the Giants: Frost Strike',
+    aliases: ['Strike of the Giants (Frost Strike)'],
     version
 };
 export let hillStrike = {
     name: 'Strike of the Giants: Hill Strike',
+    aliases: ['Strike of the Giants (Hill Strike)'],
     version
 };
 export let stoneStrike = {
     name: 'Strike of the Giants: Stone Strike',
+    aliases: ['Strike of the Giants (Stone Strike)'],
     version,
     midi: {
         item: [
@@ -115,5 +120,6 @@ export let stoneStrike = {
 };
 export let stormStrike = {
     name: 'Strike of the Giants: Storm Strike',
+    aliases: ['Strike of the Giants (Storm Strike)'],
     version
 };
