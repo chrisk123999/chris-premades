@@ -18,8 +18,6 @@ async function use({workflow}) {
     let weaponData = genericUtils.duplicate(selectedWeapon.toObject());
     let damageType = itemUtils.getConfig(workflow.item, 'damageType');
     if (diceNumber) {
-        let attacks = selectedWeapon.system.activities.getByType('attack');
-        if (!attacks.length) return;
         for (let activity of selectedWeapon.system.activities.getByType('attack')) {
             let attackId = activity.id;
             if (!attackId) return;
