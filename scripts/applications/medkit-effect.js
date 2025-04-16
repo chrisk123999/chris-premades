@@ -182,11 +182,11 @@ export class EffectMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
                     genericUtils.setProperty(i, 'optgroups', [
                         {
                             label: 'DND5E.Abilities',
-                            options: constants.abilityOptions().map(a => ({...a, isSelected: i.value === a.value}))
+                            options: constants.abilityOptions().map(a => ({...a, isSelected: a.value === i.value}))
                         },
                         {
                             label: 'DND5E.Skills',
-                            options: constants.skillOptions().map(s => ({...s, isSelected: i.value === s.value}))
+                            options: constants.skillOptions().map(s => ({...s, isSelected: s.value === i.value}))
                         }
                     ]);
                     break;
@@ -195,7 +195,7 @@ export class EffectMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
                     genericUtils.setProperty(i, 'isSelectOption', true);
                     if (!i.value) genericUtils.setProperty(i, 'value', i.default);
                     genericUtils.setProperty(i, 'options',
-                        constants.abilityOptions().map(a => ({...a, isSelected: i.value === a.value}))
+                        constants.abilityOptions().map(a => ({...a, isSelected: a.value === i.value}))
                     );
                     break;
                 }
@@ -245,7 +245,7 @@ export class EffectMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
                 case 'damageTypes': {
                     genericUtils.setProperty(i, 'isSelectOption', true);
                     if (!i.value) genericUtils.setProperty(i, 'value', i.default);
-                    genericUtils.setProperty(i, 'options', constants.damageTypeOptions().concat(constants.healingTypeOptions()).map(t => ({...t, isSelected: i.value === t.value})));
+                    genericUtils.setProperty(i, 'options', constants.damageTypeOptions().concat(constants.healingTypeOptions()).map(t => ({...t, isSelected: t.value === i.value})));
                     break;
                 }
             }
