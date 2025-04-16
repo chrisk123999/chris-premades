@@ -6,6 +6,7 @@
 - Green-Flame Blade (Legacy)
 - Booming Blade (Legacy)
 - Strike of the Giants (Legacy)
+- Unarmed Strike (Monk) (Legacy)
 ## API Update Notes:
 - itemUtils.getMod is now activityUtils.getMod
 

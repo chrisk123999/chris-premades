@@ -61,7 +61,7 @@
         ],
         "custom": {
           "enabled": true,
-          "formula": "@scale.monk.die"
+          "formula": "1d@scale.monk.die.faces"
         },
         "scaling": {
           "mode": "",
@@ -230,7 +230,7 @@
     "chris-premades": {
       "info": {
         "name": "Unarmed Strike (Monk)",
-        "version": "1.1.10",
+        "version": "1.2.33",
         "identifier": "monkUnarmedStrike",
         "source": "chris-premades"
       }
