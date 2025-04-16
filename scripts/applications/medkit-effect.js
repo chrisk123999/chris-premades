@@ -185,11 +185,13 @@ export class EffectMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
                     genericUtils.setProperty(i, 'optgroups', [
                         {
                             label: 'DND5E.Abilities',
-                            options: Object.values(CONFIG.DND5E.abilities).map(j => ({
-                                label: j.label,
-                                value: j.abbreviation,
-                                isSelected: j.abbreviation === i.value
-                            }))
+                            options: Object.entries(CONFIG.DND5E.abilities).map(([key, value]) => {
+                                return {
+                                    label: value.label,
+                                    value: key,
+                                    isSelected: key === i.value
+                                };
+                            })
                         },
                         {
                             label: 'DND5E.Skills',
@@ -205,11 +207,11 @@ export class EffectMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
                 case 'ability': {
                     genericUtils.setProperty(i, 'isSelectOption', true);
                     if (!i.value) genericUtils.setProperty(i, 'value', i.default);
-                    genericUtils.setProperty(i, 'options', 
-                        Object.values(CONFIG.DND5E.abilities).map(j => ({
-                            label: j.label,
-                            value: j.abbreviation,
-                            isSelected: j.abbreviation === i.value
+                    genericUtils.setProperty(i, 'options',
+                        Object.entries(CONFIG.DND5E.abilities).map(([key, value]) => ({
+                            label: value.label,
+                            value: key,
+                            isSelected: key === i.value
                         }))
                     );
                     break;
@@ -303,7 +305,7 @@ export class EffectMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
         if (this.context.overTime.show) {
             let overTimeValue = '';
             overTimeFields.forEach(i => {
-                if (i.value && (i.value != '')) overTimeValue += i.key + '=' + i.value + ','; 
+                if (i.value && (i.value != '')) overTimeValue += i.key + '=' + i.value + ',';
             });
             if (effectData.changes.find(i => i.key === 'flags.midi-qol.OverTime')) {
                 effectData.changes.find(i => i.key === 'flags.midi-qol.OverTime').value = overTimeValue;
@@ -455,7 +457,7 @@ export class EffectMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
                         case 'flat': {
                             genericUtils.setProperty(this.context.overTime.fieldsets.rolls.options.find(i => i.key === 'saveDCNumber'), 'show', true);
                             break;
-                        } 
+                        }
                         case 'ability': {
                             genericUtils.setProperty(this.context.overTime.fieldsets.rolls.options.find(i => i.key === 'saveDCAbility'), 'show', true);
                             break;
