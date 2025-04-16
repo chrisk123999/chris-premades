@@ -93,10 +93,7 @@ export class EffectMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
                         label: i.name,
                         value: i.id,
                         isSelected: effect.flags['chris-premades']?.specialDuration?.includes(i.id)
-                    }))).concat(Object.entries(CONFIG.DND5E.armorTypes).map(([value, label]) => ({
-                        label,
-                        value,
-                        isSelected: effect.flags['chris-premades']?.specialDuration?.includes(value)
+                    }))).concat(constants.armorOptions().map(a => ({...a, isSelected: effect.flags['chris-premades']?.specialDuration?.includes(a.value)
                     }))).concat([
                         {
                             label: 'CHRISPREMADES.Medkit.Effect.SpecialDuration.TempHP',
@@ -185,21 +182,11 @@ export class EffectMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
                     genericUtils.setProperty(i, 'optgroups', [
                         {
                             label: 'DND5E.Abilities',
-                            options: Object.entries(CONFIG.DND5E.abilities).map(([key, value]) => {
-                                return {
-                                    label: value.label,
-                                    value: key,
-                                    isSelected: key === i.value
-                                };
-                            })
+                            options: constants.abilityOptions().map(a => ({...a, isSelected: i.value === a.value}))
                         },
                         {
                             label: 'DND5E.Skills',
-                            options: Object.entries(CONFIG.DND5E.skills).map(([key, value]) => ({
-                                label: value.label,
-                                value: key,
-                                isSelected: key === i.value
-                            }))
+                            options: constants.skillOptions().map(s => ({...s, isSelected: i.value === s.value}))
                         }
                     ]);
                     break;
@@ -208,11 +195,7 @@ export class EffectMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
                     genericUtils.setProperty(i, 'isSelectOption', true);
                     if (!i.value) genericUtils.setProperty(i, 'value', i.default);
                     genericUtils.setProperty(i, 'options',
-                        Object.entries(CONFIG.DND5E.abilities).map(([key, value]) => ({
-                            label: value.label,
-                            value: key,
-                            isSelected: key === i.value
-                        }))
+                        constants.abilityOptions().map(a => ({...a, isSelected: i.value === a.value}))
                     );
                     break;
                 }
@@ -262,11 +245,7 @@ export class EffectMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
                 case 'damageTypes': {
                     genericUtils.setProperty(i, 'isSelectOption', true);
                     if (!i.value) genericUtils.setProperty(i, 'value', i.default);
-                    genericUtils.setProperty(i, 'options', Object.entries(CONFIG.DND5E.damageTypes).concat(Object.entries(CONFIG.DND5E.healingTypes)).map(([key, value]) => ({
-                        label: value.label,
-                        value: key,
-                        isSelected: key === i.value
-                    })));
+                    genericUtils.setProperty(i, 'options', constants.damageTypeOptions().concat(constants.healingTypeOptions()).map(t => ({...t, isSelected: i.value === t.value})));
                     break;
                 }
             }
