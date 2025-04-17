@@ -7,6 +7,7 @@
 - Booming Blade (Legacy)
 - Strike of the Giants (Legacy)
 - Unarmed Strike (Monk) (Legacy)
+- Spike Growth (Modern)
 ## API Update Notes:
 - itemUtils.getMod is now activityUtils.getMod
 
