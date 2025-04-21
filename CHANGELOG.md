@@ -4,6 +4,7 @@
 - Animal Messenger (Modern)
 - Arcane Vigor (Modern)
 - Chain Lightning (Legacy & Modern)
+- Sleet Storm (Modern)
 - Wither and Bloom (Legacy)
 - Zone of Truth (Legacy & Modern)
 
