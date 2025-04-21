@@ -16,8 +16,8 @@ async function use({trigger, workflow}) {
     if (!classSelection) return;
     let formula = '';
     for (let i of classSelection) {
-        formula += i.amount + i.document.system.hitDice + ' + ';
-        await genericUtils.update(i.document, {'system.hitDiceUsed': i.document.system.hitDiceUsed + i.amount});
+        formula += i.amount + i.document.system.hd.denomination + ' + ';
+        await genericUtils.update(i.document, {'system.hd.spent': i.document.system.hd.spent + i.amount});
     }
     formula += workflow.actor.system.attributes.spell.mod;
     let feature = activityUtils.getActivityByIdentifier(workflow.item, 'witherAndBloomHeal', {strict: true});

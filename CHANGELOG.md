@@ -1,3 +1,12 @@
+# 1.2.34 Release:
+## Bug Fixes:
+- Aberrant Dragonmark (Legacy)
+- Animal Messenger (Modern)
+- Arcane Vigor (Modern)
+- Chain Lightning (Legacy & Modern)
+- Wither and Bloom (Legacy)
+- Zone of Truth (Legacy & Modern)
+
 # 1.2.33 Release:
 ## Bug Fixes:
 - Heroism (Legacy & Modern)

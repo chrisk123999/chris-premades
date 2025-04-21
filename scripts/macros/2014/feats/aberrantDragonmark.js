@@ -19,8 +19,8 @@ async function late({trigger: {entity: item}, workflow}) {
     if (!hdSelection) return;
     hdSelection = hdSelection.find(i => i.amount)?.document;
     if (!hdSelection) return;
-    await genericUtils.update(hdSelection, {'system.hitDiceUsed': hdSelection.system.hitDiceUsed + 1});
-    let die = await new Roll(hdSelection.system.hitDice).evaluate();
+    await genericUtils.update(hdSelection, {'system.hd.spent': hdSelection.system.hd.spent + 1});
+    let die = await new Roll(hdSelection.system.hd.denomination).evaluate();
     die.toMessage({
         rollMode: 'roll',
         speaker: ChatMessage.implementation.getSpeaker({token: workflow.token}),

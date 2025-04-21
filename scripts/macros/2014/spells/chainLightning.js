@@ -53,7 +53,7 @@ async function use({workflow}) {
 }
 export let chainLightning = {
     name: 'Chain Lightning',
-    version: '1.2.28',
+    version: '1.2.34',
     hasAnimation: true,
     midi: {
         item: [

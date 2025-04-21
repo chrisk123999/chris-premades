@@ -114,14 +114,13 @@
                 "formula": ""
               },
               "number": 10,
-              "denomination": 8,
+              "denomination": "8",
               "bonus": "",
               "types": [
                 "lightning"
               ],
               "scaling": {
-                "mode": "",
-                "number": 1
+                "mode": ""
               }
             }
           ],
@@ -144,7 +143,10 @@
         "effectConditionText": "",
         "name": "",
         "img": "",
-        "appliedEffects": []
+        "appliedEffects": [],
+        "midiProperties": {
+          "otherActivityCompatible": false
+        }
       },
       "KkFRJcVOIhNDuWvP": {
         "type": "save",
@@ -235,7 +237,10 @@
         "effectConditionText": "",
         "name": "Chain Lightning: Leap",
         "img": "",
-        "appliedEffects": []
+        "appliedEffects": [],
+        "midiProperties": {
+          "otherActivityCompatible": false
+        }
       }
     },
     "identifier": "chain-lightning",

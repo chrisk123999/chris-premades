@@ -229,18 +229,18 @@ async function selectDocumentsDialog(title, content, documents, {max = undefined
     }
 }
 async function selectHitDie(actor, title, content, {max = 1, userId = game.user.id} = {}) {
-    let documents = actor.items.filter(i => i.type === 'class' && (i.system.levels - i.system.hitDiceUsed) > 0);
+    let documents = actor.items.filter(i => i.type === 'class' && (i.system.levels - i.system.hd.spent) > 0);
     if (!documents.length) return;
     documents = documents.sort((a, b) => {
         return a.name.localeCompare(b.name, 'en', {'sensitivity': 'base'});
     });
     let inputFields = documents.map(i => ({
-        label: genericUtils.format('CHRISPREMADES.Dialog.HitDieLabel', {className: i.name, remaining: i.system.levels - i.system.hitDiceUsed, max: i.system.levels, denomination: i.system.hitDice}),
+        label: genericUtils.format('CHRISPREMADES.Dialog.HitDieLabel', {className: i.name, remaining: i.system.levels - i.system.hd.spent, max: i.system.levels, denomination: i.system.hd.denomination}),
         name: i.id,
         options: {
             image: i.img,
             minAmount: 0,
-            maxAmount: Math.min(i.system.levels - i.system.hitDiceUsed, max)
+            maxAmount: Math.min(i.system.levels - i.system.hd.spent, max)
         }
     }));
     let inputs = [['selectAmount', inputFields, {displayAsRows: true, totalMax: max}]];

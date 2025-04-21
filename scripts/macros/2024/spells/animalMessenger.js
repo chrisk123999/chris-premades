@@ -8,7 +8,7 @@ async function early({trigger, workflow}) {
 }
 export let animalMessenger = {
     name: 'Animal Messenger',
-    version: '1.1.10',
+    version: '1.2.34',
     rules: 'modern',
     midi: {
         item: [

@@ -2,9 +2,9 @@
   "type": "spell",
   "system": {
     "activities": {
-      "utilityAnimaMess": {
-        "type": "utility",
-        "_id": "utilityAnimaMess",
+      "lOyH2aBlsomWwHOV": {
+        "type": "save",
+        "_id": "lOyH2aBlsomWwHOV",
         "sort": 0,
         "activation": {
           "type": "action",
@@ -12,14 +12,15 @@
           "override": false
         },
         "consumption": {
-          "spellSlot": true,
-          "targets": [],
           "scaling": {
-            "allowed": false,
-            "max": ""
-          }
+            "allowed": false
+          },
+          "spellSlot": true,
+          "targets": []
         },
-        "description": {},
+        "description": {
+          "chatFlavor": ""
+        },
         "duration": {
           "units": "inst",
           "concentration": false,
@@ -42,13 +43,27 @@
         },
         "uses": {
           "spent": 0,
-          "recovery": []
+          "recovery": [],
+          "max": ""
         },
-        "roll": {
-          "prompt": false,
-          "visible": false
+        "damage": {
+          "parts": [],
+          "critical": {
+            "allow": false
+          },
+          "onSave": "half"
+        },
+        "save": {
+          "ability": [
+            "cha"
+          ],
+          "dc": {
+            "calculation": "spellcasting",
+            "formula": ""
+          }
         },
         "useConditionText": "",
+        "useConditionReason": "",
         "effectConditionText": "",
         "macroData": {
           "name": "",
@@ -68,9 +83,27 @@
           "triggeredActivityRollAs": "self",
           "forceDialog": false,
           "confirmTargets": "default",
+          "autoTargetType": "any",
+          "autoTargetAction": "default",
           "automationOnly": false,
-          "identifier": ""
-        }
+          "otherActivityCompatible": true,
+          "identifier": "",
+          "displayActivityName": false,
+          "rollMode": "default",
+          "chooseEffects": false,
+          "toggleEffect": false,
+          "ignoreFullCover": false
+        },
+        "isOverTimeFlag": false,
+        "overTimeProperties": {
+          "saveRemoves": true,
+          "preRemoveConditionText": "",
+          "postRemoveConditionText": ""
+        },
+        "otherActivityId": "",
+        "name": "",
+        "img": "",
+        "appliedEffects": []
       }
     },
     "uses": {
@@ -119,7 +152,8 @@
     ],
     "range": {
       "value": "30",
-      "units": "ft"
+      "units": "ft",
+      "special": ""
     },
     "school": "enc",
     "target": {
@@ -145,22 +179,33 @@
   "name": "Animal Messenger",
   "flags": {
     "midi-qol": {
-      "removeAttackDamageButtons": "default"
+      "removeAttackDamageButtons": "default",
+      "rollAttackPerTarget": "default",
+      "itemCondition": "",
+      "reactionCondition": "",
+      "otherCondition": "",
+      "effectCondition": ""
     },
     "midiProperties": {
       "confirmTargets": "default",
       "magicdam": true,
-      "magiceffect": true
+      "magiceffect": true,
+      "autoFailFriendly": false,
+      "autoSaveFriendly": false,
+      "noConcentrationCheck": false,
+      "toggleEffect": false,
+      "ignoreTotalCover": false
     },
     "dnd5e": {
       "riders": {
-        "activity": []
+        "activity": [],
+        "effect": []
       }
     },
     "chris-premades": {
       "info": {
         "identifier": "animalMessenger",
-        "version": "1.1.10",
+        "version": "1.2.34",
         "source": "chris-premades",
         "rules": "modern"
       },

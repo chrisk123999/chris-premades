@@ -9,7 +9,7 @@ async function save(token, template) {
     let startTime = template.flags['chris-premades'].zoneOfTruth.startTime;
     let worldTime = game.time.worldTime;
     let duration = template.flags['chris-premades'].zoneOfTruth.duration;
-    let remaining = startTime - worldTime + duration;
+    let remaining = startTime - worldTime + duration.seconds;
     let effectData = {
         name: templateUtils.getName(template),
         img: workflow.item.img,

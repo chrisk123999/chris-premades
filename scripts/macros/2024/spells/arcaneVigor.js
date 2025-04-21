@@ -5,8 +5,8 @@ async function damage({trigger, workflow}) {
     await Promise.all(selection.map(async i => {
         if (!i.amount) return;
         if (formula.length) formula += ' + ';
-        formula += i.amount + i.document.system.hitDice;
-        await genericUtils.update(i.document, {'system.hitDiceUsed': i.document.system.hitDiceUsed + i.amount});
+        formula += i.amount + i.document.system.hd.denomination;
+        await genericUtils.update(i.document, {'system.hd.spent': i.document.system.hd.spent + i.amount});
     }));
     let roll = await rollUtils.damageRoll(formula, workflow.actor, workflow.damageRolls[0].options);
     await workflow.setDamageRolls([roll]);
