@@ -420,7 +420,7 @@ async function piercingStrikeDamage({trigger, workflow}) {
 }
 export let piercingStrike = {
     name: 'Piercing Strike',
-    version: '1.1.0',
+    version: '1.2.34',
     midi: {
         item: [
             {

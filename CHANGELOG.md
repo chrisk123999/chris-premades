@@ -7,6 +7,7 @@
 - Sleet Storm (Modern)
 - Wither and Bloom (Legacy)
 - Zone of Truth (Legacy & Modern)
+- Piercing Strike (BG3 weapon action)
 
 # 1.2.33 Release:
 ## Bug Fixes:
