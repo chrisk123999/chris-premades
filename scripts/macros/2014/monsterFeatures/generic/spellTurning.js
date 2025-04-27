@@ -40,7 +40,7 @@ async function postSave({trigger: {entity: item}, workflow}) {
     if (workflow.item.type !== 'spell') return;
     let config = itemUtils.getGenericFeatureConfig(item, 'spellTurning');
     if (!config.targetCaster) return;
-    if (workflow.spellLevel > config.spellLevel) return;
+    if (workflowUtils.getCastLevel(workflow) > config.spellLevel) return;
     await item.displayCard();
     workflow.targets = new Set([workflow.token]);
     workflow.hitTargets = workflow.targets;

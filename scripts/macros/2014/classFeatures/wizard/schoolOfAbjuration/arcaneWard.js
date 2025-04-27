@@ -25,9 +25,10 @@ async function damageApplication({trigger: {entity: item}, ditem}) {
 async function late({trigger: {entity: item}, workflow}) {
     if (workflow.item.type !== 'spell') return;
     if (workflow.item.system.school !== 'abj') return;
-    if (!workflow.spellLevel) return;
+    let spellLevel = workflowUtils.getCastLevel(workflow);
+    if (!spellLevel) return;
     let maxUses = workflow.actor.classes.wizard?.system.levels * 2 + workflow.actor.system.abilities.int.mod;
-    let add = workflow.spellLevel * 2;
+    let add = spellLevel * 2;
     if (!item.flags['chris-premades']?.arcaneWard?.alreadyUsed) {
         add = maxUses;
         await genericUtils.setFlag(item, 'chris-premades', 'arcaneWard.alreadyUsed', true);

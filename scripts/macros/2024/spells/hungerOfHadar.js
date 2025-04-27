@@ -9,7 +9,7 @@ async function use({workflow}) {
         if (concentrationEffect) await genericUtils.remove(concentrationEffect);
         return;
     }
-    let upcastAmount = workflow.spellLevel - 3;
+    let upcastAmount = workflowUtils.getCastLevel(workflow) - 3;
     let buffCold = false;
     let buffAcid = false;
     if (upcastAmount > 0) {

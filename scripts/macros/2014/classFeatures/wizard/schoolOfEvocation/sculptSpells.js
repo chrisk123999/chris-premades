@@ -1,10 +1,10 @@
-import {constants, dialogUtils, effectUtils, genericUtils, itemUtils} from '../../../../../utils.js';
+import {constants, dialogUtils, effectUtils, genericUtils, itemUtils, workflowUtils} from '../../../../../utils.js';
 async function early({trigger: {entity: item}, workflow}) {
     if (!workflow.targets.size) return;
     if (workflow.item.type !== 'spell') return;
     if (workflow.item.system.school !== 'evo') return;
     if (!workflow.hasSave) return;
-    let max = 1 + workflow.spellLevel;
+    let max = 1 + workflowUtils.getCastLevel(workflow);
     let allowEnemies = itemUtils.getConfig(item, 'allowEnemies');
     let selection = allowEnemies ? Array.from(workflow.targets) : Array.from(workflow.targets).filter(i => i.document.disposition === workflow.token.document.disposition);
     if (selection.length > max || allowEnemies) {

@@ -13,8 +13,7 @@ async function damage({trigger: {entity: item}, workflow}) {
         if (workflow.item.type !== 'feat') return;
         if (!workflow.item.flags?.['chris-premades']?.castData?.castLevel) return;
     }
-    let spellLevel = workflow.spellLevel;
-    if (!spellLevel) spellLevel = workflow.item.flags?.['chris-premades']?.castData?.castLevel;
+    let spellLevel = workflowUtils.getCastLevel(workflow) ?? workflow.item.flags?.['chris-premades']?.castData?.castLevel;
     if (!spellLevel) return;
     let oldDamageRolls = workflow.damageRolls;
     if (!oldDamageRolls?.length) return;

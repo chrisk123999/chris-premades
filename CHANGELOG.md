@@ -8,6 +8,18 @@
 - Wither and Bloom (Legacy)
 - Zone of Truth (Legacy & Modern)
 - Piercing Strike (BG3 weapon action)
+- Arcane Ward (Legacy)
+- Awakened Spellbook (Legacy)
+- Dragon-Touched Focus (Legacy)
+- Expert Divination (Legacy)
+- Globe of Invulnerability (Legacy & Modern)
+- Grim Harvest (Legacy)
+- Hunger of Hadar (Modern)
+- Overchannel (Legacy)
+- Potent Spellcasting (Legacy)
+- Sculpt Spells (Legacy)
+- Spell Turning (Generic Monster Feature)
+- Twinned Spell (Legacy)
 
 # 1.2.33 Release:
 ## Bug Fixes:

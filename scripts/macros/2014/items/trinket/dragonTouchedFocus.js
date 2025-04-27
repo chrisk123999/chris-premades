@@ -4,7 +4,7 @@ import {itemUtils, workflowUtils} from '../../../../utils.js';
 async function damage({workflow}) {
     if (workflow.item.type !== 'spell') return;
     if (['innate', 'atwill', 'ritual'].includes(workflow.item.preparation?.mode)) return;
-    let spellLevel = workflow.spellLevel ?? workflow.item.flags?.['chris-premades']?.castData?.castLevel;
+    let spellLevel = workflowUtils.getCastLevel(workflow) ?? workflow.item.flags?.['chris-premades']?.castData?.castLevel;
     if (!spellLevel) return;
     let matchedDamages = workflowUtils.getDamageTypes(workflow.damageRolls).intersection(new Set(['acid', 'cold', 'fire', 'lightning', 'poison']));
     if (!matchedDamages.size) return;

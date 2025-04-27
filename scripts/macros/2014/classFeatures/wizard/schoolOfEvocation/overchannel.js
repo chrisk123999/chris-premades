@@ -2,10 +2,11 @@ import {activityUtils, compendiumUtils, constants, dialogUtils, errors, genericU
 
 async function damage({trigger: {entity: item}, workflow}) {
     if (workflow.item.type !== 'spell') return;
-    if (!workflow.spellLevel || workflow.spellLevel > 5) return;
+    let spellLevel = workflowUtils.getCastLevel(workflow);
+    if (!spellLevel || spellLevel > 5) return;
     let timesUsed = item.flags['chris-premades'].overchannel?.timesUsed;
     let damageFormula;
-    if (timesUsed) damageFormula = (workflow.spellLevel * (timesUsed + 1)) + 'd12';
+    if (timesUsed) damageFormula = (spellLevel * (timesUsed + 1)) + 'd12';
     let confirmText;
     if (damageFormula) {
         confirmText = genericUtils.format('CHRISPREMADES.Macros.Overchannel.Damage', {itemName: item.name, damageFormula});
@@ -29,7 +30,7 @@ async function late({trigger: {entity: item}, workflow}) {
     await genericUtils.setFlag(item, 'chris-premades', 'overchannel.active', false);
     let timesUsed = item.flags['chris-premades'].overchannel?.timesUsed ?? 0;
     let numDice;
-    if (timesUsed) numDice = workflow.spellLevel * (timesUsed + 1);
+    if (timesUsed) numDice = workflowUtils.getCastLevel(workflow) * (timesUsed + 1);
     await workflowUtils.completeItemUse(item);
     await genericUtils.setFlag(item, 'chris-premades', 'overchannel.timesUsed', timesUsed + 1);
     if (!numDice) return;

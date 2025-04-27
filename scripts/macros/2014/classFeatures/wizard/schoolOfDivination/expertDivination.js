@@ -3,7 +3,7 @@ import {dialogUtils, genericUtils, workflowUtils} from '../../../../../utils.js'
 async function late({trigger: {entity: item}, workflow}) {
     if (workflow.item.type !== 'spell') return;
     if (workflow.item.system.school !== 'div') return;
-    let level = workflow.spellLevel;
+    let level = workflowUtils.getCastLevel(workflow);
     if (!level || level < 2) return;
     let buttons = [];
     for(let i = 1; i < Math.min(6, level); i++) {

@@ -16,7 +16,7 @@ async function late({trigger: {entity: item}, workflow}) {
     let spellLevel;
     let spellSchool;
     if (workflow.item.type === 'spell') {
-        spellLevel = workflow.spellLevel;
+        spellLevel = workflowUtils.getCastLevel(workflow);
         spellSchool = workflow.item.system.school;
     } else if (workflow.item.type === 'feat') {
         spellLevel = workflow.item.flags['chris-premades']?.castData?.castLevel;

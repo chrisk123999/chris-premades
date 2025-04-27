@@ -496,7 +496,7 @@ async function useTwinned({workflow}) {
     //TODO: Fix twinned spells when they have attack rolls.
 }
 async function earlyTwinned({workflow}) {
-    if (exceptions.includes(genericUtils.getIdentifier(workflow.item)) && workflow.castData.baseLevel !== workflow.spellLevel) {
+    if (exceptions.includes(genericUtils.getIdentifier(workflow.item)) && workflow.castData.baseLevel !== workflowUtils.getCastLevel(workflow)) {
         genericUtils.notify('CHRISPREMADES.Macros.Metamagic.TwinnedUpcastTargets', 'info');
         // TODO: how do we do this in 4.x?
         if (workflow.dnd5eConsumptionConfig?.consumeSpellSlot) {
@@ -511,7 +511,7 @@ async function earlyTwinned({workflow}) {
         return;
     }
     let sorcPoints = itemUtils.getItemByIdentifier(workflow.actor, 'sorceryPoints');
-    let cost = Math.max(1, workflow.spellLevel);
+    let cost = Math.max(1, workflowUtils.getCastLevel(workflow));
     if (!sorcPoints || cost > sorcPoints.system.uses.value) {
         genericUtils.notify('CHRISPREMADES.Macros.Metamagic.TwinnedUpcast', 'info');
         // Give back spell slot if needed
