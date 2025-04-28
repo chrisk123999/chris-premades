@@ -87,7 +87,17 @@ async function use({workflow}) {
                 maxRays -= 1;
                 if (shouldPlayAnimation) {
                     if (animation === 'simple') {
-                        animationUtils.simpleAttack(workflow.token, targetToken, 'jb2a.scorching_ray.01.' + color, {sound, missed: !featureWorkflow.hitTargets.size});
+                        let path = 'jb2a.scorching_ray.01.';
+                        if (color === 'random') {
+                            path += colors[Math.floor((Math.random() * colors.length))];
+                        } else if (color === 'cycle') {
+                            path += colors[lastColor];
+                            lastColor++;
+                            if (lastColor >= colors.length) lastColor = 0;
+                        } else {
+                            path += color;
+                        }
+                        animationUtils.simpleAttack(workflow.token, targetToken, path, {sound, missed: !featureWorkflow.hitTargets.size});
                     } else if (animation === 'complex') {
                         let path = 'jb2a.scorching_ray.{{num}}.';
                         if (color === 'random') {
