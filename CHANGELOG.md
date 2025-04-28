@@ -1,3 +1,7 @@
+# 1.2.35 Release:
+## Bug Fixes:
+- Arcane Vigor (Modern)
+
 # 1.2.34 Release:
 ## Bug Fixes:
 - Aberrant Dragonmark (Legacy)

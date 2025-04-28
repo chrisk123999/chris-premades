@@ -1,4 +1,4 @@
-import {dialogUtils, genericUtils, rollUtils, workflowUtils} from '../../../utils.js';
+import {activityUtils, dialogUtils, genericUtils, rollUtils, workflowUtils} from '../../../utils.js';
 async function damage({trigger, workflow}) {
     let selection = await dialogUtils.selectHitDie(workflow.actor, workflow.item.name, 'CHRISPREMADES.Macros.ArcaneVigor.Choose', {max: workflowUtils.getCastLevel(workflow)});
     let formula = '';
@@ -8,6 +8,8 @@ async function damage({trigger, workflow}) {
         formula += i.amount + i.document.system.hd.denomination;
         await genericUtils.update(i.document, {'system.hd.spent': i.document.system.hd.spent + i.amount});
     }));
+    if (formula.length) formula += ' + ';
+    formula += activityUtils.getMod(workflow.activity);
     let roll = await rollUtils.damageRoll(formula, workflow.actor, workflow.damageRolls[0].options);
     await workflow.setDamageRolls([roll]);
 }
