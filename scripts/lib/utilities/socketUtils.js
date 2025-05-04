@@ -5,7 +5,7 @@ function gmID() {
     let preferredGMName = game.settings.get('midi-qol', "PreferredGM");  
     if (preferredGMName !== 'none') {
         let preferredGM = game.users.getName(preferredGMName);
-        if (preferredGM && preferredGM.active) {
+        if (preferredGM?.active) {
             gmID = preferredGM.id;
         }
     }
