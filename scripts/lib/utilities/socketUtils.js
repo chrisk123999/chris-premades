@@ -1,7 +1,14 @@
 import {socket, sockets} from '../sockets.js';
 import {genericUtils} from './genericUtils.js';
 function gmID() {
-    return game.settings.get('chris-premades', 'gmID');
+    let preferredGM = game.settings.get('midi-qol', "PreferredGM");
+    let gmID;
+    if (preferredGM != 'none') {
+        gmID = game.users.getName(preferredGM).id;
+    } else {
+        gmID = game.settings.get('chris-premades', 'gmID');
+    }
+    return gmID;
 }
 function isTheGM() {
     return gmID() === game.user.id;
