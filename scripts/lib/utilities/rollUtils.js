@@ -95,8 +95,7 @@ async function damageRoll(formula, actor, options = {}) {
     return await new CONFIG.Dice.DamageRoll(formula, actor.getRollData(), options).evaluate();
 }
 async function addToRoll(roll, formula, {rollData} = {}) {
-    let formulaString = typeof formula === 'string' ? formula : String(formula);
-    let bonusRoll = await new Roll(formulaString, rollData).evaluate();
+    let bonusRoll = await new Roll(String(formula), rollData).evaluate();
     return MidiQOL.addRollTo(roll, bonusRoll);
 }
 async function remoteRoll(roll, userId) {
