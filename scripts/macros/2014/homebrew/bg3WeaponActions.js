@@ -939,7 +939,11 @@ async function configure() {
     let baseItems = (await Promise.all(Object.entries(CONFIG.DND5E.weaponIds).map(async ([key, value]) => {
         let packKey = 'dnd5e.items';
         let id;
-        if (value.includes('.')) {
+        if (value.startsWith('Compendium')) {
+            let nameSplit = value.split('.');
+            packKey = nameSplit[1] + '.' + nameSplit[2];
+            id = nameSplit[4];
+        } else if (value.includes('.')) {
             let nameSplit = value.split('.');
             packKey = nameSplit[0] + '.' + nameSplit[1];
             id = nameSplit[2];
