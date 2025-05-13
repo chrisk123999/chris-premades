@@ -4,43 +4,44 @@ import {genericUtils} from './genericUtils.js';
 function getEmbeddedMacros(entity, type, {pass} = {}) {
     let flagData;
     if (entity.documentName === 'Activity') {
-        flagData = genericUtils.getProperty(entity.item, 'flags.chris-premades.embeddedActivityMacros.' + entity.id + '.' + type);
+        flagData = genericUtils.getProperty(entity.item, 'flags.chris-premades.embeddedActivityMacros.' + entity.id);
     } else {
-        flagData = genericUtils.getProperty(entity, 'flags.chris-premades.embeddedMacros.' + type);
+        flagData = genericUtils.getProperty(entity, 'flags.chris-premades.embeddedMacros');
     }
     if (!flagData) return [];
     flagData = flagData.filter(i => {
+        if (i.type !== type) return false;
         if (pass && i.pass !== pass) return false;
         return true;
     });
     return flagData;
 }
-async function addEmbeddedMacro(entity, type, macroData) {
+async function addEmbeddedMacro(entity, macroData) {
     let flagData;
     if (entity.documentName === 'Activity') {
-        flagData = genericUtils.getProperty(entity.item, 'flags.chris-premades.embeddedActivityMacros.' + entity.id + '.' + type) ?? [];
+        flagData = genericUtils.getProperty(entity.item, 'flags.chris-premades.embeddedActivityMacros.' + entity.id) ?? [];
     } else {
-        flagData = genericUtils.getProperty(entity, 'flags.chris-premades.embeddedMacros.' + type) ?? [];
+        flagData = genericUtils.getProperty(entity, 'flags.chris-premades.embeddedMacros') ?? [];
     }
     flagData.push(macroData);
     if (entity.documentName === 'Activity') {
-        await genericUtils.setFlag(entity.item, 'chris-premades', 'embeddedActivityMacros.' + entity.id + '.' + type, flagData);
+        await genericUtils.setFlag(entity.item, 'chris-premades', 'embeddedActivityMacros.' + entity.id, flagData);
     } else {
-        await genericUtils.setFlag(entity, 'chris-premades', 'embeddedMacros.' + type, flagData);
+        await genericUtils.setFlag(entity, 'chris-premades', 'embeddedMacros', flagData);
     }
 }
 async function removeEmbeddedMacro(entity, type, name) {
     let flagData;
     if (entity.documentName === 'Activity') {
-        flagData = genericUtils.getProperty(entity.item, 'flags.chris-premades.embeddedActivityMacros.' + entity.id + '.' + type) ?? [];
+        flagData = genericUtils.getProperty(entity.item, 'flags.chris-premades.embeddedActivityMacros.' + entity.id) ?? [];
     } else {
-        flagData = genericUtils.getProperty(entity, 'flags.chris-premades.embeddedMacros.' + type) ?? [];
+        flagData = genericUtils.getProperty(entity, 'flags.chris-premades.embeddedMacros') ?? [];
     }
-    flagData = flagData.filter(i => i.name !== name);
+    flagData = flagData.filter(i => (i.type !== type) || (i.name !== name));
     if (entity.documentName === 'Activity') {
-        await genericUtils.setFlag(entity.item, 'chris-premades', 'embeddedActivityMacros.' + entity.id + '.' + type, flagData);
+        await genericUtils.setFlag(entity.item, 'chris-premades', 'embeddedActivityMacros.' + entity.id, flagData);
     } else {
-        await genericUtils.setFlag(entity, 'chris-premades', 'embeddedMacros.' + type, flagData);
+        await genericUtils.setFlag(entity, 'chris-premades', 'embeddedMacros', flagData);
     }
 }
 function getEmbeddedActivityShapeMacros(activity, entityType) {

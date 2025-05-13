@@ -2,4 +2,10 @@
   {{#each inputs as |input|}}
     {{formGroup input.field value=input.value localize=true name=@key}}
   {{/each}}
+  {{#unless (eq inputs.length 0)}}
+    <button type="button" data-action="delete">
+      <i class="fa-solid fa-trash"></i>
+      {{localize 'CHRISPREMADES.Medkit.EmbeddedMacros.Delete'}}
+    </button>
+  {{/unless}}
 </div>

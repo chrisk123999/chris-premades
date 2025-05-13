@@ -651,7 +651,7 @@ export class EmbeddedMacros extends HandlebarsApplicationMixin(ApplicationV2) {
             }),
             passes: getAllDocumentPasses(this.document)
         };
-        this._activeTab = this.context.macros.length ? this.context.macros[0].name : 'zzzNewTab';
+        this._activeTab = this.context.macros[0]?.name;
         console.log(this.context);
     }
     static DEFAULT_OPTIONS = {
@@ -663,7 +663,9 @@ export class EmbeddedMacros extends HandlebarsApplicationMixin(ApplicationV2) {
             id: 'cpr-embedded-macros-window'
         },
         actions: {
-            confirm: EmbeddedMacros.confirm
+            confirm: EmbeddedMacros.confirm,
+            newMacro: EmbeddedMacros.#onNewMacro,
+            delete: EmbeddedMacros.#onDelete
         },
         window: {
             title: 'Default Title',
@@ -687,11 +689,51 @@ export class EmbeddedMacros extends HandlebarsApplicationMixin(ApplicationV2) {
     };
     static async confirm(event, target) {
         if (!target.name) return false;
-        //TODO
-        // eslint-disable-next-line no-undef
-        let newValues = new FormDataExtended(target.form).object;
-        console.log(newValues);
+        let validator = new fields.JavaScriptField({async: true});
+        let invalid = false;
+        for (let currMacro of this.context.macros) {
+            if (validator.validate(currMacro.macro)) {
+                let invalidText = genericUtils.format('CHRISPREMADES.Medkit.EmbeddedMacros.Invalid', {
+                    fieldName: 'macro',
+                    macroName: currMacro.name
+                });
+                genericUtils.notify(invalidText, 'error');
+                invalid = true;
+            }
+        }
+        if (invalid) return;
+        let flagPath;
+        let entity;
+        if (this.documentName === 'Activity') {
+            flagPath = 'flags.chris-premades.embeddedActivityMacros.' + this.document.id;
+            entity = this.document.item;
+        } else {
+            flagPath = 'flags.chris-premades.embeddedMacros';
+            entity = this.document;
+        }
+        await genericUtils.update(entity, {
+            [flagPath]: this.context.macros
+        });
         this.close();
+    }
+    static #onNewMacro(event, target) {
+        let newName = genericUtils.translate('CHRISPREMADES.EmbeddedMacros.Tabs.New.Label');
+        if (this.context.macros.find(i => i.name === newName)) newName += ' (1)';
+        let currIdx = 1;
+        while (this.context.macros.find(i => i.name === newName)) {
+            currIdx += 1;
+            newName = newName.replace('(' + (currIdx - 1) + ')', '(' + currIdx + ')');
+        }
+        this.context.macros.push({
+            name: newName
+        });
+        this.activeTab = newName;
+        this.render();
+    }
+    static #onDelete(event, target) {
+        this.context.macros = this.context.macros.filter(i => i.name !== this.activeTab);
+        this.activeTab = this.context.macros[0]?.name;
+        this.render();
     }
     get title() {
         return this.windowTitle;
@@ -717,12 +759,6 @@ export class EmbeddedMacros extends HandlebarsApplicationMixin(ApplicationV2) {
                 cssClass: this.activeTab === i.name ? 'active' : ''
             });
         });
-        genericUtils.setProperty(tabsData, 'zzzNewTab', {
-            icon: 'fa-solid fa-hammer',
-            label: 'CHRISPREMADES.EmbeddedMacros.Tabs.New.Label',
-            tooltip: 'CHRISPREMADES.EmbeddedMacros.Tabs.New.Tooltip',
-            cssClass: 'new-macro'
-        });
         return tabsData;
     }
     get activeTab() {
@@ -737,12 +773,7 @@ export class EmbeddedMacros extends HandlebarsApplicationMixin(ApplicationV2) {
     formatInputs() {
         let macro = this.context.macros.find(i => i.name === this.activeTab);
         console.log(macro);
-        if (!macro) {
-            macro = {
-                name: this.activeTab
-            };
-            this.context.macros.push(macro);
-        }
+        if (!macro) return [];
         let inputs = {
             macro: {
                 field: new fields.JavaScriptField({
@@ -855,6 +886,10 @@ export class EmbeddedMacros extends HandlebarsApplicationMixin(ApplicationV2) {
     }
     async _onChangeForm(formConfig, event) {
         let targetInput = event.target;
+        if (targetInput.name === 'name' && this.context.macros.find(i => i.name === targetInput.value)) {
+            // Disallow same-name macros
+            return this.render();
+        }
         let currentMacro = this.context.macros.find(i => i.name === this.activeTab);
         switch (targetInput.type) {
             case 'checkbox':
@@ -874,11 +909,7 @@ export class EmbeddedMacros extends HandlebarsApplicationMixin(ApplicationV2) {
         event.preventDefault();
     }
     changeTab(...args) {
-        let autoPos = {...this.position, height: 'auto'};
-        this.setPosition(autoPos);
-        super.changeTab(...args);
-        let maxHeight = canvas.screenDimensions[1] * 0.9;
-        let newPos = {...this.position, height: Math.min(this.element.scrollHeight, maxHeight), top:null};
-        this.setPosition(newPos);
+        this.activeTab = args[0];
+        this.render();
     }
 }

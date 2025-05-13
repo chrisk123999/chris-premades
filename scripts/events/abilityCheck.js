@@ -128,7 +128,7 @@ async function executeMacro(trigger) {
     try {
         if (typeof trigger.macro === 'string') {
             genericUtils.log('dev', 'Executing Embedded Ability Check Macro: ' + trigger.macroName + ' from ' + trigger.name + ' with a priority of ' + trigger.priority);
-            await custom.executeScript({script: trigger.macro, trigger});
+            result = await custom.executeScript({script: trigger.macro, trigger});
         } else {
             genericUtils.log('dev', 'Executing Ability Check Macro: ' + trigger.macroName + ' from ' + trigger.name + ' with a priority of ' + trigger.priority);
             result = await trigger.macro({trigger});
