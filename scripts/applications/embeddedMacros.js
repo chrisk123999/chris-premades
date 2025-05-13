@@ -1,12 +1,14 @@
 import {genericUtils, macroUtils} from '../utils.js';
+const fields = foundry.data.fields;
+
 export const eventStructure = {
     check: [
         {
             pass: 'situational',
             documents: [
                 'item',
-                'effect',
-                'template',
+                'activeeffect',
+                'measuredtemplate',
                 'region'
             ]
         },
@@ -14,8 +16,8 @@ export const eventStructure = {
             pass: 'context',
             documents: [
                 'item',
-                'effect',
-                'template',
+                'activeeffect',
+                'measuredtemplate',
                 'region'
             ]
         },
@@ -23,8 +25,8 @@ export const eventStructure = {
             pass: 'bonus',
             documents: [
                 'item',
-                'effect',
-                'template',
+                'activeeffect',
+                'measuredtemplate',
                 'region'
             ],
             options: [
@@ -35,8 +37,8 @@ export const eventStructure = {
             pass: 'post',
             documents: [
                 'item',
-                'effect',
-                'template',
+                'activeeffect',
+                'measuredtemplate',
                 'region'
             ]
         }
@@ -46,8 +48,8 @@ export const eventStructure = {
             pass: 'situational',
             documents: [
                 'item',
-                'effect',
-                'template',
+                'activeeffect',
+                'measuredtemplate',
                 'region'
             ]
         },
@@ -55,8 +57,8 @@ export const eventStructure = {
             pass: 'context',
             documents: [
                 'item',
-                'effect',
-                'template',
+                'activeeffect',
+                'measuredtemplate',
                 'region'
             ]
         },
@@ -64,8 +66,8 @@ export const eventStructure = {
             pass: 'bonus',
             documents: [
                 'item',
-                'effect',
-                'template',
+                'activeeffect',
+                'measuredtemplate',
                 'region'
             ],
             options: [
@@ -76,8 +78,8 @@ export const eventStructure = {
             pass: 'post',
             documents: [
                 'item',
-                'effect',
-                'template',
+                'activeeffect',
+                'measuredtemplate',
                 'region'
             ]
         }
@@ -87,7 +89,7 @@ export const eventStructure = {
             pass: 'create',
             documents: [
                 'item',
-                'effect'
+                'activeeffect'
             ],
             requiredValues: [
                 {
@@ -116,8 +118,8 @@ export const eventStructure = {
             pass: 'turnEnd',
             documents: [
                 'item',
-                'effect',
-                'template',
+                'activeeffect',
+                'measuredtemplate',
                 'region'
             ]
         },
@@ -125,8 +127,8 @@ export const eventStructure = {
             pass: 'turnStart',
             documents: [
                 'item',
-                'effect',
-                'template',
+                'activeeffect',
+                'measuredtemplate',
                 'region'
             ]
         },
@@ -134,8 +136,8 @@ export const eventStructure = {
             pass: 'everyTurn',
             documents: [
                 'item',
-                'effect',
-                'template',
+                'activeeffect',
+                'measuredtemplate',
                 'region'
             ]
         },
@@ -143,8 +145,8 @@ export const eventStructure = {
             pass: 'turnEndNear',
             documents: [
                 'item',
-                'effect',
-                'template',
+                'activeeffect',
+                'measuredtemplate',
                 'region'
             ],
             optionalValues: [
@@ -162,8 +164,8 @@ export const eventStructure = {
             pass: 'turnStartNear',
             documents: [
                 'item',
-                'effect',
-                'template',
+                'activeeffect',
+                'measuredtemplate',
                 'region'
             ],
             optionalValues: [
@@ -181,8 +183,8 @@ export const eventStructure = {
             pass: 'combatStart',
             documents: [
                 'item',
-                'effect',
-                'template',
+                'activeeffect',
+                'measuredtemplate',
                 'region'
             ]
         },
@@ -190,8 +192,8 @@ export const eventStructure = {
             pass: 'combatEnd',
             documents: [
                 'item',
-                'effect',
-                'template',
+                'activeeffect',
+                'measuredtemplate',
                 'region'
             ]
         }
@@ -209,8 +211,8 @@ export const eventStructure = {
             pass: 'dead',
             documents: [
                 'item',
-                'effect',
-                'template',
+                'activeeffect',
+                'measuredtemplate',
                 'region'
             ]
         }
@@ -219,13 +221,13 @@ export const eventStructure = {
         {
             pass: 'created',
             documents: [
-                'effect'
+                'activeeffect'
             ]
         },
         {
             pass: 'deleted',
             documents: [
-                'effect'
+                'activeeffect'
             ]
         },
         {
@@ -242,8 +244,8 @@ export const eventStructure = {
             pass: 'preTargeting',
             documents: [
                 'item',
-                'effect',
-                'template',
+                'activeeffect',
+                'measuredtemplate',
                 'region',
                 'activity'
             ]
@@ -252,8 +254,8 @@ export const eventStructure = {
             pass: 'preItemRoll',
             documents: [
                 'item',
-                'effect',
-                'template',
+                'activeeffect',
+                'measuredtemplate',
                 'region',
                 'activity'
             ],
@@ -265,8 +267,8 @@ export const eventStructure = {
             pass: 'preambleComplete',
             documents: [
                 'item',
-                'effect',
-                'template',
+                'activeeffect',
+                'measuredtemplate',
                 'region',
                 'activity'
             ],
@@ -279,8 +281,8 @@ export const eventStructure = {
             pass: 'postAttackRoll',
             documents: [
                 'item',
-                'effect',
-                'template',
+                'activeeffect',
+                'measuredtemplate',
                 'region',
                 'activity'
             ],
@@ -293,8 +295,8 @@ export const eventStructure = {
             pass: 'attackRollComplete',
             documents: [
                 'item',
-                'effect',
-                'template',
+                'activeeffect',
+                'measuredtemplate',
                 'region',
                 'activity'
             ],
@@ -307,8 +309,8 @@ export const eventStructure = {
             pass: 'savesComplete',
             documents: [
                 'item',
-                'effect',
-                'template',
+                'activeeffect',
+                'measuredtemplate',
                 'region',
                 'activity'
             ],
@@ -320,8 +322,8 @@ export const eventStructure = {
             pass: 'damageRollComplete',
             documents: [
                 'item',
-                'effect',
-                'template',
+                'activeeffect',
+                'measuredtemplate',
                 'region',
                 'activity'
             ],
@@ -334,8 +336,8 @@ export const eventStructure = {
             pass: 'rollFinished',
             documents: [
                 'item',
-                'effect',
-                'template',
+                'activeeffect',
+                'measuredtemplate',
                 'region',
                 'activity'
             ],
@@ -348,8 +350,8 @@ export const eventStructure = {
             pass: 'applyDamage',
             documents: [
                 'item',
-                'effect',
-                'template',
+                'activeeffect',
+                'measuredtemplate',
                 'region',
                 'activity'
             ],
@@ -364,8 +366,8 @@ export const eventStructure = {
             pass: 'preTargeting',
             documents: [
                 'item',
-                'effect',
-                'template',
+                'activeeffect',
+                'measuredtemplate',
                 'region'
             ]
         },
@@ -373,8 +375,8 @@ export const eventStructure = {
             pass: 'preItemRoll',
             documents: [
                 'item',
-                'effect',
-                'template',
+                'activeeffect',
+                'measuredtemplate',
                 'region'
             ],
             options: [
@@ -385,8 +387,8 @@ export const eventStructure = {
             pass: 'preambleComplete',
             documents: [
                 'item',
-                'effect',
-                'template',
+                'activeeffect',
+                'measuredtemplate',
                 'region'
             ],
             options: [
@@ -398,8 +400,8 @@ export const eventStructure = {
             pass: 'postAttackRoll',
             documents: [
                 'item',
-                'effect',
-                'template',
+                'activeeffect',
+                'measuredtemplate',
                 'region'
             ],
             options: [
@@ -411,8 +413,8 @@ export const eventStructure = {
             pass: 'attackRollComplete',
             documents: [
                 'item',
-                'effect',
-                'template',
+                'activeeffect',
+                'measuredtemplate',
                 'region'
             ],
             options: [
@@ -424,8 +426,8 @@ export const eventStructure = {
             pass: 'savesComplete',
             documents: [
                 'item',
-                'effect',
-                'template',
+                'activeeffect',
+                'measuredtemplate',
                 'region'
             ],
             options: [
@@ -436,8 +438,8 @@ export const eventStructure = {
             pass: 'damageRollComplete',
             documents: [
                 'item',
-                'effect',
-                'template',
+                'activeeffect',
+                'measuredtemplate',
                 'region'
             ],
             options: [
@@ -449,8 +451,8 @@ export const eventStructure = {
             pass: 'rollFinished',
             documents: [
                 'item',
-                'effect',
-                'template',
+                'activeeffect',
+                'measuredtemplate',
                 'region'
             ],
             options: [
@@ -462,8 +464,8 @@ export const eventStructure = {
             pass: 'applyDamage',
             documents: [
                 'item',
-                'effect',
-                'template',
+                'activeeffect',
+                'measuredtemplate',
                 'region'
             ],
             options: [
@@ -477,7 +479,7 @@ export const eventStructure = {
             pass: 'moved',
             documents: [
                 'item',
-                'effect'
+                'activeeffect'
             ],
             options: [
                 'scene'
@@ -487,7 +489,7 @@ export const eventStructure = {
             pass: 'movedNear',
             documents: [
                 'item',
-                'effect'
+                'activeeffect'
             ]
         }
     ],
@@ -522,8 +524,8 @@ export const eventStructure = {
             pass: 'short',
             documents: [
                 'item',
-                'effect',
-                'template',
+                'activeeffect',
+                'measuredtemplate',
                 'region'
             ]
         },
@@ -531,8 +533,8 @@ export const eventStructure = {
             pass: 'long',
             documents: [
                 'item',
-                'effect',
-                'template',
+                'activeeffect',
+                'measuredtemplate',
                 'region'
             ]
         }
@@ -542,8 +544,8 @@ export const eventStructure = {
             pass: 'situational',
             documents: [
                 'item',
-                'effect',
-                'template',
+                'activeeffect',
+                'measuredtemplate',
                 'region'
             ]
         },
@@ -551,8 +553,8 @@ export const eventStructure = {
             pass: 'context',
             documents: [
                 'item',
-                'effect',
-                'template',
+                'activeeffect',
+                'measuredtemplate',
                 'region'
             ]
         },
@@ -560,8 +562,8 @@ export const eventStructure = {
             pass: 'bonus',
             documents: [
                 'item',
-                'effect',
-                'template',
+                'activeeffect',
+                'measuredtemplate',
                 'region'
             ],
             options: [
@@ -572,8 +574,8 @@ export const eventStructure = {
             pass: 'post',
             documents: [
                 'item',
-                'effect',
-                'template',
+                'activeeffect',
+                'measuredtemplate',
                 'region'
             ]
         }
@@ -582,31 +584,31 @@ export const eventStructure = {
         {
             pass: 'left',
             documents: [
-                'template'
+                'measuredtemplate'
             ]
         },
         {
             pass: 'enter',
             documents: [
-                'template'
+                'measuredtemplate'
             ]
         },
         {
             pass: 'stay',
             documents: [
-                'template'
+                'measuredtemplate'
             ]
         },
         {
             pass: 'passedThrough',
             documents: [
-                'template'
+                'measuredtemplate'
             ]
         },
         {
             pass: 'moved',
             documents: [
-                'template'
+                'measuredtemplate'
             ]
         }
     ]
@@ -686,6 +688,9 @@ export class EmbeddedMacros extends HandlebarsApplicationMixin(ApplicationV2) {
     static async confirm(event, target) {
         if (!target.name) return false;
         //TODO
+        // eslint-disable-next-line no-undef
+        let newValues = new FormDataExtended(target.form).object;
+        console.log(newValues);
         this.close();
     }
     get title() {
@@ -733,83 +738,97 @@ export class EmbeddedMacros extends HandlebarsApplicationMixin(ApplicationV2) {
         let macro = this.context.macros.find(i => i.name === this.activeTab);
         console.log(macro);
         if (!macro) {
-            return {
-                content: {
-                    isContent: true,
-                    value: 'CHRISPREMADES.EmbeddedMacros.NoMacros.Content'
-                }
+            macro = {
+                name: this.activeTab
             };
+            this.context.macros.push(macro);
         }
         let inputs = {
             macro: {
-                isTextArea: true,
-                value: macro.macro,
-                label: 'CHRISPREMADES.EmbeddedMacros.Macro.Label'
+                field: new fields.JavaScriptField({
+                    async: true,
+                    label: 'CHRISPREMADES.EmbeddedMacros.Macro.Label',
+                }),
+                value: macro.macro
             },
             name: {
-                isText: true,
+                field: new fields.StringField({
+                    label: 'CHRISPREMADES.EmbeddedMacros.Name.Label'
+                }),
                 value: macro.name,
-                label: 'CHRISPREMADES.EmbeddedMacros.Name.Label'
             },
             type: {
-                isSelectOption: true,
-                value: macro.type,
-                label: 'CHRISPREMADES.EmbeddedMacros.Type.Label',
-                options: Object.entries(this.context.passes).map(([key, value]) => ({
-                    label: 'CHRISPREMADES.EmbeddedMacros.Type.' + key,
-                    value: key,
-                    isDisabled: !value.length
-                }))
+                field: new fields.StringField({
+                    label: 'CHRISPREMADES.EmbeddedMacros.Type.Label',
+                    choices: Object.entries(this.context.passes).reduce((acc, [key, value]) => {
+                        if (value.length) acc[key] = 'CHRISPREMADES.EmbeddedMacros.Type.' + key;
+                        return acc;
+                    }, {})
+                }),
+                value: macro.type
             },
             priority: {
-                isNumber: true,
+                field: new fields.NumberField({
+                    min: 0,
+                    integer: true,
+                    label: 'CHRISPREMADES.EmbeddedMacros.Priority.Label'
+                }),
                 value: macro.priority,
-                label: 'CHRISPREMADES.EmbeddedMacros.Priority.Label'
             }
         };
         if (macro.type) {
             genericUtils.setProperty(inputs, 'pass', {
-                isSelectOption: true,
-                value: macro.pass,
-                label: 'CHRISPREMADES.EmbeddedMacros.Pass.Label',
-                options: this.context.passes[macro.type].map(i => ({
-                    label: 'CHRISPREMADES.EmbeddedMacros.Pass.' + i + '.Label',
-                    value: i,
-                    isSelected: macro.pass === i
-                }))
+                field: new fields.StringField({
+                    label: 'CHRISPREMADES.EmbeddedMacros.Pass.Label',
+                    choices: this.context.passes[macro.type].reduce((acc,i) => ({
+                        ...acc,
+                        [i]: 'CHRISPREMADES.EmbeddedMacros.Pass.' + i + '.Label'
+                    }), {})
+                }),
+                value: macro.pass
             });
         }
-        if (macro.distance) {
+        let passDetails = eventStructure[macro.type]?.find(i => i.pass === macro.pass);
+        let requiredValues = passDetails?.requiredValues?.map(i => i.key) ?? [];
+        let optionalValues = passDetails?.optionalValues?.map(i => i.key) ?? [];
+        let extraValues = requiredValues.concat(optionalValues);
+        if (extraValues.includes('distance')) {
             genericUtils.setProperty(inputs, 'distance', {
-                isNumber: true,
+                field: new fields.NumberField({
+                    min: 0,
+                    integer: true,
+                    label: 'CHRISPREMADES.EmbeddedMacros.Distance.Label'
+                }),
                 value: macro.distance,
-                label: 'CHRISPREMADES.EmbeddedMacros.Distance.Label'
             });
         }
-        if (macro.disposition) {
+        if (extraValues.includes('disposition')) {
             genericUtils.setProperty(inputs, 'disposition', {
-                isSelectOption: true,
-                value: macro.disposition,
-                label: 'CHRISPREMADES.EmbeddedMacros.Disposition.Label',
-                options: [
-                    {label: 'CHRISPREMADES.EmbeddedMacros.Disposition.All.Label', value: 'all'},
-                    {label: 'CHRISPREMADES.EmbeddedMacros.Disposition.Ally.Label', value: 'ally'},
-                    {label: 'CHRISPREMADES.EmbeddedMacros.Disposition.Enemy.Label', value: 'enemy'}
-                ]
+                field: new fields.StringField({
+                    label: 'CHRISPREMADES.EmbeddedMacros.Disposition.Label',
+                    choices: {
+                        all: 'CHRISPREMADES.EmbeddedMacros.Disposition.All.Label',
+                        ally: 'CHRISPREMADES.EmbeddedMacros.Disposition.Ally.Label',
+                        enemy: 'CHRISPREMADES.EmbeddedMacros.Disposition.Enemy.Label'
+                    }
+                }),
+                value: macro.disposition
             });
         }
-        if (macro.conscious) {
+        if (extraValues.includes('conscious')) {
             genericUtils.setProperty(inputs, 'conscious', {
-                isCheckbox: true,
+                field: new fields.BooleanField({
+                    label: 'CHRISPREMADES.EmbeddedMacros.Conscious.Label'
+                }),
                 value: macro.conscious,
-                label: 'CHRISPREMADES.EmbeddedMacros.Conscious.Label'
             });
         }
-        if (macro.identifier) {
+        if (extraValues.includes('identifier')) {
             genericUtils.setProperty(inputs, 'identifier', {
-                isText: true,
+                field: new fields.StringField({
+                    label: 'CHRISPREMADES.EmbeddedMacros.Identifier.Label'
+                }),
                 value: macro.identifier,
-                label: 'CHRISPREMADES.EmbeddedMacros.Identifier.Label'
             });
         }
         console.log(inputs);

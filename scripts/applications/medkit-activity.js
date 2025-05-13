@@ -1,5 +1,6 @@
 let {ApplicationV2, HandlebarsApplicationMixin} = foundry.applications.api;
 import {genericUtils, constants, activityUtils, itemUtils} from '../utils.js';
+import {EmbeddedMacros} from './embeddedMacros.js';
 export class ActivityMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
     constructor(context, activity) {
         super({id: 'medkit-window-activity'});
@@ -7,7 +8,13 @@ export class ActivityMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
         this.position.width = 650;
         this.activityDocument = activity;
         this.context = context;
+        if (genericUtils.getCPRSetting('enableEmbeddedMacrosEditing')) {
+            this.activeTab = 'embeddedMacros';
+        } else {
+            this.activeTab = 'devTools';
+        }
     }
+    // TODO: MODIFY THING TO HAVE TABS
     static DEFAULT_OPTIONS = {
         tag: 'form',
         form: {
@@ -17,7 +24,8 @@ export class ActivityMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
             id: 'ActivityMedkit-window'
         },
         actions: {
-            confirm: ActivityMedkit.confirm
+            confirm: ActivityMedkit.confirm,
+            openEmbeddedMacros: ActivityMedkit._openEmbeddedMacros
         },
         window: {
             icon: 'fa-solid fa-kit-medical',
@@ -28,6 +36,13 @@ export class ActivityMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
         header: {
             template: 'modules/chris-premades/templates/medkit-header.hbs'
         },
+        navigation: {
+            template: 'modules/chris-premades/templates/medkit-navigation.hbs'
+        },
+        embeddedMacros: {
+            template: 'modules/chris-premades/templates/embedded-macros.hbs',
+            scrollable: ['']
+        },
         devTools: {
             template: 'modules/chris-premades/templates/medkit-activity-dev-tools.hbs',
             scrollable: ['']
@@ -36,6 +51,12 @@ export class ActivityMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
             template: 'modules/chris-premades/templates/form-footer.hbs'
         }
     };
+    get activeTab() {
+        return this._activeTab;
+    }
+    set activeTab(tab) {
+        this._activeTab = tab;
+    }
     static async activity(activity) {
         let context = await ActivityMedkit.createContext(activity);
         new ActivityMedkit(context, activity).render(true);
@@ -60,6 +81,9 @@ export class ActivityMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
                 break;
         }
         return context;
+    }
+    static _openEmbeddedMacros(event, target) {
+        new EmbeddedMacros(this.activityDocument).render(true);
     }
     // Saves the context data to the effect
     static async confirm(event, target) {
@@ -117,12 +141,31 @@ export class ActivityMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
     }
     async _prepareContext(options) {
         let context = this.context;
+        context.tabs ??= {};
+        if (genericUtils.getCPRSetting('enableEmbeddedMacrosEditing')) {
+            context.tabs.embeddedMacros = {
+                icon: 'fa-solid fa-feather-pointed',
+                label: 'CHRISPREMADES.Medkit.EmbeddedMacros.Label',
+                tooltip: 'TODO',
+                cssClass: this.activeTab === 'embeddedMacros' ? 'active' : ''
+            };
+        }
+        if (genericUtils.getCPRSetting('devTools')) {
+            context.tabs.devTools = {
+                icon: 'fa-solid fa-wand-magic-sparkles',
+                label: 'CHRISPREMADES.Medkit.Tabs.DevTools.Label',
+                tooltip: 'CHRISPREMADES.Medkit.Tabs.DevTools.Tooltip',
+                cssClass: this.activeTab === 'devTools' ? 'active' : ''
+            };
+        }
         context.buttons = [
             {type: 'submit', action: 'confirm', label: 'DND5E.Confirm', name: 'confirm', icon: 'fa-solid fa-check'}
         ];
         return context;
     }
     async _onChangeForm(formConfig, event) {
+        let currentTabId = this.element.querySelector('.item.active').getAttribute('data-tab');
+        this.activeTab = currentTabId;
         // Update context data
         this.context.config[event.target.id] = (event.target.type === 'checkbox') ? event.target.checked : event.target.value;
         this.render(true);

@@ -2,6 +2,7 @@ let {ApplicationV2, HandlebarsApplicationMixin} = foundry.applications.api;
 import {compendiumUtils, itemUtils, genericUtils, constants} from '../utils.js';
 import * as macros from '../legacyMacros.js';
 import {custom} from '../events/custom.js';
+import {EmbeddedMacros} from './embeddedMacros.js';
 export class ItemMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
     constructor(item) {
         super({id: 'medkit-window-item'});
@@ -45,7 +46,8 @@ export class ItemMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
             update: ItemMedkit._update,
             apply: ItemMedkit._apply,
             confirm: ItemMedkit.confirm,
-            changeRules: ItemMedkit._changeRules
+            changeRules: ItemMedkit._changeRules,
+            openEmbeddedMacros: ItemMedkit._openEmbeddedMacros
         },
         window: {
             icon: 'fa-solid fa-kit-medical',
@@ -68,6 +70,10 @@ export class ItemMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
         },
         genericFeatures: {
             template: 'modules/chris-premades/templates/medkit-item-generic-features.hbs',
+            scrollable: ['']
+        },
+        embeddedMacros: {
+            template: 'modules/chris-premades/templates/embedded-macros.hbs',
             scrollable: ['']
         },
         devTools: {
@@ -637,7 +643,15 @@ export class ItemMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
                 tooltip: 'CHRISPREMADES.Medkit.Tabs.GenericFeatures.Tooltip',
                 cssClass: this.activeTab === 'genericFeatures' ? 'active' : ''
             });
-        } 
+        }
+        if (genericUtils.getCPRSetting('enableEmbeddedMacrosEditing')) {
+            genericUtils.setProperty(tabsData, 'embeddedMacros', {
+                icon: 'fa-solid fa-feather-pointed',
+                label: 'CHRISPREMADES.Medkit.EmbeddedMacros.Label',
+                tooltip: 'TODO',
+                cssClass: this.activeTab === 'embeddedMacros' ? 'active' : ''
+            });
+        }
         if (game.settings.get('chris-premades', 'devTools')) {
             genericUtils.setProperty(tabsData, 'devTools', {
                 icon: 'fa-solid fa-wand-magic-sparkles',
@@ -824,6 +838,9 @@ export class ItemMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
         this._prepared = false;
         await this.readyData();
         await this._reRender();
+    }
+    static _openEmbeddedMacros(event, target) {
+        new EmbeddedMacros(this.item).render(true);
     }
     /* Internally called functions */
     async _prepareContext(options) {

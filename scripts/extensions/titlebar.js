@@ -12,19 +12,21 @@ export function createHeaderButton(config, buttons) {
         let validTypes = ['Actor', 'Item'];
         if (!validTypes.includes(config.collection.metadata.type)) return;
     }
+    let embeddedOnlyTypes = ['MeasuredTemplate'];
+    let documentType = config.object?.documentName;
     if (genericUtils.getCPRSetting('enableEmbeddedMacrosEditing')) {
-        let documentType = config.object?.documentType;
         if (documentType) {
-            let validTypes = ['Activity', 'Item', 'Effect', 'Template', 'Region'];
-            if (genericUtils.getCPRSetting('enableEmbeddedMacrosEditing') && validTypes.includes(config.object.documentType)) {
+            let validTypes = ['MeasuredTemplate', 'Region'];
+            if (validTypes.includes(documentType)) {
                 buttons.unshift({
                     class: 'chris-premades-embedded-macros',
-                    icon: 'fa-solid fa-feather-pointed',
-                    onClick: () => new EmbeddedMacros(config.object).render(true)
+                    icon: 'fa-solid fa-kit-medical',
+                    onclick: () => new EmbeddedMacros(config.object).render(true)
                 });
             }
         }
     }
+    if (embeddedOnlyTypes.includes(documentType)) return;
     buttons.unshift({
         class: 'chris-premades-item',
         icon: 'fa-solid fa-kit-medical',
@@ -105,8 +107,18 @@ export async function renderItemSheet(app, [elem], options) {
         }
     }
 }
+export async function renderRegionConfig(app, [elem]) {
+    if (!genericUtils.getCPRSetting('enableEmbeddedMacrosEditing')) return;
+    let existingButton = elem.closest('.window-header').querySelector('button.chris-premades-item');
+    let closeButton = elem.closest('.window-header').querySelector('button[data-action="close"]');
+    if (existingButton) return;
+    let medkitButton = document.createElement('button');
+    medkitButton.setAttribute('class', 'header-control fa-solid fa-kit-medical chris-premades-item');
+    medkitButton.onclick = () => new EmbeddedMacros(app.document).render(true);
+    closeButton.parentNode.insertBefore(medkitButton, closeButton);
+}
 export async function renderActivitySheet(app, [elem]) {
-    if (!game.settings.get('chris-premades', 'devTools')) return;
+    if (!(game.settings.get('chris-premades', 'devTools') || genericUtils.getCPRSetting('enableEmbeddedMacrosEditing'))) return;
     let activity = app.activity;
     let existingButton = elem.closest('.window-header').querySelector('button.chris-premades-item');
     let closeButton = elem.closest('.window-header').querySelector('button[data-action="close"]');
@@ -126,15 +138,6 @@ export async function renderActivitySheet(app, [elem]) {
         if (activityUtils.getIdentifier(activity)) medkitButton.setAttribute('style', 'color: dodgerblue');
         closeButton.parentNode.insertBefore(medkitButton, closeButton);
     }
-    if (!genericUtils.getCPRSetting('enableEmbeddedMacrosEditing')) return;
-    let existingMacroButton = elem.closest('.window-header').querySelector('button.chris-premades-embedded-macros');
-    if (existingMacroButton) return;
-    let macroButton = document.createElement('button');
-    macroButton.setAttribute('class', 'header-control fa-solid fa-feather-pointed chris-premades-embedded-macros');
-    macroButton.onclick = () => {
-        new EmbeddedMacros(activity).render(true);
-    };
-    closeButton.parentNode.insertBefore(macroButton, closeButton);
 }
 export async function renderEffectConfig(app, [elem], options) {
     let headerButton = elem.closest('.window-app').querySelector('a.header-button.chris-premades-item');

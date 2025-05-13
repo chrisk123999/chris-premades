@@ -1,6 +1,7 @@
 let {ApplicationV2, HandlebarsApplicationMixin} = foundry.applications.api;
 import {genericUtils, constants} from '../utils.js';
 import * as macros from '../macros.js'; // Maybe see if the added macro exsists? Too much for 4am brain
+import {EmbeddedMacros} from './embeddedMacros.js';
 export class EffectMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
     constructor(context, effectDocument) {
         super({id: 'medkit-window-effect'});
@@ -19,7 +20,8 @@ export class EffectMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
         },
         actions: {
             add: EffectMedkit._add,
-            confirm: EffectMedkit.confirm
+            confirm: EffectMedkit.confirm,
+            openEmbeddedMacros: EffectMedkit._openEmbeddedMacros
         },
         window: {
             icon: 'fa-solid fa-kit-medical',
@@ -39,6 +41,10 @@ export class EffectMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
         },
         overtime: {
             template: 'modules/chris-premades/templates/medkit-effect-over-time.hbs',
+            scrollable: ['']
+        },
+        embeddedMacros: {
+            template: 'modules/chris-premades/templates/embedded-macros.hbs',
             scrollable: ['']
         },
         devTools: {
@@ -341,11 +347,19 @@ export class EffectMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
                     cssClass: ''
                 }
             };
+            if (genericUtils.getCPRSetting('enableEmbeddedMacrosEditing')) {
+                genericUtils.setProperty(tabsData, 'embeddedMacros', {
+                    icon: 'fa-solid fa-feather-pointed',
+                    label: 'CHRISPREMADES.Medkit.EmbeddedMacros.Label',
+                    tooltip: 'TODO',
+                    cssClass: ''
+                });
+            }
             if (game.settings.get('chris-premades', 'devTools')) {
                 genericUtils.setProperty(tabsData, 'devTools', {
                     icon: 'fa-solid fa-wand-magic-sparkles',
-                    label: 'Dev Tools',
-                    tooltip: 'Tools for development, you shouldn\'t be here...',
+                    label: 'CHRISPREMADES.Medkit.Tabs.DevTools.Label',
+                    tooltip: 'CHRISPREMADES.Medkit.Tabs.DevTools.Tooltip',
                     cssClass: ''
                 });
             }
@@ -470,6 +484,9 @@ export class EffectMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
             }
         }
         this.render(true);
+    }
+    static _openEmbeddedMacros(event, target) {
+        new EmbeddedMacros(this.effectDocument).render(true);
     }
     changeTab(...args) {
         let autoPos = {...this.position, height: 'auto'};
