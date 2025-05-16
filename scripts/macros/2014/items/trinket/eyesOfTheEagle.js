@@ -1,5 +1,8 @@
+import {itemUtils} from '../../../../utils.js';
+
 async function skill({trigger: {skillId}}) {
     if (skillId !== 'prc') return;
+    if (!itemUtils.getEquipmentState(item)) return;
     return {label: 'CHRISPREMADES.Macros.DanothsVisor.Check', type: 'advantage'};
 }
 export let eyesOfTheEagle = {

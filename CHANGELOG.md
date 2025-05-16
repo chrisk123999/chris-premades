@@ -2,6 +2,7 @@
 ## Bug Fixes:
 - Arcane Vigor (Modern)
 - Scorching Ray (Legacy & Modern)
+- Eyes of the Eagel (Legacy)
 - BG3 Weapon Actions
 
 # 1.2.34 Release:
