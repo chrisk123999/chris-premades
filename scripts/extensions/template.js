@@ -14,7 +14,7 @@ function preCreateMeasuredTemplate(template, updates, options, userId) {
         }
         template.updateSource({'flags.chris-premades.rules': rules});
     }
-    let embeddedActivityEntityMacros = macroUtils.getEmbeddedActivityShapeMacros(activity, 'template');
+    /*let embeddedActivityEntityMacros = macroUtils.getEmbeddedActivityShapeMacros(activity, 'template');
     if (embeddedActivityEntityMacros.length) {
         let flagData = {};
         let types = new Set(embeddedActivityEntityMacros.map(i => i.type));
@@ -22,7 +22,7 @@ function preCreateMeasuredTemplate(template, updates, options, userId) {
             genericUtils.setProperty(flagData, i, embeddedActivityEntityMacros.filter(j => j.type === i));
         });
         template.updateSource({'flags.chris-premades.embeddedMacros': flagData});
-    }
+    } */
 }
 export let template = {
     preCreateMeasuredTemplate

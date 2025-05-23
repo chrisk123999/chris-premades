@@ -2320,9 +2320,10 @@
                 }
             },
             "EmbeddedMacros": {
-                "Label": "CPR Embedded Macros",
+                "Label": "Embedded Macros",
                 "Delete": "Delete Embedded Macro",
-                "Invalid": "Invalid field '{fieldName}' in embedded macro '{macroName}'!"
+                "Invalid": "Invalid field '{fieldName}' in embedded macro '{macroName}'!",
+                "Edit": "Edit Embedded Macros"
             },
             "Fieldsets": {
                 "damage": {
