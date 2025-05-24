@@ -1,3 +1,7 @@
+# 1.2.36 Release:
+## New Modern Content:
+- Crusher
+
 # 1.2.35 Release:
 ## Bug Fixes:
 - Arcane Vigor (Modern)
