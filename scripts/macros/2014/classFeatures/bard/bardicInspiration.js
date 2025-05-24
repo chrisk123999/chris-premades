@@ -124,7 +124,7 @@ async function saveBonus({trigger: {saveId, roll, actor, entity: effect}}) {
 }
 export let bardicInspiration = {
     name: 'Bardic Inspiration',
-    version: '1.1.0',
+    version: '1.2.36',
     midi: {
         item: [
             {
