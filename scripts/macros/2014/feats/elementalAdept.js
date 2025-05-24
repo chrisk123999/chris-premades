@@ -35,9 +35,9 @@ async function damage({trigger: {entity: item}, workflow}) {
                     seconds: 1
                 },
                 changes: validTypes.map(i => ({
-                    key: 'system.traits.dr.value',
+                    key: 'system.traits.idr.value',
                     mode: 2,
-                    value: '-' + i
+                    value: i
                 })),
                 flags: {
                     'chris-premades': {
@@ -47,9 +47,7 @@ async function damage({trigger: {entity: item}, workflow}) {
                     }
                 }
             };
-            await Promise.all(workflow.targets.map(async token => {
-                await effectUtils.createEffect(token.actor, effectData, {identifier: 'elementalAdeptEffect'});
-            }));
+            await effectUtils.createEffect(workflow.actor, effectData, {identifier: 'elementalAdeptEffect'});
             break;
         }
         case 'ignoreImmunity': {
@@ -61,10 +59,14 @@ async function damage({trigger: {entity: item}, workflow}) {
                     seconds: 1
                 },
                 changes: validTypes.map(i => ({
-                    key: 'system.traits.di.value',
+                    key: 'system.traits.idi.value',
                     mode: 2,
-                    value: '-' + i
-                })),
+                    value: i
+                })).concat(validTypes.map(i => ({
+                    key: 'system.traits.idr.value',
+                    mode: 2,
+                    value: i
+                }))),
                 flags: {
                     'chris-premades': {
                         effect: {
@@ -73,9 +75,7 @@ async function damage({trigger: {entity: item}, workflow}) {
                     }
                 }
             };
-            await Promise.all(workflow.targets.map(async token => {
-                await effectUtils.createEffect(token.actor, effectData, {identifier: 'elementalAdeptEffect'});
-            }));
+            await effectUtils.createEffect(workflow.actor, effectData, {identifier: 'elementalAdeptEffect'});
             break;
         }
         case 'ignoreResistanceImmunity': {
@@ -87,13 +87,13 @@ async function damage({trigger: {entity: item}, workflow}) {
                     seconds: 1
                 },
                 changes: validTypes.map(i => ({
-                    key: 'system.traits.di.value',
+                    key: 'system.traits.idi.value',
                     mode: 2,
-                    value: '-' + i
+                    value: i
                 })).concat(validTypes.map(i => ({
-                    key: 'system.traits.dr.value',
+                    key: 'system.traits.idr.value',
                     mode: 2,
-                    value: '-' + i
+                    value: i
                 }))),
                 flags: {
                     'chris-premades': {
@@ -103,9 +103,7 @@ async function damage({trigger: {entity: item}, workflow}) {
                     }
                 }
             };
-            await Promise.all(workflow.targets.map(async token => {
-                await effectUtils.createEffect(token.actor, effectData, {identifier: 'elementalAdeptEffect'});
-            }));
+            await effectUtils.createEffect(workflow.actor, effectData, {identifier: 'elementalAdeptEffect'});
             break;
         }
         case 'downgradeImmunity': {
@@ -179,6 +177,8 @@ async function damage({trigger: {entity: item}, workflow}) {
 }
 async function done({trigger, workflow}) {
     if (!workflow.targets.size) return;
+    let effectIds = effectUtils.getAllEffectsByIdentifier(workflow.actor, 'elementalAdeptEffect').map(i => i.id);
+    if (effectIds.length) await genericUtils.deleteEmbeddedDocuments(workflow.actor, 'ActiveEffect', effectIds);
     await Promise.all(workflow.targets.map(async token => {
         let effectIds = effectUtils.getAllEffectsByIdentifier(token.actor, 'elementalAdeptEffect').map(i => i.id);
         if (effectIds.length) await genericUtils.deleteEmbeddedDocuments(token.actor, 'ActiveEffect', effectIds);

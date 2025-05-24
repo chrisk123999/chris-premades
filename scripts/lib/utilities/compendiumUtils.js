@@ -38,6 +38,7 @@ async function getCPRAutomation(item, {identifier, rules = 'legacy', type = 'cha
                 } else {
                     if (rules === 'modern') {
                         keys.push(constants.modernPacks.classFeatures);
+                        keys.push(constants.modernPacks.feats);
                     } else {
                         keys.push(constants.packs.classFeatures);
                         if (genericUtils.getCPRSetting('thirdParty')) keys.push(constants.packs.thirdPartyClassFeatures);

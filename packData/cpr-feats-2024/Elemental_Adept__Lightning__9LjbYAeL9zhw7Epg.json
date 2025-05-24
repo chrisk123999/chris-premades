@@ -1,0 +1,108 @@
+{
+  "name": "Elemental Adept (Lightning)",
+  "type": "feat",
+  "system": {
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "source": {
+      "custom": "PHB 2024",
+      "revision": 1,
+      "rules": "2024",
+      "book": "",
+      "page": "",
+      "license": ""
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "recovery": []
+    },
+    "type": {
+      "value": "feat",
+      "subtype": ""
+    },
+    "requirements": "",
+    "properties": [],
+    "prerequisites": {
+      "level": null,
+      "repeatable": false
+    },
+    "activities": {},
+    "identifier": "elemental-adept-lightning",
+    "enchant": {},
+    "advancement": [],
+    "cover": null,
+    "crewed": false
+  },
+  "flags": {
+    "obsidian": {
+      "source": {
+        "type": "feat"
+      }
+    },
+    "core": {},
+    "midiProperties": {
+      "confirmTargets": "default",
+      "autoFailFriendly": false,
+      "autoSaveFriendly": false,
+      "critOther": false,
+      "offHandWeapon": false,
+      "magicdam": false,
+      "magiceffect": false,
+      "noConcentrationCheck": false,
+      "toggleEffect": false,
+      "ignoreTotalCover": false,
+      "idr": false,
+      "idi": false,
+      "idv": false,
+      "ida": false
+    },
+    "midi-qol": {
+      "rollAttackPerTarget": "default",
+      "itemCondition": "",
+      "effectCondition": "",
+      "AoETargetType": "any",
+      "AoETargetTypeIncludeSelf": true,
+      "autoTarget": "default",
+      "removeAttackDamageButtons": "default",
+      "reactionCondition": "",
+      "otherCondition": ""
+    },
+    "dnd5e": {
+      "riders": {
+        "activity": []
+      }
+    },
+    "chris-premades": {
+      "info": {
+        "name": "Elemental Adept (Lightning)",
+        "version": "1.2.36",
+        "settings": [
+          "Elemental Adept"
+        ],
+        "identifier": "elementalAdeptL",
+        "source": "chris-premades",
+        "rules": "modern"
+      },
+      "config": {
+        "damageTypes": [
+          "lightning"
+        ]
+      },
+      "macros": {
+        "midi": {
+          "actor": [
+            "elementalAdeptL"
+          ]
+        }
+      }
+    }
+  },
+  "effects": [],
+  "img": "icons/magic/lightning/bolt-strike-blue.webp",
+  "folder": null,
+  "_id": "9LjbYAeL9zhw7Epg",
+  "_key": "!items!9LjbYAeL9zhw7Epg"
+}
