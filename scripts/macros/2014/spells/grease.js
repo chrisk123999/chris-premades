@@ -17,6 +17,7 @@ async function use({workflow}) {
             }
         }
     });
+    await proneOnFail.midi.item[0].macro({workflow});
 }
 async function enterOrEnd({trigger: {entity: template, castData, token}}) {
     if (actorUtils.checkTrait(token.actor, 'ci', 'prone')) return;

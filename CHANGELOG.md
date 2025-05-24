@@ -2,6 +2,8 @@
 ## New Modern Content:
 - Crusher
 - Elemental Adept
+## Bug Fixes
+- Grease
 
 # 1.2.35 Release:
 ## Bug Fixes:
