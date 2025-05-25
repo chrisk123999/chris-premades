@@ -61,7 +61,6 @@
       "origin": null,
       "tint": "#ffffff",
       "statuses": [],
-      "sort": 0,
       "flags": {
         "dae": {
           "enableCondition": "",
@@ -80,16 +79,7 @@
           "overlay": false
         }
       },
-      "_stats": {
-        "compendiumSource": null,
-        "duplicateSource": null,
-        "coreVersion": "12.343",
-        "systemId": "dnd5e",
-        "systemVersion": "4.2.2",
-        "createdTime": null,
-        "modifiedTime": null,
-        "lastModifiedBy": null
-      },
+      "sort": 0,
       "_key": "!items.effects!Wix7HPk9pAM2y7NK.oW0KtPAE9a54KZGK"
     }
   ],

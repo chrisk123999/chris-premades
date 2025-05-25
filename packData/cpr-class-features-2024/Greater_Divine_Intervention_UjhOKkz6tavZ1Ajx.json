@@ -32,7 +32,6 @@
       "origin": "Actor.yy1I4W4hqhw1yaiM.Item.7Kwiq0li1OfKg1sX",
       "tint": "#ffffff",
       "statuses": [],
-      "sort": 0,
       "flags": {
         "dae": {
           "enableCondition": "",
@@ -70,16 +69,7 @@
           "rules": "modern"
         }
       },
-      "_stats": {
-        "compendiumSource": "Actor.yy1I4W4hqhw1yaiM.Item.3BvBgJe7QsqHpbgX.ActiveEffect.nar8UpIuaDiEgWLG",
-        "duplicateSource": null,
-        "coreVersion": "12.343",
-        "systemId": "dnd5e",
-        "systemVersion": "4.3.6",
-        "createdTime": null,
-        "modifiedTime": null,
-        "lastModifiedBy": null
-      },
+      "sort": 0,
       "_key": "!items.effects!UjhOKkz6tavZ1Ajx.Xggw4uJclVKwl03h"
     }
   ],

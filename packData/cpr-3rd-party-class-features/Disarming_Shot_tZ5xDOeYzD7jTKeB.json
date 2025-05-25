@@ -205,7 +205,6 @@
       "description": "",
       "tint": "#ffffff",
       "statuses": [],
-      "sort": 0,
       "flags": {
         "dae": {
           "enableCondition": "",
@@ -224,16 +223,7 @@
           "overlay": false
         }
       },
-      "_stats": {
-        "compendiumSource": null,
-        "duplicateSource": null,
-        "coreVersion": "12.343",
-        "systemId": "dnd5e",
-        "systemVersion": "4.1.2",
-        "createdTime": null,
-        "modifiedTime": null,
-        "lastModifiedBy": null
-      },
+      "sort": 0,
       "_key": "!items.effects!tZ5xDOeYzD7jTKeB.KWWJnygqQlAx1JFw"
     }
   ],

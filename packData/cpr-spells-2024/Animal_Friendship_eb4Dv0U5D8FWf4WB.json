@@ -188,7 +188,6 @@
       "origin": null,
       "tint": "#ffffff",
       "statuses": [],
-      "sort": 0,
       "flags": {
         "dae": {
           "enableCondition": "",
@@ -216,16 +215,7 @@
           ]
         }
       },
-      "_stats": {
-        "compendiumSource": null,
-        "duplicateSource": null,
-        "coreVersion": "12.343",
-        "systemId": "dnd5e",
-        "systemVersion": "4.1.2",
-        "createdTime": null,
-        "modifiedTime": 1736683627211,
-        "lastModifiedBy": "I80azqIoQAHVxPwK"
-      },
+      "sort": 0,
       "_key": "!items.effects!eb4Dv0U5D8FWf4WB.yKnHas7sLimJm3UR"
     }
   ],

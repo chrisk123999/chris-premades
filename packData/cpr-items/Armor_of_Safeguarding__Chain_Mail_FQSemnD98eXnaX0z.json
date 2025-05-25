@@ -220,7 +220,6 @@
       "origin": "Item.zZLDctxkIStJ0sfq",
       "tint": "#ffffff",
       "statuses": [],
-      "sort": 0,
       "flags": {
         "dae": {
           "disableCondition": "",
@@ -251,16 +250,7 @@
           "wallsBlock": "system"
         }
       },
-      "_stats": {
-        "compendiumSource": null,
-        "duplicateSource": null,
-        "coreVersion": "12.343",
-        "systemId": "dnd5e",
-        "systemVersion": "4.1.2",
-        "createdTime": null,
-        "modifiedTime": null,
-        "lastModifiedBy": null
-      },
+      "sort": 0,
       "_key": "!items.effects!FQSemnD98eXnaX0z.gGKyyCnvfwj6qo7p"
     }
   ],

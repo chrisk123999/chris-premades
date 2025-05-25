@@ -194,7 +194,6 @@
       "origin": null,
       "tint": "#ffffff",
       "statuses": [],
-      "sort": 0,
       "flags": {
         "dae": {
           "enableCondition": "",
@@ -220,16 +219,7 @@
           "overlay": false
         }
       },
-      "_stats": {
-        "compendiumSource": null,
-        "duplicateSource": null,
-        "coreVersion": "12.343",
-        "systemId": "dnd5e",
-        "systemVersion": "4.3.6",
-        "createdTime": 1742162745615,
-        "modifiedTime": 1742162765567,
-        "lastModifiedBy": "I80azqIoQAHVxPwK"
-      },
+      "sort": 0,
       "_key": "!items.effects!8LtjGzixLl1GvrEj.MfjPQk1zohC1kHsa"
     }
   ],

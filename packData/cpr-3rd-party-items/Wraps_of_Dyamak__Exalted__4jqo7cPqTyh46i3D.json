@@ -400,16 +400,6 @@
       "name": "Wraps of Dyamak (Dormant)",
       "description": "",
       "statuses": [],
-      "_stats": {
-        "compendiumSource": null,
-        "duplicateSource": null,
-        "coreVersion": "12.343",
-        "systemId": "dnd5e",
-        "systemVersion": "4.1.2",
-        "createdTime": null,
-        "modifiedTime": null,
-        "lastModifiedBy": null
-      },
       "img": "icons/equipment/wrist/wrap-wide-cloth-white.webp",
       "type": "base",
       "system": {},

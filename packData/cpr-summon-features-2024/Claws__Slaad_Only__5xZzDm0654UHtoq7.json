@@ -229,16 +229,6 @@
       "transfer": false,
       "statuses": [],
       "sort": 0,
-      "_stats": {
-        "compendiumSource": null,
-        "duplicateSource": null,
-        "coreVersion": "12.343",
-        "systemId": "dnd5e",
-        "systemVersion": "4.3.8",
-        "createdTime": null,
-        "modifiedTime": null,
-        "lastModifiedBy": null
-      },
       "_key": "!items.effects!5xZzDm0654UHtoq7.jTSlsy7Ghgvfrg9J"
     }
   ],

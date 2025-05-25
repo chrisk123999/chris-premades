@@ -926,7 +926,6 @@
       "origin": null,
       "tint": "#ffffff",
       "statuses": [],
-      "sort": 0,
       "flags": {
         "dae": {
           "enableCondition": "",
@@ -969,16 +968,7 @@
           }
         }
       },
-      "_stats": {
-        "compendiumSource": null,
-        "duplicateSource": null,
-        "coreVersion": "12.343",
-        "systemId": "dnd5e",
-        "systemVersion": "4.3.6",
-        "createdTime": null,
-        "modifiedTime": null,
-        "lastModifiedBy": null
-      },
+      "sort": 0,
       "_key": "!items.effects!a8sTx0QQxlVohhuL.X2ZBxNbcXlkVu866"
     },
     {
@@ -1010,7 +1000,6 @@
       "origin": null,
       "tint": "#ffffff",
       "statuses": [],
-      "sort": 0,
       "flags": {
         "dae": {
           "enableCondition": "",
@@ -1042,16 +1031,7 @@
           }
         }
       },
-      "_stats": {
-        "compendiumSource": null,
-        "duplicateSource": null,
-        "coreVersion": "12.343",
-        "systemId": "dnd5e",
-        "systemVersion": "4.3.6",
-        "createdTime": null,
-        "modifiedTime": null,
-        "lastModifiedBy": null
-      },
+      "sort": 0,
       "_key": "!items.effects!a8sTx0QQxlVohhuL.XInfXKso0FRMJlYD"
     },
     {
@@ -1076,7 +1056,6 @@
       "origin": null,
       "tint": "#ffffff",
       "statuses": [],
-      "sort": 0,
       "flags": {
         "chris-premades": {
           "noAnimation": false,
@@ -1116,16 +1095,7 @@
           "overlay": false
         }
       },
-      "_stats": {
-        "compendiumSource": null,
-        "duplicateSource": null,
-        "coreVersion": "12.343",
-        "systemId": "dnd5e",
-        "systemVersion": "4.3.6",
-        "createdTime": null,
-        "modifiedTime": null,
-        "lastModifiedBy": null
-      },
+      "sort": 0,
       "_key": "!items.effects!a8sTx0QQxlVohhuL.9NArL1Q03OPDZCDo"
     }
   ],

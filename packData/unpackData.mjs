@@ -33,6 +33,10 @@ for (let i of itemPacks) {
         delete entry._stats;
         delete entry.sort;
         delete entry.ownership;
+        for (const i in entry.effects)
+        {
+            if (entry.effects[i]._stats) delete entry.effects[i]._stats;
+        }
         if (entry.system?.source?.sourceClass) delete entry.system.source.sourceClass;
         if (entry.flags.core?.sourceId) delete entry.flags.core.sourceId;
         if (entry.system?.materials?.value) entry.system.materials.value = '';

@@ -260,16 +260,6 @@
       "name": "Guiding Bolt",
       "description": "",
       "statuses": [],
-      "_stats": {
-        "compendiumSource": null,
-        "duplicateSource": null,
-        "coreVersion": "12.343",
-        "systemId": "dnd5e",
-        "systemVersion": "4.1.1",
-        "createdTime": null,
-        "modifiedTime": null,
-        "lastModifiedBy": null
-      },
       "img": "icons/magic/fire/flame-burning-hand-purple.webp",
       "type": "base",
       "system": {},

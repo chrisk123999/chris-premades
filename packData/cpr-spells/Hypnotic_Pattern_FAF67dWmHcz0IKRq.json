@@ -45,16 +45,6 @@
       "name": "Hypnotic Pattern",
       "description": "",
       "statuses": [],
-      "_stats": {
-        "compendiumSource": null,
-        "duplicateSource": null,
-        "coreVersion": "12.343",
-        "systemId": "dnd5e",
-        "systemVersion": "4.1.1",
-        "createdTime": null,
-        "modifiedTime": null,
-        "lastModifiedBy": null
-      },
       "img": "icons/magic/air/wind-vortex-swirl-purple.webp",
       "type": "base",
       "system": {},

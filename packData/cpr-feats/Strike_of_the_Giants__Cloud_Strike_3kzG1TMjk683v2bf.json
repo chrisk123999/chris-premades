@@ -246,16 +246,6 @@
       "transfer": false,
       "statuses": [],
       "sort": 0,
-      "_stats": {
-        "compendiumSource": "Compendium.world.cpr-feat-features.Item.LcFJIDWQOKce2DtK.ActiveEffect.0yEy5J7QBEMNt199",
-        "duplicateSource": null,
-        "coreVersion": "12.343",
-        "systemId": "dnd5e",
-        "systemVersion": "4.1.2",
-        "createdTime": null,
-        "modifiedTime": null,
-        "lastModifiedBy": null
-      },
       "_key": "!items.effects!3kzG1TMjk683v2bf.bgXW6xTbhGZrF1Pn"
     }
   ],

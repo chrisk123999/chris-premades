@@ -364,7 +364,6 @@
       "description": "",
       "tint": "#ffffff",
       "statuses": [],
-      "sort": 0,
       "flags": {
         "dae": {
           "enableCondition": "",
@@ -391,16 +390,7 @@
           ]
         }
       },
-      "_stats": {
-        "compendiumSource": null,
-        "duplicateSource": null,
-        "coreVersion": "12.343",
-        "systemId": "dnd5e",
-        "systemVersion": "4.1.2",
-        "createdTime": 1733768343065,
-        "modifiedTime": 1733768384477,
-        "lastModifiedBy": "EFTRQDCPq6xfJ9mn"
-      },
+      "sort": 0,
       "_key": "!items.effects!hwQOQMWVyyMYI7pR.FZ74mcN9Lz1l0N51"
     }
   ],

@@ -260,16 +260,6 @@
       "name": "Spray of Cards",
       "description": "",
       "statuses": [],
-      "_stats": {
-        "compendiumSource": null,
-        "duplicateSource": null,
-        "coreVersion": "12.343",
-        "systemId": "dnd5e",
-        "systemVersion": "4.1.1",
-        "createdTime": null,
-        "modifiedTime": null,
-        "lastModifiedBy": null
-      },
       "img": "icons/sundries/gaming/playing-cards.webp",
       "type": "base",
       "system": {},

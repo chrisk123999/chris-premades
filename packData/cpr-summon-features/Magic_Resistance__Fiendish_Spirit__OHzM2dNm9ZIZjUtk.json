@@ -70,16 +70,6 @@
       "name": "Magic Resistance (Fiendish Spirit)",
       "description": "",
       "statuses": [],
-      "_stats": {
-        "compendiumSource": null,
-        "duplicateSource": null,
-        "coreVersion": "12.343",
-        "systemId": "dnd5e",
-        "systemVersion": "4.1.1",
-        "createdTime": null,
-        "modifiedTime": null,
-        "lastModifiedBy": null
-      },
       "img": "icons/magic/defensive/shield-barrier-glowing-blue.webp",
       "type": "base",
       "system": {},

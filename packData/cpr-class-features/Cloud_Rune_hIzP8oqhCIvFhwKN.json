@@ -200,7 +200,6 @@
       "origin": "Compendium.world.cpr-class-features.Item.BWIrZ2oV7G8rsic7",
       "tint": "#ffffff",
       "statuses": [],
-      "sort": 0,
       "flags": {
         "dae": {
           "disableCondition": "",
@@ -215,16 +214,7 @@
           "overlay": false
         }
       },
-      "_stats": {
-        "compendiumSource": null,
-        "duplicateSource": null,
-        "coreVersion": "12.343",
-        "systemId": "dnd5e",
-        "systemVersion": "4.1.2",
-        "createdTime": null,
-        "modifiedTime": null,
-        "lastModifiedBy": null
-      },
+      "sort": 0,
       "_key": "!items.effects!hIzP8oqhCIvFhwKN.uyr8pgkTqK7rnl7W"
     }
   ],

@@ -32,7 +32,6 @@
       "tint": "#ffffff",
       "transfer": false,
       "statuses": [],
-      "sort": 0,
       "flags": {
         "dae": {
           "disableCondition": "",
@@ -58,16 +57,7 @@
           "overlay": false
         }
       },
-      "_stats": {
-        "compendiumSource": null,
-        "duplicateSource": null,
-        "coreVersion": "12.343",
-        "systemId": "dnd5e",
-        "systemVersion": "4.3.6",
-        "createdTime": 1742499867467,
-        "modifiedTime": 1742499914644,
-        "lastModifiedBy": "EFTRQDCPq6xfJ9mn"
-      },
+      "sort": 0,
       "_key": "!items.effects!3jA1NVRrYHqGGN9R.3lpacmqeJEziGdYH"
     }
   ],

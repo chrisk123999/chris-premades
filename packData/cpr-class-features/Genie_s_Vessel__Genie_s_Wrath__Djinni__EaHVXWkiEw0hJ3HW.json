@@ -153,16 +153,6 @@
       "name": "Genie's Vessel: Genie's Wrath (Djinni)",
       "description": "",
       "statuses": [],
-      "_stats": {
-        "compendiumSource": null,
-        "duplicateSource": null,
-        "coreVersion": "12.343",
-        "systemId": "dnd5e",
-        "systemVersion": "4.1.2",
-        "createdTime": null,
-        "modifiedTime": null,
-        "lastModifiedBy": null
-      },
       "img": "icons/equipment/neck/necklace-carved-lantern-gold.webp",
       "type": "base",
       "system": {},

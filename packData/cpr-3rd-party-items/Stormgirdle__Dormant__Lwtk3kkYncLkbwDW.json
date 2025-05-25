@@ -356,7 +356,6 @@
       "origin": "Actor.FIdg2qF9mgynCpEX.Item.ApcuCeuR1x9j8gkR",
       "tint": "#ffffff",
       "statuses": [],
-      "sort": 0,
       "flags": {
         "dae": {
           "disableCondition": "",
@@ -387,16 +386,7 @@
           "wallsBlock": "system"
         }
       },
-      "_stats": {
-        "compendiumSource": null,
-        "duplicateSource": null,
-        "coreVersion": "12.343",
-        "systemId": "dnd5e",
-        "systemVersion": "4.1.2",
-        "createdTime": null,
-        "modifiedTime": null,
-        "lastModifiedBy": null
-      },
+      "sort": 0,
       "_key": "!items.effects!Lwtk3kkYncLkbwDW.LOw0fLjS0Ut0gso8"
     }
   ],

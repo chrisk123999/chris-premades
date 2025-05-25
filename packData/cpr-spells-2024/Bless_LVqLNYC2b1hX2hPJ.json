@@ -213,16 +213,6 @@
       "system": {},
       "origin": null,
       "sort": 0,
-      "_stats": {
-        "compendiumSource": null,
-        "duplicateSource": null,
-        "coreVersion": "12.343",
-        "systemId": "dnd5e",
-        "systemVersion": "4.1.2",
-        "createdTime": null,
-        "modifiedTime": null,
-        "lastModifiedBy": null
-      },
       "_key": "!items.effects!LVqLNYC2b1hX2hPJ.EPD3RAoj7cLUZyGR"
     }
   ],

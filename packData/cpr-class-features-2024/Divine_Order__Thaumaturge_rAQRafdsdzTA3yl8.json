@@ -68,16 +68,6 @@
       "system": {},
       "origin": "Actor.yy1I4W4hqhw1yaiM.Item.1woKTdujE4nYOWLz",
       "sort": 0,
-      "_stats": {
-        "compendiumSource": null,
-        "duplicateSource": null,
-        "coreVersion": "12.343",
-        "systemId": "dnd5e",
-        "systemVersion": "4.3.6",
-        "createdTime": null,
-        "modifiedTime": null,
-        "lastModifiedBy": null
-      },
       "_key": "!items.effects!rAQRafdsdzTA3yl8.u8RT6Qnjhtg4RkAV"
     }
   ],

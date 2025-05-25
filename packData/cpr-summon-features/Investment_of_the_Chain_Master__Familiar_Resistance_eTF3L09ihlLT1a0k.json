@@ -204,16 +204,6 @@
       "name": "Investment of the Chain Master: Familiar Resistance",
       "description": "",
       "statuses": [],
-      "_stats": {
-        "compendiumSource": null,
-        "duplicateSource": null,
-        "coreVersion": "12.343",
-        "systemId": "dnd5e",
-        "systemVersion": "4.1.1",
-        "createdTime": null,
-        "modifiedTime": 1733432378453,
-        "lastModifiedBy": "EFTRQDCPq6xfJ9mn"
-      },
       "img": "icons/creatures/mammals/bat-giant-tattered-purple.webp",
       "type": "base",
       "system": {},

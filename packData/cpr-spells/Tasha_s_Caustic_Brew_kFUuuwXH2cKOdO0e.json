@@ -44,16 +44,6 @@
       "name": "Tasha's Caustic Brew",
       "description": "",
       "statuses": [],
-      "_stats": {
-        "compendiumSource": null,
-        "duplicateSource": null,
-        "coreVersion": "12.343",
-        "systemId": "dnd5e",
-        "systemVersion": "4.1.1",
-        "createdTime": null,
-        "modifiedTime": null,
-        "lastModifiedBy": null
-      },
       "img": "icons/magic/acid/projectile-glowing-bubbles.webp",
       "type": "base",
       "system": {},

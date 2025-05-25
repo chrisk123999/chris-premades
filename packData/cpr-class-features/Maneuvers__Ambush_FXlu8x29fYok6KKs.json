@@ -138,16 +138,6 @@
       "name": "Maneuvers: Ambush",
       "description": "",
       "statuses": [],
-      "_stats": {
-        "compendiumSource": null,
-        "duplicateSource": null,
-        "coreVersion": "12.343",
-        "systemId": "dnd5e",
-        "systemVersion": "4.1.2",
-        "createdTime": null,
-        "modifiedTime": null,
-        "lastModifiedBy": null
-      },
       "img": "icons/skills/melee/weapons-crossed-swords-yellow.webp",
       "type": "base",
       "system": {},
