@@ -164,6 +164,7 @@ export {sharpshooter} from './macros/2024/feats/sharpshooter.js';
 export {slasher} from './macros/2024/feats/slasher.js';
 export {speedy} from './macros/2024/feats/speedy.js';
 export {tavernBrawler, tavernBrawlerUnarmedStrike} from './macros/2024/feats/tavernBrawler.js';
+export {telekineticShove} from './macros/2024/feats/telekinetic.js';
 //Class Features
 //Barbarian
 export {rage, rageRaging, rageUpkeep} from './macros/2024/classFeatures/barbarian/rage.js';

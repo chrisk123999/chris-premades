@@ -10,6 +10,7 @@
 - Slasher
 - Speedy
 - Tavern Brawler
+- Telekinetic
 ## Bug Fixes
 - Grease
 
