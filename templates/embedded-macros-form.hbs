@@ -1,4 +1,7 @@
 <div>
+  {{#unless (eq inputs.length 0)}}
+    <p>{{{localize "CHRISPREMADES.EmbeddedMacros.HeaderHint"}}}</p>
+  {{/unless}}
   {{#each inputs as |input|}}
     {{formGroup input.field value=input.value localize=true name=@key}}
   {{/each}}
