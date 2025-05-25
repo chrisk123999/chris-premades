@@ -276,6 +276,7 @@
             "StatusRemove": "Remove from Status Effects"
         },
         "EmbeddedMacros": {
+            "HeaderHint": "Available in the scope by default are all <code>xUtils</code> (e.g. <code>itemUtils</code>), as well as <code>constants</code>, <code>Crosshairs</code>, <code>Summons</code>, <code>Teleport</code>, and <code>DialogApp</code>. For help with writing CPR macros, visit the Discord channel <a href=\"https://discord.com/channels/1089258451949064296/1118332135749734451\">here</a>.",
             "Conscious": {
                 "Label": "Conscious:"
             },

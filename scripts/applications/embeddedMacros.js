@@ -778,7 +778,7 @@ export class EmbeddedMacros extends HandlebarsApplicationMixin(ApplicationV2) {
             macro: {
                 field: new fields.JavaScriptField({
                     async: true,
-                    label: 'CHRISPREMADES.EmbeddedMacros.Macro.Label',
+                    label: 'CHRISPREMADES.EmbeddedMacros.Macro.Label'
                 }),
                 value: macro.macro
             },
