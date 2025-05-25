@@ -5,6 +5,7 @@
 - Grappler
 - Heavy Armor Master
 - Piercer
+- Savage Attacker
 ## Bug Fixes
 - Grease
 
