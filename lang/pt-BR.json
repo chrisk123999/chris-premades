@@ -179,6 +179,7 @@
             "Formula": "Fórmula:",
             "HideToken": "Ocultar Token:",
             "HitPoints": "Pontos de Vida:",
+            "HitTarget": "Alvo Atingido:",
             "IgnoredCreatureTypes": "Tipos de Criatura Ignorados:",
             "ImmuneCreatures": "Tipos de Criaturas Imunes:",
             "MaxLevel": "Nível Máx.:",
@@ -2319,7 +2320,10 @@
                 }
             },
             "EmbeddedMacros": {
-                "Label": "CPR Macros Incorporadas"
+                "Label": "Macros Incorporadas",
+                "Delete": "Excluir Macro Incorporada",
+                "Invalid": "Campo '{fieldName}' inválido na macro incorporada '{macroName}'!",
+                "Edit": "Editar Macros Incorporadas"
             },
             "Fieldsets": {
                 "damage": {
