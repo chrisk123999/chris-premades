@@ -11,6 +11,7 @@
 - Speedy
 - Tavern Brawler
 - Telekinetic
+- Archery
 ## Bug Fixes
 - Grease
 
