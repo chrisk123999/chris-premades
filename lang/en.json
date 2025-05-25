@@ -1238,7 +1238,8 @@
             "Grappler": {
                 "Pin": "Grappler: Pin",
                 "Pinned": "Grappler: Pinned By {tokenName}",
-                "Pinning": "Grappler: Pinning {tokenName}"
+                "Pinning": "Grappler: Pinning {tokenName}",
+                "Grapple": "Attempt to grapple {tokenName}?"
             },
             "GraspOfHadar": {
                 "Select": "Which target?"
