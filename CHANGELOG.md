@@ -3,6 +3,7 @@
 - Crusher
 - Elemental Adept
 - Grappler
+- Heavy Armor Master
 ## Bug Fixes
 - Grease
 

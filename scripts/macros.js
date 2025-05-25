@@ -157,6 +157,7 @@ export {unarmedStrike} from './macros/2024/items/misc/unarmedStrike.js';
 export {crusher} from './macros/2024/feats/crusher.js';
 export {elementalAdeptA, elementalAdeptC, elementalAdeptF, elementalAdeptL, elementalAdeptT} from './macros/2024/feats/elementalAdept.js';
 export {grappler} from './macros/2024/feats/grappler.js';
+export {heavyArmorMaster} from './macros/2024/feats/heavyArmorMaster.js';
 //Class Features
 //Barbarian
 export {rage, rageRaging, rageUpkeep} from './macros/2024/classFeatures/barbarian/rage.js';
