@@ -4,6 +4,7 @@
 - Elemental Adept
 - Grappler
 - Heavy Armor Master
+- Piercer
 ## Bug Fixes
 - Grease
 
