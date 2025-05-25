@@ -9,6 +9,7 @@
 - Sharpshooter
 - Slasher
 - Speedy
+- Tavern Brawler
 ## Bug Fixes
 - Grease
 

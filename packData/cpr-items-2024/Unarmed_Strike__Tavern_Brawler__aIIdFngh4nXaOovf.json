@@ -1,5 +1,5 @@
 {
-  "name": "Unarmed Strike",
+  "name": "Unarmed Strike (Tavern Brawler)",
   "type": "weapon",
   "system": {
     "activities": {
@@ -95,15 +95,25 @@
           "autoTargetAction": "default",
           "automationOnly": false,
           "otherActivityCompatible": true,
-          "identifier": ""
+          "identifier": "",
+          "displayActivityName": false,
+          "rollMode": "default",
+          "chooseEffects": false,
+          "toggleEffect": false,
+          "ignoreFullCover": false
         },
         "attackMode": "oneHanded",
         "ammunition": "",
         "otherActivityId": "none",
         "otherActivityUuid": "",
         "name": "Punch",
-        "img": "",
-        "appliedEffects": []
+        "useConditionReason": "",
+        "isOverTimeFlag": false,
+        "overTimeProperties": {
+          "saveRemoves": true,
+          "preRemoveConditionText": "",
+          "postRemoveConditionText": ""
+        }
       },
       "kNTcL5BuY6WQnk1k": {
         "type": "utility",
@@ -184,9 +194,22 @@
           "autoTargetAction": "default",
           "automationOnly": false,
           "otherActivityCompatible": false,
-          "identifier": ""
+          "identifier": "",
+          "displayActivityName": false,
+          "rollMode": "default",
+          "chooseEffects": false,
+          "toggleEffect": false,
+          "ignoreFullCover": false
         },
-        "name": "Grapple"
+        "name": "Grapple",
+        "useConditionReason": "",
+        "isOverTimeFlag": false,
+        "overTimeProperties": {
+          "saveRemoves": true,
+          "preRemoveConditionText": "",
+          "postRemoveConditionText": ""
+        },
+        "otherActivityId": "none"
       },
       "siI1csz5wTzrT7gx": {
         "type": "utility",
@@ -267,9 +290,22 @@
           "autoTargetAction": "default",
           "automationOnly": false,
           "otherActivityCompatible": false,
-          "identifier": ""
+          "identifier": "",
+          "displayActivityName": false,
+          "rollMode": "default",
+          "chooseEffects": false,
+          "toggleEffect": false,
+          "ignoreFullCover": false
         },
-        "name": "Shove (Prone)"
+        "name": "Shove (Prone)",
+        "useConditionReason": "",
+        "isOverTimeFlag": false,
+        "overTimeProperties": {
+          "saveRemoves": true,
+          "preRemoveConditionText": "",
+          "postRemoveConditionText": ""
+        },
+        "otherActivityId": "none"
       },
       "bPilG1rghSA1UudO": {
         "type": "utility",
@@ -350,9 +386,22 @@
           "autoTargetAction": "default",
           "automationOnly": false,
           "otherActivityCompatible": false,
-          "identifier": ""
+          "identifier": "",
+          "displayActivityName": false,
+          "rollMode": "default",
+          "chooseEffects": false,
+          "toggleEffect": false,
+          "ignoreFullCover": false
         },
-        "name": "Shove (Push)"
+        "name": "Shove (Push)",
+        "useConditionReason": "",
+        "isOverTimeFlag": false,
+        "overTimeProperties": {
+          "saveRemoves": true,
+          "preRemoveConditionText": "",
+          "postRemoveConditionText": ""
+        },
+        "otherActivityId": "none"
       },
       "P3HXvBd9fh5mNRXy": {
         "type": "save",
@@ -443,9 +492,22 @@
           "autoTargetAction": "default",
           "automationOnly": false,
           "otherActivityCompatible": false,
-          "identifier": ""
+          "identifier": "",
+          "displayActivityName": false,
+          "rollMode": "default",
+          "chooseEffects": false,
+          "toggleEffect": false,
+          "ignoreFullCover": false
         },
-        "name": "Dexterity Saves"
+        "name": "Dexterity Saves",
+        "useConditionReason": "",
+        "isOverTimeFlag": false,
+        "overTimeProperties": {
+          "saveRemoves": true,
+          "preRemoveConditionText": "",
+          "postRemoveConditionText": ""
+        },
+        "otherActivityId": ""
       },
       "OvMIYDtlDZ1Sq8Ov": {
         "type": "save",
@@ -536,9 +598,22 @@
           "autoTargetAction": "default",
           "automationOnly": false,
           "otherActivityCompatible": false,
-          "identifier": ""
+          "identifier": "",
+          "displayActivityName": false,
+          "rollMode": "default",
+          "chooseEffects": false,
+          "toggleEffect": false,
+          "ignoreFullCover": false
         },
-        "name": "Strength Saves"
+        "name": "Strength Saves",
+        "useConditionReason": "",
+        "isOverTimeFlag": false,
+        "overTimeProperties": {
+          "saveRemoves": true,
+          "preRemoveConditionText": "",
+          "postRemoveConditionText": ""
+        },
+        "otherActivityId": ""
       }
     },
     "uses": {
@@ -550,7 +625,7 @@
       "value": "",
       "chat": ""
     },
-    "identifier": "unarmed-strike",
+    "identifier": "unarmed-strike-tavern-brawler",
     "source": {
       "book": "",
       "page": "",
@@ -587,8 +662,8 @@
     },
     "damage": {
       "base": {
-        "number": null,
-        "denomination": 0,
+        "number": 1,
+        "denomination": 4,
         "types": [],
         "custom": {
           "enabled": false
@@ -596,7 +671,7 @@
         "scaling": {
           "number": 1
         },
-        "bonus": "1 + @mod"
+        "bonus": ""
       },
       "versatile": {
         "number": null,
@@ -667,10 +742,10 @@
     },
     "chris-premades": {
       "info": {
-        "identifier": "unarmedStrike",
+        "identifier": "tavernBrawlerUnarmedStrike",
         "source": "chris-premades",
         "rules": "modern",
-        "version": "1.1.36"
+        "version": "1.2.36"
       },
       "macros": {
         "midi": {
@@ -695,6 +770,6 @@
   },
   "img": "icons/skills/melee/unarmed-punch-fist.webp",
   "folder": null,
-  "_id": "nuzzOveNI1waBYQy",
-  "_key": "!items!nuzzOveNI1waBYQy"
+  "_id": "aIIdFngh4nXaOovf",
+  "_key": "!items!aIIdFngh4nXaOovf"
 }
