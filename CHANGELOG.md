@@ -2,6 +2,7 @@
 ## New Modern Content:
 - Crusher
 - Elemental Adept
+- Grappler
 ## Bug Fixes
 - Grease
 
