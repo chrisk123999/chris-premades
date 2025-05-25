@@ -6,6 +6,7 @@
 - Heavy Armor Master
 - Piercer
 - Savage Attacker
+- Sharpshooter
 ## Bug Fixes
 - Grease
 
