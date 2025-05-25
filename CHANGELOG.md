@@ -8,6 +8,7 @@
 - Savage Attacker
 - Sharpshooter
 - Slasher
+- Speedy
 ## Bug Fixes
 - Grease
 
