@@ -2,7 +2,7 @@ import {activityUtils, actorUtils, compendiumUtils, constants, dialogUtils, erro
 
 async function use({workflow}) {
     if (workflow.targets.size !== 1) return;
-    let weapons = workflow.actor.items.filter(i => i.type === 'weapon' && i.system.equipped && ['simpleM', 'martialM'].includes(i.system.type?.value));
+    let weapons = workflow.actor.items.filter(i => i.type === 'weapon' && i.system.equipped && constants.meleeWeaponTypes.includes(i.system.type?.value));
     if (!weapons.length) {
         genericUtils.notify('CHRISPREMADES.Macros.GreenFlameBlade.NoWeapons', 'warn');
         return;

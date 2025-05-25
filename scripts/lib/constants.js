@@ -139,6 +139,20 @@ const unarmedAttacks = [
     'fightingStyleUnarmedFightingUnarmedStrike',
     'predatoryStrike'
 ];
+const weaponTypes = [
+    'martialM',
+    'simpleS',
+    'martialR',
+    'simpleR'
+]
+const meleeWeaponTypes = [
+    'martialM',
+    'simpleS'
+]
+const rangedWeaponTypes = [
+    'martialR',
+    'simpleR'
+]
 const damageTypeOptions = () => Object.entries(CONFIG.DND5E.damageTypes).map(i => ({label: i[1].label, value: i[0]}));
 const creatureTypeOptions = () => Object.entries(CONFIG.DND5E.creatureTypes).map(i => ({label: i[1].label, value: i[0]}));
 const actorCompendiumPacks = () => [{label: '', value: ''}, ...game.packs.filter(i => i.documentName === 'Actor').map(i => ({label: i.metadata.label, value: i.metadata.id}))];
@@ -535,6 +549,9 @@ export let constants = {
     weaponAttacks,
     spellAttacks,
     unarmedAttacks,
+    weaponTypes,
+    meleeWeaponTypes,
+    rangedWeaponTypes,
     damageTypeOptions,
     creatureTypeOptions,
     actorCompendiumPacks,

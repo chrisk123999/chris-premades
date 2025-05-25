@@ -5,7 +5,7 @@ async function use({workflow}) {
     if (effect) await genericUtils.remove(effect);
     let improvedPactWeapon = itemUtils.getItemByIdentifier(workflow.actor, 'improvedPactWeapon');
     let validWeapons = workflow.actor.items.filter(i => i.type === 'weapon' && i.system.properties.has('mgc'));
-    if (!improvedPactWeapon) validWeapons = validWeapons.filter(i => ['simpleM', 'martialM'].includes(i.system.type.value));
+    if (!improvedPactWeapon) validWeapons = validWeapons.filter(i => constants.meleeWeaponTypes.includes(i.system.type.value));
     let pactType;
     if (!validWeapons.length) {
         pactType = 'summon';
@@ -25,7 +25,7 @@ async function use({workflow}) {
         if (!pack) return;
         let inputs = {
             types: ['weapon'],
-            typeValues: ['simpleM', 'martialM'],
+            typeValues: constants.meleeWeaponTypes,
             badProperties: ['mgc']
         };
         documents = await compendiumUtils.getFilteredItemDocumentsFromCompendium(packKey, customPack ? {} : inputs);
