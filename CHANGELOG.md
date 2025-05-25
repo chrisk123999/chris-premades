@@ -7,6 +7,7 @@
 - Piercer
 - Savage Attacker
 - Sharpshooter
+- Slasher
 ## Bug Fixes
 - Grease
 

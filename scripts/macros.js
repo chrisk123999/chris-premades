@@ -161,6 +161,7 @@ export {heavyArmorMaster} from './macros/2024/feats/heavyArmorMaster.js';
 export {piercer} from './macros/2024/feats/piercer.js';
 export {savageAttacker} from './macros/2024/feats/savageAttacker.js';
 export {sharpshooter} from './macros/2024/feats/sharpshooter.js';
+export {slasher} from './macros/2014/feats/slasher.js';
 //Class Features
 //Barbarian
 export {rage, rageRaging, rageUpkeep} from './macros/2024/classFeatures/barbarian/rage.js';
