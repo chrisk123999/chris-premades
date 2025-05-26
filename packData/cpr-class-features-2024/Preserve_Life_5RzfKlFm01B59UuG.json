@@ -168,7 +168,7 @@
         "identifier": "preserveLife",
         "rules": "modern",
         "source": "chris-premades",
-        "version": "1.2.13",
+        "version": "1.2.36",
         "hasAnimation": true
       },
       "macros": {
@@ -177,7 +177,7 @@
             "preserveLife"
           ]
         },
-        "createItem": [
+        "item": [
           "preserveLife"
         ]
       }
