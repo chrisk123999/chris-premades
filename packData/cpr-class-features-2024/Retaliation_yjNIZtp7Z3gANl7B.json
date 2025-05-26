@@ -68,7 +68,7 @@
           "name": "",
           "formula": ""
         },
-        "useConditionText": "false",
+        "useConditionText": "",
         "useConditionReason": "",
         "effectConditionText": "",
         "macroData": {
@@ -186,7 +186,7 @@
       "rollAttackPerTarget": "default",
       "removeAttackDamageButtons": "default",
       "itemCondition": "",
-      "reactionCondition": "",
+      "reactionCondition": "false",
       "otherCondition": "",
       "effectCondition": ""
     },

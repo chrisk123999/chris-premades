@@ -1631,6 +1631,7 @@
                 "ReplacementAbility": "Replacement Ability:"
             },
             "Protection": {
+                "Protect": "Protect {tokenName}?",
                 "Protected": "Protection: Protected"
             },
             "ProtectionFromEvilAndGood": {
