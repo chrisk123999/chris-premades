@@ -12,6 +12,7 @@
 - Tavern Brawler
 - Telekinetic
 - Archery
+- Dueling
 ## Bug Fixes
 - Grease
 
