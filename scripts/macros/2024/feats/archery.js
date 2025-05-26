@@ -1,8 +1,9 @@
 import {constants, workflowUtils} from '../../../utils.js';
 
 async function attack({trigger: {entity: item}, workflow}) {
-    if (!workflow.targets.size || !constants.rangedWeaponTypes.includes(workflow.item.system.type.value)) return; 
-    await workflowUtils.bonusAttack(workflow, 2);
+    if (!workflow.targets.size || !constants.rangedWeaponTypes.includes(workflow.item.system.type.value)) return;
+    let bonus = itemUtils.getConfig(item, 'bonus');
+    await workflowUtils.bonusAttack(workflow, bonus);
 }
 
 export let archery = {
@@ -16,5 +17,15 @@ export let archery = {
                 priority: 200
             }
         ]
-    }
+    },
+    config: [
+        {
+            value: 'bonus',
+            label: 'CHRISPREMADES.Config.AttackBonus',
+            type: 'text',
+            default: '2',
+            homebrew: true,
+            category: 'homebrew'
+        }
+    ]
 };

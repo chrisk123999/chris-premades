@@ -5,7 +5,8 @@ async function damage({trigger: {entity: item}, workflow}) {
     let actor = workflow.actor;
     let items = actor.items.filter(i => i.system.equipped && i.type === 'weapon' && !constants.unarmedAttacks.includes(genericUtils.getIdentifier(i)));
     if (items.length > 1) return;
-    await workflowUtils.bonusDamage(workflow, 2);
+    let bonus = itemUtils.getConfig(item, 'formula');
+    await workflowUtils.bonusDamage(workflow, bonus);
 }
 
 export let dueling = {
@@ -19,5 +20,15 @@ export let dueling = {
                 priority: 200
             }
         ]
-    }
+    },
+    config: [
+        {
+            value: 'formula',
+            label: 'CHRISPREMADES.Config.Formula',
+            type: 'text',
+            default: '2',
+            homebrew: true,
+            category: 'homebrew'
+        }
+    ]
 };
