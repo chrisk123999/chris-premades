@@ -351,7 +351,7 @@ export class EffectMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
                 genericUtils.setProperty(tabsData, 'embeddedMacros', {
                     icon: 'fa-solid fa-feather-pointed',
                     label: 'CHRISPREMADES.Medkit.EmbeddedMacros.Label',
-                    tooltip: 'TODO',
+                    tooltip: 'CHRISPREMADES.Medkit.Tabs.EmbeddedMacros.Tooltip',
                     cssClass: ''
                 });
             }

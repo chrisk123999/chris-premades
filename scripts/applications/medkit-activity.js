@@ -146,7 +146,7 @@ export class ActivityMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
             context.tabs.embeddedMacros = {
                 icon: 'fa-solid fa-feather-pointed',
                 label: 'CHRISPREMADES.Medkit.EmbeddedMacros.Label',
-                tooltip: 'TODO',
+                tooltip: 'CHRISPREMADES.Medkit.Tabs.EmbeddedMacros.Tooltip',
                 cssClass: this.activeTab === 'embeddedMacros' ? 'active' : ''
             };
         }

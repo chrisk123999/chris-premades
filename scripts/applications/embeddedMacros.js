@@ -204,6 +204,48 @@ export const eventStructure = {
             documents: [
                 'item'
             ]
+        },
+        {
+            pass: 'deleted',
+            documents: [
+                'item'
+            ]
+        },
+        {
+            pass: 'actorCreated',
+            documents: [
+                'item'
+            ]
+        },
+        {
+            pass: 'actorDeleted',
+            documents: [
+                'item'
+            ]
+        },
+        {
+            pass: 'equipped',
+            documents: [
+                'item'
+            ]
+        },
+        {
+            pass: 'unequipped',
+            documents: [
+                'item'
+            ]
+        },
+        {
+            pass: 'actorEquipped',
+            documents: [
+                'item'
+            ]
+        },
+        {
+            pass: 'actorUnequipped',
+            documents: [
+                'item'
+            ]
         }
     ],
     death: [
@@ -652,7 +694,6 @@ export class EmbeddedMacros extends HandlebarsApplicationMixin(ApplicationV2) {
             passes: getAllDocumentPasses(this.document)
         };
         this._activeTab = this.context.macros[0]?.name;
-        console.log(this.context);
     }
     static DEFAULT_OPTIONS = {
         tag: 'form',
@@ -772,7 +813,6 @@ export class EmbeddedMacros extends HandlebarsApplicationMixin(ApplicationV2) {
     }
     formatInputs() {
         let macro = this.context.macros.find(i => i.name === this.activeTab);
-        console.log(macro);
         if (!macro) return [];
         let inputs = {
             macro: {
@@ -862,7 +902,6 @@ export class EmbeddedMacros extends HandlebarsApplicationMixin(ApplicationV2) {
                 value: macro.identifier,
             });
         }
-        console.log(inputs);
         return inputs;
     }
     async _prepareContext(options) {
