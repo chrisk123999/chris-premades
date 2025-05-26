@@ -4,6 +4,10 @@ function currentTurn() {
 function inCombat() {
     return !!game.combat;
 }
+function combatStarted() {
+    if (!inCombat()) return false;
+    return game.combat.started;
+}
 function perTurnCheck(entity, name, ownTurnOnly, tokenId) {
     if (!inCombat()) return true;
     if (ownTurnOnly && (tokenId !== game.combat.current.tokenId)) return false;
@@ -25,6 +29,7 @@ function isOwnTurn(token) {
 export let combatUtils = {
     currentTurn,
     inCombat,
+    combatStarted,
     perTurnCheck,
     setTurnCheck,
     getCurrentCombatantToken,

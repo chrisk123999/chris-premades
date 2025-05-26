@@ -1,5 +1,6 @@
 # 1.2.36 Release:
 ## New Modern Content:
+- Alert
 - Crusher
 - Elemental Adept
 - Grappler

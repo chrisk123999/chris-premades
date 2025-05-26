@@ -154,6 +154,7 @@ export {zoneOfTruth} from './macros/2024/spells/zoneOfTruth.js';
 //Items
 export {unarmedStrike} from './macros/2024/items/misc/unarmedStrike.js';
 //Feats
+export {alert} from './macros/2024/feats/alert.js';
 export {crusher} from './macros/2024/feats/crusher.js';
 export {elementalAdeptA, elementalAdeptC, elementalAdeptF, elementalAdeptL, elementalAdeptT} from './macros/2024/feats/elementalAdept.js';
 export {grappler} from './macros/2024/feats/grappler.js';
