@@ -1281,6 +1281,10 @@
             "HailOfThorns": {
                 "Burst": "Hail of Thorns: Burst"
             },
+            "Healer": {
+                "SelectHitDie": "Select which Hit Die to roll.",
+                "SpellOnly": "Only Spells:"
+            },
             "HealingLight": {
                 "Select": "How many dice do you want to use?"
             },

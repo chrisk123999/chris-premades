@@ -153,11 +153,13 @@ export {wrathfulSmite} from './macros/2024/spells/wrathfulSmite.js';
 export {zoneOfTruth} from './macros/2024/spells/zoneOfTruth.js';
 //Items
 export {unarmedStrike} from './macros/2024/items/misc/unarmedStrike.js';
+export {healersKit} from './macros/2024/items/healersKit.js';
 //Feats
 export {alert} from './macros/2024/feats/alert.js';
 export {crusher} from './macros/2024/feats/crusher.js';
 export {elementalAdeptA, elementalAdeptC, elementalAdeptF, elementalAdeptL, elementalAdeptT} from './macros/2024/feats/elementalAdept.js';
 export {grappler} from './macros/2024/feats/grappler.js';
+export {healer} from './macros/2024/feats/healer.js';
 export {heavyArmorMaster} from './macros/2024/feats/heavyArmorMaster.js';
 export {piercer} from './macros/2024/feats/piercer.js';
 export {savageAttacker} from './macros/2024/feats/savageAttacker.js';

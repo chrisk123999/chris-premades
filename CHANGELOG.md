@@ -4,6 +4,7 @@
 - Crusher
 - Elemental Adept
 - Grappler
+- Healer
 - Heavy Armor Master
 - Piercer
 - Savage Attacker
