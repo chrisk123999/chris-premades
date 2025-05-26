@@ -13,6 +13,8 @@
 - Telekinetic
 - Archery
 - Dueling
+- Great Weapon Fighting
+- Interception
 ## Bug Fixes
 - Grease
 

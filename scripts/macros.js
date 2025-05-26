@@ -168,6 +168,7 @@ export {telekineticShove} from './macros/2024/feats/telekinetic.js';
 export {archery} from './macros/2024/feats/archery.js';
 export {dueling} from './macros/2024/feats/dueling.js';
 export {greatWeaponFighting} from './macros/2024/feats/greatWeaponFighting.js';
+export {interception} from './macros/2024/feats/interception.js';
 //Class Features
 //Barbarian
 export {rage, rageRaging, rageUpkeep} from './macros/2024/classFeatures/barbarian/rage.js';
