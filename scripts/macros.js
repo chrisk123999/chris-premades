@@ -170,6 +170,7 @@ export {dueling} from './macros/2024/feats/dueling.js';
 export {greatWeaponFighting} from './macros/2024/feats/greatWeaponFighting.js';
 export {interception} from './macros/2024/feats/interception.js';
 export {protection, protectionMoved} from './macros/2024/feats/protection.js';
+export {thrownWeaponFighting} from './macros/2024/feats/thrownWeaponFighting.js';
 export {unarmedFighting, unarmedFightingUnarmedStrike} from './macros/2024/feats/unarmedFighting.js';
 //Class Features
 //Barbarian
