@@ -15,8 +15,10 @@
 - Dueling
 - Great Weapon Fighting
 - Interception
+- Protection
 ## Bug Fixes
 - Grease
+- Retaliation (Modern)
 
 # 1.2.35 Release:
 ## Bug Fixes:
