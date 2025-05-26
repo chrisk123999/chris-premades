@@ -63,16 +63,28 @@ function withChangedDamage(activity, formulaOrObj, types=[], {specificIndex = 0}
         }
         if (types.length) activityData.healing.types = new Set(types);
     } else {
-        let isCustom = activityData.damage.parts[specificIndex].custom.enabled;
-        if (isCustom || isFormula) {
-            if (formula?.toString()?.length) activityData.damage.parts[specificIndex].custom = {
-                enabled: true,
-                formula: formula.toString()
-            };
-        } else {
-            activityData.damage.parts[specificIndex].number = number;
-            activityData.damage.parts[specificIndex].denomination = denomination;
-            activityData.damage.parts[specificIndex].bonus = bonus;
+        // Dealing with activities on weapons whose damage includes the base damage is a bit of a headache; we'll probably discover more cases
+        // as time goes on that we'll want to account for, but this should be an okay start.
+        if (activityData.damage.includeBase && !activityData.damage.parts[specificIndex]) {
+            activityData.damage.includeBase = false;
+            activityData.damage.parts[specificIndex] = {
+                number: number,
+                denomination: denomination,
+                bonus: bonus + ' + @mod'
+            }
+        }
+        else if (activityData.damage.parts[specificIndex]) {
+            let isCustom = activityData.damage.parts[specificIndex].custom.enabled;
+            if (isCustom || isFormula) {
+                if (formula?.toString()?.length) activityData.damage.parts[specificIndex].custom = {
+                    enabled: true,
+                    formula: formula.toString()
+                };
+            } else {
+                activityData.damage.parts[specificIndex].number = number;
+                activityData.damage.parts[specificIndex].denomination = denomination;
+                activityData.damage.parts[specificIndex].bonus = bonus;
+            }
         }
         if (types.length) activityData.damage.parts[specificIndex].types = new Set(types);
     }

@@ -6,6 +6,6 @@ export let unarmedFighting = {
 };
 export let unarmedFightingUnarmedStrike = {
     ...unarmedFightingUnarmedStrikeLegacy,
-    version: unarmedFighting.version,
+    version: '1.2.36',
     rules: unarmedFighting.rules
 }

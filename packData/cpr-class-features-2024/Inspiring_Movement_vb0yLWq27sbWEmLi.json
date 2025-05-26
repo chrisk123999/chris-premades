@@ -165,7 +165,7 @@
         "identifier": "inspiringMovement",
         "source": "chris-premades",
         "rules": "modern",
-        "version": "1.2.36"
+        "version": "1.1.36"
       },
       "macros": {
         "midi": {
@@ -173,7 +173,7 @@
             "inspiringMovement"
           ]
         },
-        "item": [
+        "createItem": [
           "inspiringMovement"
         ]
       }
