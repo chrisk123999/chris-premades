@@ -166,6 +166,7 @@ export {speedy} from './macros/2024/feats/speedy.js';
 export {tavernBrawler, tavernBrawlerUnarmedStrike} from './macros/2024/feats/tavernBrawler.js';
 export {telekineticShove} from './macros/2024/feats/telekinetic.js';
 export {archery} from './macros/2024/feats/archery.js';
+export {defense} from './macros/2024/feats/defense.js';
 export {dueling} from './macros/2024/feats/dueling.js';
 export {greatWeaponFighting} from './macros/2024/feats/greatWeaponFighting.js';
 export {interception} from './macros/2024/feats/interception.js';

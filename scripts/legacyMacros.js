@@ -506,7 +506,7 @@ export {chromaticInfusion, reactiveResistance} from './macros/2014/feats/giftOfT
 export {cloudyEscape} from './macros/2014/feats/cloudyEscape.js';
 export {crusher} from './macros/2014/feats/crusher.js';
 export {remarkableRecovery} from './macros/2014/feats/remarkableRecovery.js';
-// export {dualWielder} from './macros/2014/feats/dualWielder.js';
+export {dualWielder} from './macros/2014/feats/dualWielder.js';
 export {frigidRetaliation} from './macros/2014/feats/frigidRetaliation.js';
 export {grappler, grapplerPin} from './macros/2014/feats/grappler.js';
 export {graspOfAvarice} from './macros/2014/feats/graspOfAvarice.js';

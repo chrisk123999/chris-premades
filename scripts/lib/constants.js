@@ -153,6 +153,11 @@ const rangedWeaponTypes = [
     'martialR',
     'simpleR'
 ]
+const armorTypes = [
+    'light',
+    'medium',
+    'heavy'
+]
 const damageTypeOptions = () => Object.entries(CONFIG.DND5E.damageTypes).map(i => ({label: i[1].label, value: i[0]}));
 const creatureTypeOptions = () => Object.entries(CONFIG.DND5E.creatureTypes).map(i => ({label: i[1].label, value: i[0]}));
 const actorCompendiumPacks = () => [{label: '', value: ''}, ...game.packs.filter(i => i.documentName === 'Actor').map(i => ({label: i.metadata.label, value: i.metadata.id}))];
@@ -552,6 +557,7 @@ export let constants = {
     weaponTypes,
     meleeWeaponTypes,
     rangedWeaponTypes,
+    armorTypes,
     damageTypeOptions,
     creatureTypeOptions,
     actorCompendiumPacks,

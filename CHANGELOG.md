@@ -12,16 +12,19 @@
 - Tavern Brawler
 - Telekinetic
 - Archery
+- Defense
 - Dueling
 - Great Weapon Fighting
 - Interception
 - Protection
 - Thrown Weapon Fighting
 - Unarmed Fighting
+## Returned Legacy Content:
+- Dual Wielder
 ## Bug Fixes
 - Grease
 ## API Updates:
-- Added the an "Item" event, which can run macros when an item is created, deleted, equipped, or unequipped. The "Create Item" event has been replaced with this. These macros will only run if the item is on an actor.
+- Added the "Item" event, which can run macros when an item is created, deleted, equipped, or unequipped. The "Create Item" event has been replaced with this. These macros will only run if the item is on an actor.
 
 # 1.2.35 Release:
 ## Bug Fixes:
