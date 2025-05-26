@@ -304,162 +304,157 @@
             "Name": {
                 "Label": "Name:"
             },
-            "NoMacros": {
-                "Content": "Change this!"
-            },
             "Pass": {
                 "Label": "Pass:",
+                "actorCreated": {
+                    "Label": "Actor Created"
+                },
+                "actorDeleted": {
+                    "Label": "Actor Deleted"
+                },
+                "actorEquipped": {
+                    "Label": "Actor Equipped"
+                },
+                "actorUnequipped": {
+                    "Label": "Actor Unequipped"
+                },
                 "applyDamage": {
-                    "Label": "Apply Damage",
-                    "Tooltip": "Change This!"
+                    "Label": "Apply Damage"
                 },
                 "attackRollComplete": {
-                    "Label": "Attack Roll Complete",
-                    "Tooltip": "Change This!"
+                    "Label": "Attack Roll Complete"
                 },
                 "bonus": {
-                    "Label": "Bonus",
-                    "Tooltip": "Change This!"
+                    "Label": "Bonus"
                 },
                 "combatEnd": {
-                    "Label": "Combat End",
-                    "Tooltip": "Change This!"
+                    "Label": "Combat End"
                 },
                 "combatStart": {
-                    "Label": "Combat Start",
-                    "Tooltip": "Change This!"
+                    "Label": "Combat Start"
                 },
                 "context": {
-                    "Label": "Context",
-                    "Tooltip": "Change This!"
+                    "Label": "Context"
                 },
                 "create": {
-                    "Label": "Create",
-                    "Tooltip": "Change This!"
+                    "Label": "Create"
                 },
                 "created": {
-                    "Label": "Created",
-                    "Tooltip": "Change This!"
+                    "Label": "Created"
                 },
                 "damageRollComplete": {
-                    "Label": "Damage Roll Complete",
-                    "Tooltip": "Change This!"
+                    "Label": "Damage Roll Complete"
                 },
                 "dead": {
-                    "Label": "Dead",
-                    "Tooltip": "Change This!"
+                    "Label": "Dead"
                 },
                 "deleted": {
-                    "Label": "Deleted",
-                    "Tooltip": "Change This!"
+                    "Label": "Deleted"
+                },
+                "equipped": {
+                    "Label": "Equipped"
                 },
                 "everyTurn": {
-                    "Label": "Every Turn",
-                    "Tooltip": "Change This!"
+                    "Label": "Every Turn"
+                },
+                "long": {
+                    "Label": "Long Rest"
+                },
+                "moved": {
+                    "Label": "Moved"
+                },
+                "movedNear": {
+                    "Label": "Moved Near"
                 },
                 "post": {
-                    "Label": "Post",
-                    "Tooltip": "Change This!"
+                    "Label": "Post"
                 },
                 "postAttackRoll": {
-                    "Label": "Post-Attack Roll",
-                    "Tooltip": "Change This!"
+                    "Label": "Post-Attack Roll"
                 },
                 "preItemRoll": {
-                    "Label": "Pre-Item Roll",
-                    "Tooltip": "Change This!"
+                    "Label": "Pre-Item Roll"
                 },
                 "preTargeting": {
-                    "Label": "Pre-Targeting",
-                    "Tooltip": "Change This!"
+                    "Label": "Pre-Targeting"
                 },
                 "preambleComplete": {
-                    "Label": "Preamble Complete",
-                    "Tooltip": "Change This!"
+                    "Label": "Preamble Complete"
                 },
                 "rollFinished": {
-                    "Label": "Roll Finished",
-                    "Tooltip": "Change This!"
+                    "Label": "Roll Finished"
                 },
                 "savesComplete": {
-                    "Label": "Saves Complete",
-                    "Tooltip": "Change This!"
+                    "Label": "Saves Complete"
                 },
                 "sceneApplyDamage": {
-                    "Label": "Scene Apply Damage",
-                    "Tooltip": "Change This!"
+                    "Label": "Scene Apply Damage"
                 },
                 "sceneAttackRollComplete": {
-                    "Label": "Scene Attack Roll Complete",
-                    "Tooltip": "Change This!"
+                    "Label": "Scene Attack Roll Complete"
+                },
+                "sceneBonus": {
+                    "Label": "Scene Bonus"
                 },
                 "sceneDamageRollComplete": {
-                    "Label": "Scene Damage Roll Complete",
-                    "Tooltip": "Change This!"
+                    "Label": "Scene Damage Roll Complete"
+                },
+                "sceneMoved": {
+                    "Label": "Scene Moved"
                 },
                 "scenePostAttackRoll": {
-                    "Label": "Scene Post-Attack Roll",
-                    "Tooltip": "Change This!"
+                    "Label": "Scene Post-Attack Roll"
                 },
                 "scenePreambleComplete": {
-                    "Label": "Scene Preamble Complete",
-                    "Tooltip": "Change This!"
+                    "Label": "Scene Preamble Complete"
                 },
                 "sceneRollFinished": {
-                    "Label": "Scene Roll Finished",
-                    "Tooltip": "Change This!"
+                    "Label": "Scene Roll Finished"
+                },
+                "short": {
+                    "Label": "Short Rest"
                 },
                 "situational": {
-                    "Label": "Situational",
-                    "Tooltip": "Change This!"
+                    "Label": "Situational"
                 },
                 "targetApplyDamage": {
-                    "Label": "Target Apply Damage",
-                    "Tooltip": "Change This!"
+                    "Label": "Target Apply Damage"
                 },
                 "targetAttackRollComplete": {
-                    "Label": "Target Attack Roll Complete",
-                    "Tooltip": "Change This!"
+                    "Label": "Target Attack Roll Complete"
                 },
                 "targetDamageRollComplete": {
-                    "Label": "Target Damage Roll Complete",
-                    "Tooltip": "Change This!"
+                    "Label": "Target Damage Roll Complete"
                 },
                 "targetPostAttackRoll": {
-                    "Label": "Target Post-Attack Roll",
-                    "Tooltip": "Change This!"
+                    "Label": "Target Post-Attack Roll"
                 },
                 "targetPreItemRoll": {
-                    "Label": "Target Pre-Item Roll",
-                    "Tooltip": "Change This!"
+                    "Label": "Target Pre-Item Roll"
                 },
                 "targetPreambleComplete": {
-                    "Label": "Target Preamble Complete",
-                    "Tooltip": "Change This!"
+                    "Label": "Target Preamble Complete"
                 },
                 "targetRollFinished": {
-                    "Label": "Target Roll Finished",
-                    "Tooltip": "Change This!"
+                    "Label": "Target Roll Finished"
                 },
                 "targetSavesComplete": {
-                    "Label": "Target Saves Complete",
-                    "Tooltip": "Change This!"
+                    "Label": "Target Saves Complete"
                 },
                 "turnEnd": {
-                    "Label": "Turn End",
-                    "Tooltip": "Change This!"
+                    "Label": "Turn End"
                 },
                 "turnEndNear": {
-                    "Label": "Turn End Near",
-                    "Tooltip": "Change This!"
+                    "Label": "Turn End Near"
                 },
                 "turnStart": {
-                    "Label": "Turn Start",
-                    "Tooltip": "Change This!"
+                    "Label": "Turn Start"
                 },
                 "turnStartNear": {
-                    "Label": "Turn Start Near",
-                    "Tooltip": "Change This!"
+                    "Label": "Turn Start Near"
+                },
+                "unequipped": {
+                    "Label": "Unequipped"
                 }
             },
             "Priority": {
@@ -2404,6 +2399,9 @@
                     "Source": "Source:",
                     "Tooltip": "Tools for development, you shouldn't be here...",
                     "Version": "Version:"
+                },
+                "EmbeddedMacros": {
+                    "Tooltip": "Create macros using the CPR event system."
                 },
                 "GenericFeatures": {
                     "Label": "Generic Features",
