@@ -21,7 +21,7 @@ async function use({trigger, workflow}) {
 }
 export let retaliation = {
     name: 'Retaliation',
-    version: '1.1.23',
+    version: '1.2.36',
     rules: 'modern',
     midi: {
         item: [

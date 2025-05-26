@@ -15,6 +15,9 @@
 - Dueling
 - Great Weapon Fighting
 - Interception
+- Protection
+- Thrown Weapon Fighting
+- Unarmed Fighting
 ## Bug Fixes
 - Grease
 ## API Updates:
