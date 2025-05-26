@@ -7,7 +7,14 @@ import {midiEvents} from './events/midi.js';
 import {movementEvents} from './events/movement.js';
 import {templateEvents} from './events/template.js';
 import {dae} from './integrations/dae.js';
-import {createHeaderButton, renderItemSheet, renderEffectConfig, renderCompendium, renderActivitySheet, renderRegionConfig} from './extensions/titlebar.js';
+import {
+    createHeaderButton,
+    renderItemSheet,
+    renderEffectConfig,
+    renderCompendium,
+    renderActivitySheet,
+    renderRegionConfig
+} from './extensions/titlebar.js';
 import {genericUtils, itemUtils} from './utils.js';
 import {chat} from './extensions/chat.js';
 import {sidebar} from './extensions/sidebar.js';
@@ -26,6 +33,10 @@ import {activities} from './extensions/activities.js';
 import {itemEvent} from './events/item.js';
 import {template} from './extensions/template.js';
 import {tidy5e} from './integrations/tidy5e.js';
+import {gambitPremades} from './integrations/gambitsPremades';
+import * as utils from './utils';
+import {miscPremades} from './integrations/miscPremades';
+
 export function registerHooks() {
     Hooks.on('createSetting', genericUtils.createUpdateSetting);
     Hooks.on('updateSetting', genericUtils.createUpdateSetting);
@@ -118,4 +129,11 @@ export function registerHooks() {
     }
     Hooks.once('tidy5e-sheet.ready', tidy5e.itemTitleBar);
     Hooks.on('aa.preDataSanitize', automatedAnimations.preDataSanitize);
+    if (game.modules.get('babele')?.active) {
+        Hooks.once('babele.ready', () => {
+            if (game.modules.get('gambits-premades')?.active) gambitPremades.init(utils.genericUtils.getCPRSetting('gambitPremades'));
+            if (game.modules.get('midi-item-showcase-community')?.active) miscPremades.init(utils.genericUtils.getCPRSetting('miscPremades'));
+        });
+    }
+
 }
