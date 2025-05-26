@@ -9,6 +9,7 @@ async function attack({trigger: {entity: item}, workflow}) {
 export let archery = {
     name: 'Archery',
     version: '1.2.36',
+    rules: 'modern',
     midi: {
         actor: [
             {

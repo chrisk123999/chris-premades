@@ -12,6 +12,7 @@ async function damage({trigger: {entity: item}, workflow}) {
 export let dueling = {
     name: 'Dueling',
     version: '1.2.36',
+    rules: 'modern',
     midi: {
         actor: [
             {
