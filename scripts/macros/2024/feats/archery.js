@@ -1,4 +1,4 @@
-import {constants, workflowUtils} from '../../../utils.js';
+import {constants, itemUtils, workflowUtils} from '../../../utils.js';
 
 async function attack({trigger: {entity: item}, workflow}) {
     if (!workflow.targets.size || !constants.rangedWeaponTypes.includes(workflow.item.system.type.value)) return;

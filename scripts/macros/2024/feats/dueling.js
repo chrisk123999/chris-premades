@@ -1,4 +1,4 @@
-import {constants, genericUtils, workflowUtils} from '../../../utils.js';
+import {constants, genericUtils, itemUtils, workflowUtils} from '../../../utils.js';
 
 async function damage({trigger: {entity: item}, workflow}) {
     if (!workflow.hitTargets.size || workflow.attackMode === 'twoHanded') return;
