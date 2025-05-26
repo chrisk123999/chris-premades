@@ -7,7 +7,7 @@ function collectItemMacros(item, pass) {
     let macroList = [];
     macroList.push(...getItemMacroData(item));
     if (!macroList.length) return [];
-    return macroList.map(i => custom.getMacro(i, genericUtils.getRules(item))).filter(j => j).filter(k => k.item.find(l => l.pass === pass)).flatMap(m => m.item).filter(n => n.pass === pass);
+    return macroList.map(i => custom.getMacro(i, genericUtils.getRules(item))).filter(j => j).filter(k => k.item?.find(l => l.pass === pass)).flatMap(m => m.item).filter(n => n.pass === pass);
 }
 function collectAllMacros(item, pass) {
     let triggers = [];
