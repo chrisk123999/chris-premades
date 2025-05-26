@@ -583,13 +583,13 @@ export class ItemMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
                 }
             },
             {
-                id: 'createItem',
-                label: 'CHRISPREMADES.Medkit.Tabs.DevTools.CreateItem',
-                value: JSON?.stringify(this.flags?.macros?.createItem),
+                id: 'item',
+                label: 'CHRISPREMADES.Medkit.Tabs.DevTools.Item',
+                value: JSON?.stringify(this.flags?.macros?.item),
                 placeholder: '[&quot;macroNameOne&quot;, &quot;macroNameTwo&quot;]',
                 isText: true,
                 flag: {
-                    key: 'macros.createItem',
+                    key: 'macros.item',
                     value: 'array'
                 }
             },

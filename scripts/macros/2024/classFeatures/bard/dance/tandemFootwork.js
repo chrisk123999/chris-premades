@@ -35,7 +35,7 @@ export let tandemFootwork = {
             }
         ]
     },
-    createItem: [
+    item: [
         {
             pass: 'created',
             macro: added

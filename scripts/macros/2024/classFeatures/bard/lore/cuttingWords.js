@@ -125,7 +125,7 @@ export let cuttingWords = {
             priority: 50
         }
     ],
-    createItem: [
+    item: [
         {
             pass: 'created',
             macro: added

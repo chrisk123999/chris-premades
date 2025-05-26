@@ -148,7 +148,7 @@ export let channelDivinity = {
             }
         ]
     },
-    createItem: [
+    item: [
         {
             pass: 'created',
             macro: added

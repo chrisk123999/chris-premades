@@ -276,7 +276,6 @@
             "StatusRemove": "Remove from Status Effects"
         },
         "EmbeddedMacros": {
-            "HeaderHint": "Available in the scope by default are all <code>xUtils</code> (e.g. <code>itemUtils</code>), as well as <code>constants</code>, <code>Crosshairs</code>, <code>Summons</code>, <code>Teleport</code>, and <code>DialogApp</code>. For help with writing CPR macros, visit the Discord channel <a href=\"https://discord.com/channels/1089258451949064296/1118332135749734451\">here</a>.",
             "Conscious": {
                 "Label": "Conscious:"
             },
@@ -295,6 +294,7 @@
             "Distance": {
                 "Label": "Distance:"
             },
+            "HeaderHint": "Available in the scope by default are all <code>xUtils</code> (e.g. <code>itemUtils</code>), as well as <code>constants</code>, <code>Crosshairs</code>, <code>Summons</code>, <code>Teleport</code>, and <code>DialogApp</code>. For help with writing CPR macros, visit the Discord channel <a href=\"https://discord.com/channels/1089258451949064296/1118332135749734451\">here</a>.",
             "Identifier": {
                 "Label": "Identifier:"
             },
@@ -476,9 +476,9 @@
                 "aura": "Aura",
                 "check": "Check",
                 "combat": "Combat",
-                "createItem": "Item Created",
                 "death": "Death",
                 "effect": "Effect",
+                "item": "Item",
                 "midi-actor": "Midi-Qol Actor",
                 "midi-item": "Midi-Qol Item",
                 "movement": "Movement",
@@ -1237,10 +1237,10 @@
                 "Size": "Target is too big to be grappled!"
             },
             "Grappler": {
+                "Grapple": "Attempt to grapple {tokenName}?",
                 "Pin": "Grappler: Pin",
                 "Pinned": "Grappler: Pinned By {tokenName}",
-                "Pinning": "Grappler: Pinning {tokenName}",
-                "Grapple": "Attempt to grapple {tokenName}?"
+                "Pinning": "Grappler: Pinning {tokenName}"
             },
             "GraspOfHadar": {
                 "Select": "Which target?"
@@ -2322,10 +2322,10 @@
                 }
             },
             "EmbeddedMacros": {
-                "Label": "Embedded Macros",
                 "Delete": "Delete Embedded Macro",
+                "Edit": "Edit Embedded Macros",
                 "Invalid": "Invalid field '{fieldName}' in embedded macro '{macroName}'!",
-                "Edit": "Edit Embedded Macros"
+                "Label": "Embedded Macros"
             },
             "Fieldsets": {
                 "damage": {
@@ -2383,11 +2383,11 @@
                     "AutomationInfo": "Configure Automation Info:",
                     "Check": "Check:",
                     "Combat": "Combat:",
-                    "CreateItem": "Create Item:",
                     "Death": "Death:",
                     "Equipment": "Equipment:",
                     "HasAnimation": "Has Animation:",
                     "Identifier": "Identifier:",
+                    "Item": "Item:",
                     "Label": "Dev Tools",
                     "MacroInfo": "Configure Macro Info:",
                     "MidiActor": "Midi, Actor:",
@@ -2890,9 +2890,9 @@
             "CreatureNames": {
                 "AberrantSpirit": "Aberrant Spirit",
                 "AberrantSpiritBeholderkin": "Aberrant Spirit (Beholderkin)",
+                "AberrantSpiritMindFlayer": "Aberrant Spirit (Mind Flayer)",
                 "AberrantSpiritSlaad": "Aberrant Spirit (Slaad)",
                 "AberrantSpiritStarSpawn": "Aberrant Spirit (Star Spawn)",
-                "AberrantSpiritMindFlayer": "Aberrant Spirit (Mind Flayer)",
                 "AirElemental": "Air Elemental",
                 "BeastOfTheLand": "Beast of the Land",
                 "BeastOfTheSea": "Beast of the Sea",

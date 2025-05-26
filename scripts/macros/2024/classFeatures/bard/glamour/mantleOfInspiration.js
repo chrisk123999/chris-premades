@@ -55,7 +55,7 @@ export let mantleOfInspiration = {
             }
         ]
     },
-    createItem: [
+    item: [
         {
             pass: 'created',
             macro: added

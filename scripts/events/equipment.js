@@ -2,11 +2,19 @@ import {compendiumUtils, constants, genericUtils, itemUtils} from '../utils.js';
 import {custom} from './custom.js';
 import {bg3} from '../macros/2014/homebrew/bg3WeaponActions.js';
 import {effects} from '../extensions/effects.js';
+import {itemEvent} from './item.js';
 async function addOrUpdate(item, updates, options, id) {
     if (!item.actor) return;
     let currentlyEquipped = updates.system?.equipped ?? item.system.equipped;
     let previouslyEquipped = item.system?.equipped;
-    if (currentlyEquipped && !previouslyEquipped) await effects.specialDurationEquipment(item);
+    if (currentlyEquipped && !previouslyEquipped) {
+        await effects.specialDurationEquipment(item);
+        await itemEvent.executeMacroPass(item, 'equipped');
+        await itemEvent.executeMacroPass(item, 'actorEquipped');
+    } else if (!currentlyEquipped && previouslyEquipped) {
+        await itemEvent.executeMacroPass(item, 'unequipped');
+        await itemEvent.executeMacroPass(item, 'actorUnequipped');
+    }
     if ((previouslyEquipped != currentlyEquipped) && item.type === 'weapon' && genericUtils.getCPRSetting('bg3WeaponActionsEnabled')) await bg3.changeItem(item, currentlyEquipped);
     let identifier = item.flags['chris-premades']?.equipment?.identifier;
     if (!identifier) return;

@@ -22,7 +22,7 @@ export let fontOfInspiration = {
     name: 'Font of Inspiration',
     version: '1.1.30',
     rules: 'modern',
-    createItem: [
+    item: [
         {
             pass: 'created',
             macro: added

@@ -198,7 +198,7 @@ export const eventStructure = {
             ]
         }
     ],
-    createItem: [
+    item: [
         {
             pass: 'created',
             documents: [

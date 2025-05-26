@@ -51,7 +51,7 @@ export let inspiringMovement = {
             }
         ]
     },
-    createItem: [
+    item: [
         {
             pass: 'created',
             macro: added

@@ -183,7 +183,7 @@
         "identifier": "cuttingWords",
         "source": "chris-premades",
         "rules": "modern",
-        "version": "1.2.6"
+        "version": "1.2.36"
       },
       "macros": {
         "midi": {
@@ -197,7 +197,7 @@
         "skill": [
           "cuttingWords"
         ],
-        "createItem": [
+        "item": [
           "cuttingWords"
         ]
       },

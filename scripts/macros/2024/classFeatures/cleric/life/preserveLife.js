@@ -54,7 +54,7 @@ export let preserveLife = {
             }
         ]
     },
-    createItem: [
+    item: [
         {
             pass: 'created',
             macro: added

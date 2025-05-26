@@ -23,7 +23,7 @@ import {automatedAnimations} from './integrations/automatedAnimations.js';
 import {actions} from './extensions/actions.js';
 import {item} from './applications/item.js';
 import {activities} from './extensions/activities.js';
-import {itemEvent} from './events/createItem.js';
+import {itemEvent} from './events/item.js';
 import {template} from './extensions/template.js';
 import {tidy5e} from './integrations/tidy5e.js';
 export function registerHooks() {
@@ -104,6 +104,7 @@ export function registerHooks() {
         Hooks.on('deleteToken', auras.deleteToken);
         Hooks.on('canvasReady', auras.canvasReady);
         Hooks.on('createItem', itemEvent.created);
+        Hooks.on('deleteItem', itemEvent.deleted);
         Hooks.on('getSceneConfigHeaderButtons', createHeaderButton);
         Hooks.on('getCompendiumHeaderButtons', createHeaderButton);
         Hooks.on('updateActor', effects.specialDurationHitPoints);
