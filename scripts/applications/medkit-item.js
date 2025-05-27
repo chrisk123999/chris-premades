@@ -758,6 +758,11 @@ export class ItemMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
         let currentTabId = this.element.querySelector('.item.active').getAttribute('data-tab');
         this.activeTab = currentTabId;
         /* Get the data ready and add it to the current item */
+        if (this.item.flags?.['chris-premades']?.embeddedMacros) {
+            foundry.utils.mergeObject(this.flags, {
+                embeddedMacros: this.item.flags['chris-premades'].embeddedMacros
+            });
+        }
         this._cleanObject(this.flags); // Clean up any leftover undefined flags from adding/removing properties
         await this.item.update({'flags.-=chris-premades': null});
         let genericConfigs = genericUtils.getProperty(this.flags, 'config.generic');
