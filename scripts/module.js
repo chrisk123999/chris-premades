@@ -64,8 +64,10 @@ Hooks.once('ready', () => {
     registerHooks();
     ddbi.ready();
     dae.injectFlags();
-    if (game.modules.get('gambits-premades')?.active) gambitPremades.init(utils.genericUtils.getCPRSetting('gambitPremades'));
-    if (game.modules.get('midi-item-showcase-community')?.active) miscPremades.init(utils.genericUtils.getCPRSetting('miscPremades'));
+    if (!game.modules.get('babele')?.active) {
+        if (game.modules.get('gambits-premades')?.active) gambitPremades.init(utils.genericUtils.getCPRSetting('gambitPremades'));
+        if (game.modules.get('midi-item-showcase-community')?.active) miscPremades.init(utils.genericUtils.getCPRSetting('miscPremades'));
+    }
     if (utils.genericUtils.getCPRSetting('disableSpecialEffects')) conditions.disableSpecialEffects(true);
     if (utils.genericUtils.getCPRSetting('firearmSupport')) customTypes.firearm(true);
     if (game.user.isGM) {
