@@ -67,6 +67,11 @@ Hooks.once('ready', () => {
     if (!game.modules.get('babele')?.active) {
         if (game.modules.get('gambits-premades')?.active) gambitPremades.init(utils.genericUtils.getCPRSetting('gambitPremades'));
         if (game.modules.get('midi-item-showcase-community')?.active) miscPremades.init(utils.genericUtils.getCPRSetting('miscPremades'));
+    } else {
+        Hooks.once('babele.ready', () => {
+            if (game.modules.get('gambits-premades')?.active) gambitPremades.init(utils.genericUtils.getCPRSetting('gambitPremades'));
+            if (game.modules.get('midi-item-showcase-community')?.active) miscPremades.init(utils.genericUtils.getCPRSetting('miscPremades'));
+        });
     }
     if (utils.genericUtils.getCPRSetting('disableSpecialEffects')) conditions.disableSpecialEffects(true);
     if (utils.genericUtils.getCPRSetting('firearmSupport')) customTypes.firearm(true);
