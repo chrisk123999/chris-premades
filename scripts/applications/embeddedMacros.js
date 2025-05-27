@@ -532,6 +532,12 @@ export const eventStructure = {
             documents: [
                 'item',
                 'activeeffect'
+            ],
+            requiredValues: [
+                {
+                    key: 'distance',
+                    types: [Number]
+                }
             ]
         }
     ],

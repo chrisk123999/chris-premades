@@ -129,7 +129,7 @@ function getSortedTriggers(tokens, pass, token) {
                 token: trigger.token,
                 target: trigger.target,
                 distance: trigger.distance,
-                macroName: typeof macro.macro === 'string' ? macro.macro : macro.macro.name
+                macroName: typeof macro.macro === 'string' ? 'Embedded' : macro.macro.name
             });
         });
     });

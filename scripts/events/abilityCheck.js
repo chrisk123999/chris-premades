@@ -117,7 +117,7 @@ function getSortedTriggers(actor, pass, checkId, options, roll, config, dialog, 
                 dialog,
                 message,
                 sourceActor,
-                macroName: typeof macro.macro === 'string' ? macro.macro : macro.macro.name
+                macroName: typeof macro.macro === 'string' ? 'Embedded' : macro.macro.name
             });
         });
     });
