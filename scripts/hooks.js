@@ -26,8 +26,6 @@ import {activities} from './extensions/activities.js';
 import {itemEvent} from './events/item.js';
 import {template} from './extensions/template.js';
 import {tidy5e} from './integrations/tidy5e.js';
-import {gambitPremades} from './integrations/gambitsPremades';
-import {miscPremades} from './integrations/miscPremades';
 export function registerHooks() {
     Hooks.on('createSetting', genericUtils.createUpdateSetting);
     Hooks.on('updateSetting', genericUtils.createUpdateSetting);
