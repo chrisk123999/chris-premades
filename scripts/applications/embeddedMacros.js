@@ -522,10 +522,14 @@ export const eventStructure = {
             documents: [
                 'item',
                 'activeeffect'
-            ],
-            options: [
-                'scene'
             ]
+        },
+        {
+            pass: 'movedScene',
+            documents: [
+                'item',
+                'activeeffect'
+            ],
         },
         {
             pass: 'movedNear',
@@ -538,6 +542,26 @@ export const eventStructure = {
                     key: 'distance',
                     types: [Number]
                 }
+            ]
+        },
+        {
+            pass: 'create',
+            documents: [
+                'item',
+                'activeeffect'
+            ],
+            options: [
+                'scene'
+            ]
+        },
+        {
+            pass: 'deleted',
+            documents: [
+                'item',
+                'activeeffect'
+            ],
+            options: [
+                'scene'
             ]
         }
     ],

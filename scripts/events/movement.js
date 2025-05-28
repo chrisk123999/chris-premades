@@ -86,7 +86,8 @@ function getSortedTriggers(tokens, pass, token) {
     let allTriggers = [];
     tokens.forEach(i => {
         let distance;
-        if (token) {
+        let ignoredPasses = ['create', 'deleted', 'sceneCreated', 'sceneDeleted'];
+        if (token && !ignoredPasses.includes(pass)) {
             let perfSetting = genericUtils.getCPRSetting('movementPerformance');
             distance = tokenUtils.getDistance(token.object, i.object, {wallsBlock: perfSetting > 0, checkCover: perfSetting === 3});
             if (distance < 0) return;
@@ -247,5 +248,6 @@ async function updateToken(token, updates, options, userId) {
 }
 export let movementEvents = {
     updateToken,
-    preUpdateToken
+    preUpdateToken,
+    executeMacroPass
 };
