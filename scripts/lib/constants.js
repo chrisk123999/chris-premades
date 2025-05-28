@@ -144,13 +144,13 @@ const unarmedAttacks = [
 ];
 const weaponTypes = [
     'martialM',
-    'simpleS',
+    'simpleM',
     'martialR',
     'simpleR'
 ];
 const meleeWeaponTypes = [
     'martialM',
-    'simpleS'
+    'simpleM'
 ];
 const rangedWeaponTypes = [
     'martialR',
