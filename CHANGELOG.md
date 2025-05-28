@@ -21,12 +21,15 @@
 - Protection
 - Thrown Weapon Fighting
 - Unarmed Fighting
-## Returned Legacy Content:
+## New Legacy Content:
 - Dual Wielder
 ## Bug Fixes
 - Grease
 ## API Updates:
 - Added the "Item" event, which can run macros when an item is created, deleted, equipped, or unequipped. The "Create Item" event has been replaced with this. These macros will only run if the item is on an actor.
+- Added a token created and token deleted pass to the movement event.
+## Update Notes:
+- Added Embedded Macros, which can be access via the Medkit after being enabled in general settings. Macros created here will executed by CPR using our extensive event system. This is similar to making macros using the DIME editor for Midi-Qol and DAE. Visit the macro writing channel on the CPR Discord for assistance and troubleshooting of embedded macros.
 
 # 1.2.35 Release:
 ## Bug Fixes:

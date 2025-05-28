@@ -1,0 +1,400 @@
+{
+  "name": "Dagger of Dragon Detection",
+  "type": "weapon",
+  "effects": [
+    {
+      "name": "Dragon Detected",
+      "changes": [
+        {
+          "key": "macro.tokenMagic",
+          "mode": 0,
+          "value": "glow",
+          "priority": 20
+        }
+      ],
+      "transfer": false,
+      "img": "icons/creatures/abilities/wing-batlike-white-blue.webp",
+      "_id": "wfhQHPVS5Bk8UdA8",
+      "type": "base",
+      "system": {},
+      "disabled": false,
+      "duration": {
+        "startTime": null,
+        "seconds": null,
+        "combat": null,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "description": "",
+      "origin": null,
+      "tint": "#ffffff",
+      "statuses": [],
+      "sort": 0,
+      "flags": {
+        "dae": {
+          "enableCondition": "",
+          "disableCondition": "",
+          "disableIncapacitated": false,
+          "selfTarget": false,
+          "selfTargetAlways": false,
+          "dontApply": true,
+          "stackable": "multi",
+          "showIcon": true,
+          "durationExpression": "",
+          "macroRepeat": "none",
+          "specialDuration": []
+        },
+        "dnd5e": {
+          "riders": {
+            "statuses": []
+          }
+        },
+        "core": {
+          "overlay": false
+        },
+        "ActiveAuras": {
+          "isAura": false,
+          "aura": "None",
+          "nameOverride": "",
+          "radius": "",
+          "alignment": "",
+          "type": "",
+          "customCheck": "",
+          "ignoreSelf": false,
+          "height": false,
+          "hidden": false,
+          "displayTemp": false,
+          "hostile": false,
+          "onlyOnce": false,
+          "wallsBlock": "system",
+          "statuses": []
+        },
+        "chris-premades": {
+          "noAnimation": false,
+          "conditions": [],
+          "specialDuration": [],
+          "info": {
+            "identifier": "dragonDetected"
+          }
+        }
+      },
+      "_key": "!items.effects!y3BWUz53A6k1hCHD.wfhQHPVS5Bk8UdA8"
+    }
+  ],
+  "system": {
+    "activities": {
+      "attackDaggerIIII": {
+        "type": "attack",
+        "_id": "attackDaggerIIII",
+        "sort": 0,
+        "activation": {
+          "type": "action",
+          "value": null,
+          "override": false
+        },
+        "consumption": {
+          "targets": [],
+          "scaling": {
+            "allowed": false,
+            "max": ""
+          },
+          "spellSlot": true
+        },
+        "description": {},
+        "duration": {
+          "value": "",
+          "units": "turn",
+          "special": "",
+          "override": true,
+          "concentration": false
+        },
+        "effects": [],
+        "range": {
+          "override": false
+        },
+        "target": {
+          "template": {
+            "contiguous": false,
+            "units": "ft"
+          },
+          "affects": {
+            "choice": false
+          },
+          "override": false,
+          "prompt": true
+        },
+        "uses": {
+          "spent": null,
+          "recovery": []
+        },
+        "attack": {
+          "ability": "",
+          "bonus": "",
+          "critical": {
+            "threshold": null
+          },
+          "flat": false,
+          "type": {
+            "value": "melee",
+            "classification": "weapon"
+          }
+        },
+        "damage": {
+          "parts": [],
+          "includeBase": true,
+          "critical": {
+            "bonus": ""
+          }
+        },
+        "useConditionText": "",
+        "effectConditionText": "",
+        "attackMode": "oneHanded",
+        "ammunition": "",
+        "otherActivityUuid": "",
+        "macroData": {
+          "name": "",
+          "command": ""
+        },
+        "ignoreTraits": {
+          "idi": false,
+          "idr": false,
+          "idv": false,
+          "ida": false
+        },
+        "midiProperties": {
+          "ignoreTraits": [],
+          "triggeredActivityId": "none",
+          "triggeredActivityConditionText": "",
+          "triggeredActivityTargets": "targets",
+          "triggeredActivityRollAs": "self",
+          "forceDialog": false,
+          "confirmTargets": "default",
+          "automationOnly": false,
+          "identifier": "",
+          "autoTargetType": "any",
+          "autoTargetAction": "default",
+          "otherActivityCompatible": true,
+          "displayActivityName": false,
+          "rollMode": "default",
+          "chooseEffects": false,
+          "toggleEffect": false,
+          "ignoreFullCover": false
+        },
+        "otherActivityId": "",
+        "useConditionReason": "",
+        "isOverTimeFlag": false,
+        "overTimeProperties": {
+          "saveRemoves": true,
+          "preRemoveConditionText": "",
+          "postRemoveConditionText": ""
+        }
+      }
+    },
+    "uses": {
+      "spent": null,
+      "recovery": []
+    },
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "identifier": "dagger",
+    "source": {
+      "book": "PHB 2024",
+      "page": "",
+      "license": "",
+      "custom": "",
+      "rules": "2024",
+      "revision": 1
+    },
+    "identified": true,
+    "unidentified": {
+      "description": ""
+    },
+    "container": null,
+    "quantity": 1,
+    "weight": {
+      "value": 1,
+      "units": "lb"
+    },
+    "price": {
+      "value": 2,
+      "denomination": "gp"
+    },
+    "rarity": "",
+    "attunement": "required",
+    "armor": {
+      "value": null
+    },
+    "cover": null,
+    "crewed": false,
+    "hp": {
+      "value": null,
+      "max": null,
+      "dt": null,
+      "conditions": ""
+    },
+    "type": {
+      "value": "simpleM",
+      "baseItem": "dagger"
+    },
+    "ammunition": {},
+    "damage": {
+      "base": {
+        "number": 1,
+        "denomination": 4,
+        "bonus": "",
+        "types": [
+          "piercing"
+        ],
+        "custom": {
+          "enabled": false,
+          "formula": ""
+        },
+        "scaling": {
+          "mode": "",
+          "number": null,
+          "formula": ""
+        }
+      },
+      "versatile": {
+        "number": null,
+        "denomination": null,
+        "types": [],
+        "custom": {
+          "enabled": false
+        },
+        "scaling": {
+          "number": 1
+        }
+      }
+    },
+    "magicalBonus": 1,
+    "mastery": "nick",
+    "properties": [
+      "fin",
+      "lgt",
+      "thr",
+      "mgc"
+    ],
+    "proficient": null,
+    "range": {
+      "value": 20,
+      "long": 60,
+      "units": "ft",
+      "reach": null
+    },
+    "attuned": true,
+    "equipped": true
+  },
+  "flags": {
+    "ddbimporter": {
+      "originalName": "Dagger",
+      "version": "6.0.54",
+      "dndbeyond": {
+        "type": "Dagger",
+        "filterType": "Weapon",
+        "isConsumable": false,
+        "isContainer": false,
+        "isCustomItem": false,
+        "homebrew": false,
+        "isMonkWeapon": true,
+        "isPack": false,
+        "levelInfusionGranted": null,
+        "tags": [
+          "Damage",
+          "Combat"
+        ],
+        "sources": [
+          {
+            "sourceId": 148,
+            "pageNumber": null,
+            "sourceType": 1
+          }
+        ],
+        "damage": {
+          "parts": []
+        },
+        "classFeatures": [],
+        "ability": "dex"
+      },
+      "is2014": false,
+      "is2024": true,
+      "legacy": false,
+      "id": 0,
+      "entityTypeId": 0,
+      "definitionEntityTypeId": 1782728300,
+      "definitionId": 3
+    },
+    "dnd5e": {
+      "last": {
+        "attackDaggerIIII": {
+          "attackMode": "oneHanded",
+          "mastery": "nick",
+          "damageType": {
+            "0": "piercing"
+          }
+        }
+      },
+      "riders": {
+        "activity": []
+      }
+    },
+    "midi-qol": {
+      "fumbleThreshold": null,
+      "rollAttackPerTarget": "default",
+      "removeAttackDamageButtons": "default",
+      "itemCondition": "",
+      "reactionCondition": "",
+      "otherCondition": "",
+      "effectCondition": ""
+    },
+    "midiProperties": {
+      "autoFailFriendly": false,
+      "autoSaveFriendly": false,
+      "magicdam": false,
+      "magiceffect": false,
+      "noConcentrationCheck": false,
+      "toggleEffect": false,
+      "ignoreTotalCover": false
+    },
+    "chris-premades": {
+      "embeddedMacros": [
+        {
+          "type": "movement",
+          "name": "Dragon Detection Move",
+          "priority": "50",
+          "pass": "moved",
+          "macro": "let range = 120;\nlet monsterType = 'dragon';\n\nif (!itemUtils.getEquipmentState(trigger.entity)) return;\nlet effect = effectUtils.getEffectByIdentifier(trigger.token.actor, 'dragonDetected');\nlet found = trigger.token.document.parent.tokens.contents.find(token => tokenUtils.getDistance(trigger.token, token, {wallsBlock: false}) <= range && actorUtils.typeOrRace(token.actor) === monsterType);\nif (found) {\n\tif (effect) {\n\t\treturn;\n\t} else {\n\t\tlet sourceEffect = trigger.entity.effects?.contents[0];\n\t\tif (!sourceEffect) return;\n\t\tlet effectData = genericUtils.duplicate(sourceEffect.toObject());\n\t\tawait effectUtils.createEffect(trigger.token.actor, effectData);\n\t}\n} else {\n\tif (!effect) {\n\t\treturn;\n\t} else {\n\t\tawait genericUtils.remove(effect);\n\t}\n}"
+        },
+        {
+          "type": "movement",
+          "name": "Dragon Detection Placed",
+          "priority": "50",
+          "pass": "sceneCreate",
+          "macro": "let range = 120;\nlet monsterType = 'dragon';\n\nif (!itemUtils.getEquipmentState(trigger.entity)) return;\nlet effect = effectUtils.getEffectByIdentifier(trigger.token.actor, 'dragonDetected');\nlet found = trigger.token.document.parent.tokens.contents.find(token => tokenUtils.getDistance(trigger.token, token, {wallsBlock: false}) <= range && actorUtils.typeOrRace(token.actor) === monsterType);\nif (found) {\n\tif (effect) {\n\t\treturn;\n\t} else {\n\t\tlet sourceEffect = trigger.entity.effects?.contents[0];\n\t\tif (!sourceEffect) return;\n\t\tlet effectData = genericUtils.duplicate(sourceEffect.toObject());\n\t\tawait effectUtils.createEffect(trigger.token.actor, effectData);\n\t}\n} else {\n\tif (!effect) {\n\t\treturn;\n\t} else {\n\t\tawait genericUtils.remove(effect);\n\t}\n}"
+        },
+        {
+          "type": "movement",
+          "name": "Dragon Detection Removed",
+          "priority": "50",
+          "pass": "sceneDeleted",
+          "macro": "let range = 120;\nlet monsterType = 'dragon';\n\nif (!itemUtils.getEquipmentState(trigger.entity)) return;\nlet effect = effectUtils.getEffectByIdentifier(trigger.token.actor, 'dragonDetected');\nlet found = trigger.token.document.parent.tokens.contents.find(token => tokenUtils.getDistance(trigger.token, token, {wallsBlock: false}) <= range && actorUtils.typeOrRace(token.actor) === monsterType && trigger.target != token);\nif (found) {\n\tif (effect) {\n\t\treturn;\n\t} else {\n\t\tlet sourceEffect = trigger.entity.effects?.contents[0];\n\t\tif (!sourceEffect) return;\n\t\tlet effectData = genericUtils.duplicate(sourceEffect.toObject());\n\t\tawait effectUtils.createEffect(trigger.token.actor, effectData);\n\t}\n} else {\n\tif (!effect) {\n\t\treturn;\n\t} else {\n\t\tawait genericUtils.remove(effect);\n\t}\n}"
+        },
+        {
+          "type": "movement",
+          "name": "Dragon Detection Other Moved",
+          "priority": "50",
+          "pass": "movedScene",
+          "macro": "let range = 120;\nlet monsterType = 'dragon';\n\nif (!itemUtils.getEquipmentState(trigger.entity)) return;\nlet effect = effectUtils.getEffectByIdentifier(trigger.token.actor, 'dragonDetected');\nlet found = trigger.token.document.parent.tokens.contents.find(token => tokenUtils.getDistance(trigger.token, token, {wallsBlock: false}) <= range && actorUtils.typeOrRace(token.actor) === monsterType);\nif (found) {\n\tif (effect) {\n\t\treturn;\n\t} else {\n\t\tlet sourceEffect = trigger.entity.effects?.contents[0];\n\t\tif (!sourceEffect) return;\n\t\tlet effectData = genericUtils.duplicate(sourceEffect.toObject());\n\t\tawait effectUtils.createEffect(trigger.token.actor, effectData);\n\t}\n} else {\n\tif (!effect) {\n\t\treturn;\n\t} else {\n\t\tawait genericUtils.remove(effect);\n\t}\n}"
+        }
+      ]
+    }
+  },
+  "img": "icons/weapons/daggers/dagger-black.webp",
+  "folder": null,
+  "_id": "y3BWUz53A6k1hCHD",
+  "_key": "!items!y3BWUz53A6k1hCHD"
+}

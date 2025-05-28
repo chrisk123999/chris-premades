@@ -522,16 +522,46 @@ export const eventStructure = {
             documents: [
                 'item',
                 'activeeffect'
-            ],
-            options: [
-                'scene'
             ]
+        },
+        {
+            pass: 'movedScene',
+            documents: [
+                'item',
+                'activeeffect'
+            ],
         },
         {
             pass: 'movedNear',
             documents: [
                 'item',
                 'activeeffect'
+            ],
+            requiredValues: [
+                {
+                    key: 'distance',
+                    types: [Number]
+                }
+            ]
+        },
+        {
+            pass: 'create',
+            documents: [
+                'item',
+                'activeeffect'
+            ],
+            options: [
+                'scene'
+            ]
+        },
+        {
+            pass: 'deleted',
+            documents: [
+                'item',
+                'activeeffect'
+            ],
+            options: [
+                'scene'
             ]
         }
     ],
@@ -704,6 +734,7 @@ export class EmbeddedMacros extends HandlebarsApplicationMixin(ApplicationV2) {
             id: 'cpr-embedded-macros-window'
         },
         actions: {
+            apply: EmbeddedMacros._apply,
             confirm: EmbeddedMacros.confirm,
             newMacro: EmbeddedMacros.#onNewMacro,
             delete: EmbeddedMacros.#onDelete
@@ -729,6 +760,10 @@ export class EmbeddedMacros extends HandlebarsApplicationMixin(ApplicationV2) {
         },
     };
     static async confirm(event, target) {
+        await EmbeddedMacros._apply.bind(this)(event, target);
+        this.close();
+    }
+    static async _apply(event, target) {
         if (!target.name) return false;
         let validator = new fields.JavaScriptField({async: true});
         let invalid = false;
@@ -755,7 +790,7 @@ export class EmbeddedMacros extends HandlebarsApplicationMixin(ApplicationV2) {
         await genericUtils.update(entity, {
             [flagPath]: this.context.macros
         });
-        this.close();
+        return this.render();
     }
     static #onNewMacro(event, target) {
         let newName = genericUtils.translate('CHRISPREMADES.EmbeddedMacros.Tabs.New.Label');

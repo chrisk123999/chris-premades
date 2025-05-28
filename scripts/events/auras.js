@@ -1,5 +1,6 @@
 import {custom} from './custom.js';
 import {actorUtils, combatUtils, effectUtils, genericUtils, itemUtils, macroUtils, socketUtils, tokenUtils} from '../utils.js';
+import {movementEvents} from './movement.js';
 function getAuraMacroData(entity) {
     return entity.flags['chris-premades']?.macros?.aura ?? [];
 }
@@ -135,7 +136,7 @@ function getSortedTriggers(tokens, pass, token) {
                 token: trigger.token,
                 target: trigger.target,
                 distance: trigger.distance,
-                macroName: typeof macro.macro === 'string' ? macro.macro : macro.macro.name
+                macroName: typeof macro.macro === 'string' ? 'Embedded' : macro.macro.name
             });
         });
     });
@@ -199,6 +200,8 @@ async function createToken(token, options, userId) {
     if (!socketUtils.isTheGM()) return;
     if (!token.actor) return;
     await updateAuras(token);
+    await movementEvents.executeMacroPass([token], 'create', undefined, options);
+    await movementEvents.executeMacroPass(token.parent.tokens.filter(i => i != token), 'sceneCreate', token, options);
 }
 async function deleteToken(token, options, userId) {
     if (!socketUtils.isTheGM()) return;
@@ -209,6 +212,8 @@ async function deleteToken(token, options, userId) {
     } else {
         await executeMacroPass(token.parent.tokens, 'create', token, options);
     }
+    await movementEvents.executeMacroPass([token], 'deleted', undefined, options);
+    await movementEvents.executeMacroPass(token.parent.tokens.filter(i => i != token), 'sceneDeleted', token, options);
 }
 async function canvasReady(canvas) {
     if (!socketUtils.isTheGM() || !canvas.scene) return;

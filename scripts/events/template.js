@@ -62,7 +62,7 @@ function getSortedTriggers(templates, pass, token) {
                 priority: macro.priority,
                 name: trigger.name,
                 token: token,
-                macroName: typeof macro.macro === 'string' ? macro.name : macro.macro.name
+                macroName: typeof macro.macro === 'string' ? 'Embedded' : macro.macro.name
             });
         });
     });

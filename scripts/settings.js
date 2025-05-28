@@ -884,7 +884,7 @@ export function registerSettings() {
         key: 'enableEmbeddedMacrosEditing',
         type: Boolean,
         default: false,
-        category: 'development'
+        category: 'general'
     });
 }
 export function registerMenus() {

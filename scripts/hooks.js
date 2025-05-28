@@ -8,7 +8,7 @@ import {movementEvents} from './events/movement.js';
 import {templateEvents} from './events/template.js';
 import {dae} from './integrations/dae.js';
 import {createHeaderButton, renderItemSheet, renderEffectConfig, renderCompendium, renderActivitySheet, renderRegionConfig} from './extensions/titlebar.js';
-import {genericUtils, itemUtils} from './utils.js';
+import {genericUtils} from './utils.js';
 import {chat} from './extensions/chat.js';
 import {sidebar} from './extensions/sidebar.js';
 import {tokens} from './extensions/tokens.js';

@@ -156,7 +156,7 @@ function getSortedTriggers({activity, item, token, actor, sourceToken, targetTok
                 sourceToken,
                 targetToken,
                 token,
-                macroName: typeof macro.macro === 'string' ? macro.name : macro.macro.name
+                macroName: typeof macro.macro === 'string' ? 'Embedded' : macro.macro.name
             });
         });
     });

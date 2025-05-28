@@ -16,7 +16,8 @@ let packs = {
     thirdPartyItems: 'chris-premades.CPRThirdPartyItems',
     monsterFeatures: 'chris-premades.CPRMonsterFeatures',
     miscellaneous: 'chris-premades.CPRMiscellaneous',
-    thirdPartyFeats: 'chris-premades.CPRThirdPartyFeats'
+    thirdPartyFeats: 'chris-premades.CPRThirdPartyFeats',
+    embeddedMacroSampleItems: 'chris-premades.CPREmbeddedMacroSampleItems'
 };
 let featurePacks = {
     spellFeatures: 'chris-premades.CPRSpellFeatures',
@@ -78,6 +79,7 @@ function setUseLocalCompendium(value) {
         modernPacks.summons = 'world.cpr-summons-2024';
         modernPacks.featFeatures = 'world.cpr-feat-features-2024';
         modernPacks.feats = 'world.cpr-feat-feats-2024';
+        packs.embeddedMacroSampleItems = 'world.cpr-embedded-macro-sample-items';
     } else {
         packs.spellFeatures = 'chris-premades.CPRSpellFeatures';
         featurePacks.spellFeatures = 'chris-premades.CPRSpellFeatures';
@@ -108,6 +110,7 @@ function setUseLocalCompendium(value) {
         modernPacks.summons = 'chris-premades.CPRSummons2024';
         modernPacks.featFeatures = 'chris-premades.cpr-feat-features-2024';
         modernPacks.feats = 'chris-premades.cpr-feat-feats-2024';
+        packs.embeddedMacroSampleItems = 'chris-premades.CPREmbeddedMacroSampleItems';
     }
 }
 const attacks = [
@@ -144,20 +147,20 @@ const weaponTypes = [
     'simpleS',
     'martialR',
     'simpleR'
-]
+];
 const meleeWeaponTypes = [
     'martialM',
     'simpleS'
-]
+];
 const rangedWeaponTypes = [
     'martialR',
     'simpleR'
-]
+];
 const armorTypes = [
     'light',
     'medium',
     'heavy'
-]
+];
 const damageTypeOptions = () => Object.entries(CONFIG.DND5E.damageTypes).map(i => ({label: i[1].label, value: i[0]}));
 const creatureTypeOptions = () => Object.entries(CONFIG.DND5E.creatureTypes).map(i => ({label: i[1].label, value: i[0]}));
 const actorCompendiumPacks = () => [{label: '', value: ''}, ...game.packs.filter(i => i.documentName === 'Actor').map(i => ({label: i.metadata.label, value: i.metadata.id}))];

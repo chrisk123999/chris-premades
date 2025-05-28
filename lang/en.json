@@ -399,7 +399,7 @@
                 "sceneDamageRollComplete": {
                     "Label": "Scene Damage Roll Complete"
                 },
-                "sceneMoved": {
+                "movedScene": {
                     "Label": "Scene Moved"
                 },
                 "scenePostAttackRoll": {
@@ -455,6 +455,12 @@
                 },
                 "unequipped": {
                     "Label": "Unequipped"
+                },
+                "sceneDeleted": {
+                    "Label": "Scene Deleted"
+                },
+                "sceneCreate": {
+                    "Label": "Scene Create"
                 }
             },
             "Priority": {

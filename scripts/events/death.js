@@ -118,7 +118,7 @@ function getSortedTriggers(actor, pass) {
                 name: trigger.name,
                 token: trigger.token,
                 actor: trigger.actor,
-                macroName: typeof macro.macro === 'string' ? macro.macro : macro.macro.name
+                macroName: typeof macro.macro === 'string' ? 'Embedded' : macro.macro.name
             });
         });
     });

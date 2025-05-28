@@ -163,7 +163,7 @@ function getSortedTriggers(tokens, pass, token, details) {
                 previousTurn: details?.previousTurn,
                 previousRound: details?.previousRound,
                 currentRound: details?.currentRound,
-                macroName: typeof macro.macro === 'string' ? macro.macro : macro.macro.name
+                macroName: typeof macro.macro === 'string' ? 'Embedded' : macro.macro.name
             });
         });
     });
