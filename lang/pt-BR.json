@@ -294,6 +294,7 @@
             "Distance": {
                 "Label": "Distância:"
             },
+            "HeaderHint": "Estão disponíveis no escopo por padrão todos os <code>xUtils</code> (exemplo: <code>itemUtils</code>), bem como <code>constants</code>, <code>Crosshairs</code>, <code>Summons</code>, <code>Teleport</code> e <code>DialogApp</code>. Para obter ajuda com a criação de macros CPR, visite o canal do Discord <a href=\"https://discord.com/channels/1089258451949064296/1118332135749734451\">aqui</a>.",
             "Identifier": {
                 "Label": "Identificador:"
             },
@@ -303,162 +304,163 @@
             "Name": {
                 "Label": "Nome:"
             },
-            "NoMacros": {
-                "Content": "Change This!"
-            },
             "Pass": {
                 "Label": "Passar:",
+                "actorCreated": {
+                    "Label": "Ator Criado"
+                },
+                "actorDeleted": {
+                    "Label": "Ator Excluído"
+                },
+                "actorEquipped": {
+                    "Label": "Ator Equipado"
+                },
+                "actorUnequipped": {
+                    "Label": "Ator Desequipado"
+                },
                 "applyDamage": {
-                    "Label": "Aplicar Dano",
-                    "Tooltip": "Change This!"
+                    "Label": "Aplicar Dano"
                 },
                 "attackRollComplete": {
-                    "Label": "Rolagem de Ataque Concluída",
-                    "Tooltip": "Change This!"
+                    "Label": "Rolagem de Ataque Concluída"
                 },
                 "bonus": {
-                    "Label": "Bônus",
-                    "Tooltip": "Change This!"
+                    "Label": "Bônus"
                 },
                 "combatEnd": {
-                    "Label": "Fim do Combate",
-                    "Tooltip": "Change This!"
+                    "Label": "Fim do Combate"
                 },
                 "combatStart": {
-                    "Label": "Início do Combate",
-                    "Tooltip": "Change This!"
+                    "Label": "Início do Combate"
                 },
                 "context": {
-                    "Label": "Contexto",
-                    "Tooltip": "Change This!"
+                    "Label": "Contexto"
                 },
                 "create": {
-                    "Label": "Criar",
-                    "Tooltip": "Change This!"
+                    "Label": "Criar"
                 },
                 "created": {
-                    "Label": "Criado",
-                    "Tooltip": "Change This!"
+                    "Label": "Criado"
                 },
                 "damageRollComplete": {
-                    "Label": "Rolagem de Dano Concluída",
-                    "Tooltip": "Change This!"
+                    "Label": "Rolagem de Dano Concluída"
                 },
                 "dead": {
-                    "Label": "Morto",
-                    "Tooltip": "Change This!"
+                    "Label": "Morto"
                 },
                 "deleted": {
-                    "Label": "Excluído",
-                    "Tooltip": "Change This!"
+                    "Label": "Excluído"
+                },
+                "equipped": {
+                    "Label": "Equipado"
                 },
                 "everyTurn": {
-                    "Label": "Cada Turno",
-                    "Tooltip": "Change This!"
+                    "Label": "Cada Turno"
+                },
+                "long": {
+                    "Label": "Descanso Longo"
+                },
+                "moved": {
+                    "Label": "Movido"
+                },
+                "movedNear": {
+                    "Label": "Movido Perto"
                 },
                 "post": {
-                    "Label": "Post",
-                    "Tooltip": "Change This!"
+                    "Label": "Post"
                 },
                 "postAttackRoll": {
-                    "Label": "Rolagem Pós-Ataque",
-                    "Tooltip": "Change This!"
+                    "Label": "Rolagem Pós-Ataque"
                 },
                 "preItemRoll": {
-                    "Label": "Rolagem Pré-Ataque",
-                    "Tooltip": "Change This!"
+                    "Label": "Rolagem Pré-Ataque"
                 },
                 "preTargeting": {
-                    "Label": "Pré-Alvejar",
-                    "Tooltip": "Change This!"
+                    "Label": "Pré-Alvejar"
                 },
                 "preambleComplete": {
-                    "Label": "Preâmbulo Concluído",
-                    "Tooltip": "Change This!"
+                    "Label": "Preâmbulo Concluído"
                 },
                 "rollFinished": {
-                    "Label": "Rolagem Finalizada",
-                    "Tooltip": "Change This!"
+                    "Label": "Rolagem Finalizada"
                 },
                 "savesComplete": {
-                    "Label": "Salvaguarda Concluída",
-                    "Tooltip": "Change This!"
+                    "Label": "Salvaguarda Concluída"
                 },
                 "sceneApplyDamage": {
-                    "Label": "Dano Aplicado na Cena",
-                    "Tooltip": "Change This!"
+                    "Label": "Dano Aplicado na Cena"
                 },
                 "sceneAttackRollComplete": {
-                    "Label": "Rolagem de Ataque da Cena Concluído",
-                    "Tooltip": "Change This!"
+                    "Label": "Rolagem de Ataque da Cena Concluído"
+                },
+                "sceneBonus": {
+                    "Label": "Bônus de Cena"
                 },
                 "sceneDamageRollComplete": {
-                    "Label": "Rolagem de Dano da Cena Concluído",
-                    "Tooltip": "Change This!"
+                    "Label": "Rolagem de Dano da Cena Concluído"
+                },
+                "movedScene": {
+                    "Label": "Cena Movida"
                 },
                 "scenePostAttackRoll": {
-                    "Label": "Rolagem Pós-Ataque da Cena",
-                    "Tooltip": "Change This!"
+                    "Label": "Rolagem Pós-Ataque da Cena"
                 },
                 "scenePreambleComplete": {
-                    "Label": "Preâmbulo da Cena Completo",
-                    "Tooltip": "Change This!"
+                    "Label": "Preâmbulo da Cena Completo"
                 },
                 "sceneRollFinished": {
-                    "Label": "Rolagem da Cena Finalizada",
-                    "Tooltip": "Change This!"
+                    "Label": "Rolagem da Cena Finalizada"
+                },
+                "short": {
+                    "Label": "Descanso Curto"
                 },
                 "situational": {
-                    "Label": "Situacional",
-                    "Tooltip": "Change This!"
+                    "Label": "Situacional"
                 },
                 "targetApplyDamage": {
-                    "Label": "Dano Aplicado ao Alvo",
-                    "Tooltip": "Change This!"
+                    "Label": "Dano Aplicado ao Alvo"
                 },
                 "targetAttackRollComplete": {
-                    "Label": "Rolagem de Ataque do Alvo Concluído",
-                    "Tooltip": "Change This!"
+                    "Label": "Rolagem de Ataque do Alvo Concluído"
                 },
                 "targetDamageRollComplete": {
-                    "Label": "Rolagem de Dano do Alvo Concluído",
-                    "Tooltip": "Change This!"
+                    "Label": "Rolagem de Dano do Alvo Concluído"
                 },
                 "targetPostAttackRoll": {
-                    "Label": "Rolagem Pós-Ataque do Alvo",
-                    "Tooltip": "Change This!"
+                    "Label": "Rolagem Pós-Ataque do Alvo"
                 },
                 "targetPreItemRoll": {
-                    "Label": "Rolagem Pré-Item do AlvoTarget Pre-Item Roll",
-                    "Tooltip": "Change This!"
+                    "Label": "Rolagem Pré-Item do Alvo"
                 },
                 "targetPreambleComplete": {
-                    "Label": "Preâmbulo do Alvo Completo",
-                    "Tooltip": "Change This!"
+                    "Label": "Preâmbulo do Alvo Completo"
                 },
                 "targetRollFinished": {
-                    "Label": "Rolagem do Alvo Finalizada",
-                    "Tooltip": "Change This!"
+                    "Label": "Rolagem do Alvo Finalizada"
                 },
                 "targetSavesComplete": {
-                    "Label": "Salvaguarda do Alvo Finalizada",
-                    "Tooltip": "Change This!"
+                    "Label": "Salvaguarda do Alvo Finalizada"
                 },
                 "turnEnd": {
-                    "Label": "Fim do Turno",
-                    "Tooltip": "Change This!"
+                    "Label": "Fim do Turno"
                 },
                 "turnEndNear": {
-                    "Label": "Fim do Turno Próximo",
-                    "Tooltip": "Change This!"
+                    "Label": "Fim do Turno Próximo"
                 },
                 "turnStart": {
-                    "Label": "Início do Turno",
-                    "Tooltip": "Change This!"
+                    "Label": "Início do Turno"
                 },
                 "turnStartNear": {
-                    "Label": "Início do Turno Próximo",
-                    "Tooltip": "Change This!"
+                    "Label": "Início do Turno Próximo"
+                },
+                "unequipped": {
+                    "Label": "Unequipped"
+                },
+                "sceneDeleted": {
+                    "Label": "Scene Deleted"
+                },
+                "sceneCreate": {
+                    "Label": "Scene Create"
                 }
             },
             "Priority": {
@@ -475,9 +477,9 @@
                 "aura": "Aura",
                 "check": "Teste",
                 "combat": "Combate",
-                "createItem": "Item Criado",
                 "death": "Morte",
                 "effect": "Efeito",
+                "item": "Item",
                 "midi-actor": "Ator Midi-Qol",
                 "midi-item": "Item Midi-Qol",
                 "movement": "Deslocamento",
@@ -1236,6 +1238,7 @@
                 "Size": "O alvo é grande demais para ser agarrado!"
             },
             "Grappler": {
+                "Grapple": "Tentar Agarrar {tokenName}?",
                 "Pin": "Imobilizador: Pin",
                 "Pinned": "Imobilizador: Imobilizado por {tokenName}",
                 "Pinning": "Imobilizador: Imobilizando {tokenName}"
@@ -1283,6 +1286,10 @@
             },
             "HailOfThorns": {
                 "Burst": "Saraivada de Espinhos: Explosão"
+            },
+            "Healer": {
+                "SelectHitDie": "Escolha qual Dado de Vida para rolar.",
+                "SpellOnly": "Apenas Magias:"
             },
             "HealingLight": {
                 "Select": "Quantos dados você quer usar?"
@@ -1627,6 +1634,10 @@
             },
             "PrimalKnowledge": {
                 "ReplacementAbility": "Atributo Substituto:"
+            },
+            "Protection": {
+                "Protect": "Proteger {tokenName}?",
+                "Protected": "Proteção: Protegido"
             },
             "ProtectionFromEvilAndGood": {
                 "Save": "Esta salvaguarda é contra um efeito de uma Aberração, Celestial, Elemental, Feérico, Ínfero ou Morto-Vivo que te Enfeitiçou, Amedrontou ou Possuiu você."
@@ -2398,6 +2409,9 @@
                     "Source": "Origem:",
                     "Tooltip": "Ferramentas para desenvolvimento, você não deveria estar aqui...",
                     "Version": "Versão:"
+                },
+                "EmbeddedMacros": {
+                    "Tooltip": "Crie macros usando o sistema de eventos do CPR."
                 },
                 "GenericFeatures": {
                     "Label": "Características Genéricas",
