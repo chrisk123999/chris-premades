@@ -84,9 +84,11 @@ async function scaleCheck(item) {
     let missingClass = false;
     await Promise.all(scales.map(async data => {
         let classIdentifier = itemUtils.getConfig(item, data.classIdentifier);
-        let classItem = item.actor.classes[classIdentifier];
+        let classItem = item.actor.classes[classIdentifier] ?? item.actor.subclasses[classIdentifier];
         if (!classItem) {
             missingClass = true;
+            let message = genericUtils.format('CHRISPREMADES.Requirements.MissingClass', {classIdentifier});
+            genericUtils.notify(message, 'warn');
             return;
         }
         let scaleIdentifier = itemUtils.getConfig(item, data.scaleIdentifier);

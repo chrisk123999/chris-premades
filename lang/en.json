@@ -2452,6 +2452,7 @@
             "UnableToBeMoved": "Target is unable to be moved!"
         },
         "Requirements": {
+            "MissingClass": "The configured class/subclass {classIdentifier} does not exist on this actor!",
             "ScaleAdded": "The scale {scaleIdentifier} has been added to the class {classIdentifier}!"
         },
         "Section": {

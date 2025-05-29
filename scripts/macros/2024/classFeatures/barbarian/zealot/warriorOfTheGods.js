@@ -23,37 +23,39 @@ export let warriorOfTheGods = {
     scales: [
         {
             type: 'ScaleValue',
-            configuration: {
-                identifier: 'warrior-of-the-gods',
-                type: 'dice',
-                distance: {
-                    units: ''
-                },
-                scale: {
-                    3: {
-                        number: 4,
-                        faces: 12,
-                        modifiers: []
-                    },
-                    6: {
-                        number: 5,
-                        faces: 12,
-                        modifiers: []
-                    },
-                    12: {
-                        number: 6,
-                        faces: 12,
-                        modifiers: []
-                    },
-                    17: {
-                        number: 7,
-                        faces: 12,
-                        modifiers: []
+            classIdentifier: 'classIdentifier',
+            scaleIdentifier: 'scaleIdentifier',
+            data: {
+                type: 'ScaleValue',
+                configuration: {
+                    identifier: 'warrior-of-the-gods',
+                    type: 'dice',
+                    scale: {
+                        3: {
+                            number: 4,
+                            faces: 12,
+                            modifiers: []
+                        },
+                        6: {
+                            number: 5,
+                            faces: 12,
+                            modifiers: []
+                        },
+                        12: {
+                            number: 6,
+                            faces: 12,
+                            modifiers: []
+                        },
+                        17: {
+                            number: 7,
+                            faces: 12,
+                            modifiers: []
+                        }
                     }
-                }
-            },
-            value: {},
-            title: 'Warrior of the Gods'
+                },
+                value: {},
+                title: 'Warrior of the Gods'
+            }
         }
     ]
 };
