@@ -1,6 +1,8 @@
 # 1.2.36 Release:
 ## New Modern Content:
 - Healer's Kit
+## Bug Fixes
+- Alert
 
 # 1.2.36 Release:
 ## New Modern Content:

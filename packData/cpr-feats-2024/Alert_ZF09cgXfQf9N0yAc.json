@@ -139,7 +139,59 @@
       "subtype": ""
     }
   },
-  "effects": [],
+  "effects": [
+    {
+      "name": "Alert",
+      "img": "icons/creatures/eyes/human-single-brown.webp",
+      "origin": "Compendium.chris-premades.CPRFeats2024.Item.ZF09cgXfQf9N0yAc",
+      "_id": "UybODIJuEGYraIPf",
+      "type": "base",
+      "system": {},
+      "changes": [
+        {
+          "key": "system.attributes.init.bonus",
+          "mode": 2,
+          "value": "@prof",
+          "priority": 20
+        }
+      ],
+      "disabled": false,
+      "duration": {
+        "startTime": null,
+        "seconds": null,
+        "combat": null,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "transfer": true,
+      "statuses": [],
+      "sort": 0,
+      "flags": {
+        "dae": {
+          "disableCondition": "",
+          "disableIncapacitated": false,
+          "stackable": "multi",
+          "showIcon": false,
+          "durationExpression": "",
+          "macroRepeat": "none",
+          "specialDuration": []
+        },
+        "dnd5e": {
+          "riders": {
+            "statuses": []
+          }
+        },
+        "core": {
+          "overlay": false
+        }
+      },
+      "_key": "!items.effects!ZF09cgXfQf9N0yAc.UybODIJuEGYraIPf"
+    }
+  ],
   "folder": null,
   "flags": {
     "midi-qol": {
