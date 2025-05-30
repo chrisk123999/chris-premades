@@ -1,5 +1,9 @@
 # 1.2.36 Release:
 ## New Modern Content:
+- Healer's Kit
+
+# 1.2.36 Release:
+## New Modern Content:
 - Alert
 - Crusher
 - Elemental Adept

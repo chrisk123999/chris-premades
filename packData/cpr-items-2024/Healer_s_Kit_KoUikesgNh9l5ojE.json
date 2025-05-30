@@ -23,8 +23,7 @@
             {
               "type": "itemUses",
               "value": "1",
-              "target": "",
-              "scaling": {}
+              "target": ""
             }
           ]
         },
@@ -108,7 +107,9 @@
           "postRemoveConditionText": ""
         },
         "otherActivityId": "none",
-        "_id": "1jlZEx9V2TITY9OT"
+        "_id": "1jlZEx9V2TITY9OT",
+        "img": "",
+        "appliedEffects": []
       }
     },
     "uses": {
@@ -201,6 +202,13 @@
         "version": "1.2.37",
         "source": "chris-premades",
         "rules": "modern"
+      },
+      "macros": {
+        "midi": {
+          "item": [
+            "healersKit"
+          ]
+        }
       }
     }
   },
