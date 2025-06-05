@@ -197,36 +197,49 @@ async function updateCombat(combat, changes, context) {
     if (!changes.turn && !changes.round) return;
     if (!combat.started || !combat.isActive) return;
     if (currentRound < previousRound || (currentTurn < previousTurn && currentTurn === previousRound)) return;
-    let sceneTokens = combat.scene?.tokens ?? [];
-    let currentToken = sceneTokens.get(combat.current.tokenId);
-    let previousToken = sceneTokens.get(combat.previous.tokenId);
+    let currentCombatant = combat.combatants.get(combat.current.combatantId);
+    let previousCombatant = combat.combatants.get(combat.previous.combatantId);
+    let currentScene = game.scenes.get(currentCombatant?.sceneId);
+    let previousScene = game.scenes.get(previousCombatant?.sceneId);
+    let currentToken = currentScene?.tokens.get(currentCombatant.tokenId);
+    let previousToken = previousScene?.tokens.get(previousCombatant.tokenId);
     let details = {
         currentTurn,
         previousTurn,
         currentRound,
         previousRound
     };
+    let allTokens = combat.combatants.map(i => game.scenes.get(i.sceneId)?.tokens.get(i.tokenId)).filter(i => i);
     if (previousToken) await executeMacroPass([previousToken], 'turnEnd', undefined, details);
     if (currentToken) await executeMacroPass([currentToken], 'turnStart', undefined, details);
-    for (let token of (sceneTokens ?? [])) await executeMacroPass([token], 'everyTurn', undefined, details);
-    if (previousToken) await executeMacroPass(sceneTokens.filter(i => i != previousToken), 'turnEndNear', previousToken, details);
-    if (currentToken) await executeMacroPass(sceneTokens.filter(i => i != currentToken), 'turnStartNear', currentToken, details);
+    for (let token of allTokens) await executeMacroPass([token], 'everyTurn', undefined, details);
+    if (previousToken) await executeMacroPass(previousScene?.tokens.filter(i => i != previousToken) ?? [], 'turnEndNear', previousToken, details);
+    if (currentToken) await executeMacroPass(currentScene?.tokens.filter(i => i != currentToken) ?? [], 'turnStartNear', currentToken, details);
+}
+async function combatStartEnd(combat, isEnd) {
+    if (!socketUtils.isTheGM()) return;
+    let pass = isEnd ? 'combatEnd' : 'combatStart';
+    let scenes = new Set();
+    for (let combatant of combat.combatants) {
+        let scene = game.scenes.get(combatant.sceneId);
+        if (scene) scenes.add(scene);
+        let token = scene?.tokens.get(combatant.tokenId);
+        if (token) await executeMacroPass([token], pass);
+    }
+    scenes = Array.from(scenes);
+    let sceneTemplates = scenes.map(i => Array.from(i.templates)).flat();
+    let sceneRegions = scenes.map(i => Array.from(i.regions)).flat();
+    await templateEvents.executeMacroPass(sceneTemplates ?? [], pass);
+    await regionEvents.executeMacroPass(sceneRegions ?? [], pass);
+    if (!isEnd) return;
+    if (genericUtils.getCPRSetting('weaponMastery')) await masteries.combatEnd(combat);
 }
 async function combatStart(combat, changes) {
-    if (!socketUtils.isTheGM()) return;
-    let tokens = combat.combatants.map(i => combat.scene?.tokens.get(i.tokenId)).filter(j => j);
-    for (let i of tokens) await executeMacroPass([i], 'combatStart');
-    await templateEvents.executeMacroPass(combat.scene?.templates ?? [], 'combatStart');
-    await regionEvents.executeMacroPass(combat.scene?.regions ?? [], 'combatStart');
+    await combatStartEnd(combat, false);
 
 }
 async function deleteCombat(combat, changes, context) {
-    if (!socketUtils.isTheGM()) return;
-    let tokens = combat.combatants.map(i => combat.scene?.tokens.get(i.tokenId)).filter(j => j);
-    for (let i of tokens) await executeMacroPass([i], 'combatEnd'); //The last turnEnd macro may need to be run before this?
-    await templateEvents.executeMacroPass(combat.scene?.templates ?? [], 'combatEnd');
-    await regionEvents.executeMacroPass(combat.scene?.regions ?? [], 'combatEnd');
-    if (genericUtils.getCPRSetting('weaponMastery')) await masteries.combatEnd(combat);
+    await combatStartEnd(combat, true);
 }
 export let combatEvents = {
     combatStart,

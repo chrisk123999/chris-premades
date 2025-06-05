@@ -248,8 +248,10 @@ async function rollSkill(wrapped, config, dialog = {}, message = {}) {
     let overtimeActorUuid;
     if (event) {
         let target = event.target?.closest('.roll-link, [data-action="rollRequest"], [data-action="concentration"]');
-        if (target?.dataset?.midiOvertimeActorUuid)
+        if (target?.dataset?.midiOvertimeActorUuid) {
             overtimeActorUuid = target.dataset.midiOvertimeActorUuid;
+            options.rollMode = target.dataset.midiRollMode ?? target.dataset.rollMode ?? options.rollMode;
+        }
     }
     let messageData;
     let rollMode;

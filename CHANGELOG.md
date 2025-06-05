@@ -1,8 +1,10 @@
-# 1.2.36 Release:
+# 1.2.37 Release:
 ## New Modern Content:
 - Healer's Kit
 ## Bug Fixes
 - Alert
+## API Updates:
+- Modified all combat event logic to support unlinked scenes
 
 # 1.2.36 Release:
 ## New Modern Content:
