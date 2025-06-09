@@ -29,7 +29,7 @@ async function early({workflow}) {
         if (!(workflow.item.type === 'spell' || workflow.item.system.type.value === 'spellFeature' || activityUtils.getIdentifier(workflow.activity) === 'healerHeal')) return;
     }
     else {
-        if (activityUtiles.getIdentifier(workflow.item) !== 'healer') return;
+        if (activityUtils.getIdentifier(workflow.item) !== 'healer') return;
     }
     let damageRolls = await Promise.all(workflow.damageRolls.map(async roll => {
         let newFormula = '';
