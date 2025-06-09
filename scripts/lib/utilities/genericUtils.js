@@ -170,6 +170,22 @@ function getCPRIdentifier(name, rules='legacy') {
     let identifier = Object.entries(macros).find(i => i[1].name === name || i[1].aliases?.includes(name))?.[0];
     return identifier;
 }
+function getValidScaleIdentifier(actor, itemData, scaleAliases, defaultClassIdentifier) {
+    if (!actor) return;
+    let currConfig = genericUtils.getProperty(itemData, 'flags.chris-premades.config');
+    if (currConfig?.scaleIdentifier && !scaleAliases.includes(currConfig.scaleIdentifier)) return;
+    let classIdentifier = currConfig?.classIdentifier ?? defaultClassIdentifier;
+    let currClass = actor.classes[classIdentifier] ?? actor.subclasses[classIdentifier];
+    if (!currClass) return;
+    let scaleIdentifier;
+    for (let currIdentifier of scaleAliases) {
+        if (currIdentifier in currClass.scaleValues) {
+            scaleIdentifier = currIdentifier;
+            break;
+        }
+    }
+    return { classIdentifier, scaleIdentifier };
+}
 export let genericUtils = {
     sleep,
     translate,
@@ -201,5 +217,6 @@ export let genericUtils = {
     getIdentifier,
     checkPlayerOwnership,
     getRules,
-    getCPRIdentifier
+    getCPRIdentifier,
+    getValidScaleIdentifier
 };

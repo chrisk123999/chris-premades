@@ -22,10 +22,17 @@ async function added({trigger: {entity: item, identifier, actor}}) {
         }
     ]});
 }
+async function updateScales(origItem, newItemData) {
+    let { classIdentifier=null, scaleIdentifier=null } = genericUtils.getValidScaleIdentifier(origItem.actor, newItemData, bardicInspiration.scaleAliases, 'bard');
+    if (!scaleIdentifier) return;
+    genericUtils.setProperty(newItemData, 'flags.chris-premades.config.scaleIdentifier', scaleIdentifier);
+    genericUtils.setProperty(newItemData, 'effects.0.changes.0.value', `@scale.${classIdentifier}.${scaleIdentifier}.die`);
+}
 export let tandemFootwork = {
     name: 'Tandem Footwork',
     version: '1.1.36',
     rules: 'modern',
+    early: updateScales,
     midi: {
         item: [
             {

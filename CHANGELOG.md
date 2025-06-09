@@ -1,12 +1,25 @@
-# 1.2.38
-## Bug Fixes
-- Healer
+# 1.2.38 Release:
+## API Updates:
+- Should have improved compatibility with scale values defined in the official premium modules that differ from those defined by DDBI, specifically for:
+    - Arcane Jolt (Legacy)
+    - Dreadful Strikes (Legacy)
+    - Psionic Power: Psionic Energy (Legacy)
+    - Soul Blades: Homing Strikes (Legacy)
+    - Bardic Inspiration (Modern)
+    - Cutting Words (Modern)
+    - Dazzling Footwork (Modern)
+    - Mantle of Inspiration (Modern)
+    - Peerless Skill (Modern)
+    - Tandem Footwork (Modern)
+    - Warrior of the Gods (Modern)
 
 # 1.2.37 Release:
 ## New Modern Content:
 - Healer's Kit
 ## Bug Fixes
 - Alert
+## API Updates:
+- Modified all combat event logic to support unlinked scenes
 
 # 1.2.36 Release:
 ## New Modern Content:

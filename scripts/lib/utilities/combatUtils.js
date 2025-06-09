@@ -20,7 +20,8 @@ async function setTurnCheck(entity, name, reset) {
     await entity.setFlag('chris-premades', name + '.turn', turn);
 }
 function getCurrentCombatantToken() {
-    return game.combat.scene?.tokens.get(game.combat.current.tokenId)?.object;
+    let currCombatant = game.combat?.combatants.get(game.combat?.current?.combatantId);
+    return game.scenes.get(currCombatant?.sceneId)?.tokens.get(currCombatant?.tokenId)?.object;
 }
 function isOwnTurn(token) {
     if (!inCombat()) return true;
