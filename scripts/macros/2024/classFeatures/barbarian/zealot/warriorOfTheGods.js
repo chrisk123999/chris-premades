@@ -1,3 +1,11 @@
+import {genericUtils} from '../../../../../utils.js';
+
+async function updateScales(origItem, newItemData) {
+    let { classIdentifier=null, scaleIdentifier=null } = genericUtils.getValidScaleIdentifier(origItem.actor, newItemData, warriorOfTheGods.scaleAliases, 'zealot');
+    if (!scaleIdentifier) return;
+    genericUtils.setProperty(newItemData, 'flags.chris-premades.config.scaleIdentifier', scaleIdentifier);
+    genericUtils.setProperty(newItemData, 'system.uses.max', `@scale.${classIdentifier}.${scaleIdentifier}.number`);
+}
 export let warriorOfTheGods = {
     name: 'Warrior of the Gods',
     version: '1.1.28',
@@ -20,6 +28,8 @@ export let warriorOfTheGods = {
             homebrew: true
         }
     ],
+    early: updateScales,
+    scaleAliases: ['warrior-of-the-gods', 'pool'],
     scales: [
         {
             type: 'ScaleValue',

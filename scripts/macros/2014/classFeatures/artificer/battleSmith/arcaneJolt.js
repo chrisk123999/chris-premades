@@ -31,9 +31,16 @@ async function damage({trigger, workflow}) {
     if (!trigger.entity.system.uses.value) return;
     await arcaneJoltHelper(workflow, trigger.entity);
 }
+async function updateScales(origItem, newItemData) {
+    let { scaleIdentifier=null } = genericUtils.getValidScaleIdentifier(origItem.actor, newItemData, arcaneJolt.scaleAliases, 'battle-smith');
+    if (!scaleIdentifier) return;
+    genericUtils.setProperty(newItemData, 'flags.chris-premades.config.scaleIdentifier', scaleIdentifier);
+}
 export let arcaneJolt = {
     name: 'Arcane Jolt',
     version: '1.1.0',
+    scaleAliases: ['arcane-jolt', 'jolt'],
+    early: updateScales,
     midi: {
         actor: [
             {
@@ -42,5 +49,21 @@ export let arcaneJolt = {
                 priority: 50
             }
         ]
-    }
+    },
+    config: [
+        {
+            value: 'classIdentifier',
+            label: 'CHRISPREMADES.Config.ClassIdentifier',
+            type: 'text',
+            default: 'battle-smith',
+            category: 'mechanics'
+        },
+        {
+            value: 'scaleIdentifier',
+            label: 'CHRISPREMADES.Config.ScaleIdentifier',
+            type: 'text',
+            default: 'arcane-jolt',
+            category: 'mechanics'
+        }
+    ]
 };

@@ -37,10 +37,17 @@ async function added({trigger: {entity: item, actor}}) {
         }
     ]});
 }
+async function updateScales(origItem, newItemData) {
+    let { classIdentifier=null, scaleIdentifier=null } = genericUtils.getValidScaleIdentifier(origItem.actor, newItemData, bardicInspiration.scaleAliases, 'bard');
+    if (!scaleIdentifier) return;
+    genericUtils.setProperty(newItemData, 'flags.chris-premades.config.scaleIdentifier', scaleIdentifier);
+    genericUtils.setProperty(newItemData, 'system.activities.healManOfInclass.healing.bonus', `@scale.${classIdentifier}.${scaleIdentifier}.die * 2`);
+}
 export let mantleOfInspiration = {
     name: 'Mantle of Inspiration',
     version: '1.1.40',
     rules: 'modern',
+    early: updateScales,
     midi: {
         item: [
             {
