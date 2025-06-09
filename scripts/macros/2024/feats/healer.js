@@ -4,12 +4,12 @@ async function early({workflow}) {
     if (workflow.targets.size !== 1) return;
     let healerActor = workflow.actor;
     let healersKit = itemUtils.getItemByIdentifier(healerActor, 'healersKit');
-    if (healersKit.system.uses.value < 1) return;
+    if (healersKit?.system.uses.value < 1) return;
     let targetActor = workflow.targets.first().actor;
     let ownerId = socketUtils.firstOwner(targetActor, true);
     let classSelection = await dialogUtils.selectHitDie(targetActor, workflow.item.name, 'CHRISPREMADES.Macros.Healer.SelectHitDie', {userId: ownerId, max: 1});
     if (!classSelection) return;
-    genericUtils.update(healersKit, {'system.uses.spent': healersKit.system.uses.spent + 1})
+    await genericUtils.update(healersKit, {'system.uses.spent': healersKit.system.uses.spent + 1})
     let formula = '';
     for (let i of classSelection) {
         formula += i.amount + i.document.system.hd.denomination + ' + ';
@@ -32,17 +32,16 @@ async function early({workflow}) {
         if (activityUtiles.getIdentifier(workflow.item) !== 'healer') return;
     }
     let damageRolls = await Promise.all(workflow.damageRolls.map(async roll => {
-        //if (!constants.healingTypes.includes(roll.options.type)) return roll;
         let newFormula = '';
         for (let i of roll.terms) {
             if (i.isDeterministic) {
                 newFormula += i.expression;
-            } else if (i.expression.toLowerCase().includes('rr1')) {
+            } else if (i.expression.toLowerCase().includes('r1')) {
                 newFormula += i.formula;
             } else if (i.flavor) {
-                newFormula += i.expression + 'rr1[' + i.flavor + ']';
+                newFormula += i.expression + 'r1[' + i.flavor + ']';
             } else {
-                newFormula += i.expression + 'rr1';
+                newFormula += i.expression + 'r1';
             }
         }
         return await rollUtils.damageRoll(newFormula, workflow.item, roll.options);
