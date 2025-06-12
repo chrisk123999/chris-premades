@@ -208,9 +208,12 @@ async function updateToken(token, updates, options, userId) {
                 acc.push(template);
                 return acc;
             }, []);
-            let enteredAndLeft = through.filter(i => {
-                return !leaving.includes(i) && !entering.includes(i) && !staying.includes(i);
-            });
+            let enteredAndLeft = []
+            if (!options.teleport) {
+                enteredAndLeft = through.filter(i => {
+                    return !leaving.includes(i) && !entering.includes(i) && !staying.includes(i);
+                });
+            }
             if (leaving.length) count += await templateEvents.executeMacroPass(leaving, 'left', token.object, options);
             if (entering.length) count += await templateEvents.executeMacroPass(entering, 'enter', token.object, options);
             if (staying.length) count += await templateEvents.executeMacroPass(staying, 'stay', token.object, options);

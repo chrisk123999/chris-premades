@@ -14,6 +14,7 @@
     - Peerless Skill (Modern)
     - Tandem Footwork (Modern)
     - Warrior of the Gods (Modern)
+- Teleportation will no longer trigger 'passedThrough' template events
 
 # 1.2.37 Release:
 ## New Modern Content:
