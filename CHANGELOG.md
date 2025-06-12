@@ -1,6 +1,7 @@
 # 1.2.38 Release:
 ## Bug Fixes
 - Healer
+- Booming Blade
 ## API Updates:
 - Should have improved compatibility with scale values defined in the official premium modules that differ from those defined by DDBI, specifically for:
     - Arcane Jolt (Legacy)
