@@ -208,7 +208,7 @@ async function updateToken(token, updates, options, userId) {
                 acc.push(template);
                 return acc;
             }, []);
-            let enteredAndLeft = []
+            let enteredAndLeft = [];
             if (!options.teleport) {
                 enteredAndLeft = through.filter(i => {
                     return !leaving.includes(i) && !entering.includes(i) && !staying.includes(i);
