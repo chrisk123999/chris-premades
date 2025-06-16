@@ -2,6 +2,7 @@
 ## Bug Fixes
 - Healer
 - Booming Blade
+- Protection
 ## API Updates:
 - Should have improved compatibility with scale values defined in the official premium modules that differ from those defined by DDBI, specifically for:
     - Arcane Jolt (Legacy)
