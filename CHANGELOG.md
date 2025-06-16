@@ -17,7 +17,7 @@
 - Booming Blade
 - Protection
 ## API Updates:
-- Teleportation will no longer trigger 'passedThrough' template events
+- Teleportation will no longer trigger "passedThrough" template events
 
 # 1.2.37 Release:
 ## New Modern Content:
