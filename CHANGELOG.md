@@ -1,10 +1,6 @@
 # 1.2.38 Release:
-## Bug Fixes
-- Healer
-- Booming Blade
-- Protection
-## API Updates:
-- Should have improved compatibility with scale values defined in the official premium modules that differ from those defined by DDBI, specifically for:
+## Update Notes:
+- Improved compatibility with scale values defined in the official premium modules that differ from those defined by DDBI, specifically for:
     - Arcane Jolt (Legacy)
     - Dreadful Strikes (Legacy)
     - Psionic Power: Psionic Energy (Legacy)
@@ -16,6 +12,11 @@
     - Peerless Skill (Modern)
     - Tandem Footwork (Modern)
     - Warrior of the Gods (Modern)
+## Bug Fixes
+- Healer
+- Booming Blade
+- Protection
+## API Updates:
 - Teleportation will no longer trigger 'passedThrough' template events
 
 # 1.2.37 Release:
