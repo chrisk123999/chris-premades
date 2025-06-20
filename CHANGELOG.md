@@ -2,6 +2,7 @@
 ## Bug Fixes
 - Magic Missile (Legacy & Modern)
 - Shield (Modern)
+- Healer
 
 # 1.2.38 Release:
 ## Update Notes:
