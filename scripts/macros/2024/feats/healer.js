@@ -4,7 +4,7 @@ async function early({workflow}) {
     if (workflow.targets.size !== 1) return;
     let healerActor = workflow.actor;
     let healersKit = itemUtils.getItemByIdentifier(healerActor, 'healersKit');
-    if (healersKit?.system.uses.value < 1) return;
+    if (!healersKit?.system.uses.value) return;
     let targetActor = workflow.targets.first().actor;
     let ownerId = socketUtils.firstOwner(targetActor, true);
     let classSelection = await dialogUtils.selectHitDie(targetActor, workflow.item.name, 'CHRISPREMADES.Macros.Healer.SelectHitDie', {userId: ownerId, max: 1});
