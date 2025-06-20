@@ -25,7 +25,7 @@ async function use({workflow}) {
         await MidiQOL.displayDSNForRoll(damageRoll);
         activityData = activityUtils.withChangedDamage(featureFlat, damageRoll.total.toString(), [damageType]);
     }
-    let shieldedFeature = feature.clone({'damage.parts': []}, {keepId: true});
+    let shieldedFeatureData = feature.clone({'damage.parts': []}, {keepId: true}).toObject();
     let playAnimation = itemUtils.getConfig(workflow.item, 'playAnimation') && animationUtils.jb2aCheck();
     let colors = [ 'grey', 'dark_red', 'orange', 'yellow', 'green', 'blue', 'purple'];
     let lastColor = Math.floor((Math.random() * colors.length));
@@ -77,7 +77,7 @@ async function use({workflow}) {
                     .play();
             }
             if (isShielded) {
-                await workflowUtils.syntheticActivityRoll(shieldedFeature, [targetToken], {options: {workflowOptions: {targetConfirmation: 'none'}}});
+                await workflowUtils.syntheticActivityDataRoll(shieldedFeatureData, workflow.item, workflow.actor, [targetToken], {options: {workflowOptions: {targetConfirmation: 'none'}}});
             } else if (rollEach) {
                 await workflowUtils.syntheticActivityRoll(feature, [targetToken], {options: {workflowOptions: {targetConfirmation: 'none'}}});
             } else {

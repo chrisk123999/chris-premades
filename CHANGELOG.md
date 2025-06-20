@@ -1,3 +1,8 @@
+# 1.2.39 Release:
+## Bug Fixes
+- Magic Missile (Legacy & Modern)
+- Shield (Modern)
+
 # 1.2.38 Release:
 ## Update Notes:
 - Improved compatibility with scale values defined in the official premium modules that differ from those defined by DDBI, specifically for:

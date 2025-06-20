@@ -210,6 +210,11 @@
             "turnStart"
           ]
         },
+        "chris-premades": {
+          "info": {
+            "identifier": "shield"
+          }
+        },
         "dnd5e": {
           "riders": {
             "statuses": []
@@ -267,7 +272,7 @@
     "chris-premades": {
       "info": {
         "identifier": "shield",
-        "version": "1.2.32",
+        "version": "1.2.39",
         "source": "chris-premades",
         "rules": "modern"
       }
