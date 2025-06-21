@@ -100,7 +100,7 @@ async function damage({workflow, ditem}) {
             .play();
     }
     let finalDistance = tokenUtils.getDistance(sourceToken, targetToken);
-    if (finalDistance > 5) {
+    if (finalDistance > genericUtils.handleMetric(5)) {
         workflowUtils.negateDamageItemDamage(ditem);
     }
 }
