@@ -28,7 +28,7 @@ async function damageApplication({trigger: {entity: item, token}, workflow, dite
     if (!item.system.uses.value) return;
     if (actorUtils.hasUsedReaction(item.actor)) return;
     if (!ditem.newHP) return;
-    if (tokenUtils.getDistance(token, workflow.token) > 30) return;
+    if (tokenUtils.getDistance(token, workflow.token) > genericUtils.handleMetric(30)) return;
     if (!tokenUtils.canSee(token, workflow.token)) return;
     let damageDealt = ditem.damageDetail.reduce((acc, i) => acc + i.value, 0);
     if (!damageDealt) return;

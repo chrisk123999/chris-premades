@@ -45,7 +45,7 @@ async function early({trigger: {entity: effect}, workflow}) {
     let actor = effect.parent;
     let targetToken = workflow.targets.find(i => i.actor === actor);
     if (!targetToken) return;
-    if (tokenUtils.getDistance(workflow.token, targetToken) > 30) return;
+    if (tokenUtils.getDistance(workflow.token, targetToken) > genericUtils.handleMetric(30)) return;
     workflow.advantage = false;
     workflow.rollOptions.advantage = false;
     workflow.flankingAdvantage = false;

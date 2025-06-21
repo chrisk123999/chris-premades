@@ -72,7 +72,7 @@ async function use({workflow}) {
         genericUtils.setProperty(updates, 'token.texture.src', tokenImg);
     }
     if (creatureType === 'earth') {
-        genericUtils.setProperty(updates, 'actor.system.attributes.movement.burrow', 40);
+        genericUtils.setProperty(updates, 'actor.system.attributes.movement.burrow', genericUtils.handleMetric(40));
         genericUtils.setProperty(updates, 'actor.system.traits.dr.value', ['piercing', 'slashing']);
     } else {
         let amorphousFormData = await Summons.getSummonItem('Amorphous Form (Air, Fire, and Water Only)', {}, workflow.item, {translate: 'CHRISPREMADES.Macros.SummonElemental.AmorphousForm'});
@@ -83,10 +83,10 @@ async function use({workflow}) {
         }
         updates.actor.items.push(amorphousFormData);
         if (creatureType === 'air') {
-            genericUtils.setProperty(updates, 'actor.system.attributes.movement', {fly: 40, hover: true});
+            genericUtils.setProperty(updates, 'actor.system.attributes.movement', {fly: genericUtils.handleMetric(40), hover: true});
             genericUtils.setProperty(updates, 'actor.system.traits.dr.value', ['lightning', 'thunder']);
         } else if (creatureType === 'water') {
-            genericUtils.setProperty(updates, 'actor.system.attributes.movement.swim', 40);
+            genericUtils.setProperty(updates, 'actor.system.attributes.movement.swim', genericUtils.handleMetric(40));
             genericUtils.setProperty(updates, 'actor.system.traits.dr.value', 'acid');
         } else {
             genericUtils.setProperty(updates, 'actor.system.traits.di.value', 'fire');

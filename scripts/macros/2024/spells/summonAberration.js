@@ -71,7 +71,7 @@ async function use({workflow}){
             return;
         }
         updates.actor.system.attributes.movement = {
-            fly: 30,
+            fly: genericUtils.handleMetric(30),
             hover: true
         };
         updates.actor.items.push(eyeRayData);

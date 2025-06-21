@@ -30,7 +30,7 @@ async function use({workflow}) {
             {
                 key: 'system.attributes.movement.walk',
                 mode: 2,
-                value: 5,
+                value: genericUtils.handleMetric(5),
                 priority: 20
             },
             {

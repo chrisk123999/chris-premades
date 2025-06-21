@@ -8,7 +8,7 @@ async function attack({trigger: {token}, workflow}) {
     if (coverBonus >= 2) return;
     let feature = itemUtils.getItemByIdentifier(token.actor, 'twilightShroud');
     if (!feature) return;
-    if (tokenUtils.getDistance(token, targetToken) > 30) return;
+    if (tokenUtils.getDistance(token, targetToken) > genericUtils.handleMetric(30)) return;
     await workflowUtils.bonusAttack(workflow, '-2');
     workflow.attackAdvAttribution.add(genericUtils.translate('CHRISPREMADES.Cover.Half') + ': ' + feature.name);
 }

@@ -4,12 +4,12 @@ import {genericUtils} from './genericUtils.js';
 async function aimCrosshair({token, maxRange, crosshairsConfig, centerpoint, drawBoundries, customCallbacks, trackDistance = true, fudgeDistance = 0, validityFunctions = []}) {
     let distance = 0;
     let widthAdjust = 0;
-    if (maxRange) maxRange = Number(maxRange);
+    if (maxRange) maxRange = genericUtils.handleMetric(Number(maxRange));
     if (!centerpoint) {
         let actualHalf = token.document.width / 2;
         widthAdjust += canvas.grid.distance * Math.floor(actualHalf);
         if (!fudgeDistance && (widthAdjust !== actualHalf * canvas.grid.distance)) {
-            fudgeDistance = 2.5;
+            fudgeDistance = genericUtils.handleMetric(2.5);
         }
         fudgeDistance += widthAdjust;
     }
@@ -21,7 +21,7 @@ async function aimCrosshair({token, maxRange, crosshairsConfig, centerpoint, dra
         if (maxRange && drawBoundries) {
             let radius = (canvas.grid.size * ((maxRange + fudgeDistance + widthAdjust) / canvas.grid.distance));
             drawing = new PIXI.Graphics();
-            drawing.lineStyle(5, 0xffffff);
+            drawing.lineStyle(genericUtils.handleMetric(5), 0xffffff);
             let matchTemplates = game.settings.get('core', 'gridTemplates') && (game.settings.get('core', 'gridDiagonals') !== CONST.GRID_DIAGONALS.EXACT);
             if (matchTemplates) {
                 drawing.drawPolygon(canvas.grid.getCircle(centerpoint, maxRange + fudgeDistance + widthAdjust));
@@ -49,7 +49,8 @@ async function aimCrosshair({token, maxRange, crosshairsConfig, centerpoint, dra
                     valid = true;
                 }
                 crosshairs.draw();
-                crosshairs.label = distance + '/' + maxRange + 'ft.';
+                let mesureUnit = genericUtils.getCPRSetting('metricSystem') ? ' m' : 'ft.';
+                crosshairs.label = distance + '/' + maxRange + mesureUnit;
             }
         }
     };
@@ -58,7 +59,7 @@ async function aimCrosshair({token, maxRange, crosshairsConfig, centerpoint, dra
         ...(customCallbacks ?? {})
     };
     let options = {};
-    if (trackDistance) options.label = '0ft';
+    if (trackDistance) options.label = genericUtils.getCPRSetting('metricSystem') ? '0 m' : '0ft';
     options = {
         ...options,
         ...crosshairsConfig

@@ -55,7 +55,7 @@ async function turnEnd({trigger}) {
         let targetToken = await fromUuid(targetUuid);
         if (!targetToken || !sourceToken) continue;
         let distance = tokenUtils.getDistance(sourceToken, targetToken);
-        if (distance <= 30) continue;
+        if (distance <= genericUtils.handleMetric(30)) continue;
         let selection = await dialogUtils.confirm((await effectUtils.getOriginItem(effect))?.name, 'CHRISPREMADES.Macros.CompelledDuel.EndEffect', {userId: socketUtils.gmID()});
         if (!selection) continue;
         await genericUtils.remove(effect);
@@ -124,7 +124,7 @@ async function targetMoved({trigger: {entity: effect}, options}) {
     }, {parent: canvas.scene});
     let oldDistance = tokenUtils.getDistance(sourceToken.object, tempToken);
     let distance = tokenUtils.getDistance(sourceToken.object, token);
-    if (oldDistance >= distance || distance <= 30) return;
+    if (oldDistance >= distance || distance <= genericUtils.handleMetric(30)) return;
     let turnCheck = combatUtils.perTurnCheck(effect, 'compelledDuel');
     if (!turnCheck) return;
     let feature = activityUtils.getActivityByIdentifier(await effectUtils.getOriginItem(effect), 'compelledDuelMoved', {strict: true});

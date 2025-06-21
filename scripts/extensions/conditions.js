@@ -240,13 +240,13 @@ async function preCreateActiveEffect(effect, updates, options, userId) {
                         {
                             key: 'flags.midi-qol.grants.advantage.attack.all',
                             mode: 0,
-                            value: 'computeDistance(workflow.rangeDetails?.attackingToken ?? workflow.token, workflow.targets.first()) <= 5',
+                            value: 'computeDistance(workflow.rangeDetails?.attackingToken ?? workflow.token, workflow.targets.first()) <= ' + genericUtils.handleMetric(5),
                             priority: 20
                         },
                         {
                             key: 'flags.midi-qol.grants.disadvantage.attack.all',
                             mode: 0,
-                            value: 'computeDistance(workflow.rangeDetails?.attackingToken ?? workflow.token, workflow.targets.first()) > 5',
+                            value: 'computeDistance(workflow.rangeDetails?.attackingToken ?? workflow.token, workflow.targets.first()) > ' + genericUtils.handleMetric(5),
                             priority: 20
                         },
                         {

@@ -17,7 +17,7 @@ async function early({workflow}) {
         t: 'ray',
         user: game.user,
         fillColor: game.user.color,
-        width: 5
+        width: genericUtils.handleMetric(5)
     };
     genericUtils.setProperty(workflow, 'chrisPremades.javelinOfLightningUsed', true);
     let [template] = await canvas.scene.createEmbeddedDocuments('MeasuredTemplate', [templateData]);

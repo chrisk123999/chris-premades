@@ -341,7 +341,7 @@ async function start({trigger: {entity: effect}}, {overrideAnimation = undefined
                 .opacity(0.9)
                 .filter('ColorMatrix', {'saturate': 1})
                 .tint('#FF0000')
-                .loopProperty('sprite', 'position.y', {'from': -5, 'to': 5, 'duration': 50, 'pingPong': true})
+                .loopProperty('sprite', 'position.y', {'from': genericUtils.handleMetric(-5), 'to': genericUtils.handleMetric(5), 'duration': 50, 'pingPong': true})
                 .duration(8000)
                 .fadeOut(3000)
                 
@@ -352,7 +352,7 @@ async function start({trigger: {entity: effect}}, {overrideAnimation = undefined
                 .opacity(1)
                 .fadeIn(200)
                 .fadeOut(3000)
-                .loopProperty('sprite', 'position.x', {'from': -5, 'to': 5, 'duration': 50, 'pingPong': true})
+                .loopProperty('sprite', 'position.x', {'from': genericUtils.handleMetric(-5), 'to': genericUtils.handleMetric(5), 'duration': 50, 'pingPong': true})
                 .animateProperty('sprite', 'position.y', {'from': 0, 'to': -100, 'duration': 6000, 'pingPong': true, 'delay': 2000})
                 .duration(8000)
                 
@@ -428,7 +428,7 @@ async function start({trigger: {entity: effect}}, {overrideAnimation = undefined
                 .opacity(1)
                 .fadeIn(200)
                 .fadeOut(3000)
-                .loopProperty('sprite', 'position.x', {'from': -5, 'to': 5, 'duration': 50, 'pingPong': true})
+                .loopProperty('sprite', 'position.x', {'from': -genericUtils.handleMetric(5), 'to': genericUtils.handleMetric(5), 'duration': 50, 'pingPong': true})
                 .animateProperty('sprite', 'position.y', {'from': 0, 'to': -100, 'duration': 6000, 'pingPong': true, 'delay': 2000})
                 .duration(8000)
 
@@ -490,7 +490,7 @@ async function start({trigger: {entity: effect}}, {overrideAnimation = undefined
                 .size(1.75, {'gridUnits': true})
                 .rotate(90)
                 .opacity(1)
-                .loopProperty('sprite', 'position.y', {'from': -5, 'to': 5, 'duration': 50, 'pingPong': true})
+                .loopProperty('sprite', 'position.y', {'from': genericUtils.handleMetric(-5), 'to': genericUtils.handleMetric(5), 'duration': 50, 'pingPong': true})
                 .duration(8000)
                 .fadeOut(3000)
                 .tint('#FFDD00')
@@ -502,7 +502,7 @@ async function start({trigger: {entity: effect}}, {overrideAnimation = undefined
                 .opacity(1)
                 .fadeIn(200)
                 .fadeOut(3000)
-                .loopProperty('sprite', 'position.x', {'from': -5, 'to': 5, 'duration': 50, 'pingPong': true})
+                .loopProperty('sprite', 'position.x', {'from': genericUtils.handleMetric(-5), 'to': genericUtils.handleMetric(5), 'duration': 50, 'pingPong': true})
                 .animateProperty('sprite', 'position.y', {'from': 0, 'to': -100, 'duration': 6000, 'pingPong': true, 'delay': 2000})
                 .duration(8000)
 

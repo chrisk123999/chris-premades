@@ -132,7 +132,7 @@ async function use({workflow}) {
         for (let i = 0; i < updates.length; i++) {
             itemUpdates[i].push(resistanceData);
             genericUtils.setProperty(updates[i], 'actor.items', itemUpdates[i]);
-            genericUtils.setProperty(updates[i], 'actor.system.attributes.movement.' + movement, 40);
+            genericUtils.setProperty(updates[i], 'actor.system.attributes.movement.' + movement, genericUtils.handleMetric(40));
         }
         if (!findFamiliarEffect) {
             let commandFeature = activityUtils.getActivityByIdentifier(investmentOfTheChainMaster, 'flockOfFamiliarsCommand', {strict: true});
@@ -225,7 +225,7 @@ async function early({workflow}) {
     let familiarTokens = new Set(effect.flags['chris-premades'].summons.ids[effect.name].map(i => canvas.scene.tokens.get(i)));
     if (!familiarTokens?.size) return;
     for (let i of familiarTokens) {
-        if (tokenUtils.getDistance(workflow.targets.first(), i) > 5) familiarTokens.delete(i);
+        if (tokenUtils.getDistance(workflow.targets.first(), i) > genericUtils.handleMetric(5)) familiarTokens.delete(i);
     }
     if (!familiarTokens.size) return;
     await actorUtils.setReactionUsed(familiarTokens.first().actor);

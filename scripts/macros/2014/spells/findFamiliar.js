@@ -106,7 +106,7 @@ async function use({workflow}) {
                 }
             }
         }
-        genericUtils.setProperty(updates, 'actor.system.attributes.movement.' + movement, 40);
+        genericUtils.setProperty(updates, 'actor.system.attributes.movement.' + movement, genericUtils.handleMetric(40));
         let commandFeature = activityUtils.getActivityByIdentifier(investmentOfTheChainMaster, 'findFamiliarCommand', {strict: true});
         if (!commandFeature) return;
         unhideActivities.push({

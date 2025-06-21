@@ -34,6 +34,7 @@ async function moveTokenAlongRay(targetToken, origRay, distance) {
     let newCenter;
     let hitsWall = true;
     let oldDistance;
+    distance = genericUtils.handleMetric(distance);
     let ray = Ray.fromAngle(targetToken.center.x, targetToken.center.y, origRay.angle, origRay.distance);
     if (ray.distance === 0) {
         genericUtils.notify('CHRISPREMADES.Movement.UnableToBeMoved', 'info');
@@ -45,7 +46,7 @@ async function moveTokenAlongRay(targetToken, origRay, distance) {
         hitsWall = targetToken.checkCollision(newCenter, {origin: ray.A, type: 'move', mode: 'any'});
         if (hitsWall) {
             oldDistance = distance;
-            distance += distance > 0 ? -5 : 5;
+            distance += distance > 0 ? genericUtils.handleMetric(-5) : genericUtils.handleMetric(5);
             if (distance === 0 || (Math.sign(oldDistance) !== Math.sign(distance))) {
                 genericUtils.notify('CHRISPREMADES.Movement.UnableToBeMoved', 'info');
                 return;
@@ -86,6 +87,7 @@ function findNearby(token, range, disposition, {includeIncapacitated = false, in
         default:
             dispositionValue = null;
     }
+    range = genericUtils.handleMetric(range);
     return MidiQOL.findNearby(dispositionValue, token, range, {includeIncapacitated, includeToken}).filter(i => !i.document.hidden);
 }
 function checkIncapacitated(token, logResult = false) {

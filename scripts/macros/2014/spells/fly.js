@@ -12,7 +12,7 @@ async function use({workflow}) {
             {
                 key: 'system.attributes.movement.fly',
                 mode: 4,
-                value: 60,
+                value: genericUtils.handleMetric(60),
                 priority: 20
             }
         ],
