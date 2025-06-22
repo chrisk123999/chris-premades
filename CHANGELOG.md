@@ -1,3 +1,7 @@
+# 1.2.40 Release:
+## Update Notes:
+- Added damage type config option to Guardian of Faith
+
 # 1.2.39 Release:
 ## Bug Fixes
 - Magic Missile (Legacy & Modern)
