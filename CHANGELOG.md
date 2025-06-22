@@ -1,4 +1,6 @@
 # 1.2.40 Release:
+## Bug Fixes
+- Grappler
 ## Update Notes:
 - Added damage type config option to Guardian of Faith
 

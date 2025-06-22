@@ -140,7 +140,8 @@ const unarmedAttacks = [
     'monkUnarmedStrike',
     'tavernBrawlerUnarmedStrike',
     'fightingStyleUnarmedFightingUnarmedStrike',
-    'predatoryStrike'
+    'predatoryStrike',
+    'unarmedFightingUnarmedStrike'
 ];
 const weaponTypes = [
     'martialM',
