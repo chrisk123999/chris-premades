@@ -4,12 +4,15 @@
 - Burning Hands (Modern)
 - Cloud Rune (Legacy)
 - Colossus Slayer (Legacy)
+- Fire Shield (Legacy & Modern)
 - Grappler
-- Medkitting any item with an ASI advancement no longer wipes that info
-- Additions to `CONFIG.DND5E.conditionTypes` will have visible `CR`/`CV` keys in the DAE field browser
-- Summoned tokens now match the elevation of the summoner
+- Spirit Guardians (Modern)
+- Telekinetic (Modern)
 ## Update Notes:
 - Added damage type config option to Guardian of Faith
+- Added a setting that, if enabled, makes summoned tokens match the elevation of the summoner
+- Additions to `CONFIG.DND5E.conditionTypes` will have visible `CR`/`CV` keys in the DAE field browser
+- Medkitting any item with an ASI advancement no longer wipes that info
 
 # 1.2.39 Release:
 ## Bug Fixes

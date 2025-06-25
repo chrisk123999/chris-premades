@@ -95,11 +95,10 @@ async function damageHelper(affectedTokens, effect, token) {
         .filter(i => i.document.disposition === token.document.disposition)
         .map(i => effectUtils.getEffectByIdentifier(i.actor, 'spiritGuardiansDamage'))
         .filter(i => i);
-    affectedTokens = affectedTokens.filter(i => !MidiQOL.checkIncapacitated(i.actor));
+    affectedTokens = affectedTokens.filter(i => !MidiQOL.checkIncapacitated(i.actor) && token.document.disposition !== i.document.disposition);
     if (combatUtils.inCombat()) {
         let turn = combatUtils.currentTurn();
         affectedTokens = affectedTokens.filter(target => {
-            if (token.document.disposition === target.document.disposition) return false;
             let used = allSpiritGuardianEffects.find(i => i.flags['chris-premades'].spiritGuardians.touchedTokenIds[turn]?.includes(target.id));
             return !used;
         });
@@ -117,6 +116,24 @@ async function damageHelper(affectedTokens, effect, token) {
         touchedTokenIds.push(...affectedTokens.map(i => i.id));
         await genericUtils.setFlag(effect, 'chris-premades', 'spiritGuardians.touchedTokenIds.' + turn, touchedTokenIds);
     }
+}
+async function turnEnd({trigger: {token, target, entity: effect, previousTurn, previousRound}}) {
+    let turn = previousRound + '-' + previousTurn;
+    let allSpiritGuardianEffects = canvas.tokens.placeables
+        .filter(i => i.document.disposition === token.document.disposition)
+        .map(i => effectUtils.getEffectByIdentifier(i.actor, 'spiritGuardiansDamage'))
+        .filter(i => i);
+    let used = allSpiritGuardianEffects.find(i => i.flags['chris-premades'].spiritGuardians.touchedTokenIds[turn].includes(target.id));
+    if (used) return;
+    let originItem = await effectUtils.getOriginItem(effect);
+    let feature = activityUtils.getActivityByIdentifier(originItem, 'spiritGuardiansDamage', {strict: true});
+    if (!feature) return;
+    let damageType = feature.damage.parts[0].types.first() ?? effect.flags['chris-premades'].spiritGuardians.damageType;
+    let activityData = activityUtils.withChangedDamage(feature, '', [damageType]);
+    await workflowUtils.syntheticActivityDataRoll(activityData, originItem, originItem.actor, [target], {atLevel: effect.flags['chris-premades'].castData.castLevel});
+    let touchedTokenIds = effect.flags['chris-premades'].spiritGuardians.touchedTokenIds[turn] ?? [];
+    touchedTokenIds.push(target.id);
+    await genericUtils.setFlag(effect, 'chris-premades', 'spiritGuardians.touchedTokenIds.' + turn, touchedTokenIds);
 }
 export let spiritGuardians = {
     name: 'Spirit Guardians',
@@ -142,8 +159,11 @@ export let spiritGuardiansDamage = {
     effect: spiritGuardiansDamageLegacy.effect,
     combat: [
         {
-            ...spiritGuardiansDamageLegacy.combat[0],
-            pass: 'turnEndNear'
+            pass: 'turnEndNear',
+            macro: turnEnd,
+            priority: 50,
+            distance: 15,
+            disposition: 'enemy'
         }
     ],
     movement: [

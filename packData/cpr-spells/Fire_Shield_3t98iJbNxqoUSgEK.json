@@ -296,7 +296,7 @@
                 "formula": ""
               },
               "number": 2,
-              "denomination": "6",
+              "denomination": "8",
               "bonus": "",
               "types": [
                 "fire"
@@ -380,13 +380,7 @@
     "chris-premades": {
       "info": {
         "name": "Fire Shield",
-        "version": "1.2.28",
-        "settings": [
-          "On Hit"
-        ],
-        "mutation": {
-          "self": "Fire Shield"
-        },
+        "version": "1.2.40",
         "hasAnimation": true,
         "identifier": "fireShield",
         "source": "chris-premades"
