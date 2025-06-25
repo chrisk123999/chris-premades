@@ -1,6 +1,13 @@
 # 1.2.40 Release:
 ## Bug Fixes
+- Aura of Vitality (Modern)
+- Burning Hands (Modern)
+- Cloud Rune (Legacy)
+- Colossus Slayer (Legacy)
 - Grappler
+- Medkitting any item with an ASI advancement no longer wipes that info
+- Additions to `CONFIG.DND5E.conditionTypes` will have visible `CR`/`CV` keys in the DAE field browser
+- Summoned tokens now match the elevation of the summoner
 ## Update Notes:
 - Added damage type config option to Guardian of Faith
 

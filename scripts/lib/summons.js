@@ -424,7 +424,7 @@ export class Summons {
         genericUtils.mergeObject(this.updates, updates);
     }
     get tokenUpdates() {
-        return this.updates.token;
+        return {elevation: (this.summonerToken?.document?.elevation ?? 0), ...this.updates.token};
     }
     get actorUpdates() {
         return this.updates.actor;
