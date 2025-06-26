@@ -74,9 +74,8 @@ class CPRTour extends Tour {
         return false;
     }
     async complete() {
-        let nextIndex = this.stepIndex + 1;
-        await states[nextIndex]();
-        return this.progress(this.steps.length);
+        game.settings.sheet.close();
+        super.complete();
     }
 }
 async function register() {
@@ -91,47 +90,52 @@ async function register() {
     let fireShield = await compendiumUtils.getItemFromCompendium(constants.packs.spells, 'Fire Shield');
     if (!fireShield) return;
     let maxSteps = 12;
+    if (!game.user.isGM) maxSteps -= 2;
     let steps = [];
     for (let i = 0; i < maxSteps; i++) steps.push({id: 'chris-premades.tour.' + i, title: 'CHRISPREMADES.Tour.' + i + '.Title', content: 'CHRISPREMADES.Tour.' + i + '.Content'});
     steps[1].selector = '[data-uuid="' + compendiumFolder.uuid + '"]';
     steps[2].selector = '[data-document-id="' + fireShield.id + '"]';
-    steps[3].selector = '[class="header-button control chris-premades-item"]';
+    steps[3].selector = '.item [class="header-button control chris-premades-item"]';
     steps[4].selector = '[class="cpr-medkit-header"]';
     steps[5].selector = '[class="tab cpr-medkit-tab active"]';
     steps[6].selector = '[class="cpr-medkit-tabs tabs"]';
     steps[7].selector = '[class="header-button control chris-premades-item"]';
     steps[8].selector = '[data-document-id="' + journalEntry.id + '"]';
     steps[9].selector = '[data-page-id="' + dragonBreath.id + '"]';
-    steps[10].selector = '[data-tab="chris-premades"]';
-    steps[11].selector = '[data-key="chris-premades.help"]',
+    if (game.user.isGM) {
+        steps[10].selector = '[data-tab="chris-premades"]';
+        steps[11].selector = '[data-key="chris-premades.help"]';
+    }
     await game.tours.register('chris-premades', 'tour', new CPRTour({
         title: 'CHRISPREMADES.Tour.Title',
         description: 'CHRISPREMADES.Tour.Description',
         canBeResumed: false,
-        display: false,
+        display: true,
         steps: steps
     }));
 }
 async function guidedTour() {
-    if (!registered) {
-        await register();
-        registered = true;
-    }
     let tour = game.tours.get('chris-premades.tour');
     if (!tour) return;
     tour.start();
 }
 async function checkTour() {
+    if (!registered) {
+        await register();
+        registered = true;
+    }
     if (!game.user.isGM) return;
     let doMessage = !genericUtils.getCPRSetting('seenTour');
-    let message = game.messages.find(i => i.flags?.['chris-premades']?.tour);
+    let message = game.messages.find(i => i.flags?.['chris-premades']?.button?.type === 'tour');
     if (!message && doMessage) {
         message = await ChatMessage.create({
             speaker: {alias: genericUtils.translate('CHRISPREMADES.Generic.CPR')},
             content: genericUtils.translate('CHRISPREMADES.Tour.Chat'),
             flags: {
                 'chris-premades': {
-                    tour: true
+                    button: {
+                        type: 'tour'
+                    }
                 }
             }
         });

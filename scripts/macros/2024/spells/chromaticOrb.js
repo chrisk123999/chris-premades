@@ -10,9 +10,7 @@ async function damage({trigger, workflow}) {
 }
 async function use({trigger, workflow}) {
     async function reset(item) {
-        let identifier = activityUtils.getIdentifier(workflow.activity);
-        if (identifier != 'chromaticOrb') return;
-        await genericUtils.setFlag(item, 'chris-premades', 'chromaticOrb', null);
+        await genericUtils.unsetFlag(item, 'chris-premades', 'chromaticOrb');
     }
     if (!workflow.token) {
         await reset(workflow.item); 
@@ -71,13 +69,14 @@ async function use({trigger, workflow}) {
         castLevel,
         lastTargetUuid: workflow.targets.first().document.uuid
     });
+    // Why??
+    workflow.item = workflow.actor.items.get(workflow.item.id);
     let activity = activityUtils.getActivityByIdentifier(workflow.item, 'chromaticOrbBounce', {strict: true});
     if (!activity) {
         await reset(workflow.item);
         return;
     }
     await workflowUtils.syntheticActivityRoll(activity, [nextTarget], {atLevel: castLevel});
-    await reset(workflow.item);
 }
 export let chromaticOrb = {
     name: 'Chromatic Orb',

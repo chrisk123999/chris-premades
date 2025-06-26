@@ -95,10 +95,10 @@ export class CPRMultipleRollResolver extends HandlebarsApplicationMixin(Applicat
             let group = context.groups.find(g => g.damageType === damageType);
             if (!group) context.groups.push(group = {
                 damageType: damageType,
-                damageTypeLabel: CONFIG.DND5E.damageTypes[damageType]?.label ?? damageType,
+                damageTypeLabel: CONFIG.DND5E.damageTypes[damageType]?.label ?? CONFIG.DND5E.healingTypes[damageType]?.label ?? damageType,
                 formula: '',
                 ids: [],
-                icon: CONFIG.DND5E.damageTypes[damageType]?.icon,
+                icon: CONFIG.DND5E.damageTypes[damageType]?.icon ?? CONFIG.DND5E.healingTypes[damageType]?.icon,
                 max: 0,
                 bonusTotal: 0
             });

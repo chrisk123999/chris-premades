@@ -123,4 +123,5 @@ export function registerHooks() {
     }
     Hooks.once('tidy5e-sheet.ready', tidy5e.itemTitleBar);
     Hooks.on('aa.preDataSanitize', automatedAnimations.preDataSanitize);
+    Hooks.on('dnd5e.renderChatMessage', chat.renderChatMessage);
 }

@@ -2,17 +2,22 @@
 ## Bug Fixes
 - Aura of Vitality (Modern)
 - Burning Hands (Modern)
+- Chromatic Orb (Modern)
 - Cloud Rune (Legacy)
 - Colossus Slayer (Legacy)
 - Fire Shield (Legacy & Modern)
-- Grappler
+- Grappler (Modern)
+- Insignia of Claws (Legacy)
 - Spirit Guardians (Modern)
+- Starry Form (Legacy)
 - Telekinetic (Modern)
 ## Update Notes:
 - Added damage type config option to Guardian of Faith
 - Added a setting that, if enabled, makes summoned tokens match the elevation of the summoner
 - Additions to `CONFIG.DND5E.conditionTypes` will have visible `CR`/`CV` keys in the DAE field browser
 - Medkitting any item with an ASI advancement no longer wipes that info
+- The tour is now visible in the tours management application, and usable by players
+- Fixed "Update Summon/Companion Initiative" settings
 
 # 1.2.39 Release:
 ## Bug Fixes

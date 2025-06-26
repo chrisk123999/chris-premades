@@ -141,7 +141,8 @@ const unarmedAttacks = [
     'tavernBrawlerUnarmedStrike',
     'fightingStyleUnarmedFightingUnarmedStrike',
     'predatoryStrike',
-    'unarmedFightingUnarmedStrike'
+    'unarmedFightingUnarmedStrike',
+    'formOfTheBeast'
 ];
 const weaponTypes = [
     'martialM',

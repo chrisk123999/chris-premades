@@ -58,6 +58,11 @@ async function setFlag(entityUuid, scope, key, value) {
     if (!entity) return;
     await entity.setFlag(scope, key, value);
 }
+async function unsetFlag(entityUuid, scope, key) {
+    let entity = await fromUuid(entityUuid);
+    if (!entity) return;
+    await entity.unsetFlag(scope, key);
+}
 async function createFolder(folderData) {
     let folder = await Folder.create(folderData);
     return folder.uuid;
@@ -247,6 +252,7 @@ export let sockets = {
     addFavorites,
     removeFavorites,
     setFlag,
+    unsetFlag,
     dialog,
     rollItem,
     createSidebarActor,
