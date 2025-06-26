@@ -9,13 +9,7 @@ async function damage({trigger, workflow}) {
     await workflow.setDamageRolls(workflow.damageRolls);
 }
 async function use({trigger, workflow}) {
-    async function reset(item) {
-        await genericUtils.unsetFlag(item, 'chris-premades', 'chromaticOrb');
-    }
-    if (!workflow.token) {
-        await reset(workflow.item); 
-        return;
-    }
+    if (!workflow.token) return;
     let lastTargetUuid = workflow.item.flags['chris-premades']?.chromaticOrb?.lastTargetUuid ?? workflow.token.document.uuid;
     let lastTarget = await fromUuid(lastTargetUuid);
     if (itemUtils.getConfig(workflow.item, 'playAnimation') && animationUtils.jb2aCheck()) {
@@ -30,31 +24,19 @@ async function use({trigger, workflow}) {
             .waitUntilFinished()
             .play();
     }
-    if (!workflow.damageRolls || !workflow.hitTargets.size) {
-        await reset(workflow.item); 
-        return;
-    }
+    if (!workflow.damageRolls || !workflow.hitTargets.size) return;
     let alwaysBounce = itemUtils.getConfig(workflow.item, 'alwaysBounce');
     let canBounce =  !alwaysBounce ? rollUtils.hasDuplicateDie([workflow.damageRolls[0]]) : true;
-    if (!canBounce) {
-        await reset(workflow.item); 
-        return;
-    }
+    if (!canBounce) return;
     let baseMaxJumps = itemUtils.getConfig(workflow.item, 'baseMaxJumps');
     let castLevel = workflow.item.flags['chris-premades']?.chromaticOrb?.castLevel ?? workflowUtils.getCastLevel(workflow) ?? 0;
     let bouncesLeft = workflow.item.flags['chris-premades']?.chromaticOrb?.bouncesLeft ?? (castLevel - 1 + baseMaxJumps);
-    if (!bouncesLeft) {
-        await reset(workflow.item); 
-        return;
-    }
+    if (!bouncesLeft) return;
     bouncesLeft--;
     let ignoredTargetUuids = workflow.item.flags['chris-premades']?.chromaticOrb?.ignoredTargetUuids ?? [];
     let range = itemUtils.getConfig(workflow.item, 'range');
     let nearbyTargets = tokenUtils.findNearby(workflow.targets.first(), range, 'ally', {includeIncapacitated: true}).filter(i => !ignoredTargetUuids.includes(i.document.uuid));
-    if (!nearbyTargets.length) {
-        await reset(workflow.item); 
-        return;
-    }
+    if (!nearbyTargets.length) return;
     let nextTarget = nearbyTargets[0];
     if (nearbyTargets.length > 1) {
         let targetSelect = await dialogUtils.selectTargetDialog(workflow.item.name, 'CHRISPREMADES.Macros.ChromaticOrb.Bounce', nearbyTargets, {skipDeadAndUnconscious: false});
@@ -62,20 +44,17 @@ async function use({trigger, workflow}) {
     }
     let perTargetDamageType = itemUtils.getConfig(workflow.item, 'perTargetDamageType');
     ignoredTargetUuids.push(workflow.targets.first().document.uuid);
-    await genericUtils.setFlag(workflow.item, 'chris-premades', 'chromaticOrb', {
-        ignoredTargetUuids,
-        damageType: perTargetDamageType ? undefined : workflow.damageRolls[0].options.type,
-        bouncesLeft,
-        castLevel,
-        lastTargetUuid: workflow.targets.first().document.uuid
-    });
-    // Why??
-    workflow.item = workflow.actor.items.get(workflow.item.id);
+    workflow.item = workflow.item.clone({
+        'flags.chris-premades.chromaticOrb': {
+            ignoredTargetUuids,
+            damageType: perTargetDamageType ? undefined : workflow.damageRolls[0].options.type,
+            bouncesLeft,
+            castLevel,
+            lastTargetUuid: workflow.targets.first().document.uuid
+        }
+    }, {keepId: true});
     let activity = activityUtils.getActivityByIdentifier(workflow.item, 'chromaticOrbBounce', {strict: true});
-    if (!activity) {
-        await reset(workflow.item);
-        return;
-    }
+    if (!activity) return;
     await workflowUtils.syntheticActivityRoll(activity, [nextTarget], {atLevel: castLevel});
 }
 export let chromaticOrb = {

@@ -343,9 +343,27 @@ async function preCreateActiveEffect(effect, updates, options, userId) {
                             priority: 20
                         },
                         {
-                            key: 'flags.midi-qol.grants.critical.range',
-                            mode: 5,
-                            value: 5,
+                            key: 'flags.midi-qol.grants.critical.mwak',
+                            mode: 0,
+                            value: 'computeDistance(workflow.rangeDetails?.attackingToken ?? workflow.token, workflow.targets.first()) <= 5',
+                            priority: 20
+                        },
+                        {
+                            key: 'flags.midi-qol.grants.critical.rwak',
+                            mode: 0,
+                            value: 'computeDistance(workflow.rangeDetails?.attackingToken ?? workflow.token, workflow.targets.first()) <= 5',
+                            priority: 20
+                        },
+                        {
+                            key: 'flags.midi-qol.grants.critical.msak',
+                            mode: 0,
+                            value: 'computeDistance(workflow.rangeDetails?.attackingToken ?? workflow.token, workflow.targets.first()) <= 5',
+                            priority: 20
+                        },
+                        {
+                            key: 'flags.midi-qol.grants.critical.rsak',
+                            mode: 0,
+                            value: 'computeDistance(workflow.rangeDetails?.attackingToken ?? workflow.token, workflow.targets.first()) <= 5',
                             priority: 20
                         }
                     );
