@@ -2392,11 +2392,11 @@
                     "AutomationInfo": "Configurar Informações de Automação:",
                     "Check": "Teste:",
                     "Combat": "Combate:",
-                    "CreateItem": "Criar Item:",
                     "Death": "Morte:",
                     "Equipment": "Equipmento:",
                     "HasAnimation": "Tem Animação:",
                     "Identifier": "Identificador:",
+                    "Item": "Item:",
                     "Label": "Ferramentas de Dev.",
                     "MacroInfo": "Configurar Informações de Macro:",
                     "MidiActor": "Midi, Ator:",
@@ -2452,6 +2452,7 @@
             "UnableToBeMoved": "O alvo não pode ser movido!"
         },
         "Requirements": {
+            "MissingClass": "A classe/subclasse configurada {classIdentifier} não existe neste ator!",
             "ScaleAdded": "O valor de escala {scaleIdentifier} foi adicionado à classe {classIdentifier}!"
         },
         "Section": {
@@ -2774,6 +2775,10 @@
             "manualRollsUsers": {
                 "Hint": "Configura quais usuários usam Rolagens Manuais.",
                 "Name": "Usuário de Rolagens Manuais"
+            },
+            "matchSummonElevation": {
+                "Hint": "Se habilitado, os tokens invocados pelo CPR serão criados com a mesma elevação do token do invocador.",
+                "Name": "Invocações com Mesma Elevação do Invocador"
             },
             "migrationVersion": {
                 "Hint": "Versão de Migração",
