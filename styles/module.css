@@ -50,7 +50,11 @@ form .cpr-dialog .form-group button.form-button {
     margin-top: 3px;
     margin-bottom: 3px;
     width: 100%;
-    height: calc(1.25 * var(--input-height))
+    height: calc(1.25 * var(--input-height));
+
+    &:has(img) {
+        height: calc(2.25 * var(--input-height));
+    }
 }
 
 form .cpr-dialog .form-group img.button-image {

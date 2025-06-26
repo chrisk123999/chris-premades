@@ -404,11 +404,15 @@ function patch(enabled) {
 }
 function init() {
     CONFIG.ui.effects = EffectDirectory;
-    CONFIG.ui.sidebar.TABS.effects = {
+    let tabs = Object.entries(CONFIG.ui.sidebar.TABS);
+    let macroIdx = tabs.findIndex(i => i[0] === 'macros');
+    if (macroIdx === -1) macroIdx = tabs.length - 1;
+    tabs.splice(macroIdx + 1, 0, ['effects', {
         tooltip: 'Effects',
         icon: 'fa-solid fa-bolt',
         gmOnly: false
-    };
+    }]);
+    CONFIG.ui.sidebar.TABS = Object.fromEntries(tabs);
     // Hooks.on('renderSidebar', effectSidebar);
     // Hooks.on('renderAbstractSidebarTab', effectSidebarTab);
     Hooks.on('hotbarDrop', effectHotbarDrop);
