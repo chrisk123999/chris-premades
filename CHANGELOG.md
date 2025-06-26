@@ -1,3 +1,8 @@
+# 1.2.41 Release:
+## Bug Fixes
+- Chromatic Orb (Modern)
+- Unconscious condition
+
 # 1.2.40 Release:
 ## Bug Fixes
 - Aura of Vitality (Modern)
