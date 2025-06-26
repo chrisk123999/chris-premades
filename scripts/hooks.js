@@ -27,14 +27,21 @@ import {itemEvent} from './events/item.js';
 import {template} from './extensions/template.js';
 import {tidy5e} from './integrations/tidy5e.js';
 export function registerHooks() {
+    // Setting caching
     Hooks.on('createSetting', genericUtils.createUpdateSetting);
     Hooks.on('updateSetting', genericUtils.createUpdateSetting);
+
+    // Effect Interface
     if (genericUtils.getCPRSetting('effectInterface')) {
         effectInterface.ready();
         Hooks.on('midi-qol.ready', effectInterface.checkEffectItem);
     }
+
+    // Compendium removal
     Hooks.on('changeSidebarTab', sidebar.removeCompendiums);
     Hooks.on('renderCompendiumDirectory', sidebar.removeCompendiums);
+
+    // Midi events
     Hooks.on('midi-qol.preTargeting', midiEvents.preTargeting);
     Hooks.on('midi-qol.premades.postNoAction', midiEvents.preItemRoll);
     Hooks.on('midi-qol.premades.postPreambleComplete', midiEvents.preambleComplete);
@@ -44,23 +51,31 @@ export function registerHooks() {
     Hooks.on('midi-qol.premades.postSavesComplete', midiEvents.savesComplete);
     Hooks.on('midi-qol.preTargetDamageApplication', midiEvents.preTargetDamageApplication);
     Hooks.on('midi-qol.premades.postRollFinished', midiEvents.rollFinished);
+
+    // DAE Field Browser
     Hooks.on('dae.setFieldData', dae.addFlags);
+
+    // Header buttons
     Hooks.on('renderCompendium', renderCompendium);
-    // old
     Hooks.on('renderActivitySheet', renderActivitySheet);
     Hooks.on('renderDAEActiveEffectConfig', renderEffectConfig);
-    // end old
-    // new
     Hooks.on('getHeaderControlsItemSheet5e', appendHeaderControl);
     Hooks.on('getHeaderControlsActorSheetV2', appendHeaderControl);
     Hooks.on('getHeaderControlsActiveEffectConfig', appendHeaderControl);
     Hooks.on('getHeaderControlsMeasuredTemplateConfig', appendHeaderControl);
     Hooks.on('getHeaderControlsRegionConfig', appendHeaderControl);
-    // end new
+
+    // Overtime DC helper
     Hooks.on('preCreateActiveEffect', effects.activityDC);
+    
+    // No-animation hooks
     Hooks.on('preCreateActiveEffect', effects.noAnimation);
     Hooks.on('preDeleteActiveEffect', effects.noAnimation);
+    
+    // Wire up chat card buttons
     Hooks.on('createChatMessage', chat.createChatMessage);
+
+    // Effect events, conditional hiding, auto-token-image stuff
     Hooks.on('preCreateActiveEffect', effectEvents.preCreateActiveEffect);
     Hooks.on('preUpdateActiveEffect', effectEvents.preUpdateActiveEffect);
     Hooks.on('preCreateActiveEffect', effects.unhideActivities);
@@ -68,21 +83,37 @@ export function registerHooks() {
     Hooks.on('preCreateActiveEffect', effects.preImageCreate);
     Hooks.on('createActiveEffect', effects.imageCreate);
     Hooks.on('deleteActiveEffect', effects.imageRemove);
+
+    // Custom macro
     Hooks.on('preCreateMacro', custom.preCreateMacro);
     Hooks.on('updateMacro', custom.updateOrDeleteMacro);
     Hooks.on('deleteMacro', custom.updateOrDeleteMacro);
+
+    // Sync actor and token size
     if (genericUtils.getCPRSetting('syncActorSizeToTokens')) {
         Hooks.on('preCreateActiveEffect', tokens.preCreateUpdateActiveEffect);
         Hooks.on('preDeleteActiveEffect', tokens.preDeleteActiveEffect);
         Hooks.on('preUpdateActiveEffect', tokens.preCreateUpdateActiveEffect);
     }
+
+    // Colorize headers (TODO: None of this will probably be functional currently, will have to be moved around)
     if (genericUtils.getCPRSetting('colorizeDAE', Hooks.on('renderItemSheetV2', dae.renderItemSheet)));
     if (genericUtils.getCPRSetting('colorizeAutomatedAnimations')) Hooks.on('renderItemSheetV2', automatedAnimations.renderItemSheet);
+    
+    // Auto-populate effect descriptions
     if (genericUtils.getCPRSetting('effectDescriptions') !== 'disabled') Hooks.on('preCreateActiveEffect', effects.preCreateActiveEffect);
+    
+    // Apply midi flags to conditions, display nested statuses
     if (genericUtils.getCPRSetting('applyConditionChanges') || genericUtils.getCPRSetting('displayNestedConditions')) Hooks.on('preCreateActiveEffect', conditions.preCreateActiveEffect);
+    
+    // VAE button integration
     if (genericUtils.getCPRSetting('vaeButtons')) Hooks.on('visual-active-effects.createEffectButtons', vae.createEffectButtons);
+    
+    // Initiative matching
     if (genericUtils.getCPRSetting('updateSummonInitiative')) Hooks.on('dnd5e.rollInitiative', initiative.updateSummonInitiative);
     if (genericUtils.getCPRSetting('updateCompanionInitiative')) Hooks.on('dnd5e.rollInitiative', initiative.updateCompanionInitiative);
+    
+    // Various events
     Hooks.on('preUpdateToken', movementEvents.preUpdateToken);
     Hooks.on('preUpdateItem', activities.flagAllRiders);
     Hooks.on('preUpdateItem', equipment.addOrUpdate);
@@ -91,9 +122,16 @@ export function registerHooks() {
     Hooks.on('dnd5e.restCompleted', rest);
     Hooks.on('preCreateMeasuredTemplate', template.preCreateMeasuredTemplate);
     //Hooks.on('preCreateRegion', region.preCreateRegion);
+
+    // Add generic actions to tokens
     if (genericUtils.getCPRSetting('addActions')) Hooks.on('createToken', actions.createToken);
+
+    // Add context menu options to items
     if (genericUtils.getCPRSetting('itemContext')) Hooks.on('dnd5e.getItemContextOptions', item.send);
+
+    // GM-only hooks
     if (game.user.isGM) {
+        // Various non-pre events
         Hooks.on('updateCombat', combatEvents.updateCombat);
         Hooks.on('combatStart', combatEvents.combatStart);
         Hooks.on('deleteCombat', combatEvents.deleteCombat);
@@ -108,20 +146,33 @@ export function registerHooks() {
         Hooks.on('canvasReady', auras.canvasReady);
         Hooks.on('createItem', itemEvent.created);
         Hooks.on('deleteItem', itemEvent.deleted);
+
+        // Scene & Compendium medkit
         Hooks.on('getHeaderControlsSceneConfig', appendHeaderControl);
         Hooks.on('getHeaderControlsCompendium', appendHeaderControl);
+
+        // CPR special duration
         Hooks.on('updateActor', effects.specialDurationHitPoints);
+
+        // Aura prep
         auras.canvasReady(canvas);
+
+        // Sync actor and token size
         if (genericUtils.getCPRSetting('syncActorSizeToTokens')) {
             Hooks.on('createActiveEffect', tokens.createDeleteUpdateActiveEffect);
             Hooks.on('deleteActiveEffect', tokens.createDeleteUpdateActiveEffect);
             Hooks.on('updateActiveEffect', tokens.createDeleteUpdateActiveEffect);
         }
+
+        // Backups
         if (genericUtils.getCPRSetting('backups')) Hooks.on('preCreateActor', backup.preCreateActor);
     }
+
+    // Tidy5e integration
     Hooks.once('tidy5e-sheet.ready', tidy5e.headerControls);
     Hooks.on('renderTidy5eItemSheetClassic', tidy5e.renderTidyItemSheet);
     Hooks.on('renderTidy5eItemSheetQuadrone', tidy5e.renderTidyItemSheet);
+
+    // Disable AA for things which CPR is going to animate
     Hooks.on('aa.preDataSanitize', automatedAnimations.preDataSanitize);
-    Hooks.on('dnd5e.renderChatMessage', chat.renderChatMessage);
 }

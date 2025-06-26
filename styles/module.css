@@ -602,3 +602,12 @@ form .cpr-row-center .cpr-input-short {
 .cpr-troubleshooter form>div {
     height: calc(100% - 1.25 * var(--input-height) - 3.5rem);
 }
+
+/* Chat Styles */
+.chat-message:has(button.chris-update-item,button.chris-tour) a.avatar > img {
+    content: url("/modules/chris-premades/images/CauldronofPlentifulResourcesMedium.png")
+}
+
+button.chris-update-item,button.chris-tour {
+    width: 100%;
+}

@@ -3055,7 +3055,7 @@
                 "Content": "For example, the spell \"Dragon's Breath\" will make a temporary feature called \"Dragon Breath\" on the target actor.\nFilling in this journal page will populate the description when it's created.",
                 "Title": "Description Journal"
             },
-            "Chat": "<hr>View a guided tour of Cauldron of Plentiful Resources here:<br><button type=\"button\">Start Tour</button>",
+            "Chat": "<hr>View a guided tour of Cauldron of Plentiful Resources here:<br><button class=\"chris-tour\" type=\"button\">Start Tour</button>",
             "Description": "Take a tour of Cauldron of Plentiful Resources.",
             "Hint": "Start a guided tour of Cauldron of Plentiful Resources.",
             "Title": "Cauldron of Plentiful Resources Tour",
