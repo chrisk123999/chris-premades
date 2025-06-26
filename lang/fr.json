@@ -2143,10 +2143,6 @@
           "Hint": "Compendium de macros utilisé pour remplacer ou ajouter des macros supplémentaires à l'API CPR. Veuillez consulter la documentation sur son utilisation. (En cours)",
           "Name": "Compendium de Macros"
       },
-      "macroInterface": {
-          "Hint": "Ajoute un onglet latéral pour les macros. Un rechargement de la page est nécessaire après activation.",
-          "Name": "Activer l'interface des macros"
-      },
       "makeGM": {
           "Hint": "Devenir le maître de jeu principal.",
           "Name": "Devenir le Maître de Jeu"

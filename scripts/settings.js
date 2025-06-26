@@ -1,5 +1,5 @@
 import {effectHud} from './applications/effectHud.js';
-import {settings, settingsBackup, settingsCompendium, settingsDevelopment, settingsDialog, settingsGeneral, settingsHelp, settingsHomebrew, settingsIntegration, settingsInterface, settingsManualRolls, settingsMechanics} from './applications/settings.js';
+import {getSettingsClass, settings, SettingsHelp} from './applications/settings.js';
 import {backup} from './extensions/backup.js';
 import {conditions} from './extensions/conditions.js';
 import {effects} from './extensions/effects.js';
@@ -70,13 +70,6 @@ export function registerSettings() {
         onChange: value => {
             if (value) effectInterface.checkEffectItem();
         }
-    });
-    addSetting({
-        key: 'macroInterface',
-        type: Boolean,
-        default: false,
-        category: 'interface',
-        reloadRequired: true
     });
     addSetting({
         key: 'useLocalCompendiums',
@@ -897,56 +890,56 @@ export function registerMenus() {
     if (game.settings.get('chris-premades', 'devTools')) addMenu({
         key: 'development',
         icon: 'fas fa-code',
-        type: settingsDevelopment,
+        type: getSettingsClass('development'),
     });
     addMenu({
         key: 'general',
         icon: 'fas fa-gears',
-        type: settingsGeneral
+        type: getSettingsClass('general')
     });
     addMenu({
         key: 'dialog',
         icon: 'fas fa-bars',
-        type: settingsDialog,
+        type: getSettingsClass('dialog'),
     });
     addMenu({
         key: 'interface',
         icon: 'fas fa-display',
-        type: settingsInterface
+        type: getSettingsClass('interface')
     });
     addMenu({
         key: 'compendium',
         icon: 'fas fa-atlas',
-        type: settingsCompendium
+        type: getSettingsClass('compendium')
     });
     addMenu({
         key: 'mechanics',
         icon: 'fas fa-dice',
-        type: settingsMechanics
+        type: getSettingsClass('mechanics')
     });
     addMenu({
         key: 'integration',
         icon: 'fas fa-puzzle-piece',
-        type: settingsIntegration
+        type: getSettingsClass('integration')
     });
     addMenu({
         key: 'homebrew',
         icon: 'fas fa-cauldron',
-        type: settingsHomebrew
+        type: getSettingsClass('homebrew')
     });
     addMenu({
         key: 'manualRolls',
         icon: 'fas fa-calculator',
-        type: settingsManualRolls
+        type: getSettingsClass('manualRolls')
     });
     addMenu({
         key: 'backup',
         icon: 'fas fa-floppy-disk',
-        type: settingsBackup
+        type: getSettingsClass('backup')
     });
     addMenu({
         key: 'help',
         icon: 'fas fa-screwdriver-wrench',
-        type: settingsHelp
+        type: SettingsHelp
     });
 }

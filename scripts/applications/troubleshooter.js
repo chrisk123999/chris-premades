@@ -343,47 +343,50 @@ export async function run() {
         async function discord() {
             window.open('https://discord.gg/egH9AFtPJk');
         }
-        let buttons = {
-            close: {
-                label: genericUtils.translate('CHRISPREMADES.Generic.Close')
+        let buttons = [
+            {
+                action: 'close',
+                label: genericUtils.translate('CHRISPREMADES.Generic.Close'),
+                type: 'submit',
+                icon: 'fa-solid fa-xmark',
+                default: true
             },
-            clipboard: {
+            {
+                action: 'clipbaord',
                 label: genericUtils.translate('CHRISPREMADES.Troubleshooter.CopyToClipboard'),
+                type: 'button',
+                icon: 'fa-solid fa-clipboard',
                 callback: () => clipboard(output)
             },
-            save: {
+            {
+                action: 'save',
                 label: genericUtils.translate('CHRISPREMADES.Troubleshooter.SaveToFile'),
+                type: 'button',
+                icon: 'fa-solid fa-floppy-disk',
                 callback: () => save(output)
             },
-            discord: {
+            {
+                action: 'discord',
                 label: genericUtils.translate('CHRISPREMADES.Troubleshooter.Discord'),
+                type: 'button',
+                icon: 'fa-brands fa-discord',
                 callback: () => discord()
             }
-        };
-        let content = '<textarea rows="40" cols="1000">' + output + '</textarea>';
-        class TroubleDialog extends Dialog {
-            _onClickButton(event) {
-                let id = event.currentTarget.dataset.button;
-                let button = this.data.buttons[id];
-                if (button.cssClass === 'close') {
-                    this.submit(button, event);
-                    return;
-                }
-                button.callback();
-            }
-        }
-        let dialog = new TroubleDialog(
-            {
+        ];
+        let content = '<textarea rows="40" cols="1000" style="resize: none;">' + output + '</textarea>';
+        let dialog = new foundry.applications.api.DialogV2({
+            window: {
                 title: genericUtils.translate('CHRISPREMADES.Troubleshooter.Title'),
-                content: content,
-                buttons: buttons
             },
-            {
+            classes: ['cpr-troubleshooter'],
+            content: content,
+            buttons: buttons,
+            position: {
                 height: 700,
                 width: 1000
             }
-        );
-        await dialog._render(true);
+        });
+        await dialog.render({force: true});
     }
     return await troubleshooterDialog();
 }

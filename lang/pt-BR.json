@@ -2737,10 +2737,6 @@
                 "Hint": "Compêndio de macros usado para substituir ou adicionar macros adicionais à API CPR. Consulte a documentação sobre como usar isso. (WIP)",
                 "Name": "Compêndio de Macros"
             },
-            "macroInterface": {
-                "Hint": "Adiciona uma guia na barra lateral para macros. É necessário recarregar após ativar.",
-                "Name": "Habilitar Interface de Macros"
-            },
             "makeGM": {
                 "Hint": "Torne-se o MJ principal.",
                 "Name": "Tornar-se MJ"

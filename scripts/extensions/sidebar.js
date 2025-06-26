@@ -2,10 +2,10 @@ import {DialogApp} from '../applications/dialog.js';
 import {constants, genericUtils} from '../utils.js';
 function removeCompendiums(directory) {
     // eslint-disable-next-line no-undef
-    if (!(directory instanceof CompendiumDirectory)) return;
+    if (!(directory instanceof foundry.applications.sidebar.tabs.CompendiumDirectory)) return;
     let html = directory.element;
-    let ol = html.find('ol.directory-list');
-    let lis = ol.find('li');
+    let ol = html.querySelectorAll('ol.directory-list');
+    let lis = Object.values(ol).flatMap(i => Object.values(i.querySelectorAll('li')));
     let hiddenCompendiums = genericUtils.getCPRSetting('hiddenCompendiums');
     let hiddenCompendiumFolders = genericUtils.getCPRSetting('hiddenCompendiumFolders');
     Object.values(lis).filter(i => i.localName === 'li').forEach(element => {

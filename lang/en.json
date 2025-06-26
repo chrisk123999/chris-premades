@@ -2738,10 +2738,6 @@
                 "Hint": "Macro compendium that is used to overwrite or add additional macros to the CPR API. Please see documentation on how to use this. (WIP)",
                 "Name": "Macro Compendium"
             },
-            "macroInterface": {
-                "Hint": "Adds a sidebar tab for Macros. Reload required after enabling.",
-                "Name": "Enable Macro Interface"
-            },
             "makeGM": {
                 "Hint": "Become the primary GM.",
                 "Name": "Make GM"

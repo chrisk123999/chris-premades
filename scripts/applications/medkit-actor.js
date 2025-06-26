@@ -28,6 +28,7 @@ export class ActorMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
         window: {
             icon: 'fa-solid fa-kit-medical',
             resizable: true,
+            contentClasses: ['standard-form']
         }
     };
     static PARTS = {
@@ -48,7 +49,7 @@ export class ActorMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
             scrollable: ['']
         },
         footer: {
-            template: 'modules/chris-premades/templates/form-footer.hbs'
+            template: 'templates/generic/form-footer.hbs'
         }
     };
     static async actor(actor) {

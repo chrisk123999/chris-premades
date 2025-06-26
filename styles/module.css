@@ -99,6 +99,16 @@ form .better-dialog .form-group .flexcol > div.select-many > multi-select {
     margin: 0.625em 0 0.625em 0;
 }
 
+form#cpr-embedded-macros-window [data-application-part="form"] {
+    .form-group {
+        margin-bottom: 0.5rem;
+    }
+
+    button {
+        width: 100%;
+    }
+}
+
 /* Common Formattings */
 
 form .cpr-row-center {
@@ -178,6 +188,10 @@ form .cpr-row-center .cpr-input-short {
 }
 
 /* Medkit Styles */
+
+.activity .fa-kit-medical.chris-premades-item {
+    font-family: var(--font-awesome);
+}
 
 .cpr-medkit-header {
     display: flex;
@@ -583,6 +597,6 @@ form .cpr-row-center .cpr-input-short {
 }
 
 /* Setting Styles */
-[id="chris-premades-settings"] p.notes {
-    white-space: pre-line
+.cpr-troubleshooter form>div {
+    height: calc(100% - 1.25 * var(--input-height) - 3.5rem);
 }

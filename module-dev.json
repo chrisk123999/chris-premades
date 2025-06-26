@@ -6,9 +6,9 @@
   "library": "false",
   "socket": true,
   "compatibility": {
-    "minimum": "12",
-    "verified": "12.331",
-    "maximum": "12.999"
+    "minimum": "13",
+    "verified": "13",
+    "maximum": "13"
   },
   "authors": [
     {
@@ -71,9 +71,9 @@
         "id": "dnd5e",
         "type": "system",
         "compatibility": {
-          "minimum": "4.3.1",
-          "verified": "4.3.1",
-          "maximum": "4.9.9"
+          "minimum": "5.0.0",
+          "verified": "5.0.4",
+          "maximum": "5.9.9"
         }
       }
     ],
@@ -82,35 +82,35 @@
         "id": "midi-qol",
         "type": "module",
         "compatibility": {
-          "minimum": "12.4.27"
+          "minimum": "13.0.4"
         }
       },
       {
         "id": "sequencer",
         "type": "module",
         "compatibility": {
-          "minimum": "3.3.2"
+          "minimum": "3.6.0"
         }
       },
       {
         "id": "socketlib",
         "type": "module",
         "compatibility": {
-          "minimum": "1.1.0"
+          "minimum": "1.1.2"
         }
       },
       {
         "id": "dae",
         "type": "module",
         "compatibility": {
-          "minimum": "12.0.17"
+          "minimum": "13.0.4"
         }
       },
       {
         "id": "times-up",
         "type": "module",
         "compatibility": {
-          "minimum": "11.3.19"
+          "minimum": "13.1.0"
         }
       }
     ]

@@ -2707,10 +2707,6 @@
                 "Hint": "Compendio delle macro usato per sovrascrivere o aggiungere macro alla CPR API. Vedi la documentazione per l'uso. (WIP)",
                 "Name": "Compendio Macro"
             },
-            "macroInterface": {
-                "Hint": "Aggiunge una scheda laterale per le Macro. Ricarica richiesta dopo l'abilitazione.",
-                "Name": "Abilita Interfaccia Macro"
-            },
             "makeGM": {
                 "Hint": "Diventa il Dungeon Master primario.",
                 "Name": "Diventa DM"

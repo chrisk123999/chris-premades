@@ -6,46 +6,96 @@ import {ActivityMedkit} from '../applications/medkit-activity.js';
 import {custom} from '../events/custom.js';
 import {compendium} from './compendium.js';
 import {EmbeddedMacros} from '../applications/embeddedMacros.js';
-export function createHeaderButton(config, buttons) {
-    // eslint-disable-next-line no-undef
-    if (config instanceof Compendium) {
+export function appendHeaderControl(app, controls) {
+    if (app instanceof foundry.applications.sidebar.apps.Compendium) {
         let validTypes = ['Actor', 'Item'];
-        if (!validTypes.includes(config.collection.metadata.type)) return;
+        if (!validTypes.includes(app.collection.metadata.type)) return;
     }
-    let embeddedOnlyTypes = ['MeasuredTemplate'];
-    let documentType = config.object?.documentName;
+    let embeddedOnlyTypes = ['MeasuredTemplate', 'Region'];
+    let documentType = app.document?.documentName;
+    let medkitLabel = genericUtils.translate('CHRISPREMADES.Medkit.Medkit');
     if (genericUtils.getCPRSetting('enableEmbeddedMacrosEditing')) {
         if (documentType) {
             let validTypes = ['MeasuredTemplate', 'Region'];
             if (validTypes.includes(documentType)) {
-                buttons.unshift({
-                    class: 'chris-premades-embedded-macros',
+                controls.push({
+                    label: medkitLabel,
                     icon: 'fa-solid fa-kit-medical',
-                    onclick: () => new EmbeddedMacros(config.object).render(true)
+                    onClick: () => new EmbeddedMacros(app.document).render(true)
                 });
             }
         }
     }
     if (embeddedOnlyTypes.includes(documentType)) return;
-    buttons.unshift({
-        class: 'chris-premades-item',
+    controls.push({
+        label: medkitLabel,
         icon: 'fa-solid fa-kit-medical',
-        onclick: () => {
-            if (config.object instanceof Item) {
-                itemMedkit(config.object);
-            } else if (config.object instanceof Actor) {
-                actorMedkit(config.object);
-            } else if (config.object instanceof ActiveEffect) {
-                effectMedkit(config.object);
-            // eslint-disable-next-line no-undef
-            } else if (config.object instanceof Scene) {
-                sceneMedkit(config.object);
-            // eslint-disable-next-line no-undef
-            } else if (config instanceof Compendium) {
-                compendiumMedkit(config.collection);
+        onClick: () => {
+            if (app instanceof foundry.applications.sidebar.apps.Compendium) {
+                compendiumMedkit(app.collection);
+            } else {
+                openMedkit(app.document);
             }
         }
     });
+    if (documentType === 'Item') {
+        // I hate this but can see no way around it
+        setTimeout(async () => {
+            let contextItems = document.querySelectorAll('nav#context-menu .context-item');
+            let headerButton = Array.from(contextItems).find(i => i.innerText.includes(medkitLabel))?.querySelector('i');
+            let item = app.document;
+            if (!item) return;
+            let updated = await itemUtils.isUpToDate(item);
+            let source = itemUtils.getSource(item);
+            let sources = [
+                'chris-premades',
+                'gambits-premades',
+                'midi-item-showcase-community'
+            ];
+            if (!sources.includes(source) && source) {
+                headerButton.style.color = 'pink';
+                return;
+            }
+            switch (updated) {
+                case 0: headerButton.style.color = source === 'chris-premades' ? 'red' : 'orange'; return;
+                case 1: {
+                    if (source === 'chris-premades') {
+                        let identifier = genericUtils.getIdentifier(item);
+                        if (custom.getMacro(identifier, genericUtils.getRules(item))?.config) {
+                            headerButton.style.color = 'dodgerblue';
+                        } else {
+                            headerButton.style.color = 'green';
+                        }
+                    } else {
+                        headerButton.style.color = 'orchid';
+                    }
+                    return;
+                }
+                case -1: {
+                    let availableItem = await compendiumUtils.getPreferredAutomation(item, {identifier: item?.actor?.flags['chris-premades']?.info?.identifier, rules: genericUtils.getRules(item)});
+                    if (availableItem) headerButton.style.color = 'yellow';
+                    return;
+                }
+                case 2: {
+                    headerButton.style.color = 'dodgerblue';
+                }
+            }
+        });
+    }
+}
+export function createHeaderButton(config, buttons) {
+}
+function openMedkit(document) {
+    switch (document?.documentName) {
+        case 'Item':
+            return itemMedkit(document);
+        case 'Actor':
+            return actorMedkit(document);
+        case 'ActiveEffect':
+            return effectMedkit(document);
+        case 'Scene':
+            return sceneMedkit(document);
+    }
 }
 async function itemMedkit(item) {
     await ItemMedkit.item(item);
@@ -59,17 +109,14 @@ async function effectMedkit(effect) {
 async function activityMedkit(activity) {
     await ActivityMedkit.activity(activity);
 }
-export async function renderItemSheet(app, [elem], options) {
+export async function renderItemSheet(app, elem, options) {
     let isTidy = app?.classList?.contains?.('tidy5e-sheet');
     let headerButton;
-    if (isTidy) {
-        headerButton = app.element.querySelector('menu.controls-dropdown i.chris-premades-item');
-        if (!headerButton) headerButton = elem.closest('.window-header')?.querySelector('.header-control.chris-premades-item');
-    } else {
-        headerButton = elem.closest('.window-app').querySelector('a.header-button.chris-premades-item');
-    }
+    if (!isTidy) return;
+    headerButton = app.element.querySelector('menu.controls-dropdown i.chris-premades-item');
+    if (!headerButton) headerButton = elem.closest('.window-header')?.querySelector('.header-control.chris-premades-item');
     if (!headerButton) return;
-    let item = app.object;
+    let item = app.document;
     if (!item) return;
     let updated = await itemUtils.isUpToDate(item);
     let source = itemUtils.getSource(item);
@@ -107,16 +154,6 @@ export async function renderItemSheet(app, [elem], options) {
         }
     }
 }
-export async function renderRegionConfig(app, [elem]) {
-    if (!genericUtils.getCPRSetting('enableEmbeddedMacrosEditing')) return;
-    let existingButton = elem.closest('.window-header').querySelector('button.chris-premades-item');
-    let closeButton = elem.closest('.window-header').querySelector('button[data-action="close"]');
-    if (existingButton) return;
-    let medkitButton = document.createElement('button');
-    medkitButton.setAttribute('class', 'header-control fa-solid fa-kit-medical chris-premades-item');
-    medkitButton.onclick = () => new EmbeddedMacros(app.document).render(true);
-    closeButton.parentNode.insertBefore(medkitButton, closeButton);
-}
 export async function renderActivitySheet(app, [elem]) {
     if (!(game.settings.get('chris-premades', 'devTools') || genericUtils.getCPRSetting('enableEmbeddedMacrosEditing'))) return;
     let activity = app.activity;
@@ -139,10 +176,12 @@ export async function renderActivitySheet(app, [elem]) {
         closeButton.parentNode.insertBefore(medkitButton, closeButton);
     }
 }
-export async function renderEffectConfig(app, [elem], options) {
-    let headerButton = elem.closest('.window-app').querySelector('a.header-button.chris-premades-item');
+export async function renderEffectConfig(app, elem, options) {
+    let medkitLabel = genericUtils.translate('CHRISPREMADES.Medkit.Medkit');
+    let headerControls = elem.closest('.window-app').querySelectorAll('li.header-control button span.control-label');
+    let headerButton = Array.from(headerControls).find(i => i.textContent.includes(medkitLabel))?.previousElementSibling;
     if (!headerButton) return;
-    let effect = app.object;
+    let effect = app.document;
     if (!effect) return;
     let cprFlags = effect.flags?.['chris-premades'];
     if (!cprFlags) return;

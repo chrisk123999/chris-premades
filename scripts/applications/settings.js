@@ -35,64 +35,83 @@ function addMenuSetting(key, category) {
 export let settings = {
     addMenuSetting
 };
-class settingsBase extends FormApplication {
-    constructor() {
-        super();
-        this.category = null;
-    }
-    static get defaultOptions() {
-        return genericUtils.mergeObject(super.defaultOptions, {
-            classes: ['form'],
-            popOut: true,
-            template: 'modules/chris-premades/templates/settings.hbs',
+export function getSettingsClass(category) {
+    return class SettingsClass extends foundry.applications.api.HandlebarsApplicationMixin(foundry.applications.api.ApplicationV2) {
+        category = category;
+        static DEFAULT_OPTIONS = {
+            tag: 'form',
             id: 'chris-premades-settings',
-            title: 'Cauldron of Plentiful Resources',
-            width: 800,
-            height: 'auto',
-            closeOnSubmit: true
-        });
-    }
-    getData() {
-        let generatedOptions = [];
-        for (let setting of game.settings.settings.values()) {
-            if (setting.namespace != 'chris-premades') continue;
-            let key = setting.key.split(' ').join('-');
-            if (settingCategories[key] != this.category) continue;
-            let s = genericUtils.deepClone(setting);
-            if (s.scope === 'world' && !game.user.isGM) continue;
-            s.id = String(s.key);
-            s.name = genericUtils.translate('CHRISPREMADES.Settings.' + s.key + '.Name');
-            s.hint = genericUtils.translate('CHRISPREMADES.Settings.' + s.key + '.Hint');
-            s.value = game.settings.get(s.namespace, s.key);
-            s.type = setting.type instanceof Function ? setting.type.name : 'String';
-            s.isCheckbox = setting.type === Boolean;
-            s.isSelect = s.choices !== undefined;
-            s.isRange = (setting.type === Number) && s.range;
-            s.isNumber = setting.type === Number;
-            s.filePickerType = s.filePicker === true ? 'any' : s.filePicker;
-            s.isButton = (setting.type instanceof Object || setting.type instanceof Array) && setting.type.name != 'String';
-            if (s.select) s.isButton = true;
-            s.label = genericUtils.translate(buttonLabels[key]);
-            generatedOptions.push(s);
-        }
-        return {settings: generatedOptions.sort((a, b) => {
-            let nameA = a.name.toUpperCase();
-            let nameB = b.name.toUpperCase();
-            if (nameA > nameB) {
-                return 1;
-            } else if (nameA < nameB) {
-                return -1;
-            } else {
-                return 0;
+            window: {
+                title: 'Cauldron of Plentiful Resources',
+                contentClasses: ['standard-form']
+            },
+            form: {
+                closeOnSubmit: true,
+                handler: this.#handleSubmit
+            },
+            position: {
+                width: 800,
+                height: 'auto'
             }
-        })};
-    }
-    async _updateObject(event, formData) {
-        for (let [key, value] of Object.entries(formData)) {
-            if (game.settings.get('chris-premades', key) === value) continue;
-            await game.settings.set('chris-premades', key, value);
+        };
+        static PARTS = {
+            form: {
+                template: 'modules/chris-premades/templates/settings.hbs'
+            },
+            footer: {
+                template: 'templates/generic/form-footer.hbs'
+            }
+        };
+        async _prepareContext(options) {
+            let context = await super._prepareContext(options);
+            let generatedOptions = [];
+            for (let setting of game.settings.settings.values()) {
+                if (setting.namespace != 'chris-premades') continue;
+                let key = setting.key.split(' ').join('-');
+                if (settingCategories[key] != this.category) continue;
+                let s = genericUtils.deepClone(setting);
+                if (s.scope === 'world' && !game.user.isGM) continue;
+                s.id = String(s.key);
+                s.name = genericUtils.translate('CHRISPREMADES.Settings.' + s.key + '.Name');
+                s.hint = genericUtils.translate('CHRISPREMADES.Settings.' + s.key + '.Hint');
+                s.value = game.settings.get(s.namespace, s.key);
+                s.type = setting.type instanceof Function ? setting.type.name : 'String';
+                s.isCheckbox = setting.type === Boolean;
+                s.isSelect = s.choices !== undefined;
+                s.isRange = (setting.type === Number) && s.range;
+                s.isNumber = setting.type === Number;
+                s.filePickerType = s.filePicker === true ? 'any' : s.filePicker;
+                s.isButton = (setting.type instanceof Object || setting.type instanceof Array) && setting.type.name != 'String';
+                if (s.select) s.isButton = true;
+                s.label = genericUtils.translate(buttonLabels[key]);
+                generatedOptions.push(s);
+            }
+            return genericUtils.mergeObject(context, {
+                settings: generatedOptions.sort((a, b) => {
+                    let nameA = a.name.toUpperCase();
+                    let nameB = b.name.toUpperCase();
+                    if (nameA > nameB) {
+                        return 1;
+                    } else if (nameA < nameB) {
+                        return -1;
+                    } else {
+                        return 0;
+                    }
+                }),
+                buttons: [{
+                    label: genericUtils.translate('Confirm'),
+                    type: 'submit',
+                    icon: 'fa fa-check'
+                }]
+            });
         }
-    }
+        static async #handleSubmit(event, form, formData) {
+            for (let [key, value] of Object.entries(formData.object)) {
+                if (game.settings.get('chris-premades', key) === value) continue;
+                await game.settings.set('chris-premades', key, value);
+            }
+        }
+    };
 }
 async function selectCompendium(settingKey, type) {
     let oldKey = genericUtils.getCPRSetting(settingKey);
@@ -133,84 +152,26 @@ export async function settingButton(id) {
         case 'makeGM': await genericUtils.setCPRSetting('makeGM', game.user.id); break;
     }
 }
-export class settingsDevelopment extends settingsBase {
-    constructor() {
-        super();
-        this.category = 'development';
-    }
-}
-export class settingsDialog extends settingsBase {
-    constructor() {
-        super();
-        this.category = 'dialog';
-    }
-}
-export class settingsInterface extends settingsBase {
-    constructor() {
-        super();
-        this.category = 'interface';
-    }
-}
-export class settingsCompendium extends settingsBase {
-    constructor() {
-        super();
-        this.category = 'compendium';
-    }
-}
-export class settingsMechanics extends settingsBase {
-    constructor() {
-        super();
-        this.category = 'mechanics';
-    }
-}
-export class settingsGeneral extends settingsBase {
-    constructor() {
-        super();
-        this.category = 'general';
-    }
-}
-export class settingsIntegration extends settingsBase {
-    constructor() {
-        super();
-        this.category = 'integration';
-    }
-}
-export class settingsHomebrew extends settingsBase {
-    constructor() {
-        super();
-        this.category = 'homebrew';
-    }
-}
-export class settingsManualRolls extends settingsBase {
-    constructor() {
-        super();
-        this.category = 'manualRolls';
-    }
-}
-export class settingsBackup extends settingsBase {
-    constructor() {
-        super();
-        this.category = 'backup';
-    } 
-}
-export class settingsHelp extends FormApplication {
-    constructor() {
-        super();
-    }
-    static get defaultOptions() {
-        return genericUtils.mergeObject(super.defaultOptions, {
-            classes: ['form'],
-            popOut: true,
-            template: 'modules/chris-premades/templates/settings.hbs',
-            id: 'chris-troubleshoot-settings',
+export class SettingsHelp extends getSettingsClass(null) {
+    static DEFAULT_OPTIONS = {
+        tag: 'form',
+        id: 'chris-troubleshoot-settings',
+        window: {
             title: 'Help',
+            contentClasses: ['standard-form']
+        },
+        form: {
+            closeOnSubmit: true,
+            handler: () => {}
+        },
+        position: {
             width: 800,
-            height: 'auto',
-            closeOnSubmit: true
-        });
-    }
-    getData() {
-        return {
+            height: 'auto'
+        }
+    };
+    async _prepareContext(options) {
+        let context = await super._prepareContext(options);
+        return genericUtils.mergeObject(context, {
             settings: [
                 {
                     name: genericUtils.translate('CHRISPREMADES.Tour.TourFeatures'),
@@ -229,10 +190,6 @@ export class settingsHelp extends FormApplication {
                     label: genericUtils.translate('CHRISPREMADES.Generic.Go')
                 }
             ]
-        };
+        });
     }
-    activateListeners(html) {
-        super.activateListeners(html);
-    }
-    _updateObject(event, formData) {}
 }

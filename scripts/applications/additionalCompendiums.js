@@ -21,7 +21,8 @@ export class AdditionalCompendiums extends HandlebarsApplicationMixin(Applicatio
         window: {
             title: 'Default Title',
             resizable: true,
-        }
+        },
+        classes: ['standard-form']
     };
     static PARTS = {
         header: {
@@ -32,7 +33,7 @@ export class AdditionalCompendiums extends HandlebarsApplicationMixin(Applicatio
             scrollable: ['']
         },
         footer: {
-            template: 'modules/chris-premades/templates/form-footer.hbs'
+            template: 'templates/generic/form-footer.hbs'
         }
     };
     static async confirm(event, target) {

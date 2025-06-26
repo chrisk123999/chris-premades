@@ -742,6 +742,11 @@ export class EmbeddedMacros extends HandlebarsApplicationMixin(ApplicationV2) {
         window: {
             title: 'Default Title',
             resizable: true,
+            contentClasses: ['standard-form']
+        },
+        position: {
+            width: 600,
+            height: 400
         }
     };
     static PARTS = {
@@ -756,7 +761,7 @@ export class EmbeddedMacros extends HandlebarsApplicationMixin(ApplicationV2) {
             scrollable: ['']
         },
         footer: {
-            template: 'modules/chris-premades/templates/form-footer.hbs'
+            template: 'templates/generic/form-footer.hbs'
         },
     };
     static async confirm(event, target) {

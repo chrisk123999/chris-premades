@@ -7,7 +7,7 @@ import {midiEvents} from './events/midi.js';
 import {movementEvents} from './events/movement.js';
 import {templateEvents} from './events/template.js';
 import {dae} from './integrations/dae.js';
-import {createHeaderButton, renderItemSheet, renderEffectConfig, renderCompendium, renderActivitySheet, renderRegionConfig} from './extensions/titlebar.js';
+import {appendHeaderControl, createHeaderButton, renderItemSheet, renderEffectConfig, renderCompendium, renderActivitySheet} from './extensions/titlebar.js';
 import {genericUtils} from './utils.js';
 import {chat} from './extensions/chat.js';
 import {sidebar} from './extensions/sidebar.js';
@@ -45,15 +45,20 @@ export function registerHooks() {
     Hooks.on('midi-qol.preTargetDamageApplication', midiEvents.preTargetDamageApplication);
     Hooks.on('midi-qol.premades.postRollFinished', midiEvents.rollFinished);
     Hooks.on('dae.setFieldData', dae.addFlags);
-    Hooks.on('getItemSheetHeaderButtons', createHeaderButton);
-    Hooks.on('getActorSheetHeaderButtons', createHeaderButton);
-    Hooks.on('getActiveEffectConfigHeaderButtons', createHeaderButton);
-    Hooks.on('getMeasuredTemplateConfigHeaderButtons', createHeaderButton);
-    Hooks.on('renderRegionConfig', renderRegionConfig);
+    // old
     Hooks.on('renderCompendium', renderCompendium);
     Hooks.on('renderItemSheetV2', renderItemSheet);
     Hooks.on('renderActivitySheet', renderActivitySheet);
     Hooks.on('renderDAEActiveEffectConfig', renderEffectConfig);
+    // end old
+    // new
+    Hooks.on('getHeaderControlsItemSheet5e', appendHeaderControl);
+    Hooks.on('getHeaderControlsActorSheetV2', appendHeaderControl);
+    Hooks.on('getHeaderControlsActiveEffectConfig', appendHeaderControl);
+    Hooks.on('getHeaderControlsMeasuredTemplateConfig', appendHeaderControl);
+    Hooks.on('getHeaderControlsRegionConfig', appendHeaderControl);
+    Hooks.on('getHeaderControlsCompendium', appendHeaderControl);
+    // end new
     Hooks.on('preCreateActiveEffect', effects.activityDC);
     Hooks.on('preCreateActiveEffect', effects.noAnimation);
     Hooks.on('preDeleteActiveEffect', effects.noAnimation);
