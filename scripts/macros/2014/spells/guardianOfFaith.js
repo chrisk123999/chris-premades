@@ -9,6 +9,12 @@ async function use({workflow}) {
         errors.missingPackItem();
         return;
     }
+    let damageType = itemUtils.getConfig(workflow.item, 'damageType');
+    Object.values(featureDataSummon.system.activities).forEach(activity =>
+        activity.damage?.parts.forEach(part => 
+            part.types = [damageType]
+        )
+    );
     let name = itemUtils.getConfig(workflow.item, 'name');
     if (!name?.length) name = sourceActor.name;
     let updates = {
@@ -156,6 +162,15 @@ export let guardianOfFaith = {
             default: '',
             category: 'summons'
         },
+        {
+            value: 'damageType',
+            label: 'CHRISPREMADES.Config.DamageType',
+            type: 'select',
+            default: 'radiant',
+            options: constants.damageTypeOptions,
+            homebrew: true,
+            category: 'homebrew'
+        }
     ]
 };
 export let guardianOfFaithDamage = {

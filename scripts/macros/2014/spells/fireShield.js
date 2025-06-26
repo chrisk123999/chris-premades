@@ -182,7 +182,7 @@ async function early({dialog}) {
 }
 export let fireShield = {
     name: 'Fire Shield',
-    version: '1.2.28',
+    version: '1.2.40',
     hasAnimation: true,
     midi: {
         item: [

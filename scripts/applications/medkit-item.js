@@ -682,24 +682,25 @@ export class ItemMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
         let sourceItemData = genericUtils.duplicate(sourceItem.toObject());
         let itemType = item.type;
         const keepPaths = [
-            'name',
-            'system.description',
-            'system.chatFlavor',
-            'flags.dnd5e.advancementOrigin',
-            'system.quantity',
+            '_stats.compendiumSource',
+            'flags.chris-premades.config',
             'flags.custom-character-sheet-sections.sectionName',
             'flags.ddbimporter',
-            'flags.tidy5e-sheet',
-            '_stats.compendiumSource',
+            'flags.dnd5e.advancementOrigin',
             'flags.dnd5e.cachedFor',
             'flags.dnd5e.sourceId',
-            'flags.chris-premades.config',
-            'system.materials',
+            'flags.tidy5e-sheet',
             'folder',
-            'system.sourceClass',
-            'system.preparation',
+            'name',
+            'system.advancement',
             'system.attunement',
-            'system.equipped'
+            'system.chatFlavor',
+            'system.description',
+            'system.equipped',
+            'system.materials',
+            'system.preparation',
+            'system.quantity',
+            'system.sourceClass',
         ];
         const cleanPaths = [
             'flags.midi-qol.onUseMacroName',

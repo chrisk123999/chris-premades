@@ -1,4 +1,4 @@
-import {activityUtils, actorUtils, compendiumUtils, constants, dialogUtils, effectUtils, errors, genericUtils, itemUtils, tokenUtils, workflowUtils} from '../../../../../utils.js';
+import {activityUtils, actorUtils, compendiumUtils, constants, dialogUtils, effectUtils, errors, genericUtils, itemUtils, socketUtils, tokenUtils, workflowUtils} from '../../../../../utils.js';
 
 async function use({workflow}) {
     let activityIdentifier = activityUtils.getIdentifier(workflow.activity);
@@ -148,7 +148,7 @@ async function turnStart({trigger: {entity: effect, token}}) {
     let formIdentifiers = ['starryFormArcher', 'starryFormChalice', 'starryFormDragon'];
     formIdentifiers.splice(formIdentifiers.findIndex(i => i === currentForm), 1);
     let features = formIdentifiers.map(i => activityUtils.getActivityByIdentifier(starryItem, i));
-    let selection = await dialogUtils.buttonDialog(twinklingItem.name, 'CHRISPREMADES.Macros.StarryForm.Change', features.map((i,idx) => [i.name, idx + 1]).concat([['CHRISPREMADES.Generic.No', false]]));
+    let selection = await dialogUtils.buttonDialog(twinklingItem.name, 'CHRISPREMADES.Macros.StarryForm.Change', features.map((i,idx) => [i.name, idx + 1]).concat([['CHRISPREMADES.Generic.No', false]]), {userId: socketUtils.firstOwner(token.actor, true)});
     if (!selection) return;
     await workflowUtils.syntheticActivityRoll(features[selection - 1]);
 }
@@ -171,8 +171,7 @@ async function late({trigger: {entity: effect}, workflow}) {
 async function early({actor, config, dialog}) {
     dialog.configure = false;
     if (actor.classes.druid?.system.levels < 10) return;
-    let spellLabel = actorUtils.getEquivalentSpellSlotName(actor, 1);
-    if (spellLabel) config.spell = {slot: spellLabel};
+    config.scaling = 1;
 }
 export let starryForm = {
     name: 'Starry Form',

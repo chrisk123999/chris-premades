@@ -394,7 +394,7 @@
                 "formula": ""
               },
               "number": 2,
-              "denomination": "6",
+              "denomination": "8",
               "bonus": "",
               "types": [
                 "fire"
@@ -509,7 +509,7 @@
     },
     "chris-premades": {
       "info": {
-        "version": "1.2.28",
+        "version": "1.2.40",
         "hasAnimation": true,
         "identifier": "fireShield",
         "source": "chris-premades",

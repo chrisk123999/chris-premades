@@ -35,6 +35,11 @@ async function setFlag(entity, scope, key, value) {
     if (hasPermission) return await entity.setFlag(scope, key, value);
     return await socket.executeAsGM(sockets.setFlag.name, entity.uuid, scope, key, value);
 }
+async function unsetFlag(entity, scope, key) {
+    let hasPermission = socketUtils.hasPermission(entity, game.user.id);
+    if (hasPermission) return await entity.unsetFlag(scope, key);
+    return await socket.executeAsGM(sockets.unsetFlag.name, entity.uuid, scope, key);
+}
 async function remove(entity) {
     let hasPermission = socketUtils.hasPermission(entity, game.user.id);
     if (hasPermission) return await entity.delete();
@@ -204,6 +209,7 @@ export let genericUtils = {
     update,
     remove,
     setFlag,
+    unsetFlag,
     deepClone,
     mergeObject,
     getCPRSetting,

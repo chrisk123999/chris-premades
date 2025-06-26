@@ -39,7 +39,6 @@ import {initiative} from './extensions/initiative.js';
 import {EmbeddedMacros} from './applications/embeddedMacros.js';
 Hooks.once('socketlib.ready', registerSockets);
 Hooks.once('init', () => {
-    dae.initFlags();
     Hooks.on('dae.modifySpecials', dae.modifySpecials);
     registerSettings();
     if (utils.genericUtils.getCPRSetting('useLocalCompendiums')) utils.constants.setUseLocalCompendium(true);
@@ -56,6 +55,9 @@ Hooks.once('init', () => {
         Hooks.on('getItemDirectory5eEntryContext', itemDirectory.itemContext);
         Hooks.on('getActorDirectoryEntryContext', itemDirectory.actorContext);
     }
+});
+Hooks.once('i18nInit', () => {
+    dae.initFlags();
 });
 Hooks.once('ready', () => {
     custom.ready();

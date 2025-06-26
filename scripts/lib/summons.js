@@ -10,6 +10,7 @@ export class Summons {
         this.options = options ?? {};
         this.spawnedTokens = [];
         this.currentIndex = 0;
+        this.matchElevation = game.settings.get('chris-premades', 'matchSummonElevation');
     }
     static async spawn(sourceActors, updates = [{}], originItem, summonerToken, options = {duration: undefined, callbacks: undefined, range: 100, animation: 'default', onDeleteMacros: undefined, concentrationNonDependent: false, initiativeType: 'separate', additionalVaeButtons: [], additionalSummonVaeButtons: [], dontDismissOnDefeat: false, dismissActivity: undefined, unhideActivities: undefined, customIdentifier: undefined/*dontAnimateOnDismiss: false*/}) {
         if (!Array.isArray(sourceActors)) sourceActors = [sourceActors];
@@ -424,6 +425,7 @@ export class Summons {
         genericUtils.mergeObject(this.updates, updates);
     }
     get tokenUpdates() {
+        if (this.matchElevation) return {elevation: (this.summonerToken?.document?.elevation ?? 0), ...this.updates.token};
         return this.updates.token;
     }
     get actorUpdates() {

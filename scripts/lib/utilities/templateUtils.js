@@ -15,7 +15,8 @@ function getTokensInShape(shape, scene, {x: offsetX, y: offsetY}={x: 0, y: 0}) {
                     y: tokY + y * size - offsetY
                 };
                 let contains = shape.contains(curr.x, curr.y);
-                if (contains) {
+                let isOn = shape.getBounds().pointIsOn(curr);
+                if (contains && !isOn) {
                     tokens.add(token.object);
                     continue;
                 }
