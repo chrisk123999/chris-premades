@@ -7,6 +7,7 @@ import {custom} from '../events/custom.js';
 import {compendium} from './compendium.js';
 import {EmbeddedMacros} from '../applications/embeddedMacros.js';
 export function appendHeaderControl(app, controls) {
+    if (app.classList.contains('tidy5e-sheet')) return;
     if (app instanceof foundry.applications.sidebar.apps.Compendium) {
         let validTypes = ['Actor', 'Item'];
         if (!validTypes.includes(app.collection.metadata.type)) return;
@@ -43,6 +44,7 @@ export function appendHeaderControl(app, controls) {
         setTimeout(async () => {
             let contextItems = document.querySelectorAll('nav#context-menu .context-item');
             let headerButton = Array.from(contextItems).find(i => i.innerText.includes(medkitLabel))?.querySelector('i');
+            if (!headerButton) return;
             let item = app.document;
             if (!item) return;
             let updated = await itemUtils.isUpToDate(item);
@@ -83,8 +85,6 @@ export function appendHeaderControl(app, controls) {
         });
     }
 }
-export function createHeaderButton(config, buttons) {
-}
 function openMedkit(document) {
     switch (document?.documentName) {
         case 'Item':
@@ -108,51 +108,6 @@ async function effectMedkit(effect) {
 }
 async function activityMedkit(activity) {
     await ActivityMedkit.activity(activity);
-}
-export async function renderItemSheet(app, elem, options) {
-    let isTidy = app?.classList?.contains?.('tidy5e-sheet');
-    let headerButton;
-    if (!isTidy) return;
-    headerButton = app.element.querySelector('menu.controls-dropdown i.chris-premades-item');
-    if (!headerButton) headerButton = elem.closest('.window-header')?.querySelector('.header-control.chris-premades-item');
-    if (!headerButton) return;
-    let item = app.document;
-    if (!item) return;
-    let updated = await itemUtils.isUpToDate(item);
-    let source = itemUtils.getSource(item);
-    let sources = [
-        'chris-premades',
-        'gambits-premades',
-        'midi-item-showcase-community'
-    ];
-    if (!sources.includes(source) && source) {
-        headerButton.style.color = 'pink';
-        return;
-    }
-    switch (updated) {
-        case 0: headerButton.style.color = source === 'chris-premades' ? 'red' : 'orange'; return;
-        case 1: {
-            if (source === 'chris-premades') {
-                let identifier = genericUtils.getIdentifier(item);
-                if (custom.getMacro(identifier, genericUtils.getRules(item))?.config) {
-                    headerButton.style.color = 'dodgerblue';
-                } else {
-                    headerButton.style.color = 'green';
-                }
-            } else {
-                headerButton.style.color = 'orchid';
-            }
-            return;
-        }
-        case -1: {
-            let availableItem = await compendiumUtils.getPreferredAutomation(item, {identifier: item?.actor?.flags['chris-premades']?.info?.identifier, rules: genericUtils.getRules(item)});
-            if (availableItem) headerButton.style.color = 'yellow';
-            return;
-        }
-        case 2: {
-            headerButton.style.color = 'dodgerblue';
-        }
-    }
 }
 export async function renderActivitySheet(app, [elem]) {
     if (!(game.settings.get('chris-premades', 'devTools') || genericUtils.getCPRSetting('enableEmbeddedMacrosEditing'))) return;
@@ -221,8 +176,8 @@ async function compendiumMedkit(pack) {
 }
 export async function renderCompendium(app, html, data) {
     if (!genericUtils.getCPRSetting('addCompendiumButton')) return;
-    let header = html[0].querySelector('h4.window-title');
-    if (!header) return;
+    let closeButton = html.querySelector('.window-header .header-control[data-action="close"]');
+    if (!closeButton) return;
     let button = document.createElement('a');
     button.classList.add('document-id-link');
     button.dataset.tooltip = 'CHRISPREMADES.HeaderButtons.PackId.Tooltip';
@@ -237,5 +192,5 @@ export async function renderCompendium(app, html, data) {
     let icon = document.createElement('i');
     icon.setAttribute('class', 'fa-solid fa-passport');
     button.append(icon);
-    header.append(button);
+    closeButton.before(button);
 }

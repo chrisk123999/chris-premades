@@ -7,7 +7,7 @@ import {midiEvents} from './events/midi.js';
 import {movementEvents} from './events/movement.js';
 import {templateEvents} from './events/template.js';
 import {dae} from './integrations/dae.js';
-import {appendHeaderControl, createHeaderButton, renderItemSheet, renderEffectConfig, renderCompendium, renderActivitySheet} from './extensions/titlebar.js';
+import {appendHeaderControl, renderEffectConfig, renderCompendium, renderActivitySheet} from './extensions/titlebar.js';
 import {genericUtils} from './utils.js';
 import {chat} from './extensions/chat.js';
 import {sidebar} from './extensions/sidebar.js';
@@ -45,9 +45,8 @@ export function registerHooks() {
     Hooks.on('midi-qol.preTargetDamageApplication', midiEvents.preTargetDamageApplication);
     Hooks.on('midi-qol.premades.postRollFinished', midiEvents.rollFinished);
     Hooks.on('dae.setFieldData', dae.addFlags);
-    // old
     Hooks.on('renderCompendium', renderCompendium);
-    Hooks.on('renderItemSheetV2', renderItemSheet);
+    // old
     Hooks.on('renderActivitySheet', renderActivitySheet);
     Hooks.on('renderDAEActiveEffectConfig', renderEffectConfig);
     // end old
@@ -57,7 +56,6 @@ export function registerHooks() {
     Hooks.on('getHeaderControlsActiveEffectConfig', appendHeaderControl);
     Hooks.on('getHeaderControlsMeasuredTemplateConfig', appendHeaderControl);
     Hooks.on('getHeaderControlsRegionConfig', appendHeaderControl);
-    Hooks.on('getHeaderControlsCompendium', appendHeaderControl);
     // end new
     Hooks.on('preCreateActiveEffect', effects.activityDC);
     Hooks.on('preCreateActiveEffect', effects.noAnimation);
@@ -110,8 +108,8 @@ export function registerHooks() {
         Hooks.on('canvasReady', auras.canvasReady);
         Hooks.on('createItem', itemEvent.created);
         Hooks.on('deleteItem', itemEvent.deleted);
-        Hooks.on('getSceneConfigHeaderButtons', createHeaderButton);
-        Hooks.on('getCompendiumHeaderButtons', createHeaderButton);
+        Hooks.on('getHeaderControlsSceneConfig', appendHeaderControl);
+        Hooks.on('getHeaderControlsCompendium', appendHeaderControl);
         Hooks.on('updateActor', effects.specialDurationHitPoints);
         auras.canvasReady(canvas);
         if (genericUtils.getCPRSetting('syncActorSizeToTokens')) {
@@ -121,7 +119,9 @@ export function registerHooks() {
         }
         if (genericUtils.getCPRSetting('backups')) Hooks.on('preCreateActor', backup.preCreateActor);
     }
-    Hooks.once('tidy5e-sheet.ready', tidy5e.itemTitleBar);
+    Hooks.once('tidy5e-sheet.ready', tidy5e.headerControls);
+    Hooks.on('renderTidy5eItemSheetClassic', tidy5e.renderTidyItemSheet);
+    Hooks.on('renderTidy5eItemSheetQuadrone', tidy5e.renderTidyItemSheet);
     Hooks.on('aa.preDataSanitize', automatedAnimations.preDataSanitize);
     Hooks.on('dnd5e.renderChatMessage', chat.renderChatMessage);
 }
