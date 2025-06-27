@@ -15,6 +15,7 @@ async function combatEnd({trigger}) {
 }
 export let colossusSlayer = {
     name: 'Colossus Slayer',
+    aliases: ['Hunter\'s Prey: Colossus Slayer'],
     version: '1.1.0',
     midi: {
         actor: [

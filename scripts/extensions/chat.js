@@ -1,4 +1,5 @@
 import {ItemMedkit} from '../applications/medkit-item.js';
+import {tours} from '../applications/tour.js';
 import {genericUtils} from '../utils.js';
 async function createChatMessage(message, options, userId) {
     let buttonData = message.flags?.['chris-premades']?.button;
@@ -16,9 +17,23 @@ async function createChatMessage(message, options, userId) {
                 await ItemMedkit.item(item);
                 await message.delete();
             });
-        }  
+            break;
+        }
+        case 'tour': {
+            let button = messageElement.querySelector('[type="button"]');
+            if (button) button.addEventListener('click', tours.guidedTour);
+            break;
+        }
     }
 }
+async function renderChatMessage(message, html) {
+    let buttonData = message.flags?.['chris-premades']?.button;
+    if (!buttonData) return;
+    let img = html.querySelector('.avatar img');
+    if (!img) return;
+    img.src = 'modules/chris-premades/images/CauldronofPlentifulResourcesMedium.png';
+}
 export let chat = {
-    createChatMessage
+    createChatMessage,
+    renderChatMessage
 };

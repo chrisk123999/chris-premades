@@ -683,6 +683,12 @@ export function registerSettings() {
         category: 'mechanics'
     });
     addSetting({
+        key: 'matchSummonElevation',
+        type: Boolean,
+        default: false,
+        category: 'mechanics'
+    });
+    addSetting({
         key: 'bg3WeaponActionConfig',
         type: Object,
         default: {

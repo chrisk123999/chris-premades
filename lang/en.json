@@ -2776,6 +2776,10 @@
                 "Hint": "Configure which users use Manual Rolls.",
                 "Name": "Manual Rolls Users"
             },
+            "matchSummonElevation": {
+                "Hint": "If enabled, CPR-summoned tokens will be created with the same elevation as the summoner token.",
+                "Name": "Summons Match Summoner's Elevation"
+            },
             "migrationVersion": {
                 "Hint": "Migration Version",
                 "Name": "Migration Version"

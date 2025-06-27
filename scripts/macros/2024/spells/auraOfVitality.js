@@ -1,4 +1,4 @@
-import {activityUtils, dialogUtils, effectUtils, itemUtils, tokenUtils, workflowUtils} from '../../../utils.js';
+import {activityUtils, dialogUtils, effectUtils, itemUtils, socketUtils, tokenUtils, workflowUtils} from '../../../utils.js';
 async function use({trigger, workflow}) {
     let effectData = {
         name: workflow.item.name,
@@ -44,7 +44,7 @@ async function turnStart({trigger}) {
     if (nearbyTokens.length === 1) {
         selection = nearbyTokens[0];
     } else {
-        selection = await dialogUtils.selectTargetDialog(trigger.entity.name, 'CHRISPREMADES.MACROS.AuraOfVitality.Select', nearbyTokens, {skipDeadAndUnconscious: false});
+        selection = await dialogUtils.selectTargetDialog(trigger.entity.name, 'CHRISPREMADES.MACROS.AuraOfVitality.Select', nearbyTokens, {skipDeadAndUnconscious: false, userId: socketUtils.firstOwner(trigger.token.actor, true)});
         if (!selection?.length) return;
         selection = selection[0];
     }
