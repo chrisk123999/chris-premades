@@ -247,7 +247,7 @@ async function turnEnd({trigger: {entity: effect, token}}) {
         await genericUtils.remove(effect);
         return;
     }
-    let maxRange = effectUtils.getEffectByIdentifier(token.actor, 'echoAvatar') ? 1000 : 30;
+    let maxRange = effectUtils.getEffectByIdentifier(token.actor, 'echoAvatar') ? genericUtils.handleMetric(1000) : genericUtils.handleMetric(30);
     let echosLeft = sceneEchos.length;
     for (let i of sceneEchos) {
         let distance = tokenUtils.getDistance(token, i);
