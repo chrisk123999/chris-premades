@@ -2,6 +2,7 @@
 ## Bug Fixes
 - Chromatic Orb (Modern)
 - Unconscious condition
+- Summon Fey
 
 # 1.2.40 Release:
 ## Bug Fixes
