@@ -178,6 +178,8 @@ export async function renderCompendium(app, html, data) {
     if (!genericUtils.getCPRSetting('addCompendiumButton')) return;
     let closeButton = html.querySelector('.window-header .header-control[data-action="close"]');
     if (!closeButton) return;
+    let existingButton = html.querySelector('.document-id-link');
+    if (existingButton) return;
     let button = document.createElement('a');
     button.classList.add('document-id-link');
     button.dataset.tooltip = 'CHRISPREMADES.HeaderButtons.PackId.Tooltip';

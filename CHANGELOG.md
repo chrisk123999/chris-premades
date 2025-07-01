@@ -1,3 +1,8 @@
+# 1.3.1 Release:
+## Bug Fixes
+- Compendium pack-id header button
+- Localization
+
 # 1.3.0 Release:
 ## Update Notes:
 - First pass at v13/5.x compatibility. Full functionality far from guaranteed.
