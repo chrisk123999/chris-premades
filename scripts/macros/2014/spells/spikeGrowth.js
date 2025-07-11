@@ -25,7 +25,7 @@ async function enterOrPassThrough({trigger: {entity: template, token}, options},
     let templateObj = template.object;
     let prevCoords = options?.['chris-premades']?.coords?.previous;
     if (!prevCoords) return;
-    if (canvas.scene.grid.units !== 'ft') return;
+    //if (canvas.scene.grid.units !== 'ft') return;
     if (canvas.scene.grid.type === CONST.GRID_TYPES.GRIDLESS) {
         let startedIn = templateObj.shape.contains(prevCoords.x - templateObj.center.x, prevCoords.y - templateObj.center.y);
         let endedIn = templateObj.shape.contains(token.center.x - templateObj.center.x, token.center.y - templateObj.center.y);
@@ -67,17 +67,17 @@ async function stay({trigger: {entity: template, token}, options}) {
     if (options.teleport) return;
     let prevCoords = options?.['chris-premades']?.coords?.previous;
     if (!prevCoords) return;
-    if (canvas.scene.grid.units !== 'ft') return;
+    //if (canvas.scene.grid.units !== 'ft') return;
     await damageHelper(prevCoords, token.center, template, token, {stay: true, gridless: canvas.scene.grid.type === CONST.GRID_TYPES.GRIDLESS});
 }
 async function damageHelper(pointA, pointB, template, token, {stay, gridless} = {stay: false, gridless: false}) {
     let timesToDamage;
     if (gridless) {
-        timesToDamage = Math.floor(canvas.grid.measurePath([pointA, pointB]).distance / 5);
+        timesToDamage = Math.floor(canvas.grid.measurePath([pointA, pointB]).distance / genericUtils.handleMetric(5));
     } else {
         let gridsMoved = templateUtils.findGrids(pointA, pointB, template)?.size;
         if (stay) gridsMoved -= 1;
-        timesToDamage = Math.floor(gridsMoved * canvas.grid.distance / 5);
+        timesToDamage = Math.floor(gridsMoved * canvas.grid.distance / genericUtils.handleMetric(5));
     }
     if (timesToDamage <= 0) return;
     let feature = activityUtils.getActivityByIdentifier(fromUuidSync(template.flags.dnd5e.item), 'spikeGrowthDamage');

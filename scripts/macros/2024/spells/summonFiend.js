@@ -73,7 +73,7 @@ async function use({workflow}) {
             if (concentrationEffect) await genericUtils.remove(concentrationEffect);
             return;
         }
-        genericUtils.setProperty(updates, 'actor.system.attributes.movement.climb', 40);
+        genericUtils.setProperty(updates, 'actor.system.attributes.movement.climb', genericUtils.handleMetric(40));
         updates.actor.items.push(biteData, deathThroesData);
     } else if (creatureType === 'devil') {
         hpFormula += 40;
@@ -84,7 +84,7 @@ async function use({workflow}) {
             if (concentrationEffect) await genericUtils.remove(concentrationEffect);
             return;
         }
-        genericUtils.setProperty(updates, 'actor.system.attributes.movement.fly', 60);
+        genericUtils.setProperty(updates, 'actor.system.attributes.movement.fly', genericUtils.handleMetric(60));
         updates.actor.items.push(fieryStrikeData, devilsSightData);
     } else {
         hpFormula += 60;

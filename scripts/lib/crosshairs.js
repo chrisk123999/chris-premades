@@ -300,7 +300,7 @@ export class Crosshairs extends MeasuredTemplate {
     _mouseWheelHandler(event) {
         if (event.ctrlKey) event.preventDefault(); // Avoid zooming the browser window
         if (!event.altKey) event.stopPropagation();
-        const delta = canvas.grid.type > CONST.GRID_TYPES.SQUARE ? 30 : 15;
+        const delta = canvas.grid.type > CONST.GRID_TYPES.SQUARE ? genericUtils.handleMetric(30) : genericUtils.handleMetric(15);
         const snap = event.ctrlKey ? delta : 5;
         const document = this.document;
         const thisSceneSize = this.scene.grid.size;
