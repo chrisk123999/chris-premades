@@ -2797,8 +2797,11 @@
                 "1": "Medium",
                 "2": "High",
                 "3": "Ultra",
-                "Hint": "Accuracy mode for movement events. Higher accuracy modes will have a greater performance impact, especially on less powerful hardware.\r\n• Ultra: Full accuracy.\r\n• High: Ignores cover calculation when getting distance.\r\n• Medium: As high, and waypoint movement is ignored, except for the final segment.\r\n• Low: As Medium, and walls are ignored in distance calculations.",
+                "Hint": "Accuracy mode for movement events. Higher accuracy modes will have a greater performance impact, especially on less powerful hardware.<br>• Ultra: Full accuracy.<br>• High: Ignores cover calculation when getting distance.<br>• Medium: As high, and waypoint movement is ignored, except for the final segment.<br>• Low: As Medium, and walls are ignored in distance calculations.",
                 "Name": "Movement Event Accuracy"
+            },
+            "movementPerformanceDisable": {
+                "Name": "Disable Movement Performance Warning"
             },
             "permissionsAutomateItem": {
                 "Hint": "Lowest user ranking that can select and apply different automations in the Medkit:",

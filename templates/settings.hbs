@@ -9,11 +9,7 @@
 
             {{else if this.isSelect}}
             <select name="{{this.id}}" data-dtype="{{this.type}}">
-                {{#select this.value}}
-                {{#each this.choices as |name k|}}
-                <option value="{{k}}">{{localize name}}</option>
-                {{/each}}
-                {{/select}}
+                {{selectOptions this.choices selected=this.value localize=true}}
             </select>
 
             {{else if this.isRange}}
@@ -38,7 +34,7 @@
             {{/if}}
         </div>
 
-        <p class="hint">{{this.hint}}</p>
+        <p class="hint">{{{this.hint}}}</p>
     </div>
     {{/each}}
 </section>

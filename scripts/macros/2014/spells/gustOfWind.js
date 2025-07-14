@@ -76,7 +76,7 @@ async function startTurn({trigger: {entity: template, castData, token}}) {
     let featureWorkflow = await workflowUtils.syntheticActivityRoll(feature, [token]);
     if (!featureWorkflow.failedSaves.size) return;
     let gustAngle = template.object.ray.angle;
-    let ray = Ray.fromAngle(token.center.x, token.center.y, gustAngle, canvas.dimensions.size);
+    let ray = foundry.canvas.geometry.Ray.fromAngle(token.center.x, token.center.y, gustAngle, canvas.dimensions.size);
     await tokenUtils.moveTokenAlongRay(token, ray, 15);
 }
 async function early({dialog}) {

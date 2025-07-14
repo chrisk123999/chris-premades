@@ -6,7 +6,6 @@ export class EffectMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
     constructor(context, effectDocument) {
         super({id: 'medkit-window-effect'});
         this.windowTitle = 'Cauldron of Plentiful Resources Configuration: ' + context.label;
-        this.position.width = 650;
         this.effectDocument = effectDocument;
         this.context = context;
     }
@@ -27,6 +26,9 @@ export class EffectMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
             icon: 'fa-solid fa-kit-medical',
             resizable: true,
             contentClasses: ['standard-form']
+        },
+        position: {
+            width: 650
         }
     };
     static PARTS = {

@@ -7,7 +7,6 @@ export class ActorMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
     constructor(actor) {
         super({id: 'medkit-window-actor'});
         this.windowTitle = 'Cauldron of Plentiful Resources Configuration: ' + actor.name;
-        this.position.width = 550;
         //this.position.max-height = 800;
         this.actor = actor;
         this.identifier = actor.flags['chris-premades']?.info?.identifier ?? actor.prototypeToken.name; // Not in use yet, will use to pull specific monster automations
@@ -29,6 +28,9 @@ export class ActorMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
             icon: 'fa-solid fa-kit-medical',
             resizable: true,
             contentClasses: ['standard-form']
+        },
+        position: {
+            width: 550
         }
     };
     static PARTS = {

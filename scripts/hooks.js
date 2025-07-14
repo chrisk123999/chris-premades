@@ -114,7 +114,6 @@ export function registerHooks() {
     if (genericUtils.getCPRSetting('updateCompanionInitiative')) Hooks.on('dnd5e.rollInitiative', initiative.updateCompanionInitiative);
     
     // Various events
-    Hooks.on('preUpdateToken', movementEvents.preUpdateToken);
     Hooks.on('preUpdateItem', activities.flagAllRiders);
     Hooks.on('preUpdateItem', equipment.addOrUpdate);
     Hooks.on('preDeleteItem', equipment.remove);
@@ -137,7 +136,7 @@ export function registerHooks() {
         Hooks.on('deleteCombat', combatEvents.deleteCombat);
         Hooks.on('createActiveEffect', effectEvents.createActiveEffect);
         Hooks.on('deleteActiveEffect', effectEvents.deleteActiveEffect);
-        Hooks.on('updateToken', movementEvents.updateToken);
+        Hooks.on('moveToken', movementEvents.moveToken);
         Hooks.on('createActiveEffect', conditions.createActiveEffect);
         Hooks.on('deleteActiveEffect', conditions.deleteActiveEffect);
         Hooks.on('updateMeasuredTemplate', templateEvents.updateMeasuredTemplate);

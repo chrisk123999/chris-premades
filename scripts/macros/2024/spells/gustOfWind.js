@@ -90,7 +90,7 @@ async function pushHelper(feature, targets, template) {
     let featureWorkflow = await workflowUtils.syntheticActivityRoll(feature, Array.from(targets));
     if (!featureWorkflow.failedSaves.size) return;
     let gustAngle = template.object.ray.angle;
-    let ray = Ray.fromAngle(0, 0, gustAngle, canvas.dimensions.size);
+    let ray = foundry.canvas.geometry.Ray.fromAngle(0, 0, gustAngle, canvas.dimensions.size);
     return Promise.all(featureWorkflow.failedSaves.map(async token => {
         return tokenUtils.moveTokenAlongRay(token, ray, 15);
     }));

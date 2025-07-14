@@ -2,6 +2,10 @@
 ## Bug Fixes
 - Compendium pack-id header button
 - Localization
+## Update Notes:
+- Added a setting in general that disables the movement performance notification
+- Changed movement handling to better make use of v13's hooks
+- Removed a bunch of deprecation-throwing code
 
 # 1.3.0 Release:
 ## Update Notes:

@@ -7,7 +7,6 @@ export class ItemMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
     constructor(item) {
         super({id: 'medkit-window-item'});
         this.windowTitle = 'Cauldron of Plentiful Resources Configuration: ' + item.name;
-        this.position.width = 450;
         this.item = item;
         /* These are the variables we want to keep in local memory and apply when needed */
         this.flags = genericUtils?.deepClone(item?.flags['chris-premades']) ?? {};
@@ -53,6 +52,9 @@ export class ItemMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
             icon: 'fa-solid fa-kit-medical',
             resizable: true,
             contentClasses: ['standard-form']
+        },
+        position: {
+            width: 450
         }
     };
     static PARTS = {

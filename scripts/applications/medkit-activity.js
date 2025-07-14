@@ -5,7 +5,6 @@ export class ActivityMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
     constructor(context, activity) {
         super({id: 'medkit-window-activity'});
         this.windowTitle = 'Cauldron of Plentiful Resources Configuration: ' + context.label;
-        this.position.width = 650;
         this.activityDocument = activity;
         this.context = context;
         if (genericUtils.getCPRSetting('enableEmbeddedMacrosEditing')) {
@@ -31,6 +30,9 @@ export class ActivityMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
             icon: 'fa-solid fa-kit-medical',
             resizable: true,
             contentClasses: ['standard-form']
+        },
+        position: {
+            width: 650
         }
     };
     static PARTS = {

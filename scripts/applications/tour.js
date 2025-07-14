@@ -68,7 +68,7 @@ let states = {
         game.settings.sheet.close();
     }
 };
-class CPRTour extends Tour {
+class CPRTour extends foundry.nue.Tour {
     async next() {
         if (this.status === Tour.STATUS.COMPLETED) throw new Error('Tour ' + this.id + 'has already been completed');
         if (!this.hasNext) return this.complete();

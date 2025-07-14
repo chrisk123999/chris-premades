@@ -652,6 +652,12 @@ export function registerSettings() {
         }
     });
     addSetting({
+        key: 'movementPerformanceDisable',
+        type: Boolean,
+        default: false,
+        category: 'general',
+    });
+    addSetting({
         key: 'cleave',
         type: Number,
         default: 0,

@@ -36,7 +36,7 @@ function findGrids(A, B, template) {
     let locations = new Set();
     let scene = template.parent;
     if (!scene) return locations;
-    let ray = new Ray(A, B);
+    let ray = new foundry.canvas.geometry.Ray(A, B);
     if (!ray.distance) return locations;
     let gridCenter = scene.grid.size / 2;
     let spacer = scene.grid.type === CONST.GRID_TYPES.SQUARE ? 1.41 : 1;

@@ -711,8 +711,6 @@ let {ApplicationV2, HandlebarsApplicationMixin} = foundry.applications.api;
 export class EmbeddedMacros extends HandlebarsApplicationMixin(ApplicationV2) {
     constructor(document) {
         super({id: 'cpr-embedded-macros-window'});
-        this.position.width = 700;
-        this.position.height = 'auto';
         this.windowTitle = 'Embedded Macros';
         this.content = 'Change this.';
         this.document = document;
@@ -745,8 +743,8 @@ export class EmbeddedMacros extends HandlebarsApplicationMixin(ApplicationV2) {
             contentClasses: ['standard-form']
         },
         position: {
-            width: 600,
-            height: 400
+            width: 700,
+            height: 'auto'
         }
     };
     static PARTS = {
