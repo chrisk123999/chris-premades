@@ -7,13 +7,13 @@ async function use({workflow}) {
     let targetCombatant = game.combat.getCombatantByToken(workflow.targets.first().id);
     if (tokenCombatant?.initiative === null || targetCombatant?.initiative === null ) return;
     let tokenInitiative = tokenCombatant.initiative;
-    genericUtils.update(tokenCombatant, {initiative: targetCombatant.initiative})
-    genericUtils.update(targetCombatant, {initiative: tokenInitiative})
- }
+    genericUtils.update(tokenCombatant, {initiative: targetCombatant.initiative});
+    genericUtils.update(targetCombatant, {initiative: tokenInitiative});
+}
 
 export let alert = {
     name: 'Alert',
-    version: '1.2.36',
+    version: '1.2.41',
     midi: {
         item: [
             {

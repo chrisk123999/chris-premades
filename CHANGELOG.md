@@ -10,13 +10,14 @@
 
 # 1.2.41 Release:
 ## Bug Fixes
+- Alert (Modern)
 - Chromatic Orb (Modern)
-- Unconscious condition
-- Summon Fey
 - Embedded Macros
-- Spirit Shroud
-- Relentless Endurance (Legacy)
 - Item Medkit
+- Relentless Endurance (Legacy)
+- Spirit Shroud
+- Summon Fey
+- Unconscious condition
 
 # 1.2.40 Release:
 ## Bug Fixes
