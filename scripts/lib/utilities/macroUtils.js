@@ -60,7 +60,7 @@ async function removeEmbeddedActivityShapeMacro(activity, entityType, name) {
 }
 function getAllEmbeddedMacros(entity) {
     let allMacros = {};
-    Object.keys(eventStructure).forEach(i => genericUtils.setProperty(allMacros, i, getEmbeddedMacros(entity, i.replaceAll('-', '.'))));
+    Object.keys(eventStructure).forEach(i => genericUtils.setProperty(allMacros, i, getEmbeddedMacros(entity, i)));
     return allMacros;
 }
 export let macroUtils = {

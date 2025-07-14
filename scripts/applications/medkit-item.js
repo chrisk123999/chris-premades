@@ -695,6 +695,7 @@ export class ItemMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
             'system.advancement',
             'system.attunement',
             'system.chatFlavor',
+            'system.container',
             'system.description',
             'system.equipped',
             'system.materials',

@@ -62,7 +62,7 @@ async function damage({workflow}) {
         }
     };
     for (let target of workflow.hitTargets) {
-        if (effectUtils.getEffectByIdentifier(target.actor, 'spiritShroudHid')) continue;
+        if (effectUtils.getEffectByIdentifier(target.actor, 'spiritShroudHit')) continue;
         await effectUtils.createEffect(target.actor, effectData, {identifier: 'spiritShroudHit'});
     }
 }

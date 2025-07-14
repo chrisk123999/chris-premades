@@ -3,6 +3,10 @@
 - Chromatic Orb (Modern)
 - Unconscious condition
 - Summon Fey
+- Embedded Macros
+- Spirit Shroud
+- Relentless Endurance (Legacy)
+- Item Medkit
 
 # 1.2.40 Release:
 ## Bug Fixes
