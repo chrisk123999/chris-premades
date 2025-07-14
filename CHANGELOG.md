@@ -6,6 +6,7 @@
 - Added a setting in general that disables the movement performance notification
 - Changed movement handling to better make use of v13's hooks
 - Removed a bunch of deprecation-throwing code
+- Renamed the modern compendia to be obviously modern
 
 # 1.3.0 Release:
 ## Update Notes:
