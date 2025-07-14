@@ -300,6 +300,7 @@ async function rollCheck(wrapped, config, dialog = {}, message = {}) {
     }
     if (returnData.options) genericUtils.mergeObject(returnData.options, oldOptions);
     if (message.create !== false) {
+        messageData ??= {};
         let messageId = event?.target.closest('[data-message-id]')?.dataset.messageId;
         if (messageId) genericUtils.mergeObject(messageData, {'flags.dnd5e.originatingMessage': messageId});
         genericUtils.mergeObject(messageData, {flags: options.flags ?? {} });
