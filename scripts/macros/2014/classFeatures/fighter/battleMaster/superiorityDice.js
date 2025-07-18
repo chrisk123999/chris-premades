@@ -1,4 +1,4 @@
-import {constants, dialogUtils, genericUtils, itemUtils, workflowUtils} from '../../../../../utils.js';
+import {activityUtils, constants, dialogUtils, genericUtils, itemUtils, workflowUtils} from '../../../../../utils.js';
 async function hit({workflow}) {
     await superiorityHelper(workflow);
 }
@@ -37,7 +37,7 @@ export async function determineSuperiorityDie(actor) {
 }
 export async function superiorityHelper(workflow) {
     if (!constants.weaponAttacks.includes(workflow.activity.actionType)) return;
-    if (genericUtils.getIdentifier(workflow.item) === 'sweepingAttackAttack') return;
+    if (activityUtils.getIdentifier(workflow.activity) === 'sweepingAttackAttack') return;
     let [itemToUse, superiorityDie] = await determineSuperiorityDie(workflow.actor);
     if (!itemToUse) return;
     let triggerManeuvers = [

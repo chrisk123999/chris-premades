@@ -13,6 +13,10 @@
 - First pass at v13/5.x compatibility. Full functionality far from guaranteed.
 - In alignment with Foundry's standard for ApplicationV2 header controls, the medkit has been moved into the dropdown menu for any ApplicationV2 windows.
 
+# 1.2.42 Release:
+## Bug Fixes
+- Maneuvers: Sweeping Attack (Legacy)
+
 # 1.2.41 Release:
 ## Bug Fixes
 - Alert (Modern)
