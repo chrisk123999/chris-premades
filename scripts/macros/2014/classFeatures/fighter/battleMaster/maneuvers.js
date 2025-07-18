@@ -325,7 +325,7 @@ async function useSweepingAttack({workflow}) {
 async function sweepingAttackAttack({workflow}) {
     let currAttackRoll = workflow.item.flags['chris-premades']?.sweepingAttack?.currAttackRoll;
     if (!currAttackRoll) return;
-    let replacementRoll = await new Roll(String(currAttackRoll)).evaluate();
+    let replacementRoll = await new Roll(String(currAttackRoll), {}, {criticalSuccess: Infinity}).evaluate();
     await workflow.setAttackRoll(replacementRoll);
 }
 async function useTripAttack({workflow}) {
