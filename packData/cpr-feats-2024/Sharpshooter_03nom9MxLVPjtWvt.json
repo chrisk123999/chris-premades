@@ -201,7 +201,7 @@
         {
           "key": "flags.midi-qol.ignoreNearbyFoes",
           "mode": 5,
-          "value": "chrisPremades.utils.constants.rangedWeaponTypes.includes(workflow.item.system.type.value)",
+          "value": "['martialR', 'simpleR'].includes(workflow.item.system.type.value)",
           "priority": 20
         }
       ],
