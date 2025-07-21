@@ -1,4 +1,4 @@
-import {itemUtils, tokenUtils, workflowUtils} from '../../../../../utils.js';
+import {genericUtils, itemUtils, tokenUtils, workflowUtils} from '../../../../../utils.js';
 
 async function damage({workflow}) {
     let item = itemUtils.getItemByIdentifier(workflow.actor, 'giantsHavocCrushingThrow');
@@ -9,7 +9,7 @@ async function damage({workflow}) {
     if (isFinesse && workflow.actor.system.abilities.dex.mod > workflow.actor.system.abilities.str.mod) return;
     let distance = tokenUtils.getDistance(workflow.token, workflow.hitTargets.first());
     let demiurgicColossus = itemUtils.getItemByIdentifier(workflow.actor, 'demiurgicColossus');
-    if (distance <= (demiurgicColossus ? 15 : 10)) return;
+    if (distance <= (demiurgicColossus ? genericUtils.handleMetric(15) : genericUtils.handleMetric(10))) return;
     let formula = workflow.actor.system.scale.barbarian?.['rage-damage']?.value;
     if (!formula) return;
     await workflowUtils.bonusDamage(workflow, formula);

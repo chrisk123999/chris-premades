@@ -37,7 +37,7 @@ async function use({trigger, workflow}) {
     await workflowUtils.syntheticActivityRoll(activity, [selection]);
 }
 async function turnStart({trigger}) {
-    let range = trigger.entity.flags['chris-premades']?.auraOfVitality?.range ?? 30;
+    let range = trigger.entity.flags['chris-premades']?.auraOfVitality?.range ?? genericUtils.handleMetric(30);
     let nearbyTokens = tokenUtils.findNearby(trigger.token, range, 'ally', {includeToken: true});
     if (!nearbyTokens.length) return;
     let selection;

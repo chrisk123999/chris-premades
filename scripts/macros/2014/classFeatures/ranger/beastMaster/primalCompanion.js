@@ -80,7 +80,7 @@ async function use({workflow}) {
             bindingStrikeData.system.properties.push('mgc');
         }
         updates.actor.items.push(amphibiousData, bindingStrikeData);
-        genericUtils.setProperty(updates, 'actor.system.attributes.movement', {walk: 5, swim: 60});
+        genericUtils.setProperty(updates, 'actor.system.attributes.movement', {walk: genericUtils.handleMetric(5), swim: genericUtils.handleMetric(60)});
     } else {
         hpValue = 4 + 4 * classLevel;
         let flybyData = await Summons.getSummonItem('Flyby', {}, workflow.item, {translate: 'CHRISPREMADES.CommonFeatures.Flyby', identifier: 'primalCompanionFlyby'});

@@ -191,6 +191,15 @@ function getValidScaleIdentifier(actor, itemData, scaleAliases, defaultClassIden
     }
     return { classIdentifier, scaleIdentifier };
 }
+function round(num) {
+    return Math.round((num + Number.EPSILON) * 100) / 100;
+}
+
+function handleMetric(ft) {
+    if (!ft || isNaN(parseInt(ft))) return ft;
+    if(!game.settings.get("dnd5e", "metricLengthUnits")) return ft;
+    return round(parseInt(ft) * 0.3);
+}
 export let genericUtils = {
     sleep,
     translate,
@@ -224,5 +233,6 @@ export let genericUtils = {
     checkPlayerOwnership,
     getRules,
     getCPRIdentifier,
-    getValidScaleIdentifier
+    getValidScaleIdentifier,
+    handleMetric
 };

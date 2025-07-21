@@ -15,7 +15,7 @@ async function use({trigger, workflow}) {
             {
                 key: 'system.attributes.movement.walk',
                 mode: 2,
-                value: '+10',
+                value: '+' + genericUtils.handleMetric(10).toString(),
                 priority: 20
             },
             {
