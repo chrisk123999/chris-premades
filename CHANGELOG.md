@@ -1,3 +1,7 @@
+# 1.2.42 Release:
+## Bug Fixes
+- Maneuvers: Sweeping Attack (Legacy)
+
 # 1.2.41 Release:
 ## Bug Fixes
 - Alert (Modern)
