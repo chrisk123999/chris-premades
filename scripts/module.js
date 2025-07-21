@@ -55,6 +55,7 @@ Hooks.once('init', () => {
         Hooks.on('getItemDirectory5eEntryContext', itemDirectory.itemContext);
         Hooks.on('getActorDirectoryEntryContext', itemDirectory.actorContext);
     }
+    Hooks.callAll('cprInitComplete');
 });
 Hooks.once('i18nInit', () => {
     dae.initFlags();
