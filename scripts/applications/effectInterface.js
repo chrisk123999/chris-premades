@@ -159,7 +159,7 @@ class EffectDirectory extends foundry.applications.sidebar.DocumentDirectory {
                     if (document.flags['chris-premades']?.effectInterface?.customStatus) CONFIG.statusEffects = CONFIG.statusEffects.filter(i => i._id != document.id);
                     this.collection.delete(document.id);
                     await document.delete();
-                    this.collection.render(true);
+                    this.render(true);
                 },
                 condition: (li) => {
                     let document = getDocument(li);
@@ -236,6 +236,11 @@ class EffectDirectory extends foundry.applications.sidebar.DocumentDirectory {
         return options;
     }
 
+    async _prepareDirectoryContext(context, options) {
+        this.collection.initializeTree();
+        await super._prepareDirectoryContext(context, options);
+    }
+
     async _onClickEntry(event, target) {
         event.preventDefault();
         let entryId = target.parentElement.dataset.entryId;
@@ -280,6 +285,7 @@ class EffectDirectory extends foundry.applications.sidebar.DocumentDirectory {
         let createdEffect = await ActiveEffect.create(effectData, {'parent': effectItem});
         await createdEffect.sheet.render(true);
         this.collection.set(createdEffect);
+        this.collection.initializeTree();
         this.render(true);
     }
 

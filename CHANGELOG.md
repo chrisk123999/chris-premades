@@ -1,3 +1,9 @@
+# 1.3.2 Release:
+## Update Notes:
+- First "official" v13/5.x release
+## Bug Fixes:
+- Effect Interface
+
 # 1.3.1 Release:
 ## Bug Fixes
 - Compendium pack-id header button
