@@ -129,13 +129,11 @@ async function deleteEmbeddedDocuments(entity, type, ids, options) {
     return documents;
 }
 async function updateTargets(targets, user=game.user) {
-    let hasPermission = socketUtils.hasPermission(user, game.user.id);
     let targetIds = Array.from(targets).map(target => target.id ?? target);
-    if (hasPermission) {
-        user.updateTokenTargets(targetIds);
-        user.broadcastActivity({targets: user.targets.ids});
+    if (user === game.user) {
+        canvas.tokens?.setTargets(targets);
     } else {
-        await socket.executeAsGM(sockets.updateTargets.name, targetIds, user.id);
+        await socket.executeAsUser(sockets.updateTargets.name, user.id, targetIds);
     }
 }
 function collapseObjects(...objects) {
