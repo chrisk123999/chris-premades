@@ -30,7 +30,7 @@ async function use({trigger, workflow}) {
 async function moved({trigger}) {
     let ignoredCreatureTypes = trigger.entity.flags['chris-premades']?.antilifeShell?.ignoredCreatureTypes ?? [];
     let nearbyTokens = tokenUtils.findNearby(trigger.token, 10, 'all').filter(token => {
-        if (token.actor.statuses.some(['dead', 'unconscious'])) return false;
+        if (['dead', 'unconscious'].some(s => token.actor.statuses.has(s))) return false;
         if (ignoredCreatureTypes.includes(actorUtils.typeOrRace(token.actor))) return false;
         return true;
     });
