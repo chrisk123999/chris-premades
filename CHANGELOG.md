@@ -17,6 +17,7 @@
 ## Update Notes:
 - Barring any critical bugfixes, this will be the last V12-compatible release for CPR
 ## Bug Fixes
+- Antilife Shell 
 - Embedded Macros
 - Maneuvers: Sweeping Attack (Legacy)
 - Sharpshooter (Modern)
