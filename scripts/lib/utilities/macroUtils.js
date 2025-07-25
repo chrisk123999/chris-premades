@@ -3,6 +3,7 @@ import {custom} from '../../events/custom.js';
 import {genericUtils} from './genericUtils.js';
 function getEmbeddedMacros(entity, type, {pass} = {}) {
     let flagData;
+    type = type.replace('.', '-');
     if (entity.documentName === 'Activity') {
         flagData = genericUtils.getProperty(entity.item, 'flags.chris-premades.embeddedActivityMacros.' + entity.id);
     } else {

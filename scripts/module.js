@@ -53,6 +53,7 @@ Hooks.once('init', () => {
         Hooks.on('getItemContextOptions', itemDirectory.itemContext);
         Hooks.on('getActorContextOptions', itemDirectory.actorContext);
     }
+    Hooks.callAll('cprInitComplete');
 });
 Hooks.once('i18nInit', () => {
     dae.initFlags();
