@@ -1,6 +1,4 @@
 # 1.3.2 Release:
-## Update Notes:
-- First "official" v13/5.x release
 ## Bug Fixes:
 - Effect Interface
 - `genericUtils.updateTargets`
