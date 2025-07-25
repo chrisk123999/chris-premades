@@ -1,6 +1,10 @@
 # 1.2.42 Release:
+## Update Notes:
+- Barring any critical bugfixes, this will be the last V12-compatible release for CPR
 ## Bug Fixes
+- Embedded Macros
 - Maneuvers: Sweeping Attack (Legacy)
+- Sharpshooter (Modern)
 
 # 1.2.41 Release:
 ## Bug Fixes
