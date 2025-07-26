@@ -2,7 +2,7 @@
 
 A collection of automated items including spells, class features, monster features, etc., mechanics to make those possible, and quality-of-life based extensions for a high-automation Midi-QOL based D&D5e environment. Compendiums included in this module do not include item's descriptions. While this module has several module dependencies by different authors, do not pester tposney, Wasp, or any other module authors with bugs or issues related to this module. Bug reports and large module implementation requests may be made on the GitHub. Faster support and feature requests can be accessed on the [Discord server](https://discord.gg/BumxBcQDrT).
 
-![cpr-logo](https://github.com/user-attachments/assets/58c729ba-c499-45a3-a62c-c6982ad1f725) 
+![cpr-logo](https://raw.githubusercontent.com/chrisk123999/chris-premades/refs/heads/master/images/cpr-logo.png) 
   
 ### Authors:
 [Chris](https://github.com/chrisk123999) <br> 
