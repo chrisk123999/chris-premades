@@ -1,3 +1,11 @@
+# 1.3.4 Release:
+## Update Notes:
+- First official V13 release
+- Updated logo, created by Carly Thomas
+- Added `images/LICENSE`
+## Bug Fixes:
+- Brutal Strike
+
 # 1.3.3 Release:
 ## Bug Fixes:
 - `genericUtils.updateTargets` (actually)

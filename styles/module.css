@@ -609,7 +609,7 @@ form .cpr-row-center .cpr-input-short {
 
 /* Chat Styles */
 .chat-message:has(button.chris-update-item,button.chris-tour) a.avatar > img {
-    content: url("/modules/chris-premades/images/CauldronofPlentifulResourcesMedium.png")
+    content: url("/modules/chris-premades/images/cpr-logo.png")
 }
 
 button.chris-update-item,button.chris-tour {
