@@ -1,3 +1,7 @@
+# 1.3.5 Release:
+## Bug Fixes:
+- Temporary Effects HUD
+
 # 1.3.4 Release:
 ## Update Notes:
 - First official V13 release
