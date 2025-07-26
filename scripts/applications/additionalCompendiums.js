@@ -2,8 +2,6 @@ let {ApplicationV2, HandlebarsApplicationMixin} = foundry.applications.api;
 export class AdditionalCompendiums extends HandlebarsApplicationMixin(ApplicationV2) {
     constructor() {
         super({id: 'cpr-additional-compendiums-window'});
-        this.position.width = 'auto';
-        this.position.height = 800;
         this.windowTitle = 'Configure Additional Compendiums';
         this.content = 'Used for medkit updating and some features. Lower number for higher priority.';
     }
@@ -21,6 +19,11 @@ export class AdditionalCompendiums extends HandlebarsApplicationMixin(Applicatio
         window: {
             title: 'Default Title',
             resizable: true,
+        },
+        classes: ['standard-form'],
+        position: {
+            width: 'auto',
+            height: 800
         }
     };
     static PARTS = {
@@ -32,7 +35,7 @@ export class AdditionalCompendiums extends HandlebarsApplicationMixin(Applicatio
             scrollable: ['']
         },
         footer: {
-            template: 'modules/chris-premades/templates/form-footer.hbs'
+            template: 'templates/generic/form-footer.hbs'
         }
     };
     static async confirm(event, target) {

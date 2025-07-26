@@ -89,7 +89,7 @@ async function use({workflow}) {
     await effectUtils.createEffect(workflow.targets.first().actor, effectData, {identifier: 'boomingBlade'});
 }
 async function moved({trigger: {entity: effect}, options}) {
-    if (options.teleport) return;
+    if (genericUtils.getProperty(options, 'chris-premades.movement.teleport')) return;
     let selection = await dialogUtils.confirm(effect.name, genericUtils.format('CHRISPREMADES.Macros.BoomingBlade.WillingMove', {actorName: effect.parent.name}));
     if (!selection) return;
     let feature = activityUtils.getActivityByIdentifier(await effectUtils.getOriginItem(effect), 'boomingBladeMoved', {strict: true});

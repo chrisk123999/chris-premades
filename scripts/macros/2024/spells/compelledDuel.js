@@ -114,10 +114,11 @@ async function targetMoved({trigger: {entity: effect, token}, options}) {
     if (token.scene.id !== canvas.scene.id) return;
     let sourceToken = await fromUuid(effect.flags['chris-premades']?.compelledDuel?.sourceUuid);
     if (!sourceToken) return;
+    let movementOrigin = genericUtils.duplicate(options?._movement?.[token.id]?.origin);
     let tempToken = await token.actor.getTokenDocument({
-        x: options['chris-premades']?.coords?.previous?.x ?? token.x,
-        y: options['chris-premades']?.coords?.previous?.y ?? token.y,
-        elevation: options['chris-premades']?.coords?.previous?.elevation ?? token.elevation,
+        x: movementOrigin?.x ?? token.x,
+        y: movementOrigin?.y ?? token.y,
+        elevation: movementOrigin?.elevation ?? token.elevation,
         actorLink: false,
         hidden: true,
         delta: {ownership: token.actor.ownership}

@@ -54,16 +54,16 @@ jobs:
         allowUpdates: true # set this to false if you want to prevent updating existing releases
         name: ${{github.event.release.name}}
         draft: false
-        prerelease: false
+        prerelease: true
         token: ${{secrets.GITHUB_TOKEN}}
         artifacts: './module.json, ./module.zip'
         tag: ${{ github.event.release.tag_name }}
         body: ${{ github.event.release.body }}
-    - name: FoundryVTT AutoPublish
-      uses: fjogeleit/http-request-action@v1
-      continue-on-error: true
-      with:
-        url: 'https://api.foundryvtt.com/_api/packages/release_version'
-        method: 'POST'
-        customHeaders: '{"Content-Type": "application/json", "Authorization" : "${{ secrets.FOUNDRY_KEY }}"}'
-        data: '{"dry_run": false, "id" : "chris-premades", "release": {"version" :  "${{env.VERSION}}", "manifest": "${{env.FOUNDRY_MANIFEST}}", "notes" : "https://github.com/chrisk123999/chris-premades/blob/master/CHANGELOG.md", "compatibility" : {"minimum": "12", "verified": "12", "maximum": "12"} } }'
+    # - name: FoundryVTT AutoPublish
+    #   uses: fjogeleit/http-request-action@v1
+    #   continue-on-error: true
+    #   with:
+    #     url: 'https://api.foundryvtt.com/_api/packages/release_version'
+    #     method: 'POST'
+    #     customHeaders: '{"Content-Type": "application/json", "Authorization" : "${{ secrets.FOUNDRY_KEY }}"}'
+    #     data: '{"dry_run": false, "id" : "chris-premades", "release": {"version" :  "${{env.VERSION}}", "manifest": "${{env.FOUNDRY_MANIFEST}}", "notes" : "https://github.com/chrisk123999/chris-premades/blob/master/CHANGELOG.md", "compatibility" : {"minimum": "12", "verified": "12", "maximum": "12"} } }'

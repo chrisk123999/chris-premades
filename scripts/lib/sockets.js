@@ -97,11 +97,8 @@ async function deleteEmbeddedDocuments(entityUuid, type, ids, options) {
     let documents = await entity.deleteEmbeddedDocuments(type, ids, options ?? undefined);
     return documents.map(i => i.uuid);
 }
-async function updateTargets(targetIds, userId) {
-    let user = game.users.get(userId);
-    if (!user) return;
-    user.updateTokenTargets(targetIds);
-    user.broadcastActivity({targets: user.targets.ids});
+async function updateTargets(targetIds) {
+    canvas.tokens?.setTargets(targetIds);
 }
 async function addFavorites(actorUuid, entityUuids, type='item') {
     let actor = await fromUuid(actorUuid);

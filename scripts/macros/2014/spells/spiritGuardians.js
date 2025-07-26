@@ -72,10 +72,11 @@ async function use({trigger, workflow}) {
 }
 async function moveOrTurn({trigger: {target, token, entity: effect}, options}) {
     if (options) {
+        let movementOrigin = genericUtils.duplicate(options._movement?.[target.id]?.origin);
         let tempToken = await target.actor.getTokenDocument({
-            x: options['chris-premades']?.coords?.previous?.x ?? target.x,
-            y: options['chris-premades']?.coords?.previous?.y ?? target.y,
-            elevation: options['chris-premades']?.coords?.previous?.elevation ?? target.elevation,
+            x: movementOrigin?.x ?? target.x,
+            y: movementOrigin?.y ?? target.y,
+            elevation: movementOrigin?.elevation ?? target.elevation,
             actorLink: false,
             hidden: true,
             delta: {ownership: target.actor.ownership}

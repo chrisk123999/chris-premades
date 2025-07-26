@@ -9,7 +9,6 @@ import * as utils from './utils.js';
 import * as macros from './macros.js';
 import * as legacyMacros from './legacyMacros.js';
 import {effectInterface} from './applications/effectInterface.js';
-import {macroInterface} from './applications/macroInterface.js';
 import {settingButton} from './applications/settings.js';
 import {effectHud} from './applications/effectHud.js';
 import {conditions} from './extensions/conditions.js';
@@ -47,13 +46,12 @@ Hooks.once('init', () => {
     if (utils.genericUtils.getCPRSetting('disableNonConditionStatusEffects')) conditions.disableNonConditionStatusEffects();
     if (utils.genericUtils.getCPRSetting('replaceStatusEffectIcons')) conditions.setStatusEffectIcons();
     if (utils.genericUtils.getCPRSetting('effectInterface')) effectInterface.init();
-    if (utils.genericUtils.getCPRSetting('macroInterface')) macroInterface.init();
     if (utils.genericUtils.getCPRSetting('temporaryEffectHud')) effectHud.patchToggleEffect(true);
     if (utils.genericUtils.getCPRSetting('selectTool') && !game.modules.get('multi-token-edit')?.active && !game.modules.get('select-tool-everywhere')?.active) selectTool.init();
     if (utils.genericUtils.getCPRSetting('spotlightOmnisearchSummons') && game.modules.get('spotlight-omnisearch')?.active) Hooks.on('spotlightOmnisearch.indexBuilt', spotlightOmnisearch.registerSearchTerms);
     if(utils.genericUtils.getCPRSetting('exportForSharing')) {
-        Hooks.on('getItemDirectory5eEntryContext', itemDirectory.itemContext);
-        Hooks.on('getActorDirectoryEntryContext', itemDirectory.actorContext);
+        Hooks.on('getItemContextOptions', itemDirectory.itemContext);
+        Hooks.on('getActorContextOptions', itemDirectory.actorContext);
     }
     Hooks.callAll('cprInitComplete');
 });

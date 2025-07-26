@@ -39,6 +39,7 @@ export class DialogApp extends HandlebarsApplicationMixin(ApplicationV2) {
         },
         window: {
             title: 'Default Title',
+            contentClasses: ['standard-form'],
             //resizable: true,
         }
     };
@@ -48,8 +49,8 @@ export class DialogApp extends HandlebarsApplicationMixin(ApplicationV2) {
             scrollable: ['']
         },
         footer: {
-            template: 'modules/chris-premades/templates/form-footer.hbs'
-        }
+            template: 'templates/generic/form-footer.hbs'
+        },
     };
     /** 
      * Main function of the class, creates a new dialog in itself so that it can wrap the submission in a promise in order to await a result

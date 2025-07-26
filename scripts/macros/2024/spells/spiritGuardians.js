@@ -81,7 +81,7 @@ async function use({workflow}) {
     await damageHelper(nearbyTokens, effect, workflow.token);
 }
 async function moved({trigger: {token, entity: effect}, options}) {
-    let startPoint = options['chris-premades'].coords.previous;
+    let startPoint = genericUtils.duplicate(options._movement[token.id].origin);
     let offset = token.document.width * canvas.grid.size / 2;
     startPoint.x += offset;
     startPoint.y += offset;

@@ -1,16 +1,16 @@
 /* Dialog Styles, Done by Michael */
 
-form .better-dialog .form-group input[type="radio"] {
+form .cpr-dialog .form-group input[type="radio"] {
     flex: 0;
     margin: 0px 5px;
     top: 0px;
 }
 
-form .better-dialog .form-group > div {
+form .cpr-dialog .form-group > div {
     margin: 0px 5px;
 }
 
-form .better-dialog .form-group > div.row-display {
+form .cpr-dialog .form-group > div.row-display {
     display: grid;
     grid-template-columns: 1fr 5fr;
     align-items: center;
@@ -22,14 +22,14 @@ form .better-form-footer {
     flex-direction: row;
 }
 
-form .better-dialog .form-group img.label-image {
+form .cpr-dialog .form-group img.label-image {
     width: 50px;
     height: 50px;
     border: 1px solid gray;
     border-radius: 5px;
 }
 
-form .better-dialog .form-group .row-display img.label-image {
+form .cpr-dialog .form-group .row-display img.label-image {
     margin-left: 20px;
     margin-right: 10px;
     margin-bottom: 0px;
@@ -37,21 +37,27 @@ form .better-dialog .form-group .row-display img.label-image {
     float: left;
 }
 
-form .better-dialog .form-group .row-display p.label-text {
+form .cpr-dialog .form-group .row-display p.label-text {
     padding: 1%;
     text-align: center;
     font-size: 15px;
 }
 
-form .better-dialog .form-group button.form-button {
+form .cpr-dialog .form-group button.form-button {
     padding: 0 0;
     margin-left: 5px;
     margin-right: 5px;
     margin-top: 3px;
     margin-bottom: 3px;
+    width: 100%;
+    height: calc(1.25 * var(--input-height));
+
+    &:has(img) {
+        height: calc(2.25 * var(--input-height));
+    }
 }
 
-form .better-dialog .form-group img.button-image {
+form .cpr-dialog .form-group img.button-image {
     width: 50px;
     height: 50px;
     border: 0px;
@@ -61,20 +67,20 @@ form .better-dialog .form-group img.button-image {
     margin-top: 5px;
 }
 
-form .better-dialog .form-group p.button-text {
+form .cpr-dialog .form-group p.button-text {
     width: 100%;
     padding: 1%;
     font-size: 15px;
 }
 
-form .better-dialog .content {
+form .cpr-dialog .content {
     font-size: 15px;
     margin-left: 10px;
     margin-right: 10px;
     text-align: center;
 }
 
-form .better-dialog .form-group .flex-col button.form-button {
+form .cpr-dialog .form-group .flex-col button.form-button {
     padding: 0 0;
     margin-left: 0px;
     margin-right: 5px;
@@ -82,21 +88,31 @@ form .better-dialog .form-group .flex-col button.form-button {
     margin-bottom: 3px;
 }
 
-form .better-dialog .form-group .flexcol > div.select-many {
+form .cpr-dialog .form-group .flexcol > div.select-many {
     display: flex;
     align-items: flex-end;
     justify-content: space-between;
 }
 
-form .better-dialog .form-group .flexcol > div.select-many > label {
+form .cpr-dialog .form-group .flexcol > div.select-many > label {
     width: 100%;
     flex: 1;
 }
 
-form .better-dialog .form-group .flexcol > div.select-many > multi-select {
+form .cpr-dialog .form-group .flexcol > div.select-many > multi-select {
     width: 100%;
     flex: 2;
     margin: 0.625em 0 0.625em 0;
+}
+
+form#cpr-embedded-macros-window [data-application-part="form"] {
+    .form-group {
+        margin-bottom: 0.5rem;
+    }
+
+    button {
+        width: 100%;
+    }
 }
 
 /* Common Formattings */
@@ -178,6 +194,10 @@ form .cpr-row-center .cpr-input-short {
 }
 
 /* Medkit Styles */
+
+.activity .fa-kit-medical.chris-premades-item {
+    font-family: var(--font-awesome);
+}
 
 .cpr-medkit-header {
     display: flex;
@@ -583,6 +603,15 @@ form .cpr-row-center .cpr-input-short {
 }
 
 /* Setting Styles */
-[id="chris-premades-settings"] p.notes {
-    white-space: pre-line
+.cpr-troubleshooter form>div {
+    height: calc(100% - 1.25 * var(--input-height) - 3.5rem);
+}
+
+/* Chat Styles */
+.chat-message:has(button.chris-update-item,button.chris-tour) a.avatar > img {
+    content: url("/modules/chris-premades/images/cpr-logo.png")
+}
+
+button.chris-update-item,button.chris-tour {
+    width: 100%;
 }

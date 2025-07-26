@@ -23,7 +23,7 @@ async function use({workflow}) {
 async function enterOrPassThrough({trigger: {entity: template, token}, options}, left) {
     if (options.teleport) return;
     let templateObj = template.object;
-    let prevCoords = options?.['chris-premades']?.coords?.previous;
+    let prevCoords = genericUtils.duplicate(options._movement[token.id].origin);
     if (!prevCoords) return;
     if (canvas.scene.grid.units !== 'ft') return;
     if (canvas.scene.grid.type === CONST.GRID_TYPES.GRIDLESS) {
@@ -65,7 +65,7 @@ async function left({trigger, options}) {
 }
 async function stay({trigger: {entity: template, token}, options}) {
     if (options.teleport) return;
-    let prevCoords = options?.['chris-premades']?.coords?.previous;
+    let prevCoords = genericUtils.duplicate(options._movement[token.id].origin);
     if (!prevCoords) return;
     if (canvas.scene.grid.units !== 'ft') return;
     await damageHelper(prevCoords, token.center, template, token, {stay: true, gridless: canvas.scene.grid.type === CONST.GRID_TYPES.GRIDLESS});

@@ -2143,10 +2143,6 @@
           "Hint": "Compendium de macros utilisé pour remplacer ou ajouter des macros supplémentaires à l'API CPR. Veuillez consulter la documentation sur son utilisation. (En cours)",
           "Name": "Compendium de Macros"
       },
-      "macroInterface": {
-          "Hint": "Ajoute un onglet latéral pour les macros. Un rechargement de la page est nécessaire après activation.",
-          "Name": "Activer l'interface des macros"
-      },
       "makeGM": {
           "Hint": "Devenir le maître de jeu principal.",
           "Name": "Devenir le Maître de Jeu"
@@ -2198,7 +2194,7 @@
           "1": "Moyen",
           "2": "Élevé",
           "3": "Ultra",
-          "Hint": "Mode de précision pour les événements de mouvement. Les modes de précision plus élevés auront un impact sur les performances, surtout sur du matériel moins puissant.\r\n• Ultra : Précision totale.\r\n• Élevé : Ignore le calcul de couverture lors de l'obtention de la distance.\r\n• Moyen : Aussi élevé, et le mouvement par waypoint est ignoré, sauf pour le segment final.\r\n• Bas : Comme Moyen, et les murs sont ignorés dans les calculs de distance.",
+          "Hint": "Mode de précision pour les événements de mouvement. Les modes de précision plus élevés auront un impact sur les performances, surtout sur du matériel moins puissant.<br>• Ultra : Précision totale.<br>• Élevé : Ignore le calcul de couverture lors de l'obtention de la distance.<br>• Moyen : Aussi élevé, et le mouvement par waypoint est ignoré, sauf pour le segment final.<br>• Bas : Comme Moyen, et les murs sont ignorés dans les calculs de distance.",
           "Name": "Précision des Événements de Mouvement"
       },
       "permissionsAutomateItem": {

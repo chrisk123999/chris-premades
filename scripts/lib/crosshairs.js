@@ -1,5 +1,5 @@
 // eslint-disable-next-line no-undef
-export class Crosshairs extends MeasuredTemplate {
+export class Crosshairs extends foundry.canvas.placeables.MeasuredTemplate {
     constructor(config, callbacks = {}) {
         const templateData = {
             t: config.shape ?? 'circle',
@@ -206,7 +206,7 @@ export class Crosshairs extends MeasuredTemplate {
         distance *= (d.size/2);
         direction = Math.toRadians(direction);
         // Create ray and bounding rectangle
-        this.ray = Ray.fromAngle(document.x, document.y, direction, distance);
+        this.ray = foundry.canvas.geometry.Ray.fromAngle(document.x, document.y, direction, distance);
         // Get the Template shape
         this.t = this.computeShape(this);
         // Draw the Template outline using styles included
