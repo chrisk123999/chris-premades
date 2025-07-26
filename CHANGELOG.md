@@ -1,3 +1,7 @@
+# 1.3.3 Release:
+## Bug Fixes:
+- `genericUtils.updateTargets` (actually)
+
 # 1.3.2 Release:
 ## Bug Fixes:
 - Effect Interface
