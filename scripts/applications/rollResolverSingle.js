@@ -12,6 +12,7 @@ export class CPRSingleRollResolver extends HandlebarsApplicationMixin(Applicatio
         tag: 'form',
         window: {
             title: 'DICE.RollResolution',
+            contentClasses: ['standard-form']
         },
         position: {
             width: 500,

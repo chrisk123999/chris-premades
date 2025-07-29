@@ -34,8 +34,11 @@ async function moveTokenAlongRay(targetToken, origRay, distance) {
     let newCenter;
     let hitsWall = true;
     let oldDistance;
+
     distance = genericUtils.handleMetric(distance);
-    let ray = Ray.fromAngle(targetToken.center.x, targetToken.center.y, origRay.angle, origRay.distance);
+  
+    let ray = foundry.canvas.geometry.Ray.fromAngle(targetToken.center.x, targetToken.center.y, origRay.angle, origRay.distance);
+
     if (ray.distance === 0) {
         genericUtils.notify('CHRISPREMADES.Movement.UnableToBeMoved', 'info');
         return;
@@ -69,7 +72,7 @@ async function pushToken(sourceToken, targetToken, distance) {
         // Wait for dependent grapples to be destroyed, in case Rideable is mounting tokens still
         await genericUtils.sleep(250);
     }
-    let ray = new Ray(sourceToken.center, targetToken.center);
+    let ray = new foundry.canvas.geometry.Ray(sourceToken.center, targetToken.center);
     await moveTokenAlongRay(targetToken, ray, distance);
 }
 function findNearby(token, range, disposition, {includeIncapacitated = false, includeToken = false} = {}) {
@@ -298,9 +301,9 @@ function getNewlyHitTokens(startPoint, endPoint, radius, collisionType='move') {
         if (!radius) return new Set();
         // eslint-disable-next-line no-undef
         let shape = new PIXI.Polygon(canvas.grid.getCircle({x: 0, y: 0}, radius));
-        let rayMovement = new Ray(startPoint, endPoint);
-        let ray1 = Ray.fromAngle(0, 0, rayMovement.angle - Math.toRadians(90), radius * 2 * canvas.dimensions.distancePixels);
-        let ray2 = Ray.fromAngle(0, 0, rayMovement.angle + Math.toRadians(90), radius * 2 * canvas.dimensions.distancePixels);
+        let rayMovement = new foundry.canvas.geometry.Ray(startPoint, endPoint);
+        let ray1 = foundry.canvas.geometry.Ray.fromAngle(0, 0, rayMovement.angle - Math.toRadians(90), radius * 2 * canvas.dimensions.distancePixels);
+        let ray2 = foundry.canvas.geometry.Ray.fromAngle(0, 0, rayMovement.angle + Math.toRadians(90), radius * 2 * canvas.dimensions.distancePixels);
         let p1 = getIntersection(ray1, shape);
         let p2 = getIntersection(ray2, shape);
         let p3 = {x: p2.x + rayMovement.dx, y: p2.y + rayMovement.dy};
@@ -311,7 +314,7 @@ function getNewlyHitTokens(startPoint, endPoint, radius, collisionType='move') {
         setMid = setMid.filter(token => {
             let tri = new PIXI.Polygon(startPoint, endPoint, token.center);
             let csp = ClockwiseSweepPolygon.create(token.center, {type: collisionType, boundaryShapes: [tri]});
-            return getIntersection(new Ray(startPoint, endPoint), csp);
+            return getIntersection(new foundry.canvas.geometry.Ray(startPoint, endPoint), csp);
         });
         let setEnd = templateUtils.getTokensInShape(shape, canvas.scene, endPoint).filter(i => !ClockwiseSweepPolygon.testCollision(endPoint, i.center, {type: collisionType}).length);
         let setCombined = setEnd.union(setMid).difference(setStart);

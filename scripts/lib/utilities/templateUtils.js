@@ -2,25 +2,16 @@ import {genericUtils} from './genericUtils.js';
 function getTokensInShape(shape, scene, {x: offsetX, y: offsetY}={x: 0, y: 0}) {
     let tokens = new Set();
     if (!shape && !scene) return tokens;
-    let {size} = scene.grid;
     let sceneTokens = scene.tokens;
     for (let token of sceneTokens) {
-        let {width, height, x: tokX, y: tokY} = token;
-        let startX = width >= 1 ? 0.5 : width / 2;
-        let startY = height >= 1 ? 0.5 : height / 2;
-        for (let x = startX; x < width; x++) {
-            for (let y = startY; y < width; y++) {
-                let curr = {
-                    x: tokX + x * size - offsetX,
-                    y: tokY + y * size - offsetY
-                };
-                let contains = shape.contains(curr.x, curr.y);
-                let isOn = shape.getBounds().pointIsOn(curr);
-                if (contains && !isOn) {
-                    tokens.add(token.object);
-                    continue;
-                }
-            }
+        let pointCollisions = token.getOccupiedGridSpaceOffsets()
+            .map(i => scene.grid.getCenterPoint(i))
+            .map(i => ({x: i.x - offsetX, y: i.y - offsetY}))
+            .filter(i => shape.contains(i.x, i.y));
+        for (let point of pointCollisions) {
+            if (shape.getBounds().pointIsOn(point)) continue;
+            tokens.add(token.object);
+            break;
         }
     }
     return tokens;
@@ -32,25 +23,11 @@ function getTemplatesInToken(token) {
     let templates = new Set();
     let scene = token?.document?.parent;
     if (!scene) return templates;
-    let {size} = scene.grid;
-    let {width, height, x: tokx, y: toky} = token.document;
     let sceneTemplates = scene.templates;
+    let pointsToTest = token.document.getOccupiedGridSpaceOffsets().map(i => scene.grid.getCenterPoint(i));
     for (let template of sceneTemplates) {
-        let {x: tempx, y: tempy, object} = template;
-        let startX = width >= 1 ? 0.5 : width / 2;
-        let startY = height >= 1 ? 0.5 : height / 2;
-        for (let x = startX; x < width; x++) {
-            for (let y = startY; y < width; y++) {
-                let curr = {
-                    x: tokx + x * size - tempx,
-                    y: toky + y * size - tempy
-                };
-                let contains = object.shape?.contains(curr.x, curr.y);
-                if (contains) {
-                    templates.add(template);
-                    continue;
-                }
-            }
+        if (pointsToTest.some(i => template.object.testPoint(i))) {
+            templates.add(template);
         }
     }
     return templates;
@@ -59,7 +36,7 @@ function findGrids(A, B, template) {
     let locations = new Set();
     let scene = template.parent;
     if (!scene) return locations;
-    let ray = new Ray(A, B);
+    let ray = new foundry.canvas.geometry.Ray(A, B);
     if (!ray.distance) return locations;
     let gridCenter = scene.grid.size / 2;
     let spacer = scene.grid.type === CONST.GRID_TYPES.SQUARE ? 1.41 : 1;

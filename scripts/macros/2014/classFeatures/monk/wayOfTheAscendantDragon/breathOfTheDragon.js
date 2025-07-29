@@ -82,7 +82,7 @@ async function early({workflow}) {
     if (shape === 'cone') templateData.angle = CONFIG.MeasuredTemplate.defaults.angle;
     let {template, tokens} = await templateUtils.placeTemplate(templateData, true);
     genericUtils.updateTargets(tokens);
-    workflow.template = template;
+    workflow.templateUuid = template.uuid;
     await workflowUtils.handleInstantTemplate(workflow);
     let activityData = activityUtils.withChangedDamage(workflow.activity, damageFormula, [damageType]);
     workflow.item = itemUtils.cloneItem(workflow.item, {

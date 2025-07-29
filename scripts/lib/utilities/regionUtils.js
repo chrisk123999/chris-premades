@@ -54,7 +54,7 @@ function rayIntersectsRegion(region, ray) {
 }
 function getIntersections(region, A, B, boolOnly = false) {
     let totalIntersections = [];
-    region.object.polygons.forEach(shape => {
+    region.polygons.forEach(shape => {
         if (boolOnly && totalIntersections.length) return;
         if (shape.segmentIntersections) {
             let intersections = shape.segmentIntersections(A, B);
@@ -72,8 +72,8 @@ function getIntersections(region, A, B, boolOnly = false) {
                     y: points[(i + 3) % points.length]
                 };
                 if (foundry.utils.lineSegmentIntersects(A, B, currCoord, nextCoord)) {
+                    totalIntersections.push(foundry.utils.lineLineIntersection(A, B, currCoord, nextCoord));
                     if (boolOnly) return true;
-                    intersections.push(foundry.utils.lineLineIntersection(A, B, currCoord, nextCoord));
                 }
             }
             totalIntersections.push(...intersections);

@@ -189,8 +189,7 @@ async function revert({trigger: {entity: effect}}) {
     if (oldSheetOpened) origActor.sheet.render(true);
     if (!damageFlags) return;
     let [token] = actorUtils.getTokens(origActor);
-    // eslint-disable-next-line no-undef
-    await CanvasAnimation.getAnimation(token.animationName)?.promise;
+    await token.movementAnimationPromise;
     await workflowUtils.applyDamage([token], damageFlags.damage, damageFlags.type);
 }
 async function hit({trigger: {entity: effect}, workflow}) {

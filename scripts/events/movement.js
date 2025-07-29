@@ -4,7 +4,7 @@ import {actorUtils, effectUtils, genericUtils, itemUtils, macroUtils, regionUtil
 import {auras} from './auras.js';
 import {templateEvents} from './template.js';
 import {regionEvents} from './region.js';
-let lagWarningSeen = false;
+let lagWarningSeen = null;
 function getMovementMacroData(entity) {
     return entity.flags['chris-premades']?.macros?.movement ?? [];
 }
@@ -156,24 +156,15 @@ async function executeMacroPass(tokens, pass, token, options) {
     for (let i of triggers) await executeMacro(i, options);
     return triggers.length;
 }
-function preUpdateToken(token, updates, options, userId) {
-    //This runs on the local client only!
-    let templatesUuids = Array.from(templateUtils.getTemplatesInToken(token.object)).map(i => i.uuid);
-    genericUtils.setProperty(options, 'chris-premades.templates.wasIn', templatesUuids);
-    genericUtils.setProperty(options, 'chris-premades.coords.previous', {x: token.x, y: token.y, elevation: token.elevation});
-    genericUtils.setProperty(options, 'chris-premades.regions.wasIn', Array.from(token.regions.map(i => i.uuid)));
-}
-async function updateToken(token, updates, options, userId) {
+async function moveToken(token, movement, options, user) {
     if (!socketUtils.isTheGM()) return;
+    if (lagWarningSeen === null) lagWarningSeen = genericUtils.getCPRSetting('movementPerformanceDisable');
     if (!token.actor) return;
     if (token.actor.type === 'group') return;
     if (token.parent.id != canvas.scene.id) return;
-    if (!updates.x && !updates.y && !updates.elevation) return;
-    let coords = genericUtils.duplicate({x: updates.x ?? token.x, y: updates.y ?? token.y});
-    let destination = canvas.controls.getRulerForUser(userId)?.destination;
-    let tokenBounds = token.object.bounds;
-    let isFinalMovement = !destination || (Math.round(coords.x + tokenBounds.width / 2) === Math.round(destination.x) && Math.round(coords.y + tokenBounds.height / 2) === Math.round(destination.y));
-    let previousCoords = genericUtils.duplicate(genericUtils.getProperty(options, 'chris-premades.coords.previous'));
+    let isFinalMovement = !movement.pending.waypoints.length;
+    let previousCoords = genericUtils.duplicate(movement.origin);
+    let coords = genericUtils.duplicate(movement.destination);
     if (!previousCoords) return;
     let xDiff = token.width * canvas.grid.size / 2;
     let yDiff = token.height * canvas.grid.size / 2;
@@ -183,11 +174,15 @@ async function updateToken(token, updates, options, userId) {
     previousCoords.y += yDiff;
     let ignore = genericUtils.getProperty(options, 'chris-premades.movement.ignore');
     let skipMove = genericUtils.getCPRSetting('movementPerformance') < 2 && !isFinalMovement;
+    let previousTemplates = Array.from(templateUtils.getTemplatesInToken(token.object));
+    let previousRegions = token.parent.regions.filter(region => token.testInsideRegion(region, movement.origin));
     // eslint-disable-next-line no-undef
-    await CanvasAnimation.getAnimation(token.object.animationName)?.promise;
+    await token.object.movementAnimationPromise;
     let startTime = performance.now();
     let count = 0;
     if (!ignore) {
+        let teleport = CONFIG.Token.movement.actions[movement.passed.waypoints.at(-1).action]?.teleport;
+        genericUtils.setProperty(options, 'chris-premades.movement.teleport', teleport);
         // TODO: move this into the skipMove check? Was there a reason we put this here?
         if (isFinalMovement) await auras.updateAuras(token, options);
         if (!skipMove) {
@@ -195,50 +190,55 @@ async function updateToken(token, updates, options, userId) {
             count += await executeMacroPass(token.parent.tokens.filter(i => i != token), 'movedNear', token, options);
             count += await executeMacroPass(token.parent.tokens.filter(i => i), 'movedScene', token, options);
         }
-        let moveRay = new Ray(previousCoords, coords);
-        if (updates.x || updates.y) {
-            let current = Array.from(templateUtils.getTemplatesInToken(token.object));
-            let previous = options['chris-premades'].templates.wasIn.map(i => fromUuidSync(i)).filter(j => j);
-            let leaving = previous.filter(i => !current.includes(i));
-            let entering = current.filter(i => !previous.includes(i));
-            let staying = previous.filter(i => current.includes(i));
-            let through = token.parent.templates.reduce((acc, template) => {
-                let intersected = templateUtils.rayIntersectsTemplate(template, moveRay);
-                if (!intersected) return acc;
-                acc.push(template);
-                return acc;
-            }, []);
-            let enteredAndLeft = [];
-            if (!options.teleport) {
-                enteredAndLeft = through.filter(i => {
-                    return !leaving.includes(i) && !entering.includes(i) && !staying.includes(i);
-                });
-            }
-            if (leaving.length) count += await templateEvents.executeMacroPass(leaving, 'left', token.object, options);
-            if (entering.length) count += await templateEvents.executeMacroPass(entering, 'enter', token.object, options);
-            if (staying.length) count += await templateEvents.executeMacroPass(staying, 'stay', token.object, options);
-            if (enteredAndLeft.length) count += await templateEvents.executeMacroPass(enteredAndLeft, 'passedThrough', token.object, options);
-        }
-        if (updates || updates.y || updates.elevation) {
-            let current = Array.from(token.regions);
-            let previous = options['chris-premades'].regions.wasIn.map(i => fromUuidSync(i)).filter(j => j);
-            let leaving = previous.filter(i => !current.includes(i));
-            let entering = current.filter(i => !previous.includes(i));
-            let staying = previous.filter(i => current.includes(i));
-            let through = token.parent.regions.reduce((acc, region) => {
-                let intersected = regionUtils.rayIntersectsRegion(region, moveRay);
-                if (!intersected) return acc;
-                acc.push(region);
-                return acc;
-            }, []);
-            let enteredAndLeft = through.filter(i => {
-                return !leaving.includes(i) && !entering.includes(i) && !staying.includes(i);
+        let moveRay = new foundry.canvas.geometry.Ray(previousCoords, coords);
+        let currentTemplates = Array.from(templateUtils.getTemplatesInToken(token.object));
+        let leavingTemplates = previousTemplates.filter(i => !currentTemplates.includes(i));
+        let enteringTemplates = currentTemplates.filter(i => !previousTemplates.includes(i));
+        let stayingTemplates = previousTemplates.filter(i => currentTemplates.includes(i));
+        let throughTemplates = token.parent.templates.reduce((acc, template) => {
+            let intersected = templateUtils.rayIntersectsTemplate(template, moveRay);
+            if (!intersected) return acc;
+            acc.push(template);
+            return acc;
+        }, []);
+        let enteredAndLeftTemplates = [];
+        if (!teleport) {
+            enteredAndLeftTemplates = throughTemplates.filter(i => {
+                return !leavingTemplates.includes(i) && !enteringTemplates.includes(i) && !stayingTemplates.includes(i);
             });
-            if (leaving.length) count += await regionEvents.executeMacroPass(leaving, 'left', token.object, options);
-            if (entering.length) count += await regionEvents.executeMacroPass(entering, 'enter', token.object, options);
-            if (staying.length) count += await regionEvents.executeMacroPass(staying, 'stay', token.object, options);
-            if (enteredAndLeft.length) count += await regionEvents.executeMacroPass(enteredAndLeft, 'passedThrough', token.object, options);
         }
+        if (leavingTemplates.length) count += await templateEvents.executeMacroPass(leavingTemplates, 'left', token.object, options);
+        if (enteringTemplates.length) count += await templateEvents.executeMacroPass(enteringTemplates, 'enter', token.object, options);
+        if (stayingTemplates.length) count += await templateEvents.executeMacroPass(stayingTemplates, 'stay', token.object, options);
+        if (enteredAndLeftTemplates.length) count += await templateEvents.executeMacroPass(enteredAndLeftTemplates, 'passedThrough', token.object, options);
+        let currentRegions = Array.from(token.regions);
+        let leavingRegions = previousRegions.filter(i => !currentRegions.includes(i));
+        let enteringRegions = currentRegions.filter(i => !previousRegions.includes(i));
+        let stayingRegions = previousRegions.filter(i => currentRegions.includes(i));
+        let throughRegions = token.parent.regions.reduce((acc, region) => {
+            let intersected = regionUtils.rayIntersectsRegion(region, moveRay);
+            if (!intersected) return acc;
+            acc.push(region);
+            return acc;
+        }, []);
+        let enteredAndLeftRegions = [];
+        if (!teleport) {
+            enteredAndLeftRegions = throughRegions.filter(i => {
+                return !leavingRegions.includes(i) && !enteringRegions.includes(i) && !stayingRegions.includes(i);
+            });
+        }
+        if (leavingRegions.length) count += await regionEvents.executeMacroPass(leavingRegions, 'left', token.object, options);
+        if (enteringRegions.length) count += await regionEvents.executeMacroPass(enteringRegions, 'enter', token.object, options);
+        if (stayingRegions.length) count += await regionEvents.executeMacroPass(stayingRegions, 'stay', token.object, options);
+        if (enteredAndLeftRegions.length) count += await regionEvents.executeMacroPass(enteredAndLeftRegions, 'passedThrough', token.object, options);
+        if (leavingTemplates.length) console.log('leavtemp', leavingTemplates);
+        if (enteringTemplates.length) console.log('enttemp', enteringTemplates);
+        if (stayingTemplates.length) console.log('staytemp', stayingTemplates);
+        if (enteredAndLeftTemplates.length) console.log('enlevtemp', enteredAndLeftTemplates);
+        if (leavingRegions.length) console.log('leavreg', leavingRegions);
+        if (enteringRegions.length) console.log('entreg', enteringRegions);
+        if (stayingRegions.length) console.log('stayreg', stayingRegions);
+        if (enteredAndLeftRegions.length) console.log('enlevreg', enteredAndLeftRegions);
     }
     await attach.updateAttachments(token, {x: coords.x - previousCoords.x, y: coords.y - previousCoords.y});
     let endTime = performance.now();
@@ -250,7 +250,6 @@ async function updateToken(token, updates, options, userId) {
     }
 }
 export let movementEvents = {
-    updateToken,
-    preUpdateToken,
+    moveToken,
     executeMacroPass
 };

@@ -2738,10 +2738,6 @@
                 "Hint": "Macro compendium that is used to overwrite or add additional macros to the CPR API. Please see documentation on how to use this. (WIP)",
                 "Name": "Macro Compendium"
             },
-            "macroInterface": {
-                "Hint": "Adds a sidebar tab for Macros. Reload required after enabling.",
-                "Name": "Enable Macro Interface"
-            },
             "makeGM": {
                 "Hint": "Become the primary GM.",
                 "Name": "Make GM"
@@ -2801,8 +2797,11 @@
                 "1": "Medium",
                 "2": "High",
                 "3": "Ultra",
-                "Hint": "Accuracy mode for movement events. Higher accuracy modes will have a greater performance impact, especially on less powerful hardware.\r\n• Ultra: Full accuracy.\r\n• High: Ignores cover calculation when getting distance.\r\n• Medium: As high, and waypoint movement is ignored, except for the final segment.\r\n• Low: As Medium, and walls are ignored in distance calculations.",
+                "Hint": "Accuracy mode for movement events. Higher accuracy modes will have a greater performance impact, especially on less powerful hardware.<br>• Ultra: Full accuracy.<br>• High: Ignores cover calculation when getting distance.<br>• Medium: As high, and waypoint movement is ignored, except for the final segment.<br>• Low: As Medium, and walls are ignored in distance calculations.",
                 "Name": "Movement Event Accuracy"
+            },
+            "movementPerformanceDisable": {
+                "Name": "Disable Movement Performance Warning"
             },
             "permissionsAutomateItem": {
                 "Hint": "Lowest user ranking that can select and apply different automations in the Medkit:",
@@ -3059,7 +3058,7 @@
                 "Content": "For example, the spell \"Dragon's Breath\" will make a temporary feature called \"Dragon Breath\" on the target actor.\nFilling in this journal page will populate the description when it's created.",
                 "Title": "Description Journal"
             },
-            "Chat": "<hr>View a guided tour of Cauldron of Plentiful Resources here:<br><button type=\"button\">Start Tour</button>",
+            "Chat": "<hr>View a guided tour of Cauldron of Plentiful Resources here:<br><button class=\"chris-tour\" type=\"button\">Start Tour</button>",
             "Description": "Take a tour of Cauldron of Plentiful Resources.",
             "Hint": "Start a guided tour of Cauldron of Plentiful Resources.",
             "Title": "Cauldron of Plentiful Resources Tour",
@@ -3111,5 +3110,12 @@
             "name": "Turn Resistance"
         }
     },
-    "dae.fieldData.fieldCategories.CPR": "CPR"
+    "dae.fieldData.fieldCategories.CPR": "CPR",
+    "SIDEBAR": {
+        "ACTIONS": {
+            "CREATE": {
+                "ActiveEffect": "Create Active Effect"
+            }
+        }
+    }
 }

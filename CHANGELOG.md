@@ -1,8 +1,60 @@
+# 1.3.5 Release:
+## Bug Fixes:
+- Breath of the Dragon (Legacy)
+- Settings menus
+- Temporary Effects HUD
+
+# 1.3.4 Release:
+## Update Notes:
+- First official V13 release
+- Updated logo, created by Carly Thomas
+- Added `images/LICENSE`
+## Bug Fixes:
+- Brutal Strike
+
+# 1.3.3 Release:
+## Bug Fixes:
+- `genericUtils.updateTargets` (actually)
+
+# 1.3.2 Release:
+## Bug Fixes:
+- Effect Interface
+- `genericUtils.updateTargets`
+
+# 1.3.1 Release:
+## Bug Fixes
+- Compendium pack-id header button
+- Localization
+## Update Notes:
+- Added a setting in general that disables the movement performance notification
+- Changed movement handling to better make use of v13's hooks
+- Removed a bunch of deprecation-throwing code
+- Renamed the modern compendia to be obviously modern
+
+# 1.3.0 Release:
+## Update Notes:
+- First pass at v13/5.x compatibility. Full functionality far from guaranteed.
+- In alignment with Foundry's standard for ApplicationV2 header controls, the medkit has been moved into the dropdown menu for any ApplicationV2 windows.
+
+# 1.2.42 Release:
+## Update Notes:
+- Barring any critical bugfixes, this will be the last V12-compatible release for CPR
+## Bug Fixes
+- Antilife Shell 
+- Embedded Macros
+- Maneuvers: Sweeping Attack (Legacy)
+- Sharpshooter (Modern)
+
 # 1.2.41 Release:
 ## Bug Fixes
+- Alert (Modern)
 - Chromatic Orb (Modern)
-- Unconscious condition
+- Embedded Macros
+- Item Medkit
+- Relentless Endurance (Legacy)
+- Spirit Shroud
 - Summon Fey
+- Unconscious condition
 
 # 1.2.40 Release:
 ## Bug Fixes

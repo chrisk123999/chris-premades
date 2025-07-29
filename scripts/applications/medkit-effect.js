@@ -6,7 +6,6 @@ export class EffectMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
     constructor(context, effectDocument) {
         super({id: 'medkit-window-effect'});
         this.windowTitle = 'Cauldron of Plentiful Resources Configuration: ' + context.label;
-        this.position.width = 650;
         this.effectDocument = effectDocument;
         this.context = context;
     }
@@ -26,6 +25,10 @@ export class EffectMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
         window: {
             icon: 'fa-solid fa-kit-medical',
             resizable: true,
+            contentClasses: ['standard-form']
+        },
+        position: {
+            width: 650
         }
     };
     static PARTS = {
@@ -52,7 +55,7 @@ export class EffectMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
             scrollable: ['']
         },
         footer: {
-            template: 'modules/chris-premades/templates/form-footer.hbs'
+            template: 'templates/generic/form-footer.hbs'
         }
     };
     static async effect(effect) {

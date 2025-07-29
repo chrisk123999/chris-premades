@@ -11,6 +11,7 @@ export class CPRMultipleRollResolver extends HandlebarsApplicationMixin(Applicat
         tag: 'form',
         window: {
             title: 'DICE.RollResolution',
+            contentClasses: ['standard-form']
         },
         position: {
             width: 500,

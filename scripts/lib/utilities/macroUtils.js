@@ -3,6 +3,7 @@ import {custom} from '../../events/custom.js';
 import {genericUtils} from './genericUtils.js';
 function getEmbeddedMacros(entity, type, {pass} = {}) {
     let flagData;
+    type = type.replace('.', '-');
     if (entity.documentName === 'Activity') {
         flagData = genericUtils.getProperty(entity.item, 'flags.chris-premades.embeddedActivityMacros.' + entity.id);
     } else {
@@ -60,7 +61,7 @@ async function removeEmbeddedActivityShapeMacro(activity, entityType, name) {
 }
 function getAllEmbeddedMacros(entity) {
     let allMacros = {};
-    Object.keys(eventStructure).forEach(i => genericUtils.setProperty(allMacros, i, getEmbeddedMacros(entity, i.replaceAll('-', '.'))));
+    Object.keys(eventStructure).forEach(i => genericUtils.setProperty(allMacros, i, getEmbeddedMacros(entity, i)));
     return allMacros;
 }
 export let macroUtils = {

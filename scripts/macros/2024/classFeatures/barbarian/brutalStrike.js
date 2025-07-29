@@ -27,8 +27,7 @@ async function early({trigger: {entity: item}, workflow}) {
     }
     await genericUtils.update(item, {'system.uses.spent': item.system.uses.spent + 1});
     genericUtils.setProperty(workflow, 'chris-premades.brutalStrike', selections.map(i => activityUtils.getIdentifier(i)));
-    workflow.advantage = false;
-    workflow.rollOptions.advantage = false;
+    workflow.disadvantage = true;
     workflow.attackAdvAttribution.add('DIS:' + item.name);
 }
 async function damage({trigger: {entity: item}, workflow}) {

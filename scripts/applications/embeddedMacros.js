@@ -711,8 +711,6 @@ let {ApplicationV2, HandlebarsApplicationMixin} = foundry.applications.api;
 export class EmbeddedMacros extends HandlebarsApplicationMixin(ApplicationV2) {
     constructor(document) {
         super({id: 'cpr-embedded-macros-window'});
-        this.position.width = 700;
-        this.position.height = 'auto';
         this.windowTitle = 'Embedded Macros';
         this.content = 'Change this.';
         this.document = document;
@@ -742,6 +740,11 @@ export class EmbeddedMacros extends HandlebarsApplicationMixin(ApplicationV2) {
         window: {
             title: 'Default Title',
             resizable: true,
+            contentClasses: ['standard-form']
+        },
+        position: {
+            width: 700,
+            height: 'auto'
         }
     };
     static PARTS = {
@@ -756,7 +759,7 @@ export class EmbeddedMacros extends HandlebarsApplicationMixin(ApplicationV2) {
             scrollable: ['']
         },
         footer: {
-            template: 'modules/chris-premades/templates/form-footer.hbs'
+            template: 'templates/generic/form-footer.hbs'
         },
     };
     static async confirm(event, target) {

@@ -68,8 +68,7 @@ async function late({trigger: {entity: item, token}, workflow}) {
         let xOffset = targetToken.document.width * canvas.grid.size / 2;
         let yOffset = targetToken.document.height * canvas.grid.size / 2;
         if (!position.cancelled) await genericUtils.update(targetToken.document, {x: (position.x ?? targetToken.document.center.x) - xOffset, y: (position.y ?? targetToken.document.center.y) - yOffset});
-        // eslint-disable-next-line no-undef
-        await CanvasAnimation.getAnimation(targetToken.animationName)?.promise;
+        await targetToken.movementAnimationPromise;
     }
     let weapons = targetToken.actor.items.filter(i => i.type === 'weapon' && i.system.equipped);
     let selectedWeapon;

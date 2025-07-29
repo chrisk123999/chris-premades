@@ -16,7 +16,7 @@ async function damage({workflow, ditem}) {
             await targetToken.animationContexts?.get('Token.' + targetToken.id + '.animate')?.promise ?? true;
         }
     } else {
-        let dirRay = new Ray(targetToken.center, sourceToken.center);
+        let dirRay = new foundry.canvas.geometry.Ray(targetToken.center, sourceToken.center);
         let distPer = dirRay.distance / distance;
         let position = canvas.grid.getTopLeftPoint(dirRay.project((distPer * pullDistance) / dirRay.distance));
         if (!workflow.failedSaves.size) position = targetToken.position;

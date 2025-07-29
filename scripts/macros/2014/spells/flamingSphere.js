@@ -110,8 +110,7 @@ async function move({workflow}) {
     let xOffset = token.width * canvas.grid.size / 2;
     let yOffset = token.height * canvas.grid.size / 2;
     await genericUtils.update(token, {x: (position.x ?? token.center.x) - xOffset, y: (position.y ?? token.center.y) - yOffset});
-    // eslint-disable-next-line no-undef
-    await CanvasAnimation.getAnimation(token.object.animationName)?.promise;
+    await token.object.movementAnimationPromise;
     let nearbyTokens = tokenUtils.findNearby(token.object, 5, 'all', {includeIncapacitated: true});
     if (!nearbyTokens.length) return;
     let selection = await dialogUtils.selectTargetDialog(workflow.item.name, 'CHRISPREMADES.Macros.FlamingSphere.Ram', nearbyTokens, {buttons: 'okCancel', skipDeadAndUnconscious: false});

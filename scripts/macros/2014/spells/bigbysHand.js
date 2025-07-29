@@ -174,7 +174,7 @@ async function late({workflow}) {
                 by = ay - 100;
                 break;
         }
-        let ray = new Ray({x: ax, y: ay}, {x: bx, y: by});
+        let ray = new foundry.canvas.geometry.Ray({x: ax, y: ay}, {x: bx, y: by});
         let {casterSpellMod} = workflow.actor.flags['chris-premades'].bigbysHand;
         let distanceToPush = (casterSpellMod * 5) + 5;
         await tokenUtils.moveTokenAlongRay(targetToken, ray, distanceToPush);

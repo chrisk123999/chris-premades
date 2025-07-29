@@ -71,7 +71,7 @@ function withChangedDamage(activity, formulaOrObj, types=[], {specificIndex = 0}
                 number: number,
                 denomination: denomination,
                 bonus: bonus + ' + @mod'
-            }
+            };
         }
         else if (activityData.damage.parts[specificIndex]) {
             let isCustom = activityData.damage.parts[specificIndex].custom.enabled;

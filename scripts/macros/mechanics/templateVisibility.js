@@ -6,7 +6,7 @@ async function check(workflow) {
     let source = workflow.token;
     let templates = source.scene.templates.filter(template => {
         if (!template.flags['chris-premades']?.template?.visibility?.obscured) return false;
-        let testRay = new Ray(source.center, target.center);
+        let testRay = new foundry.canvas.geometry.Ray(source.center, target.center);
         return templateUtils.rayIntersectsTemplate(template, testRay);
     });
     templates.push(...templateUtils.getTemplatesInToken(source));

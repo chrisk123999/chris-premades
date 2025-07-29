@@ -135,7 +135,7 @@
     "properties": [],
     "requirements": "",
     "type": {
-      "value": "",
+      "value": "feat",
       "subtype": ""
     }
   },
@@ -220,7 +220,7 @@
     "chris-premades": {
       "info": {
         "identifier": "alert",
-        "version": "1.2.36",
+        "version": "1.2.41",
         "source": "chris-premades",
         "rules": "modern"
       },

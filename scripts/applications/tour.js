@@ -4,10 +4,10 @@ let registered = false;
 let states = {
     1: async () => {
         await ui.sidebar.expand();
-        await ui.sidebar.tabs.compendium.activate();
+        await ui.sidebar.changeTab('compendium', 'primary');
         await genericUtils.sleep(250);
         let compendiumFolder = game.folders.find(i => i.name === 'Cauldron of Plentiful Resources' && i.type === 'Compendium');
-        if (compendiumFolder && !compendiumFolder.expanded) document.querySelector('[data-uuid="' + compendiumFolder.uuid + '"]').classList.remove('collapsed');
+        if (compendiumFolder && !compendiumFolder.expanded) document.querySelector('[data-uuid="' + compendiumFolder.uuid + '"]').classList.add('expanded');
     },
     2: async () => {
         let pack = game.packs.get(constants.packs.spells);
@@ -19,6 +19,9 @@ let states = {
         let item = await compendiumUtils.getItemFromCompendium(constants.packs.spells, 'Fire Shield');
         if (!item) return;
         item.sheet.render(true);
+        await genericUtils.sleep(250);
+        if (item.sheet.element.classList.contains('tidy5e-sheet')) return;
+        item.sheet.element.querySelector('.header-control[data-action="toggleControls"]').click();
         await genericUtils.sleep(250);
     },
     4: async () => {
@@ -40,13 +43,16 @@ let states = {
         if (!actor) return;
         await actor.sheet.render(true);
         await genericUtils.sleep(250);
+        if (actor.sheet.element.classList.contains('tidy5e-sheet')) return;
+        actor.sheet.element.querySelector('.header-control[data-action="toggleControls"]').click();
+        await genericUtils.sleep(250);
     },
     8: async () => {
         let actor = await compendiumUtils.getItemFromCompendium('dnd5e.heroes', 'Akra (Dragonborn Cleric)');
         if (!actor) return;
         await actor.sheet.close();
         await ui.sidebar.expand();
-        await ui.sidebar.tabs.journal.activate();
+        await ui.sidebar.changeTab('journal', 'primary');
         await genericUtils.sleep(250);
     },
     9: async () => {
@@ -62,7 +68,7 @@ let states = {
         game.settings.sheet.close();
     }
 };
-class CPRTour extends Tour {
+class CPRTour extends foundry.nue.Tour {
     async next() {
         if (this.status === Tour.STATUS.COMPLETED) throw new Error('Tour ' + this.id + 'has already been completed');
         if (!this.hasNext) return this.complete();
@@ -94,13 +100,13 @@ async function register() {
     let steps = [];
     for (let i = 0; i < maxSteps; i++) steps.push({id: 'chris-premades.tour.' + i, title: 'CHRISPREMADES.Tour.' + i + '.Title', content: 'CHRISPREMADES.Tour.' + i + '.Content'});
     steps[1].selector = '[data-uuid="' + compendiumFolder.uuid + '"]';
-    steps[2].selector = '[data-document-id="' + fireShield.id + '"]';
-    steps[3].selector = '.item [class="header-button control chris-premades-item"]';
-    steps[4].selector = '[class="cpr-medkit-header"]';
-    steps[5].selector = '[class="tab cpr-medkit-tab active"]';
-    steps[6].selector = '[class="cpr-medkit-tabs tabs"]';
-    steps[7].selector = '[class="header-button control chris-premades-item"]';
-    steps[8].selector = '[data-document-id="' + journalEntry.id + '"]';
+    steps[2].selector = '[data-entry-id="' + fireShield.id + '"]';
+    steps[3].selector = '.context-item:has(i.fa-kit-medical),button.header-control.chris-premades-item';
+    steps[4].selector = '.cpr-medkit-header';
+    steps[5].selector = '.tab.cpr-medkit-tab.active';
+    steps[6].selector = '.cpr-medkit-tabs.tabs';
+    steps[7].selector = '.context-item:has(i.fa-kit-medical),button.header-control.chris-premades-item';
+    steps[8].selector = '[data-entry-id="' + journalEntry.id + '"]';
     steps[9].selector = '[data-page-id="' + dragonBreath.id + '"]';
     if (game.user.isGM) {
         steps[10].selector = '[data-tab="chris-premades"]';

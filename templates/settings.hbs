@@ -1,4 +1,4 @@
-<form class="categories flexcol" autocomplete="off">
+<section class="categories flexcol" autocomplete="off">
     {{#each this.settings}}
     <div class="form-group">
         <label>{{this.name}}</label>
@@ -9,11 +9,7 @@
 
             {{else if this.isSelect}}
             <select name="{{this.id}}" data-dtype="{{this.type}}">
-                {{#select this.value}}
-                {{#each this.choices as |name k|}}
-                <option value="{{k}}">{{localize name}}</option>
-                {{/each}}
-                {{/select}}
+                {{selectOptions this.choices selected=this.value localize=true}}
             </select>
 
             {{else if this.isRange}}
@@ -38,12 +34,7 @@
             {{/if}}
         </div>
 
-        <p class="notes">{{this.hint}}</p>
+        <p class="hint">{{{this.hint}}}</p>
     </div>
     {{/each}}
-    <footer class="sheet-footer flexrow">
-        <button type="submit" name="submit">
-            <i class="fa fa-check"></i> {{localize "Confirm"}}
-        </button>
-    </footer>
-</form>
+</section>

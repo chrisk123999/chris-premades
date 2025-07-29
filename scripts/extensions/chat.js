@@ -26,14 +26,6 @@ async function createChatMessage(message, options, userId) {
         }
     }
 }
-async function renderChatMessage(message, html) {
-    let buttonData = message.flags?.['chris-premades']?.button;
-    if (!buttonData) return;
-    let img = html.querySelector('.avatar img');
-    if (!img) return;
-    img.src = 'modules/chris-premades/images/CauldronofPlentifulResourcesMedium.png';
-}
 export let chat = {
-    createChatMessage,
-    renderChatMessage
+    createChatMessage
 };

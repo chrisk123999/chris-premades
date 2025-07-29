@@ -6,7 +6,7 @@ async function early({workflow}) {
     if (!selection) return;
     await genericUtils.update(workflow.item, {'system.uses.spent': workflow.item.system.uses.spent + 1});
     let targetToken = workflow.targets.first();
-    let ray = new Ray(workflow.token.center, targetToken.center);
+    let ray = new foundry.canvas.geometry.Ray(workflow.token.center, targetToken.center);
     if (!ray.distance) return;
     let templateData = {
         angle: 0,
