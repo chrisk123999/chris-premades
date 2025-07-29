@@ -1,5 +1,7 @@
 # 1.3.5 Release:
 ## Bug Fixes:
+- Breath of the Dragon (Legacy)
+- Settings menus
 - Temporary Effects HUD
 
 # 1.3.4 Release:
