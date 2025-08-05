@@ -2801,6 +2801,7 @@
                 "Name": "Movement Event Accuracy"
             },
             "movementPerformanceDisable": {
+                "Hint": "Disables the warning notification that appears when movement event processing is taking a long time.",
                 "Name": "Disable Movement Performance Warning"
             },
             "permissionsAutomateItem": {
