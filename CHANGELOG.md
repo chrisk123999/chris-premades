@@ -1,3 +1,7 @@
+# 1.3.6 Release:
+## Bug Fixes:
+- Fixed status icon replacement and disable non-condition status effects.
+
 # 1.3.5 Release:
 ## Bug Fixes:
 - Breath of the Dragon (Legacy)
