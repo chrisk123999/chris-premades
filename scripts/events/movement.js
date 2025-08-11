@@ -231,14 +231,6 @@ async function moveToken(token, movement, options, user) {
         if (enteringRegions.length) count += await regionEvents.executeMacroPass(enteringRegions, 'enter', token.object, options);
         if (stayingRegions.length) count += await regionEvents.executeMacroPass(stayingRegions, 'stay', token.object, options);
         if (enteredAndLeftRegions.length) count += await regionEvents.executeMacroPass(enteredAndLeftRegions, 'passedThrough', token.object, options);
-        if (leavingTemplates.length) console.log('leavtemp', leavingTemplates);
-        if (enteringTemplates.length) console.log('enttemp', enteringTemplates);
-        if (stayingTemplates.length) console.log('staytemp', stayingTemplates);
-        if (enteredAndLeftTemplates.length) console.log('enlevtemp', enteredAndLeftTemplates);
-        if (leavingRegions.length) console.log('leavreg', leavingRegions);
-        if (enteringRegions.length) console.log('entreg', enteringRegions);
-        if (stayingRegions.length) console.log('stayreg', stayingRegions);
-        if (enteredAndLeftRegions.length) console.log('enlevreg', enteredAndLeftRegions);
     }
     await attach.updateAttachments(token, {x: coords.x - previousCoords.x, y: coords.y - previousCoords.y});
     let endTime = performance.now();
