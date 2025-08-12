@@ -82,7 +82,7 @@ async function everyTurn({trigger: {entity: effect, token, target}}) {
             {
                 key: 'system.attributes.movement.all',
                 mode: 0,
-                value: -10,
+                value: genericUtils.handleMetric(-10),
                 priority: 20
             }
         ],

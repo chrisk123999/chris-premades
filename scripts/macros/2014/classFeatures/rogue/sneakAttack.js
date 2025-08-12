@@ -216,7 +216,7 @@ async function damage({trigger: {entity: item}, workflow}) {
     if (!animationUtils.aseCheck() || animationUtils.jb2aCheck() != 'patreon') playAnimation = false;
     if (!playAnimation) return;
     let animationType;
-    if (tokenUtils.getDistance(workflow.token, targetToken) > 5) animationType = 'ranged';
+    if (tokenUtils.getDistance(workflow.token, targetToken) > genericUtils.handleMetric(5)) animationType = 'ranged';
     if (!animationType) animationType = workflow.defaultDamageType;
     await animation(targetToken, workflow.token, animationType);
 }

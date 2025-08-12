@@ -57,13 +57,13 @@ async function use({workflow}) {
             {
                 key: 'ATL.light.bright',
                 mode: 4,
-                value: 30,
+                value: genericUtils.handleMetric(30),
                 priority: 20
             },
             {
                 key: 'ATL.light.dim',
                 mode: 4,
-                value: 60,
+                value: genericUtils.handleMetric(60),
                 priority: 20
             }
         ]
