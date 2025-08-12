@@ -26,7 +26,7 @@ function getTemplatesInToken(token) {
     let sceneTemplates = scene.templates;
     let pointsToTest = token.document.getOccupiedGridSpaceOffsets().map(i => scene.grid.getCenterPoint(i));
     for (let template of sceneTemplates) {
-        if (pointsToTest.some(i => template.object.testPoint(i))) {
+        if (template.object?.shape && pointsToTest.some(i => template.object.testPoint(i))) {
             templates.add(template);
         }
     }

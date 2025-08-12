@@ -118,7 +118,8 @@
           "saveRemoves": true,
           "preRemoveConditionText": "",
           "postRemoveConditionText": ""
-        }
+        },
+        "otherActivityId": "none"
       },
       "6Q8rEpqAk3JFHh95": {
         "type": "save",
@@ -243,7 +244,8 @@
           "postRemoveConditionText": ""
         },
         "img": "",
-        "appliedEffects": []
+        "appliedEffects": [],
+        "otherActivityId": "none"
       }
     },
     "uses": {
@@ -373,7 +375,7 @@
       ],
       "info": {
         "identifier": "insectPlague",
-        "version": "1.2.29",
+        "version": "1.3.7",
         "source": "chris-premades",
         "rules": "modern"
       },

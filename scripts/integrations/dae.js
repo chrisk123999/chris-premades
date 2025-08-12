@@ -15,14 +15,14 @@ function initFlags() {
     daeFieldBrowserFields.push(...Array.from(new Set(browserFields)).sort());
 }
 function injectFlags() {
-    for (let [condition, {label}] of Object.entries(CONFIG.DND5E.conditionTypes)) {
+    for (let [condition, {name}] of Object.entries(CONFIG.DND5E.conditionTypes)) {
         foundry.utils.setProperty(game.i18n.translations, 'dae.CPR.fieldData.flags.chris-premades.CV.' + condition, {
-            name: genericUtils.format('CHRISPREMADES.Generic.ConditionVulnerability.Name', {condition: label}),
-            description: genericUtils.format('CHRISPREMADES.Generic.ConditionVulnerability.Description', {condition: label})
+            name: genericUtils.format('CHRISPREMADES.Generic.ConditionVulnerability.Name', {condition: name}),
+            description: genericUtils.format('CHRISPREMADES.Generic.ConditionVulnerability.Description', {condition: name})
         });
         foundry.utils.setProperty(game.i18n.translations, 'dae.CPR.fieldData.flags.chris-premades.CR.' + condition, {
-            name: genericUtils.format('CHRISPREMADES.Generic.ConditionResistance.Name', {condition: label}),
-            description: genericUtils.format('CHRISPREMADES.Generic.ConditionResistance.Description', {condition: label})
+            name: genericUtils.format('CHRISPREMADES.Generic.ConditionResistance.Name', {condition: name}),
+            description: genericUtils.format('CHRISPREMADES.Generic.ConditionResistance.Description', {condition: name})
         });
     }
     DAE.addAutoFields(['flags.chris-premades.senses.magicalDarkness']);

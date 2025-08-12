@@ -80,7 +80,7 @@ async function hit({trigger: {entity: effect}, workflow}) {
     let originItem = await effectUtils.getOriginItem(effect);
     let feature = activityUtils.getActivityByIdentifier(originItem, 'fireShieldDamage', {strict: true});
     if (!feature) return;
-    let newDamagePart = feature.damage.parts[0] ?? {number: 2, denomination: 6};
+    let newDamagePart = feature.damage.parts[0]?.toObject() ?? {number: 2, denomination: 6};
     let activityData = activityUtils.withChangedDamage(feature, newDamagePart, [shieldType]);
     activityData.img = effect.img;
     await workflowUtils.syntheticActivityDataRoll(activityData, originItem, originItem.actor, [workflow.token]);

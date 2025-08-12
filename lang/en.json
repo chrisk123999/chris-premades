@@ -2805,19 +2805,19 @@
                 "Name": "Disable Movement Performance Warning"
             },
             "permissionsAutomateItem": {
-                "Hint": "Lowest user ranking that can select and apply different automations in the Medkit:",
+                "Hint": "Lowest user ranking that can select and apply different automations in the Medkit.",
                 "Name": "Medkit Apply Automation Permissions"
             },
             "permissionsConfigureHomebrew": {
-                "Hint": "Lowest user ranking that can configure homebrew customizations in the Medkit:",
+                "Hint": "Lowest user ranking that can configure homebrew customizations in the Medkit.",
                 "Name": "Medkit Configure Homebrew Permissions"
             },
             "permissionsConfigureItem": {
-                "Hint": "Lowest user ranking that can configure automations in the Medkit:",
+                "Hint": "Lowest user ranking that can configure automations in the Medkit.",
                 "Name": "Medkit Configuration Permissions"
             },
             "permissionsUpdateItem": {
-                "Hint": "Lowest user ranking that can update the currently selected automation in the Medkit:",
+                "Hint": "Lowest user ranking that can update the currently selected automation in the Medkit.",
                 "Name": "Medkit Update Automation Permissions"
             },
             "playerSelectsConjures": {

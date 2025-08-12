@@ -50,8 +50,8 @@ async function completeItemUse(item, config = {}, options = {}) {
         options.workflowData = true;
         fixSets = true;
     }
-    // TODO: Make use completeItemUseV2 instead, once everything's ready
-    let workflow = await MidiQOL.completeItemUse(item, config, options);
+    config.midiOptions = genericUtils.mergeObject(config.midiOptions ?? {}, options);
+    let workflow = await MidiQOL.completeItemUse(item, config);
     if (fixSets) {
         if (workflow.failedSaves) workflow.failedSaves = new Set(workflow.failedSaves);
         if (workflow.hitTargets) workflow.hitTargets = new Set(workflow.hitTargets);

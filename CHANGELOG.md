@@ -1,3 +1,10 @@
+# 1.3.7 Release:
+## Bug Fixes:
+- Fixed calling Midi's `completeItemUse` improperly - should fix a lot of things
+- Blood Hunter Mutagens
+- Fire Shield
+- Insect Plague
+
 # 1.3.6 Release:
 ## Bug Fixes:
 - Fixed status icon replacement and disable non-condition status effects.
