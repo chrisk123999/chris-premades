@@ -20,15 +20,19 @@ async function updateTokenSize(actor, animate, old) {
     let sizeDiff = sizes[size] - sizes[old];
     let scaleDiff = scales[size] - scales[old];
     if (!sizeDiff && !scaleDiff) return;
+    let scaleRatio = (actor.token ?? actor.prototypeToken).texture.scaleX / scales[old];
+    let newScale = scales[size] * scaleRatio;
     let updates = {
         width: sizes[size],
         height: sizes[size],
         texture: {
-            scaleX: scales[size],
-            scaleY: scales[size]
+            scaleX: newScale,
+            scaleY: newScale
         }
     };
-    await genericUtils.update(actor, {'prototypeToken': updates});
+    if (!actor.token) {
+        await genericUtils.update(actor, {'prototypeToken': updates});
+    }
     let tokens = actorUtils.getTokens(actor);
     if (!tokens.length) return;
     let scene = tokens[0].document.parent;

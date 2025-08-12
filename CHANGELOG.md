@@ -4,6 +4,7 @@
 - Blood Hunter Mutagens
 - Fire Shield
 - Insect Plague
+- Actor-Token size syncing now respects original scale
 
 # 1.3.6 Release:
 ## Bug Fixes:
