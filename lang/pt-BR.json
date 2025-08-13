@@ -2801,6 +2801,7 @@
                 "Name": "Precisão de Eventos de Movimento"
             },
             "movementPerformanceDisable": {
+                "Hint": "Desativa a notificação de aviso que aparece quando o processamento do evento de movimento estiver demorando muito.",
                 "Name": "Desativar Aviso de Desempenho de Movimento"
             },
             "permissionsAutomateItem": {
