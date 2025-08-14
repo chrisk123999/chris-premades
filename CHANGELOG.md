@@ -1,3 +1,7 @@
+# 1.3.8 Release:
+## Bug Fixes:
+- Tandem Footwork
+
 # 1.3.7 Release:
 ## Bug Fixes:
 - Fixed calling Midi's `completeItemUse` improperly - should fix a lot of things
