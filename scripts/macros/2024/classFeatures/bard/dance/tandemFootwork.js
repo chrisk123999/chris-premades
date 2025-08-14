@@ -15,7 +15,6 @@ async function use({trigger, workflow}) {
     effectData.duration = itemUtils.convertDuration(workflow.activity);
     effectData.changes[0].value = roll.roll.total;
     await Promise.all(workflow.targets.map(async token => await effectUtils.createEffect(token.actor, effectData)));
-    console.log('here');
 }
 async function added({trigger: {entity: item, identifier, actor}}) {
     let bardicInspiration = itemUtils.getItemByIdentifier(actor, 'bardicInspiration');
