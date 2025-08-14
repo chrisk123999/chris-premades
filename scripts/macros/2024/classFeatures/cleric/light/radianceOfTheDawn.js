@@ -1,4 +1,14 @@
-import {activityUtils, genericUtils, itemUtils, templateUtils} from '../../../../../utils.js';
+import {activityUtils, constants, effectUtils, genericUtils, itemUtils, templateUtils, tokenUtils} from '../../../../../utils.js';
+async function early({trigger, workflow}) {
+    if (!workflow.token) return;
+    let effect = effectUtils.getEffectByIdentifier(workflow.actor, 'coronaOfLightEffect');
+    if (!effect) return;
+    await Promise.all(workflow.targets.map(async token => {
+        let distance = tokenUtils.getDistance(workflow.token, token);
+        if (distance > 60) return;
+        await effectUtils.createEffect(token.actor, constants.disadvantageEffectData);
+    }));
+}
 async function use({trigger, workflow}) {
     if (!workflow.template) return;
     let darknessTemplates = workflow.template.parent.templates.filter(template => template.flags['chris-premades']?.template?.visibility?.magicalDarkness).filter(template => templateUtils.overlap(workflow.template, template));
@@ -24,6 +34,11 @@ export let radianceOfTheDawn = {
                 pass: 'rollFinished',
                 macro: use,
                 priority: 50
+            },
+            {
+                pass: 'preambleComplete',
+                macro: early,
+                priority: 100
             }
         ]
     },

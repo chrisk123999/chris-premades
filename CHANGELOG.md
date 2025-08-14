@@ -1,3 +1,7 @@
+# 1.3.9 Release:
+## New Modern Content:
+- Corona of Light
+
 # 1.3.8 Release:
 ## New Modern Content:
 - Radiance of the Dawn

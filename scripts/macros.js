@@ -246,3 +246,4 @@ export {preserveLife} from './macros/2024/classFeatures/cleric/life/preserveLife
 export {blessedHealer} from './macros/2024/classFeatures/cleric/life/blessedHealer.js';
 //Light Cleric
 export {radianceOfTheDawn} from './macros/2024/classFeatures/cleric/light/radianceOfTheDawn.js';
+export {coronaOfLight, coronaOfLightEffect} from './macros/2024/classFeatures/cleric/light/coronaOfLight.js';
