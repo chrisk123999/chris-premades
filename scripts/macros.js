@@ -244,3 +244,5 @@ export {greaterDivineIntervention, greaterDivineInterventionRest} from './macros
 export {discipleOfLife} from './macros/2024/classFeatures/cleric/life/discipleOfLife.js';
 export {preserveLife} from './macros/2024/classFeatures/cleric/life/preserveLife.js';
 export {blessedHealer} from './macros/2024/classFeatures/cleric/life/blessedHealer.js';
+//Light Cleric
+export {radianceOfTheDawn} from './macros/2024/classFeatures/cleric/light/radianceOfTheDawn.js';

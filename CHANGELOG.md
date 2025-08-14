@@ -1,4 +1,6 @@
 # 1.3.8 Release:
+## New Modern Content:
+- Radiance of the Dawn
 ## Bug Fixes:
 - Tandem Footwork
 

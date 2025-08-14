@@ -155,6 +155,22 @@ function getIntersections(templateObj, A, B, boolOnly = false) {
 async function getSourceActor(template) {
     return (await fromUuid(template.flags.dnd5e?.origin))?.parent;
 }
+function overlap(template1, template2) {
+    let shape1 = template1.object.shape;
+    let shape2 = template2.object.shape;
+    shape1 = (shape1.type === PIXI.SHAPES.POLY ? shape1 : shape1.toPolygon()).clone();
+    shape2 = (shape2.type === PIXI.SHAPES.POLY ? shape2 : shape2.toPolygon()).clone();
+    for (let i = 0; i < shape1.points.length; i++) {
+        if (i % 2) shape1.points[i] += template1.y;
+        else shape1.points[i] += template1.x;
+    }
+    for (let i = 0; i < shape2.points.length; i++) {
+        if (i % 2) shape2.points[i] += template2.y;
+        else shape2.points[i] += template2.x;
+    }
+    let intersects = shape1.intersectPolygon(shape2);
+    return intersects.points.length > 0;
+}
 export let templateUtils = {
     getTokensInShape,
     getTokensInTemplate,
@@ -173,5 +189,6 @@ export let templateUtils = {
     placeTemplate,
     rayIntersectsTemplate,
     getIntersections,
-    getSourceActor
+    getSourceActor,
+    overlap
 };
