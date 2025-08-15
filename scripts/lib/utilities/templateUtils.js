@@ -1,4 +1,4 @@
-import {genericUtils} from './genericUtils.js';
+import {genericUtils} from '../../utils.js';
 function getTokensInShape(shape, scene, {x: offsetX, y: offsetY}={x: 0, y: 0}) {
     let tokens = new Set();
     if (!shape && !scene) return tokens;

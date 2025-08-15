@@ -1,7 +1,4 @@
-import {errors} from '../errors.js';
-import {effectUtils} from './effectUtils.js';
-import {genericUtils} from './genericUtils.js';
-import {itemUtils} from './itemUtils.js';
+import {errors, effectUtils, genericUtils, itemUtils} from '../../utils.js';
 function getActivityByIdentifier(item, identifier, {strict = false} = {}) {
     let activity = item.system.activities.find(i => getIdentifier(i) === identifier);
     if (!activity && strict) {
@@ -121,6 +118,22 @@ function isSpellActivity(activity) {
     let spellActivities = itemUtils.getSpellActivities(activity.item) ?? [];
     return spellActivities.includes(identifier);
 }
+function canUse(activity) {
+    //Note: This assumes the usage is only one and that there is only one consumption target!
+    //TODO: Not make this assumption.
+    if (!activity.consumption.targets.length) return true;
+    switch (activity.consumption.targets[0].type) {
+        case 'itemUses':
+            if (activity.consumption.targets[0].target == '') {
+                return !!activity.item.system.uses.value;
+            } else {
+                let item = activity.actor.items.get(activity.consumption.targets[0].target);
+                return !!item?.system?.uses?.value;
+            }
+        case 'activityUses': return !!activity.uses.value;
+    }
+    return true;
+}
 export let activityUtils = {
     getActivityByIdentifier,
     getIdentifier,
@@ -130,5 +143,6 @@ export let activityUtils = {
     getConditions,
     getMod,
     hasSave,
-    isSpellActivity
+    isSpellActivity,
+    canUse
 };

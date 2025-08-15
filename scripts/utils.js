@@ -19,3 +19,4 @@ export {crosshairUtils} from './lib/utilities/crosshairUtils.js';
 export {spellUtils} from './lib/utilities/spellUtils.js';
 export {regionUtils} from './lib/utilities/regionUtils.js';
 export {macroUtils} from './lib/utilities/macroUtils.js';
+export {thirdPartyUtils} from './lib/utilities/thirdPartyUtils.js';

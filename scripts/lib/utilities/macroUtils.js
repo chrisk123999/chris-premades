@@ -1,6 +1,6 @@
 import {eventStructure, getAllDocumentPasses, getDocumentPasses, getEventTypes} from '../../applications/embeddedMacros.js';
 import {custom} from '../../events/custom.js';
-import {genericUtils} from './genericUtils.js';
+import {genericUtils} from '../../utils.js';
 function getEmbeddedMacros(entity, type, {pass} = {}) {
     let flagData;
     type = type.replace('.', '-');
