@@ -45,6 +45,7 @@ export {detectMagic, detectMagicDetecting} from './macros/2014/spells/detectMagi
 export {detectThoughts} from './macros/2014/spells/detectThoughts.js';
 export {disintegrate} from './macros/2014/spells/disintegrate.js';
 export {dragonsBreath} from './macros/2014/spells/dragonsBreath.js';
+export {dustDevil, dustDevilEndTurn, dustDevilContact} from './macros/2014/spells/dustDevil.js';
 export {earthTremor} from './macros/2014/spells/earthTremor.js';
 export {eldritchBlast} from './macros/2014/spells/eldritchBlast.js';
 export {elementalWeapon} from './macros/2014/spells/elementalWeapon.js';
@@ -57,6 +58,7 @@ export {findSteed, findSteedActive} from './macros/2014/spells/findSteed.js';
 export {fireShield, fireShieldShielded, fireShieldDismiss} from './macros/2014/spells/fireShield.js';
 export {fireStorm} from './macros/2014/spells/fireStorm.js';
 export {flameBlade} from './macros/2014/spells/flameBlade.js';
+export {flamingSphere, flamingSphereEndTurn, flamingSphereRam} from './macros/2014/spells/flamingSphere.js';
 export {flockOfFamiliars, flockOfFamiliarsTouch} from './macros/2014/spells/flockOfFamiliars.js';
 export {fly, flyFlying} from './macros/2014/spells/fly.js';
 export {fogCloud} from './macros/2014/spells/fogCloud.js';
@@ -148,7 +150,6 @@ export {witherAndBloom} from './macros/2014/spells/witherAndBloom.js';
 export {wrathfulSmite, wrathfulSmiteDamage} from './macros/2014/spells/wrathfulSmite.js';
 export {zoneOfTruth} from './macros/2014/spells/zoneOfTruth.js';
 export {wallOfFire, wallOfFireWallRegion, wallOfFireRegion} from './macros/2014/spells/wallOfFire.js';
-export {flamingSphere, flamingSphereEndTurn, flamingSphereRam} from './macros/2014/spells/flamingSphere.js';
 // Other
 export {actionDismissal} from './macros/2014/generic/actionDismissal.js';
 export {removeOnMiss} from './macros/2014/generic/removeOnMiss.js';
@@ -243,7 +244,7 @@ export {eyesOfNight} from './macros/2014/classFeatures/cleric/twilightDomain/eye
 export {favoredByTheGods} from './macros/2014/classFeatures/sorcerer/divineSoul/favoredByTheGods.js';
 export {favoredFoe} from './macros/2014/classFeatures/ranger/favoredFoe.js';
 export {feyPresence} from './macros/2014/classFeatures/warlock/archfey/feyPresence.js';
-export {fireRune, frostRune, stoneRune, hillRune, stormRune, cloudRune} from './macros/2014/classFeatures/fighter/runeKnight/runes.js'; 
+export {fireRune, frostRune, stoneRune, hillRune, stormRune, cloudRune} from './macros/2014/classFeatures/fighter/runeKnight/runes.js';
 export {fightingSpirit} from './macros/2014/classFeatures/fighter/samurai/fightingSpirit.js';
 export {fightingStyleSuperiorTechnique} from './macros/2014/classFeatures/multiple/fightingStyleSuperiorTechnique.js';
 export {fightingStyleUnarmedFighting, fightingStyleUnarmedFightingUnarmedStrike} from './macros/2014/classFeatures/multiple/fightingStyleUnarmedFighting.js';

@@ -136,7 +136,9 @@
             "Colors": {
                 "Blue": "Blue",
                 "Blue02": "Blue (alt)",
+                "BlueGrey": "Blue & Grey",
                 "BlueYellow": "Blue & Yellow",
+                "BlueWhite": "Blue & White",
                 "Cycle": "Cycle",
                 "DarkBlack": "Dark Black",
                 "DarkBlue": "Dark Blue",
@@ -1207,6 +1209,10 @@
                 "Move": "Flaming Sphere: Move",
                 "Ram": "Ram Target?",
                 "RamItem": "Flaming Sphere: Ram"
+            },
+            "DustDevil": {
+                "ContactItem": "Dust Devil: Contact",
+                "Move": "Dust Devil: Move"
             },
             "FlockOfFamiliars": {
                 "Command": "Flock of Familiars: Command",
@@ -2942,6 +2948,7 @@
                 "DrakeCompanionLightning": "Drake Companion: Lightning",
                 "DrakeCompanionPoison": "Drake Companion: Poison",
                 "DreadLord": "Dread Lord",
+                "DustDevil": "Dust Devil",
                 "EarthElemental": "Earth Elemental",
                 "EarthenHand": "Earthen Hand",
                 "Echo": "Echo",
