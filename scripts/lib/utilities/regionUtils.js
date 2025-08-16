@@ -1,5 +1,5 @@
 import {effectUtils} from './effectUtils.js';
-import {genericUtils} from './genericUtils.js';
+import {genericUtils} from '../../utils.js';
 async function createRegions(regionDatas, scene, {parentEntity, excludeGPSRegionHandling = true} = {}) {
     let regions = await genericUtils.createEmbeddedDocuments(scene, 'Region', regionDatas);
     if (excludeGPSRegionHandling) {

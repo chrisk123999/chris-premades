@@ -1,4 +1,4 @@
-import {actorUtils, effectUtils, genericUtils, socketUtils, errors, compendiumUtils} from '../../utils.js';
+import {actorUtils, effectUtils, genericUtils, socketUtils, compendiumUtils} from '../../utils.js';
 import {gambitPremades} from '../../integrations/gambitsPremades.js';
 import {miscPremades} from '../../integrations/miscPremades.js';
 import {custom} from '../../events/custom.js';

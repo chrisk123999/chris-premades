@@ -1,6 +1,5 @@
 import * as macros from '../../legacyMacros.js';
-import {constants} from '../constants.js';
-import {genericUtils} from './genericUtils.js';
+import {constants, genericUtils} from '../../utils.js';
 async function setMacro(entityUuid, key, values = []) {
     if (!key) return;
     let entity = await fromUuid(entityUuid);

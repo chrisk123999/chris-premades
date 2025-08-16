@@ -80,6 +80,7 @@ export {detectMagic} from './macros/2024/spells/detectMagic.js';
 export {disintegrate} from './macros/2024/spells/disintegrate.js';
 export {divineSmite} from './macros/2024/spells/divineSmite.js';
 export {dragonsBreath} from './macros/2024/spells/dragonsBreath.js';
+export {dustDevil} from './macros/2024/spells/dustDevil.js';
 export {eldritchBlast} from './macros/2024/spells/eldritchBlast.js';
 export {elementalWeapon} from './macros/2024/spells/elementalWeapon.js';
 export {enlargeReduce} from './macros/2024/spells/enlargeReduce.js';
@@ -90,7 +91,6 @@ export {fireStorm} from './macros/2024/spells/fireStorm.js';
 export {flameBlade} from './macros/2024/spells/flameBlade.js';
 export {flamingSphere} from './macros/2024/spells/flamingSphere.js';
 export {fly} from './macros/2024/spells/fly.js';
-export {dustDevil} from './macros/2024/spells/dustDevil.js';
 export {fogCloud} from './macros/2024/spells/fogCloud.js';
 export {gaseousForm} from './macros/2024/spells/gaseousForm.js';
 export {globeOfInvulnerability, globeOfInvulnerabilityInvulnerable} from './macros/2024/spells/globeOfInvulnerability.js';
@@ -247,4 +247,6 @@ export {preserveLife} from './macros/2024/classFeatures/cleric/life/preserveLife
 export {blessedHealer} from './macros/2024/classFeatures/cleric/life/blessedHealer.js';
 //Light Cleric
 export {radianceOfTheDawn} from './macros/2024/classFeatures/cleric/light/radianceOfTheDawn.js';
+export {wardingFlare} from './macros/2024/classFeatures/cleric/light/wardingFlare.js';
+export {improvedWardingFlare} from './macros/2024/classFeatures/cleric/light/improvedWardingFlare.js';
 export {coronaOfLight, coronaOfLightEffect} from './macros/2024/classFeatures/cleric/light/coronaOfLight.js';

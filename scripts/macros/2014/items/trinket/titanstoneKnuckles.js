@@ -1,4 +1,4 @@
-import {genericUtils} from '../../../../utils.js';
+import {genericUtils} from '../../../../lib/utilities/genericUtils.js';
 export let titanstoneKnucklesD = {
     name: 'Titanstone Knuckles (Dormant)',
     version: '1.1.0'

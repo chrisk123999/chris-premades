@@ -1,7 +1,6 @@
 import {epicRolls} from '../../integrations/epicRolls.js';
 import {socket, sockets} from '../sockets.js';
-import {genericUtils} from './genericUtils.js';
-import {socketUtils} from './socketUtils.js';
+import {genericUtils, socketUtils} from '../../utils.js';
 async function getCriticalFormula(formula, rollData) {
     return new CONFIG.Dice.DamageRoll(formula, rollData, {isCritical: true}).formula;
 }
