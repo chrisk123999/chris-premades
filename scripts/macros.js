@@ -90,6 +90,7 @@ export {fireStorm} from './macros/2024/spells/fireStorm.js';
 export {flameBlade} from './macros/2024/spells/flameBlade.js';
 export {flamingSphere} from './macros/2024/spells/flamingSphere.js';
 export {fly} from './macros/2024/spells/fly.js';
+export {dustDevil} from './macros/2024/spells/dustDevil.js';
 export {fogCloud} from './macros/2024/spells/fogCloud.js';
 export {gaseousForm} from './macros/2024/spells/gaseousForm.js';
 export {globeOfInvulnerability, globeOfInvulnerabilityInvulnerable} from './macros/2024/spells/globeOfInvulnerability.js';

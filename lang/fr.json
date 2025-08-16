@@ -74,7 +74,9 @@
       "Colors": {
         "Blue": "Bleu",
         "Blue02": "Bleu (alt)",
+        "BlueGrey": "Bleu et gris",
         "BlueYellow": "Bleu et jaune",
+        "BlueWhite": "Bleu et blanc",
         "Cycle": "Cicle",
         "DarkBlack": "Noir foncé",
         "DarkBlue": "Bleu foncé",
@@ -820,6 +822,10 @@
           "Ram": "Entrer en collission avec la cible ?",
           "RamItem": "Sphère de Feu : Entrer en collision"
       },
+      "DustDevil": {
+          "ContactItem": "Diable de poussière : Contact",
+          "Move": "Diable de poussière : Déplacer"
+      },
       "FlockOfFamiliars": {
           "Command": "Troupeau de Familiers : Commande",
           "ReactionUsed": "Les familiers sont trop éloignés ou ont déjà utilisé leur réaction !",
@@ -1109,7 +1115,7 @@
         "Linked": "L'amulette a été liée !",
         "MissingBound": "La cible n'a pas la caractéristique liée de CPR !",
         "Unlinked": "La cible est un jeton non lié et le lien ne fonctionnera qu'avec ce jeton sur cette scène !"
-      }, 
+      },
       "MaximiliansEarthenGrasp": {
           "Crush": "Poigne terreuse de Maximilien : Écraser",
           "Grasp": "Poigne terreuse de Maximilien : Entraver",
@@ -2330,6 +2336,7 @@
           "DrakeCompanionLightning": "Compagnon Drake : Foudre",
           "DrakeCompanionPoison": "Compagnon Drake : Poison",
           "DreadLord": "Seigneur de l'Effroi",
+          "DustDevil": "Diable de poussière",
           "EarthElemental": "Élémentaire de la Terre",
           "EarthenHand": "Main Terrestre",
           "Echo": "Écho",

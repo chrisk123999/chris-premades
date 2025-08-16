@@ -1,0 +1,80 @@
+{
+  "name": "Dust Devil: Contact",
+  "type": "feat",
+  "img": "icons/magic/air/wind-vortex-swirl-blue.webp",
+  "system": {
+    "description": {"value": "", "chat": ""},
+    "source": {"revision": 1, "rules": "2014"},
+    "uses": {"max": "", "spent": 0, "recovery": []},
+    "type": {"value": "spellFeature", "subtype": ""},
+    "prerequisites": {"level": null},
+    "properties": [],
+    "requirements": "",
+    "activities": {
+      "ACT_SAVE": {
+        "type": "save",
+        "_id": "ACT_SAVE",
+        "sort": 0,
+        "activation": {"type": "special", "value": null, "override": false, "condition": ""},
+        "consumption": {"scaling": {"allowed": false}, "spellSlot": true, "targets": []},
+        "description": {"chatFlavor": ""},
+        "duration": {"units": "inst", "concentration": false, "override": false},
+        "effects": [],
+        "range": {"override": false, "units": "any", "special": ""},
+        "target": {"template": {"contiguous": false, "units": "ft", "type": ""}, "affects": {"choice": false, "count": "1", "type": "creature", "special": ""}, "override": false, "prompt": true},
+        "uses": {"spent": 0, "recovery": [], "max": ""},
+        "damage": {"parts": [{"custom": {"enabled": false, "formula": ""}, "number": 1, "denomination": 8, "bonus": "", "types": ["bludgeoning"], "scaling": {"number": 1}}], "critical": {"allow": false}, "onSave": "half"},
+        "save": {"ability": ["str"], "dc": {"calculation": "", "formula": "10"}},
+        "useConditionText": "",
+        "forceDialog": false,
+        "effectConditionText": "",
+        "midiAutomationOnly": false,
+        "name": "",
+        "img": "",
+        "appliedEffects": []
+      }
+    },
+    "identifier": "dust-devil-contact",
+    "enchant": {}
+  },
+  "effects": [],
+  "folder": "",
+  "flags": {
+    "midiProperties": {
+      "confirmTargets": "never",
+      "saveDamage": "halfdam",
+      "bonusSaveDamage": "default",
+      "autoFailFriendly": false,
+      "autoSaveFriendly": false,
+      "critOther": false,
+      "offHandWeapon": false,
+      "magicdam": false,
+      "magiceffect": false,
+      "noConcentrationCheck": false,
+      "toggleEffect": false,
+      "ignoreTotalCover": false,
+      "idr": false,
+      "idi": false,
+      "idv": false,
+      "ida": false
+    },
+    "midi-qol": {
+      "rollAttackPerTarget": "default",
+      "removeAttackDamageButtons": "default",
+      "itemCondition": "",
+      "effectCondition": "",
+      "AoETargetType": "any",
+      "AoETargetTypeIncludeSelf": true,
+      "autoTarget": "default",
+      "reactionCondition": "",
+      "otherCondition": ""
+    },
+    "chris-premades": {
+      "info": {"identifier": "dustDevilContact", "source": "chris-premades", "version": "1.0.25"},
+      "macros": {"combat": ["dustDevilEndTurn"]}
+    },
+    "dnd5e": {"riders": {"activity": [], "effect": []}}
+  },
+  "_id": "rlaJ13rzBzIr0sZY",
+  "_key": "!items!rlaJ13rzBzIr0sZY"
+}
