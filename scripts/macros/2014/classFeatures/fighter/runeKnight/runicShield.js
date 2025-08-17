@@ -33,7 +33,7 @@ async function attack({trigger, workflow}) {
 }
 export let runicShield = {
     name: 'Runic Shield',
-    version: '1.1.0',
+    version: '1.3.10',
     midi: {
         actor: [
             {

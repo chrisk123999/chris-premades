@@ -27,7 +27,8 @@
     "properties": [],
     "prerequisites": {
       "level": null,
-      "repeatable": false
+      "repeatable": false,
+      "items": []
     },
     "activities": {},
     "identifier": "piercer-critical-hit",
@@ -70,7 +71,6 @@
       "otherCondition": ""
     },
     "dnd5e": {
-      "persistSourceMigration": true,
       "riders": {
         "activity": [],
         "effect": []

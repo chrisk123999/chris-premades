@@ -92,7 +92,7 @@ async function late({trigger: {entity: item, token}, workflow}) {
 }
 export let curseOfTheFallenPuppet = {
     name: 'Blood Curse of the Fallen Puppet',
-    version: '1.1.0',
+    version: '1.3.10',
     midi: {
         actor: [
             {

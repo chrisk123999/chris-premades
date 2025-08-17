@@ -159,7 +159,7 @@
             "formula": ""
           }
         },
-        "useConditionText": "",
+        "useConditionText": "false",
         "effectConditionText": "",
         "macroData": {
           "name": "",
@@ -185,7 +185,11 @@
           "autoTargetAction": "default",
           "otherActivityCompatible": false
         },
-        "name": ""
+        "name": "",
+        "img": "",
+        "appliedEffects": [
+          "BKgXclClBWa3Ovu8"
+        ]
       }
     },
     "uses": {
@@ -250,7 +254,7 @@
         "identifier": "branchesOfTheTree",
         "source": "chris-premades",
         "rules": "modern",
-        "version": "1.1.26"
+        "version": "1.3.10"
       },
       "macros": {
         "midi": {

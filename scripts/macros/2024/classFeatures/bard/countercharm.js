@@ -61,7 +61,7 @@ async function save({trigger: {config, sourceActor, roll}}) {
 }
 export let countercharm = {
     name: 'Countercharm',
-    version: '1.1.31',
+    version: '1.3.10',
     rules: 'modern',
     save: [
         {

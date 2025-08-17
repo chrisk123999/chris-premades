@@ -39,7 +39,7 @@ async function damageApplication({trigger: {targetToken}, ditem}) {
 }
 export let rageOfTheGods = {
     name: 'Rage of the Gods',
-    version: '1.1.29',
+    version: '1.3.10',
     rules: 'modern',
     config: [
         {

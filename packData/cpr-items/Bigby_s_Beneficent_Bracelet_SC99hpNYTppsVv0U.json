@@ -259,7 +259,6 @@
       }
     },
     "dnd5e": {
-      "migratedUses": 1,
       "riders": {
         "activity": [],
         "effect": []

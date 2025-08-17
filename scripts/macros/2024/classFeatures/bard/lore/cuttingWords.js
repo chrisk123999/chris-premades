@@ -101,7 +101,7 @@ async function updateScales(origItem, newItemData) {
 }
 export let cuttingWords = {
     name: 'Cutting Words',
-    version: '1.2.6',
+    version: '1.3.10',
     rules: 'modern',
     early: updateScales,
     midi: {

@@ -436,6 +436,7 @@ export {vampiricBite} from './macros/2014/raceFeatures/dhampir/vampiricBite.js';
 export {wardersIntuition} from './macros/2014/raceFeatures/dwarf/markOfWarding/wardersIntuition.js';
 export {windwrightsIntuition} from './macros/2014/raceFeatures/halfElf/markOfStorm/windwrightsIntuition.js';
 export {shiftSwiftstride} from './macros/2014/raceFeatures/shifter/shiftSwiftstride.js';
+export {loxodonSerenity} from './macros/2014/raceFeatures/loxodon/loxodonSerenity.js';
 // Monster Features
 export {heatedBody} from './macros/2014/monsterFeatures/heatedBody.js';
 export {regeneration} from './macros/2014/monsterFeatures/regeneration.js';

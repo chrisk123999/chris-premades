@@ -32,7 +32,7 @@ async function helper(item, ditem, token, targetToken) {
 }
 export let soothePain = {
     name: 'Righteous Heritor: Soothe Pain',
-    version: '1.1.0',
+    version: '1.3.10',
     midi: {
         actor: [
             {

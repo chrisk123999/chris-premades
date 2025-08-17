@@ -19,7 +19,7 @@
           "type": "recoverAll"
         }
       ],
-      "spent": 0
+      "spent": 1
     },
     "type": {
       "value": "class",
@@ -28,11 +28,15 @@
     "requirements": "",
     "properties": [],
     "prerequisites": {
-      "level": null
+      "level": null,
+      "items": [],
+      "repeatable": false
     },
     "activities": {},
     "identifier": "superiority-dice",
-    "enchant": {}
+    "enchant": {},
+    "advancement": [],
+    "crewed": false
   },
   "flags": {
     "core": {},
@@ -70,8 +74,6 @@
       "ida": false
     },
     "dnd5e": {
-      "persistSourceMigration": true,
-      "migratedUses": 3,
       "riders": {
         "activity": [],
         "effect": []

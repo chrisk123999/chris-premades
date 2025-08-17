@@ -24,7 +24,7 @@ async function attack({trigger, workflow}) {
 }
 export let guardianEmblem = {
     name: 'Guardian Emblem',
-    version: '1.1.0',
+    version: '1.3.10',
     midi: {
         actor: [
             {

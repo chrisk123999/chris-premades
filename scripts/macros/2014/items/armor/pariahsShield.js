@@ -44,7 +44,7 @@ async function damage({trigger, workflow, ditem}) {
 }
 export let pariahsShield = {
     name: 'Pariah\'s Shield',
-    version: '1.1.0',
+    version: '1.3.10',
     midi: {
         actor: [
             {
