@@ -21,7 +21,7 @@ function hasPermission(entity, userId) {
 }
 function firstOwner(document, useId) {
     if (!document) return;
-    let corrected = document instanceof TokenDocument ? document.actor : document instanceof Token ? document.document.actor : document;
+    let corrected = document instanceof TokenDocument ? document.actor : document instanceof foundry.canvas.placeables.Token ? document.document.actor : document;
     let permissions = genericUtils.getProperty(corrected ?? {}, 'ownership') ?? {};
     let playerOwners = Object.entries(permissions).filter(([id, level]) => !game.users.get(id)?.isGM && game.users.get(id)?.active && level === 3).map(([id]) => id);
     if (playerOwners.length > 0) return useId ? playerOwners[0] : game.users.get(playerOwners[0]);
