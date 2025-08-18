@@ -28,13 +28,17 @@
       "subtype": ""
     },
     "prerequisites": {
-      "level": null
+      "level": null,
+      "items": [],
+      "repeatable": false
     },
     "properties": [],
     "requirements": "",
     "activities": {},
     "identifier": "adept-marksman",
-    "enchant": {}
+    "enchant": {},
+    "advancement": [],
+    "crewed": false
   },
   "effects": [],
   "flags": {
@@ -66,8 +70,6 @@
       "otherCondition": ""
     },
     "dnd5e": {
-      "persistSourceMigration": true,
-      "migratedUses": 1,
       "riders": {
         "activity": [],
         "effect": []

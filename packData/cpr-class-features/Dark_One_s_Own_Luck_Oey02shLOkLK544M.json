@@ -28,11 +28,15 @@
     "requirements": "",
     "properties": [],
     "prerequisites": {
-      "level": null
+      "level": null,
+      "items": [],
+      "repeatable": false
     },
     "activities": {},
     "identifier": "dark-ones-own-luck",
-    "enchant": {}
+    "enchant": {},
+    "advancement": [],
+    "crewed": false
   },
   "flags": {
     "midi-qol": {
@@ -70,8 +74,6 @@
     },
     "core": {},
     "dnd5e": {
-      "persistSourceMigration": true,
-      "migratedUses": 1,
       "riders": {
         "activity": [],
         "effect": []

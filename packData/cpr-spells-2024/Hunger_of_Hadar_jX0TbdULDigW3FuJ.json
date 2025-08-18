@@ -91,7 +91,8 @@
         },
         "effects": [],
         "range": {
-          "override": false
+          "override": false,
+          "units": "self"
         },
         "target": {
           "prompt": true,
@@ -127,7 +128,8 @@
           "idi": false,
           "idr": false,
           "idv": false,
-          "ida": false
+          "ida": false,
+          "idm": false
         },
         "midiProperties": {
           "ignoreTraits": [],
@@ -144,14 +146,25 @@
           "identifier": "",
           "displayActivityName": false,
           "rollMode": "default",
-          "chooseEffects": false
+          "chooseEffects": false,
+          "forceAttackDialog": false,
+          "forceDamageDialog": false,
+          "otherActivityAsParentType": true,
+          "toggleEffect": false,
+          "ignoreFullCover": false,
+          "removeChatButtons": "default",
+          "magicEffect": false,
+          "magicDamage": false,
+          "noConcentrationCheck": false,
+          "autoCEEffects": "default"
         },
         "isOverTimeFlag": false,
         "overTimeProperties": {
           "saveRemoves": true,
           "preRemoveConditionText": "",
           "postRemoveConditionText": ""
-        }
+        },
+        "otherActivityId": "none"
       },
       "1RnpgyKvLWraMv2k": {
         "type": "damage",
@@ -215,7 +228,7 @@
                 "formula": ""
               },
               "number": 2,
-              "denomination": "6",
+              "denomination": 6,
               "bonus": "",
               "types": [
                 "cold"
@@ -240,7 +253,8 @@
           "idi": false,
           "idr": false,
           "idv": false,
-          "ida": false
+          "ida": false,
+          "idm": false
         },
         "midiProperties": {
           "ignoreTraits": [],
@@ -257,7 +271,17 @@
           "identifier": "",
           "displayActivityName": false,
           "rollMode": "default",
-          "chooseEffects": false
+          "chooseEffects": false,
+          "forceAttackDialog": false,
+          "forceDamageDialog": false,
+          "otherActivityAsParentType": true,
+          "toggleEffect": false,
+          "ignoreFullCover": false,
+          "removeChatButtons": "default",
+          "magicEffect": false,
+          "magicDamage": false,
+          "noConcentrationCheck": false,
+          "autoCEEffects": "default"
         },
         "isOverTimeFlag": false,
         "overTimeProperties": {
@@ -327,13 +351,14 @@
                 "formula": ""
               },
               "number": 2,
-              "denomination": "6",
+              "denomination": 6,
               "bonus": "",
               "types": [
                 "acid"
               ],
               "scaling": {
-                "mode": "whole"
+                "mode": "whole",
+                "number": 1
               }
             }
           ],
@@ -363,7 +388,8 @@
           "idi": false,
           "idr": false,
           "idv": false,
-          "ida": false
+          "ida": false,
+          "idm": false
         },
         "midiProperties": {
           "ignoreTraits": [],
@@ -380,7 +406,17 @@
           "identifier": "",
           "displayActivityName": false,
           "rollMode": "default",
-          "chooseEffects": false
+          "chooseEffects": false,
+          "forceAttackDialog": false,
+          "forceDamageDialog": false,
+          "otherActivityAsParentType": true,
+          "toggleEffect": false,
+          "ignoreFullCover": false,
+          "removeChatButtons": "default",
+          "magicEffect": false,
+          "magicDamage": false,
+          "noConcentrationCheck": false,
+          "autoCEEffects": "default"
         },
         "isOverTimeFlag": false,
         "overTimeProperties": {
@@ -389,11 +425,16 @@
           "postRemoveConditionText": ""
         },
         "img": "",
-        "appliedEffects": []
+        "appliedEffects": [],
+        "otherActivityId": "",
+        "otherActivityAsParentType": true,
+        "friendlySave": "default"
       }
     },
     "identifier": "hunger-of-hadar",
-    "sourceClass": ""
+    "sourceClass": "",
+    "method": "spell",
+    "prepared": 0
   },
   "name": "Hunger of Hadar",
   "flags": {
@@ -432,7 +473,6 @@
       "otherCondition": ""
     },
     "dnd5e": {
-      "persistSourceMigration": true,
       "riders": {
         "activity": [
           "1RnpgyKvLWraMv2k",

@@ -42,7 +42,7 @@ async function damageApplication({trigger: {entity: item, token}, workflow, dite
 }
 export let grovelthrash = {
     name: 'Grovelthrash',
-    version: '1.1.0',
+    version: '1.3.10',
     midi: {
         item: [
             {

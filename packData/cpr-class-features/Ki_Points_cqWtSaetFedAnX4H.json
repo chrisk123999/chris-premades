@@ -28,11 +28,15 @@
     "requirements": "",
     "properties": [],
     "prerequisites": {
-      "level": null
+      "level": null,
+      "items": [],
+      "repeatable": false
     },
     "activities": {},
     "identifier": "ki-points",
-    "enchant": {}
+    "enchant": {},
+    "advancement": [],
+    "crewed": false
   },
   "flags": {
     "core": {},
@@ -70,8 +74,6 @@
       "ida": false
     },
     "dnd5e": {
-      "persistSourceMigration": true,
-      "migratedUses": 20,
       "riders": {
         "activity": [],
         "effect": []

@@ -28,7 +28,9 @@
     "requirements": "",
     "properties": [],
     "prerequisites": {
-      "level": null
+      "level": null,
+      "items": [],
+      "repeatable": false
     },
     "activities": {
       "dnd5eactivity000": {
@@ -81,7 +83,7 @@
             "size": "",
             "width": "",
             "height": "",
-            "units": ""
+            "units": "ft"
           },
           "affects": {
             "count": "",
@@ -134,7 +136,55 @@
         "effectConditionText": "",
         "midiAutomationOnly": false,
         "name": "Breath of the Dragon",
-        "img": "icons/creatures/abilities/dragon-fire-breath-orange.webp"
+        "img": "icons/creatures/abilities/dragon-fire-breath-orange.webp",
+        "useConditionReason": "",
+        "macroData": {
+          "name": "",
+          "command": ""
+        },
+        "ignoreTraits": {
+          "idi": false,
+          "idr": false,
+          "idv": false,
+          "ida": false,
+          "idm": false
+        },
+        "midiProperties": {
+          "ignoreTraits": [],
+          "triggeredActivityId": "none",
+          "triggeredActivityConditionText": "",
+          "triggeredActivityTargets": "targets",
+          "triggeredActivityRollAs": "self",
+          "forceDialog": false,
+          "forceAttackDialog": false,
+          "forceDamageDialog": false,
+          "confirmTargets": "default",
+          "autoTargetType": "any",
+          "autoTargetAction": "default",
+          "automationOnly": false,
+          "otherActivityCompatible": true,
+          "otherActivityAsParentType": true,
+          "identifier": "",
+          "displayActivityName": false,
+          "rollMode": "default",
+          "chooseEffects": false,
+          "toggleEffect": false,
+          "ignoreFullCover": false,
+          "removeChatButtons": "default",
+          "magicEffect": false,
+          "magicDamage": false,
+          "noConcentrationCheck": false,
+          "autoCEEffects": "default"
+        },
+        "isOverTimeFlag": false,
+        "overTimeProperties": {
+          "saveRemoves": true,
+          "preRemoveConditionText": "",
+          "postRemoveConditionText": ""
+        },
+        "otherActivityId": "",
+        "otherActivityAsParentType": true,
+        "friendlySave": "default"
       },
       "CfuUoR7lheIGgpFp": {
         "type": "forward",
@@ -171,11 +221,60 @@
           "id": "dnd5eactivity000"
         },
         "name": "Breath of the Dragon: Use Ki Points",
-        "img": "icons/creatures/abilities/dragon-fire-breath-orange.webp"
+        "img": "icons/creatures/abilities/dragon-fire-breath-orange.webp",
+        "useConditionText": "",
+        "useConditionReason": "",
+        "effectConditionText": "",
+        "macroData": {
+          "name": "",
+          "command": ""
+        },
+        "ignoreTraits": {
+          "idi": false,
+          "idr": false,
+          "idv": false,
+          "ida": false,
+          "idm": false
+        },
+        "midiProperties": {
+          "ignoreTraits": [],
+          "triggeredActivityId": "none",
+          "triggeredActivityConditionText": "",
+          "triggeredActivityTargets": "targets",
+          "triggeredActivityRollAs": "self",
+          "forceDialog": false,
+          "forceAttackDialog": false,
+          "forceDamageDialog": false,
+          "confirmTargets": "default",
+          "autoTargetType": "any",
+          "autoTargetAction": "default",
+          "automationOnly": false,
+          "otherActivityCompatible": true,
+          "otherActivityAsParentType": true,
+          "identifier": "",
+          "displayActivityName": false,
+          "rollMode": "default",
+          "chooseEffects": false,
+          "toggleEffect": false,
+          "ignoreFullCover": false,
+          "removeChatButtons": "default",
+          "magicEffect": false,
+          "magicDamage": false,
+          "noConcentrationCheck": false,
+          "autoCEEffects": "default"
+        },
+        "isOverTimeFlag": false,
+        "overTimeProperties": {
+          "saveRemoves": true,
+          "preRemoveConditionText": "",
+          "postRemoveConditionText": ""
+        }
       }
     },
     "identifier": "breath-of-the-dragon",
-    "enchant": {}
+    "enchant": {},
+    "advancement": [],
+    "crewed": false
   },
   "flags": {
     "core": {},
@@ -216,8 +315,6 @@
       "ida": false
     },
     "dnd5e": {
-      "persistSourceMigration": true,
-      "migratedUses": 2,
       "riders": {
         "activity": [],
         "effect": []

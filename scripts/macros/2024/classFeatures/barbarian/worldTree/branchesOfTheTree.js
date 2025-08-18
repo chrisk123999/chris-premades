@@ -22,7 +22,7 @@ async function use({trigger, workflow}) {
 }
 export let branchesOfTheTree = {
     name: 'Branches of the Tree',
-    version: '1.1.26',
+    version: '1.3.10',
     rules: 'modern',
     midi: {
         item: [

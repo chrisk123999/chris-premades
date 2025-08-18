@@ -27,13 +27,17 @@
       "subtype": "fightingStyle"
     },
     "prerequisites": {
-      "level": null
+      "level": null,
+      "items": [],
+      "repeatable": false
     },
     "properties": [],
     "requirements": "",
     "activities": {},
     "identifier": "fighting-style-superior-technique",
-    "enchant": {}
+    "enchant": {},
+    "advancement": [],
+    "crewed": false
   },
   "effects": [],
   "folder": "1Ivf2mSpAHvNjsbQ",
@@ -66,8 +70,6 @@
       "otherCondition": ""
     },
     "dnd5e": {
-      "persistSourceMigration": true,
-      "migratedUses": 1,
       "riders": {
         "activity": [],
         "effect": []

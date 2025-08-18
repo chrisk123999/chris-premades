@@ -1,3 +1,17 @@
+# 1.3.11 Release:
+## Bug Fixes:
+- All items with CPR hidden activities.
+
+# 1.3.10 Release:
+## New Modern Content:
+- Warding Flare
+- Improved Warding Flare
+## New Legacy Content:
+- Loxodon Serenity
+## Update Notes:
+- CPR now requires D&D system version 5.1.1 or higher!
+- All pack data has been migrated, don't update to this version right before a game without testing.
+
 # 1.3.9 Release:
 ## New Modern Content:
 - Corona of Light

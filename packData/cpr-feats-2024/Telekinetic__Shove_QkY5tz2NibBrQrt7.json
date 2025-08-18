@@ -27,7 +27,8 @@
     "properties": [],
     "prerequisites": {
       "level": null,
-      "repeatable": false
+      "repeatable": false,
+      "items": []
     },
     "activities": {
       "dnd5eactivity000": {
@@ -53,7 +54,7 @@
         "duration": {
           "concentration": false,
           "value": "",
-          "units": "",
+          "units": "inst",
           "special": "",
           "override": false
         },
@@ -72,7 +73,7 @@
             "size": "",
             "width": "",
             "height": "",
-            "units": ""
+            "units": "ft"
           },
           "affects": {
             "count": "",
@@ -116,7 +117,8 @@
           "idi": false,
           "idr": false,
           "idv": false,
-          "ida": false
+          "ida": false,
+          "idm": false
         },
         "midiProperties": {
           "ignoreTraits": [],
@@ -135,7 +137,15 @@
           "rollMode": "default",
           "chooseEffects": false,
           "toggleEffect": false,
-          "ignoreFullCover": false
+          "ignoreFullCover": false,
+          "forceAttackDialog": false,
+          "forceDamageDialog": false,
+          "otherActivityAsParentType": true,
+          "removeChatButtons": "default",
+          "magicEffect": false,
+          "magicDamage": false,
+          "noConcentrationCheck": false,
+          "autoCEEffects": "default"
         },
         "isOverTimeFlag": false,
         "overTimeProperties": {
@@ -143,7 +153,9 @@
           "preRemoveConditionText": "",
           "postRemoveConditionText": ""
         },
-        "otherActivityId": ""
+        "otherActivityId": "",
+        "otherActivityAsParentType": true,
+        "friendlySave": "default"
       }
     },
     "identifier": "telekinetic-shove",
@@ -188,9 +200,9 @@
       "ida": false
     },
     "dnd5e": {
-      "persistSourceMigration": true,
       "riders": {
-        "activity": []
+        "activity": [],
+        "effect": []
       }
     },
     "chris-premades": {

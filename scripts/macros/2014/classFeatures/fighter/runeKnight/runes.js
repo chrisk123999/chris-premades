@@ -125,7 +125,7 @@ async function cloudRuneAttack({trigger, workflow}) {
 }
 export let cloudRune = {
     name: 'Cloud Rune',
-    version: '1.1.0',
+    version: '1.3.10',
     midi: {
         actor: [
             {
@@ -186,7 +186,7 @@ export let frostRune = {
 };
 export let stoneRune = {
     name: 'Stone Rune',
-    version: '1.2.21',
+    version: '1.3.10',
     midi: {
         item: [
             {

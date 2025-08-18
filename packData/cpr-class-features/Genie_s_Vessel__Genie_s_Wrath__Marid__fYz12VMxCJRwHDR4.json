@@ -23,11 +23,15 @@
     "requirements": "",
     "properties": [],
     "prerequisites": {
-      "level": null
+      "level": null,
+      "items": [],
+      "repeatable": false
     },
     "activities": {},
     "identifier": "genies-vessel-genies-wrath-marid",
-    "enchant": {}
+    "enchant": {},
+    "advancement": [],
+    "crewed": false
   },
   "flags": {
     "midi-qol": {
@@ -65,7 +69,6 @@
     },
     "core": {},
     "dnd5e": {
-      "persistSourceMigration": true,
       "riders": {
         "activity": [],
         "effect": []

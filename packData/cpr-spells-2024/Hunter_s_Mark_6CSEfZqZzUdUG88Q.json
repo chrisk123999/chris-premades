@@ -31,7 +31,8 @@
         },
         "effects": [],
         "range": {
-          "override": false
+          "override": false,
+          "units": "self"
         },
         "target": {
           "prompt": true,
@@ -68,7 +69,8 @@
           "idi": false,
           "idr": false,
           "idv": false,
-          "ida": false
+          "ida": false,
+          "idm": false
         },
         "midiProperties": {
           "ignoreTraits": [],
@@ -85,7 +87,17 @@
           "identifier": "",
           "displayActivityName": false,
           "rollMode": "default",
-          "chooseEffects": false
+          "chooseEffects": false,
+          "forceAttackDialog": false,
+          "forceDamageDialog": false,
+          "otherActivityAsParentType": true,
+          "toggleEffect": false,
+          "ignoreFullCover": false,
+          "removeChatButtons": "default",
+          "magicEffect": false,
+          "magicDamage": false,
+          "noConcentrationCheck": false,
+          "autoCEEffects": "default"
         },
         "isOverTimeFlag": false,
         "overTimeProperties": {
@@ -93,7 +105,8 @@
           "preRemoveConditionText": "",
           "postRemoveConditionText": ""
         },
-        "useConditionReason": ""
+        "useConditionReason": "",
+        "otherActivityId": "none"
       },
       "CtwTg5RbWUSlWeM2": {
         "type": "utility",
@@ -121,7 +134,8 @@
         },
         "effects": [],
         "range": {
-          "override": false
+          "override": false,
+          "units": "self"
         },
         "target": {
           "template": {
@@ -157,7 +171,8 @@
           "idi": false,
           "idr": false,
           "idv": false,
-          "ida": false
+          "ida": false,
+          "idm": false
         },
         "midiProperties": {
           "ignoreTraits": [],
@@ -174,7 +189,17 @@
           "identifier": "",
           "displayActivityName": false,
           "rollMode": "default",
-          "chooseEffects": false
+          "chooseEffects": false,
+          "forceAttackDialog": false,
+          "forceDamageDialog": false,
+          "otherActivityAsParentType": true,
+          "toggleEffect": false,
+          "ignoreFullCover": false,
+          "removeChatButtons": "default",
+          "magicEffect": false,
+          "magicDamage": false,
+          "noConcentrationCheck": false,
+          "autoCEEffects": "default"
         },
         "isOverTimeFlag": false,
         "overTimeProperties": {
@@ -183,7 +208,8 @@
           "postRemoveConditionText": ""
         },
         "useConditionReason": "",
-        "appliedEffects": []
+        "appliedEffects": [],
+        "otherActivityId": "none"
       }
     },
     "uses": {
@@ -237,7 +263,7 @@
     "target": {
       "template": {
         "contiguous": false,
-        "units": "",
+        "units": "ft",
         "type": ""
       },
       "affects": {
@@ -248,7 +274,9 @@
       }
     },
     "ability": "",
-    "sourceClass": ""
+    "sourceClass": "",
+    "method": "spell",
+    "prepared": 0
   },
   "effects": [],
   "folder": null,
@@ -292,7 +320,6 @@
       "ida": false
     },
     "dnd5e": {
-      "persistSourceMigration": true,
       "riders": {
         "activity": [
           "CtwTg5RbWUSlWeM2"

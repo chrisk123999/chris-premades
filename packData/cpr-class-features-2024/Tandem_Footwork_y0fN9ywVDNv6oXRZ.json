@@ -51,7 +51,71 @@
           "overlay": false
         },
         "dnd5e": {
-          "dependents": [],
+          "dependents": [
+            {
+              "uuid": "Scene.iGwlIbnzeJk0iHC2.Token.TWHihWvLi9broQd6.Actor.szyevsXsdQSq5snz.ActiveEffect.omCvnkMChGwnwUTi"
+            },
+            {
+              "uuid": "Actor.sMQqXMT1TYTspqTR.ActiveEffect.mAyBMbyJLInVdaoj"
+            },
+            {
+              "uuid": "Scene.iGwlIbnzeJk0iHC2.Token.TWHihWvLi9broQd6.Actor.szyevsXsdQSq5snz.ActiveEffect.JB76amNWbcIJMQnj"
+            },
+            {
+              "uuid": "Actor.sMQqXMT1TYTspqTR.ActiveEffect.OH7w3BYKXUDlqmaP"
+            },
+            {
+              "uuid": "Scene.iGwlIbnzeJk0iHC2.Token.TWHihWvLi9broQd6.Actor.szyevsXsdQSq5snz.ActiveEffect.dtWZPSWzWkxJlLPY"
+            },
+            {
+              "uuid": "Actor.sMQqXMT1TYTspqTR.ActiveEffect.Yd9aW6uw0Niu3FqD"
+            },
+            {
+              "uuid": "Scene.iGwlIbnzeJk0iHC2.Token.TWHihWvLi9broQd6.Actor.szyevsXsdQSq5snz.ActiveEffect.3dqoiI7FzOG9sfDW"
+            },
+            {
+              "uuid": "Actor.yy1I4W4hqhw1yaiM.ActiveEffect.tcGak3gvIGVFImN9"
+            },
+            {
+              "uuid": "Actor.sMQqXMT1TYTspqTR.ActiveEffect.Ug4PDt3ZtY3BvJhI"
+            },
+            {
+              "uuid": "Scene.iGwlIbnzeJk0iHC2.Token.TWHihWvLi9broQd6.Actor.szyevsXsdQSq5snz.ActiveEffect.ofW1jGcu4PlPs1Om"
+            },
+            {
+              "uuid": "Actor.sMQqXMT1TYTspqTR.ActiveEffect.FlIDYnXvetWJCaw4"
+            },
+            {
+              "uuid": "Actor.yy1I4W4hqhw1yaiM.ActiveEffect.zcjszAZJ2XN8VYFL"
+            },
+            {
+              "uuid": "Actor.yy1I4W4hqhw1yaiM.ActiveEffect.hESX71OasKS2rKHi"
+            },
+            {
+              "uuid": "Scene.iGwlIbnzeJk0iHC2.Token.814H5swGSqJITzez.Actor.szyevsXsdQSq5snz.ActiveEffect.yCPmRTi8WnmRe8si"
+            },
+            {
+              "uuid": "Actor.yy1I4W4hqhw1yaiM.ActiveEffect.zafb0loTlwqJ1PXo"
+            },
+            {
+              "uuid": "Scene.iGwlIbnzeJk0iHC2.Token.814H5swGSqJITzez.Actor.szyevsXsdQSq5snz.ActiveEffect.LcO5CFmfMxCrMTxI"
+            },
+            {
+              "uuid": "Actor.yy1I4W4hqhw1yaiM.ActiveEffect.nuRXFUIzZG0B3Tlk"
+            },
+            {
+              "uuid": "Scene.iGwlIbnzeJk0iHC2.Token.814H5swGSqJITzez.Actor.szyevsXsdQSq5snz.ActiveEffect.GFJSaXZxDVh7xJTP"
+            },
+            {
+              "uuid": "Actor.yy1I4W4hqhw1yaiM.ActiveEffect.yyYaDBEZlFutbbgE"
+            },
+            {
+              "uuid": "Scene.iGwlIbnzeJk0iHC2.Token.814H5swGSqJITzez.Actor.szyevsXsdQSq5snz.ActiveEffect.JHVrmj8DeRptY6gv"
+            },
+            {
+              "uuid": "Actor.yy1I4W4hqhw1yaiM.ActiveEffect.SHlxVRVyuAlHRwGq"
+            }
+          ],
           "riders": {
             "statuses": []
           }
