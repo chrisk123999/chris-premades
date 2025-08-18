@@ -85,6 +85,7 @@ Hooks.once('ready', () => {
     abilitySave.patch();
     skillCheck.patch();
     abilityCheck.patch();
+    activities.patchCanUse();
     if (utils.genericUtils.getCPRSetting('groupSummonsWithOwner')) initiative.patch(true);
     if (utils.genericUtils.getCPRSetting('manualRollsGMFulfils')) rollResolver.patch(true);
     if (utils.genericUtils.getCPRSetting('manualRollsEnabled')) {
