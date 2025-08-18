@@ -3093,9 +3093,9 @@
         "UnknownTarget": "Unknown Target"
     },
     "CONTROLS": {
-        "LightSelect": "Select Lights",
-        "SoundSelect": "Select Sounds",
-        "TemplateSelect": "Select Templates"
+        "LightingSelect": "Select Lights",
+        "SoundsSelect": "Select Sounds",
+        "TemplatesSelect": "Select Templates"
     },
     "dae.CPR.fieldData": {
         "flags.chris-premades.senses.magicalDarkness": {
