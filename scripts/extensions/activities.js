@@ -70,7 +70,41 @@ function cssTweak() {
     }`;
     document.head.appendChild(el);
 }
+function canUsePatch(wrapped, ...args) {
+    let cprRiders = genericUtils.getProperty(this.item, 'flags.chris-premades.hiddenActivities') ?? [];
+    if (cprRiders.length) {
+        let identifier = activityUtils.getIdentifier(this);
+        if (identifier && cprRiders.includes(identifier))  {
+            return true;
+        } else {
+            return wrapped(args);
+        }
+    } else {
+        return wrapped(args);
+    }
+}
+function patchCanUse() {
+    let classNames = [
+        'Attack',
+        'Cast',
+        'Check',
+        'Damage',
+        'Enchant',
+        'Forward',
+        'Heal',
+        'Order',
+        'Save',
+        'Summon',
+        'Transform',
+        'Utility'
+    ];
+    genericUtils.log('dev', 'Activities Can Use Patched!');
+    for (let i of classNames) {
+        libWrapper.register('chris-premades', 'dnd5e.documents.activity.' + i + 'Activity.prototype.canUse', canUsePatch, 'MIXED');
+    }
+}
 export let activities = {
     flagAllRiders,
-    cssTweak
+    cssTweak,
+    patchCanUse
 };

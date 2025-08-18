@@ -1,36 +1,16 @@
 import {genericUtils} from '../utils.js';
 async function getControlButtons(controls) {
-    let added_tools = [];
-    for (let i = 0; i < controls.length; i++) {
-        if (controls[i].name === 'lighting') {
-            if (!controls[i].tools.find((tool) => tool.name === 'select')) {
-                controls[i].tools.unshift({
-                    name: 'select',
-                    title: 'CONTROLS.LightSelect',
-                    icon: 'fas fa-expand',
-                });
-                added_tools.push('AmbientLight');
-            }
-        } else if (controls[i].name === 'sounds') {
-            if (!controls[i].tools.find((tool) => tool.name === 'select')) {
-                controls[i].tools.unshift({
-                    name: 'select',
-                    title: 'CONTROLS.SoundSelect',
-                    icon: 'fas fa-expand',
-                });
-                added_tools.push('AmbientSound');
-            }
-        } else if (controls[i].name === 'measure') {
-            if (!controls[i].tools.find((tool) => tool.name === 'select')) {
-                controls[i].tools.unshift({
-                    name: 'select',
-                    title: 'CONTROLS.TemplateSelect',
-                    icon: 'fas fa-expand',
-                });
-                added_tools.push('MeasuredTemplate');
-            }
+    let types = ['lighting', 'sounds', 'templates'];
+    types.forEach(type => {
+        if (!controls[type].tools.select) {
+            controls[type].tools.select = {
+                icon: 'fas fa-expand',
+                name: 'select',
+                order: 0,
+                title: 'CONTROLS.' + type.capitalize() + 'Select'
+            };
         }
-    }
+    });
 }
 function placeableRefresh(placeable) {
     if (placeable.controlled) placeable.controlIcon.border.visible = true;

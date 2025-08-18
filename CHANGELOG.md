@@ -1,3 +1,12 @@
+# 1.3.12 Release:
+## Bug Fixes:
+- Select Tool Everywhere Setting
+- Troubleshooter
+
+# 1.3.11 Release:
+## Bug Fixes:
+- All items with CPR hidden activities.
+
 # 1.3.10 Release:
 ## New Modern Content:
 - Warding Flare
