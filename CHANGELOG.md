@@ -1,3 +1,7 @@
+# 1.3.14 Release:
+## Update Notes:
+- Added NPC settings to weapon mastery automation.
+
 # 1.3.13 Release:
 ## New Modern Content:
 - Blessing of the Trickster

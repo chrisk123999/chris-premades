@@ -366,6 +366,9 @@
                 "movedNear": {
                     "Label": "Moved Near"
                 },
+                "movedScene": {
+                    "Label": "Scene Moved"
+                },
                 "post": {
                     "Label": "Post"
                 },
@@ -396,11 +399,14 @@
                 "sceneBonus": {
                     "Label": "Scene Bonus"
                 },
+                "sceneCreate": {
+                    "Label": "Scene Create"
+                },
                 "sceneDamageRollComplete": {
                     "Label": "Scene Damage Roll Complete"
                 },
-                "movedScene": {
-                    "Label": "Scene Moved"
+                "sceneDeleted": {
+                    "Label": "Scene Deleted"
                 },
                 "scenePostAttackRoll": {
                     "Label": "Scene Post-Attack Roll"
@@ -455,12 +461,6 @@
                 },
                 "unequipped": {
                     "Label": "Unequipped"
-                },
-                "sceneDeleted": {
-                    "Label": "Scene Deleted"
-                },
-                "sceneCreate": {
-                    "Label": "Scene Create"
                 }
             },
             "Priority": {
@@ -2877,6 +2877,9 @@
                 "Name": "Visual Active Effects: Buttons"
             },
             "weaponMastery": {
+                "1": "Player Only",
+                "2": "NPC Only (Homebrew)",
+                "3": "Player & NPC (Homebrew)",
                 "Hint": "Enable PHB 2024 weapon mastery automation.",
                 "Name": "Weapon Mastery Automation"
             }
@@ -3097,6 +3100,13 @@
         "SoundsSelect": "Select Sounds",
         "TemplatesSelect": "Select Templates"
     },
+    "SIDEBAR": {
+        "ACTIONS": {
+            "CREATE": {
+                "ActiveEffect": "Create Active Effect"
+            }
+        }
+    },
     "dae.CPR.fieldData": {
         "flags.chris-premades.senses.magicalDarkness": {
             "description": "Distance actor can see through magical darkness. Only affects attack adv/dis with CPR automations which create magical darkness.",
@@ -3111,12 +3121,5 @@
             "name": "Turn Resistance"
         }
     },
-    "dae.fieldData.fieldCategories.CPR": "CPR",
-    "SIDEBAR": {
-        "ACTIONS": {
-            "CREATE": {
-                "ActiveEffect": "Create Active Effect"
-            }
-        }
-    }
+    "dae.fieldData.fieldCategories.CPR": "CPR"
 }
