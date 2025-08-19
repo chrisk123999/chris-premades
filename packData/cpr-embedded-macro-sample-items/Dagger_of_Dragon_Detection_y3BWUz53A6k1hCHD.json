@@ -290,44 +290,6 @@
     "equipped": true
   },
   "flags": {
-    "ddbimporter": {
-      "originalName": "Dagger",
-      "version": "6.0.54",
-      "dndbeyond": {
-        "type": "Dagger",
-        "filterType": "Weapon",
-        "isConsumable": false,
-        "isContainer": false,
-        "isCustomItem": false,
-        "homebrew": false,
-        "isMonkWeapon": true,
-        "isPack": false,
-        "levelInfusionGranted": null,
-        "tags": [
-          "Damage",
-          "Combat"
-        ],
-        "sources": [
-          {
-            "sourceId": 148,
-            "pageNumber": null,
-            "sourceType": 1
-          }
-        ],
-        "damage": {
-          "parts": []
-        },
-        "classFeatures": [],
-        "ability": "dex"
-      },
-      "is2014": false,
-      "is2024": true,
-      "legacy": false,
-      "id": 0,
-      "entityTypeId": 0,
-      "definitionEntityTypeId": 1782728300,
-      "definitionId": 3
-    },
     "dnd5e": {
       "last": {
         "attackDaggerIIII": {

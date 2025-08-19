@@ -407,7 +407,7 @@ async function use({workflow}) {
             break;
         }
     }
-    await genericUtils.update(workflow.item, {'system.uses.max': workflow.item.system.uses.value, 'system.uses.spent': 0});
+    await genericUtils.update(workflow.item, {'system.uses.max': workflow.item.system.uses.max - 1, 'system.uses.spent': 0});
     let flushItem = itemUtils.getItemByIdentifier(workflow.actor, 'flushMutagens');
     if (!flushItem) [flushItem] = await itemUtils.createItems(workflow.actor, [flushData], {favorite: true});
     await effectUtils.createEffect(workflow.actor, positiveEffectData, {parentEntity: flushItem, interdependent: true, identifier, vae: [{type: 'use', name: flushData.name, identifier: 'flushMutagens'}]});

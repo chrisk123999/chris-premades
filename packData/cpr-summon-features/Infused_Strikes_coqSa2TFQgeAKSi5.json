@@ -80,7 +80,7 @@
           "name": "",
           "formula": ""
         },
-        "useConditionText": "",
+        "useConditionText": "false",
         "forceDialog": false,
         "effectConditionText": "",
         "midiAutomationOnly": false,

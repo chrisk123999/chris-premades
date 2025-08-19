@@ -26,7 +26,7 @@ function setStatusEffectIcons() {
     let icons = genericUtils.getCPRSetting('statusEffectIcons');
     CONFIG.statusEffects.forEach(i => {
         if (i.customStatus) return;
-        if (icons[i.id] && i.img != icons[i.id].img) i.img = icons[i.id];
+        if (icons[i.id] && i.img !== icons[i.id]) i.img = icons[i.id];
     });
 }
 async function configureStatusEffectIcons() {

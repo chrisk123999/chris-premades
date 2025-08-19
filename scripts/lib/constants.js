@@ -528,6 +528,33 @@ const advantageEffectData = {
         }
     }
 };
+const disadvantageEffectData = {
+    name: 'Disadvantage',
+    img: tempConditionIcon,
+    duration: {
+        turns: 1
+    },
+    changes: [
+        {
+            key: 'flags.midi-qol.disadvantage.ability.save.all',
+            value: 1,
+            mode: 5,
+            priority: 120
+        }
+    ],
+    flags: {
+        dae: {
+            specialDuration: [
+                'isSave'
+            ]
+        },
+        'chris-premades': {
+            effect: {
+                noAnimation: true
+            }
+        }
+    }
+};
 const autoFailSaveEffectData = {
     name: 'Auto Fail',
     img: tempConditionIcon,
@@ -586,5 +613,6 @@ export let constants = {
     itemProperties,
     armorOptions,
     spellSchoolOptions,
-    autoFailSaveEffectData
+    autoFailSaveEffectData,
+    disadvantageEffectData
 };

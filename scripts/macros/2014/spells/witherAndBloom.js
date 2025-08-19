@@ -26,7 +26,7 @@ async function use({trigger, workflow}) {
     await workflowUtils.syntheticActivityDataRoll(activityData, workflow.item, workflow.actor, [selection]);
 }
 async function damage({trigger, workflow, ditem}) {
-    let tokenDocument = await fromUuid(ditem.tokenUuid);
+    let tokenDocument = await fromUuid(ditem.targetUuid);
     if (workflow.token.document.disposition != tokenDocument.disposition) return;
     workflowUtils.negateDamageItemDamage(ditem);
 }

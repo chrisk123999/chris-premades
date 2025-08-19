@@ -454,13 +454,13 @@
                     "Label": "Início do Turno Próximo"
                 },
                 "unequipped": {
-                    "Label": "Unequipped"
+                    "Label": "Desequipado"
                 },
                 "sceneDeleted": {
-                    "Label": "Scene Deleted"
+                    "Label": "Cena Excluída"
                 },
                 "sceneCreate": {
-                    "Label": "Scene Create"
+                    "Label": "Cena Criada"
                 }
             },
             "Priority": {
@@ -2800,6 +2800,10 @@
                 "Hint": "Modo de precisão para eventos de movimento. Modos de precisão mais alto terão um impacto maior no desempenho, especialmente em hardware menos potente.<br>• Ultra: Precisão total.<br>• Alta: Ignora o cálculo de cobertura ao calcular a distância.<br>• Média: Como Alta, porém o movimento da parada é ignorado, exceto o segmento final.<br>• Baixo: Como Média, porém as paredes são ignoradas nos cálculos de distância.",
                 "Name": "Precisão de Eventos de Movimento"
             },
+            "movementPerformanceDisable": {
+                "Hint": "Desativa a notificação de aviso que aparece quando o processamento do evento de movimento estiver demorando muito.",
+                "Name": "Desativar Aviso de Desempenho de Movimento"
+            },
             "permissionsAutomateItem": {
                 "Hint": "Classificação mais baixa de usuários que podem selecionar e aplicar diferentes automações no Medkit:",
                 "Name": "Permissão de Aplicação do Medkit"
@@ -3107,5 +3111,12 @@
             "name": "Resistência Expulsar"
         }
     },
-    "dae.fieldData.fieldCategories.CPR": "CPR"
+    "dae.fieldData.fieldCategories.CPR": "CPR",
+    "SIDEBAR": {
+        "ACTIONS": {
+            "CREATE": {
+                "ActiveEffect": "Create Active Effect"
+            }
+        }
+    }
 }

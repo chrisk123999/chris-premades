@@ -37,7 +37,7 @@ async function endTurn({trigger: {entity: template, castData, token}}) {
 }
 export let insectPlague = {
     name: 'Insect Plague',
-    version: '1.2.28',
+    version: '1.3.7',
     midi: {
         item: [
             {

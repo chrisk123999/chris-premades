@@ -40,7 +40,7 @@ async function added({trigger: {entity: item, identifier, actor}}) {
 }
 export let inspiringMovement = {
     name: 'Inspiring Movement',
-    version: '1.1.36',
+    version: '1.3.10',
     rules: 'modern',
     midi: {
         item: [

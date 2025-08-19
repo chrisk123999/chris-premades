@@ -27,13 +27,17 @@
       "subtype": ""
     },
     "prerequisites": {
-      "level": null
+      "level": null,
+      "items": [],
+      "repeatable": false
     },
     "properties": [],
     "requirements": "",
     "activities": {},
     "identifier": "blood-maledict",
-    "enchant": {}
+    "enchant": {},
+    "advancement": [],
+    "crewed": false
   },
   "effects": [],
   "folder": "xPyhocz99qTJKtdg",
@@ -66,8 +70,6 @@
       "otherCondition": ""
     },
     "dnd5e": {
-      "persistSourceMigration": true,
-      "migratedUses": 1,
       "riders": {
         "activity": [],
         "effect": []

@@ -33,7 +33,7 @@ async function early({trigger: {entity: item, token}, workflow}) {
                 }
             }
         }
-    }
+    };
     let protectorEffectData = {
         name: item.name,
         img: item.img,
@@ -55,7 +55,7 @@ async function early({trigger: {entity: item, token}, workflow}) {
                 stackable: 'noneNameOnly'
             }
         }
-    }
+    };
     let protectorEffect = await effectUtils.createEffect(token.actor, protectorEffectData, {
         strictlyInterdependent: true,
         identifier: 'protection',
@@ -68,7 +68,7 @@ async function early({trigger: {entity: item, token}, workflow}) {
         identifier: 'protectionProtected',
         rules: 'modern',
         macros: [{type: 'movement', macros: ['protectionMoved']}]
-    })
+    });
     await workflowUtils.syntheticItemRoll(item, [targetToken]);
     await actorUtils.setReactionUsed(token.actor);
 }

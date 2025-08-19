@@ -23,11 +23,15 @@
     "requirements": "",
     "properties": [],
     "prerequisites": {
-      "level": null
+      "level": null,
+      "items": [],
+      "repeatable": false
     },
     "activities": {},
     "identifier": "arcane-ward",
-    "enchant": {}
+    "enchant": {},
+    "advancement": [],
+    "crewed": false
   },
   "flags": {
     "midi-qol": {
@@ -66,8 +70,6 @@
     },
     "core": {},
     "dnd5e": {
-      "persistSourceMigration": true,
-      "migratedUses": 0,
       "riders": {
         "activity": [],
         "effect": []

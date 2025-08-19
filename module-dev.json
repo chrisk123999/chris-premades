@@ -63,6 +63,12 @@
       "name": "Italiano",
       "path": "lang/it.json",
       "flags": {}
+    },
+    {
+      "lang": "cs",
+      "name": "Čeština",
+      "path": "lang/cs.json",
+      "flags": {}
     }
   ],
   "relationships": {
@@ -71,8 +77,8 @@
         "id": "dnd5e",
         "type": "system",
         "compatibility": {
-          "minimum": "5.0.0",
-          "verified": "5.0.4",
+          "minimum": "5.1.2",
+          "verified": "5.1.2",
           "maximum": "5.9.9"
         }
       }

@@ -43,8 +43,6 @@ Hooks.once('init', () => {
     if (utils.genericUtils.getCPRSetting('useLocalCompendiums')) utils.constants.setUseLocalCompendium(true);
     registerMenus();
     customTypes.init();
-    if (utils.genericUtils.getCPRSetting('disableNonConditionStatusEffects')) conditions.disableNonConditionStatusEffects();
-    if (utils.genericUtils.getCPRSetting('replaceStatusEffectIcons')) conditions.setStatusEffectIcons();
     if (utils.genericUtils.getCPRSetting('effectInterface')) effectInterface.init();
     if (utils.genericUtils.getCPRSetting('temporaryEffectHud')) effectHud.patchToggleEffect(true);
     if (utils.genericUtils.getCPRSetting('selectTool') && !game.modules.get('multi-token-edit')?.active && !game.modules.get('select-tool-everywhere')?.active) selectTool.init();
@@ -57,6 +55,8 @@ Hooks.once('init', () => {
 });
 Hooks.once('i18nInit', () => {
     dae.initFlags();
+    if (utils.genericUtils.getCPRSetting('disableNonConditionStatusEffects')) conditions.disableNonConditionStatusEffects();
+    if (utils.genericUtils.getCPRSetting('replaceStatusEffectIcons')) conditions.setStatusEffectIcons();
 });
 Hooks.once('ready', () => {
     custom.ready();
@@ -85,6 +85,7 @@ Hooks.once('ready', () => {
     abilitySave.patch();
     skillCheck.patch();
     abilityCheck.patch();
+    activities.patchCanUse();
     if (utils.genericUtils.getCPRSetting('groupSummonsWithOwner')) initiative.patch(true);
     if (utils.genericUtils.getCPRSetting('manualRollsGMFulfils')) rollResolver.patch(true);
     if (utils.genericUtils.getCPRSetting('manualRollsEnabled')) {

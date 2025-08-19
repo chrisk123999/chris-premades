@@ -1,10 +1,7 @@
 import {custom} from '../../events/custom.js';
 import {gambitPremades} from '../../integrations/gambitsPremades.js';
 import {miscPremades} from '../../integrations/miscPremades.js';
-import {constants} from '../constants.js';
-import {errors} from '../errors.js';
-import {genericUtils} from './genericUtils.js';
-import {itemUtils} from './itemUtils.js';
+import {constants, errors, genericUtils, itemUtils} from '../../utils.js';
 async function getCPRAutomation(item, {identifier, rules = 'legacy', type = 'character'} = {}) {
     let keys = [];
     if (type === 'character' || item.type === 'spell') {

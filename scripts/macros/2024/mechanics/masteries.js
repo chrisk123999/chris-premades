@@ -161,10 +161,18 @@ async function RollComplete(workflow) {
     if (!constants.weaponAttacks.includes(workflow.activity.actionType)) return;
     let effects = actorUtils.getEffects(workflow.actor).filter(i => i.flags['chris-premades']?.mastery?.vex?.target === workflow.targets.first().id);
     if (effects.length) await genericUtils.deleteEmbeddedDocuments(workflow.actor, 'ActiveEffect', effects.map(i => i.id));
-    let baseItem = workflow.item.system.type.baseItem;
-    if (baseItem === '') return;
-    if (!workflow.actor.system.traits?.weaponProf?.mastery?.value?.has(baseItem)) return;
-    let mastery = workflow.attackRoll.options.mastery;
+    let masterySetting = genericUtils.getCPRSetting('weaponMastery');
+    let mastery;
+    if (workflow.actor.type === 'npc') {
+        if (masterySetting === 1) return;
+        mastery = workflow.item.system.mastery;
+    } else {
+        if (masterySetting === 2) return;
+        let baseItem = workflow.item.system.type.baseItem;
+        if (baseItem === '') return;
+        if (!workflow.actor.system.traits?.weaponProf?.mastery?.value?.has(baseItem)) return;
+        mastery = workflow.attackRoll.options.mastery;
+    }
     if (!mastery) return;
     let macro = custom.getMacro(mastery + 'Mastery', 'modern');
     if (!macro) return;

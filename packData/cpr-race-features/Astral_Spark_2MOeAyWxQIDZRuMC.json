@@ -28,11 +28,15 @@
     "requirements": "",
     "properties": [],
     "prerequisites": {
-      "level": null
+      "level": null,
+      "items": [],
+      "repeatable": false
     },
     "activities": {},
     "identifier": "astral-spark",
-    "enchant": {}
+    "enchant": {},
+    "advancement": [],
+    "crewed": false
   },
   "flags": {
     "midi-qol": {
@@ -78,8 +82,6 @@
       }
     },
     "dnd5e": {
-      "persistSourceMigration": true,
-      "migratedUses": 2,
       "riders": {
         "activity": [],
         "effect": []

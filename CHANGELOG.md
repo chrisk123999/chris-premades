@@ -1,3 +1,57 @@
+# 1.3.14 Release:
+## Update Notes:
+- Added NPC settings to weapon mastery automation.
+
+# 1.3.13 Release:
+## New Modern Content:
+- Blessing of the Trickster
+## Bug Fixes:
+- Wither and Bloom (Legacy)
+## Update Notes:
+- CPR now requires D&D system version 5.1.2 or higher!
+- Added Czech translations. Thanks Lethrendis.
+
+# 1.3.12 Release:
+## Bug Fixes:
+- Select Tool Everywhere Setting
+- Troubleshooter
+
+# 1.3.11 Release:
+## Bug Fixes:
+- All items with CPR hidden activities.
+
+# 1.3.10 Release:
+## New Modern Content:
+- Warding Flare
+- Improved Warding Flare
+## New Legacy Content:
+- Loxodon Serenity
+## Update Notes:
+- CPR now requires D&D system version 5.1.1 or higher!
+- All pack data has been migrated, don't update to this version right before a game without testing.
+
+# 1.3.9 Release:
+## New Modern Content:
+- Corona of Light
+
+# 1.3.8 Release:
+## New Modern Content:
+- Radiance of the Dawn
+## Bug Fixes:
+- Tandem Footwork
+
+# 1.3.7 Release:
+## Bug Fixes:
+- Fixed calling Midi's `completeItemUse` improperly - should fix a lot of things
+- Blood Hunter Mutagens
+- Fire Shield
+- Insect Plague
+- Actor-Token size syncing now respects original scale
+
+# 1.3.6 Release:
+## Bug Fixes:
+- Fixed status icon replacement and disable non-condition status effects.
+
 # 1.3.5 Release:
 ## Bug Fixes:
 - Breath of the Dragon (Legacy)

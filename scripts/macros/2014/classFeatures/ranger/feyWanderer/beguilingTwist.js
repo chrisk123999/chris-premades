@@ -31,7 +31,7 @@ async function use({workflow}) {
 }
 export let beguilingTwist = {
     name: 'Beguiling Twist',
-    version: '1.1.0',
+    version: '1.3.10',
     midi: {
         item: [
             {

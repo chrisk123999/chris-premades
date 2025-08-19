@@ -23,13 +23,17 @@
       "subtype": "trickShot"
     },
     "prerequisites": {
-      "level": null
+      "level": null,
+      "items": [],
+      "repeatable": false
     },
     "properties": [],
     "requirements": "",
     "activities": {},
     "identifier": "bullying-shot",
-    "enchant": {}
+    "enchant": {},
+    "advancement": [],
+    "crewed": false
   },
   "effects": [],
   "flags": {
@@ -61,7 +65,6 @@
       "otherCondition": ""
     },
     "dnd5e": {
-      "persistSourceMigration": true,
       "riders": {
         "activity": [],
         "effect": []

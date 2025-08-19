@@ -46,8 +46,7 @@
             {
               "type": "itemUses",
               "value": "1",
-              "target": "",
-              "scaling": {}
+              "target": ""
             }
           ]
         },
@@ -91,7 +90,7 @@
           "formula": "",
           "name": ""
         },
-        "useConditionText": "",
+        "useConditionText": "false",
         "forceDialog": false,
         "effectConditionText": "",
         "midiAutomationOnly": false,

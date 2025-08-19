@@ -43,7 +43,7 @@ async function endTurn({trigger: {entity: template, castData, token, previousRou
 }
 export let insectPlague = {
     name: 'Insect Plague',
-    version: '1.2.29',
+    version: '1.3.7',
     rules: 'modern',
     midi: {
         item: [

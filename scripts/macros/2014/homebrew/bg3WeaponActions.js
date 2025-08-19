@@ -591,7 +591,7 @@ async function tenacityUse({trigger, workflow}) {
 }
 export let tenacity = {
     name: 'Tenacity',
-    version: '1.1.0',
+    version: '1.3.10',
     midi: {
         item: [
             {
