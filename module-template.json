@@ -71,8 +71,8 @@
         "id": "dnd5e",
         "type": "system",
         "compatibility": {
-          "minimum": "5.1.1",
-          "verified": "5.1.1",
+          "minimum": "5.1.2",
+          "verified": "5.1.2",
           "maximum": "5.9.9"
         }
       }

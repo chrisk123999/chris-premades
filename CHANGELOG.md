@@ -3,6 +3,8 @@
 - Blessing of the Trickster
 ## Bug Fixes:
 - Wither and Bloom (Legacy)
+## Update Notes:
+- CPR now requires D&D system version 5.1.2 or higher!
 
 # 1.3.12 Release:
 ## Bug Fixes:
