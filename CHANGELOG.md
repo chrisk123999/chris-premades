@@ -5,6 +5,7 @@
 - Wither and Bloom (Legacy)
 ## Update Notes:
 - CPR now requires D&D system version 5.1.2 or higher!
+- Added Czech translations. Thanks Lethrendis.
 
 # 1.3.12 Release:
 ## Bug Fixes:
