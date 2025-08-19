@@ -1,3 +1,9 @@
+# 1.3.13 Release:
+## New Modern Content:
+- Blessing of the Trickster
+## Bug Fixes:
+- Wither and Bloom (Legacy)
+
 # 1.3.12 Release:
 ## Bug Fixes:
 - Select Tool Everywhere Setting
