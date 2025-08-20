@@ -3093,9 +3093,9 @@
         "UnknownTarget": "Alvo Desconhecido"
     },
     "CONTROLS": {
-        "LightSelect": "Selecionar Luzes",
-        "SoundSelect": "Selecionar Sons",
-        "TemplateSelect": "Selecionar Modelos"
+        "LightingSelect": "Selecionar Luzes",
+        "SoundsSelect": "Selecionar Sons",
+        "TemplatesSelect": "Selecionar Modelos"
     },
     "dae.CPR.fieldData": {
         "flags.chris-premades.senses.magicalDarkness": {
