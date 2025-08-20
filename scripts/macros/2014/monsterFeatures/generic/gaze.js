@@ -1,5 +1,4 @@
 import {dialogUtils, effectUtils, genericUtils, itemUtils, socketUtils, tokenUtils, workflowUtils} from '../../../../utils.js';
-
 async function turnStart({trigger: {entity: item, token, target}}) {
     let gazeConfig = itemUtils.getGenericFeatureConfig(item, 'gaze');
     if (tokenUtils.getDistance(target, token) > gazeConfig.distance) return;

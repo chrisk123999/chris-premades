@@ -1,5 +1,4 @@
 import {combatUtils, constants, dialogUtils, effectUtils, itemUtils, workflowUtils} from '../../../../utils.js';
-
 async function damage({trigger: {entity: item}, workflow}) {
     if (workflow.hitTargets.size !== 1) return;
     if (!constants.attacks.includes(workflow.activity.actionType)) return;

@@ -99,6 +99,7 @@
         "Config": {
             "Abilities": "Ability:",
             "Ability": "Ability:",
+            "Activities": "Activities:",
             "AffectAllies": "Should Affect Allies:",
             "AllowEnemies": "Allow selection of non-allied tokens?",
             "Animation": "Animation:",
@@ -561,9 +562,13 @@
             "Distance": "Distance",
             "Edit": "Edit",
             "Failure": "Failure",
+            "Features": "Features",
             "Go": "Go",
             "Import": "Import",
+            "Items": "Items",
             "Max": "Max:",
+            "MeleeSpells": "Melee Spell",
+            "MeleeWeapons": "Melee Weapons",
             "MissingScale": "Actor does not have {scaleName} scale set!",
             "No": "No",
             "NoEffect": "{itemName} must have an effect for its generic monster feature!",
@@ -571,6 +576,8 @@
             "NoType": "No Type",
             "None": "None",
             "Ok": "Ok",
+            "RangedSpells": "Ranged Spells",
+            "RangedWeapons": "Ranged Weapons",
             "Recharge": "Recharge:",
             "RecoverSpellSlot": "Select a spell slot to recover:",
             "Replace": "Replace",
@@ -582,6 +589,7 @@
             "SelectSpellSlot": "Select a spell slot:",
             "SelectTargetEffect": "Select an effect for each target:",
             "Skill": "Skill Check",
+            "Spells": "Spells",
             "Submit": "Submit",
             "Success": "Success",
             "Summon": "Summon",
@@ -1465,7 +1473,9 @@
                 "MaxHPCure": "Max HP Reduction Recovery:",
                 "Name": "Lifesteal",
                 "ReduceMaxHP": "Reduce Max HP:",
-                "excessAsTemp": "Excess Healing as Temporary Hitpoints:"
+                "ThisItem": "This Item",
+                "excessAsTemp": "Excess Healing as Temporary Hitpoints:",
+                "validItems": "Valid Items:"
             },
             "LightningArrow": {
                 "Burst": "Lightning Arrow: Burst"

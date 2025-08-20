@@ -1,5 +1,4 @@
 import {constants, itemUtils, tokenUtils, workflowUtils} from '../../../../utils.js';
-
 async function hit({trigger:{entity: item, token}, workflow}) {
     if (!constants.meleeAttacks.includes(workflow.activity.actionType)) return;
     let config = itemUtils.getGenericFeatureConfig(item, 'touchDamage');

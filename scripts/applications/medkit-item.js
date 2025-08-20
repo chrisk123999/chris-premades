@@ -419,6 +419,15 @@ export class ItemMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
                             }));
                             break;
                         }
+                        case 'select-many': {
+                            config.isSelectMany = true;
+                            config.options = configBase.options.map(i => ({
+                                label: i.label,
+                                value: i.value,
+                                isSelected: config?.value?.includes(i.value)
+                            }));
+                            break;
+                        }
                     }
                     return config;
                 })
@@ -664,7 +673,7 @@ export class ItemMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
                 cssClass: this.activeTab === 'embeddedMacros' ? 'active' : ''
             });
         }
-        if (game.settings.get('chris-premades', 'devTools')) {
+        if (genericUtils.getCPRSetting('devTools')) {
             genericUtils.setProperty(tabsData, 'devTools', {
                 icon: 'fa-solid fa-wand-magic-sparkles',
                 label: 'CHRISPREMADES.Medkit.Tabs.DevTools.Label',

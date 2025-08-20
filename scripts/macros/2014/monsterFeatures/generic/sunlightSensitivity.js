@@ -1,5 +1,4 @@
 import {actorUtils, constants, dialogUtils, genericUtils, itemUtils, tokenUtils} from '../../../../utils.js';
-
 async function skillContext({trigger: {skillId, actor}}) {
     if (skillId !== 'prc') return;
     let token = actorUtils.getFirstToken(actor);

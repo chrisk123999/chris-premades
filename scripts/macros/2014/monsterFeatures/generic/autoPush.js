@@ -2,6 +2,8 @@ import {itemUtils, tokenUtils} from '../../../../utils.js';
 async function use({trigger, workflow}) {
     if (!workflow.token || !workflow.targets.size) return;
     let config = itemUtils.getGenericFeatureConfig(workflow.item, 'autoPush');
+    let activities = config.activities;
+    if (activities?.length && !activities.includes(workflow.activity.id)) return;
     if (isNaN(Number(config.distance))) return;
     workflow.targets.forEach(token => {
         if (config.failed && !workflow.failedSaves.has(token)) return;
@@ -29,6 +31,12 @@ export let autoPush = {
     },
     isGenericFeature: true,
     genericConfig: [
+        {
+            value: 'activities',
+            label: 'CHRISPREMADES.Config.Activities',
+            type: 'activities',
+            default: []
+        },
         {
             value: 'distance',
             label: 'CHRISPREMADES.Config.Distance',

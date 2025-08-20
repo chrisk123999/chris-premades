@@ -1,8 +1,27 @@
 import {actorUtils, constants, effectUtils, genericUtils, itemUtils, rollUtils, workflowUtils} from '../../../../utils.js';
 async function use({trigger, workflow}) {
-    if (!workflow.hitTargets.size) return;
-    if (!workflow.damageRolls) return;
-    let {damageTypes, criticalOnly, checkSaves, reduceMaxHP, maxHPCure, excessAsTemp, ignoredCreatureTypes, formula, displayFormulaRoll, healingType, percentage} = itemUtils.getGenericFeatureConfig(trigger.entity, 'lifesteal');
+    if (!workflow.hitTargets.size || !workflow.damageRolls || !workflow.item) return;
+    let {damageTypes, criticalOnly, checkSaves, reduceMaxHP, maxHPCure, excessAsTemp, ignoredCreatureTypes, formula, displayFormulaRoll, healingType, percentage, activities, validItems} = itemUtils.getGenericFeatureConfig(trigger.entity, 'lifesteal');
+    if (trigger.entity.uuid === workflow.item.uuid) {
+        if (validItems?.length && !validItems?.includes('thisItem')) return;
+        if (activities?.length && !activities.includes(workflow.activity.id)) return;
+    } else {
+        let pass = validItems.map(i => {
+            switch (i) {
+                case 'mwak':
+                case 'rwak':
+                case 'msak':
+                case 'rsak':
+                    return workflow.activity.actionType === i;
+                case 'spell':
+                case 'feat':
+                    return workflow.item.type === i;
+                case 'item':
+                    return constants.itemTypes.includes(workflow.item.type);
+            }
+        }).find(j => j);
+        if (!pass) return;
+    }
     percentage = Number(percentage);
     let workflowDamageTypes = workflowUtils.getDamageTypes(workflow.damageRolls);
     if (!damageTypes.length) damageTypes = Object.keys(CONFIG.DND5E.damageTypes);
@@ -56,9 +75,9 @@ async function use({trigger, workflow}) {
                 });
             } else {
                 let effectData = {
-                    name: workflow.item.name,
-                    img: workflow.item.img,
-                    origin: workflow.item.uuid,
+                    name: trigger.entity.name,
+                    img: trigger.entity.img,
+                    origin: trigger.entity.uuid,
                     changes: [
                         {
                             key: 'system.attributes.hp.tempmax',
@@ -109,6 +128,13 @@ export let lifesteal = {
     version: '1.0.34',
     isGenericFeature: true,
     midi: {
+        actor: [
+            {
+                pass: 'rollFinished',
+                macro: use,
+                priority: 50
+            }
+        ],
         item: [
             {
                 pass: 'rollFinished',
@@ -118,6 +144,52 @@ export let lifesteal = {
         ]
     },
     genericConfig: [
+        {
+            value: 'activities',
+            label: 'CHRISPREMADES.Config.Activities',
+            type: 'activities',
+            default: []
+        },
+        {
+            value: 'validItems',
+            label: 'CHRISPREMADES.Macros.Lifesteal.validItems',
+            type: 'select-many',
+            options: [
+                {
+                    label: 'CHRISPREMADES.Macros.Lifesteal.ThisItem',
+                    value: 'thisItem'
+                },
+                {
+                    label: 'CHRISPREMADES.Generic.MeleeWeapons',
+                    value: 'mwak'
+                },
+                {
+                    label: 'CHRISPREMADES.Generic.RangedWeapons',
+                    value: 'rwak'
+                },
+                {
+                    label: 'CHRISPREMADES.Generic.MeleeSpells',
+                    value: 'msak'
+                },
+                {
+                    label: 'CHRISPREMADES.Generic.RangedSpells',
+                    value: 'rsak'
+                },
+                {
+                    label: 'CHRISPREMADES.Generic.Spells',
+                    value: 'spell'
+                },
+                {
+                    label: 'CHRISPREMADES.Generic.Features',
+                    value: 'feat'
+                },
+                {
+                    label: 'CHRISPREMADES.Generic.Items',
+                    value: 'item'
+                }
+            ],
+            default: ['thisItem']
+        },
         {
             value: 'damageTypes',
             label: 'CHRISPREMADES.Config.DamageTypes',
@@ -230,7 +302,7 @@ export let lifesteal = {
                     value: '2'
                 }
             ],
-            default: 1
+            default: '1'
         }
     ]
 };

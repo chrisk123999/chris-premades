@@ -1,5 +1,4 @@
 import {constants, effectUtils, itemUtils, rollUtils, tokenUtils} from '../../../../utils.js';
-
 async function use({workflow}) {
     let config = itemUtils.getGenericFeatureConfig(workflow.item, 'enlarge');
     let effectData = {

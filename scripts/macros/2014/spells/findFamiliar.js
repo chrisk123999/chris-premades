@@ -1,6 +1,5 @@
 import {Summons} from '../../../lib/summons.js';
 import {activityUtils, actorUtils, compendiumUtils, constants, dialogUtils, effectUtils, errors, genericUtils, itemUtils, tokenUtils, workflowUtils} from '../../../utils.js';
-
 async function use({workflow}) {
     let findFamiliarEffect = effectUtils.getEffectByIdentifier(workflow.actor, 'findFamiliar');
     if (findFamiliarEffect) await genericUtils.remove(findFamiliarEffect);

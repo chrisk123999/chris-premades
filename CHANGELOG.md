@@ -1,3 +1,8 @@
+# 1.3.15 Release:
+## Update Notes:
+- Added an activity selector for many generic monster features.
+- Updated the lifesteal generic monster feature to allow lifestealing from items other than itself.
+
 # 1.3.14 Release:
 ## Update Notes:
 - Added NPC settings to weapon mastery automation.
