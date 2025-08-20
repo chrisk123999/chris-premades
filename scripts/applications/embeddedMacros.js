@@ -862,7 +862,6 @@ export class EmbeddedMacros extends HandlebarsApplicationMixin(ApplicationV2) {
         let inputs = {
             macro: {
                 field: new fields.JavaScriptField({
-                    async: true,
                     label: 'CHRISPREMADES.EmbeddedMacros.Macro.Label'
                 }),
                 value: macro.macro
