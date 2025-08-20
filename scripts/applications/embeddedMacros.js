@@ -763,8 +763,8 @@ export class EmbeddedMacros extends HandlebarsApplicationMixin(ApplicationV2) {
         },
     };
     static async confirm(event, target) {
-        await EmbeddedMacros._apply.bind(this)(event, target);
-        this.close();
+        let canClose = await EmbeddedMacros._apply.bind(this)(event, target);
+        if (canClose) this.close();
     }
     static async _apply(event, target) {
         if (!target.name) return false;
@@ -778,9 +778,16 @@ export class EmbeddedMacros extends HandlebarsApplicationMixin(ApplicationV2) {
                 });
                 genericUtils.notify(invalidText, 'error');
                 invalid = true;
+            } else if (!currMacro.type) {
+                let invalidText = genericUtils.format('CHRISPREMADES.Medkit.EmbeddedMacros.Invalid', {
+                    fieldName: 'type',
+                    macroName: currMacro.name
+                });
+                genericUtils.notify(invalidText, 'error');
+                invalid = true;
             }
         }
-        if (invalid) return;
+        if (invalid) return false;
         let flagPath;
         let entity;
         if (this.documentName === 'Activity') {
@@ -976,6 +983,7 @@ export class EmbeddedMacros extends HandlebarsApplicationMixin(ApplicationV2) {
             case 'text':
             case 'textarea':
             case 'select-one':
+            default:
                 if (targetInput.name === 'name') this.activeTab = targetInput.value;
                 genericUtils.setProperty(currentMacro, targetInput.name, targetInput.value);
                 break;

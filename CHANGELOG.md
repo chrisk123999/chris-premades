@@ -1,3 +1,7 @@
+# 1.3.16 Release:
+## Bug Fixes:
+- Custom status effect icons won't cause trouble with Monk's Little Details installed
+
 # 1.3.15 Release:
 ## Update Notes:
 - Added an activity selector for many generic monster features.
