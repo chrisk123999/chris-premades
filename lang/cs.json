@@ -1034,7 +1034,7 @@
                 "Wine": "Víno"
             },
             "DragonsBreath": {
-                "DragonBreath": "Dračí dech"
+                "DragonBreath": "Dračí výdech"
             },
             "DragonsWrath": {
                 "AscendantBreath": "Dračí hněv: Vzestupný dech",
@@ -1054,7 +1054,7 @@
                 "Name": "Imunita vůči efektu"
             },
             "EldritchBlast": {
-                "Beam": "Mystický výšleh: Paprsek",
+                "Beam": "Tajemný výšleh: Paprsek",
                 "Target": "Na jaké cíle?"
             },
             "EldritchCannon": {
@@ -2805,19 +2805,19 @@
                 "Name": "Varovat před hardwarovou náročností?"
             },
             "permissionsAutomateItem": {
-                "Hint": "Nejnižší úroveň oprávnění uživatele, který smí pomocí Lékáničky vybírat a aplikovat různé automatizace:",
+                "Hint": "Nejnižší úroveň oprávnění uživatele, který smí pomocí Lékáničky vybírat a aplikovat různé automatizace.",
                 "Name": "Oprávnění aplikovat automatizace"
             },
             "permissionsConfigureHomebrew": {
-                "Hint": "Nejnižší úroveň oprávnění uživatele, který smí pomocí Lékáničky nastavovat domácí pravidla:",
+                "Hint": "Nejnižší úroveň oprávnění uživatele, který smí pomocí Lékáničky nastavovat domácí pravidla.",
                 "Name": "Oprávnění nastavit domácí pravidla"
             },
             "permissionsConfigureItem": {
-                "Hint": "Nejnižší úroveň oprávnění uživatele, který smí nastavovat automatizace pomocí Lékárničky:",
+                "Hint": "Nejnižší úroveň oprávnění uživatele, který smí nastavovat automatizace pomocí Lékárničky.",
                 "Name": "Oprávnění nastavit automatizace"
             },
             "permissionsUpdateItem": {
-                "Hint": "Nejnižší úroveň oprávnění uživatele, který smí aktualizovat aktuálně vybranou automatizaci Lékárničkou:",
+                "Hint": "Nejnižší úroveň oprávnění uživatele, který smí aktualizovat aktuálně vybranou automatizaci Lékárničkou.",
                 "Name": "Oprávnění aktualizovat automatizace"
             },
             "playerSelectsConjures": {
@@ -3056,7 +3056,7 @@
                 "Title": "Záznamník popisů"
             },
             "9": {
-                "Content": "Například kouzlo \"Dragon's Breath\" vytvoří u aktéra dočasnou schopnost \"Dragon Breath\".\nVyplnění této stránky v záznamníku doplní popis, když bude vytvořen.",
+                "Content": "Například kouzlo \"Dragon's Breath\" vytvoří u aktéra dočasnou schopnost \"Dragon Breath\".\nVyplnění této stránky v záznamníku doplní popis.",
                 "Title": "Záznamník popisů"
             },
             "Chat": "<hr>Zde si udělej prohlídku používáním Cauldron of Plentiful Resources:<br><button type=\"button\">Spustit prohlídku</button>",
@@ -3093,9 +3093,9 @@
         "UnknownTarget": "Neznámý cíl"
     },
     "CONTROLS": {
-        "LightSelect": "Vybrat světla",
-        "SoundSelect": "Vybrat zvuky",
-        "TemplateSelect": "Vybrat šablony"
+        "LightingSelect": "Vybrat světla",
+        "SoundsSelect": "Vybrat zvuky",
+        "TemplatesSelect": "Vybrat šablony"
     },
     "dae.CPR.fieldData": {
         "flags.chris-premades.senses.magicalDarkness": {
