@@ -99,6 +99,7 @@
         "Config": {
             "Abilities": "Atributos:",
             "Ability": "Atributo:",
+            "Activities": "Atividades:",
             "AffectAllies": "Deve Afetar Aliados:",
             "AllowEnemies": "Permitir seleção de tokens não-aliados?",
             "Animation": "Animação:",
@@ -561,9 +562,13 @@
             "Distance": "Distância",
             "Edit": "Editar",
             "Failure": "Falha",
+            "Features": "Características",
             "Go": "Ir",
             "Import": "Importar",
+            "Items": "Itens",
             "Max": "Máx:",
+            "MeleeSpells": "Magias Corpo a Corpo",
+            "MeleeWeapons": "Armas Corpo a Corpo",
             "MissingScale": "O ator não tem o conjunto de escala {scaleName} scale set!",
             "No": "Não",
             "NoEffect": "{itemName} deve ter um efeito para seu recurso genérico de monstro!",
@@ -571,6 +576,8 @@
             "NoType": "Sem Tipo",
             "None": "Nenhum(a)",
             "Ok": "Ok",
+            "RangedSpells": "Magias à Distância",
+            "RangedWeapons": "Armas à Distância",
             "Recharge": "Recarga:",
             "RecoverSpellSlot": "Selecione um espaço de magia para recuperar:",
             "Replace": "Substituir",
@@ -582,6 +589,7 @@
             "SelectSpellSlot": "Escolha um espaço de magia:",
             "SelectTargetEffect": "Escolha um efeito para cada alvo:",
             "Skill": "Teste de Perícia",
+            "Spells": "Magias",
             "Submit": "Enviar",
             "Success": "Sucesso",
             "Summon": "Invocação",
@@ -1462,10 +1470,12 @@
             },
             "Lifesteal": {
                 "HealingType": "Tipo de Cura:",
-                "MaxHPCure": "Recuperação de Redução de PV Máx.:",
+                "MaxHPCure": "Recuperação de Redução de PV Máx:",
                 "Name": "Roubo de Vida",
-                "ReduceMaxHP": "Reduzir PV Máx.:",
-                "excessAsTemp": "Excesso de Cura como PV Temp.:"
+                "ReduceMaxHP": "Reduzir PV Máx:",
+                "ThisItem": "Este Item",
+                "excessAsTemp": "Excesso de Cura como PV Temp:",
+                "validItems": "Itens Válidos:"
             },
             "LightningArrow": {
                 "Burst": "Flecha Relampejante: Explosão"
@@ -2537,12 +2547,12 @@
                 "1": "Personagens Vinculados",
                 "2": "Personagens Desvinculados",
                 "3": "Todos os Personagens",
-                "4": "PnJs Vinculados",
-                "5": "PnJs Desvinculados",
-                "6": "Todos os PnJs",
-                "7": "Personagens Vinculados e PnJs",
-                "8": "Personagens Desvinculados e PnJs",
-                "9": "Todos os Personagens e PnJs",
+                "4": "PNJs Vinculados",
+                "5": "PNJs Desvinculados",
+                "6": "Todos os PNJs",
+                "7": "Personagens Vinculados e PNJs",
+                "8": "Personagens Desvinculados e PNJs",
+                "9": "Todos os Personagens e PNJs",
                 "Hint": "Quando ativado, ações genéricas serão adicionadas quando um token for colocado.",
                 "Name": "Adicionar Ações aos Tokens"
             },
@@ -2877,6 +2887,9 @@
                 "Name": "Visual Active Effects: Botões"
             },
             "weaponMastery": {
+                "1": "Apenas Jogador",
+                "2": "Apenas PNJ (Homebrew)",
+                "3": "Jogador & PNJ (Homebrew)",
                 "Hint": "Habilitar automação de maestria de armas do PHB 2024.",
                 "Name": "Automação Maestria de Armas"
             }
@@ -3115,7 +3128,7 @@
     "SIDEBAR": {
         "ACTIONS": {
             "CREATE": {
-                "ActiveEffect": "Create Active Effect"
+                "ActiveEffect": "Criar Efeito Ativo"
             }
         }
     }
