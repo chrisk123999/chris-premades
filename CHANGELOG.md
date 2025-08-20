@@ -1,6 +1,7 @@
 # 1.3.16 Release:
 ## Bug Fixes:
 - Custom status effect icons won't cause trouble with Monk's Little Details installed
+- Embedded Macros
 
 # 1.3.15 Release:
 ## Update Notes:

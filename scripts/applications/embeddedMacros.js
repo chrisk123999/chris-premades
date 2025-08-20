@@ -862,6 +862,7 @@ export class EmbeddedMacros extends HandlebarsApplicationMixin(ApplicationV2) {
         let inputs = {
             macro: {
                 field: new fields.JavaScriptField({
+                    async: true,
                     label: 'CHRISPREMADES.EmbeddedMacros.Macro.Label'
                 }),
                 value: macro.macro
@@ -987,7 +988,7 @@ export class EmbeddedMacros extends HandlebarsApplicationMixin(ApplicationV2) {
                 genericUtils.setProperty(currentMacro, targetInput.name, targetInput.value);
                 break;
         }
-        this.render(true);
+        if (targetInput.name !== 'macro') this.render(true);
     }
     async _onSubmitForm(formConfig, event) {
         event.preventDefault();
