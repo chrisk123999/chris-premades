@@ -151,54 +151,26 @@ export let lifesteal = {
             default: []
         },
         {
-            value: 'validItems',
-            label: 'CHRISPREMADES.Macros.Lifesteal.validItems',
-            type: 'select-many',
-            options: [
-                {
-                    label: 'CHRISPREMADES.Macros.Lifesteal.ThisItem',
-                    value: 'thisItem'
-                },
-                {
-                    label: 'CHRISPREMADES.Generic.MeleeWeapons',
-                    value: 'mwak'
-                },
-                {
-                    label: 'CHRISPREMADES.Generic.RangedWeapons',
-                    value: 'rwak'
-                },
-                {
-                    label: 'CHRISPREMADES.Generic.MeleeSpells',
-                    value: 'msak'
-                },
-                {
-                    label: 'CHRISPREMADES.Generic.RangedSpells',
-                    value: 'rsak'
-                },
-                {
-                    label: 'CHRISPREMADES.Generic.Spells',
-                    value: 'spell'
-                },
-                {
-                    label: 'CHRISPREMADES.Generic.Features',
-                    value: 'feat'
-                },
-                {
-                    label: 'CHRISPREMADES.Generic.Items',
-                    value: 'item'
-                }
-            ],
-            default: ['thisItem']
-        },
-        {
-            value: 'damageTypes',
-            label: 'CHRISPREMADES.Config.DamageTypes',
-            type: 'damageTypes',
-            default: []
-        },
-        {
             value: 'checkSaves',
             label: 'CHRISPREMADES.Config.CheckSaves',
+            type: 'checkbox',
+            default: false
+        },
+        {
+            value: 'criticalOnly',
+            label: 'CHRISPREMADES.Config.CriticalOnly',
+            type: 'checkbox',
+            default: false
+        },
+        {
+            value: 'displayFormulaRoll',
+            label: 'CHRISPREMADES.Config.DisplayFormulaRoll',
+            type: 'checkbox',
+            default: true
+        },
+        {
+            value: 'excessAsTemp',
+            label: 'CHRISPREMADES.Macros.Lifesteal.excessAsTemp',
             type: 'checkbox',
             default: false
         },
@@ -207,6 +179,19 @@ export let lifesteal = {
             label: 'CHRISPREMADES.Macros.Lifesteal.ReduceMaxHP',
             type: 'checkbox',
             default: false
+        },
+        {
+            value: 'formula',
+            label: 'CHRISPREMADES.Config.Formula',
+            type: 'text',
+            default: ''
+        },
+        {
+            value: 'healingType',
+            label: 'CHRISPREMADES.Macros.Lifesteal.HealingType',
+            type: 'select',
+            options: constants.healingTypeOptions,
+            default: 'healing'
         },
         {
             value: 'maxHPCure',
@@ -226,43 +211,6 @@ export let lifesteal = {
                     value: 'shortRest'
                 }
             ]
-        },
-        {
-            value: 'excessAsTemp',
-            label: 'CHRISPREMADES.Macros.Lifesteal.excessAsTemp',
-            type: 'checkbox',
-            default: false
-        },
-        {
-            value: 'ignoredCreatureTypes',
-            label: 'CHRISPREMADES.Config.IgnoredCreatureTypes',
-            type: 'creatureTypes',
-            default: ['undead', 'construct']
-        },
-        {
-            value: 'criticalOnly',
-            label: 'CHRISPREMADES.Config.CriticalOnly',
-            type: 'checkbox',
-            default: false
-        },
-        {
-            value: 'formula',
-            label: 'CHRISPREMADES.Config.Formula',
-            type: 'text',
-            default: ''
-        },
-        {
-            value: 'displayFormulaRoll',
-            label: 'CHRISPREMADES.Config.DisplayFormulaRoll',
-            type: 'checkbox',
-            default: true
-        },
-        {
-            value: 'healingType',
-            label: 'CHRISPREMADES.Macros.Lifesteal.HealingType',
-            type: 'select',
-            options: constants.healingTypeOptions,
-            default: 'healing'
         },
         {
             value: 'percentage',
@@ -303,6 +251,58 @@ export let lifesteal = {
                 }
             ],
             default: '1'
+        },
+        {
+            value: 'damageTypes',
+            label: 'CHRISPREMADES.Config.DamageTypes',
+            type: 'damageTypes',
+            default: []
+        },
+        {
+            value: 'ignoredCreatureTypes',
+            label: 'CHRISPREMADES.Config.IgnoredCreatureTypes',
+            type: 'creatureTypes',
+            default: ['undead', 'construct']
+        },
+        {
+            value: 'validItems',
+            label: 'CHRISPREMADES.Macros.Lifesteal.validItems',
+            type: 'select-many',
+            options: [
+                {
+                    label: 'CHRISPREMADES.Macros.Lifesteal.ThisItem',
+                    value: 'thisItem'
+                },
+                {
+                    label: 'CHRISPREMADES.Generic.MeleeWeapons',
+                    value: 'mwak'
+                },
+                {
+                    label: 'CHRISPREMADES.Generic.RangedWeapons',
+                    value: 'rwak'
+                },
+                {
+                    label: 'CHRISPREMADES.Generic.MeleeSpells',
+                    value: 'msak'
+                },
+                {
+                    label: 'CHRISPREMADES.Generic.RangedSpells',
+                    value: 'rsak'
+                },
+                {
+                    label: 'CHRISPREMADES.Generic.Spells',
+                    value: 'spell'
+                },
+                {
+                    label: 'CHRISPREMADES.Generic.Features',
+                    value: 'feat'
+                },
+                {
+                    label: 'CHRISPREMADES.Generic.Items',
+                    value: 'item'
+                }
+            ],
+            default: ['thisItem']
         }
     ]
 };

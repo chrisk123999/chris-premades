@@ -48,7 +48,7 @@ export let autoPush = {
         {
             value: 'distance',
             label: 'CHRISPREMADES.Config.Distance',
-            type: 'text',
+            type: 'number',
             default: 10
         },
         {

@@ -88,7 +88,7 @@ export let reduceMaxHP = {
     genericConfig: [
         {
             value: 'damageTypeFilter',
-            label: 'CHRISPREMADES.Macros.ReduceMaxHP.DamageTypeFilter',
+            label: 'CHRISPREMADES.Config.DamageTypes',
             type: 'damageTypes',
             default: []
         },
