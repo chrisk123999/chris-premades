@@ -171,7 +171,7 @@ async function endTurn({trigger}) {
     if (!devilToken) return;
     let featureData = duplicate(trigger.entity.toObject());
     let featureWorkflow = await workflowUtils.syntheticItemDataRoll(featureData, trigger.entity.actor, [trigger.target]);
-    if (!featureWorkflow.failedSaves.find(t => t.id === trigger.target.id)) {
+    if (featureWorkflow.failedSaves.find(t => t.id === trigger.target.id)) {
         // Ensure we pass Token objects (not Documents) to pushToken
         const targetToken = trigger.target?.object ?? trigger.target;
         await tokenUtils.pushToken(devilToken.object, targetToken, 10);
