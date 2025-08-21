@@ -1,6 +1,8 @@
 # 1.3.18 Release:
 ## Bug Fixes:
 - Dust Devil
+## Update Notes:
+- Added CSS fixes for generic monster features.
 
 # 1.3.17 Release:
 ## Bug Fixes:
