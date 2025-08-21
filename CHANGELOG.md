@@ -1,7 +1,10 @@
 # 1.3.16 Release:
+## New Legacy Content:
+- Dust Devil (Thanks Beerbill)
 ## Bug Fixes:
 - Custom status effect icons won't cause trouble with Monk's Little Details installed
 - Embedded Macros
+- Auto Push generic monster feature updated to include token size limits.
 
 # 1.3.15 Release:
 ## Update Notes:

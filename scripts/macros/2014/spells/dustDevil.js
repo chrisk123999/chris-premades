@@ -1,6 +1,5 @@
 import {Summons} from '../../../lib/summons.js';
-import {activityUtils, compendiumUtils, constants, crosshairUtils, effectUtils, errors, genericUtils, itemUtils, tokenUtils, workflowUtils} from '../../../utils.js';
-
+import {activityUtils, compendiumUtils, letants, crosshairUtils, effectUtils, errors, genericUtils, itemUtils, tokenUtils, workflowUtils} from '../../../utils.js';
 async function use({trigger, workflow}) {
     let avatarImg = itemUtils.getConfig(workflow.item, 'avatar');
     let tokenImg = itemUtils.getConfig(workflow.item, 'token');
@@ -19,12 +18,11 @@ async function use({trigger, workflow}) {
             }
         }
     };
-
     // 1d8 bludgeoning, scaling +1d8 per slot above 2nd => (castLevel - 1)d8
     let diceCount = Math.max(1, (workflowUtils.getCastLevel(workflow) - 1));
     let contactFeature = await Summons.getSummonItem('Dust Devil: Contact', damageUpdates, workflow.item, {flatDC: itemUtils.getSaveDC(workflow.item), damageFlat: diceCount + 'd8[bludgeoning]', translate: 'CHRISPREMADES.Macros.DustDevil.ContactItem'});
     if (!contactFeature) {
-        errors.missingPackItem(constants.packs.summonFeatures, 'Dust Devil: Contact');
+        errors.missingPackItem(letants.packs.summonFeatures, 'Dust Devil: Contact');
         return;
     }
     let updates = {
@@ -60,9 +58,9 @@ async function use({trigger, workflow}) {
     };
     if (avatarImg) genericUtils.setProperty(updates, 'actor.img', avatarImg);
     let animation = itemUtils.getConfig(workflow.item, 'animation');
-    let actor = await compendiumUtils.getActorFromCompendium(constants.packs.summons, 'CPR - Dust Devil');
+    let actor = await compendiumUtils.getActorFromCompendium(letants.packs.summons, 'CPR - Dust Devil');
     if (!actor) {
-        errors.missingPackItem(constants.packs.summons, 'CPR - Dust Devil');
+        errors.missingPackItem(letants.packs.summons, 'CPR - Dust Devil');
         return;
     }
     let feature = activityUtils.getActivityByIdentifier(workflow.item, 'dustDevilMove');
@@ -84,14 +82,10 @@ async function use({trigger, workflow}) {
             favorite: true
         },
     });
-
     let effect = effectUtils.getEffectByIdentifier(workflow.actor, 'dustDevil');
     if (!effect) return;
-    await genericUtils.update(effect, {
-        'flags.chris-premades.dustDevil.tokenUuid': token.uuid
-    });
+    await genericUtils.setFlag(effect, 'chris-premades', 'dustDevil.tokenUuid', token.uuid);
 }
-
 async function move({workflow}) {
     let effect = effectUtils.getEffectByIdentifier(workflow.actor, 'dustDevil');
     if (!effect) return;
@@ -124,9 +118,8 @@ async function move({workflow}) {
         return;
     }
     // End any previous ring visuals for this token (if any)
-    const seqName = `cpr-dust-devil-token-${token.id}`;
+    let seqName = 'cpr-dust-devil-token-' + token.id;
     Sequencer.EffectManager.endEffects({ name: seqName, object: token.object });
-
     new Sequence()
         .effect()
         .file('jb2a.smoke.ring.01.white')
@@ -140,23 +133,21 @@ async function move({workflow}) {
         .persist()
         .name(seqName)
         .play();
-
     // Cleanup: when this actor's next turn starts, stop the visual
-    const ownerUuid = workflow.actor.uuid;
-    const endVisual = async () => {
+    let ownerUuid = workflow.actor.uuid;
+    let endVisual = async () => {
         Sequencer.EffectManager.endEffects({ name: seqName, object: token.object });
         if (combatHookId) Hooks.off('updateCombat', combatHookId);
         Hooks.off('deleteCombat', deleteHookId);
     };
-    const combatHookId = Hooks.on('updateCombat', (combat, changes) => {
+    let combatHookId = Hooks.on('updateCombat', (combat, changes) => {
         if (!changes.turn && !changes.round) return;
-        const active = combat.combatant?.actor?.uuid;
+        let active = combat.combatant?.actor?.uuid;
         if (active === ownerUuid) endVisual();
     });
-    const deleteHookId = Hooks.on('deleteCombat', () => endVisual());
+    let deleteHookId = Hooks.on('deleteCombat', () => endVisual());
     await workflow.actor.sheet.maximize();
 }
-
 async function endTurn({trigger}) {
     let actorUuid = trigger.entity.flags['chris-premades']?.dustDevil?.actorUuid;
     if (!actorUuid) return;
@@ -173,15 +164,13 @@ async function endTurn({trigger}) {
     let featureWorkflow = await workflowUtils.syntheticItemDataRoll(featureData, trigger.entity.actor, [trigger.target]);
     if (!featureWorkflow.failedSaves.find(t => t.id === trigger.target.id)) {
         // Ensure we pass Token objects (not Documents) to pushToken
-        const targetToken = trigger.target?.object ?? trigger.target;
+        let targetToken = trigger.target?.object ?? trigger.target;
         await tokenUtils.pushToken(devilToken.object, targetToken, 10);
     }
 }
-
 async function early({dialog}) {
     dialog.configure = false;
 }
-
 export let dustDevil = {
     name: 'Dust Devil',
     version: '1.0.0',
@@ -215,7 +204,7 @@ export let dustDevil = {
             type: 'select',
             default: 'nature',
             category: 'animation',
-            options: constants.summonAnimationOptions
+            options: letants.summonAnimationOptions
         },
         {
             value: 'token',
@@ -273,7 +262,6 @@ export let dustDevil = {
         }
     ]
 };
-
 export let dustDevilEndTurn = {
     name: 'Dust Devil: Contact',
     version: '1.0.0',
@@ -286,7 +274,6 @@ export let dustDevilEndTurn = {
         }
     ]
 };
-
 export let dustDevilContact = {
     name: 'Dust Devil: Contact',
     version: '1.0.0'
