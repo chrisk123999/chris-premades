@@ -215,6 +215,36 @@ async function hasConditionBy(sourceActor, targetActor, statusId) {
     });
     return hasCondition ? true : false;
 }
+function compareSize(source, target, goal) {
+    if (!source || !target || !goal) return undefined;
+    function findSize(obj) {
+        if (obj instanceof Token) return getSize(obj.actor);
+        if (obj instanceof Actor) return getSize(obj);
+        return Object.entries(CONFIG.DND5E.actorSizes).find(([key, value]) => [key, value.label, value.numerical].includes(obj))[1].numerical;
+    }
+    let sourceSize = findSize(source);
+    let targetSize = findSize(target);
+    switch (goal) {
+        case 'equal':
+        case '=':
+        case '===':
+            return sourceSize === targetSize;
+        case 'greaterThan':
+        case '>':
+            return sourceSize > targetSize;
+        case 'greaterThanOrEqualTo':
+        case '>=':
+            return sourceSize >= targetSize;
+        case 'lessThan':
+        case '<':
+            return sourceSize < targetSize;
+        case 'lessThanOrEqualTo':
+        case '<=':
+            return sourceSize <= targetSize;
+        default:
+            return undefined;
+    }
+}
 export let actorUtils = {
     getEffects,
     addFavorites,
@@ -244,5 +274,6 @@ export let actorUtils = {
     getEquippedArmor,
     getEquippedShield,
     getAllEquippedArmor,
-    hasConditionBy
+    hasConditionBy,
+    compareSize
 };
