@@ -1,5 +1,5 @@
 import {Summons} from '../../../lib/summons.js';
-import {activityUtils, compendiumUtils, letants, crosshairUtils, effectUtils, errors, genericUtils, itemUtils, tokenUtils, workflowUtils} from '../../../utils.js';
+import {activityUtils, compendiumUtils, constants, crosshairUtils, effectUtils, errors, genericUtils, itemUtils, tokenUtils, workflowUtils} from '../../../utils.js';
 async function use({trigger, workflow}) {
     let avatarImg = itemUtils.getConfig(workflow.item, 'avatar');
     let tokenImg = itemUtils.getConfig(workflow.item, 'token');
@@ -22,7 +22,7 @@ async function use({trigger, workflow}) {
     let diceCount = Math.max(1, (workflowUtils.getCastLevel(workflow) - 1));
     let contactFeature = await Summons.getSummonItem('Dust Devil: Contact', damageUpdates, workflow.item, {flatDC: itemUtils.getSaveDC(workflow.item), damageFlat: diceCount + 'd8[bludgeoning]', translate: 'CHRISPREMADES.Macros.DustDevil.ContactItem'});
     if (!contactFeature) {
-        errors.missingPackItem(letants.packs.summonFeatures, 'Dust Devil: Contact');
+        errors.missingPackItem(constants.packs.summonFeatures, 'Dust Devil: Contact');
         return;
     }
     let updates = {
@@ -58,9 +58,9 @@ async function use({trigger, workflow}) {
     };
     if (avatarImg) genericUtils.setProperty(updates, 'actor.img', avatarImg);
     let animation = itemUtils.getConfig(workflow.item, 'animation');
-    let actor = await compendiumUtils.getActorFromCompendium(letants.packs.summons, 'CPR - Dust Devil');
+    let actor = await compendiumUtils.getActorFromCompendium(constants.packs.summons, 'CPR - Dust Devil');
     if (!actor) {
-        errors.missingPackItem(letants.packs.summons, 'CPR - Dust Devil');
+        errors.missingPackItem(constants.packs.summons, 'CPR - Dust Devil');
         return;
     }
     let feature = activityUtils.getActivityByIdentifier(workflow.item, 'dustDevilMove');
@@ -204,7 +204,7 @@ export let dustDevil = {
             type: 'select',
             default: 'nature',
             category: 'animation',
-            options: letants.summonAnimationOptions
+            options: constants.summonAnimationOptions
         },
         {
             value: 'token',
