@@ -99,6 +99,7 @@
         "Config": {
             "Abilities": "Ability:",
             "Ability": "Ability:",
+            "Activities": "Activities:",
             "AffectAllies": "Should Affect Allies:",
             "AllowEnemies": "Allow selection of non-allied tokens?",
             "Animation": "Animation:",
@@ -185,6 +186,7 @@
             "IgnoredCreatureTypes": "Ignored Creature Types:",
             "ImmuneCreatures": "Immune Creature Types:",
             "MaxLevel": "Max Level:",
+            "MaxSize": "Max Size:",
             "Name": "Name:",
             "Number": "Number:",
             "Percentage": "Percentage:",
@@ -368,6 +370,9 @@
                 "movedNear": {
                     "Label": "Moved Near"
                 },
+                "movedScene": {
+                    "Label": "Scene Moved"
+                },
                 "post": {
                     "Label": "Post"
                 },
@@ -398,11 +403,14 @@
                 "sceneBonus": {
                     "Label": "Scene Bonus"
                 },
+                "sceneCreate": {
+                    "Label": "Scene Create"
+                },
                 "sceneDamageRollComplete": {
                     "Label": "Scene Damage Roll Complete"
                 },
-                "movedScene": {
-                    "Label": "Scene Moved"
+                "sceneDeleted": {
+                    "Label": "Scene Deleted"
                 },
                 "scenePostAttackRoll": {
                     "Label": "Scene Post-Attack Roll"
@@ -457,12 +465,6 @@
                 },
                 "unequipped": {
                     "Label": "Unequipped"
-                },
-                "sceneDeleted": {
-                    "Label": "Scene Deleted"
-                },
-                "sceneCreate": {
-                    "Label": "Scene Create"
                 }
             },
             "Priority": {
@@ -563,9 +565,13 @@
             "Distance": "Distance",
             "Edit": "Edit",
             "Failure": "Failure",
+            "Features": "Features",
             "Go": "Go",
             "Import": "Import",
+            "Items": "Items",
             "Max": "Max:",
+            "MeleeSpells": "Melee Spell",
+            "MeleeWeapons": "Melee Weapons",
             "MissingScale": "Actor does not have {scaleName} scale set!",
             "No": "No",
             "NoEffect": "{itemName} must have an effect for its generic monster feature!",
@@ -573,6 +579,8 @@
             "NoType": "No Type",
             "None": "None",
             "Ok": "Ok",
+            "RangedSpells": "Ranged Spells",
+            "RangedWeapons": "Ranged Weapons",
             "Recharge": "Recharge:",
             "RecoverSpellSlot": "Select a spell slot to recover:",
             "Replace": "Replace",
@@ -584,6 +592,7 @@
             "SelectSpellSlot": "Select a spell slot:",
             "SelectTargetEffect": "Select an effect for each target:",
             "Skill": "Skill Check",
+            "Spells": "Spells",
             "Submit": "Submit",
             "Success": "Success",
             "Summon": "Summon",
@@ -1471,7 +1480,9 @@
                 "MaxHPCure": "Max HP Reduction Recovery:",
                 "Name": "Lifesteal",
                 "ReduceMaxHP": "Reduce Max HP:",
-                "excessAsTemp": "Excess Healing as Temporary Hitpoints:"
+                "ThisItem": "This Item",
+                "excessAsTemp": "Excess Healing as Temporary Hitpoints:",
+                "validItems": "Valid Items:"
             },
             "LightningArrow": {
                 "Burst": "Lightning Arrow: Burst"
@@ -2883,6 +2894,9 @@
                 "Name": "Visual Active Effects: Buttons"
             },
             "weaponMastery": {
+                "1": "Player Only",
+                "2": "NPC Only (Homebrew)",
+                "3": "Player & NPC (Homebrew)",
                 "Hint": "Enable PHB 2024 weapon mastery automation.",
                 "Name": "Weapon Mastery Automation"
             }
@@ -3100,9 +3114,16 @@
         "UnknownTarget": "Unknown Target"
     },
     "CONTROLS": {
-        "LightSelect": "Select Lights",
-        "SoundSelect": "Select Sounds",
-        "TemplateSelect": "Select Templates"
+        "LightingSelect": "Select Lights",
+        "SoundsSelect": "Select Sounds",
+        "TemplatesSelect": "Select Templates"
+    },
+    "SIDEBAR": {
+        "ACTIONS": {
+            "CREATE": {
+                "ActiveEffect": "Create Active Effect"
+            }
+        }
     },
     "dae.CPR.fieldData": {
         "flags.chris-premades.senses.magicalDarkness": {
@@ -3118,12 +3139,5 @@
             "name": "Turn Resistance"
         }
     },
-    "dae.fieldData.fieldCategories.CPR": "CPR",
-    "SIDEBAR": {
-        "ACTIONS": {
-            "CREATE": {
-                "ActiveEffect": "Create Active Effect"
-            }
-        }
-    }
+    "dae.fieldData.fieldCategories.CPR": "CPR"
 }

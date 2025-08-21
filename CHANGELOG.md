@@ -1,3 +1,31 @@
+# 1.3.16 Release:
+## Bug Fixes:
+- Custom status effect icons won't cause trouble with Monk's Little Details installed
+- Embedded Macros
+
+# 1.3.15 Release:
+## Update Notes:
+- Added an activity selector for many generic monster features.
+- Updated the lifesteal generic monster feature to allow lifestealing from items other than itself.
+
+# 1.3.14 Release:
+## Update Notes:
+- Added NPC settings to weapon mastery automation.
+
+# 1.3.13 Release:
+## New Modern Content:
+- Blessing of the Trickster
+## Bug Fixes:
+- Wither and Bloom (Legacy)
+## Update Notes:
+- CPR now requires D&D system version 5.1.2 or higher!
+- Added Czech translations. Thanks Lethrendis.
+
+# 1.3.12 Release:
+## Bug Fixes:
+- Select Tool Everywhere Setting
+- Troubleshooter
+
 # 1.3.11 Release:
 ## Bug Fixes:
 - All items with CPR hidden activities.

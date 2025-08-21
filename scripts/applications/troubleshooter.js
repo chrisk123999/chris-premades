@@ -265,7 +265,7 @@ export async function run() {
         let nonActors = scene.tokens.filter(i => !i.actor);
         addLine('Actorless Tokens: ' + nonActors.length);
         addLine('Walls: ' + scene.tokens.size);
-        addLine('Global Light: ' + scene.globalLight);
+        addLine('Global Light: ' + scene.environment.globalLight.enabled);
     }
     addLine('');
     addLine('/////////////// Game Details ///////////////');
@@ -382,7 +382,7 @@ export async function run() {
             content: content,
             buttons: buttons,
             position: {
-                height: 700,
+                height: 800,
                 width: 1000
             }
         });

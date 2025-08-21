@@ -1,4 +1,4 @@
-import {genericUtils, itemUtils, effectUtils, actorUtils, workflowUtils} from '../../../../utils.js';
+import {genericUtils, itemUtils, workflowUtils} from '../../../../utils.js';
 async function apply({trigger, workflow, ditem}) {
     if (!ditem.isHit || ditem.newHP != 0 || ditem.oldHP === 0) return;
     let originItem = trigger.entity;

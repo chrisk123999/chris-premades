@@ -1,0 +1,3122 @@
+{
+    "CHRISPREMADES": {
+        "AbilityCheck": {
+            "Title": "Ověření vlastnosti"
+        },
+        "AbilitySave": {
+            "Title": "Záchrana vlastností"
+        },
+        "Alignment": {
+            "Chaotic": "Chaotické",
+            "Evil": "Zlé",
+            "Good": "Dobré",
+            "Lawful": "Zákonné",
+            "Neutral": "Neutrální"
+        },
+        "AlterSelf": {
+            "NaturalWeapons": {
+                "Claws": "Drápy (sečné)",
+                "Fangs": "Tesáky (bodné)",
+                "Hooves": "Kopyta (drtivé)",
+                "Select": "Kterou přirozenou zbraň nechat vyrůst?"
+            }
+        },
+        "Auras": {
+            "Source": "{auraName}: Zdroj"
+        },
+        "BG3": {
+            "Backbreaker": "Lamač zad",
+            "Bleeding": "Krvácení",
+            "BraceMelee": "Připravenost (na boj zblízka)",
+            "BraceRanged": "Připravenost (na dálku)",
+            "ChestTrauma": "Poranění hrudníku",
+            "Cleave": "Sek",
+            "ConcussiveSmash": "Otřásající úder",
+            "Dazed": "Omámení",
+            "DisarmingStrike": "Odzbrojující úder",
+            "Flourish": "Rozmach",
+            "GapingWounds": "Široce otevřené rány",
+            "HamstringShot": "Výstřel na šlachu",
+            "Hamstrung": "Zasažená šlacha",
+            "Heartstopper": "Zástava srdce",
+            "Lacerate": "Roztržení",
+            "Maimed": "Zmrzačení",
+            "MaimingStrike": "Zmrzačující úder",
+            "MobileShot": "Pohyblivý výstřel",
+            "OffBalance": "Vyveden z rovnováhy",
+            "PiercingShot": "Průrazný výstřel",
+            "PiercingStrike": "Průrazný úder",
+            "PommelStrike": "Úder hlavicí",
+            "Prepare": "Připravit",
+            "Rush": "Útok vpřed",
+            "Tenacity": "Houževnatost",
+            "Topple": "Svržení",
+            "WeakGrip": "Slabý úchop",
+            "WeakeningStrike": "Oslabující úder",
+            "WeaponAction": "Akce se zbraní"
+        },
+        "Backup": {
+            "Daily": "Denně",
+            "Forever": "Navždy",
+            "HalfMonth": "Půl měsíce",
+            "MissingPack": "Zadané zálohovací kompendium je neplatné! Žádná záloha nebyla vytvořena!",
+            "Monthly": "Měsíčně",
+            "OneMonth": "Jeden měsíc",
+            "OneWeek": "Jeden týden",
+            "OneYear": "Rok",
+            "SixMonths": "Šest měsíců",
+            "ThreeMonths": "Tři měsíce",
+            "Weekly": "Týdně"
+        },
+        "Cleave": {
+            "Use": "Zasáhnout rozmachem blízký cíl?"
+        },
+        "CommonFeatures": {
+            "Amphibious": "Obojživelnost",
+            "Bite": "Kousnutí",
+            "BreathWeapon": "Dechová zbraň",
+            "ChangeShape": "Změna tvaru",
+            "Charge": "Náběh",
+            "Claws": "Drápy",
+            "DevilsSight": "Ďábelský zrak",
+            "Evasion": "Uhýbání",
+            "Flyby": "Průlet",
+            "HeatedBody": "Rozpálené tělo",
+            "MagicResistance": "Odolání vůči magii",
+            "Maul": "Drtivý útok",
+            "Mending": "Oprava",
+            "Multiattack": "Více útoků ({numAttacks} útoků)",
+            "PackTactics": "Taktika smečky",
+            "Regeneration": "Regenerace",
+            "ShadowStealth": "Skrytí ve stínu",
+            "Shapechanger": "Měňavec",
+            "Shred": "Roztrhání",
+            "StoneLethargy": "Kamenná letargie",
+            "Tail": "Ocas",
+            "WaterBreathing": "Dýchání pod vodou",
+            "WeightOfSorrow": "Váha žalu"
+        },
+        "Config": {
+            "Abilities": "Vlastnosti:",
+            "Ability": "Vlastnost:",
+            "AffectAllies": "Mělo by to ovlivnit spojence:",
+            "AllowEnemies": "Povolit výběr ne-přátelských tokenů?",
+            "Animation": "Animace:",
+            "Animations": {
+                "Air": "Vzdušná",
+                "Celestial": "Nebeská",
+                "Complex": "Komplexní",
+                "Default": "Výchozí",
+                "Earth": "Zemní",
+                "Fiend": "Démonická",
+                "Fire": "Ohnivá",
+                "Future": "Časová",
+                "Lightning": "Blesková",
+                "Nature": "Přírodní",
+                "None": "Žádná",
+                "Saiyan": "Saiyanská",
+                "Shadow": "Stínová",
+                "Simple": "Jednoduchá",
+                "Smoke": "Kouřová",
+                "Water": "Vodní"
+            },
+            "ApplyFilter": "Použít filtr:",
+            "ArmoTypes": "Typy zbroje:",
+            "AttackBonus": "Bonus k útoku:",
+            "AvatarImg": "Obrázek avatara:",
+            "AvatarImgPriority": "Priorita obrázku avatara:",
+            "BaseDiceNumber": "Základní počet kostek:",
+            "BaseHealing": "Základní léčení:",
+            "BlockingStatuses": "Blokující stavy:",
+            "Character": "Postava",
+            "CheckSave": "Ověření záchrany:",
+            "CheckSaves": "Ověření záchran:",
+            "ClassIdentifier": "Identifikátor povolání:",
+            "Color": "Barva:",
+            "Colors": {
+                "Blue": "Modrá",
+                "Blue02": "Modrá (alternativní)",
+                "BlueYellow": "Modrá a žlutá",
+                "Cycle": "Střídající se",
+                "DarkBlack": "Temně černá",
+                "DarkBlue": "Temně modrá",
+                "DarkGreen": "Temně zelená",
+                "DarkPink": "Temně růžová",
+                "DarkPurple": "Temně fialová",
+                "DarkRed": "Temně červená",
+                "DarkWhiteBlue": "Temně bílá a modrá",
+                "Green": "Zelená",
+                "Green02": "Zelená (alternativní)",
+                "GreenOrange": "Zelená a oranžová",
+                "Grey": "Šedá",
+                "LightBlue": "Světle modrá",
+                "LightGreen": "Světle zelená",
+                "Orange": "Oranžová",
+                "Pink": "Růžová",
+                "PinkPurple": "Růžová a fialová",
+                "Purple": "Fialová",
+                "Rainbow": "Duhová",
+                "Random": "Náhodná",
+                "Red": "Červená",
+                "White": "Bílá",
+                "Yellow": "Žlutá"
+            },
+            "CombatOnly": "Povoleno pouze v boji",
+            "CompendiumName": "Název kompendia {option}:",
+            "Conditions": "Stavy:",
+            "CreatureTypes": "Typy bytosti:",
+            "CriticalOnly": "Pouze při kritickém zásahu:",
+            "DC": "SO:",
+            "DamageType": "Typ zranění:",
+            "DamageTypes": "Typy zranění:",
+            "DarknessAnimation": "Animace temnoty:",
+            "DiceSize": "Počet stěn kostky:",
+            "DisplayFormulaRoll": "Zobrazit výpočet hodu:",
+            "Distance": "Vzdálenost:",
+            "DurationSeconds": "Doba trvání (v sekundách):",
+            "Expire": "Vypršení:",
+            "FailedSave": "Neúspěšná záchrana",
+            "Formula": "Vzorec:",
+            "HideToken": "Skrýt token:",
+            "HitPoints": "Body výdrže:",
+            "HitTarget": "Zasažený cíl:",
+            "IgnoredCreatureTypes": "Ignorované typy bytostí:",
+            "ImmuneCreatures": "Imunní typy bytostí:",
+            "MaxLevel": "Maximální úroveň:",
+            "Name": "Název:",
+            "Number": "Číslo:",
+            "Percentage": "Procento:",
+            "PlayAnimation": "Přehrát animaci:",
+            "PlayTeleportAnimation": "Přehrát animaci teleportace:",
+            "PromptToUse": "Výzva k použití:",
+            "Range": "Dosah:",
+            "RealDarkness": "Použít skutečnou temnotu:",
+            "SaveAbilities": "Záchranné vlastnosti:",
+            "SaveDC": "SO záchrany:",
+            "Saves": "Záchrany:",
+            "Scale": "Škála:",
+            "ScaleIdentifier": "Identifikátor škály:",
+            "ShowIcon": "Vždy zobrazovat ikonu aury",
+            "ShowRoll": "Zobrazit hod:",
+            "Skills": "Dovednosti:",
+            "Sound": "Zvuk:",
+            "SpecificAnimation": "Animace {option}:",
+            "SpellSchools": "Školy magie:",
+            "TokenImg": "Obrázek tokenu:",
+            "TokenImgPriority": "Priorita obrázku tokenu:",
+            "Trigger": "Spouštěč:",
+            "TurnTrigger": "Spouštěč tahem:",
+            "UseFormula": "Použít vzorec:",
+            "WeaponProperties": "Parametry zbraně:"
+        },
+        "Cover": {
+            "Full": "Plný kryt",
+            "Half": "Poloviční kryt",
+            "No": "Bez krytu",
+            "ThreeQuarters": "Tříčtvrteční kryt",
+            "Unknown": "Neznámý kryt"
+        },
+        "CustomMacros": {
+            "NoIdentifier": "Registrované makro nemělo identifikátor a bylo přeskočeno!",
+            "NoReturn": "Makro \"{name}\" nevrací platná data a bylo přeskočeno!"
+        },
+        "CustomTypes": {
+            "SpellFeature": "Parametry kouzla"
+        },
+        "Dialog": {
+            "DamageType": "Jaký typ zranění?",
+            "HitDieLabel": "{className} ({denomination}) – {remaining}/{max}",
+            "Invalid": "Neplatný záznam!",
+            "Missed": "Ověření útoku ({attackTotal}) selhalo. Použít {itemName}?",
+            "RemoteMessage": "Čeká se na výběr ve vzdáleném dialogu od",
+            "Use": "Použít {itemName}?",
+            "UseAttack": "Použít {itemName}? (Celkový útok: {attackTotal})",
+            "UseAttackDetail": "Použít {itemName} pro bonus {bonusFormula}? (Celkový útok: {attackTotal})",
+            "UseExtraCost": "Použít {itemName}? (Spotřebuje {quantity} {quantityName})",
+            "UseName": "Použít {itemName} [{tokenName}]?",
+            "UseOn": "Použít {itemName} na {tokenName}?",
+            "UseRollTotal": "Použít {itemName}? (Celkový hod: {rollTotal})",
+            "UseRollTotalDetail": "Použít {itemName} pro bonus {bonusFormula}? (Celkový hod: {rollTotal})",
+            "UseWeaponDamageTotal": "Použít {itemName}? (Zranění zbraně: {damageTotal})",
+            "UseWeaponDamageTotalWithAverage": "Použít {itemName}? (Zranění zbraně: {damageTotal}; Průměrné zranění: {damageAverage})",
+            "WhatDo": "Co chceš dělat?",
+            "YesDetail": "Ano ({detail})"
+        },
+        "Direction": {
+            "Away": "Pryč",
+            "Direction": "Směr",
+            "Down": "Dolů",
+            "East": "východ",
+            "Left": "Vlevo",
+            "North": "sever",
+            "Northeast": "severovýchod",
+            "Northwest": "severozápad",
+            "Right": "Vpravo",
+            "South": "jih",
+            "Southeast": "jihovýchod",
+            "Southwest": "jihozápad",
+            "Towards": "Směrem k",
+            "Up": "Nahoru",
+            "West": "západ"
+        },
+        "Distance": {
+            "0": "0 stop",
+            "10": "10 stop",
+            "15": "15 stop",
+            "20": "20 stop",
+            "5": "5 stop",
+            "DistanceFeet": "{distance} stop"
+        },
+        "EffectInterface": {
+            "Copy": "(Kopírovat)",
+            "ImportData": "Importovat data: ",
+            "Item": "Tato položka slouží k ukládání dat pro rozhraní efektů CPR. Její odstranění způsobí smazání všech uložených aktivních efektů! Pokud je povoleno nastavení rozhraní efektů, tak se tato položka skryje.",
+            "SelectToken": "Nejprve, prosím, vyber token!",
+            "StatusAdd": "Přidat do stavových efektů",
+            "StatusRemove": "Odebrat ze stavových efektů"
+        },
+        "EmbeddedMacros": {
+            "Conscious": {
+                "Label": "Při vědomí:"
+            },
+            "Disposition": {
+                "All": {
+                    "Label": "Všichni"
+                },
+                "Ally": {
+                    "Label": "Spojenec"
+                },
+                "Enemy": {
+                    "Label": "Nepřítel"
+                },
+                "Label": "Postoj:"
+            },
+            "Distance": {
+                "Label": "Vzdálenost:"
+            },
+            "HeaderHint": "Ve výchozím rozsahu jsou dostupné všechny <code>xUtils</code> (např. <code>itemUtils</code>), stejně tak <code>constants</code>, <code>Crosshairs</code>, <code>Summons</code>, <code>Teleport</code> a <code>DialogApp</code>. Pro pomoc při psaní CPR maker navštiv Discord kanál <a href=\"https://discord.com/channels/1089258451949064296/1118332135749734451\">zde</a>.",
+            "Identifier": {
+                "Label": "Identifikátor:"
+            },
+            "Macro": {
+                "Label": "Makro:"
+            },
+            "Name": {
+                "Label": "Název:"
+            },
+            "Pass": {
+                "Label": "Fáze:",
+                "actorCreated": {
+                    "Label": "Aktér vytvořen"
+                },
+                "actorDeleted": {
+                    "Label": "Aktér odstraněn"
+                },
+                "actorEquipped": {
+                    "Label": "Aktér vybaven"
+                },
+                "actorUnequipped": {
+                    "Label": "Aktér odložil"
+                },
+                "applyDamage": {
+                    "Label": "Aplikovat zranění"
+                },
+                "attackRollComplete": {
+                    "Label": "Ověření útoku dokončeno"
+                },
+                "bonus": {
+                    "Label": "Bonus"
+                },
+                "combatEnd": {
+                    "Label": "Konec boje"
+                },
+                "combatStart": {
+                    "Label": "Začátek boje"
+                },
+                "context": {
+                    "Label": "Kontext"
+                },
+                "create": {
+                    "Label": "Vytvořit"
+                },
+                "created": {
+                    "Label": "Vytvořeno"
+                },
+                "damageRollComplete": {
+                    "Label": "Hod na zásah dokončen"
+                },
+                "dead": {
+                    "Label": "Mrtvý"
+                },
+                "deleted": {
+                    "Label": "Odstraněno"
+                },
+                "equipped": {
+                    "Label": "Vybaveno"
+                },
+                "everyTurn": {
+                    "Label": "Každý tah"
+                },
+                "long": {
+                    "Label": "Důkladný odpočinek"
+                },
+                "moved": {
+                    "Label": "Se pohnul/a"
+                },
+                "movedNear": {
+                    "Label": "Se pohnul/a blízko"
+                },
+                "post": {
+                    "Label": "Po"
+                },
+                "postAttackRoll": {
+                    "Label": "Po hodu na útok"
+                },
+                "preItemRoll": {
+                    "Label": "Před hodem položky"
+                },
+                "preTargeting": {
+                    "Label": "Před zacílením"
+                },
+                "preambleComplete": {
+                    "Label": "Úvod dokončen"
+                },
+                "rollFinished": {
+                    "Label": "Hod dokončen"
+                },
+                "savesComplete": {
+                    "Label": "Záchranné hody dokončeny"
+                },
+                "sceneApplyDamage": {
+                    "Label": "Scéna: Aplikovat zranění"
+                },
+                "sceneAttackRollComplete": {
+                    "Label": "Scéna: Ověření útoku dokončeno"
+                },
+                "sceneBonus": {
+                    "Label": "Scána: bonus"
+                },
+                "sceneDamageRollComplete": {
+                    "Label": "Scéna: Hod na zásah dokončen"
+                },
+                "movedScene": {
+                    "Label": "Scéna: Se pohnul/a"
+                },
+                "scenePostAttackRoll": {
+                    "Label": "Scéna: Po hodu na útok"
+                },
+                "scenePreambleComplete": {
+                    "Label": "Scéna: Úvod dokončen"
+                },
+                "sceneRollFinished": {
+                    "Label": "Scéna: Hod dokončen"
+                },
+                "short": {
+                    "Label": "Krátký odpočinek"
+                },
+                "situational": {
+                    "Label": "Situační"
+                },
+                "targetApplyDamage": {
+                    "Label": "Cíl: Aplikuje zranění"
+                },
+                "targetAttackRollComplete": {
+                    "Label": "Cíl: Ověření útoku dokončeno"
+                },
+                "targetDamageRollComplete": {
+                    "Label": "Cíl: Hod na zásah dokončen"
+                },
+                "targetPostAttackRoll": {
+                    "Label": "Cíl: Hod po útoku"
+                },
+                "targetPreItemRoll": {
+                    "Label": "Cíl: Před hodem položky"
+                },
+                "targetPreambleComplete": {
+                    "Label": "Cíl: Úvod dokončen"
+                },
+                "targetRollFinished": {
+                    "Label": "Cíl: Hod dokončen"
+                },
+                "targetSavesComplete": {
+                    "Label": "Cíl: Záchranné hody dokončeny"
+                },
+                "turnEnd": {
+                    "Label": "Konec tahu"
+                },
+                "turnEndNear": {
+                    "Label": "Konec tahu (blízký)"
+                },
+                "turnStart": {
+                    "Label": "Začátek tahu"
+                },
+                "turnStartNear": {
+                    "Label": "Začátek tahu (blízkého)"
+                                    },
+                "unequipped": {
+                    "Label": "Odloženo"
+                },
+                "sceneDeleted": {
+                    "Label": "Scéna odstraněna"
+                },
+                "sceneCreate": {
+                    "Label": "Scéna vytvořena"
+                }
+            },
+            "Priority": {
+                "Label": "Priorita:"
+            },
+            "Tabs": {
+                "New": {
+                    "Label": "Nové makro",
+                    "Tooltip": "Klikni pro přidání makra."
+                }
+            },
+            "Type": {
+                "Label": "Typ:",
+                "aura": "Aura",
+                "check": "Ověření",
+                "combat": "Boj",
+                "death": "Smrt",
+                "effect": "Efekt",
+                "item": "Položka",
+                "midi-actor": "Aktér Midi-QoL",
+                "midi-item": "Položka Midi-QoL",
+                "movement": "Pohyb",
+                "region": "Oblast",
+                "rest": "Odpočinek",
+                "save": "Záchrana",
+                "skill": "Dovednost",
+                "template": "Šablona"
+            }
+        },
+        "Error": {
+            "ActivityNotFound": "Aktivita (identifikátor {identifier}) nebyla u položky nalezena!",
+            "ActorNotFound": "Požadovaný aktér nebyl v postranním panelu nalezen!",
+            "CompendiumItemNotFound": "Položka nebyla v kompendiu nalezena!",
+            "CompendiumNotFound": "Bylo zadáno neplatné kompendium!",
+            "ConfigureCompendium": "Tato automatizace vyžaduje následující nastavení CPR kompendia:",
+            "EnableSetting": "Tato automatizace vyžaduje pro svou funkci povolení následujících nastavení CPR:",
+            "MissingDescriptionJournal": "CPR: Popis nebyl nalezen!",
+            "MissingDescriptionPage": "Chybí stránka s popisem!",
+            "NoActors": "Ve složce nebyly nalezeni žádní aktéři: \"{folder}\"!",
+            "OutOfDateItem": "Automatizace je zastaralá!",
+            "RulesMismatch": "Automatizace této položky není v souladu s pravidly nastavenými u položky!",
+            "UpdateItem": "Aktualizovat položku"
+        },
+"Firearm": {
+            "Ammunition": "Munice střelné zbraně",
+            "Broken": "Poničené",
+            "Damaged": "Poškozené",
+            "Explosive": "Výbušné:",
+            "Firearm": "Střelná zbraň",
+            "Grit": "Výdrž",
+            "GritRegain": "Výdrž obnovena! ({regained})",
+            "HasMisfired": "se zasekla!",
+            "IsBroken": "Tato palná zbraň je poničená a musí být opravena!",
+            "IsDamaged": "Tato palná zbraň je poškozená a musí být opravena!",
+            "Misfire": "Zaseknutí",
+            "MisfireScore": "Skóre zaseknutí:",
+            "NoAmmo": "Nemáš žádnou munici!",
+            "NoGrit": "Nemáš žádnou výdrž!",
+            "NoGuns": "Nemáš žádné střelné zbraně k použití!",
+            "NoReloads": "Nemáš žádné střelné zbraně, které by bylo třeba přebít!",
+            "NoRepairs": "Nemáš žádné střelné zbraně k opravě!",
+            "NoTinkers": "Nemáš Kutilské pomůcky na opravy!",
+            "Other": "Jiné",
+            "OutOfAmmo": "Nemáš žádnou munici, musíš přebít!",
+            "RepairFailure": "{weaponName} je nyní poškozena!",
+            "RepairSuccess": "{weaponName} byla úspěšně opravena!",
+            "SelectAmmo": "Jakou munici použít?",
+            "SelectReload": "Kterou zbraň přebít?",
+            "SelectRepair": "Kterou zbraň opravit?",
+            "SelectUse": "Kterou zbraň použít?",
+            "SelectViolent": "Kolik výdrže chceš použít?",
+            "Status": "Stav:",
+            "TrickShot": "Trikový výstřel",
+            "TrickShotSelect": "Provedeš trikový výstřel?",
+            "Undamaged": "Nepoškozené"
+        },
+        "Generic": {
+            "Actions": "Akce",
+            "Available": "Dostupné",
+            "CPR": "Kotlík hojných zdrojů",
+            "Cancel": "Zrušit",
+            "Chat": "Chat",
+            "Check": "Test vlastnosti",
+            "CheckSpelling": "Kontrola pravopisu",
+            "Close": "Zavřít",
+            "ConditionResistance": {
+                "Description": "Odolání vůči stavům {condition}, Výhoda na záchranu. 1/true pro všechny záchrany, nebo čárkami oddělený seznam vlastností (např. str,dex).",
+                "Name": "Odolání vůči stavům {condition}"
+            },
+"ConditionVulnerability": {
+            "Description": "Zranitelnost vůči stavu {condition}, Nevýhoda na záchranu. 1/true pro všechny záchrany, nebo čárkou oddělený seznam schopností (např. str,dex).",
+            "Name": "Zranitelnost vůči stavům {condition}"
+            },
+            "Configure": "Nastavit",
+            "ConsumeItemToUse": "Spotřebuješ pro použití {item}?",
+            "ConsumeSpellSlotToUse": "Spotřebuješ pro použití pozici kouzla?",
+            "Disabled": "Deaktivováno",
+            "Distance": "Vzdálenost",
+            "Edit": "Upravit",
+            "Failure": "Selhání",
+            "Go": "Teď!",
+            "Import": "Importovat",
+            "Max": "Max:",
+            "MissingScale": "HAktér nemá nastavenou škálu {scaleName}!",
+            "No": "Ne",
+            "NoEffect": "{itemName} musí mít efekt pro obecnou schopnost nestvůry!",
+            "NoMoreResource": "Nedostatek požadovaného zdroje!",
+            "NoType": "Žádný typ",
+            "None": "Žádné",
+            "Ok": "Ok",
+            "Recharge": "Nabít:",
+            "RecoverSpellSlot": "Vyber pozici kouzla k obnově:",
+            "Replace": "Nahradit",
+            "Rerolling": "Přehoz {origDie} ({origResult}):",
+            "Select": "Vybrat",
+            "SelectDamageType": "Vyber typ zranění:",
+            "SelectEffect": "Vyber efekt:",
+            "SelectSpell": "Vyber kouzlo:",
+            "SelectSpellSlot": "Zvol pozici kouzla:",
+            "SelectTargetEffect": "Vyber efekt pro každý cíl:",
+            "Skill": "Ověření dovednosti",
+            "Submit": "Odeslat",
+            "Success": "Úspěch",
+            "Summon": "Přivolat",
+            "Total": "Celkem",
+            "TurnEnd": "Konec tahu",
+            "TurnStart": "Začátek tahu",
+            "Uncontested": "Nekonfliktní",
+            "Update": "Aktualizovat",
+            "UseItem": "Použít {item}?",
+            "Yes": "Ano",
+            "You": "Ty"
+        },
+"GenericEffects": {
+            "ConditionAdvantage": "Výhoda stavu",
+            "ConditionDisadvantage": "Nevýhoda stavu",
+            "ConditionFailure": "Selhání stavu",
+            "ConditionImmunity": "Imunita vůči stavu",
+            "CriticalThreshold": "Kritický práh",
+            "InvalidTarget": "Neplatný cíl",
+            "TemplateEffect": "Šablona {itemName}"
+        },
+        "Grovelthrash": {
+            "Earthquake": "Zemětřesení (Grovelthrash)",
+            "MeldIntoStone": "Splyň s kamenem (Grovelthrash)",
+            "StoneShape": "Tvaruj kámen (Grovelthrash)"
+        },
+        "HeaderButtons": {
+            "PackId": {
+                "Tooltip": "Kopírovat ID balíčku"
+            }
+        },
+        "Item": {
+            "Condense": "Zhuštění",
+            "SelectAmount": "Vyber množství k předání:",
+            "Send": "Poslat",
+            "Split": "Rozdělit",
+            "SplitSize": "Nové množství:"
+        },
+        "ItemDirectory": {
+            "ExportForSharing": "Exportovat data (pro sdílení)"
+        },
+        "Journal": {
+            "Chat": "Zde zobraz návod k použití Kotlíku hojných zdrojů:",
+            "Readme": "Přečíst si",
+            "Welcome": "<p>Děkujeme, že používáš tento modul! Pokud najdeš nějaké chyby, prosíme, buď založ problém na <a href=\"https://github.com/chrisk123999/chris-premades\">GitHubu</a>, nebo nahlaš chybu na našem <a href=\"https://discord.gg/BumxBcQDrT\">Discordu</a>. Neobtěžuj Tima Posneyho, Zhella, ani jakéhokoliv jiného autora modulů s chybami či problémy souvisejícími s tímto modulem!</p><p>Rozšířené informace o modulu včetně aktuálních FAQ, návodu pro začátečníky a informací o funkcích jsou k dispozici na <a href=\"https://github.com/chrisk123999/chris-premades/wiki\">Wiki Kotlíku hojných zdrojů</a>. Wiki poskytuje vysvětlení, obrázky a příklady, které mohou odpovědět na většinu otázek o modulu. </p><hr><a href=\"https://ko-fi.com/chrisk123999\"><img width=\"60%\" src=\"modules/chris-premades/images/chris-kofi.svg\"></a><a href=\"https://ko-fi.com/hi25114\"><img width=\"60%\"  src=\"modules/chris-premades/images/michael-kofi.svg\"></a>"
+        },
+        "Light": {
+            "Bright": "Jasné",
+            "Dim": "Tlumené"
+        },
+        "MACROS": {
+            "AuraOfVitality": {
+                "Select": "Vyber spojence k léčení:"
+            }
+        },
+        "Macros": {
+            "AberrantDragonmark": {
+                "ConfigId": "ID přiřazeného kouzla",
+                "Damage": "Zrůdné dračí znamení: Zranění",
+                "Expend": "Utratit kostku obnovy?",
+                "Healing": "Zrůdné dračí znamení: Léčení",
+                "NoValid": "Nenalezena žádná platná kouzla!",
+                "Select": "Vyber kouzlo přiřazené k této schopnosti:"
+            },
+            "AbilityDrain": {
+                "Name": "Vysátí vlastnosti"
+            },
+            "Actions": {
+                "Dodge": "Uhýbání",
+                "Grapple": "Zápas",
+                "GrappleEscape": "Zápas: Únik",
+                "GrappleEscapeSelect": "Pokusíš se uniknout ze sevření?",
+                "GrappledBy": "Držený tokenem {tokenName}",
+                "Grappling": "Držící token {tokenName}"
+            },
+            "AdvantageDamageBonus": {
+                "Bonus": "Bonusové zranění při uplanění Výhody k útoku:",
+                "Name": "Bonusové zranění za výhodu"
+            },
+            "AllPurposeTool": {
+                "Channel": "Univerzální nástroj: Nasměrovat tvořivou sílu",
+                "Name": "Univerzální nástroj",
+                "Select": "Vyber řemeslníické nářadí:",
+                "Spell": "Vyber trik:"
+            },
+            "AncestralProtectors": {
+                "Target": "Ochránci předků: Cíl"
+            },
+            "AnimateDead": {
+                "Command": "Stvoř nemrtvého: Příkaz"
+            },
+            "AnimatingPerformance": {
+                "Command": "Oživující vystoupení: Příkaz",
+                "Dance": "Neodolatelný tanec",
+                "ForceEmpoweredSlam": "Úder posílený silou",
+                "ImmutableForm": "Nezměnitelná forma",
+                "Size": "Jaká je velikost předmětu?"
+            },
+            "Antagonize": {
+                "NoWeapons": "Cíl nemá vybavené žádné zbraně!",
+                "SelectTarget": "Kdo bude napaden?",
+                "SelectWeapon": "Jaká zbraň bude použita k útoku?"
+            },
+            "ArcaneAbjuration": {
+                "Plane": "Je {name} mimo svou svéru původu?"
+            },
+            "ArcaneJolt": {
+                "Harm": "Ublížit",
+                "HarmOrHeal": "Mystický úder: Ublížit nebo léčit?",
+                "Heal": "Léčit",
+                "WhoHeal": "Koho léčit?"
+            },
+            "ArcaneVigor": {
+                "Choose": "Vyber kostky obnovy k utracení:"
+            },
+            "ArcaneWard": {
+                "Protect": "Chránit {tokenName} tvou mystickou ochranou?"
+            },
+            "ArmorOfAgathys": {
+                "Reflect": "Zbroj Agathysu: Odrazit"
+            },
+            "AstralTrance": {
+                "Ability": "Jakou použít vlastnost pro ověření nástrojů?",
+                "WeapToolProf": "Zdatnost se zbraní/nástrojem",
+                "Which": "Vyber zdatnosti:"
+            },
+            "AuraDamage": {
+                "Name": "Zraňující aura"
+            },
+            "AuraOfLife": {
+                "RemoveTempmax": "Při pobytu v auře dočasně odstranit existující snížení maxima HP:"
+            },
+            "AuraOfVitality": {
+                "Healing": "Aura vitality: Léčení"
+            },
+            "AutoGrapple": {
+                "DC": "Pevné SO pro únik ze sevření (v případě konfliktu je to 0):",
+                "Disadvantage": "Udělit Nevýhodu při hodu na únik:",
+                "Name": "Automatické držení"
+            },
+            "AutoPush": {
+                "Name": "Automatické odstrčení"
+            },
+            "AwakenedSpellbook": {
+                "Select": "Změnit typ zranění?"
+            },
+            "BalmOfPeace": {
+                "Balm": "Balzám míru"
+            },
+            "BalmOfTheSummerCourt": {
+                "Num": "k6",
+                "Select": "Kolik balzámů?"
+            },
+            "BanishingSmite": {
+                "Hp": "Požadované BV:"
+            },
+            "Banishment": {
+                "PlaneSelect": "Vyber všechny cíle nepocházející z této sféry."
+            },
+            "BardicInspiration": {
+                "DC": "Jaké je SO?",
+                "MoteAttack": "Záře potenciálu – útok",
+                "MoteHeal": "Záře potenciálu – léčení"
+            },
+            "BatteringRoots": {
+                "Mastery": "Jaké mistrovství použít?"
+            },
+            "BeguilingTwist": {
+                "Select": "Jaký stav?"
+            },
+            "Berserk": {
+                "Animation": "Animace berserka:",
+                "HPThreshold": "Práh BV:",
+                "Name": "Berserk"
+            },
+            "BestialSoul": {
+                "Already": "Už máš benefit Bestiální duše aktivován!",
+                "Climbing": "Šplh",
+                "Form": "Která forma?",
+                "Jumping": "Skákání",
+                "Swimming": "Plavání"
+            },
+            "BestowCurse": {
+                "Ability": "Nevýhoda k hodnotě vlastnosti",
+                "AbilitySelect": "Na jakou vlastnost?",
+                "Attack": "Nevýhoda na útoky",
+                "Damage": "Extra zranění",
+                "DamageFlavor": "Extra zranění uvržené kletby",
+                "Other": "Jiné",
+                "SelectCurse": "Jakou kletbu uvrhuješ?",
+                "Turn": "Ztracený tah"
+            },
+            "BigbysBeneficentBracelet": {
+                "BigbysHand": "Bigbyho ruka (9. stupeň)",
+                "ForceSculpture": "Silová socha",
+                "MageHand": "Mágova ruka (Bigbyho dobročinný náramek)"
+            },
+            "BigbysHand": {
+                "Big": "Cíl je příliš velký!",
+                "Clenched": "Sevřená pěst",
+                "Crush": "Svírající ruka: Rozdrtit",
+                "Direction": "Kterým směrem chceš cíl odstrčit?",
+                "Forceful": "Silná ruka",
+                "Grasping": "Svírající ruka",
+                "Interposing": "Zástupná ruka",
+                "Move": "Bigbyho ruka: Pohyb"
+            },
+            "Blackrazor": {
+                "Backlash": "Černobřit: Zpětný úder",
+                "Devoured": "Pohlcená duše"
+            },
+            "BladeFlourish": {
+                "Defensive": "Obranné máchnutí",
+                "Master": "Použít na máchnutí mečem k6 namísto Bardské inspirace?",
+                "Mobile": "Pohyblivé máchnutí",
+                "Movement": "Máchnutí mečem: Pohyb",
+                "Push": "Odstrčit cíl o {distance} stop?",
+                "Select": "Použít máchnutí mečem?",
+                "Slashing": "Sečné máchnutí"
+            },
+            "BlessingOfTheForge": {
+                "None": "Cíl nemá vybavené žádné vhodné nemagické zbraně ani zbroj!",
+                "Select": "Který předmět očaruješ?"
+            },
+            "BlindingSmite": {
+                "Blind": "Oslepující úder: Oslepení"
+            },
+            "Blink": {
+                "Away": "Zmizel"
+            },
+            "BloodCurses": {
+                "Amplify": "Zesílit krevní zakletí?"
+            },
+            "BolsteringMagic": {
+                "Already": "Cíl už je posílen!",
+                "Bonus": "Bonus k útoku a vlastnosti",
+                "None": "Žádné pozice k obnově!",
+                "Regain": "Obnovit pozici kouzla",
+                "Select": "Který benefit?",
+                "SlotRegained": "Pozice kouzla ({slotLevel}. stupně) obnovena!"
+            },
+            "BoomingBlade": {
+                "Moved": "Dunivé ostří: Pohyb",
+                "NoWeapons": "Nemáš vybavenou žádnou vhodnou zbraň!",
+                "SelectWeapon": "Jakou zbraň používáš při seslání tohoto kouzla?",
+                "WillingMove": "Pohnul se token {actorName} dobrovolně?"
+            },
+            "BootsOfElvenkind": {
+                "Silent": "Toto ověření závisí na tichém pohybu"
+            },
+            "BorrowedKnowledge": {
+                "SelectSkill": "Vyber dovednost, ve které získáš dočasnou zdatnost:"
+            },
+            "BranchesOfTheTree": {
+                "Rage": "Aby šlo použít tuto schopnost, musíš zuřit!"
+            },
+            "BrandOfCastigation": {
+                "Branded": "Runa spoutání: Označení",
+                "Damage": "Runa spoutání: Zranění"
+            },
+            "BrandingSmite": {
+                "Branded": "Cejchovací úder: Označení"
+            },
+            "BreathOfTheDragon": {
+                "Augment": "Zesílení (1 čchi)",
+                "Select": "Zvol detaily dechu"
+            },
+            "BrutalStrike": {
+                "Choose": "Obětovat pro použití {item} Výhodu?"
+            },
+            "Bulwark": {
+                "Use": "Použít reakci k zabránění posunutí?"
+            },
+            "CallLightning": {
+                "StormBolt": "Úder blesku",
+                "Storming": "Zuří již bouře?"
+            },
+            "CallTheHunt": {
+                "Bonus": "Použít bonusové zranění Volání lovu? (1k6)",
+                "Select": "Vyber cíle (max: {maxTargets})"
+            },
+            "CalmEmotions": {
+                "ConditionImmunity": "Imunita vůči stavu",
+                "Indifference": "Lhostejnost"
+            },
+            "CelestialRevelation": {
+                "Damage": "Vnitřní záře: Zranění",
+                "End": "Nebeské zjevení: Konec"
+            },
+            "ChainLightning": {
+                "Leap": "Řetězený blesk: Přeskočení",
+                "Select": "Kam má blesk přeskočit? Max: {maxTargets}"
+            },
+            "ChangeSeason": {
+                "Autumn": "Podzim",
+                "Chat": "Změna ročního období: {season}",
+                "Select": "Jaké roční období?",
+                "Spring": "Jaro",
+                "Summer": "Léto",
+                "Winter": "Zima"
+            },
+            "ChaosBolt": {
+                "AlwaysBounce": "Vždy přeskočí:",
+                "Bounce": "Na koho má Chaotický blesk přeskočit?",
+                "BounceFeature": "Chaotický blesk: Přeskočení",
+                "Select": "Vyber typ zranění:"
+            },
+            "CheckCover": {
+                "TargetCover": "Kryt cíle:",
+                "YourCover": "Tvůj kryt:"
+            },
+            "ChillTouch": {
+                "Undead": "Dotek smrti: Postih pro nemrtvé"
+            },
+            "ChromaticOrb": {
+                "BaseMaxJumps": "Základní max. počet přeskočení:",
+                "Bounce": "Na koho má kouzlo přeskočit?",
+                "TargetDamageSelection": "Výběr zranění podle cíle:"
+            },
+            "CloudRune": {
+                "Reaction": "Použít {item} k odklonění útoku na {name}?"
+            },
+            "Cloudkill": {
+                "Damage": "Oblak smrti: Zranění",
+                "NoRoom": "Na přesun Oblaku smrti není prostor!"
+            },
+            "Command": {
+                "Approach": "Pojď sem!",
+                "Drop": "Odhoď to!",
+                "Flee": "Uteč!",
+                "Grovel": "K zemi!",
+                "Halt": "Zastav!",
+                "YouMust": "Musíš: "
+            },
+            "CompelledDuel": {
+                "EndEffect": "Sesilatel ukončil svůj tah více než 30 stop od cíle. Odstranit efekt?",
+                "Moved": "Vynucený duel: Pohyb",
+                "Source": "Vynucený duel: Zdroj",
+                "Target": "Vynucený duel: Cíl"
+            },
+            "ContextualBonus": {
+                "Advantage": "Dává Výhodu:",
+                "Bonus": "Bonus, pokud není Výhoda:",
+                "Checks": "Ověření vlastností, které mohou získat bonus:",
+                "Condition": "Kdy se získá bonus:",
+                "Name": "Kontextový bonus",
+                "Saves": "Záchranné hody, které mohou získat bonus:",
+                "Skills": "Ověření dovedností, které mohou získat bonus:"
+            },
+            "ControlUndead": {
+                "Controlled": "Ovládni nemrtvé: Ovládnutý"
+            },
+            "Countercharm": {
+                "AllyFail": "{name} neuspěl v záchraně ({total})! Použít {feature}?",
+                "Use": "Neuspěl/a jsi v záchraně ({total})! Použít {feature}?"
+            },
+            "CreatePactWeapon": {
+                "CustomCompendium": "Vlastní kompendium paktové zbraně:",
+                "Dismiss": "Zrušit zbraň paktu",
+                "Existing": "Vylepšit existující zbraň",
+                "Select": "Vyber zbraň paktu",
+                "Summon": "Přivolat novou zbraň",
+                "Type": "Jak tuto schopnost používáš?",
+                "Weapon": "Zbraň paktu"
+            },
+            "CrimsonRite": {
+                "NoRites": "U aktéra nenalezeny žádné rituály!",
+                "Select": "Jaký Krevní rituál?",
+                "Weapon": "Na kterou zbraň rituál aktivuješ?"
+            },
+            "Crusher": {
+                "Move": "Posunout cíl?"
+            },
+            "CrystalBlade": {
+                "Bright": "Aktivovat čepel (jasné světlo)",
+                "Dim": "Aktivovat čepel (tlumené světlo)",
+                "Douse": "Zhasnout čepel",
+                "Heal": "Křišťálová čepel: Léčení",
+                "Light": "Křišťálová čepel: Světlo"
+            },
+            "CuttingWords": {
+                "AbilityCheck": "Použít {item} ke snížení úspěšného ověření vlastnosti tokenu {name} (Celkem: {total})?",
+                "AbilityChecksEnabled": "Ověření vlastností povoleny:",
+                "Attack": "Použít {item} ke snížení útoku tokenu {name} (Celkem: {attack})?",
+                "AttackRollsEnabled": "Hody na útok povoleny:",
+                "Damage": "Použít {item} ke snížení zranění od tokenu {name}?",
+                "DamageRollsEnabled": "Hody na zásah povoleny:",
+                "SkillCheck": "Použít {item} ke snížení úspěšného ověření dovednosti tokenu {name} (Celkem: {total})?"
+            },
+            "DamageTurnStart": {
+                "Name": "Zranění na začátku tahu",
+                "SpecificDamage": "Použít vlastní vzorec místo zranění z položky:",
+                "SpecificType": "Pokud ano, jaký typ zranění:"
+            },
+            "DancingSword": {
+                "Attack": "Tančící meč: Útok",
+                "Toss": "Tančící meč: Vrhnutí"
+            },
+            "DangerSense": {
+                "CanSee": "Tato záchrana je proti efektu, který vidíš."
+            },
+            "DanothsVisor": {
+                "Check": "Taoto ověření závisí na zraku",
+                "Spyglass": "Danothovy brýle: Dalekohled",
+                "XRay": "Danothovy brýle: Rentgen"
+            },
+            "DanseMacabre": {
+                "CommandUndead": "Tanec smrti: Povel nemrtvým"
+            },
+            "Darkness": {
+                "Attach": "Připojit k sobě?"
+            },
+            "Dawn": {
+                "EndTurn": "Úsvit: Konec tahu",
+                "Move": "Úsvit: Posun"
+            },
+            "DazzlingFootwork": {
+                "AgileStrikes": "Útok beze zbraně na blízkého nepřítele?",
+                "DanceVirtuoso": "Toto ověření zahrnuje tanec."
+            },
+            "DeathBurst": {
+                "Name": "Smrtící výbuch"
+            },
+            "DetectThoughts": {
+                "ProbeDeeper": "Odhal myšlenky: Čtení myšlenek"
+            },
+            "DivineSmite": {
+                "Context": "Zasáhnout cílenou bytost Božským úderem?",
+                "CreatureTypes": "Typy bytostí s dodatečným zraněním:",
+                "Ranged": "Povolit Božské údery při útocích na dálku",
+                "Unarmed": "Povolit Božské údery v boji beze zbraně"
+            },
+            "DraconicStrike": {
+                "Select": "Změnit typ zranění?"
+            },
+            "DragonVessel": {
+                "Ale": "Pivo",
+                "Mead": "Medovina",
+                "OliveOil": "Olivový olej",
+                "PotionOfClimbing": "Lektvar šplhání",
+                "PotionOfDragonsMajesty": "Lektvar dračího majestátu",
+                "PotionOfFireBreath": "Lektvar ohnivého dechu",
+                "PotionOfFlying": "Lektvar létání",
+                "PotionOfHealingGreater": "Léčivý lektvar (větší)",
+                "PotionOfHealingNormal": "Léčivý lektvar (běžný)",
+                "PotionOfHealingSuperior": "Léčivý lektvar (vynikající)",
+                "PotionOfHealingSupreme": "Léčivý lektvar (nejvyšší)",
+                "Select": "Který předmět?",
+                "Whiskey": "Whisky",
+                "Wine": "Víno"
+            },
+            "DragonsBreath": {
+                "DragonBreath": "Dračí výdech"
+            },
+            "DragonsWrath": {
+                "AscendantBreath": "Dračí hněv: Vzestupný dech",
+                "Burst": "Dračí hněv: Kritický výbuch",
+                "WakenedBreath": "Dračí hněv: Probuzený dech"
+            },
+            "DreadLord": {
+                "ShadowAttack": "Pán hrůzy: Útok stínem",
+                "ShadowAura": "Stín Pána hrůzy",
+                "Turn": "Pán hrůzy: Začátek tahu"
+            },
+            "DreadfulAspect": {
+                "Turn": "Děsivý aspekt: Konec tahu"
+            },
+            "EffectImmunity": {
+                "Immune": "Imunita",
+                "Name": "Imunita vůči efektu"
+            },
+            "EldritchBlast": {
+                "Beam": "Tajemný výšleh: Paprsek",
+                "Target": "Na jaké cíle?"
+            },
+            "EldritchCannon": {
+                "Cannon": "Okultní dělo",
+                "Command": "Okultní dělo: Příkaz",
+                "Dismiss": "Okultní dělo: Zrušit",
+                "ExplosiveCannon": "Výbušné dělo",
+                "Flamethrower": "Plamenomet",
+                "ForceBallista": "Silová balista",
+                "FortifiedPosition": "Opevněná pozice",
+                "Maximum": "Už máš maximální počet Okultních děl!",
+                "NoSlots": "Nemáš žádná zbývající použití ani pozice kouzel!",
+                "Protector": "Ochránce",
+                "SelectType": "Zvol typ Okultního děla",
+                "Size": "Jaká velikost děla {cannonName}?",
+                "SpendPact": "Vytvořit Okultní dělo utracením pozice paktového kouzla? ({slotValue} z {slotMax} zbývá)",
+                "SpendPactAgain": "Vytvořit druhé Okultní dělo utracením pozice paktového kouzla? ({slotValue} z {slotMax} zbývá)",
+                "SpendSlot": "Vytvořit Okultní dělo utracením pozice kouzla {slotLevel}. stupně? ({slotValue} z {slotMax} zbývá)",
+                "SpendSlotAgain": "Vytvořit druhé Okultní dělo utracením pozice kouzla {slotLevel}. stupně? ({slotValue} z {slotMax} zbývá)"
+            },
+            "EldritchSmite": {
+                "Prone": "Srazit cíl k zemi?"
+            },
+            "ElementalAdept": {
+                "DowngradeImmunity": "Převést imunitu na odolání",
+                "DowngradeResistanceImmunity": "Převést imunitu na odolání a ignorovat odolání",
+                "IgnoreImmunity": "Ignorovat imunitu",
+                "IgnoreResistance": "Ignorovat odolání",
+                "IgnoreResistanceImmunity": "Ignorovat odolání a imunitu",
+                "Mode": "Režim převodu:",
+                "SpellOnly": "Pouze kouzla:"
+            },
+            "ElementalCleaver": {
+                "Change": "Živlový sekáč: Změnit typ zranění",
+                "ElementalCleaver": "Živlový sekáč",
+                "SelectWeapon": "Jakou zbraň si přeješ naplnit?"
+            },
+            "ElementalWeapon": {
+                "NoWeapons": "Cíl není vybaven žádnými vhodnými nemagickými zbraněmi!",
+                "SelectWeapon": "Kterou zbraň si přeješ očarovat?"
+            },
+            "EmboldeningBond": {
+                "Bonus": "Bonus Posilujícího pouta",
+                "Protective": "Ochranné pouto",
+                "ProtectiveDamage": "Ochranné pouto: Zranění",
+                "ProtectiveTitle": "Ochranné pouto: Chránit cíl?"
+            },
+            "Engulf": {
+                "Grapples": "Zahajuje zápas",
+                "Grappling": "Chování při zápasu:",
+                "Requires": "Cíl již musí zápasit"
+            },
+            "Enlarge": {
+                "Double": "Zdvojit kostky zranění zbraně namísto +1k4:",
+                "Name": "Zvětšení"
+            },
+            "EnlargeReduce": {
+                "Enlarge": "Zvětšit",
+                "Reduce": "Zmenšit",
+                "Select": "Zvětšit, nebo zmenšit?"
+            },
+            "ExperimentalElixir": {
+                "Boldness": "Experimentální elixír: Smělost",
+                "Flight": "Experimentální elixír: Let",
+                "Healing": "Experimentální elixír: Léčení",
+                "MakeAnother": "Vytvořit další elixír utracením pozice kouzla {slotLevel}. stupně? ({slotValue} z {slotMax} zbývá)",
+                "MakeAnotherPact": "Vytvořit další elixír utracením pozice paktové pozice kouzla? ({slotValue} z {slotMax} zbývá)",
+                "Resilience": "Experimentální elixír: Odolání",
+                "Swiftness": "Experimentální elixír: Svižnost",
+                "Transformation": "Experimentální elixír: Proměna"
+            },
+            "ExpertDivination": {
+                "Select": "Kterou pozici kouzla si přeješ obnovit?"
+            },
+            "EyesOfMinuteSeeing": {
+                "Close": "Toto ověření je na něco do vzdálenosti 1 stopy"
+            },
+            "Fall": {
+                "Acr": "Ano (Akrobacie)",
+                "Ath": "Ano (Atletika)",
+                "Creature": "Na jinou bytost",
+                "Distance": "Vzdálenost (ve stopách):",
+                "Ground": "Na zem",
+                "Reaction": "Použít svou reakci k dopadu nejprve hlavou, nebo nohama?",
+                "Save": "Záchrana Obratností (SO: 15)",
+                "SkillCheck": "Ověření dovednosti (SO: 15)",
+                "Target": "Vyber jeden cíl a zkus to znovu!",
+                "Tiny": "Jedna nebo obě bytosti jsou drobné!",
+                "Type": "Typ pádu:",
+                "Water": "Do vody"
+            },
+            "FallenPuppet": {
+                "NoTargets": "Žádné platné cíle v dosahu!"
+            },
+            "FanaticalFocus": {
+                "Use": "Použít {item} k přehozu neúspěšné záchrany z {total}?"
+            },
+            "FarStep": {
+                "Name": "Dalekokrok",
+                "Teleport": "Dalekokrok: Teleportace"
+            },
+            "FeyStep": {
+                "Autumn": "Vílí krok (Podzim)",
+                "Charmed": "Vílí krok (Podzim): Zmámení",
+                "Frightened": "Vílí krok (Zima): Vystrašní",
+                "SelectAutumn": "Vyber cíle zmámení (max: {max})",
+                "SelectSpring": "Kdo se teleportuje?",
+                "SelectWinter": "Vyber cíl k vystrašení",
+                "Spring": "Vílí krok (Jaro)",
+                "Summer": "Vílí krok (Léto)",
+                "Winter": "Vílí krok (Zima)"
+            },
+            "FindFamiliar": {
+                "Choose": "Zvol si fámula",
+                "Command": "Najdi fámula: Příkaz",
+                "Error": "Nenalezen žádný token ani data fámula!",
+                "InvalidSpell": "Neplatný typ kouzla!",
+                "Movement": "Jaký typ pohybu?",
+                "PocketDimension": "Najdi fámula: Kapesní dimenze",
+                "ReactionUsed": "Fámulus už svou reakci použil!",
+                "TooFar": "Fámulus je příliš daleko!",
+                "Touch": "Najdi fámula: Dotek"
+            },
+            "FindSteed": {
+                "Choose": "Zvol si oře",
+                "Dismiss": "Propusť oře",
+                "Language": "Jakým jazykem?",
+                "Target": "Zacílit také na oře? (Pokud jsi v sedle)",
+                "Type": "Jaký typ bytosti?"
+            },
+            "FireRune": {
+                "AllowUnarmed": "Povolit použití Ohnivé runy v boji beze zbraně"
+            },
+            "FireShield": {
+                "ChillShield": "Chladivý štít",
+                "Dismiss": "Ohnivý štít: Zrušit",
+                "Select": "Jaký typ štítu?",
+                "WarmShield": "Tepelný štít"
+            },
+            "FireStorm": {
+                "Place": "Umísti až 10 šablon. Pravým tlačítkem dokonči",
+                "Templates": "Šablony"
+            },
+            "FlameBlade": {
+                "Evoke": "Vyvolej Ohnivou čepel",
+                "Scimitar": "Ohnivá čepel (Šavle)"
+            },
+            "FlamingSphere": {
+                "EndTurn": "Planoucí koule: Konec tahu",
+                "Move": "Planoucí koule: Pohyb",
+                "Ram": "Narazit do cíle?",
+                "RamItem": "Planoucí koule: Náraz"
+            },
+            "FlockOfFamiliars": {
+                "Command": "Hejno fámulů: Příkaz",
+                "ReactionUsed": "Fámulové jsou příliš daleko nebo už použili reakci!",
+                "TooFar": "Faámulové jsou příliš daleko!",
+                "Touch": "Hejno fámulů: Dotek"
+            },
+            "FocusedAim": {
+                "Bonus": "Ano ({kiCost} čhi / +{bonus} k zásahu)"
+            },
+            "FormOfDread": {
+                "Fear": "Hrůzná forma: Děs",
+                "Use": "Pokusit se vystrašit cíl?"
+            },
+            "Gaze": {
+                "AllowAvert": "Povolit ovrácení zraku:",
+                "AvertAdvantage": "Odvrácení zraku dává bytosti Výhodu na útoky proti cíli:",
+                "AvertEffect": "Odvrácený zrak",
+                "AvertSelect": "Odvrátit zrak od {tokenName}?",
+                "Name": "Pohled"
+            },
+            "GenericTeleport": {
+                "Name": "Teleport"
+            },
+            "Grapple": {
+                "ChooseSkill": "Jak se chceš bránit držení?",
+                "ChooseSkillEscape": "Jak se chceš vymanit z držení?",
+                "Immune": "Cíl nemůže být držen!",
+                "Size": "Cíl je příliš velký na to, aby mohl být držen!"
+            },
+            "Grappler": {
+                "Grapple": "Pokusit se o zápas s {tokenName}?",
+                "Pin": "Zápasník: Připoutání",
+                "Pinned": "Zápasník: Připoután tokenem {tokenName}",
+                "Pinning": "Zápasník: Připoutává token {tokenName}"
+            },
+            "GraspOfHadar": {
+                "Select": "Jaký cíl?"
+            },
+            "Grease": {
+                "Fall": "Sádlo: Pád"
+            },
+            "GreaterDivineIntervention": {
+                "RestFormula": "Vzorec odpočinků:"
+            },
+            "GreenFlameBlade": {
+                "Leap": "Kam oheň přeskočí?",
+                "LeapFeature": "Čepel zeleného plamene: Přeskok",
+                "NoWeapons": "Nenalezeny žádné vybavené zbraně!",
+                "SelectWeapon": "Jakou zbraní zaútočíš?"
+            },
+            "Grovelthrash": {
+                "Damage": "Udělit dodatečných 2k6 drtivého zranění za cenu 1k6 psychického zranění?",
+                "Insight": "Toto ověření je na odhalení lži pronesené v jazyce, kterému rozumíš",
+                "Reaction": "Kladivo bolesti: Reakce"
+            },
+            "GuardianArmor": {
+                "DefensiveField": "Strážná zbroj: Ochranné pole",
+                "Distracted": "Hromové rukavice: Rozptýlení",
+                "ThunderGauntlets": "Strážná zbroj: Hromové rukavice"
+            },
+            "GuardianEmblem": {
+                "Protect": "Použít {item} k ochraně tokenu {name} před kritickým zásahem?"
+            },
+            "GuardianOfFaith": {
+                "Damage": "Strážce víry: Zranění"
+            },
+            "GuardianOfNature": {
+                "Beast": "Prvotní bestie",
+                "Select": "Jakou formu přijmeš?",
+                "Tree": "Velký strom"
+            },
+            "GustOfWind": {
+                "Move": "Poryv větru: Pohyb",
+                "Push": "Poryv větru: Odsunutí",
+                "PushOnMove": "Odsun cílů po „Pohybu“:"
+            },
+            "HailOfThorns": {
+                "Burst": "Krupobití trnů: Výbuch"
+            },
+            "Healer": {
+                "SelectHitDie": "Zvol, jakou kostku obnovy chceš hodit.",
+                "SpellOnly": "Pouze kouzla:"
+            },
+            "HealingLight": {
+                "Select": "Kolik kostek chceš použít?"
+            },
+            "HealingSpirit": {
+                "Apply": "Léčivý duch: Aplikovat léčení? (Zbývá {numUses} použití)",
+                "Heal": "Léčivý duch: Léčení",
+                "Move": "Léčivý duch: Pohyb"
+            },
+            "HeatMetal": {
+                "Damage": "Rozpal kov: Zranění",
+                "Dialog": "Rozpal kov: Dialog",
+                "Drop": "Upustit rozpálený předmět?",
+                "Held": "Rozpal kov: V držení",
+                "MustDrop": "Neuspěl v záchranném hodu a musí kovový předmět upustit!",
+                "Pulse": "Rozpal kov: Impuls",
+                "Unable": "Nelze (zbroj)"
+            },
+            "Hex": {
+                "Hexed": "Prokletý",
+                "Move": "Kletba: Přesun",
+                "Multiple": "Jaký cíl chceš proklít?",
+                "SelectAbility": "Která vlastnost má mít Nevýhodu?"
+            },
+            "HexWarrior": {
+                "NoWeapons": "Žádná vhodná vybavená zbraň k výběru!"
+            },
+            "HexbladesCurse": {
+                "Healing": "Prokletá čepel: Léčení",
+                "Transfer": "Mistr kleteb: Přenést kletbu?"
+            },
+            "HiddenPaths": {
+                "Name": "Skryté stezky"
+            },
+            "HoldPerson": {
+                "Overtime": "Znehybni osobu (na konce tahu)"
+            },
+            "HolyNimbus": {
+                "Damage": "Svatozář: Zranění",
+                "Save": "Tato záchrana je proti kouzlu seslanému démonem či nemrtvým."
+            },
+            "HolyWeapon": {
+                "Burst": "Svěcená zbraň: Výbuch",
+                "BurstOvertime": "Svěcená zbraň: Výbuch (na konci tahu)",
+                "Dismiss": "Svěcená zbraň: Zrušit",
+                "NoWeapons": "Cíl nemá žádné vybavené zbraně!",
+                "SelectWeapon": "Kterou zbraň chceš očarovat?",
+                "Target": "Svěcená zbraň: Cíl"
+            },
+            "HungerOfHadar": {
+                "Buff": "Zvýšit zranění tokenu {name}",
+                "BuffTitle": "Zvol bonus za seslání z pozice vyššího stupně",
+                "Cold": "Hadarův hlad: Chlad",
+                "Tentacles": "Hadarův hlad: Chapadla"
+            },
+            "HuntersMark": {
+                "Marked": "Lovcova značka: Označení",
+                "Move": "Lovcova značka: Přesun",
+                "Select": "Který cíl chceš odznačit?"
+            },
+            "HybridTransformation": {
+                "Bloodlust": "Krvavá zuřivost",
+                "LycanRegeneration": "Lykantropická regenerace",
+                "PredatoryStrike": "Dravý úder",
+                "Revert": "Hybridní proměna: Návrat"
+            },
+            "ImbueCard": {
+                "Select": "Kterým kouzlem chceš nabít kartu?"
+            },
+            "ImprovedPotentSpellcasting": {
+                "Target": "Vyber spojence, kterému chceš dát dočasné body výdrže:"
+            },
+            "InfectiousFury": {
+                "Attack": "Zaútočit na blízký cíl",
+                "Curse": "Jak chceš proklít cíl?",
+                "Damage": "Utrpění zranění"
+            },
+            "InfiltratorArmor": {
+                "ExtraDamage": "Aplikovat dodatečných 1k6 bleskového zranění?",
+                "LightningLauncher": "Infiltrátorova zbroj: Vrhač blesků"
+            },
+            "InfuseItem": {
+                "AlreadyServant": "Už máš aktivního homunkula!",
+                "ArcanePropulsionArmor": "Zbroj s mystickým pohonem",
+                "ArcanePropulsionGauntlet": "Rukavice s mystickým pohonem",
+                "ArmorOfMagicalStrength": "Zbroj magické síly",
+                "ChannelMagic": "Homunkulus: Směrování magie",
+                "EndAll": "Zrušit všechny infuze magie",
+                "EnhancedArcaneFocus": "Vylepšený mystické ohnisko",
+                "EnhancedDefense": "Vylepšená obrana",
+                "EnhancedWeapon": "Vylepšená zbraň",
+                "ForceStrike": "Úder silou",
+                "HomunculusCommand": "Homunkulus: Příkaz",
+                "HomunculusHeart": "Srdce homunkula",
+                "HomunculusServant": "Homunkulus",
+                "Known": "Známé infuze:",
+                "New": "Předmětu <b>{itemName}</b> tokenu {newActorName} přidána nová infuze {infusionLabel} .",
+                "NoArmor": "Cíl nemá vybavenou vhodnou ne-magickou zbroj!",
+                "NoFocus": "Cíl nemá vybavenou vhodnou ne-magickou hůl, žezlo, ani hůlku!",
+                "NoKnown": "Nemáš v Lékárničce nastavené žádné známé infuze!",
+                "NoMissing": "Žádné pozice kouzel k obnově!",
+                "NoShield": "Cíl nemá vybavený vhodný ne-magický štít!",
+                "Override": "Existující infuze {infusionLabel} bylo odebrána z <b>{itemName}</b> tokenu {oldActorName}.",
+                "RadiantBlind": "Zářivá zbraň: Oslepení",
+                "RadiantLight": "Zářivá zbraň: Světlo",
+                "RadiantWeapon": "Zářivá zbraň",
+                "ReactionUsed": "Homunkulus už svou reakci použil!",
+                "RepeatingShot": "Opakující se výstřel",
+                "RepulsionPush": "Odpuzující štít: Odsunutí",
+                "RepulsionShield": "Odpuzující štít",
+                "ResistProne": "Zbroj magické síly: Odolnání vůči sražení",
+                "ResistanceType": "Odolání vůči jakému typu zranění?",
+                "ResistantArmor": "Odolávající zbroj",
+                "ReturningWeapon": "Vracející se zbraň",
+                "Select": "Jaká infuze?",
+                "SpellRefuelingRing": "Prsten obnovy kouzel",
+                "TooFar": "Homunkulus je příliš daleko!",
+                "TooMany": "Máš již aktivní maximální počet infuzí!",
+                "WhichArmor": "Kterou zbroj chceš infuzovat?",
+                "WhichFocus": "Které žezlo, hůl nebo hůlku chceš infuzovat?",
+                "WhichShield": "Který štít chceš infuzovat?",
+                "WhichWeapon": "Kterou zbraň chceš infuzovat?"
+            },
+            "InsectPlague": {
+                "Damage": "Hmyzí zhouba: Zranění"
+            },
+            "InspiringSmite": {
+                "Select": "Rozdělit dočasné body výdrže (BV k rozdělení: {maxAmount})"
+            },
+            "InvestitureOfFlame": {
+                "Fire": "Plamenný plášť: Oheň",
+                "Heat": "Plamenný plášť: Žár"
+            },
+            "InvestitureOfIce": {
+                "Cone": "Ledový plášť: Kužel"
+            },
+            "InvestitureOfStone": {
+                "Earthquake": "Kamenný plášť: Zemětřesení"
+            },
+            "InvestmentOfTheChainMaster": {
+                "Command": "Vzestup Pána řetězů: Příkaz",
+                "Resistance": "Vzestup Pána řetězů: Odolání fámula"
+            },
+            "JavelinOfLightning": {
+                "Bolt": "Oštěp blesků: Blesk"
+            },
+            "KeenSenses": {
+                "Check": "Tento hod závisí na: ",
+                "DiceThreshold": "Práh hodu:",
+                "Hearing": "Sluch",
+                "Name": "Bystré smysly",
+                "Sight": "Zrak",
+                "Smell": "Čich"
+            },
+            "LabyrinthineRecall": {
+                "Skill": "Toto ověření je na orientaci či stopování"
+            },
+            "LanternOfRevealing": {
+                "Bright": "Rozsvítit lucernu (Jasně)",
+                "Dim": "Rozsvítit lucernu (Tlumeně)",
+                "Extinguish": "Zhasnout lucernu"
+            },
+            "LayOnHands": {
+                "Empty": "Tvůj fond {itemName} je prázdný.",
+                "RemoveCondition": "Odstranit stav:",
+                "RestoreHitpoints": "Obnovit body výdrže:",
+                "Select": "Jak chceš pomoci?",
+                "TargetNotDiseased": "Cíl není nemocný!",
+                "TargetNotPoisoned": "Cíl není otrávený!"
+            },
+            "Lifesteal": {
+                "HealingType": "Typ léčení:",
+                "MaxHPCure": "Obnova sníženého maxima BV:",
+                "Name": "Krádež života",
+                "ReduceMaxHP": "Snížit maximum BV:",
+                "excessAsTemp": "Přebytečné léčení jako dočasné body výdrže:"
+            },
+            "LightningArrow": {
+                "Burst": "Bleskový šíp: Výbuch"
+            },
+            "MaelstromAura": {
+                "Aura": "Aura maelstromu"
+            },
+            "MagicMissile": {
+                "Bolt": "Šipka Magické střely",
+                "RollEach": "Má se házet zranění pro každou šipku zvlášť?",
+                "Select": "Kolik? (Max: {maxMissiles})",
+                "Shield": "Použít v reakci Štít?"
+            },
+            "Maneuvers": {
+                "BaitSwitchAC": "Kdo získá bonus k OČ?",
+                "CommanderConfirm": "Použít reakci k provedení jednoho útoku zbraní?",
+                "CommanderSelect": "Který spojenec má zaútočit?",
+                "NoNearby": "Žádní spojenci s reakcí tě nevidí ani neslyší!",
+                "PushDistance": "Jak daleko chceš cíl zatlačit?",
+                "Pushing": "Zatlačení: Útok",
+                "SelectDice": "Jaký typ kostky převahy chceš použít?",
+                "SelectManeuver": "Jaký manévr chceš použít?",
+                "SelectTarget": "Koho chceš napadnout?",
+                "Sweeping": "Protažení: Útok",
+                "Tripping": "Podražení: Útok"
+            },
+            "ManifestEcho": {
+                "Attack": "Zjevení ozvěny: Útok",
+                "Dismiss": "Zjevení ozvěny: Zrušit",
+                "Echo": "Ozvěna {name}",
+                "Far": "Ozvěna tokenu {actorName} je příliš daleko. Odebrat ji?",
+                "Legion": "Vytvořit dvě ozvěny namísto jedné?",
+                "NoWeapons": "Nemáš žádné vybavené zbraně k útoku!",
+                "Teleport": "Zjevení ozvěny: Teleportace",
+                "Weapon": "Čím chceš zaútočit?",
+                "Which": "Kterou ozvěnu?"
+            },
+            "ManifestMind": {
+                "Cast": "Zjevení mysli: Seslat kouzlo",
+                "Dismiss": "Zjevení mysli: Zrušit",
+                "Far": "Zjevení mysli tokenu {actorName} je příliš daleko. Odebrat ho?",
+                "Invalid": "Neplatný typ akce!",
+                "Move": "Zjevení mysli: Pohyb"
+            },
+            "MantleOfInspiration": {
+                "Reaction": "Použít reakci k pohybu?",
+                "Targets": "Vyber až {maxtargets} cílů:"
+            },
+            "MartialAdvantage": {
+                "Name": "Bojová výhoda"
+            },
+            "MassCureWounds": {
+                "Select": "Jaké cíle chceš vyléčit? (Max: 6)"
+            },
+            "MastersAmulet": {
+                "Linked": "Amulet byl propojen!",
+                "MissingBound": "Cíl nemá schopnost CPR propojení!",
+                "Unlinked": "Cílem je nepropojený token a propojení bude fungovat pouze s tímto tokenem na této scéně!"
+            },
+            "MaximiliansEarthenGrasp": {
+                "Crush": "Maximilianůova hliněná ruka: Drtit",
+                "Grasp": "Maximilianůova hliněná ruka: Uchopit",
+                "NoNearby": "Žádné cíle v dosahu pro uchopení!",
+                "Overtime": "Maximilianůova hliněná ruka: Vysvobození",
+                "Select": "Vyber cíl k uchopení:"
+            },
+            "MetallicBreathWeapon": {
+                "Enervating": "Oslabující dech",
+                "Repulsion": "Odpuzující dech",
+                "Select": "Jaký typ dechu?"
+            },
+            "Metamagic": {
+                "CarefulWhich": "Které cíle automaticky uspějí v záchranném hodu? (Max {max})",
+                "Empowered": "Utratit 1 čarodějný bod na přehoz kostek zásahu? (Max {max})",
+                "HeightenedWhich": "Který cíl bude mít Nevýhodu?",
+                "NoValid": "Žádná vhodná kouzla k seslání!",
+                "NotEnough": "Nedostatek čarodějných bodů!",
+                "TransmutedFirst": "Jaký typ zranění chceš nahradit?",
+                "TransmutedSecond": "Jaký typ zranění chceš použít místo toho?",
+                "TwinnedUpcast": "Nedostatek čarodějných ke zdvojení tohoto kouzla při seslání z vyššího stupně!",
+                "TwinnedUpcastTargets": "Nelze zároveň navýšit stupeň a zdvojit kouzlo!",
+                "Which": "Utratit {cost} čarodějných bod{plural} a seslat které kouzlo?"
+            },
+            "MirrorImage": {
+                "Hit": "Útok zasáhl duplikát a zničil jej.",
+                "Miss": "Útok cílil na duplikát, ale minul."
+            },
+            "MistyStep": {
+                "Name": "Mlžný krok"
+            },
+            "Moonbeam": {
+                "Damage": "Měsíční paprsek: Zranění",
+                "Move": "Měsíční paprsek: Posun"
+            },
+            "Mutagencraft": {
+                "AttackSunlight": "Jsou buď {sourceTokenName}, nebo {targetTokenName} na přímém slunci?",
+                "Create": "Jaký mutagen vytváříš?",
+                "Flush": "Tvorba mutagenů: Vyplavit mutageny",
+                "Negative": "Negativní účinky",
+                "Positive": "Pozitivní účinky",
+                "ReconstructionHealing": "Rekonstrukční formule: Léčení",
+                "SkillSunlight": "Je tento hod založený na zraku a na tom, zda je buď {actorName}, nebo cíl hodu na přímém slunci?"
+            },
+            "NaturesWrath": {
+                "Select": "Kterou vlastnost použiješ pro záchranný hod?"
+            },
+            "OilOfSharpness": {
+                "Select": "Kterou zbraň potřeš?"
+            },
+            "OneWithShadows": {
+                "Bright": "Token je na jasném světle!"
+            },
+            "Overchannel": {
+                "Damage": "Použít {itemName} za cenu utržení {damageFormula} zranění?",
+                "DamageItem": "Vybuzení: Zranění"
+            },
+            "PackTactics": {
+                "Name": "Taktika smečky"
+            },
+            "PariahsShield": {
+                "MaxBonus": "Maximální bonus k OČ:",
+                "Protect": "Chráníš token {name} pomocí {item}?",
+                "Reaction": "Štít vyvrhele: Ochrana"
+            },
+            "Parry": {
+                "Name": "Parírování"
+            },
+            "PeerlessSkill": {
+                "Confirm": "Bylo toto ověření úspěšné?"
+            },
+            "Piercer": {
+                "Reroll": "Kterou nejnižší kostku přehodit?"
+            },
+            "PoisonousSkin": {
+                "Poison": "Grung: Jed"
+            },
+            "PotionOfAdvantage": {
+                "Select": "Získat Výhodu na tento hod?"
+            },
+            "PotionOfFireBreath": {
+                "Attack": "Útok lektvarem ohnivého dechu"
+            },
+            "PotionOfPoison": {
+                "Damage": "Jedový lektvar: Zranění"
+            },
+            "PowerOfTheWilds": {
+                "Falcon": "Sokol",
+                "Lion": "Lev",
+                "Ram": "Beran",
+                "RamProne": "Srazit cíl k zemi?"
+            },
+            "PowerWordHeal": {
+                "Prone": "Použít reakci a postavit se?"
+            },
+            "PreserveLife": {
+                "Select": "Rozdělit BV (Množství k rozdělení: {maxAmount}. Cíle nelze vyléčit nad polovinu jejich maximální výdrže.)"
+            },
+            "PrimalCompanion": {
+                "BindingStrike": "Svazující úder",
+                "Command": "Prvotní společník: Příkaz",
+                "Land": "Pozemní",
+                "PrimalBond": "Prvotní pouto",
+                "Sea": "Vodní",
+                "Select": "Jaký typ bestie?",
+                "Sky": "Vzdušná"
+            },
+            "PrimalKnowledge": {
+                "ReplacementAbility": "Nahrazovaná vlastnost:"
+            },
+            "Protection": {
+                "Protect": "Zaštítit {tokenName}?",
+                "Protected": "Zaštítění: Zaštítěn"
+            },
+            "ProtectionFromEvilAndGood": {
+                "Save": "Tato záchrana je proti efektu od démona, elementála, nebešťana, nemrtvého, víly, či zrůdy, co tě zmámila, vystrašila, nebo posedla."
+            },
+            "PsionicSorcery": {
+                "Select": "Zvol kouzlo k seslání:"
+            },
+            "PsionicSpells": {
+                "Select": "Vyber, která kouzla jsou tvá psionická kouzla:"
+            },
+            "Rage": {
+                "AllowConcentration": "Povolit soustředění:",
+                "AllowHeavyArmor": "Povolit těžkou zbroj:",
+                "AllowSpellcasting": "Povolit sesílání kouzel:",
+                "End": "Zuřivost: Ukončit",
+                "EndEarly": "Token {actorName} od posledního tahu nezaútočil na nepřítele ani neutrpěl zranění. Ukončit zuřivost?",
+                "EndEarlyModern": "Token {actorName} od posledního tahu nezaútočil, nenutil nepřítele k záchraně ani jinak neudržel svou zuřivost. Ukončit zuřivost?",
+                "FormOfBeastTailReaction": "Forma bestie: Reakce ocasem",
+                "FormOfBeastWeapon": "Manifestovat přirozenou zbraň?",
+                "FormOfTheBeastBite": "Forma bestie: Kousnutí",
+                "FormOfTheBeastClaws": "Forma bestie: Drápy",
+                "FormOfTheBeastTail": "Forma bestie: Ocas",
+                "HeavyArmor": "Nosíš těžkou zbroj a nemůžeš se rozzuřit!",
+                "Huge": "Zvětšit se na obrovskou velikost?",
+                "LargeOrHuge": "Jaká velikost?",
+                "Spellcasting": "Během zuřivosti nemůžeš sesílat kouzla!"
+            },
+            "RageOfTheGods": "Použít {item} k záchraně {token}?",
+            "RageOfTheWilds": {
+                "Bear": "Medvěd",
+                "Eagle": "Orel",
+                "Use": "Vyber moc prapředka:",
+                "Wolf": "Vlk"
+            },
+            "RayOfEnfeeblement": {
+                "Overtime": "Paprsek slabosti (na konci tahu)"
+            },
+            "Reduce": {
+                "AlwaysTiny": "Vždy zmenšit na drobnou velikost:",
+                "AttackDisadvantage": "Nevýhoda na útoky založené na Síle:",
+                "Name": "Zmenšení",
+                "OneDamage": "Útoky založené na Síle udělují 1 BV zranění zbraní:",
+                "StealthACBonus": "+5 k Nenápadnosti a OČ:"
+            },
+            "ReduceMaxHP": {
+                "DamageTypeFilter": "Uplatnit snížení maximálních BV jen u určitých typů zranění:",
+                "Half": "Snížit o polovinu zranění/hod:",
+                "Long": "Vyprší po důkladném odpočinku:",
+                "Name": "Snížení maximálních BV",
+                "ReduceByRoll": "Snížit podle hodu, ne podle zranění:",
+                "Short": "Vyprší po krátkém odpočinku:"
+            },
+            "Regeneration": {
+                "Blocked": "Regenerace zablokována",
+                "Critical": "Kritické zásahy blokují regeneraci vždy",
+                "DamageTypes": "Typy zranění, které snižují nebo blokují regeneraci:",
+                "Dead": "Mrtvý?",
+                "Name": "Regenerace",
+                "Reduced": "Regenerace snížena",
+                "ShowIcons": "Zobrazit ikony blokování/snížení regenerace:",
+                "Threshold": "Zranění nutné k trvalému zabití při 0 BV:",
+                "ZeroHP": "Bytost po dosažení 0 BV umírá"
+            },
+            "Retaliation": {
+                "Weapon": "Jakou zbraní zaútočíš?"
+            },
+            "RevelationInFlesh": {
+                "Select": "Vyber benefity, které získáš:"
+            },
+            "RingOfSpellStoring": {
+                "Clear": "Vymazat použitá kouzla",
+                "Cleared": "Použitá kouzla byla vymazána z inventáře!",
+                "Name": "Prsten uchování kouzel ({currSpellSlots}/{maxSpellSlots})",
+                "NoSpells": "Žádná kouzla k uchování!",
+                "Reset": "Obnovit uchovaná kouzla",
+                "ResetDone": "Prsten obnoven!",
+                "SelectSpell": "Které kouzlo chceš uchovat?",
+                "SpellName": "Prsten uchování kouzel: {spellName}",
+                "Store": "Uchovat kouzlo",
+                "Stored": "{spellName} uchováno!",
+                "Upcast": "Pomocí jakého stupně seslat?"
+            },
+            "RunicShield": {
+                "Use": "Použít {item} pro token {name}?"
+            },
+            "SacredWeapon": {
+                "Dismiss": "Posvátná zbraň: Ukončit",
+                "NoWeapons": "Nemáš žádné vybavené zbraně!",
+                "Sacred": "Posvátná zbraň",
+                "SelectWeapon": "Kterou zbraň chceš posvětit?"
+            },
+            "Sanctuary": {
+                "Failed": "Na tento cíl nemůžeš zaútočit, musíš zvolit jiný cíl, nebo přijdeš o útok/kouzlo!",
+                "Save": "Azyl: Záchranný hod"
+            },
+            "ScorchingRay": {
+                "Bolt": "Sežehující paprsek",
+                "Select": "Vyber cíle (Max. paprsků: {maxRays})"
+            },
+            "SculptSpells": {
+                "Select": "Které cíle uspěly a neobdrží žádné zranění? (Max: {max})"
+            },
+            "Search": {
+                "Skill": "Jakou dovednost?"
+            },
+            "SearingSmite": {
+                "Fire": "Spalující úder: Oheň"
+            },
+            "SentinelAtDeathsDoor": {
+                "Attack": "Použít {item} k přeměně kritického zásahu proti tokenu {name} na normální zásah?"
+            },
+            "ShadowBlade": {
+                "Sword": "Stínočepel"
+            },
+            "ShadowOfMoil": {
+                "Damage": "Stín Moilu: Zranění"
+            },
+            "ShadowStep": {
+                "Name": "Stínový krok"
+            },
+            "ShieldGuardianShield": {
+                "Use": "Chránit token {name}? Hod na zásah: {attack}"
+            },
+            "Shove": {
+                "Big": "Cíl je na strčení příliš velký!",
+                "ChooseSkill": "Jak chceš o strčení soupeřit?",
+                "KnockProne": "Srazit na zem",
+                "MoveOrProne": "Co chceš cíli udělat?",
+                "Shove": "Strčit"
+            },
+            "SickeningRadiance": {
+                "Damage": "Odporné záření: Zranění"
+            },
+            "SkillEmpowerment": {
+                "SelectSkill": "Vyber dovednost, ve které dočasně získáš kvalifikaci:"
+            },
+            "SleetStorm": {
+                "Prone": "Zmrzlý déšť: Srazit na zem"
+            },
+            "SneakAttack": {
+                "Scale": "Chybí hodnota škálování Zákeřného útoku!",
+                "Use": "Použít {name}?"
+            },
+            "SongOfDefense": {
+                "Bladesong": "Aby šlo tuto schopnost použít, musíš zpívat Zpěv meče!",
+                "NoSpellSlots": "Nemáš žádné dostupné pozice kouzel!",
+                "Select": "Použiješ reakci k utracení pozice kouzla ke snížení zranění?"
+            },
+            "SoothePain": {
+                "Protect": "Snížit zranění cíli tokenu {tokenName}?",
+                "Self": "Snížit zranění sobě?"
+            },
+            "SpellTurning": {
+                "Advantage": "Výhoda na záchranné hody:",
+                "Name": "Odrážení kouzel",
+                "SpellLevel": "Maximální stupeň kouzla pro přecílení:",
+                "TargetCaster": "Při úspěchu zacílit na sesílatele:"
+            },
+            "SpikeGrowth": {
+                "Thorns": "Trny: Trny"
+            },
+            "SpiritGuardians": {
+                "Alignment": "Jaké je tvé přesvědčení?",
+                "Damage": "Přízrační strážci: Zranění",
+                "NoRing": "Žádný okruh",
+                "Particles": "Částice",
+                "Ring": "Okruh",
+                "Spirits": "Strážci",
+                "Variation": "Varianta:"
+            },
+            "SpiritOfDeath": {
+                "HauntCreature": "Strašit bytost (Žnec)",
+                "HauntCreatureHaunt": "Strašit bytost: Strašení",
+                "Haunted": "Žnec: Strašený",
+                "InvalidTarget": "Cíl musí být strašený!",
+                "ReapingScythe": "Kosa (Žnec)"
+            },
+            "SpiritShield": {
+                "Damage": "Použít {item} ke snížení zranění uděleného tokenu {name}?"
+            },
+            "SpiritShroud": {
+                "Hit": "Závoj duchů: Zásah",
+                "Slow": "Závoj duchů: Zpomalení"
+            },
+            "SpiritualWeapon": {
+                "Attack": "Duchovní zbraň: Útok",
+                "Color": "Jaká barva?",
+                "Dark": "Temná",
+                "Flaming": "Plamenná",
+                "Mace": "Palcát",
+                "Maul": "Palice",
+                "SaveDefault": "Použít zvolené nastavení i v budoucnu?",
+                "Scythe": "Kosa",
+                "Select": "Vyber cíl útoku:",
+                "Style": "Jaký styl?",
+                "Sword": "Meč",
+                "UseDefault": "Použít dříve uložené nastavení tokenu:",
+                "Weapon": "Jakou zbraň?"
+            },
+            "Stabilize": {
+                "Stabilized": "Stabilizovaný/á",
+                "WakeUp": "Počet hodin do probuzení bytosti:"
+            },
+            "StaggeringSmite": {
+                "Stagger": "Omračující úder: Omráčení"
+            },
+            "StarryForm": {
+                "Archer": "Lučištník",
+                "ArcherFeature": "Hvězdná forma: Zářivý šíp",
+                "Chalice": "Kalich",
+                "ChaliceFeature": "Hvězdná forma: Léčící kalich",
+                "Change": "Změnit souhvězdí?",
+                "Dragon": "Drak",
+                "DragonFeature": "Hvězdná forma: Moudrý drak",
+                "Heal": "Koho chceš léčit?",
+                "Select": "Které souhvězdí?"
+            },
+            "SteelDefender": {
+                "Command": "Ocelový ochránce: Příkaz",
+                "DeflectAttack": "Odklonit útok",
+                "ForceEmpoweredRend": "Trhání posílené silou",
+                "Repair": "Opravit",
+                "Vigilant": "Bdělost"
+            },
+            "StillnessOfMind": {
+                "Select": "Jaký stav chceš odstranit?"
+            },
+            "StormRune": {
+                "AdvDis": "Udělit tokenu {tokenName} Výhodu/Nevýhodu na jeho akci {actionType}?"
+            },
+            "StormSphere": {
+                "Bolt": "Bouřná koule: Blesk",
+                "Turn": "Bouřná koule: Tah"
+            },
+            "Stormgirdle": {
+                "LightningStrike": "Bouřný pás: Úder blesku"
+            },
+            "Stormgridle": {
+                "Avatar": "Avatar bouře"
+            },
+            "StrangeMetabolism": {
+                "Select": "Který mutagen?"
+            },
+            "SummonAberration": {
+                "Beholderkin": "Hledící",
+                "EyeRay": "Oční paprsek",
+                "MindFlayer": "Mozkožrout",
+                "PsychicSlam": "Psychická rána",
+                "Slaad": "Slaad",
+                "StarSpawn": "Hvězdný zplozenec",
+                "Type": "Jaký typ zrůdy?",
+                "WhisperingAura": "Šeptající aura"
+            },
+            "SummonBeast": {
+                "Air": "Vzdušné",
+                "Flyby": "Průlet",
+                "Land": "Pozemní",
+                "Maul": "Roztrhání (Zvířecí duch)",
+                "Rend": "Trhání (Zvířecí duch)",
+                "Type": "Jaký typ zvířete?",
+                "Water": "Vodní"
+            },
+            "SummonCelestial": {
+                "Avenger": "Mstitel",
+                "Defender": "Obránce",
+                "HealingTouch": "Léčivý dotek (Nebeský duch)",
+                "RadiantBow": "Zářící luk",
+                "RadiantMace": "Zářící palcát",
+                "Temp": "Kdo získá dočasné body výdrže?",
+                "Type": "Jaký typ nebešťana?"
+            },
+            "SummonConstruct": {
+                "BerserkLashing": "Zuřivý výpad",
+                "Clay": "Hliněný",
+                "Metal": "Kovový",
+                "Slam": "Úder (Duch konstruktu)",
+                "Stone": "Kamenný",
+                "Type": "Jaký typ konstruktu?"
+            },
+            "SummonDraconicSpirit": {
+                "Chromatic": "Chromatický",
+                "Gem": "Drahokamový",
+                "Metallic": "Kovový",
+                "Rend": "Trhání (Dračí duch)",
+                "ResistanceType": "Sdílené odolání: Vůči jakému typu zranění?",
+                "SharedResistances": "Sdílená odolání",
+                "Type": "Jaký typ draka?"
+            },
+            "SummonDragon": {
+                "Rend": "Trhání (Dračí duch)",
+                "ResistanceType": "Sdílené odolání: Vůči jakému typu zranění?",
+                "SharedResistances": "Sdílená odolání"
+            },
+            "SummonDrakeCompanion": {
+                "Command": "Dračí společník: Příkaz",
+                "Essence": "Dračí esence",
+                "InfusedStrikes": "Infusované údery",
+                "Reflexive": "Reflexivní odolání",
+                "Resistance": "Použít reakci k udělení odolání vůči zranění?",
+                "ResistanceSelf": "Použít reakci k získání odolání vůči zranění?",
+                "Select": "Jaký typ draka?",
+                "Self": "Ano: Sám",
+                "Summon": "Ano: Dračí společník"
+            },
+            "SummonElemental": {
+                "Air": "Vzdušný",
+                "AmorphousForm": "Beztvará forma",
+                "Earth": "Zemmí",
+                "Fire": "Ohnivý",
+                "Slam": "Úder (Elementární duch)",
+                "Type": "Jaký typ elementála?",
+                "Water": "Vodní"
+            },
+            "SummonFey": {
+                "FeyBlade": "Vílí čepel",
+                "FeyStep": "Vílí krok",
+                "Fuming": "Zuřivá",
+                "Mirthful": "Veselá",
+                "Select": "Koho zmámit?",
+                "Shortsword": "Krátký meč",
+                "Tricksy": "Záludná",
+                "Type": "Jaký typ víly?"
+            },
+            "SummonFiend": {
+                "DeathThroes": "Smrtelná agónie",
+                "Demon": "Démon",
+                "Devil": "Ďábel",
+                "FieryStrike": "Ohnivý úder",
+                "HurlFlame": "Vrhnutí plamene",
+                "Type": "Jaký typ běsa?",
+                "UseTeleportation": "Použít teleportaci?",
+                "Yugoloth": "Yugoloth"
+            },
+            "SummonLesserDemons": {
+                "Demons": "Démoni",
+                "Draw": "Nakreslit ochranný kruh?"
+            },
+            "SummonShadowspawn": {
+                "ChillingRend": "Mrazivé trhání",
+                "Despair": "Zoufalství",
+                "DreadfulScream": "Děsivý křik",
+                "Fear": "Strach",
+                "Fury": "Zuřivost",
+                "TerrorFrenzy": "Šílenství hrůzy",
+                "Type": "Jaký typ splozence stínu?"
+            },
+            "SummonUndead": {
+                "DeathlyTouch": "Smrtící dotek",
+                "FesteringAura": "Hnisající aura",
+                "Ghostly": "Přízračný",
+                "GraveBolt": "Hřbitovní střela",
+                "IncorporealPassage": "Nehmotný průchod",
+                "Putrid": "Hnilobný",
+                "RottingClaw": "Hnijící dráp",
+                "RottingClawParalyze": "Hnijící dráp: Ochrnutí",
+                "Skeletal": "Kostěný",
+                "Type": "Jaký typ nemrtvého?"
+            },
+            "SummonWildfireSpirit": {
+                "Command": "Duch divokého ohně: Příkaz",
+                "Damage": "Přivolání ducha divokého ohně: Zranění",
+                "FieryTeleportation": "Ohnivá teleportace",
+                "FieryTeleportationDamage": "Ohnivá teleportace: Zranění",
+                "FlameSeed": "Sémě plamene"
+            },
+            "SunlightSensitivity": {
+                "Attack": "Je token {tokenName} na slunečním světle?",
+                "Auto": "Považovat jasné světlo za sluneční světlo pro Nevýhodu na útok:",
+                "Name": "Citlivost na sluneční světlo",
+                "Skill": "Tento hod závisí na zraku a na tom, zda je bytost na slunečním světle"
+            },
+            "SurpriseAttack": {
+                "Dialog": "Namísto kontroly stavu ´překvapený/á´ použít dialog:",
+                "Name": "Překvapivý útok",
+                "Surprised": "Je cíl překvapen?"
+            },
+            "SwarmDamage": {
+                "Name": "Zranění rojem"
+            },
+            "TashasOtherworldlyGuise": {
+                "Lower": "Nižší sféry",
+                "Select": "Ze kterých sfér čerpáš magii?",
+                "Upper": "Vyšší sféry"
+            },
+            "TavernBrawler": {
+                "Use": "Použít bonusovou akci k pokusu o zápas?"
+            },
+            "Telekinetic": {
+                "Select": "Kterým směrem?"
+            },
+            "Teleport": {
+                "AssociatedObject": "Spjatý předmět",
+                "Damage": "Teleportace: Zranění",
+                "Description": "Popis",
+                "Direction": "Mimo cíl – směr",
+                "Distance": "Mimo cíl – vzdálenost",
+                "FalseDestination": "Falešná destinace",
+                "Familiarity": "Jaká je obeznámenost s cílem?",
+                "HowFar": "Jak daleko je cíl?",
+                "LinkedObject": "Spjatý předmět",
+                "Mishap": "Nezdar",
+                "OffTarget": "Mimo cíl",
+                "OffTargetString": "Cíl se nachází {distance} {units} {direction} od zamýšleného místa.",
+                "OnTarget": "V cíli",
+                "PermanentCircle": "Trvalý kruh",
+                "SeenCasually": "Letmo viděné",
+                "Select": "Kdo další bude teleportován?",
+                "SelectDestination": "Vybrat cíl?",
+                "SimilarArea": "Podobná oblast",
+                "VeryFamiliar": "Velmi známé",
+                "ViewedOnce": "Jednou spatřené",
+                "ViewedOnceDescribed": "Jednou spatřené či popsané"
+            },
+            "TentacleOfTheDeeps": {
+                "Attack": "Chapadlo hlubin: Útok",
+                "Name": "Spektrální chapadlo"
+            },
+            "ThornWhip": {
+                "CheckSize": "Zkontrolovat velikost:",
+                "Pull": "Jak daleko chceš cíl přitáhnout?"
+            },
+            "ThunderStep": {
+                "Name": "Hromový krok",
+                "Select": "Teleportovat bytost?"
+            },
+            "ThunderboltStrike": {
+                "Select": "Vyber cíle k odhození:"
+            },
+            "ThunderousSmite": {
+                "Push": "Hromový úder: Odhození"
+            },
+            "TouchDamage": {
+                "Name": "Zranění dotykem"
+            },
+            "TravelAlongTheTree": {
+                "WillingCreatures": "Vyber až šest ochotných bytostí:"
+            },
+            "TrueStrike": {
+                "NoWeapons": "Nebyly nalezeny žádné vybavené zbraně!",
+                "ReplaceDamage": "Nahradit zranění typem {type}?",
+                "SelectWeapon": "Kterou zbraní zaútočíš?"
+            },
+            "TwilightSanctuary": {
+                "Charmed": "Odstranit stav ´zmámený/á´",
+                "Frightened": "Odstranit stav ´vystrašený´",
+                "Heal": "Uděl {formula} dočasných bodů výdrže",
+                "Temp": "Svatyně soumraku: Dočasné body výdrže"
+            },
+            "UnarmedFighting": {
+                "Grapple": "Boj beze zbraně: Zranění při zápasu",
+                "Select": "Které zápasící bytosti způsobit zranění?"
+            },
+            "UndeadFortitude": {
+                "Critical": "Kritické zásahy Nemrtvou výdrž obcházejí:",
+                "DamageTypes": "Typy zranění, které obcházejí Nemrtvou výdrž:",
+                "Name": "Nemrtvá výdrž"
+            },
+            "Underwater": {
+                "TooFar": "Cíl je pod vodou příliš daleko!",
+                "Underwater": "Pod vodou"
+            },
+            "UpcastTargets": {
+                "Select": "Vybráno příliš mnoho cílů! Vyber nejvýše {maxTargets} cílů."
+            },
+            "VampiricBite": {
+                "Bonus": "Bonus k dalšímu útoku/ověření",
+                "Heal": "Získat zpět body výdrže",
+                "LowHealth": "Výhoda: Pod polovinou bodů výdrže",
+                "Select": "Posílit se?"
+            },
+            "VampiricTouch": {
+                "Attack": "Upíří dotek: Útok",
+                "HealingModifier": "0.5"
+            },
+            "VitalityOfTheTree": "Vyber spojence, kterému udělíš dočasné body výdrže.",
+            "VortexWarp": {
+                "Name": "Pokřivení vírem"
+            },
+            "WallOfFire": {
+                "CircleFacing": "Na kterou stranu oheň směřuje?",
+                "Diameter": "Jaký průměr?",
+                "Flames": "Plameny",
+                "Height": "Jaká výška?",
+                "Inward": "Dovnitř",
+                "Length": "Jaká délka?",
+                "Outward": "Ven",
+                "Shape": "Jaký tvar?",
+                "Side": "Na které straně je oheň?"
+            },
+            "WardingBond": {
+                "Damage": "Strážné pouto: Zranění",
+                "Dismiss": "Strážné pouto: Zrušit",
+                "Distance": "Vzdálenost je na pouto příliš velká, zrušit pouto?",
+                "MaxDistance": "Maximální vzdálenost:"
+            },
+            "WarpingImplosion": {
+                "Consume": "Spotřebovat pro použití pět předmětů {item}?"
+            },
+            "WildShape": {
+                "AllowElementals": "Vždy povolit elementály:",
+                "CustomCompendium": "Vlastní kompendium pro Zvířecí podobu:",
+                "Equipment": "Co se stane s tvým vybavením?",
+                "Ignore": "Ignorovat Nebezpečnost, omezení pohybu a typ:",
+                "KeepSpells": "Povolit sesílání kouzel v přeměněné podobě:",
+                "Merge": "Sloučit / Odložit",
+                "Revert": "Zvířecí podoba: Návrat",
+                "Select": "Zvol si podobu",
+                "Wear": "Nasadit"
+            },
+            "WildSurge": {
+                "BoltOfLight": "Paprsek světla",
+                "FlowersAndVines": "Květy a liány",
+                "Form": "Jakou podobu nehmotný duch má?",
+                "IntangibleSpirit": "Nehmotný duch",
+                "IntangibleSpiritExplode": "Vlna divoké magie: Výbuch nehmotného ducha",
+                "MagicInfusion": "Magická infuze",
+                "ProtectiveLights": "Ochranná světla",
+                "Retribution": "Odplata",
+                "Select": "Jaký efekt?",
+                "ShadowyTendrils": "Stínové úponky",
+                "Target": "Vyber cíl:",
+                "Teleport": "Teleport"
+            },
+            "Wish": {
+                "Blocked": "Použití Přání zablokováno:",
+                "BlockedWarn": "Toto kouzlo nemůžeš seslat!",
+                "ChanceFormula": "Vzorec šance zablokaování:",
+                "ChanceNumber": "Šance zablokování:",
+                "InstantHealthConditions": "Okamžité stavy výdrže:",
+                "MaxLevel": "Maximální stupeň kouzla:",
+                "Rest": "Strávil/a jsi den pouze lehkou činností?",
+                "StressDuration": "Vzorec trvání stresu:"
+            },
+            "WitherAndBloom": {
+                "Heal": "Chřadnutí a rozkvět: Léčení",
+                "SelectHitDie": "Vyber počet kostek obnovy k hodu.",
+                "SelectTarget": "Kdo může hodit neutracené kostky obnovy?"
+            },
+            "WordsOfCreation": {
+                "Target": "Vyber další cíl:"
+            },
+            "WrapsOfDyamak": {
+                "CrimsonMist": "Karmínová mlha",
+                "Heal": "Obvazy Dyamaka: Léčení"
+            },
+            "WrathfulSmite": {
+                "Frighten": "Úder zloby: Vystrašit"
+            },
+            "ZealousPresence": {
+                "Rage": "Použít za cenu 1 použití Zuřivosti?",
+                "Select": "Kdo má být zasažen? (Max: {maxTargets})"
+            },
+            "ZoneOfTruth": {
+                "Save": "Zóna pravdy: Záchranný hod"
+            }
+        },
+        "ManualRolls": {
+            "Critical": "Kritický zásah",
+            "Failure": "Selhání",
+            "Fumble": "Kritické selhání",
+            "HasModifers": "Hod má opravy",
+            "Hit": "Zásah",
+            "Miss": "Minutí",
+            "PleaseResolve": "nejprve prosím vyřeš ručně a poté zadej celkový výsledek",
+            "QuickButtons": {
+                "Label": "Rychlá tlačítka",
+                "Tooltip": "Zkratky pro dokončení hodu s požadovaným výsledkem"
+            },
+            "Success": "Úspěch"
+        },
+        "Mastery": {
+            "Cleave": {
+                "Name": "Rozmáchnutí"
+            },
+            "Push": {
+                "Context": "Zatlačit cíl o 10 stop?",
+                "Name": "Zatlačení"
+            },
+            "Sap": {
+                "Name": "Oslabení"
+            },
+            "Slow": {
+                "Name": "Zpomalení"
+            },
+            "Topple": {
+                "Context": "Pokusit se srazit cíl k zemi?",
+                "Name": "Sražení"
+            },
+            "Vex": {
+                "Name": "Matení"
+            }
+        },
+        "Medkit": {
+            "Categories": {
+                "animation": {
+                    "Label": "Animace:",
+                    "Tooltip": "Přizpůsobení použitých animací"
+                },
+                "homebrew": {
+                    "Label": "Homebrew:",
+                    "Tooltip": "Dostupná domácí přizpůsobení"
+                },
+                "mechanics": {
+                    "Label": "Mechanika:",
+                    "Tooltip": "Úprava mechaniky přoložky"
+                },
+                "sound": {
+                    "Label": "Zvuk:",
+                    "Tooltip": "Přidání zvuku, který se přehraje"
+                },
+                "summons": {
+                    "Label": "Přivolávání",
+                    "Tooltip": "Přizpůsobení přivolání"
+                },
+                "visuals": {
+                    "Label": "Vizuály",
+                    "Tooltip": "Přizpůsobení vybraných vizuálních prvků"
+                }
+            },
+            "ChangeRules": "Přepnutí pravidel u položky",
+            "Compendium": {
+                "Apply": "Použít Lékárničku na všechny dokumenty v kompendiu?",
+                "DestinationCompendium": "Cílové kompendium:",
+                "Done": "Aktualizace kompendia dokončena!",
+                "Merge": "Sloučit",
+                "MergeUpdate": "Sloučit a aktualizovat",
+                "Mode": "Režim:",
+                "NewCompendium": "Nové kompendium",
+                "Overwrite": "Přepsat",
+                "Start": "Aktualizuji dokumenty...",
+                "sourceCompendiums": "Zdrojová kompendia:"
+            },
+            "Effect": {
+                "Conditions": {
+                    "Label": "Stavy",
+                    "Tooltip": "Stavy, které budou aplikovány nebo odstraněny tímto efektem pomocí API CPR"
+                },
+                "NoAnimation": {
+                    "Label": "Bez animace",
+                    "Tooltip": "Zakáže posouvající se text při aplikaci či odstranění efektu"
+                },
+                "OverTime": {
+                    "Add": "Přidat prodloužení",
+                    "Labels": {
+                        "Ability": "SO podle vlastnosti",
+                        "ActionSave": "Záchranný hod vyžaduje akci:",
+                        "ActionSaveDialog": "Dialog",
+                        "ActionSaveDisabled": "Zakázáno",
+                        "ActionSaveRoll": "Tlačítko v chatu",
+                        "Activity": "SO podle aktivity",
+                        "AllowIncapacitated": "Povolit zneschopněné cíle:",
+                        "ApplyCondition": "Výraz pro vyhodnocení aplikace stavového efektu:",
+                        "BlindRoll": "Slepý hod",
+                        "DamageBeforeSave": "Zranění aplikované před hodem na záchranu:",
+                        "DamageRoll": "Vzorec zásahu:",
+                        "DamageType": "Typ zranění:",
+                        "End": "Na konci tahu",
+                        "Flat": "Pevně daný SO",
+                        "FullDamage": "Plné zranění",
+                        "GMRoll": "Hod PJ",
+                        "HalfDamage": "Poloviční zranění",
+                        "Item": "SO položky",
+                        "Label": "Popis na kartě:",
+                        "Macro": "Volané makro:",
+                        "NoDamage": "Bez zranění",
+                        "PublicRoll": "Veřejný hod",
+                        "RemoveCondition": "Výraz pro vyhodnocení odstranění stavového efektu:",
+                        "RollMode": "Režim hodu prodlužovaného efektu:",
+                        "RollType": "Typ hodu:",
+                        "SaveAbility": "Vlastnost či dovednost pro hod:",
+                        "SaveDC": "Stupeň obtížnosti hodu:",
+                        "SaveDCAbility": "SO podle vlastnosti:",
+                        "SaveDCNumber": "Pevně daný SO:",
+                        "SaveDamage": "Zranění v případě úspěchu:",
+                        "SaveMagic": "Magický záchranný hod:",
+                        "SaveRemove": "Odstranit efekt v případě úspěchu:",
+                        "SelfRoll": "Soukromý sebe",
+                        "Spellcasting": "SO sesílání kouzel",
+                        "Start": "Na začátku tahu",
+                        "Turn": "Spouštěč:"
+                    }
+                },
+                "SpecialDuration": {
+                    "AttackedByAnotherCreature": "Napadení jinou bytostí",
+                    "DamagedByAlly": "Zranění spojencem",
+                    "DamagedByEnemy": "Zranění nepřítelem",
+                    "Label": "Speciální trvání:",
+                    "TempHP": "Žádné dočasné body výdrže",
+                    "TempMaxHP": "Žádné dočasné maximální body výdrže",
+                    "Tooltip": "Zvolené stavy efekt odstraní."
+                }
+            },
+            "EmbeddedMacros": {
+                "Delete": "Odstranit vložené makro",
+                "Edit": "Upravit vložená makra",
+                "Invalid": "Neplatné pole '{fieldName}' ve vloženém makru '{macroName}'!",
+                "Label": "Vložená makra"
+            },
+            "Fieldsets": {
+                "damage": {
+                    "Label": "Zranění",
+                    "Tooltip": "Nastavení možností hodu na zásah"
+                },
+                "macros": {
+                    "Label": "Makra",
+                    "Tooltip": "Nastavení maker, která se mají spustit"
+                },
+                "parameters": {
+                    "Label": "Parametry",
+                    "Tooltip": "Základní možnosti pro prodlužované efekty"
+                },
+                "rolls": {
+                    "Label": "Hody",
+                    "Tooltip": "Nastavení typů a možností hodů"
+                }
+            },
+            "Medkit": "Lékárnička CPR",
+            "ModuleIds": {
+                "additionalCompendiums": "Doplňující kompendia",
+                "chris-premades": "Cauldron of Plentiful Resources (Kotlík hojnosti)",
+                "gambits-premades": "Gambit's Premades",
+                "midi-item-showcase-community": "Midi Item Showcase Community"
+            },
+            "NoPermission": "Nemáš oprávnění toto změnit",
+            "OtherRulesAvailable": "Pro tuto položku existuje automatizace využívající sadu pravidel „{rules}“.",
+            "Scene": {
+                "Done": "Aktualizace scény dokončena!",
+                "Start": "Aktualizuji tokeny...",
+                "UpdateAll": "Aktualizovat všechny postavy a NP",
+                "UpdateCharacters": "Aktualizovat všechny postavy hráčů",
+                "UpdateNPCs": "Aktualizovat všechny NP"
+            },
+            "SelectedAutomation": "Zvolená automatizace:",
+            "Status": {
+                "0": "Zastaralé",
+                "1": "Aktuální",
+                "2": "Použita obecná schopnost",
+                "false": "Automatizace nenalezena",
+                "true": "Automatizace dostupná"
+            },
+            "Tabs": {
+                "Character": {
+                    "Label": "Postava",
+                    "Tooltip": "Informace o automatizaci postavy hráče"
+                },
+                "Configuration": {
+                    "Label": "Nastavení",
+                    "Tooltip": "Nastavení dostupných částí automatizace"
+                },
+                "DevTools": {
+                    "Aura": "Aura:",
+                    "AutomationInfo": "Nastavení informací o automatizaci:",
+                    "Check": "Ověření:",
+                    "Combat": "Boj:",
+                    "Death": "Smrt:",
+                    "Equipment": "Vybavení:",
+                    "HasAnimation": "Obsahuje animaci:",
+                    "Identifier": "Identifikátor:",
+                    "Item": "Položka:",
+                    "Label": "Vývojářské nástroje",
+                    "MacroInfo": "Nastavení informací o makru:",
+                    "MidiActor": "Midi, aktér:",
+                    "MidiItem": "Midi, položka:",
+                    "Movement": "Pohyb:",
+                    "Rest": "Odpočinek:",
+                    "Rules": "Pravidla:",
+                    "Save": "Záchrana:",
+                    "Skill": "Dovednost:",
+                    "Source": "Zdroj:",
+                    "Tooltip": "Vývojářské nástroje, jen pro hodně pokročilé...",
+                    "Version": "Verze:"
+                                    },
+                "EmbeddedMacros": {
+                    "Tooltip": "Vytváření maker pomocí systému událostí CPR."
+                },
+                "GenericFeatures": {
+                    "Label": "Obecné schopnosti",
+                    "Monster": {
+                        "Select": {
+                            "Label": "Výběr obecných schopností nestvůry:",
+                            "Tooltip": "Přidat nastavitelné obecné schopnosti nestvůry"
+                        }
+                    },
+                    "Tooltip": "Přidat a nastavit obecné schopnosti této položce"
+                },
+                "Info": {
+                    "Label": "Informace",
+                    "Tooltip": "Informace o aktuální a dostupné automatizaci"
+                },
+                "NPC": {
+                    "Identifier": {
+                        "Label": "Identifikátor aktéra:",
+                        "Tooltip": "Tento identifikátor bude použit pro hledání odpovídajících automatizací podle názvu, namísto použití názvu z prototypu tokenu aktéra."
+                    },
+                    "Label": "NP",
+                    "Tooltip": "Informace o automatizaci nehráčských postav"
+                },
+                "Overtime": {
+                    "Label": "Prodlužování",
+                    "Tooltip": "Rozhraní pro tvorbu prodlužovatelných efektů pomocí Midi-QOL"
+                },
+                "Summary": {
+                    "Label": "Souhrn",
+                    "Legend": {
+                        "Label": "Aktualizované položky"
+                    },
+                    "Tooltip": "Souhrn aktualizovaných automatizací"
+                }
+            }
+        },
+        "Movement": {
+            "UnableToBeMoved": "Cíl nelze přesunout!"
+        },
+        "Requirements": {
+            "MissingClass": "Nastavované povolání/obor {classIdentifier} na tomto aktérovi neexistuje!",
+            "ScaleAdded": "Škála {scaleIdentifier} byla přidána k povolání {classIdentifier}!"
+        },
+        "Section": {
+            "Rage": "Zuřivost",
+            "RingOfSpellStoring": "Prsten uchování kouzel",
+            "SpellFeatures": "Parametry kouzel"
+        },
+        "Senses": {
+            "MagicalDarkness": "Magická tma"
+        },
+        "SettingCategory": {
+            "backup": {
+                "Hint": "Nastavení zálohování postav.",
+                "Label": "Nastavit zálohování",
+                "Name": "Zálohování postav"
+            },
+            "compendium": {
+                "Hint": "Nastavení kompendií.",
+                "Label": "Nastavit kompendia",
+                "Name": "Možnosti kompendií"
+            },
+            "development": {
+                "Hint": "Nastavení pro vývojáře.",
+                "Label": "Otevřít vývojářské možnosti",
+                "Name": "Vývojářské možnosti"
+            },
+            "dialog": {
+                "Hint": "Nastavení dialogových oken.",
+                "Label": "Nastavit dialogy",
+                "Name": "Možnosti dialogů"
+            },
+            "general": {
+                "Hint": "Nastavení obecných možností.",
+                "Label": "Nastavit obecné možnosti",
+                "Name": "Nastavení obecných možností"
+            },
+            "help": {
+                "Hint": "Získej pomoc s tímto modulem.",
+                "Label": "Získat nápovědu",
+                "Name": "Nápověda"
+            },
+            "homebrew": {
+                "Hint": "Nastavení domácích pravidel.",
+                "Label": "Nastavit domácí pravidla",
+                "Name": "Možnosti domácích pravidel"
+            },
+            "integration": {
+                "Hint": "Nastavení integrace modulů.",
+                "Label": "Integrovat moduly",
+                "Name": "Integrace modulů"
+            },
+            "interface": {
+                "Hint": "Nastavení uživatelského rozhraní.",
+                "Label": "Nastavit rozhraní",
+                "Name": "Možnosti rozhraní"
+            },
+            "manualRolls": {
+                "Hint": "Nastavení ručních hodů.",
+                "Label": "Nastavit ruční hody",
+                "Name": "Ruční hody"
+            },
+            "mechanics": {
+                "Hint": "Nastavení herních mechanik.",
+                "Label": "Nastavit herní mechaniky",
+                "Name": "Možnosti herních mechanik"
+            }
+        },
+        "Settings": {
+            "Permissions": {
+                "1": "Hráč",
+                "2": "Důvěryhodný hráč",
+                "3": "Asistent Pána jeskyně",
+                "4": "Pán jeskyně"
+            },
+            "SelectCompendium": "Vyber kompendium:",
+            "activityCSSTweak": {
+                "Hint": "Pokud je je zaškrtnuto, budou mít aktivity všechny informace na jedné kartě. Po odškrtnutí je třeba znovunačtení světa.",
+                "Name": "Úprava CSS pro aktivity"
+            },
+            "addActions": {
+                "0": "Zakázáno",
+                "1": "Propojeným postavám",
+                "2": "Nepropojeným postavám",
+                "3": "Všem postavám",
+                "4": "Propojeným NP",
+                "5": "Nepropojeným NP",
+                "6": "Všem NP",
+                "7": "Propojeným postavám a NP",
+                "8": "Nepropojeným postavám a NP",
+                "9": "Všem postavám a NP",
+                "Hint": "Pokud je povoleno, budou při umístění tokenu na plátno přidány generické akce.",
+                "Name": "Generické akce tokenů"
+            },
+            "addCompendiumButton": {
+                "Hint": "Po zaškrtnutí bude do hlaviček kompendií přidáno tlačítko pro zkopírování ID.",
+                "Name": "Přidat tlačítko ID kompendia?"
+            },
+            "additionalCompendiums": {
+                "Hint": "Výběr dodatečných kompendií položek, které mají být vyžívány Lékárničkou, a úprava jejich priority.",
+                "Name": "Dodatečná kompendia"
+            },
+            "applyConditionChanges": {
+                "Hint": "Po zaškrtnutí budou stavy automaticky doplněny o efekty z Midi-QOL.",
+                "Name": "Používat stavové efekty Midi-QOL?"
+            },
+            "automatedAnimationSounds": {
+                "Hint": "Po zaškrtnutí budou položky s vypnutou automatickou animací stále přehrávat zvuky nastavené v nabídce automatického rozpoznání AA (Automated Animations = Automatické animace).",
+                "Name": "Povolit přehrávání zvuků AA?"
+            },
+            "backupCompendium": {
+                "Hint": "Volba kompendia na zálohování aktérů.",
+                "Name": "Kompendium záloh aktérů"
+            },
+            "backupFrequency": {
+                "Hint": "Jak často má být automatické zálohování prováděno.",
+                "Name": "Frekvence zálohování"
+            },
+            "backupMake": {
+                "Hint": "Okamžitě pomocí zvoleného kompendia vytvoří zálohu.",
+                "Name": "Vytvoření zálohy"
+            },
+            "backupRetention": {
+                "Hint": "Jak dlouho mají být zálohované postavy uchovány.",
+                "Name": "Uchování záloh"
+            },
+            "backupTime": {
+                "Hint": "Čas poslední zálohy (v milisekundách). Nastavuje se automaticky.",
+                "Name": "Čas poslední zálohy"
+            },
+            "backups": {
+                "Hint": "Po zaškrtnutí budou postavy vlastněné hráči automaticky zálohovány do zvoleného kompendia.",
+                "Name": "Zálohovat automaticky postavy?"
+            },
+            "bg3WeaponActionConfig": {
+                "Hint": "Nastaví akce zbraní ve stylu Baldur's Gate 3.",
+                "Name": "Zbraňové akce z Baldur's Gate 3"
+            },
+            "bg3WeaponActionUses": {
+                "Hint": "Maximální počet použití zbraňových akcí na krátký odpočinek.",
+                "Name": "Počet zbraňových akcí z Baldur's Gate 3"
+            },
+            "bg3WeaponActionsEnabled": {
+                "Hint": "Po zaškrtnutí budou aktérům při vybavení zbraní přidány zbraňové akce ve stylu Baldur's Gate 3.",
+                "Name": "Přidat zbraňové akce z Baldur's Gate 3?"
+            },
+            "checkForUpdates": {
+                "Hint": "Po zaškrtnutí bude modul po připojení PJ jednou denně kontrolovat aktualizace.",
+                "Name": "Kontrolovat aktualizace?"
+            },
+            "classSpellList": {
+                "Hint": "Nastavení záznamu všech seznamů kouzel povolání.",
+                "Name": "Záznam seznamu kouzel povolání"
+            },
+            "cleave": {
+                "1": "Povoleno (libovolné zdraví)",
+                "2": "Povoleno (pouze plné zdraví)",
+                "Hint": "Povolí mechaniku rozmachu (cleave) z Průvodce Pána jeskyně",
+                "Name": "Rozmach z DMG"
+            },
+            "colorizeAutomatedAnimations": {
+                "Hint": "Po zaškrtnutí bude ikona AA (Automated Animation = Automatické animace) na titulní liště obarvena podle stavu nastavení.",
+                "Name": "Obarvovat ikony AA?"
+            },
+            "colorizeDAE": {
+                "Hint": "Pokud je zaškrtnuto a položka má efekt, bude ikona DAE (Dynamic Active Efect = Dynamické aktivní efekty) na titulní liště obarvena.",
+                "Name": "Obarvovat ikony DAE?"
+            },
+            "conditionResistanceAndVulnerability": {
+                "Hint": "Povolí automatizace odolání a zranitelnosti vůči stavům.",
+                "Name": "Povolit automatizace odolání a zranitelnosti vůči stavům?"
+            },
+            "criticalCompendium": {
+                "Hint": "Můžeš vybrat své kompendium kritických úspěchů.",
+                "Name": "Kompendium kritických úspěchů"
+            },
+            "criticalFumbleMode": {
+                "1": "Náhodně",
+                "2": "Vybrané",
+                "3": "Náhodně (pouze kritické úspěchy)",
+                "4": "Vybrané (pouze kritické úspěchy)",
+                "5": "Náhodně (pouze kritická selhání)",
+                "6": "Vybrané (pouze kritická selhání)",
+                "Hint": "V případě povolení budou při kritických zásazích či selhání hodů hozeny též položky z vybraných kompendií.",
+                "Name": "Režim kritických zásahů a selhání"
+            },
+            "devTools": {
+                "Hint": "Povolí zobrazení vývojářských nástrojů.",
+                "Name": "Zobrazit vývojářské nástroje?"
+            },
+            "diceSoNice": {
+                "Hint": "Po zaškrtnutí budou animace hodů za zásah DSN (Dice So Nice = Tak krásné kostky) zpožděny až po dokončení všech makro hodů na zásah.",
+                "Name": "Zpožďovat hody za zásah DSN?"
+            },
+            "disableNonConditionStatusEffects": {
+                "Hint": "Po zaškrtnutí budou všechny jádrové stavové efekty, které nejsou stavy, odstraněny.",
+                "Name": "Zakázat nestavové efekty?"
+            },
+            "disableSpecialEffects": {
+                "Hint": "Po zaškrtnutí nebudou stavy jako oslepený/á či neviditelný/á aplikovat vizuální efekty.",
+                "Name": "Zakázat speciální efekty?"
+            },
+            "displayNestedConditions": {
+                "Hint": "Po zaškrtnutí budou viditelné implicitní stavové efekty. Například paralyzovaný/á také viditelně přidá stav zneschopněný/á.",
+                "Name": "Mají se zobrazovat implicitní stavy?"
+            },
+            "effectDescriptionNPC": {
+                "Hint": "Po zaškrtnutí se nastavení automatických popisů efektu nebude vztahovat na efekty vytvořené pro NP.",
+                "Name": "Skrývat popisy efektů NP?"
+            },
+            "effectDescriptions": {
+                "Hint": "Automatické doplnění efektů bez popisu z popisu původní položky.",
+                "Name": "Doplnění automatických popisů efektů"
+            },
+            "effectInterface": {
+                "Hint": "Přidá postranní záložku aktivních efektů. Po zaškrtnutí bude vyžadováno znovunačtení světa.",
+                "Name": "Povolit rozhraní efektů?"
+            },
+            "enableEmbeddedMacrosEditing": {
+                "Hint": "Po zaškrtnutí bude dostupný editor vložených maker. (Není připraveno k použití!)",
+                "Name": "Povolit úpravy vložených maker?"
+            },
+            "epicRolls": {
+                "Hint": "Po zaškrtnutí budou některá makra používat ER (Epic Rolls = Epické hody), kdykoli to bude možné.",
+                "Name": "Povolit ER?"
+            },
+            "explodingHeals": {
+                "Hint": "Po zaškrtnutí se všechny vzorce pro léčení automaticky upraví tak, aby mohly „explodovat“.",
+                "Name": "Povolit explodující léčení?"
+            },
+            "exportForSharing": {
+                "Hint": "Po zaškrtnutí bude do kontextové nabídky položek a aktérů přidáno alternativní tlačítko exportu, které exportuje položku bez popisů. Vyžaduje znovunačtení světa.",
+                "Name": "Tlačítko exportu pro sdílení?"
+            },
+            "firearmSupport": {
+                "Hint": "Po zaškrtnutí bude dostupná automatizace střelných zbraní (povolání Pistolník od Critical Role).",
+                "Name": "Povolit podporu střelných zbraní?"
+            },
+            "fumbleCompendium": {
+                "Hint": "Můžeš vybrat své kompendium kritických selhání.",
+                "Name": "Kompendium kritických selhání"
+            },
+            "gambitPremades": {
+                "1": "Bez domácích pravidel a 3. stran",
+                "2": "Bez domácích pravidel",
+                "3": "Bez 3. stran",
+                "4": "Zahrnout domácí pravidla i 3. strany",
+                "Hint": "Která kompendia mají být zahrnuta do dodatečného vyhledávání v rámci Gambit's Premades.",
+                "Name": "Možnosti Gambit's Premades"
+            },
+            "gmID": {
+                "Hint": "ID Pána jeskyně používané pro sockety. Nastavuje se automaticky.",
+                "Name": "Uživatelské ID Pána jeskyně"
+            },
+            "groupSummonsWithOwner": {
+                "Hint": "Po zaškrtnutí budou ve sledovači boje vyvolané bytosti vytvořené pomocí API CPR seskupeny, pokud mají stejnou iniciativu.",
+                "Name": "Seskupit vyvolané tokeny s vlastníkem?"
+            },
+            "hiddenCompendiumFolders": {
+                "Hint": "Vybrané složky kompendií budou skryté.",
+                "Name": "Skrytí složek kompendií"
+            },
+            "hiddenCompendiums": {
+                "Hint": "Vybraná kompendia budou skrytá.",
+                "Name": "Skrytí kompendií"
+            },
+            "hideNames": {
+                "Hint": "Po zaškrtnutí budou jména nepřátel v dialozích skryta.",
+                "Name": "Skrývat jména?"
+            },
+            "itemCompendium": {
+                "Hint": "Kompendium položek používaných pro určité automatizace. Ideálně by mělo odkazovat na kompendium položek z D&D Beyond.",
+                "Name": "Kompendia položek"
+            },
+            "itemContext": {
+                "Hint": "Po zaškrtnutí bude mít nabídka kontextu položky další možnosti (Odeslat, Zkondenzovat, Rozdělit).",
+                "Name": "Přidat další možnosti položek?"
+            },
+            "lastUpdateCheck": {
+                "Hint": "Kdy proběhla poslední kontrola aktualizací (v milisekundách). Nastavuje se automaticky.",
+                "Name": "Kdy proběhla poslední kontrola aktualizací?"
+            },
+            "macroCompendium": {
+                "Hint": "Kompendium maker používaných k přepsání či doplnění maker v API CPR. Jak používat, najdeš v dokumentaci. (Vývoj probíhá)",
+                "Name": "Kompendia maker"
+            },
+            "makeGM": {
+                "Hint": "Stát se hlavním Pánem jeskyně.",
+                "Name": "Stát se PJ?"
+            },
+            "manualRollsEnabled": {
+                "Hint": "Povolí řešitele hodů CPR pro nevyplněné hody.",
+                "Name": "Používat ruční hody?"
+            },
+            "manualRollsGMFulfils": {
+                "Hint": "Po zaškrtnutí bude všechny hody vyhodnocovat Pán jeskyně.",
+                "Name": "Má PJ vyhodnocovat všechny hody?"
+            },
+            "manualRollsInclusion": {
+                "0": "Žádné ruční hody",
+                "1": "Vždy se dotazovat u jakéhokoli aktéra",
+                "2": "Pouze všichni hráči",
+                "3": "Pouze všechny propojené",
+                "4": "Pouze propojené ve vlastnictví hráčů",
+                "5": "Vše ve vlastnictví a pod kontrolou hráčů",
+                "Hint": "Pro které aktéry má být vyžadováno potvrzení hodu.",
+                "Name": "Uživatelé ručních hodů"
+            },
+            "manualRollsPromptNoData": {
+                "Hint": "Zda se má zobrazovat výzva k hodu bez dat pravděpodobně používaných makry.",
+                "Name": "Zobrazovat výzvu při absenci dat?"
+            },
+            "manualRollsPromptOnMiss": {
+                "Hint": "Zda se má zobrazovat výzva k hodu na zásah i při selhání útoku.",
+                "Name": "Zobrazovat výzvu při neúspěšném útoku?"
+            },
+            "manualRollsUsers": {
+                "Hint": "Nastaví, kteří uživatelé používají ruční hody.",
+                "Name": "Uživatelé ručních hodů"
+            },            
+            "matchSummonElevation": {
+                "Hint": "Pokud je zaškrtnuto, pak budou tokeny přivolávané pomocí CPR vytvářeny ve stejné výšce jako token přivolávače.",
+                "Name": "Sjednotit výšku při přivolaní?"
+            },         
+            "migrationVersion": {
+                "Hint": "Verze migrace",
+                "Name": "Verze migrace"
+            },
+            "miscPremades": {
+                "1": "Bez domácích pravidel a Unearthed Arcana",
+                "2": "Bez Unearthed Arcana",
+                "3": "Bez domácích pravidel",
+                "4": "Zahrnout domácí pravidla a Unearthed Arcana",
+                "Hint": "Která kompendia mají být zahrnuta do doplňkového vyhledávání Midi Item Showcase – Community.",
+                "Name": "Možnosti Midi Item Showcase"
+            },
+            "monsterCompendium": {
+                "Hint": "Kompendium bytostí používané pro určitou automatizaci. Ideálně by mělo odkazovat na tvá kompendia nestvůr z D&D Beyond.",
+                "Name": "Kompendia bytostí"
+            },
+            "movementPerformance": {
+                "0": "Nízká",
+                "1": "Střední",
+                "2": "Vysoká",
+                "3": "Ultra",
+                "Hint": "Režim přesnosti pro události pohybu. Vyšší přesnost má větší dopad na výkon, zejména u slabšího hardwaru.\r\n• Ultra: Naprostá přesnost.\r\n• Vysoká: Ignoruje při určování vzdálenosti výpočet krytu.\r\n• Střední: Jako vysoká, ale ignoruje pohyb přes body s výjimkou posledního úseku.\r\n• Nízká: Jako střední, navíc při výpočtu vzdálenosti ignoruje i zdi.",
+                "Name": "Přesnost událostí pohybu"
+                            },
+            "movementPerformanceDisable": {
+                "Hint": "Po zaškrtnutí se nebude zobrazovat varování před hardwarovou náročností pohybu.",
+                "Name": "Varovat před hardwarovou náročností?"
+            },
+            "permissionsAutomateItem": {
+                "Hint": "Nejnižší úroveň oprávnění uživatele, který smí pomocí Lékáničky vybírat a aplikovat různé automatizace.",
+                "Name": "Oprávnění aplikovat automatizace"
+            },
+            "permissionsConfigureHomebrew": {
+                "Hint": "Nejnižší úroveň oprávnění uživatele, který smí pomocí Lékáničky nastavovat domácí pravidla.",
+                "Name": "Oprávnění nastavit domácí pravidla"
+            },
+            "permissionsConfigureItem": {
+                "Hint": "Nejnižší úroveň oprávnění uživatele, který smí nastavovat automatizace pomocí Lékárničky.",
+                "Name": "Oprávnění nastavit automatizace"
+            },
+            "permissionsUpdateItem": {
+                "Hint": "Nejnižší úroveň oprávnění uživatele, který smí aktualizovat aktuálně vybranou automatizaci Lékárničkou.",
+                "Name": "Oprávnění aktualizovat automatizace"
+            },
+            "playerSelectsConjures": {
+                "Hint": "Při sesílání kouzel „Vyvolej X“ může hráč (nikoliv PJ) vybrat, jaké bytosti budou vyvolány.",
+                "Name": "Může hráč vybírat vyvolané bytosti?"
+            },
+            "replaceStatusEffectIcons": {
+                "Hint": "Po zaškrtnutí budou ikony stavových efektů nahrazeny.",
+                "Name": "Nahradit ikony stavů?"
+            },
+            "seenTour": {
+                "Hint": "Byla zobrazena výzva průvodce? Nastavuje se automaticky.",
+                "Name": "Výzva průvodce"
+            },
+            "selectTool": {
+                "Hint": "Po zaškrtnutí bude nástroj výběru dostupný na více místech. Po zaškrtnutí je třeba znovunačtení světa.",
+                "Name": "Má být nástroj výběru všude?"
+            },
+            "spellCompendium": {
+                "Hint": "Kompendium kouzel používaných pro určitou automatizaci. Ideálně by mělo odkazovat na kompendium z D&D Beyond.",
+                "Name": "Kompendia kouzel"
+            },
+            "spotlightOmnisearchSummons": {
+                "Hint": "Povolí vyvolávání bytostí z kompendia pomocí SO (Spotlight Omnisearch = Vševyhledání). Po zaškrtnutí je třeba znovunačtení světa.",
+                "Name": "Vyvolávat pomocí SO?"
+            },
+            "statusEffectIcons": {
+                "Hint": "Nastaví obrázky ikon stavových efektů.",
+                "Name": "Nastavení ikon stavů"
+            },
+            "syncActorSizeToTokens": {
+                "Hint": "Po zaškrtnutí efekty měnící velikost aktéra změní také velikost tokenu na plátně.",
+                "Name": "Synchronizovat velikosti tokenů?"
+            },
+            "temporaryEffectHud": {
+                "Hint": "Zaškrtnutí přidá do HUDu tokenu dočasné efekty.",
+                "Name": "Přidat do HUDu dočasné efektůy?"
+            },
+            "thirdParty": {
+                "Hint": "Po zaškrtnutí bude Lékárnička zahrnovat i automatizace domácích pravidel.",
+                "Name": "Využívat obsah třetích stran?"
+            },
+            "updateCompanionInitiative": {
+                "Hint": "Automaticky při hodu nastaví iniciativu společníka těsně za iniciativu hráče.",
+                "Name": "Aktualizovat iniciativy společníků?"
+            },
+            "updateSummonInitiative": {
+                "Hint": "Automaticky při hodu nastaví iniciativu vyvolané bytosti těsně za iniciativu hráče.",
+                "Name": "Nastavit iniciativy vyvolaných tokenů?"
+            },
+            "useLocalCompendiums": {
+                "Hint": "Zda používat lokální kompendia světa namísto těch z modulu pro vyhledávání položek.",
+                "Name": "Používat lokální kompendia?"
+            },
+            "vaeButtons": {
+                "Hint": "Po zaškrtnutí přidají některá makra tlačítka do rozhraní VAE (Visual Active Effects = Vizuální aktivní efekty).",
+                "Name": "Přidat tlačítka VAE?"
+            },
+            "weaponMastery": {
+                "Hint": "Povolí automatizaci zbraňových mistrovství podle PHB 2024.",
+                "Name": "Automatizovat mistrovství se zbraněmi?"
+            }
+        },
+        "SkillCheck": {
+            "Title": "Ověření dovednosti"
+        },
+        "SkipDeadAndUnconscious": "Přeskočit mrtvé a v bezvědomí?",
+        "SneakAttack": {
+            "Auto": "Používat automaticky:"
+        },
+        "Spells": {
+            "BeaconOfHope": "Maják naděje"
+        },
+        "SpotlightOmnisearch": {
+            "Actor": "Vybraný token není přiřazen k žádné mu aktérovi!",
+            "Description": "Vyvolej {name} pomocí CPR.",
+            "Time": {
+                "Day": "1 den",
+                "Hour": "1 hodina",
+                "Minute": "1 minuta"
+            },
+            "Token": "Než tuto funkci použiješ, nejprve, prosím, vyber token!"
+        },
+        "Summons": {
+            "ActorName": "{option} Název aktéra",
+            "CRSelection": "{numSummons} {typePl} s N {cr} nebo nižší",
+            "CreatureNames": {
+                "AberrantSpirit": "Duch zrůdy",
+                "AberrantSpiritBeholderkin": "Duch zrůdy (Hledící)",
+                "AberrantSpiritSlaad": "Duch zrůdy (Slaad)",
+                "AberrantSpiritStarSpawn": "Duch zrůdy (Hvězdný zplozenec)",
+                "AberrantSpiritMindFlayer": "Duch zrůdy (Mozkožrout)",
+                "AirElemental": "Vzdušný elementál",
+                "BeastOfTheLand": "Pozemní bestie",
+                "BeastOfTheSea": "Vodní bestie",
+                "BeastOfTheSky": "Vzdušná bestie",
+                "BestialSpirit": "Duch zvířete",
+                "BestialSpiritAir": "Duch zvířete (Vzdušný)",
+                "BestialSpiritLand": "Duch zvířete (Pozemní)",
+                "BestialSpiritWater": "Duch zvířete (Vodní)",
+                "BigbysHand": "Bigbyho ruka",
+                "CelestialSpirit": "Duch nebešťana",
+                "CelestialSpiritAvenger": "Duch nebešťana (Mstitel)",
+                "CelestialSpiritDefender": "Duch nebešťana (Obránce)",
+                "ConstructSpirit": "Duch konstruktu",
+                "ConstructSpiritClay": "Duch konstruktu (Hliněný)",
+                "ConstructSpiritMetal": "Duch konstruktu (Kovový)",
+                "ConstructSpiritStone": "Duch konstruktu (Kamenný)",
+                "DancingGreatsword": "Tančící obouruční meč",
+                "DancingItem": "Tančící předmět",
+                "DancingLongsword": "Tančící dlouhý meč",
+                "DancingRapier": "Tančící rapír",
+                "DancingScimitar": "Tančící scimitar",
+                "DancingShortsword": "Tančící krátký meč",
+                "DraconicSpirit": "Duch draka",
+                "DraconicSpiritChromatic": "Duch draka (Chromatický)",
+                "DraconicSpiritGem": "Duch draka (Drahokamový)",
+                "DraconicSpiritMetallic": "Duch draka (Kovový)",
+                "DrakeCompanionAcid": "Dračí společník: Kyselinový",
+                "DrakeCompanionCold": "Dračí společník: Chladný",
+                "DrakeCompanionFire": "Dračí společník: Ohnivý",
+                "DrakeCompanionLightning": "Dračí společník: Bleskový",
+                "DrakeCompanionPoison": "Dračí společník: Jedový",
+                "DreadLord": "Pán hrůzy",
+                "EarthElemental": "Zemní elementál",
+                "EarthenHand": "Zemní ruka",
+                "Echo": "Ozvěna",
+                "ElementalSpirit": "Duch elementála",
+                "ElementalSpiritAir": "Duch elementála (Vzdušný)",
+                "ElementalSpiritEarth": "Duch elementála (Zemní)",
+                "ElementalSpiritFire": "Duch elementála (Ohnivý)",
+                "ElementalSpiritWater": "Duch elementála (Vodní)",
+                "Familiar": "Fámulus",
+                "FeySpirit": "Duch víly",
+                "FeySpiritFuming": "Duch víly (Zuřivý)",
+                "FeySpiritMirthful": "Duch víly (Veselý)",
+                "FeySpiritTricksy": "Duch víly (Záludný)",
+                "FiendishSpirit": "Duch běse",
+                "FiendishSpiritDemon": "Duch běse (Démon)",
+                "FiendishSpiritDevil": "Duch běse (Ďábel)",
+                "FiendishSpiritYugoloth": "Duch běse (Yugoloth)",
+                "FireElemental": "Ohnivý elementál ",
+                "FlamingSphere": "Planoucí koule",
+                "Flumph": "Flamp",
+                "ForceSculpture": "Silová sochay",
+                "FormOfDread": "Forma hrůzy",
+                "GuardianOfFaith": "Strážce víry",
+                "HealingSpirit": "Léčivý duch",
+                "HomunculusServant": "Služebný homunkulus",
+                "HybridTransformation": "Hybridní transformace",
+                "ManifestMind": "Manifestovaná mysl",
+                "Pixie": "Pixie",
+                "ReaperSpirit": "Žnec",
+                "ShadowSpirit": "Stínový duch",
+                "ShadowSpiritDespair": "Stínový duch (Zoufalství)",
+                "ShadowSpiritFear": "Stínový duch (Strach)",
+                "ShadowSpiritFury": "Stínový duch (Zuřivost)",
+                "Shifter": "Měňavec",
+                "Skeleton": "Kostlivec",
+                "SpiritualWeapon": "Duchovní zbraň",
+                "Steed": "Oř",
+                "SteelDefender": "Ocelový obránce",
+                "TentacleOfTheDeeps": "Chapadlo hlubin",
+                "UndeadSpirit": "Nemrtvý duch",
+                "UndeadSpiritGhostly": "Nemrtvý duch (Přízračný)",
+                "UndeadSpiritPutrid": "Nemrtvý duch (Hnilobný)",
+                "UndeadSpiritSkeletal": "Nemrtvý duch (Kostěný)",
+                "WaterElemental": "Vodní elementál",
+                "WildfireSpirit": "Duch divokého ohně",
+                "Zombie": "Zombie"
+            },
+            "CustomAvatar": "{option} Vlastní avatar",
+            "CustomName": "{option} Vlastní jméno",
+            "CustomToken": "{option} Vlastní token",
+            "DismissHP": "Přivolanec má 0 bodů výdrže! Měl by být odvolán?",
+            "DismissSummon": "Odvolat přivolance",
+            "FamiliarDefault": "{option} fámulus",
+            "Folder": "Název složky",
+            "HowMany": "Kolik?",
+            "NoMatching": "Ve zvoleném kompendiu nebyli nalezeni žádní odpovídající aktéři!",
+            "SelectSummon": "Vyber přivolance",
+            "SelectSummonType": "Vyber typ přivolance",
+            "SelectSummons": "Vyber přivolance (max: {totalSummons})",
+            "SummonedCreature": "Přivolaná bytost"
+        },
+        "Template": {
+            "AttackerCantSeeTarget": "Útočník nevidí cíl",
+            "Cone": "Kužel",
+            "Line": "Dráha",
+            "TargetCantSeeAttacker": "Cíl nevidí útočníka",
+            "UnknownTemplate": "Neznámá šablona"
+        },
+        "Tour": {
+            "0": {
+                "Content": "Tato prohlídka tě provede některými klíčovými funkcemi modulu Cauldron of Plentiful Resources.",
+                "Title": "Vítej!"
+            },
+            "1": {
+                "Content": "Všechny automatizace dostupné v tomto modulu jsou uloženy zde.",
+                "Title": "Kompendia"
+            },
+            "10": {
+                "Content": "Tento modul má mnoho nastavení. Doporučujeme projít si je pečlivě a zapnout pouze ta, která opravdu potřebuješ.",
+                "Title": "Nastavení modulu"
+            },
+            "11": {
+                "Content": "Další pomoc nalezneš v sekci nápovědy.",
+                "Title": "Nápověda"
+            },
+            "2": {
+                "Content": "Například kouzlo \"Fire Shield\" je uloženo v kompendiu \"CPR Spells\". Můžeš jej přetáhnout na svého aktéra a používat jej.",
+                "Title": "Kompendia"
+            },
+            "3": {
+                "Content": "Případně můžeš kliknout na ikonu Lékárničky v položce. Tím se otevře aplikace Lékárnička, která umí danou položku automaticky nahradit novou verzí s automatizací.",
+                "Title": "Lékárnička"
+            },
+            "4": {
+                "Content": "Lékárnička takto zobrazuje stav položky:\nČervená: Zastaralá.\nŽlutá: K dispozici je automatizace.\nZelená: Položka je aktuální.\nModrá: Položka je aktuální a má možnosti nastavení.",
+                "Title": "Stav položky"
+            },
+            "5": {
+                "Content": "Zde si můžeš vybrat, kterou automatizaci chceš použít, pokud jich je k dispozici více.",
+                "Title": "Dostupné automatizace"
+            },
+            "6": {
+                "Content": "Pokud má položka možnosti nastavení, můžeš je nastavit na záložce Nastavení.",
+                "Title": "Nastavení položky"
+            },
+            "7": {
+                "Content": "Ikona Lékárničky u aktéra slouží jako hromadná aktualizace. Můžeš jí aktualizovat všechny položky na aktérovi naráz.",
+                "Title": "Lékárnička aktéra"
+            },
+            "8": {
+                "Content": "Některé automatizace vyžadují vytvoření dočasných položek na kartě aktéra. Tento modul využívá pro doplnění jejich popisu stránky v záznamníku (které si saám/a vyplníš).",
+                "Title": "Záznamník popisů"
+            },
+            "9": {
+                "Content": "Například kouzlo \"Dragon's Breath\" vytvoří u aktéra dočasnou schopnost \"Dragon Breath\".\nVyplnění této stránky v záznamníku doplní popis.",
+                "Title": "Záznamník popisů"
+            },
+            "Chat": "<hr>Zde si udělej prohlídku používáním Cauldron of Plentiful Resources:<br><button type=\"button\">Spustit prohlídku</button>",
+            "Description": "Prohlédni si modul Cauldron of Plentiful Resources.",
+            "Hint": "Spustí prohlídku modulu Cauldron of Plentiful Resources.",
+            "Title": "Prohlídka Cauldron of Plentiful Resources",
+            "TourFeatures": "Funkce prohlídky"
+        },
+        "Troubleshooter": {
+            "Clipboard": "Text zkopírován do schránky!",
+            "CopyToClipboard": "Zkopírovat do schránky",
+            "DisabledModule": "Modul Cauldron of Plentiful Resources vyžaduje, aby byl modul {module} aktivní!",
+            "Discord": "Otevřít kanál podpory na Discordu",
+            "Hint": "Otevře Řešitel problémů.",
+            "MissingModule": "Modul Cauldron of Plentiful Resources vyžaduje, aby byl modul {module} nainstalován!",
+            "MovementLag": "Zpracování pohybu trvá příliš dlouho! Zkus snížit hodnotu \"Přesnost událostí pohybu\" v obecných nastaveních CPR.",
+            "Open": "Nástroj pro řešení problémů",
+            "SaveToFile": "Uložit do souboru",
+            "Title": "Řešení problémů"
+        },
+        "Turns": {
+            "EndOfTurn": "Konec tahu",
+            "StartOfTurn": "Začátek tahu"
+        },
+        "UnarmedStrike": {
+            "GrappleContest": "Jak se bráníš pokusu o držení?",
+            "ShoveContest": "Jak se bráníš pokusu o sražení?"
+        },
+        "Units": {
+            "Feet": "Stopy",
+            "Miles": "Míle",
+            "Units": "Jednotky:"
+        },
+        "UnknownTarget": "Neznámý cíl"
+    },
+    "CONTROLS": {
+        "LightingSelect": "Vybrat světla",
+        "SoundsSelect": "Vybrat zvuky",
+        "TemplatesSelect": "Vybrat šablony"
+    },
+    "dae.CPR.fieldData": {
+        "flags.chris-premades.senses.magicalDarkness": {
+            "description": "Vzdálenost, na kterou aktér vidí skrz magickou tmu. Ovlivňuje pouze Výhodu/Nevýhodu útoků u CPR automatizací vytvářejících magickou tmu.",
+            "name": "Dosah vnímání magické tmy"
+        },
+        "flags.chris-premades.turnImmunity": {
+            "description": "Imunita vůči Odvrácení nemrtvých.",
+            "name": "Imunita vůči Odvrácení"
+        },
+        "flags.chris-premades.turnResistance": {
+            "description": "Odolání vůči Odvrácení nemrtvých, hází s Výhodou.",
+            "name": "Odolání vůči Odvrácení"
+        }
+    },
+    "dae.fieldData.fieldCategories.CPR": "CPR",
+    "SIDEBAR": {
+        "ACTIONS": {
+            "CREATE": {
+                "ActiveEffect": "Vytvořit aktivní efekt"
+            }
+        }
+    }
+}

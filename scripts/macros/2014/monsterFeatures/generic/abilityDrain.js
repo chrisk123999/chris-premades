@@ -3,6 +3,8 @@ async function use({workflow}) {
     if (workflow.hitTargets.size !== 1) return;
     let targetToken = workflow.hitTargets.first();
     let config = itemUtils.getGenericFeatureConfig(workflow.item, 'abilityDrain');
+    let activities = config.activities;
+    if (activities?.length && !activities.includes(workflow.activity.id)) return;
     let ability = config.ability;
     let formula = config.formula;
     let checkSave = config.checkSave;
@@ -67,6 +69,12 @@ export let abilityDrain = {
     },
     isGenericFeature: true,
     genericConfig: [
+        {
+            value: 'activities',
+            label: 'CHRISPREMADES.Config.Activities',
+            type: 'activities',
+            default: []
+        },
         {
             value: 'formula',
             label: 'CHRISPREMADES.Config.Formula',

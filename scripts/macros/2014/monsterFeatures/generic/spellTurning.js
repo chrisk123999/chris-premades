@@ -1,5 +1,4 @@
-import {constants, effectUtils, itemUtils} from '../../../../utils.js';
-
+import {constants, effectUtils, itemUtils, workflowUtils} from '../../../../utils.js';
 async function early({trigger: {entity: item}, workflow}) {
     if (workflow.targets.size > 1) return;
     if (workflow.activity.target.template.count) return;

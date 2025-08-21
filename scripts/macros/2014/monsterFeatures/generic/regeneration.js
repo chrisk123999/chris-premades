@@ -1,5 +1,4 @@
 import {actorUtils, combatUtils, effectUtils, genericUtils, itemUtils, workflowUtils} from '../../../../utils.js';
-
 async function turnStart({trigger: {entity: item, token}}) {
     let config = itemUtils.getGenericFeatureConfig(item, 'genericRegeneration');
     let actor = item.actor;

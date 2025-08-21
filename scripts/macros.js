@@ -250,3 +250,5 @@ export {radianceOfTheDawn} from './macros/2024/classFeatures/cleric/light/radian
 export {wardingFlare} from './macros/2024/classFeatures/cleric/light/wardingFlare.js';
 export {improvedWardingFlare} from './macros/2024/classFeatures/cleric/light/improvedWardingFlare.js';
 export {coronaOfLight, coronaOfLightEffect} from './macros/2024/classFeatures/cleric/light/coronaOfLight.js';
+// Trickery Domain
+export {blessingOfTheTrickster} from './macros/2024/classFeatures/cleric/trickery/blessingOfTheTrickster.js';

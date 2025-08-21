@@ -677,9 +677,15 @@ export function registerSettings() {
     });
     addSetting({
         key: 'weaponMastery',
-        type: Boolean,
-        default: false,
-        category: 'mechanics'
+        type: Number,
+        default: 0,
+        category: 'mechanics',
+        choices: {
+            0: 'CHRISPREMADES.Generic.Disabled',
+            1: 'CHRISPREMADES.Settings.weaponMastery.1',
+            2: 'CHRISPREMADES.Settings.weaponMastery.2',
+            3: 'CHRISPREMADES.Settings.weaponMastery.3'
+        }
     });
     addSetting({
         key: 'matchSummonElevation',
