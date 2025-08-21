@@ -1,3 +1,7 @@
+# 1.3.18 Release:
+## Bug Fixes:
+- Dust Devil
+
 # 1.3.17 Release:
 ## Bug Fixes:
 - Dust Devil
