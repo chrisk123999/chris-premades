@@ -160,7 +160,7 @@ async function endTurn({trigger}) {
     if (!tokenUuid) return;
     let devilToken = await fromUuid(tokenUuid);
     if (!devilToken) return;
-    let featureData = duplicate(trigger.entity.toObject());
+    let featureData = genericUtils.duplicate(trigger.entity.toObject());
     let featureWorkflow = await workflowUtils.syntheticItemDataRoll(featureData, trigger.entity.actor, [trigger.target]);
     if (featureWorkflow.failedSaves.find(t => t.id === trigger.target.id)) {
         // Ensure we pass Token objects (not Documents) to pushToken
@@ -173,7 +173,7 @@ async function early({dialog}) {
 }
 export let dustDevil = {
     name: 'Dust Devil',
-    version: '1.0.0',
+    version: '1.3.17',
     hasAnimation: true,
     midi: {
         item: [
@@ -263,8 +263,8 @@ export let dustDevil = {
     ]
 };
 export let dustDevilEndTurn = {
-    name: 'Dust Devil: Contact',
-    version: '1.0.0',
+    name: 'Dust Devil: End Turn',
+    version: dustDevil.version,
     combat: [
         {
             pass: 'turnEndNear',
@@ -276,5 +276,5 @@ export let dustDevilEndTurn = {
 };
 export let dustDevilContact = {
     name: 'Dust Devil: Contact',
-    version: '1.0.0'
+    version: dustDevil.version
 };

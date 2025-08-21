@@ -1,3 +1,8 @@
+# 1.3.17 Release:
+## Bug Fixes:
+- Dust Devil
+- Eyes of the Eagle
+
 # 1.3.16 Release:
 ## New Legacy Content:
 - Dust Devil (Thanks Beerbill)
