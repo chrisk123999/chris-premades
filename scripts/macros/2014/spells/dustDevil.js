@@ -1,16 +1,5 @@
 import {Summons} from '../../../lib/summons.js';
-import {
-    activityUtils,
-    compendiumUtils,
-    constants,
-    crosshairUtils,
-    effectUtils,
-    errors,
-    genericUtils,
-    itemUtils,
-    tokenUtils,
-    workflowUtils
-} from '../../../utils.js';
+import {activityUtils, compendiumUtils, constants, crosshairUtils, effectUtils, errors, genericUtils, itemUtils, tokenUtils, workflowUtils} from '../../../utils.js';
 
 async function use({trigger, workflow}) {
     let avatarImg = itemUtils.getConfig(workflow.item, 'avatar');
@@ -77,14 +66,6 @@ async function use({trigger, workflow}) {
         return;
     }
     let feature = activityUtils.getActivityByIdentifier(workflow.item, 'dustDevilMove');
-    if (!feature) {
-        // Fallback by name if identifier mapping is stale; also auto-heal the identifier mapping
-        let moveByName = workflow.item.system.activities.find(a => a.name === 'Dust Devil: Move');
-        if (moveByName) {
-            feature = moveByName;
-            await activityUtils.setIdentifier(moveByName, 'dustDevilMove');
-        }
-    }
     if (!feature) return;
     let [token] = await Summons.spawn(actor, updates, workflow.item, workflow.token,{
         duration: itemUtils.convertDuration(workflow.item).seconds,
@@ -190,19 +171,7 @@ async function endTurn({trigger}) {
     if (!devilToken) return;
     let featureData = duplicate(trigger.entity.toObject());
     let featureWorkflow = await workflowUtils.syntheticItemDataRoll(featureData, trigger.entity.actor, [trigger.target]);
-    // If the target failed the STR save, push it 10 ft away from the devil
-    let failed = Array.from(featureWorkflow?.failedSaves ?? []);
-    if (!failed.length && trigger?.target) {
-        // Manual fallback STR save if MIDI didn't populate failedSaves
-        const dc = itemUtils.getSaveDC(featureData) || 10;
-        const ta = trigger.target?.actor;
-        if (ta) {
-            const save = await ta.rollAbilitySave?.('str', {flavor: 'Dust Devil: End Turn (push)'});
-            const total = save?.total ?? (ta.system?.abilities?.str?.save ?? 0) + (new Roll('1d20').evaluate({async: false}).total);
-            if (total < dc) failed = [trigger.target];
-        }
-    }
-    if (failed.find(t => t.id === trigger.target.id)) {
+    if (!featureWorkflow.failedSaves.find(t => t.id === trigger.target.id)) {
         // Ensure we pass Token objects (not Documents) to pushToken
         const targetToken = trigger.target?.object ?? trigger.target;
         const dist = tokenUtils.getDistance(devilToken.object, targetToken);
