@@ -208,11 +208,6 @@
       "otherCondition": ""
     },
     "chris-premades": {
-      "info": {
-        "identifier": "dustDevilContact",
-        "source": "chris-premades",
-        "version": "1.0.25"
-      },
       "macros": {
         "combat": [
           "dustDevilEndTurn"
