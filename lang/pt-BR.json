@@ -137,7 +137,9 @@
             "Colors": {
                 "Blue": "Azul",
                 "Blue02": "Azul (alt)",
+                "BlueGrey": "Azul & Cinza",
                 "BlueYellow": "Azul & Amarelo",
+                "BlueWhite": "Azul & Branco",
                 "Cycle": "Ciclo",
                 "DarkBlack": "Preto Escuro",
                 "DarkBlue": "Azul Escuro",
@@ -1215,6 +1217,10 @@
                 "Move": "Esfera Flamejante: Mover",
                 "Ram": "Forçar Alvo?",
                 "RamItem": "Esfera Flamejante: Forçar"
+            },
+            "DustDevil": {
+                "ContactItem": "Redemoinho de Poeira: Contato",
+                "Move": "Redemoinho de Poeira: Mover"
             },
             "FlockOfFamiliars": {
                 "Command": "Bando de Familiares: Comando",
@@ -2955,6 +2961,7 @@
                 "DrakeCompanionLightning": "Companheiro Dragão: Elétrico",
                 "DrakeCompanionPoison": "Companheiro Dragão: Venenoso",
                 "DreadLord": "Senhor do Pavor",
+                "DustDevil": "Redemoinho de Poeira",
                 "EarthElemental": "Elemental da Terra",
                 "EarthenHand": "Mão Terrena",
                 "Echo": "Eco",

@@ -136,7 +136,9 @@
             "Colors": {
                 "Blue": "Blu",
                 "Blue02": "Blu (alternativo)",
+                "BlueGrey": "Blu & Grigio",
                 "BlueYellow": "Blu & Giallo",
+                "BlueWhite": "Blu & Bianco",
                 "Cycle": "Ciclo",
                 "DarkBlack": "Nero Scuro",
                 "DarkBlue": "Blu Scuro",
@@ -1204,6 +1206,10 @@
                 "Move": "Sfera Fiammeggiante: Sposta",
                 "Ram": "Colpire il Bersaglio?",
                 "RamItem": "Sfera Fiammeggiante: Colpire"
+            },
+            "DustDevil": {
+                "ContactItem": "Diavolo di Polvere: Contatto",
+                "Move": "Diavolo di Polvere: Sposta"
             },
             "FlockOfFamiliars": {
                 "Command": "Sciame di Famigli: Comando",
@@ -2902,6 +2908,7 @@
                 "DrakeCompanionLightning": "Compagno Drago: Fulmine",
                 "DrakeCompanionPoison": "Compagno Drago: Veleno",
                 "DreadLord": "Signore della Paura",
+                "DustDevil": "Diavolo di Polvere",
                 "EarthElemental": "Elementale della Terra",
                 "EarthenHand": "Mano di Terra",
                 "Echo": "Eco",

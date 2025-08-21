@@ -80,6 +80,7 @@ export {detectMagic} from './macros/2024/spells/detectMagic.js';
 export {disintegrate} from './macros/2024/spells/disintegrate.js';
 export {divineSmite} from './macros/2024/spells/divineSmite.js';
 export {dragonsBreath} from './macros/2024/spells/dragonsBreath.js';
+export {dustDevil} from './macros/2024/spells/dustDevil.js';
 export {eldritchBlast} from './macros/2024/spells/eldritchBlast.js';
 export {elementalWeapon} from './macros/2024/spells/elementalWeapon.js';
 export {enlargeReduce} from './macros/2024/spells/enlargeReduce.js';

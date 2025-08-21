@@ -45,6 +45,7 @@ export {detectMagic, detectMagicDetecting} from './macros/2014/spells/detectMagi
 export {detectThoughts} from './macros/2014/spells/detectThoughts.js';
 export {disintegrate} from './macros/2014/spells/disintegrate.js';
 export {dragonsBreath} from './macros/2014/spells/dragonsBreath.js';
+export {dustDevil, dustDevilEndTurn, dustDevilContact} from './macros/2014/spells/dustDevil.js';
 export {earthTremor} from './macros/2014/spells/earthTremor.js';
 export {eldritchBlast} from './macros/2014/spells/eldritchBlast.js';
 export {elementalWeapon} from './macros/2014/spells/elementalWeapon.js';
@@ -250,7 +251,7 @@ export {feyPresence} from './macros/2014/classFeatures/warlock/archfey/feyPresen
 export {fightingSpirit} from './macros/2014/classFeatures/fighter/samurai/fightingSpirit.js';
 export {fightingStyleSuperiorTechnique} from './macros/2014/classFeatures/multiple/fightingStyleSuperiorTechnique.js';
 export {fightingStyleUnarmedFighting, fightingStyleUnarmedFightingUnarmedStrike} from './macros/2014/classFeatures/multiple/fightingStyleUnarmedFighting.js';
-export {fireRune, frostRune, stoneRune, hillRune, stormRune, cloudRune} from './macros/2014/classFeatures/fighter/runeKnight/runes.js'; 
+export {fireRune, frostRune, stoneRune, hillRune, stormRune, cloudRune} from './macros/2014/classFeatures/fighter/runeKnight/runes.js';
 export {focusedAim} from './macros/2014/classFeatures/monk/focusedAim.js';
 export {formOfDread, formOfDreadActive} from './macros/2014/classFeatures/warlock/undead/formOfDread.js';
 export {formOfTheBeast} from './macros/2014/classFeatures/barbarian/beast/formOfTheBeast.js';
