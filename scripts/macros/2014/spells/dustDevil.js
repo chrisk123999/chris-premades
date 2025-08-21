@@ -174,29 +174,8 @@ async function endTurn({trigger}) {
     if (!featureWorkflow.failedSaves.find(t => t.id === trigger.target.id)) {
         // Ensure we pass Token objects (not Documents) to pushToken
         const targetToken = trigger.target?.object ?? trigger.target;
-        const dist = tokenUtils.getDistance(devilToken.object, targetToken);
-        if (!dist) {
-            const grid = canvas.grid.size;
-            const squares = Math.max(1, Math.round(10 / canvas.dimensions.distance));
-            const room = tokenUtils.checkForRoom(targetToken, squares);
-            const diag = tokenUtils.findDirection(room);
-            let dx = 0, dy = 0;
-            if (diag === 'ne') { dx = squares * grid; dy = -squares * grid; }
-            else if (diag === 'nw') { dx = -squares * grid; dy = -squares * grid; }
-            else if (diag === 'se') { dx = squares * grid; dy = squares * grid; }
-            else if (diag === 'sw') { dx = -squares * grid; dy = squares * grid; }
-            else {
-                if (room.e) dx = squares * grid; else if (room.w) dx = -squares * grid;
-                if (room.n) dy = -squares * grid; else if (room.s) dy = squares * grid;
-            }
-            const nx = targetToken.document.x + dx;
-            const ny = targetToken.document.y + dy;
-            await genericUtils.update(targetToken.document, {x: nx, y: ny});
-        } else {
-            await tokenUtils.pushToken(devilToken.object, targetToken, 10);
-        }
+        await tokenUtils.pushToken(devilToken.object, targetToken, 10);
     }
-
 }
 
 async function early({dialog}) {
