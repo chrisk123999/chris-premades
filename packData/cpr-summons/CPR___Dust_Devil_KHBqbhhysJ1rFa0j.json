@@ -530,7 +530,6 @@
       "tint": "#ffffff",
       "alphaThreshold": 0.75
     },
-    "hexagonalShape": 0,
     "lockRotation": false,
     "rotation": 0,
     "alpha": 1,
@@ -603,17 +602,24 @@
       },
       "dnd5e": {}
     },
-    "randomImg": false
+    "randomImg": false,
+    "turnMarker": {
+      "mode": 1,
+      "animation": null,
+      "src": null,
+      "disposition": false
+    },
+    "movementAction": null
   },
   "items": [],
   "effects": [],
   "folder": null,
   "flags": {
     "midi-qol": {
-        "neverTarget": true
+      "neverTarget": true
     },
     "dnd5e": {
-        "showTokenPortrait": false
+      "showTokenPortrait": false
     }
   },
   "_id": "KHBqbhhysJ1rFa0j",
