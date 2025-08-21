@@ -385,7 +385,19 @@ form .cpr-row-center .cpr-input-short {
 }
 
 .cpr-medkit-tab .cpr-fieldset-group .cpr-fieldset .cpr-row-center:has(> select) {
+    flex-basis: 50%;
+}
+
+.cpr-medkit-tab .cpr-fieldset-group .cpr-fieldset .cpr-row-center:has(> multi-select) {
     flex-basis: 100%;
+}
+
+.cpr-medkit-tab .cpr-fieldset-group .cpr-fieldset .cpr-row-center:has(> [type="text"]) {
+    flex-basis: 50%;
+}
+
+.cpr-medkit-tab .cpr-fieldset-group .cpr-fieldset .cpr-row-center:has(> [type="number"]) {
+    flex-basis: 25%;
 }
 
 .cpr-medkit-tab .cpr-notification {
