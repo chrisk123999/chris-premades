@@ -185,7 +185,8 @@
             "HitTarget": "Alvo Atingido:",
             "IgnoredCreatureTypes": "Tipos de Criatura Ignorados:",
             "ImmuneCreatures": "Tipos de Criaturas Imunes:",
-            "MaxLevel": "Nível Máx.:",
+            "MaxLevel": "Nível Máx:",
+            "MaxSize": "Tamanho Máx:",
             "Name": "Nome:",
             "Number": "Número:",
             "Percentage": "Porcentagem:",
@@ -1554,8 +1555,8 @@
                 "Select": "Qual tipo de arma de sopro?"
             },
             "Metamagic": {
-                "CarefulWhich": "Quais alvos têm um sucesso automático? (Máx. {max})",
-                "Empowered": "Gastar 1 Ponto de Feitiçaria para rerolar o dado de dano? (Máx. {max})",
+                "CarefulWhich": "Quais alvos têm um sucesso automático? (Máx: {max})",
+                "Empowered": "Gastar 1 Ponto de Feitiçaria para re-rolar o dado de dano? (Máx: {max})",
                 "HeightenedWhich": "Quais alvos têm desvantagem?",
                 "NoValid": "Nenhuma magia aplicável para conjurar!",
                 "NotEnough": "Pontos de Feitiçaria insuficientes!",
@@ -1751,7 +1752,7 @@
             },
             "ScorchingRay": {
                 "Bolt": "Raio de Raio Ardente",
-                "Select": "Escolha seus alvos (Máx de raios: {maxRays})"
+                "Select": "Escolha seus alvos (Máx. de Raios: {maxRays})"
             },
             "SculptSpells": {
                 "Select": "Quais alvos são bem-sucedidos e não sofrem dano? (Máx: {max})"
@@ -2338,8 +2339,11 @@
                 },
                 "SpecialDuration": {
                     "AttackedByAnotherCreature": "Atacado por Outra Criatura",
+                    "AttackedBySource": "Atacado pela Origem",
                     "DamagedByAlly": "Sofrer Dano de Aliado",
                     "DamagedByEnemy": "Sofrer Dano de Inimigo",
+                    "HitByAnotherCreature": "Atingido por Outra Criatura",
+                    "HitBySource": "Atingido pela Origem",
                     "Label": "Durações Especiais:",
                     "TempHP": "Zero Pontos de Vida Temporários",
                     "TempMaxHP": "Zero Pontos de Vida Máximos Temporários",
