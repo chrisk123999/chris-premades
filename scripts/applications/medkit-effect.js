@@ -97,6 +97,21 @@ export class EffectMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
                             label: 'CHRISPREMADES.Medkit.Effect.SpecialDuration.AttackedByAnotherCreature',
                             value: 'damagedByAnotherCreature',
                             isSelected: effect.flags['chris-premades']?.specialDuration?.includes('attackedByAnotherCreature')
+                        },
+                        {
+                            label: 'CHRISPREMADES.Medkit.Effect.SpecialDuration.AttackedBySource',
+                            value: 'attackedBySource',
+                            isSelected: effect.flags['chris-premades']?.specialDuration?.includes('attackedBySource')
+                        },
+                        {
+                            label: 'CHRISPREMADES.Medkit.Effect.SpecialDuration.HitByAnotherCreature',
+                            value: 'hitByAnotherCreature',
+                            isSelected: effect.flags['chris-premades']?.specialDuration?.includes('hitByAnotherCreature')
+                        },
+                        {
+                            label: 'CHRISPREMADES.Medkit.Effect.SpecialDuration.HitBySource',
+                            value: 'hitBySource',
+                            isSelected: effect.flags['chris-premades']?.specialDuration?.includes('hitBySource')
                         }
                     ].concat(CONFIG.statusEffects.map(i => ({
                         label: i.name,

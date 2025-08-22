@@ -1,3 +1,10 @@
+# 1.3.19 Release:
+## Bug Fixes:
+- Armor of Agathys
+- Aberrant Dragonmark
+## Update Notes:
+- Added "Attacked By Source", "Hit By Source", and "Hit By Another Creature" special durations to the CPR effect medkit.
+
 # 1.3.18 Release:
 ## Bug Fixes:
 - Dust Devil

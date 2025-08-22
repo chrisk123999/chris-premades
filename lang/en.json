@@ -138,8 +138,8 @@
                 "Blue": "Blue",
                 "Blue02": "Blue (alt)",
                 "BlueGrey": "Blue & Grey",
-                "BlueYellow": "Blue & Yellow",
                 "BlueWhite": "Blue & White",
+                "BlueYellow": "Blue & Yellow",
                 "Cycle": "Cycle",
                 "DarkBlack": "Dark Black",
                 "DarkBlue": "Dark Blue",
@@ -1060,6 +1060,10 @@
             "DreadfulAspect": {
                 "Turn": "Dreadful Aspect: End of Turn"
             },
+            "DustDevil": {
+                "ContactItem": "Dust Devil: Contact",
+                "Move": "Dust Devil: Move"
+            },
             "EffectImmunity": {
                 "Immune": "Immune",
                 "Name": "Effect Immunity"
@@ -1218,10 +1222,6 @@
                 "Move": "Flaming Sphere: Move",
                 "Ram": "Ram Target?",
                 "RamItem": "Flaming Sphere: Ram"
-            },
-            "DustDevil": {
-                "ContactItem": "Dust Devil: Contact",
-                "Move": "Dust Devil: Move"
             },
             "FlockOfFamiliars": {
                 "Command": "Flock of Familiars: Command",
@@ -2339,8 +2339,11 @@
                 },
                 "SpecialDuration": {
                     "AttackedByAnotherCreature": "Attacked By Another Creature",
+                    "AttackedBySource": "Attacked By Source",
                     "DamagedByAlly": "Damaged By Ally",
                     "DamagedByEnemy": "Damaged By Enemy",
+                    "HitByAnotherCreature": "Hit By Another Creature",
+                    "HitBySource": "Hit By Source",
                     "Label": "Special Durations:",
                     "TempHP": "Zero Temporary Hitpoints",
                     "TempMaxHP": "Zero Temporary Max Hitpoints",
