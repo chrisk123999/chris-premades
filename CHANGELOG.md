@@ -1,3 +1,8 @@
+# 1.3.20 Release:
+## Bug Fixes:
+- Armor of Agathys
+- Dread Ambusher
+
 # 1.3.19 Release:
 ## Bug Fixes:
 - Armor of Agathys
