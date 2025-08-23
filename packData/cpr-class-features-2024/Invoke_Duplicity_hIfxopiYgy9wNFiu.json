@@ -510,7 +510,10 @@
           "item": [
             "invokeDuplicity"
           ]
-        }
+        },
+		"item": [
+          "radianceOfTheDawn"
+        ] 
       },
       "hiddenActivities": [
         "dismiss",
