@@ -1,3 +1,12 @@
+# 1.3.21 Release:
+## New Modern Content:
+- Invoke Duplicity
+- Trickster's Transposition
+- Improved Duplicity
+## API Bug Fixes:
+- Legacy and modern actor macros will now properly properly get triggered even if the rolled item is from a different set of rules.
+- The summoned creature effect is now properly marked as modern or legacy depending on the source item.
+
 # 1.3.20 Release:
 ## Bug Fixes:
 - Armor of Agathys

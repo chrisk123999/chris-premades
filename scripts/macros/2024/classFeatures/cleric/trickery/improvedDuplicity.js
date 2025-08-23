@@ -15,16 +15,16 @@ async function attack({trigger: {entity: effect}, workflow}) {
     workflow.attackAdvAttribution.add(genericUtils.translate('DND5E.Advantage') + ': ' + feature.name);
 }
 async function removed({trigger: {entity: effect}}) {
-    let origin = await fromUuid(effect.origin);
-    if (!origin) return;
-    let feature = itemUtils.getItemByIdentifier(origin.actor, 'improvedDuplicity');
+    let feature = itemUtils.getItemByIdentifier(effect.parent, 'improvedDuplicity');
     if (!feature) return;
     let activity = activityUtils.getActivityByIdentifier(feature, 'heal', {strict: true});
     if (!activity) return;
-    let token = actorUtils.getFirstToken(effect.parent);
+    let ownerToken = actorUtils.getFirstToken(effect.parent);
+    let invokeDuplicity = itemUtils.getItemByIdentifier(effect.parent, 'invokeDuplicity');
+    if (!invokeDuplicity || !ownerToken) return;
+    let token = ownerToken.document.parent.tokens.get(effect.flags['chris-premades'].summons.ids[invokeDuplicity.name][0]).object;
     if (!token) return;
     let nearbyTokens = tokenUtils.findNearby(token, 5, 'ally', {includeIncapacitated: true});
-    let ownerToken = actorUtils.getFirstToken(origin.actor);
     if (ownerToken && !nearbyTokens.includes(ownerToken)) nearbyTokens.push(ownerToken);
     if (!nearbyTokens.length) return;
     let selection;

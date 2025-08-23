@@ -1,7 +1,7 @@
 import {Summons} from '../../../../../lib/summons.js';
 import {activityUtils, actorUtils, compendiumUtils, constants, dialogUtils, effectUtils, genericUtils, itemUtils, tokenUtils, workflowUtils} from '../../../../../utils.js';
 async function use({trigger, workflow}) {
-    let sourceActor = await compendiumUtils.getActorFromCompendium(constants.packs.summons, 'CPR - Invoke Duplicity');
+    let sourceActor = await compendiumUtils.getActorFromCompendium(constants.modernPacks.summons, 'CPR - Invoke Duplicity');
     if (!sourceActor) return;
     let unhideActivities = [{
         itemUuid: workflow.item.uuid,
@@ -70,8 +70,8 @@ async function use({trigger, workflow}) {
     let macroName = improvedDuplicity ? 'improvedDuplicityEffect' : 'invokeDuplicityDistract';
     await genericUtils.setFlag(effect, 'chris-premades', 'macros.midi.actor', [...effect.flags['chris-premades'].macros.midi.actor, macroName]);
     if (improvedDuplicity) {
-        await genericUtils.setFlag(effect, 'chris-premades', 'macros.effect', [...effect.flags['chris-premades'].macros.effect, 'improvedDuplicityEffect']);
-        //TODO: Add a macro to do the heal activity if the caster effect is removed.
+        let duplicityEffect = effectUtils.getEffectByIdentifier(workflow.actor, 'invokeDuplicity');
+        if (duplicityEffect) await genericUtils.setFlag(duplicityEffect, 'chris-premades', 'macros.effect', [...duplicityEffect.flags['chris-premades'].macros.effect, 'improvedDuplicityEffect']);
     }
     let trickstersTransposition = itemUtils.getItemByIdentifier(workflow.actor, 'trickstersTransposition');
     if (!trickstersTransposition) return;
