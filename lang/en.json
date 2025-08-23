@@ -1374,6 +1374,9 @@
             "ImbueCard": {
                 "Select": "Which spell to imbue a card with?"
             },
+            "ImprovedDuplicity": {
+                "ChooseHeal": "Choose a target to heal:"
+            },
             "ImprovedPotentSpellcasting": {
                 "Target": "Select an ally to give temporary hit points to:"
             },
@@ -2992,6 +2995,7 @@
                 "HealingSpirit": "Healing Spirit",
                 "HomunculusServant": "Homunculus Servant",
                 "HybridTransformation": "Hybrid Transformation",
+                "InvokeDuplicity": "Invoke Duplicity",
                 "ManifestMind": "Manifest Mind",
                 "Pixie": "Pixie",
                 "ReaperSpirit": "Reaper Spirit",

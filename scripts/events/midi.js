@@ -27,7 +27,9 @@ function collectActorMacros(entity, pass) {
     let macroList = [];
     macroList.push(...getActorMacroData(entity));
     if (!macroList.length) return [];
-    return macroList.map(i => custom.getMacro(i, genericUtils.getRules(entity))).filter(j => j).filter(k => k.midi?.actor?.find(l => l.pass === pass)).flatMap(m => m.midi.actor).filter(n => n.pass === pass);
+    let legacyMacros = macroList.map(i => custom.getMacro(i, 'legacy')).filter(j => j).filter(k => k.midi?.actor?.find(l => l.pass === pass)).flatMap(m => m.midi.actor).filter(n => n.pass === pass);
+    let modernMacros = macroList.map(i => custom.getMacro(i, 'modern')).filter(j => j).filter(k => k.midi?.actor?.find(l => l.pass === pass)).flatMap(m => m.midi.actor).filter(n => n.pass === pass);
+    return legacyMacros.concat(modernMacros);
 }
 function collectAllMacros({activity, item, token, actor}, pass) {
     let triggers = [];
