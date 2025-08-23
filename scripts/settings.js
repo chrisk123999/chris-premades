@@ -17,6 +17,7 @@ import {rollResolver} from './extensions/rollResolver.js';
 import {actions} from './extensions/actions.js';
 import {item} from './applications/item.js';
 import {activities} from './extensions/activities.js';
+import {combat} from './extensions/combat.js';
 function addSetting(options) {
     let setting = {
         scope: options.scope ?? 'world',
@@ -896,6 +897,21 @@ export function registerSettings() {
         type: Boolean,
         default: false,
         category: 'general'
+    });
+    addSetting({
+        key: 'legendaryActionsPrompt',
+        type: Boolean,
+        default: false,
+        category: 'mechanics',
+        onChange: (value) => {
+            if (value) {
+                Hooks.on('preUpdateActor', combat.legendaryActionsTrack);
+                Hooks.on('preUpdateCombat', combat.legendaryActionsPrompt);
+            } else {
+                Hooks.off('preUpdateActor', combat.legendaryActionsTrack);
+                Hooks.off('preUpdateCombat', combat.legendaryActionsPrompt);
+            }
+        }
     });
 }
 export function registerMenus() {

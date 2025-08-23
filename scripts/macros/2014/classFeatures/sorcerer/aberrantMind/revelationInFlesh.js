@@ -6,7 +6,6 @@ async function use({trigger, workflow}) {
     let selection = await dialogUtils.selectDocumentsDialog(workflow.item.name, 'CHRISPREMADES.Macros.RevelationInFlesh.Select', workflow.item.effects.contents, {sortAlphabetical: true, max: sorceryPoints.system.uses.value, checkbox: true});
     if (!selection) return;
     let effects = selection.filter(i => i.amount).map(k => k.document);
-    console.log(effects);
     if (!effects.length) return;
     await genericUtils.update(sorceryPoints, {'system.uses.spent': sorceryPoints.system.uses.spent + effects.length});
     let effectData = genericUtils.duplicate(effects[0].toObject());

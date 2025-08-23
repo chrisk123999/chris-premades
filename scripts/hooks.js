@@ -26,6 +26,7 @@ import {activities} from './extensions/activities.js';
 import {itemEvent} from './events/item.js';
 import {template} from './extensions/template.js';
 import {tidy5e} from './integrations/tidy5e.js';
+import {combat} from './extensions/combat.js';
 export function registerHooks() {
     // Setting caching
     Hooks.on('createSetting', genericUtils.createUpdateSetting);
@@ -112,6 +113,10 @@ export function registerHooks() {
     // Initiative matching
     if (genericUtils.getCPRSetting('updateSummonInitiative')) Hooks.on('dnd5e.rollInitiative', initiative.updateSummonInitiative);
     if (genericUtils.getCPRSetting('updateCompanionInitiative')) Hooks.on('dnd5e.rollInitiative', initiative.updateCompanionInitiative);
+
+    // Combat extension
+    if (genericUtils.getCPRSetting('legendaryActionsPrompt')) Hooks.on('preUpdateActor', combat.legendaryActionsTrack);
+    if (genericUtils.getCPRSetting('legendaryActionsPrompt')) Hooks.on('preUpdateCombat', combat.legendaryActionsPrompt);
     
     // Various events
     Hooks.on('preUpdateItem', activities.flagAllRiders);

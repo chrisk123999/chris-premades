@@ -400,6 +400,14 @@ form .cpr-row-center .cpr-input-short {
     flex-basis: 25%;
 }
 
+.cpr-medkit-tab[data-tab="devTools"] .cpr-fieldset .cpr-row-center > label {
+    flex: 0.2
+}
+
+.cpr-medkit-tab[data-tab="devTools"] .cpr-fieldset .cpr-row-center > input {
+    flex: 1
+}
+
 .cpr-medkit-tab .cpr-notification {
     padding: 0.5rem 1rem;
     line-height: 1rem;
@@ -420,6 +428,22 @@ form .cpr-row-center .cpr-input-short {
 .cpr-medkit-tab .cpr-notification.error {
     background: var(--color-level-error-bg);
     border: 1px solid var(--color-level-error-border);
+}
+
+/* Other */
+
+form .cpr-settings.categories .form-group {
+    margin-bottom: 1rem;
+}
+
+form .cpr-settings.categories .form-group .form-fields{
+    flex: 1;
+}
+
+form .cpr-settings.categories .form-group .form-fields > input[type="checkbox"] {
+    flex: 0 !important;
+    height: 25px;
+    --checkbox-size: 25px !important;
 }
 
 /* Just some flex values */

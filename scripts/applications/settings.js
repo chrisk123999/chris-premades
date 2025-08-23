@@ -56,7 +56,8 @@ export function getSettingsClass(category) {
         };
         static PARTS = {
             form: {
-                template: 'modules/chris-premades/templates/settings.hbs'
+                template: 'modules/chris-premades/templates/settings.hbs',
+                scrollable: ['']
             },
             footer: {
                 template: 'templates/generic/form-footer.hbs'
