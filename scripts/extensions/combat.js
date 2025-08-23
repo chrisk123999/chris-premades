@@ -17,7 +17,7 @@ function legendaryActionsPrompt(combat, data, options, id) {
     // Is this an attempt to move combat forward?
     if (options.direction === 1) {
         // Give a way to guarentee going through
-        if (combat.flags['chris-premades']?.bypass === true) {
+        if (combat.flags['chris-premades']?.bypass) {
             genericUtils.setFlag(combat, 'chris-premades', 'bypass', false);
             return;
         }
@@ -107,6 +107,6 @@ async function prompt(documents) {
     await game.combat.nextTurn();
 }
 export let combat = {
-    legendaryActionsTrack: legendaryActionsTrack,
-    legendaryActionsPrompt: legendaryActionsPrompt
+    legendaryActionsTrack,
+    legendaryActionsPrompt
 };

@@ -1,3 +1,7 @@
+# 1.3.22 Release:
+## Update Notes:
+- Added Legendary Action Prompt setting. When enabled the GM will be prompted to use legendary actions between turns.
+
 # 1.3.21 Release:
 ## New Modern Content:
 - Invoke Duplicity

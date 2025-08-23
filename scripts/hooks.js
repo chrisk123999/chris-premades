@@ -115,8 +115,10 @@ export function registerHooks() {
     if (genericUtils.getCPRSetting('updateCompanionInitiative')) Hooks.on('dnd5e.rollInitiative', initiative.updateCompanionInitiative);
 
     // Combat extension
-    if (genericUtils.getCPRSetting('legendaryActionsPrompt')) Hooks.on('preUpdateActor', combat.legendaryActionsTrack);
-    if (genericUtils.getCPRSetting('legendaryActionsPrompt')) Hooks.on('preUpdateCombat', combat.legendaryActionsPrompt);
+    if (genericUtils.getCPRSetting('legendaryActionsPrompt')) {
+        Hooks.on('preUpdateActor', combat.legendaryActionsTrack);
+        Hooks.on('preUpdateCombat', combat.legendaryActionsPrompt);
+    }
     
     // Various events
     Hooks.on('preUpdateItem', activities.flagAllRiders);
