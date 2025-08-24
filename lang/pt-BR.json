@@ -71,6 +71,18 @@
         "Cleave": {
             "Use": "Cortar um alvo próximo?"
         },
+        "Combat": {
+          "LegendaryActions": {
+            "Prompt": {
+              "Content": "Você tem Ações Lendárias não utilizadas neste turno. Usar Ações Lendárias?",
+              "Title": "Usar Ação Lendária?"
+            },
+            "Target": {
+              "Content": "Escolha o alvo de ",
+              "Title": "Escolher Alvo"
+            }
+          }
+        },
         "CommonFeatures": {
             "Amphibious": "Anfíbio",
             "Bite": "Mordida",
@@ -1373,6 +1385,9 @@
             },
             "ImbueCard": {
                 "Select": "Com qual magia você quer imbuir uma carta?"
+            },
+            "ImprovedDuplicity": {
+                "ChooseHeal": "Escolha um alvo para curar:"
             },
             "ImprovedPotentSpellcasting": {
                 "Target": "Escolha um aliado para dar pontos de vida temporária:"
@@ -2754,6 +2769,10 @@
                 "Hint": "Quando foi executada a última verificação de atualização (em milissegundos). Definir automaticamente.",
                 "Name": "Última Verificação de Atualização"
             },
+            "legendaryActionsPrompt": {
+                "Hint": "Rastreia e avisa sobre Ações Lendárias não utilizadas conforme o combate avança.",
+                "Name": "Aviso de Ações Lendárias"
+            },
             "macroCompendium": {
                 "Hint": "Compêndio de macros usado para substituir ou adicionar macros adicionais à API CPR. Consulte a documentação sobre como usar isso. (WIP)",
                 "Name": "Compêndio de Macros"
@@ -2992,6 +3011,7 @@
                 "HealingSpirit": "Espírito Curativo",
                 "HomunculusServant": "Servo Homúnculo",
                 "HybridTransformation": "Transformação Híbrida",
+                "InvokeDuplicity": "Invocar Duplicidade",
                 "ManifestMind": "Mente Manifestada",
                 "Pixie": "Pixie",
                 "ReaperSpirit": "Espírito Ceifador",
