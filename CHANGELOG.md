@@ -1,3 +1,7 @@
+# 1.3.24 Release:
+## API Bug Fixes:
+- Revert 1.3.21 changes to midi actor events. Fixes many things.
+
 # 1.3.23 Release:
 ## Bug Fixes:
 - Divine Smite
