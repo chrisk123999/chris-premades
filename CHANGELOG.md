@@ -1,3 +1,7 @@
+# 1.3.23 Release:
+## Bug Fixes:
+- Divine Smite
+
 # 1.3.22 Release:
 ## Update Notes:
 - Added Legendary Action Prompt setting. When enabled the GM will be prompted to use legendary actions between turns.

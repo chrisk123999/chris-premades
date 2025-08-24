@@ -44,7 +44,9 @@ async function hit({trigger, workflow}) {
         };
         await effectUtils.createEffect(workflow.actor, effectData, {identifier: 'banishingSmiteEffect', animate: false});
     }
-    await workflowUtils.bonusDamage(workflow, ((workflowUtils.getCastLevel(spellWorkflow) - spellWorkflow.castData.baseLevel) + diceNumber) + diceSize, {damageType});
+    let formula = ((workflowUtils.getCastLevel(spellWorkflow) - spellWorkflow.castData.baseLevel) + diceNumber) + diceSize;
+    if (workflow.actor.system.bonuses.spell?.all?.damage) formula += ' + @bonuses.spell.all.damage';
+    await workflowUtils.bonusDamage(workflow, formula, {damageType});
 }
 async function complete({trigger, workflow}) {
     let effect = effectUtils.getEffectByIdentifier(workflow.actor, 'banishingSmiteEffect');
