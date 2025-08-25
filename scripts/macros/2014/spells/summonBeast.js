@@ -74,7 +74,7 @@ async function use({workflow}) {
             return;
         }
         updates.actor.items.push(flybyData);
-        updates.actor.system.attributes.movement.fly = 60;
+        updates.actor.system.attributes.movement.fly = genericUtils.handleMetric(60);
     } else {
         let packTacticsData = await Summons.getSummonItem('Pack Tactics (Land and Water Only)', {}, workflow.item, {translate: 'CHRISPREMADES.CommonFeatures.PackTactics', identifier: 'summonBeastPackTactics'});
         if (!packTacticsData) {
@@ -85,9 +85,9 @@ async function use({workflow}) {
         updates.actor.items.push(packTacticsData);
         hpFormula += 10;
         if (creatureType === 'land') {
-            updates.actor.system.attributes.movement.climb = 30;
+            updates.actor.system.attributes.movement.climb = genericUtils.handleMetric(30);
         } else {
-            updates.actor.system.attributes.movement.swim = 30;
+            updates.actor.system.attributes.movement.swim = genericUtils.handleMetric(30);
             let waterBreathingData = await Summons.getSummonItem('Water Breathing (Water Only)', {}, workflow.item, {translate: 'CHRISPREMADES.CommonFeatures.WaterBreathing', identifier: 'summonBeastWaterBreathing'});
             if (!waterBreathingData) {
                 errors.missingPackItem();
