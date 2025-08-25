@@ -511,9 +511,9 @@
             "invokeDuplicity"
           ]
         },
-		"item": [
+        "item": [
           "radianceOfTheDawn"
-        ] 
+        ]
       },
       "hiddenActivities": [
         "dismiss",

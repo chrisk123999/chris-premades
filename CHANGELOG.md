@@ -1,3 +1,7 @@
+# 1.3.25 Release:
+## New Modern Content:
+- Guided Strike
+
 # 1.3.24 Release:
 ## API Bug Fixes:
 - Revert 1.3.21 changes to midi actor events. Fixes many things.
