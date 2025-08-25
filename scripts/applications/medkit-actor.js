@@ -44,7 +44,8 @@ export class ActorMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
             template: 'modules/chris-premades/templates/medkit-actor-character.hbs'
         },
         npc: {
-            template: 'modules/chris-premades/templates/medkit-actor-npc.hbs'
+            template: 'modules/chris-premades/templates/medkit-actor-npc.hbs',
+            scrollable: ['']
         },
         summary: {
             template: 'modules/chris-premades/templates/medkit-actor-summary.hbs',

@@ -36,6 +36,7 @@ import {activities} from './extensions/activities.js';
 import {migrate} from './migrations.js';
 import {initiative} from './extensions/initiative.js';
 import {EmbeddedMacros} from './applications/embeddedMacros.js';
+import {ui} from './extensions/ui.js';
 Hooks.once('socketlib.ready', registerSockets);
 Hooks.once('init', () => {
     Hooks.on('dae.modifySpecials', dae.modifySpecials);
@@ -47,10 +48,11 @@ Hooks.once('init', () => {
     if (utils.genericUtils.getCPRSetting('temporaryEffectHud')) effectHud.patchToggleEffect(true);
     if (utils.genericUtils.getCPRSetting('selectTool') && !game.modules.get('multi-token-edit')?.active && !game.modules.get('select-tool-everywhere')?.active) selectTool.init();
     if (utils.genericUtils.getCPRSetting('spotlightOmnisearchSummons') && game.modules.get('spotlight-omnisearch')?.active) Hooks.on('spotlightOmnisearch.indexBuilt', spotlightOmnisearch.registerSearchTerms);
-    if(utils.genericUtils.getCPRSetting('exportForSharing')) {
+    if (utils.genericUtils.getCPRSetting('exportForSharing')) {
         Hooks.on('getItemContextOptions', itemDirectory.itemContext);
         Hooks.on('getActorContextOptions', itemDirectory.actorContext);
     }
+    ui.configureUI();
     Hooks.callAll('cprInitComplete');
 });
 Hooks.once('i18nInit', () => {
@@ -93,7 +95,7 @@ Hooks.once('ready', () => {
         if (foundry.utils.isNewerVersion('4.3', game.system.version)) rollResolver.patchBuild(true); // remove when 4.3+ only
     }
     tours.checkTour();
-    if (utils.genericUtils.getCPRSetting('activityCSSTweak')) activities.cssTweak();
+    if (utils.genericUtils.getCPRSetting('activityCSSTweak')) activities.cssTweak(true);
     if (!game.user.isGM) return;
     if (utils.genericUtils.getCPRSetting('migrationVersion') !== game.modules.get('chris-premades').version) migrate();
 });

@@ -1,3 +1,11 @@
+# 1.3.26 Release:
+## Bug Fixes:
+- NPC Medkit scrollbar
+## Update Notes:
+- Added Custom Sidebar Button Scale setting
+- Added Custom Navigation Scale setting
+- Added Custom Sidebar setting, makes the chat background solid and flips the scrollbar.
+  
 # 1.3.25 Release:
 ## New Modern Content:
 - Guided Strike

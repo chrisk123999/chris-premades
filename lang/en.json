@@ -2564,7 +2564,7 @@
             },
             "SelectCompendium": "Select a compendium:",
             "activityCSSTweak": {
-                "Hint": "When enabled, activities will have all their information one tab. Reload required after disabling.",
+                "Hint": "When enabled, activities will have all their information one tab.",
                 "Name": "Activities CSS Tweak"
             },
             "addActions": {
@@ -2672,6 +2672,18 @@
                 "6": "Selected - Fumble Only",
                 "Hint": "When enabled, critical or fumble attack rolls will also roll an item from the selected compendiums.",
                 "Name": "Critical And Fumble Mode"
+            },
+            "customSidebar": {
+                "Hint": "CSS tweaks to the sidebar including chat background and scrollbar flipping and other minor changes",
+                "Name": "Custom Sidebar"
+            },
+            "customUIButtonScale": {
+                "Hint": "Scales the sidebar buttons.",
+                "Name": "Custom Sidebar Button Scale"
+            },
+            "customUINavigationScale": {
+                "Hint": "Scales the scene navigation.",
+                "Name": "Custom Naviation Scale"
             },
             "devTools": {
                 "Hint": "Enable to display development tools.",
