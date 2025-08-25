@@ -59,7 +59,7 @@ async function early({workflow}) {
     let damageFormula = String(damageDice + (augment ? 1 : 0)) + '@scale.monk.die.die';
     let distance = augment ? genericUtils.handleMetric(90) : genericUtils.handleMetric(30);
     if (shape === 'cone') distance = 2 * distance / 3;
-    target.units = genericUtils.getCPRSetting('metricSystem') ? 'm' : 'ft';
+    target.units = game.settings.get("dnd5e", "metricLengthUnits") ? 'm' : 'ft';
     if (augment) {
         await augmentBreath.displayCard();
         await genericUtils.update(ki, {'system.uses.spent': ki.system.uses.spent + 1});

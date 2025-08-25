@@ -170,7 +170,7 @@ async function late({workflow}) {
     let familiarTokens = new Set(effect.flags['chris-premades'].summons.ids[effect.name].map(i => canvas.scene.tokens.get(i)));
     if (!familiarTokens?.size) return;
     for (let i of familiarTokens) {
-        if (tokenUtils.getDistance(workflow.token, i) > 100) familiarTokens.delete(i);
+        if (tokenUtils.getDistance(workflow.token, i) > genericUtils.handleMetric(100)) familiarTokens.delete(i);
     }
     if (!familiarTokens.size) {
         genericUtils.notify('CHRISPREMADES.Macros.FlockOfFamiliars.TooFar', 'info');

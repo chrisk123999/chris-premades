@@ -48,7 +48,7 @@ async function aimCrosshair({token, maxRange, crosshairsConfig, centerpoint, dra
                     valid = true;
                 }
                 crosshairs.draw();
-                let mesureUnit = genericUtils.getCPRSetting('metricSystem') ? ' m' : 'ft.';
+                let mesureUnit = game.settings.get("dnd5e", "metricLengthUnits") ? ' m' : 'ft.';
                 crosshairs.label = distance + '/' + maxRange + mesureUnit;
             }
         }
@@ -58,7 +58,7 @@ async function aimCrosshair({token, maxRange, crosshairsConfig, centerpoint, dra
         ...(customCallbacks ?? {})
     };
     let options = {};
-    if (trackDistance) options.label = genericUtils.getCPRSetting('metricSystem') ? '0 m' : '0ft';
+    if (trackDistance) options.label = game.settings.get("dnd5e", "metricLengthUnits") ? '0 m' : '0ft';
     options = {
         ...options,
         ...crosshairsConfig

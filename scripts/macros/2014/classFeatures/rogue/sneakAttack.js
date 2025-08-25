@@ -160,7 +160,7 @@ async function damage({trigger: {entity: item}, workflow}) {
         if (nearbyTokens.length) doSneak = true;
     }
     let rakishAudacity = itemUtils.getItemByIdentifier(workflow.actor, 'rakishAudacity');
-    if (rakishAudacity && rollType != 'disadvantage' && !doSneak && (tokenUtils.getDistance(workflow.token, targetToken) <= 5)) {
+    if (rakishAudacity && rollType != 'disadvantage' && !doSneak && (tokenUtils.getDistance(workflow.token, targetToken) <= genericUtils.handleMetric(5))) {
         let nearbyTokens = tokenUtils.findNearby(workflow.token, 5, 'all', {includeIncapacitated: true}).filter(i => i.id != targetToken.id);
         if (!nearbyTokens.length) {
             doSneak = true;

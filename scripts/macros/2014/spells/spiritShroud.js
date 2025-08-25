@@ -31,7 +31,7 @@ async function use({workflow}) {
 async function damage({workflow}) {
     if (workflow.hitTargets.size !== 1) return;
     if (!constants.attacks.includes(workflow.activity.actionType)) return;
-    if (tokenUtils.getDistance(workflow.token, workflow.hitTargets.first()) > 10) return;
+    if (tokenUtils.getDistance(workflow.token, workflow.hitTargets.first()) > genericUtils.handleMetric(10)) return;
     let effect = effectUtils.getEffectByIdentifier(workflow.actor, 'spiritShroud');
     if (!effect) return;
     let diceNum = Math.floor((effect.flags['chris-premades'].spiritShroud.castLevel - 3) / 2) + 1;

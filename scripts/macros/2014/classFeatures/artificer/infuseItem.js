@@ -746,7 +746,7 @@ async function homunculusLate({workflow}) {
     let effect = effectUtils.getEffectByIdentifier(workflow.actor, 'infuseItem');
     if (!effect) return;
     let homunculusToken = canvas.scene.tokens.get(effect.flags['chris-premades'].summons.ids[effect.name][0]);
-    if (!homunculusToken || tokenUtils.getDistance(workflow.token, homunculusToken) > 120) {
+    if (!homunculusToken || tokenUtils.getDistance(workflow.token, homunculusToken) > genericUtils.handleMetric(120)) {
         genericUtils.notify('CHRISPREMADES.Macros.InfuseItem.TooFar', 'info');
         return;
     }

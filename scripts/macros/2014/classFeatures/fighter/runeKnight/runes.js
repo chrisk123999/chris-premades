@@ -63,7 +63,7 @@ async function useStormRune({workflow}) {
 }
 async function earlyStormRune({trigger: {entity: effect, token}, workflow}) {
     if (actorUtils.hasUsedReaction(token.actor)) return;
-    if (tokenUtils.getDistance(token, workflow.token) > 60) return;
+    if (tokenUtils.getDistance(token, workflow.token) > genericUtils.handleMetric(60)) return;
     if (!tokenUtils.canSee(token, workflow.token)) return;
     if (!constants.attacks.includes(workflow.activity.actionType)) return;
     let selection = await dialogUtils.buttonDialog(effect.name, genericUtils.format('CHRISPREMADES.Macros.StormRune.AdvDis', {tokenName: workflow.token.name, actionType: genericUtils.translate('DND5E.AttackRoll')}), [

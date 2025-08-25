@@ -294,7 +294,7 @@ async function late({workflow}) {
     let effect = effectUtils.getEffectByIdentifier(workflow.actor, 'findFamiliar');
     if (!effect) return;
     let familiarToken = canvas.scene.tokens.get(effect.flags['chris-premades'].summons.ids[effect.name][0]);
-    if (!familiarToken || tokenUtils.getDistance(workflow.token, familiarToken) > 100) {
+    if (!familiarToken || tokenUtils.getDistance(workflow.token, familiarToken) > genericUtils.handleMetric(100)) {
         genericUtils.notify('CHRISPREMADES.Macros.FindFamiliar.TooFar', 'info');
         return;
     }

@@ -5,7 +5,7 @@ async function hit({trigger: {entity: feature}, workflow}) {
     let targetToken = actorUtils.getFirstToken(feature.parent);
     if (!targetToken) return;
     let distance = tokenUtils.getDistance(workflow.token, targetToken);
-    if (distance > 5) return;
+    if (distance > genericUtils.handleMetric(5)) return;
     if (!constants.meleeAttacks.includes(workflow.activity.actionType)) return;
     if (!feature) return;
     await workflowUtils.syntheticItemRoll(feature, [workflow.token]);

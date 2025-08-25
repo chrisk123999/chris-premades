@@ -8,7 +8,7 @@ async function damage({workflow, ditem}) {
     let distance = tokenUtils.getDistance(sourceToken, targetToken);
     let pullDistance = 0;
     if (workflow.failedSaves.size) {
-        pullDistance = Math.min(10, ((distance - 1) - ((distance - 1) % 5)));
+        pullDistance = Math.min(genericUtils.handleMetric(10), ((distance - 1) - ((distance - 1) % genericUtils.handleMetric(5))));
     }
     if (!playAnimation) {
         if (workflow.failedSaves.size) {
