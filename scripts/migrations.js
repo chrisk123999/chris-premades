@@ -45,5 +45,10 @@ const migrations = {
             if (oldFolderIds.includes(conf.folder) && !exclude.includes(id)) conf.folder = subfolder2014.id;
         }
         game.settings.set('core', 'compendiumConfiguration', config);
+    },
+    '1.3.16': async () => {
+        let maybeBadSetting = genericUtils.getCPRSetting('statusEffectIcons');
+        maybeBadSetting = Object.fromEntries(Object.entries(maybeBadSetting).map(([k, v]) => [k, (v instanceof Array) ? v[0] : v]));
+        await genericUtils.setCPRSetting('statusEffectIcons', maybeBadSetting);
     }
 };

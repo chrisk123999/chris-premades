@@ -34,7 +34,7 @@ async function init() {
         await genericUtils.sleep(10);
         placeableRefresh(note);
     });
-    libWrapper.register('chris-premades', 'AmbientLight.prototype._onDragLeftCancel', selectToolPatch, 'OVERRIDE');
+    libWrapper.register('chris-premades', 'foundry.canvas.placeables.AmbientLight.prototype._onDragLeftCancel', selectToolPatch, 'OVERRIDE');
 }
 export let selectTool = {
     init

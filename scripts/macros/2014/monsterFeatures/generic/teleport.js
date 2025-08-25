@@ -1,9 +1,10 @@
 import {Teleport} from '../../../../lib/teleport.js';
 import {itemUtils} from '../../../../utils.js';
 import {teleportEffects} from '../../../animations/teleportEffects.js';
-
 async function late({workflow}) {
     let config = itemUtils.getGenericFeatureConfig(workflow.item, 'genericTeleport');
+    let activities = config.activities;
+    if (activities?.length && !activities.includes(workflow.activity.id)) return;
     await Teleport.target([workflow.token], workflow.token, {range: config.range, animation: config.animation});
 }
 export let genericTeleport = {
@@ -21,6 +22,12 @@ export let genericTeleport = {
     },
     isGenericFeature: true,
     genericConfig: [
+        {
+            value: 'activities',
+            label: 'CHRISPREMADES.Config.Activities',
+            type: 'activities',
+            default: []
+        },
         {
             value: 'range',
             label: 'CHRISPREMADES.Config.Range',

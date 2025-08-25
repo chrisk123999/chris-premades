@@ -183,14 +183,14 @@ export class Crosshairs extends foundry.canvas.placeables.MeasuredTemplate {
         const style = CONFIG.canvasTextStyle.clone();
         style.fontSize = Math.max(Math.round(canvas.dimensions.size * 0.36 * 12) / 12, 36);
         // eslint-disable-next-line no-undef
-        const text = new PreciseText(null, style);
+        const text = new foundry.canvas.containers.PreciseText(null, style);
         text.anchor.set(0, 0);
         return text;
     }
     _drawControlIcon() {
         const size = Math.max(Math.round((canvas.dimensions.size * 0.5) / 20) * 20, 40);
         // eslint-disable-next-line no-undef
-        let icon = new ControlIcon({texture: this.icon, size: size});
+        let icon = new foundry.canvas.containers.ControlIcon({texture: this.icon, size: size});
         icon.visible = this.drawIcon;
         icon.pivot.set(size*0.5, size*0.5);
         icon.angle = this.document.direction;

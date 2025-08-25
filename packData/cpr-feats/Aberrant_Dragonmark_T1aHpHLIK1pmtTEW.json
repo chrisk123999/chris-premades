@@ -240,7 +240,8 @@
         "effectConditionText": "",
         "midiAutomationOnly": false,
         "name": "Aberrant Dragonmark: Healing",
-        "img": "icons/creatures/reptiles/serpent-horned-green.webp"
+        "img": "icons/creatures/reptiles/serpent-horned-green.webp",
+        "appliedEffects": []
       }
     },
     "identifier": "aberrant-dragonmark",

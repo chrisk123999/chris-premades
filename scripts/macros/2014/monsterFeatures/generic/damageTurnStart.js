@@ -1,5 +1,4 @@
-import {actorUtils, effectUtils, genericUtils, itemUtils, workflowUtils} from '../../../../utils.js';
-
+import {effectUtils, genericUtils, itemUtils, workflowUtils} from '../../../../utils.js';
 async function late({workflow}) {
     if (!workflow.failedSaves.size) return;
     if (!workflow.item.effects.size) {

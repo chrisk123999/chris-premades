@@ -147,12 +147,27 @@ async function specialDuration(workflow) {
                         if (workflow.token.document.disposition === token.document.disposition && workflow.hitTargets.has(token) && workflow.damageRolls?.length) remove = true; break outerLoop;
                     case 'damagedByEnemy':
                         if (workflow.token.document.disposition != token.document.disposition && workflow.hitTargets.has(token) && workflow.damageRolls?.length) remove = true; break outerLoop;
+                    case 'hitByAnotherCreature':
+                        if (!workflow.hitTargets.size) break;
+                    // eslint-disable-next-line no-fallthrough
                     case 'attackedByAnotherCreature': {
                         if (!workflow.activity) return;
                         if (!constants.attacks.includes(workflow.activity.actionType)) break;
                         let origin = await effectUtils.getOriginItem(effect);
                         if (!origin?.actor) break;
                         if (workflow.actor.id === origin.actor.id) break;
+                        remove = true;
+                        break outerLoop;
+                    }
+                    case 'hitBySource':
+                        if (!workflow.hitTargets.size) break;
+                    // eslint-disable-next-line no-fallthrough
+                    case 'attackedBySource': {
+                        if (!workflow.activity) return;
+                        if (!constants.attacks.includes(workflow.activity.actionType)) break;
+                        let origin = await effectUtils.getOriginItem(effect);
+                        if (!origin?.actor) break;
+                        if (workflow.actor.id != origin.actor.id) break;
                         remove = true;
                         break outerLoop;
                     }

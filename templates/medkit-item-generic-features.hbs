@@ -17,36 +17,44 @@
                         <legend>{{label}}</legend>
                         <div class="form-group cpr-row">
                             {{#each configOptions}}
-                            <div class="cpr-row-center">
                                 {{#if isCheckbox}}
-                                    <label for="{{id}}">{{localize label}}</label>
-                                    <input type="checkbox" id="{{id}}" name="{{id}}" {{#if isChecked}}checked{{/if}}>
+                                    <div class="cpr-row-center">
+                                        <label for="{{id}}">{{localize label}}</label>
+                                        <input type="checkbox" id="{{id}}" name="{{id}}" {{#if isChecked}}checked{{/if}}>
+                                    </div>
                                 {{else if isText}}
-                                    <label for="{{id}}">{{localize label}}</label>
-                                    <input type="text" id="{{id}}" name="{{id}}" value="{{value}}">
+                                    <div class="cpr-row-center">
+                                        <label for="{{id}}">{{localize label}}</label>
+                                        <input type="text" id="{{id}}" name="{{id}}" value="{{value}}">
+                                    </div>
                                 {{else if isNumber}}
-                                    <label for="{{id}}">{{localize label}}</label>
-                                    <input type="number" id="{{id}}" name="{{id}}" value="{{value}}">
+                                    <div class="cpr-row-center">
+                                        <label for="{{id}}">{{localize label}}</label>
+                                        <input type="number" id="{{id}}" name="{{id}}" value="{{value}}">
+                                    </div>
                                 {{else if isSelect}}
-                                    <label for="{{id}}">{{localize label}}</label>
-                                    <select id="{{id}}" name="{{id}}">
-                                        {{#each options}}
-                                            <option value="{{value}}" {{#if isSelected}}selected{{/if}}>
-                                                {{localize label}}
-                                            </option>
-                                        {{/each}}
-                                    </select>
+                                    <div class="cpr-row-center">
+                                        <label for="{{id}}">{{localize label}}</label>
+                                        <select id="{{id}}" name="{{id}}">
+                                            {{#each options}}
+                                                <option value="{{value}}" {{#if isSelected}}selected{{/if}}>
+                                                    {{localize label}}
+                                                </option>
+                                            {{/each}}
+                                        </select>
+                                    </div>
                                 {{else if isSelectMany}}
-                                    <label class="multi-select-label" for="{{id}}">{{localize label}}</label>
-                                    <multi-select id="{{id}}" name="{{name}}">
-                                        {{#each options}}
-                                            <option value="{{value}}" {{#if isSelected}}selected{{/if}}>
-                                                {{localize label}}
-                                            </option>
-                                        {{/each}}
-                                    </select>
+                                    <div class="cpr-row-center cpr-multi-select-row">
+                                        <label class="multi-select-label" for="{{id}}">{{localize label}}</label>
+                                        <multi-select id="{{id}}" name="{{name}}">
+                                            {{#each options}}
+                                                <option value="{{value}}" {{#if isSelected}}selected{{/if}}>
+                                                    {{localize label}}
+                                                </option>
+                                            {{/each}}
+                                        </select>
+                                    </div>
                                 {{/if}}
-                            </div>
                             {{/each}}
                         </div>
                     </fieldset>

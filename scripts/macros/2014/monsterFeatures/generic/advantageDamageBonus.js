@@ -1,8 +1,8 @@
 import {itemUtils, workflowUtils} from '../../../../utils.js';
-
 async function damage({workflow}) {
     if (workflow.disadvantage || !workflow.advantage) return;
-    let bonusFormula = itemUtils.getGenericFeatureConfig(workflow.item, 'advantageDamageBonus').bonus;
+    let {bonusFormula, activities} = itemUtils.getGenericFeatureConfig(workflow.item, 'advantageDamageBonus');
+    if (activities?.length && !activities.includes(workflow.activity.id)) return;
     if (!bonusFormula.length) return;
     await workflowUtils.bonusDamage(workflow, bonusFormula, {damageType: workflow.defaultDamageType});
 }
@@ -21,6 +21,12 @@ export let advantageDamageBonus = {
     },
     isGenericFeature: true,
     genericConfig: [
+        {
+            value: 'activities',
+            label: 'CHRISPREMADES.Config.Activities',
+            type: 'activities',
+            default: []
+        },
         {
             value: 'bonus',
             label: 'CHRISPREMADES.Macros.AdvantageDamageBonus.Bonus',

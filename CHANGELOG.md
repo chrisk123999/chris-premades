@@ -1,3 +1,72 @@
+# 1.3.26 Release:
+## Bug Fixes:
+- NPC Medkit scrollbar
+## Update Notes:
+- Added Custom Sidebar Button Scale setting
+- Added Custom Navigation Scale setting
+- Added Custom Sidebar setting, makes the chat background solid and flips the scrollbar.
+  
+# 1.3.25 Release:
+## New Modern Content:
+- Guided Strike
+
+# 1.3.24 Release:
+## API Bug Fixes:
+- Revert 1.3.21 changes to midi actor events. Fixes many things.
+
+# 1.3.23 Release:
+## Bug Fixes:
+- Divine Smite
+
+# 1.3.22 Release:
+## Update Notes:
+- Added Legendary Action Prompt setting. When enabled the GM will be prompted to use legendary actions between turns.
+
+# 1.3.21 Release:
+## New Modern Content:
+- Invoke Duplicity
+- Trickster's Transposition
+- Improved Duplicity
+## API Bug Fixes:
+- Legacy and modern actor macros will now properly properly get triggered even if the rolled item is from a different set of rules.
+- The summoned creature effect is now properly marked as modern or legacy depending on the source item.
+
+# 1.3.20 Release:
+## Bug Fixes:
+- Armor of Agathys
+- Dread Ambusher
+
+# 1.3.19 Release:
+## Bug Fixes:
+- Armor of Agathys
+- Aberrant Dragonmark
+## Update Notes:
+- Added "Attacked By Source", "Hit By Source", and "Hit By Another Creature" special durations to the CPR effect medkit.
+
+# 1.3.18 Release:
+## Bug Fixes:
+- Dust Devil
+## Update Notes:
+- Added CSS fixes for generic monster features.
+
+# 1.3.17 Release:
+## Bug Fixes:
+- Dust Devil
+- Eyes of the Eagle
+
+# 1.3.16 Release:
+## New Legacy Content:
+- Dust Devil (Thanks Beerbill)
+## Bug Fixes:
+- Custom status effect icons won't cause trouble with Monk's Little Details installed
+- Embedded Macros
+- Auto Push generic monster feature updated to include token size limits.
+
+# 1.3.15 Release:
+## Update Notes:
+- Added an activity selector for many generic monster features.
+- Updated the lifesteal generic monster feature to allow lifestealing from items other than itself.
+
 # 1.3.14 Release:
 ## Update Notes:
 - Added NPC settings to weapon mastery automation.

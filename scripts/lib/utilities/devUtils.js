@@ -10,7 +10,7 @@ export async function stripUnusedFlags(key) {
     let gamePack = game.packs.get(key);
     await gamePack.getDocuments();
     for (let i of gamePack.contents) {
-        if (!(Object.values(constants.featurePacks).includes(key) || key === 'world.cpr-summons')) {
+        if (!(Object.values(constants.featurePacks).includes(key) || key === 'world.cpr-summons' || key === 'world.cpr-summons-2024')) {
             if (!hasVersionInfo(i)) genericUtils.log('dev', i.name + ' is missing version info!');
         }
         let updates = {

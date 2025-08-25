@@ -324,6 +324,7 @@ export class DialogApp extends HandlebarsApplicationMixin(ApplicationV2) {
                 break;
             case 'ok': context.buttons.push(this.makeButton('CHRISPREMADES.Generic.Ok', 'true'));
                 break;
+            case 'cancel': context.buttons.push(this.makeButton('CHRISPREMADES.Generic.Cancel', 'false'));
         }
         this.context = context;
     }

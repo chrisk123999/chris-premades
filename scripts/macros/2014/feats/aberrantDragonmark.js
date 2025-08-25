@@ -1,9 +1,8 @@
 import {activityUtils, compendiumUtils, constants, dialogUtils, errors, genericUtils, itemUtils, tokenUtils, workflowUtils} from '../../../utils.js';
-
 async function use({workflow}) {
     let spellId = itemUtils.getConfig(workflow.item, 'id');
     if (spellId?.length) return;
-    let validSpells = workflow.actor.items.filter(i => i.type === 'spell' && i.system.uses.max === 1 && ['atwill', 'innate'].includes(i.system.preparation?.mode) && i.system.uses.recovery.some(j => j.period === 'sr'));
+    let validSpells = workflow.actor.items.filter(i => i.type === 'spell' && i.system.uses.max === 1 && ['atwill', 'innate'].includes(i.system.method) && i.system.uses.recovery.some(j => j.period === 'sr'));
     if (!validSpells?.length) {
         genericUtils.notify('CHRISPREMADES.Macros.AberrantDragonmark.NoValid', 'info');
         return;
@@ -14,7 +13,7 @@ async function use({workflow}) {
 }
 async function late({trigger: {entity: item}, workflow}) {
     let aberrantId = itemUtils.getConfig(item, 'id');
-    if (!aberrantId?.length || workflow.item.id !== aberrantId) return;
+    if (!aberrantId.length || workflow.item.id !== aberrantId) return;
     let hdSelection = await dialogUtils.selectHitDie(workflow.actor, item.name, 'CHRISPREMADES.Macros.AberrantDragonmark.Expend');
     if (!hdSelection) return;
     hdSelection = hdSelection.find(i => i.amount)?.document;
@@ -27,8 +26,8 @@ async function late({trigger: {entity: item}, workflow}) {
         flavor: item.name
     });
     let isDamage = die.total % 2;
-    let healingFeature = activityUtils.getActivityByIdentifier(workflow.item, 'aberrantDragonmarkHealing', {strict: true});
-    let damageFeature = activityUtils.getActivityByIdentifier(workflow.item, 'aberrantDragonmarkDamage', {strict: true});
+    let healingFeature = activityUtils.getActivityByIdentifier(item, 'aberrantDragonmarkHealing', {strict: true});
+    let damageFeature = activityUtils.getActivityByIdentifier(item, 'aberrantDragonmarkDamage', {strict: true});
     if (!healingFeature || !damageFeature) return;
     let feature = isDamage ? damageFeature : healingFeature;
     let targetToken = workflow.token;
@@ -39,7 +38,7 @@ async function late({trigger: {entity: item}, workflow}) {
         }
     }
     let activityData = activityUtils.withChangedDamage(feature, die.total);
-    await workflowUtils.syntheticActivityDataRoll(activityData, workflow.item, workflow.actor, [targetToken]);
+    await workflowUtils.syntheticActivityDataRoll(activityData, item, workflow.actor, [targetToken]);
 }
 export let aberrantDragonmark = {
     name: 'Aberrant Dragonmark',

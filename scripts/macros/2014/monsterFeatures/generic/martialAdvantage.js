@@ -1,5 +1,4 @@
-import {combatUtils} from '../../../../lib/utilities/combatUtils.js';
-import {constants, dialogUtils, genericUtils, itemUtils, tokenUtils, workflowUtils} from '../../../../utils.js';
+import {constants, dialogUtils, genericUtils, itemUtils, tokenUtils, workflowUtils, combatUtils} from '../../../../utils.js';
 import {sneakAttack} from '../../../../legacyMacros.js';
 async function damage({trigger, workflow}) {
     if (workflow.hitTargets.size != 1 || !workflow.item) return;

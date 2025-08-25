@@ -1,3 +1,4 @@
+export {summonUtilsModern as summonUtils} from './lib/summons.js';
 // Generic Monster Features
 export {abilityDrain} from './macros/2014/monsterFeatures/generic/abilityDrain.js';
 export {advantageDamageBonus} from './macros/2014/monsterFeatures/generic/advantageDamageBonus.js';
@@ -249,5 +250,10 @@ export {radianceOfTheDawn} from './macros/2024/classFeatures/cleric/light/radian
 export {wardingFlare} from './macros/2024/classFeatures/cleric/light/wardingFlare.js';
 export {improvedWardingFlare} from './macros/2024/classFeatures/cleric/light/improvedWardingFlare.js';
 export {coronaOfLight, coronaOfLightEffect} from './macros/2024/classFeatures/cleric/light/coronaOfLight.js';
-// Trickery Domain
+//Trickery Domain
 export {blessingOfTheTrickster} from './macros/2024/classFeatures/cleric/trickery/blessingOfTheTrickster.js';
+export {invokeDuplicity, invokeDuplicityDistract} from './macros/2024/classFeatures/cleric/trickery/invokeDuplicity.js';
+export {trickstersTransposition} from './macros/2024/classFeatures/cleric/trickery/trickstersTransposition.js';
+export {improvedDuplicity, improvedDuplicityEffect} from './macros/2024/classFeatures/cleric/trickery/improvedDuplicity.js';
+//War Domain
+export {guidedStrike} from './macros/2024/classFeatures/cleric/war/guidedStrike.js';

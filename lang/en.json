@@ -71,6 +71,18 @@
         "Cleave": {
             "Use": "Cleave a nearby target?"
         },
+        "Combat": {
+            "LegendaryActions": {
+                "Prompt": {
+                    "Content": "You have unused legendary actions this turn, use legendary action?",
+                    "Title": "Use Legendary Action?"
+                },
+                "Target": {
+                    "Content": "Select target of ",
+                    "Title": "Select Target"
+                }
+            }
+        },
         "CommonFeatures": {
             "Amphibious": "Amphibious",
             "Bite": "Bite",
@@ -99,6 +111,7 @@
         "Config": {
             "Abilities": "Ability:",
             "Ability": "Ability:",
+            "Activities": "Activities:",
             "AffectAllies": "Should Affect Allies:",
             "AllowEnemies": "Allow selection of non-allied tokens?",
             "Animation": "Animation:",
@@ -136,6 +149,8 @@
             "Colors": {
                 "Blue": "Blue",
                 "Blue02": "Blue (alt)",
+                "BlueGrey": "Blue & Grey",
+                "BlueWhite": "Blue & White",
                 "BlueYellow": "Blue & Yellow",
                 "Cycle": "Cycle",
                 "DarkBlack": "Dark Black",
@@ -183,6 +198,7 @@
             "IgnoredCreatureTypes": "Ignored Creature Types:",
             "ImmuneCreatures": "Immune Creature Types:",
             "MaxLevel": "Max Level:",
+            "MaxSize": "Max Size:",
             "Name": "Name:",
             "Number": "Number:",
             "Percentage": "Percentage:",
@@ -561,9 +577,13 @@
             "Distance": "Distance",
             "Edit": "Edit",
             "Failure": "Failure",
+            "Features": "Features",
             "Go": "Go",
             "Import": "Import",
+            "Items": "Items",
             "Max": "Max:",
+            "MeleeSpells": "Melee Spell",
+            "MeleeWeapons": "Melee Weapons",
             "MissingScale": "Actor does not have {scaleName} scale set!",
             "No": "No",
             "NoEffect": "{itemName} must have an effect for its generic monster feature!",
@@ -571,6 +591,8 @@
             "NoType": "No Type",
             "None": "None",
             "Ok": "Ok",
+            "RangedSpells": "Ranged Spells",
+            "RangedWeapons": "Ranged Weapons",
             "Recharge": "Recharge:",
             "RecoverSpellSlot": "Select a spell slot to recover:",
             "Replace": "Replace",
@@ -582,6 +604,7 @@
             "SelectSpellSlot": "Select a spell slot:",
             "SelectTargetEffect": "Select an effect for each target:",
             "Skill": "Skill Check",
+            "Spells": "Spells",
             "Submit": "Submit",
             "Success": "Success",
             "Summon": "Summon",
@@ -1049,6 +1072,10 @@
             "DreadfulAspect": {
                 "Turn": "Dreadful Aspect: End of Turn"
             },
+            "DustDevil": {
+                "ContactItem": "Dust Devil: Contact",
+                "Move": "Dust Devil: Move"
+            },
             "EffectImmunity": {
                 "Immune": "Immune",
                 "Name": "Effect Immunity"
@@ -1359,6 +1386,9 @@
             "ImbueCard": {
                 "Select": "Which spell to imbue a card with?"
             },
+            "ImprovedDuplicity": {
+                "ChooseHeal": "Choose a target to heal:"
+            },
             "ImprovedPotentSpellcasting": {
                 "Target": "Select an ally to give temporary hit points to:"
             },
@@ -1465,7 +1495,9 @@
                 "MaxHPCure": "Max HP Reduction Recovery:",
                 "Name": "Lifesteal",
                 "ReduceMaxHP": "Reduce Max HP:",
-                "excessAsTemp": "Excess Healing as Temporary Hitpoints:"
+                "ThisItem": "This Item",
+                "excessAsTemp": "Excess Healing as Temporary Hitpoints:",
+                "validItems": "Valid Items:"
             },
             "LightningArrow": {
                 "Burst": "Lightning Arrow: Burst"
@@ -2322,8 +2354,11 @@
                 },
                 "SpecialDuration": {
                     "AttackedByAnotherCreature": "Attacked By Another Creature",
+                    "AttackedBySource": "Attacked By Source",
                     "DamagedByAlly": "Damaged By Ally",
                     "DamagedByEnemy": "Damaged By Enemy",
+                    "HitByAnotherCreature": "Hit By Another Creature",
+                    "HitBySource": "Hit By Source",
                     "Label": "Special Durations:",
                     "TempHP": "Zero Temporary Hitpoints",
                     "TempMaxHP": "Zero Temporary Max Hitpoints",
@@ -2529,7 +2564,7 @@
             },
             "SelectCompendium": "Select a compendium:",
             "activityCSSTweak": {
-                "Hint": "When enabled, activities will have all their information one tab. Reload required after disabling.",
+                "Hint": "When enabled, activities will have all their information one tab.",
                 "Name": "Activities CSS Tweak"
             },
             "addActions": {
@@ -2638,6 +2673,18 @@
                 "Hint": "When enabled, critical or fumble attack rolls will also roll an item from the selected compendiums.",
                 "Name": "Critical And Fumble Mode"
             },
+            "customSidebar": {
+                "Hint": "CSS tweaks to the sidebar including chat background and scrollbar flipping and other minor changes",
+                "Name": "Custom Sidebar"
+            },
+            "customUIButtonScale": {
+                "Hint": "Scales the sidebar buttons.",
+                "Name": "Custom Sidebar Button Scale"
+            },
+            "customUINavigationScale": {
+                "Hint": "Scales the scene navigation.",
+                "Name": "Custom Naviation Scale"
+            },
             "devTools": {
                 "Hint": "Enable to display development tools.",
                 "Name": "Display Development Tools"
@@ -2733,6 +2780,10 @@
             "lastUpdateCheck": {
                 "Hint": "When was the last update check run (in milliseconds). Automatically set.",
                 "Name": "Last Update Check"
+            },
+            "legendaryActionsPrompt": {
+                "Hint": "Tracks and prompts for unused legendary actions when combat moves forward.",
+                "Name": "Legendary Actions Prompt"
             },
             "macroCompendium": {
                 "Hint": "Macro compendium that is used to overwrite or add additional macros to the CPR API. Please see documentation on how to use this. (WIP)",
@@ -2945,6 +2996,7 @@
                 "DrakeCompanionLightning": "Drake Companion: Lightning",
                 "DrakeCompanionPoison": "Drake Companion: Poison",
                 "DreadLord": "Dread Lord",
+                "DustDevil": "Dust Devil",
                 "EarthElemental": "Earth Elemental",
                 "EarthenHand": "Earthen Hand",
                 "Echo": "Echo",
@@ -2971,6 +3023,7 @@
                 "HealingSpirit": "Healing Spirit",
                 "HomunculusServant": "Homunculus Servant",
                 "HybridTransformation": "Hybrid Transformation",
+                "InvokeDuplicity": "Invoke Duplicity",
                 "ManifestMind": "Manifest Mind",
                 "Pixie": "Pixie",
                 "ReaperSpirit": "Reaper Spirit",

@@ -1,6 +1,5 @@
 import {itemUtils} from '../../../../utils.js';
-
-async function skill({trigger: {skillId}}) {
+async function skill({trigger: {skillId, entity: item}}) {
     if (skillId !== 'prc') return;
     if (!itemUtils.getEquipmentState(item)) return;
     return {label: 'CHRISPREMADES.Macros.DanothsVisor.Check', type: 'advantage'};

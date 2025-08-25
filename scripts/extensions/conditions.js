@@ -24,19 +24,20 @@ async function deleteActiveEffect(effect, options, userId) {
 }
 function setStatusEffectIcons() {
     let icons = genericUtils.getCPRSetting('statusEffectIcons');
-    CONFIG.statusEffects.forEach(i => {
-        if (i.customStatus) return;
+    let validStatusEffects = CONFIG.statusEffects.filter(k => !k.customStatus && !k.name?.startsWith('MonksLittleDetails'));
+    validStatusEffects.forEach(i => {
         if (icons[i.id] && i.img !== icons[i.id]) i.img = icons[i.id];
     });
 }
 async function configureStatusEffectIcons() {
     let icons = genericUtils.getCPRSetting('statusEffectIcons');
-    let inputs = CONFIG.statusEffects.filter(k => !k.customStatus).map(i => ({
+    let validStatusEffects = CONFIG.statusEffects.filter(k => !k.customStatus && !k.name?.startsWith('MonksLittleDetails'));
+    let inputs = validStatusEffects.map(i => ({
         label: i.name,
         name: i.id,
         options: {
             type: 'image',
-            currentValue: icons[i.id] ?? CONFIG.statusEffects.find(j => j.id === i.id)?.img ?? ''
+            currentValue: icons[i.id] ?? validStatusEffects.find(j => j.id === i.id)?.img ?? ''
         }
     }));
     let selection = await DialogApp.dialog('CHRISPREMADES.Settings.statusEffectIcons.Name', '', [['filePicker', inputs, {displayAsRows: true}]], 'okCancel', {id: 'cpr-status-effect-config', width: 500, height: 800});

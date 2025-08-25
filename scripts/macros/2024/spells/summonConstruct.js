@@ -240,7 +240,7 @@ export let summonConstructMetal = {
             priority: 50
         }
     ]
-}
+};
 export let summonConstructStone = {
     name: 'Summon Construct: Stone',
     version: summonConstruct.version,

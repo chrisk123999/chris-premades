@@ -1,6 +1,6 @@
 import {itemUtils, genericUtils, effectUtils, workflowUtils, animationUtils} from '../../../../utils.js';
 async function turnStart({trigger: {entity: item, token,}}) {
-    let {hpThreshold, diceFormula, diceThreshold} = itemUtils.getGenericFeatureConfig(item, 'berserk');
+    let {hpThreshold, diceFormula, diceThreshold} = itemUtils.getGenericFeatureConfig(item, 'berserk'); //Why is diceFormula here but not used???
     let effect = effectUtils.getEffectByIdentifier(token.actor, 'berserk');
     if (effect) {
         if (token.actor.system.attributes.hp.value === 0 || token.actor.system.attributes.hp.value === token.actor.system.attributes.hp.max) {

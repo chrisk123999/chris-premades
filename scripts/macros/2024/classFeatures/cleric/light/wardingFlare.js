@@ -1,6 +1,6 @@
 import {itemUtils, socketUtils, thirdPartyUtils, workflowUtils} from '../../../../../utils.js';
 async function attack({trigger, workflow}) {
-    await thirdPartyUtils.attack(workflow, 'wardingFlare', 'use', {distance: 30, attacker: false});
+    await thirdPartyUtils.attacked(workflow, 'wardingFlare', 'use', {distance: 30, attacker: false, dispositionType: 'ally'});
 }
 async function use({trigger, workflow}) {
     let item = itemUtils.getItemByIdentifier(workflow.actor, 'improvedWardingFlare');

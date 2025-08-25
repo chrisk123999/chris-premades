@@ -1,5 +1,4 @@
 import {dialogUtils, itemUtils, rollUtils, socketUtils} from '../../../../utils.js';
-
 async function saveContext({trigger: {entity: item, saveId}}) {
     let config = itemUtils.getGenericFeatureConfig(item, 'contextualBonus');
     if (!config.advantage) return;

@@ -47,5 +47,5 @@ export let radianceOfTheDawn = {
             pass: 'created',
             macro: added
         }
-    ],
+    ]
 };

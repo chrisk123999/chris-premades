@@ -1,5 +1,4 @@
-import {activityUtils, compendiumUtils, constants, dialogUtils, errors, genericUtils, itemUtils, workflowUtils} from '../../../../../utils.js';
-
+import {activityUtils, dialogUtils, genericUtils, workflowUtils} from '../../../../../utils.js';
 async function damage({trigger: {entity: item}, workflow}) {
     if (workflow.item.type !== 'spell') return;
     let spellLevel = workflowUtils.getCastLevel(workflow);

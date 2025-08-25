@@ -71,6 +71,18 @@
         "Cleave": {
             "Use": "Cortar um alvo próximo?"
         },
+        "Combat": {
+          "LegendaryActions": {
+            "Prompt": {
+              "Content": "Você tem Ações Lendárias não utilizadas neste turno. Usar Ações Lendárias?",
+              "Title": "Usar Ação Lendária?"
+            },
+            "Target": {
+              "Content": "Escolha o alvo de ",
+              "Title": "Escolher Alvo"
+            }
+          }
+        },
         "CommonFeatures": {
             "Amphibious": "Anfíbio",
             "Bite": "Mordida",
@@ -99,6 +111,7 @@
         "Config": {
             "Abilities": "Atributos:",
             "Ability": "Atributo:",
+            "Activities": "Atividades:",
             "AffectAllies": "Deve Afetar Aliados:",
             "AllowEnemies": "Permitir seleção de tokens não-aliados?",
             "Animation": "Animação:",
@@ -136,7 +149,9 @@
             "Colors": {
                 "Blue": "Azul",
                 "Blue02": "Azul (alt)",
+                "BlueGrey": "Azul & Cinza",
                 "BlueYellow": "Azul & Amarelo",
+                "BlueWhite": "Azul & Branco",
                 "Cycle": "Ciclo",
                 "DarkBlack": "Preto Escuro",
                 "DarkBlue": "Azul Escuro",
@@ -182,7 +197,8 @@
             "HitTarget": "Alvo Atingido:",
             "IgnoredCreatureTypes": "Tipos de Criatura Ignorados:",
             "ImmuneCreatures": "Tipos de Criaturas Imunes:",
-            "MaxLevel": "Nível Máx.:",
+            "MaxLevel": "Nível Máx:",
+            "MaxSize": "Tamanho Máx:",
             "Name": "Nome:",
             "Number": "Número:",
             "Percentage": "Porcentagem:",
@@ -561,9 +577,13 @@
             "Distance": "Distância",
             "Edit": "Editar",
             "Failure": "Falha",
+            "Features": "Características",
             "Go": "Ir",
             "Import": "Importar",
+            "Items": "Itens",
             "Max": "Máx:",
+            "MeleeSpells": "Magias Corpo a Corpo",
+            "MeleeWeapons": "Armas Corpo a Corpo",
             "MissingScale": "O ator não tem o conjunto de escala {scaleName} scale set!",
             "No": "Não",
             "NoEffect": "{itemName} deve ter um efeito para seu recurso genérico de monstro!",
@@ -571,6 +591,8 @@
             "NoType": "Sem Tipo",
             "None": "Nenhum(a)",
             "Ok": "Ok",
+            "RangedSpells": "Magias à Distância",
+            "RangedWeapons": "Armas à Distância",
             "Recharge": "Recarga:",
             "RecoverSpellSlot": "Selecione um espaço de magia para recuperar:",
             "Replace": "Substituir",
@@ -582,6 +604,7 @@
             "SelectSpellSlot": "Escolha um espaço de magia:",
             "SelectTargetEffect": "Escolha um efeito para cada alvo:",
             "Skill": "Teste de Perícia",
+            "Spells": "Magias",
             "Submit": "Enviar",
             "Success": "Sucesso",
             "Summon": "Invocação",
@@ -1208,6 +1231,10 @@
                 "Ram": "Forçar Alvo?",
                 "RamItem": "Esfera Flamejante: Forçar"
             },
+            "DustDevil": {
+                "ContactItem": "Redemoinho de Poeira: Contato",
+                "Move": "Redemoinho de Poeira: Mover"
+            },
             "FlockOfFamiliars": {
                 "Command": "Bando de Familiares: Comando",
                 "ReactionUsed": "Os familiares estão muito longe ou já usaram sua reação!",
@@ -1359,6 +1386,9 @@
             "ImbueCard": {
                 "Select": "Com qual magia você quer imbuir uma carta?"
             },
+            "ImprovedDuplicity": {
+                "ChooseHeal": "Escolha um alvo para curar:"
+            },
             "ImprovedPotentSpellcasting": {
                 "Target": "Escolha um aliado para dar pontos de vida temporária:"
             },
@@ -1462,10 +1492,12 @@
             },
             "Lifesteal": {
                 "HealingType": "Tipo de Cura:",
-                "MaxHPCure": "Recuperação de Redução de PV Máx.:",
+                "MaxHPCure": "Recuperação de Redução de PV Máx:",
                 "Name": "Roubo de Vida",
-                "ReduceMaxHP": "Reduzir PV Máx.:",
-                "excessAsTemp": "Excesso de Cura como PV Temp.:"
+                "ReduceMaxHP": "Reduzir PV Máx:",
+                "ThisItem": "Este Item",
+                "excessAsTemp": "Excesso de Cura como PV Temp:",
+                "validItems": "Itens Válidos:"
             },
             "LightningArrow": {
                 "Burst": "Flecha Relampejante: Explosão"
@@ -1538,8 +1570,8 @@
                 "Select": "Qual tipo de arma de sopro?"
             },
             "Metamagic": {
-                "CarefulWhich": "Quais alvos têm um sucesso automático? (Máx. {max})",
-                "Empowered": "Gastar 1 Ponto de Feitiçaria para rerolar o dado de dano? (Máx. {max})",
+                "CarefulWhich": "Quais alvos têm um sucesso automático? (Máx: {max})",
+                "Empowered": "Gastar 1 Ponto de Feitiçaria para re-rolar o dado de dano? (Máx: {max})",
                 "HeightenedWhich": "Quais alvos têm desvantagem?",
                 "NoValid": "Nenhuma magia aplicável para conjurar!",
                 "NotEnough": "Pontos de Feitiçaria insuficientes!",
@@ -1735,7 +1767,7 @@
             },
             "ScorchingRay": {
                 "Bolt": "Raio de Raio Ardente",
-                "Select": "Escolha seus alvos (Máx de raios: {maxRays})"
+                "Select": "Escolha seus alvos (Máx. de Raios: {maxRays})"
             },
             "SculptSpells": {
                 "Select": "Quais alvos são bem-sucedidos e não sofrem dano? (Máx: {max})"
@@ -2322,8 +2354,11 @@
                 },
                 "SpecialDuration": {
                     "AttackedByAnotherCreature": "Atacado por Outra Criatura",
+                    "AttackedBySource": "Atacado pela Origem",
                     "DamagedByAlly": "Sofrer Dano de Aliado",
                     "DamagedByEnemy": "Sofrer Dano de Inimigo",
+                    "HitByAnotherCreature": "Atingido por Outra Criatura",
+                    "HitBySource": "Atingido pela Origem",
                     "Label": "Durações Especiais:",
                     "TempHP": "Zero Pontos de Vida Temporários",
                     "TempMaxHP": "Zero Pontos de Vida Máximos Temporários",
@@ -2537,12 +2572,12 @@
                 "1": "Personagens Vinculados",
                 "2": "Personagens Desvinculados",
                 "3": "Todos os Personagens",
-                "4": "PnJs Vinculados",
-                "5": "PnJs Desvinculados",
-                "6": "Todos os PnJs",
-                "7": "Personagens Vinculados e PnJs",
-                "8": "Personagens Desvinculados e PnJs",
-                "9": "Todos os Personagens e PnJs",
+                "4": "PNJs Vinculados",
+                "5": "PNJs Desvinculados",
+                "6": "Todos os PNJs",
+                "7": "Personagens Vinculados e PNJs",
+                "8": "Personagens Desvinculados e PNJs",
+                "9": "Todos os Personagens e PNJs",
                 "Hint": "Quando ativado, ações genéricas serão adicionadas quando um token for colocado.",
                 "Name": "Adicionar Ações aos Tokens"
             },
@@ -2734,6 +2769,10 @@
                 "Hint": "Quando foi executada a última verificação de atualização (em milissegundos). Definir automaticamente.",
                 "Name": "Última Verificação de Atualização"
             },
+            "legendaryActionsPrompt": {
+                "Hint": "Rastreia e avisa sobre Ações Lendárias não utilizadas conforme o combate avança.",
+                "Name": "Aviso de Ações Lendárias"
+            },
             "macroCompendium": {
                 "Hint": "Compêndio de macros usado para substituir ou adicionar macros adicionais à API CPR. Consulte a documentação sobre como usar isso. (WIP)",
                 "Name": "Compêndio de Macros"
@@ -2877,6 +2916,9 @@
                 "Name": "Visual Active Effects: Botões"
             },
             "weaponMastery": {
+                "1": "Apenas Jogador",
+                "2": "Apenas PNJ (Homebrew)",
+                "3": "Jogador & PNJ (Homebrew)",
                 "Hint": "Habilitar automação de maestria de armas do PHB 2024.",
                 "Name": "Automação Maestria de Armas"
             }
@@ -2942,6 +2984,7 @@
                 "DrakeCompanionLightning": "Companheiro Dragão: Elétrico",
                 "DrakeCompanionPoison": "Companheiro Dragão: Venenoso",
                 "DreadLord": "Senhor do Pavor",
+                "DustDevil": "Redemoinho de Poeira",
                 "EarthElemental": "Elemental da Terra",
                 "EarthenHand": "Mão Terrena",
                 "Echo": "Eco",
@@ -2968,6 +3011,7 @@
                 "HealingSpirit": "Espírito Curativo",
                 "HomunculusServant": "Servo Homúnculo",
                 "HybridTransformation": "Transformação Híbrida",
+                "InvokeDuplicity": "Invocar Duplicidade",
                 "ManifestMind": "Mente Manifestada",
                 "Pixie": "Pixie",
                 "ReaperSpirit": "Espírito Ceifador",
@@ -3093,9 +3137,9 @@
         "UnknownTarget": "Alvo Desconhecido"
     },
     "CONTROLS": {
-        "LightSelect": "Selecionar Luzes",
-        "SoundSelect": "Selecionar Sons",
-        "TemplateSelect": "Selecionar Modelos"
+        "LightingSelect": "Selecionar Luzes",
+        "SoundsSelect": "Selecionar Sons",
+        "TemplatesSelect": "Selecionar Modelos"
     },
     "dae.CPR.fieldData": {
         "flags.chris-premades.senses.magicalDarkness": {
@@ -3115,7 +3159,7 @@
     "SIDEBAR": {
         "ACTIONS": {
             "CREATE": {
-                "ActiveEffect": "Create Active Effect"
+                "ActiveEffect": "Criar Efeito Ativo"
             }
         }
     }

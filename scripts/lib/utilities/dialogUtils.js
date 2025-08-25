@@ -213,8 +213,6 @@ async function selectDocumentsDialog(title, content, documents, {max = undefined
         }
     }));
     let inputs = [[checkbox ? 'checkbox' : 'selectAmount', inputFields, {displayAsRows: true, totalMax: max}]];
-    // let height = (inputs[0][1].length * 56 + 46); Come back to when I have a dialog large enough to max out the window
-    // if (inputs[0][1].length > 14 ) height = 850;
     let result;
     if (game.user.id != userId) {
         result = await socket.executeAsUser(sockets.dialog.name, userId, title, content, inputs, undefined, {height: 'auto'});

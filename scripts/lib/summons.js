@@ -334,7 +334,8 @@ export class Summons {
         });
         // Options to be added to the created effect
         let effectOptions = {
-            identifier: this.options?.customIdentifier ?? genericUtils.getIdentifier(this.originItem) ?? this.originItem.name
+            identifier: this.options?.customIdentifier ?? genericUtils.getIdentifier(this.originItem) ?? this.originItem.name,
+            rules: genericUtils.getRules(this.originItem)
         };
         // For unhiding activities
         if (this.options?.unhideActivities) effectOptions.unhideActivities = this.options.unhideActivities;
@@ -450,6 +451,7 @@ export class Summons {
                         buttons: buttons.concat((this.options.additionalSummonVaeButtons ?? []))
                     },
                     macros: {effect: ['summonUtils'], ...(this.options.dontDismissOnDefeat ? {} : {midi: {actor: ['summonUtils']}})},
+                    rules: genericUtils.getRules(this.originItem)
                     // dismissAnimation: this.options.dontAnimateOnDismiss ? 'none' : this.options.animation
                 }
             }
@@ -550,4 +552,8 @@ export let summonUtils = {
             }
         ]
     }
+};
+export let summonUtilsModern = {
+    ...summonUtils,
+    rules: 'modern'
 };

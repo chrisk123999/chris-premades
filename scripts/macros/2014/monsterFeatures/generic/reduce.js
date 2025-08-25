@@ -1,5 +1,4 @@
 import {constants, effectUtils, itemUtils} from '../../../../utils.js';
-
 async function use({workflow}) {
     let config = itemUtils.getGenericFeatureConfig(workflow.item, 'reduce');
     let effectData = {

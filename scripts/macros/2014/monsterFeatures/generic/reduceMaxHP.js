@@ -1,10 +1,8 @@
-import {effectUtils, genericUtils, itemUtils, workflowUtils} from '../../../../utils.js';
+import {effectUtils, genericUtils, itemUtils} from '../../../../utils.js';
 async function late({workflow}) {
-    if (workflow.hitTargets.size !== 1) return;
+    if (!workflow.hitTargets.size) return;
     if (!workflow.damageRoll) return;
     let config = itemUtils.getGenericFeatureConfig(workflow.item, 'reduceMaxHP');
-    let target = workflow.hitTargets.first();
-    if (workflow.item.hasSave && !workflow.failedSaves.size) return;
     let damageApplied = 0;
     if (config.reduceByRoll.length) {
         let roll = await new Roll(config.reduceByRoll, workflow.item.getRollData()).evaluate();
@@ -13,60 +11,65 @@ async function late({workflow}) {
             flavor: workflow.item.name
         });
         damageApplied = roll.total;
-    } else {
-        let ditem = workflow.damageList.find(i => i.actorId === target.actor.id);
-        if (!ditem) return;
-        if (!config.damageTypeFilter.length) {
-            damageApplied = ditem.damageDetail.reduce((acc, i) => acc + i.value, 0);
-        } else {
-            damageApplied = ditem.damageDetail.reduce((acc, i) => acc + (config.damageTypeFilter.includes(i.type) ? i.value : 0), 0);
-        }
+        if (config.halfDamage) damageApplied = Math.floor(damageApplied / 2);
     }
-    if (config.halfDamage) damageApplied = Math.floor(damageApplied / 2);
-    if (!damageApplied) return;
-    let totalMax = target.actor.system.attributes.hp.max;
-    let effect = await effectUtils.getAllEffectsByIdentifier(target.actor, 'reduceMaxHP').find(async i => (await effectUtils.getOriginItem(i))?.uuid === workflow.item.uuid);
-    if (effect) {
-        let currReduction = parseInt(effect.changes[0].value);
-        await genericUtils.update(effect, {
-            changes: [
-                {
-                    key: 'system.attributes.hp.tempmax',
-                    mode: 2,
-                    value: Math.max(-totalMax, currReduction - damageApplied),
-                    priority: 20
-                }
-            ]
-        });
-    } else {
-        let effectData = {
-            name: workflow.item.name,
-            img: workflow.item.img,
-            origin: workflow.item.uuid,
-            changes: [
-                {
-                    key: 'system.attributes.hp.tempmax',
-                    mode: 2,
-                    value: -damageApplied,
-                    priority: 20
-                }
-            ],
-            flags: {
-                dae: {
-                    showIcon: true
-                }
+    await Promise.all(workflow.targets.map(async token => {
+        if (config.checkSaves && !workflow.failedSaves.has(token)) return;
+        if (!config.reduceByRoll.length) {
+            let ditem = workflow.damageList.find(i => i.actorId === token.actor.id);
+            if (!ditem) return;
+            if (!config.damageTypeFilter.length) {
+                damageApplied = ditem.damageDetail.reduce((acc, i) => acc + i.value, 0);
+            } else {
+                damageApplied = ditem.damageDetail.reduce((acc, i) => acc + (config.damageTypeFilter.includes(i.type) ? i.value : 0), 0);
             }
-        };
-        if (config.shortRestCures) {
-            effectData.flags.dae.specialDuration = ['shortRest'];
-        } else if (config.longRestCures) {
-            effectData.flags.dae.specialDuration = ['longRest'];
+            if (config.halfDamage) damageApplied = Math.floor(damageApplied / 2);
         }
-        await effectUtils.createEffect(target.actor, effectData, {identifier: 'reduceMaxHP'});
-    }
-    if (Math.abs(target.actor.system.attributes.hp.tempmax) >= totalMax) {
-        effectUtils.applyConditions(target.actor, ['dead'], {overlay: true});
-    }
+        if (!damageApplied) return;
+        let totalMax = token.actor.system.attributes.hp.max;
+        let effect = await effectUtils.getAllEffectsByIdentifier(token.actor, 'reduceMaxHP').find(async i => (await effectUtils.getOriginItem(i))?.uuid === workflow.item.uuid);
+        if (effect) {
+            let currReduction = parseInt(effect.changes[0].value);
+            await genericUtils.update(effect, {
+                changes: [
+                    {
+                        key: 'system.attributes.hp.tempmax',
+                        mode: 2,
+                        value: Math.max(-totalMax, currReduction - damageApplied),
+                        priority: 20
+                    }
+                ]
+            });
+        } else {
+            let effectData = {
+                name: workflow.item.name,
+                img: workflow.item.img,
+                origin: workflow.item.uuid,
+                changes: [
+                    {
+                        key: 'system.attributes.hp.tempmax',
+                        mode: 2,
+                        value: -damageApplied,
+                        priority: 20
+                    }
+                ],
+                flags: {
+                    dae: {
+                        showIcon: true
+                    }
+                }
+            };
+            if (config.shortRestCures) {
+                effectData.flags.dae.specialDuration = ['shortRest'];
+            } else if (config.longRestCures) {
+                effectData.flags.dae.specialDuration = ['longRest'];
+            }
+            await effectUtils.createEffect(token.actor, effectData, {identifier: 'reduceMaxHP'});
+        }
+        if (Math.abs(token.actor.system.attributes.hp.tempmax) >= totalMax) {
+            effectUtils.applyConditions(token.actor, ['dead'], {overlay: true});
+        }
+    }));
 }
 export let reduceMaxHP = {
     name: 'Reduce Maximum HP',
@@ -85,7 +88,7 @@ export let reduceMaxHP = {
     genericConfig: [
         {
             value: 'damageTypeFilter',
-            label: 'CHRISPREMADES.Macros.ReduceMaxHP.DamageTypeFilter',
+            label: 'CHRISPREMADES.Config.DamageTypes',
             type: 'damageTypes',
             default: []
         },
@@ -112,6 +115,12 @@ export let reduceMaxHP = {
             label: 'CHRISPREMADES.Macros.ReduceMaxHP.Half',
             type: 'checkbox',
             default: false
+        },
+        {
+            value: 'checkSaves',
+            label: 'CHRISPREMADES.Config.CheckSaves',
+            type: 'checkbox',
+            default: true
         }
     ]
 };
