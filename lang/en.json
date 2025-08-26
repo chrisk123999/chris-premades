@@ -598,6 +598,8 @@
             "Replace": "Replace",
             "Rerolling": "Rerolling {origDie} ({origResult}):",
             "Select": "Select",
+            "SelectATarget": "Select a target:",
+            "SelectAWeapon": "Select a weapon:",
             "SelectDamageType": "Select a damage type:",
             "SelectEffect": "Select an effect:",
             "SelectSpell": "Select a Spell:",

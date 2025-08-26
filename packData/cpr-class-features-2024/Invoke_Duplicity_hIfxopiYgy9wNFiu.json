@@ -19,8 +19,7 @@
             {
               "type": "itemUses",
               "value": "1",
-              "target": "tH0ztYvn0tF9g1qr",
-              "scaling": {}
+              "target": "8TAqEF4CjM3H9MoT"
             }
           ],
           "scaling": {
@@ -125,7 +124,9 @@
           "postRemoveConditionText": ""
         },
         "otherActivityId": "none",
-        "name": "Summon"
+        "name": "Summon",
+        "img": "",
+        "appliedEffects": []
       },
       "addMoveDuplic1II": {
         "name": "Move",
@@ -512,7 +513,7 @@
           ]
         },
         "item": [
-          "radianceOfTheDawn"
+          "invokeDuplicity"
         ]
       },
       "hiddenActivities": [

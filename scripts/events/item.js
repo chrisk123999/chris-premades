@@ -180,6 +180,24 @@ async function executeMacroPass(item, pass) {
         await executeMacro(trigger);
     }
 }
+async function actorMedkit(items) {
+    let itemInfo = items.map(item => ({
+        document: item,
+        macro: custom.getMacro(genericUtils.getIdentifier(item), genericUtils.getRules(item))
+    }));
+    let itemMedkits = itemInfo.filter(item => item.macro.item?.find(i => i.pass === 'itemMedkit')).sort((a, b) => a.macro.item.find(i => i.pass === 'itemMedkit').priority - b.macro.item.find(i => i.pass === 'itemMedkit').priority);
+    let actorMedkits = itemInfo.filter(item => item.macro.item?.find(i => i.pass === 'actorMedkit')).sort((a, b) => a.macro.item.find(i => i.pass === 'actorMedkit').priority - b.macro.item.find(i => i.pass === 'actorMedkit').priority);
+    if (itemMedkits.length) {
+        for (let item of itemMedkits) {
+            await executeMacroPass(item.document, 'itemMedkit');
+        }
+    }
+    if (actorMedkits.length) {
+        for (let item of itemMedkits) {
+            await executeMacroPass(item.document, 'actorMedkit');
+        }
+    }
+}
 async function created(item, updates, options) {
     if (!socketUtils.isTheGM() || !item.actor) return;
     await executeMacroPass(item, 'created');
@@ -193,5 +211,6 @@ async function deleted(item, options, userId) {
 export let itemEvent = {
     created,
     deleted,
-    executeMacroPass
+    executeMacroPass,
+    actorMedkit
 };

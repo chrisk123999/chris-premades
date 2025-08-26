@@ -1,6 +1,10 @@
 # 1.3.27 Release:
+## New Modern Content:
+- War Priest
 ## Update Notes:
 - Added Chat Message Dark Mode setting.
+## API Update Notes:
+- Added item and actor medkit events.
 
 # 1.3.26 Release:
 ## Bug Fixes:

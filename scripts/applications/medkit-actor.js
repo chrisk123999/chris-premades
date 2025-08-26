@@ -3,6 +3,7 @@ import {compendiumUtils, itemUtils, genericUtils, errors} from '../utils.js';
 import {gambitPremades} from '../integrations/gambitsPremades.js';
 import {miscPremades} from '../integrations/miscPremades.js';
 import {ItemMedkit} from './medkit-item.js';
+import {itemEvent} from '../events/item.js';
 export class ActorMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
     constructor(actor) {
         super({id: 'medkit-window-actor'});
@@ -135,10 +136,10 @@ export class ActorMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
         let source = options.source ?? itemUtils.getSource(sourceItem);
         let summary = '&#8226 ' + item.name + ' - ' + (source.includes('.') ? game.packs.get(source).metadata.label : genericUtils.translate('CHRISPREMADES.Medkit.ModuleIds.' + source)) + '<br/>';
         this.summary += summary;
-        return ItemMedkit.update(item, sourceItem, options);
+        return ItemMedkit.update(item, sourceItem, options, true);
     }
     static async _update(event, target) {
-        await Promise.all(this.actorItems.reduce((accumulator, currentValue) => {
+        let items = await Promise.all(this.actorItems.reduce((accumulator, currentValue) => {
             if (currentValue.isUpToDate !== 1 && (currentValue.isUpToDate === 0 || ((!currentValue.source || currentValue?.source?.includes('.')) && currentValue.sourceItem))) {
                 let options = {source: undefined, version: undefined};
                 if (currentValue.sourceItem?.pack.includes('gambits-premades')) {
@@ -174,6 +175,7 @@ export class ActorMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
             this.setPosition(position);
             await this.render(true, {position: {top: null}});
         }
+        itemEvent.actorMedkit(items);
     }
     static async apply(event, target) {
         let currentTabId = this.element.querySelector('.item.active').getAttribute('data-tab');

@@ -62,7 +62,13 @@ export let tandemFootwork = {
     item: [
         {
             pass: 'created',
-            macro: added
+            macro: added,
+            priority: 50
+        },
+        {
+            pass: 'itemMedkit',
+            macro: added,
+            priority: 50
         }
     ],
     config: [

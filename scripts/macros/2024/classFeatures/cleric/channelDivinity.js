@@ -151,7 +151,13 @@ export let channelDivinity = {
     item: [
         {
             pass: 'created',
-            macro: added
+            macro: added,
+            priority: 45
+        },
+        {
+            pass: 'itemMedkit',
+            macro: added,
+            priority: 45
         }
     ],
     config: [
