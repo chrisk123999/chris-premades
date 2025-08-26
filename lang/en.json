@@ -2673,8 +2673,12 @@
                 "Hint": "When enabled, critical or fumble attack rolls will also roll an item from the selected compendiums.",
                 "Name": "Critical And Fumble Mode"
             },
+            "customChatMessage": {
+                "Hint": "Gives a dark theme to the chat messages.",
+                "Name": "Chat Message Dark Mode"
+            },
             "customSidebar": {
-                "Hint": "CSS tweaks to the sidebar including chat background and scrollbar flipping and other minor changes",
+                "Hint": "CSS tweaks to the sidebar including chat background and scrollbar flipping and other minor changes.",
                 "Name": "Custom Sidebar"
             },
             "customUIButtonScale": {

@@ -936,6 +936,13 @@ export function registerSettings() {
         category: 'interface',
         onChange: (value) => ui.customSidebar(value)         
     });
+    addSetting({
+        key: 'customChatMessage',
+        type: Boolean,
+        default: false,
+        category: 'interface',
+        onChange: (value) => ui.customChatMessage(value)         
+    });
 }
 export function registerMenus() {
     if (game.settings.get('chris-premades', 'devTools')) addMenu({
