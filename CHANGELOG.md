@@ -1,3 +1,7 @@
+# 1.3.27 Release:
+## Update Notes:
+- Added Chat Message Dark Mode setting.
+
 # 1.3.26 Release:
 ## Bug Fixes:
 - NPC Medkit scrollbar
