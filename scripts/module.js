@@ -37,6 +37,7 @@ import {migrate} from './migrations.js';
 import {initiative} from './extensions/initiative.js';
 import {EmbeddedMacros} from './applications/embeddedMacros.js';
 import {ui} from './extensions/ui.js';
+import {toolCheck} from './events/toolCheck.js';
 Hooks.once('socketlib.ready', registerSockets);
 Hooks.once('init', () => {
     Hooks.on('dae.modifySpecials', dae.modifySpecials);
@@ -88,6 +89,7 @@ Hooks.once('ready', () => {
     skillCheck.patch();
     abilityCheck.patch();
     activities.patchCanUse();
+    toolCheck.patch();
     if (utils.genericUtils.getCPRSetting('groupSummonsWithOwner')) initiative.patch(true);
     if (utils.genericUtils.getCPRSetting('manualRollsGMFulfils')) rollResolver.patch(true);
     if (utils.genericUtils.getCPRSetting('manualRollsEnabled')) {

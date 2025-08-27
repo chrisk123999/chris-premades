@@ -291,7 +291,7 @@ async function rollCheck(wrapped, config, dialog = {}, message = {}) {
             names.add(i.name);
         });
         sortedSceneTriggers = sortedSceneTriggers.sort((a, b) => a.priority - b.priority);
-        genericUtils.log('dev', 'Executing Check Macro Pass: sceneBonus');
+        genericUtils.log('dev', 'Executing Ability Check Macro Pass: sceneBonus');
         for (let trigger of sortedSceneTriggers) {
             trigger.roll = returnData;
             let bonusRoll = await executeMacro(trigger);

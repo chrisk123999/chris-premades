@@ -3072,6 +3072,9 @@
             "TargetCantSeeAttacker": "Target Can't See Attacker",
             "UnknownTemplate": "Unknown Template"
         },
+        "ToolCheck": {
+            "Title": "Tool Check"
+        },
         "Tour": {
             "0": {
                 "Content": "This tour will guide you through using some of the core features of using Cauldron of Plentiful Resources.",
