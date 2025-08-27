@@ -2359,9 +2359,12 @@
                     "AttackedBySource": "Attacked By Source",
                     "DamagedByAlly": "Damaged By Ally",
                     "DamagedByEnemy": "Damaged By Enemy",
+                    "Failed": "Failed {toolName} Check",
                     "HitByAnotherCreature": "Hit By Another Creature",
                     "HitBySource": "Hit By Source",
                     "Label": "Special Durations:",
+                    "Rolled": "Rolled {toolName} Check",
+                    "Succeed": "Succeeded {toolName} Check",
                     "TempHP": "Zero Temporary Hitpoints",
                     "TempMaxHP": "Zero Temporary Max Hitpoints",
                     "Tooltip": "Selected conditions will remove the effect."
