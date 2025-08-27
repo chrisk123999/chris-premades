@@ -1,5 +1,5 @@
 # 1.3.30 Release:
-## New Generic Monster Feature:
+## New Generic Monster Features:
 - Reroll Save On Damage
 ## Bug Fixes:
 - Auto Push
