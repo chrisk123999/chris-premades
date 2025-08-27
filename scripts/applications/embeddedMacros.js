@@ -246,6 +246,18 @@ export const eventStructure = {
             documents: [
                 'item'
             ]
+        },
+        {
+            pass: 'itemMedkit',
+            documents: [
+                'item'
+            ]
+        },
+        {
+            pass: 'actorMedkit',
+            documents: [
+                'item'
+            ]
         }
     ],
     death: [
@@ -681,6 +693,47 @@ export const eventStructure = {
             pass: 'moved',
             documents: [
                 'measuredtemplate'
+            ]
+        }
+    ],
+    toolCheck: [
+        {
+            pass: 'situational',
+            documents: [
+                'item',
+                'activeeffect',
+                'measuredtemplate',
+                'region'
+            ]
+        },
+        {
+            pass: 'context',
+            documents: [
+                'item',
+                'activeeffect',
+                'measuredtemplate',
+                'region'
+            ]
+        },
+        {
+            pass: 'bonus',
+            documents: [
+                'item',
+                'activeeffect',
+                'measuredtemplate',
+                'region'
+            ],
+            options: [
+                'scene'
+            ]
+        },
+        {
+            pass: 'post',
+            documents: [
+                'item',
+                'activeeffect',
+                'measuredtemplate',
+                'region'
             ]
         }
     ]

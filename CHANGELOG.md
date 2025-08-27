@@ -1,3 +1,8 @@
+# 1.3.29 Release:
+## Update Notes:
+- Added item and actor medkit events to the embedded macros editor.
+- Added tool check events to the embedded macros editor.
+
 # 1.3.28 Release:
 ## Update Notes:
 - Added tool checks to the special durations section of the CPR Effect Medkit.

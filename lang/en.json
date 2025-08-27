@@ -477,6 +477,12 @@
                 },
                 "unequipped": {
                     "Label": "Unequipped"
+                },
+                "itemMedkit": {
+                    "Label": "Item Medkit"
+                },
+                "actorMedkit": {
+                    "Label": "Actor Medkit"
                 }
             },
             "Priority": {
@@ -503,7 +509,8 @@
                 "rest": "Rest",
                 "save": "Save",
                 "skill": "Skill",
-                "template": "Template"
+                "template": "Template",
+                "toolCheck": "Tool"
             }
         },
         "Error": {
