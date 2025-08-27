@@ -331,6 +331,9 @@
                 "actorEquipped": {
                     "Label": "Ator Equipado"
                 },
+                "actorMedkit": {
+                    "Label": "Medkit de Ator"
+                },
                 "actorUnequipped": {
                     "Label": "Ator Desequipado"
                 },
@@ -373,6 +376,9 @@
                 "everyTurn": {
                     "Label": "Cada Turno"
                 },
+                "itemMedkit": {
+                    "Label": "Medkit de Item"
+                },
                 "long": {
                     "Label": "Descanso Longo"
                 },
@@ -412,8 +418,14 @@
                 "sceneBonus": {
                     "Label": "Bônus de Cena"
                 },
+                "sceneCreate": {
+                    "Label": "Cena Criada"
+                },
                 "sceneDamageRollComplete": {
                     "Label": "Rolagem de Dano da Cena Concluído"
+                },
+                "sceneDeleted": {
+                    "Label": "Cena Excluída"
                 },
                 "movedScene": {
                     "Label": "Cena Movida"
@@ -472,12 +484,6 @@
                 "unequipped": {
                     "Label": "Desequipado"
                 },
-                "sceneDeleted": {
-                    "Label": "Cena Excluída"
-                },
-                "sceneCreate": {
-                    "Label": "Cena Criada"
-                }
             },
             "Priority": {
                 "Label": "Prioridade:"
@@ -503,7 +509,8 @@
                 "rest": "Descansar",
                 "save": "Salvaguarda",
                 "skill": "Perícia",
-                "template": "Modelo"
+                "template": "Modelo",
+                "toolCheck": "Ferramenta"
             }
         },
         "Error": {
@@ -598,6 +605,8 @@
             "Replace": "Substituir",
             "Rerolling": "Rerolando {origDie} ({origResult}):",
             "Select": "Selecionar",
+            "SelectATarget": "Selecionar um alvo:",
+            "SelectAWeapon": "Selecionar uma arma:",
             "SelectDamageType": "Escolha um tipo de dano:",
             "SelectEffect": "Escolha um efeito:",
             "SelectSpell": "Escolha uma Magia:",
@@ -2357,9 +2366,12 @@
                     "AttackedBySource": "Atacado pela Origem",
                     "DamagedByAlly": "Sofrer Dano de Aliado",
                     "DamagedByEnemy": "Sofrer Dano de Inimigo",
+                    "Failed": "Falhar Teste de {toolName}",
                     "HitByAnotherCreature": "Atingido por Outra Criatura",
                     "HitBySource": "Atingido pela Origem",
                     "Label": "Durações Especiais:",
+                    "Rolled": "Rolar Teste de {toolName}",
+                    "Succeed": "Sucesso Teste de {toolName}",
                     "TempHP": "Zero Pontos de Vida Temporários",
                     "TempMaxHP": "Zero Pontos de Vida Máximos Temporários",
                     "Tooltip": "As condições escolhidas removerão o efeito."
@@ -2672,6 +2684,22 @@
                 "6": "Selecionado - Apenas Falha Crítica",
                 "Hint": "Quando ativado, jogadas de ataque crítica ou falha crítica também rolarão um item dos compêndios selecionados.",
                 "Name": "Modo Crítico e Falha Crítica"
+            },
+            "customChatMessage": {
+                "Hint": "Dá um tema escuro às mensagens do chat.",
+                "Name": "Modo Escuro Mensagens do Chat"
+            },
+            "customSidebar": {
+                "Hint": "Ajustes CSS na barra lateral, incluindo plano de fundo do chat, inversão da barra de rolagem e outras pequenas alterações.",
+                "Name": "Barra Lateral Personalizada"
+            },
+            "customUIButtonScale": {
+                "Hint": "Dimensiona os botões da barra lateral.",
+                "Name": "Escala Perso. Botões Barra Lateral"
+            },
+            "customUINavigationScale": {
+                "Hint": "Dimensiona a navegação da cena.",
+                "Name": "Escala de Navegação Personalizada"
             },
             "devTools": {
                 "Hint": "Habilitar para exibir ferramentas de desenvolvimento.",
@@ -3053,6 +3081,9 @@
             "Line": "Linha",
             "TargetCantSeeAttacker": "Alvo Não Consegue Ver Atacante",
             "UnknownTemplate": "Modelo Desconhecido"
+        },
+        "ToolCheck": {
+            "Title": "Teste de Ferramenta"
         },
         "Tour": {
             "0": {
