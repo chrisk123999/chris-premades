@@ -1,6 +1,6 @@
 # 1.3.28 Release:
 ## Update Notes:
-- Added tool checks to the special durations section of the CPR Medkit.
+- Added tool checks to the special durations section of the CPR Effect Medkit.
 ## API Update Notes:
 - Added tool check events.
 
