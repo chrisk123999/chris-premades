@@ -201,6 +201,7 @@
             "MaxSize": "Max Size:",
             "Name": "Name:",
             "Number": "Number:",
+            "Opacity": "Opacity:",
             "Percentage": "Percentage:",
             "PlayAnimation": "Play Animation:",
             "PlayTeleportAnimation": "Play Teleport Animation:",
@@ -331,6 +332,9 @@
                 "actorEquipped": {
                     "Label": "Actor Equipped"
                 },
+                "actorMedkit": {
+                    "Label": "Actor Medkit"
+                },
                 "actorUnequipped": {
                     "Label": "Actor Unequipped"
                 },
@@ -372,6 +376,9 @@
                 },
                 "everyTurn": {
                     "Label": "Every Turn"
+                },
+                "itemMedkit": {
+                    "Label": "Item Medkit"
                 },
                 "long": {
                     "Label": "Long Rest"
@@ -477,12 +484,6 @@
                 },
                 "unequipped": {
                     "Label": "Unequipped"
-                },
-                "itemMedkit": {
-                    "Label": "Item Medkit"
-                },
-                "actorMedkit": {
-                    "Label": "Actor Medkit"
                 }
             },
             "Priority": {
