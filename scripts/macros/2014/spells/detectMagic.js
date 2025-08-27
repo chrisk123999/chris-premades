@@ -1,4 +1,4 @@
-import {actorUtils, animationUtils, effectUtils, genericUtils, itemUtils} from '../../../utils.js';
+import {actorUtils, animationUtils, effectUtils, itemUtils} from '../../../utils.js';
 async function use({workflow}) {
     let effectData = {
         name: workflow.item.name,

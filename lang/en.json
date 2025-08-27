@@ -569,6 +569,7 @@
             "Chat": "Chat",
             "Check": "Ability Check",
             "CheckSpelling": "Check Spelling",
+            "ChooseASpell": "Choose a spell:",
             "Close": "Close",
             "ConditionResistance": {
                 "Description": "Condition Resistance to {condition}, roll at advantage to save. 1/true for all saves, or a comma-separated list of abilities (e.g. str,dex).",
@@ -614,6 +615,7 @@
             "SelectSpellSlot": "Select a spell slot:",
             "SelectTargetEffect": "Select an effect for each target:",
             "Skill": "Skill Check",
+            "Source": "Source",
             "Spells": "Spells",
             "Submit": "Submit",
             "Success": "Success",

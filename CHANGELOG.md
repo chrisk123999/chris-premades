@@ -3,6 +3,8 @@
 - Reroll Save On Damage
 ## Bug Fixes:
 - Auto Push
+## Update Notes:
+- Added more animation options to detect magic.
   
 # 1.3.29 Release:
 ## Update Notes:

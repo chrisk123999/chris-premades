@@ -761,7 +761,7 @@ export class ItemMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
         const earlyMacro = custom.getMacro(genericUtils.getProperty(sourceItemData, 'flags.chris-premades.info.identifier'), genericUtils.getRules(item))?.early;
         if (earlyMacro) await earlyMacro(item, sourceItemData);
         await item.update(sourceItemData, {diff: false, recursive: false});
-        if (!actorMedkit) itemEvent.executeMacroPass(item, 'itemMedkit');
+        if (!actorMedkit && item.actor) itemEvent.executeMacroPass(item, 'itemMedkit');
         return item;
     }
     static async _update(event, target) {
