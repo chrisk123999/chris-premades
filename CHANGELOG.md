@@ -1,3 +1,9 @@
+# 1.3.30 Release:
+## New Generic Monster Feature:
+- Reroll Save On Damage
+## Bug Fixes:
+- Auto Push
+  
 # 1.3.29 Release:
 ## Update Notes:
 - Added item and actor medkit events to the embedded macros editor.

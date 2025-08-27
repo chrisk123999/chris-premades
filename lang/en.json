@@ -1743,6 +1743,7 @@
                 "Threshold": "Damage required to permanently kill if at 0hp:",
                 "ZeroHP": "Creature dies upon reaching 0hp"
             },
+            "RerollSaveOnDamage": "Exclude Damage from Source:",
             "Retaliation": {
                 "Weapon": "Which weapon do you attack with?"
             },
