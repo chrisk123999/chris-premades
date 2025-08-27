@@ -19,15 +19,15 @@ async function use({workflow}) {
     effectUtils.addMacro(effectData, 'effect', ['detectMagicDetecting']);
     await effectUtils.createEffect(workflow.actor, effectData, {concentrationItem: workflow.item, strictlyInterdependent: true, identifier: 'detectMagic'});
 }
-async function start({trigger: {entity}}) {
-    let token = actorUtils.getFirstToken(entity.parent);
+async function start({trigger: {entity: effect}}) {
+    let token = actorUtils.getFirstToken(effect.parent);
     if (!token) return;
-    let playAnimation = entity.flags['chris-premades']?.detectMagic?.playAnimation;
+    let playAnimation = effect.flags['chris-premades']?.detectMagic?.playAnimation;
     if (!playAnimation || !animationUtils.jb2aCheck()) return;
-    let color = entity.flags['chris-premades']?.detectMagic?.color;
-    let sound = entity.flags['chris-premades']?.detectMagic?.sound;
+    let color = effect.flags['chris-premades']?.detectMagic?.color;
+    let sound = effect.flags['chris-premades']?.detectMagic?.sound;
     let animation = 'jb2a.detect_magic.circle.' + color;
-    let opacity = entity.flags['chris-premades']?.detectMagic?.opacity;
+    let opacity = effect.flags['chris-premades']?.detectMagic?.opacity;
     new Sequence()
         .effect()
         .opacity(opacity)
@@ -38,7 +38,7 @@ async function start({trigger: {entity}}) {
         .fadeIn(250)
         .fadeOut(500)
         .persist()
-        .name('Detect Magic')
+        .name(effect.name)
         .sound()
         .playIf(sound)
         .file(sound)
