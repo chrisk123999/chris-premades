@@ -142,6 +142,7 @@
             "BaseHealing": "Cura Base:",
             "BlockingStatuses": "Condições Bloqueadas:",
             "Character": "Personagem",
+            "CheckHit": "Verificar Acerto:",
             "CheckSave": "Verificar Salvaguarda:",
             "CheckSaves": "Verificar Salvaguardas:",
             "ClassIdentifier": "Identificador de Classe",
@@ -201,6 +202,7 @@
             "MaxSize": "Tamanho Máx:",
             "Name": "Nome:",
             "Number": "Número:",
+            "Opacity": "Opacidade:",
             "Percentage": "Porcentagem:",
             "PlayAnimation": "Reproduzir Animação:",
             "PlayTeleportAnimation": "Tocar Animação de Teleporte:",
@@ -483,7 +485,7 @@
                 },
                 "unequipped": {
                     "Label": "Desequipado"
-                },
+                }
             },
             "Priority": {
                 "Label": "Prioridade:"
@@ -568,6 +570,7 @@
             "Chat": "Chat",
             "Check": "Teste de Atributo",
             "CheckSpelling": "Verificar Ortografia",
+            "ChooseASpell": "Escolha uma Magia:",
             "Close": "Fechar",
             "ConditionResistance": {
                 "Description": "Resistência à Condição {condition}, role a salvaguarda com vantagem. Suporta o modo de alteração Sobrepor. 1/verdadeiro para todas salvaguardas, ou uma lista de atributos separadas por vírgulas (exemplo: str,dex).",
@@ -603,7 +606,7 @@
             "Recharge": "Recarga:",
             "RecoverSpellSlot": "Selecione um espaço de magia para recuperar:",
             "Replace": "Substituir",
-            "Rerolling": "Rerolando {origDie} ({origResult}):",
+            "Rerolling": "Re-rolando {origDie} ({origResult}):",
             "Select": "Selecionar",
             "SelectATarget": "Selecionar um alvo:",
             "SelectAWeapon": "Selecionar uma arma:",
@@ -613,6 +616,7 @@
             "SelectSpellSlot": "Escolha um espaço de magia:",
             "SelectTargetEffect": "Escolha um efeito para cada alvo:",
             "Skill": "Teste de Perícia",
+            "Source": "Origem",
             "Spells": "Magias",
             "Submit": "Enviar",
             "Success": "Sucesso",
@@ -688,6 +692,15 @@
                 "GrappleEscapeSelect": "Tentativa de escapar do agarrão de quem?",
                 "GrappledBy": "Agarrado por {tokenName}",
                 "Grappling": "Agarrando {tokenName}"
+            },
+            "ActivityOnRest": {
+                "ExpireOnSave": "Efeito Expira em Atividade de Salvaguarda:",
+                "LongRest": "Gatilho Apenas em Descanso Longo:",
+                "Name": "Atividade em Descanso",
+                "NoActivity": "Nenhuma Atividade de Gatilho selecionada em Atividade na Configuração ddo Descanso!",
+                "ShortRest": "Gatilho em Descanso Curto:",
+                "TriggerActivities": "Atividades de Gatilho:",
+                "TriggerOnce": "Gatilho Apenas Uma Vez:"
             },
             "AdvantageDamageBonus": {
                 "Bonus": "Dano adicional se o ataque tiver vantagem:",
@@ -1638,7 +1651,7 @@
                 "Confirm": "O teste foi um sucesso?"
             },
             "Piercer": {
-                "Reroll": "Rerolar qual dado mais baixo?"
+                "Reroll": "Re-rolar qual dado mais baixo?"
             },
             "PoisonousSkin": {
                 "Poison": "Grunge: Veneno"
@@ -1729,6 +1742,7 @@
                 "Long": "Expira em Descanso Longo:",
                 "Name": "Reduzir PV Máximo",
                 "ReduceByRoll": "Reduzir por rolagem, não dano:",
+                "RemoveOnSave": "Remover em Sucesso:",
                 "Short": "Expira em Descanso Curto:"
             },
             "Regeneration": {
@@ -1741,6 +1755,10 @@
                 "ShowIcons": "Mostrar ícones para regeneração bloqueada/reduzida:",
                 "Threshold": "Dano necessário para matar permanentemente se estiver com 0 PV:",
                 "ZeroHP": "A criatura morre ao atingir 0 PV"
+            },
+            "RerollSaveOnDamage": {
+                "ExcludeSource": "Excluir Danos da Origem",
+                "Name": "Re-rolar Salvaguarda em Dano"
             },
             "Retaliation": {
                 "Weapon": "Com qual arma você quer atacar?"
@@ -2338,7 +2356,7 @@
                         "End": "Fim do Turno",
                         "Flat": "CD Fixa",
                         "FullDamage": "Dano Total",
-                        "GMRoll": "Rolagem pro MJ",
+                        "GMRoll": "Rolagem pro Mestre",
                         "HalfDamage": "Metade do Dano",
                         "Item": "CD do Item",
                         "Label": "Nome do Cartão de Chat:",
@@ -2571,7 +2589,7 @@
             "Permissions": {
                 "1": "Jogador",
                 "2": "Jogador Confiável",
-                "3": "Assistente do MJ",
+                "3": "Assistente do Mestre",
                 "4": "Mestre do Jogo"
             },
             "SelectCompendium": "Selecione um compêndio:",
@@ -2646,7 +2664,7 @@
                 "Name": "Ações de Armas Baldur's Gate 3"
             },
             "checkForUpdates": {
-                "Hint": "Quando ativado, o módulo verificará atualizações uma vez por dia quando um MJ entrar.",
+                "Hint": "Quando ativado, o módulo verificará atualizações uma vez por dia quando um Mestre entrar.",
                 "Name": "Verificar Atualizações"
             },
             "classSpellList": {
@@ -2806,8 +2824,8 @@
                 "Name": "Compêndio de Macros"
             },
             "makeGM": {
-                "Hint": "Torne-se o MJ principal.",
-                "Name": "Tornar-se MJ"
+                "Hint": "Torne-se o Mestre principal.",
+                "Name": "Tornar-se Mestre"
             },
             "manualRollsEnabled": {
                 "Hint": "Habilita o CPR Roll Resolver para Rolagens Não-Finalizadas.",
@@ -2888,7 +2906,7 @@
                 "Name": "Permissão de Atualização do Medkit"
             },
             "playerSelectsConjures": {
-                "Hint": "Ao conjurar magias do tipo \"Conjurar X\", o jogador (não o MJ) pode selecionar quais criaturas conjurar.",
+                "Hint": "Ao conjurar magias do tipo \"Conjurar X\", o jogador (não o Mestre) pode selecionar quais criaturas conjurar.",
                 "Name": "Jogador Escolhe Conjurações"
             },
             "replaceStatusEffectIcons": {
