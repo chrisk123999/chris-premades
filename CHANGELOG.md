@@ -1,3 +1,11 @@
+# 1.3.32 Release:
+## New Modern Content:
+- Sneak Attack
+- Cunning Strike
+- Devious Strikes
+## Update Notes:
+- Subclass automations that interact with sneak attack and cunning strike will be in a future update.
+
 # 1.3.31 Release:
 ## New Modern Content:
 - War God's Blessing

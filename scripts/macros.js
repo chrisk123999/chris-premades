@@ -262,3 +262,7 @@ export {guidedStrike} from './macros/2024/classFeatures/cleric/war/guidedStrike.
 export {warPriest} from './macros/2024/classFeatures/cleric/war/warPriest.js';
 export {warGodsBlessing, warGodsBlessingCast} from './macros/2024/classFeatures/cleric/war/warGodsBlessing.js';
 export {avatarOfBattle} from './macros/2024/classFeatures/cleric/war/avatarOfBattle.js';
+//Rogue
+export {sneakAttack} from './macros/2024/classFeatures/rogue/sneakAttack.js';
+export {cunningStrike} from './macros/2024/classFeatures/rogue/cunningStrike.js';
+export {deviousStrikes} from './macros/2024/classFeatures/rogue/deviousStrikes.js';
