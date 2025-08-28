@@ -42,27 +42,35 @@ function customChatMessage(value) {
                 .message::before {
                     background: var(--dnd5e-color-dark-gray) url(../../../ui/denim075.png);
                 }
-                .message > .message-content {
-                    color: var(--color-text-primary);
-                    .chat-card .description {
-                        background: var(--dnd5e-background-card);
-                        border-color: transparent;
+                .message {
+                    .flavor-text {
+                        color: var(--color-text-secondary)
                     }
-                    .dice-result .dice-total.success:not(.fumble),
-                    .dice-result .dice-total.critical {
-                        background: color-mix(in oklab, var(--dnd5e-color-success-critical) 35%, transparent);
-                        color: var(--dnd5e-color-success-background);
-                        box-shadow: none;
-                    }
-                    .dice-result .dice-total.failure:not(.critical),
-                    .dice-result .dice-total.fumble {
-                        background: color-mix(in oklab, var(--dnd5e-color-failure-critical) 20%, transparent);
-                        color: var(--dnd5e-color-failure-background);
-                        box-shadow: none;
-                    }
-                    .dice-tooltip .dice-rolls .roll.discarded, .dice-tooltip .dice-rolls .roll.rerolled {
-                        color: #000;
-                        filter: opacity(0.7);
+                    .message-content {
+                        color: var(--color-text-primary);
+                        .chat-card .description {
+                            background: var(--dnd5e-background-card);
+                            border-color: transparent;
+                        }
+                        .dice-result .dice-total.success:not(.fumble),
+                        .dice-result .dice-total.critical {
+                            background: color-mix(in oklab, var(--dnd5e-color-success-critical) 35%, transparent);
+                            color: var(--dnd5e-color-success-background);
+                            box-shadow: none;
+                        }
+                        .dice-result .dice-total.failure:not(.critical),
+                        .dice-result .dice-total.fumble {
+                            background: color-mix(in oklab, var(--dnd5e-color-failure-critical) 20%, transparent);
+                            color: var(--dnd5e-color-failure-background);
+                            box-shadow: none;
+                        }
+                        .dice-tooltip .dice-rolls .roll.discarded, .dice-tooltip .dice-rolls .roll.rerolled {
+                            color: #000;
+                            filter: opacity(0.7);
+                        }
+                        .midi-qol-tooltiptext {
+                            background: var(--dnd5e-color-dark-gray) url(../../../ui/denim075.png);
+                        }
                     }
                 }
             }
