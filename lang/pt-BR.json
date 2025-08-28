@@ -216,6 +216,7 @@
             "ScaleIdentifier": "Identificador de Escala",
             "ShowIcon": "Sempre Mostrar Ícone da Aura",
             "ShowRoll": "Exibir Rolagem:",
+            "SimultaneousUses": "Usos Simultâneos:",
             "Skills": "Perícias:",
             "Sound": "Som:",
             "SpecificAnimation": "Animação {option}:",
@@ -1006,6 +1007,10 @@
                 "Douse": "Apagar Lâmina",
                 "Heal": "Lâmina de Cristal: Cura",
                 "Light": "Lâmina de Cristal: Luz"
+            },
+            "CunningStrike": {
+                "Use": "Usar Cunning Strike?",
+                "UseAnother": "Usar outro Cunning Strike?"
             },
             "CuttingWords": {
                 "AbilityCheck": "Usar {item} para reduzir um teste de atributo bem-sucedido de {name} (Total: {total})?",
