@@ -273,27 +273,6 @@
     }
   ],
   "flags": {
-    "monsterMunch": {
-      "titleHTML": "<strong>Caustic Mist (Recharge 5–6).</strong>",
-      "fullName": "Caustic Mist (Recharge 5–6).",
-      "actionCopy": false,
-      "type": "action",
-      "actionInfo": {
-        "damage": {
-          "parts": [
-            [
-              "6d8[acid]",
-              "acid"
-            ]
-          ],
-          "versatile": ""
-        },
-        "baseAbility": null,
-        "toHit": 0,
-        "proficient": false,
-        "extraAttackBonus": 0
-      }
-    },
     "midi-qol": {
       "removeAttackDamageButtons": "default",
       "AoETargetType": "any",

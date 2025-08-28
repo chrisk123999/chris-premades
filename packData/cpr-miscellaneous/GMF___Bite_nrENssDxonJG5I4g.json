@@ -1,0 +1,484 @@
+{
+  "name": "GMF - Bite",
+  "type": "weapon",
+  "img": "icons/creatures/abilities/mouth-teeth-misshapen-pink.webp",
+  "system": {
+    "activities": {
+      "attackBiteaction": {
+        "type": "attack",
+        "_id": "attackBiteaction",
+        "sort": 0,
+        "activation": {
+          "type": "action",
+          "value": 1,
+          "condition": "",
+          "override": false
+        },
+        "consumption": {
+          "targets": [],
+          "scaling": {
+            "allowed": false,
+            "max": ""
+          },
+          "spellSlot": true
+        },
+        "description": {
+          "chatFlavor": ""
+        },
+        "duration": {
+          "value": "",
+          "units": "inst",
+          "concentration": false,
+          "override": false
+        },
+        "effects": [
+          {
+            "_id": "aNonhqenp3EHj0dZ"
+          }
+        ],
+        "range": {
+          "units": "self",
+          "override": false
+        },
+        "target": {
+          "template": {
+            "count": "",
+            "contiguous": false,
+            "type": "",
+            "size": "",
+            "width": "",
+            "height": "",
+            "units": "ft"
+          },
+          "affects": {
+            "count": "",
+            "type": "",
+            "choice": false,
+            "special": ""
+          },
+          "prompt": true,
+          "override": false
+        },
+        "uses": {
+          "spent": 0,
+          "recovery": [],
+          "max": ""
+        },
+        "attack": {
+          "ability": "str",
+          "bonus": "",
+          "critical": {
+            "threshold": null
+          },
+          "flat": false,
+          "type": {
+            "value": "melee",
+            "classification": "weapon"
+          }
+        },
+        "damage": {
+          "critical": {
+            "bonus": ""
+          },
+          "includeBase": true,
+          "parts": []
+        },
+        "useConditionText": "",
+        "useConditionReason": "",
+        "effectConditionText": "",
+        "macroData": {
+          "name": "",
+          "command": ""
+        },
+        "ignoreTraits": {
+          "idi": false,
+          "idr": false,
+          "idv": false,
+          "ida": false,
+          "idm": false
+        },
+        "midiProperties": {
+          "ignoreTraits": [],
+          "triggeredActivityId": "none",
+          "triggeredActivityConditionText": "",
+          "triggeredActivityTargets": "targets",
+          "triggeredActivityRollAs": "self",
+          "confirmTargets": "default",
+          "automationOnly": false,
+          "identifier": "",
+          "autoTargetType": "any",
+          "autoTargetAction": "default",
+          "otherActivityCompatible": true,
+          "displayActivityName": false,
+          "rollMode": "default",
+          "chooseEffects": false,
+          "toggleEffect": false,
+          "ignoreFullCover": false,
+          "removeChatButtons": "default",
+          "magicEffect": false,
+          "magicDamage": false,
+          "noConcentrationCheck": false,
+          "autoCEEffects": "default",
+          "autoConsume": false,
+          "forceConsumeDialog": "default",
+          "forceRollDialog": "default",
+          "forceDamageDialog": "default",
+          "otherActivityAsParentType": true
+        },
+        "isOverTimeFlag": false,
+        "overTimeProperties": {
+          "saveRemoves": true,
+          "preRemoveConditionText": "",
+          "postRemoveConditionText": ""
+        },
+        "otherActivityId": "none",
+        "attackMode": "oneHanded",
+        "ammunition": "",
+        "otherActivityUuid": "",
+        "attackRollPerTarget": "default",
+        "fumbleThreshold": 1,
+        "otherActivityAsParentType": true,
+        "name": ""
+      },
+      "saveSaveIIIIIIII": {
+        "name": "Save",
+        "type": "save",
+        "_id": "saveSaveIIIIIIII",
+        "sort": 0,
+        "activation": {
+          "type": "action",
+          "value": 1,
+          "condition": "",
+          "override": false
+        },
+        "consumption": {
+          "targets": [],
+          "scaling": {
+            "allowed": false,
+            "max": ""
+          },
+          "spellSlot": true
+        },
+        "description": {
+          "chatFlavor": ""
+        },
+        "duration": {
+          "value": "",
+          "units": "inst",
+          "concentration": false,
+          "override": false
+        },
+        "effects": [],
+        "range": {
+          "units": "self",
+          "override": false
+        },
+        "target": {
+          "template": {
+            "count": "",
+            "contiguous": false,
+            "type": "",
+            "size": "",
+            "width": "",
+            "height": "",
+            "units": "ft"
+          },
+          "affects": {
+            "count": "",
+            "type": "",
+            "choice": false,
+            "special": ""
+          },
+          "prompt": true,
+          "override": false
+        },
+        "uses": {
+          "spent": 0,
+          "recovery": [],
+          "max": ""
+        },
+        "damage": {
+          "onSave": "half",
+          "critical": {
+            "allow": false
+          },
+          "parts": []
+        },
+        "save": {
+          "ability": [
+            "con"
+          ],
+          "dc": {
+            "calculation": "",
+            "formula": "15"
+          }
+        },
+        "useConditionText": "",
+        "useConditionReason": "",
+        "effectConditionText": "",
+        "macroData": {
+          "name": "",
+          "command": ""
+        },
+        "ignoreTraits": {
+          "idi": false,
+          "idr": false,
+          "idv": false,
+          "ida": false,
+          "idm": false
+        },
+        "midiProperties": {
+          "ignoreTraits": [],
+          "triggeredActivityId": "none",
+          "triggeredActivityConditionText": "",
+          "triggeredActivityTargets": "targets",
+          "triggeredActivityRollAs": "self",
+          "confirmTargets": "default",
+          "automationOnly": true,
+          "identifier": "",
+          "autoTargetType": "any",
+          "autoTargetAction": "default",
+          "otherActivityCompatible": true,
+          "displayActivityName": false,
+          "rollMode": "default",
+          "chooseEffects": false,
+          "toggleEffect": false,
+          "ignoreFullCover": false,
+          "removeChatButtons": "default",
+          "magicEffect": false,
+          "magicDamage": false,
+          "noConcentrationCheck": false,
+          "autoCEEffects": "default",
+          "autoConsume": false,
+          "forceConsumeDialog": "default",
+          "forceRollDialog": "default",
+          "forceDamageDialog": "default",
+          "otherActivityAsParentType": true
+        },
+        "isOverTimeFlag": false,
+        "overTimeProperties": {
+          "saveRemoves": true,
+          "preRemoveConditionText": "",
+          "postRemoveConditionText": ""
+        },
+        "otherActivityId": "none",
+        "friendlySave": "default",
+        "otherActivityAsParentType": true
+      }
+    },
+    "uses": {
+      "spent": null,
+      "recovery": []
+    },
+    "description": {
+      "value": "<div class=\"ddb\"><p>Example usage of chained Activity on Rest and Reduce Maximum HP generic features. This item has two activities, an attack and a save. The attack activity applied an effect and triggers the Activity on Rest automation, which ties the selected activities to trigger to the effect. On a valid rest, the save activity will be triggered and the Reduce Maximum HP automation will apply. These will continue until a successful save.</p></div>",
+      "chat": ""
+    },
+    "identifier": "bite",
+    "source": {
+      "revision": 1,
+      "rules": "2024"
+    },
+    "identified": true,
+    "unidentified": {
+      "description": ""
+    },
+    "container": null,
+    "quantity": 1,
+    "weight": {
+      "value": 0,
+      "units": "lb"
+    },
+    "price": {
+      "value": 0,
+      "denomination": "gp"
+    },
+    "rarity": "",
+    "attunement": "",
+    "attuned": false,
+    "equipped": true,
+    "crewed": false,
+    "ammunition": {},
+    "armor": {},
+    "damage": {
+      "base": {
+        "number": 2,
+        "denomination": 8,
+        "bonus": "",
+        "types": [
+          "piercing"
+        ],
+        "custom": {
+          "enabled": false,
+          "formula": ""
+        },
+        "scaling": {
+          "mode": "",
+          "number": null,
+          "formula": ""
+        }
+      },
+      "versatile": {
+        "types": [],
+        "custom": {
+          "enabled": false
+        },
+        "scaling": {
+          "number": 1
+        }
+      }
+    },
+    "properties": [
+      "rch"
+    ],
+    "proficient": 1,
+    "range": {
+      "value": null,
+      "long": null,
+      "units": "ft",
+      "reach": 5
+    },
+    "type": {
+      "value": "natural",
+      "baseItem": ""
+    }
+  },
+  "effects": [
+    {
+      "name": "Status: Poisoned",
+      "statuses": [
+        "poisoned"
+      ],
+      "changes": [],
+      "duration": {
+        "seconds": 96400,
+        "startTime": null,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null,
+        "combat": null
+      },
+      "tint": "#ffffff",
+      "transfer": false,
+      "disabled": false,
+      "flags": {
+        "dae": {
+          "transfer": false,
+          "stackable": "noneNameOnly",
+          "specialDuration": [],
+          "enableCondition": "",
+          "disableCondition": "",
+          "showIcon": false,
+          "disableIncapacitated": false,
+          "selfTarget": false,
+          "selfTargetAlways": false,
+          "dontApply": false,
+          "durationExpression": "",
+          "macroRepeat": "none"
+        },
+        "ddbimporter": {
+          "disabled": false,
+          "activityMatch": "Save"
+        },
+        "midi-qol": {
+          "forceCEOff": true
+        },
+        "core": {
+          "overlay": false
+        },
+        "dnd5e": {
+          "riders": {
+            "statuses": []
+          },
+          "dependents": [
+            {
+              "uuid": "Scene.Tvew5jIsCHB2on1r.Token.bLztx9OtP1BwwT59.Actor.1akoYLgG5Lul5jyf.ActiveEffect.hnZMWTNIuZlKrvUt"
+            },
+            {
+              "uuid": "Scene.Tvew5jIsCHB2on1r.Token.m391GiNT9SI3pCFq.Actor.1akoYLgG5Lul5jyf.ActiveEffect.X3wTkU47HA0hBkdH"
+            }
+          ]
+        }
+      },
+      "description": "",
+      "_id": "aNonhqenp3EHj0dZ",
+      "img": "icons/creatures/abilities/mouth-teeth-misshapen-pink.webp",
+      "type": "base",
+      "system": {},
+      "origin": null,
+      "sort": 0,
+      "_key": "!items.effects!nrENssDxonJG5I4g.aNonhqenp3EHj0dZ"
+    }
+  ],
+  "folder": null,
+  "flags": {
+    "dnd5e": {
+      "riders": {
+        "activity": [],
+        "effect": []
+      },
+      "last": {
+        "attackBiteaction": {
+          "attackMode": "oneHanded",
+          "damageType": {
+            "0": "piercing"
+          }
+        }
+      }
+    },
+    "midiProperties": {
+      "otherSaveDamage": "halfdam",
+      "confirmTargets": "default"
+    },
+    "midi-qol": {
+      "removeAttackDamageButtons": "default",
+      "forceCEOff": true
+    },
+    "chris-premades": {
+      "config": {
+        "generic": {
+          "activityOnRest": {
+            "applied": true,
+            "triggerActivities": [
+              "saveSaveIIIIIIII"
+            ],
+            "activities": [
+              "attackBiteaction"
+            ],
+            "shortRest": false,
+            "checkSave": false,
+            "checkHit": true,
+            "longRest": true,
+            "expireOnSave": true,
+            "triggerOnce": false,
+            "longRestOnly": false
+          },
+          "reduceMaxHP": {
+            "applied": true,
+            "reduceByRoll": "1d10",
+            "damageTypeFilter": [],
+            "shortRestCures": false,
+            "longRestCures": false,
+            "halfDamage": false,
+            "checkSaves": true,
+            "activities": [
+              "saveSaveIIIIIIII"
+            ],
+            "removeOnSave": true
+          }
+        }
+      },
+      "macros": {
+        "midi": {
+          "item": [
+            "activityOnRest",
+            "reduceMaxHP"
+          ]
+        }
+      }
+    }
+  },
+  "_id": "nrENssDxonJG5I4g",
+  "_key": "!items!nrENssDxonJG5I4g"
+}

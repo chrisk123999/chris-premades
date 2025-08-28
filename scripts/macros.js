@@ -260,4 +260,5 @@ export {improvedDuplicity, improvedDuplicityEffect} from './macros/2024/classFea
 //War Domain
 export {guidedStrike} from './macros/2024/classFeatures/cleric/war/guidedStrike.js';
 export {warPriest} from './macros/2024/classFeatures/cleric/war/warPriest.js';
-//export {warGodsBlessing} from './macros/2024/classFeatures/cleric/war/warGodsBlessing.js';
+export {warGodsBlessing, warGodsBlessingCast} from './macros/2024/classFeatures/cleric/war/warGodsBlessing.js';
+export {avatarOfBattle} from './macros/2024/classFeatures/cleric/war/avatarOfBattle.js';

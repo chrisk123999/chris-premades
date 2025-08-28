@@ -30,6 +30,7 @@ export async function stripUnusedFlags(key) {
             'flags.-=enhanced-terrain-layer': null,
             'flags.-=tidy5e-sheet-kgar': null,
             'flags.-=LocknKey': null,
+            'flags.-=monsterMunch': null,
             system: {
                 description: {
                     value: '',
@@ -42,6 +43,7 @@ export async function stripUnusedFlags(key) {
         if (identifier) {
             if (macros[identifier]?.config?.find(i => i.value === 'playAnimation')) genericUtils.setProperty(updates, 'flags.chris-premades.info.hasAnimation', true);
         }
+        if (key === constants.packs.miscellaneous) delete updates.system.description;
         await i.update(updates);
     }
 }

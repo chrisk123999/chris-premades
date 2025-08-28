@@ -237,27 +237,6 @@
   },
   "effects": [],
   "flags": {
-    "monsterMunch": {
-      "titleHTML": "<strong>Pseudopod.</strong>",
-      "fullName": "Pseudopod.",
-      "actionCopy": false,
-      "type": "action",
-      "actionInfo": {
-        "damage": {
-          "parts": [
-            [
-              "1d8[bludgeoning] + @mod",
-              "bludgeoning"
-            ]
-          ],
-          "versatile": ""
-        },
-        "baseAbility": "str",
-        "toHit": 5,
-        "proficient": true,
-        "extraAttackBonus": 0
-      }
-    },
     "midi-qol": {
       "removeAttackDamageButtons": "default",
       "fumbleThreshold": null,

@@ -370,27 +370,6 @@
   },
   "effects": [],
   "flags": {
-    "monsterMunch": {
-      "titleHTML": "<strong>Shield Bash.</strong>",
-      "fullName": "Shield Bash.",
-      "actionCopy": false,
-      "type": "action",
-      "actionInfo": {
-        "damage": {
-          "parts": [
-            [
-              "1d4[bludgeoning] + @mod",
-              "bludgeoning"
-            ]
-          ],
-          "versatile": ""
-        },
-        "baseAbility": "str",
-        "toHit": 9,
-        "proficient": true,
-        "extraAttackBonus": 3
-      }
-    },
     "midi-qol": {
       "removeAttackDamageButtons": "default",
       "forceCEOff": true,

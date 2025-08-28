@@ -1,6 +1,9 @@
 # 1.3.31 Release:
+## New Modern Content:
+- War God's Blessing
+- Avatar of Battle
 ## New Generic Monster Features:
-- Activity On Rest. Note: Example "Bite" item included in the "CPR Miscellaneous" compendium.
+- Activity On Rest. Note: Example "GMF - Bite" item included in the "CPR Miscellaneous" compendium.
 - Added Remove on Save and Activities config options to Reduce Max HP.
 ## Bug Fixes:
 - Chat Message Dark Mode

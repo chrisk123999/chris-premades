@@ -237,27 +237,6 @@
   },
   "effects": [],
   "flags": {
-    "monsterMunch": {
-      "titleHTML": "<strong>Gore.</strong>",
-      "fullName": "Gore.",
-      "actionCopy": false,
-      "type": "action",
-      "actionInfo": {
-        "damage": {
-          "parts": [
-            [
-              "2d8[piercing] + @mod",
-              "piercing"
-            ]
-          ],
-          "versatile": ""
-        },
-        "baseAbility": "str",
-        "toHit": 6,
-        "proficient": true,
-        "extraAttackBonus": 0
-      }
-    },
     "midi-qol": {
       "removeAttackDamageButtons": "default",
       "fumbleThreshold": null,
