@@ -1,4 +1,4 @@
-import {activityUtils, animationUtils, combatUtils, dialogUtils, genericUtils, itemUtils, tokenUtils, workflowUtils} from '../../../../utils.js';
+import {activityUtils, actorUtils, animationUtils, combatUtils, dialogUtils, genericUtils, itemUtils, tokenUtils, workflowUtils} from '../../../../utils.js';
 import {animation} from '../../../2014/classFeatures/rogue/sneakAttack.js';
 async function damage({trigger: {entity: item}, workflow}) {
     if (workflow.hitTargets.size != 1 || !workflow.item || !workflow.activity) return;
@@ -28,6 +28,7 @@ async function damage({trigger: {entity: item}, workflow}) {
             if (!scale) return;
             let number = scale.number;
             let cunningStrike = itemUtils.getItemByIdentifier(workflow.actor, 'cunningStrike');
+            let improvedCunningStrike = itemUtils.getItemByIdentifier(workflow.actor, 'improvedCunningStrike');
             let deviousStrikes = itemUtils.getItemByIdentifier(workflow.actor, 'deviousStrikes');
             let documents = [];
             let uses = 0;
@@ -35,43 +36,44 @@ async function damage({trigger: {entity: item}, workflow}) {
                 documents.push(...cunningStrike.system.activities);
                 uses += itemUtils.getConfig(cunningStrike, 'uses');
             }
-            if (deviousStrikes) {
-                documents.push(...deviousStrikes.system.activities);
-                uses += itemUtils.getConfig(deviousStrikes, 'uses');
-            }
+            if (improvedCunningStrike) uses += itemUtils.getConfig(improvedCunningStrike, 'uses');
+            if (deviousStrikes) documents.push(...deviousStrikes.system.activities);
             if (documents.length) {
-                uses = Math.min(uses, number);
-                let selection;
-                if (uses > 1) {
-                    selection = await dialogUtils.selectDocumentsDialog(cunningStrike ? cunningStrike.name : deviousStrikes.name, genericUtils.format('CHRISPREMADES.Dialog.Use', {itemName: cunningStrike ? cunningStrike.name : deviousStrikes.name}), documents, {max: uses, sortAlphabetical: true, checkbox: true});
-                    if (!selection) {
-                        selection = [];
-                    } else {
-                        selection = selection.filter(i => i.amount).map(i => i.document);
-                    }
-                } else {
-                    selection = await dialogUtils.selectDocumentDialog(cunningStrike ? cunningStrike.name : deviousStrikes.name, genericUtils.format('CHRISPREMADES.Dialog.Use', {itemName: cunningStrike ? cunningStrike.name : deviousStrikes.name}), documents, {sortAlphabetical: true, addNoneDocument: true});
-                    selection = [selection];
+                let activities = [];
+                let used = [];
+                let info = {
+                    poison: 1,
+                    trip: 1,
+                    withdraw: 1,
+                    daze: 2,
+                    knockOut: 6,
+                    obscure: 3
+                };
+                for (let i = 0; i < uses; i++) {
+                    let availableActivities = documents.filter(activity => {
+                        let identifier = activityUtils.getIdentifier(activity);
+                        if (!identifier) return;
+                        if (info[identifier] > number) return;
+                        if (identifier === 'poison' && !workflow.actor.items.find(j => j.system.identifier === 'poisoners-kit')) return;
+                        if (identifier === 'trip' && actorUtils.getSize(workflow.targets.first().actor) > 3) return;
+                        if (used.includes(identifier)) return;
+                        return activity;
+                    });
+                    if (!availableActivities.length) break;
+                    let text = i > 0 ? 'CHRISPREMADES.Macros.CunningStrike.UseAnother' : 'CHRISPREMADES.Macros.CunningStrike.Use';
+                    let selection = await dialogUtils.selectDocumentDialog(cunningStrike ? cunningStrike.name : deviousStrikes.name, text, availableActivities, {sortAlphabetical: true, addNoneDocument: true});
+                    if (!selection) break;
+                    let identifier = activityUtils.getIdentifier(selection);
+                    if (!identifier) break;
+                    number -= info[identifier];
+                    activities.push(selection);
+                    used.push(identifier);
                 }
-                selection = selection.filter(i => i);
-                if (selection.length) genericUtils.setProperty(workflow, 'chris-premades.cunningStrike.activities', []);
-                selection.forEach(activity => {
-                    let identifier = activityUtils.getIdentifier(activity);
-                    if (!identifier) return;
-                    let cost = 0;
-                    switch (identifier) {
-                        case 'poison':
-                        case 'trip':
-                        case 'withdraw': cost = 1; break;
-                        case 'daze': cost = 2; break;
-                        case 'knockOut': cost = 6; break;
-                        case 'obscure': cost = 3; break;
-                    }
-                    if (number - cost >= 0) {
-                        number -= cost;
-                        workflow['chris-premades'].cunningStrike.activities.push(activity.uuid);
-                    }
-                });
+                if (activities.length) {
+                    genericUtils.setProperty(workflow, 'chris-premades.cunningStrike.activities', []);
+                    activities.forEach(activity => workflow['chris-premades'].cunningStrike.activities.push(activity.uuid));
+                }
+
             }
             if (number) bonusDamageFormula = number + 'd' + scale.faces;
         } else if (workflow.actor.type === 'npc') {

@@ -1008,6 +1008,10 @@
                 "Heal": "Crystal Blade: Heal",
                 "Light": "Crystal Blade: Light"
             },
+            "CunningStrike": {
+                "Use": "Use a cunning strike?",
+                "UseAnother": "Use another cunning strike?"
+            },
             "CuttingWords": {
                 "AbilityCheck": "Use {item} to reduce a sucessful ability check from {name} (Total: {total})?",
                 "AbilityChecksEnabled": "Ability Checks Enabled:",

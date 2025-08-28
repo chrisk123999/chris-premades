@@ -191,7 +191,7 @@ async function selectDocumentDialog(title, content, documents, {displayTooltips 
     if (result?.buttons) return await fromUuid(result.buttons);
     return false;
 }
-async function selectDocumentsDialog(title, content, documents, {max = undefined, displayTooltips = false, sortAlphabetical = false, sortCR = false, userId = game.user.id, showCR = false, checkbox = false} = {}) {
+async function selectDocumentsDialog(title, content, documents, {max = undefined, displayTooltips = false, sortAlphabetical = false, sortCR = false, userId = game.user.id, showCR = false, checkbox = false, weights = {}} = {}) {
     if (sortAlphabetical) {
         documents = documents.sort((a, b) => {
             return a.name.localeCompare(b.name, 'en', {'sensitivity': 'base'});
@@ -209,7 +209,8 @@ async function selectDocumentsDialog(title, content, documents, {max = undefined
             image: i.img + (i.system?.details?.cr != undefined ? ` (CR ${genericUtils.decimalToFraction(i.system?.details?.cr)})` : ``),
             tooltip: displayTooltips ? i.system.description.value.replace(/<[^>]*>?/gm, '') : undefined,
             minAmount: 0,
-            maxAmount: max
+            maxAmount: max,
+            weight: weights?.[i.id] ?? 1
         }
     }));
     let inputs = [[checkbox ? 'checkbox' : 'selectAmount', inputFields, {displayAsRows: true, totalMax: max}]];
