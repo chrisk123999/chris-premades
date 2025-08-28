@@ -8,7 +8,7 @@
 ## Bug Fixes:
 - Chat Message Dark Mode
 ## API Update Notes:
-- Rest triggers now include `data` in the `trigger` object, which has a `longRest` property.
+- Rest triggers now includes `data` in the `trigger` object, which has a `longRest` property.
   
 # 1.3.30 Release:
 ## New Generic Monster Features:
