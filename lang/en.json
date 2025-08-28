@@ -142,6 +142,7 @@
             "BaseHealing": "Base Healing:",
             "BlockingStatuses": "Blocking Statuses:",
             "Character": "Character",
+            "CheckHit": "Check Hit:",
             "CheckSave": "Check Save:",
             "CheckSaves": "Check Saves:",
             "ClassIdentifier": "Class Identifier:",
@@ -201,6 +202,7 @@
             "MaxSize": "Max Size:",
             "Name": "Name:",
             "Number": "Number:",
+            "Opacity": "Opacity:",
             "Percentage": "Percentage:",
             "PlayAnimation": "Play Animation:",
             "PlayTeleportAnimation": "Play Teleport Animation:",
@@ -214,6 +216,7 @@
             "ScaleIdentifier": "Scale Identifier:",
             "ShowIcon": "Always Show Aura Icon",
             "ShowRoll": "Show Roll:",
+            "SimultaneousUses": "Simultaneous Uses:",
             "Skills": "Skills:",
             "Sound": "Sound:",
             "SpecificAnimation": "{option} Animation:",
@@ -331,6 +334,9 @@
                 "actorEquipped": {
                     "Label": "Actor Equipped"
                 },
+                "actorMedkit": {
+                    "Label": "Actor Medkit"
+                },
                 "actorUnequipped": {
                     "Label": "Actor Unequipped"
                 },
@@ -372,6 +378,9 @@
                 },
                 "everyTurn": {
                     "Label": "Every Turn"
+                },
+                "itemMedkit": {
+                    "Label": "Item Medkit"
                 },
                 "long": {
                     "Label": "Long Rest"
@@ -503,7 +512,8 @@
                 "rest": "Rest",
                 "save": "Save",
                 "skill": "Skill",
-                "template": "Template"
+                "template": "Template",
+                "toolCheck": "Tool"
             }
         },
         "Error": {
@@ -561,6 +571,7 @@
             "Chat": "Chat",
             "Check": "Ability Check",
             "CheckSpelling": "Check Spelling",
+            "ChooseASpell": "Choose a spell:",
             "Close": "Close",
             "ConditionResistance": {
                 "Description": "Condition Resistance to {condition}, roll at advantage to save. 1/true for all saves, or a comma-separated list of abilities (e.g. str,dex).",
@@ -598,12 +609,15 @@
             "Replace": "Replace",
             "Rerolling": "Rerolling {origDie} ({origResult}):",
             "Select": "Select",
+            "SelectATarget": "Select a target:",
+            "SelectAWeapon": "Select a weapon:",
             "SelectDamageType": "Select a damage type:",
             "SelectEffect": "Select an effect:",
             "SelectSpell": "Select a Spell:",
             "SelectSpellSlot": "Select a spell slot:",
             "SelectTargetEffect": "Select an effect for each target:",
             "Skill": "Skill Check",
+            "Source": "Source",
             "Spells": "Spells",
             "Submit": "Submit",
             "Success": "Success",
@@ -679,6 +693,15 @@
                 "GrappleEscapeSelect": "Attempt to escape from whose grapple?",
                 "GrappledBy": "Grappled By {tokenName}",
                 "Grappling": "Grappling {tokenName}"
+            },
+            "ActivityOnRest": {
+                "ExpireOnSave": "Effect Expires on Activity Save:",
+                "LongRest": "Trigger on Long Rest Only:",
+                "Name": "Activity On Rest",
+                "NoActivity": "No Trigger Activity selected in Activty on Rest Config!",
+                "ShortRest": "Trigger on Short Rest:",
+                "TriggerActivities": "Activities to Trigger:",
+                "TriggerOnce": "Trigger Only Once:"
             },
             "AdvantageDamageBonus": {
                 "Bonus": "Bonus damage if attack has advantage:",
@@ -1720,6 +1743,7 @@
                 "Long": "Expires on Long Rest:",
                 "Name": "Reduce Maximum HP",
                 "ReduceByRoll": "Reduce by roll, not damage:",
+                "RemoveOnSave": "Remove on Save:",
                 "Short": "Expires on Short Rest:"
             },
             "Regeneration": {
@@ -1732,6 +1756,10 @@
                 "ShowIcons": "Show icons for regeneration blocked/reduced:",
                 "Threshold": "Damage required to permanently kill if at 0hp:",
                 "ZeroHP": "Creature dies upon reaching 0hp"
+            },
+            "RerollSaveOnDamage": {
+                "ExcludeSource": "Exclude Damage from Source",
+                "Name": "Reroll Save on Damage"
             },
             "Retaliation": {
                 "Weapon": "Which weapon do you attack with?"
@@ -2357,9 +2385,12 @@
                     "AttackedBySource": "Attacked By Source",
                     "DamagedByAlly": "Damaged By Ally",
                     "DamagedByEnemy": "Damaged By Enemy",
+                    "Failed": "Failed {toolName} Check",
                     "HitByAnotherCreature": "Hit By Another Creature",
                     "HitBySource": "Hit By Source",
                     "Label": "Special Durations:",
+                    "Rolled": "Rolled {toolName} Check",
+                    "Succeed": "Succeeded {toolName} Check",
                     "TempHP": "Zero Temporary Hitpoints",
                     "TempMaxHP": "Zero Temporary Max Hitpoints",
                     "Tooltip": "Selected conditions will remove the effect."
@@ -3069,6 +3100,9 @@
             "Line": "Line",
             "TargetCantSeeAttacker": "Target Can't See Attacker",
             "UnknownTemplate": "Unknown Template"
+        },
+        "ToolCheck": {
+            "Title": "Tool Check"
         },
         "Tour": {
             "0": {

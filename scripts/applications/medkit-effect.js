@@ -129,7 +129,26 @@ export class EffectMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
                             value: 'tempMaxHP',
                             isSelected: effect.flags['chris-premades']?.specialDuration?.includes('tempMaxHP')
                         }
-                    ])
+                    ].concat(Object.entries(CONFIG.DND5E.tools).flatMap(([key, value]) => {
+                        let packItem = fromUuidSync(value.id);
+                        return [
+                            {
+                                label: genericUtils.format('CHRISPREMADES.Medkit.Effect.SpecialDuration.Rolled', {toolName: packItem.name}),
+                                value: key,
+                                isSelected: effect.flags['chris-premades']?.specialDuration?.includes(key)
+                            },
+                            {
+                                label: genericUtils.format('CHRISPREMADES.Medkit.Effect.SpecialDuration.Failed', {toolName: packItem.name}),
+                                value: key + 'Fail',
+                                isSelected: effect.flags['chris-premades']?.specialDuration?.includes(key + 'Fail')
+                            },
+                            {
+                                label: genericUtils.format('CHRISPREMADES.Medkit.Effect.SpecialDuration.Succeed', {toolName: packItem.name}),
+                                value: key + 'Succeed',
+                                isSelected: effect.flags['chris-premades']?.specialDuration?.includes(key + 'Succeed')
+                            }
+                        ];
+                    })))
                 }
             },
             overTime: {

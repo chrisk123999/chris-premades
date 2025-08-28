@@ -271,6 +271,20 @@ async function imageRemove(effect, options, id) {
         if (tokens.length) await Promise.all(tokens.map(async token => await genericUtils.update(token.document, {'texture.src': otherTokenEffects[0].flags['chris-premades'].image.token.value})));
     }
 }
+async function specialDurationToolCheck(rolls, data) {
+    await Promise.all(actorUtils.getEffects(data.subject).map(async effect => {
+        let specialDurations = effect.flags['chris-premades']?.specialDuration;
+        if (!specialDurations) return;
+        let remove = false;
+        if (specialDurations.includes(data.tool)) remove = true;
+        let target = rolls[0].options.target;
+        if (!remove && target) {
+            if (target > rolls[0].total && specialDurations.includes(data.tool + 'Fail')) remove = true;
+            if (!remove && target <= rolls[0].total && specialDurations.includes(data.tool + 'Succeed')) remove = true;
+        }
+        if (remove) await genericUtils.remove(effect);
+    }));
+}
 export let effects = {
     noAnimation,
     checkInterdependentDeps,
@@ -284,5 +298,6 @@ export let effects = {
     preImageCreate,
     imageCreate,
     imageRemove,
-    specialDurationHitPoints
+    specialDurationHitPoints,
+    specialDurationToolCheck
 };

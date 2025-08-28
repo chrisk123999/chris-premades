@@ -44,7 +44,7 @@ function collectAllMacros(actor, pass) {
     });
     return triggers;
 }
-function getSortedTriggers(actor, pass) {
+function getSortedTriggers(actor, pass, data) {
     let allTriggers = collectAllMacros(actor, pass);
     let names = new Set(allTriggers.map(i => i.name));
     allTriggers = Object.fromEntries(names.map(i => [i, allTriggers.filter(j => j.name === i)]));
@@ -79,7 +79,8 @@ function getSortedTriggers(actor, pass) {
                 macro: macro.macro,
                 priority: macro.priority,
                 name: trigger.name,
-                macroName: typeof macro.macro === 'string' ? 'Embedded' : macro.macro.name
+                macroName: typeof macro.macro === 'string' ? 'Embedded' : macro.macro.name,
+                data
             });
         });
     });
@@ -98,15 +99,15 @@ async function executeMacro(trigger, actor) {
         console.error(error);
     }
 }
-async function executeMacroPass(actor, pass) {
+async function executeMacroPass(actor, pass, data) {
     genericUtils.log('dev', 'Executing Rest Macro Pass: ' + pass + ' for ' + actor.name);
-    let triggers = getSortedTriggers(actor, pass);
+    let triggers = getSortedTriggers(actor, pass, data);
     for (let trigger of triggers) {
         await executeMacro(trigger, actor);
     }
 }
 export async function rest(actor, data) {
     let pass = data.longRest ? 'long' : 'short';
-    await executeMacroPass(actor, pass);
+    await executeMacroPass(actor, pass, data);
     if (genericUtils.getCPRSetting('bg3WeaponActionsEnabled')) await bg3.rest(actor);
 }

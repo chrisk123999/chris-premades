@@ -359,27 +359,6 @@
   },
   "effects": [],
   "flags": {
-    "monsterMunch": {
-      "titleHTML": "<strong>Thunderous Strike (Recharge 6).</strong>",
-      "fullName": "Thunderous Strike (Recharge 6).",
-      "actionCopy": false,
-      "type": "action",
-      "actionInfo": {
-        "damage": {
-          "parts": [
-            [
-              "4d10[thunder]",
-              "thunder"
-            ]
-          ],
-          "versatile": ""
-        },
-        "baseAbility": null,
-        "toHit": 0,
-        "proficient": false,
-        "extraAttackBonus": 0
-      }
-    },
     "midi-qol": {
       "removeAttackDamageButtons": "default",
       "forceCEOff": true,

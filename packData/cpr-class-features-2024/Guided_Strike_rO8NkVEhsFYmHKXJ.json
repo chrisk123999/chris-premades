@@ -294,7 +294,10 @@
           "actor": [
             "guidedStrike"
           ]
-        }
+        },
+        "item": [
+          "guidedStrike"
+        ]
       },
       "hiddenActivities": [],
       "activityIdentifiers": {

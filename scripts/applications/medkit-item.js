@@ -3,6 +3,7 @@ import {compendiumUtils, itemUtils, genericUtils, constants} from '../utils.js';
 import * as macros from '../legacyMacros.js';
 import {custom} from '../events/custom.js';
 import {EmbeddedMacros} from './embeddedMacros.js';
+import {itemEvent} from '../events/item.js';
 export class ItemMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
     constructor(item) {
         super({id: 'medkit-window-item'});
@@ -698,7 +699,7 @@ export class ItemMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
         this._prepared = true;
     }
     /* Outwards facing function that all other medkits will also use to update any given item with another */
-    static async update(item, sourceItem, {source, version, identifier} = {}) {
+    static async update(item, sourceItem, {source, version, identifier} = {}, actorMedkit = false) {
         let itemData = genericUtils.duplicate(item.toObject());
         let sourceItemData = genericUtils.duplicate(sourceItem.toObject());
         let itemType = item.type;
@@ -760,6 +761,7 @@ export class ItemMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
         const earlyMacro = custom.getMacro(genericUtils.getProperty(sourceItemData, 'flags.chris-premades.info.identifier'), genericUtils.getRules(item))?.early;
         if (earlyMacro) await earlyMacro(item, sourceItemData);
         await item.update(sourceItemData, {diff: false, recursive: false});
+        if (!actorMedkit && item.actor) itemEvent.executeMacroPass(item, 'itemMedkit');
         return item;
     }
     static async _update(event, target) {

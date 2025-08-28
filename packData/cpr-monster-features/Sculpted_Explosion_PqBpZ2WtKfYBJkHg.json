@@ -199,27 +199,6 @@
   },
   "effects": [],
   "flags": {
-    "monsterMunch": {
-      "titleHTML": "<strong>Sculpted Explosion (Recharge 4–6).</strong>",
-      "fullName": "Sculpted Explosion (Recharge 4–6).",
-      "actionCopy": false,
-      "type": "action",
-      "actionInfo": {
-        "damage": {
-          "parts": [
-            [
-              "9d8",
-              ""
-            ]
-          ],
-          "versatile": ""
-        },
-        "baseAbility": null,
-        "toHit": 0,
-        "proficient": false,
-        "extraAttackBonus": 0
-      }
-    },
     "midi-qol": {
       "removeAttackDamageButtons": "default",
       "AoETargetType": "any",

@@ -199,27 +199,6 @@
   },
   "effects": [],
   "flags": {
-    "monsterMunch": {
-      "titleHTML": "<strong>Spit Acid (Recharge 5–6).</strong>",
-      "fullName": "Spit Acid (Recharge 5–6).",
-      "actionCopy": false,
-      "type": "action",
-      "actionInfo": {
-        "damage": {
-          "parts": [
-            [
-              "9d6[acid] + 1",
-              "acid"
-            ]
-          ],
-          "versatile": ""
-        },
-        "baseAbility": null,
-        "toHit": 0,
-        "proficient": false,
-        "extraAttackBonus": 0
-      }
-    },
     "midiProperties": {
       "saveDamage": "halfdam",
       "confirmTargets": "default",

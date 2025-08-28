@@ -1,9 +1,9 @@
 import {animationUtils, combatUtils, dialogUtils, effectUtils, genericUtils, itemUtils, tokenUtils, workflowUtils} from '../../../../utils.js';
-async function animation(target, token, attackType) {
+export async function animation(target, token, attackType) {
     //Animations by: eskiemoh
     let hitSeq = new Sequence()
         .effect()
-        .from(target)
+        .copySprite(target)
         .atLocation(target)
         .fadeIn(100)
         .fadeOut(100)

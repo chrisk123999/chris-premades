@@ -166,27 +166,6 @@
   },
   "effects": [],
   "flags": {
-    "monsterMunch": {
-      "titleHTML": "<em><strong>Charge.</strong></em>",
-      "fullName": "Charge.",
-      "actionCopy": false,
-      "type": "special",
-      "actionInfo": {
-        "damage": {
-          "parts": [
-            [
-              "2d8[piercing]",
-              "piercing"
-            ]
-          ],
-          "versatile": ""
-        },
-        "baseAbility": null,
-        "toHit": 0,
-        "proficient": false,
-        "extraAttackBonus": 0
-      }
-    },
     "midi-qol": {
       "removeAttackDamageButtons": "default",
       "rollAttackPerTarget": "default",

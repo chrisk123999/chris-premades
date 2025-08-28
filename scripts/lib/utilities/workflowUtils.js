@@ -1,4 +1,4 @@
-import {actorUtils, effectUtils, genericUtils, itemUtils, rollUtils, socketUtils} from '../../utils.js';
+import {actorUtils, constants, effectUtils, genericUtils, itemUtils, rollUtils, socketUtils} from '../../utils.js';
 import {socket, sockets} from '../sockets.js';
 async function bonusDamage(workflow, formula, {ignoreCrit = false, damageType}={}) {
     formula = String(formula);
@@ -253,6 +253,33 @@ function getCastData(workflow) {
 function getCastLevel(workflow) {
     return Math.max(workflow.castData.castLevel, workflow.castData.baseLevel);
 }
+async function specialWeaponAttack(item, targets, sourceFeature) {
+    let effectData = {
+        name: sourceFeature.name,
+        img: constants.tempConditionIcon,
+        changes: [
+            {
+                key: 'activities[attack].activation.type',
+                mode: 5,
+                value: 'special',
+                priority: 20
+            }
+        ],
+        duration: {
+            seconds: 1
+        },
+        flags: {
+            dae: {
+                specialDuration: [
+                    '1Attack'
+                ]
+            }
+        },
+        origin: sourceFeature.uuid
+    };
+    await itemUtils.enchantItem(item, effectData);
+    await syntheticItemRoll(item, targets);
+}
 export let workflowUtils = {
     bonusDamage,
     bonusAttack,
@@ -272,5 +299,6 @@ export let workflowUtils = {
     getCastData,
     modifyDamageAppliedFlat,
     getCastLevel,
-    syntheticActivityDataRoll
+    syntheticActivityDataRoll,
+    specialWeaponAttack
 };

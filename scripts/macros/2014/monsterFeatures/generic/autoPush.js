@@ -8,7 +8,7 @@ async function use({trigger, workflow}) {
     workflow.targets.forEach(token => {
         if (config.failed && !workflow.failedSaves.has(token)) return;
         if (config.hit && !workflow.hitTargets.has(token)) return;
-        if (config.maxSize != 'none' && !actorUtils.compareSize(token, config.maxSize, '<=')) return;
+        if (config.maxSize && config.maxSize != 'none' && !actorUtils.compareSize(token, config.maxSize, '<=')) return;
         let distance = Number(config.distance);
         if (distance < 0) {
             let distanceBetween = tokenUtils.getDistance(workflow.token, token);

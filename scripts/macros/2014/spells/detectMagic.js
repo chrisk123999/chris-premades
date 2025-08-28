@@ -1,7 +1,5 @@
-import {actorUtils, animationUtils, effectUtils, genericUtils, itemUtils} from '../../../utils.js';
-
+import {actorUtils, animationUtils, effectUtils, itemUtils} from '../../../utils.js';
 async function use({workflow}) {
-    let concentrationEffect = effectUtils.getConcentrationEffect(workflow.actor, workflow.item);
     let effectData = {
         name: workflow.item.name,
         img: workflow.item.img,
@@ -10,31 +8,40 @@ async function use({workflow}) {
         flags: {
             'chris-premades': {
                 detectMagic: {
-                    playAnimation: itemUtils.getConfig(workflow.item, 'playAnimation')
+                    playAnimation: itemUtils.getConfig(workflow.item, 'playAnimation'),
+                    color: itemUtils.getConfig(workflow.item, 'color'),
+                    opacity: itemUtils.getConfig(workflow.item, 'opacity'),
+                    sound: itemUtils.getConfig(workflow.item, 'sound')
                 }
             }
         }
     };
     effectUtils.addMacro(effectData, 'effect', ['detectMagicDetecting']);
     await effectUtils.createEffect(workflow.actor, effectData, {concentrationItem: workflow.item, strictlyInterdependent: true, identifier: 'detectMagic'});
-    if (concentrationEffect) await genericUtils.update(concentrationEffect, {'duration.seconds': effectData.duration.seconds});
 }
-async function start({trigger: {entity}}) {
-    let playAnimation = entity.flags['chris-premades']?.detectMagic?.playAnimation;
-    if (!playAnimation || !animationUtils.jb2aCheck()) return;
-    let token = actorUtils.getFirstToken(entity.parent);
+async function start({trigger: {entity: effect}}) {
+    let token = actorUtils.getFirstToken(effect.parent);
     if (!token) return;
-    let anim = 'jb2a.detect_magic.circle.blue';
+    let playAnimation = effect.flags['chris-premades']?.detectMagic?.playAnimation;
+    if (!playAnimation || !animationUtils.jb2aCheck()) return;
+    let color = effect.flags['chris-premades']?.detectMagic?.color;
+    let sound = effect.flags['chris-premades']?.detectMagic?.sound;
+    let animation = 'jb2a.detect_magic.circle.' + color;
+    let opacity = effect.flags['chris-premades']?.detectMagic?.opacity;
     new Sequence()
         .effect()
-        .file(anim)
+        .opacity(opacity)
+        .file(animation)
         .atLocation(token)
         .attachTo(token)
         .zIndex(1)
         .fadeIn(250)
         .fadeOut(500)
         .persist()
-        .name('Detect Magic')
+        .name(effect.name)
+        .sound()
+        .playIf(sound)
+        .file(sound)
         .play();
 }
 async function end({trigger: {entity}}) {
@@ -64,6 +71,63 @@ export let detectMagic = {
             type: 'checkbox',
             default: true,
             category: 'animation'
+        },
+        {
+            value: 'color',
+            label: 'CHRISPREMADES.Config.Color',
+            type: 'select',
+            default: 'blue',
+            category: 'animation',
+            options: [
+                {
+                    value: 'blue',
+                    label: 'CHRISPREMADES.Config.Colors.Blue'
+                },
+                {
+                    value: 'green',
+                    label: 'CHRISPREMADES.Config.Colors.Green',
+                    requiredModules: ['jb2a_patreon']
+                },
+                {
+                    value: 'purple',
+                    label: 'CHRISPREMADES.Config.Colors.Purple',
+                    requiredModules: ['jb2a_patreon']
+                },
+                {
+                    value: 'yellow',
+                    label: 'CHRISPREMADES.Config.Colors.Yellow',
+                    requiredModules: ['jb2a_patreon']
+                },
+                {
+                    value: 'dark_red',
+                    label: 'CHRISPREMADES.Config.Colors.DarkRed',
+                    requiredModules: ['jb2a_patreon']
+                },
+                {
+                    value: 'green_orange',
+                    label: 'CHRISPREMADES.Config.Colors.GreenOrange',
+                    requiredModules: ['jb2a_patreon']
+                },
+                {
+                    value: 'grey',
+                    label: 'CHRISPREMADES.Config.Colors.Grey',
+                    requiredModules: ['jb2a_patreon']
+                }
+            ]
+        },
+        {
+            value: 'opacity',
+            label: 'CHRISPREMADES.Config.Opacity',
+            type: 'number',
+            default: 1,
+            category: 'animation',
+        },
+        {
+            value: 'sound',
+            label: 'CHRISPREMADES.Config.Sound',
+            type: 'file',
+            default: '',
+            category: 'sound'
         }
     ]
 };

@@ -34,22 +34,6 @@
   },
   "effects": [],
   "flags": {
-    "monsterMunch": {
-      "titleHTML": "<em><strong>Adhesive (Object Form Only).</strong></em>",
-      "fullName": "Adhesive (Object Form Only).",
-      "actionCopy": false,
-      "type": "special",
-      "actionInfo": {
-        "damage": {
-          "parts": [],
-          "versatile": ""
-        },
-        "baseAbility": null,
-        "toHit": 0,
-        "proficient": false,
-        "extraAttackBonus": 0
-      }
-    },
     "midi-qol": {
       "removeAttackDamageButtons": "default",
       "rollAttackPerTarget": "default",

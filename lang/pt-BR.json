@@ -142,6 +142,7 @@
             "BaseHealing": "Cura Base:",
             "BlockingStatuses": "Condições Bloqueadas:",
             "Character": "Personagem",
+            "CheckHit": "Verificar Acerto:",
             "CheckSave": "Verificar Salvaguarda:",
             "CheckSaves": "Verificar Salvaguardas:",
             "ClassIdentifier": "Identificador de Classe",
@@ -201,6 +202,7 @@
             "MaxSize": "Tamanho Máx:",
             "Name": "Nome:",
             "Number": "Número:",
+            "Opacity": "Opacidade:",
             "Percentage": "Porcentagem:",
             "PlayAnimation": "Reproduzir Animação:",
             "PlayTeleportAnimation": "Tocar Animação de Teleporte:",
@@ -331,6 +333,9 @@
                 "actorEquipped": {
                     "Label": "Ator Equipado"
                 },
+                "actorMedkit": {
+                    "Label": "Medkit de Ator"
+                },
                 "actorUnequipped": {
                     "Label": "Ator Desequipado"
                 },
@@ -373,6 +378,9 @@
                 "everyTurn": {
                     "Label": "Cada Turno"
                 },
+                "itemMedkit": {
+                    "Label": "Medkit de Item"
+                },
                 "long": {
                     "Label": "Descanso Longo"
                 },
@@ -412,8 +420,14 @@
                 "sceneBonus": {
                     "Label": "Bônus de Cena"
                 },
+                "sceneCreate": {
+                    "Label": "Cena Criada"
+                },
                 "sceneDamageRollComplete": {
                     "Label": "Rolagem de Dano da Cena Concluído"
+                },
+                "sceneDeleted": {
+                    "Label": "Cena Excluída"
                 },
                 "movedScene": {
                     "Label": "Cena Movida"
@@ -471,12 +485,6 @@
                 },
                 "unequipped": {
                     "Label": "Desequipado"
-                },
-                "sceneDeleted": {
-                    "Label": "Cena Excluída"
-                },
-                "sceneCreate": {
-                    "Label": "Cena Criada"
                 }
             },
             "Priority": {
@@ -503,7 +511,8 @@
                 "rest": "Descansar",
                 "save": "Salvaguarda",
                 "skill": "Perícia",
-                "template": "Modelo"
+                "template": "Modelo",
+                "toolCheck": "Ferramenta"
             }
         },
         "Error": {
@@ -561,6 +570,7 @@
             "Chat": "Chat",
             "Check": "Teste de Atributo",
             "CheckSpelling": "Verificar Ortografia",
+            "ChooseASpell": "Escolha uma Magia:",
             "Close": "Fechar",
             "ConditionResistance": {
                 "Description": "Resistência à Condição {condition}, role a salvaguarda com vantagem. Suporta o modo de alteração Sobrepor. 1/verdadeiro para todas salvaguardas, ou uma lista de atributos separadas por vírgulas (exemplo: str,dex).",
@@ -596,14 +606,17 @@
             "Recharge": "Recarga:",
             "RecoverSpellSlot": "Selecione um espaço de magia para recuperar:",
             "Replace": "Substituir",
-            "Rerolling": "Rerolando {origDie} ({origResult}):",
+            "Rerolling": "Re-rolando {origDie} ({origResult}):",
             "Select": "Selecionar",
+            "SelectATarget": "Selecionar um alvo:",
+            "SelectAWeapon": "Selecionar uma arma:",
             "SelectDamageType": "Escolha um tipo de dano:",
             "SelectEffect": "Escolha um efeito:",
             "SelectSpell": "Escolha uma Magia:",
             "SelectSpellSlot": "Escolha um espaço de magia:",
             "SelectTargetEffect": "Escolha um efeito para cada alvo:",
             "Skill": "Teste de Perícia",
+            "Source": "Origem",
             "Spells": "Magias",
             "Submit": "Enviar",
             "Success": "Sucesso",
@@ -679,6 +692,15 @@
                 "GrappleEscapeSelect": "Tentativa de escapar do agarrão de quem?",
                 "GrappledBy": "Agarrado por {tokenName}",
                 "Grappling": "Agarrando {tokenName}"
+            },
+            "ActivityOnRest": {
+                "ExpireOnSave": "Efeito Expira em Atividade de Salvaguarda:",
+                "LongRest": "Gatilho Apenas em Descanso Longo:",
+                "Name": "Atividade em Descanso",
+                "NoActivity": "Nenhuma Atividade de Gatilho selecionada em Atividade na Configuração ddo Descanso!",
+                "ShortRest": "Gatilho em Descanso Curto:",
+                "TriggerActivities": "Atividades de Gatilho:",
+                "TriggerOnce": "Gatilho Apenas Uma Vez:"
             },
             "AdvantageDamageBonus": {
                 "Bonus": "Dano adicional se o ataque tiver vantagem:",
@@ -1629,7 +1651,7 @@
                 "Confirm": "O teste foi um sucesso?"
             },
             "Piercer": {
-                "Reroll": "Rerolar qual dado mais baixo?"
+                "Reroll": "Re-rolar qual dado mais baixo?"
             },
             "PoisonousSkin": {
                 "Poison": "Grunge: Veneno"
@@ -1720,6 +1742,7 @@
                 "Long": "Expira em Descanso Longo:",
                 "Name": "Reduzir PV Máximo",
                 "ReduceByRoll": "Reduzir por rolagem, não dano:",
+                "RemoveOnSave": "Remover em Sucesso:",
                 "Short": "Expira em Descanso Curto:"
             },
             "Regeneration": {
@@ -1732,6 +1755,10 @@
                 "ShowIcons": "Mostrar ícones para regeneração bloqueada/reduzida:",
                 "Threshold": "Dano necessário para matar permanentemente se estiver com 0 PV:",
                 "ZeroHP": "A criatura morre ao atingir 0 PV"
+            },
+            "RerollSaveOnDamage": {
+                "ExcludeSource": "Excluir Danos da Origem",
+                "Name": "Re-rolar Salvaguarda em Dano"
             },
             "Retaliation": {
                 "Weapon": "Com qual arma você quer atacar?"
@@ -2329,7 +2356,7 @@
                         "End": "Fim do Turno",
                         "Flat": "CD Fixa",
                         "FullDamage": "Dano Total",
-                        "GMRoll": "Rolagem pro MJ",
+                        "GMRoll": "Rolagem pro Mestre",
                         "HalfDamage": "Metade do Dano",
                         "Item": "CD do Item",
                         "Label": "Nome do Cartão de Chat:",
@@ -2357,9 +2384,12 @@
                     "AttackedBySource": "Atacado pela Origem",
                     "DamagedByAlly": "Sofrer Dano de Aliado",
                     "DamagedByEnemy": "Sofrer Dano de Inimigo",
+                    "Failed": "Falhar Teste de {toolName}",
                     "HitByAnotherCreature": "Atingido por Outra Criatura",
                     "HitBySource": "Atingido pela Origem",
                     "Label": "Durações Especiais:",
+                    "Rolled": "Rolar Teste de {toolName}",
+                    "Succeed": "Sucesso Teste de {toolName}",
                     "TempHP": "Zero Pontos de Vida Temporários",
                     "TempMaxHP": "Zero Pontos de Vida Máximos Temporários",
                     "Tooltip": "As condições escolhidas removerão o efeito."
@@ -2559,7 +2589,7 @@
             "Permissions": {
                 "1": "Jogador",
                 "2": "Jogador Confiável",
-                "3": "Assistente do MJ",
+                "3": "Assistente do Mestre",
                 "4": "Mestre do Jogo"
             },
             "SelectCompendium": "Selecione um compêndio:",
@@ -2634,7 +2664,7 @@
                 "Name": "Ações de Armas Baldur's Gate 3"
             },
             "checkForUpdates": {
-                "Hint": "Quando ativado, o módulo verificará atualizações uma vez por dia quando um MJ entrar.",
+                "Hint": "Quando ativado, o módulo verificará atualizações uma vez por dia quando um Mestre entrar.",
                 "Name": "Verificar Atualizações"
             },
             "classSpellList": {
@@ -2672,6 +2702,22 @@
                 "6": "Selecionado - Apenas Falha Crítica",
                 "Hint": "Quando ativado, jogadas de ataque crítica ou falha crítica também rolarão um item dos compêndios selecionados.",
                 "Name": "Modo Crítico e Falha Crítica"
+            },
+            "customChatMessage": {
+                "Hint": "Dá um tema escuro às mensagens do chat.",
+                "Name": "Modo Escuro Mensagens do Chat"
+            },
+            "customSidebar": {
+                "Hint": "Ajustes CSS na barra lateral, incluindo plano de fundo do chat, inversão da barra de rolagem e outras pequenas alterações.",
+                "Name": "Barra Lateral Personalizada"
+            },
+            "customUIButtonScale": {
+                "Hint": "Dimensiona os botões da barra lateral.",
+                "Name": "Escala Perso. Botões Barra Lateral"
+            },
+            "customUINavigationScale": {
+                "Hint": "Dimensiona a navegação da cena.",
+                "Name": "Escala de Navegação Personalizada"
             },
             "devTools": {
                 "Hint": "Habilitar para exibir ferramentas de desenvolvimento.",
@@ -2778,8 +2824,8 @@
                 "Name": "Compêndio de Macros"
             },
             "makeGM": {
-                "Hint": "Torne-se o MJ principal.",
-                "Name": "Tornar-se MJ"
+                "Hint": "Torne-se o Mestre principal.",
+                "Name": "Tornar-se Mestre"
             },
             "manualRollsEnabled": {
                 "Hint": "Habilita o CPR Roll Resolver para Rolagens Não-Finalizadas.",
@@ -2860,7 +2906,7 @@
                 "Name": "Permissão de Atualização do Medkit"
             },
             "playerSelectsConjures": {
-                "Hint": "Ao conjurar magias do tipo \"Conjurar X\", o jogador (não o MJ) pode selecionar quais criaturas conjurar.",
+                "Hint": "Ao conjurar magias do tipo \"Conjurar X\", o jogador (não o Mestre) pode selecionar quais criaturas conjurar.",
                 "Name": "Jogador Escolhe Conjurações"
             },
             "replaceStatusEffectIcons": {
@@ -3053,6 +3099,9 @@
             "Line": "Linha",
             "TargetCantSeeAttacker": "Alvo Não Consegue Ver Atacante",
             "UnknownTemplate": "Modelo Desconhecido"
+        },
+        "ToolCheck": {
+            "Title": "Teste de Ferramenta"
         },
         "Tour": {
             "0": {
