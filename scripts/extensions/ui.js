@@ -81,7 +81,7 @@ function customChatMessage(value) {
         `;
         document.querySelector('head').appendChild(el);
         Hooks.on('renderApplicationV2', chatMessageThemeHook);
-        chatMessageThemeApply();
+        Hooks.once('ready', chatMessageThemeApply);
     } else {
         document.querySelector('#cpr-custom-chat-message').remove();
         Hooks.off('renderApplicationV2', chatMessageThemeHook);

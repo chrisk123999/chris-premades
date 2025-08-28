@@ -1,8 +1,9 @@
 import {effectUtils, genericUtils, itemUtils} from '../../../../utils.js';
 async function late({workflow}) {
     if (!workflow.hitTargets.size) return;
-    if (!workflow.damageRoll) return;
     let config = itemUtils.getGenericFeatureConfig(workflow.item, 'reduceMaxHP');
+    let activities = config.activities;
+    if (activities?.length && !activities.includes(workflow.activity.id)) return;
     let damageApplied = 0;
     if (config.reduceByRoll.length) {
         let roll = await new Roll(config.reduceByRoll, workflow.item.getRollData()).evaluate();
@@ -14,8 +15,13 @@ async function late({workflow}) {
         if (config.halfDamage) damageApplied = Math.floor(damageApplied / 2);
     }
     await Promise.all(workflow.targets.map(async token => {
-        if (config.checkSaves && !workflow.failedSaves.has(token)) return;
+        if (config.checkSaves && !workflow.failedSaves.has(token)) {
+            let effect = await effectUtils.getAllEffectsByIdentifier(token.actor, 'reduceMaxHP').find(async i => (await effectUtils.getOriginItem(i))?.uuid === workflow.item.uuid);
+            if (effect && config.removeOnSave) await genericUtils.remove(effect);
+            return;
+        }
         if (!config.reduceByRoll.length) {
+            if (!workflow.damageRolls);
             let ditem = workflow.damageList.find(i => i.actorId === token.actor.id);
             if (!ditem) return;
             if (!config.damageTypeFilter.length) {
@@ -87,6 +93,12 @@ export let reduceMaxHP = {
     isGenericFeature: true,
     genericConfig: [
         {
+            value: 'activities',
+            label: 'CHRISPREMADES.Config.Activities',
+            type: 'activities',
+            default: []
+        },
+        {
             value: 'damageTypeFilter',
             label: 'CHRISPREMADES.Config.DamageTypes',
             type: 'damageTypes',
@@ -121,6 +133,12 @@ export let reduceMaxHP = {
             label: 'CHRISPREMADES.Config.CheckSaves',
             type: 'checkbox',
             default: true
+        },
+        {
+            value: 'removeOnSave',
+            label: 'CHRISPREMADES.Macros.ReduceMaxHP.RemoveOnSave',
+            type: 'checkbox',
+            default: false
         }
     ]
 };

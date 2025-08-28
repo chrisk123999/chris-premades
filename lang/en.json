@@ -142,6 +142,7 @@
             "BaseHealing": "Base Healing:",
             "BlockingStatuses": "Blocking Statuses:",
             "Character": "Character",
+            "CheckHit": "Check Hit:",
             "CheckSave": "Check Save:",
             "CheckSaves": "Check Saves:",
             "ClassIdentifier": "Class Identifier:",
@@ -691,6 +692,15 @@
                 "GrappleEscapeSelect": "Attempt to escape from whose grapple?",
                 "GrappledBy": "Grappled By {tokenName}",
                 "Grappling": "Grappling {tokenName}"
+            },
+            "ActivityOnRest": {
+                "ExpireOnSave": "Effect Expires on Activity Save:",
+                "LongRest": "Trigger on Long Rest Only:",
+                "Name": "Activity On Rest",
+                "NoActivity": "No Trigger Activity selected in Activty on Rest Config!",
+                "ShortRest": "Trigger on Short Rest:",
+                "TriggerActivities": "Activities to Trigger:",
+                "TriggerOnce": "Trigger Only Once:"
             },
             "AdvantageDamageBonus": {
                 "Bonus": "Bonus damage if attack has advantage:",
@@ -1732,6 +1742,7 @@
                 "Long": "Expires on Long Rest:",
                 "Name": "Reduce Maximum HP",
                 "ReduceByRoll": "Reduce by roll, not damage:",
+                "RemoveOnSave": "Remove on Save:",
                 "Short": "Expires on Short Rest:"
             },
             "Regeneration": {
@@ -1745,7 +1756,10 @@
                 "Threshold": "Damage required to permanently kill if at 0hp:",
                 "ZeroHP": "Creature dies upon reaching 0hp"
             },
-            "RerollSaveOnDamage": "Exclude Damage from Source:",
+            "RerollSaveOnDamage": {
+                "ExcludeSource": "Exclude Damage from Source",
+                "Name": "Reroll Save on Damage"
+            },
             "Retaliation": {
                 "Weapon": "Which weapon do you attack with?"
             },

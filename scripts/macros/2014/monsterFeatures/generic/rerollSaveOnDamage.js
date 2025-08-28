@@ -18,6 +18,7 @@ async function targetRollFinished({trigger: {entity, token}, workflow}) {
     let damageTaken = damage.oldHP - damage.newHP;
     if (damageTaken <= 0) return;
     let sourceItem = await effectUtils.getOriginItem(entity);
+    if (!sourceItem) return;
     let config = itemUtils.getGenericFeatureConfig(sourceItem, 'rerollSaveOnDamage');
     if (config.excludeSource && workflow.token.document.uuid === sourceItem.actor.token.uuid) return; 
     let sourceActivity = sourceItem.system.activities.find(i => i.effects.some(j => j.effect.uuid === entity.origin));
@@ -45,6 +46,7 @@ async function targetRollFinished({trigger: {entity, token}, workflow}) {
 }
 export let rerollSaveOnDamage = {
     name: 'Reroll Save On Damage',
+    translation: 'CHRISPREMADES.Macros.RerollSaveOnDamage.Name',
     version: '1.3.30',
     midi: {
         item: [
@@ -65,7 +67,7 @@ export let rerollSaveOnDamage = {
         },
         {
             value: 'excludeSource',
-            label: 'CHRISPREMADES.Macros.RerollSaveOnDamage',
+            label: 'CHRISPREMADES.Macros.RerollSaveOnDamage.ExcludeSource',
             type: 'checkbox',
             default: false
         },
