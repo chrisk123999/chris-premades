@@ -3,6 +3,7 @@
 - Suffocation Generic Action
 ## New Generic Monster Features:
 - Suffocate
+- Roll for Activity. Note: Example "GMF - Chaos Claw" item included in the "CPR Miscellaneous" compendium.
   
 # 1.3.33 Release:
 ## New Modern Content:

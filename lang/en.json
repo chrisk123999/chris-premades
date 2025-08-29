@@ -1784,6 +1784,10 @@
                 "Stored": "{spellName} stored!",
                 "Upcast": "Cast at what level?"
             },
+            "RollForActivity": {
+                "Error": "No activity including '{total}' found in {name}",
+                "Name": "Roll for Activity"
+            },
             "RunicShield": {
                 "Use": "Use {item} for {name}?"
             },
