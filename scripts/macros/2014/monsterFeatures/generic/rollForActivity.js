@@ -6,9 +6,13 @@ async function use({trigger, workflow}) {
     let rollTotal = workflow.utilityRolls[0]?.total;
     if (!rollTotal) return;
     let itemActivities = workflow.item.system.activities;
-    let rolledActivities = itemActivities.filter(i => i.name.includes(String(rollTotal)));
+    let rolledActivities = itemActivities.filter(i => (i.name.includes(String(rollTotal)) && (i.id != workflow.activity.id)));
     if (!rolledActivities.length) genericUtils.notify(genericUtils.format('CHRISPREMADES.Macros.RollForActivity.Error', {name: workflow.item.name, total: rollTotal}), 'error');
-    for (let i of rolledActivities) await workflowUtils.syntheticActivityRoll(i, workflow.targets);
+    if (config.reroll && !rolledActivities.filter(i => i.uses?.value != 0).length) {
+        await workflowUtils.syntheticActivityRoll(workflow.activity, workflow.targets);
+        return;
+    }
+    for (let i of rolledActivities) await workflowUtils.syntheticActivityRoll(i, workflow.targets, {consumeUsage: true, consumeResources: true});
 }
 export let rollForActivity = {
     name: 'Roll for Activity',
@@ -30,6 +34,12 @@ export let rollForActivity = {
             label: 'CHRISPREMADES.Config.Activities',
             type: 'activities',
             default: []
+        },
+        {
+            value: 'reroll',
+            label: 'CHRISPREMADES.Macros.RollForActivity.PerTurn',
+            type: 'checkbox',
+            default: true
         }
     ]
 };

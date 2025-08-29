@@ -1786,7 +1786,8 @@
             },
             "RollForActivity": {
                 "Error": "No activity including '{total}' found in {name}",
-                "Name": "Roll for Activity"
+                "Name": "Roll for Activity",
+                "PerTurn": "Reroll if Activty has No Usages Left:"
             },
             "RunicShield": {
                 "Use": "Use {item} for {name}?"
