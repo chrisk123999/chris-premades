@@ -12,15 +12,5 @@ export let deviousStrikes = {
                 unique: 'cunningStrikeUse'
             }
         ]
-    },
-    config: [
-        {
-            value: 'uses',
-            label: 'CHRISPREMADES.Config.SimultaneousUses',
-            type: 'number',
-            default: 1,
-            category: 'homebrew',
-            homebrew: true
-        }
-    ]
+    }
 };

@@ -265,4 +265,5 @@ export {avatarOfBattle} from './macros/2024/classFeatures/cleric/war/avatarOfBat
 //Rogue
 export {sneakAttack} from './macros/2024/classFeatures/rogue/sneakAttack.js';
 export {cunningStrike} from './macros/2024/classFeatures/rogue/cunningStrike.js';
+export {improvedCunningStrike} from './macros/2024/classFeatures/rogue/improvedCunningStrike.js';
 export {deviousStrikes} from './macros/2024/classFeatures/rogue/deviousStrikes.js';

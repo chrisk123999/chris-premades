@@ -1,3 +1,11 @@
+# 1.3.33 Release:
+## New Modern Content:
+- Improved Cunning Strike
+## Bug Fixes:
+- Sneak Attack
+- Cunning Strike
+- Devious Strikes
+
 # 1.3.32 Release:
 ## New Modern Content:
 - Sneak Attack
