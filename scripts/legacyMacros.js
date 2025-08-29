@@ -482,6 +482,7 @@ export {reduce, reduceReduced} from './macros/2014/monsterFeatures/generic/reduc
 export {reduceMaxHP} from './macros/2014/monsterFeatures/generic/reduceMaxHP.js';
 export {rerollSaveOnDamage, rerollSaveOnDamageActor} from './macros/2014/monsterFeatures/generic/rerollSaveOnDamage.js';
 export {spellTurning} from './macros/2014/monsterFeatures/generic/spellTurning.js';
+export {suffocate} from './macros/2014/monsterFeatures/generic/suffocate.js';
 export {sunlightSensitivity} from './macros/2014/monsterFeatures/generic/sunlightSensitivity.js';
 export {surpriseAttack} from './macros/2014/monsterFeatures/generic/surpriseAttack.js';
 export {swarmDamage} from './macros/2014/monsterFeatures/generic/swarmDamage.js';

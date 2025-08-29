@@ -1,3 +1,9 @@
+# 1.3.34 Release:
+## New Modern Content:
+- Suffocation Generic Action
+## New Generic Monster Features:
+- Suffocate
+  
 # 1.3.33 Release:
 ## New Modern Content:
 - Improved Cunning Strike

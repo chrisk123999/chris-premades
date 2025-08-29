@@ -1945,6 +1945,16 @@
             "StrangeMetabolism": {
                 "Select": "Which Mutagen?"
             },
+            "Suffocate": {
+                "Name": "Suffocate",
+                "StartsOutOfAir": "Starts Out of Air:"
+            },
+            "Suffocation": {
+                "Name": {
+                    "HoldingBreath": "Suffocation: Holding Breath",
+                    "OutOfAir": "Suffocation: Out of Air"
+                }
+            },
             "SummonAberration": {
                 "Beholderkin": "Beholderkin",
                 "EyeRay": "Eye Ray",
