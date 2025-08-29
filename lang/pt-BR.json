@@ -188,6 +188,7 @@
             "DarknessAnimation": "Animação de Escuridão:",
             "DiceSize": "Categoria Dado:",
             "DisplayFormulaRoll": "Exibir Fórmula da Rolagem:",
+            "DisplayHint": "Exibir Dica:",
             "Distance": "Distância:",
             "DurationSeconds": "Duração (Segundos):",
             "Expire": "Expiração:",
@@ -1044,6 +1045,9 @@
             "Darkness": {
                 "Attach": "Anexar a si mesmo?"
             },
+            "Dash": {
+                "Notify": "Clique direito para adicionar um ponto de parada. Clique esquerdo para finalizar."
+            },
             "Dawn": {
                 "EndTurn": "Aurora: Fim do Turno",
                 "Move": "Aurora: Mover"
@@ -1784,6 +1788,11 @@
                 "Stored": "{spellName} armazenada!",
                 "Upcast": "Conjurar em qual nível?"
             },
+            "RollForActivity": {
+                "Error": "Nenhuma atividade incluindo '{total}' encontrada em {name}",
+                "Name": "Rolar para Atividade",
+                "PerTurn": "Re-role se a Atividade não tiver mais usos:"
+            },
             "RunicShield": {
                 "Use": "Usar {item} para {name}?"
             },
@@ -1944,6 +1953,16 @@
             },
             "StrangeMetabolism": {
                 "Select": "Qual Mutagênico?"
+            },
+            "Suffocate": {
+                "Name": "Asfixiar",
+                "StartsOutOfAir": "Começa a Ficar Sem Ar:"
+            },
+            "Suffocation": {
+                "Name": {
+                  "HoldingBreath": "Asfixia: Prendendo a Respiração",
+                  "OutOfAir": "Asfixia: Sem Ar"
+                }
             },
             "SummonAberration": {
                 "Beholderkin": "Observador",
