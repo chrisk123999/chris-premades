@@ -1,3 +1,7 @@
+# 1.3.35 Release:
+## Bug Fixes:
+- Fixed duplicate pack names.
+
 # 1.3.34 Release:
 ## New Modern Content:
 - Suffocation Generic Action
