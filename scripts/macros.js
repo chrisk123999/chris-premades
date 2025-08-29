@@ -35,7 +35,10 @@ export {undeadFortitude} from './macros/2014/monsterFeatures/generic/undeadForti
 export {cleaveMastery, grazeMastery, pushMastery, sapMastery, slowMastery, toppleMastery, vexMastery} from './macros/2024/mechanics/masteries.js';
 export {invisible} from './macros/2024/mechanics/invisible.js';
 //Actions
-export {suffocation, _suffocationApply, suffocationOutOfAir} from './macros/2024/actions/suffocation.js';
+export {suffocation, suffocationOutOfAir} from './macros/2024/actions/suffocation.js';
+export {dash} from './macros/2024/actions/dash.js';
+export {hide, hideEffect} from './macros/2024/actions/hide.js';
+export {disengage} from './macros/2024/actions/disengage.js';
 //Generic
 export {proneOnFail} from './macros/2024/generic/proneOnFail.js';
 //Spells
@@ -268,6 +271,7 @@ export {warGodsBlessing, warGodsBlessingCast} from './macros/2024/classFeatures/
 export {avatarOfBattle} from './macros/2024/classFeatures/cleric/war/avatarOfBattle.js';
 //Rogue
 export {sneakAttack} from './macros/2024/classFeatures/rogue/sneakAttack.js';
+export {cunningAction} from './macros/2024/classFeatures/rogue/cunningAction.js';
 export {cunningStrike} from './macros/2024/classFeatures/rogue/cunningStrike.js';
 export {improvedCunningStrike} from './macros/2024/classFeatures/rogue/improvedCunningStrike.js';
 export {deviousStrikes} from './macros/2024/classFeatures/rogue/deviousStrikes.js';

@@ -188,6 +188,7 @@
             "DarknessAnimation": "Darkness Animation:",
             "DiceSize": "Dice Size:",
             "DisplayFormulaRoll": "Display Formula Roll:",
+            "DisplayHint": "Display Hint:",
             "Distance": "Distance:",
             "DurationSeconds": "Duration (Seconds):",
             "Expire": "Expiration:",
@@ -1043,6 +1044,9 @@
             },
             "Darkness": {
                 "Attach": "Attach to self?"
+            },
+            "Dash": {
+                "Notify": "Right click to add waypoints. Left click to finish."
             },
             "Dawn": {
                 "EndTurn": "Dawn: End Turn",

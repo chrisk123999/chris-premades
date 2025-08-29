@@ -1,7 +1,7 @@
 {
-  "name": "Disengage",
+  "name": "Hide",
   "type": "feat",
-  "img": "icons/skills/movement/feet-winged-boots-blue.webp",
+  "img": "icons/containers/barrels/barrel-open-brown-red.webp",
   "system": {
     "description": {
       "value": "",
@@ -10,7 +10,10 @@
     "source": {
       "custom": "",
       "revision": 1,
-      "rules": "2014"
+      "rules": "2024",
+      "book": "",
+      "page": "",
+      "license": ""
     },
     "uses": {
       "max": "",
@@ -29,79 +32,69 @@
       "repeatable": false
     },
     "activities": {
-      "dnd5eactivity000": {
-        "_id": "dnd5eactivity000",
+      "PgpC5ueF4eHDROet": {
         "type": "utility",
+        "_id": "PgpC5ueF4eHDROet",
+        "sort": 0,
         "activation": {
           "type": "action",
-          "value": 1,
-          "condition": "",
-          "override": false
+          "override": false,
+          "condition": ""
         },
         "consumption": {
-          "targets": [],
           "scaling": {
-            "allowed": false,
-            "max": ""
+            "allowed": false
           },
-          "spellSlot": true
+          "spellSlot": true,
+          "targets": []
         },
         "description": {
           "chatFlavor": ""
         },
         "duration": {
+          "units": "year",
           "concentration": false,
-          "value": "1",
-          "units": "turn",
-          "special": "",
-          "override": false
+          "override": false,
+          "value": "1"
         },
         "effects": [
           {
-            "_id": "PTVnFkLFaGKQptCu"
+            "_id": "hKVCw71rKOgCcCxT"
           }
         ],
         "range": {
           "units": "self",
-          "special": "",
-          "override": false
+          "override": false,
+          "special": ""
         },
         "target": {
           "template": {
-            "count": "",
             "contiguous": false,
-            "type": "",
-            "size": "",
-            "width": "",
-            "height": "",
-            "units": "ft"
+            "units": "ft",
+            "type": ""
           },
           "affects": {
-            "count": "",
-            "type": "self",
             "choice": false,
+            "type": "self",
             "special": ""
           },
-          "prompt": true,
-          "override": false
+          "override": false,
+          "prompt": true
         },
         "uses": {
           "spent": 0,
-          "max": "",
-          "recovery": []
+          "recovery": [],
+          "max": ""
         },
         "roll": {
-          "formula": "",
-          "name": "",
           "prompt": false,
-          "visible": false
+          "visible": false,
+          "name": "",
+          "formula": ""
         },
-        "sort": 0,
         "useConditionText": "",
-        "forceDialog": false,
-        "effectConditionText": "",
-        "midiAutomationOnly": false,
         "useConditionReason": "",
+        "effectConditionText": "",
         "macroData": {
           "name": "",
           "command": ""
@@ -119,9 +112,10 @@
           "triggeredActivityConditionText": "",
           "triggeredActivityTargets": "targets",
           "triggeredActivityRollAs": "self",
-          "forceDialog": false,
-          "forceAttackDialog": false,
-          "forceDamageDialog": false,
+          "autoConsume": false,
+          "forceConsumeDialog": "default",
+          "forceRollDialog": "default",
+          "forceDamageDialog": "default",
           "confirmTargets": "default",
           "autoTargetType": "any",
           "autoTargetAction": "default",
@@ -146,101 +140,96 @@
           "preRemoveConditionText": "",
           "postRemoveConditionText": ""
         },
-        "otherActivityId": "none"
+        "otherActivityId": "none",
+        "otherActivityAsParentType": true,
+        "name": ""
       }
     },
-    "identifier": "disengage",
+    "identifier": "hide",
     "enchant": {},
     "advancement": [],
     "crewed": false
   },
   "effects": [
     {
-      "name": "Disengage",
-      "changes": [
-        {
-          "key": "flags.gambits-premades.oaImmunity",
-          "mode": 5,
-          "value": "1",
-          "priority": 20
-        }
-      ],
+      "name": "Hidden",
+      "img": "icons/containers/barrels/barrel-open-brown-red.webp",
+      "origin": "Scene.L39dEBy0tiHToOQE.Token.BMEAHf9OHyH49zDm.Actor.4i1zH4NhFIiJdyVO.Item.TAEVPNx1exkZNYuI",
       "transfer": false,
-      "img": "icons/skills/movement/feet-winged-boots-blue.webp",
-      "_id": "PTVnFkLFaGKQptCu",
+      "_id": "hKVCw71rKOgCcCxT",
       "type": "base",
       "system": {},
+      "changes": [],
       "disabled": false,
       "duration": {
         "startTime": null,
-        "seconds": null,
         "combat": null,
+        "seconds": null,
         "rounds": null,
         "turns": null,
         "startRound": null,
         "startTurn": null
       },
-      "description": "<p><em>This feature is safe to rename.</em></p>",
-      "origin": null,
+      "description": "",
       "tint": "#ffffff",
       "statuses": [],
+      "sort": 0,
       "flags": {
-        "dae": {
-          "enableCondition": "",
-          "disableCondition": "",
-          "disableIncapacitated": false,
-          "selfTarget": false,
-          "selfTargetAlways": false,
-          "dontApply": false,
-          "stackable": "noneName",
-          "showIcon": false,
-          "durationExpression": "",
-          "macroRepeat": "none",
-          "specialDuration": [
-            "turnEnd"
-          ]
-        },
-        "ActiveAuras": {
-          "isAura": false,
-          "aura": "None",
-          "nameOverride": "",
-          "radius": "",
-          "alignment": "",
-          "type": "",
-          "customCheck": "",
-          "ignoreSelf": false,
-          "height": false,
-          "hidden": false,
-          "displayTemp": false,
-          "hostile": false,
-          "onlyOnce": false,
-          "wallsBlock": "system"
-        },
         "dnd5e": {
           "riders": {
             "statuses": []
           }
         },
+        "dae": {
+          "enableCondition": "",
+          "disableCondition": "",
+          "stackable": "noneName",
+          "showIcon": false,
+          "disableIncapacitated": false,
+          "selfTarget": false,
+          "selfTargetAlways": false,
+          "dontApply": false,
+          "durationExpression": "",
+          "macroRepeat": "none",
+          "specialDuration": [
+            "1Spell",
+            "1Attack"
+          ]
+        },
         "core": {
           "overlay": false
+        },
+        "chris-premades": {
+          "noAnimation": false,
+          "conditions": [],
+          "specialDuration": [],
+          "info": {
+            "identifier": "hideEffect"
+          },
+          "rules": "modern",
+          "macros": {
+            "effect": [
+              "hideEffect"
+            ]
+          }
         }
       },
-      "sort": 0,
-      "_key": "!items.effects!34jFXjMOseErle3M.PTVnFkLFaGKQptCu"
+      "_key": "!items.effects!VMz7GNhH1v6kZHbI.hKVCw71rKOgCcCxT"
     }
   ],
   "flags": {
     "midi-qol": {
       "effectActivation": false,
+      "onUseMacroName": "",
+      "rollAttackPerTarget": "default",
+      "itemCondition": "",
+      "effectCondition": "",
       "AoETargetType": "any",
       "AoETargetTypeIncludeSelf": true,
       "autoTarget": "default",
-      "rollAttackPerTarget": "default",
       "removeAttackDamageButtons": "default",
-      "itemCondition": "",
       "reactionCondition": "",
-      "otherCondition": "",
-      "effectCondition": ""
+      "otherCondition": ""
     },
     "midiProperties": {
       "nodam": false,
@@ -264,30 +253,31 @@
       "ida": false
     },
     "core": {},
-    "chris-premades": {
-      "info": {
-        "name": "Disengage",
-        "version": "1.3.34",
-        "identifier": "disengage",
-        "source": "chris-premades",
-        "hasAnimation": true
-      },
-      "macros": {
-        "midi": {
-          "item": [
-            "disengage"
-          ]
-        }
-      }
-    },
     "dnd5e": {
       "riders": {
         "activity": [],
         "effect": []
       }
+    },
+    "chris-premades": {
+      "info": {
+        "name": "Hide",
+        "identifier": "hide",
+        "source": "chris-premades",
+        "rules": "modern",
+        "version": "1.3.34",
+        "hasAnimation": true
+      },
+      "macros": {
+        "midi": {
+          "item": [
+            "hide"
+          ]
+        }
+      }
     }
   },
   "folder": null,
-  "_id": "34jFXjMOseErle3M",
-  "_key": "!items!34jFXjMOseErle3M"
+  "_id": "VMz7GNhH1v6kZHbI",
+  "_key": "!items!VMz7GNhH1v6kZHbI"
 }
