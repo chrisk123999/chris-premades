@@ -56,6 +56,9 @@ async function outOfAirApply(actor, item, options = {parentEntity: {}}) {
                 macros: {
                     combat: ['suffocationOutOfAir'],
                     effect: ['suffocationOutOfAir']
+                },
+                suffocation: {
+                    startingExhaustion: genericUtils.duplicate(actor.system.attributes.exhaustion ?? 0)
                 }
             }
         }
@@ -73,7 +76,7 @@ async function outOfAirTurnEnd({trigger: {entity}}) {
 }
 async function outOfAirDeleted({trigger: {entity}}) {
     let actor = entity.parent;
-    await genericUtils.update(actor, {'system.attributes.exhaustion': 0});
+    await genericUtils.update(actor, {'system.attributes.exhaustion': entity.flags['chris-premades'].suffocation.startingExhaustion});
 }
 const version = '1.3.34';
 const rules = 'modern';
