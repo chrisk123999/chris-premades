@@ -188,6 +188,7 @@
             "DarknessAnimation": "Darkness Animation:",
             "DiceSize": "Dice Size:",
             "DisplayFormulaRoll": "Display Formula Roll:",
+            "DisplayHint": "Display Hint:",
             "Distance": "Distance:",
             "DurationSeconds": "Duration (Seconds):",
             "Expire": "Expiration:",
@@ -1044,6 +1045,9 @@
             "Darkness": {
                 "Attach": "Attach to self?"
             },
+            "Dash": {
+                "Notify": "Right click to add waypoints. Left click to finish."
+            },
             "Dawn": {
                 "EndTurn": "Dawn: End Turn",
                 "Move": "Dawn: Move"
@@ -1784,6 +1788,11 @@
                 "Stored": "{spellName} stored!",
                 "Upcast": "Cast at what level?"
             },
+            "RollForActivity": {
+                "Error": "No activity including '{total}' found in {name}",
+                "Name": "Roll for Activity",
+                "PerTurn": "Reroll if Activty has No Usages Left:"
+            },
             "RunicShield": {
                 "Use": "Use {item} for {name}?"
             },
@@ -1944,6 +1953,16 @@
             },
             "StrangeMetabolism": {
                 "Select": "Which Mutagen?"
+            },
+            "Suffocate": {
+                "Name": "Suffocate",
+                "StartsOutOfAir": "Starts Out of Air:"
+            },
+            "Suffocation": {
+                "Name": {
+                    "HoldingBreath": "Suffocation: Holding Breath",
+                    "OutOfAir": "Suffocation: Out of Air"
+                }
             },
             "SummonAberration": {
                 "Beholderkin": "Beholderkin",

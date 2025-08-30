@@ -1,16 +1,8 @@
-async function use({trigger, workflow}) {
-    await workflow.actor.rollSkill({skill: 'ste'});
-}
+import {hide as modernHide} from '../../2024/actions/hide.js';
 export let hide = {
     name: 'Hide',
-    version: '1.1.0',
-    midi: {
-        item: [
-            {
-                pass: 'rollFinished',
-                macro: use,
-                priority: 50
-            }
-        ]
-    }
+    version: '1.3.34',
+    midi: modernHide.midi,
+    config: modernHide.config,
+    hasAnimation: true
 };

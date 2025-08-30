@@ -303,6 +303,13 @@
       "path": "packs/cpr-embedded-macro-sample-items",
       "type": "Item",
       "module": "chris-premades"
+    },
+    {
+      "name": "CPRActions2024",
+      "label": "CPR Actions (2024)",
+      "path": "packs/cpr-actions-2024",
+      "type": "Item",
+      "module": "chris-premades"
     }
   ],
   "packFolders": [
@@ -345,7 +352,8 @@
             "CPRSummons2024",
             "CPRSummonFeatures2024",
             "CPRFeats2024",
-            "CPRFeatFeatures2024"
+            "CPRFeatFeatures2024",
+            "CPRActions2024"
           ]
         }
       ],

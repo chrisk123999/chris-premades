@@ -23,7 +23,9 @@ export {parry} from './macros/2014/monsterFeatures/generic/parry.js';
 export {reduce, reduceReduced} from './macros/2014/monsterFeatures/generic/reduce.js';
 export {reduceMaxHP} from './macros/2014/monsterFeatures/generic/reduceMaxHP.js';
 export {rerollSaveOnDamage, rerollSaveOnDamageActor} from './macros/2014/monsterFeatures/generic/rerollSaveOnDamage.js';
+export {rollForActivity} from './macros/2014/monsterFeatures/generic/rollForActivity.js';
 export {spellTurning} from './macros/2014/monsterFeatures/generic/spellTurning.js';
+export {suffocate} from './macros/2014/monsterFeatures/generic/suffocate.js';
 export {sunlightSensitivity} from './macros/2014/monsterFeatures/generic/sunlightSensitivity.js';
 export {surpriseAttack} from './macros/2014/monsterFeatures/generic/surpriseAttack.js';
 export {swarmDamage} from './macros/2014/monsterFeatures/generic/swarmDamage.js';
@@ -32,6 +34,11 @@ export {undeadFortitude} from './macros/2014/monsterFeatures/generic/undeadForti
 //Mechanics
 export {cleaveMastery, grazeMastery, pushMastery, sapMastery, slowMastery, toppleMastery, vexMastery} from './macros/2024/mechanics/masteries.js';
 export {invisible} from './macros/2024/mechanics/invisible.js';
+//Actions
+export {suffocation, suffocationOutOfAir} from './macros/2024/actions/suffocation.js';
+export {dash} from './macros/2024/actions/dash.js';
+export {hide, hideEffect} from './macros/2024/actions/hide.js';
+export {disengage} from './macros/2024/actions/disengage.js';
 //Generic
 export {proneOnFail} from './macros/2024/generic/proneOnFail.js';
 //Spells
@@ -264,6 +271,7 @@ export {warGodsBlessing, warGodsBlessingCast} from './macros/2024/classFeatures/
 export {avatarOfBattle} from './macros/2024/classFeatures/cleric/war/avatarOfBattle.js';
 //Rogue
 export {sneakAttack} from './macros/2024/classFeatures/rogue/sneakAttack.js';
+export {cunningAction} from './macros/2024/classFeatures/rogue/cunningAction.js';
 export {cunningStrike} from './macros/2024/classFeatures/rogue/cunningStrike.js';
 export {improvedCunningStrike} from './macros/2024/classFeatures/rogue/improvedCunningStrike.js';
 export {deviousStrikes} from './macros/2024/classFeatures/rogue/deviousStrikes.js';

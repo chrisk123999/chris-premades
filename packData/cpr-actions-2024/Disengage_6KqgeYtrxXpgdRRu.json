@@ -10,7 +10,10 @@
     "source": {
       "custom": "",
       "revision": 1,
-      "rules": "2014"
+      "rules": "2024",
+      "book": "",
+      "page": "",
+      "license": ""
     },
     "uses": {
       "max": "",
@@ -98,9 +101,7 @@
         },
         "sort": 0,
         "useConditionText": "",
-        "forceDialog": false,
         "effectConditionText": "",
-        "midiAutomationOnly": false,
         "useConditionReason": "",
         "macroData": {
           "name": "",
@@ -119,9 +120,7 @@
           "triggeredActivityConditionText": "",
           "triggeredActivityTargets": "targets",
           "triggeredActivityRollAs": "self",
-          "forceDialog": false,
-          "forceAttackDialog": false,
-          "forceDamageDialog": false,
+          "forceDamageDialog": "false",
           "confirmTargets": "default",
           "autoTargetType": "any",
           "autoTargetAction": "default",
@@ -138,7 +137,10 @@
           "magicEffect": false,
           "magicDamage": false,
           "noConcentrationCheck": false,
-          "autoCEEffects": "default"
+          "autoCEEffects": "default",
+          "autoConsume": false,
+          "forceConsumeDialog": "default",
+          "forceRollDialog": "default"
         },
         "isOverTimeFlag": false,
         "overTimeProperties": {
@@ -146,7 +148,8 @@
           "preRemoveConditionText": "",
           "postRemoveConditionText": ""
         },
-        "otherActivityId": "none"
+        "otherActivityId": "none",
+        "otherActivityAsParentType": true
       }
     },
     "identifier": "disengage",
@@ -226,7 +229,7 @@
         }
       },
       "sort": 0,
-      "_key": "!items.effects!34jFXjMOseErle3M.PTVnFkLFaGKQptCu"
+      "_key": "!items.effects!6KqgeYtrxXpgdRRu.PTVnFkLFaGKQptCu"
     }
   ],
   "flags": {
@@ -264,12 +267,19 @@
       "ida": false
     },
     "core": {},
+    "dnd5e": {
+      "riders": {
+        "activity": [],
+        "effect": []
+      }
+    },
     "chris-premades": {
       "info": {
         "name": "Disengage",
-        "version": "1.3.34",
         "identifier": "disengage",
         "source": "chris-premades",
+        "rules": "modern",
+        "version": "1.3.34",
         "hasAnimation": true
       },
       "macros": {
@@ -279,15 +289,9 @@
           ]
         }
       }
-    },
-    "dnd5e": {
-      "riders": {
-        "activity": [],
-        "effect": []
-      }
     }
   },
   "folder": null,
-  "_id": "34jFXjMOseErle3M",
-  "_key": "!items!34jFXjMOseErle3M"
+  "_id": "6KqgeYtrxXpgdRRu",
+  "_key": "!items!6KqgeYtrxXpgdRRu"
 }

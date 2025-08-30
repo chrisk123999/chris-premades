@@ -1,3 +1,25 @@
+# 1.3.35 Release:
+## Bug Fixes:
+- Fixed duplicate pack names.
+
+# 1.3.34 Release:
+## New Modern Content:
+- Suffocation Generic Action
+- Dash Generic Action
+- Disengage Generic Action
+- Hide Generic Action
+- Cunning Action
+## New Generic Monster Features:
+- Suffocate
+- Roll for Activity. Note: Example "GMF - Chaos Claw" item included in the "CPR Miscellaneous" compendium.
+## New Enhanced Animations:
+- Dash Generic Action (Thanks Eskiemoh)
+- Disengage Generic Action (Thanks Eskiemoh)
+- Hide Generic Action (Thanks Eskiemoh)
+- Cunning Action (Thanks Eskiemoh)
+## Update Notes:
+- The add generic actions to actors setting only currently supports legacy generic actions. Modern generic actions will be added to this setting in the future.
+  
 # 1.3.33 Release:
 ## New Modern Content:
 - Improved Cunning Strike
