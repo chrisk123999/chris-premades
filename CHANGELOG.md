@@ -1,3 +1,14 @@
+# 1.3.36 Release:
+## New Modern Content:
+- Steady Aim
+- Uncanny Dodge
+- Evasion
+- Reliable Talent
+- Slippery Mind
+- Elusive
+## Update Notes:
+- Updated Cunning Strike and Devious Strikes to support homebrew additions.
+
 # 1.3.35 Release:
 ## Bug Fixes:
 - Fixed duplicate pack names.

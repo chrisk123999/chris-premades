@@ -1,0 +1,115 @@
+{
+  "name": "Elusive",
+  "type": "feat",
+  "effects": [
+    {
+      "name": "Elusive",
+      "changes": [
+        {
+          "key": "flags.midi-qol.grants.noAdvantage.attack.all",
+          "mode": 0,
+          "value": "!target.statuses.incapacitated",
+          "priority": 20
+        }
+      ],
+      "transfer": true,
+      "img": "icons/creatures/slimes/slime-movement-swirling-blue.webp",
+      "_id": "SaU9twsq0lyW0j0u",
+      "type": "base",
+      "system": {},
+      "disabled": false,
+      "duration": {
+        "startTime": null,
+        "combat": null,
+        "seconds": null,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "description": "",
+      "origin": "Actor.4F5kQIpxwyb6rykH.Item.8x374CzqHRTddyKE",
+      "tint": "#ffffff",
+      "statuses": [],
+      "sort": 0,
+      "flags": {
+        "dnd5e": {
+          "riders": {
+            "statuses": []
+          }
+        },
+        "dae": {
+          "enableCondition": "",
+          "disableCondition": "",
+          "stackable": "noneName",
+          "showIcon": false,
+          "disableIncapacitated": false,
+          "selfTarget": false,
+          "selfTargetAlways": false,
+          "dontApply": false,
+          "durationExpression": "",
+          "macroRepeat": "none",
+          "specialDuration": []
+        },
+        "core": {
+          "overlay": false
+        }
+      },
+      "_key": "!items.effects!guatjif0fGktHzFI.SaU9twsq0lyW0j0u"
+    }
+  ],
+  "system": {
+    "activities": {},
+    "uses": {
+      "spent": 0,
+      "recovery": []
+    },
+    "advancement": [],
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "identifier": "elusive",
+    "source": {
+      "book": "PHB 2024",
+      "page": "",
+      "license": "",
+      "custom": "",
+      "rules": "2024",
+      "revision": 1
+    },
+    "crewed": false,
+    "enchant": {},
+    "prerequisites": {
+      "level": 18,
+      "items": [],
+      "repeatable": false
+    },
+    "properties": [],
+    "requirements": "",
+    "type": {
+      "value": "class",
+      "subtype": ""
+    }
+  },
+  "flags": {
+    "dnd5e": {
+      "advancementOrigin": "DSrhBjkeeo3sLIdd",
+      "riders": {
+        "activity": []
+      }
+    },
+    "chris-premades": {
+      "info": {
+        "identifier": "elusive",
+        "source": "chris-premades",
+        "rules": "modern",
+        "version": "1.3.36"
+      }
+    }
+  },
+  "img": "icons/creatures/slimes/slime-movement-swirling-blue.webp",
+  "folder": "oeHJD6UoRsmQIVlo",
+  "_id": "guatjif0fGktHzFI",
+  "_key": "!items!guatjif0fGktHzFI"
+}

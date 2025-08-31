@@ -46,7 +46,7 @@
           },
           "dependents": [
             {
-              "uuid": "Scene.L39dEBy0tiHToOQE.Token.gOe4d6i4wAcSR1Lj.Actor.4i1zH4NhFIiJdyVO.ActiveEffect.fqhXphZaXj4CJFkZ"
+              "uuid": "Scene.L39dEBy0tiHToOQE.Token.Yy6P7ggqx68FlHhN.Actor.4i1zH4NhFIiJdyVO.ActiveEffect.UYgBguOXNBGep6fN"
             }
           ]
         },
@@ -67,7 +67,7 @@
           "overlay": false
         }
       },
-      "_key": "!items.effects!TVyVeMDcPhRLVOwn.9UZZ3ouSUWdI3rJF"
+      "_key": "!items.effects!DxF2Sv4IKV8iPR7c.9UZZ3ouSUWdI3rJF"
     },
     {
       "name": "Cunning Strike: Withdraw",
@@ -124,7 +124,7 @@
           "overlay": false
         }
       },
-      "_key": "!items.effects!TVyVeMDcPhRLVOwn.m59GKZZ40WWoMKfT"
+      "_key": "!items.effects!DxF2Sv4IKV8iPR7c.m59GKZZ40WWoMKfT"
     }
   ],
   "system": {
@@ -192,7 +192,7 @@
         "uses": {
           "spent": 0,
           "recovery": [],
-          "max": ""
+          "max": "1"
         },
         "damage": {
           "onSave": "half",
@@ -261,10 +261,7 @@
         "otherActivityId": "none",
         "otherActivityAsParentType": true,
         "friendlySave": "default",
-        "img": "icons/skills/melee/blade-tip-acid-poison-green.webp",
-        "appliedEffects": [
-          "9UZZ3ouSUWdI3rJF"
-        ]
+        "img": "icons/skills/melee/blade-tip-acid-poison-green.webp"
       },
       "addTrip1IIIIIIII": {
         "name": "Trip (1d6)",
@@ -318,7 +315,7 @@
         "uses": {
           "spent": 0,
           "recovery": [],
-          "max": ""
+          "max": "1"
         },
         "damage": {
           "onSave": "half",
@@ -387,8 +384,7 @@
         "otherActivityId": "none",
         "otherActivityAsParentType": true,
         "friendlySave": "default",
-        "img": "icons/skills/movement/arrow-down-pink.webp",
-        "appliedEffects": []
+        "img": "icons/skills/movement/arrow-down-pink.webp"
       },
       "addWithdraw2IIII": {
         "name": "Withdraw (1d6)",
@@ -448,9 +444,9 @@
           "override": false
         },
         "uses": {
-          "spent": null,
+          "spent": 0,
           "recovery": [],
-          "max": ""
+          "max": "1"
         },
         "roll": {
           "prompt": false,
@@ -508,9 +504,7 @@
         },
         "otherActivityId": "none",
         "img": "icons/skills/movement/feet-winged-boots-brown.webp",
-        "appliedEffects": [
-          "m59GKZZ40WWoMKfT"
-        ]
+        "otherActivityAsParentType": true
       }
     },
     "uses": {
@@ -571,7 +565,7 @@
         "identifier": "cunningStrike",
         "source": "chris-premades",
         "rules": "modern",
-        "version": "1.3.32"
+        "version": "1.3.36"
       },
       "macros": {
         "midi": {
@@ -587,6 +581,6 @@
   },
   "img": "icons/skills/melee/blade-tip-acid-poison-green.webp",
   "folder": "oeHJD6UoRsmQIVlo",
-  "_id": "TVyVeMDcPhRLVOwn",
-  "_key": "!items!TVyVeMDcPhRLVOwn"
+  "_id": "DxF2Sv4IKV8iPR7c",
+  "_key": "!items!DxF2Sv4IKV8iPR7c"
 }

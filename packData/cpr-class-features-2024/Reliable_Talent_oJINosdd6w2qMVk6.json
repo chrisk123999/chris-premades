@@ -1,0 +1,114 @@
+{
+  "name": "Reliable Talent",
+  "type": "feat",
+  "effects": [
+    {
+      "name": "Reliable Talent",
+      "statuses": [],
+      "changes": [
+        {
+          "key": "flags.dnd5e.reliableTalent",
+          "value": "true",
+          "mode": 5,
+          "priority": 20
+        }
+      ],
+      "duration": {
+        "seconds": null,
+        "startTime": 36,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null,
+        "combat": null
+      },
+      "tint": "#ffffff",
+      "transfer": true,
+      "disabled": false,
+      "flags": {
+        "dae": {
+          "transfer": true,
+          "stackable": "noneNameOnly",
+          "specialDuration": []
+        },
+        "ddbimporter": {
+          "disabled": false
+        },
+        "midi-qol": {
+          "forceCEOff": true
+        },
+        "core": {}
+      },
+      "description": "",
+      "img": "icons/magic/symbols/runes-star-magenta.webp",
+      "_id": "TL3canJkR60dtCxr",
+      "type": "base",
+      "system": {},
+      "origin": null,
+      "sort": 0,
+      "_key": "!items.effects!oJINosdd6w2qMVk6.TL3canJkR60dtCxr"
+    }
+  ],
+  "system": {
+    "activities": {},
+    "uses": {
+      "spent": 0,
+      "recovery": []
+    },
+    "advancement": [],
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "identifier": "reliable-talent",
+    "source": {
+      "book": "PHB 2024",
+      "page": "",
+      "license": "",
+      "custom": "",
+      "rules": "2024",
+      "revision": 1
+    },
+    "crewed": false,
+    "enchant": {},
+    "prerequisites": {
+      "level": 7,
+      "items": [],
+      "repeatable": false
+    },
+    "properties": [],
+    "requirements": "",
+    "type": {
+      "value": "class",
+      "subtype": ""
+    }
+  },
+  "flags": {
+    "midi-qol": {
+      "removeAttackDamageButtons": "default",
+      "forceCEOff": true
+    },
+    "midiProperties": {
+      "confirmTargets": "default"
+    },
+    "dnd5e": {
+      "riders": {
+        "activity": [],
+        "effect": []
+      },
+      "advancementOrigin": "DSrhBjkeeo3sLIdd"
+    },
+    "chris-premades": {
+      "info": {
+        "identifier": "reliableTalent",
+        "source": "chris-premades",
+        "rules": "modern",
+        "version": "1.3.36"
+      }
+    }
+  },
+  "img": "icons/magic/symbols/runes-star-magenta.webp",
+  "folder": "oeHJD6UoRsmQIVlo",
+  "_id": "oJINosdd6w2qMVk6",
+  "_key": "!items!oJINosdd6w2qMVk6"
+}

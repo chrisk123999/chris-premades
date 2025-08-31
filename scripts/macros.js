@@ -272,6 +272,13 @@ export {avatarOfBattle} from './macros/2024/classFeatures/cleric/war/avatarOfBat
 //Rogue
 export {sneakAttack} from './macros/2024/classFeatures/rogue/sneakAttack.js';
 export {cunningAction} from './macros/2024/classFeatures/rogue/cunningAction.js';
+export {steadyAim} from './macros/2024/classFeatures/rogue/steadyAim.js';
 export {cunningStrike} from './macros/2024/classFeatures/rogue/cunningStrike.js';
+export {uncannyDodge} from './macros/2024/classFeatures/rogue/uncannyDodge.js';
+export {reliableTalent} from './macros/2024/classFeatures/rogue/reliableTalent.js';
 export {improvedCunningStrike} from './macros/2024/classFeatures/rogue/improvedCunningStrike.js';
 export {deviousStrikes} from './macros/2024/classFeatures/rogue/deviousStrikes.js';
+export {slipperyMind} from './macros/2024/classFeatures/rogue/slipperyMind.js';
+export {elusive} from './macros/2024/classFeatures/rogue/elusive.js';
+//Multiple
+export {evasion} from './macros/2024/classFeatures/multiple/evasion.js';
