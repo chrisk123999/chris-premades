@@ -334,7 +334,7 @@ export async function run() {
         }
         async function clipboard(output) {
             try {
-                navigator.clipboard.writeText(output);
+                game.clipboard.copyPlainText(output);
                 genericUtils.notify('CHRISPREMADES.Troubleshooter.Clipboard', 'info', {localize: true});
             } catch (error) {
                 console.error(error);

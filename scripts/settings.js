@@ -19,6 +19,7 @@ import {item} from './applications/item.js';
 import {activities} from './extensions/activities.js';
 import {combat} from './extensions/combat.js';
 import {ui} from './extensions/ui.js';
+import {renderCompendium} from './extensions/titlebar.js';
 function addSetting(options) {
     let setting = {
         scope: options.scope ?? 'world',
@@ -573,7 +574,7 @@ export function registerSettings() {
             8: 'CHRISPREMADES.Settings.addActions.8',
             9: 'CHRISPREMADES.Settings.addActions.9'
         },
-        onChange: (value) => {
+        onChange: value => {
             if (value && !oldAddActions) {
                 Hooks.on('createToken', actions.createToken);
             } else if (!value && oldAddActions) {
@@ -858,7 +859,14 @@ export function registerSettings() {
         key: 'addCompendiumButton',
         type: Boolean,
         default: false,
-        category: 'interface'
+        category: 'interface',
+        onChange: value => {
+            if (value) {
+                Hooks.on('renderCompendiumDirectory', renderCompendium);
+            } else {
+                Hooks.off('renderCompendiumDirectory', renderCompendium);
+            }
+        }
     });
     addSetting({
         key: 'exportForSharing',
@@ -871,7 +879,7 @@ export function registerSettings() {
         type: Boolean,
         default: false,
         category: 'interface',
-        onChange: (value) => {
+        onChange: value => {
             if (value) {
                 Hooks.on('dnd5e.getItemContextOptions', item.send);
             } else {
@@ -905,7 +913,7 @@ export function registerSettings() {
         type: Boolean,
         default: false,
         category: 'mechanics',
-        onChange: (value) => {
+        onChange: value => {
             if (value) {
                 Hooks.on('preUpdateActor', combat.legendaryActionsTrack);
                 Hooks.on('preUpdateCombat', combat.legendaryActionsPrompt);

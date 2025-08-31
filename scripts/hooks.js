@@ -7,7 +7,7 @@ import {midiEvents} from './events/midi.js';
 import {movementEvents} from './events/movement.js';
 import {templateEvents} from './events/template.js';
 import {dae} from './integrations/dae.js';
-import {appendHeaderControl, renderEffectConfig, renderCompendium, renderActivitySheet} from './extensions/titlebar.js';
+import {appendHeaderControl, renderEffectConfig, renderCompendium, renderActivitySheet, copyUuid} from './extensions/titlebar.js';
 import {genericUtils} from './utils.js';
 import {chat} from './extensions/chat.js';
 import {sidebar} from './extensions/sidebar.js';
@@ -57,7 +57,7 @@ export function registerHooks() {
     Hooks.on('dae.setFieldData', dae.addFlags);
 
     // Header buttons
-    Hooks.on('renderCompendium', renderCompendium);
+    if (genericUtils.getCPRSetting('addCompendiumButton')) Hooks.on('renderCompendium', renderCompendium);
     Hooks.on('renderActivitySheet', renderActivitySheet);
     Hooks.on('renderDAEActiveEffectConfig', renderEffectConfig);
     Hooks.on('getHeaderControlsItemSheet5e', appendHeaderControl);
@@ -182,4 +182,13 @@ export function registerHooks() {
 
     // Disable AA for things which CPR is going to animate
     Hooks.on('aa.preDataSanitize', automatedAnimations.preDataSanitize);
+
+    // Dev Stuff
+    if (genericUtils.getCPRSetting('devTools')) {
+        Hooks.on('renderActorSheetV2', copyUuid);
+        Hooks.on('renderTokenConfig5e', copyUuid);
+        Hooks.on('renderItemSheetV2', copyUuid);
+        Hooks.on('renderActivitySheet', copyUuid);
+        Hooks.on('renderSceneConfig', copyUuid);
+    }
 }
