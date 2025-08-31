@@ -1,0 +1,130 @@
+{
+  "name": "Evasion",
+  "type": "feat",
+  "effects": [
+    {
+      "name": "Evasion",
+      "statuses": [],
+      "changes": [
+        {
+          "key": "flags.midi-qol.superSaver.dex",
+          "mode": 0,
+          "value": "!target.statuses.incapacitated",
+          "priority": 20
+        }
+      ],
+      "duration": {
+        "seconds": null,
+        "startTime": null,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null,
+        "combat": null
+      },
+      "tint": "#ffffff",
+      "transfer": true,
+      "disabled": false,
+      "flags": {
+        "dae": {
+          "transfer": false,
+          "stackable": "noneNameOnly",
+          "specialDuration": [],
+          "enableCondition": "",
+          "disableCondition": "",
+          "showIcon": false,
+          "disableIncapacitated": false,
+          "selfTarget": false,
+          "selfTargetAlways": false,
+          "dontApply": false,
+          "durationExpression": "",
+          "macroRepeat": "none"
+        },
+        "ddbimporter": {
+          "disabled": false
+        },
+        "midi-qol": {
+          "forceCEOff": true
+        },
+        "core": {
+          "overlay": false
+        },
+        "dnd5e": {
+          "riders": {
+            "statuses": []
+          }
+        }
+      },
+      "description": "",
+      "img": "icons/magic/earth/projectiles-magma-stone-orange.webp",
+      "_id": "9L9HT0of5ENcsQyc",
+      "type": "base",
+      "system": {},
+      "origin": "Actor.4F5kQIpxwyb6rykH.Item.aNGMaWY4CVuzayMT",
+      "sort": 0,
+      "_key": "!items.effects!b1XWThKaCYIYaMVH.9L9HT0of5ENcsQyc"
+    }
+  ],
+  "system": {
+    "activities": {},
+    "uses": {
+      "spent": 0,
+      "recovery": []
+    },
+    "advancement": [],
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "identifier": "evasion",
+    "source": {
+      "book": "PHB 2024",
+      "page": "",
+      "license": "",
+      "custom": "",
+      "rules": "2024",
+      "revision": 1
+    },
+    "crewed": false,
+    "enchant": {},
+    "prerequisites": {
+      "level": 7,
+      "items": [],
+      "repeatable": false
+    },
+    "properties": [],
+    "requirements": "",
+    "type": {
+      "value": "class",
+      "subtype": ""
+    }
+  },
+  "flags": {
+    "midi-qol": {
+      "removeAttackDamageButtons": "default",
+      "forceCEOff": true
+    },
+    "midiProperties": {
+      "confirmTargets": "default"
+    },
+    "dnd5e": {
+      "riders": {
+        "activity": [],
+        "effect": []
+      },
+      "advancementOrigin": "DSrhBjkeeo3sLIdd"
+    },
+    "chris-premades": {
+      "info": {
+        "identifier": "evasion",
+        "source": "chris-premades",
+        "rules": "modern",
+        "version": "1.3.36"
+      }
+    }
+  },
+  "img": "icons/magic/earth/projectiles-magma-stone-orange.webp",
+  "folder": "oeHJD6UoRsmQIVlo",
+  "_id": "b1XWThKaCYIYaMVH",
+  "_key": "!items!b1XWThKaCYIYaMVH"
+}

@@ -55,7 +55,7 @@
           "overlay": false
         }
       },
-      "_key": "!items.effects!fPLVkUiZuakTxOJn.z94Mi8jDtaniXwK2"
+      "_key": "!items.effects!GKt1tuFp7iXbQNdO.z94Mi8jDtaniXwK2"
     },
     {
       "name": "Devious Strikes: Knockout",
@@ -124,7 +124,7 @@
           "overlay": false
         }
       },
-      "_key": "!items.effects!fPLVkUiZuakTxOJn.77wlc1cjrrmn5n78"
+      "_key": "!items.effects!GKt1tuFp7iXbQNdO.77wlc1cjrrmn5n78"
     },
     {
       "name": "Devious Strikes: Obscured",
@@ -186,7 +186,7 @@
           "overlay": false
         }
       },
-      "_key": "!items.effects!fPLVkUiZuakTxOJn.P9nQrHNzeyynyOwK"
+      "_key": "!items.effects!GKt1tuFp7iXbQNdO.P9nQrHNzeyynyOwK"
     }
   ],
   "system": {
@@ -254,7 +254,7 @@
         "uses": {
           "spent": 0,
           "recovery": [],
-          "max": ""
+          "max": "2"
         },
         "damage": {
           "onSave": "half",
@@ -380,9 +380,9 @@
           "prompt": true
         },
         "uses": {
-          "spent": null,
+          "spent": 0,
           "recovery": [],
-          "max": ""
+          "max": "6"
         },
         "damage": {
           "onSave": "half",
@@ -507,9 +507,9 @@
           "prompt": true
         },
         "uses": {
-          "spent": null,
+          "spent": 0,
           "recovery": [],
-          "max": ""
+          "max": "3"
         },
         "damage": {
           "onSave": "half",
@@ -639,7 +639,7 @@
         "identifier": "deviousStrikes",
         "source": "chris-premades",
         "rules": "modern",
-        "version": "1.3.32"
+        "version": "1.3.36"
       },
       "macros": {
         "midi": {
@@ -652,6 +652,6 @@
   },
   "img": "icons/skills/melee/strike-sword-stabbed-brown.webp",
   "folder": "oeHJD6UoRsmQIVlo",
-  "_id": "fPLVkUiZuakTxOJn",
-  "_key": "!items!fPLVkUiZuakTxOJn"
+  "_id": "GKt1tuFp7iXbQNdO",
+  "_key": "!items!GKt1tuFp7iXbQNdO"
 }

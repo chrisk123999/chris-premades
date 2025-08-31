@@ -1,0 +1,121 @@
+{
+  "name": "Slippery Mind",
+  "type": "feat",
+  "effects": [
+    {
+      "name": "Slippery Mind",
+      "changes": [
+        {
+          "key": "system.abilities.wis.proficient",
+          "mode": 4,
+          "value": "1",
+          "priority": 20
+        },
+        {
+          "key": "system.abilities.cha.proficient",
+          "mode": 4,
+          "value": "1",
+          "priority": 20
+        }
+      ],
+      "transfer": true,
+      "img": "icons/magic/air/fog-gas-smoke-dense-pink.webp",
+      "_id": "TfWCJf15YSfpfpZk",
+      "type": "base",
+      "system": {},
+      "disabled": false,
+      "duration": {
+        "startTime": null,
+        "combat": null,
+        "seconds": null,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "description": "",
+      "origin": "Actor.4F5kQIpxwyb6rykH.Item.My1CEgdUNmWsJeN3",
+      "tint": "#ffffff",
+      "statuses": [],
+      "sort": 0,
+      "flags": {
+        "dnd5e": {
+          "riders": {
+            "statuses": []
+          }
+        },
+        "dae": {
+          "enableCondition": "",
+          "disableCondition": "",
+          "stackable": "noneName",
+          "showIcon": false,
+          "disableIncapacitated": false,
+          "selfTarget": false,
+          "selfTargetAlways": false,
+          "dontApply": false,
+          "durationExpression": "",
+          "macroRepeat": "none",
+          "specialDuration": []
+        },
+        "core": {
+          "overlay": false
+        }
+      },
+      "_key": "!items.effects!i0Z8xqT2X9nBk1ud.TfWCJf15YSfpfpZk"
+    }
+  ],
+  "system": {
+    "activities": {},
+    "uses": {
+      "spent": 0,
+      "recovery": []
+    },
+    "advancement": [],
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "identifier": "slippery-mind",
+    "source": {
+      "book": "PHB 2024",
+      "page": "",
+      "license": "",
+      "custom": "",
+      "rules": "2024",
+      "revision": 1
+    },
+    "crewed": false,
+    "enchant": {},
+    "prerequisites": {
+      "level": 15,
+      "items": [],
+      "repeatable": false
+    },
+    "properties": [],
+    "requirements": "",
+    "type": {
+      "value": "class",
+      "subtype": ""
+    }
+  },
+  "flags": {
+    "dnd5e": {
+      "advancementOrigin": "DSrhBjkeeo3sLIdd",
+      "riders": {
+        "activity": []
+      }
+    },
+    "chris-premades": {
+      "info": {
+        "identifier": "slipperyMind",
+        "source": "chris-premades",
+        "rules": "modern",
+        "version": "1.3.36"
+      }
+    }
+  },
+  "img": "icons/magic/air/fog-gas-smoke-dense-pink.webp",
+  "folder": "oeHJD6UoRsmQIVlo",
+  "_id": "i0Z8xqT2X9nBk1ud",
+  "_key": "!items!i0Z8xqT2X9nBk1ud"
+}

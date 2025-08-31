@@ -41,19 +41,10 @@ async function damage({trigger: {entity: item}, workflow}) {
             if (documents.length) {
                 let activities = [];
                 let used = [];
-                let info = {
-                    poison: 1,
-                    trip: 1,
-                    withdraw: 1,
-                    daze: 2,
-                    knockOut: 6,
-                    obscure: 3
-                };
                 for (let i = 0; i < uses; i++) {
                     let availableActivities = documents.filter(activity => {
                         let identifier = activityUtils.getIdentifier(activity);
-                        if (!identifier) return;
-                        if (info[identifier] > number) return;
+                        if ((activity.uses.max ?? 1) > number) return;
                         if (identifier === 'poison' && !workflow.actor.items.find(j => j.system.identifier === 'poisoners-kit')) return;
                         if (identifier === 'trip' && actorUtils.getSize(workflow.targets.first().actor) > 3) return;
                         if (used.includes(identifier)) return;
@@ -65,7 +56,7 @@ async function damage({trigger: {entity: item}, workflow}) {
                     if (!selection) break;
                     let identifier = activityUtils.getIdentifier(selection);
                     if (!identifier) break;
-                    number -= info[identifier];
+                    number -= selection.uses.max;
                     activities.push(selection);
                     used.push(identifier);
                 }

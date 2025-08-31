@@ -11,7 +11,7 @@ async function use({trigger, workflow}) {
 }
 export let cunningStrike = {
     name: 'Cunning Strike',
-    version: '1.3.32',
+    version: '1.3.36',
     rules: 'modern',
     midi: {
         item: [

@@ -1,5 +1,4 @@
 import {actorUtils, constants, dialogUtils, genericUtils, itemUtils, workflowUtils} from '../../../utils.js';
-
 async function use({workflow}) {
     if (workflow.targets.size !== 1) return;
     let weapons = workflow.actor.items.filter(i => i.type === 'weapon' && i.system.equipped && i.system.prof.hasProficiency && constants.weaponTypes.includes(i.system.type?.value));

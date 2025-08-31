@@ -1,7 +1,7 @@
 import {cunningStrike} from './cunningStrike.js';
 export let deviousStrikes = {
     name: 'Devious Strikes',
-    version: '1.3.32',
+    version: '1.3.36',
     rules: 'modern',
     midi: {
         actor: [
