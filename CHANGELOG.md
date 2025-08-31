@@ -7,6 +7,8 @@
 ## Bug Fixes:
 - Sneak Attack (Modern)
 - Form of Dread (Legacy)
+## Update Notes:
+- CPR now requires D&D system version 5.1.4!
   
 # 1.3.36 Release:
 ## New Modern Content:
