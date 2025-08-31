@@ -1,3 +1,20 @@
+# 1.3.38 Release:
+## New Generic Monster Features:
+- Blood Frenzy
+- Bloodied Frenzy
+  
+# 1.3.37 Release:
+## New Modern Features:
+- Stroke of Luck
+## New Generic Monster Features:
+- Movement Bonus Activity (Features such as Charge or Gore)
+- Special Item Use
+## Bug Fixes:
+- Sneak Attack (Modern)
+- Form of Dread (Legacy)
+## Update Notes:
+- CPR now requires D&D system version 5.1.4!
+  
 # 1.3.36 Release:
 ## New Modern Content:
 - Steady Aim

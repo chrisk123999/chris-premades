@@ -183,6 +183,7 @@
             "CreatureTypes": "Creature Types:",
             "CriticalOnly": "Critical Only:",
             "DC": "DC:",
+            "DamageBonus": "Damage Bonus:",
             "DamageType": "Damage Type:",
             "DamageTypes": "Damage Types:",
             "DarknessAnimation": "Darkness Animation:",
@@ -202,6 +203,7 @@
             "MaxLevel": "Max Level:",
             "MaxSize": "Max Size:",
             "Name": "Name:",
+            "NoDCPrompt": "Prompt on no DC:",
             "Number": "Number:",
             "Opacity": "Opacity:",
             "Percentage": "Percentage:",
@@ -861,6 +863,12 @@
             },
             "BloodCurses": {
                 "Amplify": "Amplify Blood Curse?"
+            },
+            "BloodFrenzy": {
+                "Name": "Blood Frenzy"
+            },
+            "BloodiedFrenzy": {
+                "Name": "Bloodied Frenzy"
             },
             "BolsteringMagic": {
                 "Already": "Target is already being bolstered!",
@@ -1623,6 +1631,11 @@
                 "Damage": "Moonbeam: Damage",
                 "Move": "Moonbeam: Move"
             },
+            "MovementBonusActivity": {
+                "Distance": "Required Distance (ft):",
+                "Name": "Movement Bonus Activity",
+                "ReplaceDamageFormula": "Replace Damage Formula:"
+            },
             "Mutagencraft": {
                 "AttackSunlight": "Are either {sourceTokenName} or {targetTokenName} in direct sunlight?",
                 "Create": "Which Mutagen do you create?",
@@ -1862,6 +1875,10 @@
             "SoothePain": {
                 "Protect": "Reduce damage to {tokenName}?",
                 "Self": "Reduce damage to self?"
+            },
+            "SpecialItemUse": {
+                "Name": "Special Item Use",
+                "TriggerItems": "Items to Trigger:"
             },
             "SpellTurning": {
                 "Advantage": "Advantage on saves:",

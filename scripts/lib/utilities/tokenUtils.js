@@ -323,6 +323,45 @@ function getNewlyHitTokens(startPoint, endPoint, radius, collisionType='move') {
     let tokens = getAffectedTokens(startPoint, endPoint, radius);
     return tokens;
 }
+function getLinearDistanceMoved(token) {
+    // I know this is terrible and I hate it too.
+    let movementHistory = genericUtils.duplicate(token.document?.movementHistory ?? token.movementHistory).reverse();
+    if (!movementHistory.length) return 0;
+    let waypoints = null;
+    let verifiedMovementIds = [movementHistory[0].movementId];
+    let testingMovementIds = [movementHistory[0].movementId];
+    let pointA = movementHistory[0];
+    let ray = null;
+    while (waypoints === null) {
+        let testPoint = movementHistory.find(i => !testingMovementIds.includes(i.movementId));
+        if (!testPoint) {
+            if (testingMovementIds.length === verifiedMovementIds.length) waypoints = movementHistory.filter(i => verifiedMovementIds.includes(i.movementId));
+            else {
+                let testRay = new foundry.canvas.geometry.Ray(pointA, movementHistory.at(-1));
+                if (testRay.angle === ray.angle) {
+                    verifiedMovementIds.push(movementHistory.at(-1).movementId);
+                } else {
+                    waypoints = movementHistory.filter(i => verifiedMovementIds.includes(i.movementId)).concat(movementHistory.find(i => !verifiedMovementIds.includes(i.movementId)));
+                }
+            }
+        } else {
+            if (!ray) {
+                ray = new foundry.canvas.geometry.Ray(pointA, genericUtils.duplicate(testPoint));
+                testingMovementIds.push(genericUtils.duplicate(testPoint.movementId));
+            } else {
+                let testRay = new foundry.canvas.geometry.Ray(pointA, testPoint);
+                if (testRay.angle === ray.angle) {
+                    verifiedMovementIds = genericUtils.duplicate(testingMovementIds);
+                    testingMovementIds.push(genericUtils.duplicate(testPoint.movementId));
+                    continue;
+                } else {
+                    waypoints = movementHistory.filter(i => verifiedMovementIds.includes(i.movementId)).concat(movementHistory.find(i => !verifiedMovementIds.includes(i.movementId)));
+                }
+            }
+        }
+    }
+    return token.measureMovementPath(waypoints).distance;
+}
 export let tokenUtils = {
     getDistance,
     checkCover,
@@ -338,5 +377,6 @@ export let tokenUtils = {
     attachToToken,
     getLightLevel,
     grappleHelper,
-    getNewlyHitTokens
+    getNewlyHitTokens,
+    getLinearDistanceMoved
 };

@@ -120,6 +120,15 @@ function hasDuplicateDie(rolls) {
     }
     return hasDuplicate(rolls.flatMap(i => i.dice.flatMap(j => j.results.filter(k => k.active).flatMap(l => l.result))));
 }
+async function replaceD20(roll, number) {
+    let rollData = genericUtils.duplicate(roll.toJSON());
+    rollData.terms[0].results = rollData.terms[0].results.map(result => {
+        result.result = number;
+        return result;
+    });
+    rollData.total = (number - roll.terms[0].total) + roll.total;
+    return await Roll.fromData(rollData);
+}
 export let rollUtils = {
     getCriticalFormula,
     contestedRoll,
@@ -130,5 +139,6 @@ export let rollUtils = {
     addToRoll,
     remoteRoll,
     remoteDamageRolls,
-    hasDuplicateDie
+    hasDuplicateDie,
+    replaceD20
 };

@@ -280,6 +280,31 @@ async function specialWeaponAttack(item, targets, sourceFeature) {
     await itemUtils.enchantItem(item, effectData);
     await syntheticItemRoll(item, targets);
 }
+async function specialItemUse(item, targets, sourceFeature) {
+    let effectData = {
+        name: sourceFeature.name,
+        img: constants.tempConditionIcon,
+        changes: Object.values(CONFIG.DND5E.activityTypes).map(i => ({
+            key: 'activities[' + i + '].activation.type',
+            mode: 5,
+            value: 'special',
+            priority: 20
+        })),
+        duration: {
+            seconds: 1
+        },
+        flags: {
+            dae: {
+                specialDuration: [
+                    '1Attack'
+                ]
+            }
+        },
+        origin: sourceFeature.uuid
+    };
+    await itemUtils.enchantItem(item, effectData);
+    await syntheticItemRoll(item, targets);
+}
 export let workflowUtils = {
     bonusDamage,
     bonusAttack,
@@ -300,5 +325,6 @@ export let workflowUtils = {
     modifyDamageAppliedFlat,
     getCastLevel,
     syntheticActivityDataRoll,
-    specialWeaponAttack
+    specialWeaponAttack,
+    specialItemUse
 };

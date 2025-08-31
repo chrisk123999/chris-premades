@@ -186,7 +186,6 @@ async function getItemFromCompendium(key, name, {ignoreNotFound, folderId, objec
     let packIndex = await pack.getIndex({'fields': ['name', 'type', 'folder', 'system.source.rules', 'flags.chris-premades.info.identifier']});
     let match;
     if (!byIdentifier) {
-        let names = 
         match = packIndex.find(item => (item.flags['chris-premades']?.info?.aliases ?? []).concat(item.name).includes(name) && (!folderId || (folderId && item.folder === folderId)) && (!matchType || (item.type === matchType)) && (!rules || (item.system.source.rules === (rules === 'modern' ? '2024' : '2014'))));
     } else {
         match = packIndex.find(item => item.flags['chris-premades']?.info?.identifier === name && (!folderId || (folderId && item.folder === folderId)) && (!matchType || (item.type === matchType)) && (!rules || (item.system.source.rules === (rules === 'modern' ? '2024' : '2014'))));

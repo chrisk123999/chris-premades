@@ -7,6 +7,8 @@ export {auraDamageEnd} from './macros/2014/monsterFeatures/generic/auraDamage.js
 export {autoGrapple} from './macros/2014/monsterFeatures/generic/autoGrapple.js';
 export {autoPush} from './macros/2014/monsterFeatures/generic/autoPush.js';
 export {berserk} from './macros/2014/monsterFeatures/generic/berserk.js';
+export {bloodFrenzy} from './macros/2014/monsterFeatures/generic/bloodFrenzy.js';
+export {bloodiedFrenzy} from './macros/2014/monsterFeatures/generic/bloodiedFrenzy.js';
 export {contextualBonus} from './macros/2014/monsterFeatures/generic/contextualBonus.js';
 export {damageTurnStart} from './macros/2014/monsterFeatures/generic/damageTurnStart.js';
 export {deathBurst} from './macros/2014/monsterFeatures/generic/deathBurst.js';
@@ -18,12 +20,14 @@ export {genericTeleport} from './macros/2014/monsterFeatures/generic/teleport.js
 export {keenSenses} from './macros/2014/monsterFeatures/generic/keenSenses.js';
 export {lifesteal} from './macros/2014/monsterFeatures/generic/lifesteal.js';
 export {martialAdvantage} from './macros/2014/monsterFeatures/generic/martialAdvantage.js';
+export {movementBonusActivity} from './macros/2014/monsterFeatures/generic/movementBonusActivity.js';
 export {packTactics} from './macros/2014/monsterFeatures/generic/packTactics.js';
 export {parry} from './macros/2014/monsterFeatures/generic/parry.js';
 export {reduce, reduceReduced} from './macros/2014/monsterFeatures/generic/reduce.js';
 export {reduceMaxHP} from './macros/2014/monsterFeatures/generic/reduceMaxHP.js';
 export {rerollSaveOnDamage, rerollSaveOnDamageActor} from './macros/2014/monsterFeatures/generic/rerollSaveOnDamage.js';
 export {rollForActivity} from './macros/2014/monsterFeatures/generic/rollForActivity.js';
+export {specialItemUse} from './macros/2014/monsterFeatures/generic/specialItemUse.js';
 export {spellTurning} from './macros/2014/monsterFeatures/generic/spellTurning.js';
 export {suffocate} from './macros/2014/monsterFeatures/generic/suffocate.js';
 export {sunlightSensitivity} from './macros/2014/monsterFeatures/generic/sunlightSensitivity.js';
@@ -280,5 +284,6 @@ export {improvedCunningStrike} from './macros/2024/classFeatures/rogue/improvedC
 export {deviousStrikes} from './macros/2024/classFeatures/rogue/deviousStrikes.js';
 export {slipperyMind} from './macros/2024/classFeatures/rogue/slipperyMind.js';
 export {elusive} from './macros/2024/classFeatures/rogue/elusive.js';
+export {strokeOfLuck} from './macros/2024/classFeatures/rogue/strokeOfLuck.js';
 //Multiple
 export {evasion} from './macros/2024/classFeatures/multiple/evasion.js';
