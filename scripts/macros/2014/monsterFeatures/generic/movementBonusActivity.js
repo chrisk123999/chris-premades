@@ -15,7 +15,6 @@ async function early({workflow}) {
     let formula = config.damageBonus;
     if (config.replaceDamageFormula) {
         let damageRoll = rollUtils.damageRoll(formula, workflow.item, workflow.damageRolls[0].options); // "probably it"
-        console.log(damageRoll);
         await workflow.setDamageRolls([damageRoll]);
     } else {
         await workflowUtils.bonusDamage(workflow, formula);

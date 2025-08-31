@@ -282,5 +282,6 @@ export {improvedCunningStrike} from './macros/2024/classFeatures/rogue/improvedC
 export {deviousStrikes} from './macros/2024/classFeatures/rogue/deviousStrikes.js';
 export {slipperyMind} from './macros/2024/classFeatures/rogue/slipperyMind.js';
 export {elusive} from './macros/2024/classFeatures/rogue/elusive.js';
+export {strokeOfLuck} from './macros/2024/classFeatures/rogue/strokeOfLuck.js';
 //Multiple
 export {evasion} from './macros/2024/classFeatures/multiple/evasion.js';

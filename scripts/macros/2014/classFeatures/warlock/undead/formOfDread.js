@@ -118,12 +118,12 @@ export let formOfDread = {
             category: 'visuals'
         }
     ],
-    ddbi: {
+    /*ddbi: {
         renamedItems: {
             'Form of Dread: Transform': 'Form of Dread',
             'Form of Dread': 'Form of Dread: Fear'
         }
-    }
+    }*/
 };
 export let formOfDreadActive = {
     name: 'Form of Dread: Active',

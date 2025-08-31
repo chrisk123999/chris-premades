@@ -352,7 +352,6 @@ function getLinearDistanceMoved(token) {
                 } else {
                     waypoints = movementHistory.filter(i => verifiedMovementIds.includes(i.movementId)).concat(movementHistory.find(i => !verifiedMovementIds.includes(i.movementId)));
                 }
-
             }
         }
     }

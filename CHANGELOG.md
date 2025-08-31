@@ -1,7 +1,12 @@
 # 1.3.37 Release:
+## New Modern Features:
+- Stroke of Luck
 ## New Generic Monster Features:
 - Movement Bonus Activity (Features such as Charge or Gore)
 - Special Item Use
+## Bug Fixes:
+- Sneak Attack (Modern)
+- Form of Dread (Legacy)
   
 # 1.3.36 Release:
 ## New Modern Content:

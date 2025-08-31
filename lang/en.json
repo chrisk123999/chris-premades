@@ -203,6 +203,7 @@
             "MaxLevel": "Max Level:",
             "MaxSize": "Max Size:",
             "Name": "Name:",
+            "NoDCPrompt": "Prompt on no DC:",
             "Number": "Number:",
             "Opacity": "Opacity:",
             "Percentage": "Percentage:",

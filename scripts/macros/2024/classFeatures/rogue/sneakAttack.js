@@ -43,7 +43,7 @@ async function damage({trigger: {entity: item}, workflow}) {
                 let used = [];
                 for (let i = 0; i < uses; i++) {
                     let availableActivities = documents.filter(activity => {
-                        let identifier = activityUtils.getIdentifier(activity);
+                        let identifier = activityUtils.getIdentifier(activity) ?? activity.id;
                         if ((activity.uses.max ?? 1) > number) return;
                         if (identifier === 'poison' && !workflow.actor.items.find(j => j.system.identifier === 'poisoners-kit')) return;
                         if (identifier === 'trip' && actorUtils.getSize(workflow.targets.first().actor) > 3) return;
@@ -54,7 +54,7 @@ async function damage({trigger: {entity: item}, workflow}) {
                     let text = i > 0 ? 'CHRISPREMADES.Macros.CunningStrike.UseAnother' : 'CHRISPREMADES.Macros.CunningStrike.Use';
                     let selection = await dialogUtils.selectDocumentDialog(cunningStrike ? cunningStrike.name : deviousStrikes.name, text, availableActivities, {sortAlphabetical: true, addNoneDocument: true});
                     if (!selection) break;
-                    let identifier = activityUtils.getIdentifier(selection);
+                    let identifier = activityUtils.getIdentifier(selection) ?? selection.id;
                     if (!identifier) break;
                     number -= selection.uses.max;
                     activities.push(selection);
