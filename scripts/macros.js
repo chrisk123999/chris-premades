@@ -18,6 +18,7 @@ export {genericTeleport} from './macros/2014/monsterFeatures/generic/teleport.js
 export {keenSenses} from './macros/2014/monsterFeatures/generic/keenSenses.js';
 export {lifesteal} from './macros/2014/monsterFeatures/generic/lifesteal.js';
 export {martialAdvantage} from './macros/2014/monsterFeatures/generic/martialAdvantage.js';
+export {movementBonusActivity} from './macros/2014/monsterFeatures/generic/movementBonusActivity.js';
 export {packTactics} from './macros/2014/monsterFeatures/generic/packTactics.js';
 export {parry} from './macros/2014/monsterFeatures/generic/parry.js';
 export {reduce, reduceReduced} from './macros/2014/monsterFeatures/generic/reduce.js';

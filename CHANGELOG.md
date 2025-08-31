@@ -1,3 +1,7 @@
+# 1.3.37 Release:
+## New Generic Monster Features:
+- Movement Bonus Activity (Features such as Charge or Gore)
+  
 # 1.3.36 Release:
 ## New Modern Content:
 - Steady Aim
