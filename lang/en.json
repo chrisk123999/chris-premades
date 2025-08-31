@@ -864,6 +864,12 @@
             "BloodCurses": {
                 "Amplify": "Amplify Blood Curse?"
             },
+            "BloodFrenzy": {
+                "Name": "Blood Frenzy"
+            },
+            "BloodiedFrenzy": {
+                "Name": "Bloodied Frenzy"
+            },
             "BolsteringMagic": {
                 "Already": "Target is already being bolstered!",
                 "Bonus": "Attack and Ability Bonus",
