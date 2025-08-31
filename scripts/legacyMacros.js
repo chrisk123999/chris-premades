@@ -483,6 +483,7 @@ export {reduce, reduceReduced} from './macros/2014/monsterFeatures/generic/reduc
 export {reduceMaxHP} from './macros/2014/monsterFeatures/generic/reduceMaxHP.js';
 export {rerollSaveOnDamage, rerollSaveOnDamageActor} from './macros/2014/monsterFeatures/generic/rerollSaveOnDamage.js';
 export {rollForActivity} from './macros/2014/monsterFeatures/generic/rollForActivity.js';
+export {specialItemUse} from './macros/2014/monsterFeatures/generic/specialItemUse.js';
 export {spellTurning} from './macros/2014/monsterFeatures/generic/spellTurning.js';
 export {suffocate} from './macros/2014/monsterFeatures/generic/suffocate.js';
 export {sunlightSensitivity} from './macros/2014/monsterFeatures/generic/sunlightSensitivity.js';

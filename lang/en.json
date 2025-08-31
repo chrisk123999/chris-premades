@@ -1869,6 +1869,10 @@
                 "Protect": "Reduce damage to {tokenName}?",
                 "Self": "Reduce damage to self?"
             },
+            "SpecialItemUse": {
+                "Name": "Special Item Use",
+                "TriggerItems": "Items to Trigger:"
+            },
             "SpellTurning": {
                 "Advantage": "Advantage on saves:",
                 "Name": "Spell Turning",
