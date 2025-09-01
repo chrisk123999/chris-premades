@@ -14,7 +14,7 @@ async function use({workflow}) {
     let itemEffects = (workflow.item.effects.map(i => i.uuid));
     let sourceEffect = actorUtils.getEffects(sourceToken.actor)?.find(i => itemEffects.includes(i.origin));
     let targetEffect = actorUtils.getEffects(targetToken.actor)?.find(i => itemEffects.includes(i.origin));
-    let dc = config.flatDC ?? (8 + sourceToken.actor.system.abilities.str.mod + sourceToken.actor.system.attributes.prof);
+    let dc = config.dc ?? (8 + sourceToken.actor.system.abilities.str.mod + sourceToken.actor.system.attributes.prof);
     await tokenUtils.grappleHelper(sourceToken, targetToken, workflow.item, {targetEffect, sourceEffect, noContest: true, flatDC: dc});
 }
 function actorSizes() {
@@ -27,7 +27,7 @@ function actorSizes() {
 export let escape = {
     name: 'Escape',
     translation: 'CHRISPREMADES.Macros.Escape.Name',
-    version: '1.3.39',
+    version: '1.3.38',
     midi: {
         item: [
             {
@@ -50,6 +50,12 @@ export let escape = {
             label: 'CHRISPREMADES.Macros.ActivityOnRest.TriggerActivities',
             type: 'activities',
             default: []
+        },
+        {
+            value: 'dc',
+            label: 'CHRISPREMADES.Config.DC',
+            type: 'text',
+            default: undefined
         },
         {
             value: 'maxSize',

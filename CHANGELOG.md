@@ -2,6 +2,7 @@
 ## New Generic Monster Features:
 - Blood Frenzy
 - Bloodied Frenzy
+- Escape
   
 # 1.3.37 Release:
 ## New Modern Features:

@@ -44,7 +44,7 @@ async function escape({workflow}) {
     } else {
         genericUtils.setProperty(sourceRollOptions, 'target', escapeFlags.dc);
         let result = await rollUtils.requestRoll(workflow.token, 'skill', selection, sourceRollOptions);
-        if (!result?.[0]?.total || (result[0].total <= escapeFlags?.dc)) return;
+        if (!result?.[0]?.total || (result[0].total < escapeFlags?.dc)) return;
     }
     let effect = grappledEffects.find(i => i.flags['chris-premades'].grapple.tokenId === targetToken.id);
     if (effect) await genericUtils.remove(effect);
