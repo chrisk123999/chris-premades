@@ -274,7 +274,10 @@ async function grappleHelper(sourceToken, targetToken, item, {noContest = false,
                             name: escapeData.name,
                             identifier: 'grappleEscape'
                         }
-                    ]
+                    ],
+                    info: {
+                        identifier: 'identifier'
+                    }
                 }
             }
         });
