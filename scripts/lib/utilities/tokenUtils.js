@@ -270,8 +270,6 @@ async function grappleHelper(sourceToken, targetToken, item, {noContest = false,
     if (!targetEffect) {
         targetEffect = await effectUtils.createEffect(targetToken.actor, targetEffectData, {identifier: 'grappled', parentEntity: sourceEffect, strictlyInterdependent: true, vae: [{type: 'use', name: escapeData.name, identifier: 'grappleEscape'}]});
     } else {
-        let conditions = targetEffect.flags['chris-premades']?.conditions ?? [];
-        if (!conditions.includes('grappled')) conditions.push('grappled');
         await genericUtils.update(targetEffect, {
             flags: {
                 'chris-premades': {
@@ -286,7 +284,6 @@ async function grappleHelper(sourceToken, targetToken, item, {noContest = false,
                     info: {
                         identifier: 'grappled'
                     },
-                    conditions,
                     grapple: {
                         tokenId: sourceToken.id
                     }
