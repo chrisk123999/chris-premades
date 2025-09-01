@@ -68,7 +68,7 @@ async function requestRoll(token, request, ability, options={}) {
     let data = {
         targetUuid: token.document.uuid,
         request: request,
-        ability: ability,
+        [request]: ability,
         options
     };
     return await MidiQOL.socket().executeAsUser('rollAbility', userID, data);

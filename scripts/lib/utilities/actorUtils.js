@@ -218,7 +218,7 @@ async function hasConditionBy(sourceActor, targetActor, statusId) {
 function compareSize(source, target, goal) {
     if (!source || !target || !goal) return undefined;
     function findSize(obj) {
-        if (obj instanceof Token) return getSize(obj.actor);
+        if (obj instanceof foundry.canvas.placeables.Token) return getSize(obj.actor);
         if (obj instanceof Actor) return getSize(obj);
         return Object.entries(CONFIG.DND5E.actorSizes).find(([key, value]) => [key, value.label, value.numerical].includes(obj))[1].numerical;
     }

@@ -1182,6 +1182,9 @@
                 "Reduce": "Reduce",
                 "Select": "Enlarge or Reduce?"
             },
+            "Escape": {
+                "Name": "Escape"
+            },
             "ExperimentalElixir": {
                 "Boldness": "Experimental Elixir: Boldness",
                 "Flight": "Experimental Elixir: Flight",
