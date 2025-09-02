@@ -1,7 +1,9 @@
 # 1.3.38 Release:
 ## New Generic Monster Features:
+- Activity On Effect Expiry
 - Blood Frenzy
 - Bloodied Frenzy
+- Escape
   
 # 1.3.37 Release:
 ## New Modern Features:

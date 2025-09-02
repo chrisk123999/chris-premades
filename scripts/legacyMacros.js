@@ -459,6 +459,7 @@ export {spittingMimicAcid} from './macros/2014/monsterFeatures/monstrosity/spitt
 export {thunderousStrike} from './macros/2014/monsterFeatures/elemental/earthElementalMyrmidon/thunderousStrike.js';
 // Generic Monster Features
 export {abilityDrain} from './macros/2014/monsterFeatures/generic/abilityDrain.js';
+export {activityOnEffectExpiry} from './macros/2014/monsterFeatures/generic/activityOnEffectExpiry.js';
 export {activityOnRest, activityOnRestActor} from './macros/2014/monsterFeatures/generic/activityOnRest.js';
 export {advantageDamageBonus} from './macros/2014/monsterFeatures/generic/advantageDamageBonus.js';
 export {auraDamageEnd} from './macros/2014/monsterFeatures/generic/auraDamage.js';
@@ -472,6 +473,7 @@ export {damageTurnStart} from './macros/2014/monsterFeatures/generic/damageTurnS
 export {deathBurst} from './macros/2014/monsterFeatures/generic/deathBurst.js';
 export {effectImmunity, effectImmunityRemove} from './macros/2014/monsterFeatures/generic/effectImmunity.js';
 export {enlarge, enlargeEnlarged} from './macros/2014/monsterFeatures/generic/enlarge.js';
+export {escape} from './macros/2014/monsterFeatures/generic/escape.js';
 export {gaze} from './macros/2014/monsterFeatures/generic/gaze.js';
 export {genericRegeneration} from './macros/2014/monsterFeatures/generic/regeneration.js';
 export {genericTeleport} from './macros/2014/monsterFeatures/generic/teleport.js';

@@ -157,7 +157,7 @@ function getLightLevel(token) {
     if (inBright) return 'bright';
     return 'dim';
 }
-async function grappleHelper(sourceToken, targetToken, item, {noContest = false, flatDC = false, escapeDisadvantage = false}={}) {
+async function grappleHelper(sourceToken, targetToken, item, {noContest = false, flatDC = false, escapeDisadvantage = false, sourceEffect, targetEffect}={}) {
     let sourceActor = sourceToken.actor;
     if (actorUtils.checkTrait(targetToken.actor, 'ci', 'grappled')) {
         genericUtils.notify('CHRISPREMADES.Macros.Grapple.Immune', 'info');
@@ -254,9 +254,52 @@ async function grappleHelper(sourceToken, targetToken, item, {noContest = false,
     }
     let sourceOptions = {identifier: 'grappling'};
     if (grappler) sourceOptions.vae = [{type: 'use', name: pinData.name, identifier: 'grapplerPin'}];
-    let sourceEffect = await effectUtils.createEffect(sourceActor, sourceEffectData, sourceOptions);
+    if (!sourceEffect) {
+        sourceEffect = await effectUtils.createEffect(sourceActor, sourceEffectData, sourceOptions);
+    } else {
+        await genericUtils.update(sourceEffect, {
+            flags: {
+                'chris-premades': {
+                    vae: sourceOptions.vae,
+                    grapple: {
+                        tokenId: targetToken.id
+                    },
+                    info: {
+                        identifier: 'grappling'
+                    }
+                }
+            }
+        });
+    }
     if (grappler) await itemUtils.createItems(sourceActor, [pinData], {favorite: true, parentEntity: sourceEffect});
-    let targetEffect = await effectUtils.createEffect(targetToken.actor, targetEffectData, {identifier: 'grappled', parentEntity: sourceEffect, strictlyInterdependent: true, vae: [{type: 'use', name: escapeData.name, identifier: 'grappleEscape'}]});
+    if (!targetEffect) {
+        targetEffect = await effectUtils.createEffect(targetToken.actor, targetEffectData, {identifier: 'grappled', parentEntity: sourceEffect, strictlyInterdependent: true, vae: [{type: 'use', name: escapeData.name, identifier: 'grappleEscape'}]});
+    } else {
+        await genericUtils.update(targetEffect, {
+            flags: {
+                'chris-premades': {
+                    parentEntityUuid: sourceEffect.uuid,
+                    vae: [
+                        {
+                            type: 'use',
+                            name: escapeData.name,
+                            identifier: 'grappleEscape'
+                        }
+                    ],
+                    info: {
+                        identifier: 'grappled'
+                    },
+                    grapple: {
+                        tokenId: sourceToken.id
+                    }
+                }
+            }
+        });
+        let existingDependents = targetEffect.flags?.dnd5e?.dependents ?? [];
+        existingDependents.push({uuid: sourceEffect.uuid});
+        await genericUtils.setFlag(targetEffect, 'dnd5e', 'dependents', existingDependents);
+        await effectUtils.addDependent(sourceEffect, [targetEffect]);
+    }
     let escapeItem = itemUtils.getItemByIdentifier(targetToken.actor, 'grappleEscape');
     if (!escapeItem) {
         await itemUtils.createItems(targetToken.actor, [escapeData], {favorite: true, parentEntity: targetEffect});

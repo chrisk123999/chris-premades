@@ -27,7 +27,6 @@ async function escape({workflow}) {
             advantage: true
         };
     }
-    
     if (escapeFlags?.disadvantage) sourceRollOptions.disadvantage = true;
     if (!escapeFlags?.dc) {
         // TODO: more generic version of this? Does it come up elsewhere?
@@ -43,8 +42,9 @@ async function escape({workflow}) {
         });
         if (result <= 0) return;
     } else {
+        genericUtils.setProperty(sourceRollOptions, 'target', escapeFlags.dc);
         let result = await rollUtils.requestRoll(workflow.token, 'skill', selection, sourceRollOptions);
-        if (result.total <= escapeFlags?.dc) return;
+        if (!result?.[0]?.total || (result[0].total < escapeFlags?.dc)) return;
     }
     let effect = grappledEffects.find(i => i.flags['chris-premades'].grapple.tokenId === targetToken.id);
     if (effect) await genericUtils.remove(effect);
