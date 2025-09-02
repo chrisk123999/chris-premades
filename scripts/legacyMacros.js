@@ -474,6 +474,7 @@ export {deathBurst} from './macros/2014/monsterFeatures/generic/deathBurst.js';
 export {effectImmunity, effectImmunityRemove} from './macros/2014/monsterFeatures/generic/effectImmunity.js';
 export {enlarge, enlargeEnlarged} from './macros/2014/monsterFeatures/generic/enlarge.js';
 export {escape} from './macros/2014/monsterFeatures/generic/escape.js';
+export {failedByAmount} from './macros/2014/monsterFeatures/generic/failedByAmount.js';
 export {gaze} from './macros/2014/monsterFeatures/generic/gaze.js';
 export {genericRegeneration} from './macros/2014/monsterFeatures/generic/regeneration.js';
 export {genericTeleport} from './macros/2014/monsterFeatures/generic/teleport.js';

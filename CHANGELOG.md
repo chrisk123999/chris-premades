@@ -1,3 +1,7 @@
+# 1.3.39 Release:
+## New Generic Monster Features:
+- Failed by Amount
+  
 # 1.3.38 Release:
 ## New Generic Monster Features:
 - Activity On Effect Expiry

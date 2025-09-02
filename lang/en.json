@@ -1205,6 +1205,10 @@
             "EyesOfMinuteSeeing": {
                 "Close": "This check is for something within 1 foot"
             },
+            "FailedByAmount": {
+                "Amount": "Amount:",
+                "Name": "Failed By Amount"
+            },
             "Fall": {
                 "Acr": "Yes (Acrobatics)",
                 "Ath": "Yes (Athletics)",
