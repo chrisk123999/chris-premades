@@ -26,7 +26,7 @@ async function deleted({trigger: {entity, options}}) {
 export let activityOnEffectExpiry = {
     name: 'Activity on Effect Expiry',
     translation: 'CHRISPREMADES.Macros.ActivityOnEffectExpiry.Name',
-    version: '1.3.39',
+    version: '1.3.38',
     midi: {
         item: [
             {
