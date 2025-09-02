@@ -183,6 +183,7 @@
             "CreatureTypes": "Tipos de Criatura:",
             "CriticalOnly": "Apenas Críticos:",
             "DC": "CD:",
+            "DamageBonus": "Bônus de Dano:",
             "DamageType": "Tipo de Dano:",
             "DamageTypes": "Tipos de Dano:",
             "DarknessAnimation": "Animação de Escuridão:",
@@ -202,6 +203,7 @@
             "MaxLevel": "Nível Máx:",
             "MaxSize": "Tamanho Máx:",
             "Name": "Nome:",
+            "NoDCPrompt": "Avisar sem CD:",
             "Number": "Número:",
             "Opacity": "Opacidade:",
             "Percentage": "Porcentagem:",
@@ -861,6 +863,12 @@
             },
             "BloodCurses": {
                 "Amplify": "Amplificar Maldição do Sangue?"
+            },
+            "BloodFrenzy": {
+                "Name": "Blood Frenzy"
+            },
+            "BloodiedFrenzy": {
+                "Name": "Bloodied Frenzy"
             },
             "BolsteringMagic": {
                 "Already": "O alvo já está sendo fortalecido!",
@@ -1623,6 +1631,11 @@
                 "Damage": "Raio Lunar: Dano",
                 "Move": "Raio Lunar: Mover"
             },
+            "MovementBonusActivity": {
+                "Distance": "Distância Necessária (pés):",
+                "Name": "Atividade de Bônus de Movimento",
+                "ReplaceDamageFormula": "Substituir Fórmula de Dano:"
+            },
             "Mutagencraft": {
                 "AttackSunlight": "{sourceTokenName} ou {targetTokenName} estão expostos diretamente à luz do sol?",
                 "Create": "Qual Mutagênico você quer criar?",
@@ -1862,6 +1875,10 @@
             "SoothePain": {
                 "Protect": "Reduzir o dano em {tokenName}?",
                 "Self": "Reduzir o dano em si mesmo?"
+            },
+            "SpecialItemUse": {
+                "Name": "Uso de Item Especial",
+                "TriggerItems": "Itens para Acionar:"
             },
             "SpellTurning": {
                 "Advantage": "Vantagem em salvaguardas:",
