@@ -697,6 +697,10 @@
                 "GrappledBy": "Grappled By {tokenName}",
                 "Grappling": "Grappling {tokenName}"
             },
+            "ActivityOnEffectExpiry": {
+                "EndEarly": "No Trigger if Effect Ends Early:",
+                "Name": "Activity on Effect Expiry"
+            },
             "ActivityOnRest": {
                 "ExpireOnSave": "Effect Expires on Activity Save:",
                 "LongRest": "Trigger on Long Rest Only:",

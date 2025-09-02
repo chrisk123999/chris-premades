@@ -17,7 +17,8 @@ async function rollFinished({trigger, workflow}) {
     }
     if (!targets.size) return;
     await Promise.all(targets.map(async i => {
-        let effect = actorUtils.getEffects(i.actor).find(j => workflow.activity.effects.map(k => k.effect.uuid).includes(j.origin));
+        let effect = actorUtils?.getEffects(i.actor)?.find(j => workflow.activity?.effects?.map(k => k?.effect?.uuid).includes(j?.origin));
+        if (!effect) return;
         let currentMacroList = genericUtils.getProperty(effect, 'flags.chris-premades.macros.rest') ?? [];
         await genericUtils.setFlag(effect, 'chris-premades', 'macros.rest', currentMacroList.concat(['activityOnRestActor']));
     }));

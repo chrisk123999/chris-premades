@@ -32,7 +32,7 @@ function collectMacros(effect, pass) {
     }
     return triggers;
 }
-function getSortedTriggers(effect, pass) {
+function getSortedTriggers(effect, pass, options) {
     let allTriggers = collectMacros(effect, pass);
     let names = new Set(allTriggers.map(i => i.name));
     allTriggers = Object.fromEntries(names.map(i => [i, allTriggers.filter(j => j.name === i)]));
@@ -67,7 +67,8 @@ function getSortedTriggers(effect, pass) {
                 macro: macro.macro,
                 priority: macro.priority,
                 name: trigger.name,
-                macroName: typeof macro.macro === 'string' ? 'Embedded' : macro.macro.name
+                macroName: typeof macro.macro === 'string' ? 'Embedded' : macro.macro.name,
+                options
             });
         });
     });
@@ -86,9 +87,9 @@ async function executeMacro(trigger) {
         console.error(error);
     }
 }
-async function executeMacroPass(effect, pass) {
+async function executeMacroPass(effect, pass, options) {
     genericUtils.log('dev', 'Executing Effect Macro Pass: ' + pass + ' for ' + effect.name);
-    let triggers = getSortedTriggers(effect, pass);
+    let triggers = getSortedTriggers(effect, pass, options);
     if (triggers.length) await genericUtils.sleep(50);
     for (let i of triggers) await executeMacro(i);
 }
@@ -96,7 +97,7 @@ async function createActiveEffect(effect, options, userId) {
     if (!socketUtils.isTheGM()) return;
     if (!(effect.parent instanceof Actor)) return;
     await auras.effectCheck(effect);
-    await executeMacroPass(effect, 'created');
+    await executeMacroPass(effect, 'created', options);
     if (effect.statuses.has('dead')) await death.executeMacroPass(effect.parent, 'dead');
     if (effect.statuses.size) await effects.specialDurationConditions(effect);
 }
@@ -104,7 +105,7 @@ async function deleteActiveEffect(effect, options, userId) {
     if (!socketUtils.isTheGM()) return;
     if (effect.parent instanceof Actor) {
         await auras.effectCheck(effect);
-        await executeMacroPass(effect, 'deleted');
+        await executeMacroPass(effect, 'deleted', options);
     }
     await effects.checkInterdependentDeps(effect);
 }

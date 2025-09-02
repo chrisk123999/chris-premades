@@ -1,6 +1,7 @@
 export {summonUtilsModern as summonUtils} from './lib/summons.js';
 // Generic Monster Features
 export {abilityDrain} from './macros/2014/monsterFeatures/generic/abilityDrain.js';
+export {activityOnEffectExpiry} from './macros/2014/monsterFeatures/generic/activityOnEffectExpiry.js';
 export {activityOnRest, activityOnRestActor} from './macros/2014/monsterFeatures/generic/activityOnRest.js';
 export {advantageDamageBonus} from './macros/2014/monsterFeatures/generic/advantageDamageBonus.js';
 export {auraDamageEnd} from './macros/2014/monsterFeatures/generic/auraDamage.js';
