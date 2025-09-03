@@ -1,6 +1,7 @@
 # 1.3.39 Release:
 ## New Generic Monster Features:
 - Failed by Amount
+- Choose Damage Type
   
 # 1.3.38 Release:
 ## New Generic Monster Features:

@@ -10,6 +10,7 @@ export {autoPush} from './macros/2014/monsterFeatures/generic/autoPush.js';
 export {berserk} from './macros/2014/monsterFeatures/generic/berserk.js';
 export {bloodFrenzy} from './macros/2014/monsterFeatures/generic/bloodFrenzy.js';
 export {bloodiedFrenzy} from './macros/2014/monsterFeatures/generic/bloodiedFrenzy.js';
+export {chooseDamageType} from './macros/2014/monsterFeatures/generic/chooseDamageType.js';
 export {contextualBonus} from './macros/2014/monsterFeatures/generic/contextualBonus.js';
 export {damageTurnStart} from './macros/2014/monsterFeatures/generic/damageTurnStart.js';
 export {deathBurst} from './macros/2014/monsterFeatures/generic/deathBurst.js';
