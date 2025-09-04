@@ -52,7 +52,7 @@ async function checkSkillLate({trigger: {entity: item, config, roll, actor, opti
     await genericUtils.update(bardicInspiration, {'system.uses.spent': bardicInspiration.system.uses.spent + 1});
 }
 async function updateScales(origItem, newItemData) {
-    let { scaleIdentifier=null } = genericUtils.getValidScaleIdentifier(origItem.actor, newItemData, bardicInspiration.scaleAliases, 'bard');
+    let {scaleIdentifier = null} = genericUtils.getValidScaleIdentifier(origItem.actor, newItemData, bardicInspiration.scaleAliases, 'bard');
     if (!scaleIdentifier) return;
     genericUtils.setProperty(newItemData, 'flags.chris-premades.config.scaleIdentifier', scaleIdentifier);
 }

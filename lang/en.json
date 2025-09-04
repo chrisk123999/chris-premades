@@ -2779,9 +2779,17 @@
                 "Hint": "When enabled, Dice So Nice damage roll animations will be delayed until after all damage roll macros are complete.",
                 "Name": "Dice So Nice: Damage Rolls"
             },
+            "disableModulesWarning": {
+                "Hint": "When enabled, CPR will not check for known issues with having certain modules enabled and warn you about them.",
+                "Name": "Other Module Check"
+            },
             "disableNonConditionStatusEffects": {
                 "Hint": "When enabled, all core non-condition status effects will be removed.",
                 "Name": "Disable Non-Condition Status Effects"
+            },
+            "disableSettingsWarning": {
+                "Hint": "When enabled, CPR will not check some other module settings for issues and warn you about them.",
+                "Name": "Other Module Settings Check"
             },
             "disableSpecialEffects": {
                 "Hint": "When enabled, the blinded and invisible conditions don't apply visual effects.",
@@ -3211,16 +3219,39 @@
             "TourFeatures": "Tour Features"
         },
         "Troubleshooter": {
+            "ActorOnUseMacros": "Actor On Use Macros: Disabled",
+            "AutoTemplateEnabled": "Enable Automatic Template Effect: Enabled",
+            "AutohideTemplateElements": "Automatically Hide Template Elements: Enabled",
+            "BothJB2A": "JB2A Premium and JB2A Free detected. Please remove or disable the free version.",
             "Clipboard": "Text copied to clipboard!",
+            "ConfirmAttackRoll": "Display Confirm Roll Button: Not None",
+            "ConvenientEffects": "Apply Convenient Effects: Not None or Items > CE",
             "CopyToClipboard": "Copy to Clipboard",
+            "DefaultTemplateOnHover": "Default Template Grid On Hover: Enabled",
+            "DefunctModulesMessage": "<hr>The following modules are defunct and should be removed or disabled:<br>",
             "DisabledModule": "Cauldron of Plentiful Resources requires the module {module} to be enabled!",
             "Discord": "Open Discord Support Channel",
+            "EnableWorkflow": "Roll Automation Support: Disabled",
+            "FixSettingsButton": "<hr><button class=\"chris-settings\" type=\"button\">Fix it for me!</button><button class=\"chris-ignoreSettings\" type=\"button\">Never Show This Again</button>",
+            "GMAutoRollDamage": "GM Auto Roll Damage: Not Damage Roll Needed or Always",
             "Hint": "Open the troubleshooter.",
+            "ItemOnUseMacros": "Item On Use Macros: Disabled",
+            "MidiSettings": "Midi-Qol:",
+            "MissingJB2A": "JB2A Premium or JB2A Free is required. Please install and enable one of these modules.",
             "MissingModule": "Cauldron of Plentiful Resources requires the module {module} to be installed!",
+            "ModuleIssuesButton": "<hr><button class=\"chris-ignoreModuleIssues\" type=\"button\">Never Show This Again</button>",
+            "ModulesMessage": "<hr>The following modules are not supported and should be either removed or disabled:<br>",
+            "MonksWalls": "Monk's Wall Enhancement:",
             "MovementLag": "Movement Events appear to be taking a long time! Try setting \"Movement Event Accuracy\" lower in the CPR general settings.",
+            "OneWayDoors": "Allow One Way Doors: Enabled",
             "Open": "Open Troubleshooter:",
+            "PlayerAutoRollDamage": "Player Auto Roll Damage: Not Damage Roll Needed or Always",
             "SaveToFile": "Save to File",
-            "Title": "Troubleshooter"
+            "SettingsFixed": "Module Settings Updated!",
+            "SettingsMessage": "<hr>Unsupported module settings detected. The following settings are not supported:<br>",
+            "Title": "Troubleshooter",
+            "TokenMagicFXSettings": "Token Magic FX Settings:",
+            "WaitForDamageApplication": "Wait For Damage Application: Disabled"
         },
         "Turns": {
             "EndOfTurn": "End of Turn",

@@ -1,16 +1,17 @@
 import {summonEffects} from '../../macros/animations/summonEffects.js';
 import {teleportEffects} from '../../macros/animations/teleportEffects.js';
 import {animations, colors, defaultMatrix} from '../../macros/animations/colorMatrix.js';
+import {genericUtils} from './genericUtils.js';
 function jb2aCheck() {
     let patreon = game.modules.get('jb2a_patreon')?.active;
     let free = game.modules.get('JB2A_DnD5e')?.active;
     if (patreon && free) {
-        ui.notifications.warn('Both JB2A modules are active! Please disable the free version.');
+        genericUtils.notify('CHRISPREMADES.Troubleshooter.BothJB2A', 'warn', {localize: true});
         return 'patreon';
     }
     if (patreon) return 'patreon';
     if (free) return 'free';
-    ui.notifications.warn('No JB2A module active! Please install JB2A.');
+    genericUtils.notify('CHRISPREMADES.Troubleshooter.MissingJB2A', 'warn', {localize: true});
     return false;
 }
 function aseCheck() {

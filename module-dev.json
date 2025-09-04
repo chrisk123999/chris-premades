@@ -88,7 +88,7 @@
         "id": "midi-qol",
         "type": "module",
         "compatibility": {
-          "minimum": "13.0.4"
+          "minimum": "13.0.19"
         }
       },
       {

@@ -137,7 +137,6 @@ async function early({activity, actor, config, dialog}) {
     if (!effect) return;
     let spiritualActor = canvas.scene.tokens.get(effect.flags['chris-premades'].summons.ids[effect.name][0])?.actor;
     if (!spiritualActor) return;
-
     let effectData = {
         name: activity.name,
         img: activity.item.img,

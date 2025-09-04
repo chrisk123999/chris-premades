@@ -187,7 +187,7 @@ function getValidScaleIdentifier(actor, itemData, scaleAliases, defaultClassIden
             break;
         }
     }
-    return { classIdentifier, scaleIdentifier };
+    return {classIdentifier, scaleIdentifier};
 }
 function round(num) {
     return Math.round((num + Number.EPSILON) * 100) / 100;
