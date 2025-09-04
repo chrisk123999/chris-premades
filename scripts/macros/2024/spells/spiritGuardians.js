@@ -123,7 +123,7 @@ async function turnEnd({trigger: {token, target, entity: effect, previousTurn, p
         .filter(i => i.document.disposition === token.document.disposition)
         .map(i => effectUtils.getEffectByIdentifier(i.actor, 'spiritGuardiansDamage'))
         .filter(i => i);
-    let used = allSpiritGuardianEffects.find(i => i.flags['chris-premades'].spiritGuardians.touchedTokenIds[turn].includes(target.id));
+    let used = allSpiritGuardianEffects.find(i => i.flags['chris-premades'].spiritGuardians.touchedTokenIds[turn]?.includes(target.id));
     if (used) return;
     let originItem = await effectUtils.getOriginItem(effect);
     let feature = activityUtils.getActivityByIdentifier(originItem, 'spiritGuardiansDamage', {strict: true});
