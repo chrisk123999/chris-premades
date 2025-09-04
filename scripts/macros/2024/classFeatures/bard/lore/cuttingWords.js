@@ -94,7 +94,7 @@ async function added({trigger: {entity: item, identifier, actor}}) {
     ]});
 }
 async function updateScales(origItem, newItemData) {
-    let { classIdentifier=null, scaleIdentifier=null } = genericUtils.getValidScaleIdentifier(origItem.actor, newItemData, bardicInspiration.scaleAliases, 'bard');
+    let {classIdentifier = null, scaleIdentifier = null} = genericUtils.getValidScaleIdentifier(origItem.actor, newItemData, bardicInspiration.scaleAliases, 'bard');
     if (!scaleIdentifier) return;
     genericUtils.setProperty(newItemData, 'flags.chris-premades.config.scaleIdentifier', scaleIdentifier);
     genericUtils.setProperty(newItemData, 'system.activities.Q2KR4D5Pq9ZIrS3o.damage.parts.0.bonus', `@scale.${classIdentifier}.${scaleIdentifier}.die`);

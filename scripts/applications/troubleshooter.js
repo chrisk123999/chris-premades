@@ -1,5 +1,5 @@
 import {custom} from '../events/custom.js';
-import {genericUtils} from '../utils.js';
+import {genericUtils, socketUtils} from '../utils.js';
 let names = {
     'ATL': 'Active Token Effects',
     'JB2A_DnD5e': 'Jules&Ben\'s Animated Assets (F)',
@@ -57,7 +57,8 @@ let optionalModules = [
     'visual-active-effects',
     'universal-animations',
     'gambits-premades',
-    'midi-item-showcase-community'
+    'midi-item-showcase-community',
+    'tokenmagic'
 ];
 let incompatibleModules = [
     'advancedspelleffects',
@@ -209,12 +210,13 @@ export async function run() {
                 break;
         }
         addLine('Roll Seperate Attack Per Target: ' + midiSettings.attackPerTarget);
-        addLine('Merge Card: ' + midiSettings.mergeCard);
+        //addLine('Merge Card: ' + midiSettings.mergeCard);
         addLine('Actor On Use: ' + midiSettings.allowActorUseMacro);
         addLine('Item On Use: ' + midiSettings.allowUseMacro);
         addLine('Player Auto Roll Damage: ' + midiSettings.autoRollDamage);
         addLine('GM Auto Roll Damage: ' + midiSettings.gmAutoDamage);
         addLine('Confirm Rolls: ' + midiSettings.confirmAttackDamage);
+        addLine('Wait For Damage Application: ', midiSettings.waitForDamageApplication);
     }
     try {
         if (game.modules.get('levelsautocover')?.active) {
@@ -248,6 +250,13 @@ export async function run() {
             addLine('');
             addLine('/////////////// Monk\'s Wall Enhancement Settings ///////////////');
             addLine('Allow One Way Doors: ' + game.settings.get('monks-wall-enhancement', 'allow-one-way-doors'));
+        }
+        if (game.modules.get('tokenmagic')?.active) {
+            addLine('');
+            addLine('/////////////// Token Magic FX Settings ///////////////');
+            addLine('Automatic Template Effects: ' + game.settings.get('tokenmagic', 'autoTemplateEnabled'));
+            addLine('Template Grid On Hover: ' + game.settings.get('tokenmagic', 'defaultTemplateOnHover'));
+            addLine('Hide Template Elements: ' + game.settings.get('tokenmagic', 'autohideTemplateElements'));
         }
     } catch (error) { /* empty */ }
     let scene = canvas.scene;
@@ -390,7 +399,8 @@ export async function run() {
     }
     return await troubleshooterDialog();
 }
-function startup() {
+async function startup() {
+    if (!socketUtils.isTheGM()) return;
     let requiredModules = new Set([]);
     game.modules.get('chris-premades').relationships.requires.forEach(value => {
         requiredModules.add(value.id);
@@ -399,21 +409,208 @@ function startup() {
             requiredModules.add(value.id);
         });
     });
-    Array.from(requiredModules).sort().forEach(value => {
-        let module = game.modules.get(value);
-        if (!module) {
-            let message = genericUtils.translate('CHRISPREMADES.Troubleshooter.MissingModule').replace('{module}', names[value]);
-            genericUtils.notify(message, 'error', {permanent: true});
-            return;
+    if (!genericUtils.getCPRSetting('disableSettingsWarning')) {
+        let midiSettings = game.settings.get('midi-qol', 'ConfigSettings');
+        let doSettingsMessage = false;
+        let content = genericUtils.translate('CHRISPREMADES.Troubleshooter.SettingsMessage');
+        let midiAdded = false;
+        let monksWallsAdded = false;
+        let tokenMagicAdded = false;
+        function addMidiMessage() {
+            if (midiAdded) return;
+            content += '<b>' + genericUtils.translate('CHRISPREMADES.Troubleshooter.MidiSettings') + '</b><ul>';
+            midiAdded = true;
         }
-        if (!module.active) {
-            let message = genericUtils.translate('CHRISPREMADES.Troubleshooter.DisabledModule').replace('{module}', names[value]);
-            genericUtils.notify(message, 'error', {permanent: true});
-            return;
+        if (!game.settings.get('midi-qol', 'EnableWorkflow')) {
+            doSettingsMessage = true;
+            addMidiMessage();
+            content += '<li>' + genericUtils.translate('CHRISPREMADES.Troubleshooter.EnableWorkflow') + '</li>';
         }
-    });
+        if (midiSettings.autoCEEffects === 'cepri' || midiSettings.autoCEEffects === 'both') {
+            doSettingsMessage = true;
+            addMidiMessage();
+            content += '<li>' + genericUtils.translate('CHRISPREMADES.Troubleshooter.ConvenientEffects') + '</li>';
+        }
+        if (!midiSettings.allowActorUseMacro) {
+            doSettingsMessage = true;
+            addMidiMessage();
+            content += '<li>' + genericUtils.translate('CHRISPREMADES.Troubleshooter.ActorOnUseMacros') + '</li>';
+        }
+        if (!midiSettings.allowUseMacro) {
+            doSettingsMessage = true;
+            addMidiMessage();
+            content += '<li>' + genericUtils.translate('CHRISPREMADES.Troubleshooter.ItemOnUseMacros') + '</li>';
+        }
+        if (!(midiSettings.autoRollDamage == 'always' || midiSettings.autoRollDamage == 'onHit')) {
+            doSettingsMessage = true;
+            addMidiMessage();
+            content += '<li>' + genericUtils.translate('CHRISPREMADES.Troubleshooter.PlayerAutoRollDamage') + '</li>';
+        }
+        if (!(midiSettings.gmAutoDamage == 'always' || midiSettings.gmAutoDamage == 'onHit')) {
+            doSettingsMessage = true;
+            addMidiMessage();
+            content += '<li>' + genericUtils.translate('CHRISPREMADES.Troubleshooter.GMAutoRollDamage') + '</li>';
+        }
+        if (midiSettings.confirmAttackDamage != 'none') {
+            doSettingsMessage = true;
+            addMidiMessage();
+            content += '<li>' + genericUtils.translate('CHRISPREMADES.Troubleshooter.ConfirmAttackRoll') + '</li>';
+        }
+        if (!midiSettings.waitForDamageApplication) {
+            doSettingsMessage = true;
+            addMidiMessage();
+            content += '<li>' + genericUtils.translate('CHRISPREMADES.Troubleshooter.WaitForDamageApplication') + '</li>';
+        }
+        if (midiAdded) content += '</ul>';
+        if (game.modules.get('monks-wall-enhancement')?.active) {
+            if (game.settings.get('monks-wall-enhancement', 'allow-one-way-doors')) {
+                monksWallsAdded = true;
+                if (midiAdded) content += '<br>';
+                content += '<b>' + genericUtils.translate('CHRISPREMADES.Troubleshooter.MonksWalls') + '</b><ul>';
+                content += '<li>' + genericUtils.translate('CHRISPREMADES.Troubleshooter.OneWayDoors') + '</li></ul>';
+            }
+        }
+        function addTokenMagicMessage() {
+            if (tokenMagicAdded) return;
+            if (midiAdded || monksWallsAdded) content += '<br>';
+            content += '<b>' + genericUtils.translate('CHRISPREMADES.Troubleshooter.TokenMagicFXSettings') + '</b><ul>';
+            tokenMagicAdded = true;
+        }
+        if (game.modules.get('tokenmagic')?.active) {
+            if (game.settings.get('tokenmagic', 'autoTemplateEnabled')) {
+                doSettingsMessage = true;
+                addTokenMagicMessage();
+                content += '<li>' + genericUtils.translate('CHRISPREMADES.Troubleshooter.AutoTemplateEnabled') + '</li>';
+            }
+            if (game.settings.get('tokenmagic', 'defaultTemplateOnHover')) {
+                doSettingsMessage = true;
+                addTokenMagicMessage();
+                content += '<li>' + genericUtils.translate('CHRISPREMADES.Troubleshooter.DefaultTemplateOnHover') + '</li>';
+            }
+            if (game.settings.get('tokenmagic', 'autohideTemplateElements')) {
+                doSettingsMessage = true;
+                addTokenMagicMessage();
+                content += '<li>' + genericUtils.translate('CHRISPREMADES.Troubleshooter.AutohideTemplateElements') + '</li>';
+            }
+        }
+        if (tokenMagicAdded) content += '</ul>';
+        let message = game.messages.find(i => i.flags?.['chris-premades']?.button?.type === 'settings');
+        if (message) await genericUtils.remove(message);
+        if (doSettingsMessage) {
+            content += genericUtils.translate('CHRISPREMADES.Troubleshooter.FixSettingsButton');
+            message = await ChatMessage.create({
+                speaker: {alias: genericUtils.translate('CHRISPREMADES.Generic.CPR')},
+                content,
+                flags: {
+                    'chris-premades': {
+                        button: {
+                            type: 'settings'
+                        }
+                    }
+                }
+            });
+        }
+    }
+    if (!genericUtils.getCPRSetting('disableModulesWarning')) {
+        let incomptablemodulesFound = new Set();
+        incompatibleModules.forEach(id => {
+            if (game.modules.get(id)?.active) incomptablemodulesFound.add(id);
+        });
+        let defunctModulesFound = new Set();
+        defunctModules.forEach(id => {
+            if (id === 'dfreds-convenient-effects') return;
+            if (game.modules.get(id)?.active) defunctModulesFound.add(id);
+        });
+        let content = '';
+        if (incomptablemodulesFound.size) {
+            content += genericUtils.translate('CHRISPREMADES.Troubleshooter.ModulesMessage') + '<ul>';
+            let isFirst = true;
+            incomptablemodulesFound.forEach(id => {
+                console.log(id);
+                if (!isFirst) content += '<br>';
+                content += '<li>' + game.modules.get(id).title + '</li>';
+                isFirst = false;
+            });
+            content += '</ul>';
+        }
+        if (defunctModulesFound.size) {
+            if (incomptablemodulesFound.size) content += '<br>';
+            content += genericUtils.translate('CHRISPREMADES.Troubleshooter.DefunctModulesMessage') + '<ul>';
+            let isFirst = true;
+            defunctModulesFound.forEach(id => {
+                if (!isFirst) content += '<br>';
+                content += '<li>' + game.modules.get(id).title + '</li>';
+                isFirst = false;
+            });
+            content += '</ul>';
+        }
+        let jb2aFree = game.modules.get('JB2A_DnD5e')?.active;
+        let jb2aPatreon = game.modules.get('jb2a_patreon')?.active;
+        let jb2aIssue = false;
+        if (!jb2aFree && !jb2aPatreon) {
+            if (incomptablemodulesFound.size || defunctModulesFound.size) content += '<br>';
+            content += '<hr>' + genericUtils.translate('CHRISPREMADES.Troubleshooter.MissingJB2A');
+            jb2aIssue = true;
+        } else if (jb2aFree && jb2aPatreon) {
+            if (incomptablemodulesFound.size || defunctModulesFound.size) content += '<br>';
+            content += '<hr>' + genericUtils.translate('CHRISPREMADES.Troubleshooter.BothJB2A');
+            jb2aIssue = true;
+        }
+        if (incomptablemodulesFound.size || defunctModulesFound.size || jb2aIssue) {
+            let moduleMessage = game.messages.find(i => i.flags?.['chris-premades']?.button?.type === 'moduleIssues');
+            if (moduleMessage) await genericUtils.remove(moduleMessage);
+            content += genericUtils.translate('CHRISPREMADES.Troubleshooter.ModuleIssuesButton');
+            await ChatMessage.create({
+                speaker: {alias: genericUtils.translate('CHRISPREMADES.Generic.CPR')},
+                content,
+                flags: {
+                    'chris-premades': {
+                        button: {
+                            type: 'moduleIssues'
+                        }
+                    }
+                }
+            });
+        }
+    }
+}
+async function fixSettings(message) {
+    await genericUtils.remove(message);
+    await game.settings.set('midi-qol', 'EnableWorkflow', true);
+    let midiSettings = genericUtils.duplicate((game.settings.get('midi-qol', 'ConfigSettings')));
+    let newMidiSettings = {
+        autoCEEffects: 'itempri',
+        allowActorUseMacro: true,
+        allowUseMacro: true,
+        autoRollDamage: 'onHit',
+        gmAutoDamage: 'onHit',
+        confirmAttackDamage: 'none',
+        waitForDamageApplication: true
+    };
+    Object.entries(newMidiSettings).forEach(([key, value]) => genericUtils.setProperty(midiSettings, key, value));
+    await game.settings.set('midi-qol', 'ConfigSettings', midiSettings);
+    if (game.modules.get('monks-wall-enhancement')?.active) {
+        await game.settings.set('monks-wall-enhancement', 'allow-one-way-doors', false);
+    }
+    if (game.modules.get('tokenmagic')?.active) {
+        await game.settings.set('tokenmagic', 'autoTemplateEnabled', false);
+        await game.settings.set('tokenmagic', 'defaultTemplateOnHover', false);
+        await game.settings.set('tokenmagic', 'autohideTemplateElements', false);
+    }
+    genericUtils.notify('CHRISPREMADES.Troubleshooter.SettingsFixed', 'info', {localize: true});
+}
+async function ignoreSettingsWarning(message) {
+    await genericUtils.remove(message);
+    await genericUtils.setCPRSetting('disableSettingsWarning', true);
+}
+async function ignoreModuleIssues(message) {
+    await genericUtils.remove(message);
+    await genericUtils.setCPRSetting('disableModulesWarning', true);
 }
 export let troubleshooter = {
     run,
-    startup
+    startup,
+    fixSettings,
+    ignoreSettingsWarning,
+    ignoreModuleIssues
 };

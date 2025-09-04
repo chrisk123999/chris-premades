@@ -951,6 +951,18 @@ export function registerSettings() {
         category: 'interface',
         onChange: (value) => ui.customChatMessage(value)         
     });
+    addSetting({
+        key: 'disableSettingsWarning',
+        type: Boolean,
+        default: false,
+        category: 'general'
+    });
+    addSetting({
+        key: 'disableModulesWarning',
+        type: Boolean,
+        default: false,
+        category: 'general'
+    });
 }
 export function registerMenus() {
     if (game.settings.get('chris-premades', 'devTools')) addMenu({

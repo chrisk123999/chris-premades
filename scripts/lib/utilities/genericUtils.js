@@ -187,7 +187,7 @@ function getValidScaleIdentifier(actor, itemData, scaleAliases, defaultClassIden
             break;
         }
     }
-    return { classIdentifier, scaleIdentifier };
+    return {classIdentifier, scaleIdentifier};
 }
 export let genericUtils = {
     sleep,
