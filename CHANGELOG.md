@@ -1,3 +1,7 @@
+# 1.3.40 Release:
+## Update Notes:
+- Tweaked module setting checks.
+
 # 1.3.39 Release:
 ## New Generic Monster Features:
 - Failed by Amount
