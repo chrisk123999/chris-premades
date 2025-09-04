@@ -5,6 +5,7 @@
 ## Update Notes:
 - Updated Troubleshooter
 - Added module and module setting checks.
+- Updated the Midi-Qol version minimum to 13.0.19.
   
 # 1.3.38 Release:
 ## New Generic Monster Features:
