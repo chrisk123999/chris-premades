@@ -195,6 +195,7 @@ export async function run() {
         addLine('/////////////// Midi-Qol Settings ///////////////');
         addLine('Roll Automation Support: ' + game.settings.get('midi-qol', 'EnableWorkflow'));
         let midiSettings = game.settings.get('midi-qol', 'ConfigSettings');
+        console.log(midiSettings);
         switch(midiSettings.autoCEEffects) {
             case 'none':
                 addLine('Apply Convenient Effects: None');
@@ -216,7 +217,7 @@ export async function run() {
         addLine('Player Auto Roll Damage: ' + midiSettings.autoRollDamage);
         addLine('GM Auto Roll Damage: ' + midiSettings.gmAutoDamage);
         addLine('Confirm Rolls: ' + midiSettings.confirmAttackDamage);
-        addLine('Wait For Damage Application: ', midiSettings.waitForDamageApplication);
+        addLine('Wait For Damage Application: ' + midiSettings.waitForDamageApplication);
         addLine('Auto Complete Workflow: ' + midiSettings.autoCompleteWorkflow);
     }
     try {
