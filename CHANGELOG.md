@@ -1,3 +1,19 @@
+# 1.3.42 Release:
+## New Modern Content:
+- Steel Wind Strike
+## New Enhanced Animations:
+- Steel Wind Strike (Thanks Eskiemoh)
+
+# 1.3.41 Release:
+## New Modern Content:
+- Time Stop
+## Bug Fixes:
+- Spirit Guardians
+
+# 1.3.40 Release:
+## Update Notes:
+- Tweaked module setting checks.
+
 # 1.3.39 Release:
 ## New Generic Monster Features:
 - Failed by Amount

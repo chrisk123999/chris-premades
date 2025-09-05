@@ -11,7 +11,7 @@ async function use({workflow}) {
     let particle = 'jb2a.particles.outward.orange.01.03';
     if (shouldPlayAnimation && animation === 'complex') {
         //Animations by: eskiemoh
-        if (color === 'cycle' || color === 'random') await Sequencer.Preloader.preloadForClients('jb2a.scorching_ray');
+        if (color === 'cycle' || color === 'random') await animationUtils.preloadAnimations('jb2a.scorching_ray');
         await new Sequence()
             .effect()
             .atLocation(workflow.token)

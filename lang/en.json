@@ -229,7 +229,8 @@
             "Trigger": "Trigger:",
             "TurnTrigger": "Turn Trigger:",
             "UseFormula": "Use Formula:",
-            "WeaponProperties": "Weapon Properties:"
+            "WeaponProperties": "Weapon Properties:",
+            "cameraZoom": "Camera Zoom:"
         },
         "Cover": {
             "Full": "Full Cover",
@@ -2180,6 +2181,9 @@
             "ThunderousSmite": {
                 "Push": "Thunderous Smite: Push"
             },
+            "TimeStop": {
+                "Affect": "Did this affect another creature?"
+            },
             "TouchDamage": {
                 "Name": "Touch Damage"
             },
@@ -3220,6 +3224,7 @@
         },
         "Troubleshooter": {
             "ActorOnUseMacros": "Actor On Use Macros: Disabled",
+            "AutoCompleteWorkflow": "Auto Complete Workflow: Disabled",
             "AutoTemplateEnabled": "Enable Automatic Template Effect: Enabled",
             "AutohideTemplateElements": "Automatically Hide Template Elements: Enabled",
             "BothJB2A": "JB2A Premium and JB2A Free detected. Please remove or disable the free version.",

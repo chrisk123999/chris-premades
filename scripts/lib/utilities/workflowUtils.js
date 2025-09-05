@@ -2,8 +2,8 @@ import {actorUtils, constants, effectUtils, genericUtils, itemUtils, rollUtils, 
 import {socket, sockets} from '../sockets.js';
 async function bonusDamage(workflow, formula, {ignoreCrit = false, damageType}={}) {
     formula = String(formula);
-    if (workflow.isCritical && !ignoreCrit) formula = await rollUtils.getCriticalFormula(formula, workflow.item.getRollData());
-    let roll = await new CONFIG.Dice.DamageRoll(formula, workflow.item.getRollData()).evaluate();
+    if (workflow.isCritical && !ignoreCrit) formula = await rollUtils.getCriticalFormula(formula, workflow.activity.getRollData());
+    let roll = await new CONFIG.Dice.DamageRoll(formula, workflow.activity.getRollData()).evaluate();
     if (damageType) {
         genericUtils.setProperty(roll, 'options.type', damageType);
     } else {

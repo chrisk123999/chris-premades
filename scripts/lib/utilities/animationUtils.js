@@ -47,11 +47,15 @@ function colorMatrix(animation, color) {
     };
     return matrix;
 }
+async function preloadAnimations(animations, showProgressBar = false) {
+    return await Sequencer.Preloader.preloadForClients(animations, showProgressBar);
+}
 export let animationUtils = {
     jb2aCheck,
     aseCheck,
     simpleAttack,
     summonEffects,
     teleportEffects,
-    colorMatrix
+    colorMatrix,
+    preloadAnimations
 };

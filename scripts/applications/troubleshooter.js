@@ -195,6 +195,7 @@ export async function run() {
         addLine('/////////////// Midi-Qol Settings ///////////////');
         addLine('Roll Automation Support: ' + game.settings.get('midi-qol', 'EnableWorkflow'));
         let midiSettings = game.settings.get('midi-qol', 'ConfigSettings');
+        console.log(midiSettings);
         switch(midiSettings.autoCEEffects) {
             case 'none':
                 addLine('Apply Convenient Effects: None');
@@ -216,7 +217,8 @@ export async function run() {
         addLine('Player Auto Roll Damage: ' + midiSettings.autoRollDamage);
         addLine('GM Auto Roll Damage: ' + midiSettings.gmAutoDamage);
         addLine('Confirm Rolls: ' + midiSettings.confirmAttackDamage);
-        addLine('Wait For Damage Application: ', midiSettings.waitForDamageApplication);
+        addLine('Wait For Damage Application: ' + midiSettings.waitForDamageApplication);
+        addLine('Auto Complete Workflow: ' + midiSettings.autoCompleteWorkflow);
     }
     try {
         if (game.modules.get('levelsautocover')?.active) {
@@ -461,6 +463,11 @@ async function startup() {
             addMidiMessage();
             content += '<li>' + genericUtils.translate('CHRISPREMADES.Troubleshooter.WaitForDamageApplication') + '</li>';
         }
+        if (!midiSettings.autoCompleteWorkflow) {
+            doSettingsMessage = true;
+            addMidiMessage();
+            content += '<li>' + genericUtils.translate('CHRISPREMADES.Troubleshooter.AutoCompleteWorkflow') + '</li>';
+        }
         if (midiAdded) content += '</ul>';
         if (game.modules.get('monks-wall-enhancement')?.active) {
             if (game.settings.get('monks-wall-enhancement', 'allow-one-way-doors')) {
@@ -526,7 +533,6 @@ async function startup() {
             content += genericUtils.translate('CHRISPREMADES.Troubleshooter.ModulesMessage') + '<ul>';
             let isFirst = true;
             incomptablemodulesFound.forEach(id => {
-                console.log(id);
                 if (!isFirst) content += '<br>';
                 content += '<li>' + game.modules.get(id).title + '</li>';
                 isFirst = false;
@@ -582,11 +588,12 @@ async function fixSettings(message) {
         autoCEEffects: 'itempri',
         allowActorUseMacro: true,
         allowUseMacro: true,
-        autoRollDamage: 'onHit',
-        gmAutoDamage: 'onHit',
         confirmAttackDamage: 'none',
-        waitForDamageApplication: true
+        waitForDamageApplication: true,
+        autoCompleteWorkflow: true
     };
+    if (!['onHit', 'always'].includes(midiSettings.autoRollDamage)) newMidiSettings.autoRollDamage = 'onHit';
+    if (!['onHit', 'always'].includes(midiSettings.gmAutoDamage)) newMidiSettings.gmAutoDamage = 'onHit';
     Object.entries(newMidiSettings).forEach(([key, value]) => genericUtils.setProperty(midiSettings, key, value));
     await game.settings.set('midi-qol', 'ConfigSettings', midiSettings);
     if (game.modules.get('monks-wall-enhancement')?.active) {

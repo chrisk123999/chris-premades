@@ -697,6 +697,10 @@
                 "GrappledBy": "Agarrado por {tokenName}",
                 "Grappling": "Agarrando {tokenName}"
             },
+            "ActivityOnEffectExpiry": {
+                "EndEarly": "Sem Gatilho se Efeito Terminar Cedo:",
+                "Name": "Atividade em Efeito Expirado"
+            },
             "ActivityOnRest": {
                 "ExpireOnSave": "Efeito Expira em Atividade de Salvaguarda:",
                 "LongRest": "Gatilho Apenas em Descanso Longo:",
@@ -1111,6 +1115,10 @@
             "DreadfulAspect": {
                 "Turn": "Aspecto Apavorante: Fim do Turno"
             },
+            "DustDevil": {
+                "ContactItem": "Redemoinho de Poeira: Contato",
+                "Move": "Redemoinho de Poeira: Mover"
+            },
             "EffectImmunity": {
                 "Immune": "Imune",
                 "Name": "Imunidade ao Efeito"
@@ -1178,6 +1186,9 @@
                 "Reduce": "Reduzir",
                 "Select": "Aumentar ou Reduzir?"
             },
+            "Escape": {
+                "Name": "Escapar"
+            },
             "ExperimentalElixir": {
                 "Boldness": "Elixir Experimental: Ousadia",
                 "Flight": "Elixir Experimental: Voo",
@@ -1193,6 +1204,10 @@
             },
             "EyesOfMinuteSeeing": {
                 "Close": "Este teste é para algo dentro de 1 pé"
+            },
+            "FailedByAmount": {
+                "Amount": "Quantidade:",
+                "Name": "Falha por Quantidade"
             },
             "Fall": {
                 "Acr": "Sim (Acrobacia)",
@@ -1269,10 +1284,6 @@
                 "Move": "Esfera Flamejante: Mover",
                 "Ram": "Forçar Alvo?",
                 "RamItem": "Esfera Flamejante: Forçar"
-            },
-            "DustDevil": {
-                "ContactItem": "Redemoinho de Poeira: Contato",
-                "Move": "Redemoinho de Poeira: Mover"
             },
             "FlockOfFamiliars": {
                 "Command": "Bando de Familiares: Comando",
