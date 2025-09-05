@@ -14,7 +14,7 @@ async function helper(item, ditem, token, targetToken) {
     if (hpDamage <= 0) return;
     if (token) {
         if (targetToken.document.disposition !== token.document.disposition) return;
-        if (tokenUtils.getDistance(token, targetToken) > 30) return;
+        if (tokenUtils.getDistance(token, targetToken) > genericUtils.handleMetric(30)) return;
         let selection = await dialogUtils.confirm(item.name, genericUtils.format('CHRISPREMADES.Macros.SoothePain.Protect', {tokenName: targetToken.name}), {userId: socketUtils.firstOwner(token.actor, true)});
         if (!selection) return;
     } else {
