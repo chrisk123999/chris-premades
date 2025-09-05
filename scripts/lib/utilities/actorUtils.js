@@ -56,7 +56,7 @@ function typeOrRace(actor) {
     return MidiQOL.typeOrRace(actor);
 }
 function getAlignment(actor) {
-    return actor.system.details.alignment.toLowerCase();
+    return actor.system.details?.alignment?.toLowerCase();
 }
 function getCRFromProf(prof) {
     return 4 * prof - 7;
