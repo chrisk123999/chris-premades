@@ -229,7 +229,8 @@
             "Trigger": "Trigger:",
             "TurnTrigger": "Turn Trigger:",
             "UseFormula": "Use Formula:",
-            "WeaponProperties": "Weapon Properties:"
+            "WeaponProperties": "Weapon Properties:",
+            "cameraZoom": "Camera Zoom:"
         },
         "Cover": {
             "Full": "Full Cover",

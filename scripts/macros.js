@@ -170,6 +170,7 @@ export {wish, wishStress, wishImmunity} from './macros/2024/spells/wish.js';
 export {wrathfulSmite} from './macros/2024/spells/wrathfulSmite.js';
 export {zoneOfTruth} from './macros/2024/spells/zoneOfTruth.js';
 export {timeStop, timeStopEffect} from './macros/2024/spells/timeStop.js';
+export {steelWindStrike} from './macros/2024/spells/steelWindStrike.js';
 //Items
 export {healersKit} from './macros/2024/items/healersKit.js';
 export {unarmedStrike} from './macros/2024/items/misc/unarmedStrike.js';

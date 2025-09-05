@@ -1,3 +1,9 @@
+# 1.3.42 Release:
+## New Modern Content:
+- Steel Wind Strike
+## New Enhanced Animations:
+- Steel Wind Strike (Thanks Eskiemoh)
+
 # 1.3.41 Release:
 ## New Modern Content:
 - Time Stop

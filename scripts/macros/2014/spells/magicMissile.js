@@ -31,7 +31,7 @@ async function use({workflow}) {
     let lastColor = Math.floor((Math.random() * colors.length));
     let colorSelection = itemUtils.getConfig(workflow.item, 'color');
     let sound = itemUtils.getConfig(workflow.item, 'sound');
-    if (playAnimation && colorSelection === 'random' || colorSelection === 'cycle') await Sequencer.Preloader.preloadForClients('jb2a.magic_missile');
+    if (playAnimation && colorSelection === 'random' || colorSelection === 'cycle') await animationUtils.preloadAnimations('jb2a.magic_missile');
     for (let {document: targetToken, value: numBolts} of selection) {
         if (isNaN(numBolts) || numBolts == 0) continue;
         let isShielded = false;
