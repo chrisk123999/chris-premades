@@ -1,5 +1,4 @@
 import {workflowUtils} from '../../../../utils.js';
-
 async function damage({workflow}) {
     if (workflow.item.type !== 'spell') return;
     let spellLevel = workflowUtils.getCastLevel(workflow) ?? workflow.item.flags?.['chris-premades']?.castData?.castLevel;

@@ -2180,6 +2180,9 @@
             "ThunderousSmite": {
                 "Push": "Thunderous Smite: Push"
             },
+            "TimeStop": {
+                "Affect": "Did this affect another creature?"
+            },
             "TouchDamage": {
                 "Name": "Touch Damage"
             },

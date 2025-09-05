@@ -1,3 +1,9 @@
+# 1.3.41 Release:
+## New Modern Content:
+- Time Stop
+## Bug Fixes:
+- Spirit Guardians
+
 # 1.3.40 Release:
 ## Update Notes:
 - Tweaked module setting checks.
