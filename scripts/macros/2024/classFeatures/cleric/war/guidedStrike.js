@@ -40,7 +40,7 @@ async function added({trigger: {entity: item, actor}}) {
 }
 export let guidedStrike = {
     name: 'Guided Strike',
-    version: '1.3.25',
+    version: '1.3.43',
     rules: 'modern',
     midi: {
         actor: [

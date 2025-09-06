@@ -334,7 +334,6 @@ async function _manualRollsNewRolls(workflow) {
     await workflow.setDamageRolls(newRolls);
 }
 async function rollFinished(workflow) {
-    if (genericUtils.getCPRSetting('devTools')) console.log(workflow);
     await executeMacroPass(workflow, 'rollFinished');
     await executeTargetMacroPass(workflow, 'targetRollFinished');
     if (genericUtils.getCPRSetting('conditionResistanceAndVulnerability')) {
@@ -359,6 +358,7 @@ async function rollFinished(workflow) {
     if (genericUtils.getCPRSetting('weaponMastery')) await masteries.RollComplete(workflow);
     await effects.specialDuration(workflow);
     if (genericUtils.getCPRSetting('cleave')) await cleave(workflow);
+    if (genericUtils.getCPRSetting('devTools')) console.log(workflow);
 }
 async function postAttackRoll(workflow) {
     if (!workflow.attackRoll) return;

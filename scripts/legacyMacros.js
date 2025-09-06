@@ -35,6 +35,7 @@ export {conjureFey} from './macros/2014/spells/conjureFey.js';
 export {conjureMinorElementals} from './macros/2014/spells/conjureMinorElementals.js';
 export {conjureWoodlandBeings} from './macros/2014/spells/conjureWoodlandBeings.js';
 export {crownOfMadness} from './macros/2014/spells/crownOfMadness.js';
+export {crownOfStars} from './macros/2014/spells/crownOfStars.js';
 export {crusadersMantle, crusadersMantleAura} from './macros/2014/spells/crusadersMantle.js';
 export {danseMacabre} from './macros/2014/spells/danseMacabre.js';
 export {darkness} from './macros/2014/spells/darkness.js';

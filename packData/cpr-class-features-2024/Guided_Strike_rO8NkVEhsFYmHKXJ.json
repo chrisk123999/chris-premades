@@ -20,8 +20,7 @@
             {
               "type": "itemUses",
               "value": "1",
-              "target": "tH0ztYvn0tF9g1qr",
-              "scaling": {}
+              "target": "tH0ztYvn0tF9g1qr"
             }
           ],
           "scaling": {
@@ -72,124 +71,7 @@
           "name": "",
           "formula": ""
         },
-        "useConditionText": "",
-        "useConditionReason": "",
-        "effectConditionText": "",
-        "macroData": {
-          "name": "",
-          "command": ""
-        },
-        "ignoreTraits": {
-          "idi": false,
-          "idr": false,
-          "idv": false,
-          "ida": false,
-          "idm": false
-        },
-        "midiProperties": {
-          "ignoreTraits": [],
-          "triggeredActivityId": "none",
-          "triggeredActivityConditionText": "",
-          "triggeredActivityTargets": "targets",
-          "triggeredActivityRollAs": "self",
-          "confirmTargets": "default",
-          "automationOnly": false,
-          "identifier": "",
-          "autoConsume": false,
-          "forceConsumeDialog": "default",
-          "forceRollDialog": "default",
-          "forceDamageDialog": "default",
-          "autoTargetType": "any",
-          "autoTargetAction": "default",
-          "otherActivityCompatible": true,
-          "otherActivityAsParentType": true,
-          "displayActivityName": false,
-          "rollMode": "default",
-          "chooseEffects": false,
-          "toggleEffect": false,
-          "ignoreFullCover": false,
-          "removeChatButtons": "default",
-          "magicEffect": false,
-          "magicDamage": false,
-          "noConcentrationCheck": false,
-          "autoCEEffects": "default"
-        },
-        "isOverTimeFlag": false,
-        "overTimeProperties": {
-          "saveRemoves": true,
-          "preRemoveConditionText": "",
-          "postRemoveConditionText": ""
-        },
-        "otherActivityId": "none"
-      },
-      "6DGByirzOlgmkEz9": {
-        "type": "utility",
-        "name": "Self",
-        "sort": 0,
-        "activation": {
-          "type": "special",
-          "value": 1,
-          "condition": "",
-          "override": false
-        },
-        "consumption": {
-          "targets": [
-            {
-              "type": "itemUses",
-              "value": "1",
-              "target": "tH0ztYvn0tF9g1qr",
-              "scaling": {}
-            }
-          ],
-          "scaling": {
-            "allowed": false,
-            "max": ""
-          },
-          "spellSlot": false
-        },
-        "description": {
-          "chatFlavor": ""
-        },
-        "duration": {
-          "units": "inst",
-          "special": "",
-          "concentration": false,
-          "override": false
-        },
-        "effects": [],
-        "range": {
-          "units": "ft",
-          "value": "30",
-          "override": false,
-          "special": ""
-        },
-        "target": {
-          "affects": {
-            "type": "ally",
-            "choice": false,
-            "count": "",
-            "special": ""
-          },
-          "template": {
-            "contiguous": false,
-            "units": "ft",
-            "type": ""
-          },
-          "override": false,
-          "prompt": true
-        },
-        "uses": {
-          "spent": null,
-          "recovery": [],
-          "max": ""
-        },
-        "roll": {
-          "prompt": false,
-          "visible": false,
-          "name": "",
-          "formula": ""
-        },
-        "useConditionText": "",
+        "useConditionText": "false",
         "useConditionReason": "",
         "effectConditionText": "",
         "macroData": {
@@ -238,7 +120,127 @@
           "postRemoveConditionText": ""
         },
         "otherActivityId": "none",
-        "_id": "6DGByirzOlgmkEz9"
+        "img": "",
+        "appliedEffects": []
+      },
+      "6DGByirzOlgmkEz9": {
+        "type": "utility",
+        "name": "Self",
+        "sort": 0,
+        "activation": {
+          "type": "special",
+          "value": 1,
+          "condition": "",
+          "override": false
+        },
+        "consumption": {
+          "targets": [
+            {
+              "type": "itemUses",
+              "value": "1",
+              "target": "tH0ztYvn0tF9g1qr"
+            }
+          ],
+          "scaling": {
+            "allowed": false,
+            "max": ""
+          },
+          "spellSlot": false
+        },
+        "description": {
+          "chatFlavor": ""
+        },
+        "duration": {
+          "units": "inst",
+          "special": "",
+          "concentration": false,
+          "override": false
+        },
+        "effects": [],
+        "range": {
+          "units": "ft",
+          "value": "30",
+          "override": false,
+          "special": ""
+        },
+        "target": {
+          "affects": {
+            "type": "ally",
+            "choice": false,
+            "count": "",
+            "special": ""
+          },
+          "template": {
+            "contiguous": false,
+            "units": "ft",
+            "type": ""
+          },
+          "override": false,
+          "prompt": true
+        },
+        "uses": {
+          "spent": null,
+          "recovery": [],
+          "max": ""
+        },
+        "roll": {
+          "prompt": false,
+          "visible": false,
+          "name": "",
+          "formula": ""
+        },
+        "useConditionText": "false",
+        "useConditionReason": "",
+        "effectConditionText": "",
+        "macroData": {
+          "name": "",
+          "command": ""
+        },
+        "ignoreTraits": {
+          "idi": false,
+          "idr": false,
+          "idv": false,
+          "ida": false,
+          "idm": false
+        },
+        "midiProperties": {
+          "ignoreTraits": [],
+          "triggeredActivityId": "none",
+          "triggeredActivityConditionText": "",
+          "triggeredActivityTargets": "targets",
+          "triggeredActivityRollAs": "self",
+          "confirmTargets": "default",
+          "automationOnly": false,
+          "identifier": "",
+          "autoConsume": false,
+          "forceConsumeDialog": "default",
+          "forceRollDialog": "default",
+          "forceDamageDialog": "default",
+          "autoTargetType": "any",
+          "autoTargetAction": "default",
+          "otherActivityCompatible": true,
+          "otherActivityAsParentType": true,
+          "displayActivityName": false,
+          "rollMode": "default",
+          "chooseEffects": false,
+          "toggleEffect": false,
+          "ignoreFullCover": false,
+          "removeChatButtons": "default",
+          "magicEffect": false,
+          "magicDamage": false,
+          "noConcentrationCheck": false,
+          "autoCEEffects": "default"
+        },
+        "isOverTimeFlag": false,
+        "overTimeProperties": {
+          "saveRemoves": true,
+          "preRemoveConditionText": "",
+          "postRemoveConditionText": ""
+        },
+        "otherActivityId": "none",
+        "_id": "6DGByirzOlgmkEz9",
+        "img": "",
+        "appliedEffects": []
       }
     },
     "uses": {
@@ -287,11 +289,14 @@
         "identifier": "guidedStrike",
         "source": "chris-premades",
         "rules": "modern",
-        "version": "1.3.25"
+        "version": "1.3.43"
       },
       "macros": {
         "midi": {
           "actor": [
+            "guidedStrike"
+          ],
+          "item": [
             "guidedStrike"
           ]
         },
