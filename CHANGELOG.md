@@ -1,3 +1,9 @@
+# 1.3.43 Release:
+## New Legacy Content:
+- Crown of Stars
+## Bug Fixes:
+- Guided Strike
+
 # 1.3.42 Release:
 ## New Modern Content:
 - Steel Wind Strike
