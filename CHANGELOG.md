@@ -1,3 +1,7 @@
+# 1.3.45 Release:
+## Bug Fixes:
+- Summons (Fixed actor ownership issues)
+
 # 1.3.44 Release:
 ## Update Notes:
 - Added animation and sound options to Crown of Stars

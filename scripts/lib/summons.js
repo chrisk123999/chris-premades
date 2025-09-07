@@ -195,11 +195,12 @@ export class Summons {
     }
     async _spawn() {
         let tokenDocument = await this.sourceActor.getTokenDocument(this.tokenUpdates);
-        let actorData = {
-            ownership: {[game.user.id]: CONST.DOCUMENT_OWNERSHIP_LEVELS.OWNER}
-        };
+        //let actorData = {
+        //    ownership: this.originItem.actor.ownership
+        //};
         let currentUpdates = this.updates;
-        this.mergeUpdates({token: genericUtils.mergeObject(currentUpdates.token ?? {}, {actorData}, {overwrite:false})});
+        //this.mergeUpdates({token: genericUtils.mergeObject(currentUpdates.token ?? {}, {actorData}, {overwrite: false})});
+        genericUtils.setProperty(this.updates, 'actor.ownership', this.originItem.actor.ownership);
         let tokenImg = tokenDocument.texture.src;
         let rotation = this.tokenUpdates?.rotation ?? tokenDocument.rotation ?? 0;
         let crosshairsConfig = genericUtils.mergeObject(this.options?.crosshairs ?? {}, {
