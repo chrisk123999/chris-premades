@@ -150,6 +150,7 @@
             "Colors": {
                 "Blue": "Azul",
                 "Blue02": "Azul (alt)",
+                "BlueGreen": "Azul & Verde",
                 "BlueGrey": "Azul & Cinza",
                 "BlueYellow": "Azul & Amarelo",
                 "BlueWhite": "Azul & Branco",
@@ -168,16 +169,18 @@
                 "LightBlue": "Azul Claro",
                 "LightGreen": "Verde Claro",
                 "Orange": "Laranja",
+                "OrangePurple": "Laranja & Roxo",
                 "Pink": "Rosa",
                 "PinkPurple": "Rosa & Roxo",
                 "Purple": "Roxo",
+                "PurpleGreen": "Roxo & Verde",
                 "Rainbow": "Arco-Íris",
                 "Random": "Aleatório",
                 "Red": "Vermelho",
                 "White": "Branco",
-                "Yellow": "Amarelo"
+                "Yellow": "Amarelo",
+                "YellowBlue": "Amarelo & Azul"
             },
-            "cameraZoom": "Zoom da Câmera:",
             "CombatOnly": "Habilitar Somente em Combate",
             "CompendiumName": "Nome no Compêndio {option}:",
             "Conditions": "Condições:",
@@ -210,6 +213,7 @@
             "Percentage": "Porcentagem:",
             "PlayAnimation": "Reproduzir Animação:",
             "PlayTeleportAnimation": "Tocar Animação de Teleporte:",
+            "PlayTokenAnimation": "Tocar Animação de Token:",
             "PromptToUse": "Avisar para usar:",
             "Range": "Alcance:",
             "RealDarkness": "Usar Escuridão Real:",
@@ -225,12 +229,15 @@
             "Sound": "Som:",
             "SpecificAnimation": "Animação {option}:",
             "SpellSchools": "Escola de Magia:",
+            "TokenColor": "Cor do Token:",
             "TokenImg": "Imagem Token:",
             "TokenImgPriority": "Prioridade Imagem Token:",
+            "TokenSound": "Som do Token:",
             "Trigger": "Gatilho:",
             "TurnTrigger": "Gatilho do Turno:",
             "UseFormula": "Usar Fórmula:",
-            "WeaponProperties": "Propriedades da Arma:"
+            "WeaponProperties": "Propriedades da Arma:",
+            "cameraZoom": "Zoom da Câmera:"
         },
         "Cover": {
             "Full": "Cobertura Total",
