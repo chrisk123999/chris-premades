@@ -4,6 +4,7 @@ async function use({trigger, workflow}) {
     if (!workflow.token || !workflow.targets.size) return;
     let playAnimation = itemUtils.getConfig(workflow.item, 'playAnimation');
     if (!animationUtils.aseCheck() || animationUtils.jb2aCheck() != 'patreon') playAnimation = false;
+    let sound = itemUtils.getConfig(workflow.item, 'sound');
     if (playAnimation) {
         let animations = [
             'animated-spell-effects-cartoon.mix.electric ball.01',
@@ -238,6 +239,9 @@ async function use({trigger, workflow}) {
                                 .atLocation(initialPoints[u])
                                 .stretchTo(initialPoints[(u + 1)])
                                 .filter('ColorMatrix', {hue: 70})
+                            .sound()
+                                .playIf(sound)
+                                .file(sound)
                             .thenDo(() => {
                                 targets.forEach(target => { 
                                     new Sequence()
@@ -360,6 +364,9 @@ async function use({trigger, workflow}) {
                         .fadeOut(1000)
                         .filter('ColorMatrix', {hue: 70})
                         .zIndex(4)
+                    .sound()
+                            .playIf(sound)
+                            .file(sound)
                     .effect()
                         .file('animated-spell-effects-cartoon.magic.mind sliver')
                         .atLocation(points[9 - e])
@@ -422,6 +429,7 @@ export let steelWindStrike = {
     name: 'Steel Wind Strike',
     version: '1.4.41',
     rules: 'modern',
+    hasAnimation: true,
     midi: {
         item: [
             {
@@ -445,6 +453,13 @@ export let steelWindStrike = {
             label: 'CHRISPREMADES.Config.cameraZoom',
             type: 'checkbox',
             default: false,
+            category: 'animation'
+        },
+        {
+            value: 'sound',
+            label: 'CHRISPREMADES.Config.Sound',
+            type: 'file',
+            default: '',
             category: 'animation'
         }
     ]

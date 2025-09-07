@@ -150,6 +150,7 @@
             "Colors": {
                 "Blue": "Azul",
                 "Blue02": "Azul (alt)",
+                "BlueGreen": "Azul & Verde",
                 "BlueGrey": "Azul & Cinza",
                 "BlueYellow": "Azul & Amarelo",
                 "BlueWhite": "Azul & Branco",
@@ -168,14 +169,17 @@
                 "LightBlue": "Azul Claro",
                 "LightGreen": "Verde Claro",
                 "Orange": "Laranja",
+                "OrangePurple": "Laranja & Roxo",
                 "Pink": "Rosa",
                 "PinkPurple": "Rosa & Roxo",
                 "Purple": "Roxo",
+                "PurpleGreen": "Roxo & Verde",
                 "Rainbow": "Arco-Íris",
                 "Random": "Aleatório",
                 "Red": "Vermelho",
                 "White": "Branco",
-                "Yellow": "Amarelo"
+                "Yellow": "Amarelo",
+                "YellowBlue": "Amarelo & Azul"
             },
             "CombatOnly": "Habilitar Somente em Combate",
             "CompendiumName": "Nome no Compêndio {option}:",
@@ -209,6 +213,7 @@
             "Percentage": "Porcentagem:",
             "PlayAnimation": "Reproduzir Animação:",
             "PlayTeleportAnimation": "Tocar Animação de Teleporte:",
+            "PlayTokenAnimation": "Tocar Animação de Token:",
             "PromptToUse": "Avisar para usar:",
             "Range": "Alcance:",
             "RealDarkness": "Usar Escuridão Real:",
@@ -224,12 +229,15 @@
             "Sound": "Som:",
             "SpecificAnimation": "Animação {option}:",
             "SpellSchools": "Escola de Magia:",
+            "TokenColor": "Cor do Token:",
             "TokenImg": "Imagem Token:",
             "TokenImgPriority": "Prioridade Imagem Token:",
+            "TokenSound": "Som do Token:",
             "Trigger": "Gatilho:",
             "TurnTrigger": "Gatilho do Turno:",
             "UseFormula": "Usar Fórmula:",
-            "WeaponProperties": "Propriedades da Arma:"
+            "WeaponProperties": "Propriedades da Arma:",
+            "cameraZoom": "Zoom da Câmera:"
         },
         "Cover": {
             "Full": "Cobertura Total",
@@ -2180,6 +2188,9 @@
             "ThunderousSmite": {
                 "Push": "Destruição Trovejante: Empurrão"
             },
+            "TimeStop": {
+                "Affect": "Isso afeta outra criatura?"
+            },
             "TouchDamage": {
                 "Name": "Dano do Toque"
             },
@@ -2779,9 +2790,17 @@
                 "Hint": "Quando ativado, as animações de rolagem de dano do Dice So Nice serão adiadas até que todas as macros de rolagem de dano sejam concluídas.",
                 "Name": "Dice So Nice: Rolagem de Dano"
             },
+            "disableModulesWarning": {
+                "Hint": "Quando ativado, o CPR não verificará problemas conhecidos com a ativação de determinados módulos e o avisará sobre eles.",
+                "Name": "Verificar Outros Módulos"
+            },
             "disableNonConditionStatusEffects": {
                 "Hint": "Quando ativado, todos os efeitos de status do sistema que não sejam uma condição, serão removidos.",
                 "Name": "Desativar Status Não-Condição"
+            },
+            "disableSettingsWarning": {
+                "Hint": "Quando ativado, o CPR não verificará outras configurações de módulos em busca de problemas e o avisará sobre eles.",
+                "Name": "Verificar Configurações de Outros Módulos"
             },
             "disableSpecialEffects": {
                 "Hint": "Quando ativadas, as condições Cego e Invisível não aplicam efeitos visuais.",
@@ -3211,16 +3230,40 @@
             "TourFeatures": "Recursos do Tour"
         },
         "Troubleshooter": {
+            "ActorOnUseMacros": "Macro Ao Usar em Ator: Desativado",
+            "AutoCompleteWorkflow": "Completar Workflow: Desativado",
+            "AutoTemplateEnabled": "Habilitar Efeito Automático de Modelo: Ativado",
+            "AutohideTemplateElements": "Esconder Elementos de Modelos Automaticamente: Ativado",
+            "BothJB2A": "JB2A Premium e JB2A Free detectados. Remova ou desabilite a versão grátis.",
             "Clipboard": "Texto copiado para a área de transferência!",
+            "ConfirmAttackRoll": "Exibir Botão de Confirmação de Rolagem: Não/Nenhum",
+            "ConvenientEffects": "Aplicar Convenient Effects: Não/Nenhum ou Itens > CE",
             "CopyToClipboard": "Copiar para a Área de Transferência",
+            "DefaultTemplateOnHover": "Padrão Grade de Modelo ao Passar o Mouse: Ativado",
+            "DefunctModulesMessage": "<hr>Os seguintes módulos estão obsoletos e devem ser removidos ou desativados:<br>",
             "DisabledModule": "Cauldron of Plentiful Resources requer que o módulo {module} esteja habilitado!",
             "Discord": "Abra Canal de Suporte do Discord",
+            "EnableWorkflow": "Suporte à Automação de Rolagem: Desativado",
+            "FixSettingsButton": "<hr><button class=\"chris-settings\" type=\"button\">Corrija pra mim!</button><button class=\"chris-ignoreSettings\" type=\"button\">Nunca Mostre Isso de Novo</button>",
+            "GMAutoRollDamage": "Mestre Rolar Dano Automaticamente: Rolagem de Dano Necessária ou Sempre",
             "Hint": "Abre o troubleshooter.",
+            "ItemOnUseMacros": "Macro Ao Usar em Item: Desativado",
+            "MidiSettings": "Midi-Qol:",
+            "MissingJB2A": "JB2A Premium ou JB2A Free é necessário. Por favor, instale e ative um destes módulos.",
             "MissingModule": "Cauldron of Plentiful Resources requer que o módulo {module} esteja instalado!",
+            "ModuleIssuesButton": "<hr><button class=\"chris-ignoreModuleIssues\" type=\"button\">Nunca Mostre Isso de Novo</button>",
+            "ModulesMessage": "<hr>Os seguintes módulos não são suportados e devem ser removidos ou desabilitados:<br>",
+            "MonksWalls": "Monk's Wall Enhancement:",
             "MovementLag": "Os Eventos de Movimento parecem estar demorando muito! Tente definir \"Desempenho de Eventos de Movimento\" mais baixo nas configurações gerais do CPR.",
+            "OneWayDoors": "Permitir Portas de Sentido Único: Ativado",
             "Open": "Abrir Troubleshooter:",
+            "PlayerAutoRollDamage": "Jogador Rolar Dano Automaticamente: Rolagem de Dano Necessária ou Sempre",
             "SaveToFile": "Salvar em Arquivo",
-            "Title": "Troubleshooter"
+            "SettingsFixed": "Configurações do Módulo Atualizadas!",
+            "SettingsMessage": "<hr>Configurações não-suportadas de módulo detectadas. As seguintes configurações não são suportadas:<br>",
+            "Title": "Troubleshooter",
+            "TokenMagicFXSettings": "Configuração Token Magic FX:",
+            "WaitForDamageApplication": "Esperar por Aplicação do Dano: Desativado"
         },
         "Turns": {
             "EndOfTurn": "Fim do Turno",

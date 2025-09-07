@@ -1,3 +1,19 @@
+# 1.3.46 Release:
+## Bug Fixes:
+- Added missing formula field to legacy sneak attack.
+- Fixed troubleshooter.
+
+# 1.3.45 Release:
+## Bug Fixes:
+- Summons (Fixed actor ownership issues)
+
+# 1.3.44 Release:
+## Update Notes:
+- Added animation and sound options to Crown of Stars
+- Added sound options to Steel Wind Strike
+## Bug Fixes:
+- Time Stop
+
 # 1.3.43 Release:
 ## New Legacy Content:
 - Crown of Stars

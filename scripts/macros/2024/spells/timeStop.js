@@ -42,7 +42,7 @@ async function turnEnd({trigger: {entity: effect}}) {
 }
 export let timeStop = {
     name: 'Time Stop',
-    version: '1.3.41',
+    version: '1.3.44',
     rules: 'modern',
     midi: {
         item: [

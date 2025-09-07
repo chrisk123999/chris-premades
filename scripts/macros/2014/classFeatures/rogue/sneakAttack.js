@@ -256,6 +256,14 @@ export let sneakAttack = {
             type: 'checkbox',
             default: false,
             category: 'mechanics'
+        },
+        {
+            value: 'formula',
+            label: 'CHRISPREMADES.Config.Formula',
+            type: 'text',
+            default: '',
+            category: 'homebrew',
+            homebrew: true
         }
     ],
     utilFunctions: {
