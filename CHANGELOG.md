@@ -1,3 +1,8 @@
+# 1.3.46 Release:
+## Bug Fixes:
+- Added missing formula field to legacy sneak attack.
+- Fixed troubleshooter.
+
 # 1.3.45 Release:
 ## Bug Fixes:
 - Summons (Fixed actor ownership issues)
