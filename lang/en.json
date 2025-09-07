@@ -720,7 +720,8 @@
             },
             "AdvantageDamageBonus": {
                 "Bonus": "Bonus damage if attack has advantage:",
-                "Name": "Advantage Damage Bonus"
+                "Name": "Advantage Damage Bonus",
+                "Replace": "Replace Damage Formula:"
             },
             "AllPurposeTool": {
                 "Channel": "All-Purpose Tool: Channel Creative Forces",
