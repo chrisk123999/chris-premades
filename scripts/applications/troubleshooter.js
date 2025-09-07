@@ -340,8 +340,7 @@ export async function run() {
             addLine('Unsupported Importer: true');
         }
     }
-    // eslint-disable-next-line no-undef
-    if (localforage) {
+    if (globalThis.localforage) {
         if (!otherAdded) {
             addLine('');
             addLine('/////////////// Other ///////////////');
