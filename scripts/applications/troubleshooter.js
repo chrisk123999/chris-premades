@@ -329,14 +329,24 @@ export async function run() {
             addLine('Uuid: ' + token.actor.uuid);
         }
     }
+    let otherAdded = false;
     if (game.modules.get('plutonium') || game.modules.get('plutonium-addon-automation')) {
         addLine('');
         addLine('/////////////// Other ///////////////');
+        otherAdded = true;
         if (!game.modules.get('plutonium')?.active) {
             addLine('Unsupported Importer: false');
         } else {
             addLine('Unsupported Importer: true');
         }
+    }
+    // eslint-disable-next-line no-undef
+    if (localforage) {
+        if (!otherAdded) {
+            addLine('');
+            addLine('/////////////// Other ///////////////');
+        }
+        addLine('localForage: true');
     }
     async function troubleshooterDialog() {
         async function save(output) {

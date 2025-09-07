@@ -51,7 +51,7 @@
           "prompt": false,
           "visible": false,
           "name": "",
-          "formula": "1d4"
+          "formula": "1d4 + 1"
         },
         "useConditionText": "",
         "useConditionReason": "",
@@ -103,7 +103,9 @@
         },
         "otherActivityId": "none",
         "otherActivityAsParentType": true,
-        "name": ""
+        "name": "",
+        "img": "",
+        "appliedEffects": []
       }
     },
     "uses": {
@@ -261,7 +263,7 @@
         "identifier": "timeStop",
         "source": "chris-premades",
         "rules": "modern",
-        "version": "1.3.41"
+        "version": "1.3.44"
       },
       "macros": {
         "midi": {

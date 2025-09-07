@@ -1,3 +1,10 @@
+# 1.3.44 Release:
+## Update Notes:
+- Added animation and sound options to Crown of Stars
+- Added sound options to Steel Wind Strike
+## Bug Fixes:
+- Time Stop
+
 # 1.3.43 Release:
 ## New Legacy Content:
 - Crown of Stars

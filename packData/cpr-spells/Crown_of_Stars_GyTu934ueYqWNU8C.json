@@ -434,7 +434,8 @@
         "identifier": "crownOfStars",
         "source": "chris-premades",
         "rules": "legacy",
-        "version": "1.3.43"
+        "version": "1.3.43",
+        "hasAnimation": true
       },
       "macros": {
         "midi": {
