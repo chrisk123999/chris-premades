@@ -253,57 +253,34 @@ function getCastData(workflow) {
 function getCastLevel(workflow) {
     return Math.max(workflow.castData.castLevel, workflow.castData.baseLevel);
 }
-async function specialWeaponAttack(item, targets, sourceFeature) {
+async function specialItemUse(item, targets, sourceFeature, {activity} = {}) {
     let effectData = {
         name: sourceFeature.name,
         img: constants.tempConditionIcon,
-        changes: [
-            {
-                key: 'activities[attack].activation.type',
-                mode: 5,
-                value: 'special',
-                priority: 20
-            }
-        ],
-        duration: {
-            seconds: 1
-        },
-        flags: {
-            dae: {
-                specialDuration: [
-                    '1Attack'
-                ]
-            }
-        },
-        origin: sourceFeature.uuid
-    };
-    await itemUtils.enchantItem(item, effectData);
-    await syntheticItemRoll(item, targets);
-}
-async function specialItemUse(item, targets, sourceFeature) {
-    let effectData = {
-        name: sourceFeature.name,
-        img: constants.tempConditionIcon,
-        changes: Object.values(CONFIG.DND5E.activityTypes).map(i => ({
+        changes: Object.keys(CONFIG.DND5E.activityTypes).flatMap(i => ([{
             key: 'activities[' + i + '].activation.type',
             mode: 5,
             value: 'special',
             priority: 20
-        })),
+        },
+        {
+            key: 'system.activation.type',
+            mode: 5,
+            value: 'special',
+            priority: 20
+        }])),
         duration: {
             seconds: 1
         },
-        flags: {
-            dae: {
-                specialDuration: [
-                    '1Attack'
-                ]
-            }
-        },
         origin: sourceFeature.uuid
     };
-    await itemUtils.enchantItem(item, effectData);
-    await syntheticItemRoll(item, targets);
+    let effect = await itemUtils.enchantItem(item, effectData);
+    if (!activity) {
+        await syntheticItemRoll(item, targets);
+    } else {
+        await syntheticActivityRoll(activity, targets);
+    }
+    await genericUtils.remove(effect);
 }
 export let workflowUtils = {
     bonusDamage,
@@ -325,6 +302,5 @@ export let workflowUtils = {
     modifyDamageAppliedFlat,
     getCastLevel,
     syntheticActivityDataRoll,
-    specialWeaponAttack,
     specialItemUse
 };

@@ -1564,6 +1564,9 @@
             "MaelstromAura": {
                 "Aura": "Maelstrom Aura"
             },
+            "MageHand": {
+                "TooFar": "Mage Hand distance is too far away, dismiss?"
+            },
             "MagicMissile": {
                 "Bolt": "Magic Missile Bolt",
                 "RollEach": "Roll Damage for Each Bolt?",
@@ -3130,6 +3133,7 @@
                 "HomunculusServant": "Homunculus Servant",
                 "HybridTransformation": "Hybrid Transformation",
                 "InvokeDuplicity": "Invoke Duplicity",
+                "MageHand": "Mage Hand",
                 "ManifestMind": "Manifest Mind",
                 "Pixie": "Pixie",
                 "ReaperSpirit": "Reaper Spirit",

@@ -23,7 +23,7 @@ async function use({trigger, workflow}) {
     } else {
         targets = Array.from(workflow.targets);
     }
-    await workflowUtils.specialWeaponAttack(weapon, targets, workflow.item);
+    await workflowUtils.specialItemUse(weapon, targets, workflow.item);
 }
 export let warPriest = {
     name: 'War Priest',
