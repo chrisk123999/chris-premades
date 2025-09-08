@@ -720,7 +720,8 @@
             },
             "AdvantageDamageBonus": {
                 "Bonus": "Dano adicional se o ataque tiver vantagem:",
-                "Name": "Bônus Adicional de Vantagem"
+                "Name": "Bônus Adicional de Vantagem",
+                "Replace": "Substituir Fórmula de Dano:"
             },
             "AllPurposeTool": {
                 "Channel": "Ferramenta Multifuncional: Canalizar Forças Criativas",
@@ -1562,6 +1563,9 @@
             },
             "MaelstromAura": {
                 "Aura": "Aura do Redemoinho"
+            },
+            "MageHand": {
+                "TooFar": "A distância da Mão Arcana está longe demais, dissipar?"
             },
             "MagicMissile": {
                 "Bolt": "Dardo de Míssil Mágico",
@@ -3129,6 +3133,7 @@
                 "HomunculusServant": "Servo Homúnculo",
                 "HybridTransformation": "Transformação Híbrida",
                 "InvokeDuplicity": "Invocar Duplicidade",
+                "MageHand": "Mão Arcana",
                 "ManifestMind": "Mente Manifestada",
                 "Pixie": "Pixie",
                 "ReaperSpirit": "Espírito Ceifador",
