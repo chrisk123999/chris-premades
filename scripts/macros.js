@@ -171,6 +171,7 @@ export {wrathfulSmite} from './macros/2024/spells/wrathfulSmite.js';
 export {zoneOfTruth} from './macros/2024/spells/zoneOfTruth.js';
 export {timeStop, timeStopEffect} from './macros/2024/spells/timeStop.js';
 export {steelWindStrike} from './macros/2024/spells/steelWindStrike.js';
+export {mageHand, mageHandEffect} from './macros/2024/spells/mageHand.js';
 //Items
 export {healersKit} from './macros/2024/items/healersKit.js';
 export {unarmedStrike} from './macros/2024/items/misc/unarmedStrike.js';
@@ -291,5 +292,7 @@ export {deviousStrikes} from './macros/2024/classFeatures/rogue/deviousStrikes.j
 export {slipperyMind} from './macros/2024/classFeatures/rogue/slipperyMind.js';
 export {elusive} from './macros/2024/classFeatures/rogue/elusive.js';
 export {strokeOfLuck} from './macros/2024/classFeatures/rogue/strokeOfLuck.js';
+// Arcane Trickster
+export {mageHandLegerdemain} from './macros/2024/classFeatures/rogue/arcaneTrickster/mageHandLegerdemain.js';
 //Multiple
 export {evasion} from './macros/2024/classFeatures/multiple/evasion.js';

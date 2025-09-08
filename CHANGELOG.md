@@ -1,3 +1,10 @@
+# 1.3.47 Release:
+## New Modern Content:
+- Mage Hand
+- Mage Hand Legerdemain
+## Bug Fixes:
+- Sneak Attack (Modern)
+
 # 1.3.46 Release:
 ## Bug Fixes:
 - Added missing formula field to legacy sneak attack.

@@ -76,6 +76,7 @@ async function damage({trigger: {entity: item}, workflow}) {
     await workflowUtils.completeItemUse(item);
     let playAnimation = itemUtils.getConfig(item, 'playAnimation');
     if (!animationUtils.aseCheck() || animationUtils.jb2aCheck() != 'patreon') playAnimation = false;
+    if (!playAnimation) return;
     let animationType;
     if (tokenUtils.getDistance(workflow.token, targetToken) > 5) animationType = 'ranged';
     if (!animationType) animationType = workflow.defaultDamageType;
