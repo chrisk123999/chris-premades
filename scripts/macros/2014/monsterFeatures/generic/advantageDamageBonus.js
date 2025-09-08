@@ -1,10 +1,13 @@
-import {itemUtils, workflowUtils} from '../../../../utils.js';
+import {itemUtils, rollUtils, workflowUtils} from '../../../../utils.js';
 async function damage({workflow}) {
     if (workflow.disadvantage || !workflow.advantage) return;
-    let {bonusFormula, activities} = itemUtils.getGenericFeatureConfig(workflow.item, 'advantageDamageBonus');
+    let {bonusFormula, activities, replace} = itemUtils.getGenericFeatureConfig(workflow.item, 'advantageDamageBonus');
     if (activities?.length && !activities.includes(workflow.activity.id)) return;
     if (!bonusFormula.length) return;
-    await workflowUtils.bonusDamage(workflow, bonusFormula, {damageType: workflow.defaultDamageType});
+    if (replace) {
+        let damageRoll = rollUtils.damageRoll(bonusFormula, workflow.item, workflow.damageRolls[0].options); // "probably it"
+        await workflow.setDamageRolls([damageRoll]);
+    } else await workflowUtils.bonusDamage(workflow, bonusFormula, {damageType: workflow.defaultDamageType});
 }
 export let advantageDamageBonus = {
     name: 'Advantage Damage Bonus',
@@ -32,6 +35,12 @@ export let advantageDamageBonus = {
             label: 'CHRISPREMADES.Macros.AdvantageDamageBonus.Bonus',
             type: 'text',
             default: '2d6'
+        },
+        {
+            value: 'replace',
+            label: 'CHRISPREMADES.Macros.AdvantageDamageBonus.Replace',
+            type: 'checkbox',
+            default: false
         }
     ]
 };
