@@ -1,5 +1,5 @@
 let {ApplicationV2, HandlebarsApplicationMixin} = foundry.applications.api;
-import {compendiumUtils, itemUtils, genericUtils, errors} from '../utils.js';
+import {compendiumUtils, itemUtils, genericUtils} from '../utils.js';
 import {gambitPremades} from '../integrations/gambitsPremades.js';
 import {miscPremades} from '../integrations/miscPremades.js';
 import {ItemMedkit} from './medkit-item.js';

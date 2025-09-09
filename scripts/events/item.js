@@ -187,16 +187,8 @@ async function actorMedkit(items) {
     }));
     let itemMedkits = itemInfo.filter(item => item.macro.item?.find(i => i.pass === 'itemMedkit')).sort((a, b) => a.macro.item.find(i => i.pass === 'itemMedkit').priority - b.macro.item.find(i => i.pass === 'itemMedkit').priority);
     let actorMedkits = itemInfo.filter(item => item.macro.item?.find(i => i.pass === 'actorMedkit')).sort((a, b) => a.macro.item.find(i => i.pass === 'actorMedkit').priority - b.macro.item.find(i => i.pass === 'actorMedkit').priority);
-    if (itemMedkits.length) {
-        for (let item of itemMedkits) {
-            await executeMacroPass(item.document, 'itemMedkit');
-        }
-    }
-    if (actorMedkits.length) {
-        for (let item of itemMedkits) {
-            await executeMacroPass(item.document, 'actorMedkit');
-        }
-    }
+    if (itemMedkits.length) for (let item of itemMedkits) await executeMacroPass(item.document, 'itemMedkit');
+    if (actorMedkits.length) for (let item of itemMedkits) await executeMacroPass(item.document, 'actorMedkit');
 }
 async function created(item, updates, options) {
     if (!socketUtils.isTheGM() || !item.actor) return;
@@ -208,9 +200,19 @@ async function deleted(item, options, userId) {
     await executeMacroPass(item, 'deleted');
     await executeMacroPass(item, 'actorDeleted');
 }
+async function actorMunch({actor, ddbCharacter}) {
+    let itemInfo = actor.items.map(item => ({
+        document: item,
+        macro: custom.getMacro(genericUtils.getIdentifier(item), genericUtils.getRules(item))
+    }));
+    let actorMunches = itemInfo.filter(item => item.macro.item?.find(i => i.pass === 'actorMunch')).sort((a, b) => a.macro.item.find(i => i.pass === 'actorMunch').priority - b.macro.item.find(i => i.pass === 'actorMunch').priority);
+    if (!actorMunches.length) return;
+    for (let item of actorMunches) await executeMacroPass(item.document, 'actorMunch');
+}
 export let itemEvent = {
     created,
     deleted,
     executeMacroPass,
-    actorMedkit
+    actorMedkit,
+    actorMunch
 };
