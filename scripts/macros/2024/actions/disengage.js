@@ -1,5 +1,4 @@
-import {Crosshairs} from '../../../lib/crosshairs.js';
-import {animationUtils, genericUtils, itemUtils} from '../../../utils.js';
+import {animationUtils, crosshairUtils, genericUtils, itemUtils} from '../../../utils.js';
 async function use({trigger, workflow}) {
     let playAnimation = itemUtils.getConfig(workflow.item, 'playAnimation');
     if (!playAnimation || animationUtils.jb2aCheck() != 'patreon' || !animationUtils.aseCheck()) return;
@@ -10,12 +9,18 @@ async function use({trigger, workflow}) {
     let i = 0;
     let cancelled = false;
     while (!cancelled) {
-        positions[i] = await Crosshairs.showCrosshairs({
-            interval: workflow.token.width % 2 === 0 ? 1 : -1,
-            size: canvas.grid.distance * workflow.token.document.width / 2,
-            resolution: (workflow.token.document.width % 2) ? 1 : -1,
-            icon: workflow.token.document.texture.src,
-            rememberControlled: true
+        positions[i] = await crosshairUtils.aimCrosshair({
+            token: workflow.token, 
+            maxRange: workflow.actor.system.attributes.movement.walk, 
+            centerpoint: workflow.token.center, 
+            drawBoundries: true, 
+            trackDistance: true, 
+            fudgeDistance: workflow.token.document.width * canvas.dimensions.distance / 2,
+            crosshairsConfig: {
+                size: workflow.token.document.parent.grid.distance * workflow.token.document.width / 2,
+                icon: workflow.token.document.texture.src,
+                resolution: (workflow.token.document.width % 2) ? 1 : -1
+            }
         });
         if (positions[i].cancelled) {
             positions.push(positions[i]);

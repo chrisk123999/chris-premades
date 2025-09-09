@@ -183,7 +183,7 @@ export function registerHooks() {
 
     // DDBI Integration
     Hooks.on('ddb-importer.characterProcessDataComplete', itemEvent.actorMunch);
-    Hooks.on('ddb-importer.monsterAddToCompendiumComplete', ddbi.monsterGenerics);
+    //Hooks.on('ddb-importer.monsterAddToCompendiumComplete', ddbi.monsterGenerics);
 
     // Disable AA for things which CPR is going to animate
     Hooks.on('aa.preDataSanitize', automatedAnimations.preDataSanitize);

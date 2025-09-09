@@ -1,3 +1,4 @@
+import {monster} from '../extensions/monster.js';
 import * as legacyMacros from '../legacyMacros.js';
 import * as macros from '../macros.js';
 import {compendiumUtils, genericUtils, itemUtils} from '../utils.js';
@@ -106,24 +107,7 @@ async function getAutomation(itemName, options = {rules: '2014', actorType: 'cha
     return itemData;
 }
 async function monsterGenerics({actor}) {
-    for (let item of actor.items) {
-        let updates = {};
-        let currentMidiActorFlags = item.flags['chris-premades']?.macros?.midi?.actor ?? [];
-        switch(item.name) {
-            case 'Pack Tactics':
-                genericUtils.setProperty(updates, 'flags.chris-premades.config.generic.packTactics.applied', true);
-                genericUtils.setProperty(updates, 'flags.chris-premades.macros.midi.actor', [...currentMidiActorFlags, 'packTactics']);
-                break;
-            case 'Sunlight Sensitivity':
-                genericUtils.setProperty(updates, 'flags.chris-premades.config.generic.sunlightSensitivity', {
-                    applied: true,
-                    auto: false
-                });
-                genericUtils.setProperty(updates, 'flags.chris-premades.macros.midi.actor', [...currentMidiActorFlags, 'sunlightSensitivity']);
-                break;
-        }
-        if (Object.keys(updates).length) await genericUtils.update(item, updates);
-    }
+    await monster.monsterGenerics(actor);
 }
 export let ddbi = {
     ready,

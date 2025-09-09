@@ -61,6 +61,11 @@ export let inspiringMovement = {
             pass: 'itemMedkit',
             macro: added,
             priority: 50
+        },
+        {
+            pass: 'actorMunch',
+            macro: added,
+            priority: 50
         }
     ],
     config: [
