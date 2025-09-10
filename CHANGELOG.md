@@ -1,3 +1,8 @@
+# 1.3.51 Release:
+## Update Notes:
+- Added a setting to disable all CPR animations.
+- JB2A and Sequencer are no longer required modules (optional instead).
+
 # 1.3.50 Release:
 ## New Modern Content:
 - Magical Ambush
