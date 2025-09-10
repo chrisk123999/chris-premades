@@ -1,3 +1,7 @@
+# 1.3.52 Releaes:
+## Bug Fixes:
+- Channel Divinity: Sacred Weapon
+
 # 1.3.51 Release:
 ## Update Notes:
 - Added a setting to disable all CPR animations.
