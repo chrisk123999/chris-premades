@@ -1,3 +1,7 @@
+# 1.3.49 Release:
+## Bug Fixes:
+- Countercharm
+
 # 1.3.48 Release:
 ## Bug Fixes:
 - Dash
