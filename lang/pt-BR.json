@@ -348,6 +348,9 @@
                 "actorMedkit": {
                     "Label": "Medkit de Ator"
                 },
+                "actorMunch": {
+                    "Label": "Ator DDBI Importado"
+                },
                 "actorUnequipped": {
                     "Label": "Ator Desequipado"
                 },
@@ -2796,7 +2799,7 @@
             },
             "disableModulesWarning": {
                 "Hint": "Quando ativado, o CPR não verificará problemas conhecidos com a ativação de determinados módulos e o avisará sobre eles.",
-                "Name": "Verificar Outros Módulos"
+                "Name": "Verificação de Outros Módulos"
             },
             "disableNonConditionStatusEffects": {
                 "Hint": "Quando ativado, todos os efeitos de status do sistema que não sejam uma condição, serão removidos.",
@@ -2804,7 +2807,7 @@
             },
             "disableSettingsWarning": {
                 "Hint": "Quando ativado, o CPR não verificará outras configurações de módulos em busca de problemas e o avisará sobre eles.",
-                "Name": "Verificar Configurações de Outros Módulos"
+                "Name": "Verificação de Configurações de Outros Módulos"
             },
             "disableSpecialEffects": {
                 "Hint": "Quando ativadas, as condições Cego e Invisível não aplicam efeitos visuais.",
