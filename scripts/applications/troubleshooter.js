@@ -58,7 +58,8 @@ let optionalModules = [
     'universal-animations',
     'gambits-premades',
     'midi-item-showcase-community',
-    'tokenmagic'
+    'tokenmagic',
+    'sequencer'
 ];
 let incompatibleModules = [
     'advancedspelleffects',
