@@ -348,6 +348,9 @@
                 "actorMedkit": {
                     "Label": "Medkit de Ator"
                 },
+                "actorMunch": {
+                    "Label": "Ator DDBI Importado"
+                },
                 "actorUnequipped": {
                     "Label": "Ator Desequipado"
                 },
@@ -720,7 +723,8 @@
             },
             "AdvantageDamageBonus": {
                 "Bonus": "Dano adicional se o ataque tiver vantagem:",
-                "Name": "Bônus Adicional de Vantagem"
+                "Name": "Bônus Adicional de Vantagem",
+                "Replace": "Substituir Fórmula de Dano:"
             },
             "AllPurposeTool": {
                 "Channel": "Ferramenta Multifuncional: Canalizar Forças Criativas",
@@ -1562,6 +1566,9 @@
             },
             "MaelstromAura": {
                 "Aura": "Aura do Redemoinho"
+            },
+            "MageHand": {
+                "TooFar": "A distância da Mão Arcana está longe demais, dissipar?"
             },
             "MagicMissile": {
                 "Bolt": "Dardo de Míssil Mágico",
@@ -2792,7 +2799,7 @@
             },
             "disableModulesWarning": {
                 "Hint": "Quando ativado, o CPR não verificará problemas conhecidos com a ativação de determinados módulos e o avisará sobre eles.",
-                "Name": "Verificar Outros Módulos"
+                "Name": "Verificação de Outros Módulos"
             },
             "disableNonConditionStatusEffects": {
                 "Hint": "Quando ativado, todos os efeitos de status do sistema que não sejam uma condição, serão removidos.",
@@ -2800,7 +2807,7 @@
             },
             "disableSettingsWarning": {
                 "Hint": "Quando ativado, o CPR não verificará outras configurações de módulos em busca de problemas e o avisará sobre eles.",
-                "Name": "Verificar Configurações de Outros Módulos"
+                "Name": "Verificação de Configurações de Outros Módulos"
             },
             "disableSpecialEffects": {
                 "Hint": "Quando ativadas, as condições Cego e Invisível não aplicam efeitos visuais.",
@@ -3129,6 +3136,7 @@
                 "HomunculusServant": "Servo Homúnculo",
                 "HybridTransformation": "Transformação Híbrida",
                 "InvokeDuplicity": "Invocar Duplicidade",
+                "MageHand": "Mão Arcana",
                 "ManifestMind": "Mente Manifestada",
                 "Pixie": "Pixie",
                 "ReaperSpirit": "Espírito Ceifador",
