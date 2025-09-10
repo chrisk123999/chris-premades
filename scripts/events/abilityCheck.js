@@ -145,9 +145,9 @@ async function executeContextMacroPass(actor, pass, checkId, options, roll, conf
     for (let i of triggers) results.push(await executeMacro(i));
     return results.filter(i => i);
 }
-async function executeMacroPass(actor, pass, checkId, options, roll, config, dialog, message) {
+async function executeMacroPass(actor, pass, checkId, options, roll, config, dialog, message, sourceActor) {
     genericUtils.log('dev', 'Executing Ability Check Macro Pass: ' + pass);
-    let triggers = getSortedTriggers(actor, pass, checkId, options, roll, config, dialog, message);
+    let triggers = getSortedTriggers(actor, pass, checkId, options, roll, config, dialog, message, sourceActor);
     for (let i of triggers) await executeMacro(i);
 }
 async function executeBonusMacroPass(actor, pass, checkId, options, roll, config, dialog, message) {
@@ -225,6 +225,23 @@ async function rollCheck(wrapped, config, dialog = {}, message = {}) {
     event = config.event;
     let options = {};
     await executeMacroPass(this, 'situational', checkId, options, undefined, config, dialog, message);
+    let token = actorUtils.getFirstToken(this);
+    if (token) {
+        let sceneTriggers = [];
+        token.document.parent.tokens.filter(i => i.uuid !== token.document.uuid && i.actor).forEach(j => {
+            sceneTriggers.push(...getSortedTriggers(j.actor, 'sceneSituational', checkId, options, undefined, config, dialog, message, this));
+        });
+        let sortedSceneTriggers = [];
+        let names = new Set();
+        sceneTriggers.forEach(i => {
+            if (names.has(i.name)) return;
+            sortedSceneTriggers.push(i);
+            names.add(i.name);
+        });
+        sortedSceneTriggers = sortedSceneTriggers.sort((a, b) => a.priority - b.priority);
+        genericUtils.log('dev', 'Executing Ability Check Macro Pass: sceneSituational');
+        for (let trigger of sortedSceneTriggers) await executeMacro(trigger);
+    }
     let selections = await executeContextMacroPass(this, 'context', checkId, options, undefined, config, dialog, message);
     if (selections.length) {
         let advantages = selections.filter(i => i.type === 'advantage').map(j => ({label: j.label, name: 'advantage'}));
@@ -277,7 +294,6 @@ async function rollCheck(wrapped, config, dialog = {}, message = {}) {
     if (!returnData) return;
     let oldOptions = returnData.options;
     returnData = await executeBonusMacroPass(this, 'bonus', checkId, options, returnData, config, dialog, message);
-    let token = actorUtils.getFirstToken(this);
     if (token) {
         let sceneTriggers = [];
         token.document.parent.tokens.filter(i => i.uuid !== token.document.uuid && i.actor).forEach(j => {

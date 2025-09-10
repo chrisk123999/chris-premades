@@ -1,10 +1,18 @@
 import {genericUtils, macroUtils} from '../utils.js';
 const fields = foundry.data.fields;
-
 export const eventStructure = {
     check: [
         {
             pass: 'situational',
+            documents: [
+                'item',
+                'activeeffect',
+                'measuredtemplate',
+                'region'
+            ]
+        },
+        {
+            pass: 'sceneSituational',
             documents: [
                 'item',
                 'activeeffect',
@@ -46,6 +54,24 @@ export const eventStructure = {
     save: [
         {
             pass: 'situational',
+            documents: [
+                'item',
+                'activeeffect',
+                'measuredtemplate',
+                'region'
+            ]
+        },
+        {
+            pass: 'sceneSituational',
+            documents: [
+                'item',
+                'activeeffect',
+                'measuredtemplate',
+                'region'
+            ]
+        },
+        {
+            pass: 'targetSituational',
             documents: [
                 'item',
                 'activeeffect',
@@ -632,6 +658,15 @@ export const eventStructure = {
     skill: [
         {
             pass: 'situational',
+            documents: [
+                'item',
+                'activeeffect',
+                'measuredtemplate',
+                'region'
+            ]
+        },
+        {
+            pass: 'sceneSituational',
             documents: [
                 'item',
                 'activeeffect',

@@ -145,9 +145,9 @@ async function executeContextMacroPass(actor, pass, skillId, options, roll, conf
     for (let i of triggers) results.push(await executeMacro(i));
     return results.filter(i => i);
 }
-async function executeMacroPass(actor, pass, skillId, options, roll, config, dialog, message) {
+async function executeMacroPass(actor, pass, skillId, options, roll, config, dialog, message, sourceActor) {
     genericUtils.log('dev', 'Executing Skill Check Macro Pass: ' + pass);
-    let triggers = getSortedTriggers(actor, pass, skillId, options, roll, config, dialog, message, this);
+    let triggers = getSortedTriggers(actor, pass, skillId, options, roll, config, dialog, message, sourceActor);
     for (let i of triggers) await executeMacro(i);
 }
 async function executeBonusMacroPass(actor, pass, skillId, options, roll, config, dialog, message) {
@@ -165,7 +165,6 @@ function _applyDeprecatedD20Configs(rollConfig, dialogConfig, messageConfig, opt
         if ( value === undefined ) return;
         foundry.utils.setProperty(config, keyPath, value);
     };
-  
     let roll = rollConfig.rolls?.[0] ?? {};
     set(roll, 'parts', options.parts);
     set(roll, 'data', options.data);
@@ -198,7 +197,6 @@ function _applyDeprecatedD20Configs(rollConfig, dialogConfig, messageConfig, opt
     set(messageConfig, 'data', options.messageData);
     set(messageConfig, 'rollMode', options.rollMode);
     set(messageConfig, 'data.flavor', options.flavor);
-  
     if ( !foundry.utils.isEmpty(roll) ) {
         rollConfig.rolls ??= [];
         if ( rollConfig.rolls[0] ) rollConfig.rolls[0] = roll;
@@ -225,6 +223,23 @@ async function rollSkill(wrapped, config, dialog = {}, message = {}) {
     event = config.event;
     let options = {};
     await executeMacroPass(this, 'situational', skillId, options, undefined, config, dialog, message);
+    let token = actorUtils.getFirstToken(this);
+    if (token) {
+        let sceneTriggers = [];
+        token.document.parent.tokens.filter(i => i.uuid !== token.document.uuid && i.actor).forEach(j => {
+            sceneTriggers.push(...getSortedTriggers(j.actor, 'sceneSituational', skillId, options, undefined, config, dialog, message, this));
+        });
+        let sortedSceneTriggers = [];
+        let names = new Set();
+        sceneTriggers.forEach(i => {
+            if (names.has(i.name)) return;
+            sortedSceneTriggers.push(i);
+            names.add(i.name);
+        });
+        sortedSceneTriggers = sortedSceneTriggers.sort((a, b) => a.priority - b.priority);
+        genericUtils.log('dev', 'Executing Skill Macro Macro Pass: sceneSituational');
+        for (let trigger of sortedSceneTriggers) await executeMacro(trigger);
+    }
     let selections = await executeContextMacroPass(this, 'context', skillId, options, undefined, config, dialog, message);
     if (selections.length) {
         let advantages = selections.filter(i => i.type === 'advantage').map(j => ({label: j.label, name: 'advantage'}));
@@ -277,7 +292,6 @@ async function rollSkill(wrapped, config, dialog = {}, message = {}) {
     if (!returnData) return;
     let oldOptions = returnData.options;
     returnData = await executeBonusMacroPass(this, 'bonus', skillId, options, returnData, config, dialog, message);
-    let token = actorUtils.getFirstToken(this);
     if (token) {
         let sceneTriggers = [];
         token.document.parent.tokens.filter(i => i.uuid !== token.document.uuid && i.actor).forEach(j => {

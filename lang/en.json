@@ -500,6 +500,12 @@
                 },
                 "unequipped": {
                     "Label": "Unequipped"
+                },
+                "sceneSituational": {
+                    "Label": "Scene Situational"
+                },
+                "targetSituational": {
+                    "Label": "Target Situational"
                 }
             },
             "Priority": {

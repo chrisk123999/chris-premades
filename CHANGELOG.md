@@ -1,3 +1,10 @@
+# 1.3.50 Release:
+## New Modern Content:
+- Magical Ambush
+## API Update Notes:
+- Added `sceneSituational` to ability checks, skill checks, aving throw, and tool check events.
+- Added `targetSituational` to saving throw events.
+
 # 1.3.49 Release:
 ## Bug Fixes:
 - Countercharm
