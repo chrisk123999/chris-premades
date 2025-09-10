@@ -19,6 +19,7 @@ async function damage({trigger: {entity: item, token, target}}) {
     await workflowUtils.syntheticItemRoll(item, [target]);
 }
 export let auraDamageEnd = {
+    name: 'Damaging Aura',
     translation: 'CHRISPREMADES.Macros.AuraDamage.Name',
     version: '1.0.50',
     combat: [
