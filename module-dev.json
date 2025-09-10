@@ -92,13 +92,6 @@
         }
       },
       {
-        "id": "sequencer",
-        "type": "module",
-        "compatibility": {
-          "minimum": "3.6.0"
-        }
-      },
-      {
         "id": "socketlib",
         "type": "module",
         "compatibility": {

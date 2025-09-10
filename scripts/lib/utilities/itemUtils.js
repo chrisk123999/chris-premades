@@ -1,4 +1,4 @@
-import {actorUtils, effectUtils, genericUtils, socketUtils, compendiumUtils} from '../../utils.js';
+import {actorUtils, effectUtils, genericUtils, socketUtils, compendiumUtils, animationUtils} from '../../utils.js';
 import {gambitPremades} from '../../integrations/gambitsPremades.js';
 import {miscPremades} from '../../integrations/miscPremades.js';
 import {custom} from '../../events/custom.js';
@@ -39,6 +39,7 @@ function isSpellFeature(item) {
     return item.system.type?.value === 'spellFeature';
 }
 function getConfig(item, key) {
+    if (key === 'playAnimation' && (!genericUtils.getCPRSetting('enableAnimations') || !animationUtils.sequencerCheck())) return false;
     let flagValue = item.flags['chris-premades']?.config?.[key];
     if (flagValue !== undefined) return flagValue;
     let identifier = genericUtils.getIdentifier(item);

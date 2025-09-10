@@ -456,6 +456,9 @@
                 "sceneRollFinished": {
                     "Label": "Scene Roll Finished"
                 },
+                "sceneSituational": {
+                    "Label": "Scene Situational"
+                },
                 "short": {
                     "Label": "Short Rest"
                 },
@@ -486,6 +489,9 @@
                 "targetSavesComplete": {
                     "Label": "Target Saves Complete"
                 },
+                "targetSituational": {
+                    "Label": "Target Situational"
+                },
                 "turnEnd": {
                     "Label": "Turn End"
                 },
@@ -500,12 +506,6 @@
                 },
                 "unequipped": {
                     "Label": "Unequipped"
-                },
-                "sceneSituational": {
-                    "Label": "Scene Situational"
-                },
-                "targetSituational": {
-                    "Label": "Target Situational"
                 }
             },
             "Priority": {
@@ -547,6 +547,7 @@
             "MissingDescriptionPage": "Missing Description journal page!",
             "NoActors": "No actors found in folder: \"{folder}\"!",
             "OutOfDateItem": "Automation is out of date!",
+            "OutdatedSequencer": "Sequencer is out of date! In order to use animations, CPR requires a minimum of version {minSequencerVersion}",
             "RulesMismatch": "The automation for this item is mismatched with the rules set on the item!",
             "UpdateItem": "Update Item"
         },
@@ -2835,8 +2836,12 @@
                 "Hint": "Adds a sidebar tab for Active Effects. Reload required after enabling.",
                 "Name": "Enable Effect Interface"
             },
+            "enableAnimations": {
+                "Hint": "When enabled, certain automations will have custom animations. Requires Sequencer and JB2A.",
+                "Name": "Enable CPR Animations"
+            },
             "enableEmbeddedMacrosEditing": {
-                "Hint": "When enabled, the embedded macros editor will be available. (Not ready for use!)",
+                "Hint": "When enabled, the embedded macros editor will be available.",
                 "Name": "Enable Embedded Macros Editing"
             },
             "epicRolls": {
