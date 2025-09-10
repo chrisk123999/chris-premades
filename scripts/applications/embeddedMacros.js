@@ -258,6 +258,12 @@ export const eventStructure = {
             documents: [
                 'item'
             ]
+        },
+        {
+            pass: 'actorMunch',
+            documents: [
+                'item'
+            ]
         }
     ],
     death: [

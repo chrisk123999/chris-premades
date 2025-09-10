@@ -27,6 +27,7 @@ import {itemEvent} from './events/item.js';
 import {template} from './extensions/template.js';
 import {tidy5e} from './integrations/tidy5e.js';
 import {combat} from './extensions/combat.js';
+import {ddbi} from './integrations/ddbi.js';
 export function registerHooks() {
     // Setting caching
     Hooks.on('createSetting', genericUtils.createUpdateSetting);
@@ -175,10 +176,14 @@ export function registerHooks() {
         if (genericUtils.getCPRSetting('backups')) Hooks.on('preCreateActor', backup.preCreateActor);
     }
 
-    // Tidy5e integration
+    // Tidy5e Integration
     Hooks.once('tidy5e-sheet.ready', tidy5e.headerControls);
     Hooks.on('renderTidy5eItemSheetClassic', tidy5e.renderTidyItemSheet);
     Hooks.on('renderTidy5eItemSheetQuadrone', tidy5e.renderTidyItemSheet);
+
+    // DDBI Integration
+    Hooks.on('ddb-importer.characterProcessDataComplete', itemEvent.actorMunch);
+    //Hooks.on('ddb-importer.monsterAddToCompendiumComplete', ddbi.monsterGenerics);
 
     // Disable AA for things which CPR is going to animate
     Hooks.on('aa.preDataSanitize', automatedAnimations.preDataSanitize);

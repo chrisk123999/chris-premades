@@ -9,7 +9,7 @@ async function damage({workflow}) {
     await workflowUtils.replaceDamage(workflow, workflow.damageRoll.formula, {damageType: selection});
 }
 export let chooseDamageType = {
-    name: 'Choose Damage ',
+    name: 'Choose Damage',
     version: '1.3.39',
     midi: {
         item: [

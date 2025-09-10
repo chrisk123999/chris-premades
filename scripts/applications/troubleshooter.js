@@ -69,7 +69,7 @@ let incompatibleModules = [
     'effective-transferral',
     'faster-rolling-by-default-5e',
     'gm-paranoia-taragnor',
-    'heartbeat',
+    //'heartbeat',
     'max-crit',
     'mre-dnd5e',
     'multiattack-5e',

@@ -1,3 +1,11 @@
+# 1.3.48 Release:
+## Bug Fixes:
+- Dash
+- Disengage
+- Effect Immunity Generic Monster Feature
+## API Update Notes:
+- Added `actorMunch` to the item event. Macros under this pass will be called after a character has finished being imported via DDBI. Requires DDBI version 6.5.7 or higher.
+
 # 1.3.47 Release:
 ## New Modern Content:
 - Mage Hand

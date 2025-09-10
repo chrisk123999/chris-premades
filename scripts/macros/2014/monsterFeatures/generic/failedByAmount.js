@@ -12,7 +12,7 @@ async function use({workflow}) {
     }));
 }
 export let failedByAmount = {
-    name: 'failedByAmount',
+    name: 'Failed By Amount',
     translation: 'CHRISPREMADES.Macros.FailedByAmount.Name',
     version: '1.3.39',
     midi: {

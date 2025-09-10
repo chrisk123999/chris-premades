@@ -348,6 +348,9 @@
                 "actorMedkit": {
                     "Label": "Actor Medkit"
                 },
+                "actorMunch": {
+                    "Label": "Actor DDBI Imported"
+                },
                 "actorUnequipped": {
                     "Label": "Actor Unequipped"
                 },

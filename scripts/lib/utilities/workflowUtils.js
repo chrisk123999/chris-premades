@@ -72,7 +72,7 @@ async function syntheticActivityRoll(activity, targets = [], {options = {}, conf
     let defaultOptions = {
         targetUuids: targets.map(i => i.document.uuid),
         configureDialog: false,
-        ignoreUserTargets: true,
+        //ignoreUserTargets: true,
         workflowOptions: {
             autoRollDamage,
             autoFastDamage: true,
@@ -101,7 +101,7 @@ async function syntheticItemRoll(item, targets, {options = {}, config = {}, user
     let defaultOptions = {
         targetUuids: targets.map(i => i.document.uuid),
         configureDialog: false,
-        ignoreUserTargets: true,
+        //ignoreUserTargets: true,
         workflowOptions: {
             autoRollDamage,
             autoFastDamage: true,

@@ -1,3 +1,4 @@
+import {monster} from '../extensions/monster.js';
 import * as legacyMacros from '../legacyMacros.js';
 import * as macros from '../macros.js';
 import {compendiumUtils, genericUtils, itemUtils} from '../utils.js';
@@ -105,7 +106,11 @@ async function getAutomation(itemName, options = {rules: '2014', actorType: 'cha
     genericUtils.setProperty(itemData, 'flags.chris-premades.info.version', items[0].version);
     return itemData;
 }
+async function monsterGenerics({actor}) {
+    await monster.monsterGenerics(actor);
+}
 export let ddbi = {
     ready,
-    getAutomation
+    getAutomation,
+    monsterGenerics
 };
