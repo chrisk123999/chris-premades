@@ -1,3 +1,23 @@
+# 1.3.52 Releaes:
+## Bug Fixes:
+- Channel Divinity: Sacred Weapon
+
+# 1.3.51 Release:
+## Update Notes:
+- Added a setting to disable all CPR animations.
+- JB2A and Sequencer are no longer required modules (optional instead).
+
+# 1.3.50 Release:
+## New Modern Content:
+- Magical Ambush
+## API Update Notes:
+- Added `sceneSituational` to ability checks, skill checks, aving throw, and tool check events.
+- Added `targetSituational` to saving throw events.
+
+# 1.3.49 Release:
+## Bug Fixes:
+- Countercharm
+
 # 1.3.48 Release:
 ## Bug Fixes:
 - Dash

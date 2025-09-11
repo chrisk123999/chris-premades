@@ -146,9 +146,9 @@ async function executeContextMacroPass(actor, pass, saveId, options, roll, confi
     for (let i of triggers) results.push(await executeMacro(i));
     return results.filter(i => i);
 }
-async function executeMacroPass(actor, pass, saveId, options, roll, config, dialog, message) {
+async function executeMacroPass(actor, pass, saveId, options, roll, config, dialog, message, sourceActor) {
     genericUtils.log('dev', 'Executing Ability Save Macro Pass: ' + pass);
-    let triggers = getSortedTriggers(actor, pass, saveId, options, roll, config, dialog, message);
+    let triggers = getSortedTriggers(actor, pass, saveId, options, roll, config, dialog, message, sourceActor);
     for (let i of triggers) await executeMacro(i);
 }
 async function executeBonusMacroPass(actor, pass, saveId, options, roll, config, dialog, message) {
@@ -224,12 +224,33 @@ async function rollSave(wrapped, config, dialog = {}, message = {}) {
     }
     let saveId = config.ability;
     event = config.event;
+    let activityUuid;
+    let activity;
     if (config.midiOptions?.saveItemUuid) {
-        let activityUuid = game.messages.contents.toReversed().find(i => i.flags.dnd5e?.item?.uuid === config.midiOptions.saveItemUuid)?.flags.dnd5e.activity.uuid;
+        activityUuid = game.messages.contents.toReversed().find(i => i.flags.dnd5e?.item?.uuid === config.midiOptions.saveItemUuid)?.flags.dnd5e.activity.uuid;
         if (activityUuid) genericUtils.setProperty(config, 'chris-premades.activityUuid', activityUuid);
     }
     let options = {};
     await executeMacroPass(this, 'situational', saveId, options, undefined, config, dialog, message);
+    if (activityUuid) activity = await fromUuid(activityUuid);
+    if (activity) await executeMacroPass(activity.actor, 'targetSituational', saveId, options, undefined, config, dialog, message, this);
+    let token = actorUtils.getFirstToken(this);
+    if (token) {
+        let sceneTriggers = [];
+        token.document.parent.tokens.filter(i => i.uuid !== token.document.uuid && i.actor).forEach(j => {
+            sceneTriggers.push(...getSortedTriggers(j.actor, 'sceneSituational', saveId, options, undefined, config, dialog, message, this));
+        });
+        let sortedSceneTriggers = [];
+        let names = new Set();
+        sceneTriggers.forEach(i => {
+            if (names.has(i.name)) return;
+            sortedSceneTriggers.push(i);
+            names.add(i.name);
+        });
+        sortedSceneTriggers = sortedSceneTriggers.sort((a, b) => a.priority - b.priority);
+        genericUtils.log('dev', 'Executing Save Macro Pass: sceneSituational');
+        for (let trigger of sortedSceneTriggers) await executeMacro(trigger);
+    }
     let selections = await executeContextMacroPass(this, 'context', saveId, options, undefined, config, dialog, message);
     if (selections.length) {
         let advantages = selections.filter(i => i.type === 'advantage').map(j => ({label: j.label, name: 'advantage'}));

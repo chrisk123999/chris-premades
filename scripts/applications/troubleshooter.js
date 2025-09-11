@@ -58,7 +58,8 @@ let optionalModules = [
     'universal-animations',
     'gambits-premades',
     'midi-item-showcase-community',
-    'tokenmagic'
+    'tokenmagic',
+    'sequencer'
 ];
 let incompatibleModules = [
     'advancedspelleffects',
@@ -562,11 +563,7 @@ async function startup() {
         let jb2aFree = game.modules.get('JB2A_DnD5e')?.active;
         let jb2aPatreon = game.modules.get('jb2a_patreon')?.active;
         let jb2aIssue = false;
-        if (!jb2aFree && !jb2aPatreon) {
-            if (incomptablemodulesFound.size || defunctModulesFound.size) content += '<br>';
-            content += '<hr>' + genericUtils.translate('CHRISPREMADES.Troubleshooter.MissingJB2A');
-            jb2aIssue = true;
-        } else if (jb2aFree && jb2aPatreon) {
+        if (jb2aFree && jb2aPatreon) {
             if (incomptablemodulesFound.size || defunctModulesFound.size) content += '<br>';
             content += '<hr>' + genericUtils.translate('CHRISPREMADES.Troubleshooter.BothJB2A');
             jb2aIssue = true;

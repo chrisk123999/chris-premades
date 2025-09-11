@@ -336,10 +336,6 @@ async function _manualRollsNewRolls(workflow) {
 async function rollFinished(workflow) {
     await executeMacroPass(workflow, 'rollFinished');
     await executeTargetMacroPass(workflow, 'targetRollFinished');
-    if (genericUtils.getCPRSetting('conditionResistanceAndVulnerability')) {
-        await conditionResistance.RollComplete(workflow);
-        await conditionVulnerability.RollComplete(workflow);
-    }
     await executeTargetMacroPass(workflow, 'onHit', true);
     let sceneTriggers = [];
     workflow.token?.document.parent.tokens.filter(i => i.uuid !== workflow.token?.document.uuid && i.actor).forEach(j => {
@@ -355,6 +351,10 @@ async function rollFinished(workflow) {
     sortedSceneTriggers = sortedSceneTriggers.sort((a, b) => a.priority - b.priority);
     genericUtils.log('dev', 'Executing Midi Macro Pass: sceneRollFinished');
     for (let trigger of sortedSceneTriggers) await executeMacro(trigger, workflow);
+    if (genericUtils.getCPRSetting('conditionResistanceAndVulnerability')) {
+        await conditionResistance.RollComplete(workflow);
+        await conditionVulnerability.RollComplete(workflow);
+    }
     if (genericUtils.getCPRSetting('weaponMastery')) await masteries.RollComplete(workflow);
     await effects.specialDuration(workflow);
     if (genericUtils.getCPRSetting('cleave')) await cleave(workflow);

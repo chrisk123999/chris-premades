@@ -643,6 +643,12 @@ export function registerSettings() {
         category: 'general'
     });
     addSetting({
+        key: 'enableAnimations',
+        type: Boolean,
+        default: true,
+        category: 'general'
+    });
+    addSetting({
         key: 'movementPerformance',
         type: Number,
         default: 2,

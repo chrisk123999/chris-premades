@@ -2,6 +2,21 @@ import {summonEffects} from '../../macros/animations/summonEffects.js';
 import {teleportEffects} from '../../macros/animations/teleportEffects.js';
 import {animations, colors, defaultMatrix} from '../../macros/animations/colorMatrix.js';
 import {genericUtils} from './genericUtils.js';
+const minSequencerVersion = '3.6.0';
+let shownSequencerWarning = false;
+function sequencerCheck() {
+    let sequencer = game.modules.get('sequencer');
+    if (!sequencer?.active) return false;
+    if (genericUtils.isNewerVersion(minSequencerVersion, sequencer.version)) {
+        if (!shownSequencerWarning) {
+            shownSequencerWarning = true;
+            let sequencerAlert = genericUtils.format('CHRISPREMADES.Error.OutdatedSequencer', {minSequencerVersion});
+            genericUtils.notify(sequencerAlert, 'warn');
+        }
+        return false;
+    }
+    return true;
+}
 function jb2aCheck() {
     let patreon = game.modules.get('jb2a_patreon')?.active;
     let free = game.modules.get('JB2A_DnD5e')?.active;
@@ -11,7 +26,7 @@ function jb2aCheck() {
     }
     if (patreon) return 'patreon';
     if (free) return 'free';
-    genericUtils.notify('CHRISPREMADES.Troubleshooter.MissingJB2A', 'warn', {localize: true});
+    // genericUtils.notify('CHRISPREMADES.Troubleshooter.MissingJB2A', 'warn', {localize: true});
     return false;
 }
 function aseCheck() {
@@ -51,6 +66,7 @@ async function preloadAnimations(animations, showProgressBar = false) {
     return await Sequencer.Preloader.preloadForClients(animations, showProgressBar);
 }
 export let animationUtils = {
+    sequencerCheck,
     jb2aCheck,
     aseCheck,
     simpleAttack,
