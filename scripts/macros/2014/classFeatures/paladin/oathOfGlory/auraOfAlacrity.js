@@ -4,8 +4,8 @@ async function turnStart({trigger: {entity: item, token, target}}) {
     if (!token.actor.system.attributes.hp.value) return;
     if (effectUtils.getEffectByStatusID(token.actor, 'unconscious') || effectUtils.getEffectByStatusID(token.actor, 'dead')) return;
     let distance = tokenUtils.getDistance(token, target);
-    let auraDistance = 5;
-    if (token.actor.classes.paladin?.system.levels >= 18) auraDistance = 10;
+    let auraDistance = genericUtils.handleMetric(5);
+    if (token.actor.classes.paladin?.system.levels >= 18) auraDistance = genericUtils.handleMetric(10);
     if (distance > auraDistance) return;
     let effect = effectUtils.getEffectByIdentifier(target.actor, 'auraOfAlacrity');
     if (effect) await genericUtils.remove(effect);
@@ -20,7 +20,7 @@ async function turnStart({trigger: {entity: item, token, target}}) {
             {
                 key: 'system.attributes.movement.walk',
                 mode: 2,
-                value: 10,
+                value: genericUtils.handleMetric(10),
                 priority: 20
             }
         ],

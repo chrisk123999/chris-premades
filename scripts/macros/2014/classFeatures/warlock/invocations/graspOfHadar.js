@@ -3,7 +3,7 @@ import {activityUtils, dialogUtils, genericUtils, itemUtils, tokenUtils, workflo
 async function late({trigger: {entity: item}, workflow}) {
     if (activityUtils.getIdentifier(workflow.activity) !== 'eldritchBlast') return;
     if (!workflow.hitTargets.size) return;
-    let validTargets = Array.from(workflow.hitTargets.filter(i => tokenUtils.getDistance(workflow.token, i) > 5));
+    let validTargets = Array.from(workflow.hitTargets.filter(i => tokenUtils.getDistance(workflow.token, i) > genericUtils.handleMetric(5)));
     if (!validTargets.length) return;
     let selection = await dialogUtils.confirm(item.name, genericUtils.format('CHRISPREMADES.Dialog.Use', {itemName: item.name}));
     if (!selection) return;

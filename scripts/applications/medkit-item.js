@@ -753,6 +753,45 @@ export class ItemMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
         if (itemData.system.uses?.max?.length) {
             sourceItemData.system.uses = itemData.system.uses;
         }
+        if(game.settings.get("dnd5e", "metricLengthUnits")) {
+            if(sourceItemData.type === 'weapon'){
+                if(sourceItemData.system.range.value){
+                    sourceItemData.system.range.value=genericUtils.handleMetric(sourceItemData.system.range?.value);
+                }
+                if(sourceItemData.system.range.long){
+                    sourceItemData.system.range.long=genericUtils.handleMetric(sourceItemData.system.range?.long);
+                }
+                if(sourceItemData.system.range.reach){
+                    sourceItemData.system.range.reach=genericUtils.handleMetric(sourceItemData.system.range?.reach)
+                }
+                if(sourceItemData.system.range.units){
+                    sourceItemData.system.range.units='m';
+                }
+                
+            }
+            if(sourceItemData.type === 'spell'){
+                if(sourceItemData.system.range.value){
+                    sourceItemData.system.range.value= genericUtils.handleMetric(sourceItemData.system.range?.value);
+                }
+                if(sourceItemData.system.range.units){
+                    sourceItemData.system.range.units='m';
+                }
+                if(sourceItemData.system.target.template){
+                    if ( sourceItemData.system.target.template.dimensions && sourceItemData.system.target.template.dimensions.width ) {
+                        sourceItemData.system.target.template.dimensions.width= genericUtils.handleMetric(sourceItemData.system.target.template.dimensions.width);
+                    }
+                    if ( sourceItemData.system.target.template.dimensions && sourceItemData.system.target.template.dimensions.height ) {
+                        sourceItemData.system.target.template.dimensions.height= genericUtils.handleMetric(sourceItemData.system.target.template.dimensions.height);
+                    }
+                    if(sourceItemData.system.target.template.size){
+                        sourceItemData.system.target.template.size= genericUtils.handleMetric(sourceItemData.system.target.template.size);
+                    }
+                    if(sourceItemData.system.target.template.units){
+                        sourceItemData.system.target.template.units= 'm';
+                    }
+                }
+            }
+        }
         if (source) genericUtils.setProperty(sourceItemData, 'flags.chris-premades.info.source', source);
         if (version) genericUtils.setProperty(sourceItemData, 'flags.chris-premades.info.version', version);
         if (identifier) genericUtils.setProperty(sourceItemData, 'flags.chris-premades.info.identifier', identifier);

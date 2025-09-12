@@ -23,19 +23,19 @@ async function use({workflow}) {
             {
                 key: 'system.attributes.movement.walk',
                 mode: 2,
-                value: '+10',
+                value: '+' + genericUtils.handleMetric(10).toString(),
                 priority: 20
             },
             {
                 key: 'system.attributes.senses.darkvision',
                 mode: 4,
-                value: 120,
+                value: genericUtils.handleMetric(120),
                 priority: 20
             },
             {
                 key: 'ATL.dimSight',
                 mode: 4,
-                value: 120,
+                value: genericUtils.handleMetric(120),
                 priority: 20
             },
             {

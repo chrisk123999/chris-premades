@@ -14,13 +14,13 @@ async function turnStart({trigger: {entity: item}}) {
             {
                 key: 'flags.midi-qol.range.mwak',
                 mode: 2,
-                value: 5,
+                value: genericUtils.handleMetric(5),
                 priority: 20
             },
             {
                 key: 'flags.midi-qol.range.msak',
                 mode: 2,
-                value: 5,
+                value: genericUtils.handleMetric(5),
                 priority: 20
             }
         ],
