@@ -2,6 +2,8 @@
 ## New Modern Content:
 - Versatile Trickster
 - Spell Thief
+- Assassinate
+- Infiltration Expertise
 ## Bug Fixes:
 - All automations that adjust targeting.
 

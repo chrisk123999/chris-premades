@@ -291,6 +291,19 @@ async function removeTargets(workflow, tokens, {userId} = {}) {
     workflow.targets = new Set(targets);
     await genericUtils.updateTargets(targets, userId);
 }
+function isAttackType(workflow, type = 'attack') {
+    if (!workflow.activity) return;
+    let field;
+    switch (type) {
+        case 'attack': field = 'attacks'; break;
+        case 'meleeAttack': field = 'meleeAttacks'; break;
+        case 'rangedAttack': field = 'rangedAttacks'; break;
+        case 'weaponAttack': field = 'weaponAttacks'; break;
+        case 'spellAttack': field = 'spellAttacks'; break;
+        default: return;
+    }
+    return constants[field].includes(workflow.activity.actionType);
+}
 export let workflowUtils = {
     bonusDamage,
     bonusAttack,
@@ -313,5 +326,6 @@ export let workflowUtils = {
     syntheticActivityDataRoll,
     specialItemUse,
     updateTargets,
-    removeTargets
+    removeTargets,
+    isAttackType
 };
