@@ -2,7 +2,7 @@ import {activityUtils, animationUtils, dialogUtils, genericUtils, itemUtils, wor
 async function early({trigger, workflow}) {
     let targets = workflow.targets.filter(i => i.actor.system.attributes.hp.value < Math.floor(i.actor.system.attributes.hp.max / 2));
     if (workflow.actor.system.attributes.hp.value < Math.floor(workflow.actor.system.attributes.hp.max / 2)) targets.add(workflow.token);
-    await genericUtils.updateTargets(Array.from(targets));
+    await workflowUtils.updateTargets(Array.from(targets));
 }
 async function use({trigger: {entity: item}, workflow}) {
     if (!workflow.targets.size) return;

@@ -1,8 +1,7 @@
-import {genericUtils, workflowUtils} from '../../../utils.js';
-
+import {workflowUtils} from '../../../utils.js';
 async function early({workflow}) {
     if (!workflow.targets.size) return;
-    genericUtils.updateTargets(workflow.targets.filter(i => i.actor.system.abilities.int.value > 2));
+    await workflowUtils.updateTargets(workflow, workflow.targets.filter(i => i.actor.system.abilities.int.value > 2));
 }
 async function use({workflow}) {
     await workflowUtils.handleInstantTemplate(workflow);

@@ -1,8 +1,7 @@
-import {actorUtils, genericUtils} from '../../../../../utils.js';
-
+import {actorUtils, workflowUtils} from '../../../../../utils.js';
 async function early({workflow}) {
     let validTypes = ['fey', 'fiend'];
-    genericUtils.updateTargets(workflow.targets.filter(i => validTypes.includes(actorUtils.typeOrRace(i.actor))));
+    await workflowUtils.updateTargets(workflow, workflow.targets.filter(i => validTypes.includes(actorUtils.typeOrRace(i.actor))));
 }
 export let turnTheFaithless = {
     name: 'Channel Divinity: Turn the Faithless',

@@ -1,9 +1,8 @@
-import {actorUtils, animationUtils, constants, effectUtils, genericUtils, itemUtils} from '../../../../../utils.js';
-
+import {actorUtils, animationUtils, constants, effectUtils, genericUtils, itemUtils, workflowUtils} from '../../../../../utils.js';
 async function early({workflow}) {
     if (!workflow.targets.size) return;
     let validTargets = workflow.targets.filter(i => actorUtils.typeOrRace(i.actor) === 'undead');
-    genericUtils.updateTargets(validTargets);
+    await workflowUtils.updateTargets(workflow, validTargets);
     let effectData = {
         name: genericUtils.translate('CHRISPREMADES.GenericEffects.InvalidTarget'),
         img: constants.tempConditionIcon,

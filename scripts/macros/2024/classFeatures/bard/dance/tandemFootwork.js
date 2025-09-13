@@ -1,8 +1,8 @@
-import {activityUtils, effectUtils, genericUtils, itemUtils, rollUtils} from '../../../../../utils.js';
+import {activityUtils, effectUtils, genericUtils, itemUtils, rollUtils, workflowUtils} from '../../../../../utils.js';
 import {bardicInspiration} from '../bardicInspiration.js';
 async function early({trigger, workflow}) {
     if (!workflow.token) return;
-    await genericUtils.updateTargets(Array.from(workflow.targets).concat(workflow.token));
+    await workflowUtils.updateTargets(Array.from(workflow.targets).concat(workflow.token));
 }
 async function use({trigger, workflow}) {
     let classIdentifier = itemUtils.getConfig(workflow.item, 'classIdentifier');

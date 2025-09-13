@@ -1,4 +1,4 @@
-import {dialogUtils, genericUtils, tokenUtils} from '../../../utils.js';
+import {dialogUtils, genericUtils, tokenUtils, workflowUtils} from '../../../utils.js';
 async function use({trigger, workflow}) {
     if (!workflow.token) return;
     let reverseCover = workflow.targets.has(workflow.token);
@@ -11,7 +11,7 @@ async function use({trigger, workflow}) {
     let text = reverseCover ? 'CHRISPREMADES.Macros.CheckCover.YourCover' : 'CHRISPREMADES.Macros.CheckCover.TargetCover';
     let selection = await dialogUtils.selectTargetDialog(workflow.item.name, text, targets, {type: 'multiple', maxAmount: targets.length, skipDeadAndUnconscious: false, coverToken: workflow.token, reverseCover: reverseCover, displayDistance: true});
     if (!selection) return;
-    genericUtils.updateTargets(selection[0].filter(i => i));
+    await workflowUtils.updateTargets(workflow, selection[0].filter(i => i));
 }
 export let checkCover = {
     name: 'Check Cover',

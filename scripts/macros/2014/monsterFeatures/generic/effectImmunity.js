@@ -1,4 +1,4 @@
-import {actorUtils, effectUtils, genericUtils, itemUtils} from '../../../../utils.js';
+import {actorUtils, effectUtils, genericUtils, itemUtils, workflowUtils} from '../../../../utils.js';
 async function use({trigger, workflow}) {
     if (!workflow.targets.size) return;
     let config = itemUtils.getGenericFeatureConfig(workflow.item, 'effectImmunity');
@@ -32,7 +32,7 @@ async function early({trigger, workflow}) {
         if (effects.find(j => j.name === firstEffectName)) return;
         return true;
     });
-    genericUtils.updateTargets(validTargets);
+    await workflowUtils.updateTargets(validTargets);
 }
 async function removed({trigger}) {
     let origin = await effectUtils.getOriginItem(trigger.entity);

@@ -136,8 +136,7 @@ async function targeted({trigger: {entity: effect, token}, workflow}) {
     if (!spellName) return;
     if (workflow.item.name != spellName) return;
     let newTargets = workflow.targets.difference(new Set([token]));
-    await genericUtils.updateTargets(newTargets, socketUtils.firstOwner(workflow.actor));
-    workflow.targets = newTargets;
+    await workflowUtils.updateTargets(workflow, newTargets);
 }
 export let wish = {
     name: 'Wish',

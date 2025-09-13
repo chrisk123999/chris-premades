@@ -1,4 +1,4 @@
-import {actorUtils, constants, effectUtils, genericUtils, itemUtils} from '../../../../utils.js';
+import {actorUtils, constants, effectUtils, genericUtils, itemUtils, workflowUtils} from '../../../../utils.js';
 async function early({trigger, workflow}) {
     if (!workflow.targets.size) return;
     let validTypes = itemUtils.getConfig(workflow.item, 'creatureTypes');
@@ -7,7 +7,7 @@ async function early({trigger, workflow}) {
         let type = actorUtils.typeOrRace(token.actor);
         if (validTypes.includes(type)) return true;
     });
-    genericUtils.updateTargets(validTargets);
+    await workflowUtils.updateTargets(workflow, validTargets);
 }
 async function use({trigger, workflow}) {
     let hideToken = itemUtils.getConfig(workflow.item, 'hideToken');

@@ -1,5 +1,4 @@
-import {activityUtils, animationUtils, compendiumUtils, constants, dialogUtils, effectUtils, errors, genericUtils, itemUtils, templateUtils, workflowUtils} from '../../../../utils.js';
-
+import {activityUtils, animationUtils, dialogUtils, effectUtils, genericUtils, itemUtils, templateUtils, workflowUtils} from '../../../../utils.js';
 async function early({workflow}) {
     if (!workflow.item.system.uses.value || !workflow.targets.size) return;
     let selection = await dialogUtils.confirm(workflow.item.name, genericUtils.format('CHRISPREMADES.Dialog.Use', {itemName: workflow.item.name}));
@@ -52,7 +51,6 @@ async function early({workflow}) {
     let feature = activityUtils.getActivityByIdentifier(workflow.item, 'javelinOfLightningBolt', {strict: true});
     if (!feature) return;
     await workflowUtils.syntheticActivityRoll(feature, targets);
-    genericUtils.updateTargets(workflow.targets);
 }
 async function damage({workflow}) {
     if (!workflow.chrisPremades?.javelinOfLightningUsed) return;
