@@ -1,0 +1,371 @@
+{
+  "name": "Envenom Weapons",
+  "type": "feat",
+  "effects": [
+    {
+      "name": "Cunning Strike: Envenom Poison",
+      "img": "icons/skills/melee/blade-tip-acid-poison-green.webp",
+      "origin": "Actor.4F5kQIpxwyb6rykH.Item.1ymCoV9gioBs38xR",
+      "transfer": false,
+      "_id": "sZx7k8gyhI4DMkc0",
+      "type": "base",
+      "system": {},
+      "changes": [],
+      "disabled": false,
+      "duration": {
+        "startTime": null,
+        "combat": null,
+        "seconds": null,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "statuses": [],
+      "sort": 0,
+      "flags": {
+        "chris-premades": {
+          "noAnimation": false,
+          "conditions": [
+            "poisoned"
+          ],
+          "specialDuration": [],
+          "info": {
+            "identifier": "envenomPoison"
+          },
+          "rules": "modern",
+          "macros": {
+            "combat": [
+              "envenomPoison"
+            ]
+          }
+        },
+        "dnd5e": {
+          "riders": {
+            "statuses": []
+          },
+          "dependents": [
+            {
+              "uuid": "Scene.L39dEBy0tiHToOQE.Token.2aO7iWu55SCpHN8Q.Actor.4i1zH4NhFIiJdyVO.ActiveEffect.qp5RlUu3nKWpo4bw"
+            }
+          ]
+        },
+        "dae": {
+          "enableCondition": "",
+          "disableCondition": "",
+          "stackable": "noneName",
+          "showIcon": false,
+          "disableIncapacitated": false,
+          "selfTarget": false,
+          "selfTargetAlways": false,
+          "dontApply": false,
+          "durationExpression": "",
+          "macroRepeat": "none",
+          "specialDuration": []
+        },
+        "core": {
+          "overlay": false
+        }
+      },
+      "_key": "!items.effects!YJQKPZHo4D4watXz.sZx7k8gyhI4DMkc0"
+    },
+    {
+      "name": "Envenom Weapons",
+      "changes": [
+        {
+          "key": "system.traits.dr.value",
+          "mode": 2,
+          "value": "-poison",
+          "priority": 20
+        }
+      ],
+      "transfer": false,
+      "img": "icons/skills/ranged/arrow-barbed-flying-poisoned-green.webp",
+      "_id": "Cv2iLYu0cpSsjAJI",
+      "type": "base",
+      "system": {},
+      "disabled": false,
+      "duration": {
+        "startTime": null,
+        "combat": null,
+        "seconds": 1,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "description": "",
+      "origin": null,
+      "tint": "#ffffff",
+      "statuses": [],
+      "sort": 0,
+      "flags": {
+        "dnd5e": {
+          "riders": {
+            "statuses": []
+          }
+        },
+        "dae": {
+          "enableCondition": "",
+          "disableCondition": "",
+          "stackable": "noneName",
+          "showIcon": false,
+          "disableIncapacitated": false,
+          "selfTarget": false,
+          "selfTargetAlways": false,
+          "dontApply": true,
+          "durationExpression": "",
+          "macroRepeat": "none",
+          "specialDuration": []
+        },
+        "core": {
+          "overlay": false
+        },
+        "chris-premades": {
+          "noAnimation": false,
+          "conditions": [],
+          "specialDuration": [],
+          "info": {
+            "identifier": "envenomWeaponsEffect"
+          },
+          "rules": "modern"
+        }
+      },
+      "_key": "!items.effects!YJQKPZHo4D4watXz.Cv2iLYu0cpSsjAJI"
+    }
+  ],
+  "system": {
+    "activities": {
+      "Az3TpPl4g4LTFXcO": {
+        "type": "save",
+        "name": "Envenom Poison (1d6)",
+        "sort": 0,
+        "activation": {
+          "type": "special",
+          "value": 1,
+          "condition": "",
+          "override": false
+        },
+        "consumption": {
+          "targets": [],
+          "scaling": {
+            "allowed": false,
+            "max": ""
+          },
+          "spellSlot": true
+        },
+        "description": {
+          "chatFlavor": ""
+        },
+        "duration": {
+          "value": "1",
+          "units": "minute",
+          "special": "",
+          "concentration": false,
+          "override": false
+        },
+        "effects": [
+          {
+            "_id": "sZx7k8gyhI4DMkc0",
+            "onSave": false
+          }
+        ],
+        "range": {
+          "value": "",
+          "units": "spec",
+          "special": "",
+          "override": false
+        },
+        "target": {
+          "prompt": true,
+          "affects": {
+            "count": "1",
+            "type": "creature",
+            "choice": false,
+            "special": ""
+          },
+          "template": {
+            "count": "",
+            "contiguous": false,
+            "type": "",
+            "size": "",
+            "width": "",
+            "height": "",
+            "units": "ft"
+          },
+          "override": false
+        },
+        "uses": {
+          "spent": 0,
+          "recovery": [],
+          "max": "1"
+        },
+        "damage": {
+          "onSave": "none",
+          "critical": {
+            "allow": false
+          },
+          "parts": [
+            {
+              "custom": {
+                "enabled": false,
+                "formula": ""
+              },
+              "number": 2,
+              "denomination": 6,
+              "bonus": "",
+              "types": [
+                "poison"
+              ],
+              "scaling": {
+                "number": 1
+              }
+            }
+          ]
+        },
+        "save": {
+          "dc": {
+            "calculation": "dex",
+            "formula": ""
+          },
+          "ability": [
+            "con"
+          ]
+        },
+        "useConditionText": "",
+        "useConditionReason": "",
+        "effectConditionText": "",
+        "macroData": {
+          "name": "",
+          "command": ""
+        },
+        "ignoreTraits": {
+          "idi": false,
+          "idr": false,
+          "idv": false,
+          "ida": false,
+          "idm": false
+        },
+        "midiProperties": {
+          "ignoreTraits": [],
+          "triggeredActivityId": "none",
+          "triggeredActivityConditionText": "",
+          "triggeredActivityTargets": "targets",
+          "triggeredActivityRollAs": "self",
+          "confirmTargets": "default",
+          "automationOnly": false,
+          "identifier": "",
+          "autoConsume": false,
+          "forceConsumeDialog": "default",
+          "forceRollDialog": "default",
+          "forceDamageDialog": "default",
+          "autoTargetType": "any",
+          "autoTargetAction": "default",
+          "otherActivityCompatible": false,
+          "otherActivityAsParentType": true,
+          "displayActivityName": false,
+          "rollMode": "default",
+          "chooseEffects": false,
+          "toggleEffect": false,
+          "ignoreFullCover": false,
+          "removeChatButtons": "default",
+          "magicEffect": false,
+          "magicDamage": false,
+          "noConcentrationCheck": false,
+          "autoCEEffects": "default"
+        },
+        "isOverTimeFlag": false,
+        "overTimeProperties": {
+          "saveRemoves": true,
+          "preRemoveConditionText": "",
+          "postRemoveConditionText": ""
+        },
+        "otherActivityId": "none",
+        "otherActivityAsParentType": true,
+        "friendlySave": "default",
+        "img": "icons/skills/melee/blade-tip-acid-poison-green.webp",
+        "_id": "Az3TpPl4g4LTFXcO"
+      }
+    },
+    "uses": {
+      "spent": 0,
+      "recovery": []
+    },
+    "advancement": [],
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "identifier": "envenom-weapons",
+    "source": {
+      "book": "PHB 2024",
+      "page": "",
+      "license": "",
+      "custom": "",
+      "rules": "2024",
+      "revision": 1
+    },
+    "crewed": false,
+    "enchant": {},
+    "prerequisites": {
+      "items": [],
+      "level": 13,
+      "repeatable": false
+    },
+    "properties": [],
+    "requirements": "",
+    "type": {
+      "value": "class",
+      "subtype": ""
+    }
+  },
+  "flags": {
+    "dnd5e": {
+      "advancementOrigin": "DSrhBjkeeo3sLIdd",
+      "riders": {
+        "activity": [],
+        "effect": []
+      },
+      "last": {
+        "Az3TpPl4g4LTFXcO": {
+          "damageType": {
+            "0": "poison"
+          }
+        },
+        "Nxzu2shP9xbuNIH3": {
+          "damageType": {
+            "0": "poison"
+          }
+        }
+      }
+    },
+    "chris-premades": {
+      "hiddenActivities": [
+        "envenomPoisonOvertime"
+      ],
+      "activityIdentifiers": {
+        "envenomPoison": "Az3TpPl4g4LTFXcO",
+        "envenomPoisonOvertime": "Nxzu2shP9xbuNIH3"
+      },
+      "info": {
+        "identifier": "envenomWeapons",
+        "source": "chris-premades",
+        "rules": "modern",
+        "version": "1.3.54"
+      },
+      "macros": {
+        "midi": {
+          "item": [
+            "envenomWeapons"
+          ]
+        }
+      }
+    }
+  },
+  "img": "icons/skills/ranged/arrow-barbed-flying-poisoned-green.webp",
+  "folder": "QKZ26IX9ZmsoXKsL",
+  "_id": "YJQKPZHo4D4watXz",
+  "_key": "!items!YJQKPZHo4D4watXz"
+}

@@ -30,6 +30,7 @@ async function damage({trigger: {entity: item}, workflow}) {
             let cunningStrike = itemUtils.getItemByIdentifier(workflow.actor, 'cunningStrike');
             let improvedCunningStrike = itemUtils.getItemByIdentifier(workflow.actor, 'improvedCunningStrike');
             let deviousStrikes = itemUtils.getItemByIdentifier(workflow.actor, 'deviousStrikes');
+            let envenomWeapons = itemUtils.getItemByIdentifier(workflow.actor, 'envenomWeapons');
             let documents = [];
             let uses = 0;
             if (cunningStrike) {
@@ -38,6 +39,7 @@ async function damage({trigger: {entity: item}, workflow}) {
             }
             if (improvedCunningStrike) uses += itemUtils.getConfig(improvedCunningStrike, 'uses');
             if (deviousStrikes) documents.push(...deviousStrikes.system.activities);
+            if (envenomWeapons) documents.unshift(...envenomWeapons.system.activities);
             if (documents.length) {
                 let activities = [];
                 let used = [];
@@ -45,7 +47,9 @@ async function damage({trigger: {entity: item}, workflow}) {
                     let availableActivities = documents.filter(activity => {
                         let identifier = activityUtils.getIdentifier(activity) ?? activity.id;
                         if ((activity.uses.max ?? 1) > number) return;
-                        if (identifier === 'poison' && !workflow.actor.items.find(j => j.system.identifier === 'poisoners-kit')) return;
+                        if (['poison', 'envenomPoison'].includes(identifier) && !workflow.actor.items.find(j => j.system.identifier === 'poisoners-kit')) return;
+                        if (identifier === 'envenomPoisonOvertime') return;
+                        if (identifier === 'poison' && envenomWeapons) return;
                         if (identifier === 'trip' && actorUtils.getSize(workflow.targets.first().actor) > 3) return;
                         if (used.includes(identifier)) return;
                         return activity;
@@ -72,10 +76,12 @@ async function damage({trigger: {entity: item}, workflow}) {
             bonusDamageFormula = number + 'd6';
         }
     }
-    let assassinate = itemUtils.getItemByIdentifier(workflow.actor, 'assassinate');
-    if (assassinate && game.combat.round === 1) {
-        let classIdentifier = itemUtils.getConfig(item, 'classIdentifier');
-        bonusDamageFormula += ' + ' + workflow.actor.classes[classIdentifier].system.levels;
+    if (combatUtils.inCombat()) {
+        let assassinate = itemUtils.getItemByIdentifier(workflow.actor, 'assassinate');
+        if (assassinate && game.combat.round === 1) {
+            let classIdentifier = itemUtils.getConfig(item, 'classIdentifier');
+            bonusDamageFormula += ' + ' + workflow.actor.classes[classIdentifier].system.levels;
+        }
     }
     if (bonusDamageFormula) await workflowUtils.bonusDamage(workflow, bonusDamageFormula, {damageType: workflow.defaultDamageType});
     await workflowUtils.completeItemUse(item);
