@@ -1,3 +1,9 @@
+# 1.3.54 Release:
+## New Modern Content:
+- Envenom Weapons
+## Bug Fixes:
+- Sneak Attack (Modern)
+
 # 1.3.53 Release:
 ## New Modern Content:
 - Versatile Trickster
