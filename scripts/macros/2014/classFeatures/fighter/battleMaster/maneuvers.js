@@ -337,12 +337,16 @@ async function useTripAttack({workflow}) {
     if (!feature) return;
     await workflowUtils.syntheticActivityRoll(feature, [targetToken]);
 }
+async function added({trigger: {entity: item}}) {
+    await itemUtils.correctActivityItemConsumption(item, ['use'], 'superiorityDice');
+}
 export let maneuversAmbush = {
     name: 'Maneuvers: Ambush',
     version: '1.1.0'
 };
 export let maneuversBaitAndSwitch = {
     name: 'Maneuvers: Bait and Switch',
+    aliases: ['Maneuver: Bait and Switch'],
     version: '1.1.0',
     midi: {
         item: [
@@ -356,6 +360,7 @@ export let maneuversBaitAndSwitch = {
 };
 export let maneuversBrace = {
     name: 'Maneuvers: Brace',
+    aliases: ['Maneuver: Brace'],
     version: '1.3.10',
     midi: {
         item: [
@@ -369,6 +374,7 @@ export let maneuversBrace = {
 };
 export let maneuversCommandersStrike = {
     name: 'Maneuvers: Commander\'s Strike',
+    aliases: ['Maneuver: Commander\'s Strike'],
     version: '1.1.0',
     midi: {
         item: [
@@ -382,14 +388,17 @@ export let maneuversCommandersStrike = {
 };
 export let maneuversCommandingPresence = {
     name: 'Maneuvers: Commanding Presence',
+    aliases: ['Maneuver: Commanding Presence'],
     version: '1.1.0'
 };
 export let maneuversDisarmingAttack = {
     name: 'Maneuvers: Disarming Attack',
+    aliases: ['Maneuver: Disarming Attack'],
     version: '1.1.0'
 };
 export let maneuversDistractingStrike = {
     name: 'Maneuvers: Distracting Strike',
+    aliases: ['Maneuver: Distracting Strike'],
     version: '1.1.0',
     midi: {
         item: [
@@ -403,14 +412,34 @@ export let maneuversDistractingStrike = {
 };
 export let maneuversEvasiveFootwork = {
     name: 'Maneuvers: Evasive Footwork',
+    aliases: ['Maneuver: Evasive Footwork'],
     version: '1.1.0'
 };
 export let maneuversFeintingAttack = {
     name: 'Maneuvers: Feinting Attack',
-    version: '1.1.0'
+    aliases: ['Maneuver: Feinting Attack'],
+    version: '1.3.55',
+    item: [
+        {
+            pass: 'created',
+            macro: added,
+            priority: 55
+        },
+        {
+            pass: 'itemMedkit',
+            macro: added,
+            priority: 55
+        },
+        {
+            pass: 'actorMunch',
+            macro: added,
+            priority: 55
+        }
+    ]
 };
 export let maneuversGoadingAttack = {
     name: 'Maneuvers: Goading Attack',
+    aliases: ['Maneuver: Goading Attack'],
     version: '1.1.0',
     midi: {
         item: [
@@ -424,6 +453,7 @@ export let maneuversGoadingAttack = {
 };
 export let maneuversGrapplingStrike = {
     name: 'Maneuvers: Grappling Strike',
+    aliases: ['Maneuver: Grappling Strike'],
     version: '1.1.0',
     midi: {
         item: [
@@ -437,10 +467,29 @@ export let maneuversGrapplingStrike = {
 };
 export let maneuversLungingAttack = {
     name: 'Maneuvers: Lunging Attack',
-    version: '1.1.0'
+    aliases: ['Maneuver: Lunging Attack'],
+    version: '1.3.55',
+    item: [
+        {
+            pass: 'created',
+            macro: added,
+            priority: 55
+        },
+        {
+            pass: 'itemMedkit',
+            macro: added,
+            priority: 55
+        },
+        {
+            pass: 'actorMunch',
+            macro: added,
+            priority: 55
+        }
+    ]
 };
 export let maneuversManeuveringAttack = {
     name: 'Maneuvers: Maneuvering Attack',
+    aliases: ['Maneuver: Maneuvering Attack'],
     version: '1.1.0',
     midi: {
         item: [
@@ -454,6 +503,7 @@ export let maneuversManeuveringAttack = {
 };
 export let maneuversMenacingAttack = {
     name: 'Maneuvers: Menacing Attack',
+    aliases: ['Maneuver: Menacing Attack'],
     version: '1.1.0'
 };
 export let maneuversParry = {
@@ -471,10 +521,12 @@ export let maneuversParry = {
 };
 export let maneuversPrecisionAttack = {
     name: 'Maneuvers: Precision Attack',
+    aliases: ['Maneuver: Precision Attack'],
     version: '1.1.0'
 };
 export let maneuversPushingAttack = {
     name: 'Maneuvers: Pushing Attack',
+    aliases: ['Maneuver: Pushing Attack'],
     version: '1.1.0',
     midi: {
         item: [
@@ -489,15 +541,52 @@ export let maneuversPushingAttack = {
 };
 export let maneuversQuickToss = {
     name: 'Maneuvers: Quick Toss',
-    version: '1.1.0'
+    aliases: ['Maneuver: Quick Toss'],
+    version: '1.3.55',
+    item: [
+        {
+            pass: 'created',
+            macro: added,
+            priority: 55
+        },
+        {
+            pass: 'itemMedkit',
+            macro: added,
+            priority: 55
+        },
+        {
+            pass: 'actorMunch',
+            macro: added,
+            priority: 55
+        }
+    ]
 };
 export let maneuversRally = {
     name: 'Maneuvers: Rally',
-    version: '1.1.10'
+    aliases: ['Maneuver: Rally'],
+    version: '1.3.55',
+    item: [
+        {
+            pass: 'created',
+            macro: added,
+            priority: 55
+        },
+        {
+            pass: 'itemMedkit',
+            macro: added,
+            priority: 55
+        },
+        {
+            pass: 'actorMunch',
+            macro: added,
+            priority: 55
+        }
+    ]
 };
 export let maneuversRiposte = {
     name: 'Maneuvers: Riposte',
-    version: '1.1.0',
+    aliases: ['Maneuver: Riposte'],
+    version: '1.3.55',
     midi: {
         item: [
             {
@@ -506,10 +595,28 @@ export let maneuversRiposte = {
                 priority: 50
             }
         ]
-    }
+    },
+    item: [
+        {
+            pass: 'created',
+            macro: added,
+            priority: 55
+        },
+        {
+            pass: 'itemMedkit',
+            macro: added,
+            priority: 55
+        },
+        {
+            pass: 'actorMunch',
+            macro: added,
+            priority: 55
+        }
+    ]
 };
 export let maneuversSweepingAttack = {
     name: 'Maneuvers: Sweeping Attack',
+    aliases: ['Maneuver: Sweeping Attack'],
     version: '1.1.0',
     midi: {
         item: [
@@ -530,10 +637,12 @@ export let maneuversSweepingAttack = {
 };
 export let maneuversTacticalAssessment = {
     name: 'Maneuvers: Tactical Assessment',
+    aliases: ['Maneuver: Tactical Assessment'],
     version: '1.1.0'
 };
 export let maneuversTripAttack = {
     name: 'Maneuvers: Trip Attack',
+    aliases: ['Maneuver: Trip Attack'],
     version: '1.1.0',
     midi: {
         item: [

@@ -185,7 +185,10 @@ async function turnEnd({trigger: {entity: effect, token, target}}) {
     if (!target) target = token;
     let charmed = effectUtils.getEffectByStatusID(target.actor, 'charmed');
     let frightened = effectUtils.getEffectByStatusID(target.actor, 'frightened');
-    let classLevel = token.actor.classes.cleric?.system?.levels ?? 0;
+    let item = itemUtils.getItemByIdentifier(token.actor, 'twilightSanctuary');
+    if (!item) return;
+    let classIdentifier = itemUtils.getConfig(item, 'classIdentifier');
+    let classLevel = token.actor.classes[classIdentifier]?.system?.levels ?? 0;
     let formula = '1d6 + ' + classLevel;
     let buttons = [
         [genericUtils.format('CHRISPREMADES.Macros.TwilightSanctuary.Heal', {formula}), 'hp']
@@ -212,9 +215,12 @@ async function end({trigger}) {
     if (!token) return;
     Sequencer.EffectManager.endEffects({name: 'Twilight Sanctuary', object: token});
 }
+async function added({trigger: {entity: item}}) {
+    await itemUtils.correctActivityItemConsumption(item, ['twilightSanctuary'], 'turnUndead');
+}
 export let twilightSanctuary = {
     name: 'Channel Divinity: Twilight Sanctuary',
-    version: '1.1.10',
+    version: '1.3.55',
     hasAnimation: true,
     midi: {
         item: [
@@ -226,6 +232,23 @@ export let twilightSanctuary = {
             }
         ]
     },
+    item: [
+        {
+            pass: 'created',
+            macro: added,
+            priority: 55
+        },
+        {
+            pass: 'itemMedkit',
+            macro: added,
+            priority: 55
+        },
+        {
+            pass: 'actorMunch',
+            macro: added,
+            priority: 55
+        }
+    ],
     config: [
         {
             value: 'playAnimation',
@@ -233,6 +256,14 @@ export let twilightSanctuary = {
             type: 'checkbox',
             default: true,
             category: 'animation'
+        },
+        {
+            value: 'classIdentifier',
+            label: 'CHRISPREMADES.Config.ClassIdentifier',
+            type: 'text',
+            default: 'druid',
+            category: 'homebrew',
+            homebrew: true
         }
     ]
 };

@@ -85,6 +85,7 @@ async function use({workflow}) {
 }
 export let turnUndead = {
     name: 'Channel Divinity: Turn Undead',
+    aliases: ['Channel Divinity'],
     version: '1.1.0',
     midi: {
         item: [

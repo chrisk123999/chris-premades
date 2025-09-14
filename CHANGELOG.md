@@ -1,3 +1,17 @@
+# 1.3.55 Release:
+## Bug Fixes:
+- Starry Form (Legacy)
+- Channel Divinity: Turn Undead (Legacy)
+- Channel Divinity: Twilight Sanctuary (Legacy)
+- Maneuvers: Feinting Attack (Legacy)
+- Maneuvers: Lunging Attack (Legacy)
+- Maneuvers: Quick Toss (Legacy)
+- Maneuvers: Rally (Legacy)
+- Maneuvers: Riposte (Legacy)
+## Update Notes:
+- DDBI is currently importing maneuvers with an extra space, you will need to rename them until that's corrected.
+- If any CPR features are importing with resource consumption incorrectly set, please report it as a bug. Modern automations will self-correct but many old automations need to be updated and adjusted to make use of this feature.
+
 # 1.3.54 Release:
 ## New Modern Content:
 - Envenom Weapons

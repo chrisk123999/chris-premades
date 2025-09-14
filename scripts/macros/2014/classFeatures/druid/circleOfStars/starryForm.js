@@ -1,8 +1,8 @@
-import {activityUtils, actorUtils, compendiumUtils, constants, dialogUtils, effectUtils, errors, genericUtils, itemUtils, socketUtils, tokenUtils, workflowUtils} from '../../../../../utils.js';
-
+import {activityUtils, dialogUtils, effectUtils, genericUtils, itemUtils, socketUtils, tokenUtils, workflowUtils} from '../../../../../utils.js';
 async function use({workflow}) {
     let activityIdentifier = activityUtils.getIdentifier(workflow.activity);
-    let classLevels = workflow.actor.classes.druid?.system.levels;
+    let classIdentifier = itemUtils.getConfig(workflow.item, 'classIdentifier');
+    let classLevels = workflow.actor.classes[classIdentifier]?.system.levels;
     if (!classLevels) return;
     let tier = 1;
     if (classLevels > 13) {
@@ -173,9 +173,12 @@ async function early({actor, config, dialog}) {
     if (actor.classes.druid?.system.levels < 10) return;
     config.scaling = 1;
 }
+async function added({trigger: {entity: item}}) {
+    await itemUtils.correctActivityItemConsumption(item, ['starryFormArcher', 'starryFormChalice', 'starryFormDragon'], 'wildShape');
+}
 export let starryForm = {
     name: 'Starry Form',
-    version: '1.2.28',
+    version: '1.3.55',
     midi: {
         item: [
             {
@@ -192,6 +195,23 @@ export let starryForm = {
             }
         ]
     },
+    item: [
+        {
+            pass: 'created',
+            macro: added,
+            priority: 55
+        },
+        {
+            pass: 'itemMedkit',
+            macro: added,
+            priority: 55
+        },
+        {
+            pass: 'actorMunch',
+            macro: added,
+            priority: 55
+        }
+    ],
     ddbi: {
         removedItems: {
             'Starry Form': [
@@ -200,7 +220,63 @@ export let starryForm = {
                 'Starry Form: Dragon'
             ]
         }
-    }
+    },
+    config: [
+        {
+            value: 'classIdentifier',
+            label: 'CHRISPREMADES.Config.ClassIdentifier',
+            type: 'text',
+            default: 'druid',
+            category: 'homebrew',
+            homebrew: true
+        },
+        {
+            value: 'subclassIdentifier',
+            label: 'CHRISPREMADES.Config.SubclassIdentifier',
+            type: 'text',
+            default: 'stars',
+            category: 'homebrew',
+            homebrew: true
+        },
+        {
+            value: 'scaleIdentifier',
+            label: 'CHRISPREMADES.Config.ScaleIdentifier',
+            type: 'text',
+            default: 'starry-form',
+            category: 'homebrew',
+            homebrew: true
+        }
+    ],
+    scales: [
+        {
+            classIdentifier: 'subclassIdentifier',
+            scaleIdentifier: 'scaleIdentifier',
+            data: {
+                type: 'ScaleValue',
+                configuration: {
+                    identifier: 'starry-form',
+                    type: 'dice',
+                    distance: {
+                        units: ''
+                    },
+                    scale: {
+                        2: {
+                            number: 1,
+                            faces: 8,
+                            modifiers: []
+                        },
+                        10: {
+                            number: 2,
+                            faces: 8,
+                            modifiers: []
+                        }
+                    }
+                },
+                value: {},
+                title: 'Starry Form'
+            }
+        }
+    ]
 };
 export let starryFormActive = {
     name: 'Starry Form: Active',

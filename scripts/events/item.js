@@ -190,7 +190,7 @@ async function actorMedkit(items) {
     if (itemMedkits.length) for (let item of itemMedkits) await executeMacroPass(item.document, 'itemMedkit');
     if (actorMedkits.length) for (let item of itemMedkits) await executeMacroPass(item.document, 'actorMedkit');
 }
-async function created(item, updates, options) {
+async function created(item, options, userId) {
     if (!socketUtils.isTheGM() || !item.actor) return;
     await executeMacroPass(item, 'created');
     await executeMacroPass(item, 'actorCreated');
@@ -204,8 +204,8 @@ async function actorMunch({actor, ddbCharacter}) {
     let itemInfo = actor.items.map(item => ({
         document: item,
         macro: custom.getMacro(genericUtils.getIdentifier(item), genericUtils.getRules(item))
-    }));
-    let actorMunches = itemInfo.filter(item => item.macro.item?.find(i => i.pass === 'actorMunch')).sort((a, b) => a.macro.item.find(i => i.pass === 'actorMunch').priority - b.macro.item.find(i => i.pass === 'actorMunch').priority);
+    })).filter(item => item.macro);
+    let actorMunches = itemInfo.filter(item => item.macro?.item?.find(i => i.pass === 'actorMunch')).sort((a, b) => a.macro?.item?.find(i => i.pass === 'actorMunch').priority - b.macro?.item.find(i => i.pass === 'actorMunch').priority);
     if (!actorMunches.length) return;
     for (let item of actorMunches) await executeMacroPass(item.document, 'actorMunch');
 }
