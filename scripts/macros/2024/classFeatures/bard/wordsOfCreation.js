@@ -1,4 +1,4 @@
-import {dialogUtils, genericUtils, itemUtils, tokenUtils} from '../../../../utils.js';
+import {dialogUtils, genericUtils, itemUtils, tokenUtils, workflowUtils} from '../../../../utils.js';
 async function target({trigger: {entity: item}, workflow}) {
     if (!workflow.targets.size || !workflow.item) return;
     let validIdentifiers = ['powerWordHeal', 'powerWordKill'];
@@ -21,7 +21,7 @@ async function target({trigger: {entity: item}, workflow}) {
     }
     let targets = Array.from(workflow.targets);
     targets.push(selection);
-    await genericUtils.updateTargets(targets);
+    await workflowUtils.updateTargets(workflow, targets);
     await item.displayCard();
 }
 export let wordsOfCreation = {

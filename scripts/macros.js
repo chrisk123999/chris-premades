@@ -295,5 +295,10 @@ export {strokeOfLuck} from './macros/2024/classFeatures/rogue/strokeOfLuck.js';
 // Arcane Trickster
 export {mageHandLegerdemain} from './macros/2024/classFeatures/rogue/arcaneTrickster/mageHandLegerdemain.js';
 export {magicalAmbush} from './macros/2024/classFeatures/rogue/arcaneTrickster/magicalAmbush.js';
+export {versatileTrickster} from './macros/2024/classFeatures/rogue/arcaneTrickster/versatileTrickster.js';
+export {spellThief} from './macros/2024/classFeatures/rogue/arcaneTrickster/spellThief.js';
+// Assassin
+export {assassinate} from './macros/2024/classFeatures/rogue/assassin/assassinate.js';
+export {infiltrationExpertise} from './macros/2024/classFeatures/rogue/assassin/infiltrationExpertise.js';
 //Multiple
 export {evasion} from './macros/2024/classFeatures/multiple/evasion.js';

@@ -1,4 +1,4 @@
-import {dialogUtils, genericUtils} from '../../../../../utils.js';
+import {dialogUtils, genericUtils, workflowUtils} from '../../../../../utils.js';
 
 async function early({workflow}) {
     let maxTargets = 10;
@@ -11,7 +11,7 @@ async function early({workflow}) {
     } else {
         newTargets = selection[0] ?? [];
     }
-    genericUtils.updateTargets(newTargets);
+    await workflowUtils.updateTargets(workflow, newTargets);
 }
 export let zealousPresence = {
     name: 'Zealous Presence',

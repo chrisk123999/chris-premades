@@ -1,3 +1,12 @@
+# 1.3.53 Release:
+## New Modern Content:
+- Versatile Trickster
+- Spell Thief
+- Assassinate
+- Infiltration Expertise
+## Bug Fixes:
+- All automations that adjust targeting.
+
 # 1.3.52 Releaes:
 ## Bug Fixes:
 - Channel Divinity: Sacred Weapon

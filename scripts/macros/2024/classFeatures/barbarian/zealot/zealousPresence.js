@@ -1,4 +1,4 @@
-import {dialogUtils, genericUtils, itemUtils} from '../../../../../utils.js';
+import {dialogUtils, genericUtils, itemUtils, workflowUtils} from '../../../../../utils.js';
 async function veryEarly({activity, dialog, actor, config}) {
     if (activity.item.system.uses.value) return;
     dialog.configure = false;
@@ -19,7 +19,7 @@ async function early({trigger, workflow}) {
     } else {
         newTargets = selection[0] ?? [];
     }
-    genericUtils.updateTargets(newTargets);
+    await workflowUtils.updateTargets(workflow, newTargets);
 }
 export let zealousPresence = {
     name: 'Zealous Presence',

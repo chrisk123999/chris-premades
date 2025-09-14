@@ -282,6 +282,28 @@ async function specialItemUse(item, targets, sourceFeature, {activity} = {}) {
     }
     await genericUtils.remove(effect);
 }
+async function updateTargets(workflow, targets, {userId} = {}) {
+    workflow.targets = new Set(targets);
+    await genericUtils.updateTargets(targets, userId);
+}
+async function removeTargets(workflow, tokens, {userId} = {}) {
+    let targets = Array.from(workflow.targets).filter(token => !tokens.includes(token));
+    workflow.targets = new Set(targets);
+    await genericUtils.updateTargets(targets, userId);
+}
+function isAttackType(workflow, type = 'attack') {
+    if (!workflow.activity) return;
+    let field;
+    switch (type) {
+        case 'attack': field = 'attacks'; break;
+        case 'meleeAttack': field = 'meleeAttacks'; break;
+        case 'rangedAttack': field = 'rangedAttacks'; break;
+        case 'weaponAttack': field = 'weaponAttacks'; break;
+        case 'spellAttack': field = 'spellAttacks'; break;
+        default: return;
+    }
+    return constants[field].includes(workflow.activity.actionType);
+}
 export let workflowUtils = {
     bonusDamage,
     bonusAttack,
@@ -302,5 +324,8 @@ export let workflowUtils = {
     modifyDamageAppliedFlat,
     getCastLevel,
     syntheticActivityDataRoll,
-    specialItemUse
+    specialItemUse,
+    updateTargets,
+    removeTargets,
+    isAttackType
 };

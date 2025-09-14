@@ -57,12 +57,17 @@
           },
           "dependents": [
             {
-              "uuid": "Actor.4F5kQIpxwyb6rykH.ActiveEffect.9tasqkrgWe4ugMCZ"
-            },
-            {
-              "uuid": "Actor.4F5kQIpxwyb6rykH.ActiveEffect.I0XTM5x0ELZO8QIU"
+              "uuid": "Actor.4F5kQIpxwyb6rykH.ActiveEffect.wRtnBgtveRxliWxc"
             }
           ]
+        },
+        "chris-premades": {
+          "noAnimation": false,
+          "conditions": [],
+          "specialDuration": [],
+          "info": {
+            "identifier": "steadyAimBonus"
+          }
         }
       },
       "description": "",
@@ -72,7 +77,7 @@
       "system": {},
       "origin": null,
       "sort": 0,
-      "_key": "!items.effects!QbcQGfeNGXL6NFz9.jHASsgwKNPnYIDFd"
+      "_key": "!items.effects!r9H2mw2z3Po25Pbb.jHASsgwKNPnYIDFd"
     },
     {
       "name": "Steady Aim: Speed Reduction",
@@ -110,7 +115,7 @@
           "disableIncapacitated": false,
           "selfTarget": false,
           "selfTargetAlways": false,
-          "dontApply": false,
+          "dontApply": true,
           "durationExpression": "",
           "macroRepeat": "none"
         },
@@ -127,6 +132,14 @@
           "riders": {
             "statuses": []
           }
+        },
+        "chris-premades": {
+          "noAnimation": false,
+          "conditions": [],
+          "specialDuration": [],
+          "info": {
+            "identifier": "steadyAimMovement"
+          }
         }
       },
       "description": "",
@@ -136,7 +149,7 @@
       "system": {},
       "origin": null,
       "sort": 0,
-      "_key": "!items.effects!QbcQGfeNGXL6NFz9.N01wiTCKbCxIdvP1"
+      "_key": "!items.effects!r9H2mw2z3Po25Pbb.N01wiTCKbCxIdvP1"
     }
   ],
   "system": {
@@ -172,9 +185,6 @@
         "effects": [
           {
             "_id": "jHASsgwKNPnYIDFd"
-          },
-          {
-            "_id": "N01wiTCKbCxIdvP1"
           }
         ],
         "range": {
@@ -322,17 +332,22 @@
         "identifier": "steadyAim",
         "source": "chris-premades",
         "rules": "modern",
-        "version": "1.3.36"
+        "version": "1.3.53"
       },
       "macros": {
         "movement": [
           "steadyAim"
-        ]
+        ],
+        "midi": {
+          "item": [
+            "steadyAim"
+          ]
+        }
       }
     }
   },
   "img": "icons/skills/ranged/target-bullseye-arrow-green.webp",
   "folder": "oeHJD6UoRsmQIVlo",
-  "_id": "QbcQGfeNGXL6NFz9",
-  "_key": "!items!QbcQGfeNGXL6NFz9"
+  "_id": "r9H2mw2z3Po25Pbb",
+  "_key": "!items!r9H2mw2z3Po25Pbb"
 }

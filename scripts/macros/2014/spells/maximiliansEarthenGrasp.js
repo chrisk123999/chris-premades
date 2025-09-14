@@ -118,12 +118,12 @@ async function early({workflow}) {
             if (!selection?.length) return;
             target = selection[0];
         }
-        genericUtils.updateTargets([target]);
+        await workflowUtils.updateTargets(workflow, [target]);
     } else {
         if (!graspEffect) return;
         let target = await fromUuid(graspEffect.flags['chris-premades'].maximiliansEarthenGrasp.targetUuid);
         if (!target) return;
-        genericUtils.updateTargets([target.object]);
+        await workflowUtils.updateTargets(workflow, [target.object]);
     }
 }
 async function veryEarly({dialog}) {

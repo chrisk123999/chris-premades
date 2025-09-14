@@ -72,6 +72,11 @@ async function damage({trigger: {entity: item}, workflow}) {
             bonusDamageFormula = number + 'd6';
         }
     }
+    let assassinate = itemUtils.getItemByIdentifier(workflow.actor, 'assassinate');
+    if (assassinate && game.combat.round === 1) {
+        let classIdentifier = itemUtils.getConfig(item, 'classIdentifier');
+        bonusDamageFormula += ' + ' + workflow.actor.classes[classIdentifier].system.levels;
+    }
     if (bonusDamageFormula) await workflowUtils.bonusDamage(workflow, bonusDamageFormula, {damageType: workflow.defaultDamageType});
     await workflowUtils.completeItemUse(item);
     let playAnimation = itemUtils.getConfig(item, 'playAnimation');

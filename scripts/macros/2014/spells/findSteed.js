@@ -97,7 +97,7 @@ export async function findSteedEarlyHelper(workflow, identifier) {
     if (!steedToken) return;
     if (tokenUtils.getDistance(workflow.token, steedToken) > genericUtils.handleMetric(5)) return;
     let selection = await dialogUtils.confirm(originItem.name, 'CHRISPREMADES.Macros.FindSteed.Target');
-    if (selection) genericUtils.updateTargets([workflow.token, steedToken]);
+    if (selection) await workflowUtils.updateTargets(workflow, [workflow.token, steedToken]);
 }
 async function veryEarly({dialog}) {
     dialog.configure = false;

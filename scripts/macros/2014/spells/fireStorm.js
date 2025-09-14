@@ -1,4 +1,4 @@
-import {animationUtils, effectUtils, genericUtils, itemUtils, templateUtils} from '../../../utils.js';
+import {animationUtils, effectUtils, genericUtils, itemUtils, templateUtils, workflowUtils} from '../../../utils.js';
 
 async function early({workflow}) {
     let playAnimation = itemUtils.getConfig(workflow.item, 'playAnimation');
@@ -50,7 +50,7 @@ async function early({workflow}) {
         if (!tokens.size) continue;
         for (let j of tokens) targets.add(j);
     }
-    genericUtils.updateTargets(targets);
+    await workflowUtils.updateTargets(workflow, targets);
     let effectData = {
         name: workflow.item.name + ' ' + genericUtils.translate('CHRISPREMADES.Macros.FireStorm.Templates'),
         img: workflow.item.img,

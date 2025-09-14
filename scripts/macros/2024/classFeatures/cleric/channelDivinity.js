@@ -77,7 +77,7 @@ async function turnEarly({trigger, workflow}) {
         if (token.actor.flags['chris-premades']?.turnImmunity) await effectUtils.createEffect(token.actor, immuneData);
         validTargets.push(token);
     }));
-    genericUtils.updateTargets(validTargets);
+    await workflowUtils.updateTargets(workflow, validTargets);
 }
 async function turnLate({trigger, workflow}) {
     if (!workflow.failedSaves.size) return;

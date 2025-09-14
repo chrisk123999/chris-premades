@@ -1,4 +1,4 @@
-import {activityUtils, actorUtils, combatUtils, dialogUtils, genericUtils, itemUtils, socketUtils} from '../../../../../utils.js';
+import {activityUtils, actorUtils, combatUtils, dialogUtils, genericUtils, itemUtils, socketUtils, workflowUtils} from '../../../../../utils.js';
 import {bardicInspiration} from '../bardicInspiration.js';
 async function early({trigger, workflow}) {
     let maxTargets = Math.max(1, workflow.actor.system.abilities.cha.mod);
@@ -9,7 +9,7 @@ async function early({trigger, workflow}) {
     } else {
         selection = selection[0];
     }
-    genericUtils.updateTargets(selection);
+    await workflowUtils.updateTargets(workflow, selection);
 }
 async function use({trigger, workflow}) {
     await Promise.all(workflow.targets.map(async token => {

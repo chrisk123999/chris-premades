@@ -141,7 +141,7 @@ async function early({trigger, workflow}) {
             regionData.shapes[0].radiusY = (template.object.shape.radius / radius) * (radius + 0.5);
         }
         let [visibilityRegion] = await regionUtils.createRegions([visionRegionData], workflow.token.scene, {parentEntity: concentration});
-        genericUtils.updateTargets(visibilityRegion.tokens.map(i => i.object));
+        await workflowUtils.updateTargets(workflow, visibilityRegion.tokens.map(i => i.object));
         await genericUtils.update(visibilityRegion, {
             shapes: [
                 {
@@ -360,7 +360,7 @@ async function early({trigger, workflow}) {
         effectUtils.addMacro(regionData, 'region', ['wallOfFireRegion']);
         await regionUtils.createRegions([regionData], workflow.token.scene, {parentEntity: concentration});
         await genericUtils.remove(template);
-        genericUtils.updateTargets(targets);
+        await workflowUtils.updateTargets(workflow, targets);
     }
 }
 async function movement({trigger}) {

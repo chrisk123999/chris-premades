@@ -12,7 +12,7 @@ async function early({workflow}) {
         } else {
             newTargets = selection[0];
         }
-        genericUtils.updateTargets(newTargets);
+        await workflowUtils.updateTargets(workflow, newTargets);
     }
 }
 async function late({workflow}) {
