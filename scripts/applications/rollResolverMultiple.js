@@ -82,16 +82,13 @@ export class CPRMultipleRollResolver extends HandlebarsApplicationMixin(Applicat
         return super.close(options);
     }
     async _prepareContext(_options) {
-        const diceOnly = genericUtils.getCPRSetting('manualRollsInputDiceOnly');
-        const placeholderKey = diceOnly ? 'CHRISPREMADES.Generic.DiceOnly' : 'CHRISPREMADES.Generic.Total';
         const context = {
             groups: [],
             options: {
                 name: this.rolls[0]?.data?.name,
                 itemName: this.rolls[0].data?.item?.name,
             },
-            buttons: [{type: 'submit', action: 'confirm', label: 'CHRISPREMADES.Generic.Submit', name: 'confirm', icon: 'fa-solid fa-check'}],
-            placeholder: genericUtils.translate(placeholderKey) //placeholder text depending on 'manualRollsInputDiceOnly' setting
+            buttons: [{type: 'submit', action: 'confirm', label: 'CHRISPREMADES.Generic.Submit', name: 'confirm', icon: 'fa-solid fa-check'}]
         };
         this.rolls.forEach(roll => {
             let damageType = roll.options.type ?? roll.options.flavor ?? 'none';
@@ -197,9 +194,7 @@ export class CPRMultipleRollResolver extends HandlebarsApplicationMixin(Applicat
                         } else if (die instanceof CONFIG.Dice.termTypes.OperatorTerm) {
                             dice.multiplier = die.operator === '-' ? -1 : 1;
                         } else if (die instanceof CONFIG.Dice.termTypes.NumericTerm) {
-                            if (!genericUtils.getCPRSetting('manualRollsInputDiceOnly')) {
-                                total -= (die.number * dice.multiplier);
-                            }
+                            total -= (die.number * dice.multiplier);
                         }
                     });
                     return dice;

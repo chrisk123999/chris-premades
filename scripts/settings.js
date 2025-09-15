@@ -287,7 +287,7 @@ export function registerSettings() {
             if (value) {
                 Hooks.on('preCreateActiveEffect', conditions.preCreateActiveEffect);
             } else {
-                Hooks.off('preCreateActiveEffect', conditions.preCreateActiveEffect);
+                Hooks.off('preCreateActiveEffect', conditions.preCreateActiveEffect); 
             }
         }
     });
@@ -631,12 +631,6 @@ export function registerSettings() {
         category: 'manualRolls'
     });
     addSetting({
-    key: 'manualRollsInputDiceOnly',
-    type: Boolean,
-    default: false,
-    category: 'manualRolls'
-    });
-    addSetting({
         key: 'explodingHeals',
         type: Boolean,
         default: false,
@@ -954,14 +948,14 @@ export function registerSettings() {
         type: Boolean,
         default: false,
         category: 'interface',
-        onChange: (value) => ui.customSidebar(value)
+        onChange: (value) => ui.customSidebar(value)         
     });
     addSetting({
         key: 'customChatMessage',
         type: Boolean,
         default: false,
         category: 'interface',
-        onChange: (value) => ui.customChatMessage(value)
+        onChange: (value) => ui.customChatMessage(value)         
     });
     addSetting({
         key: 'disableSettingsWarning',
