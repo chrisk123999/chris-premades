@@ -631,10 +631,10 @@ export function registerSettings() {
         category: 'manualRolls'
     });
     addSetting({
-    key: 'manualRollsInputDiceOnly',
-    type: Boolean,
-    default: false,
-    category: 'manualRolls'
+        key: 'manualRollsInputDiceOnly',
+        type: Boolean,
+        default: false,
+        category: 'manualRolls'
     });
     addSetting({
         key: 'explodingHeals',
