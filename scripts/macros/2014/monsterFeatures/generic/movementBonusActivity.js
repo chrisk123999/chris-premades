@@ -14,7 +14,7 @@ async function early({workflow}) {
     if (combatant.flags['chris-premades']?.movementBonusActivity?.lastMovementId === lastMovementId) return;
     let formula = config.damageBonus;
     if (config.replaceDamageFormula) {
-        let damageRoll = rollUtils.damageRoll(formula, workflow.item, workflow.damageRolls[0].options); // "probably it"
+        let damageRoll = rollUtils.damageRoll(formula, workflow.activity, workflow.damageRolls[0].options); // "probably it"
         await workflow.setDamageRolls([damageRoll]);
     } else {
         await workflowUtils.bonusDamage(workflow, formula);

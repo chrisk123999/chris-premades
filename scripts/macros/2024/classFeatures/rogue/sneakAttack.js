@@ -18,7 +18,10 @@ async function damage({trigger: {entity: item}, workflow}) {
         let selection = await dialogUtils.confirm(item.name, genericUtils.format('CHRISPREMADES.Macros.SneakAttack.Use', {name: item.name}));
         if (!selection) return;
     }
-    if (combatUtils.inCombat()) await genericUtils.update(item, {'system.uses.spent': item.system.uses.spent + 1});
+    if (combatUtils.inCombat()) {
+        await genericUtils.update(item, {'system.uses.spent': item.system.uses.spent + 1});
+        if (game.combat.round === 1 && itemUtils.getItemByIdentifier(workflow.actor, 'deathStrike')) genericUtils.setProperty(workflow, 'chris-premades.deathStrike', true);
+    }
     let bonusDamageFormula = itemUtils.getConfig(item, 'formula');
     if (!bonusDamageFormula) {
         if (workflow.actor.type === 'character') {

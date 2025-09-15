@@ -15,7 +15,7 @@ export async function explodingHeals(workflow) {
                 newFormula += i.expression + 'x';
             }
         }
-        return await rollUtils.damageRoll(newFormula, workflow.actor, roll.options);
+        return await rollUtils.damageRoll(newFormula, workflow.activity, roll.options);
     }));
     await workflow.setDamageRolls(damageRolls);
 }
