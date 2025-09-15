@@ -293,10 +293,10 @@
         },
         "Distance": {
             "0": "0 ft.",
+            "5": "5 ft.",
             "10": "10 ft.",
             "15": "15 ft.",
             "20": "20 ft.",
-            "5": "5 ft.",
             "DistanceFeet": "{distance} ft."
         },
         "EffectInterface": {
@@ -607,6 +607,7 @@
             "Configure": "Configure",
             "ConsumeItemToUse": "Consume a usage of {item} to use?",
             "ConsumeSpellSlotToUse": "Consume a spell slot to use?",
+            "DiceOnly": "Die Result",
             "Disabled": "Disabled",
             "Distance": "Distance",
             "Edit": "Edit",
@@ -2936,6 +2937,10 @@
                 "Hint": "What actor's rolls should be prompted for.",
                 "Name": "Manual Rolls Inclusion"
             },
+            "manualRollsInputDiceOnly": {
+                "Hint": "Input dice results only, excluding modifiers.",
+                "Name": "Input Dice Only"
+            },
             "manualRollsPromptNoData": {
                 "Hint": "Prompt for rolls with no data, likely used in macros.",
                 "Name": "Prompt on No Data"
@@ -3204,14 +3209,6 @@
                 "Content": "All automations available in this module are stored here.",
                 "Title": "Compendiums"
             },
-            "10": {
-                "Content": "This module has many settings. Please make sure to carefully go through them all and only enable the ones you need.",
-                "Title": "Module Settings"
-            },
-            "11": {
-                "Content": "Further assistance may be found in the help category.",
-                "Title": "Help"
-            },
             "2": {
                 "Content": "As an example, the spell \"Fire Shield\" is stored in the \"CPR Spells\" compendium. You can drag the spell from this compendium onto your actor to use it.",
                 "Title": "Compendiums"
@@ -3243,6 +3240,14 @@
             "9": {
                 "Content": "For example, the spell \"Dragon's Breath\" will make a temporary feature called \"Dragon Breath\" on the target actor.\nFilling in this journal page will populate the description when it's created.",
                 "Title": "Description Journal"
+            },
+            "10": {
+                "Content": "This module has many settings. Please make sure to carefully go through them all and only enable the ones you need.",
+                "Title": "Module Settings"
+            },
+            "11": {
+                "Content": "Further assistance may be found in the help category.",
+                "Title": "Help"
             },
             "Chat": "<hr>View a guided tour of Cauldron of Plentiful Resources here:<br><button class=\"chris-tour\" type=\"button\">Start Tour</button>",
             "Description": "Take a tour of Cauldron of Plentiful Resources.",
