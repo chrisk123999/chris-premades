@@ -1,3 +1,7 @@
+# 1.3.56 Release:
+## New Modern Content:
+- Death Strike
+
 # 1.3.55 Release:
 ## Bug Fixes:
 - Starry Form (Legacy)

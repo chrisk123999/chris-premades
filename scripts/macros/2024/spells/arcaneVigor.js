@@ -10,7 +10,7 @@ async function damage({trigger, workflow}) {
     }));
     if (formula.length) formula += ' + ';
     formula += activityUtils.getMod(workflow.activity);
-    let roll = await rollUtils.damageRoll(formula, workflow.actor, workflow.damageRolls[0].options);
+    let roll = await rollUtils.damageRoll(formula, workflow.activity, workflow.damageRolls[0].options);
     await workflow.setDamageRolls([roll]);
 }
 export let arcaneVigor = {
