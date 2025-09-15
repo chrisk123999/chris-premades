@@ -76,7 +76,7 @@ export class CPRMultipleRollResolver extends HandlebarsApplicationMixin(Applicat
     }
     async close(options={}) {
         // eslint-disable-next-line no-undef
-        if ( this.rendered ) await this.constructor._fulfillRoll.call(this, null, null, new FormDataExtended(this.element));
+        if ( this.rendered ) await this.constructor._fulfillRoll.call(this, null, null, new foundry.applications.ux.FormDataExtended(this.element));
         this.rolls.forEach(roll => Roll.defaultImplementation.RESOLVERS.delete(roll)); //
         this.#resolve?.();
         return super.close(options);
@@ -190,7 +190,7 @@ export class CPRMultipleRollResolver extends HandlebarsApplicationMixin(Applicat
                         if (die instanceof CONFIG.Dice.termTypes.DiceTerm) {
                             for (let i = 0; i < die.number; i++) {
                                 dice.terms.push(die.faces);
-                            }   
+                            }
                         } else if (die instanceof CONFIG.Dice.termTypes.OperatorTerm) {
                             dice.multiplier = die.operator === '-' ? -1 : 1;
                         } else if (die instanceof CONFIG.Dice.termTypes.NumericTerm) {
@@ -205,7 +205,7 @@ export class CPRMultipleRollResolver extends HandlebarsApplicationMixin(Applicat
                     results = diceResults.map((i, index) => ({faces: dice[index], result: i}));
                 } else results = (dice.reduce((results, number) => {
                     results.diceLeft -= 1; // Remove one from the total left, since we're determining that one now.
-                    if (number + results.diceLeft <= total) { 
+                    if (number + results.diceLeft <= total) {
                         // If the die we're on plus the amount of dice we have left is less than what we have to work with, make the die it's max value
                         // ie total is 10, we have 2 dice left, our current number is a 6, we have at least enough to make this 6 and max and the others at least 1.
                         genericUtils.log('dev', 'Roll Resolver Multiple - max amount for d' + number);

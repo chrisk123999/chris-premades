@@ -100,7 +100,7 @@ export class CPRSingleRollResolver extends HandlebarsApplicationMixin(Applicatio
     }
     async close(options={}) {
         // eslint-disable-next-line no-undef
-        if ( this.rendered ) await this.constructor._fulfillRoll.call(this, null, null, new FormDataExtended(this.element));
+        if ( this.rendered ) await this.constructor._fulfillRoll.call(this, null, null, new foundry.applications.ux.FormDataExtended(this.element));
         Roll.defaultImplementation.RESOLVERS.delete(this.roll);
         this.#resolve?.();
         return super.close(options);
@@ -196,7 +196,7 @@ export class CPRSingleRollResolver extends HandlebarsApplicationMixin(Applicatio
                         dice.max += (die.faces * dieAmount);
                         for (let i = 0; i < dieAmount; i++) {
                             dice.terms.push(die.faces);
-                        }   
+                        }
                     } else if (die instanceof CONFIG.Dice.termTypes.OperatorTerm) {
                         dice.multiplier = die.operator === '-' ? -1 : 1;
                     } else if (die instanceof CONFIG.Dice.termTypes.NumericTerm) {
@@ -211,7 +211,7 @@ export class CPRSingleRollResolver extends HandlebarsApplicationMixin(Applicatio
                 } else results = (dice.terms.reduce((results, number) => {
                     results.diceLeft -= 1;
                     if (number + results.diceLeft <= total) {
-                        let value = ((number === this.roll?.options?.critical) && (total != dice.max)) ? number - 1 : number; 
+                        let value = ((number === this.roll?.options?.critical) && (total != dice.max)) ? number - 1 : number;
                         results.diceArray.push({faces: number, result: value});
                         total -= value;
                     } else if (1 + results.diceLeft >= total) {
