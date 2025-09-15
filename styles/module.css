@@ -122,10 +122,11 @@ form .cpr-row-center {
     flex-direction: row;
     flex-wrap: nowrap;
     width: 100%;
-    padding: 1%;
+    padding: 1% 1% 2% 1%;
     align-items: center;
     text-wrap: nowrap;
     gap: 0.625em;
+    justify-content: center;
 }
 
 form .cpr-row-center.cpr-multi-select-row {
@@ -521,11 +522,10 @@ form .cpr-settings.categories .form-group .form-fields > input[type="checkbox"] 
 
 .roll-resolver-quick-buttons .cpr-fieldset.cpr-row-center {
     margin: 0px 0px 10px 0px;
-    gap: 0px;
 }
 
 .roll-resolver-quick-buttons .cpr-fieldset.cpr-row-center button {
-    box-shadow: 0 0 5px 0px var(--button-border-color);
+    box-shadow: 0 0 4px 0px var(--button-border-color);
     border: none;
 }
 
