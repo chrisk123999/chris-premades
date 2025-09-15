@@ -106,6 +106,8 @@ export class CPRSingleRollResolver extends HandlebarsApplicationMixin(Applicatio
         return super.close(options);
     }
     async _prepareContext(_options) {
+        const diceOnly = genericUtils.getCPRSetting('manualRollsInputDiceOnly');
+        const placeholderKey = diceOnly ? 'CHRISPREMADES.Generic.DiceOnly' : 'CHRISPREMADES.Generic.Total';
         const context = {
             formula: this.roll.formula,
             groups: [{
@@ -113,7 +115,7 @@ export class CPRSingleRollResolver extends HandlebarsApplicationMixin(Applicatio
                 value: this.roll.total,
                 ids: [], //each term's ids
                 icons: [], //each term's icon
-                max: undefined
+                max: undefined,
             }],
             options: {
                 advantageMode: this.roll.options.advantageMode,
@@ -129,7 +131,8 @@ export class CPRSingleRollResolver extends HandlebarsApplicationMixin(Applicatio
                     if (cur instanceof CONFIG.Dice.termTypes.NumericTerm) acc += cur.number;
                 }, 0)
             },
-            buttons: [{type: 'submit', label: 'CHRISPREMADES.Generic.Submit', name: 'confirm', icon: 'fa-solid fa-check'}]
+            buttons: [{type: 'submit', label: 'CHRISPREMADES.Generic.Submit', name: 'confirm', icon: 'fa-solid fa-check'}],
+            placeholder: genericUtils.translate(placeholderKey) //placeholder text depending on 'manualRollsInputDiceOnly' setting
         };
         context.options.content = (!context.options.name || !context.options.type) ? context.formula : context.options.name + ' - ' + context.options.type;
         if (this.roll.options?.rollType?.toLowerCase()?.includes('attack')) context.quickButtons = [
@@ -200,7 +203,9 @@ export class CPRSingleRollResolver extends HandlebarsApplicationMixin(Applicatio
                     } else if (die instanceof CONFIG.Dice.termTypes.OperatorTerm) {
                         dice.multiplier = die.operator === '-' ? -1 : 1;
                     } else if (die instanceof CONFIG.Dice.termTypes.NumericTerm) {
-                        total -= (die.number * dice.multiplier);
+                        if (!genericUtils.getCPRSetting('manualRollsInputDiceOnly')) {
+                            total -= (die.number * dice.multiplier);
+                        }
                     }
                     return dice;
                 }, {terms: [], max: 0, multiplier: 1}));
