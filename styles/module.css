@@ -126,7 +126,11 @@ form .cpr-row-center {
     align-items: center;
     text-wrap: nowrap;
     gap: 0.625em;
-    justify-content: center;
+    justify-content: space-between;
+}
+
+form .cpr-row-center button {
+    flex: 1;
 }
 
 form .cpr-row-center.cpr-multi-select-row {
