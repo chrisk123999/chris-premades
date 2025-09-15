@@ -301,5 +301,6 @@ export {spellThief} from './macros/2024/classFeatures/rogue/arcaneTrickster/spel
 export {assassinate} from './macros/2024/classFeatures/rogue/assassin/assassinate.js';
 export {infiltrationExpertise} from './macros/2024/classFeatures/rogue/assassin/infiltrationExpertise.js';
 export {envenomWeapons, envenomPoison} from './macros/2024/classFeatures/rogue/assassin/envenomWeapons.js';
+export {deathStrike} from './macros/2024/classFeatures/rogue/assassin/deathStrike.js';
 //Multiple
 export {evasion} from './macros/2024/classFeatures/multiple/evasion.js';

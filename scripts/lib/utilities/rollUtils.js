@@ -90,8 +90,8 @@ async function rollDice(formula, {actor, chatMessage, flavor, mode = 'publicroll
     }
     return roll;
 }
-async function damageRoll(formula, actor, options = {}) {
-    return await new CONFIG.Dice.DamageRoll(formula, actor.getRollData(), options).evaluate();
+async function damageRoll(formula, entity, options = {}) {
+    return await new CONFIG.Dice.DamageRoll(formula, entity.getRollData(), options).evaluate();
 }
 async function addToRoll(roll, formula, {rollData} = {}) {
     let bonusRoll = await new Roll(String(formula), rollData).evaluate();

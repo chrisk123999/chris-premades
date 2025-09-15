@@ -61,11 +61,11 @@ async function damage({trigger, workflow}) {
             case 'piercing':
             case 'slashing': {
                 let formula = roll.formula.replaceAll('piercing', 'lightning').replaceAll('slashing', 'lightning');
-                return await rollUtils.damageRoll(formula, workflow.actor, {type: 'lightning'});
+                return await rollUtils.damageRoll(formula, workflow.activity, {type: 'lightning'});
             }
             case 'bludgeoning': {
                 let formula = roll.formula.replaceAll('bludgeoning', 'thunder');
-                return await rollUtils.damageRoll(formula, workflow.actor, {type: 'thunder'});
+                return await rollUtils.damageRoll(formula, workflow.activity, {type: 'thunder'});
             }
             default: return roll;
         }

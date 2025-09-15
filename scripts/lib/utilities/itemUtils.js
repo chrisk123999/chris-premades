@@ -1,4 +1,4 @@
-import {actorUtils, effectUtils, genericUtils, socketUtils, compendiumUtils, animationUtils} from '../../utils.js';
+import {actorUtils, effectUtils, genericUtils, socketUtils, compendiumUtils, animationUtils, activityUtils} from '../../utils.js';
 import {gambitPremades} from '../../integrations/gambitsPremades.js';
 import {miscPremades} from '../../integrations/miscPremades.js';
 import {custom} from '../../events/custom.js';
@@ -201,6 +201,20 @@ function cloneItem(item, updates = {}, options = {keepId: true}) {
     clone.applyActiveEffects();
     return clone;
 }
+async function correctActivityItemConsumption(item, activityIdentifiers = [], targetIdentifier) {
+    let target = itemUtils.getItemByIdentifier(item.actor, targetIdentifier);
+    if (!target) return;
+    let itemData = genericUtils.duplicate(item.toObject());
+    let updates = {};
+    activityIdentifiers.forEach(identifier => {
+        let activity = activityUtils.getActivityByIdentifier(item, identifier, {strict: true});
+        if (!activity) return;
+        itemData.system.activities[activity.id].consumption.targets[0].target = target.id;
+        let path = 'system.activities.' + activity.id + '.consumption.targets';
+        updates[path] = itemData.system.activities[activity.id].consumption.targets;
+    });
+    if (Object.keys(updates).length) return await genericUtils.update(item, updates);
+}
 export let itemUtils = {
     getSaveDC,
     createItems,
@@ -229,5 +243,6 @@ export let itemUtils = {
     getEffectByIdentifier,
     getSpellActivities,
     setSpellActivities,
-    cloneItem
+    cloneItem,
+    correctActivityItemConsumption
 };

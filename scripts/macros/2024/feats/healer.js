@@ -9,7 +9,7 @@ async function early({workflow}) {
     let ownerId = socketUtils.firstOwner(targetActor, true);
     let classSelection = await dialogUtils.selectHitDie(targetActor, workflow.item.name, 'CHRISPREMADES.Macros.Healer.SelectHitDie', {userId: ownerId, max: 1});
     if (!classSelection) return;
-    await genericUtils.update(healersKit, {'system.uses.spent': healersKit.system.uses.spent + 1})
+    await genericUtils.update(healersKit, {'system.uses.spent': healersKit.system.uses.spent + 1});
     let formula = '';
     for (let i of classSelection) {
         formula += i.amount + i.document.system.hd.denomination + ' + ';
@@ -21,9 +21,9 @@ async function early({workflow}) {
         ['system.activities.' + workflow.activity.id]: activityData
     });
     workflow.activity = workflow.item.system.activities.get(workflow.activity.id);
- }
+}
 
- async function healing({trigger: {entity: item}, workflow}) {
+async function healing({trigger: {entity: item}, workflow}) {
     if (workflow.activity.type !== 'heal') return;
     if (itemUtils.getConfig(item, 'spellOnly')) {
         if (!(workflow.item.type === 'spell' || workflow.item.system.type.value === 'spellFeature' || activityUtils.getIdentifier(workflow.activity) === 'healerHeal')) return;
@@ -44,10 +44,10 @@ async function early({workflow}) {
                 newFormula += i.expression + 'r1';
             }
         }
-        return await rollUtils.damageRoll(newFormula, workflow.item, roll.options);
+        return await rollUtils.damageRoll(newFormula, workflow.activity, roll.options);
     }));
     await workflow.setDamageRolls(damageRolls);
- }
+}
 
 export let healer = {
     name: 'Healer',

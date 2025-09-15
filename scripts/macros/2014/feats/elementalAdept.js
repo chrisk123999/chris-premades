@@ -19,7 +19,7 @@ async function damage({trigger: {entity: item}, workflow}) {
                 newFormula += i.expression + 'min2';
             }
         }
-        return await rollUtils.damageRoll(newFormula, workflow.item, roll.options);
+        return await rollUtils.damageRoll(newFormula, workflow.activity, roll.options);
     }));
     await workflow.setDamageRolls(damageRolls);
     if (!workflow.targets.size) return;

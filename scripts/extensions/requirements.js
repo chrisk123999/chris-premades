@@ -92,7 +92,7 @@ async function scaleCheck(item) {
             return;
         }
         let scaleIdentifier = itemUtils.getConfig(item, data.scaleIdentifier);
-        let scale = item.actor.system.scale[classIdentifier][scaleIdentifier];
+        let scale = item.actor.system.scale[classIdentifier]?.[scaleIdentifier];
         if (scale) return;
         let classData = genericUtils.duplicate(classItem.toObject());
         classData.system.advancement.push(data.data);
