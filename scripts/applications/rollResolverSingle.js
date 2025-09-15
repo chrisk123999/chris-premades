@@ -115,7 +115,7 @@ export class CPRSingleRollResolver extends HandlebarsApplicationMixin(Applicatio
                 value: this.roll.total,
                 ids: [], //each term's ids
                 icons: [], //each term's icon
-                max: undefined,
+                max: undefined
             }],
             options: {
                 advantageMode: this.roll.options.advantageMode,
