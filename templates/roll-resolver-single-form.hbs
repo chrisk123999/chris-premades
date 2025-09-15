@@ -1,4 +1,5 @@
 <div id="cpr-roll-resolver" class="roll-resolver-form standard-form">
+    {{log 'DEBUG' groups}}
     <p class="roll-resolver-content" data-bonus-total="{{options.bonusTotal}}">
         {{options.content}}
     </p>
@@ -13,7 +14,7 @@
         <div class="roll-resolver-group roll-resolver-flex" data-ids="{{ids}}">
             {{formula}}
             <label class="icon die-input">
-                <input type="text" id="total" name="total" autofocus placeholder="{{localize "CHRISPREMADES.Generic.Total"}}">
+                <input type="text" id="total" name="total" autofocus placeholder="{{@root.placeholder}}">
                 {{#each icons}}{{{this}}}{{/each}}
             </label>
         </div>
