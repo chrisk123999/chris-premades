@@ -168,7 +168,7 @@ function getRules(entity) {
     if (entity.documentName === 'Item') return entity.system.source.rules === '' ? 'legacy' : entity.system.source.rules === '2014' ? 'legacy' : 'modern';
     return entity.flags['chris-premades']?.rules ?? 'legacy';
 }
-function getCPRIdentifier(name, rules='legacy') {
+function getCPRIdentifier(name, rules = 'legacy') {
     let macros = (rules === 'legacy') ? chrisPremades.legacyMacros : chrisPremades.macros;
     let identifier = Object.entries(macros).find(i => i[1].name === name || i[1].aliases?.includes(name))?.[0];
     return identifier;

@@ -1,3 +1,14 @@
+# 1.3.58 Release:
+## New Modern Content:
+- Psychic Blades
+- Soul Blades
+- Psychic Veil
+- Rend Mind
+## Bug Fixes:
+- Advantage Damage Bonus (Generic Monster Feature)
+## Update Notes:
+- Added forced save to the special durations section of the CPR Effect Medkit.
+
 # 1.3.57 Release:
 ## New Modern Content:
 - Psionic Power

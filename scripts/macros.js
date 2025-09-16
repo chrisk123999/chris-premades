@@ -304,5 +304,9 @@ export {envenomWeapons, envenomPoison} from './macros/2024/classFeatures/rogue/a
 export {deathStrike} from './macros/2024/classFeatures/rogue/assassin/deathStrike.js';
 // Soulknife
 export {psionicPower} from './macros/2024/classFeatures/rogue/soulknife/psionicPower.js';
+export {psychicBlades} from './macros/2024/classFeatures/rogue/soulknife/psychicBlades.js';
+export {soulBlades} from './macros/2024/classFeatures/rogue/soulknife/soulBlades.js';
+export {psychicVeil} from './macros/2024/classFeatures/rogue/soulknife/psychicVeil.js';
+export {rendMind} from './macros/2024/classFeatures/rogue/soulknife/rendMind.js';
 //Multiple
 export {evasion} from './macros/2024/classFeatures/multiple/evasion.js';

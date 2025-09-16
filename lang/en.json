@@ -293,10 +293,10 @@
         },
         "Distance": {
             "0": "0 ft.",
-            "5": "5 ft.",
             "10": "10 ft.",
             "15": "15 ft.",
             "20": "20 ft.",
+            "5": "5 ft.",
             "DistanceFeet": "{distance} ft."
         },
         "EffectInterface": {
@@ -626,6 +626,7 @@
             "NoType": "No Type",
             "None": "None",
             "Ok": "Ok",
+            "Range": "Range",
             "RangedSpells": "Ranged Spells",
             "RangedWeapons": "Ranged Weapons",
             "Recharge": "Recharge:",
@@ -1817,6 +1818,9 @@
                 "Threshold": "Damage required to permanently kill if at 0hp:",
                 "ZeroHP": "Creature dies upon reaching 0hp"
             },
+            "RendMind": {
+                "RestoreAndUse": "Restore and use {name}?"
+            },
             "RerollSaveOnDamage": {
                 "ExcludeSource": "Exclude Damage from Source",
                 "Name": "Reroll Save on Damage"
@@ -2468,6 +2472,7 @@
                     "DamagedByAlly": "Damaged By Ally",
                     "DamagedByEnemy": "Damaged By Enemy",
                     "Failed": "Failed {toolName} Check",
+                    "ForceSave": "Force A Save",
                     "HitByAnotherCreature": "Hit By Another Creature",
                     "HitBySource": "Hit By Source",
                     "Label": "Special Durations:",
@@ -3213,6 +3218,14 @@
                 "Content": "All automations available in this module are stored here.",
                 "Title": "Compendiums"
             },
+            "10": {
+                "Content": "This module has many settings. Please make sure to carefully go through them all and only enable the ones you need.",
+                "Title": "Module Settings"
+            },
+            "11": {
+                "Content": "Further assistance may be found in the help category.",
+                "Title": "Help"
+            },
             "2": {
                 "Content": "As an example, the spell \"Fire Shield\" is stored in the \"CPR Spells\" compendium. You can drag the spell from this compendium onto your actor to use it.",
                 "Title": "Compendiums"
@@ -3244,14 +3257,6 @@
             "9": {
                 "Content": "For example, the spell \"Dragon's Breath\" will make a temporary feature called \"Dragon Breath\" on the target actor.\nFilling in this journal page will populate the description when it's created.",
                 "Title": "Description Journal"
-            },
-            "10": {
-                "Content": "This module has many settings. Please make sure to carefully go through them all and only enable the ones you need.",
-                "Title": "Module Settings"
-            },
-            "11": {
-                "Content": "Further assistance may be found in the help category.",
-                "Title": "Help"
             },
             "Chat": "<hr>View a guided tour of Cauldron of Plentiful Resources here:<br><button class=\"chris-tour\" type=\"button\">Start Tour</button>",
             "Description": "Take a tour of Cauldron of Plentiful Resources.",

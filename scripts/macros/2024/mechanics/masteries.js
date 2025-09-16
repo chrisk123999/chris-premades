@@ -168,10 +168,15 @@ async function RollComplete(workflow) {
         mastery = workflow.item.system.mastery;
     } else {
         if (masterySetting === 2) return;
-        let baseItem = workflow.item.system.type.baseItem;
-        if (baseItem === '') return;
-        if (!workflow.actor.system.traits?.weaponProf?.mastery?.value?.has(baseItem)) return;
-        mastery = workflow.attackRoll.options.mastery;
+        let identifier = genericUtils.getIdentifier(workflow.item);
+        if (identifier === 'psychicBlades') {
+            mastery = 'vex';
+        } else {
+            let baseItem = workflow.item.system.type.baseItem;
+            if (baseItem === '') return;
+            if (!workflow.actor.system.traits?.weaponProf?.mastery?.value?.has(baseItem)) return;
+            mastery = workflow.attackRoll.options.mastery;
+        }
     }
     if (!mastery) return;
     let macro = custom.getMacro(mastery + 'Mastery', 'modern');
