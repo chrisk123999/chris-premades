@@ -206,6 +206,7 @@
             "ImmuneCreatures": "Tipos de Criaturas Imunes:",
             "MaxLevel": "Nível Máx:",
             "MaxSize": "Tamanho Máx:",
+            "Multiplier": "Multiplicador:",
             "Name": "Nome:",
             "NoDCPrompt": "Avisar sem CD:",
             "Number": "Número:",
@@ -229,6 +230,7 @@
             "Sound": "Som:",
             "SpecificAnimation": "Animação {option}:",
             "SpellSchools": "Escola de Magia:",
+            "SubclassIdentifier": "Identificador de Subclasse:",
             "TokenColor": "Cor do Token:",
             "TokenImg": "Imagem Token:",
             "TokenImgPriority": "Prioridade Imagem Token:",
@@ -456,6 +458,9 @@
                 "sceneRollFinished": {
                     "Label": "Rolagem da Cena Finalizada"
                 },
+                "sceneSituational": {
+                    "Label": "Cena Situacional"
+                },
                 "short": {
                     "Label": "Descanso Curto"
                 },
@@ -485,6 +490,9 @@
                 },
                 "targetSavesComplete": {
                     "Label": "Salvaguarda do Alvo Finalizada"
+                },
+                "targetSituational": {
+                    "Label": "Alvo Situacional"
                 },
                 "turnEnd": {
                     "Label": "Fim do Turno"
@@ -541,6 +549,7 @@
             "MissingDescriptionPage": "Página ausente do diário CPR - Descriptions!",
             "NoActors": "Nenhum ator encontrado na pasta: \"{folder}\"!",
             "OutOfDateItem": "A automação está desatualizada!",
+            "OutdatedSequencer": "Sequencer está desatualizado! Para usar animações, o CPR requer no mínimo a versão {minSequencerVersion}",
             "RulesMismatch": "A automação deste item não corresponde às regras definidas no item!",
             "UpdateItem": "Atualizar Item"
         },
@@ -2829,8 +2838,12 @@
                 "Hint": "Adiciona uma guia na barra lateral para efeitos ativos. É necessário recarregar após ativar.",
                 "Name": "Ativar Interface de Efeito"
             },
+            "enableAnimations": {
+                "Hint": "Quando ativado, certas automações terão animações personalizadas. Requer Sequencer e JB2A.",
+                "Name": "Enable CPR Animations"
+            },
             "enableEmbeddedMacrosEditing": {
-                "Hint": "Quando habilitado, o editor de macros incorporadas estará disponível. (Não está pronto para uso!)",
+                "Hint": "Quando habilitado, o editor de macros incorporadas estará disponível.",
                 "Name": "Habilitar Edição de Macros Incorporadas"
             },
             "epicRolls": {
