@@ -162,7 +162,7 @@ export let channelDivinity = {
         {
             pass: 'actorMunch',
             macro: added,
-            priority: 50
+            priority: 45
         }
     ],
     config: [

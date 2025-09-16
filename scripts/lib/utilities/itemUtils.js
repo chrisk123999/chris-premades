@@ -3,6 +3,7 @@ import {gambitPremades} from '../../integrations/gambitsPremades.js';
 import {miscPremades} from '../../integrations/miscPremades.js';
 import {custom} from '../../events/custom.js';
 import {ItemMedkit} from '../../applications/medkit-item.js';
+import {requirements} from '../../extensions/requirements.js';
 function getSaveDC(item) {
     if (item.hasSave) return item.system.activities.getByType('save')[0].save.dc.value;
     return item.actor?.system?.abilities?.[item.abilityMod]?.dc ?? 10;
@@ -215,6 +216,9 @@ async function correctActivityItemConsumption(item, activityIdentifiers = [], ta
     });
     if (Object.keys(updates).length) return await genericUtils.update(item, updates);
 }
+async function fixScales(item) {
+    return await requirements.scaleCheck(item);
+}
 export let itemUtils = {
     getSaveDC,
     createItems,
@@ -244,5 +248,6 @@ export let itemUtils = {
     getSpellActivities,
     setSpellActivities,
     cloneItem,
-    correctActivityItemConsumption
+    correctActivityItemConsumption,
+    fixScales
 };

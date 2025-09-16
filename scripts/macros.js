@@ -302,5 +302,7 @@ export {assassinate} from './macros/2024/classFeatures/rogue/assassin/assassinat
 export {infiltrationExpertise} from './macros/2024/classFeatures/rogue/assassin/infiltrationExpertise.js';
 export {envenomWeapons, envenomPoison} from './macros/2024/classFeatures/rogue/assassin/envenomWeapons.js';
 export {deathStrike} from './macros/2024/classFeatures/rogue/assassin/deathStrike.js';
+// Soulknife
+export {psionicPower} from './macros/2024/classFeatures/rogue/soulknife/psionicPower.js';
 //Multiple
 export {evasion} from './macros/2024/classFeatures/multiple/evasion.js';

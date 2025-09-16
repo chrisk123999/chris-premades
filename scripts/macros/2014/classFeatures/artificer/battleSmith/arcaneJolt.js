@@ -1,7 +1,9 @@
 import {combatUtils, constants, dialogUtils, genericUtils, itemUtils, tokenUtils, workflowUtils} from '../../../../../utils.js';
 export async function arcaneJoltHelper(workflow, originItem) {
     let targetToken = workflow.hitTargets.first();
-    let scale = originItem.actor.system?.scale?.['battle-smith']?.['arcane-jolt']?.formula;
+    let subclassIdentifier = itemUtils.getConfig(originItem, 'subclassIdentifier');
+    let scaleIdentifier = itemUtils.getConfig(originItem, 'scaleIdentifier');
+    let scale = originItem.actor.system?.scale?.[subclassIdentifier]?.[scaleIdentifier]?.formula;
     if (!scale) return;
     let selection = await dialogUtils.buttonDialog(originItem.name, 'CHRISPREMADES.Macros.ArcaneJolt.HarmOrHeal', [
         ['CHRISPREMADES.Macros.ArcaneJolt.Harm', 'harm'],
@@ -31,16 +33,19 @@ async function damage({trigger, workflow}) {
     if (!trigger.entity.system.uses.value) return;
     await arcaneJoltHelper(workflow, trigger.entity);
 }
-async function updateScales(origItem, newItemData) {
-    let { scaleIdentifier=null } = genericUtils.getValidScaleIdentifier(origItem.actor, newItemData, arcaneJolt.scaleAliases, 'battle-smith');
-    if (!scaleIdentifier) return;
-    genericUtils.setProperty(newItemData, 'flags.chris-premades.config.scaleIdentifier', scaleIdentifier);
+async function added({trigger: {entity: item}}) {
+    let subclassIdentifier = itemUtils.getConfig(item, 'subclassIdentifier');
+    let scaleIdentifier = itemUtils.getConfig(item, 'scaleIdentifier');
+    if (item.actor.system.scale[subclassIdentifier]?.[scaleIdentifier]) return;
+    if (item.actor.system.scale[subclassIdentifier]?.['jolt']) {
+        await itemUtils.setConfig(item, 'subclassIdentifier', 'jolt');
+        return;
+    }
+    await itemUtils.fixScales(item);
 }
 export let arcaneJolt = {
     name: 'Arcane Jolt',
-    version: '1.1.0',
-    scaleAliases: ['arcane-jolt', 'jolt'],
-    early: updateScales,
+    version: '1.3.57',
     midi: {
         actor: [
             {
@@ -50,10 +55,27 @@ export let arcaneJolt = {
             }
         ]
     },
+    item: [
+        {
+            pass: 'created',
+            macro: added,
+            priority: 50
+        },
+        {
+            pass: 'itemMedkit',
+            macro: added,
+            priority: 50
+        },
+        {
+            pass: 'actorMunch',
+            macro: added,
+            priority: 50
+        }
+    ],
     config: [
         {
-            value: 'classIdentifier',
-            label: 'CHRISPREMADES.Config.ClassIdentifier',
+            value: 'subclassIdentifier',
+            label: 'CHRISPREMADES.Config.SubclassIdentifier',
             type: 'text',
             default: 'battle-smith',
             category: 'mechanics'
@@ -64,6 +86,36 @@ export let arcaneJolt = {
             type: 'text',
             default: 'arcane-jolt',
             category: 'mechanics'
+        }
+    ],
+    scales: [
+        {
+            classIdentifier: 'subclassIdentifier',
+            scaleIdentifier: 'scaleIdentifier',
+            data: {
+                type: 'ScaleValue',
+                configuration: {
+                    identifier: 'arcane-jolt',
+                    type: 'dice',
+                    distance: {
+                        units: ''
+                    },
+                    scale: {
+                        9: {
+                            number: 2,
+                            faces: 6,
+                            modifiers: []
+                        },
+                        15: {
+                            number: 4,
+                            faces: 6,
+                            modifiers: []
+                        }
+                    }
+                },
+                value: {},
+                title: 'Arcane Jolt'
+            }
         }
     ]
 };

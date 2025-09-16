@@ -1753,6 +1753,9 @@
             "ProtectionFromEvilAndGood": {
                 "Save": "This save is from an effect from an aberration, celestial, elemental, fey, fiends, or undead that has charmed, frightened, or possessed you."
             },
+            "PsionicPower": {
+                "Confirm": "Did the skill or tool check succeed?"
+            },
             "PsionicSorcery": {
                 "Select": "Select which spell to cast:"
             },
@@ -2551,6 +2554,7 @@
                     "Save": "Save:",
                     "Skill": "Skill:",
                     "Source": "Source:",
+                    "Tool": "Tool:",
                     "Tooltip": "Tools for development, you shouldn't be here...",
                     "Version": "Version:"
                 },
