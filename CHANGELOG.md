@@ -1,3 +1,20 @@
+# 1.3.57 Release:
+## New Modern Content:
+- Psionic Power
+## Bug Fixes:
+- Arcane Jolt (Legacy)
+- Dreadful Strikes (Legacy)
+- Psionic Power: Psionic Energy (Legacy)
+- Soul Blades: Homing Strikes (Legacy)
+- Bardic Inspiration (Modern)
+- Dazzling Footwork (Modern)
+- Peerless Skill (Modern)
+- Warrior of the Gods (Legacy)
+- Channel Divinity (Modern)
+## Update Notes:
+- This update mostly consists of making older automations automatically apply missing scale values as well as adding more self-correcting resource consumption linking.
+- Added a setting to manual rolls to use dice totals instead of overall totals. (Thanks Tyler)
+
 # 1.3.56 Release:
 ## New Modern Content:
 - Death Strike

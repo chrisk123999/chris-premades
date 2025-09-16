@@ -209,7 +209,7 @@
     },
     "chris-premades": {
       "info": {
-        "version": "1.1.0",
+        "version": "1.3.57",
         "identifier": "arcaneJolt",
         "source": "chris-premades"
       },
@@ -217,8 +217,14 @@
         "midi": {
           "actor": [
             "arcaneJolt"
+          ],
+          "item": [
+            "arcaneJolt"
           ]
-        }
+        },
+        "item": [
+          "arcaneJolt"
+        ]
       },
       "arcaneJolt": {
         "turn": "180-3"

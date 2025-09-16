@@ -78,9 +78,14 @@
     "chris-premades": {
       "info": {
         "name": "Dreadful Strikes",
-        "version": "1.1.0",
+        "version": "1.3.57",
         "identifier": "dreadfulStrikes",
         "source": "chris-premades"
+      },
+      "macros": {
+        "item": [
+          "dreadfulStrikes"
+        ]
       }
     }
   },

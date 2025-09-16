@@ -19,35 +19,21 @@ async function use({trigger, workflow}) {
         if (combatUtils.inCombat()) await actorUtils.setReactionUsed(token.actor);
     }));
 }
-async function added({trigger: {entity: item, actor}}) {
-    let bardicInspiration = itemUtils.getItemByIdentifier(actor, 'bardicInspiration');
-    if (!bardicInspiration) return;
-    let activity = activityUtils.getActivityByIdentifier(item, 'use');
-    if (!activity) return;
-    let path = 'system.activities.' + activity.id + '.consumption.targets';
-    await genericUtils.update(item, {[path]: [
-        {
-            type: 'itemUses',
-            value: 1,
-            target: bardicInspiration.id,
-            scaling: {
-                mode: undefined,
-                formula: undefined
-            }
-        }
-    ]});
-}
-async function updateScales(origItem, newItemData) {
-    let { classIdentifier=null, scaleIdentifier=null } = genericUtils.getValidScaleIdentifier(origItem.actor, newItemData, bardicInspiration.scaleAliases, 'bard');
-    if (!scaleIdentifier) return;
-    genericUtils.setProperty(newItemData, 'flags.chris-premades.config.scaleIdentifier', scaleIdentifier);
-    genericUtils.setProperty(newItemData, 'system.activities.healManOfInclass.healing.bonus', `@scale.${classIdentifier}.${scaleIdentifier}.die * 2`);
+async function added({trigger: {entity: item}}) {
+    await itemUtils.correctActivityItemConsumption(item, ['use'], 'bardicInspiration');
+    let classIdentifier = itemUtils.getConfig(item, 'classIdentifier');
+    let scaleIdentifier = itemUtils.getConfig(item, 'scaleIdentifier');
+    if (item.actor.system.scale[classIdentifier]?.[scaleIdentifier]) return;
+    if (item.actor.system.scale[classIdentifier]?.['inspiration']) {
+        await itemUtils.setConfig(item, 'classIdentifier', 'inspiration');
+        await genericUtils.update(item, 'system.activities.healManOfInclass.healing.bonus', 'scale.' + classIdentifier + '.' + scaleIdentifier + '.die * 2');
+    }
+    await itemUtils.fixScales(item);
 }
 export let mantleOfInspiration = {
     name: 'Mantle of Inspiration',
     version: '1.1.40',
     rules: 'modern',
-    early: updateScales,
     midi: {
         item: [
             {
