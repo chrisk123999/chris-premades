@@ -102,9 +102,16 @@ export class AdditionalCompendiums extends HandlebarsApplicationMixin(Applicatio
                 priority: 3,
                 isChecked: false,
                 isAvailable: game.modules.get('midi-item-showcase-community')?.active
+            },
+            'automated-crafted-creations': {
+                id: 'automated-crafted-creations',
+                label: 'Automated Crafted Creations',
+                priority: 4,
+                isChecked: false,
+                isAvailable: game.modules.get('automated-crafted-creations')?.active
             }
         };
-        let modulePacks = ['chris-premades', 'gambits-premades', 'midi-item-showcase-community']; // Default that can be a const somewhere
+        let modulePacks = ['chris-premades', 'gambits-premades', 'midi-item-showcase-community', 'automated-crafted-creations']; // Default that can be a const somewhere
         let packs = game.packs.filter(i => i.metadata.type === 'Item').filter(i => !modulePacks.includes(i.metadata.packageName));
         for (let pack of packs) {
             compendiums[pack.metadata.name] = {

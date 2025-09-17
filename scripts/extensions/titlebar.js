@@ -52,7 +52,8 @@ export function appendHeaderControl(app, controls) {
             let sources = [
                 'chris-premades',
                 'gambits-premades',
-                'midi-item-showcase-community'
+                'midi-item-showcase-community',
+                'automated-crafted-creations'
             ];
             if (!sources.includes(source) && source) {
                 headerButton.style.color = 'pink';

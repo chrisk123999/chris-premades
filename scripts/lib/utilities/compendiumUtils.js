@@ -1,4 +1,5 @@
 import {custom} from '../../events/custom.js';
+import {acc} from '../../integrations/acc.js';
 import {gambitPremades} from '../../integrations/gambitsPremades.js';
 import {miscPremades} from '../../integrations/miscPremades.js';
 import {constants, errors, genericUtils, itemUtils} from '../../utils.js';
@@ -119,6 +120,26 @@ async function getMISCAutomation(item, {identifier, rules = 'legacy', type = 'ch
     if (!found) return;
     return await fromUuid(found.uuid);
 }
+async function getACCAutomation(item, {identifier, rules = 'legacy', type = 'character'} = {}) {
+    let found;
+    if (type === 'character' || item.type === 'spell') {
+        switch(item.type) {
+            case 'spell': found = acc.accItems.find(i => i.name === item.name && i.type === 'spell' && i.rules === rules); break;
+            case 'weapon':
+            case 'equipment':
+            case 'consumable':
+            case 'tool':
+            case 'backpack':
+            case 'loot':
+                found = acc.accItems.find(i => i.name === item.name && constants.itemTypes.includes(i.type) && i.rules === rules); break;
+            case 'feat': found = acc.accItems.find(i => i.name === item.name && i.type === 'feat' && i.rules === rules); break;
+        }
+    } else if (type === 'npc') {
+        //
+    }
+    if (!found) return;
+    return await fromUuid(found.uuid);
+}
 async function getAllAutomations(item, options = {}) {
     let setting = genericUtils.getCPRSetting('additionalCompendiums');
     let items = [];
@@ -159,7 +180,6 @@ async function getAllAutomations(item, options = {}) {
             case 'midi-item-showcase-community':
                 found = await getMISCAutomation(item, options);
                 source = 'midi-item-showcase-community';
-                version = miscPremades.miscItems.find(i => i.name === item.name)?.version;
                 if (found) {
                     if (type === 'npc') {
                         version = miscPremades.miscMonsters.find(i => i.name === item.name && i.monster === monster)?.version;
@@ -167,6 +187,11 @@ async function getAllAutomations(item, options = {}) {
                         version = miscPremades.miscItems.find(i => i.name === item.name)?.version;
                     }
                 }
+                break;
+            case 'automated-crafted-creations':
+                found = await getACCAutomation(item, options);
+                source = 'automated-crafted-creations';
+                if (found) version = acc.accItems.find(i => i.name === item.name)?.version;
                 break;
         }
         if (found) items.push({document: found, priority: i[1], source: source, version: version ?? itemUtils.getVersion(found)});
@@ -296,6 +321,9 @@ async function getAppliedOrPreferredAutomation(item, options) {
             case 'midi-item-showcase-community': {
                 return await getMISCAutomation(item, options);
             }
+            case 'automated-crafted-creations': {
+                return await getACCAutomation(item, options);
+            }
             default: {
                 let document = await getItemFromCompendium(source, item.name, {ignoreNotFound: true, rules: options?.rules});
                 if (!document) document = await getPreferredAutomation(item, options);
@@ -310,6 +338,7 @@ export let compendiumUtils = {
     getCPRAutomation,
     getGPSAutomation,
     getMISCAutomation,
+    getACCAutomation,
     getAllAutomations,
     getItemFromCompendium,
     getPreferredAutomation,

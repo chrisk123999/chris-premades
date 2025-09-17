@@ -1,3 +1,7 @@
+# 1.3.59 Release:
+## Update Notes:
+- Added support for an upcoming companion module.
+
 # 1.3.58 Release:
 ## New Modern Content:
 - Psychic Blades

@@ -134,6 +134,9 @@ function canUse(activity) {
     }
     return true;
 }
+async function correctSpellLink(activity, spell) {
+    return await genericUtils.update(activity, {'spell.uuid': spell.uuid});
+}
 export let activityUtils = {
     getActivityByIdentifier,
     getIdentifier,
@@ -144,5 +147,6 @@ export let activityUtils = {
     getMod,
     hasSave,
     isSpellActivity,
-    canUse
+    canUse,
+    correctSpellLink
 };

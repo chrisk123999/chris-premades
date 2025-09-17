@@ -38,6 +38,7 @@ import {initiative} from './extensions/initiative.js';
 import {EmbeddedMacros} from './applications/embeddedMacros.js';
 import {ui} from './extensions/ui.js';
 import {toolCheck} from './events/toolCheck.js';
+import {acc} from './integrations/acc.js';
 Hooks.once('socketlib.ready', registerSockets);
 Hooks.once('init', () => {
     Hooks.on('dae.modifySpecials', dae.modifySpecials);
@@ -100,6 +101,7 @@ Hooks.once('ready', () => {
     if (utils.genericUtils.getCPRSetting('activityCSSTweak')) activities.cssTweak(true);
     if (!game.user.isGM) return;
     if (utils.genericUtils.getCPRSetting('migrationVersion') !== game.modules.get('chris-premades').version) migrate();
+    Hooks.callAll('cprReady');
 });
 globalThis['chrisPremades'] = {
     DialogApp,
@@ -112,7 +114,8 @@ globalThis['chrisPremades'] = {
     legacyMacros,
     settingButton,
     integration: {
-        ddbi: ddbi.getAutomation
+        ddbi: ddbi.getAutomation,
+        acc
     },
     customMacros: custom.getCustomMacroList,
     doBackup: backup.doBackup,

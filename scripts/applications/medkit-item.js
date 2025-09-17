@@ -738,7 +738,8 @@ export class ItemMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
             'system.attunement',
             'system.chatFlavor',
             'system.container',
-            'system.description',
+            'system.description.chat',
+            'system.description.value',
             'system.equipped',
             'system.materials',
             'system.preparation',
@@ -767,7 +768,8 @@ export class ItemMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
         if (source) genericUtils.setProperty(sourceItemData, 'flags.chris-premades.info.source', source);
         if (version) genericUtils.setProperty(sourceItemData, 'flags.chris-premades.info.version', version);
         if (identifier) genericUtils.setProperty(sourceItemData, 'flags.chris-premades.info.identifier', identifier);
-        if (CONFIG.DND5E.defaultArtwork.Item[itemType] != itemData.img) {
+        let defaultImages = Object.values(CONFIG.DND5E.defaultArtwork.Item);
+        if (!defaultImages.includes(itemData.img)) {
             for (let sourceEffect of sourceItemData.effects ?? []) {
                 if (sourceEffect.img === sourceItemData.img) sourceEffect.img = itemData.img;
             }
