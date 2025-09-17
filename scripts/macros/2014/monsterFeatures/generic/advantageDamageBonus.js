@@ -1,13 +1,13 @@
 import {itemUtils, rollUtils, workflowUtils} from '../../../../utils.js';
 async function damage({workflow}) {
     if (workflow.disadvantage || !workflow.advantage) return;
-    let {bonusFormula, activities, replace} = itemUtils.getGenericFeatureConfig(workflow.item, 'advantageDamageBonus');
+    let {bonus, activities, replace} = itemUtils.getGenericFeatureConfig(workflow.item, 'advantageDamageBonus');
     if (activities?.length && !activities.includes(workflow.activity.id)) return;
-    if (!bonusFormula.length) return;
+    if (!bonus.length) return;
     if (replace) {
-        let damageRoll = rollUtils.damageRoll(bonusFormula, workflow.activity, workflow.damageRolls[0].options); // "probably it"
+        let damageRoll = rollUtils.damageRoll(bonus, workflow.activity, workflow.damageRolls[0].options); // "probably it"
         await workflow.setDamageRolls([damageRoll]);
-    } else await workflowUtils.bonusDamage(workflow, bonusFormula, {damageType: workflow.defaultDamageType});
+    } else await workflowUtils.bonusDamage(workflow, bonus, {damageType: workflow.defaultDamageType});
 }
 export let advantageDamageBonus = {
     name: 'Advantage Damage Bonus',

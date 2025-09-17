@@ -68,16 +68,20 @@ async function use({trigger, workflow}) {
         }
     }
 }
-async function updateScales(origItem, newItemData) {
-    let { scaleIdentifier=null } = genericUtils.getValidScaleIdentifier(origItem.actor, newItemData, bardicInspiration.scaleAliases, 'bard');
-    if (!scaleIdentifier) return;
-    genericUtils.setProperty(newItemData, 'flags.chris-premades.config.scaleIdentifier', scaleIdentifier);
+async function added({trigger: {entity: item}}) {
+    let classIdentifier = itemUtils.getConfig(item, 'classIdentifier');
+    let scaleIdentifier = itemUtils.getConfig(item, 'scaleIdentifier');
+    if (item.actor.system.scale[classIdentifier]?.[scaleIdentifier]) return;
+    if (item.actor.system.scale[classIdentifier]?.['inspiration']) {
+        await itemUtils.setConfig(item, 'classIdentifier', 'inspiration');
+        return;
+    }
+    await itemUtils.fixScales(item);
 }
 export let bardicInspiration = {
     name: 'Bardic Inspiration',
-    version: '1.1.30',
+    version: '1.3.57',
     rules: 'modern',
-    early: updateScales,
     midi: {
         item: [
             {
@@ -87,6 +91,23 @@ export let bardicInspiration = {
             }
         ]
     },
+    item: [
+        {
+            pass: 'created',
+            macro: added,
+            priority: 45
+        },
+        {
+            pass: 'itemMedkit',
+            macro: added,
+            priority: 45
+        },
+        {
+            pass: 'actorMunch',
+            macro: added,
+            priority: 45
+        }
+    ],
     config: [
         {
             value: 'classIdentifier',
@@ -105,7 +126,6 @@ export let bardicInspiration = {
             homebrew: true
         }
     ],
-    scaleAliases: ['bardic-inspiration', 'inspiration'],
     scales: [
         {
             classIdentifier: 'classIdentifier',

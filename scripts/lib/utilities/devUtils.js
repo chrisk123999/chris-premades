@@ -31,6 +31,7 @@ export async function stripUnusedFlags(key) {
             'flags.-=tidy5e-sheet-kgar': null,
             'flags.-=LocknKey': null,
             'flags.-=monsterMunch': null,
+            'flags.-=magicitems': null,
             system: {
                 description: {
                     value: '',

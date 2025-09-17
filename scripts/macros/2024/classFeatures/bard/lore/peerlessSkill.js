@@ -51,16 +51,20 @@ async function checkSkillLate({trigger: {entity: item, config, roll, actor, opti
     if (!bardicInspiration) return;
     await genericUtils.update(bardicInspiration, {'system.uses.spent': bardicInspiration.system.uses.spent + 1});
 }
-async function updateScales(origItem, newItemData) {
-    let {scaleIdentifier = null} = genericUtils.getValidScaleIdentifier(origItem.actor, newItemData, bardicInspiration.scaleAliases, 'bard');
-    if (!scaleIdentifier) return;
-    genericUtils.setProperty(newItemData, 'flags.chris-premades.config.scaleIdentifier', scaleIdentifier);
+async function added({trigger: {entity: item}}) {
+    let classIdentifier = itemUtils.getConfig(item, 'classIdentifier');
+    let scaleIdentifier = itemUtils.getConfig(item, 'scaleIdentifier');
+    if (item.actor.system.scale[classIdentifier]?.[scaleIdentifier]) return;
+    if (item.actor.system.scale[classIdentifier]?.['inspiration']) {
+        await itemUtils.setConfig(item, 'classIdentifier', 'inspiration');
+        return;
+    }
+    await itemUtils.fixScales(item);
 }
 export let peerlessSkill = {
     name: 'Peerless Skill',
-    version: '1.2.10',
+    version: '1.3.57',
     rules: 'modern',
-    early: updateScales,
     midi: {
         actor: [
             {
@@ -97,6 +101,23 @@ export let peerlessSkill = {
             pass: 'post',
             macro: checkSkillLate,
             priority: 50
+        }
+    ],
+    item: [
+        {
+            pass: 'created',
+            macro: added,
+            priority: 45
+        },
+        {
+            pass: 'itemMedkit',
+            macro: added,
+            priority: 45
+        },
+        {
+            pass: 'actorMunch',
+            macro: added,
+            priority: 45
         }
     ],
     config: [

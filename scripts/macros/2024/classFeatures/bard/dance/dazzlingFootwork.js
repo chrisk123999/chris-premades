@@ -14,21 +14,15 @@ async function early({trigger: {entity: item}, workflow}) {
     if (activityIdentifier != 'punch') return;
     let classIdentifier = itemUtils.getConfig(item, 'classIdentifier');
     let scaleIdentifier = itemUtils.getConfig(item, 'scaleIdentifier');
-    workflow.item = workflow.item.clone({'system.damage.base.bonus': `@scale.${classIdentifier}.${scaleIdentifier}.die + @abilities.dex.mod`, 'system.properties': Array.from(workflow.item.system.properties).concat('fin')}, {keepId: true});
+    workflow.item = workflow.item.clone({'system.damage.base.bonus': '@scale.' + classIdentifier + '.' + scaleIdentifier + '.die + @abilities.dex.mod', 'system.properties': Array.from(workflow.item.system.properties).concat('fin')}, {keepId: true});
     workflow.item.prepareData();
     workflow.item.applyActiveEffects();
     workflow.activity = workflow.item.system.activities.get(workflow.activity.id);
 }
-async function updateScales(origItem, newItemData) {
-    let { scaleIdentifier=null } = genericUtils.getValidScaleIdentifier(origItem.actor, newItemData, bardicInspiration.scaleAliases, 'bard');
-    if (!scaleIdentifier) return;
-    genericUtils.setProperty(newItemData, 'flags.chris-premades.config.scaleIdentifier', scaleIdentifier);
-}
 export let dazzlingFootwork = {
     name: 'Dazzling Footwork',
-    version: '1.1.36',
+    version: '1.3.57',
     rules: 'modern',
-    early: updateScales,
     midi: {
         actor: [
             {
@@ -45,23 +39,7 @@ export let dazzlingFootwork = {
             priority: 50
         }
     ],
-    config: [
-        {
-            value: 'classIdentifier',
-            label: 'CHRISPREMADES.Config.ClassIdentifier',
-            type: 'text',
-            default: 'bard',
-            category: 'homebrew',
-            homebrew: true
-        },
-        {
-            value: 'scaleIdentifier',
-            label: 'CHRISPREMADES.Config.ScaleIdentifier',
-            type: 'text',
-            default: 'bardic-inspiration',
-            category: 'homebrew',
-            homebrew: true
-        }
-    ],
+    item: bardicInspiration.item,
+    config: bardicInspiration.config,
     scales: bardicInspiration.scales
 };

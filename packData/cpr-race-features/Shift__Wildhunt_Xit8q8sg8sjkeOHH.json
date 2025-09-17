@@ -207,30 +207,22 @@
       "idv": false,
       "ida": false
     },
-    "magicitems": {
-      "enabled": false,
-      "equipped": false,
-      "attuned": false,
-      "charges": "0",
-      "chargeType": "c1",
-      "destroy": false,
-      "destroyFlavorText": "reaches 0 charges: it crumbles into ashes and is destroyed.",
-      "rechargeable": false,
-      "recharge": "0",
-      "rechargeType": "t1",
-      "rechargeUnit": "r1",
-      "sorting": "l"
-    },
     "core": {},
+    "dnd5e": {
+      "riders": {
+        "activity": [],
+        "effect": []
+      }
+    },
     "chris-premades": {
       "info": {
         "name": "Shift - Wildhunt",
-        "version": "1.1.0",
         "settings": [
           "Wildhunt"
         ],
         "identifier": "shiftWildhunt",
-        "source": "chris-premades"
+        "source": "chris-premades",
+        "version": "1.3.57"
       },
       "macros": {
         "midi": {
@@ -238,12 +230,6 @@
             "shiftWildhunt"
           ]
         }
-      }
-    },
-    "dnd5e": {
-      "riders": {
-        "activity": [],
-        "effect": []
       }
     }
   },

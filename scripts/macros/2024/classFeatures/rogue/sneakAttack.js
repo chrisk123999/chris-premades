@@ -1,8 +1,9 @@
-import {activityUtils, actorUtils, animationUtils, combatUtils, dialogUtils, genericUtils, itemUtils, tokenUtils, workflowUtils} from '../../../../utils.js';
+import {activityUtils, actorUtils, animationUtils, combatUtils, dialogUtils, effectUtils, genericUtils, itemUtils, tokenUtils, workflowUtils} from '../../../../utils.js';
 import {animation} from '../../../2014/classFeatures/rogue/sneakAttack.js';
 async function damage({trigger: {entity: item}, workflow}) {
     if (workflow.hitTargets.size != 1 || !workflow.item || !workflow.activity) return;
-    if (!(workflow.activity.actionType === 'rwak' || workflow.item.system.properties.has('fin'))) return;
+    let identifier = genericUtils.getIdentifier(workflow.item);
+    if (!(workflow.activity.actionType === 'rwak' || workflow.item.system.properties.has('fin') || identifier === 'psychicBlades')) return;
     if (!item.system.uses.value) return;
     let doSneak = false;
     let rollType = (workflow.advantage && workflow.disadvantage) ? 'normal' : (workflow.advantage && !workflow.disadvantage) ? 'advantage' : (!workflow.advantage && workflow.disadvantage) ? 'disadvantage' : 'normal';
@@ -88,6 +89,23 @@ async function damage({trigger: {entity: item}, workflow}) {
     }
     if (bonusDamageFormula) await workflowUtils.bonusDamage(workflow, bonusDamageFormula, {damageType: workflow.defaultDamageType});
     await workflowUtils.completeItemUse(item);
+    let rendMind = itemUtils.getItemByIdentifier(workflow.actor, 'rendMind');
+    if (rendMind && identifier === 'psychicBlades') {
+        let psionicPower = itemUtils.getItemByIdentifier(workflow.actor, 'psionicPower');
+        let selection;
+        if (psionicPower?.system?.uses?.value >= 3 && !rendMind.system.uses.value) {
+            selection = await dialogUtils.confirm(rendMind.name, genericUtils.format('CHRISPREMADES.Macros.RendMind.RestoreAndUse', {name: rendMind.name}));
+            if (selection) {
+                await genericUtils.update(psionicPower, {'system.uses.spent': psionicPower.system.uses.spent + 3});
+                await genericUtils.update(rendMind, {'system.uses.spent': 0});
+                let effect = effectUtils.getEffectByIdentifier(workflow.actor, 'rendMindRestoreEffect');
+                if (effect) await genericUtils.remove(effect);
+            }
+        } else if (rendMind.system.uses.value) {
+            selection = await dialogUtils.confirm(rendMind.name, genericUtils.format('CHRISPREMADES.Macros.SneakAttack.Use', {name: rendMind.name}));
+        }
+        if (selection) genericUtils.setProperty(workflow, 'chris-premades.rendMind.use', true);
+    }
     let playAnimation = itemUtils.getConfig(item, 'playAnimation');
     if (!animationUtils.aseCheck() || animationUtils.jb2aCheck() != 'patreon') playAnimation = false;
     if (!playAnimation) return;
@@ -95,6 +113,14 @@ async function damage({trigger: {entity: item}, workflow}) {
     if (tokenUtils.getDistance(workflow.token, targetToken) > 5) animationType = 'ranged';
     if (!animationType) animationType = workflow.defaultDamageType;
     await animation(targetToken, workflow.token, animationType);
+}
+async function onHit({trigger, workflow}) {
+    if (!workflow['chris-premades']?.rendMind?.use) return;
+    let rendMind = itemUtils.getItemByIdentifier(workflow.actor, 'rendMind');
+    if (!rendMind) return;
+    let activity = activityUtils.getActivityByIdentifier(rendMind, 'use', {strict: true});
+    if (!activity) return;
+    await workflowUtils.syntheticActivityRoll(activity, [workflow.targets.first()], {consumeResources: true, consumeUsage: true});
 }
 export let sneakAttack = {
     name: 'Sneak Attack',
@@ -106,6 +132,11 @@ export let sneakAttack = {
                 pass: 'damageRollComplete',
                 macro: damage,
                 priority: 215
+            },
+            {
+                pass: 'rollFinished',
+                macro: onHit,
+                priority: 500
             }
         ]
     },

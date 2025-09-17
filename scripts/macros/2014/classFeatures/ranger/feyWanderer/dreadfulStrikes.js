@@ -1,14 +1,78 @@
-import {genericUtils} from '../../../../../utils.js';
-
-async function updateScales(origItem, newItemData) {
-    let { scaleIdentifier=null } = genericUtils.getValidScaleIdentifier(origItem.actor, newItemData, dreadfulStrikes.scaleAliases, 'fey-wanderer');
-    if (!scaleIdentifier) return;
-    genericUtils.setProperty(newItemData, 'effects.0.changes.0.value', `@scale.fey-wanderer.${scaleIdentifier}[psychic]`);
-    genericUtils.setProperty(newItemData, 'effects.0.changes.1.value', `@scale.fey-wanderer.${scaleIdentifier}[psychic]`);
+import {itemUtils} from '../../../../../utils.js';
+async function added({trigger: {entity: item}}) {
+    let subclassIdentifier = itemUtils.getConfig(item, 'subclassIdentifier');
+    let scaleIdentifier = itemUtils.getConfig(item, 'scaleIdentifier');
+    if (item.actor.system.scale[subclassIdentifier]?.[scaleIdentifier]) return;
+    if (item.actor.system.scale[subclassIdentifier]?.['die']) {
+        await itemUtils.setConfig(item, 'subclassIdentifier', 'jolt');
+        return;
+    }
+    await itemUtils.fixScales(item);
 }
 export let dreadfulStrikes = {
     name: 'Dreadful Strikes',
-    version: '1.1.0',
-    scaleAliases: ['dreadful-strikes', 'die'],
-    early: updateScales
+    version: '1.3.57',
+    item: [
+        {
+            pass: 'created',
+            macro: added,
+            priority: 50
+        },
+        {
+            pass: 'itemMedkit',
+            macro: added,
+            priority: 50
+        },
+        {
+            pass: 'actorMunch',
+            macro: added,
+            priority: 50
+        }
+    ],
+    config: [
+        {
+            value: 'subclassIdentifier',
+            label: 'CHRISPREMADES.Config.SubclassIdentifier',
+            type: 'text',
+            default: 'battle-smith',
+            category: 'mechanics'
+        },
+        {
+            value: 'scaleIdentifier',
+            label: 'CHRISPREMADES.Config.ScaleIdentifier',
+            type: 'text',
+            default: 'arcane-jolt',
+            category: 'mechanics'
+        }
+    ],
+    scales: [
+        {
+            classIdentifier: 'subclassIdentifier',
+            scaleIdentifier: 'scaleIdentifier',
+            data: {
+                type: 'ScaleValue',
+                configuration: {
+                    identifier: 'dreadful-strikes',
+                    type: 'dice',
+                    distance: {
+                        units: ''
+                    },
+                    scale: {
+                        3: {
+                            number: 1,
+                            faces: 4,
+                            modifiers: []
+                        },
+                        11: {
+                            number: 1,
+                            faces: 6,
+                            modifiers: []
+                        }
+                    }
+                },
+                value: {},
+                title: 'Dreadful Strikes'
+            }
+        }
+    ]
 };

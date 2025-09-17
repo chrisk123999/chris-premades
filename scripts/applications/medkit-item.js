@@ -592,6 +592,17 @@ export class ItemMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
                 }
             },
             {
+                id: 'tool',
+                label: 'CHRISPREMADES.Medkit.Tabs.DevTools.Tool',
+                value: JSON?.stringify(this.flags?.macros?.toolCheck),
+                placeholder: '[&quot;macroNameOne&quot;, &quot;macroNameTwo&quot;]',
+                isText: true,
+                flag: {
+                    key: 'macros.toolCheck',
+                    value: 'array'
+                }
+            },
+            {
                 id: 'death',
                 label: 'CHRISPREMADES.Medkit.Tabs.DevTools.Death',
                 value: JSON?.stringify(this.flags?.macros?.death),
@@ -825,8 +836,6 @@ export class ItemMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
         }
         if (item.effects.size) await item.deleteEmbeddedDocuments('ActiveEffect', item.effects.map(i => i.id));
         genericUtils.setProperty(sourceItemData, 'flags.chris-premades.info.rules', genericUtils.getRules(item));
-        const earlyMacro = custom.getMacro(genericUtils.getProperty(sourceItemData, 'flags.chris-premades.info.identifier'), genericUtils.getRules(item))?.early;
-        if (earlyMacro) await earlyMacro(item, sourceItemData);
         await item.update(sourceItemData, {diff: false, recursive: false});
         if (!actorMedkit && item.actor) itemEvent.executeMacroPass(item, 'itemMedkit');
         return item;
@@ -892,23 +901,22 @@ export class ItemMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
                     if (!this.flags.info.hasAnimation && this._macro.hasAnimation) {
                         await this.item.setFlag('chris-premades', 'info.hasAnimation', this._macro.hasAnimation);
                     }
-                    // The Object.values part gets us the nested macros (item and actor) and the Object.keys adds in all the keys otherwise (all the macros plus everything else)
-                    let flagKeys = Object.values(this._macro).filter(i => (i instanceof Object) && (!Array.isArray(i))).flatMap(i => Object.keys(i)).concat(Object.keys(this._macro));
-                    if (flagKeys) {
-                        // Macro info config options will have the flag path we need, and will have all macros, match those with the keys we have to get the bases for what we insert.
-                        let flagBases = this.devToolsOptions.macroInfo.configOptions.filter(i => flagKeys.includes(i.id));
-                        // For each of the flag bases, if there's already a flag, add to it, otherwise, just set it.
-                        await flagBases.forEach(async i => {
-                            let currentFlag = genericUtils.getProperty(this.flags, i.flag.key);
-                            if (currentFlag) { // If there's already a flag there, is it this one? Otherwise, add to it.
-                                if (!currentFlag.includes(this.identifier)) {
-                                    await this.item.setFlag('chris-premades', i.flag.key, currentFlag.concat([this.identifier]));
+                    let updates = {};
+                    for (let i of ['check', 'save', 'aura', 'combat', 'item', 'death', 'effect', 'midi', 'movement', 'region', 'rest', 'skill', 'template', 'toolCheck']) {
+                        if (!this._macro[i]) continue;
+                        if (i === 'midi') {
+                            for (let j of ['item', 'actor']) {
+                                if (this._macro.midi[j]) {
+                                    let currentValue = this.item.flags['chris-premades']?.macros?.midi?.[j] ?? [];
+                                    if (!currentValue.includes(this.identifier)) genericUtils.setProperty(updates, 'flags.chris-premades.macros.midi.' + j, [...currentValue, this.identifier]);
                                 }
-                            } else { // No flag yet, make it.
-                                await this.item.setFlag('chris-premades', i.flag.key, [this.identifier]);
                             }
-                        });
+                        } else {
+                            let currentValue = this.item.flags['chris-premades']?.macros?.[i] ?? [];
+                            if (!currentValue.includes(this.identifier)) genericUtils.setProperty(updates, 'flags.chris-premades.macros.' + i, [...currentValue, this.identifier]);
+                        }
                     }
+                    await genericUtils.update(this.item, updates);
                 }
             } else {
                 let source = this.availableAutomations.find(i => i.source === this.selectedSource);

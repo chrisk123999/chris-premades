@@ -1,19 +1,40 @@
-import {genericUtils} from '../../../../../utils.js';
-
-async function updateScales(origItem, newItemData) {
-    let { classIdentifier=null, scaleIdentifier=null } = genericUtils.getValidScaleIdentifier(origItem.actor, newItemData, warriorOfTheGods.scaleAliases, 'zealot');
-    if (!scaleIdentifier) return;
-    genericUtils.setProperty(newItemData, 'flags.chris-premades.config.scaleIdentifier', scaleIdentifier);
-    genericUtils.setProperty(newItemData, 'system.uses.max', `@scale.${classIdentifier}.${scaleIdentifier}.number`);
+import {genericUtils, itemUtils} from '../../../../../utils.js';
+async function added({trigger: {entity: item}}) {
+    let subclassIdentifier = itemUtils.getConfig(item, 'subclassIdentifier');
+    let scaleIdentifier = itemUtils.getConfig(item, 'scaleIdentifier');
+    if (item.actor.system.scale[subclassIdentifier]?.[scaleIdentifier]) return;
+    if (item.actor.system.scale[subclassIdentifier]?.['pool']) {
+        await itemUtils.setConfig(item, 'subclassIdentifier', 'pool');
+        await genericUtils.update(item, 'system.uses.max', '@scale.' + subclassIdentifier + '.' + scaleIdentifier + '.number');
+        return;
+    }
+    await itemUtils.fixScales(item);
 }
 export let warriorOfTheGods = {
     name: 'Warrior of the Gods',
-    version: '1.1.28',
+    version: '1.3.57',
     rules: 'modern',
+    item: [
+        {
+            pass: 'created',
+            macro: added,
+            priority: 50
+        },
+        {
+            pass: 'itemMedkit',
+            macro: added,
+            priority: 50
+        },
+        {
+            pass: 'actorMunch',
+            macro: added,
+            priority: 50
+        }
+    ],
     config: [
         {
-            value: 'classIdentifier',
-            label: 'CHRISPREMADES.Config.ClassIdentifier',
+            value: 'subclassIdentifier',
+            label: 'CHRISPREMADES.Config.SubclassIdentifier',
             type: 'text',
             default: 'zealot',
             category: 'homebrew',
@@ -28,12 +49,10 @@ export let warriorOfTheGods = {
             homebrew: true
         }
     ],
-    early: updateScales,
-    scaleAliases: ['warrior-of-the-gods', 'pool'],
     scales: [
         {
             type: 'ScaleValue',
-            classIdentifier: 'classIdentifier',
+            classIdentifier: 'subclassIdentifier',
             scaleIdentifier: 'scaleIdentifier',
             data: {
                 type: 'ScaleValue',

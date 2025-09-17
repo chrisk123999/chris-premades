@@ -607,6 +607,7 @@
             "Configure": "Configure",
             "ConsumeItemToUse": "Consume a usage of {item} to use?",
             "ConsumeSpellSlotToUse": "Consume a spell slot to use?",
+            "DiceOnly": "Die Result",
             "Disabled": "Disabled",
             "Distance": "Distance",
             "Edit": "Edit",
@@ -625,6 +626,7 @@
             "NoType": "No Type",
             "None": "None",
             "Ok": "Ok",
+            "Range": "Range",
             "RangedSpells": "Ranged Spells",
             "RangedWeapons": "Ranged Weapons",
             "Recharge": "Recharge:",
@@ -1753,6 +1755,9 @@
             "ProtectionFromEvilAndGood": {
                 "Save": "This save is from an effect from an aberration, celestial, elemental, fey, fiends, or undead that has charmed, frightened, or possessed you."
             },
+            "PsionicPower": {
+                "Confirm": "Did the skill or tool check succeed?"
+            },
             "PsionicSorcery": {
                 "Select": "Select which spell to cast:"
             },
@@ -1812,6 +1817,9 @@
                 "ShowIcons": "Show icons for regeneration blocked/reduced:",
                 "Threshold": "Damage required to permanently kill if at 0hp:",
                 "ZeroHP": "Creature dies upon reaching 0hp"
+            },
+            "RendMind": {
+                "RestoreAndUse": "Restore and use {name}?"
             },
             "RerollSaveOnDamage": {
                 "ExcludeSource": "Exclude Damage from Source",
@@ -2464,6 +2472,7 @@
                     "DamagedByAlly": "Damaged By Ally",
                     "DamagedByEnemy": "Damaged By Enemy",
                     "Failed": "Failed {toolName} Check",
+                    "ForceSave": "Force A Save",
                     "HitByAnotherCreature": "Hit By Another Creature",
                     "HitBySource": "Hit By Source",
                     "Label": "Special Durations:",
@@ -2551,6 +2560,7 @@
                     "Save": "Save:",
                     "Skill": "Skill:",
                     "Source": "Source:",
+                    "Tool": "Tool:",
                     "Tooltip": "Tools for development, you shouldn't be here...",
                     "Version": "Version:"
                 },
@@ -2935,6 +2945,10 @@
                 "5": "All Player Owned and Controlled",
                 "Hint": "What actor's rolls should be prompted for.",
                 "Name": "Manual Rolls Inclusion"
+            },
+            "manualRollsInputDiceOnly": {
+                "Hint": "Input dice results only, excluding modifiers.",
+                "Name": "Input Dice Only"
             },
             "manualRollsPromptNoData": {
                 "Hint": "Prompt for rolls with no data, likely used in macros.",

@@ -176,6 +176,24 @@ async function specialDuration(workflow) {
             if (remove) await genericUtils.remove(effect);
         }));
     }));
+    await Promise.all(actorUtils.getEffects(workflow.actor).map(async effect => {
+        let specialDurations = effect.flags['chris-premades']?.specialDuration;
+        if (!specialDurations) return;
+        let remove = false;
+        outerLoop:
+        for (let i of specialDurations) {
+            switch (i) {
+                case 'forceSave': {
+                    if (!workflow.activity) return;
+                    if (!workflow.activity.hasSave) return;
+                    if (workflow.targets.size === 1 && workflow.targets.has(workflow.token)) return;
+                    remove = true;
+                    break outerLoop;
+                }
+            }
+        }
+        if (remove) await genericUtils.remove(effect);
+    }));
 }
 async function specialDurationConditions(effect) {
     let statusEffectIds = CONFIG.statusEffects.map(i => i.id);

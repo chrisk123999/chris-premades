@@ -521,12 +521,13 @@ form .cpr-settings.categories .form-group .form-fields > input[type="checkbox"] 
 
 .roll-resolver-quick-buttons .cpr-fieldset.cpr-row-center {
     margin: 0px 0px 10px 0px;
-    gap: 0px;
+    gap: 2px;
 }
 
 .roll-resolver-quick-buttons .cpr-fieldset.cpr-row-center button {
     box-shadow: 0 0 5px 0px var(--button-border-color);
     border: none;
+    flex: 1;
 }
 
 .roll-resolver-quick-buttons .cpr-fieldset.cpr-row-center legend {

@@ -168,26 +168,10 @@ function getRules(entity) {
     if (entity.documentName === 'Item') return entity.system.source.rules === '' ? 'legacy' : entity.system.source.rules === '2014' ? 'legacy' : 'modern';
     return entity.flags['chris-premades']?.rules ?? 'legacy';
 }
-function getCPRIdentifier(name, rules='legacy') {
+function getCPRIdentifier(name, rules = 'legacy') {
     let macros = (rules === 'legacy') ? chrisPremades.legacyMacros : chrisPremades.macros;
     let identifier = Object.entries(macros).find(i => i[1].name === name || i[1].aliases?.includes(name))?.[0];
     return identifier;
-}
-function getValidScaleIdentifier(actor, itemData, scaleAliases, defaultClassIdentifier) {
-    if (!actor) return;
-    let currConfig = genericUtils.getProperty(itemData, 'flags.chris-premades.config');
-    if (currConfig?.scaleIdentifier && !scaleAliases.includes(currConfig.scaleIdentifier)) return;
-    let classIdentifier = currConfig?.classIdentifier ?? defaultClassIdentifier;
-    let currClass = actor.classes[classIdentifier] ?? actor.subclasses[classIdentifier];
-    if (!currClass) return;
-    let scaleIdentifier;
-    for (let currIdentifier of scaleAliases) {
-        if (currIdentifier in currClass.scaleValues) {
-            scaleIdentifier = currIdentifier;
-            break;
-        }
-    }
-    return {classIdentifier, scaleIdentifier};
 }
 function round(num) {
     return Math.round((num + Number.EPSILON) * 100) / 100;
@@ -231,6 +215,5 @@ export let genericUtils = {
     checkPlayerOwnership,
     getRules,
     getCPRIdentifier,
-    getValidScaleIdentifier,
     handleMetric
 };

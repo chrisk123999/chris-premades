@@ -112,6 +112,11 @@ export class EffectMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
                             label: 'CHRISPREMADES.Medkit.Effect.SpecialDuration.HitBySource',
                             value: 'hitBySource',
                             isSelected: effect.flags['chris-premades']?.specialDuration?.includes('hitBySource')
+                        },
+                        {
+                            label: 'CHRISPREMADES.Medkit.Effect.SpecialDuration.ForceSave',
+                            value: 'forceSave',
+                            isSelected: effect.flags['chris-premades']?.specialDuration?.includes('forceSave')
                         }
                     ].concat(CONFIG.statusEffects.map(i => ({
                         label: i.name,

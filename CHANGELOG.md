@@ -1,3 +1,33 @@
+# 1.3.58 Release:
+## New Modern Content:
+- Psychic Blades
+- Soul Blades
+- Psychic Veil
+- Rend Mind
+## Bug Fixes:
+- Advantage Damage Bonus (Generic Monster Feature)
+## Update Notes:
+- Added forced save to the special durations section of the CPR Effect Medkit.
+
+# 1.3.57 Release:
+## New Modern Content:
+- Psionic Power
+## Bug Fixes:
+- Arcane Jolt (Legacy)
+- Dreadful Strikes (Legacy)
+- Psionic Power: Psionic Energy (Legacy)
+- Soul Blades: Homing Strikes (Legacy)
+- Bardic Inspiration (Modern)
+- Dazzling Footwork (Modern)
+- Peerless Skill (Modern)
+- Warrior of the Gods (Legacy)
+- Channel Divinity (Modern)
+- Shift: Wildhunt (Legacy)
+## Update Notes:
+- This update mostly consists of making older automations automatically apply missing scale values as well as adding more self-correcting resource consumption linking.
+- Added a setting to manual rolls to use dice totals instead of overall totals. (Thanks Tyler)
+- It is a known issue that Psi-Bolstered Knack isn't displaying changes to tool checks in the chat card. The next update to Midi-Qol should fix this.
+
 # 1.3.56 Release:
 ## New Modern Content:
 - Death Strike
