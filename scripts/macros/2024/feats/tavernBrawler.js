@@ -37,7 +37,7 @@ export let tavernBrawler = {
 };
 export let tavernBrawlerUnarmedStrike = {
     name: 'Unarmed Strike (Tavern Brawler)',
-    version: '1.2.36',
+    version: '1.3.61',
     rules: 'modern',
     ddbi: {
         restrictedItems: {

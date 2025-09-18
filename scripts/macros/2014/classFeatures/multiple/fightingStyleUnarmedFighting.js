@@ -14,7 +14,7 @@ async function turnStart({trigger: {entity: item, token}}) {
     await workflowUtils.syntheticActivityRoll(feature, [targetToken]);
 }
 async function early({workflow}) {
-    if (!constants.attacks.includes(workflowUtils.getActionType(workflow))) return;
+    if (!workflowUtils.isAttackType(workflow, 'attack')) return;
     let equippedShields = workflow.actor.items.filter(i => i.system.type?.value === 'shield' && i.system.equipped);
     let equippedWeapons = workflow.actor.items.filter(i => i.type === 'weapon' && i.system.equipped && i !== workflow.item && !constants.unarmedAttacks.includes(genericUtils.getIdentifier(i)));
     let denomination = (!equippedShields.length && !equippedWeapons.length) ? 8 : 6;

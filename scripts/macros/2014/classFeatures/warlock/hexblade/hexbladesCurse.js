@@ -23,7 +23,7 @@ async function damageApplication({trigger: {token}, workflow, ditem}) {
     ditem.hpDamage += modifiedDamage;
 }
 async function early({workflow}) {
-    if (workflow.targets.size !== 1 || !constants.attacks.includes(workflowUtils.getActionType(workflow))) return;
+    if (workflow.targets.size !== 1 || !workflowUtils.isAttackType(workflow, 'attack')) return;
     let effect = effectUtils.getEffectByIdentifier(workflow.actor, 'hexbladesCurse');
     if (!effect) return;
     let targetId = effect.flags['chris-premades'].hexbladesCurse.target;

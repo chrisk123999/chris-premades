@@ -1,7 +1,7 @@
 import {actorUtils, constants, dialogUtils, genericUtils, itemUtils, socketUtils, tokenUtils, workflowUtils} from '../../../../../utils.js';
 
 async function attack({trigger, workflow}) {
-    if (!workflow.targets.size || !workflow.item || !workflow.isCritical || !constants.attacks.includes(workflowUtils.getActionType(workflow))) return;
+    if (!workflow.targets.size || !workflow.item || !workflow.isCritical || !workflowUtils.isAttackType(workflow, 'attack')) return;
     if (genericUtils.getIdentifier(workflow.item) === 'sentinelAtDeathsDoor') return;
     let nearbyTokens = tokenUtils.findNearby(workflow.targets.first(), 30, 'ally').filter(token => {
         if (actorUtils.hasUsedReaction(token.actor)) return;

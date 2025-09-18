@@ -2,7 +2,7 @@ import {constants, dialogUtils, genericUtils, itemUtils, tokenUtils, workflowUti
 import {sneakAttack} from '../../../../legacyMacros.js';
 async function damage({trigger, workflow}) {
     if (workflow.hitTargets.size != 1 || !workflow.item) return;
-    if (!constants.weaponAttacks.includes(workflowUtils.getActionType(workflow))) return;
+    if (!workflowUtils.isAttackType(workflow, 'weaponAttack')) return;
     if (!combatUtils.perTurnCheck(trigger.entity, 'martialAdvantage', false, workflow.token.id)) return;
     let targetToken = workflow.targets.first();
     let nearbyTokens = tokenUtils.findNearby(targetToken, 5, 'enemy', {includeIncapacitated: false}).filter(i => i.id != workflow.token.id);

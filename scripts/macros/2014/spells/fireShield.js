@@ -74,7 +74,7 @@ async function hit({trigger: {entity: effect}, workflow}) {
     if (!targetToken) return;
     let distance = tokenUtils.getDistance(workflow.token, targetToken);
     if (distance > 5) return;
-    if (!constants.meleeAttacks.includes(workflowUtils.getActionType(workflow))) return;
+    if (!workflowUtils.isAttackType(workflow, 'meleeAttacks')) return;
     let shieldType = effect.flags['chris-premades']?.fireShield?.selection;
     if (!shieldType) return;
     let originItem = await effectUtils.getOriginItem(effect);

@@ -1,6 +1,6 @@
 import {constants, activityUtils, combatUtils, dialogUtils, effectUtils, genericUtils, workflowUtils} from '../../../utils.js';
 async function early({trigger: {entity: item}, workflow}) {
-    if (!constants.attacks.includes(workflowUtils.getActionType(workflow))) return;
+    if (!workflowUtils.isAttackType(workflow, 'attack')) return;
     if (!workflow.targets.size) return;
     let grapplingEffects = effectUtils.getAllEffectsByIdentifier(workflow.actor, 'grappling');
     if (!grapplingEffects.length) return;
@@ -10,7 +10,7 @@ async function early({trigger: {entity: item}, workflow}) {
 }
 
 async function hit({trigger: {entity: item}, workflow}) {
-    if (!constants.attacks.includes(workflowUtils.getActionType(workflow))) return;
+    if (!workflowUtils.isAttackType(workflow, 'attack')) return;
     if (workflow.hitTargets.size !== 1) return;
     if (!combatUtils.perTurnCheck(item, 'grappler')) return;
     let unarmedStrikeItem = workflow.item;

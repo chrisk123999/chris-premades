@@ -1,7 +1,7 @@
 import {activityUtils, constants, dialogUtils, genericUtils, workflowUtils} from '../../../../utils.js';
 async function damage({trigger: {entity: item}, workflow}) {
     if (workflow.hitTargets.size !== 1) return;
-    if (!constants.weaponAttacks.includes(workflowUtils.getActionType(workflow))) return;
+    if (!workflowUtils.isAttackType(workflow, 'weaponAttack')) return;
     if (workflow.item.type !== 'weapon');
     if (!workflowUtils.getDamageTypes(workflow.damageRolls).has('piercing')) return;
     let selection = await dialogUtils.confirm(item.name, genericUtils.format('CHRISPREMADES.Dialog.Use', {itemName: item.name}));

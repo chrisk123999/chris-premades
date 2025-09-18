@@ -1,7 +1,7 @@
 import {actorUtils, combatUtils, constants, dialogUtils, genericUtils, itemUtils, socketUtils, tokenUtils, workflowUtils} from '../../../../../utils.js';
 async function attack({trigger, workflow}) {
     if (!workflow.hitTargets.size || !workflow.item) return;
-    if (!constants.attacks.includes(workflowUtils.getActionType(workflow))) return;
+    if (!workflowUtils.isAttackType(workflow, 'attack')) return;
     let target = workflow.targets.first();
     let nearbyShields = tokenUtils.findNearby(target, 60, 'ally').filter(i => {
         let item = itemUtils.getItemByIdentifier(i.actor, 'runicShield');

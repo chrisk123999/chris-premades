@@ -415,7 +415,7 @@ async function use({workflow}) {
 }
 async function earlyNighteye({trigger: {entity: effect}, workflow}) {
     if (workflow.disadvantage) return;
-    if (!constants.attacks.includes(workflowUtils.getActionType(workflow))) return;
+    if (!workflowUtils.isAttackType(workflow, 'attack')) return;
     if (!workflow.targets.size) return;
     let lightLevelSource = tokenUtils.getLightLevel(workflow.token);
     let lightLevelTarget = tokenUtils.getLightLevel(workflow.targets.first());

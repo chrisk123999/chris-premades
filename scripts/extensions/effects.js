@@ -152,7 +152,7 @@ async function specialDuration(workflow) {
                     // eslint-disable-next-line no-fallthrough
                     case 'attackedByAnotherCreature': {
                         if (!workflow.activity) return;
-                        if (!constants.attacks.includes(workflowUtils.getActionType(workflow))) break;
+                        if (!workflowUtils.isAttackType(workflow, 'attack')) break;
                         let origin = await effectUtils.getOriginItem(effect);
                         if (!origin?.actor) break;
                         if (workflow.actor.id === origin.actor.id) break;
@@ -164,7 +164,7 @@ async function specialDuration(workflow) {
                     // eslint-disable-next-line no-fallthrough
                     case 'attackedBySource': {
                         if (!workflow.activity) return;
-                        if (!constants.attacks.includes(workflowUtils.getActionType(workflow))) break;
+                        if (!workflowUtils.isAttackType(workflow, 'attack')) break;
                         let origin = await effectUtils.getOriginItem(effect);
                         if (!origin?.actor) break;
                         if (workflow.actor.id != origin.actor.id) break;

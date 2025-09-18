@@ -1,7 +1,7 @@
 import {activityUtils, constants, dialogUtils, genericUtils, itemUtils, thirdPartyUtils, workflowUtils} from '../../../../../utils.js';
 async function attack({trigger, workflow}) {
     if (!workflow.activity || workflow.isFumble || !workflow.targets.size) return;
-    if (!constants.attacks.includes(workflowUtils.getActionType(workflow))) return;
+    if (!workflowUtils.isAttackType(workflow, 'attack')) return;
     if (workflow.targets.first().actor.system.attributes.ac.value <= workflow.attackTotal) return;
     let feature = await thirdPartyUtils.attacked(workflow, 'guidedStrike', 'use', {distance: 30, attacker: true, dispositionType: 'enemy', dialogType: 'attackRoll'});
     if (!feature) return;
@@ -10,7 +10,7 @@ async function attack({trigger, workflow}) {
 }
 async function selfAttack({trigger: {entity: item}, workflow}) {
     if (!workflow.activity || workflow.isFumble || !workflow.targets.size) return;
-    if (!constants.attacks.includes(workflowUtils.getActionType(workflow))) return;
+    if (!workflowUtils.isAttackType(workflow, 'attack')) return;
     if (workflow.targets.first().actor.system.attributes.ac.value <= workflow.attackTotal) return;
     let activity = activityUtils.getActivityByIdentifier(item, 'selfUse', {strict: true});
     if (!activity) return;

@@ -53,7 +53,7 @@ async function check({trigger: {sourceActor, roll, config, skillId}}) {
     }
 }
 async function attack({trigger, workflow}) {
-    if (!workflow.targets.size || !workflow.item || !constants.attacks.includes(workflowUtils.getActionType(workflow)) || workflow.isFumble || workflow.isCritical) return;
+    if (!workflow.targets.size || !workflow.item || !workflowUtils.isAttackType(workflow, 'attack') || workflow.isFumble || workflow.isCritical) return;
     if (workflow.targets.first().actor.system.attributes.ac.value > workflow.attackTotal) return;
     if (genericUtils.getIdentifier(workflow.item) === 'cuttingWords') return;
     let nearbyTokens = tokenUtils.findNearby(workflow.token, 60, 'enemy').filter(token => {
