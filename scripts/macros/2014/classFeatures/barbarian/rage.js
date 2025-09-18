@@ -270,7 +270,7 @@ async function end({workflow}) {
 async function attack({workflow}) {
     let effect = effectUtils.getEffectByIdentifier(workflow.actor, 'rage');
     if (!effect) return;
-    if (!constants.attacks.includes(workflowUtils.getActionType(workflow))) return;
+    if (!workflowUtils.isAttackType(workflow, 'attack')) return;
     if (!workflow.targets.size) return;
     if (workflow.targets.first().document.disposition === workflow.token.document.disposition) return;
     await combatUtils.setTurnCheck(effect, 'rage');

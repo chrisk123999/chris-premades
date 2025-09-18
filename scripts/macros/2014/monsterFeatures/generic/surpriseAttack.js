@@ -1,7 +1,7 @@
 import {combatUtils, constants, dialogUtils, effectUtils, itemUtils, workflowUtils} from '../../../../utils.js';
 async function damage({trigger: {entity: item}, workflow}) {
     if (workflow.hitTargets.size !== 1) return;
-    if (!constants.attacks.includes(workflowUtils.getActionType(workflow))) return;
+    if (!workflowUtils.isAttackType(workflow, 'attack')) return;
     if (!combatUtils.inCombat()) return;
     if (game.combat.round !== 1) return;
     let config = itemUtils.getGenericFeatureConfig(item, 'surpriseAttack');

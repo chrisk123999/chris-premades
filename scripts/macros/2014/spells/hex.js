@@ -133,7 +133,7 @@ async function move({workflow}) {
 }
 async function damage({trigger, workflow}) {
     if (!workflow.targets.size) return;
-    if (!constants.attacks.includes(workflowUtils.getActionType(workflow))) return;
+    if (!workflowUtils.isAttackType(workflow, 'attack')) return;
     let effect = effectUtils.getEffectByIdentifier(workflow.actor, 'hex');
     if (!effect) return;
     let validTargetUuids = effect.flags['chris-premades'].hex.targets;

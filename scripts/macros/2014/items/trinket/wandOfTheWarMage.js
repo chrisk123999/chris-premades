@@ -1,6 +1,6 @@
 import {constants, tokenUtils, workflowUtils} from '../../../../utils.js';
 async function early({workflow}) {
-    if (!constants.spellAttacks.includes(workflowUtils.getActionType(workflow))) return;
+    if (!workflowUtils.isAttackType(workflow, 'spellAttack')) return;
     let targetToken = workflow.targets.first();
     if (!targetToken) return;
     let coverBonus = tokenUtils.checkCover(workflow.token, targetToken, {item: workflow.item});

@@ -1,6 +1,6 @@
 import {constants, genericUtils, itemUtils, tokenUtils, workflowUtils} from '../../../../../utils.js';
 async function attack({trigger: {token}, workflow}) {
-    if (workflow.targets.size !== 1 || !workflow.item || !constants.attacks.includes(workflowUtils.getActionType(workflow))) return;
+    if (workflow.targets.size !== 1 || !workflow.item || !workflowUtils.isAttackType(workflow, 'attack')) return;
     let targetToken = workflow.targets.first();
     if (targetToken.document.disposition !== token.document.disposition) return;
     let coverBonus = tokenUtils.checkCover(workflow.token, targetToken, {item: workflow.item});

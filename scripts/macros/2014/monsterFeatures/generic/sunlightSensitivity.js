@@ -7,7 +7,7 @@ async function skillContext({trigger: {skillId, actor}}) {
 }
 async function early({trigger: {entity: item}, workflow}) {
     if (workflow.disadvantage) return;
-    if (!constants.attacks.includes(workflowUtils.getActionType(workflow))) return;
+    if (!workflowUtils.isAttackType(workflow, 'attack')) return;
     if (tokenUtils.getLightLevel(workflow.token) !== 'bright') return;
     let config = itemUtils.getGenericFeatureConfig(item, 'sunlightSensitivity');
     if (!config.auto) {

@@ -44,7 +44,7 @@ async function braceMeleeUse({trigger, workflow}) {
 async function braceMeleeDamageUse({trigger, workflow}) {
     if (!workflow.activity) return;
     if (!workflow.activity.damage) return;
-    if (!constants.meleeAttacks.includes(workflowUtils.getActionType(workflow))) return;
+    if (!workflowUtils.isAttackType(workflow, 'meleeAttacks')) return;
     let newActivity = activityUtils.duplicateActivity(workflow.activity);
     for (let i = 0; i < newActivity.damage.parts.length; i++) {
         let formula = newActivity.damage.parts[i].formula;
@@ -415,7 +415,7 @@ async function piercingStrikeUse({trigger, workflow}) {
 }
 async function piercingStrikeDamage({trigger, workflow}) {
     if (!workflow.activity) return;
-    if (!constants.attacks.includes(workflowUtils.getActionType(workflow))) return;
+    if (!workflowUtils.isAttackType(workflow, 'attack')) return;
     await workflowUtils.bonusDamage(workflow, '2', {ignoreCrit: true, damageType: 'piercing'});
 }
 export let piercingStrike = {
@@ -687,7 +687,7 @@ async function braceRangedUse({trigger, workflow}) {
 async function braceRangedDamageUse({trigger, workflow}) {
     if (!workflow.activity) return;
     if (!workflow.activity.damage) return;
-    if (!constants.rangedAttacks.includes(workflowUtils.getActionType(workflow))) return;
+    if (!workflowUtils.isAttackType(workflow, 'rangedAttacks')) return;
     let newActivity = activityUtils.duplicateActivity(workflow.activity);
     for (let i = 0; i < newActivity.damage.parts.length; i++) {
         let formula = newActivity.damage.parts[i].formula;

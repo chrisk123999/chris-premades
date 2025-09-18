@@ -73,7 +73,7 @@ async function turnEnd({trigger: {entity: effect, token: sourceToken}}) {
 }
 async function targetAttack({trigger: {entity: effect}, workflow}) {
     if (workflow.targets.size !== 1) return;
-    if (!constants.attacks.includes(workflowUtils.getActionType(workflow))) return;
+    if (!workflowUtils.isAttackType(workflow, 'attack')) return;
     let origin = await effectUtils.getOriginItem(effect);
     if (!origin) return;
     let targetUuid = workflow.targets.first().document.uuid;
@@ -88,7 +88,7 @@ async function sourceAttack({trigger: {entity: effect}, workflow}) {
     if (!targetUuids) return;
     let endSpell = false;
     for (let target of workflow.targets) {
-        if (constants.attacks.includes(workflowUtils.getActionType(workflow))) {
+        if (workflowUtils.isAttackType(workflow, 'attack')) {
             if (!targetUuids.includes(target.document.uuid)) {
                 endSpell = true;
                 break;

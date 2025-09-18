@@ -160,7 +160,7 @@ async function RollComplete(workflow) {
     if (!workflow.targets.size || !workflow.item || !workflow.activity || !workflow.actor || !workflow.token) return;
     let effects = actorUtils.getEffects(workflow.actor).filter(i => i.flags['chris-premades']?.mastery?.vex?.target === workflow.targets.first().id);
     if (effects.length) await genericUtils.deleteEmbeddedDocuments(workflow.actor, 'ActiveEffect', effects.map(i => i.id));
-    if (!constants.weaponAttacks.includes(workflowUtils.getActionType(workflow))) return;
+    if (!workflowUtils.isAttackType(workflow, 'weaponAttack')) return;
     let masterySetting = genericUtils.getCPRSetting('weaponMastery');
     let mastery;
     if (workflow.actor.type === 'npc') {

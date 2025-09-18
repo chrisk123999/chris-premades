@@ -30,7 +30,7 @@ async function use({workflow}) {
 }
 async function damage({workflow}) {
     if (workflow.hitTargets.size !== 1) return;
-    if (!constants.attacks.includes(workflowUtils.getActionType(workflow))) return;
+    if (!workflowUtils.isAttackType(workflow, 'attack')) return;
     if (tokenUtils.getDistance(workflow.token, workflow.hitTargets.first()) > 10) return;
     let effect = effectUtils.getEffectByIdentifier(workflow.actor, 'spiritShroud');
     if (!effect) return;

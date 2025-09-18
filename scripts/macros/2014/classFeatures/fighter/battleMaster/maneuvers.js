@@ -157,7 +157,7 @@ async function useDistractingStrike({workflow}) {
 }
 async function distractingStrikeEffectHit({trigger: {entity: effect}, workflow}) {
     if (!workflow.targets.size) return;
-    if (!constants.attacks.includes(workflowUtils.getActionType(workflow))) return;
+    if (!workflowUtils.isAttackType(workflow, 'attack')) return;
     let originItem = await fromUuid(effect.origin);
     if (originItem.actor === workflow.actor) return;
     await genericUtils.remove(effect);

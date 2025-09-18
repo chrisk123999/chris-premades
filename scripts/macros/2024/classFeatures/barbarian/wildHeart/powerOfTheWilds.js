@@ -1,6 +1,6 @@
 import {actorUtils, constants, dialogUtils, effectUtils, tokenUtils, workflowUtils} from '../../../../../utils.js';
 async function lion({trigger: {entity: effect}, workflow}) {
-    if (!workflow.targets.size || !constants.attacks.includes(workflowUtils.getActionType(workflow)) || !workflow.token) return;
+    if (!workflow.targets.size || !workflowUtils.isAttackType(workflow, 'attack') || !workflow.token) return;
     let nearbyTargets = tokenUtils.findNearby(workflow.token, 5, 'enemy', {includeIncapacitated: false}).filter(i => actorUtils.getEffects(i.actor).find(j => j.flags['chris-premades']?.powerOfTheWildsLion)).filter(k => k.document.id != workflow.targets.first().document.id);
     if (!nearbyTargets.length) return;
     workflow.disadvantage = true;

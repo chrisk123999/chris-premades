@@ -27,7 +27,7 @@ export async function arcaneJoltHelper(workflow, originItem) {
 }
 async function damage({trigger, workflow}) {
     if (workflow.hitTargets.size !== 1) return;
-    if (!constants.weaponAttacks.includes(workflowUtils.getActionType(workflow))) return;
+    if (!workflowUtils.isAttackType(workflow, 'weaponAttack')) return;
     if (!workflow.item.system.properties.has('mgc')) return;
     if (!combatUtils.perTurnCheck(trigger.entity, 'arcaneJolt')) return;
     if (!trigger.entity.system.uses.value) return;

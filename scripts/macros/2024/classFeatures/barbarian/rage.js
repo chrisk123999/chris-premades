@@ -257,7 +257,7 @@ async function attack({trigger, workflow}) {
     if (!combatUtils.inCombat() || !workflow.token) return;
     let effect = effectUtils.getEffectByIdentifier(workflow.actor, 'rage');
     if (!effect) return;
-    if (!constants.attacks.includes(workflowUtils.getActionType(workflow)) || !workflow.targets.size) return;
+    if (!workflowUtils.isAttackType(workflow, 'attack') || !workflow.targets.size) return;
     if (workflow.targets.first().document.disposition === workflow.token.document.disposition) return;
     await combatUtils.setTurnCheck(effect, 'rage');
 }
@@ -303,7 +303,7 @@ async function combatEnd({trigger: {entity: effect}}) {
 }
 async function damage({trigger: {entity: effect}, workflow}) {
     if (!workflow.hitTargets.size) return;
-    if (!constants.attacks.includes(workflowUtils.getActionType(workflow))) return;
+    if (!workflowUtils.isAttackType(workflow, 'attack')) return;
     if (workflow.activity.ability != 'str') return;
     let formula = effect.flags['chris-premades']?.rage?.formula;
     if (!formula) return;

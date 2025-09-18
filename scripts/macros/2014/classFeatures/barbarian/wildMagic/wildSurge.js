@@ -287,7 +287,7 @@ async function intangibleSpiritExplode({trigger: {entity: effect, token}}) {
 }
 async function retribution({trigger: {entity: effect}, workflow}) {
     if (!workflow.hitTargets.size) return;
-    if (!constants.attacks.includes(workflowUtils.getActionType(workflow))) return;
+    if (!workflowUtils.isAttackType(workflow, 'attack')) return;
     let feature = activityUtils.getActivityByIdentifier(await effectUtils.getOriginItem(effect), 'retribution', {strict: true});
     if (!feature) return;
     await workflowUtils.syntheticActivityRoll(feature, [workflow.token]);

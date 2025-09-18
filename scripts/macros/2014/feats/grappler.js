@@ -1,6 +1,6 @@
 import {constants, dialogUtils, effectUtils, genericUtils, rollUtils, socketUtils, workflowUtils} from '../../../utils.js';
 async function early({trigger: {entity: item}, workflow}) {
-    if (!constants.attacks.includes(workflowUtils.getActionType(workflow))) return;
+    if (!workflowUtils.isAttackType(workflow, 'attack')) return;
     if (!workflow.targets.size) return;
     let grapplingEffects = effectUtils.getAllEffectsByIdentifier(workflow.actor, 'grappling');
     if (!grapplingEffects.length) return;

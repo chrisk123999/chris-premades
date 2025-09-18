@@ -2,7 +2,7 @@ import {combatUtils, constants, dialogUtils, genericUtils, itemUtils, workflowUt
 async function damage({trigger, workflow}) {
     let item = itemUtils.getItemByIdentifier(workflow.actor, 'divineFury');
     if (!item) return;
-    if (!workflow.hitTargets.size || !constants.weaponAttacks.includes(workflowUtils.getActionType(workflow)) || !item.system.uses.value) return;
+    if (!workflow.hitTargets.size || !workflowUtils.isAttackType(workflow, 'weaponAttack') || !item.system.uses.value) return;
     let damageTypes = itemUtils.getConfig(item, 'damageTypes');
     if (!damageTypes.length) return;
     let classIdentifier = itemUtils.getConfig(item, 'classIdentifier');
