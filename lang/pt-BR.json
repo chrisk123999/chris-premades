@@ -607,6 +607,7 @@
             "Configure": "Configurar",
             "ConsumeItemToUse": "Consumir um uso de {item} para usar?",
             "ConsumeSpellSlotToUse": "Consumir um espaço de magia para usar?",
+            "DiceOnly": "Resultado do Dado",
             "Disabled": "Desabilitar",
             "Distance": "Distância",
             "Edit": "Editar",
@@ -625,6 +626,7 @@
             "NoType": "Sem Tipo",
             "None": "Nenhum(a)",
             "Ok": "Ok",
+            "Range": "Alcance",
             "RangedSpells": "Magias à Distância",
             "RangedWeapons": "Armas à Distância",
             "Recharge": "Recarga:",
@@ -1753,6 +1755,9 @@
             "ProtectionFromEvilAndGood": {
                 "Save": "Esta salvaguarda é contra um efeito de uma Aberração, Celestial, Elemental, Feérico, Ínfero ou Morto-Vivo que te Enfeitiçou, Amedrontou ou Possuiu você."
             },
+            "PsionicPower": {
+                "Confirm": "O teste de perícia ou ferramenta foi bem-sucedido?"
+            },
             "PsionicSorcery": {
                 "Select": "Escolha qual magia para conjurar:"
             },
@@ -1812,6 +1817,9 @@
                 "ShowIcons": "Mostrar ícones para regeneração bloqueada/reduzida:",
                 "Threshold": "Dano necessário para matar permanentemente se estiver com 0 PV:",
                 "ZeroHP": "A criatura morre ao atingir 0 PV"
+            },
+            "RendMind": {
+                "RestoreAndUse": "Restaurar e usar {name}?"
             },
             "RerollSaveOnDamage": {
                 "ExcludeSource": "Excluir Danos da Origem",
@@ -2464,6 +2472,7 @@
                     "DamagedByAlly": "Sofrer Dano de Aliado",
                     "DamagedByEnemy": "Sofrer Dano de Inimigo",
                     "Failed": "Falhar Teste de {toolName}",
+                    "ForceSave": "Forçar Uma Salvaguarda",
                     "HitByAnotherCreature": "Atingido por Outra Criatura",
                     "HitBySource": "Atingido pela Origem",
                     "Label": "Durações Especiais:",
@@ -2551,6 +2560,7 @@
                     "Save": "Salvaguarda:",
                     "Skill": "Perícia:",
                     "Source": "Origem:",
+                    "Tool": "Ferramenta:",
                     "Tooltip": "Ferramentas para desenvolvimento, você não deveria estar aqui...",
                     "Version": "Versão:"
                 },
@@ -2935,6 +2945,10 @@
                 "5": "Todos Pertencentes e Controlados por jogador",
                 "Hint": "Quais rolagens de ator devem ser solicitadas.",
                 "Name": "Inclusão de Rolagens Manuais"
+            },
+            "manualRollsInputDiceOnly": {
+                "Hint": "Insira apenas os resultados dos dados, excluindo modificadores.",
+                "Name": "Inserir Apenas Dados"
             },
             "manualRollsPromptNoData": {
                 "Hint": "Solicita rolagens sem dados, provavelmente usados em macros.",
