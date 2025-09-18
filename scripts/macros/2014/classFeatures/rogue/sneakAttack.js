@@ -148,7 +148,7 @@ export async function animation(target, token, attackType) {
 async function damage({trigger: {entity: item}, workflow}) {
     if (workflow.hitTargets.size != 1 || !workflow.item) return;
     let weaponIdentifier = genericUtils.getIdentifier(workflow.item);
-    if (!(workflow.activity.actionType === 'rwak' || workflow.item.system.properties.has('fin') || weaponIdentifier === 'psychicBlades')) return;
+    if (!(workflowUtils.getActionType(workflow) === 'rwak' || workflow.item.system.properties.has('fin') || weaponIdentifier === 'psychicBlades')) return;
     if (!combatUtils.perTurnCheck(item, 'sneakAttack', false, workflow.token.id)) return;
     let doSneak = false;
     let displayRakish = false;

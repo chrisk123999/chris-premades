@@ -1,4 +1,4 @@
-import {actorUtils, constants, dialogUtils, genericUtils, itemUtils, tokenUtils} from '../../../../utils.js';
+import {actorUtils, constants, dialogUtils, genericUtils, itemUtils, tokenUtils, workflowUtils} from '../../../../utils.js';
 async function skillContext({trigger: {skillId, actor}}) {
     if (skillId !== 'prc') return;
     let token = actorUtils.getFirstToken(actor);
@@ -7,7 +7,7 @@ async function skillContext({trigger: {skillId, actor}}) {
 }
 async function early({trigger: {entity: item}, workflow}) {
     if (workflow.disadvantage) return;
-    if (!constants.attacks.includes(workflow.activity.actionType)) return;
+    if (!constants.attacks.includes(workflowUtils.getActionType(workflow))) return;
     if (tokenUtils.getLightLevel(workflow.token) !== 'bright') return;
     let config = itemUtils.getGenericFeatureConfig(item, 'sunlightSensitivity');
     if (!config.auto) {

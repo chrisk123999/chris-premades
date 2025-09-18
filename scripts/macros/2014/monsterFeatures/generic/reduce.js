@@ -1,4 +1,4 @@
-import {constants, effectUtils, itemUtils} from '../../../../utils.js';
+import {constants, effectUtils, itemUtils, workflowUtils} from '../../../../utils.js';
 async function use({workflow}) {
     let config = itemUtils.getGenericFeatureConfig(workflow.item, 'reduce');
     let effectData = {
@@ -100,7 +100,7 @@ async function use({workflow}) {
     await effectUtils.createEffect(workflow.actor, effectData);
 }
 async function damage({workflow}) {
-    if (workflow.hitTargets.size !== 1 || !constants.weaponAttacks.includes(workflow.activity.actionType)) return;
+    if (workflow.hitTargets.size !== 1 || !constants.weaponAttacks.includes(workflowUtils.getActionType(workflow))) return;
     let isFin = workflow.item.system.properties.has('fin');
     if (isFin) {
         if (workflow.actor.system.abilities.str.value < workflow.actor.system.abilities.dex.value) return;

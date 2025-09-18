@@ -1,7 +1,7 @@
 import {actorUtils, constants, dialogUtils, effectUtils, genericUtils, itemUtils, workflowUtils} from '../../../../../utils.js';
 async function damage({trigger: {entity: item}, workflow}) {
     if (workflow.hitTargets.size !== 1) return;
-    if (!constants.weaponAttacks.includes(workflow.activity.actionType)) return;
+    if (!constants.weaponAttacks.includes(workflowUtils.getActionType(workflow))) return;
     let isSummonedPactWeapon = genericUtils.getIdentifier(workflow.item) === 'pactWeapon';
     let isEnchantedPactWeapon = Array.from(workflow.item.allApplicableEffects()).find(i => genericUtils.getIdentifier(i) === 'pactWeapon');
     if (!isSummonedPactWeapon && !isEnchantedPactWeapon) return;

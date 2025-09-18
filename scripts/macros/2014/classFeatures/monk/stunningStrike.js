@@ -1,8 +1,7 @@
 import {dialogUtils, genericUtils, itemUtils, workflowUtils} from '../../../../utils.js';
-
 async function late({trigger: {entity: item}, workflow}) {
     if (workflow.hitTargets.size !== 1) return;
-    if (workflow.activity.actionType !== 'mwak') return;
+    if (workflowUtils.getActionType(workflow) !== 'mwak') return;
     let ki = itemUtils.getItemByIdentifier(workflow.actor, 'ki');
     if (!ki || !ki.system.uses.value) return;
     let selection = await dialogUtils.confirm(item.name, genericUtils.format('CHRISPREMADES.Dialog.Use', {itemName: item.name}));

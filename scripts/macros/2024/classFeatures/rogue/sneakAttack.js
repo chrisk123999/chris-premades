@@ -3,7 +3,7 @@ import {animation} from '../../../2014/classFeatures/rogue/sneakAttack.js';
 async function damage({trigger: {entity: item}, workflow}) {
     if (workflow.hitTargets.size != 1 || !workflow.item || !workflow.activity) return;
     let identifier = genericUtils.getIdentifier(workflow.item);
-    if (!(workflow.activity.actionType === 'rwak' || workflow.item.system.properties.has('fin') || identifier === 'psychicBlades')) return;
+    if (!(workflowUtils.getActionType(workflow) === 'rwak' || workflow.item.system.properties.has('fin') || identifier === 'psychicBlades')) return;
     if (!item.system.uses.value) return;
     let doSneak = false;
     let rollType = (workflow.advantage && workflow.disadvantage) ? 'normal' : (workflow.advantage && !workflow.disadvantage) ? 'advantage' : (!workflow.advantage && workflow.disadvantage) ? 'disadvantage' : 'normal';

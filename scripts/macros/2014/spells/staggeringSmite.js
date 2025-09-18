@@ -20,7 +20,7 @@ async function use({workflow}) {
 }
 async function damage({trigger: {entity: effect}, workflow}) {
     if (!workflow.hitTargets.size) return;
-    if (workflow.activity.actionType !== 'mwak') return;
+    if (workflowUtils.getActionType(workflow) !== 'mwak') return;
     let damageType = effect.flags['chris-premades'].staggeringSmite.damageType;
     let formula = '4d6';
     await workflowUtils.bonusDamage(workflow, formula, {damageType: damageType});

@@ -1,6 +1,6 @@
 import {activityUtils, actorUtils, combatUtils, constants, dialogUtils, effectUtils, genericUtils, itemUtils, rollUtils, workflowUtils} from '../../../utils.js';
 async function hit({trigger, workflow}) {
-    if (!workflow.hitTargets.size || workflow.activity.actionType != 'mwak' || actorUtils.hasUsedBonusAction(workflow.actor)) return;
+    if (!workflow.hitTargets.size || workflowUtils.getActionType(workflow) != 'mwak' || actorUtils.hasUsedBonusAction(workflow.actor)) return;
     if (combatUtils.inCombat()) if (combatUtils.getCurrentCombatantToken() != workflow.token) return;
     let identifiers = [
         'divineSmite',

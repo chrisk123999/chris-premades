@@ -1,7 +1,6 @@
-import {constants, genericUtils} from '../../../../utils.js';
-
+import {constants, genericUtils, workflowUtils} from '../../../../utils.js';
 async function late({trigger: {entity: effect}, workflow}) {
-    if (!(constants.attacks.includes(workflow.activity.actionType) || workflow.item.system.save.ability || workflow.damageRoll)) return;
+    if (!(constants.attacks.includes(workflowUtils.getActionType(workflow)) || workflow.item.system.save.ability || workflow.damageRoll)) return;
     if (effect) await genericUtils.remove(effect);
 }
 export let hiddenStep = {

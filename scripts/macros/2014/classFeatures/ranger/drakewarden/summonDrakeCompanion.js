@@ -208,7 +208,7 @@ async function postAttack({trigger: {entity: effect, token}, workflow}) {
 }
 async function postDamage({trigger: {entity: item, token}, workflow}) {
     if (!workflow.hitTargets.size) return;
-    if (!constants.weaponAttacks.includes(workflow.activity.actionType)) return;
+    if (!constants.weaponAttacks.includes(workflowUtils.getActionType(workflow))) return;
     if (workflow.token.document.disposition * token.document.disposition < 0) return;
     if (actorUtils.hasUsedReaction(token.actor)) return;
     let damageType = item.flags['chris-premades']?.infusedStrikes?.damageType;

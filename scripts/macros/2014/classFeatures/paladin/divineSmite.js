@@ -6,7 +6,7 @@ async function damage({trigger: {entity: item}, workflow}) {
     if (itemUtils.getConfig(item, 'allowRanged')) {
         validTypes.push('rwak');
     }
-    if (!validTypes.includes(workflow.activity.actionType)) return;
+    if (!validTypes.includes(workflowUtils.getActionType(workflow))) return;
     if (!actorUtils.hasSpellSlots(workflow.actor)) return;
     let selection = await dialogUtils.selectSpellSlot(workflow.actor, workflow.item.name, genericUtils.format('CHRISPREMADES.Dialog.Use', {itemName: item.name}), {no: true});
     if (!selection) return;

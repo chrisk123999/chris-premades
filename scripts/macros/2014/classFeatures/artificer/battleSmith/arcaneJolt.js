@@ -1,4 +1,4 @@
-import {combatUtils, constants, dialogUtils, genericUtils, itemUtils, tokenUtils, workflowUtils} from '../../../../../utils.js';
+import {combatUtils, constants, dialogUtils, itemUtils, tokenUtils, workflowUtils} from '../../../../../utils.js';
 export async function arcaneJoltHelper(workflow, originItem) {
     let targetToken = workflow.hitTargets.first();
     let subclassIdentifier = itemUtils.getConfig(originItem, 'subclassIdentifier');
@@ -27,7 +27,7 @@ export async function arcaneJoltHelper(workflow, originItem) {
 }
 async function damage({trigger, workflow}) {
     if (workflow.hitTargets.size !== 1) return;
-    if (!constants.weaponAttacks.includes(workflow.activity.actionType)) return;
+    if (!constants.weaponAttacks.includes(workflowUtils.getActionType(workflow))) return;
     if (!workflow.item.system.properties.has('mgc')) return;
     if (!combatUtils.perTurnCheck(trigger.entity, 'arcaneJolt')) return;
     if (!trigger.entity.system.uses.value) return;
