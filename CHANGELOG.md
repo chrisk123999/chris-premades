@@ -1,7 +1,13 @@
 # 1.3.61 Release:
+## New Modern Content:
+- Supreme Sneak
 ## Bug Fixes:
 - Thrown Weapon Fighting (Modern)
-- Divine Strike (Legacy)
+- Hide (Modern)
+- Cunning Action (Modern)
+- All macros that check for the attack type (ranged vs melee)
+## Update Notes:
+- CPR now requires D&D system version 5.1.9!
 
 # 1.3.60 Release:
 ## New Modern Content:

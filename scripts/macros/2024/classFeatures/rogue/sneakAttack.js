@@ -35,6 +35,7 @@ async function damage({trigger: {entity: item}, workflow}) {
             let improvedCunningStrike = itemUtils.getItemByIdentifier(workflow.actor, 'improvedCunningStrike');
             let deviousStrikes = itemUtils.getItemByIdentifier(workflow.actor, 'deviousStrikes');
             let envenomWeapons = itemUtils.getItemByIdentifier(workflow.actor, 'envenomWeapons');
+            let supremeSneak = itemUtils.getItemByIdentifier(workflow.actor, 'supremeSneak');
             let documents = [];
             let uses = 0;
             if (cunningStrike) {
@@ -44,6 +45,10 @@ async function damage({trigger: {entity: item}, workflow}) {
             if (improvedCunningStrike) uses += itemUtils.getConfig(improvedCunningStrike, 'uses');
             if (deviousStrikes) documents.push(...deviousStrikes.system.activities);
             if (envenomWeapons) documents.unshift(...envenomWeapons.system.activities);
+            if (supremeSneak) {
+                let hidden = effectUtils.getEffectByIdentifier(workflow.actor, 'hideEffect');
+                if (hidden) documents.unshift(...supremeSneak.system.activities);
+            }
             if (documents.length) {
                 let activities = [];
                 let used = [];
@@ -71,8 +76,8 @@ async function damage({trigger: {entity: item}, workflow}) {
                 if (activities.length) {
                     genericUtils.setProperty(workflow, 'chris-premades.cunningStrike.activities', []);
                     activities.forEach(activity => workflow['chris-premades'].cunningStrike.activities.push(activity.uuid));
+                    if (activities.find(activity =>  activityUtils.getIdentifier(activity) === 'stealthAttack')) genericUtils.setProperty(workflow, 'chris-premades.supremeSneak.used', true);
                 }
-
             }
             if (number) bonusDamageFormula = number + 'd' + scale.faces;
         } else if (workflow.actor.type === 'npc') {

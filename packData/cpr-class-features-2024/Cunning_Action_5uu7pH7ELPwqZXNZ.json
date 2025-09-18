@@ -34,7 +34,7 @@
       "type": "base",
       "system": {},
       "sort": 0,
-      "_key": "!items.effects!KQTP2jrG270FTb6y.QT2eqYQOJ2r1DeIa"
+      "_key": "!items.effects!5uu7pH7ELPwqZXNZ.QT2eqYQOJ2r1DeIa"
     },
     {
       "name": "Disengage",
@@ -112,7 +112,7 @@
         }
       },
       "sort": 0,
-      "_key": "!items.effects!KQTP2jrG270FTb6y.E1mdPa6cascbVBLU"
+      "_key": "!items.effects!5uu7pH7ELPwqZXNZ.E1mdPa6cascbVBLU"
     },
     {
       "name": "Hidden",
@@ -156,20 +156,19 @@
           "disableIncapacitated": false,
           "selfTarget": false,
           "selfTargetAlways": false,
-          "dontApply": false,
+          "dontApply": true,
           "durationExpression": "",
           "macroRepeat": "none",
-          "specialDuration": [
-            "1Spell",
-            "1Attack"
-          ]
+          "specialDuration": []
         },
         "core": {
           "overlay": false
         },
         "chris-premades": {
           "noAnimation": false,
-          "conditions": [],
+          "conditions": [
+            "invisible"
+          ],
           "specialDuration": [],
           "info": {
             "identifier": "hideEffect"
@@ -178,11 +177,16 @@
           "macros": {
             "effect": [
               "hideEffect"
-            ]
+            ],
+            "midi": {
+              "actor": [
+                "hideEffect"
+              ]
+            }
           }
         }
       },
-      "_key": "!items.effects!KQTP2jrG270FTb6y.5n15qN1BqK51Aure"
+      "_key": "!items.effects!5uu7pH7ELPwqZXNZ.5n15qN1BqK51Aure"
     }
   ],
   "system": {
@@ -429,8 +433,9 @@
         "name": "Disengage",
         "img": "icons/skills/movement/feet-winged-boots-blue.webp"
       },
-      "0PZLH2ilVXleHbhJ": {
-        "type": "utility",
+      "A70HjNuf2dk19OhJ": {
+        "type": "check",
+        "_id": "A70HjNuf2dk19OhJ",
         "sort": 0,
         "activation": {
           "type": "bonus",
@@ -453,11 +458,7 @@
           "override": false,
           "value": "1"
         },
-        "effects": [
-          {
-            "_id": "5n15qN1BqK51Aure"
-          }
-        ],
+        "effects": [],
         "range": {
           "units": "self",
           "override": false,
@@ -482,11 +483,15 @@
           "recovery": [],
           "max": ""
         },
-        "roll": {
-          "prompt": false,
-          "visible": false,
-          "name": "",
-          "formula": ""
+        "check": {
+          "associated": [
+            "ste"
+          ],
+          "dc": {
+            "calculation": "",
+            "formula": "15"
+          },
+          "ability": ""
         },
         "useConditionText": "",
         "useConditionReason": "",
@@ -538,8 +543,15 @@
         },
         "otherActivityId": "none",
         "otherActivityAsParentType": true,
+        "damage": {
+          "onSave": "half",
+          "parts": [],
+          "critical": {
+            "allow": false
+          }
+        },
+        "friendlySave": "default",
         "name": "Hide",
-        "_id": "0PZLH2ilVXleHbhJ",
         "img": "icons/containers/barrels/barrel-open-brown-red.webp"
       }
     },
@@ -577,24 +589,24 @@
   },
   "flags": {
     "dnd5e": {
-      "advancementOrigin": "DSrhBjkeeo3sLIdd",
+      "advancementOrigin": "NxBvAoO2El4PLDhs",
       "riders": {
-        "activity": [],
-        "effect": []
+        "activity": []
       }
     },
+    "midi-qol": {},
     "chris-premades": {
       "hiddenActivities": [],
       "activityIdentifiers": {
         "dash": "mZwa1WvpHEl21ay3",
         "disengage": "s4Av2092nDTD0gao",
-        "hide": "0PZLH2ilVXleHbhJ"
+        "hide": "A70HjNuf2dk19OhJ"
       },
       "info": {
         "identifier": "cunningAction",
         "source": "chris-premades",
         "rules": "modern",
-        "version": "1.3.34",
+        "version": "1.3.61",
         "hasAnimation": true
       },
       "macros": {
@@ -608,6 +620,6 @@
   },
   "img": "icons/magic/control/hypnosis-mesmerism-watch.webp",
   "folder": "oeHJD6UoRsmQIVlo",
-  "_id": "KQTP2jrG270FTb6y",
-  "_key": "!items!KQTP2jrG270FTb6y"
+  "_id": "5uu7pH7ELPwqZXNZ",
+  "_key": "!items!5uu7pH7ELPwqZXNZ"
 }

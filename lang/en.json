@@ -2160,6 +2160,9 @@
                 "Name": "Sunlight Sensitivity",
                 "Skill": "This check relies on sight and the creature is in sunlight"
             },
+            "SupremeSneak": {
+                "TurnEnd": "Have you ended your turn behind Three-Quarters Cover or Total Cover?"
+            },
             "SurpriseAttack": {
                 "Dialog": "Use Dialog instead of checking Surprised condition:",
                 "Name": "Surprise Attack",

@@ -1,6 +1,22 @@
-import {actorUtils, animationUtils, effectUtils, itemUtils} from '../../../utils.js';
+import {activityUtils, actorUtils, animationUtils, dialogUtils, effectUtils, genericUtils, itemUtils, socketUtils, workflowUtils} from '../../../utils.js';
 async function use({trigger, workflow}) {
-    await workflow.actor.rollSkill({skill: 'ste'});
+    if (workflow.failedSaves.size) return;
+    let sourceEffect = itemUtils.getEffectByIdentifier(workflow.item, 'hideEffect');
+    if (!sourceEffect) return;
+    let effectData = genericUtils.duplicate(sourceEffect.toObject());
+    effectData.duration = itemUtils.convertDuration(workflow.activity);
+    effectData.origin = sourceEffect.uuid;
+    let macros;
+    let supremeSneak = itemUtils.getItemByIdentifier(workflow.actor, 'supremeSneak');
+    if (supremeSneak) {
+        macros = [
+            {
+                type: 'combat',
+                macros: ['hideEffect']
+            }
+        ];
+    }
+    await effectUtils.createEffect(workflow.actor, effectData, {rules: 'modern', macros});
     let playAnimation = itemUtils.getConfig(workflow.item, 'playAnimation');
     if (!playAnimation || animationUtils.jb2aCheck() != 'patreon') return;
     /* eslint-disable indent */
@@ -57,9 +73,38 @@ async function removed({trigger: {entity: effect}}) {
         .play();
     /* eslint-enable indent */
 }
+async function checkRemove({trigger: {entity: effect}, workflow}) {
+    if (!workflow.activity) return;
+    switch (workflow.item.type) {
+        case 'spell': {
+            if (itemUtils.isSpellFeature(workflow.item) || activityUtils.isSpellActivity(workflow.activity)) return;
+            if (!workflow.item.system.properties.has('vocal')) return;
+            break;
+        }
+        default: {
+            if (!workflowUtils.isAttackType(workflow, 'attack')) return;
+            if (workflow['chris-premades']?.supremeSneak?.used) {
+                await genericUtils.setFlag(effect, 'chris-premades', 'supremeSneak.check', true);
+                return;
+            }
+        }
+    }
+    await genericUtils.remove(effect);
+}
+async function turn({trigger: {entity: effect}}) {
+    if (!effect.flags['chris-premades']?.supremeSneak?.check) return;
+    let supremeSneak = itemUtils.getItemByIdentifier(effect.parent, 'supremeSneak');
+    if (!supremeSneak) return;
+    let selection = await dialogUtils.confirm(supremeSneak.name, 'CHRISPREMADES.Macros.SupremeSneak.TurnEnd', {userId: socketUtils.firstOwner(effect, true)});
+    if (selection) {
+        await genericUtils.setFlag(effect, 'chris-premades', 'supremeSneak.check', false);
+        return;
+    }
+    await genericUtils.remove(effect);
+}
 export let hide = {
     name: 'Hide',
-    version: '1.3.34',
+    version: '1.3.61',
     rules: 'modern',
     midi: {
         item: [
@@ -91,5 +136,21 @@ export let hideEffect = {
             macro: removed,
             priority: 50
         }
-    ]
+    ],
+    combat: [
+        {
+            pass: 'everyTurn',
+            macro: turn,
+            priority: 50
+        }
+    ],
+    midi: {
+        actor: [
+            {
+                pass: 'rollFinished',
+                macro: checkRemove,
+                priority: 500
+            }
+        ]
+    }
 };

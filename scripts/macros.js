@@ -312,5 +312,6 @@ export {rendMind} from './macros/2024/classFeatures/rogue/soulknife/rendMind.js'
 // Thief
 export {fastHands} from './macros/2024/classFeatures/rogue/thief/fastHands.js';
 export {secondStoryWork} from './macros/2024/classFeatures/rogue/thief/secondStoryWork.js';
+export {supremeSneak} from './macros/2024/classFeatures/rogue/thief/supremeSneak.js';
 //Multiple
 export {evasion} from './macros/2024/classFeatures/multiple/evasion.js';
