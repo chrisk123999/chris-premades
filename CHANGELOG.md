@@ -2,6 +2,8 @@
 ## Bug Fixes:
 - Thrown Weapon Fighting (Modern)
 - Divine Strike (Legacy)
+- Tavern Brawler (Modern)
+- Unarmed Strike (Modern)
 
 # 1.3.60 Release:
 ## New Modern Content:
