@@ -1,3 +1,8 @@
+# 1.3.61 Release:
+## Bug Fixes:
+- Thrown Weapon Fighting (Modern)
+- Divine Strike (Legacy)
+
 # 1.3.60 Release:
 ## New Modern Content:
 - Fast Hands
