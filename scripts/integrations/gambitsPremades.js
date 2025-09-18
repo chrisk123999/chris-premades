@@ -99,9 +99,7 @@ async function init(mode) {
             let index = await pack.getIndex({fields: ['name', 'system.source.custom', 'type']});
             index.forEach(j => {
                 let version = j.system.source.custom;
-                if (!version) {
-                    genericUtils.log('dev', j.name + ' from GPS is missing version info.');
-                }
+                if (!version) genericUtils.log('dev', j.name + ' from GPS is missing version info.');
                 gambitItems.push({
                     name: j.name,
                     version: j.system.source.custom,

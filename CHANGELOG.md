@@ -1,3 +1,15 @@
+# 1.3.60 Release:
+## New Modern Content:
+- Fast Hands
+- Second-Story Work
+- Jump (Generic Action)
+## Update Notes:
+- The add generic actions to actors setting only currently supports legacy generic actions. Modern generic actions will be added to this setting in the future.
+
+# 1.3.59 Release:
+## Update Notes:
+- Added support for an upcoming companion module.
+
 # 1.3.58 Release:
 ## New Modern Content:
 - Psychic Blades

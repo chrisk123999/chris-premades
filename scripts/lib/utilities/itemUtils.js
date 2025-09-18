@@ -91,6 +91,7 @@ async function isUpToDate(item) {
                 sourceVersion = miscPremades.miscMonsters.find(i => i.name === item.name && i.monster === monster)?.version;
             }
             break;
+        case 'automated-crafted-creations':
         case 'chris-premades': {
             let identifier = genericUtils.getIdentifier(item);
             let rules = genericUtils.getRules(item);

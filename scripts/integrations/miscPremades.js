@@ -50,9 +50,7 @@ async function init(mode) {
             let index = await pack.getIndex({fields: ['name']});
             index.forEach(j => {
                 let version = CONFIG['midi-item-showcase-community']?.automations?.[rules]?.[j.name]?.version;
-                if (!version) {
-                    genericUtils.log('dev', j.name + ' from MISC is missing version info.');
-                }
+                if (!version) genericUtils.log('dev', j.name + ' from MISC is missing version info.');
                 miscItems.push({
                     name: j.name,
                     version: version,

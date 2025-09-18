@@ -1,7 +1,7 @@
 {
   "id": "chris-premades",
   "title": "Cauldron of Plentiful Resources",
-  "description": "Premade items for high-automation midi-qol games.",
+  "description": "Premade items for high-automation Midi-Qol D&D games.",
   "version": "#{VERSION}#",
   "library": "false",
   "socket": true,

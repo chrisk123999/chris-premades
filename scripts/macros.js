@@ -47,6 +47,7 @@ export {suffocation, suffocationOutOfAir} from './macros/2024/actions/suffocatio
 export {dash} from './macros/2024/actions/dash.js';
 export {hide, hideEffect} from './macros/2024/actions/hide.js';
 export {disengage} from './macros/2024/actions/disengage.js';
+export {jump} from './macros/2024/actions/jump.js';
 //Generic
 export {proneOnFail} from './macros/2024/generic/proneOnFail.js';
 //Spells
@@ -308,5 +309,8 @@ export {psychicBlades} from './macros/2024/classFeatures/rogue/soulknife/psychic
 export {soulBlades} from './macros/2024/classFeatures/rogue/soulknife/soulBlades.js';
 export {psychicVeil} from './macros/2024/classFeatures/rogue/soulknife/psychicVeil.js';
 export {rendMind} from './macros/2024/classFeatures/rogue/soulknife/rendMind.js';
+// Thief
+export {fastHands} from './macros/2024/classFeatures/rogue/thief/fastHands.js';
+export {secondStoryWork} from './macros/2024/classFeatures/rogue/thief/secondStoryWork.js';
 //Multiple
 export {evasion} from './macros/2024/classFeatures/multiple/evasion.js';

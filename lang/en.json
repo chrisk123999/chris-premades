@@ -636,6 +636,8 @@
             "Select": "Select",
             "SelectATarget": "Select a target:",
             "SelectAWeapon": "Select a weapon:",
+            "SelectAnActivity": "Select and activity:",
+            "SelectAnItem": "Select an item:",
             "SelectDamageType": "Select a damage type:",
             "SelectEffect": "Select an effect:",
             "SelectSpell": "Select a Spell:",
@@ -1538,6 +1540,12 @@
             },
             "JavelinOfLightning": {
                 "Bolt": "Javelin of Lightning: Bolt"
+            },
+            "Jump": {
+                "LongJump": {
+                    "DifficultTerrain": "Landing in difficult terrain?",
+                    "LowObstacle": "Is there a low obstacle?"
+                }
             },
             "KeenSenses": {
                 "Check": "This check relies on: ",
@@ -2510,6 +2518,7 @@
             "Medkit": "CPR Medkit",
             "ModuleIds": {
                 "additionalCompendiums": "Additional Compendiums",
+                "automated-crafted-creations": "Automated Crafted Creations",
                 "chris-premades": "Cauldron of Plentiful Resources",
                 "gambits-premades": "Gambit's Premades",
                 "midi-item-showcase-community": "Midi Item Showcase Community"
