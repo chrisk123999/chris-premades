@@ -21,7 +21,7 @@ async function hit({trigger: {entity: effect}, workflow}) {
     let targetToken = workflow.hitTargets.first();
     let tempHP = targetToken.actor.system.attributes.hp.temp;
     if (tempHP === 0) await genericUtils.remove(effect);
-    if (!constants.meleeAttacks.includes(workflow.activity?.actionType)) return;
+    if (!constants.meleeAttacks.includes(workflow.activity.getActionType(workflow.attackMode))) return;
     let originItem = await effectUtils.getOriginItem(effect);
     let feature = activityUtils.getActivityByIdentifier(originItem, 'armorOfAgathysReflect', {strict: true});
     if (!feature) return;

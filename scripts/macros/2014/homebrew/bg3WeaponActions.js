@@ -44,7 +44,7 @@ async function braceMeleeUse({trigger, workflow}) {
 async function braceMeleeDamageUse({trigger, workflow}) {
     if (!workflow.activity) return;
     if (!workflow.activity.damage) return;
-    if (!constants.meleeAttacks.includes(workflow.activity.actionType)) return;
+    if (!constants.meleeAttacks.includes(workflow.activity.getActionType(workflow.attackMode))) return;
     let newActivity = activityUtils.duplicateActivity(workflow.activity);
     for (let i = 0; i < newActivity.damage.parts.length; i++) {
         let formula = newActivity.damage.parts[i].formula;
@@ -687,7 +687,7 @@ async function braceRangedUse({trigger, workflow}) {
 async function braceRangedDamageUse({trigger, workflow}) {
     if (!workflow.activity) return;
     if (!workflow.activity.damage) return;
-    if (!constants.rangedAttacks.includes(workflow.activity.actionType)) return;
+    if (!constants.rangedAttacks.includes(workflow.activity.getActionType(workflow.attackMode))) return;
     let newActivity = activityUtils.duplicateActivity(workflow.activity);
     for (let i = 0; i < newActivity.damage.parts.length; i++) {
         let formula = newActivity.damage.parts[i].formula;
