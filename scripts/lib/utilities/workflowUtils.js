@@ -302,7 +302,7 @@ function isAttackType(workflow, type = 'attack') {
         case 'spellAttack': field = 'spellAttacks'; break;
         default: return;
     }
-    return constants[field].includes(workflow.activity.actionType);
+    return constants[field].includes(workflow.activity.getActionType(workflow.attackMode));
 }
 export let workflowUtils = {
     bonusDamage,

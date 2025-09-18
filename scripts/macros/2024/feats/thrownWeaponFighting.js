@@ -1,7 +1,7 @@
 import {constants, itemUtils, workflowUtils} from '../../../utils.js';
 
 async function damage({trigger: {entity: item}, workflow}) {
-    if (!workflow.hitTargets.size || !constants.rangedAttacks.includes(workflow.activity.getActionType(workflow.attackMode)) || !workflow.item.system.properties?.has('thr')) return;
+    if (!workflow.hitTargets.size || !workflowUtils.isAttackType(workflow, 'rangedAttack') || !workflow.item.system.properties?.has('thr')) return;
     let bonus = itemUtils.getConfig(item, 'formula');
     await workflowUtils.bonusDamage(workflow, bonus);
 }
