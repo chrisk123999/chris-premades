@@ -1,0 +1,120 @@
+{
+  "name": "Second-Story Work",
+  "type": "feat",
+  "effects": [
+    {
+      "name": "Second-Story Work",
+      "statuses": [],
+      "changes": [
+        {
+          "key": "system.attributes.movement.climb",
+          "value": "@attributes.movement.walk",
+          "mode": 4,
+          "priority": 5
+        }
+      ],
+      "duration": {
+        "seconds": null,
+        "startTime": 738,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null,
+        "combat": null
+      },
+      "tint": "#ffffff",
+      "transfer": true,
+      "disabled": false,
+      "flags": {
+        "dae": {
+          "transfer": true,
+          "stackable": "noneNameOnly"
+        },
+        "ddbimporter": {
+          "disabled": false,
+          "passive": true,
+          "itemId": 10292927,
+          "itemEntityTypeId": 12168134
+        },
+        "midi-qol": {
+          "forceCEOff": true
+        },
+        "core": {}
+      },
+      "description": "You gain the following benefits:\n\n    • You gain a Climb Speed equal to your Speed.\n    • You can determine your jump distance using your Dex. rather than your Str.",
+      "img": "icons/environment/settlement/city-night.webp",
+      "_id": "rH8msZ30PMa9mt5j",
+      "type": "base",
+      "system": {},
+      "origin": null,
+      "sort": 0,
+      "_key": "!items.effects!yxEf6So8r5EGstPF.rH8msZ30PMa9mt5j"
+    }
+  ],
+  "system": {
+    "activities": {},
+    "uses": {
+      "spent": 0,
+      "recovery": []
+    },
+    "advancement": [],
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "identifier": "second-story-work",
+    "source": {
+      "book": "PHB 2024",
+      "page": "",
+      "license": "",
+      "custom": "",
+      "rules": "2024",
+      "revision": 1
+    },
+    "crewed": false,
+    "enchant": {},
+    "prerequisites": {
+      "items": [],
+      "level": 3,
+      "repeatable": false
+    },
+    "properties": [],
+    "requirements": "",
+    "type": {
+      "value": "class",
+      "subtype": ""
+    }
+  },
+  "flags": {
+    "dae": {
+      "alwaysActive": false,
+      "activeEquipped": false
+    },
+    "midi-qol": {
+      "removeAttackDamageButtons": "default",
+      "forceCEOff": true
+    },
+    "midiProperties": {
+      "confirmTargets": "default"
+    },
+    "dnd5e": {
+      "riders": {
+        "activity": [],
+        "effect": []
+      },
+      "advancementOrigin": "NxBvAoO2El4PLDhs"
+    },
+    "chris-premades": {
+      "info": {
+        "identifier": "secondStoryWork",
+        "rules": "modern",
+        "source": "chris-premades",
+        "version": "1.3.60"
+      }
+    }
+  },
+  "img": "icons/environment/settlement/city-night.webp",
+  "folder": "SVB4droy60pWrptr",
+  "_id": "yxEf6So8r5EGstPF",
+  "_key": "!items!yxEf6So8r5EGstPF"
+}

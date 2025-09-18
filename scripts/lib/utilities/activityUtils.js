@@ -137,6 +137,12 @@ function canUse(activity) {
 async function correctSpellLink(activity, spell) {
     return await genericUtils.update(activity, {'spell.uuid': spell.uuid});
 }
+function isHidden(activity) {
+    if (activity.midiProperties.automationOnly) return true;
+    let cprRiders = genericUtils.getProperty(activity.item, 'flags.chris-premades.hiddenActivities') ?? [];
+    cprRiders = cprRiders.map(i => activityUtils.getActivityByIdentifier(activity.item, i)?.id).filter(i => i);
+    return cprRiders.includes(activity.id);
+}
 export let activityUtils = {
     getActivityByIdentifier,
     getIdentifier,
@@ -148,5 +154,6 @@ export let activityUtils = {
     hasSave,
     isSpellActivity,
     canUse,
-    correctSpellLink
+    correctSpellLink,
+    isHidden
 };
