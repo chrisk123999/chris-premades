@@ -80,7 +80,7 @@ async function use({trigger, workflow}) {
 }
 async function attack({trigger: {entity: effect}, workflow}) {
     if (!workflow.activity || !workflow.targets.size) return;
-    if (!constants.attacks.includes(workflow.activity.actionType)) return;
+    if (!constants.attacks.includes(workflowUtils.getActionType(workflow))) return;
     let origin = await fromUuid(effect.origin);
     if (!origin) return;
     if (origin.actor.uuid != workflow.actor.uuid) return;

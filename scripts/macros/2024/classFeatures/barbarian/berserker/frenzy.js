@@ -2,7 +2,7 @@ import {combatUtils, constants, effectUtils, itemUtils, workflowUtils} from '../
 import {rage} from '../rage.js';
 async function damage({trigger: {entity: item}, workflow}) {
     if (!item.system.uses.value) return;
-    if (!workflow.token || !workflow.hitTargets.size || !combatUtils.isOwnTurn(workflow.token) || !constants.attacks.includes(workflow.activity.actionType) || workflow.activity.ability != 'str' || !effectUtils.getEffectByIdentifier(workflow.actor, 'recklessAttackEffect') || !effectUtils.getEffectByIdentifier(workflow.actor, 'rage')) return;
+    if (!workflow.token || !workflow.hitTargets.size || !combatUtils.isOwnTurn(workflow.token) || !constants.attacks.includes(workflowUtils.getActionType(workflow)) || workflow.activity.ability != 'str' || !effectUtils.getEffectByIdentifier(workflow.actor, 'recklessAttackEffect') || !effectUtils.getEffectByIdentifier(workflow.actor, 'rage')) return;
     let classIdentifier = itemUtils.getConfig(item, 'classIdentifier');
     let scaleIdentifier = itemUtils.getConfig(item, 'scaleIdentifier');
     let dieNumber = workflow.actor.system.scale?.[classIdentifier]?.[scaleIdentifier]?.formula;

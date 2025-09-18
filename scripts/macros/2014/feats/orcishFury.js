@@ -2,7 +2,7 @@ import {constants, dialogUtils, genericUtils, workflowUtils} from '../../../util
 
 async function damage({trigger: {entity: item}, workflow}) {
     if (!item.system.uses.value) return;
-    if (!constants.weaponAttacks.includes(workflow.activity.actionType)) return;
+    if (!constants.weaponAttacks.includes(workflowUtils.getActionType(workflow))) return;
     let selection = await dialogUtils.confirm(item.name, genericUtils.format('CHRISPREMADES.Dialog.Use', {itemName: item.name}));
     if (!selection) return;
     await workflowUtils.completeItemUse(item, {consumeUsage: true}, {configureDialog: false});

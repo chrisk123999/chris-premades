@@ -1,7 +1,6 @@
 import {combatUtils, dialogUtils, effectUtils, genericUtils, tokenUtils, workflowUtils} from '../../../utils.js';
-
 async function damage({trigger: {entity: item}, workflow}) {
-    if (workflow.hitTargets.size !== 1 || workflow.activity.actionType !== 'mwak') return;
+    if (workflow.hitTargets.size !== 1 || workflowUtils.getActionType(workflow) !== 'mwak') return;
     if (!item.system.uses.value) return;
     if (!combatUtils.perTurnCheck(item, 'strikeOfTheGiants')) return;
     let selection = await dialogUtils.confirm(item.name, genericUtils.format('CHRISPREMADES.Dialog.Use', {itemName: item.name}));

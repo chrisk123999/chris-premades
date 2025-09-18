@@ -1,7 +1,7 @@
 import {constants, itemUtils, actorUtils, tokenUtils, activityUtils, dialogUtils, genericUtils, socketUtils, workflowUtils} from '../../utils.js';
 async function attacked(workflow, itemIdentifier, activityIdentifier, {canSee = true, reaction = true, distance = 30, canUse = true, attacker = true, dispositionType = 'ally', dialogType = 'use'} = {}) {
     if (!workflow.token) return;
-    if (!constants.attacks.includes(workflow.activity.actionType)) return;
+    if (!constants.attacks.includes(workflowUtils.getActionType(workflow))) return;
     for (let token of workflow.token.scene.tokens) {
         if (dispositionType === 'ally' && token.disposition === workflow.token.document.disposition) continue;
         if (dispositionType === 'enemy' && token.disposition != workflow.token.document.disposition) continue;

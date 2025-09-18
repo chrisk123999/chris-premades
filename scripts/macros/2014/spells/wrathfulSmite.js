@@ -21,7 +21,7 @@ async function use({workflow}) {
 }
 async function damage({trigger: {entity: effect}, workflow}) {
     if (!workflow.hitTargets.size) return;
-    if (workflow.activity.actionType !== 'mwak') return;
+    if (workflowUtils.getActionType(workflow) !== 'mwak') return;
     if (effect.flags['chris-premades'].wrathfulSmite.used) return;
     await genericUtils.setFlag(effect, 'chris-premades', 'wrathfulSmite.used', true);
     let damageType = effect.flags['chris-premades'].wrathfulSmite.damageType;

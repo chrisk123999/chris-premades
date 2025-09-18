@@ -2,7 +2,7 @@ import {activityUtils, combatUtils, compendiumUtils, constants, dialogUtils, eff
 
 async function attack({trigger: {entity: item}, workflow}) {
     if (['boomingBlade', 'greenFlameBlade'].includes(genericUtils.getIdentifier(workflow.item))) return;
-    if (!constants.weaponAttacks.includes(workflow.activity.actionType)) return;
+    if (!constants.weaponAttacks.includes(workflowUtils.getActionType(workflow))) return;
     if (!combatUtils.perTurnCheck(item, 'bladeFlourishMovement', true, workflow.token.id)) return;
     let movementFeature = activityUtils.getActivityByIdentifier(item, 'bladeFlourishMovement', {strict: true});
     if (!movementFeature) return;
@@ -11,7 +11,7 @@ async function attack({trigger: {entity: item}, workflow}) {
 }
 async function damage({trigger: {entity: item}, workflow}) {
     if (['boomingBlade', 'greenFlameBlade'].includes(genericUtils.getIdentifier(workflow.item))) return;
-    if (!constants.weaponAttacks.includes(workflow.activity.actionType)) return;
+    if (!constants.weaponAttacks.includes(workflowUtils.getActionType(workflow))) return;
     if (!combatUtils.perTurnCheck(item, 'bladeFlourish', true, workflow.token.id)) return;
     if (workflow.hitTargets.size !== 1) return;
     let defensiveFeature = activityUtils.getActivityByIdentifier(item, 'defensiveFlourish', {strict: true});

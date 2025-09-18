@@ -16,12 +16,12 @@ async function use({workflow}) {
     await effectUtils.createEffect(workflow.actor, effectData, {identifier: 'armorOfAgathys'});
 }
 async function hit({trigger: {entity: effect}, workflow}) {
-    if (!workflow.hitTargets.size) return;
+    if (!workflow.hitTargets.size || !workflow.activity) return;
     if (workflow.item.uuid === effect.origin) return;
     let targetToken = workflow.hitTargets.first();
     let tempHP = targetToken.actor.system.attributes.hp.temp;
     if (tempHP === 0) await genericUtils.remove(effect);
-    if (!workflowUtils.isAttackType(workflow, 'meleeAttack')) return;
+    if (!constants.meleeAttacks.includes(workflowUtils.getActionType(workflow))) return;
     let originItem = await effectUtils.getOriginItem(effect);
     let feature = activityUtils.getActivityByIdentifier(originItem, 'armorOfAgathysReflect', {strict: true});
     if (!feature) return;

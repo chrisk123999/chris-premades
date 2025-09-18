@@ -1,7 +1,6 @@
 import {combatUtils, constants, dialogUtils, genericUtils, workflowUtils} from '../../../utils.js';
-
 async function attack({trigger: {entity: item}, workflow}) {
-    if (workflow.hitTargets.size !== 1 || !constants.weaponAttacks.includes(workflow.activity.actionType)) return;
+    if (workflow.hitTargets.size !== 1 || !constants.weaponAttacks.includes(workflowUtils.getActionType(workflow))) return;
     if (!combatUtils.perTurnCheck(item, 'savageAttacker')) return;
     let selection = await dialogUtils.confirm(item.name, genericUtils.format('CHRISPREMADES.Dialog.Use', {itemName: item.name}));
     if (!selection) return;

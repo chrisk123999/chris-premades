@@ -36,7 +36,7 @@ export async function determineSuperiorityDie(actor) {
     return [itemToUse, superiorityDie];
 }
 export async function superiorityHelper(workflow) {
-    if (!constants.weaponAttacks.includes(workflow.activity.actionType)) return;
+    if (!constants.weaponAttacks.includes(workflowUtils.getActionType(workflow))) return;
     if (activityUtils.getIdentifier(workflow.activity) === 'sweepingAttackAttack') return;
     let [itemToUse, superiorityDie] = await determineSuperiorityDie(workflow.actor);
     if (!itemToUse) return;
@@ -50,7 +50,7 @@ export async function superiorityHelper(workflow) {
         'maneuversPushingAttack',
         'maneuversTripAttack'
     ];
-    if (workflow.activity.actionType === 'mwak') triggerManeuvers.push('maneuversSweepingAttack');
+    if (workflowUtils.getActionType(workflow) === 'mwak') triggerManeuvers.push('maneuversSweepingAttack');
     let validManeuvers = triggerManeuvers.map(i => itemUtils.getItemByIdentifier(workflow.actor, i)).filter(i => i);
     if (!validManeuvers.length) return;
     let selected = await dialogUtils.selectDocumentDialog(itemToUse.name, 'CHRISPREMADES.Macros.Maneuvers.SelectManeuver', validManeuvers, {addNoneDocument: true});

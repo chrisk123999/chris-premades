@@ -2,7 +2,7 @@ import {constants} from '../../../../../lib/constants.js';
 import {combatUtils, itemUtils, workflowUtils} from '../../../../../utils.js';
 async function damage({trigger: {entity: item}, workflow}) {
     if (!workflow.hitTargets.size) return;
-    if (!constants.weaponAttacks.includes(workflow.activity.actionType)) return;
+    if (!constants.weaponAttacks.includes(workflowUtils.getActionType(workflow))) return;
     if (!combatUtils.perTurnCheck(item, 'colossusSlayer')) return;
     if (workflow.targets.first().actor.system.attributes.hp.value >= workflow.targets.first().actor.system.attributes.hp.max) return;
     let formula = itemUtils.getConfig(item, 'formula');

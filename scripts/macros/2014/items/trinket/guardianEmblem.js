@@ -1,7 +1,7 @@
 import {actorUtils, combatUtils, constants, dialogUtils, genericUtils, itemUtils, socketUtils, tokenUtils, workflowUtils} from '../../../../utils.js';
 async function attack({trigger, workflow}) {
     if (!workflow.targets.size || !workflow.isCritical || !workflow.item) return;
-    if (!constants.attacks.includes(workflow.activity.actionType)) return;
+    if (!constants.attacks.includes(workflowUtils.getActionType(workflow))) return;
     let target = workflow.targets.first();
     let nearbyShields = tokenUtils.findNearby(target, 30, 'ally', {includeToken: true}).filter(i => {
         let item = itemUtils.getItemByIdentifier(i.actor, 'guardianEmblem');
