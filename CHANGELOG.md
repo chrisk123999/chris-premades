@@ -1,3 +1,7 @@
+# 1.3.63 Release:
+## Bug Fixes:
+- Hide (Legacy)
+
 # 1.3.62 Release:
 ## Bug Fixes:
 - Dreadful Strikes
