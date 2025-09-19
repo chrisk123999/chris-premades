@@ -506,7 +506,7 @@ export {dodge} from './macros/2014/actions/dodge.js';
 export {fall} from './macros/2014/actions/fall.js';
 export {grapple, grappleEscape} from './macros/2014/actions/grapple.js';
 export {help} from './macros/2014/actions/help.js';
-export {hide} from './macros/2014/actions/hide.js';
+export {hide, hideEffect} from './macros/2014/actions/hide.js';
 export {readyAction} from './macros/2014/actions/readyAction.js';
 export {readySpell} from './macros/2014/actions/readySpell.js';
 export {search} from './macros/2014/actions/search.js';

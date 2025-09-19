@@ -12,6 +12,19 @@ function collectMacros(entity) {
     if (!macroList.length) return [];
     return macroList.map(i => custom.getMacro(i, genericUtils.getRules(entity))).filter(j => j);
 }
+function getOriginItem(effect) {
+    let origin = fromUuidSync(effect?.origin, {strict: false});
+    if (!origin) return;
+    if (origin instanceof Item) return origin;
+    if (origin.parent instanceof Item) return origin.parent;
+    origin = fromUuidSync(origin.origin, {strict: false});
+    if (origin instanceof Item) return origin;
+}
+function getRegionOrigin(region) {
+    let originUuid = region.flags['chris-premades']?.region?.origin;
+    if (!originUuid) return;
+    return fromUuidSync(originUuid, {strict: false});
+}
 function collectTokenMacros(token, pass, distance, target) {
     let triggers = [];
     function checkValid(macro, token, target, distance) {
@@ -23,7 +36,21 @@ function collectTokenMacros(token, pass, distance, target) {
         return true;
     }
     if (token.actor) {
-        let effects = actorUtils.getEffects(token.actor, {includeItemEffects: true});
+        let effects;
+        if (pass === 'turnStartSource' || pass === 'turnEndSource') {
+            let check = pass === 'turnEndSource' ? 'previous' : 'current';
+            effects = actorUtils.getEffects(token.actor, {includeItemEffects: true}).filter(effect => {
+                let originItem = getOriginItem(effect);
+                if (!originItem?.actor) return;
+                let firstToken = actorUtils.getFirstToken(originItem.actor);
+                if (!firstToken?.combatant) return;
+                if (!firstToken.combatant.combat[check]) return;
+                if (firstToken.combatant.combat[check].tokenId != firstToken.document.id) return;
+                return true;
+            });
+        } else {
+            effects = actorUtils.getEffects(token.actor, {includeItemEffects: true});
+        }
         effects.forEach(effect => {
             let macroList = collectMacros(effect).filter(i => i.combat?.find(j => j.pass === pass)).flatMap(k => k.combat).filter(l => l.pass === pass).concat(macroUtils.getEmbeddedMacros(effect, 'combat', {pass}));
             if (!macroList.length) return;
@@ -51,34 +78,51 @@ function collectTokenMacros(token, pass, distance, target) {
                 });
             }
         });
-        token.actor.items.forEach(item => {
-            let macroList = collectMacros(item).filter(i => i.combat?.find(j => j.pass === pass)).flatMap(k => k.combat).filter(l => l.pass === pass).concat(macroUtils.getEmbeddedMacros(item, 'combat', {pass}));
-            if (!macroList.length) return;
-            let validItemMacros = [];
-            macroList.forEach(i => {
-                if (!checkValid(i, token, target, distance)) return;
-                validItemMacros.push({
-                    macro: i.macro,
-                    priority: i.priority
+        if (pass === 'turnStartSource' || pass === 'turnEndSource') {
+            token.actor.items.forEach(item => {
+                let macroList = collectMacros(item).filter(i => i.combat?.find(j => j.pass === pass)).flatMap(k => k.combat).filter(l => l.pass === pass).concat(macroUtils.getEmbeddedMacros(item, 'combat', {pass}));
+                if (!macroList.length) return;
+                let validItemMacros = [];
+                macroList.forEach(i => {
+                    if (!checkValid(i, token, target, distance)) return;
+                    validItemMacros.push({
+                        macro: i.macro,
+                        priority: i.priority
+                    });
                 });
+                if (validItemMacros.length) {
+                    triggers.push({
+                        entity: item,
+                        castData: {
+                            castLevel: -1,
+                            saveDC: itemUtils.getSaveDC(item)
+                        },
+                        macros: validItemMacros,
+                        name: item.name,
+                        token: token.object,
+                        target: target?.object,
+                        distance: distance
+                    });
+                }
             });
-            if (validItemMacros.length) {
-                triggers.push({
-                    entity: item,
-                    castData: {
-                        castLevel: -1,
-                        saveDC: itemUtils.getSaveDC(item)
-                    },
-                    macros: validItemMacros,
-                    name: item.name,
-                    token: token.object,
-                    target: target?.object,
-                    distance: distance
-                });
-            }
-        });
+        }
     }
-    let templates = templateUtils.getTemplatesInToken(token.object);
+    let templates;
+    if (pass === 'turnStartSource' || pass === 'turnEndSource') {
+        let check = pass === 'turnEndSource' ? 'previous' : 'current';
+        templates = token.parent.templates.filter(template => {
+            if (!template.flags.dnd5e?.origin) return;
+            let originItem = fromUuidSync(template.flags.dnd5e.item);
+            if (!originItem) return;
+            let firstToken = actorUtils.getFirstToken(originItem.actor);
+            if (!firstToken?.combatant) return;
+            if (!firstToken.combatant.combat[check]) return;
+            if (firstToken.combatant.combat[check].tokenId != firstToken.document.id) return;
+            return true;
+        });
+    } else {
+        templates = templateUtils.getTemplatesInToken(token.object);
+    }
     templates.forEach(template => {
         let macroList = templateEvents.collectMacros(template).filter(i => i.template?.find(j => j.pass === pass)).flatMap(k => k.template).filter(l => l.pass === pass).concat(macroUtils.getEmbeddedMacros(template, 'template', {pass}));
         if (!macroList.length) return;
@@ -95,7 +139,22 @@ function collectTokenMacros(token, pass, distance, target) {
             distance: distance
         });
     });
-    token.regions.forEach(region => {
+    let regions;
+    if (pass === 'turnStartSource' || pass === 'turnEndSource') {
+        let check = pass === 'turnEndSource' ? 'previous' : 'current';
+        regions = token.parent.regions.filter(region => {
+            let origin = getRegionOrigin(region);
+            if (!origin?.actor) return;
+            let firstToken = actorUtils.getFirstToken(origin.actor);
+            if (!firstToken?.combatant) return;
+            if (!firstToken.combatant.combat[check]) return;
+            if (firstToken.combatant.combat[check].tokenId != firstToken.document.id) return;
+            return true;
+        });
+    } else {
+        regions =  token.regions;
+    }
+    regions.forEach(region => {
         let macroList = regionEvents.collectMacros(region).filter(i => i.region?.find(j => j.pass === pass)).flatMap(k => k.region).filter(l => l.pass === pass).concat(macroUtils.getEmbeddedMacros(region, 'region', {pass}));
         if (!macroList.length) return;
         triggers.push({
@@ -210,8 +269,14 @@ async function updateCombat(combat, changes, context) {
         previousRound
     };
     let allTokens = combat.combatants.map(i => game.scenes.get(i.sceneId)?.tokens.get(i.tokenId)).filter(i => i);
-    if (previousToken) await executeMacroPass([previousToken], 'turnEnd', undefined, details);
-    if (currentToken) await executeMacroPass([currentToken], 'turnStart', undefined, details);
+    if (previousToken) {
+        await executeMacroPass([previousToken], 'turnEnd', undefined, details);
+        await executeMacroPass(previousScene?.tokens ?? [], 'turnEndSource', previousToken, details);
+    }
+    if (currentToken) {
+        await executeMacroPass([currentToken], 'turnStart', undefined, details);
+        await executeMacroPass(currentScene?.tokens ?? [], 'turnStartSource', currentToken, details);
+    }
     for (let token of allTokens) await executeMacroPass([token], 'everyTurn', undefined, details);
     if (previousToken) await executeMacroPass(previousScene?.tokens.filter(i => i != previousToken) ?? [], 'turnEndNear', previousToken, details);
     if (currentToken) await executeMacroPass(currentScene?.tokens.filter(i => i != currentToken) ?? [], 'turnStartNear', currentToken, details);

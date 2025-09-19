@@ -34,14 +34,14 @@ export let dreadfulStrikes = {
             value: 'subclassIdentifier',
             label: 'CHRISPREMADES.Config.SubclassIdentifier',
             type: 'text',
-            default: 'battle-smith',
+            default: 'fey-wanderer',
             category: 'mechanics'
         },
         {
             value: 'scaleIdentifier',
             label: 'CHRISPREMADES.Config.ScaleIdentifier',
             type: 'text',
-            default: 'arcane-jolt',
+            default: 'dreadful-strikes',
             category: 'mechanics'
         }
     ],
