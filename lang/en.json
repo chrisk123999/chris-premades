@@ -508,6 +508,12 @@
                 },
                 "unequipped": {
                     "Label": "Unequipped"
+                },
+                "turnStartSource": {
+                    "Label": "Turn Start Source"
+                },
+                "turnEndSource": {
+                    "Label": "Turn End Source"
                 }
             },
             "Priority": {

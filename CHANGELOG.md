@@ -1,3 +1,9 @@
+# 1.3.62 Release:
+## Bug Fixes:
+- Dreadful Strikes
+## API Update Notes:
+- Added `turnStartSource` and `turnEndSource` to the combat event passes. These are valid for effects, templates, and regions.
+
 # 1.3.61 Release:
 ## New Modern Content:
 - Supreme Sneak

@@ -1,6 +1,9 @@
 import {effectUtils} from './effectUtils.js';
 import {genericUtils} from '../../utils.js';
-async function createRegions(regionDatas, scene, {parentEntity, excludeGPSRegionHandling = true} = {}) {
+async function createRegions(regionDatas, scene, {parentEntity, excludeGPSRegionHandling = true, origin} = {}) {
+    if (origin) regionDatas.forEach(regionData => {
+        genericUtils.setProperty(regionData, 'flags.chris-premades.region.originUuid', origin.uuid);
+    });
     let regions = await genericUtils.createEmbeddedDocuments(scene, 'Region', regionDatas);
     if (excludeGPSRegionHandling) {
         regionDatas.forEach(i => {
@@ -82,6 +85,11 @@ function getIntersections(region, A, B, boolOnly = false) {
     if (boolOnly) return totalIntersections.length ? true : false;
     return totalIntersections;
 }
+async function getOrigin(region) {
+    let originUuid = region.flags['chris-premades']?.region?.origin;
+    if (!originUuid) return;
+    return await fromUuid(originUuid);
+}
 export let regionUtils = {
     createRegions,
     templateToRegionShape,
@@ -94,5 +102,6 @@ export let regionUtils = {
     getSaveDC,
     setSaveDC,
     rayIntersectsRegion,
-    getIntersections
+    getIntersections,
+    getOrigin
 };

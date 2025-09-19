@@ -222,6 +222,22 @@ export const eventStructure = {
                 'measuredtemplate',
                 'region'
             ]
+        },
+        {
+            pass: 'turnEndSource',
+            documents: [
+                'activeeffect',
+                'measuredtemplate',
+                'region'
+            ]
+        },
+        {
+            pass: 'turnStartSource',
+            documents: [
+                'activeeffect',
+                'measuredtemplate',
+                'region'
+            ]
         }
     ],
     item: [
