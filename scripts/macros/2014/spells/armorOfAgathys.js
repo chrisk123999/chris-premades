@@ -21,7 +21,7 @@ async function hit({trigger: {entity: effect}, workflow}) {
     let targetToken = workflow.hitTargets.first();
     let tempHP = targetToken.actor.system.attributes.hp.temp;
     if (tempHP === 0) await genericUtils.remove(effect);
-    if (!workflowUtils.isAttackType(workflow, 'meleeAttacks')) return;
+    if (!workflowUtils.isAttackType(workflow, 'meleeAttack')) return;
     let originItem = await effectUtils.getOriginItem(effect);
     let feature = activityUtils.getActivityByIdentifier(originItem, 'armorOfAgathysReflect', {strict: true});
     if (!feature) return;
@@ -48,7 +48,7 @@ async function hit({trigger: {entity: effect}, workflow}) {
         .zIndex(2)
 
         .effect()
-        .from(workflow.token)
+        .copySprite(workflow.token)
         .atLocation(workflow.token)
         .fadeIn(100)
         .fadeOut(100)
