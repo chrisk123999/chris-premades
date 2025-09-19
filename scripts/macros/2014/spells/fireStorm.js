@@ -1,5 +1,4 @@
 import {animationUtils, effectUtils, genericUtils, itemUtils, templateUtils, workflowUtils} from '../../../utils.js';
-
 async function early({workflow}) {
     let playAnimation = itemUtils.getConfig(workflow.item, 'playAnimation');
     let templateData = {
@@ -12,7 +11,7 @@ async function early({workflow}) {
         fillColor: game.user.color,
         flags: {
             dnd5e: {
-                origin: workflow.item.uuid
+                origin: workflow.activity.uuid
             },
             walledtemplates: {
                 hideBorder: 'alwaysShow'
