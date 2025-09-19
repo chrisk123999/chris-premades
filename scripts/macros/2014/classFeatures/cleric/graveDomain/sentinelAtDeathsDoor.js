@@ -1,7 +1,7 @@
 import {actorUtils, constants, dialogUtils, genericUtils, itemUtils, socketUtils, tokenUtils, workflowUtils} from '../../../../../utils.js';
 
 async function attack({trigger, workflow}) {
-    if (!workflow.targets.size || !workflow.item || !workflow.isCritical || !constants.attacks.includes(workflow.activity.actionType)) return;
+    if (!workflow.targets.size || !workflow.item || !workflow.isCritical || !workflowUtils.isAttackType(workflow, 'attack')) return;
     if (genericUtils.getIdentifier(workflow.item) === 'sentinelAtDeathsDoor') return;
     let nearbyTokens = tokenUtils.findNearby(workflow.targets.first(), 30, 'ally').filter(token => {
         if (actorUtils.hasUsedReaction(token.actor)) return;
@@ -14,7 +14,7 @@ async function attack({trigger, workflow}) {
     for (let token of nearbyTokens) {
         let item = itemUtils.getItemByIdentifier(token.actor, 'sentinelAtDeathsDoor');
         if (!item || !item.system.uses.value) continue;
-        let target = workflow.targets.first()
+        let target = workflow.targets.first();
         let selection = await dialogUtils.confirm(item.name, genericUtils.format('CHRISPREMADES.Macros.SentinelAtDeathsDoor.Attack', {item: item.name, name: target.document.name}), {userId: socketUtils.firstOwner(token.actor, true)});
         if (!selection) continue;
         await workflowUtils.syntheticItemRoll(item, [target], {consumeResources: true, userId: socketUtils.firstOwner(token.actor, true)});
@@ -36,4 +36,4 @@ export let sentinelAtDeathsDoor = {
             }
         ]
     }
-}
+};

@@ -2,7 +2,7 @@ import {actorUtils, constants, dialogUtils, effectUtils, genericUtils, socketUti
 async function early({trigger: {entity: item, token}, workflow}) {
     if (!workflow.targets.size === 1) return;
     if (workflow.token.document.disposition === token.document.disposition) return;
-    if (!constants.attacks.includes(workflow.activity.actionType)) return;
+    if (!workflowUtils.isAttackType(workflow, 'attack')) return;
     if (actorUtils.hasUsedReaction(token.actor)) return;
     if (workflow.targets.has(token)) return;
     if (!token.actor.items.some(i => i.system.equipped && i.system.type.value === 'shield')) return;

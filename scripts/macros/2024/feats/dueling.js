@@ -1,5 +1,4 @@
 import {constants, genericUtils, itemUtils, workflowUtils} from '../../../utils.js';
-
 async function damage({trigger: {entity: item}, workflow}) {
     if (!workflow.hitTargets.size || workflow.attackMode === 'twoHanded' || !constants.meleeWeaponTypes.includes(workflow.item.system.type.value)) return;
     let actor = workflow.actor;
@@ -8,7 +7,6 @@ async function damage({trigger: {entity: item}, workflow}) {
     let bonus = itemUtils.getConfig(item, 'formula');
     await workflowUtils.bonusDamage(workflow, bonus);
 }
-
 export let dueling = {
     name: 'Dueling',
     version: '1.2.36',

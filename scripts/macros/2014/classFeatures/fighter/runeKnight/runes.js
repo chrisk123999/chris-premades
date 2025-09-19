@@ -65,7 +65,7 @@ async function earlyStormRune({trigger: {entity: effect, token}, workflow}) {
     if (actorUtils.hasUsedReaction(token.actor)) return;
     if (tokenUtils.getDistance(token, workflow.token) > genericUtils.handleMetric(60)) return;
     if (!tokenUtils.canSee(token, workflow.token)) return;
-    if (!constants.attacks.includes(workflow.activity.actionType)) return;
+    if (!workflowUtils.isAttackType(workflow, 'attack')) return;
     let selection = await dialogUtils.buttonDialog(effect.name, genericUtils.format('CHRISPREMADES.Macros.StormRune.AdvDis', {tokenName: workflow.token.name, actionType: genericUtils.translate('DND5E.AttackRoll')}), [
         ['DND5E.Advantage', 'advantage'],
         ['DND5E.Disadvantage', 'disadvantage'],
@@ -83,7 +83,7 @@ async function earlyStormRune({trigger: {entity: effect, token}, workflow}) {
 }
 async function cloudRuneAttack({trigger, workflow}) {
     if (!workflow.hitTargets.size || !workflow.item) return;
-    if (!constants.attacks.includes(workflow.activity.actionType)) return;
+    if (!workflowUtils.isAttackType(workflow, 'attack')) return;
     let target = workflow.targets.first();
     let nearbyRunes = tokenUtils.findNearby(target, 30, 'ally', {includeToken: true}).filter(i => {
         let item = itemUtils.getItemByIdentifier(i.actor, 'cloudRune');

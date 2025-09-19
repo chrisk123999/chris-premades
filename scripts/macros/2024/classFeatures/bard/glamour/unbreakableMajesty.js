@@ -1,7 +1,7 @@
 import {activityUtils, constants, effectUtils, genericUtils, itemUtils, workflowUtils} from '../../../../../utils.js';
 async function attacked({trigger: {entity: effect}, workflow}) {
     if (!workflow.hitTargets.size || !workflow.token) return;
-    if (!constants.attacks.includes(workflow.activity.actionType)) return;
+    if (!workflowUtils.isAttackType(workflow, 'attack')) return;
     if (!effect.origin) return;
     let item = await effectUtils.getOriginItem(effect);
     if (!item) return;

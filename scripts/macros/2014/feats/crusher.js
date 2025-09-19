@@ -1,6 +1,6 @@
 import {actorUtils, combatUtils, constants, crosshairUtils, dialogUtils, effectUtils, genericUtils, workflowUtils} from '../../../utils.js';
 async function late({trigger: {entity: item}, workflow}) {
-    if (workflow.hitTargets.size !== 1 || !workflow.damageRoll || !constants.attacks.includes(workflow.activity.actionType)) return;
+    if (workflow.hitTargets.size !== 1 || !workflow.damageRoll || !workflowUtils.isAttackType(workflow, 'attack')) return;
     if (!workflowUtils.getDamageTypes(workflow.damageRolls).has('bludgeoning')) return;
     let targetToken = workflow.hitTargets.first();
     if (actorUtils.getSize(targetToken.actor) > actorUtils.getSize(workflow.actor) + 1) return;
@@ -36,7 +36,7 @@ async function late({trigger: {entity: item}, workflow}) {
 }
 async function lateCrit({trigger: {entity: item}, workflow}) {
     if (!workflow.isCritical) return;
-    if (workflow.hitTargets.size !== 1 || !workflow.damageRoll || !constants.attacks.includes(workflow.activity.actionType)) return;
+    if (workflow.hitTargets.size !== 1 || !workflow.damageRoll || !workflowUtils.isAttackType(workflow, 'attack')) return;
     if (!workflowUtils.getDamageTypes(workflow.damageRolls).has('bludgeoning')) return;
     let effectData = {
         name: item.name,

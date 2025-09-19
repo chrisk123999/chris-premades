@@ -1,7 +1,7 @@
 import {DialogApp} from '../../../applications/dialog.js';
 import {combatUtils, constants, genericUtils, workflowUtils} from '../../../utils.js';
 async function damageReroll({trigger: {entity: item}, workflow}) {
-    if (workflow.hitTargets.size !== 1 || !workflow.damageRoll || !constants.attacks.includes(workflow.activity.actionType)) return;
+    if (workflow.hitTargets.size !== 1 || !workflow.damageRoll || !workflowUtils.isAttackType(workflow, 'attack')) return;
     if (!workflowUtils.getDamageTypes(workflow.damageRolls).has('piercing')) return;
     if (!combatUtils.perTurnCheck(item, 'piercer')) return;
     let newDamageRolls = workflow.damageRolls;
@@ -64,7 +64,7 @@ async function damageReroll({trigger: {entity: item}, workflow}) {
 }
 async function damageCrit({trigger: {entity: item}, workflow}) {
     if (!workflow.isCritical) return;
-    if (workflow.hitTargets.size !== 1 || !workflow.damageRoll || !constants.attacks.includes(workflow.activity.actionType)) return;
+    if (workflow.hitTargets.size !== 1 || !workflow.damageRoll || !workflowUtils.isAttackType(workflow, 'attack')) return;
     if (!workflowUtils.getDamageTypes(workflow.damageRolls).has('piercing')) return;
     let piercingRolls = workflow.damageRolls.filter(i => i.options.type === 'piercing');
     if (!piercingRolls.length) return;

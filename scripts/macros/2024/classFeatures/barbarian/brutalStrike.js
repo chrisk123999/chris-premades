@@ -2,7 +2,7 @@ import {combatUtils} from '../../../../lib/utilities/combatUtils.js';
 import {activityUtils, constants, dialogUtils, effectUtils, genericUtils, itemUtils, tokenUtils, workflowUtils} from '../../../../utils.js';
 async function early({trigger: {entity: item}, workflow}) {
     if (!item.system.uses.value) return;
-    if (!workflow.token || !workflow.targets.size || workflow.disadvantage || (workflow.disadvantage && workflow.advantage) || !combatUtils.isOwnTurn(workflow.token) || !constants.attacks.includes(workflow.activity.actionType)) return;
+    if (!workflow.token || !workflow.targets.size || workflow.disadvantage || (workflow.disadvantage && workflow.advantage) || !combatUtils.isOwnTurn(workflow.token) || !workflowUtils.isAttackType(workflow, 'attack')) return;
     let effect = effectUtils.getEffectByIdentifier(workflow.actor, 'recklessAttackEffect');
     if (!effect) return;
     let classIdentifier = itemUtils.getConfig(item, 'classIdentifier');
@@ -55,7 +55,7 @@ async function forcefulBlow({trigger, workflow}) {
     await tokenUtils.pushToken(workflow.token, workflow.targets.first(), 15);
 }
 async function sunderingBlowAttacked({trigger: {entity: effect}, workflow}) {
-    if (!constants.attacks.includes(workflow.activity.actionType)) return;
+    if (!workflowUtils.isAttackType(workflow, 'attack')) return;
     if (!effect.origin) return;
     let origin = await effectUtils.getOriginItem(effect);
     if (!origin?.actor) return;

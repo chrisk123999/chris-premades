@@ -2,7 +2,7 @@ import {combatUtils, constants, dialogUtils, effectUtils, genericUtils, itemUtil
 
 async function damage({trigger: {entity: item}, workflow}) {
     if (workflow.hitTargets.size !== 1) return;
-    if (!constants.attacks.includes(workflow.activity.actionType)) return;
+    if (!workflowUtils.isAttackType(workflow, 'attack')) return;
     if (!combatUtils.perTurnCheck(item, 'graveTouched', true, workflow.token.id)) return;
     let selection = await dialogUtils.confirm(item.name, genericUtils.format('CHRISPREMADES.Dialog.Use', {itemName: item.name}));
     if (!selection) return;

@@ -55,7 +55,7 @@ async function early({workflow}) {
 }
 async function onHit({trigger, workflow}) {
     if (!workflow.hitTargets.size) return;
-    if (!constants.attacks.includes(workflow.activity.actionType)) return;
+    if (!workflowUtils.isAttackType(workflow, 'attack')) return;
     let distance = tokenUtils.getDistance(workflow.token, trigger.token);
     if (distance > genericUtils.handleMetric(10)) return;
     let effect = effectUtils.getEffectByIdentifier(trigger.token.actor, 'shadowOfMoil');

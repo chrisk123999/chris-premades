@@ -110,7 +110,7 @@ async function move({workflow}) {
 }
 async function damage({workflow}) {
     if (workflow.hitTargets.size !== 1) return;
-    if (!constants.weaponAttacks.includes(workflow.activity.actionType)) return;
+    if (!workflowUtils.isAttackType(workflow, 'weaponAttack')) return;
     let effect = effectUtils.getEffectByIdentifier(workflow.actor, 'huntersMark');
     if (!effect) return;
     let {targets: validTargetUuids, formula} = effect.flags['chris-premades'].huntersMark;

@@ -1,7 +1,7 @@
 import {combatUtils, constants, dialogUtils, genericUtils, itemUtils, workflowUtils} from '../../../../utils.js';
 async function damage({trigger: {entity: item}, workflow}) {
     if (!workflow.hitTargets.size || !workflow.activity) return;
-    if (!constants.weaponAttacks.includes(workflow.activity.actionType)) return;
+    if (!workflowUtils.isAttackType(workflow, 'weaponAttack')) return;
     if (!item.system.uses.value) return;
     if (!combatUtils.isOwnTurn(workflow.token)) return;
     let damageTypes = itemUtils.getConfig(item, 'damageTypes');

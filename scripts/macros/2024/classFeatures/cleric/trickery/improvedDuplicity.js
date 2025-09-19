@@ -1,6 +1,6 @@
 import {activityUtils, actorUtils, constants, dialogUtils, effectUtils, genericUtils, itemUtils, tokenUtils, workflowUtils} from '../../../../../utils.js';
 async function attack({trigger: {entity: effect}, workflow}) {
-    if (!constants.attacks.includes(workflow.activity.actionType)) return;
+    if (!workflowUtils.isAttackType(workflow, 'attack')) return;
     let nearbyInvokeDuplicity = tokenUtils.findNearby(workflow.targets.first(), 5, 'enemy').find(token => {
         let effect = effectUtils.getEffectByIdentifier(token.actor, 'summonedEffect');
         if (!effect) return;

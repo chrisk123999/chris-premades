@@ -1,8 +1,7 @@
-import {actorUtils, combatUtils, compendiumUtils, constants, dialogUtils, effectUtils, errors, genericUtils, itemUtils, tokenUtils, workflowUtils} from '../../../utils.js';
-
+import {combatUtils, constants, dialogUtils, genericUtils, tokenUtils, workflowUtils} from '../../../utils.js';
 async function late({trigger: {entity: item}, workflow}) {
     if (workflow.hitTargets.size !== 1) return;
-    if (workflow.activity.actionType !== 'mwak') return;
+    if (workflowUtils.getActionType(workflow) !== 'mwak') return;
     if (!constants.unarmedAttacks.includes(genericUtils.getIdentifier(workflow.item))) return;
     if (!combatUtils.perTurnCheck(item, 'tavernBrawler')) return;
     let targetToken = workflow.targets.first();
@@ -38,7 +37,7 @@ export let tavernBrawler = {
 };
 export let tavernBrawlerUnarmedStrike = {
     name: 'Unarmed Strike (Tavern Brawler)',
-    version: '1.2.36',
+    version: '1.3.61',
     rules: 'modern',
     ddbi: {
         restrictedItems: {

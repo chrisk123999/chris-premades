@@ -63,7 +63,7 @@ async function end({workflow}) {
 }
 async function damage({trigger: {entity: effect}, workflow}) {
     if (workflow.hitTargets.size !== 1) return;
-    if (!constants.attacks.includes(workflow.activity.actionType)) return;
+    if (!workflowUtils.isAttackType(workflow, 'attack')) return;
     if (!combatUtils.perTurnCheck(effect, 'celestialRevelation', true, workflow.token.id)) return;
     let use = await dialogUtils.confirm(effect.name, genericUtils.format('CHRISPREMADES.Dialog.Use', {itemName: effect.name}));
     if (!use) return;
@@ -74,7 +74,7 @@ async function damage({trigger: {entity: effect}, workflow}) {
 }
 async function applyDamage({trigger: {entity: effect}, workflow}) {
     if (workflow.hitTargets.size < 2) return;
-    if (!constants.attacks.includes(workflow.activity.actionType)) return;
+    if (!workflowUtils.isAttackType(workflow, 'attack')) return;
     if (!combatUtils.perTurnCheck(effect, 'celestialRevelation', true, workflow.token.id)) return;
     if (workflow.celestialRevelationChoseNo) return;
     let targetToken = await dialogUtils.selectTargetDialog(effect.name, genericUtils.format('CHRISPREMADES.Dialog.Use', {itemName: effect.name}), Array.from(workflow.hitTargets));

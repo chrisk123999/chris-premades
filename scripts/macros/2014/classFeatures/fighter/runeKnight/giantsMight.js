@@ -62,7 +62,7 @@ async function use({workflow}) {
 }
 async function damage({trigger: {entity: effect}, workflow}) {
     if (!workflow.hitTargets.size || !workflow.activity.damage?.parts.length) return;
-    if (!constants.weaponAttacks.includes(workflow.activity.actionType)) return;
+    if (!workflowUtils.isAttackType(workflow, 'weaponAttack')) return;
     if (combatUtils.inCombat()) {
         if (!combatUtils.perTurnCheck(effect, 'giantsMight', true, workflow.token.id)) return;
     }

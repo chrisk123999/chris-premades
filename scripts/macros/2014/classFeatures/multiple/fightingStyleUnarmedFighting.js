@@ -1,5 +1,4 @@
-import {activityUtils, compendiumUtils, constants, dialogUtils, effectUtils, itemUtils, workflowUtils} from '../../../../utils.js';
-
+import {activityUtils, constants, dialogUtils, effectUtils, genericUtils, itemUtils, workflowUtils} from '../../../../utils.js';
 async function turnStart({trigger: {entity: item, token}}) {
     let grapplingEffects = effectUtils.getAllEffectsByIdentifier(token.actor, 'grappling');
     let potentialTargets = grapplingEffects.map(i => token.scene.tokens.get(i.flags['chris-premades'].grapple.tokenId)?.object).filter(i => i);
@@ -15,7 +14,7 @@ async function turnStart({trigger: {entity: item, token}}) {
     await workflowUtils.syntheticActivityRoll(feature, [targetToken]);
 }
 async function early({workflow}) {
-    if (!constants.attacks.includes(workflow.activity.actionType)) return;
+    if (!workflowUtils.isAttackType(workflow, 'attack')) return;
     let equippedShields = workflow.actor.items.filter(i => i.system.type?.value === 'shield' && i.system.equipped);
     let equippedWeapons = workflow.actor.items.filter(i => i.type === 'weapon' && i.system.equipped && i !== workflow.item && !constants.unarmedAttacks.includes(genericUtils.getIdentifier(i)));
     let denomination = (!equippedShields.length && !equippedWeapons.length) ? 8 : 6;

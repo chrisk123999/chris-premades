@@ -1,4 +1,4 @@
-import {activityUtils, actorUtils, constants, effectUtils, genericUtils, itemUtils, socketUtils} from '../utils.js';
+import {activityUtils, actorUtils, constants, effectUtils, genericUtils, itemUtils, socketUtils, workflowUtils} from '../utils.js';
 function activityDC(effect, updates, options, id) {
     if (game.user.id != id || effect.transfer || !(effect.parent instanceof Actor) || !effect.origin) return;
     if (!updates.changes?.length) return;
@@ -152,7 +152,7 @@ async function specialDuration(workflow) {
                     // eslint-disable-next-line no-fallthrough
                     case 'attackedByAnotherCreature': {
                         if (!workflow.activity) return;
-                        if (!constants.attacks.includes(workflow.activity.actionType)) break;
+                        if (!workflowUtils.isAttackType(workflow, 'attack')) break;
                         let origin = await effectUtils.getOriginItem(effect);
                         if (!origin?.actor) break;
                         if (workflow.actor.id === origin.actor.id) break;
@@ -164,7 +164,7 @@ async function specialDuration(workflow) {
                     // eslint-disable-next-line no-fallthrough
                     case 'attackedBySource': {
                         if (!workflow.activity) return;
-                        if (!constants.attacks.includes(workflow.activity.actionType)) break;
+                        if (!workflowUtils.isAttackType(workflow, 'attack')) break;
                         let origin = await effectUtils.getOriginItem(effect);
                         if (!origin?.actor) break;
                         if (workflow.actor.id != origin.actor.id) break;

@@ -3,7 +3,7 @@ import {disengage} from '../../actions/disengage.js';
 import {hide} from '../../actions/hide.js';
 export let cunningAction = {
     name: 'Cunning Action',
-    version: '1.3.34',
+    version: '1.3.61',
     rules: 'modern',
     midi: {
         item: [

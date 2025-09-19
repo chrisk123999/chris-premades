@@ -1,6 +1,6 @@
 import {actorUtils, constants, dialogUtils, effectUtils, genericUtils, itemUtils, socketUtils, tokenUtils, workflowUtils} from '../../../../../utils.js';
 async function attacked({trigger, workflow}) {
-    if (!constants.attacks.includes(workflow.activity.actionType)) return;
+    if (!workflowUtils.isAttackType(workflow, 'attack')) return;
     let nearbyToken = tokenUtils.findNearby(trigger.token, 5, 'ally', {includeIncapacitated: true}).filter(i => itemUtils.getItemByIdentifier(i.actor, 'mastersAmulet') && !actorUtils.hasUsedReaction(i.actor)).find(j => itemUtils.getItemByIdentifier(j.actor, 'mastersAmulet').flags['chris-premades']?.mastersAmulet.actorUuid === trigger.token.actor.uuid);
     if (!nearbyToken) return;
     if (!workflow.targets.has(nearbyToken)) return;

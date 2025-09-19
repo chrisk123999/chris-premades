@@ -77,7 +77,7 @@ async function endCombat({trigger: {entity: effect}}) {
 }
 async function late({trigger: {entity: effect}, workflow}) {
     if (workflow.hitTargets.size !== 1) return;
-    if (!constants.attacks.includes(workflow.activity.actionType)) return;
+    if (!workflowUtils.isAttackType(workflow, 'attack')) return;
     let item = await effectUtils.getOriginItem(effect);
     let feature = activityUtils.getActivityByIdentifier(item, 'formOfDreadFear');
     if (!feature) return;

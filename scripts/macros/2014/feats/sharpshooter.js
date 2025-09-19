@@ -1,7 +1,7 @@
-import {activityUtils, dialogUtils, genericUtils, itemUtils, rollUtils} from '../../../utils.js';
+import {activityUtils, dialogUtils, genericUtils, itemUtils, workflowUtils} from '../../../utils.js';
 async function attack({trigger: {entity: item}, workflow}) {
     if (!workflow.item) return;
-    if (workflow.activity.actionType != 'rwak' || !workflow.activity.damage?.parts.length) return;
+    if (workflowUtils.getActionType(workflow) != 'rwak' || !workflow.activity.damage?.parts.length) return;
     let selection = await dialogUtils.confirm(item.name, genericUtils.format('CHRISPREMADES.Dialog.Use', {itemName: item.name}));
     if (!selection) return;
     await item.displayCard();

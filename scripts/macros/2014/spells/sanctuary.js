@@ -16,7 +16,7 @@ async function attack({workflow}) {
     if (activityUtils.getIdentifier(workflow.activity) === 'sanctuarySave') return;
     let remove = false;
     remove ||= workflow.damageRoll && !(workflow.defaultDamageType === 'healing' || workflow.defaultDamageType === 'temphp');
-    remove ||= constants.attacks.includes(workflow.activity.actionType);
+    remove ||= workflowUtils.isAttackType(workflow, 'attack');
     remove ||= workflow.item.type === 'spell' && workflow.targets.find(i => i.document.disposition !== workflow.token.document.disposition);
     if (!remove) return;
     let effect = effectUtils.getEffectByIdentifier(workflow.actor, 'sanctuarySafe');

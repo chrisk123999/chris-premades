@@ -11,7 +11,7 @@ async function saveCheckSkill({trigger: {entity: item, config, roll}}) {
 }
 async function attack({trigger: {entity: item}, workflow}) {
     if (!workflow.activity) return;
-    if (!constants.attacks.includes(workflow.activity.actionType)) return;
+    if (!workflowUtils.isAttackType(workflow, 'attack')) return;
     if (!item.system.uses.value) return;
     if (workflow.targets.size !== 1) return;
     if (workflow.targets.first().actor.system.attributes.ac.value <= workflow.attackTotal) return;

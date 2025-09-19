@@ -12,7 +12,7 @@ async function use({trigger, workflow}) {
                 case 'rwak':
                 case 'msak':
                 case 'rsak':
-                    return workflow.activity.actionType === i;
+                    return workflowUtils.getActionType(workflow) === i;
                 case 'spell':
                 case 'feat':
                     return workflow.item.type === i;
