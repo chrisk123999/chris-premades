@@ -90,11 +90,11 @@ async function use({workflow}) {
     };
     switch (drakeUpgrades) {
         case 1:
-            genericUtils.setProperty(updates, 'actor.system.attributes.movement.fly', 40);
+            genericUtils.setProperty(updates, 'actor.system.attributes.movement.fly', genericUtils.handleMetric(40));
             genericUtils.setProperty(updates, 'actor.system.traits.size', 'med');
             break;
         case 2:
-            genericUtils.setProperty(updates, 'actor.system.attributes.movement.fly', 40);
+            genericUtils.setProperty(updates, 'actor.system.attributes.movement.fly', genericUtils.handleMetric(40));
             genericUtils.setProperty(updates, 'actor.system.traits.size', 'lg');
     }
     let avatarImg = itemUtils.getConfig(workflow.item, damageType + 'Avatar');
@@ -159,7 +159,7 @@ async function postAttack({trigger: {entity: effect, token}, workflow}) {
     let sourceHit = workflow.hitTargets.has(token);
     let summonHit = workflow.hitTargets.has(summonToken);
     if (!sourceHit && !summonHit) return;
-    if (tokenUtils.getDistance(token, summonToken) > 30) return;
+    if (tokenUtils.getDistance(token, summonToken) > genericUtils.handleMetric(30)) return;
     let selection;
     if (sourceHit && summonHit) {
         selection = await dialogUtils.buttonDialog(feature.name, 'CHRISPREMADES.Macros.SummonDrakeCompanion.Resistance', [
@@ -213,7 +213,7 @@ async function postDamage({trigger: {entity: item, token}, workflow}) {
     if (actorUtils.hasUsedReaction(token.actor)) return;
     let damageType = item.flags['chris-premades']?.infusedStrikes?.damageType;
     if (!damageType) return;
-    if (tokenUtils.getDistance(token, workflow.token) > 30) return;
+    if (tokenUtils.getDistance(token, workflow.token) > genericUtils.handleMetric(30)) return;
     if (!tokenUtils.canSee(token, workflow.token)) return;
     let selection = await dialogUtils.confirm(item.name, genericUtils.format('CHRISPREMADES.Dialog.UseName', {itemName: item.name, tokenName: token.name}), {userId: socketUtils.firstOwner(token.actor, true)});
     if (!selection) return;

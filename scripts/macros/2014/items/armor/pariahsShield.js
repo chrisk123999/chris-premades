@@ -24,7 +24,7 @@ async function damage({trigger, workflow, ditem}) {
         if (!itemUtils.getEquipmentState(item)) return;
         if (combatUtils.inCombat() && actorUtils.hasUsedReaction(i.actor)) return;
         let distance = tokenUtils.getDistance(targetToken, i);
-        if (distance > 5) return;
+        if (distance > genericUtils.handleMetric(5)) return;
         return true;
     });
     if (!nearbyAllies.length) return;

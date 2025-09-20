@@ -187,7 +187,7 @@ async function turnEnd({trigger: {entity: effect, token}}) {
     let originItem = await effectUtils.getOriginItem(effect);
     let originToken = await fromUuid(effect.flags['chris-premades'].dreadfulAspect.sourceToken);
     if (!originItem || !originToken) return;
-    if (tokenUtils.getDistance(originToken.object, token) <= 30) return;
+    if (tokenUtils.getDistance(originToken.object, token) <= genericUtils.handleMetric(30)) return;
     let feature = activityUtils.getActivityByIdentifier(await effectUtils.getOriginItem(effect), 'dreadfulAspectEnd', {strict: true});
     if (!feature) return;
     let workflow = await workflowUtils.syntheticActivityRoll(feature, [token]);

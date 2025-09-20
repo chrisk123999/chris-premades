@@ -5,7 +5,7 @@ async function early({workflow}) {
     let str = workflow.actor.system.abilities.str.mod;
     let dex = workflow.actor.system.abilities.dex.mod;
     let ability = dex > str ? 'dex' : 'str';
-    let type = (tokenUtils.getDistance(workflow.token, workflow.targets.first()) > 5) ? 'ranged' : 'melee';
+    let type = (tokenUtils.getDistance(workflow.token, workflow.targets.first()) > genericUtils.handleMetric(5)) ? 'ranged' : 'melee';
     await genericUtils.setFlag(workflow.item, 'chris-premades', 'homingStrikes.used', false);
     await genericUtils.setFlag(workflow.item, 'chris-premades', 'rendMind.prompt', false);
     workflow.activity.attack.ability = ability;

@@ -8,9 +8,9 @@ async function use({trigger, workflow}) {
             [genericUtils.format('CHRISPREMADES.Distance.DistanceFeet', {distance: 0}), 0]
         ];
         let distance = tokenUtils.getDistance(workflow.token, target);
-        if (distance <= 5) break;
-        if (distance > 5) options.push([genericUtils.format('CHRISPREMADES.Distance.DistanceFeet', {distance: 5}), 5]);
-        if (distance > 10) options.push([genericUtils.format('CHRISPREMADES.Distance.DistanceFeet', {distance: 10}), 10]);
+        if (distance <= genericUtils.handleMetric(5)) break;
+        if (distance > genericUtils.handleMetric(5)) options.push([genericUtils.format('CHRISPREMADES.Distance.DistanceFeet', {distance: 5}), 5]);
+        if (distance > genericUtils.handleMetric(10)) options.push([genericUtils.format('CHRISPREMADES.Distance.DistanceFeet', {distance: 10}), 10]);
         let selection = Number(await dialogUtils.buttonDialog(workflow.item.name, 'CHRISPREMADES.Macros.ThornWhip.Pull', options));
         if (!selection) return;
         await tokenUtils.pushToken(workflow.token, target, -selection);

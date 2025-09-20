@@ -173,6 +173,15 @@ function getCPRIdentifier(name, rules = 'legacy') {
     let identifier = Object.entries(macros).find(i => i[1].name === name || i[1].aliases?.includes(name))?.[0];
     return identifier;
 }
+function round(num) {
+    return Math.round((num + Number.EPSILON) * 100) / 100;
+}
+
+function handleMetric(ft) {
+    if (!ft || isNaN(parseInt(ft))) return ft;
+    if(!game.settings.get("dnd5e", "metricLengthUnits")) return ft;
+    return round(parseInt(ft) * 0.3);
+}
 export let genericUtils = {
     sleep,
     translate,
@@ -205,5 +214,6 @@ export let genericUtils = {
     getIdentifier,
     checkPlayerOwnership,
     getRules,
-    getCPRIdentifier
+    getCPRIdentifier,
+    handleMetric
 };

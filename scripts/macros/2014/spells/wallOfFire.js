@@ -186,7 +186,7 @@ async function early({trigger, workflow}) {
         }
     } else {
         // I didn't feel like writing [60, 55, 50...] so I did this
-        let lengthButtons = Array.from(Array(12).keys().map(i => 5 * (i + 1))).toSorted((a, b) => b - a).map(i => [genericUtils.format('CHRISPREMADES.Distance.DistanceFeet', {distance: i}), i]);
+        let lengthButtons = Array.from(Array(12).keys().map(i => genericUtils.handleMetric(5) * (i + 1))).toSorted((a, b) => b - a).map(i => [genericUtils.format('CHRISPREMADES.Distance.DistanceFeet', {distance: i}), i]);
         let length = await dialogUtils.buttonDialog(workflow.item.name, 'CHRISPREMADES.Macros.WallOfFire.Length', lengthButtons, {displayAsRows: true});
         if (!length) return;
         length = Number(length);

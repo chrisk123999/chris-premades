@@ -117,7 +117,7 @@ async function early({trigger: {entity: item, token}, workflow}) {
     if (workflow.token.document.disposition === token.document.disposition) return;
     if (actorUtils.hasUsedReaction(token.actor)) return;
     if (workflow.targets.has(token)) return;
-    if (tokenUtils.getDistance(token, workflow.token, {wallsBlock: true}) > 5) return;
+    if (tokenUtils.getDistance(token, workflow.token, {wallsBlock: true}) > genericUtils.handleMetric(5)) return;
     if (!tokenUtils.canSee(token, workflow.token)) return;
     let selection = await dialogUtils.confirm(token.name, genericUtils.format('CHRISPREMADES.Dialog.Use', {itemName: item.name}), {userId: socketUtils.firstOwner(item.parent, true)});
     if (!selection) return;
