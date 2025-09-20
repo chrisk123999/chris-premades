@@ -1,5 +1,5 @@
 # 1.3.65 Release:
-## New Settings:
+## Update Notes:
 - Added **Quick Conditions** setting, this adds a button to the Use Condition and Active Effect Condition fields on the midi tab on activities.
     - More information available at <https://github.com/chrisk123999/chris-premades/wiki/Info#quick-conditions>
     - The quick conditions interface is able to read values already in those fields. Please ping @Autumn225 on discord if you have any conditions that you want to be added.
