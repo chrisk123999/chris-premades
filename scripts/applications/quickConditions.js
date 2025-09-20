@@ -4,7 +4,7 @@ import {genericUtils} from '../utils.js';
 export class QuickConditions extends HandlebarsApplicationMixin(ApplicationV2) {
     constructor(data) {
         super({id: 'cpr-quick-conditions-window'});
-        this.windowTitle = 'CHRISPREMADES.QuickConditions.Title';
+        this.windowTitle = genericUtils.translate('CHRISPREMADES.QuickConditions.Title');
         this.data = data;
         this.value = this.data.entity[this.data.fieldId];
         this._conditions = quickConditions.constants;
