@@ -1,3 +1,12 @@
+# 1.3.64 Release:
+## Bug Fixes:
+- BG3 Weapon Actions
+- Divine Strike
+- Heated Body
+- Touch Damage
+- Armor of Agathys
+- Fire Shield
+
 # 1.3.63 Release:
 ## Bug Fixes:
 - Hide (Legacy)

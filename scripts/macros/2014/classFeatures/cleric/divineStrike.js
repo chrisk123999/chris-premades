@@ -49,7 +49,7 @@ async function damage({trigger: {entity: item}, workflow}) {
     if (!animationUtils.aseCheck() || animationUtils.jb2aCheck() != 'patreon') playAnimation = false;
     if (!playAnimation) return;
     let target = workflow.targets.first();
-    if (workflowUtils.isAttackType(workflow, 'rangedAttacks')) {
+    if (workflowUtils.isAttackType(workflow, 'rangedAttack')) {
         let distance = {
             x: (workflow.token.center.x - target.center.x),
             y: (workflow.token.center.y - target.center.y),
