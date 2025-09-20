@@ -657,6 +657,55 @@ button.chris-update-item,button.chris-tour {
     width: 100%;
 }
 
+/* Quick Conditions */
+
+.form-fields:has(.cpr-quick-conditions) {
+    i {
+        visibility: hidden;
+        position: absolute;
+        padding-right: 7px;
+        filter: drop-shadow(0px 0px 5px var(--dnd5e-color-gold));
+    }
+}
+.form-fields:has(.cpr-quick-conditions):hover i {
+    visibility: visible;
+}
+div.cpr-quick-conditions {
+    padding-bottom: 0.625em;
+}
+.cpr-quick-conditions div#edit .quick-conditions-group-condition {
+    flex-basis: 70%;
+    justify-content: center;
+    padding: 0%;
+}
+.cpr-quick-conditions div#edit .quick-conditions-group-condition:first-child {
+    flex-basis: 90%;
+    justify-content: flex-start;
+}
+.cpr-quick-conditions div#edit .quick-conditions-group-condition select#not {
+    width: 15%;
+}
+.cpr-quick-conditions div#edit .quick-conditions-group-condition-remove {
+    display: flex;
+    flex-basis: 5%;
+    justify-content: flex-end;
+}
+.cpr-quick-conditions div#edit .quick-conditions-group-logic {
+    flex-basis: 10%;
+}
+.cpr-quick-conditions div#edit {
+    align-items: end;
+    padding: 20px 0 10px 0;
+}
+.cpr-quick-conditions div#edit > * {
+    align-items: end;
+}
+.cpr-quick-conditions fieldset {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
 /* Foundry UI Tweaks */
 
 body #interface #ui-left #ui-left-column-1 #scene-controls {

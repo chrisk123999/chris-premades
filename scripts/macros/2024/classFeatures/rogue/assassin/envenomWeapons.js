@@ -1,7 +1,6 @@
 import {effectUtils, genericUtils, itemUtils, workflowUtils} from '../../../../../utils.js';
 async function early({trigger, workflow}) {
     let sourceEffect = itemUtils.getEffectByIdentifier(workflow.item, 'envenomWeaponsEffect');
-    console.log(sourceEffect);
     if (!sourceEffect) return;
     let effectData = genericUtils.duplicate(sourceEffect.toObject());
     let effects = await Promise.all(workflow.targets.map(async token => {

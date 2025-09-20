@@ -39,6 +39,7 @@ import {EmbeddedMacros} from './applications/embeddedMacros.js';
 import {ui} from './extensions/ui.js';
 import {toolCheck} from './events/toolCheck.js';
 import {acc} from './integrations/acc.js';
+import {quickConditions} from './extensions/quickConditions.js';
 Hooks.once('socketlib.ready', registerSockets);
 Hooks.once('init', () => {
     Hooks.on('dae.modifySpecials', dae.modifySpecials);
@@ -101,6 +102,7 @@ Hooks.once('ready', () => {
     if (utils.genericUtils.getCPRSetting('activityCSSTweak')) activities.cssTweak(true);
     if (!game.user.isGM) return;
     if (utils.genericUtils.getCPRSetting('migrationVersion') !== game.modules.get('chris-premades').version) migrate();
+    if (utils.genericUtils.getCPRSetting('quickConditions')) quickConditions.ready();
     Hooks.callAll('cprReady');
 });
 globalThis['chrisPremades'] = {

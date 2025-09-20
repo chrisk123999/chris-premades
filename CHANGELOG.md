@@ -1,3 +1,10 @@
+# 1.3.65 Release:
+## New Settings:
+- Added **Quick Conditions** setting, this adds a button to the Use Condition and Active Effect Condition fields on the midi tab on activities.
+    - More information available at <https://github.com/chrisk123999/chris-premades/wiki/Info#quick-conditions>
+    - The quick conditions interface is able to read values already in those fields. Please ping @Autumn225 on discord if you have any conditions that you want to be added.
+    - Please stress test this feature and report any bugs or inaccuracies. The interface works well but I can't guarentee the conditions themselves.
+  
 # 1.3.64 Release:
 ## Bug Fixes:
 - BG3 Weapon Actions
