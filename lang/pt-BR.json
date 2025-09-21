@@ -500,11 +500,17 @@
                 "turnEndNear": {
                     "Label": "Fim do Turno Próximo"
                 },
+                "turnEndSource": {
+                    "Label": "Fim do Turno da Origem"
+                },
                 "turnStart": {
                     "Label": "Início do Turno"
                 },
                 "turnStartNear": {
                     "Label": "Início do Turno Próximo"
+                },
+                "turnStartSource": {
+                    "Label": "Início do Turno da Origem"
                 },
                 "unequipped": {
                     "Label": "Desequipado"
@@ -2617,6 +2623,11 @@
         "Movement": {
             "UnableToBeMoved": "O alvo não pode ser movido!"
         },
+        "QuickConditions": {
+            "Legend": "Condições Disponíveis",
+            "Placeholder": "Clique abaixo para adicionar condições",
+            "Title": "Condições Rápidas CPR"
+        },
         "Requirements": {
             "MissingClass": "A classe/subclasse configurada {classIdentifier} não existe neste ator!",
             "ScaleAdded": "O valor de escala {scaleIdentifier} foi adicionado à classe {classIdentifier}!"
@@ -3025,6 +3036,10 @@
             "playerSelectsConjures": {
                 "Hint": "Ao conjurar magias do tipo \"Conjurar X\", o jogador (não o Mestre) pode selecionar quais criaturas conjurar.",
                 "Name": "Jogador Escolhe Conjurações"
+            },
+            "quickConditions": {
+                "Hint": "Adiciona um botão aos campos Condição de Uso e Condição de Efeito Ativo na aba do Midi-QOL em atividades, que abre uma interface de condição rápida.",
+                "Name": "Condições Rápidas"
             },
             "replaceStatusEffectIcons": {
                 "Hint": "Quando ativado, os ícones de status serão substituídos.",
