@@ -1,0 +1,133 @@
+{
+  "name": "Combat Mastery: Lissome",
+  "type": "feat",
+  "effects": [
+    {
+      "name": "Combat Mastery: Lissome",
+      "changes": [
+        {
+          "key": "flags.gambits-premades.oaImmunity",
+          "mode": 5,
+          "value": "1",
+          "priority": 20
+        }
+      ],
+      "transfer": false,
+      "img": "icons/skills/melee/maneuver-greatsword-yellow.webp",
+      "_id": "i3F2ckSOirvM4qZE",
+      "type": "base",
+      "system": {},
+      "disabled": false,
+      "duration": {
+        "startTime": null,
+        "combat": null,
+        "seconds": null,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "description": "",
+      "origin": null,
+      "tint": "#ffffff",
+      "statuses": [],
+      "sort": 0,
+      "flags": {
+        "dnd5e": {
+          "riders": {
+            "statuses": []
+          }
+        },
+        "dae": {
+          "enableCondition": "",
+          "disableCondition": "",
+          "stackable": "noneName",
+          "showIcon": false,
+          "disableIncapacitated": false,
+          "selfTarget": false,
+          "selfTargetAlways": false,
+          "dontApply": true,
+          "durationExpression": "",
+          "macroRepeat": "none",
+          "specialDuration": [
+            "isMoved"
+          ]
+        },
+        "core": {
+          "overlay": false
+        },
+        "chris-premades": {
+          "noAnimation": false,
+          "conditions": [],
+          "specialDuration": [],
+          "info": {
+            "identifier": "combatMasteryLissomeEffect"
+          },
+          "rules": "legacy"
+        }
+      },
+      "_key": "!items.effects!pKUO5VQ1g7zfOY4b.i3F2ckSOirvM4qZE"
+    }
+  ],
+  "system": {
+    "activities": {},
+    "uses": {
+      "spent": 0,
+      "recovery": []
+    },
+    "advancement": [],
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "identifier": "combat-mastery",
+    "source": {
+      "book": "TIR",
+      "page": "",
+      "license": "",
+      "custom": "",
+      "rules": "2014",
+      "revision": 1
+    },
+    "crewed": false,
+    "enchant": {},
+    "prerequisites": {
+      "items": [],
+      "level": 2,
+      "repeatable": false
+    },
+    "properties": [],
+    "requirements": "",
+    "type": {
+      "value": "class",
+      "subtype": ""
+    }
+  },
+  "flags": {
+    "dnd5e": {
+      "advancementOrigin": "zKpmerWRRzs7UoBC",
+      "riders": {
+        "activity": []
+      }
+    },
+    "chris-premades": {
+      "info": {
+        "identifier": "combatMasteryLissome",
+        "rules": "legacy",
+        "source": "chris-premades",
+        "version": "1.3.66"
+      },
+      "macros": {
+        "midi": {
+          "actor": [
+            "combatMasteryLissome"
+          ]
+        }
+      }
+    }
+  },
+  "img": "icons/skills/melee/maneuver-greatsword-yellow.webp",
+  "folder": "XNSuyQGDHq8KulOJ",
+  "_id": "pKUO5VQ1g7zfOY4b",
+  "_key": "!items!pKUO5VQ1g7zfOY4b"
+}

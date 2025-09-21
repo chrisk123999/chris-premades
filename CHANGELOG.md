@@ -1,11 +1,4 @@
-# 1.3.65 Release:
-## Update Notes:
-- Added **Quick Conditions** setting, this adds a button to the Use Condition and Active Effect Condition fields on the midi tab on activities.
-    - More information available at <https://github.com/chrisk123999/chris-premades/wiki/Info#quick-conditions>
-    - The quick conditions interface is able to read values already in those fields. Please ping @Autumn225 on discord if you have any conditions that you want to be added.
-    - Please stress test this feature and report any bugs or inaccuracies. The interface works well but I can't guarantee the conditions themselves.
-  
-# 1.3.65 Release:
+# 1.3.66 Release:
 ## New Legacy Content:
 - Baleful Interdict
 - Forked Tongue
@@ -15,6 +8,13 @@
 - Combat Mastery: Lies
 - Combat Mastery: Lissome
 - Combat Mastery: Unfettered
+
+# 1.3.65 Release:
+## Update Notes:
+- Added **Quick Conditions** setting, this adds a button to the Use Condition and Active Effect Condition fields on the midi tab on activities.
+    - More information available at <https://github.com/chrisk123999/chris-premades/wiki/Info#quick-conditions>
+    - The quick conditions interface is able to read values already in those fields. Please ping @Autumn225 on discord if you have any conditions that you want to be added.
+    - Please stress test this feature and report any bugs or inaccuracies. The interface works well but I can't guarantee the conditions themselves.
 
 # 1.3.64 Release:
 ## Bug Fixes:

@@ -1,0 +1,127 @@
+{
+  "name": "Combat Mastery: Bravado",
+  "type": "feat",
+  "effects": [
+    {
+      "name": "Combat Mastery: Bravado",
+      "statuses": [],
+      "changes": [
+        {
+          "key": "system.attributes.ac.formula",
+          "mode": 5,
+          "value": "10 + @abilities.dex.mod + @abilities.cha.mod",
+          "priority": 20
+        },
+        {
+          "key": "system.attributes.ac.calc",
+          "mode": 5,
+          "value": "custom",
+          "priority": 20
+        }
+      ],
+      "duration": {
+        "seconds": null,
+        "startTime": 1068,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null,
+        "combat": null
+      },
+      "tint": "#ffffff",
+      "transfer": true,
+      "disabled": false,
+      "flags": {
+        "dae": {
+          "transfer": true,
+          "stackable": "noneNameOnly",
+          "disableCondition": "",
+          "showIcon": false,
+          "disableIncapacitated": false,
+          "durationExpression": "",
+          "macroRepeat": "none",
+          "specialDuration": []
+        },
+        "ddbimporter": {
+          "disabled": false,
+          "passive": true,
+          "itemId": 10763986,
+          "itemEntityTypeId": 12168134
+        },
+        "midi-qol": {
+          "forceCEOff": true
+        },
+        "core": {
+          "overlay": false
+        },
+        "dnd5e": {
+          "riders": {
+            "statuses": []
+          }
+        }
+      },
+      "description": "<p>While you are not wearing any armor, your Armor Class equals 10 + your Dexterity modifier + your Charisma modifier. You can use a shield and still gain this benefit.</p>",
+      "img": "icons/skills/melee/maneuver-greatsword-yellow.webp",
+      "_id": "ZsGzQQC8N5KL3HjC",
+      "type": "base",
+      "system": {},
+      "origin": "Actor.xH5x7LcFCU8mZwr5.Item.HGTsVgva3lKZEqIV",
+      "sort": 0,
+      "_key": "!items.effects!xGC7TXkv5xmrK7hN.ZsGzQQC8N5KL3HjC"
+    }
+  ],
+  "system": {
+    "activities": {},
+    "uses": {
+      "spent": 0,
+      "recovery": []
+    },
+    "advancement": [],
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "identifier": "combat-mastery",
+    "source": {
+      "book": "TIR",
+      "page": "",
+      "license": "",
+      "custom": "",
+      "rules": "2014",
+      "revision": 1
+    },
+    "crewed": false,
+    "enchant": {},
+    "prerequisites": {
+      "items": [],
+      "level": 2,
+      "repeatable": false
+    },
+    "properties": [],
+    "requirements": "",
+    "type": {
+      "value": "class",
+      "subtype": ""
+    }
+  },
+  "flags": {
+    "dnd5e": {
+      "advancementOrigin": "zKpmerWRRzs7UoBC",
+      "riders": {
+        "activity": []
+      }
+    },
+    "chris-premades": {
+      "info": {
+        "identifier": "combatMasteryBravado",
+        "rules": "legacy",
+        "source": "chris-premades",
+        "version": "1.3.66"
+      }
+    }
+  },
+  "img": "icons/skills/melee/maneuver-greatsword-yellow.webp",
+  "folder": "XNSuyQGDHq8KulOJ",
+  "_id": "xGC7TXkv5xmrK7hN",
+  "_key": "!items!xGC7TXkv5xmrK7hN"
+}

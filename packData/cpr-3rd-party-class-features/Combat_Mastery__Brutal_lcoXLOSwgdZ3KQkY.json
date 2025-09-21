@@ -1,0 +1,66 @@
+{
+  "name": "Combat Mastery: Brutal",
+  "type": "feat",
+  "effects": [],
+  "system": {
+    "activities": {},
+    "uses": {
+      "spent": 0,
+      "recovery": []
+    },
+    "advancement": [],
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "identifier": "combat-mastery",
+    "source": {
+      "book": "TIR",
+      "page": "",
+      "license": "",
+      "custom": "",
+      "rules": "2014",
+      "revision": 1
+    },
+    "crewed": false,
+    "enchant": {},
+    "prerequisites": {
+      "items": [],
+      "level": 2,
+      "repeatable": false
+    },
+    "properties": [],
+    "requirements": "",
+    "type": {
+      "value": "class",
+      "subtype": ""
+    }
+  },
+  "flags": {
+    "dnd5e": {
+      "advancementOrigin": "zKpmerWRRzs7UoBC",
+      "riders": {
+        "activity": []
+      }
+    },
+    "chris-premades": {
+      "info": {
+        "identifier": "combatMasteryBrutal",
+        "rules": "legacy",
+        "source": "chris-premades",
+        "version": "1.3.66"
+      },
+      "macros": {
+        "midi": {
+          "actor": [
+            "combatMasteryBrutal"
+          ]
+        }
+      }
+    }
+  },
+  "img": "icons/skills/melee/maneuver-greatsword-yellow.webp",
+  "folder": "XNSuyQGDHq8KulOJ",
+  "_id": "lcoXLOSwgdZ3KQkY",
+  "_key": "!items!lcoXLOSwgdZ3KQkY"
+}
