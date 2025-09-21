@@ -231,6 +231,14 @@ async function getOriginItem(effect) {
     origin = await fromUuid(origin.origin);
     if (origin instanceof Item) return origin;
 }
+function getOriginItemSync(effect) {
+    let origin = fromUuidSync(effect?.origin, {strict: false});
+    if (!origin) return;
+    if (origin instanceof Item) return origin;
+    if (origin.parent instanceof Item) return origin.parent;
+    origin = fromUuidSync(origin.origin, {strict: false});
+    if (origin instanceof Item) return origin;
+}
 function getConditions(effect) {
     let conditions = new Set();
     let validKeys = [
@@ -271,5 +279,6 @@ export let effectUtils = {
     getSidebarEffectData,
     createEffectFromSidebar,
     getOriginItem,
-    getConditions
+    getConditions,
+    getOriginItemSync
 };

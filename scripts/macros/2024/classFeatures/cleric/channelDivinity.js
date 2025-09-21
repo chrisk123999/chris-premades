@@ -199,7 +199,7 @@ export let channelDivinity = {
             default: 'channel-divinity',
             category: 'homebrew',
             homebrew: true
-        },
+        }
     ],
     scales: [
         {

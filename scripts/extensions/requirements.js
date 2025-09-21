@@ -93,8 +93,9 @@ async function scaleCheck(item) {
         }
         let scaleIdentifier = itemUtils.getConfig(item, data.scaleIdentifier);
         let scale = item.actor.system.scale[classIdentifier]?.[scaleIdentifier];
-        if (scale) return;
+        if (scale?.parent?.configuration?.type === data.data.configuration.type) return;
         let classData = genericUtils.duplicate(classItem.toObject());
+        if (scale?.type != data.data.type) classData.system.advancement = classData.system.advancement.filter(i => i.configuration?.identifier != scaleIdentifier);
         classData.system.advancement.push(data.data);
         await genericUtils.update(classItem, {'system.advancement': classData.system.advancement});
         let message = genericUtils.format('CHRISPREMADES.Requirements.ScaleAdded', {classIdentifier, scaleIdentifier});

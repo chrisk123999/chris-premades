@@ -580,6 +580,31 @@ const autoFailSaveEffectData = {
         }
     }
 };
+let languageOptions = () => {
+    function extractLanguages(obj) {
+        let result = [];
+        function recurse(node, key, depth = 0) {
+            if (!node) return;
+            if (typeof node === 'string') {
+                result.push({ value: key, label: node});
+            } else if (typeof node === 'object') {
+                if (node.label && key && depth > 0) {
+                    result.push({value: key, label: node.label});
+                }
+                if (node.children) {
+                    for (let [childKey, childValue] of Object.entries(node.children)) {
+                        recurse(childValue, childKey, depth + 1);
+                    }
+                }
+            }
+        }
+        for (let [key, value] of Object.entries(obj)) {
+            recurse(value, key, 0);
+        }
+        return result;
+    }
+    return extractLanguages(CONFIG.DND5E.languages).sort((a, b) => a.label.localeCompare(b.label, 'en', {'sensitivity': 'base'}));
+};
 export let constants = {
     packs,
     featurePacks,
@@ -617,5 +642,6 @@ export let constants = {
     armorOptions,
     spellSchoolOptions,
     autoFailSaveEffectData,
-    disadvantageEffectData
+    disadvantageEffectData,
+    languageOptions
 };

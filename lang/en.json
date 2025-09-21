@@ -188,6 +188,7 @@
             "CriticalOnly": "Critical Only:",
             "DC": "DC:",
             "DamageBonus": "Damage Bonus:",
+            "DamageScaleIdentifier": "Damage Scale Identifier:",
             "DamageType": "Damage Type:",
             "DamageTypes": "Damage Types:",
             "DarknessAnimation": "Darkness Animation:",
@@ -594,6 +595,7 @@
         },
         "Generic": {
             "Actions": "Actions",
+            "Amount": "Amount:",
             "Available": "Available",
             "CPR": "Cauldron of Plentiful Resources",
             "Cancel": "Cancel",
@@ -811,6 +813,17 @@
             },
             "AwakenedSpellbook": {
                 "Select": "Change damage type?"
+            },
+            "BalefulInterdict": {
+                "BurnSeals": "Burn Seals on target?",
+                "BurningSeals": "Burning Seals",
+                "CanTriggerImmediately": "Can Trigger Immediately:",
+                "Move": {
+                    "NoValidTargets": "No valid dead targets!",
+                    "TooFar": "Target is too far away!"
+                },
+                "PlaceSeal": "Place seal on target?",
+                "SelectBurnSeals": "Burn how many seals?"
             },
             "BalmOfPeace": {
                 "Balm": "Balm of Peace"
@@ -1324,6 +1337,9 @@
             },
             "FocusedAim": {
                 "Bonus": "Yes ({kiCost} Ki / +{bonus} to hit)"
+            },
+            "ForkedTongue": {
+                "SelectLanguages": "Select your known languages:"
             },
             "FormOfDread": {
                 "Fear": "Form of Dread: Fear",

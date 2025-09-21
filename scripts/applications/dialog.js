@@ -180,7 +180,7 @@ export class DialogApp extends HandlebarsApplicationMixin(ApplicationV2) {
                         displayAsRows: inputOptions?.displayAsRows ?? false,
                         options: checkboxOptions,
                         totalMax: inputOptions?.totalMax ?? 99,
-                        currentNum: 0
+                        currentNum: checkboxOptions.filter(i => i.isChecked).length
                     });
                     break;
                 } 
