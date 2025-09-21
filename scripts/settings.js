@@ -20,6 +20,7 @@ import {activities} from './extensions/activities.js';
 import {combat} from './extensions/combat.js';
 import {ui} from './extensions/ui.js';
 import {renderCompendium} from './extensions/titlebar.js';
+import {quickConditions} from './extensions/quickConditions.js';
 function addSetting(options) {
     let setting = {
         scope: options.scope ?? 'world',
@@ -974,6 +975,13 @@ export function registerSettings() {
         type: Boolean,
         default: false,
         category: 'general'
+    });
+    addSetting({
+        key: 'quickConditions',
+        type: Boolean,
+        default: true,
+        category: 'interface',
+        onChange: (value) => value ? quickConditions.ready() : quickConditions.off()
     });
 }
 export function registerMenus() {

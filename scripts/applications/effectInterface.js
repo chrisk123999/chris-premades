@@ -134,11 +134,10 @@ class EffectDirectory extends foundry.applications.sidebar.DocumentDirectory {
                         yes: {
                             icon: 'fa-solid fa-file-import',
                             label: genericUtils.translate('CHRISPREMADES.Generic.Import'),
-                            callback: html => {
-                                let form = html.querySelector('form');
-                                if (!form?.data.files.length) return ui.notifications.error('You did not upload a data file!');
-                                // eslint-disable-next-line no-undef
-                                foundry.utils.readTextFromFile(form.data.files[0]).then(json => modifiedImportFromJSON(json));
+                            callback: (event, button) => {
+                                let form = button.form;
+                                if (!form.data.files.length) return ui.notifications.error('DOCUMENT.ImportDataError', {localize: true});
+                                foundry.utils.readTextFromFile(form.data.files[0]).then(json => this.importFromJSON(json));
                             },
                             default: true
                         },

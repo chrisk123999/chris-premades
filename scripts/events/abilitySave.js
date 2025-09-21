@@ -25,7 +25,8 @@ function collectActorSaveMacros(actor, pass) {
                 castLevel: effectUtils.getCastLevel(effect) ?? -1,
                 baseLevel: effectUtils.getBaseLevel(effect) ?? -1,
                 saveDC: effectUtils.getSaveDC(effect) ?? -1
-            }
+            },
+            token
         });
     });
     actor.items.forEach(item => {
@@ -39,7 +40,8 @@ function collectActorSaveMacros(actor, pass) {
                 castLevel: -1,
                 baseLevel: -1,
                 saveDC: itemUtils.getSaveDC(item) ?? -1
-            }
+            },
+            token
         });
     });
     if (token) {
@@ -69,7 +71,8 @@ function collectActorSaveMacros(actor, pass) {
                     castLevel: regionUtils.getCastLevel(region),
                     baseLevel: regionUtils.getBaseLevel(region),
                     saveDC: regionUtils.getSaveDC(region)
-                }
+                },
+                token
             });
         });
     }
@@ -111,6 +114,7 @@ function getSortedTriggers(actor, pass, saveId, options, roll, config, dialog, m
                 priority: macro.priority,
                 name: trigger.name,
                 actor,
+                token: trigger.token,
                 saveId,
                 options,
                 roll,

@@ -500,11 +500,17 @@
                 "turnEndNear": {
                     "Label": "Fim do Turno Próximo"
                 },
+                "turnEndSource": {
+                    "Label": "Fim do Turno da Origem"
+                },
                 "turnStart": {
                     "Label": "Início do Turno"
                 },
                 "turnStartNear": {
                     "Label": "Início do Turno Próximo"
+                },
+                "turnStartSource": {
+                    "Label": "Início do Turno da Origem"
                 },
                 "unequipped": {
                     "Label": "Desequipado"
@@ -636,6 +642,8 @@
             "Select": "Selecionar",
             "SelectATarget": "Selecionar um alvo:",
             "SelectAWeapon": "Selecionar uma arma:",
+            "SelectAnActivity": "Selecionar uma atividade:",
+            "SelectAnItem": "Selecionar um item:",
             "SelectDamageType": "Escolha um tipo de dano:",
             "SelectEffect": "Escolha um efeito:",
             "SelectSpell": "Escolha uma Magia:",
@@ -1539,6 +1547,12 @@
             "JavelinOfLightning": {
                 "Bolt": "Azagaia do Relâmpago: Raio"
             },
+            "Jump": {
+                "LongJump": {
+                    "DifficultTerrain": "Aterrissagem em terreno difícil?",
+                    "LowObstacle": "Existe algum obstáculo baixo?"
+        }
+            },
             "KeenSenses": {
                 "Check": "Este teste depende de: ",
                 "DiceThreshold": "Limite de Rolagem de Dados:",
@@ -2152,6 +2166,9 @@
                 "Name": "Sensibilidade ao Sol",
                 "Skill": "Este teste depende da visão e a criatura está sob a luz do sol"
             },
+            "SupremeSneak": {
+                "TurnEnd": "Você terminou seu turno atrás de Três-Quartos de Cobertura ou Cobertura Total?"
+            },
             "SurpriseAttack": {
                 "Dialog": "Usar Diálogo ao invés de verificar a condição Surpreso:",
                 "Name": "Ataque Surpresa",
@@ -2510,6 +2527,7 @@
             "Medkit": "Medikit CPR",
             "ModuleIds": {
                 "additionalCompendiums": "Compêndios Adicionais",
+                "automated-crafted-creations": "Automated Crafted Creations",
                 "chris-premades": "Cauldron of Plentiful Resources",
                 "gambits-premades": "Gambit's Premades",
                 "midi-item-showcase-community": "Midi Item Showcase Community"
@@ -2604,6 +2622,11 @@
         },
         "Movement": {
             "UnableToBeMoved": "O alvo não pode ser movido!"
+        },
+        "QuickConditions": {
+            "Legend": "Condições Disponíveis",
+            "Placeholder": "Clique abaixo para adicionar condições",
+            "Title": "Condições Rápidas CPR"
         },
         "Requirements": {
             "MissingClass": "A classe/subclasse configurada {classIdentifier} não existe neste ator!",
@@ -3013,6 +3036,10 @@
             "playerSelectsConjures": {
                 "Hint": "Ao conjurar magias do tipo \"Conjurar X\", o jogador (não o Mestre) pode selecionar quais criaturas conjurar.",
                 "Name": "Jogador Escolhe Conjurações"
+            },
+            "quickConditions": {
+                "Hint": "Adiciona um botão aos campos Condição de Uso e Condição de Efeito Ativo na aba do Midi-QOL em atividades, que abre uma interface de condição rápida.",
+                "Name": "Condições Rápidas"
             },
             "replaceStatusEffectIcons": {
                 "Hint": "Quando ativado, os ícones de status serão substituídos.",

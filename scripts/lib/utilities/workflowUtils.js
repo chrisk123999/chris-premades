@@ -19,7 +19,7 @@ async function bonusAttack(workflow, formula) {
 async function replaceDamage(workflow, formula, {ignoreCrit = false, damageType} = {}) {
     formula = String(formula);
     if (workflow.isCritical && !ignoreCrit) formula = await rollUtils.getCriticalFormula(formula, workflow.item.getRollData());
-    let roll = await new CONFIG.Dice.DamageRoll(formula, workflow.item.getRollData()).evaluate();
+    let roll = await new CONFIG.Dice.DamageRoll(formula, workflow.activity.getRollData()).evaluate();
     if (damageType) {
         genericUtils.setProperty(roll, 'options.type', damageType);
     } else {
@@ -253,7 +253,7 @@ function getCastData(workflow) {
 function getCastLevel(workflow) {
     return Math.max(workflow.castData.castLevel, workflow.castData.baseLevel);
 }
-async function specialItemUse(item, targets, sourceFeature, {activity} = {}) {
+async function specialItemUse(item, targets, sourceFeature, {activity, consumeUsage = false, consumeResources = false} = {}) {
     let effectData = {
         name: sourceFeature.name,
         img: constants.tempConditionIcon,
@@ -276,9 +276,9 @@ async function specialItemUse(item, targets, sourceFeature, {activity} = {}) {
     };
     let effect = await itemUtils.enchantItem(item, effectData);
     if (!activity) {
-        await syntheticItemRoll(item, targets);
+        await syntheticItemRoll(item, targets, {consumeUsage, consumeResources});
     } else {
-        await syntheticActivityRoll(activity, targets);
+        await syntheticActivityRoll(activity, targets, {consumeUsage, consumeResources});
     }
     await genericUtils.remove(effect);
 }
@@ -307,6 +307,23 @@ function isAttackType(workflow, type = 'attack') {
     }
     return constants[field].includes(getActionType(workflow));
 }
+async function swapAttackAbility(workflow, ability = 'cha', {validTypes = ['str', 'dex'], checkHigher = true} = {}) {
+    if (!workflow.activity) return;
+    let itemAbility = workflow.activity.attack.ability;
+    if (!itemAbility.length) itemAbility = 'str';
+    if (workflow.item.system.properties.has('fin') && itemAbility === 'str') {
+        if (workflow.actor.system.abilities.dex.mod >= workflow.actor.system.abilities.str.mod) itemAbility = 'dex';
+    }
+    if (!validTypes.includes(itemAbility)) return;
+    let actorAbilityMod = workflow.actor.system.abilities[ability].mod;
+    if (checkHigher) {
+        if (actorAbilityMod < workflow.actor.system.abilities[itemAbility].mod) return;
+    }
+    let itemData = genericUtils.duplicate(workflow.item.toObject());
+    itemData.system.activities[workflow.activity.id].attack.ability = ability;
+    workflow.item = await itemUtils.syntheticItem(itemData, workflow.actor);
+    workflow.activity = workflow.item.system.activities.get(workflow.activity.id);
+}
 export let workflowUtils = {
     bonusDamage,
     bonusAttack,
@@ -331,5 +348,6 @@ export let workflowUtils = {
     updateTargets,
     removeTargets,
     isAttackType,
-    getActionType
+    getActionType,
+    swapAttackAbility
 };

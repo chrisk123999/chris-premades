@@ -153,6 +153,9 @@ async function confirm(title, content, {userId = game.user.id, buttons = 'yesNo'
     } else selection = await DialogApp.dialog(title, content, [], buttons);
     return selection?.buttons;
 }
+async function confirmUseItem(item, {userId = game.user.id, buttons = 'yesNo'} = {}) {
+    return await dialogUtils.confirm(item.name, genericUtils.format('CHRISPREMADES.Dialog.Use', {itemName: item.name}), {userId, buttons});
+}
 async function selectDocumentDialog(title, content, documents, {displayTooltips = false, sortAlphabetical = false, sortCR = false, userId = game.user.id, addNoneDocument = false, showCR = false, showSpellLevel = false} = {}) {
     if (sortAlphabetical) {
         documents = documents.sort((a, b) => {
@@ -320,5 +323,6 @@ export let dialogUtils = {
     selectHitDie,
     selectSpellSlot,
     selectDamageType,
-    queuedConfirmDialog
+    queuedConfirmDialog,
+    confirmUseItem
 };

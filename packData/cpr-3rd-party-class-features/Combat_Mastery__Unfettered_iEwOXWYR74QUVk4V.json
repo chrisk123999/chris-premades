@@ -1,0 +1,115 @@
+{
+  "name": "Combat Mastery: Unfettered",
+  "type": "feat",
+  "effects": [
+    {
+      "name": "Combat Mastery: Unfettered",
+      "changes": [
+        {
+          "key": "flags.midi-qol.ignoreNearbyFoes",
+          "mode": 0,
+          "value": "1",
+          "priority": 20
+        }
+      ],
+      "transfer": true,
+      "img": "icons/skills/melee/maneuver-greatsword-yellow.webp",
+      "_id": "VADgmY3VuDnHdPQ8",
+      "type": "base",
+      "system": {},
+      "disabled": false,
+      "duration": {
+        "startTime": null,
+        "combat": null,
+        "seconds": null,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "description": "",
+      "origin": "Compendium.world.cpr-3rd-party-class-features.Item.iEwOXWYR74QUVk4V",
+      "tint": "#ffffff",
+      "statuses": [],
+      "sort": 0,
+      "flags": {
+        "dnd5e": {
+          "riders": {
+            "statuses": []
+          }
+        },
+        "dae": {
+          "enableCondition": "",
+          "disableCondition": "",
+          "stackable": "noneName",
+          "showIcon": false,
+          "disableIncapacitated": false,
+          "selfTarget": false,
+          "selfTargetAlways": false,
+          "dontApply": false,
+          "durationExpression": "",
+          "macroRepeat": "none",
+          "specialDuration": []
+        },
+        "core": {
+          "overlay": false
+        }
+      },
+      "_key": "!items.effects!iEwOXWYR74QUVk4V.VADgmY3VuDnHdPQ8"
+    }
+  ],
+  "system": {
+    "activities": {},
+    "uses": {
+      "spent": 0,
+      "recovery": []
+    },
+    "advancement": [],
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "identifier": "combat-mastery",
+    "source": {
+      "book": "TIR",
+      "page": "",
+      "license": "",
+      "custom": "",
+      "rules": "2014",
+      "revision": 1
+    },
+    "crewed": false,
+    "enchant": {},
+    "prerequisites": {
+      "items": [],
+      "level": 2,
+      "repeatable": false
+    },
+    "properties": [],
+    "requirements": "",
+    "type": {
+      "value": "class",
+      "subtype": ""
+    }
+  },
+  "flags": {
+    "dnd5e": {
+      "advancementOrigin": "zKpmerWRRzs7UoBC",
+      "riders": {
+        "activity": []
+      }
+    },
+    "chris-premades": {
+      "info": {
+        "identifier": "combatMasteryUnfettered",
+        "rules": "legacy",
+        "source": "chris-premades",
+        "version": "1.3.66"
+      }
+    }
+  },
+  "img": "icons/skills/melee/maneuver-greatsword-yellow.webp",
+  "folder": "XNSuyQGDHq8KulOJ",
+  "_id": "iEwOXWYR74QUVk4V",
+  "_key": "!items!iEwOXWYR74QUVk4V"
+}

@@ -1,0 +1,32 @@
+<div class="cpr-quick-conditions">
+    <div>
+        <div id="conditionValue-group" class="form-group">
+            <input type="text" id="conditionValue" placeholder="{{localize data.data.placeholder}}" value="{{data.data.value}}" disabled>
+        </div>
+        <div id="edit" class="form-group flex-col">
+        {{#each inputs.edit}}
+            <div class="{{class}}" id="{{id}}">
+                {{#each inputs}}
+                    {{#if (eq type 'button')}}
+                        {{#button this}}{{/button}}
+                    {{else if (eq type 'select')}}
+                        {{#selectDetailed this}}{{/selectDetailed}}
+                    {{else if (eq type 'selectMultiple')}}
+                        {{#selectMultiple this}}{{/selectMultiple}}
+                    {{else if (eq type 'content')}}
+                        {{#contentP this}}{{/contentP}}
+                    {{else if (eq type 'text')}}
+                        {{#textInput this}}{{/textInput}}
+                    {{/if}}
+                {{/each}}
+            </div>
+        {{/each}}
+        </div>
+    </div>
+    <fieldset id="add" class="quick-conditions-fieldset-add">
+        <legend id="add-legend">{{localize 'CHRISPREMADES.QuickConditions.Legend'}}</legend>
+        {{#each inputs.add}}
+            {{#button this}}{{/button}}
+        {{/each}}
+    </fieldset>
+</div>

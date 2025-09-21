@@ -384,6 +384,19 @@ export {wildShape, wildShapeActive} from './macros/2014/classFeatures/druid/wild
 export {wildSurge, wildSurgeIntangibleSpirit, wildSurgeProtectiveLights, wildSurgeRetribution, wildSurgeTeleport} from './macros/2014/classFeatures/barbarian/wildMagic/wildSurge.js';
 export {wrathOfTheStorm} from './macros/2014/classFeatures/cleric/tempestDomain/wrathOfTheStorm.js';
 export {zealousPresence} from './macros/2014/classFeatures/barbarian/zealot/zealousPresence.js';
+export {balefulInterdict, balefulInterdictEffect} from './macros/2014/classFeatures/illrigger/balefulInterdict.js';
+export {forkedTongue} from './macros/2014/classFeatures/illrigger/forkedTongue.js';
+export {combatMasteryBravado} from './macros/2014/classFeatures/illrigger/combatMasteries/bravado.js';
+export {combatMasteryBrutal} from './macros/2014/classFeatures/illrigger/combatMasteries/brutal.js';
+export {combatMasteryInexorable} from './macros/2014/classFeatures/illrigger/combatMasteries/inexorable.js';
+export {combatMasteryLies} from './macros/2014/classFeatures/illrigger/combatMasteries/lies.js';
+export {combatMasteryLissome} from './macros/2014/classFeatures/illrigger/combatMasteries/lissome.js';
+export {combatMasteryUnfettered} from './macros/2014/classFeatures/illrigger/combatMasteries/unfettered.js';
+export {interdictBoonAbatingSeal} from './macros/2014/classFeatures/illrigger/interdictBoons/abatingSeal.js';
+export {interdictBoonBedevil} from './macros/2014/classFeatures/illrigger/interdictBoons/bedevil.js';
+export {interdictSoulEater} from './macros/2014/classFeatures/illrigger/interdictBoons/soulEater.js';
+export {interdictStyxsApathy, interdictStyxsApathyEffect} from './macros/2014/classFeatures/illrigger/interdictBoons/styxsApathy.js';
+export {interdictswiftRetribution} from './macros/2014/classFeatures/illrigger/interdictBoons/swiftRetribution.js';
 // Race Features
 export {aasimarNecroticShroud, aasimarRadiantConsumption, aasimarRadiantSoul, celestialRevelation} from './macros/2014/raceFeatures/aasimar/celestialRevelation.js';
 export {acidBreathWeapon, coldBreathWeapon, fireBreathWeapon, lightningBreathWeapon, poisonBreathWeapon} from './macros/2014/raceFeatures/dragonborn/chromatic/breathWeapon.js';

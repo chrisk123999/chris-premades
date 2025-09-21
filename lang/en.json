@@ -188,6 +188,7 @@
             "CriticalOnly": "Critical Only:",
             "DC": "DC:",
             "DamageBonus": "Damage Bonus:",
+            "DamageScaleIdentifier": "Damage Scale Identifier:",
             "DamageType": "Damage Type:",
             "DamageTypes": "Damage Types:",
             "DarknessAnimation": "Darkness Animation:",
@@ -500,20 +501,20 @@
                 "turnEndNear": {
                     "Label": "Turn End Near"
                 },
+                "turnEndSource": {
+                    "Label": "Turn End Source"
+                },
                 "turnStart": {
                     "Label": "Turn Start"
                 },
                 "turnStartNear": {
                     "Label": "Turn Start Near"
                 },
-                "unequipped": {
-                    "Label": "Unequipped"
-                },
                 "turnStartSource": {
                     "Label": "Turn Start Source"
                 },
-                "turnEndSource": {
-                    "Label": "Turn End Source"
+                "unequipped": {
+                    "Label": "Unequipped"
                 }
             },
             "Priority": {
@@ -594,6 +595,7 @@
         },
         "Generic": {
             "Actions": "Actions",
+            "Amount": "Amount:",
             "Available": "Available",
             "CPR": "Cauldron of Plentiful Resources",
             "Cancel": "Cancel",
@@ -632,6 +634,7 @@
             "NoType": "No Type",
             "None": "None",
             "Ok": "Ok",
+            "ProtectWithItem": "Protect {token} with {item}?",
             "Range": "Range",
             "RangedSpells": "Ranged Spells",
             "RangedWeapons": "Ranged Weapons",
@@ -811,6 +814,16 @@
             },
             "AwakenedSpellbook": {
                 "Select": "Change damage type?"
+            },
+            "BalefulInterdict": {
+                "BurnSeals": "Burn Seals on target?",
+                "BurningSeals": "Burning Seals",
+                "CanTriggerImmediately": "Can Trigger Immediately:",
+                "Move": {
+                    "NoValidTargets": "No valid dead targets!",
+                    "TooFar": "Target is too far away!"
+                },
+                "PlaceSeal": "Place seal on target?"
             },
             "BalmOfPeace": {
                 "Balm": "Balm of Peace"
@@ -1325,6 +1338,9 @@
             "FocusedAim": {
                 "Bonus": "Yes ({kiCost} Ki / +{bonus} to hit)"
             },
+            "ForkedTongue": {
+                "SelectLanguages": "Select your known languages:"
+            },
             "FormOfDread": {
                 "Fear": "Form of Dread: Fear",
                 "Use": "Attempt to frighten target?"
@@ -1529,6 +1545,9 @@
             },
             "InspiringSmite": {
                 "Select": "Distribute Temp HP (Amount to Distribute: {maxAmount})"
+            },
+            "InterdictBoons": {
+                "Name": "Interdict Boon"
             },
             "InvestitureOfFlame": {
                 "Fire": "Investiture of Flame: Fire",
@@ -2623,6 +2642,14 @@
         "Movement": {
             "UnableToBeMoved": "Target is unable to be moved!"
         },
+        "QuickConditions": {
+            "Legend": "Available Conditions",
+            "Placeholder": "Click below to add conditions",
+            "Title": "CPR Quick Conditions",
+            "Unknown": {
+                "Tooltip": "Unable to match to any condition search keys"
+            }
+        },
         "Requirements": {
             "MissingClass": "The configured class/subclass {classIdentifier} does not exist on this actor!",
             "ScaleAdded": "The scale {scaleIdentifier} has been added to the class {classIdentifier}!"
@@ -3031,6 +3058,10 @@
             "playerSelectsConjures": {
                 "Hint": "When casting \"Conjure X\" spells, the player (not the GM) can select which creatures to conjure.",
                 "Name": "Player Selects Conjures"
+            },
+            "quickConditions": {
+                "Hint": "Adds a button to the Use Condition and Active Effect Condition fields on the midi tab on activities which opens a quick condition interface.",
+                "Name": "Quick Conditions"
             },
             "replaceStatusEffectIcons": {
                 "Hint": "When enabled, status icons will be replaced.",

@@ -12,14 +12,6 @@ function collectMacros(entity) {
     if (!macroList.length) return [];
     return macroList.map(i => custom.getMacro(i, genericUtils.getRules(entity))).filter(j => j);
 }
-function getOriginItem(effect) {
-    let origin = fromUuidSync(effect?.origin, {strict: false});
-    if (!origin) return;
-    if (origin instanceof Item) return origin;
-    if (origin.parent instanceof Item) return origin.parent;
-    origin = fromUuidSync(origin.origin, {strict: false});
-    if (origin instanceof Item) return origin;
-}
 function getRegionOrigin(region) {
     let originUuid = region.flags['chris-premades']?.region?.origin;
     if (!originUuid) return;
@@ -40,7 +32,7 @@ function collectTokenMacros(token, pass, distance, target) {
         if (pass === 'turnStartSource' || pass === 'turnEndSource') {
             let check = pass === 'turnEndSource' ? 'previous' : 'current';
             effects = actorUtils.getEffects(token.actor, {includeItemEffects: true}).filter(effect => {
-                let originItem = getOriginItem(effect);
+                let originItem = effectUtils.getOriginItemSync(effect);
                 if (!originItem?.actor) return;
                 let firstToken = actorUtils.getFirstToken(originItem.actor);
                 if (!firstToken?.combatant) return;

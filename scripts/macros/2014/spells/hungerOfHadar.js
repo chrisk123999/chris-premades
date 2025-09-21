@@ -1,5 +1,4 @@
 import {activityUtils, compendiumUtils, constants, effectUtils, genericUtils, itemUtils, templateUtils, workflowUtils} from '../../../utils.js';
-
 async function use({workflow}) {
     let concentrationEffect = effectUtils.getConcentrationEffect(workflow.actor, workflow.item);
     let useRealDarkness = itemUtils.getConfig(workflow.item, 'useRealDarkness');
