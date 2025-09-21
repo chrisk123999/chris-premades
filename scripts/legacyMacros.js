@@ -392,6 +392,11 @@ export {combatMasteryInexorable} from './macros/2014/classFeatures/illrigger/com
 export {combatMasteryLies} from './macros/2014/classFeatures/illrigger/combatMasteries/lies.js';
 export {combatMasteryLissome} from './macros/2014/classFeatures/illrigger/combatMasteries/lissome.js';
 export {combatMasteryUnfettered} from './macros/2014/classFeatures/illrigger/combatMasteries/unfettered.js';
+export {interdictBoonAbatingSeal} from './macros/2014/classFeatures/illrigger/interdictBoons/abatingSeal.js';
+export {interdictBoonBedevil} from './macros/2014/classFeatures/illrigger/interdictBoons/bedevil.js';
+export {interdictSoulEater} from './macros/2014/classFeatures/illrigger/interdictBoons/soulEater.js';
+export {interdictStyxsApathy, interdictStyxsApathyEffect} from './macros/2014/classFeatures/illrigger/interdictBoons/styxsApathy.js';
+export {interdictswiftRetribution} from './macros/2014/classFeatures/illrigger/interdictBoons/swiftRetribution.js';
 // Race Features
 export {aasimarNecroticShroud, aasimarRadiantConsumption, aasimarRadiantSoul, celestialRevelation} from './macros/2014/raceFeatures/aasimar/celestialRevelation.js';
 export {acidBreathWeapon, coldBreathWeapon, fireBreathWeapon, lightningBreathWeapon, poisonBreathWeapon} from './macros/2014/raceFeatures/dragonborn/chromatic/breathWeapon.js';

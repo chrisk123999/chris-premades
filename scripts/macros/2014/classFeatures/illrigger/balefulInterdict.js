@@ -35,10 +35,10 @@ async function damaged({trigger, workflow}) {
     for (let i of effectCounts) {
         let selection = await dialogUtils.selectTargetDialog('CHRISPREMADES.Macros.BalefulInterdict.BurningSeals', 'CHRISPREMADES.Macros.BalefulInterdict.BurnSeals', [i.target], {type: 'selectAmount', maxAmount: i.count, skipDeadAndUnconscious: false, userId: socketUtils.firstOwner(i.originItem, true), buttons: 'yesNo'});
         if (!selection?.[0]?.[0]?.value) continue;
-        let burnFireSpecial = activityUtils.getActivityByIdentifier(i.originItem, 'burnFireSpecial', {strict: true});
-        let burnNecroticSpecial = activityUtils.getActivityByIdentifier(i.originItem, 'burnNecroticSpecial', {strict: true});
-        if (!burnFireSpecial || !burnNecroticSpecial) continue;
-        let activitySelection = await dialogUtils.selectDocumentDialog(i.originItem.name, undefined, [burnFireSpecial, burnNecroticSpecial], {userId: socketUtils.firstOwner(i.originItem, true)});
+        let burnFire = activityUtils.getActivityByIdentifier(i.originItem, 'burnFire', {strict: true});
+        let burnNecrotic = activityUtils.getActivityByIdentifier(i.originItem, 'burnNecrotic', {strict: true});
+        if (!burnFire || !burnNecrotic) continue;
+        let activitySelection = await dialogUtils.selectDocumentDialog(i.originItem.name, undefined, [burnFire, burnNecrotic], {userId: socketUtils.firstOwner(i.originItem, true)});
         if (!activitySelection) continue;
         let activityData = genericUtils.duplicate(activitySelection.toObject());
         let classIdentifier = itemUtils.getConfig(i.originItem, 'classIdentifier');
@@ -51,24 +51,6 @@ async function damaged({trigger, workflow}) {
         let effects = effectUtils.getAllEffectsByIdentifier(i.target.actor, 'balefulInterdictEffect');
         for (let j = 0; j < i.count; j++) await genericUtils.remove(effects[j]);
     }
-}
-async function damage({trigger, workflow}) {
-    if (!workflow.targets.size) return;
-    let effects = await Promise.all(effectUtils.getAllEffectsByIdentifier(workflow.targets.first().actor, 'balefulInterdictEffect').filter(async effect => {
-        let originItem =  await effectUtils.getOriginItem(effect);
-        if (!originItem) return;
-        if (originItem.actor.id === workflow.actor.id) return true;
-    }));
-    if (!effects.length) return;
-    let selection = await dialogUtils.selectTargetDialog(workflow.activity.name, 'CHRISPREMADES.Macros.BalefulInterdict.SelectBurnSeals', [workflow.targets.first()], {type: 'selectAmount', maxAmount: effects.length, skipDeadAndUnconscious: false, buttons: 'okCancel'});
-    if (!selection?.[0]?.[0]?.value) return;
-    let classIdentifier = itemUtils.getConfig(workflow.item, 'classIdentifier');
-    let damageScaleIdentifier = itemUtils.getConfig(workflow.item, 'damageScaleIdentifier');
-    let scale = workflow.actor.system.scale[classIdentifier]?.[damageScaleIdentifier];
-    if (!scale) return;
-    let diceNumber = Number(selection[0][0].value) * scale.number;
-    await workflowUtils.replaceDamage(workflow, diceNumber + scale.die);
-    for (let i = 0; i < Number(selection[0][0].value); i++) await genericUtils.remove(effects[i]);
 }
 async function distance({trigger, workflow}) {
     let combatMasteryUnfettered = itemUtils.getItemByIdentifier(workflow.actor, 'combatMasteryUnfettered');
@@ -141,6 +123,30 @@ async function move({trigger, workflow}) {
     await genericUtils.deleteEmbeddedDocuments(targetToken.actor, 'ActiveEffect', effects.map(effect => effect.id));
     await genericUtils.createEmbeddedDocuments(workflow.targets.first().actor, 'ActiveEffect', effectDatas);
 }
+async function burnSpecial({trigger, workflow}) {
+    if (!workflow.targets.size) return;
+    let interdictBoonBedevil = itemUtils.getItemByIdentifier(workflow.actor, 'interdictBoonBedevil');
+    let interdictSoulEater = itemUtils.getItemByIdentifier(workflow.actor, 'interdictSoulEater');
+    let interdictStyxsApathy = itemUtils.getItemByIdentifier(workflow.actor, 'interdictStyxsApathy');
+    let interdictUnleashHell = itemUtils.getItemByIdentifier(workflow.actor, 'interdictUnleashHell');
+    let documents = [interdictBoonBedevil, interdictSoulEater, interdictStyxsApathy, interdictUnleashHell].filter(i => i).filter(i => {
+        if (!i.system.uses.value) return;
+        let identifer = genericUtils.getIdentifier(i);
+        switch (identifer) {
+            case 'interdictStyxsApathy':
+                if (actorUtils.hasUsedReaction(i.actor)) return;
+        }
+        return true;
+    });
+    if (!documents.length) return;
+    let selection = await dialogUtils.selectDocumentDialog('CHRISPREMADES.Macros.InterdictBoons.Name', genericUtils.format('CHRISPREMADES.Dialog.Use', {itemName: genericUtils.translate('CHRISPREMADES.Macros.InterdictBoons.Name')}), documents, {sortAlphabetical: true, userId: socketUtils.firstOwner(workflow.item, true)});
+    if (!selection) return;
+    await workflowUtils.syntheticItemRoll(selection, [workflow.targets.first()], {consumeResources: true, consumeUsage: true});
+    for (let document of documents.filter(i => i.id != selection.id)) await genericUtils.update(document, {'system.uses.spent': document.system.uses.spent + 1});
+}
+async function burnBonus({trigger, workflow}) {
+
+}
 export let balefulInterdict = {
     name: 'Baleful Interdict',
     version: '1.3.65',
@@ -148,22 +154,22 @@ export let balefulInterdict = {
     midi: {
         item: [
             {
-                pass: 'damageRollComplete',
-                macro: damage,
-                priority: 50,
-                activities: ['burnFire', 'burnNecrotic']
-            },
-            {
                 pass: 'preambleComplete',
                 macro: distance,
                 priority: 50,
-                activities: ['burnFire', 'burnNecrotic', 'placeSeal']
+                activities: ['placeSeal']
             },
             {
                 pass: 'rollFinished',
                 macro: move,
                 priority: 50,
                 activities: ['move']
+            },
+            {
+                pass: 'rollFinished',
+                macro: burnSpecial,
+                priority: 50,
+                activities: ['burnFire', 'burnNecrotic']
             }
         ],
         actor: [

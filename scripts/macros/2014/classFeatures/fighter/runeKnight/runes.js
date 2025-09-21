@@ -1,7 +1,7 @@
 import {actorUtils, combatUtils, constants, dialogUtils, effectUtils, genericUtils, itemUtils, socketUtils, tokenUtils, workflowUtils} from '../../../../../utils.js';
 async function damageFireRune({trigger: {entity: item}, workflow}) {
     if (workflow.hitTargets.size !== 1) return;
-    if (!constants.weaponAttacks.includes(workflow.action.actionType)) return;
+    if (!workflowUtils.isAttackType(workflow, 'weaponAttack')) return;
     if (!item.system.uses.value) return;
     if (!itemUtils.getConfig(item, 'allowUnarmed') && constants.unarmedAttacks.includes(genericUtils.getIdentifier(workflow.item))) return;
     if (actorUtils.hasUsedReaction(workflow.actor)) return;

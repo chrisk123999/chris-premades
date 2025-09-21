@@ -1,7 +1,3 @@
-# 1.3.67 Release:
-## Bug Fixes:
-- Fixed interaction between quick conditions and some text inputs.
-  
 # 1.3.66 Release:
 ## New Legacy Content:
 - Baleful Interdict
@@ -12,6 +8,15 @@
 - Combat Mastery: Lies
 - Combat Mastery: Lissome
 - Combat Mastery: Unfettered
+- Interdict Boons: Abating Seal
+- Interdict Boons: Bedevil
+- Interdict Boons: Soul Eater
+- Interdict Boons: Styx's Apathy
+- Interdict Boons: Swift Retribution
+## Bug Fixes:
+- Fixed interaction between quick conditions and some text inputs.
+- Overchannel (Legacy)
+- Fire Rune (Legacy)
 
 # 1.3.65 Release:
 ## Update Notes:

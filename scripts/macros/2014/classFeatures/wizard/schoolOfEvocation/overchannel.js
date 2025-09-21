@@ -14,14 +14,10 @@ async function damage({trigger: {entity: item}, workflow}) {
     }
     let selection = await dialogUtils.confirm(item.name, confirmText);
     if (!selection) return;
-    for (let damageRoll of workflow.damageRolls) {
-        for (let term of damageRoll.terms) {
-            for (let i = 0; i < term.values.length; i++) {
-                term.results[i].result = term.faces;
-            }
-        }
-    }
-    await workflow.setDamageRolls(workflow.damageRolls);
+    let damageRolls = await Promise.all(workflow.damageRolls.map(async roll => {
+        return await roll.reroll({maximize: true});
+    }));
+    await workflow.setDamageRolls(damageRolls);
     await genericUtils.setFlag(item, 'chris-premades', 'overchannel.active', true);
 }
 async function late({trigger: {entity: item}, workflow}) {

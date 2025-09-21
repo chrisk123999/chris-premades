@@ -72,269 +72,11 @@
           "rules": "legacy"
         }
       },
-      "_key": "!items.effects!wa9F41DGIqCcfwax.gAePIagZYhicRBu3"
+      "_key": "!items.effects!yXibBgsXV2veypTv.gAePIagZYhicRBu3"
     }
   ],
   "system": {
     "activities": {
-      "damageBIBSFclNe0": {
-        "name": "Burn Seals (Fire)",
-        "type": "damage",
-        "_id": "damageBIBSFclNe0",
-        "sort": 0,
-        "activation": {
-          "type": "bonus",
-          "value": 1,
-          "condition": "",
-          "override": false
-        },
-        "consumption": {
-          "targets": [],
-          "scaling": {
-            "allowed": false,
-            "max": ""
-          },
-          "spellSlot": true
-        },
-        "description": {
-          "chatFlavor": ""
-        },
-        "duration": {
-          "units": "inst",
-          "special": "",
-          "concentration": false,
-          "override": false
-        },
-        "effects": [],
-        "range": {
-          "value": "",
-          "units": "any",
-          "special": "",
-          "override": false
-        },
-        "target": {
-          "prompt": true,
-          "affects": {
-            "count": "1",
-            "type": "creature",
-            "choice": false,
-            "special": ""
-          },
-          "template": {
-            "count": "",
-            "contiguous": false,
-            "type": "",
-            "size": "",
-            "width": "",
-            "height": "",
-            "units": "ft"
-          },
-          "override": false
-        },
-        "uses": {
-          "spent": 0,
-          "recovery": [],
-          "max": ""
-        },
-        "damage": {
-          "critical": {
-            "allow": false
-          },
-          "parts": [
-            {
-              "custom": {
-                "enabled": false,
-                "formula": ""
-              },
-              "number": null,
-              "denomination": null,
-              "bonus": "0",
-              "types": [
-                "fire"
-              ]
-            }
-          ]
-        },
-        "useConditionText": "",
-        "useConditionReason": "",
-        "effectConditionText": "",
-        "macroData": {
-          "name": "",
-          "command": ""
-        },
-        "ignoreTraits": {
-          "idi": false,
-          "idr": false,
-          "idv": false,
-          "ida": false,
-          "idm": false
-        },
-        "midiProperties": {
-          "ignoreTraits": [],
-          "triggeredActivityId": "none",
-          "triggeredActivityConditionText": "",
-          "triggeredActivityTargets": "targets",
-          "triggeredActivityRollAs": "self",
-          "confirmTargets": "default",
-          "automationOnly": false,
-          "identifier": "",
-          "autoConsume": false,
-          "forceConsumeDialog": "default",
-          "forceRollDialog": "default",
-          "forceDamageDialog": "default",
-          "autoTargetType": "any",
-          "autoTargetAction": "default",
-          "otherActivityCompatible": false,
-          "otherActivityAsParentType": true,
-          "displayActivityName": false,
-          "rollMode": "default",
-          "chooseEffects": false,
-          "toggleEffect": false,
-          "ignoreFullCover": false,
-          "removeChatButtons": "default",
-          "magicEffect": false,
-          "magicDamage": false,
-          "noConcentrationCheck": false,
-          "autoCEEffects": "default"
-        },
-        "isOverTimeFlag": false,
-        "overTimeProperties": {
-          "saveRemoves": true,
-          "preRemoveConditionText": "",
-          "postRemoveConditionText": ""
-        },
-        "img": "",
-        "appliedEffects": []
-      },
-      "damageBIBSNclNe1": {
-        "name": "Burn Seals (Necrotic)",
-        "type": "damage",
-        "_id": "damageBIBSNclNe1",
-        "sort": 0,
-        "activation": {
-          "type": "bonus",
-          "value": 1,
-          "condition": "",
-          "override": false
-        },
-        "consumption": {
-          "targets": [],
-          "scaling": {
-            "allowed": false,
-            "max": ""
-          },
-          "spellSlot": true
-        },
-        "description": {
-          "chatFlavor": ""
-        },
-        "duration": {
-          "units": "inst",
-          "special": "",
-          "concentration": false,
-          "override": false
-        },
-        "effects": [],
-        "range": {
-          "value": "",
-          "units": "any",
-          "special": "",
-          "override": false
-        },
-        "target": {
-          "prompt": true,
-          "affects": {
-            "count": "1",
-            "type": "creature",
-            "choice": false,
-            "special": ""
-          },
-          "template": {
-            "count": "",
-            "contiguous": false,
-            "type": "",
-            "size": "",
-            "width": "",
-            "height": "",
-            "units": "ft"
-          },
-          "override": false
-        },
-        "uses": {
-          "spent": 0,
-          "recovery": [],
-          "max": ""
-        },
-        "damage": {
-          "critical": {
-            "allow": false
-          },
-          "parts": [
-            {
-              "custom": {
-                "enabled": false,
-                "formula": ""
-              },
-              "number": null,
-              "denomination": null,
-              "bonus": "0",
-              "types": [
-                "necrotic"
-              ]
-            }
-          ]
-        },
-        "useConditionText": "",
-        "useConditionReason": "",
-        "effectConditionText": "",
-        "macroData": {
-          "name": "",
-          "command": ""
-        },
-        "ignoreTraits": {
-          "idi": false,
-          "idr": false,
-          "idv": false,
-          "ida": false,
-          "idm": false
-        },
-        "midiProperties": {
-          "ignoreTraits": [],
-          "triggeredActivityId": "none",
-          "triggeredActivityConditionText": "",
-          "triggeredActivityTargets": "targets",
-          "triggeredActivityRollAs": "self",
-          "confirmTargets": "default",
-          "automationOnly": false,
-          "identifier": "",
-          "autoConsume": false,
-          "forceConsumeDialog": "default",
-          "forceRollDialog": "default",
-          "forceDamageDialog": "default",
-          "autoTargetType": "any",
-          "autoTargetAction": "default",
-          "otherActivityCompatible": false,
-          "otherActivityAsParentType": true,
-          "displayActivityName": false,
-          "rollMode": "default",
-          "chooseEffects": false,
-          "toggleEffect": false,
-          "ignoreFullCover": false,
-          "removeChatButtons": "default",
-          "magicEffect": false,
-          "magicDamage": false,
-          "noConcentrationCheck": false,
-          "autoCEEffects": "default"
-        },
-        "isOverTimeFlag": false,
-        "overTimeProperties": {
-          "saveRemoves": true,
-          "preRemoveConditionText": "",
-          "postRemoveConditionText": ""
-        },
-        "img": "",
-        "appliedEffects": []
-      },
       "utilityBaISclNe2": {
         "name": "Place Seal",
         "type": "utility",
@@ -351,7 +93,8 @@
             {
               "type": "itemUses",
               "value": "1",
-              "target": ""
+              "target": "",
+              "scaling": {}
             }
           ],
           "scaling": {
@@ -460,11 +203,7 @@
           "postRemoveConditionText": ""
         },
         "otherActivityId": "none",
-        "otherActivityAsParentType": true,
-        "img": "",
-        "appliedEffects": [
-          "gAePIagZYhicRBu3"
-        ]
+        "otherActivityAsParentType": true
       },
       "utilityBIMSclNe3": {
         "name": "Move Seals",
@@ -708,7 +447,7 @@
           "postRemoveConditionText": ""
         },
         "_id": "mVSF5fkyO72BuojU",
-        "img": "",
+        "img": "icons/magic/fire/beam-jet-stream-embers.webp",
         "appliedEffects": []
       },
       "rorcwZYnnfNaI1sZ": {
@@ -784,10 +523,7 @@
               "bonus": "0",
               "types": [
                 "necrotic"
-              ],
-              "scaling": {
-                "number": 1
-              }
+              ]
             }
           ]
         },
@@ -839,7 +575,9 @@
           "preRemoveConditionText": "",
           "postRemoveConditionText": ""
         },
-        "_id": "rorcwZYnnfNaI1sZ"
+        "_id": "rorcwZYnnfNaI1sZ",
+        "img": "icons/magic/unholy/projectile-bolts-salvo-pink.webp",
+        "appliedEffects": []
       }
     },
     "uses": {
@@ -904,14 +642,12 @@
     },
     "chris-premades": {
       "hiddenActivities": [
-        "burnFireSpecial",
-        "burnNecroticSpecial"
+        "burnFire",
+        "burnNecrotic"
       ],
       "activityIdentifiers": {
-        "burnFire": "damageBIBSFclNe0",
-        "burnNecrotic": "damageBIBSNclNe1",
-        "burnFireSpecial": "mVSF5fkyO72BuojU",
-        "burnNecroticSpecial": "rorcwZYnnfNaI1sZ",
+        "burnFire": "mVSF5fkyO72BuojU",
+        "burnNecrotic": "rorcwZYnnfNaI1sZ",
         "placeSeal": "utilityBaISclNe2",
         "move": "utilityBIMSclNe3"
       },
@@ -938,6 +674,6 @@
   },
   "img": "icons/magic/fire/flame-burning-hand-purple.webp",
   "folder": "tTEcQkFywbCp1hpj",
-  "_id": "wa9F41DGIqCcfwax",
-  "_key": "!items!wa9F41DGIqCcfwax"
+  "_id": "yXibBgsXV2veypTv",
+  "_key": "!items!yXibBgsXV2veypTv"
 }

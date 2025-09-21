@@ -1,5 +1,4 @@
 import {actorUtils} from '../../../utils.js';
-
 async function turnStart({trigger: {token}}) {
     await actorUtils.setReactionUsed(token.actor);
 }

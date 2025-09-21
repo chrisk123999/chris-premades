@@ -634,6 +634,7 @@
             "NoType": "No Type",
             "None": "None",
             "Ok": "Ok",
+            "ProtectWithItem": "Protect {token} with {item}?",
             "Range": "Range",
             "RangedSpells": "Ranged Spells",
             "RangedWeapons": "Ranged Weapons",
@@ -822,8 +823,7 @@
                     "NoValidTargets": "No valid dead targets!",
                     "TooFar": "Target is too far away!"
                 },
-                "PlaceSeal": "Place seal on target?",
-                "SelectBurnSeals": "Burn how many seals?"
+                "PlaceSeal": "Place seal on target?"
             },
             "BalmOfPeace": {
                 "Balm": "Balm of Peace"
@@ -1545,6 +1545,9 @@
             },
             "InspiringSmite": {
                 "Select": "Distribute Temp HP (Amount to Distribute: {maxAmount})"
+            },
+            "InterdictBoons": {
+                "Name": "Interdict Boon"
             },
             "InvestitureOfFlame": {
                 "Fire": "Investiture of Flame: Fire",
