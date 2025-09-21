@@ -26,7 +26,7 @@ let helpers = {
     selectDetailed,
     selectMultiple,
     contentP,
-    text
+    textInput
 };
 function button(input) {
     let html = `<button type="${input.type ?? 'button'}" class="${input.class ?? 'form-button'}" data-action="${input.dataAction}" id="${input.id}" name="${input.name}">`;
@@ -82,7 +82,7 @@ function contentP(input) {
     `;
     return html;
 }
-function text(input) {
+function textInput(input) {
     let html = `<input type="text" class="${input.class}" id="${input.id}" name="${input.name}" value="${input.value}"`;
     if (input.tooltip) html += `data-tooltip="${genericUtils.translate(input.tooltip)}"`;
     html += `></input>`;

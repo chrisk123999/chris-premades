@@ -1,3 +1,7 @@
+# 1.3.67 Release:
+## Bug Fixes:
+- Fixed interaction between quick conditions and some text inputs.
+  
 # 1.3.66 Release:
 ## New Legacy Content:
 - Baleful Interdict

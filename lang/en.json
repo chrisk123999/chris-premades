@@ -2642,7 +2642,10 @@
         "QuickConditions": {
             "Legend": "Available Conditions",
             "Placeholder": "Click below to add conditions",
-            "Title": "CPR Quick Conditions"
+            "Title": "CPR Quick Conditions",
+            "Unknown": {
+                "Tooltip": "Unable to match to any condition search keys"
+            }
         },
         "Requirements": {
             "MissingClass": "The configured class/subclass {classIdentifier} does not exist on this actor!",
