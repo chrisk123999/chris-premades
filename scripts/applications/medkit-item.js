@@ -722,7 +722,6 @@ export class ItemMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
     static async update(item, sourceItem, {source, version, identifier} = {}, actorMedkit = false) {
         let itemData = genericUtils.duplicate(item.toObject());
         let sourceItemData = genericUtils.duplicate(sourceItem.toObject());
-        let itemType = item.type;
         const keepPaths = [
             '_stats.compendiumSource',
             'flags.chris-premades.config',
@@ -755,6 +754,7 @@ export class ItemMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
             let fieldValue = genericUtils.getProperty(itemData, field);
             if (fieldValue) genericUtils.setProperty(sourceItemData, field, fieldValue);
         }
+        if (source === 'gambits-premades') genericUtils.setProperty(itemData, 'system.source.custom', sourceItemData.system.source.custom);
         for (let field of cleanPaths) {
             let fieldValue = genericUtils.getProperty(sourceItemData, field);
             if (fieldValue) continue;

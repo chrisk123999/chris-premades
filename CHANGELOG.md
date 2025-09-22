@@ -1,3 +1,9 @@
+# 1.3.68 Release:
+## New Legacy Content:
+- Infernal Conduit
+## Bug Fixes:
+- GPS Medkit Support
+
 # 1.3.67 Release:
 ## Bug Fixes:
 - Preserve Life (Modern)

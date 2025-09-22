@@ -13,12 +13,12 @@ async function bonusDamage(workflow, formula, {ignoreCrit = false, damageType}={
     await workflow.setDamageRolls(workflow.damageRolls);
 }
 async function bonusAttack(workflow, formula) {
-    let roll = await rollUtils.addToRoll(workflow.attackRoll, formula, {rollData: workflow.item.getRollData()});
+    let roll = await rollUtils.addToRoll(workflow.attackRoll, formula, {rollData: workflow.activity.getRollData()});
     await workflow.setAttackRoll(roll);
 }
 async function replaceDamage(workflow, formula, {ignoreCrit = false, damageType} = {}) {
     formula = String(formula);
-    if (workflow.isCritical && !ignoreCrit) formula = await rollUtils.getCriticalFormula(formula, workflow.item.getRollData());
+    if (workflow.isCritical && !ignoreCrit) formula = await rollUtils.getCriticalFormula(formula, workflow.activity.getRollData());
     let roll = await new CONFIG.Dice.DamageRoll(formula, workflow.activity.getRollData()).evaluate();
     if (damageType) {
         genericUtils.setProperty(roll, 'options.type', damageType);
