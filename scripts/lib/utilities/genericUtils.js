@@ -128,7 +128,7 @@ async function deleteEmbeddedDocuments(entity, type, ids, options) {
     }
     return documents;
 }
-async function updateTargets(targets, user=game.user) {
+async function updateTargets(targets, user = game.user) {
     let targetIds = Array.from(targets).map(target => target.id ?? target);
     if (user === game.user) {
         canvas.tokens?.setTargets(targetIds);

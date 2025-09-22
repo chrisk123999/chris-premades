@@ -1,3 +1,7 @@
+# 1.3.67 Release:
+## Bug Fixes:
+- Preserve Life (Modern)
+
 # 1.3.66 Release:
 ## New Legacy Content:
 - Baleful Interdict

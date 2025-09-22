@@ -2,7 +2,7 @@ import {activityUtils, animationUtils, dialogUtils, genericUtils, itemUtils, wor
 async function early({trigger, workflow}) {
     let targets = workflow.targets.filter(i => i.actor.system.attributes.hp.value < Math.floor(i.actor.system.attributes.hp.max / 2));
     if (workflow.actor.system.attributes.hp.value < Math.floor(workflow.actor.system.attributes.hp.max / 2)) targets.add(workflow.token);
-    await workflowUtils.updateTargets(Array.from(targets));
+    await workflowUtils.updateTargets(workflow, Array.from(targets));
 }
 async function use({trigger: {entity: item}, workflow}) {
     if (!workflow.targets.size) return;
@@ -11,10 +11,15 @@ async function use({trigger: {entity: item}, workflow}) {
     if (!classItem) return;
     let classLevels = classItem.system.levels;
     let maxAmount = classLevels * 5;
+    let maxes = {};
+    Array.from(workflow.targets).forEach(token => {
+        genericUtils.setProperty(maxes, token.id, Math.min((Math.floor(token.actor.system.attributes.hp.max / 2) - token.actor.system.attributes.hp.value), maxAmount));
+    });
     let selection = await dialogUtils.selectTargetDialog(workflow.item.name, genericUtils.format('CHRISPREMADES.Macros.PreserveLife.Select', {maxAmount}), workflow.targets, {
         type: 'selectAmount',
         maxAmount,
-        skipDeadAndUnconscious: false
+        skipDeadAndUnconscious: false,
+        maxes
     });
     if (!selection?.length) return;
     selection = selection[0].filter(i => i.value);
@@ -38,7 +43,7 @@ async function added({trigger: {entity: item, actor}}) {
 }
 export let preserveLife = {
     name: 'Preserve Life',
-    version: '1.2.13',
+    version: '1.3.67',
     rules: 'modern',
     midi: {
         item: [
