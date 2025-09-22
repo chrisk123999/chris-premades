@@ -5,7 +5,7 @@ async function save({trigger: {config, roll, actor, entity: item}}) {
     if (!item.system.uses.value) return;
     let effect = effectUtils.getEffectByIdentifier(actor, 'rage');
     if (!effect) return;
-    let targetValue = config?.midiOptions?.targetValue;
+    let targetValue = roll.options.target;
     if (!targetValue) return;
     if (roll.total >= targetValue) return;
     let selection = await dialogUtils.confirm(item.name, genericUtils.format('CHRISPREMADES.Macros.FanaticalFocus.Use', {item: item.name, total: roll.total}));

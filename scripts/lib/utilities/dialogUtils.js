@@ -245,7 +245,7 @@ async function selectHitDie(actor, title, content, {max = 1, userId = game.user.
             maxAmount: Math.min(i.system.levels - i.system.hd.spent, max)
         }
     }));
-    let inputs = [['selectAmount', inputFields, {displayAsRows: true, totalMax: max}]];
+    let inputs = [[max == 1 ? 'checkbox' : 'selectAmount', inputFields, {displayAsRows: true, totalMax: max}]];
     let result;
     if (game.user.id != userId) {
         result = await socket.executeAsUser(sockets.dialog.name, userId, title, content, inputs, 'okCancel', {height: 'auto'});

@@ -1,7 +1,7 @@
 import {constants, dialogUtils, genericUtils, itemUtils, rollUtils, workflowUtils} from '../../../../utils.js';
-async function saveCheckSkill({trigger: {entity: item, config, roll}}) {
+async function saveCheckSkill({trigger: {entity: item, roll}}) {
     if (!item.system.uses.value) return;
-    let targetValue = config?.midiOptions?.targetValue;
+    let targetValue = roll.options.target;
     if (targetValue && (roll.total >= targetValue)) return;
     if (!targetValue && !itemUtils.getConfig(item, 'noDCPrompt')) return;
     let selection = await dialogUtils.confirm(item.name, genericUtils.format('CHRISPREMADES.Dialog.UseRollTotal', {itemName: item.name, rollTotal: roll.total}));

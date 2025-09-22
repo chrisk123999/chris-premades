@@ -1,6 +1,6 @@
 import {activityUtils, actorUtils, dialogUtils, effectUtils, genericUtils, itemUtils, rollUtils, socketUtils, tokenUtils, workflowUtils} from '../../../../utils.js';
 async function saveCheckSkill({trigger: {config, roll, entity: effect}}) {
-    let targetValue = config?.midiOptions?.targetValue;
+    let targetValue = roll.options.target;
     if (targetValue && (roll.total >= targetValue)) return;
     let formula = effect.flags['chris-premades']?.bardicInspiration?.formula;
     if (!formula) return;

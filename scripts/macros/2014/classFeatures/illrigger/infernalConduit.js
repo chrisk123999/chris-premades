@@ -1,8 +1,9 @@
-import {genericUtils, itemUtils, tokenUtils, workflowUtils} from '../../../../utils.js';
+import {activityUtils, genericUtils, itemUtils, tokenUtils, workflowUtils} from '../../../../utils.js';
 async function damage({trigger, workflow}) {
     if (!workflow.token || !workflow.targets.size) return;
-    let damageType = workflow.token.document.disposition === workflow.targets.first().document.disposition ? 'healing' : 'necrotic';
-    await workflowUtils.replaceDamage(workflow, '(@scaling)d10', {damageType});
+    let identifier = activityUtils.getIdentifier(workflow.activity);
+    if (!identifier) return;
+    await workflowUtils.replaceDamage(workflow, '(@scaling)d10', {damageType: identifier});
 }
 async function use({trigger, workflow}) {
     let damageTypes = workflowUtils.getDamageTypes(workflow.damageRolls);
@@ -20,7 +21,7 @@ async function distance({trigger, workflow}) {
 }
 export let infernalConduit = {
     name: 'Infernal Conduit',
-    version: '1.3.68',
+    version: '1.3.69',
     rules: 'legacy',
     midi: {
         item: [

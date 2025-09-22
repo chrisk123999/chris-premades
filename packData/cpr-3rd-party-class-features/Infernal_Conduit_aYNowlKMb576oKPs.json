@@ -145,26 +145,35 @@
           "preRemoveConditionText": "",
           "postRemoveConditionText": ""
         },
-        "otherActivityId": "",
+        "otherActivityId": "none",
         "otherActivityAsParentType": true,
         "friendlySave": "friendlyFail",
-        "name": ""
+        "name": "Heal"
       },
-      "nKxfaok0QNnbWcsu": {
-        "type": "damage",
-        "_id": "nKxfaok0QNnbWcsu",
+      "pGRWQXKnmKRHYGUg": {
+        "type": "save",
         "sort": 0,
         "activation": {
-          "type": "special",
+          "type": "action",
           "override": false,
           "condition": ""
         },
         "consumption": {
           "scaling": {
-            "allowed": false
+            "allowed": true,
+            "max": "@item.uses.value"
           },
           "spellSlot": true,
-          "targets": []
+          "targets": [
+            {
+              "type": "itemUses",
+              "value": "@scaling",
+              "target": "",
+              "scaling": {
+                "mode": ""
+              }
+            }
+          ]
         },
         "description": {
           "chatFlavor": ""
@@ -176,7 +185,7 @@
         },
         "effects": [],
         "range": {
-          "units": "self",
+          "units": "any",
           "override": false,
           "special": ""
         },
@@ -188,18 +197,20 @@
           },
           "affects": {
             "choice": false,
-            "type": "self",
+            "type": "creature",
+            "count": "1",
             "special": ""
           },
           "override": false,
           "prompt": true
         },
         "uses": {
-          "spent": 0,
+          "spent": null,
           "recovery": [],
           "max": ""
         },
         "damage": {
+          "onSave": "half",
           "critical": {
             "allow": false
           },
@@ -213,126 +224,23 @@
               "denomination": null,
               "bonus": "0",
               "types": [
-                "necrotic"
+                "midi-none"
               ],
               "scaling": {
+                "mode": "",
                 "number": 1
               }
             }
           ]
         },
-        "useConditionText": "",
-        "useConditionReason": "",
-        "effectConditionText": "",
-        "macroData": {
-          "name": "",
-          "command": ""
-        },
-        "ignoreTraits": {
-          "idi": false,
-          "idr": false,
-          "idv": false,
-          "ida": false,
-          "idm": false
-        },
-        "midiProperties": {
-          "ignoreTraits": [],
-          "triggeredActivityId": "none",
-          "triggeredActivityConditionText": "",
-          "triggeredActivityTargets": "targets",
-          "triggeredActivityRollAs": "self",
-          "autoConsume": false,
-          "forceConsumeDialog": "default",
-          "forceRollDialog": "default",
-          "forceDamageDialog": "default",
-          "confirmTargets": "default",
-          "autoTargetType": "any",
-          "autoTargetAction": "default",
-          "automationOnly": false,
-          "otherActivityCompatible": false,
-          "otherActivityAsParentType": true,
-          "identifier": "",
-          "displayActivityName": false,
-          "rollMode": "default",
-          "chooseEffects": false,
-          "toggleEffect": false,
-          "ignoreFullCover": false,
-          "removeChatButtons": "default",
-          "magicEffect": false,
-          "magicDamage": false,
-          "noConcentrationCheck": false,
-          "autoCEEffects": "default"
-        },
-        "isOverTimeFlag": false,
-        "overTimeProperties": {
-          "saveRemoves": true,
-          "preRemoveConditionText": "",
-          "postRemoveConditionText": ""
-        },
-        "name": ""
-      },
-      "O4AuS0HvZp2XcNkO": {
-        "type": "heal",
-        "_id": "O4AuS0HvZp2XcNkO",
-        "sort": 0,
-        "activation": {
-          "type": "special",
-          "override": false,
-          "condition": ""
-        },
-        "consumption": {
-          "scaling": {
-            "allowed": false
-          },
-          "spellSlot": true,
-          "targets": []
-        },
-        "description": {
-          "chatFlavor": ""
-        },
-        "duration": {
-          "units": "inst",
-          "concentration": false,
-          "override": false
-        },
-        "effects": [],
-        "range": {
-          "units": "self",
-          "override": false,
-          "special": ""
-        },
-        "target": {
-          "template": {
-            "contiguous": false,
-            "units": "ft",
-            "type": ""
-          },
-          "affects": {
-            "choice": false,
-            "type": "self",
-            "special": ""
-          },
-          "override": false,
-          "prompt": true
-        },
-        "uses": {
-          "spent": 0,
-          "recovery": [],
-          "max": ""
-        },
-        "healing": {
-          "types": [
-            "healing"
+        "save": {
+          "ability": [
+            "con"
           ],
-          "custom": {
-            "enabled": false
-          },
-          "scaling": {
-            "number": 1
-          },
-          "number": null,
-          "denomination": null,
-          "bonus": "0"
+          "dc": {
+            "calculation": "cha",
+            "formula": ""
+          }
         },
         "useConditionText": "",
         "useConditionReason": "",
@@ -382,7 +290,11 @@
           "preRemoveConditionText": "",
           "postRemoveConditionText": ""
         },
-        "name": ""
+        "otherActivityId": "none",
+        "otherActivityAsParentType": true,
+        "friendlySave": "friendlyFail",
+        "name": "Harm",
+        "_id": "pGRWQXKnmKRHYGUg"
       }
     },
     "uses": {
@@ -431,29 +343,29 @@
           "damageType": {
             "0": "midi-none"
           }
+        },
+        "pGRWQXKnmKRHYGUg": {
+          "damageType": {
+            "0": "midi-none"
+          }
         }
       },
       "riders": {
-        "activity": [
-          "nKxfaok0QNnbWcsu",
-          "O4AuS0HvZp2XcNkO"
-        ]
+        "activity": []
       }
     },
     "chris-premades": {
-      "hiddenActivities": [
-        "damage",
-        "heal"
-      ],
+      "hiddenActivities": [],
       "activityIdentifiers": {
         "damage": "nKxfaok0QNnbWcsu",
-        "heal": "O4AuS0HvZp2XcNkO"
+        "heal": "wKzsEi6Bf37AnCq3",
+        "necrotic": "pGRWQXKnmKRHYGUg"
       },
       "info": {
         "identifier": "infernalConduit",
         "rules": "legacy",
         "source": "chris-premades",
-        "version": "1.3.68"
+        "version": "1.3.69"
       },
       "macros": {
         "midi": {
@@ -466,6 +378,6 @@
   },
   "img": "icons/magic/movement/portal-vortex-orange.webp",
   "folder": "tTEcQkFywbCp1hpj",
-  "_id": "bqBwt44PTqfocz9I",
-  "_key": "!items!bqBwt44PTqfocz9I"
+  "_id": "aYNowlKMb576oKPs",
+  "_key": "!items!aYNowlKMb576oKPs"
 }
