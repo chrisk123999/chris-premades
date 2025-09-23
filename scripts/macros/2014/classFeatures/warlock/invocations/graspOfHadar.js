@@ -15,7 +15,7 @@ async function late({trigger: {entity: item}, workflow}) {
     }
     if (!target) target = validTargets[0];
     let distance = tokenUtils.getDistance(workflow.token, target);
-    let toMove = distance <= 10 ? -5 : -10;
+    let toMove = distance <= genericUtils.convertDistance(10) ? -genericUtils.convertDistance(5) : -genericUtils.convertDistance(10);
     await workflowUtils.completeItemUse(item);
     await tokenUtils.pushToken(workflow.token, target, toMove);
 }
