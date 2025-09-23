@@ -105,7 +105,7 @@ async function move({trigger, workflow}) {
         targetToken = validTokens[0];
     }
     let distance = tokenUtils.getDistance(targetToken, workflow.targets.first());
-    if (distance > 30) {
+    if (distance > genericUtils.convertDistance(30)) {
         genericUtils.notify('CHRISPREMADES.Macros.BalefulInterdict.Move.TooFar', 'info', {localize: true});
         return;
     }
