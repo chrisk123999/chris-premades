@@ -397,6 +397,8 @@ export {interdictBoonBedevil} from './macros/2014/classFeatures/illrigger/interd
 export {interdictSoulEater} from './macros/2014/classFeatures/illrigger/interdictBoons/soulEater.js';
 export {interdictStyxsApathy, interdictStyxsApathyEffect} from './macros/2014/classFeatures/illrigger/interdictBoons/styxsApathy.js';
 export {interdictswiftRetribution} from './macros/2014/classFeatures/illrigger/interdictBoons/swiftRetribution.js';
+export {infernalConduit} from './macros/2014/classFeatures/illrigger/infernalConduit.js';
+export {bloodPrice} from './macros/2014/classFeatures/illrigger/bloodPrice.js';
 // Race Features
 export {aasimarNecroticShroud, aasimarRadiantConsumption, aasimarRadiantSoul, celestialRevelation} from './macros/2014/raceFeatures/aasimar/celestialRevelation.js';
 export {acidBreathWeapon, coldBreathWeapon, fireBreathWeapon, lightningBreathWeapon, poisonBreathWeapon} from './macros/2014/raceFeatures/dragonborn/chromatic/breathWeapon.js';

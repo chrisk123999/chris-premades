@@ -53,7 +53,7 @@ async function selectDialog(title, content, input = {label: 'Label', name: 'iden
     } else result = await DialogApp.dialog(title, content, inputs, buttons);
     return result?.[input.name];
 }
-async function selectTargetDialog(title, content, targets, {type = 'one', selectOptions = [], skipDeadAndUnconscious = true, coverToken = undefined, reverseCover = false, displayDistance = true, maxAmount = 1, userId = game.user.id, buttons = 'okCancel'} = {}) {
+async function selectTargetDialog(title, content, targets, {type = 'one', selectOptions = [], skipDeadAndUnconscious = true, coverToken = undefined, reverseCover = false, displayDistance = true, maxAmount = 1, userId = game.user.id, buttons = 'okCancel', maxes = {}} = {}) {
     let inputs = [
         [type === 'multiple' ? 'checkbox' : type === 'number' ? 'number' : type === 'select' ? 'selectOption' : type === 'selectAmount' ? 'selectAmount' : 'radio']
     ];
@@ -86,7 +86,7 @@ async function selectTargetDialog(title, content, targets, {type = 'one', select
         targetInputs.push({
             label: label,
             name: value,
-            options: {image: image, isChecked: isDefaultSelected, options: selectOptions, maxAmount: maxAmount}
+            options: {image: image, isChecked: isDefaultSelected, options: selectOptions, maxAmount: maxes[i.id] ?? maxAmount}
         });
     }
     inputs[0].push(targetInputs);
@@ -194,7 +194,7 @@ async function selectDocumentDialog(title, content, documents, {displayTooltips 
     if (result?.buttons) return await fromUuid(result.buttons);
     return false;
 }
-async function selectDocumentsDialog(title, content, documents, {max = undefined, displayTooltips = false, sortAlphabetical = false, sortCR = false, userId = game.user.id, showCR = false, checkbox = false, weights = {}} = {}) {
+async function selectDocumentsDialog(title, content, documents, {max = undefined, displayTooltips = false, sortAlphabetical = false, sortCR = false, userId = game.user.id, showCR = false, checkbox = false, weights = {}, maxes = {}} = {}) {
     if (sortAlphabetical) {
         documents = documents.sort((a, b) => {
             return a.name.localeCompare(b.name, 'en', {'sensitivity': 'base'});
@@ -212,7 +212,7 @@ async function selectDocumentsDialog(title, content, documents, {max = undefined
             image: i.img + (i.system?.details?.cr != undefined ? ` (CR ${genericUtils.decimalToFraction(i.system?.details?.cr)})` : ``),
             tooltip: displayTooltips ? i.system.description.value.replace(/<[^>]*>?/gm, '') : undefined,
             minAmount: 0,
-            maxAmount: max,
+            maxAmount: maxes?.[i.id] ?? max,
             weight: weights?.[i.id] ?? 1
         }
     }));
@@ -245,7 +245,7 @@ async function selectHitDie(actor, title, content, {max = 1, userId = game.user.
             maxAmount: Math.min(i.system.levels - i.system.hd.spent, max)
         }
     }));
-    let inputs = [['selectAmount', inputFields, {displayAsRows: true, totalMax: max}]];
+    let inputs = [[max == 1 ? 'checkbox' : 'selectAmount', inputFields, {displayAsRows: true, totalMax: max}]];
     let result;
     if (game.user.id != userId) {
         result = await socket.executeAsUser(sockets.dialog.name, userId, title, content, inputs, 'okCancel', {height: 'auto'});

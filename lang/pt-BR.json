@@ -188,6 +188,7 @@
             "CriticalOnly": "Apenas Críticos:",
             "DC": "CD:",
             "DamageBonus": "Bônus de Dano:",
+            "DamageScaleIdentifier": "Identificador da Escala de Dano:",
             "DamageType": "Tipo de Dano:",
             "DamageTypes": "Tipos de Dano:",
             "DarknessAnimation": "Animação de Escuridão:",
@@ -594,6 +595,7 @@
         },
         "Generic": {
             "Actions": "Ações",
+            "Amount": "Quantidade:",
             "Available": "Disponível",
             "CPR": "Cauldron of Plentiful Resources",
             "Cancel": "Cancelar",
@@ -632,6 +634,7 @@
             "NoType": "Sem Tipo",
             "None": "Nenhum(a)",
             "Ok": "Ok",
+            "ProtectWithItem": "Proteger {token} com {item}?",
             "Range": "Alcance",
             "RangedSpells": "Magias à Distância",
             "RangedWeapons": "Armas à Distância",
@@ -811,6 +814,16 @@
             },
             "AwakenedSpellbook": {
                 "Select": "Mudar tipo de dano?"
+            },
+            "BalefulInterdict": {
+                "BurnSeals": "Queimar Selo no alvo?",
+                "BurningSeals": "Selos Ardentes",
+                "CanTriggerImmediately": "Pode Acionar Imediatamente:",
+                "Move": {
+                    "NoValidTargets": "Nenhum alvo morto válido!",
+                    "TooFar": "O alvo está muito longe!"
+                },
+                "PlaceSeal": "Colocar selo no alvo?"
             },
             "BalmOfPeace": {
                 "Balm": "Bálsamo da Paz"
@@ -1325,6 +1338,9 @@
             "FocusedAim": {
                 "Bonus": "Sim ({kiCost} Ki / +{bonus} para atingir)"
             },
+            "ForkedTongue": {
+                "SelectLanguages": "Selecione seus idiomas conhecidos:"
+            },
             "FormOfDread": {
                 "Fear": "Forma de Pavor: Medo",
                 "Use": "Tentativa de amedrontar o alvo?"
@@ -1529,6 +1545,9 @@
             },
             "InspiringSmite": {
                 "Select": "Distribuir PV Temporário (Quantidade a Distribuir: {maxAmount})"
+            },
+            "InterdictBoons": {
+                "Name": "Interdict Boon"
             },
             "InvestitureOfFlame": {
                 "Fire": "Manto de Chamas: Fogo",
@@ -2626,7 +2645,10 @@
         "QuickConditions": {
             "Legend": "Condições Disponíveis",
             "Placeholder": "Clique abaixo para adicionar condições",
-            "Title": "Condições Rápidas CPR"
+            "Title": "Condições Rápidas CPR",
+            "Unknown": {
+                "Tooltip": "Não é possível corresponder a nenhuma condição de chave de pesquisa"
+            }
         },
         "Requirements": {
             "MissingClass": "A classe/subclasse configurada {classIdentifier} não existe neste ator!",

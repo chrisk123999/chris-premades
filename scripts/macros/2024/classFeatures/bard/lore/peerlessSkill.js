@@ -21,8 +21,8 @@ async function attackLate({trigger, workflow}) {
     if (!bardicInspiration) return;
     await genericUtils.update(bardicInspiration, {'system.uses.spent': bardicInspiration.system.uses.spent + 1});
 }
-async function checkSkill({trigger: {entity: item, config, roll, actor, options}}) {
-    let targetValue = config?.midiOptions?.targetValue;
+async function checkSkill({trigger: {entity: item, roll, actor, options}}) {
+    let targetValue = roll.options.target;
     if (targetValue) {
         if (roll.total >= targetValue) return;
     }
@@ -40,7 +40,7 @@ async function checkSkill({trigger: {entity: item, config, roll, actor, options}
 }
 async function checkSkillLate({trigger: {entity: item, config, roll, actor, options}}) {
     if (!options?.['chris-premades']?.peerlessSkill) return;
-    let targetValue = config?.midiOptions?.targetValue;
+    let targetValue = config?.midiOptions?.target;
     if (targetValue) {
         if (roll.total < targetValue) return;
     } else {

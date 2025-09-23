@@ -128,7 +128,7 @@ async function deleteEmbeddedDocuments(entity, type, ids, options) {
     }
     return documents;
 }
-async function updateTargets(targets, user=game.user) {
+async function updateTargets(targets, user = game.user) {
     let targetIds = Array.from(targets).map(target => target.id ?? target);
     if (user === game.user) {
         canvas.tokens?.setTargets(targetIds);
@@ -173,14 +173,12 @@ function getCPRIdentifier(name, rules = 'legacy') {
     let identifier = Object.entries(macros).find(i => i[1].name === name || i[1].aliases?.includes(name))?.[0];
     return identifier;
 }
-function round(num) {
-    return Math.round((num + Number.EPSILON) * 100) / 100;
-}
-
-function handleMetric(ft) {
-    if (!ft || isNaN(parseInt(ft))) return ft;
-    if(!game.settings.get("dnd5e", "metricLengthUnits")) return ft;
-    return round(parseInt(ft) * 0.3);
+function convertDistance(ft) {
+    if (!canvas.scene) return ft;
+    switch (canvas.scene.grid.units) {
+        case 'm': return Math.round((parseInt(ft) + Number.EPSILON) * 100 / 100) * 0.3;
+        default: return ft;
+    }
 }
 export let genericUtils = {
     sleep,
@@ -215,5 +213,5 @@ export let genericUtils = {
     checkPlayerOwnership,
     getRules,
     getCPRIdentifier,
-    handleMetric
+    convertDistance
 };

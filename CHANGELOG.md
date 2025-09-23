@@ -1,3 +1,24 @@
+# 1.3.69 Release:
+## New Legacy Content:
+- Blood Price
+## Bug Fixes:
+- Infernal Conduit (Legacy)
+- Fanatical Focus (Modern)
+- Bardic Inspiration (Modern)
+- Peerless Skill (Modern)
+- Stroke of Luck (Modern)
+- Psionic Power
+
+# 1.3.68 Release:
+## New Legacy Content:
+- Infernal Conduit
+## Bug Fixes:
+- GPS Medkit Support
+
+# 1.3.67 Release:
+## Bug Fixes:
+- Preserve Life (Modern)
+
 # 1.3.66 Release:
 ## New Legacy Content:
 - Baleful Interdict

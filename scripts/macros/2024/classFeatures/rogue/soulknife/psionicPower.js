@@ -30,9 +30,9 @@ async function psychicWhispersRest({trigger: {entity: item}}) {
         }
     });
 }
-async function skillToolCheck({trigger: {entity: item, config, roll, actor, options}}) {
+async function skillToolCheck({trigger: {entity: item, roll, actor, options}}) {
     if (typeof(roll.data.prof) != 'string') return;
-    let targetValue = config?.midiOptions?.targetValue;
+    let targetValue = roll.options.target;
     if (targetValue) {
         if (roll.total >= targetValue) return;
     }
@@ -48,9 +48,9 @@ async function skillToolCheck({trigger: {entity: item, config, roll, actor, opti
     genericUtils.setProperty(options, 'chris-premades.psiBolsteredKnack', true);
     return await rollUtils.addToRoll(roll, '1' + scale.die);
 }
-async function skillToolCheckLate({trigger: {entity: item, config, roll, actor, options}}) {
+async function skillToolCheckLate({trigger: {entity: item, roll, options}}) {
     if (!options?.['chris-premades']?.psiBolsteredKnack) return;
-    let targetValue = config?.midiOptions?.targetValue;
+    let targetValue = roll.options.target;
     if (targetValue) {
         if (roll.total < targetValue) return;
     } else {
