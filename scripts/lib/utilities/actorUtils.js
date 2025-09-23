@@ -71,16 +71,16 @@ async function getSidebarActor(actor, {autoImport} = {}) {
         } else {
             let actorData = actor.toObject();
             if(game.settings.get("dnd5e", "metricLengthUnits")) {
-                actorData.system.attributes.movement.walk = genericUtils.handleMetric(actorData.system.attributes.movement.walk);
-                actorData.system.attributes.movement.fly = genericUtils.handleMetric(actorData.system.attributes.movement.fly);
-                actorData.system.attributes.movement.swim = genericUtils.handleMetric(actorData.system.attributes.movement.swim);
-                actorData.system.attributes.movement.climb = genericUtils.handleMetric(actorData.system.attributes.movement.climb);
-                actorData.system.attributes.movement.burrow = genericUtils.handleMetric(actorData.system.attributes.movement.burrow);
+                actorData.system.attributes.movement.walk = genericUtils.convertDistance(actorData.system.attributes.movement.walk);
+                actorData.system.attributes.movement.fly = genericUtils.convertDistance(actorData.system.attributes.movement.fly);
+                actorData.system.attributes.movement.swim = genericUtils.convertDistance(actorData.system.attributes.movement.swim);
+                actorData.system.attributes.movement.climb = genericUtils.convertDistance(actorData.system.attributes.movement.climb);
+                actorData.system.attributes.movement.burrow = genericUtils.convertDistance(actorData.system.attributes.movement.burrow);
                 actorData.system.attributes.movement.units = 'm';
-                actorData.system.attributes.senses.darkvision = genericUtils.handleMetric(actorData.system.attributes.senses.darkvision);
-                actorData.system.attributes.senses.tremorsense = genericUtils.handleMetric(actorData.system.attributes.senses.tremorsense);
-                actorData.system.attributes.senses.truesight = genericUtils.handleMetric(actorData.system.attributes.senses.truesight);
-                actorData.system.attributes.senses.blindsight = genericUtils.handleMetric(actorData.system.attributes.senses.blindsight);
+                actorData.system.attributes.senses.darkvision = genericUtils.convertDistance(actorData.system.attributes.senses.darkvision);
+                actorData.system.attributes.senses.tremorsense = genericUtils.convertDistance(actorData.system.attributes.senses.tremorsense);
+                actorData.system.attributes.senses.truesight = genericUtils.convertDistance(actorData.system.attributes.senses.truesight);
+                actorData.system.attributes.senses.blindsight = genericUtils.convertDistance(actorData.system.attributes.senses.blindsight);
                 actorData.system.attributes.senses.units = 'm';
             }
             genericUtils.setProperty(actorData, 'flags.core.sourceId', actor.uuid);

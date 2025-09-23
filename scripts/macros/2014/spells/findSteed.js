@@ -95,7 +95,7 @@ export async function findSteedEarlyHelper(workflow, identifier) {
     let [steedId] = effect.flags['chris-premades']?.summons.ids[originItem.name] ?? [undefined];
     let steedToken = canvas.scene.tokens.get(steedId);
     if (!steedToken) return;
-    if (tokenUtils.getDistance(workflow.token, steedToken) > genericUtils.handleMetric(5)) return;
+    if (tokenUtils.getDistance(workflow.token, steedToken) > genericUtils.convertDistance(5)) return;
     let selection = await dialogUtils.confirm(originItem.name, 'CHRISPREMADES.Macros.FindSteed.Target');
     if (selection) await workflowUtils.updateTargets(workflow, [workflow.token, steedToken]);
 }

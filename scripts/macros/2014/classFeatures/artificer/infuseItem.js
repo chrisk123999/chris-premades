@@ -52,7 +52,7 @@ async function use({workflow}) {
                     {
                         key: 'system.attributes.movement.walk',
                         mode: 2,
-                        value: genericUtils.handleMetric(5),
+                        value: genericUtils.convertDistance(5),
                         priority: 20
                     }
                 ]
@@ -746,7 +746,7 @@ async function homunculusLate({workflow}) {
     let effect = effectUtils.getEffectByIdentifier(workflow.actor, 'infuseItem');
     if (!effect) return;
     let homunculusToken = canvas.scene.tokens.get(effect.flags['chris-premades'].summons.ids[effect.name][0]);
-    if (!homunculusToken || tokenUtils.getDistance(workflow.token, homunculusToken) > genericUtils.handleMetric(120)) {
+    if (!homunculusToken || tokenUtils.getDistance(workflow.token, homunculusToken) > genericUtils.convertDistance(120)) {
         genericUtils.notify('CHRISPREMADES.Macros.InfuseItem.TooFar', 'info');
         return;
     }

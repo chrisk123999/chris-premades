@@ -17,7 +17,7 @@ async function lateSpeed({trigger: {entity: item}, workflow}) {
             {
                 key: 'system.attributes.movement.all',
                 mode: 0,
-                value: genericUtils.handleMetric(-10),
+                value: genericUtils.convertDistance(-10),
                 priority: 20
             }
         ],

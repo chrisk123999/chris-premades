@@ -86,7 +86,7 @@ async function attack({trigger: {entity: effect}, workflow}) {
     if (origin.actor.uuid != workflow.actor.uuid) return;
     let duplicityToken = actorUtils.getFirstToken(effect.parent);
     if (!duplicityToken) return;
-    if (tokenUtils.getDistance(workflow.token, duplicityToken) > genericUtils.handleMetric(5)) return;
+    if (tokenUtils.getDistance(workflow.token, duplicityToken) > genericUtils.convertDistance(5)) return;
     if (!tokenUtils.canSee(workflow.targets.first(), duplicityToken)) return;
     workflow.advantage = true;
     workflow.attackAdvAttribution.add(genericUtils.translate('DND5E.Advantage') + ': ' + origin.name);

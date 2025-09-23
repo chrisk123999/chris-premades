@@ -57,7 +57,7 @@ async function early({workflow}) {
     let {shape, damageType, augment} = selection;
     let target = genericUtils.duplicate(workflow.activity.target.template);
     let damageFormula = String(damageDice + (augment ? 1 : 0)) + '@scale.monk.die.die';
-    let distance = augment ? genericUtils.handleMetric(90) : genericUtils.handleMetric(30);
+    let distance = augment ? genericUtils.convertDistance(90) : genericUtils.convertDistance(30);
     if (shape === 'cone') distance = 2 * distance / 3;
     target.units = game.settings.get("dnd5e", "metricLengthUnits") ? 'm' : 'ft';
     if (augment) {
@@ -78,7 +78,7 @@ async function early({workflow}) {
             }
         }
     };
-    if (shape === 'line') templateData.width = genericUtils.handleMetric(5);
+    if (shape === 'line') templateData.width = genericUtils.convertDistance(5);
     if (shape === 'cone') templateData.angle = CONFIG.MeasuredTemplate.defaults.angle;
     let {template, tokens} = await templateUtils.placeTemplate(templateData, true);
     await workflowUtils.updateTargets(workflow, tokens);

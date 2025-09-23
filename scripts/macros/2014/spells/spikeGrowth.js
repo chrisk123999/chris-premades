@@ -73,11 +73,11 @@ async function stay({trigger: {entity: template, token}, options}) {
 async function damageHelper(pointA, pointB, template, token, {stay, gridless} = {stay: false, gridless: false}) {
     let timesToDamage;
     if (gridless) {
-        timesToDamage = Math.floor(canvas.grid.measurePath([pointA, pointB]).distance / genericUtils.handleMetric(5));
+        timesToDamage = Math.floor(canvas.grid.measurePath([pointA, pointB]).distance / genericUtils.convertDistance(5));
     } else {
         let gridsMoved = templateUtils.findGrids(pointA, pointB, template)?.size;
         if (stay) gridsMoved -= 1;
-        timesToDamage = Math.floor(gridsMoved * canvas.grid.distance / genericUtils.handleMetric(5));
+        timesToDamage = Math.floor(gridsMoved * canvas.grid.distance / genericUtils.convertDistance(5));
     }
     if (timesToDamage <= 0) return;
     let feature = activityUtils.getActivityByIdentifier(fromUuidSync(template.flags.dnd5e.item), 'spikeGrowthDamage');

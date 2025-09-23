@@ -105,7 +105,7 @@ async function use({workflow}) {
             effectData.changes.push(
                 {
                     key: 'system.attributes.movement.fly',
-                    value: genericUtils.handleMetric(20),
+                    value: genericUtils.convertDistance(20),
                     mode: 4,
                     priority: 20
                 },

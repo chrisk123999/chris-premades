@@ -5,7 +5,7 @@ async function early({trigger, workflow}) {
     if (!effect) return;
     await Promise.all(workflow.targets.map(async token => {
         let distance = tokenUtils.getDistance(workflow.token, token);
-        if (distance > genericUtils.handleMetric(60)) return;
+        if (distance > genericUtils.convertDistance(60)) return;
         await effectUtils.createEffect(token.actor, constants.disadvantageEffectData);
     }));
 }

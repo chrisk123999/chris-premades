@@ -31,7 +31,7 @@ async function use({workflow}) {
                 {
                     key: 'system.attributes.movement.fly',
                     mode: 4,
-                    value: genericUtils.handleMetric(20),
+                    value: genericUtils.convertDistance(20),
                     priority: 20
                 }
             ];
@@ -311,7 +311,7 @@ async function use({workflow}) {
                 {
                     key: 'system.attributes.movement.all',
                     mode: 0,
-                    value: '+' + (classLevel >= 15 ? genericUtils.handleMetric(15) : genericUtils.handleMetric(10)).toString(),
+                    value: '+' + (classLevel >= 15 ? genericUtils.convertDistance(15) : genericUtils.convertDistance(10)).toString(),
                     priority: 20
                 }
             ];

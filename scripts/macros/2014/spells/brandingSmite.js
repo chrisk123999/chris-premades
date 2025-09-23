@@ -41,7 +41,7 @@ async function damage({workflow}) {
             {
                 key: 'ATL.light.dim',
                 mode: 4,
-                value: genericUtils.handleMetric(5),
+                value: genericUtils.convertDistance(5),
                 priority: 20
             }, 
             {

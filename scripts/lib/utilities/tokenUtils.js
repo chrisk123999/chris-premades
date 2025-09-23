@@ -35,7 +35,7 @@ async function moveTokenAlongRay(targetToken, origRay, distance) {
     let hitsWall = true;
     let oldDistance;
 
-    distance = genericUtils.handleMetric(distance);
+    distance = genericUtils.convertDistance(distance);
   
     let ray = foundry.canvas.geometry.Ray.fromAngle(targetToken.center.x, targetToken.center.y, origRay.angle, origRay.distance);
 
@@ -49,7 +49,7 @@ async function moveTokenAlongRay(targetToken, origRay, distance) {
         hitsWall = targetToken.checkCollision(newCenter, {origin: ray.A, type: 'move', mode: 'any'});
         if (hitsWall) {
             oldDistance = distance;
-            distance += distance > 0 ? genericUtils.handleMetric(-5) : genericUtils.handleMetric(5);
+            distance += distance > 0 ? genericUtils.convertDistance(-5) : genericUtils.convertDistance(5);
             if (distance === 0 || (Math.sign(oldDistance) !== Math.sign(distance))) {
                 genericUtils.notify('CHRISPREMADES.Movement.UnableToBeMoved', 'info');
                 return;
@@ -90,7 +90,7 @@ function findNearby(token, range, disposition, {includeIncapacitated = false, in
         default:
             dispositionValue = null;
     }
-    range = genericUtils.handleMetric(range);
+    range = genericUtils.convertDistance(range);
     return MidiQOL.findNearby(dispositionValue, token, range, {includeIncapacitated, includeToken}).filter(i => !i.document.hidden);
 }
 function checkIncapacitated(token, logResult = false) {

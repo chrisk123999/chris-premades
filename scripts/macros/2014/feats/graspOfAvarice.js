@@ -7,7 +7,7 @@ async function damage({trigger: {entity: item}, workflow}) {
     if (!item.system.uses.value) return;
     if (!combatUtils.perTurnCheck(item, 'graspOfAvarice')) return;
     let targetToken = workflow.targets.first();
-    if (tokenUtils.getDistance(workflow.token, targetToken) > genericUtils.handleMetric(60)) return;
+    if (tokenUtils.getDistance(workflow.token, targetToken) > genericUtils.convertDistance(60)) return;
     let selection = await dialogUtils.confirm(item.name, genericUtils.format('CHRISPREMADES.Dialog.Use', {itemName: item.name}));
     if (!selection) return;
     await combatUtils.setTurnCheck(item, 'graspOfAvarice');
