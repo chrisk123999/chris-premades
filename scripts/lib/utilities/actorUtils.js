@@ -70,19 +70,6 @@ async function getSidebarActor(actor, {autoImport} = {}) {
             sidebarActor = await fromUuid(actorUuid);
         } else {
             let actorData = actor.toObject();
-            if(game.settings.get("dnd5e", "metricLengthUnits")) {
-                actorData.system.attributes.movement.walk = genericUtils.convertDistance(actorData.system.attributes.movement.walk);
-                actorData.system.attributes.movement.fly = genericUtils.convertDistance(actorData.system.attributes.movement.fly);
-                actorData.system.attributes.movement.swim = genericUtils.convertDistance(actorData.system.attributes.movement.swim);
-                actorData.system.attributes.movement.climb = genericUtils.convertDistance(actorData.system.attributes.movement.climb);
-                actorData.system.attributes.movement.burrow = genericUtils.convertDistance(actorData.system.attributes.movement.burrow);
-                actorData.system.attributes.movement.units = 'm';
-                actorData.system.attributes.senses.darkvision = genericUtils.convertDistance(actorData.system.attributes.senses.darkvision);
-                actorData.system.attributes.senses.tremorsense = genericUtils.convertDistance(actorData.system.attributes.senses.tremorsense);
-                actorData.system.attributes.senses.truesight = genericUtils.convertDistance(actorData.system.attributes.senses.truesight);
-                actorData.system.attributes.senses.blindsight = genericUtils.convertDistance(actorData.system.attributes.senses.blindsight);
-                actorData.system.attributes.senses.units = 'm';
-            }
             genericUtils.setProperty(actorData, 'flags.core.sourceId', actor.uuid);
             sidebarActor = await Actor.create(actorData);
         }
@@ -214,14 +201,14 @@ function getEquippedShield(actor) {
 function getAllEquippedArmor(actor) {
     return actor.items.find(i => Object.keys(CONFIG.DND5E.armorTypes).includes(i.system.type?.value) && i.system.equipped);
 }
-async function hasConditionBy(actorData, targetActor, statusId) {
+async function hasConditionBy(sourceActor, targetActor, statusId) {
     let condition = effectUtils.getEffectByStatusID(targetActor, statusId);
     if (!condition) return false;
     let validKeys = ['macro.CE', 'macro.CUB', 'macro.StatusEffect', 'StatusEffect'];
     let hasCondition = await actorUtils.getEffects(targetActor).find(async effect => {
         let originItem = await effectUtils.getOriginItem(effect);
         if (!originItem) return;
-        if (originItem?.actor != actorData) return;
+        if (originItem?.actor != sourceActor) return;
         if (effect.statuses.has(statusId)) return true;
         if (effect.flags['chris-premades']?.conditions?.includes(statusId)) return true;
         if (effect.changes.find(i => validKeys.includes(i.key) && i.value.toLowerCase() === statusId)) return true;

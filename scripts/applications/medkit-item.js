@@ -765,64 +765,6 @@ export class ItemMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
         if (itemData.system.uses?.max?.length) {
             sourceItemData.system.uses = itemData.system.uses;
         }
-        if(game.settings.get("dnd5e", "metricLengthUnits")) {
-            if(sourceItemData.type === 'weapon'){
-                if(sourceItemData.system.range.units && sourceItemData.system.range.units === 'ft'){
-                    sourceItemData.system.range.units='m';
-                    if(sourceItemData.system.range.value){
-                        sourceItemData.system.range.value=genericUtils.convertDistance(sourceItemData.system.range?.value);
-                    }
-                    if(sourceItemData.system.range.long){
-                        sourceItemData.system.range.long=genericUtils.convertDistance(sourceItemData.system.range?.long);
-                    }
-                    if(sourceItemData.system.range.reach){
-                        sourceItemData.system.range.reach=genericUtils.convertDistance(sourceItemData.system.range?.reach)
-                    }
-                }
-            }
-            if(sourceItemData.type === 'spell'){
-                if(sourceItemData.system.range.value){
-                    sourceItemData.system.range.value= genericUtils.convertDistance(sourceItemData.system.range?.value);
-                }
-                if(sourceItemData.system.range.units && sourceItemData.system.range.units === 'ft'){
-                    sourceItemData.system.range.units='m';
-                }
-                if(sourceItemData.system.target.template){
-                    if ( sourceItemData.system.target.template.dimensions && sourceItemData.system.target.template.dimensions.width ) {
-                        sourceItemData.system.target.template.dimensions.width= genericUtils.convertDistance(sourceItemData.system.target.template.dimensions.width);
-                    }
-                    if ( sourceItemData.system.target.template.dimensions && sourceItemData.system.target.template.dimensions.height ) {
-                        sourceItemData.system.target.template.dimensions.height= genericUtils.convertDistance(sourceItemData.system.target.template.dimensions.height);
-                    }
-                    if(sourceItemData.system.target.template.units && sourceItemData.system.target.template.units === 'ft'){
-                        sourceItemData.system.target.template.units= 'm';
-                        if(sourceItemData.system.target.template.size){
-                            sourceItemData.system.target.template.size= genericUtils.convertDistance(sourceItemData.system.target.template.size);
-                        }
-                    }
-                }
-            }
-            for (let [key, value] of Object.entries(sourceItemData.system.activities ?? {})) {
-                if(value.range.units == 'ft'){
-                    value.range.units='m';
-                    value.range.value= genericUtils.convertDistance(value.range.value);
-                }
-                if(value.target.template){
-                    if ( value.target.template.dimensions && value.target.template.dimensions.width ) {
-                        value.target.template.dimensions.width= genericUtils.convertDistance(value.target.template.dimensions.width);
-                    }
-                    if ( value.target.template.dimensions && value.target.template.dimensions.height ) {
-                        value.target.template.dimensions.height= genericUtils.convertDistance(value.target.template.dimensions.height);
-                    }
-                    if(value.target.template.units && value.target.template.units === 'ft'){
-                        value.target.template.units= 'm';  
-                        if(value.target.template.size){
-                            value.target.template.size= genericUtils.convertDistance(value.target.template.size);
-                        }
-                    }
-                }
-            }
-        }
         if (source) genericUtils.setProperty(sourceItemData, 'flags.chris-premades.info.source', source);
         if (version) genericUtils.setProperty(sourceItemData, 'flags.chris-premades.info.version', version);
         if (identifier) genericUtils.setProperty(sourceItemData, 'flags.chris-premades.info.identifier', identifier);
