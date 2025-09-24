@@ -117,6 +117,11 @@ export class EffectMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
                             label: 'CHRISPREMADES.Medkit.Effect.SpecialDuration.ForceSave',
                             value: 'forceSave',
                             isSelected: effect.flags['chris-premades']?.specialDuration?.includes('forceSave')
+                        },
+                        {
+                            label: 'CHRISPREMADES.Medkit.Effect.SpecialDuration.EndOfWorkflow',
+                            value: 'endOfWorkflow',
+                            isSelected: effect.flags['chris-premades']?.specialDuration?.includes('endOfWorkflow')
                         }
                     ].concat(CONFIG.statusEffects.map(i => ({
                         label: i.name,
@@ -172,11 +177,31 @@ export class EffectMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
                 save: JSON?.stringify(effect.flags['chris-premades']?.macros?.save) ?? '',
                 check: JSON?.stringify(effect.flags['chris-premades']?.macros?.check) ?? '',
                 skill: JSON?.stringify(effect.flags['chris-premades']?.macros?.skill) ?? '',
+                death: JSON?.stringify(effect.flags['chris-premades']?.macros?.death) ?? ''
             },
             isDev: game.settings.get('chris-premades', 'devTools'),
             identifier: effect.flags['chris-premades']?.info?.identifier ?? '',
             rules: effect.flags['chris-premades']?.rules ?? ''
         };
+        if (effect.parent instanceof Item) {
+            genericUtils.setProperty(context.configure, 'templateEffectActivities', {
+                label: 'CHRISPREMADES.Medkit.Effect.templateEffectActivities.Label',
+                tooltip: 'CHRISPREMADES.Medkit.Effect.templateEffectActivities.Tooltip',
+                value: effect.flags['chris-premades']?.templateEffectActivities ?? [],
+                options: effect.parent.system.activities.map(activity => ({
+                    label: activity.name,
+                    value: activity.id,
+                    isSelected: effect.flags['chris-premades']?.templateEffectActivities?.includes(activity.id)
+                }))
+            });
+        } else {
+            genericUtils.setProperty(context.configure, 'templateEffectActivities', {
+                label: 'CHRISPREMADES.Medkit.Effect.templateEffectActivities.Label',
+                tooltip: 'CHRISPREMADES.Medkit.Effect.templateEffectActivities.Tooltip',
+                value: [],
+                options: []
+            });
+        }
         // Figure out coloring for medkit
         if (context.configure.noAnimation.value || context.configure.conditions.value.length || context.configure.specialDuration.value.length) context.status = 1;
         context.medkitColor = '';
@@ -349,6 +374,7 @@ export class EffectMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
         genericUtils.setProperty(flagUpdates, 'noAnimation', this.context.configure.noAnimation.value);
         genericUtils.setProperty(flagUpdates, 'conditions', this.context.configure.conditions.value);
         genericUtils.setProperty(flagUpdates, 'specialDuration', this.context.configure.specialDuration.value);
+        genericUtils.setProperty(flagUpdates, 'templateEffectActivities', this.context.configure.templateEffectActivities.value);
         if (this.context.identifier) genericUtils.setProperty(flagUpdates, 'info.identifier', this.context.identifier);
         if (this.context.rules) genericUtils.setProperty(flagUpdates, 'rules', this.context.rules);
         if (this.context.macros.effect?.length) genericUtils.setProperty(flagUpdates, 'macros.effect', JSON.parse(this.context.macros.effect.replace(/'/g, '"')));
@@ -360,6 +386,7 @@ export class EffectMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
         if (this.context.macros.save?.length) genericUtils.setProperty(flagUpdates, 'macros.save', JSON.parse(this.context.macros.save.replace(/'/g, '"')));
         if (this.context.macros.check?.length) genericUtils.setProperty(flagUpdates, 'macros.check', JSON.parse(this.context.macros.check.replace(/'/g, '"')));
         if (this.context.macros.skill?.length) genericUtils.setProperty(flagUpdates, 'macros.skill', JSON.parse(this.context.macros.skill.replace(/'/g, '"')));
+        if (this.context.macros.death?.length) genericUtils.setProperty(flagUpdates, 'macros.death', JSON.parse(this.context.macros.death.replace(/'/g, '"')));
         let effectUpdates = {flags: {'chris-premades': flagUpdates}};
         genericUtils.mergeObject(effectData, effectUpdates);
         let updates = {
@@ -436,6 +463,9 @@ export class EffectMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
                         this.context.configure.specialDuration.options.forEach(i => event.target.value.includes(i.value) ? i.isSelected = true : i.isSelected = false);
                         this.context.configure.specialDuration.value = event.target.value;
                         break;
+                    case 'templateEffectActivities':
+                        this.context.configure.templateEffectActivities.options.forEach(i => event.target.value.includes(i.value) ? i.isSelected = true : i.isSelected = false);
+                        this.context.configure.templateEffectActivities.value = event.target.value;
                 }
                 break;
             }

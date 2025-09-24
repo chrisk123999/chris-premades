@@ -1494,6 +1494,9 @@
                 "Curse": "How do you curse your target?",
                 "Damage": "Take Damage"
             },
+            "InfernalMajesty": {
+                "SelectTarget": "Select a target to take damage:"
+            },
             "InfiltratorArmor": {
                 "ExtraDamage": "Apply extra 1d6 lightning damage?",
                 "LightningLauncher": "Infiltrator Armor: Lightning Launcher"
@@ -2507,6 +2510,7 @@
                     "AttackedBySource": "Attacked By Source",
                     "DamagedByAlly": "Damaged By Ally",
                     "DamagedByEnemy": "Damaged By Enemy",
+                    "EndOfWorkflow": "End of Workflow",
                     "Failed": "Failed {toolName} Check",
                     "ForceSave": "Force A Save",
                     "HitByAnotherCreature": "Hit By Another Creature",
@@ -2517,6 +2521,10 @@
                     "TempHP": "Zero Temporary Hitpoints",
                     "TempMaxHP": "Zero Temporary Max Hitpoints",
                     "Tooltip": "Selected conditions will remove the effect."
+                },
+                "templateEffectActivities": {
+                    "Label": "Template Effect",
+                    "Tooltip": "Template Effect Activity"
                 }
             },
             "EmbeddedMacros": {

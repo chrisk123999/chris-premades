@@ -1,3 +1,23 @@
+# 1.3.71 Release:
+## Update Notes:
+- The touch damage generic monster feature will now check and use item uses when relevant.
+
+# 1.3.70 Release:
+## New Legacy Content:
+- Terrorizing Force
+- Superior Interdict
+- Infernal Majesty
+- Master of Hell
+## Bug Fixes:
+- Custom Sidebar Button Scale Setting
+- Custom Navigation Scale Setting
+- Blood Price (Legacy)
+## API Update Notes:
+- Added `created` and `deleted` to template events.
+## Update Notes:
+- Added `End of Workflow` to Effect Medkit special durations.
+- Added the ability to mark an effect on an item as a template effect (via the Effect Medkit). Note that this doesn't currently support overlapping spell effect rules, overlapping templates will result in multiple effects. This will be improved upon in the future.
+
 # 1.3.69 Release:
 ## New Legacy Content:
 - Blood Price

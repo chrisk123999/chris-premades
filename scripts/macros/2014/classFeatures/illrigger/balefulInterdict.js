@@ -147,6 +147,15 @@ async function burnSpecial({trigger, workflow}) {
 async function burnBonus({trigger, workflow}) {
 
 }
+async function burnEarly({trigger, workflow}) {
+    let superiorInterdict = itemUtils.getItemByIdentifier(workflow.actor, 'superiorInterdict');
+    if (!superiorInterdict) return;
+    let sourceEffect = superiorInterdict.effects.contents?.[0];
+    if (!sourceEffect) return;
+    let effectData = genericUtils.duplicate(sourceEffect.toObject());
+    effectData.duration = {seconds: 1};
+    await effectUtils.createEffect(workflow.actor, effectData, {animate: false});
+}
 export let balefulInterdict = {
     name: 'Baleful Interdict',
     version: '1.3.65',
@@ -158,6 +167,12 @@ export let balefulInterdict = {
                 macro: distance,
                 priority: 50,
                 activities: ['placeSeal']
+            },
+            {
+                pass: 'preambleComplete',
+                macro: burnEarly,
+                priority: 50,
+                activities: ['burnFire', 'burnNecrotic']
             },
             {
                 pass: 'rollFinished',

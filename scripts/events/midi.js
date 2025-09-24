@@ -358,6 +358,7 @@ async function rollFinished(workflow) {
     }
     if (genericUtils.getCPRSetting('weaponMastery')) await masteries.RollComplete(workflow);
     await effects.specialDuration(workflow);
+    await effects.removeWorkflowEffects(workflow);
     if (genericUtils.getCPRSetting('cleave')) await cleave(workflow);
     if (genericUtils.getCPRSetting('devTools')) console.log(workflow);
 }

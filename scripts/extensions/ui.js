@@ -1,10 +1,11 @@
+import {genericUtils} from '../utils.js';
 function configureUI() {
-    let customUIButtonScale = game.settings.get('chris-premades', 'customUIButtonScale');
-    setBodyProperty('--custom-ui-button-scale', customUIButtonScale);
-    let customUINavigationScale = game.settings.get('chris-premades', 'customUINavigationScale');
-    setBodyProperty('--custom-ui-navigation-scale', customUINavigationScale);
-    if (game.settings.get('chris-premades', 'customSidebar')) customSidebar(true);
-    if (game.settings.get('chris-premades', 'customChatMessage')) customChatMessage(true);
+    let customUIButtonScale = genericUtils.getCPRSetting('customUIButtonScale');
+    if (customUIButtonScale && customUIButtonScale != 1) setBodyProperty('--custom-ui-button-scale', customUIButtonScale);
+    let customUINavigationScale = genericUtils.getCPRSetting('customUINavigationScale');
+    if (customUINavigationScale && customUINavigationScale != 1) setBodyProperty('--custom-ui-navigation-scale', customUINavigationScale);
+    if (genericUtils.getCPRSetting('customSidebar')) customSidebar(true);
+    if (genericUtils.getCPRSetting('customChatMessage')) customChatMessage(true);
 }
 function setBodyProperty(key, value) {
     document.body.style.setProperty(key, String(value));

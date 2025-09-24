@@ -171,6 +171,10 @@ async function specialDuration(workflow) {
                         remove = true;
                         break outerLoop;
                     }
+                    case 'endOfWorkflow': {
+                        remove = true;
+                        break outerLoop;
+                    }
                 }
             }
             if (remove) await genericUtils.remove(effect);
@@ -187,6 +191,10 @@ async function specialDuration(workflow) {
                     if (!workflow.activity) return;
                     if (!workflow.activity.hasSave) return;
                     if (workflow.targets.size === 1 && workflow.targets.has(workflow.token)) return;
+                    remove = true;
+                    break outerLoop;
+                }
+                case 'endOfWorkflow': {
                     remove = true;
                     break outerLoop;
                 }
@@ -303,6 +311,15 @@ async function specialDurationToolCheck(rolls, data) {
         if (remove) await genericUtils.remove(effect);
     }));
 }
+async function removeWorkflowEffects(workflow) {
+    let removeEntityUuids = workflow['chris-premades']?.removeEntityUuids;
+    if (!removeEntityUuids) return;
+    for (let uuid of removeEntityUuids) {
+        let entity = await fromUuid(uuid);
+        if (!entity) continue;
+        await genericUtils.remove(entity);
+    }
+}
 export let effects = {
     noAnimation,
     checkInterdependentDeps,
@@ -317,5 +334,6 @@ export let effects = {
     imageCreate,
     imageRemove,
     specialDurationHitPoints,
-    specialDurationToolCheck
+    specialDurationToolCheck,
+    removeWorkflowEffects
 };

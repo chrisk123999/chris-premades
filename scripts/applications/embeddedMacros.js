@@ -751,6 +751,18 @@ export const eventStructure = {
             documents: [
                 'measuredtemplate'
             ]
+        },
+        {
+            pass: 'created',
+            documents: [
+                'measuredtemplate'
+            ]
+        },
+        {
+            pass: 'deleted',
+            documents: [
+                'measuredtemplate'
+            ]
         }
     ],
     toolCheck: [

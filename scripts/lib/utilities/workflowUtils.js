@@ -324,6 +324,10 @@ async function swapAttackAbility(workflow, ability = 'cha', {validTypes = ['str'
     workflow.item = await itemUtils.syntheticItem(itemData, workflow.actor);
     workflow.activity = workflow.item.system.activities.get(workflow.activity.id);
 }
+function addEntityRemoval(workflow, entities) {
+    let current = workflow['chris-premades']?.removeEntityUuids ?? [];
+    genericUtils.setProperty(workflow, 'chris-premades.removeEntityUuids', [...current, ...entities.map(i => i.uuid)]);
+}
 export let workflowUtils = {
     bonusDamage,
     bonusAttack,
@@ -349,5 +353,6 @@ export let workflowUtils = {
     removeTargets,
     isAttackType,
     getActionType,
-    swapAttackAbility
+    swapAttackAbility,
+    addEntityRemoval
 };
