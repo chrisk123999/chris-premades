@@ -1,4 +1,4 @@
-import {activityUtils, actorUtils, constants, dialogUtils, genericUtils, itemUtils, rollUtils, socketUtils, tokenUtils, workflowUtils} from '../../../../../utils.js';
+import {actorUtils, dialogUtils, genericUtils, itemUtils, rollUtils, socketUtils, tokenUtils, workflowUtils} from '../../../../../utils.js';
 import {bardicInspiration} from '../bardicInspiration.js';
 async function damage({trigger, workflow}) {
     if (!workflow.hitTargets.size || !workflow.damageRolls || !workflow.item || workflow.defaultDamageType === 'midi-none') return;
@@ -27,7 +27,7 @@ async function damage({trigger, workflow}) {
     }
 }
 async function check({trigger: {sourceActor, roll, config, skillId}}) {
-    let targetValue = config.midiOptions?.target;
+    let targetValue = roll.options.target;
     if (!targetValue) return;
     if (roll.total < targetValue) return;
     let token = actorUtils.getFirstToken(sourceActor);

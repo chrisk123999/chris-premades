@@ -144,8 +144,18 @@ async function burnSpecial({trigger, workflow}) {
     await workflowUtils.syntheticItemRoll(selection, [workflow.targets.first()], {consumeResources: true, consumeUsage: true});
     for (let document of documents.filter(i => i.id != selection.id)) await genericUtils.update(document, {'system.uses.spent': document.system.uses.spent + 1});
 }
-async function burnBonus({trigger, workflow}) {
-
+async function placeSealBonus({trigger, workflow}) {
+    if (workflow.activity.activation.type != 'bonus') return;
+    let acheronsChain = itemUtils.getItemByIdentifier(workflow.actor, 'acheronsChain');
+    let dissOnslaught = itemUtils.getItemByIdentifier(workflow.actor, 'dissOnslaught');
+    let flashOfBrimstone = itemUtils.getItemByIdentifier(workflow.actor, 'flashOfBrimstone');
+    let soulsDoom = itemUtils.getItemByIdentifier(workflow.actor, 'soulsDoom');
+    let documents = [acheronsChain, dissOnslaught, flashOfBrimstone, soulsDoom].filter(i => i);
+    if (!documents.length) return;
+    let selection = await dialogUtils.selectDocumentDialog('CHRISPREMADES.Macros.InterdictBoons.Name', genericUtils.format('CHRISPREMADES.Dialog.Use', {itemName: genericUtils.translate('CHRISPREMADES.Macros.InterdictBoons.Name')}), documents, {sortAlphabetical: true});
+    if (!selection) return;
+    await workflowUtils.syntheticItemRoll(selection, [workflow.targets.first()], {consumeResources: true, consumeUsage: true});
+    for (let document of documents.filter(i => i.id != selection.id)) await genericUtils.update(document, {'system.uses.spent': document.system.uses.spent + 1});
 }
 async function burnEarly({trigger, workflow}) {
     let superiorInterdict = itemUtils.getItemByIdentifier(workflow.actor, 'superiorInterdict');
@@ -165,6 +175,12 @@ export let balefulInterdict = {
             {
                 pass: 'preambleComplete',
                 macro: distance,
+                priority: 50,
+                activities: ['placeSeal']
+            },
+            {
+                pass: 'rollFinished',
+                macro: placeSealBonus,
                 priority: 50,
                 activities: ['placeSeal']
             },
