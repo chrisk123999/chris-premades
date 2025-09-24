@@ -5,7 +5,7 @@ async function hit({trigger:{entity: item, token}, workflow}) {
     let range = config.range;
     if (range > 0 && tokenUtils.getDistance(token, workflow.token) > range) return;
     if (item.system.uses.max && !item.system.uses.value) return;
-    await workflowUtils.syntheticItemRoll(item, [workflow.token]);
+    await workflowUtils.syntheticItemRoll(item, [workflow.token], {consumeResources: true, consumeUsage: true});
 }
 export let touchDamage = {
     name: 'Touch Damage',

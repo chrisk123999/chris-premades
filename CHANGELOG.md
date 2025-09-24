@@ -1,3 +1,7 @@
+# 1.3.71 Release:
+## Update Notes:
+- The touch damage generic monster feature will now check and use item uses when relevant.
+
 # 1.3.70 Release:
 ## New Legacy Content:
 - Terrorizing Force
