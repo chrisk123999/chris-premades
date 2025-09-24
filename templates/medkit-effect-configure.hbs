@@ -20,5 +20,15 @@
             {{/each}}
             </multi-select>
         </div>
+        {{#if configure.templateEffectActivities.options.length}}
+            <div class="cpr-row-center">
+                <label for="templateEffectActivities" data-tooltip="{{localize configure.templateEffectActivities.tooltip}}">{{localize configure.templateEffectActivities.label}}</label>
+                <multi-select id="templateEffectActivities" name="templateEffectActivities">
+                {{#each configure.templateEffectActivities.options}}
+                    <option value="{{value}}" {{#if isSelected}}selected{{/if}}>{{localize label}}</option>
+                {{/each}}
+                </multi-select>
+            </div>
+        {{/if}}
     </div>
 </div>

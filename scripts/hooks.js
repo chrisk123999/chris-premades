@@ -148,6 +148,8 @@ export function registerHooks() {
         Hooks.on('createActiveEffect', conditions.createActiveEffect);
         Hooks.on('deleteActiveEffect', conditions.deleteActiveEffect);
         Hooks.on('updateMeasuredTemplate', templateEvents.updateMeasuredTemplate);
+        Hooks.on('deleteMeasuredTemplate', templateEvents.deleteMeasuredTemplate);
+        Hooks.on('createMeasuredTemplate', templateEvents.createMeasuredTemplate);
         Hooks.on('createToken', auras.createToken);
         Hooks.on('deleteToken', auras.deleteToken);
         Hooks.on('canvasReady', auras.canvasReady);

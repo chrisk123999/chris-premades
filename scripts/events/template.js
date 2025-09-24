@@ -1,7 +1,8 @@
 import {custom} from './custom.js';
 import {genericUtils, macroUtils, socketUtils, templateUtils} from '../utils.js';
+import {template as templateExtension} from './../extensions/template.js';
 function getTemplateMacroData(template) {
-    return template.flags['chris-premades']?.macros?.template ?? [];
+    return template.flags?.['chris-premades']?.macros?.template ?? [];
 }
 function collectMacros(template) {
     let macroList = [];
@@ -93,9 +94,23 @@ async function updateMeasuredTemplate(template, updates, context, userId) {
     let moved = updates.x || updates.y;
     if (!moved) return;
     await executeMacroPass([template], 'moved');
+    await templateExtension.templateEffectMoved(template);
+}
+async function deleteMeasuredTemplate(template) {
+    if (!socketUtils.isTheGM() || !template.id) return;
+    await executeMacroPass([template], 'deleted');
+    await templateExtension.templateEffectDeleted(template);
+}
+async function createMeasuredTemplate(template) {
+    if (!socketUtils.isTheGM()) return;
+    await genericUtils.sleep(150);
+    await executeMacroPass([template], 'created');
+    await templateExtension.templateEffectCreated(template);
 }
 export let templateEvents = {
     collectMacros,
     executeMacroPass,
-    updateMeasuredTemplate
+    updateMeasuredTemplate,
+    deleteMeasuredTemplate,
+    createMeasuredTemplate
 };

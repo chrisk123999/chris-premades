@@ -4,6 +4,7 @@ import {actorUtils, effectUtils, genericUtils, itemUtils, macroUtils, regionUtil
 import {auras} from './auras.js';
 import {templateEvents} from './template.js';
 import {regionEvents} from './region.js';
+import {template as templateExtension} from './../extensions/template.js';
 let lagWarningSeen = null;
 function getMovementMacroData(entity) {
     return entity.flags['chris-premades']?.macros?.movement ?? [];
@@ -208,7 +209,9 @@ async function moveToken(token, movement, options, user) {
             });
         }
         if (leavingTemplates.length) count += await templateEvents.executeMacroPass(leavingTemplates, 'left', token.object, options);
+        for (let template of leavingTemplates) await templateExtension.templateEffectTokenLeave(template, token.object);
         if (enteringTemplates.length) count += await templateEvents.executeMacroPass(enteringTemplates, 'enter', token.object, options);
+        for (let template of enteringTemplates) await templateExtension.templateEffectTokenEnter(template, token.object);
         if (stayingTemplates.length) count += await templateEvents.executeMacroPass(stayingTemplates, 'stay', token.object, options);
         if (enteredAndLeftTemplates.length) count += await templateEvents.executeMacroPass(enteredAndLeftTemplates, 'passedThrough', token.object, options);
         let currentRegions = Array.from(token.regions);
