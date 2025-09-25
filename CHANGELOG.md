@@ -1,3 +1,10 @@
+# 1.3.73 Release:
+## New Monster Content:
+- Fire Giant Dreadnought: Shield Charge
+- Fire Giant of Evil Fire: Bolt of Imix, Searing Scepter, Shrapnel Explosion
+## Bug Fixes:
+- Unarmed Strike (Modern)
+
 # 1.3.72 Release:
 ## New Legacy Content:
 - Interdict Boons: Acheron's Chain

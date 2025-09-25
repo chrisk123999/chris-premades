@@ -484,6 +484,10 @@ export {shieldGuardianShield, shieldGuardianShieldEffect} from './macros/2014/mo
 export {shieldGuardianSpellStoring} from './macros/2014/monsterFeatures/construct/shieldGuardian/spellStoring.js';
 export {spittingMimicAcid} from './macros/2014/monsterFeatures/monstrosity/spittingMimic/spitAcid.js';
 export {thunderousStrike} from './macros/2014/monsterFeatures/elemental/earthElementalMyrmidon/thunderousStrike.js';
+export {shieldCharge} from './macros/2014/monsterFeatures/giant/fireGiantDreadnought/shieldCharge.js';
+export {boltOfImix} from './macros/2014/monsterFeatures/giant/fireGiantOfEvilFire/boltOfImix.js';
+export {searingScepter} from './macros/2014/monsterFeatures/giant/fireGiantOfEvilFire/searingScepter.js';
+export {shrapnelExplosion} from './macros/2014/monsterFeatures/giant/fireGiantOfEvilFire/shrapnelExplosion.js';
 // Generic Monster Features
 export {abilityDrain} from './macros/2014/monsterFeatures/generic/abilityDrain.js';
 export {activityOnEffectExpiry} from './macros/2014/monsterFeatures/generic/activityOnEffectExpiry.js';
