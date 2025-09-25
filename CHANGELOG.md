@@ -1,3 +1,12 @@
+# 1.3.72 Release:
+## New Legacy Content:
+- Interdict Boons: Acheron's Chain
+- Interdict Boons: Conflagrant Channel
+- Interdict Boons: Dis's Onslaught
+- Interdict Boons: Flash of Brimstone
+- Interdict Boons: Hellsight
+- Interdict Boons: Soul's Doom
+
 # 1.3.71 Release:
 ## Update Notes:
 - The touch damage generic monster feature will now check and use item uses when relevant.

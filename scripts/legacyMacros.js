@@ -394,9 +394,16 @@ export {combatMasteryLissome} from './macros/2014/classFeatures/illrigger/combat
 export {combatMasteryUnfettered} from './macros/2014/classFeatures/illrigger/combatMasteries/unfettered.js';
 export {interdictBoonAbatingSeal} from './macros/2014/classFeatures/illrigger/interdictBoons/abatingSeal.js';
 export {interdictBoonBedevil} from './macros/2014/classFeatures/illrigger/interdictBoons/bedevil.js';
+export {interdictBoonAcheronsChain} from './macros/2014/classFeatures/illrigger/interdictBoons/acheronsChain.js';
 export {interdictSoulEater} from './macros/2014/classFeatures/illrigger/interdictBoons/soulEater.js';
 export {interdictStyxsApathy, interdictStyxsApathyEffect} from './macros/2014/classFeatures/illrigger/interdictBoons/styxsApathy.js';
 export {interdictswiftRetribution} from './macros/2014/classFeatures/illrigger/interdictBoons/swiftRetribution.js';
+export {interdictBoonDissOnslaught} from './macros/2014/classFeatures/illrigger/interdictBoons/dissOnslaught.js';
+export {interdictBoonSoulsDoom} from './macros/2014/classFeatures/illrigger/interdictBoons/soulsDoom.js';
+export {interdictBoonFlashOfBrimstone} from './macros/2014/classFeatures/illrigger/interdictBoons/flashOfBrimstone.js';
+export {interdictBoonConflagrantChannel} from './macros/2014/classFeatures/illrigger/interdictBoons/conflagrantChannel.js';
+export {interdictBoonHellsight} from './macros/2014/classFeatures/illrigger/interdictBoons/hellsight.js';
+export {interdictBoonHellishFrenzy} from './macros/2014/classFeatures/illrigger/interdictBoons/hellishFrenzy.js';
 export {infernalConduit} from './macros/2014/classFeatures/illrigger/infernalConduit.js';
 export {bloodPrice} from './macros/2014/classFeatures/illrigger/bloodPrice.js';
 export {terrorizingForce} from './macros/2014/classFeatures/illrigger/terrorizingForce.js';
