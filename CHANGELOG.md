@@ -1,3 +1,8 @@
+# 1.3.74 Release:
+## Bug Fixes:
+- Combat events
+- Effect Immunity generic monster feature
+
 # 1.3.73 Release:
 ## New Monster Content:
 - Fire Giant Dreadnought: Shield Charge

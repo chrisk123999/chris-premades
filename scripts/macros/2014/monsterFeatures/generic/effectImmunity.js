@@ -32,7 +32,7 @@ async function early({trigger, workflow}) {
         if (effects.find(j => j.name === firstEffectName)) return;
         return true;
     });
-    await workflowUtils.updateTargets(validTargets);
+    await workflowUtils.updateTargets(workflow, validTargets);
 }
 async function removed({trigger}) {
     let origin = await effectUtils.getOriginItem(trigger.entity);
