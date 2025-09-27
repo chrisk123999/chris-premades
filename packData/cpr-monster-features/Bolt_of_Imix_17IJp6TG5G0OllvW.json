@@ -21,7 +21,9 @@
           },
           "spellSlot": true
         },
-        "description": {},
+        "description": {
+          "chatFlavor": ""
+        },
         "duration": {
           "value": "",
           "units": "inst",
@@ -32,7 +34,8 @@
         "range": {
           "value": "120",
           "units": "ft",
-          "override": false
+          "override": false,
+          "special": ""
         },
         "target": {
           "template": {
@@ -55,12 +58,15 @@
         },
         "uses": {
           "spent": 0,
-          "recovery": []
+          "recovery": [],
+          "max": ""
         },
         "attack": {
           "ability": "wis",
           "bonus": "",
-          "critical": {},
+          "critical": {
+            "threshold": null
+          },
           "flat": false,
           "type": {
             "value": "ranged",
@@ -71,24 +77,21 @@
           "includeBase": false,
           "parts": [
             {
+              "custom": {
+                "enabled": false,
+                "formula": ""
+              },
               "number": 3,
               "denomination": 10,
               "bonus": "@mod",
               "types": [
                 "fire"
-              ],
-              "custom": {
-                "enabled": false,
-                "formula": ""
-              },
-              "scaling": {
-                "mode": "",
-                "number": null,
-                "formula": ""
-              }
+              ]
             }
           ],
-          "critical": {}
+          "critical": {
+            "bonus": ""
+          }
         },
         "useConditionText": "",
         "useConditionReason": "",
@@ -138,13 +141,16 @@
           "preRemoveConditionText": "",
           "postRemoveConditionText": ""
         },
-        "otherActivityId": "none",
+        "otherActivityId": "save",
         "otherActivityAsParentType": true,
-        "attackMode": "oneHanded",
+        "attackMode": "",
         "ammunition": "",
         "otherActivityUuid": "",
         "attackRollPerTarget": "default",
-        "fumbleThreshold": 1
+        "fumbleThreshold": 1,
+        "name": "",
+        "img": "",
+        "appliedEffects": []
       },
       "saveSaveIIIIIIII": {
         "name": "Save",
@@ -381,8 +387,7 @@
     },
     "dnd5e": {
       "riders": {
-        "activity": [],
-        "effect": []
+        "activity": []
       }
     },
     "chris-premades": {

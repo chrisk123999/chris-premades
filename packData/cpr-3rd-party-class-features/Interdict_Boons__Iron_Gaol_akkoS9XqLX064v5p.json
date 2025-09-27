@@ -1,15 +1,77 @@
 {
-  "name": "Interdict Boons: Swift Retribution (Passive)",
+  "name": "Interdict Boons: Iron Gaol",
   "type": "feat",
-  "effects": [],
+  "effects": [
+    {
+      "name": "Interdict Boons: Iron Gaol",
+      "changes": [
+        {
+          "key": "flags.midi-qol.OverTime",
+          "value": "turn=end,allowIncapacitated=true,rollType=save,saveAbility=cha,saveDC=$activity.dc,saveDamage=nodamage,saveRemove=true,rollMode=publicroll,",
+          "mode": 0,
+          "priority": 20
+        }
+      ],
+      "transfer": false,
+      "img": "icons/skills/targeting/crosshair-triple-strike-orange.webp",
+      "_id": "NZcoezRKfQ5j0fjP",
+      "type": "base",
+      "system": {},
+      "disabled": false,
+      "duration": {
+        "startTime": null,
+        "combat": null,
+        "seconds": null,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "description": "",
+      "origin": null,
+      "tint": "#ffffff",
+      "statuses": [],
+      "sort": 0,
+      "flags": {
+        "chris-premades": {
+          "noAnimation": false,
+          "conditions": [],
+          "specialDuration": [],
+          "templateEffectActivities": []
+        },
+        "dnd5e": {
+          "riders": {
+            "statuses": []
+          }
+        },
+        "dae": {
+          "enableCondition": "",
+          "disableCondition": "",
+          "stackable": "noneName",
+          "showIcon": false,
+          "disableIncapacitated": false,
+          "selfTarget": false,
+          "selfTargetAlways": false,
+          "dontApply": true,
+          "durationExpression": "",
+          "macroRepeat": "none",
+          "specialDuration": []
+        },
+        "core": {
+          "overlay": false
+        }
+      },
+      "_key": "!items.effects!akkoS9XqLX064v5p.NZcoezRKfQ5j0fjP"
+    }
+  ],
   "system": {
     "activities": {
-      "UqQQfwHsiKgM4okf": {
-        "type": "utility",
-        "_id": "UqQQfwHsiKgM4okf",
+      "GZbxKkBLeNzRd2QQ": {
+        "type": "save",
+        "_id": "GZbxKkBLeNzRd2QQ",
         "sort": 0,
         "activation": {
-          "type": "special",
+          "type": "action",
           "override": false,
           "condition": ""
         },
@@ -18,19 +80,33 @@
             "allowed": false
           },
           "spellSlot": true,
-          "targets": []
+          "targets": [
+            {
+              "type": "itemUses",
+              "value": "1",
+              "target": "p4EMcv8tnsbJWtan",
+              "scaling": {}
+            },
+            {
+              "type": "itemUses",
+              "value": "1",
+              "target": "mTFkjDcfXDu6o9Nf",
+              "scaling": {}
+            }
+          ]
         },
         "description": {
           "chatFlavor": ""
         },
         "duration": {
-          "units": "inst",
+          "units": "minute",
           "concentration": false,
-          "override": false
+          "override": false,
+          "value": "1"
         },
         "effects": [],
         "range": {
-          "units": "any",
+          "units": "touch",
           "override": false,
           "special": ""
         },
@@ -42,8 +118,8 @@
           },
           "affects": {
             "choice": false,
-            "count": "1",
             "type": "creature",
+            "count": "1",
             "special": ""
           },
           "override": false,
@@ -54,11 +130,21 @@
           "recovery": [],
           "max": ""
         },
-        "roll": {
-          "prompt": false,
-          "visible": false,
-          "formula": "",
-          "name": ""
+        "damage": {
+          "onSave": "half",
+          "critical": {
+            "allow": false
+          },
+          "parts": []
+        },
+        "save": {
+          "ability": [
+            "cha"
+          ],
+          "dc": {
+            "calculation": "cha",
+            "formula": ""
+          }
         },
         "useConditionText": "",
         "useConditionReason": "",
@@ -108,8 +194,9 @@
           "preRemoveConditionText": "",
           "postRemoveConditionText": ""
         },
-        "otherActivityId": "none",
+        "otherActivityId": "",
         "otherActivityAsParentType": true,
+        "friendlySave": "default",
         "name": ""
       }
     },
@@ -122,7 +209,7 @@
       "value": "",
       "chat": ""
     },
-    "identifier": "interdict-boons",
+    "identifier": "interdict-boons-iron-gaol",
     "source": {
       "book": "TIR",
       "page": "",
@@ -147,26 +234,29 @@
   },
   "flags": {
     "dnd5e": {
-      "advancementOrigin": "zKpmerWRRzs7UoBC",
+      "advancementOrigin": "dGvGTF6VBn4DxXZx",
       "riders": {
         "activity": []
       }
     },
     "chris-premades": {
-      "info": {
-        "identifier": "interdictBoonSwiftRetribution",
-        "rules": "legacy",
-        "source": "chris-premades",
-        "version": "1.3.66"
-      },
       "hiddenActivities": [],
       "activityIdentifiers": {
-        "use": "UqQQfwHsiKgM4okf"
+        "use": "GZbxKkBLeNzRd2QQ"
+      },
+      "info": {
+        "identifier": "interdictBoonIronGaol",
+        "rules": "legacy",
+        "source": "chris-premades",
+        "version": "1.3.76"
       },
       "macros": {
+        "item": [
+          "interdictBoonIronGaol"
+        ],
         "midi": {
           "item": [
-            "interdictBoonSwiftRetribution"
+            "interdictBoonIronGaol"
           ]
         }
       }
@@ -174,6 +264,6 @@
   },
   "img": "icons/skills/targeting/crosshair-triple-strike-orange.webp",
   "folder": "4BvBCtAL7CUMzT9L",
-  "_id": "3tMJWVpZkEHjUCRE",
-  "_key": "!items!3tMJWVpZkEHjUCRE"
+  "_id": "akkoS9XqLX064v5p",
+  "_key": "!items!akkoS9XqLX064v5p"
 }

@@ -1,0 +1,65 @@
+{
+  "name": "Interdict Boons",
+  "type": "feat",
+  "effects": [],
+  "system": {
+    "activities": {},
+    "uses": {
+      "spent": 0,
+      "recovery": [
+        {
+          "period": "turn",
+          "type": "recoverAll"
+        }
+      ],
+      "max": "1"
+    },
+    "advancement": [],
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "identifier": "interdict-boons",
+    "source": {
+      "book": "TIR",
+      "page": "",
+      "license": "",
+      "custom": "",
+      "rules": "2014",
+      "revision": 1
+    },
+    "crewed": false,
+    "enchant": {},
+    "prerequisites": {
+      "items": [],
+      "level": 2,
+      "repeatable": false
+    },
+    "properties": [],
+    "requirements": "",
+    "type": {
+      "value": "class",
+      "subtype": ""
+    }
+  },
+  "flags": {
+    "dnd5e": {
+      "advancementOrigin": "dGvGTF6VBn4DxXZx",
+      "riders": {
+        "activity": []
+      }
+    },
+    "chris-premades": {
+      "info": {
+        "identifier": "interdictBoons",
+        "rules": "legacy",
+        "source": "chris-premades",
+        "version": "1.3.76"
+      }
+    }
+  },
+  "img": "icons/skills/targeting/crosshair-triple-strike-orange.webp",
+  "folder": "tTEcQkFywbCp1hpj",
+  "_id": "PzQ9ugxMo6gsmI2q",
+  "_key": "!items!PzQ9ugxMo6gsmI2q"
+}

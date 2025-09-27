@@ -22,14 +22,12 @@
             {
               "type": "itemUses",
               "value": "1",
-              "target": "ccvF0bMcdZsFaGWu",
-              "scaling": {}
+              "target": "ccvF0bMcdZsFaGWu"
             },
             {
               "type": "itemUses",
               "value": "1",
-              "target": "",
-              "scaling": {}
+              "target": "PzQ9ugxMo6gsmI2q"
             }
           ]
         },
@@ -124,18 +122,15 @@
         },
         "otherActivityId": "none",
         "otherActivityAsParentType": true,
-        "name": ""
+        "name": "",
+        "img": "",
+        "appliedEffects": []
       }
     },
     "uses": {
-      "spent": 1,
-      "recovery": [
-        {
-          "period": "turn",
-          "type": "recoverAll"
-        }
-      ],
-      "max": "1"
+      "spent": null,
+      "recovery": [],
+      "max": ""
     },
     "advancement": [],
     "description": {
@@ -218,8 +213,8 @@
         "identifier": "interdictBoonFlashOfBrimstone",
         "rules": "legacy",
         "source": "chris-premades",
-        "version": "1.3.71",
-        "hasAnimation": true
+        "hasAnimation": true,
+        "version": "1.3.76"
       },
       "macros": {
         "item": [

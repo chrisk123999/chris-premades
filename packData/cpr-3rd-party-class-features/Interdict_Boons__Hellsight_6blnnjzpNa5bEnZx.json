@@ -89,14 +89,12 @@
             {
               "type": "itemUses",
               "value": "1",
-              "target": "ccvF0bMcdZsFaGWu",
-              "scaling": {}
+              "target": "ccvF0bMcdZsFaGWu"
             },
             {
               "type": "itemUses",
               "value": "1",
-              "target": "",
-              "scaling": {}
+              "target": "PzQ9ugxMo6gsmI2q"
             }
           ]
         },
@@ -194,18 +192,17 @@
         },
         "otherActivityId": "none",
         "otherActivityAsParentType": true,
-        "name": ""
+        "name": "",
+        "img": "",
+        "appliedEffects": [
+          "GeqoudKhSipD1R9q"
+        ]
       }
     },
     "uses": {
-      "spent": 0,
-      "recovery": [
-        {
-          "period": "turn",
-          "type": "recoverAll"
-        }
-      ],
-      "max": "1"
+      "spent": null,
+      "recovery": [],
+      "max": ""
     },
     "advancement": [],
     "description": {
@@ -251,7 +248,7 @@
         "identifier": "interdictBoonHellsight",
         "rules": "legacy",
         "source": "chris-premades",
-        "version": "1.7.71"
+        "version": "1.7.76"
       },
       "macros": {
         "item": [

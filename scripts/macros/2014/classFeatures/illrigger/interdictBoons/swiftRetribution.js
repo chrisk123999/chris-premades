@@ -12,7 +12,7 @@ async function use({trigger, workflow}) {
     if (!selection) return;
     await workflowUtils.specialItemUse(selection, Array.from(workflow.targets), workflow.item, {consumeResources: true, consumeUsage: true});
 }
-export let interdictswiftRetribution = {
+export let interdictBoonSwiftRetribution = {
     name: 'Interdict Boons: Swift Retribution (Passive)',
     aliases: ['Interdict Boons: Swift Retribution'],
     version: '1.3.66',

@@ -84,14 +84,12 @@
             {
               "type": "itemUses",
               "value": "1",
-              "target": "ccvF0bMcdZsFaGWu",
-              "scaling": {}
+              "target": "ccvF0bMcdZsFaGWu"
             },
             {
               "type": "itemUses",
               "value": "1",
-              "target": "",
-              "scaling": {}
+              "target": "PzQ9ugxMo6gsmI2q"
             }
           ],
           "scaling": {
@@ -199,18 +197,17 @@
           "postRemoveConditionText": ""
         },
         "otherActivityId": "none",
-        "otherActivityAsParentType": true
+        "otherActivityAsParentType": true,
+        "img": "",
+        "appliedEffects": [
+          "8WWHsqXE1kv5M2CI"
+        ]
       }
     },
     "uses": {
-      "spent": 0,
-      "recovery": [
-        {
-          "period": "turn",
-          "type": "recoverAll"
-        }
-      ],
-      "max": "1"
+      "spent": null,
+      "recovery": [],
+      "max": ""
     },
     "advancement": [],
     "description": {
@@ -252,7 +249,7 @@
         "identifier": "interdictBoonBedevil",
         "rules": "legacy",
         "source": "chris-premades",
-        "version": "1.3.66"
+        "version": "1.3.76"
       },
       "hiddenActivities": [],
       "activityIdentifiers": {

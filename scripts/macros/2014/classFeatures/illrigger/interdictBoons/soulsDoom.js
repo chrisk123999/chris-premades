@@ -1,10 +1,13 @@
 import {itemUtils} from '../../../../../utils.js';
 async function added({trigger: {entity: item}}) {
-    await itemUtils.correctActivityItemConsumption(item, ['use'], 'balefulInterdict');
+    await itemUtils.multiCorrectActivityItemConsumption(item, ['use'], {
+        0: 'balefulInterdict',
+        1: 'interdictBoons'
+    });
 }
 export let interdictBoonSoulsDoom = {
     name: 'Interdict Boons: Soul\'s Doom',
-    version: '1.3.71',
+    version: '1.3.76',
     rules: 'legacy',
     item: [
         {

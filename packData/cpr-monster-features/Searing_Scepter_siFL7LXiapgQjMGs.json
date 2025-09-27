@@ -38,14 +38,14 @@
         "range": {
           "units": "ft",
           "override": false,
-          "value": "",
+          "value": "10",
           "special": ""
         },
         "target": {
           "template": {
             "count": "",
             "contiguous": false,
-            "type": "radius",
+            "type": "",
             "size": "5",
             "width": "",
             "height": "",
@@ -90,10 +90,7 @@
               "bonus": "@mod",
               "types": [
                 "bludgeoning"
-              ],
-              "scaling": {
-                "number": 1
-              }
+              ]
             },
             {
               "custom": {
@@ -105,10 +102,7 @@
               "bonus": "",
               "types": [
                 "fire"
-              ],
-              "scaling": {
-                "number": 1
-              }
+              ]
             }
           ],
           "critical": {
@@ -170,7 +164,11 @@
         "otherActivityUuid": "",
         "attackRollPerTarget": "default",
         "fumbleThreshold": 1,
-        "name": ""
+        "name": "",
+        "img": "",
+        "appliedEffects": [
+          "iyh4ElCOUTRMRCFs"
+        ]
       }
     },
     "uses": {
@@ -271,8 +269,7 @@
     },
     "dnd5e": {
       "riders": {
-        "activity": [],
-        "effect": []
+        "activity": []
       }
     },
     "chris-premades": {

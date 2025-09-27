@@ -8,11 +8,14 @@ async function use({trigger, workflow}) {
     await Teleport.target([workflow.token], workflow.token, {range: 60, animation});
 }
 async function added({trigger: {entity: item}}) {
-    await itemUtils.correctActivityItemConsumption(item, ['use'], 'balefulInterdict');
+    await itemUtils.multiCorrectActivityItemConsumption(item, ['use'], {
+        0: 'balefulInterdict',
+        1: 'interdictBoons'
+    });
 }
 export let interdictBoonConflagrantChannel = {
     name: 'Interdict Boons: Conflagrant Channel',
-    version: '1.3.71',
+    version: '1.3.76',
     rules: 'legacy',
     midi: {
         item: [

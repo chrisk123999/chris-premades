@@ -6,11 +6,14 @@ async function turnEnd({trigger: {entity: effect}}) {
     await actorUtils.removeReactionUsed(effect.parent);
 }
 async function added({trigger: {entity: item}}) {
-    await await itemUtils.correctActivityItemConsumption(item, ['use'], 'balefulInterdict');
+    await itemUtils.multiCorrectActivityItemConsumption(item, ['use'], {
+        0: 'balefulInterdict',
+        1: 'interdictBoons'
+    });
 }
-export let interdictStyxsApathy = {
+export let interdictBoonStyxsApathy = {
     name: 'Interdict Boons: Styx\'s Apathy',
-    version: '1.3.66',
+    version: '1.3.76',
     rules: 'legacy',
     item: [
         {
@@ -30,10 +33,10 @@ export let interdictStyxsApathy = {
         }
     ]
 };
-export let interdictStyxsApathyEffect = {
+export let interdictBoonStyxsApathyEffect = {
     name: 'Interdict Boons: Styx\'s Apathy: Effect',
-    version: interdictStyxsApathy.version,
-    rules: interdictStyxsApathy.rules,
+    version: interdictBoonStyxsApathy.version,
+    rules: interdictBoonStyxsApathy.rules,
     combat: [
         {
             pass: 'turnStart',

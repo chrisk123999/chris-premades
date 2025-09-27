@@ -86,14 +86,12 @@
             {
               "type": "itemUses",
               "value": "1",
-              "target": "ccvF0bMcdZsFaGWu",
-              "scaling": {}
+              "target": "ccvF0bMcdZsFaGWu"
             },
             {
               "type": "itemUses",
               "value": "1",
-              "target": "",
-              "scaling": {}
+              "target": "PzQ9ugxMo6gsmI2q"
             }
           ]
         },
@@ -198,7 +196,9 @@
         "otherActivityId": "",
         "otherActivityAsParentType": true,
         "friendlySave": "default",
-        "name": "Pull"
+        "name": "Pull",
+        "img": "",
+        "appliedEffects": []
       },
       "E9FiYJVeAd5q6Meg": {
         "type": "save",
@@ -218,14 +218,12 @@
             {
               "type": "itemUses",
               "value": "1",
-              "target": "ccvF0bMcdZsFaGWu",
-              "scaling": {}
+              "target": "ccvF0bMcdZsFaGWu"
             },
             {
               "type": "itemUses",
               "value": "1",
-              "target": "",
-              "scaling": {}
+              "target": "PzQ9ugxMo6gsmI2q"
             }
           ]
         },
@@ -336,18 +334,17 @@
         "otherActivityId": "",
         "otherActivityAsParentType": true,
         "friendlySave": "default",
-        "name": "Grapple"
+        "name": "Grapple",
+        "img": "",
+        "appliedEffects": [
+          "txnsiZyIsRSASisa"
+        ]
       }
     },
     "uses": {
-      "spent": 0,
-      "recovery": [
-        {
-          "period": "turn",
-          "type": "recoverAll"
-        }
-      ],
-      "max": "1"
+      "spent": null,
+      "recovery": [],
+      "max": ""
     },
     "advancement": [],
     "description": {
@@ -393,18 +390,18 @@
       "info": {
         "identifier": "interdictBoonAcheronsChain",
         "source": "chris-premades",
-        "version": "1.3.71",
-        "rules": "legacy"
+        "rules": "legacy",
+        "version": "1.3.76"
       },
       "macros": {
+        "item": [
+          "interdictBoonAcheronsChain"
+        ],
         "midi": {
           "item": [
             "interdictBoonAcheronsChain"
           ]
-        },
-        "item": [
-          "interdictBoonAcheronsChain"
-        ]
+        }
       }
     }
   },

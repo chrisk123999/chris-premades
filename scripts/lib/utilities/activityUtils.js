@@ -1,4 +1,4 @@
-import {errors, effectUtils, genericUtils, itemUtils} from '../../utils.js';
+import {errors, effectUtils, genericUtils, itemUtils, rollUtils} from '../../utils.js';
 function getActivityByIdentifier(item, identifier, {strict = false} = {}) {
     let activity = item.system.activities.find(i => getIdentifier(i) === identifier);
     if (!activity && strict) {
@@ -119,18 +119,22 @@ function isSpellActivity(activity) {
     return spellActivities.includes(identifier);
 }
 function canUse(activity) {
-    //Note: This assumes the usage is only one and that there is only one consumption target!
-    //TODO: Not make this assumption.
     if (!activity.consumption.targets.length) return true;
-    switch (activity.consumption.targets[0].type) {
-        case 'itemUses':
-            if (activity.consumption.targets[0].target == '') {
-                return !!activity.item.system.uses.value;
-            } else {
-                let item = activity.actor.items.get(activity.consumption.targets[0].target);
-                return !!item?.system?.uses?.value;
-            }
-        case 'activityUses': return !!activity.uses.value;
+    let canUse = true;
+    for (let i = 0; i < activity.consumption.targets.length; i++) {
+        let test = rollUtils.rollDiceSync(activity.consumption.targets[i].value, {entity: activity, options: {minimize: true}}).total;
+        switch (activity.consumption.targets[i].type) {
+            case 'itemUses':
+                if (activity.consumption.targets[i].target == '') {
+                    canUse = activity.item.system.uses.value >= test;
+                } else {
+                    let item = activity.actor.items.get(activity.consumption.targets[i].target);
+                    if (item) canUse = item.system.uses.value >= test;
+                }
+                break;
+            case 'activityUses': canUse = activity.uses.value >= test;
+        }
+        if (!canUse) return false;
     }
     return true;
 }

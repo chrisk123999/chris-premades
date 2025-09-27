@@ -1,12 +1,75 @@
 {
-  "name": "Interdict Boons: Swift Retribution (Passive)",
+  "name": "Interdict Boons: Impaling Shot",
   "type": "feat",
-  "effects": [],
+  "effects": [
+    {
+      "name": "Interdict Boons: Impaling Shot",
+      "img": "icons/skills/targeting/crosshair-triple-strike-orange.webp",
+      "origin": "Actor.xH5x7LcFCU8mZwr5.Item.qYfrEwaKMNF2wMGO",
+      "transfer": false,
+      "_id": "O7rz3OA5cYjrf8tf",
+      "type": "base",
+      "system": {},
+      "changes": [
+        {
+          "key": "system.attributes.ac.bonus",
+          "mode": 2,
+          "value": "-@prof",
+          "priority": 20
+        }
+      ],
+      "disabled": false,
+      "duration": {
+        "startTime": null,
+        "combat": null,
+        "seconds": null,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "statuses": [],
+      "sort": 0,
+      "flags": {
+        "dnd5e": {
+          "riders": {
+            "statuses": []
+          },
+          "dependents": [
+            {
+              "uuid": "Scene.L39dEBy0tiHToOQE.Token.UQxzpbPkxZnl2kng.Actor.4i1zH4NhFIiJdyVO.ActiveEffect.5bRyz1RmtOZthfqz"
+            }
+          ]
+        },
+        "dae": {
+          "enableCondition": "",
+          "disableCondition": "",
+          "stackable": "noneName",
+          "showIcon": false,
+          "disableIncapacitated": false,
+          "selfTarget": false,
+          "selfTargetAlways": false,
+          "dontApply": false,
+          "durationExpression": "",
+          "macroRepeat": "none",
+          "specialDuration": [
+            "turnEndSource"
+          ]
+        },
+        "core": {
+          "overlay": false
+        }
+      },
+      "_key": "!items.effects!kWtoec2QkHtV6FjA.O7rz3OA5cYjrf8tf"
+    }
+  ],
   "system": {
     "activities": {
-      "UqQQfwHsiKgM4okf": {
+      "FG2e782Cl6SqATay": {
         "type": "utility",
-        "_id": "UqQQfwHsiKgM4okf",
+        "_id": "FG2e782Cl6SqATay",
         "sort": 0,
         "activation": {
           "type": "special",
@@ -18,19 +81,35 @@
             "allowed": false
           },
           "spellSlot": true,
-          "targets": []
+          "targets": [
+            {
+              "type": "itemUses",
+              "value": "1",
+              "target": "ccvF0bMcdZsFaGWu"
+            },
+            {
+              "type": "itemUses",
+              "value": "1",
+              "target": "PzQ9ugxMo6gsmI2q"
+            }
+          ]
         },
         "description": {
           "chatFlavor": ""
         },
         "duration": {
-          "units": "inst",
+          "units": "round",
           "concentration": false,
-          "override": false
+          "override": false,
+          "value": "2"
         },
-        "effects": [],
+        "effects": [
+          {
+            "_id": "O7rz3OA5cYjrf8tf"
+          }
+        ],
         "range": {
-          "units": "any",
+          "units": "self",
           "override": false,
           "special": ""
         },
@@ -42,9 +121,7 @@
           },
           "affects": {
             "choice": false,
-            "count": "1",
-            "type": "creature",
-            "special": ""
+            "type": ""
           },
           "override": false,
           "prompt": true
@@ -57,8 +134,8 @@
         "roll": {
           "prompt": false,
           "visible": false,
-          "formula": "",
-          "name": ""
+          "name": "",
+          "formula": ""
         },
         "useConditionText": "",
         "useConditionReason": "",
@@ -110,19 +187,24 @@
         },
         "otherActivityId": "none",
         "otherActivityAsParentType": true,
-        "name": ""
+        "name": "",
+        "img": "",
+        "appliedEffects": [
+          "O7rz3OA5cYjrf8tf"
+        ]
       }
     },
     "uses": {
-      "spent": 0,
-      "recovery": []
+      "spent": null,
+      "recovery": [],
+      "max": ""
     },
     "advancement": [],
     "description": {
       "value": "",
       "chat": ""
     },
-    "identifier": "interdict-boons",
+    "identifier": "interdict-boons-impaling-shot",
     "source": {
       "book": "TIR",
       "page": "",
@@ -147,26 +229,29 @@
   },
   "flags": {
     "dnd5e": {
-      "advancementOrigin": "zKpmerWRRzs7UoBC",
+      "advancementOrigin": "dGvGTF6VBn4DxXZx",
       "riders": {
         "activity": []
       }
     },
     "chris-premades": {
-      "info": {
-        "identifier": "interdictBoonSwiftRetribution",
-        "rules": "legacy",
-        "source": "chris-premades",
-        "version": "1.3.66"
-      },
       "hiddenActivities": [],
       "activityIdentifiers": {
-        "use": "UqQQfwHsiKgM4okf"
+        "use": "FG2e782Cl6SqATay"
+      },
+      "info": {
+        "identifier": "interdictBoonImpalingShot",
+        "rules": "legacy",
+        "source": "chris-premades",
+        "version": "1.3.76"
       },
       "macros": {
+        "item": [
+          "interdictBoonImpalingShot"
+        ],
         "midi": {
-          "item": [
-            "interdictBoonSwiftRetribution"
+          "actor": [
+            "interdictBoonImpalingShot"
           ]
         }
       }
@@ -174,6 +259,6 @@
   },
   "img": "icons/skills/targeting/crosshair-triple-strike-orange.webp",
   "folder": "4BvBCtAL7CUMzT9L",
-  "_id": "3tMJWVpZkEHjUCRE",
-  "_key": "!items!3tMJWVpZkEHjUCRE"
+  "_id": "kWtoec2QkHtV6FjA",
+  "_key": "!items!kWtoec2QkHtV6FjA"
 }

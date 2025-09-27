@@ -33,14 +33,15 @@
           ],
           "specialDuration": [],
           "info": {
-            "identifier": "interdictStyxsApathyEffect"
+            "identifier": "interdictBoonStyxsApathyEffect"
           },
           "rules": "legacy",
           "macros": {
             "combat": [
-              "interdictStyxsApathyEffect"
+              "interdictBoonStyxsApathyEffect"
             ]
-          }
+          },
+          "templateEffectActivities": []
         },
         "dnd5e": {
           "riders": {
@@ -92,14 +93,12 @@
             {
               "type": "itemUses",
               "value": "1",
-              "target": "ccvF0bMcdZsFaGWu",
-              "scaling": {}
+              "target": "ccvF0bMcdZsFaGWu"
             },
             {
               "type": "itemUses",
               "value": "1",
-              "target": "",
-              "scaling": {}
+              "target": "PzQ9ugxMo6gsmI2q"
             }
           ]
         },
@@ -174,7 +173,7 @@
           "autoTargetType": "any",
           "autoTargetAction": "default",
           "automationOnly": false,
-          "otherActivityCompatible": true,
+          "otherActivityCompatible": false,
           "otherActivityAsParentType": true,
           "identifier": "",
           "displayActivityName": false,
@@ -196,18 +195,17 @@
         },
         "otherActivityId": "none",
         "otherActivityAsParentType": true,
-        "name": ""
+        "name": "",
+        "img": "",
+        "appliedEffects": [
+          "uzRUqgBncHlcREyE"
+        ]
       }
     },
     "uses": {
-      "spent": 0,
-      "recovery": [
-        {
-          "period": "turn",
-          "type": "recoverAll"
-        }
-      ],
-      "max": "1"
+      "spent": null,
+      "recovery": [],
+      "max": ""
     },
     "advancement": [],
     "description": {
@@ -246,10 +244,10 @@
     },
     "chris-premades": {
       "info": {
-        "identifier": "interdictStyxsApathy",
+        "identifier": "interdictBoonStyxsApathy",
         "rules": "legacy",
         "source": "chris-premades",
-        "version": "1.3.66"
+        "version": "1.3.76"
       },
       "hiddenActivities": [],
       "activityIdentifiers": {
@@ -257,7 +255,8 @@
       },
       "macros": {
         "item": [
-          "interdictStyxsApathy"
+          "interdictStyxsApathy",
+          "interdictBoonStyxsApathy"
         ]
       }
     }

@@ -1,38 +1,115 @@
 {
-  "name": "Interdict Boons: Swift Retribution (Passive)",
+  "name": "Interdict Boons: Eyes of the Gate",
   "type": "feat",
-  "effects": [],
+  "effects": [
+    {
+      "name": "Interdict Boons: Eyes of the Gate",
+      "img": "icons/skills/targeting/crosshair-triple-strike-orange.webp",
+      "origin": "Actor.xH5x7LcFCU8mZwr5.Item.7dxCBy9NUV4waNj6",
+      "transfer": false,
+      "_id": "8Kxo0nRVEsivUp6s",
+      "type": "base",
+      "system": {},
+      "changes": [],
+      "disabled": false,
+      "duration": {
+        "startTime": null,
+        "combat": null
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "statuses": [],
+      "sort": 0,
+      "flags": {},
+      "_key": "!items.effects!QsaQfB5HY0HJu4ki.8Kxo0nRVEsivUp6s"
+    },
+    {
+      "name": "Interdict Boons: Eyes of the Gate",
+      "img": "icons/skills/targeting/crosshair-triple-strike-orange.webp",
+      "origin": "Actor.xH5x7LcFCU8mZwr5.Item.7dxCBy9NUV4waNj6",
+      "transfer": false,
+      "_id": "b0xPUUmVXNvE64LN",
+      "type": "base",
+      "system": {},
+      "changes": [],
+      "disabled": false,
+      "duration": {
+        "startTime": null,
+        "combat": null
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "statuses": [],
+      "sort": 0,
+      "flags": {
+        "dnd5e": {
+          "dependents": [
+            {
+              "uuid": "Scene.L39dEBy0tiHToOQE.Token.UQxzpbPkxZnl2kng.Actor.4i1zH4NhFIiJdyVO.ActiveEffect.oG6usgQcbaIJbiXu"
+            }
+          ]
+        }
+      },
+      "_key": "!items.effects!QsaQfB5HY0HJu4ki.b0xPUUmVXNvE64LN"
+    }
+  ],
   "system": {
     "activities": {
-      "UqQQfwHsiKgM4okf": {
-        "type": "utility",
-        "_id": "UqQQfwHsiKgM4okf",
+      "HWcJlyXZaNiBsPhK": {
+        "type": "save",
+        "_id": "HWcJlyXZaNiBsPhK",
         "sort": 0,
         "activation": {
-          "type": "special",
+          "type": "action",
           "override": false,
           "condition": ""
         },
         "consumption": {
           "scaling": {
-            "allowed": false
+            "allowed": true,
+            "max": ""
           },
           "spellSlot": true,
-          "targets": []
+          "targets": [
+            {
+              "type": "itemUses",
+              "value": "1",
+              "target": "ccvF0bMcdZsFaGWu",
+              "scaling": {
+                "mode": "amount",
+                "formula": ""
+              }
+            },
+            {
+              "type": "itemUses",
+              "value": "1",
+              "target": "PzQ9ugxMo6gsmI2q",
+              "scaling": {
+                "mode": ""
+              }
+            }
+          ]
         },
         "description": {
           "chatFlavor": ""
         },
         "duration": {
-          "units": "inst",
+          "units": "hour",
           "concentration": false,
-          "override": false
-        },
-        "effects": [],
-        "range": {
-          "units": "any",
           "override": false,
-          "special": ""
+          "value": "@scaling"
+        },
+        "effects": [
+          {
+            "_id": "b0xPUUmVXNvE64LN",
+            "onSave": false
+          }
+        ],
+        "range": {
+          "units": "ft",
+          "override": false,
+          "special": "",
+          "value": "60"
         },
         "target": {
           "template": {
@@ -42,8 +119,8 @@
           },
           "affects": {
             "choice": false,
-            "count": "1",
             "type": "creature",
+            "count": "1",
             "special": ""
           },
           "override": false,
@@ -54,11 +131,21 @@
           "recovery": [],
           "max": ""
         },
-        "roll": {
-          "prompt": false,
-          "visible": false,
-          "formula": "",
-          "name": ""
+        "damage": {
+          "onSave": "half",
+          "critical": {
+            "allow": false
+          },
+          "parts": []
+        },
+        "save": {
+          "ability": [
+            "wis"
+          ],
+          "dc": {
+            "calculation": "cha",
+            "formula": ""
+          }
         },
         "useConditionText": "",
         "useConditionReason": "",
@@ -108,21 +195,27 @@
           "preRemoveConditionText": "",
           "postRemoveConditionText": ""
         },
-        "otherActivityId": "none",
+        "otherActivityId": "",
         "otherActivityAsParentType": true,
-        "name": ""
+        "friendlySave": "friendlyFail",
+        "name": "",
+        "img": "",
+        "appliedEffects": [
+          "b0xPUUmVXNvE64LN"
+        ]
       }
     },
     "uses": {
-      "spent": 0,
-      "recovery": []
+      "spent": null,
+      "recovery": [],
+      "max": ""
     },
     "advancement": [],
     "description": {
       "value": "",
       "chat": ""
     },
-    "identifier": "interdict-boons",
+    "identifier": "interdict-boons-eyes-of-the-gate",
     "source": {
       "book": "TIR",
       "page": "",
@@ -147,33 +240,31 @@
   },
   "flags": {
     "dnd5e": {
-      "advancementOrigin": "zKpmerWRRzs7UoBC",
+      "advancementOrigin": "dGvGTF6VBn4DxXZx",
       "riders": {
         "activity": []
       }
     },
     "chris-premades": {
       "info": {
-        "identifier": "interdictBoonSwiftRetribution",
+        "identifier": "interdictBoonEyesOfTheGate",
         "rules": "legacy",
         "source": "chris-premades",
-        "version": "1.3.66"
+        "version": "1.3.76"
+      },
+      "macros": {
+        "item": [
+          "interdictBoonEyesOfTheGate"
+        ]
       },
       "hiddenActivities": [],
       "activityIdentifiers": {
-        "use": "UqQQfwHsiKgM4okf"
-      },
-      "macros": {
-        "midi": {
-          "item": [
-            "interdictBoonSwiftRetribution"
-          ]
-        }
+        "use": "HWcJlyXZaNiBsPhK"
       }
     }
   },
   "img": "icons/skills/targeting/crosshair-triple-strike-orange.webp",
   "folder": "4BvBCtAL7CUMzT9L",
-  "_id": "3tMJWVpZkEHjUCRE",
-  "_key": "!items!3tMJWVpZkEHjUCRE"
+  "_id": "QsaQfB5HY0HJu4ki",
+  "_key": "!items!QsaQfB5HY0HJu4ki"
 }

@@ -22,8 +22,12 @@
             {
               "type": "itemUses",
               "value": "1",
-              "target": "ccvF0bMcdZsFaGWu",
-              "scaling": {}
+              "target": "ccvF0bMcdZsFaGWu"
+            },
+            {
+              "type": "itemUses",
+              "value": "1",
+              "target": "PzQ9ugxMo6gsmI2q"
             }
           ]
         },
@@ -96,7 +100,7 @@
           "autoTargetType": "any",
           "autoTargetAction": "default",
           "automationOnly": false,
-          "otherActivityCompatible": true,
+          "otherActivityCompatible": false,
           "otherActivityAsParentType": true,
           "identifier": "",
           "displayActivityName": false,
@@ -118,12 +122,15 @@
         },
         "otherActivityId": "none",
         "otherActivityAsParentType": true,
-        "name": ""
+        "name": "",
+        "img": "",
+        "appliedEffects": []
       }
     },
     "uses": {
-      "spent": 0,
-      "recovery": []
+      "spent": null,
+      "recovery": [],
+      "max": ""
     },
     "advancement": [],
     "description": {
@@ -165,17 +172,17 @@
         "identifier": "interdictBoonAbatingSeal",
         "rules": "legacy",
         "source": "chris-premades",
-        "version": "1.3.66"
+        "version": "1.3.76"
       },
       "macros": {
+        "item": [
+          "interdictBoonAbatingSeal"
+        ],
         "midi": {
           "actor": [
             "interdictBoonAbatingSeal"
           ]
-        },
-        "item": [
-          "interdictBoonAbatingSeal"
-        ]
+        }
       },
       "hiddenActivities": [],
       "activityIdentifiers": {
