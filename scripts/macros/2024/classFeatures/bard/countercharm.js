@@ -2,7 +2,7 @@ import {activityUtils, actorUtils, constants, dialogUtils, genericUtils, itemUti
 async function selfSave({trigger: {entity: item, config, actor, roll}}) {
     if (config['chris-premades']?.countercharm) return;
     if (actorUtils.hasUsedReaction(actor)) return;
-    let targetValue = config.midiOptions?.target;
+    let targetValue = roll.options.target;
     if (!targetValue) return;
     if (roll.total >= targetValue) return;
     let activityUuid = config['chris-premades']?.activityUuid;
@@ -25,7 +25,7 @@ async function selfSave({trigger: {entity: item, config, actor, roll}}) {
 }
 async function save({trigger: {config, sourceActor, roll}}) {
     if (config['chris-premades']?.countercharm) return;
-    let targetValue = config.midiOptions?.target;
+    let targetValue = roll.options.target;
     if (!targetValue) return;
     if (roll.total >= targetValue) return;
     let activityUuid = config['chris-premades']?.activityUuid;

@@ -40,7 +40,7 @@ async function checkSkill({trigger: {entity: item, roll, actor, options}}) {
 }
 async function checkSkillLate({trigger: {entity: item, config, roll, actor, options}}) {
     if (!options?.['chris-premades']?.peerlessSkill) return;
-    let targetValue = config?.midiOptions?.target;
+    let targetValue = roll.options.target;
     if (targetValue) {
         if (roll.total < targetValue) return;
     } else {

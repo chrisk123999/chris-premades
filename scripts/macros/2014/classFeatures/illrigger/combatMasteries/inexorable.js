@@ -1,9 +1,7 @@
 import {rollUtils, tokenUtils} from '../../../../../utils.js';
 async function save({trigger: {token, roll}}) {
-    console.log(token);
     if (!token) return;
     let nearbyTargets = tokenUtils.findNearby(token, 5, 'enemy', {includeIncapacitated: true});
-    console.log(nearbyTargets);
     if (!nearbyTargets.length) return;
     return await rollUtils.addToRoll(roll, String(Math.min(nearbyTargets.length, 5)));
 }

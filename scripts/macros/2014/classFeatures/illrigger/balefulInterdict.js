@@ -122,6 +122,16 @@ async function move({trigger, workflow}) {
     });
     await genericUtils.deleteEmbeddedDocuments(targetToken.actor, 'ActiveEffect', effects.map(effect => effect.id));
     await genericUtils.createEmbeddedDocuments(workflow.targets.first().actor, 'ActiveEffect', effectDatas);
+    let acheronsChain = itemUtils.getItemByIdentifier(workflow.actor, 'interdictBoonAcheronsChain');
+    let dissOnslaught = itemUtils.getItemByIdentifier(workflow.actor, 'interdictBoonDissOnslaught');
+    let soulsDoom = itemUtils.getItemByIdentifier(workflow.actor, 'interdictBoonSoulsDoom');
+    let flashOfBrimstone = itemUtils.getItemByIdentifier(workflow.actor, 'interdictBoonFlashOfBrimstone');
+    let documents = [acheronsChain, dissOnslaught, soulsDoom, flashOfBrimstone].filter(i => i);
+    if (!documents.length) return;
+    let selection = await dialogUtils.selectDocumentDialog('CHRISPREMADES.Macros.InterdictBoons.Name', genericUtils.format('CHRISPREMADES.Dialog.Use', {itemName: genericUtils.translate('CHRISPREMADES.Macros.InterdictBoons.Name')}), documents, {sortAlphabetical: true});
+    if (!selection) return;
+    await workflowUtils.syntheticItemRoll(selection, [workflow.targets.first()], {consumeResources: true, consumeUsage: true});
+    for (let document of documents.filter(i => i.id != selection.id && i.system.uses.max)) await genericUtils.update(document, {'system.uses.spent': document.system.uses.spent + 1});
 }
 async function burnSpecial({trigger, workflow}) {
     if (!workflow.targets.size) return;
@@ -142,10 +152,25 @@ async function burnSpecial({trigger, workflow}) {
     let selection = await dialogUtils.selectDocumentDialog('CHRISPREMADES.Macros.InterdictBoons.Name', genericUtils.format('CHRISPREMADES.Dialog.Use', {itemName: genericUtils.translate('CHRISPREMADES.Macros.InterdictBoons.Name')}), documents, {sortAlphabetical: true, userId: socketUtils.firstOwner(workflow.item, true)});
     if (!selection) return;
     await workflowUtils.syntheticItemRoll(selection, [workflow.targets.first()], {consumeResources: true, consumeUsage: true});
-    for (let document of documents.filter(i => i.id != selection.id)) await genericUtils.update(document, {'system.uses.spent': document.system.uses.spent + 1});
+    for (let document of documents.filter(i => i.id != selection.id && i.system.uses.max)) await genericUtils.update(document, {'system.uses.spent': document.system.uses.spent + 1});
 }
-async function burnBonus({trigger, workflow}) {
-
+async function placeSealBonus({trigger, workflow}) {
+    let documents;
+    if (workflow.activity.activation.type == 'bonus') {
+        let acheronsChain = itemUtils.getItemByIdentifier(workflow.actor, 'interdictBoonAcheronsChain');
+        let dissOnslaught = itemUtils.getItemByIdentifier(workflow.actor, 'interdictBoonDissOnslaught');
+        let flashOfBrimstone = itemUtils.getItemByIdentifier(workflow.actor, 'interdictBoonFlashOfBrimstone');
+        let soulsDoom = itemUtils.getItemByIdentifier(workflow.actor, 'interdictBoonSoulsDoom');
+        documents = [acheronsChain, dissOnslaught, flashOfBrimstone, soulsDoom].filter(i => i);
+    } else {
+        let flashOfBrimstone = itemUtils.getItemByIdentifier(workflow.actor, 'interdictBoonFlashOfBrimstone');
+        documents = [flashOfBrimstone].filter(i => i);
+    }
+    if (!documents.length) return;
+    let selection = await dialogUtils.selectDocumentDialog('CHRISPREMADES.Macros.InterdictBoons.Name', genericUtils.format('CHRISPREMADES.Dialog.Use', {itemName: genericUtils.translate('CHRISPREMADES.Macros.InterdictBoons.Name')}), documents, {sortAlphabetical: true});
+    if (!selection) return;
+    await workflowUtils.syntheticItemRoll(selection, [workflow.targets.first()], {consumeResources: true, consumeUsage: true});
+    for (let document of documents.filter(i => i.id != selection.id && i.system.uses.max)) await genericUtils.update(document, {'system.uses.spent': document.system.uses.spent + 1});
 }
 async function burnEarly({trigger, workflow}) {
     let superiorInterdict = itemUtils.getItemByIdentifier(workflow.actor, 'superiorInterdict');
@@ -165,6 +190,12 @@ export let balefulInterdict = {
             {
                 pass: 'preambleComplete',
                 macro: distance,
+                priority: 50,
+                activities: ['placeSeal']
+            },
+            {
+                pass: 'rollFinished',
+                macro: placeSealBonus,
                 priority: 50,
                 activities: ['placeSeal']
             },

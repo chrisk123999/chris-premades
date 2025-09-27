@@ -1,0 +1,239 @@
+{
+  "name": "Interdict Boons: Conflagrant Channel",
+  "type": "feat",
+  "effects": [],
+  "system": {
+    "activities": {
+      "TBsAIdtOJU9JpkHc": {
+        "type": "utility",
+        "_id": "TBsAIdtOJU9JpkHc",
+        "sort": 0,
+        "activation": {
+          "type": "bonus",
+          "override": false,
+          "condition": ""
+        },
+        "consumption": {
+          "scaling": {
+            "allowed": false
+          },
+          "spellSlot": true,
+          "targets": [
+            {
+              "type": "itemUses",
+              "value": "1",
+              "target": "ccvF0bMcdZsFaGWu",
+              "scaling": {}
+            },
+            {
+              "type": "itemUses",
+              "value": "1",
+              "target": "",
+              "scaling": {}
+            }
+          ]
+        },
+        "description": {
+          "chatFlavor": ""
+        },
+        "duration": {
+          "units": "inst",
+          "concentration": false,
+          "override": false
+        },
+        "effects": [],
+        "range": {
+          "units": "ft",
+          "override": false,
+          "value": "60",
+          "special": ""
+        },
+        "target": {
+          "template": {
+            "contiguous": false,
+            "units": "ft",
+            "type": ""
+          },
+          "affects": {
+            "choice": false,
+            "type": "self",
+            "special": ""
+          },
+          "override": false,
+          "prompt": true
+        },
+        "uses": {
+          "spent": 0,
+          "recovery": [],
+          "max": ""
+        },
+        "roll": {
+          "prompt": false,
+          "visible": false,
+          "formula": "",
+          "name": ""
+        },
+        "useConditionText": "",
+        "useConditionReason": "",
+        "effectConditionText": "",
+        "macroData": {
+          "name": "",
+          "command": ""
+        },
+        "ignoreTraits": {
+          "idi": false,
+          "idr": false,
+          "idv": false,
+          "ida": false,
+          "idm": false
+        },
+        "midiProperties": {
+          "ignoreTraits": [],
+          "triggeredActivityId": "none",
+          "triggeredActivityConditionText": "",
+          "triggeredActivityTargets": "targets",
+          "triggeredActivityRollAs": "self",
+          "autoConsume": false,
+          "forceConsumeDialog": "default",
+          "forceRollDialog": "default",
+          "forceDamageDialog": "default",
+          "confirmTargets": "default",
+          "autoTargetType": "any",
+          "autoTargetAction": "default",
+          "automationOnly": false,
+          "otherActivityCompatible": false,
+          "otherActivityAsParentType": true,
+          "identifier": "",
+          "displayActivityName": false,
+          "rollMode": "default",
+          "chooseEffects": false,
+          "toggleEffect": false,
+          "ignoreFullCover": false,
+          "removeChatButtons": "default",
+          "magicEffect": false,
+          "magicDamage": false,
+          "noConcentrationCheck": false,
+          "autoCEEffects": "default"
+        },
+        "isOverTimeFlag": false,
+        "overTimeProperties": {
+          "saveRemoves": true,
+          "preRemoveConditionText": "",
+          "postRemoveConditionText": ""
+        },
+        "otherActivityId": "none",
+        "otherActivityAsParentType": true,
+        "name": ""
+      }
+    },
+    "uses": {
+      "spent": 0,
+      "recovery": [
+        {
+          "period": "turn",
+          "type": "recoverAll"
+        }
+      ],
+      "max": "1"
+    },
+    "advancement": [],
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "identifier": "interdict-boons-conflagrant-channel",
+    "source": {
+      "book": "TIR",
+      "page": "",
+      "license": "",
+      "custom": "",
+      "rules": "2014",
+      "revision": 1
+    },
+    "crewed": false,
+    "enchant": {},
+    "prerequisites": {
+      "items": [],
+      "level": 2,
+      "repeatable": false
+    },
+    "properties": [],
+    "requirements": "",
+    "type": {
+      "value": "class",
+      "subtype": ""
+    }
+  },
+  "flags": {
+    "ddbimporter": {
+      "id": 10763998,
+      "type": "class",
+      "entityTypeId": 12168134,
+      "is2014": true,
+      "is2024": false,
+      "originalName": "Interdict Boons: Conflagrant Channel",
+      "dndbeyond": {
+        "requiredLevel": 2,
+        "displayOrder": 17,
+        "featureType": 1,
+        "class": "Illrigger",
+        "classId": 2289517,
+        "entityType": "class-feature",
+        "choice": {
+          "parentName": "Interdict Boons",
+          "label": "Conflagrant Channel",
+          "choiceId": "3-1763443-456185667",
+          "componentId": 10763998,
+          "componentTypeId": 12168134,
+          "parentChoiceId": null,
+          "subType": null,
+          "wasOption": false,
+          "type": "class"
+        }
+      },
+      "summons": {
+        "folder": "Interdict Boons"
+      },
+      "class": "Illrigger",
+      "classId": 2289517,
+      "initialFeature": {
+        "value": "<p>You can expend a seal as a bonus action to teleport up to 60 feet to an unoccupied space you can see.</p>",
+        "chat": ""
+      },
+      "importId": "R3u9R2eubB2uP2pE"
+    },
+    "dnd5e": {
+      "advancementOrigin": "dGvGTF6VBn4DxXZx",
+      "riders": {
+        "activity": []
+      }
+    },
+    "chris-premades": {
+      "hiddenActivities": [],
+      "activityIdentifiers": {
+        "use": "TBsAIdtOJU9JpkHc"
+      },
+      "info": {
+        "identifier": "interdictBoonConflagrantChannel",
+        "rules": "legacy",
+        "source": "chris-premades",
+        "version": "1.3.71",
+        "hasAnimation": true
+      },
+      "macros": {
+        "item": [
+          "interdictBoonConflagrantChannel"
+        ],
+        "midi": {
+          "item": [
+            "interdictBoonConflagrantChannel"
+          ]
+        }
+      }
+    }
+  },
+  "img": "icons/skills/targeting/crosshair-triple-strike-orange.webp",
+  "folder": "4BvBCtAL7CUMzT9L",
+  "_id": "pue00peAelKq5bB8",
+  "_key": "!items!pue00peAelKq5bB8"
+}

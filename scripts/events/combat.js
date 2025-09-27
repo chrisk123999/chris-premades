@@ -70,7 +70,7 @@ function collectTokenMacros(token, pass, distance, target) {
                 });
             }
         });
-        if (pass === 'turnStartSource' || pass === 'turnEndSource') {
+        if (pass != 'turnStartSource' && pass != 'turnEndSource') {
             token.actor.items.forEach(item => {
                 let macroList = collectMacros(item).filter(i => i.combat?.find(j => j.pass === pass)).flatMap(k => k.combat).filter(l => l.pass === pass).concat(macroUtils.getEmbeddedMacros(item, 'combat', {pass}));
                 if (!macroList.length) return;

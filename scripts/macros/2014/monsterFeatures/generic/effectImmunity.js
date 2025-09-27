@@ -32,9 +32,13 @@ async function early({trigger, workflow}) {
         if (effects.find(j => j.name === firstEffectName)) return;
         return true;
     });
-    await workflowUtils.updateTargets(validTargets);
+    await workflowUtils.updateTargets(workflow, validTargets);
 }
 async function removed({trigger}) {
+    //let expiryReason = trigger.options['expiry-reason'];
+    await genericUtils.sleep(200);
+    let effect = actorUtils.getEffects(trigger.entity.parent).find(i => i.name === trigger.entity.name && i.origin === trigger.entity.origin);
+    if (effect) return;
     let origin = await effectUtils.getOriginItem(trigger.entity);
     if (!origin) return;
     let config = itemUtils.getGenericFeatureConfig(origin, 'effectImmunity');
@@ -73,7 +77,7 @@ export let effectImmunity = {
         {
             value: 'duration',
             label: 'CHRISPREMADES.Config.DurationSeconds',
-            type: 'text',
+            type: 'number',
             default: 86400
         }
     ]

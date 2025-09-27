@@ -1,3 +1,28 @@
+# 1.3.75 Release:
+## Update Notes:
+- Effect Immunity generic monster feature should no longer trigger from DAE removing the effect to prevent stacking with a new one of the same name.
+
+# 1.3.74 Release:
+## Bug Fixes:
+- Combat events
+- Effect Immunity generic monster feature
+
+# 1.3.73 Release:
+## New Monster Content:
+- Fire Giant Dreadnought: Shield Charge
+- Fire Giant of Evil Fire: Bolt of Imix, Searing Scepter, Shrapnel Explosion
+## Bug Fixes:
+- Unarmed Strike (Modern)
+
+# 1.3.72 Release:
+## New Legacy Content:
+- Interdict Boons: Acheron's Chain
+- Interdict Boons: Conflagrant Channel
+- Interdict Boons: Dis's Onslaught
+- Interdict Boons: Flash of Brimstone
+- Interdict Boons: Hellsight
+- Interdict Boons: Soul's Doom
+
 # 1.3.71 Release:
 ## Update Notes:
 - The touch damage generic monster feature will now check and use item uses when relevant.

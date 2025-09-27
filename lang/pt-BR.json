@@ -1494,6 +1494,9 @@
                 "Curse": "Como você amaldiçoa o alvo?",
                 "Damage": "Sofrer Dano"
             },
+            "InfernalMajesty": {
+                "SelectTarget": "Selecione um alvo para sofrer dano:"
+            },
             "InfiltratorArmor": {
                 "ExtraDamage": "Aplicar 1d6 de dano elétrico adicional?",
                 "LightningLauncher": "Armadura do Infiltrador: Lança-Relâmpagos"
@@ -2507,6 +2510,7 @@
                     "AttackedBySource": "Atacado pela Origem",
                     "DamagedByAlly": "Sofrer Dano de Aliado",
                     "DamagedByEnemy": "Sofrer Dano de Inimigo",
+                    "EndOfWorkflow": "Fim do Workflow",
                     "Failed": "Falhar Teste de {toolName}",
                     "ForceSave": "Forçar Uma Salvaguarda",
                     "HitByAnotherCreature": "Atingido por Outra Criatura",
@@ -2517,6 +2521,10 @@
                     "TempHP": "Zero Pontos de Vida Temporários",
                     "TempMaxHP": "Zero Pontos de Vida Máximos Temporários",
                     "Tooltip": "As condições escolhidas removerão o efeito."
+                },
+                "templateEffectActivities": {
+                    "Label": "Efeito de Modelo",
+                    "Tooltip": "Atividade de Efeito de Modelo"
                 }
             },
             "EmbeddedMacros": {
