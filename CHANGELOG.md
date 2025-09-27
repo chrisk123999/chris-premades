@@ -1,3 +1,7 @@
+# 1.3.75 Release:
+## Update Notes:
+- Effect Immunity generic monster feature should no longer trigger from DAE removing the effect to prevent stacking with a new one of the same name.
+
 # 1.3.74 Release:
 ## Bug Fixes:
 - Combat events
