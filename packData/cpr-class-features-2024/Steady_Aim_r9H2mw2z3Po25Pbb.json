@@ -91,10 +91,10 @@
         }
       ],
       "duration": {
-        "seconds": 12,
+        "seconds": null,
         "startTime": null,
-        "rounds": 2,
-        "turns": null,
+        "rounds": null,
+        "turns": 1,
         "startRound": null,
         "startTurn": null,
         "combat": null
@@ -106,9 +106,7 @@
         "dae": {
           "transfer": false,
           "stackable": "noneName",
-          "specialDuration": [
-            "turnStartSource"
-          ],
+          "specialDuration": [],
           "enableCondition": "",
           "disableCondition": "",
           "showIcon": false,
@@ -332,7 +330,7 @@
         "identifier": "steadyAim",
         "source": "chris-premades",
         "rules": "modern",
-        "version": "1.3.53"
+        "version": "1.3.77"
       },
       "macros": {
         "movement": [

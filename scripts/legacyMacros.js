@@ -408,6 +408,10 @@ export {interdictBoonHellishFrenzy} from './macros/2014/classFeatures/illrigger/
 export {interdictBoonEyesOfTheGate} from './macros/2014/classFeatures/illrigger/interdictBoons/eyesOfTheGate.js';
 export {interdictBoonImpalingShot} from './macros/2014/classFeatures/illrigger/interdictBoons/impalingShot.js';
 export {interdictBoonIronGaol} from './macros/2014/classFeatures/illrigger/interdictBoons/ironGaol.js';
+export {interdictBoonShadowShroud} from './macros/2014/classFeatures/illrigger/interdictBoons/shadowShroud.js';
+export {interdictBoonUnleashHell} from './macros/2014/classFeatures/illrigger/interdictBoons/unleashHell.js';
+export {interdictBoonVengefulShot} from './macros/2014/classFeatures/illrigger/interdictBoons/vengefulShot.js';
+export {interdictBoonLastWord} from './macros/2014/classFeatures/illrigger/interdictBoons/lastWord.js';
 export {infernalConduit} from './macros/2014/classFeatures/illrigger/infernalConduit.js';
 export {bloodPrice} from './macros/2014/classFeatures/illrigger/bloodPrice.js';
 export {terrorizingForce} from './macros/2014/classFeatures/illrigger/terrorizingForce.js';

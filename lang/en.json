@@ -1592,6 +1592,9 @@
                 "Dim": "Light Lantern (Dim)",
                 "Extinguish": "Extinguish Lantern"
             },
+            "LastWord": {
+                "Use": "Yes ({amount})"
+            },
             "LayOnHands": {
                 "Empty": "Your {itemName} pool is empty.",
                 "RemoveCondition": "Remove a Condition:",
@@ -2860,7 +2863,7 @@
             },
             "customUINavigationScale": {
                 "Hint": "Scales the scene navigation.",
-                "Name": "Custom Naviation Scale"
+                "Name": "Custom Navigation Scale"
             },
             "devTools": {
                 "Hint": "Enable to display development tools.",

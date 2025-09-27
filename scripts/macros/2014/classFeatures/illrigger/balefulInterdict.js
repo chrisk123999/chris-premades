@@ -129,14 +129,15 @@ async function burnSpecial({trigger, workflow}) {
     let interdictBoons = itemUtils.getItemByIdentifier(workflow.actor, 'interdictBoons');
     if (!interdictBoons) return;
     let interdictBoonBedevil = itemUtils.getItemByIdentifier(workflow.actor, 'interdictBoonBedevil');
-    let interdictSoulEater = itemUtils.getItemByIdentifier(workflow.actor, 'interdictSoulEater');
-    let interdictStyxsApathy = itemUtils.getItemByIdentifier(workflow.actor, 'interdictStyxsApathy');
-    let interdictUnleashHell = itemUtils.getItemByIdentifier(workflow.actor, 'interdictUnleashHell');
+    let interdictSoulEater = itemUtils.getItemByIdentifier(workflow.actor, 'interdictBoonSoulEater');
+    let interdictStyxsApathy = itemUtils.getItemByIdentifier(workflow.actor, 'interdictBoonStyxsApathy');
+    let interdictUnleashHell = itemUtils.getItemByIdentifier(workflow.actor, 'interdictBoonUnleashHell');
     let documents = [interdictBoonBedevil, interdictSoulEater, interdictStyxsApathy, interdictUnleashHell].filter(i => i).filter(i => {
         if (!itemUtils.canUse(i)) return;
         let identifer = genericUtils.getIdentifier(i);
         switch (identifer) {
             case 'interdictStyxsApathy':
+            case 'interdictBoonUnleashHell':
                 if (actorUtils.hasUsedReaction(i.actor)) return;
         }
         return true;
@@ -144,7 +145,18 @@ async function burnSpecial({trigger, workflow}) {
     if (!documents.length) return;
     let selection = await dialogUtils.selectDocumentDialog('CHRISPREMADES.Macros.InterdictBoons.Name', genericUtils.format('CHRISPREMADES.Dialog.Use', {itemName: genericUtils.translate('CHRISPREMADES.Macros.InterdictBoons.Name')}), documents, {sortAlphabetical: true, userId: socketUtils.firstOwner(workflow.item, true)});
     if (!selection) return;
-    await workflowUtils.syntheticItemRoll(selection, [workflow.targets.first()], {consumeResources: true, consumeUsage: true});
+    let selectionIdentifier = genericUtils.getIdentifier(selection);
+    if (selectionIdentifier === 'interdictBoonUnleashHell') {
+        let nearbyAllies = tokenUtils.findNearby(workflow.targets.first(), 5, 'ally', {includeIncapacitated: true});
+        let activity = activityUtils.getActivityByIdentifier(selection, 'use', {strict: true});
+        if (!activity) return;
+        let activityData = genericUtils.duplicate(activity.toObject());
+        activityData.damage.parts[0].bonus = workflow.damageTotal;
+        activityData.damage.parts[0].types = [workflow.defaultDamageType];
+        await workflowUtils.syntheticActivityDataRoll(activityData, selection, workflow.actor, nearbyAllies, {consumeResources: true, consumeUsage: true});
+    } else {
+        await workflowUtils.syntheticItemRoll(selection, [workflow.targets.first()], {consumeResources: true, consumeUsage: true});
+    }
 }
 async function placeSealBonus({trigger, workflow}) {
     let interdictBoons = itemUtils.getItemByIdentifier(workflow.actor, 'interdictBoons');

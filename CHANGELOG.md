@@ -1,3 +1,14 @@
+# 1.3.77 Release:
+## New Legacy Content:
+- Interdict Boons: Last Word
+- Interdict Boons: Shadow Shroud
+- Interdict Boons: Unleash Hell
+- Interdict Boons: Vengeful Shot
+## Bug Fixes:
+- Steady Aim (Modern)
+- Strike of the Giants (Legacy)
+- Warding Flare (Modern)
+
 # 1.3.76 Release:
 ## New Legacy Content:
 - Interdict Boons: Eyes of the Gate
