@@ -22,13 +22,12 @@
             {
               "type": "itemUses",
               "value": "1",
-              "target": "ccvF0bMcdZsFaGWu",
-              "scaling": {}
+              "target": "ccvF0bMcdZsFaGWu"
             },
             {
               "type": "itemUses",
               "value": "1",
-              "scaling": {}
+              "target": "PzQ9ugxMo6gsmI2q"
             }
           ]
         },
@@ -127,18 +126,15 @@
           "preRemoveConditionText": "",
           "postRemoveConditionText": ""
         },
-        "name": ""
+        "name": "",
+        "img": "",
+        "appliedEffects": []
       }
     },
     "uses": {
-      "spent": 0,
-      "recovery": [
-        {
-          "period": "turn",
-          "type": "recoverAll"
-        }
-      ],
-      "max": "1"
+      "spent": null,
+      "recovery": [],
+      "max": ""
     },
     "advancement": [],
     "description": {
@@ -171,15 +167,15 @@
   "flags": {
     "dnd5e": {
       "advancementOrigin": "zKpmerWRRzs7UoBC",
-      "riders": {
-        "activity": []
-      },
       "last": {
         "XCKA28kw5lvhDSuV": {
           "damageType": {
             "0": "temphp"
           }
         }
+      },
+      "riders": {
+        "activity": []
       }
     },
     "chris-premades": {
@@ -188,14 +184,15 @@
         "use": "XCKA28kw5lvhDSuV"
       },
       "info": {
-        "identifier": "interdictSoulEater",
+        "identifier": "interdictBoonSoulEater",
         "rules": "legacy",
         "source": "chris-premades",
-        "version": "1.3.66"
+        "version": "1.3.76"
       },
       "macros": {
         "item": [
-          "interdictSoulEater"
+          "interdictSoulEater",
+          "interdictBoonSoulEater"
         ]
       }
     }

@@ -35,7 +35,7 @@ async function damage({trigger: {entity: item}, workflow}) {
     }
     if (!bonusFormula) return;
     await workflowUtils.bonusDamage(workflow, bonusFormula, {damageType: bonusType});
-    await workflowUtils.syntheticItemRoll(item, [workflow.hitTargets.first()], {config: {consumeUsage: true}, options: {configureDialog: false}});
+    await workflowUtils.syntheticItemRoll(item, [workflow.hitTargets.first()], {consumeResources: true, consumeUsage: true});
 }
 async function combatEnd({trigger: {entity: item}}) {
     await combatUtils.setTurnCheck(item, 'strikeOfTheGiants', true);

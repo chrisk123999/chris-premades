@@ -303,6 +303,7 @@ function isAttackType(workflow, type = 'attack') {
         case 'rangedAttack': field = 'rangedAttacks'; break;
         case 'weaponAttack': field = 'weaponAttacks'; break;
         case 'spellAttack': field = 'spellAttacks'; break;
+        case 'rangedWeaponAttack': field = 'rangedWeaponAttacks'; break;
         default: return;
     }
     return constants[field].includes(getActionType(workflow));

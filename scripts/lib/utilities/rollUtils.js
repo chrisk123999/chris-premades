@@ -77,8 +77,8 @@ async function getChangedDamageRoll(origRoll, newType) {
     let newRoll = await new CONFIG.Dice.DamageRoll(origRoll.terms.map(i => i.expression + (i.flavor?.length ? '[' + newType + ']' : '')).join(''), origRoll.data, genericUtils.mergeObject(origRoll.options, {type: newType})).evaluate();
     return newRoll;
 }
-async function rollDice(formula, {actor, chatMessage, flavor, mode = 'publicroll'} = {}) {
-    let roll = await new Roll(formula, actor?.getRollData()).evaluate();
+async function rollDice(formula, {entity, chatMessage, flavor, mode = 'publicroll'} = {}) {
+    let roll = await new Roll(formula, entity?.getRollData()).evaluate();
     if (chatMessage) {
         let message = await roll.toMessage({
             speaker: {alias: name},
@@ -89,6 +89,9 @@ async function rollDice(formula, {actor, chatMessage, flavor, mode = 'publicroll
         return {message: message, roll: roll};
     }
     return roll;
+}
+function rollDiceSync(formula, {entity, options: {strict = false, maximize = false, minimize = false} = {}} = {}) {
+    return new Roll(formula, entity?.getRollData()).evaluateSync({strict, maximize, minimize});
 }
 async function damageRoll(formula, entity, options = {}) {
     return await new CONFIG.Dice.DamageRoll(formula, entity.getRollData(), options).evaluate();
@@ -140,5 +143,6 @@ export let rollUtils = {
     remoteRoll,
     remoteDamageRolls,
     hasDuplicateDie,
-    replaceD20
+    replaceD20,
+    rollDiceSync
 };

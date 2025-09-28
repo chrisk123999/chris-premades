@@ -1,12 +1,12 @@
 {
-  "name": "Interdict Boons: Swift Retribution (Passive)",
+  "name": "Interdict Boons: Last Word",
   "type": "feat",
   "effects": [],
   "system": {
     "activities": {
-      "UqQQfwHsiKgM4okf": {
-        "type": "utility",
-        "_id": "UqQQfwHsiKgM4okf",
+      "MDmVx2ITiAYxFzhn": {
+        "type": "save",
+        "_id": "MDmVx2ITiAYxFzhn",
         "sort": 0,
         "activation": {
           "type": "special",
@@ -15,10 +15,29 @@
         },
         "consumption": {
           "scaling": {
-            "allowed": false
+            "allowed": true,
+            "max": "3"
           },
           "spellSlot": true,
-          "targets": []
+          "targets": [
+            {
+              "type": "itemUses",
+              "value": "1",
+              "target": "ccvF0bMcdZsFaGWu",
+              "scaling": {
+                "mode": "amount",
+                "formula": ""
+              }
+            },
+            {
+              "type": "itemUses",
+              "value": "1",
+              "target": "mTFkjDcfXDu6o9Nf",
+              "scaling": {
+                "mode": ""
+              }
+            }
+          ]
         },
         "description": {
           "chatFlavor": ""
@@ -30,7 +49,7 @@
         },
         "effects": [],
         "range": {
-          "units": "any",
+          "units": "spec",
           "override": false,
           "special": ""
         },
@@ -42,8 +61,8 @@
           },
           "affects": {
             "choice": false,
-            "count": "1",
             "type": "creature",
+            "count": "",
             "special": ""
           },
           "override": false,
@@ -54,11 +73,39 @@
           "recovery": [],
           "max": ""
         },
-        "roll": {
-          "prompt": false,
-          "visible": false,
-          "formula": "",
-          "name": ""
+        "damage": {
+          "onSave": "half",
+          "critical": {
+            "allow": false
+          },
+          "parts": [
+            {
+              "custom": {
+                "enabled": false,
+                "formula": ""
+              },
+              "number": 3,
+              "denomination": 6,
+              "bonus": "",
+              "types": [
+                "fire"
+              ],
+              "scaling": {
+                "mode": "whole",
+                "number": 3,
+                "formula": ""
+              }
+            }
+          ]
+        },
+        "save": {
+          "ability": [
+            "dex"
+          ],
+          "dc": {
+            "calculation": "cha",
+            "formula": ""
+          }
         },
         "useConditionText": "",
         "useConditionReason": "",
@@ -108,8 +155,9 @@
           "preRemoveConditionText": "",
           "postRemoveConditionText": ""
         },
-        "otherActivityId": "none",
+        "otherActivityId": "",
         "otherActivityAsParentType": true,
+        "friendlySave": "default",
         "name": ""
       }
     },
@@ -122,7 +170,7 @@
       "value": "",
       "chat": ""
     },
-    "identifier": "interdict-boons",
+    "identifier": "interdict-boons-last-word",
     "source": {
       "book": "TIR",
       "page": "",
@@ -147,26 +195,36 @@
   },
   "flags": {
     "dnd5e": {
-      "advancementOrigin": "zKpmerWRRzs7UoBC",
+      "advancementOrigin": "dGvGTF6VBn4DxXZx",
       "riders": {
         "activity": []
+      },
+      "last": {
+        "MDmVx2ITiAYxFzhn": {
+          "damageType": {
+            "0": "fire"
+          }
+        }
       }
     },
     "chris-premades": {
-      "info": {
-        "identifier": "interdictBoonSwiftRetribution",
-        "rules": "legacy",
-        "source": "chris-premades",
-        "version": "1.3.66"
-      },
       "hiddenActivities": [],
       "activityIdentifiers": {
-        "use": "UqQQfwHsiKgM4okf"
+        "use": "MDmVx2ITiAYxFzhn"
+      },
+      "info": {
+        "identifier": "interdictBoonLastWord",
+        "rules": "legacy",
+        "source": "chris-premades",
+        "version": "1.7.77"
       },
       "macros": {
+        "item": [
+          "interdictBoonLastWord"
+        ],
         "midi": {
-          "item": [
-            "interdictBoonSwiftRetribution"
+          "actor": [
+            "interdictBoonLastWord"
           ]
         }
       }
@@ -174,6 +232,6 @@
   },
   "img": "icons/skills/targeting/crosshair-triple-strike-orange.webp",
   "folder": "4BvBCtAL7CUMzT9L",
-  "_id": "3tMJWVpZkEHjUCRE",
-  "_key": "!items!3tMJWVpZkEHjUCRE"
+  "_id": "Z3nzPAphAhU9s4X5",
+  "_key": "!items!Z3nzPAphAhU9s4X5"
 }

@@ -5,11 +5,14 @@ async function pull({trigger, workflow}) {
     await tokenUtils.pushToken(workflow.token, workflow.failedSaves.first(), -distance);
 }
 async function added({trigger: {entity: item}}) {
-    await itemUtils.correctActivityItemConsumption(item, ['pull', 'grapple'], 'balefulInterdict');
+    await itemUtils.multiCorrectActivityItemConsumption(item, ['pull', 'grapple'], {
+        0: 'balefulInterdict',
+        1: 'interdictBoons'
+    });
 }
 export let interdictBoonAcheronsChain = {
     name: 'Interdict Boons: Acheron\'s Chain',
-    version: '1.3.71',
+    version: '1.3.76',
     rules: 'legacy',
     midi: {
         item: [

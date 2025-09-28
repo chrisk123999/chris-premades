@@ -59,23 +59,13 @@ async function distance({trigger, workflow}) {
     workflow.aborted = true;
     genericUtils.notify('CHRISPREMADES.Macros.BalefulInterdict.Move.TooFar', 'info', {localize: true});
 }
-async function attackHelper(item, workflow) {
+async function attack({trigger: {entity: item}, workflow}) {
     if (!workflow.hitTargets.size || !item.system.uses.value || !workflowUtils.isAttackType(workflow, 'weaponAttack')) return;
     let selection = await dialogUtils.confirm(item.name, 'CHRISPREMADES.Macros.BalefulInterdict.PlaceSeal');
     if (!selection) return;
     let activity = activityUtils.getActivityByIdentifier(item, 'placeSeal', {strict: true});
     if (!activity) return;
     await workflowUtils.specialItemUse(item, [workflow.targets.first()], workflow.item, {activity, consumeResources: true, consumeUsage: true});
-}
-async function attack({trigger: {entity: item}, workflow}) {
-    let canTriggerImmediately = itemUtils.getConfig(item, 'canTriggerImmediately');
-    if (canTriggerImmediately) return;
-    await attackHelper(item, workflow);
-}
-async function attackAlt({trigger: {entity: item}, workflow}) {
-    let canTriggerImmediately = itemUtils.getConfig(item, 'canTriggerImmediately');
-    if (!canTriggerImmediately) return;
-    await attackHelper(item, workflow);
 }
 async function added({trigger: {entity: item}}) {
     await itemUtils.fixScales(item);
@@ -122,28 +112,32 @@ async function move({trigger, workflow}) {
     });
     await genericUtils.deleteEmbeddedDocuments(targetToken.actor, 'ActiveEffect', effects.map(effect => effect.id));
     await genericUtils.createEmbeddedDocuments(workflow.targets.first().actor, 'ActiveEffect', effectDatas);
+    let interdictBoons = itemUtils.getItemByIdentifier(workflow.actor, 'interdictBoons');
+    if (!interdictBoons) return;
     let acheronsChain = itemUtils.getItemByIdentifier(workflow.actor, 'interdictBoonAcheronsChain');
     let dissOnslaught = itemUtils.getItemByIdentifier(workflow.actor, 'interdictBoonDissOnslaught');
     let soulsDoom = itemUtils.getItemByIdentifier(workflow.actor, 'interdictBoonSoulsDoom');
     let flashOfBrimstone = itemUtils.getItemByIdentifier(workflow.actor, 'interdictBoonFlashOfBrimstone');
-    let documents = [acheronsChain, dissOnslaught, soulsDoom, flashOfBrimstone].filter(i => i);
+    let documents = [acheronsChain, dissOnslaught, soulsDoom, flashOfBrimstone].filter(i => i).filter(i => itemUtils.canUse(i));
     if (!documents.length) return;
     let selection = await dialogUtils.selectDocumentDialog('CHRISPREMADES.Macros.InterdictBoons.Name', genericUtils.format('CHRISPREMADES.Dialog.Use', {itemName: genericUtils.translate('CHRISPREMADES.Macros.InterdictBoons.Name')}), documents, {sortAlphabetical: true});
     if (!selection) return;
     await workflowUtils.syntheticItemRoll(selection, [workflow.targets.first()], {consumeResources: true, consumeUsage: true});
-    for (let document of documents.filter(i => i.id != selection.id && i.system.uses.max)) await genericUtils.update(document, {'system.uses.spent': document.system.uses.spent + 1});
 }
 async function burnSpecial({trigger, workflow}) {
     if (!workflow.targets.size) return;
+    let interdictBoons = itemUtils.getItemByIdentifier(workflow.actor, 'interdictBoons');
+    if (!interdictBoons) return;
     let interdictBoonBedevil = itemUtils.getItemByIdentifier(workflow.actor, 'interdictBoonBedevil');
-    let interdictSoulEater = itemUtils.getItemByIdentifier(workflow.actor, 'interdictSoulEater');
-    let interdictStyxsApathy = itemUtils.getItemByIdentifier(workflow.actor, 'interdictStyxsApathy');
-    let interdictUnleashHell = itemUtils.getItemByIdentifier(workflow.actor, 'interdictUnleashHell');
+    let interdictSoulEater = itemUtils.getItemByIdentifier(workflow.actor, 'interdictBoonSoulEater');
+    let interdictStyxsApathy = itemUtils.getItemByIdentifier(workflow.actor, 'interdictBoonStyxsApathy');
+    let interdictUnleashHell = itemUtils.getItemByIdentifier(workflow.actor, 'interdictBoonUnleashHell');
     let documents = [interdictBoonBedevil, interdictSoulEater, interdictStyxsApathy, interdictUnleashHell].filter(i => i).filter(i => {
-        if (!i.system.uses.value) return;
+        if (!itemUtils.canUse(i)) return;
         let identifer = genericUtils.getIdentifier(i);
         switch (identifer) {
             case 'interdictStyxsApathy':
+            case 'interdictBoonUnleashHell':
                 if (actorUtils.hasUsedReaction(i.actor)) return;
         }
         return true;
@@ -151,26 +145,37 @@ async function burnSpecial({trigger, workflow}) {
     if (!documents.length) return;
     let selection = await dialogUtils.selectDocumentDialog('CHRISPREMADES.Macros.InterdictBoons.Name', genericUtils.format('CHRISPREMADES.Dialog.Use', {itemName: genericUtils.translate('CHRISPREMADES.Macros.InterdictBoons.Name')}), documents, {sortAlphabetical: true, userId: socketUtils.firstOwner(workflow.item, true)});
     if (!selection) return;
-    await workflowUtils.syntheticItemRoll(selection, [workflow.targets.first()], {consumeResources: true, consumeUsage: true});
-    for (let document of documents.filter(i => i.id != selection.id && i.system.uses.max)) await genericUtils.update(document, {'system.uses.spent': document.system.uses.spent + 1});
+    let selectionIdentifier = genericUtils.getIdentifier(selection);
+    if (selectionIdentifier === 'interdictBoonUnleashHell') {
+        let nearbyAllies = tokenUtils.findNearby(workflow.targets.first(), 5, 'ally', {includeIncapacitated: true});
+        let activity = activityUtils.getActivityByIdentifier(selection, 'use', {strict: true});
+        if (!activity) return;
+        let activityData = genericUtils.duplicate(activity.toObject());
+        activityData.damage.parts[0].bonus = workflow.damageTotal;
+        activityData.damage.parts[0].types = [workflow.defaultDamageType];
+        await workflowUtils.syntheticActivityDataRoll(activityData, selection, workflow.actor, nearbyAllies, {consumeResources: true, consumeUsage: true});
+    } else {
+        await workflowUtils.syntheticItemRoll(selection, [workflow.targets.first()], {consumeResources: true, consumeUsage: true});
+    }
 }
 async function placeSealBonus({trigger, workflow}) {
+    let interdictBoons = itemUtils.getItemByIdentifier(workflow.actor, 'interdictBoons');
+    if (!interdictBoons) return;
     let documents;
     if (workflow.activity.activation.type == 'bonus') {
         let acheronsChain = itemUtils.getItemByIdentifier(workflow.actor, 'interdictBoonAcheronsChain');
         let dissOnslaught = itemUtils.getItemByIdentifier(workflow.actor, 'interdictBoonDissOnslaught');
         let flashOfBrimstone = itemUtils.getItemByIdentifier(workflow.actor, 'interdictBoonFlashOfBrimstone');
         let soulsDoom = itemUtils.getItemByIdentifier(workflow.actor, 'interdictBoonSoulsDoom');
-        documents = [acheronsChain, dissOnslaught, flashOfBrimstone, soulsDoom].filter(i => i);
+        documents = [acheronsChain, dissOnslaught, flashOfBrimstone, soulsDoom].filter(i => i).filter(i => itemUtils.canUse(i));
     } else {
         let flashOfBrimstone = itemUtils.getItemByIdentifier(workflow.actor, 'interdictBoonFlashOfBrimstone');
-        documents = [flashOfBrimstone].filter(i => i);
+        documents = [flashOfBrimstone].filter(i => i).filter(i => itemUtils.canUse(i));
     }
     if (!documents.length) return;
     let selection = await dialogUtils.selectDocumentDialog('CHRISPREMADES.Macros.InterdictBoons.Name', genericUtils.format('CHRISPREMADES.Dialog.Use', {itemName: genericUtils.translate('CHRISPREMADES.Macros.InterdictBoons.Name')}), documents, {sortAlphabetical: true});
     if (!selection) return;
     await workflowUtils.syntheticItemRoll(selection, [workflow.targets.first()], {consumeResources: true, consumeUsage: true});
-    for (let document of documents.filter(i => i.id != selection.id && i.system.uses.max)) await genericUtils.update(document, {'system.uses.spent': document.system.uses.spent + 1});
 }
 async function burnEarly({trigger, workflow}) {
     let superiorInterdict = itemUtils.getItemByIdentifier(workflow.actor, 'superiorInterdict');
@@ -220,13 +225,8 @@ export let balefulInterdict = {
         ],
         actor: [
             {
-                pass: 'rollFinishedLate',
+                pass: 'attackRollComplete',
                 macro: attack,
-                priority: 250
-            },
-            {
-                pass: 'rollFinished',
-                macro: attackAlt,
                 priority: 250
             }
         ]
@@ -270,14 +270,6 @@ export let balefulInterdict = {
             label: 'CHRISPREMADES.Config.DamageScaleIdentifier',
             type: 'text',
             default: 'baleful-interdict-damage',
-            category: 'homebrew',
-            homebrew: true
-        },
-        {
-            value: 'canTriggerImmediately',
-            label: 'CHRISPREMADES.Macros.BalefulInterdict.CanTriggerImmediately',
-            type: 'checkbox',
-            default: true,
             category: 'homebrew',
             homebrew: true
         }

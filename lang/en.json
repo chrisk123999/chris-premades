@@ -1566,6 +1566,7 @@
                 "Command": "Investment of the Chain Master: Command",
                 "Resistance": "Investment of the Chain Master: Familiar Resistance"
             },
+            "IronGaol": "Is the target native to Hell?",
             "JavelinOfLightning": {
                 "Bolt": "Javelin of Lightning: Bolt"
             },
@@ -1590,6 +1591,9 @@
                 "Bright": "Light Lantern (Bright)",
                 "Dim": "Light Lantern (Dim)",
                 "Extinguish": "Extinguish Lantern"
+            },
+            "LastWord": {
+                "Use": "Yes ({amount})"
             },
             "LayOnHands": {
                 "Empty": "Your {itemName} pool is empty.",
@@ -2859,7 +2863,7 @@
             },
             "customUINavigationScale": {
                 "Hint": "Scales the scene navigation.",
-                "Name": "Custom Naviation Scale"
+                "Name": "Custom Navigation Scale"
             },
             "devTools": {
                 "Hint": "Enable to display development tools.",

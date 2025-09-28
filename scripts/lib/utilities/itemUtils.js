@@ -217,8 +217,32 @@ async function correctActivityItemConsumption(item, activityIdentifiers = [], ta
     });
     if (Object.keys(updates).length) return await genericUtils.update(item, updates);
 }
+async function multiCorrectActivityItemConsumption(item, activityIdentifiers = [], corrections = {}) {
+    /*{
+        0: 'firstItemIdentifier',
+        1: 'secondItemIdentifier
+    }*/
+    let itemData = genericUtils.duplicate(item.toObject());
+    let updates = {};
+    activityIdentifiers.forEach(identifier => {
+        let activity = activityUtils.getActivityByIdentifier(item, identifier, {strict: true});
+        if (!activity) return;
+        for (let i of Object.keys(corrections)) {
+            let targetItem = itemUtils.getItemByIdentifier(item.actor, corrections[i]);
+            if (!targetItem) continue;
+            itemData.system.activities[activity.id].consumption.targets[i].target = targetItem.id;
+        }
+        let path = 'system.activities.' + activity.id + '.consumption.targets';
+        updates[path] = itemData.system.activities[activity.id].consumption.targets;
+    });
+    if (Object.keys(updates).length) return await genericUtils.update(item, updates);
+}
 async function fixScales(item) {
     return await requirements.scaleCheck(item);
+}
+function canUse(item) {
+    if (!item.system.activities.size) return true;
+    return item.system.activities.find(i => activityUtils.canUse(i));
 }
 export let itemUtils = {
     getSaveDC,
@@ -250,5 +274,7 @@ export let itemUtils = {
     setSpellActivities,
     cloneItem,
     correctActivityItemConsumption,
-    fixScales
+    fixScales,
+    multiCorrectActivityItemConsumption,
+    canUse
 };

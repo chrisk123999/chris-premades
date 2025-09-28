@@ -138,6 +138,9 @@ const spellAttacks = [
     'msak',
     'rsak'
 ];
+const rangedWeaponAttacks = [
+    'rwak'
+];
 const unarmedAttacks = [
     'unarmedStrike',
     'monkUnarmedStrike',
@@ -643,5 +646,6 @@ export let constants = {
     spellSchoolOptions,
     autoFailSaveEffectData,
     disadvantageEffectData,
-    languageOptions
+    languageOptions,
+    rangedWeaponAttacks
 };

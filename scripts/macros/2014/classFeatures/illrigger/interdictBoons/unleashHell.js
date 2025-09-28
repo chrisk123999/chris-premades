@@ -5,9 +5,9 @@ async function added({trigger: {entity: item}}) {
         1: 'interdictBoons'
     });
 }
-export let interdictBoonHellishFrenzy = {
-    name: 'Interdict Boons: Hellish Frenzy',
-    version: '1.3.76',
+export let interdictBoonUnleashHell = {
+    name: 'Interdict Boons: Unleash Hell',
+    version: '1.3.77',
     rules: 'legacy',
     item: [
         {

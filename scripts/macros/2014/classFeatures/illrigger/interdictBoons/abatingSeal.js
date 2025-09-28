@@ -3,11 +3,14 @@ async function damage({trigger: {targetToken}, workflow, ditem}) {
     await thirdPartyUtils.damaged(workflow, ditem, targetToken, 'interdictBoonAbatingSeal', 'use');
 }
 async function added({trigger: {entity: item}}) {
-    await itemUtils.correctActivityItemConsumption(item, ['use'], 'balefulInterdict');
+    await itemUtils.multiCorrectActivityItemConsumption(item, ['use'], {
+        0: 'balefulInterdict',
+        1: 'interdictBoons'
+    });
 }
 export let interdictBoonAbatingSeal = {
     name: 'Interdict Boons: Abating Seal',
-    version: '1.3.66',
+    version: '1.3.76',
     rules: 'legacy',
     midi: {
         actor: [

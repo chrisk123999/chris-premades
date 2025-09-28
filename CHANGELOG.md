@@ -1,3 +1,36 @@
+# 1.3.77 Release:
+## New Legacy Content:
+- Interdict Boons: Last Word
+- Interdict Boons: Shadow Shroud
+- Interdict Boons: Unleash Hell
+- Interdict Boons: Vengeful Shot
+## Bug Fixes:
+- Steady Aim (Modern)
+- Strike of the Giants (Legacy)
+- Warding Flare (Modern)
+
+# 1.3.76 Release:
+## New Legacy Content:
+- Interdict Boons: Eyes of the Gate
+- Interdict Boons: Hellish Frenzy
+- Interdict Boons: Impaling Shot
+- Interdict Boons: Iron Gaol
+## Bug Fixes:
+- Interdict Boons: Abating Seal
+- Interdict Boons: Acheron's Chain
+- Interdict Boons: Bedevil
+- Interdict Boons: Conflagrant Channel
+- Interdict Boons: Flash of Brimstone
+- Interdict Boons: Hellsight
+- Interdict Boons: Soul Eater
+- Interdict Boons: Soul's Doom
+- Interdict Boons: Styx's Apathy
+- Interdict Boons: Swift Retribution
+- Banishment (Legacy)
+- Bolt of Imix
+- Searing Scepter
+- Baleful Interdict
+
 # 1.3.75 Release:
 ## Update Notes:
 - Effect Immunity generic monster feature should no longer trigger from DAE removing the effect to prevent stacking with a new one of the same name.
