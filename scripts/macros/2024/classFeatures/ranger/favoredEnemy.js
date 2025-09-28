@@ -27,5 +27,58 @@ export let favoredEnemy = {
             macro: added,
             priority: 50
         }
+    ],
+    config: [
+        {
+            value: 'classIdentifier',
+            label: 'CHRISPREMADES.Config.ClassIdentifier',
+            type: 'text',
+            default: 'ranger',
+            category: 'homebrew',
+            homebrew: true
+        },
+        {
+            value: 'scaleIdentifier',
+            label: 'CHRISPREMADES.Config.ScaleIdentifier',
+            type: 'text',
+            default: 'favored-enemy',
+            category: 'homebrew',
+            homebrew: true
+        } 
+    ],
+    scales: [
+        {
+            classIdentifier: 'classIdentifier',
+            scaleIdentifier: 'scaleIdentifier',
+            data: {
+                type: 'ScaleValue',
+                configuration: {
+                    identifier: 'favored-enemy',
+                    distance: {
+                        units: ''
+                    },
+                    scale: {
+                        1: {
+                            value: 2
+                        },
+                        5: {
+                            value: 3
+                        },
+                        9: {
+                            value: 4
+                        },
+                        13: {
+                            value: 5
+                        },
+                        17: {
+                            value: 6
+                        }
+                    }
+                },
+                value: {},
+                title: 'Favored Enemy',
+                hint: ''
+            }
+        }
     ]
 };

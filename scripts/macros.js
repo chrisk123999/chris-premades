@@ -284,6 +284,7 @@ export {avatarOfBattle} from './macros/2024/classFeatures/cleric/war/avatarOfBat
 //Ranger
 export {favoredEnemy} from './macros/2024/classFeatures/ranger/favoredEnemy.js';
 export {tireless} from './macros/2024/classFeatures/ranger/tireless.js';
+export {relentlessHunter} from './macros/2024/classFeatures/ranger/relentlessHunter.js';
 //Rogue
 export {sneakAttack} from './macros/2024/classFeatures/rogue/sneakAttack.js';
 export {cunningAction} from './macros/2024/classFeatures/rogue/cunningAction.js';

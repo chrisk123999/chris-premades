@@ -128,10 +128,14 @@
       "value": "",
       "chat": ""
     },
-    "identifier": "new-item",
+    "identifier": "favored-enemy",
     "source": {
-      "revision": 1,
-      "rules": "2024"
+      "revision": null,
+      "rules": "2024",
+      "book": "",
+      "page": "",
+      "custom": "PHB 2024",
+      "license": ""
     },
     "crewed": false,
     "enchant": {},

@@ -2,6 +2,7 @@
 ## New Modern Content:
 - Favored Enemy
 - Tireless
+- Relentless Hunter
 
 # 1.3.77 Release:
 ## New Legacy Content:
