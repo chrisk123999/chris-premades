@@ -1,4 +1,9 @@
 # 1.3.77 Release:
+## New Modern Content:
+- Favored Enemy
+- Tireless
+
+# 1.3.77 Release:
 ## New Legacy Content:
 - Interdict Boons: Last Word
 - Interdict Boons: Shadow Shroud
