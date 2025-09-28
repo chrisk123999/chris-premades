@@ -3,6 +3,7 @@
 - Favored Enemy
 - Tireless
 - Relentless Hunter
+- Nature's Veil
 
 # 1.3.77 Release:
 ## New Legacy Content:

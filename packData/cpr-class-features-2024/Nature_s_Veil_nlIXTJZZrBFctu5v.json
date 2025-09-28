@@ -1,17 +1,17 @@
 {
   "folder": "5iJGkqFTSnNLAyCc",
-  "name": "Tireless",
+  "name": "Nature's Veil",
   "type": "feat",
-  "_id": "JHDnvpuobJ52JjVm",
-  "img": "icons/magic/life/cross-worn-green.webp",
+  "_id": "nlIXTJZZrBFctu5v",
+  "img": "icons/magic/nature/leaf-armor-scale-green.webp",
   "system": {
     "activities": {
-      "QdX3JXs9nSo7mB73": {
-        "type": "heal",
-        "_id": "QdX3JXs9nSo7mB73",
+      "mdiYsVeYIkWD6S6g": {
+        "type": "utility",
+        "_id": "mdiYsVeYIkWD6S6g",
         "sort": 0,
         "activation": {
-          "type": "action",
+          "type": "bonus",
           "override": false,
           "condition": ""
         },
@@ -36,7 +36,11 @@
           "concentration": false,
           "override": false
         },
-        "effects": [],
+        "effects": [
+          {
+            "_id": "b0kFhxzHCc2sVHuB"
+          }
+        ],
         "range": {
           "units": "self",
           "override": false,
@@ -60,19 +64,11 @@
           "recovery": [],
           "max": ""
         },
-        "healing": {
-          "types": [
-            "temphp"
-          ],
-          "custom": {
-            "enabled": false
-          },
-          "scaling": {
-            "number": 1
-          },
-          "number": 1,
-          "denomination": 8,
-          "bonus": "@abilities.wis.mod"
+        "roll": {
+          "prompt": false,
+          "visible": false,
+          "name": "",
+          "formula": ""
         },
         "useConditionText": "",
         "useConditionReason": "",
@@ -122,14 +118,23 @@
           "preRemoveConditionText": "",
           "postRemoveConditionText": ""
         },
+        "otherActivityId": "none",
+        "otherActivityAsParentType": true,
         "name": "",
         "img": "",
-        "appliedEffects": []
+        "appliedEffects": [
+          "b0kFhxzHCc2sVHuB"
+        ]
       }
     },
     "uses": {
       "spent": 0,
-      "recovery": [],
+      "recovery": [
+        {
+          "period": "lr",
+          "type": "recoverAll"
+        }
+      ],
       "max": "(max(1,@abilities.wis.mod))"
     },
     "advancement": [],
@@ -137,13 +142,13 @@
       "value": "",
       "chat": ""
     },
-    "identifier": "tireless",
+    "identifier": "natures-veil",
     "source": {
       "revision": null,
       "rules": "2024",
       "book": "",
       "page": "",
-      "custom": "PHB 2024",
+      "custom": "PHB 2924",
       "license": ""
     },
     "crewed": false,
@@ -153,16 +158,67 @@
       "repeatable": false,
       "level": null
     },
-    "properties": [
-      "mgc"
-    ],
+    "properties": [],
     "requirements": "",
     "type": {
       "value": "",
       "subtype": ""
     }
   },
-  "effects": [],
+  "effects": [
+    {
+      "name": "Nature's Veil",
+      "img": "icons/magic/nature/leaf-armor-scale-green.webp",
+      "origin": "Compendium.chris-premades.CPRClassFeatures2024.Item.nlIXTJZZrBFctu5v",
+      "transfer": false,
+      "_id": "b0kFhxzHCc2sVHuB",
+      "type": "base",
+      "system": {},
+      "changes": [],
+      "disabled": false,
+      "duration": {
+        "startTime": null,
+        "combat": null,
+        "seconds": null,
+        "rounds": 2,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "statuses": [
+        "invisible"
+      ],
+      "sort": 0,
+      "flags": {
+        "dnd5e": {
+          "riders": {
+            "statuses": []
+          }
+        },
+        "dae": {
+          "enableCondition": "",
+          "disableCondition": "",
+          "stackable": "noneName",
+          "showIcon": false,
+          "disableIncapacitated": false,
+          "selfTarget": false,
+          "selfTargetAlways": false,
+          "dontApply": false,
+          "durationExpression": "",
+          "macroRepeat": "none",
+          "specialDuration": [
+            "turnEndSource"
+          ]
+        },
+        "core": {
+          "overlay": false
+        }
+      },
+      "_key": "!items.effects!nlIXTJZZrBFctu5v.b0kFhxzHCc2sVHuB"
+    }
+  ],
   "flags": {
     "dnd5e": {
       "riders": {
@@ -171,17 +227,12 @@
     },
     "chris-premades": {
       "info": {
-        "identifier": "tireless",
+        "identifier": "naturesVeil",
         "version": "1.3.78",
         "source": "chris-premades",
         "rules": "modern"
-      },
-      "macros": {
-        "rest": [
-          "tireless"
-        ]
       }
     }
   },
-  "_key": "!items!JHDnvpuobJ52JjVm"
+  "_key": "!items!nlIXTJZZrBFctu5v"
 }

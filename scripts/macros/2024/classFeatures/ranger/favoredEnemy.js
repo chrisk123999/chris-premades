@@ -54,6 +54,7 @@ export let favoredEnemy = {
                 type: 'ScaleValue',
                 configuration: {
                     identifier: 'favored-enemy',
+                    type: 'number',
                     distance: {
                         units: ''
                     },
