@@ -36,6 +36,8 @@ async function use({workflow}) {
             seconds
         }
     };
+    let foeSlayer = itemUtils.getItemByIdentifier(workflow.actor, 'foeSlayer');
+    let damageFormulaItem = foeSlayer ? foeSlayer : workflow.item;
     let casterEffectData = {
         name: workflow.item.name,
         img: workflow.item.img,
@@ -47,8 +49,8 @@ async function use({workflow}) {
             'chris-premades': {
                 huntersMark: {
                     targets: Array.from(workflow.targets).map(i => i.document.uuid),
-                    formula: itemUtils.getConfig(workflow.item, 'formula'),
-                    damageType: itemUtils.getConfig(workflow.item, 'damageType')
+                    formula: itemUtils.getConfig(damageFormulaItem, 'formula'),
+                    damageType: itemUtils.getConfig(damageFormulaItem, 'damageType')
                 }
             }
         }
@@ -107,6 +109,17 @@ async function move({workflow}) {
         }
     };
     await effectUtils.createEffect(workflow.targets.first().actor, effectData, {parentEntity: effect, identifier: 'huntersMarkMarked'});
+}
+async function attack({workflow}) {
+    if (workflow.targets.size !== 1) return;
+    let preciseHunter = itemUtils.getItemByIdentifier(workflow.actor, 'preciseHunter');
+    if (!preciseHunter) return;
+    let effect = effectUtils.getEffectByIdentifier(workflow.actor, 'huntersMark');
+    if (!effect) return;
+    let {targets: validTargetUuids} = effect.flags['chris-premades'].huntersMark;
+    if (!validTargetUuids.includes(workflow.targets.first().document.uuid)) return;
+    workflow.advantage = true;
+    workflow.attackAdvAttribution.add(genericUtils.translate('DND5E.Advantage') + ': ' + preciseHunter.name);
 }
 async function damage({workflow}) {
     if (workflow.hitTargets.size !== 1) return;
@@ -170,6 +183,11 @@ export let huntersMarkSource = {
     version: huntersMark.version,
     midi: {
         actor: [
+            {
+                pass: 'preambleComplete',
+                macro: attack,
+                priority: 50
+            },
             {
                 pass: 'damageRollComplete',
                 macro: damage,

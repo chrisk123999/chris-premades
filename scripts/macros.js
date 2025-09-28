@@ -286,6 +286,8 @@ export {favoredEnemy} from './macros/2024/classFeatures/ranger/favoredEnemy.js';
 export {tireless} from './macros/2024/classFeatures/ranger/tireless.js';
 export {relentlessHunter} from './macros/2024/classFeatures/ranger/relentlessHunter.js';
 export {naturesVeil} from './macros/2024/classFeatures/ranger/naturesVeil.js';
+export {preciseHunter} from './macros/2024/classFeatures/ranger/preciseHunter.js';
+export {foeSlayer} from './macros/2024/classFeatures/ranger/foeSlayer.js';
 //Rogue
 export {sneakAttack} from './macros/2024/classFeatures/rogue/sneakAttack.js';
 export {cunningAction} from './macros/2024/classFeatures/rogue/cunningAction.js';

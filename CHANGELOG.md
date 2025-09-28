@@ -4,6 +4,8 @@
 - Tireless
 - Relentless Hunter
 - Nature's Veil
+- Precise Mark
+- Foe Slayer
 
 # 1.3.77 Release:
 ## New Legacy Content:
