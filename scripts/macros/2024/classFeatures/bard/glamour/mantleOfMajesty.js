@@ -11,7 +11,7 @@ async function use({trigger, workflow}) {
         }
     }
     spellData.system.activation.type = 'special';
-    spellData.system.preparation.mode = 'innate';
+    spellData.system.method = 'innate';
     genericUtils.setProperty(spellData, 'flags.chris-premades.info.identifier', 'mantleOfMajestyCommand');
     genericUtils.setProperty(spellData, 'flags.chris-premades.info.version', mantleOfMajesty.version);
     spellData.name = workflow.item.name + ': ' + spellData.name;

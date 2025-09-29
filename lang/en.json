@@ -1118,6 +1118,9 @@
             "DetectThoughts": {
                 "ProbeDeeper": "Detect Thoughts: Probe Deeper"
             },
+            "Devastator": {
+                "Message": "Target one enemy and all allies up to your proficiency score!"
+            },
             "DivineSmite": {
                 "Context": "Smite Target?",
                 "CreatureTypes": "Extra Damage Creature Types:",
@@ -2520,6 +2523,7 @@
                     "HitByAnotherCreature": "Hit By Another Creature",
                     "HitBySource": "Hit By Source",
                     "Label": "Special Durations:",
+                    "MoveFinished": "Move Finished",
                     "Rolled": "Rolled {toolName} Check",
                     "Succeed": "Succeeded {toolName} Check",
                     "TempHP": "Zero Temporary Hitpoints",

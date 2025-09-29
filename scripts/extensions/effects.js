@@ -235,6 +235,11 @@ async function specialDurationHitPoints(actor, updates, options, id) {
         if (specialDurations.find(i => validTypes.includes(i))) await genericUtils.remove(effect);
     }));
 }
+async function specialDurationMove(actor) {
+    let effects = actorUtils.getEffects(actor, {includeItemEffects: true}).filter(i => i.flags['chris-premades']?.specialDuration?.includes('moveFinished'));
+    if (!effects.length) return;
+    await genericUtils.deleteEmbeddedDocuments(actor, 'ActiveEffect', effects.map(i => i.id));
+}
 function preImageCreate(effect, updates, options, id) {
     if (game.user.id != id) return;
     if (!(effect.parent instanceof Actor)) return;
@@ -335,5 +340,6 @@ export let effects = {
     imageRemove,
     specialDurationHitPoints,
     specialDurationToolCheck,
-    removeWorkflowEffects
+    removeWorkflowEffects,
+    specialDurationMove
 };

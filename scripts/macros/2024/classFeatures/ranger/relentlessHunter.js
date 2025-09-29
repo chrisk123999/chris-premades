@@ -1,4 +1,4 @@
-import {genericUtils, rollUtils} from '../../../../utils.js';
+import {rollUtils} from '../../../../utils.js';
 async function saveBonus({trigger: {saveId, roll, actor, config}}) {
     if (config.isConcentration && actor.concentration.items.some(i => chrisPremades.utils.genericUtils.getIdentifier(i) === 'huntersMark')) {
         let oldTotal = roll.total;

@@ -130,7 +130,13 @@ async function replaceD20(roll, number) {
         return result;
     });
     rollData.total = (number - roll.terms[0].total) + roll.total;
-    return await Roll.fromData(rollData);
+    return Roll.fromData(rollData);
+}
+function makeCritical(roll) {
+    let rollData = genericUtils.duplicate(roll.toJSON());
+    rollData.options.criticalSuccess = 2;
+    rollData.terms[0].options.criticalSuccess = 2;
+    return Roll.fromData(rollData);
 }
 export let rollUtils = {
     getCriticalFormula,
@@ -144,5 +150,6 @@ export let rollUtils = {
     remoteDamageRolls,
     hasDuplicateDie,
     replaceD20,
-    rollDiceSync
+    rollDiceSync,
+    makeCritical
 };

@@ -161,6 +161,14 @@ function setDamageItemDamage(ditem, damageAmount, adjustRaw = true) {
         ditem.rawDamageDetail[0].value = damageAmount;
     }
 }
+function preventDeath(ditem) {
+    ditem.totalDamage = ditem.oldHP - 1;
+    ditem.newHP = 1;
+    ditem.newTempHP = 0;
+    ditem.hpDamage = ditem.totalDamage;
+    ditem.damageDetail.forEach(i => i.value = 0);
+    ditem.damageDetail[0].value = ditem.totalDamage;
+}
 function modifyDamageAppliedFlat(ditem, modificationAmount) {
     // We're gonna just assume this isn't healing, only damage
     if (modificationAmount < 0) {
@@ -304,6 +312,7 @@ function isAttackType(workflow, type = 'attack') {
         case 'weaponAttack': field = 'weaponAttacks'; break;
         case 'spellAttack': field = 'spellAttacks'; break;
         case 'rangedWeaponAttack': field = 'rangedWeaponAttacks'; break;
+        case 'meleeWeaponAttack': field = 'meleeWeaponAttacks'; break;
         default: return;
     }
     return constants[field].includes(getActionType(workflow));
@@ -355,5 +364,6 @@ export let workflowUtils = {
     isAttackType,
     getActionType,
     swapAttackAbility,
-    addEntityRemoval
+    addEntityRemoval,
+    preventDeath
 };

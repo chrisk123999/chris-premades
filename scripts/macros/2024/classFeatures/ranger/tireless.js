@@ -2,7 +2,8 @@ async function rest({trigger: {entity: item}}) {
     let actor = item.actor;
     if (!actor) return;
     let currExhaustion = actor.system.attributes.exhaustion;
-    await actor.update({'system.attributes.exhaustion': Math.max(currExhaustion - 1, 0)});
+    if (!currExhaustion) return;
+    await actor.update({'system.attributes.exhaustion': currExhaustion - 1});
 }
 export let tireless = {
     name: 'Tireless',
