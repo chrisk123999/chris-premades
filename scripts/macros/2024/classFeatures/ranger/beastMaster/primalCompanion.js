@@ -8,13 +8,29 @@ async function use({workflow}) {
     let classLevel = workflow.actor.classes?.ranger?.system?.levels;
     if (!classLevel) return;
     let primalBondFeatureData = await Summons.getSummonItem('Primal Bond', {}, workflow.item, {translate: 'CHRISPREMADES.Macros.PrimalCompanion.PrimalBond', identifier: 'primalCompanionPrimalBond'});
+    let dashData = await compendiumUtils.getItemFromCompendium(constants.packs.actions, 'Dash', {object: true, getDescription: true, translate: 'CHRISPREMADES.Macros.Actions.Dash', identifier: 'primalCompanionDash'});
+    let disengageData = await compendiumUtils.getItemFromCompendium(constants.packs.actions, 'Disengage', {object: true, getDescription: true, translate: 'CHRISPREMADES.Macros.Actions.Disengage', identifier: 'primalCompanionDisengage'});
     let dodgeData = await compendiumUtils.getItemFromCompendium(constants.packs.actions, 'Dodge', {object: true, getDescription: true, translate: 'CHRISPREMADES.Macros.Actions.Dodge', identifier: 'primalCompanionDodge'});
-    if (!primalBondFeatureData || !dodgeData) {
+    let helpData = await compendiumUtils.getItemFromCompendium(constants.packs.actions, 'Help', {object: true, getDescription: true, translate: 'CHRISPREMADES.Macros.Actions.Help', identifier: 'primalCompanionHelp'});
+    if (!primalBondFeatureData || !dashData || !disengageData || !dodgeData || !helpData) {
         errors.missingPackItem();
         return;
     }
+    let itemsToAdd = [primalBondFeatureData];
     let commandFeature = activityUtils.getActivityByIdentifier(workflow.item, 'primalCompanionCommand', {strict: true});
     if (!commandFeature) return;
+    let exceptionalTraining = itemUtils.getItemByIdentifier(workflow.actor, 'exceptionalTraining');
+    if (exceptionalTraining) {
+        let genericActions = [dashData, disengageData, dodgeData, helpData];
+        genericActions.forEach(i => {
+            let genericActivity = Object.entries(i.system.activities)[0][1]
+            genericActivity.activation.type = 'bonus';
+            itemsToAdd.push(i);
+        })
+    }
+    else {
+        itemsToAdd.push(dodgeData);
+    }
     let creatureType = activityIdentifier.slice(15).toLowerCase();
     let hpValue = 5 + (classLevel * 5);
     let name = itemUtils.getConfig(workflow.item, creatureType + 'Name');
@@ -42,7 +58,7 @@ async function use({workflow}) {
                 name,
                 disposition: workflow.token.document.disposition
             },
-            items: [primalBondFeatureData, dodgeData]
+            items: itemsToAdd
         },
         token: {
             name,
@@ -64,7 +80,7 @@ async function use({workflow}) {
         ]);
         if (!selection) selection = 'slashing';
         let types = [selection];
-        if (classLevel >= 7) {
+        if (exceptionalTraining) {
             types.push('force');
         }
         let beastsStrikeData = await Summons.getSummonItem('Beast\'s Strike (Land)', {}, workflow.item, {flatAttack: true, translate: 'CHRISPREMADES.PrimalCompanion.BeastsStrike', identifier: 'primalCompanionLandBeastsStrike', rules: 'modern'});
@@ -84,7 +100,7 @@ async function use({workflow}) {
         ]);
         if (!selection) selection = 'bludgeoning';
         let types = [selection];
-        if (classLevel >= 7) {
+        if (exceptionalTraining) {
             types.push('force');
         }
         let beastsStrikeData = await Summons.getSummonItem('Beast\'s Strike (Sea)', {}, workflow.item, {flatAttack: true, translate: 'CHRISPREMADES.Macros.PrimalCompanion.BeastsStrike', identifier: 'primalCompanionSeaBeastsStrike', rules: 'modern'});
@@ -105,7 +121,7 @@ async function use({workflow}) {
             return;
         }
         let types = ['slashing'];
-        if (classLevel >= 7) {
+        if (exceptionalTraining) {
             types.push('force');
         }
         let attackActivity = Object.entries(beastsStrikeData.system.activities).map(a => a[1]).find(a => a.type === 'attack');

@@ -1,6 +1,7 @@
 # 1.3.79 Release:
 ## New Modern Content:
 - Primal Companion
+- Exceptional Training
 ## Bug Fixes:
 - Primal Companion (Legacy)
 
