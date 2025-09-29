@@ -1,3 +1,9 @@
+# 1.3.79 Release:
+## New Modern Content:
+- Primal Companion
+## Bug Fixes:
+- Primal Companion (Legacy)
+
 # 1.3.78 Release:
 ## New Modern Content:
 - Favored Enemy

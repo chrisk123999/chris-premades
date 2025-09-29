@@ -34,7 +34,7 @@ async function use({workflow}) {
                         value: hpValue
                     },
                     ac: {
-                        flat: 13 + workflow.actor.system.attributes.prof
+                        flat: 13 + workflow.actor.system.abilities.wis.mod
                     }
                 }
             },
@@ -57,42 +57,61 @@ async function use({workflow}) {
         genericUtils.setProperty(updates, 'token.texture.src', tokenImg);
     }
     if (creatureType === 'land') {
-        let chargeData = await Summons.getSummonItem('Charge', {}, workflow.item, {flatDC: true, translate: 'CHRISPREMADES.CommonFeatures.Charge', identifier: 'primalCompanionCharge'});
-        let maulData = await Summons.getSummonItem('Maul', {}, workflow.item, {translate: 'CHRISPREMADES.CommonFeatures.Maul', identifier: 'primalCompanionMaul', flatAttack: true});
-        if (!chargeData || !maulData) {
+        let selection = await dialogUtils.buttonDialog(workflow.item.name, 'CHRISPREMADES.Dialog.DamageType', [
+            ['DND5E.DamageBludgeoning', 'bludgeoning'],
+            ['DND5E.DamagePiercing', 'piercing'],
+            ['DND5E.DamageSlashing', 'slashing']
+        ]);
+        if (!selection) selection = 'slashing';
+        let types = [selection];
+        if (classLevel >= 7) {
+            types.push('force');
+        }
+        let beastsStrikeData = await Summons.getSummonItem('Beast\'s Strike (Land)', {}, workflow.item, {flatAttack: true, translate: 'CHRISPREMADES.PrimalCompanion.BeastsStrike', identifier: 'primalCompanionLandBeastsStrike', rules: 'modern'});
+        if (!beastsStrikeData) {
             errors.missingPackItem();
             return;
         }
-        if (classLevel >= 7) {
-            chargeData.system.properties.push('mgc');
-            maulData.system.properties.push('mgc');
-        }
-        updates.actor.items.push(chargeData, maulData);
+        let attackActivity = Object.entries(beastsStrikeData.system.activities).map(a => a[1]).find(a => a.type === 'attack');
+        attackActivity.damage.parts[0].types = new Set(types);
+        updates.actor.items.push(beastsStrikeData);
         genericUtils.setProperty(updates, 'actor.system.attributes.movement', {walk: 40, climb: 40});
     } else if (creatureType === 'sea') {
-        let amphibiousData = await Summons.getSummonItem('Amphibious', {}, workflow.item, {translate: 'CHRISPREMADES.CommonFeatures.Amphibious', identifier: 'primalCompanionAmphibious'});
-        let bindingStrikeData = await Summons.getSummonItem('Binding Strike', {}, workflow.item, {flatAttack: true, flatDC: true, translate: 'CHRISPREMADES.Macros.PrimalCompanion.BindingStrike', identifier: 'primalCompanionBindingStrike'});
-        if (!amphibiousData || !bindingStrikeData) {
+        let amphibiousData = await Summons.getSummonItem('Amphibious', {}, workflow.item, {translate: 'CHRISPREMADES.CommonFeatures.Amphibious', identifier: 'primalCompanionAmphibious', rules: 'modern'});
+        let selection = await dialogUtils.buttonDialog(workflow.item.name, 'CHRISPREMADES.Dialog.DamageType', [
+            ['DND5E.DamageBludgeoning', 'bludgeoning'],
+            ['DND5E.DamagePiercing', 'piercing'],
+        ]);
+        if (!selection) selection = 'bludgeoning';
+        let types = [selection];
+        if (classLevel >= 7) {
+            types.push('force');
+        }
+        let beastsStrikeData = await Summons.getSummonItem('Beast\'s Strike (Sea)', {}, workflow.item, {flatAttack: true, translate: 'CHRISPREMADES.Macros.PrimalCompanion.BeastsStrike', identifier: 'primalCompanionSeaBeastsStrike', rules: 'modern'});
+        if (!amphibiousData || !beastsStrikeData) {
             errors.missingPackItem();
             return;
         }
-        if (classLevel >= 7) {
-            bindingStrikeData.system.properties.push('mgc');
-        }
-        updates.actor.items.push(amphibiousData, bindingStrikeData);
+        let attackActivity = Object.entries(beastsStrikeData.system.activities).map(a => a[1]).find(a => a.type === 'attack');
+        attackActivity.damage.parts[0].types = new Set(types);
+        beastsStrikeData.flags['chris-premades'].config.generic.autoGrapple.dc = workflow.actor.system.attributes.spell.dc;
+        updates.actor.items.push(amphibiousData, beastsStrikeData);
         genericUtils.setProperty(updates, 'actor.system.attributes.movement', {walk: 5, swim: 60});
     } else {
         hpValue = 4 + 4 * classLevel;
-        let flybyData = await Summons.getSummonItem('Flyby', {}, workflow.item, {translate: 'CHRISPREMADES.CommonFeatures.Flyby', identifier: 'primalCompanionFlyby'});
-        let shredData = await Summons.getSummonItem('Shred', {}, workflow.item, {translate: 'CHRISPREMADES.CommonFeatures.Shred', identifier: 'primalCompanionShred', flatAttack: true});
-        if (!flybyData || !shredData) {
+        let beastsStrikeData = await Summons.getSummonItem('Beast\s Strike (Sky)', {}, workflow.item, {flatAttack: true, translate: 'CHRISPREMADES.CommonFeatures.Shred', identifier: 'primalCompanionSkyBeastsStrike', rules: 'modern'});
+        if (!flybyData || !beastsStrikeData) {
             errors.missingPackItem();
             return;
         }
+        let types = ['slashing'];
         if (classLevel >= 7) {
-            shredData.system.properties.push('mgc');
+            types.push('force');
         }
-        updates.actor.items.push(flybyData, shredData);
+        let attackActivity = Object.entries(beastsStrikeData.system.activities).map(a => a[1]).find(a => a.type === 'attack');
+        attackActivity.damage.parts[0].types = new Set(types);
+        let flybyData = await Summons.getSummonItem('Flyby', {}, workflow.item, {translate: 'CHRISPREMADES.CommonFeatures.Flyby', identifier: 'primalCompanionFlyby', rules: 'modern'});
+        updates.actor.items.push(beastsStrikeData, flybyData);
         genericUtils.mergeObject(updates, {
             actor: {
                 system: {
@@ -138,7 +157,7 @@ async function use({workflow}) {
         });
     }
     let animation = itemUtils.getConfig(workflow.item, creatureType + 'Animation') ?? 'none';
-    let identifiersToVae = ['primalCompanionDodge', 'primalCompanionCharge', 'primalCompanionMaul', 'primalCompanionBindingStrike', 'primalCompanionShred'];
+    let identifiersToVae = ['primalCompanionDodge', 'primalCompanionBeastsStrikeLand', 'primalCompanionBeastsStrikeSea', 'primalCompanionBeastsStrikeSky'];
     await Summons.spawn(sourceActor, updates, workflow.item, workflow.token, {
         range: 10,
         animation,
@@ -160,21 +179,10 @@ async function use({workflow}) {
         }
     });
 }
-async function earlySea({workflow}) {
-    let selection = await dialogUtils.buttonDialog(workflow.item.name, 'CHRISPREMADES.Dialog.DamageType', [
-        ['DND5E.DamagePiercing', 'piercing'],
-        ['DND5E.DamageBludgeoning', 'bludgeoning']
-    ]);
-    if (!selection) selection = 'piercing';
-    let activityData = activityUtils.withChangedDamage(workflow.activity, {}, [selection]);
-    workflow.item = itemUtils.cloneItem(workflow.item, {
-        ['system.activities.' + workflow.activity.id]: activityData
-    });
-    workflow.activity = workflow.item.system.activities.get(workflow.activity.id);
-}
 export let primalCompanion = {
     name: 'Primal Companion',
-    version: '1.1.0',
+    version: '1.3.79',
+    rules: 'modern',
     hasAnimation: true,
     midi: {
         item: [
@@ -287,17 +295,4 @@ export let primalCompanion = {
             options: constants.summonAnimationOptions
         },
     ]
-};
-export let primalCompanionSea = {
-    name: 'Primal Companion: Sea',
-    version: primalCompanion.version,
-    midi: {
-        item: [
-            {
-                pass: 'preambleComplete',
-                macro: earlySea,
-                priority: 50
-            }
-        ]
-    }
 };

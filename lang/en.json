@@ -1780,6 +1780,7 @@
                 "Select": "Distribute HP (Amount to Distribute: {maxAmount}. Targets cannot be healed above half health.)"
             },
             "PrimalCompanion": {
+                "BeastsStrike": "Beast's Strike",
                 "BindingStrike": "Binding Strike",
                 "Command": "Primal Companion: Command",
                 "Land": "Land",
