@@ -723,12 +723,15 @@
                 "Name": "Drenagem de Habilidade"
             },
             "Actions": {
+                "Dash": "Disparar",
+                "Disengage": "Desengajar",
                 "Dodge": "Esquivar",
                 "Grapple": "Agarrar",
                 "GrappleEscape": "Agarrão: Escapar",
                 "GrappleEscapeSelect": "Tentativa de escapar do agarrão de quem?",
                 "GrappledBy": "Agarrado por {tokenName}",
-                "Grappling": "Agarrando {tokenName}"
+                "Grappling": "Agarrando {tokenName}",
+                "Help": "Ajudar"
             },
             "ActivityOnEffectExpiry": {
                 "EndEarly": "Sem Gatilho se Efeito Terminar Cedo:",
@@ -1117,6 +1120,9 @@
             },
             "DetectThoughts": {
                 "ProbeDeeper": "Detectar Pensamentos: Sondar Profundamente"
+            },
+            "Devastator": {
+                "Message": "Marque um inimigo e uma quantidade máxima de aliados igual ao seu bônus de proficiência!"
             },
             "DivineSmite": {
                 "Context": "Destruir Alvo?",
@@ -1777,6 +1783,7 @@
                 "Select": "Distribuir PV (Quantidade a Distribuir: {maxAmount}. Os alvos não podem ser curados acima da metade da vida.)"
             },
             "PrimalCompanion": {
+                "BeastsStrike": "Ataque da Besta",
                 "BindingStrike": "Golpe Aprisionador",
                 "Command": "Companheiro Primitivo: Comando",
                 "Land": "Terra",
@@ -1926,6 +1933,9 @@
             },
             "ShadowStep": {
                 "Name": "Passo Sombrio"
+            },
+            "ShareSpells": {
+                "Confirm": "Compartilhar {spell} com {name}?"
             },
             "ShieldGuardianShield": {
                 "Use": "Dar Escudo para {name}? Rolagem de Ataque: {attack}"
@@ -2520,6 +2530,7 @@
                     "HitByAnotherCreature": "Atingido por Outra Criatura",
                     "HitBySource": "Atingido pela Origem",
                     "Label": "Durações Especiais:",
+                    "MoveFinished": "Movimento Concluído",
                     "Rolled": "Rolar Teste de {toolName}",
                     "Succeed": "Sucesso Teste de {toolName}",
                     "TempHP": "Zero Pontos de Vida Temporários",
