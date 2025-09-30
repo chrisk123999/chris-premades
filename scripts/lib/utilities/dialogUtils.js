@@ -169,7 +169,7 @@ async function selectDocumentDialog(title, content, documents, {displayTooltips 
     }
     let inputFields = documents.map(i => ({
         label: i.name + (showCR ? ' [' + genericUtils.format('DND5E.CRLabel', {cr: i.system?.details?.cr ?? '?'}) + ']' : (showSpellLevel ? ' [' + genericUtils.translate('DND5E.SpellLevel') + ' ' + (i.system?.level ?? '?') + ']' : '')) + (i.system?.linkedActivity ? ' (' + i.system.linkedActivity.item.name + ')' : ''),
-        name: i.uuid ?? i.actor?.uuid,
+        name: i.id ?? i.actor?.id,
         options: {
             image: i.img + (i.system?.details?.cr != undefined ? ` (CR ${genericUtils.decimalToFraction(i.system?.details?.cr)})` : ``),
             tooltip: displayTooltips ? i.system.description.value.replace(/<[^>]*>?/gm, '') : undefined
@@ -191,7 +191,8 @@ async function selectDocumentDialog(title, content, documents, {displayTooltips 
     } else {
         result = await DialogApp.dialog(title, content, inputs, undefined);
     }
-    if (result?.buttons) return await fromUuid(result.buttons);
+    console.log(result);
+    if (result?.buttons) return documents.find(i => i.id === result.buttons);
     return false;
 }
 async function selectDocumentsDialog(title, content, documents, {max = undefined, displayTooltips = false, sortAlphabetical = false, sortCR = false, userId = game.user.id, showCR = false, checkbox = false, weights = {}, maxes = {}} = {}) {

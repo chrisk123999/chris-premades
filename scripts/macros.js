@@ -173,6 +173,7 @@ export {zoneOfTruth} from './macros/2024/spells/zoneOfTruth.js';
 export {timeStop, timeStopEffect} from './macros/2024/spells/timeStop.js';
 export {steelWindStrike} from './macros/2024/spells/steelWindStrike.js';
 export {mageHand, mageHandEffect} from './macros/2024/spells/mageHand.js';
+export {guidance} from './macros/2024/spells/guidance.js';
 //Items
 export {healersKit} from './macros/2024/items/healersKit.js';
 export {unarmedStrike} from './macros/2024/items/misc/unarmedStrike.js';
