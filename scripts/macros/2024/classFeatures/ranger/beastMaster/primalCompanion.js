@@ -83,7 +83,7 @@ async function use({workflow}) {
         if (exceptionalTraining) {
             types.push('force');
         }
-        let beastsStrikeData = await Summons.getSummonItem('Beast\'s Strike (Land)', {}, workflow.item, {flatAttack: true, translate: 'CHRISPREMADES.PrimalCompanion.BeastsStrike', identifier: 'primalCompanionLandBeastsStrike', rules: 'modern'});
+        let beastsStrikeData = await Summons.getSummonItem('Beast\'s Strike (Land)', {}, workflow.item, {flatAttack: true, translate: 'CHRISPREMADES.Macros.PrimalCompanion.BeastsStrike', identifier: 'primalCompanionLandBeastsStrike', rules: 'modern'});
         if (!beastsStrikeData) {
             errors.missingPackItem();
             return;
@@ -115,7 +115,7 @@ async function use({workflow}) {
         genericUtils.setProperty(updates, 'actor.system.attributes.movement', {walk: 5, swim: 60});
     } else {
         hpValue = 4 + 4 * classLevel;
-        let beastsStrikeData = await Summons.getSummonItem('Beast\s Strike (Sky)', {}, workflow.item, {flatAttack: true, translate: 'CHRISPREMADES.CommonFeatures.Shred', identifier: 'primalCompanionSkyBeastsStrike', rules: 'modern'});
+        let beastsStrikeData = await Summons.getSummonItem('Beast\s Strike (Sky)', {}, workflow.item, {flatAttack: true, translate: 'CHRISPREMADES.Macros.PrimalCompanion.BeastsStrike', identifier: 'primalCompanionSkyBeastsStrike', rules: 'modern'});
         if (!flybyData || !beastsStrikeData) {
             errors.missingPackItem();
             return;
