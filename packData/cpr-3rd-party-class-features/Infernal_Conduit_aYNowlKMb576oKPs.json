@@ -358,14 +358,13 @@
       "hiddenActivities": [],
       "activityIdentifiers": {
         "damage": "nKxfaok0QNnbWcsu",
-        "heal": "wKzsEi6Bf37AnCq3",
-        "necrotic": "pGRWQXKnmKRHYGUg"
+        "healing": "wKzsEi6Bf37AnCq3"
       },
       "info": {
         "identifier": "infernalConduit",
         "rules": "legacy",
         "source": "chris-premades",
-        "version": "1.3.69"
+        "version": "1.3.80"
       },
       "macros": {
         "midi": {

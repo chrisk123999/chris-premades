@@ -1,3 +1,7 @@
+# 1.3.80 Release:
+## Bug Fixes:
+- Infernal Conduit
+
 # 1.3.79 Release:
 ## New Modern Content:
 - Primal Companion
