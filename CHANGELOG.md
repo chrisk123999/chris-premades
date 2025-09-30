@@ -4,6 +4,7 @@
 - Exceptional Training
 - Bestial Fury
 - Share Spells
+- Guidance
 ## Bug Fixes:
 - Primal Companion (Legacy)
 
