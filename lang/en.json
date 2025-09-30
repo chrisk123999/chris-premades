@@ -723,12 +723,15 @@
                 "Name": "Ability Drain"
             },
             "Actions": {
+                "Dash": "Dash",
+                "Disengage": "Disengage",
                 "Dodge": "Dodge",
                 "Grapple": "Grapple",
                 "GrappleEscape": "Grapple: Escape",
                 "GrappleEscapeSelect": "Attempt to escape from whose grapple?",
                 "GrappledBy": "Grappled By {tokenName}",
-                "Grappling": "Grappling {tokenName}"
+                "Grappling": "Grappling {tokenName}",
+                "Help": "Help"
             },
             "ActivityOnEffectExpiry": {
                 "EndEarly": "No Trigger if Effect Ends Early:",
