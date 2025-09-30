@@ -1,0 +1,59 @@
+{
+  "folder": "5iJGkqFTSnNLAyCc",
+  "name": "Foe Slayer",
+  "type": "feat",
+  "_id": "tdys0ieUnwcRuFsO",
+  "img": "icons/skills/targeting/crosshair-triple-strike-orange.webp",
+  "system": {
+    "activities": {},
+    "uses": {
+      "spent": 0,
+      "recovery": [],
+      "max": ""
+    },
+    "advancement": [],
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "identifier": "foe-slayer",
+    "source": {
+      "revision": null,
+      "rules": "2024",
+      "book": "",
+      "page": "",
+      "custom": "PHB 2024",
+      "license": ""
+    },
+    "crewed": false,
+    "enchant": {},
+    "prerequisites": {
+      "items": [],
+      "repeatable": false,
+      "level": null
+    },
+    "properties": [],
+    "requirements": "",
+    "type": {
+      "value": "",
+      "subtype": ""
+    }
+  },
+  "effects": [],
+  "flags": {
+    "dnd5e": {
+      "riders": {
+        "activity": []
+      }
+    },
+    "chris-premades": {
+      "info": {
+        "identifier": "foeSlayer",
+        "version": "1.3.78",
+        "source": "chris-premades",
+        "rules": "modern"
+      }
+    }
+  },
+  "_key": "!items!tdys0ieUnwcRuFsO"
+}

@@ -1,6 +1,8 @@
 import {DialogApp} from '../../../../applications/dialog.js';
-import {constants, effectUtils, genericUtils} from '../../../../utils.js';
+import {constants, effectUtils, genericUtils, itemUtils} from '../../../../utils.js';
 async function use({trigger, workflow}) {
+    let classIdentifier = itemUtils.getConfig(workflow.item, 'classIdentifier');
+    let levels = workflow.actor.classes[classIdentifier]?.levels;
     let effect = effectUtils.getEffectByIdentifier(workflow.actor, 'forkedTongueEffect');
     let previousLanguages = [];
     if (effect) {
@@ -18,7 +20,7 @@ async function use({trigger, workflow}) {
                 }
             })),
             {
-                totalMax: 2,
+                totalMax: levels >= 9 ? 3 : 2,
                 displayAsRows: true
             }
         ]
@@ -53,5 +55,15 @@ export let forkedTongue = {
                 priority: 50
             }
         ]
-    }
+    },
+    config: [
+        {
+            value: 'classIdentifier',
+            label: 'CHRISPREMADES.Config.ClassIdentifier',
+            type: 'text',
+            default: 'illrigger',
+            category: 'homebrew',
+            homebrew: true
+        }
+    ]
 };

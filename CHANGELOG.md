@@ -1,3 +1,37 @@
+# 1.3.79 Release:
+## New Modern Content:
+- Primal Companion
+- Exceptional Training
+- Bestial Fury
+- Share Spells
+## Bug Fixes:
+- Primal Companion (Legacy)
+
+# 1.3.78 Release:
+## New Modern Content:
+- Favored Enemy
+- Tireless
+- Relentless Hunter
+- Nature's Veil
+- Precise Mark
+- Foe Slayer
+## New Legacy Content:
+- Deathstrike
+- Devastator
+- Dispater's Blessing
+- Dispater's Interdiction: By the Throat
+- Dispater's Interdiction: Dispater's Supremacy
+- Dispater's Interdiction: Telekinetic Seal
+- Invoke Hell
+- Invoke Hell: Grand Strategist
+- Invoke Hell: Punishment
+- You Die on My Command!
+## Bug Fixes:
+- Forked Tongue (Legacy)
+- Mantle of Majesty (Modern)
+## Update Notes:
+- Added `Move Finished` to Effect Medkit special durations.
+
 # 1.3.77 Release:
 ## New Legacy Content:
 - Interdict Boons: Last Word

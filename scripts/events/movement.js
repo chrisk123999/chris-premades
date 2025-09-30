@@ -5,6 +5,7 @@ import {auras} from './auras.js';
 import {templateEvents} from './template.js';
 import {regionEvents} from './region.js';
 import {template as templateExtension} from './../extensions/template.js';
+import {effects} from '../extensions/effects.js';
 let lagWarningSeen = null;
 function getMovementMacroData(entity) {
     return entity.flags['chris-premades']?.macros?.movement ?? [];
@@ -236,6 +237,7 @@ async function moveToken(token, movement, options, user) {
         if (enteredAndLeftRegions.length) count += await regionEvents.executeMacroPass(enteredAndLeftRegions, 'passedThrough', token.object, options);
     }
     await attach.updateAttachments(token, {x: coords.x - previousCoords.x, y: coords.y - previousCoords.y});
+    await effects.specialDurationMove(token.actor);
     let endTime = performance.now();
     let diff = endTime - startTime;
     genericUtils.log('dev', 'Movement Event Timing: ' + diff);

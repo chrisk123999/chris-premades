@@ -418,6 +418,16 @@ export {terrorizingForce} from './macros/2014/classFeatures/illrigger/terrorizin
 export {superiorInterdict} from './macros/2014/classFeatures/illrigger/superiorInterdict.js';
 export {infernalMajesty, infernalMajestyEffect} from './macros/2014/classFeatures/illrigger/infernalMajesty.js';
 export {masterOfHell} from './macros/2014/classFeatures/illrigger/masterOfHell.js';
+export {dispatersBlessing} from './macros/2014/classFeatures/illrigger/painkiller/dispatersBlessing.js';
+export {devastator} from './macros/2014/classFeatures/illrigger/painkiller/devastator.js';
+export {invokeHell} from './macros/2014/classFeatures/illrigger/invokeHell.js';
+export {grandStrategist} from './macros/2014/classFeatures/illrigger/painkiller/grandStrategist.js';
+export {punishment} from './macros/2014/classFeatures/illrigger/painkiller/punishment.js';
+export {telekineticSeal} from './macros/2014/classFeatures/illrigger/painkiller/telekineticSeal.js';
+export {byTheThroat} from './macros/2014/classFeatures/illrigger/painkiller/byTheThroat.js';
+export {dispatersSupremacy} from './macros/2014/classFeatures/illrigger/painkiller/dispatersSupremacy.js';
+export {youDieOnMyCommand} from './macros/2014/classFeatures/illrigger/painkiller/youDieOnMyCommand.js';
+export {deathstrike} from './macros/2014/classFeatures/illrigger/painkiller/deathstrike.js';
 // Race Features
 export {aasimarNecroticShroud, aasimarRadiantConsumption, aasimarRadiantSoul, celestialRevelation} from './macros/2014/raceFeatures/aasimar/celestialRevelation.js';
 export {acidBreathWeapon, coldBreathWeapon, fireBreathWeapon, lightningBreathWeapon, poisonBreathWeapon} from './macros/2014/raceFeatures/dragonborn/chromatic/breathWeapon.js';

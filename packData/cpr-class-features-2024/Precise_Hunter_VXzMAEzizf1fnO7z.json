@@ -1,0 +1,59 @@
+{
+  "folder": "5iJGkqFTSnNLAyCc",
+  "name": "Precise Hunter",
+  "type": "feat",
+  "_id": "VXzMAEzizf1fnO7z",
+  "img": "icons/skills/targeting/target-strike-triple-blue.webp",
+  "system": {
+    "activities": {},
+    "uses": {
+      "spent": 0,
+      "recovery": [],
+      "max": ""
+    },
+    "advancement": [],
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "identifier": "precise-hunter",
+    "source": {
+      "revision": null,
+      "rules": "2024",
+      "book": "",
+      "page": "",
+      "custom": "PHB 2024",
+      "license": ""
+    },
+    "crewed": false,
+    "enchant": {},
+    "prerequisites": {
+      "items": [],
+      "repeatable": false,
+      "level": null
+    },
+    "properties": [],
+    "requirements": "",
+    "type": {
+      "value": "",
+      "subtype": ""
+    }
+  },
+  "effects": [],
+  "flags": {
+    "dnd5e": {
+      "riders": {
+        "activity": []
+      }
+    },
+    "chris-premades": {
+      "info": {
+        "identifier": "preciseHunter",
+        "version": "1.3.78",
+        "source": "chris-premades",
+        "rules": "modern"
+      }
+    }
+  },
+  "_key": "!items!VXzMAEzizf1fnO7z"
+}

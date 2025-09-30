@@ -24,7 +24,7 @@ async function attacked(workflow, itemIdentifier, activityIdentifier, {canSee = 
         return item;
     }
 }
-async function damaged(workflow, ditem, targetToken, itemIdentifier, activityIdentifier, {canSee = true, reaction = true, distance = 30, canUse = true, dispositionType = 'enemy', dialogType = 'use', checkHits = true} = {}) {
+async function damaged(workflow, ditem, targetToken, itemIdentifier, activityIdentifier, {canSee = true, reaction = true, distance = 30, canUse = true, dispositionType = 'enemy', dialogType = 'use', checkHits = true, preventZeroHP = false} = {}) {
     if (!workflow.token) return;
     for (let token of targetToken.scene.tokens) {
         if (checkHits && !workflow.hitTargets.has(targetToken)) return;
@@ -35,6 +35,7 @@ async function damaged(workflow, ditem, targetToken, itemIdentifier, activityIde
         if (reaction && actorUtils.hasUsedReaction(token.actor)) continue;
         if (distance && tokenUtils.getDistance(targetToken, token) > distance) continue;
         if (canSee && !tokenUtils.canSee(targetToken, token)) continue;
+        if (preventZeroHP && ditem.newHP != 0 || ditem.oldHP === 0) continue;
         let activity = activityUtils.getActivityByIdentifier(item, activityIdentifier);
         if (!activity) continue;
         if (canUse && !activityUtils.canUse(activity)) continue;
@@ -44,7 +45,11 @@ async function damaged(workflow, ditem, targetToken, itemIdentifier, activityIde
         }
         if (!selection) continue;
         let targetWorkflow = await workflowUtils.syntheticActivityRoll(activity, [targetToken], {consumeResources: true, consumeUsage: true});
-        workflowUtils.modifyDamageAppliedFlat(ditem, -targetWorkflow.utilityRolls[0].total);
+        if (preventZeroHP) {
+            workflowUtils.preventDeath(ditem);
+        } else {
+            workflowUtils.modifyDamageAppliedFlat(ditem, -targetWorkflow.utilityRolls[0].total);
+        }
     }
 }
 export let thirdPartyUtils = {

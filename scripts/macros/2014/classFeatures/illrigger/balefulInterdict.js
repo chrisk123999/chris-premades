@@ -1,4 +1,4 @@
-import {activityUtils, actorUtils, dialogUtils, effectUtils, genericUtils, itemUtils, socketUtils, tokenUtils, workflowUtils} from '../../../../utils.js';
+import {activityUtils, actorUtils, dialogUtils, effectUtils, genericUtils, itemUtils, rollUtils, socketUtils, tokenUtils, workflowUtils} from '../../../../utils.js';
 async function damaged({trigger, workflow}) {
     if (!workflow.targets.size || !workflow.damageRolls.length) return;
     let identifer = genericUtils.getIdentifier(workflow.item);
@@ -33,8 +33,15 @@ async function damaged({trigger, workflow}) {
     }
     if (!effectCounts.length) return;
     for (let i of effectCounts) {
-        let selection = await dialogUtils.selectTargetDialog('CHRISPREMADES.Macros.BalefulInterdict.BurningSeals', 'CHRISPREMADES.Macros.BalefulInterdict.BurnSeals', [i.target], {type: 'selectAmount', maxAmount: i.count, skipDeadAndUnconscious: false, userId: socketUtils.firstOwner(i.originItem, true), buttons: 'yesNo'});
-        if (!selection?.[0]?.[0]?.value) continue;
+        let deathStrikeUsed = workflow['chris-premades']?.deathstrike;
+        let selection = await dialogUtils.selectTargetDialog('CHRISPREMADES.Macros.BalefulInterdict.BurningSeals', 'CHRISPREMADES.Macros.BalefulInterdict.BurnSeals', [i.target], {type: 'selectAmount', maxAmount: i.count, minAmount: deathStrikeUsed ? 1 : 0, skipDeadAndUnconscious: false, userId: socketUtils.firstOwner(i.originItem, true), buttons: 'yesNo'});
+        let amount = selection?.[0]?.[0]?.value;
+        if (deathStrikeUsed && !amount) {
+            amount = 1;
+        } else {
+            amount = Number(amount);
+        }
+        if (!amount) continue;
         let burnFire = activityUtils.getActivityByIdentifier(i.originItem, 'burnFire', {strict: true});
         let burnNecrotic = activityUtils.getActivityByIdentifier(i.originItem, 'burnNecrotic', {strict: true});
         if (!burnFire || !burnNecrotic) continue;
@@ -45,7 +52,8 @@ async function damaged({trigger, workflow}) {
         let damageScaleIdentifier = itemUtils.getConfig(i.originItem, 'damageScaleIdentifier');
         let scale = workflow.actor.system.scale[classIdentifier]?.[damageScaleIdentifier];
         if (!scale) continue;
-        let diceNumber = Number(selection[0][0].value) * scale.number;
+        let diceNumber = amount * scale.number;
+        if (deathStrikeUsed) diceNumber += scale.number;
         activityData.damage.parts[0].bonus = diceNumber + scale.die;
         await workflowUtils.syntheticActivityDataRoll(activityData, i.originItem, i.originItem.actor, [i.target]);
         let effects = effectUtils.getAllEffectsByIdentifier(i.target.actor, 'balefulInterdictEffect');
@@ -118,7 +126,11 @@ async function move({trigger, workflow}) {
     let dissOnslaught = itemUtils.getItemByIdentifier(workflow.actor, 'interdictBoonDissOnslaught');
     let soulsDoom = itemUtils.getItemByIdentifier(workflow.actor, 'interdictBoonSoulsDoom');
     let flashOfBrimstone = itemUtils.getItemByIdentifier(workflow.actor, 'interdictBoonFlashOfBrimstone');
-    let documents = [acheronsChain, dissOnslaught, soulsDoom, flashOfBrimstone].filter(i => i).filter(i => itemUtils.canUse(i));
+    let byTheThroat = itemUtils.getItemByIdentifier(workflow.actor, 'byTheThroat');
+    if (byTheThroat) {
+        if (actorUtils.getSize(workflow.targets.first().actor) > (actorUtils.getSize(workflow.actor) + 1)) byTheThroat = undefined;
+    }
+    let documents = [acheronsChain, dissOnslaught, soulsDoom, flashOfBrimstone, byTheThroat].filter(i => i).filter(i => itemUtils.canUse(i));
     if (!documents.length) return;
     let selection = await dialogUtils.selectDocumentDialog('CHRISPREMADES.Macros.InterdictBoons.Name', genericUtils.format('CHRISPREMADES.Dialog.Use', {itemName: genericUtils.translate('CHRISPREMADES.Macros.InterdictBoons.Name')}), documents, {sortAlphabetical: true});
     if (!selection) return;
@@ -167,7 +179,11 @@ async function placeSealBonus({trigger, workflow}) {
         let dissOnslaught = itemUtils.getItemByIdentifier(workflow.actor, 'interdictBoonDissOnslaught');
         let flashOfBrimstone = itemUtils.getItemByIdentifier(workflow.actor, 'interdictBoonFlashOfBrimstone');
         let soulsDoom = itemUtils.getItemByIdentifier(workflow.actor, 'interdictBoonSoulsDoom');
-        documents = [acheronsChain, dissOnslaught, flashOfBrimstone, soulsDoom].filter(i => i).filter(i => itemUtils.canUse(i));
+        let byTheThroat = itemUtils.getItemByIdentifier(workflow.actor, 'byTheThroat');
+        if (byTheThroat) {
+            if (actorUtils.getSize(workflow.targets.first().actor) > (actorUtils.getSize(workflow.actor) + 1)) byTheThroat = undefined;
+        }
+        documents = [acheronsChain, dissOnslaught, flashOfBrimstone, soulsDoom, byTheThroat].filter(i => i).filter(i => itemUtils.canUse(i));
     } else {
         let flashOfBrimstone = itemUtils.getItemByIdentifier(workflow.actor, 'interdictBoonFlashOfBrimstone');
         documents = [flashOfBrimstone].filter(i => i).filter(i => itemUtils.canUse(i));

@@ -723,12 +723,15 @@
                 "Name": "Ability Drain"
             },
             "Actions": {
+                "Dash": "Dash",
+                "Disengage": "Disengage",
                 "Dodge": "Dodge",
                 "Grapple": "Grapple",
                 "GrappleEscape": "Grapple: Escape",
                 "GrappleEscapeSelect": "Attempt to escape from whose grapple?",
                 "GrappledBy": "Grappled By {tokenName}",
-                "Grappling": "Grappling {tokenName}"
+                "Grappling": "Grappling {tokenName}",
+                "Help": "Help"
             },
             "ActivityOnEffectExpiry": {
                 "EndEarly": "No Trigger if Effect Ends Early:",
@@ -1117,6 +1120,9 @@
             },
             "DetectThoughts": {
                 "ProbeDeeper": "Detect Thoughts: Probe Deeper"
+            },
+            "Devastator": {
+                "Message": "Target one enemy and all allies up to your proficiency score!"
             },
             "DivineSmite": {
                 "Context": "Smite Target?",
@@ -1777,6 +1783,7 @@
                 "Select": "Distribute HP (Amount to Distribute: {maxAmount}. Targets cannot be healed above half health.)"
             },
             "PrimalCompanion": {
+                "BeastsStrike": "Beast's Strike",
                 "BindingStrike": "Binding Strike",
                 "Command": "Primal Companion: Command",
                 "Land": "Land",
@@ -1926,6 +1933,9 @@
             },
             "ShadowStep": {
                 "Name": "Shadow Step"
+            },
+            "ShareSpells": {
+                "Confirm": "Share {spell} with {name}?"
             },
             "ShieldGuardianShield": {
                 "Use": "Shield {name}? Attack Roll: {attack}"
@@ -2520,6 +2530,7 @@
                     "HitByAnotherCreature": "Hit By Another Creature",
                     "HitBySource": "Hit By Source",
                     "Label": "Special Durations:",
+                    "MoveFinished": "Move Finished",
                     "Rolled": "Rolled {toolName} Check",
                     "Succeed": "Succeeded {toolName} Check",
                     "TempHP": "Zero Temporary Hitpoints",

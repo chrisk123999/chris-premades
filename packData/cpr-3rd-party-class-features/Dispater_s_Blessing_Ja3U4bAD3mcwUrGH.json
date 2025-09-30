@@ -1,0 +1,115 @@
+{
+  "name": "Dispater's Blessing",
+  "type": "feat",
+  "effects": [
+    {
+      "name": "Dispater's Blessing",
+      "changes": [
+        {
+          "key": "system.traits.armorProf.value",
+          "mode": 2,
+          "value": "hvy",
+          "priority": 20
+        }
+      ],
+      "transfer": true,
+      "img": "icons/equipment/chest/breastplate-collared-steel-grey.webp",
+      "_id": "mjOfwhzF8MOdP1df",
+      "type": "base",
+      "system": {},
+      "disabled": false,
+      "duration": {
+        "startTime": null,
+        "combat": null,
+        "seconds": null,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "description": "",
+      "origin": "Actor.xH5x7LcFCU8mZwr5.Item.X1vQOxB29xC7ftxj",
+      "tint": "#ffffff",
+      "statuses": [],
+      "sort": 0,
+      "flags": {
+        "dnd5e": {
+          "riders": {
+            "statuses": []
+          }
+        },
+        "dae": {
+          "enableCondition": "",
+          "disableCondition": "",
+          "stackable": "noneName",
+          "showIcon": false,
+          "disableIncapacitated": false,
+          "selfTarget": false,
+          "selfTargetAlways": false,
+          "dontApply": false,
+          "durationExpression": "",
+          "macroRepeat": "none",
+          "specialDuration": []
+        },
+        "core": {
+          "overlay": false
+        }
+      },
+      "_key": "!items.effects!Ja3U4bAD3mcwUrGH.mjOfwhzF8MOdP1df"
+    }
+  ],
+  "system": {
+    "activities": {},
+    "uses": {
+      "spent": 0,
+      "recovery": []
+    },
+    "advancement": [],
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "identifier": "dispaters-blessing",
+    "source": {
+      "book": "TIR",
+      "page": "",
+      "license": "",
+      "custom": "",
+      "rules": "2014",
+      "revision": 1
+    },
+    "crewed": false,
+    "enchant": {},
+    "prerequisites": {
+      "items": [],
+      "level": 3,
+      "repeatable": false
+    },
+    "properties": [],
+    "requirements": "",
+    "type": {
+      "value": "class",
+      "subtype": ""
+    }
+  },
+  "flags": {
+    "dnd5e": {
+      "advancementOrigin": "dGvGTF6VBn4DxXZx",
+      "riders": {
+        "activity": []
+      }
+    },
+    "chris-premades": {
+      "info": {
+        "identifier": "dispatersBlessing",
+        "rules": "legacy",
+        "source": "chris-premades",
+        "version": "1.3.78"
+      }
+    }
+  },
+  "img": "icons/equipment/chest/breastplate-collared-steel-grey.webp",
+  "folder": "FzIjGHI6OUQ8IvHc",
+  "_id": "Ja3U4bAD3mcwUrGH",
+  "_key": "!items!Ja3U4bAD3mcwUrGH"
+}

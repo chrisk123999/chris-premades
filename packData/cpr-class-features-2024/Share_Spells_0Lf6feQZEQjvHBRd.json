@@ -1,0 +1,66 @@
+{
+  "folder": "LoYeCPG5LZHY1Sul",
+  "name": "Share Spells",
+  "type": "feat",
+  "_id": "0Lf6feQZEQjvHBRd",
+  "img": "icons/creatures/mammals/elk-moose-marked-green.webp",
+  "system": {
+    "activities": {},
+    "uses": {
+      "spent": 0,
+      "recovery": [],
+      "max": ""
+    },
+    "advancement": [],
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "identifier": "share-spells",
+    "source": {
+      "revision": 1,
+      "rules": "2024",
+      "book": "",
+      "page": "",
+      "custom": "PHB 2024",
+      "license": ""
+    },
+    "crewed": false,
+    "enchant": {},
+    "prerequisites": {
+      "items": [],
+      "repeatable": false,
+      "level": null
+    },
+    "properties": [],
+    "requirements": "",
+    "type": {
+      "value": "",
+      "subtype": ""
+    }
+  },
+  "effects": [],
+  "flags": {
+    "dnd5e": {
+      "riders": {
+        "activity": []
+      }
+    },
+    "chris-premades": {
+      "info": {
+        "identifier": "shareSpells",
+        "version": "1.3.79",
+        "source": "chris-premades",
+        "rules": "modern"
+      },
+      "macros": {
+        "midi": {
+          "actor": [
+            "shareSpells"
+          ]
+        }
+      }
+    }
+  },
+  "_key": "!items!0Lf6feQZEQjvHBRd"
+}

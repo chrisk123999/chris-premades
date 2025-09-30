@@ -1566,6 +1566,7 @@
                 "Command": "Implemento do Mestre da Corrente: Comando",
                 "Resistance": "Implemento do Mestre da Corrente: Resistência do Familiar"
             },
+            "IronGaol": "O alvo é nativo do Inferno?",
             "JavelinOfLightning": {
                 "Bolt": "Azagaia do Relâmpago: Raio"
             },
@@ -1590,6 +1591,9 @@
                 "Bright": "Luz da Lanterna (Plena)",
                 "Dim": "Luz da Lanterna (Penumbra)",
                 "Extinguish": "Extinguir Lanterna"
+            },
+            "LastWord": {
+                "Use": "Sim ({amount})"
             },
             "LayOnHands": {
                 "Empty": "Sua reserva de {itemName} está vazia.",
