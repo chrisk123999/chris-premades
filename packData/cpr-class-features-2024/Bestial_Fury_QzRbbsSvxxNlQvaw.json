@@ -1,0 +1,59 @@
+{
+  "folder": "LoYeCPG5LZHY1Sul",
+  "name": "Bestial Fury",
+  "type": "feat",
+  "_id": "QzRbbsSvxxNlQvaw",
+  "img": "icons/creatures/abilities/paw-print-pair-purple.webp",
+  "system": {
+    "activities": {},
+    "uses": {
+      "spent": 0,
+      "recovery": [],
+      "max": ""
+    },
+    "advancement": [],
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "identifier": "bestial-fury",
+    "source": {
+      "revision": 1,
+      "rules": "2024",
+      "book": "",
+      "page": "",
+      "custom": "PHB 2024",
+      "license": ""
+    },
+    "crewed": false,
+    "enchant": {},
+    "prerequisites": {
+      "items": [],
+      "repeatable": false,
+      "level": null
+    },
+    "properties": [],
+    "requirements": "",
+    "type": {
+      "value": "",
+      "subtype": ""
+    }
+  },
+  "effects": [],
+  "flags": {
+    "dnd5e": {
+      "riders": {
+        "activity": []
+      }
+    },
+    "chris-premades": {
+      "info": {
+        "identifier": "bestialFury",
+        "version": "1.3.79",
+        "source": "chris-premades",
+        "rules": "modern"
+      }
+    }
+  },
+  "_key": "!items!QzRbbsSvxxNlQvaw"
+}

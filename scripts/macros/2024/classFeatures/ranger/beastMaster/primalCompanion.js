@@ -1,5 +1,5 @@
 import {Summons} from '../../../../../lib/summons.js';
-import {activityUtils, actorUtils, compendiumUtils, constants, dialogUtils, errors, genericUtils, itemUtils} from '../../../../../utils.js';
+import {activityUtils, actorUtils, combatUtils, compendiumUtils, constants, dialogUtils, effectUtils, errors, genericUtils, itemUtils, workflowUtils} from '../../../../../utils.js';
 
 async function use({workflow}) {
     let activityIdentifier = activityUtils.getIdentifier(workflow.activity);
@@ -195,6 +195,21 @@ async function use({workflow}) {
         }
     });
 }
+async function damage({workflow}) {
+    let ownerActor = await fromUuid(workflow.actor.flags['chris-premades'].summons.control.actor);
+    let bestialFury = itemUtils.getItemByIdentifier(ownerActor, 'bestialFury');
+    if (!bestialFury) return;
+    if (workflow.hitTargets.size !== 1) return;
+    if (!workflowUtils.isAttackType(workflow, 'attack')) return;
+    let effect = effectUtils.getEffectByIdentifier(ownerActor, 'huntersMark');
+    if (!effect) return;
+    let {targets: validTargetUuids, formula, damageType} = effect.flags['chris-premades'].huntersMark;
+    if (!validTargetUuids.includes(workflow.hitTargets.first().document.uuid)) return;
+    let item = workflow.item;
+    if (!combatUtils.perTurnCheck(item, 'bestialFury', false, workflow.token.id)) return;
+    await workflowUtils.bonusDamage(workflow, formula, {damageType});
+    await combatUtils.setTurnCheck(item, 'bestialFury');
+}
 export let primalCompanion = {
     name: 'Primal Companion',
     version: '1.3.79',
@@ -311,4 +326,18 @@ export let primalCompanion = {
             options: constants.summonAnimationOptions
         },
     ]
+};
+export let bestialFury = {
+    name: 'Bestial Fury',
+    version: primalCompanion.version,
+    rules: primalCompanion.rules,
+    midi: {
+        item: [
+            {
+                pass: 'damageRollComplete',
+                macro: damage,
+                priority: 250
+            }
+        ]
+    }
 };

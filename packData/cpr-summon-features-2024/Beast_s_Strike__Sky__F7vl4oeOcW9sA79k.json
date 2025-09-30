@@ -225,6 +225,15 @@
         "activity": [],
         "effect": []
       }
+    },
+    "chris-premades": {
+      "macros": {
+        "midi": {
+          "item": [
+            "bestialFury"
+          ]
+        }
+      }
     }
   },
   "folder": "41ZpPEmU7uDP91aF",

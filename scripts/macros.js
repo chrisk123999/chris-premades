@@ -289,7 +289,7 @@ export {naturesVeil} from './macros/2024/classFeatures/ranger/naturesVeil.js';
 export {preciseHunter} from './macros/2024/classFeatures/ranger/preciseHunter.js';
 export {foeSlayer} from './macros/2024/classFeatures/ranger/foeSlayer.js';
 //Beast Master
-export {primalCompanion} from './macros/2024/classFeatures/ranger/beastMaster/primalCompanion.js';
+export {primalCompanion, bestialFury} from './macros/2024/classFeatures/ranger/beastMaster/primalCompanion.js';
 export {exceptionalTraining} from './macros/2024/classFeatures/ranger/beastMaster/exceptionalTraining.js';
 //Rogue
 export {sneakAttack} from './macros/2024/classFeatures/rogue/sneakAttack.js';

@@ -2,6 +2,7 @@
 ## New Modern Content:
 - Primal Companion
 - Exceptional Training
+- Bestial Fury
 ## Bug Fixes:
 - Primal Companion (Legacy)
 

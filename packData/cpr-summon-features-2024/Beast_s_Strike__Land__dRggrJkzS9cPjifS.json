@@ -410,7 +410,8 @@
       "macros": {
         "midi": {
           "item": [
-            "movementBonusActivity"
+            "movementBonusActivity",
+            "bestialFury"
           ]
         }
       },

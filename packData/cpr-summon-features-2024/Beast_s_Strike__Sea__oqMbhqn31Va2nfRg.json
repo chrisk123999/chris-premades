@@ -299,7 +299,8 @@
       "macros": {
         "midi": {
           "item": [
-            "autoGrapple"
+            "autoGrapple",
+            "bestialFury"
           ]
         }
       }
