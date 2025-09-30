@@ -68,7 +68,7 @@ async function use({workflow}) {
             maulData.system.properties.push('mgc');
         }
         updates.actor.items.push(chargeData, maulData);
-        genericUtils.setProperty(updates, 'actor.system.attributes.movement', {walk: 40, climb: 40});
+        genericUtils.setProperty(updates, 'actor.system.attributes.movement', {walk: genericUtils.convertDistance(40), climb: convertDistance(40)});
     } else if (creatureType === 'sea') {
         let amphibiousData = await Summons.getSummonItem('Amphibious', {}, workflow.item, {translate: 'CHRISPREMADES.CommonFeatures.Amphibious', identifier: 'primalCompanionAmphibious'});
         let bindingStrikeData = await Summons.getSummonItem('Binding Strike', {}, workflow.item, {flatAttack: true, flatDC: true, translate: 'CHRISPREMADES.Macros.PrimalCompanion.BindingStrike', identifier: 'primalCompanionBindingStrike'});
@@ -114,8 +114,8 @@ async function use({workflow}) {
                             value: hpValue
                         },
                         movement: {
-                            walk: 10,
-                            fly: 60
+                            walk: genericUtils.convertDistance(10),
+                            fly: genericUtils.convertDistance(60)
                         }
                     },
                     traits: {
@@ -140,7 +140,7 @@ async function use({workflow}) {
     let animation = itemUtils.getConfig(workflow.item, creatureType + 'Animation') ?? 'none';
     let identifiersToVae = ['primalCompanionDodge', 'primalCompanionCharge', 'primalCompanionMaul', 'primalCompanionBindingStrike', 'primalCompanionShred'];
     await Summons.spawn(sourceActor, updates, workflow.item, workflow.token, {
-        range: 10,
+        range: genericUtils.convertDistance(10),
         animation,
         initiativeType: 'follows',
         additionalSummonVaeButtons: 

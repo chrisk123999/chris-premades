@@ -23,7 +23,7 @@ export class Teleport {
         if (this.controllingToken.actor?.sheet?.rendered && minimizeSheet) this.controllingToken.actor.sheet.minimize();
         this.template = await crosshairUtils.aimCrosshair({
             token: this.controllingToken,
-            maxRange: this.options.range,
+            maxRange: genericUtils.convertDistance(this.options.range),
             crosshairsConfig,
             drawBoundries: true,
             customCallbacks: this.options?.callbacks,

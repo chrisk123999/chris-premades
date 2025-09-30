@@ -10,7 +10,7 @@ async function use({workflow}) {
     await workflow.actor.sheet.minimize();
     let position = await crosshairUtils.aimCrosshair({
         token: workflow.token, 
-        maxRange: 30, 
+        maxRange: genericUtils.convertDistance(30), 
         crosshairsConfig: {
             size: canvas.grid.distance * targetToken.document.width / 2,
             icon: targetToken.document.texture.src, 

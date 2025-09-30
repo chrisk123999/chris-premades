@@ -3,7 +3,7 @@ import {genericUtils} from '../../utils.js';
 async function aimCrosshair({token, maxRange, crosshairsConfig, centerpoint, drawBoundries, customCallbacks, trackDistance = true, fudgeDistance = 0, validityFunctions = []}) {
     let distance = 0;
     let widthAdjust = 0;
-    if (maxRange) maxRange = genericUtils.convertDistance(Number(maxRange));
+    if (maxRange) maxRange = Number(maxRange);
     if (!centerpoint) {
         let actualHalf = token.document.width / 2;
         widthAdjust += canvas.grid.distance * Math.floor(actualHalf);

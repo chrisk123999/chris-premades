@@ -7,7 +7,7 @@ async function use({workflow}) {
     let targetToken = workflow.targets.first();
     let position = await crosshairUtils.aimCrosshair({
         token: workflow.token, 
-        maxRange: 5, 
+        maxRange: genericUtils.convertDistance(5), 
         centerpoint: targetToken.center, 
         drawBoundries: true, 
         trackDistance: true, 
