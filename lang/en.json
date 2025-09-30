@@ -1931,6 +1931,9 @@
             "ShadowStep": {
                 "Name": "Shadow Step"
             },
+            "ShareSpells": {
+                "Confirm": "Share {spell} with {name}?"
+            },
             "ShieldGuardianShield": {
                 "Use": "Shield {name}? Attack Roll: {attack}"
             },

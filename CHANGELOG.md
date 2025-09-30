@@ -3,6 +3,7 @@
 - Primal Companion
 - Exceptional Training
 - Bestial Fury
+- Share Spells
 ## Bug Fixes:
 - Primal Companion (Legacy)
 
