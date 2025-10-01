@@ -1,0 +1,242 @@
+{
+  "folder": "bbR7kJffMX4MkL49",
+  "name": "Wild Shape",
+  "type": "feat",
+  "_id": "AlUsx1rqvIRDuQgN",
+  "img": "icons/creatures/mammals/bull-horns-eyes-glowin-orange.webp",
+  "system": {
+    "activities": {
+      "f8RXnDnXot28fcAr": {
+        "type": "transform",
+        "_id": "f8RXnDnXot28fcAr",
+        "sort": 0,
+        "activation": {
+          "type": "bonus",
+          "override": false,
+          "condition": ""
+        },
+        "consumption": {
+          "scaling": {
+            "allowed": false
+          },
+          "spellSlot": true,
+          "targets": [
+            {
+              "type": "itemUses",
+              "value": "1",
+              "target": ""
+            }
+          ]
+        },
+        "description": {
+          "chatFlavor": ""
+        },
+        "duration": {
+          "units": "hour",
+          "concentration": false,
+          "override": false,
+          "value": "floor(@classes.druid.levels / 2)"
+        },
+        "effects": [],
+        "range": {
+          "units": "self",
+          "override": false,
+          "special": ""
+        },
+        "target": {
+          "template": {
+            "contiguous": false,
+            "units": "ft",
+            "type": ""
+          },
+          "affects": {
+            "choice": false,
+            "type": "self",
+            "special": ""
+          },
+          "override": false,
+          "prompt": true
+        },
+        "uses": {
+          "spent": 0,
+          "recovery": [],
+          "max": ""
+        },
+        "profiles": [
+          {
+            "cr": "max(0.25, floor(@subclasses.moon.levels / 3))",
+            "name": "",
+            "_id": "RLgnCX4veFbk8UK7",
+            "uuid": "",
+            "sizes": [],
+            "types": [
+              "beast"
+            ],
+            "movement": [
+              "fly"
+            ],
+            "level": {
+              "min": null,
+              "max": 3
+            }
+          },
+          {
+            "cr": "max(0.5, floor(@subclasses.moon.levels / 3))",
+            "name": "",
+            "_id": "wUG6WV6Rr3Ubc47B",
+            "uuid": "",
+            "sizes": [],
+            "types": [
+              "beast"
+            ],
+            "movement": [
+              "fly"
+            ],
+            "level": {
+              "min": 4,
+              "max": 7
+            }
+          },
+          {
+            "cr": "max(1, floor(@subclasses.moon.levels / 3))",
+            "name": "",
+            "_id": "Fx5fXKvFUiwXSkNZ",
+            "uuid": "",
+            "sizes": [],
+            "types": [
+              "beast"
+            ],
+            "movement": [],
+            "level": {
+              "min": 8,
+              "max": null
+            }
+          }
+        ],
+        "settings": null,
+        "transform": {
+          "customize": false,
+          "mode": "cr",
+          "identifier": "druid",
+          "preset": "wildshape"
+        },
+        "useConditionText": "",
+        "useConditionReason": "",
+        "effectConditionText": "",
+        "macroData": {
+          "name": "",
+          "command": ""
+        },
+        "ignoreTraits": {
+          "idi": false,
+          "idr": false,
+          "idv": false,
+          "ida": false,
+          "idm": false
+        },
+        "midiProperties": {
+          "ignoreTraits": [],
+          "triggeredActivityId": "none",
+          "triggeredActivityConditionText": "",
+          "triggeredActivityTargets": "targets",
+          "triggeredActivityRollAs": "self",
+          "autoConsume": false,
+          "forceConsumeDialog": "default",
+          "forceRollDialog": "default",
+          "forceDamageDialog": "default",
+          "confirmTargets": "default",
+          "autoTargetType": "any",
+          "autoTargetAction": "default",
+          "automationOnly": false,
+          "otherActivityCompatible": true,
+          "otherActivityAsParentType": true,
+          "identifier": "",
+          "displayActivityName": false,
+          "rollMode": "default",
+          "chooseEffects": false,
+          "toggleEffect": false,
+          "ignoreFullCover": false,
+          "removeChatButtons": "default",
+          "magicEffect": false,
+          "magicDamage": false,
+          "noConcentrationCheck": false,
+          "autoCEEffects": "default"
+        },
+        "isOverTimeFlag": false,
+        "overTimeProperties": {
+          "saveRemoves": true,
+          "preRemoveConditionText": "",
+          "postRemoveConditionText": ""
+        },
+        "name": "",
+        "img": ""
+      }
+    },
+    "uses": {
+      "spent": 0,
+      "recovery": [
+        {
+          "period": "sr",
+          "type": "formula",
+          "formula": "1"
+        },
+        {
+          "period": "lr",
+          "type": "recoverAll"
+        }
+      ],
+      "max": "0"
+    },
+    "advancement": [],
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "identifier": "wild-shape",
+    "source": {
+      "revision": 1,
+      "rules": "2024",
+      "book": "",
+      "page": "",
+      "custom": "PHB 2024",
+      "license": ""
+    },
+    "crewed": false,
+    "enchant": {},
+    "prerequisites": {
+      "items": [],
+      "repeatable": false,
+      "level": 2
+    },
+    "properties": [],
+    "requirements": "",
+    "type": {
+      "value": "class",
+      "subtype": ""
+    }
+  },
+  "effects": [],
+  "flags": {
+    "dnd5e": {
+      "riders": {
+        "activity": []
+      }
+    },
+    "chris-premades": {
+      "info": {
+        "identifier": "wildShape",
+        "version": "1.3.83",
+        "source": "chris-premades",
+        "rules": "modern"
+      },
+      "macros": {
+        "midi": {
+          "item": [
+            "wildShape"
+          ]
+        }
+      }
+    }
+  },
+  "_key": "!items!AlUsx1rqvIRDuQgN"
+}

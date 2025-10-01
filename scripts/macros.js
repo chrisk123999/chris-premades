@@ -282,6 +282,33 @@ export {guidedStrike} from './macros/2024/classFeatures/cleric/war/guidedStrike.
 export {warPriest} from './macros/2024/classFeatures/cleric/war/warPriest.js';
 export {warGodsBlessing, warGodsBlessingCast} from './macros/2024/classFeatures/cleric/war/warGodsBlessing.js';
 export {avatarOfBattle} from './macros/2024/classFeatures/cleric/war/avatarOfBattle.js';
+// Druid
+export {archdruid} from './macros/2024/classFeatures/druid/archdruid.js';
+export {beastSpells} from './macros/2024/classFeatures/druid/beastSpells.js';
+export {elementalFuryPotentSpellcasting} from './macros/2024/classFeatures/druid/potentSpellcasting.js';
+export {elementalFuryPrimalStrike} from './macros/2024/classFeatures/druid/primalStrike.js';
+export {wildCompanion} from './macros/2024/classFeatures/druid/wildCompanion.js';
+export {wildResurgence} from './macros/2024/classFeatures/druid/wildResurgence.js';
+export {wildShape, wildShapeActive} from './macros/2024/classFeatures/druid/wildShape.js';
+//Circle of Land
+export {circleOfTheLandSpells} from './macros/2024/classFeatures/druid/land/circleOfTheLandSpells.js';
+export {landsAid} from './macros/2024/classFeatures/druid/land/landsAid.js';
+export {naturesSanctuary, naturesSanctuaryTemplate} from './macros/2024/classFeatures/druid/land/naturesSanctuary.js';
+export {naturesWard} from './macros/2024/classFeatures/druid/land/naturesWard.js';
+// Circle of Moon
+export {improvedCircleForms} from './macros/2024/classFeatures/druid/moon/improvedCircleForms.js';
+export {lunarForm} from './macros/2024/classFeatures/druid/moon/lunarForm.js';
+export {moonlightStep} from './macros/2024/classFeatures/druid/moon/moonlightStep.js';
+// Circle of Sea
+export {aquaticAffinity} from './macros/2024/classFeatures/druid/sea/aquaticAffinity.js';
+export {oceanicGift} from './macros/2024/classFeatures/druid/sea/oceanicGift.js';
+export {stormborn} from './macros/2024/classFeatures/druid/sea/stormborn.js';
+export {wrathOfTheSea, wrathOfTheSeaOngoing} from './macros/2024/classFeatures/druid/sea/wrathOfTheSea.js';
+// Circle of Stars
+export {cosmicOmen, cosmicOmenActive} from './macros/2024/classFeatures/druid/stars/cosmicOmen.js';
+export {fullOfStars} from './macros/2024/classFeatures/druid/stars/fullOfStars.js';
+export {starryForm, starryFormActive} from './macros/2024/classFeatures/druid/stars/starryForm.js';
+export {twinklingConstellations} from './macros/2024/classFeatures/druid/stars/twinklingConstellations.js';
 //Ranger
 export {favoredEnemy} from './macros/2024/classFeatures/ranger/favoredEnemy.js';
 export {tireless} from './macros/2024/classFeatures/ranger/tireless.js';

@@ -202,18 +202,23 @@ async function getPreferredAutomation(item, options) {
     let items = await getAllAutomations(item, options);
     return items.length ? items[0].document : undefined;
 }
-async function getItemFromCompendium(key, name, {ignoreNotFound, folderId, object = false, getDescription, translate, identifier, flatAttack, flatDC, castDataWorkflow, matchType, rules, byIdentifier} = {}) {
+async function getItemFromCompendium(key, name, {ignoreNotFound, folderId, object = false, getDescription, translate, identifier, flatAttack, flatDC, castDataWorkflow, matchType, rules, byIdentifier, bySystemIdentifier} = {}) {
     let pack = game.packs.get(key);
     if (!pack) {
         if (!ignoreNotFound) errors.missingPack();
         return undefined;
     }
-    let packIndex = await pack.getIndex({'fields': ['name', 'type', 'folder', 'system.source.rules', 'flags.chris-premades.info.identifier']});
+    let packIndex = await pack.getIndex({'fields': ['name', 'type', 'folder', 'system.source.rules', 'flags.chris-premades.info.identifier', 'system.identifier']});
     let match;
-    if (!byIdentifier) {
-        match = packIndex.find(item => (item.flags['chris-premades']?.info?.aliases ?? []).concat(item.name).includes(name) && (!folderId || (folderId && item.folder === folderId)) && (!matchType || (item.type === matchType)) && (!rules || (item.system.source.rules === (rules === 'modern' ? '2024' : '2014'))));
+    let alwaysFilterFunc = (item) => {
+        return (!folderId || (item.folder === folderId)) && (!matchType || (item.type === matchType)) && (!rules || (item.system.source.rules === (rules === 'modern' ? '2024' : '2014')));
+    };
+    if (!byIdentifier && !bySystemIdentifier) {
+        match = packIndex.find(item => (item.flags['chris-premades']?.info?.aliases ?? []).concat(item.name).includes(name) && alwaysFilterFunc(item));
+    } else if (!bySystemIdentifier) {
+        match = packIndex.find(item => item.flags['chris-premades']?.info?.identifier === name && alwaysFilterFunc(item));
     } else {
-        match = packIndex.find(item => item.flags['chris-premades']?.info?.identifier === name && (!folderId || (folderId && item.folder === folderId)) && (!matchType || (item.type === matchType)) && (!rules || (item.system.source.rules === (rules === 'modern' ? '2024' : '2014'))));
+        match = packIndex.find(item => item.system?.identifier === name && alwaysFilterFunc(item));
     }
     if (match) {
         let document = await pack.getDocument(match._id);

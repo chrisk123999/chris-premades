@@ -22,7 +22,8 @@ async function use({workflow}) {
             'chris-premades': {
                 starryForm: {
                     currentForm: activityIdentifier
-                }
+                },
+                rules: genericUtils.getRules(workflow.item)
             }
         },
         changes: [
@@ -83,13 +84,13 @@ async function use({workflow}) {
     if (activityIdentifier === 'starryFormDragon') {
         effectData.changes.push(
             {
-                key: 'flags.midi-qol.min.ability.check.wis',
+                key: 'system.abilities.wis.check.roll.min',
                 value: 10,
                 mode: 4,
                 priority: 20
             },
             {
-                key: 'flags.midi-qol.min.ability.check.int',
+                key: 'system.abilities.int.check.roll.min',
                 value: 10,
                 mode: 4,
                 priority: 20
@@ -175,6 +176,14 @@ async function early({actor, config, dialog}) {
 }
 async function added({trigger: {entity: item}}) {
     await itemUtils.correctActivityItemConsumption(item, ['starryFormArcher', 'starryFormChalice', 'starryFormDragon'], 'wildShape');
+    let subclassIdentifier = itemUtils.getConfig(item, 'subclassIdentifier');
+    let scaleIdentifier = itemUtils.getConfig(item, 'scaleIdentifier');
+    if (item.actor.system.scale[subclassIdentifier]?.[scaleIdentifier]) return;
+    if (item.actor.system.scale[subclassIdentifier]?.['die']) {
+        await itemUtils.setConfig(item, 'scaleIdentifier', 'die');
+        return;
+    }
+    await itemUtils.fixScales(item);
 }
 export let starryForm = {
     name: 'Starry Form',

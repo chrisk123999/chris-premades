@@ -175,10 +175,8 @@ function getCPRIdentifier(name, rules = 'legacy') {
 }
 function convertDistance(ft) {
     if (!canvas.scene) return ft;
-    switch (canvas.scene.grid.units) {
-        case 'm': return Math.round((parseInt(ft) + Number.EPSILON) * 100 / 100) * 0.3;
-        default: return ft;
-    }
+    if (canvas.scene.grid.units !== 'm') return ft;
+    return Math.floor((ft / 5) * 1.5);
 }
 export let genericUtils = {
     sleep,

@@ -8,11 +8,11 @@ async function getSpellsOfLevel(level, {identifier} = {}) {
 function isClassSpell(item, identifier) {
     return item.system?.sourceClass === identifier;
 }
-async function getCompendiumSpell(name, {identifier = false, rules}) {
+async function getCompendiumSpell(name, {identifier = false, rules, bySystemIdentifier=false}) {
     let packId = genericUtils.getCPRSetting('spellCompendium');
     let pack = game.packs.get(packId);
     if (!pack) return;
-    return await compendiumUtils.getItemFromCompendium(packId, name, {identifier, byIdentifier: identifier, rules});
+    return await compendiumUtils.getItemFromCompendium(packId, name, {identifier, byIdentifier: identifier, rules, bySystemIdentifier});
 }
 export let spellUtils = {
     getClassSpells: spellList.getClassSpells,

@@ -197,6 +197,7 @@
             "DisplayHint": "Display Hint:",
             "Distance": "Distance:",
             "DurationSeconds": "Duration (Seconds):",
+            "EnablePrompt": "Enable Reaction Prompt:",
             "Expire": "Expiration:",
             "FailedSave": "Failed Save:",
             "Formula": "Formula:",
@@ -271,6 +272,7 @@
             "UseOn": "Use {itemName} on {tokenName}?",
             "UseRollTotal": "Use {itemName}? (Roll Total: {rollTotal})",
             "UseRollTotalDetail": "Use {itemName} for an extra {bonusFormula}? (Roll Total: {rollTotal})",
+            "UseWeaponDamageExtra": "Use {itemName} for an extra {bonusFormula}?",
             "UseWeaponDamageTotal": "Use {itemName}? (Weapon Damage: {damageTotal})",
             "UseWeaponDamageTotalWithAverage": "Use {itemName}? (Weapon Damage: {damageTotal}; Average Damage: {damageAverage})",
             "WhatDo": "What would you like to do?",
@@ -1013,6 +1015,13 @@
                 "Bounce": "Who should the spell bounce to?",
                 "TargetDamageSelection": "Per Target Damage Selection:"
             },
+            "CircleOfTheLandSpells": {
+                "Arid": "Arid Land",
+                "ChooseLand": "Which Land?",
+                "Polar": "Polar Land",
+                "Temperate": "Temperate Land",
+                "Tropical": "Tropical Land"
+            },
             "CloudRune": {
                 "Reaction": "Use {item} to redirect the attack from {name}?"
             },
@@ -1045,6 +1054,10 @@
             },
             "ControlUndead": {
                 "Controlled": "Control Undead: Controlled"
+            },
+            "CosmicOmen": {
+                "Weal": "Use {itemName} to give a bonus to {tokenName}'s roll?",
+                "Woe": "Use {itemName} to give a malus to {tokenName}'s roll?"
             },
             "Countercharm": {
                 "AllyFail": "{name} has failed their save ({total})! Use {feature}?",
@@ -1599,6 +1612,9 @@
             "LabyrinthineRecall": {
                 "Skill": "This check is to navigate or track"
             },
+            "LandsAid": {
+                "Select": "Who do you want to heal?"
+            },
             "LanternOfRevealing": {
                 "Bright": "Light Lantern (Bright)",
                 "Dim": "Light Lantern (Dim)",
@@ -1719,6 +1735,9 @@
             "Moonbeam": {
                 "Damage": "Moonbeam: Damage",
                 "Move": "Moonbeam: Move"
+            },
+            "MoonlightStep": {
+                "TeleportFriend": "Teleport a willing ally?"
             },
             "MovementBonusActivity": {
                 "Distance": "Required Distance (ft):",
@@ -2350,6 +2369,9 @@
             "WarpingImplosion": {
                 "Consume": "Consume five {item} to use?"
             },
+            "WildResurgence": {
+                "WildShapeUses": "You must have 0 uses of Wild Shape in order to use this!"
+            },
             "WildShape": {
                 "AllowElementals": "Always allow elementals:",
                 "CustomCompendium": "Custom Wild Shape Compendium:",
@@ -2396,6 +2418,14 @@
             "WrapsOfDyamak": {
                 "CrimsonMist": "Crimson Mist",
                 "Heal": "Wraps of Dyamak: Heal"
+            },
+            "WrathOfTheSea": {
+                "Ally": "Ally",
+                "Both": "Both (Costs 1 {itemName})",
+                "Choose": "Who do you want to manifest the Emanation around?",
+                "Ongoing": "Wrath of the Sea: Ongoing",
+                "Self": "Self",
+                "Target": "Which enemy should make a save?"
             },
             "WrathfulSmite": {
                 "Frighten": "Wrathful Smite: Frighten"
