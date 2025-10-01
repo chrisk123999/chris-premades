@@ -1,6 +1,8 @@
 # 1.3.81 Release:
 ## New Modern Content:
 - Dread Ambusher
+- Umbral Sight
+- Stalker's Fury
 ## Bug Fixes:
 - Share Spells
 

@@ -296,6 +296,7 @@ export {shareSpells} from './macros/2024/classFeatures/ranger/beastMaster/shareS
 //Gloom Stalker
 export {dreadAmbusher} from './macros/2024/classFeatures/ranger/gloomStalker/dreadAmbusher.js';
 export {umbralSight} from './macros/2024/classFeatures/ranger/gloomStalker/umbralSight.js';
+export {stalkersFlurry} from './macros/2024/classFeatures/ranger/gloomStalker/stalkersFlurry.js';
 //Rogue
 export {sneakAttack} from './macros/2024/classFeatures/rogue/sneakAttack.js';
 export {cunningAction} from './macros/2024/classFeatures/rogue/cunningAction.js';

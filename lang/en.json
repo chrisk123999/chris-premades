@@ -2034,6 +2034,12 @@
             "StaggeringSmite": {
                 "Stagger": "Staggering Smite: Stagger"
             },
+            "StalkersFlurry": {
+                "IncludeSelf": "Mass Fear: Include self?",
+                "MassFear": "Mass Fear",
+                "SuddenStrike": "Sudden Strike",
+                "Use": "Use {item}?"
+            },
             "StarryForm": {
                 "Archer": "Archer",
                 "ArcherFeature": "Starry Form: Luminous Arrow",
