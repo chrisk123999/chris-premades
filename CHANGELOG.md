@@ -6,7 +6,7 @@
 - Shadowy Dodge
 ## Bug Fixes:
 - Share Spells
-- Lies
+- Combat Mastery: Lies
 - Slasher
 
 # 1.3.80 Release:
