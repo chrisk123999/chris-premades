@@ -7,6 +7,7 @@
 ## Bug Fixes:
 - Share Spells
 - Lies
+- Slasher
 
 # 1.3.80 Release:
 ## Bug Fixes:
