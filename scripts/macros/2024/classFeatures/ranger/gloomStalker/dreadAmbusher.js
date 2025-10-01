@@ -4,20 +4,19 @@ async function turnStart({trigger: {entity: item}}) {
     await workflowUtils.completeItemUse(item);
 }
 async function damage({trigger: {entity: item}, workflow}) {
-    if (!constants.weaponAttacks.includes(workflow.activity?.actionType)) return;
     if (!item.system.uses.value) return;
     if (workflow.hitTargets.size !== 1) return;
-    if (!workflowUtils.isAttackType(workflow, 'attack')) return;
+    if (!workflowUtils.isAttackType(workflow, 'weaponAttack')) return;
     if (!combatUtils.perTurnCheck(item, 'dreadAmbusher', false, workflow.token.id)) return;
-    let selection = await dialogUtils.confirm(item.name, genericUtils.format('CHRISPREMADES.Macros.DreadAmbusher.Use', {item: item.name}));
+    let selection = await dialogUtils.confirmUseItem(item);
     if (!selection) return;
-    genericUtils.update(item, {'system.uses.spent': item.system.uses.spent + 1})
+    await genericUtils.update(item, {'system.uses.spent': item.system.uses.spent + 1});
     let stalkersFlurry = itemUtils.getItemByIdentifier(workflow.actor, 'stalkersFlurry');
     let damageFormulaItem = stalkersFlurry ? stalkersFlurry : item;
     let formula = itemUtils.getConfig(damageFormulaItem, 'formula');
     let damageType = itemUtils.getConfig(damageFormulaItem, 'damageType');
     await workflowUtils.bonusDamage(workflow, formula, {damageType});
-    genericUtils.setProperty(workflow, 'chris-premades.dreadAmbusher', true)
+    genericUtils.setProperty(workflow, 'chris-premades.dreadAmbusher', true);
     await combatUtils.setTurnCheck(item, 'dreadAmbusher');
 }
 async function late({workflow}) {
