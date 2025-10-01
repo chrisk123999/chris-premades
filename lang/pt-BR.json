@@ -240,6 +240,7 @@
             "TurnTrigger": "Gatilho do Turno:",
             "UseFormula": "Usar Fórmula:",
             "WeaponProperties": "Propriedades da Arma:",
+            "WeaponType": "Tipo da Arma",
             "cameraZoom": "Zoom da Câmera:"
         },
         "Cover": {
@@ -596,6 +597,7 @@
         "Generic": {
             "Actions": "Ações",
             "Amount": "Quantidade:",
+            "Automatic": "Automático",
             "Available": "Disponível",
             "CPR": "Cauldron of Plentiful Resources",
             "Cancel": "Cancelar",
@@ -627,13 +629,15 @@
             "Max": "Máx:",
             "MeleeSpells": "Magias Corpo a Corpo",
             "MeleeWeapons": "Armas Corpo a Corpo",
-            "MissingScale": "O ator não tem o conjunto de escala {scaleName} scale set!",
+            "MissingScale": "O ator não tem a escala {scaleName} definida!",
+            "Never": "Nunca",
             "No": "Não",
             "NoEffect": "{itemName} deve ter um efeito para seu recurso genérico de monstro!",
             "NoMoreResource": "Sem o recurso necessário!",
             "NoType": "Sem Tipo",
             "None": "Nenhum(a)",
             "Ok": "Ok",
+            "Prompt": "Aviso",
             "ProtectWithItem": "Proteger {token} com {item}?",
             "Range": "Alcance",
             "RangedSpells": "Magias à Distância",
@@ -643,6 +647,7 @@
             "Replace": "Substituir",
             "Rerolling": "Re-rolando {origDie} ({origResult}):",
             "Select": "Selecionar",
+            "SelectASkill": "Selecionar uma perícia:",
             "SelectATarget": "Selecionar um alvo:",
             "SelectAWeapon": "Selecionar uma arma:",
             "SelectAnActivity": "Selecionar uma atividade:",
@@ -658,6 +663,7 @@
             "Submit": "Enviar",
             "Success": "Sucesso",
             "Summon": "Invocação",
+            "Target": "Escolha o Alvo",
             "Total": "Total",
             "TurnEnd": "Fim do Turno",
             "TurnStart": "Início do Turno",
@@ -1934,6 +1940,9 @@
             "ShadowStep": {
                 "Name": "Passo Sombrio"
             },
+            "ShadowyDodge": {
+                "Use": "Usar {item}?"
+            },
             "ShareSpells": {
                 "Confirm": "Compartilhar {spell} com {name}?"
             },
@@ -2026,6 +2035,12 @@
             },
             "StaggeringSmite": {
                 "Stagger": "Destruição Estonteante: Tontear"
+            },
+            "StalkersFlurry": {
+                "IncludeSelf": "Mass Fear: Incluir a si mesmo?",
+                "MassFear": "Mass Fear",
+                "SuddenStrike": "Sudden Strike",
+                "Use": "Usar {item}?"
             },
             "StarryForm": {
                 "Archer": "Arqueiro",
