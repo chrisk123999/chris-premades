@@ -1,7 +1,7 @@
 import {dialogUtils, effectUtils, genericUtils, itemUtils, tokenUtils, workflowUtils} from '../../../../../utils.js';
 async function early({trigger: {entity: item}, workflow}) {
     let workflowItem = workflow.item;
-    if (!workflowItem.type === 'spell') return;
+    if (workflowItem.type !== 'spell') return;
     if (!workflow.targets.some(t => t.document.uuid === workflow.token.document.uuid)) return;
     let primalCompanion = itemUtils.getItemByIdentifier(workflow.actor, 'primalCompanion');
     if (!primalCompanion) return;

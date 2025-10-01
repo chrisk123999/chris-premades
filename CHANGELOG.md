@@ -1,9 +1,29 @@
+# 1.3.82 Release:
+## Bug Fixes:
+- Combat Mastery: Lies
+
+# 1.3.81 Release:
+## New Modern Content:
+- Dread Ambusher
+- Umbral Sight
+- Stalker's Flurry
+- Shadowy Dodge
+## Bug Fixes:
+- Share Spells
+- Combat Mastery: Lies
+- Slasher
+
+# 1.3.80 Release:
+## Bug Fixes:
+- Infernal Conduit
+
 # 1.3.79 Release:
 ## New Modern Content:
 - Primal Companion
 - Exceptional Training
 - Bestial Fury
 - Share Spells
+- Guidance
 ## Bug Fixes:
 - Primal Companion (Legacy)
 

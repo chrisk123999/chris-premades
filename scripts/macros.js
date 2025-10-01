@@ -173,6 +173,7 @@ export {zoneOfTruth} from './macros/2024/spells/zoneOfTruth.js';
 export {timeStop, timeStopEffect} from './macros/2024/spells/timeStop.js';
 export {steelWindStrike} from './macros/2024/spells/steelWindStrike.js';
 export {mageHand, mageHandEffect} from './macros/2024/spells/mageHand.js';
+export {guidance} from './macros/2024/spells/guidance.js';
 //Items
 export {healersKit} from './macros/2024/items/healersKit.js';
 export {unarmedStrike} from './macros/2024/items/misc/unarmedStrike.js';
@@ -292,6 +293,11 @@ export {foeSlayer} from './macros/2024/classFeatures/ranger/foeSlayer.js';
 export {primalCompanion, bestialFury} from './macros/2024/classFeatures/ranger/beastMaster/primalCompanion.js';
 export {exceptionalTraining} from './macros/2024/classFeatures/ranger/beastMaster/exceptionalTraining.js';
 export {shareSpells} from './macros/2024/classFeatures/ranger/beastMaster/shareSpells.js';
+//Gloom Stalker
+export {dreadAmbusher} from './macros/2024/classFeatures/ranger/gloomStalker/dreadAmbusher.js';
+export {umbralSight} from './macros/2024/classFeatures/ranger/gloomStalker/umbralSight.js';
+export {stalkersFlurry} from './macros/2024/classFeatures/ranger/gloomStalker/stalkersFlurry.js';
+export {shadowyDodge} from './macros/2024/classFeatures/ranger/gloomStalker/shadowyDodge.js';
 //Rogue
 export {sneakAttack} from './macros/2024/classFeatures/rogue/sneakAttack.js';
 export {cunningAction} from './macros/2024/classFeatures/rogue/cunningAction.js';

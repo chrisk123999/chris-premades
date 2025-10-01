@@ -1,0 +1,168 @@
+{
+  "name": "Umbral Sight",
+  "type": "feat",
+  "system": {
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "source": {
+      "book": "",
+      "page": "",
+      "license": "",
+      "custom": "PHB 2024",
+      "revision": 1,
+      "rules": "2024"
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "recovery": []
+    },
+    "type": {
+      "value": "class",
+      "subtype": ""
+    },
+    "properties": [],
+    "requirements": "",
+    "prerequisites": {
+      "level": null,
+      "items": [],
+      "repeatable": false
+    },
+    "activities": {},
+    "identifier": "umbral-sight",
+    "enchant": {},
+    "advancement": [],
+    "crewed": false
+  },
+  "flags": {
+    "midi-qol": {
+      "removeAttackDamageButtons": "default",
+      "rollAttackPerTarget": "default",
+      "itemCondition": "",
+      "effectCondition": "",
+      "AoETargetType": "any",
+      "AoETargetTypeIncludeSelf": true,
+      "autoTarget": "default",
+      "reactionCondition": "",
+      "otherCondition": ""
+    },
+    "midiProperties": {
+      "confirmTargets": "default",
+      "autoFailFriendly": false,
+      "autoSaveFriendly": false,
+      "critOther": false,
+      "offHandWeapon": false,
+      "magicdam": false,
+      "magiceffect": false,
+      "concentration": false,
+      "noConcentrationCheck": false,
+      "toggleEffect": false,
+      "ignoreTotalCover": false,
+      "idr": false,
+      "idi": false,
+      "idv": false,
+      "ida": false
+    },
+    "core": {},
+    "dnd5e": {
+      "riders": {
+        "activity": []
+      }
+    },
+    "chris-premades": {
+      "info": {
+        "name": "Umbral Sight",
+        "version": "1.3.81",
+        "identifier": "umbralSight",
+        "source": "chris-premades",
+        "rules": "modern"
+      },
+      "macros": {
+        "midi": {
+          "actor": [
+            "umbralSight"
+          ]
+        }
+      }
+    }
+  },
+  "effects": [
+    {
+      "name": "Umbral Sight",
+      "origin": "Compendium.world.cpr-class-features.Item.PoYMnh528iTEol4g",
+      "duration": {
+        "rounds": null,
+        "startTime": 1404,
+        "seconds": null,
+        "combat": null,
+        "turns": null,
+        "startRound": 235,
+        "startTurn": 2
+      },
+      "disabled": false,
+      "flags": {
+        "dnd5e": {},
+        "dae": {
+          "disableCondition": "",
+          "disableIncapacitated": false,
+          "stackable": "noneName",
+          "showIcon": false,
+          "durationExpression": "",
+          "macroRepeat": "none",
+          "specialDuration": []
+        },
+        "core": {
+          "overlay": false
+        }
+      },
+      "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
+      "_id": "Vlwv9kt1dP2aItx1",
+      "type": "base",
+      "system": {},
+      "changes": [
+        {
+          "key": "ATL.sight.visionMode",
+          "mode": 0,
+          "value": "darkvision",
+          "priority": 20
+        },
+        {
+          "key": "system.attributes.senses.darkvision",
+          "mode": 4,
+          "value": "30",
+          "priority": 20
+        },
+        {
+          "key": "system.attributes.senses.darkvision",
+          "mode": 2,
+          "value": "30",
+          "priority": 40
+        },
+        {
+          "key": "ATL.sight.range",
+          "mode": 4,
+          "value": "30",
+          "priority": 20
+        },
+        {
+          "key": "ATL.sight.range",
+          "mode": 2,
+          "value": "30",
+          "priority": 40
+        }
+      ],
+      "description": "",
+      "tint": "#ffffff",
+      "transfer": true,
+      "statuses": [],
+      "sort": 0,
+      "_key": "!items.effects!xtDMLfKE7jgJuImT.Vlwv9kt1dP2aItx1"
+    }
+  ],
+  "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
+  "folder": "A4Ha88zT5hRgm5WM",
+  "_id": "xtDMLfKE7jgJuImT",
+  "_key": "!items!xtDMLfKE7jgJuImT"
+}

@@ -40,6 +40,7 @@ import {ui} from './extensions/ui.js';
 import {toolCheck} from './events/toolCheck.js';
 import {acc} from './integrations/acc.js';
 import {quickConditions} from './extensions/quickConditions.js';
+import {setupConstants} from './lib/constants.js';
 Hooks.once('socketlib.ready', registerSockets);
 Hooks.once('init', () => {
     Hooks.on('dae.modifySpecials', dae.modifySpecials);
@@ -70,6 +71,7 @@ Hooks.once('ready', () => {
     registerHooks();
     ddbi.ready();
     dae.injectFlags();
+    setupConstants();
     if (!game.modules.get('babele')?.active) {
         if (game.modules.get('gambits-premades')?.active) gambitPremades.init(utils.genericUtils.getCPRSetting('gambitPremades'));
         if (game.modules.get('midi-item-showcase-community')?.active) miscPremades.init(utils.genericUtils.getCPRSetting('miscPremades'));

@@ -185,6 +185,25 @@ const teleportOptions = () => Object.entries(teleportEffects).map(i => ({label: 
 const itemProperties = () => Object.entries(CONFIG.DND5E.itemProperties).map(i => ({label: i[1].label, value: i[0]}));
 const armorOptions = () => Object.entries(CONFIG.DND5E.armorTypes).map(i => ({label: i[1], value: i[0]}));
 const spellSchoolOptions = () => Object.entries(CONFIG.DND5E.spellSchools).map(i => ({label: i[1].label, value: i[0]}));
+let baseWeaponOptions = [];
+let baseMeleeWeaponOptions = [];
+let baseRangedWeaponOptions = [];
+const getBaseWeaponOptions = () => {return baseWeaponOptions;};
+const getBaseMeleeWeaponOptions = () => {return baseMeleeWeaponOptions;};
+const getBaseRangedWeaponOptions = () => {return baseRangedWeaponOptions;};
+export async function setupConstants() {
+    let data = (await Promise.all(Object.entries(CONFIG.DND5E.weaponIds).map(async ([id, uuid]) => {
+        let document = await fromUuid(uuid);
+        if (!document) return;
+        return {
+            id,
+            document
+        };
+    }))).filter(i => i);
+    baseWeaponOptions = data.map(i => ({value: i.id, label: i.document.name}));
+    baseMeleeWeaponOptions = data.filter(i => meleeWeaponTypes.includes(i.document.system.type.value)).map(i => ({value: i.id, label: i.document.name}));
+    baseRangedWeaponOptions = data.filter(i => rangedWeaponTypes.includes(i.document.system.type.value)).map(i => ({value: i.id, label: i.document.name}));
+}
 const overTimeOptions = [
     {
         key: 'turn',
@@ -651,5 +670,8 @@ export let constants = {
     disadvantageEffectData,
     languageOptions,
     rangedWeaponAttacks,
-    meleeWeaponAttacks
+    meleeWeaponAttacks,
+    getBaseWeaponOptions,
+    getBaseMeleeWeaponOptions,
+    getBaseRangedWeaponOptions
 };

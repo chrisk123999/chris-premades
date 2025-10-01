@@ -240,6 +240,7 @@
             "TurnTrigger": "Turn Trigger:",
             "UseFormula": "Use Formula:",
             "WeaponProperties": "Weapon Properties:",
+            "WeaponType": "Weapon Type",
             "cameraZoom": "Camera Zoom:"
         },
         "Cover": {
@@ -596,6 +597,7 @@
         "Generic": {
             "Actions": "Actions",
             "Amount": "Amount:",
+            "Automatic": "Automatic",
             "Available": "Available",
             "CPR": "Cauldron of Plentiful Resources",
             "Cancel": "Cancel",
@@ -628,12 +630,14 @@
             "MeleeSpells": "Melee Spell",
             "MeleeWeapons": "Melee Weapons",
             "MissingScale": "Actor does not have {scaleName} scale set!",
+            "Never": "Never",
             "No": "No",
             "NoEffect": "{itemName} must have an effect for its generic monster feature!",
             "NoMoreResource": "Out of required resource!",
             "NoType": "No Type",
             "None": "None",
             "Ok": "Ok",
+            "Prompt": "Prompt",
             "ProtectWithItem": "Protect {token} with {item}?",
             "Range": "Range",
             "RangedSpells": "Ranged Spells",
@@ -643,6 +647,7 @@
             "Replace": "Replace",
             "Rerolling": "Rerolling {origDie} ({origResult}):",
             "Select": "Select",
+            "SelectASkill": "Select a skill:",
             "SelectATarget": "Select a target:",
             "SelectAWeapon": "Select a weapon:",
             "SelectAnActivity": "Select and activity:",
@@ -658,6 +663,7 @@
             "Submit": "Submit",
             "Success": "Success",
             "Summon": "Summon",
+            "Target": "Select Target",
             "Total": "Total",
             "TurnEnd": "Turn End",
             "TurnStart": "Turn Start",
@@ -1934,6 +1940,9 @@
             "ShadowStep": {
                 "Name": "Shadow Step"
             },
+            "ShadowyDodge": {
+                "Use": "Use {item}?"
+            },
             "ShareSpells": {
                 "Confirm": "Share {spell} with {name}?"
             },
@@ -2026,6 +2035,12 @@
             },
             "StaggeringSmite": {
                 "Stagger": "Staggering Smite: Stagger"
+            },
+            "StalkersFlurry": {
+                "IncludeSelf": "Mass Fear: Include self?",
+                "MassFear": "Mass Fear",
+                "SuddenStrike": "Sudden Strike",
+                "Use": "Use {item}?"
             },
             "StarryForm": {
                 "Archer": "Archer",

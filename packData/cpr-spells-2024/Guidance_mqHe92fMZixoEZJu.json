@@ -1,34 +1,22 @@
 {
-  "name": "Infernal Conduit",
-  "type": "feat",
-  "effects": [],
+  "type": "spell",
   "system": {
     "activities": {
-      "wKzsEi6Bf37AnCq3": {
-        "type": "save",
-        "_id": "wKzsEi6Bf37AnCq3",
+      "utilityGuidanceI": {
+        "type": "utility",
+        "_id": "utilityGuidanceI",
         "sort": 0,
         "activation": {
           "type": "action",
-          "override": false,
-          "condition": ""
+          "override": false
         },
         "consumption": {
-          "scaling": {
-            "allowed": true,
-            "max": "@item.uses.value"
-          },
           "spellSlot": true,
-          "targets": [
-            {
-              "type": "itemUses",
-              "value": "@scaling",
-              "target": "",
-              "scaling": {
-                "mode": ""
-              }
-            }
-          ]
+          "targets": [],
+          "scaling": {
+            "allowed": false,
+            "max": ""
+          }
         },
         "description": {
           "chatFlavor": ""
@@ -40,62 +28,31 @@
         },
         "effects": [],
         "range": {
-          "units": "any",
-          "override": false,
-          "special": ""
+          "units": "self",
+          "override": false
         },
         "target": {
           "template": {
             "contiguous": false,
-            "units": "ft",
-            "type": ""
+            "units": "ft"
           },
           "affects": {
-            "choice": false,
             "type": "creature",
-            "count": "1",
-            "special": ""
+            "choice": false
           },
           "override": false,
           "prompt": true
         },
         "uses": {
-          "spent": null,
+          "spent": 0,
           "recovery": [],
           "max": ""
         },
-        "damage": {
-          "onSave": "half",
-          "critical": {
-            "allow": false
-          },
-          "parts": [
-            {
-              "custom": {
-                "enabled": false,
-                "formula": ""
-              },
-              "number": null,
-              "denomination": null,
-              "bonus": "0",
-              "types": [
-                "midi-none"
-              ],
-              "scaling": {
-                "mode": "",
-                "number": 1
-              }
-            }
-          ]
-        },
-        "save": {
-          "ability": [
-            "con"
-          ],
-          "dc": {
-            "calculation": "cha",
-            "formula": ""
-          }
+        "roll": {
+          "prompt": false,
+          "visible": false,
+          "name": "",
+          "formula": ""
         },
         "useConditionText": "",
         "useConditionReason": "",
@@ -117,27 +74,27 @@
           "triggeredActivityConditionText": "",
           "triggeredActivityTargets": "targets",
           "triggeredActivityRollAs": "self",
-          "autoConsume": false,
-          "forceConsumeDialog": "default",
-          "forceRollDialog": "default",
-          "forceDamageDialog": "default",
           "confirmTargets": "default",
+          "automationOnly": false,
+          "identifier": "",
+          "chooseEffects": false,
+          "forceDamageDialog": "",
           "autoTargetType": "any",
           "autoTargetAction": "default",
-          "automationOnly": false,
           "otherActivityCompatible": false,
           "otherActivityAsParentType": true,
-          "identifier": "",
           "displayActivityName": false,
           "rollMode": "default",
-          "chooseEffects": false,
           "toggleEffect": false,
           "ignoreFullCover": false,
           "removeChatButtons": "default",
           "magicEffect": false,
           "magicDamage": false,
           "noConcentrationCheck": false,
-          "autoCEEffects": "default"
+          "autoCEEffects": "default",
+          "autoConsume": false,
+          "forceConsumeDialog": "default",
+          "forceRollDialog": "default"
         },
         "isOverTimeFlag": false,
         "overTimeProperties": {
@@ -147,33 +104,23 @@
         },
         "otherActivityId": "none",
         "otherActivityAsParentType": true,
-        "friendlySave": "friendlyFail",
-        "name": "Heal"
+        "name": ""
       },
-      "pGRWQXKnmKRHYGUg": {
-        "type": "save",
+      "pnVGDalhd1CwoU0E": {
+        "type": "utility",
+        "_id": "pnVGDalhd1CwoU0E",
         "sort": 0,
         "activation": {
-          "type": "action",
-          "override": false,
+          "type": "special",
+          "override": true,
           "condition": ""
         },
         "consumption": {
           "scaling": {
-            "allowed": true,
-            "max": "@item.uses.value"
+            "allowed": false
           },
           "spellSlot": true,
-          "targets": [
-            {
-              "type": "itemUses",
-              "value": "@scaling",
-              "target": "",
-              "scaling": {
-                "mode": ""
-              }
-            }
-          ]
+          "targets": []
         },
         "description": {
           "chatFlavor": ""
@@ -181,12 +128,12 @@
         "duration": {
           "units": "inst",
           "concentration": false,
-          "override": false
+          "override": true
         },
         "effects": [],
         "range": {
-          "units": "any",
-          "override": false,
+          "units": "self",
+          "override": true,
           "special": ""
         },
         "target": {
@@ -197,50 +144,22 @@
           },
           "affects": {
             "choice": false,
-            "type": "creature",
-            "count": "1",
+            "type": "self",
             "special": ""
           },
-          "override": false,
+          "override": true,
           "prompt": true
         },
         "uses": {
-          "spent": null,
+          "spent": 0,
           "recovery": [],
           "max": ""
         },
-        "damage": {
-          "onSave": "half",
-          "critical": {
-            "allow": false
-          },
-          "parts": [
-            {
-              "custom": {
-                "enabled": false,
-                "formula": ""
-              },
-              "number": null,
-              "denomination": null,
-              "bonus": "0",
-              "types": [
-                "midi-none"
-              ],
-              "scaling": {
-                "mode": "",
-                "number": 1
-              }
-            }
-          ]
-        },
-        "save": {
-          "ability": [
-            "con"
-          ],
-          "dc": {
-            "calculation": "cha",
-            "formula": ""
-          }
+        "roll": {
+          "prompt": false,
+          "visible": false,
+          "name": "",
+          "formula": ""
         },
         "useConditionText": "",
         "useConditionReason": "",
@@ -292,91 +211,193 @@
         },
         "otherActivityId": "none",
         "otherActivityAsParentType": true,
-        "friendlySave": "friendlyFail",
-        "name": "Harm",
-        "_id": "pGRWQXKnmKRHYGUg"
+        "name": ""
       }
     },
     "uses": {
-      "spent": 0,
-      "max": "@scale.illrigger.infernal-conduit",
-      "recovery": [
-        {
-          "period": "lr",
-          "type": "recoverAll"
-        }
-      ]
+      "spent": null,
+      "max": "",
+      "recovery": []
     },
-    "advancement": [],
     "description": {
       "value": "",
       "chat": ""
     },
-    "identifier": "infernal-conduit",
+    "identifier": "guidance",
     "source": {
-      "book": "TIR",
+      "book": "PHB 2024",
       "page": "",
       "license": "",
       "custom": "",
-      "rules": "2014",
+      "rules": "2024",
       "revision": 1
     },
-    "crewed": false,
-    "enchant": {},
-    "prerequisites": {
-      "items": [],
-      "level": 6,
-      "repeatable": false
+    "activation": {
+      "type": "action",
+      "value": 1,
+      "condition": ""
     },
-    "properties": [],
-    "requirements": "",
-    "type": {
-      "value": "class",
-      "subtype": ""
-    }
+    "duration": {
+      "value": "1",
+      "units": "minute"
+    },
+    "level": 0,
+    "materials": {
+      "value": "",
+      "consumed": false,
+      "cost": 0,
+      "supply": 0
+    },
+    "properties": [
+      "vocal",
+      "somatic",
+      "concentration"
+    ],
+    "range": {
+      "units": "touch"
+    },
+    "school": "div",
+    "target": {
+      "affects": {
+        "count": "1",
+        "type": "creature",
+        "choice": false,
+        "special": ""
+      },
+      "template": {
+        "count": "",
+        "contiguous": false,
+        "type": "",
+        "size": "",
+        "width": "",
+        "height": "",
+        "units": "ft"
+      }
+    },
+    "method": "spell",
+    "prepared": 1,
+    "sourceClass": ""
   },
-  "flags": {
-    "dnd5e": {
-      "advancementOrigin": "zKpmerWRRzs7UoBC",
-      "last": {
-        "wKzsEi6Bf37AnCq3": {
-          "damageType": {
-            "0": "midi-none"
+  "effects": [
+    {
+      "img": "icons/magic/control/buff-flight-wings-blue.webp",
+      "name": "Guidance",
+      "statuses": [],
+      "changes": [
+        {
+          "key": "system.skills.acr.bonuses.check",
+          "mode": 2,
+          "value": "+1d4",
+          "priority": 20
+        }
+      ],
+      "duration": {
+        "seconds": null,
+        "startTime": null,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null,
+        "combat": null
+      },
+      "tint": "#ffffff",
+      "transfer": false,
+      "disabled": false,
+      "flags": {
+        "dae": {
+          "transfer": false,
+          "stackable": "noneNameOnly",
+          "specialDuration": [],
+          "enableCondition": "",
+          "disableCondition": "",
+          "showIcon": false,
+          "disableIncapacitated": false,
+          "selfTarget": false,
+          "selfTargetAlways": false,
+          "dontApply": true,
+          "durationExpression": "",
+          "macroRepeat": "none"
+        },
+        "ddbimporter": {
+          "disabled": false
+        },
+        "midi-qol": {
+          "forceCEOff": true
+        },
+        "core": {
+          "overlay": false
+        },
+        "dnd5e": {
+          "riders": {
+            "statuses": []
           }
         },
-        "pGRWQXKnmKRHYGUg": {
-          "damageType": {
-            "0": "midi-none"
-          }
+        "chris-premades": {
+          "noAnimation": false,
+          "conditions": [],
+          "specialDuration": [],
+          "templateEffectActivities": [],
+          "info": {
+            "identifier": "guidanceEffect"
+          },
+          "rules": "modern"
         }
       },
+      "description": "",
+      "_id": "JdSZFEJghYAWZlpq",
+      "type": "base",
+      "system": {},
+      "origin": null,
+      "sort": 0,
+      "_key": "!items.effects!mqHe92fMZixoEZJu.JdSZFEJghYAWZlpq"
+    }
+  ],
+  "name": "Guidance",
+  "flags": {
+    "midi-qol": {
+      "removeAttackDamageButtons": "default",
+      "forceCEOff": true
+    },
+    "midiProperties": {
+      "confirmTargets": "default",
+      "magicdam": true,
+      "magiceffect": true
+    },
+    "dnd5e": {
       "riders": {
-        "activity": []
+        "activity": [
+          "pnVGDalhd1CwoU0E"
+        ]
       }
     },
     "chris-premades": {
-      "hiddenActivities": [],
+      "hiddenActivities": [
+        "selfUse"
+      ],
       "activityIdentifiers": {
-        "necrotic": "pGRWQXKnmKRHYGUg",
-        "healing": "wKzsEi6Bf37AnCq3"
+        "use": "utilityGuidanceI",
+        "selfUse": "pnVGDalhd1CwoU0E"
       },
       "info": {
-        "identifier": "infernalConduit",
-        "rules": "legacy",
+        "identifier": "guidance",
+        "rules": "modern",
         "source": "chris-premades",
-        "version": "1.3.80"
+        "version": "1.3.78"
       },
       "macros": {
         "midi": {
           "item": [
-            "infernalConduit"
+            "guidance"
           ]
-        }
+        },
+        "skill": [
+          "guidance"
+        ]
       }
     }
   },
-  "img": "icons/magic/movement/portal-vortex-orange.webp",
-  "folder": "tTEcQkFywbCp1hpj",
-  "_id": "aYNowlKMb576oKPs",
-  "_key": "!items!aYNowlKMb576oKPs"
+  "img": "icons/magic/control/buff-flight-wings-blue.webp",
+  "folder": null,
+  "_id": "mqHe92fMZixoEZJu",
+  "_key": "!items!mqHe92fMZixoEZJu"
 }

@@ -25,7 +25,8 @@ function collectActorSkillMacros(actor, pass) {
                 saveDC: effectUtils.getSaveDC(effect) ?? -1
             },
             macros: macroList,
-            name: effect.name.slugify()
+            name: effect.name.slugify(),
+            token
         });
     });
     actor.items.forEach(item => {
@@ -38,7 +39,8 @@ function collectActorSkillMacros(actor, pass) {
                 saveDC: itemUtils.getSaveDC(item)
             },
             macros: macroList,
-            name: item.name.slugify()
+            name: item.name.slugify(),
+            token
         });
     });
     if (token) {
@@ -54,7 +56,8 @@ function collectActorSkillMacros(actor, pass) {
                     saveDC: templateUtils.getSaveDC(template)
                 },
                 macros: macroList,
-                name: templateUtils.getName(template).slugify()
+                name: templateUtils.getName(template).slugify(),
+                token
             });
         });
         token.document.regions.forEach(region => {
@@ -68,7 +71,8 @@ function collectActorSkillMacros(actor, pass) {
                     saveDC: regionUtils.getSaveDC(region)
                 },
                 macros: macroList,
-                name: region.name.slugify()
+                name: region.name.slugify(),
+                token
             });
         });
     }
@@ -117,7 +121,8 @@ function getSortedTriggers(actor, pass, skillId, options, roll, config, dialog, 
                 dialog,
                 message,
                 sourceActor,
-                macroName: typeof macro.macro === 'string' ? 'Embedded' : macro.macro.name
+                macroName: typeof macro.macro === 'string' ? 'Embedded' : macro.macro.name,
+                token: trigger.token
             });
         });
     });

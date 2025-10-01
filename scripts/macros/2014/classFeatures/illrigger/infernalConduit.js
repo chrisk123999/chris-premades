@@ -21,7 +21,7 @@ async function distance({trigger, workflow}) {
 }
 export let infernalConduit = {
     name: 'Infernal Conduit',
-    version: '1.3.69',
+    version: '1.3.80',
     rules: 'legacy',
     midi: {
         item: [

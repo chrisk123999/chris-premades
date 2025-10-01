@@ -1,65 +1,26 @@
-import {combatUtils, constants, dialogUtils, effectUtils, genericUtils, workflowUtils} from '../../../utils.js';
+import {activityUtils, combatUtils, dialogUtils, itemUtils, workflowUtils} from '../../../utils.js';
 async function lateSpeed({trigger: {entity: item}, workflow}) {
-    if (workflow.hitTargets.size !== 1 || !workflow.damageRoll || !workflowUtils.isAttackType(workflow, 'attack')) return;
+    if (workflow.hitTargets.size !== 1 || !workflow.damageRolls || !workflowUtils.isAttackType(workflow, 'attack')) return;
     if (!workflowUtils.getDamageTypes(workflow.damageRolls).has('slashing')) return;
-    if (!combatUtils.perTurnCheck(item, 'slasher')) return;
-    let selection = await dialogUtils.confirm(item.name, genericUtils.format('CHRISPREMADES.Dialog.Use', {itemName: item.name}));
+    if (!itemUtils.canUse(item)) return;
+    let selection = await dialogUtils.confirmUseItem(item);
     if (!selection) return;
-    await combatUtils.setTurnCheck(item, 'slasher');
-    let effectData = {
-        name: item.name,
-        img: item.img,
-        origin: item.uuid,
-        duration: {
-            rounds: 2
-        },
-        changes: [
-            {
-                key: 'system.attributes.movement.all',
-                mode: 0,
-                value: genericUtils.convertDistance(-10),
-                priority: 20
-            }
-        ],
-        flags: {
-            dae: {
-                specialDuration: ['turnStartSource']
-            }
-        }
-    };
-    await effectUtils.createEffect(workflow.targets.first().actor, effectData);
+    let actiivty = activityUtils.getActivityByIdentifier(item, 'use', {strict: true});
+    if (!actiivty) return;
+    let inCombat = combatUtils.inCombat();
+    await workflowUtils.syntheticActivityRoll(actiivty, Array.from(workflow.targets), {consumeUsage: inCombat, consumeResources: inCombat});
 }
 async function lateCrit({trigger: {entity: item}, workflow}) {
     if (!workflow.isCritical) return;
-    if (workflow.hitTargets.size !== 1 || !workflow.damageRoll || !workflowUtils.isAttackType(workflow, 'attack')) return;
+    if (workflow.hitTargets.size !== 1 || !workflow.damageRolls || !workflowUtils.isAttackType(workflow, 'attack')) return;
     if (!workflowUtils.getDamageTypes(workflow.damageRolls).has('slashing')) return;
-    let effectData = {
-        name: item.name + ': ' + genericUtils.translate('DND5E.Critical'),
-        img: item.img,
-        origin: item.uuid,
-        duration: {
-            rounds: 2
-        },
-        changes: [
-            {
-                key: 'flags.midi-qol.disadvantage.attack.all',
-                mode: 0,
-                value: 1,
-                priority: 20
-            }
-        ],
-        flags: {
-            dae: {
-                specialDuration: ['turnStartSource']
-            }
-        }
-    };
-    await effectUtils.createEffect(workflow.targets.first().actor, effectData);
-    await item.displayCard();
+    let actiivty = activityUtils.getActivityByIdentifier(item, 'critical', {strict: true});
+    if (!actiivty) return;
+    await workflowUtils.syntheticActivityRoll(actiivty, Array.from(workflow.targets));
 }
 export let slasher = {
     name: 'Slasher',
-    version: '1.1.42',
+    version: '1.3.81',
     midi: {
         actor: [
             {
@@ -70,7 +31,7 @@ export let slasher = {
             {
                 pass: 'rollFinished',
                 macro: lateCrit,
-                priority: 50
+                priority: 55
             }
         ]
     }
