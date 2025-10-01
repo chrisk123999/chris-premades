@@ -86,6 +86,7 @@ async function getWealWoeBonus(effect, item, token, targetToken) {
 async function attack({trigger: {entity: effect, token}, workflow}) {
     let item = await effectUtils.getOriginItem(effect);
     if (!item || !itemUtils.getConfig(item, 'enablePrompt')) return;
+    if (actorUtils.hasUsedReaction(token.actor)) return;
     if (tokenUtils.getDistance(token, workflow.token) > 30) return;
     if (!tokenUtils.canSee(token, workflow.token)) return;
     let bonus = await getWealWoeBonus(effect, item, token, workflow.token);
@@ -95,6 +96,7 @@ async function attack({trigger: {entity: effect, token}, workflow}) {
 async function check({trigger: {sourceActor, roll, entity: effect}}) {
     let item = await effectUtils.getOriginItem(effect);
     if (!item || !itemUtils.getConfig(item, 'enablePrompt')) return;
+    if (actorUtils.hasUsedReaction(item.parent)) return;
     let token = actorUtils.getFirstToken(sourceActor);
     let druidToken = actorUtils.getFirstToken(item.parent);
     if (!token || !druidToken) return;
