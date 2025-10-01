@@ -188,11 +188,11 @@ const spellSchoolOptions = () => Object.entries(CONFIG.DND5E.spellSchools).map(i
 const baseWeaponOptions = () => Object.entries(CONFIG.DND5E.weaponIds).map(i => {
     let itemData = fromUuidSync(i[1]);
     return {
-        label: itemData.name,
+        label: itemData?.name ?? 'Unknown',
         value: i[0]
     };
 });
-const baseMeleeWeaponOptions = () => Object.entries(CONFIG.DND5E.weaponIds).map(i => ({key: i[0], data: fromUuidSync(i[1])})).filter(i => ['simpleM', 'martialM'].includes(i.data.system.type.value)).map(i => ({label: i.data.name, value: i.key}));
+const baseMeleeWeaponOptions = () => Object.entries(CONFIG.DND5E.weaponIds).map(i => ({key: i[0], data: fromUuidSync(i[1])})).filter(i => i.data.system?.type?.value).filter(i => ['simpleM', 'martialM'].includes(i.data.system.type.value)).map(i => ({label: i.data.name, value: i.key}));
 const overTimeOptions = [
     {
         key: 'turn',
