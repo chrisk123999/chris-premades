@@ -662,6 +662,7 @@
             "Submit": "Submit",
             "Success": "Success",
             "Summon": "Summon",
+            "Target": "Select Target",
             "Total": "Total",
             "TurnEnd": "Turn End",
             "TurnStart": "Turn Start",
@@ -1162,7 +1163,7 @@
                 "WakenedBreath": "Dragon's Wrath: Wakened Breath"
             },
             "DreadAmbusher": {
-                "Use": "Use {name}?"
+                "Use": "Use {item}?"
             },
             "DreadLord": {
                 "ShadowAttack": "Dread Lord: Shadow Attack",
@@ -1940,6 +1941,9 @@
             },
             "ShadowStep": {
                 "Name": "Shadow Step"
+            },
+            "ShadowyDodge": {
+                "Use": "Use {item}?"
             },
             "ShareSpells": {
                 "Confirm": "Share {spell} with {name}?"

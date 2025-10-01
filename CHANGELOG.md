@@ -3,6 +3,7 @@
 - Dread Ambusher
 - Umbral Sight
 - Stalker's Fury
+- Shadowy Dodge
 ## Bug Fixes:
 - Share Spells
 

@@ -1,0 +1,66 @@
+{
+  "folder": "A4Ha88zT5hRgm5WM",
+  "name": "Shadowy Dodge",
+  "type": "feat",
+  "_id": "7roEy1BFZ8x9oQsW",
+  "img": "icons/magic/unholy/projectile-fireball-agile-purple.webp",
+  "system": {
+    "activities": {},
+    "uses": {
+      "spent": 0,
+      "recovery": [],
+      "max": ""
+    },
+    "advancement": [],
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "identifier": "shadowy-dodge",
+    "source": {
+      "revision": 1,
+      "rules": "2024",
+      "book": "",
+      "page": "",
+      "custom": "PHB 2024",
+      "license": ""
+    },
+    "crewed": false,
+    "enchant": {},
+    "prerequisites": {
+      "items": [],
+      "repeatable": false,
+      "level": null
+    },
+    "properties": [],
+    "requirements": "",
+    "type": {
+      "value": "",
+      "subtype": ""
+    }
+  },
+  "effects": [],
+  "flags": {
+    "dnd5e": {
+      "riders": {
+        "activity": []
+      }
+    },
+    "chris-premades": {
+      "info": {
+        "identifier": "shadowyDodge",
+        "version": "1.3.81",
+        "source": "chris-premades",
+        "rules": "modern"
+      },
+      "macros": {
+        "midi": {
+          "actor": [
+            "shadowyDodge"
+          ]
+        }
+      }
+    }
+  },
+  "_key": "!items!7roEy1BFZ8x9oQsW"
+}

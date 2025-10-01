@@ -9,7 +9,7 @@ async function damage({trigger: {entity: item}, workflow}) {
     if (workflow.hitTargets.size !== 1) return;
     if (!workflowUtils.isAttackType(workflow, 'attack')) return;
     if (!combatUtils.perTurnCheck(item, 'dreadAmbusher', false, workflow.token.id)) return;
-    let selection = await dialogUtils.confirm(item.name, genericUtils.format('CHRISPREMADES.Macros.DreadAmbusher.Use', {name: item.name}));
+    let selection = await dialogUtils.confirm(item.name, genericUtils.format('CHRISPREMADES.Macros.DreadAmbusher.Use', {item: item.name}));
     if (!selection) return;
     genericUtils.update(item, {'system.uses.spent': item.system.uses.spent + 1})
     let stalkersFlurry = itemUtils.getItemByIdentifier(workflow.actor, 'stalkersFlurry');
@@ -40,7 +40,7 @@ async function late({workflow}) {
         let targetNearbyAllies = tokenUtils.findNearby(target, 5, 'ally');
         let nearbyTargets = tokenUtils.findNearby(workflow.token, workflow.rangeDetails.range, 'enemy').filter(i => i != target && targetNearbyAllies.includes(i));
         if (!nearbyTargets.length) return;
-        let selection = await dialogUtils.selectTargetDialog('CHRISPREMADES.Macros.StalkersFlurry.SuddenStrike', 'CHRISPREMADES.Combat.Target.Title', nearbyTargets, {skipDeadAndUnconscious: false, buttons: 'yesNo'});
+        let selection = await dialogUtils.selectTargetDialog('CHRISPREMADES.Macros.StalkersFlurry.SuddenStrike', 'CHRISPREMADES.Generic.Target', nearbyTargets, {skipDeadAndUnconscious: false, buttons: 'yesNo'});
         if (!selection?.length) return;
         selection = selection[0];
         await workflowUtils.syntheticItemRoll(workflow.item, [selection]);
