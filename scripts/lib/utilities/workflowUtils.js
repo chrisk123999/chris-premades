@@ -59,7 +59,7 @@ async function completeItemUse(item, config = {}, options = {}) {
     }
     return workflow;
 }
-async function syntheticActivityRoll(activity, targets = [], {options = {}, config = {}, atLevel = undefined, consumeUsage = false, consumeResources = false} = {}) {
+async function syntheticActivityRoll(activity, targets = [], {options = {}, config = {}, atLevel = undefined, consumeUsage = false, consumeResources = false, dialog = {}, message = {}} = {}) {
     let defaultConfig = {
         consumeUsage,
         consumeSpellSlot: false,
@@ -86,7 +86,7 @@ async function syntheticActivityRoll(activity, targets = [], {options = {}, conf
     options = genericUtils.mergeObject(defaultOptions, options);
     config = genericUtils.mergeObject(defaultConfig, config);
     config.midiOptions = options;
-    return await completeActivityUse(activity, config);
+    return await completeActivityUse(activity, config, dialog, message);
 }
 async function syntheticItemRoll(item, targets, {options = {}, config = {}, userId, consumeUsage = false, consumeResources = false} = {}) {
     let defaultConfig = {

@@ -80,8 +80,8 @@ export function registerHooks() {
     // Effect events, conditional hiding, auto-token-image stuff
     Hooks.on('preCreateActiveEffect', effectEvents.preCreateActiveEffect);
     Hooks.on('preUpdateActiveEffect', effectEvents.preUpdateActiveEffect);
-    Hooks.on('preCreateActiveEffect', effects.unhideActivities);
-    Hooks.on('preDeleteActiveEffect', effects.rehideActivities);
+    Hooks.on('createActiveEffect', effects.unhideActivities);
+    Hooks.on('deleteActiveEffect', effects.rehideActivities);
     Hooks.on('preCreateActiveEffect', effects.preImageCreate);
     Hooks.on('createActiveEffect', effects.imageCreate);
     Hooks.on('deleteActiveEffect', effects.imageRemove);

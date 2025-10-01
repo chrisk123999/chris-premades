@@ -1,3 +1,28 @@
+# 1.3.83 Release:
+## New Modern Content:
+- Archdruid
+- Aquatic Affinity
+- Beast Spells
+- Circle of the Land Spells
+- Cosmic Omen
+- Elemental Fury: Potent Spellcasting
+- Elemental Fury: Primal Strike
+- Full of Stars
+- Improved Circle Forms
+- Land's Aid
+- Lunar Form
+- Moonlight Step
+- Nature's Sanctuary
+- Nature's Ward
+- Oceanic Gift
+- Starry Form
+- Stormborn
+- Twinkling Constellations
+- Wild Companion
+- Wild Resurgence
+- Wild Shape
+- Wrath of the Sea
+
 # 1.3.82 Release:
 ## Bug Fixes:
 - Combat Mastery: Lies

@@ -47,7 +47,8 @@ let modernPacks = {
     summons: 'chris-premades.CPRSummons2024',
     featFeatures: 'chris-premades.CPRFeatFeatures2024',
     feats: 'chris-premades.CPRFeats2024',
-    actions: 'chris-premades.CPRActions2024'
+    actions: 'chris-premades.CPRActions2024',
+    featureItems: 'chris-premades.CPRFeatureItems2024'
 };
 function setUseLocalCompendium(value) {
     if (value) {
@@ -82,6 +83,7 @@ function setUseLocalCompendium(value) {
         modernPacks.feats = 'world.cpr-feat-feats-2024';
         packs.embeddedMacroSampleItems = 'world.cpr-embedded-macro-sample-items';
         modernPacks.actions = 'world.cpr-actions-2024';
+        modernPacks.featureItems = 'world.cpr-feature-items-2024';
     } else {
         packs.spellFeatures = 'chris-premades.CPRSpellFeatures';
         featurePacks.spellFeatures = 'chris-premades.CPRSpellFeatures';
@@ -114,6 +116,7 @@ function setUseLocalCompendium(value) {
         modernPacks.feats = 'chris-premades.cpr-feat-feats-2024';
         packs.embeddedMacroSampleItems = 'chris-premades.CPREmbeddedMacroSampleItems';
         modernPacks.actions = 'chris-premades.CPRActions2024';
+        modernPacks.featureItems = 'chris-premades.CPRFeatureItems2024';
     }
 }
 const attacks = [
