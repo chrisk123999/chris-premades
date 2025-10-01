@@ -1,3 +1,9 @@
+# 1.3.81 Release:
+## New Modern Content:
+- Dread Ambusher
+## Bug Fixes:
+- Share Spells
+
 # 1.3.80 Release:
 ## Bug Fixes:
 - Infernal Conduit

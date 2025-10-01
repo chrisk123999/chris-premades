@@ -1161,6 +1161,9 @@
                 "Burst": "Dragon's Wrath: Critical Burst",
                 "WakenedBreath": "Dragon's Wrath: Wakened Breath"
             },
+            "DreadAmbusher": {
+                "Use": "Use {name}?"
+            },
             "DreadLord": {
                 "ShadowAttack": "Dread Lord: Shadow Attack",
                 "ShadowAura": "Dread Lord's Shadow",
