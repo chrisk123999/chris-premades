@@ -1,6 +1,6 @@
 import {activityUtils, dialogUtils, genericUtils, itemUtils, workflowUtils} from '../../../../../utils.js';
 async function use({workflow}) {
-    let friendlyTargets = workflow.cprFriendlyTargets;
+    let friendlyTargets = workflow['chris-premades']?.friendlyTargets;
     if (!friendlyTargets?.size) return;
     let selection;
     if (friendlyTargets.size === 1) {
@@ -17,7 +17,8 @@ async function use({workflow}) {
 async function early({workflow}) {
     let friendlyTargets = workflow.targets.filter(i => i.document.disposition === workflow.token.document.disposition);
     workflow.targets = workflow.targets.filter(i => !friendlyTargets.has(i));
-    workflow.cprFriendlyTargets = friendlyTargets;
+    workflow['chris-premades'] ??= {};
+    workflow['chris-premades'].friendlyTargets = friendlyTargets;
     genericUtils.updateTargets(workflow.targets);
 }
 async function added({trigger: {entity: item}}) {
