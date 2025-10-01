@@ -2,7 +2,7 @@
 ## New Modern Content:
 - Dread Ambusher
 - Umbral Sight
-- Stalker's Fury
+- Stalker's Flurry
 - Shadowy Dodge
 ## Bug Fixes:
 - Share Spells
