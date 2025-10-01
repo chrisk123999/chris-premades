@@ -27,7 +27,7 @@ export let combatMasteryLies = {
             type: 'select',
             default: 'battleaxe',
             category: 'mechanics',
-            options: constants.baseMeleeWeaponOptions
+            options: constants.getBaseMeleeWeaponOptions
         }
     ]
 };

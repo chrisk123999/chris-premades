@@ -1,3 +1,7 @@
+# 1.3.82 Release:
+## Bug Fixes:
+- Combat Mastery: Lies
+
 # 1.3.81 Release:
 ## New Modern Content:
 - Dread Ambusher
