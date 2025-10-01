@@ -6,6 +6,7 @@
 - Shadowy Dodge
 ## Bug Fixes:
 - Share Spells
+- Lies
 
 # 1.3.80 Release:
 ## Bug Fixes:

@@ -191,7 +191,6 @@ async function selectDocumentDialog(title, content, documents, {displayTooltips 
     } else {
         result = await DialogApp.dialog(title, content, inputs, undefined);
     }
-    console.log(result);
     if (result?.buttons) return documents.find(i => i.id === result.buttons);
     return false;
 }

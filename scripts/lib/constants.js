@@ -185,6 +185,14 @@ const teleportOptions = () => Object.entries(teleportEffects).map(i => ({label: 
 const itemProperties = () => Object.entries(CONFIG.DND5E.itemProperties).map(i => ({label: i[1].label, value: i[0]}));
 const armorOptions = () => Object.entries(CONFIG.DND5E.armorTypes).map(i => ({label: i[1], value: i[0]}));
 const spellSchoolOptions = () => Object.entries(CONFIG.DND5E.spellSchools).map(i => ({label: i[1].label, value: i[0]}));
+const baseWeaponOptions = () => Object.entries(CONFIG.DND5E.weaponIds).map(i => {
+    let itemData = fromUuidSync(i[1]);
+    return {
+        label: itemData.name,
+        value: i[0]
+    };
+});
+const baseMeleeWeaponOptions = () => Object.entries(CONFIG.DND5E.weaponIds).map(i => ({key: i[0], data: fromUuidSync(i[1])})).filter(i => ['simpleM', 'martialM'].includes(i.data.system.type.value)).map(i => ({label: i.data.name, value: i.key}));
 const overTimeOptions = [
     {
         key: 'turn',
@@ -651,5 +659,7 @@ export let constants = {
     disadvantageEffectData,
     languageOptions,
     rangedWeaponAttacks,
-    meleeWeaponAttacks
+    meleeWeaponAttacks,
+    baseWeaponOptions,
+    baseMeleeWeaponOptions
 };

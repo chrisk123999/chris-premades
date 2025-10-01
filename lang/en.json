@@ -240,6 +240,7 @@
             "TurnTrigger": "Turn Trigger:",
             "UseFormula": "Use Formula:",
             "WeaponProperties": "Weapon Properties:",
+            "WeaponType": "Weapon Type",
             "cameraZoom": "Camera Zoom:"
         },
         "Cover": {
@@ -1161,9 +1162,6 @@
                 "AscendantBreath": "Dragon's Wrath: Ascendant Breath",
                 "Burst": "Dragon's Wrath: Critical Burst",
                 "WakenedBreath": "Dragon's Wrath: Wakened Breath"
-            },
-            "DreadAmbusher": {
-                "Use": "Use {item}?"
             },
             "DreadLord": {
                 "ShadowAttack": "Dread Lord: Shadow Attack",
