@@ -1,25 +1,25 @@
 # 1.3.84 Release:
 ## Bug Fixes:
 - Arcane Jolt (Legacy)
+- Archery
 - Bardic Inspiration
 - Cosmic Omen
 - Cutting Words
 - Disintegrate
 - Disintegrate (Legacy)
 - Dreadful Strikes (Legacy)
+- Dueling
+- Elemental Adept (Legacy)
+- Healer
+- Infectious Fury (Legacy)
+- Insignia of Claws (Legacy)
 - Interception
 - Mantle of Inspiration
 - Peerless Skill
 - Psionic Energy (Legacy)
+- Remarkable Recovery (Legacy)
 - Tandem Footwork
 - Warrior of the Gods
-- Infectious Fury (Legacy)
-- Elemental Adept (Legacy)
-- Remarkable Recovery (Legacy)
-- Insignia of Claws (Legacy)
-- Archery
-- Dueling
-- Healer
 
 # 1.3.83 Release:
 ## New Modern Content:
