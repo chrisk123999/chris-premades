@@ -41,6 +41,7 @@ function isSpellFeature(item) {
 }
 function getConfig(item, key) {
     if (key === 'playAnimation' && (!genericUtils.getCPRSetting('enableAnimations') || !animationUtils.sequencerCheck())) return false;
+    if (key === 'animation'     && (!genericUtils.getCPRSetting('enableAnimations') || !animationUtils.sequencerCheck())) return 'none';
     let flagValue = item.flags['chris-premades']?.config?.[key];
     if (flagValue !== undefined) return flagValue;
     let identifier = genericUtils.getIdentifier(item);
