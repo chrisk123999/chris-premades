@@ -1,6 +1,7 @@
 # 1.3.84 Release:
 ## Bug Fixes:
 - Cosmic Omen
+- Interception
 
 # 1.3.83 Release:
 ## New Modern Content:
