@@ -4,8 +4,8 @@ async function added({trigger: {entity: item}}) {
     let scaleIdentifier = itemUtils.getConfig(item, 'scaleIdentifier');
     if (item.actor.system.scale[subclassIdentifier]?.[scaleIdentifier]) return;
     if (item.actor.system.scale[subclassIdentifier]?.['pool']) {
-        await itemUtils.setConfig(item, 'subclassIdentifier', 'pool');
-        await genericUtils.update(item, 'system.uses.max', '@scale.' + subclassIdentifier + '.' + scaleIdentifier + '.number');
+        await itemUtils.setConfig(item, 'scaleIdentifier', 'pool');
+        await genericUtils.update(item, 'system.uses.max', '@scale.' + subclassIdentifier + '.pool.number');
         return;
     }
     await itemUtils.fixScales(item);

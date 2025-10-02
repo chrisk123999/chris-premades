@@ -38,7 +38,7 @@ async function added({trigger: {entity: item}}) {
     let scaleIdentifier = itemUtils.getConfig(item, 'scaleIdentifier');
     if (item.actor.system.scale[subclassIdentifier]?.[scaleIdentifier]) return;
     if (item.actor.system.scale[subclassIdentifier]?.['jolt']) {
-        await itemUtils.setConfig(item, 'subclassIdentifier', 'jolt');
+        await itemUtils.setConfig(item, 'scaleIdentifier', 'jolt');
         return;
     }
     await itemUtils.fixScales(item);

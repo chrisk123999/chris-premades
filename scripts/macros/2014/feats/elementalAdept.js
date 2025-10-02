@@ -2,7 +2,7 @@ import {actorUtils, constants, effectUtils, genericUtils, itemUtils, rollUtils} 
 async function damage({trigger: {entity: item}, workflow}) {
     if (!workflow.damageRolls || !workflow.actor || !workflow.item) return;
     if (itemUtils.getConfig(item, 'spellOnly')) {
-        if (!(workflow.item.type === 'spell' || workflow.item.system.type.value === 'spellFeature')) return;
+        if (!(workflow.item.type === 'spell' || workflow.item.system.type?.value === 'spellFeature')) return;
     }
     let validTypes = itemUtils.getConfig(item, 'damageTypes');
     let damageRolls = await Promise.all(workflow.damageRolls.map(async roll => {

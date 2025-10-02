@@ -1,6 +1,6 @@
 import {itemUtils, workflowUtils} from '../../../utils.js';
 async function heal({trigger: {entity: item}, workflow}) {
-    if (!(workflow.item.type === 'spell' || itemUtils.isSpellFeature(workflow.item) || workflow.item.system.type.value === 'potion' || workflow.item.system.type.value === 'class')) return;
+    if (!(workflow.item.type === 'spell' || itemUtils.isSpellFeature(workflow.item) || ['potion', 'class'].includes(workflow.item.system.type?.value))) return;
     let damageTypes = workflowUtils.getDamageTypes(workflow.damageRolls);
     if (!damageTypes.has('healing')) return;
     await workflowUtils.completeItemUse(item);

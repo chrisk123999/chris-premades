@@ -3,7 +3,7 @@ import {activityUtils, actorUtils, dialogUtils, effectUtils, genericUtils, itemU
 async function attack({trigger: {entity: item}, workflow}) {
     if (workflow.hitTargets.size !== 1) return;
     if (!item?.system.uses.value) return;
-    let isNatural = workflow.item.system.type.value === 'natural';
+    let isNatural = workflow.item.system.type?.value === 'natural';
     isNatural ||= activityUtils.getIdentifier(workflow.activity)?.includes('formOfTheBeast');
     if (!isNatural) return;
     let selection = await dialogUtils.confirm(item.name, genericUtils.format('CHRISPREMADES.Dialog.Use', {itemName: item.name}));

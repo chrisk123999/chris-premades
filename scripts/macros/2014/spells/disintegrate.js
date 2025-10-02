@@ -522,7 +522,7 @@ async function use({workflow}) {
 }
 export let disintegrate ={
     name: 'Disintegrate',
-    version: '1.1.10',
+    version: '1.3.84',
     hasAnimation: true,
     midi: {
         item: [

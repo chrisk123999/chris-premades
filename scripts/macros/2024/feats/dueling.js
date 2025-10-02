@@ -1,6 +1,6 @@
 import {constants, genericUtils, itemUtils, workflowUtils} from '../../../utils.js';
 async function damage({trigger: {entity: item}, workflow}) {
-    if (!workflow.hitTargets.size || workflow.attackMode === 'twoHanded' || !constants.meleeWeaponTypes.includes(workflow.item.system.type.value)) return;
+    if (!workflow.hitTargets.size || workflow.attackMode === 'twoHanded' || !constants.meleeWeaponTypes.includes(workflow.item.system.type?.value)) return;
     let actor = workflow.actor;
     let items = actor.items.filter(i => i.system.equipped && i.type === 'weapon' && !constants.unarmedAttacks.includes(genericUtils.getIdentifier(i)));
     if (items.length > 1) return;

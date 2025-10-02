@@ -4,8 +4,8 @@ async function added({trigger: {entity: item}}) {
     let scaleIdentifier = itemUtils.getConfig(item, 'scaleIdentifier');
     if (item.actor.system.scale[subclassIdentifier]?.[scaleIdentifier]) return;
     if (item.actor.system.scale[subclassIdentifier]?.['die']) {
-        await itemUtils.setConfig(item, 'subclassIdentifier', 'die');
-        await genericUtils.update(item, 'system.activities.dnd5eactivity000.damage.parts.0.custom.formula', '@scale.soulknife.' + scaleIdentifier);
+        await itemUtils.setConfig(item, 'scaleIdentifier', 'die');
+        await genericUtils.update(item, 'system.activities.dnd5eactivity000.damage.parts.0.custom.formula', '@scale.' + subclassIdentifier + '.die');
         return;
     }
     await itemUtils.fixScales(item);

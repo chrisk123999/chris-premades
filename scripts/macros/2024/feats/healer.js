@@ -26,7 +26,7 @@ async function early({workflow}) {
 async function healing({trigger: {entity: item}, workflow}) {
     if (workflow.activity.type !== 'heal') return;
     if (itemUtils.getConfig(item, 'spellOnly')) {
-        if (!(workflow.item.type === 'spell' || workflow.item.system.type.value === 'spellFeature' || activityUtils.getIdentifier(workflow.activity) === 'healerHeal')) return;
+        if (!(workflow.item.type === 'spell' || workflow.item.system.type?.value === 'spellFeature' || activityUtils.getIdentifier(workflow.activity) === 'healerHeal')) return;
     }
     else {
         if (activityUtils.getIdentifier(workflow.item) !== 'healer') return;
