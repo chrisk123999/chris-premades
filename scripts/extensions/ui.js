@@ -1,9 +1,9 @@
 import {genericUtils} from '../utils.js';
 function configureUI() {
     let customUIButtonScale = genericUtils.getCPRSetting('customUIButtonScale');
-    if (customUIButtonScale && customUIButtonScale != 1 && customUIButtonScale != null) setBodyProperty('--custom-ui-button-scale', customUIButtonScale);
+    setBodyProperty('--custom-ui-button-scale', customUIButtonScale);
     let customUINavigationScale = genericUtils.getCPRSetting('customUINavigationScale');
-    if (customUINavigationScale && customUINavigationScale != 1 && customUINavigationScale != null) setBodyProperty('--custom-ui-navigation-scale', customUINavigationScale);
+    setBodyProperty('--custom-ui-navigation-scale', customUINavigationScale);
     if (genericUtils.getCPRSetting('customSidebar')) customSidebar(true);
     if (genericUtils.getCPRSetting('customChatMessage')) customChatMessage(true);
 }
