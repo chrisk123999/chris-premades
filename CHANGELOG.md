@@ -30,8 +30,8 @@
 - Warrior of the Gods
 - Wrath of the Sea
 ## Update Notes:
-- Modified `tokenUtils.getNewlyHitTokens` to `tokenUtils.getMovementHitTokens`, adding an option to specify whether to include tokens that were already in range of the moving token
-- Updated existing Illrigger features to be compatible with MCDM Class Bundle's naming
+- Modified `tokenUtils.getNewlyHitTokens` to `tokenUtils.getMovementHitTokens`, adding an option to specify whether to include tokens that were already in range of the moving token.
+- Updated existing Illrigger features to be compatible with MCDM Class Bundle's naming.
 
 # 1.3.83 Release:
 ## New Modern Content:
