@@ -1043,6 +1043,9 @@
                 "Source": "Compelled Duel: Source",
                 "Target": "Compelled Duel: Target"
             },
+            "ConjureAnimals": {
+                "Save": "Conjure Animals: Save"
+            },
             "ContextualBonus": {
                 "Advantage": "Gives advantage:",
                 "Bonus": "If not advantage, what bonus:",
@@ -3266,6 +3269,7 @@
                 "FeySpiritFuming": "Fey Spirit (Fuming)",
                 "FeySpiritMirthful": "Fey Spirit (Mirthful)",
                 "FeySpiritTricksy": "Fey Spirit (Tricksy)",
+                "FeywildSpirit": "Feywild Spirit",
                 "FiendishSpirit": "Fiendish Spirit",
                 "FiendishSpiritDemon": "Fiendish Spirit (Demon)",
                 "FiendishSpiritDevil": "Fiendish Spirit (Devil)",
@@ -3290,6 +3294,7 @@
                 "ShadowSpiritFury": "Shadow Spirit (Fury)",
                 "Shifter": "Shifter",
                 "Skeleton": "Skeleton",
+                "SpectralAnimals": "Spectral Animals",
                 "SpiritualWeapon": "Spiritual Weapon",
                 "Steed": "Steed",
                 "SteelDefender": "Steel Defender",

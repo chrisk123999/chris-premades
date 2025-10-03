@@ -1,3 +1,35 @@
+# 1.3.84 Release:
+## New Modern Content:
+- Conjure Animals
+- Conjure Celestial
+- Conjure Fey
+- Conjure Minor Elementals
+- Conjure Woodland Beings
+## Bug Fixes:
+- Arcane Jolt (Legacy)
+- Archery
+- Bardic Inspiration
+- Cosmic Omen
+- Cutting Words
+- Disintegrate
+- Disintegrate (Legacy)
+- Dreadful Strikes (Legacy)
+- Dueling
+- Elemental Adept (Legacy)
+- Healer
+- Infectious Fury (Legacy)
+- Insignia of Claws (Legacy)
+- Interception
+- Mantle of Inspiration
+- Moonbeam
+- Peerless Skill
+- Psionic Energy (Legacy)
+- Remarkable Recovery (Legacy)
+- Tandem Footwork
+- Warrior of the Gods
+## Update Notes:
+- Modified `tokenUtils.getNewlyHitTokens` to `tokenUtils.getMovementHitTokens`, adding an option to specify whether to include tokens that were already in range of the moving token
+
 # 1.3.83 Release:
 ## New Modern Content:
 - Archdruid

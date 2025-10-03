@@ -73,7 +73,7 @@ async function added({trigger: {entity: item}}) {
     let scaleIdentifier = itemUtils.getConfig(item, 'scaleIdentifier');
     if (item.actor.system.scale[classIdentifier]?.[scaleIdentifier]) return;
     if (item.actor.system.scale[classIdentifier]?.['inspiration']) {
-        await itemUtils.setConfig(item, 'classIdentifier', 'inspiration');
+        await itemUtils.setConfig(item, 'scaleIdentifier', 'inspiration');
         return;
     }
     await itemUtils.fixScales(item);

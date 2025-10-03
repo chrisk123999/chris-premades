@@ -3,7 +3,7 @@ import {constants, genericUtils, itemUtils} from '../../../../utils.js';
 async function early({trigger: {entity: item}, workflow}) {
     if (!itemUtils.getEquipmentState(item)) return;
     let isUnarmed = constants.unarmedAttacks.includes(genericUtils.getIdentifier(workflow.item));
-    let isNatural = workflow.item.system.type.value === 'natural';
+    let isNatural = workflow.item.system.type?.value === 'natural';
     if (!isUnarmed && !isNatural) return;
     let existingBonus = workflow.item.system.magicalBonus ?? 0;
     if (workflow.item.type === 'weapon') {

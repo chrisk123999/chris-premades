@@ -1,5 +1,5 @@
 import {crosshairUtils} from '../../../lib/utilities/crosshairUtils.js';
-import {activityUtils, combatUtils, effectUtils, genericUtils, itemUtils, templateUtils, workflowUtils} from '../../../utils.js';
+import {activityUtils, combatUtils, effectUtils, genericUtils, itemUtils, templateUtils, tokenUtils, workflowUtils} from '../../../utils.js';
 async function use({workflow}) {
     let concentrationEffect = effectUtils.getConcentrationEffect(workflow.actor, workflow.item);
     let template = workflow.template;
@@ -65,17 +65,18 @@ async function move({trigger: {castData}, workflow}) {
     let position = await crosshairUtils.aimCrosshair({token: workflow.token, maxRange: genericUtils.convertDistance(60), centerpoint: template.object.center, crosshairsConfig: {icon: effect.img, resolution: 2, size: template.distance}, drawBoundries: true});
     await workflow.actor.sheet.maximize();
     if (position.cancelled) return;
-    await genericUtils.update(template, {
-        x: position.x ?? template.x,
-        y: position.y ?? template.y
-    });
-    let targets = templateUtils.getTokensInTemplate(template);
+    let startPoint = {x: template.y, y: template.y};
+    let endPoint = {x: position.x ?? template.x, y: position.y ?? template.y};
+    await genericUtils.update(template, endPoint);
+    let targets = tokenUtils.getMovementHitTokens(startPoint, endPoint, template.distance);
     for (const target of targets) {
-        if (!combatUtils.perTurnCheck(target.document, 'moonbeam')) {
+        let [targetCombatant] = game.combat.getCombatantsByToken(target.document);
+        if (!targetCombatant) continue;
+        if (!combatUtils.perTurnCheck(targetCombatant, 'moonbeam')) {
             targets.delete(target);
             continue;
         }
-        combatUtils.setTurnCheck(target.document, 'moonbeam');
+        combatUtils.setTurnCheck(targetCombatant, 'moonbeam');
     }
     if (targets.size == 0) return;
     let damageFeature = activityUtils.getActivityByIdentifier(fromUuidSync(template.flags.dnd5e.item), 'moonbeamDamage', {strict: true});

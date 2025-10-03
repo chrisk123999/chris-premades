@@ -148,7 +148,7 @@ function getLightLevel(token) {
     if (!lights.length) return 'dark';
     let inBright = lights.some(light => {
         let {data: {x, y}, ratio} = light;
-        let bright = ClockwiseSweepPolygon.create({'x': x, 'y': y}, {
+        let bright = foundry.canvas.geometry.ClockwiseSweepPolygon.create({'x': x, 'y': y}, {
             type: 'light',
             boundaryShapes: [new PIXI.Circle(x, y, ratio * light.shape.config.radius)]
         });
@@ -327,7 +327,7 @@ async function grappleHelper(sourceToken, targetToken, item, {noContest = false,
     if (grappledEffect) await effectUtils.addDependent(grappledEffect, [targetEffect]);
     if (game.modules.get('Rideable')?.active) game.Rideable.Mount([targetToken.document], sourceToken.document, {'Grappled': true, 'MountingEffectsOverride': ['Grappled']});
 }
-function getNewlyHitTokens(startPoint, endPoint, radius, collisionType='move') {
+function getMovementHitTokens(startPoint, endPoint, radius, {collisionType='move', includeAlreadyHit=false}={}) {
     function getIntersection(ray, intersectShape) {
         let ptsLength = intersectShape.points.length;
         for (let i = 0; i < ptsLength - 1; i+=2) {
@@ -352,15 +352,16 @@ function getNewlyHitTokens(startPoint, endPoint, radius, collisionType='move') {
         let p3 = {x: p2.x + rayMovement.dx, y: p2.y + rayMovement.dy};
         let p4 = {x: p1.x + rayMovement.dx, y: p1.y + rayMovement.dy};
         let shapeMid = new PIXI.Polygon(p1, p2, p3, p4);
-        let setStart = templateUtils.getTokensInShape(shape, canvas.scene, startPoint).filter(i => !ClockwiseSweepPolygon.testCollision(startPoint, i.center, {type: collisionType}).length);
+        let setStart = templateUtils.getTokensInShape(shape, canvas.scene, startPoint).filter(i => !foundry.canvas.geometry.ClockwiseSweepPolygon.testCollision(startPoint, i.center, {type: collisionType}).length);
         let setMid = templateUtils.getTokensInShape(shapeMid, canvas.scene, startPoint);
         setMid = setMid.filter(token => {
             let tri = new PIXI.Polygon(startPoint, endPoint, token.center);
-            let csp = ClockwiseSweepPolygon.create(token.center, {type: collisionType, boundaryShapes: [tri]});
+            let csp = foundry.canvas.geometry.ClockwiseSweepPolygon.create(token.center, {type: collisionType, boundaryShapes: [tri]});
             return getIntersection(new foundry.canvas.geometry.Ray(startPoint, endPoint), csp);
         });
-        let setEnd = templateUtils.getTokensInShape(shape, canvas.scene, endPoint).filter(i => !ClockwiseSweepPolygon.testCollision(endPoint, i.center, {type: collisionType}).length);
-        let setCombined = setEnd.union(setMid).difference(setStart);
+        let setEnd = templateUtils.getTokensInShape(shape, canvas.scene, endPoint).filter(i => !foundry.canvas.geometry.ClockwiseSweepPolygon.testCollision(endPoint, i.center, {type: collisionType}).length);
+        let setCombined = setEnd.union(setMid);
+        if (!includeAlreadyHit) setCombined = setCombined.difference(setStart);
         return setCombined;
     }
     let tokens = getAffectedTokens(startPoint, endPoint, radius);
@@ -420,6 +421,6 @@ export let tokenUtils = {
     attachToToken,
     getLightLevel,
     grappleHelper,
-    getNewlyHitTokens,
+    getMovementHitTokens,
     getLinearDistanceMoved
 };

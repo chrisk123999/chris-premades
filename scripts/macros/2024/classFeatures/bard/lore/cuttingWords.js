@@ -81,8 +81,8 @@ async function added({trigger: {entity: item}}) {
     let scaleIdentifier = itemUtils.getConfig(item, 'scaleIdentifier');
     if (item.actor.system.scale[classIdentifier]?.[scaleIdentifier]) return;
     if (item.actor.system.scale[classIdentifier]?.['inspiration']) {
-        await itemUtils.setConfig(item, 'classIdentifier', 'inspiration');
-        await genericUtils.update(item, 'system.activities.healManOfInclass.healing.bonus', 'scale.' + classIdentifier + '.' + scaleIdentifier + '.die');
+        await itemUtils.setConfig(item, 'scaleIdentifier', 'inspiration');
+        await genericUtils.update(item, 'system.activities.healManOfInclass.healing.bonus', 'scale.' + classIdentifier + '.inspiration.die');
     }
     await itemUtils.fixScales(item);
 }

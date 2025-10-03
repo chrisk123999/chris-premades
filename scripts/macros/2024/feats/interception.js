@@ -4,7 +4,7 @@ async function interceptionHelper(token, targetToken, ditem) {
     if (actorUtils.hasUsedReaction(actor)) return;
     let interception = itemUtils.getItemByIdentifier(actor, 'interception');
     if (!interception) return;
-    let items = actor.items.filter(i => i.system.equipped && ((i.type === 'weapon' && !constants.unarmedAttacks.includes(genericUtils.getIdentifier(i)) || i.system.type.value === 'shield')));
+    let items = actor.items.filter(i => i.system.equipped && ((i.type === 'weapon' && !constants.unarmedAttacks.includes(genericUtils.getIdentifier(i)) || i.system.type?.value === 'shield')));
     if (!items.length) return;
     let selection = await dialogUtils.confirm(interception.name, genericUtils.format('CHRISPREMADES.Macros.SpiritShield.Damage', {item: interception.name, name: targetToken.document.name}), {userId: socketUtils.firstOwner(actor, true)});
     if (!selection) return;

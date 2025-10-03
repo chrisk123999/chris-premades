@@ -87,7 +87,7 @@ async function moved({trigger: {token, entity: effect}, options}) {
     startPoint.y += offset;
     let endPoint = {x: token.center.x, y: token.center.y};
     let radius = 15 + token.document.width * canvas.grid.distance;
-    let affectedTokens = Array.from(tokenUtils.getNewlyHitTokens(startPoint, endPoint, radius));
+    let affectedTokens = Array.from(tokenUtils.getMovementHitTokens(startPoint, endPoint, radius));
     await damageHelper(affectedTokens, effect, token);
 }
 async function damageHelper(affectedTokens, effect, token) {

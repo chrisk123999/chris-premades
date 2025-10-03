@@ -9,26 +9,28 @@ export class Teleport {
         this.options = options;
         this.updates = options?.updates ?? {};
     }
-    static async group(tokens, controllingToken, options = {animation: 'none', isSynchronous: true, crosshairsConfig: {}, callbacks: {}, range: 100, updates: {}, minimizeSheet: true}) {
+    static async group(tokens, controllingToken, options = {animation: 'none', isSynchronous: true, crosshairsConfig: {}, callbacks: {}, range: 100, updates: {}, minimizeSheet: true, centerpoint: null}) {
         genericUtils.setProperty(options, 'isGroup', true);
         let teleport = new Teleport(tokens, controllingToken, options);
         teleport.tokenTexture = controllingToken.document.texture.src;
         await teleport.go(teleport.crosshairsConfig, options.minimizeSheet);
     }
-    static async target(target, controllingToken, options = {animation: 'none', crosshairsConfig: {}, callbacks: {}, range: 100, updates: {}, minimizeSheet: true}) {
+    static async target(target, controllingToken, options = {animation: 'none', crosshairsConfig: {}, callbacks: {}, range: 100, updates: {}, minimizeSheet: true, centerpoint: null}) {
         let teleport = new Teleport(target, controllingToken, options);
         await teleport.go(teleport.crosshairsConfigTarget, options.minimizeSheet);
     }
     async go(crosshairsConfig, minimizeSheet = true) {
         if (this.controllingToken.actor?.sheet?.rendered && minimizeSheet) this.controllingToken.actor.sheet.minimize();
-        this.template = await crosshairUtils.aimCrosshair({
+        let aimOptions = {
             token: this.controllingToken,
             maxRange: genericUtils.convertDistance(this.options.range),
             crosshairsConfig,
             drawBoundries: true,
             customCallbacks: this.options?.callbacks,
             validityFunctions: this.options?.validityFunctions
-        });
+        };
+        if (this.options.centerpoint) aimOptions.centerpoint = this.options.centerpoint;
+        this.template = await crosshairUtils.aimCrosshair(aimOptions);
         if (!this.template.cancelled) {
             this.options?.isGroup ? await this._moveGroup() : await this._move();
         }
