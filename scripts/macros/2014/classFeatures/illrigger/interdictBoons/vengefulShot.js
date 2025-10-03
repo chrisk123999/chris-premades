@@ -20,6 +20,7 @@ async function added({trigger: {entity: item}}) {
 }
 export let interdictBoonVengefulShot = {
     name: 'Interdict Boons: Vengeful Shot',
+    aliases: ['Vengeful Shot'],
     version: '1.7.77',
     rules: 'legacy',
     midi: {

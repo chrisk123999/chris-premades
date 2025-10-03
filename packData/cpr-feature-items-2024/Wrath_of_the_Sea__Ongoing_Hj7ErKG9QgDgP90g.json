@@ -57,7 +57,7 @@
           "max": ""
         },
         "damage": {
-          "onSave": "half",
+          "onSave": "none",
           "critical": {
             "allow": false
           },

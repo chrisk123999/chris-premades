@@ -76,6 +76,20 @@ async function attack({trigger: {entity: item}, workflow}) {
     await workflowUtils.specialItemUse(item, [workflow.targets.first()], workflow.item, {activity, consumeResources: true, consumeUsage: true});
 }
 async function added({trigger: {entity: item}}) {
+    let classIdentifier = itemUtils.getConfig(item, 'classIdentifier');
+    let scaleIdentifier = itemUtils.getConfig(item, 'scaleIdentifier');
+    let damageScaleIdentifier = itemUtils.getConfig(item, 'damageScaleIdentifier');
+    let classScales = item.actor.system.scale[classIdentifier];
+    let needsFix = false;
+    if (!classScales?.[scaleIdentifier]) {
+        needsFix = true;
+        if (classScales?.['seal']) await itemUtils.setConfig(item, 'scaleIdentifier', 'seal');
+    }
+    if (!classScales?.[damageScaleIdentifier]) {
+        needsFix = true;
+        if (classScales?.['burnseal']) await itemUtils.setConfig(item, 'damageScaleIdentifier', 'burnseal');
+    }
+    if (!needsFix) return;
     await itemUtils.fixScales(item);
 }
 async function move({trigger, workflow}) {

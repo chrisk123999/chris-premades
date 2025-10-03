@@ -12,7 +12,7 @@ async function attack({trigger: {entity: item}, workflow}) {
 }
 export let dispatersSupremacy = {
     name: 'Dispater\'s Interdiction: Dispater\'s Supremacy (Passive)',
-    aliases: ['Dispater\'s Interdiction: Dispater\'s Supremacy'],
+    aliases: ['Dispater\'s Supremacy', 'Dispater\'s Interdiction: Dispater\'s Supremacy'],
     version: '1.3.77',
     midi: {
         actor: [

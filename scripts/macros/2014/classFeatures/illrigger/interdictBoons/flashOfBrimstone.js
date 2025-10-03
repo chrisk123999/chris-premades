@@ -15,6 +15,7 @@ async function added({trigger: {entity: item}}) {
 }
 export let interdictBoonFlashOfBrimstone = {
     name: 'Interdict Boons: Flash of Brimstone',
+    aliases: ['Flash of Brimstone'],
     version: '1.3.76',
     rules: 'legacy',
     midi: {

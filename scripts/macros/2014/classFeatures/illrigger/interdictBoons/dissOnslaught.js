@@ -14,7 +14,7 @@ async function use({trigger, workflow}) {
 }
 export let interdictBoonDissOnslaught = {
     name: 'Interdict Boons: Dis\'s Onslaught',
-    aliases: ['Interdict Boons: Dis\'s Onslaught (Passive)'],
+    aliases: ['Dis\'s Onslaught', 'Interdict Boons: Dis\'s Onslaught (Passive)'],
     version: '1.3.71',
     rules: 'legacy',
     midi: {

@@ -71,6 +71,7 @@ async function added({trigger: {entity: item}}) {
 }
 export let interdictBoonIronGaol = {
     name: 'Interdict Boons: Iron Gaol',
+    aliases: ['Iron Gaol'],
     version: '1.3.76',
     rules: 'legacy',
     midi: {

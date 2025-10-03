@@ -12,6 +12,7 @@ async function attack({trigger: {entity: item}, workflow}) {
 }
 export let combatMasteryLissome = {
     name: 'Combat Mastery: Lissome',
+    aliases: ['Lissome'],
     version: '1.3.66',
     rules: 'legacy',
     midi: {
