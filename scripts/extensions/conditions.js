@@ -86,6 +86,7 @@ async function preCreateActiveEffect(effect, updates, options, userId) {
     let changes = [];
     let invisibleMacro = false;
     if (genericUtils.getCPRSetting('applyConditionChanges') && statusId) {
+        let feetToMeters = genericUtils.convertDistance(5) ;
         let rules = game.settings.get('dnd5e', 'rulesVersion');
         let removeMovement = false;
         statuses.forEach(i => {
@@ -241,13 +242,13 @@ async function preCreateActiveEffect(effect, updates, options, userId) {
                         {
                             key: 'flags.midi-qol.grants.advantage.attack.all',
                             mode: 0,
-                            value: 'computeDistance(workflow.rangeDetails?.attackingToken ?? workflow.token, workflow.targets.first()) <= 5',
+                            value: 'computeDistance(workflow.rangeDetails?.attackingToken ?? workflow.token, workflow.targets.first()) <= ' + feetToMeters,
                             priority: 20
                         },
                         {
                             key: 'flags.midi-qol.grants.disadvantage.attack.all',
                             mode: 0,
-                            value: 'computeDistance(workflow.rangeDetails?.attackingToken ?? workflow.token, workflow.targets.first()) > 5',
+                            value: 'computeDistance(workflow.rangeDetails?.attackingToken ?? workflow.token, workflow.targets.first()) > ' + feetToMeters,
                             priority: 20
                         },
                         {
@@ -346,25 +347,25 @@ async function preCreateActiveEffect(effect, updates, options, userId) {
                         {
                             key: 'flags.midi-qol.grants.critical.mwak',
                             mode: 0,
-                            value: 'computeDistance(workflow.rangeDetails?.attackingToken ?? workflow.token, workflow.targets.first()) <= 5',
+                            value: 'computeDistance(workflow.rangeDetails?.attackingToken ?? workflow.token, workflow.targets.first()) <= ' + feetToMeters,
                             priority: 20
                         },
                         {
                             key: 'flags.midi-qol.grants.critical.rwak',
                             mode: 0,
-                            value: 'computeDistance(workflow.rangeDetails?.attackingToken ?? workflow.token, workflow.targets.first()) <= 5',
+                            value: 'computeDistance(workflow.rangeDetails?.attackingToken ?? workflow.token, workflow.targets.first()) <= ' + feetToMeters,
                             priority: 20
                         },
                         {
                             key: 'flags.midi-qol.grants.critical.msak',
                             mode: 0,
-                            value: 'computeDistance(workflow.rangeDetails?.attackingToken ?? workflow.token, workflow.targets.first()) <= 5',
+                            value: 'computeDistance(workflow.rangeDetails?.attackingToken ?? workflow.token, workflow.targets.first()) <= ' + feetToMeters,
                             priority: 20
                         },
                         {
                             key: 'flags.midi-qol.grants.critical.rsak',
                             mode: 0,
-                            value: 'computeDistance(workflow.rangeDetails?.attackingToken ?? workflow.token, workflow.targets.first()) <= 5',
+                            value: 'computeDistance(workflow.rangeDetails?.attackingToken ?? workflow.token, workflow.targets.first()) <= ' + feetToMeters,
                             priority: 20
                         }
                     );
