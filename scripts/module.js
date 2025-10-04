@@ -88,6 +88,12 @@ Hooks.once('ready', () => {
         setupJournal();
         if (utils.genericUtils.getCPRSetting('backups')) backup.doBackup();
         if (utils.genericUtils.getCPRSetting('checkForUpdates')) updateCheck();
+        Hooks.on('userConnected', (user, active) => {
+            if (active || !user.isGM) return;
+            if (!utils.genericUtils.getCPRSetting('gmID') === user.id) return;
+            let firstGM = game.users.find(i => i.active && i.isGM);
+            utils.genericUtils.setCPRSetting('gmID', firstGM.id);
+        });
     }
     abilitySave.patch();
     skillCheck.patch();

@@ -1,3 +1,7 @@
+# 1.3.86 Release:
+## Bug Fixes:
+- GM Detection Fixes
+
 # 1.3.85 Release:
 ## Bug Fixes:
 - UI CSS Scaling

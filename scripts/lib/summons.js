@@ -136,7 +136,7 @@ export class Summons {
     static async getSummonItem(name, updates, originItem, {flatAttack = false, flatDC = false, damageBonus = null, translate, identifier, damageFlat = null, rules = 'legacy', compendium = null} = {}) {
         let bonuses = (new Roll(originItem.actor.system.bonuses.rsak.attack + ' + 0', originItem.actor.getRollData()).evaluateSync({strict: false})).total;
         let prof = originItem.actor.system.attributes.prof;
-        let abilityModifier = originItem.actor.system.abilities[originItem.abilityMod ?? originItem.actor.system.attributes?.spellcasting].mod;
+        let abilityModifier = originItem.actor.system.abilities[originItem.abilityMod ?? originItem.actor.system.attributes?.spellcasting ?? 'int'].mod;
         let attackBonus = bonuses + prof + abilityModifier;
         if (!compendium) compendium = rules === 'modern' ? constants.modernPacks.summonFeatures : constants.featurePacks.summonFeatures;
         let documentData = await compendiumUtils.getItemFromCompendium(compendium, name, {
