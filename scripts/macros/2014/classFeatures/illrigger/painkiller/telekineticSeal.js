@@ -12,6 +12,7 @@ async function added({trigger: {entity: item}}) {
 }
 export let telekineticSeal = {
     name: 'Dispater\'s Interdiction: Telekinetic Seal',
+    aliases: ['Telekinetic Seal'],
     version: '1.3.78',
     rules: 'legacy',
     midi: {

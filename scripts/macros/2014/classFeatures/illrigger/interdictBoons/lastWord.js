@@ -29,6 +29,7 @@ async function added({trigger: {entity: item}}) {
 }
 export let interdictBoonLastWord = {
     name: 'Interdict Boons: Last Word',
+    aliases: ['Last Word'],
     version: '1.7.77',
     rules: 'legacy',
     midi: {

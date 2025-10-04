@@ -25,9 +25,7 @@ async function setIdentifier(activity, identifier) {
     let updates = {
         'flags.chris-premades.activityIdentifiers': Object.fromEntries(identifiers)
     };
-    if (oldIdentifier) {
-        updates['flags.chris-premades.activityIdentifiers.-=' + oldIdentifier] = null;
-    }
+    if (oldIdentifier) updates['flags.chris-premades.activityIdentifiers.-=' + oldIdentifier] = null;
     await genericUtils.update(item, updates);
 }
 
@@ -112,9 +110,7 @@ function hasSave(activity) {
 }
 function isSpellActivity(activity) {
     let identifier = getIdentifier(activity);
-    if (!identifier) {
-        return genericUtils.getProperty(activity, 'midiProperties.automationOnly');
-    }
+    if (!identifier) return genericUtils.getProperty(activity, 'midiProperties.automationOnly');
     let spellActivities = itemUtils.getSpellActivities(activity.item) ?? [];
     return spellActivities.includes(identifier);
 }

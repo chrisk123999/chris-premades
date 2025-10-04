@@ -1,3 +1,7 @@
+# 1.3.85 Release:
+## Bug Fixes:
+- UI CSS Scaling
+
 # 1.3.84 Release:
 ## New Modern Content:
 - Conjure Animals
@@ -18,6 +22,7 @@
 - Elemental Adept (Legacy)
 - Healer
 - Infectious Fury (Legacy)
+- Infernal Conduit (Legacy)
 - Insignia of Claws (Legacy)
 - Interception
 - Mantle of Inspiration
@@ -27,8 +32,10 @@
 - Remarkable Recovery (Legacy)
 - Tandem Footwork
 - Warrior of the Gods
+- Wrath of the Sea
 ## Update Notes:
-- Modified `tokenUtils.getNewlyHitTokens` to `tokenUtils.getMovementHitTokens`, adding an option to specify whether to include tokens that were already in range of the moving token
+- Modified `tokenUtils.getNewlyHitTokens` to `tokenUtils.getMovementHitTokens`, adding an option to specify whether to include tokens that were already in range of the moving token.
+- Updated existing Illrigger features to be compatible with MCDM Class Bundle's naming.
 
 # 1.3.83 Release:
 ## New Modern Content:

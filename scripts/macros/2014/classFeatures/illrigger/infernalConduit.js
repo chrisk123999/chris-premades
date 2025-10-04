@@ -19,9 +19,20 @@ async function distance({trigger, workflow}) {
     workflow.aborted = true;
     genericUtils.notify('CHRISPREMADES.Macros.BalefulInterdict.Move.TooFar', 'info', {localize: true});
 }
+async function added({trigger: {entity: item}}) {
+    let classIdentifier = itemUtils.getConfig(item, 'classIdentifier');
+    let scaleIdentifier = itemUtils.getConfig(item, 'scaleIdentifier');
+    if (!item.actor.system.scale[classIdentifier]?.[scaleIdentifier]) {
+        if (item.actor.system.scale[classIdentifier]?.['conduit']) {
+            await itemUtils.setConfig(item, 'scaleIdentifier', 'conduit');
+            await genericUtils.update(item, {'system.uses.max': '@scale.' + classIdentifier + '.conduit'});
+        }
+        await itemUtils.fixScales(item);
+    }
+}
 export let infernalConduit = {
     name: 'Infernal Conduit',
-    version: '1.3.80',
+    version: '1.3.84',
     rules: 'legacy',
     midi: {
         item: [
@@ -42,6 +53,23 @@ export let infernalConduit = {
             }
         ]
     },
+    item: [
+        {
+            pass: 'created',
+            macro: added,
+            priority: 50
+        },
+        {
+            pass: 'itemMedkit',
+            macro: added,
+            priority: 50
+        },
+        {
+            pass: 'actorMunch',
+            macro: added,
+            priority: 50
+        }
+    ],
     config: [
         {
             value: 'classIdentifier',

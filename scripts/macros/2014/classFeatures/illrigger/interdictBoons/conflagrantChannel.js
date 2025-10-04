@@ -15,6 +15,7 @@ async function added({trigger: {entity: item}}) {
 }
 export let interdictBoonConflagrantChannel = {
     name: 'Interdict Boons: Conflagrant Channel',
+    aliases: ['Conflagrant Channel'],
     version: '1.3.76',
     rules: 'legacy',
     midi: {
