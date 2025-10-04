@@ -4,7 +4,7 @@ function gmID() {
     let gmID = game.settings.get('chris-premades', 'gmID');
     let preferredGMId = game.settings.get('midi-qol', 'PreferredGM');  
     if (preferredGMId !== '') {
-        let preferredGM = game.users.get(preferredGM);
+        let preferredGM = game.users.get(preferredGMId);
         if (preferredGM?.active) gmID = preferredGM.id;
     }
     return gmID;
