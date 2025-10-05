@@ -2,12 +2,10 @@ import {socket, sockets} from '../sockets.js';
 import {genericUtils} from '../../utils.js';
 function gmID() {
     let gmID = game.settings.get('chris-premades', 'gmID');
-    let preferredGMName = game.settings.get('midi-qol', 'PreferredGM');  
-    if (preferredGMName !== 'none') {
-        let preferredGM = game.users.getName(preferredGMName);
-        if (preferredGM?.active) {
-            gmID = preferredGM.id;
-        }
+    let preferredGMId = game.settings.get('midi-qol', 'PreferredGM');  
+    if (preferredGMId !== '') {
+        let preferredGM = game.users.get(preferredGMId);
+        if (preferredGM?.active) gmID = preferredGM.id;
     }
     return gmID;
 }
