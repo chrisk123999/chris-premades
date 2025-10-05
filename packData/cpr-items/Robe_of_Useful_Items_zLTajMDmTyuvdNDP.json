@@ -54,46 +54,6 @@
     "equipped": false
   },
   "flags": {
-    "ddbimporter": {
-      "originalName": "Robe of Useful Items",
-      "version": "6.4.21",
-      "dndbeyond": {
-        "type": "Wondrous item",
-        "avatarUrl": "https://www.dndbeyond.com/avatars/19/234/636382366300562305.jpeg",
-        "largeAvatarUrl": "https://www.dndbeyond.com/avatars/7/384/636284764677563266.jpeg",
-        "filterType": "Wondrous item",
-        "isConsumable": true,
-        "isContainer": true,
-        "isCustomItem": false,
-        "homebrew": false,
-        "isMonkWeapon": false,
-        "isPack": false,
-        "levelInfusionGranted": null,
-        "tags": [
-          "Utility",
-          "Outerwear"
-        ],
-        "sources": [
-          {
-            "sourceId": 1,
-            "pageNumber": null,
-            "sourceType": 2
-          },
-          {
-            "sourceId": 2,
-            "pageNumber": 195,
-            "sourceType": 1
-          }
-        ]
-      },
-      "is2014": true,
-      "is2024": false,
-      "legacy": true,
-      "id": 0,
-      "entityTypeId": 0,
-      "definitionEntityTypeId": 112130694,
-      "definitionId": 4743
-    },
     "infusions": {
       "maps": [],
       "applied": [],

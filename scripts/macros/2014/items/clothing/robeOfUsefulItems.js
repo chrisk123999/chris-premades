@@ -85,14 +85,14 @@ async function unpatch({trigger, workflow}) {
     await itemUtils.createItems(workflow.actor, [itemData]);
 }
 async function updated({trigger: {entity, item, updates}}) {
-    if (!itemUtils.getConfig(entity, 'allowPatching')) {
-        await genericUtils.update(item, {'system.container': null});
-        return;
-    }
     if (!updates.system?.container) return;
     if (updates.system.container != entity.id) return;
     let identifier = genericUtils.getIdentifier(item);
     if (identifier === 'robeOfUsefulItemsPatch') return;
+    if (!itemUtils.getConfig(entity, 'allowPatching')) {
+        await genericUtils.update(item, {'system.container': null});
+        return;
+    }
     let selection = await dialogUtils.confirm(entity.name, 'CHRISPREMADES.Macros.RobeOfUsefulItems.Convert');
     if (!selection) {
         await genericUtils.update(item, {'system.container': null});

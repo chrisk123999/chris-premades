@@ -1,0 +1,126 @@
+{
+  "name": "Hunter's Intuition",
+  "type": "feat",
+  "effects": [
+    {
+      "name": "Hunter's Intuition",
+      "changes": [
+        {
+          "key": "system.skills.prc.bonuses.check",
+          "mode": 2,
+          "value": "1d4",
+          "priority": 20
+        },
+        {
+          "key": "system.skills.sur.bonuses.check",
+          "mode": 2,
+          "value": "1d4",
+          "priority": 20
+        }
+      ],
+      "transfer": true,
+      "img": "icons/environment/traps/trap-jaw-steel.webp",
+      "_id": "csKbVrE0dkkCZXtO",
+      "type": "base",
+      "system": {},
+      "disabled": false,
+      "duration": {
+        "startTime": null,
+        "combat": null,
+        "seconds": null,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "description": "",
+      "origin": "Actor.AAiE2OMsIArQaGj5.Item.KDYUeSWHsTVMVbH4",
+      "tint": "#ffffff",
+      "statuses": [],
+      "sort": 0,
+      "flags": {
+        "dnd5e": {
+          "riders": {
+            "statuses": []
+          }
+        },
+        "dae": {
+          "enableCondition": "",
+          "disableCondition": "",
+          "stackable": "noneName",
+          "showIcon": false,
+          "disableIncapacitated": false,
+          "selfTarget": false,
+          "selfTargetAlways": false,
+          "dontApply": false,
+          "durationExpression": "",
+          "macroRepeat": "none",
+          "specialDuration": []
+        },
+        "core": {
+          "overlay": false
+        }
+      },
+      "_key": "!items.effects!zrWBZfWACcnz4D0w.csKbVrE0dkkCZXtO"
+    }
+  ],
+  "system": {
+    "activities": {},
+    "uses": {
+      "spent": 0,
+      "recovery": []
+    },
+    "advancement": [],
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "identifier": "hunters-intuition",
+    "source": {
+      "book": "ERftLW",
+      "page": "",
+      "license": "",
+      "custom": "",
+      "rules": "2014",
+      "revision": 1
+    },
+    "crewed": false,
+    "enchant": {},
+    "prerequisites": {
+      "items": [],
+      "repeatable": false
+    },
+    "properties": [],
+    "requirements": "",
+    "type": {
+      "value": "race",
+      "subtype": ""
+    }
+  },
+  "flags": {
+    "species": {
+      "fullRaceName": "Mark of Finding Human",
+      "baseRaceName": "Human",
+      "groupName": "Human",
+      "isLineage": false
+    },
+    "dnd5e": {
+      "advancementOrigin": "hZpvi5iwQedn4v49",
+      "riders": {
+        "activity": []
+      }
+    },
+    "chris-premades": {
+      "info": {
+        "identifier": "huntersIntuition",
+        "rules": "legacy",
+        "source": "chris-premades",
+        "version": "1.3.89"
+      }
+    }
+  },
+  "img": "icons/environment/traps/trap-jaw-steel.webp",
+  "folder": "rdxi6mPVwKqMbx8C",
+  "_id": "zrWBZfWACcnz4D0w",
+  "_key": "!items!zrWBZfWACcnz4D0w"
+}

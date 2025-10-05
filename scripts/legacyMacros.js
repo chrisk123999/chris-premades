@@ -483,6 +483,7 @@ export {telepathicInsight} from './macros/2014/raceFeatures/verdan/telepathicIns
 export {vampiricBite} from './macros/2014/raceFeatures/dhampir/vampiricBite.js';
 export {wardersIntuition} from './macros/2014/raceFeatures/dwarf/markOfWarding/wardersIntuition.js';
 export {windwrightsIntuition} from './macros/2014/raceFeatures/halfElf/markOfStorm/windwrightsIntuition.js';
+export {huntersIntuition} from './macros/2014/raceFeatures/human/markOfFinding/huntersIntuition.js';
 // Monster Features
 export {armyArcana} from './macros/2014/monsterFeatures/fey/hobgoblinDevastator/armyArcana.js';
 export {causticMist} from './macros/2014/monsterFeatures/monstrosity/hoardMimic/causticMist.js';

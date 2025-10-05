@@ -1,3 +1,9 @@
+# 1.3.89 Release:
+## New Legacy Content:
+- Hunter's Intuition
+## Bug Fixes:
+- Robe of Useful Items
+
 # 1.3.88 Release:
 ## New Legacy Content:
 - Robe of Useful Items
