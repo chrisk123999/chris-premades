@@ -518,6 +518,12 @@
                 },
                 "unequipped": {
                     "Label": "Unequipped"
+                },
+                "updated": {
+                    "Label": "Updated"
+                },
+                "actorUpdated": {
+                    "Label": "Actor Updated"
                 }
             },
             "Priority": {
@@ -1918,6 +1924,12 @@
                 "Store": "Store a spell",
                 "Stored": "{spellName} stored!",
                 "Upcast": "Cast at what level?"
+            },
+            "RobeOfUsefulItems": {
+                "AllowPatching": "Allow new patches:",
+                "Bag": "Bag of Gold",
+                "Convert": "Convert into a patch?",
+                "Patch": "Patch:"
             },
             "RollForActivity": {
                 "Error": "No activity including '{total}' found in {name}",

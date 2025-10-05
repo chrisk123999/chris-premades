@@ -1,3 +1,11 @@
+# 1.3.88 Release:
+## New Legacy Content:
+- Robe of Useful Items
+## Bug Fixes:
+- Metamagic: Distant Spell (Legacy)
+## API Updates:
+- Added `updated` and `actorUpdated` to the item events.
+
 # 1.3.87 Release:
 ## Bug Fixes:
 - GM Detection Fixes

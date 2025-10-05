@@ -12,7 +12,7 @@ function collectItemMacros(item, pass) {
 function collectAllMacros(item, pass) {
     let triggers = [];
     let token = actorUtils.getFirstToken(item.actor);
-    let simplePasses = ['created', 'deleted', 'equipped', 'unequipped'];
+    let simplePasses = ['created', 'deleted', 'equipped', 'unequipped', 'updated'];
     if (simplePasses.includes(pass)) {
         let macroList = collectItemMacros(item, pass);
         if (macroList.length) {
@@ -115,7 +115,7 @@ function collectAllMacros(item, pass) {
     }
     return triggers;
 }
-function getSortedTriggers(item, pass) {
+function getSortedTriggers(item, pass, updates) {
     let allTriggers = collectAllMacros(item, pass);
     let names = new Set(allTriggers.map(i => i.name));
     allTriggers = Object.fromEntries(names.map(i => [i, allTriggers.filter(j => j.name === i)]));
@@ -153,7 +153,8 @@ function getSortedTriggers(item, pass) {
                 token: trigger.token,
                 actor: trigger.actor,
                 macroName: typeof macro.macro === 'string' ? 'Embedded' : macro.macro.name,
-                item
+                item,
+                updates
             });
         });
     });
@@ -172,9 +173,9 @@ async function executeMacro(trigger) {
         console.error(error);
     }
 }
-async function executeMacroPass(item, pass) {
+async function executeMacroPass(item, pass, updates) {
     genericUtils.log('dev', 'Executing Item Macro Pass: ' + pass + ' for ' + item.name);
-    let triggers = getSortedTriggers(item, pass);
+    let triggers = getSortedTriggers(item, pass, updates);
     if (triggers.length) await genericUtils.sleep(50);
     for (let trigger of triggers) {
         await executeMacro(trigger);
@@ -200,6 +201,11 @@ async function deleted(item, options, userId) {
     await executeMacroPass(item, 'deleted');
     await executeMacroPass(item, 'actorDeleted');
 }
+async function updated(item, updates, options, userId) {
+    if (!socketUtils.isTheGM() || !item.actor) return;
+    await executeMacroPass(item, 'updated', updates);
+    await executeMacroPass(item, 'actorUpdated', updates);
+}
 async function actorMunch({actor, ddbCharacter}) {
     let itemInfo = actor.items.map(item => ({
         document: item,
@@ -214,5 +220,6 @@ export let itemEvent = {
     deleted,
     executeMacroPass,
     actorMedkit,
-    actorMunch
+    actorMunch,
+    updated
 };
