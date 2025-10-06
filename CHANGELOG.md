@@ -1,3 +1,7 @@
+# 1.3.92 Release:
+## Bug Fixes:
+- Item Medkit Event
+
 # 1.3.91 Release:
 ## New Modern Content:
 - Unarguable Wizardry

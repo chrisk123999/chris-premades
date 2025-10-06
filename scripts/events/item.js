@@ -12,7 +12,7 @@ function collectItemMacros(item, pass) {
 function collectAllMacros(item, pass) {
     let triggers = [];
     let token = actorUtils.getFirstToken(item.actor);
-    let simplePasses = ['created', 'deleted', 'equipped', 'unequipped', 'updated'];
+    let simplePasses = ['created', 'deleted', 'equipped', 'unequipped', 'updated', 'itemMedkit'];
     if (simplePasses.includes(pass)) {
         let macroList = collectItemMacros(item, pass);
         if (macroList.length) {
