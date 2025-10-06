@@ -1,3 +1,7 @@
+# 1.3.90 Release:
+## Bug Fixes:
+- ACC Integration
+
 # 1.3.89 Release:
 ## New Legacy Content:
 - Hunter's Intuition
