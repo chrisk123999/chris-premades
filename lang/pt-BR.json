@@ -360,6 +360,9 @@
                 "actorUnequipped": {
                     "Label": "Ator Desequipado"
                 },
+                "actorUpdated": {
+                    "Label": "Ator Atualizado"
+                },
                 "applyDamage": {
                     "Label": "Aplicar Dano"
                 },
@@ -518,6 +521,9 @@
                 },
                 "unequipped": {
                     "Label": "Desequipado"
+                },
+                "updated": {
+                    "Label": "Atualizado"
                 }
             },
             "Priority": {
@@ -1042,6 +1048,9 @@
                 "Moved": "Duelo Compelido: Movido",
                 "Source": "Duelo Compelido: Origem",
                 "Target": "Duelo Compelido: Alvo"
+            },
+            "ConjureAnimals": {
+                "Save": "Conjure Animals: Salvaguarda"
             },
             "ContextualBonus": {
                 "Advantage": "Dar vantagem:",
@@ -1915,6 +1924,12 @@
                 "Store": "Armazenar uma magia",
                 "Stored": "{spellName} armazenada!",
                 "Upcast": "Conjurar em qual nível?"
+            },
+            "RobeOfUsefulItems": {
+                "AllowPatching": "Permitir novos patches:",
+                "Bag": "Bag of Gold",
+                "Convert": "Converter em um patch?",
+                "Patch": "Patch:"
             },
             "RollForActivity": {
                 "Error": "Nenhuma atividade incluindo '{total}' encontrada em {name}",
@@ -3266,6 +3281,7 @@
                 "FeySpiritFuming": "Espírito Feérico (Irritadiço)",
                 "FeySpiritMirthful": "Espírito Feérico (Jubiloso)",
                 "FeySpiritTricksy": "Espírito Feérico (Brincalhão)",
+                "FeywildSpirit": "Espírito Feywild",
                 "FiendishSpirit": "Espírito Ínfero",
                 "FiendishSpiritDemon": "Espírito Ínfero (Demônio)",
                 "FiendishSpiritDevil": "Espírito Ínfero (Diabo)",
@@ -3290,6 +3306,7 @@
                 "ShadowSpiritFury": "Espírito das Sombras (Fúria)",
                 "Shifter": "Shifter",
                 "Skeleton": "Esqueleto",
+                "SpectralAnimals": "Animais Espectrais",
                 "SpiritualWeapon": "Arma Espiritual",
                 "Steed": "Montaria",
                 "SteelDefender": "Defensor de Aço",
