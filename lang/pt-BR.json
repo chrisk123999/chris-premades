@@ -197,6 +197,7 @@
             "DisplayHint": "Exibir Dica:",
             "Distance": "Distância:",
             "DurationSeconds": "Duração (Segundos):",
+            "EnablePrompt": "Habilitar Aviso de Reação:",
             "Expire": "Expiração:",
             "FailedSave": "Salvaguarda Falha:",
             "Formula": "Fórmula:",
@@ -271,6 +272,7 @@
             "UseOn": "Usar {itemName} em {tokenName}?",
             "UseRollTotal": "Usar {itemName}? (Total: {rollTotal})",
             "UseRollTotalDetail": "Usar {itemName} para {bonusFormula} adicional? (Total da Rolagem: {rollTotal})",
+            "UseWeaponDamageExtra": "Usar {itemName} para {bonusFormula} adicional?",
             "UseWeaponDamageTotal": "Usar {itemName}? (Dano da Arma: {damageTotal})",
             "UseWeaponDamageTotalWithAverage": "Usar {itemName}? (Dano da Arma: {damageTotal}; Média de Dano: {damageAverage})",
             "WhatDo": "O que você quer fazer?",
@@ -357,6 +359,9 @@
                 },
                 "actorUnequipped": {
                     "Label": "Ator Desequipado"
+                },
+                "actorUpdated": {
+                    "Label": "Ator Atualizado"
                 },
                 "applyDamage": {
                     "Label": "Aplicar Dano"
@@ -516,6 +521,9 @@
                 },
                 "unequipped": {
                     "Label": "Desequipado"
+                },
+                "updated": {
+                    "Label": "Atualizado"
                 }
             },
             "Priority": {
@@ -1013,6 +1021,13 @@
                 "Bounce": "Em quem a magia deve saltar?",
                 "TargetDamageSelection": "Seleção de Dano por Alvo:"
             },
+            "CircleOfTheLandSpells": {
+                "Arid": "Terra Árida",
+                "ChooseLand": "Qual Terra?",
+                "Polar": "Terra Polar",
+                "Temperate": "Terra Temperada",
+                "Tropical": "Terra Tropical"
+            },
             "CloudRune": {
                 "Reaction": "Usar {item} para redirecionar o ataque de {name}?"
             },
@@ -1034,6 +1049,9 @@
                 "Source": "Duelo Compelido: Origem",
                 "Target": "Duelo Compelido: Alvo"
             },
+            "ConjureAnimals": {
+                "Save": "Conjure Animals: Salvaguarda"
+            },
             "ContextualBonus": {
                 "Advantage": "Dar vantagem:",
                 "Bonus": "Se não vantagem, qual bônus:",
@@ -1045,6 +1063,10 @@
             },
             "ControlUndead": {
                 "Controlled": "Controlar Morto-Vivo: Controlado"
+            },
+            "CosmicOmen": {
+                "Weal": "Usar {itemName} para dar um bônus à rolagem de {tokenName}?",
+                "Woe": "Usar {itemName} para dar uma penalidade à rolagem de {tokenName}'s roll?"
             },
             "Countercharm": {
                 "AllyFail": "{name} falhou na salvaguarda ({total})! Usar {feature}?",
@@ -1599,6 +1621,9 @@
             "LabyrinthineRecall": {
                 "Skill": "Esta verificação é para navegar ou rastrear"
             },
+            "LandsAid": {
+                "Select": "Quem você quer curar?"
+            },
             "LanternOfRevealing": {
                 "Bright": "Luz da Lanterna (Plena)",
                 "Dim": "Luz da Lanterna (Penumbra)",
@@ -1719,6 +1744,9 @@
             "Moonbeam": {
                 "Damage": "Raio Lunar: Dano",
                 "Move": "Raio Lunar: Mover"
+            },
+            "MoonlightStep": {
+                "TeleportFriend": "Teleportar um aliado disposto?"
             },
             "MovementBonusActivity": {
                 "Distance": "Distância Necessária (pés):",
@@ -1896,6 +1924,12 @@
                 "Store": "Armazenar uma magia",
                 "Stored": "{spellName} armazenada!",
                 "Upcast": "Conjurar em qual nível?"
+            },
+            "RobeOfUsefulItems": {
+                "AllowPatching": "Permitir novos patches:",
+                "Bag": "Bag of Gold",
+                "Convert": "Converter em um patch?",
+                "Patch": "Patch:"
             },
             "RollForActivity": {
                 "Error": "Nenhuma atividade incluindo '{total}' encontrada em {name}",
@@ -2350,6 +2384,9 @@
             "WarpingImplosion": {
                 "Consume": "Consumir cinco {item} para usar?"
             },
+            "WildResurgence": {
+                "WildShapeUses": "Você deve ter 0 usos de Forma Selvagem para usar isto!"
+            },
             "WildShape": {
                 "AllowElementals": "Sempre permitir elementais:",
                 "CustomCompendium": "Chave de Compêndio Personalizado da Forma Selvagem:",
@@ -2396,6 +2433,14 @@
             "WrapsOfDyamak": {
                 "CrimsonMist": "Névoa Carmesim",
                 "Heal": "Envoltórios de Dyamak: Cura"
+            },
+            "WrathOfTheSea": {
+                "Ally": "Aliado",
+                "Both": "Ambos (Custa 1 {itemName})",
+                "Choose": "Em torno de quem você quer manifestar a Emanação?",
+                "Ongoing": "Fúria do Mar: Em andamento",
+                "Self": "Si Mesmo",
+                "Target": "Qual inimigo deve fazer uma salvaguarda?"
             },
             "WrathfulSmite": {
                 "Frighten": "Destruição Colérica: Amedrontado"
@@ -3236,6 +3281,7 @@
                 "FeySpiritFuming": "Espírito Feérico (Irritadiço)",
                 "FeySpiritMirthful": "Espírito Feérico (Jubiloso)",
                 "FeySpiritTricksy": "Espírito Feérico (Brincalhão)",
+                "FeywildSpirit": "Espírito Feywild",
                 "FiendishSpirit": "Espírito Ínfero",
                 "FiendishSpiritDemon": "Espírito Ínfero (Demônio)",
                 "FiendishSpiritDevil": "Espírito Ínfero (Diabo)",
@@ -3260,6 +3306,7 @@
                 "ShadowSpiritFury": "Espírito das Sombras (Fúria)",
                 "Shifter": "Shifter",
                 "Skeleton": "Esqueleto",
+                "SpectralAnimals": "Animais Espectrais",
                 "SpiritualWeapon": "Arma Espiritual",
                 "Steed": "Montaria",
                 "SteelDefender": "Defensor de Aço",
