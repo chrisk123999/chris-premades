@@ -1,3 +1,8 @@
+# 1.3.91 Release:
+## New Modern Content:
+- Unarguable Wizardry
+- “Cantrips”
+
 # 1.3.90 Release:
 ## Bug Fixes:
 - ACC Integration

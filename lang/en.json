@@ -360,6 +360,9 @@
                 "actorUnequipped": {
                     "Label": "Actor Unequipped"
                 },
+                "actorUpdated": {
+                    "Label": "Actor Updated"
+                },
                 "applyDamage": {
                     "Label": "Apply Damage"
                 },
@@ -521,9 +524,6 @@
                 },
                 "updated": {
                     "Label": "Updated"
-                },
-                "actorUpdated": {
-                    "Label": "Actor Updated"
                 }
             },
             "Priority": {
@@ -2333,6 +2333,9 @@
                 "Frightened": "Remove the Frightened condition",
                 "Heal": "Grant {formula} temporary HP",
                 "Temp": "Twilight Sanctuary: Temporary HP"
+            },
+            "UnarguableWizardry": {
+                "Prompt": "This check is to convince others that you are, in fact, a wizard."
             },
             "UnarmedFighting": {
                 "Grapple": "Unarmed Fighting: Grapple Damage",
