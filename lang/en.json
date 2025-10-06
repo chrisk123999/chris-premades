@@ -360,6 +360,9 @@
                 "actorUnequipped": {
                     "Label": "Actor Unequipped"
                 },
+                "actorUpdated": {
+                    "Label": "Actor Updated"
+                },
                 "applyDamage": {
                     "Label": "Apply Damage"
                 },
@@ -518,6 +521,9 @@
                 },
                 "unequipped": {
                     "Label": "Unequipped"
+                },
+                "updated": {
+                    "Label": "Updated"
                 }
             },
             "Priority": {
@@ -1919,6 +1925,12 @@
                 "Stored": "{spellName} stored!",
                 "Upcast": "Cast at what level?"
             },
+            "RobeOfUsefulItems": {
+                "AllowPatching": "Allow new patches:",
+                "Bag": "Bag of Gold",
+                "Convert": "Convert into a patch?",
+                "Patch": "Patch:"
+            },
             "RollForActivity": {
                 "Error": "No activity including '{total}' found in {name}",
                 "Name": "Roll for Activity",
@@ -2321,6 +2333,9 @@
                 "Frightened": "Remove the Frightened condition",
                 "Heal": "Grant {formula} temporary HP",
                 "Temp": "Twilight Sanctuary: Temporary HP"
+            },
+            "UnarguableWizardry": {
+                "Prompt": "This check is to convince others that you are, in fact, a wizard."
             },
             "UnarmedFighting": {
                 "Grapple": "Unarmed Fighting: Grapple Damage",

@@ -155,6 +155,7 @@ export function registerHooks() {
         Hooks.on('canvasReady', auras.canvasReady);
         Hooks.on('createItem', itemEvent.created);
         Hooks.on('deleteItem', itemEvent.deleted);
+        Hooks.on('updateItem', itemEvent.updated);
 
         // Scene & Compendium medkit
         Hooks.on('getHeaderControlsSceneConfig', appendHeaderControl);

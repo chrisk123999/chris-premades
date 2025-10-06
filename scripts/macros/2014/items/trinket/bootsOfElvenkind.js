@@ -1,5 +1,4 @@
 import {itemUtils} from '../../../../utils.js';
-
 async function skill({trigger: {entity: item, skillId}}) {
     if (skillId !== 'ste') return;
     if (!itemUtils.getEquipmentState(item)) return;

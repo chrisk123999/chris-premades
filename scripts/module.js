@@ -108,9 +108,10 @@ Hooks.once('ready', () => {
     }
     tours.checkTour();
     if (utils.genericUtils.getCPRSetting('activityCSSTweak')) activities.cssTweak(true);
-    if (!game.user.isGM) return;
-    if (utils.genericUtils.getCPRSetting('migrationVersion') !== game.modules.get('chris-premades').version) migrate();
     if (utils.genericUtils.getCPRSetting('quickConditions')) quickConditions.ready();
+    if (game.user.isGM) {
+        if (utils.genericUtils.getCPRSetting('migrationVersion') !== game.modules.get('chris-premades').version) migrate();
+    }
     Hooks.callAll('cprReady');
 });
 globalThis['chrisPremades'] = {

@@ -114,6 +114,13 @@ export function registerSettings() {
         select: true
     });
     addSetting({
+        key: 'rollTableCompendium',
+        type: String,
+        default: 'world.ddb-' + game.world.id + '-ddb-tables',
+        category: 'compendium',
+        select: true
+    });
+    addSetting({
         key: 'temporaryEffectHud',
         type: Boolean,
         default: false,

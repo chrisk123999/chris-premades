@@ -1,0 +1,68 @@
+{
+  "name": "Window",
+  "type": "consumable",
+  "_id": "LqkDQTitIhNx1wvr",
+  "img": "icons/environment/traps/grate-steel.webp",
+  "system": {
+    "activities": {},
+    "uses": {
+      "spent": 0,
+      "recovery": [],
+      "autoDestroy": false
+    },
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "identifier": "window",
+    "source": {
+      "revision": 1,
+      "rules": "2024"
+    },
+    "identified": true,
+    "unidentified": {
+      "description": ""
+    },
+    "container": null,
+    "quantity": 1,
+    "weight": {
+      "value": 0,
+      "units": "lb"
+    },
+    "price": {
+      "value": 0,
+      "denomination": "gp"
+    },
+    "rarity": "",
+    "attunement": "",
+    "attuned": false,
+    "equipped": false,
+    "damage": {
+      "base": {
+        "types": [],
+        "custom": {
+          "enabled": false
+        },
+        "scaling": {
+          "number": 1
+        }
+      },
+      "replace": false
+    },
+    "properties": [],
+    "type": {
+      "value": "",
+      "subtype": ""
+    }
+  },
+  "effects": [],
+  "folder": null,
+  "flags": {
+    "dnd5e": {
+      "riders": {
+        "activity": []
+      }
+    }
+  },
+  "_key": "!items!LqkDQTitIhNx1wvr"
+}

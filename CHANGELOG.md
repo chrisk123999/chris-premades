@@ -1,3 +1,30 @@
+# 1.3.92 Release:
+## Bug Fixes:
+- Item Medkit Event
+
+# 1.3.91 Release:
+## New Modern Content:
+- Unarguable Wizardry
+- “Cantrips”
+
+# 1.3.90 Release:
+## Bug Fixes:
+- ACC Integration
+
+# 1.3.89 Release:
+## New Legacy Content:
+- Hunter's Intuition
+## Bug Fixes:
+- Robe of Useful Items
+
+# 1.3.88 Release:
+## New Legacy Content:
+- Robe of Useful Items
+## Bug Fixes:
+- Metamagic: Distant Spell (Legacy)
+## API Updates:
+- Added `updated` and `actorUpdated` to the item events.
+
 # 1.3.87 Release:
 ## Bug Fixes:
 - GM Detection Fixes

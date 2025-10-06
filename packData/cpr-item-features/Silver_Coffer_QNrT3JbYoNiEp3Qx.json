@@ -1,0 +1,47 @@
+{
+  "name": "Silver Coffer",
+  "type": "loot",
+  "_id": "QNrT3JbYoNiEp3Qx",
+  "img": "icons/containers/chest/chest-simple-box-blue.webp",
+  "system": {
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "identifier": "silver-coffer",
+    "source": {
+      "revision": 1,
+      "rules": "2024"
+    },
+    "identified": true,
+    "unidentified": {
+      "description": ""
+    },
+    "container": null,
+    "quantity": 1,
+    "weight": {
+      "value": 0,
+      "units": "lb"
+    },
+    "price": {
+      "value": 500,
+      "denomination": "gp"
+    },
+    "rarity": "",
+    "properties": [],
+    "type": {
+      "value": "",
+      "subtype": ""
+    }
+  },
+  "effects": [],
+  "folder": null,
+  "flags": {
+    "dnd5e": {
+      "riders": {
+        "activity": []
+      }
+    }
+  },
+  "_key": "!items!QNrT3JbYoNiEp3Qx"
+}

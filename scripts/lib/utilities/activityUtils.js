@@ -121,7 +121,7 @@ function canUse(activity) {
         let test = rollUtils.rollDiceSync(activity.consumption.targets[i].value, {entity: activity, options: {minimize: true}}).total;
         switch (activity.consumption.targets[i].type) {
             case 'itemUses':
-                if (activity.consumption.targets[i].target == '') {
+                if (!activity.consumption.targets[i].target) {
                     canUse = activity.item.system.uses.value >= test;
                 } else {
                     let item = activity.actor.items.get(activity.consumption.targets[i].target);

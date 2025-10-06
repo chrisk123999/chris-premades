@@ -127,7 +127,7 @@ export class Summons {
         }
     }
     static async dismissIfDead({trigger, ditem}) {
-        if (ditem.newHP > 0) return;
+        if (ditem.newHP > 0 || !ditem.isHit) return;
         let shouldDismiss = await dialogUtils.confirm(trigger.entity.parent.name, 'CHRISPREMADES.Summons.DismissHP');
         if (!shouldDismiss) return;
         await Summons.dismiss({trigger});

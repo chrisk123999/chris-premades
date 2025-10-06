@@ -306,6 +306,18 @@ export const eventStructure = {
             documents: [
                 'item'
             ]
+        },
+        {
+            pass: 'updated',
+            documents: [
+                'item'
+            ]
+        },
+        {
+            pass: 'actorUpdated',
+            documents: [
+                'item'
+            ]
         }
     ],
     death: [

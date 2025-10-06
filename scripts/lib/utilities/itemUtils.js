@@ -243,7 +243,7 @@ async function fixScales(item) {
 }
 function canUse(item) {
     if (!item.system.activities.size) return true;
-    return item.system.activities.find(i => activityUtils.canUse(i));
+    if (item.system.activities.find(i => activityUtils.canUse(i))) return true;
 }
 export let itemUtils = {
     getSaveDC,

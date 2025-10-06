@@ -1,12 +1,14 @@
 import {itemUtils, actorUtils, tokenUtils, activityUtils, dialogUtils, genericUtils, socketUtils, workflowUtils} from '../../utils.js';
-async function attacked(workflow, itemIdentifier, activityIdentifier, {canSee = true, reaction = true, distance = 30, canUse = true, attacker = true, dispositionType = 'ally', dialogType = 'use'} = {}) {
+async function attacked(workflow, itemIdentifier, activityIdentifier, {canSee = true, reaction = true, distance = 30, canUse = true, attacker = true, dispositionType = 'ally', dialogType = 'use', creatureTypes = [], isOwner = false} = {}) {
     if (!workflow.token) return;
     if (!workflowUtils.isAttackType(workflow, 'attack')) return;
+    if (creatureTypes.length && !creatureTypes.includes(actorUtils.typeOrRace(workflow.targets.first().actor))) return;
     for (let token of workflow.token.scene.tokens) {
         if (dispositionType === 'ally' && token.disposition === workflow.token.document.disposition) continue;
         if (dispositionType === 'enemy' && token.disposition != workflow.token.document.disposition) continue;
         let item = itemUtils.getItemByIdentifier(token.actor, itemIdentifier);
         if (!item) continue;
+        if (isOwner && !socketUtils.hasPermission(token.actor, socketUtils.firstOwner(item.actor, true))) continue;
         if (reaction && actorUtils.hasUsedReaction(token.actor)) continue;
         if (distance && tokenUtils.getDistance(workflow.token, token) > distance) continue;
         if (canSee && !tokenUtils.canSee(workflow.token, token)) continue;
