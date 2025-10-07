@@ -1,3 +1,7 @@
+# 1.3.93 Release:
+## Bug Fixes:
+- Effect Medkit
+
 # 1.3.92 Release:
 ## Bug Fixes:
 - Item Medkit Event
