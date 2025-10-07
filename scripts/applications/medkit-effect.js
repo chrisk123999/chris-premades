@@ -1,6 +1,5 @@
 let {ApplicationV2, HandlebarsApplicationMixin} = foundry.applications.api;
 import {genericUtils, constants} from '../utils.js';
-import * as macros from '../macros.js'; // Maybe see if the added macro exsists? Too much for 4am brain
 import {EmbeddedMacros} from './embeddedMacros.js';
 export class EffectMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
     constructor(context, effectDocument) {
@@ -144,21 +143,20 @@ export class EffectMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
                             value: 'tempMaxHP',
                             isSelected: effect.flags['chris-premades']?.specialDuration?.includes('tempMaxHP')
                         }
-                    ].concat(Object.entries(CONFIG.DND5E.tools).flatMap(([key, value]) => {
-                        let packItem = fromUuidSync(value.id);
+                    ].concat(Object.entries(constants.getToolNames()).flatMap(([key, value]) => {
                         return [
                             {
-                                label: genericUtils.format('CHRISPREMADES.Medkit.Effect.SpecialDuration.Rolled', {toolName: packItem.name}),
+                                label: genericUtils.format('CHRISPREMADES.Medkit.Effect.SpecialDuration.Rolled', {toolName: value}),
                                 value: key,
                                 isSelected: effect.flags['chris-premades']?.specialDuration?.includes(key)
                             },
                             {
-                                label: genericUtils.format('CHRISPREMADES.Medkit.Effect.SpecialDuration.Failed', {toolName: packItem.name}),
+                                label: genericUtils.format('CHRISPREMADES.Medkit.Effect.SpecialDuration.Failed', {toolName: value}),
                                 value: key + 'Fail',
                                 isSelected: effect.flags['chris-premades']?.specialDuration?.includes(key + 'Fail')
                             },
                             {
-                                label: genericUtils.format('CHRISPREMADES.Medkit.Effect.SpecialDuration.Succeed', {toolName: packItem.name}),
+                                label: genericUtils.format('CHRISPREMADES.Medkit.Effect.SpecialDuration.Succeed', {toolName: value}),
                                 value: key + 'Succeed',
                                 isSelected: effect.flags['chris-premades']?.specialDuration?.includes(key + 'Succeed')
                             }
