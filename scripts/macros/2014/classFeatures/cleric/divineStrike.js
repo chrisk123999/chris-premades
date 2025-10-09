@@ -228,7 +228,7 @@ export let divineStrike = {
             default: 'default',
             category: 'homebrew',
             homebrew: true,
-            options: () => Object.entries(CONFIG.DND5E.damageTypes).map(i => ({label: i[1].label, value: i[0]})).concat({label: 'DND5E.Default', value: 'default'})
+            options: constants.damageTypeOptions
         },
         {
             value: 'playAnimation',

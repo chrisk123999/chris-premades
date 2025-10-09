@@ -1,3 +1,10 @@
+# 1.3.94 Release:
+## New Legacy Content:
+- Ruin's Wake
+## Bug Fixes:
+- Armor of Safeguarding
+- Sanctuary
+
 # 1.3.93 Release:
 ## Bug Fixes:
 - Effect Medkit

@@ -648,6 +648,7 @@ export {wandOfTheWarMage, wandOfTheWarMage1, wandOfTheWarMage2, wandOfTheWarMage
 export {wingsOfFlying, wingsOfFlyingEffect, wingsOfFlyingRecharge} from './macros/2014/items/clothing/wingsOfFlying.js';
 export {wrapsOfDyamak, wrapsOfDyamak0, wrapsOfDyamak1, wrapsOfDyamak2, crimsonMist} from './macros/2014/items/trinket/wrapsOfDyamak.js';
 export {robeOfUsefulItems, robeOfUsefulItemsSetupPatch, robeOfUsefulItemsPatch} from './macros/2014/items/clothing/robeOfUsefulItems.js';
+export {ruinsWakeD, ruinsWakeA, ruinsWakeE} from './macros/2014/items/weapons/ruinsWake.js';
 //BG3 Weapon Actions
 export {backbreaker, braceMelee, braceMeleeDamage, cleave, concussiveSmash, maimingStrike, disarmingStrike, flourish, heartstopper, lacerate, piercingStrike, piercingStrikeEffect, pommelStrike, prepare, rush, tenacity, topple, weakeningStrike, braceRanged, braceRangedDamage, hamstringShot, mobileShot, piercingShot} from './macros/2014/homebrew/bg3WeaponActions.js';
 //Other

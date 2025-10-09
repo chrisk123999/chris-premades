@@ -18,7 +18,7 @@ async function use({workflow}) {
     });
 }
 async function damage({trigger: {entity: effect}, workflow}) {
-    if (!constants.attacks.includes(workflow.activity.actionType)) return;
+    if (!workflowUtils.isAttackType(workflow, 'attack')) return;
     let target = workflow.targets.first();
     if (!target) return;
     if (tokenUtils.getDistance(workflow.token, target) > 15) return;
