@@ -50,6 +50,7 @@ export function registerHooks() {
     Hooks.on('midi-qol.premades.postWaitForAttackRoll', midiEvents.postAttackRoll);
     Hooks.on('midi-qol.premades.postAttackRollComplete', midiEvents.attackRollComplete);
     Hooks.on('midi-qol.premades.preDamageRollComplete', midiEvents.damageRollComplete);
+    Hooks.on('midi-qol.premades.preUtilityRollComplete', midiEvents.utilityRollComplete);
     Hooks.on('midi-qol.premades.postSavesComplete', midiEvents.savesComplete);
     Hooks.on('midi-qol.preTargetDamageApplication', midiEvents.preTargetDamageApplication);
     Hooks.on('midi-qol.premades.postRollFinished', midiEvents.rollFinished);

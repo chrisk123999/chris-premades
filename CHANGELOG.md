@@ -1,3 +1,11 @@
+# 1.3.95 Release:
+## New Legacy Content:
+- Charlatan's Die
+## Bug Fixes:
+- 3rd party feats should now correctly be picked up by the Medkit.
+## API Update Notes:
+- Added `utilityRollComplete`, `targetUtilityRollComplete`, and `sceneUtilityRollComplete`. These passes have also been added to embedded macros.
+
 # 1.3.94 Release:
 ## New Legacy Content:
 - Ruin's Wake

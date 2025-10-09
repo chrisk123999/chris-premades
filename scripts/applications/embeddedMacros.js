@@ -473,6 +473,20 @@ export const eventStructure = {
                 'target',
                 'scene'
             ]
+        },
+        {
+            pass: 'utilityRollComplete',
+            documents: [
+                'item',
+                'activeeffect',
+                'measuredtemplate',
+                'region',
+                'activity'
+            ],
+            options: [
+                'target',
+                'scene'
+            ]
         }
     ],
     'midi-actor': [
@@ -581,6 +595,20 @@ export const eventStructure = {
                 'activeeffect',
                 'measuredtemplate',
                 'region'
+            ],
+            options: [
+                'target',
+                'scene'
+            ]
+        },
+        {
+            pass: 'utilityRollComplete',
+            documents: [
+                'item',
+                'activeeffect',
+                'measuredtemplate',
+                'region',
+                'activity'
             ],
             options: [
                 'target',

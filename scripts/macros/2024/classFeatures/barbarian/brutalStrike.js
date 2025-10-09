@@ -1,5 +1,5 @@
 import {combatUtils} from '../../../../lib/utilities/combatUtils.js';
-import {activityUtils, constants, dialogUtils, effectUtils, genericUtils, itemUtils, tokenUtils, workflowUtils} from '../../../../utils.js';
+import {activityUtils, dialogUtils, effectUtils, genericUtils, itemUtils, tokenUtils, workflowUtils} from '../../../../utils.js';
 async function early({trigger: {entity: item}, workflow}) {
     if (!item.system.uses.value) return;
     if (!workflow.token || !workflow.targets.size || workflow.disadvantage || (workflow.disadvantage && workflow.advantage) || !combatUtils.isOwnTurn(workflow.token) || !workflowUtils.isAttackType(workflow, 'attack')) return;

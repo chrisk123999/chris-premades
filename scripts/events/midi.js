@@ -308,6 +308,24 @@ async function damageRollComplete(workflow) {
     let manualRollsEnabled = genericUtils.getCPRSetting('manualRollsEnabled');
     if (manualRollsEnabled && (workflow.hitTargets?.size === 0 ? genericUtils.getCPRSetting('manualRollsPromptOnMiss') : true)) await _manualRollsNewRolls(workflow);
 }
+async function utilityRollComplete(workflow) {
+    await executeMacroPass(workflow, 'utilityRollComplete');
+    await executeTargetMacroPass(workflow, 'targetUtilityRollComplete');
+    let sceneTriggers = [];
+    workflow.token?.document.parent.tokens.filter(i => i.uuid !== workflow.token?.document.uuid && i.actor).forEach(j => {
+        sceneTriggers.push(...getSortedTriggers({token: j.object, actor: j.actor, sourceToken: workflow.token}, 'sceneUtilityRollComplete'));
+    });
+    let sortedSceneTriggers = [];
+    let names = new Set();
+    sceneTriggers.forEach(i => {
+        if (names.has(i.name)) return;
+        sortedSceneTriggers.push(i);
+        names.add(i.name);
+    });
+    sortedSceneTriggers = sortedSceneTriggers.sort((a, b) => a.priority - b.priority);
+    genericUtils.log('dev', 'Executing Midi Macro Pass: sceneUtilityRollComplete');
+    for (let trigger of sortedSceneTriggers) await executeMacro(trigger, workflow);
+}
 async function _manualRollsNewRolls(workflow) {
     genericUtils.log('dev', 'New Rolls for Midi Workflow');
     if (!genericUtils.getCPRSetting('manualRollsUsers')?.[game.user.id]) return false;
@@ -406,6 +424,7 @@ export let midiEvents = {
     attackRollComplete,
     savesComplete,
     damageRollComplete,
+    utilityRollComplete,
     rollFinished,
     preambleComplete,
     preTargetDamageApplication,

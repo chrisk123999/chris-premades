@@ -524,6 +524,15 @@
                 },
                 "updated": {
                     "Label": "Updated"
+                },
+                "utilityRollComplete": {
+                    "Label": "Utility Roll Complete"
+                },
+                "targetUtilityRollComplete": {
+                    "Label": "Target Utility Roll Complete"
+                },
+                "sceneUtilityRollComplete": {
+                    "Label": "Scene Utility Roll Complete"
                 }
             },
             "Priority": {
@@ -1008,6 +1017,9 @@
                 "Bounce": "Who should the Chaos Bolt bounce to?",
                 "BounceFeature": "Chaos Bolt: Bounce",
                 "Select": "Select damage type:"
+            },
+            "CharlatansDie": {
+                "Use": "What do you roll?"
             },
             "CheckCover": {
                 "TargetCover": "Target Cover:",
