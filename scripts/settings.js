@@ -201,6 +201,12 @@ export function registerSettings() {
         category: 'integration'
     });
     addSetting({
+        key: 'convenientEffects',
+        type: Boolean,
+        default: true,
+        category: 'integration'
+    });
+    addSetting({
         key: 'colorizeDAE',
         type: Boolean,
         default: false,

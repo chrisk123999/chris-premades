@@ -11,6 +11,7 @@ import {explodingHeals} from '../macros/homebrew/explodingHeals.js';
 import {CPRMultipleRollResolver} from '../applications/rollResolverMultiple.js';
 import {masteries} from '../macros/2024/mechanics/masteries.js';
 import {effects} from '../extensions/effects.js';
+import {convenientEffects} from '../integrations/convenientEffects.js';
 function getItemMacroData(item) {
     return item.flags['chris-premades']?.macros?.midi?.item ?? [];
 }
@@ -230,6 +231,7 @@ async function preItemRoll(workflow) {
         if (stop) return false;
     }
     if (genericUtils.getCPRSetting('diceSoNice') && game.modules.get('dice-so-nice')?.active) await diceSoNice.preItemRoll(workflow);
+    if (workflow.activity && genericUtils.getCPRSetting('convenientEffects')) await convenientEffects.use(workflow.activity);
     await genericUtils.sleep(50);
     stop = await executeMacroPass(workflow, 'preItemRoll');
     if (stop) return false;

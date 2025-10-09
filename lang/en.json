@@ -2859,6 +2859,10 @@
                 "Hint": "When enabled, items that have Automated Animations disabled will still play sounds setup in the Automatic Recognition menu.",
                 "Name": "Automated Animations: Play Sounds"
             },
+            "convenientEffects": {
+                "Hint": "When enabled, Convenient Effects will be automatically disabled on items from CPR, GPS, MISC, and ACC.",
+                "Name": "Convenient Effects: Auto Disable"
+            },
             "backupCompendium": {
                 "Hint": "Select your actor backup compendium.",
                 "Name": "Actor Backup Compendium"

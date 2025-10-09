@@ -1,3 +1,7 @@
+# 1.3.96 Release:
+## Update Notes:
+- Added a module integration setting to automatically disable Convenient Effects on CPR, GPS, MISC, and ACC items. Enabled by default. (None of these modules make use of Convenient Effects)
+
 # 1.3.95 Release:
 ## New Legacy Content:
 - Charlatan's Die
