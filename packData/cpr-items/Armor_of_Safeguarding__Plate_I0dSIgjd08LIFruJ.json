@@ -87,7 +87,7 @@
             {
               "type": "itemUses",
               "value": "1",
-              "scaling": {}
+              "target": ""
             }
           ]
         },
@@ -129,10 +129,15 @@
             "concentration"
           ],
           "spellbook": true,
-          "uuid": "Compendium.chris-premades.CPRSpells.Item.KAYtfGt5Z3hHcVkN"
+          "uuid": "Compendium.chris-premades.CPRSpells.Item.KAYtfGt5Z3hHcVkN",
+          "ability": ""
         },
         "name": "",
-        "_id": "sNs2zFPKPSh3P2vz"
+        "_id": "sNs2zFPKPSh3P2vz",
+        "img": "",
+        "midiProperties": {
+          "confirmTargets": "never"
+        }
       }
     },
     "identifier": "armor-of-safeguarding-plate"
@@ -166,20 +171,28 @@
       "idv": false,
       "ida": false
     },
+    "dnd5e": {
+      "riders": {
+        "activity": []
+      }
+    },
     "chris-premades": {
       "info": {
         "identifier": "armorOfSafeguardingP",
         "source": "chris-premades",
-        "version": "1.1.0"
+        "version": "1.3.94"
       },
       "equipment": {
         "identifier": "armorOfSafeguardingP"
-      }
-    },
-    "dnd5e": {
-      "riders": {
-        "activity": [],
-        "effect": []
+      },
+      "hiddenActivities": [],
+      "activityIdentifiers": {
+        "beaconOfHope": "sNs2zFPKPSh3P2vz"
+      },
+      "macros": {
+        "item": [
+          "armorOfSafeguardingP"
+        ]
       }
     }
   },
@@ -253,7 +266,7 @@
       "_key": "!items.effects!I0dSIgjd08LIFruJ.gGKyyCnvfwj6qo7p"
     }
   ],
-  "img": "ddb-images/other/ddb/item/Armor.jpg",
+  "img": "icons/equipment/chest/breastplate-layered-steel-black.webp",
   "folder": "VRIJQcr8Bd9OVvq2",
   "_id": "I0dSIgjd08LIFruJ",
   "_key": "!items!I0dSIgjd08LIFruJ"

@@ -524,6 +524,15 @@
                 },
                 "updated": {
                     "Label": "Updated"
+                },
+                "utilityRollComplete": {
+                    "Label": "Utility Roll Complete"
+                },
+                "targetUtilityRollComplete": {
+                    "Label": "Target Utility Roll Complete"
+                },
+                "sceneUtilityRollComplete": {
+                    "Label": "Scene Utility Roll Complete"
                 }
             },
             "Priority": {
@@ -1008,6 +1017,9 @@
                 "Bounce": "Who should the Chaos Bolt bounce to?",
                 "BounceFeature": "Chaos Bolt: Bounce",
                 "Select": "Select damage type:"
+            },
+            "CharlatansDie": {
+                "Use": "What do you roll?"
             },
             "CheckCover": {
                 "TargetCover": "Target Cover:",
@@ -2846,6 +2858,10 @@
             "automatedAnimationSounds": {
                 "Hint": "When enabled, items that have Automated Animations disabled will still play sounds setup in the Automatic Recognition menu.",
                 "Name": "Automated Animations: Play Sounds"
+            },
+            "convenientEffects": {
+                "Hint": "When enabled, Convenient Effects will be automatically disabled on items from CPR, GPS, MISC, and ACC.",
+                "Name": "Convenient Effects: Auto Disable"
             },
             "backupCompendium": {
                 "Hint": "Select your actor backup compendium.",

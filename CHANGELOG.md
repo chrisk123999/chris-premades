@@ -1,3 +1,22 @@
+# 1.3.96 Release:
+## Update Notes:
+- Added a module integration setting to automatically disable Convenient Effects on CPR, GPS, MISC, and ACC items. Enabled by default. (None of these modules make use of Convenient Effects)
+
+# 1.3.95 Release:
+## New Legacy Content:
+- Charlatan's Die
+## Bug Fixes:
+- 3rd party feats should now correctly be picked up by the Medkit.
+## API Update Notes:
+- Added `utilityRollComplete`, `targetUtilityRollComplete`, and `sceneUtilityRollComplete`. These passes have also been added to embedded macros.
+
+# 1.3.94 Release:
+## New Legacy Content:
+- Ruin's Wake
+## Bug Fixes:
+- Armor of Safeguarding
+- Sanctuary
+
 # 1.3.93 Release:
 ## Bug Fixes:
 - Effect Medkit
