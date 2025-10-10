@@ -1,5 +1,4 @@
-import {activityUtils, combatUtils, workflowUtils} from '../../../../../utils.js';
-
+import {combatUtils, workflowUtils} from '../../../../../utils.js';
 async function use({workflow}) {
     if (!workflow.hitTargets.size) return;
     if (!Math.floor(workflow.damageList[0].damageDetail.reduce((acc, i) => acc + i.value, 0))) return;

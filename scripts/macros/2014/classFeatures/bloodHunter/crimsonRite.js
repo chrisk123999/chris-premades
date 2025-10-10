@@ -1,12 +1,9 @@
-import {dialogUtils, effectUtils, genericUtils, itemUtils, workflowUtils} from '../../../../utils.js';
-
+import {dialogUtils, effectUtils, genericUtils, itemUtils} from '../../../../utils.js';
 async function use({workflow}) {
-    let damageDice = workflow.actor.system.scale?.['blood-hunter']?.['crimson-rite']?.formula;
-    if (!damageDice) {
-        genericUtils.notify(genericUtils.format('CHRISPREMADES.Generic.MissingScale', {scaleName: 'crimson-rite'}), 'warn');
-        workflow.aborted = true;
-        return;
-    }
+    let classIdentifier = itemUtils.getConfig(workflow.item, 'classIdentifier');
+    let scaleIdentifier = itemUtils.getConfig(workflow.item, 'scaleIdentifier');
+    let scale = workflow.actor.system.scale?.[classIdentifier]?.[scaleIdentifier];
+    if (!scale) return;
     let weapons = workflow.actor.items.filter(i => i.type === 'weapon' && i.system.equipped);
     if (!weapons.length) return;
     let selectedWeapon;
@@ -57,9 +54,9 @@ async function use({workflow}) {
                 priority: 20
             },
             {
-                key: 'system.damage.parts',
+                key: 'activities[attack].damage.parts',
                 mode: 2,
-                value: JSON.stringify([[damageDice, selection]]),
+                value: JSON.stringify({denomination: scale.faces, number: scale.number, types: selection}),
                 priority: 20
             }
         ],
@@ -115,9 +112,12 @@ async function rest({trigger: {entity: item}}) {
         if (effect) await genericUtils.remove(effect);
     }
 }
+async function added({trigger: {entity: item}}) {
+    await itemUtils.fixScales(item);
+}
 export let crimsonRite = {
     name: 'Crimson Rite',
-    version: '1.1.0',
+    version: '1.3.97',
     midi: {
         item: [
             {
@@ -132,6 +132,81 @@ export let crimsonRite = {
             pass: 'short',
             macro: rest,
             priority: 50
+        }
+    ],
+    item: [
+        {
+            pass: 'created',
+            macro: added,
+            priority: 50
+        },
+        {
+            pass: 'itemMedkit',
+            macro: added,
+            priority: 50
+        },
+        {
+            pass: 'actorMunch',
+            macro: added,
+            priority: 50
+        }
+    ],
+    config: [
+        {
+            value: 'classIdentifier',
+            label: 'CHRISPREMADES.Config.ClassIdentifier',
+            type: 'text',
+            default: 'blood-hunter',
+            category: 'homebrew',
+            homebrew: true
+        },
+        {
+            value: 'scaleIdentifier',
+            label: 'CHRISPREMADES.Config.ScaleIdentifier',
+            type: 'text',
+            default: 'crimson-rite',
+            category: 'homebrew',
+            homebrew: true
+        }
+    ],
+    scales: [
+        {
+            classIdentifier: 'classIdentifier',
+            scaleIdentifier: 'scaleIdentifier',
+            data: {
+                type: 'ScaleValue',
+                configuration: {
+                    identifier: 'crimson-rite',
+                    type: 'dice',
+                    distance: {
+                        units: ''
+                    },
+                    scale: {
+                        2: {
+                            number: 1,
+                            faces: 4,
+                            modifiers: []
+                        },
+                        5: {
+                            number: 1,
+                            faces: 6,
+                            modifiers: []
+                        },
+                        11: {
+                            number: 1,
+                            faces: 8,
+                            modifiers: []
+                        },
+                        17: {
+                            number: 1,
+                            faces: 10,
+                            modifiers: []
+                        }
+                    }
+                },
+                value: {},
+                title: 'Crimson Rite'
+            }
         }
     ]
 };

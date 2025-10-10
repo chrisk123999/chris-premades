@@ -741,10 +741,12 @@ export class ItemMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
             'system.description.value',
             'system.equipped',
             'system.materials',
-            'system.preparation',
             'system.quantity',
             'system.sourceClass',
-            'system.source'
+            'system.source',
+            'system.prepared',
+            'system.method',
+            'system.uses'
         ];
         const cleanPaths = [
             'flags.midi-qol.onUseMacroName',
@@ -761,9 +763,6 @@ export class ItemMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
             let fieldArray = field.split('.');
             let newPath = fieldArray.slice(0, -1).concat('-=' + fieldArray.slice(-1)).join('.');
             if (!fieldValue) genericUtils.setProperty(sourceItemData, newPath, null);
-        }
-        if (itemData.system.uses?.max?.length) {
-            sourceItemData.system.uses = itemData.system.uses;
         }
         if (source) genericUtils.setProperty(sourceItemData, 'flags.chris-premades.info.source', source);
         if (version) genericUtils.setProperty(sourceItemData, 'flags.chris-premades.info.version', version);
