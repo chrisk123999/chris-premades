@@ -1,3 +1,15 @@
+# 1.3.98 Release:
+## New Legacy Content:
+- Deck of Miscellany
+- Deck of Wonder
+## Bug Fixes:
+- Death Ward
+- Disintegrate
+## API Update Notes:
+- Added a D20 event with `preEvaluation`, `scenePreEvaluation`, `postEvaluation`, and `scenePostEvaluation` passes. These passes have also been added to embedded macros.
+## API Bug Fixes:
+- Enchantment effects on items will now properly trigger the `created` and `deleted` effect passes.
+
 # 1.3.97 Release:
 ## Bug Fixes:
 - Crimson Rite

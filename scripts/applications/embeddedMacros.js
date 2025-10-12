@@ -845,6 +845,32 @@ export const eventStructure = {
                 'region'
             ]
         }
+    ],
+    d20: [
+        {
+            pass: 'preEvaluation',
+            documents: [
+                'item',
+                'activeeffect',
+                'measuredtemplate',
+                'region'
+            ],
+            options: [
+                'scene'
+            ]
+        },
+        {
+            pass: 'postEvaluation',
+            documents: [
+                'item',
+                'activeeffect',
+                'measuredtemplate',
+                'region'
+            ],
+            options: [
+                'scene'
+            ]
+        }
     ]
 };
 export function getDocumentPasses(document, type) {

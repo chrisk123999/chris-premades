@@ -636,6 +636,17 @@ export class ItemMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
                 }
             },
             {
+                id: 'd20',
+                label: 'CHRISPREMADES.Medkit.Tabs.DevTools.D20',
+                value: JSON?.stringify(this.flags?.macros?.d20),
+                placeholder: '[&quot;macroNameOne&quot;, &quot;macroNameTwo&quot;]',
+                isText: true,
+                flag: {
+                    key: 'macros.d20',
+                    value: 'array'
+                }
+            },
+            {
                 id: 'equipment',
                 label: 'CHRISPREMADES.Medkit.Tabs.DevTools.Equipment',
                 value: this.flags?.equipment?.identifier,
@@ -746,7 +757,8 @@ export class ItemMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
             'system.source',
             'system.prepared',
             'system.method',
-            'system.uses'
+            'system.uses',
+            'flags.core.sourceId'
         ];
         const cleanPaths = [
             'flags.midi-qol.onUseMacroName',
@@ -845,7 +857,7 @@ export class ItemMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
                         await this.item.setFlag('chris-premades', 'info.hasAnimation', this._macro.hasAnimation);
                     }
                     let updates = {};
-                    for (let i of ['check', 'save', 'aura', 'combat', 'item', 'death', 'effect', 'midi', 'movement', 'region', 'rest', 'skill', 'template', 'toolCheck']) {
+                    for (let i of ['check', 'save', 'aura', 'combat', 'item', 'death', 'effect', 'midi', 'movement', 'region', 'rest', 'skill', 'template', 'toolCheck', 'd20']) {
                         if (!this._macro[i]) continue;
                         if (i === 'midi') {
                             for (let j of ['item', 'actor']) {
