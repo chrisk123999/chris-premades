@@ -1,0 +1,78 @@
+{
+  "name": "Deck of Miscellany",
+  "type": "container",
+  "img": "icons/sundries/gaming/rune-card.webp",
+  "system": {
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "identifier": "deck-of-miscellany",
+    "source": {
+      "revision": 1,
+      "rules": "2014",
+      "book": "",
+      "page": "",
+      "custom": "",
+      "license": ""
+    },
+    "identified": true,
+    "unidentified": {
+      "description": ""
+    },
+    "container": null,
+    "quantity": 1,
+    "weight": {
+      "value": 0,
+      "units": "lb"
+    },
+    "price": {
+      "value": 0,
+      "denomination": "gp"
+    },
+    "rarity": "",
+    "attunement": "",
+    "currency": {
+      "pp": 0,
+      "gp": 0,
+      "ep": 0,
+      "sp": 0,
+      "cp": 0
+    },
+    "capacity": {
+      "volume": {
+        "units": "cubicFoot"
+      },
+      "weight": {
+        "units": "lb"
+      }
+    },
+    "properties": [],
+    "attuned": false,
+    "equipped": true
+  },
+  "effects": [],
+  "folder": "4TYgcjpgCO6kJJ6d",
+  "flags": {
+    "dnd5e": {
+      "riders": {
+        "activity": []
+      }
+    },
+    "chris-premades": {
+      "info": {
+        "identifier": "deckOfMiscellany",
+        "rules": "legacy",
+        "source": "chris-premades",
+        "version": "1.3.98"
+      },
+      "macros": {
+        "item": [
+          "deckOfMiscellany"
+        ]
+      }
+    }
+  },
+  "_id": "1QcPs96EHdGxq1tL",
+  "_key": "!items!1QcPs96EHdGxq1tL"
+}
