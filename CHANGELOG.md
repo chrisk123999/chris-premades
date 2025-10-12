@@ -1,3 +1,8 @@
+# 1.3.99 Release:
+## New Modern Content:
+- Dreadful Strikes
+- Beguiling Twist
+
 # 1.3.98 Release:
 ## New Legacy Content:
 - Deck of Miscellany
