@@ -1,0 +1,85 @@
+{
+  "name": "Robe of Useful Items",
+  "type": "container",
+  "effects": [],
+  "system": {
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "identifier": "robe-of-useful-items",
+    "source": {
+      "book": "PHB",
+      "page": "",
+      "license": "",
+      "custom": "",
+      "rules": "2014",
+      "revision": 1
+    },
+    "identified": true,
+    "unidentified": {
+      "description": ""
+    },
+    "container": null,
+    "quantity": 1,
+    "weight": {
+      "value": 0,
+      "units": "lb"
+    },
+    "price": {
+      "value": 0,
+      "denomination": "gp"
+    },
+    "rarity": "uncommon",
+    "attunement": "",
+    "currency": {
+      "pp": 0,
+      "gp": 1,
+      "ep": 0,
+      "sp": 0,
+      "cp": 0
+    },
+    "capacity": {
+      "volume": {
+        "units": "cubicFoot"
+      },
+      "weight": {
+        "units": "lb"
+      }
+    },
+    "properties": [
+      "mgc"
+    ],
+    "attuned": false,
+    "equipped": false
+  },
+  "flags": {
+    "infusions": {
+      "maps": [],
+      "applied": [],
+      "infused": false
+    },
+    "dnd5e": {
+      "riders": {
+        "activity": []
+      }
+    },
+    "chris-premades": {
+      "info": {
+        "identifier": "robeOfUsefulItems",
+        "rules": "legacy",
+        "source": "chris-premades",
+        "version": "1.3.88"
+      },
+      "macros": {
+        "item": [
+          "robeOfUsefulItems"
+        ]
+      }
+    }
+  },
+  "img": "icons/equipment/back/mantle-collared-black.webp",
+  "folder": "BW4QY2HnpztcnENc",
+  "_id": "zLTajMDmTyuvdNDP",
+  "_key": "!items!zLTajMDmTyuvdNDP"
+}

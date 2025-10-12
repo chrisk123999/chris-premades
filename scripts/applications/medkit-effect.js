@@ -1,6 +1,5 @@
 let {ApplicationV2, HandlebarsApplicationMixin} = foundry.applications.api;
 import {genericUtils, constants} from '../utils.js';
-import * as macros from '../macros.js'; // Maybe see if the added macro exsists? Too much for 4am brain
 import {EmbeddedMacros} from './embeddedMacros.js';
 export class EffectMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
     constructor(context, effectDocument) {
@@ -144,21 +143,20 @@ export class EffectMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
                             value: 'tempMaxHP',
                             isSelected: effect.flags['chris-premades']?.specialDuration?.includes('tempMaxHP')
                         }
-                    ].concat(Object.entries(CONFIG.DND5E.tools).flatMap(([key, value]) => {
-                        let packItem = fromUuidSync(value.id);
+                    ].concat(Object.entries(constants.getToolNames()).flatMap(([key, value]) => {
                         return [
                             {
-                                label: genericUtils.format('CHRISPREMADES.Medkit.Effect.SpecialDuration.Rolled', {toolName: packItem.name}),
+                                label: genericUtils.format('CHRISPREMADES.Medkit.Effect.SpecialDuration.Rolled', {toolName: value}),
                                 value: key,
                                 isSelected: effect.flags['chris-premades']?.specialDuration?.includes(key)
                             },
                             {
-                                label: genericUtils.format('CHRISPREMADES.Medkit.Effect.SpecialDuration.Failed', {toolName: packItem.name}),
+                                label: genericUtils.format('CHRISPREMADES.Medkit.Effect.SpecialDuration.Failed', {toolName: value}),
                                 value: key + 'Fail',
                                 isSelected: effect.flags['chris-premades']?.specialDuration?.includes(key + 'Fail')
                             },
                             {
-                                label: genericUtils.format('CHRISPREMADES.Medkit.Effect.SpecialDuration.Succeed', {toolName: packItem.name}),
+                                label: genericUtils.format('CHRISPREMADES.Medkit.Effect.SpecialDuration.Succeed', {toolName: value}),
                                 value: key + 'Succeed',
                                 isSelected: effect.flags['chris-premades']?.specialDuration?.includes(key + 'Succeed')
                             }
@@ -182,7 +180,8 @@ export class EffectMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
                 save: JSON?.stringify(effect.flags['chris-premades']?.macros?.save) ?? '',
                 check: JSON?.stringify(effect.flags['chris-premades']?.macros?.check) ?? '',
                 skill: JSON?.stringify(effect.flags['chris-premades']?.macros?.skill) ?? '',
-                death: JSON?.stringify(effect.flags['chris-premades']?.macros?.death) ?? ''
+                death: JSON?.stringify(effect.flags['chris-premades']?.macros?.death) ?? '',
+                d20: JSON?.stringify(effect.flags['chris-premades']?.macros?.d20) ?? ''
             },
             isDev: game.settings.get('chris-premades', 'devTools'),
             identifier: effect.flags['chris-premades']?.info?.identifier ?? '',
@@ -392,6 +391,7 @@ export class EffectMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
         if (this.context.macros.check?.length) genericUtils.setProperty(flagUpdates, 'macros.check', JSON.parse(this.context.macros.check.replace(/'/g, '"')));
         if (this.context.macros.skill?.length) genericUtils.setProperty(flagUpdates, 'macros.skill', JSON.parse(this.context.macros.skill.replace(/'/g, '"')));
         if (this.context.macros.death?.length) genericUtils.setProperty(flagUpdates, 'macros.death', JSON.parse(this.context.macros.death.replace(/'/g, '"')));
+        if (this.context.macros.d20?.length) genericUtils.setProperty(flagUpdates, 'macros.d20', JSON.parse(this.context.macros.d20.replace(/'/g, '"')));
         let effectUpdates = {flags: {'chris-premades': flagUpdates}};
         genericUtils.mergeObject(effectData, effectUpdates);
         let updates = {

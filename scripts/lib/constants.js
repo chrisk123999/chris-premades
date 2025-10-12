@@ -194,6 +194,7 @@ let baseRangedWeaponOptions = [];
 const getBaseWeaponOptions = () => {return baseWeaponOptions;};
 const getBaseMeleeWeaponOptions = () => {return baseMeleeWeaponOptions;};
 const getBaseRangedWeaponOptions = () => {return baseRangedWeaponOptions;};
+let toolNames = {};
 export async function setupConstants() {
     let data = (await Promise.all(Object.entries(CONFIG.DND5E.weaponIds).map(async ([id, uuid]) => {
         let document = await fromUuid(uuid);
@@ -206,6 +207,11 @@ export async function setupConstants() {
     baseWeaponOptions = data.map(i => ({value: i.id, label: i.document.name}));
     baseMeleeWeaponOptions = data.filter(i => meleeWeaponTypes.includes(i.document.system.type.value)).map(i => ({value: i.id, label: i.document.name}));
     baseRangedWeaponOptions = data.filter(i => rangedWeaponTypes.includes(i.document.system.type.value)).map(i => ({value: i.id, label: i.document.name}));
+    await Promise.all(Object.entries(CONFIG.DND5E.tools).map(async ([key, value]) => {
+        let item = await fromUuid(value.id);
+        if (!item) return;
+        toolNames[key] = item.name;
+    }));
 }
 const overTimeOptions = [
     {
@@ -633,6 +639,9 @@ let languageOptions = () => {
     }
     return extractLanguages(CONFIG.DND5E.languages).sort((a, b) => a.label.localeCompare(b.label, 'en', {'sensitivity': 'base'}));
 };
+function getToolNames() {
+    return toolNames;
+}
 export let constants = {
     packs,
     featurePacks,
@@ -676,5 +685,6 @@ export let constants = {
     meleeWeaponAttacks,
     getBaseWeaponOptions,
     getBaseMeleeWeaponOptions,
-    getBaseRangedWeaponOptions
+    getBaseRangedWeaponOptions,
+    getToolNames
 };

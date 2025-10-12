@@ -306,6 +306,18 @@ export const eventStructure = {
             documents: [
                 'item'
             ]
+        },
+        {
+            pass: 'updated',
+            documents: [
+                'item'
+            ]
+        },
+        {
+            pass: 'actorUpdated',
+            documents: [
+                'item'
+            ]
         }
     ],
     death: [
@@ -461,6 +473,20 @@ export const eventStructure = {
                 'target',
                 'scene'
             ]
+        },
+        {
+            pass: 'utilityRollComplete',
+            documents: [
+                'item',
+                'activeeffect',
+                'measuredtemplate',
+                'region',
+                'activity'
+            ],
+            options: [
+                'target',
+                'scene'
+            ]
         }
     ],
     'midi-actor': [
@@ -569,6 +595,20 @@ export const eventStructure = {
                 'activeeffect',
                 'measuredtemplate',
                 'region'
+            ],
+            options: [
+                'target',
+                'scene'
+            ]
+        },
+        {
+            pass: 'utilityRollComplete',
+            documents: [
+                'item',
+                'activeeffect',
+                'measuredtemplate',
+                'region',
+                'activity'
             ],
             options: [
                 'target',
@@ -803,6 +843,32 @@ export const eventStructure = {
                 'activeeffect',
                 'measuredtemplate',
                 'region'
+            ]
+        }
+    ],
+    d20: [
+        {
+            pass: 'preEvaluation',
+            documents: [
+                'item',
+                'activeeffect',
+                'measuredtemplate',
+                'region'
+            ],
+            options: [
+                'scene'
+            ]
+        },
+        {
+            pass: 'postEvaluation',
+            documents: [
+                'item',
+                'activeeffect',
+                'measuredtemplate',
+                'region'
+            ],
+            options: [
+                'scene'
             ]
         }
     ]

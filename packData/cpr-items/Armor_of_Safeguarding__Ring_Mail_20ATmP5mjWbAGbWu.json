@@ -87,7 +87,7 @@
             {
               "type": "itemUses",
               "value": "1",
-              "scaling": {}
+              "target": ""
             }
           ]
         },
@@ -129,10 +129,15 @@
             "concentration"
           ],
           "spellbook": true,
-          "uuid": "Compendium.chris-premades.CPRSpells.Item.KAYtfGt5Z3hHcVkN"
+          "uuid": "Compendium.chris-premades.CPRSpells.Item.KAYtfGt5Z3hHcVkN",
+          "ability": ""
         },
         "name": "",
-        "_id": "WCOvXkZbID14awID"
+        "_id": "WCOvXkZbID14awID",
+        "img": "",
+        "midiProperties": {
+          "confirmTargets": "never"
+        }
       }
     },
     "identifier": "armor-of-safeguarding-ring-mail"
@@ -166,20 +171,28 @@
       "idv": false,
       "ida": false
     },
+    "dnd5e": {
+      "riders": {
+        "activity": []
+      }
+    },
     "chris-premades": {
       "info": {
         "identifier": "armorOfSafeguardingR",
         "source": "chris-premades",
-        "version": "0.12.51"
+        "version": "1.3.94"
       },
       "equipment": {
         "identifier": "armorOfSafeguardingP"
-      }
-    },
-    "dnd5e": {
-      "riders": {
-        "activity": [],
-        "effect": []
+      },
+      "hiddenActivities": [],
+      "activityIdentifiers": {
+        "beaconOfHope": "WCOvXkZbID14awID"
+      },
+      "macros": {
+        "item": [
+          "armorOfSafeguardingR"
+        ]
       }
     }
   },
@@ -253,7 +266,7 @@
       "_key": "!items.effects!20ATmP5mjWbAGbWu.gGKyyCnvfwj6qo7p"
     }
   ],
-  "img": "ddb-images/other/ddb/item/Armor.jpg",
+  "img": "icons/commodities/leather/ring-leather.webp",
   "folder": "VRIJQcr8Bd9OVvq2",
   "_id": "20ATmP5mjWbAGbWu",
   "_key": "!items!20ATmP5mjWbAGbWu"

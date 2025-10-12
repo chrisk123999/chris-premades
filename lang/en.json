@@ -360,6 +360,9 @@
                 "actorUnequipped": {
                     "Label": "Actor Unequipped"
                 },
+                "actorUpdated": {
+                    "Label": "Actor Updated"
+                },
                 "applyDamage": {
                     "Label": "Apply Damage"
                 },
@@ -465,6 +468,9 @@
                 "sceneSituational": {
                     "Label": "Scene Situational"
                 },
+                "sceneUtilityRollComplete": {
+                    "Label": "Scene Utility Roll Complete"
+                },
                 "short": {
                     "Label": "Short Rest"
                 },
@@ -498,6 +504,9 @@
                 "targetSituational": {
                     "Label": "Target Situational"
                 },
+                "targetUtilityRollComplete": {
+                    "Label": "Target Utility Roll Complete"
+                },
                 "turnEnd": {
                     "Label": "Turn End"
                 },
@@ -518,6 +527,24 @@
                 },
                 "unequipped": {
                     "Label": "Unequipped"
+                },
+                "updated": {
+                    "Label": "Updated"
+                },
+                "utilityRollComplete": {
+                    "Label": "Utility Roll Complete"
+                },
+                "preEvaluation": {
+                    "Label": "Pre-Evaluation"
+                },
+                "postEvaluation": {
+                    "Label": "Post-Evaluation"
+                },
+                "scenePreEvaluation": {
+                    "Label": "Scene Pre-Evaluation"
+                },
+                "scenePostEvaluation": {
+                    "Label": "Scene Post-Evaluation"
                 }
             },
             "Priority": {
@@ -545,7 +572,8 @@
                 "save": "Save",
                 "skill": "Skill",
                 "template": "Template",
-                "toolCheck": "Tool"
+                "toolCheck": "Tool",
+                "d20": "D20"
             }
         },
         "Error": {
@@ -649,6 +677,7 @@
             "Replace": "Replace",
             "Rerolling": "Rerolling {origDie} ({origResult}):",
             "Select": "Select",
+            "SelectAProficency": "Select A Proficency:",
             "SelectASkill": "Select a skill:",
             "SelectATarget": "Select a target:",
             "SelectAWeapon": "Select a weapon:",
@@ -1003,6 +1032,9 @@
                 "BounceFeature": "Chaos Bolt: Bounce",
                 "Select": "Select damage type:"
             },
+            "CharlatansDie": {
+                "Use": "What do you roll?"
+            },
             "CheckCover": {
                 "TargetCover": "Target Cover:",
                 "YourCover": "Your Cover:"
@@ -1139,6 +1171,38 @@
             },
             "DeathBurst": {
                 "Name": "Death Burst"
+            },
+            "DeckOfMiscellany": {
+                "AllowCreation": "Allow Card Creation:",
+                "Burlap": "Burlap",
+                "Card": "Miscellany Card",
+                "Convert": "Convert into a card?",
+                "Gold": "of Gold",
+                "Leather": "Leather",
+                "Silk": "Silk",
+                "Wooden": "Wooden"
+            },
+            "DeckOfWonder": {
+                "DysteryDrawn": "Mystery Drawn:",
+                "Gemstone": "Gemstone",
+                "Jewlery": "Jewlery",
+                "Knife": "Select a weapon:",
+                "Mischief": {
+                    "Cards": "Draw Cards",
+                    "Choose": "Draw two more cards or get a uncommon wondrous item?",
+                    "Item": "Magic Item",
+                    "Select": "Select a wondrous item:"
+                },
+                "SelectACard": "Select a card:",
+                "SelectCard": "Select Card:",
+                "Size": "Deck Size:",
+                "UseJustice": "Prevent advantage and disadvantage?",
+                "UseJusticeFor": "Prevent advantage and disadvantage for {name}?",
+                "Vulture": {
+                    "Found": "Was the item found?",
+                    "Lost": "{} (Lost)",
+                    "Select": "Select an item to lose:"
+                }
             },
             "DetectThoughts": {
                 "ProbeDeeper": "Detect Thoughts: Probe Deeper"
@@ -1919,6 +1983,12 @@
                 "Stored": "{spellName} stored!",
                 "Upcast": "Cast at what level?"
             },
+            "RobeOfUsefulItems": {
+                "AllowPatching": "Allow new patches:",
+                "Bag": "Bag of Gold",
+                "Convert": "Convert into a patch?",
+                "Patch": "Patch:"
+            },
             "RollForActivity": {
                 "Error": "No activity including '{total}' found in {name}",
                 "Name": "Roll for Activity",
@@ -2322,6 +2392,9 @@
                 "Heal": "Grant {formula} temporary HP",
                 "Temp": "Twilight Sanctuary: Temporary HP"
             },
+            "UnarguableWizardry": {
+                "Prompt": "This check is to convince others that you are, in fact, a wizard."
+            },
             "UnarmedFighting": {
                 "Grapple": "Unarmed Fighting: Grapple Damage",
                 "Select": "Deal damage to a which grappled creature?"
@@ -2653,6 +2726,7 @@
                     "AutomationInfo": "Configure Automation Info:",
                     "Check": "Check:",
                     "Combat": "Combat:",
+                    "D20": "D20:",
                     "Death": "Death:",
                     "Equipment": "Equipment:",
                     "HasAnimation": "Has Animation:",
@@ -2893,6 +2967,10 @@
             "conditionResistanceAndVulnerability": {
                 "Hint": "Enables condition resistance and vulnerability automation.",
                 "Name": "Condition Resistance and Vulnerability"
+            },
+            "convenientEffects": {
+                "Hint": "When enabled, Convenient Effects will be automatically disabled on items from CPR, GPS, MISC, and ACC.",
+                "Name": "Convenient Effects: Auto Disable"
             },
             "criticalCompendium": {
                 "Hint": "Select your Critical Compendium.",

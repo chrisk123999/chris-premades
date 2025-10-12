@@ -1,3 +1,74 @@
+# 1.3.98 Release:
+## New Legacy Content:
+- Deck of Miscellany
+- Deck of Wonder
+## Bug Fixes:
+- Death Ward
+- Disintegrate
+## API Update Notes:
+- Added a D20 event with `preEvaluation`, `scenePreEvaluation`, `postEvaluation`, and `scenePostEvaluation` passes. These passes have also been added to embedded macros.
+## API Bug Fixes:
+- Enchantment effects on items will now properly trigger the `created` and `deleted` effect passes.
+
+# 1.3.97 Release:
+## Bug Fixes:
+- Crimson Rite
+- Item Medkit
+
+# 1.3.96 Release:
+## Update Notes:
+- Added a module integration setting to automatically disable Convenient Effects on CPR, GPS, MISC, and ACC items. Enabled by default. (None of these modules make use of Convenient Effects)
+
+# 1.3.95 Release:
+## New Legacy Content:
+- Charlatan's Die
+## Bug Fixes:
+- 3rd party feats should now correctly be picked up by the Medkit.
+## API Update Notes:
+- Added `utilityRollComplete`, `targetUtilityRollComplete`, and `sceneUtilityRollComplete`. These passes have also been added to embedded macros.
+
+# 1.3.94 Release:
+## New Legacy Content:
+- Ruin's Wake
+## Bug Fixes:
+- Armor of Safeguarding
+- Sanctuary
+
+# 1.3.93 Release:
+## Bug Fixes:
+- Effect Medkit
+
+# 1.3.92 Release:
+## Bug Fixes:
+- Item Medkit Event
+
+# 1.3.91 Release:
+## New Modern Content:
+- Unarguable Wizardry
+- “Cantrips”
+
+# 1.3.90 Release:
+## Bug Fixes:
+- ACC Integration
+
+# 1.3.89 Release:
+## New Legacy Content:
+- Hunter's Intuition
+## Bug Fixes:
+- Robe of Useful Items
+
+# 1.3.88 Release:
+## New Legacy Content:
+- Robe of Useful Items
+## Bug Fixes:
+- Metamagic: Distant Spell (Legacy)
+## API Updates:
+- Added `updated` and `actorUpdated` to the item events.
+
+# 1.3.87 Release:
+## Bug Fixes:
+- GM Detection Fixes
+
 # 1.3.86 Release:
 ## Bug Fixes:
 - GM Detection Fixes

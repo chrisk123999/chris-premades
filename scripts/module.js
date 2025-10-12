@@ -101,16 +101,14 @@ Hooks.once('ready', () => {
     activities.patchCanUse();
     toolCheck.patch();
     if (utils.genericUtils.getCPRSetting('groupSummonsWithOwner')) initiative.patch(true);
-    if (utils.genericUtils.getCPRSetting('manualRollsGMFulfils')) rollResolver.patch(true);
-    if (utils.genericUtils.getCPRSetting('manualRollsEnabled')) {
-        rollResolver.registerFulfillmentMethod();
-        if (foundry.utils.isNewerVersion('4.3', game.system.version)) rollResolver.patchBuild(true); // remove when 4.3+ only
-    }
+    rollResolver.patch(true);
+    if (utils.genericUtils.getCPRSetting('manualRollsEnabled')) rollResolver.registerFulfillmentMethod();
     tours.checkTour();
     if (utils.genericUtils.getCPRSetting('activityCSSTweak')) activities.cssTweak(true);
-    if (!game.user.isGM) return;
-    if (utils.genericUtils.getCPRSetting('migrationVersion') !== game.modules.get('chris-premades').version) migrate();
     if (utils.genericUtils.getCPRSetting('quickConditions')) quickConditions.ready();
+    if (game.user.isGM) {
+        if (utils.genericUtils.getCPRSetting('migrationVersion') !== game.modules.get('chris-premades').version) migrate();
+    }
     Hooks.callAll('cprReady');
 });
 globalThis['chrisPremades'] = {

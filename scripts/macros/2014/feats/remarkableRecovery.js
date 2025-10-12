@@ -7,6 +7,7 @@ async function heal({trigger: {entity: item}, workflow}) {
 }
 export let remarkableRecovery = {
     name: 'Remarkable Recovery: Regain Hit Points',
+    aliases: ['Remarkable Recovery'],
     version: '1.1.0',
     midi: {
         actor: [

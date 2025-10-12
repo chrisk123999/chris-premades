@@ -114,6 +114,13 @@ export function registerSettings() {
         select: true
     });
     addSetting({
+        key: 'rollTableCompendium',
+        type: String,
+        default: 'world.ddb-' + game.world.id + '-ddb-tables',
+        category: 'compendium',
+        select: true
+    });
+    addSetting({
         key: 'temporaryEffectHud',
         type: Boolean,
         default: false,
@@ -191,6 +198,12 @@ export function registerSettings() {
         key: 'automatedAnimationSounds',
         type: Boolean,
         default: false,
+        category: 'integration'
+    });
+    addSetting({
+        key: 'convenientEffects',
+        type: Boolean,
+        default: true,
         category: 'integration'
     });
     addSetting({

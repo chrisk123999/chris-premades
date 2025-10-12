@@ -276,7 +276,7 @@ async function selectSpellSlot(actor, title, content, {maxLevel = 9, minLevel = 
     if (no) inputs.push(['CHRISPREMADES.Generic.No', false]);
     return await buttonDialog(title, content, inputs, {displayAsRows: true, userId: userId});
 }
-async function selectDamageType(damageTypes, title, context, {addNo = false} = {}) {
+async function selectDamageType(damageTypes, title, context, {addNo = false, userId = game.user.id} = {}) {
     let images = {
         acid: 'icons/magic/acid/projectile-faceted-glob.webp',
         bludgeoning: 'icons/magic/earth/projectiles-stone-salvo-gray.webp',
@@ -302,7 +302,7 @@ async function selectDamageType(damageTypes, title, context, {addNo = false} = {
         ];
     });
     if (addNo) buttons.push(['CHRISPREMADES.Generic.No', false, {image: images.no}]);
-    return await buttonDialog(title, context, buttons);
+    return await buttonDialog(title, context, buttons, {userId});
 }
 async function queuedConfirmDialog(title, content, {actor, reason, userId} = {}) {
     let selection;

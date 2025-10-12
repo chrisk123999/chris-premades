@@ -11,6 +11,7 @@ import {explodingHeals} from '../macros/homebrew/explodingHeals.js';
 import {CPRMultipleRollResolver} from '../applications/rollResolverMultiple.js';
 import {masteries} from '../macros/2024/mechanics/masteries.js';
 import {effects} from '../extensions/effects.js';
+import {convenientEffects} from '../integrations/convenientEffects.js';
 function getItemMacroData(item) {
     return item.flags['chris-premades']?.macros?.midi?.item ?? [];
 }
@@ -230,6 +231,7 @@ async function preItemRoll(workflow) {
         if (stop) return false;
     }
     if (genericUtils.getCPRSetting('diceSoNice') && game.modules.get('dice-so-nice')?.active) await diceSoNice.preItemRoll(workflow);
+    if (workflow.activity && genericUtils.getCPRSetting('convenientEffects')) await convenientEffects.use(workflow.activity);
     await genericUtils.sleep(50);
     stop = await executeMacroPass(workflow, 'preItemRoll');
     if (stop) return false;
@@ -307,6 +309,24 @@ async function damageRollComplete(workflow) {
     if (genericUtils.getCPRSetting('explodingHeals')) await explodingHeals(workflow);
     let manualRollsEnabled = genericUtils.getCPRSetting('manualRollsEnabled');
     if (manualRollsEnabled && (workflow.hitTargets?.size === 0 ? genericUtils.getCPRSetting('manualRollsPromptOnMiss') : true)) await _manualRollsNewRolls(workflow);
+}
+async function utilityRollComplete(workflow) {
+    await executeMacroPass(workflow, 'utilityRollComplete');
+    await executeTargetMacroPass(workflow, 'targetUtilityRollComplete');
+    let sceneTriggers = [];
+    workflow.token?.document.parent.tokens.filter(i => i.uuid !== workflow.token?.document.uuid && i.actor).forEach(j => {
+        sceneTriggers.push(...getSortedTriggers({token: j.object, actor: j.actor, sourceToken: workflow.token}, 'sceneUtilityRollComplete'));
+    });
+    let sortedSceneTriggers = [];
+    let names = new Set();
+    sceneTriggers.forEach(i => {
+        if (names.has(i.name)) return;
+        sortedSceneTriggers.push(i);
+        names.add(i.name);
+    });
+    sortedSceneTriggers = sortedSceneTriggers.sort((a, b) => a.priority - b.priority);
+    genericUtils.log('dev', 'Executing Midi Macro Pass: sceneUtilityRollComplete');
+    for (let trigger of sortedSceneTriggers) await executeMacro(trigger, workflow);
 }
 async function _manualRollsNewRolls(workflow) {
     genericUtils.log('dev', 'New Rolls for Midi Workflow');
@@ -406,6 +426,7 @@ export let midiEvents = {
     attackRollComplete,
     savesComplete,
     damageRollComplete,
+    utilityRollComplete,
     rollFinished,
     preambleComplete,
     preTargetDamageApplication,

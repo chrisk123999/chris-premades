@@ -1,6 +1,7 @@
 import {CPRSingleRollResolver} from '../applications/rollResolverSingle.js';
 import {DialogApp} from '../applications/dialog.js';
 import {genericUtils, rollUtils, socketUtils} from '../utils.js';
+import {d20} from '../events/d20.js';
 function registerFulfillmentMethod() {
     CONFIG.Dice.fulfillment.methods.chrispremades = {
         label: 'Cauldron of Plentiful Resources',
@@ -51,23 +52,23 @@ async function manualRollsUsersDialog() {
 }
 async function evaluate(wrapped, options) {
     let gmID = socketUtils.gmID();
-    if (gmID === game.user.id || !game.users.get(gmID)?.active) return await wrapped(options);
+    if (gmID === game.user.id || !game.users.get(gmID)?.active) {
+        if (this.terms[0].faces === 20 && !options?.['chris-premades']?.skipEvent && this.data.actorUuid) {
+            await d20.preEvaluation(this, options);
+            let roll = await wrapped(options);
+            let testRoll = await d20.postEvaluation(roll, options);
+            if (testRoll) return testRoll;
+            return roll;
+        } else {
+            return await wrapped(options);
+        }
+    }
     let remoteRoll = await rollUtils.remoteRoll(this, gmID);
     this.terms = remoteRoll.terms;
     this._dice = remoteRoll._dice;
     this._evaluated = remoteRoll._evaluated;
     this._total = remoteRoll._total;
     return this;
-}
-async function buildConfigure(wrapped, config={}, dialog={}, message={}) {
-    let rollType = genericUtils.getProperty(message, 'data.flags.dnd5e.roll.type');
-    if (rollType) {
-        for (let roll of config.rolls ?? []) {
-            roll.options ??= {};
-            roll.options.rollType ??= rollType;
-        }
-    }
-    return await wrapped(config, dialog, message);
 }
 function patch(enabled) {
     if (enabled) {
@@ -78,19 +79,9 @@ function patch(enabled) {
         libWrapper.unregister('chris-premades', 'Roll.prototype.evaluate');
     }
 }
-function patchBuild(enabled) {
-    if (enabled) {
-        genericUtils.log('dev', 'BuildConfigure BasicRoll Patched!');
-        libWrapper.register('chris-premades', 'CONFIG.Dice.BasicRoll.buildConfigure', buildConfigure, 'WRAPPER');
-    } else {
-        genericUtils.log('dev', 'BuildConfigure BasicRoll Patch Removed!');
-        libWrapper.unregister('chris-premades', 'CONFIG.Dice.BasicRoll.buildConfigure');
-    }
-}
 export let rollResolver = {
     registerFulfillmentMethod,
     unregisterFulfillmentMethod,
     manualRollsUsersDialog,
-    patch,
-    patchBuild
+    patch
 };

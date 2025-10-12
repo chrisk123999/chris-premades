@@ -1,5 +1,5 @@
 import {activityUtils, actorUtils, constants, dialogUtils, genericUtils, itemUtils, socketUtils, tokenUtils, workflowUtils} from '../../../../utils.js';
-async function selfSave({trigger: {entity: item, config, actor, roll}}) {
+async function selfSave({trigger: {entity: item, config, actor, roll, token}}) {
     if (config['chris-premades']?.countercharm) return;
     if (actorUtils.hasUsedReaction(actor)) return;
     let targetValue = roll.options.target;
@@ -13,8 +13,6 @@ async function selfSave({trigger: {entity: item, config, actor, roll}}) {
     if (!conditions.size) return;
     let validConditions = itemUtils.getConfig(item, 'conditions');
     if (!conditions.find(i => validConditions.includes(i))) return;
-    let token = actorUtils.getFirstToken(actor);
-    if (!token) return;
     let selection = await dialogUtils.confirm(item.name, genericUtils.format('CHRISPREMADES.Macros.Countercharm.Use', {total: roll.total, feature: item.name}));
     if (!selection) return;
     await workflowUtils.syntheticItemRoll(item, [token]);

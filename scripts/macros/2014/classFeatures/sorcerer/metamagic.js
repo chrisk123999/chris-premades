@@ -87,7 +87,7 @@ async function useDistant({workflow}) {
         genericUtils.notify('CHRISPREMADES.Macros.Metamagic.NotEnough', 'info');
         return;
     }
-    let validSpells = actorUtils.getCastableSpells(workflow.actor).filter(i => ['touch', 'ft'].includes(i.system.range.units) && i.system.target.type?.length && i.system.target.type !== 'self');
+    let validSpells = actorUtils.getCastableSpells(workflow.actor).filter(i => ['touch', 'ft'].includes(i.system.range.units) && i.system.target.affects.type?.length && i.system.target.affects.type !== 'self');
     if (!validSpells.length) {
         genericUtils.notify('CHRISPREMADES.Macros.Metamagic.NoValid', 'info');
     }
