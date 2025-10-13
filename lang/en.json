@@ -1799,6 +1799,9 @@
             "MistyStep": {
                 "Name": "Misty Step"
             },
+            "MistyWanderer": {
+                "TeleportFriend": "Teleport a willing ally?"
+            },
             "Moonbeam": {
                 "Damage": "Moonbeam: Damage",
                 "Move": "Moonbeam: Move"

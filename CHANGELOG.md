@@ -1,4 +1,10 @@
 # 1.3.99 Release:
+## New Modern Content:
+- Dreadful Strikes
+- Otherworldly Glamour
+- Beguiling Twist
+- Fey Reinforcements
+- Misty Wanderer
 ## Bug Fixes:
 - Baleful Interdict
 
