@@ -1,3 +1,7 @@
+# 1.3.100 Release:
+## Bug Fixes:
+- Reroll Save on Damage Generic Feature
+  
 # 1.3.99 Release:
 ## New Modern Content:
 - Dreadful Strikes

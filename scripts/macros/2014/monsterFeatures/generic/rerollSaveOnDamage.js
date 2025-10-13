@@ -6,7 +6,10 @@ async function rollFinished({trigger, workflow}) {
     let targets = workflow.failedSaves;
     if (!targets.size) return;
     await Promise.all(targets.map(async i => {
-        let effect = actorUtils.getEffects(i.actor).find(j => workflow.activity.effects.map(i => i.effect.uuid).includes(j.origin));
+        let effect = actorUtils.getEffects(i.actor).find(j => {
+            return !j?.origin ? false : workflow.activity.effects.map(k => k.effect.uuid).includes(j.origin) ? true : fromUuidSync(j.origin)?.flags?.dnd5e?.itemUuid === workflow.activity.uuid;
+        });
+        if (!effect) return;
         let currentMacroList = genericUtils.getProperty(effect, 'flags.chris-premades.macros.midi.actor') ?? [];
         await genericUtils.setFlag(effect, 'chris-premades', 'macros.midi.actor', currentMacroList.concat(['rerollSaveOnDamageActor']));
     }));
@@ -21,7 +24,7 @@ async function targetRollFinished({trigger: {entity, token}, workflow}) {
     if (!sourceItem) return;
     let config = itemUtils.getGenericFeatureConfig(sourceItem, 'rerollSaveOnDamage');
     if (config.excludeSource && workflow.token.document.uuid === sourceItem.actor.token.uuid) return; 
-    let sourceActivity = sourceItem.system.activities.find(i => i.effects.some(j => j.effect.uuid === entity.origin));
+    let sourceActivity = sourceItem.system.activities.find(i => i.effects.some(j => j.effect.uuid === entity.origin)) ?? fromUuidSync(fromUuidSync(entity.origin)?.flags?.dnd5e?.itemUuid);
     if (!sourceActivity) return;
     let activityData = sourceActivity.toObject();
     delete activityData._id;
