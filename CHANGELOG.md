@@ -2,6 +2,7 @@
 ## New Modern Content:
 - Dreadful Strikes
 - Beguiling Twist
+- Fey Reinforcements
 
 # 1.3.98 Release:
 ## New Legacy Content:
