@@ -1,0 +1,111 @@
+{
+  "folder": "HrrCWx81ACzaenJw",
+  "name": "Otherworldly Glamour",
+  "type": "feat",
+  "_id": "RlpSy0FI80XCbZMJ",
+  "img": "icons/magic/light/orb-hands-humanoid-yellow.webp",
+  "system": {
+    "activities": {},
+    "uses": {
+      "spent": 0,
+      "recovery": [],
+      "max": ""
+    },
+    "advancement": [],
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "identifier": "otherworldly-glamour",
+    "source": {
+      "revision": 1,
+      "rules": "2024",
+      "book": "",
+      "page": "",
+      "custom": "PHB 2024",
+      "license": ""
+    },
+    "crewed": false,
+    "enchant": {},
+    "prerequisites": {
+      "items": [],
+      "repeatable": false,
+      "level": null
+    },
+    "properties": [],
+    "requirements": "",
+    "type": {
+      "value": "",
+      "subtype": ""
+    }
+  },
+  "effects": [
+    {
+      "name": "Otherworldly Glamour",
+      "img": "icons/magic/light/orb-hands-humanoid-yellow.webp",
+      "origin": "Compendium.chris-premades.CPRClassFeatures2024.Item.RlpSy0FI80XCbZMJ",
+      "_id": "KxOPnPEEJEw22paL",
+      "type": "base",
+      "system": {},
+      "changes": [
+        {
+          "key": "system.abilities.cha.bonuses.check",
+          "mode": 2,
+          "value": "max(1, @abilities.wis.mod)",
+          "priority": 20
+        }
+      ],
+      "disabled": false,
+      "duration": {
+        "startTime": null,
+        "combat": null,
+        "seconds": null,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "transfer": true,
+      "statuses": [],
+      "sort": 0,
+      "flags": {
+        "dnd5e": {
+          "riders": {
+            "statuses": []
+          }
+        },
+        "dae": {
+          "disableCondition": "",
+          "stackable": "noneName",
+          "showIcon": false,
+          "disableIncapacitated": false,
+          "durationExpression": "",
+          "macroRepeat": "none",
+          "specialDuration": []
+        },
+        "core": {
+          "overlay": false
+        }
+      },
+      "_key": "!items.effects!RlpSy0FI80XCbZMJ.KxOPnPEEJEw22paL"
+    }
+  ],
+  "flags": {
+    "dnd5e": {
+      "riders": {
+        "activity": []
+      }
+    },
+    "chris-premades": {
+      "info": {
+        "identifier": "otherworldlyGlamour",
+        "version": "1.3.99",
+        "source": "chris-premades",
+        "rules": "modern"
+      }
+    }
+  },
+  "_key": "!items!RlpSy0FI80XCbZMJ"
+}

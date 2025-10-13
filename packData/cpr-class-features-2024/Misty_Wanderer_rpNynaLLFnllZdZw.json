@@ -124,7 +124,7 @@
           "type": "recoverAll"
         }
       ],
-      "max": "(max(1,@abilities.wis.mod))"
+      "max": "max(1,@abilities.wis.mod)"
     },
     "advancement": [],
     "description": {

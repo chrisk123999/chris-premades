@@ -330,6 +330,7 @@ export {exceptionalTraining} from './macros/2024/classFeatures/ranger/beastMaste
 export {shareSpells} from './macros/2024/classFeatures/ranger/beastMaster/shareSpells.js';
 //Fey Wanderer
 export {dreadfulStrikes} from './macros/2024/classFeatures/ranger/feyWanderer/dreadfulStrikes.js';
+export {otherworldlyGlamour} from './macros/2024/classFeatures/ranger/feyWanderer/otherworldlyGlamour.js';
 export {beguilingTwist} from './macros/2024/classFeatures/ranger/feyWanderer/beguilingTwist.js';
 export {feyReinforcements} from './macros/2024/classFeatures/ranger/feyWanderer/feyReinforcements.js';
 export {mistyWanderer} from './macros/2024/classFeatures/ranger/feyWanderer/mistyWanderer.js';
