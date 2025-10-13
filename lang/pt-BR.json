@@ -468,6 +468,9 @@
                 "sceneSituational": {
                     "Label": "Cena Situacional"
                 },
+                "sceneUtilityRollComplete": {
+                    "Label": "Concluída Rolagem de Utilidade da Cena"
+                },
                 "short": {
                     "Label": "Descanso Curto"
                 },
@@ -501,6 +504,9 @@
                 "targetSituational": {
                     "Label": "Alvo Situacional"
                 },
+                "targetUtilityRollComplete": {
+                    "Label": "Concluída Rolagem de Utilidade do Alvo"
+                },
                 "turnEnd": {
                     "Label": "Fim do Turno"
                 },
@@ -524,6 +530,21 @@
                 },
                 "updated": {
                     "Label": "Atualizado"
+                },
+                "utilityRollComplete": {
+                    "Label": "Concluída Rolagem de Utilidade"
+                },
+                "preEvaluation": {
+                    "Label": "Pré-Evaluation"
+                },
+                "postEvaluation": {
+                    "Label": "Pós-Evaluation"
+                },
+                "scenePreEvaluation": {
+                    "Label": "Pré-Evaluation da Cena"
+                },
+                "scenePostEvaluation": {
+                    "Label": "Pós-Evaluation da Cena"
                 }
             },
             "Priority": {
@@ -551,7 +572,8 @@
                 "save": "Salvaguarda",
                 "skill": "Perícia",
                 "template": "Modelo",
-                "toolCheck": "Ferramenta"
+                "toolCheck": "Ferramenta",
+                "d20": "D20"
             }
         },
         "Error": {
@@ -655,15 +677,16 @@
             "Replace": "Substituir",
             "Rerolling": "Re-rolando {origDie} ({origResult}):",
             "Select": "Selecionar",
-            "SelectASkill": "Selecionar uma perícia:",
-            "SelectATarget": "Selecionar um alvo:",
-            "SelectAWeapon": "Selecionar uma arma:",
-            "SelectAnActivity": "Selecionar uma atividade:",
-            "SelectAnItem": "Selecionar um item:",
-            "SelectDamageType": "Escolha um tipo de dano:",
-            "SelectEffect": "Escolha um efeito:",
+            "SelectAProficency": "Selecione uma Proficiência:",
+            "SelectASkill": "Selecione uma Perícia:",
+            "SelectATarget": "Selecione um Alvo:",
+            "SelectAWeapon": "Selecione uma Arma:",
+            "SelectAnActivity": "Selecione uma Atividade:",
+            "SelectAnItem": "Selecione um Item:",
+            "SelectDamageType": "Escolha um Tipo de Dano:",
+            "SelectEffect": "Escolha um Efeito:",
             "SelectSpell": "Escolha uma Magia:",
-            "SelectSpellSlot": "Escolha um espaço de magia:",
+            "SelectSpellSlot": "Escolha um Espaço de Magia:",
             "SelectTargetEffect": "Escolha um efeito para cada alvo:",
             "Skill": "Teste de Perícia",
             "Source": "Origem",
@@ -1009,6 +1032,9 @@
                 "BounceFeature": "Raio de Caos: Saltar",
                 "Select": "Escolha o tipo de dano:"
             },
+            "CharlatansDie": {
+                "Use": "O que você rola?"
+            },
             "CheckCover": {
                 "TargetCover": "Cobertura de Alvo:",
                 "YourCover": "Sua Cobertura:"
@@ -1145,6 +1171,38 @@
             },
             "DeathBurst": {
                 "Name": "Explosão da Morte"
+            },
+            "DeckOfMiscellany": {
+                "AllowCreation": "Allow Card Creation:",
+                "Burlap": "Burlap",
+                "Card": "Miscellany Card",
+                "Convert": "Convert into a card?",
+                "Gold": "of Gold",
+                "Leather": "Leather",
+                "Silk": "Silk",
+                "Wooden": "Wooden"
+            },
+            "DeckOfWonder": {
+                "DysteryDrawn": "Compra Misteriosa:",
+                "Gemstone": "Pedra Preciosa",
+                "Jewlery": "Joia",
+                "Knife": "Escolha uma Arma:",
+                "Mischief": {
+                    "Cards": "Comprar Cartas",
+                    "Choose": "Comprar mais duas cartas ou obter um Item Maravilhoso Incomum?",
+                    "Item": "Item Mágico",
+                    "Select": "Escolha um Item Maravilhoso:"
+                },
+                "SelectACard": "Escolha uma Carta:",
+                "SelectCard": "Carta Escolhida:",
+                "Size": "Tamanho do Deck:",
+                "UseJustice": "Evite vantagens e desvantagens?",
+                "UseJusticeFor": "Prevenir vantagens e desvantagens para {name}?",
+                "Vulture": {
+                    "Found": "O item foi encontrado?",
+                    "Lost": "{} (Perdido)",
+                    "Select": "Selecione um item para perder:"
+                }
             },
             "DetectThoughts": {
                 "ProbeDeeper": "Detectar Pensamentos: Sondar Profundamente"
@@ -2334,6 +2392,9 @@
                 "Heal": "Dar {formula} PV temporário",
                 "Temp": "Santuário Crepuscular: PV Temporário"
             },
+            "UnarguableWizardry": {
+                "Prompt": "Este teste serve para convencer os outros de que você é, de fato, um mago."
+            },
             "UnarmedFighting": {
                 "Grapple": "Combate Desarmado: Dano Agarrado",
                 "Select": "Causar dano a uma criatura agarrada?"
@@ -2665,6 +2726,7 @@
                     "AutomationInfo": "Configurar Informações de Automação:",
                     "Check": "Teste:",
                     "Combat": "Combate:",
+                    "D20": "D20:",
                     "Death": "Morte:",
                     "Equipment": "Equipmento:",
                     "HasAnimation": "Tem Animação:",
@@ -2905,6 +2967,10 @@
             "conditionResistanceAndVulnerability": {
                 "Hint": "Habilita automação de resistência e vulnerabilidde de condição.",
                 "Name": "Resistência e Vulnerabilidade de Condição"
+            },
+            "convenientEffects": {
+                "Hint": "Quando ativado, Convenient Effects será desativado automaticamente em itens de CPR, GPS, MISC, e ACC.",
+                "Name": "Convenient Effects: Desativar Automaticamente"
             },
             "criticalCompendium": {
                 "Hint": "Selecione seu Compêndio Crítico.",
