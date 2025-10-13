@@ -34,7 +34,7 @@ async function damaged({trigger, workflow}) {
     if (!effectCounts.length) return;
     for (let i of effectCounts) {
         let deathStrikeUsed = workflow['chris-premades']?.deathstrike;
-        let selection = await dialogUtils.selectTargetDialog('CHRISPREMADES.Macros.BalefulInterdict.BurningSeals', 'CHRISPREMADES.Macros.BalefulInterdict.BurnSeals', [i.target], {type: 'selectAmount', maxAmount: i.count, minAmount: deathStrikeUsed ? 1 : 0, skipDeadAndUnconscious: false, userId: socketUtils.firstOwner(i.originItem, true), buttons: 'yesNo'});
+        let selection = await dialogUtils.selectTargetDialog('CHRISPREMADES.Macros.BalefulInterdict.BurningSeals', 'CHRISPREMADES.Macros.BalefulInterdict.BurnSeals', [i.target], {type: 'selectAmount', maxAmount: i.count, minAmount: deathStrikeUsed ? 1 : 0, skipDeadAndUnconscious: false, userId: socketUtils.firstOwner(i.originItem.actor, true), buttons: 'yesNo'});
         let amount = selection?.[0]?.[0]?.value;
         if (deathStrikeUsed && !amount) {
             amount = 1;

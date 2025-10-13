@@ -3,6 +3,8 @@ import {compendiumUtils, constants, dialogUtils, effectUtils, genericUtils, item
 async function use({workflow}) {
     let concentrationEffect = effectUtils.getConcentrationEffect(workflow.actor, workflow.item);
     let monsterCompendium = genericUtils.getCPRSetting('monsterCompendium');
+    let pack = game.packs.get(monsterCompendium);
+    if (!pack) return;
     let totalSummons = Math.floor((workflowUtils.getCastLevel(workflow) - 1) / 2);
     let typePl = genericUtils.translate('DND5E.CreatureBeastPl');
     let optionButtons = [

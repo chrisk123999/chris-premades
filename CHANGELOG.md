@@ -1,3 +1,7 @@
+# 1.3.99 Release:
+## Bug Fixes:
+- Baleful Interdict
+
 # 1.3.98 Release:
 ## New Legacy Content:
 - Deck of Miscellany
