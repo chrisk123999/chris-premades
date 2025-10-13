@@ -3,6 +3,7 @@
 - Dreadful Strikes
 - Beguiling Twist
 - Fey Reinforcements
+- Misty Wanderer
 
 # 1.3.98 Release:
 ## New Legacy Content:

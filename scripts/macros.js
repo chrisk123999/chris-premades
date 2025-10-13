@@ -332,6 +332,7 @@ export {shareSpells} from './macros/2024/classFeatures/ranger/beastMaster/shareS
 export {dreadfulStrikes} from './macros/2024/classFeatures/ranger/feyWanderer/dreadfulStrikes.js';
 export {beguilingTwist} from './macros/2024/classFeatures/ranger/feyWanderer/beguilingTwist.js';
 export {feyReinforcements} from './macros/2024/classFeatures/ranger/feyWanderer/feyReinforcements.js';
+export {mistyWanderer} from './macros/2024/classFeatures/ranger/feyWanderer/mistyWanderer.js';
 //Gloom Stalker
 export {dreadAmbusher} from './macros/2024/classFeatures/ranger/gloomStalker/dreadAmbusher.js';
 export {umbralSight} from './macros/2024/classFeatures/ranger/gloomStalker/umbralSight.js';
