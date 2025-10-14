@@ -242,7 +242,7 @@ function preImageCreate(effect, updates, options, id) {
         effect.updateSource({'flags.chris-premades.image.actor.original': otherActorEffects[0].flags['chris-premades'].image.actor.original});
     }
     if (tokenImg && !otherTokenEffects.length) {
-        effect.updateSource({'flags.chris-premades.image.token.original': effect.parent.img});
+        effect.updateSource({'flags.chris-premades.image.token.original': effect.parent.prototypeToken.texture.src});
     } else if (tokenImg) {
         effect.updateSource({'flags.chris-premades.image.token.original': otherTokenEffects[0].flags['chris-premades'].image.token.original});
     }

@@ -95,7 +95,7 @@ async function executeMacroPass(effect, pass, options) {
 }
 async function createActiveEffect(effect, options, userId) {
     if (!socketUtils.isTheGM()) return;
-    if (effect.parent instanceof Actor || (effect.parent instanceof Item && effect.parent.actor && effect.type === 'enchantment')) return;
+    if (!(effect.parent instanceof Actor || (effect.parent instanceof Item && effect.parent.actor && effect.type === 'enchantment'))) return;
     await auras.effectCheck(effect);
     await executeMacroPass(effect, 'created', options);
     if (effect.statuses.has('dead')) await death.executeMacroPass(effect.parent, 'dead');
