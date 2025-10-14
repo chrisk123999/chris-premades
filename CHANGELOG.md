@@ -1,12 +1,9 @@
-# 1.3.101 Release:
-## Bug Fixes:
-- Effect token transformations incorrectly reverting.
-## API Bug Fixes:
-- Effect Created pass should properly trigger again.
-
 # 1.3.100 Release:
 ## Bug Fixes:
+- Effect token transformations incorrectly reverting.
 - Reroll Save on Damage Generic Feature
+## API Bug Fixes:
+- Effect Created pass should properly trigger again.
   
 # 1.3.99 Release:
 ## New Modern Content:
