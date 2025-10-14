@@ -1,3 +1,7 @@
+# 1.3.102 Release:
+## Bug Fixes:
+- The previous bugfix no longer consists of a brand new bug
+
 # 1.3.101 Release:
 ## Bug Fixes:
 - GM Fulfilling Rolls no longer auto-registers wrapper
