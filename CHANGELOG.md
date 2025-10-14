@@ -1,6 +1,6 @@
 # 1.3.101 Release:
 ## Bug Fixes:
-- GM Fulfilling Manual Rolls
+- GM Fulfilling Rolls no longer auto-registers wrapper
 
 # 1.3.100 Release:
 ## Bug Fixes:
