@@ -609,7 +609,6 @@ export function registerSettings() {
             } else {
                 rollResolver.unregisterFulfillmentMethod();
             }
-            if (foundry.utils.isNewerVersion('4.3', game.system.version)) rollResolver.patchBuild(value); // remove when 4.3+ only
         }
     });
     addSetting({
@@ -878,8 +877,7 @@ export function registerSettings() {
         key: 'manualRollsGMFulfils',
         type: Boolean,
         default: false,
-        category: 'manualRolls',
-        onChange: (value) => rollResolver.patch(value)
+        category: 'manualRolls'
     });
     addSetting({
         key: 'addCompendiumButton',

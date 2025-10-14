@@ -101,7 +101,7 @@ Hooks.once('ready', () => {
     activities.patchCanUse();
     toolCheck.patch();
     if (utils.genericUtils.getCPRSetting('groupSummonsWithOwner')) initiative.patch(true);
-    if (utils.genericUtils.getCPRSetting('manualRollsGMFulfils')) rollResolver.patch(true);
+    rollResolver.patch(true);
     if (utils.genericUtils.getCPRSetting('manualRollsEnabled')) {
         rollResolver.registerFulfillmentMethod();
     }

@@ -1,3 +1,7 @@
+# 1.3.103 Release:
+## API Bug Fixes:
+- D20 event reinstated.
+
 # 1.3.102 Release:
 ## Bug Fixes:
 - The previous bugfix no longer consists of a brand new bug

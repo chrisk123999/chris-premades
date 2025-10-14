@@ -52,7 +52,14 @@ async function manualRollsUsersDialog() {
 }
 async function evaluate(wrapped, options) {
     let gmID = socketUtils.gmID();
-    if (gmID === game.user.id || !game.users.get(gmID)?.active) {
+    if (genericUtils.getCPRSetting('manualRollsGMFulfils') && game.users.get(gmID)?.active && gmID != game.user.id) {
+        let remoteRoll = await rollUtils.remoteRoll(this, gmID);
+        this.terms = remoteRoll.terms;
+        this._dice = remoteRoll._dice;
+        this._evaluated = remoteRoll._evaluated;
+        this._total = remoteRoll._total;
+        return this;
+    } else {
         if (this.terms[0].faces === 20 && !options?.['chris-premades']?.skipEvent && this.data.actorUuid) {
             await d20.preEvaluation(this, options);
             let roll = await wrapped(options);
@@ -63,12 +70,6 @@ async function evaluate(wrapped, options) {
             return await wrapped(options);
         }
     }
-    let remoteRoll = await rollUtils.remoteRoll(this, gmID);
-    this.terms = remoteRoll.terms;
-    this._dice = remoteRoll._dice;
-    this._evaluated = remoteRoll._evaluated;
-    this._total = remoteRoll._total;
-    return this;
 }
 function patch(enabled) {
     if (enabled) {
