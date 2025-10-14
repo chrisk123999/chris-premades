@@ -733,7 +733,7 @@ export class ItemMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
     static async update(item, sourceItem, {source, version, identifier} = {}, actorMedkit = false) {
         let itemData = genericUtils.duplicate(item.toObject());
         let sourceItemData = genericUtils.duplicate(sourceItem.toObject());
-        const keepPaths = [
+        let keepPaths = [
             '_stats.compendiumSource',
             'flags.chris-premades.config',
             'flags.custom-character-sheet-sections.sectionName',
@@ -757,9 +757,9 @@ export class ItemMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
             'system.source',
             'system.prepared',
             'system.method',
-            'system.uses',
             'flags.core.sourceId'
         ];
+        if (item.type === 'spell') keepPaths.push('system.uses');
         const cleanPaths = [
             'flags.midi-qol.onUseMacroName',
             'flags.chris-premades.macros'
