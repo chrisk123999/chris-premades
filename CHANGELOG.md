@@ -1,3 +1,7 @@
+# 1.3.101 Release:
+## Bug Fixes:
+- GM Fulfilling Manual Rolls
+
 # 1.3.100 Release:
 ## Bug Fixes:
 - Effect token transformations incorrectly reverting.
