@@ -1,0 +1,47 @@
+{
+  "name": "Jewlery",
+  "type": "loot",
+  "_id": "ffVlMytVgH9UA9wL",
+  "img": "icons/commodities/treasure/brooch-gold-ruby.webp",
+  "system": {
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "identifier": "jewelry",
+    "source": {
+      "revision": 1,
+      "rules": "2024"
+    },
+    "identified": true,
+    "unidentified": {
+      "description": ""
+    },
+    "container": null,
+    "quantity": 1,
+    "weight": {
+      "value": 0,
+      "units": "lb"
+    },
+    "price": {
+      "value": 100,
+      "denomination": "gp"
+    },
+    "rarity": "",
+    "properties": [],
+    "type": {
+      "value": "",
+      "subtype": ""
+    }
+  },
+  "effects": [],
+  "folder": null,
+  "flags": {
+    "dnd5e": {
+      "riders": {
+        "activity": []
+      }
+    }
+  },
+  "_key": "!items!ffVlMytVgH9UA9wL"
+}

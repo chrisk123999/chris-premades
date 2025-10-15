@@ -1,3 +1,53 @@
+# 1.3.104 Release:
+## Bug Fixes:
+- Item Medkit
+
+# 1.3.103 Release:
+## API Bug Fixes:
+- D20 event reinstated.
+
+# 1.3.102 Release:
+## Bug Fixes:
+- The previous bugfix no longer consists of a brand new bug
+
+# 1.3.101 Release:
+## Bug Fixes:
+- GM Fulfilling Rolls no longer auto-registers wrapper
+
+# 1.3.100 Release:
+## Bug Fixes:
+- Effect token transformations incorrectly reverting.
+- Reroll Save on Damage Generic Feature
+## API Bug Fixes:
+- Effect Created pass should properly trigger again.
+  
+# 1.3.99 Release:
+## New Modern Content:
+- Dreadful Strikes
+- Otherworldly Glamour
+- Beguiling Twist
+- Fey Reinforcements
+- Misty Wanderer
+## Bug Fixes:
+- Baleful Interdict
+
+# 1.3.98 Release:
+## New Legacy Content:
+- Deck of Miscellany
+- Deck of Wonder
+## Bug Fixes:
+- Death Ward
+- Disintegrate
+## API Update Notes:
+- Added a D20 event with `preEvaluation`, `scenePreEvaluation`, `postEvaluation`, and `scenePostEvaluation` passes. These passes have also been added to embedded macros.
+## API Bug Fixes:
+- Enchantment effects on items will now properly trigger the `created` and `deleted` effect passes.
+
+# 1.3.97 Release:
+## Bug Fixes:
+- Crimson Rite
+- Item Medkit
+
 # 1.3.96 Release:
 ## Update Notes:
 - Added a module integration setting to automatically disable Convenient Effects on CPR, GPS, MISC, and ACC items. Enabled by default. (None of these modules make use of Convenient Effects)

@@ -180,7 +180,8 @@ export class EffectMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
                 save: JSON?.stringify(effect.flags['chris-premades']?.macros?.save) ?? '',
                 check: JSON?.stringify(effect.flags['chris-premades']?.macros?.check) ?? '',
                 skill: JSON?.stringify(effect.flags['chris-premades']?.macros?.skill) ?? '',
-                death: JSON?.stringify(effect.flags['chris-premades']?.macros?.death) ?? ''
+                death: JSON?.stringify(effect.flags['chris-premades']?.macros?.death) ?? '',
+                d20: JSON?.stringify(effect.flags['chris-premades']?.macros?.d20) ?? ''
             },
             isDev: game.settings.get('chris-premades', 'devTools'),
             identifier: effect.flags['chris-premades']?.info?.identifier ?? '',
@@ -390,6 +391,7 @@ export class EffectMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
         if (this.context.macros.check?.length) genericUtils.setProperty(flagUpdates, 'macros.check', JSON.parse(this.context.macros.check.replace(/'/g, '"')));
         if (this.context.macros.skill?.length) genericUtils.setProperty(flagUpdates, 'macros.skill', JSON.parse(this.context.macros.skill.replace(/'/g, '"')));
         if (this.context.macros.death?.length) genericUtils.setProperty(flagUpdates, 'macros.death', JSON.parse(this.context.macros.death.replace(/'/g, '"')));
+        if (this.context.macros.d20?.length) genericUtils.setProperty(flagUpdates, 'macros.d20', JSON.parse(this.context.macros.d20.replace(/'/g, '"')));
         let effectUpdates = {flags: {'chris-premades': flagUpdates}};
         genericUtils.mergeObject(effectData, effectUpdates);
         let updates = {

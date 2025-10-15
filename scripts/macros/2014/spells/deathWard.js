@@ -1,4 +1,4 @@
-import {effectUtils, genericUtils, itemUtils} from '../../../utils.js';
+import {effectUtils, genericUtils, itemUtils, workflowUtils} from '../../../utils.js';
 async function use({workflow}) {
     let effectData = {
         name: workflow.item.name,
@@ -12,11 +12,8 @@ async function use({workflow}) {
     }
 }
 async function damageApplication({trigger: {entity: effect}, ditem}) {
-    if (!effect) return;
-    if (ditem.newHP > 0) return;
-    ditem.newHP = 1;
-    ditem.hpDamage = Math.abs(ditem.newHP - ditem.oldHP);
-    ditem.damageDetail[0].value = ditem.hpDamage + ditem.oldTempHP;
+    if (ditem.newHP > 0 || !ditem.isHit) return;
+    workflowUtils.preventDeath(ditem);
     await genericUtils.remove(effect);
 }
 export let deathWard = {

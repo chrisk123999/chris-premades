@@ -1,5 +1,5 @@
 {
-  "name": "Crimson Rite",
+  "name": "Beguiling Twist",
   "type": "feat",
   "system": {
     "description": {
@@ -7,9 +7,12 @@
       "chat": ""
     },
     "source": {
-      "custom": "",
+      "custom": "PHB 2024",
       "revision": 1,
-      "rules": "2014"
+      "rules": "2024",
+      "book": "",
+      "page": "",
+      "license": ""
     },
     "uses": {
       "max": "",
@@ -30,9 +33,9 @@
     "activities": {
       "dnd5eactivity000": {
         "_id": "dnd5eactivity000",
-        "type": "damage",
+        "type": "save",
         "activation": {
-          "type": "bonus",
+          "type": "reaction",
           "value": 1,
           "condition": "",
           "override": false
@@ -50,14 +53,15 @@
         },
         "duration": {
           "concentration": false,
-          "value": "",
-          "units": "inst",
+          "value": "1",
+          "units": "minute",
           "special": "",
           "override": false
         },
         "effects": [],
         "range": {
-          "units": "self",
+          "value": "120",
+          "units": "ft",
           "special": "",
           "override": false
         },
@@ -73,7 +77,7 @@
           },
           "affects": {
             "count": "",
-            "type": "self",
+            "type": "",
             "choice": false,
             "special": ""
           },
@@ -86,34 +90,24 @@
           "recovery": []
         },
         "damage": {
+          "onSave": "half",
+          "parts": [],
           "critical": {
-            "allow": false,
-            "bonus": ""
-          },
-          "parts": [
-            {
-              "custom": {
-                "enabled": true,
-                "formula": "@scale.blood-hunter.crimson-rite"
-              },
-              "number": null,
-              "denomination": null,
-              "bonus": "",
-              "types": [
-                "none"
-              ],
-              "scaling": {
-                "number": 1
-              }
-            }
-          ]
+            "allow": false
+          }
+        },
+        "save": {
+          "ability": [
+            "wis"
+          ],
+          "dc": {
+            "calculation": "spellcasting",
+            "formula": ""
+          }
         },
         "sort": 0,
-        "useConditionText": "",
-        "forceDialog": false,
+        "useConditionText": "false",
         "effectConditionText": "",
-        "midiAutomationOnly": false,
-        "name": "",
         "useConditionReason": "",
         "macroData": {
           "name": "",
@@ -132,9 +126,7 @@
           "triggeredActivityConditionText": "",
           "triggeredActivityTargets": "targets",
           "triggeredActivityRollAs": "self",
-          "forceDialog": false,
-          "forceAttackDialog": false,
-          "forceDamageDialog": false,
+          "forceDamageDialog": "false",
           "confirmTargets": "default",
           "autoTargetType": "any",
           "autoTargetAction": "default",
@@ -151,17 +143,24 @@
           "magicEffect": false,
           "magicDamage": false,
           "noConcentrationCheck": false,
-          "autoCEEffects": "default"
+          "autoCEEffects": "default",
+          "autoConsume": false,
+          "forceConsumeDialog": "default",
+          "forceRollDialog": "default"
         },
         "isOverTimeFlag": false,
         "overTimeProperties": {
           "saveRemoves": true,
           "preRemoveConditionText": "",
           "postRemoveConditionText": ""
-        }
+        },
+        "otherActivityId": "",
+        "otherActivityAsParentType": true,
+        "friendlySave": "default",
+        "name": ""
       }
     },
-    "identifier": "crimson-rite",
+    "identifier": "beguiling-twist",
     "enchant": {},
     "advancement": [],
     "crewed": false
@@ -170,31 +169,31 @@
     "midi-qol": {
       "effectActivation": false,
       "onUseMacroName": "",
-      "removeAttackDamageButtons": "default",
       "rollAttackPerTarget": "default",
       "itemCondition": "",
+      "reactionCondition": "false",
       "effectCondition": "",
       "AoETargetType": "any",
       "AoETargetTypeIncludeSelf": true,
       "autoTarget": "default",
-      "reactionCondition": "",
+      "removeAttackDamageButtons": "default",
       "otherCondition": ""
     },
     "midiProperties": {
       "nodam": false,
       "fulldam": false,
       "halfdam": false,
+      "autoFailFriendly": false,
+      "autoSaveFriendly": false,
       "rollOther": false,
       "critOther": false,
+      "offHandWeapon": false,
       "magicdam": false,
       "magiceffect": false,
       "concentration": false,
       "toggleEffect": false,
       "ignoreTotalCover": false,
-      "autoFailFriendly": false,
-      "autoSaveFriendly": false,
-      "offHandWeapon": false,
-      "confirmTargets": "never",
+      "confirmTargets": "default",
       "noConcentrationCheck": false,
       "idr": false,
       "idi": false,
@@ -206,40 +205,82 @@
       "riders": {
         "activity": [],
         "effect": []
-      },
-      "last": {
-        "dnd5eactivity000": {
-          "damageType": {
-            "0": "none"
-          }
-        }
       }
     },
     "chris-premades": {
       "info": {
-        "name": "Crimson Rite",
-        "identifier": "crimsonRite",
+        "name": "Beguiling Twist",
+        "version": "1.3.99",
+        "identifier": "beguilingTwist",
         "source": "chris-premades",
-        "version": "1.3.97"
+        "rules": "modern"
       },
       "macros": {
-        "rest": [
-          "crimsonRite"
-        ],
-        "item": [
-          "crimsonRite"
-        ],
         "midi": {
           "item": [
-            "crimsonRite"
+            "beguilingTwist"
           ]
         }
       }
     }
   },
-  "effects": [],
-  "img": "icons/skills/melee/strike-sword-blood-red.webp",
-  "folder": "xPyhocz99qTJKtdg",
-  "_id": "IwbkcfGEWD5Fl1pq",
-  "_key": "!items!IwbkcfGEWD5Fl1pq"
+  "effects": [
+    {
+      "name": "Beguiling Twist",
+      "origin": "Compendium.world.cpr-class-features.Item.hUIfniTHahcI3ifU",
+      "duration": {
+        "rounds": null,
+        "startTime": 1404,
+        "seconds": null,
+        "combat": null,
+        "turns": null,
+        "startRound": 235,
+        "startTurn": 2
+      },
+      "disabled": false,
+      "flags": {
+        "dnd5e": {},
+        "dae": {
+          "disableCondition": "",
+          "disableIncapacitated": false,
+          "stackable": "noneName",
+          "showIcon": false,
+          "durationExpression": "",
+          "macroRepeat": "none",
+          "specialDuration": []
+        },
+        "core": {
+          "overlay": false
+        }
+      },
+      "img": "icons/magic/control/debuff-chains-ropes-purple.webp",
+      "_id": "KwtGqbLcd2LCxmJ6",
+      "type": "base",
+      "system": {},
+      "changes": [
+        {
+          "key": "flags.chris-premades.CR.charmed",
+          "mode": 5,
+          "value": "1",
+          "priority": 20
+        },
+        {
+          "key": "flags.chris-premades.CR.frightened",
+          "mode": 5,
+          "value": "1",
+          "priority": 20
+        }
+      ],
+      "description": "",
+      "tint": "#ffffff",
+      "transfer": true,
+      "statuses": [],
+      "sort": 0,
+      "_key": "!items.effects!Ln0GTGWq3TINYgr6.KwtGqbLcd2LCxmJ6"
+    }
+  ],
+  "img": "icons/magic/control/debuff-chains-ropes-purple.webp",
+  "folder": "HrrCWx81ACzaenJw",
+  "_id": "Ln0GTGWq3TINYgr6",
+  "_key": "!items!Ln0GTGWq3TINYgr6"
 }

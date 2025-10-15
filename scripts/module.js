@@ -101,10 +101,9 @@ Hooks.once('ready', () => {
     activities.patchCanUse();
     toolCheck.patch();
     if (utils.genericUtils.getCPRSetting('groupSummonsWithOwner')) initiative.patch(true);
-    if (utils.genericUtils.getCPRSetting('manualRollsGMFulfils')) rollResolver.patch(true);
+    rollResolver.patch(true);
     if (utils.genericUtils.getCPRSetting('manualRollsEnabled')) {
         rollResolver.registerFulfillmentMethod();
-        if (foundry.utils.isNewerVersion('4.3', game.system.version)) rollResolver.patchBuild(true); // remove when 4.3+ only
     }
     tours.checkTour();
     if (utils.genericUtils.getCPRSetting('activityCSSTweak')) activities.cssTweak(true);
