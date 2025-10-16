@@ -10,6 +10,7 @@
 ## Bug Fixes:
 - Baleful Interdict
 - Item Medkit
+- Missing Setting Localizations
 
 # 1.3.104 Release:
 ## Bug Fixes:
