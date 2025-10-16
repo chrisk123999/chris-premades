@@ -91,7 +91,7 @@ async function use({workflow}) {
         let attackActivity = Object.entries(beastsStrikeData.system.activities).map(a => a[1]).find(a => a.type === 'attack');
         attackActivity.damage.parts[0].types = new Set(types);
         updates.actor.items.push(beastsStrikeData);
-        genericUtils.setProperty(updates, 'actor.system.attributes.movement', {walk: 40, climb: 40});
+        genericUtils.setProperty(updates, 'actor.system.attributes.movement', {walk: genericUtils.convertDistance(40), climb: genericUtils.convertDistance(40)});
     } else if (creatureType === 'sea') {
         let amphibiousData = await Summons.getSummonItem('Amphibious', {}, workflow.item, {translate: 'CHRISPREMADES.CommonFeatures.Amphibious', identifier: 'primalCompanionAmphibious', rules: 'modern'});
         let selection = await dialogUtils.buttonDialog(workflow.item.name, 'CHRISPREMADES.Dialog.DamageType', [
@@ -112,7 +112,7 @@ async function use({workflow}) {
         attackActivity.damage.parts[0].types = new Set(types);
         beastsStrikeData.flags['chris-premades'].config.generic.autoGrapple.dc = workflow.actor.system.attributes.spell.dc;
         updates.actor.items.push(amphibiousData, beastsStrikeData);
-        genericUtils.setProperty(updates, 'actor.system.attributes.movement', {walk: 5, swim: 60});
+        genericUtils.setProperty(updates, 'actor.system.attributes.movement', {walk: genericUtils.convertDistance(5), swim: genericUtils.convertDistance(60)});
     } else {
         hpValue = 4 + 4 * classLevel;
         let beastsStrikeData = await Summons.getSummonItem('Beast\s Strike (Sky)', {}, workflow.item, {flatAttack: true, translate: 'CHRISPREMADES.Macros.PrimalCompanion.BeastsStrike', identifier: 'primalCompanionSkyBeastsStrike', rules: 'modern'});
@@ -149,8 +149,8 @@ async function use({workflow}) {
                             value: hpValue
                         },
                         movement: {
-                            walk: 10,
-                            fly: 60
+                            walk: genericUtils.convertDistance(10),
+                            fly: genericUtils.convertDistance(60)
                         }
                     },
                     traits: {
