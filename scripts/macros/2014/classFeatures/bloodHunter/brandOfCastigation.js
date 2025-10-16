@@ -25,7 +25,7 @@ async function late({trigger: {entity: item}, workflow}) {
     };
     let feature = activityUtils.getActivityByIdentifier(item, 'brandOfCastigation', {strict: true});
     if (!feature) return;
-    await workflowUtils.syntheticActivityRoll(feature, [], {config: {consumeUsage: true}});
+    await workflowUtils.syntheticActivityRoll(feature, [], {consumeResources: true, consumeUsage: true});
     effect = await effectUtils.createEffect(workflow.actor, effectData, {identifier: 'brandOfCastigationSource'});
     if (!effect) return;
     effectData.flags = {
@@ -37,6 +37,7 @@ async function late({trigger: {entity: item}, workflow}) {
     await effectUtils.createEffect(workflow.targets.first().actor, effectData, {identifier: 'brandOfCastigation', parentEntity: effect, strictlyInterdependent: true});
 }
 async function hit({trigger: {entity: effect}, workflow}) {
+    if (!workflow.damageRolls.length || !workflow.hitTargets.size) return;
     let effects = effectUtils.getAllEffectsByIdentifier(workflow.actor, 'brandOfCastigation');
     if (!effects.length) return;
     if (!effects.filter(i => i.origin === effect.origin).length) return;
@@ -47,6 +48,7 @@ async function hit({trigger: {entity: effect}, workflow}) {
     await workflowUtils.syntheticActivityRoll(feature, [workflow.token]);
 }
 async function hitNear({trigger: {entity: effect}, workflow}) {
+    if (!workflow.damageRolls.length || !workflow.hitTargets.size) return;
     let effects = effectUtils.getAllEffectsByIdentifier(workflow.actor, 'brandOfCastigation');
     if (!effects.length) return;
     if (!effects.filter(i => i.origin === effect.origin).length) return;

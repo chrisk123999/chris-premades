@@ -11,6 +11,7 @@
 - Baleful Interdict
 - Item Medkit
 - Missing Setting Localizations
+- Brand of Castigation
 ## Update Notes:
 - CPR now requires D&D system version 5.1.10!
 
