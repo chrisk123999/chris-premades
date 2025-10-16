@@ -11,6 +11,8 @@
 - Baleful Interdict
 - Item Medkit
 - Missing Setting Localizations
+## Update Notes:
+- CPR now requires D&D system version 5.1.10!
 
 # 1.3.104 Release:
 ## Bug Fixes:
