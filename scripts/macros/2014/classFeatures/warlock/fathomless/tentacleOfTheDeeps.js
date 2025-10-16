@@ -51,7 +51,6 @@ async function early({activity, token, actor}) {
     if (!effect) return;
     let tentacleActor = token.scene.tokens.get(effect.flags['chris-premades'].summons.ids[effect.name][0])?.actor;
     if (!tentacleActor) return;
-
     let effectData = {
         name: activity.item.name,
         img: activity.item.img,
@@ -90,6 +89,7 @@ async function late({workflow}) {
 }
 export let tentacleOfTheDeeps = {
     name: 'Tentacle of the Deeps: Summon',
+    aliases: ['Tentacle of the Deeps'],
     version: '1.1.10',
     midi: {
         item: [

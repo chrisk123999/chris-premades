@@ -423,6 +423,12 @@
                 "postAttackRoll": {
                     "Label": "Post-Attack Roll"
                 },
+                "postEvaluation": {
+                    "Label": "Post-Evaluation"
+                },
+                "preEvaluation": {
+                    "Label": "Pre-Evaluation"
+                },
                 "preItemRoll": {
                     "Label": "Pre-Item Roll"
                 },
@@ -458,6 +464,12 @@
                 },
                 "scenePostAttackRoll": {
                     "Label": "Scene Post-Attack Roll"
+                },
+                "scenePostEvaluation": {
+                    "Label": "Scene Post-Evaluation"
+                },
+                "scenePreEvaluation": {
+                    "Label": "Scene Pre-Evaluation"
                 },
                 "scenePreambleComplete": {
                     "Label": "Scene Preamble Complete"
@@ -533,18 +545,6 @@
                 },
                 "utilityRollComplete": {
                     "Label": "Utility Roll Complete"
-                },
-                "preEvaluation": {
-                    "Label": "Pre-Evaluation"
-                },
-                "postEvaluation": {
-                    "Label": "Post-Evaluation"
-                },
-                "scenePreEvaluation": {
-                    "Label": "Scene Pre-Evaluation"
-                },
-                "scenePostEvaluation": {
-                    "Label": "Scene Post-Evaluation"
                 }
             },
             "Priority": {
@@ -561,6 +561,7 @@
                 "aura": "Aura",
                 "check": "Check",
                 "combat": "Combat",
+                "d20": "D20",
                 "death": "Death",
                 "effect": "Effect",
                 "item": "Item",
@@ -572,8 +573,7 @@
                 "save": "Save",
                 "skill": "Skill",
                 "template": "Template",
-                "toolCheck": "Tool",
-                "d20": "D20"
+                "toolCheck": "Tool"
             }
         },
         "Error": {
@@ -1839,6 +1839,9 @@
             "PackTactics": {
                 "Name": "Pack Tactics"
             },
+            "PactOfTheChain": {
+                "Attack": "Attack with:"
+            },
             "PariahsShield": {
                 "MaxBonus": "Max AC Bonus:",
                 "Protect": "Protect {name} with {item}?",
@@ -3065,6 +3068,10 @@
                 "Hint": "When enabled, an alternative export button will be added to the item and actor context menu to export an item with descriptions removed. Reload required after enabling.",
                 "Name": "Export For Sharing"
             },
+            "featCompendium": {
+                "Hint": "Feat compendium used for certain automations. Ideally should point to your D&D Beyond feat compendium.",
+                "Name": "Feat Compendium"
+            },
             "firearmSupport": {
                 "Hint": "When enabled, Firearms automation will be available (From Critical Role's Gunslinger class).",
                 "Name": "Firearm Support"
@@ -3118,7 +3125,7 @@
                 "Name": "Legendary Actions Prompt"
             },
             "macroCompendium": {
-                "Hint": "Macro compendium that is used to overwrite or add additional macros to the CPR API. Please see documentation on how to use this. (WIP)",
+                "Hint": "Macro compendium that is used to overwrite or add additional macros to the CPR API. Please see documentation on how to use this.",
                 "Name": "Macro Compendium"
             },
             "makeGM": {
@@ -3219,6 +3226,10 @@
                 "Hint": "When enabled, status icons will be replaced.",
                 "Name": "Replace Status Icons"
             },
+            "rollTableCompendium": {
+                "Hint": "Roll Table compendium used for certain automations. Ideally should point to your D&D Beyond roll table compendium.",
+                "Name": "Roll Table Compendium"
+            },
             "seenTour": {
                 "Hint": "Has the tour prompt been viewed? Automatically set.",
                 "Name": "Tour Prompt"
@@ -3248,7 +3259,7 @@
                 "Name": "Temporary Effects HUD"
             },
             "thirdParty": {
-                "Hint": "When enabled, the Medkit will also include Homebrew automations.",
+                "Hint": "When enabled, the Medkit will also include 3rd Party automations.",
                 "Name": "3rd Party Content"
             },
             "updateCompanionInitiative": {

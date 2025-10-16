@@ -1,5 +1,4 @@
 import {activityUtils, effectUtils, genericUtils, workflowUtils} from '../../../../utils.js';
-
 function early({activity}) {
     let activityIdentifier = activityUtils.getIdentifier(activity);
     let targetToken = game.user.targets.first();
@@ -32,6 +31,7 @@ async function late({workflow}) {
 }
 export let layOnHands = {
     name: 'Lay on Hands',
+    aliases: ['Lay On Hands'],
     version: '1.1.2',
     midi: {
         item: [
@@ -46,11 +46,6 @@ export let layOnHands = {
                 macro: late,
                 priority: 50
             }
-            // {
-            //     pass: 'damageRollComplete',
-            //     macro: late,
-            //     priority: 50
-            // }
         ]
     },
     ddbi: {

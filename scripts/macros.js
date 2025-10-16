@@ -39,18 +39,18 @@ export {surpriseAttack} from './macros/2014/monsterFeatures/generic/surpriseAtta
 export {swarmDamage} from './macros/2014/monsterFeatures/generic/swarmDamage.js';
 export {touchDamage} from './macros/2014/monsterFeatures/generic/touchDamage.js';
 export {undeadFortitude} from './macros/2014/monsterFeatures/generic/undeadFortitude.js';
-//Mechanics
+// Mechanics
 export {cleaveMastery, grazeMastery, pushMastery, sapMastery, slowMastery, toppleMastery, vexMastery} from './macros/2024/mechanics/masteries.js';
 export {invisible} from './macros/2024/mechanics/invisible.js';
-//Actions
+// Actions
 export {suffocation, suffocationOutOfAir} from './macros/2024/actions/suffocation.js';
 export {dash} from './macros/2024/actions/dash.js';
 export {hide, hideEffect} from './macros/2024/actions/hide.js';
 export {disengage} from './macros/2024/actions/disengage.js';
 export {jump} from './macros/2024/actions/jump.js';
-//Generic
+// Generic
 export {proneOnFail} from './macros/2024/generic/proneOnFail.js';
-//Spells
+// Spells
 export {acidArrow} from './macros/2024/spells/acidArrow.js';
 export {acidSplash} from './macros/2024/spells/acidSplash.js';
 export {aid} from './macros/2024/spells/aid.js';
@@ -179,10 +179,10 @@ export {timeStop, timeStopEffect} from './macros/2024/spells/timeStop.js';
 export {steelWindStrike} from './macros/2024/spells/steelWindStrike.js';
 export {mageHand, mageHandEffect} from './macros/2024/spells/mageHand.js';
 export {guidance} from './macros/2024/spells/guidance.js';
-//Items
+// Items
 export {healersKit} from './macros/2024/items/healersKit.js';
 export {unarmedStrike} from './macros/2024/items/misc/unarmedStrike.js';
-//Feats
+// Feats
 export {alert} from './macros/2024/feats/alert.js';
 export {archery} from './macros/2024/feats/archery.js';
 export {crusher} from './macros/2024/feats/crusher.js';
@@ -204,8 +204,8 @@ export {tavernBrawler, tavernBrawlerUnarmedStrike} from './macros/2024/feats/tav
 export {telekineticShove} from './macros/2024/feats/telekinetic.js';
 export {thrownWeaponFighting} from './macros/2024/feats/thrownWeaponFighting.js';
 export {unarmedFighting, unarmedFightingUnarmedStrike} from './macros/2024/feats/unarmedFighting.js';
-//Class Features
-//Barbarian
+// Class Features
+// Barbarian
 export {rage, rageRaging, rageUpkeep} from './macros/2024/classFeatures/barbarian/rage.js';
 export {unarmoredDefenseBarbarian} from './macros/2024/classFeatures/barbarian/unarmoredDefense.js';
 export {dangerSense} from './macros/2024/classFeatures/barbarian/dangerSense.js';
@@ -217,21 +217,22 @@ export {relentlessRage} from './macros/2024/classFeatures/barbarian/relentlessRa
 export {improvedBrutalStrike} from './macros/2024/classFeatures/barbarian/improvedBrutalStrike.js';
 export {persistentRage} from './macros/2024/classFeatures/barbarian/persistentRage.js';
 export {indomitableMight} from './macros/2024/classFeatures/barbarian/indomitableMight.js';
-//Path of the Berserker
+export {fastMovement} from './macros/2024/classFeatures/barbarian/fastMovement.js';
+// Path of the Berserker
 export {frenzy} from './macros/2024/classFeatures/barbarian/berserker/frenzy.js';
 export {mindlessRage} from './macros/2024/classFeatures/barbarian/berserker/mindlessRage.js';
 export {retaliation} from './macros/2024/classFeatures/barbarian/berserker/retaliation.js';
 export {intimidatingPresence} from './macros/2024/classFeatures/barbarian/berserker/intimidatingPresence.js';
-//Path of the Wild Heart
+// Path of the Wild Heart
 export {rageOfTheWilds, rageOfTheWildsWolf} from './macros/2024/classFeatures/barbarian/wildHeart/rageOfTheWilds.js';
 export {aspectOfTheWilds} from './macros/2024/classFeatures/barbarian/wildHeart/aspectOfTheWilds.js';
 export {powerOfTheWilds, powerOfTheWildsLion, powerOfTheWildsRam} from './macros/2024/classFeatures/barbarian/wildHeart/powerOfTheWilds.js';
-//Path of the World Tree
+// Path of the World Tree
 export {vitalityOfTheTree, lifeGivingForce} from './macros/2024/classFeatures/barbarian/worldTree/vitalityOfTheTree.js';
 export {branchesOfTheTree} from './macros/2024/classFeatures/barbarian/worldTree/branchesOfTheTree.js';
 export {batteringRoots} from './macros/2024/classFeatures/barbarian/worldTree/batteringRoots.js';
 export {travelAlongTheTree} from './macros/2024/classFeatures/barbarian/worldTree/travelAlongTheTree.js';
-//Path of the Zealot
+// Path of the Zealot
 export {divineFury, divineFuryAttack} from './macros/2024/classFeatures/barbarian/zealot/divineFury.js';
 export {warriorOfTheGods} from './macros/2024/classFeatures/barbarian/zealot/warriorOfTheGods.js';
 export {fanaticalFocus} from './macros/2024/classFeatures/barbarian/zealot/fanaticalFocus.js';
@@ -240,29 +241,29 @@ export {rageOfTheGods, rageOfTheGodsEffect} from './macros/2024/classFeatures/ba
 // Path of the Muscle Wizard
 export {unarguableWizardry} from './macros/2024/classFeatures/barbarian/muscleWizard/unarguableWizardry.js';
 export {cantrips} from './macros/2024/classFeatures/barbarian/muscleWizard/cantrips.js';
-//Bard
+// Bard
 export {bardicInspiration, bardicInspirationEffect} from './macros/2024/classFeatures/bard/bardicInspiration.js';
 export {jackOfAllTrades} from './macros/2024/classFeatures/bard/jackOfAllTrades.js';
 export {fontOfInspiration} from './macros/2024/classFeatures/bard/fontOfInspiration.js';
 export {countercharm} from './macros/2024/classFeatures/bard/countercharm.js';
 export {superiorInspiration} from './macros/2024/classFeatures/bard/superiorInspiration.js';
 export {wordsOfCreation} from './macros/2024/classFeatures/bard/wordsOfCreation.js';
-//College of Dance
+// College of Dance
 export {dazzlingFootwork} from './macros/2024/classFeatures/bard/dance/dazzlingFootwork.js';
 export {inspiringMovement} from './macros/2024/classFeatures/bard/dance/inspiringMovement.js';
 export {tandemFootwork} from './macros/2024/classFeatures/bard/dance/tandemFootwork.js';
 export {leadingEvasion} from './macros/2024/classFeatures/bard/dance/leadingEvasion.js';
-//College of Glamour
+// College of Glamour
 export {beguilingMagic} from './macros/2024/classFeatures/bard/glamour/beguilingMagic.js';
 export {mantleOfInspiration} from './macros/2024/classFeatures/bard/glamour/mantleOfInspiration.js';
 export {mantleOfMajesty, mantleOfMajestyCommand} from './macros/2024/classFeatures/bard/glamour/mantleOfMajesty.js';
 export {unbreakableMajesty, unbreakableMajestyEffect} from './macros/2024/classFeatures/bard/glamour/unbreakableMajesty.js';
-//College of Lore
+// College of Lore
 export {cuttingWords} from './macros/2024/classFeatures/bard/lore/cuttingWords.js';
 export {peerlessSkill} from './macros/2024/classFeatures/bard/lore/peerlessSkill.js';
-//College of Valor
+// College of Valor
 export {combatInspiration} from './macros/2024/classFeatures/bard/valor/combatInspiration.js';
-//Cleric
+// Cleric
 export {thaumaturge} from './macros/2024/classFeatures/cleric/thaumaturge.js';
 export {channelDivinity} from './macros/2024/classFeatures/cleric/channelDivinity.js';
 export {searUndead} from './macros/2024/classFeatures/cleric/searUndead.js';
@@ -271,21 +272,21 @@ export {potentSpellcasting} from './macros/2024/classFeatures/cleric/potentSpell
 export {improvedBlessedStrikes} from './macros/2024/classFeatures/cleric/improvedBlessedStrikes.js';
 export {divineIntervention} from './macros/2024/classFeatures/cleric/divineIntervention.js';
 export {greaterDivineIntervention, greaterDivineInterventionRest} from './macros/2024/classFeatures/cleric/greaterDivineIntervention.js';
-//Life Cleric
+// Life Cleric
 export {discipleOfLife} from './macros/2024/classFeatures/cleric/life/discipleOfLife.js';
 export {preserveLife} from './macros/2024/classFeatures/cleric/life/preserveLife.js';
 export {blessedHealer} from './macros/2024/classFeatures/cleric/life/blessedHealer.js';
-//Light Cleric
+// Light Cleric
 export {radianceOfTheDawn} from './macros/2024/classFeatures/cleric/light/radianceOfTheDawn.js';
 export {wardingFlare} from './macros/2024/classFeatures/cleric/light/wardingFlare.js';
 export {improvedWardingFlare} from './macros/2024/classFeatures/cleric/light/improvedWardingFlare.js';
 export {coronaOfLight, coronaOfLightEffect} from './macros/2024/classFeatures/cleric/light/coronaOfLight.js';
-//Trickery Domain
+// Trickery Domain
 export {blessingOfTheTrickster} from './macros/2024/classFeatures/cleric/trickery/blessingOfTheTrickster.js';
 export {invokeDuplicity, invokeDuplicityDistract} from './macros/2024/classFeatures/cleric/trickery/invokeDuplicity.js';
 export {trickstersTransposition} from './macros/2024/classFeatures/cleric/trickery/trickstersTransposition.js';
 export {improvedDuplicity, improvedDuplicityEffect} from './macros/2024/classFeatures/cleric/trickery/improvedDuplicity.js';
-//War Domain
+// War Domain
 export {guidedStrike} from './macros/2024/classFeatures/cleric/war/guidedStrike.js';
 export {warPriest} from './macros/2024/classFeatures/cleric/war/warPriest.js';
 export {warGodsBlessing, warGodsBlessingCast} from './macros/2024/classFeatures/cleric/war/warGodsBlessing.js';
@@ -298,7 +299,7 @@ export {elementalFuryPrimalStrike} from './macros/2024/classFeatures/druid/prima
 export {wildCompanion} from './macros/2024/classFeatures/druid/wildCompanion.js';
 export {wildResurgence} from './macros/2024/classFeatures/druid/wildResurgence.js';
 export {wildShape, wildShapeActive} from './macros/2024/classFeatures/druid/wildShape.js';
-//Circle of Land
+// Circle of Land
 export {circleOfTheLandSpells} from './macros/2024/classFeatures/druid/land/circleOfTheLandSpells.js';
 export {landsAid} from './macros/2024/classFeatures/druid/land/landsAid.js';
 export {naturesSanctuary, naturesSanctuaryTemplate} from './macros/2024/classFeatures/druid/land/naturesSanctuary.js';
@@ -317,29 +318,29 @@ export {cosmicOmen, cosmicOmenActive} from './macros/2024/classFeatures/druid/st
 export {fullOfStars} from './macros/2024/classFeatures/druid/stars/fullOfStars.js';
 export {starryForm, starryFormActive} from './macros/2024/classFeatures/druid/stars/starryForm.js';
 export {twinklingConstellations} from './macros/2024/classFeatures/druid/stars/twinklingConstellations.js';
-//Ranger
+// Ranger
 export {favoredEnemy} from './macros/2024/classFeatures/ranger/favoredEnemy.js';
 export {tireless} from './macros/2024/classFeatures/ranger/tireless.js';
 export {relentlessHunter} from './macros/2024/classFeatures/ranger/relentlessHunter.js';
 export {naturesVeil} from './macros/2024/classFeatures/ranger/naturesVeil.js';
 export {preciseHunter} from './macros/2024/classFeatures/ranger/preciseHunter.js';
 export {foeSlayer} from './macros/2024/classFeatures/ranger/foeSlayer.js';
-//Beast Master
+// Beast Master
 export {primalCompanion, bestialFury} from './macros/2024/classFeatures/ranger/beastMaster/primalCompanion.js';
 export {exceptionalTraining} from './macros/2024/classFeatures/ranger/beastMaster/exceptionalTraining.js';
 export {shareSpells} from './macros/2024/classFeatures/ranger/beastMaster/shareSpells.js';
-//Fey Wanderer
+// Fey Wanderer
 export {dreadfulStrikes} from './macros/2024/classFeatures/ranger/feyWanderer/dreadfulStrikes.js';
 export {otherworldlyGlamour} from './macros/2024/classFeatures/ranger/feyWanderer/otherworldlyGlamour.js';
 export {beguilingTwist} from './macros/2024/classFeatures/ranger/feyWanderer/beguilingTwist.js';
 export {feyReinforcements} from './macros/2024/classFeatures/ranger/feyWanderer/feyReinforcements.js';
 export {mistyWanderer} from './macros/2024/classFeatures/ranger/feyWanderer/mistyWanderer.js';
-//Gloom Stalker
+// Gloom Stalker
 export {dreadAmbusher} from './macros/2024/classFeatures/ranger/gloomStalker/dreadAmbusher.js';
 export {umbralSight} from './macros/2024/classFeatures/ranger/gloomStalker/umbralSight.js';
 export {stalkersFlurry} from './macros/2024/classFeatures/ranger/gloomStalker/stalkersFlurry.js';
 export {shadowyDodge} from './macros/2024/classFeatures/ranger/gloomStalker/shadowyDodge.js';
-//Rogue
+// Rogue
 export {sneakAttack} from './macros/2024/classFeatures/rogue/sneakAttack.js';
 export {cunningAction} from './macros/2024/classFeatures/rogue/cunningAction.js';
 export {steadyAim} from './macros/2024/classFeatures/rogue/steadyAim.js';
@@ -371,5 +372,9 @@ export {rendMind} from './macros/2024/classFeatures/rogue/soulknife/rendMind.js'
 export {fastHands} from './macros/2024/classFeatures/rogue/thief/fastHands.js';
 export {secondStoryWork} from './macros/2024/classFeatures/rogue/thief/secondStoryWork.js';
 export {supremeSneak} from './macros/2024/classFeatures/rogue/thief/supremeSneak.js';
-//Multiple
+// Warlock
+export {magicalCunning} from './macros/2024/classFeatures/warlock/magicalCunning.js';
+// Invocations
+export {pactOfTheChain} from './macros/2024/classFeatures/warlock/invocations/pactOfTheChain.js';
+// Multiple
 export {evasion} from './macros/2024/classFeatures/multiple/evasion.js';

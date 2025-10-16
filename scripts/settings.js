@@ -121,6 +121,13 @@ export function registerSettings() {
         select: true
     });
     addSetting({
+        key: 'featCompendium',
+        type: String,
+        default: 'world.ddb-' + game.world.id + '-ddb-feats',
+        category: 'compendium',
+        select: true
+    });
+    addSetting({
         key: 'temporaryEffectHud',
         type: Boolean,
         default: false,

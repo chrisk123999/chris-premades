@@ -11,6 +11,7 @@ async function getCPRAutomation(item, {identifier, rules = 'legacy', type = 'cha
             case 'spell':
                 if (rules === 'legacy') {
                     keys.push(constants.packs.spells);
+                    if (genericUtils.getCPRSetting('thirdParty')) keys.push(constants.packs.thirdPartySpells);
                 } else {
                     keys.push(constants.modernPacks.spells);
                 }
@@ -39,8 +40,7 @@ async function getCPRAutomation(item, {identifier, rules = 'legacy', type = 'cha
                         keys.push(constants.modernPacks.feats);
                         keys.push(constants.modernPacks.actions);
                         if (genericUtils.getCPRSetting('thirdParty')) {
-                            keys.push(constants.packs.thirdPartyClassFeatures);
-                            keys.push(constants.packs.thirdPartyFeats);
+                            keys.push(constants.modernPacks.thirdPartyClassFeatures);
                         }
                     } else {
                         keys.push(constants.packs.classFeatures);

@@ -27,7 +27,9 @@ let buttonLabels = {
     bg3WeaponActionConfig: 'CHRISPREMADES.Generic.Configure',
     fumbleCompendium: 'CHRISPREMADES.Generic.Select',
     criticalCompendium: 'CHRISPREMADES.Generic.Select',
-    makeGM: 'CHRISPREMADES.Generic.Go'
+    makeGM: 'CHRISPREMADES.Generic.Go',
+    rollTableCompendium: 'CHRISPREMADES.Generic.Select',
+    featCompendium: 'CHRISPREMADES.Generic.Select'
 };
 function addMenuSetting(key, category) {
     genericUtils.setProperty(settingCategories, key.split(' ').join('-'), category);
@@ -151,6 +153,8 @@ export async function settingButton(id) {
         case 'fumbleCompendium': await selectCompendium('fumbleCompendium', 'Item'); break;
         case 'criticalCompendium': await selectCompendium('criticalCompendium', 'Item'); break;
         case 'makeGM': await genericUtils.setCPRSetting('makeGM', game.user.id); break;
+        case 'rollTableCompendium': await selectCompendium('rollTableCompendium', 'RollTable'); break;
+        case 'featCompendium': await selectCompendium('featCompendium', 'Item'); break;
     }
 }
 export class SettingsHelp extends getSettingsClass(null) {

@@ -45,7 +45,7 @@ async function damaged({trigger, workflow}) {
         let burnFire = activityUtils.getActivityByIdentifier(i.originItem, 'burnFire', {strict: true});
         let burnNecrotic = activityUtils.getActivityByIdentifier(i.originItem, 'burnNecrotic', {strict: true});
         if (!burnFire || !burnNecrotic) continue;
-        let activitySelection = await dialogUtils.selectDocumentDialog(i.originItem.name, undefined, [burnFire, burnNecrotic], {userId: socketUtils.firstOwner(i.originItem, true)});
+        let activitySelection = await dialogUtils.selectDocumentDialog(i.originItem.name, undefined, [burnFire, burnNecrotic], {userId: socketUtils.firstOwner(i.originItem.actor, true)});
         if (!activitySelection) continue;
         let activityData = genericUtils.duplicate(activitySelection.toObject());
         let classIdentifier = itemUtils.getConfig(i.originItem, 'classIdentifier');

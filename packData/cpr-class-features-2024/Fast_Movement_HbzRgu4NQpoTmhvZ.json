@@ -1,0 +1,148 @@
+{
+  "name": "Fast Movement",
+  "type": "feat",
+  "effects": [
+    {
+      "name": "Fast Movement",
+      "statuses": [],
+      "changes": [
+        {
+          "key": "system.attributes.movement.walk",
+          "mode": 2,
+          "value": "10",
+          "priority": 10
+        }
+      ],
+      "duration": {
+        "seconds": null,
+        "startTime": 1356,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null,
+        "combat": null
+      },
+      "tint": "#ffffff",
+      "transfer": true,
+      "disabled": false,
+      "flags": {
+        "dae": {
+          "transfer": true,
+          "stackable": "noneNameOnly",
+          "disableCondition": "",
+          "showIcon": false,
+          "disableIncapacitated": false,
+          "durationExpression": "",
+          "macroRepeat": "none",
+          "specialDuration": []
+        },
+        "ddbimporter": {
+          "disabled": false,
+          "passive": true,
+          "itemId": 10292159,
+          "itemEntityTypeId": 12168134
+        },
+        "midi-qol": {
+          "forceCEOff": true
+        },
+        "core": {
+          "overlay": false
+        },
+        "dnd5e": {
+          "riders": {
+            "statuses": []
+          }
+        },
+        "chris-premades": {
+          "noAnimation": false,
+          "conditions": [],
+          "specialDuration": [],
+          "templateEffectActivities": [],
+          "info": {
+            "identifier": "fastMovementEffect"
+          },
+          "rules": "modern"
+        }
+      },
+      "description": "<p>Your speed increases by 10 ft. while you aren’t wearing Heavy armor.</p>",
+      "img": "icons/skills/movement/feet-winged-boots-brown.webp",
+      "_id": "Yna0C3QoawyfkvBF",
+      "type": "base",
+      "system": {},
+      "origin": "Compendium.world.cpr-class-features-2024.Item.HbzRgu4NQpoTmhvZ",
+      "sort": 0,
+      "_key": "!items.effects!HbzRgu4NQpoTmhvZ.Yna0C3QoawyfkvBF"
+    }
+  ],
+  "system": {
+    "activities": {},
+    "uses": {
+      "spent": 0,
+      "recovery": []
+    },
+    "advancement": [],
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "identifier": "fast-movement",
+    "source": {
+      "book": "PHB 2024",
+      "page": "",
+      "license": "",
+      "custom": "",
+      "rules": "2024",
+      "revision": 1
+    },
+    "crewed": false,
+    "enchant": {},
+    "prerequisites": {
+      "items": [],
+      "level": 5,
+      "repeatable": false
+    },
+    "properties": [],
+    "requirements": "",
+    "type": {
+      "value": "class",
+      "subtype": ""
+    }
+  },
+  "flags": {
+    "dae": {
+      "alwaysActive": false,
+      "activeEquipped": false
+    },
+    "midi-qol": {
+      "removeAttackDamageButtons": "default",
+      "forceCEOff": true
+    },
+    "midiProperties": {
+      "confirmTargets": "default"
+    },
+    "dnd5e": {
+      "riders": {
+        "activity": [],
+        "effect": []
+      },
+      "advancementOrigin": "yVlZ8ysfvQ7psVLR"
+    },
+    "chris-premades": {
+      "info": {
+        "identifier": "fastMovement",
+        "rules": "modern",
+        "source": "chris-premades",
+        "version": "1.3.105"
+      },
+      "macros": {
+        "item": [
+          "fastMovement"
+        ]
+      }
+    }
+  },
+  "img": "icons/skills/movement/feet-winged-boots-brown.webp",
+  "folder": "epodEYV6OzWsQdIP",
+  "_id": "HbzRgu4NQpoTmhvZ",
+  "_key": "!items!HbzRgu4NQpoTmhvZ"
+}

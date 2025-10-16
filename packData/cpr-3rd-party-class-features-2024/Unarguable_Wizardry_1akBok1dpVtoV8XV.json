@@ -1,43 +1,17 @@
 {
-  "name": "Maximize Damage",
+  "name": "Unarguable Wizardry",
   "type": "feat",
-  "img": "icons/skills/movement/ball-spinning-blue.webp",
+  "effects": [],
   "system": {
-    "description": {
-      "value": "",
-      "chat": ""
-    },
-    "source": {
-      "revision": 1,
-      "rules": "2014",
-      "book": "",
-      "page": "",
-      "custom": "",
-      "license": ""
-    },
-    "uses": {
-      "max": "",
-      "spent": 0,
-      "recovery": []
-    },
-    "type": {
-      "value": "",
-      "subtype": ""
-    },
-    "prerequisites": {
-      "level": null,
-      "items": [],
-      "repeatable": false
-    },
-    "properties": [],
-    "requirements": "",
     "activities": {
-      "dnd5eactivity000": {
-        "_id": "dnd5eactivity000",
+      "utilityUWIRclNe0": {
+        "name": "Unarguable Wizardry: Indignant Rage",
         "type": "utility",
+        "_id": "utilityUWIRclNe0",
+        "sort": 0,
         "activation": {
-          "type": "special",
-          "value": null,
+          "type": "reaction",
+          "value": 1,
           "condition": "",
           "override": false
         },
@@ -49,14 +23,11 @@
           },
           "spellSlot": true
         },
-        "description": {
-          "chatFlavor": ""
-        },
+        "description": {},
         "duration": {
+          "units": "spec",
+          "special": "until the end of your next turn",
           "concentration": false,
-          "value": "",
-          "units": "inst",
-          "special": "",
           "override": false
         },
         "effects": [],
@@ -66,6 +37,13 @@
           "override": false
         },
         "target": {
+          "prompt": true,
+          "affects": {
+            "count": "",
+            "type": "",
+            "choice": false,
+            "special": ""
+          },
           "template": {
             "count": "",
             "contiguous": false,
@@ -75,32 +53,19 @@
             "height": "",
             "units": "ft"
           },
-          "affects": {
-            "count": "",
-            "type": "self",
-            "choice": false,
-            "special": ""
-          },
-          "prompt": true,
           "override": false
         },
         "uses": {
           "spent": 0,
-          "max": "",
           "recovery": []
         },
         "roll": {
-          "formula": "",
-          "name": "",
           "prompt": false,
           "visible": false
         },
-        "sort": 0,
         "useConditionText": "",
-        "forceDialog": false,
-        "effectConditionText": "",
-        "midiAutomationOnly": false,
         "useConditionReason": "",
+        "effectConditionText": "",
         "macroData": {
           "name": "",
           "command": ""
@@ -118,16 +83,17 @@
           "triggeredActivityConditionText": "",
           "triggeredActivityTargets": "targets",
           "triggeredActivityRollAs": "self",
-          "forceDialog": false,
-          "forceAttackDialog": false,
-          "forceDamageDialog": false,
           "confirmTargets": "default",
+          "automationOnly": false,
+          "identifier": "",
+          "autoConsume": false,
+          "forceConsumeDialog": "default",
+          "forceRollDialog": "default",
+          "forceDamageDialog": "default",
           "autoTargetType": "any",
           "autoTargetAction": "default",
-          "automationOnly": false,
           "otherActivityCompatible": true,
           "otherActivityAsParentType": true,
-          "identifier": "",
           "displayActivityName": false,
           "rollMode": "default",
           "chooseEffects": false,
@@ -145,63 +111,71 @@
           "preRemoveConditionText": "",
           "postRemoveConditionText": ""
         },
-        "otherActivityId": "none"
+        "otherActivityId": "none",
+        "otherActivityAsParentType": true
       }
     },
-    "identifier": "maximize-damage",
-    "enchant": {},
+    "uses": {
+      "spent": 0,
+      "recovery": []
+    },
     "advancement": [],
-    "crewed": false
-  },
-  "effects": [],
-  "folder": null,
-  "flags": {
-    "chris-premades": {
-      "info": {
-        "identifier": "maxDamage",
-        "source": "chris-premades",
-        "version": "1.1.0"
-      },
-      "macros": {
-        "midi": {
-          "item": [
-            "maxDamage"
-          ]
-        }
-      }
+    "description": {
+      "value": "",
+      "chat": ""
     },
-    "dnd5e": {
-      "riders": {
-        "activity": [],
-        "effect": []
-      }
+    "identifier": "unarguable-wizardry",
+    "source": {
+      "book": "VSSPP",
+      "page": "",
+      "license": "",
+      "custom": "",
+      "rules": "2024",
+      "revision": 1
     },
-    "midi-qol": {
-      "AoETargetType": "any",
-      "AoETargetTypeIncludeSelf": true,
-      "autoTarget": "default",
-      "rollAttackPerTarget": "default",
-      "removeAttackDamageButtons": "default",
-      "itemCondition": "",
-      "reactionCondition": "",
-      "otherCondition": "",
-      "effectCondition": ""
+    "crewed": false,
+    "enchant": {},
+    "prerequisites": {
+      "items": [],
+      "level": 3,
+      "repeatable": false
     },
-    "midiProperties": {
-      "confirmTargets": "default",
-      "autoFailFriendly": false,
-      "autoSaveFriendly": false,
-      "magicdam": false,
-      "magiceffect": false,
-      "noConcentrationCheck": false,
-      "toggleEffect": false,
-      "ignoreTotalCover": false,
-      "idr": false,
-      "idi": false,
-      "idv": false,
-      "ida": false
+    "properties": [],
+    "requirements": "",
+    "type": {
+      "value": "class",
+      "subtype": ""
     }
   },
-  "_id": "hKXN6Ga0c8nT9pq5",
-  "_key": "!items!hKXN6Ga0c8nT9pq5"
+  "flags": {
+    "midi-qol": {
+      "removeAttackDamageButtons": "default"
+    },
+    "midiProperties": {
+      "confirmTargets": "default"
+    },
+    "dnd5e": {
+      "advancementOrigin": "PJID5ZdoB2e9mzQu",
+      "riders": {
+        "activity": []
+      }
+    },
+    "chris-premades": {
+      "info": {
+        "identifier": "unarguableWizardry",
+        "rules": "modern",
+        "source": "chris-premades",
+        "version": "1.3.91"
+      },
+      "macros": {
+        "skill": [
+          "unarguableWizardry"
+        ]
+      }
+    }
+  },
+  "img": "icons/equipment/head/hat-pointed-leather-black-glowing.webp",
+  "folder": "EcaXKRDtuXXSrey4",
+  "_id": "1akBok1dpVtoV8XV",
+  "_key": "!items!1akBok1dpVtoV8XV"
 }
