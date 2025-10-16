@@ -25,7 +25,9 @@ let itemPacks = [
     'cpr-feat-features-2024',
     'cpr-embedded-macro-sample-items',
     'cpr-actions-2024',
-    'cpr-feature-items-2024'
+    'cpr-feature-items-2024',
+    'cpr-3rd-party-class-features-2024',
+    'cpr-3rd-party-spells'
 ];
 let actorPacks = [
     'cpr-summons',
