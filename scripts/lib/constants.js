@@ -1,4 +1,5 @@
 import {teleportEffects} from '../macros/animations/teleportEffects.js';
+import {genericUtils} from '../utils.js';
 let packs = {
     spellFeatures: 'chris-premades.CPRSpellFeatures',
     spells: 'chris-premades.CPRSpells',
@@ -17,7 +18,8 @@ let packs = {
     monsterFeatures: 'chris-premades.CPRMonsterFeatures',
     miscellaneous: 'chris-premades.CPRMiscellaneous',
     thirdPartyFeats: 'chris-premades.CPRThirdPartyFeats',
-    embeddedMacroSampleItems: 'chris-premades.CPREmbeddedMacroSampleItems'
+    embeddedMacroSampleItems: 'chris-premades.CPREmbeddedMacroSampleItems',
+    thirdPartySpells: 'chris-premades.CPRThirdPartySpells'
 };
 let featurePacks = {
     spellFeatures: 'chris-premades.CPRSpellFeatures',
@@ -37,7 +39,8 @@ let legacyPacks = {
     thirdPartyClassFeatures: 'chris-premades.CPRThirdPartyClassFeatures',
     thirdPartyItems: 'chris-premades.CPRThirdPartyItems',
     monsterFeatures: 'chris-premades.CPRMonsterFeatures',
-    thirdPartyFeats: 'chris-premades.CPRThirdPartyFeats'
+    thirdPartyFeats: 'chris-premades.CPRThirdPartyFeats',
+    thirdPartySpells: 'chris-premades.CPRThirdPartySpells'
 };
 let modernPacks = {
     spells: 'chris-premades.CPRSpells2024',
@@ -48,7 +51,8 @@ let modernPacks = {
     featFeatures: 'chris-premades.CPRFeatFeatures2024',
     feats: 'chris-premades.CPRFeats2024',
     actions: 'chris-premades.CPRActions2024',
-    featureItems: 'chris-premades.CPRFeatureItems2024'
+    featureItems: 'chris-premades.CPRFeatureItems2024',
+    thirdPartyClassFeatures: 'chris-premades.CPRThirdPartyClassFeatures2024'
 };
 function setUseLocalCompendium(value) {
     if (value) {
@@ -195,6 +199,7 @@ const getBaseWeaponOptions = () => {return baseWeaponOptions;};
 const getBaseMeleeWeaponOptions = () => {return baseMeleeWeaponOptions;};
 const getBaseRangedWeaponOptions = () => {return baseRangedWeaponOptions;};
 let toolNames = {};
+let featOptions = [];
 export async function setupConstants() {
     let data = (await Promise.all(Object.entries(CONFIG.DND5E.weaponIds).map(async ([id, uuid]) => {
         let document = await fromUuid(uuid);
@@ -212,6 +217,12 @@ export async function setupConstants() {
         if (!item) return;
         toolNames[key] = item.name;
     }));
+    let featPackId = genericUtils.getCPRSetting('featCompendium');
+    let featPack = game.packs.get(featPackId);
+    if (featPack) {
+        let index = await featPack.getIndex();
+        featOptions = index.map(item => ({label: item.name, value: item.name}));
+    }
 }
 const overTimeOptions = [
     {
@@ -642,6 +653,9 @@ let languageOptions = () => {
 function getToolNames() {
     return toolNames;
 }
+function getFeatOptions() {
+    return featOptions;
+}
 export let constants = {
     packs,
     featurePacks,
@@ -686,5 +700,6 @@ export let constants = {
     getBaseWeaponOptions,
     getBaseMeleeWeaponOptions,
     getBaseRangedWeaponOptions,
-    getToolNames
+    getToolNames,
+    getFeatOptions
 };

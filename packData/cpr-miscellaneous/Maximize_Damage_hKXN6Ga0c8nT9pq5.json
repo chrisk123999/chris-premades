@@ -9,7 +9,11 @@
     },
     "source": {
       "revision": 1,
-      "rules": "2024"
+      "rules": "2014",
+      "book": "",
+      "page": "",
+      "custom": "",
+      "license": ""
     },
     "uses": {
       "max": "",

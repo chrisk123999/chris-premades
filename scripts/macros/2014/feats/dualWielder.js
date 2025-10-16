@@ -27,5 +27,5 @@ export let dualWielder = {
             pass: 'actorUnequipped',
             macro: change
         }
-    ],
+    ]
 };

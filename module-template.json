@@ -310,6 +310,20 @@
       "path": "packs/cpr-feature-items-2024",
       "type": "Item",
       "module": "chris-premades"
+    },
+    {
+      "name": "CPRThirdPartyClassFeatures2024",
+      "label": "CPR 3rd Party Class Features (2024)",
+      "path": "packs/cpr-3rd-party-class-features-2024",
+      "type": "Item",
+      "module": "chris-premades"
+    },
+    {
+      "name": "CPRThirdPartySpells",
+      "label": "CPR 3rd Party Spells",
+      "path": "packs/cpr-3rd-party-spells",
+      "type": "Item",
+      "module": "chris-premades"
     }
   ],
   "packFolders": [
@@ -338,6 +352,7 @@
             "CPRThirdPartyClassFeatures",
             "CPRThirdPartyItems",
             "CPRThirdPartyFeats",
+            "CPRThirdPartySpells",
             "CPRMonsterFeatures"
           ]
         },
@@ -354,7 +369,8 @@
             "CPRFeats2024",
             "CPRFeatFeatures2024",
             "CPRActions2024",
-            "CPRFeatureItems2024"
+            "CPRFeatureItems2024",
+            "CPRThirdPartyClassFeatures2024"
           ]
         }
       ],

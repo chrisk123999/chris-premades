@@ -1,3 +1,16 @@
+# 1.3.105 Release:
+## New Legacy Content:
+- Flight (Fairy)
+- Absorb Elements
+- Veil of Dusk
+## New Modern Content:
+- Fast Movement
+- Eldritch Invocations: Pact of the Chain
+- Magical Cunning
+## Bug Fixes:
+- Baleful Interdict
+- Item Medkit
+
 # 1.3.104 Release:
 ## Bug Fixes:
 - Item Medkit

@@ -1,5 +1,4 @@
 import {activityUtils, actorUtils, compendiumUtils, constants, dialogUtils, effectUtils, errors, genericUtils, itemUtils, tokenUtils, workflowUtils} from '../../../../utils.js';
-
 async function late({trigger: {entity: item}, workflow}) {
     if (!workflow.hitTargets.size) return;
     if (workflow.item.type !== 'weapon') return;

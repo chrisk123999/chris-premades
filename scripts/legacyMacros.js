@@ -151,6 +151,8 @@ export {wardingBond, wardingBondTarget, wardingBondSource} from './macros/2014/s
 export {witherAndBloom} from './macros/2014/spells/witherAndBloom.js';
 export {wrathfulSmite, wrathfulSmiteDamage} from './macros/2014/spells/wrathfulSmite.js';
 export {zoneOfTruth} from './macros/2014/spells/zoneOfTruth.js';
+export {absorbElements} from './macros/2014/spells/absorbElements.js';
+export {veilOfDusk} from './macros/2014/spells/veilOfDusk.js';
 // Other
 export {actionDismissal} from './macros/2014/generic/actionDismissal.js';
 export {noConfiguration} from './macros/2014/generic/noConfiguration.js';
@@ -484,6 +486,7 @@ export {vampiricBite} from './macros/2014/raceFeatures/dhampir/vampiricBite.js';
 export {wardersIntuition} from './macros/2014/raceFeatures/dwarf/markOfWarding/wardersIntuition.js';
 export {windwrightsIntuition} from './macros/2014/raceFeatures/halfElf/markOfStorm/windwrightsIntuition.js';
 export {huntersIntuition} from './macros/2014/raceFeatures/human/markOfFinding/huntersIntuition.js';
+export {fairyFlight} from './macros/2014/raceFeatures/fairy/flight.js';
 // Monster Features
 export {armyArcana} from './macros/2014/monsterFeatures/fey/hobgoblinDevastator/armyArcana.js';
 export {causticMist} from './macros/2014/monsterFeatures/monstrosity/hoardMimic/causticMist.js';

@@ -298,7 +298,8 @@ export class ItemMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
                 }
                 case 'select-many': {
                     configOption.isSelectMany = true;
-                    config.options = config.options instanceof Function ? config.options() : config.options;
+                    for (let i = 0; typeof config.options === 'function' && i < 5; i++) config.options = config.options();
+                    if (typeof config.options === 'function') config.options = [];
                     config.options.forEach(i => {
                         if (!configOption?.options) genericUtils.setProperty(configOption, 'options', []);
                         if (i.requiredModules?.find(j => !game.modules.get(j)?.active)) return;

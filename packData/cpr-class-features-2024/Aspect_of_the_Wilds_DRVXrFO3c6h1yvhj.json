@@ -80,9 +80,9 @@
       "changes": [
         {
           "key": "system.attributes.movement.climb",
-          "value": "@attributes.movement.walk",
           "mode": 4,
-          "priority": 20
+          "value": "@attributes.movement.walk",
+          "priority": 40
         }
       ],
       "duration": {
@@ -123,6 +123,11 @@
         },
         "core": {
           "overlay": false
+        },
+        "dnd5e": {
+          "riders": {
+            "statuses": []
+          }
         }
       },
       "description": "",
@@ -140,9 +145,9 @@
       "changes": [
         {
           "key": "system.attributes.movement.swim",
-          "value": "@attributes.movement.walk",
           "mode": 4,
-          "priority": 20
+          "value": "@attributes.movement.walk",
+          "priority": 40
         }
       ],
       "duration": {
@@ -183,6 +188,11 @@
         },
         "core": {
           "overlay": false
+        },
+        "dnd5e": {
+          "riders": {
+            "statuses": []
+          }
         }
       },
       "description": "",
