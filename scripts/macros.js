@@ -378,3 +378,6 @@ export {magicalCunning} from './macros/2024/classFeatures/warlock/magicalCunning
 export {pactOfTheChain} from './macros/2024/classFeatures/warlock/invocations/pactOfTheChain.js';
 // Multiple
 export {evasion} from './macros/2024/classFeatures/multiple/evasion.js';
+// Monster Features
+// Sphinx Of Wonder
+export {burstOfIngenuity} from './macros/2024/monsterFeatures/sphinxOfWonder/burstOfIngenuity.js';

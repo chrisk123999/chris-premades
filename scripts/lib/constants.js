@@ -40,7 +40,7 @@ let legacyPacks = {
     thirdPartyItems: 'chris-premades.CPRThirdPartyItems',
     monsterFeatures: 'chris-premades.CPRMonsterFeatures',
     thirdPartyFeats: 'chris-premades.CPRThirdPartyFeats',
-    thirdPartySpells: 'chris-premades.CPRThirdPartySpells'
+    thirdPartySpells: 'chris-premades.CPRThirdPartySpells',
 };
 let modernPacks = {
     spells: 'chris-premades.CPRSpells2024',
@@ -52,7 +52,8 @@ let modernPacks = {
     feats: 'chris-premades.CPRFeats2024',
     actions: 'chris-premades.CPRActions2024',
     featureItems: 'chris-premades.CPRFeatureItems2024',
-    thirdPartyClassFeatures: 'chris-premades.CPRThirdPartyClassFeatures2024'
+    thirdPartyClassFeatures: 'chris-premades.CPRThirdPartyClassFeatures2024',
+    monsterFeatures: 'chris-premades.CPRMonsterFeatures2024'
 };
 function setUseLocalCompendium(value) {
     if (value) {
@@ -88,6 +89,7 @@ function setUseLocalCompendium(value) {
         packs.embeddedMacroSampleItems = 'world.cpr-embedded-macro-sample-items';
         modernPacks.actions = 'world.cpr-actions-2024';
         modernPacks.featureItems = 'world.cpr-feature-items-2024';
+        packs.thirdPartySpells = 'world.cpr-3rd-party-spells';
     } else {
         packs.spellFeatures = 'chris-premades.CPRSpellFeatures';
         featurePacks.spellFeatures = 'chris-premades.CPRSpellFeatures';
@@ -121,6 +123,7 @@ function setUseLocalCompendium(value) {
         packs.embeddedMacroSampleItems = 'chris-premades.CPREmbeddedMacroSampleItems';
         modernPacks.actions = 'chris-premades.CPRActions2024';
         modernPacks.featureItems = 'chris-premades.CPRFeatureItems2024';
+        packs.thirdPartySpells = 'chris-premades.CPR3rdPartySpells';
     }
 }
 const attacks = [

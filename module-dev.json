@@ -207,6 +207,13 @@
       "module": "chris-premades"
     },
     {
+      "name": "CPRMonsterFeatures2024",
+      "label": "CPR Monster Features (2024)",
+      "path": "packs/cpr-monster-features-2024",
+      "type": "Item",
+      "module": "chris-premades"
+    },
+    {
       "name": "CPRRaceFeatures",
       "label": "CPR Race Features",
       "path": "packs/cpr-race-features",

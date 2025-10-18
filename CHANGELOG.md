@@ -1,3 +1,7 @@
+# 1.3.106 Release:
+## New Monster Content:
+- Sphinx of Wonder: Burst of Ingenuity
+
 # 1.3.105 Release:
 ## New Legacy Content:
 - Flight (Fairy)
