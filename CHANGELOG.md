@@ -1,4 +1,8 @@
 # 1.3.106 Release:
+## Bug Fixes:
+- Dread Ambusher
+
+# 1.3.106 Release:
 ## New Monster Content:
 - Sphinx of Wonder: Burst of Ingenuity
 
