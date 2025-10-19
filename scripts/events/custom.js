@@ -1,4 +1,4 @@
-import {activityUtils, actorUtils, animationUtils, combatUtils, compendiumUtils, constants, crosshairUtils, dialogUtils, effectUtils, genericUtils, itemUtils, macroUtils, rollUtils, socketUtils, spellUtils, templateUtils, tokenUtils, workflowUtils} from '../utils.js';
+import {activityUtils, actorUtils, animationUtils, combatUtils, compendiumUtils, constants, crosshairUtils, dialogUtils, effectUtils, genericUtils, itemUtils, macroUtils, rollUtils, socketUtils, spellUtils, templateUtils, tokenUtils, workflowUtils, thirdPartyUtils} from '../utils.js';
 import * as legacyMacros from '../legacyMacros.js';
 import * as macros from '../macros.js';
 import {Crosshairs} from '../lib/crosshairs.js';
@@ -32,7 +32,7 @@ function preCreateMacro(document, updates, options, userId) {
     if (!key) return;
     if (key != document.pack) return;
     if (document.command != '') return;
-    let script = `const {DialogApp, Crosshairs, Summons, Teleport, utils: {activityUtils, actorUtils, animationUtils, combatUtils, compendiumUtils, constants, crosshairUtils, dialogUtils, effectUtils, errors, genericUtils, itemUtils, macroUtils, rollUtils, socketUtils, templateUtils, tokenUtils, workflowUtils, spellUtils, regionUtils}} = chrisPremades;
+    let script = `const {DialogApp, Crosshairs, Summons, Teleport, utils: {activityUtils, actorUtils, animationUtils, combatUtils, compendiumUtils, constants, crosshairUtils, dialogUtils, effectUtils, errors, genericUtils, itemUtils, macroUtils, rollUtils, socketUtils, templateUtils, tokenUtils, workflowUtils, spellUtils, regionUtils, thirdPartyUtils}} = chrisPremades;
     `;
     document.updateSource({command: script});
 }
@@ -73,6 +73,7 @@ async function executeScript({script, ...scope} = {}) {
         templateUtils,
         tokenUtils,
         workflowUtils,
+        thirdPartyUtils,
         constants,
         Crosshairs,
         Summons,

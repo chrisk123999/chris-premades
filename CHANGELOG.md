@@ -1,3 +1,7 @@
+# 1.3.108 Release:
+## API Update Notes:
+- Added `thirdPartyUtils` to embedded macros and macro overwrites.
+
 # 1.3.107 Release:
 ## Update Notes:
 - Added a restrained while grappled config option to the auto grapple generic monster feature.
