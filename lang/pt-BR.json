@@ -414,11 +414,20 @@
                 "movedNear": {
                     "Label": "Movido Perto"
                 },
+                "movedScene": {
+                    "Label": "Cena Movida"
+                },
                 "post": {
                     "Label": "Post"
                 },
                 "postAttackRoll": {
                     "Label": "Rolagem Pós-Ataque"
+                },
+                "postEvaluation": {
+                    "Label": "Pós-Evaluation"
+                },
+                "preEvaluation": {
+                    "Label": "Pré-Evaluation"
                 },
                 "preItemRoll": {
                     "Label": "Rolagem Pré-Ataque"
@@ -453,11 +462,14 @@
                 "sceneDeleted": {
                     "Label": "Cena Excluída"
                 },
-                "movedScene": {
-                    "Label": "Cena Movida"
-                },
                 "scenePostAttackRoll": {
                     "Label": "Rolagem Pós-Ataque da Cena"
+                },
+                "scenePostEvaluation": {
+                    "Label": "Pós-Evaluation da Cena"
+                },
+                "scenePreEvaluation": {
+                    "Label": "Pré-Evaluation da Cena"
                 },
                 "scenePreambleComplete": {
                     "Label": "Preâmbulo da Cena Completo"
@@ -533,18 +545,6 @@
                 },
                 "utilityRollComplete": {
                     "Label": "Concluída Rolagem de Utilidade"
-                },
-                "preEvaluation": {
-                    "Label": "Pré-Evaluation"
-                },
-                "postEvaluation": {
-                    "Label": "Pós-Evaluation"
-                },
-                "scenePreEvaluation": {
-                    "Label": "Pré-Evaluation da Cena"
-                },
-                "scenePostEvaluation": {
-                    "Label": "Pós-Evaluation da Cena"
                 }
             },
             "Priority": {
@@ -561,6 +561,7 @@
                 "aura": "Aura",
                 "check": "Teste",
                 "combat": "Combate",
+                "d20": "D20",
                 "death": "Morte",
                 "effect": "Efeito",
                 "item": "Item",
@@ -572,8 +573,7 @@
                 "save": "Salvaguarda",
                 "skill": "Perícia",
                 "template": "Modelo",
-                "toolCheck": "Ferramenta",
-                "d20": "D20"
+                "toolCheck": "Ferramenta"
             }
         },
         "Error": {
@@ -1799,6 +1799,9 @@
             "MistyStep": {
                 "Name": "Passo Nebuloso"
             },
+            "MistyWanderer": {
+                "TeleportFriend": "Teleportar uma criatura disposta?"
+            },
             "Moonbeam": {
                 "Damage": "Raio Lunar: Dano",
                 "Move": "Raio Lunar: Mover"
@@ -1835,6 +1838,9 @@
             },
             "PackTactics": {
                 "Name": "Táticas de Bando"
+            },
+            "PactOfTheChain": {
+                "Attack": "Atacar com:"
             },
             "PariahsShield": {
                 "MaxBonus": "Bônus Máx. de CA:",
@@ -3062,6 +3068,10 @@
                 "Hint": "Quando ativado, um botão de alternativo de exportação será adicionado ao menu do item e do ator, para exportar um item com descrições removidas. É necessário recarregar após ativar.",
                 "Name": "Export For Sharing"
             },
+            "featCompendium": {
+                "Hint": "Compêndio de talentos usado para certas automações. Idealmente, deve apontar para o seu compêndio de talentos do D&D Beyond.",
+                "Name": "Compêndio de Talentos"
+            },
             "firearmSupport": {
                 "Hint": "Quando ativado, a automação de armas de fogo estará disponível (da classe Gunslinger do Critical Role).",
                 "Name": "Suporte Arma de Fogo"
@@ -3115,7 +3125,7 @@
                 "Name": "Aviso de Ações Lendárias"
             },
             "macroCompendium": {
-                "Hint": "Compêndio de macros usado para substituir ou adicionar macros adicionais à API CPR. Consulte a documentação sobre como usar isso. (WIP)",
+                "Hint": "Compêndio de macros usado para substituir ou adicionar macros adicionais à API CPR. Consulte a documentação sobre como usar isso.",
                 "Name": "Compêndio de Macros"
             },
             "makeGM": {
@@ -3216,6 +3226,10 @@
                 "Hint": "Quando ativado, os ícones de status serão substituídos.",
                 "Name": "Substituir Ícones de Status"
             },
+            "rollTableCompendium": {
+                "Hint": "Compêndio de Tabela de Rolagem usado para certas automações. Idealmente, deve apontar para o seu compêndio de tabela de rolagem de D&D Beyond.",
+                "Name": "Compêndio de Tabela de Rolagem"
+            },
             "seenTour": {
                 "Hint": "O aviso do tour foi visualizado? Definir automaticamente.",
                 "Name": "Aviso do Tour"
@@ -3245,7 +3259,7 @@
                 "Name": "Efeitos Temporários na HUD"
             },
             "thirdParty": {
-                "Hint": "Quando ativado, o Medkit também incluirá automações Homebrew.",
+                "Hint": "Quando ativado, o Medkit também incluirá automações de terceiros.",
                 "Name": "Conteúdo de Terceiros"
             },
             "updateCompanionInitiative": {

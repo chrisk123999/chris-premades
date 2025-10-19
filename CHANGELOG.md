@@ -4,6 +4,10 @@
 - Added an activity config option to the effect immunity generic monster feature.
 - Added a restrained option to the tokenUtils grapple helper.
 
+# 1.3.107 Release:
+## Bug Fixes:
+- Dread Ambusher
+
 # 1.3.106 Release:
 ## New Monster Content:
 - Sphinx of Wonder: Burst of Ingenuity

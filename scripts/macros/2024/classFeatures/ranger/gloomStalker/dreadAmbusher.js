@@ -54,7 +54,7 @@ async function late({workflow}) {
 }
 export let dreadAmbusher = {
     name: 'Dread Ambusher',
-    version: '1.3.81',
+    version: '1.3.107',
     rules: 'modern',
     midi: {
         actor: [

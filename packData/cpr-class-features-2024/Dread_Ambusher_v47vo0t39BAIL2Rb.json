@@ -204,7 +204,7 @@
     "chris-premades": {
       "info": {
         "name": "Dread Ambusher",
-        "version": "1.3.81",
+        "version": "1.3.107",
         "identifier": "dreadAmbusher",
         "source": "chris-premades",
         "rules": "modern"
@@ -214,7 +214,7 @@
           "dreadAmbusher"
         ],
         "midi": {
-          "item": [
+          "actor": [
             "dreadAmbusher"
           ]
         }
