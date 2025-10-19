@@ -2,6 +2,8 @@ import {actorUtils, effectUtils, genericUtils, itemUtils, workflowUtils} from '.
 async function use({trigger, workflow}) {
     if (!workflow.targets.size) return;
     let config = itemUtils.getGenericFeatureConfig(workflow.item, 'effectImmunity');
+    let activities = config.activities;
+    if (activities?.length && !activities.includes(workflow.activity.id)) return;
     let name = workflow.item.name + ' ' + genericUtils.translate('CHRISPREMADES.Macros.EffectImmunity.Immune');
     let savedTargets = workflow.targets.filter(i => !workflow.failedSaves.has(i));
     let seconds = isNaN(Number(config.duration)) ? 86400 : Number(config.duration);
@@ -24,6 +26,9 @@ async function use({trigger, workflow}) {
 }
 async function early({trigger, workflow}) {
     if (!workflow.targets.size) return;
+    let config = itemUtils.getGenericFeatureConfig(workflow.item, 'effectImmunity');
+    let activities = config.activities;
+    if (activities?.length && !activities.includes(workflow.activity.id)) return;
     let name = workflow.item.name + ' ' + genericUtils.translate('CHRISPREMADES.Macros.EffectImmunity.Immune');
     let firstEffectName = workflow.item.effects.contents.length ? workflow.item.effects.contents[0].name : workflow.item.name;
     let validTargets = workflow.targets.filter(i => {
@@ -79,6 +84,12 @@ export let effectImmunity = {
             label: 'CHRISPREMADES.Config.DurationSeconds',
             type: 'number',
             default: 86400
+        },
+        {
+            value: 'activities',
+            label: 'CHRISPREMADES.Config.Activities',
+            type: 'activities',
+            default: []
         }
     ]
 };

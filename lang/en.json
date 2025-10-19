@@ -849,7 +849,8 @@
             "AutoGrapple": {
                 "DC": "Flat DC to escape grapple (contested if 0):",
                 "Disadvantage": "Grant disadvantage on escape check:",
-                "Name": "Auto Grapple"
+                "Name": "Auto Grapple",
+                "Restrained": "Restrained while grappled:"
             },
             "AutoPush": {
                 "Name": "Auto Push"
