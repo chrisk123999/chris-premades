@@ -1,4 +1,4 @@
-# 1.3.106 Release:
+# 1.3.107 Release:
 ## Bug Fixes:
 - Dread Ambusher
 
