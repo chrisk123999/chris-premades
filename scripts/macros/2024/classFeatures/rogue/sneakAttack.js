@@ -93,7 +93,7 @@ async function damage({trigger: {entity: item}, workflow}) {
         }
     }
     if (bonusDamageFormula) await workflowUtils.bonusDamage(workflow, bonusDamageFormula, {damageType: workflow.defaultDamageType});
-    await workflowUtils.completeItemUse(item);
+    await workflowUtils.syntheticItemRoll(item, Array.from(workflow.targets), {consumeResources: combatUtils.inCombat(), consumeUsage: combatUtils.inCombat()});
     let rendMind = itemUtils.getItemByIdentifier(workflow.actor, 'rendMind');
     if (rendMind && identifier === 'psychicBlades') {
         let psionicPower = itemUtils.getItemByIdentifier(workflow.actor, 'psionicPower');

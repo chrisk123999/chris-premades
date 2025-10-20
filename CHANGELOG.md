@@ -1,3 +1,11 @@
+# 1.3.109 Release:
+## New Legacy Content:
+- Master of Tactics
+## Bug Fixes:
+- Help Action
+- Sneak Attack
+- Magical Inspiration
+
 # 1.3.108 Release:
 ## API Update Notes:
 - Added `thirdPartyUtils` to embedded macros and macro overwrites.
