@@ -1,77 +1,76 @@
 {
-  "folder": "zQPurB6Da5oYQl5F",
-  "name": "Wrath of the Sea",
+  "name": "Master of Tactics",
   "type": "feat",
-  "_id": "9bJkzM389ByPieQB",
-  "img": "icons/magic/water/barrier-ice-wall-snow.webp",
+  "effects": [],
   "system": {
     "activities": {
-      "eGCPqSZgQ8RMckKu": {
+      "1q97b778ijtPdQLy": {
         "type": "utility",
-        "name": "",
-        "_id": "eGCPqSZgQ8RMckKu",
-        "sort": 100000,
         "activation": {
           "type": "bonus",
-          "override": false,
-          "condition": ""
+          "value": 1,
+          "condition": "",
+          "override": false
         },
         "consumption": {
+          "targets": [],
           "scaling": {
-            "allowed": false
+            "allowed": false,
+            "max": ""
           },
-          "spellSlot": true,
-          "targets": [
-            {
-              "type": "itemUses",
-              "value": "1",
-              "target": ""
-            }
-          ]
+          "spellSlot": true
         },
         "description": {
           "chatFlavor": ""
         },
         "duration": {
-          "units": "minute",
           "concentration": false,
-          "override": false,
-          "value": "10"
+          "value": "",
+          "units": "inst",
+          "special": "",
+          "override": false
         },
         "effects": [],
         "range": {
-          "units": "self",
+          "units": "ft",
+          "special": "",
           "override": false,
-          "special": ""
+          "value": "30"
         },
         "target": {
           "template": {
+            "count": "",
             "contiguous": false,
-            "units": "ft",
-            "type": ""
+            "type": "",
+            "size": "",
+            "width": "",
+            "height": "",
+            "units": "ft"
           },
           "affects": {
+            "count": "1",
+            "type": "creatureOrObject",
             "choice": false,
-            "type": "",
             "special": ""
           },
-          "override": false,
-          "prompt": true
+          "prompt": true,
+          "override": false
         },
         "uses": {
           "spent": 0,
-          "recovery": [],
-          "max": ""
+          "max": "",
+          "recovery": []
         },
         "roll": {
-          "prompt": false,
-          "visible": false,
+          "formula": "",
           "name": "",
-          "formula": ""
+          "prompt": false,
+          "visible": false
         },
+        "sort": 0,
         "useConditionText": "",
-        "useConditionReason": "",
         "effectConditionText": "",
+        "useConditionReason": "",
         "macroData": {
           "name": "",
           "command": ""
@@ -89,10 +88,7 @@
           "triggeredActivityConditionText": "",
           "triggeredActivityTargets": "targets",
           "triggeredActivityRollAs": "self",
-          "autoConsume": false,
-          "forceConsumeDialog": "default",
-          "forceRollDialog": "default",
-          "forceDamageDialog": "default",
+          "forceDamageDialog": "",
           "confirmTargets": "default",
           "autoTargetType": "any",
           "autoTargetAction": "default",
@@ -109,7 +105,10 @@
           "magicEffect": false,
           "magicDamage": false,
           "noConcentrationCheck": false,
-          "autoCEEffects": "default"
+          "autoCEEffects": "none",
+          "autoConsume": false,
+          "forceConsumeDialog": "default",
+          "forceRollDialog": "default"
         },
         "isOverTimeFlag": false,
         "overTimeProperties": {
@@ -119,35 +118,34 @@
         },
         "otherActivityId": "none",
         "otherActivityAsParentType": true,
-        "img": "",
-        "appliedEffects": []
+        "_id": "1q97b778ijtPdQLy",
+        "name": ""
       }
     },
     "uses": {
       "spent": 0,
-      "recovery": [],
-      "max": ""
+      "recovery": []
     },
     "advancement": [],
     "description": {
       "value": "",
       "chat": ""
     },
-    "identifier": "wrath-of-the-sea",
+    "identifier": "master-of-tactics",
     "source": {
-      "revision": 1,
-      "rules": "2024",
-      "book": "",
+      "book": "SCAG",
       "page": "",
-      "custom": "PHB 2024",
-      "license": ""
+      "license": "",
+      "custom": "",
+      "rules": "2014",
+      "revision": 1
     },
     "crewed": false,
     "enchant": {},
     "prerequisites": {
       "items": [],
-      "repeatable": false,
-      "level": 3
+      "level": 3,
+      "repeatable": false
     },
     "properties": [],
     "requirements": "",
@@ -156,35 +154,31 @@
       "subtype": ""
     }
   },
-  "effects": [],
   "flags": {
     "dnd5e": {
+      "advancementOrigin": "MW8n7Amm7BeElMhg",
       "riders": {
         "activity": []
       }
     },
     "chris-premades": {
       "info": {
-        "identifier": "wrathOfTheSea",
-        "version": "1.3.83",
+        "identifier": "masterOfTactics",
+        "rules": "legacy",
         "source": "chris-premades",
-        "rules": "modern"
+        "version": "1.3.109"
       },
       "macros": {
-        "item": [
-          "wrathOfTheSea"
-        ],
         "midi": {
           "item": [
-            "wrathOfTheSea"
+            "help"
           ]
         }
-      },
-      "hiddenActivities": [],
-      "activityIdentifiers": {
-        "wrathOfTheSea": "eGCPqSZgQ8RMckKu"
       }
     }
   },
-  "_key": "!items!9bJkzM389ByPieQB"
+  "img": "icons/sundries/documents/document-symbol-eye.webp",
+  "folder": "HVYDGzmtxqE0pwWv",
+  "_id": "2oRsdDpPtlsC8dtd",
+  "_key": "!items!2oRsdDpPtlsC8dtd"
 }

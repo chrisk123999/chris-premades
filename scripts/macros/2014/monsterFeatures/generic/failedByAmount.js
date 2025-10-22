@@ -4,12 +4,10 @@ async function use({workflow}) {
     let activities = config.activities;
     if (activities?.length && !activities.includes(workflow.activity.id)) return;
     let targets = workflow.failedSaves.filter(i => workflow.tokenSaves[i.document.uuid].total <= (workflow.saveDC - config.amount));
+    if (!targets.size) return;
     let triggerActivities = config.triggerActivities.map(i => workflow.item.system.activities.find(j => j.id === i));
-    await Promise.all(targets.map(async i => {
-        for (let j of triggerActivities) {
-            await workflowUtils.syntheticActivityRoll(j, [i]);
-        }
-    }));
+    if (!triggerActivities.length) return;
+    for (let activity of triggerActivities) await workflowUtils.syntheticActivityRoll(activity, Array.from(targets), {consumeResources: true, consumeUsage: true});
 }
 export let failedByAmount = {
     name: 'Failed By Amount',

@@ -1,0 +1,291 @@
+{
+  "name": "Shifting: Beasthide",
+  "type": "feat",
+  "effects": [
+    {
+      "name": "Shifted: Beasthide",
+      "statuses": [],
+      "changes": [
+        {
+          "key": "system.attributes.ac.bonus",
+          "value": "1",
+          "mode": 2,
+          "priority": 20
+        }
+      ],
+      "duration": {
+        "seconds": 60,
+        "startTime": null,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null,
+        "combat": null
+      },
+      "tint": "#ffffff",
+      "transfer": false,
+      "disabled": false,
+      "flags": {
+        "dae": {
+          "transfer": false,
+          "stackable": "noneNameOnly",
+          "specialDuration": [],
+          "selfTarget": false,
+          "selfTargetAlways": false,
+          "enableCondition": "",
+          "disableCondition": "",
+          "showIcon": false,
+          "disableIncapacitated": false,
+          "dontApply": true,
+          "durationExpression": "",
+          "macroRepeat": "none"
+        },
+        "ddbimporter": {
+          "disabled": false
+        },
+        "midi-qol": {
+          "forceCEOff": true
+        },
+        "core": {
+          "overlay": false
+        },
+        "dnd5e": {
+          "riders": {
+            "statuses": []
+          }
+        }
+      },
+      "description": "",
+      "_id": "SU01WOEquHBADObz",
+      "img": "icons/creatures/abilities/cougar-pounce-stalk-black.webp",
+      "type": "base",
+      "system": {},
+      "origin": null,
+      "sort": 0,
+      "_key": "!items.effects!Yjdql9zobJ6MzDnD.SU01WOEquHBADObz"
+    }
+  ],
+  "system": {
+    "activities": {
+      "healShiftingrace": {
+        "name": "",
+        "type": "heal",
+        "_id": "healShiftingrace",
+        "sort": 0,
+        "activation": {
+          "type": "bonus",
+          "value": 1,
+          "condition": "",
+          "override": false
+        },
+        "consumption": {
+          "targets": [
+            {
+              "type": "itemUses",
+              "value": "1",
+              "target": "",
+              "scaling": {}
+            }
+          ],
+          "scaling": {
+            "allowed": false,
+            "max": ""
+          },
+          "spellSlot": true
+        },
+        "description": {
+          "chatFlavor": ""
+        },
+        "duration": {
+          "value": "1",
+          "units": "minute",
+          "special": "",
+          "concentration": false,
+          "override": false
+        },
+        "effects": [
+          {
+            "_id": "SU01WOEquHBADObz"
+          }
+        ],
+        "range": {
+          "value": "5",
+          "units": "self",
+          "special": "",
+          "override": false
+        },
+        "target": {
+          "prompt": true,
+          "affects": {
+            "count": "1",
+            "type": "self",
+            "choice": false,
+            "special": ""
+          },
+          "template": {
+            "count": "",
+            "contiguous": false,
+            "type": "",
+            "size": "",
+            "width": "",
+            "height": "",
+            "units": "ft"
+          },
+          "override": false
+        },
+        "uses": {
+          "spent": 0,
+          "recovery": [],
+          "max": ""
+        },
+        "healing": {
+          "number": 2,
+          "denomination": 6,
+          "bonus": "2 * @prof",
+          "types": [
+            "temphp"
+          ],
+          "custom": {
+            "enabled": false,
+            "formula": ""
+          },
+          "scaling": {
+            "mode": "whole",
+            "number": 1,
+            "formula": ""
+          }
+        },
+        "useConditionText": "",
+        "useConditionReason": "",
+        "effectConditionText": "",
+        "macroData": {
+          "name": "",
+          "command": ""
+        },
+        "ignoreTraits": {
+          "idi": false,
+          "idr": false,
+          "idv": false,
+          "ida": false,
+          "idm": false
+        },
+        "midiProperties": {
+          "ignoreTraits": [],
+          "triggeredActivityId": "none",
+          "triggeredActivityConditionText": "",
+          "triggeredActivityTargets": "targets",
+          "triggeredActivityRollAs": "self",
+          "confirmTargets": "default",
+          "automationOnly": false,
+          "identifier": "",
+          "autoConsume": false,
+          "forceConsumeDialog": "default",
+          "forceRollDialog": "default",
+          "forceDamageDialog": "default",
+          "autoTargetType": "any",
+          "autoTargetAction": "default",
+          "otherActivityCompatible": false,
+          "otherActivityAsParentType": true,
+          "displayActivityName": false,
+          "rollMode": "default",
+          "chooseEffects": false,
+          "toggleEffect": false,
+          "ignoreFullCover": false,
+          "removeChatButtons": "default",
+          "magicEffect": false,
+          "magicDamage": false,
+          "noConcentrationCheck": false,
+          "autoCEEffects": "none"
+        },
+        "isOverTimeFlag": false,
+        "overTimeProperties": {
+          "saveRemoves": true,
+          "preRemoveConditionText": "",
+          "postRemoveConditionText": ""
+        }
+      }
+    },
+    "uses": {
+      "spent": 0,
+      "max": "@prof",
+      "recovery": []
+    },
+    "advancement": [],
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "identifier": "shifting",
+    "source": {
+      "book": "MotM",
+      "page": "",
+      "license": "",
+      "custom": "",
+      "rules": "2014",
+      "revision": 1
+    },
+    "crewed": false,
+    "enchant": {},
+    "prerequisites": {
+      "items": [],
+      "repeatable": false
+    },
+    "properties": [],
+    "requirements": "",
+    "type": {
+      "value": "race",
+      "subtype": ""
+    }
+  },
+  "flags": {
+    "species": {
+      "fullRaceName": "Shifter",
+      "baseRaceName": "Shifter",
+      "groupName": "Shifter",
+      "isLineage": false
+    },
+    "midi-qol": {
+      "removeAttackDamageButtons": "default",
+      "forceCEOff": true
+    },
+    "midiProperties": {
+      "confirmTargets": "default"
+    },
+    "dnd5e": {
+      "advancementOrigin": "1rYPvnlage0nGhIV",
+      "last": {
+        "healShiftingrace": {
+          "damageType": {
+            "0": "temphp"
+          }
+        }
+      },
+      "riders": {
+        "activity": []
+      }
+    },
+    "chris-premades": {
+      "hiddenActivities": [],
+      "activityIdentifiers": {
+        "use": "healShiftingrace"
+      },
+      "info": {
+        "identifier": "shiftBeasthide",
+        "rules": "legacy",
+        "source": "chris-premades",
+        "version": "1.3.110"
+      },
+      "macros": {
+        "midi": {
+          "item": [
+            "shiftBeasthide"
+          ]
+        }
+      }
+    }
+  },
+  "img": "icons/creatures/abilities/cougar-pounce-stalk-black.webp",
+  "folder": "pwpb9kM0BTFBNaDq",
+  "_id": "Yjdql9zobJ6MzDnD",
+  "_key": "!items!Yjdql9zobJ6MzDnD"
+}

@@ -261,7 +261,7 @@ export let twilightSanctuary = {
             value: 'classIdentifier',
             label: 'CHRISPREMADES.Config.ClassIdentifier',
             type: 'text',
-            default: 'druid',
+            default: 'cleric',
             category: 'homebrew',
             homebrew: true
         }

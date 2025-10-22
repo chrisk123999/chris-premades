@@ -58,7 +58,7 @@ async function getCPRAutomation(item, {identifier, rules = 'legacy', type = 'cha
         }
         if (!keys.length) return;
     } else if (type === 'npc') {
-        keys.push(constants.packs.monsterFeatures);
+        keys.push(rules === 'legacy' ? constants.packs.monsterFeatures : constants.modernPacks.monsterFeatures);
     } else return;
     let itemIdentifier = genericUtils.getIdentifier(item);
     let name = custom.getMacro(itemIdentifier, rules)?.name ?? CONFIG.chrisPremades.renamedItems[item.name] ?? item.name;

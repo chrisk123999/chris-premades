@@ -150,7 +150,7 @@ async function use({workflow}) {
                             
                             .effect()
                             .delay(200)
-                            .from(targetToken)
+                            .copySprite(targetToken)
                             .attachTo(targetToken)
                             .fadeIn(200)
                             .fadeOut(500)

@@ -183,7 +183,11 @@
   },
   "effects": [],
   "flags": {
-    "dnd5e": {},
+    "dnd5e": {
+      "riders": {
+        "activity": []
+      }
+    },
     "chris-premades": {
       "info": {
         "identifier": "archdruid",

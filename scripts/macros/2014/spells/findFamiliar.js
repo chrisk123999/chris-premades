@@ -204,8 +204,15 @@ async function pocketDimension({workflow}) {
                 }
                 effectsData.push(currEffect.toObject());
             }
+            let itemData = [];
+            for (let currItem of familiarToken.actor.items) {
+                if (!currItem.system.uses.max) continue;
+                itemData.push(currItem.toObject());
+            }
+            genericUtils.setProperty(updates, '');
             genericUtils.setProperty(updates, 'actor.system.attributes.hp', hpData);
             genericUtils.setProperty(updates, 'actor.effects', effectsData);
+            genericUtils.setProperty(updates, 'actor.items', itemData);
             await genericUtils.remove(familiarToken);
             let spawned = await spawnFamiliar(updates);
             if (spawned) await genericUtils.update(pocketDimensionEffect, {'flags.chris-premades.findFamiliarPocketDimension.sceneId': game.scenes.current.id});
@@ -240,8 +247,14 @@ async function pocketDimension({workflow}) {
                 }
                 effectsData.push(currEffect.toObject());
             }
+            let itemData = [];
+            for (let currItem of familiarToken.actor.items) {
+                if (!currItem.system.uses.max) continue;
+                itemData.push(currItem.toObject());
+            }
             genericUtils.setProperty(updates, 'actor.system.attributes.hp', hpData);
             genericUtils.setProperty(updates, 'actor.effects', effectsData);
+            genericUtils.setProperty(updates, 'actor.items', itemData);
             await genericUtils.update(pocketDimensionEffect, {'flags.chris-premades.findFamiliarPocketDimension': {state: true, updates}});
             await genericUtils.remove(familiarToken);
         }

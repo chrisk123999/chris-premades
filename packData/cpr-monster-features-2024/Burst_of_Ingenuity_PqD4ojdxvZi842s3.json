@@ -1,24 +1,29 @@
 {
-  "name": "Conjure Woodland Beings",
-  "type": "spell",
-  "_id": "q3EnqXOwQzhsjXDU",
-  "img": "icons/magic/nature/instrument-recorder-leaves.webp",
+  "name": "Burst of Ingenuity",
+  "type": "feat",
   "system": {
     "activities": {
-      "R1EbnAKyqFNsleZH": {
+      "HhreTtTEcW0dJDbV": {
         "type": "utility",
-        "_id": "R1EbnAKyqFNsleZH",
+        "_id": "HhreTtTEcW0dJDbV",
         "sort": 0,
         "activation": {
-          "type": "action",
-          "override": false
+          "type": "reaction",
+          "override": false,
+          "condition": ""
         },
         "consumption": {
           "scaling": {
             "allowed": false
           },
           "spellSlot": true,
-          "targets": []
+          "targets": [
+            {
+              "type": "itemUses",
+              "value": "1",
+              "target": ""
+            }
+          ]
         },
         "description": {
           "chatFlavor": ""
@@ -30,16 +35,22 @@
         },
         "effects": [],
         "range": {
-          "units": "self",
-          "override": false
+          "units": "ft",
+          "override": false,
+          "special": "",
+          "value": "30"
         },
         "target": {
           "template": {
             "contiguous": false,
-            "units": "ft"
+            "units": "ft",
+            "type": ""
           },
           "affects": {
-            "choice": false
+            "choice": false,
+            "type": "creature",
+            "count": "1",
+            "special": ""
           },
           "override": false,
           "prompt": true
@@ -55,7 +66,7 @@
           "name": "",
           "formula": ""
         },
-        "useConditionText": "",
+        "useConditionText": "false",
         "useConditionReason": "",
         "effectConditionText": "",
         "macroData": {
@@ -83,7 +94,7 @@
           "autoTargetType": "any",
           "autoTargetAction": "default",
           "automationOnly": false,
-          "otherActivityCompatible": true,
+          "otherActivityCompatible": false,
           "otherActivityAsParentType": true,
           "identifier": "",
           "displayActivityName": false,
@@ -105,39 +116,50 @@
         },
         "otherActivityId": "none",
         "otherActivityAsParentType": true,
-        "name": "Conjure Woodland Beings",
-        "img": "icons/magic/nature/instrument-recorder-leaves.webp",
+        "name": "",
+        "img": "",
         "appliedEffects": []
       },
-      "tsuknT7BK00VXSV9": {
-        "type": "save",
-        "_id": "tsuknT7BK00VXSV9",
+      "AsgxYI1jPrxEVqJg": {
+        "type": "utility",
+        "_id": "AsgxYI1jPrxEVqJg",
         "sort": 0,
         "activation": {
-          "type": "special",
-          "override": true,
+          "type": "reaction",
+          "override": false,
           "condition": ""
         },
         "consumption": {
           "scaling": {
             "allowed": false
           },
-          "spellSlot": false,
-          "targets": []
+          "spellSlot": true,
+          "targets": [
+            {
+              "type": "itemUses",
+              "value": "1",
+              "target": ""
+            }
+          ]
         },
         "description": {
-          "chatFlavor": "Conjure Woodland Beings: Damage"
+          "chatFlavor": ""
         },
         "duration": {
-          "units": "inst",
+          "units": "dstr",
           "concentration": false,
-          "override": true
+          "override": false
         },
-        "effects": [],
+        "effects": [
+          {
+            "_id": "EEJsTH52HQSr8rr6"
+          }
+        ],
         "range": {
-          "units": "any",
-          "override": true,
-          "special": ""
+          "units": "ft",
+          "override": false,
+          "special": "",
+          "value": "30"
         },
         "target": {
           "template": {
@@ -148,10 +170,10 @@
           "affects": {
             "choice": false,
             "type": "creature",
-            "count": "",
+            "count": "1",
             "special": ""
           },
-          "override": true,
+          "override": false,
           "prompt": true
         },
         "uses": {
@@ -159,41 +181,13 @@
           "recovery": [],
           "max": ""
         },
-        "damage": {
-          "onSave": "half",
-          "critical": {
-            "allow": false
-          },
-          "parts": [
-            {
-              "custom": {
-                "enabled": false,
-                "formula": ""
-              },
-              "number": 5,
-              "denomination": 8,
-              "bonus": "",
-              "types": [
-                "force"
-              ],
-              "scaling": {
-                "mode": "whole",
-                "number": 1,
-                "formula": ""
-              }
-            }
-          ]
+        "roll": {
+          "prompt": false,
+          "visible": false,
+          "name": "",
+          "formula": ""
         },
-        "save": {
-          "ability": [
-            "wis"
-          ],
-          "dc": {
-            "calculation": "spellcasting",
-            "formula": ""
-          }
-        },
-        "useConditionText": "",
+        "useConditionText": "false",
         "useConditionReason": "",
         "effectConditionText": "",
         "macroData": {
@@ -221,7 +215,7 @@
           "autoTargetType": "any",
           "autoTargetAction": "default",
           "automationOnly": false,
-          "otherActivityCompatible": true,
+          "otherActivityCompatible": false,
           "otherActivityAsParentType": true,
           "identifier": "",
           "displayActivityName": false,
@@ -230,7 +224,7 @@
           "toggleEffect": false,
           "ignoreFullCover": false,
           "removeChatButtons": "default",
-          "magicEffect": true,
+          "magicEffect": false,
           "magicDamage": false,
           "noConcentrationCheck": false,
           "autoCEEffects": "default"
@@ -241,105 +235,154 @@
           "preRemoveConditionText": "",
           "postRemoveConditionText": ""
         },
-        "otherActivityId": "",
+        "otherActivityId": "none",
         "otherActivityAsParentType": true,
-        "friendlySave": "default",
-        "name": "Conjure Woodland Beings: Damage",
-        "img": "icons/magic/nature/instrument-recorder-leaves.webp",
-        "appliedEffects": []
+        "name": "",
+        "img": "",
+        "appliedEffects": [
+          "EEJsTH52HQSr8rr6"
+        ]
       }
     },
     "uses": {
       "spent": 0,
-      "recovery": [],
-      "max": ""
+      "max": "2",
+      "recovery": [
+        {
+          "period": "day",
+          "type": "recoverAll"
+        }
+      ]
     },
+    "advancement": [],
     "description": {
       "value": "",
       "chat": ""
     },
-    "identifier": "conjure-woodland-beings",
+    "identifier": "burst-of-ingenuity",
     "source": {
       "revision": 1,
-      "rules": "2024",
-      "book": "",
-      "page": "",
-      "custom": "PHB 2024",
-      "license": ""
+      "rules": "2024"
     },
-    "activation": {
-      "type": "action",
-      "condition": ""
+    "crewed": false,
+    "enchant": {},
+    "prerequisites": {
+      "items": [],
+      "repeatable": false
     },
-    "duration": {
-      "units": "minute",
-      "value": "10"
-    },
-    "level": 4,
-    "materials": {
-      "value": "",
-      "consumed": false,
-      "cost": 0,
-      "supply": 0
-    },
-    "method": "spell",
-    "prepared": 0,
-    "properties": [
-      "vocal",
-      "somatic",
-      "concentration"
-    ],
-    "range": {
-      "units": "self",
-      "special": ""
-    },
-    "school": "con",
-    "target": {
-      "template": {
-        "contiguous": false,
-        "units": "ft",
-        "type": ""
-      },
-      "affects": {
-        "choice": false,
-        "type": "",
-        "special": ""
-      }
-    },
-    "sourceClass": ""
+    "properties": [],
+    "requirements": "",
+    "type": {
+      "value": "monster",
+      "subtype": ""
+    }
   },
-  "effects": [],
-  "folder": null,
+  "effects": [
+    {
+      "name": "Burst of Ingenuity",
+      "img": "icons/magic/control/buff-luck-fortune-green.webp",
+      "origin": "Compendium.world.cpr-monster-features-2024.Item.PqD4ojdxvZi842s3",
+      "transfer": false,
+      "_id": "EEJsTH52HQSr8rr6",
+      "type": "base",
+      "system": {},
+      "changes": [
+        {
+          "key": "system.bonuses.abilities.skill",
+          "mode": 2,
+          "value": "2",
+          "priority": 20
+        },
+        {
+          "key": "system.bonuses.abilities.save",
+          "mode": 2,
+          "value": "2",
+          "priority": 20
+        }
+      ],
+      "disabled": false,
+      "duration": {
+        "startTime": null,
+        "combat": null,
+        "seconds": null,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "statuses": [],
+      "sort": 0,
+      "flags": {
+        "dnd5e": {
+          "riders": {
+            "statuses": []
+          }
+        },
+        "dae": {
+          "enableCondition": "",
+          "disableCondition": "",
+          "stackable": "noneName",
+          "showIcon": false,
+          "disableIncapacitated": false,
+          "selfTarget": false,
+          "selfTargetAlways": false,
+          "dontApply": false,
+          "durationExpression": "",
+          "macroRepeat": "none",
+          "specialDuration": [
+            "isSkill",
+            "isSave"
+          ]
+        },
+        "core": {
+          "overlay": false
+        }
+      },
+      "_key": "!items.effects!PqD4ojdxvZi842s3.EEJsTH52HQSr8rr6"
+    }
+  ],
   "flags": {
+    "midiProperties": {
+      "saveDamage": "halfdam"
+    },
     "dnd5e": {
       "riders": {
         "activity": [
-          "tsuknT7BK00VXSV9"
+          "HhreTtTEcW0dJDbV"
         ]
       }
     },
     "chris-premades": {
       "info": {
-        "identifier": "conjureWoodlandBeings",
-        "version": "1.3.84",
+        "identifier": "burstOfIngenuity",
+        "rules": "modern",
         "source": "chris-premades",
-        "rules": "modern"
+        "version": "1.3.107"
       },
       "macros": {
-        "midi": {
-          "item": [
-            "conjureWoodlandBeings"
-          ]
-        }
+        "skill": [
+          "burstOfIngenuity"
+        ],
+        "save": [
+          "burstOfIngenuity"
+        ]
+      },
+      "config": {
+        "summonerOnly": true
       },
       "hiddenActivities": [
-        "conjureWoodlandBeingsDamage"
+        "autoUse"
       ],
       "activityIdentifiers": {
-        "conjureWoodlandBeings": "R1EbnAKyqFNsleZH",
-        "conjureWoodlandBeingsDamage": "tsuknT7BK00VXSV9"
+        "autoUse": "HhreTtTEcW0dJDbV",
+        "use": "AsgxYI1jPrxEVqJg"
       }
     }
   },
-  "_key": "!items!q3EnqXOwQzhsjXDU"
+  "img": "icons/magic/control/buff-luck-fortune-green.webp",
+  "folder": "OEo23OiioQwXo90i",
+  "_id": "PqD4ojdxvZi842s3",
+  "_key": "!items!PqD4ojdxvZi842s3"
 }

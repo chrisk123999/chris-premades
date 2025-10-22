@@ -178,7 +178,7 @@ async function vortexWarpPre(token, cornerPosition) {
     /* eslint-disable indent */
     await new Sequence()
         .effect()
-            .from(token)
+            .copySprite(token)
             .duration(1500)
             .scaleOut(0, 500, {ease: 'easeInOutElastic'})
             .rotateOut(180, 300, {ease: 'easeOutCubic'})
@@ -285,7 +285,7 @@ async function vortexWarpPost(token, cornerPosition) {
             .animateProperty('spriteContainer', 'position.y', {from: 0 , to: -0.5, gridUnits: true, duration: 1000})
             .zIndex(1)
         .effect()
-            .from(token)
+            .copySprite(token)
             .delay(250)
             .atLocation(token)
             .duration(1500)

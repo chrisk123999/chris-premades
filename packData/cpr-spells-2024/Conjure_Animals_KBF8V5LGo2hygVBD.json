@@ -305,12 +305,19 @@
         "count": "1",
         "special": ""
       }
-    }
+    },
+    "sourceClass": ""
   },
   "effects": [],
   "folder": null,
   "flags": {
-    "dnd5e": {},
+    "dnd5e": {
+      "riders": {
+        "activity": [
+          "7UBnTsIrtX3vqwwU"
+        ]
+      }
+    },
     "chris-premades": {
       "info": {
         "identifier": "conjureAnimals",

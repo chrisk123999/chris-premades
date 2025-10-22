@@ -1,5 +1,4 @@
 import {actorUtils, compendiumUtils, constants, dialogUtils, effectUtils, errors, genericUtils, itemUtils, rollUtils, tokenUtils, workflowUtils} from '../../../../utils.js';
-
 async function use({workflow}) {
     if (workflow.targets.size !== 1) return;
     let classIdentifier = itemUtils.getConfig(workflow.item, 'classIdentifier') ?? 'bard';
@@ -65,7 +64,7 @@ async function attack({trigger: {entity: effect}, workflow}) {
 }
 async function damage({trigger: {entity: effect}, workflow}) {
     if (!workflow.targets.size || workflow.item.type !== 'spell');
-    if (!workflow.hitTargets.size && workflowUtils.isAttackType(workflow, 'spellAttack')) return;
+    if (!workflow.hitTargets.size || !workflowUtils.isAttackType(workflow, 'spellAttack')) return;
     let {formula: bardDice, magical} = effect.flags['chris-premades'].bardicInspiration;
     if (!magical?.length) return;
     let result = await dialogUtils.selectTargetDialog(effect.name, genericUtils.format('CHRISPREMADES.Dialog.Use', {itemName: magical}), workflow.targets);

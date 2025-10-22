@@ -94,7 +94,7 @@ export class EffectMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
                         },
                         {
                             label: 'CHRISPREMADES.Medkit.Effect.SpecialDuration.AttackedByAnotherCreature',
-                            value: 'damagedByAnotherCreature',
+                            value: 'attackedByAnotherCreature',
                             isSelected: effect.flags['chris-premades']?.specialDuration?.includes('attackedByAnotherCreature')
                         },
                         {
