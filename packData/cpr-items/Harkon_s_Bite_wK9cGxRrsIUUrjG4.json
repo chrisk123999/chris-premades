@@ -20,13 +20,13 @@
           "priority": 18
         },
         {
-          "key": "system.traits.dr.bypasses",
+          "key": "system.traits.di.bypasses",
           "mode": 0,
           "value": "mgc",
           "priority": 20
         },
         {
-          "key": "system.traits.dr.bypasses",
+          "key": "system.traits.di.bypasses",
           "mode": 0,
           "value": "sil",
           "priority": 20
