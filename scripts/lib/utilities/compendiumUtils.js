@@ -142,7 +142,15 @@ async function getACCAutomation(item, {identifier, rules = 'legacy', type = 'cha
             case 'feat': found = acc.accItems.find(i => i.name === item.name && i.type === 'feat' && i.rules === rules); break;
         }
     } else if (type === 'npc') {
-        //
+        let name = identifier ?? item.actor.prototypeToken.name;
+        let pack = game.packs.get('automated-crafted-creations.ACCMonsterFeatures');
+        if (!pack) {
+            errors.missingPack();
+            return;
+        }
+        let folderId = pack.folders.find(i => i.name === name)?.id;
+        if (!folderId) return;
+        found = acc.accItems.find(i => i.name === item.name && i.itemType === 'monsterFeat' && i.rules === rules && i.folder === folderId);
     }
     if (!found) return;
     return await fromUuid(found.uuid);
