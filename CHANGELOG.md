@@ -1,3 +1,7 @@
+# 1.3.112 Release:
+## Bug Fixes:
+- War God's Blessing
+
 # 1.3.111 Release:
 ## Bug Fixes:
 - Harkon's Bite

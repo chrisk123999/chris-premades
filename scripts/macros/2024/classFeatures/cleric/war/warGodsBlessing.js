@@ -43,16 +43,22 @@ async function use({trigger, workflow}) {
             }
         ]});
     } else {
-        let effect = await effectUtils.createEffect(workflow.actor, effectData, {rules: 'modern', identifier: 'spiritualWeaponWarGodsBlessing', macros: [
-            {
-                type: 'midi.actor',
-                macros: ['warGodsBlessingCast']
-            }
-        ]});
         selectionData.system.uses.max = '1';
         selectionData.system.uses.spent = 1;
-        let items = await itemUtils.createItems(workflow.actor, [selectionData], {favorite: true, parentEntity: effect});
+        let items = await itemUtils.createItems(workflow.actor, [selectionData], {favorite: true});
         await workflowUtils.syntheticItemRoll(items[0], []);
+        let effect = await effectUtils.createEffect(workflow.actor, effectData, {
+            rules: 'modern',
+            identifier: 'spiritualWeaponWarGodsBlessing',
+            macros: [
+                {
+                    type: 'midi.actor',
+                    macros: ['warGodsBlessingCast']
+                },
+            ],
+            parentEntity: items[0],
+            interdependent: true
+        });
         let spiritualWeaponEffect = effectUtils.getEffectByIdentifier(workflow.actor, 'spiritualWeapon');
         if (!spiritualWeaponEffect) return;
         await effectUtils.addDependent(effect, [spiritualWeaponEffect]);
