@@ -1,3 +1,7 @@
+# 1.3.111 Release:
+## Bug Fixes:
+- Harkon's Bite
+
 # 1.3.110 Release:
 ## New Legacy Content:
 - Harkon's Bite

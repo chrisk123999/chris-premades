@@ -1,4 +1,4 @@
-import {activityUtils, actorUtils, animationUtils, effectUtils, genericUtils, itemUtils} from '../../../../utils.js';
+import {activityUtils, actorUtils, animationUtils, effectUtils, genericUtils, itemUtils, workflowUtils} from '../../../../utils.js';
 async function moonFrenzy(token, {color = 'white', tintMap = false, callback, name = 'Moon Frenzy'} = {}) {
     let tintColor = color === 'red' ? '#d53333' : '#ffffff';
     //Animations by: eskiemoh
@@ -494,6 +494,13 @@ async function removed({trigger: {entity: effect}}) {
     if (!token) return;
     Sequencer.EffectManager.endEffects({name: 'Moon Frenzy', object: token});
 }
+async function bite({trigger, workflow}) {
+    if (!workflow.hitTargets.size) return;
+    if (actorUtils.typeOrRace(workflow.hitTargets.first().actor) != 'humanoid') return;
+    let activity = activityUtils.getActivityByIdentifier(workflow.item, 'humanoid', {strict: true});
+    if (!activity) return;
+    await workflowUtils.syntheticActivityRoll(activity, Array.from(workflow.hitTargets), {consumeResources: true, consumeUsage: true});
+}
 export let harkonsBite = {
     name: 'Harkon\'s Bite',
     version: '1.3.110',
@@ -511,6 +518,12 @@ export let harkonsBite = {
                 macro: human,
                 priority: 50,
                 activities: ['human']
+            },
+            {
+                pass: 'rollFinished',
+                macro: bite,
+                priority: 50,
+                activities: ['bite']
             }
         ]
     },

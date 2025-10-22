@@ -95,9 +95,9 @@
       "_id": "Ox2HzLG8BzKzStks",
       "type": "base",
       "system": {},
-      "origin": "Compendium.world.cpr-items.Item.ha8LGK80k1rcHP9M",
+      "origin": "Actor.gmhAWe483txQ4L3J.Item.qtfSnLdxa92PUJpQ",
       "sort": 0,
-      "_key": "!items.effects!ha8LGK80k1rcHP9M.Ox2HzLG8BzKzStks"
+      "_key": "!items.effects!wK9cGxRrsIUUrjG4.Ox2HzLG8BzKzStks"
     },
     {
       "name": "Harkon's Bite: Shapechanged",
@@ -167,7 +167,60 @@
           }
         }
       },
-      "_key": "!items.effects!ha8LGK80k1rcHP9M.TwAh3f6pnCdFwveN"
+      "_key": "!items.effects!wK9cGxRrsIUUrjG4.TwAh3f6pnCdFwveN"
+    },
+    {
+      "name": "Curse of Lycanthropy",
+      "img": "icons/creatures/mammals/wolf-howl-moon-forest-blue.webp",
+      "origin": "Actor.gmhAWe483txQ4L3J.Item.qtfSnLdxa92PUJpQ",
+      "transfer": false,
+      "_id": "u6U9Svgcq3YLbeB2",
+      "type": "base",
+      "system": {},
+      "changes": [],
+      "disabled": false,
+      "duration": {
+        "startTime": null,
+        "combat": null,
+        "seconds": null,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "statuses": [],
+      "sort": 0,
+      "flags": {
+        "dnd5e": {
+          "riders": {
+            "statuses": []
+          },
+          "dependents": [
+            {
+              "uuid": "Scene.L39dEBy0tiHToOQE.Token.7nF1Tnd31Pr8469T.Actor.4i1zH4NhFIiJdyVO.ActiveEffect.suVQ0oLH0SafCkfq"
+            }
+          ]
+        },
+        "dae": {
+          "enableCondition": "",
+          "disableCondition": "",
+          "stackable": "noneName",
+          "showIcon": true,
+          "disableIncapacitated": false,
+          "selfTarget": false,
+          "selfTargetAlways": false,
+          "dontApply": false,
+          "durationExpression": "",
+          "macroRepeat": "none",
+          "specialDuration": []
+        },
+        "core": {
+          "overlay": false
+        }
+      },
+      "_key": "!items.effects!wK9cGxRrsIUUrjG4.u6U9Svgcq3YLbeB2"
     }
   ],
   "system": {
@@ -411,7 +464,7 @@
           "magicEffect": false,
           "magicDamage": false,
           "noConcentrationCheck": false,
-          "autoCEEffects": "default"
+          "autoCEEffects": "none"
         },
         "isOverTimeFlag": false,
         "overTimeProperties": {
@@ -806,6 +859,130 @@
         "otherActivityUuid": "",
         "attackRollPerTarget": "default",
         "fumbleThreshold": 1
+      },
+      "bnggEGieTxb1JBWs": {
+        "type": "save",
+        "_id": "bnggEGieTxb1JBWs",
+        "sort": 0,
+        "activation": {
+          "type": "special",
+          "override": false,
+          "condition": ""
+        },
+        "consumption": {
+          "scaling": {
+            "allowed": false
+          },
+          "spellSlot": true,
+          "targets": []
+        },
+        "description": {
+          "chatFlavor": ""
+        },
+        "duration": {
+          "units": "disp",
+          "concentration": false,
+          "override": false
+        },
+        "effects": [
+          {
+            "_id": "u6U9Svgcq3YLbeB2",
+            "onSave": false
+          }
+        ],
+        "range": {
+          "units": "any",
+          "override": false,
+          "special": ""
+        },
+        "target": {
+          "template": {
+            "contiguous": false,
+            "units": "ft",
+            "type": ""
+          },
+          "affects": {
+            "choice": false,
+            "type": "creature",
+            "count": "1",
+            "special": ""
+          },
+          "override": false,
+          "prompt": true
+        },
+        "uses": {
+          "spent": 0,
+          "recovery": [],
+          "max": ""
+        },
+        "damage": {
+          "onSave": "none",
+          "critical": {
+            "allow": false
+          },
+          "parts": []
+        },
+        "save": {
+          "ability": [
+            "con"
+          ],
+          "dc": {
+            "calculation": "",
+            "formula": "12"
+          }
+        },
+        "useConditionText": "",
+        "useConditionReason": "",
+        "effectConditionText": "",
+        "macroData": {
+          "name": "",
+          "command": ""
+        },
+        "ignoreTraits": {
+          "idi": false,
+          "idr": false,
+          "idv": false,
+          "ida": false,
+          "idm": false
+        },
+        "midiProperties": {
+          "ignoreTraits": [],
+          "triggeredActivityId": "none",
+          "triggeredActivityConditionText": "",
+          "triggeredActivityTargets": "targets",
+          "triggeredActivityRollAs": "self",
+          "autoConsume": false,
+          "forceConsumeDialog": "default",
+          "forceRollDialog": "default",
+          "forceDamageDialog": "default",
+          "confirmTargets": "default",
+          "autoTargetType": "any",
+          "autoTargetAction": "default",
+          "automationOnly": false,
+          "otherActivityCompatible": false,
+          "otherActivityAsParentType": true,
+          "identifier": "",
+          "displayActivityName": false,
+          "rollMode": "default",
+          "chooseEffects": false,
+          "toggleEffect": false,
+          "ignoreFullCover": false,
+          "removeChatButtons": "default",
+          "magicEffect": false,
+          "magicDamage": false,
+          "noConcentrationCheck": false,
+          "autoCEEffects": "none"
+        },
+        "isOverTimeFlag": false,
+        "overTimeProperties": {
+          "saveRemoves": true,
+          "preRemoveConditionText": "",
+          "postRemoveConditionText": ""
+        },
+        "otherActivityId": "",
+        "otherActivityAsParentType": true,
+        "friendlySave": "default",
+        "name": ""
       }
     },
     "uses": {
@@ -911,8 +1088,16 @@
       "confirmTargets": "default"
     },
     "dnd5e": {
+      "last": {
+        "WQ0woxm1pYxEOILu": {
+          "damageType": {
+            "0": "piercing"
+          }
+        }
+      },
       "riders": {
         "activity": [
+          "bnggEGieTxb1JBWs",
           "WQ0woxm1pYxEOILu",
           "lpOMH3DISniwyg9G",
           "eMMNE7VZ8Q99itxn"
@@ -938,6 +1123,7 @@
         ]
       },
       "hiddenActivities": [
+        "humanoid",
         "bite",
         "human",
         "claws"
@@ -947,20 +1133,13 @@
         "claws": "eMMNE7VZ8Q99itxn",
         "hybrid": "yuAVq4kCPit32DRB",
         "wolf": "7QuoUyFat2lxvbpz",
-        "human": "lpOMH3DISniwyg9G"
-      },
-      "config": {
-        "hybridTokenImg": "wereform.webp",
-        "tintMap": false,
-        "moonColor": true,
-        "animation": "moonFrenzy",
-        "wolfTokenImg": "lyraWolf.webp",
-        "wolfAnimation": "shapechange"
+        "human": "lpOMH3DISniwyg9G",
+        "humanoid": "bnggEGieTxb1JBWs"
       }
     }
   },
   "img": "icons/equipment/neck/pendant-simple-tooth.webp",
   "folder": "4TYgcjpgCO6kJJ6d",
-  "_id": "ha8LGK80k1rcHP9M",
-  "_key": "!items!ha8LGK80k1rcHP9M"
+  "_id": "wK9cGxRrsIUUrjG4",
+  "_key": "!items!wK9cGxRrsIUUrjG4"
 }
