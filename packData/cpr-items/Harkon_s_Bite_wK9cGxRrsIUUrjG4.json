@@ -32,19 +32,19 @@
           "priority": 20
         },
         {
-          "key": "system.traits.dr.value",
+          "key": "system.traits.di.value",
           "mode": 2,
           "value": "bludgeoning",
           "priority": 20
         },
         {
-          "key": "system.traits.dr.value",
+          "key": "system.traits.di.value",
           "mode": 2,
           "value": "slashing",
           "priority": 20
         },
         {
-          "key": "system.traits.dr.value",
+          "key": "system.traits.di.value",
           "mode": 2,
           "value": "piercing",
           "priority": 20
