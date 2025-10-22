@@ -536,12 +536,21 @@
         "count": "",
         "special": ""
       }
-    }
+    },
+    "sourceClass": ""
   },
   "effects": [],
   "folder": null,
   "flags": {
-    "dnd5e": {},
+    "dnd5e": {
+      "riders": {
+        "activity": [
+          "0bOFHKweEx7SKmue",
+          "BF1tn3Er1cRoIdBw",
+          "abSB68r4futTjlXV"
+        ]
+      }
+    },
     "chris-premades": {
       "info": {
         "identifier": "conjureCelestial",

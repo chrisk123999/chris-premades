@@ -275,7 +275,13 @@
   },
   "effects": [],
   "flags": {
-    "dnd5e": {},
+    "dnd5e": {
+      "riders": {
+        "activity": [
+          "vl4i1kPzuuME271d"
+        ]
+      }
+    },
     "chris-premades": {
       "hiddenActivities": [
         "naturesSanctuaryMove"

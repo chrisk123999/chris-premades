@@ -47,7 +47,7 @@ async function start({trigger: {entity: effect}}) {
         .opacity(0)
 
         .effect()
-        .from(token)
+        .copySprite(token)
         .name('Fly')
         .atLocation(token)   
         .opacity(1)
@@ -60,7 +60,7 @@ async function start({trigger: {entity: effect}}) {
         .persist()
 
         .effect()
-        .from(token)
+        .copySprite(token)
         .name('Fly')
         .atLocation(token)
         .scaleToObject(0.9)

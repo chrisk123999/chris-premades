@@ -305,12 +305,19 @@
         "type": "",
         "special": ""
       }
-    }
+    },
+    "sourceClass": ""
   },
   "effects": [],
   "folder": null,
   "flags": {
-    "dnd5e": {},
+    "dnd5e": {
+      "riders": {
+        "activity": [
+          "tsuknT7BK00VXSV9"
+        ]
+      }
+    },
     "chris-premades": {
       "info": {
         "identifier": "conjureWoodlandBeings",

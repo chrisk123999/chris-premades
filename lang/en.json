@@ -234,6 +234,7 @@
             "SpellSchools": "Spell Schools:",
             "SubclassIdentifier": "Subclass Identifier:",
             "SummonerOnly": "Summoner Only:",
+            "TintMap": "Tint Map:",
             "TokenColor": "Token Color:",
             "TokenImg": "Token Image:",
             "TokenImgPriority": "Token Image Priority:",
@@ -1505,6 +1506,22 @@
             },
             "HailOfThorns": {
                 "Burst": "Hail of Thorns: Burst"
+            },
+            "HarkonsBite": {
+                "HybridAnimation": "Hybrid Form Animation:",
+                "HybridAvatarImg": "Hybrid Form Avatar Image:",
+                "HybridAvatarImgPriority": "Hybrid Form Avatar Image Priority:",
+                "HybridTokenImg": "Hybrid Form Token Image:",
+                "HybridTokenImgPriority": "Hybrid Form Token Image Priority:",
+                "Keen": "This check relies on hearing or smell.",
+                "MoonColor": "Red Moon:",
+                "MoonFrenzy": "Moon Frenzy",
+                "Shapechange": "Shapechange",
+                "WolfAnimation": "Wolf Form Animation:",
+                "WolfAvatarImg": "Wolf Form Avatar Image:",
+                "WolfAvatarImgPriority": "Wolf Form Avatar Image Priority:",
+                "WolfTokenImg": "Wolf Form Token Image:",
+                "WolfTokenImgPriority": "Wolf Form Token Image Priority:"
             },
             "Healer": {
                 "SelectHitDie": "Select which Hit Die to roll.",

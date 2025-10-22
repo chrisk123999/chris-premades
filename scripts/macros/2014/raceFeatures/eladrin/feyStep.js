@@ -244,7 +244,7 @@ async function combinedAnimation(season, sourceToken, teleToken, targetTokens, f
 
                     .effect()
                     .delay(200)
-                    .from(targetTokens[0])
+                    .copySprite(targetTokens[0])
                     .attachTo(targetTokens[0])
                     .fadeIn(200)
                     .fadeOut(7500)

@@ -488,6 +488,7 @@ export {wardersIntuition} from './macros/2014/raceFeatures/dwarf/markOfWarding/w
 export {windwrightsIntuition} from './macros/2014/raceFeatures/halfElf/markOfStorm/windwrightsIntuition.js';
 export {huntersIntuition} from './macros/2014/raceFeatures/human/markOfFinding/huntersIntuition.js';
 export {fairyFlight} from './macros/2014/raceFeatures/fairy/flight.js';
+export {shiftBeasthide} from './macros/2014/raceFeatures/shifter/shiftBeasthide.js';
 // Monster Features
 export {armyArcana} from './macros/2014/monsterFeatures/fey/hobgoblinDevastator/armyArcana.js';
 export {causticMist} from './macros/2014/monsterFeatures/monstrosity/hoardMimic/causticMist.js';
@@ -656,6 +657,7 @@ export {ruinsWakeD, ruinsWakeA, ruinsWakeE} from './macros/2014/items/weapons/ru
 export {charlatansDie} from './macros/2014/items/trinket/charlatansDie.js';
 export {deckOfMiscellany, deckOfMiscellanySetup, miscellanyCard} from './macros/2014/items/trinket/deckOfMiscellany.js';
 export {deckOfWonder, deckOfWonderDestinyEffect, deckOfWonderIsolationEffect, deckOfWonderJusticeEffect, deckOfWonderVultureLostEffect} from './macros/2014/items/trinket/deckOfWonder.js';
+export {harkonsBite, harkonsBiteEffect} from './macros/2014/items/trinket/harkonsBite.js';
 //BG3 Weapon Actions
 export {backbreaker, braceMelee, braceMeleeDamage, cleave, concussiveSmash, maimingStrike, disarmingStrike, flourish, heartstopper, lacerate, piercingStrike, piercingStrikeEffect, pommelStrike, prepare, rush, tenacity, topple, weakeningStrike, braceRanged, braceRangedDamage, hamstringShot, mobileShot, piercingShot} from './macros/2014/homebrew/bg3WeaponActions.js';
 //Other

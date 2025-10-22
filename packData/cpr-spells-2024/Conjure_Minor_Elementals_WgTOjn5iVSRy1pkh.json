@@ -157,7 +157,8 @@
         "choice": false,
         "type": ""
       }
-    }
+    },
+    "sourceClass": ""
   },
   "effects": [],
   "folder": null,

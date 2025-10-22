@@ -1,3 +1,16 @@
+# 1.3.110 Release:
+## New Legacy Content:
+- Harkon's Bite
+- Shifting: Beasthide
+## Bug Fixes:
+- Control Undead
+- Fey Step
+- Enlarge / Reduce
+- Fly
+- Lightning Lure
+- Scorching Ray
+- Teleport
+
 # 1.3.109 Release:
 ## New Legacy Content:
 - Master of Tactics
