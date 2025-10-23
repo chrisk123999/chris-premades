@@ -1,3 +1,12 @@
+# 1.3.114 Release:
+## New Modern Content:
+- Forest Guard
+- Sprout Foliage
+## Bug Fixes:
+- CPR Description Journal
+## API Update Notes:
+- The `everyTurn` combat pass has been moved to trigger after `turnEnd` and before `turnStart` instead of after `turnStart`.
+
 # 1.3.113 Release:
 ## Bug Fixes:
 - ACC Integration

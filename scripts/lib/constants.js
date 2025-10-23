@@ -29,6 +29,9 @@ let featurePacks = {
     itemFeatures: 'chris-premades.CPRItemFeatures',
     featFeatures: 'chris-premades.CPRFeatFeatures'
 };
+let modernFeaturePacks = {
+    summonFeatures: 'chris-premades.CPRSummonFeatures2024'
+};
 let legacyPacks = {
     spells: 'chris-premades.CPRSpells',
     items: 'chris-premades.CPRItems',
@@ -53,7 +56,8 @@ let modernPacks = {
     actions: 'chris-premades.CPRActions2024',
     featureItems: 'chris-premades.CPRFeatureItems2024',
     thirdPartyClassFeatures: 'chris-premades.CPRThirdPartyClassFeatures2024',
-    monsterFeatures: 'chris-premades.CPRMonsterFeatures2024'
+    monsterFeatures: 'chris-premades.CPRMonsterFeatures2024',
+    thirdPartySpells: 'chris-premades.CPRThirdPartySpells2024'
 };
 function setUseLocalCompendium(value) {
     if (value) {
@@ -83,6 +87,7 @@ function setUseLocalCompendium(value) {
         modernPacks.classFeatures = 'world.cpr-class-features-2024';
         modernPacks.items = 'world.cpr-items-2024';
         modernPacks.summonFeatures =  'world.cpr-summon-features-2024';
+        modernFeaturePacks.summonFeatures =  'world.cpr-summon-features-2024';
         modernPacks.summons = 'world.cpr-summons-2024';
         modernPacks.featFeatures = 'world.cpr-feat-features-2024';
         modernPacks.feats = 'world.cpr-feat-feats-2024';
@@ -90,6 +95,7 @@ function setUseLocalCompendium(value) {
         modernPacks.actions = 'world.cpr-actions-2024';
         modernPacks.featureItems = 'world.cpr-feature-items-2024';
         packs.thirdPartySpells = 'world.cpr-3rd-party-spells';
+        modernPacks.thirdPartySpells = 'world.cpr-3rd-party-spells-2024';
     } else {
         packs.spellFeatures = 'chris-premades.CPRSpellFeatures';
         featurePacks.spellFeatures = 'chris-premades.CPRSpellFeatures';
@@ -116,7 +122,8 @@ function setUseLocalCompendium(value) {
         modernPacks.spells = 'chris-premades.CPRSpells2024';
         modernPacks.classFeatures = 'chris-premades.CPRClassFeatures2024';
         modernPacks.items = 'chris-premades.CPRItems2024';
-        modernPacks.summonFeatures=  'chris-premades.CPRSummonFeatures2024';
+        modernPacks.summonFeatures = 'chris-premades.CPRSummonFeatures2024';
+        modernFeaturePacks.summonFeatures = 'chris-premades.CPRSummonFeatures2024';
         modernPacks.summons = 'chris-premades.CPRSummons2024';
         modernPacks.featFeatures = 'chris-premades.cpr-feat-features-2024';
         modernPacks.feats = 'chris-premades.cpr-feat-feats-2024';
@@ -124,6 +131,7 @@ function setUseLocalCompendium(value) {
         modernPacks.actions = 'chris-premades.CPRActions2024';
         modernPacks.featureItems = 'chris-premades.CPRFeatureItems2024';
         packs.thirdPartySpells = 'chris-premades.CPR3rdPartySpells';
+        modernPacks.thirdPartySpells = 'chris-premades.CPR3rdPartySpells2024';
     }
 }
 const attacks = [
@@ -704,5 +712,6 @@ export let constants = {
     getBaseMeleeWeaponOptions,
     getBaseRangedWeaponOptions,
     getToolNames,
-    getFeatOptions
+    getFeatOptions,
+    modernFeaturePacks
 };

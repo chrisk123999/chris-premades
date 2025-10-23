@@ -1434,6 +1434,9 @@
             "FocusedAim": {
                 "Bonus": "Yes ({kiCost} Ki / +{bonus} to hit)"
             },
+            "ForestGuard": {
+                "NoShrub": "No shrubs are nearby the target!"
+            },
             "ForkedTongue": {
                 "SelectLanguages": "Select your known languages:"
             },
@@ -3390,6 +3393,7 @@
                 "FlamingSphere": "Flaming Sphere",
                 "Flumph": "Flumph",
                 "ForceSculpture": "Force Sculpture",
+                "ForestGuard": "Forest Guard",
                 "FormOfDread": "Form of Dread",
                 "GuardianOfFaith": "Guardian of Faith",
                 "HealingSpirit": "Healing Spirit",

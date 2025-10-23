@@ -14,6 +14,7 @@ async function getCPRAutomation(item, {identifier, rules = 'legacy', type = 'cha
                     if (genericUtils.getCPRSetting('thirdParty')) keys.push(constants.packs.thirdPartySpells);
                 } else {
                     keys.push(constants.modernPacks.spells);
+                    if (genericUtils.getCPRSetting('thirdParty')) keys.push(constants.modernPacks.thirdPartySpells);
                 }
                 break;
             case 'weapon':
