@@ -233,6 +233,8 @@
             "SpecificAnimation": "Animação {option}:",
             "SpellSchools": "Escola de Magia:",
             "SubclassIdentifier": "Identificador de Subclasse:",
+            "SummonerOnly": "Apenas Invocador:",
+            "TintMap": "Tonalidade do Mapa:",
             "TokenColor": "Cor do Token:",
             "TokenImg": "Imagem Token:",
             "TokenImgPriority": "Prioridade Imagem Token:",
@@ -268,6 +270,7 @@
             "UseAttack": "Usar {itemName}? (Ataques Totais: {attackTotal})",
             "UseAttackDetail": "Usar {itemName} para {bonusFormula} adicional? (Total do Ataque: {attackTotal})",
             "UseExtraCost": "Usar {itemName}? (Custa {quantity} {quantityName})",
+            "UseFor": "Usar {item} para {name}?",
             "UseName": "Usar {itemName} de [{tokenName}]?",
             "UseOn": "Usar {itemName} em {tokenName}?",
             "UseRollTotal": "Usar {itemName}? (Total: {rollTotal})",
@@ -847,7 +850,8 @@
             "AutoGrapple": {
                 "DC": "CD fixo para escapar do agarrão (contestado se 0):",
                 "Disadvantage": "Dar desvantagem no teste de escape:",
-                "Name": "Auto-Agarrão"
+                "Name": "Auto-Agarrão",
+                "Restrained": "Contido enquanto Agarrado:"
             },
             "AutoPush": {
                 "Name": "Auto-Empurrão"
@@ -1502,6 +1506,22 @@
             },
             "HailOfThorns": {
                 "Burst": "Saraivada de Espinhos: Explosão"
+            },
+            "HarkonsBite": {
+                "HybridAnimation": "Animação da Hybrid Form:",
+                "HybridAvatarImg": "Imagem do Retrato da Hybrid Form:",
+                "HybridAvatarImgPriority": "Prioridade da Imagem do Retrato da Hybrid Form:",
+                "HybridTokenImg": "Imagem do Token da Hybrid Form:",
+                "HybridTokenImgPriority": "Prioridade da Imagem do Token da Hybrid Form:",
+                "Keen": "Este teste depende da audição ou do olfato.",
+                "MoonColor": "Red Moon:",
+                "MoonFrenzy": "Moon Frenzy",
+                "Shapechange": "Shapechange",
+                "WolfAnimation": "Animação da Wolf Form:",
+                "WolfAvatarImg": "Imagem do Retrato da Wolf Form:",
+                "WolfAvatarImgPriority": "Prioridade da Imagem do Retrato da Wolf Form:",
+                "WolfTokenImg": "Imagem do Token da Wolf Form:",
+                "WolfTokenImgPriority": "Prioridade da Imagem do Token da Wolf Form:"
             },
             "Healer": {
                 "SelectHitDie": "Escolha qual Dado de Vida para rolar.",
