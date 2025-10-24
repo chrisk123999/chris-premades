@@ -18,7 +18,7 @@ async function late({trigger: {entity: item}, workflow}) {
     let position = await crosshairUtils.aimCrosshair({
         token: workflow.token,
         centerpoint: targetToken.center,
-        maxRange: 5,
+        maxRange: genericUtils.convertDistance(5),
         fudgeDistance,
         drawBoundries: true,
         trackDistance: true,
