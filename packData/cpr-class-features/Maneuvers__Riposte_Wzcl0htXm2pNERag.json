@@ -98,7 +98,7 @@
           "visible": false
         },
         "sort": 0,
-        "useConditionText": "",
+        "useConditionText": "reaction == "isMissed" && (["mwak"].includes(activity.actionType) || ["msak"].includes(activity.actionType))",
         "forceDialog": false,
         "effectConditionText": "",
         "midiAutomationOnly": false,
