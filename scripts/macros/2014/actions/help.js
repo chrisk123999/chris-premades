@@ -40,15 +40,19 @@ async function use({trigger, workflow}) {
                 {
                     key: 'flags.midi-qol.grants.advantage.attack.all',
                     mode: 0,
-                    value: 1,
+                    value: 'tokenId != "' + workflow.token.document.id + '"',
                     priority: 20
                 }
             ],
             flags: {
                 dae: {
                     specialDuration: [
-                        'isAttacked',
                         'turnStartSource'
+                    ]
+                },
+                'chris-premades': {
+                    specialDuration: [
+                        'attackedByAnotherCreature'
                     ]
                 }
             }

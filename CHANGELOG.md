@@ -1,4 +1,54 @@
+# 1.3.114 Release:
+## New Modern Content:
+- Forest Guard
+- Sprout Foliage
+## Bug Fixes:
+- CPR Description Journal
+## API Update Notes:
+- The `everyTurn` combat pass has been moved to trigger after `turnEnd` and before `turnStart` instead of after `turnStart`.
+
+# 1.3.113 Release:
+## Bug Fixes:
+- ACC Integration
+
+# 1.3.112 Release:
+## Bug Fixes:
+- War God's Blessing
+
+# 1.3.111 Release:
+## Bug Fixes:
+- Harkon's Bite
+
+# 1.3.110 Release:
+## New Legacy Content:
+- Harkon's Bite
+- Shifting: Beasthide
+## Bug Fixes:
+- Control Undead
+- Fey Step
+- Enlarge / Reduce
+- Fly
+- Lightning Lure
+- Scorching Ray
+- Teleport
+
+# 1.3.109 Release:
+## New Legacy Content:
+- Master of Tactics
+## Bug Fixes:
+- Help Action
+- Sneak Attack
+- Magical Inspiration
+
+# 1.3.108 Release:
+## API Update Notes:
+- Added `thirdPartyUtils` to embedded macros and macro overwrites.
+
 # 1.3.107 Release:
+## Update Notes:
+- Added a restrained while grappled config option to the auto grapple generic monster feature.
+- Added an activity config option to the effect immunity generic monster feature.
+- Added a restrained option to the tokenUtils grapple helper.
 ## Bug Fixes:
 - Dread Ambusher
 

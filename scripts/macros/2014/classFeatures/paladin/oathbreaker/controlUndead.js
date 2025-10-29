@@ -144,7 +144,7 @@ async function use({workflow}) {
 
         .effect()
         .name('Control Undead')
-        .from(targetToken)
+        .copySprite(targetToken)
         .attachTo(targetToken,{'bindAlpha': false})
         .opacity(0.75)
         .mirrorX(targetToken.document.texture.scaleX != 0)
@@ -202,7 +202,7 @@ async function use({workflow}) {
         .effect()
         .delay(500)
         .name('Control Undead')
-        .from(targetToken)
+        .copySprite(targetToken)
         .attachTo(targetToken,{'bindAlpha': false})
         .belowTokens()
         .mirrorX(targetToken.document.texture.scaleX < 0)

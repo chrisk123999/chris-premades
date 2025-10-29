@@ -1,43 +1,21 @@
-import {effectUtils, itemUtils, tokenUtils} from '../../../../utils.js';
-async function use({workflow}) {
-    let effectData = {
-        name: workflow.item.name,
-        img: workflow.item.img,
-        origin: workflow.item.uuid,
-        duration: itemUtils.convertDuration(workflow.activity),
-        changes: [
-            {
-                key: 'flags.midi-qol.advantage.ability.check.wis',
-                mode: 0,
-                value: 1,
-                priority: 20
-            },
-            {
-                key: 'flags.midi-qol.grants.noAdvantage.attack.all',
-                mode: 0,
-                value: 'checkDistance(tokenUuid, targetUuid, 30)',
-                priority: 20
-            }
-        ]
-    };
+import {effectUtils, genericUtils, itemUtils} from '../../../../utils.js';
+async function use({trigger, workflow}) {
+    let sourceEffect = workflow.activity.effects[0]?.effect;
+    if (!sourceEffect) return;
+    let effectData = genericUtils.duplicate(sourceEffect.toObject());
+    effectData.origin = sourceEffect.uuid;
+    effectData.duration = itemUtils.convertDuration(workflow.activity);
     await effectUtils.createEffect(workflow.actor, effectData, {
-        identifier: 'shiftWildhuntEffect',
-        macros: [
-            {
-                type: 'midi.actor',
-                macros: ['shiftWildhunt']
-            }
-        ],
         avatarImg: itemUtils.getConfig(workflow.item, 'avatarImg'),
-        tokenImg: itemUtils.getConfig(workflow.item, 'tokenImg'),
         avatarImgPriority: itemUtils.getConfig(workflow.item, 'avatarImgPriority'),
+        tokenImg: itemUtils.getConfig(workflow.item, 'tokenImg'),
         tokenImgPriority: itemUtils.getConfig(workflow.item, 'tokenImgPriority')
     });
 }
-export let shiftWildhunt = {
-    name: 'Shifting: Wildhunt',
-    aliases: 'Shift: Wildhunt',
-    version: '1.3.57',
+export let shiftBeasthide = {
+    name: 'Shifting: Beasthide',
+    version: '1.3.110',
+    rules: 'legacy',
     midi: {
         item: [
             {

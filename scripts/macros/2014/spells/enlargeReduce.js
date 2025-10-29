@@ -231,7 +231,7 @@ export async function start({trigger: {entity: effect}}) {
             .zIndex(2)
             
             .effect()
-            .from(token)
+            .copySprite(token)
             .atLocation(token)
             .scaleToObject(2)
             .duration(500)
@@ -247,7 +247,7 @@ export async function start({trigger: {entity: effect}}) {
             .opacity(0)
             
             .effect()
-            .from(token)
+            .copySprite(token)
             .atLocation(token)
             .loopProperty('sprite', 'position.x', {'from': -40, 'to': 40, 'duration': 75, 'pingPong': true, 'delay': 200})
             .scaleToObject(scale)
@@ -276,7 +276,7 @@ export async function start({trigger: {entity: effect}}) {
             .wait(200)
             
             .effect()
-            .from(token)
+            .copySprite(token)
             .atLocation(token)
             .scaleToObject(1)
             .duration(3000)
@@ -346,7 +346,7 @@ export async function start({trigger: {entity: effect}}) {
             .zIndex(2)
 
             .effect()
-            .from(token)
+            .copySprite(token)
             .atLocation(token)
             .scaleToObject(2)
             .duration(500)
@@ -362,7 +362,7 @@ export async function start({trigger: {entity: effect}}) {
             .opacity(0)
 
             .effect()
-            .from(token)
+            .copySprite(token)
             .atLocation(token)
             .loopProperty('sprite', 'rotation', {'from': -10, 'to': 10, 'duration': 75, 'pingPong': true, 'delay': 200})
             .duration(2000)
@@ -390,7 +390,7 @@ export async function start({trigger: {entity: effect}}) {
             .wait(200)
 
             .effect()
-            .from(token)
+            .copySprite(token)
             .atLocation(token)
             .scaleToObject(scale)
             .duration(3000)

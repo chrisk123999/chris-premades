@@ -577,7 +577,7 @@
       "max": ""
     },
     "description": {
-      "value": "<div class=\"ddb\"><p>Insert spell description here.</p></div>",
+      "value": "",
       "chat": ""
     },
     "identifier": "absorb-elements",

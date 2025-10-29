@@ -1,13 +1,10 @@
 {
-  "name": "Conjure Celestial",
   "type": "spell",
-  "_id": "AeJR4YgBbZ5b9joY",
-  "img": "icons/magic/symbols/star-rising-purple.webp",
   "system": {
     "activities": {
-      "9M21CT8qnHvUzSCD": {
+      "uTHHfLVdIvc80Dl9": {
         "type": "utility",
-        "_id": "9M21CT8qnHvUzSCD",
+        "_id": "uTHHfLVdIvc80Dl9",
         "sort": 0,
         "activation": {
           "type": "action",
@@ -83,7 +80,7 @@
           "autoTargetType": "any",
           "autoTargetAction": "default",
           "automationOnly": false,
-          "otherActivityCompatible": true,
+          "otherActivityCompatible": false,
           "otherActivityAsParentType": true,
           "identifier": "",
           "displayActivityName": false,
@@ -95,7 +92,7 @@
           "magicEffect": false,
           "magicDamage": false,
           "noConcentrationCheck": false,
-          "autoCEEffects": "default"
+          "autoCEEffects": "none"
         },
         "isOverTimeFlag": false,
         "overTimeProperties": {
@@ -105,18 +102,15 @@
         },
         "otherActivityId": "none",
         "otherActivityAsParentType": true,
-        "name": "Conjure Celestial",
-        "img": "icons/magic/symbols/star-rising-purple.webp",
-        "appliedEffects": []
+        "name": ""
       },
-      "0bOFHKweEx7SKmue": {
-        "type": "utility",
-        "_id": "0bOFHKweEx7SKmue",
+      "TAdtvAG3uW0NDe4H": {
+        "type": "attack",
+        "_id": "TAdtvAG3uW0NDe4H",
         "sort": 0,
         "activation": {
-          "type": "special",
-          "override": true,
-          "condition": ""
+          "type": "action",
+          "override": false
         },
         "consumption": {
           "scaling": {
@@ -126,115 +120,7 @@
           "targets": []
         },
         "description": {
-          "chatFlavor": "Conjure Celestial: Move"
-        },
-        "duration": {
-          "units": "inst",
-          "concentration": false,
-          "override": true
-        },
-        "effects": [],
-        "range": {
-          "units": "self",
-          "override": true,
-          "special": ""
-        },
-        "target": {
-          "template": {
-            "contiguous": false,
-            "units": "ft",
-            "type": ""
-          },
-          "affects": {
-            "choice": false,
-            "type": ""
-          },
-          "override": true,
-          "prompt": true
-        },
-        "uses": {
-          "spent": 0,
-          "recovery": [],
-          "max": ""
-        },
-        "roll": {
-          "prompt": false,
-          "visible": false,
-          "name": "",
-          "formula": ""
-        },
-        "useConditionText": "",
-        "useConditionReason": "",
-        "effectConditionText": "",
-        "macroData": {
-          "name": "",
-          "command": ""
-        },
-        "ignoreTraits": {
-          "idi": false,
-          "idr": false,
-          "idv": false,
-          "ida": false,
-          "idm": false
-        },
-        "midiProperties": {
-          "ignoreTraits": [],
-          "triggeredActivityId": "none",
-          "triggeredActivityConditionText": "",
-          "triggeredActivityTargets": "targets",
-          "triggeredActivityRollAs": "self",
-          "autoConsume": false,
-          "forceConsumeDialog": "default",
-          "forceRollDialog": "default",
-          "forceDamageDialog": "default",
-          "confirmTargets": "default",
-          "autoTargetType": "any",
-          "autoTargetAction": "default",
-          "automationOnly": false,
-          "otherActivityCompatible": true,
-          "otherActivityAsParentType": true,
-          "identifier": "",
-          "displayActivityName": false,
-          "rollMode": "default",
-          "chooseEffects": false,
-          "toggleEffect": false,
-          "ignoreFullCover": false,
-          "removeChatButtons": "default",
-          "magicEffect": false,
-          "magicDamage": false,
-          "noConcentrationCheck": false,
-          "autoCEEffects": "default"
-        },
-        "isOverTimeFlag": false,
-        "overTimeProperties": {
-          "saveRemoves": true,
-          "preRemoveConditionText": "",
-          "postRemoveConditionText": ""
-        },
-        "otherActivityId": "none",
-        "otherActivityAsParentType": true,
-        "name": "Conjure Celestial: Move",
-        "img": "icons/magic/symbols/star-rising-purple.webp",
-        "appliedEffects": []
-      },
-      "BF1tn3Er1cRoIdBw": {
-        "type": "heal",
-        "_id": "BF1tn3Er1cRoIdBw",
-        "sort": 0,
-        "activation": {
-          "type": "special",
-          "override": true,
-          "condition": ""
-        },
-        "consumption": {
-          "scaling": {
-            "allowed": false
-          },
-          "spellSlot": false,
-          "targets": []
-        },
-        "description": {
-          "chatFlavor": "Conjure Celestial: Heal"
+          "chatFlavor": ""
         },
         "duration": {
           "units": "inst",
@@ -256,7 +142,7 @@
           "affects": {
             "choice": false,
             "type": "creature",
-            "count": "",
+            "count": "1",
             "special": ""
           },
           "override": true,
@@ -267,157 +153,41 @@
           "recovery": [],
           "max": ""
         },
-        "healing": {
-          "types": [
-            "healing"
-          ],
-          "custom": {
-            "enabled": false
+        "attack": {
+          "critical": {
+            "threshold": null
           },
-          "scaling": {
-            "number": 1,
-            "mode": "whole",
-            "formula": ""
+          "flat": false,
+          "type": {
+            "value": "",
+            "classification": ""
           },
-          "number": 4,
-          "denomination": 12,
-          "bonus": "@mod"
-        },
-        "useConditionText": "",
-        "useConditionReason": "",
-        "effectConditionText": "",
-        "macroData": {
-          "name": "",
-          "command": ""
-        },
-        "ignoreTraits": {
-          "idi": false,
-          "idr": false,
-          "idv": false,
-          "ida": false,
-          "idm": false
-        },
-        "midiProperties": {
-          "ignoreTraits": [],
-          "triggeredActivityId": "none",
-          "triggeredActivityConditionText": "",
-          "triggeredActivityTargets": "targets",
-          "triggeredActivityRollAs": "self",
-          "autoConsume": false,
-          "forceConsumeDialog": "default",
-          "forceRollDialog": "default",
-          "forceDamageDialog": "default",
-          "confirmTargets": "default",
-          "autoTargetType": "any",
-          "autoTargetAction": "default",
-          "automationOnly": false,
-          "otherActivityCompatible": true,
-          "otherActivityAsParentType": true,
-          "identifier": "",
-          "displayActivityName": false,
-          "rollMode": "default",
-          "chooseEffects": false,
-          "toggleEffect": false,
-          "ignoreFullCover": false,
-          "removeChatButtons": "default",
-          "magicEffect": false,
-          "magicDamage": false,
-          "noConcentrationCheck": false,
-          "autoCEEffects": "default"
-        },
-        "isOverTimeFlag": false,
-        "overTimeProperties": {
-          "saveRemoves": true,
-          "preRemoveConditionText": "",
-          "postRemoveConditionText": ""
-        },
-        "name": "Conjure Celestial: Heal",
-        "img": "icons/magic/symbols/star-rising-purple.webp",
-        "appliedEffects": []
-      },
-      "abSB68r4futTjlXV": {
-        "type": "save",
-        "_id": "abSB68r4futTjlXV",
-        "sort": 0,
-        "activation": {
-          "type": "special",
-          "override": true,
-          "condition": ""
-        },
-        "consumption": {
-          "scaling": {
-            "allowed": false
-          },
-          "spellSlot": false,
-          "targets": []
-        },
-        "description": {
-          "chatFlavor": "Conjure Celestial: Damage"
-        },
-        "duration": {
-          "units": "inst",
-          "concentration": false,
-          "override": true
-        },
-        "effects": [],
-        "range": {
-          "units": "any",
-          "override": true,
-          "special": ""
-        },
-        "target": {
-          "template": {
-            "contiguous": false,
-            "units": "ft",
-            "type": ""
-          },
-          "affects": {
-            "choice": false,
-            "type": "creature",
-            "count": "",
-            "special": ""
-          },
-          "override": true,
-          "prompt": true
-        },
-        "uses": {
-          "spent": 0,
-          "recovery": [],
-          "max": ""
+          "ability": "",
+          "bonus": ""
         },
         "damage": {
-          "onSave": "half",
           "critical": {
-            "allow": false
+            "bonus": ""
           },
+          "includeBase": true,
           "parts": [
             {
               "custom": {
                 "enabled": false,
                 "formula": ""
               },
-              "number": 6,
-              "denomination": 12,
+              "number": 1,
+              "denomination": 4,
               "bonus": "",
               "types": [
-                "radiant"
+                "slashing"
               ],
               "scaling": {
-                "mode": "whole",
-                "number": 1,
-                "formula": ""
+                "mode": "",
+                "number": 1
               }
             }
           ]
-        },
-        "save": {
-          "ability": [
-            "dex"
-          ],
-          "dc": {
-            "calculation": "spellcasting",
-            "formula": ""
-          }
         },
         "useConditionText": "",
         "useConditionReason": "",
@@ -440,7 +210,7 @@
           "triggeredActivityTargets": "targets",
           "triggeredActivityRollAs": "self",
           "autoConsume": false,
-          "forceConsumeDialog": "default",
+          "forceConsumeDialog": "never",
           "forceRollDialog": "default",
           "forceDamageDialog": "default",
           "confirmTargets": "default",
@@ -456,10 +226,10 @@
           "toggleEffect": false,
           "ignoreFullCover": false,
           "removeChatButtons": "default",
-          "magicEffect": true,
+          "magicEffect": false,
           "magicDamage": false,
           "noConcentrationCheck": false,
-          "autoCEEffects": "default"
+          "autoCEEffects": "none"
         },
         "isOverTimeFlag": false,
         "overTimeProperties": {
@@ -469,39 +239,186 @@
         },
         "otherActivityId": "",
         "otherActivityAsParentType": true,
-        "friendlySave": "default",
-        "name": "Conjure Celestial: Damage",
-        "img": "icons/magic/symbols/star-rising-purple.webp",
-        "appliedEffects": []
+        "attackMode": "",
+        "ammunition": "",
+        "otherActivityUuid": "",
+        "attackRollPerTarget": "default",
+        "fumbleThreshold": 1,
+        "name": ""
+      },
+      "MscbYYydQXA52xdB": {
+        "type": "attack",
+        "sort": 0,
+        "activation": {
+          "type": "special",
+          "override": true,
+          "condition": ""
+        },
+        "consumption": {
+          "scaling": {
+            "allowed": false
+          },
+          "spellSlot": false,
+          "targets": []
+        },
+        "description": {
+          "chatFlavor": ""
+        },
+        "duration": {
+          "units": "inst",
+          "concentration": false,
+          "override": true
+        },
+        "effects": [],
+        "range": {
+          "units": "ft",
+          "override": true,
+          "special": "",
+          "value": "10"
+        },
+        "target": {
+          "template": {
+            "contiguous": false,
+            "units": "ft",
+            "type": ""
+          },
+          "affects": {
+            "choice": false,
+            "count": "1",
+            "type": "creature",
+            "special": ""
+          },
+          "override": true,
+          "prompt": true
+        },
+        "uses": {
+          "spent": 0,
+          "recovery": [],
+          "max": ""
+        },
+        "attack": {
+          "critical": {
+            "threshold": null
+          },
+          "flat": false,
+          "type": {
+            "value": "",
+            "classification": ""
+          },
+          "ability": "",
+          "bonus": ""
+        },
+        "damage": {
+          "critical": {
+            "bonus": ""
+          },
+          "includeBase": true,
+          "parts": [
+            {
+              "custom": {
+                "enabled": false,
+                "formula": ""
+              },
+              "number": 1,
+              "denomination": 4,
+              "bonus": "",
+              "types": [
+                "slashing"
+              ],
+              "scaling": {
+                "mode": "",
+                "number": 1
+              }
+            }
+          ]
+        },
+        "useConditionText": "",
+        "useConditionReason": "",
+        "effectConditionText": "",
+        "macroData": {
+          "name": "",
+          "command": ""
+        },
+        "ignoreTraits": {
+          "idi": false,
+          "idr": false,
+          "idv": false,
+          "ida": false,
+          "idm": false
+        },
+        "midiProperties": {
+          "ignoreTraits": [],
+          "triggeredActivityId": "none",
+          "triggeredActivityConditionText": "",
+          "triggeredActivityTargets": "targets",
+          "triggeredActivityRollAs": "self",
+          "autoConsume": false,
+          "forceConsumeDialog": "never",
+          "forceRollDialog": "default",
+          "forceDamageDialog": "default",
+          "confirmTargets": "default",
+          "autoTargetType": "any",
+          "autoTargetAction": "default",
+          "automationOnly": false,
+          "otherActivityCompatible": true,
+          "otherActivityAsParentType": true,
+          "identifier": "",
+          "displayActivityName": false,
+          "rollMode": "default",
+          "chooseEffects": false,
+          "toggleEffect": false,
+          "ignoreFullCover": false,
+          "removeChatButtons": "default",
+          "magicEffect": false,
+          "magicDamage": false,
+          "noConcentrationCheck": false,
+          "autoCEEffects": "none"
+        },
+        "isOverTimeFlag": false,
+        "overTimeProperties": {
+          "saveRemoves": true,
+          "preRemoveConditionText": "",
+          "postRemoveConditionText": ""
+        },
+        "otherActivityId": "",
+        "otherActivityAsParentType": true,
+        "attackMode": "",
+        "ammunition": "",
+        "otherActivityUuid": "",
+        "attackRollPerTarget": "default",
+        "fumbleThreshold": 1,
+        "name": "",
+        "_id": "MscbYYydQXA52xdB"
       }
     },
     "uses": {
-      "spent": 0,
-      "recovery": [],
-      "max": ""
+      "spent": null,
+      "max": "",
+      "recovery": []
     },
     "description": {
       "value": "",
       "chat": ""
     },
-    "identifier": "conjure-celestial",
+    "identifier": "forest-guard",
     "source": {
-      "revision": 1,
-      "rules": "2024",
-      "book": "",
+      "book": "OTTG",
       "page": "",
-      "custom": "PHB 2024",
-      "license": ""
+      "license": "",
+      "custom": "",
+      "rules": "2024",
+      "revision": 1
     },
     "activation": {
       "type": "action",
+      "value": 1,
       "condition": ""
     },
     "duration": {
-      "units": "minute",
-      "value": "10"
+      "value": "10",
+      "units": "minute"
     },
-    "level": 7,
+    "level": 1,
     "materials": {
       "value": "",
       "consumed": false,
@@ -509,77 +426,159 @@
       "supply": 0
     },
     "method": "spell",
-    "prepared": 0,
+    "prepared": 1,
     "properties": [
       "vocal",
-      "somatic",
-      "concentration"
+      "somatic"
     ],
     "range": {
-      "units": "ft",
-      "special": "",
-      "value": "90"
+      "value": "60",
+      "units": "ft"
     },
     "school": "con",
+    "sourceClass": "",
     "target": {
-      "template": {
-        "contiguous": false,
-        "units": "ft",
-        "type": "cylinder",
-        "size": "10",
-        "height": "40",
-        "count": ""
-      },
       "affects": {
-        "choice": false,
-        "type": "creature",
         "count": "",
+        "type": "",
+        "choice": false,
         "special": ""
+      },
+      "template": {
+        "count": "",
+        "contiguous": false,
+        "type": "",
+        "size": "",
+        "width": "",
+        "height": "",
+        "units": "ft"
       }
-    },
-    "sourceClass": ""
+    }
   },
-  "effects": [],
-  "folder": null,
+  "effects": [
+    {
+      "name": "Forest Guard: Range",
+      "changes": [
+        {
+          "key": "flags.midi-qol.rangeOverride.attack.all",
+          "mode": 0,
+          "value": "1",
+          "priority": 20
+        }
+      ],
+      "transfer": false,
+      "img": "icons/environment/wilderness/tree-ash.webp",
+      "_id": "PiEWoz51XyhT4fJA",
+      "type": "base",
+      "system": {},
+      "disabled": false,
+      "duration": {
+        "startTime": null,
+        "combat": null,
+        "seconds": null,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "description": "",
+      "origin": null,
+      "tint": "#ffffff",
+      "statuses": [],
+      "sort": 0,
+      "flags": {
+        "chris-premades": {
+          "noAnimation": false,
+          "conditions": [],
+          "specialDuration": [],
+          "templateEffectActivities": [],
+          "info": {
+            "identifier": "forestGuardRangeEffect"
+          },
+          "rules": "modern"
+        },
+        "dnd5e": {
+          "riders": {
+            "statuses": []
+          }
+        },
+        "dae": {
+          "enableCondition": "",
+          "disableCondition": "",
+          "stackable": "noneName",
+          "showIcon": false,
+          "disableIncapacitated": false,
+          "selfTarget": false,
+          "selfTargetAlways": false,
+          "dontApply": true,
+          "durationExpression": "",
+          "macroRepeat": "none",
+          "specialDuration": []
+        },
+        "core": {
+          "overlay": false
+        }
+      },
+      "_key": "!items.effects!YdjhN9yA6zyegRBH.PiEWoz51XyhT4fJA"
+    }
+  ],
+  "name": "Forest Guard",
   "flags": {
+    "midi-qol": {
+      "removeAttackDamageButtons": "default"
+    },
+    "midiProperties": {
+      "confirmTargets": "default",
+      "magicdam": true,
+      "magiceffect": true
+    },
     "dnd5e": {
+      "last": {
+        "MscbYYydQXA52xdB": {
+          "damageType": {
+            "0": "slashing"
+          }
+        },
+        "TAdtvAG3uW0NDe4H": {
+          "damageType": {
+            "0": "slashing"
+          }
+        }
+      },
       "riders": {
         "activity": [
-          "0bOFHKweEx7SKmue",
-          "BF1tn3Er1cRoIdBw",
-          "abSB68r4futTjlXV"
+          "MscbYYydQXA52xdB",
+          "TAdtvAG3uW0NDe4H"
         ]
       }
     },
     "chris-premades": {
       "info": {
-        "identifier": "conjureCelestial",
-        "version": "1.3.84",
+        "identifier": "forestGuard",
+        "rules": "modern",
         "source": "chris-premades",
-        "rules": "modern"
+        "version": "1.3.114"
       },
       "macros": {
         "midi": {
           "item": [
-            "conjureCelestial"
+            "forestGuard"
           ]
         }
       },
       "hiddenActivities": [
-        "conjureCelestialMove",
-        "conjureCelestialHeal",
-        "conjureCelestialDamage"
+        "moveOrStart",
+        "attack"
       ],
       "activityIdentifiers": {
-        "conjureCelestial": "9M21CT8qnHvUzSCD",
-        "conjureCelestialMove": "0bOFHKweEx7SKmue",
-        "conjureCelestialHeal": "BF1tn3Er1cRoIdBw",
-        "conjureCelestialDamage": "abSB68r4futTjlXV"
-      },
-      "spellActivities": [
-        "conjureCelestialMove"
-      ]
+        "use": "uTHHfLVdIvc80Dl9",
+        "attack": "TAdtvAG3uW0NDe4H",
+        "moveOrStart": "MscbYYydQXA52xdB"
+      }
     }
   },
-  "_key": "!items!AeJR4YgBbZ5b9joY"
+  "img": "icons/environment/wilderness/tree-ash.webp",
+  "folder": null,
+  "_id": "YdjhN9yA6zyegRBH",
+  "_key": "!items!YdjhN9yA6zyegRBH"
 }

@@ -58,7 +58,7 @@ async function damage({workflow, ditem}) {
             .delay(250)
 
             .effect()
-            .from(targetToken)
+            .copySprite(targetToken)
             .atLocation(targetToken)
             .moveTowards({'x': position.x + (canvas.grid.size * targetToken.document.width) / 2, 'y': position.y + (canvas.grid.size * targetToken.document.height) / 2 }, {'ease': 'easeInOutBack', 'rotate': false})
             .zIndex(0.1)
@@ -72,7 +72,7 @@ async function damage({workflow, ditem}) {
             .opacity(1)
 
             .effect()
-            .from(targetToken)
+            .copySprite(targetToken)
             .atLocation(targetToken)
             .loopProperty('sprite', 'position.x', {'from': -0.05, 'to': 0.05, 'duration': 75, 'pingPong': true, 'gridUnits': true})
             .scaleToObject(targetToken.document.texture.scaleX)

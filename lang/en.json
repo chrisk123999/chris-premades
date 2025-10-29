@@ -234,6 +234,7 @@
             "SpellSchools": "Spell Schools:",
             "SubclassIdentifier": "Subclass Identifier:",
             "SummonerOnly": "Summoner Only:",
+            "TintMap": "Tint Map:",
             "TokenColor": "Token Color:",
             "TokenImg": "Token Image:",
             "TokenImgPriority": "Token Image Priority:",
@@ -849,7 +850,8 @@
             "AutoGrapple": {
                 "DC": "Flat DC to escape grapple (contested if 0):",
                 "Disadvantage": "Grant disadvantage on escape check:",
-                "Name": "Auto Grapple"
+                "Name": "Auto Grapple",
+                "Restrained": "Restrained while grappled:"
             },
             "AutoPush": {
                 "Name": "Auto Push"
@@ -1432,6 +1434,9 @@
             "FocusedAim": {
                 "Bonus": "Yes ({kiCost} Ki / +{bonus} to hit)"
             },
+            "ForestGuard": {
+                "NoShrub": "No shrubs are nearby the target!"
+            },
             "ForkedTongue": {
                 "SelectLanguages": "Select your known languages:"
             },
@@ -1504,6 +1509,22 @@
             },
             "HailOfThorns": {
                 "Burst": "Hail of Thorns: Burst"
+            },
+            "HarkonsBite": {
+                "HybridAnimation": "Hybrid Form Animation:",
+                "HybridAvatarImg": "Hybrid Form Avatar Image:",
+                "HybridAvatarImgPriority": "Hybrid Form Avatar Image Priority:",
+                "HybridTokenImg": "Hybrid Form Token Image:",
+                "HybridTokenImgPriority": "Hybrid Form Token Image Priority:",
+                "Keen": "This check relies on hearing or smell.",
+                "MoonColor": "Red Moon:",
+                "MoonFrenzy": "Moon Frenzy",
+                "Shapechange": "Shapechange",
+                "WolfAnimation": "Wolf Form Animation:",
+                "WolfAvatarImg": "Wolf Form Avatar Image:",
+                "WolfAvatarImgPriority": "Wolf Form Avatar Image Priority:",
+                "WolfTokenImg": "Wolf Form Token Image:",
+                "WolfTokenImgPriority": "Wolf Form Token Image Priority:"
             },
             "Healer": {
                 "SelectHitDie": "Select which Hit Die to roll.",
@@ -2000,7 +2021,7 @@
             "RollForActivity": {
                 "Error": "No activity including '{total}' found in {name}",
                 "Name": "Roll for Activity",
-                "PerTurn": "Reroll if Activty has No Usages Left:"
+                "PerTurn": "Reroll if activty has no uses left:"
             },
             "RunicShield": {
                 "Use": "Use {item} for {name}?"
@@ -3372,6 +3393,7 @@
                 "FlamingSphere": "Flaming Sphere",
                 "Flumph": "Flumph",
                 "ForceSculpture": "Force Sculpture",
+                "ForestGuard": "Forest Guard",
                 "FormOfDread": "Form of Dread",
                 "GuardianOfFaith": "Guardian of Faith",
                 "HealingSpirit": "Healing Spirit",

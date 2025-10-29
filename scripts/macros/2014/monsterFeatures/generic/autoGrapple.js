@@ -4,7 +4,7 @@ async function late({trigger: {entity: item}, workflow}) {
     let config = itemUtils.getGenericFeatureConfig(item, 'autoGrapple');
     let activities = config.activities;
     if (activities?.length && !activities.includes(workflow.activity.id)) return;
-    await tokenUtils.grappleHelper(workflow.token, workflow.hitTargets.first(), item, {noContest: true, flatDC: config.dc, escapeDisadvantage: config.disadvantage});
+    await tokenUtils.grappleHelper(workflow.token, workflow.hitTargets.first(), item, {noContest: true, flatDC: config.dc, escapeDisadvantage: config.disadvantage, restrained: config.restrained});
 }
 export let autoGrapple = {
     name: 'Auto Grapple',
@@ -38,6 +38,12 @@ export let autoGrapple = {
             label: 'CHRISPREMADES.Macros.AutoGrapple.Disadvantage',
             type: 'checkbox',
             default: true
+        },
+        {
+            value: 'restrained',
+            label: 'CHRISPREMADES.Macros.AutoGrapple.Restrained',
+            type: 'checkbox',
+            default: false
         }
     ]
 };

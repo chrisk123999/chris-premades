@@ -152,7 +152,7 @@ function getLightLevel(token) {
     if (inBright) return 'bright';
     return 'dim';
 }
-async function grappleHelper(sourceToken, targetToken, item, {noContest = false, flatDC = false, escapeDisadvantage = false, sourceEffect, targetEffect}={}) {
+async function grappleHelper(sourceToken, targetToken, item, {noContest = false, flatDC = false, escapeDisadvantage = false, sourceEffect, targetEffect, restrained = false}={}) {
     let sourceActor = sourceToken.actor;
     if (actorUtils.checkTrait(targetToken.actor, 'ci', 'grappled')) {
         genericUtils.notify('CHRISPREMADES.Macros.Grapple.Immune', 'info');
@@ -228,6 +228,9 @@ async function grappleHelper(sourceToken, targetToken, item, {noContest = false,
             }
         }
     };
+    if (restrained && !actorUtils.checkTrait(targetToken.actor, 'ci', 'restrained')) {
+        targetEffectData.flags['chris-premades'].conditions.push('restrained');
+    }
     effectUtils.addMacro(sourceEffectData, 'death', ['grapple']);
     effectUtils.addMacro(targetEffectData, 'death', ['grapple']);
     let grappler = itemUtils.getItemByIdentifier(sourceActor, 'grappler');

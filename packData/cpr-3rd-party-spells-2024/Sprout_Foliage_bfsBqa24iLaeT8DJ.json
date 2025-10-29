@@ -1,13 +1,154 @@
 {
-  "name": "Conjure Woodland Beings",
   "type": "spell",
-  "_id": "q3EnqXOwQzhsjXDU",
-  "img": "icons/magic/nature/instrument-recorder-leaves.webp",
   "system": {
     "activities": {
-      "R1EbnAKyqFNsleZH": {
+      "attackSprouFolia": {
+        "type": "attack",
+        "_id": "attackSprouFolia",
+        "sort": 0,
+        "activation": {
+          "type": "action",
+          "override": false
+        },
+        "consumption": {
+          "spellSlot": false,
+          "targets": [],
+          "scaling": {
+            "allowed": false,
+            "max": ""
+          }
+        },
+        "description": {
+          "chatFlavor": ""
+        },
+        "duration": {
+          "units": "inst",
+          "concentration": false,
+          "override": true
+        },
+        "effects": [],
+        "range": {
+          "units": "ft",
+          "override": true,
+          "special": "",
+          "value": "30"
+        },
+        "target": {
+          "template": {
+            "contiguous": false,
+            "units": "ft",
+            "type": ""
+          },
+          "affects": {
+            "choice": false,
+            "type": "creature",
+            "count": "1",
+            "special": ""
+          },
+          "override": true,
+          "prompt": true
+        },
+        "uses": {
+          "spent": 0,
+          "recovery": [],
+          "max": ""
+        },
+        "attack": {
+          "ability": "spellcasting",
+          "bonus": "",
+          "critical": {
+            "threshold": null
+          },
+          "flat": false,
+          "type": {
+            "value": "melee",
+            "classification": "spell"
+          }
+        },
+        "damage": {
+          "critical": {
+            "bonus": ""
+          },
+          "parts": [
+            {
+              "custom": {
+                "enabled": false,
+                "formula": ""
+              },
+              "number": 1,
+              "denomination": 6,
+              "bonus": "@mod",
+              "types": [
+                "bludgeoning"
+              ],
+              "scaling": {
+                "mode": "",
+                "number": 1
+              }
+            }
+          ],
+          "includeBase": true
+        },
+        "useConditionText": "",
+        "useConditionReason": "",
+        "effectConditionText": "",
+        "macroData": {
+          "name": "",
+          "command": ""
+        },
+        "ignoreTraits": {
+          "idi": false,
+          "idr": false,
+          "idv": false,
+          "ida": false,
+          "idm": false
+        },
+        "midiProperties": {
+          "ignoreTraits": [],
+          "triggeredActivityId": "none",
+          "triggeredActivityConditionText": "",
+          "triggeredActivityTargets": "targets",
+          "triggeredActivityRollAs": "self",
+          "confirmTargets": "default",
+          "automationOnly": false,
+          "identifier": "",
+          "autoConsume": false,
+          "forceConsumeDialog": "never",
+          "forceRollDialog": "default",
+          "forceDamageDialog": "default",
+          "autoTargetType": "any",
+          "autoTargetAction": "default",
+          "otherActivityCompatible": true,
+          "otherActivityAsParentType": true,
+          "displayActivityName": false,
+          "rollMode": "default",
+          "chooseEffects": false,
+          "toggleEffect": false,
+          "ignoreFullCover": false,
+          "removeChatButtons": "default",
+          "magicEffect": false,
+          "magicDamage": false,
+          "noConcentrationCheck": false,
+          "autoCEEffects": "none"
+        },
+        "isOverTimeFlag": false,
+        "overTimeProperties": {
+          "saveRemoves": true,
+          "preRemoveConditionText": "",
+          "postRemoveConditionText": ""
+        },
+        "otherActivityId": "none",
+        "otherActivityAsParentType": true,
+        "attackMode": "",
+        "ammunition": "",
+        "otherActivityUuid": "",
+        "attackRollPerTarget": "default",
+        "fumbleThreshold": 1,
+        "name": ""
+      },
+      "tpf54mrnViKMEAcT": {
         "type": "utility",
-        "_id": "R1EbnAKyqFNsleZH",
+        "_id": "tpf54mrnViKMEAcT",
         "sort": 0,
         "activation": {
           "type": "action",
@@ -28,7 +169,11 @@
           "concentration": false,
           "override": false
         },
-        "effects": [],
+        "effects": [
+          {
+            "_id": "i41kJfgjhHc6W6HQ"
+          }
+        ],
         "range": {
           "units": "self",
           "override": false
@@ -83,7 +228,7 @@
           "autoTargetType": "any",
           "autoTargetAction": "default",
           "automationOnly": false,
-          "otherActivityCompatible": true,
+          "otherActivityCompatible": false,
           "otherActivityAsParentType": true,
           "identifier": "",
           "displayActivityName": false,
@@ -95,7 +240,7 @@
           "magicEffect": false,
           "magicDamage": false,
           "noConcentrationCheck": false,
-          "autoCEEffects": "default"
+          "autoCEEffects": "none"
         },
         "isOverTimeFlag": false,
         "overTimeProperties": {
@@ -105,177 +250,37 @@
         },
         "otherActivityId": "none",
         "otherActivityAsParentType": true,
-        "name": "Conjure Woodland Beings",
-        "img": "icons/magic/nature/instrument-recorder-leaves.webp",
-        "appliedEffects": []
-      },
-      "tsuknT7BK00VXSV9": {
-        "type": "save",
-        "_id": "tsuknT7BK00VXSV9",
-        "sort": 0,
-        "activation": {
-          "type": "special",
-          "override": true,
-          "condition": ""
-        },
-        "consumption": {
-          "scaling": {
-            "allowed": false
-          },
-          "spellSlot": false,
-          "targets": []
-        },
-        "description": {
-          "chatFlavor": "Conjure Woodland Beings: Damage"
-        },
-        "duration": {
-          "units": "inst",
-          "concentration": false,
-          "override": true
-        },
-        "effects": [],
-        "range": {
-          "units": "any",
-          "override": true,
-          "special": ""
-        },
-        "target": {
-          "template": {
-            "contiguous": false,
-            "units": "ft",
-            "type": ""
-          },
-          "affects": {
-            "choice": false,
-            "type": "creature",
-            "count": "",
-            "special": ""
-          },
-          "override": true,
-          "prompt": true
-        },
-        "uses": {
-          "spent": 0,
-          "recovery": [],
-          "max": ""
-        },
-        "damage": {
-          "onSave": "half",
-          "critical": {
-            "allow": false
-          },
-          "parts": [
-            {
-              "custom": {
-                "enabled": false,
-                "formula": ""
-              },
-              "number": 5,
-              "denomination": 8,
-              "bonus": "",
-              "types": [
-                "force"
-              ],
-              "scaling": {
-                "mode": "whole",
-                "number": 1,
-                "formula": ""
-              }
-            }
-          ]
-        },
-        "save": {
-          "ability": [
-            "wis"
-          ],
-          "dc": {
-            "calculation": "spellcasting",
-            "formula": ""
-          }
-        },
-        "useConditionText": "",
-        "useConditionReason": "",
-        "effectConditionText": "",
-        "macroData": {
-          "name": "",
-          "command": ""
-        },
-        "ignoreTraits": {
-          "idi": false,
-          "idr": false,
-          "idv": false,
-          "ida": false,
-          "idm": false
-        },
-        "midiProperties": {
-          "ignoreTraits": [],
-          "triggeredActivityId": "none",
-          "triggeredActivityConditionText": "",
-          "triggeredActivityTargets": "targets",
-          "triggeredActivityRollAs": "self",
-          "autoConsume": false,
-          "forceConsumeDialog": "default",
-          "forceRollDialog": "default",
-          "forceDamageDialog": "default",
-          "confirmTargets": "default",
-          "autoTargetType": "any",
-          "autoTargetAction": "default",
-          "automationOnly": false,
-          "otherActivityCompatible": true,
-          "otherActivityAsParentType": true,
-          "identifier": "",
-          "displayActivityName": false,
-          "rollMode": "default",
-          "chooseEffects": false,
-          "toggleEffect": false,
-          "ignoreFullCover": false,
-          "removeChatButtons": "default",
-          "magicEffect": true,
-          "magicDamage": false,
-          "noConcentrationCheck": false,
-          "autoCEEffects": "default"
-        },
-        "isOverTimeFlag": false,
-        "overTimeProperties": {
-          "saveRemoves": true,
-          "preRemoveConditionText": "",
-          "postRemoveConditionText": ""
-        },
-        "otherActivityId": "",
-        "otherActivityAsParentType": true,
-        "friendlySave": "default",
-        "name": "Conjure Woodland Beings: Damage",
-        "img": "icons/magic/nature/instrument-recorder-leaves.webp",
-        "appliedEffects": []
+        "name": ""
       }
     },
     "uses": {
-      "spent": 0,
-      "recovery": [],
-      "max": ""
+      "spent": null,
+      "max": "",
+      "recovery": []
     },
     "description": {
       "value": "",
       "chat": ""
     },
-    "identifier": "conjure-woodland-beings",
+    "identifier": "sprout-foliage",
     "source": {
-      "revision": 1,
-      "rules": "2024",
-      "book": "",
+      "book": "OTTG",
       "page": "",
-      "custom": "PHB 2024",
-      "license": ""
+      "license": "",
+      "custom": "",
+      "rules": "2024",
+      "revision": 1
     },
     "activation": {
       "type": "action",
+      "value": 1,
       "condition": ""
     },
     "duration": {
-      "units": "minute",
-      "value": "10"
+      "value": "1",
+      "units": "hour"
     },
-    "level": 4,
+    "level": 1,
     "materials": {
       "value": "",
       "consumed": false,
@@ -283,63 +288,137 @@
       "supply": 0
     },
     "method": "spell",
-    "prepared": 0,
+    "prepared": 1,
     "properties": [
       "vocal",
       "somatic",
-      "concentration"
+      "material"
     ],
     "range": {
-      "units": "self",
-      "special": ""
+      "units": "self"
     },
     "school": "con",
+    "sourceClass": "",
     "target": {
-      "template": {
-        "contiguous": false,
-        "units": "ft",
-        "type": ""
-      },
       "affects": {
+        "count": "",
+        "type": "self",
         "choice": false,
-        "type": "",
         "special": ""
+      },
+      "template": {
+        "count": "",
+        "contiguous": false,
+        "type": "",
+        "size": "",
+        "width": "",
+        "height": "",
+        "units": "ft"
       }
-    },
-    "sourceClass": ""
+    }
   },
-  "effects": [],
-  "folder": null,
+  "effects": [
+    {
+      "name": "Sprout Foliage",
+      "img": "icons/magic/nature/root-vines-face-glow-green.webp",
+      "origin": "Actor.gmhAWe483txQ4L3J.Item.SproutFoliage1II",
+      "transfer": false,
+      "_id": "i41kJfgjhHc6W6HQ",
+      "type": "base",
+      "system": {},
+      "changes": [],
+      "disabled": false,
+      "duration": {
+        "startTime": null,
+        "combat": null,
+        "seconds": null,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "statuses": [],
+      "sort": 0,
+      "flags": {
+        "dnd5e": {
+          "riders": {
+            "statuses": []
+          }
+        },
+        "dae": {
+          "enableCondition": "",
+          "disableCondition": "",
+          "stackable": "noneName",
+          "showIcon": false,
+          "disableIncapacitated": false,
+          "selfTarget": false,
+          "selfTargetAlways": false,
+          "dontApply": true,
+          "durationExpression": "",
+          "macroRepeat": "none",
+          "specialDuration": []
+        },
+        "core": {
+          "overlay": false
+        }
+      },
+      "_key": "!items.effects!bfsBqa24iLaeT8DJ.i41kJfgjhHc6W6HQ"
+    }
+  ],
+  "name": "Sprout Foliage",
   "flags": {
+    "midi-qol": {
+      "removeAttackDamageButtons": "default"
+    },
+    "midiProperties": {
+      "confirmTargets": "default",
+      "magicdam": true,
+      "magiceffect": true
+    },
     "dnd5e": {
       "riders": {
         "activity": [
-          "tsuknT7BK00VXSV9"
+          "attackSprouFolia"
         ]
+      },
+      "last": {
+        "attackSprouFolia": {
+          "damageType": {
+            "0": "bludgeoning"
+          }
+        }
       }
     },
     "chris-premades": {
       "info": {
-        "identifier": "conjureWoodlandBeings",
-        "version": "1.3.84",
+        "identifier": "sproutFoliage",
         "source": "chris-premades",
+        "version": "1.3.114",
         "rules": "modern"
       },
       "macros": {
         "midi": {
           "item": [
-            "conjureWoodlandBeings"
+            "sproutFoliage"
           ]
         }
       },
       "hiddenActivities": [
-        "conjureWoodlandBeingsDamage"
+        "attack"
       ],
       "activityIdentifiers": {
-        "conjureWoodlandBeings": "R1EbnAKyqFNsleZH",
-        "conjureWoodlandBeingsDamage": "tsuknT7BK00VXSV9"
-      }
+        "attack": "attackSprouFolia",
+        "use": "tpf54mrnViKMEAcT"
+      },
+      "spellActivities": [
+        "attack"
+      ]
     }
   },
-  "_key": "!items!q3EnqXOwQzhsjXDU"
+  "img": "icons/magic/nature/root-vines-face-glow-green.webp",
+  "folder": null,
+  "_id": "bfsBqa24iLaeT8DJ",
+  "_key": "!items!bfsBqa24iLaeT8DJ"
 }
