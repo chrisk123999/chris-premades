@@ -17,7 +17,7 @@
 ## Update Notes:
 - Added a setting to have the add generic actions as one item instead of multiple.
 - Added support for modern generic actions to the automatic add generic actions setting.
-- Added a zero speed special duration to the CPR effect medkit.
+- Added a zero speed special duration to the CPR effect Medkit.
 ## Bug Fixes:
 - Primal Companion (Modern)
 
