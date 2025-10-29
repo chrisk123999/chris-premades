@@ -1,3 +1,7 @@
+# 1.3.115 Release:
+## Bug Fixes:
+- Primal Companion (Modern)
+
 # 1.3.114 Release:
 ## New Modern Content:
 - Forest Guard
