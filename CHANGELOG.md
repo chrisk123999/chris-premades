@@ -1,3 +1,9 @@
+# 1.3.116 Release:
+## New Legacy Content:
+- Forest Sage
+## Bug Fixes:
+- Dual Wielder
+
 # 1.3.115 Release:
 ## New Modern Content:
 - Attack

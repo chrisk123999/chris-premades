@@ -9,6 +9,7 @@ async function use({trigger, workflow}) {
     let selection = await dialogUtils.selectDocumentDialog(workflow.item.name, 'CHRISPREMADES.Macros.GenericActions.Select', index.contents, {sortAlphabetical: true});
     if (!selection) return;
     let documentData = genericUtils.duplicate(selection.toObject());
+    documentData.system.description.value = itemUtils.getItemDescription(documentData.name);
     await workflowUtils.syntheticItemDataRoll(documentData, workflow.actor, Array.from(game.user.targets));
 }
 export let genericActions = {
