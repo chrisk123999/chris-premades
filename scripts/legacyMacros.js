@@ -568,6 +568,7 @@ export {shove} from './macros/2014/actions/shove.js';
 export {squeeze} from './macros/2014/actions/squeeze.js';
 export {stabilize} from './macros/2014/actions/stabilize.js';
 export {underwater, underwaterEffect} from './macros/2014/actions/underwater.js';
+export {genericActions} from './macros/2014/actions/genericActions.js';
 // Feats
 export {aberrantDragonmark} from './macros/2014/feats/aberrantDragonmark.js';
 export {bulwark} from './macros/2014/feats/bulwark.js';

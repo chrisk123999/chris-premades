@@ -1,10 +1,14 @@
-import {itemUtils, tokenUtils} from '../../../../utils.js';
+import {actorUtils, itemUtils, tokenUtils} from '../../../../utils.js';
 async function late({trigger: {entity: item}, workflow}) {
-    if (workflow.hitTargets.size !== 1) return;
+    if (!workflow.hitTargets.size) return;
     let config = itemUtils.getGenericFeatureConfig(item, 'autoGrapple');
     let activities = config.activities;
     if (activities?.length && !activities.includes(workflow.activity.id)) return;
-    await tokenUtils.grappleHelper(workflow.token, workflow.hitTargets.first(), item, {noContest: true, flatDC: config.dc, escapeDisadvantage: config.disadvantage, restrained: config.restrained});
+    for (let token of workflow.hitTargets) {
+        let sizeLimit = Number(config.sizeLimit);
+        if (sizeLimit != -1 && actorUtils.getSize(token.actor) > sizeLimit) continue; 
+        await tokenUtils.grappleHelper(workflow.token, token, item, {noContest: true, flatDC: config.dc, escapeDisadvantage: config.disadvantage, restrained: config.restrained});
+    }
 }
 export let autoGrapple = {
     name: 'Auto Grapple',
@@ -44,6 +48,13 @@ export let autoGrapple = {
             label: 'CHRISPREMADES.Macros.AutoGrapple.Restrained',
             type: 'checkbox',
             default: false
+        },
+        {
+            value: 'sizeLimit',
+            label: 'CHRISPREMADES.Config.SizeLimit',
+            type: 'select',
+            default: -1,
+            options: () => {return [{value: '-1', label: 'CHRISPREMADES.Generic.None'}, ...Object.values(CONFIG.DND5E.actorSizes).map(data => ({value: String(data.numerical), label: data.label}))];}
         }
     ]
 };

@@ -229,6 +229,14 @@ async function specialDurationMove(actor) {
     if (!effects.length) return;
     await genericUtils.deleteEmbeddedDocuments(actor, 'ActiveEffect', effects.map(i => i.id));
 }
+async function specialDurationZeroSpeed(actor) {
+    let effects = actorUtils.getEffects(actor, {includeItemEffects: true}).filter(i => i.flags['chris-premades']?.specialDuration?.includes('zeroSpeed'));
+    if (!effects.length) return;
+    let types = ['burrow', 'climb', 'fly', 'swim', 'walk'];
+    let allZero = types.every(t => actor.system.attributes.movement[t] === 0);
+    if (!allZero) return;
+    await genericUtils.deleteEmbeddedDocuments(actor, 'ActiveEffect', effects.map(i => i.id));
+}
 function preImageCreate(effect, updates, options, id) {
     if (game.user.id != id) return;
     if (!(effect.parent instanceof Actor)) return;
@@ -330,5 +338,6 @@ export let effects = {
     specialDurationHitPoints,
     specialDurationToolCheck,
     removeWorkflowEffects,
-    specialDurationMove
+    specialDurationMove,
+    specialDurationZeroSpeed
 };

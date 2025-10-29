@@ -1,12 +1,12 @@
 {
-  "name": "Suffocation",
+  "name": "Knock Out",
   "type": "feat",
-  "img": "icons/magic/air/wind-tornado-funnel-blue.webp",
+  "img": "icons/skills/melee/strike-club-red.webp",
   "system": {
     "activities": {
-      "4qbNs7daeZYwX7fZ": {
+      "8SZqHO5l9X8q9PsJ": {
         "type": "utility",
-        "_id": "4qbNs7daeZYwX7fZ",
+        "_id": "8SZqHO5l9X8q9PsJ",
         "sort": 0,
         "activation": {
           "type": "special",
@@ -30,7 +30,7 @@
         },
         "effects": [],
         "range": {
-          "units": "self",
+          "units": "any",
           "override": false,
           "special": ""
         },
@@ -42,7 +42,9 @@
           },
           "affects": {
             "choice": false,
-            "type": "self"
+            "type": "creature",
+            "count": "1",
+            "special": ""
           },
           "override": false,
           "prompt": true
@@ -86,7 +88,7 @@
           "autoTargetType": "any",
           "autoTargetAction": "default",
           "automationOnly": false,
-          "otherActivityCompatible": true,
+          "otherActivityCompatible": false,
           "otherActivityAsParentType": true,
           "identifier": "",
           "displayActivityName": false,
@@ -98,7 +100,7 @@
           "magicEffect": false,
           "magicDamage": false,
           "noConcentrationCheck": false,
-          "autoCEEffects": "default"
+          "autoCEEffects": "none"
         },
         "isOverTimeFlag": false,
         "overTimeProperties": {
@@ -107,8 +109,8 @@
           "postRemoveConditionText": ""
         },
         "otherActivityId": "none",
-        "name": "",
-        "otherActivityAsParentType": true
+        "otherActivityAsParentType": true,
+        "name": ""
       }
     },
     "uses": {
@@ -120,7 +122,7 @@
       "value": "",
       "chat": ""
     },
-    "identifier": "suffocation",
+    "identifier": "knock-out",
     "source": {
       "revision": 1,
       "rules": "2024",
@@ -142,31 +144,96 @@
       "subtype": ""
     }
   },
-  "effects": [],
+  "effects": [
+    {
+      "name": "Knock Out",
+      "changes": [],
+      "transfer": false,
+      "img": "icons/skills/melee/strike-club-red.webp",
+      "_id": "I0SBJrLuNu75PD0V",
+      "type": "base",
+      "system": {},
+      "disabled": false,
+      "duration": {
+        "startTime": null,
+        "combat": null,
+        "seconds": null,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "description": "",
+      "origin": null,
+      "tint": "#ffffff",
+      "statuses": [],
+      "sort": 0,
+      "flags": {
+        "dnd5e": {
+          "riders": {
+            "statuses": []
+          }
+        },
+        "dae": {
+          "enableCondition": "",
+          "disableCondition": "",
+          "stackable": "noneName",
+          "showIcon": false,
+          "disableIncapacitated": false,
+          "selfTarget": false,
+          "selfTargetAlways": false,
+          "dontApply": true,
+          "durationExpression": "",
+          "macroRepeat": "none",
+          "specialDuration": []
+        },
+        "core": {
+          "overlay": false
+        },
+        "chris-premades": {
+          "noAnimation": false,
+          "conditions": [],
+          "specialDuration": [],
+          "templateEffectActivities": [],
+          "info": {
+            "identifier": "knockOutEffect"
+          },
+          "rules": "modern",
+          "macros": {
+            "midi": {
+              "actor": [
+                "knockOutEffect"
+              ]
+            }
+          }
+        }
+      },
+      "_key": "!items.effects!6qEjC3Gg9ZFj3cFK.I0SBJrLuNu75PD0V"
+    }
+  ],
   "folder": null,
   "flags": {
     "dnd5e": {
       "riders": {
-        "activity": [],
-        "effect": []
+        "activity": []
       }
     },
     "chris-premades": {
       "info": {
-        "identifier": "suffocation",
+        "identifier": "knockOut",
         "rules": "modern",
         "source": "chris-premades",
-        "version": "1.3.34"
+        "version": "1.3.115"
       },
       "macros": {
         "midi": {
           "item": [
-            "suffocation"
+            "knockOut"
           ]
         }
       }
     }
   },
-  "_id": "CaHncwC78kOAL2H1",
-  "_key": "!items!CaHncwC78kOAL2H1"
+  "_id": "6qEjC3Gg9ZFj3cFK",
+  "_key": "!items!6qEjC3Gg9ZFj3cFK"
 }

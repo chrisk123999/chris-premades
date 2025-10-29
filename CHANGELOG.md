@@ -1,4 +1,23 @@
 # 1.3.115 Release:
+## New Modern Content:
+- Attack
+- Check Cover
+- Dodge
+- Fall
+- Help
+- Influence
+- Knock Out
+- Magic
+- Ready
+- Search
+- Squeeze
+- Stabilize
+- Study
+- Underwater
+## Update Notes:
+- Added a setting to have the add generic actions as one item instead of multiple.
+- Added support for modern generic actions to the automatic add generic actions setting.
+- Added a zero speed special duration to the CPR effect medkit.
 ## Bug Fixes:
 - Primal Companion (Modern)
 

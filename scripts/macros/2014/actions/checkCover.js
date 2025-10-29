@@ -4,7 +4,7 @@ async function use({trigger, workflow}) {
     let reverseCover = workflow.targets.has(workflow.token);
     let targets;
     if (!workflow.targets.size || (workflow.targets.size === 1 && workflow.targets.has(workflow.token))) {
-        targets = workflow.token.parent.tokens.map(i => i.object).filter(j => tokenUtils.canSense(workflow.token, j) && j.document.uuid != workflow.token.document.uuid);
+        targets = workflow.token.document.parent.tokens.map(i => i.object).filter(j => tokenUtils.canSense(workflow.token, j) && j.document.uuid != workflow.token.document.uuid);
     } else {
         targets = Array.from(workflow.targets);
     }

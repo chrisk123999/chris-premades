@@ -1,7 +1,7 @@
 {
-  "name": "Dash",
+  "name": "Squeeze",
   "type": "feat",
-  "img": "icons/skills/movement/figure-running-gray.webp",
+  "img": "icons/magic/control/silhouette-grow-shrink-blue.webp",
   "system": {
     "description": {
       "value": "",
@@ -36,8 +36,8 @@
         "_id": "dnd5eactivity000",
         "type": "utility",
         "activation": {
-          "type": "action",
-          "value": 1,
+          "type": "special",
+          "value": null,
           "condition": "",
           "override": false
         },
@@ -55,13 +55,13 @@
         "duration": {
           "concentration": false,
           "value": "1",
-          "units": "turn",
+          "units": "month",
           "special": "",
           "override": false
         },
         "effects": [
           {
-            "_id": "V7ufkcZOq87ARrmt"
+            "_id": "P4BazGLCYrmqfKBo"
           }
         ],
         "range": {
@@ -152,16 +152,35 @@
         "otherActivityAsParentType": true
       }
     },
-    "identifier": "dash",
+    "identifier": "squeeze",
     "enchant": {},
     "advancement": [],
     "crewed": false
   },
   "effects": [
     {
-      "changes": [],
+      "changes": [
+        {
+          "key": "flags.midi-qol.disadvantage.attack.all",
+          "mode": 0,
+          "value": "1",
+          "priority": 20
+        },
+        {
+          "key": "flags.midi-qol.disadvantage.ability.save.dex",
+          "mode": 0,
+          "value": "1",
+          "priority": 20
+        },
+        {
+          "key": "flags.midi-qol.grants.advantage.attack.all",
+          "mode": 0,
+          "value": "1",
+          "priority": 20
+        }
+      ],
       "transfer": false,
-      "_id": "V7ufkcZOq87ARrmt",
+      "_id": "P4BazGLCYrmqfKBo",
       "disabled": false,
       "duration": {
         "startTime": null,
@@ -174,30 +193,57 @@
       },
       "origin": null,
       "tint": "#ffffff",
-      "flags": {},
-      "name": "Dash",
+      "flags": {
+        "dfreds-convenient-effects": {
+          "description": ""
+        },
+        "dae": {
+          "selfTarget": false,
+          "selfTargetAlways": false,
+          "stackable": "noneName",
+          "durationExpression": "",
+          "macroRepeat": "none",
+          "specialDuration": []
+        },
+        "core": {
+          "statusId": ""
+        },
+        "ActiveAuras": {
+          "isAura": false,
+          "aura": "None",
+          "radius": "undefined",
+          "alignment": "",
+          "type": "",
+          "ignoreSelf": false,
+          "height": false,
+          "hidden": false,
+          "displayTemp": false,
+          "hostile": false,
+          "onlyOnce": false
+        }
+      },
+      "name": "Squeeze",
       "description": "",
       "statuses": [],
-      "img": "icons/skills/movement/figure-running-gray.webp",
+      "img": "icons/magic/control/silhouette-grow-shrink-blue.webp",
       "type": "base",
       "system": {},
       "sort": 0,
-      "_key": "!items.effects!Wetf6E6OMwGsOl1B.V7ufkcZOq87ARrmt"
+      "_key": "!items.effects!zrA6SJholuywfPKC.P4BazGLCYrmqfKBo"
     }
   ],
   "flags": {
-    "core": {},
     "midi-qol": {
       "effectActivation": false,
-      "rollAttackPerTarget": "default",
-      "itemCondition": "",
-      "effectCondition": "",
       "AoETargetType": "any",
       "AoETargetTypeIncludeSelf": true,
       "autoTarget": "default",
+      "rollAttackPerTarget": "default",
       "removeAttackDamageButtons": "default",
+      "itemCondition": "",
       "reactionCondition": "",
-      "otherCondition": ""
+      "otherCondition": "",
+      "effectCondition": ""
     },
     "midiProperties": {
       "nodam": false,
@@ -211,15 +257,16 @@
       "magicdam": false,
       "magiceffect": false,
       "concentration": false,
-      "toggleEffect": false,
+      "toggleEffect": true,
       "ignoreTotalCover": false,
-      "confirmTargets": "never",
+      "confirmTargets": "default",
       "noConcentrationCheck": false,
       "idr": false,
       "idi": false,
       "idv": false,
       "ida": false
     },
+    "core": {},
     "dnd5e": {
       "riders": {
         "activity": [],
@@ -228,25 +275,15 @@
     },
     "chris-premades": {
       "info": {
-        "identifier": "dash",
+        "name": "Squeeze",
+        "identifier": "squeeze",
         "source": "chris-premades",
         "rules": "modern",
-        "version": "1.3.34",
-        "hasAnimation": true
-      },
-      "macros": {
-        "midi": {
-          "item": [
-            "dash"
-          ]
-        }
+        "version": "1.3.115"
       }
-    },
-    "tidy5e-sheet": {
-      "section": "Actions"
     }
   },
   "folder": null,
-  "_id": "Wetf6E6OMwGsOl1B",
-  "_key": "!items!Wetf6E6OMwGsOl1B"
+  "_id": "zrA6SJholuywfPKC",
+  "_key": "!items!zrA6SJholuywfPKC"
 }

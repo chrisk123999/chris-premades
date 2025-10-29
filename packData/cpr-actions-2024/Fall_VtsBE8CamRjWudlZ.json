@@ -1,7 +1,7 @@
 {
-  "name": "Dash",
+  "name": "Fall",
   "type": "feat",
-  "img": "icons/skills/movement/figure-running-gray.webp",
+  "img": "icons/magic/control/silhouette-fall-slip-prone.webp",
   "system": {
     "description": {
       "value": "",
@@ -34,10 +34,10 @@
     "activities": {
       "dnd5eactivity000": {
         "_id": "dnd5eactivity000",
-        "type": "utility",
+        "type": "damage",
         "activation": {
-          "type": "action",
-          "value": 1,
+          "type": "special",
+          "value": null,
           "condition": "",
           "override": false
         },
@@ -54,16 +54,12 @@
         },
         "duration": {
           "concentration": false,
-          "value": "1",
-          "units": "turn",
+          "value": "",
+          "units": "inst",
           "special": "",
           "override": false
         },
-        "effects": [
-          {
-            "_id": "V7ufkcZOq87ARrmt"
-          }
-        ],
+        "effects": [],
         "range": {
           "units": "self",
           "special": "",
@@ -93,11 +89,30 @@
           "max": "",
           "recovery": []
         },
-        "roll": {
-          "formula": "",
-          "name": "",
-          "prompt": false,
-          "visible": false
+        "damage": {
+          "critical": {
+            "allow": false,
+            "bonus": ""
+          },
+          "parts": [
+            {
+              "number": null,
+              "denomination": null,
+              "bonus": "",
+              "types": [
+                "bludgeoning"
+              ],
+              "custom": {
+                "enabled": true,
+                "formula": "0"
+              },
+              "scaling": {
+                "mode": "whole",
+                "number": null,
+                "formula": ""
+              }
+            }
+          ]
         },
         "sort": 0,
         "useConditionText": "",
@@ -147,55 +162,26 @@
           "saveRemoves": true,
           "preRemoveConditionText": "",
           "postRemoveConditionText": ""
-        },
-        "otherActivityId": "none",
-        "otherActivityAsParentType": true
+        }
       }
     },
-    "identifier": "dash",
+    "identifier": "fall",
     "enchant": {},
     "advancement": [],
     "crewed": false
   },
-  "effects": [
-    {
-      "changes": [],
-      "transfer": false,
-      "_id": "V7ufkcZOq87ARrmt",
-      "disabled": false,
-      "duration": {
-        "startTime": null,
-        "seconds": null,
-        "combat": null,
-        "rounds": null,
-        "turns": null,
-        "startRound": null,
-        "startTurn": null
-      },
-      "origin": null,
-      "tint": "#ffffff",
-      "flags": {},
-      "name": "Dash",
-      "description": "",
-      "statuses": [],
-      "img": "icons/skills/movement/figure-running-gray.webp",
-      "type": "base",
-      "system": {},
-      "sort": 0,
-      "_key": "!items.effects!Wetf6E6OMwGsOl1B.V7ufkcZOq87ARrmt"
-    }
-  ],
+  "effects": [],
   "flags": {
-    "core": {},
     "midi-qol": {
       "effectActivation": false,
+      "onUseMacroName": "",
       "rollAttackPerTarget": "default",
+      "removeAttackDamageButtons": "default",
       "itemCondition": "",
       "effectCondition": "",
       "AoETargetType": "any",
       "AoETargetTypeIncludeSelf": true,
       "autoTarget": "default",
-      "removeAttackDamageButtons": "default",
       "reactionCondition": "",
       "otherCondition": ""
     },
@@ -213,13 +199,14 @@
       "concentration": false,
       "toggleEffect": false,
       "ignoreTotalCover": false,
-      "confirmTargets": "never",
+      "confirmTargets": "default",
       "noConcentrationCheck": false,
       "idr": false,
       "idi": false,
       "idv": false,
       "ida": false
     },
+    "core": {},
     "dnd5e": {
       "riders": {
         "activity": [],
@@ -228,25 +215,22 @@
     },
     "chris-premades": {
       "info": {
-        "identifier": "dash",
+        "name": "Fall",
+        "identifier": "fall",
         "source": "chris-premades",
         "rules": "modern",
-        "version": "1.3.34",
-        "hasAnimation": true
+        "version": "1.3.115"
       },
       "macros": {
         "midi": {
           "item": [
-            "dash"
+            "fall"
           ]
         }
       }
-    },
-    "tidy5e-sheet": {
-      "section": "Actions"
     }
   },
   "folder": null,
-  "_id": "Wetf6E6OMwGsOl1B",
-  "_key": "!items!Wetf6E6OMwGsOl1B"
+  "_id": "VtsBE8CamRjWudlZ",
+  "_key": "!items!VtsBE8CamRjWudlZ"
 }

@@ -16,7 +16,7 @@ async function apply(actor, item, options = {startsOutOfAir: false, parentEffect
     let conMod = actor.system.abilities.con.mod;
     let effectData = {
         name: genericUtils.translate('CHRISPREMADES.Macros.Suffocation.Name.HoldingBreath'),
-        img: item?.system?.icon ?? 'icons/magic/water/bubbles-air-water-blue.webp',
+        img: item?.system?.icon ?? 'icons/magic/air/wind-tornado-funnel-blue.webp',
         origin: item.document ? item.document.uuid : item.uuid,
         duration: {
             seconds: Math.max((conMod + 1 ) * 60, 30)
@@ -46,7 +46,7 @@ async function holdingBreathDeleted({trigger: {entity}}) {
 async function outOfAirApply(actor, item, options = {parentEntity: {}}) {
     let effectData = {
         name: genericUtils.translate('CHRISPREMADES.Macros.Suffocation.Name.OutOfAir'),
-        img: item?.system?.icon ?? 'icons/magic/water/bubbles-air-water-blue.webp',
+        img: item?.system?.icon ?? 'icons/magic/air/wind-tornado-funnel-blue.webp',
         origin: item.document ? item.document.uuid : item.uuid,
         duration: {
             seconds: 86400
@@ -99,7 +99,10 @@ export let suffocation = {
             macro: holdingBreathDeleted,
             priority: 50
         }
-    ]
+    ],
+    utilFunctions: {
+        apply
+    }
 };
 export let suffocationOutOfAir = {
     name: 'Suffocation End',
@@ -120,4 +123,3 @@ export let suffocationOutOfAir = {
         }
     ]
 };
-export let _suffocationApply = apply;

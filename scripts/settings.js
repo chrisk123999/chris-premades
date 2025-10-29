@@ -606,6 +606,16 @@ export function registerSettings() {
     });
     oldAddActions = genericUtils.getCPRSetting('addActions');
     addSetting({
+        key: 'actionMode',
+        type: Number,
+        default: 0,
+        category: 'mechanics',
+        choices: {
+            0: 'CHRISPREMADES.Settings.actionMode.0',
+            1: 'CHRISPREMADES.Settings.actionMode.1'
+        }
+    });
+    addSetting({
         key: 'manualRollsEnabled',
         type: Boolean,
         default: false,

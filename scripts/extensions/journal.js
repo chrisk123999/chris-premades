@@ -45,7 +45,7 @@ export async function setupJournal() {
             });
         }
     }
-    let featurePacks = [...Object.values(constants.featurePacks), constants.packs.actions, ...Object.values(constants.modernFeaturePacks)];
+    let featurePacks = [...Object.values(constants.featurePacks), constants.packs.actions, constants.modernPacks.actions, ...Object.values(constants.modernFeaturePacks)];
     for (let i of featurePacks) {
         let pack = game.packs.get(i);
         if (!pack) {
