@@ -2574,6 +2574,7 @@
             "Critical": "Critical",
             "Failure": "Failure",
             "Fumble": "Fumble",
+            "FunctionError": "Nested recursive rolls are not supported. Please do something else.",
             "HasModifers": "Roll has modifiers",
             "Hit": "Hit",
             "Miss": "Miss",
@@ -2582,6 +2583,7 @@
                 "Label": "Quick Buttons",
                 "Tooltip": "Shortcuts to complete the roll with the desired result"
             },
+            "ResolveError": "No result found for term, please go to the CPR discord server to report this.",
             "Success": "Success"
         },
         "Mastery": {

@@ -6,7 +6,7 @@ async function use({trigger, workflow}) {
     let rollTotal = workflow.utilityRolls[0]?.total;
     if (!rollTotal) return;
     let itemActivities = workflow.item.system.activities;
-    let rolledActivities = itemActivities.filter(i => (i.name.includes(String(rollTotal)) && (i.id != workflow.activity.id)));
+    let rolledActivities = itemActivities.filter(i => (new RegExp(`(?<!\\d)${rollTotal}(?!\\d)`).test(i.name)) && (i.id != workflow.activity.id));
     if (!rolledActivities.length) genericUtils.notify(genericUtils.format('CHRISPREMADES.Macros.RollForActivity.Error', {name: workflow.item.name, total: rollTotal}), 'error');
     if (config.reroll && !rolledActivities.filter(i => i.uses?.value != 0).length) {
         await workflowUtils.syntheticActivityRoll(workflow.activity, workflow.targets);

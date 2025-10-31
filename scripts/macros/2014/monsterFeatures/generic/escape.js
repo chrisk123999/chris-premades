@@ -6,9 +6,7 @@ async function use({workflow}) {
     let config = itemUtils.getGenericFeatureConfig(workflow.item, 'escape');
     let activities = config.activities;
     if (activities?.length && !activities.includes(workflow.activity.id)) return;
-    console.log('here 1');
     if (config.maxSize && config.maxSize != 'none' && !actorUtils.compareSize(targetToken, config.maxSize, '<=')) return;
-    console.log('here 2');
     let triggerActivities = config.triggerActivities.map(i => workflow.item.system.activities.find(j => j.id === i));
     for (let i of triggerActivities) {
         await workflowUtils.syntheticActivityRoll(i, [workflow.hitTargets.first()]);

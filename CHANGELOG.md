@@ -1,3 +1,11 @@
+# 1.3.117 Release:
+## Bug Fixes:
+- Manual Rolls and function terms (ie rolling hit die)
+- Roll for Activity Generic Feature
+## Update Notes:
+- The following are now client settings: Enable Animations, Custom UI Button Scale, Custom UI Navigation Scale, Custom Sidebar, Custom Chat Messages
+- You will need to re-set the above UI settings
+  
 # 1.3.116 Release:
 ## New Legacy Content:
 - Forest Sage
