@@ -99,7 +99,7 @@ async function targetApplyDamaged({trigger: {entity: effect}, workflow, ditem}) 
         genericUtils.setProperty(featureData, 'flags.chris-premades.protectiveBond', true);
         let position = await crosshairUtils.aimCrosshair({
             token, 
-            maxRange: 5, 
+            maxRange: genericUtils.convertDistance(5), 
             centerpoint: targetToken.center, 
             drawBoundries: true, 
             trackDistance: true, 

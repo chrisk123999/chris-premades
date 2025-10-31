@@ -206,7 +206,7 @@
       "rollAttackPerTarget": "default",
       "removeAttackDamageButtons": "default",
       "itemCondition": "",
-      "reactionCondition": "reaction === 'isDamaged' && computeDistance(tokenUuid, targetUuid) <= 30 && canSee(targetUuid, tokenUuid)",
+      "reactionCondition": "reaction === 'isDamaged' && computeDistance(tokenUuid, targetUuid) <= chrisPremades.utils.genericUtils.convertDistance(30) && canSee(targetUuid, tokenUuid)",
       "effectCondition": "",
       "AoETargetType": "any",
       "AoETargetTypeIncludeSelf": true,
