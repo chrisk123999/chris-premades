@@ -606,6 +606,16 @@ export function registerSettings() {
     });
     oldAddActions = genericUtils.getCPRSetting('addActions');
     addSetting({
+        key: 'actionMode',
+        type: Number,
+        default: 0,
+        category: 'mechanics',
+        choices: {
+            0: 'CHRISPREMADES.Settings.actionMode.0',
+            1: 'CHRISPREMADES.Settings.actionMode.1'
+        }
+    });
+    addSetting({
         key: 'manualRollsEnabled',
         type: Boolean,
         default: false,
@@ -672,7 +682,8 @@ export function registerSettings() {
         key: 'enableAnimations',
         type: Boolean,
         default: true,
-        category: 'general'
+        category: 'general',
+        scope: 'client'
     });
     addSetting({
         key: 'movementPerformance',
@@ -959,28 +970,32 @@ export function registerSettings() {
         type: Number,
         default: 1,
         category: 'interface',
-        onChange: (value) => ui.setBodyProperty('--custom-ui-button-scale', value)
+        onChange: (value) => ui.setBodyProperty('--custom-ui-button-scale', value),
+        scope: 'client'
     });
     addSetting({
         key: 'customUINavigationScale',
         type: Number,
         default: 1,
         category: 'interface',
-        onChange: (value) => ui.setBodyProperty('--custom-ui-navigation-scale', value)
+        onChange: (value) => ui.setBodyProperty('--custom-ui-navigation-scale', value),
+        scope: 'client'
     });
     addSetting({
         key: 'customSidebar',
         type: Boolean,
         default: false,
         category: 'interface',
-        onChange: (value) => ui.customSidebar(value)
+        onChange: (value) => ui.customSidebar(value),
+        scope: 'client'
     });
     addSetting({
         key: 'customChatMessage',
         type: Boolean,
         default: false,
         category: 'interface',
-        onChange: (value) => ui.customChatMessage(value)
+        onChange: (value) => ui.customChatMessage(value),
+        scope: 'client'
     });
     addSetting({
         key: 'disableSettingsWarning',
@@ -1011,7 +1026,8 @@ export function registerMenus() {
     addMenu({
         key: 'general',
         icon: 'fas fa-gears',
-        type: getSettingsClass('general')
+        type: getSettingsClass('general'),
+        restricted: false
     });
     addMenu({
         key: 'dialog',
@@ -1021,7 +1037,8 @@ export function registerMenus() {
     addMenu({
         key: 'interface',
         icon: 'fas fa-display',
-        type: getSettingsClass('interface')
+        type: getSettingsClass('interface'),
+        restricted: false
     });
     addMenu({
         key: 'compendium',

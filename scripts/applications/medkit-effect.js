@@ -126,6 +126,11 @@ export class EffectMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
                             label: 'CHRISPREMADES.Medkit.Effect.SpecialDuration.MoveFinished',
                             value: 'moveFinished',
                             isSelected: effect.flags['chris-premades']?.specialDuration?.includes('moveFinished')
+                        },
+                        {
+                            label: 'CHRISPREMADES.Medkit.Effect.SpecialDuration.ZeroSpeed',
+                            value: 'zeroSpeed',
+                            isSelected: effect.flags['chris-premades']?.specialDuration?.includes('zeroSpeed')
                         }
                     ].concat(CONFIG.statusEffects.map(i => ({
                         label: i.name,

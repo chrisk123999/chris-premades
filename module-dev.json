@@ -331,6 +331,13 @@
       "path": "packs/cpr-3rd-party-spells",
       "type": "Item",
       "module": "chris-premades"
+    },
+    {
+      "name": "CPRThirdPartySpells2024",
+      "label": "CPR 3rd Party Spells (2024)",
+      "path": "packs/cpr-3rd-party-spells-2024",
+      "type": "Item",
+      "module": "chris-premades"
     }
   ],
   "packFolders": [
@@ -377,7 +384,9 @@
             "CPRFeatFeatures2024",
             "CPRActions2024",
             "CPRFeatureItems2024",
-            "CPRThirdPartyClassFeatures2024"
+            "CPRThirdPartyClassFeatures2024",
+            "CPRMonsterFeatures2024",
+            "CPRThirdPartySpells2024"
           ]
         }
       ],

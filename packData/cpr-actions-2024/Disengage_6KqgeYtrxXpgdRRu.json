@@ -289,6 +289,9 @@
           ]
         }
       }
+    },
+    "tidy5e-sheet": {
+      "section": "Actions"
     }
   },
   "folder": null,

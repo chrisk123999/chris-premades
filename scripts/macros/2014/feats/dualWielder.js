@@ -1,12 +1,11 @@
 import {effectUtils, genericUtils} from '../../../utils.js';
-
 async function change({trigger: {item}}) {
     if (item.type !== 'weapon' && item.type !== 'equipment') return;
     let actor = item.actor;
     if (!actor) return;
     let effect = effectUtils.getEffectByIdentifier(actor, 'dualWielder');
     if (!effect) return;
-    let items = actor.items.filter(i => i.system.equipped && i.type === 'weapon' && item.system.actionType === 'mwak');
+    let items = actor.items.filter(i => i.system.equipped && i.type === 'weapon' && i.system.attackType === 'melee');
     let shields = actor.items.filter(i => i.system.equipped && i.system.type?.value === 'shield');
     if (shields.length) {
         if (!effect.disabled) await genericUtils.update(effect, {disabled: true});

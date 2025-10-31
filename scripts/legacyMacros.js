@@ -568,6 +568,7 @@ export {shove} from './macros/2014/actions/shove.js';
 export {squeeze} from './macros/2014/actions/squeeze.js';
 export {stabilize} from './macros/2014/actions/stabilize.js';
 export {underwater, underwaterEffect} from './macros/2014/actions/underwater.js';
+export {genericActions} from './macros/2014/actions/genericActions.js';
 // Feats
 export {aberrantDragonmark} from './macros/2014/feats/aberrantDragonmark.js';
 export {bulwark} from './macros/2014/feats/bulwark.js';
@@ -598,6 +599,7 @@ export {stoneThrow} from './macros/2014/feats/stoneThrow.js';
 export {strikeOfTheGiants, cloudStrike, fireStrike, frostStrike, hillStrike, stoneStrike, stormStrike} from './macros/2014/feats/strikeOfTheGiants.js';
 export {tavernBrawler, tavernBrawlerUnarmedStrike} from './macros/2014/feats/tavernBrawler.js';
 export {telekineticShove} from './macros/2014/feats/telekinetic.js';
+export {forestSage} from './macros/2014/feats/forestSage.js';
 // Items
 export {allPurposeTool1, allPurposeTool2, allPurposeTool3} from './macros/2014/items/trinket/allPurposeTool.js';
 export {armorOfSafeguardingP, armorOfSafeguardingC, armorOfSafeguardingR, armorOfSafeguardingS} from './macros/2014/items/armor/armorOfSafeguarding.js';

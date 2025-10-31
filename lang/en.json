@@ -220,6 +220,7 @@
             "PromptToUse": "Prompt to use:",
             "Range": "Range:",
             "RealDarkness": "Use Real Darkness:",
+            "Rules": "Rules:",
             "SaveAbilities": "Save Abilities:",
             "SaveDC": "Save DC:",
             "Saves": "Saves:",
@@ -228,6 +229,7 @@
             "ShowIcon": "Always Show Aura Icon",
             "ShowRoll": "Show Roll:",
             "SimultaneousUses": "Simultaneous Uses:",
+            "SizeLimit": "Size Limit:",
             "Skills": "Skills:",
             "Sound": "Sound:",
             "SpecificAnimation": "{option} Animation:",
@@ -838,6 +840,9 @@
                 "WeapToolProf": "Weapon/Tool Proficiency",
                 "Which": "Select proficiencies:"
             },
+            "Attack": {
+                "SelectWeapon": "Select a weapon or unarmed strike:"
+            },
             "AuraDamage": {
                 "Name": "Damaging Aura"
             },
@@ -1434,6 +1439,9 @@
             "FocusedAim": {
                 "Bonus": "Yes ({kiCost} Ki / +{bonus} to hit)"
             },
+            "ForestGuard": {
+                "NoShrub": "No shrubs are nearby the target!"
+            },
             "ForkedTongue": {
                 "SelectLanguages": "Select your known languages:"
             },
@@ -1447,6 +1455,13 @@
                 "AvertEffect": "Averted Eyes",
                 "AvertSelect": "Avert your eyes from the {tokenName}?",
                 "Name": "Gaze"
+            },
+            "GenericActions": {
+                "Legacy": "Legacy",
+                "Modern": "Modern",
+                "Name": "Generic Actions",
+                "Select": "Select a generic action:",
+                "System": "System"
             },
             "GenericTeleport": {
                 "Name": "Teleport"
@@ -1613,6 +1628,17 @@
                 "ExtraDamage": "Apply extra 1d6 lightning damage?",
                 "LightningLauncher": "Infiltrator Armor: Lightning Launcher"
             },
+            "Influence": {
+                "Attitude": "What is the monster's attitude?",
+                "Friendly": "Friendly",
+                "Hesitant": "Hesitant",
+                "Hostile": "Hostile",
+                "HowWilling": "How willing is the monster?",
+                "Indifferent": "Indifferent",
+                "Skill": "Which skill will be used to influence the monster?",
+                "Unwilling": "Unwilling",
+                "Willing": "Willing"
+            },
             "InfuseItem": {
                 "AlreadyServant": "You already have a Homunculus Servant active!",
                 "ArcanePropulsionArmor": "Arcane Propulsion Armor",
@@ -1735,6 +1761,10 @@
             },
             "MageHand": {
                 "TooFar": "Mage Hand distance is too far away, dismiss?"
+            },
+            "Magic": {
+                "MagicItem": "Select a magic item:",
+                "SelectSpell": "Select a spell:"
             },
             "MagicMissile": {
                 "Bolt": "Magic Missile Bolt",
@@ -2432,7 +2462,7 @@
             },
             "Underwater": {
                 "TooFar": "Target is too far away while underwater!",
-                "Underwater": "Underwater"
+                "Underwater": "Disadvantage: Underwater"
             },
             "UpcastTargets": {
                 "Select": "Too many targets selected! Please select up to {maxTargets} targets."
@@ -2544,6 +2574,7 @@
             "Critical": "Critical",
             "Failure": "Failure",
             "Fumble": "Fumble",
+            "FunctionError": "Nested recursive rolls are not supported. Please do something else.",
             "HasModifers": "Roll has modifiers",
             "Hit": "Hit",
             "Miss": "Miss",
@@ -2552,6 +2583,7 @@
                 "Label": "Quick Buttons",
                 "Tooltip": "Shortcuts to complete the roll with the desired result"
             },
+            "ResolveError": "No result found for term, please go to the CPR discord server to report this.",
             "Success": "Success"
         },
         "Mastery": {
@@ -2682,7 +2714,8 @@
                     "Succeed": "Succeeded {toolName} Check",
                     "TempHP": "Zero Temporary Hitpoints",
                     "TempMaxHP": "Zero Temporary Max Hitpoints",
-                    "Tooltip": "Selected conditions will remove the effect."
+                    "Tooltip": "Selected conditions will remove the effect.",
+                    "ZeroSpeed": "Zero Speed"
                 },
                 "templateEffectActivities": {
                     "Label": "Template Effect",
@@ -2898,6 +2931,12 @@
                 "4": "Gamemaster"
             },
             "SelectCompendium": "Select a compendium:",
+            "actionMode": {
+                "0": "Multiple Items",
+                "1": "One Item",
+                "Hint": "Should generic actions should be added as one item or multiple.",
+                "Name": "Generic Action Mode"
+            },
             "activityCSSTweak": {
                 "Hint": "When enabled, activities will have all their information one tab.",
                 "Name": "Activities CSS Tweak"
@@ -3390,6 +3429,7 @@
                 "FlamingSphere": "Flaming Sphere",
                 "Flumph": "Flumph",
                 "ForceSculpture": "Force Sculpture",
+                "ForestGuard": "Forest Guard",
                 "FormOfDread": "Form of Dread",
                 "GuardianOfFaith": "Guardian of Faith",
                 "HealingSpirit": "Healing Spirit",

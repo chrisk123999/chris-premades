@@ -164,6 +164,7 @@ export function registerHooks() {
 
         // CPR special duration
         Hooks.on('updateActor', effects.specialDurationHitPoints);
+        Hooks.on('updateActor', effects.specialDurationZeroSpeed);
         Hooks.on('dnd5e.rollToolCheckV2', effects.specialDurationToolCheck);
 
         // Aura prep

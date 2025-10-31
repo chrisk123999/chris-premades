@@ -195,7 +195,7 @@ export class CPRSingleRollResolver extends HandlebarsApplicationMixin(Applicatio
                 let total = genericUtils.duplicate(originalTotal);
                 let dice = (this.roll.terms.reduce((dice, die) => {
                     if (die instanceof CONFIG.Dice.termTypes.DiceTerm) {
-                        let dieAmount = (die.options.advantageMode !== 0) ? 1 : die.number;
+                        let dieAmount = (die?.options?.advantageMode ?? 0) !== 0 ? 1 : die.number; // need to support negative dice rolls....
                         dice.max += (die.faces * dieAmount);
                         for (let i = 0; i < dieAmount; i++) {
                             dice.terms.push(die.faces);
@@ -206,6 +206,37 @@ export class CPRSingleRollResolver extends HandlebarsApplicationMixin(Applicatio
                         if (!genericUtils.getCPRSetting('manualRollsInputDiceOnly')) {
                             total -= (die.number * dice.multiplier);
                         }
+                    } else if (die instanceof CONFIG.Dice.termTypes.FunctionTerm) { // we're just hoping that numeric only function terms will have already been evaluated...
+                        if (die.dice.length > 1) {
+                            let content = 'CPR Roll Resolver | Math functions with multiple dice are not currently supported, dice will be rolled digitally.';
+                            console.error(content);
+                            genericUtils.notify(content, 'error');
+                        }
+                        let primaryRoll = die.rolls.find(i => i.terms.some(j => j instanceof CONFIG.Dice.termTypes.DiceTerm));
+                        let termId = foundry.utils.randomID();
+                        genericUtils.setProperty(primaryRoll, 'options.primaryFunctionRoll', termId);
+                        let innerMultiplier = 1;
+                        primaryRoll.terms.forEach(innerDie => {
+                            if (innerDie instanceof CONFIG.Dice.termTypes.DiceTerm) {
+                                genericUtils.setProperty(innerDie, 'options.primaryFunctionRoll', termId);
+                                let innerDieAmount = (innerDie?.options?.advantageMode ?? 0) !== 0 ? 1 : innerDie.number;
+                                dice.max += (innerDie.faces * innerDieAmount);
+                                for (let i = 0; i < innerDieAmount; i++) {
+                                    dice.terms.push(innerDie.faces);
+                                }
+                            } else if (innerDie instanceof CONFIG.Dice.termTypes.OperatorTerm) {
+                                innerMultiplier = innerDie.operator === '-' ? -1 : 1;
+                            } else if (innerDie instanceof CONFIG.Dice.termTypes.NumericTerm) {
+                                if (!genericUtils.getCPRSetting('manualRollsInputDiceOnly')) {
+                                    let bonus = innerDie.number * innerMultiplier;
+                                    total -= bonus;
+                                }
+                            } else if (innerDie instanceof CONFIG.Dice.termTypes.FunctionTerm) {
+                                let content = 'CPR Roll Resolver | ' + genericUtils.translate('CHRISPREMADES.ManualRolls.FunctionError');
+                                console.error(content);
+                                genericUtils.notify(content, 'error');
+                            }
+                        });
                     }
                     return dice;
                 }, {terms: [], max: 0, multiplier: 1}));
@@ -216,25 +247,35 @@ export class CPRSingleRollResolver extends HandlebarsApplicationMixin(Applicatio
                 } else results = (dice.terms.reduce((results, number) => {
                     results.diceLeft -= 1;
                     if (number + results.diceLeft <= total) {
+                        genericUtils.log('dev', 'Roll Resolver Single - max amount for d' + number);
                         let value = ((number === this.roll?.options?.critical) && (total != dice.max)) ? number - 1 : number;
                         results.diceArray.push({faces: number, result: value});
                         total -= value;
                     } else if (1 + results.diceLeft >= total) {
+                        genericUtils.log('dev', 'Roll Resolver Single - min amount for d' + number);
                         results.diceArray.push({faces: number, result: 1});
                         total -= 1;
                     } else {
+                        genericUtils.log('dev', 'Roll Resolver Single - middle amount for d' + number);
                         results.diceArray.push({faces: number, result: total - results.diceLeft}); // 5 - 2 = 3
                         total = results.diceLeft;
                     }
                     return results;
                 }, {diceLeft: dice.terms.length, diceArray: []})).diceArray;
-                for ( let [rollId, total] of Object.entries(formData.object) ) {
+                for ( let [rollId, total] of Object.entries(formData.object) ) { // why is this even here??
                     this.fulfillable.forEach(({term}) => {
                         for (let i = term.results.length; i != term.number; i++) {
                             let index = results.findIndex(i => i.faces === term.faces);
-                            let useLast = index === -1;
+                            let useLast = index === -1; // we have no more results for this die, use the last result.
                             let result = useLast ? term.results.at(-1)?.result : results[index]?.result;
-                            const roll = { result: result, active: !useLast };
+                            if (!result) {
+                                result = term?.randomFace() ?? 1;
+                                useLast = false;
+                                let content = 'CPR Roll Resolver | ' + genericUtils.translate('CHRISPREMADES.ManualRolls.ResolveError');
+                                console.error(content);
+                                genericUtils.notify(content, 'error');
+                            }
+                            const roll = { result: result, active: !useLast }; // active means if we should use this dice or not in calculations
                             term.results.push(roll);
                             if (!useLast) results.splice(index, 1);
                         }

@@ -43,11 +43,27 @@ export {undeadFortitude} from './macros/2014/monsterFeatures/generic/undeadForti
 export {cleaveMastery, grazeMastery, pushMastery, sapMastery, slowMastery, toppleMastery, vexMastery} from './macros/2024/mechanics/masteries.js';
 export {invisible} from './macros/2024/mechanics/invisible.js';
 // Actions
+export {attack} from './macros/2024/actions/attack.js';
 export {suffocation, suffocationOutOfAir} from './macros/2024/actions/suffocation.js';
 export {dash} from './macros/2024/actions/dash.js';
 export {hide, hideEffect} from './macros/2024/actions/hide.js';
 export {disengage} from './macros/2024/actions/disengage.js';
 export {jump} from './macros/2024/actions/jump.js';
+export {dodge} from './macros/2024/actions/dodge.js';
+export {help} from './macros/2024/actions/help.js';
+export {influence} from './macros/2024/actions/influence.js';
+export {magic} from './macros/2024/actions/magic.js';
+export {ready} from './macros/2024/actions/ready.js';
+export {search} from './macros/2024/actions/search.js';
+export {study} from './macros/2024/actions/study.js';
+export {utilize} from './macros/2024/actions/utilize.js';
+export {checkCover} from './macros/2024/actions/checkCover.js';
+export {fall} from './macros/2024/actions/fall.js';
+export {stabilize} from './macros/2024/actions/stabilize.js';
+export {squeeze} from './macros/2024/actions/squeeze.js';
+export {underwater, underwaterEffect} from './macros/2024/actions/underwater.js';
+export {knockOut, knockOutEffect} from './macros/2024/actions/knockOut.js';
+export {genericActions} from './macros/2024/actions/genericActions.js';
 // Generic
 export {proneOnFail} from './macros/2024/generic/proneOnFail.js';
 // Spells
@@ -179,6 +195,8 @@ export {timeStop, timeStopEffect} from './macros/2024/spells/timeStop.js';
 export {steelWindStrike} from './macros/2024/spells/steelWindStrike.js';
 export {mageHand, mageHandEffect} from './macros/2024/spells/mageHand.js';
 export {guidance} from './macros/2024/spells/guidance.js';
+export {sproutFoliage} from './macros/2024/spells/sproutFoliage.js';
+export {forestGuard, forestGuardTurnEffect, forestGuardEffect} from './macros/2024/spells/forestGuard.js';
 // Items
 export {healersKit} from './macros/2024/items/healersKit.js';
 export {unarmedStrike} from './macros/2024/items/misc/unarmedStrike.js';

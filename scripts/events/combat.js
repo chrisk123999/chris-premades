@@ -265,11 +265,11 @@ async function updateCombat(combat, changes, context) {
         await executeMacroPass([previousToken], 'turnEnd', undefined, details);
         await executeMacroPass(previousScene?.tokens ?? [], 'turnEndSource', previousToken, details);
     }
+    for (let token of allTokens) await executeMacroPass([token], 'everyTurn', undefined, details);
     if (currentToken) {
         await executeMacroPass([currentToken], 'turnStart', undefined, details);
         await executeMacroPass(currentScene?.tokens ?? [], 'turnStartSource', currentToken, details);
     }
-    for (let token of allTokens) await executeMacroPass([token], 'everyTurn', undefined, details);
     if (previousToken) await executeMacroPass(previousScene?.tokens.filter(i => i != previousToken) ?? [], 'turnEndNear', previousToken, details);
     if (currentToken) await executeMacroPass(currentScene?.tokens.filter(i => i != currentToken) ?? [], 'turnStartNear', currentToken, details);
 }

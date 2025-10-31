@@ -28,7 +28,8 @@ let itemPacks = [
     'cpr-feature-items-2024',
     'cpr-3rd-party-class-features-2024',
     'cpr-3rd-party-spells',
-    'cpr-monster-features-2024'
+    'cpr-monster-features-2024',
+    'cpr-3rd-party-spells-2024'
 ];
 let actorPacks = [
     'cpr-summons',

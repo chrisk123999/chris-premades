@@ -1,3 +1,53 @@
+# 1.3.117 Release:
+## Bug Fixes:
+- Manual Rolls and function terms (ie rolling hit die)
+- Roll for Activity Generic Feature
+## Update Notes:
+- The following are now client settings: Enable Animations, Custom UI Button Scale, Custom UI Navigation Scale, Custom Sidebar, Custom Chat Messages
+- You will need to re-set the above UI settings
+  
+# 1.3.116 Release:
+## New Legacy Content:
+- Forest Sage
+## Bug Fixes:
+- Dual Wielder
+
+# 1.3.115 Release:
+## New Modern Content:
+- Attack
+- Check Cover
+- Dodge
+- Fall
+- Help
+- Influence
+- Knock Out
+- Magic
+- Ready
+- Search
+- Squeeze
+- Stabilize
+- Study
+- Underwater
+## Update Notes:
+- Added a setting to have the add generic actions as one item instead of multiple.
+- Added support for modern generic actions to the automatic add generic actions setting.
+- Added a zero speed special duration to the CPR effect Medkit.
+## Bug Fixes:
+- Primal Companion (Modern)
+
+# 1.3.114 Release:
+## New Modern Content:
+- Forest Guard
+- Sprout Foliage
+## Bug Fixes:
+- CPR Description Journal
+## API Update Notes:
+- The `everyTurn` combat pass has been moved to trigger after `turnEnd` and before `turnStart` instead of after `turnStart`.
+
+# 1.3.113 Release:
+## Bug Fixes:
+- ACC Integration
+
 # 1.3.112 Release:
 ## Bug Fixes:
 - War God's Blessing

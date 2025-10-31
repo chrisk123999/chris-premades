@@ -1,4 +1,4 @@
-import {constants, genericUtils, itemUtils} from '../utils.js';
+import {compendiumUtils, constants, genericUtils, itemUtils} from '../utils.js';
 async function createToken(token, options, userId) {
     if (userId != game.user.id) return;
     let actorType = token.actor?.type;
@@ -17,17 +17,31 @@ async function createToken(token, options, userId) {
     } else if (mode === 8) {
         if (link) return;
     }
-    let pack = game.packs.get(constants.packs.actions);
-    if (!pack) return;
-    await pack.getDocuments();
-    let updates = await Promise.all(pack.contents.filter(i => !token.actor.items.getName(i.name)).map(async j => {
-        let itemData = genericUtils.duplicate(j.toObject());
-        delete itemData._id;
-        itemData.system.description.value = itemUtils.getItemDescription(itemData.name);
-        return itemData;
-    }));
-    if (!updates.length) return;
-    await itemUtils.createItems(token.actor, updates, {section: 'CHRISPREMADES.Generic.Actions'});
+    let rules = game.settings.get('dnd5e', 'rulesVersion') === 'modern' ? '2024' : '2014';
+    if (genericUtils.getCPRSetting('actionMode') === 1) {
+        let item = itemUtils.getItemByIdentifier(token.actor, 'genericActions');
+        if (item) return;
+        let packId = constants.packs.miscellaneous;
+        if (!game.packs.get(packId)) return;
+        let itemName = 'Generic Actions ' + '(' + rules + ')';
+        let itemData = await compendiumUtils.getItemFromCompendium(packId, itemName, {object: true, translate: 'CHRISPREMADES.Macros.GenericActions.Name'});
+        itemData.system.source.rules = rules;
+        await itemUtils.createItems(token.actor, [itemData], {section: 'CHRISPREMADES.Generic.Actions'});
+    } else {
+        let packId = rules === '2024' ? constants.modernPacks.actions : constants.packs.actions;
+        let pack = game.packs.get(packId);
+        if (!pack) return;
+        await pack.getDocuments();
+        let updates = await Promise.all(pack.contents.filter(i => !token.actor.items.getName(i.name)).map(async j => {
+            let itemData = genericUtils.duplicate(j.toObject());
+            delete itemData._id;
+            itemData.system.description.value = itemUtils.getItemDescription(itemData.name);
+            return itemData;
+        }));
+        if (!updates.length) return;
+        await itemUtils.createItems(token.actor, updates, {section: 'CHRISPREMADES.Generic.Actions'});
+    }
+    
 }
 export let actions = {
     createToken

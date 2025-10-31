@@ -1,5 +1,5 @@
-import {_suffocationApply} from '../../../2024/actions/suffocation.js';
 import {actorUtils, itemUtils} from '../../../../utils.js';
+import {suffocation} from '../../../2024/actions/suffocation.js';
 async function use({trigger: {entity}, workflow}) {
     if (!workflow.targets) return;
     let config = itemUtils.getGenericFeatureConfig(workflow.item, 'suffocate');
@@ -8,7 +8,7 @@ async function use({trigger: {entity}, workflow}) {
     await Promise.all(workflow.targets.map(async i => {
         let effect = actorUtils.getEffects(i.actor).find(j => workflow.activity.effects.map(i => i.effect.uuid).includes(j.origin));
         if (!effect) return;
-        await _suffocationApply(i.actor, entity, {parentEffect: effect, startsOutOfAir: config.startsOutOfAir});
+        await suffocation.utilFunctions.apply(i.actor, entity, {parentEffect: effect, startsOutOfAir: config.startsOutOfAir});
     }));
 }
 export let suffocate = {

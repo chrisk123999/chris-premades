@@ -1,3 +1,4 @@
+import {effects} from '../extensions/effects.js';
 import {actorUtils, effectUtils, genericUtils, itemUtils, macroUtils, regionUtils, socketUtils, templateUtils} from '../utils.js';
 import {custom} from './custom.js';
 function getItemMacroData(item) {

@@ -100,6 +100,7 @@ async function createActiveEffect(effect, options, userId) {
     await executeMacroPass(effect, 'created', options);
     if (effect.statuses.has('dead')) await death.executeMacroPass(effect.parent, 'dead');
     if (effect.statuses.size) await effects.specialDurationConditions(effect);
+    if (effect.parent instanceof Actor && effect.changes.find(change => change.key.includes('system.attributes.movement.'))) await effects.specialDurationZeroSpeed(effect.parent);
 }
 async function deleteActiveEffect(effect, options, userId) {
     if (!socketUtils.isTheGM()) return;
