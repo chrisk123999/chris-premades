@@ -26,7 +26,7 @@ async function createToken(token, options, userId) {
         let itemName = 'Generic Actions ' + '(' + rules + ')';
         let itemData = await compendiumUtils.getItemFromCompendium(packId, itemName, {object: true, translate: 'CHRISPREMADES.Macros.GenericActions.Name'});
         itemData.system.source.rules = rules;
-        await itemUtils.createItems(token.actor, [itemData], {section: 'CHRISPREMADES.Generic.Actions'});
+        await itemUtils.createItems(token.actor, [itemData], {section: genericUtils.translate('CHRISPREMADES.Generic.Actions')});
     } else {
         let packId = rules === '2024' ? constants.modernPacks.actions : constants.packs.actions;
         let pack = game.packs.get(packId);
@@ -39,7 +39,7 @@ async function createToken(token, options, userId) {
             return itemData;
         }));
         if (!updates.length) return;
-        await itemUtils.createItems(token.actor, updates, {section: 'CHRISPREMADES.Generic.Actions'});
+        await itemUtils.createItems(token.actor, updates, {section: genericUtils.translate('CHRISPREMADES.Generic.Actions')});
     }
     
 }
