@@ -1,6 +1,6 @@
 import {custom} from '../../../events/custom.js';
 import {combatUtils} from '../../../lib/utilities/combatUtils.js';
-import {actorUtils, compendiumUtils, constants, dialogUtils, effectUtils, genericUtils, itemUtils, tokenUtils, workflowUtils} from '../../../utils.js';
+import {activityUtils, actorUtils, compendiumUtils, constants, dialogUtils, effectUtils, genericUtils, tokenUtils, workflowUtils} from '../../../utils.js';
 function perTurnCheck(actor, mastery) {
     if (!combatUtils.inCombat()) return true;
     let previousTurn = actor.flags['chris-premades']?.mastery?.[mastery]?.turn;
@@ -117,7 +117,7 @@ async function topple({workflow}) {
     if (!workflow.hitTargets.size) return;
     let selection = await dialogUtils.confirm('CHRISPREMADES.Mastery.Topple.Name', 'CHRISPREMADES.Mastery.Topple.Context');
     if (!selection) return;
-    let featureData = await compendiumUtils.getItemFromCompendium(constants.packs.miscellaneousItems, 'Mastery: Topple', {object: true, getDescription: true, flatDC: itemUtils.getSaveDC(workflow.item)});
+    let featureData = await compendiumUtils.getItemFromCompendium(constants.packs.miscellaneousItems, 'Mastery: Topple', {object: true, getDescription: true, flatDC: activityUtils.getSaveDC(workflow.activity)});
     await workflowUtils.syntheticItemDataRoll(featureData, workflow.actor, [workflow.targets.first()]);
 }
 async function vex({workflow}) {

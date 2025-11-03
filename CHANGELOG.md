@@ -1,3 +1,7 @@
+# 1.3.118 Release:
+## Bug Fixes:
+- Topple
+
 # 1.3.117 Release:
 ## Bug Fixes:
 - Manual Rolls and function terms (ie rolling hit die)
