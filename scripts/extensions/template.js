@@ -1,5 +1,5 @@
 import {custom} from '../events/custom.js';
-import {actorUtils, effectUtils, genericUtils, macroUtils, templateUtils} from '../utils.js';
+import {actorUtils, genericUtils, templateUtils} from '../utils.js';
 function preCreateMeasuredTemplate(template, updates, options, userId) {
     let originActivityUuid = genericUtils.getProperty(template, 'flags.dnd5e.origin');
     if (!originActivityUuid) return;
@@ -84,11 +84,15 @@ async function templateEffectCreated(template) {
     if (!tokens.size) return;
     for (let token of tokens) await templateEffectTokenEnter(template, token);
 }
+async function preUpdateMeasuredTemplate(template, updates, options, userId) {
+    if (updates.x || updates.y) genericUtils.setProperty(options, 'chris-premades.oldPosition', {x: template.x, y: template.y});
+}
 export let template = {
     preCreateMeasuredTemplate,
     templateEffectTokenEnter,
     templateEffectTokenLeave,
     templateEffectMoved,
     templateEffectDeleted,
-    templateEffectCreated
+    templateEffectCreated,
+    preUpdateMeasuredTemplate
 };

@@ -30,7 +30,7 @@ async function setSaveDC(effect, dc) {
     data.saveDC = dc;
     await setCastData(effect, data);
 }
-async function createEffect(entity, effectData, {concentrationItem, parentEntity, identifier, vae, interdependent, strictlyInterdependent, unhideActivities, rules, macros, conditions, animate = true, tokenImg, avatarImg, tokenImgPriority = 50, avatarImgPriority = 50} = {}, {animationPath, animationSize = 1, animationFadeIn = 300, animationFadeOut = 300, animationSound} = {}) {
+async function createEffect(entity, effectData, {concentrationItem, parentEntity, identifier, vae, interdependent, strictlyInterdependent, unhideActivities, rules, macros, conditions, animate = true, tokenImg, avatarImg, tokenImgPriority = 50, avatarImgPriority = 50, keepId = false} = {}, {animationPath, animationSize = 1, animationFadeIn = 300, animationFadeOut = 300, animationSound} = {}) {
     let hasPermission = socketUtils.hasPermission(entity, game.user.id);
     let concentrationEffect;
     if (concentrationItem) concentrationEffect = getConcentrationEffect(concentrationItem.actor, concentrationItem);
@@ -61,11 +61,11 @@ async function createEffect(entity, effectData, {concentrationItem, parentEntity
     }
     let effects;
     if (hasPermission) {
-        effects = await entity.createEmbeddedDocuments('ActiveEffect', [effectData]);
+        effects = await entity.createEmbeddedDocuments('ActiveEffect', [effectData], {keepId});
         if (concentrationEffect) await addDependent(concentrationEffect, effects);
         if (parentEntity) await addDependent(parentEntity, effects);
     } else {
-        effects = [await socket.executeAsGM(sockets.createEffect.name, entity.uuid, effectData, {concentrationItemUuid: concentrationItem?.uuid, parentEntityUuid: parentEntity?.uuid})];
+        effects = [await socket.executeAsGM(sockets.createEffect.name, entity.uuid, effectData, {concentrationItemUuid: concentrationItem?.uuid, parentEntityUuid: parentEntity?.uuid, keepId})];
         effects = await Promise.all(effects.map(async i => await fromUuid(i)));
     }
     if ((animationPath || animationSound) && effects.length) {

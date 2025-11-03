@@ -1,4 +1,4 @@
-import {itemUtils, rollUtils, workflowUtils} from '../../../../../utils.js';
+import {genericUtils, itemUtils, rollUtils, workflowUtils} from '../../../../../utils.js';
 async function heal({trigger, workflow}) {
     if (!workflow.targets.size || !workflow.item || !workflow.damageRolls) return;
     if (!(workflow.item.type === 'spell' || workflow.item.system.type?.value === 'spellfeature')) return;
@@ -7,11 +7,11 @@ async function heal({trigger, workflow}) {
     if (!workflowUtils.getDamageTypes(workflow.damageRolls).has('healing')) return;
     let damageRolls = await Promise.all(workflow.damageRolls.map(async i => {
         if (i.options.type != 'healing') return i;
-        let roll = await i.reroll({maximize: true});
-        return roll;
+        return await i.reroll({maximize: true});
     }));
     await workflow.setDamageRolls(damageRolls);
     await workflowUtils.completeItemUse(trigger.entity);
+    genericUtils.setProperty(workflow, 'chris-premades.maxHeal', true);
 }
 export let supremeHealing = {
     name: 'Supreme Healing',

@@ -93,8 +93,8 @@ async function rollDice(formula, {entity, chatMessage, flavor, mode = 'publicrol
 function rollDiceSync(formula, {entity, options: {strict = false, maximize = false, minimize = false} = {}} = {}) {
     return new Roll(formula, entity?.getRollData()).evaluateSync({strict, maximize, minimize});
 }
-async function damageRoll(formula, entity, options = {}) {
-    return await new CONFIG.Dice.DamageRoll(formula, entity.getRollData(), options).evaluate();
+async function damageRoll(formula, entity, options = {}, evaluateOptions = {}) {
+    return await new CONFIG.Dice.DamageRoll(formula, entity.getRollData(), options).evaluate(evaluateOptions);
 }
 async function addToRoll(roll, formula, {rollData} = {}) {
     let bonusRoll = await new Roll(String(formula), rollData).evaluate();

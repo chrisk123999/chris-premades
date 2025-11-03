@@ -134,6 +134,7 @@
                 "Water": "Water"
             },
             "ApplyFilter": "Apply Filter:",
+            "Arangement": "Arangement:",
             "ArmoTypes": "Armor Types:",
             "AttackBonus": "Attack Bonus:",
             "AvatarImg": "Avatar Image:",
@@ -152,19 +153,24 @@
                 "Blue02": "Blue (alt)",
                 "BlueGreen": "Blue & Green",
                 "BlueGrey": "Blue & Grey",
+                "BlueOrange": "Blue & Orange",
+                "BluePink": "Blue & Pink",
                 "BlueWhite": "Blue & White",
                 "BlueYellow": "Blue & Yellow",
                 "Cycle": "Cycle",
                 "DarkBlack": "Dark Black",
                 "DarkBlue": "Dark Blue",
                 "DarkGreen": "Dark Green",
+                "DarkGreenPurple": "Dark Green & Purple",
                 "DarkPink": "Dark Pink",
                 "DarkPurple": "Dark Purple",
+                "DarkPurpleRed": "Dark Purple & Red",
                 "DarkRed": "Dark Red",
                 "DarkWhiteBlue": "Dark White & Blue",
                 "Green": "Green",
                 "Green02": "Green (alt)",
                 "GreenOrange": "Green & Orange",
+                "GreenYellow": "Green & Yellow",
                 "Grey": "Grey",
                 "LightBlue": "Light Blue",
                 "LightGreen": "Light Green",
@@ -172,6 +178,7 @@
                 "OrangePurple": "Orange & Purple",
                 "Pink": "Pink",
                 "PinkPurple": "Pink & Purple",
+                "PinkYellow": "Pink & Yellow",
                 "Purple": "Purple",
                 "PurpleGreen": "Purple & Green",
                 "Rainbow": "Rainbow",
@@ -201,11 +208,13 @@
             "Expire": "Expiration:",
             "FailedSave": "Failed Save:",
             "Formula": "Formula:",
+            "Grids": "Grids",
             "HideToken": "Hide Token:",
             "HitPoints": "Hit Points:",
             "HitTarget": "Hit Target:",
             "IgnoredCreatureTypes": "Ignored Creature Types:",
             "ImmuneCreatures": "Immune Creature Types:",
+            "LineColor": "Line Color:",
             "MaxLevel": "Max Level:",
             "MaxSize": "Max Size:",
             "Multiplier": "Multiplier:",
@@ -234,6 +243,7 @@
             "Sound": "Sound:",
             "SpecificAnimation": "{option} Animation:",
             "SpellSchools": "Spell Schools:",
+            "StrandColor": "Strand Color:",
             "SubclassIdentifier": "Subclass Identifier:",
             "SummonerOnly": "Summoner Only:",
             "TintMap": "Tint Map:",
@@ -261,6 +271,10 @@
         },
         "CustomTypes": {
             "SpellFeature": "Spell Feature"
+        },
+        "DeckOfIllusions": {
+            "CardsAvailable": "Cards Available:",
+            "UnableToPickACard": "Unable to pick a valid card!"
         },
         "Dialog": {
             "DamageType": "What damage type?",
@@ -640,6 +654,7 @@
             "Check": "Ability Check",
             "CheckSpelling": "Check Spelling",
             "ChooseASpell": "Choose a spell:",
+            "Circle": "Circle",
             "Close": "Close",
             "ConditionResistance": {
                 "Description": "Condition Resistance to {condition}, roll at advantage to save. 1/true for all saves, or a comma-separated list of abilities (e.g. str,dex).",
@@ -661,6 +676,7 @@
             "Go": "Go",
             "Import": "Import",
             "Items": "Items",
+            "Length": "Length",
             "Max": "Max:",
             "MeleeSpells": "Melee Spell",
             "MeleeWeapons": "Melee Weapons",
@@ -696,6 +712,7 @@
             "Skill": "Skill Check",
             "Source": "Source",
             "Spells": "Spells",
+            "Star": "Star",
             "Submit": "Submit",
             "Success": "Success",
             "Summon": "Summon",
@@ -706,6 +723,7 @@
             "Uncontested": "Uncontested",
             "Update": "Update",
             "UseItem": "Use {item}?",
+            "Width": "Width",
             "Yes": "Yes",
             "You": "You"
         },
@@ -1056,12 +1074,40 @@
                 "Bounce": "Who should the spell bounce to?",
                 "TargetDamageSelection": "Per Target Damage Selection:"
             },
+            "CircleCast": {
+                "AbjColor": "Abjuration Color:",
+                "Circle": "(Circle Spell)",
+                "ConColor": "Conjuration Color:",
+                "Concentration": "You are at or past your concentration limit and can't assist this circle!",
+                "DivColor": "Divination Color:",
+                "EncColor": "Enchantment Color:",
+                "EvoColor": "Evocation Color:",
+                "IllColor": "Illusion Color:",
+                "MoreParticipants": "More participants are needed before you can do this!",
+                "NecColor": "Necromancy Color:",
+                "NoSpellSlots": "You do not have the required spell slots to assist this circle!",
+                "NotParticipant": "You are not a participant in this circle!",
+                "Safeguard": {
+                    "Message": "Place safe zones for Safeguard. Right click to finish early."
+                },
+                "SelectType": "Select an option:",
+                "TrsColor": "Transmutation Color:"
+            },
             "CircleOfTheLandSpells": {
                 "Arid": "Arid Land",
                 "ChooseLand": "Which Land?",
                 "Polar": "Polar Land",
                 "Temperate": "Temperate Land",
                 "Tropical": "Tropical Land"
+            },
+            "CircleSpell": {
+                "Augment": "Augment",
+                "Distribute": "Distribute",
+                "Expand": "Expand",
+                "Prolong": "Prolong",
+                "Safeguard": "Safeguard",
+                "Supplant": "Supplant",
+                "WidthOrLength": "Increase length or width?"
             },
             "CloudRune": {
                 "Reaction": "Use {item} to redirect the attack from {name}?"
@@ -3011,6 +3057,10 @@
                 "Hint": "When enabled, the module will check for updates once a day when a GM joins.",
                 "Name": "Check for Updates"
             },
+            "circleCast": {
+                "Hint": "Enable the Circle Casting mechanic from Forgotten Realms: Heroes of Faerûn.",
+                "Name": "Circle Casting"
+            },
             "classSpellList": {
                 "Hint": "Journal with all class spell lists configured.",
                 "Name": "Class Spell List Journal"
@@ -3018,7 +3068,7 @@
             "cleave": {
                 "1": "Enabled (Any Health)",
                 "2": "Enabled (Full Health Only)",
-                "Hint": "Enables cleave mechanic from the Dungeon Master's Guide",
+                "Hint": "Enables the cleave mechanic from the 2014 Dungeon Master's Guide",
                 "Name": "DMG Cleave"
             },
             "colorizeAutomatedAnimations": {

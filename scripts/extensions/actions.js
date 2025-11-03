@@ -18,6 +18,7 @@ async function createToken(token, options, userId) {
         if (link) return;
     }
     let rules = game.settings.get('dnd5e', 'rulesVersion') === 'modern' ? '2024' : '2014';
+    let circleCast = genericUtils.getCPRSetting('circleCast');
     if (genericUtils.getCPRSetting('actionMode') === 1) {
         let item = itemUtils.getItemByIdentifier(token.actor, 'genericActions');
         if (item) return;
@@ -38,6 +39,7 @@ async function createToken(token, options, userId) {
             itemData.system.description.value = itemUtils.getItemDescription(itemData.name);
             return itemData;
         }));
+        if (!circleCast) updates = updates.filter(i => i.name != 'Circle Cast');
         if (!updates.length) return;
         await itemUtils.createItems(token.actor, updates, {section: genericUtils.translate('CHRISPREMADES.Generic.Actions')});
     }

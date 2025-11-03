@@ -1,6 +1,7 @@
 import {custom} from './custom.js';
 import {genericUtils, macroUtils, socketUtils, templateUtils} from '../utils.js';
 import {template as templateExtension} from './../extensions/template.js';
+import {attach} from '../extensions/attach.js';
 function getTemplateMacroData(template) {
     return template.flags?.['chris-premades']?.macros?.template ?? [];
 }
@@ -93,6 +94,7 @@ async function updateMeasuredTemplate(template, updates, context, userId) {
     if (!socketUtils.isTheGM()) return;
     let moved = updates.x || updates.y;
     if (!moved) return;
+    await attach.updateAttachments(template, {x: template.x - context['chris-premades'].oldPosition.x, y: template.y - context['chris-premades'].oldPosition.y});
     await executeMacroPass([template], 'moved');
     await templateExtension.templateEffectMoved(template);
 }

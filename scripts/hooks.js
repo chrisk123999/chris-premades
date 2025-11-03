@@ -27,7 +27,7 @@ import {itemEvent} from './events/item.js';
 import {template} from './extensions/template.js';
 import {tidy5e} from './integrations/tidy5e.js';
 import {combat} from './extensions/combat.js';
-import {ddbi} from './integrations/ddbi.js';
+import {concentration} from './extensions/concentration.js';
 export function registerHooks() {
     // Setting caching
     Hooks.on('createSetting', genericUtils.createUpdateSetting);
@@ -130,6 +130,12 @@ export function registerHooks() {
     Hooks.on('dnd5e.restCompleted', rest);
     Hooks.on('preCreateMeasuredTemplate', template.preCreateMeasuredTemplate);
     //Hooks.on('preCreateRegion', region.preCreateRegion);
+
+    // Template Attachments
+    Hooks.on('preUpdateMeasuredTemplate', template.preUpdateMeasuredTemplate);
+
+    //Circle Casting
+    Hooks.on('preDeleteActiveEffect', concentration.preRemove);
 
     // Add generic actions to tokens
     if (genericUtils.getCPRSetting('addActions')) Hooks.on('createToken', actions.createToken);
