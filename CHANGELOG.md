@@ -1,3 +1,7 @@
+# 1.3.119 Release:
+## Bug Fixes:
+- Primal Companion (Modern)
+
 # 1.3.118 Release:
 ## New Modern Content:
 - Circle Casting (Enable via the settings and use via the generic action)
