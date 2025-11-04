@@ -220,6 +220,7 @@
             "PromptToUse": "Avisar para usar:",
             "Range": "Alcance:",
             "RealDarkness": "Usar Escuridão Real:",
+            "Rules": "Regras:",
             "SaveAbilities": "Atributos Salv.:",
             "SaveDC": "CD da Salvaguarda:",
             "Saves": "Salvaguardas:",
@@ -228,6 +229,7 @@
             "ShowIcon": "Sempre Mostrar Ícone da Aura",
             "ShowRoll": "Exibir Rolagem:",
             "SimultaneousUses": "Usos Simultâneos:",
+            "SizeLimit": "Limite de Tamanho:",
             "Skills": "Perícias:",
             "Sound": "Som:",
             "SpecificAnimation": "Animação {option}:",
@@ -837,6 +839,9 @@
                 "Ability": "Qual atributo para os testes com ferramenta?",
                 "WeapToolProf": "Proficiência com Armas/Ferramentas",
                 "Which": "Selecione proficiências:"
+            },
+            "Attack": {
+                "SelectWeapon": "Escolha uma Arma ou Ataque Desarmado:"
             },
             "AuraDamage": {
                 "Name": "Dano de Aura: Fim do Turno"
@@ -1451,6 +1456,13 @@
                 "AvertSelect": "Desviar os olhos de {tokenName}?",
                 "Name": "Olhar"
             },
+            "GenericActions": {
+                "Legacy": "Legado",
+                "Modern": "Moderno",
+                "Name": "Ações Genéricas",
+                "Select": "Escolha uma Ação Genérica:",
+                "System": "Sistema"
+            },
             "GenericTeleport": {
                 "Name": "Teleporte"
             },
@@ -1616,6 +1628,17 @@
                 "ExtraDamage": "Aplicar 1d6 de dano elétrico adicional?",
                 "LightningLauncher": "Armadura do Infiltrador: Lança-Relâmpagos"
             },
+            "Influence": {
+                "Attitude": "Qual a Atitude do monstro?",
+                "Friendly": "Amigável",
+                "Hesitant": "Hesitante",
+                "Hostile": "Hostil",
+                "HowWilling": "O quão disposto é o monstro?",
+                "Indifferent": "Indiferente",
+                "Skill": "Qual Perícia será usada para Influenciar o monstro?",
+                "Unwilling": "Não-Disposto",
+                "Willing": "Disposto"
+            },
             "InfuseItem": {
                 "AlreadyServant": "Você já tem um Servo Homúnculo ativo!",
                 "ArcanePropulsionArmor": "Armadura de Propulsão Arcana",
@@ -1738,6 +1761,10 @@
             },
             "MageHand": {
                 "TooFar": "A distância da Mão Arcana está longe demais, dissipar?"
+            },
+            "Magic": {
+                "MagicItem": "Escolha um Item Mágico:",
+                "SelectSpell": "Escolha uma Magia:"
             },
             "MagicMissile": {
                 "Bolt": "Dardo de Míssil Mágico",
@@ -2435,7 +2462,7 @@
             },
             "Underwater": {
                 "TooFar": "O alvo está muito longe enquanto submerso!",
-                "Underwater": "Submerso"
+                "Underwater": "Desvantagem: Submerso"
             },
             "UpcastTargets": {
                 "Select": "Muitos alvos selecionados! Selecione até {maxTargets} alvos."
@@ -2685,7 +2712,8 @@
                     "Succeed": "Sucesso Teste de {toolName}",
                     "TempHP": "Zero Pontos de Vida Temporários",
                     "TempMaxHP": "Zero Pontos de Vida Máximos Temporários",
-                    "Tooltip": "As condições escolhidas removerão o efeito."
+                    "Tooltip": "As condições escolhidas removerão o efeito.",
+                    "ZeroSpeed": "Deslocamento Zero"
                 },
                 "templateEffectActivities": {
                     "Label": "Efeito de Modelo",
@@ -2901,6 +2929,12 @@
                 "4": "Mestre do Jogo"
             },
             "SelectCompendium": "Selecione um compêndio:",
+            "actionMode": {
+                "0": "Múltiplos Itens",
+                "1": "Um Item",
+                "Hint": "Define se as Ações Genéricas serão adicionadas como um só item ou vários.",
+                "Name": "Modo de Ação Genérica"
+            },
             "activityCSSTweak": {
                 "Hint": "Quando habilitadas, as atividades terão todas as suas informações em uma única aba. É necessário recarregar após desativar.",
                 "Name": "Ajuste CSS de Atividades"
