@@ -1,3 +1,7 @@
+# 1.3.120 Release:
+## Bug Fixes:
+- Generic Actions
+
 # 1.3.119 Release:
 ## Bug Fixes:
 - Primal Companion (Modern)
