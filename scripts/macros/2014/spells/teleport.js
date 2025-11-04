@@ -236,7 +236,7 @@ async function use({workflow}) {
                     .opacity(0)
 
                     .effect()
-                    .from(target)
+                    .copySprite(target)
                     .atLocation(target)
                     .scaleToObject(1.1)
                     .fadeIn(2000, {'ease': 'easeInExpo'})
@@ -252,7 +252,7 @@ async function use({workflow}) {
         })
 
         .effect()
-        .from(selected)
+        .copySprite(selected)
         .atLocation(selected)
         .scaleToObject(1.1)
         .fadeIn(2000, {'ease': 'easeInExpo'})
@@ -307,7 +307,7 @@ async function use({workflow}) {
     await socket.executeAsGM(sockets.teleport.name, toTeleport.map(i => i.document.uuid), workflow.token.document.uuid, {range, animation: 'none', minimizeSheet: false});
     let teleIn = new Sequence()
         .effect()
-        .from(selected)
+        .copySprite(selected)
         .atLocation(selected)
         .scaleToObject(1.1)
         .filter('ColorMatrix', {'saturate': -1, 'brightness': 10})
@@ -339,7 +339,7 @@ async function use({workflow}) {
         .duration(10000)
         
         .effect()
-        .from(selected)
+        .copySprite(selected)
         .atLocation(selected)
         .scaleToObject(1.1)
         .fadeOut(1000, {'ease': 'easeInExpo'})
@@ -358,7 +358,7 @@ async function use({workflow}) {
             toTeleport.forEach(target => {  
                 new Sequence()
                     .effect()
-                    .from(target)
+                    .copySprite(target)
                     .atLocation(target)
                     .scaleToObject(1.1)
                     .fadeOut(1000, {'ease': 'easeInExpo'})

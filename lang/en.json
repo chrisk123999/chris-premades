@@ -1510,7 +1510,7 @@
                 "System": "System"
             },
             "GenericTeleport": {
-                "Name": "Teleport"
+                "Name": "Generic Teleport"
             },
             "Grapple": {
                 "ChooseSkill": "How would you like to contest the grapple?",

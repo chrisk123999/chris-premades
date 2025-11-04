@@ -1,6 +1,7 @@
 # 1.3.119 Release:
 ## Bug Fixes:
 - Primal Companion (Modern)
+- Teleport (Legacy)
 
 # 1.3.118 Release:
 ## New Modern Content:
