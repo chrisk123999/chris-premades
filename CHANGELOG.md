@@ -1,3 +1,7 @@
+# 1.3.122 Release:
+## Bug Fixes:
+- Slasher (Legacy)
+
 # 1.3.121 Release:
 ## Bug Fixes:
 - Activity Hiding
