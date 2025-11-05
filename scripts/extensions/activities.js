@@ -5,7 +5,10 @@ function flagAllRiders(item, updates) {
     // let currRiders = genericUtils.getProperty(item, 'flags.dnd5e.riders.activity') ?? [];
     let newRiders = genericUtils.getProperty(updates, 'flags.dnd5e.riders.activity') ?? [];
     let uniqueRiders = new Set([...newRiders, ...cprRiders]);
-    genericUtils.setProperty(updates, 'flags.dnd5e.riders.activity', Array.from(uniqueRiders));
+    if (uniqueRiders.size) {
+        if ('-=riders' in (updates.flags?.dnd5e ?? {})) delete updates.flags.dnd5e['-=riders'];
+        genericUtils.setProperty(updates, 'flags.dnd5e.riders.activity', Array.from(uniqueRiders));
+    }
 }
 function cssTweak(value) {
     if (value) {

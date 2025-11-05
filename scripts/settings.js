@@ -715,6 +715,12 @@ export function registerSettings() {
         }
     });
     addSetting({
+        key: 'circleCast',
+        type: Boolean,
+        default: false,
+        category: 'mechanics'
+    });
+    addSetting({
         key: 'bg3WeaponActionsEnabled',
         type: Boolean,
         default: false,

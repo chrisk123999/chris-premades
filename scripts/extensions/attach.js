@@ -1,6 +1,6 @@
 import {genericUtils} from '../utils.js';
-async function updateAttachments(token, delta) {
-    let attachedEntityUuids = token.flags['chris-premades']?.attached?.attachedEntityUuids ?? [];
+async function updateAttachments(entity, delta) {
+    let attachedEntityUuids = entity.flags['chris-premades']?.attached?.attachedEntityUuids ?? [];
     let removedEntityUuids = [];
     await Promise.all(attachedEntityUuids.map(async templateUuid => {
         let entity = await fromUuid(templateUuid);
@@ -13,7 +13,7 @@ async function updateAttachments(token, delta) {
             });
         }
     }));
-    if (removedEntityUuids.length) await genericUtils.setFlag(token, 'chris-premades', 'attached.attachedEntityUuids', attachedEntityUuids.filter(i => !removedEntityUuids.includes(i)));
+    if (removedEntityUuids.length) await genericUtils.setFlag(entity, 'chris-premades', 'attached.attachedEntityUuids', attachedEntityUuids.filter(i => !removedEntityUuids.includes(i)));
 }
 export let attach = {
     updateAttachments

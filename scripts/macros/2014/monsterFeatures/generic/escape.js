@@ -1,6 +1,6 @@
 import {actorUtils, itemUtils, tokenUtils, workflowUtils} from '../../../../utils.js';
 async function use({workflow}) {
-    if (!workflow.token || workflow.targets.size != 1) return;
+    if (!workflow.token || workflow.hitTargets.size != 1) return;
     let targetToken = workflow.targets.first();
     let sourceToken = workflow.token;
     let config = itemUtils.getGenericFeatureConfig(workflow.item, 'escape');

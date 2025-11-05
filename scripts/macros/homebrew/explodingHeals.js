@@ -15,7 +15,9 @@ export async function explodingHeals(workflow) {
                 newFormula += i.expression + 'x';
             }
         }
-        return await rollUtils.damageRoll(newFormula, workflow.activity, roll.options);
+        let evaluateOptions = {};
+        if (workflow['chris-premades']?.maxHeal) evaluateOptions = {maximize: true};
+        return await rollUtils.damageRoll(newFormula, workflow.activity, roll.options, evaluateOptions);
     }));
     await workflow.setDamageRolls(damageRolls);
 }

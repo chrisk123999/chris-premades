@@ -1,3 +1,20 @@
+# 1.3.120 Release:
+## Bug Fixes:
+- Generic Actions
+
+# 1.3.119 Release:
+## Bug Fixes:
+- Primal Companion (Modern)
+- Teleport (Legacy)
+
+# 1.3.118 Release:
+## New Modern Content:
+- Circle Casting (Enable via the settings and use via the generic action)
+- Deck of Illusions
+## Bug Fixes:
+- Topple
+- Exploding Heals
+
 # 1.3.117 Release:
 ## Bug Fixes:
 - Manual Rolls and function terms (ie rolling hit die)

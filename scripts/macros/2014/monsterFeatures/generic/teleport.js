@@ -8,7 +8,7 @@ async function late({workflow}) {
     await Teleport.target([workflow.token], workflow.token, {range: config.range, animation: config.animation});
 }
 export let genericTeleport = {
-    name: 'Teleport',
+    name: 'Generic Teleport',
     translation: 'CHRISPREMADES.Macros.GenericTeleport.Name',
     version: '1.0.51',
     midi: {

@@ -113,12 +113,6 @@ class EffectDirectory extends foundry.applications.sidebar.DocumentDirectory {
                 callback: async (li) => {
                     let document = getDocument(li);
                     if (!document) return;
-                    async function modifiedImportFromJSON(json) {
-                        let effectData = JSON.parse(json);
-                        genericUtils.setProperty(effectData, 'flags.chris-premades.effectInterface.sort', document.flags['chris-premades']?.effectInterface?.sort);
-                        await document.update(effectData);
-                        ui.effects.render(true);
-                    }
                     await foundry.applications.api.DialogV2.confirm({
                         window: {
                             title: genericUtils.translate('CHRISPREMADES.EffectInterface.ImportData') + document.name,

@@ -803,9 +803,8 @@ export class ItemMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
         let source = this.availableAutomations.find(i => i.source === this._source);
         if (!source) return;
         /* Keep the CPR flags */
-        await this.item.update({'flags.-=chris-premades': null});
         this._cleanObject(this.flags); // Clean up any leftover undefined flags from adding/removing properties
-        await this.item.update({'flags.chris-premades': genericUtils.deepClone(this.flags)});
+        await this.item.update({'flags.==chris-premades': genericUtils.deepClone(this.flags)});
         await ItemMedkit.update(this.item, source.document, {source: source.source, version: source.version});
         this.flags = genericUtils?.deepClone(this.item?.flags['chris-premades']) ?? {};
         this.selectedGenericFeatures = Object.keys(this.flags?.config?.generic ?? {});
@@ -824,7 +823,6 @@ export class ItemMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
             });
         }
         this._cleanObject(this.flags); // Clean up any leftover undefined flags from adding/removing properties
-        await this.item.update({'flags.-=chris-premades': null});
         let genericConfigs = genericUtils.getProperty(this.flags, 'config.generic');
         if (genericConfigs) {
             let configs = this.genericFeaturesConfigs;
@@ -837,7 +835,7 @@ export class ItemMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
                 return [key, value];
             }));
         }
-        await this.item.update({'flags.chris-premades': genericUtils.deepClone(this.flags)});
+        await this.item.update({'flags.==chris-premades': genericUtils.deepClone(this.flags)});
         // If the current source is not the selected source, change it, if the select source is none, clear out the flags we add, if the selected source is development, do nothing.
         if (this._source != this.selectedSource) {
             // Different sources, do something about it

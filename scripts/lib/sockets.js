@@ -22,10 +22,10 @@ async function createEffect(entityUuid, effectData, {concentrationItemUuid, pare
     }
     if (effects?.length) return effects[0].uuid;
 }
-async function createEffects(entityUuid, effectDataArray, {concentrationItemUuidArray, parentEntityUuidArray}) {
+async function createEffects(entityUuid, effectDataArray, {concentrationItemUuidArray, parentEntityUuidArray, keepId}) {
     let entity = await fromUuid(entityUuid);
     if (!entity) return;
-    let effects = await entity.createEmbeddedDocuments('ActiveEffect', effectDataArray);
+    let effects = await entity.createEmbeddedDocuments('ActiveEffect', effectDataArray, {keepId});
     for (let i = 0; i < effects.length; i++) {
         if (concentrationItemUuidArray[i]) {
             let concentrationItem = await fromUuid(concentrationItemUuidArray[i]);

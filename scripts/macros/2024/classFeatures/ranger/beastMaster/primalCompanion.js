@@ -73,6 +73,11 @@ async function use({workflow}) {
         genericUtils.setProperty(updates, 'token.texture.src', tokenImg);
     }
     if (creatureType === 'land') {
+        let beastsStrikeData = await Summons.getSummonItem('Beast\'s Strike (Land)', {}, workflow.item, {flatAttack: true, translate: 'CHRISPREMADES.Macros.PrimalCompanion.BeastsStrike', identifier: 'primalCompanionLandBeastsStrike', rules: 'modern'});
+        if (!beastsStrikeData) {
+            errors.missingPackItem();
+            return;
+        }
         let selection = await dialogUtils.buttonDialog(workflow.item.name, 'CHRISPREMADES.Dialog.DamageType', [
             ['DND5E.DamageBludgeoning', 'bludgeoning'],
             ['DND5E.DamagePiercing', 'piercing'],
@@ -83,17 +88,17 @@ async function use({workflow}) {
         if (exceptionalTraining) {
             types.push('force');
         }
-        let beastsStrikeData = await Summons.getSummonItem('Beast\'s Strike (Land)', {}, workflow.item, {flatAttack: true, translate: 'CHRISPREMADES.Macros.PrimalCompanion.BeastsStrike', identifier: 'primalCompanionLandBeastsStrike', rules: 'modern'});
-        if (!beastsStrikeData) {
-            errors.missingPackItem();
-            return;
-        }
         let attackActivity = Object.entries(beastsStrikeData.system.activities).map(a => a[1]).find(a => a.type === 'attack');
         attackActivity.damage.parts[0].types = new Set(types);
         updates.actor.items.push(beastsStrikeData);
         genericUtils.setProperty(updates, 'actor.system.attributes.movement', {walk: genericUtils.convertDistance(40), climb: genericUtils.convertDistance(40)});
     } else if (creatureType === 'sea') {
+        let beastsStrikeData = await Summons.getSummonItem('Beast\'s Strike (Sea)', {}, workflow.item, {flatAttack: true, translate: 'CHRISPREMADES.Macros.PrimalCompanion.BeastsStrike', identifier: 'primalCompanionSeaBeastsStrike', rules: 'modern'});
         let amphibiousData = await Summons.getSummonItem('Amphibious', {}, workflow.item, {translate: 'CHRISPREMADES.CommonFeatures.Amphibious', identifier: 'primalCompanionAmphibious', rules: 'modern'});
+        if (!beastsStrikeData || !amphibiousData) {
+            errors.missingPackItem();
+            return;
+        }
         let selection = await dialogUtils.buttonDialog(workflow.item.name, 'CHRISPREMADES.Dialog.DamageType', [
             ['DND5E.DamageBludgeoning', 'bludgeoning'],
             ['DND5E.DamagePiercing', 'piercing'],
@@ -103,11 +108,6 @@ async function use({workflow}) {
         if (exceptionalTraining) {
             types.push('force');
         }
-        let beastsStrikeData = await Summons.getSummonItem('Beast\'s Strike (Sea)', {}, workflow.item, {flatAttack: true, translate: 'CHRISPREMADES.Macros.PrimalCompanion.BeastsStrike', identifier: 'primalCompanionSeaBeastsStrike', rules: 'modern'});
-        if (!amphibiousData || !beastsStrikeData) {
-            errors.missingPackItem();
-            return;
-        }
         let attackActivity = Object.entries(beastsStrikeData.system.activities).map(a => a[1]).find(a => a.type === 'attack');
         attackActivity.damage.parts[0].types = new Set(types);
         beastsStrikeData.flags['chris-premades'].config.generic.autoGrapple.dc = workflow.actor.system.attributes.spell.dc;
@@ -116,6 +116,7 @@ async function use({workflow}) {
     } else {
         hpValue = 4 + 4 * classLevel;
         let beastsStrikeData = await Summons.getSummonItem('Beast\'s Strike (Sky)', {}, workflow.item, {flatAttack: true, translate: 'CHRISPREMADES.Macros.PrimalCompanion.BeastsStrike', identifier: 'primalCompanionSkyBeastsStrike', rules: 'modern'});
+        let flybyData = await Summons.getSummonItem('Flyby', {}, workflow.item, {translate: 'CHRISPREMADES.CommonFeatures.Flyby', identifier: 'primalCompanionFlyby', rules: 'modern'});
         if (!flybyData || !beastsStrikeData) {
             errors.missingPackItem();
             return;
@@ -126,7 +127,6 @@ async function use({workflow}) {
         }
         let attackActivity = Object.entries(beastsStrikeData.system.activities).map(a => a[1]).find(a => a.type === 'attack');
         attackActivity.damage.parts[0].types = new Set(types);
-        let flybyData = await Summons.getSummonItem('Flyby', {}, workflow.item, {translate: 'CHRISPREMADES.CommonFeatures.Flyby', identifier: 'primalCompanionFlyby', rules: 'modern'});
         updates.actor.items.push(beastsStrikeData, flybyData);
         genericUtils.mergeObject(updates, {
             actor: {

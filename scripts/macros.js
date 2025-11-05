@@ -64,6 +64,7 @@ export {squeeze} from './macros/2024/actions/squeeze.js';
 export {underwater, underwaterEffect} from './macros/2024/actions/underwater.js';
 export {knockOut, knockOutEffect} from './macros/2024/actions/knockOut.js';
 export {genericActions} from './macros/2024/actions/genericActions.js';
+export {circleCast, circleCastEffect} from './macros/2024/actions/circleCast.js';
 // Generic
 export {proneOnFail} from './macros/2024/generic/proneOnFail.js';
 // Spells
@@ -200,6 +201,7 @@ export {forestGuard, forestGuardTurnEffect, forestGuardEffect} from './macros/20
 // Items
 export {healersKit} from './macros/2024/items/healersKit.js';
 export {unarmedStrike} from './macros/2024/items/misc/unarmedStrike.js';
+export {deckOfIllusions} from './macros/2024/items/trinket/deckOfIllusions.js';
 // Feats
 export {alert} from './macros/2024/feats/alert.js';
 export {archery} from './macros/2024/feats/archery.js';

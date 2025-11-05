@@ -86,7 +86,7 @@
         "climb": null,
         "fly": null,
         "swim": null,
-        "walk": null,
+        "walk": 30,
         "units": null,
         "hover": false
       },

@@ -171,6 +171,18 @@ function overlap(template1, template2) {
     let intersects = shape1.intersectPolygon(shape2);
     return intersects.points.length > 0;
 }
+async function attachToTemplate(template, uuidsToAttach) {
+    let currAttached = template.flags?.['chris-premades']?.attached?.attachedEntityUuids ?? [];
+    await genericUtils.update(template, {
+        flags: {
+            'chris-premades': {
+                attached: {
+                    attachedEntityUuids: currAttached.concat(...uuidsToAttach)
+                }
+            }
+        }
+    });
+}
 export let templateUtils = {
     getTokensInShape,
     getTokensInTemplate,
@@ -190,5 +202,6 @@ export let templateUtils = {
     rayIntersectsTemplate,
     getIntersections,
     getSourceActor,
-    overlap
+    overlap,
+    attachToTemplate
 };

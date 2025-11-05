@@ -104,6 +104,10 @@ function getConditions(activity) {
 function getMod(activity) {
     return activity.actor.system.abilities[activity.ability].mod;
 }
+function getSaveDC(activity) {
+    if (activity.type === 'save') return activity.save.dc.value;
+    return activity.actor.system.abilities[activity.ability].dc ?? 10;
+}
 function hasSave(activity) {
     if (activity.type === 'save') return true;
     if (activity._otherActivity) return hasSave(activity._otherActivity);
@@ -151,6 +155,7 @@ export let activityUtils = {
     duplicateActivity,
     getConditions,
     getMod,
+    getSaveDC,
     hasSave,
     isSpellActivity,
     canUse,

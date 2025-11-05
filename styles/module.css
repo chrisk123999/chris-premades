@@ -58,9 +58,10 @@ form .cpr-dialog .form-group button.form-button {
 }
 
 form .cpr-dialog .form-group img.button-image {
-    width: 50px;
-    height: 50px;
-    border: 0px;
+    position: relative;
+    width: 50px !important;
+    height: 50px !important;
+    border: 0px !important;
     margin-left: 5px;
     margin-right: 5px;
     margin-bottom: 5px;

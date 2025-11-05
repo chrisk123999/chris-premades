@@ -189,8 +189,12 @@ async function updateAll(actor) {
     let summary = await ActorMedkit.actorUpdateAll(actor);
     return summary;
 }
-function getEquivalentSpellSlotName(actor, level) {
-    return Object.entries(actor.system.spells)?.find(i => i[1].level == level)?.[0];
+function getEquivalentSpellSlotName(actor, level, {canCast = false} = {}) {
+    if (!canCast) {
+        return Object.entries(actor.system.spells)?.find(i => i[1].level == level)?.[0];
+    } else {
+        return Object.entries(actor.system.spells)?.find(i => i[1].level >= level && i[1].value)?.[0];
+    }
 }
 function getEquippedArmor(actor, types = ['heavy', 'medium', 'light']) {
     return actor.items.find(i => types.includes(i.system.type?.value) && i.system.equipped);
