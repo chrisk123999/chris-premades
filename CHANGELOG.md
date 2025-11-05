@@ -1,3 +1,7 @@
+# 1.3.121 Release:
+## Bug Fixes:
+- Activity Hiding
+
 # 1.3.120 Release:
 ## Bug Fixes:
 - Generic Actions
