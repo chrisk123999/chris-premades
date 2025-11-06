@@ -1,12 +1,15 @@
 import {workflowUtils} from '../../../utils.js';
 async function heal({trigger, workflow}) {
     let formula = '';
+    let total = 0;
     for (let i of Object.entries(workflow.dnd5eFlags.use.consumed.item)) {
         let item = workflow.actor.items.get(i[0]);
         if (item?.type != 'class') continue;
         if (formula.length) formula += ' + ';
         formula += i[1][0].delta + item.system.hd.denomination;
+        total += i[1][0].delta;
     }
+    formula += ' + (' + total + ' * @abilities.con.mod)';
     await workflowUtils.replaceDamage(workflow, formula);
 }
 export let healingSurge = {
