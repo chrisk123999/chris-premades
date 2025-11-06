@@ -721,6 +721,12 @@ export function registerSettings() {
         category: 'mechanics'
     });
     addSetting({
+        key: 'healingSurge',
+        type: Boolean,
+        default: false,
+        category: 'mechanics'
+    });
+    addSetting({
         key: 'bg3WeaponActionsEnabled',
         type: Boolean,
         default: false,

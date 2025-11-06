@@ -1,3 +1,10 @@
+# 1.3.122 Release:
+## New Legacy Content:
+- Healing Surge (Enable via the settings and use via the generic action)
+## Bug Fixes:
+- Hide
+- Generic Actions
+
 # 1.3.121 Release:
 ## Bug Fixes:
 - Activity Hiding
