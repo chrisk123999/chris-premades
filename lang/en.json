@@ -3061,6 +3061,10 @@
                 "Hint": "Enable the Circle Casting mechanic from Forgotten Realms: Heroes of Faerûn.",
                 "Name": "Circle Casting"
             },
+            "healingSurge": {
+                "Hint": "Enable the Healing Surge feature from the 2014 Dungeon Master's Guide.",
+                "Name": "Healing Surge"
+            },
             "classSpellList": {
                 "Hint": "Journal with all class spell lists configured.",
                 "Name": "Class Spell List Journal"
@@ -3068,7 +3072,7 @@
             "cleave": {
                 "1": "Enabled (Any Health)",
                 "2": "Enabled (Full Health Only)",
-                "Hint": "Enables the cleave mechanic from the 2014 Dungeon Master's Guide",
+                "Hint": "Enables the cleave mechanic from the 2014 Dungeon Master's Guide.",
                 "Name": "DMG Cleave"
             },
             "colorizeAutomatedAnimations": {

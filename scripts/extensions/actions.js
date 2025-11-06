@@ -19,6 +19,7 @@ async function createToken(token, options, userId) {
     }
     let rules = game.settings.get('dnd5e', 'rulesVersion') === 'modern' ? '2024' : '2014';
     let circleCast = genericUtils.getCPRSetting('circleCast');
+    let healingSurge = genericUtils.getCPRSetting('healingSurge');
     if (genericUtils.getCPRSetting('actionMode') === 1) {
         let item = itemUtils.getItemByIdentifier(token.actor, 'genericActions');
         if (item) return;
@@ -40,6 +41,7 @@ async function createToken(token, options, userId) {
             return itemData;
         }));
         if (!circleCast) updates = updates.filter(i => i.name != 'Circle Cast');
+        if (!healingSurge) updates = updates.filter(i => i.name === 'Healing Surge');
         if (!updates.length) return;
         await itemUtils.createItems(token.actor, updates, {section: genericUtils.translate('CHRISPREMADES.Generic.Actions')});
     }

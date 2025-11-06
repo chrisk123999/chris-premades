@@ -6,9 +6,11 @@ async function use({trigger, workflow}) {
     let pack = game.packs.get(packId);
     if (!pack) return;
     let index = await pack.getIndex();
-    let documents = index.contents;
+    let filter = ['Healing Surge'];
     let circleCast = genericUtils.getCPRSetting('circleCast');
-    if (!circleCast) documents = documents.filter(i => i.name != 'Circle Cast');
+    if (!circleCast) filter.push('Circle Cast');
+    let documents = index.contents;
+    documents = documents.filter(i => !filter.includes(i.name));
     let selection = await dialogUtils.selectDocumentDialog(workflow.item.name, 'CHRISPREMADES.Macros.GenericActions.Select', documents, {sortAlphabetical: true});
     if (!selection) return;
     let documentData = genericUtils.duplicate(selection.toObject());

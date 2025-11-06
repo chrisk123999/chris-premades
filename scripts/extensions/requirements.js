@@ -65,7 +65,7 @@ async function ruleCheck(workflow) {
     if (!workflow.item) return;
     let identifier = genericUtils.getIdentifier(workflow.item);
     if (!identifier) return;
-    let macro = custom.getMacro(identifier);
+    let macro = custom.getMacro(identifier, genericUtils.getRules(workflow.item));
     if (!macro) return;
     if (!macro.rules) return;
     if (genericUtils.getRules(workflow.item) === macro.rules) return;

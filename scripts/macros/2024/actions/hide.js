@@ -16,9 +16,11 @@ async function use({trigger, workflow}) {
             }
         ];
     }
-    await effectUtils.createEffect(workflow.actor, effectData, {rules: 'modern', macros});
     let playAnimation = itemUtils.getConfig(workflow.item, 'playAnimation');
-    if (!playAnimation || animationUtils.jb2aCheck() != 'patreon') return;
+    if (!playAnimation || animationUtils.jb2aCheck() != 'patreon') playAnimation = false;
+    if (playAnimation) genericUtils.setProperty(effectData, 'flags.chris-premades.hide.animation', true);
+    await effectUtils.createEffect(workflow.actor, effectData, {rules: 'modern', macros});
+    if (!playAnimation) return;
     /* eslint-disable indent */
     await new Sequence()
         .effect()
@@ -50,9 +52,7 @@ async function use({trigger, workflow}) {
     /* eslint-enable indent */
 }
 async function removed({trigger: {entity: effect}}) {
-    let item = await effectUtils.getOriginItem(effect);
-    if (!item) return;
-    if (!itemUtils.getConfig(item, 'playAnimation') || animationUtils.jb2aCheck() != 'patreon') return;
+    if (!effect.flags['chris-premades']?.hide?.animation) return;
     let token = actorUtils.getFirstToken(effect.parent);
     if (!token) return;
     /* eslint-disable indent */

@@ -1,8 +1,12 @@
-import {actorUtils, animationUtils, effectUtils, itemUtils} from '../../../utils.js';
+import {actorUtils, animationUtils, effectUtils, genericUtils, itemUtils} from '../../../utils.js';
 async function use({trigger, workflow}) {
     await workflow.actor.rollSkill({skill: 'ste'});
     let playAnimation = itemUtils.getConfig(workflow.item, 'playAnimation');
     if (!playAnimation || animationUtils.jb2aCheck() != 'patreon') return;
+    let effect = effectUtils.getEffectByIdentifier(workflow.actor, 'hideEffect');
+    if (effect) {
+        genericUtils.setFlag(effect, 'chris-premades', 'hide.animation', true);
+    }
     /* eslint-disable indent */
     await new Sequence()
         .effect()
@@ -34,9 +38,7 @@ async function use({trigger, workflow}) {
     /* eslint-enable indent */
 }
 async function removed({trigger: {entity: effect}}) {
-    let item = await effectUtils.getOriginItem(effect);
-    if (!item) return;
-    if (!itemUtils.getConfig(item, 'playAnimation') || animationUtils.jb2aCheck() != 'patreon') return;
+    if (!effect.flags['chris-premades']?.hide?.animation) return;
     let token = actorUtils.getFirstToken(effect.parent);
     if (!token) return;
     /* eslint-disable indent */

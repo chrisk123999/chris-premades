@@ -87,8 +87,9 @@
         "fly": null,
         "swim": null,
         "walk": 30,
-        "units": null,
-        "hover": false
+        "units": "ft",
+        "hover": false,
+        "special": ""
       },
       "attunement": {
         "max": 3
