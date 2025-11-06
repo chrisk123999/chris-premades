@@ -293,7 +293,7 @@ async function rollSkill(wrapped, config, dialog = {}, message = {}) {
         ...options
     };
     let returnData = await wrapped(config, dialog, {...message, create: false});
-    returnData = returnData[0];
+    returnData = returnData?.[0];
     if (!returnData) return;
     let oldOptions = returnData.options;
     returnData = await executeBonusMacroPass(this, 'bonus', skillId, options, returnData, config, dialog, message);
