@@ -1,14 +1,10 @@
 # 1.3.122 Release:
-<<<<<<< HEAD
 ## New Legacy Content:
 - Healing Surge (Enable via the settings and use via the generic action)
 ## Bug Fixes:
 - Hide
 - Generic Actions
-=======
-## Bug Fixes:
-- Slasher (Legacy)
->>>>>>> a3441fdb4ca5b6247893e340a9058e3309212232
+- Slasher
 
 # 1.3.121 Release:
 ## Bug Fixes:
