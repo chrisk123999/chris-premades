@@ -36,7 +36,7 @@ async function use({trigger, workflow}) {
     let totalHeal = 0;
     let formulaRoll;
     if (formula != '' && formula) {
-        formulaRoll = await rollUtils.rollDice(formula, {actor: workflow.actor});
+        formulaRoll = await rollUtils.rollDice(formula, {entity: workflow.actor});
         if (displayFormulaRoll) {
             formulaRoll.toMessage({
                 speaker: ChatMessage.implementation.getSpeaker({actor: workflow.actor}),

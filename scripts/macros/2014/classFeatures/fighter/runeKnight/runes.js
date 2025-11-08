@@ -186,7 +186,7 @@ export let frostRune = {
 };
 export let stoneRune = {
     name: 'Stone Rune',
-    version: '1.3.10',
+    version: '1.3.123',
     midi: {
         item: [
             {
