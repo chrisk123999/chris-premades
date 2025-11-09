@@ -4,6 +4,7 @@
 - Parry Generic Feature
 - Stone Rune
 - Wild Shape
+- Cast activities
 
 # 1.3.122 Release:
 ## New Legacy Content:
