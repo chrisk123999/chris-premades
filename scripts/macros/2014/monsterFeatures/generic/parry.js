@@ -2,7 +2,7 @@ import {effectUtils, itemUtils, rollUtils} from '../../../../utils.js';
 async function use({trigger, workflow}) {
     let config = itemUtils.getGenericFeatureConfig(trigger.entity, 'parry');
     if (isNaN(Number(config.formula))) {
-        let roll = await rollUtils.rollDice(config.formula, {actor: workflow.actor, chatMessage: config.showRoll, flavor: trigger.entity.name});
+        let roll = await rollUtils.rollDice(config.formula, {entity: workflow.actor, chatMessage: config.showRoll, flavor: trigger.entity.name});
         config.formula = config.showRoll ? roll.roll.total : roll.total;
     }
     let effectData = {

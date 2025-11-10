@@ -255,9 +255,9 @@
       "name": "Stone Rune",
       "origin": "Compendium.world.cpr-class-features.Item.iUwV4Dhf0uclyFfF",
       "duration": {
-        "rounds": 1,
+        "rounds": null,
         "startTime": null,
-        "seconds": null,
+        "seconds": 60,
         "combat": null,
         "turns": null,
         "startRound": null,
@@ -353,7 +353,7 @@
     "chris-premades": {
       "info": {
         "identifier": "stoneRune",
-        "version": "1.3.10",
+        "version": "1.3.123",
         "source": "chris-premades"
       },
       "macros": {

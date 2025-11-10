@@ -146,12 +146,12 @@ async function added({trigger: {entity: item}}) {
     if (!item.actor.system.scale[classIdentifier]?.[scaleIdentifier]) {
         await itemUtils.fixScales(item);
     }
-    if (item._source.system.uses.max !== '0') return;
+    if (item._source.system.uses.max !== '2') return;
     await genericUtils.update(item, {'system.uses.max': `@scale.${classIdentifier}.${scaleIdentifier}`});
 }
 export let wildShape = {
     name: 'Wild Shape',
-    version: '1.3.83',
+    version: '1.3.123',
     rules: 'modern',
     midi: {
         item: [

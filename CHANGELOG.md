@@ -1,3 +1,11 @@
+# 1.3.123 Release:
+## Bug Fixes:
+- Lifesteal Generic Feature
+- Parry Generic Feature
+- Stone Rune
+- Wild Shape
+- Cast activities
+
 # 1.3.122 Release:
 ## New Legacy Content:
 - Healing Surge (Enable via the settings and use via the generic action)

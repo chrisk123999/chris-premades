@@ -790,6 +790,14 @@ export class ItemMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
             }
             sourceItemData.img = itemData.img;
         }
+        if (item.getFlag('dnd5e', 'cachedFor') && item.system.linkedActivity) {
+            let enchantId = item.system.linkedActivity.constructor.ENCHANTMENT_ID;
+            let enchantEffect = itemData.effects.find(i => i._id === enchantId);
+            if (enchantEffect) {
+                sourceItemData.effects ??= [];
+                sourceItemData.effects.push(enchantEffect);
+            }
+        }
         if (item.effects.size) await item.deleteEmbeddedDocuments('ActiveEffect', item.effects.map(i => i.id));
         genericUtils.setProperty(sourceItemData, 'flags.chris-premades.info.rules', genericUtils.getRules(item));
         await item.update(sourceItemData, {diff: false, recursive: false});
