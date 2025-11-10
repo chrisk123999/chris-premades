@@ -3061,6 +3061,10 @@
                 "Hint": "Ative a mecânica de Circle Casting de Forgotten Realms: Heroes of Faerûn.",
                 "Name": "Circle Casting"
             },
+            "healingSurge": {
+                "Hint": "Ativa a habilidade Healing Surge do Dungeon Master's Guide de 2014.",
+                "Name": "Healing Surge"
+            },
             "classSpellList": {
                 "Hint": "Diário com todas as listas de magias de classe configuradas.",
                 "Name": "Diário de Listas de Magias de Classe"
