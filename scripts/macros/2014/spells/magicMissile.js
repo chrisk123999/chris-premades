@@ -39,11 +39,11 @@ async function use({workflow}) {
         if (effectUtils.getEffectByIdentifier(targetToken.actor, 'shield')) {
             isShielded = true;
         } else if (!actorUtils.hasUsedReaction(targetToken.actor) && shieldItems.length) {
-            shieldItems = shieldItems.filter(i => i.system.preparation.mode !== 'prepared' || i.system.preparation.prepared);
-            shieldItems = shieldItems.filter(i => i.system.preparation.mode !== 'pact' || targetToken.actor.system.spells.pact.value);
+            shieldItems = shieldItems.filter(i => i.system.method !== 'spell' || i.system.prepared);
+            shieldItems = shieldItems.filter(i => i.system.method !== 'pact' || targetToken.actor.system.spells.pact.value);
             shieldItems = shieldItems.filter(i => i.system.hasLimitedUses || !i.system.level || (
                 actorUtils.hasSpellSlots(targetToken.actor, i.system.level)
-            ) || ['atwill', 'innate'].includes(i.system.preparation.mode));
+            ) || ['atwill', 'innate'].includes(i.system.method));
             let selectedSpell = await dialogUtils.selectDocumentDialog(workflow.item.name, 'CHRISPREMADES.Macros.MagicMissile.Shield', shieldItems, {userId: socketUtils.firstOwner(targetToken.actor, true), addNoneDocument: true});
             if (selectedSpell) {
                 await socketUtils.remoteRollItem(selectedSpell, {}, {targetUuids: [targetToken.document.uuid]}, socketUtils.firstOwner(targetToken, true));

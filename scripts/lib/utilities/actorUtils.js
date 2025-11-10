@@ -137,11 +137,11 @@ function getCastableSpells(actor) {
     let maxSlot = Math.max(...Object.values(actor.system.spells).filter(i => i.value).map(j => j.level), 0);
     let validSpells = actor.items.filter(i => i.type === 'spell');
     // If "prepared" mode, keep only prepared
-    validSpells = validSpells.filter(i => i.system.preparation.mode !== 'prepared' || i.system.level === 0 || i.system.preparation.prepared);
+    validSpells = validSpells.filter(i => i.system.method === 'spell' || i.system.level === 0 || i.system.prepared);
     // If limited use, has uses remaining
     validSpells = validSpells.filter(i => !i.system.hasLimitedUses || i.system.uses.value);
     // If no spell slot (and requires), remove
-    validSpells = validSpells.filter(i => ['atwill', 'innate'].includes(i.system.preparation.mode) || maxSlot >= i.system.level);
+    validSpells = validSpells.filter(i => ['atwill', 'innate'].includes(i.system.method) || maxSlot >= i.system.level);
     // Cast activity shenanigans
     validSpells = validSpells.filter(i => {
         let linkedActivity = i.system.linkedActivity;

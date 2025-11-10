@@ -75,7 +75,7 @@ async function addOrUpdate(item, updates, options, id) {
             }
             if (description) genericUtils.setProperty(itemData, 'system.description', description);
             if (value.uses) genericUtils.setProperty(itemData, 'system.uses', item.flags['chris-premades']?.equipment?.uses?.[key] ?? value.uses);
-            if (value.preparation) genericUtils.setProperty(itemData, 'system.preparation.mode', value.preparation);
+            if (value.preparation) genericUtils.setProperty(itemData, 'system.method', value.preparation);
             if (value.duration) itemData.system.duration = value.duration;
             if (value.translate) itemData.name = genericUtils.translate(value.translate);
             if (value.override) genericUtils.mergeObject(itemData, value.override);

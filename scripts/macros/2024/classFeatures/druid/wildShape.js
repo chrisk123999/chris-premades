@@ -1,8 +1,7 @@
 import {DialogApp} from '../../../../applications/dialog.js';
-import {activityUtils, compendiumUtils, constants, effectUtils, errors, genericUtils, itemUtils} from '../../../../utils.js';
-
+import {compendiumUtils, constants, effectUtils, errors, genericUtils, itemUtils} from '../../../../utils.js';
 async function use({workflow}) {
-    const newActor = fromUuidSync(workflow.transformedActorUuids?.[0]);
+    let newActor = fromUuidSync(workflow.transformedActorUuids?.[0]);
     if (!newActor) return;
     let equippedItems = workflow.actor.items.filter(i => i.system.equipped && i.type !== 'container');
     let selection;
@@ -141,13 +140,7 @@ async function hit({trigger: {entity: effect}, workflow}) {
     await genericUtils.remove(effect);
 }
 async function added({trigger: {entity: item}}) {
-    let classIdentifier = itemUtils.getConfig(item, 'classIdentifier');
-    let scaleIdentifier = itemUtils.getConfig(item, 'scaleIdentifier');
-    if (!item.actor.system.scale[classIdentifier]?.[scaleIdentifier]) {
-        await itemUtils.fixScales(item);
-    }
-    if (item._source.system.uses.max !== '2') return;
-    await genericUtils.update(item, {'system.uses.max': `@scale.${classIdentifier}.${scaleIdentifier}`});
+    await itemUtils.fixScales(item);
 }
 export let wildShape = {
     name: 'Wild Shape',

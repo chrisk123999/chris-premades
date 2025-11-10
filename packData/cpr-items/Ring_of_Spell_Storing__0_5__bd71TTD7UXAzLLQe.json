@@ -56,7 +56,9 @@
       "baseItem": ""
     },
     "container": null,
-    "properties": [],
+    "properties": [
+      "mgc"
+    ],
     "attuned": true,
     "activities": {
       "dnd5eactivity000": {
@@ -233,7 +235,7 @@
   },
   "effects": [],
   "img": "icons/equipment/finger/ring-faceted-engraved-gold-purple.webp",
-  "folder": "QyTQq6nqm1F0qnfP",
+  "folder": "4TYgcjpgCO6kJJ6d",
   "_id": "bd71TTD7UXAzLLQe",
   "_key": "!items!bd71TTD7UXAzLLQe"
 }

@@ -682,8 +682,7 @@ export function registerSettings() {
         key: 'enableAnimations',
         type: Boolean,
         default: true,
-        category: 'general',
-        scope: 'client'
+        category: 'general'
     });
     addSetting({
         key: 'movementPerformance',

@@ -1,3 +1,25 @@
+# 1.3.124 Release:
+## New Modern Content:
+- Ring of Spell Storing
+- Circle Forms
+## New Legacy Content:
+- Crown of Daffodils
+## Bug Fixes:
+- Wild Shape
+- Ring of Spell Storing
+- Steel Defender
+- Metamagic
+- Psionic Sorcery
+- Aura of Vitality
+- Conjure Animals
+- Magic Missile
+- Beguiling Magic
+- Divine Intervention
+- Blessed Healer
+- Disciple of Life
+- Conjure Minor Elementals
+- Wish
+
 # 1.3.123 Release:
 ## Bug Fixes:
 - Lifesteal Generic Feature

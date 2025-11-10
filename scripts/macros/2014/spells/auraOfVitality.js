@@ -26,8 +26,8 @@ async function use({workflow}) {
     });
     let blessedHealer = itemUtils.getItemByIdentifier(workflow.actor, 'blessedHealer');
     if (!blessedHealer) return;
-    let validTypes = ['prepared', 'pact', 'always'];
-    if (!validTypes.includes(workflow.item.system.preparation.mode)) return;
+    let validTypes = ['spell', 'pact'];
+    if (!validTypes.includes(workflow.item.system.method)) return;
     let castLevel = workflowUtils.getCastLevel(workflow);
     if (!castLevel) return;
     if (workflow.targets.size === 1 && workflow.targets.first().document.uuid === workflow.token.document.uuid) return;

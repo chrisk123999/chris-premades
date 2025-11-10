@@ -14,7 +14,7 @@ async function use({trigger, workflow}) {
     let itemData = genericUtils.duplicate(selection.toObject());
     itemData.system.properties = itemData.system.properties.filter(i => !['vocal', 'somatic'].includes(i));
     if (!itemData.system.materials.consumed) itemData.system.properties = itemData.system.properties.filter(i => i != 'material');
-    itemData.system.preparation.mode = 'innate';
+    itemData.system.method = 'innate';
     let item = await itemUtils.syntheticItem(itemData, workflow.actor);
     await workflowUtils.completeItemUse(item, undefined, {configureDialog: false});
 }
