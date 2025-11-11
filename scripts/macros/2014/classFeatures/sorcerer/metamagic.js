@@ -409,7 +409,7 @@ function createUpdateItem(item, oldDamageType, newDamageType) {
             damage: {
                 parts: activity.damage.parts.map(i => {
                     let newPart = {};
-                    if (i.custom.enabled) newPart.custom = {formula: i.custom.formula.replaceAll(oldDamageType, newDamageType)};
+                    if (i.custom.enabled) newPart.custom = {formula: i.custom.formula.replaceAll(oldDamageType, newDamageType), enabled: true};
                     if (i.types.has(oldDamageType)) newPart.types = [newDamageType];
                     return {...i, ...newPart};
                 })

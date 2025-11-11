@@ -1,3 +1,7 @@
+# 1.3.125 Release:
+## Bug Fixes:
+- Transmuted Spell
+
 # 1.3.124 Release:
 ## New Modern Content:
 - Ring of Spell Storing
