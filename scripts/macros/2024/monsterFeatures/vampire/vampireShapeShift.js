@@ -86,7 +86,7 @@ export let vampireShapeShift = {
             },
             {
                 pass: 'rollFinished',
-                macro: bat,
+                macro: mist,
                 priority: 50,
                 activities: ['mist']
             },
