@@ -1,18 +1,13 @@
 import {actorUtils, dialogUtils, effectUtils, genericUtils, itemUtils} from '../../../../utils.js';
-
 async function use({workflow}) {
     let storedSpellSlots = Number(workflow.item.flags['chris-premades']?.ross?.spellSlots ?? 0);
     let maxSpellSlots = 5; // Maybe we wanna let people homebrew it idk
     let usedRossSpells = workflow.actor.items.filter(i => i.type === 'spell' && i.flags['chris-premades']?.ross?.isStored && !i.system.uses.value && i.flags['chris-premades'].ross.itemUuid === workflow.item.uuid);
     let maxSlotUsable = maxSpellSlots - storedSpellSlots;
     let buttons = [];
-    if (maxSlotUsable) {
-        buttons.push(['CHRISPREMADES.Macros.RingOfSpellStoring.Store', 'store']);
-    }
+    if (maxSlotUsable) buttons.push(['CHRISPREMADES.Macros.RingOfSpellStoring.Store', 'store']);
     if (usedRossSpells.length) buttons.push(['CHRISPREMADES.Macros.RingOfSpellStoring.Clear', 'clear']);
-    if (storedSpellSlots) {
-        buttons.push(['CHRISPREMADES.Macros.RingOfSpellStoring.Reset', 'reset']);
-    }
+    if (storedSpellSlots) buttons.push(['CHRISPREMADES.Macros.RingOfSpellStoring.Reset', 'reset']);
     let selection = await dialogUtils.buttonDialog(workflow.item.name, 'CHRISPREMADES.Dialog.WhatDo', buttons);
     if (!selection) return;
     if (selection === 'store') {
@@ -70,7 +65,7 @@ async function use({workflow}) {
             value: '1'
         }];
         let castLevel = spellData.system.level;
-        if (['prepared', 'always', 'pact'].includes(spellData.system.preparation.mode)) {
+        if (['pact', 'spell'].includes(spellData.system.method)) {
             let selectedSlot = await dialogUtils.selectSpellSlot(workflow.actor, spellData.name, 'CHRISPREMADES.Macros.RingOfSpellStoring.Upcast', {
                 maxLevel: maxSlotUsable,
                 minLevel: castLevel
@@ -93,10 +88,8 @@ async function use({workflow}) {
                     max: 1,
                     spent: 0
                 },
-                preparation: {
-                    mode: 'atwill',
-                    prepared: true
-                }
+                method: 'atwill',
+                prepared: 0
             }
         });
         genericUtils.setProperty(spellData, 'flags.chris-premades.ross', {
@@ -152,12 +145,8 @@ async function unequipRing(item) {
     for (let i of rossSpells) await genericUtils.remove(i);
 }
 async function earlySpell({workflow}) {
-    workflow.config.consumeSpellSlot = false;
-    workflow.config.needsConfiguration = false;
-    workflow.options.configureDialog = false;
     let castLevel = workflow.item.flags['chris-premades'].ross.castLevel;
     if (!castLevel) return;
-    workflow.castData.castLevel = castLevel;
     if (workflow.chatCard) await genericUtils.setFlag(workflow.chatCard, 'dnd5e', 'use.spellLevel', castLevel);
     let originItem = await fromUuid(workflow.item.flags['chris-premades'].ross.itemUuid);
     if (!originItem) return;
@@ -177,6 +166,14 @@ async function earlySpell({workflow}) {
         }
     });
     await actorUtils.removeFavorites(workflow.actor, [workflow.item]);
+}
+async function veryEarly({activity, token, config, dialog, message}) {
+    config.consumeSpellSlot = false;
+    config.needsConfiguration = false;
+    dialog.configure = false;
+    let castLevel = config.workflow.item.flags['chris-premades'].ross.castLevel;
+    if (!castLevel) return;
+    genericUtils.setProperty(config, 'spell.slot', 'spell' + castLevel);
 }
 export let ringOfSpellStoring = {
     name: 'Ring of Spell Storing (0/5)',
@@ -210,6 +207,11 @@ export let ringOfSpellStoringSpell = {
             {
                 pass: 'preItemRoll',
                 macro: earlySpell,
+                priority: 50
+            },
+            {
+                pass: 'preTargeting',
+                macro: veryEarly,
                 priority: 50
             }
         ]

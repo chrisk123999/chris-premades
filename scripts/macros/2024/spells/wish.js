@@ -102,7 +102,7 @@ async function duplicateSpell({trigger, workflow}) {
         cost: 0,
         supply: 0
     };
-    itemData.system.preparation.mode = 'innate';
+    itemData.system.method = 'innate';
     itemData.system.activation.type = 'special';
     let item = await itemUtils.syntheticItem(itemData, workflow.actor);
     await workflowUtils.completeItemUse(item, undefined, {configureDialog: false});

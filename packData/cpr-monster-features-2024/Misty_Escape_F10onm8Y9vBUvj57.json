@@ -1,17 +1,14 @@
 {
-  "folder": "bbR7kJffMX4MkL49",
-  "name": "Wild Shape",
+  "name": "Misty Escape",
   "type": "feat",
-  "_id": "AlUsx1rqvIRDuQgN",
-  "img": "icons/creatures/mammals/bull-horns-eyes-glowin-orange.webp",
   "system": {
     "activities": {
-      "f8RXnDnXot28fcAr": {
-        "type": "transform",
-        "_id": "f8RXnDnXot28fcAr",
+      "XO3RZJb6r4K6vDTY": {
+        "type": "utility",
+        "_id": "XO3RZJb6r4K6vDTY",
         "sort": 0,
         "activation": {
-          "type": "bonus",
+          "type": "special",
           "override": false,
           "condition": ""
         },
@@ -20,22 +17,15 @@
             "allowed": false
           },
           "spellSlot": true,
-          "targets": [
-            {
-              "type": "itemUses",
-              "value": "1",
-              "target": ""
-            }
-          ]
+          "targets": []
         },
         "description": {
           "chatFlavor": ""
         },
         "duration": {
-          "units": "hour",
+          "units": "inst",
           "concentration": false,
-          "override": false,
-          "value": "floor(@classes.druid.levels / 2)"
+          "override": false
         },
         "effects": [],
         "range": {
@@ -60,65 +50,13 @@
         "uses": {
           "spent": 0,
           "recovery": [],
-          "max": "2"
+          "max": ""
         },
-        "profiles": [
-          {
-            "cr": "max(0.25, floor(@subclasses.moon.levels / 3))",
-            "name": "",
-            "_id": "RLgnCX4veFbk8UK7",
-            "uuid": "",
-            "sizes": [],
-            "types": [
-              "beast"
-            ],
-            "movement": [
-              "fly"
-            ],
-            "level": {
-              "min": null,
-              "max": 3
-            }
-          },
-          {
-            "cr": "max(0.5, floor(@subclasses.moon.levels / 3))",
-            "name": "",
-            "_id": "wUG6WV6Rr3Ubc47B",
-            "uuid": "",
-            "sizes": [],
-            "types": [
-              "beast"
-            ],
-            "movement": [
-              "fly"
-            ],
-            "level": {
-              "min": 4,
-              "max": 7
-            }
-          },
-          {
-            "cr": "max(1, floor(@subclasses.moon.levels / 3))",
-            "name": "",
-            "_id": "Fx5fXKvFUiwXSkNZ",
-            "uuid": "",
-            "sizes": [],
-            "types": [
-              "beast"
-            ],
-            "movement": [],
-            "level": {
-              "min": 8,
-              "max": null
-            }
-          }
-        ],
-        "settings": null,
-        "transform": {
-          "customize": false,
-          "mode": "cr",
-          "identifier": "druid",
-          "preset": "wildshape"
+        "roll": {
+          "prompt": false,
+          "visible": false,
+          "formula": "",
+          "name": ""
         },
         "useConditionText": "",
         "useConditionReason": "",
@@ -148,7 +86,7 @@
           "autoTargetType": "any",
           "autoTargetAction": "default",
           "automationOnly": false,
-          "otherActivityCompatible": true,
+          "otherActivityCompatible": false,
           "otherActivityAsParentType": true,
           "identifier": "",
           "displayActivityName": false,
@@ -168,75 +106,66 @@
           "preRemoveConditionText": "",
           "postRemoveConditionText": ""
         },
-        "name": "",
-        "img": ""
+        "otherActivityId": "none",
+        "otherActivityAsParentType": true,
+        "name": ""
       }
     },
     "uses": {
-      "spent": 0,
-      "recovery": [
-        {
-          "period": "sr",
-          "type": "formula",
-          "formula": "1"
-        },
-        {
-          "period": "lr",
-          "type": "recoverAll"
-        }
-      ],
-      "max": "@scale.druid.wild-shape-uses"
+      "spent": null,
+      "recovery": []
     },
-    "advancement": [],
     "description": {
       "value": "",
       "chat": ""
     },
-    "identifier": "wild-shape",
+    "identifier": "misty-escape",
     "source": {
       "revision": 1,
-      "rules": "2024",
-      "book": "",
-      "page": "",
-      "custom": "PHB 2024",
-      "license": ""
+      "rules": "2024"
     },
+    "advancement": [],
     "crewed": false,
     "enchant": {},
     "prerequisites": {
-      "items": [],
       "repeatable": false,
-      "level": 2
+      "items": []
     },
     "properties": [],
     "requirements": "",
     "type": {
-      "value": "class",
+      "value": "monster",
       "subtype": ""
     }
   },
   "effects": [],
   "flags": {
-    "dnd5e": {
-      "riders": {
-        "activity": []
-      }
+    "midiProperties": {
+      "saveDamage": "halfdam"
     },
     "chris-premades": {
       "info": {
-        "identifier": "wildShape",
-        "version": "1.3.123",
+        "identifier": "vampireMistyEscape",
+        "rules": "modern",
         "source": "chris-premades",
-        "rules": "modern"
+        "version": "1.3.126"
       },
       "macros": {
         "midi": {
           "item": [
-            "wildShape"
+            "vampireMistyEscape"
           ]
         }
       }
+    },
+    "dnd5e": {
+      "riders": {
+        "activity": []
+      }
     }
   },
-  "_key": "!items!AlUsx1rqvIRDuQgN"
+  "img": "icons/magic/air/wind-stream-purple.webp",
+  "folder": "O81IF1yuhoGHvryy",
+  "_id": "F10onm8Y9vBUvj57",
+  "_key": "!items!F10onm8Y9vBUvj57"
 }

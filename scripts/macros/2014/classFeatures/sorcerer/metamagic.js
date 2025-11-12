@@ -109,7 +109,7 @@ async function useDistant({workflow}) {
     newItem.prepareData();
     // newItem.prepareFinalAttributes();
     newItem.applyActiveEffects();
-    let shouldConsumeSlot = newItem.system.level && !['atwill', 'innate', 'ritual'].includes(newItem.system.preparation?.mode);
+    let shouldConsumeSlot = newItem.system.level && !['atwill', 'innate', 'ritual'].includes(newItem.system.method);
     let shouldConsumeUsage = newItem.system.hasLimitedUses;
     workflowUtils.syntheticItemRoll(newItem, Array.from(workflow.targets), {
         options: {
@@ -229,7 +229,7 @@ async function useExtended({workflow}) {
     newItem.prepareData();
     // newItem.prepareFinalAttributes();
     newItem.applyActiveEffects();
-    let shouldConsumeSlot = newItem.system.level && !['atwill', 'innate', 'ritual'].includes(newItem.system.preparation?.mode);
+    let shouldConsumeSlot = newItem.system.level && !['atwill', 'innate', 'ritual'].includes(newItem.system.method);
     let shouldConsumeUsage = newItem.system.hasLimitedUses;
     workflowUtils.syntheticItemRoll(newItem, Array.from(workflow.targets), {
         options: {
@@ -333,7 +333,7 @@ async function useQuickened({workflow}) {
     newItem.prepareData();
     // newItem.prepareFinalAttributes();
     newItem.applyActiveEffects();
-    let shouldConsumeSlot = newItem.system.level && !['atwill', 'innate', 'ritual'].includes(newItem.system.preparation?.mode);
+    let shouldConsumeSlot = newItem.system.level && !['atwill', 'innate', 'ritual'].includes(newItem.system.method);
     let shouldConsumeUsage = newItem.system.hasLimitedUses;
     workflowUtils.syntheticItemRoll(newItem, Array.from(workflow.targets), {
         options: {
@@ -379,7 +379,7 @@ async function useSubtle({workflow}) {
     newItem.prepareData();
     // newItem.prepareFinalAttributes();
     newItem.applyActiveEffects();
-    let shouldConsumeSlot = newItem.system.level && !['atwill', 'innate', 'ritual'].includes(newItem.system.preparation?.mode);
+    let shouldConsumeSlot = newItem.system.level && !['atwill', 'innate', 'ritual'].includes(newItem.system.method);
     let shouldConsumeUsage = newItem.system.hasLimitedUses;
     workflowUtils.syntheticItemRoll(newItem, Array.from(workflow.targets), {
         options: {
@@ -409,7 +409,7 @@ function createUpdateItem(item, oldDamageType, newDamageType) {
             damage: {
                 parts: activity.damage.parts.map(i => {
                     let newPart = {};
-                    if (i.custom.enabled) newPart.custom = {formula: i.custom.formula.replaceAll(oldDamageType, newDamageType)};
+                    if (i.custom.enabled) newPart.custom = {formula: i.custom.formula.replaceAll(oldDamageType, newDamageType), enabled: true};
                     if (i.types.has(oldDamageType)) newPart.types = [newDamageType];
                     return {...i, ...newPart};
                 })
@@ -483,7 +483,7 @@ async function useTwinned({workflow}) {
     newItem.prepareData();
     // newItem.prepareFinalAttributes();
     newItem.applyActiveEffects();
-    let shouldConsumeSlot = newItem.system.level && !['atwill', 'innate', 'ritual'].includes(newItem.system.preparation?.mode);
+    let shouldConsumeSlot = newItem.system.level && !['atwill', 'innate', 'ritual'].includes(newItem.system.method);
     let shouldConsumeUsage = newItem.system.hasLimitedUses;
     await workflowUtils.syntheticItemRoll(newItem, Array.from(workflow.targets), {
         options: {

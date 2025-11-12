@@ -2513,6 +2513,16 @@
             "UpcastTargets": {
                 "Select": "Too many targets selected! Please select up to {maxTargets} targets."
             },
+            "VampireShapeShift": {
+                "BatAvatarImg": "Bat Avatar Image:",
+                "BatAvatarImgPriority": "Bat Avatar Image Priority:",
+                "BatTokenImg": "Bat Token Image:",
+                "BatTokenImgPriority": "Bat Token Image Priority:",
+                "MistAvatarImg": "Mist Avatar Image:",
+                "MistAvatarImgPriority": "Mist Avatar Image Priority:",
+                "MistTokenImg": "Mist Token Image:",
+                "MistTokenImgPriority": "Mist Token Image Priority:"
+            },
             "VampiricBite": {
                 "Bonus": "Bonus to next attack/check",
                 "Heal": "Regain hp",
@@ -3061,10 +3071,6 @@
                 "Hint": "Enable the Circle Casting mechanic from Forgotten Realms: Heroes of Faerûn.",
                 "Name": "Circle Casting"
             },
-            "healingSurge": {
-                "Hint": "Enable the Healing Surge feature from the 2014 Dungeon Master's Guide.",
-                "Name": "Healing Surge"
-            },
             "classSpellList": {
                 "Hint": "Journal with all class spell lists configured.",
                 "Name": "Class Spell List Journal"
@@ -3208,6 +3214,10 @@
             "groupSummonsWithOwner": {
                 "Hint": "When enabled, summons created via the CPR API will be grouped together in the combat tracker if their initative is the same.",
                 "Name": "Group Summons With Owner"
+            },
+            "healingSurge": {
+                "Hint": "Enable the Healing Surge feature from the 2014 Dungeon Master's Guide.",
+                "Name": "Healing Surge"
             },
             "hiddenCompendiumFolders": {
                 "Hint": "Selected compendium folders will be hidden.",

@@ -1,3 +1,39 @@
+# 1.3.127 Release:
+## Bug Fixes:
+- Shape-Shift
+
+# 1.3.126 Release:
+## New Monster Content:
+- Vampire: Beguile, Bite, Charm, Grave Strike, Misty Escape, Shape-Shift, Vampire Weakness
+## Bug Fixes:
+- Charm Person (Modern)
+
+# 1.3.125 Release:
+## Bug Fixes:
+- Transmuted Spell
+
+# 1.3.124 Release:
+## New Modern Content:
+- Ring of Spell Storing
+- Circle Forms
+## New Legacy Content:
+- Crown of Daffodils
+## Bug Fixes:
+- Wild Shape
+- Ring of Spell Storing
+- Steel Defender
+- Metamagic
+- Psionic Sorcery
+- Aura of Vitality
+- Conjure Animals
+- Magic Missile
+- Beguiling Magic
+- Divine Intervention
+- Blessed Healer
+- Disciple of Life
+- Conjure Minor Elementals
+- Wish
+
 # 1.3.123 Release:
 ## Bug Fixes:
 - Lifesteal Generic Feature

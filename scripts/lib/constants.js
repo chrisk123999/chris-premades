@@ -81,6 +81,7 @@ function setUseLocalCompendium(value) {
         packs.thirdPartyClassFeatures = 'world.cpr-3rd-party-class-features';
         packs.thirdPartyItems = 'world.cpr-3rd-party-items';
         packs.monsterFeatures = 'world.cpr-monster-features';
+        modernPacks.monsterFeatures = 'world.cpr-monster-features-2024';
         packs.miscellaneous = 'world.cpr-miscellaneous';
         packs.thirdPartyFeats = 'world.cpr-3rd-party-feats';
         modernPacks.spells = 'world.cpr-spells-2024';
@@ -117,6 +118,7 @@ function setUseLocalCompendium(value) {
         packs.thirdPartyClassFeatures = 'chris-premades.CPRThirdPartyClassFeatures';
         packs.thirdPartyItems = 'chris-premades.CPRThirdPartyItems';
         packs.monsterFeatures = 'chris-premades.CPRMonsterFeatures';
+        modernPacks.monsterFeatures = 'chris-premades.CPRMonsterFeatures2024';
         packs.miscellaneous = 'chris-premades.CPRMiscellaneous';
         packs.thirdPartyFeats = 'chris-premades.CPRThirdPartyFeats';
         modernPacks.spells = 'chris-premades.CPRSpells2024';

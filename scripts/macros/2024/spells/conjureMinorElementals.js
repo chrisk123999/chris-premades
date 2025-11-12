@@ -28,8 +28,8 @@ async function damage({trigger: {entity: effect}, workflow}) {
     let selection = await dialogUtils.selectDamageType(damageTypes, effect.name, 'CHRISPREMADES.Macros.ChaosBolt.Select');
     if (!selection) return;
     let castLevel = effect.flags['chris-premades'].castData.castLevel;
-    let numDice = 2 + 2 * (castLevel - 4);
-    await workflowUtils.bonusDamage(workflow, `${numDice}d8`, {damageType: selection});
+    let numDice = 2 + castLevel - 4;
+    await workflowUtils.bonusDamage(workflow, numDice + 'd8', {damageType: selection});
 }
 export let conjureMinorElementals = {
     name: 'Conjure Minor Elementals',

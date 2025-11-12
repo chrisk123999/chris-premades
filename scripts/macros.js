@@ -202,6 +202,7 @@ export {forestGuard, forestGuardTurnEffect, forestGuardEffect} from './macros/20
 export {healersKit} from './macros/2024/items/healersKit.js';
 export {unarmedStrike} from './macros/2024/items/misc/unarmedStrike.js';
 export {deckOfIllusions} from './macros/2024/items/trinket/deckOfIllusions.js';
+export {ringOfSpellStoring, ringOfSpellStoringSpell} from './macros/2024/items/trinket/ringOfSpellStoring.js';
 // Feats
 export {alert} from './macros/2024/feats/alert.js';
 export {archery} from './macros/2024/feats/archery.js';
@@ -325,6 +326,7 @@ export {landsAid} from './macros/2024/classFeatures/druid/land/landsAid.js';
 export {naturesSanctuary, naturesSanctuaryTemplate} from './macros/2024/classFeatures/druid/land/naturesSanctuary.js';
 export {naturesWard} from './macros/2024/classFeatures/druid/land/naturesWard.js';
 // Circle of Moon
+export {circleForms} from './macros/2024/classFeatures/druid/moon/circleForms.js';
 export {improvedCircleForms} from './macros/2024/classFeatures/druid/moon/improvedCircleForms.js';
 export {lunarForm} from './macros/2024/classFeatures/druid/moon/lunarForm.js';
 export {moonlightStep} from './macros/2024/classFeatures/druid/moon/moonlightStep.js';
@@ -401,3 +403,11 @@ export {evasion} from './macros/2024/classFeatures/multiple/evasion.js';
 // Monster Features
 // Sphinx Of Wonder
 export {burstOfIngenuity} from './macros/2024/monsterFeatures/sphinxOfWonder/burstOfIngenuity.js';
+// Vampire
+export {graveStrike} from './macros/2024/monsterFeatures/vampire/graveStrike.js';
+export {beguile} from './macros/2024/monsterFeatures/vampire/beguile.js';
+export {vampireBite} from './macros/2024/monsterFeatures/vampire/bite.js';
+export {vampireWeakness} from './macros/2024/monsterFeatures/vampire/vampireWeakness.js';
+export {vampireCharm} from './macros/2024/monsterFeatures/vampire/vampireCharm.js';
+export {vampireShapeShift} from './macros/2024/monsterFeatures/vampire/vampireShapeShift.js';
+export {vampireMistyEscape} from './macros/2024/monsterFeatures/vampire/vampireMistyEscape.js';

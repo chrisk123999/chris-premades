@@ -57,7 +57,7 @@ async function use({trigger, workflow}) {
     }];
     let castLevel = spellData.system.level;
     if (originalSpell.system.level != 0) {
-        if (['prepared', 'always', 'pact'].includes(spellData.system.preparation.mode)) {
+        if (['prepared', 'always', 'pact'].includes(spellData.system.method)) {
             let selectedSlot = await dialogUtils.selectSpellSlot(targetActor, spellData.name, 'CHRISPREMADES.Macros.RingOfSpellStoring.Upcast', {
                 maxLevel: maxLevel,
                 minLevel: castLevel

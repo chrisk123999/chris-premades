@@ -3,8 +3,8 @@ async function heal({trigger: {entity: item}, workflow}) {
     if (!workflow.targets.size || !workflow.item || !workflow.token || !workflow.damageRolls) return;
     if (workflow.item.type != 'spell' || activityUtils.isSpellActivity(workflow.activity)) return;
     if (!workflowUtils.getDamageTypes(workflow.damageRolls).has('healing')) return;
-    let validTypes = ['prepared', 'pact', 'always'];
-    if (!validTypes.includes(workflow.item.system.preparation.mode)) return;
+    let validTypes = ['spell', 'pact'];
+    if (!validTypes.includes(workflow.item.system.method)) return;
     let castLevel = workflowUtils.getCastLevel(workflow);
     if (!castLevel) return;
     if (workflow.targets.size === 1 && workflow.targets.first().document.uuid === workflow.token.document.uuid) return;

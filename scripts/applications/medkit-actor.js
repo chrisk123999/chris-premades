@@ -4,6 +4,7 @@ import {gambitPremades} from '../integrations/gambitsPremades.js';
 import {miscPremades} from '../integrations/miscPremades.js';
 import {ItemMedkit} from './medkit-item.js';
 import {itemEvent} from '../events/item.js';
+import {items as itemExt} from '../extensions/items.js';
 export class ActorMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
     constructor(actor) {
         super({id: 'medkit-window-actor'});
@@ -175,6 +176,7 @@ export class ActorMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
             this.setPosition(position);
             await this.render(true, {position: {top: null}});
         }
+        for (let item of items) await itemExt.fixCastActivities(item);
         itemEvent.actorMedkit(items);
     }
     static async apply(event, target) {

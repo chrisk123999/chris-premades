@@ -4,6 +4,7 @@ import * as macros from '../legacyMacros.js';
 import {custom} from '../events/custom.js';
 import {EmbeddedMacros} from './embeddedMacros.js';
 import {itemEvent} from '../events/item.js';
+import {items} from '../extensions/items.js';
 export class ItemMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
     constructor(item) {
         super({id: 'medkit-window-item'});
@@ -801,6 +802,7 @@ export class ItemMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
         if (item.effects.size) await item.deleteEmbeddedDocuments('ActiveEffect', item.effects.map(i => i.id));
         genericUtils.setProperty(sourceItemData, 'flags.chris-premades.info.rules', genericUtils.getRules(item));
         await item.update(sourceItemData, {diff: false, recursive: false});
+        if (!actorMedkit) await items.fixCastActivities(item);
         if (!actorMedkit && item.actor) itemEvent.executeMacroPass(item, 'itemMedkit');
         return item;
     }
@@ -879,6 +881,21 @@ export class ItemMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
                         }
                     }
                     await genericUtils.update(this.item, updates);
+                }
+                let castActivities = this.item.system.activities.getByType('cast');
+                if (castActivities.length) {
+                    let flagData = (await Promise.all(castActivities.map(async activity => {
+                        let spell = await fromUuid(activity.spell.uuid);
+                        if (!spell) return;
+                        let identifier = genericUtils.getIdentifier(spell);
+                        let data = {
+                            name: spell.name,
+                            activityId: activity.id
+                        };
+                        if (identifier) data.identifier = identifier;
+                        return data;
+                    }))).filter(i => i);
+                    await genericUtils.setFlag(this.item, 'chris-premades', 'castActivities', flagData);
                 }
             } else {
                 let source = this.availableAutomations.find(i => i.source === this.selectedSource);

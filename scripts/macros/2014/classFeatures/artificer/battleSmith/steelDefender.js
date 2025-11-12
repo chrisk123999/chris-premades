@@ -1,7 +1,6 @@
 import {Summons} from '../../../../../lib/summons.js';
-import {activityUtils, actorUtils, animationUtils, combatUtils, compendiumUtils, constants, dialogUtils, effectUtils, genericUtils, itemUtils, socketUtils, tokenUtils, workflowUtils} from '../../../../../utils.js';
+import {activityUtils, actorUtils, combatUtils, compendiumUtils, constants, dialogUtils, effectUtils, genericUtils, itemUtils, socketUtils, tokenUtils, workflowUtils} from '../../../../../utils.js';
 import {arcaneJoltHelper} from './arcaneJolt.js';
-
 async function use({workflow}) {
     let sourceActor = await compendiumUtils.getActorFromCompendium(constants.packs.summons, 'CPR - Steel Defender');
     if (!sourceActor) return;
@@ -114,6 +113,7 @@ async function arcaneJolt({workflow}) {
     await arcaneJoltHelper(workflow, originItem);
 }
 async function early({trigger: {entity: item, token}, workflow}) {
+    if (!workflowUtils.isAttackType(workflow, 'attack')) return;
     if (workflow.token.document.disposition === token.document.disposition) return;
     if (actorUtils.hasUsedReaction(token.actor)) return;
     if (workflow.targets.has(token)) return;

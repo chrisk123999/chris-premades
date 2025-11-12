@@ -34,7 +34,7 @@ async function use({trigger: {entity: item}, workflow}) {
         cost: 0,
         supply: 0
     };
-    itemData.system.preparation.mode = 'innate';
+    itemData.system.method = 'innate';
     itemData.system.activation.type = 'special';
     let newItem = await itemUtils.syntheticItem(itemData, workflow.actor);
     await workflowUtils.completeItemUse(newItem, undefined, {configureDialog: false});

@@ -1,5 +1,4 @@
 import {constants, genericUtils, itemUtils} from '../../../../utils.js';
-
 async function early({trigger: {entity: item}, workflow}) {
     if (!itemUtils.getEquipmentState(item)) return;
     let isUnarmed = constants.unarmedAttacks.includes(genericUtils.getIdentifier(workflow.item));

@@ -32,6 +32,7 @@ async function late({workflow}) {
             if (config.halfDamage) damageApplied = Math.floor(damageApplied / 2);
         }
         if (!damageApplied) return;
+        damageApplied = Math.floor(damageApplied);
         let totalMax = token.actor.system.attributes.hp.max;
         let effect = await effectUtils.getAllEffectsByIdentifier(token.actor, 'reduceMaxHP').find(async i => (await effectUtils.getOriginItem(i))?.uuid === workflow.item.uuid);
         if (effect) {
