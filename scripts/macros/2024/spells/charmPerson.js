@@ -12,7 +12,7 @@ async function early({trigger, workflow}) {
 }
 export let charmPerson = {
     name: 'Charm Person',
-    version: '1.1.19',
+    version: '1.3.126',
     rules: 'modern',
     midi: {
         item: [

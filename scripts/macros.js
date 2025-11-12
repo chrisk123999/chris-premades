@@ -403,3 +403,11 @@ export {evasion} from './macros/2024/classFeatures/multiple/evasion.js';
 // Monster Features
 // Sphinx Of Wonder
 export {burstOfIngenuity} from './macros/2024/monsterFeatures/sphinxOfWonder/burstOfIngenuity.js';
+// Vampire
+export {graveStrike} from './macros/2024/monsterFeatures/vampire/graveStrike.js';
+export {beguile} from './macros/2024/monsterFeatures/vampire/beguile.js';
+export {vampireBite} from './macros/2024/monsterFeatures/vampire/bite.js';
+export {vampireWeakness} from './macros/2024/monsterFeatures/vampire/vampireWeakness.js';
+export {vampireCharm} from './macros/2024/monsterFeatures/vampire/vampireCharm.js';
+export {vampireShapeShift} from './macros/2024/monsterFeatures/vampire/vampireShapeShift.js';
+export {vampireMistyEscape} from './macros/2024/monsterFeatures/vampire/vampireMistyEscape.js';

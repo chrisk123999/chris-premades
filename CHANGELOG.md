@@ -1,3 +1,9 @@
+# 1.3.126 Release:
+## New Monster Content:
+- Vampire: Beguile, Bite, Charm, Grave Strike, Misty Escape, Shape-Shift, Vampire Weakness
+## Bug Fixes:
+- Charm Person (Modern)
+
 # 1.3.125 Release:
 ## Bug Fixes:
 - Transmuted Spell

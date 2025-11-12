@@ -1,6 +1,5 @@
 import {combatUtils, constants, effectUtils, genericUtils} from '../../../utils.js';
 import {upcastTargets} from '../../generic/upcastTargets.js';
-
 async function early({workflow}) {
     await upcastTargets.plusOne({workflow});
     if (!workflow.targets.size) return;
