@@ -1,3 +1,7 @@
+# 1.3.128 Release:
+## Bug Fixes:
+- Attempt to improve compatability between UI scale settings and other modules
+  
 # 1.3.127 Release:
 ## Bug Fixes:
 - Shape-Shift
