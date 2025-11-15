@@ -29,7 +29,9 @@ function buttonScale(value) {
             }
         `;
         document.querySelector('head').appendChild(el);
-    } else document.querySelector('#cpr-ui-button-scale').remove();
+    } else {
+        document.querySelector('#cpr-ui-button-scale')?.remove();
+    }
 }
 function navigationScale(value) {
     setBodyProperty('--custom-ui-navigation-scale', value);
@@ -43,7 +45,9 @@ function navigationScale(value) {
             }
         `;
         document.querySelector('head').appendChild(el);
-    } else document.querySelector('#cpr-ui-navigation-scale').remove();
+    } else {
+        document.querySelector('#cpr-ui-navigation-scale')?.remove();
+    }
 }
 function customSidebar(value) {
     if (value) {
@@ -67,7 +71,9 @@ function customSidebar(value) {
             }
         `;
         document.querySelector('head').appendChild(el);
-    } else document.querySelector('#cpr-custom-sidebar').remove();
+    } else {
+        document.querySelector('#cpr-custom-sidebar')?.remove();
+    }
 }
 function customChatMessage(value) {
     if (value) {
@@ -127,7 +133,7 @@ function customChatMessage(value) {
         Hooks.on('renderApplicationV2', chatMessageThemeHook);
         Hooks.once('ready', chatMessageThemeApply);
     } else {
-        document.querySelector('#cpr-custom-chat-message').remove();
+        document.querySelector('#cpr-custom-chat-message')?.remove();
         Hooks.off('renderApplicationV2', chatMessageThemeHook);
         chatMessageThemeRemove();
     }

@@ -80,7 +80,7 @@
   "effects": [
     {
       "name": "Brave",
-      "origin": "Compendium.world.cpr-race-features.Item.FcHoncVk7qdOB5e0",
+      "origin": "Compendium.world.cpr-race-features.Item.Vja9EmF85fA4fzk3",
       "duration": {
         "rounds": null,
         "startTime": 1488,
@@ -92,7 +92,11 @@
       },
       "disabled": false,
       "flags": {
-        "dnd5e": {},
+        "dnd5e": {
+          "riders": {
+            "statuses": []
+          }
+        },
         "dae": {
           "disableCondition": "",
           "disableIncapacitated": false,
@@ -106,7 +110,7 @@
           "overlay": false
         }
       },
-      "img": "icons/commodities/treasure/broach-shield-grey.webp",
+      "img": "icons/commodities/treasure/brooch-shield-grey.webp",
       "_id": "yHDtlg3pQPab4h6h",
       "type": "base",
       "system": {},
@@ -126,7 +130,7 @@
       "_key": "!items.effects!Vja9EmF85fA4fzk3.yHDtlg3pQPab4h6h"
     }
   ],
-  "img": "icons/commodities/treasure/broach-shield-grey.webp",
+  "img": "icons/commodities/treasure/brooch-shield-grey.webp",
   "folder": "sHnPs8lTURb0cLpB",
   "_id": "Vja9EmF85fA4fzk3",
   "_key": "!items!Vja9EmF85fA4fzk3"

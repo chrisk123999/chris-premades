@@ -52,8 +52,7 @@
     },
     "dnd5e": {
       "riders": {
-        "activity": [],
-        "effect": []
+        "activity": []
       }
     }
   },
@@ -219,7 +218,9 @@
         "attackMode": "oneHanded",
         "ammunition": "",
         "otherActivityId": "none",
-        "name": ""
+        "name": "",
+        "img": "",
+        "appliedEffects": []
       }
     },
     "identifier": "guardian-armor-thunder-gauntlets",
