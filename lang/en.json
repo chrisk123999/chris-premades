@@ -114,6 +114,7 @@
             "Activities": "Activities:",
             "AffectAllies": "Should Affect Allies:",
             "AllowEnemies": "Allow selection of non-allied tokens?",
+            "AllowMultiplePerTurn" : "Allow Multiple Uses Per Turn?",
             "Animation": "Animation:",
             "Animations": {
                 "Air": "Air",
