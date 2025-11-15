@@ -3,7 +3,7 @@
 - Guided Strike
 - Potion of Poison
 - Slasher
-- Attempt to improve compatability between UI scale settings and other modules.
+- Attempt to improve compatibility between UI scale settings and other modules.
   
 # 1.3.127 Release:
 ## Bug Fixes:
