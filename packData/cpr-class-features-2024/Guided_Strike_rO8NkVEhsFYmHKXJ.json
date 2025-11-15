@@ -189,7 +189,7 @@
           "name": "",
           "formula": ""
         },
-        "useConditionText": "false",
+        "useConditionText": "",
         "useConditionReason": "",
         "effectConditionText": "",
         "macroData": {
@@ -280,8 +280,7 @@
     "dnd5e": {
       "advancementOrigin": "PXdBnjKTNidcQebA",
       "riders": {
-        "activity": [],
-        "effect": []
+        "activity": []
       }
     },
     "chris-premades": {
@@ -289,7 +288,7 @@
         "identifier": "guidedStrike",
         "source": "chris-premades",
         "rules": "modern",
-        "version": "1.3.43"
+        "version": "1.3.128"
       },
       "macros": {
         "midi": {

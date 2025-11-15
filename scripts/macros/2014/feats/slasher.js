@@ -2,11 +2,11 @@ import {activityUtils, combatUtils, dialogUtils, itemUtils, workflowUtils} from 
 async function lateSpeed({trigger: {entity: item}, workflow}) {
     if (workflow.hitTargets.size !== 1 || !workflow.damageRolls || !workflowUtils.isAttackType(workflow, 'attack')) return;
     if (!workflowUtils.getDamageTypes(workflow.damageRolls).has('slashing')) return;
-    if (!itemUtils.canUse(item)) return;
-    let selection = await dialogUtils.confirmUseItem(item);
-    if (!selection) return;
     let actiivty = activityUtils.getActivityByIdentifier(item, 'use', {strict: true});
     if (!actiivty) return;
+    if (!activityUtils.canUse(actiivty)) return;
+    let selection = await dialogUtils.confirmUseItem(item);
+    if (!selection) return;
     let inCombat = combatUtils.inCombat();
     await workflowUtils.syntheticActivityRoll(actiivty, Array.from(workflow.targets), {consumeUsage: inCombat, consumeResources: inCombat});
 }
