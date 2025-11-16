@@ -706,24 +706,3 @@ div.cpr-quick-conditions {
     flex-wrap: wrap;
     justify-content: space-evenly;
 }
-
-/* Foundry UI Tweaks */
-
-body #interface #ui-left #ui-left-column-1 #scene-controls {
-    transform: scale(var(--custom-ui-button-scale));
-    transform-origin: top left;
-}
-
-body #interface #ui-left #ui-left-column-1 {
-    --control-size: calc(var(--custom-ui-button-scale) * 32px);
-}
-
-body #interface #ui-left #ui-left-column-2 {
-    transform: scale(var(--custom-ui-navigation-scale));
-    transform-origin: top left;
-}
-
-body #interface #ui-right #sidebar #sidebar-tabs {
-    transform: scale(var(--custom-ui-button-scale));
-    transform-origin: top right;
-}

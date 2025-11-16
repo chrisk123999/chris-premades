@@ -1,5 +1,4 @@
 import {combatUtils, genericUtils} from '../../../utils.js';
-
 async function use({workflow}) {
     if (!combatUtils.inCombat() || combatUtils.combatStarted() || workflow.targets.size !== 1) return;
     if (workflow.token.document.disposition !== workflow.targets.first().document.disposition) return;
@@ -10,7 +9,6 @@ async function use({workflow}) {
     genericUtils.update(tokenCombatant, {initiative: targetCombatant.initiative});
     genericUtils.update(targetCombatant, {initiative: tokenInitiative});
 }
-
 export let alert = {
     name: 'Alert',
     version: '1.2.41',

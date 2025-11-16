@@ -1,14 +1,53 @@
 import {genericUtils} from '../utils.js';
 function configureUI() {
     let customUIButtonScale = genericUtils.getCPRSetting('customUIButtonScale');
-    setBodyProperty('--custom-ui-button-scale', customUIButtonScale);
+    if (customUIButtonScale) buttonScale(customUIButtonScale);
     let customUINavigationScale = genericUtils.getCPRSetting('customUINavigationScale');
-    setBodyProperty('--custom-ui-navigation-scale', customUINavigationScale);
+    if (customUINavigationScale) navigationScale(customUINavigationScale);
     if (genericUtils.getCPRSetting('customSidebar')) customSidebar(true);
     if (genericUtils.getCPRSetting('customChatMessage')) customChatMessage(true);
 }
 function setBodyProperty(key, value) {
     document.body.style.setProperty(key, String(value));
+}
+function buttonScale(value) {
+    setBodyProperty('--custom-ui-button-scale', value);
+    if (value != 1) {
+        let el = document.createElement('style');
+        el.id = 'cpr-ui-button-scale';
+        el.innerHTML = `
+            body #interface #ui-left #ui-left-column-1 #scene-controls {
+                transform: scale(var(--custom-ui-button-scale));
+                transform-origin: top left;
+            }
+            body #interface #ui-left #ui-left-column-1 {
+                --control-size: calc(var(--custom-ui-button-scale) * 32px);
+            }
+            body #interface #ui-right #sidebar #sidebar-tabs {
+                transform: scale(var(--custom-ui-button-scale));
+                transform-origin: top right;
+            }
+        `;
+        document.querySelector('head').appendChild(el);
+    } else {
+        document.querySelector('#cpr-ui-button-scale')?.remove();
+    }
+}
+function navigationScale(value) {
+    setBodyProperty('--custom-ui-navigation-scale', value);
+    if (value) {
+        let el = document.createElement('style');
+        el.id = 'cpr-ui-navigation-scale';
+        el.innerHTML = `
+            body #interface #ui-left #ui-left-column-2 {
+                transform: scale(var(--custom-ui-navigation-scale));
+                transform-origin: top left;
+            }
+        `;
+        document.querySelector('head').appendChild(el);
+    } else {
+        document.querySelector('#cpr-ui-navigation-scale')?.remove();
+    }
 }
 function customSidebar(value) {
     if (value) {
@@ -32,7 +71,9 @@ function customSidebar(value) {
             }
         `;
         document.querySelector('head').appendChild(el);
-    } else document.querySelector('#cpr-custom-sidebar').remove();
+    } else {
+        document.querySelector('#cpr-custom-sidebar')?.remove();
+    }
 }
 function customChatMessage(value) {
     if (value) {
@@ -92,7 +133,7 @@ function customChatMessage(value) {
         Hooks.on('renderApplicationV2', chatMessageThemeHook);
         Hooks.once('ready', chatMessageThemeApply);
     } else {
-        document.querySelector('#cpr-custom-chat-message').remove();
+        document.querySelector('#cpr-custom-chat-message')?.remove();
         Hooks.off('renderApplicationV2', chatMessageThemeHook);
         chatMessageThemeRemove();
     }

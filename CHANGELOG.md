@@ -1,3 +1,21 @@
+# 1.3.129 Release:
+## Bug Fixes:
+- Guardian Armor (Legacy)
+- Unarmed Strike (Tavern Brawler) (Modern)
+- Brave (Legacy)
+- Protection from Evil and Good (Legacy and Modern)
+- Deflect Attack (Legacy)
+- Experimental Elixir (Legacy)
+- Healing Spirit (Legacy)
+- UI Settings
+
+# 1.3.128 Release:
+## Bug Fixes:
+- Guided Strike
+- Potion of Poison
+- Slasher
+- Attempt to improve compatibility between UI scale settings and other modules.
+  
 # 1.3.127 Release:
 ## Bug Fixes:
 - Shape-Shift

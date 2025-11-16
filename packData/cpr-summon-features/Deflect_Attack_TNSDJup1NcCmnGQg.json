@@ -94,14 +94,11 @@
               "bonus": "",
               "types": [
                 "force"
-              ],
-              "scaling": {
-                "number": 1
-              }
+              ]
             }
           ]
         },
-        "useConditionText": "",
+        "useConditionText": "false",
         "forceDialog": false,
         "effectConditionText": "",
         "midiAutomationOnly": false,
@@ -160,8 +157,7 @@
     },
     "dnd5e": {
       "riders": {
-        "activity": [],
-        "effect": []
+        "activity": []
       }
     }
   },

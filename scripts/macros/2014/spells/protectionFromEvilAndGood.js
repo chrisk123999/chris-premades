@@ -3,7 +3,7 @@ async function save({trigger}) {
 }
 export let protectionFromEvilAndGood = {
     name: 'Protection from Evil and Good',
-    version: '1.1.0',
+    version: '1.3.129',
     save: [
         {
             pass: 'context',
