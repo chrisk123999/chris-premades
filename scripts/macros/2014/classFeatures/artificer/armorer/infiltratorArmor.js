@@ -57,6 +57,8 @@ async function early({trigger, workflow}) {
     let ability = actorUtils.getBestAbility(workflow.actor, ['dex', 'int']);
     if (ability === 'dex') return;
     let activity = workflow.activity.clone({'attack.ability': ability}, {keepId: true});
+    activity.prepareData();
+    activity.prepareFinalData();
     workflow.activity = activity;
 }
 export let infiltratorArmor = {

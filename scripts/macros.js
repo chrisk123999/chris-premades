@@ -411,3 +411,11 @@ export {vampireWeakness} from './macros/2024/monsterFeatures/vampire/vampireWeak
 export {vampireCharm} from './macros/2024/monsterFeatures/vampire/vampireCharm.js';
 export {vampireShapeShift} from './macros/2024/monsterFeatures/vampire/vampireShapeShift.js';
 export {vampireMistyEscape} from './macros/2024/monsterFeatures/vampire/vampireMistyEscape.js';
+// Goblin Warrior
+export {goblinWarriorScimitar} from './macros/2024/monsterFeatures/goblinWarrior/scimitar.js';
+export {goblinWarriorShortbow} from './macros/2024/monsterFeatures/goblinWarrior/shortbow.js';
+export {goblinWarriorNimbleEscape} from './macros/2024/monsterFeatures/goblinWarrior/nimbleEscape.js';
+// Worg
+export {worgBite} from './macros/2024/monsterFeatures/worg/bite.js';
+// Goblin Boss
+export {goblinBossRedirectAttack} from './macros/2024/monsterFeatures/goblinBoss/redirectAttack.js';

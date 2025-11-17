@@ -1,3 +1,14 @@
+# 1.3.130 Release:
+## New Legacy Content:
+- Insightful Manipulator
+## New Modern Content:
+- Goblin Warrior: Scimitar, Shortbow, Nimble Escape
+- Goblin Boss: Scimitar, Shortbow, Nimble Escape, Redirect Attack
+- Worg: Bite
+## Bug Fixes:
+- Arcane Armor (Legacy)
+- Hexblade's Curse (Legacy)
+
 # 1.3.129 Release:
 ## Bug Fixes:
 - Guardian Armor (Legacy)

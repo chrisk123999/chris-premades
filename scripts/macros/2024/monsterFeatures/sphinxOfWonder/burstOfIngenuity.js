@@ -36,7 +36,9 @@ async function selfCheck({trigger: {actor, token, roll, entity: item}}) {
 }
 export let burstOfIngenuity = {
     name: 'Burst of Ingenuity',
-    monster: 'Sphinx of Wonder',
+    monsters: [
+        'Sphinx of Wonder'
+    ],
     version: '1.3.107',
     rules: 'modern',
     skill: [

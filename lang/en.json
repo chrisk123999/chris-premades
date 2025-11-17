@@ -1730,6 +1730,20 @@
             "InsectPlague": {
                 "Damage": "Insect Plague: Damage"
             },
+            "InsightfulManipulator": {
+                "ChaScore": "Charisma Score",
+                "Equal": "{ability} is equal to yours.",
+                "EqualLevel": "Class levels are equal.",
+                "Higher": "{ability} is higher than yours.",
+                "HigherLevel": "Levels are higher than yours.",
+                "IntScore": "Intelligence Score",
+                "Levels": "Class Levels",
+                "Lower": "{ability} is lower than yours.",
+                "LowerLevel": "Levels are lower than yours.",
+                "NoLevel": "No class levels.",
+                "Select": "Select information to learn:",
+                "WisScore": "Wisdom Score"
+            },
             "InspiringSmite": {
                 "Select": "Distribute Temp HP (Amount to Distribute: {maxAmount})"
             },
