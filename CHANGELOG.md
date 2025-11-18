@@ -1,3 +1,7 @@
+# 1.3.131 Release:
+## API Bug Fixes:
+- Item Event
+
 # 1.3.130 Release:
 ## New Legacy Content:
 - Insightful Manipulator
