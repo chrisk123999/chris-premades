@@ -3129,6 +3129,10 @@
                 "Hint": "Gives a dark theme to the chat messages.",
                 "Name": "Chat Message Dark Mode"
             },
+            "compactMode": {
+                "Hint": "Reduces padding and spacing in dialogs and forms, limits dialog height to 50vh, and constrains button images to 32px for a more compact interface.",
+                "Name": "Compact Mode"
+            },
             "customSidebar": {
                 "Hint": "CSS tweaks to the sidebar including chat background and scrollbar flipping and other minor changes.",
                 "Name": "Custom Sidebar"
