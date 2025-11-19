@@ -1,11 +1,11 @@
 {
-  "name": "Shortbow",
-  "type": "weapon",
+  "name": "Knock Down",
+  "type": "feat",
   "system": {
     "activities": {
-      "attackShoraction": {
-        "type": "attack",
-        "_id": "attackShoraction",
+      "saveKnoDowaction": {
+        "type": "save",
+        "_id": "saveKnoDowaction",
         "sort": 0,
         "activation": {
           "type": "action",
@@ -28,9 +28,15 @@
           "concentration": false,
           "override": false
         },
-        "effects": [],
+        "effects": [
+          {
+            "_id": "LuCKle9esAQI6zUr",
+            "onSave": false
+          }
+        ],
         "range": {
-          "units": "self",
+          "value": "5",
+          "units": "ft",
           "override": false
         },
         "target": {
@@ -44,8 +50,8 @@
             "units": "ft"
           },
           "affects": {
-            "count": "",
-            "type": "",
+            "count": "1",
+            "type": "creature",
             "choice": false,
             "special": ""
           },
@@ -56,20 +62,39 @@
           "spent": 0,
           "recovery": []
         },
-        "attack": {
-          "ability": "dex",
-          "bonus": "",
-          "critical": {},
-          "flat": false,
-          "type": {
-            "value": "ranged",
-            "classification": "weapon"
-          }
-        },
         "damage": {
-          "includeBase": true,
-          "parts": [],
-          "critical": {}
+          "critical": {
+            "allow": false
+          },
+          "onSave": "none",
+          "parts": [
+            {
+              "number": 1,
+              "denomination": 4,
+              "bonus": "2",
+              "types": [
+                "bludgeoning"
+              ],
+              "custom": {
+                "enabled": false,
+                "formula": ""
+              },
+              "scaling": {
+                "mode": "",
+                "number": null,
+                "formula": ""
+              }
+            }
+          ]
+        },
+        "save": {
+          "ability": [
+            "str"
+          ],
+          "dc": {
+            "calculation": "",
+            "formula": "12"
+          }
         },
         "useConditionText": "",
         "useConditionReason": "",
@@ -94,7 +119,10 @@
           "confirmTargets": "default",
           "automationOnly": false,
           "identifier": "",
-          "forceDamageDialog": "false",
+          "autoConsume": false,
+          "forceConsumeDialog": "default",
+          "forceRollDialog": "default",
+          "forceDamageDialog": "default",
           "autoTargetType": "any",
           "autoTargetAction": "default",
           "otherActivityCompatible": true,
@@ -108,10 +136,7 @@
           "magicEffect": false,
           "magicDamage": false,
           "noConcentrationCheck": false,
-          "autoCEEffects": "default",
-          "autoConsume": false,
-          "forceConsumeDialog": "default",
-          "forceRollDialog": "default"
+          "autoCEEffects": "default"
         },
         "isOverTimeFlag": false,
         "overTimeProperties": {
@@ -121,125 +146,83 @@
         },
         "otherActivityId": "none",
         "otherActivityAsParentType": true,
-        "attackMode": "oneHanded",
-        "ammunition": "",
-        "otherActivityUuid": "",
-        "attackRollPerTarget": "default",
-        "fumbleThreshold": 1
+        "friendlySave": "default"
       }
     },
     "uses": {
       "spent": null,
       "recovery": []
     },
+    "advancement": [],
     "description": {
       "value": "",
       "chat": ""
     },
-    "identifier": "shortbow",
+    "identifier": "knock-down",
     "source": {
       "revision": 1,
       "rules": "2024"
     },
-    "identified": true,
-    "unidentified": {
-      "description": ""
-    },
-    "container": null,
-    "quantity": 1,
-    "weight": {
-      "value": 0,
-      "units": "lb"
-    },
-    "price": {
-      "value": 0,
-      "denomination": "gp"
-    },
-    "rarity": "",
-    "attunement": "",
-    "attuned": false,
-    "equipped": true,
     "crewed": false,
-    "ammunition": {},
-    "armor": {},
-    "damage": {
-      "base": {
-        "number": 1,
-        "denomination": 6,
-        "bonus": "",
-        "types": [
-          "piercing"
-        ],
-        "custom": {
-          "enabled": false,
-          "formula": ""
-        },
-        "scaling": {
-          "mode": "",
-          "number": null,
-          "formula": ""
-        }
-      },
-      "versatile": {
-        "types": [],
-        "custom": {
-          "enabled": false
-        },
-        "scaling": {
-          "number": 1
-        }
-      }
+    "enchant": {},
+    "prerequisites": {
+      "items": [],
+      "repeatable": false
     },
-    "properties": [
-      "amm",
-      "two"
-    ],
-    "proficient": 1,
-    "range": {
-      "value": 80,
-      "long": 320,
-      "units": "ft",
-      "reach": null
-    },
+    "properties": [],
+    "requirements": "",
     "type": {
-      "value": "simpleR",
-      "baseItem": ""
+      "value": "monster",
+      "subtype": ""
     }
   },
   "effects": [],
   "flags": {
     "midiProperties": {
-      "otherSaveDamage": "halfdam"
+      "saveDamage": "halfdam",
+      "fulldam": true,
+      "confirmTargets": "default"
+    },
+    "midi-qol": {
+      "removeAttackDamageButtons": "default",
+      "forceCEOff": true
     },
     "dnd5e": {
       "riders": {
-        "activity": []
+        "activity": [],
+        "effect": []
       }
     },
     "chris-premades": {
       "config": {
         "generic": {
-          "advantageDamageBonus": {
+          "autoProne": {
             "applied": true,
-            "bonus": "1d4",
             "activities": [
-              "attackShoraction"
+              "saveKnoDowaction"
             ],
-            "replace": false
+            "sizeLimit": "2",
+            "checkSaves": true
           }
         }
       },
       "macros": {
         "midi": {
           "item": [
-            "advantageDamageBonus"
+            "autoProne"
           ]
         }
+      },
+      "info": {
+        "identifier": "zhentilarSoldierKnockDown",
+        "rules": "modern",
+        "source": "chris-premades",
+        "version": "1.3.132"
       }
     }
   },
-  "img": "icons/weapons/bows/shortbow-arrows-black.webp",
-  "folder": "mv8wTWK1avjcWo28",
-  "_id": "Sv1pIrsxL12LiwFL",
-  "_key": "!items!Sv1pIrsxL12LiwFL"
+  "img": "icons/magic/fire/flame-burning-fist-strike.webp",
+  "folder": "eT2WHsW0SmoAtSYH",
+  "_id": "povBLgA3cCnzsc3z",
+  "_key": "!items!povBLgA3cCnzsc3z"
 }

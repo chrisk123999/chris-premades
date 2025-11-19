@@ -1,11 +1,11 @@
 {
-  "name": "Scimitar",
+  "name": "Shortbow",
   "type": "weapon",
   "system": {
     "activities": {
-      "attackScimaction": {
+      "attackShoraction": {
         "type": "attack",
-        "_id": "attackScimaction",
+        "_id": "attackShoraction",
         "sort": 0,
         "activation": {
           "type": "action",
@@ -62,7 +62,7 @@
           "critical": {},
           "flat": false,
           "type": {
-            "value": "melee",
+            "value": "ranged",
             "classification": "weapon"
           }
         },
@@ -136,7 +136,7 @@
       "value": "",
       "chat": ""
     },
-    "identifier": "scimitar",
+    "identifier": "shortbow",
     "source": {
       "revision": 1,
       "rules": "2024"
@@ -168,7 +168,7 @@
         "denomination": 6,
         "bonus": "",
         "types": [
-          "slashing"
+          "piercing"
         ],
         "custom": {
           "enabled": false,
@@ -191,19 +191,18 @@
       }
     },
     "properties": [
-      "fin",
-      "lgt",
-      "rch"
+      "amm",
+      "two"
     ],
     "proficient": 1,
     "range": {
-      "value": null,
-      "long": null,
+      "value": 80,
+      "long": 320,
       "units": "ft",
-      "reach": 5
+      "reach": null
     },
     "type": {
-      "value": "martialM",
+      "value": "simpleR",
       "baseItem": ""
     }
   },
@@ -224,7 +223,7 @@
             "applied": true,
             "bonus": "1d4",
             "activities": [
-              "attackScimaction"
+              "attackShoraction"
             ],
             "replace": false
           }
@@ -236,11 +235,17 @@
             "advantageDamageBonus"
           ]
         }
+      },
+      "info": {
+        "identifier": "goblinWarriorShortbow",
+        "rules": "modern",
+        "source": "chris-premades",
+        "version": "1.3.130"
       }
     }
   },
-  "img": "icons/weapons/swords/scimitar-worn-blue.webp",
+  "img": "icons/weapons/bows/shortbow-arrows-black.webp",
   "folder": "mv8wTWK1avjcWo28",
-  "_id": "MEO5B488Kdhy4Bfs",
-  "_key": "!items!MEO5B488Kdhy4Bfs"
+  "_id": "abtHxJdBLtQYoWU7",
+  "_key": "!items!abtHxJdBLtQYoWU7"
 }

@@ -1,3 +1,18 @@
+# 1.3.132 Release:
+## New Modern Content:
+- Brown Bear: Claw
+- Zhentilar Soldier: Knock Down
+## New Generic Monster Features:
+- Auto Prone
+## Bug Fixes:
+- Goblin Warrior: Scimitar, Shortbow, Nimble Escape
+- Goblin Boss: Scimitar, Shortbow
+- Embedded Macros Code Editor (Thanks Tyler)
+## Update Notes:
+- Added tooltips to generic actions (Thanks Tyler)
+- Added compact mode for CPR dialogs (Thanks Tyler)
+- Generic actions will now add pull their descriptions from the system journal pages if the CPR journal entry is blank.
+
 # 1.3.131 Release:
 ## API Bug Fixes:
 - Item Event

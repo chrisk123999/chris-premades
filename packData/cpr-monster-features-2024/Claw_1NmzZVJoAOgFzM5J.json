@@ -1,11 +1,11 @@
 {
-  "name": "Shortbow",
+  "name": "Claw",
   "type": "weapon",
   "system": {
     "activities": {
-      "attackShoraction": {
+      "attackClawaction": {
         "type": "attack",
-        "_id": "attackShoraction",
+        "_id": "attackClawaction",
         "sort": 0,
         "activation": {
           "type": "action",
@@ -28,7 +28,11 @@
           "concentration": false,
           "override": false
         },
-        "effects": [],
+        "effects": [
+          {
+            "_id": "R8BgQ8NnsYKBRraR"
+          }
+        ],
         "range": {
           "units": "self",
           "override": false
@@ -57,12 +61,12 @@
           "recovery": []
         },
         "attack": {
-          "ability": "dex",
+          "ability": "str",
           "bonus": "",
           "critical": {},
           "flat": false,
           "type": {
-            "value": "ranged",
+            "value": "melee",
             "classification": "weapon"
           }
         },
@@ -136,7 +140,7 @@
       "value": "",
       "chat": ""
     },
-    "identifier": "shortbow",
+    "identifier": "claw",
     "source": {
       "revision": 1,
       "rules": "2024"
@@ -165,10 +169,10 @@
     "damage": {
       "base": {
         "number": 1,
-        "denomination": 6,
+        "denomination": 4,
         "bonus": "",
         "types": [
-          "piercing"
+          "slashing"
         ],
         "custom": {
           "enabled": false,
@@ -191,61 +195,67 @@
       }
     },
     "properties": [
-      "amm",
-      "two"
+      "rch"
     ],
     "proficient": 1,
     "range": {
-      "value": 80,
-      "long": 320,
+      "value": null,
+      "long": null,
       "units": "ft",
-      "reach": null
+      "reach": 5
     },
     "type": {
-      "value": "simpleR",
+      "value": "natural",
       "baseItem": ""
     }
   },
   "effects": [],
   "flags": {
     "midiProperties": {
-      "otherSaveDamage": "halfdam"
+      "otherSaveDamage": "halfdam",
+      "fulldam": true,
+      "confirmTargets": "default"
+    },
+    "midi-qol": {
+      "removeAttackDamageButtons": "default",
+      "forceCEOff": true
     },
     "dnd5e": {
       "riders": {
-        "activity": []
+        "activity": [],
+        "effect": []
       }
     },
     "chris-premades": {
       "config": {
         "generic": {
-          "advantageDamageBonus": {
+          "autoProne": {
             "applied": true,
-            "bonus": "1d4",
             "activities": [
-              "attackShoraction"
+              "attackClawaction"
             ],
-            "replace": false
+            "sizeLimit": "3",
+            "checkSaves": false
           }
         }
       },
       "macros": {
         "midi": {
           "item": [
-            "advantageDamageBonus"
+            "autoProne"
           ]
         }
       },
       "info": {
-        "identifier": "goblinWarriorShortbow",
+        "identifier": "brownBearClaw",
         "rules": "modern",
         "source": "chris-premades",
-        "version": "1.3.130"
+        "version": "1.3.132"
       }
     }
   },
-  "img": "icons/weapons/bows/shortbow-arrows-black.webp",
-  "folder": "KmLsWUB9cB7oGnp7",
-  "_id": "y0rTAvX14ryLmEzy",
-  "_key": "!items!y0rTAvX14ryLmEzy"
+  "img": "icons/skills/melee/strike-slashes-red.webp",
+  "folder": "pckHo6pOIDoWWo78",
+  "_id": "1NmzZVJoAOgFzM5J",
+  "_key": "!items!1NmzZVJoAOgFzM5J"
 }

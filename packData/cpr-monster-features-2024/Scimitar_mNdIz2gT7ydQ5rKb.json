@@ -1,11 +1,11 @@
 {
-  "name": "Shortbow",
+  "name": "Scimitar",
   "type": "weapon",
   "system": {
     "activities": {
-      "attackShoraction": {
+      "attackScimaction": {
         "type": "attack",
-        "_id": "attackShoraction",
+        "_id": "attackScimaction",
         "sort": 0,
         "activation": {
           "type": "action",
@@ -62,7 +62,7 @@
           "critical": {},
           "flat": false,
           "type": {
-            "value": "ranged",
+            "value": "melee",
             "classification": "weapon"
           }
         },
@@ -136,7 +136,7 @@
       "value": "",
       "chat": ""
     },
-    "identifier": "shortbow",
+    "identifier": "scimitar",
     "source": {
       "revision": 1,
       "rules": "2024"
@@ -168,7 +168,7 @@
         "denomination": 6,
         "bonus": "",
         "types": [
-          "piercing"
+          "slashing"
         ],
         "custom": {
           "enabled": false,
@@ -191,18 +191,19 @@
       }
     },
     "properties": [
-      "amm",
-      "two"
+      "fin",
+      "lgt",
+      "rch"
     ],
     "proficient": 1,
     "range": {
-      "value": 80,
-      "long": 320,
+      "value": null,
+      "long": null,
       "units": "ft",
-      "reach": null
+      "reach": 5
     },
     "type": {
-      "value": "simpleR",
+      "value": "martialM",
       "baseItem": ""
     }
   },
@@ -223,7 +224,7 @@
             "applied": true,
             "bonus": "1d4",
             "activities": [
-              "attackShoraction"
+              "attackScimaction"
             ],
             "replace": false
           }
@@ -237,15 +238,15 @@
         }
       },
       "info": {
-        "identifier": "goblinWarriorShortbow",
+        "identifier": "goblinWarriorScimitar",
         "rules": "modern",
         "source": "chris-premades",
         "version": "1.3.130"
       }
     }
   },
-  "img": "icons/weapons/bows/shortbow-arrows-black.webp",
-  "folder": "KmLsWUB9cB7oGnp7",
-  "_id": "y0rTAvX14ryLmEzy",
-  "_key": "!items!y0rTAvX14ryLmEzy"
+  "img": "icons/weapons/swords/scimitar-worn-blue.webp",
+  "folder": "mv8wTWK1avjcWo28",
+  "_id": "mNdIz2gT7ydQ5rKb",
+  "_key": "!items!mNdIz2gT7ydQ5rKb"
 }

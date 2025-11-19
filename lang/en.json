@@ -876,6 +876,9 @@
                 "Name": "Auto Grapple",
                 "Restrained": "Restrained while grappled:"
             },
+            "AutoProne": {
+                "Name": "Auto Prone"
+            },
             "AutoPush": {
                 "Name": "Auto Push"
             },

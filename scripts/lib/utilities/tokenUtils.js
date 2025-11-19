@@ -325,6 +325,11 @@ async function grappleHelper(sourceToken, targetToken, item, {noContest = false,
     if (grappledEffect) await effectUtils.addDependent(grappledEffect, [targetEffect]);
     if (game.modules.get('Rideable')?.active) game.Rideable.Mount([targetToken.document], sourceToken.document, {'Grappled': true, 'MountingEffectsOverride': ['Grappled']});
 }
+function isGrappledBy(target, source) {
+    let effects = effectUtils.getAllEffectsByIdentifier(target.actor, 'grappled');
+    if (!effects.length) return false;
+    return !!effects.find(effect => effect.flags['chris-premades']?.grapple?.tokenId === source.document.id);
+}
 function getMovementHitTokens(startPoint, endPoint, radius, {collisionType='move', includeAlreadyHit=false}={}) {
     function getIntersection(ray, intersectShape) {
         let ptsLength = intersectShape.points.length;
@@ -420,5 +425,6 @@ export let tokenUtils = {
     getLightLevel,
     grappleHelper,
     getMovementHitTokens,
-    getLinearDistanceMoved
+    getLinearDistanceMoved,
+    isGrappledBy
 };

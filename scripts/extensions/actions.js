@@ -1,4 +1,14 @@
 import {compendiumUtils, constants, genericUtils, itemUtils} from '../utils.js';
+let ACTION_RULE_MAPPING = {
+    'Check Cover': 'cover',
+    'Fall': 'falling',
+    'Jump': 'jumping',
+    'Knock Out': 'knockingacreatureout',
+    'Squeeze': 'squeezing',
+    'Stabilize': 'stabilizing',
+    'Suffocation': 'suffocating',
+    'Underwater': 'underwatercombat'
+};
 async function createToken(token, options, userId) {
     if (userId != game.user.id) return;
     let actorType = token.actor?.type;
@@ -38,6 +48,12 @@ async function createToken(token, options, userId) {
             let itemData = genericUtils.duplicate(j.toObject());
             delete itemData._id;
             itemData.system.description.value = itemUtils.getItemDescription(itemData.name);
+            if (!itemData.system.description.value) {
+                let ruleKey = ACTION_RULE_MAPPING[j.name] ?? j.name.toLowerCase().replace(/\s+/g, '');
+                let reference = CONFIG.DND5E.rules?.[ruleKey];
+                let journal = await fromUuid(reference);
+                if (journal) itemData.system.description.value = journal.text.content;
+            }
             return itemData;
         }));
         if (!circleCast) updates = updates.filter(i => i.name != 'Circle Cast');
@@ -45,7 +61,6 @@ async function createToken(token, options, userId) {
         if (!updates.length) return;
         await itemUtils.createItems(token.actor, updates, {section: genericUtils.translate('CHRISPREMADES.Generic.Actions')});
     }
-    
 }
 export let actions = {
     createToken

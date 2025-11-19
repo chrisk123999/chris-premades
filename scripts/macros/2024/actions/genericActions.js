@@ -1,7 +1,6 @@
 import {constants, dialogUtils, genericUtils, itemUtils, workflowUtils} from '../../../utils.js';
-
 // Custom mapping for action names that don't match CONFIG.DND5E.rules slugification
-const ACTION_RULE_MAPPING = {
+let ACTION_RULE_MAPPING = {
     'Check Cover': 'cover',
     'Fall': 'falling',
     'Jump': 'jumping',
@@ -11,7 +10,6 @@ const ACTION_RULE_MAPPING = {
     'Suffocation': 'suffocating',
     'Underwater': 'underwatercombat'
 };
-
 async function use({trigger, workflow}) {
     let rules = itemUtils.getConfig(workflow.item, 'rules');
     if (rules === 'system') rules = genericUtils.getRules(workflow.item);
@@ -24,12 +22,10 @@ async function use({trigger, workflow}) {
     if (!circleCast) filter.push('Circle Cast');
     let documents = index.contents;
     documents = documents.filter(i => !filter.includes(i.name));
-    // Add reference tooltips from CONFIG.DND5E.rules
     documents = documents.map(i => {
         let wrappedDoc = genericUtils.duplicate(i);
-        // Check custom mapping first, then fall back to slugification
-        const ruleKey = ACTION_RULE_MAPPING[i.name] ?? i.name.toLowerCase().replace(/\s+/g, '');
-        const reference = CONFIG.DND5E.rules?.[ruleKey];
+        wrappedDoc.ruleKey = ACTION_RULE_MAPPING[i.name] ?? i.name.toLowerCase().replace(/\s+/g, '');
+        let reference = CONFIG.DND5E.rules?.[wrappedDoc.ruleKey];
         if (reference) wrappedDoc.reference = reference;
         return wrappedDoc;
     });
@@ -37,6 +33,13 @@ async function use({trigger, workflow}) {
     if (!selection) return;
     let documentData = genericUtils.duplicate(selection.toObject());
     documentData.system.description.value = itemUtils.getItemDescription(documentData.name);
+    if (!documentData.system.description.value) {
+        let reference = documents.find(i => i._id === selection.id);
+        if (reference?.reference) {
+            let journal = await fromUuid(reference.reference);
+            if (journal) documentData.system.description.value = journal.text.content;
+        }
+    }
     await workflowUtils.syntheticItemDataRoll(documentData, workflow.actor, Array.from(game.user.targets));
 }
 export let genericActions = {
