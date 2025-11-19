@@ -152,15 +152,17 @@ function getLightLevel(token) {
     if (inBright) return 'bright';
     return 'dim';
 }
-async function grappleHelper(sourceToken, targetToken, item, {noContest = false, flatDC = false, escapeDisadvantage = false, sourceEffect, targetEffect, restrained = false}={}) {
+async function grappleHelper(sourceToken, targetToken, item, {noContest = false, flatDC = false, escapeDisadvantage = false, sourceEffect, targetEffect, restrained = false, ignoreSizeLimit = false}={}) {
     let sourceActor = sourceToken.actor;
     if (actorUtils.checkTrait(targetToken.actor, 'ci', 'grappled')) {
         genericUtils.notify('CHRISPREMADES.Macros.Grapple.Immune', 'info');
         return;
     }
-    if (actorUtils.getSize(targetToken.actor) > (actorUtils.getSize(sourceActor) + 1)) {
-        genericUtils.notify('CHRISPREMADES.Macros.Grapple.Size', 'info');
-        return;
+    if (!ignoreSizeLimit) {
+        if (actorUtils.getSize(targetToken.actor) > (actorUtils.getSize(sourceActor) + 1)) {
+            genericUtils.notify('CHRISPREMADES.Macros.Grapple.Size', 'info');
+            return;
+        }
     }
     if (!noContest) {
         let inputs = [[CONFIG.DND5E.skills.ath.label, 'ath'], [CONFIG.DND5E.skills.acr.label, 'acr'], ['CHRISPREMADES.Generic.Uncontested', 'skip']];

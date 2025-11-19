@@ -15,7 +15,7 @@ async function use({workflow}) {
     let sourceEffect = actorUtils.getEffects(sourceToken.actor)?.find(i => itemEffects.includes(i.origin));
     let targetEffect = actorUtils.getEffects(targetToken.actor)?.find(i => itemEffects.includes(i.origin));
     let dc = config.dc ?? (8 + sourceToken.actor.system.abilities.str.mod + sourceToken.actor.system.attributes.prof);
-    await tokenUtils.grappleHelper(sourceToken, targetToken, workflow.item, {targetEffect, sourceEffect, noContest: true, flatDC: dc});
+    await tokenUtils.grappleHelper(sourceToken, targetToken, workflow.item, {targetEffect, sourceEffect, noContest: true, flatDC: dc, escapeDisadvantage: config.disadvantage, restrained: config.restrained, ignoreSizeLimit: config.ignoreLimit});
 }
 function actorSizes() {
     if (!CONFIG?.DND5E?.actorSizes) return false;
@@ -55,7 +55,25 @@ export let escape = {
             value: 'dc',
             label: 'CHRISPREMADES.Config.DC',
             type: 'text',
-            default: undefined
+            default: 13
+        },
+        {
+            value: 'disadvantage',
+            label: 'CHRISPREMADES.Macros.AutoGrapple.Disadvantage',
+            type: 'checkbox',
+            default: false
+        },
+        {
+            value: 'restrained',
+            label: 'CHRISPREMADES.Macros.AutoGrapple.Restrained',
+            type: 'checkbox',
+            default: false
+        },
+        {
+            value: 'ignoreLimit',
+            label: 'CHRISPREMADES.Macros.AutoGrapple.IgnoreLimit',
+            type: 'checkbox',
+            default: false
         },
         {
             value: 'maxSize',

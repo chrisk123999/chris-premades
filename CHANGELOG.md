@@ -1,3 +1,12 @@
+# 1.3.134 Release:
+## New Modern Content:
+- Mimic: Adhesive, Bite, Pseudopod
+## Update Notes:
+- Added ignore grapple size difference limits option to the auto grapple and escape generic monster features.
+- Added a disadvantage on escape checks to the auto grapple and escape generic monster features.
+- Added restrained while grappled to the escape generic monster feature.
+- Added Grapple Attack Advantage generic monster feature.
+
 # 1.3.133 Release:
 ## Bug Fixes:
 - Generic Actions

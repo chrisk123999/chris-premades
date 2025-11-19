@@ -40,6 +40,7 @@ export {swarmDamage} from './macros/2014/monsterFeatures/generic/swarmDamage.js'
 export {touchDamage} from './macros/2014/monsterFeatures/generic/touchDamage.js';
 export {undeadFortitude} from './macros/2014/monsterFeatures/generic/undeadFortitude.js';
 export {autoProne} from './macros/2014/monsterFeatures/generic/autoProne.js';
+export {grappleAttackAdvantage} from './macros/2014/monsterFeatures/generic/grappleAttackAdvantage.js';
 // Mechanics
 export {cleaveMastery, grazeMastery, pushMastery, sapMastery, slowMastery, toppleMastery, vexMastery} from './macros/2024/mechanics/masteries.js';
 export {invisible} from './macros/2024/mechanics/invisible.js';
@@ -424,3 +425,7 @@ export {goblinBossRedirectAttack} from './macros/2024/monsterFeatures/goblinBoss
 export {brownBearClaw} from './macros/2024/monsterFeatures/brownBear/brownBearClaw.js';
 // Zhentilar Soldier
 export {zhentilarSoldierKnockDown} from './macros/2024/monsterFeatures/zhentilarSoldier/zhentilarSoldierKnockDown.js';
+// Mimic
+export {mimicAdhesive} from './macros/2024/monsterFeatures/mimic/mimicAdhesive.js';
+export {mimicBite} from './macros/2024/monsterFeatures/mimic/mimicBite.js';
+export {mimicPseudopod} from './macros/2024/monsterFeatures/mimic/mimicPseudopod.js';
