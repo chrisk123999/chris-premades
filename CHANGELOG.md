@@ -1,3 +1,7 @@
+# 1.3.133 Release:
+## Bug Fixes:
+- Generic Actions
+
 # 1.3.132 Release:
 ## New Modern Content:
 - Brown Bear: Claw

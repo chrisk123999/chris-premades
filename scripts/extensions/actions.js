@@ -57,7 +57,7 @@ async function createToken(token, options, userId) {
             return itemData;
         }));
         if (!circleCast) updates = updates.filter(i => i.name != 'Circle Cast');
-        if (!healingSurge) updates = updates.filter(i => i.name === 'Healing Surge');
+        if (!healingSurge) updates = updates.filter(i => i.name != 'Healing Surge');
         if (!updates.length) return;
         await itemUtils.createItems(token.actor, updates, {section: genericUtils.translate('CHRISPREMADES.Generic.Actions')});
     }
