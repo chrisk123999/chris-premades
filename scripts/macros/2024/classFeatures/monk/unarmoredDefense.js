@@ -1,28 +1,28 @@
-export let unarmoredDefenseBarbarian = {
-    name: 'Unarmored Defense (Barbarian)',
+export let unarmoredDefenseMonk = {
+    name: 'Unarmored Defense (Monk)',
     aliases: ['Unarmored Defense'],
-    version: '1.1.22',
+    version: '1.3.136',
     rules: 'modern',
     config: [
         {
             value: 'classIdentifier',
             label: 'CHRISPREMADES.Config.ClassIdentifier',
             type: 'text',
-            default: 'barbarian',
+            default: 'monk',
             category: 'homebrew',
             homebrew: true
         }
     ],
     ddbi: {
         restrictedItems: {
-            'Unarmored Defense 1': {
+            'Unarmored Defense 2': {
                 originalName: 'Unarmored Defense',
-                requiredClass: 'Barbarian',
+                requiredClass: 'Monk',
                 requiredSubclass: null,
                 requiredRace: null,
                 requiredEquipment: [],
                 requiredFeatures: [],
-                replacedItemName: 'Unarmored Defense (Barbarian)',
+                replacedItemName: 'Unarmored Defense (Monk)',
                 removedItems: [],
                 additionalItems: [],
                 priority: 0

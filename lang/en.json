@@ -1880,6 +1880,9 @@
             "MartialAdvantage": {
                 "Name": "Martial Advantage"
             },
+            "MartialArts": {
+                "ValidateWeaponType": "Validate Weapon Type:"
+            },
             "MassCureWounds": {
                 "Select": "Which targets would you like to heal? (Max: 6)"
             },

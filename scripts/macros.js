@@ -400,6 +400,9 @@ export {supremeSneak} from './macros/2024/classFeatures/rogue/thief/supremeSneak
 export {magicalCunning} from './macros/2024/classFeatures/warlock/magicalCunning.js';
 // Invocations
 export {pactOfTheChain} from './macros/2024/classFeatures/warlock/invocations/pactOfTheChain.js';
+// Monk
+export {martialArts} from './macros/2024/classFeatures/monk/martialArts.js';
+export {unarmoredDefenseMonk} from './macros/2024/classFeatures/monk/unarmoredDefense.js';
 // Multiple
 export {evasion} from './macros/2024/classFeatures/multiple/evasion.js';
 // Monster Features

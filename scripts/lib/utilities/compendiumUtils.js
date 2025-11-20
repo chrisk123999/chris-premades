@@ -74,15 +74,28 @@ async function getCPRAutomation(item, {identifier, rules = 'legacy', type = 'cha
         folderId = pack.folders.find(i => i.name === name)?.id;
         if (!folderId) return;
     }
-    let cprIdentifier = genericUtils.getCPRIdentifier(name, rules);
-    for (let key of keys) {
-        let found;
-        if (cprIdentifier) {
-            found = await getItemFromCompendium(key, cprIdentifier, {ignoreNotFound: true, folderId: folderId, byIdentifier: true});
-        } else {
-            found = await getItemFromCompendium(key, name, {ignoreNotFound: true, folderId: folderId});
+    let classes = [];
+    if (item.actor && type === 'character') classes = Object.keys(item.actor.classes);
+    let cprIdentifiers = genericUtils.getCPRIdentifiers(name, rules);
+    for (let cprIdentifier of cprIdentifiers) {
+        for (let key of keys) {
+            let found;
+            if (cprIdentifier) {
+                found = await getItemFromCompendium(key, cprIdentifier, {ignoreNotFound: true, folderId: folderId, byIdentifier: true});
+            } else {
+                found = await getItemFromCompendium(key, name, {ignoreNotFound: true, folderId: folderId});
+            }
+            if (classes.length && item.type === 'feat' && item.system.type?.value === 'class' && found) {
+                let classIdentifier = itemUtils.getConfig(found, 'classIdentifier');
+                if (classIdentifier) {
+                    if (classes.includes(classIdentifier)) return found;
+                } else {
+                    return found;
+                }
+            } else {
+                if (found) return found;
+            }
         }
-        if (found) return found;
     }
 }
 async function getGPSAutomation(item, {identifier, rules = 'legacy', type = 'character'} = {}) {
@@ -108,7 +121,6 @@ async function getGPSAutomation(item, {identifier, rules = 'legacy', type = 'cha
 }
 async function getMISCAutomation(item, {identifier, rules = 'legacy', type = 'character'} = {}) {
     let found;
-    //let type = item.actor?.type ?? 'character';
     if (type === 'character' || item.type === 'spell') {
         switch(item.type) {
             case 'spell': found = miscPremades.miscItems.find(i => i.name === item.name && i.type === 'spell' && i.rules === rules); break;

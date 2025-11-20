@@ -1,0 +1,120 @@
+{
+  "name": "Unarmored Defense (Monk)",
+  "type": "feat",
+  "effects": [
+    {
+      "name": "Unarmored Defense",
+      "statuses": [],
+      "changes": [
+        {
+          "key": "system.attributes.ac.calc",
+          "value": "unarmoredMonk",
+          "mode": 5,
+          "priority": 15
+        }
+      ],
+      "duration": {
+        "seconds": null,
+        "startTime": 1716,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null,
+        "combat": null
+      },
+      "tint": "#ffffff",
+      "transfer": true,
+      "disabled": true,
+      "flags": {
+        "dae": {
+          "transfer": true,
+          "stackable": "noneNameOnly"
+        },
+        "ddbimporter": {
+          "disabled": false,
+          "passive": true,
+          "itemId": 10292257,
+          "itemEntityTypeId": 12168134
+        },
+        "midi-qol": {
+          "forceCEOff": true
+        },
+        "core": {}
+      },
+      "description": "While you aren’t wearing armor or wielding a Shield, your base AC equals [[10+ @abilities.dex.mod+ @abilities.wis.mod]].",
+      "img": "icons/magic/control/buff-flight-wings-runes-red.webp",
+      "_id": "9s8GMffkNxlDeDmX",
+      "type": "base",
+      "system": {},
+      "origin": null,
+      "sort": 0,
+      "_key": "!items.effects!rIoDd03MBVo6UBCm.9s8GMffkNxlDeDmX"
+    }
+  ],
+  "system": {
+    "activities": {},
+    "uses": {
+      "spent": 0,
+      "recovery": []
+    },
+    "advancement": [],
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "identifier": "unarmored-defense",
+    "source": {
+      "book": "PHB 2024",
+      "page": "",
+      "license": "",
+      "custom": "",
+      "rules": "2024",
+      "revision": 1
+    },
+    "crewed": false,
+    "enchant": {},
+    "prerequisites": {
+      "items": [],
+      "level": 1,
+      "repeatable": false
+    },
+    "properties": [],
+    "requirements": "",
+    "type": {
+      "value": "class",
+      "subtype": ""
+    }
+  },
+  "flags": {
+    "midi-qol": {
+      "removeAttackDamageButtons": "default",
+      "forceCEOff": true
+    },
+    "midiProperties": {
+      "confirmTargets": "default"
+    },
+    "dae": {
+      "alwaysActive": false,
+      "activeEquipped": false
+    },
+    "dnd5e": {
+      "riders": {
+        "activity": [],
+        "effect": []
+      },
+      "advancementOrigin": "Clg378kIVzYn3F9R"
+    },
+    "chris-premades": {
+      "info": {
+        "identifier": "unarmoredDefenseMonk",
+        "rules": "modern",
+        "source": "chris-premades",
+        "version": "1.3.136"
+      }
+    }
+  },
+  "img": "icons/magic/control/buff-flight-wings-runes-red.webp",
+  "folder": "tJ727NhyyBNb6ZNf",
+  "_id": "rIoDd03MBVo6UBCm",
+  "_key": "!items!rIoDd03MBVo6UBCm"
+}

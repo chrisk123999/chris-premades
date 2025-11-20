@@ -1,3 +1,10 @@
+# 1.3.136 Release:
+## New Modern Content:
+- Martial Arts
+- Unarmored Defense (Monk)
+## Update Notes:
+- Adjusted the Medkit to better classs items with their correct classes. For example Cleric's Channel Divinity should no longer be incorrectly added to Paladins. Multiclassed characters may still run into minor issues if class feature names are shared between classes.
+
 # 1.3.135 Release:
 ## New Legacy Content:
 - Misdirection
