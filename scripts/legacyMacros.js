@@ -431,6 +431,9 @@ export {dispatersSupremacy} from './macros/2014/classFeatures/illrigger/painkill
 export {youDieOnMyCommand} from './macros/2014/classFeatures/illrigger/painkiller/youDieOnMyCommand.js';
 export {deathstrike} from './macros/2014/classFeatures/illrigger/painkiller/deathstrike.js';
 export {masterOfTactics} from './macros/2014/classFeatures/rogue/mastermind/masterOfTactics.js';
+export {insightfulManipulator} from './macros/2014/classFeatures/rogue/mastermind/insightfulManipulator.js';
+export {misdirection} from './macros/2014/classFeatures/rogue/mastermind/misdirection.js';
+export {soulOfDeceit} from './macros/2014/classFeatures/rogue/mastermind/soulOfDeceit.js';
 // Race Features
 export {aasimarNecroticShroud, aasimarRadiantConsumption, aasimarRadiantSoul, celestialRevelation} from './macros/2014/raceFeatures/aasimar/celestialRevelation.js';
 export {acidBreathWeapon, coldBreathWeapon, fireBreathWeapon, lightningBreathWeapon, poisonBreathWeapon} from './macros/2014/raceFeatures/dragonborn/chromatic/breathWeapon.js';
@@ -552,6 +555,8 @@ export {surpriseAttack} from './macros/2014/monsterFeatures/generic/surpriseAtta
 export {swarmDamage} from './macros/2014/monsterFeatures/generic/swarmDamage.js';
 export {touchDamage} from './macros/2014/monsterFeatures/generic/touchDamage.js';
 export {undeadFortitude} from './macros/2014/monsterFeatures/generic/undeadFortitude.js';
+export {autoProne} from './macros/2014/monsterFeatures/generic/autoProne.js';
+export {grappleAttackAdvantage} from './macros/2014/monsterFeatures/generic/grappleAttackAdvantage.js';
 // Actions
 export {checkCover} from './macros/2014/actions/checkCover.js';
 export {dash} from './macros/2014/actions/dash.js';

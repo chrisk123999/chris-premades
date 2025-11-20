@@ -186,7 +186,7 @@ async function actorMedkit(items) {
     let itemInfo = items.map(item => ({
         document: item,
         macro: custom.getMacro(genericUtils.getIdentifier(item), genericUtils.getRules(item))
-    }));
+    })).filter(i => i.macro);
     let itemMedkits = itemInfo.filter(item => item.macro.item?.find(i => i.pass === 'itemMedkit')).sort((a, b) => a.macro.item.find(i => i.pass === 'itemMedkit').priority - b.macro.item.find(i => i.pass === 'itemMedkit').priority);
     let actorMedkits = itemInfo.filter(item => item.macro.item?.find(i => i.pass === 'actorMedkit')).sort((a, b) => a.macro.item.find(i => i.pass === 'actorMedkit').priority - b.macro.item.find(i => i.pass === 'actorMedkit').priority);
     if (itemMedkits.length) for (let item of itemMedkits) await executeMacroPass(item.document, 'itemMedkit');

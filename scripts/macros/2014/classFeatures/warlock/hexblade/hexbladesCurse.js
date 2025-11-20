@@ -1,12 +1,11 @@
-import {activityUtils, actorUtils, compendiumUtils, constants, dialogUtils, effectUtils, errors, genericUtils, itemUtils, socketUtils, tokenUtils, workflowUtils} from '../../../../../utils.js';
-
+import {activityUtils, actorUtils, constants, dialogUtils, effectUtils, genericUtils, itemUtils, socketUtils, tokenUtils, workflowUtils} from '../../../../../utils.js';
 async function damage({workflow}) {
     if (workflow.hitTargets.size !== 1) return;
     let effect = effectUtils.getEffectByIdentifier(workflow.actor, 'hexbladesCurse');
     if (!effect) return;
     let targetId = effect.flags['chris-premades'].hexbladesCurse.target;
     let targetToken = workflow.hitTargets.first();
-    if (targetId !== targetToken.id) return;
+    if (targetId !== targetToken.document.id) return;
     let damageType = workflow.defaultDamageType;
     await workflowUtils.bonusDamage(workflow, '@prof', {damageType});
 }
@@ -15,7 +14,7 @@ async function damageApplication({trigger: {token}, workflow, ditem}) {
     let sourceEffect = effectUtils.getEffectByIdentifier(workflow.actor, 'hexbladesCurse');
     if (!sourceEffect) return;
     let targetId = sourceEffect.flags['chris-premades'].hexbladesCurse.target;
-    if (targetId !== token.id) return;
+    if (targetId !== token.document.id) return;
     let rawDamage = workflow.actor.system.attributes.prof;
     ditem.rawDamageDetail[0].value += rawDamage;
     let modifiedDamage = rawDamage * ditem.damageDetail[0].active.multiplier ?? 1;
@@ -27,8 +26,8 @@ async function early({workflow}) {
     let effect = effectUtils.getEffectByIdentifier(workflow.actor, 'hexbladesCurse');
     if (!effect) return;
     let targetId = effect.flags['chris-premades'].hexbladesCurse.target;
-    let targetToken = workflow.hitTargets.first();
-    if (targetId !== targetToken.id) return;
+    let targetToken = workflow.targets.first();
+    if (targetId !== targetToken.document.id) return;
     let effectData = {
         name: genericUtils.translate('CHRISPREMADES.GenericEffects.CriticalThreshold'),
         img: constants.tempConditionIcon,
@@ -72,7 +71,7 @@ async function use({workflow}) {
     };
     let targetEffectData = genericUtils.duplicate(sourceEffectData);
     targetEffectData.name += ': ' + genericUtils.translate('DND5E.Target');
-    genericUtils.setProperty(sourceEffectData, 'flags.chris-premades.hexbladesCurse.target', workflow.targets.first().id);
+    genericUtils.setProperty(sourceEffectData, 'flags.chris-premades.hexbladesCurse.target', workflow.targets.first().document.id);
     effectUtils.addMacro(sourceEffectData, 'midi.actor', ['hexbladesCurseSource']);
     effectUtils.addMacro(targetEffectData, 'midi.actor', ['hexbladesCurseTarget']);
     effectUtils.addMacro(targetEffectData, 'effect', ['hexbladesCurseTarget']);

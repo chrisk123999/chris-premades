@@ -1009,6 +1009,14 @@ export function registerSettings() {
         scope: 'client'
     });
     addSetting({
+        key: 'compactMode',
+        type: Boolean,
+        default: false,
+        category: 'interface',
+        onChange: (value) => ui.compactMode(value),
+        scope: 'client'
+    });
+    addSetting({
         key: 'disableSettingsWarning',
         type: Boolean,
         default: false,

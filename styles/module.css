@@ -106,13 +106,46 @@ form .cpr-dialog .form-group .flexcol > div.select-many > multi-select {
     margin: 0.625em 0 0.625em 0;
 }
 
+form#cpr-embedded-macros-window {
+    height: auto;
+    max-height: 90vh;
+    display: flex;
+    flex-direction: column;
+}
+
+form#cpr-embedded-macros-window [data-application-part="header"],
+form#cpr-embedded-macros-window [data-application-part="navigation"] {
+    flex: 0 0 auto;
+}
+
 form#cpr-embedded-macros-window [data-application-part="form"] {
+    flex: 1 1 auto;
+    overflow-y: auto;
+    min-height: 0;
+
     .form-group {
         margin-bottom: 0.5rem;
     }
 
     button {
         width: 100%;
+    }
+
+    /* Lock down CodeMirror height to prevent dynamic resizing */
+    code-mirror {
+        display: block !important;
+        height: 400px !important;
+        max-height: 400px !important;
+        overflow: hidden !important;
+    }
+
+    code-mirror .cm-editor {
+        height: 100% !important;
+    }
+
+    code-mirror .cm-scroller {
+        height: 100% !important;
+        overflow-y: auto !important;
     }
 }
 

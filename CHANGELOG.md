@@ -1,3 +1,51 @@
+# 1.3.135 Release:
+## New Legacy Content:
+- Misdirection
+- Soul of Deceit
+
+# 1.3.134 Release:
+## New Modern Content:
+- Mimic: Adhesive, Bite, Pseudopod
+## Update Notes:
+- Added ignore grapple size difference limits option to the auto grapple and escape generic monster features.
+- Added a disadvantage on escape checks to the escape generic monster feature.
+- Added restrained while grappled to the escape generic monster feature.
+- Added Grapple Attack Advantage generic monster feature.
+
+# 1.3.133 Release:
+## Bug Fixes:
+- Generic Actions
+
+# 1.3.132 Release:
+## New Modern Content:
+- Brown Bear: Claw
+- Zhentilar Soldier: Knock Down
+## New Generic Monster Features:
+- Auto Prone
+## Bug Fixes:
+- Goblin Warrior: Scimitar, Shortbow, Nimble Escape
+- Goblin Boss: Scimitar, Shortbow
+- Embedded Macros Code Editor (Thanks Tyler)
+## Update Notes:
+- Added tooltips to generic actions (Thanks Tyler)
+- Added compact mode for CPR dialogs (Thanks Tyler)
+- Generic actions will now add pull their descriptions from the system journal pages if the CPR journal entry is blank.
+
+# 1.3.131 Release:
+## API Bug Fixes:
+- Item Event
+
+# 1.3.130 Release:
+## New Legacy Content:
+- Insightful Manipulator
+## New Modern Content:
+- Goblin Warrior: Scimitar, Shortbow, Nimble Escape
+- Goblin Boss: Scimitar, Shortbow, Nimble Escape, Redirect Attack
+- Worg: Bite
+## Bug Fixes:
+- Arcane Armor (Legacy)
+- Hexblade's Curse (Legacy)
+
 # 1.3.129 Release:
 ## Bug Fixes:
 - Guardian Armor (Legacy)

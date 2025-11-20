@@ -7,7 +7,7 @@ async function late({trigger: {entity: item}, workflow}) {
     for (let token of workflow.hitTargets) {
         let sizeLimit = Number(config.sizeLimit);
         if (sizeLimit != -1 && actorUtils.getSize(token.actor) > sizeLimit) continue; 
-        await tokenUtils.grappleHelper(workflow.token, token, item, {noContest: true, flatDC: config.dc, escapeDisadvantage: config.disadvantage, restrained: config.restrained});
+        await tokenUtils.grappleHelper(workflow.token, token, item, {noContest: true, flatDC: config.dc, escapeDisadvantage: config.disadvantage, restrained: config.restrained, ignoreSizeLimit: config.ignoreLimit});
     }
 }
 export let autoGrapple = {
@@ -41,11 +41,17 @@ export let autoGrapple = {
             value: 'disadvantage',
             label: 'CHRISPREMADES.Macros.AutoGrapple.Disadvantage',
             type: 'checkbox',
-            default: true
+            default: false
         },
         {
             value: 'restrained',
             label: 'CHRISPREMADES.Macros.AutoGrapple.Restrained',
+            type: 'checkbox',
+            default: false
+        },
+        {
+            value: 'ignoreLimit',
+            label: 'CHRISPREMADES.Macros.AutoGrapple.IgnoreLimit',
             type: 'checkbox',
             default: false
         },

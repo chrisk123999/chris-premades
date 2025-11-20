@@ -39,6 +39,8 @@ export {surpriseAttack} from './macros/2014/monsterFeatures/generic/surpriseAtta
 export {swarmDamage} from './macros/2014/monsterFeatures/generic/swarmDamage.js';
 export {touchDamage} from './macros/2014/monsterFeatures/generic/touchDamage.js';
 export {undeadFortitude} from './macros/2014/monsterFeatures/generic/undeadFortitude.js';
+export {autoProne} from './macros/2014/monsterFeatures/generic/autoProne.js';
+export {grappleAttackAdvantage} from './macros/2014/monsterFeatures/generic/grappleAttackAdvantage.js';
 // Mechanics
 export {cleaveMastery, grazeMastery, pushMastery, sapMastery, slowMastery, toppleMastery, vexMastery} from './macros/2024/mechanics/masteries.js';
 export {invisible} from './macros/2024/mechanics/invisible.js';
@@ -411,3 +413,19 @@ export {vampireWeakness} from './macros/2024/monsterFeatures/vampire/vampireWeak
 export {vampireCharm} from './macros/2024/monsterFeatures/vampire/vampireCharm.js';
 export {vampireShapeShift} from './macros/2024/monsterFeatures/vampire/vampireShapeShift.js';
 export {vampireMistyEscape} from './macros/2024/monsterFeatures/vampire/vampireMistyEscape.js';
+// Goblin Warrior
+export {goblinWarriorScimitar} from './macros/2024/monsterFeatures/goblinWarrior/scimitar.js';
+export {goblinWarriorShortbow} from './macros/2024/monsterFeatures/goblinWarrior/shortbow.js';
+export {goblinWarriorNimbleEscape} from './macros/2024/monsterFeatures/goblinWarrior/nimbleEscape.js';
+// Worg
+export {worgBite} from './macros/2024/monsterFeatures/worg/bite.js';
+// Goblin Boss
+export {goblinBossRedirectAttack} from './macros/2024/monsterFeatures/goblinBoss/redirectAttack.js';
+// Brown Bear
+export {brownBearClaw} from './macros/2024/monsterFeatures/brownBear/brownBearClaw.js';
+// Zhentilar Soldier
+export {zhentilarSoldierKnockDown} from './macros/2024/monsterFeatures/zhentilarSoldier/zhentilarSoldierKnockDown.js';
+// Mimic
+export {mimicAdhesive} from './macros/2024/monsterFeatures/mimic/mimicAdhesive.js';
+export {mimicBite} from './macros/2024/monsterFeatures/mimic/mimicBite.js';
+export {mimicPseudopod} from './macros/2024/monsterFeatures/mimic/mimicPseudopod.js';

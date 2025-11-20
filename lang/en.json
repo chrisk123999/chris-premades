@@ -835,6 +835,9 @@
                 "SelectTarget": "Who gets attacked?",
                 "SelectWeapon": "What weapon is used to attack?"
             },
+            "ArappleAttackAdvantage": {
+                "Name": "Grapple Attack Advantage"
+            },
             "ArcaneAbjuration": {
                 "Plane": "Is {name} away from its plane of origin?"
             },
@@ -873,8 +876,12 @@
             "AutoGrapple": {
                 "DC": "Flat DC to escape grapple (contested if 0):",
                 "Disadvantage": "Grant disadvantage on escape check:",
+                "IgnoreLimit": "Ignore Grapple Size Difference Limits:",
                 "Name": "Auto Grapple",
                 "Restrained": "Restrained while grappled:"
+            },
+            "AutoProne": {
+                "Name": "Auto Prone"
             },
             "AutoPush": {
                 "Name": "Auto Push"
@@ -1129,6 +1136,9 @@
                 "Moved": "Compelled Duel: Moved",
                 "Source": "Compelled Duel: Source",
                 "Target": "Compelled Duel: Target"
+            },
+            "Config": {
+                "BonusDamage": "Bonus Damage:"
             },
             "ConjureAnimals": {
                 "Save": "Conjure Animals: Save"
@@ -1729,6 +1739,20 @@
             },
             "InsectPlague": {
                 "Damage": "Insect Plague: Damage"
+            },
+            "InsightfulManipulator": {
+                "ChaScore": "Charisma Score",
+                "Equal": "{ability} is equal to yours.",
+                "EqualLevel": "Class levels are equal.",
+                "Higher": "{ability} is higher than yours.",
+                "HigherLevel": "Levels are higher than yours.",
+                "IntScore": "Intelligence Score",
+                "Levels": "Class Levels",
+                "Lower": "{ability} is lower than yours.",
+                "LowerLevel": "Levels are lower than yours.",
+                "NoLevel": "No class levels.",
+                "Select": "Select information to learn:",
+                "WisScore": "Wisdom Score"
             },
             "InspiringSmite": {
                 "Select": "Distribute Temp HP (Amount to Distribute: {maxAmount})"
@@ -3088,6 +3112,10 @@
             "colorizeDAE": {
                 "Hint": "When enabled, the DAE titlebar icon will be recolored if an effect is on the item.",
                 "Name": "Dynamic Active Effects: Colorize Titlebar Icon"
+            },
+            "compactMode": {
+                "Hint": "Reduces padding and spacing in dialogs and forms, limits dialog height to 50vh, and constrains button images to 32px for a more compact interface.",
+                "Name": "Compact Mode"
             },
             "conditionResistanceAndVulnerability": {
                 "Hint": "Enables condition resistance and vulnerability automation.",

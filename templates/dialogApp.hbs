@@ -6,7 +6,7 @@
             {{#if displayAsRows}}
                 <div class="flex-col">
                     {{#each options}}
-                        <button type="submit" class="form-button" data-action="confirm" id="i{{@../index}}j{{@index}}" name="{{name}}"{{#if tooltip}}data-tooltip="{{tooltip}}"{{/if}}>
+                        <button type="submit" class="form-button" data-action="confirm" id="i{{@../index}}j{{@index}}" name="{{name}}"{{#if tooltip}} data-tooltip="{{tooltip}}"{{/if}}{{#if reference}} data-reference-tooltip="{{reference}}"{{/if}}>
                             {{#if image}}<img class="button-image" src={{image}}>{{/if}}
                             <p class="button-text" >{{localize label}}</p>
                         </button>
@@ -14,7 +14,7 @@
                 </div>
             {{else}}
                 {{#each options}}
-                    <button type="submit" class="form-button" data-action="confirm" id="i{{@../index}}j{{@index}}" name="{{name}}">
+                    <button type="submit" class="form-button" data-action="confirm" id="i{{@../index}}j{{@index}}" name="{{name}}"{{#if reference}} data-reference-tooltip="{{reference}}"{{/if}}>
                         {{#if image}}<img class="button-image" src={{image}}>{{/if}}
                         <p class="button-text" {{#if tooltip}}data-tooltip="{{tooltip}}"{{/if}}>{{localize label}}</p>
                     </button>

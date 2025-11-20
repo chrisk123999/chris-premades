@@ -157,15 +157,17 @@ function getLightLevel(token) {
     if (inBright) return 'bright';
     return 'dim';
 }
-async function grappleHelper(sourceToken, targetToken, item, {noContest = false, flatDC = false, escapeDisadvantage = false, sourceEffect, targetEffect, restrained = false}={}) {
+async function grappleHelper(sourceToken, targetToken, item, {noContest = false, flatDC = false, escapeDisadvantage = false, sourceEffect, targetEffect, restrained = false, ignoreSizeLimit = false}={}) {
     let sourceActor = sourceToken.actor;
     if (actorUtils.checkTrait(targetToken.actor, 'ci', 'grappled')) {
         genericUtils.notify('CHRISPREMADES.Macros.Grapple.Immune', 'info');
         return;
     }
-    if (actorUtils.getSize(targetToken.actor) > (actorUtils.getSize(sourceActor) + 1)) {
-        genericUtils.notify('CHRISPREMADES.Macros.Grapple.Size', 'info');
-        return;
+    if (!ignoreSizeLimit) {
+        if (actorUtils.getSize(targetToken.actor) > (actorUtils.getSize(sourceActor) + 1)) {
+            genericUtils.notify('CHRISPREMADES.Macros.Grapple.Size', 'info');
+            return;
+        }
     }
     if (!noContest) {
         let inputs = [[CONFIG.DND5E.skills.ath.label, 'ath'], [CONFIG.DND5E.skills.acr.label, 'acr'], ['CHRISPREMADES.Generic.Uncontested', 'skip']];
@@ -330,6 +332,11 @@ async function grappleHelper(sourceToken, targetToken, item, {noContest = false,
     if (grappledEffect) await effectUtils.addDependent(grappledEffect, [targetEffect]);
     if (game.modules.get('Rideable')?.active) game.Rideable.Mount([targetToken.document], sourceToken.document, {'Grappled': true, 'MountingEffectsOverride': ['Grappled']});
 }
+function isGrappledBy(target, source) {
+    let effects = effectUtils.getAllEffectsByIdentifier(target.actor, 'grappled');
+    if (!effects.length) return false;
+    return !!effects.find(effect => effect.flags['chris-premades']?.grapple?.tokenId === source.document.id);
+}
 function getMovementHitTokens(startPoint, endPoint, radius, {collisionType='move', includeAlreadyHit=false}={}) {
     function getIntersection(ray, intersectShape) {
         let ptsLength = intersectShape.points.length;
@@ -425,5 +432,6 @@ export let tokenUtils = {
     getLightLevel,
     grappleHelper,
     getMovementHitTokens,
-    getLinearDistanceMoved
+    getLinearDistanceMoved,
+    isGrappledBy
 };

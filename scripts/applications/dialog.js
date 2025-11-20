@@ -156,6 +156,7 @@ export class DialogApp extends HandlebarsApplicationMixin(ApplicationV2) {
                             name: currField.name,
                             image: currField.options?.image ?? undefined,
                             tooltip: currField.options?.tooltip ?? undefined,
+                            reference: currField.options?.reference ?? undefined,
                         });
                     }
                     context.inputs.push({
@@ -395,6 +396,19 @@ export class DialogApp extends HandlebarsApplicationMixin(ApplicationV2) {
         this.context = currentContext;
         this.render(true);
     }
+    /**
+     * Apply a property attribution tooltip to an element.
+     * @param {HTMLElement} element  The element to get the tooltip.
+     * @protected
+     */
+    _applyTooltips(element) {
+        if ( "tooltip" in element.dataset ) return;
+        const uuid = element.dataset.referenceTooltip;
+        element.dataset.tooltip = `
+          <section class="loading" data-uuid="${uuid}"><i class="fas fa-spinner fa-spin-pulse"></i></section>
+        `;
+        if ( element.dataset.attribution ) element.dataset.tooltipClass = "property-attribution";
+    }
     _onRender(context, options) {
         let imageElements = this.element.querySelectorAll('.label-image');
         for (let currElem of imageElements) {
@@ -419,6 +433,10 @@ export class DialogApp extends HandlebarsApplicationMixin(ApplicationV2) {
                 targetToken.refresh();
             });
         }
+        // Apply reference tooltips
+        this.element.querySelectorAll("[data-reference-tooltip]").forEach(element => {
+            this._applyTooltips(element);
+        });
     }
 }
 export class DialogManager {
