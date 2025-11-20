@@ -1,3 +1,8 @@
+# 1.3.135 Release:
+## New Legacy Content:
+- Misdirection
+- Soul of Deceit
+
 # 1.3.134 Release:
 ## New Modern Content:
 - Mimic: Adhesive, Bite, Pseudopod

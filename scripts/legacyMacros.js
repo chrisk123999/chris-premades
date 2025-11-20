@@ -432,6 +432,8 @@ export {youDieOnMyCommand} from './macros/2014/classFeatures/illrigger/painkille
 export {deathstrike} from './macros/2014/classFeatures/illrigger/painkiller/deathstrike.js';
 export {masterOfTactics} from './macros/2014/classFeatures/rogue/mastermind/masterOfTactics.js';
 export {insightfulManipulator} from './macros/2014/classFeatures/rogue/mastermind/insightfulManipulator.js';
+export {misdirection} from './macros/2014/classFeatures/rogue/mastermind/misdirection.js';
+export {soulOfDeceit} from './macros/2014/classFeatures/rogue/mastermind/soulOfDeceit.js';
 // Race Features
 export {aasimarNecroticShroud, aasimarRadiantConsumption, aasimarRadiantSoul, celestialRevelation} from './macros/2014/raceFeatures/aasimar/celestialRevelation.js';
 export {acidBreathWeapon, coldBreathWeapon, fireBreathWeapon, lightningBreathWeapon, poisonBreathWeapon} from './macros/2014/raceFeatures/dragonborn/chromatic/breathWeapon.js';
