@@ -137,6 +137,7 @@
             "Arangement": "Arangement:",
             "ArmoTypes": "Armor Types:",
             "AttackBonus": "Attack Bonus:",
+            "Attacks": "Attacks:",
             "AvatarImg": "Avatar Image:",
             "AvatarImgPriority": "Avatar Image Priority:",
             "BaseDiceNumber": "Base Dice Number:",
@@ -689,6 +690,7 @@
             "None": "None",
             "Ok": "Ok",
             "Prompt": "Prompt",
+            "PromptForTargets": "Prompt for targets:",
             "ProtectWithItem": "Protect {token} with {item}?",
             "Range": "Range",
             "RangedSpells": "Ranged Spells",
@@ -1879,6 +1881,9 @@
             },
             "MartialAdvantage": {
                 "Name": "Martial Advantage"
+            },
+            "MartialArts": {
+                "ValidateWeaponType": "Validate Weapon Type:"
             },
             "MassCureWounds": {
                 "Select": "Which targets would you like to heal? (Max: 6)"
