@@ -1,3 +1,7 @@
+# 1.3.137 Release:
+## Bug Fixes:
+- Fixed DDBI compatibility.
+
 # 1.3.136 Release:
 ## New Modern Content:
 - Martial Arts
