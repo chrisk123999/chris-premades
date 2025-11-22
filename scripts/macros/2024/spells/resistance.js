@@ -1,201 +1,207 @@
-import {actorUtils, combatUtils, dialogUtils, effectUtils, itemUtils, workflowUtils} from '../../../utils.js';
+//const {DialogApp, Crosshairs, Summons, Teleport, utils: {activityUtils, actorUtils, animationUtils, combatUtils, compendiumUtils, constants, crosshairUtils, dialogUtils, effectUtils, errors, genericUtils, itemUtils, macroUtils, rollUtils, socketUtils, templateUtils, tokenUtils, workflowUtils, spellUtils, regionUtils, thirdPartyUtils}} = chrisPremades;
 
-const TURN_FLAG_NAME = "resistanceOncePerTurn";
-/* ---------------- helpers ---------------- */
-function cloneEffectData(eff) { return foundry.utils.deepClone(eff.toObject()); }
-function typeFromKey(k){ const p=(k||"").split("."); return p[p.length-1]||null; }
+import {activityUtils, actorUtils, dialogUtils, effectUtils, genericUtils, itemUtils, workflowUtils} from '../../../utils.js';
 
-function returnActivity(item, identifier) {
-  const activities = item?.system?.activities;
-  if (!activities) return;
-  const activityToReturn =
-  (activities.find?.(a => a.identifier === identifier)) ??
-  activities.value.find(a => a.identifier === identifier);
-  return activityToReturn;
-}
+const META = genericUtils.getDamageTypeMeta();
 
-function findResistanceEntries(actor){
-  const out = [];
-  for (const eff of actor?.effects ?? []) {
-    if (eff?.flags?.["chris-premades"]?.info?.identifier !== "resistance") continue;
-    (eff.changes ?? []).forEach((c,i)=>{
-      if (typeof c?.key !== "string") return;
-      if (!c.key.startsWith("system.traits.dm.amount.")) return;
-      out.push({ effect: eff, changeIndex: i, changeKey: c.key, dtype: typeFromKey(c.key) });
-    });
-  }
-  return out;
-}
+const ALLOWED = ["elemental", "physical", "divine"];
 
-function collectAppliedTypes(workflow) {
-  const damageItem = workflow;
-  const details = Array.isArray(damageItem?.damageDetail)
-    ? damageItem.damageDetail
-    : Array.isArray(damageItem?.rawDamageDetail)
-      ? damageItem.rawDamageDetail
-      : [];
-  const set = new Set();
-  for (const part of details) {
-    if (Array.isArray(part?.types)) part.types.forEach(t => t && set.add(String(t)));
-    else if (part?.type) set.add(String(part.type));
-  }
-  return set;
-}
+const FILTERED_TYPES = Object.keys(META).filter(
+    type => ALLOWED.includes(META[type].subtype)
+);
 
-/* --------------- core: run in ACTOR pass before damage is applied --------------- */
-async function applyRolledValue({ trigger: { entity: maybeEffect }, workflow }) {
-  try {
-    const defender = maybeEffect?.parent ?? workflow?.targets?.first()?.actor ?? null;
-    if (!defender) { console.warn(`${TAG} no defender actor`); console.groupEnd(); return; }
-    const entries = findResistanceEntries(defender);
-    if (!entries.length) {return; }
-
-    // Stage: zero ALL Resistance keys first, we ensure no resistance effects linger and apply damage modifications
-    const updatesById = new Map(); // effect.id -> plain data
-    for (const e of entries) {
-      const id = e.effect.id;
-      const data = updatesById.get(id) ?? cloneEffectData(e.effect);
-      data.changes[e.changeIndex].value = "0";
-      updatesById.set(id, data);
+// ** Which Resistance applies? ** //
+function resolveResistanceSource(effects, damageDetail) {
+    if (!effects?.length || !Array.isArray(damageDetail) || !damageDetail.length) {
+        return { effect: null, type: null, damageInstance: null };
     }
 
-    // Which types are actually in this damage packet? we need to know as we'll be too late to apply the dm in an onHit otherwise
-    const appliedTypes = collectAppliedTypes(workflow);
+    const damageTypes = [...new Set(
+        effects.map(e => e.flags?.["chris-premades"]?.info?.damageType).filter(Boolean)
+    )];
 
-    // Pick the first Resistance entry whose dtype appears here
-    const matched = entries.find(e => appliedTypes.has(e.dtype));
-    if (!matched) {
-      await Promise.all([...updatesById.entries()].map(([id, data]) => defender.effects.get(id)?.update({ changes: data.changes })));
-    return;
+    if (!damageTypes.length) {
+        genericUtils.log("dev", "Resistances found, but none with a damageType flag.");
+        return { effect: null, type: null, damageInstance: null };
     }
 
-    // Read config from the ACTUAL origin item of the matched effect. The actor may have multiple Resistance effects from different origins, though I imagine it to be super rare. 
-    const origin = effectUtils.getOriginItemSync(matched.effect);
-    const allowMulti = itemUtils.getConfig(origin, "allowMulti") === true; //homebrew config, we could live without it
+    // Compute totals for each type
+    const totalsByType = damageTypes.map(type => ({
+        type,
+        total: workflowUtils.getTotalEffectiveDamageOfType(damageDetail, type) || 0
+    }));
 
-    // CPR per-turn gate (only if allowMulti is false) - this is gated in the actual onHit phase for those rare cases of saving throw cancelling all damage (e.g. Sacred Flame)
-    const canUseThisTurn = allowMulti || combatUtils.perTurnCheck(defender, TURN_FLAG_NAME, /*ownTurnOnly*/false);
-    if (!canUseThisTurn) {
-      await Promise.all([...updatesById.entries()].map(([id, data]) => defender.effects.get(id)?.update({ changes: data.changes })));
+    genericUtils.log("dev", "Totals by resistance type:", totalsByType);
+
+    const allZero = totalsByType.every(entry => entry.total === 0);
+    if (allZero) {
+        genericUtils.log("dev", "No effective damage of any resistance type was taken.");
+        return { effect: null, type: null, damageInstance: null };
+    }
+
+    // Pick the type with the highest effective damage
+    const highestType = totalsByType.sort((a, b) => b.total - a.total)[0].type;
+
+    genericUtils.log("dev", `Highest damage type is ${highestType}, resistance will apply to this type.`);
+
+    const effect = effects.find(
+        e => e.flags?.["chris-premades"]?.info?.damageType === highestType
+    );
+    if (!effect) {
+        genericUtils.log("dev", "Could not find a matching effect for highestType, this should not happen.");
+        return { effect: null, type: null, damageInstance: null };
+    }
+
+    const damageInstance = workflowUtils.getHighestDamageInstance(damageDetail, highestType);
+    if (!damageInstance) {
+        genericUtils.log("dev", "No damageInstance found for highestType, this should not happen.");
+        return { effect: null, type: null, damageInstance: null };
+    }
+
+    return { effect, type: highestType, damageInstance };
+}
+
+// ** Animation function ** //
+async function playResistanceAnimation(targetToken, parentItem, damageType) {
+    let playAnimation = itemUtils.getConfig(parentItem, 'playAnimation') === true;
+    genericUtils.log("dev", `playAnimation: ${playAnimation}`)
+    if (!playAnimation) return;
+    if (!targetToken) return;
+    if (animationUtils.jb2aCheck() !== 'patreon') return genericUtils.log("dev", `patreon J2BA not detected`);
+    genericUtils.log("dev", "damageType", damageType, "color", META[damageType]?.color)
+    const effectColor = META[damageType]?.color ?? "blue"; // fallback just in case
+    new Sequence()
+        .effect()
+            .attachTo(targetToken)        
+            .file(`jb2a.shield.01.complete.01.${effectColor}`)
+            .scaleToObject(1.5 * targetToken.document.texture.scaleX)
+            .fadeIn(0, {ease: "easeOutCubic"})
+            .fadeOut(1000, {ease: "easeOutCubic"})
+            .name("resistance")
+            .play();
+}
+
+// ** Apply the right effect ** //
+async function use({trigger, workflow}) {
+    genericUtils.log("dev", "triggered macro Resistance")
+    const type = await dialogUtils.selectDamageType(
+        FILTERED_TYPES,
+        workflow.activity.name,
+        "CHRISPREMADES.Generic.SelectDamageType", { addNo:true }
+    );
+    genericUtils.log("dev",`Type ${type} chosen, apply effect to target.`);
+    if (!type) {
+      await effectUtils.killConcentration(workflow?.actor, workflow?.item);
       return;
     }
-    
-    const parentCaster = matched?.effect?.parent
+    const targetToken = workflow?.targets?.values().next().value;
+    if (!targetToken) {
+      genericUtils.log("dev","no target found, exiting...")
+      await effectUtils.killConcentration(workflow?.actor, workflow?.item)
+      return;
+    } 
+    const effectData = {
+        name: `Resistance (${genericUtils.titleCase(type)})`,
+        img: META[type]?.image ?? workflow.item.img,
+        origin: workflow.item.uuid,
+        duration: itemUtils.convertDuration(workflow.item),
+        flags: {
+            'chris-premades': {
+                info: {
+                    identifier: 'resistance',
+                    damageType: type
+                }
+            }
+        },
+    };
+    genericUtils.log("dev",`effect`, effectData);
+    await effectUtils.createEffect(targetToken?.actor, effectData, {concentrationItem: workflow?.item})
+}
+
+// ** Damage Reduction Application ** //
+async function damageApplication({ trigger: { token }, workflow, ditem }) {
+
+    const actor = token?.actor;
+    const damageDetail = ditem?.damageDetail;
+    if (!actor || !Array.isArray(damageDetail) || !damageDetail.length) return;
+
+
+    const effects = effectUtils.getAllEffectsByIdentifier(actor, "resistance") ?? [];
+    if (!effects.length) return;
+
+    const { effect: sourceEffect, type: resistanceType, damageInstance } =
+      resolveResistanceSource(effects, damageDetail);
+
+    if (!sourceEffect || !resistanceType || !damageInstance) {
+      return genericUtils.log("dev", "No applicable resistance for this hit.");
+    }
+
+    genericUtils.log("dev","sourceEffect ===", sourceEffect);
+
+    const originDoc = sourceEffect.origin ? await fromUuid(sourceEffect.origin) : null;
+    const parentCaster = originDoc?.parent;
+    if (!parentCaster) return console.error("no caster found");
+    genericUtils.log("dev","parentCaster ===", parentCaster);
+
     const parentItem = await itemUtils.getItemByIdentifier(parentCaster, "resistance");
-    const rollActivity = returnActivity(parentItem, "resistance-roll");
-    const firstToken = actorUtils.getFirstToken(defender);
-    const rollData = await workflowUtils.syntheticActivityRoll(rollActivity, targets = [firstToken] )
+    if (!parentItem) return;
 
-    const rolled = rollData?.utilityRolls[0].total ?? 1
-
-    // Apply only to the matched change
-    const id   = matched.effect.id;
-    const data = updatesById.get(id) ?? cloneEffectData(matched.effect);
-    data.changes[matched.changeIndex].value = String(-rolled);
-    updatesById.set(id, data);
-
-    // Push updates
-    await Promise.all([...updatesById.entries()].map(([eid, edata]) => defender.effects.get(eid)?.update({ changes: edata.changes })));
-  } catch (err) {
-    console.error(`Resistance pre-apply error:`, err); console.groupEnd?.();
-  }
-}
-
-async function use({trigger, workflow}) {
-  if (workflow?.activity?.identifier != 'apply-resistance') return;
-  // We could have used MIDI effect choice application here, but with CPR we're relying on translation keys - nice addition for the non english players. 
-  let type = await dialogUtils.selectDamageType(
-      [
-        'acid',
-        'bludgeoning',
-        'cold', 
-        'fire', 
-        'lightning',
-        'necrotic',
-        'piercing',
-        'poison',
-        'radiant',
-        'slashing',
-        'thunder'
-      ], 
-      workflow.activity.name,
-      'CHRISPREMADES.Generic.SelectDamageType'
-    );
-  if (!type) return;
-  //each effect has the identifier and damageType flags.chris-premades.info, so we leverage this
-  const effectToApply = workflow?.item?.effects.find(e =>
-    e?.flags?.["chris-premades"]?.info?.identifier === "resistance" &&
-    e?.flags?.["chris-premades"]?.info?.damageType === type
-  );
-  const effectData = effectToApply.toObject();
-  const targetToken = workflow?.targets?.values().next().value;
-  if (!targetToken) return console.error("no target found") ;
-  await effectUtils.createEffect(targetToken?.actor, effectData, {concentrationItem: workflow?.item})
-}
-
-async function confirmUseOnHit({ trigger, workflow }) {
-  try {
-    // Figure out the defender for this onHit callback
-    const defender =
-      trigger?.entity?.actor ??
-      trigger?.token?.actor ??
-      workflow?.targets?.first()?.actor ??
-      null;
-
-    if (!defender) return;
-
-    const entries = findResistanceEntries(defender);
-    if (!entries.length) return;
-
-    // Check the origin config (allowMulti etc.)
-    const origin = effectUtils.getOriginItemSync(entries[0].effect);
-    const allowMulti = itemUtils.getConfig(origin, "allowMulti") === true;
-    if (allowMulti) return; // No once-per-turn gating if multi-use is allowed
-
-    // If it's already marked used this turn, nothing to do
-    const alreadyUsed = !combatUtils.perTurnCheck(defender, TURN_FLAG_NAME, /*ownTurnOnly*/false);
+    const alreadyUsed = await itemUtils.perTurnUsage(parentItem, token?.actor, false);
+    genericUtils.log("dev",`alreadyUsed ${alreadyUsed}`);
     if (alreadyUsed) return;
 
-    // Did we actually apply a non-zero resistance value for this packet?
-    // (applyRolledValue zeroes everything, then sets -rolled on the matching type)
-    const hasActiveResistance = entries.some(e => {
-      const change = e.effect.changes?.[e.changeIndex];
-      if (!change) return false;
-      const val = Number(change.value ?? 0);
-      return Number.isFinite(val) && val !== 0;
-    });
+    const rollActivity = activityUtils.getActivityByIdentifier(parentItem, "resistanceRoll", {strict : true});
+    genericUtils.log("dev","rollActivity",rollActivity);
+    if (!rollActivity) return genericUtils.log("error","no roll activity found");
 
-    if (!hasActiveResistance) return;
+    const rollData = await workflowUtils.syntheticActivityDataRoll(rollActivity,parentItem,actor,[actorUtils.getFirstToken(actor)]);
+    await playResistanceAnimation(actorUtils.getFirstToken(actor), parentItem, resistanceType)
+    const oldValue = genericUtils.sanitizeNumber(damageInstance.value)
+    const newValue = workflowUtils.adjustDamageValue({damageInstance : damageInstance, damageMod : -(rollData?.utilityRolls?.[0]?.total ?? 0), orderOfDamage : game.settings.get("midi-qol", "ConfigSettings")?.saveDROrder ?? "DRSaveDr"});
 
-    // in most cases we would have known we were hit before, but in rare cases (e.g. Sacred Flame) we may not have - so we set the turn flag here on an onHit pass
-    await combatUtils.setTurnCheck(defender, TURN_FLAG_NAME, /*reset*/false);
+    // If nothing actually changed, don't bother mutating the ditem but mark as used (the spell is not guaranteed to reduce damage, just guaranteed to try)
+    await itemUtils.perTurnUsage(parentItem, token?.actor, true);
+    if (newValue - oldValue === 0) return;
 
-  } catch (err) {
-    console.error("Resistance confirmUseOnHit error:", err);
-  }
+    workflowUtils.adjustDamageItem(ditem, damageInstance, newValue);
 }
 
 export let resistance = {
-  name: "resistance",
-  version: "1.0.0",
-  rules: 'modern',
-  midi: {
-    item : [
-      { pass: "preItemRoll", macro : use, priority : 50}
-    ],
-    actor: [
-      { pass: "targetDamageRollComplete", macro: applyRolledValue, priority: 50 },
-      { pass: "onHit", macro: confirmUseOnHit, priority: 50 },
+    name: "Resistance",
+    version: "1.0.2",
+    rules: 'modern',
+    midi: {
+        item : [
+            { 
+                pass: "preambleComplete", 
+                macro : use, 
+                priority : 50,
+                activities: ['resistance']
+            }
+        ],
+        actor: [
+            {
+                pass : "targetApplyDamage", 
+                macro : damageApplication, 
+                priority : 50
+            },
+        ]
+    },
+    config: [
+        {
+            value: "allowMulti",
+            label: "CHRISPREMADES.Config.AllowMultiplePerTurn",
+            type: "checkbox",
+            default: false,
+            homebrew: true,
+            category: "homebrew"
+        },
+        {
+            value: 'playAnimation',
+            label: 'CHRISPREMADES.Config.PlayAnimation',
+            type: 'checkbox',
+            default: true,
+            category: 'animation'
+        }
     ]
-  },
-  config: [
-    {
-      value: "allowMulti",
-      label: "CHRISPREMADES.Config.AllowMultiplePerTurn",
-      type: "checkbox",
-      default: false,
-      homebrew: true,
-      category: "homebrew"
-    }
-  ]
 };

@@ -231,6 +231,7 @@ function getTotalDamageOfType(damageDetail, actor, type) {
     if (vulnerable && !resistant) total = total * 2;
     return total;
 }
+
 async function handleInstantTemplate(workflow) {
     if (!workflow.template) return;
     let templateEffectName = genericUtils.format('CHRISPREMADES.GenericEffects.TemplateEffect', {itemName: workflow.item.name});
@@ -338,6 +339,190 @@ function addEntityRemoval(workflow, entities) {
     let current = workflow['chris-premades']?.removeEntityUuids ?? [];
     genericUtils.setProperty(workflow, 'chris-premades.removeEntityUuids', [...current, ...entities.map(i => i.uuid)]);
 }
+
+/**
+ * Updates a single damage instance inside a Midi-QoL damage item and
+ * recalculates all resulting damage totals and HP/temp HP changes.
+ *
+ * This function:
+ *  • Sets the given damage instance’s value to the new adjusted damage.
+ *  • Marks the instance as modified (if applicable).
+ *  • Recomputes the item's totalDamage based on all damageDetail entries.
+ *  • Updates helper mirrors (elwinHelpersEffectiveDamage,
+ *    healingAdjustedTotalDamage) if they were previously in use.
+ *  • Recalculates temp HP consumption, HP damage, newTempHP, and newHP based
+ *    on oldTempHP, oldHP, and the newly computed total damage.
+ *
+ * Mutates `damageItem` and `damageInstance` in place.
+ *
+ * @param {Object} damageItem - The Midi-QoL damage item being modified (ditem).
+ * @param {Object} damageInstance - One entry from damageItem.damageDetail to update.
+ * @param {number} newValue - The new damage value for this instance after mitigation.
+ * @returns {void} This function does not return a value; it mutates the provided objects.
+*/
+function adjustDamageItem(damageItem, damageInstance, newValue) {
+    if (!damageItem || !damageInstance) return;
+    genericUtils.log("dev",`old detail damage:`,damageItem, "old damage instance:", damageInstance);
+    damageInstance.value = genericUtils.sanitizeNumber(newValue); //Redundant but defensive sanitization
+
+    if (damageInstance.active) {
+        damageInstance.active.modification = true;
+    }
+
+    // --- Recompute total damage safely ---
+    const detail = Array.isArray(damageItem.damageDetail) ? damageItem.damageDetail : [];
+    let newTotalDamage = detail.reduce((sum, d) => {
+        const safeV = genericUtils.sanitizeNumber(d?.value ?? 0);
+        return sum + safeV;
+    }, 0);
+    genericUtils.log("dev",`new Total Damage: ${newTotalDamage}`);
+    damageItem.totalDamage = newTotalDamage;
+    workflowUtils.applyNewTotalDamage(damageItem, newTotalDamage);
+    genericUtils.log("dev",`new detail damage:`,damageItem, "new damage instance:", damageInstance);
+}
+
+
+/**
+ * This function adjusts the damage value based on the order of application of
+ * damage reduction, saves, resistances, vulnerabilities and immunities.
+ * 
+ * @param {Object} params
+ * @param {Object} params.damageInstance - A ditem?.damageDetail entry.
+ * @param {number} [params.damageMod=0] - The damage modification to apply.
+ * @param {string} [params.orderOfDamage="DRSaveDr"] - The MIDI saveDROrder setting.
+ * @returns {number} The adjusted damage, floored and clamped to >= 0.
+*/
+function adjustDamageValue({damageInstance, damageMod = 0, orderOfDamage = "DRSaveDr"}) {
+
+    if (!damageInstance) return 0;
+
+    const base = genericUtils.sanitizeNumber(damageInstance.damage ?? 0);
+    const final = genericUtils.sanitizeNumber(damageInstance.value ?? 0);
+
+    const saved = damageInstance.active?.saved ?? false;
+    const resistant = damageInstance.active?.resistance ?? false;
+    const vulnerable = damageInstance.active?.vulnerability ?? false;
+    const immune = damageInstance.active?.immunity ?? false;
+
+    if (immune) return 0;
+
+    const saveMult = saved ? 0.5 : 1;
+    const resistMult = resistant ? 0.5 : 1;
+    const vulnMult = vulnerable ? 2 : 1;
+
+    const finalMultiplier = saveMult * resistMult * vulnMult;
+
+    // Compute customMods, a damage modification the multiplier may not reflect, such as system.traits.dm.amount.x
+    // it doesn't apply to specific dm.midi, which are added to the damageDetail Array so we don't need to compute it
+    let customMods = 0;
+    let newValue = 0;
+
+    if (orderOfDamage === "DRSaveDr") {
+        // final = (base + customMods) * finalMultiplier
+        customMods = final / finalMultiplier - base;
+        genericUtils.log("dev",`customMod applied to damage was ${customMods}`);
+        // apply new mod
+        newValue = (base + customMods + damageMod) * finalMultiplier;
+    }
+    else {
+        // alternate order:
+        // final = ((base * saveMult) + customMods) * (resistMult * vulnMult)
+        const afterSave = base * saveMult;
+        const resistVulnMult = resistMult * vulnMult;
+
+        customMods = (final / resistVulnMult) - afterSave;
+        genericUtils.log("dev",`customMod applied to damage was ${customMods}`);
+
+        newValue = ((base * saveMult) + customMods + damageMod) * resistVulnMult;
+    }
+
+    newValue = Math.floor(newValue);
+
+    return newValue;
+}
+
+/**
+ * Apply a new total damage value to a damageItem, updating:
+ * - helper mirrors (if they were in use)
+ * - temp HP / HP / hpDamage / tempDamage
+ *
+ * @param {object} damageItem
+ * @param {number} newTotalDamage
+ */
+function applyNewTotalDamage(damageItem, newTotalDamage) {
+    genericUtils.log("dev", "damageItem inspection:", damageItem, "new TotalDamage:", newTotalDamage);
+    if (!damageItem) return;
+
+    const total = genericUtils.sanitizeNumber(newTotalDamage);
+    const roundedTotal = total > 0 ? Math.floor(total) : Math.ceil(total);
+
+    // Mirror helpers
+    if (damageItem?.elwinHelpersEffectiveDamage !== undefined)
+        damageItem.elwinHelpersEffectiveDamage = roundedTotal;
+    
+    // Mirror healing-adjusted helper (damage or healing)
+    if (damageItem?.healingAdjustedTotalDamage !== undefined)
+        damageItem.healingAdjustedTotalDamage = roundedTotal;
+
+    // HP / Temp HP logic
+    const oldTemp = Math.max(0, genericUtils.sanitizeNumber(damageItem.oldTempHP ?? 0));
+    const oldHP = Math.max(0, genericUtils.sanitizeNumber(damageItem.oldHP ?? 0));
+
+    if (oldTemp >= roundedTotal) {
+        damageItem.newTempHP = oldTemp - roundedTotal;
+        damageItem.tempDamage = roundedTotal;
+        damageItem.hpDamage = 0;
+        damageItem.newHP = oldHP;
+    }
+    else if (oldTemp > 0) {
+        const hpDamage = Math.min(roundedTotal - oldTemp, oldHP);
+        damageItem.newTempHP = 0;
+        damageItem.tempDamage = oldTemp;
+        damageItem.hpDamage = hpDamage;
+        damageItem.newHP = Math.max(0, oldHP - hpDamage);
+    }
+    else {
+        const hpDamage = Math.min(roundedTotal, oldHP);
+        damageItem.newTempHP = 0;
+        damageItem.tempDamage = 0;
+        damageItem.hpDamage = hpDamage;
+        damageItem.newHP = Math.max(0, oldHP - hpDamage);
+    }
+}
+
+/**
+ * Returns the single damageDetail entry with the highest effective `damage` value.
+ * If `type` is provided, restricts to that type; otherwise considers all.
+ */
+function getHighestDamageInstance(damageDetail = [], type = null) {
+    const entries = type
+        ? damageDetail.filter(d => d?.type === type)
+        : damageDetail;
+
+    if (!entries.length) return null;
+
+    return entries.reduce((max, d) =>
+        (d?.value ?? 0) > (max?.value ?? 0) ? d : max
+    , null);
+};
+
+/**
+ * Returns the effective damage of a specific type after all reductions,
+ * saves, resistances, vulnerabilities, and multipliers have been applied.
+ *
+ * Use this for effects that trigger on damage *dealt* (RAW), not damage rolled.
+ *
+ * @param {Array<Object>} damageDetail - The processed workflow damageDetail.
+ * @param {string} type - The damage type to total.
+ * @returns {number} Effective damage of that type (0 if none).
+ */
+function getTotalEffectiveDamageOfType(damageDetail, type) {
+    if (!Array.isArray(damageDetail)) return 0;
+    return damageDetail
+        .filter(d => d?.type === type && typeof d.value === "number")
+        .reduce((total, d) => total + d.value, 0);
+}
+
 export let workflowUtils = {
     bonusDamage,
     bonusAttack,
@@ -365,5 +550,10 @@ export let workflowUtils = {
     getActionType,
     swapAttackAbility,
     addEntityRemoval,
-    preventDeath
+    preventDeath,
+    adjustDamageItem,
+    adjustDamageValue,
+    applyNewTotalDamage,
+    getHighestDamageInstance,
+    getTotalEffectiveDamageOfType
 };

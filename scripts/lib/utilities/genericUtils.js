@@ -71,6 +71,7 @@ function isNewerVersion(v1, v0) {
 function randomID(value) {
     return foundry.utils.randomID(value);
 }
+
 function checkMedkitPermission(permission, userId) {
     let settingKey = undefined;
     switch (permission) {
@@ -141,7 +142,7 @@ function collapseObjects(...objects) {
     objects.forEach(o => mergeObject(object, o));
     return object;
 }
-function log(type, message) {
+function log(type, ...message) {
     if (type === 'dev' && !getCPRSetting('devTools')) return;
     if (type === 'dev') type = 'log';
     console[type]('CPR: ' + message);
@@ -178,6 +179,119 @@ function convertDistance(ft) {
     if (canvas.scene.grid.units !== 'm') return ft;
     return Math.floor((ft / 5) * 1.5);
 }
+
+/**
+ * @param {any} input
+ * @param {number} defaultValue
+ * @param {{ math?: "floor" | "ceil" | "round" | "none" }} options
+ * @returns {number}
+ */
+function sanitizeNumber(input, defaultValue = 0, { math = "none" } = {}) {
+    if (!Number.isFinite(input)) {
+        log("error", `sanitizeNumber: input '${input}' is not finite; returning ${defaultValue}`);
+        return defaultValue;
+    }
+    switch (math) {
+        case "none":
+            return input;
+        case "ceil":
+            log("dev", `sanitizeNumber: applying ceil to ${input}`);
+            return Math.ceil(input);
+        case "round":
+            log("dev", `sanitizeNumber: applying round to ${input}`);
+            return Math.round(input);
+        case "floor":
+            log("dev", `sanitizeNumber: applying floor to ${input}`);
+            return Math.floor(input);
+        default:
+            log("warn", `sanitizeNumber: unknown math op '${math}', returning input unchanged`);
+            return input;
+    }
+}
+
+const DAMAGE_TYPES = {
+    acid: {
+        color: "green",
+        image: "icons/magic/acid/projectile-faceted-glob.webp",
+        subtype: "elemental"
+    },
+    bludgeoning: {
+        color: "yellow",
+        image: "icons/magic/earth/projectiles-stone-salvo-gray.webp",
+        subtype: "physical"
+    },
+    cold: {
+        color: "blue",
+        image: "icons/magic/air/wind-tornado-wall-blue.webp",
+        subtype: "elemental"
+    },
+    fire: {
+        color: "red",
+        image: "icons/magic/fire/beam-jet-stream-embers.webp",
+        subtype: "elemental"
+    },
+    force: {
+        color: "purple",
+        image: "icons/magic/sonic/projectile-sound-rings-wave.webp",
+        subtype: "magical"
+    },
+    lightning: {
+        color: "blue",
+        image: "icons/magic/lightning/bolt-blue.webp",
+        subtype: "elemental"
+    },
+    necrotic: {
+        color: "green",
+        image: "icons/magic/unholy/projectile-bolts-salvo-pink.webp",
+        subtype: "primordial"
+    },
+    piercing: {
+        color: "yellow",
+        image: "icons/skills/melee/strike-polearm-light-orange.webp",
+        subtype: "physical"
+    },
+    poison: {
+        color: "green",
+        image: "icons/magic/death/skull-poison-green.webp",
+        subtype: "elemental"
+    },
+    psychic: {
+        color: "purple",
+        image: "icons/magic/control/fear-fright-monster-grin-red-orange.webp",
+        subtype: "psychic"
+    },
+    radiant: {
+        color: "purple",
+        image: "icons/magic/holy/projectiles-blades-salvo-yellow.webp",
+        subtype: "primordial"
+    },
+    slashing: {
+        color: "yellow",
+        image: "icons/skills/melee/strike-sword-gray.webp",
+        subtype: "physical"
+    },
+    thunder: {
+        color: "purple",
+        image: "icons/magic/sonic/explosion-shock-wave-teal.webp",
+        subtype: "elemental"
+    },
+    no: {
+        color: "blue",
+        image: "icons/svg/cancel.svg",
+        subtype: "none"
+    }
+};
+
+// Function that returns default images, unless overridden
+function getDamageTypeMeta(override = {}) {
+    const merged = {};
+    for (const [type, data] of Object.entries(DAMAGE_TYPES)) {
+        merged[type] = { ...data, ...(override[type] ?? {}) };
+    }
+    return merged;
+}
+
+
 export let genericUtils = {
     sleep,
     translate,
@@ -211,5 +325,7 @@ export let genericUtils = {
     checkPlayerOwnership,
     getRules,
     getCPRIdentifier,
-    convertDistance
+    convertDistance,
+    sanitizeNumber,
+    getDamageTypeMeta
 };
