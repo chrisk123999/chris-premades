@@ -114,6 +114,7 @@
             "Activities": "Atividades:",
             "AffectAllies": "Deve Afetar Aliados:",
             "AllowEnemies": "Permitir seleção de tokens não-aliados?",
+            "AllowMultiplePerTurn" : "Permitir várias utilizações por turno?",
             "Animation": "Animação:",
             "Animations": {
                 "Air": "Ar",
