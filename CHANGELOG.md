@@ -1,3 +1,9 @@
+# 1.3.138 Release:
+## New Generic Monster Features:
+- Transform
+## Bug Fixes:
+- Damage Turn Start generic feature
+  
 # 1.3.137 Release:
 ## Bug Fixes:
 - Fixed DDBI compatibility.
