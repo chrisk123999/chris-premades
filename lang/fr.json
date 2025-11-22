@@ -165,6 +165,7 @@
             "AffectAllies": "Doit affecter les alliés :",
             "AvatarImgPriority": "Priorité à l'image d'Avatar :",
             "AllowEnemies": "Permettre la sélection de jetons non alliés ?",
+            "AllowMultiplePerTurn" : "Autoriser plusieurs utilisations par tour ?",
             "SpellSchools": "Écoles de magie :",
             "FailedSave": "Échec de la sauvegarde :",
             "TokenColor": "Couleur du token :",

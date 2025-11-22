@@ -1,6 +1,7 @@
 import {DialogApp} from '../../applications/dialog.js';
 import {tokenUtils, genericUtils} from '../../utils.js';
 import {socket, sockets} from '../sockets.js';
+
 async function buttonDialog(title, content, buttons, {displayAsRows = true, userId = game.user.id} = {}) {
     let inputs = [
         ['button', [], {displayAsRows: displayAsRows}]
@@ -277,34 +278,31 @@ async function selectSpellSlot(actor, title, content, {maxLevel = 9, minLevel = 
     if (no) inputs.push(['CHRISPREMADES.Generic.No', false]);
     return await buttonDialog(title, content, inputs, {displayAsRows: true, userId: userId});
 }
-async function selectDamageType(damageTypes, title, context, {addNo = false, userId = game.user.id} = {}) {
-    let images = {
-        acid: 'icons/magic/acid/projectile-faceted-glob.webp',
-        bludgeoning: 'icons/magic/earth/projectiles-stone-salvo-gray.webp',
-        cold: 'icons/magic/air/wind-tornado-wall-blue.webp',
-        fire: 'icons/magic/fire/beam-jet-stream-embers.webp',
-        force: 'icons/magic/sonic/projectile-sound-rings-wave.webp',
-        lightning: 'icons/magic/lightning/bolt-blue.webp',
-        necrotic: 'icons/magic/unholy/projectile-bolts-salvo-pink.webp',
-        piercing: 'icons/skills/melee/strike-polearm-light-orange.webp',
-        poison: 'icons/magic/death/skull-poison-green.webp',
-        psychic: 'icons/magic/control/fear-fright-monster-grin-red-orange.webp',
-        radiant: 'icons/magic/holy/projectiles-blades-salvo-yellow.webp',
-        slashing: 'icons/skills/melee/strike-sword-gray.webp',
-        thunder: 'icons/magic/sonic/explosion-shock-wave-teal.webp',
-        no: 'icons/svg/cancel.svg'
-    };
-    let buttons = damageTypes.map(i => {
-        let image = images[i] ?? 'icons/magic/symbols/question-stone-yellow.webp';
+
+async function selectDamageType(damageTypes,title,context,{addNo = false,userId = game.user.id,override = {}} = {}) {
+    const meta = genericUtils.getDamageTypeMeta(override);
+    const buttons = damageTypes.map(type => {
+        const image =
+            meta[type]?.image ??
+            "icons/magic/symbols/question-stone-yellow.webp";
+
         return [
-            CONFIG.DND5E.damageTypes[i].label,
-            i,
-            {image}
+            CONFIG.DND5E.damageTypes[type]?.label ?? genericUtils.titleCase(type),
+            type,
+            { image }
         ];
     });
-    if (addNo) buttons.push(['CHRISPREMADES.Generic.No', false, {image: images.no}]);
-    return await buttonDialog(title, context, buttons, {userId});
+    if (addNo) {
+        buttons.push([
+            "CHRISPREMADES.Generic.No",
+            false,
+            { image: meta.no?.image ?? "icons/svg/cancel.svg" }
+        ]);
+    }
+    return buttonDialog(title, context, buttons, { userId });
 }
+
+
 async function queuedConfirmDialog(title, content, {actor, reason, userId} = {}) {
     let selection;
     if (userId !== game.user.id) {

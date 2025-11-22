@@ -245,6 +245,48 @@ function canUse(item) {
     if (!item.system.activities.size) return true;
     if (item.system.activities.find(i => activityUtils.canUse(i))) return true;
 }
+
+/**
+ * Determines whether a once-per-turn ability has already been used by the
+ * target actor, with optional marking of the usage.
+ *
+ * Turn tracking is per-ability, based on:
+ *   • provided `useIdentifier`, OR
+ *   • item.flags['chris-premades'].info.identifier, OR
+ *   • item.uuid (fallback)
+ *
+ * @param {Item} item
+ * @param {actor} actor
+ * @param {boolean} [markUsed=false]
+ * @param {string|null} [useIdentifier=null]
+ * @returns {Promise<boolean>} Whether the ability has already been used this turn.
+ */
+async function perTurnUsage(item, actor, markUsed = false, useIdentifier = null) {
+
+    if (!item || !actor) return false;
+
+    const allowMulti = itemUtils.getConfig(item, "allowMulti") === true;
+    if (allowMulti) return false;
+
+    // Determine which identifier to use for turn flags
+    const identifier =
+        useIdentifier ||
+        item?.flags?.["chris-premades"]?.info?.identifier ||
+        item.uuid; // final fallback
+
+    // CPR/Midi turn flag check:
+    const alreadyUsed = !combatUtils.perTurnCheck(actor, identifier, false);
+
+    if (alreadyUsed) return true;
+
+    if (markUsed) {
+        await combatUtils.setTurnCheck(actor, identifier, false);
+        genericUtils.log("dev", `perTurnUsage: marked ${identifier} used for ${actor.name}`);
+    }
+
+    return false;
+}
+
 export let itemUtils = {
     getSaveDC,
     createItems,
@@ -277,5 +319,6 @@ export let itemUtils = {
     correctActivityItemConsumption,
     fixScales,
     multiCorrectActivityItemConsumption,
-    canUse
+    canUse,
+    perTurnUsage
 };

@@ -113,7 +113,8 @@
             "Ability": "Vlastnost:",
             "Activities": "Aktivity:",
             "AffectAllies": "Mělo by to ovlivnit spojence:",
-            "AllowEnemies": "Povolit výběr NEpřátelských tokenů?",
+            "AllowEnemies": "Povolit výběr ne-přátelských tokenů?",
+            "AllowMultiplePerTurn" : "Povolit více použití za tah?",
             "Animation": "Animace:",
             "Animations": {
                 "Air": "Vzdušná",
