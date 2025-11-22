@@ -404,6 +404,9 @@ export {pactOfTheChain} from './macros/2024/classFeatures/warlock/invocations/pa
 // Monk
 export {martialArts} from './macros/2024/classFeatures/monk/martialArts.js';
 export {unarmoredDefenseMonk} from './macros/2024/classFeatures/monk/unarmoredDefense.js';
+export {monksFocus} from './macros/2024/classFeatures/monk/monksFocus.js';
+export {unarmoredMovement} from './macros/2024/classFeatures/monk/unarmoredMovement.js';
+export {uncannyMetabolism} from './macros/2024/classFeatures/monk/uncannyMetabolism.js';
 // Multiple
 export {evasion} from './macros/2024/classFeatures/multiple/evasion.js';
 // Monster Features

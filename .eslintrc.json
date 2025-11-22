@@ -33,6 +33,10 @@
 		],
 		"no-inner-declarations": [
 			"off"
+		],
+		"quote-props": [
+			"error",
+			"as-needed"
 		]
 	},
 	"globals": {
