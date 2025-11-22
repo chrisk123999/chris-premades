@@ -215,6 +215,7 @@
             "HitTarget": "Hit Target:",
             "IgnoredCreatureTypes": "Ignored Creature Types:",
             "ImmuneCreatures": "Immune Creature Types:",
+            "Items": "Items:",
             "LineColor": "Line Color:",
             "MaxLevel": "Max Level:",
             "MaxSize": "Max Size:",
@@ -248,9 +249,11 @@
             "SubclassIdentifier": "Subclass Identifier:",
             "SummonerOnly": "Summoner Only:",
             "TintMap": "Tint Map:",
+            "Token": "Token:",
             "TokenColor": "Token Color:",
             "TokenImg": "Token Image:",
             "TokenImgPriority": "Token Image Priority:",
+            "TokenName": "Token Name:",
             "TokenSound": "Token Sound:",
             "Trigger": "Trigger:",
             "TurnTrigger": "Turn Trigger:",
@@ -2509,6 +2512,21 @@
             "TouchDamage": {
                 "Name": "Touch Damage"
             },
+            "Transform": {
+                "Name": "Transform",
+                "ProfileOneActivities": "Profile #1 Activities:",
+                "ProfileOneAvatarImg": "Profile #1 Avatar Image:",
+                "ProfileOneAvatarImgPriority": "Profile #1 Avatar Image Priority:",
+                "ProfileOneItems": "Profile #1 Items:",
+                "ProfileOneTokenImg": "Profile #1 Token Image:",
+                "ProfileOneTokenImgPriority": "Profile #1 Token Image Priority:",
+                "ProfileTwoActivities": "Profile #2 Activities:",
+                "ProfileTwoAvatarImg": "Profile #2 Avatar Image:",
+                "ProfileTwoAvatarImgPriority": "Profile #2 Avatar Image Priority:",
+                "ProfileTwoItems": "Profile #2 Items:",
+                "ProfileTwoTokenImg": "Profile #2 Token Image:",
+                "ProfileTwoTokenImgPriority": "Profile #2 Token Image Priority:"
+            },
             "TravelAlongTheTree": {
                 "WillingCreatures": "Select up to six willing creatures:"
             },
@@ -2829,6 +2847,12 @@
                 "rolls": {
                     "Label": "Rolls",
                     "Tooltip": "Configure roll types and options"
+                }
+            },
+            "Inputs": {
+                "Documents": {
+                    "Error": "Invalid UUID",
+                    "Placeholder": "Enter UUID or Drop Item"
                 }
             },
             "Medkit": "CPR Medkit",

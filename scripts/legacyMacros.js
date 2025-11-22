@@ -554,6 +554,7 @@ export {sunlightSensitivity} from './macros/2014/monsterFeatures/generic/sunligh
 export {surpriseAttack} from './macros/2014/monsterFeatures/generic/surpriseAttack.js';
 export {swarmDamage} from './macros/2014/monsterFeatures/generic/swarmDamage.js';
 export {touchDamage} from './macros/2014/monsterFeatures/generic/touchDamage.js';
+export {transform} from './macros/2014/monsterFeatures/generic/transform.js';
 export {undeadFortitude} from './macros/2014/monsterFeatures/generic/undeadFortitude.js';
 export {autoProne} from './macros/2014/monsterFeatures/generic/autoProne.js';
 export {grappleAttackAdvantage} from './macros/2014/monsterFeatures/generic/grappleAttackAdvantage.js';
