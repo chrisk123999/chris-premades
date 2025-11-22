@@ -8,7 +8,9 @@ async function use({trigger, workflow}) {
 }
 export let vampireMistyEscape = {
     name: 'Misty Escape',
-    monster: 'Vampire',
+    monsters: [
+        'Vampire'
+    ],
     version: '1.3.126',
     rules: 'modern',
     midi: {

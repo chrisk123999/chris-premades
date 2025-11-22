@@ -1,5 +1,4 @@
-import {combatUtils, compendiumUtils, constants, dialogUtils, effectUtils, errors, genericUtils, itemUtils, workflowUtils} from '../../../../../utils.js';
-
+import {actorUtils, combatUtils, compendiumUtils, constants, dialogUtils, effectUtils, errors, genericUtils, itemUtils, workflowUtils} from '../../../../../utils.js';
 async function use({workflow}) {
     let infiltratorEffect = effectUtils.getEffectByIdentifier(workflow.actor, 'infiltratorArmor');
     if (infiltratorEffect) return;
@@ -54,6 +53,14 @@ async function damage({workflow}) {
     let bonusDamageFormula = '1d6[lightning]';
     await workflowUtils.bonusDamage(workflow, bonusDamageFormula, {damageType: 'lightning'});
 }
+async function early({trigger, workflow}) {
+    let ability = actorUtils.getBestAbility(workflow.actor, ['dex', 'int']);
+    if (ability === 'dex') return;
+    let activity = workflow.activity.clone({'attack.ability': ability}, {keepId: true});
+    activity.prepareData();
+    activity.prepareFinalData();
+    workflow.activity = activity;
+}
 export let infiltratorArmor = {
     name: 'Arcane Armor: Infiltrator Model',
     version: '1.1.0',
@@ -75,6 +82,11 @@ export let infiltratorArmorLightningLauncher = {
             {
                 pass: 'damageRollComplete',
                 macro: damage,
+                priority: 50
+            },
+            {
+                pass: 'preambleComplete',
+                macro: early,
                 priority: 50
             }
         ]

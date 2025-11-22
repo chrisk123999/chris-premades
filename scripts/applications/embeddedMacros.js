@@ -931,8 +931,7 @@ export class EmbeddedMacros extends HandlebarsApplicationMixin(ApplicationV2) {
             contentClasses: ['standard-form']
         },
         position: {
-            width: 700,
-            height: 'auto'
+            width: 700
         }
     };
     static PARTS = {
@@ -1147,14 +1146,6 @@ export class EmbeddedMacros extends HandlebarsApplicationMixin(ApplicationV2) {
             tabs: this.tabsData
         };
         return context;
-    }
-    async _reRender() {
-        let autoPos = {...this.position, height: 'auto'};
-        this.setPosition(autoPos);
-        await this.render(true);
-        let maxHeight = canvas.screenDimensions[1] * 0.9;
-        let newPos = {...this.position, height: Math.min(this.element.scrollHeight, maxHeight), top:null};
-        this.setPosition(newPos);
     }
     async _onChangeForm(formConfig, event) {
         let targetInput = event.target;

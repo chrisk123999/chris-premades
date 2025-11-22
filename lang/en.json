@@ -138,6 +138,7 @@
             "Arangement": "Arangement:",
             "ArmoTypes": "Armor Types:",
             "AttackBonus": "Attack Bonus:",
+            "Attacks": "Attacks:",
             "AvatarImg": "Avatar Image:",
             "AvatarImgPriority": "Avatar Image Priority:",
             "BaseDiceNumber": "Base Dice Number:",
@@ -215,6 +216,7 @@
             "HitTarget": "Hit Target:",
             "IgnoredCreatureTypes": "Ignored Creature Types:",
             "ImmuneCreatures": "Immune Creature Types:",
+            "Items": "Items:",
             "LineColor": "Line Color:",
             "MaxLevel": "Max Level:",
             "MaxSize": "Max Size:",
@@ -248,9 +250,11 @@
             "SubclassIdentifier": "Subclass Identifier:",
             "SummonerOnly": "Summoner Only:",
             "TintMap": "Tint Map:",
+            "Token": "Token:",
             "TokenColor": "Token Color:",
             "TokenImg": "Token Image:",
             "TokenImgPriority": "Token Image Priority:",
+            "TokenName": "Token Name:",
             "TokenSound": "Token Sound:",
             "Trigger": "Trigger:",
             "TurnTrigger": "Turn Trigger:",
@@ -690,6 +694,7 @@
             "None": "None",
             "Ok": "Ok",
             "Prompt": "Prompt",
+            "PromptForTargets": "Prompt for targets:",
             "ProtectWithItem": "Protect {token} with {item}?",
             "Range": "Range",
             "RangedSpells": "Ranged Spells",
@@ -836,6 +841,9 @@
                 "SelectTarget": "Who gets attacked?",
                 "SelectWeapon": "What weapon is used to attack?"
             },
+            "ArappleAttackAdvantage": {
+                "Name": "Grapple Attack Advantage"
+            },
             "ArcaneAbjuration": {
                 "Plane": "Is {name} away from its plane of origin?"
             },
@@ -874,8 +882,12 @@
             "AutoGrapple": {
                 "DC": "Flat DC to escape grapple (contested if 0):",
                 "Disadvantage": "Grant disadvantage on escape check:",
+                "IgnoreLimit": "Ignore Grapple Size Difference Limits:",
                 "Name": "Auto Grapple",
                 "Restrained": "Restrained while grappled:"
+            },
+            "AutoProne": {
+                "Name": "Auto Prone"
             },
             "AutoPush": {
                 "Name": "Auto Push"
@@ -1130,6 +1142,9 @@
                 "Moved": "Compelled Duel: Moved",
                 "Source": "Compelled Duel: Source",
                 "Target": "Compelled Duel: Target"
+            },
+            "Config": {
+                "BonusDamage": "Bonus Damage:"
             },
             "ConjureAnimals": {
                 "Save": "Conjure Animals: Save"
@@ -1731,6 +1746,20 @@
             "InsectPlague": {
                 "Damage": "Insect Plague: Damage"
             },
+            "InsightfulManipulator": {
+                "ChaScore": "Charisma Score",
+                "Equal": "{ability} is equal to yours.",
+                "EqualLevel": "Class levels are equal.",
+                "Higher": "{ability} is higher than yours.",
+                "HigherLevel": "Levels are higher than yours.",
+                "IntScore": "Intelligence Score",
+                "Levels": "Class Levels",
+                "Lower": "{ability} is lower than yours.",
+                "LowerLevel": "Levels are lower than yours.",
+                "NoLevel": "No class levels.",
+                "Select": "Select information to learn:",
+                "WisScore": "Wisdom Score"
+            },
             "InspiringSmite": {
                 "Select": "Distribute Temp HP (Amount to Distribute: {maxAmount})"
             },
@@ -1856,6 +1885,9 @@
             },
             "MartialAdvantage": {
                 "Name": "Martial Advantage"
+            },
+            "MartialArts": {
+                "ValidateWeaponType": "Validate Weapon Type:"
             },
             "MassCureWounds": {
                 "Select": "Which targets would you like to heal? (Max: 6)"
@@ -2481,6 +2513,21 @@
             "TouchDamage": {
                 "Name": "Touch Damage"
             },
+            "Transform": {
+                "Name": "Transform",
+                "ProfileOneActivities": "Profile #1 Activities:",
+                "ProfileOneAvatarImg": "Profile #1 Avatar Image:",
+                "ProfileOneAvatarImgPriority": "Profile #1 Avatar Image Priority:",
+                "ProfileOneItems": "Profile #1 Items:",
+                "ProfileOneTokenImg": "Profile #1 Token Image:",
+                "ProfileOneTokenImgPriority": "Profile #1 Token Image Priority:",
+                "ProfileTwoActivities": "Profile #2 Activities:",
+                "ProfileTwoAvatarImg": "Profile #2 Avatar Image:",
+                "ProfileTwoAvatarImgPriority": "Profile #2 Avatar Image Priority:",
+                "ProfileTwoItems": "Profile #2 Items:",
+                "ProfileTwoTokenImg": "Profile #2 Token Image:",
+                "ProfileTwoTokenImgPriority": "Profile #2 Token Image Priority:"
+            },
             "TravelAlongTheTree": {
                 "WillingCreatures": "Select up to six willing creatures:"
             },
@@ -2803,6 +2850,12 @@
                     "Tooltip": "Configure roll types and options"
                 }
             },
+            "Inputs": {
+                "Documents": {
+                    "Error": "Invalid UUID",
+                    "Placeholder": "Enter UUID or Drop Item"
+                }
+            },
             "Medkit": "CPR Medkit",
             "ModuleIds": {
                 "additionalCompendiums": "Additional Compendiums",
@@ -3089,6 +3142,10 @@
             "colorizeDAE": {
                 "Hint": "When enabled, the DAE titlebar icon will be recolored if an effect is on the item.",
                 "Name": "Dynamic Active Effects: Colorize Titlebar Icon"
+            },
+            "compactMode": {
+                "Hint": "Reduces padding and spacing in dialogs and forms, limits dialog height to 50vh, and constrains button images to 32px for a more compact interface.",
+                "Name": "Compact Mode"
             },
             "conditionResistanceAndVulnerability": {
                 "Hint": "Enables condition resistance and vulnerability automation.",

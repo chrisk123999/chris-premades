@@ -223,7 +223,7 @@ async function effectCheck(effect) {
     let shouldUpdate = effect.flags['chris-premades']?.macros?.aura;
     shouldUpdate = shouldUpdate || ['dead', 'unconscious'].some(i => effect.statuses.has(i));
     if (!shouldUpdate) return;
-    await Promise.all(canvas.scene.tokens.map(async i => await executeMacroPass(canvas.scene.tokens, 'create', i)));
+    await Promise.all(canvas.scene.tokens.filter(j => j.actor).map(async i => await executeMacroPass(canvas.scene.tokens, 'create', i)));
 }
 export let auras = {
     updateAuras,

@@ -1,4 +1,4 @@
-import {constants, itemUtils, tokenUtils, workflowUtils} from '../../../../utils.js';
+import {itemUtils, tokenUtils, workflowUtils} from '../../../../utils.js';
 async function hit({trigger:{entity: item, token}, workflow}) {
     if (!workflowUtils.isAttackType(workflow, 'meleeAttack')) return;
     let config = itemUtils.getGenericFeatureConfig(item, 'touchDamage');
@@ -27,6 +27,6 @@ export let touchDamage = {
             label: 'CHRISPREMADES.Config.Range',
             type: 'number',
             default: 5
-        },
+        }
     ]
 };

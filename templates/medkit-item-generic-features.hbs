@@ -54,6 +54,34 @@
                                             {{/each}}
                                         </select>
                                     </div>
+                                {{else if isDocuments}}
+                                    <div>
+                                        {{#if hasDocuments}}
+                                            <div class="cpr-document-drop-display">
+                                                {{#each documents}}
+                                                    <div class="cpr-document-drop-item">
+                                                        <img src="{{icon}}" class="cpr-document-drop-item-icon">
+                                                        <span class="cpr-document-drop-item-name">{{name}}</span>
+                                                        <button type="button" id={{../id}} data-uuid={{uuid}} data-action="removeDocument">
+                                                            <i class="fas fa-minus"></i>
+                                                        </button>
+                                                    </div>
+                                                {{/each}}
+                                            </div>
+                                        {{/if}}
+                                        <div class="cpr-row-center">
+                                            <label for="{{id}}">{{localize label}}</label>
+                                            <input class="document-drop" type="text" id="{{id}}" name="{{name}}" placeholder="{{localize 'CHRISPREMADES.Medkit.Inputs.Documents.Placeholder'}}">
+                                            <button type="button" id={{id}} data-action="addDocument">
+                                                <i class="fas fa-plus"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                {{else if isFile}}
+                                    <div class="cpr-row-center">
+                                        <label for="{{id}}">{{localize label option=i18nOption}}</label>
+                                        <file-picker id="{{id}}" name="{{name}}" type="{{type}}" value="{{value}}" {{#if isDisabled}}disabled{{/if}} {{#if tooltip}}data-tooltip="{{tooltip}}"{{/if}}></file-picker>
+                                    </div>
                                 {{/if}}
                             {{/each}}
                         </div>

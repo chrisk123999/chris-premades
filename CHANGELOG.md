@@ -1,6 +1,85 @@
+# 1.3.138 Release:
+## New Generic Monster Features:
+- Transform
+## Bug Fixes:
+- Damage Turn Start generic feature
+  
+# 1.3.137 Release:
+## Bug Fixes:
+- Fixed DDBI compatibility.
+
+# 1.3.136 Release:
+## New Modern Content:
+- Martial Arts
+- Unarmored Defense (Monk)
+## Update Notes:
+- Adjusted the Medkit to better match items with their correct classes. For example Cleric's Channel Divinity should no longer be incorrectly added to Paladins. Multiclassed characters may still run into minor issues if class feature names are shared between classes.
+
+# 1.3.135 Release:
+## New Legacy Content:
+- Misdirection
+- Soul of Deceit
+
+# 1.3.134 Release:
+## New Modern Content:
+- Mimic: Adhesive, Bite, Pseudopod
+## Update Notes:
+- Added ignore grapple size difference limits option to the auto grapple and escape generic monster features.
+- Added a disadvantage on escape checks to the escape generic monster feature.
+- Added restrained while grappled to the escape generic monster feature.
+- Added Grapple Attack Advantage generic monster feature.
+
+# 1.3.133 Release:
+## Bug Fixes:
+- Generic Actions
+
+# 1.3.132 Release:
+## New Modern Content:
+- Brown Bear: Claw
+- Zhentilar Soldier: Knock Down
+## New Generic Monster Features:
+- Auto Prone
+## Bug Fixes:
+- Goblin Warrior: Scimitar, Shortbow, Nimble Escape
+- Goblin Boss: Scimitar, Shortbow
+- Embedded Macros Code Editor (Thanks Tyler)
+## Update Notes:
+- Added tooltips to generic actions (Thanks Tyler)
+- Added compact mode for CPR dialogs (Thanks Tyler)
+- Generic actions will now add pull their descriptions from the system journal pages if the CPR journal entry is blank.
+
+# 1.3.131 Release:
+## API Bug Fixes:
+- Item Event
+
+# 1.3.130 Release:
+## New Legacy Content:
+- Insightful Manipulator
+## New Modern Content:
+- Goblin Warrior: Scimitar, Shortbow, Nimble Escape
+- Goblin Boss: Scimitar, Shortbow, Nimble Escape, Redirect Attack
+- Worg: Bite
+## Bug Fixes:
+- Arcane Armor (Legacy)
+- Hexblade's Curse (Legacy)
+
+# 1.3.129 Release:
+## Bug Fixes:
+- Guardian Armor (Legacy)
+- Unarmed Strike (Tavern Brawler) (Modern)
+- Brave (Legacy)
+- Protection from Evil and Good (Legacy and Modern)
+- Deflect Attack (Legacy)
+- Experimental Elixir (Legacy)
+- Healing Spirit (Legacy)
+- UI Settings
+
 # 1.3.128 Release:
 ## Bug Fixes:
-- Attempt to improve compatability between UI scale settings and other modules
+- Guided Strike
+- Potion of Poison
+- Slasher
+- Attempt to improve compatibility between UI scale settings and other modules.
   
 # 1.3.127 Release:
 ## Bug Fixes:

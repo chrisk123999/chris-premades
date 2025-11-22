@@ -117,7 +117,8 @@ async function added({trigger: {entity: item, actor}}) {
     genericUtils.notify(message, 'info');
 }
 export let channelDivinity = {
-    name: 'Channel Divinity',
+    name: 'Channel Divinity (Cleric)',
+    aliases: ['Channel Divinity'],
     version: '1.2.13',
     rules: 'modern',
     midi: {

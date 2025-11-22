@@ -269,7 +269,7 @@ async function moonFrenzy(token, {color = 'white', tintMap = false, callback, na
         .play();
     /* eslint-enable indent */
 }
-async function chapechange(token, {callback} = {}) {
+async function shapeChange(token, {callback} = {}) {
     /* eslint-disable indent */
     new Sequence()
         .effect()
@@ -471,7 +471,7 @@ async function shapechange({trigger, workflow}) {
         if (animation === 'moonFrenzy') {
             await moonFrenzy(workflow.token, {callback: createEffectFunction, tintMap: itemUtils.getConfig(workflow.item, 'tintMap'), color: itemUtils.getConfig(workflow.item, 'moonColor') ? 'red' : 'white'});
         } else {
-            await chapechange(workflow.token, {callback: createEffectFunction});
+            await shapeChange(workflow.token, {callback: createEffectFunction});
         }
     } else {
         await createEffectFunction();
@@ -649,7 +649,7 @@ export let harkonsBite = {
     ],
     utilFunctions: {
         moonFrenzy,
-        chapechange
+        shapeChange
     }
 };
 export let harkonsBiteEffect = {

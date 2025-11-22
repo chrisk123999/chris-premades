@@ -1,5 +1,4 @@
-import {activityUtils, compendiumUtils, constants, effectUtils, errors, genericUtils, itemUtils} from '../../../../../utils.js';
-
+import {activityUtils, actorUtils, compendiumUtils, constants, effectUtils, errors, genericUtils, itemUtils} from '../../../../../utils.js';
 async function use({workflow}) {
     let guardianEffect = effectUtils.getEffectByIdentifier(workflow.actor, 'guardianArmor');
     if (guardianEffect) return;
@@ -73,6 +72,14 @@ async function attack({workflow}) {
     workflow.disadvantage = true;
     workflow.attackAdvAttribution.add(genericUtils.translate('DND5E.Disadvantage') + ': ' + effect.name);
 }
+async function early({trigger, workflow}) {
+    let ability = actorUtils.getBestAbility(workflow.actor, ['str', 'int']);
+    if (ability === 'str') return;
+    let activity = workflow.activity.clone({'attack.ability': ability}, {keepId: true});
+    activity.prepareData();
+    activity.prepareFinalData();
+    workflow.activity = activity;
+}
 export let guardianArmor = {
     name: 'Arcane Armor: Guardian Model',
     version: '1.1.0',
@@ -113,6 +120,11 @@ export let guardianArmorThunderGauntlets = {
             {
                 pass: 'rollFinished',
                 macro: late,
+                priority: 50
+            },
+            {
+                pass: 'preambleComplete',
+                macro: early,
                 priority: 50
             }
         ],

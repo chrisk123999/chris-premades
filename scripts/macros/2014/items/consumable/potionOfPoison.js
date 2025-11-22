@@ -1,5 +1,4 @@
-import {activityUtils, compendiumUtils, constants, effectUtils, errors, genericUtils, workflowUtils} from '../../../../utils.js';
-
+import {activityUtils, effectUtils, genericUtils, workflowUtils} from '../../../../utils.js';
 async function damage({workflow}) {
     let damageRoll = await new CONFIG.Dice.DamageRoll('0', {}, {type: 'healing'}).evaluate();
     await workflow.setDamageRolls([damageRoll]);
@@ -14,7 +13,7 @@ async function late({workflow}) {
     let effectData = {
         name: workflow.item.name,
         img: workflow.item.img,
-        origin: workflow.actor.uuid,
+        origin: workflow.item.uuid,
         flags: {
             dae: {
                 showIcon: true
@@ -52,7 +51,8 @@ export let potionOfPoison = {
             {
                 pass: 'damageRollComplete',
                 macro: damage,
-                priority: 50
+                priority: 50,
+                activities: ['potionOfPoison']
             },
             {
                 pass: 'rollFinished',

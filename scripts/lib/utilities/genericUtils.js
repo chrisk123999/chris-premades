@@ -1,5 +1,7 @@
 import {socket, sockets} from '../sockets.js';
 import {socketUtils} from '../../utils.js';
+import * as legacyMacros from '../../legacyMacros.js';
+import * as modernMacros from '../../macros.js';
 let cachedSettings = {};
 function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
@@ -170,9 +172,14 @@ function getRules(entity) {
     return entity.flags['chris-premades']?.rules ?? 'legacy';
 }
 function getCPRIdentifier(name, rules = 'legacy') {
-    let macros = (rules === 'legacy') ? chrisPremades.legacyMacros : chrisPremades.macros;
+    let macros = rules === 'legacy' ? legacyMacros : modernMacros;
     let identifier = Object.entries(macros).find(i => i[1].name === name || i[1].aliases?.includes(name))?.[0];
     return identifier;
+}
+function getCPRIdentifiers(name, rules = 'legacy') {
+    let macros = rules === 'legacy' ? legacyMacros : modernMacros;
+    let identifiers = Object.entries(macros).filter(i => i[1].name === name || i[1].aliases?.includes(name)).map(i => i[0]);
+    return identifiers;
 }
 function convertDistance(ft) {
     if (!canvas.scene) return ft;

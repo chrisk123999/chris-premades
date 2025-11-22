@@ -6,6 +6,7 @@ function configureUI() {
     if (customUINavigationScale) navigationScale(customUINavigationScale);
     if (genericUtils.getCPRSetting('customSidebar')) customSidebar(true);
     if (genericUtils.getCPRSetting('customChatMessage')) customChatMessage(true);
+    if (genericUtils.getCPRSetting('compactMode')) compactMode(true);
 }
 function setBodyProperty(key, value) {
     document.body.style.setProperty(key, String(value));
@@ -29,7 +30,9 @@ function buttonScale(value) {
             }
         `;
         document.querySelector('head').appendChild(el);
-    } else document.querySelector('#cpr-ui-button-scale').remove();
+    } else {
+        document.querySelector('#cpr-ui-button-scale')?.remove();
+    }
 }
 function navigationScale(value) {
     setBodyProperty('--custom-ui-navigation-scale', value);
@@ -43,7 +46,9 @@ function navigationScale(value) {
             }
         `;
         document.querySelector('head').appendChild(el);
-    } else document.querySelector('#cpr-ui-navigation-scale').remove();
+    } else {
+        document.querySelector('#cpr-ui-navigation-scale')?.remove();
+    }
 }
 function customSidebar(value) {
     if (value) {
@@ -67,7 +72,9 @@ function customSidebar(value) {
             }
         `;
         document.querySelector('head').appendChild(el);
-    } else document.querySelector('#cpr-custom-sidebar').remove();
+    } else {
+        document.querySelector('#cpr-custom-sidebar')?.remove();
+    }
 }
 function customChatMessage(value) {
     if (value) {
@@ -127,7 +134,7 @@ function customChatMessage(value) {
         Hooks.on('renderApplicationV2', chatMessageThemeHook);
         Hooks.once('ready', chatMessageThemeApply);
     } else {
-        document.querySelector('#cpr-custom-chat-message').remove();
+        document.querySelector('#cpr-custom-chat-message')?.remove();
         Hooks.off('renderApplicationV2', chatMessageThemeHook);
         chatMessageThemeRemove();
     }
@@ -153,10 +160,141 @@ function chatMessageThemeRemove() {
         el.classList.add('theme-light');
     });
 }
+function compactMode(value) {
+    if (value) {
+        let el = document.createElement('style');
+        el.id = 'cpr-compact-mode';
+        el.innerHTML = `
+            /* Compact mode for chris-premades dialogs and forms - scoped to .cpr- classes only */
+
+            /* Limit dialog max height to 50vh */
+            .cpr-dialog {
+                max-height: 50vh;
+            }
+
+            /* Override button image height expansion */
+            .cpr-dialog button:has(img) {
+                height: auto !important;
+            }
+
+            /* Limit button images to 32px */
+            .cpr-dialog button img {
+                max-height: 32px;
+                max-width: 32px;
+            }
+
+            /* Reduce form group spacing in dialogs */
+            .cpr-dialog .form-group {
+                margin-bottom: 0.375rem;
+            }
+
+            /* Reduce form group spacing in settings */
+            form.cpr-settings.categories .form-group {
+                margin-bottom: 0.375rem;
+            }
+
+            /* Reduce row padding and gaps */
+            .cpr-row-center {
+                padding: 0.5%;
+                gap: 0.375rem;
+            }
+
+            /* Compact input fields */
+            .cpr-dialog input[type="text"],
+            .cpr-dialog input[type="number"],
+            .cpr-dialog select,
+            .cpr-dialog textarea {
+                padding: 0.25rem 0.5rem;
+            }
+
+            /* Keep button padding minimal (original is 0) */
+            .cpr-dialog button.form-button {
+                padding: 0;
+            }
+
+            /* Reduce fieldset padding */
+            .cpr-fieldset-group fieldset {
+                padding: 0.5rem;
+            }
+
+            /* Compact medkit tabs */
+            .cpr-medkit-tabs {
+                gap: 0.25rem;
+                padding: 0.25rem;
+            }
+
+            .cpr-medkit-tabs .item {
+                padding: 0.25rem 0.5rem;
+            }
+
+            /* Reduce medkit content padding */
+            .cpr-medkit-tab {
+                padding: 0.5rem;
+            }
+
+            /* Compact multi-select rows */
+            .cpr-multi-select-row {
+                gap: 0.25rem;
+                margin-bottom: 0.25rem;
+            }
+
+            /* Reduce label spacing */
+            .cpr-dialog label {
+                margin-bottom: 0.125rem;
+            }
+
+            form.cpr-settings label {
+                margin-bottom: 0.125rem;
+            }
+
+            /* Compact hint text */
+            .cpr-dialog .hint {
+                margin-top: 0.125rem;
+                font-size: 0.9em;
+            }
+
+            form.cpr-settings .hint {
+                margin-top: 0.125rem;
+                font-size: 0.9em;
+            }
+
+            /* Reduce window content padding for cpr applications */
+            .application.cpr-dialog > .window-content,
+            .application.cpr-settings > .window-content {
+                padding: 0.5rem;
+            }
+
+            /* Compact config flex layouts */
+            .cpr-config-flex {
+                gap: 0.375rem;
+            }
+
+            /* Compact input flex */
+            .cpr-input-flex {
+                gap: 0.375rem;
+            }
+
+            /* Compact npc amounts */
+            .cpr-npc-amounts {
+                gap: 0.25rem;
+            }
+
+            /* Compact notifications */
+            .cpr-notification {
+                padding: 0.375rem;
+                margin-bottom: 0.25rem;
+            }
+        `;
+        document.querySelector('head').appendChild(el);
+    } else {
+        document.querySelector('#cpr-compact-mode')?.remove();
+    }
+}
 export let ui = {
     configureUI: configureUI,
     setBodyProperty: setBodyProperty,
     customSidebar: customSidebar,
     customChatMessage: customChatMessage,
-    chatMessageThemeHook: chatMessageThemeHook
+    chatMessageThemeHook: chatMessageThemeHook,
+    compactMode: compactMode
 };

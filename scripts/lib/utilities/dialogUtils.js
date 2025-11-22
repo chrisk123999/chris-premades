@@ -157,7 +157,7 @@ async function confirm(title, content, {userId = game.user.id, buttons = 'yesNo'
 async function confirmUseItem(item, {userId = game.user.id, buttons = 'yesNo'} = {}) {
     return await dialogUtils.confirm(item.name, genericUtils.format('CHRISPREMADES.Dialog.Use', {itemName: item.name}), {userId, buttons});
 }
-async function selectDocumentDialog(title, content, documents, {displayTooltips = false, sortAlphabetical = false, sortCR = false, userId = game.user.id, addNoneDocument = false, showCR = false, showSpellLevel = false} = {}) {
+async function selectDocumentDialog(title, content, documents, {displayTooltips = false, sortAlphabetical = false, sortCR = false, userId = game.user.id, addNoneDocument = false, showCR = false, showSpellLevel = false, displayReference = false} = {}) {
     if (sortAlphabetical) {
         documents = documents.sort((a, b) => {
             return a.name.localeCompare(b.name, 'en', {'sensitivity': 'base'});
@@ -174,7 +174,8 @@ async function selectDocumentDialog(title, content, documents, {displayTooltips 
         name: isCompendiumDoc ? (i.uuid ?? i.actor?.uuid) : (i.id ?? i.actor?.id),
         options: {
             image: i.img + (i.system?.details?.cr != undefined ? ` (CR ${genericUtils.decimalToFraction(i.system?.details?.cr)})` : ``),
-            tooltip: displayTooltips ? i.system.description.value.replace(/<[^>]*>?/gm, '') : undefined
+            tooltip: displayTooltips ? i.system.description.value.replace(/<[^>]*>?/gm, '') : undefined,
+            reference: (displayReference && i.reference) ? i.reference : undefined
         }
     }));
     if (addNoneDocument) {
@@ -221,7 +222,7 @@ async function selectDocumentsDialog(title, content, documents, {max = undefined
     let inputs = [[checkbox ? 'checkbox' : 'selectAmount', inputFields, {displayAsRows: true, totalMax: max}]];
     let result;
     if (game.user.id != userId) {
-        result = await socket.executeAsUser(sockets.dialog.name, userId, title, content, inputs, undefined, {height: 'auto'});
+        result = await socket.executeAsUser(sockets.dialog.name, userId, title, content, inputs, 'okCancel', {height: 'auto'});
     } else {
         result = await DialogApp.dialog(title, content, inputs, 'okCancel', {height: 'auto'});
     }

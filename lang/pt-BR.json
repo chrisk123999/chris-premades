@@ -135,6 +135,7 @@
                 "Water": "Água"
             },
             "ApplyFilter": "Aplicar Filtro:",
+            "Arangement": "Arranjo:",
             "ArmoTypes": "Tipos de Armadura:",
             "AttackBonus": "Bônus Ataque:",
             "AvatarImg": "Imagem Avatar:",
@@ -153,19 +154,24 @@
                 "Blue02": "Azul (alt)",
                 "BlueGreen": "Azul & Verde",
                 "BlueGrey": "Azul & Cinza",
+                "BlueOrange": "Azul & Laranja",
+                "BluePink": "Azul & Rosa",
                 "BlueYellow": "Azul & Amarelo",
                 "BlueWhite": "Azul & Branco",
                 "Cycle": "Ciclo",
                 "DarkBlack": "Preto Escuro",
                 "DarkBlue": "Azul Escuro",
                 "DarkGreen": "Verde Escuro",
+                "DarkGreenPurple": "Verde Escuro & Roxo",
                 "DarkPink": "Rosa Escuro",
                 "DarkPurple": "Roxo Escuro",
+                "DarkPurpleRed": "Roxo Escuro & Vermelho",
                 "DarkRed": "Vermelho Escuro",
                 "DarkWhiteBlue": "Branco Escuro & Azul",
                 "Green": "Verde",
                 "Green02": "Verde (alt)",
                 "GreenOrange": "Verde & Laranja",
+                "GreenYellow": "Verde & Amarelo",
                 "Grey": "Cinza",
                 "LightBlue": "Azul Claro",
                 "LightGreen": "Verde Claro",
@@ -173,6 +179,7 @@
                 "OrangePurple": "Laranja & Roxo",
                 "Pink": "Rosa",
                 "PinkPurple": "Rosa & Roxo",
+                "PinkYellow": "Rosa & Amarelo",
                 "Purple": "Roxo",
                 "PurpleGreen": "Roxo & Verde",
                 "Rainbow": "Arco-Íris",
@@ -202,11 +209,13 @@
             "Expire": "Expiração:",
             "FailedSave": "Salvaguarda Falha:",
             "Formula": "Fórmula:",
+            "Grids": "Grades",
             "HideToken": "Ocultar Token:",
             "HitPoints": "Pontos de Vida:",
             "HitTarget": "Alvo Atingido:",
             "IgnoredCreatureTypes": "Tipos de Criatura Ignorados:",
             "ImmuneCreatures": "Tipos de Criaturas Imunes:",
+            "LineColor": "Cor da Linha:",
             "MaxLevel": "Nível Máx:",
             "MaxSize": "Tamanho Máx:",
             "Multiplier": "Multiplicador:",
@@ -235,6 +244,7 @@
             "Sound": "Som:",
             "SpecificAnimation": "Animação {option}:",
             "SpellSchools": "Escola de Magia:",
+            "StrandColor": "Cor do Fio:",
             "SubclassIdentifier": "Identificador de Subclasse:",
             "SummonerOnly": "Apenas Invocador:",
             "TintMap": "Tonalidade do Mapa:",
@@ -262,6 +272,10 @@
         },
         "CustomTypes": {
             "SpellFeature": "Recurso de Magia"
+        },
+        "DeckOfIllusions": {
+            "CardsAvailable": "Cartas Disponíveis:",
+            "UnableToPickACard": "Não foi possível selecionar uma carta válida!"
         },
         "Dialog": {
             "DamageType": "Qual tipo de dano?",
@@ -641,6 +655,7 @@
             "Check": "Teste de Atributo",
             "CheckSpelling": "Verificar Ortografia",
             "ChooseASpell": "Escolha uma Magia:",
+            "Circle": "Círculo",
             "Close": "Fechar",
             "ConditionResistance": {
                 "Description": "Resistência à Condição {condition}, role a salvaguarda com vantagem. Suporta o modo de alteração Sobrepor. 1/verdadeiro para todas salvaguardas, ou uma lista de atributos separadas por vírgulas (exemplo: str,dex).",
@@ -662,6 +677,7 @@
             "Go": "Ir",
             "Import": "Importar",
             "Items": "Itens",
+            "Length": "Comprimento",
             "Max": "Máx:",
             "MeleeSpells": "Magias Corpo a Corpo",
             "MeleeWeapons": "Armas Corpo a Corpo",
@@ -697,6 +713,7 @@
             "Skill": "Teste de Perícia",
             "Source": "Origem",
             "Spells": "Magias",
+            "Star": "Estrela",
             "Submit": "Enviar",
             "Success": "Sucesso",
             "Summon": "Invocação",
@@ -707,6 +724,7 @@
             "Uncontested": "Não-Contestado",
             "Update": "Atualizar",
             "UseItem": "Usar {item}?",
+            "Width": "Largura",
             "Yes": "Sim",
             "You": "Você"
         },
@@ -1057,12 +1075,40 @@
                 "Bounce": "Em quem a magia deve saltar?",
                 "TargetDamageSelection": "Seleção de Dano por Alvo:"
             },
+            "CircleCast": {
+                "AbjColor": "Cor de Abjuração:",
+                "Circle": "(Círculo de Magia)",
+                "ConColor": "Cor de Invocação:",
+                "Concentration": "Você atingiu ou ultrapassou seu limite de concentração e não pode ajudar este círculo!",
+                "DivColor": "Cor de Advinhação:",
+                "EncColor": "Cor de Encantamento:",
+                "EvoColor": "Cor de Evocação:",
+                "IllColor": "Cor de Ilusão:",
+                "MoreParticipants": "É necessário mais participante antes que você possa fazer isso!",
+                "NecColor": "Cor de Necromancia:",
+                "NoSpellSlots": "Você não possui os espaços de magia necessários para auxiliar este círculo!",
+                "NotParticipant": "Você não faz parte deste círculo!",
+                "Safeguard": {
+                    "Message": "Crie zonas seguras para o Safeguard. Clique com o botão direito para concluir antecipadamente."
+                },
+                "SelectType": "Selecione uma opção:",
+                "TrsColor": "Cor de Transmutação:"
+            },
             "CircleOfTheLandSpells": {
                 "Arid": "Terra Árida",
                 "ChooseLand": "Qual Terra?",
                 "Polar": "Terra Polar",
                 "Temperate": "Terra Temperada",
                 "Tropical": "Terra Tropical"
+            },
+            "CircleSpell": {
+                "Augment": "Aumentar",
+                "Distribute": "Distribuir",
+                "Expand": "Expandir",
+                "Prolong": "Prolongar",
+                "Safeguard": "Safeguard",
+                "Supplant": "Suplantar",
+                "WidthOrLength": "Aumentar comprimento ou largura?"
             },
             "CloudRune": {
                 "Reaction": "Usar {item} para redirecionar o ataque de {name}?"
@@ -1465,7 +1511,7 @@
                 "System": "Sistema"
             },
             "GenericTeleport": {
-                "Name": "Teleporte"
+                "Name": "Teleporte Genérico"
             },
             "Grapple": {
                 "ChooseSkill": "Como você quer disputar o agarrão?",
@@ -2575,6 +2621,7 @@
             "Critical": "Crítico",
             "Failure": "Falha",
             "Fumble": "Falha Crítica",
+            "FunctionError": "Rolagens recursivas aninhadas não são suportadas. Por favor, faça outra coisa.",
             "HasModifers": "Rolagem tem modificadores",
             "Hit": "Acerto",
             "Miss": "Erro",
@@ -2583,6 +2630,7 @@
                 "Label": "Botões Rápidos",
                 "Tooltip": "Atalhos para completar o rolagem com o resultado desejado"
             },
+            "ResolveError": "Nenhum resultado encontrado para o termo. Por favor, acesse o servidor do Discord da CPR para reportar isso.",
             "Success": "Sucesso"
         },
         "Mastery": {
@@ -3009,6 +3057,14 @@
             "checkForUpdates": {
                 "Hint": "Quando ativado, o módulo verificará atualizações uma vez por dia quando um Mestre entrar.",
                 "Name": "Verificar Atualizações"
+            },
+            "circleCast": {
+                "Hint": "Ative a mecânica de Circle Casting de Forgotten Realms: Heroes of Faerûn.",
+                "Name": "Circle Casting"
+            },
+            "healingSurge": {
+                "Hint": "Ativa a habilidade Healing Surge do Dungeon Master's Guide de 2014.",
+                "Name": "Healing Surge"
             },
             "classSpellList": {
                 "Hint": "Diário com todas as listas de magias de classe configuradas.",

@@ -16,7 +16,9 @@ async function early({trigger, workflow}) {
 export let vampireBite = {
     name: 'Bite (Bat or Vampire Form Only)',
     aliases: ['Bite'],
-    monster: 'Vampire',
+    monsters: [
+        'Vampire'
+    ],
     version: '1.3.126',
     rules: 'modern',
     midi: {
