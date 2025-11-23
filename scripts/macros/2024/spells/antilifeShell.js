@@ -14,7 +14,7 @@ async function use({trigger, workflow}) {
         duration: itemUtils.convertDuration(workflow.item),
         flags: {
             'chris-premades': {
-                'antilifeShell': {
+                antilifeShell: {
                     ignoredCreatureTypes
                 }
             }

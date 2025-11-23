@@ -82,7 +82,7 @@ function preEffect(effect, updates, options) {
         changed = true;
     }
     if (!changed) return;
-    effect.updateSource({'changes': updates.changes});
+    effect.updateSource({changes: updates.changes});
 }
 export let auraOfLife = {
     name: 'Aura of Life',

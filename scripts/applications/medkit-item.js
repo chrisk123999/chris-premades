@@ -338,7 +338,7 @@ export class ItemMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
                         value: key,
                         isSelected: this.selectedGenericFeatures.includes(key) ? true : false
                     };
-                }).sort((a, b) => a.label.localeCompare(b.label, 'en', {'sensitivity': 'base'}))
+                }).sort((a, b) => a.label.localeCompare(b.label, 'en', {sensitivity: 'base'}))
             }
         ];
     }

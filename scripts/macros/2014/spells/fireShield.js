@@ -11,7 +11,7 @@ async function use({workflow}) {
     if (!selection) return;
     let feature = activityUtils.getActivityByIdentifier(workflow.item, 'fireShieldDismiss', {strict: true});
     if (!feature) return;
-    await genericUtils.update(feature, {'img': workflow.activity.img});
+    await genericUtils.update(feature, {img: workflow.activity.img});
     let playAnimation = itemUtils.getConfig(workflow.item, 'playAnimation');
     let effectData = {
         name: workflow.activity.name,
@@ -93,12 +93,12 @@ export async function start({trigger: {entity: effect}}) {
     let token = actorUtils.getFirstToken(effect.parent);
     if (!token) return;
     let colors = {
-        'fire': 'orange',
-        'cold': 'blue'
+        fire: 'orange',
+        cold: 'blue'
     };
     let altColors = {
-        'fire': 'yellow',
-        'cold': 'blue'
+        fire: 'yellow',
+        cold: 'blue'
     };
     //Animations by: eskiemoh
     new Sequence()

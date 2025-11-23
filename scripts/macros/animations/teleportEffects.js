@@ -310,9 +310,9 @@ async function farStepPre(token, cornerPosition) {
         .effect()
         .file('jb2a.explosion.07.bluewhite')
         .atLocation(position)
-        .scaleIn(0, 500, {'ease': 'easeOutCubic'})
+        .scaleIn(0, 500, {ease: 'easeOutCubic'})
         .fadeOut(1000)
-        .scale({'x': token.width / 4, 'y': token.height / 4})
+        .scale({x: token.width / 4, y: token.height / 4})
         
         .animation()
         .on(token)
@@ -328,8 +328,8 @@ async function farStepPre(token, cornerPosition) {
         .effect()
         .file('jb2a.explosion.07.bluewhite')
         .atLocation(position)
-        .scale({'x': token.width / 4, 'y': token.height / 4})
-        .scaleIn(0, 500, {'ease': 'easeOutCubic'})
+        .scale({x: token.width / 4, y: token.height / 4})
+        .scaleIn(0, 500, {ease: 'easeOutCubic'})
         .fadeOut(1000)
         .play();
 }

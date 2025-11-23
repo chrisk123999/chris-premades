@@ -61,9 +61,10 @@
         },
         "effects": [],
         "range": {
-          "units": "self",
+          "units": "ft",
           "special": "",
-          "override": false
+          "override": false,
+          "value": "5"
         },
         "target": {
           "template": {
@@ -76,8 +77,8 @@
             "units": "ft"
           },
           "affects": {
-            "count": "",
-            "type": "",
+            "count": "1",
+            "type": "creature",
             "choice": false,
             "special": ""
           },
@@ -116,12 +117,12 @@
           "triggeredActivityConditionText": "",
           "triggeredActivityTargets": "targets",
           "triggeredActivityRollAs": "self",
-          "forceDamageDialog": "false",
+          "forceDamageDialog": "",
           "confirmTargets": "default",
           "autoTargetType": "any",
           "autoTargetAction": "default",
           "automationOnly": false,
-          "otherActivityCompatible": true,
+          "otherActivityCompatible": false,
           "otherActivityAsParentType": true,
           "identifier": "",
           "displayActivityName": false,
@@ -145,7 +146,10 @@
           "postRemoveConditionText": ""
         },
         "otherActivityId": "none",
-        "otherActivityAsParentType": true
+        "otherActivityAsParentType": true,
+        "name": "",
+        "img": "",
+        "appliedEffects": []
       }
     },
     "identifier": "help",
@@ -201,7 +205,7 @@
         "identifier": "help",
         "source": "chris-premades",
         "rules": "modern",
-        "version": "1.3.115"
+        "version": "1.3.139"
       },
       "macros": {
         "midi": {

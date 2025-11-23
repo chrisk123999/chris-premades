@@ -107,7 +107,7 @@ async function moveOrTurn({trigger: {target, token, entity: effect}, options}) {
 async function removed({trigger}) {
     let token = actorUtils.getFirstToken(trigger.entity.parent);
     if (!token) return;
-    Sequencer.EffectManager.endEffects({'name': 'spiritGuardians', 'object': token});
+    Sequencer.EffectManager.endEffects({name: 'spiritGuardians', object: token});
 }
 export let spiritGuardians = {
     name: 'Spirit Guardians',

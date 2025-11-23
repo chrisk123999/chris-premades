@@ -1,79 +1,17 @@
 import {animationUtils, crosshairUtils, genericUtils, itemUtils} from '../../../utils.js';
-async function use({trigger, workflow}) {
-    let playAnimation = itemUtils.getConfig(workflow.item, 'playAnimation');
-    if (!playAnimation || animationUtils.jb2aCheck() != 'patreon' || !animationUtils.aseCheck()) return;
-    let displayHint = itemUtils.getConfig(workflow.item, 'displayHint');
-    if (displayHint) genericUtils.notify('CHRISPREMADES.Macros.Dash.Notify', 'info', {localize: true});
-    await workflow.actor.sheet.minimize();
-    let positions = [];
-    let i = 0;
-    let cancelled = false;
-    while (!cancelled) {
-        positions[i] = await crosshairUtils.aimCrosshair({
-            token: workflow.token, 
-            maxRange: workflow.actor.system.attributes.movement.walk, 
-            centerpoint: workflow.token.center, 
-            drawBoundries: true, 
-            trackDistance: true, 
-            fudgeDistance: workflow.token.document.width * canvas.dimensions.distance / 2,
-            crosshairsConfig: {
-                size: workflow.token.document.parent.grid.distance * workflow.token.document.width / 2,
-                icon: workflow.token.document.texture.src,
-                resolution: (workflow.token.document.width % 2) ? 1 : -1
-            }
-        });
-        if (positions[i].cancelled) {
-            positions.push(positions[i]);
-            i++;
-            /* eslint-disable indent */
-            new Sequence()
-                .effect()
-                    .name('Dash Crosshair')
-                    .copySprite(workflow.token)
-                    .atLocation(positions[i])
-                    .fadeIn(100)
-                    .persist()
-                    .opacity(0.65)
-                    .locally()
-                    .loopProperty('alphaFilter', 'alpha', {from: 1, to: 0.75, duration: 1500, pingPong: true})
-                    .filter('ColorMatrix', {saturate: -1, brightness: 0.5})
-                    .scale(workflow.token.document.texture.scaleX)
-                    .fadeIn(250)
-                    .fadeOut(500)
-                    .waitUntilFinished(-500)
-                .effect()
-                    .file('jb2a.particles.outward.purple.01.03')
-                    .atLocation(positions[i])
-                    .scale(0.15 * workflow.token.document.texture.scaleX)
-                    .duration(1000)
-                    .fadeOut(500)
-                    .scaleIn(0, 1000, {ease: 'easeOutCubic'})
-                    .filter('ColorMatrix', {hue: 0})
-                    .animateProperty('sprite', 'width', {from: 0, to: 0.5, duration: 500, gridUnits: true, ease:'easeOutBack'})
-                    .animateProperty('sprite', 'height', {from: 0, to: 1.5, duration: 1000, gridUnits: true, ease:'easeOutBack'})
-                    .animateProperty('sprite', 'position.y', {from: 0, to: -1, duration: 1000, gridUnits: true})
-                    .zIndex(0.2)
-                    .filter('ColorMatrix', {saturate: -1, brightness: 0})
-                    .locally()
-                .play();
-            /* eslint-enable indent */
-        } else { 
-            cancelled = true;
-        }
-    }
-    Sequencer.EffectManager.endEffects({name: 'Dash Crosshair'});
-    await genericUtils.sleep(500);
+import {disengage} from './disengage.js';
+async function cunningAction(token, positions) {
     for (let e = 0; e < positions.length; e++) {
         if (e == 0) {
             /* eslint-disable indent */
             await new Sequence()
                 .animation()
-                    .on(workflow.token)
+                    .on(token)
                     .opacity(0)
                     .snapToGrid()
                 .effect()
                     .file('animated-spell-effects-cartoon.smoke.01')
-                    .atLocation(workflow.token)
+                    .atLocation(token)
                     .rotateTowards(positions[e])
                     .scaleToObject(1.75)
                     .belowTokens()
@@ -84,7 +22,7 @@ async function use({trigger, workflow}) {
                     .spriteOffset({x:-1}, {gridUnits: true})
                 .effect()
                     .file('jb2a.particles.outward.white.01.03')
-                    .atLocation(workflow.token)
+                    .atLocation(token)
                     .rotateTowards(positions[e])
                     .scaleToObject(1.75)
                     .fadeOut(200)
@@ -97,7 +35,7 @@ async function use({trigger, workflow}) {
                     .zIndex(0.4)
                 .effect()
                     .file('jb2a.smoke.puff.side.dark_black.4')
-                    .atLocation(workflow.token)
+                    .atLocation(token)
                     .scaleToObject(2)
                     .rotateTowards(positions[e])
                     .fadeOut(200)
@@ -110,7 +48,7 @@ async function use({trigger, workflow}) {
                     .zIndex(0.3)
                 .effect()
                     .file('jb2a.energy_strands.range.standard.grey')
-                    .atLocation(workflow.token)
+                    .atLocation(token)
                     .stretchTo(positions[e])
                     .belowTokens()
                     .opacity(0.5)
@@ -123,7 +61,7 @@ async function use({trigger, workflow}) {
                 .effect()
                     .file('animated-spell-effects-cartoon.magic.mind sliver')
                     .delay(50)
-                    .atLocation(workflow.token)
+                    .atLocation(token)
                     .stretchTo(positions[e])
                     .belowTokens()
                     .opacity(1)
@@ -133,21 +71,21 @@ async function use({trigger, workflow}) {
                     .fadeOut(200)
                     .zIndex(0.21)
                 .effect()
-                    .copySprite(workflow.token)
+                    .copySprite(token)
                     .name('Dash')
-                    .atLocation(workflow.token)
+                    .atLocation(token)
                     .moveTowards(positions[e],{rotate: false, ease: 'easeOutCirc'})
                     .moveSpeed(1500)
                     .duration(400)
                     .fadeIn(400, {ease: 'easeOutCirc'})
                     .fadeOut(0)
                     .filter('ColorMatrix', {saturate: -0.25, brightness: 0.65})
-                    .scale(workflow.token.document.texture.scaleX)
+                    .scale(token.document.texture.scaleX)
                     .waitUntilFinished(-300)
                 .effect()
                     .delay(200)
-                    .copySprite(workflow.token)
-                    .scale(workflow.token.document.texture.scaleX)
+                    .copySprite(token)
+                    .scale(token.document.texture.scaleX)
                     .atLocation(positions[e])
                     .fadeOut(500, {ease: 'easeOutQuad'})
                     .duration(1000)
@@ -156,14 +94,14 @@ async function use({trigger, workflow}) {
                     .playIf(positions.length == 1)
                 .animation()
                     .delay(200)
-                    .on(workflow.token)
+                    .on(token)
                     .teleportTo(positions[e])
                     .snapToGrid()
                     .opacity(1)
                     .playIf(positions.length == 1)
                 .play();
             /* eslint-enable indent */
-            if (positions.length === 1) await workflow.actor.sheet.maximize();
+            if (positions.length === 1) await token.actor.sheet.maximize();
         } else if (e == positions.length - 1){
             /* eslint-disable indent */
             await new Sequence()
@@ -230,7 +168,7 @@ async function use({trigger, workflow}) {
                     .fadeOut(200)
                     .zIndex(0.21)
                 .effect()
-                    .copySprite(workflow.token)
+                    .copySprite(token)
                     .name('Dash')
                     .atLocation(positions[e-1])
                     .moveTowards(positions[e],{rotate: false, ease: 'easeOutCirc'})
@@ -239,12 +177,12 @@ async function use({trigger, workflow}) {
                     .fadeIn(400, {ease: 'easeOutCirc'})
                     .fadeOut(0)
                     .filter('ColorMatrix', {saturate: -0.25, brightness: 0.65})
-                    .scale(workflow.token.document.texture.scaleX)
+                    .scale(token.document.texture.scaleX)
                     .waitUntilFinished(-300)
                 .effect()
                     .delay(200)
-                    .copySprite(workflow.token)
-                    .scale(workflow.token.document.texture.scaleX)
+                    .copySprite(token)
+                    .scale(token.document.texture.scaleX)
                     .atLocation(positions[e])
                     .fadeOut(500, {ease: 'easeOutQuad'})
                     .duration(1000)
@@ -252,13 +190,13 @@ async function use({trigger, workflow}) {
                     .opacity(1)
                 .animation()
                     .delay(200)
-                    .on(workflow.token)
+                    .on(token)
                     .teleportTo(positions[e])
                     .snapToGrid()
                     .opacity(1)
                 .play();
             /* eslint-enable indent */
-            await workflow.actor.sheet.maximize();
+            await token.actor.sheet.maximize();
         } else {
             /* eslint-disable indent */
             await new Sequence()
@@ -325,7 +263,7 @@ async function use({trigger, workflow}) {
                     .fadeOut(200)
                     .zIndex(0.21)
                 .effect()
-                    .copySprite(workflow.token)
+                    .copySprite(token)
                     .name('Dash')
                     .atLocation(positions[e-1])
                     .moveTowards(positions[e],{rotate: false, ease: 'easeOutCirc'})
@@ -334,11 +272,83 @@ async function use({trigger, workflow}) {
                     .fadeIn(400, {ease: 'easeOutCirc'})
                     .fadeOut(0)
                     .filter('ColorMatrix', {saturate: -0.25, brightness: 0.65})
-                    .scale(workflow.token.document.texture.scaleX)
+                    .scale(token.document.texture.scaleX)
                     .waitUntilFinished(-300)
                 .play();
             /* eslint-enable indent */
         } 
+    }
+}
+async function use({trigger, workflow}) {
+    let playAnimation = itemUtils.getConfig(workflow.item, 'playAnimation');
+    if (!playAnimation || animationUtils.jb2aCheck() != 'patreon' || !animationUtils.aseCheck()) return;
+    let displayHint = itemUtils.getConfig(workflow.item, 'displayHint');
+    if (displayHint) genericUtils.notify('CHRISPREMADES.Macros.Dash.Notify', 'info', {localize: true});
+    let animation = itemUtils.getConfig(workflow.item, 'animation');
+    let fade = animation === 'cunningAction' ? 'jb2a.particles.outward.purple.01.03' : 'jb2a.particles.outward.blue.01.03';
+    await workflow.actor.sheet.minimize();
+    let positions = [];
+    let i = 0;
+    let cancelled = false;
+    while (!cancelled) {
+        positions[i] = await crosshairUtils.aimCrosshair({
+            token: workflow.token, 
+            maxRange: workflow.actor.system.attributes.movement.walk, 
+            centerpoint: workflow.token.center, 
+            drawBoundries: true, 
+            trackDistance: true, 
+            fudgeDistance: workflow.token.document.width * canvas.dimensions.distance / 2,
+            crosshairsConfig: {
+                size: workflow.token.document.parent.grid.distance * workflow.token.document.width / 2,
+                icon: workflow.token.document.texture.src,
+                resolution: (workflow.token.document.width % 2) ? 1 : -1
+            }
+        });
+        if (positions[i].cancelled) {
+            positions.push(positions[i]);
+            i++;
+            /* eslint-disable indent */
+            new Sequence()
+                .effect()
+                    .name('Dash Crosshair')
+                    .copySprite(workflow.token)
+                    .atLocation(positions[i])
+                    .fadeIn(100)
+                    .persist()
+                    .opacity(0.65)
+                    .locally()
+                    .loopProperty('alphaFilter', 'alpha', {from: 1, to: 0.75, duration: 1500, pingPong: true})
+                    .filter('ColorMatrix', {saturate: -1, brightness: 0.5})
+                    .scale(workflow.token.document.texture.scaleX)
+                    .fadeIn(250)
+                    .fadeOut(500)
+                    .waitUntilFinished(-500)
+                .effect()
+                    .file(fade)
+                    .atLocation(positions[i])
+                    .scale(0.15 * workflow.token.document.texture.scaleX)
+                    .duration(1000)
+                    .fadeOut(500)
+                    .scaleIn(0, 1000, {ease: 'easeOutCubic'})
+                    .filter('ColorMatrix', {hue: 0})
+                    .animateProperty('sprite', 'width', {from: 0, to: 0.5, duration: 500, gridUnits: true, ease:'easeOutBack'})
+                    .animateProperty('sprite', 'height', {from: 0, to: 1.5, duration: 1000, gridUnits: true, ease:'easeOutBack'})
+                    .animateProperty('sprite', 'position.y', {from: 0, to: -1, duration: 1000, gridUnits: true})
+                    .zIndex(0.2)
+                    .filter('ColorMatrix', {saturate: -1, brightness: 0})
+                    .locally()
+                .play();
+            /* eslint-enable indent */
+        } else { 
+            cancelled = true;
+        }
+    }
+    Sequencer.EffectManager.endEffects({name: 'Dash Crosshair'});
+    await genericUtils.sleep(500);
+    if (animation === 'cunningAction') {
+        await cunningAction(workflow.token, positions);
+    } else {
+        await disengage.utilFunctions.stepOfTheWind(workflow.token, positions);
     }
 }
 export let dash = {
@@ -368,7 +378,29 @@ export let dash = {
             type: 'checkbox',
             default: true,
             category: 'animation'
+        },
+        {
+            value: 'animation',
+            label: 'CHRISPREMADES.Config.Animation',
+            type: 'select',
+            default: 'cunningAction',
+            category: 'animation',
+            options: [
+                {
+                    value: 'stepOfTheWind',
+                    label: 'CHRISPREMADES.Macros.Disengage.StepOfTheWind',
+                    requiredModules: ['jb2a_patreon', 'animated-spell-effects-cartoon']
+                },
+                {
+                    value: 'cunningAction',
+                    label: 'CHRISPREMADES.Macros.Disengage.CunningAction',
+                    requiredModules: ['jb2a_patreon']
+                }
+            ]
         }
     ],
-    hasAnimation: true
+    hasAnimation: true,
+    utilFunctions: {
+        cunningAction
+    }
 };

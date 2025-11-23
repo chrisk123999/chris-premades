@@ -1,8 +1,22 @@
+# 1.3.139 Release:
+## Bug Fixes:
+- Help Action
+- Faerie Fire
+
 # 1.3.138 Release:
+## New Modern Content:
+- Monk's Focus
+- Unarmored Movement
+- Uncanny Metabolism
+## New Enhanced Animations:
+- Monk's Focus (Thanks Eskiemoh)
 ## New Generic Monster Features:
 - Transform
 ## Bug Fixes:
-- Damage Turn Start generic feature
+- Damage Turn Start Generic Feature
+- Protection from Evil and Good
+- Unarmored Defense (Barbarian)
+- Unarmored Defense (Monk)
   
 # 1.3.137 Release:
 ## Bug Fixes:

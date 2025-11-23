@@ -8,4 +8,4 @@ export let unarmedFightingUnarmedStrike = {
     ...unarmedFightingUnarmedStrikeLegacy,
     version: '1.2.36',
     rules: unarmedFighting.rules
-}
+};

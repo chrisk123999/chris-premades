@@ -1,5 +1,6 @@
 import {effectUtils, genericUtils, itemUtils} from '../../../../utils.js';
 async function use({trigger, workflow}) {
+    if (!workflow.target.size) return;
     let config = itemUtils.getGenericFeatureConfig(workflow.item, 'transform');
     let {avatarImg, avatarImgPriority, tokenImg, tokenImgPriority, items} = {};
     if ((config?.profileOneActivities?.length && config?.profileOneActivities.includes(workflow.activity.id)) || (!config?.profileOneActivities?.length && !config?.profileTwoActivities?.length)) {
@@ -20,21 +21,33 @@ async function use({trigger, workflow}) {
     let effectData = genericUtils.duplicate(sourceEffect.toObject());
     effectData.origin = sourceEffect.uuid;
     effectData.duration = itemUtils.convertDuration(workflow.activity);
-    let effect = await effectUtils.createEffect(workflow.actor, effectData, {
-        avatarImg,
-        avatarImgPriority,
-        tokenImg,
-        tokenImgPriority
-    });
-    if (!effect) return;
-    let itemData = (await Promise.all(items.map(async i => {
-        let item = await fromUuid(i);
-        if (!item) return null;
-        let itemData = genericUtils.duplicate(item.toObject());
-        delete itemData._id;
-        return itemData;
-    }))).filter(i => i);
-    await itemUtils.createItems(workflow.actor, itemData, {favorite: true, parentEntity: effect});
+    await Promise.all(workflow.hitTargets.map(async token => {
+        if (config.checkSaves && !workflow.failedSaves.has(token)) return;
+        let effect = await effectUtils.createEffect(token.actor, effectData, {
+            avatarImg,
+            avatarImgPriority,
+            tokenImg,
+            tokenImgPriority
+        });
+        if (!effect) return;
+        let itemData = (await Promise.all(items.map(async i => {
+            let item = await fromUuid(i);
+            if (!item) return null;
+            let itemData = genericUtils.duplicate(item.toObject());
+            delete itemData._id;
+            return itemData;
+        }))).filter(i => i);
+        await itemUtils.createItems(token.actor, itemData, {favorite: true, parentEntity: effect});
+    }));
+    
+}
+async function early({trigger, workflow}) {
+    let config = itemUtils.getGenericFeatureConfig(workflow.item, 'transform');
+    if (!(config.profileOneActivities.includes(workflow.activity.id) || config.profileTwoActivities.includes(workflow.activity.id))) return;
+    let sourceEffect = workflow.activity.effects[0]?.effect;
+    if (!sourceEffect) return;
+    if (sourceEffect.flags.dae?.dontApply) return;
+    await genericUtils.setFlag(sourceEffect, 'dae', 'dontApply', true);
 }
 export let transform = {
     name: 'Transform',
@@ -46,11 +59,22 @@ export let transform = {
                 pass: 'rollFinished',
                 macro: use,
                 priority: 50
+            },
+            {
+                pass: 'preambleComplete',
+                macro: early,
+                priority: 50
             }
         ]
     },
     isGenericFeature: true,
     genericConfig: [
+        {
+            value: 'checkSaves',
+            label: 'CHRISPREMADES.Config.CheckSaves',
+            type: 'checkbox',
+            default: true
+        },
         {
             value: 'profileOneActivities',
             label: 'CHRISPREMADES.Macros.Transform.ProfileOneActivities',

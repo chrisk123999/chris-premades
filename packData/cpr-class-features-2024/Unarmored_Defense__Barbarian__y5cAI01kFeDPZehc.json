@@ -28,7 +28,7 @@
         "startTurn": null
       },
       "description": "",
-      "origin": "Actor.yy1I4W4hqhw1yaiM.Item.S2RQX3ozBTpaR6b2",
+      "origin": "Compendium.world.cpr-class-features-2024.Item.y5cAI01kFeDPZehc",
       "tint": "#ffffff",
       "statuses": [],
       "flags": {
@@ -43,6 +43,21 @@
         },
         "core": {
           "overlay": false
+        },
+        "chris-premades": {
+          "noAnimation": false,
+          "conditions": [],
+          "specialDuration": [],
+          "templateEffectActivities": [],
+          "info": {
+            "identifier": "unarmoredDefenseBarbarianEffect"
+          },
+          "rules": "modern"
+        },
+        "dnd5e": {
+          "riders": {
+            "statuses": []
+          }
         }
       },
       "sort": 0,
@@ -107,7 +122,12 @@
         "identifier": "unarmoredDefenseBarbarian",
         "source": "chris-premades",
         "rules": "modern",
-        "version": "1.1.22"
+        "version": "1.1.138"
+      },
+      "macros": {
+        "item": [
+          "unarmoredDefenseBarbarian"
+        ]
       }
     }
   },

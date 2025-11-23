@@ -5,24 +5,24 @@ export async function setupJournal() {
     let journal = game.journal.getName(name);
     if (!journal) {
         journal = await JournalEntry.create({
-            'name': name,
-            'pages': [
+            name: name,
+            pages: [
                 {
-                    'sort': 100000,
-                    'name': 'Info',
-                    'type': 'text',
-                    'title': {
-                        'show': true,
-                        'level': 1
+                    sort: 100000,
+                    name: 'Info',
+                    type: 'text',
+                    title: {
+                        show: true,
+                        level: 1
                     },
-                    'text': {
-                        'format': 1,
-                        'content': welcomeText,
+                    text: {
+                        format: 1,
+                        content: welcomeText,
                     }
                 }
             ],
-            'ownership': {
-                'default': 2
+            ownership: {
+                default: 2
             }
         });
         await ChatMessage.create({

@@ -1281,6 +1281,10 @@
             "Devastator": {
                 "Message": "Target one enemy and all allies up to your proficiency score!"
             },
+            "Disengage": {
+                "CunningAction": "Cunning Action",
+                "StepOfTheWind": "Step of the Wind"
+            },
             "DivineSmite": {
                 "Context": "Smite Target?",
                 "CreatureTypes": "Extra Damage Creature Types:",
@@ -1620,6 +1624,9 @@
                 "MustDrop": "Failed their save, and must drop the metal item!",
                 "Pulse": "Heat Metal: Pulse",
                 "Unable": "Unable (Armor)"
+            },
+            "HeightenedFocus": {
+                "BringAlly": "Bring an ally with you?"
             },
             "Hex": {
                 "Hexed": "Hexed",

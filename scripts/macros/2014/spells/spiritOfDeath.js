@@ -91,8 +91,8 @@ async function late({workflow}) {
         origin: workflow.item.uuid,
         flags: {
             dae: {
-                'showIcon' : true,
-                'specialDuration': [
+                showIcon : true,
+                specialDuration: [
                     'zeroHP'
                 ]
             }

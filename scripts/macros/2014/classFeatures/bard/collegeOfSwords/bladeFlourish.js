@@ -36,14 +36,14 @@ async function damage({trigger: {entity: item}, workflow}) {
     await combatUtils.setTurnCheck(item, 'bladeFlourish');
     if (!skipUses) genericUtils.update(bardic, {'system.uses.spent': bardic.system.uses.spent + 1});
     let bardicDie = workflow.actor.system.scale.bard?.['inspiration'];
-    if (skipUses) bardicDie = {'formula': '1d6'};
+    if (skipUses) bardicDie = {formula: '1d6'};
     if (!bardicDie) return;
     let damageType = workflow.defaultDamageType;
     await workflowUtils.bonusDamage(workflow, bardicDie.formula, {damageType});
     let rollResult = workflow.damageRolls.at(-1).total;
     switch (selection) {
         case 'DF':
-            await genericUtils.update(item.effects.get(defensiveFeature.effects[0]._id), {'changes': [{
+            await genericUtils.update(item.effects.get(defensiveFeature.effects[0]._id), {changes: [{
                 key: 'system.attributes.ac.bonus',
                 mode: 2,
                 value: rollResult,

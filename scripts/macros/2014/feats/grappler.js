@@ -61,7 +61,7 @@ export let grappler = {
     },
     ddbi: {
         removedItems: {
-            'Grappler': [
+            Grappler: [
                 'Grappling Pin'
             ]
         }

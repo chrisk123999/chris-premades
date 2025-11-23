@@ -400,7 +400,7 @@ export class EffectMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
         let effectUpdates = {flags: {'chris-premades': flagUpdates}};
         genericUtils.mergeObject(effectData, effectUpdates);
         let updates = {
-            'effects': [effectData]
+            effects: [effectData]
         };
         await this.effectDocument.parent.update(updates);
         this.effectDocument.sheet.render(true);

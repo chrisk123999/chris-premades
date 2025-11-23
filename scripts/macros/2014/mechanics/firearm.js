@@ -293,7 +293,7 @@ async function reload({workflow}) {
         'system.uses.spent': 0
     });
     await genericUtils.update(weapon.system.activities.getByType('attack')[0], {
-        'ammunition': ammo.id
+        ammunition: ammo.id
     });
 }
 export let firearm = {

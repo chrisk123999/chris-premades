@@ -1,16 +1,16 @@
 {
-  "name": "Unarmored Defense (Monk)",
+  "name": "Unarmored Movement",
   "type": "feat",
   "effects": [
     {
-      "name": "Unarmored Defense",
+      "name": "Unarmored Movement",
       "statuses": [],
       "changes": [
         {
-          "key": "system.attributes.ac.calc",
-          "value": "unarmoredMonk",
-          "mode": 5,
-          "priority": 15
+          "key": "system.attributes.movement.walk",
+          "value": "@scale.monk.unarmored-movement.value",
+          "mode": 2,
+          "priority": 20
         }
       ],
       "duration": {
@@ -24,23 +24,20 @@
       },
       "tint": "#ffffff",
       "transfer": true,
-      "disabled": true,
+      "disabled": false,
       "flags": {
         "dae": {
           "transfer": true,
           "stackable": "noneNameOnly",
+          "specialDuration": [],
           "disableCondition": "",
           "showIcon": false,
           "disableIncapacitated": false,
           "durationExpression": "",
-          "macroRepeat": "none",
-          "specialDuration": []
+          "macroRepeat": "none"
         },
         "ddbimporter": {
-          "disabled": false,
-          "passive": true,
-          "itemId": 10292257,
-          "itemEntityTypeId": 12168134
+          "disabled": false
         },
         "midi-qol": {
           "forceCEOff": true
@@ -54,7 +51,7 @@
           "specialDuration": [],
           "templateEffectActivities": [],
           "info": {
-            "identifier": "unarmoredDefenseMonkEffect"
+            "identifier": "unarmoredMovementEffect"
           },
           "rules": "modern"
         },
@@ -64,14 +61,14 @@
           }
         }
       },
-      "description": "<p>While you aren’t wearing armor or wielding a Shield, your base AC equals [[10+ @abilities.dex.mod+ @abilities.wis.mod]].</p>",
-      "img": "icons/magic/control/buff-flight-wings-runes-red.webp",
-      "_id": "9s8GMffkNxlDeDmX",
+      "description": "",
+      "img": "icons/magic/control/debuff-energy-snare-brown.webp",
+      "_id": "wqGghclF9bdlCbli",
       "type": "base",
       "system": {},
-      "origin": "Compendium.world.cpr-class-features-2024.Item.rIoDd03MBVo6UBCm",
+      "origin": "Actor.oGXY1CS6ZXBzNHP0.Item.DF2WfOUAeOrtSwGL",
       "sort": 0,
-      "_key": "!items.effects!rIoDd03MBVo6UBCm.9s8GMffkNxlDeDmX"
+      "_key": "!items.effects!rQUBBRTPrV3lMyDf.wqGghclF9bdlCbli"
     }
   ],
   "system": {
@@ -85,7 +82,7 @@
       "value": "",
       "chat": ""
     },
-    "identifier": "unarmored-defense",
+    "identifier": "unarmored-movement",
     "source": {
       "book": "PHB 2024",
       "page": "",
@@ -98,7 +95,7 @@
     "enchant": {},
     "prerequisites": {
       "items": [],
-      "level": 1,
+      "level": 2,
       "repeatable": false
     },
     "properties": [],
@@ -109,16 +106,16 @@
     }
   },
   "flags": {
+    "dae": {
+      "alwaysActive": false,
+      "activeEquipped": false
+    },
     "midi-qol": {
       "removeAttackDamageButtons": "default",
       "forceCEOff": true
     },
     "midiProperties": {
       "confirmTargets": "default"
-    },
-    "dae": {
-      "alwaysActive": false,
-      "activeEquipped": false
     },
     "dnd5e": {
       "riders": {
@@ -129,20 +126,20 @@
     },
     "chris-premades": {
       "info": {
-        "identifier": "unarmoredDefenseMonk",
+        "identifier": "unarmoredMovement",
         "rules": "modern",
         "source": "chris-premades",
         "version": "1.3.138"
       },
       "macros": {
         "item": [
-          "unarmoredDefenseMonk"
+          "unarmoredMovement"
         ]
       }
     }
   },
-  "img": "icons/magic/control/buff-flight-wings-runes-red.webp",
+  "img": "icons/magic/control/debuff-energy-snare-brown.webp",
   "folder": "tJ727NhyyBNb6ZNf",
-  "_id": "rIoDd03MBVo6UBCm",
-  "_key": "!items!rIoDd03MBVo6UBCm"
+  "_id": "rQUBBRTPrV3lMyDf",
+  "_key": "!items!rQUBBRTPrV3lMyDf"
 }
