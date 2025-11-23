@@ -236,7 +236,7 @@ async function getItemFromCompendium(key, name, {ignoreNotFound, folderId, objec
         if (!ignoreNotFound) errors.missingPack();
         return undefined;
     }
-    let packIndex = await pack.getIndex({'fields': ['name', 'type', 'folder', 'system.source.rules', 'flags.chris-premades.info.identifier', 'system.identifier']});
+    let packIndex = await pack.getIndex({fields: ['name', 'type', 'folder', 'system.source.rules', 'flags.chris-premades.info.identifier', 'system.identifier']});
     let match;
     let alwaysFilterFunc = (item) => {
         return (!folderId || (item.folder === folderId)) && (!matchType || (item.type === matchType)) && (!rules || (item.system.source.rules === (rules === 'modern' ? '2024' : '2014')));
@@ -297,7 +297,7 @@ async function getActorFromCompendium(key, name, {ignoreNotFound, folderId, obje
         if (!ignoreNotFound) errors.missingPack();
         return undefined;
     }
-    let packIndex = await pack.getIndex({'fields': ['name', 'type', 'folder']});
+    let packIndex = await pack.getIndex({fields: ['name', 'type', 'folder']});
     let match = packIndex.find(item => item.name === name && (!folderId || (folderId && item.folder === folderId)));
     if (match) {
         let document = await pack.getDocument(match._id);

@@ -23,10 +23,10 @@ async function use({workflow}) {
     if (exceptionalTraining) {
         let genericActions = [dashData, disengageData, dodgeData, helpData];
         genericActions.forEach(i => {
-            let genericActivity = Object.entries(i.system.activities)[0][1]
+            let genericActivity = Object.entries(i.system.activities)[0][1];
             genericActivity.activation.type = 'bonus';
             itemsToAdd.push(i);
-        })
+        });
     }
     else {
         itemsToAdd.push(dodgeData);

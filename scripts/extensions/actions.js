@@ -1,13 +1,13 @@
 import {compendiumUtils, constants, genericUtils, itemUtils} from '../utils.js';
 let ACTION_RULE_MAPPING = {
     'Check Cover': 'cover',
-    'Fall': 'falling',
-    'Jump': 'jumping',
+    Fall: 'falling',
+    Jump: 'jumping',
     'Knock Out': 'knockingacreatureout',
-    'Squeeze': 'squeezing',
-    'Stabilize': 'stabilizing',
-    'Suffocation': 'suffocating',
-    'Underwater': 'underwatercombat'
+    Squeeze: 'squeezing',
+    Stabilize: 'stabilizing',
+    Suffocation: 'suffocating',
+    Underwater: 'underwatercombat'
 };
 async function createToken(token, options, userId) {
     if (userId != game.user.id) return;

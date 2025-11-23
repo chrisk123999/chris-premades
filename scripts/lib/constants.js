@@ -661,7 +661,7 @@ let languageOptions = () => {
         }
         return result;
     }
-    return extractLanguages(CONFIG.DND5E.languages).sort((a, b) => a.label.localeCompare(b.label, 'en', {'sensitivity': 'base'}));
+    return extractLanguages(CONFIG.DND5E.languages).sort((a, b) => a.label.localeCompare(b.label, 'en', {sensitivity: 'base'}));
 };
 function getToolNames() {
     return toolNames;

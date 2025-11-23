@@ -959,7 +959,7 @@ async function configure() {
             label: name,
             value: key
         };
-    }))).filter(j => j).sort((a, b) => a.label.localeCompare(b.label, 'en', {'sensitivity': 'base'}));
+    }))).filter(j => j).sort((a, b) => a.label.localeCompare(b.label, 'en', {sensitivity: 'base'}));
     let oldSettings = genericUtils.getCPRSetting('bg3WeaponActionConfig');
     let inputs = bg3Identifiers.map(i => ({
         label: 'CHRISPREMADES.BG3.' + i.capitalize(),

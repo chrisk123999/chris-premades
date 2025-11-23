@@ -22,7 +22,7 @@ async function death({trigger: {entity: effect, token}}) {
     let activity = activityUtils.getActivityByIdentifier(item, 'death', {strict: true});
     if (!activity) return;
     await workflowUtils.syntheticActivityRoll(activity, []);
-    if (token) await genericUtils.update(token.document, {'hidden': true});
+    if (token) await genericUtils.update(token.document, {hidden: true});
 }
 export let infernalMajesty = {
     name: 'Infernal Majesty',

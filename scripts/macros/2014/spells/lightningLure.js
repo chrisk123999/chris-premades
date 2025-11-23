@@ -27,10 +27,10 @@ async function damage({workflow, ditem}) {
                 .effect()
                 .atLocation(sourceToken)
                 .file('animated-spell-effects-cartoon.electricity.discharge.03')
-                .stretchTo(targetToken, {'attachTo': true})
+                .stretchTo(targetToken, {attachTo: true})
                 .delay(0)
-                .filter('ColorMatrix', {'saturate':1, 'hue': 25})
-                .scaleIn(0, 750, {'ease': 'easeOutQuint'})
+                .filter('ColorMatrix', {saturate:1, hue: 25})
+                .scaleIn(0, 750, {ease: 'easeOutQuint'})
                 .repeats(2, 600, 600)
         
                 .wait(250);
@@ -43,8 +43,8 @@ async function damage({workflow, ditem}) {
             .playbackRate(1)
             .spriteRotation(90)
             .mirrorX()
-            .filter('ColorMatrix', {'saturate': 1, 'hue': -15})
-            .moveTowards({'x': position.x + (canvas.grid.size * targetToken.document.width) / 2, 'y': position.y + (canvas.grid.size * targetToken.document.height) / 2}, {'ease': 'easeInOutBack', 'rotate': false})
+            .filter('ColorMatrix', {saturate: 1, hue: -15})
+            .moveTowards({x: position.x + (canvas.grid.size * targetToken.document.width) / 2, y: position.y + (canvas.grid.size * targetToken.document.height) / 2}, {ease: 'easeInOutBack', rotate: false})
             .zIndex(2)
 
             .animation()
@@ -53,14 +53,14 @@ async function damage({workflow, ditem}) {
 
             .animation()
             .on(targetToken)
-            .moveTowards({'x': position.x, 'y': position.y})
+            .moveTowards({x: position.x, y: position.y})
             .opacity(0)
             .delay(250)
 
             .effect()
             .copySprite(targetToken)
             .atLocation(targetToken)
-            .moveTowards({'x': position.x + (canvas.grid.size * targetToken.document.width) / 2, 'y': position.y + (canvas.grid.size * targetToken.document.height) / 2 }, {'ease': 'easeInOutBack', 'rotate': false})
+            .moveTowards({x: position.x + (canvas.grid.size * targetToken.document.width) / 2, y: position.y + (canvas.grid.size * targetToken.document.height) / 2 }, {ease: 'easeInOutBack', rotate: false})
             .zIndex(0.1)
             .scaleToObject(1)
             .extraEndDuration(500)
@@ -74,7 +74,7 @@ async function damage({workflow, ditem}) {
             .effect()
             .copySprite(targetToken)
             .atLocation(targetToken)
-            .loopProperty('sprite', 'position.x', {'from': -0.05, 'to': 0.05, 'duration': 75, 'pingPong': true, 'gridUnits': true})
+            .loopProperty('sprite', 'position.x', {from: -0.05, to: 0.05, duration: 75, pingPong: true, gridUnits: true})
             .scaleToObject(targetToken.document.texture.scaleX)
             .delay(250)
             .opacity(0.5)
@@ -89,7 +89,7 @@ async function damage({workflow, ditem}) {
             .atLocation(sourceToken)
             .scaleToObject(2)
             .rotateTowards(targetToken)
-            .filter('ColorMatrix', {'saturate':1, 'hue': -15 })
+            .filter('ColorMatrix', {saturate:1, hue: -15 })
             .zIndex(0.2)
             .playIf(() => {
                 let distanceToTargetX = Math.abs(sourceToken.x - position.x);
