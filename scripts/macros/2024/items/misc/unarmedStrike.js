@@ -68,7 +68,7 @@ async function shove({trigger, workflow}) {
 }
 export let unarmedStrike = {
     name: 'Unarmed Strike',
-    version: '1.3.61',
+    version: '1.3.141',
     rules: 'modern',
     midi: {
         item: [

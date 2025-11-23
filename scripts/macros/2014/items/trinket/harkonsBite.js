@@ -503,7 +503,7 @@ async function bite({trigger, workflow}) {
 }
 export let harkonsBite = {
     name: 'Harkon\'s Bite',
-    version: '1.3.110',
+    version: '1.3.141',
     rules: 'legacy',
     midi: {
         item: [

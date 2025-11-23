@@ -59,7 +59,7 @@
           "flat": false,
           "type": {
             "value": "",
-            "classification": ""
+            "classification": "unarmed"
           },
           "ability": "",
           "bonus": ""
@@ -589,7 +589,9 @@
       "base": {
         "number": null,
         "denomination": 0,
-        "types": [],
+        "types": [
+          "bludgeoning"
+        ],
         "custom": {
           "enabled": false
         },
@@ -670,7 +672,7 @@
         "identifier": "unarmedStrike",
         "source": "chris-premades",
         "rules": "modern",
-        "version": "1.3.61"
+        "version": "1.3.141"
       },
       "macros": {
         "midi": {

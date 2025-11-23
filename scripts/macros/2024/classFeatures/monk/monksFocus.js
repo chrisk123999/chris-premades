@@ -1,7 +1,6 @@
 import {activityUtils, animationUtils, crosshairUtils, dialogUtils, genericUtils, itemUtils, tokenUtils, workflowUtils} from '../../../../utils.js';
 import {dash} from '../../actions/dash.js';
 import {disengage} from '../../actions/disengage.js';
-import {cunningAction} from '../rogue/cunningAction.js';
 async function flurryOfBlows({trigger, workflow}) {
     if (!itemUtils.getConfig(workflow.item, 'promptForTargets')) return;
     let unarmedStrike = itemUtils.getItemByIdentifier(workflow.actor, 'unarmedStrike');
@@ -93,10 +92,81 @@ async function flurryOfBlows({trigger, workflow}) {
 async function patientDefense({trigger, workflow}) {
     if (!workflow.token) return;
     let heightenedFocus = itemUtils.getItemByIdentifier(workflow.actor, 'heightenedFocus');
-    if (!heightenedFocus) return;
-    let activity = activityUtils.getActivityByIdentifier(heightenedFocus, 'patientDefenseHeal');
-    if (!activity) return;
-    await workflowUtils.syntheticActivityRoll(activity, [workflow.token]);
+    if (heightenedFocus && activityUtils.getIdentifier(workflow.activity) === 'patientDefenseDisengageDodge') {
+        let activity = activityUtils.getActivityByIdentifier(heightenedFocus, 'patientDefenseHeal');
+        if (!activity) return;
+        await workflowUtils.syntheticActivityRoll(activity, [workflow.token]);
+    }
+    let playAnimation = itemUtils.getConfig(workflow.item, 'playAnimation');
+    if (!playAnimation || animationUtils.jb2aCheck() != 'patreon' || !animationUtils.aseCheck()) return;
+    let displayHint = itemUtils.getConfig(workflow.item, 'displayHint');
+    if (displayHint) genericUtils.notify('CHRISPREMADES.Macros.Dash.Notify', 'info', {localize: true});
+    let animation = itemUtils.getConfig(workflow.item, 'animation');
+    let fade = animation === 'cunningAction' ? 'jb2a.particles.outward.purple.01.03' : 'jb2a.particles.outward.blue.01.03';
+    await workflow.actor.sheet.minimize();
+    let positions = [];
+    let i = 0;
+    let cancelled = false;
+    while (!cancelled) {
+        positions[i] = await crosshairUtils.aimCrosshair({
+            token: workflow.token, 
+            maxRange: workflow.actor.system.attributes.movement.walk, 
+            centerpoint: workflow.token.center, 
+            drawBoundries: true, 
+            trackDistance: true, 
+            fudgeDistance: workflow.token.document.width * canvas.dimensions.distance / 2,
+            crosshairsConfig: {
+                size: workflow.token.document.parent.grid.distance * workflow.token.document.width / 2,
+                icon: workflow.token.document.texture.src,
+                resolution: (workflow.token.document.width % 2) ? 1 : -1
+            }
+        });
+        if (positions[i].cancelled) {
+            positions.push(positions[i]);
+            i++;
+            /* eslint-disable indent */
+                new Sequence()
+                    .effect()
+                        .name('Dash Crosshair')
+                        .copySprite(workflow.token)
+                        .atLocation(positions[i])
+                        .fadeIn(100)
+                        .persist()
+                        .opacity(0.65)
+                        .locally()
+                        .loopProperty('alphaFilter', 'alpha', {from: 1, to: 0.75, duration: 1500, pingPong: true})
+                        .filter('ColorMatrix', {saturate: -1, brightness: 0.5})
+                        .scale(workflow.token.document.texture.scaleX)
+                        .fadeIn(250)
+                        .fadeOut(500)
+                        .waitUntilFinished(-500)
+                    .effect()
+                        .file(fade)
+                        .atLocation(positions[i])
+                        .scale(0.15 * workflow.token.document.texture.scaleX)
+                        .duration(1000)
+                        .fadeOut(500)
+                        .scaleIn(0, 1000, {ease: 'easeOutCubic'})
+                        .filter('ColorMatrix', {hue: 0})
+                        .animateProperty('sprite', 'width', {from: 0, to: 0.5, duration: 500, gridUnits: true, ease:'easeOutBack'})
+                        .animateProperty('sprite', 'height', {from: 0, to: 1.5, duration: 1000, gridUnits: true, ease:'easeOutBack'})
+                        .animateProperty('sprite', 'position.y', {from: 0, to: -1, duration: 1000, gridUnits: true})
+                        .zIndex(0.2)
+                        .filter('ColorMatrix', {saturate: -1, brightness: 0})
+                        .locally()
+                    .play();
+                /* eslint-enable indent */
+        } else { 
+            cancelled = true;
+        }
+    }
+    Sequencer.EffectManager.endEffects({name: 'Dash Crosshair'});
+    await genericUtils.sleep(500);
+    if (animation === 'cunningAction') {
+        await dash.utilFunctions.cunningAction(workflow.token, positions);
+    } else {
+        await disengage.utilFunctions.stepOfTheWind(workflow.token, positions);
+    }
 }
 async function stepOfTheWind({trigger, workflow}) {
     if (!workflow.token) return;
@@ -107,10 +177,10 @@ async function stepOfTheWind({trigger, workflow}) {
     if (heightenedFocus && activityUtils.getIdentifier(workflow.activity) === 'stepOfTheWindDisengageDash') {
         let nearby = tokenUtils.findNearby(workflow.token, 5, 'ally');
         if (nearby.length) {
-            let selection = await dialogUtils.selectTargetDialog(heightenedFocus.name, 'CHRISPREMADES.Macros.HeightenedFocus.BringAlly', nearby, {skipDeadAndUnconscious: false});
+            let selection = await dialogUtils.selectTargetDialog(heightenedFocus.name, 'CHRISPREMADES.Macros.HeightenedFocus.BringAlly', nearby, {skipDeadAndUnconscious: false, buttons: 'yesNo'});
+            console.log(selection);
             if (selection) {
-                console.log(selection);
-                otherToken = selection[0].object;
+                otherToken = selection[0];
                 await genericUtils.update(otherToken.document, {alpha: 0});
             }
         } 
@@ -183,32 +253,32 @@ async function stepOfTheWind({trigger, workflow}) {
     } else {
         await disengage.utilFunctions.stepOfTheWind(workflow.token, positions);
     }
-    if (otherToken) {
-        let actualHalf = otherToken.document.width / 2;
-        let widthAdjust = canvas.grid.distance * Math.floor(actualHalf);
-        let fudgeDistance = 0;
-        if (widthAdjust !== actualHalf * canvas.grid.distance) {
-            fudgeDistance = 2.5;
-        }
-        fudgeDistance += widthAdjust;
-        let position = await crosshairUtils.aimCrosshair({
-            token: workflow.token,
-            centerpoint: workflow.token.center,
-            maxRange: 5,
-            fudgeDistance,
-            drawBoundries: true,
-            trackDistance: true,
-            crosshairsConfig: {
-                size: canvas.grid.distance * otherToken.document.width / 2,
-                icon: otherToken.document.texture.src,
-                resolution: (otherToken.document.width % 2) ? 1 : -1
-            }
-        });
-        if (position.cancelled) return;
-        let xOffset = otherToken.document.width * canvas.grid.size / 2;
-        let yOffset = otherToken.document.height * canvas.grid.size / 2;
-        await genericUtils.update(otherToken.document, {x: (position.x ?? otherToken.document.center.x) - xOffset, y: (position.y ?? otherToken.document.center.y) - yOffset, alpha: 1});
+    if (!otherToken) return;
+    await genericUtils.sleep(500);
+    let actualHalf = otherToken.document.width / 2;
+    let widthAdjust = canvas.grid.distance * Math.floor(actualHalf);
+    let fudgeDistance = 0;
+    if (widthAdjust !== actualHalf * canvas.grid.distance) {
+        fudgeDistance = 2.5;
     }
+    fudgeDistance += widthAdjust;
+    let position = await crosshairUtils.aimCrosshair({
+        token: workflow.token,
+        centerpoint: workflow.token.center,
+        maxRange: 5,
+        fudgeDistance,
+        drawBoundries: true,
+        trackDistance: true,
+        crosshairsConfig: {
+            size: canvas.grid.distance * otherToken.document.width / 2,
+            icon: otherToken.document.texture.src,
+            resolution: (otherToken.document.width % 2) ? 1 : -1
+        }
+    });
+    if (position.cancelled) return;
+    let xOffset = otherToken.document.width * canvas.grid.size / 2;
+    let yOffset = otherToken.document.height * canvas.grid.size / 2;
+    await genericUtils.update(otherToken.document, {x: (position.x ?? otherToken.document.center.x) - xOffset, y: (position.y ?? otherToken.document.center.y) - yOffset, alpha: 1}, {animate: false, teleport: true});
 }
 export let monksFocus = {
     name: 'Monk\'s Focus',
@@ -226,7 +296,7 @@ export let monksFocus = {
                 pass: 'rollFinished',
                 macro: patientDefense,
                 priority: 50,
-                activities: ['patientDefenseDisengageDodge']
+                activities: ['patientDefenseDisengageDodge', 'patientDefenseDisengage']
             },
             {
                 pass: 'rollFinished',

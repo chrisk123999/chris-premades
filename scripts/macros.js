@@ -408,6 +408,11 @@ export {unarmoredDefenseMonk} from './macros/2024/classFeatures/monk/unarmoredDe
 export {monksFocus} from './macros/2024/classFeatures/monk/monksFocus.js';
 export {unarmoredMovement} from './macros/2024/classFeatures/monk/unarmoredMovement.js';
 export {uncannyMetabolism} from './macros/2024/classFeatures/monk/uncannyMetabolism.js';
+export {deflectAttacks} from './macros/2024/classFeatures/monk/deflectAttacks.js';
+export {slowFall} from './macros/2024/classFeatures/monk/slowFall.js';
+export {stunningStrike} from './macros/2024/classFeatures/monk/stunningStrike.js';
+export {empoweredStrikes} from './macros/2024/classFeatures/monk/empoweredStrikes.js';
+export {heightenedFocus} from './macros/2024/classFeatures/monk/heightenedFocus.js';
 // Multiple
 export {evasion} from './macros/2024/classFeatures/multiple/evasion.js';
 // Monster Features

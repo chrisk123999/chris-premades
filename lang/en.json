@@ -138,6 +138,7 @@
             "ArmoTypes": "Armor Types:",
             "AttackBonus": "Attack Bonus:",
             "Attacks": "Attacks:",
+            "AutoApply": "Auto Apply:",
             "AvatarImg": "Avatar Image:",
             "AvatarImgPriority": "Avatar Image Priority:",
             "BaseDiceNumber": "Base Dice Number:",
@@ -1273,6 +1274,9 @@
                     "Lost": "{} (Lost)",
                     "Select": "Select an item to lose:"
                 }
+            },
+            "DeflectAttacks": {
+                "UseAndTarget": "Redirect Attack?"
             },
             "DetectThoughts": {
                 "ProbeDeeper": "Detect Thoughts: Probe Deeper"

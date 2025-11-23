@@ -59,7 +59,7 @@
           "flat": false,
           "type": {
             "value": "",
-            "classification": ""
+            "classification": "unarmed"
           },
           "ability": "",
           "bonus": ""
@@ -113,7 +113,9 @@
           "saveRemoves": true,
           "preRemoveConditionText": "",
           "postRemoveConditionText": ""
-        }
+        },
+        "img": "",
+        "appliedEffects": []
       },
       "kNTcL5BuY6WQnk1k": {
         "type": "utility",

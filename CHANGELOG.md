@@ -1,3 +1,14 @@
+# 1.3.141 Release:
+## New Modern Content:
+- Deflect Attacks
+- Slow Fall
+- Stunning Strike
+- Empowered Strikes
+- Heightened Focus
+## Bug Fixes:
+- Unarmed Strike (Modern)
+- Harkon's Bite
+
 # 1.3.140 Release:
 ## New Modern Content:
 - Cacophonic Shield
