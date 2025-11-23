@@ -1,3 +1,8 @@
+# 1.3.139 Release:
+## Bug Fixes:
+- Help Action
+- Faerie Fire
+
 # 1.3.138 Release:
 ## New Modern Content:
 - Monk's Focus
