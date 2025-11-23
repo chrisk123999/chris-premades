@@ -1,5 +1,6 @@
 # 1.3.139 Release:
 ## Bug Fixes:
+- Divine Smite
 - Help Action
 - Faerie Fire
 

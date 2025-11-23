@@ -137,7 +137,7 @@ function getCastableSpells(actor) {
     let maxSlot = Math.max(...Object.values(actor.system.spells).filter(i => i.value).map(j => j.level), 0);
     let validSpells = actor.items.filter(i => i.type === 'spell');
     // If "prepared" mode, keep only prepared
-    validSpells = validSpells.filter(i => i.system.method === 'spell' || i.system.level === 0 || i.system.prepared);
+    validSpells = validSpells.filter(i => i.system.method != 'spell' || i.system.level === 0 || i.system.prepared);
     // If limited use, has uses remaining
     validSpells = validSpells.filter(i => !i.system.hasLimitedUses || i.system.uses.value);
     // If no spell slot (and requires), remove
