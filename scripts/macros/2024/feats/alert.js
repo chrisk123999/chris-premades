@@ -17,8 +17,8 @@ export let alert = {
             {
                 pass: 'rollFinished',
                 macro: use,
-                priority: 50,
-            },
+                priority: 50
+            }
         ]
     }
 };

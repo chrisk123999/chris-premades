@@ -13,7 +13,7 @@ async function use({workflow}) {
         ['CHRISPREMADES.Macros.WildSurge.Retribution', 'retribution'],
         ['CHRISPREMADES.Macros.WildSurge.ProtectiveLights', 'protectiveLights'],
         ['CHRISPREMADES.Macros.WildSurge.FlowersAndVines', 'flowersAndVines'],
-        ['CHRISPREMADES.Macros.WildSurge.BoltOfLight', 'boltOfLight'],
+        ['CHRISPREMADES.Macros.WildSurge.BoltOfLight', 'boltOfLight']
     ];
     let effect = effectUtils.getEffectByIdentifier(workflow.actor, 'wildSurge');
     if (effect) await genericUtils.remove(effect);
@@ -382,7 +382,7 @@ export let wildSurge = {
             type: 'file',
             default: '',
             category: 'summons'
-        },
+        }
     ]
 };
 export let wildSurgeTeleport = {

@@ -210,7 +210,7 @@ export let wish = {
             label: 'CHRISPREMADES.Macros.Wish.Blocked',
             type: 'checkbox',
             default: false,
-            category: 'mechanics',
+            category: 'mechanics'
         },
         {
             value: 'instantHealthConditions',

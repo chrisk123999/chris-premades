@@ -62,7 +62,7 @@ export let movementBonusActivity = {
             {
                 pass: 'rollFinished',
                 macro: late,
-                priority: 50,
+                priority: 50
             },
             {
                 pass: 'damageRollComplete',

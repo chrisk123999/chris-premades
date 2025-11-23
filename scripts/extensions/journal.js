@@ -17,7 +17,7 @@ export async function setupJournal() {
                     },
                     text: {
                         format: 1,
-                        content: welcomeText,
+                        content: welcomeText
                     }
                 }
             ],

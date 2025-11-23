@@ -242,7 +242,7 @@ export let healingSpirit = {
             type: 'file',
             default: '',
             category: 'summons'
-        },
+        }
     ]
 };
 export let healingSpiritHeal = {

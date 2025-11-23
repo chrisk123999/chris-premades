@@ -135,6 +135,6 @@ export let summonDragon = {
             default: 'fire',
             category: 'animation',
             options: constants.summonAnimationOptions
-        },
+        }
     ]
 };

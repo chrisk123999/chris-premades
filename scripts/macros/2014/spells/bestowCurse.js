@@ -44,7 +44,7 @@ async function use({workflow}) {
     let targetEffectData = {
         name: effectName,
         img: workflow.item.img,
-        origin: workflow.item.uuid,
+        origin: workflow.item.uuid
     };
     if (!isNaN(duration)) {
         targetEffectData.duration = {
@@ -78,7 +78,7 @@ async function use({workflow}) {
                 img: workflow.item.img,
                 origin: workflow.item.uuid,
                 duration: {
-                    seconds: null,
+                    seconds: null
                 },
                 flags: {
                     'chris-premades': {

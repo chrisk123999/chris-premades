@@ -28,7 +28,7 @@ async function use({workflow}) {
         mishap: 'CHRISPREMADES.Macros.Teleport.Mishap',
         onTarget: 'CHRISPREMADES.Macros.Teleport.OnTarget',
         offTarget: 'CHRISPREMADES.Macros.Teleport.OffTarget',
-        similarArea: 'CHRISPREMADES.Macros.Teleport.SimilarArea',
+        similarArea: 'CHRISPREMADES.Macros.Teleport.SimilarArea'
     };
     let flavor = 'mishap';
     let totalDamage = 0;
@@ -132,7 +132,7 @@ async function use({workflow}) {
             genericUtils.translate('CHRISPREMADES.Direction.West'),
             genericUtils.translate('CHRISPREMADES.Direction.Northwest'),
             genericUtils.translate('CHRISPREMADES.Direction.North'),
-            genericUtils.translate('CHRISPREMADES.Direction.Northeast'),
+            genericUtils.translate('CHRISPREMADES.Direction.Northeast')
         ];
         ChatMessage.create({
             speaker: workflow.chatCard.speaker,

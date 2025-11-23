@@ -21,7 +21,7 @@ export let musket = {
                 {
                     value: 2,
                     label: 'CHRISPREMADES.Firearm.Broken'
-                },
+                }
             ],
             default: 0,
             category: 'mechanics'

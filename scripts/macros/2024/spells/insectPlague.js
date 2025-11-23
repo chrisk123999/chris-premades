@@ -11,7 +11,7 @@ async function use({workflow}) {
         flags: {
             'chris-premades': {
                 template: {
-                    name: workflow.item.name,
+                    name: workflow.item.name
                 },
                 rules: 'modern',
                 castData: {...workflow.castData, saveDC: itemUtils.getSaveDC(workflow.item)},

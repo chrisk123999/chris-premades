@@ -45,7 +45,7 @@ async function startRitual({trigger, workflow}) {
         ritualAnimation,
         schoolColor,
         grids,
-        tokenUuid: workflow.token.document.uuid,
+        tokenUuid: workflow.token.document.uuid
     });
     if (selection.system.activation.type != 'action') genericUtils.setProperty(effectData, 'flags.chris-premades.circleCast.ritual', true);
     switch(type) {
@@ -366,7 +366,7 @@ export let circleCast = {
             label: 'CHRISPREMADES.Config.Grids',
             type: 'number',
             default: 13,
-            category: 'animation',
+            category: 'animation'
         },
         {
             value: 'lineColor',

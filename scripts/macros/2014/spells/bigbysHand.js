@@ -132,7 +132,7 @@ async function late({workflow}) {
                     {value: 'south', label: genericUtils.translate('CHRISPREMADES.Direction.South').capitalize()},
                     {value: 'southwest', label: genericUtils.translate('CHRISPREMADES.Direction.Southwest').capitalize()},
                     {value: 'west', label: genericUtils.translate('CHRISPREMADES.Direction.West').capitalize()},
-                    {value: 'northwest', label: genericUtils.translate('CHRISPREMADES.Direction.Northwest').capitalize()},
+                    {value: 'northwest', label: genericUtils.translate('CHRISPREMADES.Direction.Northwest').capitalize()}
                 ]
             }
         };
@@ -351,7 +351,7 @@ export let bigbysHand = {
             options: constants.damageTypeOptions,
             homebrew: true,
             category: 'homebrew'
-        },
+        }
     ]
 };
 export let bigbysHandItems = {

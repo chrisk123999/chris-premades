@@ -271,7 +271,7 @@ export let summonFiend = {
             default: 'fiend',
             category: 'animation',
             options: constants.summonAnimationOptions
-        },
+        }
     ]
 };
 export let summonFiendDeathThroes = {

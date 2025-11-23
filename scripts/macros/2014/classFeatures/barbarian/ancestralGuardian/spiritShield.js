@@ -55,7 +55,7 @@ export let spiritShield = {
             default: 'spirit-shield',
             category: 'homebrew',
             homebrew: true
-        },
+        }
     ],
     scales: [
         {

@@ -113,7 +113,7 @@ async function use({workflow}) {
                     gridUnits: true,
                     name: 'test',
                     isMask: true,
-                    offset: {x: canvas.grid.size * 0.1, y: -canvas.grid.size * 0.4}, 
+                    offset: {x: canvas.grid.size * 0.1, y: -canvas.grid.size * 0.4} 
                     
                 })
                 .duration(1500)
@@ -130,7 +130,7 @@ async function use({workflow}) {
                     gridUnits: true,
                     name: 'test',
                     isMask: true,
-                    offset: {x: canvas.grid.size * 0.1, y: -canvas.grid.size * 0.4},            
+                    offset: {x: canvas.grid.size * 0.1, y: -canvas.grid.size * 0.4}            
                 })
                 .duration(1800)
                 .fadeOut(1000)
@@ -146,7 +146,7 @@ async function use({workflow}) {
                     gridUnits: true,
                     name: 'test',
                     isMask: true,
-                    offset: {x: canvas.grid.size * 0.1, y: -canvas.grid.size * 0.4}, 
+                    offset: {x: canvas.grid.size * 0.1, y: -canvas.grid.size * 0.4} 
                 })
                 .duration(2000)
                 .fadeOut(1000)
@@ -162,7 +162,7 @@ async function use({workflow}) {
                     gridUnits: true,
                     name: 'test',
                     isMask: true,
-                    offset: {x: canvas.grid.size * 0.1, y: -canvas.grid.size * 0.4}, 
+                    offset: {x: canvas.grid.size * 0.1, y: -canvas.grid.size * 0.4} 
                 })
                 .duration(2200)
                 .fadeOut(1000)
@@ -178,7 +178,7 @@ async function use({workflow}) {
                     gridUnits: true,
                     name: 'test',
                     isMask: true,
-                    offset: {x: canvas.grid.size * 0.1, y: -canvas.grid.size * 0.4}, 
+                    offset: {x: canvas.grid.size * 0.1, y: -canvas.grid.size * 0.4} 
                 })   
                 .duration(2400)
                 .fadeOut(1000)
@@ -194,7 +194,7 @@ async function use({workflow}) {
                     gridUnits: true,
                     name: 'test',
                     isMask: true,
-                    offset: {x: canvas.grid.size * 0.1, y: -canvas.grid.size * 0.4}, 
+                    offset: {x: canvas.grid.size * 0.1, y: -canvas.grid.size * 0.4} 
                 })
                 .duration(2600)
                 .fadeOut(1000)
@@ -210,7 +210,7 @@ async function use({workflow}) {
                     gridUnits: true,
                     name: 'test',
                     isMask: true,
-                    offset: {x: canvas.grid.size * 0.1, y: -canvas.grid.size * 0.4}, 
+                    offset: {x: canvas.grid.size * 0.1, y: -canvas.grid.size * 0.4} 
                 })    
                 .duration(2800)
                 .fadeOut(1000)
@@ -227,7 +227,7 @@ async function use({workflow}) {
                     gridUnits: true,
                     name: 'test',
                     isMask: true,
-                    offset: {x: -canvas.grid.size * 0.4, y: canvas.grid.size * 0.3}, 
+                    offset: {x: -canvas.grid.size * 0.4, y: canvas.grid.size * 0.3} 
                     
                 })
                 .duration(500)
@@ -244,7 +244,7 @@ async function use({workflow}) {
                     gridUnits: true,
                     name: 'test',
                     isMask: true,
-                    offset: {x: -canvas.grid.size * 0.4, y: canvas.grid.size * 0.3},           
+                    offset: {x: -canvas.grid.size * 0.4, y: canvas.grid.size * 0.3}           
                 })
                 .duration(700)
                 .fadeOut(1000)
@@ -260,7 +260,7 @@ async function use({workflow}) {
                     gridUnits: true,
                     name: 'test',
                     isMask: true,
-                    offset: {x: -canvas.grid.size * 0.4, y: canvas.grid.size * 0.3}, 
+                    offset: {x: -canvas.grid.size * 0.4, y: canvas.grid.size * 0.3} 
                 })
                 .duration(900)
                 .fadeOut(1000)
@@ -276,7 +276,7 @@ async function use({workflow}) {
                     gridUnits: true,
                     name: 'test',
                     isMask: true,
-                    offset: {x: -canvas.grid.size * 0.4, y: canvas.grid.size * 0.3}, 
+                    offset: {x: -canvas.grid.size * 0.4, y: canvas.grid.size * 0.3} 
                 })
                 .duration(1100)
                 .fadeOut(1000)
@@ -292,7 +292,7 @@ async function use({workflow}) {
                     gridUnits: true,
                     name: 'test',
                     isMask: true,
-                    offset: {x: -canvas.grid.size * 0.4, y: canvas.grid.size * 0.3}, 
+                    offset: {x: -canvas.grid.size * 0.4, y: canvas.grid.size * 0.3} 
                 })   
                 .duration(1300)
                 .fadeOut(1000)
@@ -308,7 +308,7 @@ async function use({workflow}) {
                     gridUnits: true,
                     name: 'test',
                     isMask: true,
-                    offset: {x: -canvas.grid.size * 0.4, y: canvas.grid.size * 0.3}, 
+                    offset: {x: -canvas.grid.size * 0.4, y: canvas.grid.size * 0.3} 
                 })
                 .duration(1500)
                 .fadeOut(1000)
@@ -324,7 +324,7 @@ async function use({workflow}) {
                     gridUnits: true,
                     name: 'test',
                     isMask: true,
-                    offset: {x: -canvas.grid.size * 0.4, y: canvas.grid.size * 0.3}, 
+                    offset: {x: -canvas.grid.size * 0.4, y: canvas.grid.size * 0.3} 
                 })   
                 .duration(1700)
                 .fadeOut(1000)
@@ -340,7 +340,7 @@ async function use({workflow}) {
                     gridUnits: true,
                     name: 'test',
                     isMask: true,
-                    offset: {x: -canvas.grid.size * 0.4, y: canvas.grid.size * 0.3}, 
+                    offset: {x: -canvas.grid.size * 0.4, y: canvas.grid.size * 0.3} 
                 }) 
                 .duration(1900)
                 .fadeOut(1000)
@@ -356,7 +356,7 @@ async function use({workflow}) {
                     gridUnits: true,
                     name: 'test',
                     isMask: true,
-                    offset: {x: -canvas.grid.size * 0.4, y :canvas.grid.size * 0.3}, 
+                    offset: {x: -canvas.grid.size * 0.4, y :canvas.grid.size * 0.3} 
                 })
                 .duration(2100)
                 .fadeOut(1000)
@@ -373,7 +373,7 @@ async function use({workflow}) {
                     gridUnits: true,
                     name: 'test',
                     isMask: true,
-                    offset: {x: canvas.grid.size*0.5, y: canvas.grid.size*0.4}, 
+                    offset: {x: canvas.grid.size*0.5, y: canvas.grid.size*0.4} 
                 })
                 .duration(1500)
                 .fadeOut(1000)
@@ -389,7 +389,7 @@ async function use({workflow}) {
                     gridUnits: true,
                     name: 'test',
                     isMask: true,
-                    offset: {x: canvas.grid.size * 0.5, y: canvas.grid.size * 0.4},  
+                    offset: {x: canvas.grid.size * 0.5, y: canvas.grid.size * 0.4}  
                 })
                 .duration(1700)
                 .fadeOut(1000)
@@ -405,7 +405,7 @@ async function use({workflow}) {
                     gridUnits: true,
                     name: 'test',
                     isMask: true,
-                    offset: {x: canvas.grid.size * 0.5, y: canvas.grid.size * 0.4},  
+                    offset: {x: canvas.grid.size * 0.5, y: canvas.grid.size * 0.4}  
                 })
                 .duration(1900)
                 .fadeOut(1000)
@@ -421,7 +421,7 @@ async function use({workflow}) {
                     gridUnits: true,
                     name: 'test',
                     isMask: true,
-                    offset: {x: canvas.grid.size * 0.5, y: canvas.grid.size * 0.4}, 
+                    offset: {x: canvas.grid.size * 0.5, y: canvas.grid.size * 0.4} 
                 })
                 .duration(2100)
                 .fadeOut(1000)
@@ -437,7 +437,7 @@ async function use({workflow}) {
                     gridUnits: true,
                     name: 'test',
                     isMask: true,
-                    offset: {x: canvas.grid.size * 0.5, y: canvas.grid.size * 0.4}, 
+                    offset: {x: canvas.grid.size * 0.5, y: canvas.grid.size * 0.4} 
                 })   
                 .duration(2300)
                 .fadeOut(1000)
@@ -453,7 +453,7 @@ async function use({workflow}) {
                     gridUnits: true,
                     name: 'test',
                     isMask: true,
-                    offset: {x: canvas.grid.size * 0.5, y: canvas.grid.size * 0.4}, 
+                    offset: {x: canvas.grid.size * 0.5, y: canvas.grid.size * 0.4} 
                 })
                 .duration(2500)
                 .fadeOut(1000)
@@ -468,7 +468,7 @@ async function use({workflow}) {
                     gridUnits: true,
                     name: 'test',
                     isMask: true,
-                    offset: {x: canvas.grid.size * 0.5, y: canvas.grid.size * 0.4}, 
+                    offset: {x: canvas.grid.size * 0.5, y: canvas.grid.size * 0.4} 
                 })    
                 .duration(2700)
                 .fadeOut(1000)

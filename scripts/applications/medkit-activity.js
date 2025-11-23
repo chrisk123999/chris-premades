@@ -73,7 +73,7 @@ export class ActivityMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
                 identifier: activityIdentifier,
                 cprHide: activity?.item?.flags?.['chris-premades']?.hiddenActivities?.includes(activityIdentifier) ? true: false,
                 spellActivity: activity?.item?.flags?.['chris-premades']?.spellActivities?.includes(activityIdentifier) ? true : false
-            },
+            }
         };
         // Figure out coloring for medkit
         if (context.config.identifier?.length) context.status = 1;

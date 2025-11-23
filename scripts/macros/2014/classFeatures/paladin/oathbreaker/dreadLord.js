@@ -42,7 +42,7 @@ async function use({workflow}) {
             type: 'use', 
             name: feature.name, 
             identifier: 'dreadLord',
-            activityIdentifier: 'dreadLordShadowAttack',
+            activityIdentifier: 'dreadLordShadowAttack'
         }],
         unhideActivities: {
             itemUuid: workflow.item.uuid,

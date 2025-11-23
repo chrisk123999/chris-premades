@@ -48,7 +48,7 @@ export let unarmoredDefenseMonk = {
                 removedItems: [],
                 additionalItems: [],
                 priority: 0
-            },
+            }
         }
     }
 };

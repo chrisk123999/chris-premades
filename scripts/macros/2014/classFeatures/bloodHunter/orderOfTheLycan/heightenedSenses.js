@@ -18,6 +18,6 @@ export let heightenedSenses = {
         renamedItems: {
             'Heightened Senses: Hemocraft Modifier: Intelligence': 'Heightened Senses',
             'Heightened Senses: Hemocraft Modifier: Wisdom': 'Heightened Senses'
-        },
+        }
     }
 };

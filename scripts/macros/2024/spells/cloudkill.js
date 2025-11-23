@@ -15,7 +15,7 @@ async function use({workflow}) {
                     visibility: {
                         obscured: true
                     },
-                    rules: 'modern',
+                    rules: 'modern'
                 },
                 castData: {...workflow.castData, saveDC: itemUtils.getSaveDC(workflow.item)},
                 macros: {

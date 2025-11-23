@@ -113,17 +113,17 @@ async function use({workflow}) {
                         let targetCenter = targetToken.center;
                         let directionVector = {
                             x: targetCenter.x - tokenCenter.x,
-                            y: targetCenter.y - tokenCenter.y,
+                            y: targetCenter.y - tokenCenter.y
                         };
                         let distance = Math.sqrt(directionVector.x ** 2 + directionVector.y ** 2);
                         let normalizedDirectionVector = {
                             x: directionVector.x / distance,
-                            y: directionVector.y / distance,
+                            y: directionVector.y / distance
                         };
                         let magicCircleDistance = canvas.grid.size/3;
                         let magicCircle = {
                             x: tokenCenter.x + normalizedDirectionVector.x * magicCircleDistance,
-                            y: tokenCenter.y + normalizedDirectionVector.y * magicCircleDistance,
+                            y: tokenCenter.y + normalizedDirectionVector.y * magicCircleDistance
                         };
                         new Sequence()
                             .wait(150)
@@ -211,7 +211,7 @@ export let scorchingRay = {
             options: [
                 {
                     value: 'simple',
-                    label: 'CHRISPREMADES.Config.Animations.Simple',
+                    label: 'CHRISPREMADES.Config.Animations.Simple'
                 },
                 {
                     value: 'complex',

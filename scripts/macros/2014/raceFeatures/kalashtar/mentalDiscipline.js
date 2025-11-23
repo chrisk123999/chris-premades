@@ -14,7 +14,7 @@ export let mentalDisciplineKalashtar = {
                 removedItems: [],
                 additionalItems: [],
                 priority: 0
-            },
+            }
         }
     }
 };

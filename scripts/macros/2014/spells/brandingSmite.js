@@ -75,7 +75,7 @@ export let brandingSmite = {
             options: constants.damageTypeOptions,
             homebrew: true,
             category: 'homebrew'
-        },
+        }
     ]
 };
 export let brandingSmiteDamage = {

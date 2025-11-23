@@ -115,7 +115,7 @@ class EffectDirectory extends foundry.applications.sidebar.DocumentDirectory {
                     if (!document) return;
                     await foundry.applications.api.DialogV2.confirm({
                         window: {
-                            title: genericUtils.translate('CHRISPREMADES.EffectInterface.ImportData') + document.name,
+                            title: genericUtils.translate('CHRISPREMADES.EffectInterface.ImportData') + document.name
                         },
                         position: {
                             width: 400

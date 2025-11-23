@@ -43,7 +43,7 @@ let legacyPacks = {
     thirdPartyItems: 'chris-premades.CPRThirdPartyItems',
     monsterFeatures: 'chris-premades.CPRMonsterFeatures',
     thirdPartyFeats: 'chris-premades.CPRThirdPartyFeats',
-    thirdPartySpells: 'chris-premades.CPRThirdPartySpells',
+    thirdPartySpells: 'chris-premades.CPRThirdPartySpells'
 };
 let modernPacks = {
     spells: 'chris-premades.CPRSpells2024',
@@ -274,7 +274,7 @@ const overTimeOptions = [
         label: 'CHRISPREMADES.Medkit.Effect.OverTime.Labels.ApplyCondition',
         default: null,
         type: 'text',
-        fieldset: 'parameters',
+        fieldset: 'parameters'
     },
     {
         key: 'removeCondition',

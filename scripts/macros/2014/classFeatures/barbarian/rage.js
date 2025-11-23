@@ -145,7 +145,7 @@ async function use({workflow}) {
                 mode: 2,
                 value: 'thunder',
                 priority: 20
-            },
+            }
         ]);
     }
     if (itemUtils.getItemByIdentifier(workflow.actor, 'giantsHavocCrushingThrow')) {
@@ -588,7 +588,7 @@ export let rage = {
                     value: 'saiyan',
                     label: 'CHRISPREMADES.Config.Animations.Saiyan',
                     requiredModules: ['jb2a_patreon']
-                },
+                }
             ]
         }
     ]

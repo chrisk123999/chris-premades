@@ -127,7 +127,7 @@ export let chainLightning = {
                     value:'yellow',
                     label:'CHRISPREMADES.Config.Colors.Yellow',
                     requiredModules: ['jb2a_patreon']
-                },
+                }
             ]
         }
     ]

@@ -225,6 +225,6 @@ export let summonBeast = {
             default: 'water',
             category: 'animation',
             options: constants.summonAnimationOptions
-        },
+        }
     ]
 };

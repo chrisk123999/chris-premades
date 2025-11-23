@@ -397,7 +397,7 @@ export async function run() {
         let content = '<textarea rows="40" cols="1000" style="resize: none;">' + output + '</textarea>';
         let dialog = new foundry.applications.api.DialogV2({
             window: {
-                title: genericUtils.translate('CHRISPREMADES.Troubleshooter.Title'),
+                title: genericUtils.translate('CHRISPREMADES.Troubleshooter.Title')
             },
             classes: ['cpr-troubleshooter'],
             content: content,

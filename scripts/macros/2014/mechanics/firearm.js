@@ -345,7 +345,7 @@ export let firearm = {
                 {
                     value: 2,
                     label: 'CHRISPREMADES.Firearm.Broken'
-                },
+                }
             ],
             default: 0,
             category: 'mechanics'

@@ -120,7 +120,7 @@ export let detectMagic = {
             label: 'CHRISPREMADES.Config.Opacity',
             type: 'number',
             default: 1,
-            category: 'animation',
+            category: 'animation'
         },
         {
             value: 'sound',

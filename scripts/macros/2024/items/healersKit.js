@@ -17,5 +17,5 @@ export let healersKit = {
                 priority: 50
             }
         ]
-    },
+    }
 };

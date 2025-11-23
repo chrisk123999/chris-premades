@@ -185,6 +185,6 @@ export let createPactWeapon = {
             options: constants.itemCompendiumPacks,
             default: '',
             category: 'mechanics'
-        },
+        }
     ]
 };

@@ -39,7 +39,7 @@ export class DialogApp extends HandlebarsApplicationMixin(ApplicationV2) {
         },
         window: {
             title: 'Default Title',
-            contentClasses: ['standard-form'],
+            contentClasses: ['standard-form']
             //resizable: true,
         }
     };
@@ -50,7 +50,7 @@ export class DialogApp extends HandlebarsApplicationMixin(ApplicationV2) {
         },
         footer: {
             template: 'templates/generic/form-footer.hbs'
-        },
+        }
     };
     /** 
      * Main function of the class, creates a new dialog in itself so that it can wrap the submission in a promise in order to await a result
@@ -156,7 +156,7 @@ export class DialogApp extends HandlebarsApplicationMixin(ApplicationV2) {
                             name: currField.name,
                             image: currField.options?.image ?? undefined,
                             tooltip: currField.options?.tooltip ?? undefined,
-                            reference: currField.options?.reference ?? undefined,
+                            reference: currField.options?.reference ?? undefined
                         });
                     }
                     context.inputs.push({
@@ -199,7 +199,7 @@ export class DialogApp extends HandlebarsApplicationMixin(ApplicationV2) {
                         isRadio: true,
                         displayAsRows: inputOptions?.displayAsRows ?? false,
                         options: radioOptions,
-                        radioName: inputOptions?.radioName ?? 'radio',
+                        radioName: inputOptions?.radioName ?? 'radio'
                     });
                     break;
                 }

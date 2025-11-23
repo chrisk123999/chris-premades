@@ -14,7 +14,7 @@ async function use({workflow}) {
         ['DND5E.DamageLightning', 'lightning', {image: 'icons/magic/lightning/bolt-blue.webp'}],
         ['DND5E.DamagePoison', 'poison', {image: 'icons/magic/death/skull-poison-green.webp'}],
         ['DND5E.DamagePsychic', 'psychic', {image: 'icons/magic/control/fear-fright-monster-grin-red-orange.webp'}],
-        ['DND5E.DamageThunder', 'thunder', {image: 'icons/magic/sonic/explosion-shock-wave-teal.webp'}],
+        ['DND5E.DamageThunder', 'thunder', {image: 'icons/magic/sonic/explosion-shock-wave-teal.webp'}]
     ];
     let currentTarget = workflow.targets.first();
     let origTargetUuid = chrisFlags?.chaosBolt?.targetUuid;

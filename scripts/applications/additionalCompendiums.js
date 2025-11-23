@@ -18,7 +18,7 @@ export class AdditionalCompendiums extends HandlebarsApplicationMixin(Applicatio
         },
         window: {
             title: 'Default Title',
-            resizable: true,
+            resizable: true
         },
         classes: ['standard-form'],
         position: {

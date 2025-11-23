@@ -12,7 +12,7 @@ async function use({workflow}) {
                 },
                 macros: {
                     movement: ['conjureWoodlandBeingsDamage'],
-                    combat: ['conjureWoodlandBeingsDamage'],
+                    combat: ['conjureWoodlandBeingsDamage']
                 },
                 castData: {
                     baseLevel: workflow.castData.baseLevel,

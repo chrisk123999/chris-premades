@@ -82,7 +82,7 @@ export let findGreaterSteed = {
             default: 'fire',
             category: 'animation',
             options: constants.summonAnimationOptions
-        },
+        }
     ]
 };
 export let findGreaterSteedActive ={

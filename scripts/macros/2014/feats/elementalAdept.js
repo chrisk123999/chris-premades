@@ -211,7 +211,7 @@ let configMode = {
         {
             label: 'CHRISPREMADES.Macros.ElementalAdept.DowngradeResistanceImmunity',
             value: 'downgradeResistanceImmunity'
-        },
+        }
     ]
 };
 let spellOnly = {

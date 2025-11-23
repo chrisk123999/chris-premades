@@ -256,6 +256,6 @@ export let summonElemental = {
             default: 'water',
             category: 'animation',
             options: constants.summonAnimationOptions
-        },
+        }
     ]
 };

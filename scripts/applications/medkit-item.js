@@ -41,7 +41,7 @@ export class ItemMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
         form: {
             handler: ItemMedkit.formHandler,
             submitOnChange: false,
-            closeOnSubmit: false,
+            closeOnSubmit: false
         },
         actions: {
             update: ItemMedkit._update,
@@ -193,7 +193,7 @@ export class ItemMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
             value: null,
             id: null,
             isSelected: (this.selectedSource && this.selectedSource != '') ? false : true,
-            version: null,
+            version: null
         }];
         if (this.availableAutomations.length > 0) {
             this.availableAutomations.forEach(automation => {
@@ -208,7 +208,7 @@ export class ItemMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
                     value: automation.document.uuid,
                     id: automation.source,
                     isSelected: this.selectedSource === automation.source,
-                    version: automation.version,
+                    version: automation.version
                 });
             });
         }
@@ -225,7 +225,7 @@ export class ItemMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
             label: 'Development',
             value: 'development',
             id: 'development',
-            isSelected: this.selectedSource === 'development',
+            isSelected: this.selectedSource === 'development'
         });
         return [
             {

@@ -82,7 +82,7 @@ async function rollDice(formula, {entity, chatMessage, flavor, mode = 'publicrol
     if (chatMessage) {
         let message = await roll.toMessage({
             speaker: {alias: name},
-            flavor: flavor,
+            flavor: flavor
         }, {
             rollMode: mode
         });

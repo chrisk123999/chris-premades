@@ -30,7 +30,7 @@ async function use({trigger, workflow}) {
         avatarImg: itemUtils.getConfig(workflow.item, 'avatarImg'),
         avatarImgPriority: itemUtils.getConfig(workflow.item, 'avatarImgPriority'),
         tokenImg: itemUtils.getConfig(workflow.item, 'tokenImg'),
-        tokenImgPriority: itemUtils.getConfig(workflow.item, 'tokenImgPriority'),
+        tokenImgPriority: itemUtils.getConfig(workflow.item, 'tokenImgPriority')
     });
 }
 export let sproutFoliage = {

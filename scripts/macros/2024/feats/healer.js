@@ -57,15 +57,15 @@ export let healer = {
             {
                 pass: 'preambleComplete',
                 macro: early,
-                priority: 10,
-            },
+                priority: 10
+            }
         ],
         actor: [
             {
                 pass: 'damageRollComplete',
                 macro: healing,
                 priority: 320
-            },
+            }
         ]
     },
     config: [

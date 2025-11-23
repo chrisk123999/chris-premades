@@ -69,7 +69,7 @@ export class EffectMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
                 noAnimation: {
                     label: 'CHRISPREMADES.Medkit.Effect.NoAnimation.Label',
                     tooltip: 'CHRISPREMADES.Medkit.Effect.NoAnimation.Tooltip',
-                    value: effect.flags['chris-premades']?.noAnimation ?? false,
+                    value: effect.flags['chris-premades']?.noAnimation ?? false
                 },
                 conditions: {
                     label: 'CHRISPREMADES.Medkit.Effect.Conditions.Label',

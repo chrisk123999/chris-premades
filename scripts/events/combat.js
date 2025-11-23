@@ -66,7 +66,7 @@ function collectTokenMacros(token, pass, distance, target) {
                     name: effect.name.slugify(),
                     token: token.object,
                     target: target?.object,
-                    distance: distance,
+                    distance: distance
                 });
             }
         });

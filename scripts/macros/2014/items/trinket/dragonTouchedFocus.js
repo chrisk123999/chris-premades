@@ -57,5 +57,5 @@ export let dragonTouchedFocusStirringGem = {
             default: true,
             category: 'animation'
         }
-    ],
+    ]
 };

@@ -35,5 +35,5 @@ export let bloodPrice = {
             macro: save,
             priority: 50
         }
-    ],
+    ]
 };

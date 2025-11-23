@@ -88,7 +88,7 @@ export class CPRMultipleRollResolver extends HandlebarsApplicationMixin(Applicat
             groups: [],
             options: {
                 name: this.rolls[0]?.data?.name,
-                itemName: this.rolls[0].data?.item?.name,
+                itemName: this.rolls[0].data?.item?.name
             },
             buttons: [{type: 'submit', action: 'confirm', label: 'CHRISPREMADES.Generic.Submit', name: 'confirm', icon: 'fa-solid fa-check'}],
             placeholder: genericUtils.translate(placeholderKey) //placeholder text depending on 'manualRollsInputDiceOnly' setting

@@ -170,7 +170,7 @@ export let findSteed = {
             default: 'fire',
             category: 'animation',
             options: constants.summonAnimationOptions
-        },
+        }
     ]
 };
 export let findSteedActive ={

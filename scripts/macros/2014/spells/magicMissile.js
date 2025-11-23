@@ -134,7 +134,7 @@ export let magicMissile = {
                 },
                 {
                     value: 'purple',
-                    label: 'CHRISPREMADES.Config.Colors.Purple',
+                    label: 'CHRISPREMADES.Config.Colors.Purple'
                 },
                 {
                     value: 'yellow',

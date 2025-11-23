@@ -29,7 +29,7 @@ async function use({workflow}) {
                 attributes: {
                     ac: {
                         flat: 11 + spellLevel
-                    },
+                    }
                 }
             },
             prototypeToken: {
@@ -105,7 +105,7 @@ async function late({workflow}) {
         flags: {
             'chris-premades': {
                 spiritOfDeathHauntCreature: {
-                    targets: Array.from(workflow.targets).map(i => i.document.uuid),
+                    targets: Array.from(workflow.targets).map(i => i.document.uuid)
                 }
             }
         }

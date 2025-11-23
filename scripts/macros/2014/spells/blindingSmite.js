@@ -64,7 +64,7 @@ export let blindingSmite = {
             options: constants.damageTypeOptions,
             homebrew: true,
             category: 'homebrew'
-        },
+        }
     ]
 };
 export let blindingSmiteDamage = {

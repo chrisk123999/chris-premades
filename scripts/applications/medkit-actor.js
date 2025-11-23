@@ -19,7 +19,7 @@ export class ActorMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
         form: {
             handler: ActorMedkit.formHandler,
             submitOnChange: false,
-            closeOnSubmit: false,
+            closeOnSubmit: false
         },
         actions: {
             apply: ActorMedkit.apply,

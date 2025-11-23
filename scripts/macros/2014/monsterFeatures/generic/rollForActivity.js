@@ -23,7 +23,7 @@ export let rollForActivity = {
             {
                 pass: 'rollFinished',
                 macro: use,
-                priority: 50,
+                priority: 50
             }
         ]
     },

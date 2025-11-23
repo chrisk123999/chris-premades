@@ -32,7 +32,7 @@ export let chooseDamageType = {
             value: 'damageTypes',
             label: 'CHRISPREMADES.Config.DamageTypes',
             type: 'damageTypes',
-            default: [],
+            default: []
         }
     ]
 };

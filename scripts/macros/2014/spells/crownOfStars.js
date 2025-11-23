@@ -124,7 +124,7 @@ export let crownOfStars = {
             options: [
                 {
                     value: 'bluegreen',
-                    label: 'CHRISPREMADES.Config.Colors.BlueGreen',
+                    label: 'CHRISPREMADES.Config.Colors.BlueGreen'
                 },
                 {
                     value: 'pinkpurple',
@@ -159,7 +159,7 @@ export let crownOfStars = {
             options: [
                 {
                     value: 'blue',
-                    label: 'CHRISPREMADES.Config.Colors.Blue',
+                    label: 'CHRISPREMADES.Config.Colors.Blue'
                 },
                 {
                     value: 'green',

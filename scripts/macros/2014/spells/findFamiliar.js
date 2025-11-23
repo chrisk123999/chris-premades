@@ -438,7 +438,7 @@ export let findFamiliar = {
             default: 'fire',
             category: 'animation',
             options: constants.summonAnimationOptions
-        },
+        }
     ]
 };
 export let findFamiliarTouch = {
