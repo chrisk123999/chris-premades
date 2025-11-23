@@ -6,6 +6,7 @@
 - Empowered Strikes
 - Heightened Focus
 ## Bug Fixes:
+- Monk's Focus
 - Unarmed Strike (Modern)
 - Harkon's Bite
 
