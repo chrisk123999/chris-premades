@@ -37,6 +37,9 @@
 		"quote-props": [
 			"error",
 			"as-needed"
+		],
+		"comma-dangle": [
+			"error", "never"
 		]
 	},
 	"globals": {

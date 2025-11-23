@@ -1,3 +1,7 @@
+# 1.3.140 Release:
+## New Modern Content:
+- Cacophonic Shield
+
 # 1.3.139 Release:
 ## Bug Fixes:
 - Divine Smite
