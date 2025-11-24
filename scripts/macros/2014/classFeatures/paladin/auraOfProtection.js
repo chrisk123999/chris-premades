@@ -1,8 +1,9 @@
-import {combatUtils, effectUtils, genericUtils, itemUtils} from '../../../../utils.js';
+import {combatUtils, constants, effectUtils, itemUtils} from '../../../../utils.js';
 async function create({trigger: {entity: item, target, identifier}}) {
     let targetEffect = effectUtils.getEffectByIdentifier(target.actor, identifier);
     if (targetEffect) return;
     if (itemUtils.getConfig(item, 'combatOnly') && !combatUtils.inCombat()) return;
+    let ability = itemUtils.getConfig(item, 'ability');
     let showIcon = itemUtils.getConfig(item, 'showIcon');
     let effectData = {
         name: item.name,
@@ -12,7 +13,7 @@ async function create({trigger: {entity: item, target, identifier}}) {
             {
                 key: 'system.bonuses.abilities.save',
                 mode: 2,
-                value: Math.max(item.actor.system.abilities.cha.mod, 1),
+                value: Math.max(item.actor.system.abilities[ability].mod, 1),
                 priority: 20
             }
         ],
@@ -64,6 +65,15 @@ export let auraOfProtection = {
             type: 'checkbox',
             default: true,
             category: 'visuals'
+        },
+        {
+            value: 'ability',
+            label: 'CHRISPREMADES.Config.Ability',
+            type: 'select',
+            default: 'cha',
+            options: constants.abilityOptions,
+            category: 'homebrew',
+            homebrew: true
         }
     ]
 };

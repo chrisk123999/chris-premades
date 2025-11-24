@@ -1,3 +1,7 @@
+# 1.3.142 Release:
+## Update Notes:
+- Added a homebrew ability selection for Aura of Protection (legacy).
+
 # 1.3.141 Release:
 ## New Modern Content:
 - Deflect Attacks
