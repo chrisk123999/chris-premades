@@ -1,3 +1,9 @@
+# 1.3.143 Release:
+## New Modern Content:
+- Resistance
+## Bug Fixes:
+- Rage (Legacy)
+
 # 1.3.142 Release:
 ## Update Notes:
 - Added a homebrew ability selection for Aura of Protection (legacy).

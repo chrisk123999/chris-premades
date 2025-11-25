@@ -276,9 +276,10 @@ async function attack({workflow}) {
     await combatUtils.setTurnCheck(effect, 'rage');
 }
 async function damageApplication({workflow, ditem}) {
+    if (!ditem.isHit) return;
     let targetActor = await fromUuid(ditem.actorUuid);
     if (!targetActor) return;
-    let effect = effectUtils.getEffectByIdentifier(workflow.actor, 'rage');
+    let effect = effectUtils.getEffectByIdentifier(targetActor, 'rage');
     if (!effect) return;
     if (ditem.newHP >= ditem.oldHP) return;
     await combatUtils.setTurnCheck(effect, 'rage');
@@ -288,7 +289,7 @@ async function turnEnd({trigger: {entity: effect, token}}) {
     let [lastRound, lastTurn] = lastTurnString.split('-');
     let [currentRound, currentTurn] = combatUtils.currentTurn().split('-');
     let roundDiff = currentRound - lastRound;
-    if (roundDiff >= 1) {
+    if (roundDiff > 1) {
         let selection = await dialogUtils.confirm(effect.name, genericUtils.format('CHRISPREMADES.Macros.Rage.EndEarly', {actorName: token.actor.name}), {userId: socketUtils.gmID()});
         if (!selection) return;
         await genericUtils.remove(effect);

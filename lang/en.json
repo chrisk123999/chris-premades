@@ -2109,6 +2109,9 @@
                 "ExcludeSource": "Exclude Damage from Source",
                 "Name": "Reroll Save on Damage"
             },
+            "Resistance": {
+                "Name": "Resistance"
+            },
             "Retaliation": {
                 "Weapon": "Which weapon do you attack with?"
             },
