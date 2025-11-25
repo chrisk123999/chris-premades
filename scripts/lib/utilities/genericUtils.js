@@ -1,5 +1,5 @@
 import {socket, sockets} from '../sockets.js';
-import {socketUtils} from '../../utils.js';
+import {socketUtils, constants} from '../../utils.js';
 import * as legacyMacros from '../../legacyMacros.js';
 import * as modernMacros from '../../macros.js';
 let cachedSettings = {};
@@ -185,6 +185,44 @@ function convertDistance(ft) {
     if (canvas.scene.grid.units !== 'm') return ft;
     return Math.floor((ft / 5) * 1.5);
 }
+
+function sanitizeNumber(input, defaultValue = 0, { math = 'none' } = {}) {
+    if (!Number.isFinite(input)) {
+        log('error', `sanitizeNumber: input '${input}' is not finite; returning ${defaultValue}`);
+        return defaultValue;
+    }
+    switch (math) {
+        case 'none':
+            return input;
+        case 'ceil':
+            log('dev', `sanitizeNumber: applying ceil to ${input}`);
+            return Math.ceil(input);
+        case 'round':
+            log('dev', `sanitizeNumber: applying round to ${input}`);
+            return Math.round(input);
+        case 'floor':
+            log('dev', `sanitizeNumber: applying floor to ${input}`);
+            return Math.floor(input);
+        default:
+            log('warn', `sanitizeNumber: unknown math op '${math}', returning input unchanged`);
+            return input;
+    }
+}
+
+function getDamageTypeMeta(override = {}) {
+    const merged = {};
+    for (const [type, data] of Object.entries(constants.DAMAGE_TYPES_TABLE)) {
+        merged[type] = { ...data, ...(override[type] ?? {}) };
+    }
+    return merged;
+}
+
+function logDetailed(type, ...message) {
+    if (type === 'dev' && !getCPRSetting('devTools')) return;
+    if (type === 'dev') type = 'log';
+    console[type]('CPR:', ...message);
+}
+
 export let genericUtils = {
     sleep,
     translate,
@@ -219,5 +257,8 @@ export let genericUtils = {
     getRules,
     getCPRIdentifier,
     convertDistance,
-    getCPRIdentifiers
+    getCPRIdentifiers,
+    sanitizeNumber,
+    getDamageTypeMeta,
+    logDetailed
 };

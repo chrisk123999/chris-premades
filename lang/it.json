@@ -101,6 +101,7 @@
             "Ability": "Caratteristica:",
             "AffectAllies": "Dovrebbe Influenzare gli Alleati:",
             "AllowEnemies": "Consentire la selezione di token non alleati?",
+            "AllowMultiplePerTurn" : "Consentire usi multipli per turno?",
             "Animation": "Animazione:",
             "Animations": {
                 "Air": "Aria",

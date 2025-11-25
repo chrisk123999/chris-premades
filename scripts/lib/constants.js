@@ -669,6 +669,80 @@ function getToolNames() {
 function getFeatOptions() {
     return featOptions;
 }
+
+const DAMAGE_TYPES_TABLE = {
+    acid: {
+        color: 'green',
+        image: 'icons/magic/acid/projectile-faceted-glob.webp',
+        category: 'elemental'
+    },
+    bludgeoning: {
+        color: 'yellow',
+        image: 'icons/magic/earth/projectiles-stone-salvo-gray.webp',
+        category: 'physical'
+    },
+    cold: {
+        color: 'blue',
+        image: 'icons/magic/air/wind-tornado-wall-blue.webp',
+        category: 'elemental'
+    },
+    fire: {
+        color: 'red',
+        image: 'icons/magic/fire/beam-jet-stream-embers.webp',
+        category: 'elemental'
+    },
+    force: {
+        color: 'purple',
+        image: 'icons/magic/sonic/projectile-sound-rings-wave.webp',
+        category: 'arcane'
+    },
+    lightning: {
+        color: 'blue',
+        image: 'icons/magic/lightning/bolt-blue.webp',
+        category: 'elemental'
+    },
+    necrotic: {
+        color: 'green',
+        image: 'icons/magic/unholy/projectile-bolts-salvo-pink.webp',
+        category: 'divine'
+    },
+    piercing: {
+        color: 'yellow',
+        image: 'icons/skills/melee/strike-polearm-light-orange.webp',
+        category: 'physical'
+    },
+    poison: {
+        color: 'green',
+        image: 'icons/magic/death/skull-poison-green.webp',
+        category: 'elemental'
+    },
+    psychic: {
+        color: 'purple',
+        image: 'icons/magic/control/fear-fright-monster-grin-red-orange.webp',
+        category: 'arcane'
+    },
+    radiant: {
+        color: 'purple',
+        image: 'icons/magic/holy/projectiles-blades-salvo-yellow.webp',
+        category: 'divine'
+    },
+    slashing: {
+        color: 'yellow',
+        image: 'icons/skills/melee/strike-sword-gray.webp',
+        category: 'physical'
+    },
+    thunder: {
+        color: 'purple',
+        image: 'icons/magic/sonic/explosion-shock-wave-teal.webp',
+        category: 'elemental'
+    },
+    no: {
+        color: 'blue',
+        image: 'icons/svg/cancel.svg',
+        category: 'none'
+    }
+};
+
 export let constants = {
     packs,
     featurePacks,
@@ -715,5 +789,6 @@ export let constants = {
     getBaseRangedWeaponOptions,
     getToolNames,
     getFeatOptions,
-    modernFeaturePacks
+    modernFeaturePacks,
+    DAMAGE_TYPES_TABLE
 };

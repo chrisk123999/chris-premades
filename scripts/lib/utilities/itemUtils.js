@@ -1,4 +1,4 @@
-import {actorUtils, effectUtils, genericUtils, socketUtils, compendiumUtils, animationUtils, activityUtils} from '../../utils.js';
+import {actorUtils, combatUtils, effectUtils, genericUtils, socketUtils, compendiumUtils, animationUtils, activityUtils} from '../../utils.js';
 import {gambitPremades} from '../../integrations/gambitsPremades.js';
 import {miscPremades} from '../../integrations/miscPremades.js';
 import {custom} from '../../events/custom.js';
@@ -245,6 +245,33 @@ function canUse(item) {
     if (!item.system.activities.size) return true;
     if (item.system.activities.find(i => activityUtils.canUse(i))) return true;
 }
+
+async function perTurnUsage(item, actor, markUsed = false, useIdentifier = null) {
+
+    if (!item || !actor) return false;
+
+    const allowMulti = itemUtils.getConfig(item, 'allowMulti') === true;
+    if (allowMulti) return false;
+
+    // Determine which identifier to use for turn flags
+    const identifier =
+        useIdentifier ||
+        genericUtils.getIdentifier(item) ||
+        item.uuid; // final fallback
+
+    // CPR/Midi turn flag check:
+    const alreadyUsed = !combatUtils.perTurnCheck(actor, identifier, false);
+
+    if (alreadyUsed) return true;
+
+    if (markUsed) {
+        await combatUtils.setTurnCheck(actor, identifier, false);
+        genericUtils.logDetailed('dev', `perTurnUsage: marked ${identifier} used for ${actor.name}`);
+    }
+
+    return false;
+}
+
 export let itemUtils = {
     getSaveDC,
     createItems,
@@ -277,5 +304,6 @@ export let itemUtils = {
     correctActivityItemConsumption,
     fixScales,
     multiCorrectActivityItemConsumption,
-    canUse
+    canUse,
+    perTurnUsage
 };

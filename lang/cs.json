@@ -114,6 +114,7 @@
             "Activities": "Aktivity:",
             "AffectAllies": "Mělo by to ovlivnit spojence:",
             "AllowEnemies": "Povolit výběr NEpřátelských tokenů?",
+            "AllowMultiplePerTurn" : "Povolit více použití za tah?",
             "Animation": "Animace:",
             "Animations": {
                 "Air": "Vzdušná",

@@ -160,6 +160,7 @@ export {passWithoutTrace} from './macros/2024/spells/passWithoutTrace.js';
 export {powerWordHeal} from './macros/2024/spells/powerWordHeal.js';
 export {powerWordKill} from './macros/2024/spells/powerWordKill.js';
 export {protectionFromEvilAndGood} from './macros/2024/spells/protectionFromEvilAndGood.js';
+export {resistance} from './macros/2024/spells/resistance.js';
 export {sanctuary, sanctuarySafe} from './macros/2024/spells/sanctuary.js';
 export {scorchingRay} from './macros/2024/spells/scorchingRay.js';
 export {searingSmite} from './macros/2024/spells/searingSmite.js';

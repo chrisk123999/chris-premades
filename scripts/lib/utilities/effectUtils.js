@@ -255,6 +255,16 @@ function getConditions(effect) {
     conditions = conditions.union(effect.statuses ?? new Set());
     return conditions;
 }
+
+async function killConcentration(actor, item) {
+    if (!actor) return genericUtils.logDetailed('dev', 'no actor provided:', actor);
+    let concentrationEffectToKill
+    if (!item) concentrationEffectToKill = effectUtils.getConcentrationEffect(actor);
+    else concentrationEffectToKill = effectUtils.getConcentrationEffect(actor,item);    
+    if (!concentrationEffectToKill) return genericUtils.logDetailed('dev', 'no concentration effect found for :', actor, 'and', item);
+    await genericUtils.remove(concentrationEffectToKill);
+}
+
 export let effectUtils = {
     getCastData,
     getCastLevel,
@@ -280,5 +290,6 @@ export let effectUtils = {
     createEffectFromSidebar,
     getOriginItem,
     getConditions,
-    getOriginItemSync
+    getOriginItemSync,
+    killConcentration
 };
