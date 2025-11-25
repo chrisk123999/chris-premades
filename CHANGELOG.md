@@ -1,3 +1,8 @@
+# 1.3.144 Release:
+## Update Notes:
+- Improved integration for MISC.
+- Fixed Babel support.
+
 # 1.3.143 Release:
 ## New Modern Content:
 - Resistance

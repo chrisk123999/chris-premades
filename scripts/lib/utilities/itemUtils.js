@@ -87,9 +87,9 @@ async function isUpToDate(item) {
             break;
         case 'midi-item-showcase-community':
             if (type === 'character' || item.type === 'spell') {
-                sourceVersion = miscPremades.miscItems.find(i => i.name === item.name)?.version;
+                sourceVersion = miscPremades.miscItems.find(i => (i.name === item.name || i.aliases?.includes(item.name)))?.version;
             } else {
-                sourceVersion = miscPremades.miscMonsters.find(i => i.name === item.name && i.monster === monster)?.version;
+                sourceVersion = miscPremades.miscMonsters.find(i => (i.name === item.name || i.aliases?.includes(item.name)) && i.monster === monster)?.version;
             }
             break;
         case 'automated-crafted-creations':
