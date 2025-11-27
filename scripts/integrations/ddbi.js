@@ -36,7 +36,6 @@ async function ready() {
     genericUtils.setProperty(CONFIG, 'chrisPremades', config);
 }
 async function getAutomation(itemName, options = {rules: '2014', actorType: 'character', itemType: 'spell', monsterName: undefined, featType: undefined}) {
-    console.log(options);
     let setting = genericUtils.getCPRSetting('additionalCompendiums');
     let items = [];
     let fakeDocument = {

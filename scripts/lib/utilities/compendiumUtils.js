@@ -32,8 +32,11 @@ async function getCPRAutomation(item, {identifier, rules = 'legacy', type = 'cha
                 break;
             case 'feat':
                 if (item.system.type.value === 'race') {
-                    if (rules === 'modern') break;
-                    keys.push(constants.packs.raceFeatures);
+                    if (rules === 'modern') {
+                        keys.push(constants.modernPacks.speciesFeatures);
+                    } else {
+                        keys.push(constants.packs.raceFeatures);
+                    }
                     //if (genericUtils.getCPRSetting('thirdParty')) keys.push(constants.packs.thirdPartyRaceFeatures);
                 } else {
                     if (rules === 'modern') {

@@ -704,6 +704,7 @@
             "Replace": "Replace",
             "Rerolling": "Rerolling {origDie} ({origResult}):",
             "Select": "Select",
+            "SelectALanguage": "Select a language:",
             "SelectAProficency": "Select A Proficency:",
             "SelectASkill": "Select a skill:",
             "SelectATarget": "Select a target:",
@@ -1052,7 +1053,13 @@
             },
             "CelestialRevelation": {
                 "Damage": "Radiant Consumption: Damage",
-                "End": "Celestial Revelation: End"
+                "End": "Celestial Revelation: End",
+                "HeavenlyWingsAvatar": "Heavenly Wings Avatar:",
+                "HeavenlyWingsToken": "Heavenly Wings Token:",
+                "InnerRadianceAvatar": "Inner Radiance Avatar:",
+                "InnerRadianceToken": "Inner Radiance Token:",
+                "NecroticShroudAvatar": "Necrotic Shroud Avatar:",
+                "NecroticShroudToken": "Necrotic Shroud Token:"
             },
             "ChainLightning": {
                 "Leap": "Chain Lightning: Leap",

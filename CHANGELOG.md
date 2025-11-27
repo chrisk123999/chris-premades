@@ -1,3 +1,13 @@
+# 1.3.146 Release:
+## New Modern Content:
+- Second Wind
+- Tactical Mind
+- Group Recovery
+- Knightly Envoy
+- Celestial Resistance
+- Celestial Revelation
+- Healing Hands
+
 # 1.3.145 Release:
 ## Bug Fixes:
 - Hail of Thorns (Legacy)
