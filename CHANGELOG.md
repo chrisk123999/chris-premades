@@ -1,3 +1,7 @@
+# 1.3.145 Release:
+## Bug Fixes:
+- Hail of Thorns (Legacy)
+
 # 1.3.144 Release:
 ## Update Notes:
 - Improved integration for MISC.

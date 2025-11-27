@@ -1,33 +1,30 @@
-import {activityUtils, actorUtils, compendiumUtils, constants, effectUtils, errors, genericUtils, itemUtils, tokenUtils, workflowUtils} from '../../../utils.js';
-
+import {activityUtils, effectUtils, genericUtils, itemUtils, tokenUtils, workflowUtils} from '../../../utils.js';
 async function use({workflow}) {
-    let concentrationEffect = await effectUtils.getConcentrationEffect(workflow.actor, workflow.item);
     let effectData = {
         name: workflow.item.name,
         img: workflow.item.img,
         origin: workflow.item.uuid,
-        duration: itemUtils.convertDuration(workflow.item),
+        duration: itemUtils.convertDuration(workflow.activity),
         flags: {
             'chris-premades': {
                 hailOfThorns: {
-                    castLevel: workflow.castData?.castLevel ?? 1
+                    castLevel: workflowUtils.getCastLevel(workflow)
                 }
             }
         }
     };
     effectUtils.addMacro(effectData, 'midi.actor', ['hailOfThornsBurst']);
-    await effectUtils.createEffect(workflow.actor, effectData, {concentrationItem: workflow.item, strictlyInterdependent: true, identifier: 'hailOfThornsBurst'});
-    if (concentrationEffect) genericUtils.update(concentrationEffect, {'duration.seconds': effectData.duration.seconds});
+    await effectUtils.createEffect(workflow.actor, effectData, {concentrationItem: workflow.item, identifier: 'hailOfThornsBurst'});
 }
 async function late({trigger: {entity: effect}, workflow}) {
     if (workflow.hitTargets.size !== 1) return;
-    if (workflow.item?.system?.actionType !== 'rwak') return;
-    let feature = await activityUtils.getActivityByIdentifier(await effectUtils.getOriginItem(effect), 'hailOfThornsBurst', {strict: true});
-    if (!feature) return;
+    if (workflowUtils.isAttackType(workflow, 'rangedAttacks')) return;
+    let activity = await activityUtils.getActivityByIdentifier(await effectUtils.getOriginItem(effect), 'hailOfThornsBurst', {strict: true});
+    if (!activity) return;
     let castLevel = Math.min(effect.flags['chris-premades'].hailOfThorns.castLevel, 6);
     let targetToken = workflow.targets.first();
     let allTargets = tokenUtils.findNearby(targetToken, 5).concat(targetToken);
-    await workflowUtils.syntheticActivityRoll(feature, allTargets, {atLevel: castLevel});
+    await workflowUtils.syntheticActivityRoll(activity, allTargets, {atLevel: castLevel});
     await genericUtils.remove(effect);
 }
 export let hailOfThorns = {
