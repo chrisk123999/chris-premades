@@ -109,7 +109,7 @@
             "WeightOfSorrow": "Weight of Sorrow"
         },
         "Config": {
-            "Abilities": "Ability:",
+            "Abilities": "Abilities:",
             "Ability": "Ability:",
             "Activities": "Activities:",
             "AffectAllies": "Should Affect Allies:",
@@ -261,6 +261,7 @@
             "UseFormula": "Use Formula:",
             "WeaponProperties": "Weapon Properties:",
             "WeaponType": "Weapon Type",
+            "WeaponTypes": "Weapon Types:",
             "cameraZoom": "Camera Zoom:"
         },
         "Cover": {
@@ -754,6 +755,7 @@
             }
         },
         "HeroicInspiration": {
+            "Give": "You were given Heroic Inspiration but already have it. Choose another player to give it to:",
             "Name": "Heroic Inspiration"
         },
         "Item": {
@@ -1988,6 +1990,12 @@
             "PackTactics": {
                 "Name": "Pack Tactics"
             },
+            "PactOfTheBlade": {
+                "Conjure": "Which weapon do you conjure?",
+                "Name": "Pact of the Blade",
+                "ReplaceDamage": "Replace weapon damage?",
+                "SelectBond": "Which weapon do you create a bond with?"
+            },
             "PactOfTheChain": {
                 "Attack": "Attack with:"
             },
@@ -3158,10 +3166,6 @@
                 "Hint": "Enables the cleave mechanic from the 2014 Dungeon Master's Guide.",
                 "Name": "DMG Cleave"
             },
-            "heroicInspiration": {
-                "Hint": "Enables the Heroic Inspiration mechanic from the 2024 PHB.",
-                "Name": "Heroic Inspiration"
-            },
             "colorizeAutomatedAnimations": {
                 "Hint": "When enabled, the Automated Animations titlebar icon will be recolored based on the configuration status.",
                 "Name": "Automated Animations: Colorize Titlebar Icon"
@@ -3303,6 +3307,10 @@
             "healingSurge": {
                 "Hint": "Enable the Healing Surge feature from the 2014 Dungeon Master's Guide.",
                 "Name": "Healing Surge"
+            },
+            "heroicInspiration": {
+                "Hint": "Enables the Heroic Inspiration mechanic from the 2024 PHB.",
+                "Name": "Heroic Inspiration"
             },
             "hiddenCompendiumFolders": {
                 "Hint": "Selected compendium folders will be hidden.",

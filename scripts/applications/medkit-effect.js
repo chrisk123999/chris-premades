@@ -177,6 +177,7 @@ export class EffectMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
                 effect: JSON?.stringify(effect.flags['chris-premades']?.macros?.effect) ?? '',
                 aura: JSON?.stringify(effect.flags['chris-premades']?.macros?.aura) ?? '',
                 midi: {
+                    item: JSON?.stringify(effect.flags['chris-premades']?.macros?.midi?.item) ?? '',
                     actor: JSON?.stringify(effect.flags['chris-premades']?.macros?.midi?.actor) ?? ''
                 },
                 combat: JSON?.stringify(effect.flags['chris-premades']?.macros?.combat) ?? '',
@@ -388,6 +389,7 @@ export class EffectMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
         if (this.context.rules) genericUtils.setProperty(flagUpdates, 'rules', this.context.rules);
         if (this.context.macros.effect?.length) genericUtils.setProperty(flagUpdates, 'macros.effect', JSON.parse(this.context.macros.effect.replace(/'/g, '"')));
         if (this.context.macros.aura?.length) genericUtils.setProperty(flagUpdates, 'macros.aura', JSON.parse(this.context.macros.aura.replace(/'/g, '"')));
+        if (this.context.macros.midi?.item?.length) genericUtils.setProperty(flagUpdates, 'macros.midi.item', JSON.parse(this.context.macros.midi.item.replace(/'/g, '"')));
         if (this.context.macros.midi?.actor?.length) genericUtils.setProperty(flagUpdates, 'macros.midi.actor', JSON.parse(this.context.macros.midi.actor.replace(/'/g, '"')));
         if (this.context.macros.combat?.length) genericUtils.setProperty(flagUpdates, 'macros.combat', JSON.parse(this.context.macros.combat.replace(/'/g, '"')));
         if (this.context.macros.movement?.length) genericUtils.setProperty(flagUpdates, 'macros.movement', JSON.parse(this.context.macros.movement.replace(/'/g, '"')));
@@ -558,6 +560,8 @@ export class EffectMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
                     if (value) {
                         if (event.target.id === 'actor') {
                             this.context.macros.midi.actor = event.target.value;
+                        } else if (event.target.id === 'item') {
+                            this.context.macros.midi.item = event.target.value;
                         } else {
                             this.context.macros[event.target.id] = event.target.value;
                         }

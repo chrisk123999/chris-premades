@@ -230,6 +230,7 @@ export {tavernBrawler, tavernBrawlerUnarmedStrike} from './macros/2024/feats/tav
 export {telekineticShove} from './macros/2024/feats/telekinetic.js';
 export {thrownWeaponFighting} from './macros/2024/feats/thrownWeaponFighting.js';
 export {unarmedFighting, unarmedFightingUnarmedStrike} from './macros/2024/feats/unarmedFighting.js';
+export {purpleDragonRook} from './macros/2024/feats/purpleDragonRook.js';
 // Species Features
 // Aasimar
 export {healingHands} from './macros/2024/speciesFeatures/aasimar/healingHands.js';
@@ -408,6 +409,7 @@ export {supremeSneak} from './macros/2024/classFeatures/rogue/thief/supremeSneak
 export {magicalCunning} from './macros/2024/classFeatures/warlock/magicalCunning.js';
 // Invocations
 export {pactOfTheChain} from './macros/2024/classFeatures/warlock/invocations/pactOfTheChain.js';
+export {pactOfTheBlade, pactOfTheBladeAttack} from './macros/2024/classFeatures/warlock/invocations/pactOfTheBlade.js';
 // Monk
 export {martialArts} from './macros/2024/classFeatures/monk/martialArts.js';
 export {unarmoredDefenseMonk} from './macros/2024/classFeatures/monk/unarmoredDefense.js';
@@ -425,6 +427,9 @@ export {tacticalMind} from './macros/2024/classFeatures/fighter/tacticalMind.js'
 // Banneret
 export {groupRecovery} from './macros/2024/classFeatures/fighter/banneret/groupRecovery.js';
 export {knightlyEnvoy} from './macros/2024/classFeatures/fighter/banneret/knightlyEnvoy.js';
+// Paladin
+export {layOnHands} from './macros/2024/classFeatures/paladin/layOnHands.js';
+export {paladinsSmite} from './macros/2024/classFeatures/paladin/paladinsSmite.js';
 // Multiple
 export {evasion} from './macros/2024/classFeatures/multiple/evasion.js';
 // Monster Features

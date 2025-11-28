@@ -36,6 +36,13 @@ function collectAllMacros({activity, item, token, actor}, pass) {
     if (item) {
         let macroList = collectItemMacros(item, pass, activityUtils.getIdentifier(activity)).concat(macroUtils.getEmbeddedMacros(item, 'midi.item', {pass}));
         if (activity) macroList = macroList.concat(macroUtils.getEmbeddedMacros(activity, 'midi.item', {pass}));
+        let enchantments = item.effects.filter(effect => effect.type === 'enchantment');
+        if (enchantments.length) {
+            enchantments.forEach(effect => {
+                let effectMacroList = collectItemMacros(effect, pass).concat(macroUtils.getEmbeddedMacros(effect, 'midi.item', {pass}));
+                if (effectMacroList) macroList.push(...effectMacroList);
+            });
+        }
         if (macroList.length) triggers.push({
             entity: item,
             castData: {

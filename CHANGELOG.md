@@ -1,3 +1,12 @@
+# 1.3.148 Release:
+## New Modern Content:
+- Eldritch Invocations: Pact of the Blade
+- Lay On Hands
+- Paladin's Smite
+- Purple Dragon Rook
+## API Update Notes:
+- Enchantments on items will now also be checked for midi item triggers.
+
 # 1.3.147 Release:
 ## New Modern Content:
 - Heroic Inspiration (Enabled via mechanic settings)

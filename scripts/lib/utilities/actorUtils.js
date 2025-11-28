@@ -1,5 +1,5 @@
 import {socket, sockets} from '../sockets.js';
-import {effectUtils, genericUtils, socketUtils} from '../../utils.js';
+import {dialogUtils, effectUtils, genericUtils, socketUtils} from '../../utils.js';
 import {ActorMedkit} from '../../applications/medkit-actor.js';
 function getEffects(actor, {includeItemEffects = false} = {}) {
     let effects = Array.from(actor.allApplicableEffects());
@@ -255,6 +255,17 @@ function getBestAbility(actor, abilities) {
         return actor.system.abilities[key].mod > actor.system.abilities[best].mod ? key : best;
     });
 }
+async function giveHeroicInspiration(actor) {
+    if (!actor.system.attributes.inspiration) {
+        await genericUtils.update(actor, {'system.attributes.inspiration': true});
+        return;
+    }
+    let tokens = game.users.filter(user => user.active && user.character).map(user => user.character).filter(actor => !actor.system.attributes.inspiration).map(actor => actorUtils.getFirstToken(actor)).filter(i => i);
+    if (!tokens.length) return;
+    let selection = await dialogUtils.selectTargetDialog('CHRISPREMADES.HeroicInspiration.Name', 'CHRISPREMADES.HeroicInspiration.Give', tokens, {skipDeadAndUnconscious: false, userId: socketUtils.firstOwner(actor, true)});
+    if (!selection?.length) return;
+    await genericUtils.update(selection[0].actor, {'system.attributes.inspiration': true});
+}
 export let actorUtils = {
     getEffects,
     addFavorites,
@@ -286,5 +297,6 @@ export let actorUtils = {
     getAllEquippedArmor,
     hasConditionBy,
     compareSize,
-    getBestAbility
+    getBestAbility,
+    giveHeroicInspiration
 };
