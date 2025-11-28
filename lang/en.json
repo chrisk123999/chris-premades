@@ -753,6 +753,9 @@
                 "Tooltip": "Copy Pack ID"
             }
         },
+        "HeroicInspiration": {
+            "Name": "Heroic Inspiration"
+        },
         "Item": {
             "Condense": "Condense",
             "SelectAmount": "Select amount to give:",
@@ -3154,6 +3157,10 @@
                 "2": "Enabled (Full Health Only)",
                 "Hint": "Enables the cleave mechanic from the 2014 Dungeon Master's Guide.",
                 "Name": "DMG Cleave"
+            },
+            "heroicInspiration": {
+                "Hint": "Enables the Heroic Inspiration mechanic from the 2024 PHB.",
+                "Name": "Heroic Inspiration"
             },
             "colorizeAutomatedAnimations": {
                 "Hint": "When enabled, the Automated Animations titlebar icon will be recolored based on the configuration status.",

@@ -12,6 +12,7 @@ import {CPRMultipleRollResolver} from '../applications/rollResolverMultiple.js';
 import {masteries} from '../macros/2024/mechanics/masteries.js';
 import {effects} from '../extensions/effects.js';
 import {convenientEffects} from '../integrations/convenientEffects.js';
+import {heroicInspiration} from '../macros/2024/mechanics/heroicInspiration.js';
 function getItemMacroData(item) {
     return item.flags['chris-premades']?.macros?.midi?.item ?? [];
 }
@@ -305,6 +306,7 @@ async function damageRollComplete(workflow) {
     sortedSceneTriggers = sortedSceneTriggers.sort((a, b) => a.priority - b.priority);
     genericUtils.log('dev', 'Executing Midi Macro Pass: sceneDamageRollComplete');
     for (let trigger of sortedSceneTriggers) await executeMacro(trigger, workflow);
+    if (genericUtils.getCPRSetting('heroicInspiration')) await heroicInspiration.damage(workflow);
     if (genericUtils.getCPRSetting('diceSoNice') && game.modules.get('dice-so-nice')?.active) await diceSoNice.damageRollComplete(workflow);
     if (genericUtils.getCPRSetting('explodingHeals')) await explodingHeals(workflow);
     let manualRollsEnabled = genericUtils.getCPRSetting('manualRollsEnabled');
@@ -400,6 +402,7 @@ async function postAttackRoll(workflow) {
     for (let trigger of sortedSceneTriggers) await executeMacro(trigger, workflow);
     await executeMacroPass(workflow, 'postAttackRoll');
     await executeTargetMacroPass(workflow, 'targetPostAttackRoll');
+    if (genericUtils.getCPRSetting('heroicInspiration')) await heroicInspiration.attack(workflow);
 }
 async function preTargetDamageApplication(token, {workflow, ditem}) {
     genericUtils.log('dev', 'Executing Midi Macro Pass: applyDamage for ' + token.document.name);

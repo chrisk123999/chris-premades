@@ -1,3 +1,7 @@
+# 1.3.147 Release:
+## New Modern Content:
+- Heroic Inspiration (Enabled via mechanic settings)
+
 # 1.3.146 Release:
 ## New Modern Content:
 - Second Wind

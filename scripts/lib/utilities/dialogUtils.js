@@ -314,6 +314,28 @@ async function queuedConfirmDialog(title, content, {actor, reason, userId} = {})
     }
     return selection;
 }
+async function selectDie(rolls = [], title, content, {max = 1, userId = game.user.id, buttons = 'okCancel'} = {}) {
+    let dice = [];
+    for (let i = 0; i < rolls.length; i++) {
+        for (let j = 0; j < rolls[i].terms.length; j++) {
+            if (rolls[i].terms[j].isDeterministic) continue;
+            for (let k = 0; k < rolls[i].terms[j].results.length; k++) {
+                dice.push({name: i + '-' + j + '-' + k, label: rolls[i].terms[j].results[k].result + ' (d' + rolls[i].terms[j].faces + ')'});
+            }
+        }
+    }
+    let inputs = [['checkbox', dice, {displayAsRows: true, totalMax: max}]];
+    let selection;
+    if (game.user.id != userId) {
+        selection = await socket.executeAsUser(sockets.dialog.name, userId, title, content, inputs, buttons, {height: 'auto'});
+    } else {
+        selection = await DialogApp.dialog(title, content, inputs, buttons, {height: 'auto'});
+    }
+    if (selection.buttons) {
+        delete selection.buttons;
+        return Object.entries(selection).filter(([key, value]) => (value)).map(i => i[0]);
+    }
+}
 export let dialogUtils = {
     buttonDialog,
     numberDialog,
@@ -326,5 +348,6 @@ export let dialogUtils = {
     selectSpellSlot,
     selectDamageType,
     queuedConfirmDialog,
-    confirmUseItem
+    confirmUseItem,
+    selectDie
 };

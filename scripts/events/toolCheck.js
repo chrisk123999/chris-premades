@@ -1,4 +1,5 @@
 import {DialogApp} from '../applications/dialog.js';
+import {heroicInspiration} from '../macros/2024/mechanics/heroicInspiration.js';
 import {actorUtils, effectUtils, genericUtils, itemUtils, macroUtils, regionUtils, templateUtils} from '../utils.js';
 import {custom} from './custom.js';
 function getMacroData(entity) {
@@ -224,6 +225,10 @@ async function rollToolCheck(wrapped, config, dialog, message) {
             let bonusRoll = await executeMacro(trigger);
             if (bonusRoll) returnData = CONFIG.Dice.D20Roll.fromRoll(bonusRoll);
         }
+    }
+    if (genericUtils.getCPRSetting('heroicInspiration')) {
+        let heroicInspirationRoll = await heroicInspiration.saveSkillCheck(returnData, this);
+        if (heroicInspirationRoll) returnData = heroicInspirationRoll;
     }
     if (returnData.options) genericUtils.mergeObject(returnData.options, oldOptions);
     await executeMacroPass(this, 'post', config.tool, options, returnData, config, dialog, message);
