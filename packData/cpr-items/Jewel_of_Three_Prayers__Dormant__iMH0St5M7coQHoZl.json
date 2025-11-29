@@ -1,0 +1,451 @@
+{
+  "name": "Jewel of Three Prayers (Dormant)",
+  "type": "equipment",
+  "effects": [
+    {
+      "name": "Jewel of Three Prayers: Light",
+      "img": "icons/equipment/neck/collar-rounded-gold-purple.webp",
+      "origin": "Actor.URkPN6VT7lcihy3n.Item.i0hlsfDvV7iNHLyR",
+      "transfer": false,
+      "_id": "tn0ihHWSkh9q4z73",
+      "type": "base",
+      "system": {},
+      "changes": [
+        {
+          "key": "ATL.light.bright",
+          "mode": 4,
+          "value": "15",
+          "priority": 20
+        },
+        {
+          "key": "ATL.light.dim",
+          "mode": 4,
+          "value": "30",
+          "priority": 20
+        }
+      ],
+      "disabled": false,
+      "duration": {
+        "startTime": null,
+        "combat": null,
+        "seconds": null,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "statuses": [],
+      "sort": 0,
+      "flags": {
+        "dnd5e": {
+          "riders": {
+            "statuses": []
+          },
+          "dependents": [
+            {
+              "uuid": "Actor.URkPN6VT7lcihy3n.ActiveEffect.IIUmTlZQnEYnMJdZ"
+            }
+          ]
+        },
+        "dae": {
+          "enableCondition": "",
+          "disableCondition": "",
+          "stackable": "noneName",
+          "showIcon": true,
+          "disableIncapacitated": false,
+          "selfTarget": false,
+          "selfTargetAlways": false,
+          "dontApply": false,
+          "durationExpression": "",
+          "macroRepeat": "none",
+          "specialDuration": []
+        },
+        "core": {
+          "overlay": false
+        }
+      },
+      "_key": "!items.effects!iMH0St5M7coQHoZl.tn0ihHWSkh9q4z73"
+    },
+    {
+      "name": "Jewel of Three Prayers (Dormant)",
+      "changes": [
+        {
+          "key": "system.attributes.ac.bonus",
+          "mode": 2,
+          "value": "1",
+          "priority": 20
+        }
+      ],
+      "transfer": true,
+      "img": "icons/equipment/neck/collar-rounded-gold-purple.webp",
+      "_id": "W3KGlyPJb1p6moas",
+      "type": "base",
+      "system": {},
+      "disabled": false,
+      "duration": {
+        "startTime": null,
+        "combat": null,
+        "seconds": null,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "description": "",
+      "origin": "Actor.URkPN6VT7lcihy3n.Item.i0hlsfDvV7iNHLyR",
+      "tint": "#ffffff",
+      "statuses": [],
+      "sort": 0,
+      "flags": {
+        "dnd5e": {
+          "riders": {
+            "statuses": []
+          }
+        },
+        "dae": {
+          "enableCondition": "",
+          "disableCondition": "",
+          "stackable": "noneName",
+          "showIcon": false,
+          "disableIncapacitated": false,
+          "selfTarget": false,
+          "selfTargetAlways": false,
+          "dontApply": false,
+          "durationExpression": "",
+          "macroRepeat": "none",
+          "specialDuration": []
+        },
+        "core": {
+          "overlay": false
+        }
+      },
+      "_key": "!items.effects!iMH0St5M7coQHoZl.W3KGlyPJb1p6moas"
+    }
+  ],
+  "system": {
+    "activities": {
+      "h55SBxECln8tNAUZ": {
+        "type": "utility",
+        "_id": "h55SBxECln8tNAUZ",
+        "sort": 0,
+        "activation": {
+          "type": "action",
+          "override": false,
+          "condition": ""
+        },
+        "consumption": {
+          "scaling": {
+            "allowed": false
+          },
+          "spellSlot": true,
+          "targets": []
+        },
+        "description": {
+          "chatFlavor": ""
+        },
+        "duration": {
+          "units": "disp",
+          "concentration": false,
+          "override": false
+        },
+        "effects": [
+          {
+            "_id": "tn0ihHWSkh9q4z73"
+          }
+        ],
+        "range": {
+          "units": "self",
+          "override": false,
+          "special": ""
+        },
+        "target": {
+          "template": {
+            "contiguous": false,
+            "units": "ft",
+            "type": ""
+          },
+          "affects": {
+            "choice": false,
+            "type": "self",
+            "special": ""
+          },
+          "override": false,
+          "prompt": true
+        },
+        "uses": {
+          "spent": 0,
+          "recovery": [],
+          "max": ""
+        },
+        "roll": {
+          "prompt": false,
+          "visible": false,
+          "name": "",
+          "formula": ""
+        },
+        "useConditionText": "",
+        "useConditionReason": "",
+        "effectConditionText": "",
+        "macroData": {
+          "name": "",
+          "command": ""
+        },
+        "ignoreTraits": {
+          "idi": false,
+          "idr": false,
+          "idv": false,
+          "ida": false,
+          "idm": false
+        },
+        "midiProperties": {
+          "ignoreTraits": [],
+          "triggeredActivityId": "none",
+          "triggeredActivityConditionText": "",
+          "triggeredActivityTargets": "targets",
+          "triggeredActivityRollAs": "self",
+          "autoConsume": false,
+          "forceConsumeDialog": "default",
+          "forceRollDialog": "default",
+          "forceDamageDialog": "default",
+          "confirmTargets": "default",
+          "autoTargetType": "any",
+          "autoTargetAction": "default",
+          "automationOnly": false,
+          "otherActivityCompatible": false,
+          "otherActivityAsParentType": true,
+          "identifier": "",
+          "displayActivityName": false,
+          "rollMode": "default",
+          "chooseEffects": false,
+          "toggleEffect": false,
+          "ignoreFullCover": false,
+          "removeChatButtons": "default",
+          "magicEffect": false,
+          "magicDamage": false,
+          "noConcentrationCheck": false,
+          "autoCEEffects": "default"
+        },
+        "isOverTimeFlag": false,
+        "overTimeProperties": {
+          "saveRemoves": true,
+          "preRemoveConditionText": "",
+          "postRemoveConditionText": ""
+        },
+        "otherActivityId": "none",
+        "otherActivityAsParentType": true,
+        "name": ""
+      },
+      "xqhVhq8Dj3CZ5UZZ": {
+        "type": "cast",
+        "spell": {
+          "uuid": "Compendium.world.ddb-world-ddb-spells.Item.CbfwCGijMmw4HNqP",
+          "challenge": {
+            "override": false
+          },
+          "properties": [
+            "vocal",
+            "somatic",
+            "material"
+          ],
+          "spellbook": true,
+          "ability": "",
+          "level": 2
+        },
+        "_id": "xqhVhq8Dj3CZ5UZZ",
+        "sort": 0,
+        "activation": {
+          "type": "action",
+          "override": false
+        },
+        "consumption": {
+          "scaling": {
+            "allowed": false
+          },
+          "spellSlot": true,
+          "targets": [
+            {
+              "type": "itemUses",
+              "value": "1",
+              "scaling": {}
+            }
+          ]
+        },
+        "description": {
+          "chatFlavor": ""
+        },
+        "duration": {
+          "units": "inst",
+          "concentration": false,
+          "override": false
+        },
+        "range": {
+          "units": "self",
+          "override": false
+        },
+        "target": {
+          "template": {
+            "contiguous": false,
+            "units": "ft"
+          },
+          "affects": {
+            "choice": false
+          },
+          "override": false,
+          "prompt": true
+        },
+        "uses": {
+          "spent": 0,
+          "recovery": [],
+          "max": ""
+        },
+        "useConditionText": "",
+        "useConditionReason": "",
+        "effectConditionText": "",
+        "macroData": {
+          "name": "",
+          "command": ""
+        },
+        "ignoreTraits": {
+          "idi": false,
+          "idr": false,
+          "idv": false,
+          "ida": false,
+          "idm": false
+        },
+        "midiProperties": {
+          "ignoreTraits": [],
+          "triggeredActivityId": "none",
+          "triggeredActivityConditionText": "",
+          "triggeredActivityTargets": "targets",
+          "triggeredActivityRollAs": "self",
+          "autoConsume": false,
+          "forceConsumeDialog": "default",
+          "forceRollDialog": "default",
+          "forceDamageDialog": "default",
+          "confirmTargets": "never",
+          "autoTargetType": "any",
+          "autoTargetAction": "default",
+          "automationOnly": false,
+          "otherActivityCompatible": true,
+          "otherActivityAsParentType": true,
+          "identifier": "",
+          "displayActivityName": false,
+          "rollMode": "default",
+          "chooseEffects": false,
+          "toggleEffect": false,
+          "ignoreFullCover": false,
+          "removeChatButtons": "default",
+          "magicEffect": false,
+          "magicDamage": false,
+          "noConcentrationCheck": false,
+          "autoCEEffects": "default"
+        },
+        "isOverTimeFlag": false,
+        "overTimeProperties": {
+          "saveRemoves": true,
+          "preRemoveConditionText": "",
+          "postRemoveConditionText": ""
+        },
+        "name": ""
+      }
+    },
+    "uses": {
+      "max": "3",
+      "spent": 0,
+      "recovery": [
+        {
+          "period": "dawn",
+          "type": "recoverAll"
+        }
+      ]
+    },
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "identifier": "jewel-of-three-prayers-dormant",
+    "source": {
+      "book": "CotN",
+      "page": "",
+      "license": "",
+      "custom": "",
+      "rules": "2014",
+      "revision": 1
+    },
+    "identified": true,
+    "unidentified": {
+      "description": ""
+    },
+    "container": null,
+    "quantity": 1,
+    "weight": {
+      "value": 0,
+      "units": "lb"
+    },
+    "price": {
+      "value": 0,
+      "denomination": "gp"
+    },
+    "rarity": "legendary",
+    "attunement": "required",
+    "attuned": true,
+    "equipped": true,
+    "crewed": false,
+    "armor": {
+      "value": null,
+      "dex": null
+    },
+    "proficient": null,
+    "properties": [
+      "mgc"
+    ],
+    "strength": 0,
+    "type": {
+      "value": "trinket",
+      "baseItem": ""
+    }
+  },
+  "flags": {
+    "infusions": {
+      "maps": [],
+      "applied": [],
+      "infused": false
+    },
+    "midi-qol": {
+      "removeAttackDamageButtons": "default",
+      "forceCEOff": true
+    },
+    "midiProperties": {
+      "confirmTargets": "default"
+    },
+    "dae": {
+      "alwaysActive": false,
+      "activeEquipped": true
+    },
+    "dnd5e": {
+      "riders": {
+        "activity": []
+      }
+    },
+    "chris-premades": {
+      "info": {
+        "identifier": "jewelOfThreePrayersDormant",
+        "rules": "legacy",
+        "source": "chris-premades",
+        "version": "1.3.149"
+      },
+      "castActivities": [
+        {
+          "name": "Invisibility",
+          "activityId": "xqhVhq8Dj3CZ5UZZ"
+        }
+      ]
+    }
+  },
+  "img": "icons/equipment/neck/collar-rounded-gold-purple.webp",
+  "folder": "4TYgcjpgCO6kJJ6d",
+  "_id": "iMH0St5M7coQHoZl",
+  "_key": "!items!iMH0St5M7coQHoZl"
+}

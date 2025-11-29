@@ -434,6 +434,8 @@ export {masterOfTactics} from './macros/2014/classFeatures/rogue/mastermind/mast
 export {insightfulManipulator} from './macros/2014/classFeatures/rogue/mastermind/insightfulManipulator.js';
 export {misdirection} from './macros/2014/classFeatures/rogue/mastermind/misdirection.js';
 export {soulOfDeceit} from './macros/2014/classFeatures/rogue/mastermind/soulOfDeceit.js';
+export {naturalAttunement} from './macros/2014/classFeatures/wizard/leylineMagic/naturalAttunement.js';
+export {thrumOfTheLand} from './macros/2014/classFeatures/wizard/leylineMagic/thrumOfTheLand.js';
 // Race Features
 export {aasimarNecroticShroud, aasimarRadiantConsumption, aasimarRadiantSoul, celestialRevelation} from './macros/2014/raceFeatures/aasimar/celestialRevelation.js';
 export {acidBreathWeapon, coldBreathWeapon, fireBreathWeapon, lightningBreathWeapon, poisonBreathWeapon} from './macros/2014/raceFeatures/dragonborn/chromatic/breathWeapon.js';
@@ -668,6 +670,7 @@ export {deckOfMiscellany, deckOfMiscellanySetup, miscellanyCard} from './macros/
 export {deckOfWonder, deckOfWonderDestinyEffect, deckOfWonderIsolationEffect, deckOfWonderJusticeEffect, deckOfWonderVultureLostEffect} from './macros/2014/items/trinket/deckOfWonder.js';
 export {harkonsBite, harkonsBiteEffect} from './macros/2014/items/trinket/harkonsBite.js';
 export {crownOfDaffodils} from './macros/2014/items/trinket/crownOfDaffodils.js';
+export {jewelOfThreePrayersDormant} from './macros/2014/items/trinket/jewelOfThreePrayers.js';
 //BG3 Weapon Actions
 export {backbreaker, braceMelee, braceMeleeDamage, cleave, concussiveSmash, maimingStrike, disarmingStrike, flourish, heartstopper, lacerate, piercingStrike, piercingStrikeEffect, pommelStrike, prepare, rush, tenacity, topple, weakeningStrike, braceRanged, braceRangedDamage, hamstringShot, mobileShot, piercingShot} from './macros/2014/homebrew/bg3WeaponActions.js';
 //Other

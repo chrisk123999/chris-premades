@@ -459,3 +459,5 @@ export {zhentilarSoldierKnockDown} from './macros/2024/monsterFeatures/zhentilar
 export {mimicAdhesive} from './macros/2024/monsterFeatures/mimic/mimicAdhesive.js';
 export {mimicBite} from './macros/2024/monsterFeatures/mimic/mimicBite.js';
 export {mimicPseudopod} from './macros/2024/monsterFeatures/mimic/mimicPseudopod.js';
+// Ghoul
+export {ghoulClaw} from './macros/2024/monsterFeatures/ghoul/ghoulClaw.js';

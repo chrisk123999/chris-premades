@@ -40,5 +40,10 @@ export let forestSage = {
             category: 'homebrew',
             homebrew: true
         }
-    ]
+    ],
+    ddbi: {
+        removeChoices: [
+            'Forest Sage'
+        ]
+    }
 };

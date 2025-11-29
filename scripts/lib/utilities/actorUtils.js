@@ -55,6 +55,10 @@ function checkTrait(actor, type, trait) {
 function typeOrRace(actor) {
     return MidiQOL.typeOrRace(actor);
 }
+function raceOrType(actor) {
+    if (actor.system.details.type?.value) return actor.system.details.type?.value?.toLowerCase() ?? '';
+    return (actor.system.details?.race?.name ?? actor.system.details?.race)?.toLowerCase() ?? '';
+}
 function getAlignment(actor) {
     return actor.system.details?.alignment?.toLowerCase();
 }
@@ -274,6 +278,7 @@ export let actorUtils = {
     getLevelOrCR,
     checkTrait,
     typeOrRace,
+    raceOrType,
     getAlignment,
     getCRFromProf,
     getSidebarActor,

@@ -1,3 +1,11 @@
+# 1.3.149 Release:
+## New Legacy Content:
+- Natural Attunement
+- Thrum of the Land
+- Jewel of Three Prayers (Dormant)
+## New Monster Content:
+- Ghoul: Claw
+
 # 1.3.148 Release:
 ## New Modern Content:
 - Eldritch Invocations: Pact of the Blade
