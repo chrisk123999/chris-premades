@@ -17,7 +17,7 @@ export let ghoulClaw = {
     version: '1.3.149',
     rules: 'modern',
     monsters: [
-        'Goblin Boss'
+        'Ghoul'
     ],
     midi: {
         item: [
