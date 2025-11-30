@@ -110,6 +110,7 @@ async function deleteActiveEffect(effect, options, userId) {
     } else if (effect.parent instanceof Item && effect.type === 'enchantment') {
         if (effect.parent.actor) await executeMacroPass(effect, 'deleted', options);
     }
+    if (effect.statuses.size) await effects.specialDurationRemovedConditions(effect);
     await effects.checkInterdependentDeps(effect);
 }
 let preCreateMacros = [];

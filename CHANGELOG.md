@@ -1,3 +1,13 @@
+# 1.3.150 Release:
+## New Monster Content:
+- Carrion Crawler: Paralyzing Tentacles
+- Hobgoblin Captain: Aura of Authority
+- Pseudodragon: Sting
+## Bug Fixes:
+- Blade Flourish (Legacy)
+## Update Notes:
+- Added condition removed special durations to the CPR Medkit.
+
 # 1.3.149 Release:
 ## New Legacy Content:
 - Natural Attunement

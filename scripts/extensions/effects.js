@@ -197,9 +197,20 @@ async function specialDurationConditions(effect) {
     await Promise.all(actorUtils.getEffects(effect.parent).filter(i => i.id != effect.id).map(async eff => {
         let specialDurations = eff.flags['chris-premades']?.specialDuration;
         if (!specialDurations) return;
-        specialDurations.filter(j => statusEffectIds.includes(j));
+        specialDurations = specialDurations.filter(j => statusEffectIds.includes(j));
         if (!specialDurations.length) return;
         if (effect.statuses.some(k => specialDurations.includes(k))) await genericUtils.remove(eff);
+    }));
+    
+}
+async function specialDurationRemovedConditions(effect) {
+    let statusEffectIds = CONFIG.statusEffects.map(i => i.id);
+    await Promise.all(actorUtils.getEffects(effect.parent).filter(i => i.id != effect.id).map(async eff => {
+        let specialDurations = eff.flags['chris-premades']?.specialDuration;
+        if (!specialDurations) return;
+        specialDurations = specialDurations.filter(j => statusEffectIds.map(l => l + 'Removed'));
+        if (!specialDurations.length) return;
+        if (effect.statuses.some(k => specialDurations.includes(k + 'Removed'))) await genericUtils.remove(eff);
     }));
 }
 async function specialDurationEquipment(item) {
@@ -322,6 +333,7 @@ async function removeWorkflowEffects(workflow) {
         await genericUtils.remove(entity);
     }
 }
+
 export let effects = {
     noAnimation,
     checkInterdependentDeps,
@@ -330,6 +342,7 @@ export let effects = {
     rehideActivities,
     specialDuration,
     specialDurationConditions,
+    specialDurationRemovedConditions,
     specialDurationEquipment,
     activityDC,
     preImageCreate,

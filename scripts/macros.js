@@ -439,10 +439,10 @@ export {burstOfIngenuity} from './macros/2024/monsterFeatures/sphinxOfWonder/bur
 export {graveStrike} from './macros/2024/monsterFeatures/vampire/graveStrike.js';
 export {beguile} from './macros/2024/monsterFeatures/vampire/beguile.js';
 export {vampireBite} from './macros/2024/monsterFeatures/vampire/bite.js';
-export {vampireWeakness} from './macros/2024/monsterFeatures/vampire/vampireWeakness.js';
-export {vampireCharm} from './macros/2024/monsterFeatures/vampire/vampireCharm.js';
-export {vampireShapeShift} from './macros/2024/monsterFeatures/vampire/vampireShapeShift.js';
-export {vampireMistyEscape} from './macros/2024/monsterFeatures/vampire/vampireMistyEscape.js';
+export {vampireWeakness} from './macros/2024/monsterFeatures/vampire/weakness.js';
+export {vampireCharm} from './macros/2024/monsterFeatures/vampire/charm.js';
+export {vampireShapeShift} from './macros/2024/monsterFeatures/vampire/shapeShift.js';
+export {vampireMistyEscape} from './macros/2024/monsterFeatures/vampire/mistyEscape.js';
 // Goblin Warrior
 export {goblinWarriorScimitar} from './macros/2024/monsterFeatures/goblinWarrior/scimitar.js';
 export {goblinWarriorShortbow} from './macros/2024/monsterFeatures/goblinWarrior/shortbow.js';
@@ -452,12 +452,18 @@ export {worgBite} from './macros/2024/monsterFeatures/worg/bite.js';
 // Goblin Boss
 export {goblinBossRedirectAttack} from './macros/2024/monsterFeatures/goblinBoss/redirectAttack.js';
 // Brown Bear
-export {brownBearClaw} from './macros/2024/monsterFeatures/brownBear/brownBearClaw.js';
+export {brownBearClaw} from './macros/2024/monsterFeatures/brownBear/claw.js';
 // Zhentilar Soldier
-export {zhentilarSoldierKnockDown} from './macros/2024/monsterFeatures/zhentilarSoldier/zhentilarSoldierKnockDown.js';
+export {zhentilarSoldierKnockDown} from './macros/2024/monsterFeatures/zhentilarSoldier/knockDown.js';
 // Mimic
-export {mimicAdhesive} from './macros/2024/monsterFeatures/mimic/mimicAdhesive.js';
-export {mimicBite} from './macros/2024/monsterFeatures/mimic/mimicBite.js';
-export {mimicPseudopod} from './macros/2024/monsterFeatures/mimic/mimicPseudopod.js';
+export {mimicAdhesive} from './macros/2024/monsterFeatures/mimic/adhesive.js';
+export {mimicBite} from './macros/2024/monsterFeatures/mimic/bite.js';
+export {mimicPseudopod} from './macros/2024/monsterFeatures/mimic/pseudopod.js';
 // Ghoul
-export {ghoulClaw} from './macros/2024/monsterFeatures/ghoul/ghoulClaw.js';
+export {ghoulClaw} from './macros/2024/monsterFeatures/ghoul/claw.js';
+// Hobgoblin Captain
+export {auraOfAuthority} from './macros/2024/monsterFeatures/hobgoblinCaptain/auraOfAuthority.js';
+// Pseudodragon
+export {pseudodragonSting} from './macros/2024/monsterFeatures/pseudodragon/sting.js';
+// Carrion Crawler
+export {carrionCrawlerParalyzingTentacles} from './macros/2024/monsterFeatures/carrionCrawler/paralyzingTentacles.js';

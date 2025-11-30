@@ -18,6 +18,7 @@ function collectTokenMacros(token, pass, target) {
             if (!token.actor.system.attributes.hp.value) return;
             if (effectUtils.getEffectByStatusID(token.actor, 'unconscious') || effectUtils.getEffectByStatusID(token.actor, 'dead')) return;
         }
+        if (macro.incapacitated && effectUtils.getEffectByStatusID(token.actor, 'incapacitated')) return;
         if (macro.distance === 'paladin') {
             let paladinLevels = token.actor.classes?.paladin?.system?.levels;
             if (!paladinLevels) return;
@@ -221,7 +222,7 @@ async function canvasReady(canvas) {
 }
 async function effectCheck(effect) {
     let shouldUpdate = effect.flags['chris-premades']?.macros?.aura;
-    shouldUpdate = shouldUpdate || ['dead', 'unconscious'].some(i => effect.statuses.has(i));
+    shouldUpdate = shouldUpdate || ['dead', 'unconscious', 'incapacitated'].some(i => effect.statuses.has(i));
     if (!shouldUpdate) return;
     await Promise.all(canvas.scene.tokens.filter(j => j.actor).map(async i => await executeMacroPass(canvas.scene.tokens, 'create', i)));
 }

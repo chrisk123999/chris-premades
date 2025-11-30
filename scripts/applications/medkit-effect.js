@@ -133,9 +133,13 @@ export class EffectMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
                             isSelected: effect.flags['chris-premades']?.specialDuration?.includes('zeroSpeed')
                         }
                     ].concat(CONFIG.statusEffects.map(i => ({
-                        label: i.name,
+                        label: i.name + ' ' + genericUtils.translate('CHRISPREMADES.Medkit.Effect.SpecialDuration.Added'),
                         value: i.id,
                         isSelected: effect.flags['chris-premades']?.specialDuration?.includes(i.id)
+                    }))).concat(CONFIG.statusEffects.map(i => ({
+                        label: i.name + ' ' + genericUtils.translate('CHRISPREMADES.Medkit.Effect.SpecialDuration.Removed'),
+                        value: i.id + 'Removed',
+                        isSelected: effect.flags['chris-premades']?.specialDuration?.includes(i.id + 'Removed')
                     }))).concat(constants.armorOptions().map(a => ({...a, isSelected: effect.flags['chris-premades']?.specialDuration?.includes(a.value)
                     }))).concat([
                         {

@@ -31,7 +31,11 @@
             "allowed": false
           },
           "spellSlot": true,
-          "targets": []
+          "targets": [
+            {
+              "type": "activityUses"
+            }
+          ]
         },
         "description": {
           "chatFlavor": ""

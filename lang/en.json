@@ -144,6 +144,7 @@
             "BaseDiceNumber": "Base Dice Number:",
             "BaseHealing": "Base Healing:",
             "BlockingStatuses": "Blocking Statuses:",
+            "CanCrit": "Can Crit:",
             "Character": "Character",
             "CheckHit": "Check Hit:",
             "CheckSave": "Check Save:",
@@ -2835,6 +2836,7 @@
                     }
                 },
                 "SpecialDuration": {
+                    "Added": "Added",
                     "AttackedByAnotherCreature": "Attacked By Another Creature",
                     "AttackedBySource": "Attacked By Source",
                     "DamagedByAlly": "Damaged By Ally",
@@ -2846,6 +2848,7 @@
                     "HitBySource": "Hit By Source",
                     "Label": "Special Durations:",
                     "MoveFinished": "Move Finished",
+                    "Removed": "Removed",
                     "Rolled": "Rolled {toolName} Check",
                     "Succeed": "Succeeded {toolName} Check",
                     "TempHP": "Zero Temporary Hitpoints",
