@@ -1,6 +1,6 @@
 import {effectUtils, genericUtils, itemUtils} from '../../../../utils.js';
 async function use({trigger, workflow}) {
-    if (!workflow.target.size) return;
+    if (!workflow.targets.size) return;
     let config = itemUtils.getGenericFeatureConfig(workflow.item, 'transform');
     let {avatarImg, avatarImgPriority, tokenImg, tokenImgPriority, items} = {};
     if ((config?.profileOneActivities?.length && config?.profileOneActivities.includes(workflow.activity.id)) || (!config?.profileOneActivities?.length && !config?.profileTwoActivities?.length)) {

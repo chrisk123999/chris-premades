@@ -703,6 +703,7 @@
             "RangedWeapons": "Ranged Weapons",
             "Recharge": "Recharge:",
             "RecoverSpellSlot": "Select a spell slot to recover:",
+            "RemoveWhichCondition": "Remove which condition:",
             "Replace": "Replace",
             "Rerolling": "Rerolling {origDie} ({origResult}):",
             "Select": "Select",
@@ -1871,6 +1872,9 @@
                 "RollEach": "Roll Damage for Each Bolt?",
                 "Select": "How many? (Max: {maxMissiles})",
                 "Shield": "Shield as reaction?"
+            },
+            "MagnificentFeast": {
+                "MagnificentFeast": "Magnificent Feast"
             },
             "Maneuvers": {
                 "BaitSwitchAC": "Who gets the AC bonus?",

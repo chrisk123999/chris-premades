@@ -1,3 +1,10 @@
+# 1.3.151 Release:
+## New Legacy Content:
+- Channel Divinity: Magnificent Feast
+## Bug Fixes:
+- Transform Generic Feature
+- Forest Sage
+
 # 1.3.150 Release:
 ## New Monster Content:
 - Carrion Crawler: Paralyzing Tentacles
