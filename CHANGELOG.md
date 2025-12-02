@@ -1,3 +1,7 @@
+# 1.3.154 Release:
+## New Legacy Content:
+- Iroas's Devotee
+
 # 1.3.153 Release:
 ## New Legacy Content:
 - Heliod's Devotee

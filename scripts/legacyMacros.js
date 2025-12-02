@@ -680,3 +680,4 @@ export {maxDamage, maxDamageEffect, doubleDamage, doubleDamageEffect} from './ma
 export {heliodsDevotee} from './macros/2014/piety/heliod/heliodsDevotee.js';
 export {nyleasDevotee} from './macros/2014/piety/nylea/nyleasDevotee.js';
 export {karametrasDevotee} from './macros/2014/piety/karametra/karametrasDevotee.js';
+export {iroassDevotee} from './macros/2014/piety/iroas/iroassDevotee.js';
