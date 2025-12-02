@@ -47,16 +47,36 @@ flowchart TD
     targetPreambleComplete
     targetUtilityRollComplete
     targetPostAttackRoll
+    afterAttackRoll["<b>After Macros</b>
+      <small><li>Heroic Inspiration Attack</li></small>"]:::edgeLabel
     targetAttackRollComplete
     targetDamageRollComplete
     targetSavesComplete
     targetRollFinished
     scenePreambleComplete
+    afterScenePreamble["<b>After Macros</b>
+      <small><li>Condition Resistance Checked</li>
+      <li>Condition Vulnerability Checked</li>
+      <li>Template Visibility Checked</li></small>"]:::edgeLabel
     sceneUtilityRollComplete
     scenePostAttackRoll
     sceneAttackRollComplete
+    crit["<b>After Macros</b>
+      <small><li>Crit/Fumble Homebrew</li></small>"]:::edgeLabel
     sceneDamageRollComplete
+    afterSceneDamage["<b>After Macros</b>
+      <small><li>Heroic Inspiration Damage</li>
+      <li>Dice So Nice Shown</li>
+      <li>Exploding Heals</li>
+      <li>Manual Rolls</li></small>"]:::edgeLabel
     sceneRollFinished
+    afterSceneRoll["<b>After Macros</b>
+      <small><li>Condition Resistance Cleanup</li>
+      <li>Condition Vulnerability Cleanup</li>
+      <li>Mastery Automations</li>
+      <li>Expire CPR Special Durations</li>
+      <li>Delete Workflow Effects</li>
+      <li>Cleave</li></small>"]:::edgeLabel
   end
 
   subgraph d20["D20 Rolls"]
@@ -85,6 +105,7 @@ flowchart TD
   targetPreItemRoll --> preambleComplete
   preambleComplete --> targetPreambleComplete
   targetPreambleComplete --> scenePreambleComplete
+  scenePreambleComplete -.-> afterScenePreamble
     %% invis link for layout
     targetPreambleComplete ~~~ utilityRollComplete
     scenePreambleComplete -- Has Utility --> utilityRollComplete
@@ -96,9 +117,11 @@ flowchart TD
     scenePostEvaluation --> scenePostAttackRoll
     scenePostAttackRoll --> postAttackRoll
     postAttackRoll --> targetPostAttackRoll
+    targetPostAttackRoll -.-> afterAttackRoll
     targetPostAttackRoll --> attackRollComplete
     attackRollComplete --> targetAttackRollComplete
     targetAttackRollComplete --> sceneAttackRollComplete 
+    sceneAttackRollComplete -.-> crit
     sceneAttackRollComplete -- No Damage --> savesComplete 
     sceneAttackRollComplete -- Has Damage --> damageRollComplete
 
@@ -106,6 +129,7 @@ flowchart TD
   scenePreambleComplete -- No Attack, No Damage --> savesComplete
   damageRollComplete --> targetDamageRollComplete
   targetDamageRollComplete --> sceneDamageRollComplete
+  sceneDamageRollComplete -.-> afterSceneDamage
     sceneDamageRollComplete -- Has Save ---> situational
   post --> savesComplete
   sceneDamageRollComplete -- No Save --> savesComplete
@@ -116,10 +140,9 @@ flowchart TD
   rollFinished --> targetRollFinished
   targetRollFinished --> onHit
   onHit --> sceneRollFinished
+  sceneRollFinished -.-> afterSceneRoll
 
   %% invis links for layout
-  scenePostAttackRoll ~~~ sceneAttackRollComplete
-  sceneAttackRollComplete ~~~ sceneDamageRollComplete
 
   classDef node stroke-width:2px,padding:10px
   classDef hidden display:none
