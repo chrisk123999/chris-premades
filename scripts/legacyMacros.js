@@ -676,3 +676,7 @@ export {jewelOfThreePrayersDormant} from './macros/2014/items/trinket/jewelOfThr
 export {backbreaker, braceMelee, braceMeleeDamage, cleave, concussiveSmash, maimingStrike, disarmingStrike, flourish, heartstopper, lacerate, piercingStrike, piercingStrikeEffect, pommelStrike, prepare, rush, tenacity, topple, weakeningStrike, braceRanged, braceRangedDamage, hamstringShot, mobileShot, piercingShot} from './macros/2014/homebrew/bg3WeaponActions.js';
 //Other
 export {maxDamage, maxDamageEffect, doubleDamage, doubleDamageEffect} from './macros/homebrew/critFumble.js';
+// Piety
+export {heliodsDevotee} from './macros/2014/piety/heliod/heliodsDevotee.js';
+export {nyleasDevotee} from './macros/2014/piety/nylea/nyleasDevotee.js';
+export {karametrasDevotee} from './macros/2014/piety/karametra/karametrasDevotee.js';

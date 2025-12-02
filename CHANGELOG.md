@@ -1,3 +1,11 @@
+# 1.3.153 Release:
+## New Legacy Content:
+- Heliod's Devotee
+- Karametra's Devotee
+- Nylea's Devotee
+## Bug Fixes:
+- Bless (Legacy and Modern)
+
 # 1.3.152 Release:
 ## Bug Fixes:
 - Purple Dragon Rook

@@ -345,6 +345,13 @@
       "path": "packs/cpr-species-features-2024",
       "type": "Item",
       "module": "chris-premades"
+    },
+    {
+      "name": "CPROtherFeatures",
+      "label": "CPR Other Features",
+      "path": "packs/cpr-other-features",
+      "type": "Item",
+      "module": "chris-premades"
     }
   ],
   "packFolders": [
@@ -401,7 +408,8 @@
       "packs": [
         "CPRMiscellaneousItems",
         "CPRMiscellaneous",
-        "CPREmbeddedMacroSampleItems"
+        "CPREmbeddedMacroSampleItems",
+        "CPROtherFeatures"
       ]
     }
   ],

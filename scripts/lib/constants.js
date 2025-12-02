@@ -19,7 +19,8 @@ let packs = {
     miscellaneous: 'chris-premades.CPRMiscellaneous',
     thirdPartyFeats: 'chris-premades.CPRThirdPartyFeats',
     embeddedMacroSampleItems: 'chris-premades.CPREmbeddedMacroSampleItems',
-    thirdPartySpells: 'chris-premades.CPRThirdPartySpells'
+    thirdPartySpells: 'chris-premades.CPRThirdPartySpells',
+    otherFeatures: 'chris-premades.CPROtherFeatures'
 };
 let featurePacks = {
     spellFeatures: 'chris-premades.CPRSpellFeatures',
@@ -99,6 +100,7 @@ function setUseLocalCompendium(value) {
         packs.thirdPartySpells = 'world.cpr-3rd-party-spells';
         modernPacks.thirdPartySpells = 'world.cpr-3rd-party-spells-2024';
         modernPacks.speciesFeatures = 'world.cpr-species-features-2024';
+        packs.otherFeatures =  'world.cpr-other-features';
     } else {
         packs.spellFeatures = 'chris-premades.CPRSpellFeatures';
         featurePacks.spellFeatures = 'chris-premades.CPRSpellFeatures';
@@ -137,6 +139,7 @@ function setUseLocalCompendium(value) {
         packs.thirdPartySpells = 'chris-premades.CPR3rdPartySpells';
         modernPacks.thirdPartySpells = 'chris-premades.CPR3rdPartySpells2024';
         modernPacks.speciesFeatures = 'chris-premades.CPRSpeciesFeatures2024';
+        packs.otherFeatures = 'chris-premades.CPROtherFeatures';
     }
 }
 const attacks = [

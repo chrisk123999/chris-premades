@@ -57,6 +57,7 @@ async function getCPRAutomation(item, {identifier, rules = 'legacy', type = 'cha
                         keys.push(constants.packs.miscellaneous);
                         keys.push(constants.packs.actions);
                     }
+                    keys.push(constants.packs.otherFeatures);
                 }
                 break;
         }
