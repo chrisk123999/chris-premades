@@ -17,10 +17,10 @@ export let purpleDragonRook = {
                 priority: 50
             }
         ]
-    },
-    ddbi: {
-        removeChoices: [
-            'Purple Dragon Rook'
-        ]
     }
+    //ddbi: {
+    //    removeChoices: [
+    //        'Purple Dragon Rook'
+    //    ]
+    //}
 };

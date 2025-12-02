@@ -1,3 +1,7 @@
+# 1.3.152 Release:
+## Bug Fixes:
+- Purple Dragon Rook
+
 # 1.3.151 Release:
 ## New Legacy Content:
 - Channel Divinity: Magnificent Feast
