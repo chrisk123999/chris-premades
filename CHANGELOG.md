@@ -1,3 +1,8 @@
+# 1.3.155 Release:
+## Bug Fixes:
+- Alert
+- Summons and Companion Initiative
+
 # 1.3.154 Release:
 ## New Legacy Content:
 - Iroas's Devotee

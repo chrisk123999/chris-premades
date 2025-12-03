@@ -6,8 +6,8 @@ async function use({workflow}) {
     let targetCombatant = game.combat.getCombatantByToken(workflow.targets.first().id);
     if (tokenCombatant?.initiative === null || targetCombatant?.initiative === null ) return;
     let tokenInitiative = tokenCombatant.initiative;
-    genericUtils.update(tokenCombatant, {initiative: targetCombatant.initiative});
-    genericUtils.update(targetCombatant, {initiative: tokenInitiative});
+    genericUtils.update(tokenCombatant, {initiative: targetCombatant.initiative}, {}, true);
+    genericUtils.update(targetCombatant, {initiative: tokenInitiative}, {}, true);
 }
 export let alert = {
     name: 'Alert',
