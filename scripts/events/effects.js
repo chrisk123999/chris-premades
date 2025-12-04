@@ -75,7 +75,7 @@ function collectMacros(effect, pass) {
         if (token) {
             let templates = templateUtils.getTemplatesInToken(token);
             templates.forEach(template => {
-                let macroList = collectEffectMacros(templates).filter(i => i.effect?.find(j => j.pass === pass)).flatMap(k => k.effect).filter(l => l.pass === pass).concat(macroUtils.getEmbeddedMacros(effect, 'effect', {pass}));
+                let macroList = collectEffectMacros(template).filter(i => i.effect?.find(j => j.pass === pass)).flatMap(k => k.effect).filter(l => l.pass === pass).concat(macroUtils.getEmbeddedMacros(effect, 'effect', {pass}));
                 if (!macroList.length) return;
                 triggers.push({
                     entity: template,

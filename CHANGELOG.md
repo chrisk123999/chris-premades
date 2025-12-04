@@ -1,3 +1,7 @@
+# 1.3.158 Release:
+## Bug Fixes:
+- Effect Event
+
 # 1.3.157 Release:
 ## New Modern Content:
 - Eldritch Invocations: Agonizing Blast
