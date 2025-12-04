@@ -8,7 +8,6 @@
 ## Bug Fixes:
 - Strength of the Grave
 - Eldritch Blast
-- 
 
 # 1.3.156 Release:
 ## New Modern Content:
