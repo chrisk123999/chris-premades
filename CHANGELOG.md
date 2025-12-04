@@ -1,3 +1,9 @@
+# 1.3.156 Release:
+## New Modern Content:
+- Mount (Generic Action, Requires Rideable Module)
+## API Update Notes:
+- Added `actorCreated` and `actorDeleted` pass for effect events.
+
 # 1.3.155 Release:
 ## Bug Fixes:
 - Alert

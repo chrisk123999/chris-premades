@@ -371,6 +371,9 @@
                 "actorCreated": {
                     "Label": "Actor Created"
                 },
+                "sceneCreated": {
+                    "Label": "Scene Created"
+                },
                 "actorDeleted": {
                     "Label": "Actor Deleted"
                 },
@@ -1965,6 +1968,11 @@
             },
             "MoonlightStep": {
                 "TeleportFriend": "Teleport a willing ally?"
+            },
+            "Mount": {
+                "MountedRider": "Mounted (Rider)",
+                "MountedTarget": "Mounted (Target)",
+                "Rideable": "The \"Rideable\" module is required to use this feature!"
             },
             "MovementBonusActivity": {
                 "Distance": "Required Distance (ft):",

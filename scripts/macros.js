@@ -68,6 +68,7 @@ export {underwater, underwaterEffect} from './macros/2024/actions/underwater.js'
 export {knockOut, knockOutEffect} from './macros/2024/actions/knockOut.js';
 export {genericActions} from './macros/2024/actions/genericActions.js';
 export {circleCast, circleCastEffect} from './macros/2024/actions/circleCast.js';
+export {mount, mountedRider, mountedTarget} from './macros/2024/actions/mount.js';
 // Generic
 export {proneOnFail} from './macros/2024/generic/proneOnFail.js';
 // Spells

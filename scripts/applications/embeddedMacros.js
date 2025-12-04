@@ -351,7 +351,43 @@ export const eventStructure = {
         {
             pass: 'preUpdateEffect',
             documents: []
+        },
+        {
+            pass: 'actorCreated',
+            documents: [
+                'item',
+                'activeeffect',
+                'measuredtemplate',
+                'region'
+            ]
+        },
+        {
+            pass: 'actorDeleted',
+            documents: [
+                'item',
+                'activeeffect',
+                'measuredtemplate',
+                'region'
+            ]
         }
+        /*{
+            pass: 'sceneCreated',
+            documents: [
+                'item',
+                'activeeffect',
+                'measuredtemplate',
+                'region'
+            ]
+        },
+        {
+            pass: 'sceneDeleted',
+            documents: [
+                'item',
+                'activeeffect',
+                'measuredtemplate',
+                'region'
+            ]
+        }*/
     ],
     'midi-item': [
         {
