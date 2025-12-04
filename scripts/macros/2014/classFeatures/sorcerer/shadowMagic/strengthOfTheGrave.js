@@ -1,7 +1,6 @@
 import {dialogUtils, genericUtils, socketUtils, workflowUtils} from '../../../../../utils.js';
-
 async function damageApplication({trigger: {entity: item, token}, workflow, ditem}) {
-    if (ditem.newHP > 0 || ditem.oldHP === 0) return;
+    if (ditem.newHP > 0 || ditem.oldHP === 0 || !ditem.isHit) return;
     if (!item.system.uses.value) return;
     if (workflow.isCritical || workflowUtils.getDamageTypes(workflow.damageRolls).has('radiant')) return;
     let selection = await dialogUtils.confirm(item.name, genericUtils.format('CHRISPREMADES.Dialog.Use', {itemName: item.name}), {userId: socketUtils.firstOwner(token.actor, true)});

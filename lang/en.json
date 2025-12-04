@@ -219,6 +219,7 @@
             "ImmuneCreatures": "Immune Creature Types:",
             "Items": "Items:",
             "LineColor": "Line Color:",
+            "Max": "Max:",
             "MaxLevel": "Max Level:",
             "MaxSize": "Max Size:",
             "Multiplier": "Multiplier:",
@@ -371,9 +372,6 @@
                 "actorCreated": {
                     "Label": "Actor Created"
                 },
-                "sceneCreated": {
-                    "Label": "Scene Created"
-                },
                 "actorDeleted": {
                     "Label": "Actor Deleted"
                 },
@@ -484,6 +482,9 @@
                 },
                 "sceneCreate": {
                     "Label": "Scene Create"
+                },
+                "sceneCreated": {
+                    "Label": "Scene Created"
                 },
                 "sceneDamageRollComplete": {
                     "Label": "Scene Damage Roll Complete"
@@ -687,7 +688,7 @@
             "Import": "Import",
             "Items": "Items",
             "Length": "Length",
-            "Max": "Max:",
+            "Max": "Max",
             "MeleeSpells": "Melee Spell",
             "MeleeWeapons": "Melee Weapons",
             "MissingScale": "Actor does not have {scaleName} scale set!",
@@ -828,6 +829,9 @@
                 "Bonus": "Bonus damage if attack has advantage:",
                 "Name": "Advantage Damage Bonus",
                 "Replace": "Replace Damage Formula:"
+            },
+            "AgonizingBlast": {
+                "Select": "Select your Agonizing Blast spell(s):"
             },
             "AllPurposeTool": {
                 "Channel": "All-Purpose Tool: Channel Creative Forces",

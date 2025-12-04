@@ -39,6 +39,7 @@ async function beam({trigger, workflow}) {
 async function damage({trigger, workflow}) {
     let agonizingBlast = itemUtils.getItemByIdentifier(workflow.actor, 'agonizingBlast');
     if (!agonizingBlast) return;
+    if (genericUtils.getRules(agonizingBlast) === 'modern') return;
     await workflowUtils.bonusDamage(workflow, String(workflow.actor.system.abilities.cha.mod), {ignoreCrit: true, damageType: workflow.defaultDamageType});
 }
 export let eldritchBlast = {

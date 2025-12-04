@@ -1,0 +1,217 @@
+{
+  "type": "spell",
+  "system": {
+    "activities": {
+      "healHealing1IIII": {
+        "name": "Healing",
+        "type": "heal",
+        "_id": "healHealing1IIII",
+        "sort": 0,
+        "activation": {
+          "type": "action",
+          "override": false
+        },
+        "consumption": {
+          "spellSlot": true,
+          "targets": [],
+          "scaling": {
+            "allowed": false,
+            "max": ""
+          }
+        },
+        "description": {
+          "chatFlavor": ""
+        },
+        "duration": {
+          "units": "inst",
+          "concentration": false,
+          "override": false
+        },
+        "effects": [],
+        "range": {
+          "units": "self",
+          "override": false
+        },
+        "target": {
+          "template": {
+            "contiguous": false,
+            "units": "ft"
+          },
+          "affects": {
+            "choice": false
+          },
+          "override": false,
+          "prompt": true
+        },
+        "uses": {
+          "spent": 0,
+          "recovery": [],
+          "max": ""
+        },
+        "healing": {
+          "number": 2,
+          "denomination": 4,
+          "bonus": "4 + 5 * (@scaling - 1)",
+          "types": [
+            "temphp"
+          ],
+          "custom": {
+            "enabled": false
+          },
+          "scaling": {
+            "mode": "",
+            "number": null,
+            "formula": ""
+          }
+        },
+        "useConditionText": "",
+        "useConditionReason": "",
+        "effectConditionText": "",
+        "macroData": {
+          "name": "",
+          "command": ""
+        },
+        "ignoreTraits": {
+          "idi": false,
+          "idr": false,
+          "idv": false,
+          "ida": false,
+          "idm": false
+        },
+        "midiProperties": {
+          "ignoreTraits": [],
+          "triggeredActivityId": "none",
+          "triggeredActivityConditionText": "",
+          "triggeredActivityTargets": "targets",
+          "triggeredActivityRollAs": "self",
+          "confirmTargets": "default",
+          "automationOnly": false,
+          "identifier": "",
+          "autoConsume": false,
+          "forceConsumeDialog": "default",
+          "forceRollDialog": "default",
+          "forceDamageDialog": "default",
+          "autoTargetType": "any",
+          "autoTargetAction": "default",
+          "otherActivityCompatible": false,
+          "otherActivityAsParentType": true,
+          "displayActivityName": false,
+          "rollMode": "default",
+          "chooseEffects": false,
+          "toggleEffect": false,
+          "ignoreFullCover": false,
+          "removeChatButtons": "default",
+          "magicEffect": false,
+          "magicDamage": false,
+          "noConcentrationCheck": false,
+          "autoCEEffects": "default"
+        },
+        "isOverTimeFlag": false,
+        "overTimeProperties": {
+          "saveRemoves": true,
+          "preRemoveConditionText": "",
+          "postRemoveConditionText": ""
+        }
+      }
+    },
+    "uses": {
+      "spent": null,
+      "max": "",
+      "recovery": []
+    },
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "identifier": "false-life",
+    "source": {
+      "book": "PHB 2024",
+      "page": "",
+      "license": "",
+      "custom": "",
+      "rules": "2024",
+      "revision": 1
+    },
+    "activation": {
+      "type": "action",
+      "value": 1,
+      "condition": ""
+    },
+    "duration": {
+      "value": "0",
+      "units": "inst"
+    },
+    "level": 1,
+    "materials": {
+      "value": "",
+      "consumed": false,
+      "cost": 0,
+      "supply": 0
+    },
+    "method": "pact",
+    "prepared": 2,
+    "properties": [
+      "vocal",
+      "somatic",
+      "material"
+    ],
+    "range": {
+      "units": "self"
+    },
+    "school": "nec",
+    "sourceClass": "",
+    "target": {
+      "affects": {
+        "count": "",
+        "type": "self",
+        "choice": false,
+        "special": ""
+      },
+      "template": {
+        "count": "",
+        "contiguous": false,
+        "type": "",
+        "size": "",
+        "width": "",
+        "height": "",
+        "units": "ft"
+      }
+    }
+  },
+  "effects": [],
+  "name": "False Life",
+  "flags": {
+    "midi-qol": {
+      "removeAttackDamageButtons": "default"
+    },
+    "midiProperties": {
+      "confirmTargets": "default",
+      "magicdam": true,
+      "magiceffect": true
+    },
+    "dnd5e": {
+      "last": {
+        "healHealing1IIII": {
+          "damageType": {
+            "0": "temphp"
+          }
+        }
+      },
+      "riders": {
+        "activity": []
+      }
+    },
+    "chris-premades": {
+      "info": {
+        "identifier": "falseLife",
+        "rules": "modern",
+        "source": "chris-premades",
+        "version": "1.3.156"
+      }
+    }
+  },
+  "img": "icons/magic/control/debuff-chains-purple.webp",
+  "folder": null,
+  "_id": "p8ISe5gUYYQP4qgM",
+  "_key": "!items!p8ISe5gUYYQP4qgM"
+}

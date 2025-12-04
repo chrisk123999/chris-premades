@@ -204,6 +204,7 @@ export {sproutFoliage} from './macros/2024/spells/sproutFoliage.js';
 export {forestGuard, forestGuardTurnEffect, forestGuardEffect} from './macros/2024/spells/forestGuard.js';
 export {cacophonicShield, cacophonicShieldSourceEffect} from './macros/2024/spells/cacophonicShield.js';
 export {resistance, resistanceEffect} from './macros/2024/spells/resistance.js';
+export {falseLife} from './macros/2024/spells/falseLife.js';
 // Items
 export {healersKit} from './macros/2024/items/healersKit.js';
 export {unarmedStrike} from './macros/2024/items/misc/unarmedStrike.js';
@@ -232,6 +233,7 @@ export {telekineticShove} from './macros/2024/feats/telekinetic.js';
 export {thrownWeaponFighting} from './macros/2024/feats/thrownWeaponFighting.js';
 export {unarmedFighting, unarmedFightingUnarmedStrike} from './macros/2024/feats/unarmedFighting.js';
 export {purpleDragonRook} from './macros/2024/feats/purpleDragonRook.js';
+export {spellfireSpark} from './macros/2024/feats/spellfireSpark.js';
 // Species Features
 // Aasimar
 export {healingHands} from './macros/2024/speciesFeatures/aasimar/healingHands.js';
@@ -408,9 +410,13 @@ export {secondStoryWork} from './macros/2024/classFeatures/rogue/thief/secondSto
 export {supremeSneak} from './macros/2024/classFeatures/rogue/thief/supremeSneak.js';
 // Warlock
 export {magicalCunning} from './macros/2024/classFeatures/warlock/magicalCunning.js';
+// Archfey
+export {stepsOfTheFey} from './macros/2024/classFeatures/warlock/archfey/stepsOfTheFey.js';
 // Invocations
 export {pactOfTheChain} from './macros/2024/classFeatures/warlock/invocations/pactOfTheChain.js';
 export {pactOfTheBlade, pactOfTheBladeAttack} from './macros/2024/classFeatures/warlock/invocations/pactOfTheBlade.js';
+export {agonizingBlast} from './macros/2024/classFeatures/warlock/invocations/agonizingBlast.js';
+export {fiendishVigor} from './macros/2024/classFeatures/warlock/invocations/fiendishVigor.js';
 // Monk
 export {martialArts} from './macros/2024/classFeatures/monk/martialArts.js';
 export {unarmoredDefenseMonk} from './macros/2024/classFeatures/monk/unarmoredDefense.js';

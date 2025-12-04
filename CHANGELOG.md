@@ -1,3 +1,15 @@
+# 1.3.157 Release:
+## New Modern Content:
+- Eldritch Invocations: Agonizing Blast
+- Eldritch Invocations: Fiendish Vigor
+- Steps of the Fey
+- Spellfire Spark
+- False Life
+## Bug Fixes:
+- Strength of the Grave
+- Eldritch Blast
+- 
+
 # 1.3.156 Release:
 ## New Modern Content:
 - Mount (Generic Action, Requires Rideable Module)
