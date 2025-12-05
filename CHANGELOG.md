@@ -1,6 +1,11 @@
 # 1.3.159 Release:
+## New Modern Content:
+- Spellfire Flare
+- Dissolution
 ## Bug Fixes:
 - Conjure Woodland Beings (Modern)
+- Goblin Boss: Redirect Attack
+- Forest Sage
 
 # 1.3.158 Release:
 ## Bug Fixes:

@@ -205,6 +205,8 @@ export {forestGuard, forestGuardTurnEffect, forestGuardEffect} from './macros/20
 export {cacophonicShield, cacophonicShieldSourceEffect} from './macros/2024/spells/cacophonicShield.js';
 export {resistance, resistanceEffect} from './macros/2024/spells/resistance.js';
 export {falseLife} from './macros/2024/spells/falseLife.js';
+export {spellfireFlare} from './macros/2024/spells/spellfireFlare.js';
+export {dissolution} from './macros/2024/spells/dissolution.js';
 // Items
 export {healersKit} from './macros/2024/items/healersKit.js';
 export {unarmedStrike} from './macros/2024/items/misc/unarmedStrike.js';

@@ -3,7 +3,7 @@ async function attacked({trigger: {token: target, entity: item}, workflow}) {
     if (!workflow.targets.size || !workflow.token) return;
     if (!workflowUtils.isAttackType(workflow, 'attack')) return;
     if (actorUtils.hasUsedReaction(target.actor)) return;
-    let nearby = tokenUtils.findNearby(target, 5, 'all', {includeIncapacitated: true}).filter(i => i.document.id != workflow.token.document.id && [1, 2].includes(actorUtils.getSize(i.actor)));
+    let nearby = tokenUtils.findNearby(target, 5, 'ally', {includeIncapacitated: true}).filter(i => i.document.id != workflow.token.document.id && [1, 2].includes(actorUtils.getSize(i.actor)));
     if (!nearby.length) return;
     let selection = await dialogUtils.selectTargetDialog(item.name, genericUtils.format('CHRISPREMADES.Dialog.Use', {itemName: item.name}), nearby, {skipDeadAndUnconscious: false, userId: socketUtils.firstOwner(item.actor, true)});
     if (!selection) return;

@@ -141,6 +141,7 @@
             "AutoApply": "Auto Apply:",
             "AvatarImg": "Avatar Image:",
             "AvatarImgPriority": "Avatar Image Priority:",
+            "BaseAttacks": "Base Attacks",
             "BaseDiceNumber": "Base Dice Number:",
             "BaseHealing": "Base Healing:",
             "BlockingStatuses": "Blocking Statuses:",
@@ -2066,6 +2067,7 @@
                 "Sky": "Sky"
             },
             "PrimalKnowledge": {
+                "ReplacementAbilities": "Replacement Abilities",
                 "ReplacementAbility": "Replacement Ability:"
             },
             "Protection": {
