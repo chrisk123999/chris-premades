@@ -1,3 +1,7 @@
+# 1.3.159 Release:
+## Bug Fixes:
+- Conjure Woodland Beings (Modern)
+
 # 1.3.158 Release:
 ## Bug Fixes:
 - Effect Event
