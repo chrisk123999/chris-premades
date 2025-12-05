@@ -29,8 +29,7 @@ async function use({workflow}) {
         rules: 'modern'
     });
     let nearbyTokens = tokenUtils.findNearby(workflow.token, 10, 'enemy');
-    let turnToCheck;
-    if (combatUtils.inCombat()) turnToCheck = combatUtils.currentTurn();
+    let turnToCheck = combatUtils.currentTurn();
     await damageHelper(nearbyTokens, effect, workflow.token, turnToCheck);
 }
 async function moved({trigger: {token, entity: effect}, options}) {
@@ -41,8 +40,7 @@ async function moved({trigger: {token, entity: effect}, options}) {
     let endPoint = {x: token.center.x, y: token.center.y};
     let radius = 10 + token.document.width * canvas.grid.distance;
     let affectedTokens = Array.from(tokenUtils.getMovementHitTokens(startPoint, endPoint, radius)).filter(t => t.document.disposition !== token.document.disposition);
-    let turnToCheck;
-    if (combatUtils.inCombat()) turnToCheck = combatUtils.currentTurn();
+    let turnToCheck = combatUtils.currentTurn();
     await damageHelper(affectedTokens, effect, token, turnToCheck);
 }
 async function turnEnd({trigger: {token, target, entity: effect, previousTurn, previousRound}}) {
@@ -61,8 +59,7 @@ async function movedNear({trigger: {target, token, entity: effect}, options}) {
     }, {parent: canvas.scene});
     let oldDistance = tokenUtils.getDistance(token, tempToken);
     if (oldDistance <= 10) return;
-    let turnToCheck;
-    if (combatUtils.inCombat()) turnToCheck = combatUtils.currentTurn();
+    let turnToCheck = combatUtils.currentTurn();
     await damageHelper([target], effect, token, turnToCheck);
 }
 async function damageHelper(affectedTokens, effect, token, turnToCheck) {

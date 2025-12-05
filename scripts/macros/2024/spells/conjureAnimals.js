@@ -63,8 +63,7 @@ async function use({workflow}) {
         }
     });
     let nearbyTargets = tokenUtils.findNearby(spawnedToken, 10, 'enemy');
-    let turnToCheck;
-    if (combatUtils.inCombat()) turnToCheck = combatUtils.currentTurn();
+    let turnToCheck = combatUtils.currentTurn();
     await saveHelper(nearbyTargets, summonedEffect, spawnedToken.object, turnToCheck);
 }
 async function save({trigger: {entity: effect, token, saveId, options}}) {
@@ -84,8 +83,7 @@ async function moved({trigger: {token, entity: effect}, options}) {
     let radius = 10 + token.document.width * canvas.grid.distance;
     let affectedTokens = tokenUtils.getMovementHitTokens(startPoint, endPoint, radius, {includeAlreadyHit: true});
     affectedTokens = Array.from(affectedTokens).filter(t => t.actor && !MidiQOL.checkIncapacitated(t.actor) && token.document.disposition !== t.document.disposition);
-    let turnToCheck;
-    if (combatUtils.inCombat()) turnToCheck = combatUtils.currentTurn();
+    let turnToCheck = combatUtils.currentTurn();
     await saveHelper(affectedTokens, effect, token, turnToCheck);
 }
 async function turnEnd({trigger: {token, target, entity: effect, previousTurn, previousRound}}) {
@@ -93,8 +91,7 @@ async function turnEnd({trigger: {token, target, entity: effect, previousTurn, p
     await saveHelper([target], effect, token, turnToCheck);
 }
 async function movedNear({trigger: {token, target, entity: effect}}) {
-    let turnToCheck;
-    if (combatUtils.inCombat()) turnToCheck = combatUtils.currentTurn();
+    let turnToCheck = combatUtils.currentTurn();
     await saveHelper([target], effect, token, turnToCheck);
 }
 async function saveHelper(affectedTokens, effect, token, turnToCheck) {
