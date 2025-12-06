@@ -1,3 +1,11 @@
+# 1.3.160 Release:
+## New Modern Content:
+- Dream
+## New Monster Content:
+- Night Hag: Nightmare Haunting
+## Bug Fixes:
+- Reduce Max HP Generic Monster Feature
+
 # 1.3.159 Release:
 ## New Modern Content:
 - Spellfire Flare

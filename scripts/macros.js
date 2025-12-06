@@ -207,6 +207,7 @@ export {resistance, resistanceEffect} from './macros/2024/spells/resistance.js';
 export {falseLife} from './macros/2024/spells/falseLife.js';
 export {spellfireFlare} from './macros/2024/spells/spellfireFlare.js';
 export {dissolution} from './macros/2024/spells/dissolution.js';
+export {dream} from './macros/2024/spells/dream.js';
 // Items
 export {healersKit} from './macros/2024/items/healersKit.js';
 export {unarmedStrike} from './macros/2024/items/misc/unarmedStrike.js';
@@ -476,3 +477,5 @@ export {auraOfAuthority} from './macros/2024/monsterFeatures/hobgoblinCaptain/au
 export {pseudodragonSting} from './macros/2024/monsterFeatures/pseudodragon/sting.js';
 // Carrion Crawler
 export {carrionCrawlerParalyzingTentacles} from './macros/2024/monsterFeatures/carrionCrawler/paralyzingTentacles.js';
+// Night Hag
+export {nightmareHaunting} from './macros/2024/monsterFeatures/nightHag/nightmareHaunting.js';

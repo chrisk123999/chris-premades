@@ -1,0 +1,186 @@
+{
+  "name": "Nightmare Haunting",
+  "type": "feat",
+  "system": {
+    "activities": {
+      "castDreamactionI": {
+        "name": "Dream",
+        "type": "cast",
+        "_id": "castDreamactionI",
+        "sort": 0,
+        "activation": {
+          "type": "action",
+          "value": 1,
+          "condition": "",
+          "override": false
+        },
+        "consumption": {
+          "scaling": {
+            "allowed": false
+          },
+          "spellSlot": true,
+          "targets": []
+        },
+        "description": {
+          "chatFlavor": ""
+        },
+        "duration": {
+          "value": "",
+          "units": "inst",
+          "concentration": false,
+          "override": false
+        },
+        "range": {
+          "units": "self",
+          "override": false
+        },
+        "target": {
+          "template": {
+            "count": "",
+            "contiguous": false,
+            "type": "",
+            "size": "",
+            "width": "",
+            "height": "",
+            "units": "ft"
+          },
+          "affects": {
+            "count": "1",
+            "type": "creature",
+            "choice": false,
+            "special": ""
+          },
+          "prompt": true,
+          "override": false
+        },
+        "uses": {
+          "spent": 0,
+          "recovery": [],
+          "max": ""
+        },
+        "spell": {
+          "uuid": "Compendium.world.cpr-spells-2024.Item.jmKbcq5Q3UDCDSTq",
+          "properties": [],
+          "level": 5,
+          "challenge": {
+            "attack": null,
+            "save": null,
+            "override": false
+          },
+          "spellbook": true,
+          "ability": ""
+        },
+        "useConditionText": "",
+        "useConditionReason": "",
+        "effectConditionText": "",
+        "macroData": {
+          "name": "",
+          "command": ""
+        },
+        "ignoreTraits": {
+          "idi": false,
+          "idr": false,
+          "idv": false,
+          "ida": false,
+          "idm": false
+        },
+        "midiProperties": {
+          "ignoreTraits": [],
+          "triggeredActivityId": "none",
+          "triggeredActivityConditionText": "",
+          "triggeredActivityTargets": "targets",
+          "triggeredActivityRollAs": "self",
+          "confirmTargets": "never",
+          "automationOnly": false,
+          "identifier": "",
+          "forceDamageDialog": "",
+          "autoTargetType": "any",
+          "autoTargetAction": "default",
+          "otherActivityCompatible": true,
+          "otherActivityAsParentType": true,
+          "displayActivityName": false,
+          "rollMode": "default",
+          "chooseEffects": false,
+          "toggleEffect": false,
+          "ignoreFullCover": false,
+          "removeChatButtons": "default",
+          "magicEffect": false,
+          "magicDamage": false,
+          "noConcentrationCheck": false,
+          "autoCEEffects": "default",
+          "autoConsume": false,
+          "forceConsumeDialog": "default",
+          "forceRollDialog": "default"
+        },
+        "isOverTimeFlag": false,
+        "overTimeProperties": {
+          "saveRemoves": true,
+          "preRemoveConditionText": "",
+          "postRemoveConditionText": ""
+        }
+      }
+    },
+    "uses": {
+      "spent": null,
+      "recovery": []
+    },
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "identifier": "nightmare-haunting-1-day-requires-soul-bag",
+    "source": {
+      "revision": 1,
+      "rules": "2024"
+    },
+    "advancement": [],
+    "crewed": false,
+    "enchant": {},
+    "prerequisites": {
+      "repeatable": false,
+      "items": []
+    },
+    "properties": [],
+    "requirements": "",
+    "type": {
+      "value": "monster",
+      "subtype": ""
+    }
+  },
+  "effects": [],
+  "flags": {
+    "midiProperties": {
+      "saveDamage": "halfdam"
+    },
+    "chris-premades": {
+      "info": {
+        "identifier": "nightmareHaunting",
+        "rules": "modern",
+        "source": "chris-premades",
+        "version": "1.3.160"
+      },
+      "macros": {
+        "midi": {
+          "actor": [
+            "nightmareHaunting"
+          ]
+        }
+      },
+      "castActivities": [
+        {
+          "name": "Dream",
+          "activityId": "castDreamactionI"
+        }
+      ]
+    },
+    "dnd5e": {
+      "riders": {
+        "activity": []
+      }
+    }
+  },
+  "img": "icons/magic/death/projectile-skull-flaming-green.webp",
+  "folder": "zT2v7nkKVHVdxkAp",
+  "_id": "yEXe7lJbu4b2S0uB",
+  "_key": "!items!yEXe7lJbu4b2S0uB"
+}
