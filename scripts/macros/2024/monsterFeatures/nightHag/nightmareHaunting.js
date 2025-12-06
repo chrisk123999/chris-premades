@@ -4,7 +4,7 @@ async function use({trigger: {entity: item}, workflow}) {
     let uuid = workflow.item.flags.dnd5e?.cachedFor;
     if (!uuid) return;
     let activity = await fromUuid(uuid, {relative: workflow.actor});
-    if (!activity.item.uuid === item.uuid) return;
+    if (activity.item.uuid != item.uuid) return;
     await Promise.all(workflow.targets.map(async token => {
         if (!workflow.failedSaves.has(token)) return;
         let ditem = workflow.damageList.find(i => i.actorId === token.actor.id);

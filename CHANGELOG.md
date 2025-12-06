@@ -1,3 +1,7 @@
+# 1.3.161 Release:
+## Bug Fixes:
+- Nightmare Haunting
+
 # 1.3.160 Release:
 ## New Modern Content:
 - Dream
