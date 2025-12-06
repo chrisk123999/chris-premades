@@ -722,6 +722,7 @@
             "SelectAnItem": "Select an item:",
             "SelectDamageType": "Select a damage type:",
             "SelectEffect": "Select an effect:",
+            "SelectRemoveCondition": "Select a condition to remove:",
             "SelectSpell": "Select a Spell:",
             "SelectSpellSlot": "Select a spell slot:",
             "SelectTargetEffect": "Select an effect for each target:",

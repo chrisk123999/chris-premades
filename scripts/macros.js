@@ -431,6 +431,11 @@ export {slowFall} from './macros/2024/classFeatures/monk/slowFall.js';
 export {stunningStrike} from './macros/2024/classFeatures/monk/stunningStrike.js';
 export {empoweredStrikes} from './macros/2024/classFeatures/monk/empoweredStrikes.js';
 export {heightenedFocus} from './macros/2024/classFeatures/monk/heightenedFocus.js';
+export {selfRestoration} from './macros/2024/classFeatures/monk/selfRestoration.js';
+export {deflectEnergy} from './macros/2024/classFeatures/monk/deflectEnergy.js';
+export {disciplinedSurvivor} from './macros/2024/classFeatures/monk/disciplinedSurvivor.js';
+export {perfectFocus} from './macros/2024/classFeatures/monk/perfectFocus.js';
+export {superiorDefense} from './macros/2024/classFeatures/monk/superiorDefense.js';
 // Fighter
 export {secondWind} from './macros/2024/classFeatures/fighter/secondWind.js';
 export {tacticalMind} from './macros/2024/classFeatures/fighter/tacticalMind.js';

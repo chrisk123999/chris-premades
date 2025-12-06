@@ -333,7 +333,6 @@ async function removeWorkflowEffects(workflow) {
         await genericUtils.remove(entity);
     }
 }
-
 export let effects = {
     noAnimation,
     checkInterdependentDeps,

@@ -1,5 +1,4 @@
 import {effectUtils, genericUtils, rollUtils} from '../../../../../utils.js';
-
 async function use({workflow}) {
     if (workflow.targets.size !== 1) return;
     let targetToken = workflow.targets.first();

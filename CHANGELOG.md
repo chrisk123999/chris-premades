@@ -1,3 +1,12 @@
+# 1.3.162 Release:
+## New Modern Content:
+- Insightful Fighting
+- Deflect Energy
+- Disciplined Survivor
+- Perfect Focus
+- Self-Restoration
+- Superior Defense
+
 # 1.3.161 Release:
 ## Bug Fixes:
 - Nightmare Haunting

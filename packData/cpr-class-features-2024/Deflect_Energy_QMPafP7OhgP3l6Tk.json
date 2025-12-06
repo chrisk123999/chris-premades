@@ -1,0 +1,60 @@
+{
+  "name": "Deflect Energy",
+  "type": "feat",
+  "effects": [],
+  "system": {
+    "activities": {},
+    "uses": {
+      "spent": null,
+      "recovery": [],
+      "max": ""
+    },
+    "advancement": [],
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "identifier": "deflect-energy",
+    "source": {
+      "book": "PHB 2024",
+      "page": "",
+      "license": "",
+      "custom": "",
+      "rules": "2024",
+      "revision": 1
+    },
+    "crewed": false,
+    "enchant": {},
+    "prerequisites": {
+      "items": [],
+      "level": 13,
+      "repeatable": false
+    },
+    "properties": [],
+    "requirements": "",
+    "type": {
+      "value": "class",
+      "subtype": ""
+    }
+  },
+  "flags": {
+    "dnd5e": {
+      "advancementOrigin": "4dPp1aMI6PYTe36Z",
+      "riders": {
+        "activity": []
+      }
+    },
+    "chris-premades": {
+      "info": {
+        "identifier": "deflectEnergy",
+        "rules": "modern",
+        "source": "chris-premades",
+        "version": "1.3.162"
+      }
+    }
+  },
+  "img": "icons/magic/defensive/shield-barrier-deflect-teal.webp",
+  "folder": "tJ727NhyyBNb6ZNf",
+  "_id": "QMPafP7OhgP3l6Tk",
+  "_key": "!items!QMPafP7OhgP3l6Tk"
+}
