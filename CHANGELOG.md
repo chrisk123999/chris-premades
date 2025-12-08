@@ -1,3 +1,7 @@
+# 1.3.164 Release:
+## Bug Fixes:
+- Uncanny Metabolism
+
 # 1.3.163 Release:
 ## New Legacy Content:
 - Amulet of the Lycanthrope
