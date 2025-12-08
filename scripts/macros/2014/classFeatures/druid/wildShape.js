@@ -89,22 +89,12 @@ async function use({workflow}) {
     }
     let customKeepSpells = itemUtils.getConfig(workflow.item, 'keepSpells');
     let keepSpells = druidLevel >= 18 || customKeepSpells;
-    let options = {
-        keepMental: true,
-        mergeSaves: true,
-        mergeSkills: true,
-        keepClass: true,
-        keepFeats: true,
-        keepSpells,
-        keepItems: false,
-        keepBio: true,
-        keepOriginAE: true,
-        keepOtherOriginAE: true,
-        keepSpellAE: true,
-        keepFeatAE: true,
-        keepClassAE: true,
-        keepBackgroundAE: true
-    };
+    let options = CONFIG.DND5E.transformation.presets.wildshape.settings;
+    options.keep.delete('hp');
+    options.keep.delete('languages');
+    options.keep.delete('type');
+    if (keepSpells) options.keep.add('spell');
+    delete options.tempFormula;
     let effectData = {
         name: workflow.item.name,
         img: workflow.item.img,

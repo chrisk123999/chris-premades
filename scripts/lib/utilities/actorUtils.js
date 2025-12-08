@@ -183,7 +183,8 @@ async function polymorph(origActor, newActor, options, renderSheet=true) {
     let hasPermission = socketUtils.hasPermission(origActor, game.user.id);
     hasPermission = hasPermission && socketUtils.hasPermission(newActor, game.user.id);
     if (hasPermission) {
-        return await origActor.transformInto(newActor, options, {renderSheet});
+        // eslint-disable-next-line no-undef
+        return await origActor.transformInto(newActor, new dnd5e.dataModels.settings.TransformationSetting(options), {renderSheet});
     } else {
         let tokenUuids = await socket.executeAsGM(sockets.polymorph.name, origActor.uuid, newActor.uuid, options, renderSheet);
         return Promise.all(tokenUuids.map(async i => await fromUuid(i)));

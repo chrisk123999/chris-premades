@@ -1,3 +1,7 @@
+# 1.3.165 Release:
+## Bug Fixes:
+- Wild Shape (Legacy)
+
 # 1.3.164 Release:
 ## Bug Fixes:
 - Uncanny Metabolism

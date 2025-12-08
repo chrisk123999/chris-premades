@@ -195,7 +195,8 @@ async function polymorph(origActorUuid, newActorUuid, options, renderSheet=true)
     let origActor = await fromUuid(origActorUuid);
     let newActor = await fromUuid(newActorUuid);
     if (!origActor || !newActor) return;
-    let tokens = await origActor.transformInto(newActor, options, {renderSheet});
+    // eslint-disable-next-line no-undef
+    let tokens = await origActor.transformInto(newActor, new dnd5e.dataModels.settings.TransformationSetting(options), {renderSheet});
     return tokens.map(i => i.uuid);
 }
 async function remoteRoll(rollJSON) {
