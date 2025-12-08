@@ -841,6 +841,9 @@
                 "Select": "Select an artisan's tool:",
                 "Spell": "Select a cantrip:"
             },
+            "AmuletOfTheLycanthrope": {
+                "BiteBonus": "Bite Bonus:"
+            },
             "AncestralProtectors": {
                 "Target": "Ancestral Protectors: Target"
             },

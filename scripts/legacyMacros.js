@@ -672,6 +672,7 @@ export {deckOfWonder, deckOfWonderDestinyEffect, deckOfWonderIsolationEffect, de
 export {harkonsBite, harkonsBiteEffect} from './macros/2014/items/trinket/harkonsBite.js';
 export {crownOfDaffodils} from './macros/2014/items/trinket/crownOfDaffodils.js';
 export {jewelOfThreePrayersDormant} from './macros/2014/items/trinket/jewelOfThreePrayers.js';
+export {amuletOfTheLycanthrope, amuletOfTheLycanthropeEffect} from './macros/2014/items/trinket/amuletOfTheLycanthrope.js';
 //BG3 Weapon Actions
 export {backbreaker, braceMelee, braceMeleeDamage, cleave, concussiveSmash, maimingStrike, disarmingStrike, flourish, heartstopper, lacerate, piercingStrike, piercingStrikeEffect, pommelStrike, prepare, rush, tenacity, topple, weakeningStrike, braceRanged, braceRangedDamage, hamstringShot, mobileShot, piercingShot} from './macros/2014/homebrew/bg3WeaponActions.js';
 //Other

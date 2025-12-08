@@ -477,7 +477,7 @@ async function shapechange({trigger, workflow}) {
         await createEffectFunction();
     }
 }
-async function keenHearingAndSmell({trigger: {entity: item, skillId}, workflow}) {
+async function keenHearingAndSmell({trigger: {entity: item, skillId}}) {
     if (skillId != 'prc') return;
     if (!itemUtils.getEquipmentState(item)) return;
     return {
@@ -489,8 +489,7 @@ async function human({trigger, workflow}) {
     let effect = effectUtils.getEffectByIdentifier(workflow.actor, 'harkonsBiteEffect');
     if (effect) await genericUtils.remove(effect);
 }
-async function removed({trigger: {entity: effect}}) {
-    let token = actorUtils.getFirstToken(effect.parent);
+async function removed({trigger: {token}}) {
     if (!token) return;
     Sequencer.EffectManager.endEffects({name: 'Moon Frenzy', object: token});
 }
@@ -503,7 +502,7 @@ async function bite({trigger, workflow}) {
 }
 export let harkonsBite = {
     name: 'Harkon\'s Bite',
-    version: '1.3.141',
+    version: '1.3.163',
     rules: 'legacy',
     midi: {
         item: [

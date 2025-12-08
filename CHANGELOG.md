@@ -1,3 +1,10 @@
+# 1.3.163 Release:
+## New Legacy Content:
+- Amulet of the Lycanthrope
+## Bug Fixes:
+- Harkon's Bite
+- Insignia of Claws
+
 # 1.3.162 Release:
 ## New Modern Content:
 - Insightful Fighting
