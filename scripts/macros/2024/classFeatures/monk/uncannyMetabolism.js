@@ -1,6 +1,6 @@
 import {itemUtils} from '../../../../utils.js';
 async function added({trigger: {entity: item}}) {
-    await itemUtils.correctActivityItemConsumption(item, ['heal'], 'martialArts');
+    await itemUtils.correctActivityItemConsumption(item, ['heal'], 'monksFocus');
     await itemUtils.fixScales(item);
 }
 export let uncannyMetabolism = {
