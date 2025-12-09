@@ -89,11 +89,13 @@ async function use({workflow}) {
     }
     let customKeepSpells = itemUtils.getConfig(workflow.item, 'keepSpells');
     let keepSpells = druidLevel >= 18 || customKeepSpells;
-    let options = CONFIG.DND5E.transformation.presets.wildshape.settings;
-    options.keep.delete('hp');
-    options.keep.delete('languages');
-    options.keep.delete('type');
-    if (keepSpells) options.keep.add('spell');
+    // eslint-disable-next-line no-undef
+    let options = new dnd5e.dataModels.settings.TransformationSetting(CONFIG.DND5E.transformation.presets.wildshape.settings).toObject();
+    options.keep.findSplice(i => i === 'hp');
+    options.keep.findSplice(i => i === 'languages');
+    options.keep.findSplice(i => i === 'type');
+    options.spellLists = [];
+    if (keepSpells) options.keep.push('spells');
     delete options.tempFormula;
     let effectData = {
         name: workflow.item.name,

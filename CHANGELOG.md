@@ -1,6 +1,8 @@
 # 1.3.166 Release:
 ## Update Notes:
 - Added range config option to Misty Step
+## Bug Fixes:
+- Wild Shape (Legacy)
 
 # 1.3.165 Release:
 ## New Legacy Content:
