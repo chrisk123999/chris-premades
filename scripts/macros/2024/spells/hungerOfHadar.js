@@ -62,7 +62,33 @@ async function use({workflow}) {
             'chris-premades': {
                 conditions: ['blinded']
             }
-        }
+        },
+        changes: [
+            {
+                key: 'system.attributes.movement.walk',
+                mode: CONST.ACTIVE_EFFECT_MODES.MULTIPLY,
+                value: 0.5
+            },
+            {
+                key: 'system.attributes.movement.fly',
+                mode: CONST.ACTIVE_EFFECT_MODES.MULTIPLY, value: 0.5
+            },
+            {
+                key: 'system.attributes.movement.swim',
+                mode: CONST.ACTIVE_EFFECT_MODES.MULTIPLY,
+                value: 0.5
+            },
+            {
+                key: 'system.attributes.movement.climb',
+                mode: CONST.ACTIVE_EFFECT_MODES.MULTIPLY,
+                value: 0.5
+            },
+            {
+                key: 'system.attributes.movement.burrow',
+                mode: CONST.ACTIVE_EFFECT_MODES.MULTIPLY,
+                value: 0.5
+            }
+        ]
     };
     for (let target of targets) await effectUtils.createEffect(target.actor, effectData, {
         parentEntity: template,
