@@ -45,7 +45,7 @@ export let mistyStep = {
         },
         {
             value: 'range',
-            label: 'CHRISPREMADES.Macros.MistyWanderer.TeleportFriend',
+            label: 'CHRISPREMADES.Macros.MistyWanderer.Range',
             type: 'number',
             default: 5,
             category: 'homebrew'
