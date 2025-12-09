@@ -1,3 +1,7 @@
+# 1.3.166 Release:
+## Update Notes:
+- Added range config option to Misty Step
+
 # 1.3.165 Release:
 ## New Legacy Content:
 - Extract Aspects

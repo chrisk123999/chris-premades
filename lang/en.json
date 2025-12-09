@@ -1969,7 +1969,8 @@
                 "Name": "Misty Step"
             },
             "MistyWanderer": {
-                "TeleportFriend": "Teleport a willing ally?"
+                "TeleportFriend": "Teleport a willing ally?",
+                "Range": "Misty Wanderer range"
             },
             "Moonbeam": {
                 "Damage": "Moonbeam: Damage",
