@@ -1,4 +1,4 @@
-import {activityUtils, animationUtils, crosshairUtils, dialogUtils, genericUtils, itemUtils, tokenUtils, workflowUtils} from '../../../../utils.js';
+import {activityUtils, animationUtils, crosshairUtils, dialogUtils, effectUtils, genericUtils, itemUtils, tokenUtils, workflowUtils} from '../../../../utils.js';
 import {dash} from '../../actions/dash.js';
 import {disengage} from '../../actions/disengage.js';
 async function flurryOfBlows({trigger, workflow}) {
@@ -26,8 +26,13 @@ async function flurryOfBlows({trigger, workflow}) {
     let heightenedFocus = itemUtils.getItemByIdentifier(workflow.actor, 'heightenedFocus');
     if (heightenedFocus) attacks += itemUtils.getConfig(heightenedFocus, 'attacks');
     let animationTargets = new Set();
+    let extractAspects = itemUtils.getItemByIdentifier(workflow.actor, 'extractAspects');
     while (attacks) {
         await workflowUtils.specialItemUse(unarmedStrike, [target], workflow.item);
+        if (extractAspects) {
+            let extractAspectsEffect = effectUtils.getEffectByIdentifier(target.actor, 'extractAspectsEffect');
+            if (!extractAspectsEffect) await workflowUtils.syntheticItemRoll(extractAspects, [target]);
+        }
         animationTargets.add(target);
         attacks--;
         if (attacks) {

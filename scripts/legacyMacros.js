@@ -437,6 +437,9 @@ export {soulOfDeceit} from './macros/2014/classFeatures/rogue/mastermind/soulOfD
 export {naturalAttunement} from './macros/2014/classFeatures/wizard/leylineMagic/naturalAttunement.js';
 export {thrumOfTheLand} from './macros/2014/classFeatures/wizard/leylineMagic/thrumOfTheLand.js';
 export {magnificentFeast, magnificentFeastMeal, magnificentFeastEffect} from './macros/2014/classFeatures/cleric/communityDomain/magnificentFeast.js';
+export {extractAspects} from './macros/2014/classFeatures/monk/wayOfCobaltSoul/extractAspects.js';
+export {extortTruth} from './macros/2014/classFeatures/monk/wayOfCobaltSoul/extortTruth.js';
+export {mindOfMercury} from './macros/2014/classFeatures/monk/wayOfCobaltSoul/mindOfMercury.js';
 // Race Features
 export {aasimarNecroticShroud, aasimarRadiantConsumption, aasimarRadiantSoul, celestialRevelation} from './macros/2014/raceFeatures/aasimar/celestialRevelation.js';
 export {acidBreathWeapon, coldBreathWeapon, fireBreathWeapon, lightningBreathWeapon, poisonBreathWeapon} from './macros/2014/raceFeatures/dragonborn/chromatic/breathWeapon.js';

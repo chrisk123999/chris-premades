@@ -1,4 +1,8 @@
 # 1.3.165 Release:
+## New Legacy Content:
+- Extract Aspects
+- Extort Truth
+- Mind of Mercury
 ## Bug Fixes:
 - Wild Shape (Legacy)
 
