@@ -1,8 +1,11 @@
-import {combatUtils, constants, effectUtils, itemUtils} from '../../../../utils.js';
+import {combatUtils, constants, effectUtils, genericUtils, itemUtils} from '../../../../utils.js';
 async function create({trigger: {entity: item, target, identifier}}) {
-    let targetEffect = effectUtils.getEffectByIdentifier(target.actor, identifier);
-    if (targetEffect) return;
     if (itemUtils.getConfig(item, 'combatOnly') && !combatUtils.inCombat()) return;
+    let targetEffect = effectUtils.getEffectByIdentifier(target.actor, identifier);
+    if (targetEffect) {
+        if (targetEffect.orgin === item.uuid) return;
+        await genericUtils.remove(targetEffect);
+    }
     let ability = itemUtils.getConfig(item, 'ability');
     let showIcon = itemUtils.getConfig(item, 'showIcon');
     let effectData = {

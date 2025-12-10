@@ -42,7 +42,7 @@ async function attack({trigger, workflow}) {
 }
 export let spellfireFlare = {
     name: 'Spellfire Flare',
-    version: '1.3.159',
+    version: '1.3.167',
     rules: 'modern',
     midi: {
         item: [
@@ -117,5 +117,6 @@ export let spellfireFlare = {
             category: 'homebrew',
             homebrew: true
         }
-    ]
+    ],
+    hasAnimation: true
 };

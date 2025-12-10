@@ -1,6 +1,8 @@
 # 1.3.167 Release:
 ## Bug Fixes:
 - Misty Step
+- Spellfire Flare
+- Aura of Protection
 
 # 1.3.166 Release:
 ## Update Notes:
