@@ -6,7 +6,7 @@ import {ItemMedkit} from '../../applications/medkit-item.js';
 import {requirements} from '../../extensions/requirements.js';
 function getSaveDC(item) {
     if (item.hasSave) return item.system.activities.getByType('save')[0].save.dc.value;
-    return item.actor?.system?.abilities?.[item.abilityMod]?.dc ?? 10;
+    return item.actor?.system?.abilities?.[item.abilityMod]?.dc ?? item?.actor?.system?.attributes?.spell?.dc ?? 10;
 }
 async function createItems(actor, updates, {favorite, section, parentEntity, identifier, castData} = {}) {
     let hasPermission = socketUtils.hasPermission(actor, game.user.id);

@@ -26,7 +26,7 @@ async function turnEnd({trigger: {entity: effect}}) {
     if (!activity) return;
     let token = actorUtils.getFirstToken(effect.parent);
     if (!token) return;
-    let nearby = tokenUtils.findNearby(token, 10, 'enemy', {includeIncapacitated: true});
+    let nearby = tokenUtils.findNearby(token, 10, 'all', {includeIncapacitated: true});
     if (!nearby.length) return;
     await workflowUtils.syntheticActivityRoll(activity, nearby);
 }

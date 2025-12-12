@@ -1,3 +1,8 @@
+# 1.3.168 Release:
+## Bug Fixes:
+- Celestial Revelation (Modern)
+- Summon Wildfire Spirit (Legacy)
+
 # 1.3.167 Release:
 ## Bug Fixes:
 - Misty Step
