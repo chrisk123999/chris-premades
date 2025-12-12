@@ -137,11 +137,15 @@
             "Arangement": "Arranjo:",
             "ArmoTypes": "Tipos de Armadura:",
             "AttackBonus": "Bônus Ataque:",
+            "Attacks": "Ataques:",
+            "AutoApply": "Auto-Aplicar:",
             "AvatarImg": "Imagem Avatar:",
             "AvatarImgPriority": "Prioridade Imagem Avatar:",
+            "BaseAttacks": "Ataques Base",
             "BaseDiceNumber": "Número Dado Base:",
             "BaseHealing": "Cura Base:",
             "BlockingStatuses": "Condições Bloqueadas:",
+            "CanCrit": "Pode Critar:",
             "Character": "Personagem",
             "CheckHit": "Verificar Acerto:",
             "CheckSave": "Verificar Salvaguarda:",
@@ -214,7 +218,9 @@
             "HitTarget": "Alvo Atingido:",
             "IgnoredCreatureTypes": "Tipos de Criatura Ignorados:",
             "ImmuneCreatures": "Tipos de Criaturas Imunes:",
+            "Items": "Itens:",
             "LineColor": "Cor da Linha:",
+            "Max": "Máx:",
             "MaxLevel": "Nível Máx:",
             "MaxSize": "Tamanho Máx:",
             "Multiplier": "Multiplicador:",
@@ -247,15 +253,18 @@
             "SubclassIdentifier": "Identificador de Subclasse:",
             "SummonerOnly": "Apenas Invocador:",
             "TintMap": "Tonalidade do Mapa:",
+            "Token": "Token:",
             "TokenColor": "Cor do Token:",
             "TokenImg": "Imagem Token:",
             "TokenImgPriority": "Prioridade Imagem Token:",
+            "TokenName": "Nome do Token:",
             "TokenSound": "Som do Token:",
             "Trigger": "Gatilho:",
             "TurnTrigger": "Gatilho do Turno:",
             "UseFormula": "Usar Fórmula:",
             "WeaponProperties": "Propriedades da Arma:",
             "WeaponType": "Tipo da Arma",
+            "WeaponTypes": "Tipos de Arma:",
             "cameraZoom": "Zoom da Câmera:"
         },
         "Cover": {
@@ -473,6 +482,9 @@
                     "Label": "Bônus de Cena"
                 },
                 "sceneCreate": {
+                    "Label": "Criação de Cena"
+                },
+                "sceneCreated": {
                     "Label": "Cena Criada"
                 },
                 "sceneDamageRollComplete": {
@@ -689,23 +701,28 @@
             "None": "Nenhum(a)",
             "Ok": "Ok",
             "Prompt": "Aviso",
+            "PromptForTargets": "Avisar para Alvos:",
             "ProtectWithItem": "Proteger {token} com {item}?",
             "Range": "Alcance",
             "RangedSpells": "Magias à Distância",
             "RangedWeapons": "Armas à Distância",
             "Recharge": "Recarga:",
             "RecoverSpellSlot": "Selecione um espaço de magia para recuperar:",
+            "RemoveWhichCondition": "Remover qual Condição:",
             "Replace": "Substituir",
             "Rerolling": "Re-rolando {origDie} ({origResult}):",
             "Select": "Selecionar",
+            "SelectALanguage": "Escolha um Idioma:",
             "SelectAProficency": "Selecione uma Proficiência:",
             "SelectASkill": "Selecione uma Perícia:",
+            "SelectASpell": "Escolha uma Magia:",
             "SelectATarget": "Selecione um Alvo:",
             "SelectAWeapon": "Selecione uma Arma:",
             "SelectAnActivity": "Selecione uma Atividade:",
             "SelectAnItem": "Selecione um Item:",
             "SelectDamageType": "Escolha um Tipo de Dano:",
             "SelectEffect": "Escolha um Efeito:",
+            "SelectRemoveCondition": "Escolha uma Condição para remover:",
             "SelectSpell": "Escolha uma Magia:",
             "SelectSpellSlot": "Escolha um Espaço de Magia:",
             "SelectTargetEffect": "Escolha um efeito para cada alvo:",
@@ -745,6 +762,10 @@
             "PackId": {
                 "Tooltip": "Copiar ID do Compêndio"
             }
+        },
+        "HeroicInspiration": {
+            "Give": "Você recebeu Inspiração Heroica, mas já a possui. Escolha outro jogador para concedê-la:",
+            "Name": "Inspiração Heroica"
         },
         "Item": {
             "Condense": "Condensar",
@@ -811,11 +832,17 @@
                 "Name": "Bônus Adicional de Vantagem",
                 "Replace": "Substituir Fórmula de Dano:"
             },
+            "AgonizingBlast": {
+                "Select": "Escolha suas magias de Agonizing Blast:"
+            },
             "AllPurposeTool": {
                 "Channel": "Ferramenta Multifuncional: Canalizar Forças Criativas",
                 "Name": "Ferramenta Multifuncional",
                 "Select": "Selecione uma ferramenta de artesão:",
                 "Spell": "Selecione um truque:"
+            },
+            "AmuletOfTheLycanthrope": {
+                "BiteBonus": "Bônus da Mordida:"
             },
             "AncestralProtectors": {
                 "Target": "Protetores Ancestrais: Alvos"
@@ -834,6 +861,9 @@
                 "NoWeapons": "O alvo não possui nenhuma arma equipada!",
                 "SelectTarget": "Quem será atacado?",
                 "SelectWeapon": "Qual arma será usada para atacar?"
+            },
+            "ArappleAttackAdvantage": {
+                "Name": "Vantagem Ataque de Agarrar"
             },
             "ArcaneAbjuration": {
                 "Plane": "{name} está longe do plano de origem dele?"
@@ -873,8 +903,12 @@
             "AutoGrapple": {
                 "DC": "CD fixo para escapar do agarrão (contestado se 0):",
                 "Disadvantage": "Dar desvantagem no teste de escape:",
+                "IgnoreLimit": "Ignorar Limite de Tamanho para Agarrar:",
                 "Name": "Auto-Agarrão",
                 "Restrained": "Contido enquanto Agarrado:"
+            },
+            "AutoProne": {
+                "Name": "Auto-Derrubar"
             },
             "AutoPush": {
                 "Name": "Auto-Empurrão"
@@ -1039,7 +1073,13 @@
             },
             "CelestialRevelation": {
                 "Damage": "Consumo Radiante: Dano",
-                "End": "Revelação Celestial: Fim"
+                "End": "Revelação Celestial: Fim",
+                "HeavenlyWingsAvatar": "Heavenly Wings Avatar:",
+                "HeavenlyWingsToken": "Heavenly Wings Token:",
+                "InnerRadianceAvatar": "Inner Radiance Avatar:",
+                "InnerRadianceToken": "Inner Radiance Token:",
+                "NecroticShroudAvatar": "Necrotic Shroud Avatar:",
+                "NecroticShroudToken": "Necrotic Shroud Token:"
             },
             "ChainLightning": {
                 "Leap": "Corrente de Relâmpagos: Salto",
@@ -1129,6 +1169,9 @@
                 "Moved": "Duelo Compelido: Movido",
                 "Source": "Duelo Compelido: Origem",
                 "Target": "Duelo Compelido: Alvo"
+            },
+            "Config": {
+                "BonusDamage": "Bônus Dano:"
             },
             "ConjureAnimals": {
                 "Save": "Conjure Animals: Salvaguarda"
@@ -1259,11 +1302,18 @@
                     "Select": "Selecione um item para perder:"
                 }
             },
+            "DeflectAttacks": {
+                "UseAndTarget": "Redirecionar Ataque?"
+            },
             "DetectThoughts": {
                 "ProbeDeeper": "Detectar Pensamentos: Sondar Profundamente"
             },
             "Devastator": {
                 "Message": "Marque um inimigo e uma quantidade máxima de aliados igual ao seu bônus de proficiência!"
+            },
+            "Disengage": {
+                "CunningAction": "Cunning Action",
+                "StepOfTheWind": "Step of the Wind"
             },
             "DivineSmite": {
                 "Context": "Destruir Alvo?",
@@ -1605,6 +1655,9 @@
                 "Pulse": "Esquentar Metal: Pulsar",
                 "Unable": "Impossível (Armadura)"
             },
+            "HeightenedFocus": {
+                "BringAlly": "Levar um aliado com você?"
+            },
             "Hex": {
                 "Hexed": "Amaldiçoado",
                 "Move": "Bruxaria: Mover",
@@ -1730,6 +1783,20 @@
             "InsectPlague": {
                 "Damage": "Praga de Insetos: Dano"
             },
+            "InsightfulManipulator": {
+                "ChaScore": "Valor de Carisma",
+                "Equal": "{ability} é igual ao seu.",
+                "EqualLevel": "Níveis de Classe são iguais.",
+                "Higher": "{ability} é maior que o seu.",
+                "HigherLevel": "Níveis são maiores que os seus.",
+                "IntScore": "Valor de Inteligência",
+                "Levels": "Níveis de Classe",
+                "Lower": "{ability} é menor que o seu.",
+                "LowerLevel": "Níveis são menores que os seus.",
+                "NoLevel": "Sem níveis de classe.",
+                "Select": "Escolha a informação para aprender:",
+                "WisScore": "Valor de Sabedoria"
+            },
             "InspiringSmite": {
                 "Select": "Distribuir PV Temporário (Quantidade a Distribuir: {maxAmount})"
             },
@@ -1818,6 +1885,9 @@
                 "Select": "Quantos? (Máx: {maxMissiles})",
                 "Shield": "Escudo Arcano como reação?"
             },
+            "MagnificentFeast": {
+                "MagnificentFeast": "Magnificent Feast"
+            },
             "Maneuvers": {
                 "BaitSwitchAC": "Quem recebe o bônus de CA?",
                 "CommanderConfirm": "Usar sua reação para fazer um ataque armado?",
@@ -1855,6 +1925,9 @@
             },
             "MartialAdvantage": {
                 "Name": "Vantagem Marcial"
+            },
+            "MartialArts": {
+                "ValidateWeaponType": "Validar Tipo de Arma:"
             },
             "MassCureWounds": {
                 "Select": "Quais alvos você quer curar? (Máx: 6)"
@@ -1896,7 +1969,8 @@
                 "Name": "Passo Nebuloso"
             },
             "MistyWanderer": {
-                "TeleportFriend": "Teleportar uma criatura disposta?"
+                "TeleportFriend": "Teleportar uma criatura disposta?",
+                "Range": "Alcance Misty Wanderer"
             },
             "Moonbeam": {
                 "Damage": "Raio Lunar: Dano",
@@ -1904,6 +1978,11 @@
             },
             "MoonlightStep": {
                 "TeleportFriend": "Teleportar um aliado disposto?"
+            },
+            "Mount": {
+                "MountedRider": "Montado (Cavaleiro)",
+                "MountedTarget": "Montado (Alvo)",
+                "Rideable": "O módulo \"Rideable\" é exigido para utilizar esta característica!"
             },
             "MovementBonusActivity": {
                 "Distance": "Distância Necessária (pés):",
@@ -1934,6 +2013,12 @@
             },
             "PackTactics": {
                 "Name": "Táticas de Bando"
+            },
+            "PactOfTheBlade": {
+                "Conjure": "Que arma você conjura?",
+                "Name": "Pacto das Lâminas",
+                "ReplaceDamage": "Substituir dano da arma?",
+                "SelectBond": "Com qual arma você cria um vínculo?"
             },
             "PactOfTheChain": {
                 "Attack": "Atacar com:"
@@ -1987,6 +2072,7 @@
                 "Sky": "Céu"
             },
             "PrimalKnowledge": {
+                "ReplacementAbilities": "Atributos Substitutos",
                 "ReplacementAbility": "Atributo Substituto:"
             },
             "Protection": {
@@ -2065,6 +2151,9 @@
             "RerollSaveOnDamage": {
                 "ExcludeSource": "Excluir Danos da Origem",
                 "Name": "Re-rolar Salvaguarda em Dano"
+            },
+            "Resistance": {
+                "Name": "Resistência"
             },
             "Retaliation": {
                 "Weapon": "Com qual arma você quer atacar?"
@@ -2480,6 +2569,21 @@
             "TouchDamage": {
                 "Name": "Dano do Toque"
             },
+            "Transform": {
+                "Name": "Transform",
+                "ProfileOneActivities": "Perfil #1 Atividades:",
+                "ProfileOneAvatarImg": "Perfil #1 Imagem Avatar:",
+                "ProfileOneAvatarImgPriority": "Perfil #1 Prioridade Imagem Avatar:",
+                "ProfileOneItems": "Perfil #1 Itens:",
+                "ProfileOneTokenImg": "Perfil #1 Imagem Token:",
+                "ProfileOneTokenImgPriority": "Perfil #1 Prioridade Imagem Token:",
+                "ProfileTwoActivities": "Perfil #2 Atividades:",
+                "ProfileTwoAvatarImg": "Perfil #2 Imagem Avatar:",
+                "ProfileTwoAvatarImgPriority": "Perfil #2 Prioridade Imagem Avatar:",
+                "ProfileTwoItems": "Perfil #2 Itens:",
+                "ProfileTwoTokenImg": "Perfil #2 Imagem Token:",
+                "ProfileTwoTokenImgPriority": "Perfil #2 Prioridade Imagem Token:"
+            },
             "TravelAlongTheTree": {
                 "WillingCreatures": "Escolha até seis criaturas dispostas:"
             },
@@ -2512,6 +2616,16 @@
             },
             "UpcastTargets": {
                 "Select": "Muitos alvos selecionados! Selecione até {maxTargets} alvos."
+            },
+            "VampireShapeShift": {
+                "BatAvatarImg": "Imagem de Avatar do Morcego:",
+                "BatAvatarImgPriority": "Prioridade da Imagem de Avatar do Morcego:",
+                "BatTokenImg": "Imagem de Token do Morcego:",
+                "BatTokenImgPriority": "Prioridade da Imagem de Token do Morcego:",
+                "MistAvatarImg": "Imagem de Avatar da Névoa:",
+                "MistAvatarImgPriority": "Prioridade da Imagem de Avatar da Névoa:",
+                "MistTokenImg": "Imagem de Token da Névoa:",
+                "MistTokenImgPriority": "Prioridade da Imagem de Token da Névoa:"
             },
             "VampiricBite": {
                 "Bonus": "Bônus para o próximo ataque/teste",
@@ -2745,6 +2859,7 @@
                     }
                 },
                 "SpecialDuration": {
+                    "Added": "Adicionado",
                     "AttackedByAnotherCreature": "Atacado por Outra Criatura",
                     "AttackedBySource": "Atacado pela Origem",
                     "DamagedByAlly": "Sofrer Dano de Aliado",
@@ -2756,6 +2871,7 @@
                     "HitBySource": "Atingido pela Origem",
                     "Label": "Durações Especiais:",
                     "MoveFinished": "Movimento Concluído",
+                    "Removed": "Removido",
                     "Rolled": "Rolar Teste de {toolName}",
                     "Succeed": "Sucesso Teste de {toolName}",
                     "TempHP": "Zero Pontos de Vida Temporários",
@@ -2790,6 +2906,12 @@
                 "rolls": {
                     "Label": "Rolagens",
                     "Tooltip": "Configurar tipos e opções de rolagem"
+                }
+            },
+            "Inputs": {
+                "Documents": {
+                    "Error": "UUID Inválido",
+                    "Placeholder": "Insira o UUID ou Solte o Item"
                 }
             },
             "Medkit": "Medikit CPR",
@@ -3079,6 +3201,10 @@
                 "Hint": "Quando ativado, o ícone da barra de título do Automated Animations será recolorido com base no status da configuração.",
                 "Name": "Automated Animations: Ícone Colorido"
             },
+            "compactMode": {
+                "Hint": "Reduz o preenchimento e o espaçamento em diálogos e formulários, limita a altura dos diálogos a 50vh e restringe as imagens dos botões a 32px para uma interface mais compacta.",
+                "Name": "Modo Compacto"
+            },
             "colorizeDAE": {
                 "Hint": "Quando ativado, o ícone da barra de título do DAE será recolorido se houver um efeito no item.",
                 "Name": "Dynamic Active Effects: Ícone Colorido"
@@ -3208,6 +3334,10 @@
             "groupSummonsWithOwner": {
                 "Hint": "Quando ativado, invocações criadas através da API CPR serão agrupadas no rastreador de combate se a sua iniciativa for a mesma.",
                 "Name": "Agrupar Invocações com Dono"
+            },
+            "heroicInspiration": {
+                "Hint": "Habilita a mecânica de Inspiração Heroica do PHB 2024.",
+                "Name": "Inspiração Heroica"
             },
             "hiddenCompendiumFolders": {
                 "Hint": "As pastas do compêndio selecionadas ficarão ocultas.",
