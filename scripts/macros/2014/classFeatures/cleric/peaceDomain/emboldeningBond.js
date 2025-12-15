@@ -159,7 +159,7 @@ export let emboldeningBond = {
             type: 'checkbox',
             default: true,
             category: 'animation'
-        },
+        }
     ]
 };
 export let emboldeningBondEmboldened = {

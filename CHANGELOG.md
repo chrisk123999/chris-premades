@@ -1,3 +1,215 @@
+# 1.3.168 Release:
+## Bug Fixes:
+- Celestial Revelation (Modern)
+- Summon Wildfire Spirit (Legacy)
+
+# 1.3.167 Release:
+## Bug Fixes:
+- Misty Step
+- Spellfire Flare
+- Aura of Protection
+
+# 1.3.166 Release:
+## Update Notes:
+- Added range config option to Misty Step
+## Bug Fixes:
+- Wild Shape (Legacy)
+
+# 1.3.165 Release:
+## New Legacy Content:
+- Extract Aspects
+- Extort Truth
+- Mind of Mercury
+## Bug Fixes:
+- Wild Shape (Legacy)
+
+# 1.3.164 Release:
+## Bug Fixes:
+- Uncanny Metabolism
+
+# 1.3.163 Release:
+## New Legacy Content:
+- Amulet of the Lycanthrope
+## Bug Fixes:
+- Harkon's Bite
+- Insignia of Claws
+
+# 1.3.162 Release:
+## New Modern Content:
+- Insightful Fighting
+- Deflect Energy
+- Disciplined Survivor
+- Perfect Focus
+- Self-Restoration
+- Superior Defense
+
+# 1.3.161 Release:
+## Bug Fixes:
+- Nightmare Haunting
+
+# 1.3.160 Release:
+## New Modern Content:
+- Dream
+## New Monster Content:
+- Night Hag: Nightmare Haunting
+## Bug Fixes:
+- Reduce Max HP Generic Monster Feature
+
+# 1.3.159 Release:
+## New Modern Content:
+- Spellfire Flare
+- Dissolution
+## Bug Fixes:
+- Conjure Woodland Beings (Modern)
+- Goblin Boss: Redirect Attack
+- Forest Sage
+
+# 1.3.158 Release:
+## Bug Fixes:
+- Effect Event
+
+# 1.3.157 Release:
+## New Modern Content:
+- Eldritch Invocations: Agonizing Blast
+- Eldritch Invocations: Fiendish Vigor
+- Steps of the Fey
+- Spellfire Spark
+- False Life
+## Bug Fixes:
+- Strength of the Grave
+- Eldritch Blast
+
+# 1.3.156 Release:
+## New Modern Content:
+- Mount (Generic Action, Requires Rideable Module)
+## API Update Notes:
+- Added `actorCreated` and `actorDeleted` pass for effect events.
+
+# 1.3.155 Release:
+## Bug Fixes:
+- Alert
+- Summons and Companion Initiative
+
+# 1.3.154 Release:
+## New Legacy Content:
+- Iroas's Devotee
+
+# 1.3.153 Release:
+## New Legacy Content:
+- Heliod's Devotee
+- Karametra's Devotee
+- Nylea's Devotee
+## Bug Fixes:
+- Bless (Legacy and Modern)
+
+# 1.3.152 Release:
+## Bug Fixes:
+- Purple Dragon Rook
+
+# 1.3.151 Release:
+## New Legacy Content:
+- Channel Divinity: Magnificent Feast
+## Bug Fixes:
+- Transform Generic Feature
+- Forest Sage
+
+# 1.3.150 Release:
+## New Monster Content:
+- Carrion Crawler: Paralyzing Tentacles
+- Hobgoblin Captain: Aura of Authority
+- Pseudodragon: Sting
+## Bug Fixes:
+- Blade Flourish (Legacy)
+## Update Notes:
+- Added condition removed special durations to the CPR Medkit.
+
+# 1.3.149 Release:
+## New Legacy Content:
+- Natural Attunement
+- Thrum of the Land
+- Jewel of Three Prayers (Dormant)
+## New Monster Content:
+- Ghoul: Claw
+
+# 1.3.148 Release:
+## New Modern Content:
+- Eldritch Invocations: Pact of the Blade
+- Lay On Hands
+- Paladin's Smite
+- Purple Dragon Rook
+## API Update Notes:
+- Enchantments on items will now also be checked for midi item triggers.
+
+# 1.3.147 Release:
+## New Modern Content:
+- Heroic Inspiration (Enabled via mechanic settings)
+
+# 1.3.146 Release:
+## New Modern Content:
+- Second Wind
+- Tactical Mind
+- Group Recovery
+- Knightly Envoy
+- Celestial Resistance
+- Celestial Revelation
+- Healing Hands
+
+# 1.3.145 Release:
+## Bug Fixes:
+- Hail of Thorns (Legacy)
+
+# 1.3.144 Release:
+## Update Notes:
+- Improved integration for MISC.
+- Fixed Babel support.
+
+# 1.3.143 Release:
+## New Modern Content:
+- Resistance
+## Bug Fixes:
+- Rage (Legacy)
+
+# 1.3.142 Release:
+## Update Notes:
+- Added a homebrew ability selection for Aura of Protection (legacy).
+
+# 1.3.141 Release:
+## New Modern Content:
+- Deflect Attacks
+- Slow Fall
+- Stunning Strike
+- Empowered Strikes
+- Heightened Focus
+## Bug Fixes:
+- Monk's Focus
+- Unarmed Strike (Modern)
+- Harkon's Bite
+
+# 1.3.140 Release:
+## New Modern Content:
+- Cacophonic Shield
+
+# 1.3.139 Release:
+## Bug Fixes:
+- Divine Smite
+- Help Action
+- Faerie Fire
+
+# 1.3.138 Release:
+## New Modern Content:
+- Monk's Focus
+- Unarmored Movement
+- Uncanny Metabolism
+## New Enhanced Animations:
+- Monk's Focus (Thanks Eskiemoh)
+## New Generic Monster Features:
+- Transform
+## Bug Fixes:
+- Damage Turn Start Generic Feature
+- Protection from Evil and Good
+- Unarmored Defense (Barbarian)
+- Unarmored Defense (Monk)
+  
 # 1.3.137 Release:
 ## Bug Fixes:
 - Fixed DDBI compatibility.

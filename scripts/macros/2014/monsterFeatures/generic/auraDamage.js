@@ -69,6 +69,6 @@ export let auraDamageEnd = {
                 }
             ],
             default: 'end'
-        },
+        }
     ]
 };

@@ -224,7 +224,7 @@ export let summonShadowspawn = {
             default: 'shadow',
             category: 'animation',
             options: constants.summonAnimationOptions
-        },
+        }
     ]
 };
 export let summonShadowspawnDespair = {

@@ -1,4 +1,5 @@
 import {effects} from '../extensions/effects.js';
+import {items} from '../extensions/items.js';
 import {actorUtils, effectUtils, genericUtils, itemUtils, macroUtils, regionUtils, socketUtils, templateUtils} from '../utils.js';
 import {custom} from './custom.js';
 function getItemMacroData(item) {
@@ -208,6 +209,9 @@ async function updated(item, updates, options, userId) {
     await executeMacroPass(item, 'actorUpdated', updates);
 }
 async function actorMunch({actor, ddbCharacter}) {
+    await Promise.all(actor.items.map(async item => {
+        await items.fixCastActivities(item);
+    }));
     let itemInfo = actor.items.map(item => ({
         document: item,
         macro: custom.getMacro(genericUtils.getIdentifier(item), genericUtils.getRules(item))

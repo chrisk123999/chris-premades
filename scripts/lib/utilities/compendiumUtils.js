@@ -32,8 +32,11 @@ async function getCPRAutomation(item, {identifier, rules = 'legacy', type = 'cha
                 break;
             case 'feat':
                 if (item.system.type.value === 'race') {
-                    if (rules === 'modern') break;
-                    keys.push(constants.packs.raceFeatures);
+                    if (rules === 'modern') {
+                        keys.push(constants.modernPacks.speciesFeatures);
+                    } else {
+                        keys.push(constants.packs.raceFeatures);
+                    }
                     //if (genericUtils.getCPRSetting('thirdParty')) keys.push(constants.packs.thirdPartyRaceFeatures);
                 } else {
                     if (rules === 'modern') {
@@ -54,6 +57,7 @@ async function getCPRAutomation(item, {identifier, rules = 'legacy', type = 'cha
                         keys.push(constants.packs.miscellaneous);
                         keys.push(constants.packs.actions);
                     }
+                    keys.push(constants.packs.otherFeatures);
                 }
                 break;
         }
@@ -77,24 +81,31 @@ async function getCPRAutomation(item, {identifier, rules = 'legacy', type = 'cha
     let classes = [];
     if (item.actor && type === 'character') classes = Object.keys(item.actor.classes);
     let cprIdentifiers = genericUtils.getCPRIdentifiers(name, rules);
-    for (let cprIdentifier of cprIdentifiers) {
-        for (let key of keys) {
-            let found;
-            if (cprIdentifier) {
-                found = await getItemFromCompendium(key, cprIdentifier, {ignoreNotFound: true, folderId: folderId, byIdentifier: true});
-            } else {
-                found = await getItemFromCompendium(key, name, {ignoreNotFound: true, folderId: folderId});
-            }
-            if (classes.length && item.type === 'feat' && item.system.type?.value === 'class' && found) {
-                let classIdentifier = itemUtils.getConfig(found, 'classIdentifier');
-                if (classIdentifier) {
-                    if (classes.includes(classIdentifier)) return found;
+    if (cprIdentifiers?.length) {
+        for (let cprIdentifier of cprIdentifiers) {
+            for (let key of keys) {
+                let found;
+                if (cprIdentifier) {
+                    found = await getItemFromCompendium(key, cprIdentifier, {ignoreNotFound: true, folderId: folderId, byIdentifier: true});
                 } else {
-                    return found;
+                    found = await getItemFromCompendium(key, name, {ignoreNotFound: true, folderId: folderId});
                 }
-            } else {
-                if (found) return found;
+                if (classes.length && item.type === 'feat' && item.system.type?.value === 'class' && found) {
+                    let classIdentifier = itemUtils.getConfig(found, 'classIdentifier');
+                    if (classIdentifier) {
+                        if (classes.includes(classIdentifier)) return found;
+                    } else {
+                        return found;
+                    }
+                } else {
+                    if (found) return found;
+                }
             }
+        }
+    } else { // This can happen when Babel translates the module compendium.
+        for (let key of keys) {
+            let found = await getItemFromCompendium(key, name, {ignoreNotFound: true, folderId: folderId});
+            if (found) return found;
         }
     }
 }
@@ -102,19 +113,19 @@ async function getGPSAutomation(item, {identifier, rules = 'legacy', type = 'cha
     let found;
     if (type === 'character' || item.type === 'spell') {
         switch(item.type) {
-            case 'spell': found = gambitPremades.gambitItems.find(i => i.name === item.name && i.type === 'spell' && i.rules === rules); break;
+            case 'spell': found = gambitPremades.gambitItems.find(i => (i.name === item.name || i.aliases?.includes(item.name)) && i.type === 'spell' && i.rules === rules); break;
             case 'weapon':
             case 'equipment':
             case 'consumable':
             case 'tool':
             case 'backpack':
             case 'loot':
-                found = gambitPremades.gambitItems.find(i => i.name === item.name && constants.itemTypes.includes(i.type) && i.rules === rules); break;
-            case 'feat': found = gambitPremades.gambitItems.find(i => i.name === item.name && i.type === 'feat' && i.rules === rules); break;
+                found = gambitPremades.gambitItems.find(i => (i.name === item.name || i.aliases?.includes(item.name)) && constants.itemTypes.includes(i.type) && i.rules === rules); break;
+            case 'feat': found = gambitPremades.gambitItems.find(i => (i.name === item.name || i.aliases?.includes(item.name)) && i.type === 'feat' && i.rules === rules); break;
         }
     } else if (type === 'npc') {
         let monster = identifier ?? item.actor.prototypeToken.name;
-        found = gambitPremades.gambitMonsters.find(i => i.monster === monster && item.name === i.name && i.rules === rules);
+        found = gambitPremades.gambitMonsters.find(i => i.monster === monster && (i.name === item.name || i.aliases?.includes(item.name)) && i.rules === rules);
     }
     if (!found) return;
     return await fromUuid(found.uuid);
@@ -123,19 +134,19 @@ async function getMISCAutomation(item, {identifier, rules = 'legacy', type = 'ch
     let found;
     if (type === 'character' || item.type === 'spell') {
         switch(item.type) {
-            case 'spell': found = miscPremades.miscItems.find(i => i.name === item.name && i.type === 'spell' && i.rules === rules); break;
+            case 'spell': found = miscPremades.miscItems.find(i => (i.name === item.name || i.aliases?.includes(item.name)) && i.type === 'spell' && i.rules === rules); break;
             case 'weapon':
             case 'equipment':
             case 'consumable':
             case 'tool':
             case 'backpack':
             case 'loot':
-                found = miscPremades.miscItems.find(i => i.name === item.name && constants.itemTypes.includes(i.type) && i.rules === rules); break;
-            case 'feat': found = miscPremades.miscItems.find(i => i.name === item.name && i.type === 'feat' && i.rules === rules); break;
+                found = miscPremades.miscItems.find(i => (i.name === item.name || i.aliases?.includes(item.name)) && constants.itemTypes.includes(i.type) && i.rules === rules); break;
+            case 'feat': found = miscPremades.miscItems.find(i => (i.name === item.name || i.aliases?.includes(item.name)) && i.type === 'feat' && i.rules === rules); break;
         }
     } else if (type === 'npc') {
         let monster = identifier ?? item.actor.prototypeToken.name;
-        found = miscPremades.miscMonsters.find(i => i.monster === monster && item.name === i.name && i.rules === rules);
+        found = miscPremades.miscMonsters.find(i => i.monster === monster && (i.name === item.name || i.aliases?.includes(item.name)) && i.rules === rules);
     }
     if (!found) return;
     return await fromUuid(found.uuid);
@@ -210,9 +221,9 @@ async function getAllAutomations(item, options = {}) {
                 source = 'midi-item-showcase-community';
                 if (found) {
                     if (type === 'npc') {
-                        version = miscPremades.miscMonsters.find(i => i.name === item.name && i.monster === monster)?.version;
+                        version = miscPremades.miscMonsters.find(i => (i.name === item.name || i.aliases?.includes(item.name)) && i.monster === monster)?.version;
                     } else {
-                        version = miscPremades.miscItems.find(i => i.name === item.name)?.version;
+                        version = miscPremades.miscItems.find(i => (i.name === item.name || i.aliases?.includes(item.name)))?.version;
                     }
                 }
                 break;
@@ -236,7 +247,7 @@ async function getItemFromCompendium(key, name, {ignoreNotFound, folderId, objec
         if (!ignoreNotFound) errors.missingPack();
         return undefined;
     }
-    let packIndex = await pack.getIndex({'fields': ['name', 'type', 'folder', 'system.source.rules', 'flags.chris-premades.info.identifier', 'system.identifier']});
+    let packIndex = await pack.getIndex({fields: ['name', 'type', 'folder', 'system.source.rules', 'flags.chris-premades.info.identifier', 'system.identifier']});
     let match;
     let alwaysFilterFunc = (item) => {
         return (!folderId || (item.folder === folderId)) && (!matchType || (item.type === matchType)) && (!rules || (item.system.source.rules === (rules === 'modern' ? '2024' : '2014')));
@@ -297,7 +308,7 @@ async function getActorFromCompendium(key, name, {ignoreNotFound, folderId, obje
         if (!ignoreNotFound) errors.missingPack();
         return undefined;
     }
-    let packIndex = await pack.getIndex({'fields': ['name', 'type', 'folder']});
+    let packIndex = await pack.getIndex({fields: ['name', 'type', 'folder']});
     let match = packIndex.find(item => item.name === name && (!folderId || (folderId && item.folder === folderId)));
     if (match) {
         let document = await pack.getDocument(match._id);

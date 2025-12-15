@@ -20,6 +20,6 @@ export let foeSlayer = {
             options: constants.damageTypeOptions,
             homebrew: true,
             category: 'homebrew'
-        },
+        }
     ]
 };

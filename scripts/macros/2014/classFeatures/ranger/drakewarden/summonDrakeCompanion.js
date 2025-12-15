@@ -399,7 +399,7 @@ export let summonDrakeCompanion = {
             default: 'fire',
             category: 'animation',
             options: constants.summonAnimationOptions
-        },
+        }
     ],
     ddbi: {
         removedItems: {

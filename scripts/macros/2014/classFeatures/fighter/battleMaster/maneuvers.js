@@ -32,7 +32,7 @@ async function useBaitAndSwitch({workflow}) {
                 value: superiorityRoll.total,
                 priority: 20
             }
-        ],
+        ]
     };
     let sourceUpdate = {
         _id: workflow.token.document.id,

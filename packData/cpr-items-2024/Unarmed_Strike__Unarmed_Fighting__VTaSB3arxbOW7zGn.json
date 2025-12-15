@@ -59,7 +59,7 @@
           "flat": false,
           "type": {
             "value": "",
-            "classification": ""
+            "classification": "unarmed"
           },
           "ability": "str",
           "bonus": ""

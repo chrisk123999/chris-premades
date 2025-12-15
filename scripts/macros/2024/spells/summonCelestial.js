@@ -191,7 +191,7 @@ export let summonCelestial = {
             default: 'celestial',
             category: 'animation',
             options: constants.summonAnimationOptions
-        },
+        }
     ]
 };
 export let summonCelestialMace = {

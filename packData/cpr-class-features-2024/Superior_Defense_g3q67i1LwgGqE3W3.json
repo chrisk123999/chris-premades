@@ -1,0 +1,338 @@
+{
+  "name": "Superior Defense",
+  "type": "feat",
+  "effects": [
+    {
+      "name": "Superior Defense",
+      "statuses": [],
+      "changes": [
+        {
+          "key": "system.traits.dr.value",
+          "value": "bludgeoning",
+          "mode": 2,
+          "priority": 20
+        },
+        {
+          "key": "system.traits.dr.value",
+          "value": "piercing",
+          "mode": 2,
+          "priority": 20
+        },
+        {
+          "key": "system.traits.dr.value",
+          "value": "slashing",
+          "mode": 2,
+          "priority": 20
+        },
+        {
+          "key": "system.traits.dr.value",
+          "value": "necrotic",
+          "mode": 2,
+          "priority": 20
+        },
+        {
+          "key": "system.traits.dr.value",
+          "value": "acid",
+          "mode": 2,
+          "priority": 20
+        },
+        {
+          "key": "system.traits.dr.value",
+          "value": "cold",
+          "mode": 2,
+          "priority": 20
+        },
+        {
+          "key": "system.traits.dr.value",
+          "value": "fire",
+          "mode": 2,
+          "priority": 20
+        },
+        {
+          "key": "system.traits.dr.value",
+          "value": "lightning",
+          "mode": 2,
+          "priority": 20
+        },
+        {
+          "key": "system.traits.dr.value",
+          "value": "thunder",
+          "mode": 2,
+          "priority": 20
+        },
+        {
+          "key": "system.traits.dr.value",
+          "value": "poison",
+          "mode": 2,
+          "priority": 20
+        },
+        {
+          "key": "system.traits.dr.value",
+          "value": "psychic",
+          "mode": 2,
+          "priority": 20
+        },
+        {
+          "key": "system.traits.dr.value",
+          "value": "radiant",
+          "mode": 2,
+          "priority": 20
+        }
+      ],
+      "duration": {
+        "seconds": null,
+        "startTime": null,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null,
+        "combat": null
+      },
+      "tint": "#ffffff",
+      "transfer": false,
+      "disabled": false,
+      "flags": {
+        "dae": {
+          "transfer": false,
+          "stackable": "noneNameOnly",
+          "enableCondition": "",
+          "disableCondition": "",
+          "showIcon": false,
+          "disableIncapacitated": false,
+          "selfTarget": false,
+          "selfTargetAlways": false,
+          "dontApply": false,
+          "durationExpression": "",
+          "macroRepeat": "none",
+          "specialDuration": []
+        },
+        "ddbimporter": {
+          "disabled": false
+        },
+        "midi-qol": {
+          "forceCEOff": true
+        },
+        "core": {
+          "overlay": false
+        },
+        "dnd5e": {
+          "riders": {
+            "statuses": []
+          },
+          "dependents": [
+            {
+              "uuid": "Actor.oGXY1CS6ZXBzNHP0.ActiveEffect.rqwnydBDfzHZVZQd"
+            }
+          ]
+        },
+        "chris-premades": {
+          "noAnimation": false,
+          "conditions": [],
+          "specialDuration": [
+            "incapacitated"
+          ],
+          "templateEffectActivities": []
+        }
+      },
+      "description": "",
+      "img": "icons/magic/defensive/shield-barrier-blue.webp",
+      "_id": "XcW5ncZZzYbanmQq",
+      "type": "base",
+      "system": {},
+      "origin": null,
+      "sort": 0,
+      "_key": "!items.effects!g3q67i1LwgGqE3W3.XcW5ncZZzYbanmQq"
+    }
+  ],
+  "system": {
+    "activities": {
+      "HWCqAwUGsn4knPuT": {
+        "type": "utility",
+        "_id": "HWCqAwUGsn4knPuT",
+        "sort": 0,
+        "activation": {
+          "type": "special",
+          "override": false,
+          "condition": ""
+        },
+        "consumption": {
+          "scaling": {
+            "allowed": false
+          },
+          "spellSlot": true,
+          "targets": [
+            {
+              "type": "itemUses",
+              "value": "3",
+              "target": "AO4YSqXoWFU1cvUY",
+              "scaling": {}
+            }
+          ]
+        },
+        "description": {
+          "chatFlavor": ""
+        },
+        "duration": {
+          "units": "minute",
+          "concentration": false,
+          "override": false,
+          "value": "1"
+        },
+        "effects": [
+          {
+            "_id": "XcW5ncZZzYbanmQq"
+          }
+        ],
+        "range": {
+          "units": "self",
+          "override": false,
+          "special": ""
+        },
+        "target": {
+          "template": {
+            "contiguous": false,
+            "units": "ft",
+            "type": ""
+          },
+          "affects": {
+            "choice": false,
+            "type": "self",
+            "special": ""
+          },
+          "override": false,
+          "prompt": true
+        },
+        "uses": {
+          "spent": 0,
+          "recovery": [],
+          "max": ""
+        },
+        "roll": {
+          "prompt": false,
+          "visible": false,
+          "name": "",
+          "formula": ""
+        },
+        "useConditionText": "",
+        "useConditionReason": "",
+        "effectConditionText": "",
+        "macroData": {
+          "name": "",
+          "command": ""
+        },
+        "ignoreTraits": {
+          "idi": false,
+          "idr": false,
+          "idv": false,
+          "ida": false,
+          "idm": false
+        },
+        "midiProperties": {
+          "ignoreTraits": [],
+          "triggeredActivityId": "none",
+          "triggeredActivityConditionText": "",
+          "triggeredActivityTargets": "targets",
+          "triggeredActivityRollAs": "self",
+          "autoConsume": false,
+          "forceConsumeDialog": "default",
+          "forceRollDialog": "default",
+          "forceDamageDialog": "default",
+          "confirmTargets": "default",
+          "autoTargetType": "any",
+          "autoTargetAction": "default",
+          "automationOnly": false,
+          "otherActivityCompatible": false,
+          "otherActivityAsParentType": true,
+          "identifier": "",
+          "displayActivityName": false,
+          "rollMode": "default",
+          "chooseEffects": false,
+          "toggleEffect": false,
+          "ignoreFullCover": false,
+          "removeChatButtons": "default",
+          "magicEffect": false,
+          "magicDamage": false,
+          "noConcentrationCheck": false,
+          "autoCEEffects": "default"
+        },
+        "isOverTimeFlag": false,
+        "overTimeProperties": {
+          "saveRemoves": true,
+          "preRemoveConditionText": "",
+          "postRemoveConditionText": ""
+        },
+        "otherActivityId": "none",
+        "otherActivityAsParentType": true,
+        "name": ""
+      }
+    },
+    "uses": {
+      "spent": null,
+      "recovery": [],
+      "max": ""
+    },
+    "advancement": [],
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "identifier": "superior-defense",
+    "source": {
+      "book": "PHB 2024",
+      "page": "",
+      "license": "",
+      "custom": "",
+      "rules": "2024",
+      "revision": 1
+    },
+    "crewed": false,
+    "enchant": {},
+    "prerequisites": {
+      "items": [],
+      "level": 18,
+      "repeatable": false
+    },
+    "properties": [],
+    "requirements": "",
+    "type": {
+      "value": "class",
+      "subtype": ""
+    }
+  },
+  "flags": {
+    "dae": {
+      "alwaysActive": false,
+      "activeEquipped": false
+    },
+    "midi-qol": {
+      "removeAttackDamageButtons": "default",
+      "forceCEOff": true
+    },
+    "midiProperties": {
+      "confirmTargets": "default"
+    },
+    "dnd5e": {
+      "advancementOrigin": "4dPp1aMI6PYTe36Z",
+      "riders": {
+        "activity": []
+      }
+    },
+    "chris-premades": {
+      "info": {
+        "identifier": "superiorDefense",
+        "rules": "modern",
+        "source": "chris-premades",
+        "version": "1.3.162"
+      },
+      "macros": {
+        "item": [
+          "superiorDefense"
+        ]
+      }
+    }
+  },
+  "img": "icons/magic/defensive/shield-barrier-blue.webp",
+  "folder": "tJ727NhyyBNb6ZNf",
+  "_id": "g3q67i1LwgGqE3W3",
+  "_key": "!items!g3q67i1LwgGqE3W3"
+}

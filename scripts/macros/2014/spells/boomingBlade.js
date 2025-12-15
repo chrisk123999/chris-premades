@@ -191,7 +191,7 @@ export let boomingBlade = {
                     requiredModules: ['jb2a_patreon']
                 }
             ]
-        },
+        }
     ],
     hasAnimation: true
 };

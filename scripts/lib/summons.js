@@ -498,7 +498,7 @@ export class Summons {
                         scenes: {
                             [this.originItem.name]: this.spawnedTokensScenes
                         }
-                    },
+                    }
                     // dismissAnimation: this.options.dontAnimateOnDismiss ? 'none' : this.options.animation
                 }
             }

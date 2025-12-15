@@ -117,11 +117,11 @@ export class Teleport {
         return {
             original: {
                 x: this.controllingToken.x,
-                y: this.controllingToken.y,
+                y: this.controllingToken.y
             },
             selected: {
                 x: this?.template?.x - (this.controllingToken.w / 2),
-                y: this?.template?.y - (this.controllingToken.h / 2),
+                y: this?.template?.y - (this.controllingToken.h / 2)
             }
         };
     }

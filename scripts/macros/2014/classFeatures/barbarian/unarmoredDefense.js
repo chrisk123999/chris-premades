@@ -14,7 +14,7 @@ export let unarmoredDefenseBarbarian = {
                 removedItems: [],
                 additionalItems: [],
                 priority: 0
-            },
+            }
         }
     }
 };

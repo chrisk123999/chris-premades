@@ -125,7 +125,7 @@ export let farStep = {
             options: [
                 {
                     value: 'simple',
-                    label: 'CHRISPREMADES.Config.Animations.Simple',
+                    label: 'CHRISPREMADES.Config.Animations.Simple'
                 },
                 {
                     value: 'complex',

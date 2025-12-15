@@ -153,7 +153,7 @@ export let deckOfIllusions = {
             type: 'select-many',
             options: monsters.map(i => ({value: i.slugify(), label: i})),
             default: monsters.map(i => i.slugify()),
-            category: 'mechanics',
+            category: 'mechanics'
         },
         {
             value: 'animation',

@@ -6,7 +6,7 @@ import {ItemMedkit} from '../../applications/medkit-item.js';
 import {requirements} from '../../extensions/requirements.js';
 function getSaveDC(item) {
     if (item.hasSave) return item.system.activities.getByType('save')[0].save.dc.value;
-    return item.actor?.system?.abilities?.[item.abilityMod]?.dc ?? 10;
+    return item.actor?.system?.abilities?.[item.abilityMod]?.dc ?? item?.actor?.system?.attributes?.spell?.dc ?? 10;
 }
 async function createItems(actor, updates, {favorite, section, parentEntity, identifier, castData} = {}) {
     let hasPermission = socketUtils.hasPermission(actor, game.user.id);
@@ -87,9 +87,9 @@ async function isUpToDate(item) {
             break;
         case 'midi-item-showcase-community':
             if (type === 'character' || item.type === 'spell') {
-                sourceVersion = miscPremades.miscItems.find(i => i.name === item.name)?.version;
+                sourceVersion = miscPremades.miscItems.find(i => (i.name === item.name || i.aliases?.includes(item.name)))?.version;
             } else {
-                sourceVersion = miscPremades.miscMonsters.find(i => i.name === item.name && i.monster === monster)?.version;
+                sourceVersion = miscPremades.miscMonsters.find(i => (i.name === item.name || i.aliases?.includes(item.name)) && i.monster === monster)?.version;
             }
             break;
         case 'automated-crafted-creations':

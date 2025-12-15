@@ -54,7 +54,7 @@ async function use({trigger, workflow}) {
                 {
                     type: 'midi.actor',
                     macros: ['warGodsBlessingCast']
-                },
+                }
             ],
             parentEntity: items[0],
             interdependent: true

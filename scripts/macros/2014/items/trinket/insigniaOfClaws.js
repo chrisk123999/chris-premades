@@ -3,7 +3,8 @@ async function early({trigger: {entity: item}, workflow}) {
     if (!itemUtils.getEquipmentState(item)) return;
     let isUnarmed = constants.unarmedAttacks.includes(genericUtils.getIdentifier(workflow.item));
     let isNatural = workflow.item.system.type?.value === 'natural';
-    if (!isUnarmed && !isNatural) return;
+    let classification = workflow.activity.attack?.type?.classification;
+    if (!isUnarmed && !isNatural && classification != 'unarmed') return;
     let existingBonus = workflow.item.system.magicalBonus ?? 0;
     if (workflow.item.type === 'weapon') {
         workflow.item = workflow.item.clone({'system.properties': Array.from(workflow.item.system.properties).concat('mgc'), 'system.magicalBonus': existingBonus + 1}, {keepId: true});

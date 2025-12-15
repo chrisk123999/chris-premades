@@ -1,4 +1,4 @@
-import {constants, dialogUtils, genericUtils, itemUtils, rollUtils, workflowUtils} from '../../../../../utils.js';
+import {dialogUtils, genericUtils, itemUtils, rollUtils, workflowUtils} from '../../../../../utils.js';
 import {bardicInspiration} from '../bardicInspiration.js';
 async function attackEarly({trigger: {entity: item}, workflow}) {
     if (!workflow.targets.size || workflow.isFumble || !workflowUtils.isAttackType(workflow, 'attack')) return;
@@ -38,7 +38,7 @@ async function checkSkill({trigger: {entity: item, roll, actor, options}}) {
     genericUtils.setProperty(options, 'chris-premades.peerlessSkill', true);
     return await rollUtils.addToRoll(roll, scale.formula);
 }
-async function checkSkillLate({trigger: {entity: item, config, roll, actor, options}}) {
+async function checkSkillLate({trigger: {entity: item, roll, actor, options}}) {
     if (!options?.['chris-premades']?.peerlessSkill) return;
     let targetValue = roll.options.target;
     if (targetValue) {

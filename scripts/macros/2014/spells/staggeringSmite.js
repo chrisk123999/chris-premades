@@ -51,7 +51,7 @@ export let staggeringSmite = {
             options: constants.damageTypeOptions,
             homebrew: true,
             category: 'homebrew'
-        },
+        }
     ]
 };
 export let staggeringSmiteDamage = {

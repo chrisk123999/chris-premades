@@ -8,11 +8,11 @@ export class Crosshairs extends foundry.canvas.placeables.MeasuredTemplate {
             x: config.x,
             y: config.y,
             document: {
-                fillColor: config.fillColor,
+                fillColor: config.fillColor
             },
             width: 1,
             texture: config.texture,
-            direction: config.direction,
+            direction: config.direction
         };
         const template = new CONFIG.MeasuredTemplate.documentClass(templateData, {parent: canvas.scene});
         super(template);
@@ -45,7 +45,7 @@ export class Crosshairs extends foundry.canvas.placeables.MeasuredTemplate {
             label: '',
             labelOffset: {
                 x: 0,
-                y: 0,
+                y: 0
             },
             tag: 'crosshairs',
             drawIcon: true,
@@ -59,7 +59,7 @@ export class Crosshairs extends foundry.canvas.placeables.MeasuredTemplate {
             // Measured template defaults
             texture: null,
             direction: 0,
-            fillColor: game.user.color,
+            fillColor: game.user.color
         };
     }
     /**
@@ -91,7 +91,7 @@ export class Crosshairs extends foundry.canvas.placeables.MeasuredTemplate {
             cancelled: this.cancelled,
             scene: this.scene,
             radius: this.radius,
-            size: this.document.distance,
+            size: this.document.distance
         });
         delete data.width;
         return data;

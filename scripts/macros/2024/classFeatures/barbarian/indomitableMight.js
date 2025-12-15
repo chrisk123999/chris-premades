@@ -35,7 +35,7 @@ export let indomitableMight = {
     config: [
         {
             value: 'ability',
-            label: 'CHRISPREMADES.Config.Abilities',
+            label: 'CHRISPREMADES.Config.Ability',
             type: 'select',
             default: 'str',
             options: constants.abilityOptions,

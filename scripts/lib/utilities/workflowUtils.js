@@ -59,12 +59,12 @@ async function completeItemUse(item, config = {}, options = {}) {
     }
     return workflow;
 }
-async function syntheticActivityRoll(activity, targets = [], {options = {}, config = {}, atLevel = undefined, consumeUsage = false, consumeResources = false, dialog = {}, message = {}} = {}) {
+async function syntheticActivityRoll(activity, targets = [], {options = {}, config = {}, atLevel = undefined, consumeUsage = false, consumeResources = false, spellSlot = false, dialog = {}, message = {}} = {}) {
     let defaultConfig = {
         consumeUsage,
-        consumeSpellSlot: false,
         consume: {
-            resources: consumeResources
+            resources: consumeResources,
+            spellSlot
         }
     };
     let autoRollDamage = MidiQOL.configSettings().autoRollDamage;
@@ -88,12 +88,12 @@ async function syntheticActivityRoll(activity, targets = [], {options = {}, conf
     config.midiOptions = options;
     return await completeActivityUse(activity, config, dialog, message);
 }
-async function syntheticItemRoll(item, targets, {options = {}, config = {}, userId, consumeUsage = false, consumeResources = false} = {}) {
+async function syntheticItemRoll(item, targets, {options = {}, config = {}, userId, consumeUsage = false, consumeResources = false, spellSlot = false} = {}) {
     let defaultConfig = {
         consumeUsage,
-        consumeSpellSlot: false,
         consume: {
-            resources: consumeResources
+            resources: consumeResources,
+            spellSlot
         }
     };
     let autoRollDamage = MidiQOL.configSettings().autoRollDamage;

@@ -1,0 +1,123 @@
+{
+  "name": "Aura of Authority",
+  "type": "feat",
+  "system": {
+    "activities": {},
+    "uses": {
+      "spent": null,
+      "recovery": []
+    },
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "identifier": "aura-of-authority",
+    "source": {
+      "revision": 1,
+      "rules": "2024"
+    },
+    "advancement": [],
+    "crewed": false,
+    "enchant": {},
+    "prerequisites": {
+      "repeatable": false,
+      "items": []
+    },
+    "properties": [],
+    "requirements": "",
+    "type": {
+      "value": "monster",
+      "subtype": ""
+    }
+  },
+  "effects": [
+    {
+      "name": "Aura of Authority",
+      "changes": [
+        {
+          "key": "flags.midi-qol.advantage.attack.all",
+          "mode": 0,
+          "value": "1",
+          "priority": 20
+        },
+        {
+          "key": "flags.midi-qol.advantage.ability.save.all",
+          "mode": 0,
+          "value": "1",
+          "priority": 20
+        }
+      ],
+      "transfer": false,
+      "img": "icons/sundries/flags/banner-skull-red.webp",
+      "_id": "Py5SIpydN0Fm5ueW",
+      "type": "base",
+      "system": {},
+      "disabled": false,
+      "duration": {
+        "startTime": null,
+        "combat": null,
+        "seconds": null,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "description": "",
+      "origin": null,
+      "tint": "#ffffff",
+      "statuses": [],
+      "sort": 0,
+      "flags": {
+        "dnd5e": {
+          "riders": {
+            "statuses": []
+          }
+        },
+        "dae": {
+          "enableCondition": "",
+          "disableCondition": "",
+          "stackable": "noneName",
+          "showIcon": true,
+          "disableIncapacitated": false,
+          "selfTarget": false,
+          "selfTargetAlways": false,
+          "dontApply": false,
+          "durationExpression": "",
+          "macroRepeat": "none",
+          "specialDuration": []
+        },
+        "core": {
+          "overlay": false
+        }
+      },
+      "_key": "!items.effects!Efz2it1oROVIQiQn.Py5SIpydN0Fm5ueW"
+    }
+  ],
+  "flags": {
+    "midiProperties": {
+      "saveDamage": "halfdam"
+    },
+    "chris-premades": {
+      "info": {
+        "identifier": "auraOfAuthority",
+        "rules": "modern",
+        "source": "chris-premades",
+        "version": "1.3.150"
+      },
+      "macros": {
+        "aura": [
+          "auraOfAuthority"
+        ]
+      }
+    },
+    "dnd5e": {
+      "riders": {
+        "activity": []
+      }
+    }
+  },
+  "img": "icons/sundries/flags/banner-skull-red.webp",
+  "folder": "gs9lBeodB8ejjWDH",
+  "_id": "Efz2it1oROVIQiQn",
+  "_key": "!items!Efz2it1oROVIQiQn"
+}

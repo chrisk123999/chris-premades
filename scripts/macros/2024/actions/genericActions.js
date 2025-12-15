@@ -2,13 +2,13 @@ import {constants, dialogUtils, genericUtils, itemUtils, workflowUtils} from '..
 // Custom mapping for action names that don't match CONFIG.DND5E.rules slugification
 let ACTION_RULE_MAPPING = {
     'Check Cover': 'cover',
-    'Fall': 'falling',
-    'Jump': 'jumping',
+    Fall: 'falling',
+    Jump: 'jumping',
     'Knock Out': 'knockingacreatureout',
-    'Squeeze': 'squeezing',
-    'Stabilize': 'stabilizing',
-    'Suffocation': 'suffocating',
-    'Underwater': 'underwatercombat'
+    Squeeze: 'squeezing',
+    Stabilize: 'stabilizing',
+    Suffocation: 'suffocating',
+    Underwater: 'underwatercombat'
 };
 async function use({trigger, workflow}) {
     let rules = itemUtils.getConfig(workflow.item, 'rules');

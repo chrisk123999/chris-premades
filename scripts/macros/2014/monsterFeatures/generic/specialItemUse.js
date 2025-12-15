@@ -19,7 +19,7 @@ export let specialItemUse = {
             {
                 pass: 'rollFinished',
                 macro: use,
-                priority: 50,
+                priority: 50
             }
         ]
     },

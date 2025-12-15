@@ -28,7 +28,13 @@
       "flags": {
         "dae": {
           "transfer": true,
-          "stackable": "noneNameOnly"
+          "stackable": "noneNameOnly",
+          "disableCondition": "",
+          "showIcon": false,
+          "disableIncapacitated": false,
+          "durationExpression": "",
+          "macroRepeat": "none",
+          "specialDuration": []
         },
         "ddbimporter": {
           "disabled": false,
@@ -39,14 +45,31 @@
         "midi-qol": {
           "forceCEOff": true
         },
-        "core": {}
+        "core": {
+          "overlay": false
+        },
+        "chris-premades": {
+          "noAnimation": false,
+          "conditions": [],
+          "specialDuration": [],
+          "templateEffectActivities": [],
+          "info": {
+            "identifier": "unarmoredDefenseMonkEffect"
+          },
+          "rules": "modern"
+        },
+        "dnd5e": {
+          "riders": {
+            "statuses": []
+          }
+        }
       },
-      "description": "While you aren’t wearing armor or wielding a Shield, your base AC equals [[10+ @abilities.dex.mod+ @abilities.wis.mod]].",
+      "description": "<p>While you aren’t wearing armor or wielding a Shield, your base AC equals [[10+ @abilities.dex.mod+ @abilities.wis.mod]].</p>",
       "img": "icons/magic/control/buff-flight-wings-runes-red.webp",
       "_id": "9s8GMffkNxlDeDmX",
       "type": "base",
       "system": {},
-      "origin": null,
+      "origin": "Compendium.world.cpr-class-features-2024.Item.rIoDd03MBVo6UBCm",
       "sort": 0,
       "_key": "!items.effects!rIoDd03MBVo6UBCm.9s8GMffkNxlDeDmX"
     }
@@ -109,7 +132,12 @@
         "identifier": "unarmoredDefenseMonk",
         "rules": "modern",
         "source": "chris-premades",
-        "version": "1.3.136"
+        "version": "1.3.138"
+      },
+      "macros": {
+        "item": [
+          "unarmoredDefenseMonk"
+        ]
       }
     }
   },

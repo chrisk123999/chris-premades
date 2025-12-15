@@ -11,7 +11,7 @@ async function use({workflow}) {
             if (selection) secondaryTarget = selection[0];
         }
     }
-    await Teleport.target([workflow.token], workflow.token, {range: 30, animation: animation});
+    await Teleport.target([workflow.token], workflow.token, {range: itemUtils.getConfig(workflow.item, 'range'), animation: animation});
     if (!secondaryTarget) return;
     await Teleport.target([secondaryTarget], workflow.token, {range: 5, animation: animation});
 }
@@ -35,6 +35,20 @@ export let mistyStep = {
             type: 'checkbox',
             default: true,
             category: 'animation'
+        },
+        {
+            value: 'range',
+            label: 'CHRISPREMADES.Config.Range',
+            type: 'number',
+            default: 30,
+            category: 'homebrew'
+        },
+        {
+            value: 'range',
+            label: 'CHRISPREMADES.Macros.MistyWanderer.Range',
+            type: 'number',
+            default: 5,
+            category: 'homebrew'
         }
     ]
 };

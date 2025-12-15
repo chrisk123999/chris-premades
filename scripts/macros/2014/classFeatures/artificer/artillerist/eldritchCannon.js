@@ -287,7 +287,7 @@ export let eldritchCannon = {
             type: 'file',
             default: '',
             category: 'summons'
-        },
+        }
     ],
     ddbi: {
         removedItems: {

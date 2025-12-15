@@ -159,7 +159,7 @@ async function confirmUseItem(item, {userId = game.user.id, buttons = 'yesNo'} =
 async function selectDocumentDialog(title, content, documents, {displayTooltips = false, sortAlphabetical = false, sortCR = false, userId = game.user.id, addNoneDocument = false, showCR = false, showSpellLevel = false, displayReference = false} = {}) {
     if (sortAlphabetical) {
         documents = documents.sort((a, b) => {
-            return a.name.localeCompare(b.name, 'en', {'sensitivity': 'base'});
+            return a.name.localeCompare(b.name, 'en', {sensitivity: 'base'});
         });
     }
     if (sortCR) {
@@ -199,7 +199,7 @@ async function selectDocumentDialog(title, content, documents, {displayTooltips 
 async function selectDocumentsDialog(title, content, documents, {max = undefined, displayTooltips = false, sortAlphabetical = false, sortCR = false, userId = game.user.id, showCR = false, checkbox = false, weights = {}, maxes = {}} = {}) {
     if (sortAlphabetical) {
         documents = documents.sort((a, b) => {
-            return a.name.localeCompare(b.name, 'en', {'sensitivity': 'base'});
+            return a.name.localeCompare(b.name, 'en', {sensitivity: 'base'});
         });
     }
     if (sortCR) {
@@ -236,7 +236,7 @@ async function selectHitDie(actor, title, content, {max = 1, userId = game.user.
     let documents = actor.items.filter(i => i.type === 'class' && (i.system.levels - i.system.hd.spent) > 0);
     if (!documents.length) return;
     documents = documents.sort((a, b) => {
-        return a.name.localeCompare(b.name, 'en', {'sensitivity': 'base'});
+        return a.name.localeCompare(b.name, 'en', {sensitivity: 'base'});
     });
     let inputFields = documents.map(i => ({
         label: genericUtils.format('CHRISPREMADES.Dialog.HitDieLabel', {className: i.name, remaining: i.system.levels - i.system.hd.spent, max: i.system.levels, denomination: i.system.hd.denomination}),
@@ -314,6 +314,28 @@ async function queuedConfirmDialog(title, content, {actor, reason, userId} = {})
     }
     return selection;
 }
+async function selectDie(rolls = [], title, content, {max = 1, userId = game.user.id, buttons = 'okCancel'} = {}) {
+    let dice = [];
+    for (let i = 0; i < rolls.length; i++) {
+        for (let j = 0; j < rolls[i].terms.length; j++) {
+            if (rolls[i].terms[j].isDeterministic) continue;
+            for (let k = 0; k < rolls[i].terms[j].results.length; k++) {
+                dice.push({name: i + '-' + j + '-' + k, label: rolls[i].terms[j].results[k].result + ' (d' + rolls[i].terms[j].faces + ')'});
+            }
+        }
+    }
+    let inputs = [['checkbox', dice, {displayAsRows: true, totalMax: max}]];
+    let selection;
+    if (game.user.id != userId) {
+        selection = await socket.executeAsUser(sockets.dialog.name, userId, title, content, inputs, buttons, {height: 'auto'});
+    } else {
+        selection = await DialogApp.dialog(title, content, inputs, buttons, {height: 'auto'});
+    }
+    if (selection.buttons) {
+        delete selection.buttons;
+        return Object.entries(selection).filter(([key, value]) => (value)).map(i => i[0]);
+    }
+}
 export let dialogUtils = {
     buttonDialog,
     numberDialog,
@@ -326,5 +348,6 @@ export let dialogUtils = {
     selectSpellSlot,
     selectDamageType,
     queuedConfirmDialog,
-    confirmUseItem
+    confirmUseItem,
+    selectDie
 };

@@ -193,6 +193,6 @@ export let maximiliansEarthenGrasp = {
             type: 'file',
             default: '',
             category: 'summons'
-        },
+        }
     ]
 };

@@ -93,7 +93,7 @@ export let bigbysBeneficentBracelet = {
             type: 'file',
             default: '',
             category: 'summons'
-        },
+        }
     ],
     equipment: {
         mageHand: {

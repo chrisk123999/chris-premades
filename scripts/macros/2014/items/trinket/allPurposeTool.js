@@ -99,7 +99,7 @@ export let allPurposeTool1 = {
                 pass: 'postAttackRoll',
                 macro: attack,
                 priority: 50
-            },
+            }
         ]
     }
 };

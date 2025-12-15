@@ -434,6 +434,12 @@ export {masterOfTactics} from './macros/2014/classFeatures/rogue/mastermind/mast
 export {insightfulManipulator} from './macros/2014/classFeatures/rogue/mastermind/insightfulManipulator.js';
 export {misdirection} from './macros/2014/classFeatures/rogue/mastermind/misdirection.js';
 export {soulOfDeceit} from './macros/2014/classFeatures/rogue/mastermind/soulOfDeceit.js';
+export {naturalAttunement} from './macros/2014/classFeatures/wizard/leylineMagic/naturalAttunement.js';
+export {thrumOfTheLand} from './macros/2014/classFeatures/wizard/leylineMagic/thrumOfTheLand.js';
+export {magnificentFeast, magnificentFeastMeal, magnificentFeastEffect} from './macros/2014/classFeatures/cleric/communityDomain/magnificentFeast.js';
+export {extractAspects} from './macros/2014/classFeatures/monk/wayOfCobaltSoul/extractAspects.js';
+export {extortTruth} from './macros/2014/classFeatures/monk/wayOfCobaltSoul/extortTruth.js';
+export {mindOfMercury} from './macros/2014/classFeatures/monk/wayOfCobaltSoul/mindOfMercury.js';
 // Race Features
 export {aasimarNecroticShroud, aasimarRadiantConsumption, aasimarRadiantSoul, celestialRevelation} from './macros/2014/raceFeatures/aasimar/celestialRevelation.js';
 export {acidBreathWeapon, coldBreathWeapon, fireBreathWeapon, lightningBreathWeapon, poisonBreathWeapon} from './macros/2014/raceFeatures/dragonborn/chromatic/breathWeapon.js';
@@ -554,6 +560,7 @@ export {sunlightSensitivity} from './macros/2014/monsterFeatures/generic/sunligh
 export {surpriseAttack} from './macros/2014/monsterFeatures/generic/surpriseAttack.js';
 export {swarmDamage} from './macros/2014/monsterFeatures/generic/swarmDamage.js';
 export {touchDamage} from './macros/2014/monsterFeatures/generic/touchDamage.js';
+export {transform} from './macros/2014/monsterFeatures/generic/transform.js';
 export {undeadFortitude} from './macros/2014/monsterFeatures/generic/undeadFortitude.js';
 export {autoProne} from './macros/2014/monsterFeatures/generic/autoProne.js';
 export {grappleAttackAdvantage} from './macros/2014/monsterFeatures/generic/grappleAttackAdvantage.js';
@@ -667,7 +674,14 @@ export {deckOfMiscellany, deckOfMiscellanySetup, miscellanyCard} from './macros/
 export {deckOfWonder, deckOfWonderDestinyEffect, deckOfWonderIsolationEffect, deckOfWonderJusticeEffect, deckOfWonderVultureLostEffect} from './macros/2014/items/trinket/deckOfWonder.js';
 export {harkonsBite, harkonsBiteEffect} from './macros/2014/items/trinket/harkonsBite.js';
 export {crownOfDaffodils} from './macros/2014/items/trinket/crownOfDaffodils.js';
+export {jewelOfThreePrayersDormant} from './macros/2014/items/trinket/jewelOfThreePrayers.js';
+export {amuletOfTheLycanthrope, amuletOfTheLycanthropeEffect} from './macros/2014/items/trinket/amuletOfTheLycanthrope.js';
 //BG3 Weapon Actions
 export {backbreaker, braceMelee, braceMeleeDamage, cleave, concussiveSmash, maimingStrike, disarmingStrike, flourish, heartstopper, lacerate, piercingStrike, piercingStrikeEffect, pommelStrike, prepare, rush, tenacity, topple, weakeningStrike, braceRanged, braceRangedDamage, hamstringShot, mobileShot, piercingShot} from './macros/2014/homebrew/bg3WeaponActions.js';
 //Other
 export {maxDamage, maxDamageEffect, doubleDamage, doubleDamageEffect} from './macros/homebrew/critFumble.js';
+// Piety
+export {heliodsDevotee} from './macros/2014/piety/heliod/heliodsDevotee.js';
+export {nyleasDevotee} from './macros/2014/piety/nylea/nyleasDevotee.js';
+export {karametrasDevotee} from './macros/2014/piety/karametra/karametrasDevotee.js';
+export {iroassDevotee} from './macros/2014/piety/iroas/iroassDevotee.js';

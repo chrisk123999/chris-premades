@@ -1,4 +1,4 @@
-import {activityUtils, actorUtils, combatUtils, dialogUtils, genericUtils, itemUtils, socketUtils, workflowUtils} from '../../../../../utils.js';
+import {actorUtils, combatUtils, dialogUtils, genericUtils, itemUtils, socketUtils, workflowUtils} from '../../../../../utils.js';
 import {bardicInspiration} from '../bardicInspiration.js';
 async function early({trigger, workflow}) {
     let maxTargets = Math.max(1, workflow.actor.system.abilities.cha.mod);

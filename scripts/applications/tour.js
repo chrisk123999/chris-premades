@@ -61,7 +61,7 @@ let states = {
         await genericUtils.sleep(250);
     },
     10: async () => {
-        game.settings.sheet.render(true, {'activeCategory': 'chris-premades'});
+        game.settings.sheet.render(true, {activeCategory: 'chris-premades'});
         await genericUtils.sleep(250);
     },
     12: async () => {

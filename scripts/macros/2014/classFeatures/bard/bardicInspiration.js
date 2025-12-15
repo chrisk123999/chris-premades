@@ -15,7 +15,7 @@ async function use({workflow}) {
         duration: itemUtils.convertDuration(workflow.activity),
         flags: {
             'chris-premades': {
-                'bardicInspiration': {
+                bardicInspiration: {
                     formula: scale.die
                 }
             }

@@ -82,10 +82,9 @@ async function use({workflow}) {
     updates.actor.items.push(moodFeatureData);
     let animation = itemUtils.getConfig(workflow.item, creatureType + 'Animation') ?? 'none';
     let duration = 3600;
-    const uuid = workflow.item.flags.dnd5e?.cachedFor;
+    let uuid = workflow.item.flags.dnd5e?.cachedFor;
     if (uuid) {
-        const activity = await fromUuid(uuid, {relative: workflow.actor});
-        
+        let activity = await fromUuid(uuid, {relative: workflow.actor});
         if (activity?.item === itemUtils.getItemByIdentifier(workflow.actor, 'feyReinforcements')) {
             duration = 60;
         }

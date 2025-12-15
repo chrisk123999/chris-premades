@@ -2,7 +2,7 @@ import {custom} from './custom.js';
 import {effects} from '../extensions/effects.js';
 import * as macros from '../macros.js';
 import * as legacyMacros from '../legacyMacros.js';
-import {effectUtils, genericUtils, macroUtils, socketUtils} from '../utils.js';
+import {actorUtils, effectUtils, genericUtils, macroUtils, socketUtils, templateUtils} from '../utils.js';
 import {auras} from './auras.js';
 import {death} from './death.js';
 function getEffectMacroData(effect) {
@@ -15,20 +15,96 @@ function collectEffectMacros(effect) {
     return macroList.map(i => custom.getMacro(i, genericUtils.getRules(effect))).filter(j => j);
 }
 function collectMacros(effect, pass) {
-    let macroList = collectEffectMacros(effect).filter(i => i.effect?.find(j => j.pass === pass)).flatMap(k => k.effect).filter(l => l.pass === pass).concat(macroUtils.getEmbeddedMacros(effect, 'effect', {pass}));
-    if (!macroList.length) return [];
     let triggers = [];
-    if (macroList.length) {
-        triggers.push({
-            entity: effect,
-            castData: {
-                castLevel: effectUtils.getCastLevel(effect) ?? -1,
-                baseLevel: effectUtils.getBaseLevel(effect) ?? -1,
-                saveDC: effectUtils.getSaveDC(effect) ?? -1
-            },
-            macros: macroList,
-            name: effect.name.slugify()
+    let actor;
+    if (effect.parent instanceof Actor) {
+        actor = effect.parent;
+    } else if (effect.parent instanceof Item) {
+        actor = effect.parent.actor;
+    }
+    let token = actorUtils.getFirstToken(actor);
+    let simplePasses = ['created', 'deleted', 'preCreateEffect', 'preUpdateEffect'];
+    if (simplePasses.includes(pass)) {
+        let macroList = collectEffectMacros(effect).filter(i => i.effect?.find(j => j.pass === pass)).flatMap(k => k.effect).filter(l => l.pass === pass).concat(macroUtils.getEmbeddedMacros(effect, 'effect', {pass}));
+        if (!macroList.length) return [];
+        if (macroList.length) {
+            triggers.push({
+                entity: effect,
+                castData: {
+                    castLevel: effectUtils.getCastLevel(effect) ?? -1,
+                    baseLevel: effectUtils.getBaseLevel(effect) ?? -1,
+                    saveDC: effectUtils.getSaveDC(effect) ?? -1
+                },
+                macros: macroList,
+                name: effect.name.slugify(),
+                token
+            });
+        }
+        return triggers;
+    } else {
+        actor.items.forEach(aItem => {
+            let macroList = collectEffectMacros(aItem).filter(i => i.effect?.find(j => j.pass === pass)).flatMap(k => k.effect).filter(l => l.pass === pass).concat(macroUtils.getEmbeddedMacros(effect, 'effect', {pass}));
+            if (!macroList.length) return;
+            triggers.push({
+                entity: aItem,
+                castData: {
+                    castLevel: effectUtils.getCastLevel(effect) ?? -1,
+                    baseLevel: effectUtils.getBaseLevel(effect) ?? -1,
+                    saveDC: effectUtils.getSaveDC(effect) ?? -1
+                },
+                macros: macroList,
+                name: effect.name.slugify(),
+                token
+            });
         });
+        actorUtils.getEffects(actor, {includeItemEffects: true}).forEach(actorEffect => {
+            let macroList = collectEffectMacros(actorEffect).filter(i => i.effect?.find(j => j.pass === pass)).flatMap(k => k.effect).filter(l => l.pass === pass).concat(macroUtils.getEmbeddedMacros(effect, 'effect', {pass}));
+            if (!macroList.length) return;
+            triggers.push({
+                entity: actorEffect,
+                castData: {
+                    castLevel: effectUtils.getCastLevel(effect) ?? -1,
+                    baseLevel: effectUtils.getBaseLevel(effect) ?? -1,
+                    saveDC: effectUtils.getSaveDC(effect) ?? -1
+                },
+                macros: macroList,
+                name: effect.name.slugify(),
+                token
+            });
+        });
+        if (token) {
+            let templates = templateUtils.getTemplatesInToken(token);
+            templates.forEach(template => {
+                let macroList = collectEffectMacros(template).filter(i => i.effect?.find(j => j.pass === pass)).flatMap(k => k.effect).filter(l => l.pass === pass).concat(macroUtils.getEmbeddedMacros(effect, 'effect', {pass}));
+                if (!macroList.length) return;
+                triggers.push({
+                    entity: template,
+                    castData: {
+                        castLevel: effectUtils.getCastLevel(effect) ?? -1,
+                        baseLevel: effectUtils.getBaseLevel(effect) ?? -1,
+                        saveDC: effectUtils.getSaveDC(effect) ?? -1
+                    },
+                    macros: macroList,
+                    name: effect.name.slugify(),
+                    token
+                });
+            });
+            token.document.regions.forEach(region => {
+                let macroList = collectEffectMacros(region).filter(i => i.effect?.find(j => j.pass === pass)).flatMap(k => k.effect).filter(l => l.pass === pass).concat(macroUtils.getEmbeddedMacros(effect, 'effect', {pass}));
+                if (!macroList.length) return;
+                triggers.push({
+                    entity: region,
+                    castData: {
+                        castLevel: effectUtils.getCastLevel(effect) ?? -1,
+                        baseLevel: effectUtils.getBaseLevel(effect) ?? -1,
+                        saveDC: effectUtils.getSaveDC(effect) ?? -1
+                    },
+                    macros: macroList,
+                    name: effect.name.slugify(),
+                    token
+                });
+            });
+        }
     }
     return triggers;
 }
@@ -68,7 +144,9 @@ function getSortedTriggers(effect, pass, options) {
                 priority: macro.priority,
                 name: trigger.name,
                 macroName: typeof macro.macro === 'string' ? 'Embedded' : macro.macro.name,
-                options
+                options,
+                token: trigger.token,
+                target: effect
             });
         });
     });
@@ -98,6 +176,7 @@ async function createActiveEffect(effect, options, userId) {
     if (!(effect.parent instanceof Actor || (effect.parent instanceof Item && effect.parent.actor && effect.type === 'enchantment'))) return;
     await auras.effectCheck(effect);
     await executeMacroPass(effect, 'created', options);
+    await executeMacroPass(effect, 'actorCreated', options);
     if (effect.statuses.has('dead')) await death.executeMacroPass(effect.parent, 'dead');
     if (effect.statuses.size) await effects.specialDurationConditions(effect);
     if (effect.parent instanceof Actor && effect.changes.find(change => change.key.includes('system.attributes.movement.'))) await effects.specialDurationZeroSpeed(effect.parent);
@@ -107,9 +186,12 @@ async function deleteActiveEffect(effect, options, userId) {
     if (effect.parent instanceof Actor) {
         await auras.effectCheck(effect);
         await executeMacroPass(effect, 'deleted', options);
+        await executeMacroPass(effect, 'actorDeleted', options);
     } else if (effect.parent instanceof Item && effect.type === 'enchantment') {
         if (effect.parent.actor) await executeMacroPass(effect, 'deleted', options);
+        await executeMacroPass(effect, 'actorDeleted', options);
     }
+    if (effect.statuses.size) await effects.specialDurationRemovedConditions(effect);
     await effects.checkInterdependentDeps(effect);
 }
 let preCreateMacros = [];

@@ -115,15 +115,15 @@ class EffectDirectory extends foundry.applications.sidebar.DocumentDirectory {
                     if (!document) return;
                     await foundry.applications.api.DialogV2.confirm({
                         window: {
-                            title: genericUtils.translate('CHRISPREMADES.EffectInterface.ImportData') + document.name,
+                            title: genericUtils.translate('CHRISPREMADES.EffectInterface.ImportData') + document.name
                         },
                         position: {
                             width: 400
                         },
                         // eslint-disable-next-line no-undef
                         content: await foundry.applications.handlebars.renderTemplate('templates/apps/import-data.hbs', {
-                            hint1: game.i18n.format('DOCUMENT.ImportDataHint1', {'document': 'ActiveEffect'}),
-                            hint2: game.i18n.format('DOCUMENT.ImportDataHint2', {'name': document.name})
+                            hint1: game.i18n.format('DOCUMENT.ImportDataHint1', {document: 'ActiveEffect'}),
+                            hint2: game.i18n.format('DOCUMENT.ImportDataHint2', {name: document.name})
                         }),
                         yes: {
                             icon: 'fa-solid fa-file-import',
@@ -173,7 +173,7 @@ class EffectDirectory extends foundry.applications.sidebar.DocumentDirectory {
                     if (effectData.flags['chris-premades']?.effectInterface?.status) delete effectData.flags['chris-premades'].effectInterface.status;
                     effectData.name += ' ' + genericUtils.translate('CHRISPREMADES.EffectInterface.Copy');
                     genericUtils.setProperty(effectData, 'flags.chris-premades.effectInterface.sort', this.collection.size + 1);
-                    let createdEffect = await ActiveEffect.create(effectData, {'parent': effectItem});
+                    let createdEffect = await ActiveEffect.create(effectData, {parent: effectItem});
                     this.collection.set(createdEffect);
                     this.render(true);
                 },
@@ -264,18 +264,18 @@ class EffectDirectory extends foundry.applications.sidebar.DocumentDirectory {
     async _onCreateEntry(event) {
         event.preventDefault();
         let effectData = {
-            'name': genericUtils.translate('DND5E.EffectNew'),
-            'img': 'icons/svg/aura.svg',
-            'transfer': false,
-            'flags': {
+            name: genericUtils.translate('DND5E.EffectNew'),
+            img: 'icons/svg/aura.svg',
+            transfer: false,
+            flags: {
                 'chris-premades': {
-                    'effectInterface': {
-                        'sort': this.collection.size + 1
+                    effectInterface: {
+                        sort: this.collection.size + 1
                     }
                 }
             }
         };
-        let createdEffect = await ActiveEffect.create(effectData, {'parent': effectItem});
+        let createdEffect = await ActiveEffect.create(effectData, {parent: effectItem});
         await createdEffect.sheet.render(true);
         this.collection.set(createdEffect);
         this.collection.initializeTree();
@@ -311,7 +311,7 @@ class EffectDirectory extends foundry.applications.sidebar.DocumentDirectory {
         }
         delete effectData._id;
         try {
-            let createdEffect = await ActiveEffect.create(effectData, {'parent': effectItem});
+            let createdEffect = await ActiveEffect.create(effectData, {parent: effectItem});
             this.collection.set(createdEffect);
             this.render(true);
         } catch (error) {

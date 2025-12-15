@@ -48,7 +48,7 @@ export let activityOnRest = {
             {
                 pass: 'rollFinished',
                 macro: rollFinished,
-                priority: 50,
+                priority: 50
             }
         ]
     },

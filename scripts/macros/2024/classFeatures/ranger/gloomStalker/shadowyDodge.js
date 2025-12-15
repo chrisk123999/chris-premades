@@ -11,7 +11,7 @@ async function attacked({trigger: {entity: item}, workflow}) {
     workflow.disadvantage = true;
     workflow.rollOptions.disadvantage = false;
     workflow.attackAdvAttribution.add('DIS: ' + item.name);
-    genericUtils.setProperty(workflow, 'chris-premades.shadowyDodge', true)
+    genericUtils.setProperty(workflow, 'chris-premades.shadowyDodge', true);
 }
 async function rollFinished({trigger: {entity: item, token}, workflow}) {
     if (!workflow['chris-premades']?.shadowyDodge) return;
@@ -66,4 +66,4 @@ export let shadowyDodge = {
             category: 'homebrew'
         }
     ]
-}
+};

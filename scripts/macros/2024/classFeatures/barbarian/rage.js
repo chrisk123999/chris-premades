@@ -365,7 +365,7 @@ export let rage = {
                     value: 'saiyan',
                     label: 'CHRISPREMADES.Config.Animations.Saiyan',
                     requiredModules: ['jb2a_patreon']
-                },
+                }
             ]
         },
         {

@@ -10,7 +10,7 @@ async function use({trigger, workflow}) {
     let attitude = await dialogUtils.buttonDialog(workflow.item.name, 'CHRISPREMADES.Macros.Influence.Attitude', [
         ['CHRISPREMADES.Macros.Influence.Indifferent', 'indifferent'],
         ['CHRISPREMADES.Macros.Influence.Friendly', 'friendly'],
-        ['CHRISPREMADES.Macros.Influence.Hostile', 'hostile'],
+        ['CHRISPREMADES.Macros.Influence.Hostile', 'hostile']
     ], {displayAsRows: true, userId: socketUtils.gmID()});
     if (!attitude) return;
     let skill = await dialogUtils.buttonDialog(workflow.item.name, 'CHRISPREMADES.Macros.Influence.Skill', [

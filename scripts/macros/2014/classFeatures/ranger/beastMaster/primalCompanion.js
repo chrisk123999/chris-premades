@@ -285,7 +285,7 @@ export let primalCompanion = {
             default: 'air',
             category: 'animation',
             options: constants.summonAnimationOptions
-        },
+        }
     ]
 };
 export let primalCompanionSea = {

@@ -23,5 +23,5 @@ export let defense = {
             pass: 'actorUnequipped',
             macro: change
         }
-    ],
+    ]
 };

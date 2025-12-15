@@ -56,7 +56,7 @@ export let thunderousSmite = {
             options: constants.damageTypeOptions,
             homebrew: true,
             category: 'homebrew'
-        },
+        }
     ]
 };
 export let thunderousSmiteDamage = {

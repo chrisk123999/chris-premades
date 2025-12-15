@@ -249,7 +249,7 @@ export async function start({trigger: {entity: effect}}) {
             .effect()
             .copySprite(token)
             .atLocation(token)
-            .loopProperty('sprite', 'position.x', {'from': -40, 'to': 40, 'duration': 75, 'pingPong': true, 'delay': 200})
+            .loopProperty('sprite', 'position.x', {from: -40, to: 40, duration: 75, pingPong: true, delay: 200})
             .scaleToObject(scale)
             .duration(2000)
             .waitUntilFinished(-200)
@@ -280,7 +280,7 @@ export async function start({trigger: {entity: effect}}) {
             .atLocation(token)
             .scaleToObject(1)
             .duration(3000)
-            .scaleIn(0.25,700, {'ease': 'easeOutBounce'})
+            .scaleIn(0.25,700, {ease: 'easeOutBounce'})
             
             .effect()
             .file('jb2a.extras.tmfx.outpulse.circle.01.fast')
@@ -299,7 +299,7 @@ export async function start({trigger: {entity: effect}}) {
             
             .effect()
             .file('jb2a.particles.outward.orange.01.04')
-            .scaleIn(0.25, 500, {'ease': 'easeOutQuint'})
+            .scaleIn(0.25, 500, {ease: 'easeOutQuint'})
             .fadeIn(500)
             .fadeOut(1000)
             .atLocation(token)
@@ -364,7 +364,7 @@ export async function start({trigger: {entity: effect}}) {
             .effect()
             .copySprite(token)
             .atLocation(token)
-            .loopProperty('sprite', 'rotation', {'from': -10, 'to': 10, 'duration': 75, 'pingPong': true, 'delay': 200})
+            .loopProperty('sprite', 'rotation', {from: -10, to: 10, duration: 75, pingPong: true, delay: 200})
             .duration(2000)
             .waitUntilFinished(-200)
             .zIndex(0)
@@ -394,7 +394,7 @@ export async function start({trigger: {entity: effect}}) {
             .atLocation(token)
             .scaleToObject(scale)
             .duration(3000)
-            .scaleIn(0.25, 700, {'ease': 'easeOutBounce'})
+            .scaleIn(0.25, 700, {ease: 'easeOutBounce'})
 
             .effect()
             .file('jb2a.extras.tmfx.outpulse.circle.01.fast')
@@ -412,7 +412,7 @@ export async function start({trigger: {entity: effect}}) {
 
             .effect()
             .file('jb2a.particles.outward.orange.01.04')
-            .scaleIn(0.25, 500, {'ease': 'easeOutQuint'})
+            .scaleIn(0.25, 500, {ease: 'easeOutQuint'})
             .fadeIn(500)
             .fadeOut(1000)
             .atLocation(token)

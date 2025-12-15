@@ -20,7 +20,7 @@ async function use({workflow}) {
         flags: {
             'chris-premades': {
                 template: {
-                    name: workflow.item.name,
+                    name: workflow.item.name
                 },
                 rules: 'modern',
                 macros: {
@@ -137,7 +137,7 @@ export let naturesSanctuary = {
             macro: added,
             priority: 50
         }
-    ],
+    ]
 };
 export let naturesSanctuaryTemplate = {
     name: 'Nature\'s Sanctuary: Template',

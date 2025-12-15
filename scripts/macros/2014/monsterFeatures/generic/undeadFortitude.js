@@ -65,13 +65,13 @@ export let undeadFortitude = {
             value: 'bypassDamageTypes',
             label: 'CHRISPREMADES.Macros.UndeadFortitude.DamageTypes',
             type: 'damageTypes',
-            default: ['radiant'],
+            default: ['radiant']
         },
         {
             value: 'bypassCritical',
             label: 'CHRISPREMADES.Macros.UndeadFortitude.Critical',
             type: 'checkbox',
-            default: true,
+            default: true
         }
     ]
 };

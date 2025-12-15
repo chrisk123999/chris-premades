@@ -109,7 +109,7 @@
             "WeightOfSorrow": "Weight of Sorrow"
         },
         "Config": {
-            "Abilities": "Ability:",
+            "Abilities": "Abilities:",
             "Ability": "Ability:",
             "Activities": "Activities:",
             "AffectAllies": "Should Affect Allies:",
@@ -138,11 +138,14 @@
             "ArmoTypes": "Armor Types:",
             "AttackBonus": "Attack Bonus:",
             "Attacks": "Attacks:",
+            "AutoApply": "Auto Apply:",
             "AvatarImg": "Avatar Image:",
             "AvatarImgPriority": "Avatar Image Priority:",
+            "BaseAttacks": "Base Attacks",
             "BaseDiceNumber": "Base Dice Number:",
             "BaseHealing": "Base Healing:",
             "BlockingStatuses": "Blocking Statuses:",
+            "CanCrit": "Can Crit:",
             "Character": "Character",
             "CheckHit": "Check Hit:",
             "CheckSave": "Check Save:",
@@ -215,7 +218,9 @@
             "HitTarget": "Hit Target:",
             "IgnoredCreatureTypes": "Ignored Creature Types:",
             "ImmuneCreatures": "Immune Creature Types:",
+            "Items": "Items:",
             "LineColor": "Line Color:",
+            "Max": "Max:",
             "MaxLevel": "Max Level:",
             "MaxSize": "Max Size:",
             "Multiplier": "Multiplier:",
@@ -248,15 +253,18 @@
             "SubclassIdentifier": "Subclass Identifier:",
             "SummonerOnly": "Summoner Only:",
             "TintMap": "Tint Map:",
+            "Token": "Token:",
             "TokenColor": "Token Color:",
             "TokenImg": "Token Image:",
             "TokenImgPriority": "Token Image Priority:",
+            "TokenName": "Token Name:",
             "TokenSound": "Token Sound:",
             "Trigger": "Trigger:",
             "TurnTrigger": "Turn Trigger:",
             "UseFormula": "Use Formula:",
             "WeaponProperties": "Weapon Properties:",
             "WeaponType": "Weapon Type",
+            "WeaponTypes": "Weapon Types:",
             "cameraZoom": "Camera Zoom:"
         },
         "Cover": {
@@ -476,6 +484,9 @@
                 "sceneCreate": {
                     "Label": "Scene Create"
                 },
+                "sceneCreated": {
+                    "Label": "Scene Created"
+                },
                 "sceneDamageRollComplete": {
                     "Label": "Scene Damage Roll Complete"
                 },
@@ -678,7 +689,7 @@
             "Import": "Import",
             "Items": "Items",
             "Length": "Length",
-            "Max": "Max:",
+            "Max": "Max",
             "MeleeSpells": "Melee Spell",
             "MeleeWeapons": "Melee Weapons",
             "MissingScale": "Actor does not have {scaleName} scale set!",
@@ -697,17 +708,21 @@
             "RangedWeapons": "Ranged Weapons",
             "Recharge": "Recharge:",
             "RecoverSpellSlot": "Select a spell slot to recover:",
+            "RemoveWhichCondition": "Remove which condition:",
             "Replace": "Replace",
             "Rerolling": "Rerolling {origDie} ({origResult}):",
             "Select": "Select",
+            "SelectALanguage": "Select a language:",
             "SelectAProficency": "Select A Proficency:",
             "SelectASkill": "Select a skill:",
+            "SelectASpell": "Select a spell:",
             "SelectATarget": "Select a target:",
             "SelectAWeapon": "Select a weapon:",
             "SelectAnActivity": "Select and activity:",
             "SelectAnItem": "Select an item:",
             "SelectDamageType": "Select a damage type:",
             "SelectEffect": "Select an effect:",
+            "SelectRemoveCondition": "Select a condition to remove:",
             "SelectSpell": "Select a Spell:",
             "SelectSpellSlot": "Select a spell slot:",
             "SelectTargetEffect": "Select an effect for each target:",
@@ -747,6 +762,10 @@
             "PackId": {
                 "Tooltip": "Copy Pack ID"
             }
+        },
+        "HeroicInspiration": {
+            "Give": "You were given Heroic Inspiration but already have it. Choose another player to give it to:",
+            "Name": "Heroic Inspiration"
         },
         "Item": {
             "Condense": "Condense",
@@ -813,11 +832,17 @@
                 "Name": "Advantage Damage Bonus",
                 "Replace": "Replace Damage Formula:"
             },
+            "AgonizingBlast": {
+                "Select": "Select your Agonizing Blast spell(s):"
+            },
             "AllPurposeTool": {
                 "Channel": "All-Purpose Tool: Channel Creative Forces",
                 "Name": "All Purpose Tool",
                 "Select": "Select an artisan's tool:",
                 "Spell": "Select a cantrip:"
+            },
+            "AmuletOfTheLycanthrope": {
+                "BiteBonus": "Bite Bonus:"
             },
             "AncestralProtectors": {
                 "Target": "Ancestral Protectors: Target"
@@ -1048,7 +1073,13 @@
             },
             "CelestialRevelation": {
                 "Damage": "Radiant Consumption: Damage",
-                "End": "Celestial Revelation: End"
+                "End": "Celestial Revelation: End",
+                "HeavenlyWingsAvatar": "Heavenly Wings Avatar:",
+                "HeavenlyWingsToken": "Heavenly Wings Token:",
+                "InnerRadianceAvatar": "Inner Radiance Avatar:",
+                "InnerRadianceToken": "Inner Radiance Token:",
+                "NecroticShroudAvatar": "Necrotic Shroud Avatar:",
+                "NecroticShroudToken": "Necrotic Shroud Token:"
             },
             "ChainLightning": {
                 "Leap": "Chain Lightning: Leap",
@@ -1271,11 +1302,18 @@
                     "Select": "Select an item to lose:"
                 }
             },
+            "DeflectAttacks": {
+                "UseAndTarget": "Redirect Attack?"
+            },
             "DetectThoughts": {
                 "ProbeDeeper": "Detect Thoughts: Probe Deeper"
             },
             "Devastator": {
                 "Message": "Target one enemy and all allies up to your proficiency score!"
+            },
+            "Disengage": {
+                "CunningAction": "Cunning Action",
+                "StepOfTheWind": "Step of the Wind"
             },
             "DivineSmite": {
                 "Context": "Smite Target?",
@@ -1617,6 +1655,9 @@
                 "Pulse": "Heat Metal: Pulse",
                 "Unable": "Unable (Armor)"
             },
+            "HeightenedFocus": {
+                "BringAlly": "Bring an ally with you?"
+            },
             "Hex": {
                 "Hexed": "Hexed",
                 "Move": "Hex: Move",
@@ -1844,6 +1885,9 @@
                 "Select": "How many? (Max: {maxMissiles})",
                 "Shield": "Shield as reaction?"
             },
+            "MagnificentFeast": {
+                "MagnificentFeast": "Magnificent Feast"
+            },
             "Maneuvers": {
                 "BaitSwitchAC": "Who gets the AC bonus?",
                 "CommanderConfirm": "Use your reaction to make a single weapon attack?",
@@ -1925,7 +1969,8 @@
                 "Name": "Misty Step"
             },
             "MistyWanderer": {
-                "TeleportFriend": "Teleport a willing ally?"
+                "TeleportFriend": "Teleport a willing ally?",
+                "Range": "Misty Wanderer range"
             },
             "Moonbeam": {
                 "Damage": "Moonbeam: Damage",
@@ -1933,6 +1978,11 @@
             },
             "MoonlightStep": {
                 "TeleportFriend": "Teleport a willing ally?"
+            },
+            "Mount": {
+                "MountedRider": "Mounted (Rider)",
+                "MountedTarget": "Mounted (Target)",
+                "Rideable": "The \"Rideable\" module is required to use this feature!"
             },
             "MovementBonusActivity": {
                 "Distance": "Required Distance (ft):",
@@ -1963,6 +2013,12 @@
             },
             "PackTactics": {
                 "Name": "Pack Tactics"
+            },
+            "PactOfTheBlade": {
+                "Conjure": "Which weapon do you conjure?",
+                "Name": "Pact of the Blade",
+                "ReplaceDamage": "Replace weapon damage?",
+                "SelectBond": "Which weapon do you create a bond with?"
             },
             "PactOfTheChain": {
                 "Attack": "Attack with:"
@@ -2016,6 +2072,7 @@
                 "Sky": "Sky"
             },
             "PrimalKnowledge": {
+                "ReplacementAbilities": "Replacement Abilities",
                 "ReplacementAbility": "Replacement Ability:"
             },
             "Protection": {
@@ -2094,6 +2151,9 @@
             "RerollSaveOnDamage": {
                 "ExcludeSource": "Exclude Damage from Source",
                 "Name": "Reroll Save on Damage"
+            },
+            "Resistance": {
+                "Name": "Resistance"
             },
             "Retaliation": {
                 "Weapon": "Which weapon do you attack with?"
@@ -2509,6 +2569,21 @@
             "TouchDamage": {
                 "Name": "Touch Damage"
             },
+            "Transform": {
+                "Name": "Transform",
+                "ProfileOneActivities": "Profile #1 Activities:",
+                "ProfileOneAvatarImg": "Profile #1 Avatar Image:",
+                "ProfileOneAvatarImgPriority": "Profile #1 Avatar Image Priority:",
+                "ProfileOneItems": "Profile #1 Items:",
+                "ProfileOneTokenImg": "Profile #1 Token Image:",
+                "ProfileOneTokenImgPriority": "Profile #1 Token Image Priority:",
+                "ProfileTwoActivities": "Profile #2 Activities:",
+                "ProfileTwoAvatarImg": "Profile #2 Avatar Image:",
+                "ProfileTwoAvatarImgPriority": "Profile #2 Avatar Image Priority:",
+                "ProfileTwoItems": "Profile #2 Items:",
+                "ProfileTwoTokenImg": "Profile #2 Token Image:",
+                "ProfileTwoTokenImgPriority": "Profile #2 Token Image Priority:"
+            },
             "TravelAlongTheTree": {
                 "WillingCreatures": "Select up to six willing creatures:"
             },
@@ -2784,6 +2859,7 @@
                     }
                 },
                 "SpecialDuration": {
+                    "Added": "Added",
                     "AttackedByAnotherCreature": "Attacked By Another Creature",
                     "AttackedBySource": "Attacked By Source",
                     "DamagedByAlly": "Damaged By Ally",
@@ -2795,6 +2871,7 @@
                     "HitBySource": "Hit By Source",
                     "Label": "Special Durations:",
                     "MoveFinished": "Move Finished",
+                    "Removed": "Removed",
                     "Rolled": "Rolled {toolName} Check",
                     "Succeed": "Succeeded {toolName} Check",
                     "TempHP": "Zero Temporary Hitpoints",
@@ -2829,6 +2906,12 @@
                 "rolls": {
                     "Label": "Rolls",
                     "Tooltip": "Configure roll types and options"
+                }
+            },
+            "Inputs": {
+                "Documents": {
+                    "Error": "Invalid UUID",
+                    "Placeholder": "Enter UUID or Drop Item"
                 }
             },
             "Medkit": "CPR Medkit",
@@ -3251,6 +3334,10 @@
             "healingSurge": {
                 "Hint": "Enable the Healing Surge feature from the 2014 Dungeon Master's Guide.",
                 "Name": "Healing Surge"
+            },
+            "heroicInspiration": {
+                "Hint": "Enables the Heroic Inspiration mechanic from the 2024 PHB.",
+                "Name": "Heroic Inspiration"
             },
             "hiddenCompendiumFolders": {
                 "Hint": "Selected compendium folders will be hidden.",

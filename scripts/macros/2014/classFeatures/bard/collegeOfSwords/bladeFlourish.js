@@ -1,5 +1,4 @@
-import {activityUtils, combatUtils, compendiumUtils, constants, dialogUtils, effectUtils, errors, genericUtils, itemUtils, tokenUtils, workflowUtils} from '../../../../../utils.js';
-
+import {activityUtils, combatUtils, dialogUtils, genericUtils, itemUtils, tokenUtils, workflowUtils} from '../../../../../utils.js';
 async function attack({trigger: {entity: item}, workflow}) {
     if (['boomingBlade', 'greenFlameBlade'].includes(genericUtils.getIdentifier(workflow.item))) return;
     if (!workflowUtils.isAttackType(workflow, 'weaponAttack')) return;
@@ -36,14 +35,14 @@ async function damage({trigger: {entity: item}, workflow}) {
     await combatUtils.setTurnCheck(item, 'bladeFlourish');
     if (!skipUses) genericUtils.update(bardic, {'system.uses.spent': bardic.system.uses.spent + 1});
     let bardicDie = workflow.actor.system.scale.bard?.['inspiration'];
-    if (skipUses) bardicDie = {'formula': '1d6'};
+    if (skipUses) bardicDie = {formula: '1d6'};
     if (!bardicDie) return;
     let damageType = workflow.defaultDamageType;
-    await workflowUtils.bonusDamage(workflow, bardicDie.formula, {damageType});
+    await workflowUtils.bonusDamage(workflow, bardicDie.formula, {damageType, ignoreCrit: itemUtils.getConfig(item, 'canCrit')});
     let rollResult = workflow.damageRolls.at(-1).total;
     switch (selection) {
         case 'DF':
-            await genericUtils.update(item.effects.get(defensiveFeature.effects[0]._id), {'changes': [{
+            await genericUtils.update(item.effects.get(defensiveFeature.effects[0]._id), {changes: [{
                 key: 'system.attributes.ac.bonus',
                 mode: 2,
                 value: rollResult,
@@ -93,5 +92,15 @@ export let bladeFlourish = {
                 priority: 50
             }
         ]
-    }
+    },
+    config: [
+        {
+            value: 'canCrit',
+            label: 'CHRISPREMADES.Config.CanCrit',
+            type: 'checkbox',
+            default: false,
+            category: 'homebrew',
+            homebrew: true
+        }
+    ]
 };

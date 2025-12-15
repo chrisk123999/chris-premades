@@ -28,7 +28,7 @@ export class QuickConditions extends HandlebarsApplicationMixin(ApplicationV2) {
         },
         window: {
             title: 'Default Title',
-            resizable: true,
+            resizable: true
         },
         classes: ['standard-form'],
         position: {

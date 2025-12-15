@@ -16,7 +16,7 @@ async function rollItem(type, token, targets) {
         itemData = await compendiumUtils.getItemFromCompendium(key, index.contents[roll.total - 1].name, {object: true});
     } else {
         let item = await dialogUtils.selectDocumentDialog('CHRISPREMADES.Generic.Select', undefined, index.contents.sort((a, b) => {
-            return a.name.localeCompare(b.name, 'en', {'sensitivity': 'base'});
+            return a.name.localeCompare(b.name, 'en', {sensitivity: 'base'});
         }));
         if (!item) return;
         itemData = await compendiumUtils.getItemFromCompendium(key, item.name, {object: true});

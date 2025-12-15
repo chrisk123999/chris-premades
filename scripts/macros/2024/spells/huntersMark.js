@@ -175,7 +175,7 @@ export let huntersMark = {
             options: constants.damageTypeOptions,
             homebrew: true,
             category: 'homebrew'
-        },
+        }
     ]
 };
 export let huntersMarkSource = {

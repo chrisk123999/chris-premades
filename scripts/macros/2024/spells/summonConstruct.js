@@ -225,7 +225,7 @@ export let summonConstruct = {
             default: 'earth',
             category: 'animation',
             options: constants.summonAnimationOptions
-        },
+        }
     ]
 };
 export let summonConstructMetal = {

@@ -32,7 +32,7 @@ async function turnEarly({trigger, workflow}) {
             dae: {
                 specialDuration: [
                     'isSave'
-                ],
+                ]
             },
             'chris-premades': {
                 effect: {

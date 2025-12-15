@@ -29,19 +29,19 @@ export let keenSenses = {
             value: 'hearing',
             label: 'CHRISPREMADES.Macros.KeenSenses.Hearing',
             type: 'checkbox',
-            default: false,
+            default: false
         },
         {
             value: 'sight',
             label: 'CHRISPREMADES.Macros.KeenSenses.Sight',
             type: 'checkbox',
-            default: false,
+            default: false
         },
         {
             value: 'smell',
             label: 'CHRISPREMADES.Macros.KeenSenses.Smell',
             type: 'checkbox',
-            default: false,
+            default: false
         }
     ]
 };

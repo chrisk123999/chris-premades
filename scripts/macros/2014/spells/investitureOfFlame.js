@@ -44,7 +44,7 @@ async function use({workflow}) {
             'chris-premades': {
                 fireShield: {
                     selection: 'fire',
-                    playAnimation,
+                    playAnimation
                 },
                 macros: {
                     movement: [
@@ -57,7 +57,7 @@ async function use({workflow}) {
                         'investitureOfFlameFlaming'
                     ]
                 }
-            },
+            }
         }
     };
     // TODO: Need to disable autoanims here? If so should we do for others?

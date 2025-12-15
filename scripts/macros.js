@@ -38,6 +38,7 @@ export {sunlightSensitivity} from './macros/2014/monsterFeatures/generic/sunligh
 export {surpriseAttack} from './macros/2014/monsterFeatures/generic/surpriseAttack.js';
 export {swarmDamage} from './macros/2014/monsterFeatures/generic/swarmDamage.js';
 export {touchDamage} from './macros/2014/monsterFeatures/generic/touchDamage.js';
+export {transform} from './macros/2014/monsterFeatures/generic/transform.js';
 export {undeadFortitude} from './macros/2014/monsterFeatures/generic/undeadFortitude.js';
 export {autoProne} from './macros/2014/monsterFeatures/generic/autoProne.js';
 export {grappleAttackAdvantage} from './macros/2014/monsterFeatures/generic/grappleAttackAdvantage.js';
@@ -67,6 +68,7 @@ export {underwater, underwaterEffect} from './macros/2024/actions/underwater.js'
 export {knockOut, knockOutEffect} from './macros/2024/actions/knockOut.js';
 export {genericActions} from './macros/2024/actions/genericActions.js';
 export {circleCast, circleCastEffect} from './macros/2024/actions/circleCast.js';
+export {mount, mountedRider, mountedTarget} from './macros/2024/actions/mount.js';
 // Generic
 export {proneOnFail} from './macros/2024/generic/proneOnFail.js';
 // Spells
@@ -200,6 +202,12 @@ export {mageHand, mageHandEffect} from './macros/2024/spells/mageHand.js';
 export {guidance} from './macros/2024/spells/guidance.js';
 export {sproutFoliage} from './macros/2024/spells/sproutFoliage.js';
 export {forestGuard, forestGuardTurnEffect, forestGuardEffect} from './macros/2024/spells/forestGuard.js';
+export {cacophonicShield, cacophonicShieldSourceEffect} from './macros/2024/spells/cacophonicShield.js';
+export {resistance, resistanceEffect} from './macros/2024/spells/resistance.js';
+export {falseLife} from './macros/2024/spells/falseLife.js';
+export {spellfireFlare} from './macros/2024/spells/spellfireFlare.js';
+export {dissolution} from './macros/2024/spells/dissolution.js';
+export {dream} from './macros/2024/spells/dream.js';
 // Items
 export {healersKit} from './macros/2024/items/healersKit.js';
 export {unarmedStrike} from './macros/2024/items/misc/unarmedStrike.js';
@@ -227,6 +235,13 @@ export {tavernBrawler, tavernBrawlerUnarmedStrike} from './macros/2024/feats/tav
 export {telekineticShove} from './macros/2024/feats/telekinetic.js';
 export {thrownWeaponFighting} from './macros/2024/feats/thrownWeaponFighting.js';
 export {unarmedFighting, unarmedFightingUnarmedStrike} from './macros/2024/feats/unarmedFighting.js';
+export {purpleDragonRook} from './macros/2024/feats/purpleDragonRook.js';
+export {spellfireSpark} from './macros/2024/feats/spellfireSpark.js';
+// Species Features
+// Aasimar
+export {healingHands} from './macros/2024/speciesFeatures/aasimar/healingHands.js';
+export {celestialRevelation, celestialRevelationInnerRadiance} from './macros/2024/speciesFeatures/aasimar/celestialRevelation.js';
+export {celestialResistance} from './macros/2024/speciesFeatures/aasimar/celestialResistance.js';
 // Class Features
 // Barbarian
 export {rage, rageRaging, rageUpkeep} from './macros/2024/classFeatures/barbarian/rage.js';
@@ -398,11 +413,38 @@ export {secondStoryWork} from './macros/2024/classFeatures/rogue/thief/secondSto
 export {supremeSneak} from './macros/2024/classFeatures/rogue/thief/supremeSneak.js';
 // Warlock
 export {magicalCunning} from './macros/2024/classFeatures/warlock/magicalCunning.js';
+// Archfey
+export {stepsOfTheFey} from './macros/2024/classFeatures/warlock/archfey/stepsOfTheFey.js';
 // Invocations
 export {pactOfTheChain} from './macros/2024/classFeatures/warlock/invocations/pactOfTheChain.js';
+export {pactOfTheBlade, pactOfTheBladeAttack} from './macros/2024/classFeatures/warlock/invocations/pactOfTheBlade.js';
+export {agonizingBlast} from './macros/2024/classFeatures/warlock/invocations/agonizingBlast.js';
+export {fiendishVigor} from './macros/2024/classFeatures/warlock/invocations/fiendishVigor.js';
 // Monk
 export {martialArts} from './macros/2024/classFeatures/monk/martialArts.js';
 export {unarmoredDefenseMonk} from './macros/2024/classFeatures/monk/unarmoredDefense.js';
+export {monksFocus} from './macros/2024/classFeatures/monk/monksFocus.js';
+export {unarmoredMovement} from './macros/2024/classFeatures/monk/unarmoredMovement.js';
+export {uncannyMetabolism} from './macros/2024/classFeatures/monk/uncannyMetabolism.js';
+export {deflectAttacks} from './macros/2024/classFeatures/monk/deflectAttacks.js';
+export {slowFall} from './macros/2024/classFeatures/monk/slowFall.js';
+export {stunningStrike} from './macros/2024/classFeatures/monk/stunningStrike.js';
+export {empoweredStrikes} from './macros/2024/classFeatures/monk/empoweredStrikes.js';
+export {heightenedFocus} from './macros/2024/classFeatures/monk/heightenedFocus.js';
+export {selfRestoration} from './macros/2024/classFeatures/monk/selfRestoration.js';
+export {deflectEnergy} from './macros/2024/classFeatures/monk/deflectEnergy.js';
+export {disciplinedSurvivor} from './macros/2024/classFeatures/monk/disciplinedSurvivor.js';
+export {perfectFocus} from './macros/2024/classFeatures/monk/perfectFocus.js';
+export {superiorDefense} from './macros/2024/classFeatures/monk/superiorDefense.js';
+// Fighter
+export {secondWind} from './macros/2024/classFeatures/fighter/secondWind.js';
+export {tacticalMind} from './macros/2024/classFeatures/fighter/tacticalMind.js';
+// Banneret
+export {groupRecovery} from './macros/2024/classFeatures/fighter/banneret/groupRecovery.js';
+export {knightlyEnvoy} from './macros/2024/classFeatures/fighter/banneret/knightlyEnvoy.js';
+// Paladin
+export {layOnHands} from './macros/2024/classFeatures/paladin/layOnHands.js';
+export {paladinsSmite} from './macros/2024/classFeatures/paladin/paladinsSmite.js';
 // Multiple
 export {evasion} from './macros/2024/classFeatures/multiple/evasion.js';
 // Monster Features
@@ -412,10 +454,10 @@ export {burstOfIngenuity} from './macros/2024/monsterFeatures/sphinxOfWonder/bur
 export {graveStrike} from './macros/2024/monsterFeatures/vampire/graveStrike.js';
 export {beguile} from './macros/2024/monsterFeatures/vampire/beguile.js';
 export {vampireBite} from './macros/2024/monsterFeatures/vampire/bite.js';
-export {vampireWeakness} from './macros/2024/monsterFeatures/vampire/vampireWeakness.js';
-export {vampireCharm} from './macros/2024/monsterFeatures/vampire/vampireCharm.js';
-export {vampireShapeShift} from './macros/2024/monsterFeatures/vampire/vampireShapeShift.js';
-export {vampireMistyEscape} from './macros/2024/monsterFeatures/vampire/vampireMistyEscape.js';
+export {vampireWeakness} from './macros/2024/monsterFeatures/vampire/weakness.js';
+export {vampireCharm} from './macros/2024/monsterFeatures/vampire/charm.js';
+export {vampireShapeShift} from './macros/2024/monsterFeatures/vampire/shapeShift.js';
+export {vampireMistyEscape} from './macros/2024/monsterFeatures/vampire/mistyEscape.js';
 // Goblin Warrior
 export {goblinWarriorScimitar} from './macros/2024/monsterFeatures/goblinWarrior/scimitar.js';
 export {goblinWarriorShortbow} from './macros/2024/monsterFeatures/goblinWarrior/shortbow.js';
@@ -425,10 +467,20 @@ export {worgBite} from './macros/2024/monsterFeatures/worg/bite.js';
 // Goblin Boss
 export {goblinBossRedirectAttack} from './macros/2024/monsterFeatures/goblinBoss/redirectAttack.js';
 // Brown Bear
-export {brownBearClaw} from './macros/2024/monsterFeatures/brownBear/brownBearClaw.js';
+export {brownBearClaw} from './macros/2024/monsterFeatures/brownBear/claw.js';
 // Zhentilar Soldier
-export {zhentilarSoldierKnockDown} from './macros/2024/monsterFeatures/zhentilarSoldier/zhentilarSoldierKnockDown.js';
+export {zhentilarSoldierKnockDown} from './macros/2024/monsterFeatures/zhentilarSoldier/knockDown.js';
 // Mimic
-export {mimicAdhesive} from './macros/2024/monsterFeatures/mimic/mimicAdhesive.js';
-export {mimicBite} from './macros/2024/monsterFeatures/mimic/mimicBite.js';
-export {mimicPseudopod} from './macros/2024/monsterFeatures/mimic/mimicPseudopod.js';
+export {mimicAdhesive} from './macros/2024/monsterFeatures/mimic/adhesive.js';
+export {mimicBite} from './macros/2024/monsterFeatures/mimic/bite.js';
+export {mimicPseudopod} from './macros/2024/monsterFeatures/mimic/pseudopod.js';
+// Ghoul
+export {ghoulClaw} from './macros/2024/monsterFeatures/ghoul/claw.js';
+// Hobgoblin Captain
+export {auraOfAuthority} from './macros/2024/monsterFeatures/hobgoblinCaptain/auraOfAuthority.js';
+// Pseudodragon
+export {pseudodragonSting} from './macros/2024/monsterFeatures/pseudodragon/sting.js';
+// Carrion Crawler
+export {carrionCrawlerParalyzingTentacles} from './macros/2024/monsterFeatures/carrionCrawler/paralyzingTentacles.js';
+// Night Hag
+export {nightmareHaunting} from './macros/2024/monsterFeatures/nightHag/nightmareHaunting.js';

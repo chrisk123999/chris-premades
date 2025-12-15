@@ -351,7 +351,43 @@ export const eventStructure = {
         {
             pass: 'preUpdateEffect',
             documents: []
+        },
+        {
+            pass: 'actorCreated',
+            documents: [
+                'item',
+                'activeeffect',
+                'measuredtemplate',
+                'region'
+            ]
+        },
+        {
+            pass: 'actorDeleted',
+            documents: [
+                'item',
+                'activeeffect',
+                'measuredtemplate',
+                'region'
+            ]
         }
+        /*{
+            pass: 'sceneCreated',
+            documents: [
+                'item',
+                'activeeffect',
+                'measuredtemplate',
+                'region'
+            ]
+        },
+        {
+            pass: 'sceneDeleted',
+            documents: [
+                'item',
+                'activeeffect',
+                'measuredtemplate',
+                'region'
+            ]
+        }*/
     ],
     'midi-item': [
         {
@@ -629,7 +665,7 @@ export const eventStructure = {
             documents: [
                 'item',
                 'activeeffect'
-            ],
+            ]
         },
         {
             pass: 'movedNear',
@@ -947,7 +983,7 @@ export class EmbeddedMacros extends HandlebarsApplicationMixin(ApplicationV2) {
         },
         footer: {
             template: 'templates/generic/form-footer.hbs'
-        },
+        }
     };
     static async confirm(event, target) {
         let canClose = await EmbeddedMacros._apply.bind(this)(event, target);
@@ -1058,7 +1094,7 @@ export class EmbeddedMacros extends HandlebarsApplicationMixin(ApplicationV2) {
                 field: new fields.StringField({
                     label: 'CHRISPREMADES.EmbeddedMacros.Name.Label'
                 }),
-                value: macro.name,
+                value: macro.name
             },
             type: {
                 field: new fields.StringField({
@@ -1076,7 +1112,7 @@ export class EmbeddedMacros extends HandlebarsApplicationMixin(ApplicationV2) {
                     integer: true,
                     label: 'CHRISPREMADES.EmbeddedMacros.Priority.Label'
                 }),
-                value: macro.priority,
+                value: macro.priority
             }
         };
         if (macro.type) {
@@ -1102,7 +1138,7 @@ export class EmbeddedMacros extends HandlebarsApplicationMixin(ApplicationV2) {
                     integer: true,
                     label: 'CHRISPREMADES.EmbeddedMacros.Distance.Label'
                 }),
-                value: macro.distance,
+                value: macro.distance
             });
         }
         if (extraValues.includes('disposition')) {
@@ -1123,7 +1159,7 @@ export class EmbeddedMacros extends HandlebarsApplicationMixin(ApplicationV2) {
                 field: new fields.BooleanField({
                     label: 'CHRISPREMADES.EmbeddedMacros.Conscious.Label'
                 }),
-                value: macro.conscious,
+                value: macro.conscious
             });
         }
         if (extraValues.includes('identifier')) {
@@ -1131,7 +1167,7 @@ export class EmbeddedMacros extends HandlebarsApplicationMixin(ApplicationV2) {
                 field: new fields.StringField({
                     label: 'CHRISPREMADES.EmbeddedMacros.Identifier.Label'
                 }),
-                value: macro.identifier,
+                value: macro.identifier
             });
         }
         return inputs;

@@ -19,7 +19,7 @@ async function early({workflow}) {
             dae: {
                 specialDuration: [
                     'isSave'
-                ],
+                ]
             },
             'chris-premades': {
                 effect: {

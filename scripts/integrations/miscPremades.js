@@ -49,14 +49,19 @@ async function init(mode) {
             if (!pack) return;
             let index = await pack.getIndex({fields: ['name']});
             index.forEach(j => {
+                let factory = CONFIG['midi-item-showcase-community']?.automations?.[rules]?.[j.name]?.factory;
+                if (factory) return;
+                let aliases = CONFIG['midi-item-showcase-community']?.automations?.[rules]?.[j.name]?.aliases;
                 let version = CONFIG['midi-item-showcase-community']?.automations?.[rules]?.[j.name]?.version;
+                if (aliases) genericUtils.log('dev', j.name + ' has aliases!');
                 if (!version) genericUtils.log('dev', j.name + ' from MISC is missing version info.');
                 miscItems.push({
                     name: j.name,
                     version: version,
                     uuid: j.uuid,
                     type: j.type,
-                    rules
+                    rules,
+                    aliases
                 });
             });
         }));
@@ -67,6 +72,9 @@ async function init(mode) {
                 let itemFolder = pack.folders.getName('Items');
                 if (itemFolder) {
                     index.forEach(k => {
+                        let factory = CONFIG['midi-item-showcase-community']?.automations?.[rules]?.[k.name]?.factory;
+                        if (factory) return;
+                        let aliases = CONFIG['midi-item-showcase-community']?.automations?.[rules]?.[k.name]?.aliases;
                         let version = CONFIG['midi-item-showcase-community']?.automations?.[rules]?.[k.name]?.version;
                         if (!version) {
                             genericUtils.log('dev', k.name + ' from MISC is missing version info.');
@@ -77,7 +85,8 @@ async function init(mode) {
                             version: version,
                             uuid: k.uuid,
                             type: k.type,
-                            rules
+                            rules,
+                            aliases
                         });
                     });
                 }
@@ -89,7 +98,9 @@ async function init(mode) {
                 let index = await pack.getIndex({fields: ['name', 'folderId']});
                 let spellsFolder = pack.folders.getName('Spells');
                 if (spellsFolder) {
-                    index.forEach(l => {
+                    index.forEach(l => {let factory = CONFIG['midi-item-showcase-community']?.automations?.[rules]?.[l.name]?.factory;
+                        if (factory) return;
+                        let aliases = CONFIG['midi-item-showcase-community']?.automations?.[rules]?.[l.name]?.aliases;
                         let rules = l.system.source.rules === '2024' ? 'modern' : 'legacy';
                         let version = CONFIG['midi-item-showcase-community']?.automations?.[rules]?.[l.name]?.version;
                         if (!version) {
@@ -101,7 +112,8 @@ async function init(mode) {
                             version: version,
                             uuid: l.uuid,
                             type: l.type,
-                            rules
+                            rules,
+                            aliases
                         });
                     });
                 }

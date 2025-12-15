@@ -40,10 +40,10 @@ async function doBackup(force) {
                 genericUtils.setProperty(actorData, 'folder', folder.id);
                 return actorData;
             }));
-            await Actor.createDocuments(actorDatas, {'pack': key});
+            await Actor.createDocuments(actorDatas, {pack: key});
             game.settings.set('chris-premades', 'backupTime', currentTime);
             await ChatMessage.create({
-                speaker: {'alias': 'Cauldron of Plentiful Resources'},
+                speaker: {alias: 'Cauldron of Plentiful Resources'},
                 whisper: [game.user.id],
                 content: '<hr><b>Automatic Backup Created:</b><br><hr>- ' + characters.map(i => i.name).join('<br>- ')
             });
@@ -61,7 +61,7 @@ async function doBackup(force) {
     if (removeActors.length) {
         await Actor.deleteDocuments(removeActors.map(j => j._id), {pack: key});
         await ChatMessage.create({
-            speaker: {'alias': 'Cauldron of Plentiful Resources'},
+            speaker: {alias: 'Cauldron of Plentiful Resources'},
             whisper: [game.user.id],
             content: '<hr><b>Expired Backup Deleted:</b><br><hr>- ' + removeActors.map(i => i.name).join('<br>- ')
         });

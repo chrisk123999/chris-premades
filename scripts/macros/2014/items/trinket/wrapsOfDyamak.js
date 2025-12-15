@@ -119,5 +119,5 @@ export let crimsonMist = {
             default: true,
             category: 'animation'
         }
-    ],
+    ]
 };

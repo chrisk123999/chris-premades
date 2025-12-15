@@ -1,5 +1,5 @@
 import {itemUtils, genericUtils, effectUtils, workflowUtils, animationUtils} from '../../../../utils.js';
-async function turnStart({trigger: {entity: item, token,}}) {
+async function turnStart({trigger: {entity: item, token}}) {
     let {hpThreshold, diceFormula, diceThreshold} = itemUtils.getGenericFeatureConfig(item, 'berserk'); //Why is diceFormula here but not used???
     let effect = effectUtils.getEffectByIdentifier(token.actor, 'berserk');
     if (effect) {
@@ -53,19 +53,19 @@ export let berserk = {
             value: 'hpThreshold',
             label: 'CHRISPREMADES.Macros.Berserk.HPThreshold',
             type: 'number',
-            default: 60,
+            default: 60
         },
         {
             value: 'diceFormula',
             label: 'CHRISPREMADES.Config.Formula',
             type: 'text',
-            default: '1d6',
+            default: '1d6'
         },
         {
             value: 'diceThreshold',
             label: 'CHRISPREMADES.Macros.KeenSenses.DiceThreshold',
             type: 'number',
-            default: 6,
+            default: 6
         }
     ]
 };

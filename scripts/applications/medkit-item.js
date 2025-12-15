@@ -41,14 +41,17 @@ export class ItemMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
         form: {
             handler: ItemMedkit.formHandler,
             submitOnChange: false,
-            closeOnSubmit: false,
+            closeOnSubmit: false
         },
         actions: {
             update: ItemMedkit._update,
             apply: ItemMedkit._apply,
             confirm: ItemMedkit.confirm,
             changeRules: ItemMedkit._changeRules,
-            openEmbeddedMacros: ItemMedkit._openEmbeddedMacros
+            openEmbeddedMacros: ItemMedkit._openEmbeddedMacros,
+            addDocument: ItemMedkit._addDocument,
+            removeDocument: ItemMedkit._removeDocument
+
         },
         window: {
             icon: 'fa-solid fa-kit-medical',
@@ -190,7 +193,7 @@ export class ItemMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
             value: null,
             id: null,
             isSelected: (this.selectedSource && this.selectedSource != '') ? false : true,
-            version: null,
+            version: null
         }];
         if (this.availableAutomations.length > 0) {
             this.availableAutomations.forEach(automation => {
@@ -205,7 +208,7 @@ export class ItemMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
                     value: automation.document.uuid,
                     id: automation.source,
                     isSelected: this.selectedSource === automation.source,
-                    version: automation.version,
+                    version: automation.version
                 });
             });
         }
@@ -222,7 +225,7 @@ export class ItemMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
             label: 'Development',
             value: 'development',
             id: 'development',
-            isSelected: this.selectedSource === 'development',
+            isSelected: this.selectedSource === 'development'
         });
         return [
             {
@@ -335,7 +338,7 @@ export class ItemMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
                         value: key,
                         isSelected: this.selectedGenericFeatures.includes(key) ? true : false
                     };
-                }).sort((a, b) => a.label.localeCompare(b.label, 'en', {'sensitivity': 'base'}))
+                }).sort((a, b) => a.label.localeCompare(b.label, 'en', {sensitivity: 'base'}))
             }
         ];
     }
@@ -438,6 +441,24 @@ export class ItemMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
                                 value: i.id,
                                 isSelected: config?.value?.includes(i.id) 
                             }));
+                            break;
+                        }
+                        case 'documents': {
+                            config.isDocuments = true;
+                            config.hasDocuments = !!config.value?.length;
+                            config.documents = (config.value ?? []).map(i => {
+                                let document = fromUuidSync(i);
+                                return {
+                                    icon: document?.img,
+                                    name: document?.name,
+                                    uuid: i
+                                };
+                            });
+                            break;
+                        }
+                        case 'file': {
+                            config.isFile = true;
+                            config.type = configBase?.fileType ?? 'any';
                             break;
                         }
                     }
@@ -918,6 +939,44 @@ export class ItemMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
         await ItemMedkit._apply.bind(this)(event, target);
         this.close();
     }
+    static async drop(event, target) {
+        /* Keep track of current tab */
+        let currentTabId = this.element.querySelector('.item.active').getAttribute('data-tab');
+        this.activeTab = currentTabId;
+        /* Get our data out of the html so we can find what option the input coresponds with */
+        let option = this._findOption(event);
+        /* Data of dropped object comes from a foundry helper */
+        let data = foundry.applications.ux.DragDrop.implementation.getPayload(event);
+        if (!option.value.includes(data.uuid)) option.value.push(data.uuid);
+        await this._reRender();
+    }
+    static async _addDocument(event, target) {
+        /* Keep track of current tab */
+        let currentTabId = this.element.querySelector('.item.active').getAttribute('data-tab');
+        this.activeTab = currentTabId;
+        /* Get our data out of the html so we can find what option the input coresponds with */
+        let dataOptions = event.target.closest('[data-options]')?.getAttribute('data-options');
+        let dataCategory = event.target.closest('[data-category]')?.getAttribute('data-category');
+        let elementId = event.target.id === '' ? event.target.parentElement.id : event.target.id;
+        let optionGroup = dataCategory ? this[dataOptions][dataCategory].configOptions : dataOptions ? this[dataOptions] : this[elementId];
+        let option = optionGroup.find(i => (i.id ?? null) === elementId);
+        let uuid = event.target.previousElementSibling.value;
+        let document = fromUuidSync(uuid);
+        if (!document) return ui.notifications.error(genericUtils.translate('CHRISPREMADES.Medkit.Inputs.Documents.Error'));
+        if (!option.value.includes(uuid)) option.value.push(uuid);
+        await this._reRender();
+    }
+    static async _removeDocument(event, target) {
+        /* Keep track of current tab */
+        let currentTabId = this.element.querySelector('.item.active').getAttribute('data-tab');
+        this.activeTab = currentTabId;
+        /* Get our data out of the html so we can find what option the input coresponds with */
+        let option = this._findOption(event);
+        let uuid = event.target.dataset.uuid;
+        let index = option.value.indexOf(uuid);
+        if (index > -1) option.value.splice(index, 1);
+        await this._reRender();
+    }
     static async _changeRules(event, target) {
         await this.item.update({
             'system.source.rules': this.item.system.source.rules === '2014' ? '2024' : '2014'
@@ -986,18 +1045,24 @@ export class ItemMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
         }
         return obj;
     }
+    _findOption(event) {
+        let dataOptions = event.target.closest('[data-options]')?.getAttribute('data-options');
+        let dataCategory = event.target.closest('[data-category]')?.getAttribute('data-category');
+        let elementId = event.target.id === '' ? event.target.parentElement.id : event.target.id;
+        let optionGroup = dataCategory ? this[dataOptions][dataCategory].configOptions : dataOptions ? this[dataOptions] : this[elementId];
+        let option = optionGroup.find(i => (i.id ?? null) === elementId);
+        return option;
+    }
     async _onChangeForm(formConfig, event) {
         /* Keep track of the current tab */
         let currentTabId = this.element.querySelector('.item.active').getAttribute('data-tab');
         this.activeTab = currentTabId;
+        /* Return early if it's in the document drop */
+        if (event.target?.classList?.contains('document-drop')) return;
         /* Get our data out of the html so we can find what option the input coresponds with */
-        let dataOptions = event.target.closest('[data-options]')?.getAttribute('data-options');
-        let dataCategory = event.target.closest('[data-category]')?.getAttribute('data-category');
         let tagName = event.target?.tagName?.toLowerCase();
         let inputType = ['file-picker', 'multi-select'].includes(tagName) ? tagName : event.target.type;
-        let elementId = event.target.id === '' ? event.target.parentElement.id : event.target.id;
-        let optionGroup = dataCategory ? this[dataOptions][dataCategory].configOptions : dataOptions ? this[dataOptions] : this[elementId];
-        let option = optionGroup.find(i => (i.id ?? null) === elementId);
+        let option = this._findOption(event);
         /* Set the option's value based on the input type */
         switch (inputType) {
             case 'checkbox': {
@@ -1095,6 +1160,9 @@ export class ItemMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
         }
         /* --- */
         await this._reRender();
+    }
+    _onRender(context, options) {
+        this.element.querySelectorAll('.document-drop').forEach(i => i.addEventListener('drop', ItemMedkit.drop.bind(this)));
     }
     async _onSubmitForm(formConfig, event) {
         event.preventDefault();

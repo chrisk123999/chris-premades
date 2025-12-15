@@ -1,3 +1,14 @@
+/* Variables */
+.theme-dark {
+    --cpr-border-color: var(--color-light-5);
+    --cpr-input-background: var(--color-cool-4);
+}
+
+.theme-light {
+    --cpr-border-color: var(--color-dark-5);
+    --cpr-input-background: rgba(0, 0, 0, 0.1);
+}
+
 /* Dialog Styles, Done by Michael */
 
 form .cpr-dialog .form-group input[type="radio"] {
@@ -200,7 +211,7 @@ form .cpr-row-center .cpr-input-short {
 }
 
 .theme-dark .cpr-fieldset {
-    border-color: var(--color-light-5);
+    border-color: var(--cpr-border-color);
 }
 
 /* Additional Compendiums Styles */
@@ -464,6 +475,34 @@ form .cpr-row-center .cpr-input-short {
     border: 1px solid var(--color-level-error-border);
 }
 
+.cpr-medkit-tab .cpr-fieldset-group .cpr-fieldset .cpr-document-drop-display {
+    display: flex;
+    gap: 0.625em;
+    justify-content: space-evenly;
+    row-gap: 0.625em;
+    margin-bottom: 0.625em;
+    flex-wrap: wrap;
+}
+
+.cpr-medkit-tab .cpr-fieldset-group .cpr-fieldset .cpr-document-drop-display .cpr-document-drop-item {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.625em;
+    background: var(--cpr-input-background);
+    box-shadow: 0 0 5px 0px var(--cpr-border-color);
+    border-radius: 4px;
+    width: fit-content;
+    margin-bottom: 0.625em;
+}
+
+.cpr-medkit-tab .cpr-fieldset-group .cpr-fieldset .cpr-document-drop-display .cpr-document-drop-item .cpr-document-drop-item-icon {
+    width: var(--input-height);
+    height: var(--input-height);
+    border: 1px solid var(--cpr-border-color);
+    border-radius: 4px;
+}
+
 /* Other */
 
 form .cpr-settings.categories .form-group {
@@ -535,7 +574,7 @@ form .cpr-settings.categories .form-group .form-fields > input[type="checkbox"] 
 }
 
 .theme-dark .cpr-medkit-tabs .item {
-    color: var(--color-light-5) !important;
+    color: var(--cpr-border-color) !important;
 }
 
 .theme-dark .cpr-medkit-tabs .item.active {
@@ -547,7 +586,7 @@ form .cpr-settings.categories .form-group .form-fields > input[type="checkbox"] 
 }
 
 .theme-dark .cpr-medkit-tab div input:placeholder-shown {
-    --input-placeholder-color: var(--color-light-5);
+    --input-placeholder-color: var(--cpr-border-color);
 }
 
 
@@ -580,7 +619,7 @@ form .cpr-settings.categories .form-group .form-fields > input[type="checkbox"] 
 }
 
 .theme-dark .roll-resolver-content {
-    border-color: var(--color-light-5);
+    border-color: var(--cpr-border-color);
 }
 
 [id="cpr-roll-resolver"] .roll-resolver-modifiers {

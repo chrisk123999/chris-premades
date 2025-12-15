@@ -222,7 +222,7 @@ export let summonAberration = {
             default: 'shadow',
             category: 'animation',
             options: constants.summonAnimationOptions
-        },
+        }
     ]
 };
 export let summonAberrationWhisperingAura = {

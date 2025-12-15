@@ -34,7 +34,7 @@ async function damageReroll({trigger: {entity: item}, workflow}) {
         'checkbox',
         lowest.map(i => ({
             label: i.expression + (i.flavor ? '[' + i.flavor + ']: ' : ': ') + Math.min(...i.results),
-            name: i.roll + '-' + i.term,
+            name: i.roll + '-' + i.term
         })),
         {displayAsRows: true, totalMax: 1}
     ]], 'yesNo');

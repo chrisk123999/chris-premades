@@ -26,7 +26,7 @@ async function use({workflow}) {
     let effectData = {
         name: workflow.item.name,
         img: workflow.item.img,
-        origin: workflow.item.uuid,
+        origin: workflow.item.uuid
     };
     let effect = await effectUtils.createEffect(workflow.actor, effectData, {
         identifier: 'guardianArmor', 

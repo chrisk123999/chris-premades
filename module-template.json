@@ -338,6 +338,20 @@
       "path": "packs/cpr-3rd-party-spells-2024",
       "type": "Item",
       "module": "chris-premades"
+    },
+    {
+      "name": "CPRSpeciesFeatures2024",
+      "label": "CPR Species Features (2024)",
+      "path": "packs/cpr-species-features-2024",
+      "type": "Item",
+      "module": "chris-premades"
+    },
+    {
+      "name": "CPROtherFeatures",
+      "label": "CPR Other Features",
+      "path": "packs/cpr-other-features",
+      "type": "Item",
+      "module": "chris-premades"
     }
   ],
   "packFolders": [
@@ -386,14 +400,16 @@
             "CPRFeatureItems2024",
             "CPRThirdPartyClassFeatures2024",
             "CPRMonsterFeatures2024",
-            "CPRThirdPartySpells2024"
+            "CPRThirdPartySpells2024",
+            "CPRSpeciesFeatures2024"
           ]
         }
       ],
       "packs": [
         "CPRMiscellaneousItems",
         "CPRMiscellaneous",
-        "CPREmbeddedMacroSampleItems"
+        "CPREmbeddedMacroSampleItems",
+        "CPROtherFeatures"
       ]
     }
   ],

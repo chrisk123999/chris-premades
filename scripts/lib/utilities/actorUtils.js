@@ -1,5 +1,5 @@
 import {socket, sockets} from '../sockets.js';
-import {effectUtils, genericUtils, socketUtils} from '../../utils.js';
+import {dialogUtils, effectUtils, genericUtils, socketUtils} from '../../utils.js';
 import {ActorMedkit} from '../../applications/medkit-actor.js';
 function getEffects(actor, {includeItemEffects = false} = {}) {
     let effects = Array.from(actor.allApplicableEffects());
@@ -54,6 +54,10 @@ function checkTrait(actor, type, trait) {
 }
 function typeOrRace(actor) {
     return MidiQOL.typeOrRace(actor);
+}
+function raceOrType(actor) {
+    if (actor.system.details.type?.value) return actor.system.details.type?.value?.toLowerCase() ?? '';
+    return (actor.system.details?.race?.name ?? actor.system.details?.race)?.toLowerCase() ?? '';
 }
 function getAlignment(actor) {
     return actor.system.details?.alignment?.toLowerCase();
@@ -137,7 +141,7 @@ function getCastableSpells(actor) {
     let maxSlot = Math.max(...Object.values(actor.system.spells).filter(i => i.value).map(j => j.level), 0);
     let validSpells = actor.items.filter(i => i.type === 'spell');
     // If "prepared" mode, keep only prepared
-    validSpells = validSpells.filter(i => i.system.method === 'spell' || i.system.level === 0 || i.system.prepared);
+    validSpells = validSpells.filter(i => i.system.method != 'spell' || i.system.level === 0 || i.system.prepared);
     // If limited use, has uses remaining
     validSpells = validSpells.filter(i => !i.system.hasLimitedUses || i.system.uses.value);
     // If no spell slot (and requires), remove
@@ -179,7 +183,8 @@ async function polymorph(origActor, newActor, options, renderSheet=true) {
     let hasPermission = socketUtils.hasPermission(origActor, game.user.id);
     hasPermission = hasPermission && socketUtils.hasPermission(newActor, game.user.id);
     if (hasPermission) {
-        return await origActor.transformInto(newActor, options, {renderSheet});
+        // eslint-disable-next-line no-undef
+        return await origActor.transformInto(newActor, new dnd5e.dataModels.settings.TransformationSetting(options), {renderSheet});
     } else {
         let tokenUuids = await socket.executeAsGM(sockets.polymorph.name, origActor.uuid, newActor.uuid, options, renderSheet);
         return Promise.all(tokenUuids.map(async i => await fromUuid(i)));
@@ -255,6 +260,17 @@ function getBestAbility(actor, abilities) {
         return actor.system.abilities[key].mod > actor.system.abilities[best].mod ? key : best;
     });
 }
+async function giveHeroicInspiration(actor) {
+    if (!actor.system.attributes.inspiration) {
+        await genericUtils.update(actor, {'system.attributes.inspiration': true});
+        return;
+    }
+    let tokens = game.users.filter(user => user.active && user.character).map(user => user.character).filter(actor => !actor.system.attributes.inspiration).map(actor => actorUtils.getFirstToken(actor)).filter(i => i);
+    if (!tokens.length) return;
+    let selection = await dialogUtils.selectTargetDialog('CHRISPREMADES.HeroicInspiration.Name', 'CHRISPREMADES.HeroicInspiration.Give', tokens, {skipDeadAndUnconscious: false, userId: socketUtils.firstOwner(actor, true)});
+    if (!selection?.length) return;
+    await genericUtils.update(selection[0].actor, {'system.attributes.inspiration': true});
+}
 export let actorUtils = {
     getEffects,
     addFavorites,
@@ -263,6 +279,7 @@ export let actorUtils = {
     getLevelOrCR,
     checkTrait,
     typeOrRace,
+    raceOrType,
     getAlignment,
     getCRFromProf,
     getSidebarActor,
@@ -286,5 +303,6 @@ export let actorUtils = {
     getAllEquippedArmor,
     hasConditionBy,
     compareSize,
-    getBestAbility
+    getBestAbility,
+    giveHeroicInspiration
 };

@@ -26,5 +26,5 @@ export let feyReinforcements  = {
             macro: added,
             priority: 50
         }
-    ],
+    ]
 };

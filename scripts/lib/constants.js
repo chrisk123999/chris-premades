@@ -19,7 +19,8 @@ let packs = {
     miscellaneous: 'chris-premades.CPRMiscellaneous',
     thirdPartyFeats: 'chris-premades.CPRThirdPartyFeats',
     embeddedMacroSampleItems: 'chris-premades.CPREmbeddedMacroSampleItems',
-    thirdPartySpells: 'chris-premades.CPRThirdPartySpells'
+    thirdPartySpells: 'chris-premades.CPRThirdPartySpells',
+    otherFeatures: 'chris-premades.CPROtherFeatures'
 };
 let featurePacks = {
     spellFeatures: 'chris-premades.CPRSpellFeatures',
@@ -43,7 +44,7 @@ let legacyPacks = {
     thirdPartyItems: 'chris-premades.CPRThirdPartyItems',
     monsterFeatures: 'chris-premades.CPRMonsterFeatures',
     thirdPartyFeats: 'chris-premades.CPRThirdPartyFeats',
-    thirdPartySpells: 'chris-premades.CPRThirdPartySpells',
+    thirdPartySpells: 'chris-premades.CPRThirdPartySpells'
 };
 let modernPacks = {
     spells: 'chris-premades.CPRSpells2024',
@@ -57,7 +58,8 @@ let modernPacks = {
     featureItems: 'chris-premades.CPRFeatureItems2024',
     thirdPartyClassFeatures: 'chris-premades.CPRThirdPartyClassFeatures2024',
     monsterFeatures: 'chris-premades.CPRMonsterFeatures2024',
-    thirdPartySpells: 'chris-premades.CPRThirdPartySpells2024'
+    thirdPartySpells: 'chris-premades.CPRThirdPartySpells2024',
+    speciesFeatures: 'chris-premades.CPRSpeciesFeatures2024'
 };
 function setUseLocalCompendium(value) {
     if (value) {
@@ -91,12 +93,14 @@ function setUseLocalCompendium(value) {
         modernFeaturePacks.summonFeatures =  'world.cpr-summon-features-2024';
         modernPacks.summons = 'world.cpr-summons-2024';
         modernPacks.featFeatures = 'world.cpr-feat-features-2024';
-        modernPacks.feats = 'world.cpr-feat-feats-2024';
+        modernPacks.feats = 'world.cpr-feats-2024';
         packs.embeddedMacroSampleItems = 'world.cpr-embedded-macro-sample-items';
         modernPacks.actions = 'world.cpr-actions-2024';
         modernPacks.featureItems = 'world.cpr-feature-items-2024';
         packs.thirdPartySpells = 'world.cpr-3rd-party-spells';
         modernPacks.thirdPartySpells = 'world.cpr-3rd-party-spells-2024';
+        modernPacks.speciesFeatures = 'world.cpr-species-features-2024';
+        packs.otherFeatures =  'world.cpr-other-features';
     } else {
         packs.spellFeatures = 'chris-premades.CPRSpellFeatures';
         featurePacks.spellFeatures = 'chris-premades.CPRSpellFeatures';
@@ -134,6 +138,8 @@ function setUseLocalCompendium(value) {
         modernPacks.featureItems = 'chris-premades.CPRFeatureItems2024';
         packs.thirdPartySpells = 'chris-premades.CPR3rdPartySpells';
         modernPacks.thirdPartySpells = 'chris-premades.CPR3rdPartySpells2024';
+        modernPacks.speciesFeatures = 'chris-premades.CPRSpeciesFeatures2024';
+        packs.otherFeatures = 'chris-premades.CPROtherFeatures';
     }
 }
 const attacks = [
@@ -274,7 +280,7 @@ const overTimeOptions = [
         label: 'CHRISPREMADES.Medkit.Effect.OverTime.Labels.ApplyCondition',
         default: null,
         type: 'text',
-        fieldset: 'parameters',
+        fieldset: 'parameters'
     },
     {
         key: 'removeCondition',
@@ -661,7 +667,7 @@ let languageOptions = () => {
         }
         return result;
     }
-    return extractLanguages(CONFIG.DND5E.languages).sort((a, b) => a.label.localeCompare(b.label, 'en', {'sensitivity': 'base'}));
+    return extractLanguages(CONFIG.DND5E.languages).sort((a, b) => a.label.localeCompare(b.label, 'en', {sensitivity: 'base'}));
 };
 function getToolNames() {
     return toolNames;

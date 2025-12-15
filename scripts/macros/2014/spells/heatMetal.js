@@ -106,7 +106,7 @@ async function dialog(workflow, targetToken, effect) {
             dae: {
                 specialDuration: [
                     'turnStartSource'
-                ],
+                ]
             }
         }
     };

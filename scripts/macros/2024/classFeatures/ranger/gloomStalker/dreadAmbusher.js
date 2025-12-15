@@ -29,7 +29,7 @@ async function late({workflow}) {
         options: {
             options: [
                 {value: 'suddenStrike', label: 'CHRISPREMADES.Macros.StalkersFlurry.SuddenStrike'},
-                {value: 'massFear', label: 'CHRISPREMADES.Macros.StalkersFlurry.MassFear'},
+                {value: 'massFear', label: 'CHRISPREMADES.Macros.StalkersFlurry.MassFear'}
             ]
         }
     };
@@ -94,6 +94,6 @@ export let dreadAmbusher = {
             options: constants.damageTypeOptions,
             homebrew: true,
             category: 'homebrew'
-        },
+        }
     ]
 };

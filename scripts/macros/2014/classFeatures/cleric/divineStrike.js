@@ -52,17 +52,17 @@ async function damage({trigger: {entity: item}, workflow}) {
     if (workflowUtils.isAttackType(workflow, 'rangedAttack')) {
         let distance = {
             x: (workflow.token.center.x - target.center.x),
-            y: (workflow.token.center.y - target.center.y),
+            y: (workflow.token.center.y - target.center.y)
         };
         let midpoint = {
             x: (workflow.token.center.x + target.center.x) / 2,
-            y: (workflow.token.center.y + target.center.y) / 2,
+            y: (workflow.token.center.y + target.center.y) / 2
         };
         let offset = [
             {x:distance.x/4, y:distance.y/4},
             {x:distance.x/12, y:distance.y/12},
             {x:-distance.x/12, y:-distance.y/12},
-            {x:-distance.x/4, y:-distance.y/4},
+            {x:-distance.x/4, y:-distance.y/4}
         ];
         let randomOffset;
         if (Math.abs(distance.x) > Math.abs(distance.y)) {
@@ -70,14 +70,14 @@ async function damage({trigger: {entity: item}, workflow}) {
                 {x:-0, y:0.2},
                 {x:0, y:-0.35},
                 {x:-0, y:0.35},
-                {x:0, y:-0.2},
+                {x:0, y:-0.2}
             ];    
         } else {
             randomOffset = [
                 {x:-0.2, y:0},
                 {x:0.35, y:-0},
                 {x:-0.35, y:0},
-                {x:0.2, y:-0},
+                {x:0.2, y:-0}
             ];
         }
         for (let i = 0; i < 4; i++) {
@@ -133,7 +133,7 @@ async function damage({trigger: {entity: item}, workflow}) {
             {x: 0.3 * workflow.token.document.width, y: -0.85 * workflow.token.document.width},
             {x: 0.25 * workflow.token.document.width, y: -0.45 * workflow.token.document.width},
             {x: -0.2 * workflow.token.document.width, y: -0.4 * workflow.token.document.width},
-            {x: -0.05 * workflow.token.document.width, y: -0 * workflow.token.document.width},
+            {x: -0.05 * workflow.token.document.width, y: -0 * workflow.token.document.width}
         ];
         for (let i = 0; i < 4; i++) {
             new Sequence()

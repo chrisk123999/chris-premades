@@ -148,7 +148,7 @@ function getLightLevel(token) {
     if (!lights.length) return 'dark';
     let inBright = lights.some(light => {
         let {data: {x, y}, ratio} = light;
-        let bright = foundry.canvas.geometry.ClockwiseSweepPolygon.create({'x': x, 'y': y}, {
+        let bright = foundry.canvas.geometry.ClockwiseSweepPolygon.create({x: x, y: y}, {
             type: 'light',
             boundaryShapes: [new PIXI.Circle(x, y, ratio * light.shape.config.radius)]
         });
@@ -330,7 +330,7 @@ async function grappleHelper(sourceToken, targetToken, item, {noContest = false,
         timePassed += 100;
     }
     if (grappledEffect) await effectUtils.addDependent(grappledEffect, [targetEffect]);
-    if (game.modules.get('Rideable')?.active) game.Rideable.Mount([targetToken.document], sourceToken.document, {'Grappled': true, 'MountingEffectsOverride': ['Grappled']});
+    if (game.modules.get('Rideable')?.active) game.Rideable.Mount([targetToken.document], sourceToken.document, {Grappled: true, MountingEffectsOverride: ['Grappled']});
 }
 function isGrappledBy(target, source) {
     let effects = effectUtils.getAllEffectsByIdentifier(target.actor, 'grappled');
@@ -416,6 +416,52 @@ function getLinearDistanceMoved(token) {
     }
     return token.measureMovementPath(waypoints).distance;
 }
+async function mountToken(rider, target, {vae, unhideActivities} = {}) {
+    if (!game.modules.get('Rideable')?.active) return false;
+    let effect = effectUtils.getEffectByIdentifier(rider.actor, 'mountedRider');
+    if (effect) await genericUtils.remove(effect);
+    let effectData = {
+        name: genericUtils.translate('CHRISPREMADES.Macros.Mount.MountedRider'),
+        img: 'icons/environment/creatures/horse-brown.webp',
+        origin: rider.actor.uuid,
+        flags: {
+            'chris-premades': {
+                mount: {
+                    target: target.document.uuid
+                }
+            },
+            dae: {
+                showIcon: true
+            }
+        }
+    };
+    effectUtils.addMacro(effectData, 'effect', ['mountedRider']);
+    effect = await effectUtils.createEffect(rider.actor, effectData, {identifier: 'mountedRider', rules: 'modern', vae, unhideActivities});
+    let targetEffectData = {
+        name: genericUtils.translate('CHRISPREMADES.Macros.Mount.MountedTarget'),
+        img: 'icons/environment/creatures/horse-brown.webp',
+        origin: target.actor.uuid,
+        flags: {
+            'chris-premades': {
+                mount: {
+                    rider: rider.document.uuid
+                }
+            },
+            dae: {
+                showIcon: true
+            }
+        }
+    };
+    effectUtils.addMacro(targetEffectData, 'effect', ['mountedTarget']);
+    await effectUtils.createEffect(target.actor, targetEffectData, {
+        identifier: 'mountedTarget',
+        interdependent: true,
+        parentEntity: effect,
+        rules: 'modern'
+    });
+    await game.Rideable.Mount([rider.document], target.document);
+    return true;
+}
 export let tokenUtils = {
     getDistance,
     checkCover,
@@ -433,5 +479,6 @@ export let tokenUtils = {
     grappleHelper,
     getMovementHitTokens,
     getLinearDistanceMoved,
-    isGrappledBy
+    isGrappledBy,
+    mountToken
 };

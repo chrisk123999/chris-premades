@@ -82,7 +82,7 @@ async function rollDice(formula, {entity, chatMessage, flavor, mode = 'publicrol
     if (chatMessage) {
         let message = await roll.toMessage({
             speaker: {alias: name},
-            flavor: flavor,
+            flavor: flavor
         }, {
             rollMode: mode
         });
@@ -138,6 +138,53 @@ function makeCritical(roll) {
     rollData.terms[0].options.criticalSuccess = 2;
     return Roll.fromData(rollData);
 }
+function updateDieResult(roll, termIndex, resultIndex, newValue) {
+    let rollData = genericUtils.duplicate(roll.toJSON());
+    let term = rollData.terms[termIndex];
+    let isActive = (r) => (r.active === false ? false : true);
+    let beforeActiveSum = term.results.reduce((acc, r) => acc + (isActive(r) ? Number(r.result) : 0), 0);
+    term.results[resultIndex].result = newValue;
+    let modifiers = (term.modifiers || []).map(m => String(m));
+    let parseCount = (modStr) => {
+        let m = modStr.match(/(kh|kl|dh|dl)(\d+)?/);
+        if (!m) return 1;
+        return m[2] ? Number(m[2]) : 1;
+    };
+    if (modifiers.some(m => m.startsWith('kh')) || modifiers.some(m => m.startsWith('kl')) || modifiers.some(m => m.startsWith('dh')) || modifiers.some(m => m.startsWith('dl'))) {
+        let indexed = term.results.map((r, i) => ({i, value: Number(r.result)}));
+        if (modifiers.some(m => m.startsWith('kh'))) {
+            let mod = modifiers.find(m => m.startsWith('kh'));
+            let keep = parseCount(mod);
+            indexed.sort((a, b) => (b.value - a.value) || (a.i - b.i));
+            let keepSet = new Set(indexed.slice(0, keep).map(x => x.i));
+            term.results.forEach((r, i) => r.active = keepSet.has(i));
+        } else if (modifiers.some(m => m.startsWith('kl'))) {
+            let mod = modifiers.find(m => m.startsWith('kl'));
+            let keep = parseCount(mod);
+            indexed.sort((a, b) => (a.value - b.value) || (a.i - b.i));
+            let keepSet = new Set(indexed.slice(0, keep).map(x => x.i));
+            term.results.forEach((r, i) => r.active = keepSet.has(i));
+        } else if (modifiers.some(m => m.startsWith('dh'))) {
+            let mod = modifiers.find(m => m.startsWith('dh'));
+            let drop = parseCount(mod);
+            indexed.sort((a, b) => (b.value - a.value) || (a.i - b.i));
+            let dropSet = new Set(indexed.slice(0, drop).map(x => x.i));
+            term.results.forEach((r, i) => r.active = !dropSet.has(i));
+        } else if (modifiers.some(m => m.startsWith('dl'))) {
+            let mod = modifiers.find(m => m.startsWith('dl'));
+            let drop = parseCount(mod);
+            indexed.sort((a, b) => (a.value - b.value) || (a.i - b.i));
+            let dropSet = new Set(indexed.slice(0, drop).map(x => x.i));
+            term.results.forEach((r, i) => r.active = !dropSet.has(i));
+        }
+    } else {
+        if (term.results[resultIndex].active === undefined) term.results[resultIndex].active = true;
+    }
+    let afterActiveSum = term.results.reduce((acc, r) => acc + (isActive(r) ? Number(r.result) : 0), 0);
+    if (typeof term.total !== 'undefined') term.total = afterActiveSum;
+    rollData.total = Number(rollData.total) + (afterActiveSum - beforeActiveSum);
+    return Roll.fromData(rollData);
+}
 export let rollUtils = {
     getCriticalFormula,
     contestedRoll,
@@ -151,5 +198,6 @@ export let rollUtils = {
     hasDuplicateDie,
     replaceD20,
     rollDiceSync,
-    makeCritical
+    makeCritical,
+    updateDieResult
 };

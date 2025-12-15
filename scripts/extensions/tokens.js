@@ -31,7 +31,7 @@ async function updateTokenSize(actor, animate, old) {
         }
     };
     if (!actor.token) {
-        await genericUtils.update(actor, {'prototypeToken': updates});
+        await genericUtils.update(actor, {prototypeToken: updates});
     }
     let tokens = actorUtils.getTokens(actor);
     if (!tokens.length) return;

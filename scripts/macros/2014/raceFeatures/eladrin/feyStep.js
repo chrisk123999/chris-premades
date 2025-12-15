@@ -253,7 +253,7 @@ async function combinedAnimation(season, sourceToken, teleToken, targetTokens, f
                         to: 0.02,
                         duration: 50,
                         pingPong: true,
-                        gridUnits: true,
+                        gridUnits: true
                     })
                     .scaleToObject(targetTokens[0].document.texture.scaleX)
                     .duration(8000)
@@ -334,7 +334,7 @@ async function combinedAnimation(season, sourceToken, teleToken, targetTokens, f
             duration: 1500,
             ease: 'easeInQuint',
             gridUnits: true,
-            delay: 500,
+            delay: 500
         })
         .animateProperty('sprite', 'height', {
             from: teleToken.document.width * 2.25,
@@ -342,7 +342,7 @@ async function combinedAnimation(season, sourceToken, teleToken, targetTokens, f
             duration: 1500,
             ease: 'easeInQuint',
             gridUnits: true,
-            delay: 500,
+            delay: 500
         })
         .animateProperty('sprite', 'width', {
             from: 0,
@@ -350,7 +350,7 @@ async function combinedAnimation(season, sourceToken, teleToken, targetTokens, f
             duration: 500,
             ease: 'easeOutCubic',
             gridUnits: true,
-            delay: 2500,
+            delay: 2500
         })
         .animateProperty('sprite', 'height', {
             from: 0,
@@ -358,7 +358,7 @@ async function combinedAnimation(season, sourceToken, teleToken, targetTokens, f
             duration: 500,
             ease: 'easeOutCubic',
             gridUnits: true,
-            delay: 2500,
+            delay: 2500
         })
         .playbackRate(2)
         .belowTokens()
@@ -419,7 +419,7 @@ async function combinedAnimation(season, sourceToken, teleToken, targetTokens, f
                         .file('jb2a.swirling_leaves.complete.01.orangered.1')
                         .attachTo(atmTarget, {offset: {y: 0.05}, gridUnits: true})
                         .scaleToObject(teleToken.document.texture.scaleX * 1.15, {
-                            considerTokenScale: true,
+                            considerTokenScale: true
                         })
                         .duration(6750)
                         .playbackRate(1.5)
@@ -468,7 +468,7 @@ async function combinedAnimation(season, sourceToken, teleToken, targetTokens, f
                             to: 0.05,
                             duration: 70,
                             pingPong: true,
-                            gridUnits: true,
+                            gridUnits: true
                         })
                         .scaleToObject(1, {considerTokenScale: true})
                         .tint('#f5e10a')

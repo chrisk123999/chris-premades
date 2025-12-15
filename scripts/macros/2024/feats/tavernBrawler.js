@@ -27,10 +27,10 @@ export let tavernBrawler = {
     ddbi: {
         removedItems: {
             'Tavern Brawler: Strength Score': [
-                'Tavern Brawler Strike',
+                'Tavern Brawler Strike'
             ],
             'Tavern Brawler: Constitution Score': [
-                'Tavern Brawler Strike',
+                'Tavern Brawler Strike'
             ]
         }
     }

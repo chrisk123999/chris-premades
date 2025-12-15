@@ -1,14 +1,23 @@
-import {constants, itemUtils, workflowUtils} from '../../../utils.js';
+import {constants, itemUtils, rollUtils, workflowUtils} from '../../../utils.js';
 async function skill({trigger: {entity: item, skillId, config, actor}}) {
     let skills = itemUtils.getConfig(item, 'skills');
     if (!skills.length) return;
     if (!skills.includes(skillId)) return;
-    let replacementAbility = itemUtils.getConfig(item, 'replacementAbility');
+    let replacementAbilities = itemUtils.getConfig(item, 'replacementAbilities');
     let defaultAbility = CONFIG.DND5E.skills[skillId].ability;
-    if (replacementAbility === defaultAbility) return;
-    if ((actor.system.abilities[defaultAbility].mod + actor.system.abilities[defaultAbility].checkBonus) >= (actor.system.abilities[replacementAbility].mod + actor.system.abilities[replacementAbility].checkBonus)) return;
+    let defaultScore = actor.system.abilities[defaultAbility].mod + rollUtils.rollDiceSync(String(actor.system.abilities[defaultAbility].checkBonus), {entity: actor, maximize: true}).total;
+    let bestAbility = defaultAbility;
+    let bestScore = defaultScore;
+    for (let ability of replacementAbilities) {
+        let score = actor.system.abilities[ability].mod + rollUtils.rollDiceSync(String(actor.system.abilities[ability].checkBonus), {entity: actor, maximize: true}).total;
+        if (score > bestScore) {
+            bestAbility = ability;
+            bestScore = score;
+        }
+    }
+    if (bestAbility === defaultAbility) return;
     await workflowUtils.syntheticItemRoll(item, []);
-    config.ability = replacementAbility;
+    config.ability = bestAbility;
 }
 export let forestSage = {
     name: 'Forest Sage',
@@ -32,13 +41,18 @@ export let forestSage = {
             homebrew: true
         },
         {
-            value: 'replacementAbility',
-            label: 'CHRISPREMADES.Macros.PrimalKnowledge.ReplacementAbility',
-            type: 'select',
-            default: 'wis',
+            value: 'replacementAbilities',
+            label: 'CHRISPREMADES.Macros.PrimalKnowledge.ReplacementAbilities',
+            type: 'select-many',
+            default: ['wis', 'int'],
             options: constants.abilityOptions,
             category: 'homebrew',
             homebrew: true
         }
     ]
+    //ddbi: {
+    //    removeChoices: [
+    //        'Forest Sage'
+    //    ]
+    //}
 };

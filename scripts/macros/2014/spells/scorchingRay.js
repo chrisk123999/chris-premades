@@ -17,9 +17,9 @@ async function use({workflow}) {
             .atLocation(workflow.token)
             .file('jb2a.magic_signs.circle.02.evocation.loop.yellow')
             .scaleToObject(1.25)
-            .rotateIn(180, 600, {'ease': 'easeOutCubic'})
-            .scaleIn(0, 600, {'ease': 'easeOutCubic'})
-            .loopProperty('sprite', 'rotation', {'from': 0, 'to': -360, 'duration': 10000})
+            .rotateIn(180, 600, {ease: 'easeOutCubic'})
+            .scaleIn(0, 600, {ease: 'easeOutCubic'})
+            .loopProperty('sprite', 'rotation', {from: 0, to: -360, duration: 10000})
             .belowTokens()
             .fadeOut(2000)
             .zIndex(0)
@@ -31,29 +31,29 @@ async function use({workflow}) {
             .atLocation(workflow.token)
             .file('jb2a.magic_signs.circle.02.evocation.loop.yellow')
             .scaleToObject(1.25)
-            .rotateIn(180, 600, {'ease': 'easeOutCubic'})
-            .scaleIn(0, 600, {'ease': 'easeOutCubic'})
-            .loopProperty('sprite', 'rotation', {'from': 0, 'to': -360, 'duration': 10000})
+            .rotateIn(180, 600, {ease: 'easeOutCubic'})
+            .scaleIn(0, 600, {ease: 'easeOutCubic'})
+            .loopProperty('sprite', 'rotation', {from: 0, to: -360, duration: 10000})
             .belowTokens(true)
-            .filter('ColorMatrix', {'saturate': -1, 'brightness': 2})
-            .filter('Blur', {'blurX': 5, 'blurY': 10 })
+            .filter('ColorMatrix', {saturate: -1, brightness: 2})
+            .filter('Blur', {blurX: 5, blurY: 10 })
             .zIndex(1)
             .duration(1200)
-            .fadeIn(200, {'ease': 'easeOutCirc', 'delay': 500})
-            .fadeOut(300, {'ease': 'linear'})
+            .fadeIn(200, {ease: 'easeOutCirc', delay: 500})
+            .fadeOut(300, {ease: 'linear'})
             .persist()
             .attachTo(workflow.token)
             .name('Scorching Ray')
 
             .effect()
             .file('jb2a.particles.outward.white.01.02')
-            .scaleIn(0, 500, {'ease': 'easeOutQuint'})
+            .scaleIn(0, 500, {ease: 'easeOutQuint'})
             .delay(500)
             .fadeOut(1000)
             .atLocation(workflow.token)
             .duration(1000)
-            .size(1.75 * workflow.token.document.width, {'gridUnits': true})
-            .animateProperty('spriteContainer', 'position.y', {'from':0 , 'to': -0.5, 'gridUnits': true, 'duration': 1000})
+            .size(1.75 * workflow.token.document.width, {gridUnits: true})
+            .animateProperty('spriteContainer', 'position.y', {from:0 , to: -0.5, gridUnits: true, duration: 1000})
             .zIndex(1)
             .waitUntilFinished(-200)
 
@@ -113,17 +113,17 @@ async function use({workflow}) {
                         let targetCenter = targetToken.center;
                         let directionVector = {
                             x: targetCenter.x - tokenCenter.x,
-                            y: targetCenter.y - tokenCenter.y,
+                            y: targetCenter.y - tokenCenter.y
                         };
                         let distance = Math.sqrt(directionVector.x ** 2 + directionVector.y ** 2);
                         let normalizedDirectionVector = {
                             x: directionVector.x / distance,
-                            y: directionVector.y / distance,
+                            y: directionVector.y / distance
                         };
                         let magicCircleDistance = canvas.grid.size/3;
                         let magicCircle = {
                             x: tokenCenter.x + normalizedDirectionVector.x * magicCircleDistance,
-                            y: tokenCenter.y + normalizedDirectionVector.y * magicCircleDistance,
+                            y: tokenCenter.y + normalizedDirectionVector.y * magicCircleDistance
                         };
                         new Sequence()
                             .wait(150)
@@ -132,9 +132,9 @@ async function use({workflow}) {
                             .file(path)
                             .atLocation(magicCircle)
                             .scale(0.6)
-                            .stretchTo(targetToken, {'randomOffset': 0.75})
+                            .stretchTo(targetToken, {randomOffset: 0.75})
                             .setMustache({
-                                'num': () => {
+                                num: () => {
                                     let nums = ['01','02', '02'];
                                     if (color === 'rainbow01' || color === 'rainbow02') return '01';
                                     return nums[Math.floor(Math.random()*nums.length)];
@@ -154,7 +154,7 @@ async function use({workflow}) {
                             .attachTo(targetToken)
                             .fadeIn(200)
                             .fadeOut(500)
-                            .loopProperty('sprite', 'position.x', {'from': -0.05, 'to': 0.05, 'duration': 50, 'pingPong': true, 'gridUnits': true})
+                            .loopProperty('sprite', 'position.x', {from: -0.05, to: 0.05, duration: 50, pingPong: true, gridUnits: true})
                             .scaleToObject(targetToken.document.texture.scaleX)
                             .duration(1800)
                             .opacity(0.25)
@@ -163,7 +163,7 @@ async function use({workflow}) {
                             .effect()
                             .delay(200,500)
                             .file(particle)
-                            .attachTo(targetToken, {'randomOffset': 0.2})
+                            .attachTo(targetToken, {randomOffset: 0.2})
                             .zIndex(1)
                             .fadeIn(500)
                             .fadeOut(1200)
@@ -211,7 +211,7 @@ export let scorchingRay = {
             options: [
                 {
                     value: 'simple',
-                    label: 'CHRISPREMADES.Config.Animations.Simple',
+                    label: 'CHRISPREMADES.Config.Animations.Simple'
                 },
                 {
                     value: 'complex',

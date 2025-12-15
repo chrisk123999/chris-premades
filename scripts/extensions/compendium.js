@@ -76,7 +76,7 @@ async function locked(pack) {
     let selection = await DialogApp.dialog('CHRISPREMADES.Generic.CPR', '', [
         ['selectMany', [{label: 'CHRISPREMADES.Medkit.Compendium.sourceCompendiums', name: 'sourceCompendiums', options: {value: [pack.metadata.id], options: sourceCompendiums}}]],
         ['selectOption', [{label: 'CHRISPREMADES.Medkit.Compendium.DestinationCompendium', name: 'destinationCompendium', options: {currentValue: defaultDestinationCompendium, options: destinationCompendiums}}]],
-        ['selectOption', [{label: 'CHRISPREMADES.Medkit.Compendium.Mode', name: 'mode', options: {currentValue: 'mergeUpdate', options: modes}}]],
+        ['selectOption', [{label: 'CHRISPREMADES.Medkit.Compendium.Mode', name: 'mode', options: {currentValue: 'mergeUpdate', options: modes}}]]
     ], 'okCancel');
     if (!selection?.buttons || !selection.sourceCompendiums?.length) return;
     let destPack;

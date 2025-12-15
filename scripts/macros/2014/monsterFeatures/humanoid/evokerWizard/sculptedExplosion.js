@@ -78,7 +78,7 @@ export let sculptedExplosion = {
     config: [
         {
             value: 'maxAmount',
-            label: 'CHRISPREMADES.Generic.Max',
+            label: 'CHRISPREMADES.Config.Max',
             type: 'text',
             default: 3,
             category: 'homebrew',

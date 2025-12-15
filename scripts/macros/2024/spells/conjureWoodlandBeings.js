@@ -12,7 +12,7 @@ async function use({workflow}) {
                 },
                 macros: {
                     movement: ['conjureWoodlandBeingsDamage'],
-                    combat: ['conjureWoodlandBeingsDamage'],
+                    combat: ['conjureWoodlandBeingsDamage']
                 },
                 castData: {
                     baseLevel: workflow.castData.baseLevel,
@@ -30,7 +30,7 @@ async function use({workflow}) {
     });
     let nearbyTokens = tokenUtils.findNearby(workflow.token, 10, 'enemy');
     let turnToCheck;
-    if (combatUtils.inCombat) turnToCheck = combatUtils.currentTurn();
+    if (combatUtils.inCombat()) turnToCheck = combatUtils.currentTurn();
     await damageHelper(nearbyTokens, effect, workflow.token, turnToCheck);
 }
 async function moved({trigger: {token, entity: effect}, options}) {
@@ -42,7 +42,7 @@ async function moved({trigger: {token, entity: effect}, options}) {
     let radius = 10 + token.document.width * canvas.grid.distance;
     let affectedTokens = Array.from(tokenUtils.getMovementHitTokens(startPoint, endPoint, radius)).filter(t => t.document.disposition !== token.document.disposition);
     let turnToCheck;
-    if (combatUtils.inCombat) turnToCheck = combatUtils.currentTurn();
+    if (combatUtils.inCombat()) turnToCheck = combatUtils.currentTurn();
     await damageHelper(affectedTokens, effect, token, turnToCheck);
 }
 async function turnEnd({trigger: {token, target, entity: effect, previousTurn, previousRound}}) {
@@ -62,7 +62,7 @@ async function movedNear({trigger: {target, token, entity: effect}, options}) {
     let oldDistance = tokenUtils.getDistance(token, tempToken);
     if (oldDistance <= 10) return;
     let turnToCheck;
-    if (combatUtils.inCombat) turnToCheck = combatUtils.currentTurn();
+    if (combatUtils.inCombat()) turnToCheck = combatUtils.currentTurn();
     await damageHelper([target], effect, token, turnToCheck);
 }
 async function damageHelper(affectedTokens, effect, token, turnToCheck) {

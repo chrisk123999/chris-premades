@@ -117,7 +117,7 @@ export let formOfDread = {
             default: '',
             category: 'visuals'
         }
-    ],
+    ]
     /*ddbi: {
         renamedItems: {
             'Form of Dread: Transform': 'Form of Dread',

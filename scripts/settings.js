@@ -90,7 +90,7 @@ export function registerSettings() {
             'gambits-premades': 2,
             'midi-item-showcase-community': 3
         },
-        category: 'compendium',
+        category: 'compendium'
     });
     addSetting({
         key: 'monsterCompendium',
@@ -230,7 +230,7 @@ export function registerSettings() {
         key: 'devTools',
         type: Boolean,
         default: false,
-        category: 'development',
+        category: 'development'
     });
     addSetting({
         key: 'vaeButtons',
@@ -283,7 +283,7 @@ export function registerSettings() {
             stunned: 'modules/chris-premades/images/stunned.svg',
             surprised: 'systems/dnd5e/icons/svg/statuses/surprised.svg',
             transformed: 'systems/dnd5e/icons/svg/statuses/transformed.svg',
-            unconscious: 'icons/svg/unconscious.svg',
+            unconscious: 'icons/svg/unconscious.svg'
         },
         category: 'interface'
     });
@@ -652,7 +652,7 @@ export function registerSettings() {
         key: 'manualRollsPromptOnMiss',
         type: Boolean,
         default: false,
-        category: 'manualRolls',
+        category: 'manualRolls'
     });
     addSetting({
         key: 'manualRollsPromptNoData',
@@ -700,7 +700,7 @@ export function registerSettings() {
         key: 'movementPerformanceDisable',
         type: Boolean,
         default: false,
-        category: 'general',
+        category: 'general'
     });
     addSetting({
         key: 'cleave',
@@ -721,6 +721,12 @@ export function registerSettings() {
     });
     addSetting({
         key: 'healingSurge',
+        type: Boolean,
+        default: false,
+        category: 'mechanics'
+    });
+    addSetting({
+        key: 'heroicInspiration',
         type: Boolean,
         default: false,
         category: 'mechanics'
@@ -893,7 +899,7 @@ export function registerSettings() {
             3: 'CHRISPREMADES.Settings.criticalFumbleMode.3',
             4: 'CHRISPREMADES.Settings.criticalFumbleMode.4',
             5: 'CHRISPREMADES.Settings.criticalFumbleMode.5',
-            6: 'CHRISPREMADES.Settings.criticalFumbleMode.6',
+            6: 'CHRISPREMADES.Settings.criticalFumbleMode.6'
         }
     });
     addSetting({
@@ -1040,7 +1046,7 @@ export function registerMenus() {
     if (game.settings.get('chris-premades', 'devTools')) addMenu({
         key: 'development',
         icon: 'fas fa-code',
-        type: getSettingsClass('development'),
+        type: getSettingsClass('development')
     });
     addMenu({
         key: 'general',
@@ -1051,7 +1057,7 @@ export function registerMenus() {
     addMenu({
         key: 'dialog',
         icon: 'fas fa-bars',
-        type: getSettingsClass('dialog'),
+        type: getSettingsClass('dialog')
     });
     addMenu({
         key: 'interface',

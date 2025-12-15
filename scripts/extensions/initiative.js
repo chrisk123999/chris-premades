@@ -19,7 +19,7 @@ function updateCompanionInitiative(actor, [combatant]) {
     companions.forEach(c => combatantLoop(c, combatant));
 }
 function combatantLoop(c, combatant) {
-    if (c.initiative === null) genericUtils.update(c, {initiative: combatant.initiative});
+    if (c.initiative === null) genericUtils.update(c, {initiative: combatant.initiative - 0.01}, {}, true);
 }
 function patchedGetGroupingKey(wrapped, ...args) {
     let result = wrapped(args);

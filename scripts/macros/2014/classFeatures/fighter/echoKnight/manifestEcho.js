@@ -94,54 +94,54 @@ async function use({workflow}) {
     let applyFilter = (itemUtils.getConfig(workflow.item, 'filter') ?? true) && game.modules.get('tokenmagic')?.active;
     let filter = [
         {
-            'filterType': 'oldfilm',
-            'filterId': 'myOldfilm',
-            'sepia': 0.6,
-            'noise': 0.2,
-            'noiseSize': 1.0,
-            'scratch': 0.8,
-            'scratchDensity': 0.5,
-            'scratchWidth': 1.2,
-            'vignetting': 0.9,
-            'vignettingAlpha': 0.6,
-            'vignettingBlur': 0.2,
-            'animated':
+            filterType: 'oldfilm',
+            filterId: 'myOldfilm',
+            sepia: 0.6,
+            noise: 0.2,
+            noiseSize: 1.0,
+            scratch: 0.8,
+            scratchDensity: 0.5,
+            scratchWidth: 1.2,
+            vignetting: 0.9,
+            vignettingAlpha: 0.6,
+            vignettingBlur: 0.2,
+            animated:
             {
-                'seed': { 
-                    'active': true, 
-                    'animType': 'randomNumber', 
-                    'val1': 0, 
-                    'val2': 1 
+                seed: { 
+                    active: true, 
+                    animType: 'randomNumber', 
+                    val1: 0, 
+                    val2: 1 
                 },
-                'vignetting': { 
-                    'active': true, 
-                    'animType': 'syncCosOscillation' , 
-                    'loopDuration': 2000, 
-                    'val1': 0.2, 
-                    'val2': 0.4
+                vignetting: { 
+                    active: true, 
+                    animType: 'syncCosOscillation' , 
+                    loopDuration: 2000, 
+                    val1: 0.2, 
+                    val2: 0.4
                 }
             }
         },
         {
-            'filterType': 'outline',
-            'filterId': 'oldfilmOutline',
-            'color': 0x000000,
-            'thickness': 0,
-            'zOrder': 61
+            filterType: 'outline',
+            filterId: 'oldfilmOutline',
+            color: 0x000000,
+            thickness: 0,
+            zOrder: 61
         },
         {
-            'filterType': 'fog',
-            'filterId': 'myFog',
-            'color': 0x000000,
-            'density': 0.65,
-            'time': 0,
-            'dimX': 1,
-            'dimY': 1,
-            'animated': {
-                'time': { 
-                    'active': true, 
-                    'speed': 2.2, 
-                    'animType': 'move' 
+            filterType: 'fog',
+            filterId: 'myFog',
+            color: 0x000000,
+            density: 0.65,
+            time: 0,
+            dimX: 1,
+            dimY: 1,
+            animated: {
+                time: { 
+                    active: true, 
+                    speed: 2.2, 
+                    animType: 'move' 
                 }
             }
         }

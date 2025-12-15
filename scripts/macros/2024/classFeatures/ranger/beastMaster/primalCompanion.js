@@ -23,10 +23,10 @@ async function use({workflow}) {
     if (exceptionalTraining) {
         let genericActions = [dashData, disengageData, dodgeData, helpData];
         genericActions.forEach(i => {
-            let genericActivity = Object.entries(i.system.activities)[0][1]
+            let genericActivity = Object.entries(i.system.activities)[0][1];
             genericActivity.activation.type = 'bonus';
             itemsToAdd.push(i);
-        })
+        });
     }
     else {
         itemsToAdd.push(dodgeData);
@@ -101,7 +101,7 @@ async function use({workflow}) {
         }
         let selection = await dialogUtils.buttonDialog(workflow.item.name, 'CHRISPREMADES.Dialog.DamageType', [
             ['DND5E.DamageBludgeoning', 'bludgeoning'],
-            ['DND5E.DamagePiercing', 'piercing'],
+            ['DND5E.DamagePiercing', 'piercing']
         ]);
         if (!selection) selection = 'bludgeoning';
         let types = [selection];
@@ -324,7 +324,7 @@ export let primalCompanion = {
             default: 'air',
             category: 'animation',
             options: constants.summonAnimationOptions
-        },
+        }
     ]
 };
 export let bestialFury = {

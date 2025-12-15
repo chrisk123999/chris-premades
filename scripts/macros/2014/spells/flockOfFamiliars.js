@@ -284,7 +284,7 @@ export let flockOfFamiliars = {
             default: 'fire',
             category: 'animation',
             options: constants.summonAnimationOptions
-        },
+        }
     ]
 };
 export let flockOfFamiliarsTouch = {

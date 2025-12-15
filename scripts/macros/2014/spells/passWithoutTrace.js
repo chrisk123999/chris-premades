@@ -10,7 +10,7 @@ async function use({workflow}) {
     };
     effectUtils.addMacro(effectData, 'aura', ['passWithoutTraceAura']);
     await effectUtils.createEffect(workflow.actor, effectData, {concentrationItem: workflow.item, strictlyInterdependent: true, identifier: 'passWithoutTrace'});
-    if (concentrationEffect) await genericUtils.update(concentrationEffect, {'duration': effectData.duration});
+    if (concentrationEffect) await genericUtils.update(concentrationEffect, {duration: effectData.duration});
 }
 async function create({trigger: {entity: effect, target, identifier}}) {
     let targetEffect = effectUtils.getEffectByIdentifier(target.actor, identifier);

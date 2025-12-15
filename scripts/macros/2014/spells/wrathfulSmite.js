@@ -64,7 +64,7 @@ export let wrathfulSmite = {
             options: constants.damageTypeOptions,
             homebrew: true,
             category: 'homebrew'
-        },
+        }
     ]
 };
 export let wrathfulSmiteDamage = {

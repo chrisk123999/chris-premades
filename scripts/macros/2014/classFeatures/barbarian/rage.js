@@ -145,7 +145,7 @@ async function use({workflow}) {
                 mode: 2,
                 value: 'thunder',
                 priority: 20
-            },
+            }
         ]);
     }
     if (itemUtils.getItemByIdentifier(workflow.actor, 'giantsHavocCrushingThrow')) {
@@ -276,9 +276,10 @@ async function attack({workflow}) {
     await combatUtils.setTurnCheck(effect, 'rage');
 }
 async function damageApplication({workflow, ditem}) {
+    if (!ditem.isHit) return;
     let targetActor = await fromUuid(ditem.actorUuid);
     if (!targetActor) return;
-    let effect = effectUtils.getEffectByIdentifier(workflow.actor, 'rage');
+    let effect = effectUtils.getEffectByIdentifier(targetActor, 'rage');
     if (!effect) return;
     if (ditem.newHP >= ditem.oldHP) return;
     await combatUtils.setTurnCheck(effect, 'rage');
@@ -288,7 +289,7 @@ async function turnEnd({trigger: {entity: effect, token}}) {
     let [lastRound, lastTurn] = lastTurnString.split('-');
     let [currentRound, currentTurn] = combatUtils.currentTurn().split('-');
     let roundDiff = currentRound - lastRound;
-    if (roundDiff >= 1) {
+    if (roundDiff > 1) {
         let selection = await dialogUtils.confirm(effect.name, genericUtils.format('CHRISPREMADES.Macros.Rage.EndEarly', {actorName: token.actor.name}), {userId: socketUtils.gmID()});
         if (!selection) return;
         await genericUtils.remove(effect);
@@ -311,15 +312,15 @@ async function start({trigger: {entity: effect}}, {overrideAnimation = undefined
                 .effect()
                 .file('jb2a.extras.tmfx.outpulse.circle.02.normal')
                 .atLocation(token)
-                .size(4, {'gridUnits': true})
+                .size(4, {gridUnits: true})
                 .opacity(0.25)
                 
                 .effect()
                 .file('jb2a.impact.ground_crack.orange.02')
                 .atLocation(token)
                 .belowTokens()
-                .filter('ColorMatrix', {'hue': -15,'saturate': 1})
-                .size(3.5, {'gridUnits': true})
+                .filter('ColorMatrix', {hue: -15,saturate: 1})
+                .size(3.5, {gridUnits: true})
                 .zIndex(1)
                 
                 .effect()
@@ -327,21 +328,21 @@ async function start({trigger: {entity: effect}}, {overrideAnimation = undefined
                 .atLocation(token)
                 .belowTokens()
                 .fadeIn(1000)
-                .filter('ColorMatrix', {'hue': -15,'saturate': 1})
-                .size(3.5, {'gridUnits': true})
+                .filter('ColorMatrix', {hue: -15,saturate: 1})
+                .size(3.5, {gridUnits: true})
                 .zIndex(0)
                 .duration(8000)
                 .fadeOut(3000)
                 
                 .effect()
                 .file('jb2a.wind_stream.white')
-                .atLocation(token, {'offset': {y:-0.05}, 'gridUnits': true})
-                .size(1.75, {'gridUnits': true})
+                .atLocation(token, {offset: {y:-0.05}, gridUnits: true})
+                .size(1.75, {gridUnits: true})
                 .rotate(90)
                 .opacity(0.9)
-                .filter('ColorMatrix', {'saturate': 1})
+                .filter('ColorMatrix', {saturate: 1})
                 .tint('#FF0000')
-                .loopProperty('sprite', 'position.y', {'from': genericUtils.convertDistance(-5), 'to': genericUtils.convertDistance(5), 'duration': 50, 'pingPong': true})
+                .loopProperty('sprite', 'position.y', {from: genericUtils.convertDistance(-5), to: genericUtils.convertDistance(5), duration: 50, pingPong: true})
                 .duration(8000)
                 .fadeOut(3000)
                 
@@ -352,8 +353,8 @@ async function start({trigger: {entity: effect}}, {overrideAnimation = undefined
                 .opacity(1)
                 .fadeIn(200)
                 .fadeOut(3000)
-                .loopProperty('sprite', 'position.x', {'from': genericUtils.convertDistance(-5), 'to': genericUtils.convertDistance(5), 'duration': 50, 'pingPong': true})
-                .animateProperty('sprite', 'position.y', {'from': 0, 'to': -100, 'duration': 6000, 'pingPong': true, 'delay': 2000})
+                .loopProperty('sprite', 'position.x', {from: genericUtils.convertDistance(-5), to: genericUtils.convertDistance(5), duration: 50, pingPong: true})
+                .animateProperty('sprite', 'position.y', {from: 0, to: -100, duration: 6000, pingPong: true, delay: 2000})
                 .duration(8000)
                 
                 .effect()
@@ -364,7 +365,7 @@ async function start({trigger: {entity: effect}}, {overrideAnimation = undefined
                 .scaleToObject()
                 .rotate(90)
                 .opacity(1)
-                .filter('ColorMatrix', {'saturate': 1})
+                .filter('ColorMatrix', {saturate: 1})
                 .tint('#FF0000')
                 .persist()
                 .private()
@@ -376,7 +377,7 @@ async function start({trigger: {entity: effect}}, {overrideAnimation = undefined
                 .attachTo(token)
                 .opacity(0.6)
                 .scaleToObject(1.9)
-                .filter('ColorMatrix', {'saturate': 1})
+                .filter('ColorMatrix', {saturate: 1})
                 .tint('#FF0000')
                 .persist()
 
@@ -388,15 +389,15 @@ async function start({trigger: {entity: effect}}, {overrideAnimation = undefined
                 .effect()
                 .file('jb2a.extras.tmfx.outpulse.circle.02.normal')
                 .atLocation(token)
-                .size(4, {'gridUnits': true})
+                .size(4, {gridUnits: true})
                 .opacity(0.25)
 
                 .effect()
                 .file('jb2a.impact.ground_crack.purple.02')
                 .atLocation(token)
                 .belowTokens()
-                .filter('ColorMatrix', {'hue': -15,'saturate': 1})
-                .size(3.5, {'gridUnits': true})
+                .filter('ColorMatrix', {hue: -15,saturate: 1})
+                .size(3.5, {gridUnits: true})
                 .zIndex(1)
 
                 .effect()
@@ -404,8 +405,8 @@ async function start({trigger: {entity: effect}}, {overrideAnimation = undefined
                 .atLocation(token)
                 .belowTokens()
                 .fadeIn(1000)
-                .filter('ColorMatrix', {'hue': -15,'saturate': 1})
-                .size(3.5, {'gridUnits': true})
+                .filter('ColorMatrix', {hue: -15,saturate: 1})
+                .size(3.5, {gridUnits: true})
                 .duration(8000)
                 .fadeOut(3000)
                 .zIndex(0)
@@ -413,7 +414,7 @@ async function start({trigger: {entity: effect}}, {overrideAnimation = undefined
                 .effect()
                 .file('jb2a.static_electricity.03.purple')
                 .atLocation(token)
-                .size(3, {'gridUnits': true})
+                .size(3, {gridUnits: true})
                 .rotate(90)
                 .randomRotation()
                 .opacity(0.75)
@@ -428,8 +429,8 @@ async function start({trigger: {entity: effect}}, {overrideAnimation = undefined
                 .opacity(1)
                 .fadeIn(200)
                 .fadeOut(3000)
-                .loopProperty('sprite', 'position.x', {'from': -genericUtils.convertDistance(5), 'to': genericUtils.convertDistance(5), 'duration': 50, 'pingPong': true})
-                .animateProperty('sprite', 'position.y', {'from': 0, 'to': -100, 'duration': 6000, 'pingPong': true, 'delay': 2000})
+                .loopProperty('sprite', 'position.x', {from: -genericUtils.convertDistance(5), to: genericUtils.convertDistance(5), duration: 50, pingPong: true})
+                .animateProperty('sprite', 'position.y', {from: 0, to: -100, duration: 6000, pingPong: true, delay: 2000})
                 .duration(8000)
 
                 .effect()
@@ -462,15 +463,15 @@ async function start({trigger: {entity: effect}}, {overrideAnimation = undefined
                 .effect()
                 .file('jb2a.extras.tmfx.outpulse.circle.02.normal')
                 .atLocation(token)
-                .size(4, {'gridUnits': true})
+                .size(4, {gridUnits: true})
                 .opacity(0.25)
 
                 .effect()
                 .file('jb2a.impact.ground_crack.orange.02')
                 .atLocation(token)
                 .belowTokens()
-                .filter('ColorMatrix', {'hue': 20,'saturate': 1})
-                .size(3.5, {'gridUnits': true})
+                .filter('ColorMatrix', {hue: 20,saturate: 1})
+                .size(3.5, {gridUnits: true})
                 .zIndex(1)
 
                 .effect()
@@ -478,19 +479,19 @@ async function start({trigger: {entity: effect}}, {overrideAnimation = undefined
                 .atLocation(token)
                 .belowTokens()
                 .fadeIn(2000)
-                .filter('ColorMatrix', {'hue': -15,'saturate': 1})
-                .size(3.5, {'gridUnits': true})
+                .filter('ColorMatrix', {hue: -15,saturate: 1})
+                .size(3.5, {gridUnits: true})
                 .duration(8000)
                 .fadeOut(3000)
                 .zIndex(0)
 
                 .effect()
                 .file('jb2a.wind_stream.white')
-                .atLocation(token, {'offset':{'y':75}})
-                .size(1.75, {'gridUnits': true})
+                .atLocation(token, {offset:{y:75}})
+                .size(1.75, {gridUnits: true})
                 .rotate(90)
                 .opacity(1)
-                .loopProperty('sprite', 'position.y', {'from': genericUtils.convertDistance(-5), 'to': genericUtils.convertDistance(5), 'duration': 50, 'pingPong': true})
+                .loopProperty('sprite', 'position.y', {from: genericUtils.convertDistance(-5), to: genericUtils.convertDistance(5), duration: 50, pingPong: true})
                 .duration(8000)
                 .fadeOut(3000)
                 .tint('#FFDD00')
@@ -502,8 +503,8 @@ async function start({trigger: {entity: effect}}, {overrideAnimation = undefined
                 .opacity(1)
                 .fadeIn(200)
                 .fadeOut(3000)
-                .loopProperty('sprite', 'position.x', {'from': genericUtils.convertDistance(-5), 'to': genericUtils.convertDistance(5), 'duration': 50, 'pingPong': true})
-                .animateProperty('sprite', 'position.y', {'from': 0, 'to': -100, 'duration': 6000, 'pingPong': true, 'delay': 2000})
+                .loopProperty('sprite', 'position.x', {from: genericUtils.convertDistance(-5), to: genericUtils.convertDistance(5), duration: 50, pingPong: true})
+                .animateProperty('sprite', 'position.y', {from: 0, to: -100, duration: 6000, pingPong: true, delay: 2000})
                 .duration(8000)
 
                 .effect()
@@ -514,7 +515,7 @@ async function start({trigger: {entity: effect}}, {overrideAnimation = undefined
                 .scaleToObject()
                 .rotate(90)
                 .opacity(1)
-                .filter('ColorMatrix', {'saturate': 1})
+                .filter('ColorMatrix', {saturate: 1})
                 .tint('#FFDD00')
                 .persist()
                 .private()
@@ -526,7 +527,7 @@ async function start({trigger: {entity: effect}}, {overrideAnimation = undefined
                 .attachTo(token)
                 .opacity(0.7)
                 .scaleToObject(1.9)
-                .filter('ColorMatrix', {'hue': 30, 'saturate': 1 , 'contrast': 0, 'brightness': 1})
+                .filter('ColorMatrix', {hue: 30, saturate: 1 , contrast: 0, brightness: 1})
                 .persist()
 
                 .play();
@@ -588,7 +589,7 @@ export let rage = {
                     value: 'saiyan',
                     label: 'CHRISPREMADES.Config.Animations.Saiyan',
                     requiredModules: ['jb2a_patreon']
-                },
+                }
             ]
         }
     ]

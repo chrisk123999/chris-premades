@@ -68,7 +68,7 @@ export let searingSmite = {
             options: constants.damageTypeOptions,
             homebrew: true,
             category: 'homebrew'
-        },
+        }
     ]
 };
 export let searingSmiteDamage = {

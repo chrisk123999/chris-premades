@@ -238,7 +238,7 @@ export let summonUndead = {
             default: 'shadow',
             category: 'animation',
             options: constants.summonAnimationOptions
-        },
+        }
     ]
 };
 export let summonUndeadPutrid = {

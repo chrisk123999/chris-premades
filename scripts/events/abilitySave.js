@@ -1,6 +1,7 @@
 import {DialogApp} from '../applications/dialog.js';
 import {custom} from './custom.js';
 import {actorUtils, effectUtils, genericUtils, itemUtils, macroUtils, regionUtils, templateUtils} from '../utils.js';
+import {heroicInspiration} from '../macros/2024/mechanics/heroicInspiration.js';
 function getMacroData(entity) {
     return entity.flags['chris-premades']?.macros?.save ?? [];
 }
@@ -326,6 +327,10 @@ async function rollSave(wrapped, config, dialog = {}, message = {}) {
             let bonusRoll = await executeMacro(trigger);
             if (bonusRoll) returnData = CONFIG.Dice.D20Roll.fromRoll(bonusRoll);
         }
+    }
+    if (genericUtils.getCPRSetting('heroicInspiration')) {
+        let heroicInspirationRoll = await heroicInspiration.saveSkillCheck(returnData, this);
+        if (heroicInspirationRoll) returnData = heroicInspirationRoll;
     }
     if (returnData.options) genericUtils.mergeObject(returnData.options, oldOptions);
     if (message.create !== false) {

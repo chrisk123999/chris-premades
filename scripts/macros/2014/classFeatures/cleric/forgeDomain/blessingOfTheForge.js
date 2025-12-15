@@ -1,5 +1,4 @@
-import {dialogUtils, effectUtils, genericUtils, itemUtils} from '../../../../../utils.js';
-
+import {dialogUtils, genericUtils, itemUtils} from '../../../../../utils.js';
 async function use({workflow}) {
     if (workflow.targets.size !== 1) return;
     let targetActor = workflow.targets.first()?.actor;

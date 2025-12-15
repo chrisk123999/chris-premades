@@ -168,7 +168,7 @@ async function use({workflow}) {
                 .atLocation(spawnedToken)
                 .scaleToObject(1.5)
                 .startTime(1500)
-                .filter('ColorMatrix', {'hue': 15})
+                .filter('ColorMatrix', {hue: 15})
             .play();
             /* eslint-enable indent */
     }
@@ -242,7 +242,7 @@ export let healingSpirit = {
             type: 'file',
             default: '',
             category: 'summons'
-        },
+        }
     ]
 };
 export let healingSpiritHeal = {

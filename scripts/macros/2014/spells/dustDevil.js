@@ -80,7 +80,7 @@ async function use({trigger, workflow}) {
             itemUuid: workflow.item.uuid,
             activityIdentifiers: ['dustDevilMove'],
             favorite: true
-        },
+        }
     });
     let effect = effectUtils.getEffectByIdentifier(workflow.actor, 'dustDevil');
     if (!effect) return;
@@ -239,7 +239,7 @@ export let dustDevil = {
             options: [
                 {
                     value: 'blue',
-                    label: 'CHRISPREMADES.Config.Colors.Blue',
+                    label: 'CHRISPREMADES.Config.Colors.Blue'
                 },
                 {
                     value: 'bluegrey',

@@ -269,7 +269,7 @@ async function moonFrenzy(token, {color = 'white', tintMap = false, callback, na
         .play();
     /* eslint-enable indent */
 }
-async function chapechange(token, {callback} = {}) {
+async function shapeChange(token, {callback} = {}) {
     /* eslint-disable indent */
     new Sequence()
         .effect()
@@ -471,13 +471,13 @@ async function shapechange({trigger, workflow}) {
         if (animation === 'moonFrenzy') {
             await moonFrenzy(workflow.token, {callback: createEffectFunction, tintMap: itemUtils.getConfig(workflow.item, 'tintMap'), color: itemUtils.getConfig(workflow.item, 'moonColor') ? 'red' : 'white'});
         } else {
-            await chapechange(workflow.token, {callback: createEffectFunction});
+            await shapeChange(workflow.token, {callback: createEffectFunction});
         }
     } else {
         await createEffectFunction();
     }
 }
-async function keenHearingAndSmell({trigger: {entity: item, skillId}, workflow}) {
+async function keenHearingAndSmell({trigger: {entity: item, skillId}}) {
     if (skillId != 'prc') return;
     if (!itemUtils.getEquipmentState(item)) return;
     return {
@@ -489,8 +489,7 @@ async function human({trigger, workflow}) {
     let effect = effectUtils.getEffectByIdentifier(workflow.actor, 'harkonsBiteEffect');
     if (effect) await genericUtils.remove(effect);
 }
-async function removed({trigger: {entity: effect}}) {
-    let token = actorUtils.getFirstToken(effect.parent);
+async function removed({trigger: {token}}) {
     if (!token) return;
     Sequencer.EffectManager.endEffects({name: 'Moon Frenzy', object: token});
 }
@@ -503,7 +502,7 @@ async function bite({trigger, workflow}) {
 }
 export let harkonsBite = {
     name: 'Harkon\'s Bite',
-    version: '1.3.110',
+    version: '1.3.163',
     rules: 'legacy',
     midi: {
         item: [
@@ -649,7 +648,7 @@ export let harkonsBite = {
     ],
     utilFunctions: {
         moonFrenzy,
-        chapechange
+        shapeChange
     }
 };
 export let harkonsBiteEffect = {

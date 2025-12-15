@@ -23,7 +23,7 @@ async function use({workflow}) {
     }
     await genericUtils.update(targetToken.document, {
         x: position.x - (canvas.scene.grid.sizeX * targetToken.document.width / 2),
-        y: position.y - (canvas.scene.grid.sizeY * targetToken.document.height / 2),
+        y: position.y - (canvas.scene.grid.sizeY * targetToken.document.height / 2)
     });
     await workflow.actor.sheet.maximize();
 }

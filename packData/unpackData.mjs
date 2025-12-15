@@ -29,14 +29,16 @@ let itemPacks = [
     'cpr-3rd-party-class-features-2024',
     'cpr-3rd-party-spells',
     'cpr-monster-features-2024',
-    'cpr-3rd-party-spells-2024'
+    'cpr-3rd-party-spells-2024',
+    'cpr-species-features-2024',
+    'cpr-other-features'
 ];
 let actorPacks = [
     'cpr-summons',
     'cpr-summons-2024'
 ];
 for (let i of itemPacks) {
-    await extractPack('packs/' + i, 'packData/' + i, {'log': true, 'documentType': 'Item', transformEntry: (entry) => {
+    await extractPack('packs/' + i, 'packData/' + i, {log: true, documentType: 'Item', transformEntry: (entry) => {
         delete entry._stats;
         delete entry.sort;
         delete entry.ownership;
@@ -50,5 +52,5 @@ for (let i of itemPacks) {
     }});
 }
 for (let i of actorPacks) {
-    await extractPack('packs/' + i, 'packData/' + i, {'log': true, 'documentType': 'Actor', transformEntry: (entry) => {delete entry._stats; delete entry.sort; delete entry.ownership;}});
+    await extractPack('packs/' + i, 'packData/' + i, {log: true, documentType: 'Actor', transformEntry: (entry) => {delete entry._stats; delete entry.sort; delete entry.ownership;}});
 }

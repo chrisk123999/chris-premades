@@ -8,7 +8,7 @@ async function use({trigger, workflow}) {
         flags: {
             'chris-premades': {
                 auraOfVitality: {
-                    range: workflow.item.system.target.template.size,
+                    range: workflow.item.system.target.template.size
                 }
             }
         }

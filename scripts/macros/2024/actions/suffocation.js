@@ -90,7 +90,7 @@ export let suffocation = {
                 pass: 'rollFinished',
                 macro: use,
                 priority: 50
-            },
+            }
         ]
     },
     effect: [
