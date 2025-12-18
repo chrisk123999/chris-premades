@@ -27,11 +27,6 @@ async function early({workflow}) {
         duration: {
             seconds: 1,
             turns: 1
-        },
-        flags: {
-            dnd5e: {
-                dependents: [{uuid: template.uuid}]
-            }
         }
     };
     await genericUtils.sleep(100);
@@ -45,7 +40,8 @@ async function early({workflow}) {
             .file('jb2a.lightning_bolt.wide.blue')
             .play();
     }
-    await effectUtils.createEffect(workflow.actor, effectData);
+    let effect = await effectUtils.createEffect(workflow.actor, effectData);
+    await effectUtils.addDependent(effect, [template]);
     let targets = Array.from(tokens).filter(i => i.document.uuid !== workflow.token.document.uuid && i.document.uuid !== targetToken.document.uuid);
     if (!targets.length) return;
     let feature = activityUtils.getActivityByIdentifier(workflow.item, 'javelinOfLightningBolt', {strict: true});

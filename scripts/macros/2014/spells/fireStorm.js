@@ -56,14 +56,10 @@ async function early({workflow}) {
         origin: workflow.item.uuid,
         duration: {
             seconds: 1
-        },
-        flags: {
-            dnd5e: {
-                dependents: templates.map(i => {return {uuid: i.uuid};})
-            }
         }
     };
-    await effectUtils.createEffect(workflow.actor, effectData);
+    let effect = await effectUtils.createEffect(workflow.actor, effectData);
+    await effectUtils.addDependent(effect, templates);
 }
 export let fireStorm = {
     name: 'Fire Storm',

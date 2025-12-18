@@ -6,41 +6,31 @@ import {Teleport} from './teleport.js';
 async function createEffect(entityUuid, effectData, {concentrationItemUuid, parentEntityUuid}) {
     let entity = await fromUuid(entityUuid);
     if (!entity) return;
-    let effects = await entity.createEmbeddedDocuments('ActiveEffect', [effectData]);
     if (concentrationItemUuid) {
         let concentrationItem = await fromUuid(concentrationItemUuid);
         if (concentrationItem) {
             let concentrationEffect = MidiQOL.getConcentrationEffect(concentrationItem.actor, concentrationItem);
-            if (concentrationEffect) concentrationEffect.addDependent(...effects);
+            if (concentrationEffect) genericUtils.setProperty(effectData, 'flags.dnd5e.dependentOn', concentrationEffect.uuid);
         }
     }
-    if (parentEntityUuid) {
-        let parentEntity = await fromUuid(parentEntityUuid);
-        if (parentEntity) {
-            parentEntity.addDependent(...effects);
-        }
-    }
+    if (parentEntityUuid) genericUtils.setProperty(effectData, 'flags.dnd5e.dependentOn', parentEntityUuid);
+    let effects = await entity.createEmbeddedDocuments('ActiveEffect', [effectData]);
     if (effects?.length) return effects[0].uuid;
 }
 async function createEffects(entityUuid, effectDataArray, {concentrationItemUuidArray, parentEntityUuidArray, keepId}) {
     let entity = await fromUuid(entityUuid);
     if (!entity) return;
-    let effects = await entity.createEmbeddedDocuments('ActiveEffect', effectDataArray, {keepId});
-    for (let i = 0; i < effects.length; i++) {
+    for (let i = 0; i < effectDataArray.length; i++) {
         if (concentrationItemUuidArray[i]) {
             let concentrationItem = await fromUuid(concentrationItemUuidArray[i]);
             if (concentrationItem) {
                 let concentrationEffect = MidiQOL.getConcentrationEffect(concentrationItem.actor, concentrationItem);
-                if (concentrationEffect) concentrationEffect.addDependent(effects[i]);
+                if (concentrationEffect) genericUtils.setProperty(effectDataArray[i], 'flags.dnd5e.dependentOn', concentrationEffect.uuid);
             }
         }
-        if (parentEntityUuidArray[i]) {
-            let parentEntity = await fromUuid(parentEntityUuidArray[i]);
-            if (parentEntity) {
-                parentEntity.addDependent(effects[i]);
-            }
-        }
+        if (parentEntityUuidArray[i]) genericUtils.setProperty(effectDataArray[i], 'flags.dnd5e.dependentOn', parentEntityUuidArray[i]);
     }
+    let effects = await entity.createEmbeddedDocuments('ActiveEffect', effectDataArray, {keepId});
     if (effects?.length) return effects.map(i => i.uuid);
 }
 async function deleteEntity(entityUuid) {
@@ -77,7 +67,7 @@ async function addDependent(entityUuid, dependentUuids) {
     let dependents = await Promise.all(dependentUuids.map(async i => {
         return await fromUuid(i);
     }).filter(j => j));
-    await entity.addDependent(...dependents);
+    await Promise.all(dependents.map(i => i.setFlag('dnd5e', 'dependentOn', entityUuid)));
 }
 async function createEmbeddedDocuments(entityUuid, type, updates, options) {
     let entity = await fromUuid(entityUuid);
