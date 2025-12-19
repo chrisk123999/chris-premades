@@ -9,7 +9,7 @@ async function startRitual({trigger, workflow}) {
     if (!selection) return;
     let types = [];
     if (selection.system.range.value) types.push(['CHRISPREMADES.Macros.CircleSpell.Augment', 'augment']);
-    if (selection.system.properties.has('concentration')) types.push(['CHRISPREMADES.Macros.CircleSpell.Distribute', 'distribute']);
+    //if (selection.system.properties.has('concentration')) types.push(['CHRISPREMADES.Macros.CircleSpell.Distribute', 'distribute']); //Fix this.
     if (selection.system.target.template.size) types.push(['CHRISPREMADES.Macros.CircleSpell.Expand', 'expand']);
     if (['minute', 'hour', 'day', 'week', 'month', 'year'].includes(selection.system.duration.units)) types.push(['CHRISPREMADES.Macros.CircleSpell.Prolong', 'prolong']);
     if (selection.system.target.template.size) types.push(['CHRISPREMADES.Macros.CircleSpell.Safeguard', 'safeguard']);

@@ -1,3 +1,12 @@
+# 1.4.1 Release:
+## Update Notes:
+- CPR now requires 5.2.3 of the D&D system.
+- Circle casting currently has the "Distribute" option disabled until a solution can be found to make it work again. This is due to a change in the D&D system.
+## Bug Fixes:
+- Vex Mastery
+- Pact of the Blade (Modern)
+- Aura of Protection
+
 # 1.3.168 Release:
 ## Bug Fixes:
 - Celestial Revelation (Modern)
