@@ -1,3 +1,7 @@
+# 1.4.3 Release:
+## Bug Fixes:
+- Moonbeam (Modern)
+
 # 1.4.2 Release:
 ## New Modern Content:
 - Orb of Damara
