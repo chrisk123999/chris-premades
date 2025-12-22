@@ -1,3 +1,11 @@
+# 1.4.2 Release:
+## New Modern Content:
+- Orb of Damara
+## Bug Fixes:
+- Item DC checks will now properly take into account cast activities overwriting the save DC on spells.
+- Shield Guardian: Spell Storing
+- Aura of Vitality
+
 # 1.4.1 Release:
 ## Update Notes:
 - CPR now requires 5.2.3 of the D&D system.

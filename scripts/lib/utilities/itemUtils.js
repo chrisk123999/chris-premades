@@ -6,6 +6,11 @@ import {ItemMedkit} from '../../applications/medkit-item.js';
 import {requirements} from '../../extensions/requirements.js';
 function getSaveDC(item) {
     if (item.hasSave) return item.system.activities.getByType('save')[0].save.dc.value;
+    let spellChanges = item.effects.get('dnd5espellchange');
+    if (spellChanges) {
+        let value = spellChanges.changes.find(i => i.key === 'activities[save].save.dc.formula')?.value;
+        if (value) return Number(value);
+    }
     return item.actor?.system?.abilities?.[item.abilityMod]?.dc ?? item?.actor?.system?.attributes?.spell?.dc ?? 10;
 }
 async function createItems(actor, updates, {favorite, section, parentEntity, identifier, castData} = {}) {
