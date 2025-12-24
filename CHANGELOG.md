@@ -1,3 +1,12 @@
+# 1.4.4 Release:
+## New Modern Content:
+- Eldritch Invocations: Devil's Sight
+- Eldritch Invocations: One with Shadows
+## Bug Fixes:
+- Form of Dread
+## Update Notes:
+- If you were using a custom image for your form of dread, you'll want to set it again in the medkit config.
+
 # 1.4.3 Release:
 ## Bug Fixes:
 - Moonbeam (Modern)

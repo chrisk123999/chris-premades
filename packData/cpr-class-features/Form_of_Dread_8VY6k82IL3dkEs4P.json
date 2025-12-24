@@ -1,37 +1,130 @@
 {
   "name": "Form of Dread",
   "type": "feat",
-  "system": {
-    "description": {
-      "value": "",
-      "chat": ""
-    },
-    "source": {
-      "custom": "",
-      "revision": 1,
-      "rules": "2014"
-    },
-    "uses": {
-      "max": "@prof",
-      "recovery": [
-        {
-          "period": "lr",
-          "type": "recoverAll"
+  "effects": [
+    {
+      "name": "Form of Dread: Frightened",
+      "img": "icons/creatures/abilities/mouth-teeth-long-red.webp",
+      "origin": "Actor.tOXKAdjeDxHioIyz.Item.CWibUb2iwBO9l94l",
+      "transfer": false,
+      "_id": "vOG7KjGOAC4ZwNI5",
+      "type": "base",
+      "system": {},
+      "changes": [],
+      "disabled": false,
+      "duration": {
+        "startTime": null,
+        "seconds": null,
+        "combat": null,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "statuses": [],
+      "flags": {
+        "dae": {
+          "enableCondition": "",
+          "disableCondition": "",
+          "disableIncapacitated": false,
+          "selfTarget": false,
+          "selfTargetAlways": false,
+          "dontApply": false,
+          "stackable": "multi",
+          "showIcon": false,
+          "durationExpression": "",
+          "macroRepeat": "none",
+          "specialDuration": [
+            "turnEndSource"
+          ]
+        },
+        "core": {
+          "overlay": false
+        },
+        "chris-premades": {
+          "noAnimation": false,
+          "conditions": [
+            "frightened"
+          ]
+        },
+        "dnd5e": {
+          "riders": {
+            "statuses": []
+          }
         }
-      ],
-      "spent": 0
+      },
+      "sort": 0,
+      "_key": "!items.effects!8VY6k82IL3dkEs4P.vOG7KjGOAC4ZwNI5"
     },
-    "type": {
-      "value": "class",
-      "subtype": ""
-    },
-    "requirements": "",
-    "properties": [],
-    "prerequisites": {
-      "level": null,
-      "items": [],
-      "repeatable": false
-    },
+    {
+      "name": "Form of Dread",
+      "img": "icons/creatures/abilities/mouth-teeth-long-red.webp",
+      "origin": "Actor.vymiHXzc0NICxcA0.Item.otAxVVhwEHJAHdrl",
+      "transfer": false,
+      "_id": "KCQr6h9z31qD5i6T",
+      "type": "base",
+      "system": {},
+      "changes": [],
+      "disabled": false,
+      "duration": {
+        "startTime": null,
+        "combat": null,
+        "seconds": null,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "statuses": [],
+      "sort": 0,
+      "flags": {
+        "dnd5e": {
+          "riders": {
+            "statuses": []
+          }
+        },
+        "dae": {
+          "enableCondition": "",
+          "disableCondition": "",
+          "stackable": "noneName",
+          "showIcon": false,
+          "disableIncapacitated": false,
+          "selfTarget": false,
+          "selfTargetAlways": false,
+          "dontApply": true,
+          "durationExpression": "",
+          "macroRepeat": "none",
+          "specialDuration": []
+        },
+        "core": {
+          "overlay": false
+        },
+        "chris-premades": {
+          "noAnimation": false,
+          "conditions": [],
+          "specialDuration": [],
+          "templateEffectActivities": [],
+          "info": {
+            "identifier": "formOfDreadActive"
+          },
+          "rules": "legacy",
+          "macros": {
+            "midi": {
+              "actor": [
+                "formOfDreadActive"
+              ]
+            }
+          }
+        }
+      },
+      "_key": "!items.effects!8VY6k82IL3dkEs4P.KCQr6h9z31qD5i6T"
+    }
+  ],
+  "system": {
     "activities": {
       "f0epefNgTy8omTFs": {
         "type": "save",
@@ -48,20 +141,31 @@
             "allowed": false
           },
           "spellSlot": true,
-          "targets": []
+          "targets": [
+            {
+              "type": "activityUses",
+              "value": "1",
+              "scaling": {}
+            }
+          ]
         },
         "description": {
           "chatFlavor": "Form of Dread: Fear"
         },
         "duration": {
-          "units": "inst",
+          "units": "round",
           "concentration": false,
-          "override": false
+          "override": false,
+          "value": "2"
         },
         "effects": [
           {
             "_id": "vOG7KjGOAC4ZwNI5",
-            "onSave": false
+            "onSave": false,
+            "level": {
+              "min": null,
+              "max": null
+            }
           }
         ],
         "range": {
@@ -86,8 +190,13 @@
         },
         "uses": {
           "spent": 0,
-          "recovery": [],
-          "max": ""
+          "recovery": [
+            {
+              "period": "turnStart",
+              "type": "recoverAll"
+            }
+          ],
+          "max": "1"
         },
         "damage": {
           "parts": [],
@@ -106,11 +215,9 @@
           }
         },
         "useConditionText": "",
-        "forceDialog": false,
         "effectConditionText": "",
-        "midiAutomationOnly": false,
-        "name": "Form of Dread: Fear",
-        "img": "icons/magic/unholy/silhouette-robe-evil-glow.webp",
+        "name": "Fear",
+        "img": "icons/creatures/abilities/mouth-teeth-long-red.webp",
         "useConditionReason": "",
         "macroData": {
           "name": "",
@@ -129,17 +236,15 @@
           "triggeredActivityConditionText": "",
           "triggeredActivityTargets": "targets",
           "triggeredActivityRollAs": "self",
-          "forceDialog": false,
-          "forceAttackDialog": false,
-          "forceDamageDialog": false,
+          "forceDamageDialog": "",
           "confirmTargets": "default",
           "autoTargetType": "any",
           "autoTargetAction": "default",
           "automationOnly": false,
-          "otherActivityCompatible": true,
+          "otherActivityCompatible": false,
           "otherActivityAsParentType": true,
           "identifier": "",
-          "displayActivityName": false,
+          "displayActivityName": true,
           "rollMode": "default",
           "chooseEffects": false,
           "toggleEffect": false,
@@ -148,7 +253,10 @@
           "magicEffect": false,
           "magicDamage": false,
           "noConcentrationCheck": false,
-          "autoCEEffects": "default"
+          "autoCEEffects": "none",
+          "autoConsume": false,
+          "forceConsumeDialog": "default",
+          "forceRollDialog": "default"
         },
         "isOverTimeFlag": false,
         "overTimeProperties": {
@@ -158,7 +266,18 @@
         },
         "otherActivityId": "",
         "otherActivityAsParentType": true,
-        "friendlySave": "default"
+        "friendlySave": "default",
+        "flags": {},
+        "visibility": {
+          "level": {
+            "min": null,
+            "max": null
+          },
+          "requireAttunement": false,
+          "requireIdentification": false,
+          "requireMagic": false,
+          "identifier": ""
+        }
       },
       "oyddQtkU98F2IkVi": {
         "type": "heal",
@@ -193,7 +312,15 @@
           "override": false,
           "value": "1"
         },
-        "effects": [],
+        "effects": [
+          {
+            "_id": "KCQr6h9z31qD5i6T",
+            "level": {
+              "min": null,
+              "max": null
+            }
+          }
+        ],
         "range": {
           "override": false,
           "units": "self",
@@ -251,17 +378,15 @@
           "triggeredActivityConditionText": "",
           "triggeredActivityTargets": "targets",
           "triggeredActivityRollAs": "self",
-          "forceDialog": false,
           "confirmTargets": "default",
           "autoTargetType": "any",
           "autoTargetAction": "default",
           "automationOnly": false,
           "otherActivityCompatible": false,
           "identifier": "",
-          "forceAttackDialog": false,
-          "forceDamageDialog": false,
+          "forceDamageDialog": "",
           "otherActivityAsParentType": true,
-          "displayActivityName": false,
+          "displayActivityName": true,
           "rollMode": "default",
           "chooseEffects": false,
           "toggleEffect": false,
@@ -270,31 +395,76 @@
           "magicEffect": false,
           "magicDamage": false,
           "noConcentrationCheck": false,
-          "autoCEEffects": "default"
+          "autoCEEffects": "none",
+          "autoConsume": false,
+          "forceConsumeDialog": "default",
+          "forceRollDialog": "default"
         },
-        "name": "Form of Dread",
-        "img": "icons/magic/unholy/silhouette-robe-evil-glow.webp",
-        "appliedEffects": [],
+        "name": "Transform",
+        "img": "icons/creatures/abilities/mouth-teeth-long-red.webp",
         "useConditionReason": "",
         "isOverTimeFlag": false,
         "overTimeProperties": {
           "saveRemoves": true,
           "preRemoveConditionText": "",
           "postRemoveConditionText": ""
+        },
+        "flags": {},
+        "visibility": {
+          "level": {
+            "min": null,
+            "max": null
+          },
+          "requireAttunement": false,
+          "requireIdentification": false,
+          "requireMagic": false,
+          "identifier": ""
         }
       }
     },
-    "identifier": "form-of-dread",
-    "enchant": {},
+    "uses": {
+      "max": "@prof",
+      "recovery": [
+        {
+          "period": "lr",
+          "type": "recoverAll"
+        }
+      ],
+      "spent": 0
+    },
     "advancement": [],
-    "crewed": false
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "identifier": "form-of-dread",
+    "source": {
+      "book": "VRGtR",
+      "page": "",
+      "license": "",
+      "custom": "",
+      "rules": "2014",
+      "revision": 1
+    },
+    "crewed": false,
+    "enchant": {},
+    "prerequisites": {
+      "level": null,
+      "items": [],
+      "repeatable": false
+    },
+    "properties": [],
+    "requirements": "",
+    "type": {
+      "value": "class",
+      "subtype": ""
+    }
   },
   "flags": {
     "midi-qol": {
-      "effectActivation": false,
-      "onUseMacroName": "",
-      "rollAttackPerTarget": "default",
       "removeAttackDamageButtons": "default",
+      "effectActivation": false,
+      "rollAttackPerTarget": "default",
       "itemCondition": "",
       "effectCondition": "",
       "AoETargetType": "any",
@@ -304,6 +474,7 @@
       "otherCondition": ""
     },
     "midiProperties": {
+      "confirmTargets": "default",
       "nodam": false,
       "fulldam": false,
       "halfdam": false,
@@ -317,15 +488,14 @@
       "concentration": false,
       "toggleEffect": false,
       "ignoreTotalCover": false,
-      "confirmTargets": "default",
       "noConcentrationCheck": false,
       "idr": false,
       "idi": false,
       "idv": false,
       "ida": false
     },
-    "core": {},
     "dnd5e": {
+      "advancementOrigin": "c1GyYwB54XsaHpI8",
       "riders": {
         "activity": [
           "f0epefNgTy8omTFs"
@@ -336,14 +506,22 @@
         {
           "uuid": "Scene.6cPoldhdvb1g9GHk.Token.LxBU8ksRvzr8t78r.Actor.RIKQZTCGTzYRKnxy.ActiveEffect.ybzuhdJHC8IkK8QV"
         }
-      ]
+      ],
+      "last": {
+        "oyddQtkU98F2IkVi": {
+          "damageType": {
+            "0": "temphp"
+          }
+        }
+      }
     },
     "chris-premades": {
       "info": {
         "name": "Form of Dread",
-        "version": "1.1.31",
         "identifier": "formOfDread",
-        "source": "chris-premades"
+        "source": "chris-premades",
+        "rules": "legacy",
+        "version": "1.4.4"
       },
       "macros": {
         "midi": {
@@ -362,63 +540,11 @@
       "formOfDreadFear": {
         "turn": "238-5"
       }
-    }
+    },
+    "core": {}
   },
-  "effects": [
-    {
-      "name": "Form of Dread: Frightened",
-      "img": "icons/magic/unholy/silhouette-robe-evil-glow.webp",
-      "origin": "Actor.tOXKAdjeDxHioIyz.Item.CWibUb2iwBO9l94l",
-      "transfer": false,
-      "_id": "vOG7KjGOAC4ZwNI5",
-      "type": "base",
-      "system": {},
-      "changes": [],
-      "disabled": false,
-      "duration": {
-        "startTime": null,
-        "seconds": null,
-        "combat": null,
-        "rounds": 1,
-        "turns": 1,
-        "startRound": null,
-        "startTurn": null
-      },
-      "description": "",
-      "tint": "#ffffff",
-      "statuses": [],
-      "flags": {
-        "dae": {
-          "enableCondition": "",
-          "disableCondition": "",
-          "disableIncapacitated": false,
-          "selfTarget": false,
-          "selfTargetAlways": false,
-          "dontApply": false,
-          "stackable": "multi",
-          "showIcon": false,
-          "durationExpression": "",
-          "macroRepeat": "none",
-          "specialDuration": [
-            "turnEndSource"
-          ]
-        },
-        "core": {
-          "overlay": false
-        },
-        "chris-premades": {
-          "noAnimation": false,
-          "conditions": [
-            "frightened"
-          ]
-        }
-      },
-      "sort": 0,
-      "_key": "!items.effects!hpO7l4a19nEIJLqe.vOG7KjGOAC4ZwNI5"
-    }
-  ],
-  "img": "icons/magic/unholy/silhouette-robe-evil-glow.webp",
+  "img": "icons/creatures/abilities/mouth-teeth-long-red.webp",
   "folder": "mVSpHRTJJDEtw4kZ",
-  "_id": "hpO7l4a19nEIJLqe",
-  "_key": "!items!hpO7l4a19nEIJLqe"
+  "_id": "8VY6k82IL3dkEs4P",
+  "_key": "!items!8VY6k82IL3dkEs4P"
 }

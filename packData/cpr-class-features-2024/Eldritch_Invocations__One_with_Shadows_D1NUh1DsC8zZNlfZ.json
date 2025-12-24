@@ -1,0 +1,187 @@
+{
+  "name": "Eldritch Invocations: One with Shadows",
+  "type": "feat",
+  "effects": [],
+  "system": {
+    "activities": {
+      "PvlWunLE8EiwJmIP": {
+        "type": "cast",
+        "spell": {
+          "uuid": "Compendium.world.ddb-world-ddb-spells.Item.gKZN94zcT0La56qo",
+          "challenge": {
+            "override": false
+          },
+          "properties": [],
+          "spellbook": true,
+          "ability": "",
+          "level": 2
+        },
+        "_id": "PvlWunLE8EiwJmIP",
+        "sort": 0,
+        "activation": {
+          "type": "action",
+          "override": false
+        },
+        "consumption": {
+          "scaling": {
+            "allowed": false
+          },
+          "spellSlot": true,
+          "targets": []
+        },
+        "description": {
+          "chatFlavor": ""
+        },
+        "duration": {
+          "units": "inst",
+          "concentration": false,
+          "override": false
+        },
+        "flags": {},
+        "range": {
+          "units": "self",
+          "override": true,
+          "special": ""
+        },
+        "target": {
+          "template": {
+            "contiguous": false,
+            "units": "ft",
+            "type": ""
+          },
+          "affects": {
+            "choice": false,
+            "type": "self"
+          },
+          "override": true,
+          "prompt": true
+        },
+        "uses": {
+          "spent": 0,
+          "recovery": [],
+          "max": ""
+        },
+        "visibility": {
+          "level": {
+            "min": null,
+            "max": null
+          },
+          "requireAttunement": false,
+          "requireIdentification": false,
+          "requireMagic": false,
+          "identifier": ""
+        },
+        "useConditionText": "",
+        "useConditionReason": "",
+        "effectConditionText": "",
+        "macroData": {
+          "name": "",
+          "command": ""
+        },
+        "ignoreTraits": {
+          "idi": false,
+          "idr": false,
+          "idv": false,
+          "ida": false,
+          "idm": false
+        },
+        "midiProperties": {
+          "ignoreTraits": [],
+          "triggeredActivityId": "none",
+          "triggeredActivityConditionText": "",
+          "triggeredActivityTargets": "targets",
+          "triggeredActivityRollAs": "self",
+          "autoConsume": false,
+          "forceConsumeDialog": "default",
+          "forceRollDialog": "default",
+          "forceDamageDialog": "default",
+          "confirmTargets": "never",
+          "autoTargetType": "any",
+          "autoTargetAction": "default",
+          "automationOnly": false,
+          "otherActivityCompatible": true,
+          "otherActivityAsParentType": true,
+          "identifier": "",
+          "displayActivityName": false,
+          "rollMode": "default",
+          "chooseEffects": false,
+          "toggleEffect": false,
+          "ignoreFullCover": false,
+          "removeChatButtons": "default",
+          "magicEffect": false,
+          "magicDamage": false,
+          "noConcentrationCheck": false,
+          "autoCEEffects": "default"
+        },
+        "isOverTimeFlag": false,
+        "overTimeProperties": {
+          "saveRemoves": true,
+          "preRemoveConditionText": "",
+          "postRemoveConditionText": ""
+        },
+        "name": ""
+      }
+    },
+    "uses": {
+      "spent": 0,
+      "recovery": []
+    },
+    "advancement": [],
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "identifier": "eldritch-invocations-one-with-shadows",
+    "source": {
+      "book": "PHB 2024",
+      "page": "",
+      "license": "",
+      "custom": "",
+      "rules": "2024",
+      "revision": 1
+    },
+    "crewed": false,
+    "enchant": {},
+    "prerequisites": {
+      "items": [],
+      "level": 1,
+      "repeatable": false
+    },
+    "properties": [],
+    "requirements": "",
+    "type": {
+      "value": "class",
+      "subtype": "eldritchInvocation"
+    }
+  },
+  "flags": {
+    "dnd5e": {
+      "advancementOrigin": "c1GyYwB54XsaHpI8",
+      "riders": {
+        "activity": []
+      }
+    },
+    "chris-premades": {
+      "hiddenActivities": [],
+      "activityIdentifiers": {
+        "invisibility": "PvlWunLE8EiwJmIP"
+      },
+      "info": {
+        "identifier": "oneWithShadows",
+        "rules": "modern",
+        "source": "chris-premades",
+        "version": "1.4.4"
+      },
+      "castActivities": [
+        {
+          "name": "Invisibility",
+          "activityId": "PvlWunLE8EiwJmIP"
+        }
+      ]
+    }
+  },
+  "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
+  "folder": "ZvOw98M7HI0Bf0L2",
+  "_id": "D1NUh1DsC8zZNlfZ",
+  "_key": "!items!D1NUh1DsC8zZNlfZ"
+}
