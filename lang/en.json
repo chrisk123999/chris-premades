@@ -1706,6 +1706,9 @@
                 "PredatoryStrike": "Predatory Strike",
                 "Revert": "Hybrid Transformation: Revert"
             },
+            "IPiercedTheIllusion": {
+                "Insight": "This check is against someone you are speaking with."
+            },
             "ImbueCard": {
                 "Select": "Which spell to imbue a card with?"
             },
@@ -1969,8 +1972,8 @@
                 "Name": "Misty Step"
             },
             "MistyWanderer": {
-                "TeleportFriend": "Teleport a willing ally?",
-                "Range": "Misty Wanderer range"
+                "Range": "Misty Wanderer range",
+                "TeleportFriend": "Teleport a willing ally?"
             },
             "Moonbeam": {
                 "Damage": "Moonbeam: Damage",

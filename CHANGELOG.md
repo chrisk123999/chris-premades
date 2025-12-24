@@ -1,3 +1,13 @@
+# 1.4.5 Release:
+## New Modern Content:
+- I Fought, I Lived
+- I Pierced the Illusion
+- I Survived to Tell the Tale
+- Vampire's Plaything
+## Bug Fixes:
+- Cunning Action
+- Form of Dread
+
 # 1.4.4 Release:
 ## New Modern Content:
 - Eldritch Invocations: Devil's Sight

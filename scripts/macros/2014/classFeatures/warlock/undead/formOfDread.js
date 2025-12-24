@@ -6,7 +6,7 @@ async function use({workflow}) {
     if (!sourceEffect) return;
     let effectData = genericUtils.duplicate(sourceEffect.toObject());
     effectData.origin = sourceEffect.uuid;
-    sourceEffect.duration = itemUtils.convertDuration(workflow.activity);
+    effectData.duration = itemUtils.convertDuration(workflow.activity);
     await effectUtils.createEffect(workflow.actor, effectData, {
         avatarImg: itemUtils.getConfig(workflow.item, 'avatarImg'),
         tokenImg: itemUtils.getConfig(workflow.item, 'tokenImg'),

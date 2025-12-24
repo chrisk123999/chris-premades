@@ -238,6 +238,10 @@ export {thrownWeaponFighting} from './macros/2024/feats/thrownWeaponFighting.js'
 export {unarmedFighting, unarmedFightingUnarmedStrike} from './macros/2024/feats/unarmedFighting.js';
 export {purpleDragonRook} from './macros/2024/feats/purpleDragonRook.js';
 export {spellfireSpark} from './macros/2024/feats/spellfireSpark.js';
+export {iPiercedTheIllusion} from './macros/2024/feats/iPiercedTheIllusion.js';
+export {iSurvivedToTellTheTale} from './macros/2024/feats/iSurvivedToTellTheTale.js';
+export {iFoughtILived} from './macros/2024/feats/iFoughtILived.js';
+export {vampiresPlaything} from './macros/2024/feats/vampiresPlaything.js';
 // Species Features
 // Aasimar
 export {healingHands} from './macros/2024/speciesFeatures/aasimar/healingHands.js';
