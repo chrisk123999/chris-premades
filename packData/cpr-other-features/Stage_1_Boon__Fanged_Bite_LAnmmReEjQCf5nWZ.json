@@ -301,7 +301,7 @@
     "identifier": "stage-1-boon-fanged-bite",
     "source": {
       "revision": 1,
-      "rules": "2014",
+      "rules": "2024",
       "book": "",
       "page": "",
       "custom": "",
@@ -348,7 +348,8 @@
       "info": {
         "identifier": "vampireFangedBite",
         "source": "chris-premades",
-        "version": "1.4.6"
+        "version": "1.4.6",
+        "rules": "modern"
       },
       "macros": {
         "midi": {

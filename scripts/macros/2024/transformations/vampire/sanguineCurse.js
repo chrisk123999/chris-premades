@@ -8,7 +8,7 @@ async function use({trigger, workflow}) {
 export let sanguineCurse = {
     name: 'Stage 1 Flaw: The Sanguine Curse',
     version: '1.4.6',
-    rules: 'legacy',
+    rules: 'modern',
     midi: {
         item: [
             {

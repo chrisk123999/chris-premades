@@ -263,7 +263,7 @@
     "identifier": "stage-1-flaw-the-sanguine-curse",
     "source": {
       "revision": 1,
-      "rules": "2014",
+      "rules": "2024",
       "book": "",
       "page": "",
       "custom": "",
@@ -367,7 +367,8 @@
       "info": {
         "identifier": "sanguineCurse",
         "source": "chris-premades",
-        "version": "1.4.6"
+        "version": "1.4.6",
+        "rules": "modern"
       },
       "macros": {
         "midi": {

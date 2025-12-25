@@ -491,3 +491,8 @@ export {pseudodragonSting} from './macros/2024/monsterFeatures/pseudodragon/stin
 export {carrionCrawlerParalyzingTentacles} from './macros/2024/monsterFeatures/carrionCrawler/paralyzingTentacles.js';
 // Night Hag
 export {nightmareHaunting} from './macros/2024/monsterFeatures/nightHag/nightmareHaunting.js';
+// Transformations
+// Vampire
+export {vampireFangedBite} from './macros/2024/transformations/vampire/fangedBite.js';
+export {strigoiBloodline} from './macros/2024/transformations/vampire/strigoiBloodline.js';
+export {sanguineCurse} from './macros/2024/transformations/vampire/sanguineCurse.js';

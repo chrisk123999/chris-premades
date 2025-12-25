@@ -148,7 +148,7 @@
     "identifier": "stage-1-boon-strigoi-bloodline",
     "source": {
       "revision": 1,
-      "rules": "2014",
+      "rules": "2024",
       "book": "",
       "page": "",
       "custom": "",
@@ -243,7 +243,7 @@
       "_key": "!items.effects!OfTzkxBqfbYZgjUt.QJPGN60FDM929QDo"
     }
   ],
-  "folder": null,
+  "folder": "Xu8gZVI9iyVzXZ72",
   "flags": {
     "dnd5e": {
       "riders": {
@@ -259,7 +259,8 @@
         "identifier": "strigoiBloodline",
         "source": "chris-premades",
         "version": "1.4.6",
-        "hasAnimation": true
+        "hasAnimation": true,
+        "rules": "modern"
       },
       "macros": {
         "midi": {

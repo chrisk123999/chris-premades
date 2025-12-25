@@ -1,5 +1,5 @@
-import {activityUtils, constants, genericUtils, itemUtils, rollUtils} from '../../../../utils.js';
-import {hide} from '../../../2024/actions/hide.js';
+import {activityUtils, genericUtils, itemUtils, rollUtils} from '../../../../utils.js';
+import {hide} from '../../actions/hide.js';
 async function damage({trigger: {entity: item}, workflow}) {
     if (!workflow.item || !workflow.activity || !workflow.advantage || workflow.disadvantage) return;
     let identifier = genericUtils.getIdentifier(workflow.item);
@@ -14,7 +14,7 @@ async function damage({trigger: {entity: item}, workflow}) {
 export let strigoiBloodline = {
     name: 'Stage 1 Boon: Strigoi Bloodline',
     version: '1.4.6',
-    rules: 'legacy',
+    rules: 'modern',
     midi: {
         item: [
             {

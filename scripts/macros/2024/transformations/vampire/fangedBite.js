@@ -27,7 +27,7 @@ async function early({trigger, workflow}) {
 export let vampireFangedBite = {
     name: 'Stage 1 Boon: Fanged Bite',
     version: '1.4.6',
-    rules: 'legacy',
+    rules: 'modern',
     midi: {
         item: [
             {
