@@ -685,3 +685,8 @@ export {heliodsDevotee} from './macros/2014/piety/heliod/heliodsDevotee.js';
 export {nyleasDevotee} from './macros/2014/piety/nylea/nyleasDevotee.js';
 export {karametrasDevotee} from './macros/2014/piety/karametra/karametrasDevotee.js';
 export {iroassDevotee} from './macros/2014/piety/iroas/iroassDevotee.js';
+// Transformations
+// Vampire
+export {vampireFangedBite} from './macros/2014/transformations/vampire/fangedBite.js';
+export {strigoiBloodline} from './macros/2014/transformations/vampire/strigoiBloodline.js';
+export {sanguineCurse} from './macros/2014/transformations/vampire/sanguineCurse.js';

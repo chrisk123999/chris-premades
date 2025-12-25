@@ -249,6 +249,7 @@
             "Sound": "Sound:",
             "SpecificAnimation": "{option} Animation:",
             "SpellSchools": "Spell Schools:",
+            "Stage": "Stage:",
             "StrandColor": "Strand Color:",
             "SubclassIdentifier": "Subclass Identifier:",
             "SummonerOnly": "Summoner Only:",
@@ -685,6 +686,7 @@
             "Edit": "Edit",
             "Failure": "Failure",
             "Features": "Features",
+            "Four": "Four",
             "Go": "Go",
             "Import": "Import",
             "Items": "Items",
@@ -700,6 +702,7 @@
             "NoType": "No Type",
             "None": "None",
             "Ok": "Ok",
+            "One": "One",
             "Prompt": "Prompt",
             "PromptForTargets": "Prompt for targets:",
             "ProtectWithItem": "Protect {token} with {item}?",
@@ -734,9 +737,11 @@
             "Success": "Success",
             "Summon": "Summon",
             "Target": "Select Target",
+            "Three": "Three",
             "Total": "Total",
             "TurnEnd": "Turn End",
             "TurnStart": "Turn Start",
+            "Two": "Two",
             "Uncontested": "Uncontested",
             "Update": "Update",
             "UseItem": "Use {item}?",
@@ -2586,6 +2591,13 @@
                 "ProfileTwoItems": "Profile #2 Items:",
                 "ProfileTwoTokenImg": "Profile #2 Token Image:",
                 "ProfileTwoTokenImgPriority": "Profile #2 Token Image Priority:"
+            },
+            "Transformations": {
+                "Vampire": {
+                    "FangedBite": {
+                        "HasBlood": "Does the target have blood?"
+                    }
+                }
             },
             "TravelAlongTheTree": {
                 "WillingCreatures": "Select up to six willing creatures:"

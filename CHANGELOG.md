@@ -1,3 +1,9 @@
+# 1.4.6 Release:
+## New Legacy Content:
+- Stage 1 Boon: Fanged Bite
+- Stage 1 Boon: Strigoi Bloodline
+- Stage 1 Flaw: The Sanguine Curse
+
 # 1.4.5 Release:
 ## New Modern Content:
 - I Fought, I Lived
