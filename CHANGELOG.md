@@ -1,3 +1,8 @@
+# 1.4.8 Release:
+## Update Notes:
+- CPR Now requires 5.2.4 of the D&D system.
+- Added token animation options to Form of Dread
+
 # 1.4.7 Release:
 ## Update Notes:
 - Marked previous update features as modern.

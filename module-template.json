@@ -77,8 +77,8 @@
         "id": "dnd5e",
         "type": "system",
         "compatibility": {
-          "minimum": "5.2.3",
-          "verified": "5.2.3",
+          "minimum": "5.2.4",
+          "verified": "5.2.4",
           "maximum": "5.9.9"
         }
       }
@@ -88,7 +88,7 @@
         "id": "midi-qol",
         "type": "module",
         "compatibility": {
-          "minimum": "13.0.30"
+          "minimum": "13.0.32"
         }
       },
       {

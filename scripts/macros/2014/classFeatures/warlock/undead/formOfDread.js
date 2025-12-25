@@ -12,6 +12,11 @@ async function use({workflow}) {
         tokenImg: itemUtils.getConfig(workflow.item, 'tokenImg'),
         avatarImgPriority: itemUtils.getConfig(workflow.item, 'avatarImgPriority'),
         tokenImgPriority: itemUtils.getConfig(workflow.item, 'tokenImgPriority')
+    },
+    {
+        animationPath: itemUtils.getConfig(workflow.item, 'tokenAnimation'),
+        animationSize: itemUtils.getConfig(workflow.item, 'tokenAnimationScale'),
+        animationSound: itemUtils.getConfig(workflow.item, 'tokenAnimationSound')
     });
 }
 async function late({trigger: {entity: effect}, workflow}) {
@@ -69,6 +74,27 @@ export let formOfDread = {
             type: 'number',
             default: 50,
             category: 'visuals'
+        },
+        {
+            value: 'tokenAnimation',
+            label: 'CHRISPREMADES.Config.TokenAnimation',
+            type: 'text',
+            default: '',
+            category: 'animation'
+        },
+        {
+            value: 'tokenAnimationScale',
+            label: 'CHRISPREMADES.Config.TokenAnimationScale',
+            type: 'number',
+            default: 1,
+            category: 'animation'
+        },
+        {
+            value: 'tokenAnimationSound',
+            label: 'CHRISPREMADES.Config.TokenSound',
+            type: 'file',
+            default: '',
+            category: 'animation'
         }
     ]
 };
