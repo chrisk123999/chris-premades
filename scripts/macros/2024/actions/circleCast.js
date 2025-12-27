@@ -9,7 +9,7 @@ async function startRitual({trigger, workflow}) {
     if (!selection) return;
     let types = [];
     if (selection.system.range.value) types.push(['CHRISPREMADES.Macros.CircleSpell.Augment', 'augment']);
-    if (selection.system.properties.has('concentration')) types.push(['CHRISPREMADES.Macros.CircleSpell.Distribute', 'distribute']);
+    //if (selection.system.properties.has('concentration')) types.push(['CHRISPREMADES.Macros.CircleSpell.Distribute', 'distribute']); //Fix this.
     if (selection.system.target.template.size) types.push(['CHRISPREMADES.Macros.CircleSpell.Expand', 'expand']);
     if (['minute', 'hour', 'day', 'week', 'month', 'year'].includes(selection.system.duration.units)) types.push(['CHRISPREMADES.Macros.CircleSpell.Prolong', 'prolong']);
     if (selection.system.target.template.size) types.push(['CHRISPREMADES.Macros.CircleSpell.Safeguard', 'safeguard']);
@@ -217,10 +217,11 @@ async function completeRitual({trigger, workflow}) {
     let items = await itemUtils.createItems(workflow.actor, [itemData], {favorite: true, parentEntity: effect});
     await genericUtils.setFlag(castEffect, 'chris-premades', 'circleCast.complete', true);
     let circleConcentrationEffect = effectUtils.getConcentrationEffect(workflow.actor, workflow.item);
-    if (circleConcentrationEffect) {
-        await genericUtils.setFlag(circleConcentrationEffect, 'dnd5e', 'dependents', []);
-        await genericUtils.remove(circleConcentrationEffect);
-    }
+    // TODO: Fix this
+    // if (circleConcentrationEffect) {
+    //     await genericUtils.setFlag(circleConcentrationEffect, 'dnd5e', 'dependents', []);
+    //     await genericUtils.remove(circleConcentrationEffect);
+    // }
     await workflowUtils.completeItemUse(items[0]);
     await genericUtils.remove(castEffect);
     if (type != 'distribute') return;
@@ -230,7 +231,8 @@ async function completeRitual({trigger, workflow}) {
     let effectImplementation = await ActiveEffect.implementation.fromStatusEffect('concentrating');
     if (!effectImplementation) return;
     let concentrationEffectData = effectImplementation.toObject();
-    genericUtils.setProperty(concentrationEffectData, 'flags.dnd5e.dependents', concentrationEffect.flags.dnd5e.dependents);
+    // TODO: Fix this
+    // genericUtils.setProperty(concentrationEffectData, 'flags.dnd5e.dependents', concentrationEffect.flags.dnd5e.dependents);
     genericUtils.setProperty(concentrationEffectData, 'flags.chris-premades.circleCast.concentration.uuid', items[0].uuid);
     await Promise.all(participants.map(async uuid => {
         let token = await fromUuid(uuid);

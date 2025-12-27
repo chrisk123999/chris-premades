@@ -213,6 +213,7 @@ export {healersKit} from './macros/2024/items/healersKit.js';
 export {unarmedStrike} from './macros/2024/items/misc/unarmedStrike.js';
 export {deckOfIllusions} from './macros/2024/items/trinket/deckOfIllusions.js';
 export {ringOfSpellStoring, ringOfSpellStoringSpell} from './macros/2024/items/trinket/ringOfSpellStoring.js';
+export {orbOfDamara, orbOfDamaraEffect} from './macros/2024/items/trinket/orbOfDamara.js';
 // Feats
 export {alert} from './macros/2024/feats/alert.js';
 export {archery} from './macros/2024/feats/archery.js';
@@ -237,6 +238,10 @@ export {thrownWeaponFighting} from './macros/2024/feats/thrownWeaponFighting.js'
 export {unarmedFighting, unarmedFightingUnarmedStrike} from './macros/2024/feats/unarmedFighting.js';
 export {purpleDragonRook} from './macros/2024/feats/purpleDragonRook.js';
 export {spellfireSpark} from './macros/2024/feats/spellfireSpark.js';
+export {iPiercedTheIllusion} from './macros/2024/feats/iPiercedTheIllusion.js';
+export {iSurvivedToTellTheTale} from './macros/2024/feats/iSurvivedToTellTheTale.js';
+export {iFoughtILived} from './macros/2024/feats/iFoughtILived.js';
+export {vampiresPlaything} from './macros/2024/feats/vampiresPlaything.js';
 // Species Features
 // Aasimar
 export {healingHands} from './macros/2024/speciesFeatures/aasimar/healingHands.js';
@@ -420,6 +425,8 @@ export {pactOfTheChain} from './macros/2024/classFeatures/warlock/invocations/pa
 export {pactOfTheBlade, pactOfTheBladeAttack} from './macros/2024/classFeatures/warlock/invocations/pactOfTheBlade.js';
 export {agonizingBlast} from './macros/2024/classFeatures/warlock/invocations/agonizingBlast.js';
 export {fiendishVigor} from './macros/2024/classFeatures/warlock/invocations/fiendishVigor.js';
+export {devilsSight} from './macros/2024/classFeatures/warlock/invocations/devilsSight.js';
+export {oneWithShadows} from './macros/2024/classFeatures/warlock/invocations/oneWithShadows.js';
 // Monk
 export {martialArts} from './macros/2024/classFeatures/monk/martialArts.js';
 export {unarmoredDefenseMonk} from './macros/2024/classFeatures/monk/unarmoredDefense.js';
@@ -484,3 +491,8 @@ export {pseudodragonSting} from './macros/2024/monsterFeatures/pseudodragon/stin
 export {carrionCrawlerParalyzingTentacles} from './macros/2024/monsterFeatures/carrionCrawler/paralyzingTentacles.js';
 // Night Hag
 export {nightmareHaunting} from './macros/2024/monsterFeatures/nightHag/nightmareHaunting.js';
+// Transformations
+// Vampire
+export {vampireFangedBite} from './macros/2024/transformations/vampire/fangedBite.js';
+export {strigoiBloodline} from './macros/2024/transformations/vampire/strigoiBloodline.js';
+export {sanguineCurse} from './macros/2024/transformations/vampire/sanguineCurse.js';

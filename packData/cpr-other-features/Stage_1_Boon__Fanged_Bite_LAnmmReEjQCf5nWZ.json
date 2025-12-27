@@ -1,0 +1,368 @@
+{
+  "name": "Stage 1 Boon: Fanged Bite",
+  "type": "feat",
+  "img": "icons/skills/wounds/bone-broken-tooth-fang-red.webp",
+  "system": {
+    "activities": {
+      "UtkjvLDVUpc9CA12": {
+        "type": "attack",
+        "_id": "UtkjvLDVUpc9CA12",
+        "sort": 0,
+        "activation": {
+          "type": "action",
+          "override": false,
+          "condition": ""
+        },
+        "consumption": {
+          "scaling": {
+            "allowed": false
+          },
+          "spellSlot": true,
+          "targets": []
+        },
+        "description": {
+          "chatFlavor": ""
+        },
+        "duration": {
+          "units": "inst",
+          "concentration": false,
+          "override": false
+        },
+        "effects": [],
+        "flags": {},
+        "range": {
+          "units": "ft",
+          "override": false,
+          "special": "",
+          "value": "5"
+        },
+        "target": {
+          "template": {
+            "contiguous": false,
+            "units": "ft",
+            "type": ""
+          },
+          "affects": {
+            "choice": false,
+            "type": "creature",
+            "count": "1",
+            "special": ""
+          },
+          "override": false,
+          "prompt": true
+        },
+        "uses": {
+          "spent": 0,
+          "recovery": [],
+          "max": ""
+        },
+        "visibility": {
+          "level": {
+            "min": null,
+            "max": null
+          },
+          "requireAttunement": false,
+          "requireIdentification": false,
+          "requireMagic": false,
+          "identifier": ""
+        },
+        "attack": {
+          "critical": {
+            "threshold": null
+          },
+          "flat": false,
+          "type": {
+            "value": "melee",
+            "classification": ""
+          },
+          "ability": "",
+          "bonus": ""
+        },
+        "damage": {
+          "critical": {
+            "bonus": ""
+          },
+          "includeBase": true,
+          "parts": [
+            {
+              "custom": {
+                "enabled": false,
+                "formula": ""
+              },
+              "number": 1,
+              "denomination": 6,
+              "bonus": "@mod",
+              "types": [
+                "piercing"
+              ],
+              "scaling": {
+                "number": 1
+              }
+            }
+          ]
+        },
+        "useConditionText": "",
+        "useConditionReason": "",
+        "effectConditionText": "",
+        "macroData": {
+          "name": "",
+          "command": ""
+        },
+        "ignoreTraits": {
+          "idi": false,
+          "idr": false,
+          "idv": false,
+          "ida": false,
+          "idm": false
+        },
+        "midiProperties": {
+          "ignoreTraits": [],
+          "triggeredActivityId": "none",
+          "triggeredActivityConditionText": "",
+          "triggeredActivityTargets": "targets",
+          "triggeredActivityRollAs": "self",
+          "autoConsume": false,
+          "forceConsumeDialog": "default",
+          "forceRollDialog": "default",
+          "forceDamageDialog": "default",
+          "confirmTargets": "default",
+          "autoTargetType": "any",
+          "autoTargetAction": "default",
+          "automationOnly": false,
+          "otherActivityCompatible": true,
+          "otherActivityAsParentType": true,
+          "identifier": "",
+          "displayActivityName": false,
+          "rollMode": "default",
+          "chooseEffects": false,
+          "toggleEffect": false,
+          "ignoreFullCover": false,
+          "removeChatButtons": "default",
+          "magicEffect": false,
+          "magicDamage": false,
+          "noConcentrationCheck": false,
+          "autoCEEffects": "none"
+        },
+        "isOverTimeFlag": false,
+        "overTimeProperties": {
+          "saveRemoves": true,
+          "preRemoveConditionText": "",
+          "postRemoveConditionText": ""
+        },
+        "otherActivityId": "",
+        "otherActivityAsParentType": true,
+        "attackMode": "",
+        "ammunition": "",
+        "otherActivityUuid": "",
+        "attackRollPerTarget": "default",
+        "fumbleThreshold": 1,
+        "name": ""
+      },
+      "N1dxohOD7SUUtFPd": {
+        "type": "save",
+        "name": "Blood",
+        "_id": "N1dxohOD7SUUtFPd",
+        "sort": 0,
+        "activation": {
+          "type": "action",
+          "override": false,
+          "condition": ""
+        },
+        "consumption": {
+          "scaling": {
+            "allowed": false
+          },
+          "spellSlot": true,
+          "targets": []
+        },
+        "description": {
+          "chatFlavor": ""
+        },
+        "duration": {
+          "units": "inst",
+          "concentration": false,
+          "override": false
+        },
+        "effects": [],
+        "flags": {},
+        "range": {
+          "units": "spec",
+          "override": false,
+          "special": ""
+        },
+        "target": {
+          "template": {
+            "contiguous": false,
+            "units": "ft",
+            "type": ""
+          },
+          "affects": {
+            "choice": false,
+            "type": "creature",
+            "count": "1",
+            "special": ""
+          },
+          "override": false,
+          "prompt": true
+        },
+        "uses": {
+          "spent": 0,
+          "recovery": [],
+          "max": ""
+        },
+        "visibility": {
+          "level": {
+            "min": null,
+            "max": null
+          },
+          "requireAttunement": false,
+          "requireIdentification": false,
+          "requireMagic": false,
+          "identifier": ""
+        },
+        "damage": {
+          "onSave": "none",
+          "critical": {
+            "allow": false
+          },
+          "parts": []
+        },
+        "save": {
+          "ability": [
+            "con"
+          ],
+          "dc": {
+            "calculation": "",
+            "formula": "8 + @prof + @item.flags.chris-premades.config.stage"
+          }
+        },
+        "useConditionText": "",
+        "useConditionReason": "",
+        "effectConditionText": "",
+        "macroData": {
+          "name": "",
+          "command": ""
+        },
+        "ignoreTraits": {
+          "idi": false,
+          "idr": false,
+          "idv": false,
+          "ida": false,
+          "idm": false
+        },
+        "midiProperties": {
+          "ignoreTraits": [],
+          "triggeredActivityId": "none",
+          "triggeredActivityConditionText": "",
+          "triggeredActivityTargets": "targets",
+          "triggeredActivityRollAs": "self",
+          "autoConsume": false,
+          "forceConsumeDialog": "default",
+          "forceRollDialog": "default",
+          "forceDamageDialog": "default",
+          "confirmTargets": "default",
+          "autoTargetType": "any",
+          "autoTargetAction": "default",
+          "automationOnly": false,
+          "otherActivityCompatible": false,
+          "otherActivityAsParentType": true,
+          "identifier": "",
+          "displayActivityName": true,
+          "rollMode": "default",
+          "chooseEffects": false,
+          "toggleEffect": false,
+          "ignoreFullCover": false,
+          "removeChatButtons": "default",
+          "magicEffect": false,
+          "magicDamage": false,
+          "noConcentrationCheck": false,
+          "autoCEEffects": "none"
+        },
+        "isOverTimeFlag": false,
+        "overTimeProperties": {
+          "saveRemoves": true,
+          "preRemoveConditionText": "",
+          "postRemoveConditionText": ""
+        },
+        "otherActivityId": "",
+        "otherActivityAsParentType": true,
+        "friendlySave": "default"
+      }
+    },
+    "uses": {
+      "spent": 0,
+      "recovery": []
+    },
+    "advancement": [],
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "identifier": "stage-1-boon-fanged-bite",
+    "source": {
+      "revision": 1,
+      "rules": "2024",
+      "book": "",
+      "page": "",
+      "custom": "",
+      "license": ""
+    },
+    "crewed": false,
+    "enchant": {},
+    "prerequisites": {
+      "items": [],
+      "repeatable": false
+    },
+    "properties": [],
+    "requirements": "",
+    "type": {
+      "value": "",
+      "subtype": ""
+    }
+  },
+  "effects": [],
+  "folder": "Xu8gZVI9iyVzXZ72",
+  "flags": {
+    "dnd5e": {
+      "riders": {
+        "activity": [
+          "N1dxohOD7SUUtFPd"
+        ]
+      },
+      "last": {
+        "UtkjvLDVUpc9CA12": {
+          "damageType": {
+            "0": "piercing"
+          }
+        }
+      }
+    },
+    "chris-premades": {
+      "hiddenActivities": [
+        "blood"
+      ],
+      "activityIdentifiers": {
+        "bite": "UtkjvLDVUpc9CA12",
+        "blood": "N1dxohOD7SUUtFPd"
+      },
+      "info": {
+        "identifier": "vampireFangedBite",
+        "source": "chris-premades",
+        "version": "1.4.6",
+        "rules": "modern"
+      },
+      "macros": {
+        "midi": {
+          "item": [
+            "vampireFangedBite"
+          ]
+        }
+      },
+      "config": {
+        "stage": "1"
+      }
+    }
+  },
+  "_id": "LAnmmReEjQCf5nWZ",
+  "_key": "!items!LAnmmReEjQCf5nWZ"
+}

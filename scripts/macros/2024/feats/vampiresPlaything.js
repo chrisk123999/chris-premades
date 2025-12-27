@@ -1,12 +1,32 @@
-import {dash} from '../../actions/dash.js';
-import {disengage} from '../../actions/disengage.js';
-import {hide} from '../../actions/hide.js';
-export let cunningAction = {
-    name: 'Cunning Action',
-    version: '1.3.61',
+import {activityUtils, compendiumUtils, effectUtils, genericUtils, itemUtils} from '../../../utils.js';
+import {dash} from '../actions/dash.js';
+import {disengage} from '../actions/disengage.js';
+async function create({trigger, workflow}) {
+    let packId = genericUtils.getCPRSetting('itemCompendium');
+    if (!game.packs.get(packId)) return;
+    let identifier = activityUtils.getIdentifier(workflow.activity);
+    let itemName = identifier === 'potion' ? 'Potion of Healing' : 'Antitoxin';
+    let item = await compendiumUtils.getItemFromCompendium(packId, itemName, {object: true});
+    if (!item) return;
+    let effect = effectUtils.getEffectByIdentifier(workflow.actor, 'vampiresPlaythingDecanting');
+    if (!effect) return;
+    await itemUtils.createItems(workflow.actor, [item], {parentEntity: effect});
+    let otherActivityName = identifier === 'potion' ? 'antitoxin' : 'potion';
+    let otherActivity = activityUtils.getActivityByIdentifier(workflow.item, otherActivityName, {strict: true});
+    await genericUtils.update(otherActivity, {'uses.spent': otherActivity.uses.spent + 1});
+}
+export let vampiresPlaything = {
+    name: 'Vampire\'s Plaything',
+    version: '1.4.5',
     rules: 'modern',
     midi: {
         item: [
+            {
+                pass: 'rollFinished',
+                macro: create,
+                priority: 50,
+                activities: ['potion', 'antitoxin']
+            },
             {
                 pass: 'rollFinished',
                 macro: dash.midi.item[0].macro,
@@ -18,12 +38,6 @@ export let cunningAction = {
                 macro: disengage.midi.item[0].macro,
                 priority: 50,
                 activities: ['disengage']
-            },
-            {
-                pass: 'rollFinished',
-                macro: hide.midi.item[0].macro,
-                priority: 50,
-                activities: ['hide']
             }
         ]
     },

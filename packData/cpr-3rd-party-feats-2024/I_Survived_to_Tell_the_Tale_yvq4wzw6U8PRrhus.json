@@ -1,0 +1,411 @@
+{
+  "name": "I Survived to Tell the Tale",
+  "type": "feat",
+  "effects": [
+    {
+      "name": "I Survived to Tell the Tale",
+      "statuses": [],
+      "changes": [
+        {
+          "key": "system.attributes.movement.walk",
+          "value": "10",
+          "mode": 2,
+          "priority": 9
+        }
+      ],
+      "duration": {
+        "seconds": null,
+        "startTime": 214770,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null,
+        "combat": null
+      },
+      "tint": "#ffffff",
+      "transfer": true,
+      "disabled": false,
+      "flags": {
+        "dae": {
+          "showIcon": false,
+          "transfer": true,
+          "stackable": "noneNameOnly",
+          "disableCondition": "",
+          "disableIncapacitated": false,
+          "durationExpression": "",
+          "macroRepeat": "none",
+          "specialDuration": []
+        },
+        "ddbimporter": {
+          "disabled": false,
+          "passive": true,
+          "itemId": 2075868,
+          "itemEntityTypeId": 1088085227
+        },
+        "midi-qol": {
+          "forceCEOff": true
+        },
+        "core": {
+          "overlay": false
+        },
+        "dnd5e": {
+          "riders": {
+            "statuses": []
+          }
+        }
+      },
+      "description": "",
+      "_id": "YVqN5aec7fOeY0oz",
+      "img": "icons/magic/control/silhouette-hold-beam-blue.webp",
+      "type": "base",
+      "system": {},
+      "origin": "Compendium.world.cpr-3rd-party-feats-2024.Item.yvq4wzw6U8PRrhus",
+      "sort": 0,
+      "_key": "!items.effects!yvq4wzw6U8PRrhus.YVqN5aec7fOeY0oz"
+    }
+  ],
+  "system": {
+    "activities": {
+      "utilityInsTSfNe0": {
+        "name": "Instinct to Survive",
+        "type": "utility",
+        "_id": "utilityInsTSfNe0",
+        "sort": 0,
+        "activation": {
+          "type": "special",
+          "value": 1,
+          "condition": "",
+          "override": false
+        },
+        "consumption": {
+          "targets": [
+            {
+              "type": "itemUses",
+              "value": "1",
+              "target": "",
+              "scaling": {}
+            }
+          ],
+          "scaling": {
+            "allowed": false,
+            "max": ""
+          },
+          "spellSlot": true
+        },
+        "description": {
+          "chatFlavor": ""
+        },
+        "duration": {
+          "units": "inst",
+          "special": "",
+          "concentration": false,
+          "override": false
+        },
+        "effects": [],
+        "flags": {},
+        "range": {
+          "units": "self",
+          "special": "",
+          "override": false
+        },
+        "target": {
+          "prompt": true,
+          "affects": {
+            "count": "",
+            "type": "self",
+            "choice": false,
+            "special": ""
+          },
+          "template": {
+            "count": "",
+            "contiguous": false,
+            "type": "",
+            "size": "",
+            "width": "",
+            "height": "",
+            "units": "ft"
+          },
+          "override": false
+        },
+        "uses": {
+          "spent": 0,
+          "recovery": [],
+          "max": ""
+        },
+        "visibility": {
+          "level": {
+            "min": null,
+            "max": null
+          },
+          "requireAttunement": false,
+          "requireIdentification": false,
+          "requireMagic": false,
+          "identifier": ""
+        },
+        "roll": {
+          "prompt": false,
+          "visible": false,
+          "name": "",
+          "formula": ""
+        },
+        "useConditionText": "",
+        "useConditionReason": "",
+        "effectConditionText": "",
+        "macroData": {
+          "name": "",
+          "command": ""
+        },
+        "ignoreTraits": {
+          "idi": false,
+          "idr": false,
+          "idv": false,
+          "ida": false,
+          "idm": false
+        },
+        "midiProperties": {
+          "ignoreTraits": [],
+          "triggeredActivityId": "none",
+          "triggeredActivityConditionText": "",
+          "triggeredActivityTargets": "targets",
+          "triggeredActivityRollAs": "self",
+          "confirmTargets": "default",
+          "automationOnly": false,
+          "identifier": "",
+          "autoConsume": false,
+          "forceConsumeDialog": "default",
+          "forceRollDialog": "default",
+          "forceDamageDialog": "default",
+          "autoTargetType": "any",
+          "autoTargetAction": "default",
+          "otherActivityCompatible": false,
+          "otherActivityAsParentType": true,
+          "displayActivityName": false,
+          "rollMode": "default",
+          "chooseEffects": false,
+          "toggleEffect": false,
+          "ignoreFullCover": false,
+          "removeChatButtons": "default",
+          "magicEffect": false,
+          "magicDamage": false,
+          "noConcentrationCheck": false,
+          "autoCEEffects": "none"
+        },
+        "isOverTimeFlag": false,
+        "overTimeProperties": {
+          "saveRemoves": true,
+          "preRemoveConditionText": "",
+          "postRemoveConditionText": ""
+        },
+        "otherActivityId": "none",
+        "otherActivityAsParentType": true
+      },
+      "utilityWriFrfNe1": {
+        "name": "Wriggle Free",
+        "type": "utility",
+        "_id": "utilityWriFrfNe1",
+        "sort": 0,
+        "activation": {
+          "type": "special",
+          "value": 1,
+          "condition": "",
+          "override": false
+        },
+        "consumption": {
+          "targets": [],
+          "scaling": {
+            "allowed": false,
+            "max": ""
+          },
+          "spellSlot": true
+        },
+        "description": {
+          "chatFlavor": ""
+        },
+        "duration": {
+          "units": "inst",
+          "special": "",
+          "concentration": false,
+          "override": false
+        },
+        "effects": [],
+        "flags": {},
+        "range": {
+          "units": "self",
+          "special": "",
+          "override": false
+        },
+        "target": {
+          "prompt": true,
+          "affects": {
+            "count": "",
+            "type": "self",
+            "choice": false,
+            "special": ""
+          },
+          "template": {
+            "count": "",
+            "contiguous": false,
+            "type": "",
+            "size": "",
+            "width": "",
+            "height": "",
+            "units": "ft"
+          },
+          "override": false
+        },
+        "uses": {
+          "spent": 0,
+          "recovery": [],
+          "max": ""
+        },
+        "visibility": {
+          "level": {
+            "min": null,
+            "max": null
+          },
+          "requireAttunement": false,
+          "requireIdentification": false,
+          "requireMagic": false,
+          "identifier": ""
+        },
+        "roll": {
+          "prompt": false,
+          "visible": false,
+          "name": "",
+          "formula": "1d20"
+        },
+        "useConditionText": "",
+        "useConditionReason": "",
+        "effectConditionText": "",
+        "macroData": {
+          "name": "",
+          "command": ""
+        },
+        "ignoreTraits": {
+          "idi": false,
+          "idr": false,
+          "idv": false,
+          "ida": false,
+          "idm": false
+        },
+        "midiProperties": {
+          "ignoreTraits": [],
+          "triggeredActivityId": "none",
+          "triggeredActivityConditionText": "",
+          "triggeredActivityTargets": "targets",
+          "triggeredActivityRollAs": "self",
+          "confirmTargets": "default",
+          "automationOnly": false,
+          "identifier": "",
+          "autoConsume": false,
+          "forceConsumeDialog": "default",
+          "forceRollDialog": "default",
+          "forceDamageDialog": "default",
+          "autoTargetType": "any",
+          "autoTargetAction": "default",
+          "otherActivityCompatible": false,
+          "otherActivityAsParentType": true,
+          "displayActivityName": false,
+          "rollMode": "default",
+          "chooseEffects": false,
+          "toggleEffect": false,
+          "ignoreFullCover": false,
+          "removeChatButtons": "default",
+          "magicEffect": false,
+          "magicDamage": false,
+          "noConcentrationCheck": false,
+          "autoCEEffects": "none"
+        },
+        "isOverTimeFlag": false,
+        "overTimeProperties": {
+          "saveRemoves": true,
+          "preRemoveConditionText": "",
+          "postRemoveConditionText": ""
+        },
+        "otherActivityId": "none",
+        "otherActivityAsParentType": true
+      }
+    },
+    "uses": {
+      "spent": 1,
+      "max": "1",
+      "recovery": [
+        {
+          "period": "lr",
+          "type": "recoverAll"
+        }
+      ]
+    },
+    "advancement": [],
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "identifier": "i-survived-to-tell-the-tale",
+    "source": {
+      "book": "CtbT",
+      "page": "",
+      "license": "",
+      "custom": "",
+      "rules": "2024",
+      "revision": 1
+    },
+    "crewed": false,
+    "enchant": {},
+    "prerequisites": {
+      "items": [],
+      "repeatable": false
+    },
+    "properties": [],
+    "requirements": "",
+    "type": {
+      "value": "feat",
+      "subtype": "origin"
+    }
+  },
+  "flags": {
+    "dae": {
+      "alwaysActive": false,
+      "activeEquipped": false
+    },
+    "midi-qol": {
+      "removeAttackDamageButtons": "default",
+      "forceCEOff": true
+    },
+    "midiProperties": {
+      "confirmTargets": "default"
+    },
+    "dnd5e": {
+      "riders": {
+        "activity": []
+      }
+    },
+    "chris-premades": {
+      "hiddenActivities": [],
+      "activityIdentifiers": {
+        "survive": "utilityInsTSfNe0",
+        "grappled": "utilityWriFrfNe1"
+      },
+      "info": {
+        "identifier": "iSurvivedToTellTheTale",
+        "rules": "modern",
+        "source": "chris-premades",
+        "version": "1.4.5"
+      },
+      "macros": {
+        "midi": {
+          "item": [
+            "iSurvivedToTellTheTale"
+          ],
+          "actor": [
+            "iSurvivedToTellTheTale"
+          ]
+        }
+      }
+    }
+  },
+  "img": "icons/magic/control/silhouette-hold-beam-blue.webp",
+  "folder": null,
+  "_id": "yvq4wzw6U8PRrhus",
+  "_key": "!items!yvq4wzw6U8PRrhus"
+}

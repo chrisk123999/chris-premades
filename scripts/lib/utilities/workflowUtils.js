@@ -241,15 +241,11 @@ async function handleInstantTemplate(workflow) {
         let effectData = {
             name: templateEffectName,
             img: workflow.item.img,
-            origin: workflow.item.uuid,
-            flags: {
-                dnd5e: {
-                    dependents: [{uuid: workflow.template.uuid}]
-                }
-            }
+            origin: workflow.item.uuid
         };
         effectUtils.addMacro(effectData, 'combat', ['removeTemplate']);
-        await effectUtils.createEffect(workflow.actor, effectData);
+        let effect = await effectUtils.createEffect(workflow.actor, effectData);
+        await effectUtils.addDependent(effect, [workflow.template]);
     }
 }
 function getCastData(workflow) {

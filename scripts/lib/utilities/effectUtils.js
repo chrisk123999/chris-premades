@@ -40,12 +40,6 @@ async function createEffect(entity, effectData, {concentrationItem, parentEntity
     if (parentEntity) genericUtils.setProperty(effectData, 'flags.chris-premades.parentEntityUuid', parentEntity.uuid);
     if (concentrationEffect) genericUtils.setProperty(effectData, 'flags.chris-premades.concentrationEffectUuid', concentrationEffect.uuid);
     if (interdependent && (parentEntity || concentrationItem)) genericUtils.setProperty(effectData, 'flags.chris-premades.interdependent', true);
-    if (strictlyInterdependent) {
-        let existingDependents = effectData.flags?.dnd5e?.dependents ?? [];
-        if (parentEntity) existingDependents.push({uuid: parentEntity.uuid});
-        if (concentrationEffect) existingDependents.push({uuid: concentrationEffect.uuid});
-        if (existingDependents.length) genericUtils.setProperty(effectData, 'flags.dnd5e.dependents', existingDependents);
-    }
     if (vae) genericUtils.setProperty(effectData, 'flags.chris-premades.vae.buttons', vae);
     if (rules) genericUtils.setProperty(effectData, 'flags.chris-premades.rules', rules);
     if (macros) macros.forEach(i => addMacro(effectData, i.type, i.macros));
@@ -67,6 +61,15 @@ async function createEffect(entity, effectData, {concentrationItem, parentEntity
     } else {
         effects = [await socket.executeAsGM(sockets.createEffect.name, entity.uuid, effectData, {concentrationItemUuid: concentrationItem?.uuid, parentEntityUuid: parentEntity?.uuid, keepId})];
         effects = await Promise.all(effects.map(async i => await fromUuid(i)));
+    }
+    if (strictlyInterdependent) {
+        if (concentrationEffect) {
+            await genericUtils.setFlag(concentrationEffect, 'dnd5e', 'dependentOn', effects[0].uuid);
+            await genericUtils.setFlag(effects[0], 'dnd5e', 'dependentOn', concentrationEffect.uuid);
+        } else if (parentEntity) {
+            await genericUtils.setFlag(parentEntity, 'dnd5e', 'dependentOn', effects[0].uuid),
+            await genericUtils.setFlag(effects[0], 'dnd5e', 'dependentOn', parentEntity.uuid);
+        }
     }
     if ((animationPath || animationSound) && effects.length) {
         let token = actorUtils.getFirstToken(effects[0].parent);
@@ -96,7 +99,7 @@ async function createEffects(entity, effectDataArray, effectOptionsArray) {
     let concentrationEffects = [];
     for (let i = 0; i < effectDataArray.length; i++) {
         let effectData = effectDataArray[i];
-        let {concentrationItem, parentEntity, identifier, vae, interdependent, strictlyInterdependent} = effectOptionsArray[i];
+        let {concentrationItem, parentEntity, identifier, vae, interdependent} = effectOptionsArray[i];
         let concentrationEffect;
         if (concentrationItem) concentrationEffect = getConcentrationEffect(concentrationItem.actor, concentrationItem);
         if (identifier) genericUtils.setProperty(effectData, 'flags.chris-premades.info.identifier', identifier);
@@ -104,12 +107,6 @@ async function createEffects(entity, effectDataArray, effectOptionsArray) {
         if (concentrationEffect) genericUtils.setProperty(effectData, 'flags.chris-premades.concentrationEffectUuid', concentrationEffect.uuid);
         if (interdependent && (parentEntity || concentrationItem)) genericUtils.setProperty(effectData, 'flags.chris-premades.interdependent', true);
         if (vae) genericUtils.setProperty(effectData, 'flags.chris-premades.vae.buttons', vae);
-        if (strictlyInterdependent) {
-            let existingDependents = effectData.flags?.dnd5e?.dependents ?? [];
-            if (parentEntity) existingDependents.push({uuid: parentEntity.uuid});
-            if (concentrationEffect) existingDependents.push({uuid: concentrationEffect.uuid});
-            if (existingDependents.length) genericUtils.setProperty(effectData, 'flags.dnd5e.dependents', existingDependents);
-        }
         concentrationEffects.push(concentrationEffect);
     }
     let effects;
@@ -123,12 +120,26 @@ async function createEffects(entity, effectDataArray, effectOptionsArray) {
         effects = await socket.executeAsGM(sockets.createEffects.name, entity.uuid, effectDataArray, {concentrationItemUuidArray: effectOptionsArray.map(i => i.concentrationItem?.uuid), parentEntityUuidArray: effectOptionsArray.map(i => i.parentEntity?.uuid)});
         effects = await Promise.all(effects.map(async i => await fromUuid(i)));
     }
+    for (let i = 0; i < effects.length; i++) {
+        let effect = effects[i];
+        let {parentEntity, strictlyInterdependent} = effectOptionsArray[i];
+        let concentrationEffect = concentrationEffects[i];
+        if (strictlyInterdependent) {
+            if (concentrationEffect) {
+                await genericUtils.setFlag(effect, 'dnd5e', 'dependentOn', concentrationEffect.uuid);
+                await genericUtils.setFlag(concentrationEffect, 'dnd5e', 'dependentOn', effect.uuid);
+            } else if (parentEntity) {
+                await genericUtils.setFlag(effect, 'dnd5e', 'dependentOn', parentEntity.uuid);
+                await genericUtils.setFlag(parentEntity, 'dnd5e', 'dependentOn', effect.uuid);
+            }
+        }
+    }
     if (effects?.length) return effects;
 }
 async function addDependent(entity, dependents) {
-    let hasPermission = socketUtils.hasPermission(entity, game.user.id);
+    let hasPermission = dependents.map(i => socketUtils.hasPermission(i, game.user.id)).some(i => !i);
     if (hasPermission) {
-        await entity.addDependent(...dependents);
+        await Promise.all(dependents.map(i => i.setFlag('dnd5e', 'dependentOn', entity.uuid)));
     } else {
         socket.executeAsGM(sockets.addDependent.name, entity.uuid, dependents.map(i => i.uuid));
     }

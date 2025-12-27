@@ -77,8 +77,8 @@
         "id": "dnd5e",
         "type": "system",
         "compatibility": {
-          "minimum": "5.1.10",
-          "verified": "5.1.10",
+          "minimum": "5.2.4",
+          "verified": "5.2.4",
           "maximum": "5.9.9"
         }
       }
@@ -88,7 +88,7 @@
         "id": "midi-qol",
         "type": "module",
         "compatibility": {
-          "minimum": "13.0.19"
+          "minimum": "13.0.32"
         }
       },
       {
@@ -102,14 +102,14 @@
         "id": "dae",
         "type": "module",
         "compatibility": {
-          "minimum": "13.0.4"
+          "minimum": "13.0.17"
         }
       },
       {
         "id": "times-up",
         "type": "module",
         "compatibility": {
-          "minimum": "13.1.0"
+          "minimum": "13.1.2"
         }
       }
     ]
@@ -352,6 +352,13 @@
       "path": "packs/cpr-other-features",
       "type": "Item",
       "module": "chris-premades"
+    },
+    {
+      "name": "CPRThirdPartyFeats2024",
+      "label": "CPR 3rd Party Feats (2024)",
+      "path": "packs/cpr-3rd-party-feats-2024",
+      "type": "Item",
+      "module": "chris-premades"
     }
   ],
   "packFolders": [
@@ -401,7 +408,8 @@
             "CPRThirdPartyClassFeatures2024",
             "CPRMonsterFeatures2024",
             "CPRThirdPartySpells2024",
-            "CPRSpeciesFeatures2024"
+            "CPRSpeciesFeatures2024",
+            "CPRThirdPartyFeats2024"
           ]
         }
       ],

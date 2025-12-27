@@ -1,33 +1,46 @@
-import {dash} from '../../actions/dash.js';
-import {disengage} from '../../actions/disengage.js';
+import {activityUtils, genericUtils, itemUtils, rollUtils} from '../../../../utils.js';
 import {hide} from '../../actions/hide.js';
-export let cunningAction = {
-    name: 'Cunning Action',
-    version: '1.3.61',
+async function damage({trigger: {entity: item}, workflow}) {
+    if (!workflow.item || !workflow.activity || !workflow.advantage || workflow.disadvantage) return;
+    let identifier = genericUtils.getIdentifier(workflow.item);
+    if (identifier != 'vampireFangedBite') return;
+    let activityIdentifier = activityUtils.getIdentifier(workflow.activity);
+    if (activityIdentifier != 'bite') return;
+    let formula = itemUtils.getConfig(item, 'formula');
+    if (workflow.isCritical) formula = await rollUtils.getCriticalFormula(formula, workflow.activity.getRollData());
+    workflow.damageRolls[0] = await rollUtils.damageRoll(formula, workflow.activity);
+    await workflow.setDamageRolls(workflow.damageRolls);
+}
+export let strigoiBloodline = {
+    name: 'Stage 1 Boon: Strigoi Bloodline',
+    version: '1.4.6',
     rules: 'modern',
     midi: {
         item: [
-            {
-                pass: 'rollFinished',
-                macro: dash.midi.item[0].macro,
-                priority: 50,
-                activities: ['dash']
-            },
-            {
-                pass: 'rollFinished',
-                macro: disengage.midi.item[0].macro,
-                priority: 50,
-                activities: ['disengage']
-            },
             {
                 pass: 'rollFinished',
                 macro: hide.midi.item[0].macro,
                 priority: 50,
                 activities: ['hide']
             }
+        ],
+        actor: [
+            {
+                pass: 'damageRollComplete',
+                macro: damage,
+                priority: 200
+            }
         ]
     },
     config: [
+        {
+            value: 'formula',
+            label: 'CHRISPREMADES.Config.Formula',
+            type: 'text',
+            default: '2d4',
+            category: 'homebrew',
+            homebrew: true
+        },
         {
             value: 'playAnimation',
             label: 'CHRISPREMADES.Config.PlayAnimation',

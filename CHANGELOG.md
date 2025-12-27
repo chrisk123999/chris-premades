@@ -1,3 +1,58 @@
+# 1.4.8 Release:
+## Update Notes:
+- CPR Now requires 5.2.4 of the D&D system.
+- Added token animation options to Form of Dread
+
+# 1.4.7 Release:
+## Update Notes:
+- Marked previous update features as modern.
+
+# 1.4.6 Release:
+## New Modern Content:
+- Stage 1 Boon: Fanged Bite
+- Stage 1 Boon: Strigoi Bloodline
+- Stage 1 Flaw: The Sanguine Curse
+
+# 1.4.5 Release:
+## New Modern Content:
+- I Fought, I Lived
+- I Pierced the Illusion
+- I Survived to Tell the Tale
+- Vampire's Plaything
+## Bug Fixes:
+- Cunning Action
+- Form of Dread
+
+# 1.4.4 Release:
+## New Modern Content:
+- Eldritch Invocations: Devil's Sight
+- Eldritch Invocations: One with Shadows
+## Bug Fixes:
+- Form of Dread
+## Update Notes:
+- If you were using a custom image for your form of dread, you'll want to set it again in the medkit config.
+
+# 1.4.3 Release:
+## Bug Fixes:
+- Moonbeam (Modern)
+
+# 1.4.2 Release:
+## New Modern Content:
+- Orb of Damara
+## Bug Fixes:
+- Item DC checks will now properly take into account cast activities overwriting the save DC on spells.
+- Shield Guardian: Spell Storing
+- Aura of Vitality
+
+# 1.4.1 Release:
+## Update Notes:
+- CPR now requires 5.2.3 of the D&D system.
+- Circle casting currently has the "Distribute" option disabled until a solution can be found to make it work again. This is due to a change in the D&D system.
+## Bug Fixes:
+- Vex Mastery
+- Pact of the Blade (Modern)
+- Aura of Protection
+
 # 1.3.168 Release:
 ## Bug Fixes:
 - Celestial Revelation (Modern)

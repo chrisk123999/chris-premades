@@ -55,6 +55,7 @@ async function use({trigger, workflow}) {
         type: 'itemUses',
         value: '1'
     }];
+    spellData.system.method = 'innate';
     let castLevel = spellData.system.level;
     if (originalSpell.system.level != 0) {
         if (['prepared', 'always', 'pact'].includes(spellData.system.method)) {

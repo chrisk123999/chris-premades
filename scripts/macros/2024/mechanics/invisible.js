@@ -1,4 +1,4 @@
-import {constants, tokenUtils, workflowUtils} from '../../../utils.js';
+import {tokenUtils, workflowUtils} from '../../../utils.js';
 async function attacked({trigger, workflow}) {
     if (!workflow.targets.size || !workflowUtils.isAttackType(workflow, 'attack') || !workflow.token) return;
     if (tokenUtils.canSense(workflow.targets.first(), workflow.token, ['feelTremor', 'seeInvisbility', 'blindsight', 'seeAll', 'senseAll', 'senseInvisibility'])) return;

@@ -3,7 +3,7 @@ async function create({trigger: {entity: item, target, identifier}}) {
     if (itemUtils.getConfig(item, 'combatOnly') && !combatUtils.inCombat()) return;
     let targetEffect = effectUtils.getEffectByIdentifier(target.actor, identifier);
     if (targetEffect) {
-        if (targetEffect.orgin === item.uuid) return;
+        if (targetEffect.origin === item.uuid) return;
         await genericUtils.remove(targetEffect);
     }
     let ability = itemUtils.getConfig(item, 'ability');

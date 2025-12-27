@@ -12,9 +12,6 @@ async function use({workflow}) {
             img: workflow.item.img,
             origin: workflow.item.uuid,
             flags: {
-                dnd5e: {
-                    dependents: [{uuid: workflow.template.uuid}]
-                },
                 dae: {
                     specialDuration: [
                         'shortRest',
@@ -23,7 +20,8 @@ async function use({workflow}) {
                 }
             }
         };
-        await effectUtils.createEffect(workflow.actor, effectData);
+        let effect = await effectUtils.createEffect(workflow.actor, effectData);
+        await effectUtils.addDependent(effect, [workflow.template]);
     }
     await genericUtils.update(workflow.template, {
         flags: {

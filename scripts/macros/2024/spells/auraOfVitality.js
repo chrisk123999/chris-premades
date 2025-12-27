@@ -22,7 +22,7 @@ async function use({trigger, workflow}) {
             {type: 'combat', macros: ['auraOfVitalityEffect']}
         ]
     });
-    let nearbyTokens = tokenUtils.findNearby(trigger.token, workflow.item.system.target.template.size, 'ally', {includeToken: true});
+    let nearbyTokens = tokenUtils.findNearby(trigger.token, workflow.item.system.target.template.size, 'ally', {includeToken: true, includeIncapacitated: true});
     if (!nearbyTokens.length) return;
     let selection;
     if (nearbyTokens.length === 1) {
@@ -38,7 +38,7 @@ async function use({trigger, workflow}) {
 }
 async function turnStart({trigger}) {
     let range = trigger.entity.flags['chris-premades']?.auraOfVitality?.range ?? genericUtils.convertDistance(30);
-    let nearbyTokens = tokenUtils.findNearby(trigger.token, range, 'ally', {includeToken: true});
+    let nearbyTokens = tokenUtils.findNearby(trigger.token, range, 'ally', {includeToken: true, includeIncapacitated: true});
     if (!nearbyTokens.length) return;
     let selection;
     if (nearbyTokens.length === 1) {

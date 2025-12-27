@@ -36,6 +36,7 @@ async function conjure({trigger, workflow}) {
     delete itemData._id;
     itemData.system.properties.push('mgc');
     itemData.system.equipped = true;
+    itemData.system.proficient = 1;
     itemData.name += ' (' + genericUtils.translate('CHRISPREMADES.Macros.PactOfTheBlade.Name') + ')';
     effectUtils.addMacro(itemData, 'midi.item', ['pactOfTheBladeAttack']);
     genericUtils.setProperty(itemData, 'system.source.rules', '2024');

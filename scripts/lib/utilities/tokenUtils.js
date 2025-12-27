@@ -300,9 +300,7 @@ async function grappleHelper(sourceToken, targetToken, item, {noContest = false,
                 }
             }
         });
-        let existingDependents = targetEffect.flags?.dnd5e?.dependents ?? [];
-        existingDependents.push({uuid: sourceEffect.uuid});
-        await genericUtils.setFlag(targetEffect, 'dnd5e', 'dependents', existingDependents);
+        await effectUtils.addDependent(targetEffect, [sourceEffect]);
         await effectUtils.addDependent(sourceEffect, [targetEffect]);
     }
     let escapeItem = itemUtils.getItemByIdentifier(targetToken.actor, 'grappleEscape');

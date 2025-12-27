@@ -1,0 +1,137 @@
+{
+  "name": "Eldritch Invocations: Devil's Sight",
+  "type": "feat",
+  "effects": [
+    {
+      "name": "Devil's Sight",
+      "origin": "Compendium.world.cpr-class-features.Item.T5ocL8WMnSneDZ4R",
+      "duration": {
+        "rounds": null,
+        "startTime": 1416,
+        "seconds": null,
+        "combat": null,
+        "turns": null,
+        "startRound": 237,
+        "startTurn": 6
+      },
+      "disabled": false,
+      "flags": {
+        "dnd5e": {},
+        "dae": {
+          "disableCondition": "",
+          "disableIncapacitated": false,
+          "stackable": "noneName",
+          "showIcon": false,
+          "durationExpression": "",
+          "macroRepeat": "none",
+          "specialDuration": []
+        },
+        "core": {
+          "overlay": false
+        }
+      },
+      "img": "icons/magic/perception/silhouette-stealth-shadow.webp",
+      "_id": "rUEjGG86zp4AAKkz",
+      "type": "base",
+      "system": {},
+      "changes": [
+        {
+          "key": "flags.chris-premades.senses.magicalDarkness",
+          "mode": 4,
+          "value": "120",
+          "priority": 20
+        }
+      ],
+      "description": "",
+      "tint": "#ffffff",
+      "transfer": true,
+      "statuses": [],
+      "sort": 0,
+      "_key": "!items.effects!vkQgItvEumCYbSeh.rUEjGG86zp4AAKkz"
+    }
+  ],
+  "system": {
+    "activities": {},
+    "uses": {
+      "spent": 0,
+      "recovery": [],
+      "max": ""
+    },
+    "advancement": [],
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "identifier": "eldritch-invocations-devils-sight",
+    "source": {
+      "book": "PHB 2024",
+      "page": "",
+      "license": "",
+      "custom": "",
+      "rules": "2024",
+      "revision": 1
+    },
+    "crewed": false,
+    "enchant": {},
+    "prerequisites": {
+      "items": [],
+      "level": null,
+      "repeatable": false
+    },
+    "properties": [],
+    "requirements": "",
+    "type": {
+      "value": "class",
+      "subtype": "eldritchInvocation"
+    }
+  },
+  "flags": {
+    "dnd5e": {
+      "advancementOrigin": "c1GyYwB54XsaHpI8",
+      "riders": {
+        "activity": []
+      }
+    },
+    "chris-premades": {
+      "info": {
+        "name": "Eldritch Invocations: Devil's Sight",
+        "identifier": "devilsSight",
+        "version": "1.4.4",
+        "rules": "modern",
+        "source": "chris-premades"
+      }
+    },
+    "core": {},
+    "midiProperties": {
+      "confirmTargets": "default",
+      "autoFailFriendly": false,
+      "autoSaveFriendly": false,
+      "critOther": false,
+      "offHandWeapon": false,
+      "magicdam": false,
+      "magiceffect": false,
+      "noConcentrationCheck": false,
+      "toggleEffect": false,
+      "ignoreTotalCover": false,
+      "idr": false,
+      "idi": false,
+      "idv": false,
+      "ida": false
+    },
+    "midi-qol": {
+      "rollAttackPerTarget": "default",
+      "itemCondition": "",
+      "effectCondition": "",
+      "AoETargetType": "any",
+      "AoETargetTypeIncludeSelf": true,
+      "autoTarget": "default",
+      "removeAttackDamageButtons": "default",
+      "reactionCondition": "",
+      "otherCondition": ""
+    }
+  },
+  "img": "icons/magic/perception/silhouette-stealth-shadow.webp",
+  "folder": "ZvOw98M7HI0Bf0L2",
+  "_id": "vkQgItvEumCYbSeh",
+  "_key": "!items!vkQgItvEumCYbSeh"
+}

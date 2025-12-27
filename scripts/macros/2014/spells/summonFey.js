@@ -119,7 +119,7 @@ async function late({workflow}) {
                 }
             }
         });
-        let effect = workflow.actor.effects.find(i => i.flags?.dnd5e?.dependents?.map(j => j.uuid)?.includes(template.uuid));
+        let effect = workflow.actor.effects.find(i => i.getDependents().map(j => j.uuid)?.includes(template.uuid));
         if (effect) await genericUtils.update(effect, {'duration.turns': 1});
         if (itemUtils.getConfig(workflow.item, 'useRealDarkness')) {
             let offset = (template.width / 2) * canvas.grid.size / canvas.grid.distance;

@@ -121,6 +121,7 @@ async function topple({workflow}) {
     await workflowUtils.syntheticItemDataRoll(featureData, workflow.actor, [workflow.targets.first()]);
 }
 async function vex({workflow}) {
+    if (!workflow.damageItem) return;
     if (!workflow.hitTargets.size || (workflow.damageItem.oldHP === workflow.damageItem.newHP && workflow.damageItem.oldTempHP === workflow.damageItem.newTempHP)) return;
     let effectData = {
         changes: [

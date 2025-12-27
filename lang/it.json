@@ -1554,9 +1554,26 @@
             "MistyStep": {
                 "Name": "Passo Velato"
             },
+            "MistyWanderer": {
+                "TeleportFriend": "Teletrasportare un alleato consenziente?",
+                "Range": "Gittata Misty Wanderer"
+            },
             "Moonbeam": {
                 "Damage": "Raggio di Luna: Danno",
                 "Move": "Raggio di Luna: Sposta"
+            },
+            "MoonlightStep": {
+                "TeleportFriend": "Teletrasportare un alleato consenziente??"
+            },
+            "Mount": {
+                "MountedRider": "Mounted (Rider)",
+                "MountedTarget": "Mounted (Target)",
+                "Rideable": "Il modulo \"Rideable\" è richiesto per utilizzare questa funzionalità!"
+            },
+            "MovementBonusActivity": {
+                "Distance": "Distanza richiesta (ft):",
+                "Name": "Attività Bonus Movimento",
+                "ReplaceDamageFormula": "Sostituisci Formula Danno:"
             },
             "Mutagencraft": {
                 "AttackSunlight": "Sia {sourceTokenName} che {targetTokenName} sono alla luce diretta del sole?",
@@ -2851,7 +2868,7 @@
         "SkillCheck": {
             "Title": "Prova di Abilità"
         },
-        "SkipDeadAndUnconscious": "Ignora Morti e Inconsci?",
+        "SkipDeadAndUnconscious": "Ignora Morti e Privi di Sensi?",
         "SneakAttack": {
             "Auto": "Usa Automaticamente:"
         },
@@ -3080,3 +3097,4 @@
     },
     "dae.fieldData.fieldCategories.CPR": "CPR"
 }
+

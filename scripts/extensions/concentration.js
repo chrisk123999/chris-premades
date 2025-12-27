@@ -10,7 +10,7 @@ async function preRemove(effect, options, userId) {
         return actorUtils.getEffects(t.actor).find(e => e.flags['chris-premades']?.circleCast?.concentration?.uuid === circleCastUuid);
     });
     if (!otherToken) return;
-    effect.updateSource({'flags.dnd5e.dependents': []});
+    // effect.updateSource({'flags.dnd5e.dependents': []});
 }
 export let concentration = {
     preRemove

@@ -74,14 +74,10 @@ async function early({workflow}) {
         name: workflow.item.name,
         img: workflow.item.img,
         origin: workflow.item.uuid,
-        duration: itemUtils.convertDuration(workflow.item),
-        flags: {
-            dnd5e: {
-                dependents: [{uuid: template.uuid}]
-            }
-        }
+        duration: itemUtils.convertDuration(workflow.item)
     };
-    await effectUtils.createEffect(workflow.actor, effectData, {concentrationItem: workflow.item, strictlyInterdependent: true});
+    let effect = await effectUtils.createEffect(workflow.actor, effectData, {concentrationItem: workflow.item, strictlyInterdependent: true});
+    await effectUtils.addDependent(effect, [template]);
 }
 export let fogCloud = {
     name: 'Fog Cloud',

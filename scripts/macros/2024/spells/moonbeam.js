@@ -56,16 +56,22 @@ async function use({workflow}) {
             favorite: true
         }
     });
+    for (let target of workflow.targets) {
+        let targetCombatant = target.combatant;
+        if (!targetCombatant) continue;
+        await combatUtils.setTurnCheck(targetCombatant, 'moonbeam');
+    }
 }
-async function move({trigger: {castData}, workflow}) {
+async function move({workflow}) {
     let effect = effectUtils.getEffectByIdentifier(workflow.actor, 'moonbeam');
     let template = await fromUuid(effect?.flags['chris-premades'].moonbeam.templateUuid);
     if (!template) return;
+    let castData = template.getFlag('chris-premades', 'castData');
     await workflow.actor.sheet.minimize();
     let position = await crosshairUtils.aimCrosshair({token: workflow.token, maxRange: genericUtils.convertDistance(60), centerpoint: template.object.center, crosshairsConfig: {icon: effect.img, resolution: 2, size: template.distance}, drawBoundries: true});
     await workflow.actor.sheet.maximize();
     if (position.cancelled) return;
-    let startPoint = {x: template.y, y: template.y};
+    let startPoint = {x: template.x, y: template.y};
     let endPoint = {x: position.x ?? template.x, y: position.y ?? template.y};
     await genericUtils.update(template, endPoint);
     let targets = tokenUtils.getMovementHitTokens(startPoint, endPoint, template.distance);

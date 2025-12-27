@@ -1,45 +1,15 @@
 {
-  "name": "Form of Dread",
+  "name": "Stage 1 Flaw: The Sanguine Curse",
   "type": "feat",
+  "img": "icons/environment/settlement/house-woods.webp",
   "system": {
-    "description": {
-      "value": "",
-      "chat": ""
-    },
-    "source": {
-      "custom": "",
-      "revision": 1,
-      "rules": "2014"
-    },
-    "uses": {
-      "max": "@prof",
-      "recovery": [
-        {
-          "period": "lr",
-          "type": "recoverAll"
-        }
-      ],
-      "spent": 0
-    },
-    "type": {
-      "value": "class",
-      "subtype": ""
-    },
-    "requirements": "",
-    "properties": [],
-    "prerequisites": {
-      "level": null,
-      "items": [],
-      "repeatable": false
-    },
     "activities": {
-      "f0epefNgTy8omTFs": {
-        "type": "save",
-        "_id": "f0epefNgTy8omTFs",
+      "GKyiDYB1ZAbDCGCH": {
+        "type": "utility",
+        "_id": "GKyiDYB1ZAbDCGCH",
         "sort": 0,
         "activation": {
           "type": "special",
-          "value": null,
           "override": false,
           "condition": ""
         },
@@ -51,152 +21,26 @@
           "targets": []
         },
         "description": {
-          "chatFlavor": "Form of Dread: Fear"
+          "chatFlavor": ""
         },
         "duration": {
-          "units": "inst",
+          "units": "perm",
           "concentration": false,
           "override": false
         },
         "effects": [
           {
-            "_id": "vOG7KjGOAC4ZwNI5",
-            "onSave": false
+            "_id": "EE3jk2qeTVcoexEH",
+            "level": {
+              "min": null,
+              "max": null
+            }
           }
         ],
+        "flags": {},
         "range": {
-          "override": false,
           "units": "self",
-          "special": ""
-        },
-        "target": {
-          "template": {
-            "contiguous": false,
-            "units": "ft",
-            "type": ""
-          },
-          "affects": {
-            "choice": false,
-            "count": "1",
-            "type": "creature",
-            "special": ""
-          },
           "override": false,
-          "prompt": true
-        },
-        "uses": {
-          "spent": 0,
-          "recovery": [],
-          "max": ""
-        },
-        "damage": {
-          "parts": [],
-          "critical": {
-            "allow": false
-          },
-          "onSave": "half"
-        },
-        "save": {
-          "ability": [
-            "wis"
-          ],
-          "dc": {
-            "calculation": "spellcasting",
-            "formula": ""
-          }
-        },
-        "useConditionText": "",
-        "forceDialog": false,
-        "effectConditionText": "",
-        "midiAutomationOnly": false,
-        "name": "Form of Dread: Fear",
-        "img": "icons/magic/unholy/silhouette-robe-evil-glow.webp",
-        "useConditionReason": "",
-        "macroData": {
-          "name": "",
-          "command": ""
-        },
-        "ignoreTraits": {
-          "idi": false,
-          "idr": false,
-          "idv": false,
-          "ida": false,
-          "idm": false
-        },
-        "midiProperties": {
-          "ignoreTraits": [],
-          "triggeredActivityId": "none",
-          "triggeredActivityConditionText": "",
-          "triggeredActivityTargets": "targets",
-          "triggeredActivityRollAs": "self",
-          "forceDialog": false,
-          "forceAttackDialog": false,
-          "forceDamageDialog": false,
-          "confirmTargets": "default",
-          "autoTargetType": "any",
-          "autoTargetAction": "default",
-          "automationOnly": false,
-          "otherActivityCompatible": true,
-          "otherActivityAsParentType": true,
-          "identifier": "",
-          "displayActivityName": false,
-          "rollMode": "default",
-          "chooseEffects": false,
-          "toggleEffect": false,
-          "ignoreFullCover": false,
-          "removeChatButtons": "default",
-          "magicEffect": false,
-          "magicDamage": false,
-          "noConcentrationCheck": false,
-          "autoCEEffects": "default"
-        },
-        "isOverTimeFlag": false,
-        "overTimeProperties": {
-          "saveRemoves": true,
-          "preRemoveConditionText": "",
-          "postRemoveConditionText": ""
-        },
-        "otherActivityId": "",
-        "otherActivityAsParentType": true,
-        "friendlySave": "default"
-      },
-      "oyddQtkU98F2IkVi": {
-        "type": "heal",
-        "_id": "oyddQtkU98F2IkVi",
-        "sort": 0,
-        "activation": {
-          "type": "bonus",
-          "value": null,
-          "override": false,
-          "condition": ""
-        },
-        "consumption": {
-          "scaling": {
-            "allowed": false
-          },
-          "spellSlot": true,
-          "targets": [
-            {
-              "type": "itemUses",
-              "value": "1",
-              "target": "",
-              "scaling": {}
-            }
-          ]
-        },
-        "description": {
-          "chatFlavor": ""
-        },
-        "duration": {
-          "units": "minute",
-          "concentration": false,
-          "override": false,
-          "value": "1"
-        },
-        "effects": [],
-        "range": {
-          "override": false,
-          "units": "self",
           "special": ""
         },
         "target": {
@@ -218,21 +62,24 @@
           "recovery": [],
           "max": ""
         },
-        "healing": {
-          "number": 1,
-          "denomination": 10,
-          "types": [
-            "temphp"
-          ],
-          "custom": {
-            "enabled": false
+        "visibility": {
+          "level": {
+            "min": null,
+            "max": null
           },
-          "scaling": {
-            "number": 1
-          },
-          "bonus": "@classes.warlock.levels"
+          "requireAttunement": false,
+          "requireIdentification": false,
+          "requireMagic": false,
+          "identifier": ""
+        },
+        "roll": {
+          "prompt": false,
+          "visible": false,
+          "name": "",
+          "formula": ""
         },
         "useConditionText": "",
+        "useConditionReason": "",
         "effectConditionText": "",
         "macroData": {
           "name": "",
@@ -251,16 +98,17 @@
           "triggeredActivityConditionText": "",
           "triggeredActivityTargets": "targets",
           "triggeredActivityRollAs": "self",
-          "forceDialog": false,
+          "autoConsume": false,
+          "forceConsumeDialog": "default",
+          "forceRollDialog": "default",
+          "forceDamageDialog": "default",
           "confirmTargets": "default",
           "autoTargetType": "any",
           "autoTargetAction": "default",
           "automationOnly": false,
           "otherActivityCompatible": false,
-          "identifier": "",
-          "forceAttackDialog": false,
-          "forceDamageDialog": false,
           "otherActivityAsParentType": true,
+          "identifier": "",
           "displayActivityName": false,
           "rollMode": "default",
           "chooseEffects": false,
@@ -272,153 +120,265 @@
           "noConcentrationCheck": false,
           "autoCEEffects": "default"
         },
-        "name": "Form of Dread",
-        "img": "icons/magic/unholy/silhouette-robe-evil-glow.webp",
-        "appliedEffects": [],
-        "useConditionReason": "",
         "isOverTimeFlag": false,
         "overTimeProperties": {
           "saveRemoves": true,
           "preRemoveConditionText": "",
           "postRemoveConditionText": ""
-        }
+        },
+        "otherActivityId": "none",
+        "otherActivityAsParentType": true,
+        "name": "Entered Uninvited Private Residence"
+      },
+      "lAUDOiNmIirATRTj": {
+        "type": "utility",
+        "_id": "lAUDOiNmIirATRTj",
+        "sort": 0,
+        "activation": {
+          "type": "action",
+          "override": false,
+          "condition": ""
+        },
+        "consumption": {
+          "scaling": {
+            "allowed": false
+          },
+          "spellSlot": true,
+          "targets": []
+        },
+        "description": {
+          "chatFlavor": ""
+        },
+        "duration": {
+          "units": "inst",
+          "concentration": false,
+          "override": false
+        },
+        "effects": [],
+        "flags": {},
+        "range": {
+          "units": "ft",
+          "override": false,
+          "special": "",
+          "value": "5"
+        },
+        "target": {
+          "template": {
+            "contiguous": false,
+            "units": "ft",
+            "type": ""
+          },
+          "affects": {
+            "choice": false,
+            "type": "creature",
+            "count": "1",
+            "special": ""
+          },
+          "override": false,
+          "prompt": true
+        },
+        "uses": {
+          "spent": 0,
+          "recovery": [],
+          "max": ""
+        },
+        "visibility": {
+          "level": {
+            "min": null,
+            "max": null
+          },
+          "requireAttunement": false,
+          "requireIdentification": false,
+          "requireMagic": false,
+          "identifier": ""
+        },
+        "roll": {
+          "prompt": false,
+          "visible": false,
+          "name": "",
+          "formula": ""
+        },
+        "useConditionText": "",
+        "useConditionReason": "",
+        "effectConditionText": "",
+        "macroData": {
+          "name": "",
+          "command": ""
+        },
+        "ignoreTraits": {
+          "idi": false,
+          "idr": false,
+          "idv": false,
+          "ida": false,
+          "idm": false
+        },
+        "midiProperties": {
+          "ignoreTraits": [],
+          "triggeredActivityId": "none",
+          "triggeredActivityConditionText": "",
+          "triggeredActivityTargets": "targets",
+          "triggeredActivityRollAs": "self",
+          "autoConsume": false,
+          "forceConsumeDialog": "default",
+          "forceRollDialog": "default",
+          "forceDamageDialog": "default",
+          "confirmTargets": "default",
+          "autoTargetType": "any",
+          "autoTargetAction": "default",
+          "automationOnly": false,
+          "otherActivityCompatible": false,
+          "otherActivityAsParentType": true,
+          "identifier": "",
+          "displayActivityName": false,
+          "rollMode": "default",
+          "chooseEffects": false,
+          "toggleEffect": false,
+          "ignoreFullCover": false,
+          "removeChatButtons": "default",
+          "magicEffect": false,
+          "magicDamage": false,
+          "noConcentrationCheck": false,
+          "autoCEEffects": "none"
+        },
+        "isOverTimeFlag": false,
+        "overTimeProperties": {
+          "saveRemoves": true,
+          "preRemoveConditionText": "",
+          "postRemoveConditionText": ""
+        },
+        "otherActivityId": "none",
+        "otherActivityAsParentType": true,
+        "name": "Feed"
       }
     },
-    "identifier": "form-of-dread",
-    "enchant": {},
+    "uses": {
+      "spent": 0,
+      "recovery": []
+    },
     "advancement": [],
-    "crewed": false
-  },
-  "flags": {
-    "midi-qol": {
-      "effectActivation": false,
-      "onUseMacroName": "",
-      "rollAttackPerTarget": "default",
-      "removeAttackDamageButtons": "default",
-      "itemCondition": "",
-      "effectCondition": "",
-      "AoETargetType": "any",
-      "AoETargetTypeIncludeSelf": true,
-      "autoTarget": "default",
-      "reactionCondition": "",
-      "otherCondition": ""
+    "description": {
+      "value": "",
+      "chat": ""
     },
-    "midiProperties": {
-      "nodam": false,
-      "fulldam": false,
-      "halfdam": false,
-      "autoFailFriendly": false,
-      "autoSaveFriendly": false,
-      "rollOther": false,
-      "critOther": false,
-      "offHandWeapon": false,
-      "magicdam": false,
-      "magiceffect": false,
-      "concentration": false,
-      "toggleEffect": false,
-      "ignoreTotalCover": false,
-      "confirmTargets": "default",
-      "noConcentrationCheck": false,
-      "idr": false,
-      "idi": false,
-      "idv": false,
-      "ida": false
+    "identifier": "stage-1-flaw-the-sanguine-curse",
+    "source": {
+      "revision": 1,
+      "rules": "2024",
+      "book": "",
+      "page": "",
+      "custom": "",
+      "license": ""
     },
-    "core": {},
-    "dnd5e": {
-      "riders": {
-        "activity": [
-          "f0epefNgTy8omTFs"
-        ],
-        "effect": []
-      },
-      "dependents": [
-        {
-          "uuid": "Scene.6cPoldhdvb1g9GHk.Token.LxBU8ksRvzr8t78r.Actor.RIKQZTCGTzYRKnxy.ActiveEffect.ybzuhdJHC8IkK8QV"
-        }
-      ]
+    "crewed": false,
+    "enchant": {},
+    "prerequisites": {
+      "items": [],
+      "repeatable": false
     },
-    "chris-premades": {
-      "info": {
-        "name": "Form of Dread",
-        "version": "1.1.31",
-        "identifier": "formOfDread",
-        "source": "chris-premades"
-      },
-      "macros": {
-        "midi": {
-          "item": [
-            "formOfDread"
-          ]
-        }
-      },
-      "activityIdentifiers": {
-        "formOfDread": "oyddQtkU98F2IkVi",
-        "formOfDreadFear": "f0epefNgTy8omTFs"
-      },
-      "hiddenActivities": [
-        "formOfDreadFear"
-      ],
-      "formOfDreadFear": {
-        "turn": "238-5"
-      }
+    "properties": [],
+    "requirements": "",
+    "type": {
+      "value": "",
+      "subtype": ""
     }
   },
   "effects": [
     {
-      "name": "Form of Dread: Frightened",
-      "img": "icons/magic/unholy/silhouette-robe-evil-glow.webp",
-      "origin": "Actor.tOXKAdjeDxHioIyz.Item.CWibUb2iwBO9l94l",
+      "name": "Stage 1 Flaw: The Sanguine Curse",
+      "img": "icons/environment/settlement/house-woods.webp",
+      "origin": "Item.0iLw20HIBGO45q04",
       "transfer": false,
-      "_id": "vOG7KjGOAC4ZwNI5",
+      "_id": "EE3jk2qeTVcoexEH",
       "type": "base",
       "system": {},
-      "changes": [],
+      "changes": [
+        {
+          "key": "flags.midi-qol.disadvantage.all",
+          "mode": 0,
+          "value": "1",
+          "priority": 20
+        },
+        {
+          "key": "flags.midi-qol.OverTime",
+          "value": "turn=start,allowIncapacitated=true,saveDamage=nodamage,saveRemove=true,damageRoll=1d4,damageType=none,rollMode=publicroll,",
+          "mode": 0,
+          "priority": 20
+        }
+      ],
       "disabled": false,
       "duration": {
         "startTime": null,
-        "seconds": null,
         "combat": null,
-        "rounds": 1,
-        "turns": 1,
+        "seconds": null,
+        "rounds": null,
+        "turns": null,
         "startRound": null,
         "startTurn": null
       },
       "description": "",
       "tint": "#ffffff",
       "statuses": [],
+      "sort": 0,
       "flags": {
+        "dnd5e": {
+          "riders": {
+            "statuses": []
+          }
+        },
         "dae": {
           "enableCondition": "",
           "disableCondition": "",
+          "stackable": "noneName",
+          "showIcon": true,
           "disableIncapacitated": false,
           "selfTarget": false,
           "selfTargetAlways": false,
           "dontApply": false,
-          "stackable": "multi",
-          "showIcon": false,
           "durationExpression": "",
           "macroRepeat": "none",
-          "specialDuration": [
-            "turnEndSource"
-          ]
+          "specialDuration": []
         },
         "core": {
           "overlay": false
         },
         "chris-premades": {
           "noAnimation": false,
-          "conditions": [
-            "frightened"
-          ]
+          "conditions": [],
+          "specialDuration": [],
+          "templateEffectActivities": []
         }
       },
-      "sort": 0,
-      "_key": "!items.effects!hpO7l4a19nEIJLqe.vOG7KjGOAC4ZwNI5"
+      "_key": "!items.effects!kT3V4ABtOyJPH3Nz.EE3jk2qeTVcoexEH"
     }
   ],
-  "img": "icons/magic/unholy/silhouette-robe-evil-glow.webp",
-  "folder": "mVSpHRTJJDEtw4kZ",
-  "_id": "hpO7l4a19nEIJLqe",
-  "_key": "!items!hpO7l4a19nEIJLqe"
+  "folder": "Xu8gZVI9iyVzXZ72",
+  "flags": {
+    "dnd5e": {
+      "riders": {
+        "activity": []
+      }
+    },
+    "chris-premades": {
+      "hiddenActivities": [],
+      "activityIdentifiers": {
+        "feed": "lAUDOiNmIirATRTj",
+        "enter": "GKyiDYB1ZAbDCGCH"
+      },
+      "info": {
+        "identifier": "sanguineCurse",
+        "source": "chris-premades",
+        "version": "1.4.6",
+        "rules": "modern"
+      },
+      "macros": {
+        "midi": {
+          "item": [
+            "sanguineCurse"
+          ]
+        }
+      }
+    }
+  },
+  "_id": "kT3V4ABtOyJPH3Nz",
+  "_key": "!items!kT3V4ABtOyJPH3Nz"
 }
