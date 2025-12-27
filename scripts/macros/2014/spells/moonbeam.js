@@ -62,7 +62,7 @@ async function move({workflow}) {
     let template = await fromUuid(effect?.flags['chris-premades'].moonbeam.templateUuid);
     if (!template) return;
     await workflow.actor.sheet.minimize();
-    let position = await crosshairUtils.aimCrosshair({token: workflow.token, maxRange: 60, centerpoint: template.object.center, crosshairsConfig: {icon: effect.img, resolution: 2, size: template.distance}, drawBoundries: true});
+    let position = await crosshairUtils.aimCrosshair({token: workflow.token, maxRange: genericUtils.convertDistance(60), centerpoint: template.object.center, crosshairsConfig: {icon: effect.img, resolution: 2, size: template.distance}, drawBoundries: true});
     await workflow.actor.sheet.maximize();
     if (position.cancelled) return;
     await genericUtils.update(template, {
