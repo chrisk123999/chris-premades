@@ -7,7 +7,6 @@ async function heal({trigger, workflow}) {
     let heal = activityUtils.getActivityByIdentifier(workflow.item, 'heal', {strict: true});
     if (!heal) return;
     let nearby = tokenUtils.findNearby(workflow.token, itemUtils.getConfig(workflow.item, 'distance'), 'ally', {includeIncapacitated: true, includeToken: true});
-    console.log(nearby);
     if (!nearby.length) return;
     let selection;
     if (nearby.length === 1) {

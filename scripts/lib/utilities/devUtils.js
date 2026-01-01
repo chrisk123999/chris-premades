@@ -45,6 +45,12 @@ export async function stripUnusedFlags(key) {
             if (macros[identifier]?.config?.find(i => i.value === 'playAnimation')) genericUtils.setProperty(updates, 'flags.chris-premades.info.hasAnimation', true);
         }
         if (key === constants.packs.miscellaneous) delete updates.system.description;
+        for (let effect of i.effects.contents) {
+            if (effect.description) {
+                await genericUtils.update(effect, {description: ''});
+                console.log('Removed effect description from ' + i.name);
+            }
+        }
         await i.update(updates);
     }
 }

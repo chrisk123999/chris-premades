@@ -233,7 +233,7 @@
         "startRound": null,
         "startTurn": null
       },
-      "description": "<div class=\"ddb\"><p>[[/attack extended]], reach 10 ft., one target. <em>Hit:</em> [[/damage 3d6 + @abilities.str.mod type=bludgeoning average=true]] damage plus [[/damage 2d8 type=fire average=true]] damage, and the target is magically branded. While branded in this way, the target becomes visible if it's invisible, can't become invisible, and sheds dim light in a 5-foot radius. The brand disappears after 24 hours, or it can be removed from a creature or an object by any spell that ends a curse.</p></div>",
+      "description": "",
       "tint": "#ffffff",
       "statuses": [],
       "sort": 0,

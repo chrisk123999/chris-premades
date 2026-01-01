@@ -1260,6 +1260,9 @@
             "DanseMacabre": {
                 "CommandUndead": "Danse Macabre: Command Undead"
             },
+            "DarkBolt": {
+                "Select": "Select your targets (Max bolts: {maxBolts}):"
+            },
             "Darkness": {
                 "Attach": "Attach to self?"
             },

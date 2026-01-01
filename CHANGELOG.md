@@ -1,3 +1,10 @@
+# 1.4.9 Release:
+## New Legacy Content:
+- Darkbolt
+## Bug Fixes:
+- Cleave Mastery (Thanks Bacon)
+- Summon Fey (Legacy & Modern)
+
 # 1.4.8 Release:
 ## Update Notes:
 - CPR Now requires 5.2.4 of the D&D system.

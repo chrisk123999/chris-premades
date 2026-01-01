@@ -41,7 +41,7 @@
         },
         "core": {}
       },
-      "description": "You gain the following benefits:\n\n    • You have Advantage on Initiative rolls.\n    • During the first round of each combat, you have Advantage on attacks against any creature that hasn’t taken a turn. If your Sneak Attack hits any target during that round, the target takes an additional [[@classes.rogue.levels]] damage of the weapon’s type.",
+      "description": "",
       "img": "icons/weapons/daggers/dagger-curved-black.webp",
       "_id": "jnNOrGfA3tLn0Xxq",
       "type": "base",

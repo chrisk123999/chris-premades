@@ -334,7 +334,7 @@
         "startRound": null,
         "startTurn": null
       },
-      "description": "<div class=\"ddb\"><p>[[/attack extended]], range 120 ft., one target. <em>Hit:</em> [[/damage 3d10 + @abilities.wis.mod type=fire average=true]] damage, and the target must succeed on a [[/save wis 16 format=long]] or have the frightened condition until the end of the target's next turn.</p></div>",
+      "description": "",
       "tint": "#ffffff",
       "statuses": [],
       "sort": 0,

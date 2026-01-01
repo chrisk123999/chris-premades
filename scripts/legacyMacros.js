@@ -153,6 +153,7 @@ export {wrathfulSmite, wrathfulSmiteDamage} from './macros/2014/spells/wrathfulS
 export {zoneOfTruth} from './macros/2014/spells/zoneOfTruth.js';
 export {absorbElements} from './macros/2014/spells/absorbElements.js';
 export {veilOfDusk} from './macros/2014/spells/veilOfDusk.js';
+export {darkBolt} from './macros/2014/spells/darkBolt.js';
 // Other
 export {actionDismissal} from './macros/2014/generic/actionDismissal.js';
 export {noConfiguration} from './macros/2014/generic/noConfiguration.js';

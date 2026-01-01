@@ -61,7 +61,7 @@
           }
         }
       },
-      "description": "<p>You know one extra cantrip from the Cleric spell list. In addition, your mystical connection to the divine gives you a bonus to your Intelligence (&amp;Reference[arc]{Arcana} or &amp;Reference[rel]{Religion}) checks. The bonus equals your Wisdom modifier (minimum of +1).</p>",
+      "description": "",
       "img": "icons/magic/life/ankh-shadow-green.webp",
       "_id": "u8RT6Qnjhtg4RkAV",
       "type": "base",

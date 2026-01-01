@@ -41,7 +41,7 @@
         },
         "core": {}
       },
-      "description": "You gain the following benefits:\n\n    • You gain a Climb Speed equal to your Speed.\n    • You can determine your jump distance using your Dex. rather than your Str.",
+      "description": "",
       "img": "icons/environment/settlement/city-night.webp",
       "_id": "rH8msZ30PMa9mt5j",
       "type": "base",

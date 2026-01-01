@@ -228,7 +228,7 @@
         "startRound": null,
         "startTurn": null
       },
-      "description": "<div class=\"ddb\"><p>Set in the center of this armor’s chest is a citrine engraved with the shield rune.</p><p>While wearing this armor, your hit point maximum increases by an amount equal to 10 + your level.</p><p><em><strong>Invoking the Rune.</strong></em> As an action, you can invoke the armor’s rune to cast the beacon of hope spell with it; the spell has a duration of 1 minute and doesn’t require &amp;Reference[concentration]{concentration}. Once the rune has been invoked, it can’t be invoked again until the next dawn.</p></div>",
+      "description": "",
       "origin": "Item.zZLDctxkIStJ0sfq",
       "tint": "#ffffff",
       "statuses": [],
