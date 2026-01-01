@@ -348,7 +348,9 @@
           "parts": []
         },
         "save": {
-          "ability": [],
+          "ability": [
+            "con"
+          ],
           "dc": {
             "calculation": "spellcasting",
             "formula": ""
@@ -405,7 +407,8 @@
         "otherActivityId": "",
         "otherActivityAsParentType": true,
         "friendlySave": "default",
-        "name": ""
+        "name": "",
+        "img": ""
       }
     },
     "uses": {
