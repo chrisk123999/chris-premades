@@ -8,7 +8,7 @@ async function aimCrosshair({token, maxRange, crosshairsConfig, centerpoint, dra
         let actualHalf = token.document.width / 2;
         widthAdjust += canvas.grid.distance * Math.floor(actualHalf);
         if (!fudgeDistance && (widthAdjust !== actualHalf * canvas.grid.distance)) {
-            fudgeDistance = 2.5;
+            fudgeDistance = genericUtils.convertDistance(2.5);
         }
         fudgeDistance += widthAdjust;
     }
@@ -20,7 +20,7 @@ async function aimCrosshair({token, maxRange, crosshairsConfig, centerpoint, dra
         if (maxRange && drawBoundries) {
             let radius = (canvas.grid.size * ((maxRange + fudgeDistance + widthAdjust) / canvas.grid.distance));
             drawing = new PIXI.Graphics();
-            drawing.lineStyle(5, 0xffffff);
+            drawing.lineStyle(genericUtils.convertDistance(5), 0xffffff);
             let matchTemplates = game.settings.get('core', 'gridTemplates') && (game.settings.get('core', 'gridDiagonals') !== CONST.GRID_DIAGONALS.EXACT);
             if (matchTemplates) {
                 drawing.drawPolygon(canvas.grid.getCircle(centerpoint, maxRange + fudgeDistance + widthAdjust));
@@ -48,7 +48,8 @@ async function aimCrosshair({token, maxRange, crosshairsConfig, centerpoint, dra
                     valid = true;
                 }
                 crosshairs.draw();
-                crosshairs.label = distance + '/' + maxRange + 'ft.';
+                let mesureUnit = game.settings.get("dnd5e", "metricLengthUnits") ? ' m' : 'ft.';
+                crosshairs.label = distance + '/' + maxRange + mesureUnit;
             }
         }
     };
@@ -57,7 +58,7 @@ async function aimCrosshair({token, maxRange, crosshairsConfig, centerpoint, dra
         ...(customCallbacks ?? {})
     };
     let options = {};
-    if (trackDistance) options.label = '0ft';
+    if (trackDistance) options.label = game.settings.get("dnd5e", "metricLengthUnits") ? '0 m' : '0ft';
     options = {
         ...options,
         ...crosshairsConfig
