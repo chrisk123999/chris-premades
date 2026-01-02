@@ -204,10 +204,7 @@ function getEffectByIdentifier(item, identifier) {
     return item.effects.find(i => genericUtils.getIdentifier(i) === identifier);
 }
 function cloneItem(item, updates = {}, options = {keepId: true}) {
-    let clone = item.clone(updates, options);
-    clone.prepareData();
-    clone.applyActiveEffects();
-    return clone;
+    return item.clone(updates, options);
 }
 async function correctActivityItemConsumption(item, activityIdentifiers = [], targetIdentifier) {
     let target = itemUtils.getItemByIdentifier(item.actor, targetIdentifier);
