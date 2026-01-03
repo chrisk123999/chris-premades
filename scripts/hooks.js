@@ -143,21 +143,6 @@ export function registerHooks() {
     // Add context menu options to items
     if (genericUtils.getCPRSetting('itemContext')) Hooks.on('dnd5e.getItemContextOptions', item.send);
 
-    // Hopefully pretty temporary, until Midi does similar:
-    function preDeletion(document, options) {
-        // eslint-disable-next-line no-undef
-        options.dependents = dnd5e.registry.dependents.get(document.uuid).map(i => i.uuid);
-    }
-    function onDeletion(document, options) {
-        if (game.user !== game.users.activeGM) return;
-        let dependentUuids = options.dependents;
-        dependentUuids.forEach(i => fromUuidSync(i)?.delete());
-    }
-    Hooks.on('preDeleteItem', preDeletion);
-    Hooks.on('preDeleteMeasuredTemplate', preDeletion);
-    Hooks.on('deleteItem', onDeletion);
-    Hooks.on('deleteMeasuredTemplate', onDeletion);
-
     // GM-only hooks
     if (game.user.isGM) {
         // Various non-pre events

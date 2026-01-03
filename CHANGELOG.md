@@ -1,3 +1,12 @@
+# 1.4.11 Release:
+## Bug Fixes:
+- Effect Interface
+- Orb of Damara
+
+# 1.4.10 Release:
+## Bug Fixes:
+- Fixed Release Manifest
+
 # 1.4.9 Release:
 ## New Legacy Content:
 - Darkbolt

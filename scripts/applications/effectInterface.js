@@ -389,7 +389,8 @@ function fromStatusEffect(wrapped, statusId, options = {}) {
     let effectData = effect.toObject();
     delete effectData.origin;
     delete effectData._stats;
-    let fixedEffect = effectUtils.syntheticActiveEffect(effectData, effectItem);
+    delete effectData.parent;
+    let fixedEffect = effectUtils.syntheticActiveEffect(effectData);
     return fixedEffect;
 }
 function patch(enabled) {
