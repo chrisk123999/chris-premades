@@ -203,6 +203,7 @@
             "DamageType": "Damage Type:",
             "DamageTypes": "Damage Types:",
             "DarknessAnimation": "Darkness Animation:",
+            "DashAnimation": "Dash Animation:",
             "DiceSize": "Dice Size:",
             "DisplayFormulaRoll": "Display Formula Roll:",
             "DisplayHint": "Display Hint:",
@@ -262,6 +263,7 @@
             "TokenImgPriority": "Token Image Priority:",
             "TokenName": "Token Name:",
             "TokenSound": "Token Animation Sound:",
+            "TransformAnimation": "Transform Animation:",
             "Trigger": "Trigger:",
             "TurnTrigger": "Turn Trigger:",
             "UseFormula": "Use Formula:",
@@ -1554,6 +1556,9 @@
             "FormOfDread": {
                 "Fear": "Form of Dread: Fear",
                 "Use": "Attempt to frighten target?"
+            },
+            "FormOfTheBeast": {
+                "Keen": "This check is to track or stalk your prey."
             },
             "Gaze": {
                 "AllowAvert": "Allow Averting Eyes:",

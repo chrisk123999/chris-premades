@@ -35,7 +35,8 @@ let packs = [
     'cpr-3rd-party-spells-2024',
     'cpr-species-features-2024',
     'cpr-other-features',
-    'cpr-3rd-party-feats-2024'
+    'cpr-3rd-party-feats-2024',
+    'cpr-3rd-party-items-2024'
 ];
 for (let i of packs) {
     await compilePack('./packData/' + i, './packs/' + i, {log: true});

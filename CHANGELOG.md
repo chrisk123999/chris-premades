@@ -1,3 +1,12 @@
+# 1.4.12 Release:
+## New Legacy Content:
+- Form of the Beast (Warlock)
+## New Modern Content:
+- Mask of Monstrous Forms
+## Bug Fixes:
+- Martial Arts
+- Forked Tongue
+
 # 1.4.11 Release:
 ## Bug Fixes:
 - Effect Interface
