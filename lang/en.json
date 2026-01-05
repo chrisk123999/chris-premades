@@ -217,6 +217,7 @@
             "HideToken": "Hide Token:",
             "HitPoints": "Hit Points:",
             "HitTarget": "Hit Target:",
+            "IgnoredConditions": "Ignored Conditions:",
             "IgnoredCreatureTypes": "Ignored Creature Types:",
             "ImmuneCreatures": "Immune Creature Types:",
             "Items": "Items:",
@@ -1426,8 +1427,11 @@
                 "ProtectiveTitle": "Protective Bond: Protect Target?"
             },
             "Engulf": {
+                "Center": "Center Token:",
                 "Grapples": "Initiates grapple",
                 "Grappling": "Grapple Behavior:",
+                "Max": "Max Engulfed:",
+                "Name": "Engulf",
                 "Requires": "Must be grappling already"
             },
             "Enlarge": {

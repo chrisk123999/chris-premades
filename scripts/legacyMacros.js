@@ -566,6 +566,7 @@ export {transform} from './macros/2014/monsterFeatures/generic/transform.js';
 export {undeadFortitude} from './macros/2014/monsterFeatures/generic/undeadFortitude.js';
 export {autoProne} from './macros/2014/monsterFeatures/generic/autoProne.js';
 export {grappleAttackAdvantage} from './macros/2014/monsterFeatures/generic/grappleAttackAdvantage.js';
+export {engulf, engulfEffect} from './macros/2014/monsterFeatures/generic/engulf.js';
 // Actions
 export {checkCover} from './macros/2014/actions/checkCover.js';
 export {dash} from './macros/2014/actions/dash.js';
