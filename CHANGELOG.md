@@ -1,3 +1,7 @@
+# 1.4.13 Release:
+## New Generic Monster Features:
+- Engulf
+
 # 1.4.12 Release:
 ## New Legacy Content:
 - Form of the Beast (Warlock)

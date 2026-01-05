@@ -20,13 +20,22 @@ async function use({trigger, workflow}) {
         if (uuids.includes(token.document.uuid)) continue;
         if (sizeLimit != -1 && actorUtils.getSize(token.actor) > sizeLimit) continue;
         if (config.checkSaves && !workflow.failedSaves.has(token)) continue;
-        if (config.centerToken) await genericUtils.update(token.document, {x: workflow.token.center.x - (token.w / 2), y: workflow.token.center.y - (token.h / 2)});
+        let updates = {};
+        if (config.centerToken) {
+            updates = {
+                x: workflow.token.center.x - (token.w / 2),
+                y: workflow.token.center.y - (token.h / 2)
+            };
+        }
+        if (workflow.token.document.sort >= token.document.sort) updates.sort = workflow.token.document.sort + 1;
+        if (Object.keys(updates).length) await genericUtils.update(token.document, updates);
         uuids.push(token.document.uuid);
         genericUtils.setProperty(effectData, 'flags.chris-premades.engulf.parentUuid', workflow.token.document.uuid);
         effectUtils.addMacro(effectData, 'effect', ['engulfEffect']);
         await effectUtils.createEffect(token.actor, effectData);
     }
     await tokenUtils.attachToToken(workflow.token, uuids);
+    await genericUtils.setFlag(workflow.token.document, 'chris-premades', 'engulf.uuids', uuids);
 }
 async function early({trigger, workflow}) {
     let config = itemUtils.getGenericFeatureConfig(workflow.item, 'engulf');
@@ -44,6 +53,8 @@ async function removed({trigger: {entity: effect, token}}) {
     let parentToken = await fromUuid(parentUuid);
     if (!parentToken) return;
     await tokenUtils.detachFromToken(parentToken.object, [token.document.uuid]);
+    let uuids = parentToken.flags['chris-premades']?.engulf?.uuids ?? [];
+    await genericUtils.setFlag(parentToken, 'chris-premades', 'engulf.uuids', uuids.filter(i => token.document.uuid != i));
 }
 export let engulf = {
     name: 'Engulf',
