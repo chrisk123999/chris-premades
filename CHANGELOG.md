@@ -1,3 +1,11 @@
+# 1.4.14 Release:
+## New Legacy Content:
+- Nylea's Votary
+- Phenax's Devotee
+## Bug Fixes:
+- Unarmed Fighting Style (Thanks Bacon)
+- Quick Conditions
+
 # 1.4.13 Release:
 ## New Generic Monster Features:
 - Engulf

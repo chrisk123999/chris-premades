@@ -688,3 +688,5 @@ export {heliodsDevotee} from './macros/2014/piety/heliod/heliodsDevotee.js';
 export {nyleasDevotee} from './macros/2014/piety/nylea/nyleasDevotee.js';
 export {karametrasDevotee} from './macros/2014/piety/karametra/karametrasDevotee.js';
 export {iroassDevotee} from './macros/2014/piety/iroas/iroassDevotee.js';
+export {phenaxsDevotee} from './macros/2014/piety/phenax/phenaxsDevotee.js';
+export {nyleasVotary} from './macros/2014/piety/nylea/nyleasVotary.js';
