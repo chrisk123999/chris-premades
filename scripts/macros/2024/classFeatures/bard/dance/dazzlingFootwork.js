@@ -15,8 +15,6 @@ async function early({trigger: {entity: item}, workflow}) {
     let classIdentifier = itemUtils.getConfig(item, 'classIdentifier');
     let scaleIdentifier = itemUtils.getConfig(item, 'scaleIdentifier');
     workflow.item = workflow.item.clone({'system.damage.base.bonus': '@scale.' + classIdentifier + '.' + scaleIdentifier + '.die + @abilities.dex.mod', 'system.properties': Array.from(workflow.item.system.properties).concat('fin')}, {keepId: true});
-    workflow.item.prepareData();
-    workflow.item.applyActiveEffects();
     workflow.activity = workflow.item.system.activities.get(workflow.activity.id);
 }
 export let dazzlingFootwork = {

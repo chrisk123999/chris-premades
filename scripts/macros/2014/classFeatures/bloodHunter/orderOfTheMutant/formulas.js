@@ -425,7 +425,7 @@ async function earlyNighteye({trigger: {entity: effect}, workflow}) {
     workflow.disadvantage = true;
     workflow.attackAdvAttribution.add(genericUtils.translate('DND5E.Disadvantage') + ': ' + effect.name);
 }
-async function skillNighteye(actor, skillId) {
+async function skillNighteye({trigger: {actor, skillId}}) {
     if (skillId !== 'prc') return;
     return {label: genericUtils.format('CHRISPREMADES.Macros.Mutagencraft.SkillSunlight', {actorName: actor.name}), type: 'disadvantage'};
 }

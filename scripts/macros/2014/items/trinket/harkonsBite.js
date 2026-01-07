@@ -442,6 +442,10 @@ async function shapechange({trigger, workflow}) {
             value: 40,
             priority: 20
         });
+        let equippedArmor = workflow.actor.system.attributes.ac.equippedArmor;
+        if (equippedArmor) await genericUtils.update(equippedArmor, {'system.equipped': false});
+        let equippedShield = workflow.actor.system.attributes.ac.equippedShield;
+        if (equippedShield) await genericUtils.update(equippedShield, {'system.equipped': false});
     }
     let effect = effectUtils.getEffectByIdentifier(workflow.actor, 'harkonsBiteEffect');
     let playAnimation = itemUtils.getConfig(workflow.item, 'playAnimation');
@@ -496,13 +500,30 @@ async function removed({trigger: {token}}) {
 async function bite({trigger, workflow}) {
     if (!workflow.hitTargets.size) return;
     if (actorUtils.typeOrRace(workflow.hitTargets.first().actor) != 'humanoid') return;
+    let effect = effectUtils.getEffectByIdentifier(workflow.hitTargets.first().actor, 'curseOfLycanthropy');
+    if (effect) return;
     let activity = activityUtils.getActivityByIdentifier(workflow.item, 'humanoid', {strict: true});
+    if (!activity) return;
+    await workflowUtils.syntheticActivityRoll(activity, Array.from(workflow.hitTargets), {consumeResources: true, consumeUsage: true});
+}
+async function otherBite({trigger: {entity: item}, workflow}) {
+    if (!workflow.hitTargets.size) return;
+    if (!workflowUtils.isAttackType(workflow, 'attack')) return;
+    let isNatural = workflow.item.system.type?.value === 'natural';
+    if (!isNatural) return;
+    if (actorUtils.typeOrRace(workflow.hitTargets.first().actor) != 'humanoid') return;
+    let biteActivity = activityUtils.getActivityByIdentifier(item, 'bite', {strict: true});
+    if (!biteActivity) return;
+    if (biteActivity.name != workflow.activity.name) return;
+    let effect = effectUtils.getEffectByIdentifier(workflow.hitTargets.first().actor, 'curseOfLycanthropy');
+    if (effect) return;
+    let activity = activityUtils.getActivityByIdentifier(item, 'humanoid', {strict: true});
     if (!activity) return;
     await workflowUtils.syntheticActivityRoll(activity, Array.from(workflow.hitTargets), {consumeResources: true, consumeUsage: true});
 }
 export let harkonsBite = {
     name: 'Harkon\'s Bite',
-    version: '1.3.163',
+    version: '1.4.15',
     rules: 'legacy',
     midi: {
         item: [
@@ -523,6 +544,13 @@ export let harkonsBite = {
                 macro: bite,
                 priority: 50,
                 activities: ['bite']
+            }
+        ],
+        actor: [
+            {
+                pass: 'rollFinished',
+                macro: otherBite,
+                priority: 50
             }
         ]
     },

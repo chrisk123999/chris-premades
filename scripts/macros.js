@@ -244,6 +244,7 @@ export {iPiercedTheIllusion} from './macros/2024/feats/iPiercedTheIllusion.js';
 export {iSurvivedToTellTheTale} from './macros/2024/feats/iSurvivedToTellTheTale.js';
 export {iFoughtILived} from './macros/2024/feats/iFoughtILived.js';
 export {vampiresPlaything} from './macros/2024/feats/vampiresPlaything.js';
+export {fateGambler} from './macros/2024/feats/fateGambler.js';
 // Species Features
 // Aasimar
 export {healingHands} from './macros/2024/speciesFeatures/aasimar/healingHands.js';

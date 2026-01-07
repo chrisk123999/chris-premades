@@ -1490,6 +1490,9 @@
                 "Name": "Far Step",
                 "Teleport": "Far Step: Teleport"
             },
+            "FateGambler": {
+                "SkillOrAbility": "Was this a successful check against another creature that has a CR higher than 0?"
+            },
             "FeyStep": {
                 "Autumn": "Fey Step (Autumn)",
                 "Charmed": "Fep Step (Autumn): Charmed",

@@ -106,9 +106,6 @@ async function useDistant({workflow}) {
         itemUpdate = {'system.range.value': selection.system.range.value * 2};
     }
     let newItem = selection.clone(itemUpdate, {keepId: true});
-    newItem.prepareData();
-    // newItem.prepareFinalAttributes();
-    newItem.applyActiveEffects();
     let shouldConsumeSlot = newItem.system.level && !['atwill', 'innate', 'ritual'].includes(newItem.system.method);
     let shouldConsumeUsage = newItem.system.hasLimitedUses;
     workflowUtils.syntheticItemRoll(newItem, Array.from(workflow.targets), {
@@ -226,9 +223,6 @@ async function useExtended({workflow}) {
             }
         })
     }, {keepId: true});
-    newItem.prepareData();
-    // newItem.prepareFinalAttributes();
-    newItem.applyActiveEffects();
     let shouldConsumeSlot = newItem.system.level && !['atwill', 'innate', 'ritual'].includes(newItem.system.method);
     let shouldConsumeUsage = newItem.system.hasLimitedUses;
     workflowUtils.syntheticItemRoll(newItem, Array.from(workflow.targets), {
@@ -330,9 +324,6 @@ async function useQuickened({workflow}) {
     if (!selection) return;
     await genericUtils.update(sorcPoints, {'system.uses.spent': sorcPoints.system.uses.spent + 2});
     let newItem = selection.clone({'system.activation.type': 'bonus'}, {keepId: true});
-    newItem.prepareData();
-    // newItem.prepareFinalAttributes();
-    newItem.applyActiveEffects();
     let shouldConsumeSlot = newItem.system.level && !['atwill', 'innate', 'ritual'].includes(newItem.system.method);
     let shouldConsumeUsage = newItem.system.hasLimitedUses;
     workflowUtils.syntheticItemRoll(newItem, Array.from(workflow.targets), {
@@ -376,9 +367,6 @@ async function useSubtle({workflow}) {
     if (!selection) return;
     await genericUtils.update(sorcPoints, {'system.uses.spent': sorcPoints.system.uses.spent + 1});
     let newItem = selection.clone({'system.properties': Array.from(selection.system.properties.difference(new Set(['vocal', 'verbal', 'somatic'])))}, {keepId: true});
-    newItem.prepareData();
-    // newItem.prepareFinalAttributes();
-    newItem.applyActiveEffects();
     let shouldConsumeSlot = newItem.system.level && !['atwill', 'innate', 'ritual'].includes(newItem.system.method);
     let shouldConsumeUsage = newItem.system.hasLimitedUses;
     workflowUtils.syntheticItemRoll(newItem, Array.from(workflow.targets), {
@@ -480,9 +468,6 @@ async function useTwinned({workflow}) {
     let existingMacro = selection.flags?.['chris-premades']?.macros?.midi?.item ?? [];
     existingMacro.push('twinnedSpellAttack');
     let newItem = selection.clone({'system.target.affects.count': 2, 'flags.chris-premades.macros.midi.item': existingMacro}, {keepId: true});
-    newItem.prepareData();
-    // newItem.prepareFinalAttributes();
-    newItem.applyActiveEffects();
     let shouldConsumeSlot = newItem.system.level && !['atwill', 'innate', 'ritual'].includes(newItem.system.method);
     let shouldConsumeUsage = newItem.system.hasLimitedUses;
     await workflowUtils.syntheticItemRoll(newItem, Array.from(workflow.targets), {

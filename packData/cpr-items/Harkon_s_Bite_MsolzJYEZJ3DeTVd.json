@@ -1114,12 +1114,15 @@
         "identifier": "harkonsBite",
         "rules": "legacy",
         "source": "chris-premades",
-        "version": "1.3.163",
-        "hasAnimation": true
+        "hasAnimation": true,
+        "version": "1.4.15"
       },
       "macros": {
         "midi": {
           "item": [
+            "harkonsBite"
+          ],
+          "actor": [
             "harkonsBite"
           ]
         },

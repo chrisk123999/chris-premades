@@ -1,3 +1,16 @@
+# 1.4.15 Release:
+## New Modern Content:
+- Fate Gambler
+## Bug Fixes:
+- Trick Shot
+- Metamagic
+- Harkon's Bite
+- Insignia of Claws
+- Firearm
+- Tasha's Otherworldly Guise
+- Dazzling Footwork
+- Empowered Strikes
+
 # 1.4.14 Release:
 ## New Legacy Content:
 - Nylea's Votary

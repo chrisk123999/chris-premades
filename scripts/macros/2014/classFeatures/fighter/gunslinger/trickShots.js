@@ -67,8 +67,6 @@ async function usePiercing({workflow}) {
     await genericUtils.update(weapon, {'system.uses.spent': weapon.system.uses.spent + 1});
     await genericUtils.update(adeptMarksman, {'system.uses.spent': adeptMarksman.system.uses.spent + 1});
     let itemToUse = weapon.clone({'flags.chris-premades.config.misfire': Number(weapon.flags['chris-premades'].config.misfire) + 1, 'flags.chris-premades.firearm.piercing': true}, {keepId: true});
-    itemToUse.prepareData();
-    itemToUse.applyActiveEffects();
     let firstWorkflow = await workflowUtils.syntheticItemRoll(itemToUse, [firstTarget]);
     if (!firstWorkflow.hitTargets.size) return;
     let effectData = {
@@ -93,8 +91,6 @@ async function usePiercing({workflow}) {
     };
     let effect = await effectUtils.createEffect(workflow.actor, effectData);
     itemToUse = weapon.clone({'flags.chris-premades.config.misfire': -100, 'flags.chris-premades.firearm.piercing': true, 'flags.chris-premades.firearm.noConsume': true}, {keepId: true});
-    itemToUse.prepareData();
-    itemToUse.applyActiveEffects();
     for (let target of remainingTargets) {
         await workflowUtils.syntheticItemRoll(itemToUse, [target]);
     }

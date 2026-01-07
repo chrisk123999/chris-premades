@@ -16,8 +16,6 @@ async function early({trigger: {entity: item}, workflow}) {
             activity.damage.parts[0].bonus += ' + 1';
         }
     }
-    workflow.item.prepareData();
-    workflow.item.applyActiveEffects();
     workflow.activity = workflow.item.system.activities.get(workflow.activity.id);
 }
 export let insigniaOfClaws = {
