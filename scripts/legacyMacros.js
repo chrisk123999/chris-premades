@@ -441,6 +441,7 @@ export {magnificentFeast, magnificentFeastMeal, magnificentFeastEffect} from './
 export {extractAspects} from './macros/2014/classFeatures/monk/wayOfCobaltSoul/extractAspects.js';
 export {extortTruth} from './macros/2014/classFeatures/monk/wayOfCobaltSoul/extortTruth.js';
 export {mindOfMercury} from './macros/2014/classFeatures/monk/wayOfCobaltSoul/mindOfMercury.js';
+export {debilitatingBarrage, debilitatingBarrageEffect} from './macros/2014/classFeatures/monk/wayOfCobaltSoul/debilitatingBarrage.js';
 export {formOfTheBeastWarlock, formOfTheBeastWarlockEffect} from './macros/2014/classFeatures/warlock/predator/formOfTheBeast.js';
 // Race Features
 export {aasimarNecroticShroud, aasimarRadiantConsumption, aasimarRadiantSoul, celestialRevelation} from './macros/2014/raceFeatures/aasimar/celestialRevelation.js';

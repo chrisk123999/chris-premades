@@ -1,3 +1,7 @@
+# 1.4.16 Release:
+## New Legacy Content:
+- Debilitating Barrage
+
 # 1.4.15 Release:
 ## New Modern Content:
 - Fate Gambler
