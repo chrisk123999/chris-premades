@@ -73,10 +73,7 @@
             "level": {
               "min": null,
               "max": null
-            },
-            "movement": [],
-            "sizes": [],
-            "types": []
+            }
           }
         ],
         "settings": {
@@ -89,7 +86,9 @@
             "class",
             "feats",
             "bio",
-            "type"
+            "type",
+            "hp",
+            "tempHP"
           ],
           "merge": [
             "saves",
@@ -158,7 +157,8 @@
           "preRemoveConditionText": "",
           "postRemoveConditionText": ""
         },
-        "name": ""
+        "name": "",
+        "img": ""
       }
     },
     "uses": {
