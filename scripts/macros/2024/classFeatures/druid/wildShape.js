@@ -115,7 +115,7 @@ async function use({workflow}) {
         if (shouldChange) itemUpdates.push(currItem);
     }
     await genericUtils.updateEmbeddedDocuments(newActor, 'Item', itemUpdates);
-    let effect = await effectUtils.createEffect(newActor, effectData, {vae: [{type: 'use', name: featureData.name, identifier: 'wildShapeRevert'}], identifier: 'wildShapeActive'});
+    let effect = await effectUtils.createEffect(newActor, effectData, {vae: [{type: 'use', name: featureData.name, identifier: 'wildShapeRevert'}], identifier: 'wildShapeActive', rules: 'modern'});
     await itemUtils.createItems(newActor, [featureData], {favorite: true, parentEntity: effect});
 }
 async function preRevert({workflow}) {

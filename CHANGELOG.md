@@ -1,3 +1,9 @@
+# 1.4.17 Release:
+## New Modern Content:
+- Feline Form
+## Bug Fixes:
+- Wild Shape
+
 # 1.4.16 Release:
 ## New Legacy Content:
 - Debilitating Barrage

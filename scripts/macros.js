@@ -423,6 +423,8 @@ export {supremeSneak} from './macros/2024/classFeatures/rogue/thief/supremeSneak
 export {magicalCunning} from './macros/2024/classFeatures/warlock/magicalCunning.js';
 // Archfey
 export {stepsOfTheFey} from './macros/2024/classFeatures/warlock/archfey/stepsOfTheFey.js';
+// Feline
+export {felineForm, felineFormActive} from './macros/2024/classFeatures/warlock/feline/felineForm.js';
 // Invocations
 export {pactOfTheChain} from './macros/2024/classFeatures/warlock/invocations/pactOfTheChain.js';
 export {pactOfTheBlade, pactOfTheBladeAttack} from './macros/2024/classFeatures/warlock/invocations/pactOfTheBlade.js';

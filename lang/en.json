@@ -1493,6 +1493,9 @@
             "FateGambler": {
                 "SkillOrAbility": "Was this a successful check against another creature that has a CR higher than 0?"
             },
+            "FelineForm": {
+                "Revert": "Feline Form: Revert"
+            },
             "FeyStep": {
                 "Autumn": "Fey Step (Autumn)",
                 "Charmed": "Fep Step (Autumn): Charmed",
