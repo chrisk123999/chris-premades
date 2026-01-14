@@ -300,7 +300,7 @@ export class Crosshairs extends foundry.canvas.placeables.MeasuredTemplate {
     _mouseWheelHandler(event) {
         if (event.ctrlKey) event.preventDefault(); // Avoid zooming the browser window
         if (!event.altKey) event.stopPropagation();
-        const delta = canvas.grid.type > CONST.GRID_TYPES.SQUARE ? 30 : 15;
+        const delta = canvas.grid.type > CONST.GRID_TYPES.SQUARE ? genericUtils.convertDistance(30) : genericUtils.convertDistance(15);
         const snap = event.ctrlKey ? delta : 5;
         const document = this.document;
         const thisSceneSize = this.scene.grid.size;

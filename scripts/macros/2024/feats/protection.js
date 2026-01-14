@@ -8,7 +8,7 @@ async function early({trigger: {entity: item, token}, workflow}) {
     if (!token.actor.items.some(i => i.system.equipped && i.system.type.value === 'shield')) return;
     if (!tokenUtils.canSee(token, workflow.token)) return;
     let targetToken = workflow.targets.first();
-    if (tokenUtils.getDistance(token, targetToken, {wallsBlock: true}) > 5) return;
+    if (tokenUtils.getDistance(token, targetToken, {wallsBlock: true}) > genericUtils.convertDistance(5)) return;
     let selection = await dialogUtils.confirm(item.name, genericUtils.format('CHRISPREMADES.Macros.Protection.Protect', {tokenName: targetToken.name}), {userId: socketUtils.firstOwner(item.parent, true)});
     if (!selection) return;
     let targetEffectData = {
@@ -79,7 +79,7 @@ async function moved({trigger: {token, entity: effect}, options}) {
     {
         let protector = fromUuidSync(effect.flags['chris-premades'].protection.protector);
         if (!protector) return;
-        if (tokenUtils.getDistance(token, protector, {wallsBlock: true}) > 5)
+        if (tokenUtils.getDistance(token, protector, {wallsBlock: true}) > genericUtils.convertDistance(5))
         {
             await genericUtils.remove(targetEffect);
         }
@@ -88,7 +88,7 @@ async function moved({trigger: {token, entity: effect}, options}) {
     {
         let target = fromUuidSync(effect.flags['chris-premades'].protection.target);
         if (!target) return;
-        if (tokenUtils.getDistance(token, target, {wallsBlock: true}) > 5)
+        if (tokenUtils.getDistance(token, target, {wallsBlock: true}) > genericUtils.convertDistance(5))
         {
             await genericUtils.remove(protectorEffect);
         }

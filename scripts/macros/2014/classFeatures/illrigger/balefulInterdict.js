@@ -62,7 +62,7 @@ async function damaged({trigger, workflow}) {
 }
 async function distance({trigger, workflow}) {
     let combatMasteryUnfettered = itemUtils.getItemByIdentifier(workflow.actor, 'combatMasteryUnfettered');
-    let maxDistance = combatMasteryUnfettered ? 60 : 30;
+    let maxDistance = combatMasteryUnfettered ? genericUtils.convertDistance(60) : genericUtils.convertDistance(30);
     if (tokenUtils.getDistance(workflow.token, workflow.targets.first()) <= maxDistance) return;
     workflow.aborted = true;
     genericUtils.notify('CHRISPREMADES.Macros.BalefulInterdict.Move.TooFar', 'info', {localize: true});
@@ -117,7 +117,7 @@ async function move({trigger, workflow}) {
         targetToken = validTokens[0];
     }
     let distance = tokenUtils.getDistance(targetToken, workflow.targets.first());
-    if (distance > 30) {
+    if (distance > genericUtils.convertDistance(30)) {
         genericUtils.notify('CHRISPREMADES.Macros.BalefulInterdict.Move.TooFar', 'info', {localize: true});
         return;
     }

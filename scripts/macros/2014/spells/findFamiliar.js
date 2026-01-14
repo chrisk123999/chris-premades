@@ -105,7 +105,7 @@ async function use({workflow}) {
                 }
             }
         }
-        genericUtils.setProperty(updates, 'actor.system.attributes.movement.' + movement, 40);
+        genericUtils.setProperty(updates, 'actor.system.attributes.movement.' + movement, genericUtils.convertDistance(40));
         let commandFeature = activityUtils.getActivityByIdentifier(investmentOfTheChainMaster, 'findFamiliarCommand', {strict: true});
         if (!commandFeature) return;
         unhideActivities.push({
@@ -307,7 +307,7 @@ async function late({workflow}) {
     let effect = effectUtils.getEffectByIdentifier(workflow.actor, 'findFamiliar');
     if (!effect) return;
     let familiarToken = canvas.scene.tokens.get(effect.flags['chris-premades'].summons.ids[effect.name][0]);
-    if (!familiarToken || tokenUtils.getDistance(workflow.token, familiarToken) > 100) {
+    if (!familiarToken || tokenUtils.getDistance(workflow.token, familiarToken) > genericUtils.convertDistance(100)) {
         genericUtils.notify('CHRISPREMADES.Macros.FindFamiliar.TooFar', 'info');
         return;
     }

@@ -22,9 +22,9 @@ function collectTokenMacros(token, pass, target) {
         if (macro.distance === 'paladin') {
             let paladinLevels = token.actor.classes?.paladin?.system?.levels;
             if (!paladinLevels) return;
-            let maxRange = paladinLevels >= 18 ? 30 : 10;
+            let maxRange = paladinLevels >= 18 ? genericUtils.convertDistance(30) : genericUtils.convertDistance(10);
             if (maxRange < distance) return;
-        } else if (macro.distance < distance) return;
+        } else if (genericUtils.convertDistance(macro.distance) < distance) return;
         if (macro.disposition) {
             if (macro.disposition === 'ally' && token.disposition != target?.disposition) return;
             if (macro.disposition === 'enemy' && token.disposition === target?.disposition) return;

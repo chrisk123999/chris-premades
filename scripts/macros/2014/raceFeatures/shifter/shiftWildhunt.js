@@ -1,5 +1,6 @@
 import {effectUtils, itemUtils, tokenUtils} from '../../../../utils.js';
 async function use({workflow}) {
+    let effectvalue = game.settings.get("dnd5e", "metricLengthUnits") ? 'checkDistance(tokenUuid, targetUuid, 9)' : 'checkDistance(tokenUuid, targetUuid, 30)';
     let effectData = {
         name: workflow.item.name,
         img: workflow.item.img,
@@ -15,7 +16,7 @@ async function use({workflow}) {
             {
                 key: 'flags.midi-qol.grants.noAdvantage.attack.all',
                 mode: 0,
-                value: 'checkDistance(tokenUuid, targetUuid, 30)',
+                value: effectvalue,
                 priority: 20
             }
         ]
