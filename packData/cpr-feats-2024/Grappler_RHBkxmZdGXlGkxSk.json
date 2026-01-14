@@ -74,7 +74,7 @@
     },
     "chris-premades": {
       "info": {
-        "identifier": "grappler",
+        "identifier": "grapplerModern",
         "version": "1.2.36",
         "source": "chris-premades",
         "rules": "modern"
