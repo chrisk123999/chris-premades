@@ -1,0 +1,359 @@
+{
+  "name": "Debilitating Barrage",
+  "type": "feat",
+  "effects": [
+    {
+      "name": "Debilitating Barrage",
+      "img": "icons/magic/death/skull-trio-badge-purple.webp",
+      "origin": "Actor.oGXY1CS6ZXBzNHP0.Item.yKjfw0dJF8UnOyOo",
+      "transfer": false,
+      "_id": "qIfLryufw3kuWylJ",
+      "type": "base",
+      "system": {},
+      "changes": [
+        {
+          "key": "system.traits.dv.value",
+          "mode": 2,
+          "value": "acid",
+          "priority": 20
+        }
+      ],
+      "disabled": false,
+      "duration": {
+        "startTime": null,
+        "combat": null,
+        "seconds": null,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "statuses": [],
+      "sort": 0,
+      "flags": {
+        "dnd5e": {
+          "riders": {
+            "statuses": []
+          }
+        },
+        "dae": {
+          "enableCondition": "",
+          "disableCondition": "",
+          "stackable": "noneName",
+          "showIcon": false,
+          "disableIncapacitated": false,
+          "selfTarget": false,
+          "selfTargetAlways": false,
+          "dontApply": true,
+          "durationExpression": "",
+          "macroRepeat": "none",
+          "specialDuration": []
+        },
+        "core": {
+          "overlay": false
+        },
+        "chris-premades": {
+          "noAnimation": false,
+          "conditions": [],
+          "specialDuration": [],
+          "templateEffectActivities": [],
+          "info": {
+            "identifier": "debilitatingBarrageEffect"
+          },
+          "rules": "legacy",
+          "macros": {
+            "midi": {
+              "actor": [
+                "debilitatingBarrageEffect"
+              ]
+            }
+          }
+        }
+      },
+      "_key": "!items.effects!Rl1fFUPkQRRcr1py.qIfLryufw3kuWylJ"
+    },
+    {
+      "name": "Debilitating Barrage: Immune",
+      "img": "icons/magic/death/skull-trio-badge-purple.webp",
+      "origin": "Actor.oGXY1CS6ZXBzNHP0.Item.yKjfw0dJF8UnOyOo",
+      "transfer": false,
+      "_id": "g0r0tdrGQV701fOz",
+      "type": "base",
+      "system": {},
+      "changes": [],
+      "disabled": false,
+      "duration": {
+        "startTime": null,
+        "combat": null,
+        "seconds": 86400,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "statuses": [],
+      "sort": 0,
+      "flags": {
+        "chris-premades": {
+          "noAnimation": false,
+          "conditions": [],
+          "specialDuration": [],
+          "templateEffectActivities": [],
+          "info": {
+            "identifier": "debilitatingBarrageImmune"
+          },
+          "rules": "legacy"
+        },
+        "dnd5e": {
+          "riders": {
+            "statuses": []
+          }
+        },
+        "dae": {
+          "enableCondition": "",
+          "disableCondition": "",
+          "stackable": "noneName",
+          "showIcon": false,
+          "disableIncapacitated": false,
+          "selfTarget": false,
+          "selfTargetAlways": false,
+          "dontApply": true,
+          "durationExpression": "",
+          "macroRepeat": "none",
+          "specialDuration": []
+        },
+        "core": {
+          "overlay": false
+        }
+      },
+      "_key": "!items.effects!Rl1fFUPkQRRcr1py.g0r0tdrGQV701fOz"
+    }
+  ],
+  "system": {
+    "activities": {
+      "utilityDeBaclNe0": {
+        "name": "",
+        "type": "utility",
+        "_id": "utilityDeBaclNe0",
+        "sort": 0,
+        "activation": {
+          "type": "special",
+          "value": 1,
+          "condition": "",
+          "override": false
+        },
+        "consumption": {
+          "targets": [
+            {
+              "type": "itemUses",
+              "value": "3",
+              "target": "mVEThtqff3oSoR9B"
+            }
+          ],
+          "scaling": {
+            "allowed": false,
+            "max": ""
+          },
+          "spellSlot": true
+        },
+        "description": {
+          "chatFlavor": ""
+        },
+        "duration": {
+          "value": "1",
+          "units": "minute",
+          "special": "",
+          "concentration": false,
+          "override": false
+        },
+        "effects": [
+          {
+            "_id": "qIfLryufw3kuWylJ",
+            "level": {
+              "min": null,
+              "max": null
+            }
+          },
+          {
+            "_id": "g0r0tdrGQV701fOz",
+            "level": {
+              "min": null,
+              "max": null
+            }
+          }
+        ],
+        "range": {
+          "units": "any",
+          "special": "",
+          "override": false
+        },
+        "target": {
+          "prompt": true,
+          "affects": {
+            "count": "1",
+            "type": "creature",
+            "choice": false,
+            "special": ""
+          },
+          "template": {
+            "count": "",
+            "contiguous": false,
+            "type": "",
+            "size": "",
+            "width": "",
+            "height": "",
+            "units": "ft"
+          },
+          "override": false
+        },
+        "uses": {
+          "spent": 0,
+          "recovery": [],
+          "max": ""
+        },
+        "roll": {
+          "prompt": false,
+          "visible": false,
+          "name": "",
+          "formula": ""
+        },
+        "useConditionText": "",
+        "useConditionReason": "",
+        "effectConditionText": "",
+        "macroData": {
+          "name": "",
+          "command": ""
+        },
+        "ignoreTraits": {
+          "idi": false,
+          "idr": false,
+          "idv": false,
+          "ida": false,
+          "idm": false
+        },
+        "midiProperties": {
+          "ignoreTraits": [],
+          "triggeredActivityId": "none",
+          "triggeredActivityConditionText": "",
+          "triggeredActivityTargets": "targets",
+          "triggeredActivityRollAs": "self",
+          "confirmTargets": "default",
+          "automationOnly": false,
+          "identifier": "",
+          "autoConsume": false,
+          "forceConsumeDialog": "default",
+          "forceRollDialog": "default",
+          "forceDamageDialog": "default",
+          "autoTargetType": "any",
+          "autoTargetAction": "default",
+          "otherActivityCompatible": false,
+          "otherActivityAsParentType": true,
+          "displayActivityName": false,
+          "rollMode": "default",
+          "chooseEffects": false,
+          "toggleEffect": false,
+          "ignoreFullCover": false,
+          "removeChatButtons": "default",
+          "magicEffect": false,
+          "magicDamage": false,
+          "noConcentrationCheck": false,
+          "autoCEEffects": "none",
+          "skipConcentrationCheck": false
+        },
+        "isOverTimeFlag": false,
+        "overTimeProperties": {
+          "saveRemoves": true,
+          "preRemoveConditionText": "",
+          "postRemoveConditionText": ""
+        },
+        "otherActivityId": "none",
+        "otherActivityAsParentType": true,
+        "flags": {},
+        "visibility": {
+          "level": {
+            "min": null,
+            "max": null
+          },
+          "requireAttunement": false,
+          "requireIdentification": false,
+          "requireMagic": false,
+          "identifier": ""
+        },
+        "img": ""
+      }
+    },
+    "uses": {
+      "spent": null,
+      "recovery": [],
+      "max": ""
+    },
+    "advancement": [],
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "identifier": "debilitating-barrage",
+    "source": {
+      "book": "TCSR",
+      "page": "",
+      "license": "",
+      "custom": "",
+      "rules": "2014",
+      "revision": 1
+    },
+    "crewed": false,
+    "enchant": {},
+    "prerequisites": {
+      "items": [],
+      "level": 17,
+      "repeatable": false
+    },
+    "properties": [],
+    "requirements": "",
+    "type": {
+      "value": "class",
+      "subtype": ""
+    }
+  },
+  "flags": {
+    "dnd5e": {
+      "advancementOrigin": "9dS70jJbQDrSMkRj",
+      "riders": {
+        "activity": []
+      }
+    },
+    "chris-premades": {
+      "info": {
+        "identifier": "debilitatingBarrage",
+        "rules": "legacy",
+        "source": "chris-premades",
+        "version": "1.4.8"
+      },
+      "macros": {
+        "midi": {
+          "item": [
+            "debilitatingBarrage"
+          ],
+          "actor": [
+            "debilitatingBarrage"
+          ]
+        },
+        "item": [
+          "debilitatingBarrage"
+        ]
+      },
+      "hiddenActivities": [],
+      "activityIdentifiers": {
+        "use": "utilityDeBaclNe0"
+      }
+    }
+  },
+  "img": "icons/magic/death/skull-trio-badge-purple.webp",
+  "folder": "2tALLZj4bgSYI7YF",
+  "_id": "Rl1fFUPkQRRcr1py",
+  "_key": "!items!Rl1fFUPkQRRcr1py"
+}

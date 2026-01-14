@@ -143,8 +143,6 @@ async function early({workflow}) {
             cost = Number(numSpent);
             let currMisfire = itemUtils.getConfig(workflow.item, 'misfire');
             workflow.item = workflow.item.clone({'flags.chris-premades.firearm.violent': cost, 'flags.chris-premades.config.misfire': Number(currMisfire) + 2 * cost}, {keepId: true});
-            workflow.item.prepareData();
-            workflow.item.applyActiveEffects();
             break;
         }
         case 'wingingShot':

@@ -42,6 +42,7 @@ export {transform} from './macros/2014/monsterFeatures/generic/transform.js';
 export {undeadFortitude} from './macros/2014/monsterFeatures/generic/undeadFortitude.js';
 export {autoProne} from './macros/2014/monsterFeatures/generic/autoProne.js';
 export {grappleAttackAdvantage} from './macros/2014/monsterFeatures/generic/grappleAttackAdvantage.js';
+export {engulf, engulfEffect} from './macros/2014/monsterFeatures/generic/engulf.js';
 // Mechanics
 export {cleaveMastery, grazeMastery, pushMastery, sapMastery, slowMastery, toppleMastery, vexMastery} from './macros/2024/mechanics/masteries.js';
 export {invisible} from './macros/2024/mechanics/invisible.js';
@@ -214,6 +215,7 @@ export {unarmedStrike} from './macros/2024/items/misc/unarmedStrike.js';
 export {deckOfIllusions} from './macros/2024/items/trinket/deckOfIllusions.js';
 export {ringOfSpellStoring, ringOfSpellStoringSpell} from './macros/2024/items/trinket/ringOfSpellStoring.js';
 export {orbOfDamara, orbOfDamaraEffect} from './macros/2024/items/trinket/orbOfDamara.js';
+export {maskOfMonstrousForms} from './macros/2024/items/trinket/maskOfMonstrousForms.js';
 // Feats
 export {alert} from './macros/2024/feats/alert.js';
 export {archery} from './macros/2024/feats/archery.js';
@@ -242,6 +244,7 @@ export {iPiercedTheIllusion} from './macros/2024/feats/iPiercedTheIllusion.js';
 export {iSurvivedToTellTheTale} from './macros/2024/feats/iSurvivedToTellTheTale.js';
 export {iFoughtILived} from './macros/2024/feats/iFoughtILived.js';
 export {vampiresPlaything} from './macros/2024/feats/vampiresPlaything.js';
+export {fateGambler} from './macros/2024/feats/fateGambler.js';
 // Species Features
 // Aasimar
 export {healingHands} from './macros/2024/speciesFeatures/aasimar/healingHands.js';
@@ -420,6 +423,8 @@ export {supremeSneak} from './macros/2024/classFeatures/rogue/thief/supremeSneak
 export {magicalCunning} from './macros/2024/classFeatures/warlock/magicalCunning.js';
 // Archfey
 export {stepsOfTheFey} from './macros/2024/classFeatures/warlock/archfey/stepsOfTheFey.js';
+// Feline
+export {felineForm, felineFormActive} from './macros/2024/classFeatures/warlock/feline/felineForm.js';
 // Invocations
 export {pactOfTheChain} from './macros/2024/classFeatures/warlock/invocations/pactOfTheChain.js';
 export {pactOfTheBlade, pactOfTheBladeAttack} from './macros/2024/classFeatures/warlock/invocations/pactOfTheBlade.js';

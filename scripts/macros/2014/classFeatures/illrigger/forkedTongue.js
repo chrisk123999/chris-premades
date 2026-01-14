@@ -2,7 +2,7 @@ import {DialogApp} from '../../../../applications/dialog.js';
 import {constants, effectUtils, genericUtils, itemUtils} from '../../../../utils.js';
 async function use({trigger, workflow}) {
     let classIdentifier = itemUtils.getConfig(workflow.item, 'classIdentifier');
-    let levels = workflow.actor.classes[classIdentifier]?.levels;
+    let levels = workflow.actor.classes[classIdentifier]?.system?.levels;
     let effect = effectUtils.getEffectByIdentifier(workflow.actor, 'forkedTongueEffect');
     let previousLanguages = [];
     if (effect) {

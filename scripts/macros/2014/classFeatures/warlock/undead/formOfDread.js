@@ -96,7 +96,8 @@ export let formOfDread = {
             default: '',
             category: 'animation'
         }
-    ]
+    ],
+    hasAnimation: true
 };
 export let formOfDreadActive = {
     name: 'Form of Dread: Active',

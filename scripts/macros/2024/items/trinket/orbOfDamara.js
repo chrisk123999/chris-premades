@@ -11,7 +11,7 @@ async function use({trigger, workflow}) {
     effectData.origin = sourceEffect.uuid;
     await effectUtils.createEffect(workflow.actor, effectData);
 }
-async function turnStart({trigger: {entity: effect, token, target}}) {
+async function turnStart({trigger: {entity: effect, target}}) {
     let immuneEffect = effectUtils.getEffectByIdentifier(target.actor, 'orbOfDamaraImmune');
     if (immuneEffect) return;
     let origin = await fromUuid(effect.origin);
@@ -54,7 +54,7 @@ export let orbOfDamaraEffect = {
             priority: 50,
             macro: turnStart,
             distance: 20,
-            isposition: 'enemy'
+            disposition: 'enemy'
         }
     ]
 };

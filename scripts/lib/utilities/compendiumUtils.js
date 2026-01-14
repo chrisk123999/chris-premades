@@ -28,6 +28,7 @@ async function getCPRAutomation(item, {identifier, rules = 'legacy', type = 'cha
                     if (genericUtils.getCPRSetting('thirdParty')) keys.push(constants.packs.thirdPartyItems);
                 } else {
                     keys.push(constants.modernPacks.items);
+                    if (genericUtils.getCPRSetting('thirdParty')) keys.push(constants.modernPacks.thirdPartyItems);
                 }
                 break;
             case 'feat':

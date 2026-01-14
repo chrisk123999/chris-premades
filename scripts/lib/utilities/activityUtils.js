@@ -33,6 +33,7 @@ function withChangedDamage(activity, formulaOrObj, types=[], {specificIndex = 0}
     let activityData = genericUtils.duplicate(activity.toObject());
     let isHeal = activityData.type === 'heal';
     let isFormula = foundry.utils.getType(formulaOrObj) !== 'Object';
+    let magicalBonus = activity.item?.system.properties.has('mgc') ? activity.item?.system.magicalBonus || '' : '';
     let formula, number, denomination, bonus;
     if (isFormula) {
         formula = formulaOrObj;
@@ -65,7 +66,7 @@ function withChangedDamage(activity, formulaOrObj, types=[], {specificIndex = 0}
             activityData.damage.parts[specificIndex] = {
                 number: number,
                 denomination: denomination,
-                bonus: bonus + ' + @mod'
+                bonus: bonus + ' + @mod ' + (magicalBonus ? '+ ' + magicalBonus : '')
             };
         }
         else if (activityData.damage.parts[specificIndex]) {

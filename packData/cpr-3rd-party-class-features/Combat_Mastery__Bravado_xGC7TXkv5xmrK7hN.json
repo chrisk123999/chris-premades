@@ -60,7 +60,7 @@
           }
         }
       },
-      "description": "<p>While you are not wearing any armor, your Armor Class equals 10 + your Dexterity modifier + your Charisma modifier. You can use a shield and still gain this benefit.</p>",
+      "description": "",
       "img": "icons/skills/melee/maneuver-greatsword-yellow.webp",
       "_id": "ZsGzQQC8N5KL3HjC",
       "type": "base",

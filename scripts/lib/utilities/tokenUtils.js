@@ -130,12 +130,26 @@ function canSense(sourceToken, targetToken, senseModes = ['all']) {
     return MidiQOL.canSense(sourceToken, targetToken, senseModes);
 }
 async function attachToToken(token, uuidsToAttach) {
-    let currAttached = token.document.flags?.['chris-premades']?.attached?.attachedEntityUuids ?? [];
+    let currAttached = new Set(token.document.flags?.['chris-premades']?.attached?.attachedEntityUuids ?? []);
+    uuidsToAttach.forEach(uuid => currAttached.add(uuid));
     await genericUtils.update(token.document, {
         flags: {
             'chris-premades': {
                 attached: {
-                    attachedEntityUuids: currAttached.concat(...uuidsToAttach)
+                    attachedEntityUuids: Array.from(currAttached)
+                }
+            }
+        }
+    });
+}
+async function detachFromToken(token, uuidsToDetatch) {
+    let currAttached = new Set(token.document.flags?.['chris-premades']?.attached?.attachedEntityUuids ?? []);
+    uuidsToDetatch.forEach(uuid => currAttached.delete(uuid));
+    await genericUtils.update(token.document, {
+        flags: {
+            'chris-premades': {
+                attached: {
+                    attachedEntityUuids: Array.from(currAttached)
                 }
             }
         }
@@ -478,5 +492,6 @@ export let tokenUtils = {
     getMovementHitTokens,
     getLinearDistanceMoved,
     isGrappledBy,
-    mountToken
+    mountToken,
+    detachFromToken
 };

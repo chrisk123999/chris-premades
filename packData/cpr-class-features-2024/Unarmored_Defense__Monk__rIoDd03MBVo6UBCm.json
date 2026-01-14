@@ -64,7 +64,7 @@
           }
         }
       },
-      "description": "<p>While you aren’t wearing armor or wielding a Shield, your base AC equals [[10+ @abilities.dex.mod+ @abilities.wis.mod]].</p>",
+      "description": "",
       "img": "icons/magic/control/buff-flight-wings-runes-red.webp",
       "_id": "9s8GMffkNxlDeDmX",
       "type": "base",

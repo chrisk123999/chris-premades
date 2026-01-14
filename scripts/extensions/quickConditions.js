@@ -13,12 +13,12 @@ function onRender(application, element, context, options) {
     });
 }
 function ready() {
-    Hooks.on('renderMidiActivitySheet', onRender);
+    Hooks.on('renderActivitySheet', onRender);
     // eslint-disable-next-line no-undef
     Handlebars.registerHelper(helpers);
 }
 function off() {
-    Hooks.off('renderMidiActivitySheet', onRender);
+    Hooks.off('renderActivitySheet', onRender);
 }
 /* Handlebars functions */
 let helpers = {

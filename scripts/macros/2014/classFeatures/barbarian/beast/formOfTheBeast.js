@@ -22,6 +22,16 @@ export let formOfTheBeast = {
             }
         ]
     },
+    config: [
+        {
+            value: 'classIdentifier',
+            label: 'CHRISPREMADES.Config.ClassIdentifier',
+            type: 'text',
+            default: 'barbarian',
+            category: 'homebrew',
+            homebrew: true
+        }
+    ],
     ddbi: {
         removedItems: {
             'Form of the Beast': [

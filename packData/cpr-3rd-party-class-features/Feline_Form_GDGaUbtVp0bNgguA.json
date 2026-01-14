@@ -1,0 +1,229 @@
+{
+  "name": "Feline Form",
+  "type": "feat",
+  "effects": [],
+  "system": {
+    "activities": {
+      "quYQLje6y8Lp5Yra": {
+        "type": "transform",
+        "_id": "quYQLje6y8Lp5Yra",
+        "sort": 0,
+        "activation": {
+          "type": "bonus",
+          "override": false,
+          "condition": ""
+        },
+        "consumption": {
+          "scaling": {
+            "allowed": false
+          },
+          "spellSlot": true,
+          "targets": []
+        },
+        "description": {
+          "chatFlavor": ""
+        },
+        "duration": {
+          "units": "inst",
+          "concentration": false,
+          "override": false,
+          "value": ""
+        },
+        "effects": [],
+        "flags": {},
+        "range": {
+          "units": "self",
+          "override": false,
+          "special": ""
+        },
+        "target": {
+          "template": {
+            "contiguous": false,
+            "units": "ft",
+            "type": ""
+          },
+          "affects": {
+            "choice": false,
+            "type": "self",
+            "special": ""
+          },
+          "override": false,
+          "prompt": true
+        },
+        "uses": {
+          "spent": 0,
+          "recovery": [],
+          "max": ""
+        },
+        "visibility": {
+          "level": {
+            "min": null,
+            "max": null
+          },
+          "requireAttunement": false,
+          "requireIdentification": false,
+          "requireMagic": false,
+          "identifier": ""
+        },
+        "profiles": [
+          {
+            "name": "",
+            "_id": "IMoZCqf2lCGJbtL2",
+            "uuid": "Actor.dAQzJEfTTFzygl5w",
+            "level": {
+              "min": null,
+              "max": null
+            }
+          }
+        ],
+        "settings": {
+          "effects": [
+            "all"
+          ],
+          "keep": [
+            "mental",
+            "languages",
+            "class",
+            "feats",
+            "bio",
+            "type",
+            "hp",
+            "tempHP"
+          ],
+          "merge": [
+            "saves",
+            "skills"
+          ],
+          "minimumAC": "",
+          "spellLists": [
+            "subclass:feline"
+          ],
+          "tempFormula": "",
+          "preset": "wildshape",
+          "other": [],
+          "transformTokens": true
+        },
+        "transform": {
+          "customize": true,
+          "mode": "",
+          "preset": "wildshape"
+        },
+        "useConditionText": "",
+        "useConditionReason": "",
+        "effectConditionText": "",
+        "macroData": {
+          "name": "",
+          "command": ""
+        },
+        "ignoreTraits": {
+          "idi": false,
+          "idr": false,
+          "idv": false,
+          "ida": false,
+          "idm": false
+        },
+        "midiProperties": {
+          "ignoreTraits": [],
+          "triggeredActivityId": "none",
+          "triggeredActivityConditionText": "",
+          "triggeredActivityTargets": "targets",
+          "triggeredActivityRollAs": "self",
+          "autoConsume": false,
+          "forceConsumeDialog": "default",
+          "forceRollDialog": "default",
+          "forceDamageDialog": "default",
+          "confirmTargets": "default",
+          "autoTargetType": "any",
+          "autoTargetAction": "default",
+          "automationOnly": false,
+          "otherActivityCompatible": true,
+          "otherActivityAsParentType": true,
+          "identifier": "",
+          "displayActivityName": false,
+          "rollMode": "default",
+          "chooseEffects": false,
+          "toggleEffect": false,
+          "ignoreFullCover": false,
+          "removeChatButtons": "default",
+          "magicEffect": false,
+          "magicDamage": false,
+          "noConcentrationCheck": false,
+          "skipConcentrationCheck": false,
+          "autoCEEffects": "none"
+        },
+        "isOverTimeFlag": false,
+        "overTimeProperties": {
+          "saveRemoves": true,
+          "preRemoveConditionText": "",
+          "postRemoveConditionText": ""
+        },
+        "name": "",
+        "img": ""
+      }
+    },
+    "uses": {
+      "spent": 0,
+      "max": "1 * @abilities.cha.mod",
+      "recovery": [
+        {
+          "period": "lr",
+          "type": "recoverAll"
+        }
+      ]
+    },
+    "advancement": [],
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "identifier": "feline-form",
+    "source": {
+      "book": "CtbT",
+      "page": "",
+      "license": "",
+      "custom": "",
+      "rules": "2024",
+      "revision": 1
+    },
+    "crewed": false,
+    "enchant": {},
+    "prerequisites": {
+      "items": [],
+      "level": 3,
+      "repeatable": false
+    },
+    "properties": [],
+    "requirements": "",
+    "type": {
+      "value": "class",
+      "subtype": ""
+    }
+  },
+  "flags": {
+    "dnd5e": {
+      "advancementOrigin": "cCJXqXjT3OnMrwv6",
+      "riders": {
+        "activity": []
+      }
+    },
+    "chris-premades": {
+      "info": {
+        "identifier": "felineForm",
+        "rules": "modern",
+        "source": "chris-premades",
+        "version": "1.4.17"
+      },
+      "macros": {
+        "midi": {
+          "item": [
+            "felineForm"
+          ]
+        }
+      }
+    }
+  },
+  "img": "icons/creatures/mammals/cat-hunched-glowing-red.webp",
+  "folder": "eZZEXMzz4OnTv1Ay",
+  "_id": "GDGaUbtVp0bNgguA",
+  "_key": "!items!GDGaUbtVp0bNgguA"
+}

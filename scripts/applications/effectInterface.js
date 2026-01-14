@@ -381,15 +381,16 @@ async function checkEffectItem() {
     if (!statusEffectDatas.length) return;
     await genericUtils.createEmbeddedDocuments(effectItem, 'ActiveEffect', statusEffectDatas, {keepId: true, 'chris-premades': {ignore: true}});
 }
-function fromStatusEffect(wrapped, statusId, options = {}) {
+async function fromStatusEffect(wrapped, statusId, options = {}) {
     if (options.passThrough || !effectItem) return wrapped(statusId, options);
     let effect = effectItem.effects.find(i => i.flags['chris-premades']?.effectInterface?.status === statusId);
     if (!effect) effect = effectItem.effects.find(i => i.flags['chris-premades']?.effectInterface?.customStatus === statusId);
-    if (!effect) return wrapped(statusId, options);
+    if (!effect) return await wrapped(statusId, options);
     let effectData = effect.toObject();
     delete effectData.origin;
     delete effectData._stats;
-    let fixedEffect = effectUtils.syntheticActiveEffect(effectData, effectItem);
+    delete effectData.parent;
+    let fixedEffect = effectUtils.syntheticActiveEffect(effectData);
     return fixedEffect;
 }
 function patch(enabled) {

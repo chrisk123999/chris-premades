@@ -61,7 +61,7 @@
         "startRound": null,
         "startTurn": null
       },
-      "description": "<p><em>This feature is safe to rename.</em></p>",
+      "description": "",
       "origin": "Actor.4F5kQIpxwyb6rykH.Item.OxPxyGXAB4zCNIgm",
       "tint": "#ffffff",
       "statuses": [],
@@ -552,7 +552,14 @@
         },
         "friendlySave": "default",
         "name": "Hide",
-        "img": "icons/containers/barrels/barrel-open-brown-red.webp"
+        "img": "icons/containers/barrels/barrel-open-brown-red.webp",
+        "visibility": {
+          "level": {
+            "min": null,
+            "max": null
+          },
+          "identifier": ""
+        }
       }
     },
     "uses": {

@@ -64,7 +64,7 @@
           "rules": "modern"
         }
       },
-      "description": "<p>Your speed increases by 10 ft. while you aren’t wearing Heavy armor.</p>",
+      "description": "",
       "img": "icons/skills/movement/feet-winged-boots-brown.webp",
       "_id": "Yna0C3QoawyfkvBF",
       "type": "base",

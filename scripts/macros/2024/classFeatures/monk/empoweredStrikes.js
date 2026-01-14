@@ -11,8 +11,6 @@ async function attack({trigger: {entity: item}, workflow}) {
         if (!selection) return;
     }
     workflow.item = workflow.item.clone({'system.damage.base.types': ['force']}, {keepId: true});
-    workflow.item.prepareData();
-    workflow.item.applyActiveEffects();
     workflow.activity = workflow.item.system.activities.get(workflow.activity.id);
 }
 export let empoweredStrikes = {

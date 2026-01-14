@@ -203,6 +203,7 @@
             "DamageType": "Damage Type:",
             "DamageTypes": "Damage Types:",
             "DarknessAnimation": "Darkness Animation:",
+            "DashAnimation": "Dash Animation:",
             "DiceSize": "Dice Size:",
             "DisplayFormulaRoll": "Display Formula Roll:",
             "DisplayHint": "Display Hint:",
@@ -216,6 +217,7 @@
             "HideToken": "Hide Token:",
             "HitPoints": "Hit Points:",
             "HitTarget": "Hit Target:",
+            "IgnoredConditions": "Ignored Conditions:",
             "IgnoredCreatureTypes": "Ignored Creature Types:",
             "ImmuneCreatures": "Immune Creature Types:",
             "Items": "Items:",
@@ -262,6 +264,7 @@
             "TokenImgPriority": "Token Image Priority:",
             "TokenName": "Token Name:",
             "TokenSound": "Token Animation Sound:",
+            "TransformAnimation": "Transform Animation:",
             "Trigger": "Trigger:",
             "TurnTrigger": "Turn Trigger:",
             "UseFormula": "Use Formula:",
@@ -1260,6 +1263,9 @@
             "DanseMacabre": {
                 "CommandUndead": "Danse Macabre: Command Undead"
             },
+            "DarkBolt": {
+                "Select": "Select your targets (Max bolts: {maxBolts}):"
+            },
             "Darkness": {
                 "Attach": "Attach to self?"
             },
@@ -1421,8 +1427,11 @@
                 "ProtectiveTitle": "Protective Bond: Protect Target?"
             },
             "Engulf": {
+                "Center": "Center Token:",
                 "Grapples": "Initiates grapple",
                 "Grappling": "Grapple Behavior:",
+                "Max": "Max Engulfed:",
+                "Name": "Engulf",
                 "Requires": "Must be grappling already"
             },
             "Enlarge": {
@@ -1480,6 +1489,12 @@
             "FarStep": {
                 "Name": "Far Step",
                 "Teleport": "Far Step: Teleport"
+            },
+            "FateGambler": {
+                "SkillOrAbility": "Was this a successful check against another creature that has a CR higher than 0?"
+            },
+            "FelineForm": {
+                "Revert": "Feline Form: Revert"
             },
             "FeyStep": {
                 "Autumn": "Fey Step (Autumn)",
@@ -1551,6 +1566,9 @@
             "FormOfDread": {
                 "Fear": "Form of Dread: Fear",
                 "Use": "Attempt to frighten target?"
+            },
+            "FormOfTheBeast": {
+                "Keen": "This check is to track or stalk your prey."
             },
             "Gaze": {
                 "AllowAvert": "Allow Averting Eyes:",

@@ -249,16 +249,19 @@
             "Sound": "Som:",
             "SpecificAnimation": "Animação {option}:",
             "SpellSchools": "Escola de Magia:",
+            "Stage": "Estágio:",
             "StrandColor": "Cor do Fio:",
             "SubclassIdentifier": "Identificador de Subclasse:",
             "SummonerOnly": "Apenas Invocador:",
             "TintMap": "Tonalidade do Mapa:",
             "Token": "Token:",
+            "TokenAnimation": "Animação do Token:",
+            "TokenAnimationScale": "Escala da Animação do Token:",
             "TokenColor": "Cor do Token:",
             "TokenImg": "Imagem Token:",
             "TokenImgPriority": "Prioridade Imagem Token:",
             "TokenName": "Nome do Token:",
-            "TokenSound": "Som do Token:",
+            "TokenSound": "Som de Animação do Token:",
             "Trigger": "Gatilho:",
             "TurnTrigger": "Gatilho do Turno:",
             "UseFormula": "Usar Fórmula:",
@@ -685,6 +688,7 @@
             "Edit": "Editar",
             "Failure": "Falha",
             "Features": "Características",
+            "Four": "Quatro",
             "Go": "Ir",
             "Import": "Importar",
             "Items": "Itens",
@@ -700,6 +704,7 @@
             "NoType": "Sem Tipo",
             "None": "Nenhum(a)",
             "Ok": "Ok",
+            "One": "Um",
             "Prompt": "Aviso",
             "PromptForTargets": "Avisar para Alvos:",
             "ProtectWithItem": "Proteger {token} com {item}?",
@@ -734,9 +739,11 @@
             "Success": "Sucesso",
             "Summon": "Invocação",
             "Target": "Escolha o Alvo",
+            "Three": "Três",
             "Total": "Total",
             "TurnEnd": "Fim do Turno",
             "TurnStart": "Início do Turno",
+            "Two": "Dois",
             "Uncontested": "Não-Contestado",
             "Update": "Atualizar",
             "UseItem": "Usar {item}?",
@@ -1706,6 +1713,9 @@
                 "PredatoryStrike": "Ataque do Predador",
                 "Revert": "Transformação Híbrida: Reverter"
             },
+            "IPiercedTheIllusion": {
+                "Insight": "Este teste é contra alguém que você está conversando."
+            },
             "ImbueCard": {
                 "Select": "Com qual magia você quer imbuir uma carta?"
             },
@@ -2583,6 +2593,13 @@
                 "ProfileTwoItems": "Perfil #2 Itens:",
                 "ProfileTwoTokenImg": "Perfil #2 Imagem Token:",
                 "ProfileTwoTokenImgPriority": "Perfil #2 Prioridade Imagem Token:"
+            },
+            "Transformations": {
+                "Vampire": {
+                    "FangedBite": {
+                        "HasBlood": "O alvo tem sangue?"
+                    }
+                }
             },
             "TravelAlongTheTree": {
                 "WillingCreatures": "Escolha até seis criaturas dispostas:"

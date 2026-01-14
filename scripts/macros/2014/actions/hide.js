@@ -4,9 +4,7 @@ async function use({trigger, workflow}) {
     let playAnimation = itemUtils.getConfig(workflow.item, 'playAnimation');
     if (!playAnimation || animationUtils.jb2aCheck() != 'patreon') return;
     let effect = effectUtils.getEffectByIdentifier(workflow.actor, 'hideEffect');
-    if (effect) {
-        genericUtils.setFlag(effect, 'chris-premades', 'hide.animation', true);
-    }
+    if (effect) genericUtils.setFlag(effect, 'chris-premades', 'hide.animation', true);
     /* eslint-disable indent */
     await new Sequence()
         .effect()

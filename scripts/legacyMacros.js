@@ -153,6 +153,7 @@ export {wrathfulSmite, wrathfulSmiteDamage} from './macros/2014/spells/wrathfulS
 export {zoneOfTruth} from './macros/2014/spells/zoneOfTruth.js';
 export {absorbElements} from './macros/2014/spells/absorbElements.js';
 export {veilOfDusk} from './macros/2014/spells/veilOfDusk.js';
+export {darkBolt} from './macros/2014/spells/darkBolt.js';
 // Other
 export {actionDismissal} from './macros/2014/generic/actionDismissal.js';
 export {noConfiguration} from './macros/2014/generic/noConfiguration.js';
@@ -440,6 +441,8 @@ export {magnificentFeast, magnificentFeastMeal, magnificentFeastEffect} from './
 export {extractAspects} from './macros/2014/classFeatures/monk/wayOfCobaltSoul/extractAspects.js';
 export {extortTruth} from './macros/2014/classFeatures/monk/wayOfCobaltSoul/extortTruth.js';
 export {mindOfMercury} from './macros/2014/classFeatures/monk/wayOfCobaltSoul/mindOfMercury.js';
+export {debilitatingBarrage, debilitatingBarrageEffect} from './macros/2014/classFeatures/monk/wayOfCobaltSoul/debilitatingBarrage.js';
+export {formOfTheBeastWarlock, formOfTheBeastWarlockEffect} from './macros/2014/classFeatures/warlock/predator/formOfTheBeast.js';
 // Race Features
 export {aasimarNecroticShroud, aasimarRadiantConsumption, aasimarRadiantSoul, celestialRevelation} from './macros/2014/raceFeatures/aasimar/celestialRevelation.js';
 export {acidBreathWeapon, coldBreathWeapon, fireBreathWeapon, lightningBreathWeapon, poisonBreathWeapon} from './macros/2014/raceFeatures/dragonborn/chromatic/breathWeapon.js';
@@ -564,6 +567,7 @@ export {transform} from './macros/2014/monsterFeatures/generic/transform.js';
 export {undeadFortitude} from './macros/2014/monsterFeatures/generic/undeadFortitude.js';
 export {autoProne} from './macros/2014/monsterFeatures/generic/autoProne.js';
 export {grappleAttackAdvantage} from './macros/2014/monsterFeatures/generic/grappleAttackAdvantage.js';
+export {engulf, engulfEffect} from './macros/2014/monsterFeatures/generic/engulf.js';
 // Actions
 export {checkCover} from './macros/2014/actions/checkCover.js';
 export {dash} from './macros/2014/actions/dash.js';
@@ -685,3 +689,5 @@ export {heliodsDevotee} from './macros/2014/piety/heliod/heliodsDevotee.js';
 export {nyleasDevotee} from './macros/2014/piety/nylea/nyleasDevotee.js';
 export {karametrasDevotee} from './macros/2014/piety/karametra/karametrasDevotee.js';
 export {iroassDevotee} from './macros/2014/piety/iroas/iroassDevotee.js';
+export {phenaxsDevotee} from './macros/2014/piety/phenax/phenaxsDevotee.js';
+export {nyleasVotary} from './macros/2014/piety/nylea/nyleasVotary.js';

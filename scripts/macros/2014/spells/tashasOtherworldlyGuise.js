@@ -60,8 +60,6 @@ async function early({trigger: {entity: effect}, workflow}) {
     workflow.item = workflow.item.clone({
         'system.properties': properties
     }, {keepId: true});
-    workflow.item.prepareData();
-    workflow.item.applyActiveEffects();
     workflow.activity = activityUtils.duplicateActivity(workflow.activity);
     workflow.activity.attack.ability = ability;
 }

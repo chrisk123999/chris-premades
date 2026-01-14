@@ -1,3 +1,67 @@
+# 1.4.18 Release:
+## Bug Fixes:
+- Feline Form
+
+# 1.4.17 Release:
+## New Modern Content:
+- Feline Form
+## Bug Fixes:
+- Wild Shape
+
+# 1.4.16 Release:
+## New Legacy Content:
+- Debilitating Barrage
+
+# 1.4.15 Release:
+## New Modern Content:
+- Fate Gambler
+## Bug Fixes:
+- Trick Shot
+- Metamagic
+- Harkon's Bite
+- Insignia of Claws
+- Firearm
+- Tasha's Otherworldly Guise
+- Dazzling Footwork
+- Empowered Strikes
+
+# 1.4.14 Release:
+## New Legacy Content:
+- Nylea's Votary
+- Phenax's Devotee
+## Bug Fixes:
+- Unarmed Fighting Style (Thanks Bacon)
+- Quick Conditions
+
+# 1.4.13 Release:
+## New Generic Monster Features:
+- Engulf
+
+# 1.4.12 Release:
+## New Legacy Content:
+- Form of the Beast (Warlock)
+## New Modern Content:
+- Mask of Monstrous Forms
+## Bug Fixes:
+- Martial Arts
+- Forked Tongue
+
+# 1.4.11 Release:
+## Bug Fixes:
+- Effect Interface
+- Orb of Damara
+
+# 1.4.10 Release:
+## Bug Fixes:
+- Fixed Release Manifest
+
+# 1.4.9 Release:
+## New Legacy Content:
+- Darkbolt
+## Bug Fixes:
+- Cleave Mastery (Thanks Bacon)
+- Summon Fey (Legacy & Modern)
+
 # 1.4.8 Release:
 ## Update Notes:
 - CPR Now requires 5.2.4 of the D&D system.

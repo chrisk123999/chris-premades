@@ -17,7 +17,7 @@ async function cleave({workflow}) {
     if (workflow.item.flags['chris-premades']?.cleaveMastery) return;
     let target = workflow.hitTargets.first();
     let targetNearbyAllies = tokenUtils.findNearby(target, 5, 'ally');
-    let nearbyTargets = tokenUtils.findNearby(workflow.token, 5, 'enemy').filter(i => i != target && targetNearbyAllies.includes(i));
+    let nearbyTargets = tokenUtils.findNearby(workflow.token, workflow.rangeDetails.range ?? 5, 'enemy').filter(i => i != target && targetNearbyAllies.includes(i));
     if (!nearbyTargets.length) return;
     let selection = await dialogUtils.selectTargetDialog('CHRISPREMADES.Mastery.Cleave.Name', 'CHRISPREMADES.Cleave.Use', nearbyTargets, {skipDeadAndUnconscious: false, buttons: 'yesNo'});
     if (!selection?.length) return;
