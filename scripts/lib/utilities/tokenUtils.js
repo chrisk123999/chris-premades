@@ -251,6 +251,7 @@ async function grappleHelper(sourceToken, targetToken, item, {noContest = false,
     effectUtils.addMacro(targetEffectData, 'death', ['grapple']);
     let grappler = itemUtils.getItemByIdentifier(sourceActor, 'grappler');
     let pinData = itemUtils.getItemByIdentifier(sourceActor, 'grapplerPin');
+    if (grappler && genericUtils.getRules(grappler) === 'modern') grappler = undefined;
     if (grappler && !pinData) {
         pinData = await compendiumUtils.getItemFromCompendium(constants.featurePacks.featFeatures, 'Grappler: Pin', {object: true, getDescription: true, translate: 'CHRISPREMADES.Macros.Grappler.Pin', identifier: 'grapplerPin'});
         if (!pinData) {

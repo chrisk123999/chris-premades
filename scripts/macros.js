@@ -223,7 +223,7 @@ export {crusher} from './macros/2024/feats/crusher.js';
 export {defense} from './macros/2024/feats/defense.js';
 export {dueling} from './macros/2024/feats/dueling.js';
 export {elementalAdeptA, elementalAdeptC, elementalAdeptF, elementalAdeptL, elementalAdeptT} from './macros/2024/feats/elementalAdept.js';
-export {grapplerModern} from './macros/2024/feats/grappler.js';
+export {grappler} from './macros/2024/feats/grappler.js';
 export {greatWeaponFighting} from './macros/2024/feats/greatWeaponFighting.js';
 export {healer} from './macros/2024/feats/healer.js';
 export {heavyArmorMaster} from './macros/2024/feats/heavyArmorMaster.js';
