@@ -1,0 +1,273 @@
+{
+  "name": "Eyes of the Dark",
+  "type": "feat",
+  "effects": [
+    {
+      "name": "Eyes of the Dark",
+      "statuses": [],
+      "changes": [
+        {
+          "key": "system.attributes.senses.darkvision",
+          "mode": 4,
+          "value": "120",
+          "priority": 10
+        }
+      ],
+      "duration": {
+        "seconds": null,
+        "startTime": 214866,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null,
+        "combat": null
+      },
+      "tint": "#ffffff",
+      "transfer": true,
+      "disabled": false,
+      "flags": {
+        "dae": {
+          "showIcon": false,
+          "transfer": true,
+          "stackable": "noneNameOnly",
+          "disableCondition": "",
+          "disableIncapacitated": false,
+          "durationExpression": "",
+          "macroRepeat": "none",
+          "specialDuration": []
+        },
+        "ddbimporter": {
+          "disabled": false,
+          "passive": true,
+          "itemId": 750,
+          "itemEntityTypeId": 12168134
+        },
+        "midi-qol": {
+          "forceCEOff": true
+        },
+        "core": {
+          "overlay": false
+        },
+        "dnd5e": {
+          "riders": {
+            "statuses": []
+          }
+        }
+      },
+      "description": "",
+      "img": "icons/magic/perception/eye-ringed-glow-angry-small-teal.webp",
+      "_id": "3oSNVEHw2zlcgY6R",
+      "type": "base",
+      "system": {},
+      "origin": "Actor.oGXY1CS6ZXBzNHP0.Item.2LPvcsm8PKrBkyw2",
+      "sort": 0,
+      "_key": "!items.effects!QJMYp11TW1omdgJ7.3oSNVEHw2zlcgY6R"
+    }
+  ],
+  "system": {
+    "activities": {
+      "laFBZeRbRjEquvVZ": {
+        "type": "cast",
+        "spell": {
+          "uuid": "Compendium.world.ddb-world-ddb-spells.Item.ByVTzmjjaBBmhGeH",
+          "challenge": {
+            "override": false,
+            "attack": null,
+            "save": null
+          },
+          "properties": [],
+          "spellbook": true,
+          "ability": "",
+          "level": 2
+        },
+        "_id": "laFBZeRbRjEquvVZ",
+        "sort": 0,
+        "activation": {
+          "type": "action",
+          "override": false
+        },
+        "consumption": {
+          "scaling": {
+            "allowed": false
+          },
+          "spellSlot": true,
+          "targets": [
+            {
+              "type": "itemUses",
+              "value": "2",
+              "target": "cSYeLnBoGke4xm26",
+              "scaling": {}
+            }
+          ]
+        },
+        "description": {
+          "chatFlavor": ""
+        },
+        "duration": {
+          "units": "inst",
+          "concentration": false,
+          "override": false
+        },
+        "flags": {},
+        "range": {
+          "units": "self",
+          "override": false
+        },
+        "target": {
+          "template": {
+            "contiguous": false,
+            "units": "ft"
+          },
+          "affects": {
+            "choice": false
+          },
+          "override": false,
+          "prompt": true
+        },
+        "uses": {
+          "spent": 0,
+          "recovery": [],
+          "max": ""
+        },
+        "visibility": {
+          "level": {
+            "min": null,
+            "max": null
+          },
+          "requireAttunement": false,
+          "requireIdentification": false,
+          "requireMagic": false,
+          "identifier": ""
+        },
+        "useConditionText": "",
+        "useConditionReason": "",
+        "effectConditionText": "",
+        "macroData": {
+          "name": "",
+          "command": ""
+        },
+        "ignoreTraits": {
+          "idi": false,
+          "idr": false,
+          "idv": false,
+          "ida": false,
+          "idm": false
+        },
+        "midiProperties": {
+          "ignoreTraits": [],
+          "triggeredActivityId": "none",
+          "triggeredActivityConditionText": "",
+          "triggeredActivityTargets": "targets",
+          "triggeredActivityRollAs": "self",
+          "autoConsume": false,
+          "forceConsumeDialog": "default",
+          "forceRollDialog": "default",
+          "forceDamageDialog": "default",
+          "confirmTargets": "never",
+          "autoTargetType": "any",
+          "autoTargetAction": "default",
+          "automationOnly": false,
+          "otherActivityCompatible": true,
+          "otherActivityAsParentType": true,
+          "identifier": "",
+          "displayActivityName": false,
+          "rollMode": "default",
+          "chooseEffects": false,
+          "toggleEffect": false,
+          "ignoreFullCover": false,
+          "removeChatButtons": "default",
+          "magicEffect": false,
+          "magicDamage": false,
+          "noConcentrationCheck": false,
+          "skipConcentrationCheck": false,
+          "autoCEEffects": "default"
+        },
+        "isOverTimeFlag": false,
+        "overTimeProperties": {
+          "saveRemoves": true,
+          "preRemoveConditionText": "",
+          "postRemoveConditionText": ""
+        },
+        "name": ""
+      }
+    },
+    "uses": {
+      "spent": 0,
+      "recovery": []
+    },
+    "advancement": [],
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "identifier": "eyes-of-the-dark",
+    "source": {
+      "book": "XGtE",
+      "page": "",
+      "license": "",
+      "custom": "",
+      "rules": "2014",
+      "revision": 1
+    },
+    "crewed": false,
+    "enchant": {},
+    "prerequisites": {
+      "items": [],
+      "level": 1,
+      "repeatable": false
+    },
+    "properties": [],
+    "requirements": "",
+    "type": {
+      "value": "class",
+      "subtype": ""
+    }
+  },
+  "flags": {
+    "dae": {
+      "alwaysActive": false,
+      "activeEquipped": false
+    },
+    "midi-qol": {
+      "removeAttackDamageButtons": "default",
+      "forceCEOff": true
+    },
+    "midiProperties": {
+      "confirmTargets": "default"
+    },
+    "dnd5e": {
+      "advancementOrigin": "QQbwzdyQnStvLugL",
+      "riders": {
+        "activity": []
+      }
+    },
+    "chris-premades": {
+      "info": {
+        "identifier": "eyesOfTheDark",
+        "rules": "legacy",
+        "source": "chris-premades",
+        "version": "1.4.19"
+      },
+      "castActivities": [
+        {
+          "name": "Darkness",
+          "activityId": "laFBZeRbRjEquvVZ",
+          "identifier": "darkness"
+        }
+      ],
+      "hiddenActivities": [],
+      "activityIdentifiers": {
+        "use": "laFBZeRbRjEquvVZ"
+      },
+      "macros": {
+        "item": [
+          "eyesOfTheDark"
+        ]
+      }
+    }
+  },
+  "img": "icons/magic/perception/eye-ringed-glow-angry-small-teal.webp",
+  "folder": "Crm0hXIvAZXHjO9J",
+  "_id": "QJMYp11TW1omdgJ7",
+  "_key": "!items!QJMYp11TW1omdgJ7"
+}

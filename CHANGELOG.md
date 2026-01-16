@@ -1,6 +1,11 @@
 # 1.4.19 Release:
+## New Legacy Content:
+- Eyes of the Dark
+- Hound of Ill Omen
+- Shadow Walk
 ## Bug Fixes:
 - Protection
+- Grappler (Thanks Bacon)
 
 # 1.4.18 Release:
 ## Bug Fixes:

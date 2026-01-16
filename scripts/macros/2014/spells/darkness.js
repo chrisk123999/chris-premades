@@ -10,7 +10,7 @@ async function use({workflow}) {
         if (concentrationEffect) await genericUtils.remove(concentrationEffect);
         return;
     }
-    await genericUtils.update(template, {
+    let updates = {
         flags: {
             'chris-premades': {
                 template: {
@@ -26,7 +26,16 @@ async function use({workflow}) {
                 wallsBlock: 'recurse'
             }
         }
-    });
+    };
+    let uuid = workflow.item.flags.dnd5e?.cachedFor;
+    if (uuid) {
+        let activity = await fromUuid(uuid, {relative: workflow.actor});
+        if (activity) {
+            let identifier = genericUtils.getIdentifier(activity.item);
+            if (identifier === 'eyesOfTheDark') updates.flags['chris-premades'].template.visibility.canSeeTokens = [workflow.token.document.uuid];
+        }
+    }
+    await genericUtils.update(template, updates);
     let attachUuids = [template.uuid];
     let darknessSource;
     if (useRealDarkness) {

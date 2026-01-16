@@ -21,8 +21,10 @@ async function check(workflow) {
     let distance = tokenUtils.getDistance(source, target);
     templates.forEach(template => {
         let flagData = template.flags['chris-premades'].template.visibility;
-        let sourceCanSeeTarget = ((flagData.magicalDarkness && distance <= sourceMD) || (sourceSenses.tremorsense >= distance) || (sourceSenses.blindsight >= distance) || (sourceSenses.truesight >= distance));
-        let targetCanSeeSource = ((flagData.magicalDarkness && distance <= targetMD) || (targetSenses.tremorsense >= distance) || (targetSenses.blindsight >= distance) || (targetSenses.truesight >= distance));
+        console.log(flagData);
+        let canSeeTokens = flagData.canSeeTokens ?? [];
+        let sourceCanSeeTarget = ((flagData.magicalDarkness && distance <= sourceMD) || (sourceSenses.tremorsense >= distance) || (sourceSenses.blindsight >= distance) || (sourceSenses.truesight >= distance) || (canSeeTokens.includes(source.document.uuid)));
+        let targetCanSeeSource = ((flagData.magicalDarkness && distance <= targetMD) || (targetSenses.tremorsense >= distance) || (targetSenses.blindsight >= distance) || (targetSenses.truesight >= distance) || (canSeeTokens.includes(target.document.uuid)));
         let templateName = templateUtils.getName(template);
         if (!targetCanSeeSource) {
             workflow.advantage = true;

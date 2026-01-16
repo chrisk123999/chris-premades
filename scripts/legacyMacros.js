@@ -443,6 +443,9 @@ export {extortTruth} from './macros/2014/classFeatures/monk/wayOfCobaltSoul/exto
 export {mindOfMercury} from './macros/2014/classFeatures/monk/wayOfCobaltSoul/mindOfMercury.js';
 export {debilitatingBarrage, debilitatingBarrageEffect} from './macros/2014/classFeatures/monk/wayOfCobaltSoul/debilitatingBarrage.js';
 export {formOfTheBeastWarlock, formOfTheBeastWarlockEffect} from './macros/2014/classFeatures/warlock/predator/formOfTheBeast.js';
+export {eyesOfTheDark} from './macros/2014/classFeatures/sorcerer/shadowMagic/eyesOfTheDark.js';
+export {houndOfIllOmen} from './macros/2014/classFeatures/sorcerer/shadowMagic/houndOfIllOmen.js';
+export {shadowWalk} from './macros/2014/classFeatures/sorcerer/shadowMagic/shadowWalk.js';
 // Race Features
 export {aasimarNecroticShroud, aasimarRadiantConsumption, aasimarRadiantSoul, celestialRevelation} from './macros/2014/raceFeatures/aasimar/celestialRevelation.js';
 export {acidBreathWeapon, coldBreathWeapon, fireBreathWeapon, lightningBreathWeapon, poisonBreathWeapon} from './macros/2014/raceFeatures/dragonborn/chromatic/breathWeapon.js';
