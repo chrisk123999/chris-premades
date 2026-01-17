@@ -446,6 +446,7 @@ export {formOfTheBeastWarlock, formOfTheBeastWarlockEffect} from './macros/2014/
 export {eyesOfTheDark} from './macros/2014/classFeatures/sorcerer/shadowMagic/eyesOfTheDark.js';
 export {houndOfIllOmen} from './macros/2014/classFeatures/sorcerer/shadowMagic/houndOfIllOmen.js';
 export {shadowWalk} from './macros/2014/classFeatures/sorcerer/shadowMagic/shadowWalk.js';
+export {umbralForm} from './macros/2014/classFeatures/sorcerer/shadowMagic/umbralForm.js';
 // Race Features
 export {aasimarNecroticShroud, aasimarRadiantConsumption, aasimarRadiantSoul, celestialRevelation} from './macros/2014/raceFeatures/aasimar/celestialRevelation.js';
 export {acidBreathWeapon, coldBreathWeapon, fireBreathWeapon, lightningBreathWeapon, poisonBreathWeapon} from './macros/2014/raceFeatures/dragonborn/chromatic/breathWeapon.js';
