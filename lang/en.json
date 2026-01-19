@@ -2629,6 +2629,7 @@
                 "SelectWeapon": "Attack with what weapon?"
             },
             "TwilightSanctuary": {
+                "AutoHP": "Auto apply temp HP when only option:",
                 "Charmed": "Remove the Charmed condition",
                 "Frightened": "Remove the Frightened condition",
                 "Heal": "Grant {formula} temporary HP",

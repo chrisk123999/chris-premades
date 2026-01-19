@@ -198,12 +198,19 @@ async function turnEnd({trigger: {entity: effect, token, target}}) {
     buttons.push(['DND5E.None', false]);
     let userId = socketUtils.firstOwner(token, true);
     if (!userId) return;
-    let selection = await dialogUtils.buttonDialog(effect.name, 'CHRISPREMADES.Dialog.WhatDo', buttons, {userId});
+    let originItem = await effectUtils.getOriginItem(effect);
+    let autoApplyHP = itemUtils.getConfig(originItem, 'autoApplyHP');
+    let selection;
+    if (autoApplyHP && buttons.length === 2) {
+        selection = 'hp';
+    } else {
+        selection = await dialogUtils.buttonDialog(effect.name, 'CHRISPREMADES.Dialog.WhatDo', buttons, {userId});
+    }
     if (!selection) return;
     if (selection === 'hp') {
-        let feature = activityUtils.getActivityByIdentifier(await effectUtils.getOriginItem(effect), 'twilightSanctuaryHeal', {strict: true});
+        let feature = activityUtils.getActivityByIdentifier(originItem, 'twilightSanctuaryHeal', {strict: true});
         if (!feature) return;
-        await workflowUtils.syntheticActivityRoll(feature, [target]);
+        await workflowUtils.syntheticActivityRoll(feature, [target], {options: {asUser: socketUtils.firstOwner(originItem.actor, true)}});
     } else if (selection === 'charmed') {
         await genericUtils.remove(charmed);
     } else if (selection === 'frightened') {
@@ -264,6 +271,13 @@ export let twilightSanctuary = {
             default: 'cleric',
             category: 'homebrew',
             homebrew: true
+        },
+        {
+            value: 'autoApplyHP',
+            label: 'CHRISPREMADES.Macros.TwilightSanctuary.AutoHP',
+            type: 'checkbox',
+            default: true,
+            category: 'mechanics'
         }
     ]
 };

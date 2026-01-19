@@ -73,7 +73,10 @@
             "level": {
               "min": null,
               "max": null
-            }
+            },
+            "movement": [],
+            "sizes": [],
+            "types": []
           }
         ],
         "settings": {
@@ -157,8 +160,7 @@
           "preRemoveConditionText": "",
           "postRemoveConditionText": ""
         },
-        "name": "",
-        "img": ""
+        "name": ""
       }
     },
     "uses": {

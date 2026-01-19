@@ -1,3 +1,9 @@
+# 1.4.21 Release:
+## Bug Fixes:
+- Moonbeam (Modern)
+- Twilight Sanctuary
+- Feline Form
+
 # 1.4.20 Release:
 ## New Legacy Content:
 - Umbral Form

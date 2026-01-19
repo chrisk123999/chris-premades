@@ -1,5 +1,5 @@
 import {crosshairUtils} from '../../../lib/utilities/crosshairUtils.js';
-import {activityUtils, combatUtils, effectUtils, genericUtils, itemUtils, templateUtils, tokenUtils, workflowUtils} from '../../../utils.js';
+import {activityUtils, combatUtils, effectUtils, genericUtils, itemUtils, socketUtils, templateUtils, tokenUtils, workflowUtils} from '../../../utils.js';
 async function use({workflow}) {
     let concentrationEffect = effectUtils.getConcentrationEffect(workflow.actor, workflow.item);
     let template = workflow.template;
@@ -87,7 +87,7 @@ async function move({workflow}) {
     if (targets.size == 0) return;
     let damageFeature = activityUtils.getActivityByIdentifier(fromUuidSync(template.flags.dnd5e.item), 'moonbeamDamage', {strict: true});
     if (!damageFeature) return;
-    await workflowUtils.syntheticActivityRoll(damageFeature, Array.from(targets), {atLevel: castData.castLevel});
+    await workflowUtils.syntheticActivityRoll(damageFeature, Array.from(targets), {atLevel: castData.castLevel, options: {asUser: socketUtils.firstOwner(damageFeature.actor, true)}});
 }
 async function enter({trigger: {entity: template, castData, token}}) {
     let [targetCombatant] = game.combat.getCombatantsByToken(token.document);
@@ -96,7 +96,7 @@ async function enter({trigger: {entity: template, castData, token}}) {
     await combatUtils.setTurnCheck(targetCombatant, 'moonbeam');
     let feature = activityUtils.getActivityByIdentifier(fromUuidSync(template.flags.dnd5e.item), 'moonbeamDamage', {strict: true});
     if (!feature) return;
-    await workflowUtils.syntheticActivityRoll(feature, [token], {atLevel: castData.castLevel});
+    await workflowUtils.syntheticActivityRoll(feature, [token], {atLevel: castData.castLevel, options: {asUser: socketUtils.firstOwner(feature.actor, true)}});
 }
 async function turnEnd({trigger: {entity: template, castData, token, previousRound, previousTurn}}) {
     let [targetCombatant] = game.combat.getCombatantsByToken(token.document);
@@ -106,7 +106,7 @@ async function turnEnd({trigger: {entity: template, castData, token, previousRou
     if (lastDamagedTurn == turnToCheck) return;
     let feature = activityUtils.getActivityByIdentifier(fromUuidSync(template.flags.dnd5e.item), 'moonbeamDamage', {strict: true});
     if (!feature) return;
-    await workflowUtils.syntheticActivityRoll(feature, [token], {atLevel: castData.castLevel});
+    await workflowUtils.syntheticActivityRoll(feature, [token], {atLevel: castData.castLevel, options: {asUser: socketUtils.firstOwner(feature.actor, true)}});
 }
 async function early({dialog}) {
     dialog.configure = false;
