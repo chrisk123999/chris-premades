@@ -131,7 +131,10 @@ class EffectDirectory extends foundry.applications.sidebar.DocumentDirectory {
                             callback: (event, button) => {
                                 let form = button.form;
                                 if (!form.data.files.length) return ui.notifications.error('DOCUMENT.ImportDataError', {localize: true});
-                                foundry.utils.readTextFromFile(form.data.files[0]).then(json => this.importFromJSON(json));
+                                foundry.utils.readTextFromFile(form.data.files[0]).then(json => {
+                                    let data = JSON.parse(json);
+                                    document.update(data);
+                                });
                             },
                             default: true
                         },
