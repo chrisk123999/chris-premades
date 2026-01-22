@@ -1,3 +1,8 @@
+# 1.4.23 Release:
+## Bug Fixes:
+- Grave Touched
+- I Fought, I Lived
+
 # 1.4.22 Release:
 ## Bug Fixes:
 - Effect Interface
