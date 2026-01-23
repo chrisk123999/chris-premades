@@ -1,3 +1,7 @@
+# 1.4.24 Release:
+## Bug Fixes:
+- Interception
+
 # 1.4.23 Release:
 ## Bug Fixes:
 - Grave Touched

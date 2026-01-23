@@ -23,7 +23,7 @@ async function damageApplication({trigger: {targetToken}, workflow, ditem}) {
 }
 export let interception = {
     name: 'Interception',
-    version: '1.2.36',
+    version: '1.4.24',
     rules: 'modern',
     midi: {
         actor: [
