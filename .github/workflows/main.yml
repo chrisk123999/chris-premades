@@ -60,7 +60,7 @@ jobs:
         tag: ${{ github.event.release.tag_name }}
         body: ${{ github.event.release.body }}
     - name: FoundryVTT AutoPublish
-      uses: fjogeleit/http-request-action@v1
+      uses: fjogeleit/http-request-action@v2
       continue-on-error: true
       with:
         url: 'https://foundryvtt.com/_api/packages/release_version/'
