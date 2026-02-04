@@ -1,0 +1,105 @@
+{
+  "name": "Iron Chin",
+  "type": "feat",
+  "img": "icons/skills/wounds/injury-face-impact-orange.webp",
+  "system": {
+    "activities": {},
+    "uses": {
+      "spent": 0,
+      "recovery": [],
+      "max": ""
+    },
+    "advancement": [],
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "identifier": "feature",
+    "source": {
+      "revision": 1,
+      "rules": "2024"
+    },
+    "crewed": false,
+    "enchant": {},
+    "prerequisites": {
+      "items": [],
+      "repeatable": false,
+      "level": null
+    },
+    "properties": [],
+    "requirements": "",
+    "type": {
+      "value": "",
+      "subtype": ""
+    }
+  },
+  "effects": [
+    {
+      "name": "Iron Chin",
+      "img": "icons/skills/wounds/injury-face-impact-orange.webp",
+      "origin": "Actor.n2iT3wlfO9IxlReq.Item.6Y1X6WjGP3PGDAHe",
+      "_id": "ZPDjYnS9HSsGGBW4",
+      "type": "base",
+      "system": {},
+      "changes": [
+        {
+          "key": "system.attributes.ac.formula",
+          "mode": 5,
+          "value": "12 + @abilities.con.mod",
+          "priority": 15
+        },
+        {
+          "key": "system.attributes.ac.calc",
+          "mode": 5,
+          "value": "custom",
+          "priority": 20
+        }
+      ],
+      "disabled": false,
+      "duration": {
+        "startTime": null,
+        "combat": null,
+        "seconds": null,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "transfer": true,
+      "statuses": [],
+      "sort": 0,
+      "flags": {
+        "dnd5e": {
+          "riders": {
+            "statuses": []
+          }
+        },
+        "dae": {
+          "disableCondition": "(!!attributes.ac?.equippedArmor && attributes.ac?.equippedArmor?.system.type.value !== \"light\" ) || !!attributes.ac?.equippedShield",
+          "stackable": "noneName",
+          "showIcon": false,
+          "disableIncapacitated": false,
+          "durationExpression": "",
+          "macroRepeat": "none",
+          "specialDuration": []
+        },
+        "core": {
+          "overlay": false
+        }
+      },
+      "_key": "!items.effects!pH0t1AK6XuQO7XAU.ZPDjYnS9HSsGGBW4"
+    }
+  ],
+  "folder": "DaCCKHmNsmtRhEWW",
+  "flags": {
+    "dnd5e": {
+      "riders": {
+        "activity": []
+      }
+    }
+  },
+  "_id": "pH0t1AK6XuQO7XAU",
+  "_key": "!items!pH0t1AK6XuQO7XAU"
+}

@@ -183,7 +183,8 @@ const unarmedAttacks = [
     'fightingStyleUnarmedFightingUnarmedStrike',
     'predatoryStrike',
     'unarmedFightingUnarmedStrike',
-    'formOfTheBeast'
+    'formOfTheBeast',
+    'pugilistUnarmedStrike'
 ];
 const weaponTypes = [
     'martialM',
