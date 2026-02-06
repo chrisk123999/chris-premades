@@ -1021,6 +1021,9 @@
             "Blink": {
                 "Away": "Blinked Away"
             },
+            "BloodiedButUnbowed": {
+                "Trigger": "Trigger only when bloodied"
+            },
             "BloodCurses": {
                 "Amplify": "Amplify Blood Curse?"
             },

@@ -573,6 +573,9 @@
             "Blink": {
                 "Away": "Disparu"
             },
+            "BloodiedButUnbowed": {
+                "Trigger": "Déclencher uniquement lorsque ensanglanté"
+            },
             "BloodCurses": {
                 "Amplify": "Amplifier la Malédiction du Sang ?"
             },

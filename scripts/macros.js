@@ -458,9 +458,12 @@ export {knightlyEnvoy} from './macros/2024/classFeatures/fighter/banneret/knight
 export {layOnHands} from './macros/2024/classFeatures/paladin/layOnHands.js';
 export {paladinsSmite} from './macros/2024/classFeatures/paladin/paladinsSmite.js';
 // Pugilist
+export {bloodiedButUnbowed} from './macros/2024/classFeatures/pugilist/bloodiedButUnbowed.js';
 export {fisticuffs} from './macros/2024/classFeatures/pugilist/fisticuffs.js';
 export {ironChin} from './macros/2024/classFeatures/pugilist/ironChin.js';
+export {moxie} from './macros/2024/classFeatures/pugilist/moxie.js';
 export {pugilistUnarmedStrike} from './macros/2024/classFeatures/pugilist/pugilistUnarmedStrike.js';
+export {swaggerStreak} from './macros/2024/classFeatures/pugilist/swaggerStreak.js';
 // Multiple
 export {evasion} from './macros/2024/classFeatures/multiple/evasion.js';
 // Monster Features

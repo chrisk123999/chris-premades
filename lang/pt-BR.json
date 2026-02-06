@@ -1017,6 +1017,9 @@
             "Blink": {
                 "Away": "Piscar: Desaparecer"
             },
+            "BloodiedButUnbowed": {
+                "Trigger": "Acionar apenas quando ensanguentado"
+            },
             "BloodCurses": {
                 "Amplify": "Amplificar Maldição do Sangue?"
             },
