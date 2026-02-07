@@ -58,7 +58,7 @@ async function hit({trigger: {entity: item}, workflow}) {
         else {
             if (result.grapple) await workflowUtils.syntheticActivityRoll(grapple, [targetToken]);
             switch (result.shove) {
-                case 'shovePush': selection = shoveProne; break;
+                case 'shovePush': selection = shovePush; break;
                 case 'shoveProne': selection = shoveProne; break;
                 default: selection = false;
             }
