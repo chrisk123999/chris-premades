@@ -14,7 +14,7 @@ async function attack({trigger: {entity: item}, workflow}) {
         itemData.system.damage.base.denomination = scale.faces;
         itemData.system.damage.base.number = scale.number;
     }
-    if (workflow.item.system.type === 'improv') {
+    if (workflow.item.system.type.value === 'improv') {
         itemData.system.proficient = 1;
         itemData.system.mastery = 'sap';
     }

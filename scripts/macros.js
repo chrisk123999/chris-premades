@@ -460,10 +460,14 @@ export {paladinsSmite} from './macros/2024/classFeatures/paladin/paladinsSmite.j
 // Pugilist
 export {bloodiedButUnbowed} from './macros/2024/classFeatures/pugilist/bloodiedButUnbowed.js';
 export {fisticuffs} from './macros/2024/classFeatures/pugilist/fisticuffs.js';
+export {heavyHitter} from './macros/2024/classFeatures/pugilist/heavyHitter.js';
 export {ironChin} from './macros/2024/classFeatures/pugilist/ironChin.js';
 export {moxie} from './macros/2024/classFeatures/pugilist/moxie.js';
 export {pugilistUnarmedStrike} from './macros/2024/classFeatures/pugilist/pugilistUnarmedStrike.js';
 export {swaggerStreak} from './macros/2024/classFeatures/pugilist/swaggerStreak.js';
+// Squared Circle
+export {groundwork} from './macros/2024/classFeatures/pugilist/squaredCircle/groundwork.js';
+export {muscleMass} from './macros/2024/classFeatures/pugilist/squaredCircle/muscleMass.js';
 // Multiple
 export {evasion} from './macros/2024/classFeatures/multiple/evasion.js';
 // Monster Features

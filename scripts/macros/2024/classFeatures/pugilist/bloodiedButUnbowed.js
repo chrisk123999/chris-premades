@@ -2,7 +2,7 @@ import {activityUtils, actorUtils, dialogUtils, itemUtils, socketUtils, workflow
 
 async function damaged({trigger: {entity: item, token: self}, ditem}) {
     if (!ditem.isHit || !ditem.totalDamage) return;
-    if (item.system.uses.value <= 0) return;
+    if (!item.system.uses.value) return;
     if (actorUtils.hasUsedReaction(self.actor)) return;
     let bloodied = ditem.newHP <= Math.floor(0.5 * self.actor.system.attributes.hp.effectiveMax);
     let bloodiedOnly = itemUtils.getConfig(item, 'triggerBloodiedOnly');

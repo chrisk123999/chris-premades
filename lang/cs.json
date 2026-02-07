@@ -1542,6 +1542,10 @@
                 "NoWeapons": "Nenalezeny žádné vybavené zbraně!",
                 "SelectWeapon": "Jakou zbraní zaútočíš?"
             },
+            "Groundwork": {
+                "CompressionLock": "Způsobit poškození všem těmto tvorům? ({formula})",
+                "Inescapable": "Poskytnout znevýhodnění na {activityName}."
+            },
             "Grovelthrash": {
                 "Damage": "Udělit dodatečných 2k6 drtivého zranění za cenu 1k6 psychického zranění?",
                 "Insight": "Toto ověření je na odhalení lži pronesené v jazyce, kterému rozumíš",

@@ -1599,6 +1599,10 @@
                 "NoWeapons": "Nenhuma arma equipada encontrada!",
                 "SelectWeapon": "Atacar com qual arma?"
             },
+            "Groundwork": {
+                "CompressionLock": "Causar dano a todas essas criaturas? ({formula})",
+                "Inescapable": "Concede desvantagem em {activityName}."
+            },
             "Grovelthrash": {
                 "Damage": "Causar 2d6 de dano contundente adicional ao custo de 1d6 de dano psíquico?",
                 "Insight": "Este teste é para identificar uma mentira falada em um idioma que você entende",

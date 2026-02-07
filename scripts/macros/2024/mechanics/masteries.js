@@ -1,6 +1,6 @@
 import {custom} from '../../../events/custom.js';
 import {combatUtils} from '../../../lib/utilities/combatUtils.js';
-import {activityUtils, actorUtils, compendiumUtils, constants, dialogUtils, effectUtils, genericUtils, tokenUtils, workflowUtils} from '../../../utils.js';
+import {activityUtils, actorUtils, compendiumUtils, constants, dialogUtils, effectUtils, genericUtils, itemUtils, tokenUtils, workflowUtils} from '../../../utils.js';
 function perTurnCheck(actor, mastery) {
     if (!combatUtils.inCombat()) return true;
     let previousTurn = actor.flags['chris-premades']?.mastery?.[mastery]?.turn;
@@ -172,6 +172,8 @@ async function RollComplete(workflow) {
         let identifier = genericUtils.getIdentifier(workflow.item);
         if (identifier === 'psychicBlades') {
             mastery = 'vex';
+        } else if (itemUtils.getItemByIdentifier(workflow.actor, 'fisticuffs') && workflow.item.system.type.value === 'improv') {
+            mastery = 'sap';
         } else {
             let baseItem = workflow.item.system.type.baseItem;
             if (baseItem === '') return;

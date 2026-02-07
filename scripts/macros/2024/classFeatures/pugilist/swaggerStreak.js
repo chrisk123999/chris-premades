@@ -4,11 +4,11 @@ import {fisticuffs} from './fisticuffs.js';
 async function checkSkill({trigger: {entity: item, roll, actor, options, checkId, skillId}}) {
     if (!item.system.uses.value) return;
     let ability = skillId ? roll.data.abilityId : checkId;
-    if(!['str', 'dex', 'con', 'cha'].some(a => ability === a)) return;
+    if (!['str', 'dex', 'con', 'cha'].some(a => ability === a)) return;
     let targetValue = roll.options.target;
     if (targetValue && roll.total >= targetValue) return;
     let moxie = itemUtils.getItemByIdentifier(actor, 'moxie');
-    if (!moxie.system.uses.value) return;
+    if (!moxie?.system.uses.value) return;
     let classIdentifier = itemUtils.getConfig(item, 'classIdentifier') ?? 'pugilist';
     let scaleIdentifier = itemUtils.getConfig(item, 'scaleIdentifier') ?? 'fisticuffs';
     let scale = actor.system.scale[classIdentifier]?.[scaleIdentifier];

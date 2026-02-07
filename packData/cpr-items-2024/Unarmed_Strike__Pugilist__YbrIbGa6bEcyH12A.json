@@ -30,7 +30,7 @@
         },
         "effects": [],
         "range": {
-          "override": false,
+          "override": true,
           "units": "self"
         },
         "target": {
@@ -112,7 +112,7 @@
           "magicDamage": false,
           "noConcentrationCheck": false,
           "skipConcentrationCheck": false,
-          "autoCEEffects": "default"
+          "autoCEEffects": "none"
         },
         "attackMode": "oneHanded",
         "ammunition": "",
@@ -227,7 +227,7 @@
           "forceRollDialog": "default",
           "forceDamageDialog": "default",
           "otherActivityAsParentType": true,
-          "displayActivityName": false,
+          "displayActivityName": true,
           "rollMode": "default",
           "chooseEffects": false,
           "toggleEffect": false,
@@ -259,7 +259,8 @@
           "postRemoveConditionText": ""
         },
         "otherActivityId": "none",
-        "otherActivityAsParentType": true
+        "otherActivityAsParentType": true,
+        "img": "icons/magic/control/buff-strength-muscle-damage-red.webp"
       },
       "siI1csz5wTzrT7gx": {
         "type": "utility",
@@ -347,7 +348,7 @@
           "forceRollDialog": "default",
           "forceDamageDialog": "default",
           "otherActivityAsParentType": true,
-          "displayActivityName": false,
+          "displayActivityName": true,
           "rollMode": "default",
           "chooseEffects": false,
           "toggleEffect": false,
@@ -357,7 +358,7 @@
           "magicDamage": false,
           "noConcentrationCheck": false,
           "skipConcentrationCheck": false,
-          "autoCEEffects": "default"
+          "autoCEEffects": "none"
         },
         "name": "Shove (Prone)",
         "flags": {},
@@ -379,7 +380,8 @@
           "postRemoveConditionText": ""
         },
         "otherActivityId": "none",
-        "otherActivityAsParentType": true
+        "otherActivityAsParentType": true,
+        "img": "icons/skills/melee/unarmed-punch-fist-white.webp"
       },
       "bPilG1rghSA1UudO": {
         "type": "utility",
@@ -467,7 +469,7 @@
           "forceRollDialog": "default",
           "forceDamageDialog": "default",
           "otherActivityAsParentType": true,
-          "displayActivityName": false,
+          "displayActivityName": true,
           "rollMode": "default",
           "chooseEffects": false,
           "toggleEffect": false,
@@ -477,7 +479,7 @@
           "magicDamage": false,
           "noConcentrationCheck": false,
           "skipConcentrationCheck": false,
-          "autoCEEffects": "default"
+          "autoCEEffects": "none"
         },
         "name": "Shove (Push)",
         "flags": {},
@@ -499,7 +501,8 @@
           "postRemoveConditionText": ""
         },
         "otherActivityId": "none",
-        "otherActivityAsParentType": true
+        "otherActivityAsParentType": true,
+        "img": "icons/skills/melee/unarmed-punch-fist-white.webp"
       },
       "P3HXvBd9fh5mNRXy": {
         "type": "save",
@@ -882,7 +885,10 @@
           "attackMode": "oneHanded"
         },
         "tXuqg671lGrdE8Kh": {
-          "attackMode": "oneHanded"
+          "attackMode": "oneHanded",
+          "damageType": {
+            "0": "bludgeoning"
+          }
         }
       },
       "riders": {
@@ -922,6 +928,6 @@
   },
   "img": "icons/skills/melee/unarmed-punch-fist.webp",
   "folder": null,
-  "_id": "SRAh6rPWlU2v7FFo",
-  "_key": "!items!SRAh6rPWlU2v7FFo"
+  "_id": "YbrIbGa6bEcyH12A",
+  "_key": "!items!YbrIbGa6bEcyH12A"
 }

@@ -1618,6 +1618,10 @@
                 "NoWeapons": "No equipped weapons found!",
                 "SelectWeapon": "Attack with what weapon?"
             },
+            "Groundwork": {
+                "CompressionLock": "Deal damage to all of these creatures? ({formula})",
+                "Inescapable": "Grants disadvantage on {activityName}."
+            },
             "Grovelthrash": {
                 "Damage": "Deal an extra 2d6 bludgeoning damage at the cost of 1d6 psychic damage?",
                 "Insight": "This check is to discern a lie spoken in a language you understand",

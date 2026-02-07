@@ -973,6 +973,10 @@
                 "NoWeapons": "Aucune arme équipée trouvée !",
                 "SelectWeapon": "Attaquer avec quelle arme ?"
             },
+            "Groundwork": {
+                "CompressionLock": "Infligez des dégâts à toutes ces créatures? ({formula})",
+                "Inescapable": "Accorder désavantage sur {activityName}."
+            },
             "Grovelthrash": {
                 "Damage": "Infliger 2d6 de dégâts contondants supplémentaires au prix de 1d6 de dégâts psychiques ?",
                 "Insight": "Ce contrôle sert à discerner un mensonge prononcé dans une langue que vous comprenez",

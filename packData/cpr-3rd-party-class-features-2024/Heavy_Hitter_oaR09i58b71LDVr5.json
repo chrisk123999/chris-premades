@@ -1,0 +1,66 @@
+{
+  "name": "Heavy Hitter",
+  "type": "feat",
+  "img": "icons/tools/smithing/anvil.webp",
+  "system": {
+    "activities": {},
+    "uses": {
+      "spent": 0,
+      "recovery": [],
+      "max": ""
+    },
+    "advancement": [],
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "identifier": "heavy-hitter",
+    "source": {
+      "revision": 1,
+      "rules": "2024",
+      "book": "The Pugilist Class 2024",
+      "page": "",
+      "custom": "TPC 2024",
+      "license": ""
+    },
+    "crewed": false,
+    "enchant": {},
+    "prerequisites": {
+      "items": [],
+      "repeatable": false,
+      "level": null
+    },
+    "properties": [],
+    "requirements": "",
+    "type": {
+      "value": "",
+      "subtype": ""
+    }
+  },
+  "effects": [],
+  "folder": "DaCCKHmNsmtRhEWW",
+  "flags": {
+    "dnd5e": {
+      "riders": {
+        "activity": []
+      }
+    },
+    "chris-premades": {
+      "info": {
+        "identifier": "heavyHitter",
+        "rules": "modern",
+        "version": "1.4.25",
+        "source": "chris-premades"
+      },
+      "macros": {
+        "midi": {
+          "actor": [
+            "heavyHitter"
+          ]
+        }
+      }
+    }
+  },
+  "_id": "oaR09i58b71LDVr5",
+  "_key": "!items!oaR09i58b71LDVr5"
+}

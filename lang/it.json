@@ -1263,6 +1263,10 @@
                 "NoWeapons": "Nessuna arma equipaggiata trovata!",
                 "SelectWeapon": "Con quale arma attacchi?"
             },
+            "Groundwork": {
+                "CompressionLock": "Infliggi danni a tutte queste creature? ({formula})",
+                "Inescapable": "Concedere svantaggio su {activityName}."
+            },
             "Grovelthrash": {
                 "Damage": "Infliggere un danno contundente extra di 2d6 a costo di un danno psichico di 1d6?",
                 "Insight": "Questo controllo è per discernere una bugia detta in una lingua che comprendi",
