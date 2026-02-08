@@ -80,14 +80,6 @@
             "statuses": []
           }
         },
-        "chris-premades": {
-          "info": {
-            "identifier": "ironChin",
-            "rules": "modern",
-            "version": "1.4.27",
-            "source": "chris-premades"
-          }
-        },
         "dae": {
           "disableCondition": "(!!attributes.ac?.equippedArmor && attributes.ac?.equippedArmor?.system.type.value !== \"light\" ) || !!attributes.ac?.equippedShield",
           "stackable": "noneName",
@@ -109,6 +101,14 @@
     "dnd5e": {
       "riders": {
         "activity": []
+      }
+    },
+    "chris-premades": {
+      "info": {
+        "identifier": "ironChin",
+        "rules": "modern",
+        "version": "1.4.29",
+        "source": "chris-premades"
       }
     }
   },
