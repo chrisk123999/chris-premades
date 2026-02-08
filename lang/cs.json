@@ -976,6 +976,9 @@
             "Blink": {
                 "Away": "Zmizel"
             },
+            "BloodiedButUnbowed": {
+                "Trigger": "Spoušť pouze při krvácení"
+            },
             "BloodCurses": {
                 "Amplify": "Zesílit krevní zakletí?"
             },
@@ -1538,6 +1541,10 @@
                 "LeapFeature": "Čepel zeleného plamene: Přeskok",
                 "NoWeapons": "Nenalezeny žádné vybavené zbraně!",
                 "SelectWeapon": "Jakou zbraní zaútočíš?"
+            },
+            "Groundwork": {
+                "CompressionLock": "Způsobit poškození všem těmto tvorům? ({formula})",
+                "Inescapable": "Poskytnout znevýhodnění na {activityName}."
             },
             "Grovelthrash": {
                 "Damage": "Udělit dodatečných 2k6 drtivého zranění za cenu 1k6 psychického zranění?",

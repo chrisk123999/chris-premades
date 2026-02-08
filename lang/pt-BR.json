@@ -1017,6 +1017,9 @@
             "Blink": {
                 "Away": "Piscar: Desaparecer"
             },
+            "BloodiedButUnbowed": {
+                "Trigger": "Acionar apenas quando ensanguentado"
+            },
             "BloodCurses": {
                 "Amplify": "Amplificar Maldição do Sangue?"
             },
@@ -1595,6 +1598,10 @@
                 "LeapFeature": "Lâmina da Chama Esverdeada: Salto",
                 "NoWeapons": "Nenhuma arma equipada encontrada!",
                 "SelectWeapon": "Atacar com qual arma?"
+            },
+            "Groundwork": {
+                "CompressionLock": "Causar dano a todas essas criaturas? ({formula})",
+                "Inescapable": "Concede desvantagem em {activityName}."
             },
             "Grovelthrash": {
                 "Damage": "Causar 2d6 de dano contundente adicional ao custo de 1d6 de dano psíquico?",

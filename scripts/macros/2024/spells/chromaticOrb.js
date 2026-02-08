@@ -40,7 +40,9 @@ async function use({trigger, workflow}) {
     let nextTarget = nearbyTargets[0];
     if (nearbyTargets.length > 1) {
         let targetSelect = await dialogUtils.selectTargetDialog(workflow.item.name, 'CHRISPREMADES.Macros.ChromaticOrb.Bounce', nearbyTargets, {skipDeadAndUnconscious: false});
-        if (targetSelect) nextTarget = targetSelect[0];
+        if (targetSelect) {
+            nextTarget = targetSelect[0];
+        } else return;
     }
     let perTargetDamageType = itemUtils.getConfig(workflow.item, 'perTargetDamageType');
     ignoredTargetUuids.push(workflow.targets.first().document.uuid);

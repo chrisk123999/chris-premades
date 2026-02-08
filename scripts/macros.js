@@ -209,6 +209,7 @@ export {falseLife} from './macros/2024/spells/falseLife.js';
 export {spellfireFlare} from './macros/2024/spells/spellfireFlare.js';
 export {dissolution} from './macros/2024/spells/dissolution.js';
 export {dream} from './macros/2024/spells/dream.js';
+export {bloodSacrifice, bloodSacrificeEffect} from './macros/2024/spells/bloodSacrifice.js';
 // Items
 export {healersKit} from './macros/2024/items/healersKit.js';
 export {unarmedStrike} from './macros/2024/items/misc/unarmedStrike.js';
@@ -216,6 +217,8 @@ export {deckOfIllusions} from './macros/2024/items/trinket/deckOfIllusions.js';
 export {ringOfSpellStoring, ringOfSpellStoringSpell} from './macros/2024/items/trinket/ringOfSpellStoring.js';
 export {orbOfDamara, orbOfDamaraEffect} from './macros/2024/items/trinket/orbOfDamara.js';
 export {maskOfMonstrousForms} from './macros/2024/items/trinket/maskOfMonstrousForms.js';
+export {forkOfEddySummoning} from './macros/2024/items/trinket/forkOfEddySummoning.js';
+export {wandOfThePrecociousApprentice} from './macros/2024/items/trinket/wandOfThePrecociousApprentice.js';
 // Feats
 export {alert} from './macros/2024/feats/alert.js';
 export {archery} from './macros/2024/feats/archery.js';
@@ -457,6 +460,21 @@ export {knightlyEnvoy} from './macros/2024/classFeatures/fighter/banneret/knight
 // Paladin
 export {layOnHands} from './macros/2024/classFeatures/paladin/layOnHands.js';
 export {paladinsSmite} from './macros/2024/classFeatures/paladin/paladinsSmite.js';
+// Pugilist
+export {bloodiedButUnbowed} from './macros/2024/classFeatures/pugilist/bloodiedButUnbowed.js';
+export {digDeep, digDeepEffect} from './macros/2024/classFeatures/pugilist/digDeep.js';
+export {fisticuffs} from './macros/2024/classFeatures/pugilist/fisticuffs.js';
+export {haymaker} from './macros/2024/classFeatures/pugilist/haymaker.js';
+export {heavyHitter} from './macros/2024/classFeatures/pugilist/heavyHitter.js';
+export {ironChin} from './macros/2024/classFeatures/pugilist/ironChin.js';
+export {moxie} from './macros/2024/classFeatures/pugilist/moxie.js';
+export {moxieFueledFists} from './macros/2024/classFeatures/pugilist/moxieFueledFists.js';
+export {pugilistUnarmedStrike} from './macros/2024/classFeatures/pugilist/pugilistUnarmedStrike.js';
+export {swaggerStreak} from './macros/2024/classFeatures/pugilist/swaggerStreak.js';
+// Squared Circle
+export {groundwork} from './macros/2024/classFeatures/pugilist/squaredCircle/groundwork.js';
+export {meatShield} from './macros/2024/classFeatures/pugilist/squaredCircle/meatShield.js';
+export {muscleMass} from './macros/2024/classFeatures/pugilist/squaredCircle/muscleMass.js';
 // Multiple
 export {evasion} from './macros/2024/classFeatures/multiple/evasion.js';
 // Monster Features
@@ -496,6 +514,10 @@ export {pseudodragonSting} from './macros/2024/monsterFeatures/pseudodragon/stin
 export {carrionCrawlerParalyzingTentacles} from './macros/2024/monsterFeatures/carrionCrawler/paralyzingTentacles.js';
 // Night Hag
 export {nightmareHaunting} from './macros/2024/monsterFeatures/nightHag/nightmareHaunting.js';
+// Eldritch Eddy
+export {searingSwipe} from './macros/2024/monsterFeatures/eldritchEddy/searingSwipe.js';
+export {arcaneBolt} from './macros/2024/monsterFeatures/eldritchEddy/arcaneBolt.js';
+export {eldritchOverload} from './macros/2024/monsterFeatures/eldritchEddy/eldritchOverload.js';
 // Transformations
 // Vampire
 export {vampireFangedBite} from './macros/2024/transformations/vampire/fangedBite.js';

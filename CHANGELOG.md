@@ -1,3 +1,73 @@
+# 1.4.28 Release:
+## New Modern Content:
+- Dig Deep (Thanks Bacon)
+- Haymaker (Thanks Bacon)
+- Moxie-Fueled Fists (Thanks Bacon)
+- Meat Shield (Thanks Bacon)
+## Bug Fixes:
+- Iron Chin (Thanks Bacon)
+
+# 1.4.27 Release:
+## Bug Fixes:
+- Grave Touched
+
+# 1.4.26 Release:
+## Bug Fixes:
+- Fork of Eddy Summoning
+
+# 1.4.25 Release:
+## New Modern Content:
+- Blood Sacrifice
+- Fork of Eddy Summoning
+- Wand of the Precocious Apprentice
+- Fisticuffs (Thanks Bacon)
+- Iron Chin (Thanks Bacon)
+- Moxie (Thanks Bacon)
+- Bloodied But Unbowed (Thanks Bacon)
+- Swagger Streak (Thanks Bacon)
+- Heavy Hitter (Thanks Bacon)
+- Groundwork (Thanks Bacon)
+- Muscle Mass (Thanks Bacon)
+## New Monster Content:
+- Eldritch Eddy: Arcane Bolt, Eldritch Overload, Searing Swipe
+## Bug Fixes:
+- Escape Generic Monster Feature
+- Invisible Condition
+
+# 1.4.25 Release:
+## Bug Fixes:
+- Interception
+- Wild Shape
+- Legendary Actions Prompt
+
+# 1.4.23 Release:
+## Bug Fixes:
+- Grave Touched
+- I Fought, I Lived
+
+# 1.4.22 Release:
+## Bug Fixes:
+- Effect Interface
+
+# 1.4.21 Release:
+## Bug Fixes:
+- Moonbeam (Modern)
+- Twilight Sanctuary
+- Feline Form
+
+# 1.4.20 Release:
+## New Legacy Content:
+- Umbral Form
+
+# 1.4.19 Release:
+## New Legacy Content:
+- Eyes of the Dark
+- Hound of Ill Omen
+- Shadow Walk
+## Bug Fixes:
+- Protection
+- Grappler (Thanks Bacon)
+
 # 1.4.18 Release:
 ## Bug Fixes:
 - Feline Form

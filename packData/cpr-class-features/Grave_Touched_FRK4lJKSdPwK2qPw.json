@@ -12,9 +12,14 @@
       "rules": "2014"
     },
     "uses": {
-      "max": "",
+      "max": "1",
       "spent": 0,
-      "recovery": []
+      "recovery": [
+        {
+          "period": "turn",
+          "type": "recoverAll"
+        }
+      ]
     },
     "type": {
       "value": "",
@@ -78,9 +83,9 @@
     "chris-premades": {
       "info": {
         "name": "Grave Touched",
-        "version": "1.1.0",
         "identifier": "graveTouched",
-        "source": "chris-premades"
+        "source": "chris-premades",
+        "version": "1.4.23"
       },
       "macros": {
         "midi": {

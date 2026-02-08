@@ -34,7 +34,7 @@ async function use({workflow}) {
     if (keepItems) {
         let itemsUpdate = equippedItems.map(i => ({
             _id: i.id,
-            'flags.chris-premades.wildShape.mergeWear': keepItems.includes(i) ? 'wear' : 'merge'
+            'flags.chris-premades.wildShape.mergeWear': keepItems.some(item => item._id === i.id) ? 'wear' : 'merge'
         }));
         await genericUtils.updateEmbeddedDocuments(workflow.actor, 'Item', itemsUpdate);
         if (itemUtils.getItemByIdentifier(workflow.actor, 'beastSpells')) {

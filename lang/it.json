@@ -811,6 +811,9 @@
             "Blink": {
                 "Away": "Sparito con Blink"
             },
+            "BloodiedButUnbowed": {
+                "Trigger": "Attivare solo quando insanguinato"
+            },
             "BloodCurses": {
                 "Amplify": "Amplificare la Maledizione del Sangue?"
             },
@@ -1259,6 +1262,10 @@
                 "LeapFeature": "Lama della Fiamma Verde: Salto",
                 "NoWeapons": "Nessuna arma equipaggiata trovata!",
                 "SelectWeapon": "Con quale arma attacchi?"
+            },
+            "Groundwork": {
+                "CompressionLock": "Infliggi danni a tutte queste creature? ({formula})",
+                "Inescapable": "Concedere svantaggio su {activityName}."
             },
             "Grovelthrash": {
                 "Damage": "Infliggere un danno contundente extra di 2d6 a costo di un danno psichico di 1d6?",

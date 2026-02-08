@@ -156,6 +156,9 @@
       }
     },
     "chris-premades": {
+      "activityIdentifiers": {
+        "recover": "utilityReBIclNe0"
+      },
       "info": {
         "hasAnimation": false,
         "identifier": "fontOfInspiration",

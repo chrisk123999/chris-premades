@@ -14,7 +14,7 @@ async function use({trigger, workflow}) {
 async function damage({trigger: {entity: item}, workflow}) {
     if (!workflow.hitTargets.size) return;
     if (!workflowUtils.isAttackType(workflow, 'attack')) return;
-    if (!Math.floor(workflow.actor.system.attributes.hp.pct) > 50) return;
+    if (Math.floor(workflow.actor.system.attributes.hp.pct) > 50) return;
     let activity = activityUtils.getActivityByIdentifier(item, 'defiantStrike', {strict: true});
     if (!activity) return;
     if (!activityUtils.canUse(activity)) return;

@@ -225,6 +225,7 @@
             "Max": "Max:",
             "MaxLevel": "Max Level:",
             "MaxSize": "Max Size:",
+            "MonsterName": "Monster Name:",
             "Multiplier": "Multiplier:",
             "Name": "Name:",
             "NoDCPrompt": "Prompt on no DC:",
@@ -1020,11 +1021,17 @@
             "Blink": {
                 "Away": "Blinked Away"
             },
+            "BloodiedButUnbowed": {
+                "Trigger": "Trigger only when bloodied"
+            },
             "BloodCurses": {
                 "Amplify": "Amplify Blood Curse?"
             },
             "BloodFrenzy": {
                 "Name": "Blood Frenzy"
+            },
+            "BloodSacrifice": {
+                "Apply": "Apply {itemName}?"
             },
             "BloodiedFrenzy": {
                 "Name": "Bloodied Frenzy"
@@ -1613,6 +1620,10 @@
                 "LeapFeature": "Green-Flame Blade: Leap",
                 "NoWeapons": "No equipped weapons found!",
                 "SelectWeapon": "Attack with what weapon?"
+            },
+            "Groundwork": {
+                "CompressionLock": "Deal damage to all of these creatures? ({formula})",
+                "Inescapable": "Grants disadvantage on {activityName}."
             },
             "Grovelthrash": {
                 "Damage": "Deal an extra 2d6 bludgeoning damage at the cost of 1d6 psychic damage?",
@@ -2628,6 +2639,7 @@
                 "SelectWeapon": "Attack with what weapon?"
             },
             "TwilightSanctuary": {
+                "AutoHP": "Auto apply temp HP when only option:",
                 "Charmed": "Remove the Charmed condition",
                 "Frightened": "Remove the Frightened condition",
                 "Heal": "Grant {formula} temporary HP",
@@ -3629,6 +3641,7 @@
                 "EarthElemental": "Earth Elemental",
                 "EarthenHand": "Earthen Hand",
                 "Echo": "Echo",
+                "EldritchEddy": "Eldritch Eddy",
                 "ElementalSpirit": "Elemental Spirit",
                 "ElementalSpiritAir": "Elemental Spirit (Air)",
                 "ElementalSpiritEarth": "Elemental Spirit (Earth)",

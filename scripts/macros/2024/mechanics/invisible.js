@@ -1,15 +1,17 @@
 import {tokenUtils, workflowUtils} from '../../../utils.js';
-async function attacked({trigger, workflow}) {
+async function attacked({trigger: {entity: effect}, workflow}) {
+    if (effect.disabled) return;
     if (!workflow.targets.size || !workflowUtils.isAttackType(workflow, 'attack') || !workflow.token) return;
     if (tokenUtils.canSense(workflow.targets.first(), workflow.token, ['feelTremor', 'seeInvisbility', 'blindsight', 'seeAll', 'senseAll', 'senseInvisibility'])) return;
     workflow.disadvantage = true;
-    workflow.attackAdvAttribution.add('DIS: ' + trigger.entity.name);
+    workflow.attackAdvAttribution.add('DIS: ' + effect.name);
 }
-async function attacking({trigger, workflow}) {
+async function attacking({trigger: {entity: effect}, workflow}) {
+    if (effect.disabled) return;
     if (!workflow.targets.size || !workflowUtils.isAttackType(workflow, 'attack') || !workflow.token) return;
     if (tokenUtils.canSense(workflow.targets.first(), workflow.token, ['feelTremor', 'seeInvisbility', 'blindsight', 'seeAll', 'senseAll', 'senseInvisibility'])) return;
     workflow.advantage = true;
-    workflow.attackAdvAttribution.add('ADV: ' + trigger.entity.name);
+    workflow.attackAdvAttribution.add('ADV: ' + effect.name);
 }
 export let invisible = {
     name: 'Invisible',

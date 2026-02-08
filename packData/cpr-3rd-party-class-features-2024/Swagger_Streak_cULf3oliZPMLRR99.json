@@ -1,15 +1,15 @@
 {
-  "name": "Feline Form",
+  "name": "Swagger Streak",
   "type": "feat",
-  "effects": [],
+  "img": "icons/magic/control/mouth-smile-deception-purple.webp",
   "system": {
     "activities": {
-      "quYQLje6y8Lp5Yra": {
-        "type": "transform",
-        "_id": "quYQLje6y8Lp5Yra",
+      "yTgbk2UqerF8wp6U": {
+        "type": "utility",
+        "_id": "yTgbk2UqerF8wp6U",
         "sort": 0,
         "activation": {
-          "type": "bonus",
+          "type": "special",
           "override": false,
           "condition": ""
         },
@@ -18,7 +18,14 @@
             "allowed": false
           },
           "spellSlot": true,
-          "targets": []
+          "targets": [
+            {
+              "type": "itemUses",
+              "value": "1",
+              "target": "DRDCdI23ru4oGRi5",
+              "scaling": {}
+            }
+          ]
         },
         "description": {
           "chatFlavor": ""
@@ -26,8 +33,7 @@
         "duration": {
           "units": "inst",
           "concentration": false,
-          "override": false,
-          "value": ""
+          "override": false
         },
         "effects": [],
         "flags": {},
@@ -44,11 +50,11 @@
           },
           "affects": {
             "choice": false,
-            "type": "self",
+            "type": "",
             "special": ""
           },
           "override": false,
-          "prompt": true
+          "prompt": false
         },
         "uses": {
           "spent": 0,
@@ -65,48 +71,11 @@
           "requireMagic": false,
           "identifier": ""
         },
-        "profiles": [
-          {
-            "name": "",
-            "_id": "IMoZCqf2lCGJbtL2",
-            "uuid": "Actor.dAQzJEfTTFzygl5w",
-            "level": {
-              "min": null,
-              "max": null
-            }
-          }
-        ],
-        "settings": {
-          "effects": [
-            "all"
-          ],
-          "keep": [
-            "mental",
-            "languages",
-            "class",
-            "feats",
-            "bio",
-            "type",
-            "hp",
-            "tempHP"
-          ],
-          "merge": [
-            "saves",
-            "skills"
-          ],
-          "minimumAC": "",
-          "spellLists": [
-            "subclass:feline"
-          ],
-          "tempFormula": "",
-          "preset": "wildshape",
-          "other": [],
-          "transformTokens": true
-        },
-        "transform": {
-          "customize": true,
-          "mode": "",
-          "preset": "wildshape"
+        "roll": {
+          "prompt": false,
+          "visible": false,
+          "formula": "",
+          "name": ""
         },
         "useConditionText": "",
         "useConditionReason": "",
@@ -136,7 +105,7 @@
           "autoTargetType": "any",
           "autoTargetAction": "default",
           "automationOnly": false,
-          "otherActivityCompatible": true,
+          "otherActivityCompatible": false,
           "otherActivityAsParentType": true,
           "identifier": "",
           "displayActivityName": false,
@@ -157,73 +126,85 @@
           "preRemoveConditionText": "",
           "postRemoveConditionText": ""
         },
-        "name": "",
-        "img": ""
+        "otherActivityId": "none",
+        "otherActivityAsParentType": true,
+        "name": ""
       }
     },
     "uses": {
       "spent": 0,
-      "max": "1 * @abilities.cha.mod",
       "recovery": [
+        {
+          "period": "sr",
+          "type": "recoverAll"
+        },
         {
           "period": "lr",
           "type": "recoverAll"
         }
-      ]
+      ],
+      "max": "1"
     },
     "advancement": [],
     "description": {
       "value": "",
       "chat": ""
     },
-    "identifier": "feline-form",
+    "identifier": "swagger-streak",
     "source": {
-      "book": "CtbT",
-      "page": "",
-      "license": "",
-      "custom": "",
+      "revision": 1,
       "rules": "2024",
-      "revision": 1
+      "book": "The Pugilist Class 2024",
+      "page": "",
+      "custom": "TPC 2024",
+      "license": ""
     },
     "crewed": false,
     "enchant": {},
     "prerequisites": {
       "items": [],
-      "level": 3,
-      "repeatable": false
+      "repeatable": false,
+      "level": null
     },
     "properties": [],
     "requirements": "",
     "type": {
-      "value": "class",
+      "value": "",
       "subtype": ""
     }
   },
+  "effects": [],
+  "folder": "DaCCKHmNsmtRhEWW",
   "flags": {
     "dnd5e": {
-      "advancementOrigin": "cCJXqXjT3OnMrwv6",
       "riders": {
         "activity": []
       }
     },
     "chris-premades": {
-      "info": {
-        "identifier": "felineForm",
-        "rules": "modern",
-        "source": "chris-premades",
-        "version": "1.4.17"
+      "hiddenActivities": [],
+      "activityIdentifiers": {
+        "swagger": "yTgbk2UqerF8wp6U"
       },
       "macros": {
-        "midi": {
-          "item": [
-            "felineForm"
-          ]
-        }
+        "skill": [
+          "swaggerStreak"
+        ],
+        "check": [
+          "swaggerStreak"
+        ],
+        "item": [
+          "swaggerStreak"
+        ]
+      },
+      "info": {
+        "identifier": "swaggerStreak",
+        "rules": "modern",
+        "version": "1.4.25",
+        "source": "chris-premades"
       }
     }
   },
-  "img": "icons/creatures/mammals/cat-hunched-glowing-red.webp",
-  "folder": "eZZEXMzz4OnTv1Ay",
-  "_id": "GDGaUbtVp0bNgguA",
-  "_key": "!items!GDGaUbtVp0bNgguA"
+  "_id": "cULf3oliZPMLRR99",
+  "_key": "!items!cULf3oliZPMLRR99"
 }

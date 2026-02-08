@@ -573,6 +573,9 @@
             "Blink": {
                 "Away": "Disparu"
             },
+            "BloodiedButUnbowed": {
+                "Trigger": "Déclencher uniquement lorsque ensanglanté"
+            },
             "BloodCurses": {
                 "Amplify": "Amplifier la Malédiction du Sang ?"
             },
@@ -969,6 +972,10 @@
                 "LeapFeature": "Lame aux Flammes Vertes : Rebond",
                 "NoWeapons": "Aucune arme équipée trouvée !",
                 "SelectWeapon": "Attaquer avec quelle arme ?"
+            },
+            "Groundwork": {
+                "CompressionLock": "Infligez des dégâts à toutes ces créatures? ({formula})",
+                "Inescapable": "Accorder désavantage sur {activityName}."
             },
             "Grovelthrash": {
                 "Damage": "Infliger 2d6 de dégâts contondants supplémentaires au prix de 1d6 de dégâts psychiques ?",

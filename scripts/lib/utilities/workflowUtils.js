@@ -30,7 +30,7 @@ async function replaceDamage(workflow, formula, {ignoreCrit = false, damageType}
 async function applyDamage(tokens, value, damageType) {
     return await MidiQOL.applyTokenDamage([{damage: value, type: damageType}], value, new Set(tokens));
 }
-async function completeActivityUse(activity, config={}, dialog={}, message={}) {
+async function completeActivityUse(activity, config = {}, dialog = {}, message = {}) {
     if (!config.midiOptions?.asUser && !socketUtils.hasPermission(activity.actor, game.userId)) {
         if (!config.midiOptions) config.midiOptions = {};
         config.midiOptions.asUser = socketUtils.firstOwner(activity.actor, true);

@@ -40,7 +40,7 @@ function legendaryActionsPrompt(combat, data, options, id) {
                 let combatantItems = combatant.actor.identifiedItems;
                 let filteredItems = [];
                 combatantItems.forEach(i => i.forEach(j => {
-                    if (j.system.activities.find(k => {
+                    if (j.system.activities?.find(k => {
                         return (k?.consumption?.targets[0]?.target === 'resources.legact.value' || k?.activation.type === 'legendary') && 
                         combatant.actor?.system.resources?.legact?.value >= k.activation?.value;
                     })) filteredItems.push(j);
