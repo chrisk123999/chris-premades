@@ -1,0 +1,69 @@
+{
+  "name": "Moxie-Fueled Fists",
+  "type": "feat",
+  "img": "icons/equipment/hand/glove-simple-leather-brown-blue.webp",
+  "system": {
+    "activities": {},
+    "uses": {
+      "spent": 0,
+      "recovery": [],
+      "max": ""
+    },
+    "advancement": [],
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "identifier": "moxie-fueled-fists",
+    "source": {
+      "revision": 1,
+      "rules": "2024",
+      "book": "The Pugilist Class 2024",
+      "page": "",
+      "custom": "TPC 2024",
+      "license": ""
+    },
+    "crewed": false,
+    "enchant": {},
+    "prerequisites": {
+      "items": [],
+      "repeatable": false,
+      "level": 6
+    },
+    "properties": [],
+    "requirements": "",
+    "type": {
+      "value": "class",
+      "subtype": ""
+    }
+  },
+  "effects": [],
+  "folder": "DaCCKHmNsmtRhEWW",
+  "flags": {
+    "dnd5e": {
+      "riders": {
+        "activity": []
+      }
+    },
+    "chris-premades": {
+      "macros": {
+        "midi": {
+          "actor": [
+            "moxieFueledFists"
+          ]
+        }
+      },
+      "info": {
+        "identifier": "moxieFueledFists",
+        "rules": "modern",
+        "version": "1.4.27",
+        "source": "chris-premades"
+      },
+      "config": {
+        "useForceDamage": true
+      }
+    }
+  },
+  "_id": "E7LS6JItOJzvVkmU",
+  "_key": "!items!E7LS6JItOJzvVkmU"
+}
