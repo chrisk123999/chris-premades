@@ -14,10 +14,14 @@
       "value": "",
       "chat": ""
     },
-    "identifier": "feature",
+    "identifier": "iron-chin",
     "source": {
       "revision": 1,
-      "rules": "2024"
+      "rules": "2024",
+      "book": "The Pugilist Class 2024",
+      "page": "",
+      "custom": "TPC 2024",
+      "license": ""
     },
     "crewed": false,
     "enchant": {},
@@ -74,6 +78,14 @@
         "dnd5e": {
           "riders": {
             "statuses": []
+          }
+        },
+        "chris-premades": {
+          "info": {
+            "identifier": "ironChin",
+            "rules": "modern",
+            "version": "1.4.27",
+            "source": "chris-premades"
           }
         },
         "dae": {
