@@ -1,0 +1,111 @@
+{
+  "name": "Herculean",
+  "type": "feat",
+  "img": "icons/magic/control/buff-strength-muscle-damage-orange.webp",
+  "system": {
+    "activities": {},
+    "uses": {
+      "spent": 0,
+      "recovery": [],
+      "max": ""
+    },
+    "advancement": [],
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "identifier": "herculean",
+    "source": {
+      "revision": 1,
+      "rules": "2024",
+      "book": "The Pugilist Class 2024",
+      "page": "",
+      "custom": "TPC 2024",
+      "license": ""
+    },
+    "crewed": false,
+    "enchant": {},
+    "prerequisites": {
+      "items": [],
+      "repeatable": false,
+      "level": 10
+    },
+    "properties": [],
+    "requirements": "",
+    "type": {
+      "value": "class",
+      "subtype": ""
+    }
+  },
+  "effects": [
+    {
+      "name": "Heavy Lifter",
+      "img": "icons/magic/control/buff-strength-muscle-damage-orange.webp",
+      "origin": "Actor.n2iT3wlfO9IxlReq.Item.JqqExzllTnKChHyu",
+      "_id": "gHIdF82z2shmReue",
+      "type": "base",
+      "system": {},
+      "changes": [
+        {
+          "key": "system.attributes.encumbrance.multipliers.overall",
+          "mode": 4,
+          "value": "2",
+          "priority": 20
+        }
+      ],
+      "disabled": false,
+      "duration": {
+        "startTime": null,
+        "combat": null,
+        "seconds": null,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "transfer": true,
+      "statuses": [],
+      "sort": 0,
+      "flags": {
+        "dnd5e": {
+          "riders": {
+            "statuses": []
+          }
+        },
+        "dae": {
+          "disableCondition": "",
+          "stackable": "noneName",
+          "showIcon": false,
+          "disableIncapacitated": false,
+          "durationExpression": "",
+          "macroRepeat": "none",
+          "specialDuration": []
+        },
+        "core": {
+          "overlay": false
+        }
+      },
+      "_key": "!items.effects!BkQGnuahE2cTmsWR.gHIdF82z2shmReue"
+    }
+  ],
+  "folder": "DaCCKHmNsmtRhEWW",
+  "flags": {
+    "dnd5e": {
+      "riders": {
+        "activity": []
+      }
+    },
+    "chris-premades": {
+      "info": {
+        "identifier": "herculean",
+        "rules": "modern",
+        "version": "1.4.29",
+        "source": "chris-premades"
+      }
+    }
+  },
+  "_id": "BkQGnuahE2cTmsWR",
+  "_key": "!items!BkQGnuahE2cTmsWR"
+}

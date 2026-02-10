@@ -463,13 +463,17 @@ export {paladinsSmite} from './macros/2024/classFeatures/paladin/paladinsSmite.j
 // Pugilist
 export {bloodiedButUnbowed} from './macros/2024/classFeatures/pugilist/bloodiedButUnbowed.js';
 export {digDeep, digDeepEffect} from './macros/2024/classFeatures/pugilist/digDeep.js';
+export {downButNotOut, downButNotOutEffect} from './macros/2024/classFeatures/pugilist/downButNotOut.js';
 export {fisticuffs} from './macros/2024/classFeatures/pugilist/fisticuffs.js';
 export {haymaker} from './macros/2024/classFeatures/pugilist/haymaker.js';
 export {heavyHitter} from './macros/2024/classFeatures/pugilist/heavyHitter.js';
+export {herculean} from './macros/2024/classFeatures/pugilist/herculean.js';
 export {ironChin} from './macros/2024/classFeatures/pugilist/ironChin.js';
 export {moxie} from './macros/2024/classFeatures/pugilist/moxie.js';
 export {moxieFueledFists} from './macros/2024/classFeatures/pugilist/moxieFueledFists.js';
 export {pugilistUnarmedStrike} from './macros/2024/classFeatures/pugilist/pugilistUnarmedStrike.js';
+export {schoolOfHardKnocks, schoolOfHardKnocksEndanger} from './macros/2024/classFeatures/pugilist/schoolOfHardKnocks.js';
+export {shakeItOff} from './macros/2024/classFeatures/pugilist/shakeItOff.js';
 export {swaggerStreak} from './macros/2024/classFeatures/pugilist/swaggerStreak.js';
 // Squared Circle
 export {groundwork} from './macros/2024/classFeatures/pugilist/squaredCircle/groundwork.js';
