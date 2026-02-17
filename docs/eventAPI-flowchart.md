@@ -51,14 +51,14 @@ flowchart TD
     targetUtilityRollComplete
     targetPreAttackRollConfig
     targetPostAttackRoll
-    afterAttackRoll["<p style='width:200px; text-wrap:balance;'><b>After Macros</b>
+    afterAttackRoll["<p style='width:200px; height:30px; text-wrap:balance;'><b>After Macros</b>
       <small><li>Heroic Inspiration Attack</li></small><p>"]:::edgeLabel
     targetAttackRollComplete
     targetDamageRollComplete
     targetSavesComplete
     targetRollFinished
     scenePreambleComplete
-    afterScenePreamble["<p style='width:200px; text-wrap:balance;'><b>After Macros</b>
+    afterScenePreamble["<p style='width:200px; height:30px; text-wrap:balance;'><b>After Macros</b>
       <small><li>Condition Resistance Checked</li>
       <li>Condition Vulnerability Checked</li>
       <li>Template Visibility Checked</li></small></p>"]:::edgeLabel
@@ -66,22 +66,22 @@ flowchart TD
     scenePreAttackRollConfig
     scenePostAttackRoll
     sceneAttackRollComplete
-    crit["<p style='width:200px; text-wrap:balance;'><b>After Macros</b>
+    crit["<p style='width:200px; height:30px; text-wrap:balance;'><b>After Macros</b>
       <small><li>Crit/Fumble Homebrew</li></small></p>"]:::edgeLabel
     sceneDamageRollComplete
-    afterSceneDamage["<p style='width:200px; text-wrap:balance;'><b>After Macros</b>
-      <small><li>Heroic Inspiration Damage</li>
-      <li>Dice So Nice Shown</li>
-      <li>Exploding Heals</li>
-      <li>Manual Rolls</li></small></p>"]:::edgeLabel
+    afterSceneDamage["<p style='width:200px; height:30px; text-wrap:balance;'><b>After Macros</b>
+      <small><li style="height:20px;">Heroic Inspiration Damage</li>
+      <li style="height:20px;">Dice So Nice Shown</li>
+      <li style="height:20px;">Exploding Heals</li>
+      <li style="height:20px;">Manual Rolls</li></small></p>"]:::edgeLabel
     sceneRollFinished
-    afterSceneRoll["<p style='width:200px; text-wrap:balance;'><b>After Macros</b>
-      <small><li>Condition Resistance Cleanup</li>
-      <li>Condition Vulnerability Cleanup</li>
-      <li>Mastery Automations</li>
-      <li>Expire CPR Special Durations</li>
-      <li>Delete Workflow Effects</li>
-      <li>Cleave</li></small></p>"]:::edgeLabel
+    afterSceneRoll["<p style='width:200px; height:30px; text-wrap:balance;'><b>After Macros</b>
+      <small><li style="height:20px;">Condition Resistance Cleanup</li>
+      <li style="height:20px;">Condition Vulnerability Cleanup</li>
+      <li style="height:20px;">Mastery Automations</li>
+      <li style="height:20px;">Expire CPR Special Durations</li>
+      <li style="height:20px;">Delete Workflow Effects</li>
+      <li style="height:20px;">Cleave</li></small></p>"]:::edgeLabel
   end
 
   subgraph d20["D20 Rolls"]
