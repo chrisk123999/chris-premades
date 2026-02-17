@@ -21,6 +21,8 @@ There are many more events available beyond the ones shown here. A full list inc
 
 Embedded macros are generally called in ascending priority order for each event. Macros associated with the "Apply Damage" events are the only exception: `applyDamage`, `targetApplyDamage`, and `sceneApplyDamage`. These are lumped together before being sorted by priority, so the order of `Use` -> `Target` -> `Scene` will vary depending on how your macros are configured. The "Apply Damage" events are represented with one node in the chart.
 
+Embedded macros are triggered by MidiQOL hooks, which are called *before* MidiQOL OnUse macros. Each of these events will run before their equivalent macro pass in MidiQOL.
+
 ## Chart
 
 ```mermaid
@@ -36,6 +38,7 @@ flowchart TD
     preItemRoll
     preambleComplete
     utilityRollComplete
+    preAttackRollConfig
     postAttackRoll
     attackRollComplete 
     damageRollComplete
@@ -46,37 +49,39 @@ flowchart TD
     targetPreItemRoll
     targetPreambleComplete
     targetUtilityRollComplete
+    targetPreAttackRollConfig
     targetPostAttackRoll
-    afterAttackRoll["<b>After Macros</b>
-      <small><li>Heroic Inspiration Attack</li></small>"]:::edgeLabel
+    afterAttackRoll["<p style='width:200px; text-wrap:balance;'><b>After Macros</b>
+      <small><li>Heroic Inspiration Attack</li></small><p>"]:::edgeLabel
     targetAttackRollComplete
     targetDamageRollComplete
     targetSavesComplete
     targetRollFinished
     scenePreambleComplete
-    afterScenePreamble["<b>After Macros</b>
+    afterScenePreamble["<p style='width:200px; text-wrap:balance;'><b>After Macros</b>
       <small><li>Condition Resistance Checked</li>
       <li>Condition Vulnerability Checked</li>
-      <li>Template Visibility Checked</li></small>"]:::edgeLabel
+      <li>Template Visibility Checked</li></small></p>"]:::edgeLabel
     sceneUtilityRollComplete
+    scenePreAttackRollConfig
     scenePostAttackRoll
     sceneAttackRollComplete
-    crit["<b>After Macros</b>
-      <small><li>Crit/Fumble Homebrew</li></small>"]:::edgeLabel
+    crit["<p style='width:200px; text-wrap:balance;'><b>After Macros</b>
+      <small><li>Crit/Fumble Homebrew</li></small></p>"]:::edgeLabel
     sceneDamageRollComplete
-    afterSceneDamage["<b>After Macros</b>
+    afterSceneDamage["<p style='width:200px; text-wrap:balance;'><b>After Macros</b>
       <small><li>Heroic Inspiration Damage</li>
       <li>Dice So Nice Shown</li>
       <li>Exploding Heals</li>
-      <li>Manual Rolls</li></small>"]:::edgeLabel
+      <li>Manual Rolls</li></small></p>"]:::edgeLabel
     sceneRollFinished
-    afterSceneRoll["<b>After Macros</b>
+    afterSceneRoll["<p style='width:200px; text-wrap:balance;'><b>After Macros</b>
       <small><li>Condition Resistance Cleanup</li>
       <li>Condition Vulnerability Cleanup</li>
       <li>Mastery Automations</li>
       <li>Expire CPR Special Durations</li>
       <li>Delete Workflow Effects</li>
-      <li>Cleave</li></small>"]:::edgeLabel
+      <li>Cleave</li></small></p>"]:::edgeLabel
   end
 
   subgraph d20["D20 Rolls"]
@@ -113,7 +118,10 @@ flowchart TD
     targetUtilityRollComplete --> sceneUtilityRollComplete
     sceneUtilityRollComplete --> savesComplete
 
-    scenePreambleComplete -- Has Attack --> preEvaluation
+    scenePreambleComplete -- Has Attack --> preAttackRollConfig
+    preAttackRollConfig --> targetPreAttackRollConfig
+    targetPreAttackRollConfig --> scenePreAttackRollConfig
+    scenePreAttackRollConfig --> preEvaluation
     scenePostEvaluation --> scenePostAttackRoll
     scenePostAttackRoll --> postAttackRoll
     postAttackRoll --> targetPostAttackRoll
