@@ -7,13 +7,15 @@ async function isAttacked({trigger: {token}, workflow}) {
     if (!grapples.length) return;
     if (grapples.some(g => g.id === workflow.token.id)) return;
     genericUtils.setProperty(workflow, 'chris-premades.grapples', grapples);
-    await effectUtils.applyConditions(token.actor, ['coverHalf']);
+    let cover = await effectUtils.applyConditions(token.actor, ['coverHalf']);
+    if (!cover) return;
+    await genericUtils.setFlag(cover[0], 'chris-premades', 'info', {identifier: 'meatShieldCover'});
 }
 async function isMissed({trigger: {entity: item, token}, workflow}) {
-    let cover = effectUtils.getEffectByStatusID(token.actor, 'coverHalf');
-    if (cover) await genericUtils.remove(cover);
     let grapples = workflow['chris-premades']?.grapples;
     if (!grapples) return;
+    let cover = effectUtils.getEffectByIdentifier(token.actor, 'meatShieldCover');
+    if (cover) await genericUtils.remove(cover);
     if (workflow.hitTargets.some(t => t.id === token.id)) return;
     if (actorUtils.hasUsedReaction(token.actor)) return;
     let reaction = activityUtils.getActivityByIdentifier(item, 'use', {strict: true});
