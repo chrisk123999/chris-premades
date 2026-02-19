@@ -179,7 +179,7 @@
       "info": {
         "identifier": "meatShield",
         "rules": "modern",
-        "version": "1.4.27",
+        "version": "1.5.2",
         "source": "chris-premades"
       },
       "macros": {

@@ -7,12 +7,13 @@ async function isAttacked({trigger: {token}, workflow}) {
     if (!grapples.length) return;
     if (grapples.some(g => g.id === workflow.token.id)) return;
     genericUtils.setProperty(workflow, 'chris-premades.grapples', grapples);
-    await genericUtils.setFlag(token.actor, 'midi-qol', 'acBonus', 2);
+    await effectUtils.applyConditions(token.actor, ['coverHalf']);
 }
 async function isMissed({trigger: {entity: item, token}, workflow}) {
+    let cover = effectUtils.getEffectByStatusID(token.actor, 'coverHalf');
+    if (cover) await genericUtils.remove(cover);
     let grapples = workflow['chris-premades']?.grapples;
     if (!grapples) return;
-    await genericUtils.unsetFlag(token.actor, 'midi-qol', 'acBonus');
     if (workflow.hitTargets.some(t => t.id === token.id)) return;
     if (actorUtils.hasUsedReaction(token.actor)) return;
     let reaction = activityUtils.getActivityByIdentifier(item, 'use', {strict: true});
@@ -35,7 +36,7 @@ async function added({trigger: {entity: item}}) {
 }
 export let meatShield = {
     name: 'Meat Shield',
-    version: '1.4.27',
+    version: '1.5.2',
     rules: 'modern',
     midi: {
         actor: [
