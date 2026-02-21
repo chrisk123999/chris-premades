@@ -422,8 +422,7 @@ async function earlyNighteye({trigger: {entity: effect}, workflow}) {
     if (lightLevelSource !== 'bright' && lightLevelTarget !== 'bright') return;
     let selection = await dialogUtils.confirm(effect.name, genericUtils.format('CHRISPREMADES.Macros.Mutagencraft.AttackSunlight', {sourceTokenName: workflow.token.name, targetTokenName: workflow.targets.first().name}), {userId: socketUtils.gmID()});
     if (!selection) return;
-    workflow.disadvantage = true;
-    workflow.attackAdvAttribution.add(genericUtils.translate('DND5E.Disadvantage') + ': ' + effect.name);
+    workflow.tracker.disadvantage.add(effect.name, effect.name);
 }
 async function skillNighteye({trigger: {actor, skillId}}) {
     if (skillId !== 'prc') return;
@@ -502,7 +501,7 @@ export let formulaNighteye = {
     midi: {
         actor: [
             {
-                pass: 'preambleComplete',
+                pass: 'preAttackRollConfig',
                 macro: earlyNighteye,
                 priority: 51
             }

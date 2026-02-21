@@ -28,6 +28,7 @@ import {template} from './extensions/template.js';
 import {tidy5e} from './integrations/tidy5e.js';
 import {combat} from './extensions/combat.js';
 import {concentration} from './extensions/concentration.js';
+import {time} from './events/time.js';
 export function registerHooks() {
     // Setting caching
     Hooks.on('createSetting', genericUtils.createUpdateSetting);
@@ -54,6 +55,7 @@ export function registerHooks() {
     Hooks.on('midi-qol.premades.postSavesComplete', midiEvents.savesComplete);
     Hooks.on('midi-qol.preTargetDamageApplication', midiEvents.preTargetDamageApplication);
     Hooks.on('midi-qol.premades.postRollFinished', midiEvents.rollFinished);
+    Hooks.on('midi-qol.premades.preAttackRollConfig', midiEvents.preAttackRollConfig);
 
     // DAE Field Browser
     Hooks.on('dae.setFieldData', dae.addFlags);
@@ -163,6 +165,7 @@ export function registerHooks() {
         Hooks.on('createItem', itemEvent.created);
         Hooks.on('deleteItem', itemEvent.deleted);
         Hooks.on('updateItem', itemEvent.updated);
+        Hooks.on('updateWorldTime', time.updateWorldTime);
 
         // Scene & Compendium medkit
         Hooks.on('getHeaderControlsSceneConfig', appendHeaderControl);

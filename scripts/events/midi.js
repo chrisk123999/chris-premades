@@ -267,6 +267,24 @@ async function preambleComplete(workflow) {
         await conditionResistance.preambleComplete(workflow);
         await conditionVulnerability.preambleComplete(workflow);
     }
+}
+async function preAttackRollConfig(workflow) {
+    await executeMacroPass(workflow, 'preAttackRollConfig');
+    await executeTargetMacroPass(workflow, 'targetPreAttackRollConfig');
+    let sceneTriggers = [];
+    workflow.token?.document.parent.tokens.filter(i => i.uuid !== workflow.token?.document.uuid && i.actor).forEach(j => {
+        sceneTriggers.push(...getSortedTriggers({token: j.object, actor: j.actor, sourceToken: workflow.token}, 'scenePreAttackRollConfig'));
+    });
+    let sortedSceneTriggers = [];
+    let names = new Set();
+    sceneTriggers.forEach(i => {
+        if (names.has(i.name)) return;
+        sortedSceneTriggers.push(i);
+        names.add(i.name);
+    });
+    sortedSceneTriggers = sortedSceneTriggers.sort((a, b) => a.priority - b.priority);
+    genericUtils.log('dev', 'Executing Midi Macro Pass: scenePreAttackRollConfig');
+    for (let trigger of sortedSceneTriggers) await executeMacro(trigger, workflow);
     await templateVisibility.check(workflow);
     //TODO: Region Visibility Check Here!
 }
@@ -440,5 +458,6 @@ export let midiEvents = {
     rollFinished,
     preambleComplete,
     preTargetDamageApplication,
-    postAttackRoll
+    postAttackRoll,
+    preAttackRollConfig
 };

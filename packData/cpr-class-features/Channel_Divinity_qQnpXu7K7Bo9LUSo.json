@@ -1,0 +1,72 @@
+{
+  "name": "Channel Divinity",
+  "type": "feat",
+  "effects": [],
+  "system": {
+    "activities": {},
+    "uses": {
+      "spent": 0,
+      "recovery": [
+        {
+          "period": "sr",
+          "type": "recoverAll"
+        }
+      ],
+      "max": "1"
+    },
+    "advancement": [],
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "identifier": "channel-divinity",
+    "source": {
+      "book": "XGtE",
+      "page": "",
+      "license": "",
+      "custom": "",
+      "rules": "2014",
+      "revision": 1
+    },
+    "crewed": false,
+    "enchant": {},
+    "prerequisites": {
+      "items": [],
+      "level": 3,
+      "repeatable": false
+    },
+    "properties": [],
+    "requirements": "",
+    "type": {
+      "value": "class",
+      "subtype": "channelDivinity"
+    }
+  },
+  "flags": {
+    "midi-qol": {
+      "removeAttackDamageButtons": "default",
+      "forceCEOff": true
+    },
+    "midiProperties": {
+      "confirmTargets": "default"
+    },
+    "dnd5e": {
+      "advancementOrigin": "4wnzdIp3XxgH4Q5U",
+      "riders": {
+        "activity": []
+      }
+    },
+    "chris-premades": {
+      "info": {
+        "identifier": "channelDivinity",
+        "rules": "legacy",
+        "source": "chris-premades",
+        "version": "1.5.2"
+      }
+    }
+  },
+  "img": "icons/magic/holy/barrier-shield-winged-blue.webp",
+  "folder": "zPkRF8dbQaQ6ixi0",
+  "_id": "qQnpXu7K7Bo9LUSo",
+  "_key": "!items!qQnpXu7K7Bo9LUSo"
+}

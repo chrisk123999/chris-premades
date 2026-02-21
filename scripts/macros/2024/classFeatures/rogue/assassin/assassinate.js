@@ -1,10 +1,9 @@
-import {combatUtils, genericUtils, workflowUtils} from '../../../../../utils.js';
+import {combatUtils, workflowUtils} from '../../../../../utils.js';
 async function attack({trigger: {entity: item}, workflow}) {
     if (!workflow.targets.size || !combatUtils.inCombat() || !workflowUtils.isAttackType(workflow, 'weaponAttack')) return;
     if (game.combat.round != 1) return;
     if (workflow.token.document.combatant.initiative <= workflow.targets.first().document.combatant.initiative) return;
-    workflow.attackAdvAttribution.add(genericUtils.translate('DND5E.Advantage') + ': ' + item.name);
-    workflow.advantage = true;
+    workflow.tracker.advantage.add(item.name, item.name);
     await workflowUtils.syntheticItemRoll(item, []);
 }
 export let assassinate = {
@@ -14,7 +13,7 @@ export let assassinate = {
     midi: {
         actor: [
             {
-                pass: 'preambleComplete',
+                pass: 'preAttackRollConfig',
                 macro: attack,
                 priority: 50
             }

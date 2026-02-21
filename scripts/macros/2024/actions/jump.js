@@ -2,9 +2,14 @@ import {DialogApp} from '../../../applications/dialog.js';
 import {activityUtils, animationUtils, crosshairUtils, effectUtils, genericUtils, itemUtils, workflowUtils} from '../../../utils.js';
 async function early({trigger, workflow}) {
     let secondStoryWork = itemUtils.getItemByIdentifier(workflow.actor, 'secondStoryWork');
-    if (!secondStoryWork) return;
+    let herculean = itemUtils.getItemByIdentifier(workflow.actor, 'herculean');
     let itemData = genericUtils.duplicate(workflow.item.toObject());
-    itemData.system.activities[workflow.activity.id].roll.formula = itemData.system.activities[workflow.activity.id].roll.formula.replaceAll('str', 'dex');
+    if (secondStoryWork) {
+        itemData.system.activities[workflow.activity.id].roll.formula = itemData.system.activities[workflow.activity.id].roll.formula.replaceAll('str', 'dex');
+    }
+    if (herculean) {
+        itemData.system.activities[workflow.activity.id].roll.formula = '2 * ' + itemData.system.activities[workflow.activity.id].roll.formula;
+    }
     workflow.item = await itemUtils.syntheticItem(itemData, workflow.actor);
     workflow.activity = workflow.item.system.activities.get(workflow.activity.id);
 }
@@ -107,7 +112,7 @@ async function longJump({trigger, workflow}) {
 }
 export let jump = {
     name: 'Jump',
-    version: '1.3.60',
+    version: '1.4.29',
     rules: 'modern',
     midi: {
         item: [

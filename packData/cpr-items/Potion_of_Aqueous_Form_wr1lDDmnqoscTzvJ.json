@@ -225,7 +225,7 @@
     "chris-premades": {
       "info": {
         "name": "Potion of Aqueous Form",
-        "version": "1.1.0",
+        "version": "1.5.1",
         "identifier": "potionOfAqueousForm",
         "source": "chris-premades"
       }
@@ -290,19 +290,19 @@
           "priority": 20
         },
         {
-          "key": "flags.midi-qol.advantage.ability.save.str",
+          "key": "flags.midi-qol.advantage.save.str",
           "mode": 5,
           "value": "1",
           "priority": 20
         },
         {
-          "key": "flags.midi-qol.advantage.ability.save.dex",
+          "key": "flags.midi-qol.advantage.save.dex",
           "mode": 5,
           "value": "1",
           "priority": 20
         },
         {
-          "key": "flags.midi-qol.advantage.ability.save.con",
+          "key": "flags.midi-qol.advantage.save.con",
           "mode": 5,
           "value": "1",
           "priority": 20

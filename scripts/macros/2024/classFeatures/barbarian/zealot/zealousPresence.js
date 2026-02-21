@@ -23,7 +23,7 @@ async function early({trigger, workflow}) {
 }
 export let zealousPresence = {
     name: 'Zealous Presence',
-    version: '1.1.28',
+    version: '1.5.1',
     rules: 'modern',
     midi: {
         item: [

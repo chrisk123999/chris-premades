@@ -33,7 +33,7 @@ export async function findSteedHelper(workflow, defaultNameSuffix, defaultFolder
         label: 'DND5E.Languages',
         name: 'languageSelected',
         options: {
-            options: Array.from(workflow.actor.system.traits.languages.value).map(i => {return {value: i, label: 'DND5E.Languages' + i.capitalize()};})
+            options: Array.from(workflow.actor.system.traits.languages.value).map(i => {return {value: i, label: 'DND5E.Language.Language.' + i.capitalize()};})
         }
     };
     let languageSelected = await dialogUtils.selectDialog(workflow.item.name, 'CHRISPREMADES.Macros.FindSteed.Language', input);

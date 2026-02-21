@@ -120,8 +120,7 @@ async function early({workflow}) {
             createEffect = true;
             break;
         case 'deadeyeShot':
-            workflow.advantage = true;
-            workflow.attackAdvAttribution.add(genericUtils.translate('DND5E.Advantage') + ': ' + selectedShot.name);
+            workflow.tracker.advantage.add(selectedShot.name, selectedShot.name);
             break;
         case 'disarmingShot':
             effectUtils.addMacro(effectData, 'midi.actor', ['disarmingShot']);
@@ -315,7 +314,7 @@ export let firearm = {
                 priority: 50
             },
             {
-                pass: 'preambleComplete',
+                pass: 'preAttackRollConfig',
                 macro: early,
                 priority: 50
             },

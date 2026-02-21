@@ -425,6 +425,15 @@ export class ItemMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
                             }));
                             break;
                         }
+                        case 'activity': {
+                            config.isSelect = true;
+                            config.options = this.item.system?.activities?.map(i => ({
+                                label: i.name,
+                                value: i.id,
+                                isSelected: config?.value === i.id 
+                            }));
+                            break;
+                        }
                         case 'select-many': {
                             config.isSelectMany = true;
                             config.options = configBase.options.map(i => ({

@@ -88,8 +88,7 @@ async function attack({trigger: {entity: effect}, workflow}) {
     if (!duplicityToken) return;
     if (tokenUtils.getDistance(workflow.token, duplicityToken) > genericUtils.convertDistance(5)) return;
     if (!tokenUtils.canSee(workflow.targets.first(), duplicityToken)) return;
-    workflow.advantage = true;
-    workflow.attackAdvAttribution.add(genericUtils.translate('DND5E.Advantage') + ': ' + origin.name);
+    workflow.tracker.advantage.add(origin.name, origin.name);
 }
 async function spell({trigger, workflow}) {
     if (!workflow.token) return;
@@ -232,7 +231,7 @@ export let invokeDuplicityDistract = {
     midi: {
         actor: [
             {
-                pass: 'scenePreambleComplete',
+                pass: 'scenePreAttackRollConfig',
                 macro: attack,
                 priority: 50
             }

@@ -5,8 +5,7 @@ async function early({trigger: {entity: item}, workflow}) {
     let grapplingEffects = effectUtils.getAllEffectsByIdentifier(workflow.actor, 'grappling');
     if (!grapplingEffects.length) return;
     if (!grapplingEffects.some(i => i.flags['chris-premades'].grapple.tokenId === workflow.targets.first()?.id)) return;
-    workflow.advantage = true;
-    workflow.attackAdvAttribution.add(genericUtils.translate('DND5E.Advantage') + ': ' + item.name);
+    workflow.tracker.advantage.add(item.name, item.name);
 }
 
 async function hit({trigger: {entity: item}, workflow}) {
@@ -31,7 +30,7 @@ export let grappler = {
     midi: {
         actor: [
             {
-                pass: 'preambleComplete',
+                pass: 'preAttackRollConfig',
                 macro: early,
                 priority: 50
             },

@@ -151,10 +151,7 @@ async function attack({workflow}) {
     let effect = effectUtils.getEffectByIdentifier(workflow.actor, 'bestowCurseAttack');
     if (!effect) return;
     let sourceActorUuid = effect.flags['chris-premades'].bestowCurse.sourceActor;
-    if (workflow.targets.map(target => target.actor?.uuid).has(sourceActorUuid)) {
-        workflow.disadvantage = true;
-        workflow.attackAdvAttribution.add('Disadvantage: ' + effect.name);
-    }
+    if (workflow.targets.map(target => target.actor?.uuid).has(sourceActorUuid)) workflow.tracker.disadvantage.add(effect.name, effect.name);
 }
 async function damage({workflow}) {
     if (!workflow.hitTargets.size) return;
@@ -252,7 +249,7 @@ export let bestowCurseAttack = {
     midi: {
         actor: [
             {
-                pass: 'preambleComplete',
+                pass: 'preAttackRollConfig',
                 macro: attack,
                 priority: 50
             }

@@ -12,6 +12,10 @@ async function damaged({trigger: {entity: item, token: self}, ditem}) {
     let recover = activityUtils.getActivityByIdentifier(item, 'recover', {strict: true});
     if (recover) await workflowUtils.completeActivityUse(recover, {midiOptions: {asUser: player}});
     if (!bloodied) return;
+    let downButNotOut = itemUtils.getItemByIdentifier(self.actor, 'downButNotOut');
+    if (downButNotOut?.system.uses.value && await dialogUtils.confirmUseItem(downButNotOut, {userId: player})) {
+        await workflowUtils.completeItemUse(downButNotOut, {midiOptions: {asUser: player}});
+    }
     let tempHP = activityUtils.getActivityByIdentifier(item, 'bloodiedTempHP', {strict: true});
     if (tempHP) workflowUtils.completeActivityUse(tempHP, {midiOptions: {asUser: player}});
 }
@@ -20,7 +24,7 @@ async function added({trigger: {entity: item}}) {
 }
 export let bloodiedButUnbowed = {
     name: 'Bloodied But Unbowed',
-    version: '1.4.25',
+    version: '1.4.29',
     rules: 'modern',
     midi: {
         actor: [

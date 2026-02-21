@@ -1,12 +1,11 @@
-import {constants, dialogUtils, effectUtils, genericUtils, rollUtils, socketUtils, workflowUtils} from '../../../utils.js';
+import {dialogUtils, effectUtils, genericUtils, rollUtils, socketUtils, workflowUtils} from '../../../utils.js';
 async function early({trigger: {entity: item}, workflow}) {
     if (!workflowUtils.isAttackType(workflow, 'attack')) return;
     if (!workflow.targets.size) return;
     let grapplingEffects = effectUtils.getAllEffectsByIdentifier(workflow.actor, 'grappling');
     if (!grapplingEffects.length) return;
     if (!grapplingEffects.some(i => i.flags['chris-premades'].grapple.tokenId === workflow.targets.first()?.id)) return;
-    workflow.advantage = true;
-    workflow.attackAdvAttribution.add(genericUtils.translate('DND5E.Advantage') + ': ' + item.name);
+    workflow.tracker.advantage.add(item.name, item.name);
 }
 async function use({workflow}) {
     if (!workflow.token || workflow.targets.size !== 1) return;
@@ -53,7 +52,7 @@ export let grappler = {
     midi: {
         actor: [
             {
-                pass: 'preambleComplete',
+                pass: 'preAttackRollConfig',
                 macro: early,
                 priority: 50
             }

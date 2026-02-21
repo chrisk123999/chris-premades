@@ -1,3 +1,44 @@
+# 1.5.4 Releaes:
+## Bug Fixes:
+- Dreadful Strikes (Legacy and Modern)
+
+# 1.5.3 Releaes:
+## Update Notes:
+- Added a time trigger generic monster feature. This can be used to trigger an activity to roll against on a target every configured interval. Combined with other generic features it's possible to make many long-term curse features. Such as a Slaad's mutating claw.
+## Bug Fixes:
+- Meat Shield (Thanks Bacon)
+## API Update Notes:
+- Added a time event with a `timeUpdated` pass to the API and embedded macros. See the time trigger generic action for an example.
+
+# 1.5.2 Release:
+## New Legacy Content:
+- Channel Divinity (Paladin)
+- Guided Strike
+
+# 1.5.1 Release:
+## Update Notes:
+- Updated many items away from using depricated Midi-Qol flags.
+- Modern blinded condition handling has been removed due to Midi-Qol better handling it now.
+
+# 1.5.0 Release:
+## Update Notes:
+- CPR now requires the 5.2.5 D&D system.
+- CPR now requires Midi-Qol 13.0.48 or higher.
+- Invisibility condition handling has been removed due to Midi-Qol better handling it now.
+- This update brings CPR up to date with recent Midi-Qol advantage and disadvantage changes.
+## API Update Notes:
+- Added `preAttackRollConfig`, `targetPreAttackRollConfig`, and `scenePreAttackRollConfig` to the API and embedded macros.
+
+# 1.4.29 Release:
+## New Modern Content:
+- Down But Not Out (Thanks Bacon)
+- School of Hard Knocks (Thanks Bacon)
+- Herculean (Thanks Bacon)
+- Shake It Off (Thanks Bacon)
+## Bug Fixes:
+- Bloodied But Unbowed (Thanks Bacon)
+- Dig Deep (Thanks Bacon)
+
 # 1.4.28 Release:
 ## New Modern Content:
 - Dig Deep (Thanks Bacon)

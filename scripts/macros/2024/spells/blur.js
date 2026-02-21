@@ -1,10 +1,8 @@
-import {constants, effectUtils, itemUtils, tokenUtils, workflowUtils} from '../../../utils.js';
+import {effectUtils, itemUtils, tokenUtils, workflowUtils} from '../../../utils.js';
 async function attacked({trigger, workflow}) {
     if (!workflow.targets.size || !workflowUtils.isAttackType(workflow, 'attack') || !workflow.token) return;
     if (tokenUtils.canSense(workflow.token, workflow.targets.first(), ['blindsight', 'seeAll'])) return;
-    workflow.disadvantage = true;
-    workflow.rollOptions.disadvantage = false;
-    workflow.attackAdvAttribution.add('DIS: ' + trigger.entity.name);
+    workflow.tracker.disadvantage.add(trigger.entity.name, trigger.entity.name);
 }
 async function use({trigger, workflow}) {
     let effectData = {
@@ -42,7 +40,7 @@ export let blurEffect = {
     midi: {
         actor: [
             {
-                pass: 'targetPreambleComplete',
+                pass: 'targetPreAttackRollConfig',
                 macro: attacked,
                 priority: 50
             }

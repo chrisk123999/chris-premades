@@ -20,7 +20,7 @@ async function use({workflow}) {
     await effectUtils.createEffect(workflow.actor, effectData, {concentrationItem: workflow.item, strictlyInterdependent: true, identifier: 'shadowOfMoil'});
     if (concentrationEffect) await genericUtils.update(concentrationEffect, {'duration.seconds': effectData.duration.seconds});
 }
-async function early({workflow}) {
+async function early({trigger:workflow}) {
     let sourceToken = workflow.token;
     let sourceActor = workflow.actor;
     let sourceEffect = effectUtils.getEffectByIdentifier(sourceActor, 'shadowOfMoil');
@@ -39,17 +39,13 @@ async function early({workflow}) {
         if ((targetSenses.tremorsense >= distance) || (targetSenses.blindsight >= distance)) targetCanSeeSource = true;
         if (sourceCanSeeTarget && targetCanSeeSource) continue;
         if (sourceCanSeeTarget) {
-            workflow.advantage = true;
-            workflow.attackAdvAttribution.add(sourceEffect.name + ': ' + genericUtils.translate('CHRISPREMADES.Template.TargetCantSeeAttacker'));
+            workflow.tracker.advantage.add(genericUtils.translate('CHRISPREMADES.Macros.ShadowOfMoil.Name'), genericUtils.translate('CHRISPREMADES.Template.TargetCantSeeAttacker'));
         } else if (targetCanSeeSource) {
-            workflow.disadvantage = true;
             workflow.flankingAdvantage = false;
-            workflow.attackAdvAttribution.add(targetEffect.name + ': ' + genericUtils.translate('CHRISPREMADES.Template.AttackerCantSeeTarget'));
+            workflow.tracker.disadvantage.add(genericUtils.translate('CHRISPREMADES.Macros.ShadowOfMoil.Name'), genericUtils.translate('CHRISPREMADES.Template.AttackerCantSeeTarget'));
         } else {
-            workflow.advantage = true;
-            workflow.disadvantage = true;
-            workflow.attackAdvAttribution.add(sourceEffect.name + ': ' + genericUtils.translate('CHRISPREMADES.Template.TargetCantSeeAttacker'));
-            workflow.attackAdvAttribution.add(sourceEffect.name + ': ' + genericUtils.translate('CHRISPREMADES.Template.AttackerCantSeeTarget'));
+            workflow.tracker.advantage.add(genericUtils.translate('CHRISPREMADES.Macros.ShadowOfMoil.Name'), genericUtils.translate('CHRISPREMADES.Template.TargetCantSeeAttacker'));
+            workflow.tracker.disadvantage.add(genericUtils.translate('CHRISPREMADES.Macros.ShadowOfMoil.Name'), genericUtils.translate('CHRISPREMADES.Template.AttackerCantSeeTarget'));
         }
     }
 }
@@ -89,12 +85,12 @@ export let shadowOfMoilBuffed = {
                 priority: 50
             },
             {
-                pass: 'preambleComplete',
+                pass: 'preAttackRollConfig',
                 macro: early,
                 priority: 50
             },
             {
-                pass: 'targetPreambleComplete',
+                pass: 'targetPreAttackRollConfig',
                 macro: early,
                 priority: 50
             }

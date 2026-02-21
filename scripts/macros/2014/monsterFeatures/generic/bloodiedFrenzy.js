@@ -1,10 +1,8 @@
-import {genericUtils, itemUtils} from '../../../../utils.js';
 async function early({trigger: {entity: item}, workflow}) {
     if (workflow.targets.size !== 1) return;
     let hp = workflow.actor.system.attributes.hp;
     if (hp.pct > 50) return;
-    workflow.advantage = true;
-    workflow.attackAdvAttribution.add(genericUtils.translate('DND5E.Advantage') + ': ' + item.name);
+    workflow.tracker.advantage.add(item.name, item.name);
 }
 export let bloodiedFrenzy = {
     name: 'Bloodied Frenzy',
@@ -13,7 +11,7 @@ export let bloodiedFrenzy = {
     midi: {
         actor: [
             {
-                pass: 'preambleComplete',
+                pass: 'preAttackRollConfig',
                 macro: early,
                 priority: 50
             }

@@ -79,8 +79,7 @@ async function attack({workflow}) {
         genericUtils.notify('CHRISPREMADES.Macros.SpiritOfDeath.InvalidTarget', 'info');
         return;
     }
-    workflow.advantage = true;
-    workflow.attackAdvAttribution.add(genericUtils.translate('DND5E.Advantage') + ': ' + effect.name);
+    workflow.tracker.advantage.add(effect.name, effect.name);
 }
 async function late({workflow}) {
     let effect = effectUtils.getEffectByIdentifier(workflow.actor, 'spiritOfDeathHauntCreature');
@@ -177,7 +176,7 @@ export let spiritOfDeathReapingScythe = {
     midi: {
         item: [
             {
-                pass: 'preambleComplete',
+                pass: 'preAttackRollConfig',
                 macro: attack,
                 priority: 50
             }

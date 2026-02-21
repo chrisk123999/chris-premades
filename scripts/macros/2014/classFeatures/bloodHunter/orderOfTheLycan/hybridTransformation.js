@@ -23,7 +23,7 @@ async function use({workflow}) {
                 priority: 20
             },
             {
-                key: 'flags.midi-qol.advantage.ability.save.str',
+                key: 'flags.midi-qol.advantage.save.str',
                 mode: 0,
                 value: 1,
                 priority: 20
@@ -141,8 +141,7 @@ async function earlyBrand({workflow}) {
     let effects = effectUtils.getAllEffectsByIdentifier(targetToken.actor, 'brandOfCastigation');
     if (!effects.length) return;
     if (!effects.filter(i => i.origin === effect.origin).length) return;
-    workflow.advantage = true;
-    workflow.attackAdvAttribution.add(genericUtils.translate('DND5E.Advantage') + ': ' + effect.name);
+    workflow.tracker.advantage.add(effect.name, effect.name);
 }
 async function turnStart({trigger: {entity: effect, token}}) {
     let actor = token.actor;
@@ -181,7 +180,7 @@ async function turnStart({trigger: {entity: effect, token}}) {
             img: constants.tempConditionIcon,
             changes: [
                 {
-                    key: 'flags.midi-qol.advantage.ability.save.wis',
+                    key: 'flags.midi-qol.advantage.save.wis',
                     mode: 0,
                     value: 1,
                     priority: 20
@@ -280,7 +279,7 @@ export let hybridTransformationActive = {
     midi: {
         actor: [
             {
-                pass: 'preambleComplete',
+                pass: 'preAttackRollConfig',
                 macro: earlyBrand,
                 priority: 50
             }

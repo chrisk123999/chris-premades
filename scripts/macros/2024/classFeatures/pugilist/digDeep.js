@@ -33,13 +33,17 @@ async function end({trigger: {entity: effect}}) {
     if (!levels) return;
     await genericUtils.update(effect.parent, {'system.attributes.exhaustion': levels});
 }
-async function restore({trigger: {entity: item}}) {
+async function preChecks({trigger: {entity: item}}) {
     let digging = effectUtils.getEffectByIdentifier(item.parent, 'diggingDeep');
     let levels = digging?.flags['chris-premades']?.exhaustion ?? item.parent.system.attributes.exhaustion ?? 0;
     if (levels === 5) {
         genericUtils.notify(`[${item.name}] ${genericUtils.translate('CHRISPREMADES.Generic.Failure')}: ${genericUtils.format('DND5E.ExhaustionLevel', {n: 5})}`, 'warn');
         return true;
     }
+}
+async function restore({trigger: {entity: item}}) {
+    let digging = effectUtils.getEffectByIdentifier(item.parent, 'diggingDeep');
+    let levels = digging?.flags['chris-premades']?.exhaustion ?? item.parent.system.attributes.exhaustion ?? 0;
     if (digging) await genericUtils.update(digging, {
         flags: {'chris-premades': {exhaustion: levels + 1}},
         img: `systems/dnd5e/icons/svg/statuses/exhaustion-${levels + 1}.svg`
@@ -48,7 +52,7 @@ async function restore({trigger: {entity: item}}) {
 }
 export let digDeep = {
     name: 'Dig Deep',
-    version: '1.4.27',
+    version: '1.4.29',
     rules: 'modern',
     hasAnimation: true,
     midi: {
@@ -61,6 +65,12 @@ export let digDeep = {
             },
             {
                 pass: 'preTargeting',
+                macro: preChecks,
+                priority: 50,
+                activities: ['restore']
+            }, 
+            {
+                pass: 'preambleComplete',
                 macro: restore,
                 priority: 50,
                 activities: ['restore']

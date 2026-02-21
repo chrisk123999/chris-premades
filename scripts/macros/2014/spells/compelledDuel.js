@@ -71,8 +71,7 @@ async function targetAttack({workflow}) {
     let targetUuid = workflow.targets.first().document.uuid;
     let sourceUuid = effect.flags['chris-premades']?.compelledDuel?.sourceUuid;
     if (targetUuid === sourceUuid || !sourceUuid) return;
-    workflow.disadvantage = true;
-    workflow.attackAdvAttribution.add('Disadvantage: ' + origin.name);
+    workflow.tracker.disadvantage.add(origin.name, origin.name);
 }
 async function sourceAttack({workflow}) {
     if (!workflow.targets.size) return;
@@ -190,7 +189,7 @@ export let compelledDuelCompelled = {
     midi: {
         actor: [
             {
-                pass: 'preambleComplete',
+                pass: 'preAttackRollConfig',
                 macro: targetAttack,
                 priority: 50
             },

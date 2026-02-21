@@ -164,7 +164,7 @@
           "priority": 20
         },
         {
-          "key": "flags.midi-qol.advantage.ability.save.dex",
+          "key": "flags.midi-qol.advantage.save.dex",
           "mode": 0,
           "value": "1",
           "priority": 20
@@ -231,7 +231,7 @@
     "chris-premades": {
       "info": {
         "identifier": "dodge",
-        "version": "1.1.0",
+        "version": "1.5.1",
         "source": "chris-premades"
       }
     },

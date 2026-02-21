@@ -1,14 +1,15 @@
 import {actorUtils, effectUtils, genericUtils, itemUtils, tokenUtils} from '../../../../utils.js';
 async function use({trigger, workflow}) {
+    let activities = config.activities;
+    if (activities?.length && !activities.includes(workflow.activity.id)) return;
     if (!workflow.hitTargets.size) return;
     let sourceEffect = workflow.activity.effects[0]?.effect;
     if (!sourceEffect) return;
     let effectData = genericUtils.duplicate(sourceEffect.toObject());
     effectData.origin = sourceEffect.uuid;
     effectData.duration = itemUtils.convertDuration(workflow.activity);
+    effectUtils.addMacro(effectData, 'effect', ['engulfEffect']);
     let config = itemUtils.getGenericFeatureConfig(workflow.item, 'engulf');
-    let activities = config.activities;
-    if (activities?.length && !activities.includes(workflow.activity.id)) return;
     let sizeLimit = Number(config.sizeLimit);
     let max = Number(config.max);
     let uuids = workflow.token.document.flags['chris-premades']?.engulf?.uuids ?? [];
@@ -31,7 +32,6 @@ async function use({trigger, workflow}) {
         if (Object.keys(updates).length) await genericUtils.update(token.document, updates);
         uuids.push(token.document.uuid);
         genericUtils.setProperty(effectData, 'flags.chris-premades.engulf.parentUuid', workflow.token.document.uuid);
-        effectUtils.addMacro(effectData, 'effect', ['engulfEffect']);
         await effectUtils.createEffect(token.actor, effectData);
     }
     await tokenUtils.attachToToken(workflow.token, uuids);

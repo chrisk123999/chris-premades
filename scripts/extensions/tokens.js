@@ -30,9 +30,7 @@ async function updateTokenSize(actor, animate, old) {
             scaleY: newScale
         }
     };
-    if (!actor.token) {
-        await genericUtils.update(actor, {prototypeToken: updates});
-    }
+    if (!actor.token) await genericUtils.update(actor, {prototypeToken: updates});
     let tokens = actorUtils.getTokens(actor);
     if (!tokens.length) return;
     let scene = tokens[0].document.parent;

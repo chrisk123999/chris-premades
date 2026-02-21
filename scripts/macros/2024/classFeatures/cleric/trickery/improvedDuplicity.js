@@ -1,4 +1,4 @@
-import {activityUtils, actorUtils, constants, dialogUtils, effectUtils, genericUtils, itemUtils, tokenUtils, workflowUtils} from '../../../../../utils.js';
+import {activityUtils, actorUtils, dialogUtils, effectUtils, itemUtils, tokenUtils, workflowUtils} from '../../../../../utils.js';
 async function attack({trigger: {entity: effect}, workflow}) {
     if (!workflowUtils.isAttackType(workflow, 'attack')) return;
     let nearbyInvokeDuplicity = tokenUtils.findNearby(workflow.targets.first(), 5, 'enemy').find(token => {
@@ -7,12 +7,11 @@ async function attack({trigger: {entity: effect}, workflow}) {
         if (effect.flags['chris-premades']?.macros?.midi?.actor?.find(i => i === 'improvedDuplicityEffect')) return true;
     });
     if (!nearbyInvokeDuplicity) return;
-    workflow.advantage = true;
     let origin = await fromUuid(effect.origin);
     if (!origin) return;
     let feature = itemUtils.getItemByIdentifier(origin.actor, 'improvedDuplicity');
     if (!feature) return;
-    workflow.attackAdvAttribution.add(genericUtils.translate('DND5E.Advantage') + ': ' + feature.name);
+    workflow.tracker.advantage.add(feature.name, feature.name);
 }
 async function removed({trigger: {entity: effect}}) {
     let feature = itemUtils.getItemByIdentifier(effect.parent, 'improvedDuplicity');
@@ -48,7 +47,7 @@ export let improvedDuplicityEffect = {
     midi: {
         actor: [
             {
-                pass: 'scenePreambleComplete',
+                pass: 'scenePreAttackRollConfig',
                 macro: attack,
                 priority: 50
             }

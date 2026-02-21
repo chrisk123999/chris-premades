@@ -23,8 +23,7 @@ async function early({trigger: {entity: effect}, workflow}) {
     if (workflow.advantage) return;
     let selection = await dialogUtils.confirm(effect.name, 'CHRISPREMADES.Macros.PotionOfAdvantage.Select');
     if (!selection) return;
-    workflow.advantage = true;
-    workflow.attackAdvAttribution.add(genericUtils.translate('DND5E.Advantage') + ': ' + effect.name);
+    workflow.tracker.advantage.add(effect.name, effect.name);
     await genericUtils.remove(effect);
 }
 export let potionOfAdvantage = {
@@ -40,7 +39,7 @@ export let potionOfAdvantage = {
         ],
         actor: [
             {
-                pass: 'preambleComplete',
+                pass: 'preAttackRollConfig',
                 macro: early,
                 priority: 60
             }

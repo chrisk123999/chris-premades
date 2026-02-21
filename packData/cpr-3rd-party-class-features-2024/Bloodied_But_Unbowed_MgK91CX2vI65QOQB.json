@@ -1,7 +1,7 @@
 {
   "name": "Bloodied But Unbowed",
   "type": "feat",
-  "img": "icons/magic/control/buff-strength-muscle-damage-orange.webp",
+  "img": "icons/skills/wounds/injury-pain-body-orange.webp",
   "system": {
     "activities": {
       "y7igzO7PthK9kdvn": {
@@ -324,7 +324,7 @@
       "info": {
         "identifier": "bloodiedButUnbowed",
         "rules": "modern",
-        "version": "1.4.25",
+        "version": "1.4.29",
         "source": "chris-premades"
       },
       "macros": {

@@ -1,10 +1,9 @@
-import {genericUtils, tokenUtils} from '../../../../utils.js';
+import {tokenUtils} from '../../../../utils.js';
 async function early({trigger: {entity: item}, workflow}) {
     if (workflow.targets.size !== 1) return;
     let nearbyTargets = tokenUtils.findNearby(workflow.targets.first(), 5, 'enemy').filter(i => i.document.uuid !== workflow.token.document.uuid);
     if (!nearbyTargets.length) return;
-    workflow.advantage = true;
-    workflow.attackAdvAttribution.add(genericUtils.translate('DND5E.Advantage') + ': ' + item.name);
+    workflow.tracker.advantage.add(item.name, item.name);
 }
 export let packTactics = {
     name: 'Pack Tactics',
@@ -13,7 +12,7 @@ export let packTactics = {
     midi: {
         actor: [
             {
-                pass: 'preambleComplete',
+                pass: 'preAttackRollConfig',
                 macro: early,
                 priority: 50
             }

@@ -3,8 +3,7 @@ async function lion({trigger: {entity: effect}, workflow}) {
     if (!workflow.targets.size || !workflowUtils.isAttackType(workflow, 'attack') || !workflow.token) return;
     let nearbyTargets = tokenUtils.findNearby(workflow.token, 5, 'enemy', {includeIncapacitated: false}).filter(i => actorUtils.getEffects(i.actor).find(j => j.flags['chris-premades']?.powerOfTheWildsLion)).filter(k => k.document.id != workflow.targets.first().document.id);
     if (!nearbyTargets.length) return;
-    workflow.disadvantage = true;
-    workflow.attackAdvAttribution.add('DIS: ' + effect.name);
+    workflow.tracker.disadvantage.add(effect.name, effect.name);
 }
 async function ram({trigger: {entity: effect}, workflow}) {
     if (!workflow.hitTargets.size) return;
@@ -27,7 +26,7 @@ export let powerOfTheWildsLion = {
     midi: {
         actor: [
             {
-                pass: 'scenePreambleComplete',
+                pass: 'scenePreAttackRollConfig',
                 macro: lion,
                 priority: 50
             }

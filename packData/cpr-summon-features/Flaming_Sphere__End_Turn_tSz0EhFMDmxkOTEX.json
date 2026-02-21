@@ -23,7 +23,9 @@
     "prerequisites": {
       "level": null
     },
-    "properties": [],
+    "properties": [
+      "mgc"
+    ],
     "requirements": "",
     "activities": {
       "5UMYMjKyxePUgPYT": {

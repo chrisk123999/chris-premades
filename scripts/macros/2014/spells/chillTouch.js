@@ -41,8 +41,7 @@ async function attack({workflow}) {
     if (!effect) return;
     let sourceActor = (await effectUtils.getOriginItem(effect))?.actor;
     if (workflow.targets.first().actor !== sourceActor) return;
-    workflow.disadvantage = true;
-    workflow.attackAdvAttribution.add(genericUtils.translate('DND5E.Disadvantage') + ': ' + effect.name);
+    workflow.tracker.disadvantage.add(effect.name, effect.name);
 }
 async function turnStart({trigger: {entity: effect}}) {
     let currActor = combatUtils.getCurrentCombatantToken().actor;
@@ -69,7 +68,7 @@ export let chillTouchChilled = {
     midi: {
         actor: [
             {
-                pass: 'preambleComplete',
+                pass: 'preAttackRollConfig',
                 macro: attack,
                 priority: 50
             }

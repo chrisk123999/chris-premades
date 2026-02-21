@@ -73,11 +73,9 @@ async function earlyStormRune({trigger: {entity: effect, token}, workflow}) {
     ], {userId: socketUtils.firstOwner(token, true)});
     if (!selection) return;
     if (selection === 'advantage') {
-        workflow.advantage = true;
-        workflow.attackAdvAttribution.add(genericUtils.translate('DND5E.Advantage') + ': ' + effect.name);
+        workflow.tracker.advantage.add(effect.name, effect.name);
     } else {
-        workflow.disadvantage = true;
-        workflow.attackAdvAttribution.add(genericUtils.translate('DND5E.Disadvantage') + ': ' + effect.name);
+        workflow.tracker.disadvantage.add(effect.name, effect.name);
     }
     await actorUtils.setReactionUsed(token.actor);
 }
@@ -238,12 +236,12 @@ export let stormRune = {
         ],
         actor: [
             {
-                pass: 'scenePreambleComplete',
+                pass: 'scenePreAttackRollConfig',
                 macro: earlyStormRune,
                 priority: 50
             },
             {
-                pass: 'preambleComplete',
+                pass: 'preAttackRollConfig',
                 macro: earlyStormRune,
                 priority: 50
             }

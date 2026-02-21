@@ -1,4 +1,4 @@
-import {genericUtils, itemUtils, tokenUtils, workflowUtils} from '../../../../utils.js';
+import {itemUtils, tokenUtils, workflowUtils} from '../../../../utils.js';
 async function use({trigger, workflow}) {
     if (!workflow.targets.size) return;
     let config = itemUtils.getGenericFeatureConfig(workflow.item, 'grappleAttackAdvantage');
@@ -6,8 +6,7 @@ async function use({trigger, workflow}) {
     if (activities?.length && !activities.includes(workflow.activity.id)) return;
     let advantage = workflow.targets.find(token => tokenUtils.isGrappledBy(token, workflow.token));
     if (!advantage) return;
-    workflow.advantage = true;
-    workflow.attackAdvAttribution.add(genericUtils.translate('DND5E.Advantage') + ': ' + workflow.item.name);
+    workflow.tracker.advantage.add(workflow.item.name, workflow.item.name);
 }
 async function damage({trigger, workflow}) {
     if (!workflow.targets.size) return;
@@ -26,7 +25,7 @@ export let grappleAttackAdvantage = {
     midi: {
         item: [
             {
-                pass: 'preambleComplete',
+                pass: 'preAttackRollConfig',
                 macro: use,
                 priority: 100
             },

@@ -14,8 +14,7 @@ async function early({trigger: {entity: item}, workflow}) {
         let selection = await dialogUtils.confirm(item.name, genericUtils.format('CHRISPREMADES.Macros.SunlightSensitivity.Attack', {tokenName: workflow.token.name}));
         if (!selection) return;
     }
-    workflow.disadvantage = true;
-    workflow.attackAdvAttribution.add(genericUtils.translate('DND5E.Disadvantage') + ': ' + item.name);
+    workflow.tracker.disadvantage.add(item.name, item.name);
 }
 export let sunlightSensitivity = {
     name: 'Sunlight Sensitivity',
@@ -24,7 +23,7 @@ export let sunlightSensitivity = {
     midi: {
         actor: [
             {
-                pass: 'preambleComplete',
+                pass: 'preAttackRollConfig',
                 macro: early,
                 priority: 50
             }

@@ -1,9 +1,7 @@
 import {actorUtils, dialogUtils, effectUtils, genericUtils, workflowUtils} from '../../../../utils.js';
-
-async function early({workflow}) {
+async function early({trigger: {entity: item}, workflow}) {
     if (workflow.actor.system.attributes.hp.value > Math.floor(workflow.actor.system.attributes.hp.max / 2)) return;
-    workflow.advantage = true;
-    workflow.attackAdvAttribution.add(genericUtils.translate('CHRISPREMADES.Macros.VampiricBite.LowHealth'));
+    workflow.tracker.advantage.add(item.name, genericUtils.translate('CHRISPREMADES.Macros.VampiricBite.LowHealth'));
 }
 async function late({workflow}) {
     if (workflow.hitTargets.size !== 1) return;
@@ -64,7 +62,7 @@ export let vampiricBite = {
                 priority: 50
             },
             {
-                pass: 'preambleComplete',
+                pass: 'preAttackRollConfig',
                 macro: early,
                 priority: 50
             }

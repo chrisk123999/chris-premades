@@ -104,7 +104,7 @@ export let mageHand = {
         {
             value: 'token',
             label: 'CHRISPREMADES.Summons.CustomToken',
-            i18nOption: 'CHRISPREMADES.Summons.CreatureNames.InvokeDuplicity',
+            i18nOption: 'CHRISPREMADES.Summons.CreatureNames.MageHand',
             type: 'file',
             default: '',
             category: 'summons'
@@ -112,7 +112,7 @@ export let mageHand = {
         {
             value: 'avatar',
             label: 'CHRISPREMADES.Summons.CustomAvatar',
-            i18nOption: 'CHRISPREMADES.Summons.CreatureNames.InvokeDuplicity',
+            i18nOption: 'CHRISPREMADES.Summons.CreatureNames.MageHand',
             type: 'file',
             default: '',
             category: 'summons'

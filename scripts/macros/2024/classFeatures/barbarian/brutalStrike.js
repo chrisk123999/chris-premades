@@ -27,8 +27,7 @@ async function early({trigger: {entity: item}, workflow}) {
     }
     await genericUtils.update(item, {'system.uses.spent': item.system.uses.spent + 1});
     genericUtils.setProperty(workflow, 'chris-premades.brutalStrike', selections.map(i => activityUtils.getIdentifier(i)));
-    workflow.disadvantage = true;
-    workflow.attackAdvAttribution.add('DIS:' + item.name);
+    workflow.tracker.disadvantage.add(item.name, item.name);
 }
 async function damage({trigger: {entity: item}, workflow}) {
     if (!workflow.targets.size) return;
@@ -78,7 +77,7 @@ export let brutalStrike = {
         ],
         actor: [
             {
-                pass: 'preambleComplete',
+                pass: 'preAttackRollConfig',
                 macro: early,
                 priority: 50
             },

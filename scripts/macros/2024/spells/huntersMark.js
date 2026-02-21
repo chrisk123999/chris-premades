@@ -118,8 +118,7 @@ async function attack({workflow}) {
     if (!effect) return;
     let {targets: validTargetUuids} = effect.flags['chris-premades'].huntersMark;
     if (!validTargetUuids.includes(workflow.targets.first().document.uuid)) return;
-    workflow.advantage = true;
-    workflow.attackAdvAttribution.add(genericUtils.translate('DND5E.Advantage') + ': ' + preciseHunter.name);
+    workflow.tracker.advantage.add(preciseHunter.name, preciseHunter.name);
 }
 async function damage({workflow}) {
     if (workflow.hitTargets.size !== 1) return;
@@ -184,7 +183,7 @@ export let huntersMarkSource = {
     midi: {
         actor: [
             {
-                pass: 'preambleComplete',
+                pass: 'preAttackRollConfig',
                 macro: attack,
                 priority: 50
             },

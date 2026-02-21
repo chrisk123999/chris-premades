@@ -34,7 +34,7 @@
     "chris-premades": {
       "info": {
         "name": "Dual Mind",
-        "version": "1.1.0",
+        "version": "1.5.1",
         "identifier": "dualMind",
         "source": "chris-premades"
       }
@@ -107,7 +107,7 @@
       "system": {},
       "changes": [
         {
-          "key": "flags.midi-qol.advantage.ability.save.wis",
+          "key": "flags.midi-qol.advantage.save.wis",
           "mode": 5,
           "value": "1",
           "priority": 20

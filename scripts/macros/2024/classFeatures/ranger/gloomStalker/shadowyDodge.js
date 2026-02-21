@@ -8,9 +8,7 @@ async function attacked({trigger: {entity: item}, workflow}) {
     if (actorUtils.hasUsedReaction(actor)) return;
     let selection = await dialogUtils.confirm(item.name, genericUtils.format('CHRISPREMADES.Macros.ShadowyDodge.Use', {item: item.name}));
     if (!selection) return;
-    workflow.disadvantage = true;
-    workflow.rollOptions.disadvantage = false;
-    workflow.attackAdvAttribution.add('DIS: ' + item.name);
+    workflow.tracker.disadvantage.add(item.name, item.name);
     genericUtils.setProperty(workflow, 'chris-premades.shadowyDodge', true);
 }
 async function rollFinished({trigger: {entity: item, token}, workflow}) {
@@ -26,7 +24,7 @@ export let shadowyDodge = {
     midi: {
         actor: [
             {
-                pass: 'targetPreambleComplete',
+                pass: 'targetPreAttackRollConfig',
                 macro: attacked,
                 priority: 50
             },

@@ -17,7 +17,7 @@ async function create({trigger: {entity: item, target, identifier}}) {
 }
 export let auraOfAuthority = {
     name: 'Aura of Authority',
-    version: '1.3.150',
+    version: '1.5.1',
     rules: 'modern',
     monsters: [
         'Hobgoblin Captain'

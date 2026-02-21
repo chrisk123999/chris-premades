@@ -121,8 +121,7 @@ async function early({trigger: {entity: item, token}, workflow}) {
     if (!tokenUtils.canSee(token, workflow.token)) return;
     let selection = await dialogUtils.confirm(token.name, genericUtils.format('CHRISPREMADES.Dialog.Use', {itemName: item.name}), {userId: socketUtils.firstOwner(item.parent, true)});
     if (!selection) return;
-    workflow.disadvantage = true;
-    workflow.attackAdvAttribution.add(genericUtils.translate('DND5E.Disadvantage') + ': ' + item.name);
+    workflow.tracker.disadvantage.add(item.name, item.name);
     await workflowUtils.syntheticItemRoll(item, [workflow.token]);
 }
 async function longRest({trigger: {entity: item}}) {
@@ -224,7 +223,7 @@ export let steelDefenderDeflectAttack = {
     midi: {
         actor: [
             {
-                pass: 'scenePreambleComplete',
+                pass: 'scenePreAttackRollConfig',
                 macro: early,
                 priority: 50
             }

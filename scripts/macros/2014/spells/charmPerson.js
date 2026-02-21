@@ -13,7 +13,7 @@ async function early({workflow}) {
         },
         changes: [
             {
-                key: 'flags.midi-qol.advantage.ability.save.all',
+                key: 'flags.midi-qol.advantage.save.all',
                 value: 1,
                 mode: 5,
                 priority: 120

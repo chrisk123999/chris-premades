@@ -69,8 +69,7 @@ async function attack({workflow}) {
     let originItem = await effectUtils.getOriginItem(effect);
     let originActor = originItem?.actor;
     if (originActor === workflow.targets.first().actor) return;
-    workflow.disadvantage = true;
-    workflow.attackAdvAttribution.add(genericUtils.translate('DND5E.Disadvantage') + ': ' + effect.name);
+    workflow.tracker.disadvantage.add(effect.name, effect.name);
 }
 async function early({trigger, workflow}) {
     let ability = actorUtils.getBestAbility(workflow.actor, ['str', 'int']);
@@ -130,7 +129,7 @@ export let guardianArmorThunderGauntlets = {
         ],
         actor: [
             {
-                pass: 'preambleComplete',
+                pass: 'preAttackRollConfig',
                 macro: attack,
                 priority: 50
             }

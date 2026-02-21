@@ -287,7 +287,7 @@ async function stepOfTheWind({trigger, workflow}) {
 }
 export let monksFocus = {
     name: 'Monk\'s Focus',
-    version: '1.3.137',
+    version: '1.5.1',
     rules: 'modern',
     midi: {
         item: [

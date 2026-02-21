@@ -11,7 +11,7 @@ async function added({trigger: {entity: item}}) {
 }
 export let dreadfulStrikes = {
     name: 'Dreadful Strikes',
-    version: '1.3.57',
+    version: '1.5.4',
     item: [
         {
             pass: 'created',

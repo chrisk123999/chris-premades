@@ -1,14 +1,16 @@
-import {genericUtils, socketUtils, workflowUtils, tokenUtils, dialogUtils} from '../utils.js';
+import {genericUtils, socketUtils, workflowUtils, tokenUtils, dialogUtils, actorUtils} from '../utils.js';
 import {DialogApp} from '../applications/dialog.js';
 import {socket, sockets} from '../lib/sockets.js';
 function legendaryActionsTrack(actor, data, options, id) {
     // Track legendary action use
-    if (options.action === 'update' && data?.system?.resources?.legact?.spent && game.combat && actor.token) {
+    let token = actorUtils.getFirstToken(actor);
+    if (!token) return;
+    if (options.action === 'update' && data?.system?.resources?.legact?.spent && game.combat && token) {
         let currentCombat = game.combat.current;
         let flag = game.combat.flags['chris-premades']?.legendaryActionsUsed ?? [];
         // Filter out old turns
         flag = flag.filter(i => i.round === currentCombat.round && i.turn == currentCombat.turn);
-        let updates = {id: actor.token?.id, round: currentCombat.round, turn: currentCombat.turn};
+        let updates = {id: token.id, round: currentCombat.round, turn: currentCombat.turn};
         flag.push(updates);
         genericUtils.setFlag(game.combat, 'chris-premades', 'legendaryActionsUsed', flag);
     }
@@ -91,7 +93,9 @@ async function prompt(documents) {
             if (needsTarget) {
                 let range = i.system?.range?.reach ?? i.system?.range?.value ?? undefined;
                 let disposition = ['attack', 'save'].includes(actionType) ? 'enemy' : undefined;
-                let nearbyTargets = tokenUtils.findNearby(i.actor.token, range, disposition);
+                let token = actorUtils.getFirstToken(i.actor);
+                if (!token) continue;
+                let nearbyTargets = tokenUtils.findNearby(token, range, disposition);
                 let target;
                 if (nearbyTargets) {
                     if (nearbyTargets.length > 1) {

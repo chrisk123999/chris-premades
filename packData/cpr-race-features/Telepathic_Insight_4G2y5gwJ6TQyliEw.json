@@ -34,7 +34,7 @@
     "chris-premades": {
       "info": {
         "name": "Telepathic Insight",
-        "version": "1.1.0",
+        "version": "1.5.1",
         "identifier": "telepathicInsight",
         "source": "chris-premades"
       }
@@ -107,13 +107,13 @@
       "system": {},
       "changes": [
         {
-          "key": "flags.midi-qol.advantage.ability.save.wis",
+          "key": "flags.midi-qol.advantage.save.wis",
           "mode": 5,
           "value": "1",
           "priority": 20
         },
         {
-          "key": "flags.midi-qol.advantage.ability.save.cha",
+          "key": "flags.midi-qol.advantage.save.cha",
           "mode": 5,
           "value": "1",
           "priority": 20

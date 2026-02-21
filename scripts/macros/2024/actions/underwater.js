@@ -6,8 +6,7 @@ async function attack({trigger, workflow}) {
             if (workflow.defaultDamageType === 'piercing') return;
         // eslint-disable-next-line no-fallthrough
         case 'rwak':
-            workflow.disadvantage = true;
-            workflow.attackAdvAttribution.add(genericUtils.translate('CHRISPREMADES.Macros.Underwater.Underwater'));
+            workflow.tracker.disadvantage.add(genericUtils.translate('CHRISPREMADES.Macros.Underwater.Underwater'), genericUtils.translate('CHRISPREMADES.Macros.Underwater.Underwater'));
     }
 }
 async function range({trigger, workflow}) {
@@ -29,7 +28,7 @@ export let underwaterEffect = {
     midi: {
         actor: [
             {
-                pass: 'preambleComplete',
+                pass: 'preAttackRollConfig',
                 macro: attack,
                 priority: 1
             },

@@ -63,13 +63,15 @@ async function contestedRoll({sourceToken, targetToken, sourceRollType, targetRo
         return (await MidiQOL.contestedRoll(contestedData)).result;
     }
 }
-async function requestRoll(token, request, ability, options={}) {
+async function requestRoll(token, request, ability, options = {}) {
     let userID = socketUtils.firstOwner(token, true);
     let data = {
-        targetUuid: token.document.uuid,
-        request: request,
-        [request]: ability,
-        options
+        saveDetails: {
+            actorUuid: token.document.uuid,
+            rollType: request,
+            rollAbilities: [ability],
+            displayOptions: options
+        }
     };
     return await MidiQOL.socket().executeAsUser('rollAbility', userID, data);
 }

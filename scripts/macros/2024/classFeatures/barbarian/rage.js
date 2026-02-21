@@ -311,7 +311,7 @@ async function damage({trigger: {entity: effect}, workflow}) {
 }
 export let rage = {
     name: 'Rage',
-    version: '1.1.22',
+    version: '1.5.1',
     rules: 'modern',
     hasAnimation: true,
     midi: {

@@ -3,15 +3,13 @@ async function attacked({trigger: {entity: effect}, workflow}) {
     if (effect.disabled) return;
     if (!workflow.targets.size || !workflowUtils.isAttackType(workflow, 'attack') || !workflow.token) return;
     if (tokenUtils.canSense(workflow.targets.first(), workflow.token, ['feelTremor', 'seeInvisbility', 'blindsight', 'seeAll', 'senseAll', 'senseInvisibility'])) return;
-    workflow.disadvantage = true;
-    workflow.attackAdvAttribution.add('DIS: ' + effect.name);
+    workflow.tracker.disadvantage.add(effect.name, effect.name);
 }
 async function attacking({trigger: {entity: effect}, workflow}) {
     if (effect.disabled) return;
     if (!workflow.targets.size || !workflowUtils.isAttackType(workflow, 'attack') || !workflow.token) return;
     if (tokenUtils.canSense(workflow.targets.first(), workflow.token, ['feelTremor', 'seeInvisbility', 'blindsight', 'seeAll', 'senseAll', 'senseInvisibility'])) return;
-    workflow.advantage = true;
-    workflow.attackAdvAttribution.add('ADV: ' + effect.name);
+    workflow.tracker.advantage.add(effect.name, effect.name);
 }
 export let invisible = {
     name: 'Invisible',
@@ -20,12 +18,12 @@ export let invisible = {
     midi: {
         actor: [
             {
-                pass: 'targetPreambleComplete',
+                pass: 'targetPreAttackRollConfig',
                 macro: attacked,
                 priority: 50
             },
             {
-                pass: 'preambleComplete',
+                pass: 'preAttackRollConfig',
                 macro: attacking,
                 priority: 50
             }

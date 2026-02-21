@@ -112,6 +112,7 @@
             "Abilities": "Abilities:",
             "Ability": "Ability:",
             "Activities": "Activities:",
+            "Activity": "Activity:",
             "AffectAllies": "Should Affect Allies:",
             "AllowEnemies": "Allow selection of non-allied tokens?",
             "Animation": "Animation:",
@@ -256,6 +257,8 @@
             "StrandColor": "Strand Color:",
             "SubclassIdentifier": "Subclass Identifier:",
             "SummonerOnly": "Summoner Only:",
+            "Time": "Time:",
+            "TimeFormat": "Time Format:",
             "TintMap": "Tint Map:",
             "Token": "Token:",
             "TokenAnimation": "Token Animation:",
@@ -267,6 +270,7 @@
             "TokenSound": "Token Animation Sound:",
             "TransformAnimation": "Transform Animation:",
             "Trigger": "Trigger:",
+            "TriggerActivity": "Trigger Activity:",
             "TurnTrigger": "Turn Trigger:",
             "UseFormula": "Use Formula:",
             "WeaponProperties": "Weapon Properties:",
@@ -461,6 +465,9 @@
                 "postEvaluation": {
                     "Label": "Post-Evaluation"
                 },
+                "preAttackRollConfig": {
+                    "Label": "Pre-Attack Roll Configs"
+                },
                 "preEvaluation": {
                     "Label": "Pre-Evaluation"
                 },
@@ -506,6 +513,9 @@
                 "scenePostEvaluation": {
                     "Label": "Scene Post-Evaluation"
                 },
+                "scenePreAttackRollConfig": {
+                    "Label": "Scene Pre-Attack Roll Configs"
+                },
                 "scenePreEvaluation": {
                     "Label": "Scene Pre-Evaluation"
                 },
@@ -539,6 +549,9 @@
                 "targetPostAttackRoll": {
                     "Label": "Target Post-Attack Roll"
                 },
+                "targetPreAttackRollConfig": {
+                    "Label": "Target Pre-Attack Roll Configs"
+                },
                 "targetPreItemRoll": {
                     "Label": "Target Pre-Item Roll"
                 },
@@ -556,6 +569,9 @@
                 },
                 "targetUtilityRollComplete": {
                     "Label": "Target Utility Roll Complete"
+                },
+                "timeUpdated": {
+                    "Label": "Time Updated"
                 },
                 "turnEnd": {
                     "Label": "Turn End"
@@ -611,6 +627,7 @@
                 "save": "Save",
                 "skill": "Skill",
                 "template": "Template",
+                "time": "Time",
                 "toolCheck": "Tool"
             }
         },
@@ -1021,9 +1038,6 @@
             "Blink": {
                 "Away": "Blinked Away"
             },
-            "BloodiedButUnbowed": {
-                "Trigger": "Trigger only when bloodied"
-            },
             "BloodCurses": {
                 "Amplify": "Amplify Blood Curse?"
             },
@@ -1032,6 +1046,9 @@
             },
             "BloodSacrifice": {
                 "Apply": "Apply {itemName}?"
+            },
+            "BloodiedButUnbowed": {
+                "Trigger": "Trigger only when bloodied"
             },
             "BloodiedFrenzy": {
                 "Name": "Bloodied Frenzy"
@@ -1646,6 +1663,9 @@
                 "Select": "What form do you assume?",
                 "Tree": "Great Tree"
             },
+            "GuidedStrike": {
+                "Attack": "Use {item}? Attack Roll: {attackRoll}"
+            },
             "GustOfWind": {
                 "Move": "Gust of Wind: Move",
                 "Push": "Gust of Wind: Push",
@@ -2257,7 +2277,8 @@
                 "Sword": "Shadow Blade Sword"
             },
             "ShadowOfMoil": {
-                "Damage": "Shadow of Moil: Damage"
+                "Damage": "Shadow of Moil: Damage",
+                "Name": "Shadow of Moil"
             },
             "ShadowStep": {
                 "Name": "Shadow Step"
@@ -2605,6 +2626,9 @@
             "TimeStop": {
                 "Affect": "Did this affect another creature?"
             },
+            "TimeTrigger": {
+                "Name": "Time Trigger"
+            },
             "TouchDamage": {
                 "Name": "Touch Damage"
             },
@@ -2677,7 +2701,7 @@
             "VampiricBite": {
                 "Bonus": "Bonus to next attack/check",
                 "Heal": "Regain hp",
-                "LowHealth": "Advantage: Below half hp",
+                "LowHealth": "Below half hp",
                 "Select": "Empower yourself?"
             },
             "VampiricTouch": {

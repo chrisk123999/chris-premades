@@ -9,8 +9,8 @@ This page provides information on the sequence of events triggered for MidiQOL w
 These other categories may have their events triggered at several points within a workflow if the conditions are met:
 
 - `D20` events are triggered when any d20 is rolled by an actor for any reason
-  - Using dice commands in chat without a token selected would not trigger these events
-  - D20 rolls in scripts will trigger these events only if an actor uuid is provided: `new Roll('1d20', {actorUuid: "uuid here"}).evaluate()`
+  - These events trigger from dice commands in chat only when a token is selected
+  - D20 rolls in scripts will trigger these events only if an actor uuid is provided: `new Roll('1d20', {actorUuid: "uuid here"}).evaluate()` or `new Roll('1d20', actor.getRollData()).evaluate()`
 - `Bonus` events are triggered for any save, check, skill, or tool roll
 
 There are many more events available beyond the ones shown here. A full list including descriptions and requirements is available in the [CPR Discord](https://discord.com/channels/1089258451949064296/1280057767947665440).
@@ -20,6 +20,24 @@ There are many more events available beyond the ones shown here. A full list inc
 ## Priority
 
 Embedded macros are generally called in ascending priority order for each event. Macros associated with the "Apply Damage" events are the only exception: `applyDamage`, `targetApplyDamage`, and `sceneApplyDamage`. These are lumped together before being sorted by priority, so the order of `Use` -> `Target` -> `Scene` will vary depending on how your macros are configured. The "Apply Damage" events are represented with one node in the chart.
+
+## MidiQOL Hooks
+
+Embedded macros are triggered by MidiQOL hooks. As of MidiQOL v13.0.48, these hooks fire in the following order relative to MidiQOL OnUse Macros:
+
+| Hook | Embedded Macro Order | CPR Event |
+| ---- | :--: | ---- |
+| `midi-qol.preTargeting` | First | `preTargeting` |
+| `midi-qol.premades.postNoAction` | Last | `preItemRoll` |
+| `midi-qol.premades.postPreambleComplete` | Last | `preambleComplete` |
+| `midi-qol.preAttackRollConfig` | First | `preAttackRollConfig` |
+| `midi-qol.premades.postWaitForAttackRoll` | Last | `postAttackRoll` |
+| `midi-qol.premades.postAttackRollComplete` | Last | `attackRollComplete` |
+| `midi-qol.premades.preDamageRollComplete` | Last | `damageRollComplete` |
+| `midi-qol.premades.preUtilityRollComplete` | Last | `utilityRollComplete` |
+| `midi-qol.premades.postSavesComplete` | Last | `savesComplete` |
+| `midi-qol.preTargetDamageApplication` | Last | `applyDamage` |
+| `midi-qol.premades.postRollFinished` | Last | `rollFinished` |
 
 ## Chart
 
@@ -36,6 +54,7 @@ flowchart TD
     preItemRoll
     preambleComplete
     utilityRollComplete
+    preAttackRollConfig
     postAttackRoll
     attackRollComplete 
     damageRollComplete
@@ -46,37 +65,40 @@ flowchart TD
     targetPreItemRoll
     targetPreambleComplete
     targetUtilityRollComplete
+    targetPreAttackRollConfig
     targetPostAttackRoll
-    afterAttackRoll["<b>After Macros</b>
-      <small><li>Heroic Inspiration Attack</li></small>"]:::edgeLabel
+    afterAttackRoll["<p style='width:200px; height:30px; text-wrap:balance;'><b>After Macros</b>
+      <small><li>Heroic Inspiration Attack</li></small><p>"]:::edgeLabel
     targetAttackRollComplete
     targetDamageRollComplete
     targetSavesComplete
     targetRollFinished
     scenePreambleComplete
-    afterScenePreamble["<b>After Macros</b>
+    afterScenePreamble["<p style='width:200px; height:30px; text-wrap:balance;'><b>After Macros</b>
       <small><li>Condition Resistance Checked</li>
-      <li>Condition Vulnerability Checked</li>
-      <li>Template Visibility Checked</li></small>"]:::edgeLabel
+      <li>Condition Vulnerability Checked</li></small></p>"]:::edgeLabel
     sceneUtilityRollComplete
+    scenePreAttackRollConfig
+    afterSceneAttackConfig["<p style='width:200px; height:30px; text-wrap:balance;'><b>After Macros</b>
+    <small><li>Template Visibility Checked</li></small></p>"]:::edgeLabel
     scenePostAttackRoll
     sceneAttackRollComplete
-    crit["<b>After Macros</b>
-      <small><li>Crit/Fumble Homebrew</li></small>"]:::edgeLabel
+    crit["<p style='width:200px; height:30px; text-wrap:balance;'><b>After Macros</b>
+      <small><li>Crit/Fumble Homebrew</li></small></p>"]:::edgeLabel
     sceneDamageRollComplete
-    afterSceneDamage["<b>After Macros</b>
-      <small><li>Heroic Inspiration Damage</li>
-      <li>Dice So Nice Shown</li>
-      <li>Exploding Heals</li>
-      <li>Manual Rolls</li></small>"]:::edgeLabel
+    afterSceneDamage["<p style='width:200px; height:30px; text-wrap:balance;'><b>After Macros</b>
+      <small><li style="height:20px;">Heroic Inspiration Damage</li>
+      <li style="height:20px;">Dice So Nice Shown</li>
+      <li style="height:20px;">Exploding Heals</li>
+      <li style="height:20px;">Manual Rolls</li></small></p>"]:::edgeLabel
     sceneRollFinished
-    afterSceneRoll["<b>After Macros</b>
-      <small><li>Condition Resistance Cleanup</li>
-      <li>Condition Vulnerability Cleanup</li>
-      <li>Mastery Automations</li>
-      <li>Expire CPR Special Durations</li>
-      <li>Delete Workflow Effects</li>
-      <li>Cleave</li></small>"]:::edgeLabel
+    afterSceneRoll["<p style='width:200px; height:30px; text-wrap:balance;'><b>After Macros</b>
+      <small><li style="height:20px;">Condition Resistance Cleanup</li>
+      <li style="height:20px;">Condition Vulnerability Cleanup</li>
+      <li style="height:20px;">Mastery Automations</li>
+      <li style="height:20px;">Expire CPR Special Durations</li>
+      <li style="height:20px;">Delete Workflow Effects</li>
+      <li style="height:20px;">DMG Cleave</li></small></p>"]:::edgeLabel
   end
 
   subgraph d20["D20 Rolls"]
@@ -113,7 +135,11 @@ flowchart TD
     targetUtilityRollComplete --> sceneUtilityRollComplete
     sceneUtilityRollComplete --> savesComplete
 
-    scenePreambleComplete -- Has Attack --> preEvaluation
+    scenePreambleComplete -- Has Attack --> preAttackRollConfig
+    preAttackRollConfig --> targetPreAttackRollConfig
+    targetPreAttackRollConfig --> scenePreAttackRollConfig
+    scenePreAttackRollConfig -.-> afterSceneAttackConfig
+    scenePreAttackRollConfig --> preEvaluation
     scenePostEvaluation --> scenePostAttackRoll
     scenePostAttackRoll --> postAttackRoll
     postAttackRoll --> targetPostAttackRoll

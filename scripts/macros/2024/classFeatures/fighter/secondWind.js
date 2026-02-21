@@ -13,9 +13,7 @@ async function use({trigger, workflow}) {
             let nearby = tokenUtils.findNearby(workflow.token, scale.value, 'ally', {includeIncapacitated: true});
             if (nearby.length) {
                 let selection = await dialogUtils.confirmUseItem(groupRecovery);
-                if (selection) {
-                    await workflowUtils.syntheticItemRoll(groupRecovery, nearby, {consumeResources: true, consumeUsage: true});
-                }
+                if (selection) await workflowUtils.syntheticItemRoll(groupRecovery, nearby, {consumeResources: true, consumeUsage: true});
             }
         }
     }

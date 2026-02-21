@@ -379,7 +379,7 @@
       "info": {
         "identifier": "digDeep",
         "rules": "modern",
-        "version": "1.4.27",
+        "version": "1.4.29",
         "source": "chris-premades"
       },
       "macros": {

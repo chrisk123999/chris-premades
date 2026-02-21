@@ -81,7 +81,7 @@
     "chris-premades": {
       "info": {
         "name": "Dreadful Strikes",
-        "version": "1.3.99",
+        "version": "1.5.4",
         "identifier": "dreadfulStrikes",
         "source": "chris-premades",
         "rules": "modern"
@@ -97,7 +97,7 @@
   "effects": [
     {
       "name": "Dreadful Strikes",
-      "origin": "Compendium.world.cpr-class-features.Item.0TIKY0XApUgSTJh1",
+      "origin": "Compendium.chris-premades.CPRClassFeatures2024.Item.vAcfkUUPvHuvWq31",
       "duration": {
         "rounds": null,
         "startTime": 1404,
@@ -109,7 +109,11 @@
       },
       "disabled": false,
       "flags": {
-        "dnd5e": {},
+        "dnd5e": {
+          "riders": {
+            "statuses": []
+          }
+        },
         "dae": {
           "disableCondition": "",
           "disableIncapacitated": false,
@@ -138,6 +142,12 @@
           "key": "flags.midi-qol.optional.DreadfulStrikes.damage.mwak",
           "mode": 5,
           "value": "@scale.fey-wanderer.dreadful-strikes[psychic]",
+          "priority": 20
+        },
+        {
+          "key": "flags.midi-qol.optional.DreadfulStrikes.criticalDamage",
+          "mode": 5,
+          "value": "true",
           "priority": 20
         },
         {

@@ -447,6 +447,8 @@ export {eyesOfTheDark} from './macros/2014/classFeatures/sorcerer/shadowMagic/ey
 export {houndOfIllOmen} from './macros/2014/classFeatures/sorcerer/shadowMagic/houndOfIllOmen.js';
 export {shadowWalk} from './macros/2014/classFeatures/sorcerer/shadowMagic/shadowWalk.js';
 export {umbralForm} from './macros/2014/classFeatures/sorcerer/shadowMagic/umbralForm.js';
+export {channelDivinity} from './macros/2014/classFeatures/paladin/channelDivinity.js';
+export {guidedStrike} from './macros/2014/classFeatures/paladin/oathOfConquest/guidedStrike.js';
 // Race Features
 export {aasimarNecroticShroud, aasimarRadiantConsumption, aasimarRadiantSoul, celestialRevelation} from './macros/2014/raceFeatures/aasimar/celestialRevelation.js';
 export {acidBreathWeapon, coldBreathWeapon, fireBreathWeapon, lightningBreathWeapon, poisonBreathWeapon} from './macros/2014/raceFeatures/dragonborn/chromatic/breathWeapon.js';
@@ -572,6 +574,7 @@ export {undeadFortitude} from './macros/2014/monsterFeatures/generic/undeadForti
 export {autoProne} from './macros/2014/monsterFeatures/generic/autoProne.js';
 export {grappleAttackAdvantage} from './macros/2014/monsterFeatures/generic/grappleAttackAdvantage.js';
 export {engulf, engulfEffect} from './macros/2014/monsterFeatures/generic/engulf.js';
+export {timeTrigger, timeTriggerEffect} from './macros/2014/monsterFeatures/generic/timeTrigger.js';
 // Actions
 export {checkCover} from './macros/2014/actions/checkCover.js';
 export {dash} from './macros/2014/actions/dash.js';

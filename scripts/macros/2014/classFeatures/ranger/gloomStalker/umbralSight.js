@@ -1,13 +1,11 @@
-import {genericUtils, itemUtils, tokenUtils} from '../../../../../utils.js';
-
+import {tokenUtils} from '../../../../../utils.js';
 async function early({trigger: {entity: item}, workflow}) {
     if (workflow.targets.size !== 1 || !workflow.token) return;
     if (tokenUtils.getLightLevel(workflow.token) !== 'dark') return;
     let targetToken = workflow.targets.first();
     let validModes = targetToken.detectionModes.map(i => i.id).filter(j => !['lightPerception', 'basicSight', 'hearing'].includes(j));
     if (tokenUtils.canSense(targetToken, workflow.token, validModes)) return;
-    workflow.advantage = true;
-    workflow.attackAdvAttribution.add(genericUtils.translate('DND5E.Advantage') + ': ' + item.name);
+    workflow.tracker.advantage.add(item.name, item.name);
 }
 async function earlyTarget({trigger: {entity: item}, workflow}) {
     if (workflow.targets.size !== 1 || !workflow.token) return;
@@ -15,8 +13,7 @@ async function earlyTarget({trigger: {entity: item}, workflow}) {
     if (tokenUtils.getLightLevel(targetToken) !== 'dark') return;
     let validModes = workflow.token.detectionModes.map(i => i.id).filter(j => !['lightPerception', 'basicSight', 'hearing'].includes(j));
     if (tokenUtils.canSense(workflow.token, targetToken, validModes)) return;
-    workflow.disadvantage = true;
-    workflow.attackAdvAttribution.add(genericUtils.translate('DND5E.Disadvantage') + ': ' + item.name);
+    workflow.tracker.disadvantage.add(item.name, item.name);
 }
 export let umbralSight = {
     name: 'Umbral Sight',
@@ -24,12 +21,12 @@ export let umbralSight = {
     midi: {
         actor: [
             {
-                pass: 'preambleComplete',
+                pass: 'preAttackRollConfig',
                 macro: early,
                 priority: 50
             },
             {
-                pass: 'targetPreambleComplete',
+                pass: 'targetPreAttackRollConfig',
                 macro: earlyTarget,
                 priority: 50
             }

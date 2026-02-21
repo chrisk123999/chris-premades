@@ -1,4 +1,4 @@
-import {constants, genericUtils, templateUtils, tokenUtils, workflowUtils} from '../../utils.js';
+import {genericUtils, templateUtils, tokenUtils, workflowUtils} from '../../utils.js';
 async function check(workflow) {
     if (!workflow.item || !workflow.token || !workflow.targets.size || !workflow.activity) return;
     if (!workflowUtils.isAttackType(workflow, 'attack')) return;
@@ -21,19 +21,16 @@ async function check(workflow) {
     let distance = tokenUtils.getDistance(source, target);
     templates.forEach(template => {
         let flagData = template.flags['chris-premades'].template.visibility;
-        console.log(flagData);
         let canSeeTokens = flagData.canSeeTokens ?? [];
         let sourceCanSeeTarget = ((flagData.magicalDarkness && distance <= sourceMD) || (sourceSenses.tremorsense >= distance) || (sourceSenses.blindsight >= distance) || (sourceSenses.truesight >= distance) || (canSeeTokens.includes(source.document.uuid)));
         let targetCanSeeSource = ((flagData.magicalDarkness && distance <= targetMD) || (targetSenses.tremorsense >= distance) || (targetSenses.blindsight >= distance) || (targetSenses.truesight >= distance) || (canSeeTokens.includes(target.document.uuid)));
         let templateName = templateUtils.getName(template);
         if (!targetCanSeeSource) {
-            workflow.advantage = true;
-            workflow.attackAdvAttribution.add(templateName + ': ' + genericUtils.translate('CHRISPREMADES.Template.TargetCantSeeAttacker'));
+            workflow.tracker.advantage.add(templateName, genericUtils.translate('CHRISPREMADES.Template.TargetCantSeeAttacker'));
         }
         if (!sourceCanSeeTarget) {
-            workflow.disadvantage = true;
             workflow.flankingAdvantage = false;
-            workflow.attackAdvAttribution.add(templateName + ': ' + genericUtils.translate('CHRISPREMADES.Template.AttackerCantSeeTarget'));
+            workflow.tracker.disadvantage.add(templateName, genericUtils.translate('CHRISPREMADES.Template.AttackerCantSeeTarget'));
         }
     });
 }

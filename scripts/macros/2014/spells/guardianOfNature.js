@@ -54,7 +54,7 @@ async function use({workflow}) {
     } else {
         effectData.changes = [
             {
-                key: 'flags.midi-qol.advantage.ability.save.con',
+                key: 'flags.midi-qol.advantage.save.con',
                 mode: 0,
                 value: 1,
                 priority: 20
