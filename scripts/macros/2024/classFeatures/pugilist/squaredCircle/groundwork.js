@@ -70,7 +70,7 @@ async function inescapableCleanup({workflow}) {
 }
 export let groundwork = {
     name: 'Groundwork',
-    version: '1.5.5',
+    version: '1.4.25',
     rules: 'modern',
     combat: [
         {
