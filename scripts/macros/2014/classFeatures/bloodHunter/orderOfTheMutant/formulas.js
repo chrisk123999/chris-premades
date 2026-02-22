@@ -81,7 +81,7 @@ async function use({workflow}) {
             ];
             negativeEffectData.changes = [
                 {
-                    key: 'flags.midi-qol.disadvantage.ability.save.wis',
+                    key: 'flags.midi-qol.disadvantage.save.wis',
                     mode: 0,
                     value: 1,
                     priority: 20
@@ -110,19 +110,19 @@ async function use({workflow}) {
             positiveEffectData.changes = [];
             negativeEffectData.changes = [
                 {
-                    key: 'flags.midi-qol.disadvantage.ability.save.int',
+                    key: 'flags.midi-qol.disadvantage.save.int',
                     mode: 0,
                     value: 1,
                     priority: 20
                 },
                 {
-                    key: 'flags.midi-qol.disadvantage.ability.save.wis',
+                    key: 'flags.midi-qol.disadvantage.save.wis',
                     mode: 0,
                     value: 1,
                     priority: 20
                 },
                 {
-                    key: 'flags.midi-qol.disadvantage.ability.save.cha',
+                    key: 'flags.midi-qol.disadvantage.save.cha',
                     mode: 0,
                     value: 1,
                     priority: 20
@@ -281,7 +281,7 @@ async function use({workflow}) {
             ];
             negativeEffectData.changes = [
                 {
-                    key: 'flags.midi-qol.disadvantage.ability.save.dex',
+                    key: 'flags.midi-qol.disadvantage.save.dex',
                     mode: 0,
                     value: 1,
                     priority: 20
@@ -299,7 +299,7 @@ async function use({workflow}) {
             ];
             negativeEffectData.changes = [
                 {
-                    key: 'flags.midi-qol.disadvantage.ability.save.str',
+                    key: 'flags.midi-qol.disadvantage.save.str',
                     mode: 0,
                     value: 1,
                     priority: 20
@@ -349,7 +349,7 @@ async function use({workflow}) {
             ];
             negativeEffectData.changes = [
                 {
-                    key: 'flags.midi-qol.disadvantage.ability.save.cha',
+                    key: 'flags.midi-qol.disadvantage.save.cha',
                     mode: 0,
                     value: 1,
                     priority: 20

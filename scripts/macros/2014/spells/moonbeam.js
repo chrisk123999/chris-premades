@@ -87,7 +87,7 @@ async function enterOrTurn({trigger: {entity: template, castData, token}}) {
             },
             changes: [
                 {
-                    key: 'flags.midi-qol.disadvantage.ability.save.all',
+                    key: 'flags.midi-qol.disadvantage.save.all',
                     value: 1,
                     mode: 5,
                     priority: 120

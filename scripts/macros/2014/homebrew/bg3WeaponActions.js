@@ -106,7 +106,7 @@ async function concussiveSmashUsed({trigger, workflow}) {
             img: 'modules/chris-premades/images/bg3/Dazed.webp',
             changes: [
                 {
-                    key: 'flags.midi-qol.disadvantage.ability.save.wis',
+                    key: 'flags.midi-qol.disadvantage.save.wis',
                     mode: 0,
                     value: 1,
                     priority: 20
@@ -161,7 +161,7 @@ async function maimingStrikeUse({trigger, workflow}) {
         img: 'modules/chris-premades/images/bg3/Maimed.webp',
         changes: [
             {
-                key: 'flags.midi-qol.disadvantage.ability.save.dex',
+                key: 'flags.midi-qol.disadvantage.save.dex',
                 mode: 0,
                 value: 1,
                 priority: 20
@@ -298,7 +298,7 @@ async function heartstopperUse({trigger, workflow}) {
         img: 'modules/chris-premades/images/bg3/ChestTrauma.webp',
         changes: [
             {
-                key: 'flags.midi-qol.disadvantage.ability.save.con',
+                key: 'flags.midi-qol.disadvantage.save.con',
                 mode: 0,
                 value: 1,
                 priority: 20
@@ -345,7 +345,7 @@ async function lacerateUse({trigger, workflow}) {
                 priority: 20
             },
             {
-                key: 'flags.midi-qol.disadvantage.ability.save.con',
+                key: 'flags.midi-qol.disadvantage.save.con',
                 mode: 0,
                 value: 1,
                 priority: 20
@@ -453,7 +453,7 @@ async function pommelStrikeUse({trigger, workflow}) {
             img: 'modules/chris-premades/images/bg3/Dazed.webp',
             changes: [
                 {
-                    key: 'flags.midi-qol.disadvantage.ability.save.wis',
+                    key: 'flags.midi-qol.disadvantage.save.wis',
                     mode: 0,
                     value: 1,
                     priority: 20
@@ -633,7 +633,7 @@ async function weakeningStrikeUse({trigger, workflow}) {
                 priority: 20
             },
             {
-                key: 'flags.midi-qol.disadvantage.ability.save.str',
+                key: 'flags.midi-qol.disadvantage.save.str',
                 mode: 0,
                 value: 1,
                 priority: 20

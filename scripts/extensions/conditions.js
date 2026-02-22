@@ -253,7 +253,7 @@ async function preCreateActiveEffect(effect, updates, options, userId) {
                 case 'restrained':
                     changes.push(
                         {
-                            key: 'flags.midi-qol.disadvantage.ability.save.dex',
+                            key: 'flags.midi-qol.disadvantage.save.dex',
                             mode: 0,
                             value: 1,
                             priority: 20

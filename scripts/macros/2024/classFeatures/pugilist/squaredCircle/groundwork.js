@@ -36,7 +36,7 @@ async function inescapable({trigger: {entity: item}, workflow}) {
         },
         changes: [
             {
-                key: 'flags.midi-qol.disadvantage.ability.save.all',
+                key: 'flags.midi-qol.disadvantage.save.all',
                 value: '1',
                 mode: 5,
                 priority: 120
@@ -70,7 +70,7 @@ async function inescapableCleanup({workflow}) {
 }
 export let groundwork = {
     name: 'Groundwork',
-    version: '1.4.25',
+    version: '1.5.5',
     rules: 'modern',
     combat: [
         {

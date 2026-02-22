@@ -253,7 +253,7 @@ async function vultureEnd({trigger: {entity: effect}}) {
 }
 export let deckOfWonder = {
     name: 'Deck of Wonder',
-    version: '1.3.98',
+    version: '1.5.5',
     rules: 'legacy',
     midi: {
         item: [

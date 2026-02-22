@@ -144,7 +144,7 @@ async function use({workflow}) {
                     priority: 20
                 },
                 {
-                    key: 'flags.midi-qol.disadvantage.ability.save.str',
+                    key: 'flags.midi-qol.disadvantage.save.str',
                     mode: 0,
                     value: 1,
                     priority: 20
