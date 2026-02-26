@@ -81,6 +81,7 @@ async function getWealWoeBonus(effect, item, token, targetToken) {
         },
         consumeResources: true
     });
+    if (!item.system.uses.value) await genericUtils.remove(effect);
     return newWorkflow.utilityRoll.total;
 }
 async function attack({trigger: {entity: effect, token}, workflow}) {
