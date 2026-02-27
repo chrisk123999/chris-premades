@@ -83,7 +83,7 @@ async function getWealWoeBonus(effect, item, token, targetToken) {
         consumeResources: true
     });
     if (!item.system.uses.value) await genericUtils.remove(effect);
-    let total = newWorkflow?.utilityRoll.total;
+    let total = newWorkflow?.utilityRoll?.total;
     if (!total) {
         let message = await fromUuid(newWorkflow?.itemCardUuid);
         total = message.rolls[0].total;
