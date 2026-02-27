@@ -70,6 +70,7 @@ async function getWealWoeBonus(effect, item, token, targetToken) {
     let activity = activityUtils.getActivityByIdentifier(item, isWeal ? 'cosmicOmenWeal' : 'cosmicOmenWoe', {strict: true});
     let newWorkflow = await workflowUtils.syntheticActivityRoll(activity, [targetToken], {
         options: {
+            workflowData: true,
             workflowOptions: {
                 'chris-premades': {
                     notManual: true
@@ -82,7 +83,12 @@ async function getWealWoeBonus(effect, item, token, targetToken) {
         consumeResources: true
     });
     if (!item.system.uses.value) await genericUtils.remove(effect);
-    return newWorkflow.utilityRoll.total;
+    let total = newWorkflow?.utilityRoll.total;
+    if (!total) {
+        let message = await fromUuid(newWorkflow?.itemCardUuid);
+        total = message.rolls[0].total;
+    }
+    return total;
 }
 async function attack({trigger: {entity: effect, token}, workflow}) {
     let item = await effectUtils.getOriginItem(effect);
