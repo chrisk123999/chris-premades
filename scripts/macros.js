@@ -1,4 +1,7 @@
 export {summonUtilsModern as summonUtils} from './lib/summons.js';
+// Utility
+export {setAttackRoll} from './macros/2024/generic/setAttackRoll.js';
+export {setDamageRolls} from './macros/2024/generic/setDamageRoll.js';
 // Generic Monster Features
 export {abilityDrain} from './macros/2014/monsterFeatures/generic/abilityDrain.js';
 export {activityOnEffectExpiry} from './macros/2014/monsterFeatures/generic/activityOnEffectExpiry.js';
