@@ -2493,7 +2493,8 @@
             "TrueStrike": {
                 "NoWeapons": "Nebyly nalezeny žádné vybavené zbraně!",
                 "ReplaceDamage": "Nahradit zranění typem {type}?",
-                "SelectWeapon": "Kterou zbraní zaútočíš?"
+                "SelectWeapon": "Kterou zbraní zaútočíš?",
+                "AttacksAreSpells": "Útoky jsou kouzla"
             },
             "TwilightSanctuary": {
                 "Charmed": "Odstranit stav 'zmámený/á'",

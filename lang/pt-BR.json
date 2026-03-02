@@ -2614,7 +2614,8 @@
             "TrueStrike": {
                 "NoWeapons": "Nenhuma arma equipada encontrada!",
                 "SelectWeapon": "Atacar com qual arma?",
-                "ReplaceDamage": "Substitua o dano por {type}?"
+                "ReplaceDamage": "Substitua o dano por {type}?",
+                "AttacksAreSpells": "Ataques são feitiços"
             },
             "TwilightSanctuary": {
                 "Charmed": "Remover a condição Enfeitiçado",

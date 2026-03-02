@@ -2084,7 +2084,8 @@
             "TrueStrike": {
                 "NoWeapons": "Nessuna arma equipaggiata trovata!",
                 "ReplaceDamage": "Sostituisci danno con {type}?",
-                "SelectWeapon": "Con quale arma attaccare?"
+                "SelectWeapon": "Con quale arma attaccare?",
+                "AttacksAreSpells": "Gli attacchi sono incantesimi"
             },
             "TwilightSanctuary": {
                 "Charmed": "Rimuovi la condizione Affascinato",

@@ -1862,7 +1862,8 @@
             "TrueStrike": {
                 "ReplaceDamage": "Remplacer les dégâts par {type} ?",
                 "SelectWeapon": "Attaquer avec quelle arme ?",
-                "NoWeapons": "Aucune arme équipée trouvée !"
+                "NoWeapons": "Aucune arme équipée trouvée !",
+                "AttacksAreSpells": "Les attaques sont des sorts"
             },
             "CuttingWords": {
                 "Attack": "Utilisez {item} pour réduire l'attaque de {name} (Total : {attack}) ?",

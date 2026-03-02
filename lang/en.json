@@ -2664,7 +2664,8 @@
             "TrueStrike": {
                 "NoWeapons": "No equipped weapons found!",
                 "ReplaceDamage": "Replace damage with {type}?",
-                "SelectWeapon": "Attack with what weapon?"
+                "SelectWeapon": "Attack with what weapon?",
+                "AttacksAreSpells": "Attacks are spells"
             },
             "TwilightSanctuary": {
                 "AutoHP": "Auto apply temp HP when only option:",
