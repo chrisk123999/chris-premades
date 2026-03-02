@@ -18,11 +18,15 @@ async function use({workflow}) {
     let weaponData = genericUtils.duplicate(selectedWeapon.toObject());
     genericUtils.setProperty(weaponData, 'flags.chris-premades.trueStrike', true);
     let damageType = itemUtils.getConfig(workflow.item, 'damageType');
+    let attacksAreSpells = itemUtils.getConfig(workflow.item, 'attacksAreSpells');
     let selection = await dialogUtils.confirm(workflow.item.name, genericUtils.format('CHRISPREMADES.Macros.TrueStrike.ReplaceDamage', {type: damageType}));
     for (let activity of selectedWeapon.system.activities.getByType('attack')) {
         let attackId = activity.id;
         if (!attackId) return;
         weaponData.system.activities[attackId].attack.ability = workflow.item.system.ability.length ? workflow.item.system.ability : workflow.actor.system.attributes.spellcasting;
+        if (attacksAreSpells) {
+            weaponData.system.activities[attackId].attack.type.classification = 'spell';
+        }
         if (selection) {
             weaponData.system.damage.base.types = [damageType];
             weaponData.system.activities[attackId].damage.parts.forEach(part => 
@@ -59,6 +63,14 @@ export let trueStrike = {
             type: 'select',
             default: 'radiant',
             options: constants.damageTypeOptions,
+            homebrew: true,
+            category: 'homebrew'
+        },
+        {
+            value: 'attacksAreSpells',
+            label: 'CHRISPREMADES.Macros.TrueStrike.AttacksAreSpells',
+            type: 'checkbox',
+            default: 'true',
             homebrew: true,
             category: 'homebrew'
         }
