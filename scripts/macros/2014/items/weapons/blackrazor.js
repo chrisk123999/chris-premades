@@ -39,7 +39,7 @@ async function late({workflow}) {
                 priority: 20
             },
             {
-                key: 'flags.midi-qol.advantage.ability.check.all',
+                key: 'flags.midi-qol.advantage.check.all',
                 mode: 0,
                 value: 1,
                 priority: 20

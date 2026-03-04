@@ -7,7 +7,7 @@ async function use({workflow}) {
         duration: itemUtils.convertDuration(workflow.activity),
         changes: [
             {
-                key: 'flags.midi-qol.advantage.ability.check.wis',
+                key: 'flags.midi-qol.advantage.check.wis',
                 mode: 0,
                 value: 1,
                 priority: 20

@@ -31,7 +31,7 @@ async function damage({trigger: {entity: effect}, workflow}) {
 }
 export let staggeringSmite = {
     name: 'Staggering Smite',
-    version: '1.2.28',
+    version: '1.5.10',
     midi: {
         item: [
             {

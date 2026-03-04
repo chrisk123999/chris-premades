@@ -117,7 +117,7 @@ async function preCreateActiveEffect(effect, updates, options, userId) {
                             priority: 20
                         },
                         {
-                            key: 'flags.midi-qol.disadvantage.ability.check.all',
+                            key: 'flags.midi-qol.disadvantage.check.all',
                             mode: 0,
                             value: 1,
                             priority: 20
@@ -215,7 +215,7 @@ async function preCreateActiveEffect(effect, updates, options, userId) {
                             priority: 20
                         },
                         {
-                            key: 'flags.midi-qol.disadvantage.ability.check.all',
+                            key: 'flags.midi-qol.disadvantage.check.all',
                             mode: 0,
                             value: 1,
                             priority: 20

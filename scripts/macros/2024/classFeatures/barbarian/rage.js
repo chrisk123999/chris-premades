@@ -1,4 +1,4 @@
-import {activityUtils, actorUtils, combatUtils, constants, dialogUtils, effectUtils, genericUtils, itemUtils, socketUtils, workflowUtils} from '../../../../utils.js';
+import {activityUtils, combatUtils, dialogUtils, effectUtils, genericUtils, itemUtils, socketUtils, workflowUtils} from '../../../../utils.js';
 import {rageRaging as rageRagingLegacy} from '../../../../legacyMacros.js';
 async function early({trigger, workflow}) {
     if (itemUtils.getConfig(workflow.item, 'allowHeavyArmor')) return;
@@ -311,7 +311,7 @@ async function damage({trigger: {entity: effect}, workflow}) {
 }
 export let rage = {
     name: 'Rage',
-    version: '1.5.1',
+    version: '1.5.10',
     rules: 'modern',
     hasAnimation: true,
     midi: {

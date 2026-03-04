@@ -245,13 +245,13 @@ async function flourishUse({trigger, workflow}) {
         img: 'modules/chris-premades/images/bg3/OffBalance.webp',
         changes: [
             {
-                key: 'flags.midi-qol.disadvantage.ability.check.str',
+                key: 'flags.midi-qol.disadvantage.check.str',
                 mode: 0,
                 value: 1,
                 priority: 20
             },
             {
-                key: 'flags.midi-qol.disadvantage.ability.check.dex',
+                key: 'flags.midi-qol.disadvantage.check.dex',
                 mode: 0,
                 value: 1,
                 priority: 20
@@ -541,13 +541,13 @@ async function rushUse({trigger, workflow}) {
         img: 'modules/chris-premades/images/bg3/OffBalance.webp',
         changes: [
             {
-                key: 'flags.midi-qol.disadvantage.ability.check.str',
+                key: 'flags.midi-qol.disadvantage.check.str',
                 mode: 0,
                 value: 1,
                 priority: 20
             },
             {
-                key: 'flags.midi-qol.disadvantage.ability.check.dex',
+                key: 'flags.midi-qol.disadvantage.check.dex',
                 mode: 0,
                 value: 1,
                 priority: 20

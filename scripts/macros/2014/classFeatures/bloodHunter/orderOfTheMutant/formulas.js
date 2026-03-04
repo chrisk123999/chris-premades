@@ -37,13 +37,13 @@ async function use({workflow}) {
             ];
             negativeEffectData.changes = [
                 {
-                    key: 'flags.midi-qol.disadvantage.ability.check.str',
+                    key: 'flags.midi-qol.disadvantage.check.str',
                     mode: 0,
                     value: 1,
                     priority: 20
                 },
                 {
-                    key: 'flags.midi-qol.disadvantage.ability.check.dex',
+                    key: 'flags.midi-qol.disadvantage.check.dex',
                     mode: 0,
                     value: 1,
                     priority: 20
@@ -55,7 +55,7 @@ async function use({workflow}) {
         case 'formulaAlluring':
             positiveEffectData.changes = [
                 {
-                    key: 'flags.midi-qol.advantage.ability.check.cha',
+                    key: 'flags.midi-qol.advantage.check.cha',
                     mode: 0,
                     value: 1,
                     priority: 20
@@ -91,7 +91,7 @@ async function use({workflow}) {
         case 'formulaConversant':
             positiveEffectData.changes = [
                 {
-                    key: 'flags.midi-qol.advantage.ability.check.int',
+                    key: 'flags.midi-qol.advantage.check.int',
                     mode: 0,
                     value: 1,
                     priority: 20
@@ -99,7 +99,7 @@ async function use({workflow}) {
             ];
             negativeEffectData.changes = [
                 {
-                    key: 'flags.midi-qol.disadvantage.ability.check.wis',
+                    key: 'flags.midi-qol.disadvantage.check.wis',
                     mode: 0,
                     value: 1,
                     priority: 20
@@ -132,7 +132,7 @@ async function use({workflow}) {
         case 'formulaDeftness':
             positiveEffectData.changes = [
                 {
-                    key: 'flags.midi-qol.advantage.ability.check.dex',
+                    key: 'flags.midi-qol.advantage.check.dex',
                     mode: 0,
                     value: 1,
                     priority: 20
@@ -140,7 +140,7 @@ async function use({workflow}) {
             ];
             negativeEffectData.changes = [
                 {
-                    key: 'flags.midi-qol.disadvantage.ability.check.wis',
+                    key: 'flags.midi-qol.disadvantage.check.wis',
                     mode: 0,
                     value: 1,
                     priority: 20
@@ -226,7 +226,7 @@ async function use({workflow}) {
             );
             negativeEffectData.changes = [
                 {
-                    key: 'flags.midi-qol.disadvantage.ability.check.str',
+                    key: 'flags.midi-qol.disadvantage.check.str',
                     mode: 0,
                     value: 1,
                     priority: 20
@@ -255,7 +255,7 @@ async function use({workflow}) {
         case 'formulaPercipient':
             positiveEffectData.changes = [
                 {
-                    key: 'flags.midi-qol.advantage.ability.check.wis',
+                    key: 'flags.midi-qol.advantage.check.wis',
                     mode: 0,
                     value: 1,
                     priority: 20
@@ -263,7 +263,7 @@ async function use({workflow}) {
             ];
             negativeEffectData.changes = [
                 {
-                    key: 'flags.midi-qol.disadvantage.ability.check.cha',
+                    key: 'flags.midi-qol.disadvantage.check.cha',
                     mode: 0,
                     value: 1,
                     priority: 20
@@ -317,7 +317,7 @@ async function use({workflow}) {
             ];
             negativeEffectData.changes = [
                 {
-                    key: 'flags.midi-qol.disadvantage.ability.check.int',
+                    key: 'flags.midi-qol.disadvantage.check.int',
                     mode: 0,
                     value: 1,
                     priority: 20
