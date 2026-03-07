@@ -1,3 +1,24 @@
+# 1.5.10 Release:
+## Bug Fixes:
+- Cleave
+- Savage Attacker
+- Groundwork
+- Rage
+- Staggering Smite
+- Hybrid Transformation
+- Formulas
+- Giant's Might
+- BG3 Weapon Actions
+- Potion of Diminution
+- Potion of Grownth
+- Blackrazor
+- Enlarge
+- Reduce
+- Wildhunt
+- Bestow Curse
+- Enlarge / Reduce
+- Hex
+
 # 1.5.9 Release:
 ## Bug Fixes:
 - Help Action
