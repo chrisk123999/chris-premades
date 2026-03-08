@@ -7,9 +7,9 @@ async function damage({trigger: {entity: item}, workflow}) {
     let selection = await dialogUtils.confirm(item.name, genericUtils.format('CHRISPREMADES.Dialog.Use', {itemName: item.name}));
     if (!selection) return;
     await workflowUtils.syntheticItemRoll(item, [workflow.token], {consumeResources: true, consumeUsage: true});
-    workflow.damageRolls = workflow.damageRolls.map(roll => {
-        return rollUtils.getChangedDamageRoll(roll, 'necrotic');
-    });
+    await Promise.all(workflow.damageRolls = workflow.damageRolls.map(async roll => {
+        return await rollUtils.getChangedDamageRoll(roll, 'necrotic');
+    }));
     await workflow.setDamageRolls(workflow.damageRolls);
     let formOfDread = effectUtils.getEffectByIdentifier(workflow.actor, 'formOfDreadActive');
     if (formOfDread) await workflowUtils.bonusDamage(workflow, '1d' + workflow.damageRolls[0].dice[0].faces, {damageType: 'necrotic'});

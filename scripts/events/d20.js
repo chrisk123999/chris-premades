@@ -1,6 +1,5 @@
 import {actorUtils, effectUtils, genericUtils, itemUtils, macroUtils, regionUtils, templateUtils} from '../utils.js';
 import {custom} from './custom.js';
-
 function getMacroData(entity) {
     return entity.flags['chris-premades']?.macros?.d20 ?? [];
 }

@@ -64,7 +64,7 @@
       "system": {},
       "changes": [
         {
-          "key": "flags.midi-qol.disadvantage.ability.save.all",
+          "key": "flags.midi-qol.disadvantage.save.all",
           "mode": 0,
           "value": "1",
           "priority": 20
@@ -618,7 +618,7 @@
         "identifier": "brutalStrike",
         "source": "chris-premades",
         "rules": "modern",
-        "version": "1.1.22"
+        "version": "1.5.5"
       },
       "macros": {
         "midi": {

@@ -1632,6 +1632,10 @@
             "GreaterDivineIntervention": {
                 "RestFormula": "Rest Formula:"
             },
+            "GreaterSanguineCurse": {
+                "Attack": "Are you in sunlight?",
+                "Sunlight": "You are in sunlight."
+            },
             "GreenFlameBlade": {
                 "Leap": "Where does the fire leap?",
                 "LeapFeature": "Green-Flame Blade: Leap",

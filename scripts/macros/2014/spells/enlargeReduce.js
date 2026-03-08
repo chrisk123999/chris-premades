@@ -32,7 +32,7 @@ async function use({workflow}) {
                     priority: 20
                 },
                 {
-                    key: 'flags.midi-qol.advantage.ability.check.str',
+                    key: 'flags.midi-qol.advantage.check.str',
                     mode: 0,
                     value: 1,
                     priority: 20
@@ -138,13 +138,13 @@ async function use({workflow}) {
                     priority: 20
                 },
                 {
-                    key: 'flags.midi-qol.disadvantage.ability.check.str',
+                    key: 'flags.midi-qol.disadvantage.check.str',
                     mode: 0,
                     value: 1,
                     priority: 20
                 },
                 {
-                    key: 'flags.midi-qol.disadvantage.ability.save.str',
+                    key: 'flags.midi-qol.disadvantage.save.str',
                     mode: 0,
                     value: 1,
                     priority: 20

@@ -22,7 +22,7 @@ async function early({trigger, workflow}) {
             fillColor: game.user.color,
             flags: {
                 dnd5e: {
-                    origin: workflow.item.uuid
+                    origin: workflow.activity.uuid
                 }
             }
         };
@@ -141,6 +141,7 @@ async function early({trigger, workflow}) {
             regionData.shapes[0].radiusY = (template.object.shape.radius / radius) * (radius + 0.5);
         }
         let [visibilityRegion] = await regionUtils.createRegions([visionRegionData], workflow.token.scene, {parentEntity: concentration});
+        await genericUtils.sleep(50);
         await workflowUtils.updateTargets(workflow, visibilityRegion.tokens.map(i => i.object));
         await genericUtils.update(visibilityRegion, {
             shapes: [
@@ -200,7 +201,7 @@ async function early({trigger, workflow}) {
             fillColor: game.user.color,
             flags: {
                 dnd5e: {
-                    origin: workflow.item.uuid
+                    origin: workflow.activity.uuid
                 }
             }
         };
@@ -256,7 +257,7 @@ async function early({trigger, workflow}) {
         await genericUtils.update(template, {
             x: shortRay.B.x,
             y: shortRay.B.y,
-            width: 2.5
+            width: 2.5 // 5.5 if using template to get tokens, this seems wrong
         });
         await genericUtils.sleep(50);
         let visionRegionData = {
@@ -293,6 +294,7 @@ async function early({trigger, workflow}) {
         };
         effectUtils.addMacro(visionRegionData, 'region', ['wallOfFireWallRegion']);
         let [visibilityRegion] = await regionUtils.createRegions([visionRegionData], workflow.token.scene, {parentEntity: concentration});
+        await genericUtils.sleep(50);
         let targets = Array.from(visibilityRegion.tokens);
         await genericUtils.update(template, {
             width: 1
@@ -311,8 +313,7 @@ async function early({trigger, workflow}) {
                     .atLocation({x: template.object.ray.A.x, y: template.object.ray.A.y})
                     .stretchTo({x: template.object.ray.B.x, y: template.object.ray.B.y})
                     .scale({x: 1, y: (15 / length)})
-                    .persist() //Not working???
-                    .duration(Math.floor(Number.MAX_SAFE_INTEGER / 1000)) //See: https://github.com/fantasycalendar/FoundryVTT-Sequencer/issues/269
+                    .persist()
                     .name('wallOfFire')
                     .tieToDocuments(visibilityRegion)
                     .fadeIn(300)

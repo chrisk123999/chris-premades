@@ -1,4 +1,7 @@
 export {summonUtilsModern as summonUtils} from './lib/summons.js';
+// Utility
+export {setAttackRoll} from './macros/2024/generic/setAttackRoll.js';
+export {setDamageRolls} from './macros/2024/generic/setDamageRoll.js';
 // Generic Monster Features
 export {abilityDrain} from './macros/2014/monsterFeatures/generic/abilityDrain.js';
 export {activityOnEffectExpiry} from './macros/2014/monsterFeatures/generic/activityOnEffectExpiry.js';
@@ -527,3 +530,6 @@ export {eldritchOverload} from './macros/2024/monsterFeatures/eldritchEddy/eldri
 export {vampireFangedBite} from './macros/2024/transformations/vampire/fangedBite.js';
 export {strigoiBloodline} from './macros/2024/transformations/vampire/strigoiBloodline.js';
 export {sanguineCurse} from './macros/2024/transformations/vampire/sanguineCurse.js';
+export {greaterSanguineCurse} from './macros/2024/transformations/vampire/greaterSanguineCurse.js';
+export {inhumanReflexes} from './macros/2024/transformations/vampire/inhumanReflexes.js';
+export {undeadResilience} from './macros/2024/transformations/vampire/undeadResilience.js';

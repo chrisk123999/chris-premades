@@ -979,7 +979,7 @@
       "system": {},
       "changes": [
         {
-          "key": "flags.midi-qol.disadvantage.ability.save.int",
+          "key": "flags.midi-qol.disadvantage.save.int",
           "mode": 2,
           "value": "1",
           "priority": 20
@@ -4137,7 +4137,7 @@
         "identifier": "deckOfWonder",
         "rules": "legacy",
         "source": "chris-premades",
-        "version": "1.3.98"
+        "version": "1.5.5"
       },
       "macros": {
         "midi": {

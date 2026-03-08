@@ -31,13 +31,22 @@ async function applyDamage(tokens, value, damageType) {
     return await MidiQOL.applyTokenDamage([{damage: value, type: damageType}], value, new Set(tokens));
 }
 async function completeActivityUse(activity, config = {}, dialog = {}, message = {}) {
+    let fixSets = false;
     if (!config.midiOptions?.asUser && !socketUtils.hasPermission(activity.actor, game.userId)) {
         if (!config.midiOptions) config.midiOptions = {};
         config.midiOptions.asUser = socketUtils.firstOwner(activity.actor, true);
         config.midiOptions.checkGMStatus = true;
+        config.midiOptions.workflowData = true;
+        fixSets = true;
     }
     let workflow = await MidiQOL.completeActivityUse(activity, config, dialog, message);
-    return workflow.workflow ?? workflow;
+    workflow = workflow.workflow ?? workflow;
+    if (fixSets) {
+        if (workflow.failedSaves) workflow.failedSaves = new Set(workflow.failedSaves);
+        if (workflow.hitTargets) workflow.hitTargets = new Set(workflow.hitTargets);
+        if (workflow.targets) workflow.targets = new Set(workflow.targets);
+    }
+    return workflow;
 }
 async function completeItemUse(item, config = {}, options = {}) {
     let fixSets = false;

@@ -31,7 +31,7 @@ async function use({workflow}) {
                 priority: 20
             },
             {
-                key: 'flags.midi-qol.advantage.ability.check.str',
+                key: 'flags.midi-qol.advantage.check.str',
                 mode: 0,
                 value: 1,
                 priority: 20

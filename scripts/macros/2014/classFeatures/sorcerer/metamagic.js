@@ -284,7 +284,7 @@ async function earlyHeightened({trigger: {entity: effect}, workflow}) {
         origin: effect.uuid,
         changes: [
             {
-                key: 'flags.midi-qol.disadvantage.ability.save.all',
+                key: 'flags.midi-qol.disadvantage.save.all',
                 mode: 5,
                 value: 1,
                 priority: 20

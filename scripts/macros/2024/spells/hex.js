@@ -42,7 +42,7 @@ async function use({trigger, workflow}) {
         },
         changes: [
             {
-                key: 'flags.midi-qol.disadvantage.ability.check.' + selection,
+                key: 'flags.midi-qol.disadvantage.check.' + selection,
                 mode: 0,
                 value: true,
                 priority: 20

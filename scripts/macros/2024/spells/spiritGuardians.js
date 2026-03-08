@@ -1,6 +1,5 @@
 import {spiritGuardians as spiritGuardiansLegacy, spiritGuardiansDamage as spiritGuardiansDamageLegacy} from '../../../legacyMacros.js';
 import {activityUtils, actorUtils, animationUtils, combatUtils, dialogUtils, effectUtils, genericUtils, itemUtils, tokenUtils, workflowUtils} from '../../../utils.js';
-
 async function use({workflow}) {
     let alignment = actorUtils.getAlignment(workflow.actor);
     let damageType;

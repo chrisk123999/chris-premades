@@ -1,4 +1,4 @@
-import {activityUtils, dialogUtils, constants, effectUtils, genericUtils, itemUtils, rollUtils, workflowUtils} from '../../../../../utils.js';
+import {activityUtils, dialogUtils, constants, effectUtils, genericUtils, itemUtils, rollUtils, socketUtils, workflowUtils} from '../../../../../utils.js';
 
 async function compressionLock({trigger: {entity: item, token}, workflow}) {
     let grapplingEffects = effectUtils.getAllEffectsByIdentifier(token.actor, 'grappling');
@@ -7,11 +7,12 @@ async function compressionLock({trigger: {entity: item, token}, workflow}) {
     let feature = activityUtils.getActivityByIdentifier(item, 'compressionLock', {strict: true});
     if (!feature) return;
     let formula = (await rollUtils.damageRoll(feature.damage.parts[0].formula, token.actor)).formula;
+    let userId = socketUtils.firstOwner(token.actor, true);
     let result = await dialogUtils.selectTargetDialog(
         item.name,
         genericUtils.format('CHRISPREMADES.Macros.Groundwork.CompressionLock', {formula}),
         potentialTargets,
-        {type: 'multiple', maxAmount:potentialTargets.length}
+        {type: 'multiple', maxAmount: potentialTargets.length, userId}
     );
     if (!result) return;
     let [targets, filterDefeated] = result;
@@ -36,7 +37,7 @@ async function inescapable({trigger: {entity: item}, workflow}) {
         },
         changes: [
             {
-                key: 'flags.midi-qol.disadvantage.ability.save.all',
+                key: 'flags.midi-qol.disadvantage.save.all',
                 value: '1',
                 mode: 5,
                 priority: 120

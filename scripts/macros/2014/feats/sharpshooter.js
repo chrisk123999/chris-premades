@@ -6,7 +6,7 @@ async function attack({trigger: {entity: item}, workflow}) {
     if (!selection) return;
     await item.displayCard();
     let bonusFormula = itemUtils.getConfig(item, 'bonus');
-    let bonus = workflow.activity.attack.bonus === '' ? bonusFormula : workflow.item.system.attack.bonus + ' + ' + bonusFormula;
+    let bonus = workflow.activity.attack.bonus === '' ? bonusFormula : workflow.activity.attack.bonus + ' + ' + bonusFormula;
     let formula = itemUtils.getConfig(item, 'formula');
     let newActivity = activityUtils.duplicateActivity(workflow.activity);
     newActivity.attack.bonus = bonus;

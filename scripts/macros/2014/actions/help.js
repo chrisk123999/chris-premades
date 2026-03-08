@@ -40,7 +40,7 @@ async function use({trigger, workflow}) {
                 {
                     key: 'flags.midi-qol.grants.advantage.attack.all',
                     mode: 0,
-                    value: 'tokenId != "' + workflow.token.document.id + '"',
+                    value: 'workflow.token.document.id != "' + workflow.token.document.id + '"',
                     priority: 20
                 }
             ],

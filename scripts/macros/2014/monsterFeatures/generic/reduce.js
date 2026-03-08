@@ -8,13 +8,13 @@ async function use({workflow}) {
         duration: itemUtils.convertDuration(workflow.activity),
         changes: [
             {
-                key: 'flags.midi-qol.disadvantage.ability.check.str',
+                key: 'flags.midi-qol.disadvantage.check.str',
                 mode: 0,
                 value: 1,
                 priority: 20
             },
             {
-                key: 'flags.midi-qol.disadvantage.ability.save.str',
+                key: 'flags.midi-qol.disadvantage.save.str',
                 mode: 0,
                 value: 1,
                 priority: 20

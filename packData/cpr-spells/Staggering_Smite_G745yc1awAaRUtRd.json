@@ -347,7 +347,7 @@
     "chris-premades": {
       "info": {
         "name": "Staggering Smite",
-        "version": "1.2.28",
+        "version": "1.5.10",
         "identifier": "staggeringSmite",
         "source": "chris-premades"
       },
@@ -387,7 +387,7 @@
           "priority": 20
         },
         {
-          "key": "flags.midi-qol.disadvantage.ability.check.all",
+          "key": "flags.midi-qol.disadvantage.check.all",
           "mode": 0,
           "value": "1",
           "priority": 20

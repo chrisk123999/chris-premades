@@ -38,7 +38,7 @@ async function use({trigger, workflow}) {
         },
         changes: [
             {
-                key: 'flags.midi-qol.disadvantage.ability.check.' + selection,
+                key: 'flags.midi-qol.disadvantage.check.' + selection,
                 mode: 0,
                 value: true,
                 priority: 20
@@ -122,7 +122,7 @@ async function move({workflow}) {
         },
         changes: [
             {
-                key: 'flags.midi-qol.disadvantage.ability.check.' + effect.flags['chris-premades'].hex.ability,
+                key: 'flags.midi-qol.disadvantage.check.' + effect.flags['chris-premades'].hex.ability,
                 mode: 0,
                 value: true,
                 priority: 20

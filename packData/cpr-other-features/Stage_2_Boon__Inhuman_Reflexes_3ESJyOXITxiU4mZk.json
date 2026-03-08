@@ -1,0 +1,109 @@
+{
+  "name": "Stage 2 Boon: Inhuman Reflexes",
+  "type": "feat",
+  "img": "icons/magic/unholy/strike-body-life-soul-green.webp",
+  "system": {
+    "activities": {},
+    "uses": {
+      "spent": 0,
+      "recovery": []
+    },
+    "advancement": [],
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "identifier": "stage-2-boon-inhuman-reflexes",
+    "source": {
+      "revision": 1,
+      "rules": "2024"
+    },
+    "crewed": false,
+    "enchant": {},
+    "prerequisites": {
+      "items": [],
+      "repeatable": false
+    },
+    "properties": [],
+    "requirements": "",
+    "type": {
+      "value": "",
+      "subtype": ""
+    }
+  },
+  "effects": [
+    {
+      "name": "Stage 2 Boon: Inhuman Reflexes",
+      "changes": [
+        {
+          "key": "flags.midi-qol.advantage.save.dex",
+          "mode": 0,
+          "value": "1",
+          "priority": 20
+        }
+      ],
+      "transfer": true,
+      "img": "icons/magic/unholy/strike-body-life-soul-green.webp",
+      "_id": "zyoHy668RBmB0K6W",
+      "type": "base",
+      "system": {},
+      "disabled": false,
+      "duration": {
+        "startTime": null,
+        "combat": null,
+        "seconds": null,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "description": "",
+      "origin": "Item.0AkYOwc5Jl23XNRa",
+      "tint": "#ffffff",
+      "statuses": [],
+      "sort": 0,
+      "flags": {
+        "dnd5e": {
+          "riders": {
+            "statuses": []
+          }
+        },
+        "dae": {
+          "enableCondition": "",
+          "disableCondition": "",
+          "stackable": "noneName",
+          "showIcon": false,
+          "disableIncapacitated": false,
+          "selfTarget": false,
+          "selfTargetAlways": false,
+          "dontApply": false,
+          "durationExpression": "",
+          "macroRepeat": "none",
+          "specialDuration": []
+        },
+        "core": {
+          "overlay": false
+        }
+      },
+      "_key": "!items.effects!3ESJyOXITxiU4mZk.zyoHy668RBmB0K6W"
+    }
+  ],
+  "folder": "Xu8gZVI9iyVzXZ72",
+  "flags": {
+    "dnd5e": {
+      "riders": {
+        "activity": []
+      }
+    },
+    "chris-premades": {
+      "info": {
+        "identifier": "inhumanReflexes",
+        "rules": "modern",
+        "source": "chris-premades",
+        "version": "1.5.4"
+      }
+    }
+  },
+  "_id": "3ESJyOXITxiU4mZk",
+  "_key": "!items!3ESJyOXITxiU4mZk"
+}

@@ -1,4 +1,55 @@
-# 1.5.4 Releaes:
+# 1.5.10 Release:
+## Bug Fixes:
+- Cleave
+- Savage Attacker
+- Groundwork
+- Rage
+- Staggering Smite
+- Hybrid Transformation
+- Formulas
+- Giant's Might
+- BG3 Weapon Actions
+- Potion of Diminution
+- Potion of Grownth
+- Blackrazor
+- Enlarge
+- Reduce
+- Wildhunt
+- Bestow Curse
+- Enlarge / Reduce
+- Hex
+
+# 1.5.9 Release:
+## Bug Fixes:
+- Help Action
+
+# 1.5.8 Release:
+## Bug Fixes:
+- Topple Mastery
+
+# 1.5.7 Relaese:
+## Bug Fixes:
+- Sharpshooter (Thanks Bacon)
+- Conjure Fey (Thanks Bacon)
+- Conjure Minor Elementals (Thanks Bacon)
+- Conjure Woodland Beings (Thanks Bacon)
+- Arcane Ward (Thanks Bacon)
+- Cosmic Omen (Thanks Bacon)
+
+# 1.5.6 Release:
+## Bug Fixes:
+- Engulf Generic Monster Features
+- Grave Touched
+
+# 1.5.5 Release:
+## Update Notes:
+- This update fixes the remaining advantage and disadvantage changes missed by 1.5.0. (Thanks Bacon)
+
+# 1.5.4 Release:
+## New Modern Content:
+- Stage 2 Boon: Inhuman Reflexes
+- Stage 2 Boon: Undead Resilience
+- Stage 2 Flaw: Greater Sanguine Curse
 ## Bug Fixes:
 - Dreadful Strikes (Legacy and Modern)
 

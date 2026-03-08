@@ -1,39 +1,12 @@
 {
-  "name": "Savage Attacker",
+  "name": "Stage 2 Boon: Undead Resilience",
   "type": "feat",
+  "img": "icons/magic/unholy/strike-body-explode-disintegrate.webp",
   "system": {
-    "description": {
-      "value": "",
-      "chat": ""
-    },
-    "source": {
-      "custom": "Player's Handbook pg 169",
-      "revision": 1,
-      "rules": "2014"
-    },
-    "uses": {
-      "max": "1",
-      "spent": 0,
-      "recovery": [
-        {
-          "period": "turn",
-          "type": "recoverAll"
-        }
-      ]
-    },
-    "type": {
-      "value": "feat",
-      "subtype": ""
-    },
-    "requirements": "",
-    "properties": [],
-    "prerequisites": {
-      "level": null
-    },
     "activities": {
-      "geEyp6f9SpqADeGn": {
+      "TRBzxjxPyItxE2K5": {
         "type": "utility",
-        "_id": "geEyp6f9SpqADeGn",
+        "_id": "TRBzxjxPyItxE2K5",
         "sort": 0,
         "activation": {
           "type": "special",
@@ -49,7 +22,6 @@
             {
               "type": "itemUses",
               "value": "1",
-              "target": "",
               "scaling": {}
             }
           ]
@@ -77,10 +49,11 @@
           },
           "affects": {
             "choice": false,
-            "type": ""
+            "type": "self",
+            "special": ""
           },
           "override": false,
-          "prompt": false
+          "prompt": true
         },
         "uses": {
           "spent": 0,
@@ -124,7 +97,7 @@
           "triggeredActivityTargets": "targets",
           "triggeredActivityRollAs": "self",
           "autoConsume": false,
-          "forceConsumeDialog": "never",
+          "forceConsumeDialog": "default",
           "forceRollDialog": "default",
           "forceDamageDialog": "default",
           "confirmTargets": "default",
@@ -144,7 +117,7 @@
           "magicDamage": false,
           "noConcentrationCheck": false,
           "skipConcentrationCheck": false,
-          "autoCEEffects": "default"
+          "autoCEEffects": "none"
         },
         "isOverTimeFlag": false,
         "overTimeProperties": {
@@ -158,37 +131,42 @@
         "name": ""
       }
     },
-    "identifier": "savage-attacker",
-    "enchant": {}
+    "uses": {
+      "spent": 0,
+      "recovery": [
+        {
+          "period": "lr",
+          "type": "recoverAll"
+        }
+      ],
+      "max": "1"
+    },
+    "advancement": [],
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "identifier": "stage-2-boon-undead-resilience",
+    "source": {
+      "revision": 1,
+      "rules": "2024"
+    },
+    "crewed": false,
+    "enchant": {},
+    "prerequisites": {
+      "items": [],
+      "repeatable": false
+    },
+    "properties": [],
+    "requirements": "",
+    "type": {
+      "value": "",
+      "subtype": ""
+    }
   },
+  "effects": [],
+  "folder": "Xu8gZVI9iyVzXZ72",
   "flags": {
-    "midiProperties": {
-      "confirmTargets": "default",
-      "autoFailFriendly": false,
-      "autoSaveFriendly": false,
-      "critOther": false,
-      "offHandWeapon": false,
-      "magicdam": false,
-      "magiceffect": false,
-      "noConcentrationCheck": false,
-      "toggleEffect": false,
-      "ignoreTotalCover": false,
-      "idr": false,
-      "idi": false,
-      "idv": false,
-      "ida": false
-    },
-    "midi-qol": {
-      "rollAttackPerTarget": "default",
-      "itemCondition": "",
-      "effectCondition": "",
-      "AoETargetType": "any",
-      "AoETargetTypeIncludeSelf": true,
-      "autoTarget": "default",
-      "removeAttackDamageButtons": "default",
-      "reactionCondition": "",
-      "otherCondition": ""
-    },
     "dnd5e": {
       "riders": {
         "activity": []
@@ -196,23 +174,20 @@
     },
     "chris-premades": {
       "info": {
-        "name": "Savage Attacker",
-        "version": "1.5.10",
-        "identifier": "savageAttacker",
-        "source": "chris-premades"
+        "identifier": "undeadResilience",
+        "rules": "modern",
+        "source": "chris-premades",
+        "version": "1.5.4"
       },
       "macros": {
         "midi": {
           "actor": [
-            "savageAttacker"
+            "undeadResilience"
           ]
         }
       }
     }
   },
-  "effects": [],
-  "img": "icons/skills/melee/strike-sword-blood-red.webp",
-  "folder": null,
-  "_id": "xsbmvgCh17OdYRv6",
-  "_key": "!items!xsbmvgCh17OdYRv6"
+  "_id": "Aed76iFGFq7UC7kx",
+  "_key": "!items!Aed76iFGFq7UC7kx"
 }

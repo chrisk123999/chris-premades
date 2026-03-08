@@ -10,6 +10,7 @@ async function createRegions(regionDatas, scene, {parentEntity, excludeGPSRegion
             genericUtils.setProperty(i, 'flags.gambits-premades.excludeGRegionHandling', true);
         });
     }
+    console.log(regions);
     if (parentEntity) await effectUtils.addDependent(parentEntity, regions);
     return regions;
 }

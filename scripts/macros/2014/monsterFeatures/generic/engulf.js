@@ -1,5 +1,6 @@
 import {actorUtils, effectUtils, genericUtils, itemUtils, tokenUtils} from '../../../../utils.js';
 async function use({trigger, workflow}) {
+    let config = itemUtils.getGenericFeatureConfig(workflow.item, 'engulf');
     let activities = config.activities;
     if (activities?.length && !activities.includes(workflow.activity.id)) return;
     if (!workflow.hitTargets.size) return;
@@ -9,7 +10,6 @@ async function use({trigger, workflow}) {
     effectData.origin = sourceEffect.uuid;
     effectData.duration = itemUtils.convertDuration(workflow.activity);
     effectUtils.addMacro(effectData, 'effect', ['engulfEffect']);
-    let config = itemUtils.getGenericFeatureConfig(workflow.item, 'engulf');
     let sizeLimit = Number(config.sizeLimit);
     let max = Number(config.max);
     let uuids = workflow.token.document.flags['chris-premades']?.engulf?.uuids ?? [];

@@ -28,7 +28,7 @@ async function use({workflow}) {
         if (concentrationEffect) await genericUtils.remove(concentrationEffect);
         return;
     }
-    let sourceDocs = await dialogUtils.selectDocumentsDialog(workflow.item.name, genericUtils.format('CHRISPREMADES.Summons.SelectSummons', {totalSummons: totalSummons * 2 / selection}), compendiumDocs, {max: totalSummons * 2 / selection, sortAlphabetical: true, sortCR: true, showCR: true});
+    let sourceDocs = await dialogUtils.selectDocumentsDialog(workflow.item.name, genericUtils.format('CHRISPREMADES.Summons.SelectSummons', {totalSummons: totalSummons * 2 / selection}), compendiumDocs, {max: totalSummons * 2 / selection, sortAlphabetical: true, sortCR: true, showCR: true, userId});
     if (sourceDocs?.length) sourceDocs = sourceDocs?.filter(i => i.amount);
     if (!sourceDocs?.length) {
         if (concentrationEffect) await genericUtils.remove(concentrationEffect);

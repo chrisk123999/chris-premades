@@ -58,13 +58,13 @@ async function use({workflow}) {
             if (!ability) return;
             targetEffectData.changes = [
                 {
-                    key: 'flags.midi-qol.disadvantage.ability.check.' + ability,
+                    key: 'flags.midi-qol.disadvantage.check.' + ability,
                     mode: 0, 
                     value: true,
                     priority: 20
                 }, 
                 {
-                    key: 'flags.midi-qol.disadvantage.ability.save.' + ability,
+                    key: 'flags.midi-qol.disadvantage.save.' + ability,
                     mode: 0,
                     value: true,
                     priority: 20

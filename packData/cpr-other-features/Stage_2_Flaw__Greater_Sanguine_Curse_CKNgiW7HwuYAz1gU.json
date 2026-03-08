@@ -1,0 +1,72 @@
+{
+  "name": "Stage 2 Flaw: Greater Sanguine Curse",
+  "type": "feat",
+  "img": "icons/magic/unholy/orb-glowing-yellow-purple.webp",
+  "system": {
+    "activities": {},
+    "uses": {
+      "spent": 0,
+      "recovery": []
+    },
+    "advancement": [],
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "identifier": "stage-2-flaw-greater-sanguine-curse",
+    "source": {
+      "revision": 1,
+      "rules": "2024"
+    },
+    "crewed": false,
+    "enchant": {},
+    "prerequisites": {
+      "items": [],
+      "repeatable": false
+    },
+    "properties": [],
+    "requirements": "",
+    "type": {
+      "value": "",
+      "subtype": ""
+    }
+  },
+  "effects": [],
+  "folder": "Xu8gZVI9iyVzXZ72",
+  "flags": {
+    "dnd5e": {
+      "riders": {
+        "activity": []
+      }
+    },
+    "chris-premades": {
+      "info": {
+        "identifier": "greaterSanguineCurse",
+        "rules": "modern",
+        "source": "chris-premades",
+        "version": "1.5.4"
+      },
+      "macros": {
+        "check": [
+          "greaterSanguineCurse"
+        ],
+        "save": [
+          "greaterSanguineCurse"
+        ],
+        "midi": {
+          "actor": [
+            "greaterSanguineCurse"
+          ]
+        },
+        "skill": [
+          "greaterSanguineCurse"
+        ],
+        "toolCheck": [
+          "greaterSanguineCurse"
+        ]
+      }
+    }
+  },
+  "_id": "CKNgiW7HwuYAz1gU",
+  "_key": "!items!CKNgiW7HwuYAz1gU"
+}
