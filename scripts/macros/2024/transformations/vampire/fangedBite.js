@@ -15,6 +15,11 @@ async function use({trigger, workflow}) {
     let total = workflowUtils.getTotalDamageOfType(workflow.damageDetail, workflow.targets.first().actor, itemUtils.getConfig(workflow.item, 'damageType'));
     if (!total) return;
     await workflowUtils.applyDamage([workflow.token], total, 'healing');
+    let sangromancySpecialist = itemUtils.getItemByIdentifier(workflow.actor, 'sangromancySpecialist');
+    if (!sangromancySpecialist) return;
+    if (!sangromancySpecialist.system.uses.spent) return;
+    if (actorUtils.checkTrait(workflow.token.actor, 'di', 'healing')) return;
+    await genericUtils.update(sangromancySpecialist, {'system.uses.spent': sangromancySpecialist.system.uses.spent - 1});
 }
 async function early({trigger, workflow}) {
     let ability = actorUtils.getBestAbility(workflow.actor, ['str', 'dex']);

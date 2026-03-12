@@ -1,3 +1,9 @@
+# 1.5.11 Release:
+## New Modern Content:
+- Stage 3 Boon: Sangromancy Specialist
+- Sangromantic Initiate
+- Wilting Smite
+
 # 1.5.10 Release:
 ## Bug Fixes:
 - Cleave

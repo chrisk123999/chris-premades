@@ -214,6 +214,7 @@ export {spellfireFlare} from './macros/2024/spells/spellfireFlare.js';
 export {dissolution} from './macros/2024/spells/dissolution.js';
 export {dream} from './macros/2024/spells/dream.js';
 export {bloodSacrifice, bloodSacrificeEffect} from './macros/2024/spells/bloodSacrifice.js';
+export {wiltingSmite} from './macros/2024/spells/wiltingSmite.js';
 // Items
 export {healersKit} from './macros/2024/items/healersKit.js';
 export {unarmedStrike} from './macros/2024/items/misc/unarmedStrike.js';
@@ -252,6 +253,7 @@ export {iSurvivedToTellTheTale} from './macros/2024/feats/iSurvivedToTellTheTale
 export {iFoughtILived} from './macros/2024/feats/iFoughtILived.js';
 export {vampiresPlaything} from './macros/2024/feats/vampiresPlaything.js';
 export {fateGambler} from './macros/2024/feats/fateGambler.js';
+export {sangromanticInitiate} from './macros/2024/feats/sangromanticInitiate.js';
 // Species Features
 // Aasimar
 export {healingHands} from './macros/2024/speciesFeatures/aasimar/healingHands.js';
@@ -533,3 +535,4 @@ export {sanguineCurse} from './macros/2024/transformations/vampire/sanguineCurse
 export {greaterSanguineCurse} from './macros/2024/transformations/vampire/greaterSanguineCurse.js';
 export {inhumanReflexes} from './macros/2024/transformations/vampire/inhumanReflexes.js';
 export {undeadResilience} from './macros/2024/transformations/vampire/undeadResilience.js';
+export {sangromancySpecialist} from './macros/2024/transformations/vampire/sangromancySpecialist.js';
