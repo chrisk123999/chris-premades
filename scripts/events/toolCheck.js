@@ -202,7 +202,7 @@ async function rollToolCheck(wrapped, config, dialog, message) {
         }
     }
     let returnData = await wrapped(config, dialog, {...message, create: false});
-    returnData = returnData[0];
+    returnData = returnData?.[0];
     if (!returnData) return;
     let oldOptions = returnData.options;
     returnData = await executeBonusMacroPass(this, 'bonus', config.tool, options, returnData, config, dialog, message);
