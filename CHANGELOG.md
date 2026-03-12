@@ -1,3 +1,8 @@
+# 1.5.12 Release:
+## Bug Fixes:
+- Wild Shape (Modern)
+- Feline Form
+
 # 1.5.11 Release:
 ## New Modern Content:
 - Stage 3 Boon: Sangromancy Specialist

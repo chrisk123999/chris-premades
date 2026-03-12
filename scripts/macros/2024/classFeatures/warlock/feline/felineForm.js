@@ -1,7 +1,7 @@
 import {DialogApp} from '../../../../../applications/dialog.js';
 import {compendiumUtils, constants, effectUtils, genericUtils, itemUtils} from '../../../../../utils.js';
 async function use({trigger, workflow}) {
-    let newActor = fromUuidSync(workflow.transformedActorUuids?.[0]);
+    let newActor = workflow.transformedActors?.[0];
     if (!newActor) return;
     let equippedItems = workflow.actor.items.filter(i => i.system.equipped && i.type !== 'container');
     let selection;
