@@ -1,3 +1,7 @@
+# 1.5.13 Release:
+## New Modern Content:
+- Heroic Warrior
+
 # 1.5.12 Release:
 ## Bug Fixes:
 - Wild Shape (Modern)

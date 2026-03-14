@@ -460,6 +460,7 @@ export {superiorDefense} from './macros/2024/classFeatures/monk/superiorDefense.
 // Fighter
 export {secondWind} from './macros/2024/classFeatures/fighter/secondWind.js';
 export {tacticalMind} from './macros/2024/classFeatures/fighter/tacticalMind.js';
+export {heroicWarrior} from './macros/2024/classFeatures/fighter/heroicWarrior.js';
 // Banneret
 export {groupRecovery} from './macros/2024/classFeatures/fighter/banneret/groupRecovery.js';
 export {knightlyEnvoy} from './macros/2024/classFeatures/fighter/banneret/knightlyEnvoy.js';
