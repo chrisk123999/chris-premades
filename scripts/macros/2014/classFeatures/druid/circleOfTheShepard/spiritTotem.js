@@ -56,7 +56,7 @@ async function use({workflow}){
     let feature = activityUtils.getActivityByIdentifier(workflow.item, 'spiritTotemMove', {strict: true});
     if (!feature) return;
     let summonedTokens = await Summons.spawn(sourceActor, updates, workflow.item, workflow.token, {
-        duration: itemUtils.convertDuration(workflow.activity).seconds, 
+        duration: itemUtils.convertDuration(workflow.activity)?.seconds ?? 60, 
         range: workflow.rangeDetails.range ?? 60, 
         animation, 
         initiativeType: 'none', 
