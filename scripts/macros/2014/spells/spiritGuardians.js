@@ -82,7 +82,7 @@ async function moveOrTurn({trigger: {target, token, entity: effect}, options}) {
             delta: {ownership: target.actor.ownership}
         }, {parent: canvas.scene});
         let oldDistance = tokenUtils.getDistance(token, tempToken);
-        if (oldDistance <= 15) return;
+        if (oldDistance <= genericUtils.convertDistance(15)) return;
     }
     if (combatUtils.inCombat()) {
         let turn = combatUtils.currentTurn();
