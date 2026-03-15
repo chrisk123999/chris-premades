@@ -310,6 +310,25 @@ export class Summons {
             });
             if (updates != {}) this.mergeUpdates(updates);
         }
+        let guardianSpirit = itemUtils.getItemByIdentifier(this.originItem.actor, 'guardianSpirit');
+        if (guardianSpirit && ['beast', 'fey'].includes(this.updates.actor?.system?.type?.value ?? actorUtils.typeOrRace(this.sourceActor))) {
+            this.updates.actor.effects ??= [];
+            this.updates.actor.effects.push({
+                name: guardianSpirit.name,
+                img: guardianSpirit.img,
+                origin: guardianSpirit.uuid,
+                flags: {
+                    'chris-premades': {
+                        macros: {
+                            combat: ['guardianSpiritCombat']
+                        },
+                        guardianSpirit: {
+                            sourceActor: this.originItem.actor.uuid
+                        }
+                    }
+                }
+            });
+        }
         if (itemUtils.getItemByIdentifier(this.originItem.actor, 'durableSummons') && (this.originItem.system.school === 'div')) {
             let currentTempHp = this.updates.actor?.system?.attributes?.hp?.temp;
             this.mergeUpdates({actor: {system: {attributes: {hp: {temp: currentTempHp ? Number(currentTempHp) + 30 : 30}}}}});

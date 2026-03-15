@@ -269,6 +269,7 @@ export {graveTouched} from './macros/2014/classFeatures/warlock/undead/graveTouc
 export {greatStature} from './macros/2014/classFeatures/fighter/runeKnight/greatStature.js';
 export {grimHarvest} from './macros/2014/classFeatures/wizard/schoolOfNecromancy/grimHarvest.js';
 export {guardianArmor, guardianArmorThunderGauntlets} from './macros/2014/classFeatures/artificer/armorer/guardianArmor.js';
+export {guardianSpirit, guardianSpiritCombat}  from './macros/2014/classFeatures/druid/circleOfTheShepard/guardianSpirit.js';
 export {harnessDivinePower} from './macros/2014/classFeatures/cleric/harnessDivinePower.js';
 export {healingLight} from './macros/2014/classFeatures/warlock/celestial/healingLight.js';
 export {heartOfTheStorm} from './macros/2014/classFeatures/sorcerer/stormSorcery/heartOfTheStorm.js';
