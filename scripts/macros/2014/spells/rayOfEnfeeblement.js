@@ -33,7 +33,7 @@ async function damage({workflow}) {
         if (str.value < dex.value) return;
     }
     workflow.damageRolls = await Promise.all(workflow.damageRolls.map(async damageRoll => {
-        return await new CONFIG.Dice.DamageRoll('floor((' + damageRoll.formula + ') / 2)', workflow.item.getRollData(), damageRoll.options);
+        return await new CONFIG.Dice.DamageRoll('floor((' + damageRoll.formula + ') / 2)', workflow.activity.getRollData(), damageRoll.options);
     }));
     await workflow.setDamageRolls(workflow.damageRolls);
 }
