@@ -351,6 +351,7 @@ export {sneakAttack} from './macros/2014/classFeatures/rogue/sneakAttack.js';
 export {songOfDefense} from './macros/2014/classFeatures/wizard/bladeSinging/songOfDefense.js';
 export {songOfVictory} from './macros/2014/classFeatures/wizard/bladeSinging/songOfVictory.js';
 export {sorceryPoints} from './macros/2014/classFeatures/sorcerer/sorceryPoints.js';
+export {spiritTotem, spiritTotemAura} from './macros/2014/classFeatures/druid/circleOfTheShepard/spiritTotem.js';
 export {spiritShield} from './macros/2014/classFeatures/barbarian/ancestralGuardian/spiritShield.js';
 export {stalkersProwess} from './macros/2014/classFeatures/bloodHunter/orderOfTheLycan/stalkersProwess.js';
 export {starryForm, starryFormActive} from './macros/2014/classFeatures/druid/circleOfStars/starryForm.js';

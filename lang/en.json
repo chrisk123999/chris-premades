@@ -2354,6 +2354,10 @@
                 "InvalidTarget": "Target must be Haunted!",
                 "ReapingScythe": "Reaping Scythe (Reaper Spirit)"
             },
+            "SpiritTotem": {
+                "HawkAttack": "Spend your reaction to grant advantage to this attack roll?",
+                "UnicornCheck": "Is this roll for detecting a creature within a Unicorn Spirit Totem aura?"
+            },
             "SpiritShield": {
                 "Damage": "Use {item} to reduce the damage dealt to {name}?"
             },
@@ -3707,6 +3711,10 @@
                 "Shifter": "Shifter",
                 "Skeleton": "Skeleton",
                 "SpectralAnimals": "Spectral Animals",
+                "SpiritTotem": "Spirit Totem",
+                "SpiritTotemBear": "Spirit Totem (Bear)",
+                "SpiritTotemHawk": "Spirit Totem (Hawk)",
+                "SpiritTotemUnicorn": "Spirit Totem (Unicorn)",
                 "SpiritualWeapon": "Spiritual Weapon",
                 "Steed": "Steed",
                 "SteelDefender": "Steel Defender",
