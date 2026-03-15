@@ -138,7 +138,7 @@ async function createEffects(entity, effectDataArray, effectOptionsArray) {
 }
 async function addDependent(entity, dependents, forceGM = false) {
     let hasPermission = false;
-    if (!forceGM) hasPermission = dependents.map(i => socketUtils.hasPermission(i, game.user.id)).some(i => !i);
+    if (!forceGM) hasPermission = !dependents.some(i => !socketUtils.hasPermission(i, game.user.id));
     if (hasPermission) {
         await Promise.all(dependents.map(i => i.setFlag('dnd5e', 'dependentOn', entity.uuid)));
     } else {
