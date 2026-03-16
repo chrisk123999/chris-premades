@@ -49,7 +49,7 @@ export {engulf, engulfEffect} from './macros/2014/monsterFeatures/generic/engulf
 export {timeTrigger, timeTriggerEffect} from './macros/2014/monsterFeatures/generic/timeTrigger.js';
 // Mechanics
 export {cleaveMastery, grazeMastery, pushMastery, sapMastery, slowMastery, toppleMastery, vexMastery} from './macros/2024/mechanics/masteries.js';
-export {grappleCondition} from './macros/2024/mechanics/grappleCondition.js';
+export {grappled} from './macros/2024/mechanics/grappled.js';
 export {invisible} from './macros/2024/mechanics/invisible.js';
 // Actions
 export {attack} from './macros/2024/actions/attack.js';

@@ -1,5 +1,4 @@
 import {activityUtils, effectUtils, genericUtils, itemUtils, tokenUtils, workflowUtils} from '../../../../../utils.js';
-
 // setup is in summons.js - handleSpecialUpdates()
 async function turnEnd({trigger: {entity: effect, token}}) {
     let summoner = await fromUuid(effect.flags['chris-premades']?.guardianSpirit?.sourceActor);

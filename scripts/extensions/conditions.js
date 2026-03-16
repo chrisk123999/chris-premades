@@ -84,7 +84,6 @@ async function preCreateActiveEffect(effect, updates, options, userId) {
         });
     }
     let changes = [];
-    let invisibleMacro = false;
     if (genericUtils.getCPRSetting('applyConditionChanges') && statusId) {
         let rules = game.settings.get('dnd5e', 'rulesVersion');
         let removeMovement = false;
@@ -279,7 +278,7 @@ async function preCreateActiveEffect(effect, updates, options, userId) {
                     effect.updateSource({
                         ['flags.chris-premades']: {
                             rules: 'modern',
-                            ['macros.midi.actor']: ['grappleCondition'] 
+                            ['macros.midi.actor']: ['grappled'] 
                         }
                     });
                     return;

@@ -1,3 +1,11 @@
+# 1.5.14 Release:
+## New Legacy Content:
+- Spirit Totem
+- Guardian Spirit
+- Faithful Summons
+## Bug Fixes:
+- Grappled Condition
+
 # 1.5.13 Release:
 ## New Modern Content:
 - Heroic Warrior
