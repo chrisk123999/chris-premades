@@ -275,6 +275,13 @@ async function preCreateActiveEffect(effect, updates, options, userId) {
                     return;
                 case 'grappled':
                     removeMovement = true;
+                    if (rules != 'modern') return;
+                    effect.updateSource({
+                        ['flags.chris-premades']: {
+                            rules: 'modern',
+                            ['macros.midi.actor']: ['grappleCondition'] 
+                        }
+                    });
                     return;
                 case 'silenced':
                     changes.push(
