@@ -255,6 +255,26 @@ export let spiritTotem = {
             }
         ]
     },
+    ddbi: {
+        correctedItems: {
+            'Spirit Totem': {
+                system: {
+                    uses: {
+                        recovery: [
+                            {
+                                period: 'sr',
+                                type: 'recoverAll'
+                            },
+                            {
+                                period: 'lr',
+                                type: 'recoverAll'
+                            }
+                        ]
+                    }
+                }
+            }
+        }
+    },
     config: [
         {
             value: 'classIdentifier',

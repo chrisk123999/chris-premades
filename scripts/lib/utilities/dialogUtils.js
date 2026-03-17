@@ -173,7 +173,7 @@ async function selectDocumentDialog(title, content, documents, {displayTooltips 
         name: isCompendiumDoc ? (i.uuid ?? i.actor?.uuid) : (i.id ?? i.actor?.id),
         options: {
             image: i.img + (i.system?.details?.cr != undefined ? ` (CR ${genericUtils.decimalToFraction(i.system?.details?.cr)})` : ``),
-            tooltip: displayTooltips ? i.system.description.value.replace(/<[^>]*>?/gm, '') : undefined,
+            tooltip: displayTooltips ? i.system.description.value.replace(/<[^>]*>?|@UUID\[.*?\]{(.*?)}/gm, '$1') : undefined,
             reference: (displayReference && i.reference) ? i.reference : undefined
         }
     }));
@@ -212,7 +212,7 @@ async function selectDocumentsDialog(title, content, documents, {max = undefined
         name: i.id ?? i._id,
         options: {
             image: i.img + (i.system?.details?.cr != undefined ? ` (CR ${genericUtils.decimalToFraction(i.system?.details?.cr)})` : ``),
-            tooltip: displayTooltips ? i.system.description.value.replace(/<[^>]*>?/gm, '') : undefined,
+            tooltip: displayTooltips ? i.system.description.value.replace(/<[^>]*>?|@UUID\[.*?\]{(.*?)}/gm, '$1') : undefined,
             minAmount: 0,
             maxAmount: maxes?.[i.id] ?? max,
             weight: weights?.[i.id] ?? 1
