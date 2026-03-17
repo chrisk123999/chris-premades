@@ -2740,6 +2740,10 @@
             "WarpingImplosion": {
                 "Consume": "Consume five {item} to use?"
             },
+            "WhispersOfTheDead": {
+                "Prompt": "Choose a skill or tool in which to gain proficiency.<br>Your existing proficiencies are shown in brackets <code>[]</code>.",
+                "UnknownTool": "Unknown Tool: {name}"
+            },
             "WildResurgence": {
                 "WildShapeUses": "You must have 0 uses of Wild Shape in order to use this!"
             },

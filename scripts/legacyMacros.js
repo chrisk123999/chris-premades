@@ -386,6 +386,7 @@ export {vengefulAncestors} from './macros/2014/classFeatures/barbarian/ancestral
 export {viciousIntent} from './macros/2014/classFeatures/fighter/gunslinger/viciousIntent.js';
 export {vigilantBlessing} from './macros/2014/classFeatures/cleric/twilightDomain/vigilantBlessing.js';
 export {warpingImplosion} from './macros/2014/classFeatures/sorcerer/aberrantMind/warpingImplosion.js';
+export {whispersOfTheDead} from './macros/2014/classFeatures/rogue/phantom/whispersOfTheDead.js';
 export {wildShape, wildShapeActive} from './macros/2014/classFeatures/druid/wildShape.js';
 export {wildSurge, wildSurgeIntangibleSpirit, wildSurgeProtectiveLights, wildSurgeRetribution, wildSurgeTeleport} from './macros/2014/classFeatures/barbarian/wildMagic/wildSurge.js';
 export {wrathOfTheStorm} from './macros/2014/classFeatures/cleric/tempestDomain/wrathOfTheStorm.js';
