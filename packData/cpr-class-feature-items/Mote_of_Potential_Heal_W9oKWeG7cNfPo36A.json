@@ -1,5 +1,5 @@
 {
-  "name": "Mote of Potential Attack",
+  "name": "Mote of Potential Heal",
   "type": "feat",
   "img": "icons/magic/water/projectile-ice-snowball.webp",
   "system": {
@@ -24,16 +24,17 @@
     "requirements": "",
     "properties": [],
     "prerequisites": {
-      "level": null
+      "level": null,
+      "items": [],
+      "repeatable": false
     },
     "activities": {
-      "RfzQmIZmQHfECrIT": {
-        "type": "save",
-        "_id": "RfzQmIZmQHfECrIT",
+      "mbh7OVmJ98jQj6RC": {
+        "type": "heal",
+        "_id": "mbh7OVmJ98jQj6RC",
         "sort": 0,
         "activation": {
           "type": "special",
-          "value": null,
           "override": false,
           "condition": ""
         },
@@ -53,9 +54,10 @@
           "override": false
         },
         "effects": [],
+        "flags": {},
         "range": {
-          "override": false,
           "units": "self",
+          "override": false,
           "special": ""
         },
         "target": {
@@ -66,7 +68,7 @@
           },
           "affects": {
             "choice": false,
-            "count": "",
+            "count": "1",
             "type": "creature",
             "special": ""
           },
@@ -78,37 +80,30 @@
           "recovery": [],
           "max": ""
         },
-        "damage": {
-          "onSave": "none",
-          "critical": {
-            "allow": false
+        "visibility": {
+          "level": {
+            "min": null,
+            "max": null
           },
-          "parts": [
-            {
-              "custom": {
-                "enabled": true,
-                "formula": "0"
-              },
-              "number": null,
-              "denomination": 0,
-              "bonus": "",
-              "types": [
-                "thunder"
-              ],
-              "scaling": {
-                "number": 1
-              }
-            }
-          ]
+          "requireAttunement": false,
+          "requireIdentification": false,
+          "requireMagic": false,
+          "identifier": ""
         },
-        "save": {
-          "ability": [
-            "con"
+        "healing": {
+          "types": [
+            "temphp"
           ],
-          "dc": {
-            "calculation": "",
+          "custom": {
+            "enabled": true,
             "formula": "0"
-          }
+          },
+          "scaling": {
+            "number": 1
+          },
+          "number": null,
+          "denomination": null,
+          "bonus": ""
         },
         "useConditionText": "",
         "useConditionReason": "",
@@ -160,15 +155,13 @@
           "preRemoveConditionText": "",
           "postRemoveConditionText": ""
         },
-        "otherActivityId": "",
-        "otherActivityAsParentType": true,
-        "friendlySave": "default",
-        "name": "",
-        "img": ""
+        "name": ""
       }
     },
     "identifier": "mote-of-potential-attack",
-    "enchant": {}
+    "enchant": {},
+    "advancement": [],
+    "crewed": false
   },
   "effects": [],
   "flags": {
@@ -210,12 +203,11 @@
     "core": {},
     "dnd5e": {
       "riders": {
-        "activity": [],
-        "effect": []
+        "activity": []
       }
     }
   },
   "folder": null,
-  "_id": "ZOzKGAnskurTJZ3f",
-  "_key": "!items!ZOzKGAnskurTJZ3f"
+  "_id": "W9oKWeG7cNfPo36A",
+  "_key": "!items!W9oKWeG7cNfPo36A"
 }
