@@ -1,0 +1,333 @@
+{
+  "name": "Ghost Walk",
+  "type": "feat",
+  "effects": [
+    {
+      "name": "Spectral Form",
+      "statuses": [
+        "ethereal"
+      ],
+      "changes": [
+        {
+          "key": "system.attributes.movement.fly",
+          "mode": 4,
+          "value": "10",
+          "priority": 2
+        },
+        {
+          "key": "system.attributes.movement.hover",
+          "mode": 0,
+          "value": "true",
+          "priority": 2
+        },
+        {
+          "key": "flags.midi-qol.grants.disadvantage.attack.all",
+          "mode": 2,
+          "value": "1",
+          "priority": 20
+        }
+      ],
+      "duration": {
+        "seconds": null,
+        "startTime": null,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null,
+        "combat": null
+      },
+      "tint": "#ffffff",
+      "transfer": false,
+      "disabled": false,
+      "flags": {
+        "dae": {
+          "showIcon": false,
+          "transfer": false,
+          "stackable": "noneNameOnly",
+          "enableCondition": "",
+          "disableCondition": "",
+          "disableIncapacitated": false,
+          "selfTarget": false,
+          "selfTargetAlways": false,
+          "dontApply": false,
+          "durationExpression": "",
+          "macroRepeat": "none",
+          "specialDuration": []
+        },
+        "ddbimporter": {
+          "disabled": false,
+          "activityMatch": "Activate"
+        },
+        "midi-qol": {
+          "forceCEOff": true
+        },
+        "core": {
+          "overlay": false
+        },
+        "dnd5e": {
+          "riders": {
+            "statuses": []
+          }
+        }
+      },
+      "description": "",
+      "_id": "uLTzEfjN3hktPd32",
+      "img": "icons/magic/air/wind-stream-purple.webp",
+      "type": "base",
+      "system": {},
+      "origin": null,
+      "sort": 0,
+      "_key": "!items.effects!sh9FM8X43RsJIj3B.uLTzEfjN3hktPd32"
+    }
+  ],
+  "system": {
+    "activities": {
+      "utilityGhWaclass": {
+        "name": "Activate",
+        "type": "utility",
+        "_id": "utilityGhWaclass",
+        "sort": 0,
+        "activation": {
+          "type": "bonus",
+          "condition": "",
+          "override": false
+        },
+        "consumption": {
+          "targets": [
+            {
+              "type": "itemUses",
+              "value": "1",
+              "target": "",
+              "scaling": {}
+            }
+          ],
+          "scaling": {
+            "allowed": false,
+            "max": ""
+          },
+          "spellSlot": true
+        },
+        "description": {
+          "chatFlavor": ""
+        },
+        "duration": {
+          "value": "10",
+          "units": "minute",
+          "special": "",
+          "concentration": false,
+          "override": false
+        },
+        "effects": [
+          {
+            "_id": "uLTzEfjN3hktPd32",
+            "level": {
+              "min": null,
+              "max": null
+            }
+          }
+        ],
+        "flags": {},
+        "range": {
+          "units": "self",
+          "special": "",
+          "override": false
+        },
+        "target": {
+          "prompt": true,
+          "affects": {
+            "count": "1",
+            "type": "self",
+            "choice": false,
+            "special": ""
+          },
+          "template": {
+            "count": "",
+            "contiguous": false,
+            "type": "",
+            "size": "",
+            "width": "",
+            "height": "",
+            "units": "ft"
+          },
+          "override": false
+        },
+        "uses": {
+          "spent": 0,
+          "recovery": [],
+          "max": ""
+        },
+        "visibility": {
+          "level": {
+            "min": null,
+            "max": null
+          },
+          "requireAttunement": false,
+          "requireIdentification": false,
+          "requireMagic": false,
+          "identifier": ""
+        },
+        "roll": {
+          "prompt": false,
+          "visible": false,
+          "formula": "",
+          "name": ""
+        },
+        "useConditionText": "",
+        "useConditionReason": "",
+        "effectConditionText": "",
+        "macroData": {
+          "name": "",
+          "command": ""
+        },
+        "ignoreTraits": {
+          "idi": false,
+          "idr": false,
+          "idv": false,
+          "ida": false,
+          "idm": false
+        },
+        "midiProperties": {
+          "ignoreTraits": [],
+          "triggeredActivityId": "none",
+          "triggeredActivityConditionText": "",
+          "triggeredActivityTargets": "targets",
+          "triggeredActivityRollAs": "self",
+          "confirmTargets": "default",
+          "automationOnly": false,
+          "identifier": "",
+          "autoConsume": false,
+          "forceConsumeDialog": "default",
+          "forceRollDialog": "default",
+          "forceDamageDialog": "default",
+          "autoTargetType": "any",
+          "autoTargetAction": "default",
+          "otherActivityCompatible": true,
+          "otherActivityAsParentType": true,
+          "displayActivityName": false,
+          "rollMode": "default",
+          "chooseEffects": false,
+          "toggleEffect": false,
+          "ignoreFullCover": false,
+          "removeChatButtons": "default",
+          "magicEffect": false,
+          "magicDamage": false,
+          "noConcentrationCheck": false,
+          "skipConcentrationCheck": false,
+          "autoCEEffects": "default"
+        },
+        "isOverTimeFlag": false,
+        "overTimeProperties": {
+          "saveRemoves": true,
+          "rollAs": "target",
+          "preRemoveConditionText": "",
+          "postRemoveConditionText": ""
+        },
+        "otherActivityId": "none",
+        "otherActivityAsParentType": true
+      }
+    },
+    "uses": {
+      "spent": 0,
+      "max": "1",
+      "recovery": [
+        {
+          "period": "lr",
+          "type": "recoverAll"
+        }
+      ]
+    },
+    "advancement": [],
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "identifier": "ghost-walk",
+    "source": {
+      "book": "TCoE",
+      "page": "",
+      "license": "",
+      "custom": "",
+      "rules": "2014",
+      "revision": 1
+    },
+    "crewed": false,
+    "enchant": {},
+    "prerequisites": {
+      "items": [],
+      "level": 13,
+      "repeatable": false
+    },
+    "properties": [],
+    "requirements": "",
+    "type": {
+      "value": "class",
+      "subtype": ""
+    }
+  },
+  "flags": {
+    "ddbimporter": {
+      "isChoiceFeature": false,
+      "id": 2991337,
+      "type": "class",
+      "entityTypeId": 12168134,
+      "is2014": true,
+      "is2024": false,
+      "legacy": false,
+      "originalName": "Ghost Walk",
+      "dndbeyond": {
+        "requiredLevel": 13,
+        "displayOrder": 400,
+        "featureType": 1,
+        "class": "Rogue",
+        "classId": 653465,
+        "entityType": "class-feature",
+        "levelScale": null,
+        "levelScales": [],
+        "limitedUse": [
+          {
+            "level": null,
+            "uses": 1
+          }
+        ]
+      },
+      "class": "Rogue",
+      "classId": 12,
+      "subClass": "Phantom",
+      "subClassId": 653465,
+      "effectsApplied": true,
+      "replaceActivityUses": true,
+      "importId": "z3gO1aivVxM5qf9P"
+    },
+    "midi-qol": {
+      "removeAttackDamageButtons": "default",
+      "forceCEOff": true
+    },
+    "midiProperties": {
+      "confirmTargets": "default"
+    },
+    "dnd5e": {
+      "advancementOrigin": "Qmmb3V1RPp8OZuQh",
+      "riders": {
+        "activity": []
+      }
+    },
+    "chris-premades": {
+      "macros": {
+        "midi": {
+          "item": [
+            "ghostWalk"
+          ]
+        }
+      },
+      "info": {
+        "identifier": "ghostWalk",
+        "version": "1.5.15",
+        "source": "chris-premades"
+      }
+    }
+  },
+  "img": "icons/magic/air/wind-stream-purple.webp",
+  "folder": "F8h08o7wIe67W3Mw",
+  "_id": "sh9FM8X43RsJIj3B",
+  "_key": "!items!sh9FM8X43RsJIj3B"
+}

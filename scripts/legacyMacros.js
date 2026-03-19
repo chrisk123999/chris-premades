@@ -221,6 +221,7 @@ export {curseOfTheMuddledMind} from './macros/2014/classFeatures/bloodHunter/blo
 export {dangerSense} from './macros/2014/classFeatures/barbarian/dangerSense.js';
 export {darkOnesBlessing} from './macros/2014/classFeatures/warlock/fiend/darkOnesBlessing.js';
 export {darkOnesOwnLuck} from './macros/2014/classFeatures/warlock/fiend/darkOnesOwnLuck.js';
+export {deathsFriend} from './macros/2014/classFeatures/rogue/phantom/deathsFriend.js';
 export {demiurgicColossus} from './macros/2014/classFeatures/barbarian/giant/demiurgicColossus.js';
 export {destructiveWrath, destructiveWrathActive} from './macros/2014/classFeatures/cleric/tempestDomain/destructiveWrath.js';
 export {devilsSight} from './macros/2014/classFeatures/warlock/invocations/devilsSight.js';
@@ -262,6 +263,7 @@ export {formOfDread, formOfDreadActive} from './macros/2014/classFeatures/warloc
 export {formOfTheBeast} from './macros/2014/classFeatures/barbarian/beast/formOfTheBeast.js';
 export {formulas, formulaAether, formulaAlluring, formulaCelerity, formulaConversant, formulaCruelty, formulaDeftness, formulaEmbers, formulaGelid, formulaImpermeable, formulaMobility, formulaNighteye, formulaPercipient, formulaPotency, formulaPrecision, formulaRapidity, formulaReconstruction, formulaSagacity, formulaShielded, formulaUnbreakable, formulaVermillion} from './macros/2014/classFeatures/bloodHunter/orderOfTheMutant/formulas.js';
 export {geniesWrathDao, geniesWrathDjinni, geniesWrathEfreeti, geniesWrathMarid} from './macros/2014/classFeatures/warlock/genie/geniesWrath.js';
+export {ghostWalk} from './macros/2014/classFeatures/rogue/phantom/ghostWalk.js';
 export {giantsHavocCrushingThrow} from './macros/2014/classFeatures/barbarian/giant/crushingThrow.js';
 export {giantsHavocGiantStature} from './macros/2014/classFeatures/barbarian/giant/giantStature.js';
 export {giantsMight, giantsMightEffect} from './macros/2014/classFeatures/fighter/runeKnight/giantsMight.js';
@@ -370,6 +372,7 @@ export {supremeHealing} from './macros/2014/classFeatures/cleric/lifeDomain/supr
 export {telepathicSpeech} from './macros/2014/classFeatures/sorcerer/aberrantMind/telepathicSpeech.js';
 export {tentacleOfTheDeeps} from './macros/2014/classFeatures/warlock/fathomless/tentacleOfTheDeeps.js';
 export {thunderboltStrike} from './macros/2014/classFeatures/cleric/tempestDomain/thunderboltStrike.js';
+export {tokensOfTheDeparted} from './macros/2014/classFeatures/rogue/phantom/tokensOfTheDeparted.js';
 export {totemSpiritBear} from './macros/2014/classFeatures/barbarian/totem/totemSpirit.js';
 export {turnTheFaithless} from './macros/2014/classFeatures/paladin/oathOfTheAncients/turnTheFaithless.js';
 export {turnUndead} from './macros/2014/classFeatures/cleric/turnUndead.js';
@@ -385,6 +388,7 @@ export {unstableBacklash} from './macros/2014/classFeatures/barbarian/wildMagic/
 export {vengefulAncestors} from './macros/2014/classFeatures/barbarian/ancestralGuardian/vengefulAncestors.js';
 export {viciousIntent} from './macros/2014/classFeatures/fighter/gunslinger/viciousIntent.js';
 export {vigilantBlessing} from './macros/2014/classFeatures/cleric/twilightDomain/vigilantBlessing.js';
+export {wailsFromTheGrave} from './macros/2014/classFeatures/rogue/phantom/wailsFromTheGrave.js';
 export {warpingImplosion} from './macros/2014/classFeatures/sorcerer/aberrantMind/warpingImplosion.js';
 export {whispersOfTheDead} from './macros/2014/classFeatures/rogue/phantom/whispersOfTheDead.js';
 export {wildShape, wildShapeActive} from './macros/2014/classFeatures/druid/wildShape.js';

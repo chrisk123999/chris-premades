@@ -2640,6 +2640,10 @@
             "TouchDamage": {
                 "Name": "Touch Damage"
             },
+            "TokensOfTheDeparted": {
+                "Spend": "Spend {name} to use {feature} without consuming uses?",
+                "MustSpend": "{feature} has no uses remaining. You must spend {name} to activate it."
+            },
             "Transform": {
                 "Name": "Transform",
                 "ProfileOneActivities": "Profile #1 Activities:",
