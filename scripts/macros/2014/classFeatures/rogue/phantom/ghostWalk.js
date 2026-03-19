@@ -11,10 +11,8 @@ async function preUse({trigger: {entity: item}}) {
         item.name, 
         genericUtils.format('CHRISPREMADES.Macros.TokensOfTheDeparted.MustSpend', {name: tokensOfTheDeparted.name, feature: item.name}),
         {buttons: 'okCancel'}
-    )) return false;
-    await genericUtils.update(item, {'system.uses.spent': item.system.uses.spent - 1});
+    )) return true;
     await workflowUtils.syntheticActivityRoll(tokenActivity, [], {consumeUsage: true, consumeResources: true});
-    //await genericUtils.sleep(100);
 }
 export let ghostWalk = {
     name: 'Ghost Walk',
