@@ -1,3 +1,14 @@
+# 1.5.15 Release:
+## New Legacy Content:
+- Whispers of the Dead
+- Death's Friend
+- Ghost Walk
+- Tokens of the Departed
+- Wails from the Grave
+## Bug Fixes:
+- Vigilant Blessing
+- Spirit Totem
+
 # 1.5.14 Release:
 ## New Legacy Content:
 - Spirit Totem

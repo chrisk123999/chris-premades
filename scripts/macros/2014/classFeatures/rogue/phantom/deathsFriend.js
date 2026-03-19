@@ -1,5 +1,4 @@
 import {activityUtils, itemUtils, workflowUtils} from '../../../../../utils.js';
-
 async function rest({trigger: {entity: item}, actor}) {
     let tokensOfTheDeparted = itemUtils.getItemByIdentifier(actor, 'tokensOfTheDeparted');
     let uses = tokensOfTheDeparted?.system.uses;

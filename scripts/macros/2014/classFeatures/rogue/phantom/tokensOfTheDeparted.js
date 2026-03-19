@@ -1,8 +1,6 @@
 import {actorUtils, effectUtils, genericUtils} from '../../../../../utils.js';
-
 async function added({trigger: {entity: item, actor}}) {
-    let existing = actorUtils.getEffects(actor).find(e => e.origin === item.uuid) ?? 
-        effectUtils.getEffectByIdentifier(actor, 'tokensOfTheDeparted');
+    let existing = actorUtils.getEffects(actor).find(e => e.origin === item.uuid) ?? effectUtils.getEffectByIdentifier(actor, 'tokensOfTheDeparted');
     let effectData = {
         name: item.name,
         img: item.img,

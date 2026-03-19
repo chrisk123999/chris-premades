@@ -1,5 +1,4 @@
 import {activityUtils, dialogUtils, genericUtils, itemUtils, workflowUtils} from '../../../../../utils.js';
-
 async function preUse({trigger: {entity: item}}) {
     if (item.system.uses.value) return;
     let tokensOfTheDeparted = itemUtils.getItemByIdentifier(item.parent, 'tokensOfTheDeparted');
