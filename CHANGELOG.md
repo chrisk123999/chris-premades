@@ -1,3 +1,12 @@
+# 1.5.16 Release:
+## New Legacy Content:
+- Armored Casing
+- Built for Success
+- Healing Machine
+- Mechanical Nature
+## Bug Fixes:
+- Wails from the Grave
+
 # 1.5.15 Release:
 ## New Legacy Content:
 - Whispers of the Dead

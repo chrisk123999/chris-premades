@@ -1,0 +1,182 @@
+{
+  "name": "Mechanical Nature",
+  "type": "feat",
+  "effects": [
+    {
+      "name": "Mechanical Nature",
+      "statuses": [],
+      "changes": [
+        {
+          "key": "system.traits.dr.value",
+          "mode": 2,
+          "value": "poison",
+          "priority": 1
+        },
+        {
+          "key": "system.traits.ci.value",
+          "mode": 2,
+          "value": "diseased",
+          "priority": 1
+        },
+        {
+          "key": "flags.chris-premades.CR.paralyzed",
+          "mode": 5,
+          "value": "1",
+          "priority": 20
+        },
+        {
+          "key": "flags.chris-premades.CR.poisoned",
+          "mode": 5,
+          "value": "1",
+          "priority": 20
+        }
+      ],
+      "duration": {
+        "seconds": null,
+        "startTime": 58525987,
+        "rounds": null,
+        "turns": null,
+        "startRound": 0,
+        "startTurn": 0,
+        "combat": null
+      },
+      "tint": "#ffffff",
+      "transfer": true,
+      "disabled": false,
+      "flags": {
+        "dae": {
+          "showIcon": false,
+          "transfer": true,
+          "stackable": "noneNameOnly",
+          "disableCondition": "",
+          "disableIncapacitated": false,
+          "durationExpression": "",
+          "macroRepeat": "none",
+          "specialDuration": []
+        },
+        "ddbimporter": {
+          "disabled": false,
+          "passive": true,
+          "itemId": 9151713,
+          "itemEntityTypeId": 1960452172
+        },
+        "midi-qol": {
+          "forceCEOff": true
+        },
+        "core": {
+          "overlay": false
+        },
+        "dnd5e": {
+          "riders": {
+            "statuses": []
+          }
+        }
+      },
+      "description": "",
+      "_id": "gqYsuoV9txPJkaSL",
+      "img": "icons/tools/fasteners/bolt-steel-blue.webp",
+      "type": "base",
+      "system": {},
+      "origin": "Item.iBvwRkSTPMG0WFXK",
+      "sort": 0,
+      "_key": "!items.effects!vXzudKbP1HrIAJis.gqYsuoV9txPJkaSL"
+    }
+  ],
+  "system": {
+    "activities": {},
+    "uses": {
+      "spent": 0,
+      "recovery": [],
+      "max": ""
+    },
+    "advancement": [],
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "identifier": "mechanical-nature",
+    "source": {
+      "book": "SAiS",
+      "page": "",
+      "license": "",
+      "custom": "",
+      "rules": "2014",
+      "revision": 1
+    },
+    "crewed": false,
+    "enchant": {},
+    "prerequisites": {
+      "items": [],
+      "repeatable": false,
+      "level": null
+    },
+    "properties": [
+      "trait"
+    ],
+    "requirements": "",
+    "type": {
+      "value": "race",
+      "subtype": ""
+    }
+  },
+  "flags": {
+    "ddbimporter": {
+      "isChoiceFeature": false,
+      "id": 9151713,
+      "type": "race",
+      "entityTypeId": 1960452172,
+      "is2014": true,
+      "is2024": false,
+      "legacy": false,
+      "originalName": "Mechanical Nature",
+      "dndbeyond": {
+        "requiredLevel": null,
+        "displayOrder": 9,
+        "featureType": 1,
+        "entityRaceId": 1121695,
+        "entityType": "racial-trait"
+      },
+      "effectsApplied": true,
+      "baseName": "Mechanical Nature",
+      "fullRaceName": "Autognome",
+      "groupName": "Gnome",
+      "isLineage": false,
+      "importId": "Mpgx7Er3YokGIcwF"
+    },
+    "species": {
+      "fullRaceName": "Autognome",
+      "baseRaceName": "Autognome",
+      "groupName": "Gnome",
+      "isLineage": false
+    },
+    "dae": {
+      "alwaysActive": false,
+      "activeEquipped": false
+    },
+    "midi-qol": {
+      "removeAttackDamageButtons": "default",
+      "forceCEOff": true
+    },
+    "midiProperties": {
+      "confirmTargets": "default"
+    },
+    "dnd5e": {
+      "riders": {
+        "activity": [],
+        "effect": []
+      },
+      "advancementOrigin": "63eLrL6CC0RQjuTE"
+    },
+    "chris-premades": {
+      "info": {
+        "identifier": "mechanicalNature",
+        "version": "1.5.16",
+        "source": "chris-premades"
+      }
+    }
+  },
+  "img": "icons/tools/fasteners/bolt-steel-blue.webp",
+  "folder": "XvrVvi09wLcuh1B6",
+  "_id": "vXzudKbP1HrIAJis",
+  "_key": "!items!vXzudKbP1HrIAJis"
+}

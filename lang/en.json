@@ -1090,6 +1090,9 @@
             "BrutalStrike": {
                 "Choose": "Sacrifice advantage to use {item}?"
             },
+            "BuiltForSuccess": {
+                "PromptFailOnly": "Prompt on failed rolls only."
+            },
             "Bulwark": {
                 "Use": "Use Reaction to avoid being moved?"
             },

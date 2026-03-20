@@ -1,13 +1,13 @@
 {
-  "name": "Wails from the Grave",
+  "name": "Built for Success",
   "type": "feat",
   "effects": [],
   "system": {
     "activities": {
-      "damageWaFTGclass": {
-        "name": "Damage",
-        "type": "damage",
-        "_id": "damageWaFTGclass",
+      "rollBuilFoSurNe0": {
+        "name": "Built for Success",
+        "type": "utility",
+        "_id": "rollBuilFoSurNe0",
         "sort": 0,
         "activation": {
           "type": "special",
@@ -20,7 +20,8 @@
             {
               "type": "itemUses",
               "value": "1",
-              "target": ""
+              "target": "",
+              "scaling": {}
             }
           ],
           "scaling": {
@@ -41,8 +42,7 @@
         "effects": [],
         "flags": {},
         "range": {
-          "value": "",
-          "units": "any",
+          "units": "self",
           "special": "",
           "override": false
         },
@@ -50,7 +50,7 @@
           "prompt": true,
           "affects": {
             "count": "",
-            "type": "creature",
+            "type": "",
             "choice": false,
             "special": ""
           },
@@ -58,7 +58,7 @@
             "count": "",
             "contiguous": false,
             "type": "",
-            "size": "30",
+            "size": "",
             "width": "",
             "height": "",
             "units": "ft"
@@ -80,24 +80,11 @@
           "requireMagic": false,
           "identifier": ""
         },
-        "damage": {
-          "critical": {
-            "allow": false
-          },
-          "parts": [
-            {
-              "custom": {
-                "enabled": true,
-                "formula": "@scale.phantom.wails-from-the-grave"
-              },
-              "number": null,
-              "denomination": null,
-              "bonus": "",
-              "types": [
-                "necrotic"
-              ]
-            }
-          ]
+        "roll": {
+          "name": "Roll",
+          "formula": "1d4",
+          "prompt": false,
+          "visible": false
         },
         "useConditionText": "",
         "useConditionReason": "",
@@ -149,7 +136,8 @@
           "preRemoveConditionText": "",
           "postRemoveConditionText": ""
         },
-        "img": ""
+        "otherActivityId": "none",
+        "otherActivityAsParentType": true
       }
     },
     "uses": {
@@ -167,9 +155,9 @@
       "value": "",
       "chat": ""
     },
-    "identifier": "wails-from-the-grave",
+    "identifier": "built-for-success",
     "source": {
-      "book": "TCoE",
+      "book": "SAiS",
       "page": "",
       "license": "",
       "custom": "",
@@ -180,146 +168,77 @@
     "enchant": {},
     "prerequisites": {
       "items": [],
-      "level": 3,
-      "repeatable": false
+      "repeatable": false,
+      "level": null
     },
     "properties": [],
     "requirements": "",
     "type": {
-      "value": "class",
+      "value": "race",
       "subtype": ""
     }
   },
   "flags": {
     "ddbimporter": {
       "isChoiceFeature": false,
-      "id": 2991324,
-      "type": "class",
-      "entityTypeId": 12168134,
+      "id": 9151711,
+      "type": "race",
+      "entityTypeId": 1960452172,
       "is2014": true,
       "is2024": false,
       "legacy": false,
-      "originalName": "Wails from the Grave",
+      "originalName": "Built for Success",
       "dndbeyond": {
-        "requiredLevel": 3,
-        "displayOrder": 200,
+        "requiredLevel": null,
+        "displayOrder": 7,
         "featureType": 1,
-        "class": "Rogue",
-        "classId": 653465,
-        "entityType": "class-feature",
-        "levelScale": {
-          "id": 387544,
-          "level": 17,
-          "description": "5d6 necrotic damage",
-          "dice": {
-            "diceCount": 5,
-            "diceValue": 6,
-            "diceMultiplier": null,
-            "fixedValue": null,
-            "diceString": "5d6"
-          },
-          "fixedValue": null
-        },
-        "levelScales": [
-          {
-            "id": 387540,
-            "level": 3,
-            "description": "1d6 necrotic damage",
-            "dice": {
-              "diceCount": 1,
-              "diceValue": 6,
-              "diceMultiplier": null,
-              "fixedValue": null,
-              "diceString": "1d6"
-            },
-            "fixedValue": null
-          },
-          {
-            "id": 387541,
-            "level": 5,
-            "description": "2d6 necrotic damage",
-            "dice": {
-              "diceCount": 2,
-              "diceValue": 6,
-              "diceMultiplier": null,
-              "fixedValue": null,
-              "diceString": "2d6"
-            },
-            "fixedValue": null
-          },
-          {
-            "id": 387542,
-            "level": 9,
-            "description": "3d6 necrotic damage",
-            "dice": {
-              "diceCount": 3,
-              "diceValue": 6,
-              "diceMultiplier": null,
-              "fixedValue": null,
-              "diceString": "3d6"
-            },
-            "fixedValue": null
-          },
-          {
-            "id": 387543,
-            "level": 13,
-            "description": "4d6 necrotic damage",
-            "dice": {
-              "diceCount": 4,
-              "diceValue": 6,
-              "diceMultiplier": null,
-              "fixedValue": null,
-              "diceString": "4d6"
-            },
-            "fixedValue": null
-          },
-          {
-            "id": 387544,
-            "level": 17,
-            "description": "5d6 necrotic damage",
-            "dice": {
-              "diceCount": 5,
-              "diceValue": 6,
-              "diceMultiplier": null,
-              "fixedValue": null,
-              "diceString": "5d6"
-            },
-            "fixedValue": null
-          }
-        ],
-        "limitedUse": [
-          {
-            "level": null,
-            "uses": 1
-          }
-        ]
+        "entityRaceId": 1121695,
+        "entityType": "racial-trait"
       },
-      "class": "Rogue",
-      "classId": 12,
-      "subClass": "Phantom",
-      "subClassId": 653465,
-      "importId": "z3gO1aivVxM5qf9P"
+      "fullRaceName": "Autognome",
+      "groupName": "Gnome",
+      "baseName": "Built for Success",
+      "isLineage": false,
+      "importId": "LuZSVVHEZHdqDhm9"
+    },
+    "species": {
+      "fullRaceName": "Autognome",
+      "baseRaceName": "Autognome",
+      "groupName": "Gnome",
+      "isLineage": false
     },
     "dnd5e": {
-      "advancementOrigin": "Qmmb3V1RPp8OZuQh",
+      "advancementOrigin": "y3NgvQkPqkXPq69S",
       "riders": {
         "activity": []
       }
     },
     "chris-premades": {
       "info": {
-        "identifier": "wailsFromTheGrave",
+        "identifier": "builtForSuccess",
         "version": "1.5.16",
         "source": "chris-premades"
       },
-      "hiddenActivities": [],
-      "activityIdentifiers": {
-        "damage": "damageWaFTGclass"
+      "macros": {
+        "midi": {
+          "actor": [
+            "builtForSuccess"
+          ]
+        },
+        "save": [
+          "builtForSuccess"
+        ],
+        "skill": [
+          "builtForSuccess"
+        ],
+        "check": [
+          "builtForSuccess"
+        ]
       }
     }
   },
-  "img": "icons/magic/death/hand-undead-skeleton-fire-pink.webp",
-  "folder": "F8h08o7wIe67W3Mw",
-  "_id": "iJBuZx2QPJccXSVh",
-  "_key": "!items!iJBuZx2QPJccXSVh"
+  "img": "icons/commodities/tech/levers-colored.webp",
+  "folder": "XvrVvi09wLcuh1B6",
+  "_id": "5YDlnFD4eIW99VUn",
+  "_key": "!items!5YDlnFD4eIW99VUn"
 }
