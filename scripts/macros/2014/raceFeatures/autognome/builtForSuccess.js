@@ -6,7 +6,7 @@ async function attack({trigger: {entity: item}, workflow}) {
     if (itemUtils.getConfig(item, 'promptFailOnly') && workflow.targets.first().actor.system.attributes.ac.value <= workflow.attackTotal) return;
     let rollActivity = itemUtils.getActivity(item, 'utility');
     let formula = rollActivity?.roll.formula || '1d4';
-    let selection = await dialogUtils.confirm(effect.name, genericUtils.format('CHRISPREMADES.Dialog.UseAttack', {itemName: item.name + ' (' + formula + ')', attackTotal: workflow.attackTotal}));
+    let selection = await dialogUtils.confirm(item.name, genericUtils.format('CHRISPREMADES.Dialog.UseAttack', {itemName: item.name + ' (' + formula + ')', attackTotal: workflow.attackTotal}));
     if (!selection) return;
     let result = formula;
     if (rollActivity)
