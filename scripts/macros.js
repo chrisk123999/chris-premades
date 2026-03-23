@@ -49,6 +49,7 @@ export {engulf, engulfEffect} from './macros/2014/monsterFeatures/generic/engulf
 export {timeTrigger, timeTriggerEffect} from './macros/2014/monsterFeatures/generic/timeTrigger.js';
 // Mechanics
 export {cleaveMastery, grazeMastery, pushMastery, sapMastery, slowMastery, toppleMastery, vexMastery} from './macros/2024/mechanics/masteries.js';
+export {grappled} from './macros/2024/mechanics/grappled.js';
 export {invisible} from './macros/2024/mechanics/invisible.js';
 // Actions
 export {attack} from './macros/2024/actions/attack.js';
@@ -214,6 +215,7 @@ export {spellfireFlare} from './macros/2024/spells/spellfireFlare.js';
 export {dissolution} from './macros/2024/spells/dissolution.js';
 export {dream} from './macros/2024/spells/dream.js';
 export {bloodSacrifice, bloodSacrificeEffect} from './macros/2024/spells/bloodSacrifice.js';
+export {wiltingSmite} from './macros/2024/spells/wiltingSmite.js';
 // Items
 export {healersKit} from './macros/2024/items/healersKit.js';
 export {unarmedStrike} from './macros/2024/items/misc/unarmedStrike.js';
@@ -252,6 +254,7 @@ export {iSurvivedToTellTheTale} from './macros/2024/feats/iSurvivedToTellTheTale
 export {iFoughtILived} from './macros/2024/feats/iFoughtILived.js';
 export {vampiresPlaything} from './macros/2024/feats/vampiresPlaything.js';
 export {fateGambler} from './macros/2024/feats/fateGambler.js';
+export {sangromanticInitiate} from './macros/2024/feats/sangromanticInitiate.js';
 // Species Features
 // Aasimar
 export {healingHands} from './macros/2024/speciesFeatures/aasimar/healingHands.js';
@@ -458,6 +461,7 @@ export {superiorDefense} from './macros/2024/classFeatures/monk/superiorDefense.
 // Fighter
 export {secondWind} from './macros/2024/classFeatures/fighter/secondWind.js';
 export {tacticalMind} from './macros/2024/classFeatures/fighter/tacticalMind.js';
+export {heroicWarrior} from './macros/2024/classFeatures/fighter/heroicWarrior.js';
 // Banneret
 export {groupRecovery} from './macros/2024/classFeatures/fighter/banneret/groupRecovery.js';
 export {knightlyEnvoy} from './macros/2024/classFeatures/fighter/banneret/knightlyEnvoy.js';
@@ -533,3 +537,4 @@ export {sanguineCurse} from './macros/2024/transformations/vampire/sanguineCurse
 export {greaterSanguineCurse} from './macros/2024/transformations/vampire/greaterSanguineCurse.js';
 export {inhumanReflexes} from './macros/2024/transformations/vampire/inhumanReflexes.js';
 export {undeadResilience} from './macros/2024/transformations/vampire/undeadResilience.js';
+export {sangromancySpecialist} from './macros/2024/transformations/vampire/sangromancySpecialist.js';

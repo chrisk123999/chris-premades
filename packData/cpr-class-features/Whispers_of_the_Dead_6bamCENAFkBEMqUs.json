@@ -1,0 +1,63 @@
+{
+  "name": "Whispers of the Dead",
+  "type": "feat",
+  "img": "icons/magic/death/undead-ghost-scream-teal.webp",
+  "system": {
+    "activities": {},
+    "uses": {
+      "spent": 0,
+      "recovery": [],
+      "max": ""
+    },
+    "advancement": [],
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "identifier": "whispers-of-the-dead",
+    "source": {
+      "revision": 1,
+      "rules": "2014",
+      "book": "TCoE",
+      "page": "",
+      "custom": "",
+      "license": ""
+    },
+    "crewed": false,
+    "enchant": {},
+    "prerequisites": {
+      "items": [],
+      "repeatable": false,
+      "level": 3
+    },
+    "properties": [],
+    "requirements": "",
+    "type": {
+      "value": "class",
+      "subtype": ""
+    }
+  },
+  "effects": [],
+  "folder": "F8h08o7wIe67W3Mw",
+  "flags": {
+    "dnd5e": {
+      "riders": {
+        "activity": []
+      }
+    },
+    "chris-premades": {
+      "macros": {
+        "rest": [
+          "whispersOfTheDead"
+        ]
+      },
+      "info": {
+        "identifier": "whispersOfTheDead",
+        "version": "1.5.15",
+        "source": "chris-premades"
+      }
+    }
+  },
+  "_id": "6bamCENAFkBEMqUs",
+  "_key": "!items!6bamCENAFkBEMqUs"
+}

@@ -1,0 +1,64 @@
+{
+  "name": "Sangromantic Initiate",
+  "type": "feat",
+  "effects": [],
+  "system": {
+    "activities": {},
+    "uses": {
+      "spent": 0,
+      "recovery": [
+        {
+          "period": "lr",
+          "type": "recoverAll"
+        }
+      ],
+      "max": "2"
+    },
+    "advancement": [],
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "identifier": "sangromantic-initiate",
+    "source": {
+      "book": "GHPG",
+      "page": "",
+      "license": "",
+      "custom": "",
+      "rules": "2024",
+      "revision": 1
+    },
+    "crewed": false,
+    "enchant": {},
+    "prerequisites": {
+      "items": [],
+      "level": 4,
+      "repeatable": false
+    },
+    "properties": [],
+    "requirements": "",
+    "type": {
+      "value": "feat",
+      "subtype": "general"
+    }
+  },
+  "flags": {
+    "dnd5e": {
+      "riders": {
+        "activity": []
+      }
+    },
+    "chris-premades": {
+      "info": {
+        "identifier": "sangromanticInitiate",
+        "rules": "modern",
+        "source": "chris-premades",
+        "version": "1.5.11"
+      }
+    }
+  },
+  "img": "icons/magic/control/encase-creature-humanoid-hold.webp",
+  "folder": null,
+  "_id": "e2jhnzJguZte2Kir",
+  "_key": "!items!e2jhnzJguZte2Kir"
+}

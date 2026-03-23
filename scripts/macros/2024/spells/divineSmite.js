@@ -1,4 +1,4 @@
-import {activityUtils, actorUtils, combatUtils, constants, dialogUtils, effectUtils, genericUtils, itemUtils, rollUtils, workflowUtils} from '../../../utils.js';
+import {activityUtils, actorUtils, combatUtils, constants, dialogUtils, effectUtils, genericUtils, itemUtils, workflowUtils} from '../../../utils.js';
 async function hit({trigger, workflow}) {
     if (!workflow.hitTargets.size || workflowUtils.getActionType(workflow) != 'mwak' || actorUtils.hasUsedBonusAction(workflow.actor)) return;
     if (combatUtils.inCombat()) if (combatUtils.getCurrentCombatantToken() != workflow.token) return;
@@ -10,18 +10,52 @@ async function hit({trigger, workflow}) {
         'shiningSmite',
         'blindingSmite',
         'staggeringSmite',
-        'banishingSmite'
+        'banishingSmite',
+        'wiltingSmite'
     ];
     let spells = actorUtils.getCastableSpells(workflow.actor).filter(i => identifiers.includes(genericUtils.getIdentifier(i))).sort((a, b) => a.system.level - b.system.level);
     if (!spells.length) return;
     let selection = await dialogUtils.selectDocumentDialog(workflow.item.name, 'CHRISPREMADES.Macros.DivineSmite.Context', spells, {addNoneDocument: true});
     if (!selection) return;
-    let target = workflow.targets.first();
-    let spellWorkflow = await workflowUtils.completeItemUse(selection, undefined, {targetUuids: [target.document.uuid]});
-    if (!spellWorkflow) return;
     let identifier = genericUtils.getIdentifier(selection);
+    let target = workflow.targets.first();
+    let diceSize;
+    let formula = '';
+    let spellWorkflow;
+    if (identifier === 'wiltingSmite') {
+        let max = itemUtils.getConfig(selection, 'baseDiceNumber');
+        if (!max) return;
+        let hitDieSelection = await dialogUtils.selectHitDie(workflow.actor, selection.name, '', {max, sangromancy: true});
+        if (!hitDieSelection) return;
+        let total = 0;
+        for (let i of hitDieSelection) {
+            if (!i.amount) continue;
+            if (i.document.type === 'class') {
+                formula += formula.length ? ' + ' + i.amount + i.document.system.hd.denomination : i.amount + i.document.system.hd.denomination;
+            } else {
+                let dieSize = itemUtils.getConfig(i.document, 'diceSize');
+                if (!dieSize) continue;
+                formula += formula.length ? ' + ' + i.amount + dieSize : i.amount + dieSize;
+            }
+            total += i.amount;
+        }
+        if (total != max) return;
+        spellWorkflow = await workflowUtils.completeItemUse(selection, undefined, {targetUuids: [target.document.uuid]});
+        if (!spellWorkflow) return;
+        for (let i of hitDieSelection) {
+            if (!i.amount) continue;
+            if (i.document.type === 'class') {
+                await genericUtils.update(i.document, {'system.hd.spent': i.document.system.hd.spent + i.amount});
+            } else {
+                await genericUtils.update(i.document, {'system.uses.spent': i.document.system.uses.spent + i.amount});
+            }
+        }
+    } else {
+        diceSize = itemUtils.getConfig(selection, 'diceSize');
+    }
+    if (!spellWorkflow) spellWorkflow = await workflowUtils.completeItemUse(selection, undefined, {targetUuids: [target.document.uuid]});
+    if (!spellWorkflow) return;
     let damageType = itemUtils.getConfig(selection, 'damageType');
-    let diceSize = itemUtils.getConfig(selection, 'diceSize');
     let diceNumber = itemUtils.getConfig(selection, 'baseDiceNumber');
     if (identifier === 'divineSmite') {
         let creatureTypes = itemUtils.getConfig(selection, 'creatureTypes');
@@ -44,7 +78,7 @@ async function hit({trigger, workflow}) {
         };
         await effectUtils.createEffect(workflow.actor, effectData, {identifier: 'banishingSmiteEffect', animate: false});
     }
-    let formula = ((workflowUtils.getCastLevel(spellWorkflow) - spellWorkflow.castData.baseLevel) + diceNumber) + diceSize;
+    if (!formula) formula = ((workflowUtils.getCastLevel(spellWorkflow) - spellWorkflow.castData.baseLevel) + diceNumber) + diceSize;
     if (workflow.actor.system.bonuses.spell?.all?.damage) formula += ' + @bonuses.spell.all.damage';
     await workflowUtils.bonusDamage(workflow, formula, {damageType});
 }

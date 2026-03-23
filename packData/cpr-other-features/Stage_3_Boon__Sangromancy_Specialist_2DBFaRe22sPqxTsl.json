@@ -1,0 +1,66 @@
+{
+  "name": "Stage 3 Boon: Sangromancy Specialist",
+  "type": "feat",
+  "img": "icons/magic/unholy/silhouette-robe-evil-glow.webp",
+  "system": {
+    "activities": {},
+    "uses": {
+      "spent": 0,
+      "recovery": [
+        {
+          "period": "lr",
+          "type": "recoverAll"
+        }
+      ],
+      "max": "3"
+    },
+    "advancement": [],
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "identifier": "stage-3-boon-sangromancy-specialist",
+    "source": {
+      "revision": 1,
+      "rules": "2024"
+    },
+    "crewed": false,
+    "enchant": {},
+    "prerequisites": {
+      "items": [],
+      "repeatable": false
+    },
+    "properties": [],
+    "requirements": "",
+    "type": {
+      "value": "",
+      "subtype": ""
+    }
+  },
+  "effects": [],
+  "folder": null,
+  "flags": {
+    "dnd5e": {
+      "riders": {
+        "activity": []
+      }
+    },
+    "chris-premades": {
+      "info": {
+        "identifier": "sangromancySpecialist",
+        "rules": "modern",
+        "source": "chris-premades",
+        "version": "1.5.11"
+      },
+      "macros": {
+        "midi": {
+          "actor": [
+            "sangromancySpecialist"
+          ]
+        }
+      }
+    }
+  },
+  "_id": "2DBFaRe22sPqxTsl",
+  "_key": "!items!2DBFaRe22sPqxTsl"
+}

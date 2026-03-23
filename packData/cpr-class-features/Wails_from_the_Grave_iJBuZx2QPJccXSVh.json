@@ -1,0 +1,325 @@
+{
+  "name": "Wails from the Grave",
+  "type": "feat",
+  "effects": [],
+  "system": {
+    "activities": {
+      "damageWaFTGclass": {
+        "name": "Damage",
+        "type": "damage",
+        "_id": "damageWaFTGclass",
+        "sort": 0,
+        "activation": {
+          "type": "special",
+          "value": 1,
+          "condition": "",
+          "override": false
+        },
+        "consumption": {
+          "targets": [
+            {
+              "type": "itemUses",
+              "value": "1",
+              "target": ""
+            }
+          ],
+          "scaling": {
+            "allowed": false,
+            "max": ""
+          },
+          "spellSlot": true
+        },
+        "description": {
+          "chatFlavor": ""
+        },
+        "duration": {
+          "units": "inst",
+          "special": "",
+          "concentration": false,
+          "override": false
+        },
+        "effects": [],
+        "flags": {},
+        "range": {
+          "value": "",
+          "units": "any",
+          "special": "",
+          "override": false
+        },
+        "target": {
+          "prompt": true,
+          "affects": {
+            "count": "",
+            "type": "creature",
+            "choice": false,
+            "special": ""
+          },
+          "template": {
+            "count": "",
+            "contiguous": false,
+            "type": "",
+            "size": "30",
+            "width": "",
+            "height": "",
+            "units": "ft"
+          },
+          "override": false
+        },
+        "uses": {
+          "spent": 0,
+          "recovery": [],
+          "max": ""
+        },
+        "visibility": {
+          "level": {
+            "min": null,
+            "max": null
+          },
+          "requireAttunement": false,
+          "requireIdentification": false,
+          "requireMagic": false,
+          "identifier": ""
+        },
+        "damage": {
+          "critical": {
+            "allow": false
+          },
+          "parts": [
+            {
+              "custom": {
+                "enabled": true,
+                "formula": "@scale.phantom.wails-from-the-grave"
+              },
+              "number": null,
+              "denomination": null,
+              "bonus": "",
+              "types": [
+                "necrotic"
+              ]
+            }
+          ]
+        },
+        "useConditionText": "",
+        "useConditionReason": "",
+        "effectConditionText": "",
+        "macroData": {
+          "name": "",
+          "command": ""
+        },
+        "ignoreTraits": {
+          "idi": false,
+          "idr": false,
+          "idv": false,
+          "ida": false,
+          "idm": false
+        },
+        "midiProperties": {
+          "ignoreTraits": [],
+          "triggeredActivityId": "none",
+          "triggeredActivityConditionText": "",
+          "triggeredActivityTargets": "targets",
+          "triggeredActivityRollAs": "self",
+          "confirmTargets": "default",
+          "automationOnly": false,
+          "identifier": "",
+          "autoConsume": false,
+          "forceConsumeDialog": "default",
+          "forceRollDialog": "default",
+          "forceDamageDialog": "default",
+          "autoTargetType": "any",
+          "autoTargetAction": "default",
+          "otherActivityCompatible": true,
+          "otherActivityAsParentType": true,
+          "displayActivityName": false,
+          "rollMode": "default",
+          "chooseEffects": false,
+          "toggleEffect": false,
+          "ignoreFullCover": false,
+          "removeChatButtons": "default",
+          "magicEffect": false,
+          "magicDamage": false,
+          "noConcentrationCheck": false,
+          "skipConcentrationCheck": false,
+          "autoCEEffects": "default"
+        },
+        "isOverTimeFlag": false,
+        "overTimeProperties": {
+          "saveRemoves": true,
+          "rollAs": "target",
+          "preRemoveConditionText": "",
+          "postRemoveConditionText": ""
+        },
+        "img": ""
+      }
+    },
+    "uses": {
+      "spent": 0,
+      "max": "@prof",
+      "recovery": [
+        {
+          "period": "lr",
+          "type": "recoverAll"
+        }
+      ]
+    },
+    "advancement": [],
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "identifier": "wails-from-the-grave",
+    "source": {
+      "book": "TCoE",
+      "page": "",
+      "license": "",
+      "custom": "",
+      "rules": "2014",
+      "revision": 1
+    },
+    "crewed": false,
+    "enchant": {},
+    "prerequisites": {
+      "items": [],
+      "level": 3,
+      "repeatable": false
+    },
+    "properties": [],
+    "requirements": "",
+    "type": {
+      "value": "class",
+      "subtype": ""
+    }
+  },
+  "flags": {
+    "ddbimporter": {
+      "isChoiceFeature": false,
+      "id": 2991324,
+      "type": "class",
+      "entityTypeId": 12168134,
+      "is2014": true,
+      "is2024": false,
+      "legacy": false,
+      "originalName": "Wails from the Grave",
+      "dndbeyond": {
+        "requiredLevel": 3,
+        "displayOrder": 200,
+        "featureType": 1,
+        "class": "Rogue",
+        "classId": 653465,
+        "entityType": "class-feature",
+        "levelScale": {
+          "id": 387544,
+          "level": 17,
+          "description": "5d6 necrotic damage",
+          "dice": {
+            "diceCount": 5,
+            "diceValue": 6,
+            "diceMultiplier": null,
+            "fixedValue": null,
+            "diceString": "5d6"
+          },
+          "fixedValue": null
+        },
+        "levelScales": [
+          {
+            "id": 387540,
+            "level": 3,
+            "description": "1d6 necrotic damage",
+            "dice": {
+              "diceCount": 1,
+              "diceValue": 6,
+              "diceMultiplier": null,
+              "fixedValue": null,
+              "diceString": "1d6"
+            },
+            "fixedValue": null
+          },
+          {
+            "id": 387541,
+            "level": 5,
+            "description": "2d6 necrotic damage",
+            "dice": {
+              "diceCount": 2,
+              "diceValue": 6,
+              "diceMultiplier": null,
+              "fixedValue": null,
+              "diceString": "2d6"
+            },
+            "fixedValue": null
+          },
+          {
+            "id": 387542,
+            "level": 9,
+            "description": "3d6 necrotic damage",
+            "dice": {
+              "diceCount": 3,
+              "diceValue": 6,
+              "diceMultiplier": null,
+              "fixedValue": null,
+              "diceString": "3d6"
+            },
+            "fixedValue": null
+          },
+          {
+            "id": 387543,
+            "level": 13,
+            "description": "4d6 necrotic damage",
+            "dice": {
+              "diceCount": 4,
+              "diceValue": 6,
+              "diceMultiplier": null,
+              "fixedValue": null,
+              "diceString": "4d6"
+            },
+            "fixedValue": null
+          },
+          {
+            "id": 387544,
+            "level": 17,
+            "description": "5d6 necrotic damage",
+            "dice": {
+              "diceCount": 5,
+              "diceValue": 6,
+              "diceMultiplier": null,
+              "fixedValue": null,
+              "diceString": "5d6"
+            },
+            "fixedValue": null
+          }
+        ],
+        "limitedUse": [
+          {
+            "level": null,
+            "uses": 1
+          }
+        ]
+      },
+      "class": "Rogue",
+      "classId": 12,
+      "subClass": "Phantom",
+      "subClassId": 653465,
+      "importId": "z3gO1aivVxM5qf9P"
+    },
+    "dnd5e": {
+      "advancementOrigin": "Qmmb3V1RPp8OZuQh",
+      "riders": {
+        "activity": []
+      }
+    },
+    "chris-premades": {
+      "info": {
+        "identifier": "wailsFromTheGrave",
+        "version": "1.5.16",
+        "source": "chris-premades"
+      },
+      "hiddenActivities": [],
+      "activityIdentifiers": {
+        "damage": "damageWaFTGclass"
+      }
+    }
+  },
+  "img": "icons/magic/death/hand-undead-skeleton-fire-pink.webp",
+  "folder": "F8h08o7wIe67W3Mw",
+  "_id": "iJBuZx2QPJccXSVh",
+  "_key": "!items!iJBuZx2QPJccXSVh"
+}

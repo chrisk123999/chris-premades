@@ -1,3 +1,46 @@
+# 1.5.16 Release:
+## New Legacy Content:
+- Armored Casing
+- Built for Success
+- Healing Machine
+- Mechanical Nature
+## Bug Fixes:
+- Wails from the Grave
+
+# 1.5.15 Release:
+## New Legacy Content:
+- Whispers of the Dead
+- Death's Friend
+- Ghost Walk
+- Tokens of the Departed
+- Wails from the Grave
+## Bug Fixes:
+- Vigilant Blessing
+- Spirit Totem
+
+# 1.5.14 Release:
+## New Legacy Content:
+- Spirit Totem
+- Guardian Spirit
+- Faithful Summons
+## Bug Fixes:
+- Grappled Condition
+
+# 1.5.13 Release:
+## New Modern Content:
+- Heroic Warrior
+
+# 1.5.12 Release:
+## Bug Fixes:
+- Wild Shape (Modern)
+- Feline Form
+
+# 1.5.11 Release:
+## New Modern Content:
+- Stage 3 Boon: Sangromancy Specialist
+- Sangromantic Initiate
+- Wilting Smite
+
 # 1.5.10 Release:
 ## Bug Fixes:
 - Cleave

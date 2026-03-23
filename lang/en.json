@@ -1090,6 +1090,9 @@
             "BrutalStrike": {
                 "Choose": "Sacrifice advantage to use {item}?"
             },
+            "BuiltForSuccess": {
+                "PromptFailOnly": "Prompt on failed rolls only."
+            },
             "Bulwark": {
                 "Use": "Use Reaction to avoid being moved?"
             },
@@ -2354,6 +2357,10 @@
                 "InvalidTarget": "Target must be Haunted!",
                 "ReapingScythe": "Reaping Scythe (Reaper Spirit)"
             },
+            "SpiritTotem": {
+                "HawkAttack": "Spend your reaction to grant advantage to this attack roll?",
+                "UnicornCheck": "Is this roll for detecting a creature within a Unicorn Spirit Totem aura?"
+            },
             "SpiritShield": {
                 "Damage": "Use {item} to reduce the damage dealt to {name}?"
             },
@@ -2636,6 +2643,10 @@
             "TouchDamage": {
                 "Name": "Touch Damage"
             },
+            "TokensOfTheDeparted": {
+                "Spend": "Spend {name} to use {feature} without consuming uses?",
+                "MustSpend": "{feature} has no uses remaining. You must spend {name} to activate it."
+            },
             "Transform": {
                 "Name": "Transform",
                 "ProfileOneActivities": "Profile #1 Activities:",
@@ -2735,6 +2746,10 @@
             },
             "WarpingImplosion": {
                 "Consume": "Consume five {item} to use?"
+            },
+            "WhispersOfTheDead": {
+                "Prompt": "Choose a skill or tool in which to gain proficiency.<br>Your existing proficiencies are shown in brackets <code>[]</code>.",
+                "UnknownTool": "Unknown Tool: {name}"
             },
             "WildResurgence": {
                 "WildShapeUses": "You must have 0 uses of Wild Shape in order to use this!"
@@ -3707,6 +3722,10 @@
                 "Shifter": "Shifter",
                 "Skeleton": "Skeleton",
                 "SpectralAnimals": "Spectral Animals",
+                "SpiritTotem": "Spirit Totem",
+                "SpiritTotemBear": "Spirit Totem (Bear)",
+                "SpiritTotemHawk": "Spirit Totem (Hawk)",
+                "SpiritTotemUnicorn": "Spirit Totem (Unicorn)",
                 "SpiritualWeapon": "Spiritual Weapon",
                 "Steed": "Steed",
                 "SteelDefender": "Steel Defender",

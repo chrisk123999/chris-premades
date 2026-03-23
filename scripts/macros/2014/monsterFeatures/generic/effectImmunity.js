@@ -1,6 +1,6 @@
 import {actorUtils, effectUtils, genericUtils, itemUtils, workflowUtils} from '../../../../utils.js';
 async function use({trigger, workflow}) {
-    if (!workflow.targets.size) return;
+    if (!workflow.hitTargets.size) return;
     let config = itemUtils.getGenericFeatureConfig(workflow.item, 'effectImmunity');
     let activities = config.activities;
     if (activities?.length && !activities.includes(workflow.activity.id)) return;
@@ -25,7 +25,7 @@ async function use({trigger, workflow}) {
     }));
 }
 async function early({trigger, workflow}) {
-    if (!workflow.targets.size) return;
+    if (!workflow.hitTargets.size) return;
     let config = itemUtils.getGenericFeatureConfig(workflow.item, 'effectImmunity');
     let activities = config.activities;
     if (activities?.length && !activities.includes(workflow.activity.id)) return;

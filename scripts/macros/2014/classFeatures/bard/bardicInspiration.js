@@ -1,4 +1,4 @@
-import {actorUtils, compendiumUtils, constants, dialogUtils, effectUtils, errors, genericUtils, itemUtils, rollUtils, tokenUtils, workflowUtils} from '../../../../utils.js';
+import {activityUtils, actorUtils, compendiumUtils, constants, dialogUtils, effectUtils, errors, genericUtils, itemUtils, rollUtils, tokenUtils, workflowUtils} from '../../../../utils.js';
 async function use({workflow}) {
     if (workflow.targets.size !== 1) return;
     let classIdentifier = itemUtils.getConfig(workflow.item, 'classIdentifier') ?? 'bard';
@@ -51,12 +51,9 @@ async function attack({trigger: {entity: effect}, workflow}) {
     if (moteOfPotential) {
         let bardResult = workflow.attackRoll.terms.at(-1).total;
         let featureData = await compendiumUtils.getItemFromCompendium(constants.featurePacks.classFeatureItems, 'Mote of Potential Attack', {object: true, getDescription: true, translate: 'CHRISPREMADES.Macros.BardicInspiration.MoteAttack', flatDC: moteOfPotential.saveDC});
-        if (!featureData) {
-            errors.missingPackItem();
-            return;
-        }
+        if (!featureData) return;
         let activityId = Object.keys(featureData.system.activities)[0];
-        featureData.system.activities[activityId].damage.parts[0].bonus = bardResult;
+        featureData.system.activities[activityId].damage.parts[0].custom = { enabled: true, formula: bardResult };
         featureData.system.activities[activityId].damage.types = [moteOfPotential.damageType];
         let targets = tokenUtils.findNearby(workflow.targets.first(), 5, 'ally', {includeToken: true});
         await workflowUtils.syntheticItemDataRoll(featureData, workflow.actor, targets);
@@ -64,7 +61,7 @@ async function attack({trigger: {entity: effect}, workflow}) {
 }
 async function damage({trigger: {entity: effect}, workflow}) {
     if (!workflow.targets.size || workflow.item.type !== 'spell');
-    if (!workflow.hitTargets.size || !workflowUtils.isAttackType(workflow, 'spellAttack')) return;
+    if (!workflow.hitTargets.size || !['msak', 'rsak', 'heal'].includes(workflowUtils.getActionType(workflow))) return;
     let {formula: bardDice, magical} = effect.flags['chris-premades'].bardicInspiration;
     if (!magical?.length) return;
     let result = await dialogUtils.selectTargetDialog(effect.name, genericUtils.format('CHRISPREMADES.Dialog.Use', {itemName: magical}), workflow.targets);
@@ -98,7 +95,7 @@ async function checkBonus({trigger: {roll, entity: effect}}) {
     await genericUtils.remove(effect);
     return await rollUtils.addToRoll(roll, potentialFormula);
 }
-async function saveBonus({trigger: {saveId, roll, actor, entity: effect}}) {
+async function saveBonus({trigger: {roll, actor, entity: effect}}) {
     let oldTotal = roll.total;
     let chrisFlags = effect.flags['chris-premades'];
     let potentialFormula = '1' + chrisFlags.bardicInspiration.formula;
@@ -109,12 +106,11 @@ async function saveBonus({trigger: {saveId, roll, actor, entity: effect}}) {
     await genericUtils.remove(effect);
     let newRoll = await rollUtils.addToRoll(roll, potentialFormula);
     if (moteOfPotential) {
-        let toHeal = newRoll.total - oldTotal + chrisFlags.moteOfPotential.chaMod;
+        let toHeal = Math.max(newRoll.total - oldTotal + moteOfPotential.chaMod, 1);
         let featureData = await compendiumUtils.getItemFromCompendium(constants.featurePacks.classFeatureItems, 'Mote of Potential Heal', {object: true, getDescription: true, translate: 'CHRISPREMADES.Macros.BardicInspiration.MoteHeal'});
         if (!featureData) return;
-        featureData.system.damage.parts = [
-            [toHeal + '[temphp]', 'temphp']
-        ];
+        let activityId = Object.keys(featureData.system.activities)[0];
+        featureData.system.activities[activityId].healing.custom = { enabled: true, formula: toHeal };
         let token = actorUtils.getFirstToken(actor);
         if (!token) return;
         await workflowUtils.syntheticItemDataRoll(featureData, actor, [token]);

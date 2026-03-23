@@ -1,5 +1,5 @@
 import {DialogApp} from '../../applications/dialog.js';
-import {tokenUtils, genericUtils} from '../../utils.js';
+import {tokenUtils, genericUtils, itemUtils} from '../../utils.js';
 import {socket, sockets} from '../sockets.js';
 async function buttonDialog(title, content, buttons, {displayAsRows = true, userId = game.user.id} = {}) {
     let inputs = [
@@ -173,7 +173,7 @@ async function selectDocumentDialog(title, content, documents, {displayTooltips 
         name: isCompendiumDoc ? (i.uuid ?? i.actor?.uuid) : (i.id ?? i.actor?.id),
         options: {
             image: i.img + (i.system?.details?.cr != undefined ? ` (CR ${genericUtils.decimalToFraction(i.system?.details?.cr)})` : ``),
-            tooltip: displayTooltips ? i.system.description.value.replace(/<[^>]*>?/gm, '') : undefined,
+            tooltip: displayTooltips ? i.system.description.value.replace(/<[^>]*>?|@UUID\[.*?\]{(.*?)}/gm, '$1') : undefined,
             reference: (displayReference && i.reference) ? i.reference : undefined
         }
     }));
@@ -212,7 +212,7 @@ async function selectDocumentsDialog(title, content, documents, {max = undefined
         name: i.id ?? i._id,
         options: {
             image: i.img + (i.system?.details?.cr != undefined ? ` (CR ${genericUtils.decimalToFraction(i.system?.details?.cr)})` : ``),
-            tooltip: displayTooltips ? i.system.description.value.replace(/<[^>]*>?/gm, '') : undefined,
+            tooltip: displayTooltips ? i.system.description.value.replace(/<[^>]*>?|@UUID\[.*?\]{(.*?)}/gm, '$1') : undefined,
             minAmount: 0,
             maxAmount: maxes?.[i.id] ?? max,
             weight: weights?.[i.id] ?? 1
@@ -232,7 +232,7 @@ async function selectDocumentsDialog(title, content, documents, {max = undefined
         return false;
     }
 }
-async function selectHitDie(actor, title, content, {max = 1, userId = game.user.id} = {}) {
+async function selectHitDie(actor, title, content, {max = 1, userId = game.user.id, sangromancy = false} = {}) {
     let documents = actor.items.filter(i => i.type === 'class' && (i.system.levels - i.system.hd.spent) > 0);
     if (!documents.length) return;
     documents = documents.sort((a, b) => {
@@ -247,6 +247,23 @@ async function selectHitDie(actor, title, content, {max = 1, userId = game.user.
             maxAmount: Math.min(i.system.levels - i.system.hd.spent, max)
         }
     }));
+    if (sangromancy) {
+        let identifiers = ['sangromanticInitiate', 'sangromancySpecialist'];
+        let otherDocuments = identifiers.map(i => itemUtils.getItemByIdentifier(actor, i)).filter(i => i);
+        if (otherDocuments.length) {
+            let otherInputFields = otherDocuments.map(i => ({
+                label: genericUtils.format('CHRISPREMADES.Dialog.HitDieLabel', {className: i.name, remaining: i.system.uses.value, max: i.system.uses.max, denomination: itemUtils.getConfig(i, 'diceSize')}),
+                name: i.id,
+                options: {
+                    image: i.img,
+                    minAmount: 0,
+                    maxAmount: Math.min(i.system.uses.max, max)
+                }
+            }));
+            inputFields.push(...otherInputFields);
+            documents.push(...otherDocuments);
+        }
+    }
     let inputs = [[max == 1 ? 'checkbox' : 'selectAmount', inputFields, {displayAsRows: true, totalMax: max}]];
     let result;
     if (game.user.id != userId) {

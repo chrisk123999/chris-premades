@@ -1,4 +1,4 @@
-import {animationUtils, combatUtils, dialogUtils, effectUtils, genericUtils, itemUtils, tokenUtils, workflowUtils} from '../../../../utils.js';
+import {activityUtils, animationUtils, combatUtils, dialogUtils, effectUtils, genericUtils, itemUtils, tokenUtils, workflowUtils} from '../../../../utils.js';
 export async function animation(target, token, attackType) {
     //Animations by: eskiemoh
     let hitSeq = new Sequence()
@@ -187,19 +187,9 @@ async function damage({trigger: {entity: item}, workflow}) {
     if (weaponIdentifier === 'psychicBlades' && rendMind && psionicEnergy) await genericUtils.setFlag(workflow.item, 'chris-premades', 'rendMind.prompt', true);
     let bonusDamageFormula = itemUtils.getConfig(item, 'formula');
     if (!bonusDamageFormula || bonusDamageFormula === '') {
-        if (workflow.actor.type === 'character') {
-            let scale = workflow.actor.system.scale?.rogue?.['sneak-attack'];
-            if (scale) {
-                let number = scale.number;
-                bonusDamageFormula = number + 'd' + scale.faces;
-            } else {
-                genericUtils.notify('CHRISPREMADES.Macros.SneakAttack.Scale', 'warn');
-                return;
-            }
-        } else if (workflow.actor.type === 'npc') {
-            let number = Math.ceil(workflow.actor.system.details.cr / 2);
-            bonusDamageFormula = number + 'd6';
-        }
+        let dice = getSneakDice();
+        if (!dice) return;
+        bonusDamageFormula = dice.number + 'd' + dice.faces;
     }
     let eyeFeature = itemUtils.getItemByIdentifier(workflow.actor, 'eyeForWeakness');
     if (iTarget && eyeFeature) bonusDamageFormula += ' + 3d6';
@@ -211,6 +201,8 @@ async function damage({trigger: {entity: item}, workflow}) {
         if (feature) await feature.displayCard();
         if (eyeFeature) await workflowUtils.completeItemUse(eyeFeature);
     }
+    let wailsFromTheGrave = itemUtils.getItemByIdentifier(workflow.actor, 'wailsFromTheGrave');
+    if (wailsFromTheGrave) await doWailsFromTheGrave();
     let playAnimation = itemUtils.getConfig(item, 'playAnimation');
     if (!animationUtils.aseCheck() || animationUtils.jb2aCheck() != 'patreon') playAnimation = false;
     if (!playAnimation) return;
@@ -218,6 +210,72 @@ async function damage({trigger: {entity: item}, workflow}) {
     if (tokenUtils.getDistance(workflow.token, targetToken) > genericUtils.convertDistance(5)) animationType = 'ranged';
     if (!animationType) animationType = workflow.defaultDamageType;
     await animation(targetToken, workflow.token, animationType);
+    function getSneakDice() {
+        if (workflow.actor.type === 'character') {
+            let scale = workflow.actor.system.scale?.rogue?.['sneak-attack'];
+            if (scale) return scale;
+            else {
+                genericUtils.notify('CHRISPREMADES.Macros.SneakAttack.Scale', 'warn');
+                return;
+            }
+        } else if (workflow.actor.type === 'npc') {
+            let number = Math.ceil(workflow.actor.system.details.cr / 2);
+            return { number, faces: 6 };
+        }
+    }
+    async function doWailsFromTheGrave() {
+        let wailActivity = itemUtils.getActivity(wailsFromTheGrave, 'damage');
+        if (!wailActivity) return;
+        let wailUses = wailsFromTheGrave.system.uses.value;
+        let tokensOfTheDeparted = itemUtils.getItemByIdentifier(workflow.actor, 'tokensOfTheDeparted');
+        let tokenUses = tokensOfTheDeparted?.system.uses.value;
+        if (!wailUses && !tokenUses) return;
+        let wailFormula;
+        let formula = itemUtils.getConfig(item, 'formula');
+        if (formula) {
+            let roll = new CONFIG.Dice.DamageRoll(formula, workflow.actor.getRollData());
+            roll.dice.forEach(d => d.number = Math.ceil(d.number * 0.5));
+            wailFormula = roll.formula;
+        } else {
+            let dice = getSneakDice();
+            if (!dice) return;
+            dice.number = Math.ceil(dice.number * 0.5);
+            wailFormula = dice.number + 'd' + dice.faces; 
+        }
+        let targets = tokenUtils.findNearby(targetToken, 30, 'ally').filter(t => tokenUtils.canSee(workflow.token, t));
+        if (!targets?.length) return;
+        let selection = await dialogUtils.selectTargetDialog(
+            wailsFromTheGrave.name, 
+            genericUtils.format('CHRISPREMADES.Dialog.UseWeaponDamageExtra', {itemName: wailsFromTheGrave.name, bonusFormula: wailFormula})
+            + '<br>' + genericUtils.translate('CHRISPREMADES.Generic.Target'), 
+            targets
+        );
+        if (!selection) return;
+        targets = [selection[0]];
+        if (itemUtils.getItemByIdentifier(workflow.actor, 'deathsFriend')) targets.push(targetToken);
+        let i18nData = {name: tokensOfTheDeparted.name, feature: wailsFromTheGrave.name};
+        let spendToken = false;
+        let tokenActivity;
+        if (tokenUses) {
+            tokenActivity = activityUtils.getActivityByIdentifier(tokensOfTheDeparted, 'useWail', {strict: true});
+            if (wailUses)
+                spendToken = await dialogUtils.confirm(
+                    tokensOfTheDeparted.name, 
+                    genericUtils.format('CHRISPREMADES.Macros.TokensOfTheDeparted.Spend', i18nData)
+                );
+            else {
+                spendToken = await dialogUtils.confirm(
+                    tokensOfTheDeparted.name, 
+                    genericUtils.format('CHRISPREMADES.Macros.TokensOfTheDeparted.MustSpend', i18nData),
+                    {buttons: 'okCancel'}
+                );
+                if (!spendToken) return;
+            }
+        }
+        if (spendToken && tokenActivity) await workflowUtils.syntheticActivityRoll(tokenActivity, [], {consumeUsage: true, consumeResources: true});
+        wailActivity = activityUtils.withChangedDamage(wailActivity, wailFormula);
+        await workflowUtils.syntheticActivityDataRoll(wailActivity, wailsFromTheGrave, workflow.actor, targets, {consumeUsage: !spendToken, consumeResources: !spendToken});
+    }
 }
 export let sneakAttack = {
     name: 'Sneak Attack',

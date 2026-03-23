@@ -8,7 +8,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack",
-    "buildCompendiums": "node packData/packData.mjs"
+    "buildCompendiums": "node packData/packData.mjs",
+    "extractCompendiums": "node packData/unpackData.mjs"
   },
   "repository": {
     "type": "git",

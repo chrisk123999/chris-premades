@@ -822,7 +822,7 @@ async function future(location, token, updates, iteration) {
         .effect()
         .delay(400)
         .file(`jb2a.particles.outward.white.01.03`)
-        .attachTo(token, {offset: {y: 0.2}, gridUnits: true, followRotation: false})
+        .attachTo(token, {offset: {y: 0.2}, gridUnits: true, bindRotation: false})
         .scaleToObject()
         .duration(1000)
         .fadeOut(800)
