@@ -4,6 +4,7 @@
 - Built for Success
 - Healing Machine
 - Mechanical Nature
+## New Modern Content:
 - Adventurers Atlas
 - Guided Precision
 - Mapping Magic
