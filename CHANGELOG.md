@@ -4,6 +4,9 @@
 - Built for Success
 - Healing Machine
 - Mechanical Nature
+- Adventurers Atlas
+- Guided Precision
+- Mapping Magic
 ## Bug Fixes:
 - Wails from the Grave
 

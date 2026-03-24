@@ -261,6 +261,13 @@ export {healingHands} from './macros/2024/speciesFeatures/aasimar/healingHands.j
 export {celestialRevelation, celestialRevelationInnerRadiance} from './macros/2024/speciesFeatures/aasimar/celestialRevelation.js';
 export {celestialResistance} from './macros/2024/speciesFeatures/aasimar/celestialResistance.js';
 // Class Features
+// Artificer
+// Cartographer
+export {adventurersAtlas} from './macros/2024/classFeatures/artificer/cartographer/adventurersAtlas.js';
+export {guidedPrecision} from './macros/2024/classFeatures/artificer/cartographer/guidedPrecision.js';
+//export {ingeniousMovement} from './macros/2024/classFeatures/artificer/cartographer/ingeniousMovement.js';
+export {mappingMagic} from './macros/2024/classFeatures/artificer/cartographer/mappingMagic.js';
+//export {superiorAtlas, superiorAtlasEffect} from './macros/2024/classFeatures/artificer/cartographer/superiorAtlas.js';
 // Barbarian
 export {rage, rageRaging, rageUpkeep} from './macros/2024/classFeatures/barbarian/rage.js';
 export {unarmoredDefenseBarbarian} from './macros/2024/classFeatures/barbarian/unarmoredDefense.js';

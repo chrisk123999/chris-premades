@@ -1,0 +1,226 @@
+{
+  "name": "Guided Precision",
+  "type": "feat",
+  "effects": [],
+  "system": {
+    "activities": {
+      "BqlBjrzfpdL1tYzW": {
+        "type": "utility",
+        "_id": "BqlBjrzfpdL1tYzW",
+        "sort": 0,
+        "activation": {
+          "type": "special",
+          "override": false,
+          "condition": "",
+          "value": null
+        },
+        "consumption": {
+          "scaling": {
+            "allowed": false
+          },
+          "spellSlot": true,
+          "targets": [
+            {
+              "type": "itemUses"
+            }
+          ]
+        },
+        "description": {
+          "chatFlavor": ""
+        },
+        "duration": {
+          "units": "inst",
+          "concentration": false,
+          "override": false
+        },
+        "effects": [],
+        "flags": {},
+        "range": {
+          "units": "self",
+          "override": false,
+          "special": ""
+        },
+        "target": {
+          "template": {
+            "contiguous": false,
+            "units": "ft",
+            "type": ""
+          },
+          "affects": {
+            "choice": false,
+            "type": ""
+          },
+          "override": false,
+          "prompt": true
+        },
+        "uses": {
+          "spent": 0,
+          "recovery": [],
+          "max": ""
+        },
+        "visibility": {
+          "level": {
+            "min": null,
+            "max": null
+          },
+          "requireAttunement": false,
+          "requireIdentification": false,
+          "requireMagic": false,
+          "identifier": ""
+        },
+        "roll": {
+          "prompt": false,
+          "visible": false,
+          "name": "",
+          "formula": ""
+        },
+        "useConditionText": "",
+        "useConditionReason": "",
+        "effectConditionText": "",
+        "macroData": {
+          "name": "",
+          "command": ""
+        },
+        "ignoreTraits": {
+          "idi": false,
+          "idr": false,
+          "idv": false,
+          "ida": false,
+          "idm": false
+        },
+        "midiProperties": {
+          "ignoreTraits": [],
+          "triggeredActivityId": "none",
+          "triggeredActivityConditionText": "",
+          "triggeredActivityTargets": "targets",
+          "triggeredActivityRollAs": "self",
+          "triggeredActivityConsume": true,
+          "triggeredActivityConfigure": true,
+          "autoConsume": false,
+          "forceConsumeDialog": "default",
+          "forceRollDialog": "default",
+          "forceDamageDialog": "default",
+          "confirmTargets": "default",
+          "autoTargetType": "any",
+          "autoTargetAction": "default",
+          "automationOnly": false,
+          "otherActivityCompatible": true,
+          "otherActivityAsParentType": true,
+          "identifier": "",
+          "displayActivityName": false,
+          "rollMode": "default",
+          "chooseEffects": false,
+          "toggleEffect": false,
+          "ignoreFullCover": false,
+          "removeChatButtons": "default",
+          "magicEffect": false,
+          "magicDamage": false,
+          "noConcentrationCheck": false,
+          "skipConcentrationCheck": false,
+          "autoCEEffects": "default"
+        },
+        "isOverTimeFlag": false,
+        "overTimeProperties": {
+          "saveRemoves": true,
+          "rollAs": "target",
+          "preRemoveConditionText": "",
+          "postRemoveConditionText": ""
+        },
+        "otherActivityId": "none",
+        "otherActivityAsParentType": true,
+        "name": "",
+        "img": ""
+      }
+    },
+    "uses": {
+      "spent": 0,
+      "recovery": [
+        {
+          "period": "turn",
+          "type": "recoverAll"
+        }
+      ],
+      "max": "1"
+    },
+    "advancement": [],
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "identifier": "guided-precision",
+    "source": {
+      "book": "EFotA",
+      "page": "",
+      "license": "",
+      "custom": "",
+      "rules": "2024",
+      "revision": 1
+    },
+    "crewed": false,
+    "enchant": {},
+    "prerequisites": {
+      "items": [],
+      "level": 5,
+      "repeatable": false
+    },
+    "properties": [],
+    "requirements": "",
+    "type": {
+      "value": "class",
+      "subtype": ""
+    }
+  },
+  "flags": {
+    "ddbimporter": {
+      "isChoiceFeature": false,
+      "id": 12497184,
+      "type": "class",
+      "entityTypeId": 12168134,
+      "is2014": false,
+      "is2024": true,
+      "legacy": false,
+      "originalName": "Guided Precision",
+      "dndbeyond": {
+        "requiredLevel": 5,
+        "displayOrder": 500,
+        "featureType": 1,
+        "class": "Artificer",
+        "classId": 2656872,
+        "entityType": "class-feature",
+        "levelScale": null,
+        "levelScales": [],
+        "limitedUse": []
+      },
+      "class": "Artificer",
+      "classId": 2656866,
+      "subClass": "Cartographer",
+      "subClassId": 2656872,
+      "importId": "LuZSVVHEZHdqDhm9"
+    },
+    "dnd5e": {
+      "advancementOrigin": "p40QFWXPVxTQVgWn",
+      "riders": {
+        "activity": []
+      }
+    },
+    "chris-premades": {
+      "info": {
+        "identifier": "guidedPrecision",
+        "version": "1.5.16",
+        "source": "chris-premades",
+        "rules": "modern"
+      },
+      "macros": {
+        "midi": {
+          "actor": [
+            "guidedPrecision"
+          ]
+        }
+      }
+    }
+  },
+  "img": "icons/skills/targeting/target-strike-triple-blue.webp",
+  "folder": "7ILgQkGrDbhgtrD5",
+  "_id": "4q1CvHJ3DJKoL4rV",
+  "_key": "!items!4q1CvHJ3DJKoL4rV"
+}
