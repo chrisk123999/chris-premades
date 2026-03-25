@@ -1,18 +1,13 @@
 import {Teleport} from '../../../../../lib/teleport.js';
-import {dialogUtils, effectUtils, genericUtils, tokenUtils, workflowUtils} from '../../../../../utils.js';
+import {dialogUtils, effectUtils, genericUtils, tokenUtils} from '../../../../../utils.js';
 
 async function portalJumpTargeting({trigger: {entity: item}, actor, token}) {
     if (actor.system.attributes.movement.speed <= 0) return true;
     let near = tokenUtils.findNearby(token, 30, 'ally').filter(t => effectUtils.getEffectByIdentifier(t.actor, 'adventurersAtlas'));
     if (!near?.length) return;
-    let target;
-    if (near.length === 1) target = near[0];
-    else {
-        target = await dialogUtils.selectTargetDialog(item.name, genericUtils.format('CHRISPREMADES.Dialog.Use', {itemName: item.name}), near, {minAmount: 1});
-        if (!target || !target[0]) return;
-        target = target[0];
-    }
-    genericUtils.updateTargets([target]);
+    let target = await dialogUtils.selectTargetDialog(item.name, genericUtils.format('CHRISPREMADES.Dialog.Use', {itemName: item.name}), near, {minAmount: 1});
+    if (!target || !target[0]) return;
+    genericUtils.updateTargets([target[0]]);
 }
 async function portalJump({workflow}) {
     let target = workflow.targets.first();

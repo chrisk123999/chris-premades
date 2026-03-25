@@ -1,4 +1,4 @@
-import {dialogUtils, genericUtils, itemUtils, socketUtils, workflowUtils} from '../../../../../utils.js';
+import {dialogUtils, genericUtils, itemUtils, workflowUtils} from '../../../../../utils.js';
 let spells = [
     'guidingBolt',
     'guiding-bolt',
@@ -19,8 +19,10 @@ async function damage({trigger: {entity: item}, workflow}) {
         await workflowUtils.bonusDamage(workflow, workflow.actor.system.abilities.int.mod);
     }
 }
-async function damaged({trigger: {entity: item}, workflow}) {
-    if (!item.parent.concentration.items.some(i => genericUtils.getIdentifier(i) === 'fairieFire')) return;
+async function damaged({trigger: {entity: item}, workflow, ditem}) {
+    if (!workflow.hitTargets.size) return;
+    if (ditem.oldHP === ditem.newHP && ditem.oldTempHP === ditem.newTempHP) return;
+    if (!item.parent.concentration.items.some(i => genericUtils.getIdentifier(i) === 'faerieFire')) return;
     workflow.workflowOptions.noConcentrationCheck = true;
     await item.displayCard();
 }

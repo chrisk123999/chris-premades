@@ -861,8 +861,10 @@
                 "Replace": "Replace Damage Formula:"
             },
             "AdventurersAtlas": {
+                "Enforce5ft": "Enforce Touch Range:",
                 "RequireTools": "Require Cartographer's Tools:",
-                "NeedTools": "You must have Cartographer's Tools to use this feature!"
+                "NeedTools": "You must have Cartographer's Tools to use {itemName}!",
+                "Use": "Use {itemName}? (Max Targets: {maxAmount}, Min Targets: {minAmount})"
             },
             "AgonizingBlast": {
                 "Select": "Select your Agonizing Blast spell(s):"
@@ -2576,7 +2578,7 @@
                 "Skill": "This check relies on sight and the creature is in sunlight"
             },
             "SuperiorAtlas": {
-                "Prompt": "Destroy your map to have {newHP} HP and teleport next to your choice of the following targets:",
+                "Prompt": "Use {itemName}?<br>Destroy your map to have {newHP} HP and teleport next to your choice of the following targets:",
                 "HaveMap": "You must hold an Adventurer's Atlas to use this feature!"
             },
             "SupremeSneak": {
