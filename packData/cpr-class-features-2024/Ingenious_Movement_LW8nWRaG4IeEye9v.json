@@ -1,0 +1,95 @@
+{
+  "name": "Ingenious Movement",
+  "type": "feat",
+  "effects": [],
+  "system": {
+    "activities": {},
+    "uses": {
+      "spent": 0,
+      "recovery": [],
+      "max": ""
+    },
+    "advancement": [],
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "identifier": "ingenious-movement",
+    "source": {
+      "book": "EFotA",
+      "page": "",
+      "license": "",
+      "custom": "",
+      "rules": "2024",
+      "revision": 1
+    },
+    "crewed": false,
+    "enchant": {},
+    "prerequisites": {
+      "items": [],
+      "level": 9,
+      "repeatable": false
+    },
+    "properties": [],
+    "requirements": "",
+    "type": {
+      "value": "class",
+      "subtype": ""
+    }
+  },
+  "flags": {
+    "ddbimporter": {
+      "isChoiceFeature": false,
+      "id": 12497185,
+      "type": "class",
+      "entityTypeId": 12168134,
+      "is2014": false,
+      "is2024": true,
+      "legacy": false,
+      "originalName": "Ingenious Movement",
+      "dndbeyond": {
+        "requiredLevel": 9,
+        "displayOrder": 600,
+        "featureType": 1,
+        "class": "Artificer",
+        "classId": 2656872,
+        "entityType": "class-feature",
+        "levelScale": null,
+        "levelScales": [],
+        "limitedUse": [
+          {
+            "level": null,
+            "uses": 1
+          }
+        ]
+      },
+      "class": "Artificer",
+      "classId": 2656866,
+      "subClass": "Cartographer",
+      "subClassId": 2656872,
+      "importId": "46IIJLZDXkwskI5a"
+    },
+    "dnd5e": {
+      "advancementOrigin": "p40QFWXPVxTQVgWn"
+    },
+    "chris-premades": {
+      "info": {
+        "identifier": "ingeniousMovement",
+        "version": "1.5.17",
+        "source": "chris-premades",
+        "rules": "modern"
+      },
+      "macros": {
+        "midi": {
+          "actor": [
+            "ingeniousMovement"
+          ]
+        }
+      }
+    }
+  },
+  "img": "icons/skills/movement/ball-spinning-blue.webp",
+  "folder": "7ILgQkGrDbhgtrD5",
+  "_id": "LW8nWRaG4IeEye9v",
+  "_key": "!items!LW8nWRaG4IeEye9v"
+}

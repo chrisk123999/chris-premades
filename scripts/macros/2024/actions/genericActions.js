@@ -40,7 +40,7 @@ async function use({trigger, workflow}) {
             if (journal) documentData.system.description.value = journal.text.content;
         }
     }
-    await workflowUtils.syntheticItemDataRoll(documentData, workflow.actor, Array.from(game.user.targets));
+    await workflowUtils.syntheticItemDataRoll(documentData, workflow.actor, []);
 }
 export let genericActions = {
     name: 'Generic Actions',

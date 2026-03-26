@@ -860,6 +860,12 @@
                 "Name": "Advantage Damage Bonus",
                 "Replace": "Replace Damage Formula:"
             },
+            "AdventurersAtlas": {
+                "Enforce5ft": "Enforce Touch Range:",
+                "RequireTools": "Require Cartographer's Tools:",
+                "NeedTools": "You must have Cartographer's Tools to use {itemName}!",
+                "Use": "Use {itemName}? (Max Targets: {maxAmount}, Min Targets: {minAmount})"
+            },
             "AgonizingBlast": {
                 "Select": "Select your Agonizing Blast spell(s):"
             },
@@ -2570,6 +2576,10 @@
                 "Auto": "Assume bright light means sunlight for attack disadvantage:",
                 "Name": "Sunlight Sensitivity",
                 "Skill": "This check relies on sight and the creature is in sunlight"
+            },
+            "SuperiorAtlas": {
+                "Prompt": "Use {itemName}?<br>Destroy your map to have {newHP} HP and teleport next to your choice of the following targets:",
+                "HaveMap": "You must hold an Adventurer's Atlas to use this feature!"
             },
             "SupremeSneak": {
                 "TurnEnd": "Have you ended your turn behind Three-Quarters Cover or Total Cover?"

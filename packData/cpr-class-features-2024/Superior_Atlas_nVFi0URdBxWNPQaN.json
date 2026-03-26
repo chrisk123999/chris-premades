@@ -1,0 +1,231 @@
+{
+  "name": "Superior Atlas",
+  "type": "feat",
+  "effects": [],
+  "system": {
+    "activities": {
+      "xuyVVWg7jIUve18T": {
+        "type": "cast",
+        "name": "Unerring Path",
+        "_id": "xuyVVWg7jIUve18T",
+        "sort": 0,
+        "activation": {
+          "type": "action",
+          "override": false
+        },
+        "consumption": {
+          "scaling": {
+            "allowed": false
+          },
+          "spellSlot": true,
+          "targets": [
+            {
+              "type": "itemUses",
+              "value": "1",
+              "target": ""
+            }
+          ]
+        },
+        "description": {
+          "chatFlavor": ""
+        },
+        "duration": {
+          "units": "inst",
+          "concentration": false,
+          "override": false
+        },
+        "flags": {},
+        "range": {
+          "units": "self",
+          "override": false
+        },
+        "target": {
+          "template": {
+            "contiguous": false,
+            "units": "ft"
+          },
+          "affects": {
+            "choice": false
+          },
+          "override": false,
+          "prompt": true
+        },
+        "uses": {
+          "spent": 0,
+          "recovery": [],
+          "max": ""
+        },
+        "visibility": {
+          "level": {
+            "min": null,
+            "max": null
+          },
+          "requireAttunement": false,
+          "requireIdentification": false,
+          "requireMagic": false,
+          "identifier": ""
+        },
+        "spell": {
+          "challenge": {
+            "override": false
+          },
+          "properties": [
+            "vocal",
+            "somatic",
+            "material"
+          ],
+          "spellbook": true,
+          "uuid": "Compendium.dnd5e.spells24.Item.phbsplFindthePat",
+          "ability": "",
+          "level": 6
+        },
+        "useConditionText": "",
+        "useConditionReason": "",
+        "effectConditionText": "",
+        "macroData": {
+          "name": "",
+          "command": ""
+        },
+        "ignoreTraits": {
+          "idi": false,
+          "idr": false,
+          "idv": false,
+          "ida": false,
+          "idm": false
+        },
+        "midiProperties": {
+          "ignoreTraits": [],
+          "triggeredActivityId": "none",
+          "triggeredActivityConditionText": "",
+          "triggeredActivityTargets": "targets",
+          "triggeredActivityRollAs": "self",
+          "triggeredActivityConsume": true,
+          "triggeredActivityConfigure": true,
+          "autoConsume": false,
+          "forceConsumeDialog": "default",
+          "forceRollDialog": "default",
+          "forceDamageDialog": "default",
+          "confirmTargets": "never",
+          "autoTargetType": "any",
+          "autoTargetAction": "default",
+          "automationOnly": false,
+          "otherActivityCompatible": true,
+          "otherActivityAsParentType": true,
+          "identifier": "",
+          "displayActivityName": true,
+          "rollMode": "default",
+          "chooseEffects": false,
+          "toggleEffect": false,
+          "ignoreFullCover": false,
+          "removeChatButtons": "default",
+          "magicEffect": false,
+          "magicDamage": false,
+          "noConcentrationCheck": false,
+          "skipConcentrationCheck": false,
+          "autoCEEffects": "default"
+        },
+        "isOverTimeFlag": false,
+        "overTimeProperties": {
+          "saveRemoves": true,
+          "rollAs": "target",
+          "preRemoveConditionText": "",
+          "postRemoveConditionText": ""
+        },
+        "img": ""
+      }
+    },
+    "uses": {
+      "spent": 0,
+      "recovery": [
+        {
+          "period": "lr",
+          "type": "recoverAll"
+        }
+      ],
+      "max": "1"
+    },
+    "advancement": [],
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "identifier": "superior-atlas",
+    "source": {
+      "book": "EFotA",
+      "page": "",
+      "license": "",
+      "custom": "",
+      "rules": "2024",
+      "revision": 1
+    },
+    "crewed": false,
+    "enchant": {},
+    "prerequisites": {
+      "items": [],
+      "level": 15,
+      "repeatable": false
+    },
+    "properties": [],
+    "requirements": "",
+    "type": {
+      "value": "class",
+      "subtype": ""
+    }
+  },
+  "flags": {
+    "ddbimporter": {
+      "isChoiceFeature": false,
+      "id": 12497186,
+      "type": "class",
+      "entityTypeId": 12168134,
+      "is2014": false,
+      "is2024": true,
+      "legacy": false,
+      "originalName": "Superior Atlas",
+      "dndbeyond": {
+        "requiredLevel": 15,
+        "displayOrder": 700,
+        "featureType": 1,
+        "class": "Artificer",
+        "classId": 2656872,
+        "entityType": "class-feature",
+        "levelScale": null,
+        "levelScales": [],
+        "limitedUse": []
+      },
+      "class": "Artificer",
+      "classId": 2656866,
+      "subClass": "Cartographer",
+      "subClassId": 2656872,
+      "importId": "46IIJLZDXkwskI5a"
+    },
+    "dnd5e": {
+      "advancementOrigin": "p40QFWXPVxTQVgWn",
+      "riders": {
+        "activity": []
+      }
+    },
+    "chris-premades": {
+      "info": {
+        "identifier": "superiorAtlas",
+        "version": "1.5.17",
+        "source": "chris-premades",
+        "rules": "modern"
+      },
+      "macros": {
+        "midi": {
+          "item": [
+            "superiorAtlas"
+          ]
+        }
+      },
+      "activityIdentifiers": {
+        "unerringPath": "xuyVVWg7jIUve18T"
+      }
+    }
+  },
+  "img": "icons/sundries/documents/document-torn-diagram-tan.webp",
+  "folder": "7ILgQkGrDbhgtrD5",
+  "_id": "nVFi0URdBxWNPQaN",
+  "_key": "!items!nVFi0URdBxWNPQaN"
+}

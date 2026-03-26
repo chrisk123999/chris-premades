@@ -1,9 +1,23 @@
+# 1.5.17 Release:
+## New Modern Content:
+- Ingenious Movement
+- Superior Atlas
+## Bug Fixes:
+- Generic Actions
+- Adventurer's Atlas
+- Guided Precision
+- Mapping Magic
+
 # 1.5.16 Release:
 ## New Legacy Content:
 - Armored Casing
 - Built for Success
 - Healing Machine
 - Mechanical Nature
+## New Modern Content:
+- Adventurers Atlas
+- Guided Precision
+- Mapping Magic
 ## Bug Fixes:
 - Wails from the Grave
 
