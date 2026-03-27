@@ -2,6 +2,7 @@
 ## New Modern Content:
 - Ingenious Movement
 - Superior Atlas
+- Tinker's Magic
 ## Bug Fixes:
 - Generic Actions
 - Adventurer's Atlas

@@ -94,6 +94,7 @@
 		"ItemDirectory": "writable",
 		"WorldCollection": "writable",
 		"foundry": "writable",
-		"Token": "writable"
+		"Token": "writable",
+		"dnd5e": "writable"
 	}
 }
