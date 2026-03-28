@@ -40,7 +40,7 @@ async function use({trigger: {entity: item}, workflow}) {
             minAmount: 1
         }
     );
-    if (!choices) return;
+    if (!choices?.length) return;
     let existingEffect = effectUtils.getEffectByIdentifier(workflow.actor, 'tinkersMagic');
     existingEffect ??= await effectUtils.createEffect(workflow.actor, {
         name: item.name,

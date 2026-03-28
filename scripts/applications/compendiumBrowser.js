@@ -84,11 +84,6 @@ export class CompendiumBrowser {
                     break;
                 // filter by any other data
                 case 'arbitrary':
-                    console.log('ARB', {type, values, options, mapped: values.map(v => ({
-                        k: v.keyPath,
-                        v: new Set(v.values),
-                        o: v.operator
-                    }))});
                     filter.arbitrary.push(...values.map(v => ({
                         k: v.keyPath,
                         v: new Set(v.values),
