@@ -1,3 +1,4 @@
+import {CompendiumBrowser} from '../../../../applications/compendiumBrowser.js';
 import {constants, effectUtils, genericUtils, itemUtils} from '../../../../utils.js';
 let itemIDs = [
     'ball-bearings', 'basket', 'bedroll', 'bell', 'blanket', 'block-and-tackle', 'bottle-glass', 'bucket',
@@ -18,39 +19,28 @@ let itemIDs = [
 ];
 async function use({trigger: {entity: item}, workflow}) {
     if (!item.system.uses.value) return;
-    let types = new Set(itemUtils.getConfig(workflow.item, 'itemTypes') || []);
-    let arbitrary = itemUtils.getConfig(workflow.item, 'limitList') ? [{
-        k: 'system.identifier', 
-        v: new Set(itemIDs), 
-        o: 'in'
+    let types = itemUtils.getConfig(workflow.item, 'itemTypes') || [];
+    let identifiers = itemUtils.getConfig(workflow.item, 'limitList') ? [{
+        keyPath: 'system.identifier', 
+        values: itemIDs, 
+        operator: 'in'
     }] : [];
-    let choices = await dnd5e.applications.CompendiumBrowser.select({
-        selection: {
-            min: 1,
-            max: item.system.uses.value
-        },
-        filters: {
-            locked: {
-                exclusive: true,
-                arbitrary,
-                additional: { 
-                    properties: { mgc: -1 },
-                    rarity: { 
-                        _blank: 1, 
-                        ...Object.keys(CONFIG.DND5E.itemRarity).reduce((obj, key) => (obj[key] = -1, obj), {})
-                    }
-                }, 
-                documentClass: Item.implementation.documentName,
-                types
-            }
-        }, 
-        hint: genericUtils.format('CHRISPREMADES.Macros.TinkersMagic.Prompt', {itemName: item.name}),
-        tab: 'items'
-    });
-    if (!choices?.size) return;
-    let items = await Promise.allSettled(choices.map(p => fromUuid(p)));
-    items = items.map(r => r?.value).filter(i => !!i);
-    if (!items?.length) return;
+    let choices = await CompendiumBrowser.select(
+        CompendiumBrowser.tabs.items,
+        [
+            ['properties', ['mgc'], {locked: true, exclude: true}],
+            ['rarity', Object.keys(CONFIG.DND5E.itemRarity), {locked: true, exclude: true}],
+            ['rarity', ['_blank'], {locked: true}],
+            ['arbitrary', identifiers, {locked: true}],
+            ['documentTypes', types, {locked: true}]
+        ],
+        {
+            hint: genericUtils.format('CHRISPREMADES.Macros.TinkersMagic.Prompt', {itemName: item.name}),
+            maxAmount: item.system.uses.value,
+            minAmount: 1
+        }
+    );
+    if (!choices) return;
     let existingEffect = effectUtils.getEffectByIdentifier(workflow.actor, 'tinkersMagic');
     existingEffect ??= await effectUtils.createEffect(workflow.actor, {
         name: item.name,
@@ -62,8 +52,8 @@ async function use({trigger: {entity: item}, workflow}) {
             }
         }
     }, {identifier: 'tinkersMagic', rules: tinkersMagic.rules});
-    await itemUtils.createItems(workflow.actor, items, {parentEntity: existingEffect, identifier: 'tinkersMagicItem'});
-    await genericUtils.update(item, {'system.uses.spent': item.system.uses.spent + items.length});
+    await itemUtils.createItems(workflow.actor, choices, {parentEntity: existingEffect, identifier: 'tinkersMagicItem'});
+    await genericUtils.update(item, {'system.uses.spent': item.system.uses.spent + choices.length});
 }
 export let tinkersMagic = {
     name: 'Tinker\'s Magic',

@@ -8,6 +8,8 @@
 - Adventurer's Atlas
 - Guided Precision
 - Mapping Magic
+## API Update Notes
+- Added a helper for prompting a selection from the DND5e compendium browser.
 
 # 1.5.16 Release:
 ## New Legacy Content:
