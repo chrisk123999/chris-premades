@@ -222,6 +222,7 @@
             "IgnoredCreatureTypes": "Ignored Creature Types:",
             "ImmuneCreatures": "Immune Creature Types:",
             "Items": "Items:",
+            "ItemTypes": "Item Types:",
             "LineColor": "Line Color:",
             "Max": "Max:",
             "MaxLevel": "Max Level:",
@@ -2649,6 +2650,10 @@
             },
             "TimeTrigger": {
                 "Name": "Time Trigger"
+            },
+            "TinkersMagic": {
+                "LimitList": "Limit items to rules list:",
+                "Prompt": "Choose {itemName} Item:"
             },
             "TouchDamage": {
                 "Name": "Touch Damage"
