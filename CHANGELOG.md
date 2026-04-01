@@ -3,6 +3,9 @@
 - Ingenious Movement
 - Superior Atlas
 - Tinker's Magic
+- Battle Ready (Thanks Moto)
+## New Legacy Content:
+- Battle Ready (Thanks Moto)
 ## Bug Fixes:
 - Generic Actions
 - Adventurer's Atlas

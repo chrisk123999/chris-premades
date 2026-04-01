@@ -262,6 +262,7 @@ export {celestialRevelation, celestialRevelationInnerRadiance} from './macros/20
 export {celestialResistance} from './macros/2024/speciesFeatures/aasimar/celestialResistance.js';
 // Class Features
 // Artificer
+export {battleReady} from './macros/2024/classFeatures/artificer/battleReady.js';
 export {tinkersMagic} from './macros/2024/classFeatures/artificer/tinkersMagic.js';
 // Cartographer
 export {adventurersAtlas} from './macros/2024/classFeatures/artificer/cartographer/adventurersAtlas.js';
