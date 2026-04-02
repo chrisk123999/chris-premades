@@ -1952,6 +1952,15 @@
                 "MagicItem": "Select a magic item:",
                 "SelectSpell": "Select a spell:"
             },
+            "MagicItemPlan": {
+                "Choose": "Choose Magic Item Plans:",
+                "ChooseSwapPlan": "Choose Magic Item Plans to swap out",
+                "ChooseNewPlan": ", or choose 'None' to make new plans.",
+                "ItemName": "Magic Item Plan",
+                "Max": "You have already prepared the maximum number of plans!",
+                "NotPrepared": "(NOT PREPARED)",
+                "NotPreparedPrompt": "Your plans for these items are not prepared: {itemList}. Please use the {activityName} activity on each."
+            },
             "MagicMissile": {
                 "Bolt": "Magic Missile Bolt",
                 "RollEach": "Roll Damage for Each Bolt?",
@@ -2220,6 +2229,16 @@
             },
             "RendMind": {
                 "RestoreAndUse": "Restore and use {name}?"
+            },
+            "ReplicateMagicItem": {
+                "AlreadyCreated": "The plan {itemName} has already been created!",
+                "MakeArtifact": "Created items are artifacts:",
+                "MaxCreated": "You have created the maximum number of items!",
+                "NoPlans": "You have no Magic Item Plans!",
+                "NotFound": "Could not find a magic item for the selected plan!",
+                "Prompt": "Choose a Magic Item to create:",
+                "ScaleIdentifierItem": "Scale Identifier (Magic Items):",
+                "ScaleIdentifierPlan": "Scale Identifier (Plans Known):"
             },
             "RerollSaveOnDamage": {
                 "ExcludeSource": "Exclude Damage from Source",
@@ -2653,7 +2672,9 @@
             },
             "TinkersMagic": {
                 "LimitList": "Limit items to rules list:",
-                "Prompt": "Choose {itemName} Item:"
+                "Prompt": "Choose {itemName} Item:",
+                "RequireTools": "Require Tinker's Tools:",
+                "NeedTools": "You must have Tinker's Tools to use {itemName}!"
             },
             "TouchDamage": {
                 "Name": "Touch Damage"

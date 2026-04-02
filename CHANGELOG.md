@@ -3,6 +3,7 @@
 - Ingenious Movement
 - Superior Atlas
 - Tinker's Magic
+- Replicate Magic Item
 - Battle Ready (Thanks Moto)
 ## New Legacy Content:
 - Battle Ready (Thanks Moto)
