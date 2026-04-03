@@ -14,6 +14,8 @@
 - Mapping Magic
 ## API Update Notes
 - Added a helper for prompting a selection from the DND5e compendium browser.
+## API Bug Fixes:
+- preTargeting Event for Embedded Macros
 
 # 1.5.16 Release:
 ## New Legacy Content:
