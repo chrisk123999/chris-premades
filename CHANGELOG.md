@@ -4,6 +4,7 @@
 - Superior Atlas
 - Tinker's Magic
 - Replicate Magic Item
+- Magic Item Tinker
 - Battle Ready (Thanks Moto)
 ## New Legacy Content:
 - Battle Ready (Thanks Moto)

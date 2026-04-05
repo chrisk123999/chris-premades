@@ -221,6 +221,7 @@
             "IgnoredConditions": "Ignored Conditions:",
             "IgnoredCreatureTypes": "Ignored Creature Types:",
             "ImmuneCreatures": "Immune Creature Types:",
+            "ItemDelete": "GM Confirms Item Deletion:",
             "Items": "Items:",
             "ItemTypes": "Item Types:",
             "LineColor": "Line Color:",
@@ -254,6 +255,7 @@
             "Sound": "Sound:",
             "SpecificAnimation": "{option} Animation:",
             "SpellSchools": "Spell Schools:",
+            "SpellSlot": "{option} Spell Slot:",
             "Stage": "Stage:",
             "StrandColor": "Strand Color:",
             "SubclassIdentifier": "Subclass Identifier:",
@@ -1960,6 +1962,18 @@
                 "Max": "You have already prepared the maximum number of plans!",
                 "NotPrepared": "(NOT PREPARED)",
                 "NotPreparedPrompt": "Your plans for these items are not prepared: {itemList}. Please use the {activityName} activity on each."
+            },
+            "MagicItemTinker": {
+                "NoItems": "No items available!",
+                "NoSpell": "No Benefit",
+                "ChargePrompt": "Choose an item to recharge:",
+                "DeletePrompt": "Delete {itemName} to grant a {spellSlot}?",
+                "DrainPrompt": "Choose an item to drain and gain a spell slot:",
+                "DrainCommon": "Drain Common Item",
+                "DrainUncommon": "Drain Uncommon Item",
+                "DrainRare": "Drain Rare Item",
+                "DrainVeryRare": "Drain Very Rare Item",
+                "TransmutePrompt": "Choose an item to transmute into another magic item:"
             },
             "MagicMissile": {
                 "Bolt": "Magic Missile Bolt",

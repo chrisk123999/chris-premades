@@ -263,6 +263,7 @@ export {celestialResistance} from './macros/2024/speciesFeatures/aasimar/celesti
 // Class Features
 // Artificer
 export {battleReady} from './macros/2024/classFeatures/artificer/battleReady.js';
+export {magicItemTinker} from './macros/2024/classFeatures/artificer/magicItemTinker.js';
 export {replicateMagicItem, magicItemPlan} from './macros/2024/classFeatures/artificer/replicateMagicItem.js';
 export {tinkersMagic} from './macros/2024/classFeatures/artificer/tinkersMagic.js';
 // Cartographer

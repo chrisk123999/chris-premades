@@ -83,8 +83,10 @@ async function createItem({trigger: {entity: item}, workflow}) {
     let data = await fromUuid(selected.flags['chris-premades']?.planTemplateUuid);
     if (!data) return genericUtils.notify('CHRISPREMADES.Macros.ReplicateMagicItem.NotFound', 'warn');
     data = data.toObject();
+    genericUtils.setProperty(data.flags, 'chris-premades.originalRarity', data.system.rarity ?? '');
+    genericUtils.setProperty(data.flags, 'chris-premades.artificerMagicItem', selected.uuid);
     if (itemUtils.getConfig(item, 'makeArtifact')) data.system.rarity = 'artifact';
-    let createdItem = await itemUtils.createItems(workflow.actor, [data], {identifier: 'createdItemPlan'});
+    let createdItem = await itemUtils.createItems(workflow.actor, [data]);
     if (!createdItem?.length) return;
     createdItem = createdItem[0];
     await effectUtils.createEffect(workflow.actor, {
@@ -96,7 +98,7 @@ async function createItem({trigger: {entity: item}, workflow}) {
                 stackable: 'noneName'
             }
         }
-    }, {parentEntity: createdItem, interdependent: true, strictlyInterdependent: true, identifier: 'createdItemPlan'});
+    }, {identifier: 'createdItemPlan', parentEntity: createdItem, strictlyInterdependent: true});
 }
 async function added({trigger: {entity: item}}) {
     await itemUtils.fixScales(item);
@@ -132,12 +134,12 @@ async function usePlan(actor, activityID, item) {
     });
     return true;
 }
-async function swapPlan({trigger: {entity: item}, workflow}) {
-    return await usePlan(workflow.actor, 'selectPlans', item);
+async function swapPlan({trigger: {entity: item}, actor}) {
+    return await usePlan(actor, 'selectPlans', item);
 }
-async function createItemFromPlan({trigger: {entity: item}, workflow}) {
+async function createItemFromPlan({trigger: {entity: item}, actor}) {
     if (item.flags['chris-premades']?.planTemplateUuid)
-        return await usePlan(workflow.actor, 'createItem', item);
+        return await usePlan(actor, 'createItem', item);
     await genericUtils.update(item, {
         name: `${genericUtils.translate('CHRISPREMADES.Macros.MagicItemPlan.NotPrepared')} ${genericUtils.translate('CHRISPREMADES.Macros.MagicItemPlan.ItemName')}: ${item.name.split(':')[1]?.trim() || item.name}`
     });
@@ -287,13 +289,13 @@ export let magicItemPlan = {
     midi: {
         item: [
             {
-                pass: 'preItemRoll',
+                pass: 'preTargeting',
                 macro: swapPlan,
                 priority: 40,
                 activities: ['swapPlan']
             },
             {
-                pass: 'preItemRoll',
+                pass: 'preTargeting',
                 macro: createItemFromPlan,
                 priority: 40,
                 activities: ['createItem']

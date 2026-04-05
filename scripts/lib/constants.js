@@ -218,6 +218,7 @@ const teleportOptions = () => Object.entries(teleportEffects).map(i => ({label: 
 const itemProperties = () => Object.entries(CONFIG.DND5E.itemProperties).map(i => ({label: i[1].label, value: i[0]}));
 const itemOptions = () => Object.entries(Item.implementation.compendiumBrowserTypes().physical.children).map(i => ({label: i[1].label, value: i[0]}));
 const armorOptions = () => Object.entries(CONFIG.DND5E.armorTypes).map(i => ({label: i[1], value: i[0]}));
+const spellSlotOptions = () => Object.entries(CONFIG.DND5E.spellLevels).map(i => ({label: i[0] == 0 ? genericUtils.translate('None') : i[1], value: i[0] == 0 ? '' : i[0]}));
 const spellSchoolOptions = () => Object.entries(CONFIG.DND5E.spellSchools).map(i => ({label: i[1].label, value: i[0]}));
 let baseWeaponOptions = [];
 let baseMeleeWeaponOptions = [];
@@ -719,6 +720,7 @@ export let constants = {
     itemProperties,
     itemOptions,
     armorOptions,
+    spellSlotOptions,
     spellSchoolOptions,
     autoFailSaveEffectData,
     disadvantageEffectData,

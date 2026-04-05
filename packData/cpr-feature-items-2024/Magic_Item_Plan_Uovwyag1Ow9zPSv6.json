@@ -25,7 +25,7 @@
           "chatFlavor": ""
         },
         "duration": {
-          "units": "perm",
+          "units": "disp",
           "concentration": false,
           "override": false
         },
@@ -148,7 +148,7 @@
         },
         "duration": {
           "units": "disp",
-          "concentration": true,
+          "concentration": false,
           "override": false
         },
         "effects": [],
