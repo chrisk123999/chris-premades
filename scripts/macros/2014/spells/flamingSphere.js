@@ -95,7 +95,7 @@ async function move({workflow}) {
     await workflow.actor.sheet.minimize();
     let position = await crosshairUtils.aimCrosshair({
         token: token.object, 
-        maxRange: 30, 
+        maxRange: genericUtils.convertDistance(30), 
         centerpoint: token.object.center, 
         drawBoundries: true, 
         trackDistance: true, 
