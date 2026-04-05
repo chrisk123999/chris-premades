@@ -1,18 +1,20 @@
-import {activityUtils, constants, dialogUtils, genericUtils, itemUtils, tokenUtils, workflowUtils} from '../../../../utils.js';
-async function chargePreCheck({trigger: {entity: item}, actor, token}) {    
+import {activityUtils, actorUtils, constants, dialogUtils, genericUtils, itemUtils, socketUtils, tokenUtils, workflowUtils} from '../../../../utils.js';
+async function chargePreCheck({trigger: {entity: item}, actor, config, token}) {   
+    let highestAvailableSlot = Object.values(actor.system.spells)?.reduce((max, slot) => Math.max(max, !!slot.value * (slot.level ?? 0)), 0); 
+    if (!highestAvailableSlot) {
+        genericUtils.notify('CHRISPREMADES.Macros.SongOfDefense.NoSpellSlots', 'warn');
+        return true;
+    }
     let items = fetchItems(actor, token).filter(i => Number.isNumeric(i.system.uses.max) && i.system.uses.spent > 0);
     if (!items?.length) {
         genericUtils.notify('CHRISPREMADES.Macros.MagicItemTinker.NoItems', 'warn');
         return true;
     }
-    let selection = await specialLabelDialog(
-        item.name, 
-        'CHRISPREMADES.Macros.MagicItemTinker.ChargePrompt', 
-        items, 
-        i => `${i.system.uses.value}/${i.system.uses.max}`
-    );
+    let getLabel = i => `${i.system.uses.value}/${i.system.uses.max}`;
+    let selection = await specialLabelDialog(item.name, 'CHRISPREMADES.Macros.MagicItemTinker.ChargePrompt', items, getLabel);
     if (!selection) return true;
     genericUtils.setProperty(actor.flags, 'chris-premades.magicItemTinkerID', selection);
+    config.scaling = highestAvailableSlot - 1;
 }
 async function charge({workflow}) {
     let chargeItem = await fromUuid(workflow.actor.flags['chris-premades']?.magicItemTinkerID);
@@ -35,31 +37,22 @@ async function drain({trigger: {entity: item}, actor, token}) {
             spellSlot: itemUtils.getConfig(item, `drain-${rarity}`) || -1 
         }, obj);
     }, {});
-    let selection = await specialLabelDialog(
-        item.name,
-        'CHRISPREMADES.Macros.MagicItemTinker.DrainPrompt',
-        items,
-        i => {
-            let { rarity, spellSlot } = map[i.uuid];
-            let label = (CONFIG.DND5E.itemRarity[rarity] ?? rarity).capitalize();
-            let spellLabel = CONFIG.DND5E.spellLevels[spellSlot] ?? genericUtils.translate('CHRISPREMADES.Macros.MagicItemTinker.NoSpell');
-            return `${label}, ${spellLabel}`;
-        }
-    );
+    let getLabel = i => {
+        let { rarity, spellSlot } = map[i.uuid];
+        let label = (CONFIG.DND5E.itemRarity[rarity] ?? rarity).capitalize();
+        let spellLabel = CONFIG.DND5E.spellLevels[spellSlot] ?? genericUtils.translate('CHRISPREMADES.Macros.MagicItemTinker.NoSpell');
+        return `${label}, ${spellLabel}`;
+    };
+    let selection = await specialLabelDialog(item.name, 'CHRISPREMADES.Macros.MagicItemTinker.DrainPrompt', items, getLabel);
     if (!selection) return true;
-    let slot = `spell${map[selection].spellSlot}`;
-    if (!(slot in actor.system.spells)) return true;
+    let slot = actorUtils.getEquivalentSpellSlotName(actor, map[selection].spellSlot);
+    if (!slot) return true;
     selection = items.find(i => i.uuid === selection);
     if (!selection) return true;
     if (itemUtils.getConfig(item, 'verifyDeletion') && !await dialogUtils.confirm(
         item.name,
-        genericUtils.format(
-            'CHRISPREMADES.Macros.MagicItemTinker.DeletePrompt', 
-            {
-                itemName: selection.name, 
-                spellSlot: genericUtils.translate('DND5E.SpellSlotTemporary')
-            }
-        )
+        genericUtils.format('CHRISPREMADES.Macros.MagicItemTinker.DeletePrompt', {itemName: selection.name, spellSlot: genericUtils.translate('DND5E.SpellSlotTemporary')}),
+        {userId: socketUtils.gmID()}
     )) return true;
     await genericUtils.update(actor, {
         [`system.spells.${slot}.value`]: actor.system.spells[slot].value + 1 
@@ -82,12 +75,21 @@ async function transmute({trigger: {entity: item}, actor, token}) {
         genericUtils.notify('CHRISPREMADES.Macros.MagicItemTinker.NoItems', 'warn');
         return true;
     }
-    let selection = await dialogUtils.selectDocumentDialog(item.name, 'CHRISPREMADES.Macros.MagicItemTinker.TransmutePrompt', items, {displayTooltips: true});
+    let selection = await specialLabelDialog(item.name, 'CHRISPREMADES.Macros.MagicItemTinker.TransmutePrompt', items);
+    selection = items.find(i => i.uuid === selection);
     if (!selection) return true;
     let createdEffect = await fromUuid(selection.flags.dnd5e?.dependentOn);
     await genericUtils.remove(createdEffect ?? selection);
-    await workflowUtils.syntheticActivityRoll(activity);
+    let options = selection.parent.uuid === actor.uuid ? {} : {
+        workflowOptions: {
+            'chris-premades': {
+                artificerItemHolder : selection.parent.uuid
+            }
+        }
+    };
+    await workflowUtils.syntheticActivityRoll(activity, [], {options});
 }
+// helpers
 function fetchItems(actor, token, range) {
     let items = actor.items.filter(i => i.flags['chris-premades']?.artificerMagicItem);
     let allies = tokenUtils.findNearby(token, range || 5, 'ally');
@@ -98,14 +100,15 @@ function fetchItems(actor, token, range) {
     return items;
 }
 async function specialLabelDialog(title, content, items, getLabel) {
-    return await dialogUtils.buttonDialog(title, content, items.map(i => [
-        i.name + ` (${getLabel(i)})`,
-        i.uuid,
-        {
+    return await dialogUtils.buttonDialog(title, content, items.map(i => {
+        let label = `[${i.parent.name}] ` + i.name + (getLabel ? ` (${getLabel(i)})` : '');
+        let value = i.uuid;
+        let options = {
             image: i.img,
             tooltip: i.system.description.value.replace(/<[^>]*>?|@UUID\[.*?\]{(.*?)}/gm, '$1')
-        }
-    ]));
+        };
+        return [label, value, options];
+    }));
 }
 export let magicItemTinker = {
     name: 'Magic Item Tinker',

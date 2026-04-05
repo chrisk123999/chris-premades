@@ -5,9 +5,9 @@ async function selectPlans({trigger: {entity: item}, workflow}) {
     let scaleIdentifierPlan = itemUtils.getConfig(item, 'scaleIdentifierPlan');    
     let maxPlans = workflow.actor.system.scale[classIdentifier]?.[scaleIdentifierPlan]?.value;
     if (!maxPlans) return;
-    let existing = itemUtils.getAllItemsByIdentifier(workflow.actor, 'magicItemPlan');
-    if (existing.length > maxPlans) return genericUtils.notify('CHRISPREMADES.Macros.MagicItemPlan.Max', 'warn');
-    let selected = await fromUuid(workflow.workflowOptions['chris-premades']?.preselectedPlan);
+    let existing = itemUtils.getAllItemsByIdentifier(workflow.actor, 'magicItemPlan').filter(i => i.flags['chris-premades']?.artificerPlanTemplateUuid);
+    if (existing.length > maxPlans) return genericUtils.notify(genericUtils.format('CHRISPREMADES.Macros.MagicItemPlan.Max', {count: existing.length, max: maxPlans}), 'warn');
+    let selected = await fromUuid(workflow.workflowOptions['chris-premades']?.preselectedArtificerPlan);
     if (!selected && existing.length > 0) {
         let addNoneDocument = existing.length < maxPlans;
         let content = genericUtils.translate('CHRISPREMADES.Macros.MagicItemPlan.ChooseSwapPlan') +
@@ -41,7 +41,7 @@ async function selectPlans({trigger: {entity: item}, workflow}) {
     let data = {
         name: `${genericUtils.translate('CHRISPREMADES.Macros.MagicItemPlan.ItemName')}: ${plan.name}`,
         flags: {
-            'chris-premades': {planTemplateUuid: plan.uuid},
+            'chris-premades': {artificerPlanTemplateUuid: plan.uuid},
             dnd5e: {advancementOrigin: workflow.actor.classes[classIdentifier]?.id ?? ''}
         },
         system: {
@@ -68,8 +68,8 @@ async function createItem({trigger: {entity: item}, workflow}) {
     let maxItems = workflow.actor.system.scale[classIdentifier]?.[scaleIdentifierItem]?.value;
     if (!maxItems) return;
     let existing = effectUtils.getAllEffectsByIdentifier(workflow.actor, 'createdItemPlan');
-    if (existing.length >= maxItems) return genericUtils.notify('CHRISPREMADES.Macros.ReplicateMagicItem.MaxCreated', 'warn');
-    let selected = await fromUuid(workflow.workflowOptions['chris-premades']?.preselectedPlan);
+    if (existing.length >= maxItems) return genericUtils.notify(genericUtils.format('CHRISPREMADES.Macros.ReplicateMagicItem.MaxCreated', {count: existing.length, max: maxItems}), 'warn');
+    let selected = await fromUuid(workflow.workflowOptions['chris-premades']?.preselectedArtificerPlan);
     if (selected && existing.some(e => e.origin === selected.uuid))
         return genericUtils.notify(genericUtils.format('CHRISPREMADES.Macros.ReplicateMagicItem.AlreadyCreated', {itemName: selected.name}), 'warn');
     if (!selected) {
@@ -80,13 +80,14 @@ async function createItem({trigger: {entity: item}, workflow}) {
         selected = await dialogUtils.selectDocumentDialog(item.name, 'CHRISPREMADES.Macros.ReplicateMagicItem.Prompt', plans, {displayTooltips: true});
     }
     if (!selected) return;
-    let data = await fromUuid(selected.flags['chris-premades']?.planTemplateUuid);
+    let data = await fromUuid(selected.flags['chris-premades']?.artificerPlanTemplateUuid);
     if (!data) return genericUtils.notify('CHRISPREMADES.Macros.ReplicateMagicItem.NotFound', 'warn');
     data = data.toObject();
     genericUtils.setProperty(data.flags, 'chris-premades.originalRarity', data.system.rarity ?? '');
     genericUtils.setProperty(data.flags, 'chris-premades.artificerMagicItem', selected.uuid);
     if (itemUtils.getConfig(item, 'makeArtifact')) data.system.rarity = 'artifact';
-    let createdItem = await itemUtils.createItems(workflow.actor, [data]);
+    let itemHolder = await fromUuid(workflow.workflowOptions['chris-premades']?.artificerItemHolder) ?? workflow.targets.first()?.actor ?? workflow.actor;
+    let createdItem = await itemUtils.createItems(itemHolder, [data]);
     if (!createdItem?.length) return;
     createdItem = createdItem[0];
     await effectUtils.createEffect(workflow.actor, {
@@ -102,23 +103,35 @@ async function createItem({trigger: {entity: item}, workflow}) {
 }
 async function added({trigger: {entity: item}}) {
     await itemUtils.fixScales(item);
-    let planName = genericUtils.translate('CHRISPREMADES.Macros.MagicItemPlan.ItemName');
-    let notAutomatedPlans = item.parent.items.filter(i => !i.flags['chris-premades']?.planTemplateUuid && i.name.includes(planName));
-    if (!notAutomatedPlans.length) return;
-    let names = notAutomatedPlans.map(p => p.name.split(':')[1]?.trim() || p.name);
     let planTemplate = await compendiumUtils.getItemFromCompendium(constants.modernPacks.featureItems, 'magicItemPlan', {byIdentifier: true});
     if (!planTemplate) return;
-    let activity = activityUtils.getActivityByIdentifier(planTemplate, 'swapPlan', {strict: true});
-    if (!activity) return;
-    genericUtils.notify(genericUtils.format('CHRISPREMADES.Macros.MagicItemPlan.NotPreparedPrompt', {itemList: names.join(', '), activityName: activity.name}), 'warn');
-    let notPrepared = genericUtils.translate('CHRISPREMADES.Macros.MagicItemPlan.NotPrepared');
-    let updates = notAutomatedPlans.map(p => genericUtils.mergeObject(planTemplate.toObject(), { 
-        _id: p._id, 
-        name: `${notPrepared} ${planName}: ${p.name.split(':')[1]?.trim() || p.name}`
-    }));
-    await genericUtils.updateEmbeddedDocuments(item.parent, 'Item', updates);
+    await markPlansNotPrepared(item.parent, planTemplate);
 }
-async function usePlan(actor, activityID, item) {
+async function swapPlan({trigger: {entity: item}, actor}) {
+    return await rollFeature(actor, 'selectPlans', item);
+}
+async function createItemFromPlan({trigger: {entity: item}, actor}) {
+    if (item.flags['chris-premades']?.artificerPlanTemplateUuid)
+        return await rollFeature(actor, 'createItem', item);
+    await markPlansNotPrepared(actor, item);
+    return true;
+}
+// helpers
+async function markPlansNotPrepared(actor, template) {
+    let planName = genericUtils.translate('CHRISPREMADES.Macros.MagicItemPlan.ItemName');
+    let unpreparedPlans = actor.items.filter(i => !i.flags['chris-premades']?.artificerPlanTemplateUuid && i.name.includes(planName));
+    if (!unpreparedPlans.length) return;
+    let notPrepared = genericUtils.translate('CHRISPREMADES.Macros.MagicItemPlan.NotPrepared');
+    let itemName = i => i.name.split(':')[1]?.trim() || i.name;
+    let updates = unpreparedPlans.map(p => genericUtils.mergeObject(template.toObject(), {
+        _id: p._id,
+        name: `${notPrepared} ${planName}: ${itemName(p)}`
+    }));
+    let activity = activityUtils.getActivityByIdentifier(template, 'swapPlan', {strict: true});
+    if (activity) genericUtils.notify(genericUtils.format('CHRISPREMADES.Macros.MagicItemPlan.NotPreparedPrompt', {itemList: unpreparedPlans.map(i => itemName(i)).join(', '), activityName: activity.name}), 'warn');
+    await genericUtils.updateEmbeddedDocuments(actor, 'Item', updates);
+}
+async function rollFeature(actor, activityID, item) {
     let feature = itemUtils.getItemByIdentifier(actor, 'replicateMagicItem');
     if (!feature) return true;
     let activity = activityUtils.getActivityByIdentifier(feature, activityID, {strict: true});
@@ -127,25 +140,11 @@ async function usePlan(actor, activityID, item) {
         options: {
             workflowOptions: {
                 'chris-premades': {
-                    preselectedPlan: item.uuid
+                    preselectedArtificerPlan: item.uuid
                 }
             }
         }
     });
-    return true;
-}
-async function swapPlan({trigger: {entity: item}, actor}) {
-    return await usePlan(actor, 'selectPlans', item);
-}
-async function createItemFromPlan({trigger: {entity: item}, actor}) {
-    if (item.flags['chris-premades']?.planTemplateUuid)
-        return await usePlan(actor, 'createItem', item);
-    await genericUtils.update(item, {
-        name: `${genericUtils.translate('CHRISPREMADES.Macros.MagicItemPlan.NotPrepared')} ${genericUtils.translate('CHRISPREMADES.Macros.MagicItemPlan.ItemName')}: ${item.name.split(':')[1]?.trim() || item.name}`
-    });
-    let activity = activityUtils.getActivityByIdentifier(item, 'swapPlan', {strict: true});
-    if (!activity) return true;
-    genericUtils.notify(genericUtils.format('CHRISPREMADES.Macros.MagicItemPlan.NotPreparedPrompt', {itemList: item.name, activityName: activity.name}), 'warn');
     return true;
 }
 export let replicateMagicItem = {

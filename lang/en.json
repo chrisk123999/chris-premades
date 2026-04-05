@@ -1955,11 +1955,11 @@
                 "SelectSpell": "Select a spell:"
             },
             "MagicItemPlan": {
-                "Choose": "Choose Magic Item Plans:",
-                "ChooseSwapPlan": "Choose Magic Item Plans to swap out",
-                "ChooseNewPlan": ", or choose 'None' to make new plans.",
+                "Choose": "Choose Magic Item Plan:",
+                "ChooseSwapPlan": "Choose Magic Item Plan to swap out",
+                "ChooseNewPlan": ", or choose 'None' to make a new plan.",
                 "ItemName": "Magic Item Plan",
-                "Max": "You have already prepared the maximum number of plans!",
+                "Max": "You have already prepared the maximum number of plans! ({count} of {max})",
                 "NotPrepared": "(NOT PREPARED)",
                 "NotPreparedPrompt": "Your plans for these items are not prepared: {itemList}. Please use the {activityName} activity on each."
             },
@@ -2247,7 +2247,7 @@
             "ReplicateMagicItem": {
                 "AlreadyCreated": "The plan {itemName} has already been created!",
                 "MakeArtifact": "Created items are artifacts:",
-                "MaxCreated": "You have created the maximum number of items!",
+                "MaxCreated": "You have created the maximum number of items! ({count} of {max})",
                 "NoPlans": "You have no Magic Item Plans!",
                 "NotFound": "Could not find a magic item for the selected plan!",
                 "Prompt": "Choose a Magic Item to create:",
