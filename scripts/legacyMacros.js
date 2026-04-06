@@ -192,6 +192,7 @@ export {awakenedSpellbook} from './macros/2014/classFeatures/wizard/orderOfScrib
 export {balmOfPeace} from './macros/2014/classFeatures/cleric/peaceDomain/balmOfPeace.js';
 export {balmOfTheSummerCourt} from './macros/2014/classFeatures/druid/circleOfDreams/balmOfTheSummerCourt.js';
 export {bardicInspiration, bardicInspirationInspired} from './macros/2014/classFeatures/bard/bardicInspiration.js';
+export {battleReady} from './macros/2014/classFeatures/artificer/battleSmith/battleReady.js';
 export {beguilingTwist} from './macros/2014/classFeatures/ranger/feyWanderer/beguilingTwist.js';
 export {bestialSoul} from './macros/2014/classFeatures/barbarian/beast/bestialSoul.js';
 export {bladeFlourish} from './macros/2014/classFeatures/bard/collegeOfSwords/bladeFlourish.js';

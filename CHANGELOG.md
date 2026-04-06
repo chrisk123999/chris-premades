@@ -1,8 +1,15 @@
 # 1.5.17 Release:
+## Update Notes:
+- This is not a V14 update. An update for V14 is still a work in progress.
 ## New Modern Content:
 - Ingenious Movement
 - Superior Atlas
 - Tinker's Magic
+- Replicate Magic Item
+- Magic Item Tinker
+- Battle Ready (Thanks Moto)
+## New Legacy Content:
+- Battle Ready (Thanks Moto)
 ## Bug Fixes:
 - Generic Actions
 - Adventurer's Atlas
@@ -10,6 +17,8 @@
 - Mapping Magic
 ## API Update Notes
 - Added a helper for prompting a selection from the DND5e compendium browser.
+## API Bug Fixes:
+- preTargeting Event for Embedded Macros
 
 # 1.5.16 Release:
 ## New Legacy Content:

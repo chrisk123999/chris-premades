@@ -13,6 +13,38 @@ export class CompendiumBrowser {
         }
         return obj;
     }, {});
+    /** 
+     * Provides a helper for using the dnd5e compendium browser with filters built in a way similar to dialog inputs
+     * @param {string} tab Use one of CompendiumBrowser.tabs
+     * @param {Array} filters Narrow the document choices available in the browser
+     * [documentFieldKey, [valuesForField], optionsForThisField]
+     * @param {hint, maxAmount, minAmount, getDocuments} options
+         * @param {string} hint An optional tooltip shown above the list of documents
+         * @param {number} maxAmount The most documents the user can select
+         * @param {number} minAmount The fewest documents that must be selected
+         * @param {boolean} getDocuments Function returns documents if true or compendium uuids if false
+     */
+    /**
+     * Possible values for `filters`
+     * Each filter may have these options:
+     *     exclude: If true, sets and toggles with the provided values are excluded from the list. Defaults to false.
+     *     locked: If true, the user can't change the filter setting. Defaults to false.
+     * A small list of document fields have ui in the browser sidebar:
+     * Document Type - certain documents have subtypes
+     *     ['documentTypes', ['subtype'], {locked}]
+     * Toggles - field is either present or not
+     *     ['attunement', '', {exclude, locked}]
+     * Sets - field can have many values
+     *     ['rarity', ['_blank', 'common', 'uncommon'], {exclude, locked}]
+     * Ranges - field can have a min or max value
+     *     ['price', {max: 100, min: 0}, {locked}]
+     * Any other fields can be filtered using 'arbitrary' and operators from dnd5e.Filter
+     *     ['arbitrary', [{
+     *         keyPath: 'system.identifier', 
+     *         values: ['ball-bearings', 'basket', 'bedroll'], 
+     *         operator: 'in'
+     *     }]]
+     */
     static async select(tab, filters=[], {hint, maxAmount=1, minAmount=0, getDocuments=true}={}) {
         let config = {
             selection: {
@@ -95,8 +127,8 @@ export class CompendiumBrowser {
         let choices = await dnd5e.applications.CompendiumBrowser.select(config);
         if (!choices?.size) return;
         if (!getDocuments) return Array.from(choices);
-        let documents = await Promise.allSettled(choices.map(p => fromUuid(p)));
-        documents = documents.map(r => r?.value).filter(i => !!i);
+        let documents = await Promise.all(choices.map(p => fromUuid(p)));
+        documents = documents.filter(i => !!i);
         return documents.length ? documents : undefined; 
     }
 }

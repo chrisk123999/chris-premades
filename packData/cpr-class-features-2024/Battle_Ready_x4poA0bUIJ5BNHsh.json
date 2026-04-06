@@ -1,0 +1,118 @@
+{
+  "folder": "jKkFL3w2RDafqf9D",
+  "name": "Battle Ready",
+  "type": "feat",
+  "_id": "x4poA0bUIJ5BNHsh",
+  "img": "icons/weapons/swords/sword-guard-serrated.webp",
+  "system": {
+    "activities": {},
+    "uses": {
+      "spent": 0,
+      "recovery": [],
+      "max": ""
+    },
+    "advancement": [],
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "identifier": "battle-ready",
+    "source": {
+      "revision": 1,
+      "rules": "2024",
+      "book": "EFotA",
+      "page": "",
+      "custom": "",
+      "license": ""
+    },
+    "crewed": false,
+    "enchant": {},
+    "prerequisites": {
+      "items": [],
+      "repeatable": false,
+      "level": 3
+    },
+    "properties": [],
+    "requirements": "",
+    "type": {
+      "value": "class",
+      "subtype": ""
+    }
+  },
+  "effects": [
+    {
+      "name": "Battle Ready",
+      "img": "icons/weapons/swords/sword-guard-serrated.webp",
+      "origin": "Compendium.chris-premades.CPRClassFeatures2024.Item.x4poA0bUIJ5BNHsh",
+      "_id": "Cz2YmySIKUdgxKXe",
+      "type": "base",
+      "system": {},
+      "changes": [
+        {
+          "key": "system.traits.weaponProf.value",
+          "mode": 2,
+          "value": "mar",
+          "priority": 20
+        }
+      ],
+      "disabled": false,
+      "duration": {
+        "startTime": null,
+        "combat": null,
+        "seconds": null,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "transfer": true,
+      "statuses": [],
+      "sort": 0,
+      "flags": {
+        "dnd5e": {
+          "riders": {
+            "statuses": []
+          }
+        },
+        "dae": {
+          "disableCondition": "",
+          "stackable": "noneName",
+          "showIcon": false,
+          "disableIncapacitated": false,
+          "durationExpression": "",
+          "macroRepeat": "none",
+          "specialDuration": []
+        },
+        "core": {
+          "overlay": false
+        }
+      },
+      "_key": "!items.effects!x4poA0bUIJ5BNHsh.Cz2YmySIKUdgxKXe"
+    }
+  ],
+  "flags": {
+    "dnd5e": {
+      "riders": {
+        "activity": []
+      }
+    },
+    "chris-premades": {
+      "info": {
+        "identifier": "battleReady",
+        "version": "1.5.17",
+        "source": "chris-premades",
+        "rules": "modern"
+      },
+      "macros": {
+        "midi": {
+          "actor": [
+            "battleReady"
+          ]
+        }
+      }
+    }
+  },
+  "_key": "!items!x4poA0bUIJ5BNHsh"
+}

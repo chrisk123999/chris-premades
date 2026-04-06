@@ -18,7 +18,11 @@ let itemIDs = [
     'vial'
 ];
 async function use({trigger: {entity: item}, workflow}) {
-    if (!item.system.uses.value) return;
+    if (!item.system.uses.value) return;    
+    if (itemUtils.getConfig(item, 'requireTools') && !workflow.actor.items.some(i => i.system.type?.baseItem === 'tinker')) {
+        genericUtils.notify(genericUtils.format('CHRISPREMADES.Macros.TinkersMagic.NeedTools', {itemName: item.name}), 'warn');
+        return;
+    }
     let types = itemUtils.getConfig(workflow.item, 'itemTypes') || [];
     let identifiers = itemUtils.getConfig(workflow.item, 'limitList') ? [{
         keyPath: 'system.identifier', 
@@ -69,6 +73,14 @@ export let tinkersMagic = {
         ]
     },
     config: [
+        {
+            value: 'requireTools',
+            label: 'CHRISPREMADES.Macros.TinkersMagic.RequireTools',
+            type: 'checkbox',
+            default: true,
+            category: 'homebrew',
+            homebrew: true
+        },
         {
             value: 'limitList',
             label: 'CHRISPREMADES.Macros.TinkersMagic.LimitList',

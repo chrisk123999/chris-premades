@@ -217,10 +217,15 @@ async function preTargeting({activity, token, config, dialog, message}) {
     let triggers = getSortedTriggers({activity, item: activity.item, actor: activity.actor, token}, 'preTargeting');
     if (triggers.length) await genericUtils.sleep(50);
     for (let trigger of triggers) {
-        genericUtils.log('dev', 'Executing Midi Macro: ' + trigger.macro.name + ' from ' + trigger.name + ' with a priority of ' + trigger.priority);
         let result;
         try {
-            result = await trigger.macro({trigger, activity, token, actor: token.actor, config, dialog, message});
+            if (typeof trigger.macro === 'string') {
+                genericUtils.log('dev', 'Executing Embedded Midi Macro: ' + trigger.macroName + ' from ' + trigger.name + ' with a priority of ' + trigger.priority);
+                result = await custom.executeScript({script: trigger.macro, trigger, activity, token, actor: token.actor, config, dialog, message});
+            } else {
+                genericUtils.log('dev', 'Executing Midi Macro: ' + trigger.macroName + ' from ' + trigger.name + ' with a priority of ' + trigger.priority);
+                result = await trigger.macro({trigger, activity, token, actor: token.actor, config, dialog, message});
+            }
         } catch (error) {
             console.error(error);
         }
