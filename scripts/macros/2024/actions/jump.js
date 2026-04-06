@@ -50,7 +50,7 @@ async function longJump({trigger, workflow}) {
     if (playAnimation) {
         let position = await crosshairUtils.aimCrosshair({
             token: workflow.token, 
-            maxRange: workflow.utilityRolls[0].total, 
+            maxRange: genericUtils.convertDistance(workflow.utilityRolls[0].total), 
             centerpoint: workflow.token.center, 
             drawBoundries: true, 
             trackDistance: true, 
