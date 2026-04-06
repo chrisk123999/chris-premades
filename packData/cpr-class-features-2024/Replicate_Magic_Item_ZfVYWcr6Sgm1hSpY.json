@@ -32,7 +32,7 @@
         "effects": [],
         "flags": {},
         "range": {
-          "units": "self",
+          "units": "any",
           "override": false,
           "special": ""
         },
