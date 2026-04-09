@@ -1460,7 +1460,10 @@
                 "Bonus": "Emboldening Bond Bonus",
                 "Protective": "Protective Bond",
                 "ProtectiveDamage": "Protective Bond: Damage",
-                "ProtectiveTitle": "Protective Bond: Protect Target?"
+                "ProtectiveTitle": "Protective Bond: Protect Target?",
+                "ProtectiveChooseAlly": "Ask an ally to protect you?",
+                "ProtectivePrompt": "{targetName} was damaged and triggered {featureName}. Spend your reaction to teleport and take their damage?",
+                "ProtectiveConfig": "Prompt damaged target instead of allies:"
             },
             "Engulf": {
                 "Center": "Center Token:",

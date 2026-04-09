@@ -1,3 +1,10 @@
+# 1.5.18 Release:
+## Update Notes:
+- This is not a V14 update. An update for V14 is still a work in progress.
+## Bug Fixes:
+- Emboldening Bond
+- Protective Bond
+
 # 1.5.17 Release:
 ## Update Notes:
 - This is not a V14 update. An update for V14 is still a work in progress.
@@ -7,6 +14,7 @@
 - Tinker's Magic
 - Replicate Magic Item
 - Magic Item Tinker
+- Flash of Genius
 - Battle Ready (Thanks Moto)
 ## New Legacy Content:
 - Battle Ready (Thanks Moto)
