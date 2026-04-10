@@ -18,7 +18,7 @@ async function use({workflow}) {
 }
 async function late({trigger: {entity: effect}, workflow}) {
     if (workflow.hitTargets.size !== 1) return;
-    if (workflowUtils.isAttackType(workflow, 'rangedAttacks')) return;
+    if (!workflowUtils.isAttackType(workflow, 'rangedWeaponAttack')) return;
     let activity = await activityUtils.getActivityByIdentifier(await effectUtils.getOriginItem(effect), 'hailOfThornsBurst', {strict: true});
     if (!activity) return;
     let castLevel = Math.min(effect.flags['chris-premades'].hailOfThorns.castLevel, 6);
