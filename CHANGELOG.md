@@ -4,6 +4,7 @@
 ## Bug Fixes:
 - Emboldening Bond
 - Protective Bond
+- Heroic Inspiration
 
 # 1.5.17 Release:
 ## Update Notes:
