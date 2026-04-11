@@ -23,7 +23,13 @@ async function added({trigger: {entity: item}}) {
     if (item.actor.system.scale[classIdentifier]?.[scaleIdentifier]) return;
     if (item.actor.system.scale[classIdentifier]?.['inspiration']) {
         await itemUtils.setConfig(item, 'scaleIdentifier', 'inspiration');
-        await genericUtils.update(item, 'effects.0.changes.0.value', 'scale.' + classIdentifier + '.inspiration.die');
+        let effect = item.effects.contents[0];
+        if (effect) await genericUtils.update(effect, {changes: [{
+            key: 'system.attributes.init.bonus',
+            mode: 2,
+            value: '@scale.' + classIdentifier + '.inspiration.die',
+            priority: 20
+        }]});
     }
     await itemUtils.fixScales(item);
 }
