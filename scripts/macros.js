@@ -216,6 +216,7 @@ export {dissolution} from './macros/2024/spells/dissolution.js';
 export {dream} from './macros/2024/spells/dream.js';
 export {bloodSacrifice, bloodSacrificeEffect} from './macros/2024/spells/bloodSacrifice.js';
 export {wiltingSmite} from './macros/2024/spells/wiltingSmite.js';
+export {summerWinds} from './macros/2024/spells/summerWinds.js';
 // Items
 export {healersKit} from './macros/2024/items/healersKit.js';
 export {unarmedStrike} from './macros/2024/items/misc/unarmedStrike.js';
@@ -474,6 +475,7 @@ export {superiorDefense} from './macros/2024/classFeatures/monk/superiorDefense.
 export {secondWind} from './macros/2024/classFeatures/fighter/secondWind.js';
 export {tacticalMind} from './macros/2024/classFeatures/fighter/tacticalMind.js';
 export {heroicWarrior} from './macros/2024/classFeatures/fighter/heroicWarrior.js';
+export {studiedAttacks} from './macros/2024/classFeatures/fighter/studiedAttacks.js';
 // Banneret
 export {groupRecovery} from './macros/2024/classFeatures/fighter/banneret/groupRecovery.js';
 export {knightlyEnvoy} from './macros/2024/classFeatures/fighter/banneret/knightlyEnvoy.js';
