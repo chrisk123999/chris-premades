@@ -7,6 +7,11 @@
 - Heroic Inspiration
 - Hail of Thorns
 - Effect Immunity
+- Cutting Words
+- Mantle of Inspiration
+- Psionic Energy
+- Tandem Footwork
+- Warrior of the Gods
 
 # 1.5.17 Release:
 ## Update Notes:
