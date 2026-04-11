@@ -1,4 +1,6 @@
 # 1.5.19 Release:
+## Update Notes:
+- This is not a V14 update. An update for V14 is still a work in progress.
 ## Bug Fixes:
 - Studied Attack
 
