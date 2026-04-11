@@ -5,6 +5,8 @@
 - Emboldening Bond
 - Protective Bond
 - Heroic Inspiration
+- Hail of Thorns
+- Effect Immunity
 
 # 1.5.17 Release:
 ## Update Notes:
