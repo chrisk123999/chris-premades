@@ -6,9 +6,9 @@
       "name": "Studied Attacks",
       "changes": [
         {
-          "key": "flags.midi-qol.advantage.attack.all",
+          "key": "flags.midi-qol.grants.advantage.attack.all",
           "mode": 0,
-          "value": "1",
+          "value": "0",
           "priority": 20
         }
       ],
@@ -22,7 +22,7 @@
         "startTime": null,
         "combat": null,
         "seconds": null,
-        "rounds": null,
+        "rounds": 2,
         "turns": null,
         "startRound": null,
         "startTurn": null
@@ -50,15 +50,22 @@
           "durationExpression": "",
           "macroRepeat": "none",
           "specialDuration": [
-            "turnEndSource",
-            "1Attack"
+            "turnEndSource"
           ]
         },
         "core": {
           "overlay": false
+        },
+        "chris-premades": {
+          "noAnimation": false,
+          "conditions": [],
+          "specialDuration": [
+            "attackedBySource"
+          ],
+          "templateEffectActivities": []
         }
       },
-      "_key": "!items.effects!q94jTr7Dz8ZvNOUu.LUi17o9vEg6sF0tE"
+      "_key": "!items.effects!Dgvfe2R2ScbjWyK9.LUi17o9vEg6sF0tE"
     }
   ],
   "system": {
@@ -86,24 +93,16 @@
           "chatFlavor": ""
         },
         "duration": {
-          "units": "round",
+          "units": "inst",
           "special": "",
           "concentration": false,
           "override": false,
-          "value": "2"
+          "value": ""
         },
-        "effects": [
-          {
-            "_id": "LUi17o9vEg6sF0tE",
-            "level": {
-              "min": null,
-              "max": null
-            }
-          }
-        ],
+        "effects": [],
         "flags": {},
         "range": {
-          "units": "self",
+          "units": "spec",
           "special": "",
           "override": false
         },
@@ -111,7 +110,7 @@
           "prompt": true,
           "affects": {
             "count": "1",
-            "type": "self",
+            "type": "creature",
             "choice": false,
             "special": ""
           },
@@ -245,7 +244,7 @@
         "identifier": "studiedAttacks",
         "source": "chris-premades",
         "rules": "modern",
-        "version": "1.5.18"
+        "version": "1.5.19"
       },
       "macros": {
         "midi": {
@@ -262,6 +261,6 @@
   },
   "img": "icons/sundries/documents/blueprint-axe.webp",
   "folder": "8ax5XkSTWyxxPBH8",
-  "_id": "q94jTr7Dz8ZvNOUu",
-  "_key": "!items!q94jTr7Dz8ZvNOUu"
+  "_id": "Dgvfe2R2ScbjWyK9",
+  "_key": "!items!Dgvfe2R2ScbjWyK9"
 }

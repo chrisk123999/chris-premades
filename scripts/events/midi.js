@@ -412,6 +412,7 @@ async function rollFinished(workflow) {
     await effects.specialDuration(workflow);
     await effects.removeWorkflowEffects(workflow);
     if (genericUtils.getCPRSetting('cleave')) await cleave(workflow);
+    await executeMacroPass(workflow, 'post');
     if (genericUtils.getCPRSetting('devTools')) console.log(workflow);
 }
 async function postAttackRoll(workflow) {
