@@ -1991,6 +1991,7 @@
                 "BaitSwitchAC": "Who gets the AC bonus?",
                 "CommanderConfirm": "Use your reaction to make a single weapon attack?",
                 "CommanderSelect": "Which ally should take an attack?",
+                "Maneuvering": "Spend your reaction to move up to half your speed?",
                 "NoNearby": "No allies with a reaction can see or hear you!",
                 "PushDistance": "How far do you push the target?",
                 "Pushing": "Pushing Attack: Attack",

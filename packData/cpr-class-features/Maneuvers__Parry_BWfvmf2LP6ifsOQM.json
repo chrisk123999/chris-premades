@@ -92,7 +92,7 @@
           "visible": false
         },
         "sort": 0,
-        "useConditionText": "",
+        "useConditionText": "false",
         "forceDialog": false,
         "effectConditionText": "",
         "midiAutomationOnly": false,
@@ -155,7 +155,7 @@
       "effectActivation": false,
       "rollAttackPerTarget": "default",
       "itemCondition": "",
-      "reactionCondition": "reaction === 'isHit' && item.actionType === 'mwak'",
+      "reactionCondition": "",
       "effectCondition": "",
       "AoETargetType": "any",
       "AoETargetTypeIncludeSelf": true,
@@ -193,13 +193,13 @@
     "chris-premades": {
       "info": {
         "name": "Maneuvers: Parry",
-        "version": "1.1.0",
+        "version": "1.5.20",
         "identifier": "maneuversParry",
         "source": "chris-premades"
       },
       "macros": {
         "midi": {
-          "item": [
+          "actor": [
             "maneuversParry"
           ]
         }
