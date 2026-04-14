@@ -6,6 +6,7 @@
 - Scorching Ray
 - Maneuver: Parry
 - Quick Conditions UI
+- Paladin's Smite
 ## New Legacy Content
 - Maneuver: Maneuvering Attack
 
