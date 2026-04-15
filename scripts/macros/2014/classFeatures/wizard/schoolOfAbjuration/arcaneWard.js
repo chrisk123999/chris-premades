@@ -1,7 +1,7 @@
-import {activityUtils, actorUtils, dialogUtils, effectUtils, genericUtils, itemUtils, socketUtils, tokenUtils, workflowUtils} from '../../../../../utils.js';
+import {activityUtils, dialogUtils, genericUtils, itemUtils, socketUtils, tokenUtils, workflowUtils} from '../../../../../utils.js';
 
 export async function arcaneWardHelper(item, ditem, token, targetToken) {
-    let hpDamage = ditem.damageDetail.reduce((acc, i) => acc + i.value, 0) - ditem.oldTempHP;
+    let hpDamage = ditem.damageDetail.reduce((acc, i) => acc + (i.properties.has('heal') ? 0 : i.value), 0) - ditem.oldTempHP;
     if (hpDamage <= 0) return;
     let uses = item.system.uses.value;
     if (!uses) return;

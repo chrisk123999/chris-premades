@@ -7,6 +7,9 @@
 - Maneuver: Parry
 - Quick Conditions UI
 - Paladin's Smite
+- Beguiling Magic
+- Arcane Ward
+- Lantern of Revealing
 ## New Legacy Content
 - Maneuver: Maneuvering Attack
 
