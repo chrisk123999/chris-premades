@@ -448,6 +448,13 @@ export {magicalCunning} from './macros/2024/classFeatures/warlock/magicalCunning
 export {stepsOfTheFey} from './macros/2024/classFeatures/warlock/archfey/stepsOfTheFey.js';
 // Feline
 export {felineForm, felineFormActive} from './macros/2024/classFeatures/warlock/feline/felineForm.js';
+// Great Old One
+export {awakenedMind} from './macros/2024/classFeatures/warlock/greatOldOne/awakenedMind.js';
+export {clairvoyantCombatant} from './macros/2024/classFeatures/warlock/greatOldOne/clairvoyantCombatant.js';
+export {createThrall, thrallBonus} from './macros/2024/classFeatures/warlock/greatOldOne/createThrall.js';
+export {eldritchHex} from './macros/2024/classFeatures/warlock/greatOldOne/eldritchHex.js';
+export {psychicSpells} from './macros/2024/classFeatures/warlock/greatOldOne/psychicSpells.js';
+export {thoughtShield} from './macros/2024/classFeatures/warlock/greatOldOne/thoughtShield.js';
 // Invocations
 export {pactOfTheChain} from './macros/2024/classFeatures/warlock/invocations/pactOfTheChain.js';
 export {pactOfTheBlade, pactOfTheBladeAttack} from './macros/2024/classFeatures/warlock/invocations/pactOfTheBlade.js';

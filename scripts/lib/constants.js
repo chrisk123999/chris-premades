@@ -205,6 +205,7 @@ const armorTypes = [
     'medium',
     'heavy'
 ];
+const autoOptions = () => ['always', 'prompt', 'never'].map(i => ({label: genericUtils.translate('CHRISPREMADES.Generic.' + i.capitalize()), value: i}));
 const damageTypeOptions = () => Object.entries(CONFIG.DND5E.damageTypes).map(i => ({label: i[1].label, value: i[0]}));
 const creatureTypeOptions = () => Object.entries(CONFIG.DND5E.creatureTypes).map(i => ({label: i[1].label, value: i[0]}));
 const actorCompendiumPacks = () => [{label: '', value: ''}, ...game.packs.filter(i => i.documentName === 'Actor').map(i => ({label: i.metadata.label, value: i.metadata.id}))];
@@ -697,6 +698,7 @@ export let constants = {
     meleeWeaponTypes,
     rangedWeaponTypes,
     armorTypes,
+    autoOptions,
     damageTypeOptions,
     creatureTypeOptions,
     actorCompendiumPacks,

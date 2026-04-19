@@ -684,6 +684,7 @@
         },
         "Generic": {
             "Actions": "Actions",
+            "Always": "Always",
             "Amount": "Amount:",
             "Automatic": "Automatic",
             "Available": "Available",

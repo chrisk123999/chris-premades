@@ -1,0 +1,54 @@
+{
+  "name": "Eldritch Hex",
+  "type": "feat",
+  "effects": [],
+  "system": {
+    "activities": {},
+    "uses": {
+      "spent": 0,
+      "recovery": [],
+      "max": ""
+    },
+    "advancement": [],
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "identifier": "eldritch-hex",
+    "source": {
+      "book": "PHB 2024",
+      "page": "",
+      "license": "",
+      "custom": "",
+      "rules": "2024",
+      "revision": 1
+    },
+    "crewed": false,
+    "enchant": {},
+    "prerequisites": {
+      "items": [],
+      "level": 10,
+      "repeatable": false
+    },
+    "properties": [],
+    "requirements": "",
+    "type": {
+      "value": "class",
+      "subtype": ""
+    }
+  },
+  "flags": {
+    "chris-premades": {
+      "info": {
+        "identifier": "eldritchHex",
+        "version": "1.5.21",
+        "source": "chris-premades",
+        "rules": "modern"
+      }
+    }
+  },
+  "img": "icons/magic/symbols/star-yellow.webp",
+  "folder": "z8weZe6hdlD0L48X",
+  "_id": "IP5yp4PWj9RKuCNc",
+  "_key": "!items!IP5yp4PWj9RKuCNc"
+}

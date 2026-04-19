@@ -1,3 +1,14 @@
+# 1.5.21 Release:
+## Update Notes:
+- This is not a V14 update. An update for V14 is still a work in progress.
+## New Modern Content:
+- Awakened Mind
+- Psychic Spells
+- Clairvoyant Combatant
+- Eldritch Hex
+- Thought Shield
+- Create Thrall
+
 # 1.5.20 Release:
 ## Update Notes:
 - This is not a V14 update. An update for V14 is still a work in progress.

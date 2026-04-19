@@ -1,0 +1,61 @@
+{
+  "name": "Create Thrall",
+  "type": "feat",
+  "effects": [],
+  "system": {
+    "activities": {},
+    "uses": {
+      "spent": 0,
+      "recovery": [],
+      "max": ""
+    },
+    "advancement": [],
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "identifier": "create-thrall",
+    "source": {
+      "book": "PHB 2024",
+      "page": "",
+      "license": "",
+      "custom": "",
+      "rules": "2024",
+      "revision": 1
+    },
+    "crewed": false,
+    "enchant": {},
+    "prerequisites": {
+      "items": [],
+      "level": 14,
+      "repeatable": false
+    },
+    "properties": [],
+    "requirements": "",
+    "type": {
+      "value": "class",
+      "subtype": ""
+    }
+  },
+  "flags": {
+    "chris-premades": {
+      "info": {
+        "identifier": "createThrall",
+        "version": "1.5.21",
+        "source": "chris-premades",
+        "rules": "modern"
+      },
+      "macros": {
+        "midi": {
+          "actor": [
+            "createThrall"
+          ]
+        }
+      }
+    }
+  },
+  "img": "icons/commodities/treasure/doll-mummy.webp",
+  "folder": "z8weZe6hdlD0L48X",
+  "_id": "U72T9tA2oDZqDKR2",
+  "_key": "!items!U72T9tA2oDZqDKR2"
+}

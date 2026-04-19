@@ -1,4 +1,5 @@
 import {Summons} from '../../../lib/summons.js';
+import {addThrallBonuses} from '../classFeatures/warlock/greatOldOne/createThrall.js';
 import {actorUtils, itemUtils, effectUtils, genericUtils, compendiumUtils, constants, workflowUtils, errors, activityUtils} from '../../../utils.js';
 async function use({workflow}){
     let activityIdentifier = activityUtils.getIdentifier(workflow.activity);
@@ -94,9 +95,10 @@ async function use({workflow}){
         }
         updates.actor.items.push(psychicSlamData, whisperingAuraData);
     }
+    if (workflow.workflowOptions['chris-premades']?.createThrall) updates = addThrallBonuses(updates, workflow);
     let animation = itemUtils.getConfig(workflow.item, creatureType + 'Animation') ?? 'none';
     await Summons.spawn(sourceActor, updates, workflow.item, workflow.token, {
-        duration: 3600, 
+        duration: itemUtils.convertDuration(workflow.activity)?.seconds || 3600, 
         range: 90, 
         animation,
         initiativeType: 'follows',
