@@ -274,6 +274,10 @@ export {guidedPrecision} from './macros/2024/classFeatures/artificer/cartographe
 export {ingeniousMovement} from './macros/2024/classFeatures/artificer/cartographer/ingeniousMovement.js';
 export {mappingMagic} from './macros/2024/classFeatures/artificer/cartographer/mappingMagic.js';
 export {superiorAtlas, superiorAtlasEffect} from './macros/2024/classFeatures/artificer/cartographer/superiorAtlas.js';
+// Forge Adept
+export {ghaalShaarat, upgradeGhaalShaarat} from './macros/2024/classFeatures/artificer/forgeAdept/ghaalshaarat.js';
+export {perfectWeapon} from './macros/2024/classFeatures/artificer/forgeAdept/perfectWeapon.js';
+export {runesOfWar, runesOfWarAura, runesOfWarDamage} from './macros/2024/classFeatures/artificer/forgeAdept/runesOfWar.js';
 // Barbarian
 export {rage, rageRaging, rageUpkeep} from './macros/2024/classFeatures/barbarian/rage.js';
 export {unarmoredDefenseBarbarian} from './macros/2024/classFeatures/barbarian/unarmoredDefense.js';

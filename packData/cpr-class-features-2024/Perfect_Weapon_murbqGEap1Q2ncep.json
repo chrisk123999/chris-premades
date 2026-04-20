@@ -1,0 +1,131 @@
+{
+  "name": "Perfect Weapon",
+  "type": "feat",
+  "effects": [
+    {
+      "name": "Perfect Weapon: Soul Bound",
+      "img": "icons/weapons/axes/axe-double-gold.webp",
+      "origin": "Actor.1ANL4qqWoi2V46iP.Item.6fwmbSk0PBYjRF38",
+      "_id": "mIPiTduYpO8QYDgk",
+      "type": "base",
+      "system": {},
+      "changes": [
+        {
+          "key": "system.traits.dr.value",
+          "mode": 2,
+          "value": "psychic",
+          "priority": 20
+        },
+        {
+          "key": "system.traits.ci.value",
+          "mode": 2,
+          "value": "charmed",
+          "priority": 20
+        },
+        {
+          "key": "system.traits.ci.value",
+          "mode": 2,
+          "value": "frightened",
+          "priority": 20
+        }
+      ],
+      "disabled": false,
+      "duration": {
+        "startTime": null,
+        "combat": null,
+        "seconds": null,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "transfer": true,
+      "statuses": [],
+      "sort": 0,
+      "flags": {
+        "dnd5e": {
+          "riders": {
+            "statuses": []
+          }
+        },
+        "dae": {
+          "disableCondition": "",
+          "stackable": "noneName",
+          "showIcon": false,
+          "disableIncapacitated": false,
+          "durationExpression": "",
+          "macroRepeat": "none",
+          "specialDuration": []
+        },
+        "core": {
+          "overlay": false
+        }
+      },
+      "_key": "!items.effects!murbqGEap1Q2ncep.mIPiTduYpO8QYDgk"
+    }
+  ],
+  "system": {
+    "activities": {},
+    "uses": {
+      "spent": null,
+      "recovery": [],
+      "max": ""
+    },
+    "advancement": [],
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "identifier": "perfect-weapon",
+    "source": {
+      "book": "ExEb",
+      "page": "",
+      "license": "",
+      "custom": "",
+      "rules": "2024",
+      "revision": 1
+    },
+    "crewed": false,
+    "enchant": {},
+    "prerequisites": {
+      "items": [],
+      "level": 15,
+      "repeatable": false
+    },
+    "properties": [],
+    "requirements": "",
+    "type": {
+      "value": "class",
+      "subtype": ""
+    }
+  },
+  "flags": {
+    "chris-premades": {
+      "info": {
+        "identifier": "perfectWeapon",
+        "version": "1.5.21",
+        "source": "chris-premades",
+        "rules": "modern"
+      },
+      "macros": {
+        "combat": [
+          "perfectWeapon"
+        ],
+        "midi": {
+          "actor": [
+            "perfectWeapon"
+          ]
+        },
+        "item": [
+          "upgradeGhaalShaarat"
+        ]
+      }
+    }
+  },
+  "img": "icons/weapons/axes/axe-double-gold.webp",
+  "folder": "WloUsSxc7WL3ScmY",
+  "_id": "murbqGEap1Q2ncep",
+  "_key": "!items!murbqGEap1Q2ncep"
+}

@@ -63,6 +63,22 @@ let modernPacks = {
     thirdPartyFeats: 'chris-premades.CPRThirdPartyFeats2024',
     thirdPartyItems: 'chris-premades.CPRThirdPartyItems2024'
 };
+let damageIcons = {
+    acid: 'icons/magic/acid/projectile-faceted-glob.webp',
+    bludgeoning: 'icons/magic/earth/projectiles-stone-salvo-gray.webp',
+    cold: 'icons/magic/air/wind-tornado-wall-blue.webp',
+    fire: 'icons/magic/fire/beam-jet-stream-embers.webp',
+    force: 'icons/magic/sonic/projectile-sound-rings-wave.webp',
+    lightning: 'icons/magic/lightning/bolt-blue.webp',
+    necrotic: 'icons/magic/unholy/projectile-bolts-salvo-pink.webp',
+    piercing: 'icons/skills/melee/strike-polearm-light-orange.webp',
+    poison: 'icons/magic/death/skull-poison-green.webp',
+    psychic: 'icons/magic/control/fear-fright-monster-grin-red-orange.webp',
+    radiant: 'icons/magic/holy/projectiles-blades-salvo-yellow.webp',
+    slashing: 'icons/skills/melee/strike-sword-gray.webp',
+    thunder: 'icons/magic/sonic/explosion-shock-wave-teal.webp',
+    no: 'icons/svg/cancel.svg'
+};
 function setUseLocalCompendium(value) {
     if (value) {
         packs.spellFeatures = 'world.cpr-spell-features';
@@ -734,5 +750,6 @@ export let constants = {
     getBaseRangedWeaponOptions,
     getToolNames,
     getFeatOptions,
-    modernFeaturePacks
+    modernFeaturePacks,
+    damageIcons
 };

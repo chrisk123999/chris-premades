@@ -1627,6 +1627,11 @@
             "GenericTeleport": {
                 "Name": "Generic Teleport"
             },
+            "GhaalShaarat": {
+                "RequireTools": "Require Smith's Tools:",
+                "NeedTools": "You must have Smith's Tools to use {itemName}!",
+                "NoWeapons": "No simple or martial melee weapons found!"
+            },
             "Grapple": {
                 "ChooseSkill": "How would you like to contest the grapple?",
                 "ChooseSkillEscape": "How would you like to escape the grapple?",
@@ -2134,6 +2139,11 @@
             },
             "PeerlessSkill": {
                 "Confirm": "Did the check succeed?"
+            },
+            "PerfectWeapon": {
+                "TransferBonus": "Transfer weapon bonus to AC:",
+                "Remember": "Remember and auto-apply choices:",
+                "Clear": "Clear saved choices each combat:"
             },
             "Piercer": {
                 "Reroll": "Reroll which lowest die?"

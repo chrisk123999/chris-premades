@@ -8,6 +8,11 @@
 - Eldritch Hex
 - Thought Shield
 - Create Thrall
+- Ghaal'Shaarat
+- Perfect Weapon
+- Runes of War
+## API Update Notes
+- The icons used in `dialogUtils.selectDamageType` are now available under `constants.damageIcons`.
 
 # 1.5.20 Release:
 ## Update Notes:

@@ -1,0 +1,208 @@
+{
+  "name": "Runes of War",
+  "type": "feat",
+  "effects": [],
+  "system": {
+    "activities": {
+      "utilityAuOWclNe0": {
+        "name": "Aura of War",
+        "type": "utility",
+        "_id": "utilityAuOWclNe0",
+        "sort": 0,
+        "activation": {
+          "type": "action",
+          "value": 1,
+          "condition": "",
+          "override": false
+        },
+        "consumption": {
+          "targets": [
+            {
+              "type": "itemUses",
+              "value": "1",
+              "target": "",
+              "scaling": {}
+            }
+          ],
+          "scaling": {
+            "allowed": false,
+            "max": ""
+          },
+          "spellSlot": true
+        },
+        "description": {
+          "chatFlavor": ""
+        },
+        "duration": {
+          "value": "1",
+          "units": "minute",
+          "special": "",
+          "concentration": false,
+          "override": false
+        },
+        "effects": [],
+        "flags": {},
+        "range": {
+          "units": "self",
+          "special": "",
+          "override": false
+        },
+        "target": {
+          "template": {
+            "count": "",
+            "contiguous": false,
+            "type": "",
+            "size": "30",
+            "width": "",
+            "height": "",
+            "units": "ft"
+          },
+          "affects": {
+            "count": "",
+            "type": "",
+            "choice": false,
+            "special": ""
+          },
+          "prompt": true,
+          "override": false
+        },
+        "uses": {
+          "spent": 0,
+          "recovery": [],
+          "max": ""
+        },
+        "visibility": {
+          "level": {
+            "min": null,
+            "max": null
+          },
+          "requireAttunement": false,
+          "requireIdentification": false,
+          "requireMagic": false,
+          "identifier": ""
+        },
+        "roll": {
+          "prompt": false,
+          "visible": false,
+          "formula": "",
+          "name": ""
+        },
+        "useConditionText": "",
+        "useConditionReason": "",
+        "effectConditionText": "",
+        "macroData": {
+          "name": "",
+          "command": ""
+        },
+        "ignoreTraits": {
+          "idi": false,
+          "idr": false,
+          "idv": false,
+          "ida": false,
+          "idm": false
+        },
+        "midiProperties": {
+          "ignoreTraits": [],
+          "triggeredActivityId": "none",
+          "triggeredActivityConditionText": "",
+          "triggeredActivityTargets": "targets",
+          "triggeredActivityRollAs": "self",
+          "confirmTargets": "default",
+          "automationOnly": false,
+          "identifier": "",
+          "triggeredActivityConsume": true,
+          "triggeredActivityConfigure": true,
+          "autoConsume": false,
+          "forceConsumeDialog": "default",
+          "forceRollDialog": "default",
+          "forceDamageDialog": "default",
+          "autoTargetType": "any",
+          "autoTargetAction": "default",
+          "otherActivityCompatible": true,
+          "otherActivityAsParentType": true,
+          "displayActivityName": false,
+          "rollMode": "default",
+          "chooseEffects": false,
+          "toggleEffect": false,
+          "ignoreFullCover": false,
+          "removeChatButtons": "default",
+          "magicEffect": false,
+          "magicDamage": false,
+          "noConcentrationCheck": false,
+          "skipConcentrationCheck": false,
+          "autoCEEffects": "default"
+        },
+        "isOverTimeFlag": false,
+        "overTimeProperties": {
+          "saveRemoves": true,
+          "rollAs": "target",
+          "preRemoveConditionText": "",
+          "postRemoveConditionText": ""
+        },
+        "otherActivityId": "none",
+        "otherActivityAsParentType": true
+      }
+    },
+    "uses": {
+      "spent": 0,
+      "max": "max(1, @abilities.int.mod)",
+      "recovery": [
+        {
+          "period": "lr",
+          "type": "recoverAll"
+        }
+      ]
+    },
+    "advancement": [],
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "identifier": "runes-of-war",
+    "source": {
+      "book": "ExEb",
+      "page": "",
+      "license": "",
+      "custom": "",
+      "rules": "2024",
+      "revision": 1
+    },
+    "crewed": false,
+    "enchant": {},
+    "prerequisites": {
+      "items": [],
+      "level": 9,
+      "repeatable": false
+    },
+    "properties": [],
+    "requirements": "",
+    "type": {
+      "value": "class",
+      "subtype": ""
+    }
+  },
+  "flags": {
+    "chris-premades": {
+      "info": {
+        "identifier": "runesOfWar",
+        "version": "1.5.21",
+        "source": "chris-premades",
+        "rules": "modern"
+      },
+      "macros": {
+        "midi": {
+          "item": [
+            "runesOfWar"
+          ]
+        },
+        "item": [
+          "upgradeGhaalShaarat"
+        ]
+      }
+    }
+  },
+  "img": "icons/magic/symbols/elements-air-earth-fire-water.webp",
+  "folder": "WloUsSxc7WL3ScmY",
+  "_id": "f7naOdccLNeI4XZA",
+  "_key": "!items!f7naOdccLNeI4XZA"
+}
