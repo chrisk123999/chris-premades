@@ -11,7 +11,7 @@
 - Ghaal'Shaarat
 - Perfect Weapon
 - Runes of War
-- Relentless Endurance
+- Relentless Endurance (Thanks Peril)
 ## API Update Notes
 - The icons used in `dialogUtils.selectDamageType` are now available under `constants.damageIcons`.
 
