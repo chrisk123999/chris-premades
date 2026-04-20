@@ -253,7 +253,7 @@ async function damage({trigger: {entity: item}, workflow}) {
         if (!selection) return;
         targets = [selection[0]];
         if (itemUtils.getItemByIdentifier(workflow.actor, 'deathsFriend')) targets.push(targetToken);
-        let i18nData = {name: tokensOfTheDeparted.name, feature: wailsFromTheGrave.name};
+        let i18nData = {name: tokensOfTheDeparted?.name, feature: wailsFromTheGrave.name};
         let spendToken = false;
         let tokenActivity;
         if (tokenUses) {

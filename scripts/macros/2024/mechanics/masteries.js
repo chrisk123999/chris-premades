@@ -23,7 +23,7 @@ async function cleave({workflow}) {
     if (!selection?.length) return;
     await setTurnCheck(workflow.actor, 'cleave');
     selection = selection[0];
-    let mod = workflow.actor.system.abilities[workflow.activity.ability].mod;
+    let mod = activityUtils.getMod(workflow.activity);
     if (mod > 0) {
         let itemData = workflow.item.toObject();
         delete itemData._id;
@@ -43,7 +43,7 @@ async function cleave({workflow}) {
 }
 async function graze({workflow}) {
     if (workflow.hitTargets.size) return;
-    let mod = workflow.actor.system.abilities[workflow.activity.ability].mod;
+    let mod = activityUtils.getMod(workflow.activity);
     if (!mod) return;
     await workflowUtils.applyDamage([workflow.targets.first()], mod, workflow.defaultDamageType);
 }
@@ -117,7 +117,7 @@ async function topple({workflow}) {
     if (!workflow.hitTargets.size) return;
     let selection = await dialogUtils.confirm('CHRISPREMADES.Mastery.Topple.Name', 'CHRISPREMADES.Mastery.Topple.Context');
     if (!selection) return;
-    let featureData = await compendiumUtils.getItemFromCompendium(constants.packs.miscellaneousItems, 'Mastery: Topple', {object: true, getDescription: true, flatDC: workflow.actor.system.abilities[workflow.activity.ability].dc});
+    let featureData = await compendiumUtils.getItemFromCompendium(constants.packs.miscellaneousItems, 'Mastery: Topple', {object: true, getDescription: true, flatDC: activityUtils.getSaveDC(workflow.activity)});
     await workflowUtils.syntheticItemDataRoll(featureData, workflow.actor, [workflow.targets.first()]);
 }
 async function vex({workflow}) {

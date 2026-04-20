@@ -1,4 +1,4 @@
-import {errors, effectUtils, genericUtils, itemUtils, rollUtils} from '../../utils.js';
+import {errors, effectUtils, genericUtils, itemUtils, rollUtils, actorUtils} from '../../utils.js';
 function getActivityByIdentifier(item, identifier, {strict = false} = {}) {
     let activity = item.system.activities.find(i => getIdentifier(i) === identifier);
     if (!activity && strict) {
@@ -103,11 +103,13 @@ function getConditions(activity) {
     return conditions;
 }
 function getMod(activity) {
-    return activity.actor.system.abilities[activity.ability].mod;
+    let ability = activity.ability || actorUtils.getBestAbility(activity.actor, Array.from(activity.availableAbilities));
+    return activity.actor.system.abilities[ability].mod;
 }
 function getSaveDC(activity) {
     if (activity.type === 'save') return activity.save.dc.value;
-    return activity.actor.system.abilities[activity.ability].dc ?? 10;
+    let ability = activity.ability || actorUtils.getBestAbility(activity.actor, Array.from(activity.availableAbilities));
+    return activity.actor.system.abilities[ability]?.dc ?? 10;
 }
 function hasSave(activity) {
     if (activity.type === 'save') return true;
