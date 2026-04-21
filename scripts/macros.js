@@ -125,6 +125,7 @@ export {conjureWoodlandBeings, conjureWoodlandBeingsDamage} from './macros/2024/
 export {crownOfMadness} from './macros/2024/spells/crownOfMadness.js';
 export {crusadersMantle} from './macros/2024/spells/crusadersMantle.js';
 export {darkness} from './macros/2024/spells/darkness.js';
+export {deathArmor, deathArmorEffect} from './macros/2024/spells/deathArmor.js';
 export {deathWard} from './macros/2024/spells/deathWard.js';
 export {destructiveWave} from './macros/2024/spells/destructiveWave.js';
 export {detectMagic} from './macros/2024/spells/detectMagic.js';

@@ -1,11 +1,14 @@
 # 1.5.22 Release:
 ## Update Notes:
 - This is not a V14 update. An update for V14 is still a work in progress.
+## New Modern Content
+- Death Armor
 ## Bug Fixes
 - Wails from the Grave
 - Cleave Mastery
 - Graze Mastery
 - Topple Mastery
+- Effect Descriptions
 
 # 1.5.21 Release:
 ## Update Notes:

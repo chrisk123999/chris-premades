@@ -115,10 +115,12 @@ async function slow({workflow}) {
 }
 async function topple({workflow}) {
     if (!workflow.hitTargets.size) return;
+    let target = workflow.targets.first();
+    if (target.actor?.statuses.has('prone')) return;
     let selection = await dialogUtils.confirm('CHRISPREMADES.Mastery.Topple.Name', 'CHRISPREMADES.Mastery.Topple.Context');
     if (!selection) return;
     let featureData = await compendiumUtils.getItemFromCompendium(constants.packs.miscellaneousItems, 'Mastery: Topple', {object: true, getDescription: true, flatDC: activityUtils.getSaveDC(workflow.activity)});
-    await workflowUtils.syntheticItemDataRoll(featureData, workflow.actor, [workflow.targets.first()]);
+    await workflowUtils.syntheticItemDataRoll(featureData, workflow.actor, [target]);
 }
 async function vex({workflow}) {
     if (!workflow.damageItem) return;
