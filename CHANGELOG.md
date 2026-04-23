@@ -9,6 +9,7 @@
 - Graze Mastery
 - Topple Mastery
 - Effect Descriptions
+- Sneak Attack (modern)
 
 # 1.5.21 Release:
 ## Update Notes:

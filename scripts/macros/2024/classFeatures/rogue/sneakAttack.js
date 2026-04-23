@@ -189,6 +189,7 @@ export let sneakAttack = {
         {
             classIdentifier: 'classIdentifier',
             scaleIdentifier: 'scaleIdentifier',
+            npcInfersScale: true,
             data: {
                 type: 'ScaleValue',
                 configuration: {

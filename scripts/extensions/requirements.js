@@ -82,10 +82,12 @@ async function scaleCheck(item) {
     let scales = macro.scales;
     if (!scales) return;
     let missingClass = false;
+    let npc = item.parent.type === 'npc';
     await Promise.all(scales.map(async data => {
         let classIdentifier = itemUtils.getConfig(item, data.classIdentifier);
         let classItem = item.actor.classes[classIdentifier] ?? item.actor.subclasses[classIdentifier];
         if (!classItem) {
+            if (npc && data.npcInfersScale) return;
             missingClass = true;
             let message = genericUtils.format('CHRISPREMADES.Requirements.MissingClass', {classIdentifier});
             genericUtils.notify(message, 'warn');
