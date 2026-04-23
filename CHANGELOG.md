@@ -10,6 +10,7 @@
 - Topple Mastery
 - Effect Descriptions
 - Sneak Attack (modern)
+- Umbral Sight (modern)
 
 # 1.5.21 Release:
 ## Update Notes:

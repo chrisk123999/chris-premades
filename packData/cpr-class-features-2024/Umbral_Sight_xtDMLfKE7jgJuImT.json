@@ -74,7 +74,7 @@
     "chris-premades": {
       "info": {
         "name": "Umbral Sight",
-        "version": "1.3.81",
+        "version": "1.5.22",
         "identifier": "umbralSight",
         "source": "chris-premades",
         "rules": "modern"
@@ -131,25 +131,25 @@
         {
           "key": "system.attributes.senses.darkvision",
           "mode": 4,
-          "value": "30",
+          "value": "60",
           "priority": 20
         },
         {
           "key": "system.attributes.senses.darkvision",
           "mode": 2,
-          "value": "30",
+          "value": "60",
           "priority": 40
         },
         {
           "key": "ATL.sight.range",
           "mode": 4,
-          "value": "30",
+          "value": "60",
           "priority": 20
         },
         {
           "key": "ATL.sight.range",
           "mode": 2,
-          "value": "30",
+          "value": "60",
           "priority": 40
         }
       ],
