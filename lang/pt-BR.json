@@ -3478,6 +3478,10 @@
                 "Hint": "Ao conjurar magias do tipo \"Conjurar X\", o jogador (não o Mestre) pode selecionar quais criaturas conjurar.",
                 "Name": "Jogador Escolhe Conjurações"
             },
+            "rerouteAllToGmSocket": {
+                "Hint": "O Mestre executa todas as escolhas em vez dos jogadores, o que é útil em alguns jogos híbridos com uma tela compartilhada.",
+                "Name": "Redirecione as Seleções de Rolagem e Diálogo Solicitadas para o Mestre"
+            },
             "quickConditions": {
                 "Hint": "Adiciona um botão aos campos Condição de Uso e Condição de Efeito Ativo na aba do Midi-QOL em atividades, que abre uma interface de condição rápida.",
                 "Name": "Condições Rápidas"

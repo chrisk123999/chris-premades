@@ -81,7 +81,7 @@
                     "Content": "Zvol cíl akce ",
                     "Title": "Výběr cíle"
                 }
-            } 
+            }
         },
         "CommonFeatures": {
             "Amphibious": "Obojživelník",
@@ -432,7 +432,7 @@
                 },
                 "movedNear": {
                     "Label": "Se pohnul/a blízko"
-                },    
+                },
                 "movedScene": {
                     "Label": "Scéna: Se pohnul/a"
                 },
@@ -473,7 +473,7 @@
                     "Label": "Bonus scény"
                 },
                 "sceneCreate": {
-                    "Label": "Vytvořeno scénou"              
+                    "Label": "Vytvořeno scénou"
                 },
                 "sceneDamageRollComplete": {
                     "Label": "Hod na zásah scény dokončen"
@@ -545,7 +545,7 @@
                     "Label": "Konec příštího tahu"
                 },
                 "turnEndSource": {
-                    "Label": "Konec tahu zdroje"    
+                    "Label": "Konec tahu zdroje"
                 },
                 "turnStart": {
                     "Label": "Začátek tahu"
@@ -3278,11 +3278,11 @@
             "manualRollsUsers": {
                 "Hint": "Nastaví, kteří uživatelé používají ruční hody.",
                 "Name": "Uživatelé ručních hodů"
-            },            
+            },
             "matchSummonElevation": {
                 "Hint": "Pokud je zaškrtnuto, pak budou tokeny přivolávané pomocí CPR vytvářeny ve stejné výšce jako token přivolávače.",
                 "Name": "Sjednotit výšku při přivolaní?"
-            },         
+            },
             "migrationVersion": {
                 "Hint": "Verze migrace",
                 "Name": "Verze migrace"
@@ -3330,6 +3330,10 @@
             "playerSelectsConjures": {
                 "Hint": "Při sesílání kouzel 'Vyvolej X' může hráč (nikoliv PJ) vybrat, jaké bytosti budou vyvolány.",
                 "Name": "Může hráč vybírat vyvolané bytosti?"
+            },
+            "rerouteAllToGmSocket": {
+                "Hint": "Všechna rozhodnutí provádí PJ místo hráčů, což se hodí v některých hybridních hrách se společným zobrazením.",
+                "Name": "Přesměrovat požadované hody a výběry z dialogu do PJ"
             },
             "quickConditions": {
                 "Hint": "Zaškrtnutí přidá tlačítko do polí 'Podmínky' a 'Podmínky aktivního efektu' v záložce Midi aktivit, které otevírá rozhraní rychlých podmínek.",

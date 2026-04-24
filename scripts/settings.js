@@ -495,6 +495,12 @@ export function registerSettings() {
         category: 'mechanics'
     });
     addSetting({
+        key: 'rerouteAllToGmSocket',
+        type: Boolean,
+        default: false,
+        category: 'mechanics'
+    });
+    addSetting({
         key: 'lastUpdateCheck',
         type: Number,
         default: 0,

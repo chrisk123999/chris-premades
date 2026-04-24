@@ -2807,6 +2807,10 @@
                 "Hint": "Quando lancia incantesimi \"Evoca X\", il giocatore (non il DM) può selezionare le creature da evocare.",
                 "Name": "Giocatore Seleziona Evocazioni"
             },
+            "rerouteAllToGmSocket": {
+                "Hint": "Il DM mette in atto tutte le scelte al posto dei giocatori, il che risulta utile in alcune forme di gioco ibride con visualizzazione collettiva.",
+                "Name": "Reindirizza i Tiri di Dado e le Selezioni di Dialogo Richiesti al DM"
+            },
             "replaceStatusEffectIcons": {
                 "Hint": "Quando abilitato, le icone di stato verranno sostituite.",
                 "Name": "Sostituisci Icone di Stato"

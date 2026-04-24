@@ -2648,6 +2648,10 @@
                 "Hint": "Lors du lancement de sorts \"Conjure X\", le joueur (et non le MJ) peut sélectionner les créatures à convoquer.",
                 "Name": "Le Joueur Sélectionne les Conjurations"
             },
+            "rerouteAllToGmSocket": {
+                "Hint": "Le MJ effectue tous les choix à la place des joueurs, ce qui est utile dans certains jeux hybrides avec un affichage commun.",
+                "Name": "Réorienter les Jets de dés et les Choix de Dialogues Demandés vers le MJ"
+            },
             "replaceStatusEffectIcons": {
                 "Hint": "Lorsqu'il est activé, les icônes de statut seront remplacées.",
                 "Name": "Remplacer les Icônes de Statut"
