@@ -73,7 +73,7 @@ async function damage({trigger: {entity: item}, workflow}) {
                 'checkbox',
                 [
                     {label: 'CHRISPREMADES.Macros.PactOfTheBlade.ReplaceDamage', name: 'replace', options: {isChecked: replace}},
-                    {label: 'CHRISPREMADES.Macros.PerfectWeapon.Remember', name: 'remember', options: {isChecked: remember}}
+                    {label: 'CHRISPREMADES.Config.Remember', name: 'remember', options: {isChecked: remember}}
                 ],
                 {displayAsRows: true}
             ]
@@ -91,7 +91,7 @@ async function damage({trigger: {entity: item}, workflow}) {
         if (selection.replace !== replace) genericUtils.setProperty(updates, 'flags.chris-premades.perfectWeaponChoices.replace', !!selection.replace);
         if (selection.remember !== remember) genericUtils.setProperty(updates, 'flags.chris-premades.config.remember', !!selection.remember);
         if (Object.keys(updates).length) await genericUtils.update(item, updates);
-        ({damageType, remember, replace} = selection);
+        ({damageType, replace} = selection);
     }
     if (!damageType || damageType === 'no') return;
     if (replace) for (let i = 0; i < workflow.activity.damage.parts.length; i++) {
@@ -157,14 +157,14 @@ export let perfectWeapon = {
         },
         {
             value: 'remember',
-            label: 'CHRISPREMADES.Macros.PerfectWeapon.Remember',
+            label: 'CHRISPREMADES.Config.Remember',
             type: 'checkbox',
             default: false,
             category: 'mechanics'
         },
         {
             value: 'clearRemember',
-            label: 'CHRISPREMADES.Macros.PerfectWeapon.Clear',
+            label: 'CHRISPREMADES.Config.Clear',
             type: 'checkbox',
             default: true,
             category: 'mechanics'

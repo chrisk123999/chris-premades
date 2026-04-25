@@ -1,0 +1,54 @@
+{
+  "name": "Stride of the Elements",
+  "type": "feat",
+  "effects": [],
+  "system": {
+    "activities": {},
+    "uses": {
+      "spent": 0,
+      "recovery": [],
+      "max": ""
+    },
+    "advancement": [],
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "identifier": "stride-of-the-elements",
+    "source": {
+      "book": "PHB 2024",
+      "page": "",
+      "license": "",
+      "custom": "",
+      "rules": "2024",
+      "revision": 1
+    },
+    "crewed": false,
+    "enchant": {},
+    "prerequisites": {
+      "items": [],
+      "level": 11,
+      "repeatable": false
+    },
+    "properties": [],
+    "requirements": "",
+    "type": {
+      "value": "class",
+      "subtype": ""
+    }
+  },
+  "flags": {
+    "chris-premades": {
+      "info": {
+        "identifier": "strideOfTheElements",
+        "version": "1.5.22",
+        "source": "chris-premades",
+        "rules": "modern"
+      }
+    }
+  },
+  "img": "icons/creatures/fish/fish-shark-swimming.webp",
+  "folder": "u5hahAa7jQzxnSbt",
+  "_id": "hPOHDtfhiYvK2mxO",
+  "_key": "!items!hPOHDtfhiYvK2mxO"
+}

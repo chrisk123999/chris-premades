@@ -1,6 +1,7 @@
 import {activityUtils, animationUtils, crosshairUtils, dialogUtils, effectUtils, genericUtils, itemUtils, tokenUtils, workflowUtils} from '../../../../utils.js';
 import {dash} from '../../actions/dash.js';
 import {disengage} from '../../actions/disengage.js';
+import {startDestructiveStride} from './warriorOfTheElements/elementalEpitome.js';
 async function flurryOfBlows({trigger, workflow}) {
     if (!itemUtils.getConfig(workflow.item, 'promptForTargets')) return;
     let unarmedStrike = itemUtils.getItemByIdentifier(workflow.actor, 'unarmedStrike');
@@ -175,6 +176,8 @@ async function patientDefense({trigger, workflow}) {
 }
 async function stepOfTheWind({trigger, workflow}) {
     if (!workflow.token) return;
+    let elementalEpitome = itemUtils.getItemByIdentifier(workflow.actor, 'elementalEpitome');
+    if (elementalEpitome) await startDestructiveStride(elementalEpitome);
     let playAnimation = itemUtils.getConfig(workflow.item, 'playAnimation');
     if (!playAnimation || animationUtils.jb2aCheck() != 'patreon' || !animationUtils.aseCheck()) return;
     let heightenedFocus = itemUtils.getItemByIdentifier(workflow.actor, 'heightenedFocus');

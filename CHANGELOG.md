@@ -3,6 +3,10 @@
 - This is not a V14 update. An update for V14 is still a work in progress.
 ## New Modern Content
 - Death Armor
+- Elemental Attunement
+- Elemental Burst
+- Stride of the Elements
+- Elemental Epitome
 ## Bug Fixes
 - Wails from the Grave
 - Cleave Mastery
