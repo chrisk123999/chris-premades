@@ -15,6 +15,7 @@
 - Effect Descriptions
 - Sneak Attack (modern)
 - Umbral Sight (modern)
+- Empowered Strikes
 
 # 1.5.21 Release:
 ## Update Notes:
