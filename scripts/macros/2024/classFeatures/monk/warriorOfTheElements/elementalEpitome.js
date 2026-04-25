@@ -157,6 +157,24 @@ export let elementalEpitome = {
             homebrew: true
         }
     ],
+    ddbi: {
+        correctedItems: {
+            'Elemental Epitome': {
+                system: {
+                    uses: {
+                        max: '1',
+                        spent: '0',
+                        recovery: [
+                            {
+                                period: 'turnStart',
+                                type: 'recoverAll'
+                            }
+                        ]
+                    }
+                }
+            }
+        }
+    },
     scales: martialArts.scales
 };
 export let elementalEpitomeEmpoweredStrikes = {

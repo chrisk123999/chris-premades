@@ -157,7 +157,7 @@
         },
         "useConditionText": "",
         "useConditionReason": "",
-        "effectConditionText": "",
+        "effectConditionText": "combat",
         "macroData": {
           "name": "",
           "command": ""

@@ -16,6 +16,8 @@
 - Sneak Attack (modern)
 - Umbral Sight (modern)
 - Empowered Strikes
+## API Bug Fixes:
+- Gridless Compatibility
 
 # 1.5.21 Release:
 ## Update Notes:
