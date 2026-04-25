@@ -70,9 +70,28 @@ async function requestRoll(token, request, ability, options = {}) {
             actorUuid: token.document.uuid,
             rollType: request,
             rollAbilities: [ability],
+            rollDC: options.target,
+            advantage: options.advantage,
+            disadvantage: options.disadvantage,
             displayOptions: options
         }
     };
+    switch(request) {
+        case 'abil':
+        case 'check':
+        case 'save':
+        case 'test':
+            genericUtils.setProperty(data.saveDetails, 'rollAbilities', [ability]);
+            break;
+        case 'skill':
+            genericUtils.setProperty(data.saveDetails, 'rollSkills', [ability]);
+            break;
+        case 'tool':
+            genericUtils.setProperty(data.saveDetails, 'rollTools', [ability]);
+            break;
+        case 'deathSave':
+            break;
+    }
     return await MidiQOL.socket().executeAsUser('rollAbility', userID, data);
 }
 async function getChangedDamageRoll(origRoll, newType) {

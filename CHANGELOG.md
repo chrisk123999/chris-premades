@@ -16,6 +16,8 @@
 - Sneak Attack (modern)
 - Umbral Sight (modern)
 - Empowered Strikes
+- Grapple Escape
+- Generic Action: Choose Damage (Thanks Ferril)
 ## API Bug Fixes:
 - Gridless Compatibility
 
