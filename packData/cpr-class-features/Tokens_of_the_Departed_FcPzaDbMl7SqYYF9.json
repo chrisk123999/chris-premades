@@ -63,7 +63,7 @@
           }
         }
       },
-      "description": "<p>You have advantage on death saving throws and Constitution saving throws.</p>",
+      "description": "",
       "img": "icons/commodities/metal/clasp-skull.webp",
       "_id": "VIick3K2Poos0qUW",
       "type": "base",
@@ -507,48 +507,6 @@
     }
   },
   "flags": {
-    "ddbimporter": {
-      "isChoiceFeature": false,
-      "id": 2991333,
-      "type": "class",
-      "entityTypeId": 12168134,
-      "is2014": true,
-      "is2024": false,
-      "legacy": false,
-      "originalName": "Tokens of the Departed",
-      "dndbeyond": {
-        "requiredLevel": 9,
-        "displayOrder": 300,
-        "featureType": 1,
-        "class": "Rogue",
-        "classId": 653465,
-        "entityType": "class-feature",
-        "levelScale": null,
-        "levelScales": [],
-        "limitedUse": [
-          {
-            "level": null,
-            "uses": 1
-          },
-          {
-            "level": null,
-            "uses": 1
-          },
-          {
-            "level": null,
-            "uses": 1
-          }
-        ]
-      },
-      "class": "Rogue",
-      "classId": 12,
-      "subClass": "Phantom",
-      "subClassId": 653465,
-      "effectsApplied": true,
-      "retainResourceConsumption": true,
-      "retainUseSpent": true,
-      "importId": "z3gO1aivVxM5qf9P"
-    },
     "midi-qol": {
       "removeAttackDamageButtons": "default",
       "forceCEOff": true

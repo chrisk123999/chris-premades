@@ -485,6 +485,11 @@
           ]
         }
       }
+    },
+    "dnd5e": {
+      "riders": {
+        "activity": []
+      }
     }
   },
   "img": "icons/commodities/tech/tube-chamber-lightning.webp",

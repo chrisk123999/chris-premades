@@ -45,6 +45,11 @@
         "source": "chris-premades",
         "rules": "modern"
       }
+    },
+    "dnd5e": {
+      "riders": {
+        "activity": []
+      }
     }
   },
   "img": "icons/creatures/fish/fish-shark-swimming.webp",

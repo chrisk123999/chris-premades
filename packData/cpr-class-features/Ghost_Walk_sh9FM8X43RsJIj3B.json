@@ -265,39 +265,6 @@
     }
   },
   "flags": {
-    "ddbimporter": {
-      "isChoiceFeature": false,
-      "id": 2991337,
-      "type": "class",
-      "entityTypeId": 12168134,
-      "is2014": true,
-      "is2024": false,
-      "legacy": false,
-      "originalName": "Ghost Walk",
-      "dndbeyond": {
-        "requiredLevel": 13,
-        "displayOrder": 400,
-        "featureType": 1,
-        "class": "Rogue",
-        "classId": 653465,
-        "entityType": "class-feature",
-        "levelScale": null,
-        "levelScales": [],
-        "limitedUse": [
-          {
-            "level": null,
-            "uses": 1
-          }
-        ]
-      },
-      "class": "Rogue",
-      "classId": 12,
-      "subClass": "Phantom",
-      "subClassId": 653465,
-      "effectsApplied": true,
-      "replaceActivityUses": true,
-      "importId": "z3gO1aivVxM5qf9P"
-    },
     "midi-qol": {
       "removeAttackDamageButtons": "default",
       "forceCEOff": true

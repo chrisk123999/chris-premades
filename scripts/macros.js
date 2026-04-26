@@ -227,6 +227,7 @@ export {orbOfDamara, orbOfDamaraEffect} from './macros/2024/items/trinket/orbOfD
 export {maskOfMonstrousForms} from './macros/2024/items/trinket/maskOfMonstrousForms.js';
 export {forkOfEddySummoning} from './macros/2024/items/trinket/forkOfEddySummoning.js';
 export {wandOfThePrecociousApprentice} from './macros/2024/items/trinket/wandOfThePrecociousApprentice.js';
+export {forceGauntlet} from './macros/2024/items/trinket/forceGauntlet.js';
 // Feats
 export {alert} from './macros/2024/feats/alert.js';
 export {archery} from './macros/2024/feats/archery.js';

@@ -168,42 +168,6 @@
     }
   },
   "flags": {
-    "ddbimporter": {
-      "isChoiceFeature": false,
-      "id": 12497182,
-      "type": "class",
-      "entityTypeId": 12168134,
-      "is2014": false,
-      "is2024": true,
-      "legacy": false,
-      "originalName": "Adventurer's Atlas",
-      "dndbeyond": {
-        "requiredLevel": 3,
-        "displayOrder": 300,
-        "featureType": 1,
-        "class": "Artificer",
-        "classId": 2656872,
-        "entityType": "class-feature",
-        "levelScale": null,
-        "levelScales": [],
-        "limitedUse": [
-          {
-            "level": null,
-            "uses": 1
-          },
-          {
-            "level": null,
-            "uses": 1
-          }
-        ]
-      },
-      "class": "Artificer",
-      "classId": 2656866,
-      "subClass": "Cartographer",
-      "subClassId": 2656872,
-      "effectsApplied": true,
-      "importId": "LuZSVVHEZHdqDhm9"
-    },
     "midi-qol": {
       "removeAttackDamageButtons": "default",
       "forceCEOff": true

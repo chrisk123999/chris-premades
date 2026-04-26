@@ -200,6 +200,11 @@
           "flashOfGenius"
         ]
       }
+    },
+    "dnd5e": {
+      "riders": {
+        "activity": []
+      }
     }
   },
   "img": "icons/magic/light/explosion-star-blue.webp",

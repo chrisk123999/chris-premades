@@ -173,32 +173,6 @@
     }
   },
   "flags": {
-    "ddbimporter": {
-      "isChoiceFeature": false,
-      "id": 12497186,
-      "type": "class",
-      "entityTypeId": 12168134,
-      "is2014": false,
-      "is2024": true,
-      "legacy": false,
-      "originalName": "Superior Atlas",
-      "dndbeyond": {
-        "requiredLevel": 15,
-        "displayOrder": 700,
-        "featureType": 1,
-        "class": "Artificer",
-        "classId": 2656872,
-        "entityType": "class-feature",
-        "levelScale": null,
-        "levelScales": [],
-        "limitedUse": []
-      },
-      "class": "Artificer",
-      "classId": 2656866,
-      "subClass": "Cartographer",
-      "subClassId": 2656872,
-      "importId": "46IIJLZDXkwskI5a"
-    },
     "dnd5e": {
       "advancementOrigin": "p40QFWXPVxTQVgWn",
       "riders": {

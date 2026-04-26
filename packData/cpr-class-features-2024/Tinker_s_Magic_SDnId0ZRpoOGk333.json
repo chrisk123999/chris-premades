@@ -284,35 +284,6 @@
     }
   },
   "flags": {
-    "ddbimporter": {
-      "isChoiceFeature": false,
-      "id": 12497128,
-      "type": "class",
-      "entityTypeId": 12168134,
-      "is2014": false,
-      "is2024": true,
-      "legacy": false,
-      "originalName": "Tinker's Magic",
-      "dndbeyond": {
-        "requiredLevel": 1,
-        "displayOrder": 2,
-        "featureType": 1,
-        "class": "Artificer",
-        "classId": 2656866,
-        "entityType": "class-feature",
-        "levelScale": null,
-        "levelScales": [],
-        "limitedUse": [
-          {
-            "level": null,
-            "uses": 1
-          }
-        ]
-      },
-      "class": "Artificer",
-      "classId": 2656866,
-      "importId": "eTmMiD9wt0AAESQs"
-    },
     "dnd5e": {
       "advancementOrigin": "p40QFWXPVxTQVgWn",
       "riders": {

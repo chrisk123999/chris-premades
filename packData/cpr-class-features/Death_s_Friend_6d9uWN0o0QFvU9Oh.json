@@ -174,37 +174,6 @@
     }
   },
   "flags": {
-    "ddbimporter": {
-      "isChoiceFeature": false,
-      "id": 2991349,
-      "type": "class",
-      "entityTypeId": 12168134,
-      "is2014": true,
-      "is2024": false,
-      "legacy": false,
-      "originalName": "Death's Friend",
-      "dndbeyond": {
-        "requiredLevel": 17,
-        "displayOrder": 500,
-        "featureType": 1,
-        "class": "Rogue",
-        "classId": 653465,
-        "entityType": "class-feature",
-        "levelScale": null,
-        "levelScales": [],
-        "limitedUse": [
-          {
-            "level": null,
-            "uses": 1
-          }
-        ]
-      },
-      "class": "Rogue",
-      "classId": 12,
-      "subClass": "Phantom",
-      "subClassId": 653465,
-      "importId": "z3gO1aivVxM5qf9P"
-    },
     "dnd5e": {
       "advancementOrigin": "Qmmb3V1RPp8OZuQh",
       "riders": {

@@ -32,7 +32,7 @@ async function applyDamage({trigger, workflow, ditem}) {
 }
 export let bloodSacrifice = {
     name: 'Blood Sacrifice',
-    version: '1.4.25',
+    version: '1.5.25',
     rules: 'modern',
     config: [
         {

@@ -221,6 +221,11 @@
       "activityIdentifiers": {
         "use": "HPsnQS1LxJKsnlGU"
       }
+    },
+    "dnd5e": {
+      "riders": {
+        "activity": []
+      }
     }
   },
   "img": "icons/magic/fire/barrier-wall-explosion-orange.webp",

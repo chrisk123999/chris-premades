@@ -1,3 +1,12 @@
+# 1.5.25 Release:
+## Update Notes:
+- This is not a V14 update. An update for V14 is still a work in progress.
+## New Modern Content:
+- Force Gauntlet
+## Bug Fixes:
+- Medkit (Ownership Errors)
+- Blood Sacrifice
+
 # 1.5.24 Release:
 ## Update Notes:
 - This is not a V14 update. An update for V14 is still a work in progress.
