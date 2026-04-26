@@ -1,3 +1,9 @@
+# 1.5.24 Release:
+## Update Notes:
+- This is not a V14 update. An update for V14 is still a work in progress.
+## Bug Fixes:
+- Grave Touched
+
 # 1.5.23 Release:
 ## Update Notes:
 - This is not a V14 update. An update for V14 is still a work in progress.

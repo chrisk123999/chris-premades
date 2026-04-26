@@ -95,8 +95,7 @@ async function requestRoll(token, request, ability, options = {}) {
     return await MidiQOL.socket().executeAsUser('rollAbility', userID, data);
 }
 async function getChangedDamageRoll(origRoll, newType) {
-    let newRoll = await new CONFIG.Dice.DamageRoll(origRoll.terms.map(i => i.expression + (i.flavor?.length ? '[' + newType + ']' : '')).join(''), origRoll.data, genericUtils.mergeObject(origRoll.options, {type: newType})).evaluate();
-    return newRoll;
+    return await new CONFIG.Dice.DamageRoll(origRoll.terms.map(i => i.expression + (i.flavor?.length ? '[' + newType + ']' : '')).join(''), origRoll.data, genericUtils.mergeObject(origRoll.options, {type: newType})).evaluate();
 }
 async function rollDice(formula, {entity, chatMessage, flavor, mode = 'publicroll', options} = {}) {
     let roll = await new Roll(formula, entity?.getRollData()).evaluate(options);
