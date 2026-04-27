@@ -637,6 +637,7 @@ export {strikeOfTheGiants, cloudStrike, fireStrike, frostStrike, hillStrike, sto
 export {tavernBrawler, tavernBrawlerUnarmedStrike} from './macros/2014/feats/tavernBrawler.js';
 export {telekineticShove} from './macros/2014/feats/telekinetic.js';
 export {forestSage} from './macros/2014/feats/forestSage.js';
+export {cruel} from './macros/2014/feats/cruel.js';
 // Items
 export {allPurposeTool1, allPurposeTool2, allPurposeTool3} from './macros/2014/items/trinket/allPurposeTool.js';
 export {armorOfSafeguardingP, armorOfSafeguardingC, armorOfSafeguardingR, armorOfSafeguardingS} from './macros/2014/items/armor/armorOfSafeguarding.js';

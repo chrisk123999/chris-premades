@@ -1,217 +1,72 @@
 {
-  "name": "Magic Item Tinker",
+  "name": "Cruel",
   "type": "feat",
   "effects": [],
   "system": {
     "activities": {
-      "utilityChMIclNe0": {
-        "name": "Charge Magic Item",
+      "pUytFzUQz64txGjv": {
         "type": "utility",
-        "_id": "utilityChMIclNe0",
+        "_id": "pUytFzUQz64txGjv",
         "sort": 0,
         "activation": {
-          "type": "bonus",
-          "value": 1,
-          "condition": "",
-          "override": false
+          "type": "special",
+          "override": false,
+          "condition": ""
         },
         "consumption": {
+          "scaling": {
+            "allowed": false
+          },
+          "spellSlot": true,
           "targets": [
             {
-              "type": "spellSlots",
-              "target": "1",
+              "type": "itemUses",
               "value": "1",
-              "scaling": {
-                "mode": "level",
-                "formula": "1"
-              }
-            }
-          ],
-          "scaling": {
-            "allowed": true,
-            "max": "9"
-          },
-          "spellSlot": true
-        },
-        "description": {
-          "chatFlavor": ""
-        },
-        "duration": {
-          "units": "inst",
-          "special": "",
-          "concentration": false,
-          "override": false
-        },
-        "effects": [],
-        "flags": {},
-        "range": {
-          "value": "5",
-          "units": "ft",
-          "special": "",
-          "override": false
-        },
-        "target": {
-          "prompt": true,
-          "affects": {
-            "count": "",
-            "type": "",
-            "choice": false,
-            "special": ""
-          },
-          "template": {
-            "count": "",
-            "contiguous": false,
-            "type": "",
-            "size": "",
-            "width": "",
-            "height": "",
-            "units": "ft"
-          },
-          "override": false
-        },
-        "uses": {
-          "spent": 0,
-          "recovery": [],
-          "max": ""
-        },
-        "visibility": {
-          "level": {
-            "min": null,
-            "max": null
-          },
-          "requireAttunement": false,
-          "requireIdentification": false,
-          "requireMagic": false,
-          "identifier": ""
-        },
-        "roll": {
-          "formula": "@scaling",
-          "name": "Charges Gained",
-          "prompt": false,
-          "visible": false
-        },
-        "useConditionText": "",
-        "useConditionReason": "",
-        "effectConditionText": "",
-        "macroData": {
-          "name": "",
-          "command": ""
-        },
-        "ignoreTraits": {
-          "idi": false,
-          "idr": false,
-          "idv": false,
-          "ida": false,
-          "idm": false
-        },
-        "midiProperties": {
-          "ignoreTraits": [],
-          "triggeredActivityId": "none",
-          "triggeredActivityConditionText": "",
-          "triggeredActivityTargets": "targets",
-          "triggeredActivityRollAs": "self",
-          "confirmTargets": "never",
-          "automationOnly": false,
-          "identifier": "",
-          "triggeredActivityConsume": true,
-          "triggeredActivityConfigure": true,
-          "autoConsume": false,
-          "forceConsumeDialog": "default",
-          "forceRollDialog": "default",
-          "forceDamageDialog": "default",
-          "autoTargetType": "any",
-          "autoTargetAction": "default",
-          "otherActivityCompatible": false,
-          "otherActivityAsParentType": true,
-          "displayActivityName": true,
-          "rollMode": "default",
-          "chooseEffects": false,
-          "toggleEffect": false,
-          "ignoreFullCover": false,
-          "removeChatButtons": "default",
-          "magicEffect": false,
-          "magicDamage": false,
-          "noConcentrationCheck": false,
-          "skipConcentrationCheck": false,
-          "autoCEEffects": "default"
-        },
-        "isOverTimeFlag": false,
-        "overTimeProperties": {
-          "saveRemoves": true,
-          "rollAs": "target",
-          "preRemoveConditionText": "",
-          "postRemoveConditionText": ""
-        },
-        "otherActivityId": "none",
-        "otherActivityAsParentType": true,
-        "img": ""
-      },
-      "utilityDrMIclNe1": {
-        "name": "Drain Magic Item",
-        "type": "utility",
-        "_id": "utilityDrMIclNe1",
-        "sort": 0,
-        "activation": {
-          "type": "bonus",
-          "value": 1,
-          "condition": "",
-          "override": false
-        },
-        "consumption": {
-          "targets": [
+              "target": "",
+              "scaling": {}
+            },
             {
               "type": "activityUses",
               "value": "1",
               "scaling": {}
             }
-          ],
-          "scaling": {
-            "allowed": false,
-            "max": ""
-          },
-          "spellSlot": true
+          ]
         },
         "description": {
           "chatFlavor": ""
         },
         "duration": {
           "units": "inst",
-          "special": "",
           "concentration": false,
           "override": false
         },
         "effects": [],
         "flags": {},
         "range": {
-          "value": "5",
-          "units": "ft",
-          "special": "",
-          "override": false
+          "units": "spec",
+          "override": false,
+          "special": ""
         },
         "target": {
-          "prompt": true,
+          "template": {
+            "contiguous": false,
+            "units": "ft",
+            "type": ""
+          },
           "affects": {
-            "count": "",
-            "type": "",
             "choice": false,
+            "type": "creature",
+            "count": "1",
             "special": ""
           },
-          "template": {
-            "count": "",
-            "contiguous": false,
-            "type": "",
-            "size": "",
-            "width": "",
-            "height": "",
-            "units": "ft"
-          },
-          "override": false
+          "override": false,
+          "prompt": true
         },
         "uses": {
           "spent": 0,
           "recovery": [
             {
-              "period": "lr",
+              "period": "turn",
               "type": "recoverAll"
             }
           ],
@@ -230,8 +85,8 @@
         "roll": {
           "prompt": false,
           "visible": false,
-          "formula": "",
-          "name": ""
+          "name": "",
+          "formula": ""
         },
         "useConditionText": "",
         "useConditionReason": "",
@@ -253,19 +108,17 @@
           "triggeredActivityConditionText": "",
           "triggeredActivityTargets": "targets",
           "triggeredActivityRollAs": "self",
-          "confirmTargets": "default",
-          "automationOnly": false,
-          "identifier": "",
-          "triggeredActivityConsume": true,
-          "triggeredActivityConfigure": true,
           "autoConsume": false,
           "forceConsumeDialog": "default",
           "forceRollDialog": "default",
           "forceDamageDialog": "default",
+          "confirmTargets": "default",
           "autoTargetType": "any",
           "autoTargetAction": "default",
+          "automationOnly": false,
           "otherActivityCompatible": false,
           "otherActivityAsParentType": true,
+          "identifier": "",
           "displayActivityName": true,
           "rollMode": "default",
           "chooseEffects": false,
@@ -276,7 +129,7 @@
           "magicDamage": false,
           "noConcentrationCheck": false,
           "skipConcentrationCheck": false,
-          "autoCEEffects": "default"
+          "autoCEEffects": "none"
         },
         "isOverTimeFlag": false,
         "overTimeProperties": {
@@ -286,78 +139,218 @@
           "postRemoveConditionText": ""
         },
         "otherActivityId": "none",
-        "otherActivityAsParentType": true
+        "otherActivityAsParentType": true,
+        "name": "Damage"
       },
-      "utilityTrMIclNe2": {
-        "name": "Transmute Magic Item",
-        "type": "utility",
-        "_id": "utilityTrMIclNe2",
+      "0QRie85EcmpT0UAa": {
+        "type": "heal",
+        "_id": "0QRie85EcmpT0UAa",
         "sort": 0,
         "activation": {
-          "type": "action",
-          "value": 1,
-          "condition": "",
-          "override": false
+          "type": "special",
+          "override": false,
+          "condition": ""
         },
         "consumption": {
+          "scaling": {
+            "allowed": false
+          },
+          "spellSlot": true,
           "targets": [
+            {
+              "type": "itemUses",
+              "value": "1",
+              "target": "",
+              "scaling": {}
+            },
             {
               "type": "activityUses",
               "value": "1",
               "scaling": {}
             }
-          ],
-          "scaling": {
-            "allowed": false,
-            "max": ""
-          },
-          "spellSlot": true
+          ]
         },
         "description": {
           "chatFlavor": ""
         },
         "duration": {
           "units": "inst",
-          "special": "",
           "concentration": false,
           "override": false
         },
         "effects": [],
         "flags": {},
         "range": {
-          "value": "5",
-          "units": "ft",
-          "special": "",
-          "override": false
+          "units": "self",
+          "override": false,
+          "special": ""
         },
         "target": {
-          "prompt": true,
+          "template": {
+            "contiguous": false,
+            "units": "ft",
+            "type": ""
+          },
           "affects": {
-            "count": "",
-            "type": "",
             "choice": false,
+            "type": "self",
             "special": ""
           },
-          "template": {
-            "count": "",
-            "contiguous": false,
-            "type": "",
-            "size": "",
-            "width": "",
-            "height": "",
-            "units": "ft"
-          },
-          "override": false
+          "override": false,
+          "prompt": true
         },
         "uses": {
           "spent": 0,
-          "max": "1",
           "recovery": [
             {
-              "period": "lr",
+              "period": "turn",
               "type": "recoverAll"
             }
+          ],
+          "max": "1"
+        },
+        "visibility": {
+          "level": {
+            "min": null,
+            "max": null
+          },
+          "requireAttunement": false,
+          "requireIdentification": false,
+          "requireMagic": false,
+          "identifier": ""
+        },
+        "healing": {
+          "types": [
+            "temphp"
+          ],
+          "custom": {
+            "enabled": false
+          },
+          "scaling": {
+            "number": 1
+          },
+          "number": 1,
+          "denomination": 6,
+          "bonus": ""
+        },
+        "useConditionText": "",
+        "useConditionReason": "",
+        "effectConditionText": "",
+        "macroData": {
+          "name": "",
+          "command": ""
+        },
+        "ignoreTraits": {
+          "idi": false,
+          "idr": false,
+          "idv": false,
+          "ida": false,
+          "idm": false
+        },
+        "midiProperties": {
+          "ignoreTraits": [],
+          "triggeredActivityId": "none",
+          "triggeredActivityConditionText": "",
+          "triggeredActivityTargets": "targets",
+          "triggeredActivityRollAs": "self",
+          "autoConsume": false,
+          "forceConsumeDialog": "default",
+          "forceRollDialog": "default",
+          "forceDamageDialog": "default",
+          "confirmTargets": "default",
+          "autoTargetType": "any",
+          "autoTargetAction": "default",
+          "automationOnly": false,
+          "otherActivityCompatible": false,
+          "otherActivityAsParentType": true,
+          "identifier": "",
+          "displayActivityName": true,
+          "rollMode": "default",
+          "chooseEffects": false,
+          "toggleEffect": false,
+          "ignoreFullCover": false,
+          "removeChatButtons": "default",
+          "magicEffect": false,
+          "magicDamage": false,
+          "noConcentrationCheck": false,
+          "skipConcentrationCheck": false,
+          "autoCEEffects": "none"
+        },
+        "isOverTimeFlag": false,
+        "overTimeProperties": {
+          "saveRemoves": true,
+          "rollAs": "target",
+          "preRemoveConditionText": "",
+          "postRemoveConditionText": ""
+        },
+        "name": "Critical"
+      },
+      "djqkSDCfhK7L6bqB": {
+        "type": "utility",
+        "_id": "djqkSDCfhK7L6bqB",
+        "sort": 0,
+        "activation": {
+          "type": "special",
+          "override": false,
+          "condition": ""
+        },
+        "consumption": {
+          "scaling": {
+            "allowed": false
+          },
+          "spellSlot": true,
+          "targets": [
+            {
+              "type": "itemUses",
+              "value": "1",
+              "target": "",
+              "scaling": {}
+            },
+            {
+              "type": "activityUses",
+              "value": "1",
+              "scaling": {}
+            }
           ]
+        },
+        "description": {
+          "chatFlavor": ""
+        },
+        "duration": {
+          "units": "inst",
+          "concentration": false,
+          "override": false
+        },
+        "effects": [],
+        "flags": {},
+        "range": {
+          "units": "self",
+          "override": false,
+          "special": ""
+        },
+        "target": {
+          "template": {
+            "contiguous": false,
+            "units": "ft",
+            "type": ""
+          },
+          "affects": {
+            "choice": false,
+            "type": "self",
+            "special": ""
+          },
+          "override": false,
+          "prompt": true
+        },
+        "uses": {
+          "spent": 0,
+          "recovery": [
+            {
+              "period": "turn",
+              "type": "recoverAll"
+            }
+          ],
+          "max": "1"
         },
         "visibility": {
           "level": {
@@ -372,8 +365,8 @@
         "roll": {
           "prompt": false,
           "visible": false,
-          "formula": "",
-          "name": ""
+          "name": "",
+          "formula": "1d6"
         },
         "useConditionText": "",
         "useConditionReason": "",
@@ -395,19 +388,17 @@
           "triggeredActivityConditionText": "",
           "triggeredActivityTargets": "targets",
           "triggeredActivityRollAs": "self",
-          "confirmTargets": "default",
-          "automationOnly": false,
-          "identifier": "",
-          "triggeredActivityConsume": true,
-          "triggeredActivityConfigure": true,
           "autoConsume": false,
           "forceConsumeDialog": "default",
           "forceRollDialog": "default",
           "forceDamageDialog": "default",
+          "confirmTargets": "default",
           "autoTargetType": "any",
           "autoTargetAction": "default",
+          "automationOnly": false,
           "otherActivityCompatible": false,
           "otherActivityAsParentType": true,
+          "identifier": "",
           "displayActivityName": true,
           "rollMode": "default",
           "chooseEffects": false,
@@ -418,7 +409,7 @@
           "magicDamage": false,
           "noConcentrationCheck": false,
           "skipConcentrationCheck": false,
-          "autoCEEffects": "default"
+          "autoCEEffects": "none"
         },
         "isOverTimeFlag": false,
         "overTimeProperties": {
@@ -428,72 +419,88 @@
           "postRemoveConditionText": ""
         },
         "otherActivityId": "none",
-        "otherActivityAsParentType": true
+        "otherActivityAsParentType": true,
+        "name": "Intimidation"
       }
     },
     "uses": {
-      "spent": null,
-      "max": "",
-      "recovery": []
+      "spent": 0,
+      "max": "@prof",
+      "recovery": [
+        {
+          "period": "lr",
+          "type": "recoverAll"
+        }
+      ]
     },
     "advancement": [],
     "description": {
       "value": "",
       "chat": ""
     },
-    "identifier": "magic-item-tinker",
+    "identifier": "cruel",
     "source": {
-      "book": "EFotA",
+      "book": "TCSR",
       "page": "",
       "license": "",
       "custom": "",
-      "rules": "2024",
+      "rules": "2014",
       "revision": 1
     },
     "crewed": false,
     "enchant": {},
     "prerequisites": {
       "items": [],
-      "level": 6,
       "repeatable": false
     },
     "properties": [],
     "requirements": "",
     "type": {
-      "value": "class",
-      "subtype": ""
+      "value": "feat",
+      "subtype": "general"
     }
   },
   "flags": {
-    "chris-premades": {
-      "hiddenActivities": [],
-      "activityIdentifiers": {
-        "charge": "utilityChMIclNe0",
-        "drain": "utilityDrMIclNe1",
-        "transmute": "utilityTrMIclNe2"
-      },
-      "info": {
-        "identifier": "magicItemTinker",
-        "version": "1.5.17",
-        "source": "chris-premades",
-        "rules": "modern"
-      },
-      "macros": {
-        "midi": {
-          "item": [
-            "magicItemTinker"
-          ]
-        }
-      }
-    },
     "dnd5e": {
+      "last": {
+        "0QRie85EcmpT0UAa": {
+          "damageType": {
+            "0": "temphp"
+          }
+        }
+      },
       "riders": {
         "activity": []
       }
+    },
+    "chris-premades": {
+      "hiddenActivities": [],
+      "activityIdentifiers": {
+        "damage": "pUytFzUQz64txGjv",
+        "intimidation": "djqkSDCfhK7L6bqB",
+        "heal": "0QRie85EcmpT0UAa"
+      },
+      "info": {
+        "identifier": "cruel",
+        "hasAnimation": false,
+        "rules": "legacy",
+        "source": "chris-premades",
+        "version": "1.5.23"
+      },
+      "macros": {
+        "midi": {
+          "actor": [
+            "cruel"
+          ]
+        },
+        "skill": [
+          "cruel"
+        ]
+      }
     }
   },
-  "img": "icons/commodities/tech/tube-chamber-lightning.webp",
-  "folder": "jKkFL3w2RDafqf9D",
-  "_id": "71Da4lQXOh9lbUTe",
-  "_key": "!items!71Da4lQXOh9lbUTe"
+  "img": "icons/magic/death/weapon-sword-skull-purple.webp",
+  "folder": null,
+  "_id": "7fQRN74IudBlQPOu",
+  "_key": "!items!7fQRN74IudBlQPOu"
 }

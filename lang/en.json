@@ -152,6 +152,7 @@
             "CheckSave": "Check Save:",
             "CheckSaves": "Check Saves:",
             "ClassIdentifier": "Class Identifier:",
+            "Clear": "Clear saved choices each combat:",
             "Color": "Color:",
             "Colors": {
                 "Blue": "Blue",
@@ -241,6 +242,7 @@
             "PromptToUse": "Prompt to use:",
             "Range": "Range:",
             "RealDarkness": "Use Real Darkness:",
+            "Remember": "Remember and auto-apply choices:",
             "Rules": "Rules:",
             "SaveAbilities": "Save Abilities:",
             "SaveDC": "Save DC:",
@@ -2141,9 +2143,7 @@
                 "Confirm": "Did the check succeed?"
             },
             "PerfectWeapon": {
-                "TransferBonus": "Transfer weapon bonus to AC:",
-                "Remember": "Remember and auto-apply choices:",
-                "Clear": "Clear saved choices each combat:"
+                "TransferBonus": "Transfer weapon bonus to AC:"
             },
             "Piercer": {
                 "Reroll": "Reroll which lowest die?"

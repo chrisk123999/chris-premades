@@ -1,5 +1,5 @@
 {
-  "name": "Eldritch Hex",
+  "name": "Stride of the Elements",
   "type": "feat",
   "effects": [],
   "system": {
@@ -14,7 +14,7 @@
       "value": "",
       "chat": ""
     },
-    "identifier": "eldritch-hex",
+    "identifier": "stride-of-the-elements",
     "source": {
       "book": "PHB 2024",
       "page": "",
@@ -27,7 +27,7 @@
     "enchant": {},
     "prerequisites": {
       "items": [],
-      "level": 10,
+      "level": 11,
       "repeatable": false
     },
     "properties": [],
@@ -40,8 +40,8 @@
   "flags": {
     "chris-premades": {
       "info": {
-        "identifier": "eldritchHex",
-        "version": "1.5.21",
+        "identifier": "strideOfTheElements",
+        "version": "1.5.22",
         "source": "chris-premades",
         "rules": "modern"
       }
@@ -52,8 +52,8 @@
       }
     }
   },
-  "img": "icons/magic/symbols/star-yellow.webp",
-  "folder": "z8weZe6hdlD0L48X",
-  "_id": "IP5yp4PWj9RKuCNc",
-  "_key": "!items!IP5yp4PWj9RKuCNc"
+  "img": "icons/creatures/fish/fish-shark-swimming.webp",
+  "folder": "u5hahAa7jQzxnSbt",
+  "_id": "hPOHDtfhiYvK2mxO",
+  "_key": "!items!hPOHDtfhiYvK2mxO"
 }

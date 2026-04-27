@@ -1,8 +1,33 @@
+# 1.5.25 Release:
+## Update Notes:
+- This is not a V14 update. An update for V14 is still a work in progress.
+## New Modern Content:
+- Force Gauntlet
+## Bug Fixes:
+- Medkit (Ownership Errors)
+- Blood Sacrifice
+
+# 1.5.24 Release:
+## Update Notes:
+- This is not a V14 update. An update for V14 is still a work in progress.
+## Bug Fixes:
+- Grave Touched
+
+# 1.5.23 Release:
+## Update Notes:
+- This is not a V14 update. An update for V14 is still a work in progress.
+## New Legacy Content:
+- Cruel
+
 # 1.5.22 Release:
 ## Update Notes:
 - This is not a V14 update. An update for V14 is still a work in progress.
 ## New Modern Content
 - Death Armor
+- Elemental Attunement
+- Elemental Burst
+- Stride of the Elements
+- Elemental Epitome
 ## Bug Fixes
 - Wails from the Grave
 - Cleave Mastery
@@ -11,6 +36,11 @@
 - Effect Descriptions
 - Sneak Attack (modern)
 - Umbral Sight (modern)
+- Empowered Strikes
+- Grapple Escape
+- Generic Action: Choose Damage (Thanks Ferril)
+## API Bug Fixes:
+- Gridless Compatibility
 
 # 1.5.21 Release:
 ## Update Notes:

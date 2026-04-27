@@ -7,7 +7,7 @@ async function damage({trigger: {entity: item}, workflow}) {
     let selection = await dialogUtils.confirm(item.name, genericUtils.format('CHRISPREMADES.Dialog.Use', {itemName: item.name}));
     if (!selection) return;
     await workflowUtils.syntheticItemRoll(item, [workflow.token], {consumeResources: true, consumeUsage: true});
-    await Promise.all(workflow.damageRolls = workflow.damageRolls.map(async roll => {
+    workflow.damageRolls = await Promise.all(workflow.damageRolls.map(async roll => {
         return await rollUtils.getChangedDamageRoll(roll, 'necrotic');
     }));
     await workflow.setDamageRolls(workflow.damageRolls);

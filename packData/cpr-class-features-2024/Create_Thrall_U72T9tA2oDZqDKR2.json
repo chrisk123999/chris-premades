@@ -52,6 +52,11 @@
           ]
         }
       }
+    },
+    "dnd5e": {
+      "riders": {
+        "activity": []
+      }
     }
   },
   "img": "icons/commodities/treasure/doll-mummy.webp",

@@ -352,6 +352,13 @@
         "source": "chris-premades",
         "rules": "modern"
       }
+    },
+    "dnd5e": {
+      "riders": {
+        "activity": [
+          "saveAwakMCCclNe0"
+        ]
+      }
     }
   },
   "img": "icons/magic/perception/orb-crystal-ball-scrying-blue.webp",

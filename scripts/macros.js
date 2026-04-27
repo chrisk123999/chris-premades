@@ -227,6 +227,7 @@ export {orbOfDamara, orbOfDamaraEffect} from './macros/2024/items/trinket/orbOfD
 export {maskOfMonstrousForms} from './macros/2024/items/trinket/maskOfMonstrousForms.js';
 export {forkOfEddySummoning} from './macros/2024/items/trinket/forkOfEddySummoning.js';
 export {wandOfThePrecociousApprentice} from './macros/2024/items/trinket/wandOfThePrecociousApprentice.js';
+export {forceGauntlet} from './macros/2024/items/trinket/forceGauntlet.js';
 // Feats
 export {alert} from './macros/2024/feats/alert.js';
 export {archery} from './macros/2024/feats/archery.js';
@@ -485,6 +486,11 @@ export {deflectEnergy} from './macros/2024/classFeatures/monk/deflectEnergy.js';
 export {disciplinedSurvivor} from './macros/2024/classFeatures/monk/disciplinedSurvivor.js';
 export {perfectFocus} from './macros/2024/classFeatures/monk/perfectFocus.js';
 export {superiorDefense} from './macros/2024/classFeatures/monk/superiorDefense.js';
+// Warrior of the Elements
+export {elementalAttunement, elementalAttunementElementalStrikes} from './macros/2024/classFeatures/monk/warriorOfTheElements/elementalAttunement.js';
+export {elementalBurst} from './macros/2024/classFeatures/monk/warriorOfTheElements/elementalBurst.js';
+export {elementalEpitome, elementalEpitomeDestructiveStride, elementalEpitomeEmpoweredStrikes} from './macros/2024/classFeatures/monk/warriorOfTheElements/elementalEpitome.js';
+export {strideOfTheElements} from './macros/2024/classFeatures/monk/warriorOfTheElements/strideOfTheElements.js';
 // Fighter
 export {secondWind} from './macros/2024/classFeatures/fighter/secondWind.js';
 export {tacticalMind} from './macros/2024/classFeatures/fighter/tacticalMind.js';

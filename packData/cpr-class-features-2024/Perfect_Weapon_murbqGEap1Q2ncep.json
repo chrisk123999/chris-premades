@@ -122,6 +122,11 @@
           "upgradeGhaalShaarat"
         ]
       }
+    },
+    "dnd5e": {
+      "riders": {
+        "activity": []
+      }
     }
   },
   "img": "icons/weapons/axes/axe-double-gold.webp",

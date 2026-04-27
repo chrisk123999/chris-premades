@@ -1,63 +1,71 @@
 {
-  "name": "Healing Machine",
-  "type": "feat",
+  "name": "Force Gauntlet",
+  "type": "equipment",
   "effects": [],
   "system": {
     "activities": {
-      "FZdXsQQbwn5byiVa": {
-        "type": "heal",
-        "_id": "FZdXsQQbwn5byiVa",
+      "saveForceGauntlI": {
+        "type": "save",
+        "_id": "saveForceGauntlI",
         "sort": 0,
         "activation": {
           "type": "special",
-          "override": false,
-          "condition": ""
+          "value": 1,
+          "condition": "",
+          "override": true
         },
         "consumption": {
-          "scaling": {
-            "allowed": false
-          },
-          "spellSlot": true,
           "targets": [
             {
-              "type": "hitDice",
+              "type": "itemUses",
               "value": "1",
-              "target": "largest",
+              "target": "",
               "scaling": {}
             }
-          ]
+          ],
+          "scaling": {
+            "allowed": false,
+            "max": ""
+          },
+          "spellSlot": true
         },
         "description": {
           "chatFlavor": ""
         },
         "duration": {
           "units": "inst",
-          "concentration": false,
-          "override": false
+          "special": "",
+          "override": true,
+          "concentration": false
         },
         "effects": [],
         "flags": {},
         "range": {
-          "units": "self",
-          "override": false,
-          "special": ""
+          "units": "any",
+          "special": "",
+          "override": true
         },
         "target": {
-          "template": {
-            "contiguous": false,
-            "units": "ft",
-            "type": ""
-          },
+          "prompt": true,
           "affects": {
+            "count": "1",
+            "type": "creature",
             "choice": false,
-            "type": "self",
             "special": ""
           },
-          "override": false,
-          "prompt": true
+          "template": {
+            "count": "",
+            "contiguous": false,
+            "type": "",
+            "size": "",
+            "width": "",
+            "height": "",
+            "units": "ft"
+          },
+          "override": true
         },
         "uses": {
-          "spent": 0,
+          "spent": null,
           "recovery": [],
           "max": ""
         },
@@ -71,20 +79,22 @@
           "requireMagic": false,
           "identifier": ""
         },
-        "healing": {
-          "types": [
-            "healing"
+        "damage": {
+          "parts": [],
+          "onSave": "",
+          "critical": {
+            "allow": false,
+            "bonus": ""
+          }
+        },
+        "save": {
+          "ability": [
+            "str"
           ],
-          "custom": {
-            "enabled": true,
-            "formula": "max(1@attributes.hd.largestAvailable + @abilities.con.mod ,1)"
-          },
-          "scaling": {
-            "number": 1
-          },
-          "number": null,
-          "denomination": null,
-          "bonus": ""
+          "dc": {
+            "calculation": "",
+            "formula": "15"
+          }
         },
         "useConditionText": "",
         "useConditionReason": "",
@@ -106,17 +116,17 @@
           "triggeredActivityConditionText": "",
           "triggeredActivityTargets": "targets",
           "triggeredActivityRollAs": "self",
+          "confirmTargets": "default",
+          "automationOnly": false,
+          "identifier": "",
           "autoConsume": false,
           "forceConsumeDialog": "default",
           "forceRollDialog": "default",
           "forceDamageDialog": "default",
-          "confirmTargets": "default",
           "autoTargetType": "any",
           "autoTargetAction": "default",
-          "automationOnly": false,
-          "otherActivityCompatible": true,
+          "otherActivityCompatible": false,
           "otherActivityAsParentType": true,
-          "identifier": "",
           "displayActivityName": false,
           "rollMode": "default",
           "chooseEffects": false,
@@ -127,7 +137,7 @@
           "magicDamage": false,
           "noConcentrationCheck": false,
           "skipConcentrationCheck": false,
-          "autoCEEffects": "default"
+          "autoCEEffects": "none"
         },
         "isOverTimeFlag": false,
         "overTimeProperties": {
@@ -136,58 +146,78 @@
           "preRemoveConditionText": "",
           "postRemoveConditionText": ""
         },
+        "otherActivityId": "none",
+        "otherActivityAsParentType": true,
+        "friendlySave": "default",
         "name": ""
       }
     },
     "uses": {
-      "spent": 0,
-      "recovery": [],
-      "max": ""
+      "max": "5",
+      "spent": 5,
+      "recovery": [
+        {
+          "period": "dawn",
+          "type": "formula",
+          "formula": "1d4 + 1"
+        }
+      ]
     },
-    "advancement": [],
     "description": {
       "value": "",
       "chat": ""
     },
-    "identifier": "healing-machine",
+    "identifier": "force-gauntlet",
     "source": {
-      "book": "SAiS",
+      "book": "GSB1",
       "page": "",
       "license": "",
       "custom": "",
-      "rules": "2014",
+      "rules": "2024",
       "revision": 1
     },
-    "crewed": false,
-    "enchant": {},
-    "prerequisites": {
-      "items": [],
-      "repeatable": false,
-      "level": null
+    "identified": true,
+    "unidentified": {
+      "description": ""
     },
-    "properties": [],
-    "requirements": "",
+    "container": null,
+    "quantity": 1,
+    "weight": {
+      "value": 0,
+      "units": "lb"
+    },
+    "price": {
+      "value": 4000,
+      "denomination": "gp"
+    },
+    "rarity": "rare",
+    "attunement": "required",
+    "crew": {
+      "value": []
+    },
+    "armor": {
+      "value": null,
+      "dex": null
+    },
+    "proficient": null,
+    "properties": [
+      "mgc"
+    ],
+    "strength": 0,
     "type": {
-      "value": "race",
-      "subtype": ""
-    }
+      "value": "trinket",
+      "baseItem": ""
+    },
+    "attuned": true,
+    "equipped": true
   },
   "flags": {
-    "species": {
-      "fullRaceName": "Autognome",
-      "baseRaceName": "Autognome",
-      "groupName": "Gnome",
-      "isLineage": false
+    "infusions": {
+      "maps": [],
+      "applied": [],
+      "infused": false
     },
     "dnd5e": {
-      "advancementOrigin": "y3NgvQkPqkXPq69S",
-      "last": {
-        "FZdXsQQbwn5byiVa": {
-          "damageType": {
-            "0": "healing"
-          }
-        }
-      },
       "riders": {
         "activity": []
       }
@@ -195,24 +225,25 @@
     "chris-premades": {
       "hiddenActivities": [],
       "activityIdentifiers": {
-        "heal": "FZdXsQQbwn5byiVa"
+        "push": "saveForceGauntlI"
       },
       "info": {
-        "identifier": "healingMachine",
-        "version": "1.5.16",
-        "source": "chris-premades"
+        "identifier": "forceGauntlet",
+        "rules": "modern",
+        "source": "chris-premades",
+        "version": "1.5.25"
       },
       "macros": {
         "midi": {
           "actor": [
-            "healingMachine"
+            "forceGauntlet"
           ]
         }
       }
     }
   },
-  "img": "icons/commodities/tech/wire-spliced.webp",
-  "folder": "XvrVvi09wLcuh1B6",
-  "_id": "QAtDvYSSqanQPcS1",
-  "_key": "!items!QAtDvYSSqanQPcS1"
+  "folder": "c00gnYaBPyPqsMfT",
+  "img": "icons/equipment/hand/glove-simple-leather-gem-blue.webp",
+  "_id": "GlH6ZqNuXPi0aOOP",
+  "_key": "!items!GlH6ZqNuXPi0aOOP"
 }

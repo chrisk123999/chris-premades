@@ -6,7 +6,7 @@ async function damage({workflow}) {
     let damageTypes = config.damageTypes;
     let selection = await dialogUtils.selectDamageType(damageTypes, workflow.item.name, 'CHRISPREMADES.Generic.SelectDamageType');
     if (!selection) return;
-    await workflowUtils.replaceDamage(workflow, workflow.damageRoll.formula, {damageType: selection});
+    await workflowUtils.replaceDamage(workflow, workflow.damageRoll.formula, {damageType: selection, ignoreCrit: true});
 }
 export let chooseDamageType = {
     name: 'Choose Damage',

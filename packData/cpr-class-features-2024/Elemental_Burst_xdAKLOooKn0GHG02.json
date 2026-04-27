@@ -1,15 +1,15 @@
 {
-  "name": "Healing Machine",
+  "name": "Elemental Burst",
   "type": "feat",
   "effects": [],
   "system": {
     "activities": {
-      "FZdXsQQbwn5byiVa": {
-        "type": "heal",
-        "_id": "FZdXsQQbwn5byiVa",
+      "HPsnQS1LxJKsnlGU": {
+        "type": "save",
+        "_id": "HPsnQS1LxJKsnlGU",
         "sort": 0,
         "activation": {
-          "type": "special",
+          "type": "action",
           "override": false,
           "condition": ""
         },
@@ -20,10 +20,9 @@
           "spellSlot": true,
           "targets": [
             {
-              "type": "hitDice",
-              "value": "1",
-              "target": "largest",
-              "scaling": {}
+              "type": "itemUses",
+              "value": "2",
+              "target": "dlg86h1M8OoVGSm6"
             }
           ]
         },
@@ -38,19 +37,23 @@
         "effects": [],
         "flags": {},
         "range": {
-          "units": "self",
+          "units": "ft",
           "override": false,
+          "value": "120",
           "special": ""
         },
         "target": {
           "template": {
             "contiguous": false,
             "units": "ft",
-            "type": ""
+            "count": "",
+            "type": "sphere",
+            "size": "20"
           },
           "affects": {
             "choice": false,
-            "type": "self",
+            "count": "",
+            "type": "creature",
             "special": ""
           },
           "override": false,
@@ -71,20 +74,38 @@
           "requireMagic": false,
           "identifier": ""
         },
-        "healing": {
-          "types": [
-            "healing"
+        "damage": {
+          "onSave": "half",
+          "critical": {
+            "allow": false
+          },
+          "parts": [
+            {
+              "custom": {
+                "enabled": true,
+                "formula": "3d@scale.monk.martial-arts.faces"
+              },
+              "number": null,
+              "denomination": null,
+              "bonus": "",
+              "types": [
+                "acid",
+                "cold",
+                "fire",
+                "lightning",
+                "thunder"
+              ]
+            }
+          ]
+        },
+        "save": {
+          "ability": [
+            "dex"
           ],
-          "custom": {
-            "enabled": true,
-            "formula": "max(1@attributes.hd.largestAvailable + @abilities.con.mod ,1)"
-          },
-          "scaling": {
-            "number": 1
-          },
-          "number": null,
-          "denomination": null,
-          "bonus": ""
+          "dc": {
+            "calculation": "wis",
+            "formula": ""
+          }
         },
         "useConditionText": "",
         "useConditionReason": "",
@@ -106,6 +127,8 @@
           "triggeredActivityConditionText": "",
           "triggeredActivityTargets": "targets",
           "triggeredActivityRollAs": "self",
+          "triggeredActivityConsume": true,
+          "triggeredActivityConfigure": true,
           "autoConsume": false,
           "forceConsumeDialog": "default",
           "forceRollDialog": "default",
@@ -114,7 +137,7 @@
           "autoTargetType": "any",
           "autoTargetAction": "default",
           "automationOnly": false,
-          "otherActivityCompatible": true,
+          "otherActivityCompatible": false,
           "otherActivityAsParentType": true,
           "identifier": "",
           "displayActivityName": false,
@@ -136,11 +159,15 @@
           "preRemoveConditionText": "",
           "postRemoveConditionText": ""
         },
-        "name": ""
+        "otherActivityId": "none",
+        "otherActivityAsParentType": true,
+        "friendlySave": "default",
+        "name": "",
+        "img": ""
       }
     },
     "uses": {
-      "spent": 0,
+      "spent": null,
       "recovery": [],
       "max": ""
     },
@@ -149,70 +176,60 @@
       "value": "",
       "chat": ""
     },
-    "identifier": "healing-machine",
+    "identifier": "elemental-burst",
     "source": {
-      "book": "SAiS",
+      "book": "PHB 2024",
       "page": "",
       "license": "",
       "custom": "",
-      "rules": "2014",
+      "rules": "2024",
       "revision": 1
     },
     "crewed": false,
     "enchant": {},
     "prerequisites": {
       "items": [],
-      "repeatable": false,
-      "level": null
+      "level": 6,
+      "repeatable": false
     },
     "properties": [],
     "requirements": "",
     "type": {
-      "value": "race",
+      "value": "class",
       "subtype": ""
     }
   },
   "flags": {
-    "species": {
-      "fullRaceName": "Autognome",
-      "baseRaceName": "Autognome",
-      "groupName": "Gnome",
-      "isLineage": false
-    },
-    "dnd5e": {
-      "advancementOrigin": "y3NgvQkPqkXPq69S",
-      "last": {
-        "FZdXsQQbwn5byiVa": {
-          "damageType": {
-            "0": "healing"
-          }
-        }
-      },
-      "riders": {
-        "activity": []
-      }
-    },
     "chris-premades": {
-      "hiddenActivities": [],
-      "activityIdentifiers": {
-        "heal": "FZdXsQQbwn5byiVa"
-      },
       "info": {
-        "identifier": "healingMachine",
-        "version": "1.5.16",
-        "source": "chris-premades"
+        "identifier": "elementalBurst",
+        "version": "1.5.22",
+        "source": "chris-premades",
+        "rules": "modern"
       },
       "macros": {
         "midi": {
-          "actor": [
-            "healingMachine"
+          "item": [
+            "elementalBurst"
           ]
-        }
+        },
+        "item": [
+          "elementalBurst"
+        ]
+      },
+      "hiddenActivities": [],
+      "activityIdentifiers": {
+        "use": "HPsnQS1LxJKsnlGU"
+      }
+    },
+    "dnd5e": {
+      "riders": {
+        "activity": []
       }
     }
   },
-  "img": "icons/commodities/tech/wire-spliced.webp",
-  "folder": "XvrVvi09wLcuh1B6",
-  "_id": "QAtDvYSSqanQPcS1",
-  "_key": "!items!QAtDvYSSqanQPcS1"
+  "img": "icons/magic/fire/barrier-wall-explosion-orange.webp",
+  "folder": "u5hahAa7jQzxnSbt",
+  "_id": "xdAKLOooKn0GHG02",
+  "_key": "!items!xdAKLOooKn0GHG02"
 }

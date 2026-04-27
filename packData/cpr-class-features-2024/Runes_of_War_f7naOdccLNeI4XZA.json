@@ -199,6 +199,11 @@
           "upgradeGhaalShaarat"
         ]
       }
+    },
+    "dnd5e": {
+      "riders": {
+        "activity": []
+      }
     }
   },
   "img": "icons/magic/symbols/elements-air-earth-fire-water.webp",
