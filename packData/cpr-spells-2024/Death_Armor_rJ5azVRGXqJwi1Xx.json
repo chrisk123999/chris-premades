@@ -333,13 +333,16 @@
       "hiddenActivities": [
         "damage"
       ],
+      "spellActivities": [
+        "damage"
+      ],
       "activityIdentifiers": {
         "cast": "8OMOZ7XUpyj2J1hc",
         "damage": "y1Tqybky2bRJlFIQ"
       },
       "info": {
         "identifier": "deathArmor",
-        "version": "1.5.22",
+        "version": "1.5.26",
         "source": "chris-premades",
         "rules": "modern"
       },

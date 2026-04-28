@@ -292,6 +292,7 @@ export {infiltratorArmor, infiltratorArmorLightningLauncher} from './macros/2014
 export {infuseItem, infuseItemArmorStrength, infuseItemHomunculusTouch, infuseItemRepulsionShield, infuseItemSpellRing} from './macros/2014/classFeatures/artificer/infuseItem.js';
 export {insightfulFighting} from './macros/2014/classFeatures/rogue/inquisitive/insightfulFighting.js';
 export {inspiringSmite} from './macros/2014/classFeatures/paladin/oathOfGlory/inspiringSmite.js';
+export {instinctivePounce} from './macros/2014/classFeatures/barbarian/instinctivePounce.js';
 export {investmentOfTheChainMaster, investmentOfTheChainMasterActive} from './macros/2014/classFeatures/warlock/invocations/investmentOfTheChainMaster.js';
 export {ki} from './macros/2014/classFeatures/monk/ki.js';
 export {lanceOfLethargy} from './macros/2014/classFeatures/warlock/invocations/lanceOfLethargy.js';

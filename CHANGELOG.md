@@ -1,3 +1,13 @@
+# 1.5.26 Release:
+## Update Notes:
+- This is not a V14 update. An update for V14 is still a work in progress.
+## New Modern Content:
+- Instinctive Pounce
+## New Legacy Content:
+- Instinctive Pounce
+## Bug Fixes:
+- Death Armor
+
 # 1.5.25 Release:
 ## Update Notes:
 - This is not a V14 update. An update for V14 is still a work in progress.

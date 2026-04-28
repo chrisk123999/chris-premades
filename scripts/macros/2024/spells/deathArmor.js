@@ -20,12 +20,6 @@ async function cast({workflow}) {
     await effectUtils.createEffect(target, effectData, {identifier: 'deathArmorEffect', rules: 'modern'});
 }
 async function hit({trigger: {entity: effect}, workflow}) {
-    console.log('HIT', {
-        hit:workflow.hitTargets.size,
-        type: workflowUtils.isAttackType(workflow, 'meleeAttack'),
-        turn: combatUtils.perTurnCheck(effect, 'deathArmor'),
-        dist: tokenUtils.getDistance(workflow.token, workflow.targets.first())
-    });
     if (!workflow.hitTargets.size) return;
     if (!workflowUtils.isAttackType(workflow, 'meleeAttack')) return;
     if (!combatUtils.perTurnCheck(effect, 'deathArmor')) return;
@@ -38,7 +32,7 @@ async function hit({trigger: {entity: effect}, workflow}) {
 }
 export let deathArmor = {
     name: 'Death Armor',
-    version: '1.5.22',
+    version: '1.5.26',
     rules: 'modern',
     midi: {
         item: [
