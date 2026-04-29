@@ -11,7 +11,7 @@ async function veryEarly({activity, dialog, actor, config}) {
 }
 async function spell({trigger: {entity: item}, workflow}) {
     if (!workflow.item || !workflow.token) return;
-    if (workflow.item.type != 'spell' || activityUtils.isSpellActivity(workflow.activity)) return;
+    if (workflow.item.type != 'spell' || workflowUtils.isSustainedRoll(workflow)) return;
     if (!workflow.item.system.level) return;
     let validModes = ['spell', 'pact'];
     if (!validModes.includes(workflow.item.system.method)) return;

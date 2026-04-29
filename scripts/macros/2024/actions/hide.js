@@ -77,7 +77,7 @@ async function checkRemove({trigger: {entity: effect}, workflow}) {
     if (!workflow.activity) return;
     switch (workflow.item.type) {
         case 'spell': {
-            if (itemUtils.isSpellFeature(workflow.item) || activityUtils.isSpellActivity(workflow.activity)) return;
+            if (itemUtils.isSpellFeature(workflow.item) || workflowUtils.isSustainedRoll(workflow)) return;
             if (!workflow.item.system.properties.has('vocal')) return;
             break;
         }

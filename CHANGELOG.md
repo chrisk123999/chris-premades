@@ -7,6 +7,8 @@
 - Instinctive Pounce
 ## Bug Fixes:
 - Death Armor
+## API Bug Fixes:
+- `activityUtils.isSpellActivity(activity)` is deprecated and replaced by `workflowUtils.isSustainedRoll(workflow)`. This helper identifies item rolls that should not trigger "...when a spell is cast" abilities. It now includes MidiQOL overtimes in this check.
 
 # 1.5.25 Release:
 ## Update Notes:

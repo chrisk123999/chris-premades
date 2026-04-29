@@ -1,4 +1,4 @@
-import {errors, effectUtils, genericUtils, itemUtils, rollUtils, actorUtils} from '../../utils.js';
+import {errors, effectUtils, genericUtils, itemUtils, rollUtils, actorUtils, workflowUtils} from '../../utils.js';
 function getActivityByIdentifier(item, identifier, {strict = false} = {}) {
     let activity = item.system.activities.find(i => getIdentifier(i) === identifier);
     if (!activity && strict) {
@@ -116,6 +116,7 @@ function hasSave(activity) {
     if (activity._otherActivity) return hasSave(activity._otherActivity);
 }
 function isSpellActivity(activity) {
+    foundry.utils.logCompatibilityWarning(`activityUtils.${activityUtils.isSpellActivity.name} is deprecated. Use workflowUtils.${workflowUtils.isSustainedRoll.name} instead.`, {since: '1.5.26', until: '1.6.0'});
     let identifier = getIdentifier(activity);
     if (!identifier) return genericUtils.getProperty(activity, 'midiProperties.automationOnly');
     let spellActivities = itemUtils.getSpellActivities(activity.item) ?? [];

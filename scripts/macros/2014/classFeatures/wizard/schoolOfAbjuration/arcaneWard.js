@@ -27,7 +27,7 @@ async function late({trigger: {entity: item}, workflow}) {
     if (workflow.item.system.school !== 'abj') return;
     let spellLevel = workflowUtils.getCastLevel(workflow);
     if (!spellLevel) return;
-    if (activityUtils.isSpellActivity(workflow.activity)) return;
+    if (workflowUtils.isSustainedRoll(workflow)) return;
     let maxUses = workflow.actor.classes.wizard?.system.levels * 2 + workflow.actor.system.abilities.int.mod;
     let add = spellLevel * 2;
     if (!item.flags['chris-premades']?.arcaneWard?.alreadyUsed) {
