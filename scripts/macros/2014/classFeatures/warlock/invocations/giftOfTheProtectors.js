@@ -36,6 +36,23 @@ export let giftOfTheProtectors = {
                 priority: 50
             }
         ]
+    },
+    ddbi: {
+        correctedItems: {
+            'Eldritch Invocations: Gift of the Protectors': {
+                system: {
+                    uses: {
+                        max: '1',
+                        recovery: [
+                            {
+                                period: 'lr',
+                                type: 'recoverAll'
+                            }
+                        ]
+                    }
+                }
+            }
+        }
     }
 };
 export let giftOfTheProtectorsProtected = {

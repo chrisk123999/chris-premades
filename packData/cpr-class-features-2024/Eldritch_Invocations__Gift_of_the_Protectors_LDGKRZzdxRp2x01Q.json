@@ -18,7 +18,11 @@
             "allowed": false
           },
           "spellSlot": true,
-          "targets": []
+          "targets": [
+            {
+              "type": "itemUses"
+            }
+          ]
         },
         "description": {
           "chatFlavor": ""
@@ -130,8 +134,13 @@
     },
     "uses": {
       "spent": 0,
-      "recovery": [],
-      "max": ""
+      "recovery": [
+        {
+          "period": "lr",
+          "type": "recoverAll"
+        }
+      ],
+      "max": "1"
     },
     "advancement": [],
     "description": {
@@ -176,7 +185,8 @@
           ]
         }
       }
-    }
+    },
+    "dnd5e": {}
   },
   "img": "icons/sundries/books/book-symbol-skull-grey.webp",
   "folder": "ZvOw98M7HI0Bf0L2",
