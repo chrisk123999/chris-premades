@@ -3,8 +3,10 @@
 - This is not a V14 update. An update for V14 is still a work in progress.
 ## New Modern Content:
 - Instinctive Pounce
+- Eldritch Invocations: Gift of the Protectors
 ## New Legacy Content:
 - Instinctive Pounce
+- Eldritch Invocations: Gift of the Protectors
 ## Bug Fixes:
 - Death Armor
 ## API Bug Fixes:

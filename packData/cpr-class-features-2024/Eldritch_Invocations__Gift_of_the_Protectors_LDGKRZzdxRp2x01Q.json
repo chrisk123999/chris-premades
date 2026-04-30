@@ -1,43 +1,15 @@
 {
-  "name": "Instinctive Pounce",
+  "name": "Eldritch Invocations: Gift of the Protectors",
   "type": "feat",
-  "img": "icons/creatures/mammals/wolf-shadow-black.webp",
+  "effects": [],
   "system": {
-    "description": {
-      "value": "",
-      "chat": ""
-    },
-    "source": {
-      "custom": "",
-      "rules": "2014",
-      "revision": 1,
-      "license": "CC-BY-4.0",
-      "book": "TCoE",
-      "page": ""
-    },
-    "uses": {
-      "max": "",
-      "spent": 0,
-      "recovery": []
-    },
-    "type": {
-      "value": "class",
-      "subtype": ""
-    },
-    "prerequisites": {
-      "level": 7,
-      "repeatable": false,
-      "items": []
-    },
-    "properties": [],
-    "requirements": "Barbarian",
     "activities": {
-      "4kQdAu844v4SqFFV": {
+      "H68kWMQirH8Nv8bJ": {
         "type": "utility",
-        "_id": "4kQdAu844v4SqFFV",
+        "_id": "H68kWMQirH8Nv8bJ",
         "sort": 0,
         "activation": {
-          "type": "bonus",
+          "type": "action",
           "override": false,
           "condition": ""
         },
@@ -52,15 +24,14 @@
           "chatFlavor": ""
         },
         "duration": {
-          "units": "turn",
+          "units": "dstr",
           "concentration": false,
-          "override": false,
-          "value": "1"
+          "override": false
         },
         "effects": [],
         "flags": {},
         "range": {
-          "units": "self",
+          "units": "any",
           "override": false,
           "special": ""
         },
@@ -72,7 +43,8 @@
           },
           "affects": {
             "choice": false,
-            "type": "self",
+            "type": "creature",
+            "count": "max(@abilities.cha.mod, 1)",
             "special": ""
           },
           "override": false,
@@ -142,7 +114,7 @@
           "magicDamage": false,
           "noConcentrationCheck": false,
           "skipConcentrationCheck": false,
-          "autoCEEffects": "default"
+          "autoCEEffects": "none"
         },
         "isOverTimeFlag": false,
         "overTimeProperties": {
@@ -153,42 +125,61 @@
         },
         "otherActivityId": "none",
         "otherActivityAsParentType": true,
-        "name": "",
-        "img": ""
+        "name": ""
       }
     },
-    "enchant": {},
-    "identifier": "instinctive-pounce",
+    "uses": {
+      "spent": 0,
+      "recovery": [],
+      "max": ""
+    },
     "advancement": [],
-    "crewed": false
-  },
-  "effects": [],
-  "folder": "JlLqaoQkkEcxc7Ky",
-  "flags": {
-    "dnd5e": {
-      "sourceId": "Compendium.dnd5e.classes24.Item.phbbrbInstinctiv",
-      "advancementOrigin": "bsmQl00gMKfEZHwU.ALO7yStJ7IHDxOss",
-      "advancementRoot": "bsmQl00gMKfEZHwU.ALO7yStJ7IHDxOss",
-      "riders": {
-        "activity": []
-      }
+    "description": {
+      "value": "",
+      "chat": ""
     },
+    "identifier": "eldritch-invocations-gift-of-the-protectors",
+    "source": {
+      "book": "PHB 2024",
+      "page": "",
+      "license": "",
+      "custom": "",
+      "rules": "2024",
+      "revision": 1
+    },
+    "crewed": false,
+    "enchant": {},
+    "prerequisites": {
+      "items": [],
+      "level": 9,
+      "repeatable": false
+    },
+    "properties": [],
+    "requirements": "",
+    "type": {
+      "value": "class",
+      "subtype": "eldritchInvocation"
+    }
+  },
+  "flags": {
     "chris-premades": {
+      "info": {
+        "identifier": "giftOfTheProtectors",
+        "version": "1.5.26",
+        "source": "chris-premades",
+        "rules": "modern"
+      },
       "macros": {
         "midi": {
           "item": [
-            "instinctivePounce"
+            "giftOfTheProtectors"
           ]
         }
-      },
-      "info": {
-        "identifier": "instinctivePounce",
-        "version": "1.5.26",
-        "source": "chris-premades",
-        "hasAnimation": true
       }
     }
   },
-  "_id": "j6EMUJhbynBHpWVl",
-  "_key": "!items!j6EMUJhbynBHpWVl"
+  "img": "icons/sundries/books/book-symbol-skull-grey.webp",
+  "folder": "ZvOw98M7HI0Bf0L2",
+  "_id": "LDGKRZzdxRp2x01Q",
+  "_key": "!items!LDGKRZzdxRp2x01Q"
 }

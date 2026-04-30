@@ -164,12 +164,21 @@
   "effects": [],
   "folder": "epodEYV6OzWsQdIP",
   "flags": {
+    "dnd5e": {
+      "sourceId": "Compendium.dnd5e.classes24.Item.phbbrbInstinctiv",
+      "advancementOrigin": "bsmQl00gMKfEZHwU.ALO7yStJ7IHDxOss",
+      "advancementRoot": "bsmQl00gMKfEZHwU.ALO7yStJ7IHDxOss",
+      "riders": {
+        "activity": []
+      }
+    },
     "chris-premades": {
       "info": {
         "identifier": "instinctivePounce",
         "version": "1.5.26",
         "source": "chris-premades",
-        "rules": "modern"
+        "rules": "modern",
+        "hasAnimation": true
       },
       "macros": {
         "midi": {
@@ -178,7 +187,8 @@
           ]
         }
       }
-    }
+    },
+    "midi-qol": {}
   },
   "_id": "wfWiva4qp2Uf01fQ",
   "_key": "!items!wfWiva4qp2Uf01fQ"

@@ -470,6 +470,7 @@ export {pactOfTheBlade, pactOfTheBladeAttack} from './macros/2024/classFeatures/
 export {agonizingBlast} from './macros/2024/classFeatures/warlock/invocations/agonizingBlast.js';
 export {fiendishVigor} from './macros/2024/classFeatures/warlock/invocations/fiendishVigor.js';
 export {devilsSight} from './macros/2024/classFeatures/warlock/invocations/devilsSight.js';
+export {giftOfTheProtectors} from './macros/2024/classFeatures/warlock/invocations/giftOfTheProtectors.js';
 export {oneWithShadows} from './macros/2024/classFeatures/warlock/invocations/oneWithShadows.js';
 // Monk
 export {martialArts} from './macros/2024/classFeatures/monk/martialArts.js';

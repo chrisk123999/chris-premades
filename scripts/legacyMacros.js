@@ -268,6 +268,7 @@ export {ghostWalk} from './macros/2014/classFeatures/rogue/phantom/ghostWalk.js'
 export {giantsHavocCrushingThrow} from './macros/2014/classFeatures/barbarian/giant/crushingThrow.js';
 export {giantsHavocGiantStature} from './macros/2014/classFeatures/barbarian/giant/giantStature.js';
 export {giantsMight, giantsMightEffect} from './macros/2014/classFeatures/fighter/runeKnight/giantsMight.js';
+export {giftOfTheProtectors, giftOfTheProtectorsProtected} from './macros/2014/classFeatures/warlock/invocations/giftOfTheProtectors.js';
 export {graspOfHadar} from './macros/2014/classFeatures/warlock/invocations/graspOfHadar.js';
 export {graveTouched} from './macros/2014/classFeatures/warlock/undead/graveTouched.js';
 export {greatStature} from './macros/2014/classFeatures/fighter/runeKnight/greatStature.js';
