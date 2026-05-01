@@ -9,8 +9,12 @@
 - Eldritch Invocations: Gift of the Protectors
 ## Bug Fixes:
 - Death Armor
+- Ingenious Movement
+- Generic Teleport
 ## API Bug Fixes:
 - `activityUtils.isSpellActivity(activity)` is deprecated and replaced by `workflowUtils.isSustainedRoll(workflow)`. This helper identifies item rolls that should not trigger "...when a spell is cast" abilities. It now includes MidiQOL overtimes in this check.
+- `socketUtils.firstOwner` now prioritizes a user's assigned actor if multiple owners are online.
+- `dialogUtils.selectDocumentDialog` has an option to show item/activity uses.
 
 # 1.5.25 Release:
 ## Update Notes:

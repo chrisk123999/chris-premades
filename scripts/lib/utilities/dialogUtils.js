@@ -156,7 +156,7 @@ async function confirm(title, content, {userId = game.user.id, buttons = 'yesNo'
 async function confirmUseItem(item, {userId = game.user.id, buttons = 'yesNo'} = {}) {
     return await dialogUtils.confirm(item.name, genericUtils.format('CHRISPREMADES.Dialog.Use', {itemName: item.name}), {userId, buttons});
 }
-async function selectDocumentDialog(title, content, documents, {displayTooltips = false, sortAlphabetical = false, sortCR = false, userId = game.user.id, addNoneDocument = false, showCR = false, showSpellLevel = false, displayReference = false} = {}) {
+async function selectDocumentDialog(title, content, documents, {displayTooltips = false, sortAlphabetical = false, sortCR = false, userId = game.user.id, addNoneDocument = false, showCR = false, showSpellLevel = false, showUses = false, displayReference = false} = {}) {
     if (sortAlphabetical) {
         documents = documents.sort((a, b) => {
             return a.name.localeCompare(b.name, 'en', {sensitivity: 'base'});
@@ -168,8 +168,16 @@ async function selectDocumentDialog(title, content, documents, {displayTooltips 
         });
     }
     let isCompendiumDoc = !documents[0]?.id;
+    let buildLabel = doc => {
+        let label = doc.name;
+        if (showCR) label += ` [${genericUtils.format('DND5E.CRLabel', {cr: doc.system?.details?.cr ?? '?'})}]`;
+        if (showSpellLevel) label += ` [${genericUtils.translate('DND5E.SpellLevel')} ${doc.system?.level ?? '?'}]`;
+        let uses = doc.system?.uses ?? doc.uses;
+        if (showUses && uses?.max) label += ` [${uses.value ?? '?'}/${uses.max} ${genericUtils.translate('DND5E.Uses')}]`;
+        return label + (doc.system?.linkedActivity ? ' (' + doc.system.linkedActivity.item.name + ')' : '');
+    };
     let inputFields = documents.map(i => ({
-        label: i.name + (showCR ? ' [' + genericUtils.format('DND5E.CRLabel', {cr: i.system?.details?.cr ?? '?'}) + ']' : (showSpellLevel ? ' [' + genericUtils.translate('DND5E.SpellLevel') + ' ' + (i.system?.level ?? '?') + ']' : '')) + (i.system?.linkedActivity ? ' (' + i.system.linkedActivity.item.name + ')' : ''),
+        label: buildLabel(i),
         name: isCompendiumDoc ? (i.uuid ?? i.actor?.uuid) : (i.id ?? i.actor?.id),
         options: {
             image: i.img + (i.system?.details?.cr != undefined ? ` (CR ${genericUtils.decimalToFraction(i.system?.details?.cr)})` : ``),
@@ -196,7 +204,7 @@ async function selectDocumentDialog(title, content, documents, {displayTooltips 
     if (result?.buttons) return isCompendiumDoc ? fromUuid(result.buttons) : documents.find(i => i.id === result.buttons);
     return false;
 }
-async function selectDocumentsDialog(title, content, documents, {max = undefined, displayTooltips = false, sortAlphabetical = false, sortCR = false, userId = game.user.id, showCR = false, checkbox = false, weights = {}, maxes = {}} = {}) {
+async function selectDocumentsDialog(title, content, documents, {max = undefined, displayTooltips = false, sortAlphabetical = false, sortCR = false, userId = game.user.id, showCR = false, showSpellLevel = false, showUses = false, checkbox = false, weights = {}, maxes = {}} = {}) {
     if (sortAlphabetical) {
         documents = documents.sort((a, b) => {
             return a.name.localeCompare(b.name, 'en', {sensitivity: 'base'});
@@ -207,8 +215,16 @@ async function selectDocumentsDialog(title, content, documents, {max = undefined
             return a.system?.details?.cr > b.system?.details?.cr ? -1 : 1;
         });
     }
+    let buildLabel = doc => {
+        let label = doc.name;
+        if (showCR) label += ` [${genericUtils.format('DND5E.CRLabel', {cr: doc.system?.details?.cr ?? '?'})}]`;
+        if (showSpellLevel) label += ` [${genericUtils.translate('DND5E.SpellLevel')} ${doc.system?.level ?? '?'}]`;
+        let uses = doc.system?.uses ?? doc.uses;
+        if (showUses && uses?.max) label += ` [${uses.value ?? '?'}/${uses.max} ${genericUtils.translate('DND5E.Uses')}]`;
+        return label + (doc.system?.linkedActivity ? ' (' + doc.system.linkedActivity.item.name + ')' : '');
+    };
     let inputFields = documents.map(i => ({
-        label: i.name + (showCR ? ' [' + genericUtils.format('DND5E.CRLabel', {cr: i.system?.details?.cr ?? '?'}) + ']' : ''),
+        label: buildLabel(i),
         name: i.id ?? i._id,
         options: {
             image: i.img + (i.system?.details?.cr != undefined ? ` (CR ${genericUtils.decimalToFraction(i.system?.details?.cr)})` : ``),

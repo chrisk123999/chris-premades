@@ -22,7 +22,12 @@ function firstOwner(document, useId) {
     let corrected = document instanceof TokenDocument ? document.actor : document instanceof foundry.canvas.placeables.Token ? document.document.actor : document;
     let permissions = genericUtils.getProperty(corrected ?? {}, 'ownership') ?? {};
     let playerOwners = Object.entries(permissions).filter(([id, level]) => !game.users.get(id)?.isGM && game.users.get(id)?.active && level === 3).map(([id]) => id);
-    if (playerOwners.length > 0) return useId ? playerOwners[0] : game.users.get(playerOwners[0]);
+    if (playerOwners.length > 0) {
+        let playerId = document instanceof Actor.implementation ? 
+            playerOwners.find(id => game.users.get(id)?.character?.uuid === document.uuid) ?? playerOwners[0] : 
+            playerOwners[0];
+        return useId ? playerId : game.users.get(playerId);
+    }
     return useId ? gmID() : game.users.get(gmID());
 }
 async function remoteRollItem(item, config, options, userId) {
