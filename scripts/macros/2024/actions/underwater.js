@@ -10,7 +10,7 @@ async function attack({trigger, workflow}) {
     }
 }
 async function range({trigger, workflow}) {
-    if (workflow.targets.size != 1) return;
+    if (workflow.targets.size != 1 || !workflowUtils.isAttackType(workflow, 'attack')) return;
     let distance = tokenUtils.getDistance(workflow.token, workflow.targets.first());
     if (distance <= (workflow.activity.range.value ?? workflow.activity.range.reach)) return;
     genericUtils.notify('CHRISPREMADES.Macros.Underwater.TooFar', 'warn');
