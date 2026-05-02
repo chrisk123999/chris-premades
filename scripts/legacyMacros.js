@@ -290,7 +290,7 @@ export {hybridTransformation, hybridTransformationActive} from './macros/2014/cl
 export {improvedPactWeapon} from './macros/2014/classFeatures/warlock/invocations/improvedPactWeapon.js';
 export {infectiousFury} from './macros/2014/classFeatures/barbarian/beast/infectiousFury.js';
 export {infiltratorArmor, infiltratorArmorLightningLauncher} from './macros/2014/classFeatures/artificer/armorer/infiltratorArmor.js';
-export {infuseItem, infuseItemArmorStrength, infuseItemHomunculusTouch, infuseItemRepulsionShield, infuseItemSpellRing} from './macros/2014/classFeatures/artificer/infuseItem.js';
+export {infuseItem, infuseItemArmorStrength, infuseItemBootsWinding, infuseItemHomunculusTouch, infuseItemRepulsionShield, infuseItemSpellRing} from './macros/2014/classFeatures/artificer/infuseItem.js';
 export {insightfulFighting} from './macros/2014/classFeatures/rogue/inquisitive/insightfulFighting.js';
 export {inspiringSmite} from './macros/2014/classFeatures/paladin/oathOfGlory/inspiringSmite.js';
 export {instinctivePounce} from './macros/2014/classFeatures/barbarian/instinctivePounce.js';

@@ -1,0 +1,133 @@
+{
+  "name": "Mind Sharpener",
+  "type": "feat",
+  "img": "icons/magic/lightning/barrier-shield-crackling-orb-pink.webp",
+  "system": {
+    "activities": {},
+    "uses": {
+      "spent": 0,
+      "recovery": [
+        {
+          "period": "dawn",
+          "type": "formula",
+          "formula": "1d4"
+        }
+      ],
+      "max": "4"
+    },
+    "advancement": [],
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "identifier": "mind-sharpener",
+    "source": {
+      "revision": 1,
+      "rules": "2014",
+      "book": "TCoE",
+      "page": "",
+      "custom": "",
+      "license": ""
+    },
+    "crewed": false,
+    "enchant": {},
+    "prerequisites": {
+      "items": [],
+      "repeatable": false,
+      "level": null
+    },
+    "properties": [],
+    "requirements": "",
+    "type": {
+      "value": "",
+      "subtype": ""
+    }
+  },
+  "effects": [
+    {
+      "name": "Mind Sharpener",
+      "img": "icons/magic/lightning/barrier-shield-crackling-orb-pink.webp",
+      "origin": "Compendium.chris-premades.CPRClassFeatureItems.Item.mcZ4jEo3MtaDHkQc",
+      "_id": "OF6mvSJHa9LmG0Hw",
+      "type": "base",
+      "system": {},
+      "changes": [
+        {
+          "key": "flags.midi-qol.optional.mind-sharpener.save.fail.con",
+          "mode": 5,
+          "value": "success",
+          "priority": 20
+        },
+        {
+          "key": "flags.midi-qol.optional.mind-sharpener.activation",
+          "mode": 5,
+          "value": "isConcentrationCheck",
+          "priority": 20
+        },
+        {
+          "key": "flags.midi-qol.optional.mind-sharpener.count",
+          "mode": 5,
+          "value": "ItemUses.identifier.mind-sharpener",
+          "priority": 20
+        },
+        {
+          "key": "flags.midi-qol.optional.mind-sharpener.countAlt",
+          "mode": 5,
+          "value": "reaction",
+          "priority": 20
+        },
+        {
+          "key": "flags.midi-qol.optional.mind-sharpener.displayBonusRolls",
+          "mode": 5,
+          "value": "false",
+          "priority": 20
+        }
+      ],
+      "disabled": false,
+      "duration": {
+        "startTime": null,
+        "combat": null,
+        "seconds": null,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "transfer": true,
+      "statuses": [],
+      "sort": 0,
+      "flags": {
+        "dnd5e": {
+          "riders": {
+            "statuses": []
+          }
+        },
+        "dae": {
+          "disableCondition": "",
+          "stackable": "noneName",
+          "showIcon": false,
+          "disableIncapacitated": false,
+          "durationExpression": "",
+          "macroRepeat": "none",
+          "specialDuration": []
+        },
+        "core": {
+          "overlay": false
+        }
+      },
+      "_key": "!items.effects!mcZ4jEo3MtaDHkQc.OF6mvSJHa9LmG0Hw"
+    }
+  ],
+  "folder": null,
+  "flags": {
+    "dnd5e": {
+      "riders": {
+        "activity": []
+      }
+    }
+  },
+  "_id": "mcZ4jEo3MtaDHkQc",
+  "_key": "!items!mcZ4jEo3MtaDHkQc"
+}

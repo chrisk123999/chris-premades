@@ -7,6 +7,7 @@
 ## New Legacy Content:
 - Instinctive Pounce
 - Eldritch Invocations: Gift of the Protectors
+- Artificer Infusions: Boots of the Winding Path, Helm of Awareness, Mind Sharpener
 ## Bug Fixes:
 - Death Armor
 - Ingenious Movement
