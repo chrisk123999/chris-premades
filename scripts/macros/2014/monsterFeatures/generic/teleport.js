@@ -1,11 +1,13 @@
 import {Teleport} from '../../../../lib/teleport.js';
-import {itemUtils} from '../../../../utils.js';
+import {itemUtils, rollUtils} from '../../../../utils.js';
 import {teleportEffects} from '../../../animations/teleportEffects.js';
 async function late({workflow}) {
     let config = itemUtils.getGenericFeatureConfig(workflow.item, 'genericTeleport');
     let activities = config.activities;
     if (activities?.length && !activities.includes(workflow.activity.id)) return;
-    await Teleport.target([workflow.token], workflow.token, {range: config.range, animation: config.animation});
+    let range = await rollUtils.rollDice(String(config.range), {chatMessage: config.message, entity: workflow.activity, flavor: workflow.item.name});
+    range = config.message ? range.roll.total : range.total;
+    await Teleport.target([workflow.token], workflow.token, {range, animation: config.animation});
 }
 export let genericTeleport = {
     name: 'Generic Teleport',
@@ -31,8 +33,14 @@ export let genericTeleport = {
         {
             value: 'range',
             label: 'CHRISPREMADES.Config.Range',
-            type: 'number',
+            type: 'text',
             default: 30
+        },
+        {
+            value: 'message',
+            label: 'CHRISPREMADES.Config.DisplayFormulaRoll',
+            type: 'checkbox',
+            default: false
         },
         {
             value: 'animation',

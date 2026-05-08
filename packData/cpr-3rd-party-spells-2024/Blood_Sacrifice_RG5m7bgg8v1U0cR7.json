@@ -87,20 +87,6 @@
                 "number": 1,
                 "formula": ""
               }
-            },
-            {
-              "custom": {
-                "enabled": false,
-                "formula": ""
-              },
-              "number": 1,
-              "denomination": 6,
-              "bonus": "",
-              "types": [],
-              "scaling": {
-                "mode": "",
-                "number": 1
-              }
             }
           ]
         },
@@ -314,7 +300,7 @@
         "identifier": "bloodSacrifice",
         "rules": "modern",
         "source": "chris-premades",
-        "version": "1.4.25"
+        "version": "1.5.25"
       }
     }
   },

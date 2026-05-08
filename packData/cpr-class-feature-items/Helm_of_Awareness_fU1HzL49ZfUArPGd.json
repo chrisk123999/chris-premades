@@ -1,0 +1,130 @@
+{
+  "name": "Helm of Awareness",
+  "type": "equipment",
+  "img": "icons/equipment/head/helm-barbute-steel-grey.webp",
+  "system": {
+    "activities": {},
+    "uses": {
+      "spent": 0,
+      "recovery": [],
+      "max": ""
+    },
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "identifier": "helm-of-awareness",
+    "source": {
+      "revision": 1,
+      "rules": "2014",
+      "book": "TCoE",
+      "page": "",
+      "custom": "",
+      "license": ""
+    },
+    "identified": true,
+    "unidentified": {
+      "description": ""
+    },
+    "container": null,
+    "quantity": 1,
+    "weight": {
+      "value": 0,
+      "units": "lb"
+    },
+    "price": {
+      "value": 0,
+      "denomination": "gp"
+    },
+    "rarity": "uncommon",
+    "attunement": "required",
+    "attuned": true,
+    "equipped": true,
+    "crew": {
+      "value": []
+    },
+    "armor": {
+      "value": null,
+      "dex": null,
+      "magicalBonus": null
+    },
+    "proficient": null,
+    "properties": [
+      "mgc"
+    ],
+    "strength": null,
+    "type": {
+      "value": "wondrous",
+      "baseItem": ""
+    }
+  },
+  "effects": [
+    {
+      "name": "Helm of Awareness",
+      "img": "icons/equipment/head/helm-barbute-steel-grey.webp",
+      "origin": "Actor.1ANL4qqWoi2V46iP.Item.CmhfGh9PNh95zUtA",
+      "_id": "4KuDroH02DK9AvAj",
+      "type": "base",
+      "system": {},
+      "changes": [
+        {
+          "key": "system.attributes.init.roll.mode",
+          "mode": 2,
+          "value": "1",
+          "priority": 20
+        },
+        {
+          "key": "system.traits.ci.value",
+          "mode": 2,
+          "value": "surprised",
+          "priority": 20
+        }
+      ],
+      "disabled": false,
+      "duration": {
+        "startTime": null,
+        "combat": null,
+        "seconds": null,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "transfer": true,
+      "statuses": [],
+      "sort": 0,
+      "flags": {
+        "dnd5e": {
+          "riders": {
+            "statuses": []
+          }
+        },
+        "dae": {
+          "disableCondition": "statuses.incapacitated",
+          "stackable": "noneName",
+          "showIcon": false,
+          "disableIncapacitated": false,
+          "durationExpression": "",
+          "macroRepeat": "none",
+          "specialDuration": []
+        },
+        "core": {
+          "overlay": false
+        }
+      },
+      "_key": "!items.effects!fU1HzL49ZfUArPGd.4KuDroH02DK9AvAj"
+    }
+  ],
+  "folder": null,
+  "flags": {
+    "dnd5e": {
+      "riders": {
+        "activity": []
+      }
+    }
+  },
+  "_id": "fU1HzL49ZfUArPGd",
+  "_key": "!items!fU1HzL49ZfUArPGd"
+}

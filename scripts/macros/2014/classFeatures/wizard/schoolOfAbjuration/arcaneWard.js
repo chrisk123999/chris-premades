@@ -1,7 +1,7 @@
-import {activityUtils, actorUtils, dialogUtils, effectUtils, genericUtils, itemUtils, socketUtils, tokenUtils, workflowUtils} from '../../../../../utils.js';
+import {activityUtils, dialogUtils, genericUtils, itemUtils, socketUtils, tokenUtils, workflowUtils} from '../../../../../utils.js';
 
 export async function arcaneWardHelper(item, ditem, token, targetToken) {
-    let hpDamage = ditem.damageDetail.reduce((acc, i) => acc + i.value, 0) - ditem.oldTempHP;
+    let hpDamage = ditem.damageDetail.reduce((acc, i) => acc + (i.properties.has('heal') ? 0 : i.value), 0) - ditem.oldTempHP;
     if (hpDamage <= 0) return;
     let uses = item.system.uses.value;
     if (!uses) return;
@@ -27,7 +27,7 @@ async function late({trigger: {entity: item}, workflow}) {
     if (workflow.item.system.school !== 'abj') return;
     let spellLevel = workflowUtils.getCastLevel(workflow);
     if (!spellLevel) return;
-    if (activityUtils.isSpellActivity(workflow.activity)) return;
+    if (workflowUtils.isSustainedRoll(workflow)) return;
     let maxUses = workflow.actor.classes.wizard?.system.levels * 2 + workflow.actor.system.abilities.int.mod;
     let add = spellLevel * 2;
     if (!item.flags['chris-premades']?.arcaneWard?.alreadyUsed) {

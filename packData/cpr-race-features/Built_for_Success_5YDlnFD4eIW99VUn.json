@@ -179,28 +179,6 @@
     }
   },
   "flags": {
-    "ddbimporter": {
-      "isChoiceFeature": false,
-      "id": 9151711,
-      "type": "race",
-      "entityTypeId": 1960452172,
-      "is2014": true,
-      "is2024": false,
-      "legacy": false,
-      "originalName": "Built for Success",
-      "dndbeyond": {
-        "requiredLevel": null,
-        "displayOrder": 7,
-        "featureType": 1,
-        "entityRaceId": 1121695,
-        "entityType": "racial-trait"
-      },
-      "fullRaceName": "Autognome",
-      "groupName": "Gnome",
-      "baseName": "Built for Success",
-      "isLineage": false,
-      "importId": "LuZSVVHEZHdqDhm9"
-    },
     "species": {
       "fullRaceName": "Autognome",
       "baseRaceName": "Autognome",

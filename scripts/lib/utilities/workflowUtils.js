@@ -1,4 +1,4 @@
-import {actorUtils, constants, effectUtils, genericUtils, itemUtils, rollUtils, socketUtils} from '../../utils.js';
+import {activityUtils, actorUtils, constants, effectUtils, genericUtils, itemUtils, rollUtils, socketUtils} from '../../utils.js';
 import {socket, sockets} from '../sockets.js';
 async function bonusDamage(workflow, formula, {ignoreCrit = false, damageType}={}) {
     formula = String(formula);
@@ -343,6 +343,16 @@ function addEntityRemoval(workflow, entities) {
     let current = workflow['chris-premades']?.removeEntityUuids ?? [];
     genericUtils.setProperty(workflow, 'chris-premades.removeEntityUuids', [...current, ...entities.map(i => i.uuid)]);
 }
+function isSustainedRoll(workflow) {    
+    let identifier = activityUtils.getIdentifier(workflow.activity);
+    if (!identifier) return [
+        'workflowOptions.isOverTime',
+        'activity.isOverTimeFlag',
+        'activity.midiProperties.automationOnly'
+    ].some(p => genericUtils.getProperty(workflow, p));
+    let spellActivities = itemUtils.getSpellActivities(workflow.item) ?? [];
+    return spellActivities.includes(identifier);
+}
 export let workflowUtils = {
     bonusDamage,
     bonusAttack,
@@ -370,5 +380,6 @@ export let workflowUtils = {
     getActionType,
     swapAttackAbility,
     addEntityRemoval,
-    preventDeath
+    preventDeath,
+    isSustainedRoll
 };

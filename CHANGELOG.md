@@ -1,3 +1,146 @@
+# 1.5.29 Release:
+## Update Notes:
+- This is not a V14 update. An update for V14 is still a work in progress.
+## Bug Fixes:
+- Protection
+- Flash of Genius
+- Flaming Sphere
+
+# 1.5.28 Release:
+## Update Notes:
+- This is not a V14 update. An update for V14 is still a work in progress.
+## New Modern Content:
+- Channel Divinity (Paladin)
+- Nature's Wrath
+## Bug Fixes:
+- Healing Machine
+- Enhanced Bond
+
+# 1.5.27 Release:
+## Update Notes:
+- This is not a V14 update. An update for V14 is still a work in progress.
+## Bug Fixes:
+- Underwater
+
+# 1.5.26 Release:
+## Update Notes:
+- This is not a V14 update. An update for V14 is still a work in progress.
+## New Modern Content:
+- Instinctive Pounce
+- Eldritch Invocations: Gift of the Protectors
+## New Legacy Content:
+- Instinctive Pounce
+- Eldritch Invocations: Gift of the Protectors
+- Artificer Infusions: Boots of the Winding Path, Helm of Awareness, Mind Sharpener
+## Bug Fixes:
+- Death Armor
+- Ingenious Movement
+- Generic Teleport
+## API Bug Fixes:
+- `activityUtils.isSpellActivity(activity)` is deprecated and replaced by `workflowUtils.isSustainedRoll(workflow)`. This helper identifies item rolls that should not trigger "...when a spell is cast" abilities. It now includes MidiQOL overtimes in this check.
+- `socketUtils.firstOwner` now prioritizes a user's assigned actor if multiple owners are online.
+- `dialogUtils.selectDocumentDialog` has an option to show item/activity uses.
+
+# 1.5.25 Release:
+## Update Notes:
+- This is not a V14 update. An update for V14 is still a work in progress.
+## New Modern Content:
+- Force Gauntlet
+## Bug Fixes:
+- Medkit (Ownership Errors)
+- Blood Sacrifice
+
+# 1.5.24 Release:
+## Update Notes:
+- This is not a V14 update. An update for V14 is still a work in progress.
+## Bug Fixes:
+- Grave Touched
+
+# 1.5.23 Release:
+## Update Notes:
+- This is not a V14 update. An update for V14 is still a work in progress.
+## New Legacy Content:
+- Cruel
+
+# 1.5.22 Release:
+## Update Notes:
+- This is not a V14 update. An update for V14 is still a work in progress.
+## New Modern Content
+- Death Armor
+- Elemental Attunement
+- Elemental Burst
+- Stride of the Elements
+- Elemental Epitome
+## Bug Fixes
+- Wails from the Grave
+- Cleave Mastery
+- Graze Mastery
+- Topple Mastery
+- Effect Descriptions
+- Sneak Attack (modern)
+- Umbral Sight (modern)
+- Empowered Strikes
+- Grapple Escape
+- Generic Action: Choose Damage (Thanks Ferril)
+## API Bug Fixes:
+- Gridless Compatibility
+
+# 1.5.21 Release:
+## Update Notes:
+- This is not a V14 update. An update for V14 is still a work in progress.
+## New Modern Content:
+- Awakened Mind
+- Psychic Spells
+- Clairvoyant Combatant
+- Eldritch Hex
+- Thought Shield
+- Create Thrall
+- Ghaal'Shaarat
+- Perfect Weapon
+- Runes of War
+- Relentless Endurance (Thanks Peril)
+## API Update Notes
+- The icons used in `dialogUtils.selectDamageType` are now available under `constants.damageIcons`.
+
+# 1.5.20 Release:
+## Update Notes:
+- This is not a V14 update. An update for V14 is still a work in progress.
+## Bug Fixes
+- Martial Arts
+- Scorching Ray
+- Maneuver: Parry
+- Quick Conditions UI
+- Paladin's Smite
+- Beguiling Magic
+- Arcane Ward
+- Lantern of Revealing
+## New Legacy Content
+- Maneuver: Maneuvering Attack
+
+# 1.5.19 Release:
+## Update Notes:
+- This is not a V14 update. An update for V14 is still a work in progress.
+## Bug Fixes:
+- Studied Attack
+
+# 1.5.18 Release:
+## Update Notes:
+- This is not a V14 update. An update for V14 is still a work in progress.
+## New Modern Content:
+- Studied Attack
+- Summer Winds
+## Bug Fixes:
+- Emboldening Bond
+- Protective Bond
+- Heroic Inspiration
+- Hail of Thorns
+- Effect Immunity
+- Cutting Words
+- Mantle of Inspiration
+- Psionic Energy
+- Tandem Footwork
+- Warrior of the Gods
+
 # 1.5.17 Release:
 ## Update Notes:
 - This is not a V14 update. An update for V14 is still a work in progress.
@@ -7,6 +150,7 @@
 - Tinker's Magic
 - Replicate Magic Item
 - Magic Item Tinker
+- Flash of Genius
 - Battle Ready (Thanks Moto)
 ## New Legacy Content:
 - Battle Ready (Thanks Moto)

@@ -49,6 +49,12 @@ async function use({trigger, workflow}) {
             }
         ]
     };
+    if (itemUtils.getItemByIdentifier(workflow.actor, 'eldritchHex')) targetEffectData.changes.push({
+        key: 'flags.midi-qol.disadvantage.save.' + selection,
+        mode: 0,
+        value: true,
+        priority: 20
+    });
     let casterEffectData = {
         name: workflow.item.name,
         img: workflow.item.img,

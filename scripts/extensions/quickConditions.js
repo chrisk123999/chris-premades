@@ -3,10 +3,12 @@ import {genericUtils} from '../utils.js';
 function onRender(application, element, context, options) {
     let names = ['useConditionText', 'effectConditionText'];
     let data = {entity: application.activity, uuid: application.activity.uuid};
+    let midiEditorEnabled = game.settings.get('midi-qol', 'ConfigSettings')?.conditionEditorEnabled;
     names.forEach(name => {
         let node = element.querySelector('.form-fields:has([name="' + name + '"])');
         let el = document.createElement('i');
         el.id = name;
+        if (midiEditorEnabled) el.style.marginRight = '34px';
         el.classList.add('fa-solid', 'fa-plus', 'cpr-quick-conditions');
         node.appendChild(el);
         el.addEventListener('click', onClick.bind(data));

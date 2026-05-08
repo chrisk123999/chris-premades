@@ -1,77 +1,87 @@
-import {actorUtils, constants, dialogUtils, effectUtils, genericUtils, socketUtils, tokenUtils, workflowUtils} from '../../../utils.js';
-async function early({trigger: {entity: item, token}, workflow}) {
-    if (!workflow.targets.size === 1) return;
-    if (workflow.token.document.disposition === token.document.disposition) return;
+import {actorUtils, dialogUtils, effectUtils, genericUtils, itemUtils, socketUtils, tokenUtils, workflowUtils} from '../../../utils.js';
+async function early({workflow}) {
+    if (workflow.targets.size !== 1) return;
     if (!workflowUtils.isAttackType(workflow, 'attack')) return;
-    if (actorUtils.hasUsedReaction(token.actor)) return;
-    if (workflow.targets.has(token)) return;
-    if (!token.actor.items.some(i => i.system.equipped && i.system.type.value === 'shield')) return;
-    if (!tokenUtils.canSee(token, workflow.token)) return;
     let targetToken = workflow.targets.first();
-    let distanceToTarget = tokenUtils.getDistance(token, targetToken, {wallsBlock: true});
-    if (0 > distanceToTarget || distanceToTarget > genericUtils.convertDistance(5)) return;
-    let selection = await dialogUtils.confirm(item.name, genericUtils.format('CHRISPREMADES.Macros.Protection.Protect', {tokenName: targetToken.name}), {userId: socketUtils.firstOwner(item.parent, true)});
-    if (!selection) return;
-    let targetEffectData = {
-        name: genericUtils.translate('CHRISPREMADES.Macros.Protection.Protected'),
-        img: item.img,
-        origin: item.uuid,
-        changes: [
-            {
-                key: 'flags.midi-qol.grants.disadvantage.attack.all',
-                mode: 5,
-                value: '1',
-                priority: 20
-            }
-        ],
-        duration: {
-            rounds: 1
-        },
-        flags: {
-            'chris-premades': {
-                protection: {
-                    protector: token.document.uuid
+    if (effectUtils.getEffectByIdentifier(targetToken.actor, 'protectionProtected')) return;
+    let nearbyTokens = tokenUtils.findNearby(targetToken, 5, 'ally').filter(t => {
+        if (workflow.token.document.disposition === t.document.disposition) return;
+        if (!t.actor.system.attributes.ac.equippedShield) return;
+        if (actorUtils.hasUsedReaction(t.actor)) return;
+        if (workflow.targets.has(t)) return;
+        if (!tokenUtils.canSee(t, workflow.token)) return;
+        let protection = itemUtils.getItemByIdentifier(t.actor, 'protection');
+        if (!protection) return;
+        genericUtils.setProperty(t, 'chris-premades.protection', protection);
+        return true;
+    });
+    if (!nearbyTokens.length) return;
+    for (let t of nearbyTokens) {
+        let protection = genericUtils.getProperty(t, 'chris-premades.protection');
+        let selection = await dialogUtils.confirm(protection.name, genericUtils.format('CHRISPREMADES.Macros.Protection.Protect', {tokenName: targetToken.name}), {userId: socketUtils.firstOwner(t.actor, true)});
+        if (!selection) continue;
+        let targetEffectData = {
+            name: genericUtils.translate('CHRISPREMADES.Macros.Protection.Protected'),
+            img: protection.img,
+            origin: protection.uuid,
+            changes: [
+                {
+                    key: 'flags.midi-qol.grants.disadvantage.attack.all',
+                    mode: 5,
+                    value: '1',
+                    priority: 20
                 }
-            }
-        }
-    };
-    let protectorEffectData = {
-        name: item.name,
-        img: item.img,
-        origin: item.uuid,
-        duration: {
-            rounds: 1
-        },
-        flags: {
-            'chris-premades': {
-                protection: {
-                    target: targetToken.document.uuid
-                }
+            ],
+            duration: {
+                rounds: 1
             },
-            dae: {
-                specialDuration: [
-                    'turnStartSource',
-                    'combatEnd'
-                ],
-                stackable: 'noneNameOnly'
+            flags: {
+                'chris-premades': {
+                    protection: {
+                        protector: t.document.uuid
+                    }
+                }
             }
-        }
-    };
-    let protectorEffect = await effectUtils.createEffect(token.actor, protectorEffectData, {
-        strictlyInterdependent: true,
-        identifier: 'protection',
-        rules: 'modern',
-        macros: [{type: 'movement', macros: ['protectionMoved']}]
-    });
-    await effectUtils.createEffect(targetToken.actor, targetEffectData, {
-        parentEntity: protectorEffect,
-        strictlyInterdependent: true,
-        identifier: 'protectionProtected',
-        rules: 'modern',
-        macros: [{type: 'movement', macros: ['protectionMoved']}]
-    });
-    await workflowUtils.syntheticItemRoll(item, [targetToken]);
-    await actorUtils.setReactionUsed(token.actor);
+        };
+        let protectorEffectData = {
+            name: protection.name,
+            img: protection.img,
+            origin: protection.uuid,
+            duration: {
+                rounds: 1
+            },
+            flags: {
+                'chris-premades': {
+                    protection: {
+                        target: targetToken.document.uuid
+                    }
+                },
+                dae: {
+                    specialDuration: [
+                        'turnStartSource',
+                        'combatEnd'
+                    ],
+                    stackable: 'noneNameOnly'
+                }
+            }
+        };
+        let protectorEffect = await effectUtils.createEffect(t.actor, protectorEffectData, {
+            strictlyInterdependent: true,
+            identifier: 'protection',
+            rules: 'modern',
+            macros: [{type: 'movement', macros: ['protectionMoved']}]
+        });
+        await effectUtils.createEffect(targetToken.actor, targetEffectData, {
+            parentEntity: protectorEffect,
+            strictlyInterdependent: true,
+            identifier: 'protectionProtected',
+            rules: 'modern',
+            macros: [{type: 'movement', macros: ['protectionMoved']}]
+        });
+        await workflowUtils.syntheticItemRoll(protection, [targetToken]);
+        await actorUtils.setReactionUsed(t.actor);
+        break;
+    }
 }
 async function moved({trigger: {token, entity: effect}, options}) {
     let targetEffect = effectUtils.getEffectByIdentifier(token.actor, 'protectionProtected');

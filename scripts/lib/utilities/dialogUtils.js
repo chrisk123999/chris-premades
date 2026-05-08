@@ -1,5 +1,5 @@
 import {DialogApp} from '../../applications/dialog.js';
-import {tokenUtils, genericUtils, itemUtils} from '../../utils.js';
+import {constants, tokenUtils, genericUtils, itemUtils} from '../../utils.js';
 import {socket, sockets} from '../sockets.js';
 async function buttonDialog(title, content, buttons, {displayAsRows = true, userId = game.user.id} = {}) {
     let inputs = [
@@ -156,7 +156,7 @@ async function confirm(title, content, {userId = game.user.id, buttons = 'yesNo'
 async function confirmUseItem(item, {userId = game.user.id, buttons = 'yesNo'} = {}) {
     return await dialogUtils.confirm(item.name, genericUtils.format('CHRISPREMADES.Dialog.Use', {itemName: item.name}), {userId, buttons});
 }
-async function selectDocumentDialog(title, content, documents, {displayTooltips = false, sortAlphabetical = false, sortCR = false, userId = game.user.id, addNoneDocument = false, showCR = false, showSpellLevel = false, displayReference = false} = {}) {
+async function selectDocumentDialog(title, content, documents, {displayTooltips = false, sortAlphabetical = false, sortCR = false, userId = game.user.id, addNoneDocument = false, showCR = false, showSpellLevel = false, showUses = false, displayReference = false} = {}) {
     if (sortAlphabetical) {
         documents = documents.sort((a, b) => {
             return a.name.localeCompare(b.name, 'en', {sensitivity: 'base'});
@@ -168,8 +168,16 @@ async function selectDocumentDialog(title, content, documents, {displayTooltips 
         });
     }
     let isCompendiumDoc = !documents[0]?.id;
+    let buildLabel = doc => {
+        let label = doc.name;
+        if (showCR) label += ` [${genericUtils.format('DND5E.CRLabel', {cr: doc.system?.details?.cr ?? '?'})}]`;
+        if (showSpellLevel) label += ` [${genericUtils.translate('DND5E.SpellLevel')} ${doc.system?.level ?? '?'}]`;
+        let uses = doc.system?.uses ?? doc.uses;
+        if (showUses && uses?.max) label += ` [${uses.value ?? '?'}/${uses.max} ${genericUtils.translate('DND5E.Uses')}]`;
+        return label + (doc.system?.linkedActivity ? ' (' + doc.system.linkedActivity.item.name + ')' : '');
+    };
     let inputFields = documents.map(i => ({
-        label: i.name + (showCR ? ' [' + genericUtils.format('DND5E.CRLabel', {cr: i.system?.details?.cr ?? '?'}) + ']' : (showSpellLevel ? ' [' + genericUtils.translate('DND5E.SpellLevel') + ' ' + (i.system?.level ?? '?') + ']' : '')) + (i.system?.linkedActivity ? ' (' + i.system.linkedActivity.item.name + ')' : ''),
+        label: buildLabel(i),
         name: isCompendiumDoc ? (i.uuid ?? i.actor?.uuid) : (i.id ?? i.actor?.id),
         options: {
             image: i.img + (i.system?.details?.cr != undefined ? ` (CR ${genericUtils.decimalToFraction(i.system?.details?.cr)})` : ``),
@@ -196,7 +204,7 @@ async function selectDocumentDialog(title, content, documents, {displayTooltips 
     if (result?.buttons) return isCompendiumDoc ? fromUuid(result.buttons) : documents.find(i => i.id === result.buttons);
     return false;
 }
-async function selectDocumentsDialog(title, content, documents, {max = undefined, displayTooltips = false, sortAlphabetical = false, sortCR = false, userId = game.user.id, showCR = false, checkbox = false, weights = {}, maxes = {}} = {}) {
+async function selectDocumentsDialog(title, content, documents, {max = undefined, displayTooltips = false, sortAlphabetical = false, sortCR = false, userId = game.user.id, showCR = false, showSpellLevel = false, showUses = false, checkbox = false, weights = {}, maxes = {}} = {}) {
     if (sortAlphabetical) {
         documents = documents.sort((a, b) => {
             return a.name.localeCompare(b.name, 'en', {sensitivity: 'base'});
@@ -207,8 +215,16 @@ async function selectDocumentsDialog(title, content, documents, {max = undefined
             return a.system?.details?.cr > b.system?.details?.cr ? -1 : 1;
         });
     }
+    let buildLabel = doc => {
+        let label = doc.name;
+        if (showCR) label += ` [${genericUtils.format('DND5E.CRLabel', {cr: doc.system?.details?.cr ?? '?'})}]`;
+        if (showSpellLevel) label += ` [${genericUtils.translate('DND5E.SpellLevel')} ${doc.system?.level ?? '?'}]`;
+        let uses = doc.system?.uses ?? doc.uses;
+        if (showUses && uses?.max) label += ` [${uses.value ?? '?'}/${uses.max} ${genericUtils.translate('DND5E.Uses')}]`;
+        return label + (doc.system?.linkedActivity ? ' (' + doc.system.linkedActivity.item.name + ')' : '');
+    };
     let inputFields = documents.map(i => ({
-        label: i.name + (showCR ? ' [' + genericUtils.format('DND5E.CRLabel', {cr: i.system?.details?.cr ?? '?'}) + ']' : ''),
+        label: buildLabel(i),
         name: i.id ?? i._id,
         options: {
             image: i.img + (i.system?.details?.cr != undefined ? ` (CR ${genericUtils.decimalToFraction(i.system?.details?.cr)})` : ``),
@@ -295,31 +311,15 @@ async function selectSpellSlot(actor, title, content, {maxLevel = 9, minLevel = 
     return await buttonDialog(title, content, inputs, {displayAsRows: true, userId: userId});
 }
 async function selectDamageType(damageTypes, title, context, {addNo = false, userId = game.user.id} = {}) {
-    let images = {
-        acid: 'icons/magic/acid/projectile-faceted-glob.webp',
-        bludgeoning: 'icons/magic/earth/projectiles-stone-salvo-gray.webp',
-        cold: 'icons/magic/air/wind-tornado-wall-blue.webp',
-        fire: 'icons/magic/fire/beam-jet-stream-embers.webp',
-        force: 'icons/magic/sonic/projectile-sound-rings-wave.webp',
-        lightning: 'icons/magic/lightning/bolt-blue.webp',
-        necrotic: 'icons/magic/unholy/projectile-bolts-salvo-pink.webp',
-        piercing: 'icons/skills/melee/strike-polearm-light-orange.webp',
-        poison: 'icons/magic/death/skull-poison-green.webp',
-        psychic: 'icons/magic/control/fear-fright-monster-grin-red-orange.webp',
-        radiant: 'icons/magic/holy/projectiles-blades-salvo-yellow.webp',
-        slashing: 'icons/skills/melee/strike-sword-gray.webp',
-        thunder: 'icons/magic/sonic/explosion-shock-wave-teal.webp',
-        no: 'icons/svg/cancel.svg'
-    };
     let buttons = damageTypes.map(i => {
-        let image = images[i] ?? 'icons/magic/symbols/question-stone-yellow.webp';
+        let image = constants.damageIcons[i] ?? 'icons/magic/symbols/question-stone-yellow.webp';
         return [
             CONFIG.DND5E.damageTypes[i].label,
             i,
             {image}
         ];
     });
-    if (addNo) buttons.push(['CHRISPREMADES.Generic.No', false, {image: images.no}]);
+    if (addNo) buttons.push(['CHRISPREMADES.Generic.No', false, {image: constants.damageIcons.no}]);
     return await buttonDialog(title, context, buttons, {userId});
 }
 async function queuedConfirmDialog(title, content, {actor, reason, userId} = {}) {

@@ -16,8 +16,8 @@ async function attack({trigger: {entity: item}, workflow}) {
     let scaleMaxDamage = rollUtils.rollDiceSync(scale.formula, {options: {maximize: true}});
     let itemData = genericUtils.duplicate(workflow.item.toObject());
     if (baseMaxDamage.total <= scaleMaxDamage.total) {
-        itemData.system.damage.base.denomination = scale.faces;
-        itemData.system.damage.base.number = scale.number;
+        let activityData = activityUtils.withChangedDamage(workflow.activity, {number: scale.number, denomination: scale.faces});
+        itemData.system.activities[workflow.activity.id] = activityData;
     }
     if (workflowUtils.isAttackType(workflow, 'meleeAttack')) {
         let defaultType = workflow.activity.attack.ability;

@@ -242,46 +242,49 @@ async function useGrapplingStrike({workflow}) {
     await genericUtils.remove(effect);
 }
 async function useManeuveringAttack({workflow}) {
-    // TODO: This. Probably by letting the ally teleport
+    let targets = workflow.token.scene.tokens.filter(t => {
+        if (!t.actor) return;
+        if (t.disposition !== workflow.token.document.disposition) return;
+        if (!tokenUtils.canSee(t, workflow.token)) return;
+        return true;
+    }).map(t => t.object);
+    if (!targets) return;
+    let target = await dialogUtils.selectTargetDialog(workflow.item.name, 'CHRISPREMADES.Generic.Target', targets);
+    if (!target) targets = [];
+    else {
+        target = target[0];
+        targets = [target];
+        dialogUtils.confirm(workflow.item.name, 'CHRISPREMADES.Macros.Maneuvers.Maneuvering', {userId: socketUtils.firstOwner(target.actor, true)}).then(choice => {
+            if (!choice) return;
+            actorUtils.setReactionUsed(target.actor);
+        });
+    }
+    await workflowUtils.updateTargets(workflow, targets);
 }
-async function useParry({workflow}) {
-    let [itemToUse, superiorityDie] = await determineSuperiorityDie(workflow.actor);
+async function promptParry({trigger: {entity: item}, workflow, ditem}) {
+    if (!ditem.isHit) return;
+    if (!workflowUtils.isAttackType(workflow, 'meleeAttack')) return;
+    let [itemToUse, superiorityDie] = await determineSuperiorityDie(item.parent);
     if (!itemToUse?.system.uses.value) return;
-    let superiorityRoll = await new Roll(superiorityDie + ' + @abilities.dex.mod', workflow.actor.getRollData()).evaluate();
-    superiorityRoll.toMessage({
-        rollType: 'roll',
-        speaker: ChatMessage.implementation.getSpeaker({token: workflow.token}),
-        flavor: workflow.item.name
-    });
-    let effectData = {
-        name: workflow.item.name,
-        img: workflow.item.img,
-        origin: workflow.item.uuid,
-        duration: {
-            turns: 1
-        },
-        changes: [
-            {
-                key: 'system.traits.dm.midi.all',
-                mode: 2,
-                value: '-' + superiorityRoll.total,
-                priority: 20
-            }
-        ],
-        flags: {
-            dae: {
-                specialDuration: [
-                    '1Reaction'
-                ]
-            },
-            'chris-premades': {
-                effect: {
-                    noAnimation: true
-                }
-            }
-        }
-    };
-    await effectUtils.createEffect(workflow.actor, effectData);
+    if (actorUtils.hasUsedReaction(item.parent)) return;
+    if (!await dialogUtils.confirmUseItem(item, {userId: socketUtils.firstOwner(item.parent, true)})) return;
+    let superiorityRoll;
+    let activity = itemUtils.getActivity(item, 'utility');
+    if (!activity) {
+        superiorityRoll = await new Roll(superiorityDie + ' + @abilities.dex.mod', item.parent.getRollData()).evaluate();
+        superiorityRoll.toMessage({
+            rollType: 'roll',
+            speaker: ChatMessage.implementation.getSpeaker({actor: item.parent}),
+            flavor: item.name
+        });
+        superiorityRoll = superiorityRoll.total;
+    } else {
+        let itemData = item.toObject();
+        itemData.system.activities[activity.id].roll.formula = superiorityDie + ' + @abilities.dex.mod';
+        superiorityRoll = (await workflowUtils.syntheticItemDataRoll(itemData, item.parent, []))?.utilityRoll.total;
+    }
+    await actorUtils.setReactionUsed(item.parent);
+    workflowUtils.modifyDamageAppliedFlat(ditem, -superiorityRoll);
     await genericUtils.update(itemToUse, {'system.uses.spent': itemToUse.system.uses.spent + 1});
 }
 async function usePushingAttack({workflow}) {
@@ -494,7 +497,7 @@ export let maneuversManeuveringAttack = {
     midi: {
         item: [
             {
-                pass: 'rollFinished',
+                pass: 'preambleComplete',
                 macro: useManeuveringAttack,
                 priority: 50
             }
@@ -508,12 +511,12 @@ export let maneuversMenacingAttack = {
 };
 export let maneuversParry = {
     name: 'Maneuvers: Parry',
-    version: '1.1.0',
+    version: '1.5.20',
     midi: {
-        item: [
+        actor: [
             {
-                pass: 'rollFinished',
-                macro: useParry,
+                pass: 'targetApplyDamage',
+                macro: promptParry,
                 priority: 50
             }
         ]

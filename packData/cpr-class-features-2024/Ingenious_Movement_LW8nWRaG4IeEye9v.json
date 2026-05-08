@@ -38,39 +38,11 @@
     }
   },
   "flags": {
-    "ddbimporter": {
-      "isChoiceFeature": false,
-      "id": 12497185,
-      "type": "class",
-      "entityTypeId": 12168134,
-      "is2014": false,
-      "is2024": true,
-      "legacy": false,
-      "originalName": "Ingenious Movement",
-      "dndbeyond": {
-        "requiredLevel": 9,
-        "displayOrder": 600,
-        "featureType": 1,
-        "class": "Artificer",
-        "classId": 2656872,
-        "entityType": "class-feature",
-        "levelScale": null,
-        "levelScales": [],
-        "limitedUse": [
-          {
-            "level": null,
-            "uses": 1
-          }
-        ]
-      },
-      "class": "Artificer",
-      "classId": 2656866,
-      "subClass": "Cartographer",
-      "subClassId": 2656872,
-      "importId": "46IIJLZDXkwskI5a"
-    },
     "dnd5e": {
-      "advancementOrigin": "p40QFWXPVxTQVgWn"
+      "advancementOrigin": "p40QFWXPVxTQVgWn",
+      "riders": {
+        "activity": []
+      }
     },
     "chris-premades": {
       "info": {

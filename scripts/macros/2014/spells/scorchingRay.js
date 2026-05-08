@@ -63,7 +63,7 @@ async function use({workflow}) {
     let lastColor = Math.floor((Math.random() * colors.length));
     let firstRun = true;
     let skipDead = false;
-    while (maxRays > 0) {
+    start: while (maxRays > 0) {
         let nearbyTargets;
         let selection;
         if (firstRun && workflow.targets.size) {
@@ -73,11 +73,12 @@ async function use({workflow}) {
             nearbyTargets = tokenUtils.findNearby(workflow.token, workflow.item.system.range.value, 'enemy');
         }
         if (skipDead) nearbyTargets = nearbyTargets.filter(i => i.actor.system.attributes.hp.value > 0);
+        if (!nearbyTargets.length) break;
         let selectionArr = await dialogUtils.selectTargetDialog(workflow.item.name, genericUtils.format('CHRISPREMADES.Macros.ScorchingRay.Select', {maxRays}), nearbyTargets, {
             type: 'selectAmount',
             maxAmount: maxRays
         });
-        if (!selectionArr) return;
+        if (!selectionArr) break;
         [selection, skipDead] = selectionArr;
         for (let {document: targetToken, value: numRays} of selection) {
             if (isNaN(numRays) || numRays == 0) continue;
@@ -173,6 +174,7 @@ async function use({workflow}) {
                             .play();
                     }
                 }
+                if (skipDead && targetToken.actor.system.attributes.hp.value === 0) continue start;
             }
         }
     }

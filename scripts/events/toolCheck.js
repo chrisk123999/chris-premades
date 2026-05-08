@@ -161,14 +161,74 @@ async function executeBonusMacroPass(actor, pass, tool, options, roll, config, d
     }
     return CONFIG.Dice.D20Roll.fromRoll(roll);
 }
+function _applyDeprecatedD20Configs(rollConfig, dialogConfig, messageConfig, options) {
+    const set = (config, keyPath, value) => {
+        if ( value === undefined ) return;
+        foundry.utils.setProperty(config, keyPath, value);
+    };
+    let roll = rollConfig.rolls?.[0] ?? {};
+    set(roll, 'parts', options.parts);
+    set(roll, 'data', options.data);
+    set(rollConfig, 'event', options.event);
+    set(roll, 'options.advantage', options.advantage);
+    set(roll, 'options.disadvantage', options.disadvantage);
+    set(roll, 'options.criticalSuccess', options.critical);
+    set(roll, 'options.criticalFailure', options.fumble);
+    set(rollConfig, 'target', options.targetValue);
+    set(rollConfig, 'ammunition', options.ammunition);
+    set(rollConfig, 'attackMode', options.attackMode);
+    set(rollConfig, 'mastery', options.mastery);
+    set(rollConfig, 'elvenAccuracy', options.elvenAccuracy);
+    set(rollConfig, 'halflingLucky', options.halflingLucky);
+    set(rollConfig, 'reliableTalent', options.reliableTalent);
+    set(rollConfig, 'midiOptions', {});
+    set(rollConfig, 'midiOptions.simulate', options.simulate);
+    set(rollConfig, 'midiOptions.isMagicalSave', options.isMagicalSave);
+    set(rollConfig, 'midiOptions.isConcentrationCheck', options.isConcentrationCheck);
+    set(rollConfig, 'midiOptions.saveItemUuid', options.saveItemUuid);
+    set(rollConfig, 'midiOptions.fromMars5eChatCard', options.fromMars5eChatCard);
+    if ( 'fastForward' in options ) dialogConfig.configure = !options.fastForward;
+    set(dialogConfig, 'options', options.dialogOptions);
+    set(dialogConfig, 'options.ammunitionOptions', options.ammunitionOptions);
+    set(dialogConfig, 'options.attackModeOptions', options.attackModes);
+    set(dialogConfig, 'options.chooseAbility', options.chooseModifier);
+    set(dialogConfig, 'options.masteryOptions', options.masteryOptions);
+    set(dialogConfig, 'options.title', options.title);
+    set(messageConfig, 'create', options.chatMessage);
+    set(messageConfig, 'data', options.messageData);
+    set(messageConfig, 'rollMode', options.rollMode);
+    set(messageConfig, 'data.flavor', options.flavor);
+    if ( !foundry.utils.isEmpty(roll) ) {
+        rollConfig.rolls ??= [];
+        if ( rollConfig.rolls[0] ) rollConfig.rolls[0] = roll;
+        else rollConfig.rolls.push(roll);
+    }
+}
 async function rollToolCheck(wrapped, config, dialog, message) {
+    let event;
+    let shouldBeArray = true;
+    if (foundry.utils.getType(config) !== 'Object') {
+        shouldBeArray = false;
+        let options = genericUtils.duplicate(dialog);
+        event = dialog.event;
+        config = {
+            tool: config
+        };
+        dialog = {};
+        message = {};
+        // _applyDeprecatedD20Configs from 5e system
+        _applyDeprecatedD20Configs(config, dialog, message, options);
+        config.event = event;
+    }
+    let toolId = config.tool;
+    event = config.event;
     let options = {};
-    await executeMacroPass(this, 'situational', config.tool, options, undefined, config, dialog, message);
+    await executeMacroPass(this, 'situational', toolId, options, undefined, config, dialog, message);
     let token = actorUtils.getFirstToken(this);
     if (token) {
         let sceneTriggers = [];
         token.document.parent.tokens.filter(i => i.uuid !== token.document.uuid && i.actor).forEach(j => {
-            sceneTriggers.push(...getSortedTriggers(j.actor, 'sceneSituational', config.tool, options, undefined, config, dialog, message, this));
+            sceneTriggers.push(...getSortedTriggers(j.actor, 'sceneSituational', toolId, options, undefined, config, dialog, message, this));
         });
         let sortedSceneTriggers = [];
         let names = new Set();
@@ -181,7 +241,7 @@ async function rollToolCheck(wrapped, config, dialog, message) {
         genericUtils.log('dev', 'Executing Tool Check Macro Pass: sceneSituational');
         for (let trigger of sortedSceneTriggers) await executeMacro(trigger);
     }
-    let selections = await executeContextMacroPass(this, 'context', config.tool, options, undefined, config, dialog, message);
+    let selections = await executeContextMacroPass(this, 'context', toolId, options, undefined, config, dialog, message);
     if (selections.length) {
         let advantages = selections.filter(i => i.type === 'advantage').map(j => ({label: j.label, name: 'advantage'}));
         let disadvantages = selections.filter(i => i.type === 'disadvantage').map(j => ({label: j.label, name: 'disadvantage'}));
@@ -201,15 +261,42 @@ async function rollToolCheck(wrapped, config, dialog, message) {
             }
         }
     }
+    let overtimeActorUuid;
+    if (event) {
+        let target = event.target?.closest('.roll-link, [data-action="rollRequest"], [data-action="concentration"]');
+        if (target?.dataset?.midiOvertimeActorUuid) {
+            overtimeActorUuid = target.dataset.midiOvertimeActorUuid;
+            options.rollMode = target.dataset.midiRollMode ?? target.dataset.rollMode ?? options.rollMode;
+        }
+    }
+    let messageData;
+    let rollMode;
+    let messageDataFunc = (config, dialog, message) => {
+        let actor = config.subject;
+        let toolIdInternal = config.tool;
+        if (actor.uuid !== this.uuid || toolIdInternal !== toolId) {
+            Hooks.once('dnd5e.preRollTool', messageDataFunc);
+            return;
+        }
+        messageData = message.data;
+        if (overtimeActorUuid) messageData['flags.midi-qol.overtimeActorUuid'] = overtimeActorUuid;
+        rollMode = message.rollMode ?? game.settings.get('core', 'rollMode');
+    };
+    Hooks.once('dnd5e.preRollTool', messageDataFunc);
+    if (Object.entries(options).length) config.rolls = [{options}];
+    config = {
+        ...config,
+        ...options
+    };
     let returnData = await wrapped(config, dialog, {...message, create: false});
     returnData = returnData?.[0];
     if (!returnData) return;
     let oldOptions = returnData.options;
-    returnData = await executeBonusMacroPass(this, 'bonus', config.tool, options, returnData, config, dialog, message);
+    returnData = await executeBonusMacroPass(this, 'bonus', toolId, options, returnData, config, dialog, message);
     if (token) {
         let sceneTriggers = [];
         token.document.parent.tokens.filter(i => i.uuid !== token.document.uuid && i.actor).forEach(j => {
-            sceneTriggers.push(...getSortedTriggers(j.actor, 'sceneBonus', config.tool, options, returnData, config, dialog, message, this));
+            sceneTriggers.push(...getSortedTriggers(j.actor, 'sceneBonus', toolId, options, returnData, config, dialog, message, this));
         });
         let sortedSceneTriggers = [];
         let names = new Set();
@@ -227,12 +314,21 @@ async function rollToolCheck(wrapped, config, dialog, message) {
         }
     }
     if (genericUtils.getCPRSetting('heroicInspiration')) {
-        let heroicInspirationRoll = await heroicInspiration.saveSkillCheck(returnData, this);
+        let heroicInspirationRoll = await heroicInspiration.saveSkillCheck(returnData, this, rollMode);
         if (heroicInspirationRoll) returnData = heroicInspirationRoll;
     }
     if (returnData.options) genericUtils.mergeObject(returnData.options, oldOptions);
-    await executeMacroPass(this, 'post', config.tool, options, returnData, config, dialog, message);
-    return [returnData];
+    if (message.create !== false) {
+        messageData ??= {};
+        let messageId = event?.target.closest('[data-message-id]')?.dataset.messageId;
+        if (messageId) genericUtils.mergeObject(messageData, {'flags.dnd5e.originatingMessage': messageId});
+        genericUtils.mergeObject(messageData, {flags: options.flags ?? {} });
+        genericUtils.setProperty(messageData, 'flags.midi-qol.lmrtfy.requestId', options.flags?.lmrtfy?.data?.requestId);
+        messageData.template = 'modules/midi-qol/templates/roll-base.html';
+        await returnData.toMessage(messageData, {rollMode: returnData.options?.rollMode ?? rollMode});
+    }
+    await executeMacroPass(this, 'post', toolId, options, returnData, config, dialog, message);
+    return shouldBeArray ? [returnData] : returnData;
 }
 function patch() {
     genericUtils.log('dev', 'Roll Tool Check Patched!');

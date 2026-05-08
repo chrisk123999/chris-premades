@@ -22,8 +22,7 @@
             {
               "type": "hitDice",
               "value": "1",
-              "target": "largest",
-              "scaling": {}
+              "target": "largest"
             }
           ]
         },
@@ -77,7 +76,7 @@
           ],
           "custom": {
             "enabled": true,
-            "formula": "max(1@attributes.hd.largestAvailable + @abilities.con.mod ,1)"
+            "formula": "max(1, 1@attributes.hd.largestAvailable + @abilities.con.mod)"
           },
           "scaling": {
             "number": 1
@@ -113,8 +112,8 @@
           "confirmTargets": "default",
           "autoTargetType": "any",
           "autoTargetAction": "default",
-          "automationOnly": false,
-          "otherActivityCompatible": true,
+          "automationOnly": true,
+          "otherActivityCompatible": false,
           "otherActivityAsParentType": true,
           "identifier": "",
           "displayActivityName": false,
@@ -136,7 +135,131 @@
           "preRemoveConditionText": "",
           "postRemoveConditionText": ""
         },
-        "name": ""
+        "name": "",
+        "img": ""
+      },
+      "pMyR7DupK7m3EwfU": {
+        "type": "utility",
+        "sort": -100000,
+        "activation": {
+          "type": "special",
+          "override": false,
+          "condition": ""
+        },
+        "consumption": {
+          "scaling": {
+            "allowed": false
+          },
+          "spellSlot": true,
+          "targets": []
+        },
+        "description": {
+          "chatFlavor": ""
+        },
+        "duration": {
+          "units": "inst",
+          "concentration": false,
+          "override": false
+        },
+        "effects": [],
+        "flags": {},
+        "range": {
+          "units": "self",
+          "override": false,
+          "special": ""
+        },
+        "target": {
+          "template": {
+            "contiguous": false,
+            "units": "ft",
+            "type": ""
+          },
+          "affects": {
+            "choice": false,
+            "type": "self",
+            "special": ""
+          },
+          "override": false,
+          "prompt": true
+        },
+        "uses": {
+          "spent": 0,
+          "recovery": [],
+          "max": ""
+        },
+        "visibility": {
+          "level": {
+            "min": null,
+            "max": null
+          },
+          "requireAttunement": false,
+          "requireIdentification": false,
+          "requireMagic": false,
+          "identifier": ""
+        },
+        "roll": {
+          "prompt": false,
+          "visible": false,
+          "name": "",
+          "formula": ""
+        },
+        "useConditionText": "",
+        "useConditionReason": "",
+        "effectConditionText": "",
+        "macroData": {
+          "name": "",
+          "command": ""
+        },
+        "ignoreTraits": {
+          "idi": false,
+          "idr": false,
+          "idv": false,
+          "ida": false,
+          "idm": false
+        },
+        "midiProperties": {
+          "ignoreTraits": [],
+          "triggeredActivityId": "none",
+          "triggeredActivityConditionText": "",
+          "triggeredActivityTargets": "targets",
+          "triggeredActivityRollAs": "self",
+          "triggeredActivityConsume": true,
+          "triggeredActivityConfigure": true,
+          "autoConsume": false,
+          "forceConsumeDialog": "default",
+          "forceRollDialog": "default",
+          "forceDamageDialog": "default",
+          "confirmTargets": "default",
+          "autoTargetType": "any",
+          "autoTargetAction": "default",
+          "automationOnly": false,
+          "otherActivityCompatible": false,
+          "otherActivityAsParentType": true,
+          "identifier": "",
+          "displayActivityName": false,
+          "rollMode": "default",
+          "chooseEffects": false,
+          "toggleEffect": false,
+          "ignoreFullCover": false,
+          "removeChatButtons": "default",
+          "magicEffect": false,
+          "magicDamage": false,
+          "noConcentrationCheck": false,
+          "skipConcentrationCheck": false,
+          "autoCEEffects": "default"
+        },
+        "isOverTimeFlag": false,
+        "overTimeProperties": {
+          "saveRemoves": true,
+          "rollAs": "target",
+          "preRemoveConditionText": "",
+          "postRemoveConditionText": ""
+        },
+        "otherActivityId": "none",
+        "otherActivityAsParentType": true,
+        "_id": "pMyR7DupK7m3EwfU",
+        "name": "",
+        "img": ""
       }
     },
     "uses": {
@@ -173,63 +296,35 @@
     }
   },
   "flags": {
-    "ddbimporter": {
-      "isChoiceFeature": false,
-      "id": 9151712,
-      "type": "race",
-      "entityTypeId": 1960452172,
-      "is2014": true,
-      "is2024": false,
-      "legacy": false,
-      "originalName": "Healing Machine",
-      "dndbeyond": {
-        "requiredLevel": null,
-        "displayOrder": 8,
-        "featureType": 1,
-        "entityRaceId": 1121695,
-        "entityType": "racial-trait"
-      },
-      "fullRaceName": "Autognome",
-      "groupName": "Gnome",
-      "baseName": "Healing Machine",
-      "isLineage": false,
-      "importId": "LuZSVVHEZHdqDhm9"
-    },
-    "species": {
-      "fullRaceName": "Autognome",
-      "baseRaceName": "Autognome",
-      "groupName": "Gnome",
-      "isLineage": false
-    },
-    "dnd5e": {
-      "advancementOrigin": "y3NgvQkPqkXPq69S",
-      "last": {
-        "FZdXsQQbwn5byiVa": {
-          "damageType": {
-            "0": "healing"
-          }
-        }
-      },
-      "riders": {
-        "activity": []
-      }
-    },
     "chris-premades": {
-      "hiddenActivities": [],
+      "hiddenActivities": [
+        "heal"
+      ],
       "activityIdentifiers": {
-        "heal": "FZdXsQQbwn5byiVa"
+        "heal": "FZdXsQQbwn5byiVa",
+        "use": "pMyR7DupK7m3EwfU"
       },
       "info": {
         "identifier": "healingMachine",
-        "version": "1.5.16",
+        "version": "1.5.28",
         "source": "chris-premades"
       },
       "macros": {
         "midi": {
           "actor": [
             "healingMachine"
+          ],
+          "item": [
+            "healingMachine"
           ]
         }
+      }
+    },
+    "dnd5e": {
+      "riders": {
+        "activity": [
+          "FZdXsQQbwn5byiVa"
+        ]
       }
     }
   },

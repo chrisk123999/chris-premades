@@ -37,7 +37,7 @@ async function use({workflow}) {
                 }
             ]
         };
-        await effectUtils.createEffect(workflow.actor, effectData, {identifier: 'lanternOfRevealingDim', vae: [{type: 'use', name: workflow.item.name, identifier: 'lanternOfRevealing'}]});
+        await effectUtils.createEffect(workflow.actor, effectData, {identifier: 'lanternOfRevealingDim', parentEntity: workflow.item, vae: [{type: 'use', name: workflow.item.name, identifier: 'lanternOfRevealing'}]});
         return;
     } else if (selection === 'bright') {
         if (dimEffect) await genericUtils.remove(dimEffect);
@@ -61,7 +61,7 @@ async function use({workflow}) {
             ]
         };
         effectUtils.addMacro(effectData, 'aura', ['lanternOfRevealing']);
-        await effectUtils.createEffect(workflow.actor, effectData, {identifier: 'lanternOfRevealingBright', vae: [{type: 'use', name: workflow.item.name, identifier: 'lanternOfRevealing'}]});
+        await effectUtils.createEffect(workflow.actor, effectData, {identifier: 'lanternOfRevealingBright', parentEntity: workflow.item, vae: [{type: 'use', name: workflow.item.name, identifier: 'lanternOfRevealing'}]});
         return;
     } else {
         if (brightEffect) await genericUtils.remove(brightEffect);

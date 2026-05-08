@@ -1,5 +1,6 @@
 import {Summons} from '../../../../lib/summons.js';
-import {actorUtils, compendiumUtils, constants, dialogUtils, effectUtils, errors, genericUtils, itemUtils, tokenUtils} from '../../../../utils.js';
+import {Teleport} from '../../../../lib/teleport.js';
+import {actorUtils, compendiumUtils, constants, dialogUtils, effectUtils, errors, genericUtils, itemUtils, templateUtils, tokenUtils} from '../../../../utils.js';
 
 async function use({workflow}) {
     let knownInfusions = itemUtils.getConfig(workflow.item, 'knownInfusions');
@@ -31,6 +32,7 @@ async function use({workflow}) {
     let armorModifications = itemUtils.getItemByIdentifier(workflow.actor, 'armorModifications');
     armorModifications = armorModifications && target === workflow.actor;
     let infusionLabel = genericUtils.translate(buttons.find(i => i[1] === selection)[0]);
+    let independentItems = ['bootsOfTheWindingPath', 'helmOfAwareness', 'spellRefuelingRing', 'homunculusServant'];
     let originalName;
     let selectedItem;
     let chatMessageInfo = '';
@@ -187,6 +189,13 @@ async function use({workflow}) {
             await itemUtils.createItems(target, [featureData], {favorite: true, parentEntity: enchantEffect});
             break;
         }
+        case 'bootsOfTheWindingPath': {            
+            let itemData = await compendiumUtils.getItemFromCompendium(constants.featurePacks.classFeatureItems, 'Boots of the Winding Path', {object: true, getDescription: true, translate: 'CHRISPREMADES.Macros.InfuseItem.BootsOfTheWindingPath', identifier: 'infuseItemBootsWinding'});
+            if (!itemData) return;
+            [selectedItem] = await itemUtils.createItems(target, [itemData], {favorite: true});
+            originalName = selectedItem.name;
+            break;
+        }
         case 'enhancedArcaneFocus': {
             let focuses = target.items.filter(i => i.type === 'equipment' && !i.system.properties.has('mgc') && i.system.type.value === 'trinket' && i.system.equipped);
             if (!focuses.length) {
@@ -321,6 +330,13 @@ async function use({workflow}) {
             await itemUtils.enchantItem(selectedItem, enchantData, {identifier: selection});
             break;
         }
+        case 'helmOfAwareness': {            
+            let itemData = await compendiumUtils.getItemFromCompendium(constants.featurePacks.classFeatureItems, 'Helm of Awareness', {object: true, getDescription: true, translate: 'CHRISPREMADES.Macros.InfuseItem.HelmOfAwareness', identifier: selection});
+            if (!itemData) return;
+            [selectedItem] = await itemUtils.createItems(target, [itemData]);
+            originalName = selectedItem.name;
+            break;
+        }
         case 'homunculusServant': {
             let effect = await effectUtils.getEffectByIdentifier(workflow.actor, 'infuseItem');
             if (effect) {
@@ -339,6 +355,37 @@ async function use({workflow}) {
             originalName = selectedItem.name;
             await effectUtils.addDependent(selectedItem, [effect]);
             await effectUtils.addDependent(effect, [selectedItem]);
+            break;
+        }
+        case 'mindSharpener': {
+            let armor = target.items.filter(i => (i.system.isArmor || i.system.type?.value === 'clothing') && i.system.type?.value !== 'shield' && !i.system.properties.has('mgc') && i.system.equipped);
+            if (!armor.length) return genericUtils.notify('CHRISPREMADES.Macros.InfuseItem.NoArmor', 'info');
+            let featureData = await compendiumUtils.getItemFromCompendium(constants.featurePacks.classFeatureItems, 'Mind Sharpener', {object: true, getDescription: true, translate: 'CHRISPREMADES.Macros.InfuseItem.MindSharpener', identifier: selection});
+            if (!featureData) return;
+            selectedItem = await dialogUtils.selectDocumentDialog(workflow.item.name, 'CHRISPREMADES.Macros.InfuseItem.WhichArmor', armor, {addNoneDocument: true});
+            if (!selectedItem) return;
+            originalName = selectedItem.name;
+            let enchantData = {
+                name: workflow.item.name,
+                img: workflow.item.img,
+                origin: workflow.item.uuid,
+                changes: [
+                    {
+                        key: 'name',
+                        mode: 5,
+                        value: '{} (' + workflow.item.name + ': ' + infusionLabel + ')',
+                        priority: 20
+                    },
+                    {
+                        key: 'system.properties',
+                        mode: 2,
+                        value: 'mgc',
+                        priority: 20
+                    }
+                ]
+            };
+            let enchantEffect = await itemUtils.enchantItem(selectedItem, enchantData, {identifier: selection});
+            await itemUtils.createItems(target, [featureData], {parentEntity: enchantEffect});
             break;
         }
         case 'radiantWeapon': {
@@ -616,7 +663,7 @@ async function use({workflow}) {
             for (let [currSelection, uuid] of Object.entries(existingInfusionUuids)) {
                 let current = await fromUuid(uuid);
                 if (!current) continue;
-                if (['spellRefuelingRing', 'homunculusServant'].includes(currSelection)) {
+                if (independentItems.includes(currSelection)) {
                     await genericUtils.remove(current);
                 } else {
                     let effect = Array.from(current.allApplicableEffects()).find(i => genericUtils.getIdentifier(i) === currSelection);
@@ -632,7 +679,7 @@ async function use({workflow}) {
     if (existingInfusionUuid) {
         let existingItem = await fromUuid(existingInfusionUuid);
         if (!existingItem) return; // Shouldn't even happen
-        if (['spellRefuelingRing', 'homunculusServant'].includes(selection)) {
+        if (independentItems.includes(selection)) {
             await genericUtils.remove(existingItem);
         } else {
             let effect = Array.from(existingItem.allApplicableEffects()).find(i => genericUtils.getIdentifier(i) === selection);
@@ -652,6 +699,39 @@ async function use({workflow}) {
 async function armorStrengthLate({workflow}) {
     let effect = effectUtils.getEffectByStatusID(workflow.actor, 'prone');
     if (effect) await genericUtils.remove(effect);
+}
+async function bootsWindingLate({workflow}) {
+    let range = itemUtils.getConfig(workflow.item, 'range');
+    let animation = itemUtils.getConfig(workflow.item, 'playAnimation') ? itemUtils.getConfig(workflow.item, 'animation') : 'none';
+    let grid = workflow.token.scene.grid;
+    if (!grid) return;
+    let h = workflow.token.document.movementHistory;
+    if (!h?.length) return;
+    let pos = workflow.token.position;
+    let radius = range * grid.size / grid.distance;
+    let rays = [];
+    for (let i = 0; i < h.length - 1; i++) {
+        let intersection = foundry.utils.lineCircleIntersection(h[i], h[i+1], pos, radius);
+        if (intersection.contained) rays.push(new foundry.canvas.geometry.Ray(h[i], h[i+1]));
+        else if (intersection.aInside && !intersection.bInside) rays.push(new foundry.canvas.geometry.Ray(h[i], intersection.intersections[0]));
+        else if (!intersection.aInside && intersection.bInside) rays.push(new foundry.canvas.geometry.Ray(intersection.intersections[0], h[i+1]));
+    }
+    if (!rays.length) return;
+    // TODO show visuals for past movement - enable drag ruler? draw PIXI lines?
+    await Teleport.target(workflow.token, workflow.token, {
+        animation,
+        centerPoint: workflow.token.center,
+        crosshairsConfig: {
+            size: workflow.token.document.width * grid.distance / 2,
+            icon: workflow.token.document.texture.src,
+            resolution: (workflow.token.document.width % 2) ? 1 : -1
+        },
+        range,
+        validityFunctions: [c => {
+            c.document.object.shape = c.computeShape(c);
+            return rays.some(r => templateUtils.rayIntersectsTemplate(c.document, r));
+        }]
+    });
 }
 async function repulsionShieldLate({workflow}) {
     if (!workflow.targets.size === 1) return;
@@ -829,6 +909,10 @@ export let infuseItem = {
                     value: 'armorOfMagicalStrength'
                 },
                 {
+                    label: 'CHRISPREMADES.Macros.InfuseItem.BootsOfTheWindingPath',
+                    value: 'bootsOfTheWindingPath'
+                },
+                {
                     label: 'CHRISPREMADES.Macros.InfuseItem.EnhancedArcaneFocus',
                     value: 'enhancedArcaneFocus'
                 },
@@ -841,8 +925,16 @@ export let infuseItem = {
                     value: 'enhancedWeapon'
                 },
                 {
+                    label: 'CHRISPREMADES.Macros.InfuseItem.HelmOfAwareness',
+                    value: 'helmOfAwareness'
+                },
+                {
                     label: 'CHRISPREMADES.Macros.InfuseItem.HomunculusServant',
                     value: 'homunculusServant'
+                },
+                {
+                    label: 'CHRISPREMADES.Macros.InfuseItem.MindSharpener',
+                    value: 'mindSharpener'
                 },
                 {
                     label: 'CHRISPREMADES.Macros.InfuseItem.RadiantWeapon',
@@ -918,6 +1010,43 @@ export let infuseItemArmorStrength = {
             }
         ]
     }
+};
+export let infuseItemBootsWinding = {
+    name: 'Infuse Item: Boots of the Winding Path',
+    version: infuseItem.version,
+    midi: {
+        item: [
+            {
+                pass: 'rollFinished',
+                macro: bootsWindingLate,
+                priority: 50
+            }
+        ]
+    },
+    config: [
+        {
+            value: 'playAnimation',
+            label: 'CHRISPREMADES.Config.PlayAnimation',
+            type: 'checkbox',
+            default: true,
+            category: 'animation'
+        },
+        {
+            value: 'animation',
+            label: 'CHRISPREMADES.Config.Animation',
+            type: 'select',
+            default: 'hiddenPaths',
+            category: 'animation',
+            options: constants.teleportOptions
+        },
+        {
+            value: 'range',
+            label: 'CHRISPREMADES.Config.Range',
+            type: 'number',
+            default: 15,
+            category: 'homebrew'
+        }
+    ]
 };
 export let infuseItemHomunculusTouch = {
     name: 'Infuse Item: Homunculus Servant Touch',

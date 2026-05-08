@@ -1,22 +1,30 @@
 import {actorUtils, constants, dialogUtils, genericUtils, itemUtils, rollUtils, socketUtils, tokenUtils, workflowUtils} from '../../../../utils.js';
-async function allyBonus({trigger: {entity: item, roll, sourceActor, token}}) {
+async function allyBonus({trigger: {entity: item, roll, sourceActor}}) {
     let targetValue = roll.options.target;
     if (targetValue && (roll.total >= targetValue)) return;
-    if (!item.system.uses.value) return;
-    if (actorUtils.hasUsedReaction(item.parent)) return;
-    let self = token ?? actorUtils.getFirstToken(item.parent);
     let source = roll.data.token ?? actorUtils.getFirstToken(sourceActor);
-    if (!self || !source) return;
-    if (self.document.disposition !== source.document.disposition) return;
+    if (!source) return;
     let range = itemUtils.getActivity(item, 'utility')?.range.value || 30;
-    if (tokenUtils.getDistance(self, source) > range) return;
-    let ability = itemUtils.getConfig(item, 'ability') || 'int';
-    let formula = Math.max(1, item.parent.system.abilities[ability].mod);
-    let userId = socketUtils.firstOwner(item.parent, true);
-    let selection = await dialogUtils.confirm(item.name, genericUtils.format('CHRISPREMADES.Dialog.UseRollTotal', {itemName: item.name + ' (+' + formula + ')', rollTotal: roll.total}), {userId});
-    if (!selection) return;
-    await workflowUtils.syntheticItemRoll(item, [source], {consumeUsage: true, consumeResources: true, userId});
-    return await rollUtils.addToRoll(roll, formula);
+    let nearbyTokens = tokenUtils.findNearby(source, range, 'ally').filter(t => {
+        if (actorUtils.hasUsedReaction(t.actor)) return;
+        let feature = itemUtils.getItemByIdentifier(t.actor, 'flashOfGenius');
+        if (!feature?.system.uses.value) return;
+        genericUtils.setProperty(t, 'chris-premades.flashOfGenius', feature);
+        return true;
+    });
+    if (!nearbyTokens.length) return;
+    for (let t of nearbyTokens) {
+        let feature = genericUtils.getProperty(t, 'chris-premades.flashOfGenius');
+        let ability = itemUtils.getConfig(feature, 'ability') || 'int';
+        let formula = Math.max(1, t.actor.system.abilities[ability].mod);
+        let userId = socketUtils.firstOwner(t.actor, true);
+        let selection = await dialogUtils.confirm(feature.name, genericUtils.format('CHRISPREMADES.Dialog.UseRollTotal', {itemName: feature.name + ' (+' + formula + ')', rollTotal: roll.total}), {userId});
+        if (!selection) continue;
+        await workflowUtils.syntheticItemRoll(feature, [source], {consumeUsage: true, consumeResources: true, userId});
+        roll = await rollUtils.addToRoll(roll, formula);
+        await actorUtils.setReactionUsed(t.actor);
+    }
+    return roll;
 }
 async function selfBonus({trigger: {entity: item, roll}}) {
     let targetValue = roll.options.target;

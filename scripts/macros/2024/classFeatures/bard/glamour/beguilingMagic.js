@@ -11,7 +11,8 @@ async function veryEarly({activity, dialog, actor, config}) {
 }
 async function spell({trigger: {entity: item}, workflow}) {
     if (!workflow.item || !workflow.token) return;
-    if (workflow.item.type != 'spell' || activityUtils.isSpellActivity(workflow.activity)) return;
+    if (workflow.item.type != 'spell' || workflowUtils.isSustainedRoll(workflow)) return;
+    if (!workflow.item.system.level) return;
     let validModes = ['spell', 'pact'];
     if (!validModes.includes(workflow.item.system.method)) return;
     let spellSchools = itemUtils.getConfig(item, 'spellSchools');
@@ -26,7 +27,7 @@ async function spell({trigger: {entity: item}, workflow}) {
     if (!nearbyTokens.length) return;
     let selection = await dialogUtils.selectTargetDialog(item.name, genericUtils.format('CHRISPREMADES.Generic.UseItem', {item: item.name}), nearbyTokens, {skipDeadAndUnconscious: false, buttons: 'yesNo'});
     if (!selection) return;
-    await workflowUtils.syntheticItemRoll(item, [selection[0]]);
+    await workflowUtils.syntheticItemRoll(item, [selection[0]], {consumeUsage: true, consumeResources: true});
 }
 export let beguilingMagic = {
     name: 'Beguiling Magic',

@@ -4,7 +4,7 @@ async function damage({trigger: {entity: item}, workflow}) {
     if (workflow.item.type !== 'spell') return;
     if (!effectUtils.getEffectByIdentifier(workflow.actor, 'summonWildfireSpirit')) return;
     let matchingTypes = Array.from(workflowUtils.getDamageTypes(workflow.damageRolls).intersection(new Set(['fire', 'healing'])));
-    if (!matchingTypes.lenth) return;
+    if (!matchingTypes.length) return;
     let damageType;
     if (matchingTypes.length > 1) {
         damageType = await dialogUtils.buttonDialog(item.name, genericUtils.format('CHRISPREMADES.Dialog.Use', {itemName: item.name}), [

@@ -25,7 +25,6 @@ async function use({trigger, workflow}) {
     }));
 }
 async function early({trigger, workflow}) {
-    if (!workflow.hitTargets.size) return;
     let config = itemUtils.getGenericFeatureConfig(workflow.item, 'effectImmunity');
     let activities = config.activities;
     if (activities?.length && !activities.includes(workflow.activity.id)) return;

@@ -1,5 +1,5 @@
 import {Summons} from '../../../lib/summons.js';
-import {activityUtils, compendiumUtils, constants, crosshairUtils, dialogUtils, effectUtils, errors, genericUtils, itemUtils, tokenUtils, workflowUtils} from '../../../utils.js';
+import {activityUtils, animationUtils, compendiumUtils, constants, crosshairUtils, dialogUtils, effectUtils, genericUtils, itemUtils, tokenUtils, workflowUtils} from '../../../utils.js';
 async function use({trigger, workflow}) {
     let avatarImg = itemUtils.getConfig(workflow.item, 'avatar');
     let tokenImg = itemUtils.getConfig(workflow.item, 'token');
@@ -8,7 +8,8 @@ async function use({trigger, workflow}) {
     let scale = Number(itemUtils.getConfig(workflow.item, 'scale'));
     if (isNaN(scale)) scale = 1;
     if (!name || name === '') name = workflow.item.name;
-    if (!tokenImg || tokenImg === '') tokenImg = Sequencer.Database.getEntry('jb2a.flaming_sphere.400px.' + color + '.02').file;
+    let hasFallbackImg = animationUtils.sequencerCheck() && animationUtils.jb2aCheck() !== false;
+    if (!tokenImg || tokenImg === '') tokenImg = hasFallbackImg ? Sequencer.Database.getEntry('jb2a.flaming_sphere.400px.' + color + '.02').file : '';
     let damageUpdates = {
         flags: {
             'chris-premades': {
@@ -19,15 +20,9 @@ async function use({trigger, workflow}) {
         }
     };
     let damageFeature = await Summons.getSummonItem('Flaming Sphere: End Turn', damageUpdates, workflow.item, {flatDC: itemUtils.getSaveDC(workflow.item), damageFlat: workflowUtils.getCastLevel(workflow) + 'd6[fire]', translate: 'CHRISPREMADES.Macros.FlamingSphere.EndTurn'});
-    if (!damageFeature) {
-        errors.missingPackItem(constants.packs.summonFeatures, 'Flaming Sphere: End Turn');
-        return;
-    }
+    if (!damageFeature) return;
     let ramFeature = await Summons.getSummonItem('Flaming Sphere: Ram', damageUpdates, workflow.item,{flatDC: itemUtils.getSaveDC(workflow.item), damageFlat: workflowUtils.getCastLevel(workflow) + 'd6[fire]', translate: 'CHRISPREMADES.Macros.FlamingSphere.RamItem'});
-    if (!ramFeature) {
-        errors.missingPackItem(constants.packs.summonFeatures, 'Flaming Sphere: Ram');
-        return;
-    }
+    if (!ramFeature) return;
     let updates = {
         actor: {
             name,
@@ -56,10 +51,7 @@ async function use({trigger, workflow}) {
     if (avatarImg) genericUtils.setProperty(updates, 'actor.img', avatarImg);
     let animation = itemUtils.getConfig(workflow.item, 'animation');
     let actor = await compendiumUtils.getActorFromCompendium(constants.packs.summons, 'CPR - Flaming Sphere');
-    if (!actor) {
-        errors.missingPackItem(constants.packs.summons, 'CPR - Flaming Sphere');
-        return;
-    }
+    if (!actor) return;
     let feature = activityUtils.getActivityByIdentifier(workflow.item, 'flamingSphereMove', {strict: true});
     if (!feature) return;
     let [token] = await Summons.spawn(actor, updates, workflow.item, workflow.token, {
@@ -117,7 +109,7 @@ async function move({workflow}) {
     if (!selection?.length) return;
     let ramFeature = itemUtils.getItemByIdentifier(token.actor, 'flamingSphereRam');
     if (!ramFeature) return;
-    let featureData = duplicate(ramFeature.toObject());
+    let featureData = genericUtils.duplicate(ramFeature.toObject());
     await workflowUtils.syntheticItemDataRoll(featureData, token.actor, [selection[0]]);
     await workflow.actor.sheet.maximize();
 }
@@ -126,7 +118,7 @@ async function endTurn({trigger}) {
     if (!actorUuid) return;
     let actor = await fromUuid(actorUuid);
     if (!actor) return;
-    let featureData = duplicate(trigger.entity.toObject());
+    let featureData = genericUtils.duplicate(trigger.entity.toObject());
     await workflowUtils.syntheticItemDataRoll(featureData, trigger.entity.actor, [trigger.target]);
 }
 async function early({dialog}) {

@@ -152,6 +152,7 @@
             "CheckSave": "Check Save:",
             "CheckSaves": "Check Saves:",
             "ClassIdentifier": "Class Identifier:",
+            "Clear": "Clear saved choices each combat:",
             "Color": "Color:",
             "Colors": {
                 "Blue": "Blue",
@@ -241,6 +242,7 @@
             "PromptToUse": "Prompt to use:",
             "Range": "Range:",
             "RealDarkness": "Use Real Darkness:",
+            "Remember": "Remember and auto-apply choices:",
             "Rules": "Rules:",
             "SaveAbilities": "Save Abilities:",
             "SaveDC": "Save DC:",
@@ -684,6 +686,7 @@
         },
         "Generic": {
             "Actions": "Actions",
+            "Always": "Always",
             "Amount": "Amount:",
             "Automatic": "Automatic",
             "Available": "Available",
@@ -1460,7 +1463,10 @@
                 "Bonus": "Emboldening Bond Bonus",
                 "Protective": "Protective Bond",
                 "ProtectiveDamage": "Protective Bond: Damage",
-                "ProtectiveTitle": "Protective Bond: Protect Target?"
+                "ProtectiveTitle": "Protective Bond: Protect Target?",
+                "ProtectiveChooseAlly": "Ask an ally to protect you?",
+                "ProtectivePrompt": "{targetName} was damaged and triggered {featureName}. Spend your reaction to teleport and take their damage?",
+                "ProtectiveConfig": "Prompt damaged target instead of allies:"
             },
             "Engulf": {
                 "Center": "Center Token:",
@@ -1622,6 +1628,11 @@
             },
             "GenericTeleport": {
                 "Name": "Generic Teleport"
+            },
+            "GhaalShaarat": {
+                "RequireTools": "Require Smith's Tools:",
+                "NeedTools": "You must have Smith's Tools to use {itemName}!",
+                "NoWeapons": "No simple or martial melee weapons found!"
             },
             "Grapple": {
                 "ChooseSkill": "How would you like to contest the grapple?",
@@ -1818,16 +1829,19 @@
                 "ArcanePropulsionArmor": "Arcane Propulsion Armor",
                 "ArcanePropulsionGauntlet": "Arcane Propulsion Gauntlet",
                 "ArmorOfMagicalStrength": "Armor of Magical Strength",
+                "BootsOfTheWindingPath": "Boots of the Winding Path",
                 "ChannelMagic": "Homunculus Servant: Channel Magic",
                 "EndAll": "End All Infusions",
                 "EnhancedArcaneFocus": "Enhanced Arcane Focus",
                 "EnhancedDefense": "Enhanced Defense",
                 "EnhancedWeapon": "Enhanced Weapon",
                 "ForceStrike": "Force Strike",
+                "HelmOfAwareness": "Helm of Awareness",
                 "HomunculusCommand": "Homunculus Servant: Command",
                 "HomunculusHeart": "Heart of Homunculus Servant",
                 "HomunculusServant": "Homunculus Servant",
                 "Known": "Known Infusions:",
+                "MindSharpener": "Mind Sharpener",
                 "New": "New {infusionLabel} infusion added to {newActorName}'s <b>{itemName}</b>.",
                 "NoArmor": "Target has no valid non-magical equipped armor!",
                 "NoFocus": "Target has no valid non-magical rod, staff, or wand equipped!",
@@ -1988,6 +2002,7 @@
                 "BaitSwitchAC": "Who gets the AC bonus?",
                 "CommanderConfirm": "Use your reaction to make a single weapon attack?",
                 "CommanderSelect": "Which ally should take an attack?",
+                "Maneuvering": "Spend your reaction to move up to half your speed?",
                 "NoNearby": "No allies with a reaction can see or hear you!",
                 "PushDistance": "How far do you push the target?",
                 "Pushing": "Pushing Attack: Attack",
@@ -2129,6 +2144,9 @@
             },
             "PeerlessSkill": {
                 "Confirm": "Did the check succeed?"
+            },
+            "PerfectWeapon": {
+                "TransferBonus": "Transfer weapon bonus to AC:"
             },
             "Piercer": {
                 "Reroll": "Reroll which lowest die?"

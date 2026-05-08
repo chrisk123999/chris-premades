@@ -268,6 +268,7 @@ export {ghostWalk} from './macros/2014/classFeatures/rogue/phantom/ghostWalk.js'
 export {giantsHavocCrushingThrow} from './macros/2014/classFeatures/barbarian/giant/crushingThrow.js';
 export {giantsHavocGiantStature} from './macros/2014/classFeatures/barbarian/giant/giantStature.js';
 export {giantsMight, giantsMightEffect} from './macros/2014/classFeatures/fighter/runeKnight/giantsMight.js';
+export {giftOfTheProtectors, giftOfTheProtectorsProtected} from './macros/2014/classFeatures/warlock/invocations/giftOfTheProtectors.js';
 export {graspOfHadar} from './macros/2014/classFeatures/warlock/invocations/graspOfHadar.js';
 export {graveTouched} from './macros/2014/classFeatures/warlock/undead/graveTouched.js';
 export {greatStature} from './macros/2014/classFeatures/fighter/runeKnight/greatStature.js';
@@ -289,9 +290,10 @@ export {hybridTransformation, hybridTransformationActive} from './macros/2014/cl
 export {improvedPactWeapon} from './macros/2014/classFeatures/warlock/invocations/improvedPactWeapon.js';
 export {infectiousFury} from './macros/2014/classFeatures/barbarian/beast/infectiousFury.js';
 export {infiltratorArmor, infiltratorArmorLightningLauncher} from './macros/2014/classFeatures/artificer/armorer/infiltratorArmor.js';
-export {infuseItem, infuseItemArmorStrength, infuseItemHomunculusTouch, infuseItemRepulsionShield, infuseItemSpellRing} from './macros/2014/classFeatures/artificer/infuseItem.js';
+export {infuseItem, infuseItemArmorStrength, infuseItemBootsWinding, infuseItemHomunculusTouch, infuseItemRepulsionShield, infuseItemSpellRing} from './macros/2014/classFeatures/artificer/infuseItem.js';
 export {insightfulFighting} from './macros/2014/classFeatures/rogue/inquisitive/insightfulFighting.js';
 export {inspiringSmite} from './macros/2014/classFeatures/paladin/oathOfGlory/inspiringSmite.js';
+export {instinctivePounce} from './macros/2014/classFeatures/barbarian/instinctivePounce.js';
 export {investmentOfTheChainMaster, investmentOfTheChainMasterActive} from './macros/2014/classFeatures/warlock/invocations/investmentOfTheChainMaster.js';
 export {ki} from './macros/2014/classFeatures/monk/ki.js';
 export {lanceOfLethargy} from './macros/2014/classFeatures/warlock/invocations/lanceOfLethargy.js';
@@ -637,6 +639,7 @@ export {strikeOfTheGiants, cloudStrike, fireStrike, frostStrike, hillStrike, sto
 export {tavernBrawler, tavernBrawlerUnarmedStrike} from './macros/2014/feats/tavernBrawler.js';
 export {telekineticShove} from './macros/2014/feats/telekinetic.js';
 export {forestSage} from './macros/2014/feats/forestSage.js';
+export {cruel} from './macros/2014/feats/cruel.js';
 // Items
 export {allPurposeTool1, allPurposeTool2, allPurposeTool3} from './macros/2014/items/trinket/allPurposeTool.js';
 export {armorOfSafeguardingP, armorOfSafeguardingC, armorOfSafeguardingR, armorOfSafeguardingS} from './macros/2014/items/armor/armorOfSafeguarding.js';

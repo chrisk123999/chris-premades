@@ -120,29 +120,6 @@
     }
   },
   "flags": {
-    "ddbimporter": {
-      "isChoiceFeature": false,
-      "id": 9151713,
-      "type": "race",
-      "entityTypeId": 1960452172,
-      "is2014": true,
-      "is2024": false,
-      "legacy": false,
-      "originalName": "Mechanical Nature",
-      "dndbeyond": {
-        "requiredLevel": null,
-        "displayOrder": 9,
-        "featureType": 1,
-        "entityRaceId": 1121695,
-        "entityType": "racial-trait"
-      },
-      "effectsApplied": true,
-      "baseName": "Mechanical Nature",
-      "fullRaceName": "Autognome",
-      "groupName": "Gnome",
-      "isLineage": false,
-      "importId": "Mpgx7Er3YokGIcwF"
-    },
     "species": {
       "fullRaceName": "Autognome",
       "baseRaceName": "Autognome",

@@ -1,4 +1,4 @@
-import {actorUtils, dialogUtils, genericUtils, itemUtils, rollUtils, socketUtils, tokenUtils, workflowUtils} from '../../../../../utils.js';
+import {activityUtils, actorUtils, dialogUtils, genericUtils, itemUtils, rollUtils, socketUtils, tokenUtils, workflowUtils} from '../../../../../utils.js';
 import {bardicInspiration} from '../bardicInspiration.js';
 async function damage({trigger, workflow}) {
     if (!workflow.hitTargets.size || !workflow.damageRolls || !workflow.item || workflow.defaultDamageType === 'midi-none') return;
@@ -82,7 +82,11 @@ async function added({trigger: {entity: item}}) {
     if (item.actor.system.scale[classIdentifier]?.[scaleIdentifier]) return;
     if (item.actor.system.scale[classIdentifier]?.['inspiration']) {
         await itemUtils.setConfig(item, 'scaleIdentifier', 'inspiration');
-        await genericUtils.update(item, 'system.activities.healManOfInclass.healing.bonus', 'scale.' + classIdentifier + '.inspiration.die');
+        let activity = activityUtils.getActivityByIdentifier(item, 'use', {strict: true});
+        if (activity) {
+            activity = activityUtils.withChangedDamage(activity, {bonus: '@scale.' + classIdentifier + '.inspiration.die'});
+            await genericUtils.update(item, {['system.activities.' + activity._id]: activity});
+        }
     }
     await itemUtils.fixScales(item);
 }

@@ -253,6 +253,8 @@ async function use({workflow}) {
         vae: vaeInput,
         unhideActivities
     });
+    let instinctivePounce = itemUtils.getItemByIdentifier(workflow.actor, 'instinctivePounce');
+    if (instinctivePounce) await workflowUtils.completeItemUse(instinctivePounce);
     if (callTheHunt && callTheHunt.system.uses.value) {
         let selection = await dialogUtils.confirm(callTheHunt.name, genericUtils.format('CHRISPREMADES.Dialog.Use', {itemName: callTheHunt.name}));
         if (selection) await workflowUtils.completeItemUse(callTheHunt);

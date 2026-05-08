@@ -797,6 +797,7 @@ export class ItemMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
             'flags.chris-premades.macros'
         ];
         delete itemData.ownership;
+        delete sourceItemData.ownership;
         for (let field of keepPaths) {
             let fieldValue = genericUtils.getProperty(itemData, field);
             if (fieldValue) genericUtils.setProperty(sourceItemData, field, fieldValue);
