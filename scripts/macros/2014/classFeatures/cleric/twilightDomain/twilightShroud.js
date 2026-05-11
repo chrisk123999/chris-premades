@@ -3,7 +3,7 @@ async function attack({trigger: {token}, workflow}) {
     if (workflow.targets.size !== 1 || !workflow.item || !workflowUtils.isAttackType(workflow, 'attack')) return;
     let targetToken = workflow.targets.first();
     if (targetToken.document.disposition !== token.document.disposition) return;
-    let coverBonus = tokenUtils.checkCover(workflow.token, targetToken, {item: workflow.item});
+    let coverBonus = tokenUtils.checkCover(workflow.token, targetToken, {activity: workflow.activity});
     if (coverBonus >= 2) return;
     let feature = itemUtils.getItemByIdentifier(token.actor, 'twilightShroud');
     if (!feature) return;

@@ -184,7 +184,7 @@ async function lateForceBallista({workflow}) {
 async function fortifiedPosition({workflow}) {
     if (workflow.targets.size !== 1 || !workflow.item || !constants.attacks.includes(workflow.item.system?.actionType)) return;
     let targetToken = workflow.targets.first();
-    let coverBonus = tokenUtils.checkCover(workflow.token, targetToken, {item: workflow.item});
+    let coverBonus = tokenUtils.checkCover(workflow.token, targetToken, {activity: workflow.activity});
     if (coverBonus >= 2) return;
     let nearbyCannons = tokenUtils.findNearby(targetToken, 10, 'ally', {includeIncapacitated: false, includeToken: true}).filter(i => itemUtils.getItemByIdentifier(i.actor, 'eldritchCannonFortifiedPosition'));
     if (!nearbyCannons.length) return;

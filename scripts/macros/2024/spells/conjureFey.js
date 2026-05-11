@@ -1,16 +1,14 @@
 import {Summons} from '../../../lib/summons.js';
 import {Teleport} from '../../../lib/teleport.js';
-import {activityUtils, compendiumUtils, constants, dialogUtils, effectUtils, genericUtils, itemUtils, tokenUtils, workflowUtils} from '../../../utils.js';
+import {activityUtils, animationUtils, compendiumUtils, constants, dialogUtils, effectUtils, genericUtils, itemUtils, tokenUtils, workflowUtils} from '../../../utils.js';
 async function use({workflow}) {
     let concentrationEffect = effectUtils.getConcentrationEffect(workflow.actor, workflow.item);
+    let removeConcentration = async () => {if (concentrationEffect) await genericUtils.remove(concentrationEffect);};
     let sourceActor = await compendiumUtils.getActorFromCompendium(constants.modernPacks.summons, 'CPR - Feywild Spirit');
-    if (!sourceActor) {
-        if (concentrationEffect) await genericUtils.remove(concentrationEffect);
-        return;
-    }
+    if (!sourceActor) return await removeConcentration();
     let spellLevel = workflowUtils.getCastLevel(workflow);
     let teleportFeature = activityUtils.getActivityByIdentifier(workflow.item, 'conjureFeyTeleport', {strict: true});
-    if (!teleportFeature) return;
+    if (!teleportFeature) return await removeConcentration();
     let name = itemUtils.getConfig(workflow.item, 'name');
     if (!name?.length) name = sourceActor.name;
     let updates = {
@@ -34,7 +32,7 @@ async function use({workflow}) {
         genericUtils.setProperty(updates, 'token.texture.src', tokenImg);
     }
     let animation = itemUtils.getConfig(workflow.item, 'animation') ?? 'none';
-    let [spawnedToken=null] = await Summons.spawn(sourceActor, updates, workflow.item, workflow.token, {
+    let spawnedToken = await Summons.spawn(sourceActor, updates, workflow.item, workflow.token, {
         duration: itemUtils.convertDuration(workflow.item).seconds,
         range: workflow.item.system.range.value,
         animation,
@@ -52,19 +50,17 @@ async function use({workflow}) {
         }
     });
     let casterEffect = effectUtils.getEffectByIdentifier(workflow.actor, 'conjureFey');
-    if (!spawnedToken || !casterEffect) {
-        if (concentrationEffect) await genericUtils.remove(concentrationEffect);
-        return;
-    }
+    if (!spawnedToken || !spawnedToken[0] || !casterEffect) return await removeConcentration();
     await genericUtils.update(casterEffect, {'flags.chris-premades.castData': workflow.castData});
-    await attackHelper(workflow.token, spawnedToken, workflow.item, spellLevel);
+    await attackHelper(workflow.token, spawnedToken[0], workflow.item, spellLevel);
 }
 async function teleport({workflow}) {
     let effect = effectUtils.getEffectByIdentifier(workflow.actor, 'conjureFey');
     if (!effect) return;
     let summonToken = canvas?.scene?.tokens.get(effect.flags['chris-premades']?.summons?.ids[effect.name][0]);
     if (!summonToken) return;
-    await Teleport.target([summonToken.object], workflow.token, {range: 30, animation: 'mistyStep', centerpoint: summonToken.object.center});
+    let animation = animationUtils.sequencerCheck() && animationUtils.jb2aCheck !== false ? 'mistyStep' : 'none';
+    await Teleport.target([summonToken.object], workflow.token, {range: 30, animation, centerpoint: summonToken.object.center});
     await attackHelper(workflow.token, summonToken, workflow.item, effect.flags['chris-premades'].castData.castLevel);
 }
 async function attackHelper(sourceToken, summonToken, sourceItem, spellLevel) {

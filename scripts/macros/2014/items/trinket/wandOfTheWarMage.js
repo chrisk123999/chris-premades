@@ -3,7 +3,7 @@ async function early({workflow}) {
     if (!workflowUtils.isAttackType(workflow, 'spellAttack')) return;
     let targetToken = workflow.targets.first();
     if (!targetToken) return;
-    let coverBonus = tokenUtils.checkCover(workflow.token, targetToken, {item: workflow.item});
+    let coverBonus = tokenUtils.checkCover(workflow.token, targetToken, {activity: workflow.activity});
     if (coverBonus != 2) return;
     await workflowUtils.bonusAttack(workflow, '2');
 }

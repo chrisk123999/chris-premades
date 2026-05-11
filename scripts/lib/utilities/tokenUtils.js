@@ -5,8 +5,13 @@ function getDistance(sourceToken, targetToken, {wallsBlock, checkCover} = {}) {
 function checkCollision(token, ray) {
     return token.checkCollision(ray.B, {origin: ray.A, type: 'move', mode: 'any'});
 }
-function checkCover(sourceToken, targetToken, {item, displayName}) {
-    let cover = MidiQOL.computeCoverBonus(sourceToken, targetToken, item);
+function checkCover(sourceToken, targetToken, {activity, item, displayName}) {
+    // TODO replace the following with MidiQOL.getCoverBonus when that becomes available
+    let statusCover = targetToken.actor?.statuses.has('coverTotal') ? 999 :
+        (targetToken.actor?.system.attributes.ac.cover ?? 0);
+    // still passing in item to send midi's deprecation warning to macro writers
+    let moduleCover = MidiQOL.computeCoverBonus(sourceToken, targetToken, activity ?? item);
+    let cover = Math.max(moduleCover, statusCover);
     if (!displayName) return cover;
     switch (cover) {
         case 0:

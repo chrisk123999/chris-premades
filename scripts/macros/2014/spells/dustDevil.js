@@ -1,6 +1,8 @@
 import {Summons} from '../../../lib/summons.js';
-import {activityUtils, compendiumUtils, constants, crosshairUtils, effectUtils, errors, genericUtils, itemUtils, tokenUtils, workflowUtils} from '../../../utils.js';
+import {activityUtils, animationUtils, compendiumUtils, constants, crosshairUtils, effectUtils, genericUtils, itemUtils, tokenUtils, workflowUtils} from '../../../utils.js';
 async function use({trigger, workflow}) {
+    let concentration = effectUtils.getConcentrationEffect(workflow.actor, workflow.item);
+    let removeConcentration = async () => {if (concentration) await genericUtils.remove(concentration);};
     let avatarImg = itemUtils.getConfig(workflow.item, 'avatar');
     let tokenImg = itemUtils.getConfig(workflow.item, 'token');
     let color = itemUtils.getConfig(workflow.item, 'color');
@@ -8,7 +10,8 @@ async function use({trigger, workflow}) {
     let scale = Number(itemUtils.getConfig(workflow.item, 'scale'));
     if (isNaN(scale)) scale = 1;
     if (!name || name === '') name = workflow.item.name;
-    if (!tokenImg || tokenImg === '') tokenImg = Sequencer.Database.getEntry('jb2a.whirlwind.' + color).file;
+    let hasFallbackImg = animationUtils.sequencerCheck() && animationUtils.jb2aCheck() !== false;
+    if (!tokenImg || tokenImg === '') tokenImg = hasFallbackImg ? Sequencer.Database.getEntry('jb2a.whirlwind.' + color).file : '';
     let damageUpdates = {
         flags: {
             'chris-premades': {
@@ -21,10 +24,7 @@ async function use({trigger, workflow}) {
     // 1d8 bludgeoning, scaling +1d8 per slot above 2nd => (castLevel - 1)d8
     let diceCount = Math.max(1, (workflowUtils.getCastLevel(workflow) - 1));
     let contactFeature = await Summons.getSummonItem('Dust Devil: Contact', damageUpdates, workflow.item, {flatDC: itemUtils.getSaveDC(workflow.item), damageFlat: diceCount + 'd8[bludgeoning]', translate: 'CHRISPREMADES.Macros.DustDevil.ContactItem'});
-    if (!contactFeature) {
-        errors.missingPackItem(constants.packs.summonFeatures, 'Dust Devil: Contact');
-        return;
-    }
+    if (!contactFeature) return await removeConcentration();
     let updates = {
         actor: {
             name,
@@ -59,13 +59,10 @@ async function use({trigger, workflow}) {
     if (avatarImg) genericUtils.setProperty(updates, 'actor.img', avatarImg);
     let animation = itemUtils.getConfig(workflow.item, 'animation');
     let actor = await compendiumUtils.getActorFromCompendium(constants.packs.summons, 'CPR - Dust Devil');
-    if (!actor) {
-        errors.missingPackItem(constants.packs.summons, 'CPR - Dust Devil');
-        return;
-    }
+    if (!actor) return await removeConcentration();
     let feature = activityUtils.getActivityByIdentifier(workflow.item, 'dustDevilMove');
-    if (!feature) return;
-    let [token] = await Summons.spawn(actor, updates, workflow.item, workflow.token,{
+    if (!feature) return await removeConcentration();
+    let token = await Summons.spawn(actor, updates, workflow.item, workflow.token,{
         duration: itemUtils.convertDuration(workflow.item).seconds,
         range: 60,
         animation,
@@ -82,8 +79,10 @@ async function use({trigger, workflow}) {
             favorite: true
         }
     });
+    if (!token) return await removeConcentration();
+    token = token[0];
     let effect = effectUtils.getEffectByIdentifier(workflow.actor, 'dustDevil');
-    if (!effect) return;
+    if (!effect) return await removeConcentration();
     await genericUtils.setFlag(effect, 'chris-premades', 'dustDevil.tokenUuid', token.uuid);
 }
 async function move({workflow}) {
@@ -113,7 +112,8 @@ async function move({workflow}) {
     await genericUtils.update(token, {x: (position.x ?? token.center.x) - xOffset, y: (position.y ?? token.center.y) - yOffset});
     await token.object.movementAnimationPromise;
     // Create a visual effect around the token (no template, combat-only)
-    if (!game.combat) {
+    let canAnimate = animationUtils.sequencerCheck() && animationUtils.jb2aCheck() === 'patreon';
+    if (!game.combat || !canAnimate) {
         await workflow.actor.sheet.maximize();
         return;
     }

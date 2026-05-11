@@ -8,7 +8,9 @@ async function use({trigger, workflow}) {
     while (boltsLeft) {
         let selection, skip;
         if (workflow.targets.size > 1) {
-            [selection, skip] = await dialogUtils.selectTargetDialog(workflow.item.name, 'CHRISPREMADES.Macros.EldritchBlast.Target', Array.from(workflow.targets), {type: 'selectAmount', skipDeadAndUnconscious: true, coverToken: workflow.token, maxAmount: boltsLeft});
+            let choice = await dialogUtils.selectTargetDialog(workflow.item.name, 'CHRISPREMADES.Macros.EldritchBlast.Target', Array.from(workflow.targets), {type: 'selectAmount', skipDeadAndUnconscious: true, coverToken: workflow.token, maxAmount: boltsLeft});
+            if (!choice) return;
+            [selection, skip] = choice;
             if (!selection) return;
         } else {
             selection = [{document: workflow.targets.first(), value: 1}];

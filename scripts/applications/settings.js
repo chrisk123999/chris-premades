@@ -119,11 +119,21 @@ export function getSettingsClass(category) {
 async function selectCompendium(settingKey, type) {
     let oldKey = genericUtils.getCPRSetting(settingKey);
     let compendiums = game.packs.filter(i => i.metadata.type === type);
-    let inputs = compendiums.map(i => ({
-        label: i.metadata.label,
-        name: i.metadata.id,
-        options: {isChecked: oldKey === i.metadata.id}
-    }));
+    let inputs = compendiums.map(i => {
+        let source;
+        let data = i.metadata;
+        if (compendiums.filter(c => c.title === i.title).length > 1)
+            switch (data.packageType) {
+                case 'system': source = data.flags?.dnd5e?.sourceBook || game.system.title; break;
+                case 'module': source = game.modules.get(data.packageName)?.title; break;
+                case 'world': source = game.world.title; break;
+            }
+        return {
+            label: data.label + (source ? ` [${source}]` : ''),
+            name: data.id,
+            options: {isChecked: oldKey === data.id}
+        };
+    });
     let selection = await DialogApp.dialog('CHRISPREMADES.Settings.' + settingKey + '.Name', 'CHRISPREMADES.Settings.SelectCompendium', [['radio', inputs, {displayAsRows: true}]], 'okCancel', {id: 'cpr-select-monster-compendium'});
     if (!selection) return;
     await genericUtils.setCPRSetting(settingKey, selection.radio);

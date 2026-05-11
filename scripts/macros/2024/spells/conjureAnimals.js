@@ -2,11 +2,9 @@ import {Summons} from '../../../lib/summons.js';
 import {activityUtils, actorUtils, combatUtils, compendiumUtils, constants, effectUtils, errors, genericUtils, itemUtils, tokenUtils, workflowUtils} from '../../../utils.js';
 async function use({workflow}) {
     let concentrationEffect = effectUtils.getConcentrationEffect(workflow.actor, workflow.item);
+    let removeConcentration = async () => {if (concentrationEffect) await genericUtils.remove(concentrationEffect);};
     let sourceActor = await compendiumUtils.getActorFromCompendium(constants.modernPacks.summons, 'CPR - Spectral Animals');
-    if (!sourceActor) {
-        if (concentrationEffect) await genericUtils.remove(concentrationEffect);
-        return;
-    }
+    if (!sourceActor) return await removeConcentration();
     let spellLevel = workflowUtils.getCastLevel(workflow);
     let name = itemUtils.getConfig(workflow.item, 'name');
     if (!name?.length) name = sourceActor.name;
@@ -31,22 +29,17 @@ async function use({workflow}) {
         genericUtils.setProperty(updates, 'token.texture.src', tokenImg);
     }
     let animation = itemUtils.getConfig(workflow.item, 'animation') ?? 'none';
-    let [spawnedToken=null] = await Summons.spawn(sourceActor, updates, workflow.item, workflow.token, {
+    let spawnedToken = await Summons.spawn(sourceActor, updates, workflow.item, workflow.token, {
         duration: itemUtils.convertDuration(workflow.item).seconds,
         range: workflow.item.system.range.value,
         animation,
         initiativeType: 'follows'
     });
-    if (!spawnedToken) {
-        if (concentrationEffect) await genericUtils.remove(concentrationEffect);
-        return;
-    }
+    if (!spawnedToken || !spawnedToken[0]) return await removeConcentration();
+    spawnedToken = spawnedToken[0];
     let casterEffect = effectUtils.getEffectByIdentifier(workflow.actor, 'conjureAnimals');
     let summonedEffect = effectUtils.getEffectByIdentifier(spawnedToken.actor, 'summonedEffect');
-    if (!casterEffect || !summonedEffect) {
-        if (concentrationEffect) await genericUtils.remove(concentrationEffect);
-        return;
-    }
+    if (!casterEffect || !summonedEffect) return await removeConcentration();
     await genericUtils.update(casterEffect, {'flags.chris-premades.macros.save': ['conjureAnimalsActive']});
     await genericUtils.update(summonedEffect, {
         'flags.chris-premades': {

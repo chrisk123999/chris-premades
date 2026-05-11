@@ -113,6 +113,7 @@ async function arcaneJolt({workflow}) {
     await arcaneJoltHelper(workflow, originItem);
 }
 async function early({trigger: {entity: item, token}, workflow}) {
+    if (workflow.tracker.disadvantage.isActive) return;
     if (!workflowUtils.isAttackType(workflow, 'attack')) return;
     if (workflow.token.document.disposition === token.document.disposition) return;
     if (actorUtils.hasUsedReaction(token.actor)) return;

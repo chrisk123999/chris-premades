@@ -83,7 +83,7 @@
         "type": "system",
         "compatibility": {
           "minimum": "5.2.5",
-          "verified": "5.2.5",
+          "verified": "5.3.3",
           "maximum": "5.9.9"
         }
       }

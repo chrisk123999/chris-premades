@@ -49,7 +49,9 @@ async function use({workflow}) {
         if (nearbyTargets.length === 1) {
             target = nearbyTargets[0].document;
         } else {
-            [{document: target}, selected] = await dialogUtils.selectTargetDialog(workflow.item.name, 'CHRISPREMADES.Macros.Antagonize.SelectTarget', nearbyTargets);
+            let choice = await dialogUtils.selectTargetDialog(workflow.item.name, 'CHRISPREMADES.Macros.Antagonize.SelectTarget', nearbyTargets);
+            if (!choice) return;
+            [{document: target}, selected] = choice;
             if (!selected) return;
         }
         await socketUtils.remoteRollItem(selectedWeapon, {}, {targetUuids: [target.uuid]}, socketUtils.firstOwner(targetToken).id);

@@ -7,12 +7,12 @@ async function early({workflow}) {
         await workflowUtils.updateTargets(workflow, targetTokens);
         return;
     }
-    let [selection] = await dialogUtils.selectTargetDialog(workflow.item.name, 'CHRISPREMADES.Macros.MassCureWounds.Select', targetTokens, {type: 'multiple', maxAmount: 6});
+    let selection = await dialogUtils.selectTargetDialog(workflow.item.name, 'CHRISPREMADES.Macros.MassCureWounds.Select', targetTokens, {type: 'multiple', maxAmount: 6});
     let newTargets;
-    if (!selection) {
+    if (!selection || !selection[0]) {
         newTargets = targetTokens.slice(0, 6);
     } else {
-        newTargets = selection ?? [];
+        newTargets = selection[0] ?? [];
     }
     await workflowUtils.updateTargets(workflow, newTargets);
 }

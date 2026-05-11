@@ -8,7 +8,7 @@ async function damage({trigger: {entity: item}, workflow}) {
     numDice = Math.floor(numDice / 2);
     let newFormula = [numDice, ...damageFormula.split('d').slice(1)].join('d');
     let damageRolls = workflow.damageRolls.slice(1);
-    let newRoll = await new CONFIG.Dice.DamageRoll(newFormula, workflow.item.getRollData(), {type: workflow.activity.damage.parts[0].types.first()}).evaluate();
+    let newRoll = await new CONFIG.Dice.DamageRoll(newFormula, workflow.activity.getRollData(), {type: workflow.activity.damage.parts[0].types.first()}).evaluate();
     damageRolls.unshift(newRoll);
     await workflow.setDamageRolls(damageRolls);
 }

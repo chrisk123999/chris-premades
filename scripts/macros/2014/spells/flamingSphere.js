@@ -1,6 +1,8 @@
 import {Summons} from '../../../lib/summons.js';
 import {activityUtils, animationUtils, compendiumUtils, constants, crosshairUtils, dialogUtils, effectUtils, genericUtils, itemUtils, tokenUtils, workflowUtils} from '../../../utils.js';
 async function use({trigger, workflow}) {
+    let concentration = effectUtils.getConcentrationEffect(workflow.actor, workflow.item);
+    let removeConcentration = async () => {if (concentration) await genericUtils.remove(concentration);};
     let avatarImg = itemUtils.getConfig(workflow.item, 'avatar');
     let tokenImg = itemUtils.getConfig(workflow.item, 'token');
     let color = itemUtils.getConfig(workflow.item, 'color');
@@ -20,9 +22,9 @@ async function use({trigger, workflow}) {
         }
     };
     let damageFeature = await Summons.getSummonItem('Flaming Sphere: End Turn', damageUpdates, workflow.item, {flatDC: itemUtils.getSaveDC(workflow.item), damageFlat: workflowUtils.getCastLevel(workflow) + 'd6[fire]', translate: 'CHRISPREMADES.Macros.FlamingSphere.EndTurn'});
-    if (!damageFeature) return;
+    if (!damageFeature) return await removeConcentration();
     let ramFeature = await Summons.getSummonItem('Flaming Sphere: Ram', damageUpdates, workflow.item,{flatDC: itemUtils.getSaveDC(workflow.item), damageFlat: workflowUtils.getCastLevel(workflow) + 'd6[fire]', translate: 'CHRISPREMADES.Macros.FlamingSphere.RamItem'});
-    if (!ramFeature) return;
+    if (!ramFeature) return await removeConcentration();
     let updates = {
         actor: {
             name,
@@ -51,10 +53,10 @@ async function use({trigger, workflow}) {
     if (avatarImg) genericUtils.setProperty(updates, 'actor.img', avatarImg);
     let animation = itemUtils.getConfig(workflow.item, 'animation');
     let actor = await compendiumUtils.getActorFromCompendium(constants.packs.summons, 'CPR - Flaming Sphere');
-    if (!actor) return;
+    if (!actor) return await removeConcentration();
     let feature = activityUtils.getActivityByIdentifier(workflow.item, 'flamingSphereMove', {strict: true});
-    if (!feature) return;
-    let [token] = await Summons.spawn(actor, updates, workflow.item, workflow.token, {
+    if (!feature) return await removeConcentration();
+    let token = await Summons.spawn(actor, updates, workflow.item, workflow.token, {
         duration: itemUtils.convertDuration(workflow.item).seconds, 
         range: 60, 
         animation, 
@@ -71,8 +73,10 @@ async function use({trigger, workflow}) {
             favorite: true
         }
     });
+    if (!token) return await removeConcentration();
+    token = token[0];
     let effect = effectUtils.getEffectByIdentifier(workflow.actor, 'flamingSphere');
-    if (!effect) return;
+    if (!effect) return await removeConcentration();
     await genericUtils.update(effect, {
         'flags.chris-premades.flamingSphere.tokenUuid': token.uuid
     });

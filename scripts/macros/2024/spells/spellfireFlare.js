@@ -7,7 +7,9 @@ async function use({trigger, workflow}) {
     while (blastsLeft) {
         let selection, skip;
         if (workflow.targets.size > 1) {
-            [selection, skip] = await dialogUtils.selectTargetDialog(workflow.item.name, 'CHRISPREMADES.Macros.EldritchBlast.Target', Array.from(workflow.targets), {type: 'selectAmount', skipDeadAndUnconscious: true, coverToken: workflow.token, maxAmount: blastsLeft});
+            let choice = await dialogUtils.selectTargetDialog(workflow.item.name, 'CHRISPREMADES.Macros.EldritchBlast.Target', Array.from(workflow.targets), {type: 'selectAmount', skipDeadAndUnconscious: true, coverToken: workflow.token, maxAmount: blastsLeft});
+            if (!choice) return;
+            [selection, skip] = choice;
             if (!selection) return;
         } else {
             selection = [{document: workflow.targets.first(), value: 1}];
@@ -36,7 +38,7 @@ async function blast({trigger, workflow}) {
     animationUtils.simpleAttack(workflow.token, workflow.targets.first(), animation, {sound: sound, missed: !workflow.hitTargets.has(workflow.targets.first())});
 }
 async function attack({trigger, workflow}) {
-    let coverBonus = tokenUtils.checkCover(workflow.token, workflow.targets.first(), {item: workflow.item});
+    let coverBonus = tokenUtils.checkCover(workflow.token, workflow.targets.first(), {activity: workflow.activity});
     if (!(coverBonus == 2 || coverBonus == 5)) return;
     await workflowUtils.bonusAttack(workflow, String(coverBonus));
 }

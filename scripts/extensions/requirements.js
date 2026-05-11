@@ -97,13 +97,24 @@ async function scaleCheck(item) {
         let scale = item.actor.system.scale[classIdentifier]?.[scaleIdentifier];
         if (scale?.parent?.configuration?.type === data.data.configuration.type) return;
         let classData = genericUtils.duplicate(classItem.toObject());
-        if (scale?.type != data.data.type) classData.system.advancement = classData.system.advancement.filter(i => i.configuration?.identifier != scaleIdentifier);
-        classData.system.advancement.push(data.data);
+        if (foundry.utils.isNewerVersion('5.3.0', game.system.version)) addScale(classData, scale, data.data, scaleIdentifier);
+        else addScale53(classData, scale, genericUtils.duplicate(data.data), scaleIdentifier);
         await genericUtils.update(classItem, {'system.advancement': classData.system.advancement});
         let message = genericUtils.format('CHRISPREMADES.Requirements.ScaleAdded', {classIdentifier, scaleIdentifier});
         genericUtils.notify(message, 'info');
     }));
     if (missingClass) return true;
+}
+function addScale(classData, scale, newScale, scaleIdentifier) {
+    if (scale?.type != newScale.type) classData.system.advancement = classData.system.advancement.filter(i => i.configuration?.identifier != scaleIdentifier);
+    classData.system.advancement.push(newScale);
+}
+function addScale53(classData, scale, newScale, scaleIdentifier) {
+    if (scale?.type != newScale.type) Object.values(classData.system.advancement)
+        .filter(i => i.configuration?.identifier === scaleIdentifier)
+        .forEach(i => delete classData.system.advancement[i._id]);
+    newScale._id = foundry.utils.randomID();
+    classData.system.advancement[newScale._id] = newScale;
 }
 export let requirements = {
     versionCheck,

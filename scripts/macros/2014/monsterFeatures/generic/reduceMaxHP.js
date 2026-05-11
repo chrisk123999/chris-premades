@@ -6,7 +6,7 @@ async function late({workflow}) {
     if (activities?.length && !activities.includes(workflow.activity.id)) return;
     let damageApplied = 0;
     if (config.reduceByRoll.length) {
-        let roll = await new Roll(config.reduceByRoll, workflow.item.getRollData()).evaluate();
+        let roll = await new Roll(config.reduceByRoll, workflow.activity.getRollData()).evaluate();
         await roll.toMessage({
             speaker: ChatMessage.implementation.getSpeaker({token: workflow.token}),
             flavor: workflow.item.name

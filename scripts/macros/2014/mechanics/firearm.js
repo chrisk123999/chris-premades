@@ -209,7 +209,7 @@ async function late({workflow}) {
 async function damage({workflow}) {
     let violentCost = workflow.item.flags['chris-premades']?.firearm?.violent;
     if (!violentCost) return;
-    let origRoll = await new Roll(workflow.item.system.damage.base.formula, workflow.item.getRollData()).evaluate();
+    let origRoll = await new Roll(workflow.item.system.damage.base.formula, workflow.activity.getRollData()).evaluate();
     let faces = origRoll.terms[0].faces;
     if (!faces) return;
     let extraDamage = violentCost + 'd' + faces;
