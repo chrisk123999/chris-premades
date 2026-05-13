@@ -922,7 +922,8 @@
                 "Choose": "Select hit dice to use:"
             },
             "ArcaneWard": {
-                "Protect": "Protect {tokenName} with your arcane ward?"
+                "Protect": "Protect {tokenName} with your arcane ward?",
+                "TempHP": "Consume Temp HP First:"
             },
             "ArmorOfAgathys": {
                 "Reflect": "Armor of Agathys: Reflect"
@@ -2714,7 +2715,7 @@
                 "Name": "Time Trigger"
             },
             "TinkersMagic": {
-                "LimitList": "Limit items to rules list:",
+                "CustomCompendium": "Custom Mundane Item Compendium:",
                 "NeedTools": "You must have Tinker's Tools to use {itemName}!",
                 "Prompt": "Choose {itemName} Item:",
                 "RequireTools": "Require Tinker's Tools:"

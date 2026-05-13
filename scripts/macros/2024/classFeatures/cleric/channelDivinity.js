@@ -105,6 +105,10 @@ async function damage({trigger, workflow}) {
 }
 async function added({trigger: {entity: item}}) {
     await itemUtils.fixScales(item);
+    if (item.system.uses.max) return;
+    let classIdentifier = itemUtils.getConfig(item, 'classIdentifier');
+    let scaleIdentifier = itemUtils.getConfig(item, 'scaleIdentifier');
+    await genericUtils.update(item, {'system.uses.max': `@scale.${classIdentifier}.${scaleIdentifier}`});
 }
 export let channelDivinity = {
     name: 'Channel Divinity (Cleric)',

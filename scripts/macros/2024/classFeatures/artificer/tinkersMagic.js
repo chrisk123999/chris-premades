@@ -24,26 +24,20 @@ async function use({trigger: {entity: item}, workflow}) {
         return;
     }
     let types = itemUtils.getConfig(workflow.item, 'itemTypes') || [];
-    let identifiers = itemUtils.getConfig(workflow.item, 'limitList') ? [{
-        keyPath: 'system.identifier', 
-        values: itemIDs, 
-        operator: 'in'
-    }] : [];
-    let choices = await CompendiumBrowser.select(
-        CompendiumBrowser.tabs.items,
-        [
-            ['properties', ['mgc'], {locked: true, exclude: true}],
-            ['rarity', Object.keys(CONFIG.DND5E.itemRarity), {locked: true, exclude: true}],
-            ['rarity', ['_blank'], {locked: true}],
-            ['arbitrary', identifiers, {locked: true}],
-            ['documentTypes', types, {locked: true}]
-        ],
-        {
-            hint: genericUtils.format('CHRISPREMADES.Macros.TinkersMagic.Prompt', {itemName: item.name}),
-            maxAmount: item.system.uses.value,
-            minAmount: 1
-        }
-    );
+    let filters = [
+        ['properties', ['mgc'], {locked: true, exclude: true}],
+        ['rarity', Object.keys(CONFIG.DND5E.itemRarity), {locked: true, exclude: true}],
+        ['rarity', ['_blank'], {locked: true}],
+        ['documentTypes', types, {locked: true}]
+    ];
+    let compendium = itemUtils.getConfig(workflow.item, 'compendium');
+    if (compendium) filters.push(['compendium', [compendium], {locked: true}]);
+    else filters.push(['systemIdentifier', itemIDs, {locked: true}]);
+    let choices = await CompendiumBrowser.select(CompendiumBrowser.tabs.items, filters, {
+        hint: genericUtils.format('CHRISPREMADES.Macros.TinkersMagic.Prompt', {itemName: item.name}),
+        maxAmount: item.system.uses.value,
+        minAmount: 1
+    });
     if (!choices?.length) return;
     let existingEffect = effectUtils.getEffectByIdentifier(workflow.actor, 'tinkersMagic');
     existingEffect ??= await effectUtils.createEffect(workflow.actor, {
@@ -82,10 +76,11 @@ export let tinkersMagic = {
             homebrew: true
         },
         {
-            value: 'limitList',
-            label: 'CHRISPREMADES.Macros.TinkersMagic.LimitList',
-            type: 'checkbox',
-            default: true,
+            value: 'compendium',
+            label: 'CHRISPREMADES.Macros.TinkersMagic.CustomCompendium',
+            type: 'select',
+            options: constants.itemCompendiumPacks,
+            default: '',
             category: 'homebrew',
             homebrew: true
         },
