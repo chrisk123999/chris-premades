@@ -250,10 +250,10 @@ export class Crosshairs extends foundry.canvas.placeables.MeasuredTemplate {
         this.clearHandlers = this._clearHandlers.bind(this);
   
         // Update placement (mouse-move)
-        canvas.stage.on('mousemove', this.activeMoveHandler);
+        canvas.stage.on('pointermove', this.activeMoveHandler);
   
         // Confirm the workflow (left-click)
-        canvas.stage.on('mousedown', this.activeLeftClickHandler);
+        canvas.stage.on('pointerdown', this.activeLeftClickHandler);
   
         // Mouse Wheel rotate
         canvas.app.view.onwheel = this.activeWheelHandler;
@@ -280,7 +280,8 @@ export class Crosshairs extends foundry.canvas.placeables.MeasuredTemplate {
         }
     }
     _leftClickHandler(event) {
-        event.preventDefault();
+        if (event.data?.button !== 0) return;
+        event.stopPropagation();
         const document = this.document;
         const thisSceneSize = this.scene.grid.size;
         const destination = Crosshairs.getSnappedPosition(this.document, this.resolution);
@@ -330,18 +331,19 @@ export class Crosshairs extends foundry.canvas.placeables.MeasuredTemplate {
     }
     // Cleans up not-needed handlers
     _clearHandlers(event) {
-        this.template.destroy();
-        this._destroyed = true;
-        this.layer.preview.removeChild(this);
         this.inFlight = false;
-        canvas.stage.off('mousemove', this.activeMoveHandler);
-        canvas.stage.off('mousedown', this.activeLeftClickHandler);
+        canvas.stage.off('pointermove', this.activeMoveHandler);
+        canvas.stage.off('pointerdown', this.activeLeftClickHandler);
         canvas.app.view.onmousedown = null;
         canvas.app.view.onmouseup = null;
         canvas.app.view.onwheel = null;
         if (this.actorSheet) this.actorSheet.maximize();
-        canvas.mouseInteractionManager.reset({interactionData: true});
         this.layer.interactiveChildren = true;
+        setTimeout(() => {
+            if (this.template && !this.template.destroyed) this.template.destroy();
+            this._destroyed = true;
+            if (this.parent) this.layer.preview.removeChild(this);
+        }, 0);
     }
     // Wrap the template's computeShape function and fix sizing
     computeShape(crosshairs) {

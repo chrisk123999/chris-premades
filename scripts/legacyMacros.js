@@ -460,6 +460,8 @@ export {shadowWalk} from './macros/2014/classFeatures/sorcerer/shadowMagic/shado
 export {umbralForm} from './macros/2014/classFeatures/sorcerer/shadowMagic/umbralForm.js';
 export {channelDivinity} from './macros/2014/classFeatures/paladin/channelDivinity.js';
 export {guidedStrike} from './macros/2014/classFeatures/paladin/oathOfConquest/guidedStrike.js';
+export {adjustDensity} from './macros/2014/classFeatures/wizard/graviturgyMagic/adjustDensity.js';
+export {gravityWell} from './macros/2014/classFeatures/wizard/graviturgyMagic/gravityWell.js';
 // Race Features
 export {aasimarNecroticShroud, aasimarRadiantConsumption, aasimarRadiantSoul, celestialRevelation} from './macros/2014/raceFeatures/aasimar/celestialRevelation.js';
 export {acidBreathWeapon, coldBreathWeapon, fireBreathWeapon, lightningBreathWeapon, poisonBreathWeapon} from './macros/2014/raceFeatures/dragonborn/chromatic/breathWeapon.js';
