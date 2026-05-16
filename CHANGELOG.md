@@ -1,3 +1,35 @@
+# 1.5.32 Release:
+## Update Notes:
+- This is not a V14 update. An update for V14 is still a work in progress.
+## Bug Fixes:
+- Toll the Dead (Legacy and Modern)
+
+# 1.5.31 Release:
+## Update Notes:
+- This is not a V14 update. An update for V14 is still a work in progress.
+## New Legacy Content:
+- Adjust Density
+- Gravity Well
+## Bug Fixes:
+- Channel Divinity (Cleric, modern)
+- Arcane Ward
+- Tinker's Magic
+## API Update Notes
+- `CompendiumBrowser.select` has new filters, `compendium` and `systemIdentifier`.
+## API Bug Fixes:
+- An attempt at fixing the crosshairs class has been made. Ghost clicks shouldn't happen anymore (hopefully).
+
+# 1.5.30 Release:
+## Update Notes:
+- This is not a V14 update. An update for V14 is still a work in progress.
+## New Modern Content:
+- Arcane Recovery
+- Memorize Spell
+## Bug Fixes:
+- Channel Divinity (Cleric, modern)
+## API Bug Fixes:
+- The dialog app should no longer allow invalid selections on initial render for options with weights.
+
 # 1.5.29 Release:
 ## Update Notes:
 - This is not a V14 update. An update for V14 is still a work in progress.

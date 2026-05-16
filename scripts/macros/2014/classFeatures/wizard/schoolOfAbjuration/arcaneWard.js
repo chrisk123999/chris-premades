@@ -1,7 +1,9 @@
 import {activityUtils, dialogUtils, genericUtils, itemUtils, socketUtils, tokenUtils, workflowUtils} from '../../../../../utils.js';
 
 export async function arcaneWardHelper(item, ditem, token, targetToken) {
-    let hpDamage = ditem.damageDetail.reduce((acc, i) => acc + (i.properties.has('heal') ? 0 : i.value), 0) - ditem.oldTempHP;
+    if (!ditem.isHit) return;
+    let temp = ditem.oldTempHP * itemUtils.getConfig(item, 'tempFirst');
+    let hpDamage = ditem.damageDetail.reduce((acc, i) => acc + (i.properties.has('heal') ? 0 : i.value), 0) - temp;
     if (hpDamage <= 0) return;
     let uses = item.system.uses.value;
     if (!uses) return;
@@ -17,7 +19,7 @@ export async function arcaneWardHelper(item, ditem, token, targetToken) {
         await workflowUtils.completeItemUse(projectedWard);
     }
     await genericUtils.update(item, {'system.uses.spent': item.system.uses.spent + absorbed});
-    workflowUtils.setDamageItemDamage(ditem, remainingDamage + ditem.oldTempHP, false);
+    workflowUtils.setDamageItemDamage(ditem, remainingDamage + temp, false);
 }
 async function damageApplication({trigger: {entity: item}, ditem}) {
     await arcaneWardHelper(item, ditem);
@@ -62,6 +64,16 @@ export let arcaneWard = {
             pass: 'long',
             macro: longRest,
             priority: 50
+        }
+    ],
+    config: [
+        {
+            value: 'tempFirst',
+            label: 'CHRISPREMADES.Macros.ArcaneWard.TempHP',
+            type: 'checkbox',
+            default: false,
+            category: 'homebrew',
+            homebrew: true
         }
     ],
     ddbi: {

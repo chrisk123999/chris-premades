@@ -114,6 +114,20 @@ export class CompendiumBrowser {
                         min: values[0].min
                     };
                     break;
+                // custom arbitrary filters
+                case 'compendium':
+                    arbitrary({
+                        v: values.map(v => ({k: 'uuid', v, o: 'contains'})),
+                        o: 'OR'
+                    });
+                    break;
+                case 'systemIdentifier':
+                    arbitrary({
+                        k: 'system.identifier',
+                        v: new Set(values),
+                        o: 'in'
+                    });
+                    break;
                 // filter by any other data
                 case 'arbitrary':
                     filter.arbitrary.push(...values.map(v => ({
@@ -122,6 +136,10 @@ export class CompendiumBrowser {
                         o: v.operator
                     })));
                     break;
+            }
+            function arbitrary(data) {
+                if (options?.exclude) filter.arbitrary.push({v: data, o: 'NOT'});
+                else filter.arbitrary.push(data);
             }
         }
         let choices = await dnd5e.applications.CompendiumBrowser.select(config);

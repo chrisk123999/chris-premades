@@ -130,15 +130,8 @@ async function move({trigger, workflow}) {
     let selection = await dialogUtils.confirm(feature.name, genericUtils.format('CHRISPREMADES.Dialog.Use', {itemName: feature.name}));
     if (selection) await workflowUtils.completeItemUse(feature);
 }
-async function added({trigger: {entity: item, actor}}) {
-    let channelDivinity = itemUtils.getItemByIdentifier(actor, 'channelDivinity');
-    if (!channelDivinity) return;
-    let activity = activityUtils.getActivityByIdentifier(item, 'summon', {strict: true});
-    if (!activity) return;
-    let itemData = genericUtils.duplicate(item.toObject());
-    itemData.system.activities[activity.id].consumption.targets[0].target = channelDivinity.id;
-    let path = 'system.activities.' + activity.id + '.consumption.targets';
-    await genericUtils.update(item, {[path]: itemData.system.activities[activity.id].consumption.targets});
+async function added({trigger: {entity: item}}) {
+    await itemUtils.correctActivityItemConsumption(item, ['summon'], 'channelDivinity');
 }
 export let invokeDuplicity = {
     name: 'Invoke Duplicity',

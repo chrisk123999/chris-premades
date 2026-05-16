@@ -14,15 +14,8 @@ async function use({trigger, workflow}) {
     let darknessTemplates = workflow.template.parent.templates.filter(template => template.flags['chris-premades']?.template?.visibility?.magicalDarkness).filter(template => templateUtils.overlap(workflow.template, template));
     await genericUtils.deleteEmbeddedDocuments(workflow.template.parent, 'MeasuredTemplate', darknessTemplates.map(i => i.id));
 }
-async function added({trigger: {entity: item, actor}}) {
-    let channelDivinity = itemUtils.getItemByIdentifier(actor, 'channelDivinity');
-    if (!channelDivinity) return;
-    let activity = activityUtils.getActivityByIdentifier(item, 'use', {strict: true});
-    if (!activity) return;
-    let itemData = genericUtils.duplicate(item.toObject());
-    itemData.system.activities[activity.id].consumption.targets[0].target = channelDivinity.id;
-    let path = 'system.activities.' + activity.id + '.consumption.targets';
-    await genericUtils.update(item, {[path]: itemData.system.activities[activity.id].consumption.targets});
+async function added({trigger: {entity: item}}) {
+    await itemUtils.correctActivityItemConsumption(item, ['use'], 'channelDivinity');
 }
 export let radianceOfTheDawn = {
     name: 'Radiance of the Dawn',

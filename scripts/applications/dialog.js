@@ -223,6 +223,7 @@ export class DialogApp extends HandlebarsApplicationMixin(ApplicationV2) {
                         displayAsRows: inputOptions?.displayAsRows ?? false,
                         options: selectAmounts
                     });
+                    context.inputs[context.inputs.length - 1] = this.currentMaxAmounts(context.inputs[context.inputs.length - 1]);
                     break;
                 }
                 case 'selectMany': {

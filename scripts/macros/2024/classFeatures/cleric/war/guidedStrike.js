@@ -21,22 +21,8 @@ async function selfAttack({trigger: {entity: item}, workflow}) {
     let attackBonus = itemUtils.getConfig(item, 'attackBonus');
     await workflowUtils.bonusAttack(workflow, String(attackBonus));
 }
-async function added({trigger: {entity: item, actor}}) {
-    let channelDivinity = itemUtils.getItemByIdentifier(actor, 'channelDivinity');
-    if (!channelDivinity) return;
-    let activity = activityUtils.getActivityByIdentifier(item, 'use', {strict: true});
-    if (!activity) return;
-    let selfActivity = activityUtils.getActivityByIdentifier(item, 'selfUse', {strict: true});
-    if (!selfActivity) return;
-    let itemData = genericUtils.duplicate(item.toObject());
-    itemData.system.activities[activity.id].consumption.targets[0].target = channelDivinity.id;
-    itemData.system.activities[selfActivity.id].consumption.targets[0].target = channelDivinity.id;
-    let path = 'system.activities.' + activity.id + '.consumption.targets';
-    let selfPath = 'system.activities.' + selfActivity.id + '.consumption.targets';
-    await genericUtils.update(item, {
-        [path]: itemData.system.activities[activity.id].consumption.targets,
-        [selfPath]: itemData.system.activities[selfActivity.id].consumption.targets
-    });
+async function added({trigger: {entity: item}}) {
+    await itemUtils.correctActivityItemConsumption(item, ['use', 'selfUse'], 'channelDivinity');
 }
 export let guidedStrike = {
     name: 'Guided Strike',

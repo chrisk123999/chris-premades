@@ -525,6 +525,9 @@ export {swaggerStreak} from './macros/2024/classFeatures/pugilist/swaggerStreak.
 // Squared Circle
 export {groundwork} from './macros/2024/classFeatures/pugilist/squaredCircle/groundwork.js';
 export {meatShield} from './macros/2024/classFeatures/pugilist/squaredCircle/meatShield.js';
+// Wizard
+export {arcaneRecovery} from './macros/2024/classFeatures/wizard/arcaneRecovery.js';
+export {memorizeSpell} from './macros/2024/classFeatures/wizard/memorizeSpell.js';
 // Multiple
 export {evasion} from './macros/2024/classFeatures/multiple/evasion.js';
 // Monster Features

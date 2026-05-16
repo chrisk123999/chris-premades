@@ -120,16 +120,12 @@ async function selectCompendium(settingKey, type) {
     let oldKey = genericUtils.getCPRSetting(settingKey);
     let compendiums = game.packs.filter(i => i.metadata.type === type);
     let inputs = compendiums.map(i => {
-        let source;
+        let source = {};
         let data = i.metadata;
         if (compendiums.filter(c => c.title === i.title).length > 1)
-            switch (data.packageType) {
-                case 'system': source = data.flags?.dnd5e?.sourceBook || game.system.title; break;
-                case 'module': source = game.modules.get(data.packageName)?.title; break;
-                case 'world': source = game.world.title; break;
-            }
+            dnd5e.dataModels.shared.SourceField.prepareData.call(source, 'Compendium.' + data.id);
         return {
-            label: data.label + (source ? ` [${source}]` : ''),
+            label: data.label + (source.value ? ` [${source.value}]` : ''),
             name: data.id,
             options: {isChecked: oldKey === data.id}
         };

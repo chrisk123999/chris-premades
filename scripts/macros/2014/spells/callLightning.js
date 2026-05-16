@@ -1,19 +1,15 @@
-import {activityUtils, actorUtils, compendiumUtils, constants, dialogUtils, effectUtils, errors, genericUtils, itemUtils, workflowUtils} from '../../../utils.js';
-
+import {activityUtils, actorUtils, dialogUtils, effectUtils, itemUtils, workflowUtils} from '../../../utils.js';
 async function use({workflow}) {
     let storming = await dialogUtils.confirm(workflow.item.name, 'CHRISPREMADES.Macros.CallLightning.Storming');
     let castLevel = workflowUtils.getCastLevel(workflow);
     if (storming) castLevel += 1;
     let feature = activityUtils.getActivityByIdentifier(workflow.item, 'stormBolt', {strict: true});
-    if (!feature) {
-        let concentrationEffect = await effectUtils.getConcentrationEffect(workflow.actor, workflow.item);
-        if (concentrationEffect) await genericUtils.remove(concentrationEffect);
-        return;
-    }
+    let concentrationEffect = await effectUtils.getConcentrationEffect(workflow.actor, workflow.item);
+    if (!feature) return;
     let effectData = {
         name: workflow.item.name,
         img: workflow.item.img,
-        origin: workflow.item.uuid,
+        origin: concentrationEffect.uuid ?? workflow.item.uuid,
         duration: itemUtils.convertDuration(workflow.item),
         flags: {
             'chris-premades': {

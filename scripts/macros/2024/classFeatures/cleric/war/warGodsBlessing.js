@@ -82,15 +82,8 @@ async function cast({trigger, workflow}) {
     }
     if (effect) genericUtils.remove(effect);
 }
-async function added({trigger: {entity: item, actor}}) {
-    let channelDivinity = itemUtils.getItemByIdentifier(actor, 'channelDivinity');
-    if (!channelDivinity) return;
-    let activity = activityUtils.getActivityByIdentifier(item, 'use', {strict: true});
-    if (!activity) return;
-    let itemData = genericUtils.duplicate(item.toObject());
-    itemData.system.activities[activity.id].consumption.targets[0].target = channelDivinity.id;
-    let path = 'system.activities.' + activity.id + '.consumption.targets';
-    await genericUtils.update(item, {[path]: itemData.system.activities[activity.id].consumption.targets});
+async function added({trigger: {entity: item}}) {
+    await itemUtils.correctActivityItemConsumption(item, ['use'], 'channelDivinity');
 }
 export let warGodsBlessing = {
     name: 'War God\'s Blessing',

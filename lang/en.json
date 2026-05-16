@@ -223,8 +223,8 @@
             "IgnoredCreatureTypes": "Ignored Creature Types:",
             "ImmuneCreatures": "Immune Creature Types:",
             "ItemDelete": "GM Confirms Item Deletion:",
-            "Items": "Items:",
             "ItemTypes": "Item Types:",
+            "Items": "Items:",
             "LineColor": "Line Color:",
             "Max": "Max:",
             "MaxLevel": "Max Level:",
@@ -868,8 +868,8 @@
             },
             "AdventurersAtlas": {
                 "Enforce5ft": "Enforce Touch Range:",
-                "RequireTools": "Require Cartographer's Tools:",
                 "NeedTools": "You must have Cartographer's Tools to use {itemName}!",
+                "RequireTools": "Require Cartographer's Tools:",
                 "Use": "Use {itemName}? (Max Targets: {maxAmount}, Min Targets: {minAmount})"
             },
             "AgonizingBlast": {
@@ -914,11 +914,16 @@
                 "Heal": "Heal",
                 "WhoHeal": "Who to heal?"
             },
+            "ArcaneRecovery": {
+                "Context": "You can recover a combined total of {totalSlots} spell slot levels.",
+                "Slot": "Level {slot} Slots"
+            },
             "ArcaneVigor": {
                 "Choose": "Select hit dice to use:"
             },
             "ArcaneWard": {
-                "Protect": "Protect {tokenName} with your arcane ward?"
+                "Protect": "Protect {tokenName} with your arcane ward?",
+                "TempHP": "Consume Temp HP First:"
             },
             "ArmorOfAgathys": {
                 "Reflect": "Armor of Agathys: Reflect"
@@ -1462,11 +1467,11 @@
             "EmboldeningBond": {
                 "Bonus": "Emboldening Bond Bonus",
                 "Protective": "Protective Bond",
-                "ProtectiveDamage": "Protective Bond: Damage",
-                "ProtectiveTitle": "Protective Bond: Protect Target?",
                 "ProtectiveChooseAlly": "Ask an ally to protect you?",
+                "ProtectiveConfig": "Prompt damaged target instead of allies:",
+                "ProtectiveDamage": "Protective Bond: Damage",
                 "ProtectivePrompt": "{targetName} was damaged and triggered {featureName}. Spend your reaction to teleport and take their damage?",
-                "ProtectiveConfig": "Prompt damaged target instead of allies:"
+                "ProtectiveTitle": "Protective Bond: Protect Target?"
             },
             "Engulf": {
                 "Center": "Center Token:",
@@ -1630,9 +1635,9 @@
                 "Name": "Generic Teleport"
             },
             "GhaalShaarat": {
-                "RequireTools": "Require Smith's Tools:",
                 "NeedTools": "You must have Smith's Tools to use {itemName}!",
-                "NoWeapons": "No simple or martial melee weapons found!"
+                "NoWeapons": "No simple or martial melee weapons found!",
+                "RequireTools": "Require Smith's Tools:"
             },
             "Grapple": {
                 "ChooseSkill": "How would you like to contest the grapple?",
@@ -1648,6 +1653,9 @@
             },
             "GraspOfHadar": {
                 "Select": "Which target?"
+            },
+            "GravityWell": {
+                "Move": "Use {item} to move {token}?"
             },
             "Grease": {
                 "Fall": "Grease: Fall"
@@ -1970,23 +1978,23 @@
             },
             "MagicItemPlan": {
                 "Choose": "Choose Magic Item Plan:",
-                "ChooseSwapPlan": "Choose Magic Item Plan to swap out",
                 "ChooseNewPlan": ", or choose 'None' to make a new plan.",
+                "ChooseSwapPlan": "Choose Magic Item Plan to swap out",
                 "ItemName": "Magic Item Plan",
                 "Max": "You have already prepared the maximum number of plans! ({count} of {max})",
                 "NotPrepared": "(NOT PREPARED)",
                 "NotPreparedPrompt": "Your plans for these items are not prepared: {itemList}. Please use the {activityName} activity on each."
             },
             "MagicItemTinker": {
-                "NoItems": "No items available!",
-                "NoSpell": "No Benefit",
                 "ChargePrompt": "Choose an item to recharge:",
                 "DeletePrompt": "Delete {itemName} to grant a {spellSlot}?",
-                "DrainPrompt": "Choose an item to drain and gain a spell slot:",
                 "DrainCommon": "Drain Common Item",
-                "DrainUncommon": "Drain Uncommon Item",
+                "DrainPrompt": "Choose an item to drain and gain a spell slot:",
                 "DrainRare": "Drain Rare Item",
+                "DrainUncommon": "Drain Uncommon Item",
                 "DrainVeryRare": "Drain Very Rare Item",
+                "NoItems": "No items available!",
+                "NoSpell": "No Benefit",
                 "TransmutePrompt": "Choose an item to transmute into another magic item:"
             },
             "MagicMissile": {
@@ -2054,6 +2062,10 @@
                 "NoNearby": "No nearby targets to grasp!",
                 "Overtime": "Maximilian's Earthen Grasp: Break Free",
                 "Select": "Select a target to grasp:"
+            },
+            "MemorizeSpell": {
+                "Prepare": "Select a spell to prepare:",
+                "Unprepare": "Select a spell to unprepare:"
             },
             "MetallicBreathWeapon": {
                 "Enervating": "Enervating Breath",
@@ -2415,16 +2427,16 @@
                 "InvalidTarget": "Target must be Haunted!",
                 "ReapingScythe": "Reaping Scythe (Reaper Spirit)"
             },
-            "SpiritTotem": {
-                "HawkAttack": "Spend your reaction to grant advantage to this attack roll?",
-                "UnicornCheck": "Is this roll for detecting a creature within a Unicorn Spirit Totem aura?"
-            },
             "SpiritShield": {
                 "Damage": "Use {item} to reduce the damage dealt to {name}?"
             },
             "SpiritShroud": {
                 "Hit": "Spirit Shroud: Hit",
                 "Slow": "Spirit Shroud: Slow"
+            },
+            "SpiritTotem": {
+                "HawkAttack": "Spend your reaction to grant advantage to this attack roll?",
+                "UnicornCheck": "Is this roll for detecting a creature within a Unicorn Spirit Totem aura?"
             },
             "SpiritualWeapon": {
                 "Attack": "Spiritual Weapon: Attack",
@@ -2630,8 +2642,8 @@
                 "Skill": "This check relies on sight and the creature is in sunlight"
             },
             "SuperiorAtlas": {
-                "Prompt": "Use {itemName}?<br>Destroy your map to have {newHP} HP and teleport next to your choice of the following targets:",
-                "HaveMap": "You must hold an Adventurer's Atlas to use this feature!"
+                "HaveMap": "You must hold an Adventurer's Atlas to use this feature!",
+                "Prompt": "Use {itemName}?<br>Destroy your map to have {newHP} HP and teleport next to your choice of the following targets:"
             },
             "SupremeSneak": {
                 "TurnEnd": "Have you ended your turn behind Three-Quarters Cover or Total Cover?"
@@ -2703,17 +2715,17 @@
                 "Name": "Time Trigger"
             },
             "TinkersMagic": {
-                "LimitList": "Limit items to rules list:",
+                "CustomCompendium": "Custom Mundane Item Compendium:",
+                "NeedTools": "You must have Tinker's Tools to use {itemName}!",
                 "Prompt": "Choose {itemName} Item:",
-                "RequireTools": "Require Tinker's Tools:",
-                "NeedTools": "You must have Tinker's Tools to use {itemName}!"
+                "RequireTools": "Require Tinker's Tools:"
+            },
+            "TokensOfTheDeparted": {
+                "MustSpend": "{feature} has no uses remaining. You must spend {name} to activate it.",
+                "Spend": "Spend {name} to use {feature} without consuming uses?"
             },
             "TouchDamage": {
                 "Name": "Touch Damage"
-            },
-            "TokensOfTheDeparted": {
-                "Spend": "Spend {name} to use {feature} without consuming uses?",
-                "MustSpend": "{feature} has no uses remaining. You must spend {name} to activate it."
             },
             "Transform": {
                 "Name": "Transform",

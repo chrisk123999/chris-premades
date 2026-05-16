@@ -20,23 +20,8 @@ async function use({trigger, workflow}) {
     }
     if (combatUtils.inCombat()) if (workflow.targets.size) await Promise.all(workflow.targets.map(async token => await actorUtils.setReactionUsed(token.actor)));
 }
-async function added({trigger: {entity: item, identifier, actor}}) {
-    let bardicInspiration = itemUtils.getItemByIdentifier(actor, 'bardicInspiration');
-    if (!bardicInspiration) return;
-    let activity = activityUtils.getActivityByIdentifier(item, 'use');
-    if (!activity) return;
-    let path = 'system.activities.' + activity.id + '.consumption.targets';
-    await genericUtils.update(item, {[path]: [
-        {
-            type: 'itemUses',
-            value: 1,
-            target: bardicInspiration.id,
-            scaling: {
-                mode: undefined,
-                formula: undefined
-            }
-        }
-    ]});
+async function added({trigger: {entity: item}}) {
+    await itemUtils.correctActivityItemConsumption(item, ['use'], 'bardicInspiration');
 }
 export let inspiringMovement = {
     name: 'Inspiring Movement',
