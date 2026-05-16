@@ -1,3 +1,9 @@
+# 1.5.32 Release:
+## Update Notes:
+- This is not a V14 update. An update for V14 is still a work in progress.
+## Bug Fixes:
+- Toll the Dead (Legacy and Modern)
+
 # 1.5.31 Release:
 ## Update Notes:
 - This is not a V14 update. An update for V14 is still a work in progress.
