@@ -3,6 +3,8 @@
 - This is not a V14 update. An update for V14 is still a work in progress.
 ## Bug Fixes:
 - Toll the Dead (Legacy and Modern)
+- Haymaker
+- School of Hard Knocks
 
 # 1.5.31 Release:
 ## Update Notes:

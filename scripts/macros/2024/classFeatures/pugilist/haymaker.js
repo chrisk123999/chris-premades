@@ -18,8 +18,8 @@ async function hit({trigger: {entity: item}, workflow}) {
     if (workflow.hitTargets.size) {
         let moxie = itemUtils.getItemByIdentifier(workflow.actor, 'moxie');
         if (moxie) await genericUtils.update(moxie, {'system.uses.spent': moxie.system.uses.spent - 1});
-        let rolls = workflow.damageRolls.map(async d => await rollUtils.damageRoll(d.formula, workflow.actor, d.options, {maximize: true}));
-        await workflow.setDamageRolls(rolls);
+        await Promise.all(workflow.damageRolls.map(async (roll, i, rolls) => rolls[i] = await roll.reroll({maximize: true})));
+        await workflow.setDamageRolls(workflow.damageRolls);
     }
     await genericUtils.remove(haymaker);
 }
