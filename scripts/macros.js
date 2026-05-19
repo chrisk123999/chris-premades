@@ -523,7 +523,9 @@ export {schoolOfHardKnocks, schoolOfHardKnocksEndanger} from './macros/2024/clas
 export {shakeItOff} from './macros/2024/classFeatures/pugilist/shakeItOff.js';
 export {swaggerStreak} from './macros/2024/classFeatures/pugilist/swaggerStreak.js';
 // Squared Circle
+export {cleanFinish} from './macros/2024/classFeatures/pugilist/squaredCircle/cleanFinish.js';
 export {groundwork} from './macros/2024/classFeatures/pugilist/squaredCircle/groundwork.js';
+export {heavyweight} from './macros/2024/classFeatures/pugilist/squaredCircle/heavyweight.js';
 export {meatShield} from './macros/2024/classFeatures/pugilist/squaredCircle/meatShield.js';
 // Wizard
 export {arcaneRecovery} from './macros/2024/classFeatures/wizard/arcaneRecovery.js';

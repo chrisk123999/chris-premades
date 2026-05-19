@@ -1,12 +1,13 @@
 import {DialogApp} from '../../../../applications/dialog.js';
-import {constants, activityUtils, dialogUtils, genericUtils, itemUtils, workflowUtils} from '../../../../utils.js';
-
+import {constants, activityUtils, dialogUtils, genericUtils, itemUtils, workflowUtils, tokenUtils} from '../../../../utils.js';
 async function hit({trigger: {entity: item}, workflow}) {
     if (workflow.hitTargets.size !== 1) return;
     if (!workflowUtils.isAttackType(workflow, 'attack')) return;
+    let targetToken = workflow.targets.first();
+    if (targetToken.actor.system.attributes.hp.value <= 0 && !itemUtils.getConfig(item, 'promptOnDefeated')) return;
+    if (tokenUtils.isGrappledBy(targetToken, workflow.token) && !itemUtils.getConfig(item, 'promptAlreadyGrappled')) return;
     let unarmedStrikeItem = workflow.item;
     if (!constants.unarmedAttacks.includes(genericUtils.getIdentifier(unarmedStrikeItem))) return;
-    let targetToken = workflow.targets.first();
     let grapple = activityUtils.getActivityByIdentifier(unarmedStrikeItem, 'grapple', {strict: true});
     let shovePush = activityUtils.getActivityByIdentifier(unarmedStrikeItem, 'shovePush', {strict: true});
     let shoveProne = activityUtils.getActivityByIdentifier(unarmedStrikeItem, 'shoveProne', {strict: true});
@@ -77,5 +78,21 @@ export let heavyHitter = {
                 priority: 50
             }
         ]
-    }
+    },
+    config: [
+        {
+            value: 'promptOnDefeated',
+            label: 'CHRISPREMADES.Macros.HeavyHitter.PromptDefeated',
+            type: 'checkbox',
+            default: true,
+            category: 'mechanics'
+        },
+        {
+            value: 'promptAlreadyGrappled',
+            label: 'CHRISPREMADES.Macros.HeavyHitter.PromptGrappled',
+            type: 'checkbox',
+            default: true,
+            category: 'mechanics'
+        }
+    ]
 };

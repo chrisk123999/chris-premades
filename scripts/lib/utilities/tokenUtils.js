@@ -178,7 +178,8 @@ async function grappleHelper(sourceToken, targetToken, item, {noContest = false,
         return;
     }
     if (!ignoreSizeLimit) {
-        if (actorUtils.getSize(targetToken.actor) > (actorUtils.getSize(sourceActor) + 1)) {
+        let heavy = !!itemUtils.getItemByIdentifier(sourceActor, 'heavyweight');
+        if (actorUtils.getSize(targetToken.actor) > (actorUtils.getSize(sourceActor) + 1 + heavy)) {
             genericUtils.notify('CHRISPREMADES.Macros.Grapple.Size', 'info');
             return;
         }
@@ -254,6 +255,11 @@ async function grappleHelper(sourceToken, targetToken, item, {noContest = false,
     }
     effectUtils.addMacro(sourceEffectData, 'death', ['grapple']);
     effectUtils.addMacro(targetEffectData, 'death', ['grapple']);
+    let cleanFinish = itemUtils.getItemByIdentifier(sourceActor, 'cleanFinish');
+    if (cleanFinish) {
+        genericUtils.setProperty(targetEffectData, 'flags.chris-premades.cleanFinish', cleanFinish.uuid);
+        effectUtils.addMacro(targetEffectData, 'combat', ['cleanFinishCombatTurn']);
+    }
     let grappler = itemUtils.getItemByIdentifier(sourceActor, 'grappler');
     let pinData = itemUtils.getItemByIdentifier(sourceActor, 'grapplerPin');
     if (grappler && genericUtils.getRules(grappler) === 'modern') grappler = undefined;

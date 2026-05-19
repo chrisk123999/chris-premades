@@ -1,11 +1,12 @@
-import {activityUtils, actorUtils, dialogUtils, effectUtils, socketUtils, tokenUtils, workflowUtils} from '../../../../utils.js';
+import {activityUtils, actorUtils, dialogUtils, effectUtils, genericUtils, itemUtils, socketUtils, tokenUtils, workflowUtils} from '../../../../utils.js';
 async function grapple({trigger, workflow}) {
     if (!workflow.targets.size) return;
     let size = actorUtils.getSize(workflow.actor, false);
+    if (itemUtils.getItemByIdentifier(workflow.actor, 'heavyweight')) size++;
     let dexTargets = [];
     let strTargets = [];
     await Promise.all(workflow.targets.map(async token => {
-        if (actorUtils.getSize(token.actor, false) > (size + 1)) return;
+        if (actorUtils.getSize(token.actor, false) > (size + 1)) return genericUtils.notify('CHRISPREMADES.Macros.Grapple.Size', 'info');
         let selection = await dialogUtils.buttonDialog(workflow.item.name, 'CHRISPREMADES.UnarmedStrike.GrappleContest', [['DND5E.AbilityStr', 'str'], ['DND5E.AbilityDex', 'dex']], {displayAsRows: true, userId: socketUtils.firstOwner(token.actor, true)});
         if (!selection || selection === 'dex') {
             dexTargets.push(token);
@@ -31,10 +32,11 @@ async function grapple({trigger, workflow}) {
 async function shove({trigger, workflow}) {
     if (!workflow.targets.size) return;
     let size = actorUtils.getSize(workflow.actor, false);
+    if (itemUtils.getItemByIdentifier(workflow.actor, 'heavyweight')) size++;
     let dexTargets = [];
     let strTargets = [];
     await Promise.all(workflow.targets.map(async token => {
-        if (actorUtils.getSize(token.actor, false) > (size + 1)) return;
+        if (actorUtils.getSize(token.actor, false) > (size + 1)) return genericUtils.notify('CHRISPREMADES.Macros.Shove.Big', 'info');
         let selection = await dialogUtils.buttonDialog(workflow.item.name, 'CHRISPREMADES.UnarmedStrike.ShoveContest', [['DND5E.AbilityStr', 'str'], ['DND5E.AbilityDex', 'dex']], {displayAsRows: true, userId: socketUtils.firstOwner(token.actor, true)});
         if (!selection || selection === 'dex') {
             dexTargets.push(token);

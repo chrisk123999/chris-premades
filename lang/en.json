@@ -1746,6 +1746,10 @@
                 "Pulse": "Heat Metal: Pulse",
                 "Unable": "Unable (Armor)"
             },
+            "HeavyHitter": {
+                "PromptDefeated": "Prompt on defeated targets:",
+                "PromptGrappled": "Prompt on grappled targets:"
+            },
             "HeightenedFocus": {
                 "BringAlly": "Bring an ally with you?"
             },

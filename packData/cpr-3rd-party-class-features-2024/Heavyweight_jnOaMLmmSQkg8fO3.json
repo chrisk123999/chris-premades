@@ -1,0 +1,54 @@
+{
+  "name": "Heavyweight",
+  "type": "feat",
+  "effects": [],
+  "system": {
+    "activities": {},
+    "uses": {
+      "spent": 0,
+      "recovery": [],
+      "max": ""
+    },
+    "advancement": [],
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "identifier": "heavyweight",
+    "source": {
+      "book": "TPC",
+      "page": "",
+      "license": "",
+      "custom": "",
+      "rules": "2024",
+      "revision": 1
+    },
+    "crewed": false,
+    "enchant": {},
+    "prerequisites": {
+      "items": [],
+      "level": 11,
+      "repeatable": false
+    },
+    "properties": [],
+    "requirements": "",
+    "type": {
+      "value": "class",
+      "subtype": ""
+    }
+  },
+  "flags": {
+    "chris-premades": {
+      "info": {
+        "identifier": "heavyweight",
+        "rules": "modern",
+        "version": "1.5.32",
+        "source": "chris-premades"
+      }
+    }
+  },
+  "img": "icons/skills/social/trading-injustice-scale-gray.webp",
+  "folder": "JGcYTvnOCmm9pcrX",
+  "_id": "jnOaMLmmSQkg8fO3",
+  "_key": "!items!jnOaMLmmSQkg8fO3"
+}

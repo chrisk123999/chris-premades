@@ -210,6 +210,7 @@ export {carefulSpell, distantSpell, empoweredSpell, extendedSpell, heightenedSpe
 export {charmAnimalsAndPlants} from './macros/2014/classFeatures/cleric/natureDomain/charmAnimalsAndPlants.js';
 export {circleForms} from './macros/2014/classFeatures/druid/circleOfTheMoon/circleForms.js';
 export {circleOfMortality} from './macros/2014/classFeatures/cleric/graveDomain/circleOfMortality.js';
+export {cleanFinishCombatTurn} from './macros/2024/classFeatures/pugilist/squaredCircle/cleanFinish.js';
 export {colossusSlayer} from './macros/2014/classFeatures/ranger/hunter/colossusSlayer.js';
 export {controlUndead, controlUndeadControlled} from './macros/2014/classFeatures/paladin/oathbreaker/controlUndead.js';
 export {controlledSurge} from './macros/2014/classFeatures/barbarian/wildMagic/controlledSurge.js';

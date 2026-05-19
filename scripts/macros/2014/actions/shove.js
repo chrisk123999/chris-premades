@@ -1,10 +1,11 @@
-import {actorUtils, dialogUtils, effectUtils, genericUtils, rollUtils, socketUtils, tokenUtils} from '../../../utils.js';
+import {actorUtils, dialogUtils, effectUtils, genericUtils, itemUtils, rollUtils, socketUtils, tokenUtils} from '../../../utils.js';
 async function use({trigger, workflow}) {
     if (workflow.targets.size != 1) return;
     let skipCheck = false;
     let targetToken = workflow.targets.first();
     if (workflow.actor.uuid === targetToken.actor.uuid) return;
-    if ((actorUtils.getSize(targetToken.actor)) > (actorUtils.getSize(workflow.actor) + 1)) {
+    let heavy = !!itemUtils.getItemByIdentifier(workflow.actor, 'heavyweight');
+    if ((actorUtils.getSize(targetToken.actor)) > (actorUtils.getSize(workflow.actor) + 1 + heavy)) {
         genericUtils.notify('CHRISPREMADES.Macros.Shove.Big', 'info');
         return;
     }

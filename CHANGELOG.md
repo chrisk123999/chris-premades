@@ -1,11 +1,16 @@
 # 1.5.32 Release:
 ## Update Notes:
 - This is not a V14 update. An update for V14 is still a work in progress.
+## New Modern Content:
+- Heavyweight
+- Clean Finish
 ## Bug Fixes:
 - Toll the Dead (Legacy and Modern)
 - Haymaker
 - School of Hard Knocks
 - Guardian of Faith (modern)
+- Fisticuffs
+- Heavy Hitter
 
 # 1.5.31 Release:
 ## Update Notes:
