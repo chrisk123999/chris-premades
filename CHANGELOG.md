@@ -5,6 +5,7 @@
 - Toll the Dead (Legacy and Modern)
 - Haymaker
 - School of Hard Knocks
+- Guardian of Faith (modern)
 
 # 1.5.31 Release:
 ## Update Notes:
