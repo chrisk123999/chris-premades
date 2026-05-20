@@ -282,6 +282,9 @@ export {superiorAtlas, superiorAtlasEffect} from './macros/2024/classFeatures/ar
 export {ghaalShaarat, upgradeGhaalShaarat} from './macros/2024/classFeatures/artificer/forgeAdept/ghaalshaarat.js';
 export {perfectWeapon} from './macros/2024/classFeatures/artificer/forgeAdept/perfectWeapon.js';
 export {runesOfWar, runesOfWarAura, runesOfWarDamage} from './macros/2024/classFeatures/artificer/forgeAdept/runesOfWar.js';
+// Armorer
+export {arcaneArmor} from './macros/2024/classFeatures/artificer/armorer/arcaneArmor.js';
+export {armorModel, armorModelForceDemolisher, armorModelLightningLauncher, armorModelthunderPulseEffect} from './macros/2024/classFeatures/artificer/armorer/armorModel.js';
 // Barbarian
 export {rage, rageRaging, rageUpkeep} from './macros/2024/classFeatures/barbarian/rage.js';
 export {unarmoredDefenseBarbarian} from './macros/2024/classFeatures/barbarian/unarmoredDefense.js';

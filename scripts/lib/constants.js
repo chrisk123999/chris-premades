@@ -31,7 +31,8 @@ let featurePacks = {
     featFeatures: 'chris-premades.CPRFeatFeatures'
 };
 let modernFeaturePacks = {
-    summonFeatures: 'chris-premades.CPRSummonFeatures2024'
+    summonFeatures: 'chris-premades.CPRSummonFeatures2024',
+    classFeatureItems: 'chris-premades.CPRClassFeatureItems2024'
 };
 let legacyPacks = {
     spells: 'chris-premades.CPRSpells',
@@ -121,6 +122,7 @@ function setUseLocalCompendium(value) {
         packs.otherFeatures =  'world.cpr-other-features';
         modernPacks.thirdPartyFeats = 'world.cpr-3rd-party-feats-2024';
         modernPacks.thirdPartyItems = 'world.cpr-3rd-party-items-2024';
+        modernFeaturePacks.classFeatureItems = 'world.cpr-class-feature-items-2024';
     } else {
         packs.spellFeatures = 'chris-premades.CPRSpellFeatures';
         featurePacks.spellFeatures = 'chris-premades.CPRSpellFeatures';
@@ -162,6 +164,7 @@ function setUseLocalCompendium(value) {
         packs.otherFeatures = 'chris-premades.CPROtherFeatures';
         modernPacks.thirdPartyFeats = 'chris-premades.CPRThirdPartyFeats2024';
         modernPacks.thirdPartyItems = 'chris-premades.CPRThirdPartyItems2024';
+        modernFeaturePacks.classFeatureItems = 'chris-premades.CPRClassFeatureItems2024';
     }
 }
 const attacks = [

@@ -371,6 +371,13 @@
       "path": "packs/cpr-3rd-party-items-2024",
       "type": "Item",
       "module": "chris-premades"
+    },
+    {
+      "name": "CPRClassFeatureItems2024",
+      "label": "CPR Class Feature Items (2024)",
+      "path": "packs/cpr-class-feature-items-2024",
+      "type": "Item",
+      "module": "chris-premades"
     }
   ],
   "packFolders": [
@@ -422,7 +429,8 @@
             "CPRThirdPartySpells2024",
             "CPRSpeciesFeatures2024",
             "CPRThirdPartyFeats2024",
-            "CPRThirdPartyItems2024"
+            "CPRThirdPartyItems2024",
+            "CPRClassFeatureItems2024"
           ]
         }
       ],

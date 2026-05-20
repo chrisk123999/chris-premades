@@ -211,6 +211,7 @@
             "DisplayHint": "Display Hint:",
             "Distance": "Distance:",
             "DurationSeconds": "Duration (Seconds):",
+            "Enable3rdPartyReaction": "Enable 3rd Party Reaction:",
             "EnablePrompt": "Enable Reaction Prompt:",
             "Expire": "Expiration:",
             "FailedSave": "Failed Save:",
@@ -315,6 +316,7 @@
             "UseName": "Use {itemName} [{tokenName}]?",
             "UseOn": "Use {itemName} on {tokenName}?",
             "UseRollTotal": "Use {itemName}? (Roll Total: {rollTotal})",
+            "UseRollTotalBy": "Use {itemName} for {name}? (Roll Total: {rollTotal})",
             "UseRollTotalDetail": "Use {itemName} for an extra {bonusFormula}? (Roll Total: {rollTotal})",
             "UseWeaponDamageExtra": "Use {itemName} for an extra {bonusFormula}?",
             "UseWeaponDamageTotal": "Use {itemName}? (Weapon Damage: {damageTotal})",
@@ -908,6 +910,9 @@
             "ArcaneAbjuration": {
                 "Plane": "Is {name} away from its plane of origin?"
             },
+            "ArcaneArmor": {
+                "Select": "Select armor to become you Arcane Armor:"
+            },
             "ArcaneJolt": {
                 "Harm": "Harm",
                 "HarmOrHeal": "Arcane Jolt: Harm or Heal?",
@@ -924,6 +929,21 @@
             "ArcaneWard": {
                 "Protect": "Protect {tokenName} with your arcane ward?",
                 "TempHP": "Consume Temp HP First:"
+            },
+            "ArmorModel": {
+                "LightningLauncher": {
+                    "Use": "Apply extra lightning damage?"
+                },
+                "Model": {
+                    "dreadnaught": "Force Demolisher",
+                    "guardian": "Thunder Pulse",
+                    "infiltrator": "Lightning Launcher"
+                },
+                "Pull10": "Pull 10 ft.",
+                "Pull5": "Pull 5 ft.",
+                "Push10": "Push 10 ft.",
+                "Push5": "Push 5 ft.",
+                "PushPull": "Push or pull the target?"
             },
             "ArmorOfAgathys": {
                 "Reflect": "Armor of Agathys: Reflect"

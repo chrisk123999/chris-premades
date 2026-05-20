@@ -92,7 +92,7 @@ function unhideActivities(effect) {
             if (unhideFlags.favorite) favorites[actorUuid] = (favorites[actorUuid] ?? new Set([])).union(activityIdentifiers.map(i => activityUtils.getActivityByIdentifier(item, i)).filter(i => i));
         }
         for (let [uuid, faves] of Object.entries(favorites)) {
-            await actorUtils.addFavorites(fromUuidSync(uuid), Array.from(faves), 'activity');
+            await actorUtils.addFavorites(fromUuidSync(uuid), Array.from(faves));
         }
     });
 }
@@ -117,7 +117,7 @@ function rehideActivities(effect) {
             if (unhideFlags.favorite) favorites[actorUuid] = (favorites[actorUuid] ?? new Set([])).union(activityIdentifiers.map(i => activityUtils.getActivityByIdentifier(item, i)).filter(i => i));
         }
         for (let [uuid, faves] of Object.entries(favorites)) {
-            await actorUtils.removeFavorites(fromUuidSync(uuid), Array.from(faves), 'activity');
+            await actorUtils.removeFavorites(fromUuidSync(uuid), Array.from(faves));
         }
     });
 }

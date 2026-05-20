@@ -1,9 +1,7 @@
 import {dialogUtils, genericUtils, itemUtils, rollUtils, workflowUtils} from '../../../../utils.js';
 async function check({trigger: {entity: item, roll, actor, options}}) {
     let targetValue = roll.options.target;
-    if (targetValue) {
-        if (roll.total >= targetValue) return;
-    }
+    if (targetValue && roll.total >= targetValue) return;
     let secondWind = itemUtils.getItemByIdentifier(actor, 'secondWind');
     if (!secondWind?.system?.uses?.value) return;
     let classIdentifier = itemUtils.getConfig(item, 'classIdentifier');

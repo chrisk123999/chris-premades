@@ -4,6 +4,12 @@
 ## New Modern Content:
 - Heavyweight
 - Clean Finish
+- Arcane Armor
+- Armor Model
+## New Legacy Content:
+- Chronal Shift
+- Temporal Awareness
+- Momentary Stasis
 ## Bug Fixes:
 - Toll the Dead (Legacy and Modern)
 - Haymaker
