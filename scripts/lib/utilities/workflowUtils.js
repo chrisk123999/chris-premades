@@ -178,33 +178,26 @@ function preventDeath(ditem) {
     ditem.damageDetail.forEach(i => i.value = 0);
     ditem.damageDetail[0].value = ditem.totalDamage;
 }
-function modifyDamageAppliedFlat(ditem, modificationAmount) {
-    // We're gonna just assume this isn't healing, only damage
-    if (modificationAmount < 0) {
-        modificationAmount = Math.max(modificationAmount, -ditem.hpDamage - ditem.tempDamage);
-        // if (Math.abs(modificationAmount) > ditem.hpDamage) {
-        //     ditem.hpDamage = 0;
-        //     let tempMod = modificationAmount + ditem.hpDamage;
-        //     ditem.tempDamage += tempMod;
-        // }
-    // } else if (ditem.newTempHP) {
-    //     let tempMod = Math.max(0, ditem.newTempHP - modificationAmount);
-    //     let hpMod = -Math.min(0, ditem.newTempHP - modificationAmount);
-    //     ditem.tempDamage += tempMod;
-    //     ditem.hpDamage += hpMod;
-    // } else {
-    //     ditem.hpDamage += modificationAmount;
+function modifyDamageAppliedFlat(ditem, modificationAmount, {type = 'none', multiplier = 1} = {}) {
+    if (multiplier === 'auto') {
+        multiplier = ditem.damageDetail[0].active.multiplier;
+        let actor = fromUuidSync(ditem.actorUuid);
+        if (actor) {
+            if (actorUtils.checkTrait(actor, 'di', type)) modificationAmount = 0;
+            if (actorUtils.checkTrait(actor, 'dr', type)) {
+                modificationAmount = Math.floor(modificationAmount / 2);
+            }
+        }
     }
-    // ditem.hpDamage = Math.min(ditem.oldHP, ditem.damageDetail.reduce((acc, i) => acc + i.value, modificationAmount));
-    // ditem.hpDamage = Math.sign(ditem.hpDamage) * Math.floor(Math.abs(ditem.hpDamage));
+    if (modificationAmount < 0) modificationAmount = Math.max(modificationAmount, -ditem.hpDamage - ditem.tempDamage);
     ditem.damageDetail.push({
         value: modificationAmount,
-        active: {multiplier: 1},
-        type: 'none'
+        active: {multiplier},
+        type
     });
     ditem.rawDamageDetail.push({
         value: modificationAmount,
-        type: 'none'
+        type
     });
     let actualTotal = ditem.totalDamage + modificationAmount;
     ditem.totalDamage = actualTotal;

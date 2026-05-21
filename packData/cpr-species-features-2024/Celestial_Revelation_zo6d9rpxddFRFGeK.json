@@ -53,9 +53,26 @@
         },
         "core": {
           "overlay": false
+        },
+        "chris-premades": {
+          "noAnimation": false,
+          "conditions": [],
+          "specialDuration": [],
+          "templateEffectActivities": [],
+          "info": {
+            "identifier": "celestialRevelationHeavenlyWings"
+          },
+          "rules": "modern",
+          "macros": {
+            "midi": {
+              "actor": [
+                "celestialRevelationHeavenlyWings"
+              ]
+            }
+          }
         }
       },
-      "_key": "!items.effects!I8SglXR9I8BOiLU5.kz8fV3PXBHnfJO0t"
+      "_key": "!items.effects!zo6d9rpxddFRFGeK.kz8fV3PXBHnfJO0t"
     },
     {
       "name": "Celestial Revelation: Inner Radiance",
@@ -127,11 +144,16 @@
           "macros": {
             "combat": [
               "celestialRevelationInnerRadiance"
-            ]
+            ],
+            "midi": {
+              "actor": [
+                "celestialRevelationInnerRadiance"
+              ]
+            }
           }
         }
       },
-      "_key": "!items.effects!I8SglXR9I8BOiLU5.i9xhJZMSBWzFAbMN"
+      "_key": "!items.effects!zo6d9rpxddFRFGeK.i9xhJZMSBWzFAbMN"
     },
     {
       "name": "Celestial Revelation: Necrotic Shroud",
@@ -182,9 +204,26 @@
         },
         "core": {
           "overlay": false
+        },
+        "chris-premades": {
+          "noAnimation": false,
+          "conditions": [],
+          "specialDuration": [],
+          "templateEffectActivities": [],
+          "info": {
+            "identifier": "celestialRevelationNecroticShroud"
+          },
+          "rules": "modern",
+          "macros": {
+            "midi": {
+              "actor": [
+                "celestialRevelationNecroticShroud"
+              ]
+            }
+          }
         }
       },
-      "_key": "!items.effects!I8SglXR9I8BOiLU5.gK832xoUz22pFAA2"
+      "_key": "!items.effects!zo6d9rpxddFRFGeK.gK832xoUz22pFAA2"
     },
     {
       "name": "Celestial Revelation: Necrotic Shroud Fear",
@@ -242,7 +281,7 @@
           "templateEffectActivities": []
         }
       },
-      "_key": "!items.effects!I8SglXR9I8BOiLU5.IDcq8Yy9DwUezmrE"
+      "_key": "!items.effects!zo6d9rpxddFRFGeK.IDcq8Yy9DwUezmrE"
     }
   ],
   "system": {
@@ -280,7 +319,8 @@
         },
         "effects": [
           {
-            "_id": "kz8fV3PXBHnfJO0t"
+            "_id": "kz8fV3PXBHnfJO0t",
+            "level": {}
           }
         ],
         "range": {
@@ -353,17 +393,26 @@
           "magicEffect": false,
           "magicDamage": false,
           "noConcentrationCheck": false,
-          "autoCEEffects": "none"
+          "autoCEEffects": "none",
+          "skipConcentrationCheck": false
         },
         "isOverTimeFlag": false,
         "overTimeProperties": {
           "saveRemoves": true,
           "preRemoveConditionText": "",
-          "postRemoveConditionText": ""
+          "postRemoveConditionText": "",
+          "rollAs": "target"
         },
         "otherActivityId": "none",
         "otherActivityAsParentType": true,
-        "name": "Heavenly Wings"
+        "name": "Heavenly Wings",
+        "flags": {},
+        "visibility": {
+          "level": {},
+          "requireAttunement": false,
+          "requireIdentification": false,
+          "requireMagic": false
+        }
       },
       "Zgoi3tHfM6cWjeSR": {
         "type": "utility",
@@ -398,7 +447,8 @@
         },
         "effects": [
           {
-            "_id": "i9xhJZMSBWzFAbMN"
+            "_id": "i9xhJZMSBWzFAbMN",
+            "level": {}
           }
         ],
         "range": {
@@ -471,17 +521,26 @@
           "magicEffect": false,
           "magicDamage": false,
           "noConcentrationCheck": false,
-          "autoCEEffects": "none"
+          "autoCEEffects": "none",
+          "skipConcentrationCheck": false
         },
         "isOverTimeFlag": false,
         "overTimeProperties": {
           "saveRemoves": true,
           "preRemoveConditionText": "",
-          "postRemoveConditionText": ""
+          "postRemoveConditionText": "",
+          "rollAs": "target"
         },
         "otherActivityId": "none",
         "otherActivityAsParentType": true,
-        "name": "Inner Radiance"
+        "name": "Inner Radiance",
+        "flags": {},
+        "visibility": {
+          "level": {},
+          "requireAttunement": false,
+          "requireIdentification": false,
+          "requireMagic": false
+        }
       },
       "2qNXDkiN3FDv8RdJ": {
         "type": "save",
@@ -518,11 +577,13 @@
         "effects": [
           {
             "_id": "gK832xoUz22pFAA2",
-            "onSave": false
+            "onSave": false,
+            "level": {}
           },
           {
             "_id": "IDcq8Yy9DwUezmrE",
-            "onSave": false
+            "onSave": false,
+            "level": {}
           }
         ],
         "range": {
@@ -609,18 +670,27 @@
           "magicEffect": false,
           "magicDamage": false,
           "noConcentrationCheck": false,
-          "autoCEEffects": "none"
+          "autoCEEffects": "none",
+          "skipConcentrationCheck": false
         },
         "isOverTimeFlag": false,
         "overTimeProperties": {
           "saveRemoves": true,
           "preRemoveConditionText": "",
-          "postRemoveConditionText": ""
+          "postRemoveConditionText": "",
+          "rollAs": "target"
         },
         "otherActivityId": "",
         "otherActivityAsParentType": true,
         "friendlySave": "default",
-        "name": "Necrotic Shroud"
+        "name": "Necrotic Shroud",
+        "flags": {},
+        "visibility": {
+          "level": {},
+          "requireAttunement": false,
+          "requireIdentification": false,
+          "requireMagic": false
+        }
       },
       "SzxQNkNqoD8rQjGN": {
         "type": "damage",
@@ -735,15 +805,24 @@
           "magicEffect": false,
           "magicDamage": false,
           "noConcentrationCheck": false,
-          "autoCEEffects": "none"
+          "autoCEEffects": "none",
+          "skipConcentrationCheck": false
         },
         "isOverTimeFlag": false,
         "overTimeProperties": {
           "saveRemoves": true,
           "preRemoveConditionText": "",
-          "postRemoveConditionText": ""
+          "postRemoveConditionText": "",
+          "rollAs": "target"
         },
-        "name": "Inner Radiance: Damage"
+        "name": "Inner Radiance: Damage",
+        "flags": {},
+        "visibility": {
+          "level": {},
+          "requireAttunement": false,
+          "requireIdentification": false,
+          "requireMagic": false
+        }
       }
     },
     "uses": {
@@ -840,6 +919,6 @@
   },
   "img": "icons/magic/control/buff-flight-wings-runes-purple-orange.webp",
   "folder": "ez8Wvrqb1nIK2ch7",
-  "_id": "I8SglXR9I8BOiLU5",
-  "_key": "!items!I8SglXR9I8BOiLU5"
+  "_id": "zo6d9rpxddFRFGeK",
+  "_key": "!items!zo6d9rpxddFRFGeK"
 }
