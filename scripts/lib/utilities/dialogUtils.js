@@ -273,7 +273,7 @@ async function selectHitDie(actor, title, content, {max = 1, userId = game.user.
                 options: {
                     image: i.img,
                     minAmount: 0,
-                    maxAmount: Math.min(i.system.uses.max, max)
+                    maxAmount: Math.min(i.system.uses.max, i.system.uses.value, max)
                 }
             }));
             inputFields.push(...otherInputFields);

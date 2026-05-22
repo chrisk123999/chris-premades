@@ -210,6 +210,7 @@ export {carefulSpell, distantSpell, empoweredSpell, extendedSpell, heightenedSpe
 export {charmAnimalsAndPlants} from './macros/2014/classFeatures/cleric/natureDomain/charmAnimalsAndPlants.js';
 export {circleForms} from './macros/2014/classFeatures/druid/circleOfTheMoon/circleForms.js';
 export {circleOfMortality} from './macros/2014/classFeatures/cleric/graveDomain/circleOfMortality.js';
+export {cleanFinishCombatTurn} from './macros/2024/classFeatures/pugilist/squaredCircle/cleanFinish.js';
 export {colossusSlayer} from './macros/2014/classFeatures/ranger/hunter/colossusSlayer.js';
 export {controlUndead, controlUndeadControlled} from './macros/2014/classFeatures/paladin/oathbreaker/controlUndead.js';
 export {controlledSurge} from './macros/2014/classFeatures/barbarian/wildMagic/controlledSurge.js';
@@ -462,6 +463,9 @@ export {channelDivinity} from './macros/2014/classFeatures/paladin/channelDivini
 export {guidedStrike} from './macros/2014/classFeatures/paladin/oathOfConquest/guidedStrike.js';
 export {adjustDensity} from './macros/2014/classFeatures/wizard/graviturgyMagic/adjustDensity.js';
 export {gravityWell} from './macros/2014/classFeatures/wizard/graviturgyMagic/gravityWell.js';
+export {chronalShift} from './macros/2014/classFeatures/wizard/chronurgymagic/chronalShift.js';
+export {temporalAwareness} from './macros/2014/classFeatures/wizard/chronurgymagic/temporalAwareness.js';
+export {momentaryStasis} from './macros/2014/classFeatures/wizard/chronurgymagic/momentaryStasis.js';
 // Race Features
 export {aasimarNecroticShroud, aasimarRadiantConsumption, aasimarRadiantSoul, celestialRevelation} from './macros/2014/raceFeatures/aasimar/celestialRevelation.js';
 export {acidBreathWeapon, coldBreathWeapon, fireBreathWeapon, lightningBreathWeapon, poisonBreathWeapon} from './macros/2014/raceFeatures/dragonborn/chromatic/breathWeapon.js';

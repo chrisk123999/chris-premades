@@ -27,7 +27,8 @@ async function use({workflow}) {
         },
         token: {
             name,
-            disposition: workflow.token.document.disposition
+            disposition: workflow.token.document.disposition,
+            bar2: {attribute: `.Item.${featureDataSummon._id}`}
         }
     };
     let avatarImg = itemUtils.getConfig(workflow.item, 'avatar');
@@ -78,7 +79,7 @@ async function moveOrStart({trigger: {entity: effect, token, target}}) {
     if (!appliedDamage) return;
     await genericUtils.update(feature, {'system.uses.spent': feature.system.uses.spent + appliedDamage});
     if (feature.system.uses.value > 0) return;
-    Sequencer.EffectManager.endEffects({name: 'GuardionOfFaith-' + token.id});
+    Sequencer.EffectManager.endEffects({name: 'GuardianOfFaith-' + token.id});
     await genericUtils.remove(effect);
 }
 export let guardianOfFaith = {

@@ -7,36 +7,45 @@ function getEffects(actor, {includeItemEffects = false} = {}) {
     let enchantmentEffects = actor.items.contents.flatMap(item => item.effects.contents).filter(effect => effect.type === 'enchantment' && effect.isAppliedEnchantment);
     return effects.concat(enchantmentEffects);
 }
-async function addFavorites(actor, entities, type='item') {
+async function addFavorites(actor, entities) {
     if (!actor.system.addFavorite) return;
     let hasPermission = socketUtils.hasPermission(actor, game.user.id);
     if (hasPermission) {
-        if (type === 'item') {
-            for (let i of entities) await actor.system.addFavorite({
-                id: i.getRelativeUUID(i.actor),
-                type: 'item'
-            });
-        } else if (type === 'activity') {
-            for (let i of entities) await actor.system.addFavorite({
-                id: i.relativeUUID,
-                type: 'activity'
-            });
+        for (let entity of entities) {
+            const entityType = entity.documentName;
+            console.log(entityType);
+            if (entityType === 'Item') {
+                await actor.system.addFavorite({
+                    id: entity.getRelativeUUID(entity.actor),
+                    type: 'item' 
+                });
+            } else if (entityType === 'Activity') {
+                console.log(entity.relativeUUID);
+                await actor.system.addFavorite({
+                    id: entity.relativeUUID,
+                    type: 'activity'
+                });
+            }
         }
     } else {
-        await socket.executeAsGM(sockets.addFavorites.name, actor.uuid, entities.map(i => i.uuid));
+        await socket.executeAsGM(sockets.addFavorites.name, actor.uuid, entities.map(e => e.uuid));
     }
 }
-async function removeFavorites(actor, entities, type='item') {
+async function removeFavorites(actor, entities) {
     if (!actor.system.removeFavorite) return;
     let hasPermission = socketUtils.hasPermission(actor, game.user.id);
     if (hasPermission) {
-        if (type === 'item') {
-            for (let i of entities) await actor.system.removeFavorite(i.getRelativeUUID(i.actor));
-        } else if (type === 'activity') {
-            for (let i of entities) await actor.system.removeFavorite(i.relativeUUID);
+        for (let entity of entities) {
+            const entityType = entity.documentName;
+            
+            if (entityType === 'Item') {
+                await actor.system.removeFavorite(entity.getRelativeUUID(entity.actor));
+            } else if (entityType === 'Activity') {
+                await actor.system.removeFavorite(entity.relativeUUID);
+            }
         }
     } else {
-        await socket.executeAsGM(sockets.removeFavorites.name, actor.uuid, entities.map(i => i.uuid));
+        await socket.executeAsGM(sockets.removeFavorites.name, actor.uuid, entities.map(e => e.uuid));
     }
 }
 function getTokens(actor) {

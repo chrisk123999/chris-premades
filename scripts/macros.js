@@ -146,7 +146,7 @@ export {fogCloud} from './macros/2024/spells/fogCloud.js';
 export {gaseousForm} from './macros/2024/spells/gaseousForm.js';
 export {globeOfInvulnerability, globeOfInvulnerabilityInvulnerable} from './macros/2024/spells/globeOfInvulnerability.js';
 export {grease} from './macros/2024/spells/grease.js';
-export {guardianOfFaith} from './macros/2024/spells/guardianOfFaith.js';
+export {guardianOfFaith, guardianOfFaithDamage} from './macros/2024/spells/guardianOfFaith.js';
 export {guidingBolt} from './macros/2024/spells/guidingBolt.js';
 export {gustOfWind, gustOfWindGust} from './macros/2024/spells/gustOfWind.js';
 export {heatMetal} from './macros/2024/spells/heatMetal.js';
@@ -261,7 +261,7 @@ export {sangromanticInitiate} from './macros/2024/feats/sangromanticInitiate.js'
 // Species Features
 // Aasimar
 export {healingHands} from './macros/2024/speciesFeatures/aasimar/healingHands.js';
-export {celestialRevelation, celestialRevelationInnerRadiance} from './macros/2024/speciesFeatures/aasimar/celestialRevelation.js';
+export {celestialRevelation, celestialRevelationInnerRadiance, celestialRevelationHeavenlyWings, celestialRevelationNecroticShroud} from './macros/2024/speciesFeatures/aasimar/celestialRevelation.js';
 export {celestialResistance} from './macros/2024/speciesFeatures/aasimar/celestialResistance.js';
 // Orc
 export {relentlessEndurance} from './macros/2024/speciesFeatures/orc/relentlessEndurance.js';
@@ -282,6 +282,9 @@ export {superiorAtlas, superiorAtlasEffect} from './macros/2024/classFeatures/ar
 export {ghaalShaarat, upgradeGhaalShaarat} from './macros/2024/classFeatures/artificer/forgeAdept/ghaalshaarat.js';
 export {perfectWeapon} from './macros/2024/classFeatures/artificer/forgeAdept/perfectWeapon.js';
 export {runesOfWar, runesOfWarAura, runesOfWarDamage} from './macros/2024/classFeatures/artificer/forgeAdept/runesOfWar.js';
+// Armorer
+export {arcaneArmor} from './macros/2024/classFeatures/artificer/armorer/arcaneArmor.js';
+export {armorModel, armorModelForceDemolisher, armorModelLightningLauncher, armorModelthunderPulseEffect} from './macros/2024/classFeatures/artificer/armorer/armorModel.js';
 // Barbarian
 export {rage, rageRaging, rageUpkeep} from './macros/2024/classFeatures/barbarian/rage.js';
 export {unarmoredDefenseBarbarian} from './macros/2024/classFeatures/barbarian/unarmoredDefense.js';
@@ -523,7 +526,9 @@ export {schoolOfHardKnocks, schoolOfHardKnocksEndanger} from './macros/2024/clas
 export {shakeItOff} from './macros/2024/classFeatures/pugilist/shakeItOff.js';
 export {swaggerStreak} from './macros/2024/classFeatures/pugilist/swaggerStreak.js';
 // Squared Circle
+export {cleanFinish} from './macros/2024/classFeatures/pugilist/squaredCircle/cleanFinish.js';
 export {groundwork} from './macros/2024/classFeatures/pugilist/squaredCircle/groundwork.js';
+export {heavyweight} from './macros/2024/classFeatures/pugilist/squaredCircle/heavyweight.js';
 export {meatShield} from './macros/2024/classFeatures/pugilist/squaredCircle/meatShield.js';
 // Wizard
 export {arcaneRecovery} from './macros/2024/classFeatures/wizard/arcaneRecovery.js';

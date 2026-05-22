@@ -61,15 +61,8 @@ async function applyEffect({trigger: {token: self}, workflow}) {
 async function endangerDamage({trigger: {entity: effect}, workflow}) {
     if (effect.flags['chris-premades']?.originWorkflow === workflow.id) return;
     if (!workflow.hitTargets.size) return;
-    let newRolls = workflow.damageRolls.map(async d => {
-        let max = d.terms.reduce((total, term) => 
-            term.isDeterministic ? 
-                total + term.formula : 
-                total + (term.number * term.faces),
-        '');
-        return await rollUtils.damageRoll(max, workflow.actor, d.options); 
-    });
-    await workflow.setDamageRolls(newRolls);
+    await Promise.all(workflow.damageRolls.map(async (roll, i, rolls) => rolls[i] = await roll.reroll({maximize: true})));
+    await workflow.setDamageRolls(workflow.damageRolls);
     await genericUtils.remove(effect);
 }
 export let schoolOfHardKnocks = {

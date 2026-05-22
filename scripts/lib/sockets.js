@@ -90,23 +90,23 @@ async function deleteEmbeddedDocuments(entityUuid, type, ids, options) {
 async function updateTargets(targetIds) {
     canvas.tokens?.setTargets(targetIds);
 }
-async function addFavorites(actorUuid, entityUuids, type='item') {
+async function addFavorites(actorUuid, entityUuids) {
     let actor = await fromUuid(actorUuid);
-    if (!actor) return;
-    if (!actor.system.addFavorite) return;
-    let entities = await Promise.all(entityUuids.map(async i => {
-        return await fromUuid(i);
-    }).filter(j => j));
-    if (type === 'item') {
-        for (let i of entities) await actor.system.addFavorite({
-            id: i.getRelativeUUID(i.actor),
-            type: 'item'
-        });
-    } else if (type === 'activity') {
-        for (let i of entities) await actor.system.addFavorite({
-            id: i.relativeUUID,
-            type: 'activity'
-        });
+    if (!actor || !actor.system.addFavorite) return;
+    let entities = (await Promise.all(entityUuids.map(i => fromUuid(i)))).filter(Boolean);
+    for (let entity of entities) {
+        let entityType = entity.documentName;
+        if (entityType === 'Item') {
+            await actor.system.addFavorite({
+                id: entity.getRelativeUUID(entity.actor),
+                type: 'item'
+            });
+        } else if (entityType === 'Activity') {
+            await actor.system.addFavorite({
+                id: entity.relativeUUID,
+                type: 'activity'
+            });
+        }
     }
 }
 async function removeFavorites(actorUuid, entityUuids, type='item') {
