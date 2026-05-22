@@ -15,9 +15,9 @@
         },
         "AlterSelf": {
             "NaturalWeapons": {
-                "Claws": "Garras (Cortante)",
-                "Fangs": "Presas (Perfurante)",
-                "Hooves": "Cascos (Contundente)",
+                "Claws": "Claws (Slashing)",
+                "Fangs": "Fangs (Piercing)",
+                "Hooves": "Hooves (Bludgeoning)",
                 "Select": "Crescer qual arma natural?"
             }
         },
@@ -25,35 +25,35 @@
             "Source": "{auraName}: Origem"
         },
         "BG3": {
-            "Backbreaker": "Quebra-Costas",
-            "Bleeding": "Sangrando",
+            "Backbreaker": "Backbreaker",
+            "Bleeding": "Bleeding",
             "BraceMelee": "Brace (Corpo a Corpo)",
             "BraceRanged": "Brace (À Distância)",
-            "ChestTrauma": "Trauma Torácico",
-            "Cleave": "Rachar",
-            "ConcussiveSmash": "Esmagamento Concussivo",
-            "Dazed": "Ofuscado",
-            "DisarmingStrike": "Golpe Desarmante",
-            "Flourish": "Florescer",
-            "GapingWounds": "Feridas Abertas",
-            "HamstringShot": "Tiro no Tendão",
+            "ChestTrauma": "Chest Trauma",
+            "Cleave": "Cleave",
+            "ConcussiveSmash": "Concussive Smash",
+            "Dazed": "Dazed",
+            "DisarmingStrike": "Disarming Strike",
+            "Flourish": "Flourish",
+            "GapingWounds": "Gaping Wounds",
+            "HamstringShot": "Hamstring Shot",
             "Hamstrung": "Hamstrung",
-            "Heartstopper": "Destruidor de Corações",
-            "Lacerate": "Dilacerar",
-            "Maimed": "Mutilado",
-            "MaimingStrike": "Golpe Mutilante",
-            "MobileShot": "Tiro Móvel",
-            "OffBalance": "Desequilibrado",
-            "PiercingShot": "Tiro Perfurante",
-            "PiercingStrike": "Golpe Perfurante",
-            "PommelStrike": "Golpe com Punho",
-            "Prepare": "Preparar",
-            "Rush": "Correr",
-            "Tenacity": "Tenacidade",
-            "Topple": "Derrubar",
-            "WeakGrip": "Aperto Fraco",
-            "WeakeningStrike": "Golpe Enfraquecedor",
-            "WeaponAction": "Ação com Arma"
+            "Heartstopper": "Heartstopper",
+            "Lacerate": "Lacerate",
+            "Maimed": "Maimed",
+            "MaimingStrike": "Maiming Strike",
+            "MobileShot": "Mobile Shot",
+            "OffBalance": "Off Balance",
+            "PiercingShot": "Piercing Shot",
+            "PiercingStrike": "Piercing Strike",
+            "PommelStrike": "Pommel Strike",
+            "Prepare": "Prepare",
+            "Rush": "Rush",
+            "Tenacity": "Tenacity",
+            "Topple": "Topple",
+            "WeakGrip": "Weak Grip",
+            "WeakeningStrike": "Weakening Strike",
+            "WeaponAction": "Weapon Action"
         },
         "Backup": {
             "Daily": "Diário",
@@ -69,13 +69,13 @@
             "Weekly": "Semanal"
         },
         "Cleave": {
-            "Use": "Cortar um alvo próximo?"
+            "Use": "Cleave em um alvo próximo?"
         },
         "Combat": {
           "LegendaryActions": {
             "Prompt": {
-              "Content": "Você tem Ações Lendárias não utilizadas neste turno. Usar Ações Lendárias?",
-              "Title": "Usar Ação Lendária?"
+              "Content": "Você tem Legendary Actions não utilizadas neste turno. Usar Legendary Actions?",
+              "Title": "Usar Legendary Action?"
             },
             "Target": {
               "Content": "Escolha o alvo de ",
@@ -84,34 +84,35 @@
           }
         },
         "CommonFeatures": {
-            "Amphibious": "Anfíbio",
-            "Bite": "Mordida",
-            "BreathWeapon": "Arma de Sopro",
-            "ChangeShape": "Mudar Forma",
-            "Charge": "Investida Poderosa",
-            "Claws": "Garras",
-            "DevilsSight": "Visão Diabólica",
-            "Evasion": "Evasão",
-            "Flyby": "Sobrevoo",
-            "HeatedBody": "Corpo Aquecido",
-            "MagicResistance": "Resistência Mágica",
-            "Maul": "Malho",
-            "Mending": "Reparar",
-            "Multiattack": "Ataques Múltiplos ({numAttacks} Ataques)",
-            "PackTactics": "Táticas de Bando",
-            "Regeneration": "Regeneração",
-            "ShadowStealth": "Sombra Furtiva",
-            "Shapechanger": "Metamorfo",
-            "Shred": "Destruir",
-            "StoneLethargy": "Letargia de Pedra",
-            "Tail": "Cauda",
-            "WaterBreathing": "Respiração na Água",
-            "WeightOfSorrow": "Peso da Tristeza"
+            "Amphibious": "Amphibious",
+            "Bite": "Bite",
+            "BreathWeapon": "Breath Weapon",
+            "ChangeShape": "Change Shape",
+            "Charge": "Charge",
+            "Claws": "Claws",
+            "DevilsSight": "Devil's Sight",
+            "Evasion": "Evasion",
+            "Flyby": "Flyby",
+            "HeatedBody": "Heated Body",
+            "MagicResistance": "Magic Resistance",
+            "Maul": "Maul",
+            "Mending": "Mending",
+            "Multiattack": "Multiattack ({numAttacks} Ataques)",
+            "PackTactics": "Pack Tactics",
+            "Regeneration": "Regeneration",
+            "ShadowStealth": "Shadow Stealth",
+            "Shapechanger": "Shapechanger",
+            "Shred": "Shred",
+            "StoneLethargy": "Stone Lethargy",
+            "Tail": "Tail",
+            "WaterBreathing": "Water Breathing",
+            "WeightOfSorrow": "Weight of Sorrow"
         },
         "Config": {
             "Abilities": "Atributos:",
             "Ability": "Atributo:",
             "Activities": "Atividades:",
+            "Activity": "Atividade:",
             "AffectAllies": "Deve Afetar Aliados:",
             "AllowEnemies": "Permitir seleção de tokens não-aliados?",
             "Animation": "Animação:",
@@ -151,6 +152,7 @@
             "CheckSave": "Verificar Salvaguarda:",
             "CheckSaves": "Verificar Salvaguardas:",
             "ClassIdentifier": "Identificador de Classe",
+            "Clear": "Limpar escolhas salvas a cada combate:",
             "Color": "Cor:",
             "Colors": {
                 "Blue": "Azul",
@@ -202,12 +204,14 @@
             "DamageScaleIdentifier": "Identificador da Escala de Dano:",
             "DamageType": "Tipo de Dano:",
             "DamageTypes": "Tipos de Dano:",
-            "DarknessAnimation": "Animação de Escuridão:",
+            "DarknessAnimation": "Animação de Darkness:",
+            "DashAnimation": "Animação de Dash:",
             "DiceSize": "Categoria Dado:",
             "DisplayFormulaRoll": "Exibir Fórmula da Rolagem:",
             "DisplayHint": "Exibir Dica:",
             "Distance": "Distância:",
             "DurationSeconds": "Duração (Segundos):",
+            "Enable3rdPartyReaction": "Habilitar Reação de Terceiros:",
             "EnablePrompt": "Habilitar Aviso de Reação:",
             "Expire": "Expiração:",
             "FailedSave": "Salvaguarda Falha:",
@@ -216,13 +220,17 @@
             "HideToken": "Ocultar Token:",
             "HitPoints": "Pontos de Vida:",
             "HitTarget": "Alvo Atingido:",
+            "IgnoredConditions": "Condições Ignoradas:",
             "IgnoredCreatureTypes": "Tipos de Criatura Ignorados:",
             "ImmuneCreatures": "Tipos de Criaturas Imunes:",
+            "ItemDelete": "Mestre Confirma Exclusão do Item:",
+            "ItemTypes": "Tipos de Item:",
             "Items": "Itens:",
             "LineColor": "Cor da Linha:",
             "Max": "Máx:",
             "MaxLevel": "Nível Máx:",
             "MaxSize": "Tamanho Máx:",
+            "MonsterName": "Nome do Monstro:",
             "Multiplier": "Multiplicador:",
             "Name": "Nome:",
             "NoDCPrompt": "Avisar sem CD:",
@@ -235,8 +243,9 @@
             "PromptToUse": "Avisar para usar:",
             "Range": "Alcance:",
             "RealDarkness": "Usar Escuridão Real:",
+            "Remember": "Lembrar e auto-aplicar opções:",
             "Rules": "Regras:",
-            "SaveAbilities": "Atributos Salv.:",
+            "SaveAbilities": "Atributos Salv:",
             "SaveDC": "CD da Salvaguarda:",
             "Saves": "Salvaguardas:",
             "Scale": "Escala:",
@@ -249,10 +258,13 @@
             "Sound": "Som:",
             "SpecificAnimation": "Animação {option}:",
             "SpellSchools": "Escola de Magia:",
+            "SpellSlot": "{option} Espaço de Magia:",
             "Stage": "Estágio:",
             "StrandColor": "Cor do Fio:",
             "SubclassIdentifier": "Identificador de Subclasse:",
             "SummonerOnly": "Apenas Invocador:",
+            "Time": "Hora:",
+            "TimeFormat": "Formato da Hora:",
             "TintMap": "Tonalidade do Mapa:",
             "Token": "Token:",
             "TokenAnimation": "Animação do Token:",
@@ -262,7 +274,9 @@
             "TokenImgPriority": "Prioridade Imagem Token:",
             "TokenName": "Nome do Token:",
             "TokenSound": "Som de Animação do Token:",
+            "TransformAnimation": "Animação de Transformação:",
             "Trigger": "Gatilho:",
+            "TriggerActivity": "Atividade de Gatilho:",
             "TurnTrigger": "Gatilho do Turno:",
             "UseFormula": "Usar Fórmula:",
             "WeaponProperties": "Propriedades da Arma:",
@@ -302,6 +316,7 @@
             "UseName": "Usar {itemName} de [{tokenName}]?",
             "UseOn": "Usar {itemName} em {tokenName}?",
             "UseRollTotal": "Usar {itemName}? (Total: {rollTotal})",
+            "UseRollTotalBy": "Usar {itemName} para {name}? (Total da Rolagem: {rollTotal})",
             "UseRollTotalDetail": "Usar {itemName} para {bonusFormula} adicional? (Total da Rolagem: {rollTotal})",
             "UseWeaponDamageExtra": "Usar {itemName} para {bonusFormula} adicional?",
             "UseWeaponDamageTotal": "Usar {itemName}? (Dano da Arma: {damageTotal})",
@@ -457,6 +472,9 @@
                 "postEvaluation": {
                     "Label": "Pós-Evaluation"
                 },
+                "preAttackRollConfig": {
+                    "Label": "Configurações de Rolagem Pré-Ataque"
+                },
                 "preEvaluation": {
                     "Label": "Pré-Evaluation"
                 },
@@ -502,6 +520,9 @@
                 "scenePostEvaluation": {
                     "Label": "Pós-Evaluation da Cena"
                 },
+                "scenePreAttackRollConfig": {
+                    "Label": "Configurações de Rolagem Pré-Ataque da Cena"
+                },
                 "scenePreEvaluation": {
                     "Label": "Pré-Evaluation da Cena"
                 },
@@ -535,6 +556,9 @@
                 "targetPostAttackRoll": {
                     "Label": "Rolagem Pós-Ataque do Alvo"
                 },
+                "targetPreAttackRollConfig": {
+                    "Label": "Configurações de Rolagem Pré-Ataque de Alvo"
+                },
                 "targetPreItemRoll": {
                     "Label": "Rolagem Pré-Item do Alvo"
                 },
@@ -552,6 +576,9 @@
                 },
                 "targetUtilityRollComplete": {
                     "Label": "Concluída Rolagem de Utilidade do Alvo"
+                },
+                "timeUpdated": {
+                    "Label": "Hora Atualizada"
                 },
                 "turnEnd": {
                     "Label": "Fim do Turno"
@@ -607,6 +634,7 @@
                 "save": "Salvaguarda",
                 "skill": "Perícia",
                 "template": "Modelo",
+                "time": "Hora",
                 "toolCheck": "Ferramenta"
             }
         },
@@ -626,24 +654,24 @@
             "UpdateItem": "Atualizar Item"
         },
         "Firearm": {
-            "Ammunition": "Bala de Arma de Fogo",
-            "Broken": "Quebrado",
-            "Damaged": "Danificado",
-            "Explosive": "Explosivo:",
-            "Firearm": "Arma de Fogo",
+            "Ammunition": "Firearm Bullet",
+            "Broken": "Broken",
+            "Damaged": "Damaged",
+            "Explosive": "Explosive:",
+            "Firearm": "Firearm",
             "Grit": "Grit",
             "GritRegain": "Grit recuperado! ({regained})",
             "HasMisfired": "falhou!",
             "IsBroken": "Esta arma de fogo está quebrada e deve ser consertada!",
             "IsDamaged": "Esta arma de fogo está danificada e deve ser reparada!",
-            "Misfire": "Falha",
-            "MisfireScore": "Misfire Score:",
+            "Misfire": "Misfire",
+            "MisfireScore": "Pontuação de Misfire:",
             "NoAmmo": "Você não tem munição!",
             "NoGrit": "Nenhum Grit restante!",
             "NoGuns": "Você não tem armas de fogo para usar!",
             "NoReloads": "Você não tem armas de fogo que precisam ser recarregadas!",
             "NoRepairs": "Você não tem armas de fogo para consertar!",
-            "NoTinkers": "Você não tem Ferramentas de Funileiro para fazer o reparo!",
+            "NoTinkers": "Você não tem Tinker's Tools para fazer o reparo!",
             "Other": "Outro",
             "OutOfAmmo": "Não há tiros/munições restantes, é necessário recarregar!",
             "RepairFailure": "{weaponName} está quebrada!",
@@ -656,10 +684,11 @@
             "Status": "Estado:",
             "TrickShot": "Trick Shot",
             "TrickShotSelect": "Fazer um Trick Shot?",
-            "Undamaged": "Não-Danificado"
+            "Undamaged": "Undamaged"
         },
         "Generic": {
             "Actions": "Ações",
+            "Always": "Sempre",
             "Amount": "Quantidade:",
             "Automatic": "Automático",
             "Available": "Disponível",
@@ -761,9 +790,9 @@
             "TemplateEffect": "Modelo de {itemName}"
         },
         "Grovelthrash": {
-            "Earthquake": "Terremoto (Grovelthrash)",
-            "MeldIntoStone": "Mesclar-se às Rochas (Grovelthrash)",
-            "StoneShape": "Moldar Rochas (Grovelthrash)"
+            "Earthquake": "Earthquake (Grovelthrash)",
+            "MeldIntoStone": "Meld Into Stone (Grovelthrash)",
+            "StoneShape": "Stone Shape (Grovelthrash)"
         },
         "HeaderButtons": {
             "PackId": {
@@ -771,8 +800,8 @@
             }
         },
         "HeroicInspiration": {
-            "Give": "Você recebeu Inspiração Heroica, mas já a possui. Escolha outro jogador para concedê-la:",
-            "Name": "Inspiração Heroica"
+            "Give": "Você recebeu uma Heroic Inspiration, mas já a possui. Escolha outro jogador para concedê-la:",
+            "Name": "Heroic Inspiration"
         },
         "Item": {
             "Condense": "Condensar",
@@ -801,9 +830,9 @@
         "Macros": {
             "AberrantDragonmark": {
                 "ConfigId": "ID da Magia Associada",
-                "Damage": "Marca Dracônica Aberrante: Dano",
+                "Damage": "Aberrant Dragonmark: Dano",
                 "Expend": "Gastar dado de vida?",
-                "Healing": "Marca Dracônica Aberrante: Cura",
+                "Healing": "Aberrant Dragonmark: Cura",
                 "NoValid": "Nenhuma magia válida encontrada!",
                 "Select": "Selecione a magia associada para esta característica:"
             },
@@ -811,15 +840,15 @@
                 "Name": "Drenagem de Habilidade"
             },
             "Actions": {
-                "Dash": "Disparar",
-                "Disengage": "Desengajar",
-                "Dodge": "Esquivar",
-                "Grapple": "Agarrar",
-                "GrappleEscape": "Agarrão: Escapar",
-                "GrappleEscapeSelect": "Tentativa de escapar do agarrão de quem?",
-                "GrappledBy": "Agarrado por {tokenName}",
+                "Dash": "Dash",
+                "Disengage": "Disengage",
+                "Dodge": "Dodge",
+                "Grapple": "Grapple",
+                "GrappleEscape": "Grapple: Escapar",
+                "GrappleEscapeSelect": "Tentativa de escapar do Grapple de quem?",
+                "GrappledBy": "Grapple por {tokenName}",
                 "Grappling": "Agarrando {tokenName}",
-                "Help": "Ajudar"
+                "Help": "Help"
             },
             "ActivityOnEffectExpiry": {
                 "EndEarly": "Sem Gatilho se Efeito Terminar Cedo:",
@@ -839,29 +868,35 @@
                 "Name": "Bônus Adicional de Vantagem",
                 "Replace": "Substituir Fórmula de Dano:"
             },
+            "AdventurersAtlas": {
+                "Enforce5ft": "Forçar Alcance de Toque:",
+                "NeedTools": "Você precisa ter Cartographer's Tools para usar {itemName}!",
+                "RequireTools": "Exigir Cartographer's Tools:",
+                "Use": "Usar {itemName}? (Alvos Máx: {maxAmount}, Alvos Mín: {minAmount})"
+            },
             "AgonizingBlast": {
-                "Select": "Escolha suas magias de Agonizing Blast:"
+                "Select": "Escolha sua(s) magia(s) de Agonizing Blast:"
             },
             "AllPurposeTool": {
-                "Channel": "Ferramenta Multifuncional: Canalizar Forças Criativas",
-                "Name": "Ferramenta Multifuncional",
-                "Select": "Selecione uma ferramenta de artesão:",
-                "Spell": "Selecione um truque:"
+                "Channel": "All-Purpose Tool: Channel Creative Forces",
+                "Name": "All-Purpose Tool",
+                "Select": "Selecione uma Artisan's Tool:",
+                "Spell": "Selecione uma Cantrip:"
             },
             "AmuletOfTheLycanthrope": {
-                "BiteBonus": "Bônus da Mordida:"
+                "BiteBonus": "Bônus do Bite:"
             },
             "AncestralProtectors": {
-                "Target": "Protetores Ancestrais: Alvos"
+                "Target": "Ancestral Protectors: Alvos"
             },
             "AnimateDead": {
-                "Command": "Animar Mortos: Comando"
+                "Command": "Animate Dead: Comando"
             },
             "AnimatingPerformance": {
-                "Command": "Espetáculo Animado: Comando",
-                "Dance": "Dança Irresistível",
-                "ForceEmpoweredSlam": "Batida Energizada",
-                "ImmutableForm": "Forma Imutável",
+                "Command": "Animating Performance: Comando",
+                "Dance": "Irrepressible Dance",
+                "ForceEmpoweredSlam": "Force-Empowered Slam",
+                "ImmutableForm": "Immutable Form",
                 "Size": "Qual tamanho do item?"
             },
             "Antagonize": {
@@ -870,25 +905,48 @@
                 "SelectWeapon": "Qual arma será usada para atacar?"
             },
             "ArappleAttackAdvantage": {
-                "Name": "Vantagem Ataque de Agarrar"
+                "Name": "Vantagem Ataque de Grapple"
             },
             "ArcaneAbjuration": {
                 "Plane": "{name} está longe do plano de origem dele?"
             },
+            "ArcaneArmor": {
+                "Select": "Selecione a armadura que se tornará sua Arcane Armor:"
+            },
             "ArcaneJolt": {
-                "Harm": "Ferir",
-                "HarmOrHeal": "Ferir ou Curar?",
-                "Heal": "Curar",
+                "Harm": "Harm",
+                "HarmOrHeal": "Arcane Jolt: Harm ou Heal?",
+                "Heal": "Heal",
                 "WhoHeal": "Quem curar?"
+            },
+            "ArcaneRecovery": {
+                "Context": "Você pode recuperar um total combinado de {totalSlots} níveis de espaços de magia.",
+                "Slot": "Espaço de Magia Nível {slot}"
             },
             "ArcaneVigor": {
                 "Choose": "Escolha o dado de vida para usar:"
             },
             "ArcaneWard": {
-                "Protect": "Proteger {tokenName} com sua proteção arcana?"
+                "Protect": "Proteger {tokenName} com seu Arcane Ward?",
+                "TempHP": "Consumir PV Temp Primeiro:"
+            },
+            "ArmorModel": {
+                "LightningLauncher": {
+                    "Use": "Aplicar dano Lightning adicional?"
+                },
+                "Model": {
+                    "dreadnaught": "Force Demolisher",
+                    "guardian": "Thunder Pulse",
+                    "infiltrator": "Lightning Launcher"
+                },
+                "Pull10": "Puxar 10 pés",
+                "Pull5": "Puxar 5 pés",
+                "Push10": "Empurrar 10 pés",
+                "Push5": "Empurrar 5 pés",
+                "PushPull": "Empurrar ou puxar o alvo?"
             },
             "ArmorOfAgathys": {
-                "Reflect": "Armadura de Agathys: Refletir"
+                "Reflect": "Armor of Agathys: Refletir"
             },
             "AstralTrance": {
                 "Ability": "Qual atributo para os testes com ferramenta?",
@@ -899,7 +957,7 @@
                 "SelectWeapon": "Escolha uma Arma ou Ataque Desarmado:"
             },
             "AuraDamage": {
-                "Name": "Dano de Aura: Fim do Turno"
+                "Name": "Dano de Aura"
             },
             "AuraOfLife": {
                 "RemoveTempmax": "Remover temporariamente a redução de HP máximo existente enquanto estiver na aura:"
@@ -908,24 +966,24 @@
                 "Healing": "Aura de Vitalidade: Cura"
             },
             "AutoGrapple": {
-                "DC": "CD fixo para escapar do agarrão (contestado se 0):",
-                "Disadvantage": "Dar desvantagem no teste de escape:",
-                "IgnoreLimit": "Ignorar Limite de Tamanho para Agarrar:",
-                "Name": "Auto-Agarrão",
-                "Restrained": "Contido enquanto Agarrado:"
+                "DC": "CD Fixo para Escapar (contestado se 0):",
+                "Disadvantage": "Desvantagem para Escapar:",
+                "IgnoreLimit": "Ignorar Limite de Tamanho:",
+                "Name": "Auto-Grapple",
+                "Restrained": "Restrained enquanto Grappled:"
             },
             "AutoProne": {
-                "Name": "Auto-Derrubar"
+                "Name": "Auto-Prone"
             },
             "AutoPush": {
-                "Name": "Auto-Empurrão"
+                "Name": "Auto-Push"
             },
             "AwakenedSpellbook": {
                 "Select": "Mudar tipo de dano?"
             },
             "BalefulInterdict": {
                 "BurnSeals": "Queimar Selo no alvo?",
-                "BurningSeals": "Selos Ardentes",
+                "BurningSeals": "Selos Queimados",
                 "CanTriggerImmediately": "Pode Acionar Imediatamente:",
                 "Move": {
                     "NoValidTargets": "Nenhum alvo morto válido!",
@@ -934,11 +992,11 @@
                 "PlaceSeal": "Colocar selo no alvo?"
             },
             "BalmOfPeace": {
-                "Balm": "Bálsamo da Paz"
+                "Balm": "Balm of Peace"
             },
             "BalmOfTheSummerCourt": {
                 "Num": "d6s",
-                "Select": "Quantos bálsamos?"
+                "Select": "Quantos balms?"
             },
             "BanishingSmite": {
                 "Hp": "PV Necessário:"
@@ -948,11 +1006,11 @@
             },
             "BardicInspiration": {
                 "DC": "Qual a CD para isso?",
-                "MoteAttack": "Partícula de Potencial Ataque",
-                "MoteHeal": "Partícula de Potencial Cura"
+                "MoteAttack": "Mote of Potential Attack",
+                "MoteHeal": "Mote of Potential Heal"
             },
             "BatteringRoots": {
-                "Mastery": "Usar qual maestria?"
+                "Mastery": "Usar qual Mastery?"
             },
             "BeguilingTwist": {
                 "Select": "Qual Condição?"
@@ -963,65 +1021,71 @@
                 "Name": "Berserk"
             },
             "BestialSoul": {
-                "Already": "Você já tem um benefício ativo da Alma Bestial!",
-                "Climbing": "Escalada",
+                "Already": "Você já tem um benefício ativo da Bestial Soul!",
+                "Climbing": "Climbing",
                 "Form": "Qual forma?",
-                "Jumping": "Salto",
-                "Swimming": "Natação"
+                "Jumping": "Jumping",
+                "Swimming": "Swimming"
             },
             "BestowCurse": {
                 "Ability": "Desvantagem com Valor de Atributo",
                 "AbilitySelect": "Qual atributo?",
                 "Attack": "Desvantagem em Ataques",
                 "Damage": "Dano Adicional",
-                "DamageFlavor": "Dano Adicional Rogar Maldição",
+                "DamageFlavor": "Dano Adicional de Bestow Curse",
                 "Other": "Outro",
                 "SelectCurse": "Qual maldição você quer rogar?",
                 "Turn": "Desperdiçar Turno"
             },
             "BigbysBeneficentBracelet": {
-                "BigbysHand": "Mão de Bigby (9º Nível)",
-                "ForceSculpture": "Escultura de Força",
-                "MageHand": "Mão Mágica (Pulseira Beneficente de Bigby)"
+                "BigbysHand": "Bigby's Hand (9º Nível)",
+                "ForceSculpture": "Force Sculpture",
+                "MageHand": "Mage Hand (Bigby's Beneficent Bracelet)"
             },
             "BigbysHand": {
                 "Big": "O alvo é grande demais!",
-                "Clenched": "Punho Cerrado",
-                "Crush": "Mão Esmagadora: Esmagar",
+                "Clenched": "Clenched Fist",
+                "Crush": "Grasping Hand: Crush",
                 "Direction": "Em qual direção você quer empurrar o alvo?",
-                "Forceful": "Mão Vigorosa",
-                "Grasping": "Mão Esmagadora",
-                "Interposing": "Mão Interposta",
-                "Move": "Mão de Bigby: Mover"
+                "Forceful": "Forceful Hand",
+                "Grasping": "Grasping Hand",
+                "Interposing": "Interposing Hand",
+                "Move": "Bigby's Hand: Mover"
             },
             "Blackrazor": {
-                "Backlash": "Navalha Negra: Retaliação",
-                "Devoured": "Alma Devorada"
+                "Backlash": "Blackrazor: Backlash",
+                "Devoured": "Devoured Soul"
             },
             "BladeFlourish": {
-                "Defensive": "Floreio Defensivo",
-                "Master": "Usar um d6 ao invés da Inspiração de Bardo para Floreio de Lâminas?",
-                "Mobile": "Floreio Móvel",
-                "Movement": "Floreio de Lâminas: Deslocamento",
+                "Defensive": "Defensive Flourish",
+                "Master": "Usar um d6 ao invés do Bardic Inspiration para Blade Flourish?",
+                "Mobile": "Mobile Flourish",
+                "Movement": "Blade Flourish: Deslocamento",
                 "Push": "Empurrar alvo {distance} pés?",
-                "Select": "Usar o Floreio de Lâminas?",
-                "Slashing": "Floreio Cortante"
+                "Select": "Usar Blade Flourish?",
+                "Slashing": "Slashing Flourish"
             },
             "BlessingOfTheForge": {
                 "None": "O alvo não possui armas ou armaduras não-mágicas válidas!",
                 "Select": "Qual item você quer imbuir?"
             },
             "BlindingSmite": {
-                "Blind": "Destruição Cegante: Cego"
+                "Blind": "Blinding Smite: Blind"
             },
             "Blink": {
-                "Away": "Piscar: Desaparecer"
+                "Away": "Blink: Desaparecer"
             },
             "BloodCurses": {
-                "Amplify": "Amplificar Maldição do Sangue?"
+                "Amplify": "Amplificar Blood Curse?"
             },
             "BloodFrenzy": {
                 "Name": "Blood Frenzy"
+            },
+            "BloodSacrifice": {
+                "Apply": "Aplicar {itemName}?"
+            },
+            "BloodiedButUnbowed": {
+                "Trigger": "Acionar apenas quando Bloodied"
             },
             "BloodiedFrenzy": {
                 "Name": "Bloodied Frenzy"
@@ -1035,10 +1099,10 @@
                 "SlotRegained": "Espaço de magia ({slotLevel}º nível) recuperado!"
             },
             "BoomingBlade": {
-                "Moved": "Lâmina Estrondosa: Movido",
+                "Moved": "Booming Blade: Movido",
                 "NoWeapons": "Você não tem nenhuma arma válida equipada!",
                 "SelectWeapon": "Qual arma você está usando para conjurar esta magia?",
-                "WillingMove": "O(a) {actorName} se moveu voluntariamente?"
+                "WillingMove": "{actorName} se moveu voluntariamente?"
             },
             "BootsOfElvenkind": {
                 "Silent": "Este teste depende de se mover em silêncio"
@@ -1047,31 +1111,34 @@
                 "SelectSkill": "Selecione uma perícia para receber proficiência temporária:"
             },
             "BranchesOfTheTree": {
-                "Rage": "Você deve estar em Fúria para usar esta característica!"
+                "Rage": "Você deve estar em Rage para usar esta característica!"
             },
             "BrandOfCastigation": {
-                "Branded": "Marca de Castigo: Marcado",
-                "Damage": "Marca de Castigo: Dano"
+                "Branded": "Brand of Castigation: Marcado",
+                "Damage": "Brand of Castigation: Dano"
             },
             "BrandingSmite": {
-                "Branded": "Marca da Punição: Marcado"
+                "Branded": "Branding Smite: Marcado"
             },
             "BreathOfTheDragon": {
-                "Augment": "Aumentar (1 Ki)",
-                "Select": "Selecione Detalhes do Sopro"
+                "Augment": "Augment (1 Ki)",
+                "Select": "Selecione Detalhes do Breath"
             },
             "BrutalStrike": {
                 "Choose": "Sacrificar vantagem para usar {item}?"
             },
+            "BuiltForSuccess": {
+                "PromptFailOnly": "Avisar apenas em rolagens falhas."
+            },
             "Bulwark": {
-                "Use": "Use Reação para evitar ser movido?"
+                "Use": "Use Reaction para evitar ser movido?"
             },
             "CallLightning": {
-                "StormBolt": "Raio da Tempestade",
+                "StormBolt": "Storm Bolt",
                 "Storming": "Já está uma tempestade?"
             },
             "CallTheHunt": {
-                "Bonus": "Aplicar o dano adicional do Chamado de Caça? (1d6)",
+                "Bonus": "Aplicar o dano adicional do Call the Hunt? (1d6)",
                 "Select": "Selecione os alvos (máx: {maxTargets})"
             },
             "CalmEmotions": {
@@ -1079,8 +1146,8 @@
                 "Indifference": "Indiferença"
             },
             "CelestialRevelation": {
-                "Damage": "Consumo Radiante: Dano",
-                "End": "Revelação Celestial: Fim",
+                "Damage": "Radiant Consumption: Dano",
+                "End": "Celestial Revelation: Fim",
                 "HeavenlyWingsAvatar": "Heavenly Wings Avatar:",
                 "HeavenlyWingsToken": "Heavenly Wings Token:",
                 "InnerRadianceAvatar": "Inner Radiance Avatar:",
@@ -1089,7 +1156,7 @@
                 "NecroticShroudToken": "Necrotic Shroud Token:"
             },
             "ChainLightning": {
-                "Leap": "Corrente de Relâmpagos: Salto",
+                "Leap": "Chain Lightning: Salto",
                 "Select": "Onde o raio deve saltar? Máx: {maxTargets}"
             },
             "ChangeSeason": {
@@ -1102,8 +1169,8 @@
             },
             "ChaosBolt": {
                 "AlwaysBounce": "Sempre Salta:",
-                "Bounce": "Para quem o Raio de Caos deve saltar?",
-                "BounceFeature": "Raio de Caos: Saltar",
+                "Bounce": "Para quem o Chaos Bolt deve saltar?",
+                "BounceFeature": "Chaos Bolt: Saltar",
                 "Select": "Escolha o tipo de dano:"
             },
             "CharlatansDie": {
@@ -1114,7 +1181,7 @@
                 "YourCover": "Sua Cobertura:"
             },
             "ChillTouch": {
-                "Undead": "Toque Necrótico: Efeito Morto-Vivo"
+                "Undead": "Chill Touch: Efeito em Undead"
             },
             "ChromaticOrb": {
                 "BaseMaxJumps": "Pulos Máx. Base:",
@@ -1122,60 +1189,60 @@
                 "TargetDamageSelection": "Seleção de Dano por Alvo:"
             },
             "CircleCast": {
-                "AbjColor": "Cor de Abjuração:",
+                "AbjColor": "Cor de Abjuration:",
                 "Circle": "(Círculo de Magia)",
-                "ConColor": "Cor de Invocação:",
+                "ConColor": "Cor de Conjuration:",
                 "Concentration": "Você atingiu ou ultrapassou seu limite de concentração e não pode ajudar este círculo!",
-                "DivColor": "Cor de Advinhação:",
-                "EncColor": "Cor de Encantamento:",
-                "EvoColor": "Cor de Evocação:",
-                "IllColor": "Cor de Ilusão:",
+                "DivColor": "Cor de Divination:",
+                "EncColor": "Cor de Enchantment:",
+                "EvoColor": "Cor de Evocation:",
+                "IllColor": "Cor de Illusion:",
                 "MoreParticipants": "É necessário mais participante antes que você possa fazer isso!",
-                "NecColor": "Cor de Necromancia:",
+                "NecColor": "Cor de Necromancy:",
                 "NoSpellSlots": "Você não possui os espaços de magia necessários para auxiliar este círculo!",
                 "NotParticipant": "Você não faz parte deste círculo!",
                 "Safeguard": {
                     "Message": "Crie zonas seguras para o Safeguard. Clique com o botão direito para concluir antecipadamente."
                 },
                 "SelectType": "Selecione uma opção:",
-                "TrsColor": "Cor de Transmutação:"
+                "TrsColor": "Cor de Transmutation:"
             },
             "CircleOfTheLandSpells": {
-                "Arid": "Terra Árida",
+                "Arid": "Arid Land",
                 "ChooseLand": "Qual Terra?",
-                "Polar": "Terra Polar",
-                "Temperate": "Terra Temperada",
-                "Tropical": "Terra Tropical"
+                "Polar": "Polar Land",
+                "Temperate": "Temperate Land",
+                "Tropical": "Tropical Land"
             },
             "CircleSpell": {
-                "Augment": "Aumentar",
-                "Distribute": "Distribuir",
-                "Expand": "Expandir",
-                "Prolong": "Prolongar",
+                "Augment": "Augment",
+                "Distribute": "Distribute",
+                "Expand": "Expand",
+                "Prolong": "Prolong",
                 "Safeguard": "Safeguard",
-                "Supplant": "Suplantar",
+                "Supplant": "Supplant",
                 "WidthOrLength": "Aumentar comprimento ou largura?"
             },
             "CloudRune": {
                 "Reaction": "Usar {item} para redirecionar o ataque de {name}?"
             },
             "Cloudkill": {
-                "Damage": "Névoa Mortal: Dano",
-                "NoRoom": "Sem espaço para a névoa mortal se mover!"
+                "Damage": "Cloudkill: Dano",
+                "NoRoom": "Sem espaço para a Cloudkill se mover!"
             },
             "Command": {
-                "Approach": "Aproximar",
-                "Drop": "Largar",
-                "Flee": "Fugir",
-                "Grovel": "Abaixar",
-                "Halt": "Parar",
+                "Approach": "Approach",
+                "Drop": "Drop",
+                "Flee": "Flee",
+                "Grovel": "Grovel",
+                "Halt": "Halt",
                 "YouMust": "Você deve: "
             },
             "CompelledDuel": {
                 "EndEffect": "O conjurador terminou o turno a mais de 30 pés de distância do alvo. Remover efeito?",
-                "Moved": "Duelo Compelido: Movido",
-                "Source": "Duelo Compelido: Origem",
-                "Target": "Duelo Compelido: Alvo"
+                "Moved": "Compelled Duel: Movido",
+                "Source": "Compelled Duel: Origem",
+                "Target": "Compelled Duel: Alvo"
             },
             "Config": {
                 "BonusDamage": "Bônus Dano:"
@@ -1193,7 +1260,7 @@
                 "Skills": "Testes de Perícia que podem receber bônus:"
             },
             "ControlUndead": {
-                "Controlled": "Controlar Morto-Vivo: Controlado"
+                "Controlled": "Control Undead: Controlado"
             },
             "CosmicOmen": {
                 "Weal": "Usar {itemName} para dar um bônus à rolagem de {tokenName}?",
@@ -1204,17 +1271,17 @@
                 "Use": "Você falhou na salvaguarda ({total})! Usar {feature}?"
             },
             "CreatePactWeapon": {
-                "CustomCompendium": "Chave Personalizada Compêndio de Armas de Pacto:",
-                "Dismiss": "Dispensar Arma de Pacto",
+                "CustomCompendium": "Chave Personalizada do Compêndio de Pact Weapon:",
+                "Dismiss": "Dispensar Pact Weapon",
                 "Existing": "Melhorar Arma Existente",
-                "Select": "Selecione uma Arma de Pacto",
+                "Select": "Selecione uma Pact Weapon",
                 "Summon": "Invocar Nova Arma",
                 "Type": "Como você vai usar este recurso?",
-                "Weapon": "Arma de Pacto"
+                "Weapon": "Pact Weapon"
             },
             "CrimsonRite": {
                 "NoRites": "Nenhum rito encontrado no ator!",
-                "Select": "Qual Rito Carmesim?",
+                "Select": "Qual Crimson Rite?",
                 "Weapon": "Em qual arma você ativará o rito?"
             },
             "Crusher": {
@@ -1224,8 +1291,8 @@
                 "Bright": "Ativar Lâmina (Plena)",
                 "Dim": "Ativar Lâmina (Penumbra)",
                 "Douse": "Apagar Lâmina",
-                "Heal": "Lâmina de Cristal: Cura",
-                "Light": "Lâmina de Cristal: Luz"
+                "Heal": "Crystal Blade: Cura",
+                "Light": "Crystal Blade: Luz"
             },
             "CunningStrike": {
                 "Use": "Usar Cunning Strike?",
@@ -1246,19 +1313,22 @@
                 "SpecificType": "Se sim, tipo de dano:"
             },
             "DancingSword": {
-                "Attack": "Espada Dançante: Atacar",
-                "Toss": "Espada Dançante: Jogar"
+                "Attack": "Dancing Sword: Atacar",
+                "Toss": "Dancing Sword: Jogar"
             },
             "DangerSense": {
                 "CanSee": "Esta salvaguarda é de um efeito que você pode ver."
             },
             "DanothsVisor": {
                 "Check": "Este teste depende da visão.",
-                "Spyglass": "Viseira de Danoth: Luneta",
-                "XRay": "Viseira de Danoth: Raio-X"
+                "Spyglass": "Danoth's Visor: Luneta",
+                "XRay": "Danoth's Visor: Raio-X"
             },
             "DanseMacabre": {
-                "CommandUndead": "Dança Macabra: Comandar Morto-Vivo"
+                "CommandUndead": "Danse Macabre: Comandar Undead"
+            },
+            "DarkBolt": {
+                "Select": "Selecione seus alvos (Máx de Bolts: {maxBolts}):"
             },
             "Darkness": {
                 "Attach": "Anexar a si mesmo?"
@@ -1267,28 +1337,28 @@
                 "Notify": "Clique direito para adicionar um ponto de parada. Clique esquerdo para finalizar."
             },
             "Dawn": {
-                "EndTurn": "Aurora: Fim do Turno",
-                "Move": "Aurora: Mover"
+                "EndTurn": "Dawn: Fim do Turno",
+                "Move": "Dawn: Mover"
             },
             "DazzlingFootwork": {
                 "AgileStrikes": "Ataque Desarmado em um inimigo próximo?",
                 "DanceVirtuoso": "Este teste envolve você dançando."
             },
             "DeathBurst": {
-                "Name": "Explosão da Morte"
+                "Name": "Death Burst"
             },
             "DeckOfMiscellany": {
-                "AllowCreation": "Allow Card Creation:",
+                "AllowCreation": "Permitir Criação de Carta:",
                 "Burlap": "Burlap",
-                "Card": "Miscellany Card",
-                "Convert": "Convert into a card?",
-                "Gold": "of Gold",
+                "Card": "Carta Miscellany",
+                "Convert": "Converter em uma Carta?",
+                "Gold": "de Gold",
                 "Leather": "Leather",
                 "Silk": "Silk",
                 "Wooden": "Wooden"
             },
             "DeckOfWonder": {
-                "DysteryDrawn": "Compra Misteriosa:",
+                "DysteryDrawn": "Mystery Drawn:",
                 "Gemstone": "Pedra Preciosa",
                 "Jewlery": "Joia",
                 "Knife": "Escolha uma Arma:",
@@ -1301,7 +1371,7 @@
                 "SelectACard": "Escolha uma Carta:",
                 "SelectCard": "Carta Escolhida:",
                 "Size": "Tamanho do Deck:",
-                "UseJustice": "Evite vantagens e desvantagens?",
+                "UseJustice": "Evitar vantagens e desvantagens?",
                 "UseJusticeFor": "Prevenir vantagens e desvantagens para {name}?",
                 "Vulture": {
                     "Found": "O item foi encontrado?",
@@ -1313,7 +1383,7 @@
                 "UseAndTarget": "Redirecionar Ataque?"
             },
             "DetectThoughts": {
-                "ProbeDeeper": "Detectar Pensamentos: Sondar Profundamente"
+                "ProbeDeeper": "Detect Thoughts: Probe Deeper"
             },
             "Devastator": {
                 "Message": "Marque um inimigo e uma quantidade máxima de aliados igual ao seu bônus de proficiência!"
@@ -1323,75 +1393,75 @@
                 "StepOfTheWind": "Step of the Wind"
             },
             "DivineSmite": {
-                "Context": "Destruir Alvo?",
-                "CreatureTypes": "Tipos de Criatura Dano Extra:",
-                "Ranged": "Permitir Destruições em Ataques à Distância",
-                "Unarmed": "Permitir Destruições em Ataques Desarmados"
+                "Context": "Smite no Alvo?",
+                "CreatureTypes": "Tipos de Criatura para Dano Adicional:",
+                "Ranged": "Permitir Smite em Ataques à Distância",
+                "Unarmed": "Permitir Smite em Ataques Desarmados"
             },
             "DraconicStrike": {
                 "Select": "Mudar o tipo do dano?"
             },
             "DragonVessel": {
-                "Ale": "Cerveja",
-                "Mead": "Hidromel",
-                "OliveOil": "Azeite",
-                "PotionOfClimbing": "Poção de Escalada",
-                "PotionOfDragonsMajesty": "Poção da Majestade do Dragão",
-                "PotionOfFireBreath": "Poção do Sopro de Fogo",
-                "PotionOfFlying": "Poção de Voo",
-                "PotionOfHealingGreater": "Poção de Cura (Maior)",
-                "PotionOfHealingNormal": "Poção de Cura (Normal)",
-                "PotionOfHealingSuperior": "Poção de Cura (Superior)",
-                "PotionOfHealingSupreme": "Poção de Cura (Suprema)",
+                "Ale": "Ale",
+                "Mead": "Mead",
+                "OliveOil": "Olive Oil",
+                "PotionOfClimbing": "Potion of Climbing",
+                "PotionOfDragonsMajesty": "Potion of Dragon's Majesty",
+                "PotionOfFireBreath": "Potion of Fire Breath",
+                "PotionOfFlying": "Potion of Flying",
+                "PotionOfHealingGreater": "Potion of Healing (Greater)",
+                "PotionOfHealingNormal": "Potion of Healing (Normal)",
+                "PotionOfHealingSuperior": "Potion of Healing (Superior)",
+                "PotionOfHealingSupreme": "Potion of Healing (Supreme)",
                 "Select": "Qual item?",
-                "Whiskey": "Uísque",
-                "Wine": "Vinho"
+                "Whiskey": "Whiskey",
+                "Wine": "Wine"
             },
             "DragonsBreath": {
-                "DragonBreath": "Sopro de Dragão"
+                "DragonBreath": "Dragon Breath"
             },
             "DragonsWrath": {
-                "AscendantBreath": "Ira do Dragão: Sopro Ascendente",
-                "Burst": "Ira do Dragão: Explosão Crítica",
-                "WakenedBreath": "Ira do Dragão: Sopro Desperto"
+                "AscendantBreath": "Dragon's Wrath: Ascendant Breath",
+                "Burst": "Dragon's Wrath: Critical Burst",
+                "WakenedBreath": "Dragon's Wrath: Wakened Breath"
             },
             "DreadLord": {
-                "ShadowAttack": "Senhor do Pavor: Ataque da Sombra",
-                "ShadowAura": "Sombra do Senhor do Pavor",
-                "Turn": "Senhor do Pavor: Início do Turno"
+                "ShadowAttack": "Dread Lord: Ataque da Sombra",
+                "ShadowAura": "Dread Lord's Shadow",
+                "Turn": "Dread Lord: Início do Turno"
             },
             "DreadfulAspect": {
-                "Turn": "Aspecto Apavorante: Fim do Turno"
+                "Turn": "Dreadful Aspect: Fim do Turno"
             },
             "DustDevil": {
-                "ContactItem": "Redemoinho de Poeira: Contato",
-                "Move": "Redemoinho de Poeira: Mover"
+                "ContactItem": "Dust Devil: Contato",
+                "Move": "Dust Devil: Mover"
             },
             "EffectImmunity": {
                 "Immune": "Imune",
                 "Name": "Imunidade ao Efeito"
             },
             "EldritchBlast": {
-                "Beam": "Raio Místico: Raio",
+                "Beam": "Eldritch Blast: Raio",
                 "Target": "Quais alvos?"
             },
             "EldritchCannon": {
-                "Cannon": "Canhão Místico",
-                "Command": "Canhão Místico: Comando",
-                "Dismiss": "Canhão Místico: Dispensar",
-                "ExplosiveCannon": "Canhão Explosivo",
-                "Flamethrower": "Lança-Chamas",
-                "ForceBallista": "Força de Balista",
-                "FortifiedPosition": "Posição Fortificada",
-                "Maximum": "Você já tem o número máximo de Canhões Místicos!",
+                "Cannon": "Eldritch Cannon",
+                "Command": "Eldritch Cannon: Comando",
+                "Dismiss": "Eldritch Cannon: Dispensar",
+                "ExplosiveCannon": "Explosive Cannon",
+                "Flamethrower": "Flamethrower",
+                "ForceBallista": "Force Ballista",
+                "FortifiedPosition": "Fortified Position",
+                "Maximum": "Você já tem o número máximo de Eldritch Cannons!",
                 "NoSlots": "Você não tem usos ou espaços de magia restantes!",
-                "Protector": "Protetor",
-                "SelectType": "Selecione o tipo de Canhão Místico",
+                "Protector": "Protector",
+                "SelectType": "Selecione o tipo de Eldritch Cannon",
                 "Size": "Qual o tamanho do canhão {cannonName}?",
-                "SpendPact": "Criar um Canhão Místico gastando um espaço de magia de pacto? ({slotValue} de {slotMax} restante(s))",
-                "SpendPactAgain": "Criar um segundo Canhão Místico gastando um espaço de magia de pacto? ({slotValue} de {slotMax} restante(s))",
-                "SpendSlot": "Criar um Canhão Místico gastando um espaço de magia de {slotLevel}º nível? ({slotValue} de {slotMax} restante(s))",
-                "SpendSlotAgain": "Criar um segundo Canhão Místico gastando um espaço de magia de {slotLevel}º nível? ({slotValue} de {slotMax} restante(s))"
+                "SpendPact": "Criar um Eldritch Cannon gastando um espaço de magia de pacto? ({slotValue} de {slotMax} restante(s))",
+                "SpendPactAgain": "Criar um segundo Eldritch Cannon gastando um espaço de magia de pacto? ({slotValue} de {slotMax} restante(s))",
+                "SpendSlot": "Criar um Eldritch Cannon gastando um espaço de magia de {slotLevel}º nível? ({slotValue} de {slotMax} restante(s))",
+                "SpendSlotAgain": "Criar um segundo Eldritch Cannon gastando um espaço de magia de {slotLevel}º nível? ({slotValue} de {slotMax} restante(s))"
             },
             "EldritchSmite": {
                 "Prone": "Derrubar o alvo?"
@@ -1406,8 +1476,8 @@
                 "SpellOnly": "Apenas Magias:"
             },
             "ElementalCleaver": {
-                "Change": "Cutelo Elemental: Mudar Tipo de Dano",
-                "ElementalCleaver": "Cutelo Elemental",
+                "Change": "Elemental Cleaver: Mudar Tipo de Dano",
+                "ElementalCleaver": "Elemental Cleaver",
                 "SelectWeapon": "Qual arma você quer infundir?"
             },
             "ElementalWeapon": {
@@ -1415,37 +1485,43 @@
                 "SelectWeapon": "Qual arma você quer encantar?"
             },
             "EmboldeningBond": {
-                "Bonus": "Bônus de Vínculo Encorajador",
-                "Protective": "Vínculo de Proteção",
-                "ProtectiveDamage": "Vínculo de Proteção: Dano",
-                "ProtectiveTitle": "Vínculo de Proteção: Proteger Alvo?"
+                "Bonus": "Bônus de Emboldening Bond",
+                "Protective": "Protective Bond",
+                "ProtectiveChooseAlly": "Pedir um aliado para te protegor?",
+                "ProtectiveConfig": "Avisar alvos machucados ao invés de aliados:",
+                "ProtectiveDamage": "Protective Bond: Dano",
+                "ProtectivePrompt": "{targetName} sofreu dano e ativou {featureName}. Gastar sua reação para se teletransportar e sofrer o dano?",
+                "ProtectiveTitle": "Protective Bond: Proteger Alvo?"
             },
             "Engulf": {
-                "Grapples": "Iniciar agarrão",
-                "Grappling": "Comportamento do Agarrão:",
-                "Requires": "Já deve estar agarrando"
+                "Center": "Centralizar Token:",
+                "Grapples": "Iniciar Grapple",
+                "Grappling": "Comportamento do Grapple:",
+                "Max": "Engulfed Máx:",
+                "Name": "Engulf",
+                "Requires": "Já deve estar Grapple"
             },
             "Enlarge": {
                 "Double": "Dados de arma dobrados ao invés de +1d4:",
-                "Name": "Aumentar"
+                "Name": "Enlarge"
             },
             "EnlargeReduce": {
-                "Enlarge": "Aumentar",
-                "Reduce": "Reduzir",
-                "Select": "Aumentar ou Reduzir?"
+                "Enlarge": "Enlarge",
+                "Reduce": "Reduce",
+                "Select": "Enlarge ou Reduce?"
             },
             "Escape": {
                 "Name": "Escapar"
             },
             "ExperimentalElixir": {
-                "Boldness": "Elixir Experimental: Ousadia",
-                "Flight": "Elixir Experimental: Voo",
-                "Healing": "Elixir Experimental: Cura",
+                "Boldness": "Experimental Elixir: Boldness",
+                "Flight": "Experimental Elixir: Flight",
+                "Healing": "Experimental Elixir: Healing",
                 "MakeAnother": "Criar outro Elixir gastando um espaço de magia de nível {slotLevel}? ({slotValue} de {slotMax} restante(s))",
                 "MakeAnotherPact": "Criar outro Elixir gastando um espaço de magia de pacto? ({slotValue} de {slotMax} restante(s))",
-                "Resilience": "Elixir Experimental: Resiliência",
-                "Swiftness": "Elixir Experimental: Celeridade",
-                "Transformation": "Elixir Experimental: Transformação"
+                "Resilience": "Elixir Experimental: Resilience",
+                "Swiftness": "Elixir Experimental: Swiftness",
+                "Transformation": "Elixir Experimental: Transformation"
             },
             "ExpertDivination": {
                 "Select": "Qual nível de espaço de magia vpcê quer recuperar?"
@@ -1458,8 +1534,8 @@
                 "Name": "Falha por Quantidade"
             },
             "Fall": {
-                "Acr": "Sim (Acrobacia)",
-                "Ath": "Sim (Atletismo)",
+                "Acr": "Sim (Acrobatics)",
+                "Ath": "Sim (Athletics)",
                 "Creature": "Em Outra Criatura",
                 "Distance": "Distância (pés):",
                 "Ground": "No Chão",
@@ -1467,7 +1543,7 @@
                 "Save": "Salvaguarda de Destreza (CD: 15)",
                 "SkillCheck": "Teste de Perícia (CD: 15)",
                 "Target": "Selecione um alvo e tente novamente!",
-                "Tiny": "Uma ou ambas as criaturas são Minúsculas!",
+                "Tiny": "Uma ou ambas as criaturas são Tiny!",
                 "Type": "Tipo de Queda:",
                 "Water": "Na Água"
             },
@@ -1478,30 +1554,36 @@
                 "Use": "Usar {item} para re-rolar uma salvaguarda falha de {total}?"
             },
             "FarStep": {
-                "Name": "Passo Distante",
-                "Teleport": "Passo Distante: Teleporte"
+                "Name": "Far Step",
+                "Teleport": "Far Step: Teleporte"
+            },
+            "FateGambler": {
+                "SkillOrAbility": "Este teste foi bem-sucedido contra outra criatura com um ND maior que 0?"
+            },
+            "FelineForm": {
+                "Revert": "Feline Form: Reverter"
             },
             "FeyStep": {
-                "Autumn": "Passo Feérico (Outono)",
-                "Charmed": "Passo Feérico (Autumn): Enfeitiçado",
-                "Frightened": "Passo Feérico (Inverno): Amedrontado",
+                "Autumn": "Fey Step (Autumn)",
+                "Charmed": "Fey Step (Autumn): Charmed",
+                "Frightened": "Fey Step (Winter): Frightened",
                 "SelectAutumn": "Selecione alvos para enfeitiçar (Máx: {max})",
                 "SelectSpring": "Quem se teleporta?",
                 "SelectWinter": "Selecione alvos para amedrontar",
-                "Spring": "Passo Feérico (Primavera)",
-                "Summer": "Passo Feérico (Verão)",
-                "Winter": "Passo Feérico (Inverno)"
+                "Spring": "Fey Step (Spring)",
+                "Summer": "Fey Step (Summer)",
+                "Winter": "Fey Step (Winter)"
             },
             "FindFamiliar": {
                 "Choose": "Escolha o Familiar",
-                "Command": "Convocar Familiar: Comando",
+                "Command": "Find Familiar: Comando",
                 "Error": "Nenhum token ou dado de familiar encontrado!",
                 "InvalidSpell": "Tipo de Magia Inválida!",
                 "Movement": "Qual Tipo de Delsocamento?",
-                "PocketDimension": "Convocar Familiar: Dimensão de Bolso",
+                "PocketDimension": "Find Familiar: Pocket Dimension",
                 "ReactionUsed": "O familiar já usou sua reação!",
                 "TooFar": "Familiar Muito Longe!",
-                "Touch": "Convocar Familiar: Tocar"
+                "Touch": "Find Familiar: Tocar"
             },
             "FindSteed": {
                 "Choose": "Escolha a Montaria",
@@ -1511,33 +1593,33 @@
                 "Type": "Qual tipo de criatura?"
             },
             "FireRune": {
-                "AllowUnarmed": "Permitir Runa de Fogo em Ataques Desarmados"
+                "AllowUnarmed": "Permitir Fire Rune em Ataques Desarmados"
             },
             "FireShield": {
-                "ChillShield": "Escudo Frio",
-                "Dismiss": "Escudo de Fogo: Dispensar",
+                "ChillShield": "Chill Shield",
+                "Dismiss": "Fire Shield: Dispensar",
                 "Select": "Qual tipo de escudo?",
-                "WarmShield": "Escudo Quente"
+                "WarmShield": "Warm Shield"
             },
             "FireStorm": {
                 "Place": "Posicione até 10 modelos. Clique com o botão direito para finalizar",
                 "Templates": "Modelos"
             },
             "FlameBlade": {
-                "Evoke": "Evocar Lâmina Flamejante",
-                "Scimitar": "Cimitarra de Lâmina Flamejante"
+                "Evoke": "Evocar Flame Blade",
+                "Scimitar": "Flame Blade Scimitar"
             },
             "FlamingSphere": {
-                "EndTurn": "Esfera Flamejante: Fim do Turno",
-                "Move": "Esfera Flamejante: Mover",
+                "EndTurn": "Flaming Sphere: Fim do Turno",
+                "Move": "Flaming Sphere: Mover",
                 "Ram": "Forçar Alvo?",
-                "RamItem": "Esfera Flamejante: Forçar"
+                "RamItem": "Flaming Sphere: Forçar"
             },
             "FlockOfFamiliars": {
-                "Command": "Bando de Familiares: Comando",
+                "Command": "Flock of Familiars: Comando",
                 "ReactionUsed": "Os familiares estão muito longe ou já usaram sua reação!",
                 "TooFar": "Os familiares estão muito longe!",
-                "Touch": "Bando de Familiares: Tocar"
+                "Touch": "Flock of Familiars: Tocar"
             },
             "FocusedAim": {
                 "Bonus": "Sim ({kiCost} Ki / +{bonus} para atingir)"
@@ -1549,15 +1631,18 @@
                 "SelectLanguages": "Selecione seus idiomas conhecidos:"
             },
             "FormOfDread": {
-                "Fear": "Forma de Pavor: Medo",
-                "Use": "Tentativa de amedrontar o alvo?"
+                "Fear": "Form of Dread: Fear",
+                "Use": "Tentar amedrontar o alvo?"
+            },
+            "FormOfTheBeast": {
+                "Keen": "Esta verificação serve para rastrear ou perseguir sua presa."
             },
             "Gaze": {
                 "AllowAvert": "Permitir Desviar os Olhos:",
                 "AvertAdvantage": "Desviar os olhos concede à criatura vantagem em ataques contra o alvo:",
                 "AvertEffect": "Olhos Desviados",
                 "AvertSelect": "Desviar os olhos de {tokenName}?",
-                "Name": "Olhar"
+                "Name": "Gaze"
             },
             "GenericActions": {
                 "Legacy": "Legado",
@@ -1569,61 +1654,80 @@
             "GenericTeleport": {
                 "Name": "Teleporte Genérico"
             },
+            "GhaalShaarat": {
+                "NeedTools": "Você precisa ter Smith's Tools para usar {itemName}!",
+                "NoWeapons": "Nenhuma arma corpo a corpo simples ou marcial foi encontrada!",
+                "RequireTools": "Exigir Smith's Tools:"
+            },
             "Grapple": {
-                "ChooseSkill": "Como você quer disputar o agarrão?",
-                "ChooseSkillEscape": "Como você quer escapar do agarrão?",
-                "Immune": "O alvo não pode ser agarrado!",
-                "Size": "O alvo é grande demais para ser agarrado!"
+                "ChooseSkill": "Como você quer disputar o Grapple?",
+                "ChooseSkillEscape": "Como você quer escapar do Grapple?",
+                "Immune": "O alvo não pode ser Grapple!",
+                "Size": "O alvo é grande demais para ser Grapple!"
             },
             "Grappler": {
-                "Grapple": "Tentar Agarrar {tokenName}?",
-                "Pin": "Imobilizador: Pin",
-                "Pinned": "Imobilizador: Imobilizado por {tokenName}",
-                "Pinning": "Imobilizador: Imobilizando {tokenName}"
+                "Grapple": "Tentar Grapple {tokenName}?",
+                "Pin": "Grappler: Imobilizar",
+                "Pinned": "Grappler: Imobilizado por {tokenName}",
+                "Pinning": "Grappler: Imobilizando {tokenName}"
             },
             "GraspOfHadar": {
                 "Select": "Qual alvo?"
             },
+            "GravityWell": {
+                "Move": "Usar {item} para mover {token}?"
+            },
             "Grease": {
-                "Fall": "Área Escorregadia: Queda"
+                "Fall": "Grease: Queda"
             },
             "GreaterDivineIntervention": {
                 "RestFormula": "Fórmula do Descanso:"
             },
+            "GreaterSanguineCurse": {
+                "Attack": "Você está sob a luz do sol?",
+                "Sunlight": "Você está sob a luz do sol."
+            },
             "GreenFlameBlade": {
                 "Leap": "Onde o fogo saltou?",
-                "LeapFeature": "Lâmina da Chama Esverdeada: Salto",
+                "LeapFeature": "Green-Flame Blade: Salto",
                 "NoWeapons": "Nenhuma arma equipada encontrada!",
                 "SelectWeapon": "Atacar com qual arma?"
             },
+            "Groundwork": {
+                "CompressionLock": "Causar dano a todas essas criaturas? ({formula})",
+                "Inescapable": "Conceder desvantagem em {activityName}."
+            },
             "Grovelthrash": {
-                "Damage": "Causar 2d6 de dano contundente adicional ao custo de 1d6 de dano psíquico?",
+                "Damage": "Causar 2d6 de dano Bludgeoning adicional ao custo de 1d6 de dano Psychic?",
                 "Insight": "Este teste é para identificar uma mentira falada em um idioma que você entende",
                 "Reaction": "Reação de Grovelthrash"
             },
             "GuardianArmor": {
-                "DefensiveField": "Armadura do Guardião: Campo Defensivo",
-                "Distracted": "Manoplas Trovejantes: Distraído",
-                "ThunderGauntlets": "Armadura do Guardião: Manoplas Trovejantes"
+                "DefensiveField": "Guardian Armor: Defensive Field",
+                "Distracted": "Thunder Gauntlets: Distraído",
+                "ThunderGauntlets": "Guardian Armor: Thunder Gauntlets"
             },
             "GuardianEmblem": {
                 "Protect": "Usar {item} para proteger {name} de um acerto crítico?"
             },
             "GuardianOfFaith": {
-                "Damage": "Guardião da Fé: Dano"
+                "Damage": "Guardian of Faith: Dano"
             },
             "GuardianOfNature": {
-                "Beast": "Fera Primitiva",
+                "Beast": "Primal Beast",
                 "Select": "Qual forma você vai assumir?",
-                "Tree": "Grande Árvore"
+                "Tree": "Great Tree"
+            },
+            "GuidedStrike": {
+                "Attack": "Usar {item}? Rolagem de Ataque: {attackRoll}"
             },
             "GustOfWind": {
-                "Move": "Lufada de Vento: Mover",
-                "Push": "Lufada de Vento: Empurrar",
+                "Move": "Gust of Wind: Mover",
+                "Push": "Gust of Wind: Empurrar",
                 "PushOnMove": "Empurar Alvos Após \"Mover\":"
             },
             "HailOfThorns": {
-                "Burst": "Saraivada de Espinhos: Explosão"
+                "Burst": "Hail of Thorns: Burst"
             },
             "HarkonsBite": {
                 "HybridAnimation": "Animação da Hybrid Form:",
@@ -1649,25 +1753,29 @@
                 "Select": "Quantos dados você quer usar?"
             },
             "HealingSpirit": {
-                "Apply": "Espírito Curativo: Aplicar Cura? ({numUses} uso(s) restante(s))",
-                "Heal": "Espírito Curativo: Curar",
-                "Move": "Espírito Curativo: Mover"
+                "Apply": "Healing Spirit: Aplicar Cura? ({numUses} uso(s) restante(s))",
+                "Heal": "Healing Spirit: Curar",
+                "Move": "Healing Spirit: Mover"
             },
             "HeatMetal": {
-                "Damage": "Esquentar Metal: Dano",
-                "Dialog": "Esquentar Metal: Diálogo",
+                "Damage": "Heat Metal: Dano",
+                "Dialog": "Heat Metal: Diálogo",
                 "Drop": "Soltar objeto aquecido?",
-                "Held": "Esquentar Metal: Segurando",
+                "Held": "Heat Metal: Segurando",
                 "MustDrop": "Falhou na salvaguarda e deve soltar o item de metal!",
-                "Pulse": "Esquentar Metal: Pulsar",
+                "Pulse": "Heat Metal: Pulsar",
                 "Unable": "Impossível (Armadura)"
+            },
+            "HeavyHitter": {
+                "PromptDefeated": "Aviso em alvos derrotados:",
+                "PromptGrappled": "Aviso em alvos Grappled:"
             },
             "HeightenedFocus": {
                 "BringAlly": "Levar um aliado com você?"
             },
             "Hex": {
                 "Hexed": "Amaldiçoado",
-                "Move": "Bruxaria: Mover",
+                "Move": "Hex: Mover",
                 "Multiple": "Qual alvo você quer amaldiçoar?",
                 "SelectAbility": "Qual atributo deve ter desvantagem?"
             },
@@ -1675,43 +1783,43 @@
                 "NoWeapons": "Nenhuma arma válida equipada para escolher!"
             },
             "HexbladesCurse": {
-                "Healing": "Maldição da Lâmina Maldita: Cura",
-                "Transfer": "Mestre das Maldições: Transferir Maldição?"
+                "Healing": "Hexblade's Curse: Cura",
+                "Transfer": "Master of Hexes: Transferir Maldição?"
             },
             "HiddenPaths": {
                 "Name": "Caminhos Ocultos"
             },
             "HoldPerson": {
-                "Overtime": "Imobilizar Pessoa (Fim do Turno)"
+                "Overtime": "Hold Person (Fim do Turno)"
             },
             "HolyNimbus": {
-                "Damage": "Halo Sagrado: Dano",
-                "Save": "Esta salvaguarda é de uma magia conjurada por um Ínfero ou Morto-Vivo."
+                "Damage": "Holy Nimbus: Dano",
+                "Save": "Esta salvaguarda é de uma magia conjurada por um Fiend ou Undead."
             },
             "HolyWeapon": {
-                "Burst": "Arma Sagrada: Explosão",
-                "BurstOvertime": "Arma Sagrada: Explosão (Fim do Turno)",
-                "Dismiss": "Arma Sagrada: Dispensar",
+                "Burst": "Holy Weapon: Explosão",
+                "BurstOvertime": "Holy Weapon: Explosão (Fim do Turno)",
+                "Dismiss": "Holy Weapon: Dispensar",
                 "NoWeapons": "O alvo não tem armas equipadas!",
                 "SelectWeapon": "Qual arma você gostaria de encantar?",
-                "Target": "Arma Sagrada: Alvo"
+                "Target": "Holy Weapon: Alvo"
             },
             "HungerOfHadar": {
                 "Buff": "Aumentar Dano para {name}",
                 "BuffTitle": "Escolha Bônus de Upcast",
-                "Cold": "Fome de Hadar: Gélido",
-                "Tentacles": "Fome de Hadar: Tentáculos"
+                "Cold": "Hunger of Hadar: Cold",
+                "Tentacles": "Hunger of Hadar: Tentáculos"
             },
             "HuntersMark": {
-                "Marked": "Marca do Caçador: Marcado",
-                "Move": "Marca do Caçador: Mover",
+                "Marked": "Hunter's Mark: Marcado",
+                "Move": "Hunter's Mark: Mover",
                 "Select": "Qual alvo você quer desmarcar?"
             },
             "HybridTransformation": {
-                "Bloodlust": "Sede de Sangue",
-                "LycanRegeneration": "Regeneração Licantrópica",
-                "PredatoryStrike": "Ataque do Predador",
-                "Revert": "Transformação Híbrida: Reverter"
+                "Bloodlust": "Bloodlust",
+                "LycanRegeneration": "Lycan Regeneration",
+                "PredatoryStrike": "Predatory Strike",
+                "Revert": "Hybrid Transformation: Reverter"
             },
             "IPiercedTheIllusion": {
                 "Insight": "Este teste é contra alguém que você está conversando."
@@ -1734,64 +1842,67 @@
                 "SelectTarget": "Selecione um alvo para sofrer dano:"
             },
             "InfiltratorArmor": {
-                "ExtraDamage": "Aplicar 1d6 de dano elétrico adicional?",
-                "LightningLauncher": "Armadura do Infiltrador: Lança-Relâmpagos"
+                "ExtraDamage": "Aplicar 1d6 de dano Lightning adicional?",
+                "LightningLauncher": "Infiltrator Armor: Lightning Launcher"
             },
             "Influence": {
                 "Attitude": "Qual a Atitude do monstro?",
-                "Friendly": "Amigável",
-                "Hesitant": "Hesitante",
-                "Hostile": "Hostil",
+                "Friendly": "Friendly",
+                "Hesitant": "Hesitant",
+                "Hostile": "Hostile",
                 "HowWilling": "O quão disposto é o monstro?",
-                "Indifferent": "Indiferente",
+                "Indifferent": "Indifferent",
                 "Skill": "Qual Perícia será usada para Influenciar o monstro?",
-                "Unwilling": "Não-Disposto",
-                "Willing": "Disposto"
+                "Unwilling": "Unwilling",
+                "Willing": "Willing"
             },
             "InfuseItem": {
-                "AlreadyServant": "Você já tem um Servo Homúnculo ativo!",
-                "ArcanePropulsionArmor": "Armadura de Propulsão Arcana",
-                "ArcanePropulsionGauntlet": "Manoplas de Propulsão Arcana",
-                "ArmorOfMagicalStrength": "Armadura da Força Mágica",
-                "ChannelMagic": "Servo Homúnculo: Canalizar Magia",
-                "EndAll": "Encerrar Todas Infusões",
-                "EnhancedArcaneFocus": "Foco Arcano Aprimorado",
-                "EnhancedDefense": "Defesa Aprimorada",
-                "EnhancedWeapon": "Arma Aprimorada",
-                "ForceStrike": "Disparo de Energia",
-                "HomunculusCommand": "Servo Homúnculo: Comando",
-                "HomunculusHeart": "Coração do Servo Homúnculo",
-                "HomunculusServant": "Servo Homúnculo",
-                "Known": "Infusões Conhecidas:",
-                "New": "Nova infusão {infusionLabel} adicionada em <b>{itemName}</b> de {newActorName}.",
+                "AlreadyServant": "Você já tem um Homunculus Servant ativo!",
+                "ArcanePropulsionArmor": "Arcane Propulsion Armor",
+                "ArcanePropulsionGauntlet": "Arcane Propulsion Gauntlet",
+                "ArmorOfMagicalStrength": "Armor of Magical Strength",
+                "BootsOfTheWindingPath": "Boots of the Winding Path",
+                "ChannelMagic": "Homunculus Servant: Channel Magic",
+                "EndAll": "Encerrar Todas as Infusions",
+                "EnhancedArcaneFocus": "Enhanced Arcane Focus",
+                "EnhancedDefense": "Enhanced Defense",
+                "EnhancedWeapon": "Enhanced Weapon",
+                "ForceStrike": "Force Strike",
+                "HelmOfAwareness": "Helm of Awareness",
+                "HomunculusCommand": "Homunculus Servant: Comando",
+                "HomunculusHeart": "Heart of Homunculus Servant",
+                "HomunculusServant": "Homunculus Servant",
+                "Known": "Infusions Conhecidas:",
+                "MindSharpener": "Mind Sharpener",
+                "New": "Nova Infusion {infusionLabel} adicionada em <b>{itemName}</b> de {newActorName}.",
                 "NoArmor": "O alvo não tem uma armadura não-mágica válida equipada!",
-                "NoFocus": "O alvo não possui nenhum Bastão, Cajado ou Varinha não-mágica válida equipada!",
-                "NoKnown": "Você não possui infusões conhecidas configuradas no item medkit!",
-                "NoMissing": "Não há slots de magia para recuperar!",
-                "NoShield": "O alvo não tem um escudo não-mágico válida equipada!",
-                "Override": "Infusão {infusionLabel} removida em <b>{itemName}</b> de {oldActorName}.",
-                "RadiantBlind": "Arma Radiante: Cego",
-                "RadiantLight": "Arma Radiante: Luz",
-                "RadiantWeapon": "Arma Radiante",
-                "ReactionUsed": "O Servo Homúnculo já usou sua reação!",
-                "RepeatingShot": "Disparo Recorrente",
-                "RepulsionPush": "Escudo de Repulsão: Empurrar",
-                "RepulsionShield": "Escudo de Repulsão",
-                "ResistProne": "Armadura da Força Mágica: Resistir Caído",
+                "NoFocus": "O alvo não possui nenhuma Rod, Staff ou Wand não-mágica válida equipada!",
+                "NoKnown": "Você não possui Infusions conhecidas configuradas no item medkit!",
+                "NoMissing": "Não há espaços de magia para recuperar!",
+                "NoShield": "O alvo não tem um escudo não-mágico válida equipado!",
+                "Override": "Infusion {infusionLabel} removida em <b>{itemName}</b> de {oldActorName}.",
+                "RadiantBlind": "Radiant Weapon: Cego",
+                "RadiantLight": "Radiant Weapon: Luz",
+                "RadiantWeapon": "Radiant Weapon",
+                "ReactionUsed": "O Homunculus Servant já usou sua reação!",
+                "RepeatingShot": "Repeating Shot",
+                "RepulsionPush": "Repulsion Shield: Empurrar",
+                "RepulsionShield": "Repulsion Shield",
+                "ResistProne": "Armor of Magical Strength: Resistir Prone",
                 "ResistanceType": "Resistência a qual tipo de dano?",
-                "ResistantArmor": "Armadura da Resistência",
-                "ReturningWeapon": "Arma Bumerangue",
-                "Select": "Qual infusão?",
-                "SpellRefuelingRing": "Anel de Reabastecimento de Magia",
-                "TooFar": "Servo Homúnculo Muito Longe!",
-                "TooMany": "Você tem o número máximo de infusões já ativas!",
+                "ResistantArmor": "Resistance",
+                "ReturningWeapon": "Returning Weapon",
+                "Select": "Qual Infusion?",
+                "SpellRefuelingRing": "Spell-Refueling Ring",
+                "TooFar": "Homunculus Servant Muito Longe!",
+                "TooMany": "Você tem o número máximo de Infusions já ativas!",
                 "WhichArmor": "Qual armadura você quer infundir?",
-                "WhichFocus": "Qual Bastão, Cajado ou Varinha você quer de infundir?",
+                "WhichFocus": "Qual Rod, Staff ou Wand você quer de infundir?",
                 "WhichShield": "Qual escudo você quer infundir?",
                 "WhichWeapon": "Qual arma você quer infundir?"
             },
             "InsectPlague": {
-                "Damage": "Praga de Insetos: Dano"
+                "Damage": "Insect Plague: Dano"
             },
             "InsightfulManipulator": {
                 "ChaScore": "Valor de Carisma",
@@ -1814,22 +1925,22 @@
                 "Name": "Interdict Boon"
             },
             "InvestitureOfFlame": {
-                "Fire": "Manto de Chamas: Fogo",
-                "Heat": "Manto de Chamas: Calor"
+                "Fire": "Investiture of Flame: Fogo",
+                "Heat": "Investiture of Flame: Calor"
             },
             "InvestitureOfIce": {
-                "Cone": "Manto de Gelo: Cone"
+                "Cone": "Investiture of Ice: Cone"
             },
             "InvestitureOfStone": {
-                "Earthquake": "Manto de Pedra: Terremoto"
+                "Earthquake": "Investiture of Stone: Terremoto"
             },
             "InvestmentOfTheChainMaster": {
-                "Command": "Implemento do Mestre da Corrente: Comando",
-                "Resistance": "Implemento do Mestre da Corrente: Resistência do Familiar"
+                "Command": "Investment of the Chain Master: Comando",
+                "Resistance": "Investment of the Chain Master: Familiar Resistance"
             },
             "IronGaol": "O alvo é nativo do Inferno?",
             "JavelinOfLightning": {
-                "Bolt": "Azagaia do Relâmpago: Raio"
+                "Bolt": "Javelin of Lightning: Raio"
             },
             "Jump": {
                 "LongJump": {
@@ -1841,7 +1952,7 @@
                 "Check": "Este teste depende de: ",
                 "DiceThreshold": "Limite de Rolagem de Dados:",
                 "Hearing": "Audição",
-                "Name": "Sentidos Aguçados",
+                "Name": "Keen Senses",
                 "Sight": "Visão",
                 "Smell": "Olfato"
             },
@@ -1870,30 +1981,51 @@
             "Lifesteal": {
                 "HealingType": "Tipo de Cura:",
                 "MaxHPCure": "Recuperação de Redução de PV Máx:",
-                "Name": "Roubo de Vida",
+                "Name": "Lifesteal",
                 "ReduceMaxHP": "Reduzir PV Máx:",
                 "ThisItem": "Este Item",
                 "excessAsTemp": "Excesso de Cura como PV Temp:",
                 "validItems": "Itens Válidos:"
             },
             "LightningArrow": {
-                "Burst": "Flecha Relampejante: Explosão"
+                "Burst": "Lightning Arrow: Explosão"
             },
             "MaelstromAura": {
-                "Aura": "Aura do Redemoinho"
+                "Aura": "Maelstrom Aura"
             },
             "MageHand": {
-                "TooFar": "A distância da Mão Arcana está longe demais, dissipar?"
+                "TooFar": "A distância da Mage Hand está longe demais, dissipar?"
             },
             "Magic": {
                 "MagicItem": "Escolha um Item Mágico:",
                 "SelectSpell": "Escolha uma Magia:"
             },
+            "MagicItemPlan": {
+                "Choose": "Escolher Magic Item Plan:",
+                "ChooseNewPlan": ", selecione 'Nenhum' para criar um novo plano.",
+                "ChooseSwapPlan": "Escolha o Magic Item Plan para trocar",
+                "ItemName": "Magic Item Plan",
+                "Max": "Você já preparou o número máximo de planos! ({count} de {max})",
+                "NotPrepared": "(NÃO PREPARADO)",
+                "NotPreparedPrompt": "Seus planos para estes itens não estão preparados: {itemList}. Por favor, utilize a atividade {activityName} em cada um deles."
+            },
+            "MagicItemTinker": {
+                "ChargePrompt": "Escolha um item para recarregar:",
+                "DeletePrompt": "Excluir {itemName} para conceder um {spellSlot}?",
+                "DrainCommon": "Drenar Item Comum",
+                "DrainPrompt": "Escolha um item para drenar e ganhar um espaço de magia:",
+                "DrainRare": "Drenar Item Raro",
+                "DrainUncommon": "Drenar Item Incomum",
+                "DrainVeryRare": "Drenar Item Raríssimo",
+                "NoItems": "Nenhum item disponível!",
+                "NoSpell": "Sem Benefício",
+                "TransmutePrompt": "Escolha um item para transmutar em outro item mágico:"
+            },
             "MagicMissile": {
-                "Bolt": "Dardo de Míssil Mágico",
-                "RollEach": "Rolar Dano para Cada Dardo?",
+                "Bolt": "Magic Missile Bolt",
+                "RollEach": "Rolar Dano para Cada Bolt?",
                 "Select": "Quantos? (Máx: {maxMissiles})",
-                "Shield": "Escudo Arcano como reação?"
+                "Shield": "Shield como reação?"
             },
             "MagnificentFeast": {
                 "MagnificentFeast": "Magnificent Feast"
@@ -1902,39 +2034,40 @@
                 "BaitSwitchAC": "Quem recebe o bônus de CA?",
                 "CommanderConfirm": "Usar sua reação para fazer um ataque armado?",
                 "CommanderSelect": "Qual aliado deve atacar?",
+                "Maneuvering": "Usar sua reação para se mover até metade do seu deslocamento?",
                 "NoNearby": "Nenhum aliado com reação pode ver ou ouvir você!",
                 "PushDistance": "O quão longe você empurra o alvo?",
-                "Pushing": "Ataque de Encontrão: Ataque",
-                "SelectDice": "Executar uma manobra com qual categoria de dado de superioridade?",
-                "SelectManeuver": "Qual manobra usar?",
+                "Pushing": "Pushing Attack: Ataque",
+                "SelectDice": "Executar uma Maneuver com qual categoria de Superiority Die?",
+                "SelectManeuver": "Qual Maneuver usar?",
                 "SelectTarget": "Quem você ataca?",
-                "Sweeping": "Ataque Trespassante: Ataque",
-                "Tripping": "Derrubar: Ataque"
+                "Sweeping": "Sweeping Attack: Ataque",
+                "Tripping": "Trip Attack: Ataque"
             },
             "ManifestEcho": {
-                "Attack": "Eco Manifestado: Ataque",
-                "Dismiss": "Eco Manifestado: Dispensar",
-                "Echo": "Eco {name}",
-                "Far": "O eco de {actorName} está longe demais. Remover ele?",
-                "Legion": "Criar dois ecos ao invés de um?",
+                "Attack": "Manifest Echo: Ataque",
+                "Dismiss": "Manifest Echo: Dispensar",
+                "Echo": "Echo {name}",
+                "Far": "O Echo de {actorName} está longe demais. Remover ele?",
+                "Legion": "Criar dois Echos ao invés de um?",
                 "NoWeapons": "Você não tem armas equipadas para atacar!",
-                "Teleport": "Eco Manifestado: Teleporte",
+                "Teleport": "Manifest Echo: Teleporte",
                 "Weapon": "Com o que você quer de atacar?",
-                "Which": "Qual Eco?"
+                "Which": "Qual Echo?"
             },
             "ManifestMind": {
-                "Cast": "Mente Manifestada: Conjurar Magia",
-                "Dismiss": "Mente Manifestada: Dispensar",
-                "Far": "A Mente Manifestada de {actorName} está lnge demais. Removê-la?",
+                "Cast": "Manifest Mind: Conjurar Magia",
+                "Dismiss": "Manifest Mind: Dispensar",
+                "Far": "A Manifest Mind de {actorName} está longe demais. Removê-la?",
                 "Invalid": "Tipo de Ação Inválida!",
-                "Move": "Mente Manifestada: Mover"
+                "Move": "Manifest Mind: Mover"
             },
             "MantleOfInspiration": {
                 "Reaction": "Usar sua reação para se mover?",
                 "Targets": "Selecione até {maxtargets} alvos:"
             },
             "MartialAdvantage": {
-                "Name": "Vantagem Marcial"
+                "Name": "Martial Advantage"
             },
             "MartialArts": {
                 "ValidateWeaponType": "Validar Tipo de Arma:"
@@ -1948,43 +2081,47 @@
                 "Unlinked": "O alvo é um token desvinculado e o link só funcionará com esse token nesta cena!"
             },
             "MaximiliansEarthenGrasp": {
-                "Crush": "Abraço Terrestre de Maximilian: Esmagar",
-                "Grasp": "Abraço Terrestre de Maximilian: Agarrão",
+                "Crush": "Maximilian's Earthen Grasp: Crush",
+                "Grasp": "Maximilian's Earthen Grasp: Grasp",
                 "NoNearby": "Não há alvos próximos para agarrar!",
-                "Overtime": "Abraço Terrestre de Maximilian: Liberte-se",
-                "Select": "Selecione um alvo para agarrar:"
+                "Overtime": "Maximilian's Earthen Grasp: Break Free",
+                "Select": "Selecione um alvo para Grasp:"
+            },
+            "MemorizeSpell": {
+                "Prepare": "Selecione uma magia para preparar:",
+                "Unprepare": "Selecione uma magia para despreparar:"
             },
             "MetallicBreathWeapon": {
-                "Enervating": "Sopro Enervante",
-                "Repulsion": "Sopro Repulsivo",
-                "Select": "Qual tipo de arma de sopro?"
+                "Enervating": "Enervating Breath",
+                "Repulsion": "Repulsion Breath",
+                "Select": "Qual tipo de Breath Weapon?"
             },
             "Metamagic": {
                 "CarefulWhich": "Quais alvos têm um sucesso automático? (Máx: {max})",
-                "Empowered": "Gastar 1 Ponto de Feitiçaria para re-rolar o dado de dano? (Máx: {max})",
+                "Empowered": "Gastar 1 Sorcery Point para rerolar o dado de dano? (Máx: {max})",
                 "HeightenedWhich": "Quais alvos têm desvantagem?",
                 "NoValid": "Nenhuma magia aplicável para conjurar!",
-                "NotEnough": "Pontos de Feitiçaria insuficientes!",
+                "NotEnough": "Sorcery Point insuficientes!",
                 "TransmutedFirst": "Qual tipo de dano você vai substituir?",
                 "TransmutedSecond": "Qual tipo de dano você quer usar?",
-                "TwinnedUpcast": "Pontos de Feitiçaria insuficientes para duplicar esta magia conjurando em nível superior!",
+                "TwinnedUpcast": "Sorcery Point insuficientes para duplicar esta magia conjurando em nível superior!",
                 "TwinnedUpcastTargets": "Não é possível conjurar em nível acima e duplicar esta magia!",
-                "Which": "Gastar {cost} Ponto{plural} de Feitiçaria e conjurar qual magia?"
+                "Which": "Gastar {cost} Sorcery Point{plural} e conjurar qual magia?"
             },
             "MirrorImage": {
                 "Hit": "O ataque atingiu uma duplicata e a destruiu.",
                 "Miss": "Ataque teve como alvo uma duplicata e errou."
             },
             "MistyStep": {
-                "Name": "Passo Nebuloso"
+                "Name": "Misty Step"
             },
             "MistyWanderer": {
-                "TeleportFriend": "Teleportar uma criatura disposta?",
-                "Range": "Alcance Misty Wanderer"
+                "Range": "Alcance Misty Wanderer",
+                "TeleportFriend": "Teleportar uma criatura disposta?"
             },
             "Moonbeam": {
-                "Damage": "Raio Lunar: Dano",
-                "Move": "Raio Lunar: Mover"
+                "Damage": "Moonbeam: Dano",
+                "Move": "Moonbeam: Mover"
             },
             "MoonlightStep": {
                 "TeleportFriend": "Teleportar um aliado disposto?"
@@ -2001,11 +2138,11 @@
             },
             "Mutagencraft": {
                 "AttackSunlight": "{sourceTokenName} ou {targetTokenName} estão expostos diretamente à luz do sol?",
-                "Create": "Qual Mutagênico você quer criar?",
-                "Flush": "Criação de Mutagênicos: Flush Mutagênicos",
+                "Create": "Qual Mutagen você quer criar?",
+                "Flush": "Mutagencraft: Flush Mutagens",
                 "Negative": "Efeitos Negativos",
                 "Positive": "Efeitos Positivos",
-                "ReconstructionHealing": "Fórmula de Reconstrução: Cura",
+                "ReconstructionHealing": "Reconstruction Formula: Cura",
                 "SkillSunlight": "Esta é uma verificação baseada na visão com {actorName} ou o alvo da verificação sob luz solar direta?"
             },
             "NaturesWrath": {
@@ -2019,14 +2156,14 @@
             },
             "Overchannel": {
                 "Damage": "Usar {itemName} ao custo de {damageFormula} de dano?",
-                "DamageItem": "Sobrecarga: Dano"
+                "DamageItem": "Overchannel: Dano"
             },
             "PackTactics": {
-                "Name": "Táticas de Bando"
+                "Name": "Pack Tactics"
             },
             "PactOfTheBlade": {
                 "Conjure": "Que arma você conjura?",
-                "Name": "Pacto das Lâminas",
+                "Name": "Pact of the Blade",
                 "ReplaceDamage": "Substituir dano da arma?",
                 "SelectBond": "Com qual arma você cria um vínculo?"
             },
@@ -2036,33 +2173,36 @@
             "PariahsShield": {
                 "MaxBonus": "Bônus Máx. de CA:",
                 "Protect": "Proteger {name} com {item}?",
-                "Reaction": "Escudo do Pária: Proteger"
+                "Reaction": "Pariah's Shield: Proteger"
             },
             "Parry": {
-                "Name": "Aparar"
+                "Name": "Parry"
             },
             "PeerlessSkill": {
                 "Confirm": "O teste foi um sucesso?"
             },
+            "PerfectWeapon": {
+                "TransferBonus": "Transferir bônus da arma para CA:"
+            },
             "Piercer": {
-                "Reroll": "Re-rolar qual dado mais baixo?"
+                "Reroll": "Rerolar qual dado mais baixo?"
             },
             "PoisonousSkin": {
-                "Poison": "Grunge: Veneno"
+                "Poison": "Grung: Veneno"
             },
             "PotionOfAdvantage": {
                 "Select": "Ganhar vantagem nesta rolagem?"
             },
             "PotionOfFireBreath": {
-                "Attack": "Ataque da Poção de Sopro de Fogo"
+                "Attack": "Ataque do Potion of Fire Breath"
             },
             "PotionOfPoison": {
-                "Damage": "Poção de Veneno: Dano"
+                "Damage": "Potion of Poison: Dano"
             },
             "PowerOfTheWilds": {
-                "Falcon": "Falcão",
-                "Lion": "Leão",
-                "Ram": "Carneiro",
+                "Falcon": "Falcon",
+                "Lion": "Lion",
+                "Ram": "Ram",
                 "RamProne": "Derrubar alvo?"
             },
             "PowerWordHeal": {
@@ -2072,14 +2212,14 @@
                 "Select": "Distribuir PV (Quantidade a Distribuir: {maxAmount}. Os alvos não podem ser curados acima da metade da vida.)"
             },
             "PrimalCompanion": {
-                "BeastsStrike": "Ataque da Besta",
-                "BindingStrike": "Golpe Aprisionador",
-                "Command": "Companheiro Primitivo: Comando",
-                "Land": "Terra",
-                "PrimalBond": "Laço Primitivo",
-                "Sea": "Mar",
+                "BeastsStrike": "Beast's Strike",
+                "BindingStrike": "Binding Strike",
+                "Command": "Primal Companion: Comando",
+                "Land": "Land",
+                "PrimalBond": "Primal Bond",
+                "Sea": "Sea",
                 "Select": "Qual tipo de companheiro?",
-                "Sky": "Céu"
+                "Sky": "Sky"
             },
             "PrimalKnowledge": {
                 "ReplacementAbilities": "Atributos Substitutos",
@@ -2087,10 +2227,10 @@
             },
             "Protection": {
                 "Protect": "Proteger {tokenName}?",
-                "Protected": "Proteção: Protegido"
+                "Protected": "Protection: Protegido"
             },
             "ProtectionFromEvilAndGood": {
-                "Save": "Esta salvaguarda é contra um efeito de uma Aberração, Celestial, Elemental, Feérico, Ínfero ou Morto-Vivo que te Enfeitiçou, Amedrontou ou Possuiu você."
+                "Save": "Esta salvaguarda é contra um efeito de um Aberration, Celestial, Elemental, Fey, Fiend ou Undead que te deixou Charmed, Frightened ou Possuiu você."
             },
             "PsionicPower": {
                 "Confirm": "O teste de perícia ou ferramenta foi bem-sucedido?"
@@ -2099,37 +2239,37 @@
                 "Select": "Escolha qual magia para conjurar:"
             },
             "PsionicSpells": {
-                "Select": "Escolha quais magias serão suas Magias Psiônicas:"
+                "Select": "Escolha quais magias serão suas Psionic Spells:"
             },
             "Rage": {
-                "AllowConcentration": "Permitir Concentração:",
-                "AllowHeavyArmor": "Permitir Armadura Pesada:",
+                "AllowConcentration": "Permitir Concentration:",
+                "AllowHeavyArmor": "Permitir Heavy Armor:",
                 "AllowSpellcasting": "Permitir Conjuração:",
-                "End": "Fúria: Fim",
-                "EndEarly": "{actorName} não atacou um inimigo ou sofreu danos desde o último turno. Remover Fúria?",
-                "EndEarlyModern": "{actorName} não atacou um inimigo, forçou um inimigo a fazer uma salvaguarda ou continuou sua Fúria desde o último turno. Remover Fúria?",
-                "FormOfBeastTailReaction": "Forma da Besta: Reação da Cauda",
+                "End": "Rage: Fim",
+                "EndEarly": "{actorName} não atacou um inimigo ou sofreu danos desde o último turno. Remover Rage?",
+                "EndEarlyModern": "{actorName} não atacou um inimigo, forçou um inimigo a fazer uma salvaguarda ou continuou seu Rage desde o último turno. Remover Rage?",
+                "FormOfBeastTailReaction": "Form of the Beast: Reação da Tail",
                 "FormOfBeastWeapon": "Manifestar uma arma natural?",
-                "FormOfTheBeastBite": "Forma da Besta: Mordida",
-                "FormOfTheBeastClaws": "Forma da Besta: Garras",
-                "FormOfTheBeastTail": "Forma da Besta: Cauda",
-                "HeavyArmor": "Você está vestindo Armadura Pesada e não pode entrar em Fúria!",
-                "Huge": "Crescer para ficar Enorme?",
+                "FormOfTheBeastBite": "Form of the Beast: Bite",
+                "FormOfTheBeastClaws": "Form of the Beast: Claws",
+                "FormOfTheBeastTail": "Form of the Beast: Tail",
+                "HeavyArmor": "Você está vestindo Heavy Armor e não pode usar Rage!",
+                "Huge": "Crescer para ficar Huge?",
                 "LargeOrHuge": "Qual tamanho?",
-                "Spellcasting": "Você não pode conjurar enquanto estiver em Fúria!"
+                "Spellcasting": "Você não pode conjurar enquanto estiver em Rage!"
             },
             "RageOfTheGods": "Usar {item} para salvar {token}?",
             "RageOfTheWilds": {
-                "Bear": "Urso",
-                "Eagle": "Águia",
+                "Bear": "Bear",
+                "Eagle": "Eagle",
                 "Use": "Escolha o poder primal de um animal:",
-                "Wolf": "Lobo"
+                "Wolf": "Wolf"
             },
             "RayOfEnfeeblement": {
-                "Overtime": "Raio do Enfraquecimento (Fim do Turno)"
+                "Overtime": "Ray of Enfeeblement (Fim do Turno)"
             },
             "Reduce": {
-                "AlwaysTiny": "Sempre reduzir para Minúsculo:",
+                "AlwaysTiny": "Sempre reduzir para Tiny:",
                 "AttackDisadvantage": "Desvantagem em ataques baseados em força:",
                 "Name": "Reduzir",
                 "OneDamage": "Ataques baseados em força causam 1 de dano de arma:",
@@ -2149,21 +2289,31 @@
                 "Critical": "Críticos sempre bloqueiam a regeneração",
                 "DamageTypes": "Tipos de dano para reduzir/bloquear a regeneração:",
                 "Dead": "Morto?",
-                "Name": "Regeneração",
+                "Name": "Regeneration",
                 "Reduced": "Regeneração Reduzida",
                 "ShowIcons": "Mostrar ícones para regeneração bloqueada/reduzida:",
                 "Threshold": "Dano necessário para matar permanentemente se estiver com 0 PV:",
-                "ZeroHP": "A criatura morre ao atingir 0 PV"
+                "ZeroHP": "Criatura morre ao atingir 0 PV"
             },
             "RendMind": {
                 "RestoreAndUse": "Restaurar e usar {name}?"
             },
+            "ReplicateMagicItem": {
+                "AlreadyCreated": "O plano {itemName} já foi criado!",
+                "MakeArtifact": "Itens criados são artefatos:",
+                "MaxCreated": "Você criou o número máximo de itens! ({count} de {max})",
+                "NoPlans": "Você não possui Magic Item Plans!",
+                "NotFound": "Não foi possível encontrar um item mágico para o plano selecionado!",
+                "Prompt": "Escolha um Item Mágico para criar:",
+                "ScaleIdentifierItem": "Identificador de Escala (Itens Mágicos):",
+                "ScaleIdentifierPlan": "Identificador de Escala (Planos Conhecidos):"
+            },
             "RerollSaveOnDamage": {
-                "ExcludeSource": "Excluir Danos da Origem",
-                "Name": "Re-rolar Salvaguarda em Dano"
+                "ExcludeSource": "Excluir Dano da Origem",
+                "Name": "Rerolar Salvaguarda em Dano"
             },
             "Resistance": {
-                "Name": "Resistência"
+                "Name": "Resistance"
             },
             "Retaliation": {
                 "Weapon": "Com qual arma você quer atacar?"
@@ -2174,12 +2324,12 @@
             "RingOfSpellStoring": {
                 "Clear": "Limpar magias usadas",
                 "Cleared": "Magias usadas removidas do inventário!",
-                "Name": "Armazenamento do Anel de Magias ({currSpellSlots}/{maxSpellSlots})",
+                "Name": "Ring of Spell Storing ({currSpellSlots}/{maxSpellSlots})",
                 "NoSpells": "Não há magias disponíveis para armazenar!",
                 "Reset": "Reverter magias armazenadas",
                 "ResetDone": "Redefinir anel!",
                 "SelectSpell": "Qual magia você gostaria de armazenar?",
-                "SpellName": "Anel de Armazenamento de Magia: {spellName}",
+                "SpellName": "Ring of Spell Storing: {spellName}",
                 "Store": "Armazenar uma magia",
                 "Stored": "{spellName} armazenada!",
                 "Upcast": "Conjurar em qual nível?"
@@ -2193,24 +2343,24 @@
             "RollForActivity": {
                 "Error": "Nenhuma atividade incluindo '{total}' encontrada em {name}",
                 "Name": "Rolar para Atividade",
-                "PerTurn": "Re-role se a Atividade não tiver mais usos:"
+                "PerTurn": "Rerole se a Atividade não possuir mais usos:"
             },
             "RunicShield": {
                 "Use": "Usar {item} para {name}?"
             },
             "SacredWeapon": {
-                "Dismiss": "Arma Sagrada: Dispensar",
+                "Dismiss": "Sacred Weapon: Dispensar",
                 "NoWeapons": "Você não tem armas equipadas!",
-                "Sacred": "Arma Sagrada",
+                "Sacred": "Sacred Weapon",
                 "SelectWeapon": "Qual arma você quer imbuir?"
             },
             "Sanctuary": {
                 "Failed": "Não é possível atacar este alvo. Você deve escolher outro alvo ou perderá seu ataque/magia!",
-                "Save": "Santuário: Salvaguarda"
+                "Save": "Sanctuary: Salvaguarda"
             },
             "ScorchingRay": {
-                "Bolt": "Raio de Raio Ardente",
-                "Select": "Escolha seus alvos (Máx. de Raios: {maxRays})"
+                "Bolt": "Scorching Ray Bolt",
+                "Select": "Escolha seus alvos (Máx de Raios: {maxRays})"
             },
             "SculptSpells": {
                 "Select": "Quais alvos são bem-sucedidos e não sofrem dano? (Máx: {max})"
@@ -2219,19 +2369,20 @@
                 "Skill": "Qual perícia?"
             },
             "SearingSmite": {
-                "Fire": "Destruição Lancinante: Ígneo"
+                "Fire": "Searing Smite: Fire"
             },
             "SentinelAtDeathsDoor": {
                 "Attack": "Usar {item} para converter acerto crítico contra {name} em acerto normal?"
             },
             "ShadowBlade": {
-                "Sword": "Espada da Lâmina Sombria"
+                "Sword": "Shadow Blade Sword"
             },
             "ShadowOfMoil": {
-                "Damage": "Sombra de Transtorno: Dano"
+                "Damage": "Shadow of Moil: Dano",
+                "Name": "Shadow of Moil"
             },
             "ShadowStep": {
-                "Name": "Passo Sombrio"
+                "Name": "Shadow Step"
             },
             "ShadowyDodge": {
                 "Use": "Usar {item}?"
@@ -2240,7 +2391,7 @@
                 "Confirm": "Compartilhar {spell} com {name}?"
             },
             "ShieldGuardianShield": {
-                "Use": "Dar Escudo para {name}? Rolagem de Ataque: {attack}"
+                "Use": "Dar Shield para {name}? Rolagem de Ataque: {attack}"
             },
             "Shove": {
                 "Big": "O alvo é grande demais para ser empurrado!",
@@ -2250,20 +2401,20 @@
                 "Shove": "Empurrar"
             },
             "SickeningRadiance": {
-                "Damage": "Resplendor Enjoativo: Dano"
+                "Damage": "Sickening Radiance: Dano"
             },
             "SkillEmpowerment": {
                 "SelectSkill": "Selecione uma perícia para conceder especialidade temporária:"
             },
             "SleetStorm": {
-                "Prone": "Nevasca: Caído"
+                "Prone": "Sleet Storm: Prone"
             },
             "SneakAttack": {
-                "Scale": "O ator está faltando um valor de escala do Ataque Furtivo!",
+                "Scale": "Está faltando um valor de escala do Sneak Attack no ator!",
                 "Use": "Usar {name}?"
             },
             "SongOfDefense": {
-                "Bladesong": "Você deve ser Lâmina Cantante para usar este recurso!",
+                "Bladesong": "Você deve ser Bladesinging para usar este recurso!",
                 "NoSpellSlots": "Você não tem espaços de magia disponíveis!",
                 "Select": "Usar sua reação para gastar um espaço de magia para reduzir o dano?"
             },
@@ -2277,16 +2428,16 @@
             },
             "SpellTurning": {
                 "Advantage": "Vantagem em salvaguardas:",
-                "Name": "Virar Magia",
+                "Name": "Spell Turning",
                 "SpellLevel": "Nível máximo de magia para redirecionamento:",
                 "TargetCaster": "Alvejar Conjurador se bem-sucedido:"
             },
             "SpikeGrowth": {
-                "Thorns": "Crescer Espinhos: Espinhos"
+                "Thorns": "Spike Growth: Espinhos"
             },
             "SpiritGuardians": {
                 "Alignment": "Qual é o seu alinhamento?",
-                "Damage": "Guardiões Espirituais: Dano",
+                "Damage": "Spirit Guardians: Dano",
                 "NoRing": "Sem Anel",
                 "Particles": "Partículas",
                 "Ring": "Anel",
@@ -2294,21 +2445,25 @@
                 "Variation": "Variações:"
             },
             "SpiritOfDeath": {
-                "HauntCreature": "Criatura Assombrada (Espírito Ceifador)",
-                "HauntCreatureHaunt": "Criatura Assombrada: Assombrar",
-                "Haunted": "Espírito Ceifador: Assombrado",
-                "InvalidTarget": "O alvo deve estar Assombrado!",
-                "ReapingScythe": "Foice Ceifadora (Espírito Ceifador)"
+                "HauntCreature": "Haunt Creature (Reaper Spirit)",
+                "HauntCreatureHaunt": "Haunt Creature: Assombrar",
+                "Haunted": "Reaper Spirit: Assombrado",
+                "InvalidTarget": "O alvo deve estar Haunted!",
+                "ReapingScythe": "Reaping Scythe (Reaper Spirit)"
             },
             "SpiritShield": {
                 "Damage": "Usar {item} para reduzir o dano causado por {name}?"
             },
             "SpiritShroud": {
-                "Hit": "Mortalha Espiritual: Acerto",
-                "Slow": "Mortalha Espiritual: Lentidão"
+                "Hit": "Spirit Shroud: Acerto",
+                "Slow": "Spirit Shroud: Lentidão"
+            },
+            "SpiritTotem": {
+                "HawkAttack": "Usar sua reação para conceder vantagem nesta jogada de ataque?",
+                "UnicornCheck": "Este teste serve para detectar uma criatura dentro da aura de um Unicorn Spirit Totem?"
             },
             "SpiritualWeapon": {
-                "Attack": "Arma Espiritual: Ataque",
+                "Attack": "Spiritual Weapon: Ataque",
                 "Color": "Qual Cor?",
                 "Dark": "Preto",
                 "Flaming": "Flamejante",
@@ -2327,7 +2482,7 @@
                 "WakeUp": "Horas Até a Criatura Acordar:"
             },
             "StaggeringSmite": {
-                "Stagger": "Destruição Estonteante: Tontear"
+                "Stagger": "Staggering Smite: Stagger"
             },
             "StalkersFlurry": {
                 "IncludeSelf": "Mass Fear: Incluir a si mesmo?",
@@ -2336,22 +2491,22 @@
                 "Use": "Usar {item}?"
             },
             "StarryForm": {
-                "Archer": "Arqueiro",
-                "ArcherFeature": "Forma Estelar: Flecha Luminosa",
-                "Chalice": "Cálice",
-                "ChaliceFeature": "Forma Estelar: Cálice de Cura",
+                "Archer": "Archer",
+                "ArcherFeature": "Starry Form: Luminous Arrow",
+                "Chalice": "Chalice",
+                "ChaliceFeature": "Starry Form: Healing Chalice",
                 "Change": "Mudar Constelação?",
-                "Dragon": "Dragão",
-                "DragonFeature": "Forma Estelar: Dragão Sagaz",
+                "Dragon": "Dragon",
+                "DragonFeature": "Starry Form: Wise Dragon",
                 "Heal": "Quem você quer curar?",
                 "Select": "Qual Constelação?"
             },
             "SteelDefender": {
-                "Command": "Defensor de Aço: Comando",
+                "Command": "Steel Defender: Comando",
                 "DeflectAttack": "Defletir Ataque",
-                "ForceEmpoweredRend": "Laceração de Energia",
-                "Repair": "Reparar (Ação)",
-                "Vigilant": "Vigilante"
+                "ForceEmpoweredRend": "Force-Empowered Rend",
+                "Repair": "Repair",
+                "Vigilant": "Vigilant"
             },
             "StillnessOfMind": {
                 "Select": "Qual condição você quer de remover?"
@@ -2360,174 +2515,178 @@
                 "AdvDis": "Dar vantagem/desvantagem para {tokenName} em seu {actionType}?"
             },
             "StormSphere": {
-                "Bolt": "Esfera Tempestuosa: Relâmpago",
-                "Turn": "Esfera Tempestuosa: Turno"
+                "Bolt": "Storm Sphere: Relâmpago",
+                "Turn": "Storm Sphere: Turno"
             },
             "Stormgirdle": {
-                "LightningStrike": "Stormgirdle: Relâmpago"
+                "LightningStrike": "Stormgirdle: Lightning Strike"
             },
             "Stormgridle": {
-                "Avatar": "Avatar da Tempestade"
+                "Avatar": "Storm Avatar"
             },
             "StrangeMetabolism": {
-                "Select": "Qual Mutagênico?"
+                "Select": "Qual Mutagen?"
             },
             "Suffocate": {
-                "Name": "Asfixiar",
+                "Name": "Suffocate",
                 "StartsOutOfAir": "Começa a Ficar Sem Ar:"
             },
             "Suffocation": {
                 "Name": {
-                  "HoldingBreath": "Asfixia: Prendendo a Respiração",
-                  "OutOfAir": "Asfixia: Sem Ar"
+                  "HoldingBreath": "Suffocation: Prendendo a Respiração",
+                  "OutOfAir": "Suffocation: Sem Ar"
                 }
             },
             "SummonAberration": {
-                "Beholderkin": "Observador",
-                "EyeRay": "Raio Ocular",
+                "Beholderkin": "Beholderkin",
+                "EyeRay": "Eye Ray",
                 "MindFlayer": "Mind Flayer",
-                "PsychicSlam": "Pancada Psíquica",
+                "PsychicSlam": "Psychic Slam",
                 "Slaad": "Slaad",
-                "StarSpawn": "Prole Estelar",
-                "Type": "Qual tipo de Aberração?",
-                "WhisperingAura": "Aura Sussurrante"
+                "StarSpawn": "Star Spawn",
+                "Type": "Qual tipo de Aberration?",
+                "WhisperingAura": "Whispering Aura"
             },
             "SummonBeast": {
-                "Air": "Ar",
-                "Flyby": "Sobrevoo",
-                "Land": "Terra",
-                "Maul": "Mandíbula (Espírito Feral)",
-                "Rend": "Laceração (Espírito Bestial)",
-                "Type": "Qual tipo de Fera?",
-                "Water": "Água"
+                "Air": "Air",
+                "Flyby": "Flyby",
+                "Land": "Land",
+                "Maul": "Maul (Bestial Spirit)",
+                "Rend": "Rend (Bestial Spirit)",
+                "Type": "Qual tipo de Beast?",
+                "Water": "Water"
             },
             "SummonCelestial": {
-                "Avenger": "Vingador",
-                "Defender": "Defensor",
-                "HealingTouch": "Toque Curativo (Espírito Celestial)",
-                "RadiantBow": "Disparo Radiante",
-                "RadiantMace": "Golpe Radiante",
+                "Avenger": "Avenger",
+                "Defender": "Defender",
+                "HealingTouch": "Healing Touch (Celestial Spirit)",
+                "RadiantBow": "Radiant Bow",
+                "RadiantMace": "Radiant Mace",
                 "Temp": "Quem recebe pontos de vida temporários?",
                 "Type": "Qual tipo de Celestial?"
             },
             "SummonConstruct": {
-                "BerserkLashing": "Surto Furioso",
-                "Clay": "Argila",
+                "BerserkLashing": "Berserk Lashing",
+                "Clay": "Clay",
                 "Metal": "Metal",
-                "Slam": "Pancada (Espírito Mecânico)",
-                "Stone": "Pedra",
-                "Type": "Qual tipo de Construto?"
+                "Slam": "Slam (Construct Spirit)",
+                "Stone": "Stone",
+                "Type": "Qual tipo de Construct?"
             },
             "SummonDraconicSpirit": {
-                "Chromatic": "Cromático",
-                "Gem": "Gema",
-                "Metallic": "Metálico",
-                "Rend": "Rasgar (Espírito Dracônico)",
-                "ResistanceType": "Resistências Compartilhadas: Qual tipo de dano?",
-                "SharedResistances": "Resistências Compartilhadas",
-                "Type": "Qual tipo de Dragão?"
+                "Chromatic": "Chromatic",
+                "Gem": "Gem",
+                "Metallic": "Metallic",
+                "Rend": "Rend (Draconic Spirit)",
+                "ResistanceType": "Shared Resistances: Qual tipo de dano?",
+                "SharedResistances": "Shared Resistances",
+                "Type": "Qual tipo de Dragon?"
             },
             "SummonDragon": {
-                "Rend": "Laceração (Espírito Dracônico)",
-                "ResistanceType": "Resistências Compartilhadas: Que tipo de dano?",
-                "SharedResistances": "Resistências Compartilhadas"
+                "Rend": "Rend (Draconic Spirit)",
+                "ResistanceType": "Shared Resistances: Que tipo de dano?",
+                "SharedResistances": "Shared Resistances"
             },
             "SummonDrakeCompanion": {
-                "Command": "Companheiro Dragão: Comando",
-                "Essence": "Essência Dracônica",
-                "InfusedStrikes": "Ataques Infundidos",
-                "Reflexive": "Resistência Reflexiva",
-                "Resistance": "Use reação para conceder resistência ao dano?",
-                "ResistanceSelf": "Use reação para obter resistência ao dano?",
-                "Select": "Qual tipo de Dragão?",
+                "Command": "Drake Companion: Comando",
+                "Essence": "Draconic Essence",
+                "InfusedStrikes": "Infused Strikes",
+                "Reflexive": "Reflexive Resistance",
+                "Resistance": "Usar reação para conceder resistência ao dano?",
+                "ResistanceSelf": "Usar reação para obter resistência ao dano?",
+                "Select": "Qual tipo de Drake?",
                 "Self": "Sim: Si Mesmo",
-                "Summon": "Sim: Companheiro Dragão"
+                "Summon": "Sim: Drake Companion"
             },
             "SummonElemental": {
-                "Air": "Ar",
-                "AmorphousForm": "Forma Amorfa",
-                "Earth": "Terra",
-                "Fire": "Fogo",
-                "Slam": "Pancada (Espírito Elemental)",
+                "Air": "Air",
+                "AmorphousForm": "Amorphous Form",
+                "Earth": "Earth",
+                "Fire": "Fire",
+                "Slam": "Slam (Elemental Spirit)",
                 "Type": "Qual tipo de Elemental?",
-                "Water": "Água"
+                "Water": "Water"
             },
             "SummonFey": {
-                "FeyBlade": "Lâmina Feérica",
-                "FeyStep": "Passo Feérico",
-                "Fuming": "Irritadiço",
-                "Mirthful": "Jubiloso",
-                "Select": "Quem Enfeitiçar?",
-                "Shortsword": "Espada Curta",
-                "Tricksy": "Brincalhão",
-                "Type": "Qual tipo de Feérico?"
+                "FeyBlade": "Fey Blade",
+                "FeyStep": "Fey Step",
+                "Fuming": "Fuming",
+                "Mirthful": "Mirthful",
+                "Select": "Charm em Quem?",
+                "Shortsword": "Shortsword",
+                "Tricksy": "Tricksy",
+                "Type": "Qual tipo de Fey?"
             },
             "SummonFiend": {
-                "DeathThroes": "Espasmos de Morte",
-                "Demon": "Demônio",
-                "Devil": "Diabo",
-                "FieryStrike": "Golpe Ardente",
-                "HurlFlame": "Arremessar Chama",
-                "Type": "Qual tipo de Ínfero?",
+                "DeathThroes": "Death Throes",
+                "Demon": "Demon",
+                "Devil": "Devil",
+                "FieryStrike": "Fiery Strike",
+                "HurlFlame": "Hurl Flame",
+                "Type": "Qual tipo de Fiend?",
                 "UseTeleportation": "Usar Teleporte?",
                 "Yugoloth": "Yugoloth"
             },
             "SummonLesserDemons": {
-                "Demons": "Demônios",
+                "Demons": "Demons",
                 "Draw": "Desenhar círculo protetor?"
             },
             "SummonShadowspawn": {
-                "ChillingRend": "Rasgo Congelante",
-                "Despair": "Desespero",
-                "DreadfulScream": "Grito Pavoroso",
-                "Fear": "Medo",
-                "Fury": "Fúria",
-                "TerrorFrenzy": "Frenesi de Terror",
-                "Type": "Qual tipo de Espírito das Sombras?"
+                "ChillingRend": "Chilling Rend",
+                "Despair": "Despair",
+                "DreadfulScream": "Dreadful Scream",
+                "Fear": "Fear",
+                "Fury": "Fury",
+                "TerrorFrenzy": "Terror Frenzy",
+                "Type": "Qual tipo de Shadowspawn?"
             },
             "SummonUndead": {
-                "DeathlyTouch": "Toque Mortal",
-                "FesteringAura": "Fedor",
-                "Ghostly": "Fantasmal",
-                "GraveBolt": "Virote do Túmulo",
-                "IncorporealPassage": "Movimento Incorpóreo",
-                "Putrid": "Pútrido",
-                "RottingClaw": "Garra Apodrecida",
-                "RottingClawParalyze": "Garra Apodrecida: Paralisar",
-                "Skeletal": "Esquelético",
-                "Type": "Qual tipo de Morto-Vivo?"
+                "DeathlyTouch": "Deathly Touch",
+                "FesteringAura": "Festering Aura",
+                "Ghostly": "Ghostly",
+                "GraveBolt": "Grave Bolt",
+                "IncorporealPassage": "Incorporeal Passage",
+                "Putrid": "Putrid",
+                "RottingClaw": "Rotting Claw",
+                "RottingClawParalyze": "Rotting Claw: Paralyze",
+                "Skeletal": "Skeletal",
+                "Type": "Qual tipo de Undead?"
             },
             "SummonWildfireSpirit": {
-                "Command": "Espírito do Fogo Selvagem: Comando",
-                "Damage": "Invocar Espírito do Fogo Selvagem: Dano",
-                "FieryTeleportation": "Teletransporte Feérico",
-                "FieryTeleportationDamage": "Teletransporte Feérico: Dano",
-                "FlameSeed": "Semente de Fogo"
+                "Command": "Wildfire Spirit: Comando",
+                "Damage": "Invocar Wildfire Spirit: Dano",
+                "FieryTeleportation": "Fiery Teleportation",
+                "FieryTeleportationDamage": "Fiery Teleportation: Dano",
+                "FlameSeed": "Flame Seed"
             },
             "SunlightSensitivity": {
                 "Attack": "{tokenName} está na luz do sol?",
                 "Auto": "Assumir que luz plena significa luz solar para desvantagem do ataque:",
-                "Name": "Sensibilidade ao Sol",
+                "Name": "Sunlight Sensitivity",
                 "Skill": "Este teste depende da visão e a criatura está sob a luz do sol"
+            },
+            "SuperiorAtlas": {
+                "HaveMap": "Você precisa possuir um Adventurer's Atlas para usar este recurso!",
+                "Prompt": "Usar {itemName}?<br>Destrua seu mapa para obter {newHP} de PV e se teleportar para o local de sua escolha dentre os seguintes alvos:"
             },
             "SupremeSneak": {
                 "TurnEnd": "Você terminou seu turno atrás de Três-Quartos de Cobertura ou Cobertura Total?"
             },
             "SurpriseAttack": {
-                "Dialog": "Usar Diálogo ao invés de verificar a condição Surpreso:",
-                "Name": "Ataque Surpresa",
+                "Dialog": "Usar Diálogo ao invés de verificar a condição Surprised:",
+                "Name": "Surprise Attack",
                 "Surprised": "O alvo está surpreso?"
             },
             "SwarmDamage": {
                 "Name": "Dano do Enxame"
             },
             "TashasOtherworldlyGuise": {
-                "Lower": "Planos Inferiores",
+                "Lower": "Lower Planes",
                 "Select": "De quais planos você extrai a magia?",
-                "Upper": "Planos Superiores"
+                "Upper": "Upper Planes"
             },
             "TavernBrawler": {
-                "Use": "Usar Ação Bônus para tentar agarrar??"
+                "Use": "Usar Bonus Action para tentar dar Grapple??"
             },
             "Telekinetic": {
                 "Select": "Qual direção?"
@@ -2556,28 +2715,41 @@
                 "ViewedOnceDescribed": "Visto ou Descrito Uma Vez"
             },
             "TentacleOfTheDeeps": {
-                "Attack": "Tentáculo das Profundezas: Ataque",
-                "Name": "Tentáculo Espectral"
+                "Attack": "Tentacle of the Deeps: Ataque",
+                "Name": "Spectral Tentacle"
             },
             "ThornWhip": {
                 "CheckSize": "Verificar o Tamanho:",
                 "Pull": "Até onde você puxa o alvo?"
             },
             "ThunderStep": {
-                "Name": "Passo Trovejante",
+                "Name": "Thunder Step",
                 "Select": "Teleportar uma Criatura?"
             },
             "ThunderboltStrike": {
                 "Select": "Selecione alvos para empurrar:"
             },
             "ThunderousSmite": {
-                "Push": "Destruição Trovejante: Empurrão"
+                "Push": "Thunderous Smite: Empurrão"
             },
             "TimeStop": {
                 "Affect": "Isso afeta outra criatura?"
             },
+            "TimeTrigger": {
+                "Name": "Time Trigger"
+            },
+            "TinkersMagic": {
+                "CustomCompendium": "Compêndio de Itens Mundanos Personalizados:",
+                "NeedTools": "Você precisa ter Tinker's Tools para usar {itemName}!",
+                "Prompt": "Selecione o Item {itemName}:",
+                "RequireTools": "Exigir Tinker's Tools:"
+            },
+            "TokensOfTheDeparted": {
+                "MustSpend": "{feature} não tem mais usos disponíveis. Você precisa gastar {name} para ativá-lo.",
+                "Spend": "Gastar {name} para usar {feature} sem consumir usos?"
+            },
             "TouchDamage": {
-                "Name": "Dano do Toque"
+                "Name": "Dano de Toque"
             },
             "Transform": {
                 "Name": "Transform",
@@ -2610,22 +2782,23 @@
                 "ReplaceDamage": "Substitua o dano por {type}?"
             },
             "TwilightSanctuary": {
-                "Charmed": "Remover a condição Enfeitiçado",
-                "Frightened": "Remover a condição Amedrontado",
+                "AutoHP": "Auto-aplicar PV temporário quando for a única opção:",
+                "Charmed": "Remover a condição Charmed",
+                "Frightened": "Remover a condição Frightened",
                 "Heal": "Dar {formula} PV temporário",
-                "Temp": "Santuário Crepuscular: PV Temporário"
+                "Temp": "Twilight Sanctuary: PV Temporário"
             },
             "UnarguableWizardry": {
                 "Prompt": "Este teste serve para convencer os outros de que você é, de fato, um mago."
             },
             "UnarmedFighting": {
-                "Grapple": "Combate Desarmado: Dano Agarrado",
-                "Select": "Causar dano a uma criatura agarrada?"
+                "Grapple": "Unarmed Fighting: Dano de Grapple",
+                "Select": "Causar dano a uma criatura Grappled?"
             },
             "UndeadFortitude": {
-                "Critical": "Acertos críticos ignoram Fortaleza Imortal:",
-                "DamageTypes": "Tipos de Dano que ignoram Fortaleza Imortal:",
-                "Name": "Fortaleza Imortal"
+                "Critical": "Acertos Críticos ignoram Undead Fortitude:",
+                "DamageTypes": "Tipos de Dano que ignoram Undead Fortitude:",
+                "Name": "Undead Fortitude"
             },
             "Underwater": {
                 "TooFar": "O alvo está muito longe enquanto submerso!",
@@ -2647,16 +2820,16 @@
             "VampiricBite": {
                 "Bonus": "Bônus para o próximo ataque/teste",
                 "Heal": "Recuperar PV",
-                "LowHealth": "Vantagem: Abaixo da metade do PV",
+                "LowHealth": "Abaixo da metade do PV",
                 "Select": "Empoderar a si mesmo?"
             },
             "VampiricTouch": {
-                "Attack": "Toque Vampírico: Ataque",
+                "Attack": "Vampiric Touch: Ataque",
                 "HealingModifier": "0.5"
             },
             "VitalityOfTheTree": "Escolha um aliado para dar vida temporária.",
             "VortexWarp": {
-                "Name": "Vórtice Distorcido"
+                "Name": "Vortex Warp"
             },
             "WallOfFire": {
                 "CircleFacing": "Para que lado o fogo está voltado?",
@@ -2670,44 +2843,48 @@
                 "Side": "De que lado o fogo está?"
             },
             "WardingBond": {
-                "Damage": "Vínculo Protetor: Dano",
-                "Dismiss": "Vínculo Protetor: Dispansar",
+                "Damage": "Warding Bond: Dano",
+                "Dismiss": "Warding Bond: Dispansar",
                 "Distance": "A distância da ligação está muito grande. Remover a ligação?",
                 "MaxDistance": "Distância Máxima:"
             },
             "WarpingImplosion": {
                 "Consume": "Consumir cinco {item} para usar?"
             },
+            "WhispersOfTheDead": {
+                "Prompt": "Escolha uma perícia ou ferramenta que deseja ganhar proficiência.<br>Suas proficiências atuais são mostradas entre colchetes <code>[]</code>.",
+                "UnknownTool": "Ferramenta Desconhecida: {name}"
+            },
             "WildResurgence": {
-                "WildShapeUses": "Você deve ter 0 usos de Forma Selvagem para usar isto!"
+                "WildShapeUses": "Você deve ter 0 usos de Wild Shape para usar isto!"
             },
             "WildShape": {
-                "AllowElementals": "Sempre permitir elementais:",
-                "CustomCompendium": "Chave de Compêndio Personalizado da Forma Selvagem:",
+                "AllowElementals": "Sempre permitir Elementais:",
+                "CustomCompendium": "Chave de Compêndio Personalizado da Wild Shape:",
                 "Equipment": "O que acontece com o seu equipamento?",
                 "Ignore": "Ignorar ND, Tipo & Restrição de Movimento:",
                 "KeepSpells": "Permitir conjuração enquanto transformado:",
-                "Merge": "Assimilar / Derrubar",
-                "Revert": "Forma Selvagem: Reverter",
+                "Merge": "Merge / Drop",
+                "Revert": "Wild Shape: Reverter",
                 "Select": "Selecione a Forma",
-                "Wear": "Vestir"
+                "Wear": "Wear"
             },
             "WildSurge": {
-                "BoltOfLight": "Raio de Luz",
-                "FlowersAndVines": "Flores e Vinhas",
-                "Form": "Que forma assume o espírito intangível?",
-                "IntangibleSpirit": "Espírito Intangível",
-                "IntangibleSpiritExplode": "Magia Selvagem: Explosão Espírito Intangível",
-                "MagicInfusion": "Infusão Mágica",
-                "ProtectiveLights": "Luzes Protetoras",
-                "Retribution": "Retribuição",
+                "BoltOfLight": "Bolt of Light",
+                "FlowersAndVines": "Flowers and Vines",
+                "Form": "Que forma assume o Intangible Spirit?",
+                "IntangibleSpirit": "Intangible Spirit",
+                "IntangibleSpiritExplode": "Wild Surge: Explosão do Intangible Spirit",
+                "MagicInfusion": "Magic Infusion",
+                "ProtectiveLights": "Protective Lights",
+                "Retribution": "Retribution",
                 "Select": "Qual efeito?",
-                "ShadowyTendrils": "Tentáculos Sombrios",
+                "ShadowyTendrils": "Shadowy Tendrils",
                 "Target": "Selecione um alvo:",
-                "Teleport": "Teleporte"
+                "Teleport": "Teleport"
             },
             "Wish": {
-                "Blocked": "Uso de Desejo Bloqueado:",
+                "Blocked": "Uso de Wish Bloqueado:",
                 "BlockedWarn": "Você está impossibilitado de conjurar esta magia!",
                 "ChanceFormula": "Fórmula de Chance de Bloqueio:",
                 "ChanceNumber": "Chance de Bloqueio:",
@@ -2717,7 +2894,7 @@
                 "StressDuration": "Fórmula de Duração do Estresse:"
             },
             "WitherAndBloom": {
-                "Heal": "Murchar e Florescer: Cura",
+                "Heal": "Wither And Bloom: Cura",
                 "SelectHitDie": "Selecione quantos Dados de Vida serão jogados.",
                 "SelectTarget": "Quem pode rolar Dados de Vida não gastos?"
             },
@@ -2725,26 +2902,26 @@
                 "Target": "Escolha um alvo adicional:"
             },
             "WrapsOfDyamak": {
-                "CrimsonMist": "Névoa Carmesim",
-                "Heal": "Envoltórios de Dyamak: Cura"
+                "CrimsonMist": "Crimson Mist",
+                "Heal": "Wraps of Dyamak: Cura"
             },
             "WrathOfTheSea": {
                 "Ally": "Aliado",
                 "Both": "Ambos (Custa 1 {itemName})",
-                "Choose": "Em torno de quem você quer manifestar a Emanação?",
-                "Ongoing": "Fúria do Mar: Em andamento",
+                "Choose": "Em torno de quem você quer manifestar a Emanation?",
+                "Ongoing": "Wrath of the Sea: Em andamento",
                 "Self": "Si Mesmo",
                 "Target": "Qual inimigo deve fazer uma salvaguarda?"
             },
             "WrathfulSmite": {
-                "Frighten": "Destruição Colérica: Amedrontado"
+                "Frighten": "Wrathful Smite: Amedrontado"
             },
             "ZealousPresence": {
-                "Rage": "Usar ao custo de 1 uso de Fúria?",
+                "Rage": "Usar ao custo de 1 uso de Rage?",
                 "Select": "Quem deve ser o alvo? (Máx: {maxTargets})"
             },
             "ZoneOfTruth": {
-                "Save": "Zona da Verdade: Salvaguarda"
+                "Save": "Zone of Truth: Salvaguarda"
             }
         },
         "ManualRolls": {
@@ -2765,24 +2942,24 @@
         },
         "Mastery": {
             "Cleave": {
-            "Name": "Dividir"
+            "Name": "Cleave"
             },
             "Push": {
                 "Context": "Empurrar alvo 10 pés?",
-                "Name": "Empurrar"
+                "Name": "Push"
             },
             "Sap": {
-                "Name": "Atrapalhar"
+                "Name": "Sap"
             },
             "Slow": {
-                "Name": "Debilitar"
+                "Name": "Slow"
             },
             "Topple": {
                 "Context": "Tentar derrubar o alvo?",
-                "Name": "Derrubar"
+                "Name": "Topple"
             },
             "Vex": {
-                "Name": "Marcar"
+                "Name": "Vex"
             }
         },
         "Medkit": {
@@ -3044,12 +3221,12 @@
             "ScaleAdded": "O valor de escala {scaleIdentifier} foi adicionado à classe {classIdentifier}!"
         },
         "Section": {
-            "Rage": "Fúria",
-            "RingOfSpellStoring": "Anel de Armazenamento de Magia",
-            "SpellFeatures": "Recursos de Magia"
+            "Rage": "Rage",
+            "RingOfSpellStoring": "Ring of Spell Storing",
+            "SpellFeatures": "Spell Features"
         },
         "Senses": {
-            "MagicalDarkness": "Escuridão Mágica"
+            "MagicalDarkness": "Magical Darkness"
         },
         "SettingCategory": {
             "backup": {
@@ -3212,7 +3389,7 @@
                 "1": "Habilitar (Qualquer Vida)",
                 "2": "Habilitar (Somente Vida Cheia)",
                 "Hint": "Ativa a mecânica de Cleave do Dungeon Master's Guide",
-                "Name": "DMG Cleave"
+                "Name": "Cleave do DMG"
             },
             "colorizeAutomatedAnimations": {
                 "Hint": "Quando ativado, o ícone da barra de título do Automated Animations será recolorido com base no status da configuração.",
@@ -3306,7 +3483,7 @@
             },
             "enableAnimations": {
                 "Hint": "Quando ativado, certas automações terão animações personalizadas. Requer Sequencer e JB2A.",
-                "Name": "Enable CPR Animations"
+                "Name": "Habilitar Animações do CPR"
             },
             "enableEmbeddedMacrosEditing": {
                 "Hint": "Quando habilitado, o editor de macros incorporadas estará disponível.",
@@ -3322,7 +3499,7 @@
             },
             "exportForSharing": {
                 "Hint": "Quando ativado, um botão de alternativo de exportação será adicionado ao menu do item e do ator, para exportar um item com descrições removidas. É necessário recarregar após ativar.",
-                "Name": "Export For Sharing"
+                "Name": "Exportar para Compartilhamento"
             },
             "featCompendium": {
                 "Hint": "Compêndio de talentos usado para certas automações. Idealmente, deve apontar para o seu compêndio de talentos do D&D Beyond.",
@@ -3342,7 +3519,7 @@
                 "3": "Sem Terceiros",
                 "4": "Incluir Homebrew e Terceiros",
                 "Hint": "Quais compêndios devem ser incluídos na pesquisa adicional de compêndios para Gambit's Premades.",
-                "Name": "Opções  do Gambit's Premades"
+                "Name": "Opções do Gambit's Premades"
             },
             "gmID": {
                 "Hint": "O ID do Mestre de Jogo usado para soquetes. Definir automaticamente.",
@@ -3353,8 +3530,8 @@
                 "Name": "Agrupar Invocações com Dono"
             },
             "heroicInspiration": {
-                "Hint": "Habilita a mecânica de Inspiração Heroica do PHB 2024.",
-                "Name": "Inspiração Heroica"
+                "Hint": "Habilita a mecânica de Heroic Inspiration do PHB 2024.",
+                "Name": "Heroic Inspiration"
             },
             "hiddenCompendiumFolders": {
                 "Hint": "As pastas do compêndio selecionadas ficarão ocultas.",
@@ -3381,15 +3558,15 @@
                 "Name": "Última Verificação de Atualização"
             },
             "legendaryActionsPrompt": {
-                "Hint": "Rastreia e avisa sobre Ações Lendárias não utilizadas conforme o combate avança.",
-                "Name": "Aviso de Ações Lendárias"
+                "Hint": "Rastreia e avisa sobre Legendary Actions não utilizadas conforme o combate avança.",
+                "Name": "Aviso de Legendary Actions"
             },
             "macroCompendium": {
                 "Hint": "Compêndio de macros usado para substituir ou adicionar macros adicionais à API CPR. Consulte a documentação sobre como usar isso.",
                 "Name": "Compêndio de Macros"
             },
             "makeGM": {
-                "Hint": "Torne-se o Mestre principal.",
+                "Hint": "Se tornar o Mestre principal.",
                 "Name": "Tornar-se Mestre"
             },
             "manualRollsEnabled": {
@@ -3549,12 +3726,12 @@
         "SkillCheck": {
             "Title": "Teste de Perícia"
         },
-        "SkipDeadAndUnconscious": "Pular Morto e Inconsciente?",
+        "SkipDeadAndUnconscious": "Pular Morto e Unconscious?",
         "SneakAttack": {
             "Auto": "Usar Automaticamente:"
         },
         "Spells": {
-            "BeaconOfHope": "Sinal da Esperança"
+            "BeaconOfHope": "Beacon of Hope"
         },
         "SpotlightOmnisearch": {
             "Actor": "O token selecionado não está associado a nenhum ator!",
@@ -3570,95 +3747,100 @@
             "ActorName": "Nome do Ator {option}",
             "CRSelection": "{numSummons} {typePl} de ND {cr} ou menor",
             "CreatureNames": {
-                "AberrantSpirit": "Espírito Aberrante",
-                "AberrantSpiritBeholderkin": "Espírito Aberrante (Observador)",
-                "AberrantSpiritSlaad": "Espírito Aberrante (Slaad)",
-                "AberrantSpiritStarSpawn": "Espírito Aberrante (Prole Estelar)",
-                "AberrantSpiritMindFlayer": "Espírito Aberrante (Mind Flayer)",
-                "AirElemental": "Elemental do Ar",
-                "BeastOfTheLand": "Fera da Terra",
-                "BeastOfTheSea": "Fera do Mar",
-                "BeastOfTheSky": "Fera do Céu",
-                "BestialSpirit": "Espírito Feral",
-                "BestialSpiritAir": "Espírito Feral (Ar)",
-                "BestialSpiritLand": "Espírito Feral (Terra)",
-                "BestialSpiritWater": "Espírito Feral (Água)",
-                "BigbysHand": "Mão de Bigby",
-                "CelestialSpirit": "Espírito Celestial",
-                "CelestialSpiritAvenger": "Espírito Celestial (Vingador)",
-                "CelestialSpiritDefender": "Espírito Celestial (Defensor)",
-                "ConstructSpirit": "Espírito Mecânico",
-                "ConstructSpiritClay": "Espírito Mecânico (Argila)",
-                "ConstructSpiritMetal": "Espírito Mecânico (Metal)",
-                "ConstructSpiritStone": "Espírito Mecânico (Pedra)",
-                "DancingGreatsword": "Espada Grande Dançante",
-                "DancingItem": "Item Dançante",
-                "DancingLongsword": "Espada Longa Dançante",
-                "DancingRapier": "Rapieira Dançante",
-                "DancingScimitar": "Cimitarra Dançante",
-                "DancingShortsword": "Espada Curta Dançante",
-                "DraconicSpirit": "Espírito Dracônico",
-                "DraconicSpiritChromatic": "Espírito Dracônico (Cromático)",
-                "DraconicSpiritGem": "Espírito Dracônico (Gema)",
-                "DraconicSpiritMetallic": "Espírito Dracônico (Metálico)",
-                "DrakeCompanionAcid": "Companheiro Dragão: Ácido",
-                "DrakeCompanionCold": "Companheiro Dragão: Gélido",
-                "DrakeCompanionFire": "Companheiro Dragão: Ígneo",
-                "DrakeCompanionLightning": "Companheiro Dragão: Elétrico",
-                "DrakeCompanionPoison": "Companheiro Dragão: Venenoso",
-                "DreadLord": "Senhor do Pavor",
-                "DustDevil": "Redemoinho de Poeira",
-                "EarthElemental": "Elemental da Terra",
-                "EarthenHand": "Mão Terrena",
-                "Echo": "Eco",
-                "ElementalSpirit": "Espírito Elemental",
-                "ElementalSpiritAir": "Espírito Elemental (Ar)",
-                "ElementalSpiritEarth": "Espírito Elemental (Terra)",
-                "ElementalSpiritFire": "Espírito Elemental (Fogo)",
-                "ElementalSpiritWater": "Espírito Elemental (Água)",
+                "AberrantSpirit": "Aberrant Spirit",
+                "AberrantSpiritBeholderkin": "Aberrant Spirit (Beholderkin)",
+                "AberrantSpiritMindFlayer": "Aberrant Spirit (Mind Flayer)",
+                "AberrantSpiritSlaad": "Aberrant Spirit (Slaad)",
+                "AberrantSpiritStarSpawn": "Aberrant Spirit (Star Spawn)",
+                "AirElemental": "Air Elemental",
+                "BeastOfTheLand": "Beast of the Land",
+                "BeastOfTheSea": "Beast of the Sea",
+                "BeastOfTheSky": "Beast of the Sky",
+                "BestialSpirit": "Bestial Spirit",
+                "BestialSpiritAir": "Bestial Spirit (Air)",
+                "BestialSpiritLand": "Bestial Spirit (Land)",
+                "BestialSpiritWater": "Bestial Spirit (Water)",
+                "BigbysHand": "Bigby's Hand",
+                "CelestialSpirit": "Celestial Spirit",
+                "CelestialSpiritAvenger": "Celestial Spirit (Avenger)",
+                "CelestialSpiritDefender": "Celestial Spirit (Defender)",
+                "ConstructSpirit": "Construct Spirit",
+                "ConstructSpiritClay": "Construct Spirit (Clay)",
+                "ConstructSpiritMetal": "Construct Spirit (Metal)",
+                "ConstructSpiritStone": "Construct Spirit (Stone)",
+                "DancingGreatsword": "Dancing Greatsword",
+                "DancingItem": "Dancing Item",
+                "DancingLongsword": "Dancing Longsword",
+                "DancingRapier": "Dancing Rapier",
+                "DancingScimitar": "Dancing Scimitar",
+                "DancingShortsword": "Dancing Shortsword",
+                "DraconicSpirit": "Draconic Spirit",
+                "DraconicSpiritChromatic": "Draconic Spirit (Chromatic)",
+                "DraconicSpiritGem": "Draconic Spirit (Gem)",
+                "DraconicSpiritMetallic": "Draconic Spirit (Metallic)",
+                "DrakeCompanionAcid": "Drake Companion: Acid",
+                "DrakeCompanionCold": "Drake Companion: Cold",
+                "DrakeCompanionFire": "Drake Companion: Fire",
+                "DrakeCompanionLightning": "Drake Companion: Lightning",
+                "DrakeCompanionPoison": "Drake Companion: Poison",
+                "DreadLord": "Dread Lord",
+                "DustDevil": "Dust Devil",
+                "EarthElemental": "Earth Elemental",
+                "EarthenHand": "Earthen Hand",
+                "Echo": "Echo",
+                "EldritchEddy": "Eldritch Eddy",
+                "ElementalSpirit": "Elemental Spirit",
+                "ElementalSpiritAir": "Elemental Spirit (Air)",
+                "ElementalSpiritEarth": "Elemental Spirit (Earth)",
+                "ElementalSpiritFire": "Elemental Spirit (Fire)",
+                "ElementalSpiritWater": "Elemental Spirit (Water)",
                 "Familiar": "Familiar",
-                "FeySpirit": "Espírito Feérico",
-                "FeySpiritFuming": "Espírito Feérico (Irritadiço)",
-                "FeySpiritMirthful": "Espírito Feérico (Jubiloso)",
-                "FeySpiritTricksy": "Espírito Feérico (Brincalhão)",
-                "FeywildSpirit": "Espírito Feywild",
-                "FiendishSpirit": "Espírito Ínfero",
-                "FiendishSpiritDemon": "Espírito Ínfero (Demônio)",
-                "FiendishSpiritDevil": "Espírito Ínfero (Diabo)",
-                "FiendishSpiritYugoloth": "Espírito Ínfero (Yugoloth)",
-                "FireElemental": "Elemental do Fogo",
-                "FlamingSphere": "Esfera Flamejante",
+                "FeySpirit": "Fey Spirit",
+                "FeySpiritFuming": "Fey Spirit (Fuming)",
+                "FeySpiritMirthful": "Fey Spirit (Mirthful)",
+                "FeySpiritTricksy": "Fey Spirit (Tricksy)",
+                "FeywildSpirit": "Feywild Spirit",
+                "FiendishSpirit": "Fiendish Spirit",
+                "FiendishSpiritDemon": "Fiendish Spirit (Demon)",
+                "FiendishSpiritDevil": "Fiendish Spirit (Devil)",
+                "FiendishSpiritYugoloth": "Fiendish Spirit (Yugoloth)",
+                "FireElemental": "Fire Elemental",
+                "FlamingSphere": "Flaming Sphere",
                 "Flumph": "Flumph",
-                "ForceSculpture": "Escultura de Força",
-                "ForestGuard": "Guarda Florestal",
-                "FormOfDread": "Forma de Pavor",
-                "GuardianOfFaith": "Guardião da Fé",
-                "HealingSpirit": "Espírito Curativo",
-                "HomunculusServant": "Servo Homúnculo",
-                "HybridTransformation": "Transformação Híbrida",
-                "InvokeDuplicity": "Invocar Duplicidade",
-                "MageHand": "Mão Arcana",
-                "ManifestMind": "Mente Manifestada",
+                "ForceSculpture": "Force Sculpture",
+                "ForestGuard": "Forest Guard",
+                "FormOfDread": "Form of Dread",
+                "GuardianOfFaith": "Guardian of Faith",
+                "HealingSpirit": "Healing Spirit",
+                "HomunculusServant": "Homunculus Servant",
+                "HybridTransformation": "Hybrid Transformation",
+                "InvokeDuplicity": "Invoke Duplicity",
+                "MageHand": "Mage Hand",
+                "ManifestMind": "Manifest Mind",
                 "Pixie": "Pixie",
-                "ReaperSpirit": "Espírito Ceifador",
-                "ShadowSpirit": "Espírito das Sombras",
-                "ShadowSpiritDespair": "Espírito das Sombras (Desespero)",
-                "ShadowSpiritFear": "Espírito das Sombras (Medo)",
-                "ShadowSpiritFury": "Espírito das Sombras (Fúria)",
+                "ReaperSpirit": "Reaper Spirit",
+                "ShadowSpirit": "Shadow Spirit",
+                "ShadowSpiritDespair": "Shadow Spirit (Despair)",
+                "ShadowSpiritFear": "Shadow Spirit (Fear)",
+                "ShadowSpiritFury": "Shadow Spirit (Fury)",
                 "Shifter": "Shifter",
-                "Skeleton": "Esqueleto",
-                "SpectralAnimals": "Animais Espectrais",
-                "SpiritualWeapon": "Arma Espiritual",
-                "Steed": "Montaria",
-                "SteelDefender": "Defensor de Aço",
-                "TentacleOfTheDeeps": "Tentáculo das Profundezas",
-                "UndeadSpirit": "Espírito Morto-Vivo",
-                "UndeadSpiritGhostly": "Espírito Morto-Vivo (Fantasmal)",
-                "UndeadSpiritPutrid": "Espírito Morto-Vivo (Pútrido)",
-                "UndeadSpiritSkeletal": "Espírito Morto-Vivo (Esquelético)",
-                "WaterElemental": "Elemental da Água",
-                "WildfireSpirit": "Espírito do Fogo Selvagem",
-                "Zombie": "Zumbi"
+                "Skeleton": "Skeleton",
+                "SpectralAnimals": "Spectral Animals",
+                "SpiritTotem": "Spirit Totem",
+                "SpiritTotemBear": "Spirit Totem (Bear)",
+                "SpiritTotemHawk": "Spirit Totem (Hawk)",
+                "SpiritTotemUnicorn": "Spirit Totem (Unicorn)",
+                "SpiritualWeapon": "Spiritual Weapon",
+                "Steed": "Steed",
+                "SteelDefender": "Steel Defender",
+                "TentacleOfTheDeeps": "Tentacle of the Deeps",
+                "UndeadSpirit": "Undead Spirit",
+                "UndeadSpiritGhostly": "Undead Spirit (Ghostly)",
+                "UndeadSpiritPutrid": "Undead Spirit (Putrid)",
+                "UndeadSpiritSkeletal": "Undead Spirit (Skeletal)",
+                "WaterElemental": "Water Elemental",
+                "WildfireSpirit": "Wildfire Spirit",
+                "Zombie": "Zombie"
             },
             "CustomAvatar": "Avatar Personalizado {option}",
             "CustomName": "Nome Personalizado {option}",
@@ -3795,26 +3977,26 @@
         "SoundsSelect": "Selecionar Sons",
         "TemplatesSelect": "Selecionar Modelos"
     },
-    "dae.CPR.fieldData": {
-        "flags.chris-premades.senses.magicalDarkness": {
-            "description": "O ator à distância pode ver através de escuridão mágica. Afeta apenas ataques vant/desv com automações do CPR que criam escuridão mágica.",
-            "name": "Alcance Sentido Escuridão Mágica"
-        },
-        "flags.chris-premades.turnImmunity": {
-            "description": "Imunidade a Expulsar Mortos-Vivos. Usar o modo de alteração Sobrepor.",
-            "name": "Imunidade Expulsar"
-        },
-        "flags.chris-premades.turnResistance": {
-            "description": "Resistência a Expulsar Mortos-Vivos, role com vantagem. Usar o modo de alteração Sobrepor.",
-            "name": "Resistência Expulsar"
-        }
-    },
-    "dae.fieldData.fieldCategories.CPR": "CPR",
     "SIDEBAR": {
         "ACTIONS": {
             "CREATE": {
                 "ActiveEffect": "Criar Efeito Ativo"
             }
         }
-    }
+    },
+    "dae.CPR.fieldData": {
+        "flags.chris-premades.senses.magicalDarkness": {
+            "description": "O ator à distância pode ver através de Magical Darkness. Afeta apenas ataques vant/desv com automações do CPR que criam Magical Darkness.",
+            "name": "Alcance do Magical Darkness Sense"
+        },
+        "flags.chris-premades.turnImmunity": {
+            "description": "Imunidade a Turn Undead.",
+            "name": "Turn Immunity"
+        },
+        "flags.chris-premades.turnResistance": {
+            "description": "Resistência a Turn Undead, role com vantagem.",
+            "name": "Turn Resistance"
+        }
+    },
+    "dae.fieldData.fieldCategories.CPR": "CPR"
 }
