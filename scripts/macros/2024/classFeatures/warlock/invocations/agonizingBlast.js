@@ -2,8 +2,7 @@ import {dialogUtils, genericUtils, itemUtils, workflowUtils} from '../../../../.
 async function use({trigger, workflow}) {
     let names = new Set();
     let spells = [];
-    for (let item of workflow.actor.items) {
-        if (item.type != 'spell') continue;
+    for (let item of workflow.actor.itemTypes.spell) {
         if (item.system.level != 0) continue;
         if (names.has(item.name)) continue;
         spells.push(item);
@@ -15,10 +14,16 @@ async function use({trigger, workflow}) {
     await genericUtils.setFlag(workflow.item, 'chris-premades', 'agonizingBlast.spells', selection.filter(i => i.amount).map(i => i.document.name));
 }
 async function damage({trigger: {entity: item}, workflow}) {
-    if (!workflow.damageRolls || workflow.item.type != 'spell') return;
+    if (!workflow.damageRolls) return;
+    let name = workflow.item.name;
+    let trueStrike = workflow.item.flags['chris-premades']?.trueStrike;
+    if (workflow.item.type != 'spell') {
+        if (trueStrike) name = trueStrike;
+        else return;
+    }
     let spellNames = item.flags['chris-premades']?.agonizingBlast?.spells;
     if (!spellNames) return;
-    if (!spellNames.includes(workflow.item.name)) return;
+    if (!spellNames.includes(name)) return;
     let formula = itemUtils.getConfig(item, 'formula');
     await workflowUtils.bonusDamage(workflow, formula);
 }
