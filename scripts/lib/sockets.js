@@ -208,7 +208,13 @@ async function syntheticItemDataRoll(itemData, actorUuid, targetUuids, {options 
     let targets = targetUuids.map(i => fromUuidSync(i)?.object);
     let item = await itemUtils.syntheticItem(itemData, actor);
     let workflow = await workflowUtils.syntheticItemRoll(item, targets, {options, config});
-    return workflow.getMacroData({noWorkflowReference: true});
+    return workflow.getSafeMacroData();
+}
+async function syntheticActivityDataRoll(activityData, itemUuid, targetUuids, {options = {}, config = {}, atLevel = undefined, consumeUsage = false, consumeResources = false} = {}) {
+    let item = fromUuidSync(itemUuid);
+    let targets = targetUuids.map(i => fromUuidSync(i)?.object);
+    let workflow = await workflowUtils.syntheticActivityDataRoll(activityData, item, item.parent, targets, {options, config, atLevel, consumeUsage, consumeResources});
+    return workflow.getSafeMacroData();
 }
 const dialogManager = new DialogManager;
 async function queuedDialog(dialogOptions, checkOptions) {
@@ -257,6 +263,7 @@ export let sockets = {
     remoteRoll,
     remoteDamageRolls,
     syntheticItemDataRoll,
+    syntheticActivityDataRoll,
     queuedDialog
 };
 export let socket;

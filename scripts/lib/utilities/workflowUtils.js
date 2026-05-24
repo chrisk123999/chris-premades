@@ -38,6 +38,9 @@ async function completeActivityUse(activity, config = {}, dialog = {}, message =
         config.midiOptions.checkGMStatus = true;
         config.midiOptions.workflowData = true;
         fixSets = true;
+    } else if (config.midiOptions?.asUser && config.midiOptions?.asUser !== game.userId) {
+        config.midiOptions.workflowData = true;
+        fixSets = true;
     }
     let workflow = await MidiQOL.completeActivityUse(activity, config, dialog, message);
     workflow = workflow.workflow ?? workflow;
@@ -68,7 +71,7 @@ async function completeItemUse(item, config = {}, options = {}) {
     }
     return workflow;
 }
-async function syntheticActivityRoll(activity, targets = [], {options = {}, config = {}, atLevel = undefined, consumeUsage = false, consumeResources = false, spellSlot = false, dialog = {}, message = {}} = {}) {
+async function syntheticActivityRoll(activity, targets = [], {options = {}, config = {}, userId, atLevel = undefined, consumeUsage = false, consumeResources = false, spellSlot = false, dialog = {}, message = {}} = {}) {
     let defaultConfig = {
         consumeUsage,
         consume: {
@@ -92,6 +95,7 @@ async function syntheticActivityRoll(activity, targets = [], {options = {}, conf
         let spellLabel = actorUtils.getEquivalentSpellSlotName(activity.actor, atLevel);
         if (spellLabel) defaultConfig.spell = {slot: spellLabel};
     }
+    if (userId) options.asUser ||= userId;
     options = genericUtils.mergeObject(defaultOptions, options);
     config = genericUtils.mergeObject(defaultConfig, config);
     config.midiOptions = options;
@@ -143,7 +147,7 @@ async function syntheticItemDataRoll(itemData, actor, targets, {options = {}, co
 }
 async function syntheticActivityDataRoll(activityData, item, actor, targets, {options = {}, config = {}, atLevel = undefined, consumeUsage = false, consumeResources = false} = {}) {
     let itemData = genericUtils.duplicate(item.toObject());
-    itemData.system.activities[activityData.id] = activityData;
+    itemData.system.activities[activityData._id] = activityData;
     let newItem = await itemUtils.syntheticItem(itemData, actor);
     let newActivity = newItem.system.activities.get(activityData._id);
     return await syntheticActivityRoll(newActivity, targets, {options, config, atLevel, consumeUsage, consumeResources});

@@ -3,6 +3,8 @@
 - This is not a V14 update. An update for V14 is still a work in progress.
 ## Bug Fixes:
 - Tactical Mind
+## API Update Notes
+- Added `sockets.syntheticActivityDataRoll` for remotely rolling modified activities, e.g. with changed damage.
 
 # 1.5.33 Release:
 ## Update Notes:
