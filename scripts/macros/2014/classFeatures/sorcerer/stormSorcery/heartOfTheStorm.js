@@ -1,7 +1,7 @@
 import {dialogUtils, itemUtils, workflowUtils} from '../../../../../utils.js';
 
 async function early({trigger: {entity: item}, workflow}) {
-    if (!workflow.targets.size || workflow.item.type !== 'spell' || workflow.item.system.level === 0) return;
+    if (!workflow.targets.size || workflow.item.type !== 'spell' || workflow.item.system.level === 0 || !workflow.activity.hasDamage) return;
     let damageParts = workflow.activity.damage.parts;
     if (!damageParts.some(i => ['lightning', 'thunder'].some(j => i.custom?.formula?.includes(j) || i.types.has(j)))) return;
     await workflowUtils.completeItemUse(item, {}, {configureDialog: false});

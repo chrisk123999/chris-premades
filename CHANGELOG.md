@@ -4,6 +4,7 @@
 ## Bug Fixes:
 - Tactical Mind
 - Deflect Attacks
+- Heart of the Storm
 ## API Update Notes
 - Added `sockets.syntheticActivityDataRoll` for remotely rolling modified activities, e.g. with changed damage.
 
