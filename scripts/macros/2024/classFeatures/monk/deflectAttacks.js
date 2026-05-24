@@ -1,3 +1,4 @@
+import {socket, sockets} from '../../../../lib/sockets.js';
 import {activityUtils, actorUtils, dialogUtils, genericUtils, itemUtils, socketUtils, tokenUtils, workflowUtils} from '../../../../utils.js';
 async function damageApplication({trigger: {entity: item}, workflow, ditem}) {
     if (ditem.newHP === ditem.oldHP || !ditem.isHit) return;
@@ -8,7 +9,8 @@ async function damageApplication({trigger: {entity: item}, workflow, ditem}) {
         let damageTypes = workflowUtils.getDamageTypes(workflow.damageRolls);
         if (!['bludgeoning', 'piercing', 'slashing'].find(i => damageTypes.has(i))) return;
     }
-    let selection = await dialogUtils.confirmUseItem(item, {userId: socketUtils.firstOwner(item.actor, true)});
+    let userId = socketUtils.firstOwner(item.actor, true);
+    let selection = await dialogUtils.confirmUseItem(item, {userId});
     if (!selection) return;
     let reduceActivity = activityUtils.getActivityByIdentifier(item, 'use', {strict: true});
     if (!reduceActivity) return;
@@ -20,13 +22,13 @@ async function damageApplication({trigger: {entity: item}, workflow, ditem}) {
     let range = workflowUtils.isAttackType(workflow, 'meleeAttack') ? 5 : 60;
     let nearby = tokenUtils.findNearby(workflow.hitTargets.first(), range, 'all', {includeIncapacitated: true});
     if (!nearby.length) return;
-    let targetSelection = await dialogUtils.selectTargetDialog(item.name, 'CHRISPREMADES.Macros.DeflectAttacks.UseAndTarget', nearby, {skipDeadAndUnconscious: false, userId: socketUtils.firstOwner(item.actor, true), buttons: 'yesNo'});
-    if (!targetSelection) return;
+    let targetSelection = await dialogUtils.selectTargetDialog(item.name, 'CHRISPREMADES.Macros.DeflectAttacks.UseAndTarget', nearby, {skipDeadAndUnconscious: false, userId, buttons: 'yesNo'});
+    if (!targetSelection || !targetSelection[0]) return;
     let activity = activityUtils.getActivityByIdentifier(item, 'save', {strict: true});
     if (!activity) return;
     let activityData = genericUtils.duplicate(activity.toObject());
     activityData.damage.parts[0].types = [workflow.defaultDamageType];
-    await workflowUtils.syntheticActivityDataRoll(activityData, item, item.actor, [targetSelection[0]], {consumeResources: true, consumeUsage: true});
+    await socket.executeAsUser(sockets.syntheticActivityDataRoll.name, userId, activityData, item.uuid, [targetSelection[0].document.uuid], {consumeResources: true, consumeUsage: true});
 }
 async function added({trigger: {entity: item}}) {
     await itemUtils.fixScales(item);
