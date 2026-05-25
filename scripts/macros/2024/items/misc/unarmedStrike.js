@@ -1,86 +1,49 @@
-import {activityUtils, actorUtils, dialogUtils, effectUtils, genericUtils, itemUtils, socketUtils, tokenUtils, workflowUtils} from '../../../../utils.js';
-async function grapple({trigger, workflow}) {
-    if (!workflow.targets.size) return;
-    let size = actorUtils.getSize(workflow.actor, false);
-    if (itemUtils.getItemByIdentifier(workflow.actor, 'heavyweight')) size++;
-    let dexTargets = [];
-    let strTargets = [];
-    await Promise.all(workflow.targets.map(async token => {
-        if (actorUtils.getSize(token.actor, false) > (size + 1)) return genericUtils.notify('CHRISPREMADES.Macros.Grapple.Size', 'info');
-        let selection = await dialogUtils.buttonDialog(workflow.item.name, 'CHRISPREMADES.UnarmedStrike.GrappleContest', [['DND5E.AbilityStr', 'str'], ['DND5E.AbilityDex', 'dex']], {displayAsRows: true, userId: socketUtils.firstOwner(token.actor, true)});
-        if (!selection || selection === 'dex') {
-            dexTargets.push(token);
-        } else {
-            strTargets.push(token);
-        }
-    }));
-    if (dexTargets.length) {
-        let activity = activityUtils.getActivityByIdentifier(workflow.item, 'dexSave', {strict: true});
-        if (activity) {
-            let results = await workflowUtils.syntheticActivityRoll(activity, dexTargets);
-            await Promise.all(results.failedSaves.map(async token => await tokenUtils.grappleHelper(workflow.token, token, workflow.item, {noContest: true, flatDC: activity.save.dc.value})));
-        }
-    }
-    if (strTargets.length) {
-        let activity = activityUtils.getActivityByIdentifier(workflow.item, 'strSave', {strict: true});
-        if (activity) {
-            let results = await workflowUtils.syntheticActivityRoll(activity, strTargets);
-            await Promise.all(results.failedSaves.map(async token => await tokenUtils.grappleHelper(workflow.token, token, workflow.item, {noContest: true, flatDC: activity.save.dc.value})));
-        }
+import {activityUtils, actorUtils, effectUtils, genericUtils, itemUtils, tokenUtils} from '../../../../utils.js';
+async function sizeCheck({workflow}) {
+    let heavy = !!itemUtils.getItemByIdentifier(workflow.actor, 'heavyweight');
+    let size = actorUtils.getSize(workflow.actor, false) + heavy;
+    let id = activityUtils.getIdentifier(workflow.activity);
+    for (let t of workflow.targets) {
+        if (actorUtils.getSize(t.actor, false) <= (size + 1)) continue;
+        let warning = id === 'grapple' ? 'Grapple.Size' : 'Shove.Big';
+        genericUtils.notify('CHRISPREMADES.Macros.' + warning, 'info');
+        workflow.aborted = true;
+        return true;
     }
 }
-async function shove({trigger, workflow}) {
-    if (!workflow.targets.size) return;
-    let size = actorUtils.getSize(workflow.actor, false);
-    if (itemUtils.getItemByIdentifier(workflow.actor, 'heavyweight')) size++;
-    let dexTargets = [];
-    let strTargets = [];
-    await Promise.all(workflow.targets.map(async token => {
-        if (actorUtils.getSize(token.actor, false) > (size + 1)) return genericUtils.notify('CHRISPREMADES.Macros.Shove.Big', 'info');
-        let selection = await dialogUtils.buttonDialog(workflow.item.name, 'CHRISPREMADES.UnarmedStrike.ShoveContest', [['DND5E.AbilityStr', 'str'], ['DND5E.AbilityDex', 'dex']], {displayAsRows: true, userId: socketUtils.firstOwner(token.actor, true)});
-        if (!selection || selection === 'dex') {
-            dexTargets.push(token);
-        } else {
-            strTargets.push(token);
-        }
-    }));
-    let identifier = activityUtils.getIdentifier(workflow.activity);
-    if (dexTargets.length) {
-        let activity = activityUtils.getActivityByIdentifier(workflow.item, 'dexSave', {strict: true});
-        if (activity) {
-            let results = await workflowUtils.syntheticActivityRoll(activity, dexTargets);
-            if (identifier === 'shoveProne') {
-                await Promise.all(results.failedSaves.map(async token => await effectUtils.applyConditions(token.actor, ['prone'])));
-            } else {
-                await Promise.all(results.failedSaves.map(async token => await tokenUtils.pushToken(workflow.token, token, 5)));
-            }
-        }
-    }
-    if (strTargets.length) {
-        let activity = activityUtils.getActivityByIdentifier(workflow.item, 'strSave', {strict: true});
-        if (activity) {
-            let results = await workflowUtils.syntheticActivityRoll(activity, strTargets);
-            if (identifier === 'shoveProne') {
-                await Promise.all(results.failedSaves.map(async token => await effectUtils.applyConditions(token.actor, ['prone'])));
-            } else {
-                await Promise.all(results.failedSaves.map(async token => await tokenUtils.pushToken(workflow.token, token, 5)));
-            }
-        }
+async function grapple({workflow}) {
+    if (!workflow.failedSaves.size) return;
+    await Promise.all(workflow.failedSaves.map(async token => await tokenUtils.grappleHelper(workflow.token, token, workflow.item, {noContest: true, flatDC: workflow.activity.save.dc.value})));
+}
+async function shove({workflow}) {
+    if (!workflow.failedSaves.size) return;
+    switch(activityUtils.getIdentifier(workflow.activity)) {
+        case 'shoveProne':
+            await Promise.all(workflow.failedSaves.map(async token => await effectUtils.applyConditions(token.actor, ['prone'])));
+            break;
+        case 'shovePush':
+            await Promise.all(workflow.failedSaves.map(async token => await tokenUtils.pushToken(workflow.token, token, 5)));
+            break;
     }
 }
 export let unarmedStrike = {
     name: 'Unarmed Strike',
-    version: '1.3.141',
+    version: '1.5.34',
     rules: 'modern',
     midi: {
         item: [
+            {
+                pass: 'preItemRoll',
+                macro: sizeCheck,
+                priority: 50,
+                activities: ['grapple', 'shoveProne', 'shovePush']
+            },
             {
                 pass: 'rollFinished',
                 macro: grapple,
                 priority: 50,
                 activities: ['grapple']
             },
-            
             {
                 pass: 'rollFinished',
                 macro: shove,

@@ -6,6 +6,7 @@
 - Deflect Attacks
 - Heart of the Storm
 - Eldritch Invocations: Agonizing Blast
+- Unarmed Strike (modern, all variants)
 ## API Update Notes
 - Added `sockets.syntheticActivityDataRoll` for remotely rolling modified activities, e.g. with changed damage.
 
