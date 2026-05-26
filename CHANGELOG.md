@@ -9,6 +9,8 @@
 - Unarmed Strike (modern, all variants)
 ## API Update Notes
 - Added `sockets.syntheticActivityDataRoll` for remotely rolling modified activities, e.g. with changed damage.
+## API Bug Fixes:
+- Effect Special Durations now work on enchantments.
 
 # 1.5.33 Release:
 ## Update Notes:

@@ -125,7 +125,7 @@ async function specialDuration(workflow) {
     if (!workflow.token) return;
     await Promise.all(workflow.targets.map(async token => {
         if (!token.actor) return;
-        await Promise.all(actorUtils.getEffects(token.actor).map(async effect => {
+        await Promise.all(actorUtils.getEffects(token.actor, {includeItemEffects: true}).map(async effect => {
             let specialDurations = effect.flags['chris-premades']?.specialDuration;
             if (!specialDurations) return;
             let remove = false;
@@ -169,7 +169,7 @@ async function specialDuration(workflow) {
             if (remove) await genericUtils.remove(effect);
         }));
     }));
-    await Promise.all(actorUtils.getEffects(workflow.actor).map(async effect => {
+    await Promise.all(actorUtils.getEffects(workflow.actor, {includeItemEffects: true}).map(async effect => {
         let specialDurations = effect.flags['chris-premades']?.specialDuration;
         if (!specialDurations) return;
         let remove = false;
@@ -194,7 +194,7 @@ async function specialDuration(workflow) {
 }
 async function specialDurationConditions(effect) {
     let statusEffectIds = CONFIG.statusEffects.map(i => i.id);
-    await Promise.all(actorUtils.getEffects(effect.parent).filter(i => i.id != effect.id).map(async eff => {
+    await Promise.all(actorUtils.getEffects(effect.parent, {includeItemEffects: true}).filter(i => i.id != effect.id).map(async eff => {
         let specialDurations = eff.flags['chris-premades']?.specialDuration;
         if (!specialDurations) return;
         specialDurations = specialDurations.filter(j => statusEffectIds.includes(j));
@@ -205,7 +205,7 @@ async function specialDurationConditions(effect) {
 }
 async function specialDurationRemovedConditions(effect) {
     let statusEffectIds = CONFIG.statusEffects.map(i => i.id);
-    await Promise.all(actorUtils.getEffects(effect.parent).filter(i => i.id != effect.id).map(async eff => {
+    await Promise.all(actorUtils.getEffects(effect.parent, {includeItemEffects: true}).filter(i => i.id != effect.id).map(async eff => {
         let specialDurations = eff.flags['chris-premades']?.specialDuration;
         if (!specialDurations) return;
         specialDurations = specialDurations.filter(j => statusEffectIds.map(l => l + 'Removed'));
@@ -215,7 +215,7 @@ async function specialDurationRemovedConditions(effect) {
 }
 async function specialDurationEquipment(item) {
     let equipmentTypes = Object.keys(CONFIG.DND5E.armorTypes);
-    await Promise.all(actorUtils.getEffects(item.actor).map(async effect => {
+    await Promise.all(actorUtils.getEffects(item.actor, {includeItemEffects: true}).map(async effect => {
         let specialDurations = effect.flags['chris-premades']?.specialDuration;
         if (!specialDurations) return;
         specialDurations.filter(j => equipmentTypes.includes(j));
@@ -229,7 +229,7 @@ async function specialDurationHitPoints(actor, updates, options, id) {
     if (updates.system?.attributes?.hp?.temp === 0) validTypes.push('tempHP');
     if (updates.system?.attributes?.hp?.tempmax === 0) validTypes.push('tempMaxHP');
     if (!validTypes.length) return;
-    await Promise.all(actorUtils.getEffects(actor).map(async effect => {
+    await Promise.all(actorUtils.getEffects(actor, {includeItemEffects: true}).map(async effect => {
         let specialDurations = effect.flags['chris-premades']?.specialDuration;
         if (!specialDurations) return;
         if (specialDurations.find(i => validTypes.includes(i))) await genericUtils.remove(effect);
@@ -311,7 +311,7 @@ async function imageRemove(effect, options, id) {
     }
 }
 async function specialDurationToolCheck(rolls, data) {
-    await Promise.all(actorUtils.getEffects(data.subject).map(async effect => {
+    await Promise.all(actorUtils.getEffects(data.subject, {includeItemEffects: true}).map(async effect => {
         let specialDurations = effect.flags['chris-premades']?.specialDuration;
         if (!specialDurations) return;
         let remove = false;
