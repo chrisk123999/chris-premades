@@ -129,9 +129,9 @@ export let fisticuffs = {
                 requiredRace: null,
                 requiredEquipment: [],
                 requiredFeatures: [],
-                replacedItemName: 'Unarmed Strike (Pugilist)',
+                replacedItemName: {name: 'Fisticuffs', type: 'feat', featType: 'class'},
                 removedItems: [],
-                additionalItems: ['Fisticuffs'],
+                additionalItems: [],
                 priority: 0
             }
         }
