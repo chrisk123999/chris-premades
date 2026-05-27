@@ -3,6 +3,7 @@
 - This is not a V14 update. An update for V14 is still a work in progress.
 ## Bug Fixes:
 - Iron Chin
+- Fisticuffs
 
 # 1.5.34 Release:
 ## Update Notes:
