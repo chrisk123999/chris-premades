@@ -81,7 +81,7 @@
           }
         },
         "dae": {
-          "disableCondition": "(!!attributes.ac?.equippedArmor && attributes.ac?.equippedArmor?.system.type.value !== \"light\" ) || !!attributes.ac?.equippedShield",
+          "disableCondition": "(!!attributes.ac?.equippedArmor && attributes.ac?.equippedArmor?.system.type.value !== \"light\" ) || !!attributes.ac?.equippedShield || attributes.ac.calc === 'natural'",
           "stackable": "noneName",
           "showIcon": false,
           "disableIncapacitated": false,
@@ -107,7 +107,7 @@
       "info": {
         "identifier": "ironChin",
         "rules": "modern",
-        "version": "1.4.29",
+        "version": "1.5.35",
         "source": "chris-premades"
       }
     }
