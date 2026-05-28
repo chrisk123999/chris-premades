@@ -12,6 +12,7 @@
 - Savage Attacker (modern and legacy)
 - Ki
 - Stunning Strike (legacy)
+- Mantle of Inspiration
 
 # 1.5.34 Release:
 ## Update Notes:
