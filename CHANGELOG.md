@@ -6,6 +6,7 @@
 ## Bug Fixes:
 - Iron Chin
 - Unarmed Strike (Pugilist)
+- Savage Attacker (modern and legacy)
 
 # 1.5.34 Release:
 ## Update Notes:
