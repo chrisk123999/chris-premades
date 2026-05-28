@@ -13,6 +13,7 @@
 - Ki
 - Stunning Strike (legacy)
 - Mantle of Inspiration
+- Eldritch Invocations: Agonizing Blast
 
 # 1.5.34 Release:
 ## Update Notes:

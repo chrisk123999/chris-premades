@@ -28,6 +28,7 @@ async function use({workflow}) {
             });
         }
     }
+    genericUtils.setProperty(weaponData, 'flags.chris-premades.bladeCantrip', workflow.item.name);
     let attackWorkflow = await workflowUtils.syntheticItemDataRoll(weaponData, workflow.actor, [workflow.targets.first()]);
     if (!attackWorkflow) return;
     let playAnimation = itemUtils.getConfig(workflow.item, 'playAnimation');
