@@ -6,7 +6,8 @@ async function attack({trigger: {entity: item}, workflow}) {
         let isNatural = workflow.item.system.type.value === 'natural';
         let isUnarmed = constants.unarmedAttacks.includes(genericUtils.getIdentifier(workflow.item));
         if (!isUnarmed && isNatural) return;
-        if (['martialM', 'martialR'].includes(workflow.item.system.type.value) && !workflow.item.system.properties.has('lgt')) return;
+        if (['two', 'hvy'].some(p => workflow.item.system.properties.has(p))) return;
+        if (workflow.item.system.type.value !== 'simpleM' && workflow.item.system.type.baseItem !== 'shortsword') return; 
     }
     let classIdentifier = itemUtils.getConfig(item, 'classIdentifier');
     let scaleIdentifier = itemUtils.getConfig(item, 'scaleIdentifier');
@@ -27,38 +28,18 @@ async function attack({trigger: {entity: item}, workflow}) {
     workflow.item = await itemUtils.syntheticItem(itemData, workflow.actor);
     workflow.activity = workflow.item.system.activities.get(workflow.activity.id);
 }
-async function grappleShove({trigger, workflow}) {
-    let isUnarmed = constants.unarmedAttacks.includes(genericUtils.getIdentifier(workflow.item));
-    if (!isUnarmed) return;
-    let identifier = activityUtils.getIdentifier(workflow.activity);
-    if (!identifier) return;
-    if (!['strSave', 'dexSave'].includes(identifier)) return;
-    let defaultType = workflow.activity.save.dc.calculation;
-    let bestType = actorUtils.getBestAbility(workflow.actor, [defaultType, 'dex']);
-    if (bestType === defaultType) return;
-    let itemData = genericUtils.duplicate(workflow.item.toObject());
-    itemData.system.activities[workflow.activity.id].save.dc.calculation = bestType;
-    workflow.item = await itemUtils.syntheticItem(itemData, workflow.actor);
-    workflow.activity = workflow.item.system.activities.get(workflow.activity.id);
-}
 async function added({trigger: {entity: item}}) {
     await itemUtils.fixScales(item);
 }
 export let martialArts = {
     name: 'Martial Arts',
-    version: '1.3.136',
-    rules: 'modern',
+    version: '1.5.35',
     midi: {
         actor: [
             {
                 pass: 'preambleComplete',
                 macro: attack,
                 priority: 25
-            },
-            {
-                pass: 'preambleComplete',
-                macro: grappleShove,
-                priority: 26
             }
         ]
     },
@@ -100,7 +81,7 @@ export let martialArts = {
             value: 'scaleIdentifier',
             label: 'CHRISPREMADES.Config.ScaleIdentifier',
             type: 'text',
-            default: 'martial-arts',
+            default: 'die',
             category: 'homebrew',
             homebrew: true
         }
@@ -112,7 +93,7 @@ export let martialArts = {
             data: {
                 type: 'ScaleValue',
                 configuration: {
-                    identifier: 'martial-arts',
+                    identifier: 'die',
                     type: 'dice',
                     distance: {
                         units: ''
@@ -120,22 +101,22 @@ export let martialArts = {
                     scale: {
                         1: {
                             number: 1,
-                            faces: 6,
+                            faces: 4,
                             modifiers: []
                         },
                         5: {
                             number: 1,
-                            faces: 8,
+                            faces: 6,
                             modifiers: []
                         },
                         11: {
                             number: 1,
-                            faces: 10,
+                            faces: 8,
                             modifiers: []
                         },
                         17: {
                             number: 1,
-                            faces: 12,
+                            faces: 10,
                             modifiers: []
                         }
                     }

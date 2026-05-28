@@ -491,6 +491,7 @@ export {deflectEnergy} from './macros/2024/classFeatures/monk/deflectEnergy.js';
 export {disciplinedSurvivor} from './macros/2024/classFeatures/monk/disciplinedSurvivor.js';
 export {perfectFocus} from './macros/2024/classFeatures/monk/perfectFocus.js';
 export {superiorDefense} from './macros/2024/classFeatures/monk/superiorDefense.js';
+export {monkUnarmedStrike} from './macros/2024/classFeatures/monk/monkUnarmedStrike.js';
 // Warrior of the Elements
 export {elementalAttunement, elementalAttunementElementalStrikes} from './macros/2024/classFeatures/monk/warriorOfTheElements/elementalAttunement.js';
 export {elementalBurst} from './macros/2024/classFeatures/monk/warriorOfTheElements/elementalBurst.js';

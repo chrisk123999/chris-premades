@@ -10,6 +10,9 @@ async function early({trigger, workflow}) {
     if (herculean) {
         itemData.system.activities[workflow.activity.id].roll.formula = '2 * ' + itemData.system.activities[workflow.activity.id].roll.formula;
     }
+    if (workflow.actor.flags['chris-premades']?.stepOfTheWindJump) {
+        itemData.system.activities[workflow.activity.id].roll.formula = '2 * ' + itemData.system.activities[workflow.activity.id].roll.formula;
+    }
     workflow.item = await itemUtils.syntheticItem(itemData, workflow.actor);
     workflow.activity = workflow.item.system.activities.get(workflow.activity.id);
 }

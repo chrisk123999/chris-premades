@@ -57,5 +57,22 @@ export let savageAttacker = {
                 priority: 50
             }
         ]
+    },
+    ddbi: {
+        correctedItems: {
+            'Savage Attacker': {
+                system: {
+                    uses: {
+                        max: '1',
+                        recovery: [
+                            {
+                                period: 'turn',
+                                type: 'recoverAll'
+                            }
+                        ]
+                    }
+                }   
+            }
+        }
     }
 };
