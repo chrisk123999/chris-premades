@@ -306,6 +306,7 @@ export {magicalInspiration} from './macros/2014/classFeatures/bard/magicalInspir
 export {maneuversAmbush, maneuversBaitAndSwitch, maneuversBrace, maneuversCommandersStrike, maneuversCommandingPresence, maneuversDisarmingAttack, maneuversDistractingStrike, maneuversEvasiveFootwork, maneuversFeintingAttack, maneuversGoadingAttack, maneuversGrapplingStrike, maneuversLungingAttack, maneuversManeuveringAttack, maneuversMenacingAttack, maneuversParry, maneuversPrecisionAttack, maneuversPushingAttack, maneuversQuickToss, maneuversRally, maneuversRiposte, maneuversSweepingAttack, maneuversTacticalAssessment, maneuversTripAttack, distractingStrikeEffect} from './macros/2014/classFeatures/fighter/battleMaster/maneuvers.js';
 export {manifestEcho, manifestEchoActive} from './macros/2014/classFeatures/fighter/echoKnight/manifestEcho.js';
 export {manifestMind, manifestMindCast} from './macros/2014/classFeatures/wizard/orderOfScribes/manifestMind.js';
+export {martialArts} from './macros/2014/classFeatures/monk/martialArts.js';
 export {masterOfHexes} from './macros/2014/classFeatures/warlock/hexblade/masterOfHexes.js';
 export {mastersFlourish} from './macros/2014/classFeatures/bard/collegeOfSwords/mastersFlourish.js';
 export {mightyImpel} from './macros/2014/classFeatures/barbarian/giant/mightyImpel.js';
@@ -355,6 +356,7 @@ export {sacredWeapon} from './macros/2014/classFeatures/paladin/oathOfDevotion/s
 export {sculptSpells, sculptSpellsTarget} from './macros/2014/classFeatures/wizard/schoolOfEvocation/sculptSpells.js';
 export {sentinelAtDeathsDoor} from './macros/2014/classFeatures/cleric/graveDomain/sentinelAtDeathsDoor.js';
 export {shadowStep} from './macros/2014/classFeatures/monk/wayOfShadow/shadowStep.js';
+export {slowFall} from './macros/2014/classFeatures/monk/slowFall.js';
 export {sneakAttack} from './macros/2014/classFeatures/rogue/sneakAttack.js';
 export {songOfDefense} from './macros/2014/classFeatures/wizard/bladeSinging/songOfDefense.js';
 export {songOfVictory} from './macros/2014/classFeatures/wizard/bladeSinging/songOfVictory.js';

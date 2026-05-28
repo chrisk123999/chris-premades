@@ -3,10 +3,15 @@
 - This is not a V14 update. An update for V14 is still a work in progress.
 ## New Modern Content:
 - Unarmed Strike (Monk, modern)
+## New Legacy Content:
+- Martial Arts
+- Slow Fall
 ## Bug Fixes:
 - Iron Chin
 - Unarmed Strike (Pugilist)
 - Savage Attacker (modern and legacy)
+- Ki
+- Stunning Strike (legacy)
 
 # 1.5.34 Release:
 ## Update Notes:

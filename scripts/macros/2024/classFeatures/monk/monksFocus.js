@@ -4,7 +4,7 @@ import {disengage} from '../../actions/disengage.js';
 import {startDestructiveStride} from './warriorOfTheElements/elementalEpitome.js';
 async function flurryOfBlows({trigger, workflow}) {
     if (!itemUtils.getConfig(workflow.item, 'promptForTargets')) return;
-    let unarmedStrike = itemUtils.getItemByIdentifier(workflow.actor, 'unarmedStrike');
+    let unarmedStrike = itemUtils.getItemByIdentifier(workflow.actor, 'monkUnarmedStrike') ?? itemUtils.getItemByIdentifier(workflow.actor, 'unarmedStrike');
     if (!unarmedStrike) return;
     let playAnimation = itemUtils.getConfig(workflow.item, 'playAnimation');
     if (animationUtils.jb2aCheck() != 'patreon') playAnimation = false;

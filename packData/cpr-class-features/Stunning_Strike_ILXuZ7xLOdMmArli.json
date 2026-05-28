@@ -223,7 +223,7 @@
     "chris-premades": {
       "info": {
         "name": "Stunning Strike",
-        "version": "1.1.0",
+        "version": "1.5.35",
         "identifier": "stunningStrike",
         "source": "chris-premades"
       },
@@ -232,7 +232,14 @@
           "actor": [
             "stunningStrike"
           ]
-        }
+        },
+        "item": [
+          "stunningStrike"
+        ]
+      },
+      "hiddenActivities": [],
+      "activityIdentifiers": {
+        "save": "dnd5eactivity000"
       }
     }
   },
