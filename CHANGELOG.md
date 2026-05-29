@@ -8,6 +8,7 @@
 - Slow Fall
 ## Bug Fixes:
 - Iron Chin
+- Fisticuffs
 - Unarmed Strike (Pugilist)
 - Savage Attacker (modern and legacy)
 - Ki

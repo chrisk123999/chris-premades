@@ -119,5 +119,21 @@ export let fisticuffs = {
                 title: 'Fisticuffs'
             }
         } 
-    ]
+    ],
+    ddbi: {
+        restrictedItems: {
+            Fisticuffs: {
+                originalName: 'Fisticuffs',
+                requiredClass: null,
+                requiredSubclass: null,
+                requiredRace: null,
+                requiredEquipment: [],
+                requiredFeatures: [],
+                replacedItemName: {name: 'Fisticuffs', type: 'feat', featType: 'class'},
+                removedItems: [],
+                additionalItems: [],
+                priority: 0
+            }
+        }
+    }
 };
