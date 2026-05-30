@@ -79,10 +79,8 @@
       "dt": null,
       "conditions": ""
     },
-    "properties": [
-      "mgc"
-    ],
-    "proficient": 0,
+    "properties": [],
+    "proficient": 1,
     "unidentified": {
       "description": ""
     },
@@ -158,8 +156,8 @@
           },
           "flat": false,
           "type": {
-            "value": "melee",
-            "classification": "weapon"
+            "value": "",
+            "classification": "unarmed"
           }
         },
         "damage": {
@@ -197,7 +195,7 @@
           "triggeredActivityRollAs": "self",
           "forceDialog": false,
           "forceAttackDialog": false,
-          "forceDamageDialog": false,
+          "forceDamageDialog": "",
           "confirmTargets": "default",
           "autoTargetType": "any",
           "autoTargetAction": "default",
@@ -225,7 +223,16 @@
         "otherActivityAsParentType": true,
         "otherActivityUuid": "",
         "attackRollPerTarget": "default",
-        "fumbleThreshold": 1
+        "fumbleThreshold": 1,
+        "name": "",
+        "img": "",
+        "visibility": {
+          "level": {
+            "min": null,
+            "max": null
+          },
+          "identifier": ""
+        }
       }
     },
     "identifier": "unarmed-strike-monk",
@@ -272,14 +279,13 @@
     "core": {},
     "dnd5e": {
       "riders": {
-        "activity": [],
-        "effect": []
+        "activity": []
       }
     },
     "chris-premades": {
       "info": {
         "name": "Unarmed Strike (Monk)",
-        "version": "1.2.33",
+        "version": "1.5.35",
         "identifier": "monkUnarmedStrike",
         "source": "chris-premades"
       }

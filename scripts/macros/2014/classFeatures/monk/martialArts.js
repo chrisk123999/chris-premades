@@ -1,8 +1,14 @@
-import {activityUtils, genericUtils, itemUtils, rollUtils, workflowUtils} from '../../../../utils.js';
+import {activityUtils, actorUtils, constants, genericUtils, itemUtils, rollUtils, workflowUtils} from '../../../../utils.js';
 async function attack({trigger: {entity: item}, workflow}) {
     if (!workflowUtils.isAttackType(workflow, 'weaponAttack')) return;
     let validateWeaponType = itemUtils.getConfig(item, 'validateWeaponType');
-    if (validateWeaponType && !['simpleM', 'improv'].includes(workflow.item.system.type.value)) return;
+    if (validateWeaponType) {
+        let isNatural = workflow.item.system.type.value === 'natural';
+        let isUnarmed = constants.unarmedAttacks.includes(genericUtils.getIdentifier(workflow.item));
+        if (!isUnarmed && isNatural) return;
+        if (['two', 'hvy'].some(p => workflow.item.system.properties.has(p))) return;
+        if (workflow.item.system.type.value !== 'simpleM' && workflow.item.system.type.baseItem !== 'shortsword') return; 
+    }
     let classIdentifier = itemUtils.getConfig(item, 'classIdentifier');
     let scaleIdentifier = itemUtils.getConfig(item, 'scaleIdentifier');
     let scale = workflow.actor.system.scale[classIdentifier]?.[scaleIdentifier];
@@ -14,9 +20,10 @@ async function attack({trigger: {entity: item}, workflow}) {
         let activityData = activityUtils.withChangedDamage(workflow.activity, {number: scale.number, denomination: scale.faces});
         itemData.system.activities[workflow.activity.id] = activityData;
     }
-    if (workflow.item.system.type.value === 'improv') {
-        itemData.system.proficient = 1;
-        itemData.system.mastery = 'sap';
+    if (workflowUtils.isAttackType(workflow, 'meleeAttack')) {
+        let defaultType = workflow.activity.attack.ability ?? 'str';
+        let abilities = [...workflow.item.system.availableAbilities, defaultType, 'dex'];
+        itemData.system.activities[workflow.activity.id].attack.ability = actorUtils.getBestAbility(workflow.actor, abilities);
     }
     workflow.item = await itemUtils.syntheticItem(itemData, workflow.actor);
     workflow.activity = workflow.item.system.activities.get(workflow.activity.id);
@@ -24,10 +31,9 @@ async function attack({trigger: {entity: item}, workflow}) {
 async function added({trigger: {entity: item}}) {
     await itemUtils.fixScales(item);
 }
-export let fisticuffs = {
-    name: 'Fisticuffs',
-    version: '1.4.25',
-    rules: 'modern',
+export let martialArts = {
+    name: 'Martial Arts',
+    version: '1.5.35',
     midi: {
         actor: [
             {
@@ -67,7 +73,7 @@ export let fisticuffs = {
             value: 'classIdentifier',
             label: 'CHRISPREMADES.Config.ClassIdentifier',
             type: 'text',
-            default: 'pugilist',
+            default: 'monk',
             category: 'homebrew',
             homebrew: true
         },
@@ -75,7 +81,7 @@ export let fisticuffs = {
             value: 'scaleIdentifier',
             label: 'CHRISPREMADES.Config.ScaleIdentifier',
             type: 'text',
-            default: 'fisticuffs',
+            default: 'die',
             category: 'homebrew',
             homebrew: true
         }
@@ -87,7 +93,7 @@ export let fisticuffs = {
             data: {
                 type: 'ScaleValue',
                 configuration: {
-                    identifier: 'fisticuffs',
+                    identifier: 'die',
                     type: 'dice',
                     distance: {
                         units: ''
@@ -95,45 +101,30 @@ export let fisticuffs = {
                     scale: {
                         1: {
                             number: 1,
-                            faces: 8,
+                            faces: 4,
                             modifiers: []
                         },
                         5: {
                             number: 1,
-                            faces: 10,
+                            faces: 6,
                             modifiers: []
                         },
                         11: {
                             number: 1,
-                            faces: 12,
+                            faces: 8,
                             modifiers: []
                         },
                         17: {
-                            number: 2,
-                            faces: 6,
+                            number: 1,
+                            faces: 10,
                             modifiers: []
                         }
                     }
                 },
                 value: {},
-                title: 'Fisticuffs'
-            }
-        } 
-    ],
-    ddbi: {
-        restrictedItems: {
-            Fisticuffs: {
-                originalName: 'Fisticuffs',
-                requiredClass: null,
-                requiredSubclass: null,
-                requiredRace: null,
-                requiredEquipment: [],
-                requiredFeatures: [],
-                replacedItemName: {name: 'Fisticuffs', type: 'feat', featType: 'class'},
-                removedItems: [],
-                additionalItems: [],
-                priority: 0
+                title: 'Martial Arts'
             }
         }
-    }
+        
+    ]
 };

@@ -1,5 +1,5 @@
 export let ironChin = {
     name: 'Iron Chin',
-    version: '1.4.29',
+    version: '1.5.35',
     rules: 'modern'
 };

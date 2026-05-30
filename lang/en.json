@@ -892,6 +892,9 @@
             "AnimateDead": {
                 "Command": "Animate Dead: Command"
             },
+            "AnimateObjects": {
+                "Attack": "Slam"
+            },
             "AnimatingPerformance": {
                 "Command": "Animating Performance: Command",
                 "Dance": "Irrepressible Dance",
@@ -3753,6 +3756,12 @@
                 "AberrantSpiritSlaad": "Aberrant Spirit (Slaad)",
                 "AberrantSpiritStarSpawn": "Aberrant Spirit (Star Spawn)",
                 "AirElemental": "Air Elemental",
+                "AnimatedObject": "Animated Object",
+                "AnimatedObjectTiny": "Animated Object (Tiny)",
+                "AnimatedObjectSmall": "Animated Object (Small)",
+                "AnimatedObjectMedium": "Animated Object (Medium)",
+                "AnimatedObjectLarge": "Animated Object (Large)",
+                "AnimatedObjectHuge": "Animated Object (Huge)",
                 "BeastOfTheLand": "Beast of the Land",
                 "BeastOfTheSea": "Beast of the Sea",
                 "BeastOfTheSky": "Beast of the Sky",

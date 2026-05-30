@@ -16,9 +16,9 @@ async function use({trigger, workflow}) {
 async function damage({trigger: {entity: item}, workflow}) {
     if (!workflow.damageRolls) return;
     let name = workflow.item.name;
-    let trueStrike = workflow.item.flags['chris-premades']?.trueStrike;
     if (workflow.item.type != 'spell') {
-        if (trueStrike) name = trueStrike;
+        let bladeCantrip = workflow.item.flags['chris-premades']?.bladeCantrip;
+        if (bladeCantrip) name = bladeCantrip;
         else return;
     }
     let spellNames = item.flags['chris-premades']?.agonizingBlast?.spells;
