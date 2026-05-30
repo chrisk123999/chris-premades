@@ -6,6 +6,7 @@
 ## New Legacy Content:
 - Martial Arts
 - Slow Fall
+- Animate Objects
 ## Bug Fixes:
 - Iron Chin
 - Fisticuffs

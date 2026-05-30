@@ -1,6 +1,7 @@
 // Spells
 export {acidArrow} from './macros/2014/spells/acidArrow.js';
 export {animateDead} from './macros/2014/spells/animateDead.js';
+export {animateObjects} from './macros/2014/spells/animateObjects.js';
 export {antagonize} from './macros/2014/spells/antagonize.js';
 export {armorOfAgathys, armorOfAgathysArmor} from './macros/2014/spells/armorOfAgathys.js';
 export {armsOfHadar} from './macros/2014/spells/armsOfHadar.js';
