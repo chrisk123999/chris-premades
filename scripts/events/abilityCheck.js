@@ -257,7 +257,7 @@ async function rollCheck(wrapped, config, dialog = {}, message = {}) {
             if (selection.disadvantage) {
                 switch(selection.disadvantage.constructor.name) {
                     case 'Boolean': options.disadvantage = true; break;
-                    case 'Array': options.disadvantage = selection.advantage.find(i => i); break;
+                    case 'Array': options.disadvantage = selection.disadvantage.find(i => i); break;
                 }
             }
         }

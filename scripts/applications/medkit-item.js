@@ -789,7 +789,8 @@ export class ItemMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
             'system.source',
             'system.prepared',
             'system.method',
-            'flags.core.sourceId'
+            'flags.core.sourceId',
+            'system.sourceItem'
         ];
         if (item.type === 'spell') keepPaths.push('system.uses');
         const cleanPaths = [
