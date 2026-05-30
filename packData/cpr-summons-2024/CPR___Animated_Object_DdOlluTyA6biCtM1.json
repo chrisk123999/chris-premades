@@ -1,7 +1,7 @@
 {
   "name": "CPR - Animated Object",
   "type": "npc",
-  "_id": "ubPP1oZ4iMpNrVgY",
+  "_id": "DdOlluTyA6biCtM1",
   "img": "icons/svg/mystery-man.svg",
   "system": {
     "currency": {
@@ -13,7 +13,7 @@
     },
     "abilities": {
       "str": {
-        "value": 10,
+        "value": 16,
         "proficient": 0,
         "max": null,
         "bonuses": {
@@ -449,8 +449,8 @@
     "attributes": {
       "ac": {
         "calc": "custom",
-        "flat": 10,
-        "formula": "10"
+        "flat": null,
+        "formula": "15"
       },
       "init": {
         "ability": "",
@@ -463,12 +463,12 @@
       },
       "movement": {
         "units": "ft",
-        "hover": true,
+        "hover": false,
         "ignoredDifficultTerrain": [],
         "walk": "30",
         "burrow": "",
         "climb": "",
-        "fly": "30",
+        "fly": "",
         "swim": "",
         "bonus": "",
         "special": ""
@@ -503,10 +503,10 @@
         "spent": 0
       },
       "hp": {
-        "max": 20,
+        "max": 10,
         "temp": null,
         "tempmax": null,
-        "value": 20,
+        "value": 10,
         "formula": "",
         "dt": null
       },
@@ -550,7 +550,7 @@
         "value": [],
         "custom": ""
       },
-      "cr": 1,
+      "cr": 0,
       "treasure": {
         "value": []
       }
@@ -577,7 +577,10 @@
     "traits": {
       "size": "med",
       "di": {
-        "value": [],
+        "value": [
+          "poison",
+          "psychic"
+        ],
         "custom": "",
         "bypasses": []
       },
@@ -596,7 +599,13 @@
         "bypasses": []
       },
       "ci": {
-        "value": [],
+        "value": [
+          "charmed",
+          "exhaustion",
+          "frightened",
+          "paralyzed",
+          "poisoned"
+        ],
         "custom": ""
       },
       "languages": {
@@ -609,7 +618,10 @@
   },
   "prototypeToken": {
     "name": "CPR - Animated Object",
+    "displayName": 30,
     "actorLink": false,
+    "width": 1,
+    "height": 1,
     "texture": {
       "src": "icons/svg/mystery-man.svg",
       "anchorX": 0.5,
@@ -617,15 +629,17 @@
       "offsetX": 0,
       "offsetY": 0,
       "fit": "contain",
+      "scaleX": 1,
+      "scaleY": 1,
       "rotation": 0,
       "tint": "#ffffff",
-      "alphaThreshold": 0.75,
-      "scaleX": 1,
-      "scaleY": 1
+      "alphaThreshold": 0.75
     },
     "lockRotation": false,
     "rotation": 0,
     "alpha": 1,
+    "disposition": 1,
+    "displayBars": 50,
     "bar1": {
       "attribute": "attributes.hp"
     },
@@ -658,9 +672,9 @@
       }
     },
     "sight": {
+      "enabled": true,
       "range": 0,
       "angle": 360,
-      "enabled": true,
       "visionMode": "monochromatic",
       "color": null,
       "attenuation": 0,
@@ -671,11 +685,6 @@
     "detectionModes": [
       {
         "id": "blindsight",
-        "range": 30,
-        "enabled": true
-      },
-      {
-        "id": "lightPerception",
         "range": 30,
         "enabled": true
       }
@@ -705,16 +714,11 @@
     "flags": {},
     "randomImg": false,
     "appendNumber": false,
-    "prependAdjective": false,
-    "displayName": 0,
-    "width": 1,
-    "height": 1,
-    "disposition": 1,
-    "displayBars": 0
+    "prependAdjective": false
   },
   "items": [],
   "effects": [],
   "folder": null,
   "flags": {},
-  "_key": "!actors!ubPP1oZ4iMpNrVgY"
+  "_key": "!actors!DdOlluTyA6biCtM1"
 }

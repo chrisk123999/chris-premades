@@ -1,21 +1,24 @@
 import {Summons} from '../../../lib/summons.js';
 import {compendiumUtils, constants, dialogUtils, effectUtils, genericUtils, itemUtils} from '../../../utils.js';
 async function use({workflow}) {
+    let scaling = workflow.castData.scaling ?? 0;
+    let casterData = workflow.actor.getRollData();
+    let mod = casterData.attributes.spell.mod;
+    if (mod < 1) return;
+    let prof = casterData.attributes.prof;
+    let flatAttack = [mod, prof, casterData.bonuses.msak.attack].filter(i => !!i).join(' + ');
     let concentrationEffect = effectUtils.getConcentrationEffect(workflow.actor, workflow.item);
     let exit = async () => {if (concentrationEffect) await genericUtils.remove(concentrationEffect);};
-    let baseCount = workflow.activity.target.affects.count || 10;
-    let scaling = workflow.castData.scaling ?? 0;
-    let totalSummons = Math.floor(baseCount + (scaling * 2));
-    let actor = await compendiumUtils.getActorFromCompendium(constants.packs.summons, 'CPR - Animated Object');
+    let actor = await compendiumUtils.getActorFromCompendium(constants.modernPacks.summons, 'CPR - Animated Object');
     if (!actor) return await exit();
-    let attackData = await compendiumUtils.getItemFromCompendium(constants.featurePacks.summonFeatures, 'Slam (Animated Object)', {object: true, getDescription: true, translate: 'CHRISPREMADES.Macros.AnimateObjects.Attack'});
+    let attackData = await compendiumUtils.getItemFromCompendium(constants.modernFeaturePacks.summonFeatures, 'Slam (Animated Object)', {object: true, getDescription: true, translate: 'CHRISPREMADES.Macros.AnimateObjects.Attack', flatAttack});
     if (!attackData) return await exit();
     let weights = {};
     let compendiumDocs = [];
     let defaultName = genericUtils.translate('CHRISPREMADES.Summons.CreatureNames.AnimatedObject');
     for (let size of Object.keys(CONFIG.DND5E.actorSizes).filter(s => s !== 'grg')) {
         let s = CONFIG.DND5E.actorSizes[size];
-        let number = s.numerical < 1 ? 1 : Math.pow(2, s.numerical - 1);
+        let number = s.numerical < 2 ? 1 : (s.numerical - 1);
         let avatarImg = itemUtils.getConfig(workflow.item, 'avatar' + size);
         let tokenImg = itemUtils.getConfig(workflow.item, 'token' + size);
         weights[size] = number;
@@ -30,18 +33,28 @@ async function use({workflow}) {
             avatarImg
         });
     }
-    let choices = await dialogUtils.selectDocumentsDialog(workflow.item.name, genericUtils.format('CHRISPREMADES.Summons.SelectSummons', {totalSummons}), compendiumDocs, {max: totalSummons, weights});
+    let choices = await dialogUtils.selectDocumentsDialog(workflow.item.name, genericUtils.format('CHRISPREMADES.Summons.SelectSummons', {totalSummons: mod}), compendiumDocs, {max: mod, weights});
     if (choices?.length) choices = choices.filter(i => i.amount);
     if (!choices?.length) return await exit();
     let updates = [];
+    let proficiencyEffect = {
+        name: workflow.item.name,
+        img: workflow.item.img,
+        origin: workflow.item.uuid,
+        changes: [
+            {
+                key: 'system.attributes.prof',
+                mode: 5,
+                value: prof,
+                priority: 20
+            }
+        ]
+    };
     choices.forEach(c => {
         let d = c.document;
         let token = {
             sight: {enabled: true},
-            detectionModes: [
-                {id: 'blindsight', range: 30, enabled: true},
-                {id: 'lightPerception', range: 30, enabled: true}
-            ],
+            detectionModes: [{id: 'blindsight', range: 30, enabled: true}],
             disposition: workflow.token.document.disposition,
             name: d.summonName,
             width: d.width,
@@ -58,21 +71,22 @@ async function use({workflow}) {
             genericUtils.setProperty(token, 'texture.scaleX', d.scale);
             genericUtils.setProperty(token, 'texture.scaleY', d.scale);
         }
-        genericUtils.setProperty(update, 'actor.system.traits.size', d.id);
         let data = getDataForSize(d.id);
+        genericUtils.setProperty(update, 'actor.system.traits.size', d.id);
         genericUtils.setProperty(update, 'actor.system.attributes.hp', {value: data.hp, max: data.hp});
-        genericUtils.setProperty(update, 'actor.system.attributes.ac', {calc: 'custom', formula: data.ac});
-        genericUtils.setProperty(update, 'actor.system.abilities.str.value', data.str);
-        genericUtils.setProperty(update, 'actor.system.abilities.dex.value', data.dex);
+        genericUtils.setProperty(update, 'actor.system.traits.languages.custom', casterData.traits.languages.custom);
+        genericUtils.setProperty(update, 'actor.system.traits.languages.value', Array.from(casterData.traits.languages.value));
         let attack = foundry.utils.duplicate(attackData);
         let activityIds = Object.keys(attack.system.activities);
         for (let id of activityIds) {
             if (attack.system.activities[id].type !== 'attack') continue;
-            attack.system.activities[id].attack = {ability: data.ability, bonus: data.attack, flat: true};
-            attack.system.activities[id].damage.parts[0].custom = {enabled: true, formula: data.damage};
+            attack.system.activities[id].damage.parts[0].number = data.number + scaling;
+            attack.system.activities[id].damage.parts[0].denomination = data.faces;
+            attack.system.activities[id].damage.parts[0].bonus += data.bonus ? (' + ' + mod) : '';
             attack.system.activities[id].damage.includeBase = false;
         }
         update.actor.items = [attack];
+        update.actor.effects = [proficiencyEffect];
         update.token = token;
         genericUtils.setProperty(update, 'actor.prototypeToken', token);
         for (let i = 0; i < c.amount; i++) updates.push(update);
@@ -86,56 +100,31 @@ async function use({workflow}) {
 }
 function getDataForSize(size) {
     switch(size) {
-        case 'tiny': return {
-            hp: 20,
-            ac: 18,
-            str: 4,
-            dex: 18,
-            attack: 8,
-            ability: 'dex',
-            damage: '1d4 + @mod[bludgeoning]'
-        };
-        case 'sm': return {
-            hp: 25,
-            ac: 16,
-            str: 6,
-            dex: 14,
-            attack: 6,
-            ability: 'dex',
-            damage: '1d8 + @mod[bludgeoning]'
-        };
+        case 'tiny':
+        case 'sm':
         case 'med': return {
-            hp: 40,
-            ac: 13,
-            str: 10,
-            dex: 12,
-            attack: 5,
-            ability: 'dex',
-            damage: '2d6 + @mod[bludgeoning]'
+            hp: 10,
+            number: 1,
+            faces: 4
         };
         case 'lg': return {
-            hp: 50,
-            ac: 10,
-            str: 14,
-            dex: 10,
-            attack: 6,
-            ability: 'str',
-            damage: '2d10 + @mod[bludgeoning]'
+            hp: 20,
+            number: 2,
+            faces: 6,
+            bonus: true
         };
         case 'huge': return {
-            hp: 80,
-            ac: 10,
-            str: 18,
-            dex: 6,
-            attack: 8,
-            ability: 'str',
-            damage: '2d12 + @mod[bludgeoning]'
+            hp: 40,
+            number: 2,
+            faces: 12,
+            bonus: true
         };
     }
 }
 export let animateObjects = {
     name: 'Animate Objects',
     version: '1.5.35',
+    rules: 'modern',
     hasAnimation: true,
     midi: {
         item: [

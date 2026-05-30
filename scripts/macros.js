@@ -85,6 +85,7 @@ export {alterSelf} from './macros/2024/spells/alterSelf.js';
 export {animalFriendship} from './macros/2024/spells/animalFriendship.js';
 export {animalMessenger} from './macros/2024/spells/animalMessenger.js';
 export {animateDead} from './macros/2024/spells/animateDead.js';
+export {animateObjects} from './macros/2024/spells/animateObjects.js';
 export {antilifeShell, antilifeShellOtherMove} from './macros/2024/spells/antilifeShell.js';
 export {arcaneVigor} from './macros/2024/spells/arcaneVigor.js';
 export {armorOfAgathys} from './macros/2024/spells/armorOfAgathys.js';
