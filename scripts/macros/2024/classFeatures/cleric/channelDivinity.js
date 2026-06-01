@@ -104,9 +104,10 @@ async function damage({trigger, workflow}) {
     workflow.defaultDamageType = selection;
 }
 async function added({trigger: {entity: item}}) {
+    let classIdentifier = itemUtils.getConfig(item, 'classIdentifier');
+    if (!item.parent.classes[classIdentifier]) return;
     await itemUtils.fixScales(item);
     if (item.system.uses.max) return;
-    let classIdentifier = itemUtils.getConfig(item, 'classIdentifier');
     let scaleIdentifier = itemUtils.getConfig(item, 'scaleIdentifier');
     await genericUtils.update(item, {'system.uses.max': `@scale.${classIdentifier}.${scaleIdentifier}`});
 }

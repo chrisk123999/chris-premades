@@ -21,6 +21,7 @@ async function use({workflow}) {
     };
     let effect = await effectUtils.createEffect(workflow.actor, casterEffectData, {
         concentrationItem: workflow.item,
+        interdependent :true,
         identifier: 'compelledDuelSource',
         rules: 'modern',
         macros: [

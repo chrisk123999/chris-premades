@@ -208,13 +208,21 @@ async function syntheticItemDataRoll(itemData, actorUuid, targetUuids, {options 
     let targets = targetUuids.map(i => fromUuidSync(i)?.object);
     let item = await itemUtils.syntheticItem(itemData, actor);
     let workflow = await workflowUtils.syntheticItemRoll(item, targets, {options, config});
-    return workflow.getSafeMacroData();
+    return midiWorkflowDataPatch(workflow);
 }
 async function syntheticActivityDataRoll(activityData, itemUuid, targetUuids, {options = {}, config = {}, atLevel = undefined, consumeUsage = false, consumeResources = false} = {}) {
     let item = fromUuidSync(itemUuid);
     let targets = targetUuids.map(i => fromUuidSync(i)?.object);
     let workflow = await workflowUtils.syntheticActivityDataRoll(activityData, item, item.parent, targets, {options, config, atLevel, consumeUsage, consumeResources});
-    return workflow.getSafeMacroData();
+    return midiWorkflowDataPatch(workflow);
+}
+// revert when merged https://gitlab.com/tposney/midi-qol/-/merge_requests/427
+function midiWorkflowDataPatch(workflow) {
+    return {
+        ...workflow.getSafeMacroData(),
+        utilityRoll: workflow.utilityRoll,
+        utilityRolls: workflow.utilityRolls
+    };
 }
 const dialogManager = new DialogManager;
 async function queuedDialog(dialogOptions, checkOptions) {

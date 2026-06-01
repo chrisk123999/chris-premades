@@ -14,7 +14,7 @@ async function damageApplication({trigger: {entity: item}, workflow, ditem}) {
     if (!selection) return;
     let reduceActivity = activityUtils.getActivityByIdentifier(item, 'use', {strict: true});
     if (!reduceActivity) return;
-    let targetWorkflow = await workflowUtils.syntheticActivityRoll(reduceActivity, [workflow.hitTargets.first()]);
+    let targetWorkflow = await socket.executeAsUser(sockets.syntheticActivityDataRoll.name, userId, reduceActivity.toObject(), item.uuid, [workflow.hitTargets.first().document.uuid]);
     workflowUtils.modifyDamageAppliedFlat(ditem, -targetWorkflow.utilityRolls[0].total);
     if (ditem.newHP != ditem.oldHP) return;
     let monksFocus = itemUtils.getItemByIdentifier(item.actor, 'monksFocus');
