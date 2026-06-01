@@ -95,6 +95,7 @@
 		"WorldCollection": "writable",
 		"foundry": "writable",
 		"Token": "writable",
-		"dnd5e": "writable"
+		"dnd5e": "writable",
+		"_loc": "writable"
 	}
 }

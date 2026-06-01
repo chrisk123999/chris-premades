@@ -1,4 +1,5 @@
-import {Logging} from './proxy.mjs';
+import {Logging, api} from './proxy.mjs';
+import * as animations from './macros/animations.mjs';
 Hooks.once('i18nInit', () => {
 
 });
@@ -15,5 +16,12 @@ Hooks.once('catInit', () => {
 
 });
 Hooks.once('catReady', () => {
-
+    Object.entries(animations).forEach(([identifier, value]) => api.registerAnimation({
+        source: 'chris-premades',
+        identifier,
+        name: value.name,
+        macro: value.macro,
+        requirements: value.requirements,
+        type: value.type
+    }));
 });
