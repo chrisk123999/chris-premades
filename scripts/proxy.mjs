@@ -1,29 +1,26 @@
 function createProxy(targetPath) {
+    const cache = new Map();
     return new Proxy({}, {
         get: function(target, prop) {
-            if (prop === 'then' || typeof prop === 'symbol') {
-                return undefined;
-            }
-            const cat = game.modules.get('cat');
-            if (!cat?.active) return;
+            if (prop === 'then' || typeof prop === 'symbol') return undefined;
+            if (!game.modules.get('cat')?.active) return;
             let currentContext = globalThis.cat;
-            if (!currentContext) {
-                throw new Error('globalThis.cat is not initialized yet. CAT isn\'t ready yet.');
-            }
+            if (!currentContext) throw new Error("globalThis.cat is not initialized yet. CAT isn't ready yet.");
             targetPath.forEach(function(pathPart) {
-                if (currentContext) {
-                    currentContext = currentContext[pathPart];
-                }
+                if (currentContext) currentContext = currentContext[pathPart];
             });
-            if (!currentContext || currentContext[prop] === undefined) {
-                throw new Error('Property ' + String(prop) + ' does not exist on globalThis.cat.' + targetPath.join('.'));
-            }
+            if (!currentContext || currentContext[prop] === undefined) throw new Error('Property ' + String(prop) + ' does not exist on globalThis.cat.' + targetPath.join('.'));
+            if (cache.has(prop)) return cache.get(prop);
             const value = currentContext[prop];
             if (typeof value === 'object' && value !== null) {
-                return createProxy(targetPath.concat([prop]));
+                const childProxy = createProxy(targetPath.concat([prop]));
+                cache.set(prop, childProxy);
+                return childProxy;
             }
             if (typeof value === 'function') {
-                return value.bind(currentContext);
+                const boundFunction = value.bind(currentContext);
+                cache.set(prop, boundFunction);
+                return boundFunction;
             }
             return value;
         }
