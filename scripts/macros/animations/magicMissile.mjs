@@ -10,7 +10,7 @@ const colorMap = {
 };
 const dynamicColors = Object.keys(colorMap);
 let lastColor = Math.floor(Math.random() * dynamicColors.length);
-async function macro(sourceToken, targetToken, {missed, sound, color = 'purple'} = {}) {
+async function attack(sourceToken, targetToken, {missed, sound, color = 'purple'} = {}) {
     await animationUtils.preloadAnimations('jb2a.magic_missile');
     if (color === 'random') {
         color = dynamicColors[Math.floor(Math.random() * dynamicColors.length)];
@@ -35,7 +35,9 @@ async function macro(sourceToken, targetToken, {missed, sound, color = 'purple'}
 }
 export const magicMissile = {
     name: 'CHRISPREMADES.Animations.MagicMissile',
-    macro,
+    macros: {
+        attack
+    },
     inputs: ['sourceToken', 'targetToken', 'options'],
     requirements: ['JB2A_DnD5e'],
     type: 'rangedAttack',

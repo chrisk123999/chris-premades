@@ -2,11 +2,16 @@
     "CHRISPREMADES": {
         "Animations": {
             "EldritchBlast": "Eldritch Blast",
-            "MagicMissile": "Magic Missile"
+            "MagicMissile": "Magic Missile",
+            "ScorchingRay": "Scorching Ray"
         },
         "Config": {
             "Activity": "Activity",
             "Animation": "Animation",
+            "Animations": {
+                "Complex": "Complex",
+                "Simple": "Simple"
+            },
             "AttackActivity": "Attack Activity",
             "Colors": {
                 "Blue": "Blue",
