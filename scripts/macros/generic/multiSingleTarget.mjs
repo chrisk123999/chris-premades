@@ -14,10 +14,10 @@ async function use({document, workflow}) {
     if (!attackActivity) return;
     const animationIdentifier = automationUtils.getGenericConfigValue(document, 'chris-premades', 'multiSingleTarget', 'animationIdentifier');
     const animation = animationUtils.getAnimation('chris-premades', animationIdentifier);
-    const color = automationUtils.getGenericConfigValue(document, 'chris-premades', 'multiSingleTarget', 'color');
+    const color = automationUtils.getGenericAnimationConfig(document, 'chris-premades', 'multiSingleTarget', 'color');
     const reactionItemIdentifiers = automationUtils.getGenericConfigValue(document, 'chris-premades', 'multiSingleTarget', 'reactionItemIdentifiers');
     const reactionEffectIdentifiers = automationUtils.getGenericConfigValue(document, 'chris-premades', 'multiSingleTarget', 'reactionEffectIdentifiers');
-    const sound = automationUtils.getGenericConfigValue(document, 'chris-premades', 'multiSingleTarget', 'sound');
+    const sound = automationUtils.getGenericAnimationConfigValue(document, 'chris-premades', 'multiSingleTarget', 'sound');
     let remainingAttacks = totalTargets;
     let validTargets = workflow.targets.map(token => token.document);
     while (remainingAttacks > 0 && validTargets.length > 0) {
@@ -71,3 +71,48 @@ async function use({document, workflow}) {
         }
     }
 }
+export const multiSingleTarget = {
+    rules: 'all',
+    version: '1.6.1',
+    category: 'general',
+    roll: [
+        {
+            pass: 'itemRollFinished',
+            macro: use,
+            priority: 50
+        }
+    ],
+    genericConfig: {
+        activityId: {
+            default: '',
+            type: 'selectActivity'
+        },
+        formula: {
+            default: '@item.level',
+            type: 'text'
+        },
+        skipDeadAndUnconscious: {
+            default: true,
+            type: 'checkbox'
+        },
+        attackActivityId: {
+            default: '',
+            type: 'selectActivity'
+        },
+        animation: {
+            default: {
+                source: 'chris-premades',
+                identifier: 'magicMissile'
+            },
+            type: 'selectAnimation'
+        },
+        reactionItemIdentifiers: {
+            default: [],
+            type: 'selectIdentifiers'
+        },
+        reactionEffectIdentifiers: {
+            default: [],
+            type: 'selectIdentifiers'
+        }
+    }
+};

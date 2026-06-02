@@ -1,5 +1,22 @@
 {
     "CHRISPREMADES": {
+        "Config": {
+            "Colors": {
+                "Blue": "Blue",
+                "Cycle": "Cycle",
+                "DarkRed": "Dark Red",
+                "Green": "Green",
+                "Grey": "Grey",
+                "Orange": "Orange",
+                "Purple": "Purple",
+                "Random": "Random",
+                "Yellow": "Yellow"
+            },
+            "Generic": {
+                "Color": "Color",
+                "Sound": "Sound"
+            }
+        },
         "Macros": {
             "Generic": {
                 "MultiSingleTarget": {
