@@ -22,7 +22,7 @@ Hooks.once('catReady', () => {
         source: 'chris-premades',
         identifier,
         name: value.name,
-        macro: value.macro,
+        macros: value.macros,
         requirements: value.requirements,
         type: value.type,
         config: value.config,

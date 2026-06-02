@@ -1,4 +1,4 @@
-import {automationUtils, rollUtils, dialogUtils, animationUtils, actorUtils, activityUtils, workflowUtils, itemUtils, genericUtils} from '../../proxy.mjs';
+import {automationUtils, rollUtils, dialogUtils, animationUtils, actorUtils, activityUtils, workflowUtils, itemUtils, genericUtils, queryUtils} from '../../proxy.mjs';
 async function use({document, workflow}) {
     const activityId = automationUtils.getGenericConfigValue(document, 'chris-premades', 'multiSingleTarget', 'activityId');
     if (activityId != workflow.activity.id || !workflow.targets.size) return;
@@ -25,7 +25,7 @@ async function use({document, workflow}) {
     const reactionEffectIdentifiers = automationUtils.getGenericConfigValue(document, 'chris-premades', 'multiSingleTarget', 'reactionEffectIdentifiers');
     let remainingAttacks = totalTargets;
     let validTargets = workflow.targets.map(token => token.document);
-    while (remainingAttacks > 0 && validTargets.length > 0) {
+    while (remainingAttacks > 0 && validTargets.size > 0) {
         let dialogResult = await dialogUtils.selectTargetDialog(
             workflow.item.name, 
             _loc('CHRISPREMADES.Macros.Generic.MultiSingleTarget.Context', {totalTargets: remainingAttacks, skipDeadAndUnconscious}), 
@@ -48,12 +48,12 @@ async function use({document, workflow}) {
                 continue;
             }
             let reacted = false;
-            const reactionItems = activityUtils.getCastableSpells(targetDoc.actor, {identifiers: reactionItemIdentifiers});
+            const reactionItems = actorUtils.getCastableSpells(targetDoc.actor, {identifiers: reactionItemIdentifiers});
             let reactionEffect = reactionEffectIdentifiers.find(identifier => actorUtils.getEffectByIdentifier(targetDoc.actor, identifier));
             if (reactionEffect) {
                 reacted = true;
             } else if (!actorUtils.hasUsedReaction(targetDoc.actor) && reactionItems.length) {
-                const selectedReactionItem = await dialogUtils.selectDocumentDialog(workflow.item.name, _loc('CHRISPREMADES.Macros.Generic.MultiSingleTarget.Reaction'), reactionItems, {addNoneDocument: true});
+                const selectedReactionItem = await dialogUtils.selectDocumentDialog(workflow.item.name, _loc('CHRISPREMADES.Macros.Generic.MultiSingleTarget.Reaction'), reactionItems, {addNoneDocument: true, userId: queryUtils.firstOwner(targetDoc, true)});
                 if (selectedReactionItem) {
                     await workflowUtils.completeItemUse(selectedReactionItem, [targetDoc]); 
                     reactionEffect = reactionEffectIdentifiers.find(identifier => actorUtils.getEffectByIdentifier(targetDoc.actor, identifier));
