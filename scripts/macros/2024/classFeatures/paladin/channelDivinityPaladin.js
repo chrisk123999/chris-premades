@@ -12,5 +12,21 @@ export let channelDivinityPaladin = {
             category: 'homebrew',
             homebrew: true
         }
-    ]
+    ],
+    ddbi: {
+        restrictedItems: {
+            'Channel Divinity (Paladin)': {
+                originalName: 'Channel Divinity',
+                requiredClass: 'Paladin',
+                requiredSubclass: null,
+                requiredRace: null,
+                requiredEquipment: [],
+                requiredFeatures: [],
+                replacedItemName: 'Channel Divinity (Paladin)',
+                removedItems: [],
+                additionalItems: [],
+                priority: 0
+            }
+        }
+    }
 };

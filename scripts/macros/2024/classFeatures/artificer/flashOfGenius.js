@@ -14,6 +14,7 @@ async function allyBonus({trigger: {entity: item, roll, sourceActor}}) {
     });
     if (!nearbyTokens.length) return;
     for (let t of nearbyTokens) {
+        if (targetValue && (roll.total >= targetValue)) break;
         let feature = genericUtils.getProperty(t, 'chris-premades.flashOfGenius');
         let ability = itemUtils.getConfig(feature, 'ability') || 'int';
         let formula = Math.max(1, t.actor.system.abilities[ability].mod);

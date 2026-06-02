@@ -1,3 +1,12 @@
+# 1.5.36 Release:
+## Update Notes:
+- This is not a V14 update. An update for V14 is still a work in progress.
+## Bug Fixes:
+- Channel Divinity (Paladin, Cleric modern)
+- Flash of Genius
+- Deflect Attacks
+- Compelled Duel
+
 # 1.5.35 Release:
 ## Update Notes:
 - This is not a V14 update. An update for V14 is still a work in progress.
