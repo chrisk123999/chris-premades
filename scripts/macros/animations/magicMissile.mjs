@@ -3,9 +3,10 @@ import {animationUtils} from '../../proxy.mjs';
 const colors = [ 'grey', 'dark_red', 'orange', 'yellow', 'green', 'blue', 'purple'];
 let lastColor = Math.floor((Math.random() * colors.length));
 const basePath = 'jb2a.magic_missile.';
-async function macro(sourceToken, targetToken, missed, sound, color) {
+async function macro(sourceToken, targetToken, {missed, sound, color} = {}) {
     await animationUtils.preloadAnimations('jb2a.magic_missile');
     let path = basePath;
+    color ??= 'purple';
     if (color === 'random') {
         path += colors[Math.floor(Math.random() * colors.length)];
     } else if (color === 'cycle') {
@@ -32,6 +33,7 @@ async function macro(sourceToken, targetToken, missed, sound, color) {
 export const magicMissile = {
     name: 'Magic Missile',
     macro,
+    inputs: ['sourceToken', 'targetToken', 'options'],
     requirements: ['JB2A_DnD5e'],
     type: 'rangedAttack',
     config: {

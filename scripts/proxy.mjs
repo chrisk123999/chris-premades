@@ -47,5 +47,5 @@ export const sceneUtils = createProxy(['utils', 'sceneUtils']);
 export const tokenUtils = createProxy(['utils', 'tokenUtils']);
 export const uiUtils = createProxy(['utils', 'uiUtils']);
 export const workflowUtils = createProxy(['utils', 'workflowUtils']);
-export const animationUtils = createProxy('utils', 'animationUtils');
-export const dialogUtils = createProxy('utils', 'dialogUtils');
+export const animationUtils = createProxy(['utils', 'animationUtils']);
+export const dialogUtils = createProxy(['utils', 'dialogUtils']);
