@@ -8,10 +8,6 @@ const colorMap = {
     orange: 'Orange',
     grey: 'Grey'
 };
-const colorOptions = animationUtils.buildColorOptions(colorMap, {
-    freeColors: ['purple'],
-    labelPrefix: 'CHRISPREMADES.Config.Colors.'
-});
 const dynamicColors = Object.keys(colorMap);
 let lastColor = Math.floor(Math.random() * dynamicColors.length);
 async function macro(sourceToken, targetToken, {missed, sound, color = 'purple'} = {}) {
@@ -43,17 +39,22 @@ export const magicMissile = {
     inputs: ['sourceToken', 'targetToken', 'options'],
     requirements: ['JB2A_DnD5e'],
     type: 'rangedAttack',
-    config: {
-        color: {
-            default: 'purple',
-            type: 'select',
-            label: 'CHRISPREMADES.Config.Generic.Color',
-            options: colorOptions
-        },
-        sound: {
-            label: 'CHRISPREMADES.Config.Generic.Sound',
-            type: 'text',
-            default: ''
-        }
+    get config() {
+        return {
+            color: {
+                default: 'purple',
+                type: 'select',
+                label: 'CHRISPREMADES.Config.Generic.Color',
+                options: animationUtils.buildColorOptions(colorMap, {
+                    freeColors: ['purple'],
+                    labelPrefix: 'CHRISPREMADES.Config.Colors.'
+                })
+            },
+            sound: {
+                label: 'CHRISPREMADES.Config.Generic.Sound',
+                type: 'text',
+                default: ''
+            }
+        };
     }
 };

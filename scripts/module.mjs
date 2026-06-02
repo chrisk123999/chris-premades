@@ -26,7 +26,8 @@ Hooks.once('catReady', () => {
         requirements: value.requirements,
         type: value.type,
         config: value.config,
-        category: value.category
+        category: value.category,
+        inputs: value.inputs
     }));
     Object.entries(generic).forEach(([identifier, value]) => {
         const automationData = {
