@@ -105,7 +105,8 @@ export const multiSingleTarget = {
                 source: 'chris-premades',
                 identifier: 'magicMissile'
             },
-            type: 'selectAnimation'
+            type: 'selectAnimation',
+            inputs: ['sourceToken', 'targetToken', 'options']
         },
         reactionItemIdentifiers: {
             default: [],
