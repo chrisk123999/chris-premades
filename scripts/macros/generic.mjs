@@ -1,0 +1,1 @@
+export {multiSingleTarget} from './generic/multiSingleTarget.mjs';

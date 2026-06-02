@@ -75,6 +75,7 @@ export const multiSingleTarget = {
     rules: 'all',
     version: '1.6.1',
     category: 'general',
+    generic: true,
     roll: [
         {
             pass: 'itemRollFinished',

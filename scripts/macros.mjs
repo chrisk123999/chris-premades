@@ -1,0 +1,1 @@
+export * as generic from './macros/generic.mjs';
