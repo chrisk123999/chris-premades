@@ -60,8 +60,9 @@ async function use({document, workflow}) {
                     validTargets = validTargets.filter(t => t.id !== targetDoc.id);
                     break; 
                 }
+                const workflow = await workflowUtils.completeActivityUse(attackActivity, [targetDoc], {autoDamage: true});
+                if (!workflow.hitTargets.size) reacted = true;
                 if (animation) await animation.macro(workflow.token.document, targetDoc, {missed: reacted, sound, color});
-                await workflowUtils.completeActivityUse(attackActivity, [targetDoc], {autoDamage: true});
                 remainingAttacks--;
                 if (currentSkip && targetDoc.actor.system.attributes.hp.value <= 0) {
                     validTargets = validTargets.filter(t => t.id !== targetDoc.id);

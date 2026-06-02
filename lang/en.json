@@ -1,5 +1,9 @@
 {
     "CHRISPREMADES": {
+        "Animations": {
+            "EldritchBlast": "Eldritch Blast",
+            "MagicMissile": "Magic Missile"
+        },
         "Config": {
             "Activity": "Activity",
             "Animation": "Animation",
@@ -7,11 +11,18 @@
             "Colors": {
                 "Blue": "Blue",
                 "Cycle": "Cycle",
+                "DarkGreen": "Dark Green",
+                "DarkPink": "Dark Pink",
+                "DarkPurple": "Dark Purple",
                 "DarkRed": "Dark Red",
                 "Green": "Green",
                 "Grey": "Grey",
+                "LightBlue": "Light Blue",
+                "LightGreen": "Light Green",
                 "Orange": "Orange",
+                "Pink": "Pink",
                 "Purple": "Purple",
+                "Rainbow": "Rainbow",
                 "Random": "Random",
                 "Yellow": "Yellow"
             },
