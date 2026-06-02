@@ -94,7 +94,7 @@ export let magicMissile = {
     midi: {
         item: [
             {
-                pass: 'rollFinished',
+                pass: 'itemRollFinished',
                 macro: use,
                 priority: 50,
                 activities: ['magicMissile']
