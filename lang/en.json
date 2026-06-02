@@ -1,6 +1,9 @@
 {
     "CHRISPREMADES": {
         "Config": {
+            "Activity": "Activity",
+            "Animation": "Animation",
+            "AttackActivity": "Attack Activity",
             "Colors": {
                 "Blue": "Blue",
                 "Cycle": "Cycle",
@@ -12,10 +15,14 @@
                 "Random": "Random",
                 "Yellow": "Yellow"
             },
+            "Formula": "Formula",
             "Generic": {
                 "Color": "Color",
                 "Sound": "Sound"
-            }
+            },
+            "ReactionEffectIdentifiers": "Reaction Effect Identifiers",
+            "ReactionItemIdentifiers": "Reaction Item Identifiers",
+            "SkipDeadAndUnconscious": "Skip Dead And Unconscious"
         },
         "Macros": {
             "Generic": {

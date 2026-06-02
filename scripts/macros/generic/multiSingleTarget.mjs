@@ -86,19 +86,27 @@ export const multiSingleTarget = {
     genericConfig: {
         activityId: {
             default: '',
-            type: 'selectActivity'
+            type: 'selectActivity',
+            label: 'CHRISPREMADES.Config.Activity',
+            hint: ''
         },
         formula: {
             default: '@item.level',
-            type: 'text'
+            type: 'text',
+            label: 'CHRISPREMADES.Config.Formula',
+            hint: ''
         },
         skipDeadAndUnconscious: {
             default: true,
-            type: 'checkbox'
+            type: 'checkbox',
+            label: 'CHRISPREMADES.Config.SkipDeadAndUnconscious',
+            hint: ''
         },
         attackActivityId: {
             default: '',
-            type: 'selectActivity'
+            type: 'selectActivity',
+            label: 'CHRISPREMADES.Config.AttackActivity',
+            hint: ''
         },
         animation: {
             default: {
@@ -106,15 +114,21 @@ export const multiSingleTarget = {
                 identifier: 'magicMissile'
             },
             type: 'selectAnimation',
-            inputs: ['sourceToken', 'targetToken', 'options']
+            inputs: ['sourceToken', 'targetToken', 'options'],
+            label: 'CHRISPREMADES.Config.Animation',
+            hint: ''
         },
         reactionItemIdentifiers: {
             default: [],
-            type: 'selectIdentifiers'
+            type: 'selectIdentifiers',
+            label: 'CHRISPREMADES.Config.ReactionItemIdentifiers',
+            hint: ''
         },
         reactionEffectIdentifiers: {
             default: [],
-            type: 'selectIdentifiers'
+            type: 'selectIdentifiers',
+            label: 'CHRISPREMADES.Config.ReactionEffectIdentifiers',
+            hint: ''
         }
     }
 };

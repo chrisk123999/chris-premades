@@ -4,13 +4,15 @@ function createProxy(targetPath) {
         get: function(target, prop) {
             if (prop === 'then' || typeof prop === 'symbol') return undefined;
             if (!game.modules.get('cat')?.active) return;
+            if (cache.has(prop)) return cache.get(prop);
             let currentContext = globalThis.cat;
             if (!currentContext) throw new Error("globalThis.cat is not initialized yet. CAT isn't ready yet.");
             targetPath.forEach(function(pathPart) {
                 if (currentContext) currentContext = currentContext[pathPart];
             });
-            if (!currentContext || currentContext[prop] === undefined) throw new Error('Property ' + String(prop) + ' does not exist on globalThis.cat.' + targetPath.join('.'));
-            if (cache.has(prop)) return cache.get(prop);
+            if (!currentContext || currentContext[prop] === undefined) {
+                throw new Error('Property ' + String(prop) + ' does not exist on globalThis.cat.' + targetPath.join('.'));
+            }
             const value = currentContext[prop];
             if (typeof value === 'object' && value !== null) {
                 const childProxy = createProxy(targetPath.concat([prop]));
