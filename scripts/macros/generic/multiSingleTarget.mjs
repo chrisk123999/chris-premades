@@ -81,7 +81,7 @@ async function use({document, workflow}) {
 export const multiSingleTarget = {
     rules: 'all',
     version: '1.6.1',
-    category: 'general',
+    category: 'targeting',
     generic: true,
     roll: [
         {

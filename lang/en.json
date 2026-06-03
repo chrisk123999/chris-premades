@@ -36,6 +36,7 @@
                 "Color": "Color",
                 "Sound": "Sound"
             },
+            "Identifiers": "Identifiers",
             "ReactionEffectIdentifiers": "Reaction Effect Identifiers",
             "ReactionItemIdentifiers": "Reaction Item Identifiers",
             "SkipDeadAndUnconscious": "Skip Dead And Unconscious"
