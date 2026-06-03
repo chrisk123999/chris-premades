@@ -170,7 +170,8 @@ export const scorchingRay = {
             },
             sound: {
                 label: 'CHRISPREMADES.Config.Generic.Sound',
-                type: 'text',
+                type: 'file',
+                fileType: 'audio',
                 default: ''
             }
         };

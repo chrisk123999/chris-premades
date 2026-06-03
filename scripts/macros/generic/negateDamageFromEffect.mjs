@@ -1,6 +1,6 @@
 import {actorUtils, automationUtils, documentUtils, workflowUtils} from '../../proxy.mjs';
 async function damage({document, workflow, ditem, targetToken}) {
-    const identifiers = automationUtils.getGenericConfigValue(document, 'chris-premades', 'negateDamageByIdentifier', 'identifiers');
+    const identifiers = automationUtils.getGenericConfigValue(document, 'chris-premades', 'negateDamageFromEffect', 'identifiers');
     if (!identifiers.length) return;
     if (!actorUtils.getEffects(targetToken.actor).some(effect => identifiers.includes(documentUtils.getIdentifier(effect)))) return;
     workflowUtils.negateDamageItemDamage(ditem);

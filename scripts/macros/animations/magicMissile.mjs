@@ -49,12 +49,15 @@ export const magicMissile = {
                 label: 'CHRISPREMADES.Config.Generic.Color',
                 options: animationUtils.buildColorOptions(colorMap, {
                     freeColors: ['purple'],
-                    labelPrefix: 'CHRISPREMADES.Config.Colors.'
+                    labelPrefix: 'CHRISPREMADES.Config.Colors.',
+                    random: true,
+                    cycle: true
                 })
             },
             sound: {
                 label: 'CHRISPREMADES.Config.Generic.Sound',
-                type: 'text',
+                type: 'file',
+                fileType: 'audio',
                 default: ''
             }
         };
