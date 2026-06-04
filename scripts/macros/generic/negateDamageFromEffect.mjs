@@ -10,6 +10,7 @@ export const negateDamageFromEffect = {
     version: '1.6.1',
     category: 'damage',
     generic: true,
+    documents: ['Item'],
     roll: [
         {
             pass: 'itemDamageComplete',

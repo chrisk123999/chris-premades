@@ -39,10 +39,14 @@
             "Identifiers": "Identifiers",
             "ReactionEffectIdentifiers": "Reaction Effect Identifiers",
             "ReactionItemIdentifiers": "Reaction Item Identifiers",
-            "SkipDeadAndUnconscious": "Skip Dead And Unconscious"
+            "SkipDeadAndUnconscious": "Skip Dead And Unconscious",
+            "UtilityRollAsDamage": "Utility Roll As Damage"
         },
         "Macros": {
             "Generic": {
+                "BladeSpell": {
+                    "Weapon": "Attack with what weapon?"
+                },
                 "MultiSingleTarget": {
                     "Context": "How many? (Max: {totalTargets})",
                     "Reaction": "Use a reaction?"

@@ -10,7 +10,7 @@ async function use({document, workflow}) {
     const skipDeadAndUnconscious = automationUtils.getGenericConfigValue(document, 'chris-premades', 'multiSingleTarget', 'skipDeadAndUnconscious');
     const attackActivityId = automationUtils.getGenericConfigValue(document, 'chris-premades', 'multiSingleTarget', 'attackActivityId');
     if (!attackActivityId) return;
-    const attackActivity = workflow.item.system.activities.get(attackActivityId);
+    let attackActivity = workflow.item.system.activities.get(attackActivityId);
     if (!attackActivity) return;
     const animationSetting = automationUtils.getGenericConfigValue(document, 'chris-premades', 'multiSingleTarget', 'animation');
     const animation = animationSetting ? animationUtils.getAnimation(animationSetting.source, animationSetting.identifier) : undefined;
@@ -25,6 +25,11 @@ async function use({document, workflow}) {
     const reactionEffectIdentifiers = automationUtils.getGenericConfigValue(document, 'chris-premades', 'multiSingleTarget', 'reactionEffectIdentifiers');
     let remainingAttacks = totalTargets;
     let validTargets = workflow.targets.map(token => token.document);
+    const utilityRollAsDamage = workflow.utilityRolls ? automationUtils.getGenericConfigValue(document, 'chris-premades', 'multiSingleTarget', 'utilityRollAsDamage') : false;
+    if (utilityRollAsDamage) {
+        const activityData = activityUtils.getDamageModifiedActivityData(attackActivity, rollUtils.getRollsTotal(workflow.utilityRolls));
+        attackActivity = activityUtils.syntheticActivity(activityData, workflow.item);
+    }
     while (remainingAttacks > 0 && validTargets.size > 0) {
         let dialogResult = await dialogUtils.selectTargetDialog(
             workflow.item.name, 
@@ -65,7 +70,12 @@ async function use({document, workflow}) {
                     validTargets = validTargets.filter(t => t.id !== targetDoc.id);
                     break; 
                 }
-                const workflow = await workflowUtils.completeActivityUse(attackActivity, [targetDoc], {autoDamage: true});
+                let workflow;
+                if (utilityRollAsDamage) {
+                    workflow = await workflowUtils.syntheticActivityRoll(attackActivity, [targetDoc]);
+                } else {
+                    workflow = await workflowUtils.completeActivityUse(attackActivity, [targetDoc], {autoDamage: true});
+                }
                 if (!workflow.hitTargets.size) reacted = true;
                 if (animation && animation.macros?.attack) await animation.macros.attack(workflow.token.document, targetDoc, {missed: reacted, ...animationOptions});
                 remainingAttacks--;
@@ -83,6 +93,7 @@ export const multiSingleTarget = {
     version: '1.6.1',
     category: 'targeting',
     generic: true,
+    documents: ['Item'],
     roll: [
         {
             pass: 'itemRollFinished',
@@ -135,6 +146,12 @@ export const multiSingleTarget = {
             default: [],
             type: 'selectIdentifiers',
             label: 'CHRISPREMADES.Config.ReactionEffectIdentifiers',
+            hint: ''
+        },
+        utilityRollAsDamage: {
+            default: false,
+            type: 'checkbox',
+            label: 'CHRISPREMADES.Config.UtilityRollAsDamage',
             hint: ''
         }
     }
