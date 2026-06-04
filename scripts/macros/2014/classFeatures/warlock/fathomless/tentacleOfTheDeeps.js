@@ -1,6 +1,5 @@
 import {Summons} from '../../../../../lib/summons.js';
 import {activityUtils, compendiumUtils, constants, effectUtils, errors, genericUtils, itemUtils} from '../../../../../utils.js';
-
 async function use({workflow}) {
     let effect = effectUtils.getEffectByIdentifier(workflow.actor, 'tentacleOfTheDeeps');
     if (effect) await genericUtils.remove(effect);
@@ -55,6 +54,7 @@ async function early({activity, token, actor}) {
         name: activity.item.name,
         img: activity.item.img,
         origin: activity.item.uuid,
+        duration: {seconds: 1},
         changes: [
             {
                 key: 'flags.midi-qol.rangeOverride.attack.all',
@@ -73,9 +73,6 @@ async function early({activity, token, actor}) {
     };
     await effectUtils.createEffect(actor, effectData, {identifier: 'tentacleOfTheDeepsAttack', parentEntity: effect});
     await effectUtils.createEffect(tentacleActor, effectData, {identifier: 'tentacleOfTheDeepsAttack', parentEntity: effect});
-    let classLevel = actor.classes.warlock?.system.levels ?? 1;
-    let numDice = (classLevel > 9) ? 2 : 1;
-    genericUtils.setProperty(activity, 'damage.parts.0.number', numDice);
 }
 async function late({workflow}) {
     let effect = effectUtils.getEffectByIdentifier(workflow.actor, 'tentacleOfTheDeeps');
@@ -90,7 +87,7 @@ async function late({workflow}) {
 export let tentacleOfTheDeeps = {
     name: 'Tentacle of the Deeps: Summon',
     aliases: ['Tentacle of the Deeps'],
-    version: '1.1.10',
+    version: '1.5.36',
     midi: {
         item: [
             {

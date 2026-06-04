@@ -1,5 +1,4 @@
 import {effectUtils, genericUtils, itemUtils} from '../../../../utils.js';
-
 async function use({workflow}) {
     let source = workflow.item.effects.contents?.[0];
     if (!source) return;
@@ -137,7 +136,24 @@ export let digDeep = {
             default: 50,
             category: 'visuals'
         }
-    ]
+    ],
+    ddbi: {
+        correctedItems: {
+            'Dig Deep': {
+                system: {
+                    uses: {
+                        max: '1',
+                        recovery: [
+                            {
+                                period: 'lr',
+                                type: 'recoverAll'
+                            }
+                        ]
+                    }
+                }
+            }
+        }
+    }
 };
 export let digDeepEffect = {
     name: digDeep.name,

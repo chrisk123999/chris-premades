@@ -1,4 +1,4 @@
-import {constants, effectUtils, itemUtils, rollUtils, tokenUtils, workflowUtils} from '../../../../utils.js';
+import {effectUtils, itemUtils, tokenUtils, workflowUtils} from '../../../../utils.js';
 async function use({workflow}) {
     let config = itemUtils.getGenericFeatureConfig(workflow.item, 'enlarge');
     let effectData = {
@@ -82,21 +82,24 @@ async function use({workflow}) {
     effectData.flags['chris-premades'].enlargeReduce.newSize = newSize;
     await effectUtils.createEffect(workflow.actor, effectData);
 }
-async function damage({workflow}) {
-    if (workflow.hitTargets.size !== 1 || !workflowUtils.isAttackType(workflow, 'weaponAttack')) return;
-    let isFin = workflow.item.system.properties.has('fin');
-    if (isFin) {
+async function doubleDamage({trigger: {entity: item}, workflow}) {
+    if (!workflowUtils.isAttackType(workflow, 'weaponAttack')) return;
+    if (workflow.item.system.properties.has('fin')) {
         if (workflow.actor.system.abilities.str.value < workflow.actor.system.abilities.dex.value) return;
     }
-    let numWeaponDamageRolls = workflow.activity.damage.parts.length;
-    let newWeaponRolls = [];
-    for (let i = 0; i < numWeaponDamageRolls; i++) {
-        let currRoll = workflow.damageRolls[i];
-        let newRoll = await new CONFIG.Dice.DamageRoll(await rollUtils.getCriticalFormula(currRoll.formula, currRoll.data), currRoll.data, currRoll.options).evaluate();
-        newWeaponRolls.push(newRoll);
-    }
-    let damageRolls = newWeaponRolls.concat(workflow.damageRolls.slice(numWeaponDamageRolls));
-    await workflow.setDamageRolls(damageRolls);
+    let damages = workflow.activity.damage.parts.map(p => {
+        p = p.toObject();
+        p.number *= 2;
+        return p;
+    });
+    let activityData = workflow.activity.toObject();
+    activityData.damage.includeBase = false;
+    activityData.damage.parts = damages;
+    activityData.damage.parts[0].bonus += ' + @mod';
+    workflow.item = itemUtils.cloneItem(workflow.item, {
+        ['system.activities.' + workflow.activity.id]: activityData
+    });
+    workflow.activity = workflow.item.system.activities.get(workflow.activity.id);
 }
 export let enlarge = {
     name: 'Enlarge',
@@ -133,8 +136,8 @@ export let enlargeEnlarged = {
     midi: {
         actor: [
             {
-                pass: 'damageRollComplete',
-                macro: damage,
+                pass: 'preambleComplete',
+                macro: doubleDamage,
                 priority: 50
             }
         ]

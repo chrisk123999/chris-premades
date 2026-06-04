@@ -12,7 +12,7 @@
       "rules": "2014"
     },
     "uses": {
-      "max": "3",
+      "max": "@prof",
       "recovery": [
         {
           "period": "lr",
@@ -183,7 +183,15 @@
           "concentration": false,
           "override": false
         },
-        "effects": [],
+        "effects": [
+          {
+            "_id": "dGk56fiJYl8F4GNe",
+            "level": {
+              "min": null,
+              "max": null
+            }
+          }
+        ],
         "range": {
           "override": false,
           "units": "ft",
@@ -230,18 +238,15 @@
           "parts": [
             {
               "custom": {
-                "enabled": false,
-                "formula": ""
+                "enabled": true,
+                "formula": "(1 + floor(@classes.warlock.levels * 0.1))d8[cold]"
               },
               "number": 1,
               "denomination": 8,
               "bonus": "",
               "types": [
                 "cold"
-              ],
-              "scaling": {
-                "number": 1
-              }
+              ]
             }
           ]
         },
@@ -275,7 +280,7 @@
           "triggeredActivityRollAs": "self",
           "forceDialog": false,
           "forceAttackDialog": false,
-          "forceDamageDialog": false,
+          "forceDamageDialog": "",
           "confirmTargets": "default",
           "autoTargetType": "any",
           "autoTargetAction": "default",
@@ -303,7 +308,14 @@
         "otherActivityAsParentType": true,
         "otherActivityUuid": "",
         "attackRollPerTarget": "default",
-        "fumbleThreshold": 1
+        "fumbleThreshold": 1,
+        "visibility": {
+          "level": {
+            "min": null,
+            "max": null
+          },
+          "identifier": ""
+        }
       }
     },
     "identifier": "tentacle-of-the-deeps-summon",
@@ -349,24 +361,23 @@
     },
     "core": {},
     "dnd5e": {
-      "riders": {
-        "activity": [
-          "i2zvi1v7paf7Cp3m"
-        ],
-        "effect": []
-      },
       "last": {
         "i2zvi1v7paf7Cp3m": {
           "damageType": {
             "0": "cold"
           }
         }
+      },
+      "riders": {
+        "activity": [
+          "i2zvi1v7paf7Cp3m"
+        ]
       }
     },
     "chris-premades": {
       "info": {
         "name": "Tentacle of the Deeps: Summon",
-        "version": "1.1.10",
+        "version": "1.5.36",
         "identifier": "tentacleOfTheDeeps",
         "source": "chris-premades",
         "hasAnimation": true

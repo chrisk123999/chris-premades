@@ -6,6 +6,9 @@
 - Flash of Genius
 - Deflect Attacks
 - Compelled Duel
+- Dig Deep
+- Generic Enlarge
+- Tentacle of the Deeps
 
 # 1.5.35 Release:
 ## Update Notes:
