@@ -9,6 +9,8 @@
 - Dig Deep
 - Generic Enlarge
 - Tentacle of the Deeps
+## API Bug Fixes:
+- Removed `[object Object]` in troubleshooter.
 
 # 1.5.35 Release:
 ## Update Notes:

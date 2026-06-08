@@ -38,6 +38,7 @@ let names = {
     'monks-wall-enhancement': 'Monk\'s Wall Enhancement',
     'simbuls-cover-calculator': 'Simbul\'s Cover Calculator',
     tokencover: 'Alternative Token Cover',
+    tokenmagic: 'Token Magic FX',
     levelsautocover: 'Levels - Automatic Cover Calculator'
 };
 let optionalModules = [
@@ -127,12 +128,12 @@ export async function run() {
     if (cpr.version === '#{VERSION}#') {
         addLine('Cauldron of Plentiful Resources Version: Development');
     } else {
-        addLine('Cauldron of Plentiful Resources Version: ' + game.modules.get('chris-premades').version);
+        addLine('Cauldron of Plentiful Resources Version: ' + cpr.version);
     }
     addLine('');
     addLine('/////////////// Required Modules ///////////////');
     let requiredModules = new Set([]);
-    game.modules.get('chris-premades').relationships.requires.forEach(value => {
+    cpr.relationships.requires.forEach(value => {
         requiredModules.add(value.id);
         let module = game.modules.get(value.id);
         if (module) game.modules.get(value.id).relationships.requires.forEach(value => {
@@ -181,7 +182,31 @@ export async function run() {
     addLine('/////////////// CPR Settings ///////////////');
     let cprSettings = Array.from(game.settings.settings).filter(i => i[0].includes('chris-premades') && i[1].namespace === 'chris-premades');
     cprSettings.forEach(i => {
-        addLine(genericUtils.translate('CHRISPREMADES.Settings.' + i[1].key + '.Name') + ': ' + game.settings.get('chris-premades', i[1].key));
+        let name = genericUtils.translate('CHRISPREMADES.Settings.' + i[1].key + '.Name');
+        let setting = game.settings.get('chris-premades', i[1].key);
+        switch(i[1].key) {
+            case 'additionalCompendiums':
+                addLine(name);
+                for (let pack of Object.keys(setting)) {
+                    let packName = names[pack] ?? game.packs.get(pack)?.title;
+                    if (!packName && pack === cpr.id) packName = cpr.title;
+                    addLine(' - ' + setting[pack] + ': ' + packName);
+                }
+                break;
+            case 'manualRollsUsers':
+                addLine(name);
+                for (let userId of Object.keys(setting)) {
+                    let userName = game.users.get(userId)?.name;
+                    addLine(' - ' + userId + ': ' + setting[userId] + ' (' + userName + ')');
+                }
+                break;
+            case 'bg3WeaponActionConfig':
+            case 'statusEffectIcons':
+                break;
+            default:
+                addLine(name + ': ' + setting);
+                break;
+        }
     });
     let customMacros = custom.getCustomMacroList();
     if (customMacros.length) {
@@ -195,6 +220,7 @@ export async function run() {
         addLine('');
         addLine('/////////////// Midi-Qol Settings ///////////////');
         addLine('Roll Automation Support: ' + game.settings.get('midi-qol', 'EnableWorkflow'));
+        addLine('Replace dnd5e activities with midi-qol equivalents: ' + game.settings.settings.get('midi-qol', 'ReplaceDefaultActivities'));
         let midiSettings = game.settings.get('midi-qol', 'ConfigSettings');
         console.log(midiSettings);
         switch(midiSettings.autoCEEffects) {
@@ -215,6 +241,8 @@ export async function run() {
         //addLine('Merge Card: ' + midiSettings.mergeCard);
         addLine('Actor On Use: ' + midiSettings.allowActorUseMacro);
         addLine('Item On Use: ' + midiSettings.allowUseMacro);
+        addLine('Check Hits: ' + midiSettings.autoCheckHit);
+        addLine('Check Saves: ' + midiSettings.autoCheckSaves);
         addLine('Player Auto Roll Damage: ' + midiSettings.autoRollDamage);
         addLine('GM Auto Roll Damage: ' + midiSettings.gmAutoDamage);
         addLine('Confirm Rolls: ' + midiSettings.confirmAttackDamage);
