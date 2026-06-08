@@ -31,8 +31,8 @@ async function grappleShove({trigger, workflow}) {
     let isUnarmed = constants.unarmedAttacks.includes(genericUtils.getIdentifier(workflow.item));
     if (!isUnarmed) return;
     let identifier = activityUtils.getIdentifier(workflow.activity);
-    if (!identifier) return;
-    if (!['strSave', 'dexSave'].includes(identifier)) return;
+    if (!identifier) return; 
+    if (!['grapple', 'shoveProne', 'shovePush'].includes(identifier)) return;
     let defaultType = workflow.activity.save.dc.calculation;
     let bestType = actorUtils.getBestAbility(workflow.actor, [defaultType, 'dex']);
     if (bestType === defaultType) return;

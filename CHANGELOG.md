@@ -9,6 +9,7 @@
 - Dig Deep
 - Generic Enlarge
 - Tentacle of the Deeps
+- Martial Arts (modern)
 ## API Bug Fixes:
 - Removed `[object Object]` in troubleshooter.
 
