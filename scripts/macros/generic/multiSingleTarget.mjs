@@ -13,14 +13,10 @@ async function use({document, workflow}) {
     let attackActivity = workflow.item.system.activities.get(attackActivityId);
     if (!attackActivity) return;
     const animationSetting = automationUtils.getGenericConfigValue(document, 'chris-premades', 'multiSingleTarget', 'animation');
-    const animation = animationSetting ? animationUtils.getAnimation(animationSetting.source, animationSetting.identifier) : undefined;
+    const animation = animationUtils.getAnimation(animationSetting.source, animationSetting.identifier);
     const animationOptions = {};
-    if (animation && animation.config) {
-        Object.keys(animation.config).forEach(function(key) {
-            animationOptions[key] = automationUtils.getGenericAnimationConfig(document, 'chris-premades', 'multiSingleTarget', 'animation', key);
-        });
-    }
-    if (animation && animation.macros?.start) await animation.macros.start(workflow.token.document, animationOptions);
+    if (animation?.config) Object.keys(animation.config).forEach((key) => animationOptions[key] = automationUtils.getGenericAnimationConfig(document, 'chris-premades', 'multiSingleTarget', 'animation', key));
+    if (animation?.macros?.start) await animation.macros.start(workflow.token.document, animationOptions);
     const reactionItemIdentifiers = automationUtils.getGenericConfigValue(document, 'chris-premades', 'multiSingleTarget', 'reactionItemIdentifiers');
     const reactionEffectIdentifiers = automationUtils.getGenericConfigValue(document, 'chris-premades', 'multiSingleTarget', 'reactionEffectIdentifiers');
     let remainingAttacks = totalTargets;
@@ -86,7 +82,7 @@ async function use({document, workflow}) {
             }
         }
     }
-    if (animation && animation.macros?.end) genericUtils.sleep(1500).then(() => animation.macros.end(workflow.token.document));
+    if (animation?.macros?.end) animation.macros.end(workflow.token.document);
 }
 export const multiSingleTarget = {
     rules: 'all',

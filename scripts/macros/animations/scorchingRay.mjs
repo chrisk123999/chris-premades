@@ -1,4 +1,4 @@
-import {animationUtils} from '../../proxy.mjs';
+import {animationUtils, genericUtils} from '../../proxy.mjs';
 const colorMap = {
     orange: 'Orange',
     blue: 'Blue',
@@ -131,6 +131,7 @@ async function attack(sourceToken, targetToken, {missed, sound, color = 'orange'
         /* eslint-enable indent */
 }
 async function end(sourceToken) {
+    await genericUtils.sleep(1500);
     Sequencer.EffectManager.endEffects({name: 'Scorching Ray', object: sourceToken.object});
 }
 export const scorchingRay = {
