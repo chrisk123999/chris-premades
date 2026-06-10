@@ -40,6 +40,7 @@
             "ReactionEffectIdentifiers": "Reaction Effect Identifiers",
             "ReactionItemIdentifiers": "Reaction Item Identifiers",
             "SkipDeadAndUnconscious": "Skip Dead And Unconscious",
+            "Summons": "Summons",
             "UtilityRollAsDamage": "Utility Roll As Damage"
         },
         "Macros": {
