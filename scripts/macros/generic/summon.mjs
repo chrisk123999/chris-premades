@@ -10,8 +10,7 @@ async function use({document, workflow}) {
     const duration = activityUtils.convertDuration(workflow.activity).seconds;
     //const summonItems = automationUtils.getGenericConfigValue(document, 'chris-premades', 'summon', 'summonItems');
     const parent = effectUtils.getConcentrationEffect(workflow.actor, workflow.item);
-    const placeAlpha = (animation?.source && animation?.identifier) ? 0 : 1;
-    const summon = await summonUtils.createSummon(workflow.actor, sourceActor, {duration, avatarImg, tokenImg, name, placeAlpha, animation, parent});
+    const summon = await summonUtils.createSummon(workflow.actor, sourceActor, {duration, avatarImg, tokenImg, name, animation, parent});
     await summon.place(workflow.activity.range.value);
 }
 export const summon = {
