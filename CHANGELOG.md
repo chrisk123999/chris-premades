@@ -11,6 +11,7 @@
 - Tentacle of the Deeps
 - Martial Arts (modern)
 - Wall of Fire
+- Call Lightning
 ## API Bug Fixes:
 - Removed `[object Object]` in troubleshooter.
 

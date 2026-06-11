@@ -13,14 +13,12 @@ async function addFavorites(actor, entities) {
     if (hasPermission) {
         for (let entity of entities) {
             const entityType = entity.documentName;
-            console.log(entityType);
             if (entityType === 'Item') {
                 await actor.system.addFavorite({
                     id: entity.getRelativeUUID(entity.actor),
                     type: 'item' 
                 });
             } else if (entityType === 'Activity') {
-                console.log(entity.relativeUUID);
                 await actor.system.addFavorite({
                     id: entity.relativeUUID,
                     type: 'activity'
