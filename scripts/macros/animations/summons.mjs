@@ -818,7 +818,7 @@ function createSummon(name, macro, requirements = []) {
     return {
         name: 'CHRISPREMADES.Animations.' + name + 'Summon',
         macros: {
-            preplace: prePlace,
+            prePlace: prePlace,
             postPlace: macro
         },
         requirements: requirements,

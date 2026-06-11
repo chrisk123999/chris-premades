@@ -7,7 +7,7 @@ async function use({document, workflow}) {
     const {sourceActorUuid, name, avatarImg, tokenImg, animation, sounds} = summons[0];
     const sourceActor = await fromUuid(sourceActorUuid);
     if (!sourceActor) return;
-    const duration = activityUtils.convertDuration(workflow.activity).seconds;
+    const duration = activityUtils.getDuration(workflow.activity);
     //const summonItems = automationUtils.getGenericConfigValue(document, 'chris-premades', 'summon', 'summonItems');
     const parent = effectUtils.getConcentrationEffect(workflow.actor, workflow.item);
     const summon = await summonUtils.createSummon(workflow.actor, sourceActor, {duration, avatarImg, tokenImg, name, animation, parent, sounds, sourceDocument: workflow.item});
