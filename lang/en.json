@@ -1,9 +1,20 @@
 {
     "CHRISPREMADES": {
         "Animations": {
+            "AirSummon": "Air Summon",
+            "CelestialSummon": "Celestial Summon",
+            "DefaultSummon": "Default Summon",
+            "EarthSummon": "Earth Summon",
             "EldritchBlast": "Eldritch Blast",
+            "FiendSummon": "Fiend Summon",
+            "FireSummon": "Fire Summon",
+            "FutureSummon": "Future Summon",
             "MagicMissile": "Magic Missile",
-            "ScorchingRay": "Scorching Ray"
+            "NatureSummon": "Nature Summon",
+            "ScorchingRay": "Scorching Ray",
+            "ShadowSummon": "Shadow Summon",
+            "SmokeSummon": "Smoke Summon",
+            "WaterSummon": "Water Summon"
         },
         "Config": {
             "Activity": "Activity",
