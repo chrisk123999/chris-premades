@@ -1,10 +1,10 @@
-import {genericUtils} from '../../utils.js';
+import {genericUtils, tokenUtils} from '../../utils.js';
 function getTokensInShape(shape, scene, {x: offsetX, y: offsetY}={x: 0, y: 0}) {
     let tokens = new Set();
     if (!shape && !scene) return tokens;
     let sceneTokens = scene.tokens;
     for (let token of sceneTokens) {
-        let pointCollisions = getTokenPoints(token)
+        let pointCollisions = tokenUtils.getTokenCenterPoints(token)
             .map(i => ({x: i.x - offsetX, y: i.y - offsetY}))
             .filter(i => shape.contains(i.x, i.y));
         for (let point of pointCollisions) {
@@ -23,31 +23,13 @@ function getTemplatesInToken(token) {
     let scene = token?.document?.parent;
     if (!scene) return templates;
     let sceneTemplates = scene.templates;
-    let pointsToTest = getTokenPoints(token.document);
+    let pointsToTest = tokenUtils.getTokenCenterPoints(token.document);
     for (let template of sceneTemplates) {
         if (template.object?.shape && pointsToTest.some(i => template.object.testPoint(i))) {
             templates.add(template);
         }
     }
     return templates;
-}
-function getTokenPoints(token) {
-    let points = [];
-    let grid = token.parent?.grid;
-    if (!grid) return points;
-    if (!grid.isGridless) 
-        return token.getOccupiedGridSpaceOffsets().map(i => grid.getCenterPoint(i));
-    let startX = token.width >= 1 ? 0.5 : (token.width / 2);
-    let startY = token.height >= 1 ? 0.5 : (token.height / 2);
-    for (let dx = startX; dx < token.width; dx++) {
-        for (let dy = startY; dy < token.height; dy++) {
-            points.push({
-                x: token.x + dx * grid.size,
-                y: token.y + dy * grid.size
-            });
-        }
-    }
-    return points;
 }
 function findGrids(A, B, template) {
     let locations = new Set();

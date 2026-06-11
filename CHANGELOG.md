@@ -10,6 +10,7 @@
 - Generic Enlarge
 - Tentacle of the Deeps
 - Martial Arts (modern)
+- Wall of Fire
 ## API Bug Fixes:
 - Removed `[object Object]` in troubleshooter.
 

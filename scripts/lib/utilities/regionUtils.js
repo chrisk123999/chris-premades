@@ -1,5 +1,5 @@
 import {effectUtils} from './effectUtils.js';
-import {genericUtils} from '../../utils.js';
+import {genericUtils, tokenUtils} from '../../utils.js';
 async function createRegions(regionDatas, scene, {parentEntity, excludeGPSRegionHandling = true, origin} = {}) {
     if (origin) regionDatas.forEach(regionData => {
         genericUtils.setProperty(regionData, 'flags.chris-premades.region.originUuid', origin.uuid);
@@ -10,7 +10,6 @@ async function createRegions(regionDatas, scene, {parentEntity, excludeGPSRegion
             genericUtils.setProperty(i, 'flags.gambits-premades.excludeGRegionHandling', true);
         });
     }
-    console.log(regions);
     if (parentEntity) await effectUtils.addDependent(parentEntity, regions);
     return regions;
 }
@@ -91,6 +90,61 @@ async function getOrigin(region) {
     if (!originUuid) return;
     return await fromUuid(originUuid);
 }
+function tokenInRegion(region, tokenDocument) {
+    if (!tokenDocument.object.bounds.overlaps(region.bounds)) return false;
+    if (region.elevation.bottom > tokenDocument.elevation || tokenDocument.elevation > region.elevation.top) return false;
+    let regionShape = region.polygonTree;
+    tokenUtils.getTokenCenterPoints(tokenDocument).forEach(p => {
+        if (regionShape.testPoint(p)) return true;
+    });
+    let dx = tokenDocument.object.position.x;
+    let dy = tokenDocument.object.position.y;
+    let shape = tokenDocument.object.shape.clone();
+    let tokenShape = shape instanceof PIXI.Polygon ? shape : shape.toPolygon();
+    let tokenPoints = tokenShape.points;
+    for (let i = 0; i < tokenPoints.length; i += 2) {
+        tokenPoints[i] += dx;
+        tokenPoints[i + 1] += dy;
+        if (regionShape.testPoint({x: tokenPoints[i], y: tokenPoints[i + 1]})) return true;
+    }
+    for (let p of region.polygons) {
+        let regionPoints = p.points;
+        for (let j = 0; j < regionPoints.length; j += 2) {
+            let r1 = {
+                x: regionPoints[j], 
+                y: regionPoints[j + 1]
+            };
+            if (tokenShape.contains(r1.x, r1.y)) return true;
+            let r2 = {
+                x: regionPoints[(j + 2) % regionPoints.length],
+                y: regionPoints[(j + 3) % regionPoints.length]
+            };
+            for (let k = 0; k < tokenPoints.length; k += 2) {
+                let t1 = {
+                    x: tokenPoints[k], 
+                    y: tokenPoints[k + 1]
+                };
+                let t2 = { 
+                    x: tokenPoints[(k + 2) % tokenPoints.length], 
+                    y: tokenPoints[(k + 3) % tokenPoints.length] 
+                };
+                if (foundry.utils.lineSegmentIntersects(r1, r2, t1, t2)) return true;
+            }
+        }
+    }
+    return false;
+}
+function tokensInRegion(region) {
+    let tokens = new Set();
+    let nearTokens = region.parent.tokens.filter(t => t.object.bounds.overlaps(region.bounds));
+    if (!nearTokens.length) return [];
+    for (let token of nearTokens) {
+        if (tokens.has(token)) continue;
+        if (!tokenInRegion(region, token)) continue;
+        tokens.add(token);
+    }
+    return Array.from(tokens);
+}
 export let regionUtils = {
     createRegions,
     templateToRegionShape,
@@ -104,5 +158,7 @@ export let regionUtils = {
     setSaveDC,
     rayIntersectsRegion,
     getIntersections,
-    getOrigin
+    getOrigin,
+    tokenInRegion,
+    tokensInRegion
 };

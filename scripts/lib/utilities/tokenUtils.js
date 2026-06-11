@@ -484,6 +484,24 @@ async function mountToken(rider, target, {vae, unhideActivities} = {}) {
 function getBaseActor(token) {
     return token.document.baseActor ?? token.document.actor;
 }
+function getTokenCenterPoints(token) {
+    let points = [];
+    let grid = token.parent?.grid;
+    if (!grid) return points;
+    if (!grid.isGridless) 
+        return token.getOccupiedGridSpaceOffsets().map(i => grid.getCenterPoint(i));
+    let startX = token.width >= 1 ? 0.5 : (token.width / 2);
+    let startY = token.height >= 1 ? 0.5 : (token.height / 2);
+    for (let dx = startX; dx < token.width; dx++) {
+        for (let dy = startY; dy < token.height; dy++) {
+            points.push({
+                x: token.x + dx * grid.size,
+                y: token.y + dy * grid.size
+            });
+        }
+    }
+    return points;
+}
 export let tokenUtils = {
     getDistance,
     checkCover,
@@ -504,5 +522,6 @@ export let tokenUtils = {
     isGrappledBy,
     mountToken,
     detachFromToken,
-    getBaseActor
+    getBaseActor,
+    getTokenCenterPoints
 };
