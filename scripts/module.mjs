@@ -19,15 +19,9 @@ Hooks.once('catInit', () => {
 const validKeys = ['rules', 'aura', 'check', 'combat', 'effect', 'move', 'region', 'rest', 'save', 'skill', 'time', 'tool', 'roll', 'generic', 'genericConfig', 'documents'];
 Hooks.once('catReady', () => {
     Object.entries(animations).forEach(([identifier, value]) => api.registerAnimation({
+        ...value,
         source: 'chris-premades',
-        identifier,
-        name: value.name,
-        macros: value.macros,
-        requirements: value.requirements,
-        type: value.type,
-        config: value.config,
-        category: value.category,
-        inputs: value.inputs
+        identifier
     }));
     Object.entries(generic).forEach(([identifier, value]) => {
         const automationData = {
