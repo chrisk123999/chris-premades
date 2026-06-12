@@ -7,10 +7,10 @@ async function use({document, workflow}) {
     const duration = activityUtils.getDuration(workflow.activity);
     const parent = effectUtils.getConcentrationEffect(workflow.actor, workflow.item);
     const summons = await Promise.all(summonsData.map(async summonData => {
-        const {sourceActorUuid, name, avatarImg, tokenImg, animation, sounds} = summonData;
+        const {sourceActorUuid, name, avatarImg, tokenImg, animation, sounds, items} = summonData;
         const sourceActor = await fromUuid(sourceActorUuid);
         if (!sourceActor) return;
-        return await summonUtils.createSummon(workflow.actor, sourceActor, {duration, avatarImg, tokenImg, name, animation, parent, sounds, sourceDocument: document});
+        return await summonUtils.createSummon(workflow.actor, sourceActor, {duration, avatarImg, tokenImg, name, animation, parent, sounds, sourceDocument: document, items});
     }));
     if (!summons.length) return;
     const placeActivityId = automationUtils.getGenericConfigValue(document, 'chris-premades', 'summon', 'placeActivityId');
