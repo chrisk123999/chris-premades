@@ -16,7 +16,7 @@ Hooks.once('ready', () => {
 Hooks.once('catInit', () => {
 
 });
-const validKeys = ['rules', 'aura', 'check', 'combat', 'effect', 'move', 'region', 'rest', 'save', 'skill', 'time', 'tool', 'roll', 'generic', 'genericConfig', 'documents'];
+const validKeys = ['rules', 'aura', 'check', 'combat', 'effect', 'move', 'region', 'rest', 'save', 'skill', 'time', 'tool', 'roll', 'summon', 'generic', 'genericConfig', 'documents'];
 Hooks.once('catReady', () => {
     Object.entries(animations).forEach(([identifier, value]) => api.registerAnimation({
         source: 'chris-premades',

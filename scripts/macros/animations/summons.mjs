@@ -831,7 +831,14 @@ function createSummon(name, macro, requirements = []) {
                 fileType: 'audio',
                 default: ''
             }
-        }
+        },
+        credits: [
+            {
+                name: 'Eskie',
+                discord: 'https://discord.gg/RXwkJD4hTe',
+                patreon: 'https://www.patreon.com/c/EskieEffects'
+            }
+        ]
     };
 }
 const ASE_JB2A = ['animated-spell-effects-cartoon', 'jb2a_patreon'];

@@ -42,15 +42,19 @@
                 "Random": "Random",
                 "Yellow": "Yellow"
             },
+            "CreateActivity": "Create Activity",
             "Formula": "Formula",
             "Generic": {
                 "Color": "Color",
                 "Sound": "Sound"
             },
             "Identifiers": "Identifiers",
+            "PlaceActivity": "Place Activity",
             "ReactionEffectIdentifiers": "Reaction Effect Identifiers",
             "ReactionItemIdentifiers": "Reaction Item Identifiers",
+            "RecallActivity": "Recall Activity",
             "SkipDeadAndUnconscious": "Skip Dead And Unconscious",
+            "SpawnActivity": "Spawn Activity",
             "Summons": "Summons",
             "UtilityRollAsDamage": "Utility Roll As Damage"
         },
