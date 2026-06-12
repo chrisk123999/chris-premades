@@ -118,7 +118,9 @@ async function damageRoll(formula, entity, options = {}, evaluateOptions = {}) {
 }
 async function addToRoll(roll, formula, {rollData} = {}) {
     let bonusRoll = await new Roll(String(formula), rollData).evaluate();
-    return MidiQOL.addRollTo(roll, bonusRoll);
+    let newRoll = MidiQOL.addRollTo(roll, bonusRoll);
+    newRoll.data = roll.data;
+    return newRoll;
 }
 async function remoteRoll(roll, userId) {
     let rollJSON = roll.toJSON();

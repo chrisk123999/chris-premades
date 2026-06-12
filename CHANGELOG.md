@@ -1,3 +1,9 @@
+# 1.5.37 Release:
+## Update Notes:
+- This is not a V14 update. An update for V14 is still a work in progress.
+## API Bug Fixes:
+- Rolls now retain roll data after using `rollUtils.addToRoll`.
+
 # 1.5.36 Release:
 ## Update Notes:
 - This is not a V14 update. An update for V14 is still a work in progress.
