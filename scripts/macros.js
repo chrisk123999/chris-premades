@@ -115,6 +115,7 @@ export {charmPerson} from './macros/2024/spells/charmPerson.js';
 export {chillTouch} from './macros/2024/spells/chillTouch.js';
 export {chromaticOrb} from './macros/2024/spells/chromaticOrb.js';
 export {circleOfDeath} from './macros/2024/spells/circleOfDeath.js';
+export {circleOfPower} from './macros/2024/spells/circleOfPower.js';
 export {cloudkill, cloudkillSource, cloudkillCloud} from './macros/2024/spells/cloudkill.js';
 export {command, commandTurnStart, commandGrovel} from './macros/2024/spells/command.js';
 export {compelledDuel, compelledDuelCompelled, compelledDuelSource} from './macros/2024/spells/compelledDuel.js';

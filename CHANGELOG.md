@@ -1,6 +1,10 @@
 # 1.5.37 Release:
 ## Update Notes:
 - This is not a V14 update. An update for V14 is still a work in progress.
+## New Modern Content:
+- Circle of Power
+## New Legacy Content:
+- Circle of Power
 ## API Bug Fixes:
 - Rolls now retain roll data after using `rollUtils.addToRoll`.
 

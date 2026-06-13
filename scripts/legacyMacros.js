@@ -27,6 +27,7 @@ export {chaosBolt} from './macros/2014/spells/chaosBolt.js';
 export {charmPerson} from './macros/2014/spells/charmPerson.js';
 export {chillTouch, chillTouchChilled} from './macros/2014/spells/chillTouch.js';
 export {chromaticOrb} from './macros/2014/spells/chromaticOrb.js';
+export {circleOfPower, circleOfPowerActive} from './macros/2014/spells/circleOfPower.js';
 export {cloudkill, cloudkillSource, cloudkillCloud} from './macros/2014/spells/cloudkill.js';
 export {compelledDuel, compelledDuelSource, compelledDuelCompelled} from './macros/2014/spells/compelledDuel.js';
 export {conjureAnimals} from './macros/2014/spells/conjureAnimals.js';
