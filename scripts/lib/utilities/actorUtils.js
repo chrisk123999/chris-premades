@@ -171,8 +171,8 @@ function getCastableSpells(actor) {
             } else if (target.type === 'material') {
                 if (Number(actor.items.get(target.target)?.system.quantity ?? 0) < Number(target.value ?? 0)) return false;
             }
-            return true;
         }
+        return true;
     });
     return validSpells;
 }

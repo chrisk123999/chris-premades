@@ -5,6 +5,8 @@
 - Circle of Power
 ## New Legacy Content:
 - Circle of Power
+## Bug Fixes:
+- Divine Smite
 ## API Bug Fixes:
 - Rolls now retain roll data after using `rollUtils.addToRoll`.
 
