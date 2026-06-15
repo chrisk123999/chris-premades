@@ -7,10 +7,10 @@ async function use({document, workflow}) {
     const duration = activityUtils.getDuration(workflow.activity);
     const parent = effectUtils.getConcentrationEffect(workflow.actor, workflow.item);
     const summons = await Promise.all(summonsData.map(async summonData => {
-        const {sourceActorUuid, name, avatarImg, tokenImg, animation, sounds, items} = summonData;
+        const {sourceActorUuid, name, avatarImg, tokenImg, animation, sounds, items, initiative} = summonData;
         const sourceActor = await fromUuid(sourceActorUuid);
         if (!sourceActor) return;
-        return await summonUtils.createSummon(workflow.actor, sourceActor, {duration, avatarImg, tokenImg, name, animation, parent, sounds, sourceDocument: document, items});
+        return await summonUtils.createSummon(workflow.actor, sourceActor, {duration, avatarImg, tokenImg, name, animation, parent, sounds, sourceDocument: document, items, initiative});
     }));
     if (!summons.length) return;
     const placeActivityId = automationUtils.getGenericConfigValue(document, 'chris-premades', 'summon', 'placeActivityId');
@@ -32,6 +32,8 @@ async function recall({document, workflow}) {
 async function deleted({document, summon}) {
     const summons = summonUtils.getSummonBySource(document).filter(i => i !== summon);
     if (summons.length) return;
+    const concentrationEffect = effectUtils.getConcentrationEffect(summon.owner, summon.sourceDocument);
+    if (concentrationEffect) await documentUtils.deleteDocument(concentrationEffect);
     const placeActivityId = automationUtils.getGenericConfigValue(document, 'chris-premades', 'summon', 'placeActivityId');
     const recallActivityId = automationUtils.getGenericConfigValue(document, 'chris-premades', 'summon', 'recallActivityId');
     const otherActivityIdentifiers = [placeActivityId, recallActivityId].map(id => document.system.activities.get(id)).filter(Boolean).map(activity => documentUtils.getIdentifier(activity));
