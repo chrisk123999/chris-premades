@@ -1,6 +1,5 @@
 export {actionDismissal} from './generic/actionDismissal.mjs';
 export {multiSingleTarget} from './generic/multiSingleTarget.mjs';
-export {noConfiguration} from './generic/noConfiguration.mjs';
 export {negateDamageFromEffect} from './generic/negateDamageFromEffect.mjs';
 export {proneOnFail} from './generic/proneOnFail.mjs';
 export {proneOnHit} from './generic/proneOnHit.mjs';

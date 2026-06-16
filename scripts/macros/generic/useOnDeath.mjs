@@ -1,5 +1,6 @@
 import {workflowUtils} from '../../proxy.mjs';
-async function use({document}) {
+async function use({document, effect}) {
+    if (!effect.statuses.has('dead')) return;
     if (document.system.equipped === false) return;
     await workflowUtils.completeItemUse(document);
 }
@@ -9,9 +10,9 @@ export const useOnDeath = {
     category: 'utility',
     generic: true,
     documents: ['Item'],
-    death: [
+    effect: [
         {
-            pass: 'actorDead',
+            pass: 'actorCreated',
             macro: use,
             priority: 50
         }
