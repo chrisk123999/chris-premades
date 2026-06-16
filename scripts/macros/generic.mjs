@@ -3,7 +3,6 @@ export {multiSingleTarget} from './generic/multiSingleTarget.mjs';
 export {negateDamageFromEffect} from './generic/negateDamageFromEffect.mjs';
 export {proneOnFail} from './generic/proneOnFail.mjs';
 export {proneOnHit} from './generic/proneOnHit.mjs';
-export {removeOnMiss} from './generic/removeOnMiss.mjs';
 export {removeRegion} from './generic/removeRegion.mjs';
 export {summon} from './generic/summon.mjs';
 export {useOnDeath} from './generic/useOnDeath.mjs';
