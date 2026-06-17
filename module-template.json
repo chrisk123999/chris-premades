@@ -6,9 +6,9 @@
   "library": "false",
   "socket": true,
   "compatibility": {
-    "minimum": "13",
-    "verified": "13",
-    "maximum": "13"
+    "minimum": "14",
+    "verified": "14",
+    "maximum": "14"
   },
   "authors": [
     {
@@ -36,11 +36,16 @@
       "name": "Bacon",
       "url": "https://github.com/bacon-nugget",
       "discord": "bacon-nugget"
+    },
+    {
+      "name": "Tyler",
+      "url": "https://github.com/Sayshal",
+      "discord": "sayshal"
     }
   ],
-  "esmodules": [
-    "dist/main.js"
-  ],
+  "esmodules":[
+        "dist/main.js"
+    ],
   "styles": [
     "styles/module.css"
   ],
@@ -50,30 +55,6 @@
       "name": "English",
       "path": "lang/en.json",
       "flags": {}
-    },
-    {
-      "lang": "pt-BR",
-      "name": "Português (Brasil)",
-      "path": "lang/pt-BR.json",
-      "flags": {}
-    },
-    {
-      "lang": "fr",
-      "name": "Français",
-      "path": "lang/fr.json",
-      "flags": {}
-    },
-    {
-      "lang": "it",
-      "name": "Italiano",
-      "path": "lang/it.json",
-      "flags": {}
-    },
-    {
-      "lang": "cs",
-      "name": "Čeština",
-      "path": "lang/cs.json",
-      "flags": {}
     }
   ],
   "relationships": {
@@ -82,7 +63,7 @@
         "id": "dnd5e",
         "type": "system",
         "compatibility": {
-          "minimum": "5.2.5",
+          "minimum": "5.3.3",
           "verified": "5.3.3",
           "maximum": "5.9.9"
         }
@@ -93,358 +74,23 @@
         "id": "midi-qol",
         "type": "module",
         "compatibility": {
-          "minimum": "13.0.48"
-        }
-      },
-      {
-        "id": "socketlib",
-        "type": "module",
-        "compatibility": {
-          "minimum": "1.1.2"
+          "minimum": "13.0.17"
         }
       },
       {
         "id": "dae",
         "type": "module",
         "compatibility": {
-          "minimum": "13.0.17"
-        }
-      },
-      {
-        "id": "times-up",
-        "type": "module",
-        "compatibility": {
-          "minimum": "13.1.2"
+          "minimum": "13.0.4"
         }
       }
     ]
   },
-  "packs": [
-    {
-      "name": "CPRSummons",
-      "label": "CPR Summons",
-      "path": "packs/cpr-summons",
-      "type": "Actor",
-      "module": "chris-premades"
-    },
-    {
-      "name": "CPRThirdPartyClassFeatures",
-      "label": "CPR 3rd Party Class Features",
-      "path": "packs/cpr-3rd-party-class-features",
-      "type": "Item",
-      "module": "chris-premades"
-    },
-    {
-      "name": "CPRThirdPartyFeats",
-      "label": "CPR 3rd Party Feats",
-      "path": "packs/cpr-3rd-party-feats",
-      "type": "Item",
-      "module": "chris-premades"
-    },
-    {
-      "name": "CPRThirdPartyItems",
-      "label": "CPR 3rd Party Items",
-      "path": "packs/cpr-3rd-party-items",
-      "type": "Item",
-      "module": "chris-premades"
-    },
-    {
-      "name": "CPRActions",
-      "label": "CPR Actions",
-      "path": "packs/cpr-actions",
-      "type": "Item",
-      "module": "chris-premades"
-    },
-    {
-      "name": "CPRClassFeatureItems",
-      "label": "CPR Class Feature Items",
-      "path": "packs/cpr-class-feature-items",
-      "type": "Item",
-      "module": "chris-premades"
-    },
-    {
-      "name": "CPRClassFeatures",
-      "label": "CPR Class Features",
-      "path": "packs/cpr-class-features",
-      "type": "Item",
-      "module": "chris-premades"
-    },
-    {
-      "name": "CPRFeats",
-      "label": "CPR Feats",
-      "path": "packs/cpr-feats",
-      "type": "Item",
-      "module": "chris-premades"
-    },
-    {
-      "name": "CPRFeatFeatures",
-      "label": "CPR Feat Features",
-      "path": "packs/cpr-feat-features",
-      "type": "Item",
-      "module": "chris-premades"
-    },
-    {
-      "name": "CPRItemFeatures",
-      "label": "CPR Item Features",
-      "path": "packs/cpr-item-features",
-      "type": "Item",
-      "module": "chris-premades"
-    },
-    {
-      "name": "CPRItems",
-      "label": "CPR Items",
-      "path": "packs/cpr-items",
-      "type": "Item",
-      "module": "chris-premades"
-    },
-    {
-      "name": "CPRMiscellaneousItems",
-      "label": "CPR Miscellaneous Items",
-      "path": "packs/cpr-miscellaneous-items",
-      "type": "Item",
-      "module": "chris-premades"
-    },
-    {
-      "name": "CPRMonsterFeatures",
-      "label": "CPR Monster Features",
-      "path": "packs/cpr-monster-features",
-      "type": "Item",
-      "module": "chris-premades"
-    },
-    {
-      "name": "CPRMonsterFeatures2024",
-      "label": "CPR Monster Features (2024)",
-      "path": "packs/cpr-monster-features-2024",
-      "type": "Item",
-      "module": "chris-premades"
-    },
-    {
-      "name": "CPRRaceFeatures",
-      "label": "CPR Race Features",
-      "path": "packs/cpr-race-features",
-      "type": "Item",
-      "module": "chris-premades"
-    },
-    {
-      "name": "CPRSpellFeatures",
-      "label": "CPR Spell Features",
-      "path": "packs/cpr-spell-features",
-      "type": "Item",
-      "module": "chris-premades"
-    },
-    {
-      "name": "CPRSpells",
-      "label": "CPR Spells",
-      "path": "packs/cpr-spells",
-      "type": "Item",
-      "module": "chris-premades"
-    },
-    {
-      "name": "CPRSummonFeatures",
-      "label": "CPR Summon Features",
-      "path": "packs/cpr-summon-features",
-      "type": "Item",
-      "module": "chris-premades"
-    },
-    {
-      "name": "CPRMiscellaneous",
-      "label": "CPR Miscellaneous",
-      "path": "packs/cpr-miscellaneous",
-      "type": "Item",
-      "module": "chris-premades"
-    },
-    {
-      "name": "CPRSpells2024",
-      "label": "CPR Spells (2024)",
-      "path": "packs/cpr-spells-2024",
-      "type": "Item",
-      "module": "chris-premades"
-    },
-    {
-      "name": "CPRClassFeatures2024",
-      "label": "CPR Class Features (2024)",
-      "path": "packs/cpr-class-features-2024",
-      "type": "Item",
-      "module": "chris-premades"
-    },
-    {
-      "name": "CPRItems2024",
-      "label": "CPR Items (2024)",
-      "path": "packs/cpr-items-2024",
-      "type": "Item",
-      "module": "chris-premades"
-    },
-    {
-      "name": "CPRSummons2024",
-      "label": "CPR Summons (2024)",
-      "path": "packs/cpr-summons-2024",
-      "type": "Actor",
-      "module": "chris-premades"
-    },
-    {
-      "name": "CPRSummonFeatures2024",
-      "label": "CPR Summon Features (2024)",
-      "path": "packs/cpr-summon-features-2024",
-      "type": "Item",
-      "module": "chris-premades"
-    },
-    {
-      "name": "CPRFeats2024",
-      "label": "CPR Feats (2024)",
-      "path": "packs/cpr-feats-2024",
-      "type": "Item",
-      "module": "chris-premades"
-    },
-    {
-      "name": "CPRFeatFeatures2024",
-      "label": "CPR Feat Features (2024)",
-      "path": "packs/cpr-feat-features-2024",
-      "type": "Item",
-      "module": "chris-premades"
-    },
-    {
-      "name": "CPREmbeddedMacroSampleItems",
-      "label": "CPR Embedded Macro Sample Items",
-      "path": "packs/cpr-embedded-macro-sample-items",
-      "type": "Item",
-      "module": "chris-premades"
-    },
-    {
-      "name": "CPRActions2024",
-      "label": "CPR Actions (2024)",
-      "path": "packs/cpr-actions-2024",
-      "type": "Item",
-      "module": "chris-premades"
-    },
-    {
-      "name": "CPRFeatureItems2024",
-      "label": "CPR Feature Items (2024)",
-      "path": "packs/cpr-feature-items-2024",
-      "type": "Item",
-      "module": "chris-premades"
-    },
-    {
-      "name": "CPRThirdPartyClassFeatures2024",
-      "label": "CPR 3rd Party Class Features (2024)",
-      "path": "packs/cpr-3rd-party-class-features-2024",
-      "type": "Item",
-      "module": "chris-premades"
-    },
-    {
-      "name": "CPRThirdPartySpells",
-      "label": "CPR 3rd Party Spells",
-      "path": "packs/cpr-3rd-party-spells",
-      "type": "Item",
-      "module": "chris-premades"
-    },
-    {
-      "name": "CPRThirdPartySpells2024",
-      "label": "CPR 3rd Party Spells (2024)",
-      "path": "packs/cpr-3rd-party-spells-2024",
-      "type": "Item",
-      "module": "chris-premades"
-    },
-    {
-      "name": "CPRSpeciesFeatures2024",
-      "label": "CPR Species Features (2024)",
-      "path": "packs/cpr-species-features-2024",
-      "type": "Item",
-      "module": "chris-premades"
-    },
-    {
-      "name": "CPROtherFeatures",
-      "label": "CPR Other Features",
-      "path": "packs/cpr-other-features",
-      "type": "Item",
-      "module": "chris-premades"
-    },
-    {
-      "name": "CPRThirdPartyFeats2024",
-      "label": "CPR 3rd Party Feats (2024)",
-      "path": "packs/cpr-3rd-party-feats-2024",
-      "type": "Item",
-      "module": "chris-premades"
-    },
-    {
-      "name": "CPRThirdPartyItems2024",
-      "label": "CPR 3rd Party Items (2024)",
-      "path": "packs/cpr-3rd-party-items-2024",
-      "type": "Item",
-      "module": "chris-premades"
-    },
-    {
-      "name": "CPRClassFeatureItems2024",
-      "label": "CPR Class Feature Items (2024)",
-      "path": "packs/cpr-class-feature-items-2024",
-      "type": "Item",
-      "module": "chris-premades"
-    }
-  ],
-  "packFolders": [
-    {
-      "name": "Cauldron of Plentiful Resources",
-      "sorting": "a",
-      "color": "#348f2d",
-      "folders": [
-        {
-          "name": "2014",
-          "sorting": "a",
-          "color": "#348f2d",
-          "packs": [
-            "CPRActions",
-            "CPRSpells",
-            "CPRSpellFeatures",
-            "CPRSummons",
-            "CPRSummonFeatures",
-            "CPRItems",
-            "CPRItemFeatures",
-            "CPRClassFeatures",
-            "CPRClassFeatureItems",
-            "CPRFeats",
-            "CPRFeatFeatures",
-            "CPRRaceFeatures",
-            "CPRThirdPartyClassFeatures",
-            "CPRThirdPartyItems",
-            "CPRThirdPartyFeats",
-            "CPRThirdPartySpells",
-            "CPRMonsterFeatures"
-          ]
-        },
-        {
-          "name": "2024",
-          "sorting": "a",
-          "color": "#348f2d",
-          "packs": [
-            "CPRSpells2024",
-            "CPRClassFeatures2024",
-            "CPRItems2024",
-            "CPRSummons2024",
-            "CPRSummonFeatures2024",
-            "CPRFeats2024",
-            "CPRFeatFeatures2024",
-            "CPRActions2024",
-            "CPRFeatureItems2024",
-            "CPRThirdPartyClassFeatures2024",
-            "CPRMonsterFeatures2024",
-            "CPRThirdPartySpells2024",
-            "CPRSpeciesFeatures2024",
-            "CPRThirdPartyFeats2024",
-            "CPRThirdPartyItems2024",
-            "CPRClassFeatureItems2024"
-          ]
-        }
-      ],
-      "packs": [
-        "CPRMiscellaneousItems",
-        "CPRMiscellaneous",
-        "CPREmbeddedMacroSampleItems",
-        "CPROtherFeatures"
-      ]
-    }
-  ],
+  "packs": [],
+  "packFolders": [],
   "changelog": "https://github.com/chrisk123999/chris-premades/blob/master/CHANGELOG.md",
   "url": "https://github.com/chrisk123999/chris-premades/",
-  "manifest": "https://github.com/chrisk123999/chris-premades/releases/latest/download/module.json",
+  "manifest": "#{MANIFEST}#",
   "download": "#{DOWNLOAD}#",
   "license": "LICENSE",
   "readme": "README.md",
