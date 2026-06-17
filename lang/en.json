@@ -61,6 +61,7 @@
         "Macros": {
             "Generic": {
                 "BladeSpell": {
+                    "ReplaceDamage": "Replace damage?",
                     "Weapon": "Attack with what weapon?"
                 },
                 "MultiSingleTarget": {
