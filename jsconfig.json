@@ -1,0 +1,11 @@
+{
+  "compilerOptions": {
+    "paths": {
+      "cat/*": ["../cat/*"]
+    }
+  },
+  "exclude": [
+    "node_modules",
+    ".git"
+  ]
+}
