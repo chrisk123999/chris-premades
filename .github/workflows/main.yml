@@ -7,20 +7,27 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write 
     strategy:
       matrix:
-        node-version: [20.x]
+        node-version: [24.x]
 
     steps:
     - uses: actions/checkout@v6
+    
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v6
       with:
         node-version: ${{ matrix.node-version }}
+        
     # Install dependencies
     - run: npm ci
-    - name: Build Compendiums
-      run: npm run buildCompendiums
+    
+    # Compendiums are currently non-existent
+    #- name: Build Compendiums
+    #  run: npm run buildCompendiums
+      
     - name: Webpack build
       run: npm run build
 
@@ -32,38 +39,37 @@ jobs:
         echo "FOUNDRY_DOWNLOAD=https://github.com/${{github.repository}}/releases/download/${{github.event.release.tag_name}}/module.zip" >> $GITHUB_ENV
 
     # Generate module.json
-    - id: generate_manifest
+    - name: Generate and Update Manifest
       run: |
-        cat module-template.json > module.json
-
-    #Substitute the Manifest and Download URLs in the module.json
-    - name: Substitute Manifest and Download Links For Versioned Ones
-      id: sub_manifest_link_version
-      uses: restackio/update-json-file-action@2.1
-      with:
-        file: 'module.json'
-        fields: "{\"version\": \"${{env.VERSION}}\", \"download\": \"${{env.FOUNDRY_DOWNLOAD}}\"}"
+        jq --arg version "${{ env.VERSION }}" \
+           --arg manifest "${{ env.FOUNDRY_MANIFEST }}" \
+           --arg download "${{ env.FOUNDRY_DOWNLOAD }}" \
+           '.version = $version | .manifest = $manifest | .download = $download' \
+           module-template.json > module.json
 
     # create a zip file with all files required by the module to add to the release
     - run: zip -r ./module.zip module.json dist packs styles templates LICENSE lang images CHANGELOG.md
+    
     # Create a release for this specific version
     - name: Update Release with Files
       id: create_version_release
       uses: ncipollo/release-action@v1
       with:
-        allowUpdates: true # set this to false if you want to prevent updating existing releases
+        allowUpdates: true
         name: ${{github.event.release.name}}
         draft: false
-        prerelease: false
+        prerelease: ${{ github.event.release.prerelease }}
         token: ${{secrets.GITHUB_TOKEN}}
         artifacts: './module.json, ./module.zip'
         tag: ${{ github.event.release.tag_name }}
         body: ${{ github.event.release.body }}
+        
     - name: FoundryVTT AutoPublish
+      if: github.event.release.prerelease == false
       uses: fjogeleit/http-request-action@v2
       continue-on-error: true
       with:
         url: 'https://foundryvtt.com/_api/packages/release_version/'
         method: 'POST'
         customHeaders: '{"Content-Type": "application/json", "Authorization" : "${{ secrets.FOUNDRY_KEY }}"}'
-        data: '{"dry_run": false, "id" : "chris-premades", "release": {"version" :  "${{env.VERSION}}", "manifest": "${{env.FOUNDRY_MANIFEST}}", "notes" : "https://github.com/chrisk123999/chris-premades/blob/master/CHANGELOG.md", "compatibility" : {"minimum": "13", "verified": "13", "maximum": "13"} } }'
+        data: '{"dry_run": false, "id" : "chris-premades", "release": {"version" :  "${{env.VERSION}}", "manifest": "${{env.FOUNDRY_MANIFEST}}", "notes" : "https://github.com/chrisk123999/chris-premades/blob/master/CHANGELOG.md", "compatibility" : {"minimum": "14", "verified": "14", "maximum": "14"} } }'
