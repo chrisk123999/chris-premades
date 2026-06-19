@@ -62,6 +62,8 @@
             "Generic": {
                 "BladeSpell": {
                     "ReplaceDamage": "Replace damage?",
+                    "SelectNearbyTarget": "Select targets.",
+                    "SelectNearbyTargets": "Select targets.",
                     "Weapon": "Attack with what weapon?"
                 },
                 "MultiSingleTarget": {
