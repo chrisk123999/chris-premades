@@ -14,7 +14,7 @@ async function use({workflow}) {
             },
             {
                 key: 'flags.midi-qol.semiSuperSaver.all',
-                value: 'item?.type === "spell" || item?.flags.midiProperties?.magiceffect',
+                value: 'item?.itemType === "spell" || activity?.midiProperties?.magicEffect',
                 mode: 0,
                 priority: 20
             }

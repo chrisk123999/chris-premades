@@ -1,3 +1,7 @@
+# 1.5.39 Release:
+## Bug Fixes:
+- Circle of Power
+
 # 1.5.38 Release:
 ## API Bug Fixes:
 - Fixes a mistake with ability saves from 1.5.37.
