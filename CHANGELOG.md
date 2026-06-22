@@ -1,3 +1,7 @@
+# 1.5.38 Release:
+## API Bug Fixes:
+- Fixes a mistake with ability saves from 1.5.37.
+
 # 1.5.37 Release:
 ## Update Notes:
 - This is not a V14 update. An update for V14 is still a work in progress.

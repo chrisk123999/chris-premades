@@ -310,7 +310,7 @@ async function rollSave(wrapped, config, dialog = {}, message = {}) {
     returnData = await executeBonusMacroPass(this, 'bonus', saveId, options, returnData, config, dialog, message);
     if (token) {
         let sceneTriggers = [];
-        returnData.data.token.document.parent.tokens.filter(i => i.uuid !== returnData.data.token.document.uuid && i.actor).forEach(j => {
+        token.document.parent.tokens.filter(i => i.uuid !== token.document.uuid && i.actor).forEach(j => {
             sceneTriggers.push(...getSortedTriggers(j.actor, 'sceneBonus', saveId, options, returnData, config, dialog, message, this));
         });
         let sortedSceneTriggers = [];
