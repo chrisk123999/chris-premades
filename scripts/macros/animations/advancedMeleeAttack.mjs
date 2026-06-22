@@ -56,7 +56,7 @@ Object.entries(groupedWeapons).forEach(([groupName, weapons]) => {
         }
     });
 });
-async function attack(sourceToken, targetTokens, {enableImpact, soundMelee, soundRanged, enableSwitchDistance, enableReturn, enableBlood, enableShake, weapon, trailColor, impact, impactScale = 1.5, soundDelay, switchDistance, range, attackDelay}) {
+async function attack(sourceToken, targetTokens, {soundMelee, soundRanged, enableSwitchDistance, enableReturn, enableBlood, enableShake, weapon, trailColor, impact, impactScale = 1.5, soundDelay, switchDistance, attackDelay}) {
     const weaponParts = weapon.split('.');
     const baseWeapon = weaponParts[0];
     let weaponOption = weaponParts[1];
@@ -121,9 +121,32 @@ async function attack(sourceToken, targetTokens, {enableImpact, soundMelee, soun
             enableReturn = false; 
         }
     }
+    let calculatedThrowFile;
+    if (baseWeapon === 'bone') {
+        calculatedThrowFile = 'jb2a.bone.throw.01';
+    } else if (baseWeapon === 'chakram') {
+        const chakramStyle = weaponOption ? weaponOption : '01';
+        calculatedThrowFile = 'jb2a.chakram.01.throw.' + chakramStyle;
+    } else if (baseWeapon === 'greataxe') {
+        calculatedThrowFile = 'jb2a.greataxe.throw.white';
+    } else if (baseWeapon === 'greatsword') {
+        calculatedThrowFile = 'jb2a.greatsword.throw';
+    } else if (baseWeapon === 'hammer') {
+        calculatedThrowFile = 'jb2a.hammer.throw';
+    } else if (baseWeapon === 'handaxe') {
+        calculatedThrowFile = 'jb2a.handaxe.throw.01';
+    } else if (baseWeapon === 'mace') {
+        calculatedThrowFile = 'jb2a.mace.throw';
+    } else if (baseWeapon === 'shield') {
+        const shieldStyle = weaponOption ? weaponOption : '01';
+        calculatedThrowFile = 'jb2a.shield_attack.ranged.throw.' + shieldStyle + '.white.01';
+    } else if (baseWeapon === 'shortsword') {
+        calculatedThrowFile = 'jb2a.sword.throw.white';
+    } else {
+        calculatedThrowFile = 'jb2a.dagger.throw.01.white';
+    }
     const gridSize = sourceToken.parent.gride.size;
-    async function meleeAttack(targetToken, randMelee, randTrail, impact, isMirrored, targetScale, within5ft) {
-        const sourceScale = {x: sourceToken.texture.scaleX, y: sourceToken.texture.scaleY};
+    async function meleeAttack(targetToken, randMelee, randTrail, impact, isMirrored, targetScale) {
         const amplitude = Sequencer.Helpers.random_float_between(0.0, 0.2);
         const hitRay = new Ray(sourceToken, targetToken);
         const shakeDirection = {x: Math.sign(hitRay.dx), y: Math.sign(hitRay.dy)};
@@ -135,22 +158,6 @@ async function attack(sourceToken, targetTokens, {enableImpact, soundMelee, soun
         const easeOption = 'easeInOutSine';
         /* eslint-disable indent */
         new Sequence()
-            .effect()
-                .from(sourceToken)
-                .scale({x: sourceScale.x, y: sourceScale.y})
-                .anchor(0.5)
-                .duration(1500)
-                .zIndex(5)
-                .playIf(within5ft)
-            .effect()
-                .from(sourceToken)
-                .scale({ x: sourceScale.x, y: sourceScale.y })
-                .anchor(0.5)
-                .duration(1500)
-                .zIndex(5)
-                .playIf(!within5ft)
-            .animation()
-                .on(sourceToken)
             .effect()
                 .file(randTrail)
                 .atLocation(targetToken)
@@ -181,8 +188,8 @@ async function attack(sourceToken, targetTokens, {enableImpact, soundMelee, soun
                 .atLocation(targetToken)
                 .scaleToObject(impactScale, {uniform: true})
                 .zIndex(12)
-                .playIf(enableImpact)
-            .effect()   // Blood Splatter
+                .playIf(impact)
+            .effect()   // Blood
                 .file('jb2a.liquid.splash_side.red')
                 .atLocation(targetToken)
                 .rotateTowards(sourceToken)
@@ -190,7 +197,7 @@ async function attack(sourceToken, targetTokens, {enableImpact, soundMelee, soun
                 .scaleToObject(1.5, {uniform: true})
                 .playIf(enableBlood)
                 .zIndex(12)
-            .animation()    // Shake
+            .animation()    //Shake
                 .on(targetToken)
                 .fadeOut(50)
                 .playIf(enableShake)
@@ -237,7 +244,7 @@ async function attack(sourceToken, targetTokens, {enableImpact, soundMelee, soun
                 .playIf(soundRanged)
                 .delay(soundDelay)
             .effect()
-                .file(range)
+                .file(calculatedThrowFile)
                 .atLocation(sourceToken)
                 .stretchTo(targetToken)
                 .waitUntilFinished(-800)
@@ -247,14 +254,14 @@ async function attack(sourceToken, targetTokens, {enableImpact, soundMelee, soun
                 .atLocation(targetToken)
                 .scaleToObject(1.2, {uniform: true})
                 .zIndex(12)
-                .playIf(enableImpact)
+                .playIf(impact)
             .effect()
                 .file(calculatedReturnFile)
                 .atLocation(sourceToken)
                 .stretchTo(targetToken)
                 .zIndex(10)
                 .playIf(enableReturn)
-            .effect()   // Blood Splatter
+            .effect()   //Blood
                 .file('jb2a.liquid.splash_side.red')
                 .atLocation(targetToken)
                 .rotateTowards(sourceToken)
@@ -262,7 +269,7 @@ async function attack(sourceToken, targetTokens, {enableImpact, soundMelee, soun
                 .scaleToObject(1.5, {uniform: true})
                 .zIndex(11)
                 .playIf(enableBlood)
-            .animation()    // Shake
+            .animation()    //Shake
                 .on(targetToken)
                 .fadeOut(50)
                 .playIf(enableShake)
@@ -300,10 +307,9 @@ async function attack(sourceToken, targetTokens, {enableImpact, soundMelee, soun
         const isMirrored = Math.random() < 0.5;
         const targetBounds = targetToken.object.bounds.pad(gridSize * (switchDistance / 5 - 1 + 0.5), gridSize * (switchDistance / 5 - 1 + 0.5));
         const sourceBounds = sourceToken.object.bounds;
-        const within5ft = (targetToken.object.bounds.pad(gridSize * 0.5, gridSize * 0.5)).intersects(sourceBounds);
         const withinSwitchDistance = targetBounds.intersects(sourceBounds);
         if (withinSwitchDistance || !enableSwitchDistance) {
-            await meleeAttack(targetToken, randMelee, randTrail, impact, isMirrored, targetScale, within5ft);
+            await meleeAttack(targetToken, randMelee, randTrail, impact, isMirrored, targetScale);
             await Sequencer.Helpers.wait(attackDelay);
         } else {
             await rangedAttack(targetToken, targetScale);
@@ -332,7 +338,7 @@ export const advancedMeleeAttack = {
             trailColor: {
                 default: 'none',
                 type: 'select',
-                label: 'CHRISPREMADES.Config.Generic.TrailColor',
+                label: 'CHRISPREMADES.Animations.AdvancedMeleeAttack.TrailColor',
                 options: animationUtils.buildColorOptions(trailColorMap, {
                     freeColors: ['none'],
                     labelPrefix: 'CHRISPREMADES.Config.Colors.',
@@ -342,37 +348,22 @@ export const advancedMeleeAttack = {
             enableSwitchDistance: {
                 default: false,
                 type: 'checkbox',
-                label: 'CHRISPREMADES.Config.Generic.EnableSwitchDistance'
-            },
-            switchDistance: {
-                default: 5,
-                type: 'number',
-                label: 'CHRISPREMADES.Config.Generic.SwitchDistanceFt'
+                label: 'CHRISPREMADES.Animations.AdvancedMeleeAttack.EnableSwitchDistance'
             },
             enableReturn: {
                 default: false,
                 type: 'checkbox',
-                label: 'CHRISPREMADES.Config.Generic.EnableReturn'
-            },
-            enableImpact: {
-                default: false,
-                type: 'checkbox',
-                label: 'CHRISPREMADES.Config.Generic.EnableImpact'
-            },
-            impactScale: {
-                default: 1.5,
-                type: 'number',
-                label: 'CHRISPREMADES.Config.Generic.ImpactScale'
+                label: 'CHRISPREMADES.Animations.AdvancedMeleeAttack.EnableReturn'
             },
             enableBlood: {
                 default: false,
                 type: 'checkbox',
-                label: 'CHRISPREMADES.Config.Generic.EnableBlood'
+                label: 'CHRISPREMADES.Animations.AdvancedMeleeAttack.EnableBlood'
             },
             enableShake: {
                 default: false,
                 type: 'checkbox',
-                label: 'CHRISPREMADES.Config.Generic.EnableShake'
+                label: 'CHRISPREMADES.Animations.AdvancedMeleeAttack.EnableShake'
             },
             soundMelee: {
                 label: 'CHRISPREMADES.Config.Generic.SoundMelee',
@@ -392,13 +383,7 @@ export const advancedMeleeAttack = {
                 label: 'CHRISPREMADES.Config.Generic.SoundDelay'
             },
             impact: {
-                label: 'CHRISPREMADES.Config.Generic.ImpactFile',
-                type: 'file',
-                fileType: 'image',
-                default: ''
-            },
-            range: {
-                label: 'CHRISPREMADES.Config.Generic.RangeFile',
+                label: 'CHRISPREMADES.Animations.AdvancedMeleeAttack.ImpactFile',
                 type: 'file',
                 fileType: 'image',
                 default: ''
@@ -406,7 +391,7 @@ export const advancedMeleeAttack = {
             attackDelay: {
                 default: 1000,
                 type: 'number',
-                label: 'CHRISPREMADES.Config.Generic.AttackDelay'
+                label: 'CHRISPREMADES.Animations.AdvancedMeleeAttack.AttackDelay'
             }
         };
     },

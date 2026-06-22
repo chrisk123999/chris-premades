@@ -1,6 +1,16 @@
 {
     "CHRISPREMADES": {
         "Animations": {
+            "AdvancedMeleeAttack": {
+                "AttackDelay": "Attack Delay",
+                "EnableBlood": "Enable Blood",
+                "EnableReturn": "Enable Return Animation",
+                "EnableShake": "Enable Shake",
+                "EnableSwitchDistance": "Allow Thrown",
+                "ImpactFile": "Impact File",
+                "Name": "Advanced Melee Attack",
+                "TrailColor": "Trail Color"
+            },
             "AirSummon": "Air Summon",
             "CelestialSummon": "Celestial Summon",
             "DefaultSummon": "Default Summon",
@@ -46,7 +56,11 @@
             "Formula": "Formula",
             "Generic": {
                 "Color": "Color",
-                "Sound": "Sound"
+                "Sound": "Sound",
+                "SoundDelay": "Sound Delay",
+                "SoundMelee": "Melee Sound",
+                "SoundRanged": "Ranged Sound",
+                "Weapon": "Weapon"
             },
             "Identifiers": "Identifiers",
             "PlaceActivity": "Place Activity",
