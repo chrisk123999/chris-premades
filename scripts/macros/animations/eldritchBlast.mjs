@@ -24,7 +24,7 @@ async function attack(sourceToken, targetToken, {missed, sound, color = 'purple'
         lastColor = (lastColor + 1) % dynamicColors.length; 
     }
     const path = 'jb2a.eldritch_blast.' + color;
-    return await animationUtils.simpleAttack(sourceToken, targetToken, path, {missed, sound});
+    return animationUtils.simpleAttack(sourceToken, targetToken, path, {missed, sound});
 }
 export const eldritchBlast = {
     name: 'CHRISPREMADES.Animations.EldritchBlast',
