@@ -3,6 +3,7 @@ import {constants, effectUtils} from '../../../utils.js';
 async function damage({trigger: {entity: effect}, workflow}) {
     if (!workflow.hitTargets.size || !workflow.damageRolls) return;
     if (workflow.item.type != 'spell' && !workflow.item.flags['chris-premades']?.trueStrike) return;
+    if (genericUtils.getProperty(workflow, 'workflowOptions.chris-premades.multiWorkflowAttack') > 0) return;
     let item = await effectUtils.getOriginItem(effect);
     if (!item) return;
     let dieSize = itemUtils.getConfig(item, 'dieSize');

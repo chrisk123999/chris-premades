@@ -2,9 +2,10 @@ import {activityUtils, actorUtils, animationUtils, compendiumUtils, constants, d
 async function use({trigger, workflow}) {
     if (!workflow.targets.size) return;
     let level = actorUtils.getLevelOrCR(workflow.actor);
-    let boltsLeft = 1 + Math.floor((level + 1) * (1/6)); //Todo: Make this work with twinned spell somehow.
+    let bolts = 1 + Math.floor((level + 1) * (1/6)); //Todo: Make this work with twinned spell somehow.
     let feature = activityUtils.getActivityByIdentifier(workflow.item, 'eldritchBlastBeam', {strict: true});
     if (!feature) return;
+    let boltsLeft = bolts;
     while (boltsLeft) {
         let selection, skip;
         if (workflow.targets.size > 1) {
@@ -19,7 +20,7 @@ async function use({trigger, workflow}) {
             for (let j = 0; j < i.value; j++) {
                 let hp = i.document.actor?.system?.attributes?.hp?.value;
                 if (!hp && skip) continue;
-                await workflowUtils.syntheticActivityRoll(feature, [i.document], {options: {targetConfirmation: 'none'}});
+                await workflowUtils.syntheticActivityRoll(feature, [i.document], {options: {targetConfirmation: 'none', 'chris-premades': {multiWorkflowAttack: bolts - boltsLeft}}});
                 boltsLeft -= 1;
             }
         }

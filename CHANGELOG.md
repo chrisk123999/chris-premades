@@ -1,6 +1,7 @@
 # 1.5.39 Release:
 ## Bug Fixes:
 - Circle of Power
+- Blood Sacrifice
 
 # 1.5.38 Release:
 ## API Bug Fixes:
