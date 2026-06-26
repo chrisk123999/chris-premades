@@ -48,7 +48,7 @@ Object.entries(groupedWeapons).forEach(([groupName, weapons]) => {
             const colors = ['orange', 'dark_green', 'dark_purple', 'blue', 'random'];
             for (let i = 0; i < colors.length; i++) configWeaponMap[weapon + '.' + colors[i]] = baseSuffix + '.' + toPascalCase(colors[i]);
         } else if (weapon === 'chakram') {
-            const styles = ['01', '02', '03', '04'];
+            const styles = ['01', '02', '03'];
             for (let i = 0; i < styles.length; i++) configWeaponMap[weapon + '.' + styles[i]] = baseSuffix + '.Style' + styles[i];
         } else if (weapon === 'shield') {
             const styles = ['01', '02', '04'];
@@ -67,9 +67,19 @@ async function attack(sourceToken, targetTokens, {soundMelee, soundRanged, enabl
             weaponOption = magical_greatsword[Math.floor(Math.random() * magical_greatsword.length)];
         }
     }
+    if (!weaponOption) weaponOption = '01';
     const weaponGroup = getGroup(baseWeapon);
     let dbPath = 'jb2a.' + weaponGroup + '.' + baseWeapon;
-    if (weaponOption) dbPath = dbPath + '.' + weaponOption;
+    if (baseWeapon === 'magical_greatsword') {
+        dbPath = dbPath + '.01.' + weaponOption;
+    } else if (baseWeapon === 'magic_sword') {
+        const style = weaponOption === 'yellow' ? '01' : '02';
+        dbPath = dbPath + '.' + weaponOption + '.' + style;
+    } else if (weaponOption) {
+        dbPath = dbPath + '.' + weaponOption;
+    } else {
+        dbPath = dbPath + '.01';
+    }
     const entries = Sequencer.Database.getEntry(dbPath);
     const entriesLength = entries.length;
     let enableTrail = trailColor !== 'none';
@@ -145,7 +155,7 @@ async function attack(sourceToken, targetTokens, {soundMelee, soundRanged, enabl
     } else {
         calculatedThrowFile = 'jb2a.dagger.throw.01.white';
     }
-    const gridSize = sourceToken.parent.gride.size;
+    const gridSize = sourceToken.parent.grid.size;
     async function meleeAttack(targetToken, randMelee, randTrail, impact, isMirrored, targetScale) {
         const amplitude = Sequencer.Helpers.random_float_between(0.0, 0.2);
         const hitRay = new Ray(sourceToken, targetToken);
@@ -158,12 +168,12 @@ async function attack(sourceToken, targetTokens, {soundMelee, soundRanged, enabl
         const easeOption = 'easeInOutSine';
         /* eslint-disable indent */
         new Sequence()
-            .effect()
+            .effect()   // Trail
                 .file(randTrail)
                 .atLocation(targetToken)
                 .rotateTowards(sourceToken)
                 .rotate(180)
-                .animateProperty('sprite', 'position.x', { from: -(2.5 * gridSize + hitRay.distance), to: -2.5 * gridSize, duration: 500 + hitRay.distance, ease: 'easeOutQuint'})
+                .animateProperty('sprite', 'position.x', {from: -(1.5 * gridSize + hitRay.distance), to: -1.5 * gridSize, duration: 500 + hitRay.distance, ease: 'easeOutQuint'})
                 .scale(0.5)
                 .mirrorY(isMirrored)
                 .zIndex(11)
@@ -173,7 +183,7 @@ async function attack(sourceToken, targetTokens, {soundMelee, soundRanged, enabl
                 .atLocation(targetToken)
                 .rotateTowards(sourceToken)
                 .rotate(180)
-                .animateProperty('sprite', 'position.x', {from: -(2.5 * gridSize + hitRay.distance), to: -2.5 * gridSize, duration: 500 + hitRay.distance, ease: 'easeOutQuint'})
+                .animateProperty('sprite', 'position.x', {from: -(1.5 * gridSize + hitRay.distance), to: -1.5 * gridSize, duration: 500 + hitRay.distance, ease: 'easeOutQuint'})
                 .scale(0.5)
                 .mirrorY(isMirrored)
                 .zIndex(10)
@@ -202,7 +212,7 @@ async function attack(sourceToken, targetTokens, {soundMelee, soundRanged, enabl
                 .fadeOut(50)
                 .playIf(enableShake)
             .effect()
-                .from(targetToken)
+                .copySprite(targetToken)
                 .loopProperty('spriteContainer', 'position.x', {
                     values: values.x,
                     duration: interval - ((interval * amplitude) / 2),
@@ -274,7 +284,7 @@ async function attack(sourceToken, targetTokens, {soundMelee, soundRanged, enabl
                 .fadeOut(50)
                 .playIf(enableShake)
             .effect()
-                .from(targetToken)
+                .copySprite(targetToken)
                 .loopProperty('spriteContainer', 'position.x', {
                     values: values.x,
                     duration: interval - ((interval * amplitude) / 2),
@@ -301,8 +311,8 @@ async function attack(sourceToken, targetTokens, {soundMelee, soundRanged, enabl
     }
     for (let targetToken of targetTokens) {
         const targetScale = {x: targetToken.texture.scaleX, y: targetToken.texture.scaleY};
-        const rand = Math.floor(Math.random() * ((entriesLength - 1) + 1));
-        const randMelee = dbPath + '.' + rand;
+        const rand = Math.floor(Math.random() * entriesLength);
+        let randMelee = dbPath + '.' + rand;
         const randTrail = enableTrail ? 'jb2a.' + weaponGroup + '.trail.' + calculatedTrail + '.' + calculatedTrailColor + '.' + rand : 'jb2a.antilife_shell.blue_no_circle';
         const isMirrored = Math.random() < 0.5;
         const targetBounds = targetToken.object.bounds.pad(gridSize * (switchDistance / 5 - 1 + 0.5), gridSize * (switchDistance / 5 - 1 + 0.5));
@@ -323,7 +333,7 @@ export const advancedMeleeAttack = {
         attack
     },
     inputs: ['sourceToken', 'targetTokens', 'options'],
-    requirements: ['JB2A_DnD5e'],
+    requirements: ['jb2a_patreon'],
     type: 'weaponAttacks',
     get config() {
         return {
