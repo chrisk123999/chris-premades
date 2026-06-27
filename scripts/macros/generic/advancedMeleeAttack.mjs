@@ -4,7 +4,7 @@ async function use({document, workflow}) {
     if (activityId != workflow.activity.id) return;
     if (!workflow.targets.size) return;
     const animationSetting = automationUtils.getGenericConfigValue(document, 'chris-premades', 'advancedMeleeAttack', 'animation');
-    const animation = animationUtils.getAnimation(animationSetting.source, animationSetting.identifier);
+    const animation = animationUtils.getAnimation(animationSetting);
     if (!animation) return;
     const animationOptions = {};
     if (animation.config) Object.keys(animation.config).forEach((key) => animationOptions[key] = automationUtils.getGenericAnimationConfig(document, 'chris-premades', 'advancedMeleeAttack', 'animation', key));

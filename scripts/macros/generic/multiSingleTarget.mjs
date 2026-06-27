@@ -13,7 +13,7 @@ async function use({document, workflow}) {
     let attackActivity = workflow.item.system.activities.get(attackActivityId);
     if (!attackActivity) return;
     const animationSetting = automationUtils.getGenericConfigValue(document, 'chris-premades', 'multiSingleTarget', 'animation');
-    const animation = animationUtils.getAnimation(animationSetting.source, animationSetting.identifier);
+    const animation = animationUtils.getAnimation(animationSetting);
     const animationOptions = {};
     if (animation?.config) Object.keys(animation.config).forEach((key) => animationOptions[key] = automationUtils.getGenericAnimationConfig(document, 'chris-premades', 'multiSingleTarget', 'animation', key));
     if (animation?.macros?.start) await animation.macros.start(workflow.token.document, animationOptions);

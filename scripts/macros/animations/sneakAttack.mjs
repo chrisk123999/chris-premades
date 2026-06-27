@@ -124,7 +124,7 @@ async function attack(sourceToken, targetToken, attackType) {
                     .rotateTowards(targetToken)
                     .spriteRotation(15)
                     .mirrorY()
-                    .spriteOffset({x: -1.9 * token.document.width, y:-0.3 * sourceToken.width}, {gridUnits: true})
+                    .spriteOffset({x: -1.9 * sourceToken.width, y:-0.3 * sourceToken.width}, {gridUnits: true})
                     .filter('ColorMatrix', {saturate: -1, brightness: -1 })
                     .rotateIn(-25, 250, {ease: 'easeOutExpo'})
                     .zIndex(0)
