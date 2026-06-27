@@ -37,6 +37,7 @@
                 "Simple": "Simple"
             },
             "AttackActivity": "Attack Activity",
+            "ClassIdentifier": "Class Identifier",
             "Colors": {
                 "Blue": "Blue",
                 "Cycle": "Cycle",

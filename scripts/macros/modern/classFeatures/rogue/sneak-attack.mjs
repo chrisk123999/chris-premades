@@ -135,7 +135,85 @@ export const sneakAttack = {
             label: 'CHRISPREMADES.Config.Animation',
             category: 'visuals',
             hint: ''
+        },
+        classIdentifier: {
+            default: 'rogue',
+            type: 'text',
+            label: 'CHRISPREMADES.Config.ClassIdentifier',
+            category: 'behavior',
+            hint: ''
         }
     },
-    notes: ''
+    notes: '',
+    scales: [
+        {
+            identifier: 'sneak-attack',
+            classIdentifier: 'rogue',
+            data:{
+                type: 'ScaleValue',
+                configuration: {
+                    distance: {
+                        units: ''
+                    },
+                    identifier: 'sneak-attack',
+                    type: 'dice',
+                    scale: {
+                        1: {
+                            number: 1,
+                            faces: 6,
+                            modifiers: []
+                        },
+                        3: {
+                            number: 2,
+                            faces: 6,
+                            modifiers: []
+                        },
+                        5: {
+                            number: 3,
+                            faces: 6,
+                            modifiers: []
+                        },
+                        7: {
+                            number: 4,
+                            faces: 6,
+                            modifiers: []
+                        },
+                        9: {
+                            number: 5,
+                            faces: 6,
+                            modifiers: []
+                        },
+                        11: {
+                            number: 6,
+                            faces: 6,
+                            modifiers: []
+                        },
+                        13: {
+                            number: 7,
+                            faces: 6,
+                            modifiers: []
+                        },
+                        15: {
+                            number: 8,
+                            faces: 6,
+                            modifiers: []
+                        },
+                        17: {
+                            number: 9,
+                            faces: 6,
+                            modifiers: []
+                        },
+                        19: {
+                            number: 10,
+                            faces: 6,
+                            modifiers: []
+                        }
+                    }
+                },
+                value: {},
+                title: 'Sneak Attack',
+                icon: null
+            }
+        }
+    ]
 };
