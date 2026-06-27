@@ -24,6 +24,9 @@
             "ScorchingRay": "Scorching Ray",
             "ShadowSummon": "Shadow Summon",
             "SmokeSummon": "Smoke Summon",
+            "SneakAttack": {
+                "Name": "Sneak Attack"
+            },
             "WaterSummon": "Water Summon"
         },
         "Config": {
@@ -84,6 +87,14 @@
                     "Context": "How many? (Max: {totalTargets})",
                     "Reaction": "Use a reaction?"
                 }
+            },
+            "RendMind": {
+                "RestoreAndUse": "Restore and use {item}?"
+            },
+            "SneakAttack": {
+                "Auto": "Automatically Use",
+                "UseAnotherCunningStrike": "Use another cunning strike?",
+                "UseCunningStrike": "Use cunning strike?"
             }
         }
     }

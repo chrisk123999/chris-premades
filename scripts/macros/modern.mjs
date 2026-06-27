@@ -1,0 +1,1 @@
+export {sneakAttack as 'sneak-attack'} from './modern/classFeatures/rogue/sneak-attack.mjs';
