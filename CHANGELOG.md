@@ -1,3 +1,15 @@
+# 2.0.1 Pre-Release:
+## Update Notes:
+- This update does not contain any automations. Currently there are only a few generic features and animations for use with CAT.
+- Added Advanced Melee animation and generic feature (converted from JB2A macro).
+- Added Sneak Attack animation (not automation).
+- Under the hood fixes in preparation of updating automations from V1.5.x.
+- Requires CAT version 0.0.3.
+
+# 2.0.0 Pre-Release:
+## Update Notes:
+- This update does not contain any automations. Currently there are only a few generic features and summon animations for use with CAT.
+
 # 1.5.36 Release:
 ## Update Notes:
 - This is not a V14 update. An update for V14 is still a work in progress.

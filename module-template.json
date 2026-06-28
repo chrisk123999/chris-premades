@@ -83,6 +83,13 @@
         "compatibility": {
           "minimum": "13.0.4"
         }
+      },
+      {
+        "id": "cat",
+        "type": "module",
+        "compatibility": {
+          "minimum": "0.0.3"
+        }
       }
     ]
   },
