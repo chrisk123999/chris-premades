@@ -1,4 +1,4 @@
-import {activityUtils, constants, dialogUtils, effectUtils, genericUtils, itemUtils, workflowUtils} from '../../../../utils.js';
+import {activityUtils, constants, dialogUtils, effectUtils, genericUtils, itemUtils, socketUtils, workflowUtils} from '../../../../utils.js';
 import {digDeep} from './digDeep.js';
 
 async function use({trigger: {entity: item, token}}) {
@@ -12,11 +12,12 @@ async function use({trigger: {entity: item, token}}) {
         hasConditions.push(digging);
     }
     if (!hasConditions.length) return;
-    let selection = await dialogUtils.selectDocumentDialog(item.name, 'CHRISPREMADES.Generic.SelectRemoveCondition', hasConditions, {sortAlphabetical: true});
+    let userId = socketUtils.firstOwner(token.actor, true);
+    let selection = await dialogUtils.selectDocumentDialog(item.name, 'CHRISPREMADES.Generic.SelectRemoveCondition', hasConditions, {sortAlphabetical: true, userId});
     if (!selection) return;
     exhaustion--;
     let use = activityUtils.getActivityByIdentifier(item, 'use');
-    await workflowUtils.completeActivityUse(use);
+    await workflowUtils.completeActivityUse(use, {midiOptions: {asUser: userId}});
     if (selection.id === digging?.id) {
         let img = exhaustion <= 0 ? 
             itemUtils.getItemByIdentifier(token.actor, 'digDeep')?.img ?? '' :
