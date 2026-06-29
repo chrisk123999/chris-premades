@@ -5,8 +5,10 @@ async function attack(workflow) {
     if (!selection) return;
     let positions = selection[0].split('-').map(i => Number(i));
     let mode = ((workflow.activity.midiProperties?.rollMode ?? 'default') === 'default') ? game.settings.get('core', 'rollMode') : workflow.activity.midiProperties?.rollMode;
-    let roll = await rollUtils.rollDice('1d' + workflow.attackRoll.terms[positions[1]].faces, {chatMessage: true, mode, flavor: genericUtils.translate('CHRISPREMADES.HeroicInspiration.Name')});
+    let label = genericUtils.translate('CHRISPREMADES.HeroicInspiration.Name');
+    let roll = await rollUtils.rollDice('1d' + workflow.attackRoll.terms[positions[1]].faces, {chatMessage: true, mode, flavor: label});
     let newRoll = rollUtils.updateDieResult(workflow.attackRoll, positions[1], positions[2], roll.roll.total);
+    if (workflow.tracker.fumble.isActive && !newRoll.isFumble) workflow.tracker.fumble.suppress('inspiration', label);
     await workflow.setAttackRoll(newRoll);
     await genericUtils.update(workflow.actor, {'system.attributes.inspiration': false});
 }

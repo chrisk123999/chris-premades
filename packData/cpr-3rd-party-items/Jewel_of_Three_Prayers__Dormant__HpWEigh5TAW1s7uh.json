@@ -66,7 +66,7 @@
           "overlay": false
         }
       },
-      "_key": "!items.effects!iMH0St5M7coQHoZl.tn0ihHWSkh9q4z73"
+      "_key": "!items.effects!HpWEigh5TAW1s7uh.tn0ihHWSkh9q4z73"
     },
     {
       "name": "Jewel of Three Prayers (Dormant)",
@@ -121,7 +121,7 @@
           "overlay": false
         }
       },
-      "_key": "!items.effects!iMH0St5M7coQHoZl.W3KGlyPJb1p6moas"
+      "_key": "!items.effects!HpWEigh5TAW1s7uh.W3KGlyPJb1p6moas"
     }
   ],
   "system": {
@@ -152,7 +152,8 @@
         },
         "effects": [
           {
-            "_id": "tn0ihHWSkh9q4z73"
+            "_id": "tn0ihHWSkh9q4z73",
+            "level": {}
           }
         ],
         "range": {
@@ -225,17 +226,28 @@
           "magicEffect": false,
           "magicDamage": false,
           "noConcentrationCheck": false,
-          "autoCEEffects": "default"
+          "autoCEEffects": "default",
+          "triggeredActivityConsume": true,
+          "triggeredActivityConfigure": true,
+          "skipConcentrationCheck": false
         },
         "isOverTimeFlag": false,
         "overTimeProperties": {
           "saveRemoves": true,
           "preRemoveConditionText": "",
-          "postRemoveConditionText": ""
+          "postRemoveConditionText": "",
+          "rollAs": "target"
         },
         "otherActivityId": "none",
         "otherActivityAsParentType": true,
-        "name": ""
+        "name": "",
+        "flags": {},
+        "visibility": {
+          "level": {},
+          "requireAttunement": false,
+          "requireIdentification": false,
+          "requireMagic": false
+        }
       },
       "xqhVhq8Dj3CZ5UZZ": {
         "type": "cast",
@@ -340,15 +352,26 @@
           "magicEffect": false,
           "magicDamage": false,
           "noConcentrationCheck": false,
-          "autoCEEffects": "default"
+          "autoCEEffects": "default",
+          "triggeredActivityConsume": true,
+          "triggeredActivityConfigure": true,
+          "skipConcentrationCheck": false
         },
         "isOverTimeFlag": false,
         "overTimeProperties": {
           "saveRemoves": true,
           "preRemoveConditionText": "",
-          "postRemoveConditionText": ""
+          "postRemoveConditionText": "",
+          "rollAs": "target"
         },
-        "name": ""
+        "name": "",
+        "flags": {},
+        "visibility": {
+          "level": {},
+          "requireAttunement": false,
+          "requireIdentification": false,
+          "requireMagic": false
+        }
       }
     },
     "uses": {
@@ -392,10 +415,10 @@
     "attunement": "required",
     "attuned": true,
     "equipped": true,
-    "crewed": false,
     "armor": {
       "value": null,
-      "dex": null
+      "dex": null,
+      "magicalBonus": null
     },
     "proficient": null,
     "properties": [
@@ -405,6 +428,9 @@
     "type": {
       "value": "trinket",
       "baseItem": ""
+    },
+    "crew": {
+      "value": []
     }
   },
   "flags": {
@@ -445,7 +471,7 @@
     }
   },
   "img": "icons/equipment/neck/collar-rounded-gold-purple.webp",
-  "folder": "4TYgcjpgCO6kJJ6d",
-  "_id": "iMH0St5M7coQHoZl",
-  "_key": "!items!iMH0St5M7coQHoZl"
+  "folder": "l9lGxARY0Wspxe7c",
+  "_id": "HpWEigh5TAW1s7uh",
+  "_key": "!items!HpWEigh5TAW1s7uh"
 }
