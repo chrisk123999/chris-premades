@@ -1,6 +1,8 @@
 # 1.5.40 Release:
 ## Bug Fixes:
 - Shake It Off
+- Heroic Inspiration
+- Martial Arts (legacy and modern)
 
 # 1.5.39 Release:
 ## Bug Fixes:
