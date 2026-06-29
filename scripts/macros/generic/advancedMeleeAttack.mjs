@@ -3,11 +3,8 @@ async function use({document, workflow}) {
     const activityId = automationUtils.getGenericConfigValue(document, 'chris-premades', 'advancedMeleeAttack', 'activityId');
     if (activityId != workflow.activity.id) return;
     if (!workflow.targets.size) return;
-    const animationSetting = automationUtils.getGenericConfigValue(document, 'chris-premades', 'advancedMeleeAttack', 'animation');
-    const animation = animationUtils.getAnimation(animationSetting);
+    const {animation, options: animationOptions} = automationUtils.getResolvedAnimation(document, 'animation', {source: 'chris-premades', identifier: 'advancedMeleeAttack'});
     if (!animation) return;
-    const animationOptions = {};
-    if (animation.config) Object.keys(animation.config).forEach((key) => animationOptions[key] = automationUtils.getGenericAnimationConfig(document, 'chris-premades', 'advancedMeleeAttack', 'animation', key));
     animationOptions.switchDistance = workflow.rangeDetails.range;
     await animation.macros.attack(workflow.token.document, workflow.targets.map(token => token.document), animationOptions);
 }

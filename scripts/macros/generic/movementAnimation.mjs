@@ -1,15 +1,9 @@
 import {animationUtils, automationUtils, documentUtils, effectUtils} from '../../proxy.mjs';
 async function use({document, workflow}) {
-    const selectLocationsAnimationSetting = automationUtils.getGenericConfigValue(document, 'chris-premades', 'movementAnimation', 'selectLocationsAnimation');
-    const selectLocationsAnimation = animationUtils.getAnimation(selectLocationsAnimationSetting);
+    const {animation: selectLocationsAnimation, options: selectLocationsOptions} = automationUtils.getResolvedAnimation(document, 'selectLocationsAnimation', {source: 'chris-premades', identifier: 'movementAnimation'});
     if (!selectLocationsAnimation) return;
-    const selectLocationsOptions = {};
-    if (selectLocationsAnimation?.config) Object.keys(selectLocationsAnimation.config).forEach((key) => selectLocationsOptions[key] = automationUtils.getGenericAnimationConfig(document, 'chris-premades', 'movementAnimation', 'selectLocationsAnimation', key));
-    const moveAnimationSetting = automationUtils.getGenericConfigValue(document, 'chris-premades', 'movementAnimation', 'moveAnimation');
-    const moveAnimation = animationUtils.getAnimation(moveAnimationSetting);
+    const {animation: moveAnimation} = automationUtils.getResolvedAnimation(document, 'moveAnimation', {source: 'chris-premades', identifier: 'movementAnimation'});
     if (!moveAnimation) return;
-    const moveOptions = {};
-    if (moveAnimation?.config) Object.keys(moveAnimation.config).forEach((key) => moveOptions[key] = automationUtils.getGenericAnimationConfig(document, 'chris-premades', 'movementAnimation', 'moveAnimation', key));
     const range = workflow.actor.system.attributes.movement.max;
     const positions = await selectLocationsAnimation.macros?.select(workflow.token.document, range, selectLocationsOptions);
     if (!positions?.length) return;
@@ -22,7 +16,6 @@ async function use({document, workflow}) {
             delete effectData._id;
             effectData.origin = sourceEffect.uuid;
             effect = (await effectUtils.createEffects(workflow.actor, [effectData]))?.[0];
-            console.log(effect);
         }
     }
     await moveAnimation.macros?.move(workflow.token.document, positions);

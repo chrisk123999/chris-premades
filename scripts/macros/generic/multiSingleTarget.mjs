@@ -12,10 +12,7 @@ async function use({document, workflow}) {
     if (!attackActivityId) return;
     let attackActivity = workflow.item.system.activities.get(attackActivityId);
     if (!attackActivity) return;
-    const animationSetting = automationUtils.getGenericConfigValue(document, 'chris-premades', 'multiSingleTarget', 'animation');
-    const animation = animationUtils.getAnimation(animationSetting);
-    const animationOptions = {};
-    if (animation?.config) Object.keys(animation.config).forEach((key) => animationOptions[key] = automationUtils.getGenericAnimationConfig(document, 'chris-premades', 'multiSingleTarget', 'animation', key));
+    const {animation, options: animationOptions} = automationUtils.getResolvedAnimation(document, 'animation', {source: 'chris-premades', identifier: 'multiSingleTarget'});
     if (animation?.macros?.start) await animation.macros.start(workflow.token.document, animationOptions);
     const reactionItemIdentifiers = automationUtils.getGenericConfigValue(document, 'chris-premades', 'multiSingleTarget', 'reactionItemIdentifiers');
     const reactionEffectIdentifiers = automationUtils.getGenericConfigValue(document, 'chris-premades', 'multiSingleTarget', 'reactionEffectIdentifiers');
