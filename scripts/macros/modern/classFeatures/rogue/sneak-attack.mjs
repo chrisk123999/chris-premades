@@ -53,7 +53,7 @@ async function damage({document, workflow}) {
         const usedActivities = [];
         for (let i = 0; i < uses; i++) {
             const availableActivities = activities.filter(activity => (activity.uses.max) <= number && !usedActivities.includes(activity));
-            const text = i > 0 ? 'CHRISPREMADES.Macros.SneakAttack.UseAnotherCunningStrike' : 'CHRISPREMADES.Macros.SneakAttack.UseCunningStrike';
+            const text = i > 0 ? 'CHRISPREMADES.Macros.Modern.SneakAttack.UseAnotherCunningStrike' : 'CHRISPREMADES.Macros.Modern.SneakAttack.UseCunningStrike';
             const selection = await dialogUtils.selectDocumentDialog(document.name, text, availableActivities, {max: 1, sort: 'alphabetical', addNoneDocument: true});
             if (!selection) break;
             const activityIdentifier = documentUtils.getIdentifier(selection);
@@ -81,7 +81,7 @@ async function damage({document, workflow}) {
         const psionicPower = actorUtils.getItemByIdentifier(workflow.actor, 'psionicPower');
         let selection;
         if (psionicPower?.system?.uses?.value >= 3 && !rendMind.system.uses.value) {
-            selection = await dialogUtils.confirm(rendMind.name, _loc('CHRISPREMADES.Macros.RendMind.RestoreAndUse', {item: rendMind.name}));
+            selection = await dialogUtils.confirm(rendMind.name, _loc('CHRISPREMADES.Macros.Modern.RendMind.RestoreAndUse', {item: rendMind.name}));
             if (selection) {
                 await documentUtils.update(psionicPower, {'system.uses.spent': psionicPower.system.uses.spent + 3});
                 await documentUtils.update(rendMind, {'system.uses.spent': 0});
@@ -116,7 +116,7 @@ export const sneakAttack = {
         auto: {
             default: false,
             type: 'checkbox',
-            label: 'CHRISPREMADES.Macros.SneakAttack.Auto',
+            label: 'CHRISPREMADES.Macros.Modern.SneakAttack.Auto',
             category: 'tuning',
             hint: ''
         },

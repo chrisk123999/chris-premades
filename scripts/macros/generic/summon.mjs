@@ -45,7 +45,7 @@ export const summon = {
     version: '1.6.2',
     category: 'summons',
     generic: true,
-    documents: ['Item'],
+    documents: ['item'],
     roll: [
         {
             pass: 'itemRollFinished',

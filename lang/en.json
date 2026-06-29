@@ -13,6 +13,12 @@
             },
             "AirSummon": "Air Summon",
             "CelestialSummon": "Celestial Summon",
+            "CunningActionDash": {
+                "Name": "Cunning Action Dash"
+            },
+            "CunningActionDisengage": {
+                "Name": "Cunning Action Disengage"
+            },
             "DefaultSummon": "Default Summon",
             "EarthSummon": "Earth Summon",
             "EldritchBlast": "Eldritch Blast",
@@ -22,6 +28,13 @@
             "MagicMissile": "Magic Missile",
             "NatureSummon": "Nature Summon",
             "ScorchingRay": "Scorching Ray",
+            "SelectLocation": {
+                "DisplayHint": "Display Hint",
+                "Name": "Select Location"
+            },
+            "SelectLocations": {
+                "Message": "Right click to add waypoints. Left click to finish."
+            },
             "ShadowSummon": "Shadow Summon",
             "SmokeSummon": "Smoke Summon",
             "SneakAttack": {
@@ -57,6 +70,7 @@
                 "Yellow": "Yellow"
             },
             "CreateActivity": "Create Activity",
+            "Dark": "Dark",
             "Formula": "Formula",
             "Generic": {
                 "Color": "Color",
@@ -84,18 +98,25 @@
                     "SelectNearbyTargets": "Select targets.",
                     "Weapon": "Attack with what weapon?"
                 },
+                "MovementAnimation": {
+                    "MoveAnimation": "Move Animation",
+                    "MovementEffect": "Movement Effect",
+                    "SelectAnimation": "Selection Animation"
+                },
                 "MultiSingleTarget": {
                     "Context": "How many? (Max: {totalTargets})",
                     "Reaction": "Use a reaction?"
                 }
             },
-            "RendMind": {
-                "RestoreAndUse": "Restore and use {item}?"
-            },
-            "SneakAttack": {
-                "Auto": "Automatically Use",
-                "UseAnotherCunningStrike": "Use another cunning strike?",
-                "UseCunningStrike": "Use cunning strike?"
+            "Modern": {
+                "RendMind": {
+                    "RestoreAndUse": "Restore and use {item}?"
+                },
+                "SneakAttack": {
+                    "Auto": "Automatically Use",
+                    "UseAnotherCunningStrike": "Use another cunning strike?",
+                    "UseCunningStrike": "Use cunning strike?"
+                }
             }
         }
     }

@@ -1,3 +1,5 @@
+import {animationUtils} from '../../proxy.mjs';
+
 async function attack(sourceToken, targetToken, attackType) {
     /* eslint-disable indent */
     const hitSeq = new Sequence()
@@ -144,11 +146,7 @@ export const sneakAttack = {
     inputs: ['sourceToken', 'targetToken', 'attackType'],
     requirements: ['jb2a_patreon', 'animated-spell-effects-cartoon'],
     type: 'classFeature',
-    credits: [
-        {
-            name: 'Eskie',
-            discord: 'https://discord.gg/RXwkJD4hTe',
-            patreon: 'https://www.patreon.com/c/EskieEffects'
-        }
-    ]
+    get credits() {
+        return [animationUtils.getEskieCredits()];
+    }
 };

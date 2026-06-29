@@ -7,7 +7,7 @@ export const removeRegion = {
     version: '2.0.0',
     category: 'utility',
     generic: true,
-    documents: ['ActiveEffect'],
+    documents: ['activeeffect'],
     combat: [
         {
             pass: 'actorEveryTurn',

@@ -7,3 +7,4 @@ export {removeRegion} from './generic/removeRegion.mjs';
 export {summon} from './generic/summon.mjs';
 export {useOnDeath} from './generic/useOnDeath.mjs';
 export {advancedMeleeAttack} from './generic/advancedMeleeAttack.mjs';
+export {movementAnimation} from './generic/movementAnimation.mjs';

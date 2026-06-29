@@ -177,11 +177,7 @@ export const scorchingRay = {
             }
         };
     },
-    credits: [
-        {
-            name: 'Eskie',
-            discord: 'https://discord.gg/RXwkJD4hTe',
-            patreon: 'https://www.patreon.com/c/EskieEffects'
-        }
-    ]
+    get credits() {
+        return [animationUtils.getEskieCredits()];
+    }
 };

@@ -4,3 +4,6 @@ export {scorchingRay} from './animations/scorchingRay.mjs';
 export {defaultSummon, celestialSummon, fiendSummon, fireSummon, waterSummon, airSummon, earthSummon, natureSummon, shadowSummon, smokeSummon, futureSummon} from './animations/summons.mjs';
 export {advancedMeleeAttack} from './animations/advancedMeleeAttack.mjs';
 export {sneakAttack} from './animations/sneakAttack.mjs';
+export {selectLocations} from './animations/selectLocations.mjs';
+export {cunningActionDash} from './animations/cunningActionDash.mjs';
+export {cunningActionDisengage} from './animations/cunningActionDisengage.mjs';

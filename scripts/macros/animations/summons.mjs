@@ -1,3 +1,4 @@
+import {animationUtils} from '../../proxy.mjs';
 async function prePlace(summon, location, preToken) {
     preToken.updateSource({alpha: 0});
 }
@@ -832,13 +833,9 @@ function createSummon(name, macro, requirements = []) {
                 default: ''
             }
         },
-        credits: [
-            {
-                name: 'Eskie',
-                discord: 'https://discord.gg/RXwkJD4hTe',
-                patreon: 'https://www.patreon.com/c/EskieEffects'
-            }
-        ]
+        get credits() {
+            return [animationUtils.getEskieCredits()];
+        }
     };
 }
 const ASE_JB2A = ['animated-spell-effects-cartoon', 'jb2a_patreon'];

@@ -9,7 +9,7 @@ export const actionDismissal = {
     version: '2.0.0',
     category: 'utility',
     generic: true,
-    documents: ['Item'],
+    documents: ['item'],
     roll: [
         {
             pass: 'itemRollFinished',

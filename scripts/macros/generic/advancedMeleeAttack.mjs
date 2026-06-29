@@ -16,7 +16,7 @@ export const advancedMeleeAttack = {
     version: '2.0.1',
     category: 'animations',
     generic: true,
-    documents: ['Item'],
+    documents: ['item'],
     roll: [
         {
             pass: 'itemAttackRollComplete',

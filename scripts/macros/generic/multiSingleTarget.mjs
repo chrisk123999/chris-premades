@@ -89,7 +89,7 @@ export const multiSingleTarget = {
     version: '1.6.1',
     category: 'targeting',
     generic: true,
-    documents: ['Item'],
+    documents: ['item'],
     roll: [
         {
             pass: 'itemRollFinished',
