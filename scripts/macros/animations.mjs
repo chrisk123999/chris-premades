@@ -7,3 +7,4 @@ export {sneakAttack} from './animations/sneakAttack.mjs';
 export {selectLocations} from './animations/selectLocations.mjs';
 export {cunningActionDash} from './animations/cunningActionDash.mjs';
 export {cunningActionDisengage} from './animations/cunningActionDisengage.mjs';
+export {rageDefault, rageLightning, rageSaiyan} from './animations/rage.mjs';

@@ -19,6 +19,7 @@
             "CunningActionDisengage": {
                 "Name": "Cunning Action Disengage"
             },
+            "Default": "Default",
             "DefaultSummon": "Default Summon",
             "EarthSummon": "Earth Summon",
             "EldritchBlast": "Eldritch Blast",
@@ -27,6 +28,10 @@
             "FutureSummon": "Future Summon",
             "MagicMissile": "Magic Missile",
             "NatureSummon": "Nature Summon",
+            "Rage": {
+                "Lightning": "Lightning",
+                "Saiyan": "Saiyan"
+            },
             "ScorchingRay": "Scorching Ray",
             "SelectLocation": {
                 "DisplayHint": "Display Hint",
@@ -91,6 +96,16 @@
             "UtilityRollAsDamage": "Utility Roll As Damage"
         },
         "Macros": {
+            "All": {
+                "Rage": {
+                    "AllowConcentration": "Allow Concentration:",
+                    "AllowHeavyArmor": "Allow Heavy Armor:",
+                    "AllowSpellcasting": "Allow Spellcasting:",
+                    "Concentration": "You can't concentrate while raging!",
+                    "HeavyArmor": "You are wearing heavy armor and cannot rage!",
+                    "Spellcasting": "You can't spellcast while raging!"
+                }
+            },
             "Generic": {
                 "BladeSpell": {
                     "ReplaceDamage": "Replace damage?",
