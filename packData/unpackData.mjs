@@ -1,44 +1,23 @@
-import {compilePack, extractPack} from '@foundryvtt/foundryvtt-cli';
+import {extractPack} from '@foundryvtt/foundryvtt-cli';
 let itemPacks = [
-    // 'cpr-3rd-party-class-features',
-    // 'cpr-3rd-party-items',
-    // 'cpr-3rd-party-feats',
-    // 'cpr-actions',
-    // 'cpr-class-feature-items',
-    'cpr-class-features-all',
-    'cpr-class-features-2014',
-    // 'cpr-feats',
-    // 'cpr-feat-features',
-    // 'cpr-item-features',
-    // 'cpr-items',
-    // 'cpr-miscellaneous',
-    // 'cpr-miscellaneous-items',
-    // 'cpr-monster-features',
-    // 'cpr-race-features',
-    // 'cpr-spell-features',
-    // 'cpr-spells',
-    // 'cpr-summon-features',
+    'cpr-features-2014',
+    'cpr-spells-2014',
+    'cpr-equipment-2014',
+    'cpr-misc-2014',
+    'cpr-features-2024',
     'cpr-spells-2024',
-    'cpr-class-features-2024'//,
-    // 'cpr-items-2024',
-    // 'cpr-summon-features-2024',
-    // 'cpr-feats-2024',
-    // 'cpr-feat-features-2024',
-    // 'cpr-embedded-macro-sample-items',
-    // 'cpr-actions-2024',
-    // 'cpr-feature-items-2024',
-    // 'cpr-3rd-party-class-features-2024',
-    // 'cpr-3rd-party-spells',
-    // 'cpr-monster-features-2024',
-    // 'cpr-3rd-party-spells-2024',
-    // 'cpr-species-features-2024',
-    // 'cpr-other-features',
-    // 'cpr-3rd-party-feats-2024',
-    // 'cpr-3rd-party-items-2024',
-    // 'cpr-class-feature-items-2024'
+    'cpr-equipment-2024',
+    'cpr-misc-2024',
+    'cpr-embedded-macro-sample-items',
+    
+    // replaced:
+    'cpr-class-features-2014',
+    'cpr-class-features-2024',
+    'cpr-class-features-all',
+    'cpr-3rd-party-class-features-2024'
 ];
 let actorPacks = [
-    'cpr-summons',
+    'cpr-summons-2014',
     'cpr-summons-2024'
 ];
 for (let i of itemPacks) {
