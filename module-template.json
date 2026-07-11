@@ -116,9 +116,23 @@
       "module": "chris-premades"
     },
     {
+      "name": "CPRMonsterFeatures2014",
+      "label": "CPR Monster Features (2014)",
+      "path": "packs/cpr-monster-features-2014",
+      "type": "Item",
+      "module": "chris-premades"
+    },
+    {
       "name": "CPRFeatures2024",
       "label": "CPR Features (2024)",
       "path": "packs/cpr-features-2024",
+      "type": "Item",
+      "module": "chris-premades"
+    },
+    {
+      "name": "CPRMonsterFeatures2024",
+      "label": "CPR Monster Features (2024)",
+      "path": "packs/cpr-monster-features-2024",
       "type": "Item",
       "module": "chris-premades"
     },
@@ -200,6 +214,7 @@
           "packs": [
             "CPRSummons2014",
             "CPRFeatures2014",
+            "CPRMonsterFeatures2014",
             "CPRSpells2014",
             "CPREquipment2014",
             "CPRMisc2014"
@@ -212,6 +227,7 @@
           "packs": [
             "CPRSummons2024",
             "CPRFeatures2024",
+            "CPRMonsterFeatures2024",
             "CPRSpells2024",
             "CPREquipment2024",
             "CPRMisc2024"

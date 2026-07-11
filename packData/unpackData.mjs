@@ -1,10 +1,12 @@
 import {extractPack} from '@foundryvtt/foundryvtt-cli';
 let itemPacks = [
     'cpr-features-2014',
+    'cpr-monster-features-2014',
     'cpr-spells-2014',
     'cpr-equipment-2014',
     'cpr-misc-2014',
     'cpr-features-2024',
+    'cpr-monster-features-2024',
     'cpr-spells-2024',
     'cpr-equipment-2024',
     'cpr-misc-2024',
