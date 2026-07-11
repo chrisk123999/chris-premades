@@ -177,37 +177,6 @@
       "path": "packs/cpr-embedded-macro-sample-items",
       "type": "Item",
       "module": "chris-premades"
-    },
-
-
-
-    {
-      "name": "CPRClassFeaturesAll",
-      "label": "CPR Class Features (All Rules)",
-      "path": "packs/cpr-class-features-all",
-      "type": "Item",
-      "module": "chris-premades"
-    },
-    {
-      "name": "CPRClassFeatures2014",
-      "label": "CPR Class Features (2014)",
-      "path": "packs/cpr-class-features-2014",
-      "type": "Item",
-      "module": "chris-premades"
-    },
-    {
-      "name": "CPRClassFeatures2024",
-      "label": "CPR Class Features (2024)",
-      "path": "packs/cpr-class-features-2024",
-      "type": "Item",
-      "module": "chris-premades"
-    },
-    {
-      "name": "CPR3rdPartyClassFeatures2024",
-      "label": "CPR 3rd Party Class Features (2024)",
-      "path": "packs/cpr-3rd-party-class-features-2024",
-      "type": "Item",
-      "module": "chris-premades"
     }
   ],
   "packFolders": [
@@ -221,9 +190,7 @@
           "sorting": "a",
           "color": "#348f2d",
           "packs": [
-            "CPRFeaturesAll",
-
-            "CPRClassFeaturesAll"
+            "CPRFeaturesAll"
           ]
         },
         {
@@ -235,9 +202,7 @@
             "CPRFeatures2014",
             "CPRSpells2014",
             "CPREquipment2014",
-            "CPRMisc2014",
-
-            "CPRClassFeatures2014"
+            "CPRMisc2014"
           ]
         },
         {
@@ -249,10 +214,7 @@
             "CPRFeatures2024",
             "CPRSpells2024",
             "CPREquipment2024",
-            "CPRMisc2024",
-
-            "CPRClassFeatures2024",
-            "CPR3rdPartyClassFeatures2024"
+            "CPRMisc2024"
           ]
         }
       ],

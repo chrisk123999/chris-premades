@@ -8,13 +8,7 @@ let itemPacks = [
     'cpr-spells-2024',
     'cpr-equipment-2024',
     'cpr-misc-2024',
-    'cpr-embedded-macro-sample-items',
-    
-    // replaced:
-    'cpr-class-features-2014',
-    'cpr-class-features-2024',
-    'cpr-class-features-all',
-    'cpr-3rd-party-class-features-2024'
+    'cpr-embedded-macro-sample-items'
 ];
 let actorPacks = [
     'cpr-summons-2014',
