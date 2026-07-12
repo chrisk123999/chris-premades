@@ -1,4 +1,5 @@
 import {Logging, api} from './proxy.mjs';
+import constants from './constants.mjs';
 import * as animations from './macros/animations.mjs';
 import {all, generic, legacy, modern} from './macros.mjs';
 Hooks.once('i18nInit', () => {
@@ -16,9 +17,10 @@ Hooks.once('ready', () => {
 Hooks.once('catInit', () => {
 
 });
+// simplify this with cat.lib.constants.triggerTypes(), pending cat/#21
 const validKeys = ['rules', 'aura', 'called', 'check', 'combat', 'effect', 'item', 'move', 'region', 'rest', 'save', 'skill', 'time', 'tool', 'roll', 'summon', 'generic', 'genericConfig', 'documents'];
-const ignoredPackIds = [];
 Hooks.once('catReady', () => {
+    const ignoredPackIds = [constants.packs.samples.embeddedMacros];
     Object.entries(animations).forEach(([identifier, value]) => api.registerAnimation({
         ...value,
         source: 'chris-premades',
