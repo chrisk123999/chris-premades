@@ -93,8 +93,152 @@
       }
     ]
   },
-  "packs": [],
-  "packFolders": [],
+  "packs": [
+    {
+      "name": "CPRSummons2014",
+      "label": "CPR Summons (2014)",
+      "path": "packs/cpr-summons-2014",
+      "type": "Actor",
+      "module": "chris-premades"
+    },
+    {
+      "name": "CPRSummons2024",
+      "label": "CPR Summons (2024)",
+      "path": "packs/cpr-summons-2024",
+      "type": "Actor",
+      "module": "chris-premades"
+    },
+    {
+      "name": "CPRFeatures2014",
+      "label": "CPR Features (2014)",
+      "path": "packs/cpr-features-2014",
+      "type": "Item",
+      "module": "chris-premades"
+    },
+    {
+      "name": "CPRMonsterFeatures2014",
+      "label": "CPR Monster Features (2014)",
+      "path": "packs/cpr-monster-features-2014",
+      "type": "Item",
+      "module": "chris-premades"
+    },
+    {
+      "name": "CPRFeatures2024",
+      "label": "CPR Features (2024)",
+      "path": "packs/cpr-features-2024",
+      "type": "Item",
+      "module": "chris-premades"
+    },
+    {
+      "name": "CPRMonsterFeatures2024",
+      "label": "CPR Monster Features (2024)",
+      "path": "packs/cpr-monster-features-2024",
+      "type": "Item",
+      "module": "chris-premades"
+    },
+    {
+      "name": "CPRFeaturesAll",
+      "label": "CPR Features (All Rules)",
+      "path": "packs/cpr-features-all",
+      "type": "Item",
+      "module": "chris-premades"
+    },
+    {
+      "name": "CPRSpells2014",
+      "label": "CPR Spells (2014)",
+      "path": "packs/cpr-spells-2014",
+      "type": "Item",
+      "module": "chris-premades"
+    },
+    {
+      "name": "CPRSpells2024",
+      "label": "CPR Spells (2024)",
+      "path": "packs/cpr-spells-2024",
+      "type": "Item",
+      "module": "chris-premades"
+    },
+    {
+      "name": "CPREquipment2014",
+      "label": "CPR Equipment (2014)",
+      "path": "packs/cpr-equipment-2014",
+      "type": "Item",
+      "module": "chris-premades"
+    },
+    {
+      "name": "CPREquipment2024",
+      "label": "CPR Equipment (2024)",
+      "path": "packs/cpr-equipment-2024",
+      "type": "Item",
+      "module": "chris-premades"
+    },
+    {
+      "name": "CPRMisc2014",
+      "label": "CPR Miscellaneous (2014)",
+      "path": "packs/cpr-misc-2014",
+      "type": "Item",
+      "module": "chris-premades"
+    },
+    {
+      "name": "CPRMisc2024",
+      "label": "CPR Miscellaneous (2024)",
+      "path": "packs/cpr-misc-2024",
+      "type": "Item",
+      "module": "chris-premades"
+    },
+    {
+      "name": "CPREmbeddedMacroSampleItems",
+      "label": "CPR Embedded Macro Sample Items",
+      "path": "packs/cpr-embedded-macro-sample-items",
+      "type": "Item",
+      "module": "chris-premades"
+    }
+  ],
+  "packFolders": [
+    {
+      "name": "Cauldron of Plentiful Resources",
+      "sorting": "a",
+      "color": "#348f2d",
+      "folders": [
+        {
+          "name": "All Rules",
+          "sorting": "a",
+          "color": "#348f2d",
+          "packs": [
+            "CPRFeaturesAll"
+          ]
+        },
+        {
+          "name": "2014",
+          "sorting": "a",
+          "color": "#348f2d",
+          "packs": [
+            "CPRSummons2014",
+            "CPRFeatures2014",
+            "CPRMonsterFeatures2014",
+            "CPRSpells2014",
+            "CPREquipment2014",
+            "CPRMisc2014"
+          ]
+        },
+        {
+          "name": "2024",
+          "sorting": "a",
+          "color": "#348f2d",
+          "packs": [
+            "CPRSummons2024",
+            "CPRFeatures2024",
+            "CPRMonsterFeatures2024",
+            "CPRSpells2024",
+            "CPREquipment2024",
+            "CPRMisc2024"
+          ]
+        }
+      ],
+      "packs": [
+        "CPREmbeddedMacroSampleItems"
+      ]
+    }
+  ],
   "changelog": "https://github.com/chrisk123999/chris-premades/blob/master/CHANGELOG.md",
   "url": "https://github.com/chrisk123999/chris-premades/",
   "manifest": "#{MANIFEST}#",
