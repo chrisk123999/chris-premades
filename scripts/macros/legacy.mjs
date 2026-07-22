@@ -2,6 +2,8 @@
 export {brutalCritical as 'brutal-critical'} from './legacy/classFeatures/barbarian/brutalCritical.mjs';
 export {dangerSense as 'danger-sense'} from './legacy/classFeatures/barbarian/dangerSense.mjs';
 export {endRage, keepRage} from './legacy/classFeatures/barbarian/rage.mjs';
+// Bard
+export {countercharm, countercharmAura} from './legacy/classFeatures/bard/countercharm.mjs';
 // Wizard
 export {bladesong as 'bladesong'} from './legacy/classFeatures/wizard/bladeSinging/bladesong.mjs';
 export {songOfDefense as 'song-of-defense'} from './legacy/classFeatures/wizard/bladeSinging/songOfDefense.mjs';
