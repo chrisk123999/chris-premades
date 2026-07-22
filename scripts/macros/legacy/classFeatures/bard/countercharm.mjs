@@ -1,22 +1,27 @@
-import {actorUtils, automationUtils, constants, dataUtils, documentUtils, effectUtils} from '../../../../proxy.mjs';
+import {actorUtils, automationUtils, constants, documentUtils, effectUtils} from '../../../../proxy.mjs';
 async function begin({workflow}) {
     const sourceEffect = workflow.item.effects.contents[0];
     if (!sourceEffect) return;
+    for (const effect of actorUtils.getEffects(workflow.actor)) {
+        if (effect.origin !== sourceEffect.uuid && documentUtils.getIdentifier(effect) !== 'counterCharmEffect') continue;
+        return await effectUtils.resetDuration(effect);
+    }
     const effectData = documentUtils.getEffectData(workflow.activity, sourceEffect.id, {
         copyConfigs: automationUtils.getConfigValues(workflow.item, ['conditions', 'distance']),
         duration: sourceEffect.duration
     });
     await effectUtils.createEffects(workflow.actor, [effectData]);
 }
-async function aura({actor, document: effect, identifier}) {
-    if (actor.id === effect.parent.id) return;
-    if (actorUtils.getEffectByIdentifier(actor, identifier + 'Aura')) return;
-    const effectData = dataUtils.buildEffectData(effect.toObject(), {
-        removeMacros: [{type: 'aura', macros: [{identifier: 'countercharmAura', source: 'chris-premades'}]}],
-        specialDuration: []
-    });
-    delete effectData.duration;
-    return {effectData};
+async function aura({actor: target, document: effect, identifier}) {
+    if (target.id === effect.parent.id) return;
+    if (actorUtils.getEffectByIdentifier(target, identifier + 'Aura')) return;
+    return { effectData: {
+        name: effect.name,
+        img: effect.img,
+        origin: effect.origin,
+        flags: {dae: {showIcon: true}},
+        system: {changes: effect.changes}
+    }};
 }
 export const countercharm = {
     name: 'Countercharm',
