@@ -1,4 +1,4 @@
-import {actorUtils, automationUtils, constants, dialogUtils, genericUtils, queryUtils, workflowUtils} from '../../../../proxy.mjs';
+import {actorUtils, automationUtils, constants, dialogUtils, genericUtils, queryUtils, rollUtils, workflowUtils} from '../../../../proxy.mjs';
 async function reroll({config, document: item, roll, token}) {
     if (config['chris-premades']?.countercharm) return;
     if (!roll.options.target || roll.isSuccess) return;
@@ -13,20 +13,7 @@ async function reroll({config, document: item, roll, token}) {
     genericUtils.setProperty(config, 'midiOptions.advantage', true);
     const newRoll = (await token.actor.rollSavingThrow(config, undefined, {create: false}))?.[0];
     if (!newRoll) return;
-    for (const term of roll.terms) {
-        if (term.isDeterministic) continue;
-        for (const result of term.results) {
-            result.active = false;
-            result.discarded = true;
-        }
-    }
-    roll.terms.push(
-        new foundry.dice.terms.OperatorTerm({operator: '+'}), 
-        ...newRoll.terms
-    );
-    roll._formula = newRoll.formula;
-    roll._total = newRoll.total;
-    return roll;
+    return rollUtils.replaceRollShowDiscarded(roll, newRoll);
 }
 export const countercharm = {
     name: 'Countercharm',
