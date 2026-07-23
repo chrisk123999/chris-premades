@@ -1,0 +1,92 @@
+{
+  "name": "Arcane Grimoire +2",
+  "type": "equipment",
+  "system": {
+    "activities": {},
+    "uses": {
+      "spent": 0,
+      "recovery": []
+    },
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "identifier": "arcane-grimoire-2",
+    "source": {
+      "book": "TCoE",
+      "page": "",
+      "license": "",
+      "custom": "",
+      "rules": "2014",
+      "revision": 1
+    },
+    "rarity": "rare",
+    "attunement": "required",
+    "attuned": false,
+    "equipped": false,
+    "properties": [
+      "foc",
+      "mgc"
+    ],
+    "type": {
+      "value": "trinket",
+      "baseItem": ""
+    },
+    "identified": true,
+    "unidentified": {
+      "description": ""
+    },
+    "container": null,
+    "quantity": 1,
+    "weight": {
+      "value": 0,
+      "units": "lb"
+    },
+    "price": {
+      "value": 0,
+      "denomination": "gp"
+    },
+    "crew": {
+      "value": []
+    },
+    "armor": {
+      "value": null,
+      "dex": null
+    },
+    "proficient": null,
+    "strength": null
+  },
+  "effects": [],
+  "flags": {
+    "cat": {
+      "macros": {
+        "called": [
+          {
+            "source": "chris-premades",
+            "rules": "all",
+            "identifier": "arcane-grimoire-2"
+          }
+        ]
+      },
+      "classDifficultyClass": {
+        "wizard": {
+          "value": 2
+        }
+      },
+      "classAttackBonus": {
+        "wizard": {
+          "value": 2
+        }
+      },
+      "automation": {
+        "source": "chris-premades",
+        "version": "2.0.0"
+      }
+    },
+    "dnd5e": {}
+  },
+  "img": "icons/sundries/books/book-symbol-triangle-silver-brown.webp",
+  "folder": "nvwKBMSV2OHzwAOe",
+  "_id": "YubJpNthhDyFImJR",
+  "_key": "!items!YubJpNthhDyFImJR"
+}

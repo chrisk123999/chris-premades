@@ -1,6 +1,6 @@
-import {automationUtils} from '../../../proxy.mjs';
+import {automationUtils, itemUtils} from '../../../proxy.mjs';
 async function recoveryBonus({document: item}) {
-    if (!item.system.attuned) return;
+    if (!itemUtils.getEquipmentState(item)) return;
     const bonus = automationUtils.getConfigValue(item, 'bonus') ?? 0;
     if (!bonus) return;
     return {bonus};
@@ -11,7 +11,7 @@ export const arcaneGrimoire = {
     rules: 'all',
     called: [
         {
-            pass: 'arcaneRecoveryBonus',
+            pass: 'actorArcaneRecoveryBonus',
             macro: recoveryBonus,
             priority: 50
         }
@@ -20,7 +20,7 @@ export const arcaneGrimoire = {
         bonus: {
             default: 1,
             type: 'number',
-            label: 'CHRISPREMADES.Config.Bonus',
+            label: 'CHRISPREMADES.Macros.All.ArcaneGrimoire',
             category: 'homebrew'
         }
     }

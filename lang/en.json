@@ -224,6 +224,7 @@
         },
         "Macros": {
             "All": {
+                "ArcaneGrimoire": "Arcane Recovery Bonus",
                 "Rage": {
                     "AllowConcentration": "Allow Concentration",
                     "AllowHeavyArmor": "Allow Heavy Armor",
