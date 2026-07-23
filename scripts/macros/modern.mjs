@@ -10,6 +10,7 @@ export {persistentRage as 'persistent-rage'} from './modern/classFeatures/barbar
 export {primalKnowldege as 'primal-knowledge', primalKnowledgeEffect} from './modern/classFeatures/barbarian/primalKnowledge.mjs';
 export {unarguableWizardry as 'unarguable-wizardry'} from './modern/classFeatures/barbarian/muscleWizard/unarguableWizardry.mjs';
 // Bard
+export {countercharm} from './modern/classFeatures/bard/countercharm.mjs';
 export {fontOfInspiration as 'font-of-inspiration'} from './modern/classFeatures/bard/fontOfInspiration.mjs';
 export {superiorInspiration as 'superior-inspiration'} from './modern/classFeatures/bard/superiorInspiration.mjs';
 // Cleric
