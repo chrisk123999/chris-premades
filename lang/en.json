@@ -30,6 +30,7 @@
             "NatureSummon": "Nature Summon",
             "Pounce": "Pounce",
             "Rage": {
+                "Default": "Rage",
                 "Lightning": "Lightning",
                 "Saiyan": "Saiyan"
             },

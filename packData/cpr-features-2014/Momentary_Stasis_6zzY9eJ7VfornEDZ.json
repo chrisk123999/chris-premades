@@ -9,25 +9,22 @@
       "transfer": false,
       "_id": "YkFaQkTJ9HlAgHKc",
       "type": "base",
-      "system": {},
-      "changes": [
-        {
-          "key": "system.attributes.movement.bonus",
-          "mode": 2,
-          "value": "-999",
-          "priority": 20
-        }
-      ],
+      "system": {
+        "changes": [
+          {
+            "key": "system.attributes.movement.bonus",
+            "value": -999,
+            "priority": 20,
+            "type": "add"
+          }
+        ]
+      },
       "disabled": false,
       "duration": {
-        "startTime": null,
-        "combat": null,
-        "seconds": null,
-        "rounds": 1,
-        "turns": null,
-        "startRound": null,
-        "startTurn": null,
-        "expiry": "sourceEnd"
+        "expiry": "sourceEnd",
+        "value": 1,
+        "units": "rounds",
+        "expired": false
       },
       "description": "",
       "tint": "#ffffff",
@@ -74,6 +71,9 @@
           ]
         }
       },
+      "showIcon": 2,
+      "start": null,
+      "folder": null,
       "_key": "!items.effects!6zzY9eJ7VfornEDZ.YkFaQkTJ9HlAgHKc"
     }
   ],

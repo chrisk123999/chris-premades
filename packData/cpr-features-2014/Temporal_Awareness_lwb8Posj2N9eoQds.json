@@ -5,22 +5,11 @@
     {
       "name": "Temporal Awareness",
       "statuses": [],
-      "changes": [
-        {
-          "key": "system.attributes.init.bonus",
-          "value": "@abilities.int.mod",
-          "mode": 2,
-          "priority": 20
-        }
-      ],
       "duration": {
-        "seconds": null,
-        "startTime": 2858490,
-        "rounds": null,
-        "turns": null,
-        "startRound": null,
-        "startTurn": null,
-        "combat": null
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
       },
       "tint": "#ffffff",
       "transfer": true,
@@ -46,9 +35,28 @@
       "img": "icons/magic/water/projectile-bolts-salvo-blue.webp",
       "_id": "0ycibbT15udn4Hck",
       "type": "base",
-      "system": {},
+      "system": {
+        "changes": [
+          {
+            "key": "system.attributes.init.bonus",
+            "value": "@abilities.int.mod",
+            "priority": 20,
+            "type": "add"
+          }
+        ]
+      },
       "origin": null,
       "sort": 0,
+      "start": {
+        "combat": null,
+        "round": null,
+        "time": 2858490,
+        "turn": null,
+        "combatant": null,
+        "initiative": null
+      },
+      "showIcon": 1,
+      "folder": null,
       "_key": "!items.effects!lwb8Posj2N9eoQds.0ycibbT15udn4Hck"
     }
   ],

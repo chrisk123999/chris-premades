@@ -70,13 +70,10 @@
       "name": "Potent Cantrip",
       "origin": "Compendium.world.cpr-class-features.Item.XpGBKVTI9ePzKV77",
       "duration": {
-        "rounds": null,
-        "startTime": 1428,
-        "seconds": null,
-        "combat": null,
-        "turns": null,
-        "startRound": 239,
-        "startTurn": 5
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
       },
       "disabled": false,
       "flags": {
@@ -97,20 +94,31 @@
       "img": "icons/magic/fire/blast-jet-stream-splash.webp",
       "_id": "ioQnlwNg0QsSG1Lg",
       "type": "base",
-      "system": {},
-      "changes": [
-        {
-          "key": "flags.midi-qol.potentCantrip",
-          "mode": 2,
-          "value": "1",
-          "priority": 20
-        }
-      ],
+      "system": {
+        "changes": [
+          {
+            "key": "flags.midi-qol.potentCantrip",
+            "value": 1,
+            "priority": 20,
+            "type": "add"
+          }
+        ]
+      },
       "description": "",
       "tint": "#ffffff",
       "transfer": true,
       "statuses": [],
       "sort": 0,
+      "start": {
+        "combat": null,
+        "round": 239,
+        "time": 1428,
+        "turn": 5,
+        "combatant": null,
+        "initiative": null
+      },
+      "showIcon": 1,
+      "folder": null,
       "_key": "!items.effects!NFRUzbByqSSh4hBT.ioQnlwNg0QsSG1Lg"
     }
   ],

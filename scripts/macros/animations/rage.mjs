@@ -232,14 +232,14 @@ async function end(document, sourceToken) {
     await Sequencer.EffectManager.endEffects({name: 'Rage', object: sourceToken});
 }
 export const rageDefault = {
-    name: 'CHRISPREMADES.Animations.Default',
+    name: 'CHRISPREMADES.Animations.Rage.Default',
     macros: {
         create: rage,
         delete: end
     },
     inputs: ['document', 'sourceToken'],
     requirements: ['jb2a_patreon'],
-    type: 'classFeature',
+    category: 'classFeature',
     get credits() {
         return [animationUtils.getEskieCredits()];
     }
@@ -252,7 +252,7 @@ export const rageLightning = {
     },
     inputs: ['document', 'sourceToken'],
     requirements: ['jb2a_patreon'],
-    type: 'classFeature',
+    category: 'classFeature',
     get credits() {
         return [animationUtils.getEskieCredits()];
     }
