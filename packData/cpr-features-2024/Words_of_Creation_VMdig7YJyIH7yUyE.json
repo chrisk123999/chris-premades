@@ -1,0 +1,80 @@
+{
+  "name": "Words of Creation",
+  "type": "feat",
+  "effects": [],
+  "system": {
+    "activities": {},
+    "uses": {
+      "spent": 0,
+      "recovery": []
+    },
+    "advancement": {},
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "identifier": "words-of-creation",
+    "source": {
+      "book": "PHB 2024",
+      "page": "",
+      "license": "",
+      "custom": "",
+      "rules": "2024",
+      "revision": 1
+    },
+    "crewed": false,
+    "enchant": {},
+    "prerequisites": {
+      "items": [],
+      "level": 20,
+      "repeatable": false
+    },
+    "properties": [],
+    "requirements": "",
+    "type": {
+      "value": "class",
+      "subtype": ""
+    }
+  },
+  "flags": {
+    "dnd5e": {},
+    "cat": {
+      "automation": {
+        "source": "chris-premades",
+        "version": "2.0.2"
+      },
+      "macros": {
+        "roll": [
+          {
+            "source": "chris-premades",
+            "identifier": "additionalTargets",
+            "rules": "all"
+          }
+        ]
+      },
+      "genericConfig": {
+        "chris-premades": {
+          "additionalTargets": {
+            "damageType": [],
+            "healingType": [],
+            "identifiers": [
+              "power-word-kill",
+              "power-word-heal"
+            ],
+            "itemType": [],
+            "disposition": "ally",
+            "range": 10,
+            "rangeFrom": "target",
+            "rollActivity": "",
+            "rollItem": true,
+            "targets": 1
+          }
+        }
+      }
+    }
+  },
+  "img": "icons/magic/life/heart-area-circle-red-green.webp",
+  "folder": "jv1qLsd4LTtCBvYj",
+  "_id": "VMdig7YJyIH7yUyE",
+  "_key": "!items!VMdig7YJyIH7yUyE"
+}
