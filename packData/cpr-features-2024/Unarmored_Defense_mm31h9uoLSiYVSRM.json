@@ -1,0 +1,69 @@
+{
+  "name": "Unarmored Defense",
+  "type": "feat",
+  "effects": [],
+  "system": {
+    "activities": {},
+    "uses": {
+      "spent": 0,
+      "recovery": [],
+      "max": ""
+    },
+    "advancement": {},
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "identifier": "unarmored-defense",
+    "source": {
+      "book": "PHB 2024",
+      "page": "",
+      "license": "",
+      "custom": "",
+      "rules": "2024",
+      "revision": 1
+    },
+    "crewed": false,
+    "enchant": {},
+    "prerequisites": {
+      "items": [],
+      "level": 1,
+      "repeatable": false
+    },
+    "properties": [],
+    "requirements": "",
+    "type": {
+      "value": "class",
+      "subtype": ""
+    }
+  },
+  "flags": {
+    "dnd5e": {},
+    "cat": {
+      "alternateAttributes": {
+        "ACFormula": [
+          {
+            "value": "10 + @abilities.dex.mod + @abilities.con.mod",
+            "restrictions": {
+              "Armor": {
+                "value": [
+                  "unarmored"
+                ],
+                "requireAll": false,
+                "invert": false
+              }
+            }
+          }
+        ]
+      },
+      "automation": {
+        "source": "chris-premades",
+        "version": "2.0.2"
+      }
+    }
+  },
+  "img": "icons/magic/control/buff-flight-wings-runes-red.webp",
+  "folder": "epodEYV6OzWsQdIP",
+  "_id": "mm31h9uoLSiYVSRM",
+  "_key": "!items!mm31h9uoLSiYVSRM"
+}

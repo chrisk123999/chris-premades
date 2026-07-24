@@ -46,7 +46,7 @@
       "origin": "Actor.vEcivv6DTofI2Lzw.Item.MAojlQZiH8Fwcgkq",
       "folder": null,
       "sort": 0,
-      "_key": "!items.effects!3qPwRuLjJpHv8Z7Y.4ibgDcLP3Ak7c4bc"
+      "_key": "!items.effects!7wOcFdoTiDKYLuvS.4ibgDcLP3Ak7c4bc"
     }
   ],
   "system": {
@@ -63,11 +63,11 @@
     },
     "identifier": "feral-instinct",
     "source": {
-      "book": "",
+      "book": "PHB",
       "page": "",
       "license": "",
       "custom": "",
-      "rules": "all",
+      "rules": "2014",
       "revision": 1
     },
     "crewed": false,
@@ -94,7 +94,7 @@
     }
   },
   "img": "icons/creatures/mammals/wolf-howl-moon-forest-blue.webp",
-  "folder": "6kOLcxbW2ABkSv1x",
-  "_id": "3qPwRuLjJpHv8Z7Y",
-  "_key": "!items!3qPwRuLjJpHv8Z7Y"
+  "folder": "oHVJeSGqBDErtjs9",
+  "_id": "7wOcFdoTiDKYLuvS",
+  "_key": "!items!7wOcFdoTiDKYLuvS"
 }

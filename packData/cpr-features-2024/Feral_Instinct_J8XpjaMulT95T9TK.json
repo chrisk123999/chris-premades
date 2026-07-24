@@ -1,0 +1,100 @@
+{
+  "name": "Feral Instinct",
+  "type": "feat",
+  "effects": [
+    {
+      "name": "Feral Instinct",
+      "statuses": [],
+      "system": {
+        "changes": [
+          {
+            "key": "system.attributes.init.roll.mode",
+            "type": "add",
+            "value": 1,
+            "phase": "initial",
+            "priority": 20
+          }
+        ]
+      },
+      "duration": {
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
+      },
+      "tint": "#ffffff",
+      "transfer": true,
+      "disabled": false,
+      "showIcon": 1,
+      "flags": {
+        "dae": {
+          "transfer": true,
+          "stackable": "noneNameOnly",
+          "disableCondition": "",
+          "expiryMode": "default",
+          "durationExpression": "",
+          "macroRepeat": "none",
+          "disableIncapacitated": false,
+          "specialDuration": []
+        }
+      },
+      "description": "",
+      "img": "icons/creatures/mammals/wolf-howl-moon-forest-blue.webp",
+      "_id": "4ibgDcLP3Ak7c4bc",
+      "type": "base",
+      "start": null,
+      "origin": "Actor.vEcivv6DTofI2Lzw.Item.MAojlQZiH8Fwcgkq",
+      "folder": null,
+      "sort": 0,
+      "_key": "!items.effects!J8XpjaMulT95T9TK.4ibgDcLP3Ak7c4bc"
+    }
+  ],
+  "system": {
+    "activities": {},
+    "uses": {
+      "spent": 0,
+      "recovery": [],
+      "max": ""
+    },
+    "advancement": {},
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "identifier": "feral-instinct",
+    "source": {
+      "book": "PHB 2024",
+      "page": "",
+      "license": "",
+      "custom": "",
+      "rules": "2024",
+      "revision": 1
+    },
+    "crewed": false,
+    "enchant": {},
+    "prerequisites": {
+      "items": [],
+      "level": 7,
+      "repeatable": false
+    },
+    "properties": [],
+    "requirements": "",
+    "type": {
+      "value": "class",
+      "subtype": ""
+    }
+  },
+  "flags": {
+    "dnd5e": {},
+    "cat": {
+      "automation": {
+        "source": "chris-premades",
+        "version": "2.0.2"
+      }
+    }
+  },
+  "img": "icons/creatures/mammals/wolf-howl-moon-forest-blue.webp",
+  "folder": "epodEYV6OzWsQdIP",
+  "_id": "J8XpjaMulT95T9TK",
+  "_key": "!items!J8XpjaMulT95T9TK"
+}

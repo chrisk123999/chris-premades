@@ -57,7 +57,7 @@
           "overlay": false
         }
       },
-      "_key": "!items.effects!OmhLJy4G6xe3HRok.1QHMHTEkd0cARHWk"
+      "_key": "!items.effects!VOTELwYsIKLFIOSY.1QHMHTEkd0cARHWk"
     }
   ],
   "system": {
@@ -247,11 +247,11 @@
     },
     "identifier": "instinctive-pounce",
     "source": {
-      "book": "",
+      "book": "PHB",
       "page": "",
       "license": "",
       "custom": "",
-      "rules": "all",
+      "rules": "2014",
       "revision": 1
     },
     "crewed": false,
@@ -278,7 +278,7 @@
     }
   },
   "img": "icons/magic/control/debuff-energy-snare-brown.webp",
-  "folder": "6kOLcxbW2ABkSv1x",
-  "_id": "OmhLJy4G6xe3HRok",
-  "_key": "!items!OmhLJy4G6xe3HRok"
+  "folder": "oHVJeSGqBDErtjs9",
+  "_id": "VOTELwYsIKLFIOSY",
+  "_key": "!items!VOTELwYsIKLFIOSY"
 }

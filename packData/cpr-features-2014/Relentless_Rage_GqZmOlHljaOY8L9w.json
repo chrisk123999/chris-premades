@@ -366,11 +366,11 @@
     },
     "identifier": "relentless-rage",
     "source": {
-      "book": "",
+      "book": "PHB",
       "page": "",
       "license": "",
       "custom": "",
-      "rules": "all",
+      "rules": "2014",
       "revision": 1
     },
     "crewed": false,
@@ -397,7 +397,7 @@
     }
   },
   "img": "icons/magic/control/debuff-chains-shackles-movement-blue.webp",
-  "folder": "6kOLcxbW2ABkSv1x",
-  "_id": "2cyQlMe4JE7EM7c0",
-  "_key": "!items!2cyQlMe4JE7EM7c0"
+  "folder": "oHVJeSGqBDErtjs9",
+  "_id": "GqZmOlHljaOY8L9w",
+  "_key": "!items!GqZmOlHljaOY8L9w"
 }

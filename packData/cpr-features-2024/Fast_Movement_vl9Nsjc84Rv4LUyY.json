@@ -51,7 +51,7 @@
       "origin": "Actor.vEcivv6DTofI2Lzw.Item.3EQR1Z53U4eYV1pK",
       "folder": null,
       "sort": 0,
-      "_key": "!items.effects!CmA5lOMkAfxnssTp.bG13dHCGCzRSYvMZ"
+      "_key": "!items.effects!vl9Nsjc84Rv4LUyY.bG13dHCGCzRSYvMZ"
     }
   ],
   "system": {
@@ -67,11 +67,11 @@
     },
     "identifier": "fast-movement",
     "source": {
-      "book": "",
+      "book": "PHB 2024",
       "page": "",
       "license": "",
       "custom": "",
-      "rules": "all",
+      "rules": "2024",
       "revision": 1
     },
     "crewed": false,
@@ -98,7 +98,7 @@
     }
   },
   "img": "icons/skills/movement/feet-winged-boots-brown.webp",
-  "folder": "6kOLcxbW2ABkSv1x",
-  "_id": "CmA5lOMkAfxnssTp",
-  "_key": "!items!CmA5lOMkAfxnssTp"
+  "folder": "epodEYV6OzWsQdIP",
+  "_id": "vl9Nsjc84Rv4LUyY",
+  "_key": "!items!vl9Nsjc84Rv4LUyY"
 }

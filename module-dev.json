@@ -137,13 +137,6 @@
       "module": "chris-premades"
     },
     {
-      "name": "CPRFeaturesAll",
-      "label": "CPR Features (All Rules)",
-      "path": "packs/cpr-features-all",
-      "type": "Item",
-      "module": "chris-premades"
-    },
-    {
       "name": "CPRSpells2014",
       "label": "CPR Spells (2014)",
       "path": "packs/cpr-spells-2014",
@@ -154,13 +147,6 @@
       "name": "CPRSpells2024",
       "label": "CPR Spells (2024)",
       "path": "packs/cpr-spells-2024",
-      "type": "Item",
-      "module": "chris-premades"
-    },
-    {
-      "name": "CPRSpellsAll",
-      "label": "CPR Spells (All Rules)",
-      "path": "packs/cpr-spells-all",
       "type": "Item",
       "module": "chris-premades"
     },
@@ -206,15 +192,6 @@
       "sorting": "a",
       "color": "#348f2d",
       "folders": [
-        {
-          "name": "All Rules",
-          "sorting": "a",
-          "color": "#348f2d",
-          "packs": [
-            "CPRFeaturesAll",
-            "CPRSpellsAll"
-          ]
-        },
         {
           "name": "2014",
           "sorting": "a",

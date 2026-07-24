@@ -8,9 +8,9 @@
     "source": {
       "custom": "",
       "revision": 1,
-      "rules": "all",
-      "book": "",
-      "page": "",
+      "rules": "2024",
+      "book": "PHB 2024",
+      "page": "240",
       "license": ""
     },
     "activation": {
@@ -29,9 +29,10 @@
         "type": ""
       },
       "template": {
-        "units": "",
+        "units": "ft",
         "contiguous": false,
-        "type": ""
+        "type": "",
+        "stationary": false
       }
     },
     "range": {
@@ -52,10 +53,6 @@
       "consumed": false,
       "cost": 0,
       "supply": 0
-    },
-    "preparation": {
-      "mode": "prepared",
-      "prepared": false
     },
     "properties": [
       "vocal",
@@ -97,7 +94,8 @@
         "target": {
           "template": {
             "contiguous": false,
-            "units": "ft"
+            "units": "ft",
+            "stationary": false
           },
           "affects": {
             "choice": false
@@ -128,7 +126,8 @@
           "idi": false,
           "idr": false,
           "idv": false,
-          "ida": false
+          "ida": false,
+          "idm": false
         },
         "midiProperties": {
           "ignoreTraits": [],
@@ -136,18 +135,73 @@
           "triggeredActivityConditionText": "",
           "triggeredActivityTargets": "targets",
           "triggeredActivityRollAs": "self",
-          "forceDialog": false,
           "confirmTargets": "default",
           "automationOnly": false,
           "identifier": "animateDeadCommand",
-          "displayActivityName": true
+          "displayActivityName": true,
+          "triggeredActivityConsume": true,
+          "triggeredActivityConfigure": true,
+          "autoConsume": false,
+          "forceConsumeDialog": "default",
+          "forceRollDialog": "default",
+          "forceDamageDialog": "default",
+          "autoTargetType": "any",
+          "autoTargetAction": "default",
+          "otherActivityCompatible": true,
+          "otherActivityAsParentType": true,
+          "rollMode": "default",
+          "chooseEffects": false,
+          "toggleEffect": false,
+          "ignoreFullCover": false,
+          "removeChatButtons": "default",
+          "magicEffect": false,
+          "magicDamage": false,
+          "noConcentrationCheck": false,
+          "skipConcentrationCheck": false,
+          "autoCEEffects": "default"
         },
-        "appliedEffects": [],
         "flags": {
           "cat": {
             "hidden": true
           }
-        }
+        },
+        "visibility": {
+          "level": {},
+          "requireAttunement": false,
+          "requireIdentification": false,
+          "requireMagic": false
+        },
+        "useConditionReason": "",
+        "isOverTimeFlag": false,
+        "overTimeProperties": {
+          "saveRemoves": true,
+          "rollAs": "target",
+          "preRemoveConditionText": "",
+          "postRemoveConditionText": ""
+        },
+        "regionBehavior": {
+          "enabled": false,
+          "dispositionFilter": -1,
+          "excludeSource": true,
+          "oncePerTurn": true,
+          "wallRestriction": "none",
+          "regionVisibility": 2,
+          "attachToken": "default",
+          "rules": []
+        },
+        "regionLight": {
+          "enabled": false,
+          "dim": 0,
+          "bright": 0,
+          "color": null,
+          "alpha": 0.5,
+          "luminosity": 0.5,
+          "animationType": "",
+          "animationSpeed": 5,
+          "animationIntensity": 5
+        },
+        "otherActivityId": "none",
+        "otherActivityAsParentType": true
       },
       "oNI74bBH5dh1mcnV": {
         "type": "utility",
@@ -175,12 +229,14 @@
         },
         "effects": [],
         "range": {
-          "override": false
+          "override": false,
+          "units": "self"
         },
         "target": {
           "template": {
             "contiguous": false,
-            "units": "ft"
+            "units": "ft",
+            "stationary": false
           },
           "affects": {
             "choice": false
@@ -211,7 +267,8 @@
           "idi": false,
           "idr": false,
           "idv": false,
-          "ida": false
+          "ida": false,
+          "idm": false
         },
         "midiProperties": {
           "ignoreTraits": [],
@@ -219,16 +276,74 @@
           "triggeredActivityConditionText": "",
           "triggeredActivityTargets": "targets",
           "triggeredActivityRollAs": "self",
-          "forceDialog": false,
           "confirmTargets": "default",
           "automationOnly": false,
           "identifier": "animateDead",
-          "displayActivityName": true
-        }
+          "displayActivityName": true,
+          "triggeredActivityConsume": true,
+          "triggeredActivityConfigure": true,
+          "autoConsume": false,
+          "forceConsumeDialog": "default",
+          "forceRollDialog": "default",
+          "forceDamageDialog": "default",
+          "autoTargetType": "any",
+          "autoTargetAction": "default",
+          "otherActivityCompatible": true,
+          "otherActivityAsParentType": true,
+          "rollMode": "default",
+          "chooseEffects": false,
+          "toggleEffect": false,
+          "ignoreFullCover": false,
+          "removeChatButtons": "default",
+          "magicEffect": false,
+          "magicDamage": false,
+          "noConcentrationCheck": false,
+          "skipConcentrationCheck": false,
+          "autoCEEffects": "default"
+        },
+        "flags": {},
+        "visibility": {
+          "level": {},
+          "requireAttunement": false,
+          "requireIdentification": false,
+          "requireMagic": false
+        },
+        "useConditionReason": "",
+        "isOverTimeFlag": false,
+        "overTimeProperties": {
+          "saveRemoves": true,
+          "rollAs": "target",
+          "preRemoveConditionText": "",
+          "postRemoveConditionText": ""
+        },
+        "regionBehavior": {
+          "enabled": false,
+          "dispositionFilter": -1,
+          "excludeSource": true,
+          "oncePerTurn": true,
+          "wallRestriction": "none",
+          "regionVisibility": 2,
+          "attachToken": "default",
+          "rules": []
+        },
+        "regionLight": {
+          "enabled": false,
+          "dim": 0,
+          "bright": 0,
+          "color": null,
+          "alpha": 0.5,
+          "luminosity": 0.5,
+          "animationType": "",
+          "animationSpeed": 5,
+          "animationIntensity": 5
+        },
+        "otherActivityId": "none",
+        "otherActivityAsParentType": true
       }
     },
     "identifier": "animate-dead",
-    "sourceClass": ""
+    "method": "spell",
+    "prepared": 0
   },
   "name": "Animate Dead",
   "flags": {
@@ -298,12 +413,16 @@
         },
         "zombieActorName": "Zombie",
         "skeletonActorName": "Skeleton"
+      },
+      "automation": {
+        "source": "chris-premades",
+        "version": "2.0.0"
       }
     }
   },
   "effects": [],
   "img": "icons/magic/death/undead-skeleton-energy-green.webp",
-  "folder": null,
-  "_id": "UtGhgP9KtmnVAj2W",
-  "_key": "!items!UtGhgP9KtmnVAj2W"
+  "folder": "dIULQZnOw9ECXyoi",
+  "_id": "zDwjeGFBzOe4PsU6",
+  "_key": "!items!zDwjeGFBzOe4PsU6"
 }

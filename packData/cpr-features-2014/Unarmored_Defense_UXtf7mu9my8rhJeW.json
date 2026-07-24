@@ -16,11 +16,11 @@
     },
     "identifier": "unarmored-defense",
     "source": {
-      "book": "",
+      "book": "PHB",
       "page": "",
       "license": "",
       "custom": "",
-      "rules": "all",
+      "rules": "2014",
       "revision": 1
     },
     "crewed": false,
@@ -63,7 +63,7 @@
     }
   },
   "img": "icons/magic/control/buff-flight-wings-runes-red.webp",
-  "folder": "6kOLcxbW2ABkSv1x",
-  "_id": "T3ddXMvbAYiqC7Rh",
-  "_key": "!items!T3ddXMvbAYiqC7Rh"
+  "folder": "oHVJeSGqBDErtjs9",
+  "_id": "UXtf7mu9my8rhJeW",
+  "_key": "!items!UXtf7mu9my8rhJeW"
 }
