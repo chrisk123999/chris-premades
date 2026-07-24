@@ -175,17 +175,18 @@
       "book": "",
       "page": "",
       "license": "",
-      "custom": "PHB 2024",
-      "rules": "2024",
+      "custom": "PHB",
+      "rules": "2014",
       "revision": 1
     },
-    "advancement": [],
+    "advancement": {},
     "cover": null,
     "crewed": false,
     "enchant": {},
     "prerequisites": {
-      "level": 18,
-      "repeatable": false
+      "level": 20,
+      "repeatable": false,
+      "items": []
     },
     "properties": [],
     "requirements": "",
@@ -198,15 +199,13 @@
     "dnd5e": {},
     "cat": {
       "automation": {
-        "version": "2.0.2"
-      },
-      "config": {
-        "minimum": 2
+        "version": "2.0.2",
+        "source": "chris-premades"
       }
     }
   },
   "img": "icons/magic/earth/explosion-lava-stone-green.webp",
-  "folder": "jv1qLsd4LTtCBvYj",
-  "_id": "S4YTwKY5KbO6GY94",
-  "_key": "!items!S4YTwKY5KbO6GY94"
+  "folder": "H09zLwugbHnO8ugI",
+  "_id": "pVU4RQJqqqIbINii",
+  "_key": "!items!pVU4RQJqqqIbINii"
 }

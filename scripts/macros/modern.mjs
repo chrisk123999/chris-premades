@@ -12,7 +12,6 @@ export {unarguableWizardry as 'unarguable-wizardry'} from './modern/classFeature
 // Bard
 export {countercharm} from './modern/classFeatures/bard/countercharm.mjs';
 export {fontOfInspiration as 'font-of-inspiration'} from './modern/classFeatures/bard/fontOfInspiration.mjs';
-export {superiorInspiration as 'superior-inspiration'} from './modern/classFeatures/bard/superiorInspiration.mjs';
 // Cleric
 export {greaterDivineIntervention as 'greater-divine-intervention', greaterDivineInterventionRest as 'greater-divine-intervention-rest'} from './modern/classFeatures/cleric/greaterDivineIntervention.mjs';
 export {discipleOfLife as 'disciple-of-life'} from './modern/classFeatures/cleric/life/discipleOfLife.mjs';

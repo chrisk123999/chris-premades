@@ -1,81 +1,74 @@
 {
-  "name": "Superior Inspiration",
+  "name": "Font of Inspiration",
   "type": "feat",
   "effects": [],
   "system": {
     "activities": {
-      "InJHi9J1tz8HL1Jt": {
+      "utilityReBIclNe0": {
+        "name": "Recover Short Rest",
         "type": "utility",
-        "_id": "InJHi9J1tz8HL1Jt",
-        "img": "",
+        "_id": "utilityReBIclNe0",
         "sort": 0,
         "activation": {
-          "type": "encounter",
-          "override": false,
-          "condition": ""
+          "type": "shortRest",
+          "value": 1,
+          "condition": "",
+          "override": false
         },
         "consumption": {
+          "targets": [
+            {
+              "type": "itemUses",
+              "value": "-max(1, @abilities.cha.mod)",
+              "target": "feat:bardic-inspiration",
+              "scaling": {}
+            }
+          ],
           "scaling": {
-            "allowed": false
+            "allowed": false,
+            "max": ""
           },
-          "spellSlot": true,
-          "targets": []
+          "spellSlot": true
         },
         "description": {
           "chatFlavor": ""
         },
         "duration": {
           "units": "inst",
+          "special": "",
           "concentration": false,
           "override": false
         },
         "effects": [],
-        "flags": {
-          "cat": {
-            "macros": {
-              "combat": [
-                {
-                  "source": "chris-premades",
-                  "rules": "all",
-                  "identifier": "superior-inspiration"
-                }
-              ]
-            }
-          }
-        },
         "range": {
           "units": "self",
-          "override": false,
-          "special": ""
+          "special": "",
+          "override": false
         },
         "target": {
-          "template": {
-            "contiguous": false,
-            "stationary": false,
-            "units": "ft",
-            "type": ""
-          },
+          "prompt": true,
           "affects": {
+            "count": "",
+            "type": "",
             "choice": false,
-            "type": ""
+            "special": ""
           },
-          "override": false,
-          "prompt": true
+          "template": {
+            "count": "",
+            "contiguous": false,
+            "type": "",
+            "size": "",
+            "width": "",
+            "height": "",
+            "units": "ft",
+            "stationary": false
+          },
+          "override": false
         },
         "uses": {
           "spent": 0,
           "recovery": [],
           "max": ""
-        },
-        "visibility": {
-          "level": {
-            "min": null,
-            "max": null
-          },
-          "requireAttunement": false,
-          "requireIdentification": false,
-          "requireMagic": false,
-          "identifier": ""
         },
         "roll": {
           "prompt": false,
@@ -84,7 +77,6 @@
           "formula": ""
         },
         "useConditionText": "",
-        "useConditionReason": "",
         "effectConditionText": "",
         "macroData": {
           "name": "",
@@ -103,19 +95,19 @@
           "triggeredActivityConditionText": "",
           "triggeredActivityTargets": "targets",
           "triggeredActivityRollAs": "self",
+          "confirmTargets": "default",
+          "automationOnly": false,
+          "identifier": "",
+          "autoTargetType": "any",
+          "autoTargetAction": "default",
+          "otherActivityCompatible": false,
           "triggeredActivityConsume": true,
           "triggeredActivityConfigure": true,
           "autoConsume": false,
           "forceConsumeDialog": "default",
           "forceRollDialog": "default",
           "forceDamageDialog": "default",
-          "confirmTargets": "default",
-          "autoTargetType": "any",
-          "autoTargetAction": "default",
-          "automationOnly": false,
-          "otherActivityCompatible": false,
           "otherActivityAsParentType": true,
-          "identifier": "",
           "displayActivityName": false,
           "rollMode": "default",
           "chooseEffects": false,
@@ -128,6 +120,19 @@
           "skipConcentrationCheck": false,
           "autoCEEffects": "default"
         },
+        "img": "",
+        "flags": {},
+        "visibility": {
+          "identifier": "",
+          "level": {
+            "min": null,
+            "max": null
+          },
+          "requireAttunement": false,
+          "requireIdentification": false,
+          "requireMagic": false
+        },
+        "useConditionReason": "",
         "isOverTimeFlag": false,
         "overTimeProperties": {
           "saveRemoves": true,
@@ -157,8 +162,7 @@
           "animationIntensity": 5
         },
         "otherActivityId": "none",
-        "otherActivityAsParentType": true,
-        "name": ""
+        "otherActivityAsParentType": true
       }
     },
     "uses": {
@@ -170,22 +174,23 @@
       "value": "",
       "chat": ""
     },
-    "identifier": "superior-inspiration",
+    "identifier": "font-of-inspiration",
     "source": {
-      "book": "",
+      "book": "PHB",
       "page": "",
       "license": "",
-      "custom": "PHB 2024",
-      "rules": "2024",
+      "custom": "",
+      "rules": "2014",
       "revision": 1
     },
-    "advancement": [],
+    "advancement": {},
     "cover": null,
     "crewed": false,
     "enchant": {},
     "prerequisites": {
-      "level": 18,
-      "repeatable": false
+      "level": 5,
+      "repeatable": false,
+      "items": []
     },
     "properties": [],
     "requirements": "",
@@ -198,15 +203,13 @@
     "dnd5e": {},
     "cat": {
       "automation": {
-        "version": "2.0.2"
-      },
-      "config": {
-        "minimum": 2
+        "version": "2.0.2",
+        "source": "chris-premades"
       }
     }
   },
-  "img": "icons/magic/earth/explosion-lava-stone-green.webp",
-  "folder": "jv1qLsd4LTtCBvYj",
-  "_id": "S4YTwKY5KbO6GY94",
-  "_key": "!items!S4YTwKY5KbO6GY94"
+  "img": "icons/magic/fire/projectile-meteor-salvo-heavy-teal.webp",
+  "folder": "H09zLwugbHnO8ugI",
+  "_id": "4Y6fq4StQQNROpuB",
+  "_key": "!items!4Y6fq4StQQNROpuB"
 }

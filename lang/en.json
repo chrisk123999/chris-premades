@@ -239,7 +239,8 @@
                     "Concentration": "You can't concentrate while raging!",
                     "HeavyArmor": "You are wearing heavy armor and cannot rage!",
                     "Spellcasting": "You can't spellcast while raging!"
-                }
+                },
+                "SuperiorInspiration": "Minimum Inspirations"
             },
             "Generic": {
                 "AdditionalTargets": {
@@ -369,6 +370,10 @@
                 "ChromaticOrb": {
                     "BaseMaxJumps": "Base Max Jumps",
                     "TargetDamageSelection": "Select Damage Type For Each Target"
+                },
+                "FontOfInspiration": {
+                    "NoSlots": "You have no remaining spell slots!",
+                    "Prompt": "Select a spell slot to spend."
                 },
                 "GreaterDivineIntervention": {
                     "RestFormula": "Rest Recovery Formula"
