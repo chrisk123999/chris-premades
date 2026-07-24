@@ -102,7 +102,7 @@ async function damage({document, workflow}) {
 export const sneakAttack = {
     name: 'Sneak Attack',
     version: '2.0.1',
-    rules: 'modern',
+    rules: '2024',
     roll: [
         {
             pass: 'actorDamageRollBonuses',
