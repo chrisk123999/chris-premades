@@ -33,7 +33,6 @@ async function use({workflow}){
         img: avatarImg,
         origin: workflow.item.uuid,
         duration: itemUtils.convertDuration(workflow.activity).seconds,
-        statuses: ['ethereal'],
         flags: {
             'chris-premades': {
                 spiritTotem: {

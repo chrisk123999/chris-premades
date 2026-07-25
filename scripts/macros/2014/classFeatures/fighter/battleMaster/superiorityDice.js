@@ -3,10 +3,17 @@ async function hit({workflow}) {
     await superiorityHelper(workflow);
 }
 export async function determineSuperiorityDie(actor) {
-    let superiorityDie = actor.system.scale?.['battle-master']?.['combat-superiority-die']?.die ?? 'd6';
+    let superiorityDiceItem = itemUtils.getItemByIdentifier(actor, 'superiorityDice');
+    let superiorityDie;
+    if (superiorityDiceItem) {
+        let subclass = itemUtils.getConfig(superiorityDiceItem, 'subclass');
+        let scale = itemUtils.getConfig(superiorityDiceItem, 'scale');
+        let value = actor.system.scale?.[subclass]?.[scale]?.die;
+        if (!value) genericUtils.notify(genericUtils.format('CHRISPREMADES.Generic.MissingScale', {scaleName: `${subclass}.${scale}`}), 'warn');
+        superiorityDie = value ?? 'd6';
+    } else superiorityDie = 'd6';
     let isBattleMaster = superiorityDie !== 'd6';
     let allSameDice = !isBattleMaster || (isBattleMaster && actor.classes.fighter?.system.levels >= 10);
-    let superiorityDiceItem = itemUtils.getItemByIdentifier(actor, 'superiorityDice');
     let martialAdept = itemUtils.getItemByIdentifier(actor,'martialAdept');
     let superiorTechnique = itemUtils.getItemByIdentifier(actor, 'fightingStyleSuperiorTechnique');
     let itemToUse;
@@ -85,5 +92,23 @@ export let superiorityDice = {
                 priority: 50
             }
         ]
-    }
+    },
+    config: [
+        {
+            value: 'subclass',
+            label: 'CHRISPREMADES.Config.ClassIdentifier',
+            type: 'text',
+            default: 'battlemaster',
+            category: 'homebrew',
+            homebrew: true
+        },
+        {
+            value: 'scale',
+            label: 'CHRISPREMADES.Config.ScaleIdentifier',
+            type: 'text',
+            default: 'combat-superiority-die',
+            category: 'homebrew',
+            homebrew: true
+        }
+    ]
 };

@@ -1,3 +1,12 @@
+# 1.5.42 Release:
+## Changes:
+- Spirit Totem
+- Alert
+- Combat Superiority
+## Bugfixes:
+- Summon Construct (Modern)
+- DMG Cleave
+
 # 1.5.41 Release:
 ## Bug Fixes:
 - Battering Roots
