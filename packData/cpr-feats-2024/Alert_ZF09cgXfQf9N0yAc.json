@@ -10,7 +10,7 @@
         "_id": "4YaI74Pli1yTtABL",
         "sort": 0,
         "activation": {
-          "type": "",
+          "type": "encounter",
           "value": null,
           "override": false,
           "condition": ""
@@ -103,7 +103,14 @@
         "otherActivityId": "none",
         "name": "",
         "img": "",
-        "appliedEffects": []
+        "appliedEffects": [],
+        "visibility": {
+          "level": {
+            "min": null,
+            "max": null
+          },
+          "identifier": ""
+        }
       }
     },
     "uses": {
@@ -213,14 +220,13 @@
     },
     "dnd5e": {
       "riders": {
-        "activity": [],
-        "effect": []
+        "activity": []
       }
     },
     "chris-premades": {
       "info": {
         "identifier": "alert",
-        "version": "1.2.41",
+        "version": "1.5.42",
         "source": "chris-premades",
         "rules": "modern"
       },
