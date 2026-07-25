@@ -1,3 +1,7 @@
+# 1.5.43 Release:
+## Bug Fixes
+- Alert (Modern) Compendium Item
+
 # 1.5.42 Release:
 ## Changes:
 - Spirit Totem
