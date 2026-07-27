@@ -1,66 +1,65 @@
 {
-  "name": "Superior Inspiration",
+  "name": "Countercharm",
   "type": "feat",
   "effects": [],
   "system": {
     "activities": {
-      "InJHi9J1tz8HL1Jt": {
+      "utilityCounclNe0": {
+        "name": "Countercharm",
         "type": "utility",
-        "_id": "InJHi9J1tz8HL1Jt",
+        "_id": "utilityCounclNe0",
         "img": "",
         "sort": 0,
         "activation": {
-          "type": "encounter",
-          "override": false,
-          "condition": ""
+          "type": "reaction",
+          "value": 1,
+          "condition": "",
+          "override": false
         },
         "consumption": {
+          "targets": [],
           "scaling": {
-            "allowed": false
+            "allowed": false,
+            "max": ""
           },
-          "spellSlot": true,
-          "targets": []
+          "spellSlot": true
         },
         "description": {
           "chatFlavor": ""
         },
         "duration": {
           "units": "inst",
+          "special": "",
           "concentration": false,
           "override": false
         },
         "effects": [],
-        "flags": {
-          "cat": {
-            "macros": {
-              "combat": [
-                {
-                  "source": "chris-premades",
-                  "rules": "all",
-                  "identifier": "superior-inspiration"
-                }
-              ]
-            }
-          }
-        },
+        "flags": {},
         "range": {
-          "units": "self",
-          "override": false,
-          "special": ""
+          "value": "30",
+          "units": "ft",
+          "special": "",
+          "override": false
         },
         "target": {
-          "template": {
-            "contiguous": false,
-            "stationary": false,
-            "units": "ft",
-            "type": ""
-          },
+          "prompt": true,
           "affects": {
+            "count": "1",
+            "type": "creature",
             "choice": false,
-            "type": ""
+            "special": ""
           },
-          "override": false,
-          "prompt": true
+          "template": {
+            "count": "",
+            "contiguous": false,
+            "type": "",
+            "size": "",
+            "width": "",
+            "height": "",
+            "units": "ft",
+            "stationary": false
+          },
+          "override": false
         },
         "uses": {
           "spent": 0,
@@ -80,8 +79,8 @@
         "roll": {
           "prompt": false,
           "visible": false,
-          "name": "",
-          "formula": ""
+          "formula": "",
+          "name": ""
         },
         "useConditionText": "",
         "useConditionReason": "",
@@ -103,19 +102,19 @@
           "triggeredActivityConditionText": "",
           "triggeredActivityTargets": "targets",
           "triggeredActivityRollAs": "self",
+          "confirmTargets": "default",
+          "automationOnly": false,
+          "identifier": "",
           "triggeredActivityConsume": true,
           "triggeredActivityConfigure": true,
           "autoConsume": false,
           "forceConsumeDialog": "default",
           "forceRollDialog": "default",
           "forceDamageDialog": "default",
-          "confirmTargets": "default",
           "autoTargetType": "any",
           "autoTargetAction": "default",
-          "automationOnly": false,
           "otherActivityCompatible": false,
           "otherActivityAsParentType": true,
-          "identifier": "",
           "displayActivityName": false,
           "rollMode": "default",
           "chooseEffects": false,
@@ -157,34 +156,32 @@
           "animationIntensity": 5
         },
         "otherActivityId": "none",
-        "otherActivityAsParentType": true,
-        "name": ""
+        "otherActivityAsParentType": true
       }
     },
     "uses": {
-      "spent": null,
-      "recovery": [],
-      "max": ""
+      "spent": 0,
+      "recovery": []
     },
+    "advancement": {},
     "description": {
       "value": "",
       "chat": ""
     },
-    "identifier": "superior-inspiration",
+    "identifier": "countercharm",
     "source": {
-      "book": "",
+      "book": "PHB 2024",
       "page": "",
       "license": "",
-      "custom": "PHB 2024",
+      "custom": "",
       "rules": "2024",
       "revision": 1
     },
-    "advancement": [],
-    "cover": null,
     "crewed": false,
     "enchant": {},
     "prerequisites": {
-      "level": 18,
+      "items": [],
+      "level": 7,
       "repeatable": false
     },
     "properties": [],
@@ -197,16 +194,23 @@
   "flags": {
     "dnd5e": {},
     "cat": {
-      "automation": {
-        "version": "2.0.2"
+      "macros": {
+        "save": [
+          {
+            "source": "chris-premades",
+            "rules": "2024",
+            "identifier": "countercharm"
+          }
+        ]
       },
-      "config": {
-        "minimum": 2
+      "automation": {
+        "source": "chris-premades",
+        "version": "2.0.2"
       }
     }
   },
-  "img": "icons/magic/earth/explosion-lava-stone-green.webp",
+  "img": "icons/magic/air/air-burst-spiral-pink.webp",
   "folder": "jv1qLsd4LTtCBvYj",
-  "_id": "S4YTwKY5KbO6GY94",
-  "_key": "!items!S4YTwKY5KbO6GY94"
+  "_id": "RwhGdA5IkHqAJSHu",
+  "_key": "!items!RwhGdA5IkHqAJSHu"
 }
