@@ -79,8 +79,7 @@ async function use({document, workflow, castData}) {
         const {sourceActorUuid, name, avatarImg, tokenImg, animation, sounds, items, initiative} = summonData;
         const sourceActor = await fromUuid(sourceActorUuid);
         if (!sourceActor) return;
-        return await summonUtils.createSummon(workflow.actor, sourceActor, {avatarImg, tokenImg, name, animation, sounds, sourceDocument: document, items, initiative, disposition: workflow.token.document.disposition * -1, updates});
-        // need option in create summon to remove the actor when the summon dies.
+        return await summonUtils.createSummon(workflow.actor, sourceActor, {avatarImg, tokenImg, name, animation, sounds, sourceDocument: document, items, initiative, disposition: workflow.token.document.disposition * -1, updates, dismissAtZero: true});
     }));
     if (!summons.length) return;
     const otherActivities = ['animate-dead-place', 'animate-dead-recall', 'animate-dead-command', 'animate-dead-reassert'];
