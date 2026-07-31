@@ -49,18 +49,6 @@
             },
             "WaterSummon": "Water Summon"
         },
-        "Summons": {
-            "CustomAvatar": "Custom Avatar",
-            "CustomName": "Custom Name",
-            "CustomToken": "Custom Token",
-            "CreatureNames": {
-                "ManifestMind": "Manifest Mind",
-                "Skeleton": "Skeleton",
-                "Zombie": "Zombie"
-            },
-            "SelectSummons": "Choose up to {totalSummons} undead to raise.",
-            "ActorName": "Actor Name"
-        },
         "Config": {
             "Abilities": "Abilities",
             "Ability": "Ability",
@@ -86,6 +74,7 @@
             "BaseAttacks": "Base Attacks",
             "BaseDiceNumber": "Base Dice Number",
             "BaseHealing": "Base Healing",
+            "BaseMaxSummons": "Base Max Summons",
             "BlockingConditions": "Blocking Conditions",
             "Bonus": "Bonus",
             "CanCrit": "Can Crit",
@@ -120,6 +109,9 @@
             "Conditions": "Conditions",
             "CreateActivity": "Create Activity",
             "CriticalOnly": "Critical Only",
+            "CustomAvatar": "Custom Avatar",
+            "CustomName": "Custom Name",
+            "CustomToken": "Custom Token",
             "DC": "DC",
             "DamageBonus": "Damage Bonus",
             "DamageScaleIdentifier": "Damage Scale Identifier",
@@ -226,12 +218,30 @@
             "WeaponType": "Weapon Type",
             "WeaponTypes": "Weapon Types"
         },
+        "Error": {
+            "ActorNotFound": "Could not find the summon actor. Check the CAT monster compendium settings and the spell's configured actor names."
+        },
         "Generic": {
             "SelectDamageType": "Select Damage Type"
         },
         "Macros": {
             "All": {
                 "ArcaneGrimoire": "Arcane Recovery Bonus",
+                "AnimateDead": {
+                    "Controlled": "Controlled",
+                    "NotFound": "{creature} actor not found in Monster Compendium, please configure Animate Dead manually.",
+                    "Reassert": {
+                        "Content": "Select summons to reassert control over (Max {max})",
+                        "Label": "Seconds Remaining: {time}"
+                    },
+                    "ReassertMax": "Max Summons to Reassert",
+                    "SelectSummons": {
+                        "Content": "Select Summons (Max {max})",
+                        "Title": "Animate Dead"
+                    },
+                    "Skeleton": "Skeleton",
+                    "Zombie": "Zombie"
+                },
                 "Rage": {
                     "AllowConcentration": "Allow Concentration",
                     "AllowHeavyArmor": "Allow Heavy Armor",
@@ -277,10 +287,6 @@
                 "AcidArrow": {
                     "HalfDamage": "Missed Target Damage"
                 },
-                "ChaosBolt": {
-                    "AlwaysBounce": "Always Bounce"
-                },
-                "DangerSense": "This save is from an effect you can see.",
                 "ArcaneWard": {
                     "Protect": "Protect {tokenName} with your arcane ward?",
                     "TempHP": "Consume Temp HP First:"
@@ -294,10 +300,14 @@
                     "ArmorRestriction": "You can't use Bladesong while wearing medium or heavy armor or wielding a shield.",
                     "EnforceArmorRestriction": "Enforce Armor Restriction"
                 },
+                "ChaosBolt": {
+                    "AlwaysBounce": "Always Bounce"
+                },
                 "ChronalShift": {
                     "UseRollTotal": "Use {itemName}? (Roll Total: {rollTotal})",
                     "UseRollTotalBy": "Use {itemName} for {name}? (Roll Total: {rollTotal})"
                 },
+                "DangerSense": "This save is from an effect you can see.",
                 "ExpertDivination": {
                     "MaxSlotLevel": "Maximum Slot Level",
                     "Select": "What level spell slot do you want to regain?",
@@ -315,12 +325,12 @@
                 },
                 "ManifestMind": {
                     "Far": "{actorName}'s Manifest Mind is too far away. Remove it?",
-                    "Invalid": "Invalid Action Type!"
+                    "Invalid": "Invalid Action Type!",
+                    "SummonName": "Manifest Mind"
                 },
                 "NaturalAttunement": {
-                    "ChosenTerrain": "Chosen Terrain",
-                    "Spells": "Spells",
                     "Arctic": "Arctic Spells",
+                    "ChosenTerrain": "Chosen Terrain",
                     "Coast": "Coast Spells",
                     "Desert": "Desert Spells",
                     "Forest": "Forest Spells",
@@ -329,10 +339,14 @@
                     "NoSpells": "No spells were found for {terrain}. Check the spell list in this feature's configuration and your enabled spell compendiums.",
                     "PromptOnLongRest": "Prompt to re-attune after a long rest",
                     "SelectTerrain": "Attune to a nearby leyline? You can only be attuned to one at a time.",
+                    "Spells": "Spells",
                     "Swamp": "Swamp Spells"
                 },
                 "Overchannel": {
                     "Damage": "Use {itemName} at the cost of {damageFormula} damage?"
+                },
+                "Rage": {
+                    "EndEarly": "{actorName} has not attacked an enemy or taken damage since their last turn. Remove Rage?"
                 },
                 "SculptSpells": {
                     "Select": "Which targets succeed and take no damage? (Max: {max})"
@@ -350,18 +364,15 @@
                     "Select": "Apply a {itemName} benefit to {spellName}? (Attuned leyline: {terrain})",
                     "SelectASpell": "Select a spell:",
                     "Unattuned": "Not attuned"
-                },
-                "Rage": {
-                    "EndEarly": "{actorName} has not attacked an enemy or taken damage since their last turn. Remove Rage?"
                 }
             },
             "Modern": {
-                "Archdruid": {
-                    "NoSpellSlots": "You have no expended spell slots to restore!"
-                },
                 "ArcaneRecovery": {
                     "Context": "You can recover a combined total of {totalSlots} spell slot levels.",
                     "Slot": "Level {slot} Slots"
+                },
+                "Archdruid": {
+                    "NoSpellSlots": "You have no expended spell slots to restore!"
                 },
                 "BrutalStrike": {
                     "Choice": "Choice Count",
@@ -405,8 +416,12 @@
                 }
             }
         },
-        "Error": {
-            "ActorNotFound": "Could not find the summon actor. Check the CAT monster compendium settings and the spell's configured actor names."
+        "Summons": {
+            "CreatureNames": {
+                "ManifestMind": "Manifest Mind",
+                "Skeleton": "Skeleton",
+                "Zombie": "Zombie"
+            }
         }
     }
 }

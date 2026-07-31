@@ -10,4 +10,4 @@ export {superiorInspiration as 'superior-inspiration'} from './all/classFeatures
 // Equipment
 export {arcaneGrimoire as 'arcane-grimoire-1', arcaneGrimoire as 'arcane-grimoire-2', arcaneGrimoire as 'arcane-grimoire-3'} from './all/equipment/arcaneGrimoire.mjs';
 // Spells
-export {animateDead as 'animate-dead'} from './all/spells/animateDead.mjs';
+export {animateDead as 'animate-dead', animateDeadSummon as 'animate-dead-summon', animateDeadPlace as 'animate-dead-place', animateDeadRecall as 'animate-dead-recall', animateDeadReassert as 'animate-dead-reassert', animateDeadEffectDeleted as 'animate-dead-effect-deleted'} from './all/spells/animateDead.mjs';

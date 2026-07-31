@@ -5,7 +5,7 @@ async function use({document: item, workflow}) {
     const sourceActor = await compendiumUtils.getDocumentByIdentifier('chris-premades.CPRSummons2014', 'manifestMind');
     if (!sourceActor) return;
     let name = automationUtils.getConfigValue(item, 'name');
-    if (!name?.length) name = _loc('CHRISPREMADES.Summons.CreatureNames.ManifestMind');
+    if (!name?.length) name = _loc('CHRISPREMADES.Macros.Legacy.ManifestMind.SummonName');
     const avatarImg = automationUtils.getConfigValue(item, 'avatar') || undefined;
     const tokenImg = automationUtils.getConfigValue(item, 'token') || undefined;
     const animation = automationUtils.getConfigValue(item, 'animation');
@@ -98,9 +98,9 @@ export const manifestMind = {
         {pass: 'actorTurnEnd', macro: turnEnd, priority: 50}
     ],
     config: {
-        name: {default: '', type: 'text', label: 'CHRISPREMADES.Summons.CustomName', category: 'summons'},
-        token: {default: '', type: 'file', label: 'CHRISPREMADES.Summons.CustomToken', category: 'summons'},
-        avatar: {default: '', type: 'file', label: 'CHRISPREMADES.Summons.CustomAvatar', category: 'summons'},
+        name: {default: '', type: 'text', label: 'CHRISPREMADES.Config.CustomName', category: 'summons'},
+        token: {default: '', type: 'file', label: 'CHRISPREMADES.Config.CustomToken', category: 'summons'},
+        avatar: {default: '', type: 'file', label: 'CHRISPREMADES.Config.CustomAvatar', category: 'summons'},
         animation: {default: {source: 'chris-premades', identifier: 'defaultSummon'}, type: 'selectAnimation', inputs: ['summon', 'location', 'token'], label: 'CHRISPREMADES.Config.Animation', category: 'animations'}
     }
 };
