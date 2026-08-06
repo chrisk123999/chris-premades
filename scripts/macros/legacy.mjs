@@ -25,4 +25,4 @@ export {undeadThralls as 'undead-thralls'} from './legacy/classFeatures/wizard/s
 export {durableMagic as 'durable-magic'} from './legacy/classFeatures/wizard/warMagic/durableMagic.mjs';
 // ** Spells
 export {absorbElements as 'absorb-elements'} from './legacy/spells/absorbElements.mjs';
-export {acidArrow as 'acid-arrow'} from './legacy/spells/acidArrow.mjs';
+export {animateObjects as 'animate-objects'} from './legacy/spells/animateObjects.mjs';

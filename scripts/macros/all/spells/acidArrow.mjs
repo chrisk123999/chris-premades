@@ -18,18 +18,14 @@ async function attack({document, workflow}) {
     });
 }
 async function damage({workflow}) {
-    console.log(workflow.targets);
-    console.log(workflow.hitTargets);
     let missedTargets = workflow.targets.filter(i => !workflow.hitTargets.has(i)).map(i => i.document);
-    console.log(missedTargets);
     if (!missedTargets.size) return;
     let damageRoll = await rollUtils.damageRoll(String(Math.floor(workflow.damageRoll.total / 2)), workflow.item);
-    console.log(damageRoll);
     workflowUtils.applyWorkflowDamage(workflow.token, damageRoll, workflow.defaultDamageType, missedTargets, {flavor: _loc('CHRISPREMADES.Macros.Legacy.AcidArrow.HalfDamage'), sourceItem: workflow.item});
 }
 export let acidArrow = {
     version: '2.0.2',
-    rules: '2014',
+    rules: 'all',
     roll: [
         {
             pass: 'activityPreItemRoll',

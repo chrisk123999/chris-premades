@@ -374,7 +374,7 @@
       "page": "",
       "license": "",
       "custom": "",
-      "rules": "2014",
+      "rules": "2024",
       "revision": 1
     },
     "activation": {
@@ -488,7 +488,7 @@
       "origin": null,
       "folder": null,
       "sort": 0,
-      "_key": "!items.effects!sBRTTNIHTRq7L7ib.QHZHgnmFa2DGA3wa"
+      "_key": "!items.effects!GJopONVAwE0znfFU.QHZHgnmFa2DGA3wa"
     }
   ],
   "name": "Acid Arrow",
@@ -549,12 +549,12 @@
       "automation": {
         "source": "chris-premades",
         "version": "2.0.2",
-        "hash": 713331184
+        "hash": -334080326
       }
     }
   },
   "img": "icons/skills/ranged/arrow-flying-ornate-gold.webp",
-  "folder": "ueMNujKhkNn2zCfl",
-  "_id": "sBRTTNIHTRq7L7ib",
-  "_key": "!items!sBRTTNIHTRq7L7ib"
+  "folder": "GPvmZmeZsEcVPYFH",
+  "_id": "GJopONVAwE0znfFU",
+  "_key": "!items!GJopONVAwE0znfFU"
 }

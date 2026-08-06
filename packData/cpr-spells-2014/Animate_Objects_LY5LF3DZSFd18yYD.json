@@ -2,49 +2,44 @@
   "type": "spell",
   "system": {
     "activities": {
-      "attackAcidArrowI": {
-        "name": "Cast",
-        "type": "attack",
-        "_id": "attackAcidArrowI",
-        "img": "",
+      "oCAJajWqbkHdNG46": {
+        "type": "utility",
+        "_id": "oCAJajWqbkHdNG46",
+        "img": null,
         "sort": 0,
         "activation": {
           "type": "action",
           "override": false
         },
         "consumption": {
-          "spellSlot": true,
-          "targets": [],
           "scaling": {
-            "allowed": false,
-            "max": ""
-          }
+            "allowed": false
+          },
+          "spellSlot": true,
+          "targets": []
         },
-        "description": {
-          "chatFlavor": ""
-        },
+        "description": {},
         "duration": {
           "units": "inst",
           "concentration": false,
           "override": false
         },
-        "effects": [
-          {
-            "_id": "QHZHgnmFa2DGA3wa",
-            "level": {
-              "min": null,
-              "max": null
-            }
-          }
-        ],
+        "effects": [],
         "flags": {
           "cat": {
             "macros": {
               "roll": [
                 {
                   "source": "chris-premades",
-                  "rules": "all",
-                  "identifier": "acid-arrow"
+                  "rules": "2014",
+                  "identifier": "animate-objects"
+                }
+              ],
+              "summon": [
+                {
+                  "source": "chris-premades",
+                  "rules": "2014",
+                  "identifier": "animate-objects"
                 }
               ]
             }
@@ -68,54 +63,17 @@
         },
         "uses": {
           "spent": 0,
-          "recovery": [],
-          "max": ""
+          "recovery": []
         },
         "visibility": {
-          "level": {
-            "min": null,
-            "max": null
-          },
+          "level": {},
           "requireAttunement": false,
           "requireIdentification": false,
           "requireMagic": false
         },
-        "attack": {
-          "ability": "spellcasting",
-          "bonus": "",
-          "critical": {
-            "threshold": null
-          },
-          "flat": false,
-          "type": {
-            "value": "ranged",
-            "classification": "spell"
-          }
-        },
-        "damage": {
-          "critical": {
-            "bonus": ""
-          },
-          "parts": [
-            {
-              "custom": {
-                "enabled": false,
-                "formula": ""
-              },
-              "number": 4,
-              "denomination": 4,
-              "bonus": "",
-              "types": [
-                "acid"
-              ],
-              "scaling": {
-                "mode": "whole",
-                "number": 1,
-                "formula": ""
-              }
-            }
-          ],
-          "includeBase": true
+        "roll": {
+          "prompt": false,
+          "visible": false
         },
         "useConditionText": "",
         "useConditionReason": "",
@@ -137,19 +95,19 @@
           "triggeredActivityConditionText": "",
           "triggeredActivityTargets": "targets",
           "triggeredActivityRollAs": "self",
-          "confirmTargets": "default",
-          "automationOnly": false,
-          "identifier": "",
           "triggeredActivityConsume": true,
           "triggeredActivityConfigure": true,
           "autoConsume": false,
           "forceConsumeDialog": "default",
           "forceRollDialog": "default",
           "forceDamageDialog": "default",
+          "confirmTargets": "default",
           "autoTargetType": "any",
           "autoTargetAction": "default",
+          "automationOnly": false,
           "otherActivityCompatible": true,
           "otherActivityAsParentType": true,
+          "identifier": "",
           "displayActivityName": false,
           "rollMode": "default",
           "chooseEffects": false,
@@ -176,8 +134,8 @@
           "oncePerTurn": true,
           "wallRestriction": "none",
           "regionVisibility": 2,
-          "rules": [],
-          "attachToken": "default"
+          "attachToken": "default",
+          "rules": []
         },
         "regionLight": {
           "enabled": false,
@@ -190,23 +148,19 @@
           "animationSpeed": 5,
           "animationIntensity": 5
         },
-        "otherActivityId": "",
-        "otherActivityAsParentType": true,
-        "attackMode": "",
-        "ammunition": "",
-        "otherActivityUuid": "",
-        "attackRollPerTarget": "default",
-        "fumbleThreshold": 1
+        "otherActivityId": "none",
+        "otherActivityAsParentType": true
       },
-      "addEndOfTarTuDa1": {
-        "name": "End Turn Damage",
-        "type": "damage",
-        "_id": "addEndOfTarTuDa1",
+      "r2I7dSoPOAuYsR31": {
+        "type": "utility",
+        "name": "Command",
+        "_id": "r2I7dSoPOAuYsR31",
         "img": "",
-        "sort": 0,
+        "sort": 100000,
         "activation": {
-          "type": "action",
-          "override": false
+          "type": "bonus",
+          "override": true,
+          "condition": ""
         },
         "consumption": {
           "scaling": {
@@ -225,8 +179,8 @@
         },
         "effects": [],
         "flags": {
-          "ddbimporter": {
-            "noeffect": true
+          "cat": {
+            "hidden": true
           }
         },
         "range": {
@@ -259,29 +213,11 @@
           "requireIdentification": false,
           "requireMagic": false
         },
-        "damage": {
-          "parts": [
-            {
-              "custom": {
-                "enabled": false,
-                "formula": ""
-              },
-              "number": 2,
-              "denomination": 4,
-              "bonus": "",
-              "types": [
-                "acid"
-              ],
-              "scaling": {
-                "mode": "whole",
-                "number": 1,
-                "formula": ""
-              }
-            }
-          ],
-          "critical": {
-            "allow": false
-          }
+        "roll": {
+          "prompt": false,
+          "visible": false,
+          "name": "",
+          "formula": ""
         },
         "useConditionText": "",
         "useConditionReason": "",
@@ -303,20 +239,20 @@
           "triggeredActivityConditionText": "",
           "triggeredActivityTargets": "targets",
           "triggeredActivityRollAs": "self",
-          "confirmTargets": "default",
-          "automationOnly": true,
-          "identifier": "",
           "triggeredActivityConsume": true,
           "triggeredActivityConfigure": true,
           "autoConsume": false,
           "forceConsumeDialog": "default",
           "forceRollDialog": "default",
           "forceDamageDialog": "default",
+          "confirmTargets": "default",
           "autoTargetType": "any",
           "autoTargetAction": "default",
-          "otherActivityCompatible": false,
+          "automationOnly": false,
+          "otherActivityCompatible": true,
           "otherActivityAsParentType": true,
-          "displayActivityName": true,
+          "identifier": "animate-objects-command",
+          "displayActivityName": false,
           "rollMode": "default",
           "chooseEffects": false,
           "toggleEffect": false,
@@ -328,13 +264,12 @@
           "skipConcentrationCheck": false,
           "autoCEEffects": "default"
         },
-        "isOverTimeFlag": true,
+        "isOverTimeFlag": false,
         "overTimeProperties": {
           "saveRemoves": true,
-          "rollAs": "source",
+          "rollAs": "target",
           "preRemoveConditionText": "",
-          "postRemoveConditionText": "",
-          "turnChoice": "end"
+          "postRemoveConditionText": ""
         },
         "regionBehavior": {
           "enabled": false,
@@ -343,8 +278,8 @@
           "oncePerTurn": true,
           "wallRestriction": "none",
           "regionVisibility": 2,
-          "rules": [],
-          "attachToken": "default"
+          "attachToken": "default",
+          "rules": []
         },
         "regionLight": {
           "enabled": false,
@@ -356,7 +291,9 @@
           "animationType": "",
           "animationSpeed": 5,
           "animationIntensity": 5
-        }
+        },
+        "otherActivityId": "none",
+        "otherActivityAsParentType": true
       }
     },
     "uses": {
@@ -368,7 +305,7 @@
       "value": "",
       "chat": ""
     },
-    "identifier": "acid-arrow",
+    "identifier": "animate-objects",
     "source": {
       "book": "PHB",
       "page": "",
@@ -383,10 +320,10 @@
       "condition": ""
     },
     "duration": {
-      "value": "",
-      "units": "inst"
+      "value": "1",
+      "units": "minute"
     },
-    "level": 2,
+    "level": 5,
     "materials": {
       "value": "",
       "consumed": false,
@@ -398,17 +335,17 @@
     "properties": [
       "vocal",
       "somatic",
-      "material"
+      "concentration"
     ],
     "range": {
-      "value": "90",
+      "value": "120",
       "units": "ft"
     },
-    "school": "evo",
+    "school": "trs",
     "target": {
       "affects": {
-        "count": "1",
-        "type": "creature",
+        "count": "",
+        "type": "",
         "choice": false,
         "special": ""
       },
@@ -424,78 +361,12 @@
       }
     }
   },
-  "effects": [
-    {
-      "img": "icons/skills/ranged/arrow-flying-ornate-gold.webp",
-      "name": "Acid Arrow",
-      "statuses": [],
-      "system": {
-        "changes": [
-          {
-            "key": "flags.midi-qol.ActivityOverTime",
-            "type": "custom",
-            "value": "end-turn-damage",
-            "phase": "initial",
-            "priority": null
-          }
-        ]
-      },
-      "duration": {
-        "value": 0,
-        "units": "rounds",
-        "expiry": "targetEnd",
-        "expired": false
-      },
-      "tint": "#ffffff",
-      "transfer": false,
-      "disabled": false,
-      "showIcon": 1,
-      "flags": {
-        "dae": {
-          "transfer": false,
-          "stackable": "noneNameOnly",
-          "enableCondition": "",
-          "disableCondition": "",
-          "expiryMode": "default",
-          "durationExpression": "",
-          "macroRepeat": "none",
-          "disableIncapacitated": false,
-          "selfTarget": false,
-          "selfTargetAlways": false,
-          "dontApply": false,
-          "specialDuration": []
-        },
-        "ddbimporter": {
-          "disabled": false,
-          "activityMatch": "Cast"
-        },
-        "midi-qol": {
-          "forceCEOff": true
-        },
-        "core": {
-          "overlay": false
-        },
-        "dnd5e": {
-          "riders": {
-            "statuses": []
-          }
-        }
-      },
-      "description": "",
-      "_id": "QHZHgnmFa2DGA3wa",
-      "type": "base",
-      "start": null,
-      "origin": null,
-      "folder": null,
-      "sort": 0,
-      "_key": "!items.effects!sBRTTNIHTRq7L7ib.QHZHgnmFa2DGA3wa"
-    }
-  ],
-  "name": "Acid Arrow",
+  "effects": [],
+  "name": "Animate Objects",
   "flags": {
     "ddbimporter": {
-      "id": 2323,
-      "definitionId": 1988,
+      "id": 136046,
+      "definitionId": 1997,
       "entityTypeId": 435869154,
       "dndbeyond": {
         "lookup": "generic",
@@ -505,7 +376,7 @@
         "homebrew": false,
         "sourceCategoryId": 26
       },
-      "originalName": "Acid Arrow",
+      "originalName": "Animate Objects",
       "sources": [
         {
           "sourceId": 1,
@@ -514,11 +385,12 @@
         },
         {
           "sourceId": 2,
-          "pageNumber": null,
+          "pageNumber": 213,
           "sourceType": 1
         }
       ],
       "tags": [
+        "Creation",
         "Damage"
       ],
       "version": "7.3.15",
@@ -526,14 +398,10 @@
       "is2024": false,
       "addSpellEffects": true,
       "legacy": true,
-      "noEffectIds": [
-        "addEndOfTarTuDa1"
-      ],
       "effectsApplied": true
     },
     "midi-qol": {
-      "removeAttackDamageButtons": "default",
-      "forceCEOff": true
+      "removeAttackDamageButtons": "default"
     },
     "midiProperties": {
       "confirmTargets": "default",
@@ -542,19 +410,16 @@
     },
     "spell-class-filter-for-5e": {},
     "tidy5e-sheet": {},
-    "dnd5e": {
-      "-=riders": null
-    },
     "cat": {
       "automation": {
         "source": "chris-premades",
-        "version": "2.0.2",
-        "hash": 713331184
+        "version": "2.0.3",
+        "hash": 1964791339
       }
     }
   },
-  "img": "icons/skills/ranged/arrow-flying-ornate-gold.webp",
-  "folder": "ueMNujKhkNn2zCfl",
-  "_id": "sBRTTNIHTRq7L7ib",
-  "_key": "!items!sBRTTNIHTRq7L7ib"
+  "img": "icons/magic/water/bubbles-air-water-blue.webp",
+  "folder": "3y34My6b7sqUmzuk",
+  "_id": "LY5LF3DZSFd18yYD",
+  "_key": "!items!LY5LF3DZSFd18yYD"
 }

@@ -26,8 +26,8 @@ async function use({document, workflow, castData}) {
     if (summonsConfig.length > 1) {
         let documents = await Promise.all(summonsConfig.map(async i => await fromUuid(i.sourceActorUuid)));
         let selection = await dialogUtils.selectDocumentDialog(
-            'CHRISPREMADES.Macros.All.AnimateDead.SelectSummons.Title', 
-            _loc('CHRISPREMADES.Macros.All.AnimateDead.SelectSummons.Content', {max: maxSummons}),
+            document.item.name, 
+            _loc('CHRISPREMADES.Summons.SelectSummons', {max: maxSummons}),
             documents,
             {max: maxSummons, displayTooltips: true}
         );

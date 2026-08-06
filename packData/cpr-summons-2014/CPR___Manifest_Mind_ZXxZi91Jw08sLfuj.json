@@ -623,9 +623,7 @@
       "showTokenPortrait": false
     },
     "cat": {
-      "automation": {
-        "identifier": "manifestMind"
-      }
+      "identifier": "manifestMind"
     }
   },
   "folder": null,

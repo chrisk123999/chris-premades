@@ -180,6 +180,7 @@
             "SizeLimit": "Size Limit",
             "Skills": "Skills",
             "SkipDeadAndUnconscious": "Skip Dead And Unconscious",
+            "SlamDescription": "Description for Slam Attack",
             "Sound": "Sound",
             "SoundDelay": "Sound Delay",
             "SoundMelee": "Melee Sound",
@@ -222,11 +223,11 @@
             "ActorNotFound": "Could not find the summon actor. Check the CAT monster compendium settings and the spell's configured actor names."
         },
         "Generic": {
+            "CreatureNameAndSize": "{size} {name}",
             "SelectDamageType": "Select Damage Type"
         },
         "Macros": {
             "All": {
-                "ArcaneGrimoire": "Arcane Recovery Bonus",
                 "AnimateDead": {
                     "Controlled": "Controlled",
                     "NotFound": "{creature} actor not found in Monster Compendium, please configure Animate Dead manually.",
@@ -235,13 +236,10 @@
                         "Label": "Seconds Remaining: {time}"
                     },
                     "ReassertMax": "Max Summons to Reassert",
-                    "SelectSummons": {
-                        "Content": "Select Summons (Max {max})",
-                        "Title": "Animate Dead"
-                    },
                     "Skeleton": "Skeleton",
                     "Zombie": "Zombie"
                 },
+                "ArcaneGrimoire": "Arcane Recovery Bonus",
                 "Rage": {
                     "AllowConcentration": "Allow Concentration",
                     "AllowHeavyArmor": "Allow Heavy Armor",
@@ -286,6 +284,10 @@
             "Legacy": {
                 "AcidArrow": {
                     "HalfDamage": "Missed Target Damage"
+                },
+                "AnimateObjects": {
+                    "SlamName": "Slam",
+                    "SummonName": "Animated Object"
                 },
                 "ArcaneWard": {
                     "Protect": "Protect {tokenName} with your arcane ward?",
@@ -421,7 +423,8 @@
                 "ManifestMind": "Manifest Mind",
                 "Skeleton": "Skeleton",
                 "Zombie": "Zombie"
-            }
+            },
+            "SelectSummons": "Select Summons (Max {max})"
         }
     }
 }
