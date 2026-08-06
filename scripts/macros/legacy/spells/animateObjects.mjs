@@ -1,6 +1,5 @@
 import {automationUtils, compendiumUtils, summonUtils, activityUtils, effectUtils, itemUtils, dialogUtils, documentUtils, genericUtils, actorUtils} from '../../../proxy.mjs';
 async function use({document, workflow, castData}) {
-    console.log('Animate Objects Macro');
     const concentrationEffect = effectUtils.getConcentrationEffect(workflow.actor, workflow.item);
     const exit = async () => {if (concentrationEffect) await documentUtils.deleteDocument(concentrationEffect);};
     const baseCount = workflow.activity.target.affects.count ?? 10;
@@ -11,7 +10,6 @@ async function use({document, workflow, castData}) {
     const description = automationUtils.getConfigValue(workflow.item, 'slamDescription');
     const translate = 'CHRISPREMADES.Macros.Legacy.AnimateObjects.SlamName';
     const attackData = await compendiumUtils.getDocumentByIdentifier('chris-premades.CPRFeatures2014', 'animate-objects-slam', {object: true, description, translate});
-    console.log(attackData);
     if (!attackData) return await exit();
     const weights = {};
     const documents = [];
@@ -31,14 +29,12 @@ async function use({document, workflow, castData}) {
             avatarImg
         });
     }
-    console.log(documents);
     const choices = await dialogUtils.selectDocumentDialog(
         document.item.name,
         _loc('CHRISPREMADES.Summons.SelectSummons', {max: totalSummons}),
         documents,
         {max: totalSummons, weights}
     );
-    console.log(choices);
     if (!choices?.length) return await exit();
     const summonsData = [];
     const animation = automationUtils.getConfigValue(workflow.item, 'animation') ?? 'none';
@@ -64,7 +60,6 @@ async function use({document, workflow, castData}) {
             },
             items: [attackData]
         };
-        console.log(actorUpdates);
         const data = {
             sourceActor, 
             name: c.document.summonName, 
@@ -77,12 +72,6 @@ async function use({document, workflow, castData}) {
         };
         for (let i = 0; i < c.amount; i++) summonsData.push(data);
     });
-    /** await Summons.spawn(new Array(updates.length).fill(actor), updates, workflow.item, workflow.token, {
-        animation: automationUtils.getConfigValue(workflow.item, 'animation') ?? 'none',
-        duration: itemUtils.convertDuration(workflow.item)?.seconds ?? 60,
-        range: workflow.activity.range.value ?? 120,
-        initiativeType: 'follows'
-    });*/
     const summons = await Promise.all(summonsData.map(async summonData => {
         const {sourceActor, name, avatarImg, tokenImg, animation, initiative, updates, size} = summonData;
         return await summonUtils.createSummon(workflow.actor, sourceActor, {avatarImg, tokenImg, name, animation, sourceDocument: document, initiative, disposition: workflow.token.document.disposition, parent: concentrationEffect, updates, size});
@@ -93,7 +82,6 @@ async function use({document, workflow, castData}) {
     if (workflow.token) await summonUtils.placeSummons(summons, document.range.value, {token: workflow.token.document});
 }
 async function summonDelete({document, summon}) {
-    console.log('delete');
     const summons = summonUtils.getSummonBySource(document).filter(i => i !== summon);
     if (summons.length) return;
     const otherActivities = ['animate-objects-command'];
