@@ -19,11 +19,18 @@ async function allyBonus({trigger: {entity: item, roll, sourceActor}}) {
         let ability = itemUtils.getConfig(feature, 'ability') || 'int';
         let formula = Math.max(1, t.actor.system.abilities[ability].mod);
         let userId = socketUtils.firstOwner(t.actor, true);
-        let selection = await dialogUtils.confirm(feature.name, genericUtils.format('CHRISPREMADES.Dialog.UseRollTotal', {itemName: feature.name + ' (+' + formula + ')', rollTotal: roll.total}), {userId});
+        let selection = await dialogUtils.queuedConfirmDialog(
+            feature.name,
+            genericUtils.format('CHRISPREMADES.Dialog.UseRollTotalBy', {
+                itemName: feature.name + ' (+' + formula + ')',
+                name: sourceActor.name,
+                rollTotal: roll.total
+            }),
+            {actor: t.actor, reason: 'reaction', userId}
+        );
         if (!selection) continue;
         await workflowUtils.syntheticItemRoll(feature, [source], {consumeUsage: true, consumeResources: true, userId});
         roll = await rollUtils.addToRoll(roll, formula);
-        await actorUtils.setReactionUsed(t.actor);
     }
     return roll;
 }
@@ -34,7 +41,15 @@ async function selfBonus({trigger: {entity: item, roll}}) {
     if (actorUtils.hasUsedReaction(item.parent)) return;
     let ability = itemUtils.getConfig(item, 'ability') || 'int';
     let formula = Math.max(1, item.parent.system.abilities[ability].mod);
-    let selection = await dialogUtils.confirm(item.name, genericUtils.format('CHRISPREMADES.Dialog.UseRollTotal', {itemName: item.name + ' (+' + formula + ')', rollTotal: roll.total}));
+    let selection = await dialogUtils.queuedConfirmDialog(
+        item.name,
+        genericUtils.format('CHRISPREMADES.Dialog.UseRollTotalBy', {
+            itemName: item.name + ' (+' + formula + ')',
+            name: item.parent.name,
+            rollTotal: roll.total
+        }),
+        {actor: item.parent, reason: 'reaction', userId: game.user.id}
+    );
     if (!selection) return;
     let self = roll.data.token ?? actorUtils.getFirstToken(item.parent);
     await workflowUtils.syntheticItemRoll(item, [self], {consumeUsage: true, consumeResources: true});

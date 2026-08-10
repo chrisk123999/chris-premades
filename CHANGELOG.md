@@ -2,6 +2,7 @@
 ## Bug Fixes
 - Combat Superiority
 - Divine Intervention
+- Flash of Genius
 - Martial Arts
 - Vortex Warp
 
