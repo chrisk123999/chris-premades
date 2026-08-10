@@ -12,10 +12,13 @@ async function attack({trigger: {entity: item}, workflow}) {
     let scaleIdentifier = itemUtils.getConfig(item, 'scaleIdentifier');
     let scale = workflow.actor.system.scale[classIdentifier]?.[scaleIdentifier];
     if (!scale) return;
-    let baseMaxDamage = rollUtils.rollDiceSync(workflow.item.system.damage.base.formula, {entity: workflow.item, options: {maximize: true}});
+    let baseActivity = workflow.item.system.activities.get(workflow.activity.id);
+    let baseData = baseActivity._processDamagePart(baseActivity.damage.parts[0], {attackMode: workflow.attackMode, workflow}, baseActivity.getRollData());
+    let baseFormula = baseData.parts.filter(p => !['@mod', '@magicalBonus', '@ammoBonus'].includes(p)).join(' + ');
+    let baseMaxDamage = rollUtils.rollDiceSync(baseFormula, {entity: workflow.item, options: {maximize: true}});
     let scaleMaxDamage = rollUtils.rollDiceSync(scale.formula, {options: {maximize: true}});
     let itemData = genericUtils.duplicate(workflow.item.toObject());
-    if (baseMaxDamage.total <= scaleMaxDamage.total) {
+    if (baseMaxDamage.total < scaleMaxDamage.total) {
         let activityData = activityUtils.withChangedDamage(workflow.activity, {number: scale.number ?? 1, denomination: scale.faces});
         itemData.system.activities[workflow.activity.id] = activityData;
     }

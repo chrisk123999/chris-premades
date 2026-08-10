@@ -1396,6 +1396,9 @@
                 "CunningAction": "Cunning Action",
                 "StepOfTheWind": "Step of the Wind"
             },
+            "DivineIntervention": {
+                "NoSpells": "Could not find a spell list for class {classIdentifier}!"
+            },
             "DivineSmite": {
                 "Context": "Smite Target?",
                 "CreatureTypes": "Extra Damage Creature Types:",

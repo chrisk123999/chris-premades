@@ -177,7 +177,7 @@
         },
         "otherActivityId": "",
         "otherActivityAsParentType": true,
-        "friendlySave": "default"
+        "friendlySave": "friendlyFail"
       }
     },
     "identifier": "vortex-warp",
@@ -187,68 +187,12 @@
   },
   "name": "Vortex Warp",
   "flags": {
-    "ddbimporter": {
-      "id": 10075689,
-      "definitionId": 1239805,
-      "entityTypeId": 435869154,
-      "dndbeyond": {
-        "lookup": "generic",
-        "lookupName": "generic",
-        "level": null,
-        "castAtLevel": null
-      },
-      "originalName": "Vortex Warp",
-      "sources": [
-        {
-          "sourceId": 80,
-          "pageNumber": 38,
-          "sourceType": 1
-        }
-      ],
-      "tags": [
-        "Teleportation"
-      ],
-      "version": "5.1.26",
-      "effectsApplied": true
-    },
-    "midi-qol": {
-      "removeAttackDamageButtons": "default",
-      "rollAttackPerTarget": "default",
-      "itemCondition": "",
-      "effectCondition": "",
-      "AoETargetType": "any",
-      "AoETargetTypeIncludeSelf": true,
-      "autoTarget": "default",
-      "reactionCondition": "",
-      "otherCondition": ""
-    },
-    "midiProperties": {
-      "confirmTargets": "default",
-      "magicdam": true,
-      "magiceffect": true,
-      "autoFailFriendly": false,
-      "autoSaveFriendly": false,
-      "critOther": false,
-      "offHandWeapon": false,
-      "noConcentrationCheck": false,
-      "toggleEffect": false,
-      "ignoreTotalCover": false,
-      "idr": false,
-      "idi": false,
-      "idv": false,
-      "ida": false
-    },
-    "dnd5e": {
-      "riders": {
-        "activity": [],
-        "effect": []
-      }
-    },
+    "dnd5e": {},
     "chris-premades": {
       "info": {
         "identifier": "vortexWarp",
         "source": "chris-premades",
-        "version": "1.1.0",
+        "version": "1.5.44",
         "hasAnimation": true
       },
       "config": {

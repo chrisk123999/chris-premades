@@ -10,7 +10,7 @@ async function use({trigger, workflow}) {
 }
 export let vortexWarp = {
     name: 'Vortex Warp',
-    version: '1.1.0',
+    version: '1.5.44',
     hasAnimation: true,
     midi: {
         item: [

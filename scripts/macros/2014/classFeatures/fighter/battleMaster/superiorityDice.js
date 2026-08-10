@@ -98,7 +98,7 @@ export let superiorityDice = {
             value: 'subclass',
             label: 'CHRISPREMADES.Config.ClassIdentifier',
             type: 'text',
-            default: 'battlemaster',
+            default: 'battle-master',
             category: 'homebrew',
             homebrew: true
         },

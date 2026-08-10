@@ -1,7 +1,8 @@
 import {compendiumUtils, dialogUtils, effectUtils, genericUtils, itemUtils, rollUtils, spellUtils, workflowUtils} from '../../../../utils.js';
 async function use({trigger: {entity: item}, workflow}) {
     let maxLevel = itemUtils.getConfig(workflow.item, 'maxLevel');
-    let spells = (await spellUtils.getClassSpells(itemUtils.getConfig(workflow.item, 'classIdentifier'))).filter(i => i.system.level <= maxLevel && i.system.activation != 'reaction');
+    let classIdentifier = itemUtils.getConfig(workflow.item, 'classIdentifier');
+    let spells = (await spellUtils.getClassSpells(classIdentifier) ?? []).filter(i => i.system.level <= maxLevel && i.system.activation != 'reaction');
     let greaterDivineIntervention = itemUtils.getItemByIdentifier(workflow.actor, 'greaterDivineIntervention');
     if (greaterDivineIntervention) {
         let key = genericUtils.getCPRSetting('spellCompendium');
@@ -11,7 +12,7 @@ async function use({trigger: {entity: item}, workflow}) {
             if (wish) spells.push(wish);
         }
     }
-    if (!spells.length) return;
+    if (!spells.length) return genericUtils.notify(genericUtils.format('CHRISPREMADES.Macros.DivineIntervention.NoSpells', {classIdentifier}), 'warn');
     let selection = await dialogUtils.selectDocumentDialog(workflow.item.name, 'CHRISPREMADES.Generic.SelectSpell', spells, {sortAlphabetical: true});
     if (!selection) return;
     let selectionIdentifier = genericUtils.getIdentifier(selection);

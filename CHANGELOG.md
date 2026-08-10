@@ -1,3 +1,10 @@
+# 1.5.44 Release:
+## Bug Fixes
+- Combat Superiority
+- Divine Intervention
+- Martial Arts
+- Vortex Warp
+
 # 1.5.43 Release:
 ## Bug Fixes
 - Alert (Modern) Compendium Item
