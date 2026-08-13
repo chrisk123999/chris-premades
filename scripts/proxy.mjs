@@ -1,15 +1,19 @@
 function createProxy(targetPath) {
     const cache = new Map();
-    return new Proxy({}, {
+    const getTarget = () => {
+        let currentContext = globalThis.cat;
+        if (!currentContext) throw new Error("globalThis.cat is not initialized yet. CAT isn't ready yet.");
+        targetPath.forEach(function(pathPart) {
+            if (currentContext) currentContext = currentContext[pathPart];
+        });
+        return currentContext;
+    };
+    return new Proxy(function () {}, {
         get: function(target, prop) {
             if (prop === 'then' || typeof prop === 'symbol') return undefined;
             if (!game.modules.get('cat')?.active) return;
             if (cache.has(prop)) return cache.get(prop);
-            let currentContext = globalThis.cat;
-            if (!currentContext) throw new Error("globalThis.cat is not initialized yet. CAT isn't ready yet.");
-            targetPath.forEach(function(pathPart) {
-                if (currentContext) currentContext = currentContext[pathPart];
-            });
+            const currentContext = getTarget();
             if (!currentContext || currentContext[prop] === undefined) {
                 throw new Error('Property ' + String(prop) + ' does not exist on globalThis.cat.' + targetPath.join('.'));
             }
@@ -25,6 +29,11 @@ function createProxy(targetPath) {
                 return boundFunction;
             }
             return value;
+        },
+        construct: function (target, args) {
+            if (!game.modules.get('cat')?.active) return {};
+            const cls = getTarget();
+            return new cls(...args);
         }
     });
 }
@@ -34,6 +43,10 @@ export const api = createProxy(['api']);
 export const applications = createProxy(['applications']);
 /** @type {typeof import('cat/scripts/lib/_module.mjs').Crosshairs} */
 export const Crosshairs = createProxy(['lib', 'Crosshairs']);
+/** @type {typeof import('cat/scripts/lib/_module.mjs').DamageBonus} */
+export const DamageBonus = createProxy(['lib', 'DamageBonus']);
+/** @type {typeof import('cat/scripts/lib/_module.mjs').D20Bonus} */
+export const D20Bonus = createProxy(['lib', 'D20Bonus']);
 /** @type {typeof import('cat/scripts/lib/_module.mjs').Logging} */
 export const Logging = createProxy(['lib', 'Logging']);
 /** @type {typeof import('cat/scripts/lib/_module.mjs').constants} */
