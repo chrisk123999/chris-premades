@@ -5,7 +5,7 @@ export {persistentRage as 'persistent-rage'} from './all/classFeatures/barbarian
 export {rage, raging} from './all/classFeatures/barbarian/rage.mjs';
 export {relentlessRage as 'relentless-rage'} from './all/classFeatures/barbarian/relentlessRage.mjs';
 // Bard
-export {bardicInspiration as 'bardic-inspiration'} from './all/classFeatures/bard/bardicInspiration.mjs';
+export {bardicInspiration as 'bardic-inspiration', bardicInspirationEffect} from './all/classFeatures/bard/bardicInspiration.mjs';
 export {superiorInspiration as 'superior-inspiration'} from './all/classFeatures/bard/superiorInspiration.mjs';
 // Equipment
 export {arcaneGrimoire as 'arcane-grimoire-1', arcaneGrimoire as 'arcane-grimoire-2', arcaneGrimoire as 'arcane-grimoire-3'} from './all/equipment/arcaneGrimoire.mjs';

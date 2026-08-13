@@ -1,0 +1,337 @@
+{
+  "name": "Bardic Inspiration",
+  "type": "feat",
+  "effects": [
+    {
+      "name": "Bardic Inspiration",
+      "statuses": [],
+      "system": {
+        "changes": []
+      },
+      "duration": {
+        "value": null,
+        "units": "seconds",
+        "expiry": "turnStart",
+        "expired": false
+      },
+      "tint": "#ffffff",
+      "transfer": false,
+      "disabled": false,
+      "showIcon": 1,
+      "flags": {
+        "dae": {
+          "transfer": false,
+          "stackable": "noneName",
+          "specialDuration": [],
+          "enableCondition": "",
+          "disableCondition": "",
+          "expiryMode": "delete",
+          "durationExpression": "",
+          "macroRepeat": "none",
+          "disableIncapacitated": false,
+          "selfTarget": false,
+          "selfTargetAlways": false,
+          "dontApply": true
+        },
+        "ddbimporter": {
+          "disabled": false
+        },
+        "midi-qol": {
+          "forceCEOff": true
+        },
+        "core": {
+          "overlay": false
+        },
+        "dnd5e": {
+          "riders": {
+            "statuses": []
+          }
+        },
+        "cat": {
+          "macros": {
+            "roll": [
+              {
+                "source": "chris-premades",
+                "rules": "all",
+                "identifier": "bardicInspirationEffect"
+              }
+            ],
+            "check": [
+              {
+                "source": "chris-premades",
+                "rules": "all",
+                "identifier": "bardicInspirationEffect"
+              }
+            ],
+            "skill": [
+              {
+                "source": "chris-premades",
+                "rules": "all",
+                "identifier": "bardicInspirationEffect"
+              }
+            ],
+            "save": [
+              {
+                "source": "chris-premades",
+                "rules": "all",
+                "identifier": "bardicInspirationEffect"
+              }
+            ],
+            "tool": [
+              {
+                "source": "chris-premades",
+                "rules": "all",
+                "identifier": "bardicInspirationEffect"
+              }
+            ]
+          }
+        }
+      },
+      "description": "",
+      "_id": "xLMT680N5hgZ4eve",
+      "img": "icons/magic/control/buff-flight-wings-runes-blue.webp",
+      "type": "base",
+      "start": null,
+      "origin": null,
+      "folder": null,
+      "sort": 0,
+      "_key": "!items.effects!A42YTmqrQVDbjAoK.xLMT680N5hgZ4eve"
+    }
+  ],
+  "system": {
+    "activities": {
+      "utilityBaInclass": {
+        "name": "Inspire",
+        "type": "utility",
+        "_id": "utilityBaInclass",
+        "img": "",
+        "sort": 0,
+        "activation": {
+          "type": "bonus",
+          "value": 1,
+          "condition": "",
+          "override": false
+        },
+        "consumption": {
+          "targets": [
+            {
+              "type": "itemUses",
+              "value": "1",
+              "target": "",
+              "scaling": {}
+            }
+          ],
+          "scaling": {
+            "allowed": false,
+            "max": ""
+          },
+          "spellSlot": true
+        },
+        "description": {
+          "chatFlavor": ""
+        },
+        "duration": {
+          "value": "1",
+          "units": "hour",
+          "special": "",
+          "concentration": false,
+          "override": false
+        },
+        "effects": [
+          {
+            "_id": "xLMT680N5hgZ4eve",
+            "level": {
+              "min": null,
+              "max": null
+            }
+          }
+        ],
+        "flags": {
+          "cat": {
+            "macros": {
+              "roll": [
+                {
+                  "source": "chris-premades",
+                  "rules": "all",
+                  "identifier": "bardic-inspiration"
+                }
+              ]
+            }
+          }
+        },
+        "range": {
+          "value": "60",
+          "units": "ft",
+          "special": "",
+          "override": false
+        },
+        "target": {
+          "prompt": true,
+          "affects": {
+            "count": "1",
+            "type": "creature",
+            "choice": false,
+            "special": ""
+          },
+          "template": {
+            "count": "",
+            "contiguous": false,
+            "type": "",
+            "size": "",
+            "width": "",
+            "height": "",
+            "units": "ft",
+            "stationary": false
+          },
+          "override": false
+        },
+        "uses": {
+          "spent": 0,
+          "recovery": [],
+          "max": ""
+        },
+        "visibility": {
+          "level": {
+            "min": null,
+            "max": null
+          },
+          "requireAttunement": false,
+          "requireIdentification": false,
+          "requireMagic": false,
+          "identifier": ""
+        },
+        "roll": {
+          "formula": "",
+          "name": "",
+          "prompt": false,
+          "visible": false
+        },
+        "useConditionText": "",
+        "useConditionReason": "",
+        "effectConditionText": "",
+        "macroData": {
+          "name": "",
+          "command": ""
+        },
+        "ignoreTraits": {
+          "idi": false,
+          "idr": false,
+          "idv": false,
+          "ida": false,
+          "idm": false
+        },
+        "midiProperties": {
+          "ignoreTraits": [],
+          "triggeredActivityId": "none",
+          "triggeredActivityConditionText": "",
+          "triggeredActivityTargets": "targets",
+          "triggeredActivityRollAs": "self",
+          "confirmTargets": "default",
+          "automationOnly": false,
+          "identifier": "",
+          "triggeredActivityConsume": true,
+          "triggeredActivityConfigure": true,
+          "autoConsume": false,
+          "forceConsumeDialog": "default",
+          "forceRollDialog": "default",
+          "forceDamageDialog": "default",
+          "autoTargetType": "any",
+          "autoTargetAction": "default",
+          "otherActivityCompatible": false,
+          "otherActivityAsParentType": true,
+          "displayActivityName": false,
+          "rollMode": "default",
+          "chooseEffects": false,
+          "toggleEffect": false,
+          "ignoreFullCover": false,
+          "removeChatButtons": "default",
+          "magicEffect": false,
+          "magicDamage": false,
+          "noConcentrationCheck": false,
+          "skipConcentrationCheck": false,
+          "autoCEEffects": "default"
+        },
+        "isOverTimeFlag": false,
+        "overTimeProperties": {
+          "saveRemoves": true,
+          "rollAs": "target",
+          "preRemoveConditionText": "",
+          "postRemoveConditionText": ""
+        },
+        "regionBehavior": {
+          "enabled": false,
+          "dispositionFilter": -1,
+          "excludeSource": true,
+          "oncePerTurn": true,
+          "wallRestriction": "none",
+          "regionVisibility": 2,
+          "attachToken": "default",
+          "rules": []
+        },
+        "regionLight": {
+          "enabled": false,
+          "dim": 0,
+          "bright": 0,
+          "color": null,
+          "alpha": 0.5,
+          "luminosity": 0.5,
+          "animationType": "",
+          "animationSpeed": 5,
+          "animationIntensity": 5
+        },
+        "otherActivityId": "none",
+        "otherActivityAsParentType": true
+      }
+    },
+    "uses": {
+      "spent": 0,
+      "max": "max(1, @abilities.cha.mod)",
+      "recovery": [
+        {
+          "period": "lr",
+          "type": "recoverAll"
+        }
+      ]
+    },
+    "advancement": {},
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "identifier": "bardic-inspiration",
+    "source": {
+      "book": "PHB 2024",
+      "page": "",
+      "license": "",
+      "custom": "",
+      "rules": "2024",
+      "revision": 1
+    },
+    "crewed": false,
+    "enchant": {},
+    "prerequisites": {
+      "items": [],
+      "level": 1,
+      "repeatable": false
+    },
+    "properties": [],
+    "requirements": "",
+    "type": {
+      "value": "class",
+      "subtype": ""
+    }
+  },
+  "flags": {
+    "dnd5e": {},
+    "cat": {
+      "automation": {
+        "source": "chris-premades",
+        "version": "2.0.2"
+      }
+    }
+  },
+  "img": "icons/magic/control/buff-flight-wings-runes-blue.webp",
+  "folder": "jv1qLsd4LTtCBvYj",
+  "_id": "A42YTmqrQVDbjAoK",
+  "_key": "!items!A42YTmqrQVDbjAoK"
+}

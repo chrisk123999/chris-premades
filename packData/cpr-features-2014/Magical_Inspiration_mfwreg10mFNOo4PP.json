@@ -1,0 +1,62 @@
+{
+  "name": "Magical Inspiration",
+  "type": "feat",
+  "effects": [],
+  "system": {
+    "activities": {},
+    "uses": {
+      "spent": 0,
+      "recovery": [],
+      "max": ""
+    },
+    "advancement": {},
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "identifier": "magical-inspiration",
+    "source": {
+      "book": "TCoE",
+      "page": "",
+      "license": "",
+      "custom": "",
+      "rules": "2014",
+      "revision": 1
+    },
+    "crewed": false,
+    "enchant": {},
+    "prerequisites": {
+      "items": [],
+      "level": 2,
+      "repeatable": false
+    },
+    "properties": [],
+    "requirements": "",
+    "type": {
+      "value": "class",
+      "subtype": ""
+    }
+  },
+  "flags": {
+    "dnd5e": {},
+    "cat": {
+      "automation": {
+        "source": "chris-premades",
+        "version": "2.0.2"
+      },
+      "macros": {
+        "called": [
+          {
+            "source": "chris-premades",
+            "rules": "2014",
+            "identifier": "magical-inspiration"
+          }
+        ]
+      }
+    }
+  },
+  "img": "icons/magic/light/explosion-star-large-orange.webp",
+  "folder": "H09zLwugbHnO8ugI",
+  "_id": "mfwreg10mFNOo4PP",
+  "_key": "!items!mfwreg10mFNOo4PP"
+}

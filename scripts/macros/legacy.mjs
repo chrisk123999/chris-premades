@@ -4,6 +4,7 @@ export {dangerSense as 'danger-sense'} from './legacy/classFeatures/barbarian/da
 export {endRage, keepRage} from './legacy/classFeatures/barbarian/rage.mjs';
 // Bard
 export {countercharm, countercharmAura} from './legacy/classFeatures/bard/countercharm.mjs';
+export {magicalInspiration as 'magical-inspiration', magicalInspirationEffect} from './legacy/classFeatures/bard/magicalInspiration.mjs';
 // Wizard
 export {bladesong as 'bladesong'} from './legacy/classFeatures/wizard/bladeSinging/bladesong.mjs';
 export {songOfDefense as 'song-of-defense'} from './legacy/classFeatures/wizard/bladeSinging/songOfDefense.mjs';
