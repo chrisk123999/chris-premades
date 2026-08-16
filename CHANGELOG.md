@@ -7,7 +7,7 @@
 - Brutal Critical
 - Danger Sense
 - Fast Movement
-- Feral Instict
+- Feral Instinct
 - Indomitable Might
 - Instinctive Pounce
 - Persistent Rage
@@ -61,7 +61,7 @@
 - Rage
 - Reckless Attack
 - Relentless Rage
-- Unarmoed Defense
+- Unarmored Defense
 - Bardic Inspiration
 - Countercharm
 - Font of Inspiration
@@ -79,7 +79,7 @@
 - Wild Resurgence
 - Heroic Warrior
 - Empowered Strikes
-- Heightended Focus
+- Heightened Focus
 - Perfect Focus
 - Superior Defense
 - Nature's Wrath
