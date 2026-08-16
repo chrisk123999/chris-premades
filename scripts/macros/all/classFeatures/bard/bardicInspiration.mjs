@@ -25,16 +25,13 @@ async function grantInspiration({workflow}) {
 }
 async function useInspiration({document: effect, roll, workflow}) {
     if (!roll) roll = workflow.attackRoll;
+    if (roll.isFumble) return;
     if (documentUtils.getRules(effect) === '2024' && roll.isSuccess) return;
     const formula = effect.flags['chris-premades']?.bardicInspiration;
     if (!formula) return;
-    return new D20Bonus(effect, {
-        roll: new D20Bonus.rollClass(formula),
-        use: postUseInspiration,
-        getCosts: () => ({}),
-        actor: effect.parent,
-        action: 'special'
-    });
+    return new D20Bonus(effect, {action: 'special', actor: effect.parent, formula})
+        .withOnUse(postUseInspiration)
+        .initialize();
 }
 async function postUseInspiration({bonus}) {
     await automationUtils.calledEvent('useBardicInspiration', bonus.actor, {canOverlap: true, data: {

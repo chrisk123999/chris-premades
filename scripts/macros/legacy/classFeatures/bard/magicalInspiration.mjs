@@ -1,4 +1,4 @@
-import {DamageBonus, dataUtils, workflowUtils} from '../../../../proxy.mjs';
+import {DamageBonus, dataUtils} from '../../../../proxy.mjs';
 import {bardicInspiration} from '../../../all/classFeatures/bard/bardicInspiration.mjs';
 async function modifyInspiration({data}) {
     const effect = data.effectData;
@@ -17,14 +17,9 @@ async function damageHealing({document: effect, workflow}) {
     if (!workflow.hitTargets.size || workflow.item.type !== 'spell') return;
     const formula = effect.flags['chris-premades']?.bardicInspiration;
     if (!formula) return;
-    return new DamageBonus(effect, {
-        roll: new DamageBonus.rollClass(formula),
-        use: bardicInspiration.use,
-        getCosts: () => ({}),
-        actor: effect.parent,
-        action: 'special',
-        maxTargets: 1
-    });
+    return new DamageBonus(effect, {action: 'special', actor: effect.parent, formula, maxTargets: 1})
+        .withOnUse(bardicInspiration.use)
+        .initialize();
 }
 export const magicalInspiration = {
     name: 'Magical Inspiration',
