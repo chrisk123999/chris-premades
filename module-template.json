@@ -88,7 +88,7 @@
         "id": "cat",
         "type": "module",
         "compatibility": {
-          "minimum": "0.0.3"
+          "minimum": "0.0.8"
         }
       }
     ]

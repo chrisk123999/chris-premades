@@ -1,3 +1,102 @@
+# 2.0.2 Pre-Release:
+## Update Notes:
+- CPR for v14 does not contain all automations that previously existed in V13.
+- Requires CAT version 0.0.8.
+## Updated Legacy Automations:
+- Arcane Grimoire (+1, +2, +3)
+- Brutal Critical
+- Danger Sense
+- Fast Movement
+- Feral Instict
+- Indomitable Might
+- Instinctive Pounce
+- Persistent Rage
+- Rage
+- Reckless Attack
+- Relentless Rage
+- Unarmed Defense
+- Bardic Inspiration
+- Countercharm
+- Font of Inspiration
+- Magical Inspiration
+- Superior Inspiration
+- Natural Attunement
+- Thrum of the Land
+- Bladesong
+- Song of Defense
+- Song of Victory
+- Chronal Shift
+- Momentary Stasis
+- Temporal Awareness
+- Adjust Density
+- Gravity Well
+- Awakened Spellbook: Replace Damage
+- Manifest Mind
+- Arcane Ward
+- Projected Ward
+- Expert Divination
+- Empowered Evocation
+- Overchannel
+- Potent Cantrip
+- Sculpt Spells
+- Grim Harvest
+- Undead Thralls
+- Durable Magic
+- Absorb Elements
+- Acid Arrow
+- Animate Dead
+- Animate Objects
+## Updated Modern Automations:
+- Intimidating Presence
+- Aspect of the Wilds
+- Brutal Strike
+- Danger Sense
+- Fast Movement
+- Feral Instinct
+- Improved Brutal Strike
+- Indomitable Might
+- Instinctive Pounce
+- Persistent Rage
+- Primal Knowledge
+- Rage
+- Reckless Attack
+- Relentless Rage
+- Unarmoed Defense
+- Bardic Inspiration
+- Countercharm
+- Font of Inspiration
+- Superior Inspiration
+- Words of Creation
+- Disciple of Life
+- Improved Warding Flare
+- Warding Flare
+- Blessing of the Trickster
+- Blessed Strikes: Potent Spellcasting
+- Greater Divine Intervention
+- Lunar Form
+- Archdruid
+- Elemental Fury: Potent Spellcasting
+- Wild Resurgence
+- Heroic Warrior
+- Empowered Strikes
+- Heightended Focus
+- Perfect Focus
+- Superior Defense
+- Nature's Wrath
+- Lay on Hands
+- Stalker's Flurry
+- Foe Slayer
+- Relentless Hunter
+- Tireless
+- Improved Cunning Strike
+- Steady Aim
+- Unarguable Wizardry
+- Arcane Recovery
+- Memorize Spell
+- Chromatic Orb
+- Acid Arrow
+- Animate Dead
+
 # 2.0.1 Pre-Release:
 ## Update Notes:
 - This update does not contain any automations. Currently there are only a few generic features and animations for use with CAT.
