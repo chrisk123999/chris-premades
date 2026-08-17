@@ -53,11 +53,8 @@ async function cast({document: item, workflow}) {
 async function move({document: item, workflow}) {
     if (workflow.activity.identifier !== 'manifestMindMove') return;
     const [summon] = summonUtils.getSummonBySource(item);
-    const mindToken = summon?.token;
-    if (!mindToken) return;
-    const result = await crosshairUtils.aimCrosshair({token: mindToken, maxRange: 30, centerpoint: mindToken.object?.center});
-    if (!result || result.cancelled) return;
-    await tokenUtils.moveToken(mindToken, [{x: result.x, y: result.y, action: 'displace'}]);
+    if (!summon) return;
+    await summon.move(30);
 }
 async function dismiss({document: item, workflow}) {
     if (workflow.activity.identifier !== 'manifestMindDismiss') return;
