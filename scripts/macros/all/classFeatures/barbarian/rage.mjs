@@ -1,4 +1,4 @@
-import {automationUtils, documentUtils, effectUtils, genericUtils, Logging, workflowUtils} from '../../../../proxy.mjs';
+import {automationUtils, DamageBonus, documentUtils, effectUtils, genericUtils, Logging, workflowUtils} from '../../../../proxy.mjs';
 async function preChecks({workflow}) {
     if (workflow.actor.system.attributes.ac.equippedArmor?.system.type.value === 'heavy' && !automationUtils.getConfigValue(workflow.item, 'allowHeavyArmor')) {
         genericUtils.notify('CHRISPREMADES.Macros.All.Rage.HeavyArmor', {type: 'warn'});
@@ -59,7 +59,7 @@ async function rageDamage({document: effect, workflow}) {
     if (!workflowUtils.isAttackType(workflow, allowedAttack)) return;
     const formula = effect.flags['chris-premades']?.rage?.bonus;
     if (!formula) return Logging.addMacroWarning('chris-premades', 'rage', 'Rage damage bonus formula not found!');
-    await workflowUtils.bonusDamage(workflow, formula);
+    return new DamageBonus(effect, {formula, optional: false}).initialize();
 }
 export const rage = {
     name: 'Rage',
@@ -155,7 +155,7 @@ export const raging = {
             priority: 100
         },
         {
-            pass: 'actorDamageRollBonuses',
+            pass: 'actorOptionalBonusDamage',
             macro: rageDamage,
             priority: 100
         }

@@ -1,3 +1,12 @@
+# 2.0.3 Pre-Release:
+## Update Notes:
+- CPR for v14 does not contain all automations that previously existed in V13.
+- Requires CAT version X.Y.Z.
+## Bug Fixes:
+- Brutal Strike
+## Updated Legacy Automations:
+## Updated Modern Automations:
+
 # 2.0.2 Pre-Release:
 ## Update Notes:
 - CPR for v14 does not contain all automations that previously existed in V13.

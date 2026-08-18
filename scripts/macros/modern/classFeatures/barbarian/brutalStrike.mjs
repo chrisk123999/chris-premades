@@ -1,4 +1,4 @@
-import {actorUtils, automationUtils, combatUtils, dialogUtils, queryUtils, rollUtils, tokenUtils, workflowUtils} from '../../../../proxy.mjs';
+import {actorUtils, automationUtils, combatUtils, DamageBonus, dialogUtils, rollUtils, tokenUtils, workflowUtils} from '../../../../proxy.mjs';
 async function preAttack({document: activity, identifier, workflow}) {
     if (!activity.item.system.uses.value) return;
     if (workflow.activity.ability !== 'str') return;
@@ -25,23 +25,21 @@ async function preAttack({document: activity, identifier, workflow}) {
             if (result.amount) chosen.push(result.document);
     }
     else chosen.push(choice);
-    if (!chosen.length) return;
     await workflowUtils.completeActivityUse(activity);
     workflowUtils.setWorkflowProperty(workflow, 'brutalStrikesActivities', chosen);
     workflowUtils.setWorkflowProperty(workflow, 'brutalStrikesDamage', config.damage);
     workflow.tracker.advantage.suppress(identifier, activity.item.name);
 }
-async function damage({workflow}) {
+async function damage({document: activity, workflow}) {
     const formula = workflowUtils.getWorkflowProperty(workflow, 'brutalStrikesDamage');
     if (!formula || !workflow.hitTargets.size) return;
-    await workflowUtils.bonusDamage(workflow, formula);
+    return new DamageBonus(activity, {formula, optional: false}).initialize();
 }
 async function doStrike({workflow}) {
     const activities = workflowUtils.getWorkflowProperty(workflow, 'brutalStrikesActivities');
-    if (!activities || !workflow.hitTargets.size) return;
+    if (!activities?.length || !workflow.hitTargets.size) return;
     const targets = Array.from(workflow.hitTargets.map(i => i.document));
-    for (let i = 0; i < activities.length; i++)
-        await workflowUtils.completeActivityUse(activities[i], targets);
+    for (const activity of activities) await workflowUtils.completeActivityUse(activity, targets);
 }
 async function forcefulBlowPush({document: activity, workflow}) {
     const distanceFormula = automationUtils.getConfigValue(activity.item, 'push');
@@ -61,7 +59,7 @@ export const brutalStrike = {
             priority: 200
         },
         {
-            pass: 'actorDamageRollBonuses',
+            pass: 'actorOptionalBonusDamage',
             macro: damage,
             priority: 200
         },
