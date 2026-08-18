@@ -4,6 +4,8 @@
 - Requires CAT version X.Y.Z.
 ## Bug Fixes:
 - Brutal Strike
+- Generic: multiSingleTarget
+- Empowered Evocation
 ## Updated Legacy Automations:
 ## Updated Modern Automations:
 

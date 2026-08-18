@@ -1,4 +1,4 @@
-import {automationUtils, rollUtils, dialogUtils, animationUtils, actorUtils, activityUtils, workflowUtils, itemUtils, genericUtils, queryUtils} from '../../proxy.mjs';
+import {automationUtils, rollUtils, dialogUtils, actorUtils, activityUtils, workflowUtils, queryUtils} from '../../proxy.mjs';
 async function use({document, workflow}) {
     const activityId = automationUtils.getGenericConfigValue(document, 'chris-premades', 'multiSingleTarget', 'activityId');
     if (activityId != workflow.activity.id || !workflow.targets.size) return;
@@ -23,6 +23,10 @@ async function use({document, workflow}) {
         const activityData = activityUtils.getDamageModifiedActivityData(attackActivity, rollUtils.getRollsTotal(workflow.utilityRolls));
         attackActivity = activityUtils.syntheticActivity(activityData, workflow.item);
     }
+    const options = {workflowOptions: {'chris-premades': {multiSingleTarget: {
+        rollID: document.uuid + '|' + workflow.id,
+        remainingAttacks
+    }}}};
     while (remainingAttacks > 0 && validTargets.size > 0) {
         let dialogResult = await dialogUtils.selectTargetDialog(
             workflow.item.name, 
@@ -64,10 +68,11 @@ async function use({document, workflow}) {
                     break; 
                 }
                 let workflow;
+                options.workflowOptions['chris-premades'].multiSingleTarget.remainingAttacks = remainingAttacks;
                 if (utilityRollAsDamage) {
-                    workflow = await workflowUtils.syntheticActivityRoll(attackActivity, [targetDoc]);
+                    workflow = await workflowUtils.syntheticActivityRoll(attackActivity, [targetDoc], {options});
                 } else {
-                    workflow = await workflowUtils.completeActivityUse(attackActivity, [targetDoc], {autoDamage: true});
+                    workflow = await workflowUtils.completeActivityUse(attackActivity, [targetDoc], {autoDamage: true, fast: true, options});
                 }
                 if (!workflow.hitTargets.size) reacted = true;
                 if (animation && animation.macros?.attack) await animation.macros.attack(workflow.token.document, targetDoc, {missed: reacted, ...animationOptions});
