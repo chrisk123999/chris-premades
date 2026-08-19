@@ -69,7 +69,7 @@ export const additionalTargets = {
             type: 'select-many',
             category: 'behavior',
             label: 'CHRISPREMADES.Config.DamageType',
-            hint: 'CHRISPREMADES.Macros.Generic.AdditionalTargets.DamageTypeHint',
+            hint: 'CHRISPREMADES.Macros.Generic.Common.DamageTypeHint',
             get options() { return constants.damageTypeOptions(); }
         },
         healingType: {
@@ -77,7 +77,7 @@ export const additionalTargets = {
             type: 'select-many',
             category: 'behavior',
             label: 'CHRISPREMADES.Config.HealingType',
-            hint: 'CHRISPREMADES.Macros.Generic.AdditionalTargets.HealingTypeHint',
+            hint: 'CHRISPREMADES.Macros.Generic.Common.HealingTypeHint',
             get options() { return constants.healingTypeOptions(); }
         },
         identifiers: {
@@ -85,14 +85,14 @@ export const additionalTargets = {
             type: 'selectIdentifiers',
             category: 'behavior',
             label: 'CHRISPREMADES.Config.Identifiers',
-            hint: 'CHRISPREMADES.Macros.Generic.AdditionalTargets.IdentifierHint'
+            hint: 'CHRISPREMADES.Macros.Generic.Common.IdentifierHint'
         },
         itemType: {
             default: [],
             type: 'select-many',
             category: 'behavior',
             label: 'CHRISPREMADES.Config.ItemTypes',
-            hint: 'CHRISPREMADES.Macros.Generic.AdditionalTargets.ItemTypeHint',
+            hint: 'CHRISPREMADES.Macros.Generic.Common.ItemTypeHint',
             get options() { return constants.usableItemTypes(); }
         },
         disposition: {
@@ -128,13 +128,13 @@ export const additionalTargets = {
             default: '',
             type: 'selectActivity',
             category: 'behavior',
-            label: 'CHRISPREMADES.Macros.Generic.AdditionalTargets.RollActivity'
+            label: 'CHRISPREMADES.Macros.Generic.Common.RollActivity'
         },
         rollItem: {
             default: false,
             type: 'checkbox',
             category: 'behavior',
-            label:'CHRISPREMADES.Macros.Generic.AdditionalTargets.RollItem'
+            label:'CHRISPREMADES.Macros.Generic.Common.RollItem'
         },
         targets: {
             default: 1,

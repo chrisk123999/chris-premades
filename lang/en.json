@@ -65,11 +65,23 @@
             },
             "ApplyFilter": "Apply Filter",
             "Arangement": "Arangement",
-            "ArmoTypes": "Armor Types",
+            "ArmorTypes": "Armor Types",
             "AttackActivity": "Attack Activity",
             "AttackBonus": "Attack Bonus",
             "Attacker": "Attacker",
             "Attacks": "Attacks",
+            "AttackType": {
+                "Label": "Attack Type",
+                "attack": "Attack",
+                "meleeAttack": "Melee Attack",
+                "rangedAttack": "Ranged Attack",
+                "weaponAttack": "Weapon Attack",
+                "spellAttack": "Spell Attack",
+                "rangedWeaponAttack": "Ranged Weapon Attack",
+                "meleeWeaponAttack": "Melee Weapon Attack",
+                "rangedSpellAttack": "Ranged Spell Attack",
+                "meleeSpellAttack": "Melee Spell Attack"
+            },
             "AutoApply": "Auto Apply",
             "BaseAttacks": "Base Attacks",
             "BaseDiceNumber": "Base Dice Number",
@@ -252,16 +264,10 @@
             },
             "Generic": {
                 "AdditionalTargets": {
-                    "DamageTypeHint": "Limit this feature by a list of dealt damage types.",
-                    "HealingTypeHint": "Limit this feature by a list of dealt healing types.",
                     "HostileTarget": "Hostile to Target",
-                    "IdentifierHint": "Limit this feature to a list of specific items.",
-                    "ItemTypeHint": "Limit this feature to certain item types.",
                     "MatchTarget": "Match Target",
                     "NeutralTarget": "Neutral",
                     "RangeFromHint": "The token from which to measure range.",
-                    "RollActivity": "Roll this activity when used.",
-                    "RollItem": "Roll this item when used.",
                     "TargetHint": "Any value less than one will count as unlimited."
                 },
                 "BladeSpell": {
@@ -269,6 +275,16 @@
                     "SelectNearbyTarget": "Select targets.",
                     "SelectNearbyTargets": "Select targets.",
                     "Weapon": "Attack with what weapon?"
+                },
+                "Common": {
+                    "AttackTypeHint": "Limit this feature by attack type.",
+                    "DamageTypeHint": "Limit this feature by a list of dealt damage types.",
+                    "HealingTypeHint": "Limit this feature by a list of dealt healing types.",
+                    "IdentifierHint": "Limit this feature to a list of specific items.",
+                    "ItemTypeHint": "Limit this feature to certain item types.",
+                    "RollActivity": "Roll this activity when used.",
+                    "RollItem": "Roll this item when used.",
+                    "SpellSchoolHint": "Limit this feature by spell school."
                 },
                 "ConsumeItemToUse": "Consume {item} to use this feature?",
                 "MovementAnimation": {

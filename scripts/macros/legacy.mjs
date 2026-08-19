@@ -18,7 +18,6 @@ export {manifestMind as 'manifest-mind', manifestMindCast as 'manifest-mind-cast
 export {arcaneWard as 'arcane-ward'} from './legacy/classFeatures/wizard/schoolOfAbjuration/arcaneWard.mjs';
 export {projectedWard as 'projected-ward'} from './legacy/classFeatures/wizard/schoolOfAbjuration/projectedWard.mjs';
 export {expertDivination as 'expert-divination'} from './legacy/classFeatures/wizard/schoolOfDivination/expertDivination.mjs';
-export {empoweredEvocation as 'empowered-evocation'} from './legacy/classFeatures/wizard/schoolOfEvocation/empoweredEvocation.mjs';
 export {overchannel as 'overchannel'} from './legacy/classFeatures/wizard/schoolOfEvocation/overchannel.mjs';
 export {sculptSpells as 'sculpt-spells'} from './legacy/classFeatures/wizard/schoolOfEvocation/sculptSpells.mjs';
 export {grimHarvest as 'grim-harvest'} from './legacy/classFeatures/wizard/schoolOfNecromancy/grimHarvest.mjs';

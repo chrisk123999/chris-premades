@@ -2,6 +2,7 @@
 ## Update Notes:
 - CPR for v14 does not contain all automations that previously existed in V13.
 - Requires CAT version X.Y.Z.
+- Added Generic: damageBonusToOneRoll
 ## Bug Fixes:
 - Brutal Strike
 - Generic: multiSingleTarget

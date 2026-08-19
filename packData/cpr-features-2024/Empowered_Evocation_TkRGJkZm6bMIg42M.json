@@ -7,9 +7,12 @@
       "chat": ""
     },
     "source": {
-      "custom": "Wizard : School of Evocation",
+      "custom": "",
       "revision": 1,
-      "rules": "2014"
+      "rules": "2024",
+      "book": "PHB 2024",
+      "page": "",
+      "license": ""
     },
     "uses": {
       "max": "",
@@ -23,11 +26,15 @@
     "requirements": "",
     "properties": [],
     "prerequisites": {
-      "level": 10
+      "level": 10,
+      "items": [],
+      "repeatable": false
     },
     "activities": {},
     "identifier": "empowered-evocation",
-    "enchant": {}
+    "enchant": {},
+    "advancement": {},
+    "crewed": false
   },
   "flags": {
     "dnd5e": {},
@@ -66,7 +73,7 @@
   },
   "effects": [],
   "img": "icons/magic/fire/explosion-mushroom-nuke-orange.webp",
-  "folder": "uosKFvpruT2UNHCY",
-  "_id": "Pb1DsJlC9F3DCGKa",
-  "_key": "!items!Pb1DsJlC9F3DCGKa"
+  "folder": "iuhl7BPBelyJKbji",
+  "_id": "TkRGJkZm6bMIg42M",
+  "_key": "!items!TkRGJkZm6bMIg42M"
 }
