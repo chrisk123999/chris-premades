@@ -10,7 +10,8 @@ async function attack({trigger: {entity: item}, workflow}) {
         let selection = await dialogUtils.confirmUseItem(item);
         if (!selection) return;
     }
-    let activityData = activityUtils.withChangedDamage(workflow.activity, '', ['force']);
+    let base = workflow.activity.damage.parts[0].toObject();
+    let activityData = activityUtils.withChangedDamage(workflow.activity, base, ['force']);
     workflow.item = itemUtils.cloneItem(workflow.item, {
         ['system.activities.' + workflow.activity.id]: activityData
     });
