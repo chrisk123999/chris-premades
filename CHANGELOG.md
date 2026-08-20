@@ -1,6 +1,7 @@
 # 1.5.45 Release:
 ## Bug Fixes
 - Empowered Strikes
+- Cleave Mastery (Thanks Lymsical)
 
 # 1.5.44 Release:
 ## Bug Fixes
@@ -19,7 +20,7 @@
 - Spirit Totem
 - Alert
 - Combat Superiority
-## Bugfixes:
+## Bug Fixes:
 - Summon Construct (Modern)
 - DMG Cleave
 

@@ -24,8 +24,9 @@ async function cleave({workflow}) {
     await setTurnCheck(workflow.actor, 'cleave');
     selection = selection[0];
     let mod = activityUtils.getMod(workflow.activity);
+    let item = workflow.actor.items.get(workflow.item.id);
     if (mod > 0) {
-        let itemData = workflow.item.toObject();
+        let itemData = item.toObject();
         delete itemData._id;
         itemData.system.activities[workflow.activity.id].damage.parts.push({
             number: null,
@@ -38,7 +39,7 @@ async function cleave({workflow}) {
         genericUtils.setProperty(itemData, 'flags.chris-premades.cleaveMastery', true);
         await workflowUtils.syntheticItemDataRoll(itemData, workflow.actor, [selection]);
     } else {
-        await workflowUtils.syntheticItemRoll(workflow.item, [selection]);
+        await workflowUtils.syntheticItemRoll(item, [selection]);
     }
 }
 async function graze({workflow}) {
