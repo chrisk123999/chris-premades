@@ -19,6 +19,7 @@ export {improvedWardingFlare as 'improved-warding-flare'} from './modern/classFe
 export {wardingFlare as 'warding-flare'} from './modern/classFeatures/cleric/light/wardingFlare.mjs';
 export {potentSpellcasting as 'blessed-strikes-potent-spellcasting'} from './modern/classFeatures/cleric/potentSpellcasting.mjs';
 export {blessingOfTheTrickster as 'blessing-of-the-trickster'} from './modern/classFeatures/cleric/trickery/blessingOfTheTrickster.mjs';
+export {channelDivinity as 'channel-divinity', divineSpark, divineSparkDamage} from './modern/classFeatures/cleric/channelDivinity.mjs';
 // Druid
 export {archdruid} from './modern/classFeatures/druid/archdruid.mjs';
 export {elementalFuryPotentSpellcasting as 'elemental-fury-potent-spellcasting'} from './modern/classFeatures/druid/potentSpellcasting.mjs';

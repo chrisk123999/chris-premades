@@ -9,6 +9,8 @@
 - Empowered Evocation
 ## Updated Legacy Automations:
 ## Updated Modern Automations:
+- Channel Divinity (Cleric)
+- Sear Undead
 
 # 2.0.2 Pre-Release:
 ## Update Notes:
