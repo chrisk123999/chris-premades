@@ -8,6 +8,8 @@
 - Generic: multiSingleTarget
 - Empowered Evocation
 ## Updated Legacy Automations:
+- Channel Divinity (Cleric)
+- Destroy Undead
 ## Updated Modern Automations:
 - Channel Divinity (Cleric)
 - Sear Undead

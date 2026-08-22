@@ -133,7 +133,7 @@
         "name": "Divine Spark: Heal",
         "type": "heal",
         "_id": "healChanDivclass",
-        "img": "",
+        "img": "icons/magic/life/cross-yellow-green.webp",
         "sort": 200000,
         "activation": {
           "type": "action",
@@ -141,7 +141,14 @@
           "condition": ""
         },
         "consumption": {
-          "targets": [],
+          "targets": [
+            {
+              "type": "itemUses",
+              "value": "1",
+              "target": "",
+              "scaling": {}
+            }
+          ],
           "scaling": {
             "allowed": false,
             "max": ""
@@ -300,7 +307,7 @@
         "name": "Divine Spark: Damage",
         "type": "save",
         "_id": "addDiviSpSaVsDa1",
-        "img": "",
+        "img": "icons/magic/light/beam-rays-orange.webp",
         "sort": 400000,
         "activation": {
           "type": "action",
@@ -308,7 +315,14 @@
           "condition": ""
         },
         "consumption": {
-          "targets": [],
+          "targets": [
+            {
+              "type": "itemUses",
+              "value": "1",
+              "target": "",
+              "scaling": {}
+            }
+          ],
           "scaling": {
             "allowed": false,
             "max": ""
@@ -490,7 +504,7 @@
         "name": "Turn Undead",
         "type": "save",
         "_id": "addTurnUndead2II",
-        "img": "",
+        "img": "icons/magic/holy/barrier-shield-winged-blue.webp",
         "sort": 0,
         "activation": {
           "type": "action",
@@ -539,10 +553,11 @@
                 {
                   "source": "chris-premades",
                   "rules": "2024",
-                  "identifier": "channel-divinity"
+                  "identifier": "turnUndead"
                 }
               ]
-            }
+            },
+            "hidden": true
           }
         },
         "range": {
@@ -555,7 +570,7 @@
           "affects": {
             "count": "",
             "type": "enemy",
-            "choice": true,
+            "choice": false,
             "special": ""
           },
           "template": {
@@ -677,14 +692,14 @@
         "otherActivityAsParentType": true,
         "friendlySave": "default"
       },
-      "6I7lVpVClhIkDYXm": {
+      "C4QJ0wsLZK9xwvci": {
         "type": "utility",
-        "name": "Divine Spark",
-        "_id": "6I7lVpVClhIkDYXm",
+        "name": "Use",
+        "_id": "C4QJ0wsLZK9xwvci",
         "img": "",
-        "sort": -100000,
+        "sort": -200000,
         "activation": {
-          "type": "action",
+          "type": "special",
           "override": false,
           "condition": ""
         },
@@ -693,14 +708,7 @@
             "allowed": false
           },
           "spellSlot": true,
-          "targets": [
-            {
-              "type": "itemUses",
-              "value": "1",
-              "target": "",
-              "scaling": {}
-            }
-          ]
+          "targets": []
         },
         "description": {
           "chatFlavor": ""
@@ -718,17 +726,23 @@
                 {
                   "source": "chris-premades",
                   "rules": "2024",
-                  "identifier": "divineSpark"
+                  "identifier": "channel-divinity"
+                }
+              ],
+              "called": [
+                {
+                  "source": "chris-premades",
+                  "rules": "2024",
+                  "identifier": "channel-divinity"
                 }
               ]
             }
           }
         },
         "range": {
-          "units": "ft",
+          "units": "self",
           "override": false,
-          "special": "",
-          "value": "30"
+          "special": ""
         },
         "target": {
           "template": {
@@ -739,9 +753,7 @@
           },
           "affects": {
             "choice": false,
-            "type": "creature",
-            "count": "1",
-            "special": ""
+            "type": ""
           },
           "override": false,
           "prompt": true
@@ -799,7 +811,7 @@
           "automationOnly": false,
           "otherActivityCompatible": false,
           "otherActivityAsParentType": true,
-          "identifier": "spark",
+          "identifier": "",
           "displayActivityName": false,
           "rollMode": "default",
           "chooseEffects": false,

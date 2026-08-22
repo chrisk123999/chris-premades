@@ -1,12 +1,23 @@
 import {actorUtils, automationUtils, constants, dialogUtils, documentUtils, effectUtils, itemUtils, Logging, workflowUtils} from '../../../../proxy.mjs';
-// TODO turn resistance and immunity
-async function preTurnUndead({workflow}) {
-    if (!workflow.targets.size) return;
-    const validCreatures = automationUtils.getConfigValue(workflow.item, 'creatureTypes') ?? [];
-    const targets = workflow.targets.filter(t => validCreatures.includes(actorUtils.typeOrRace(t.actor)));
-    if (targets.size !== workflow.targets.size) await workflowUtils.updateTargets(workflow, targets);
+import {'channel-divinity' as channelDivinityLegacy, turnUndead as turnUndeadLegacy} from '../../../legacy.mjs';
+async function promptChannelDivinities({data: {workflow}}) {
+    if (!workflow) return;
+    const notFound = id => Logging.addMacroWarning('chris-premades', 'channel-divinity', 'Could not find an activity with identifier ' + id);
+    const choices = [];
+    const turn = itemUtils.getActivityByIdentifier(workflow.item, 'turn');
+    if (!turn) notFound('turn');
+    else choices.push(turn);
+    const target = workflow.targets.first()?.document;
+    if (target) {
+        const disposition = workflow.token.document.disposition || 1;
+        const id = target.disposition === disposition ? 'heal' : 'damage';
+        const spark = itemUtils.getActivityByIdentifier(workflow.item, id);
+        if (!spark) notFound(id);
+        else choices.push(spark);
+    }
+    return choices;
 }
-async function postTurnUndead({workflow}) {
+async function applyTurnUndead({workflow}) {
     if (!workflow.failedSaves.size) return;
     const turnedEffect = workflow.activity.effects[0]?.effect ?? workflow.item.effects.contents[0];
     if (!turnedEffect) return;
@@ -18,19 +29,10 @@ async function postTurnUndead({workflow}) {
     const searUndead = actorUtils.getItemByIdentifier(workflow.actor, 'sear-undead');
     if (searUndead) await workflowUtils.syntheticItemRoll(searUndead, workflow.failedSaves.map(t => t.document));
     const turnData = documentUtils.getEffectData(workflow.activity, turnedEffect.id, {parentEntity: sourceEffect});
-    await Promise.all(workflow.failedSaves.map(t => effectUtils.createEffects(t.actor, [turnData])));
-}
-async function spark({workflow}) {
-    const target = workflow.targets.first()?.document;
-    if (!target) return;
-    const disposition = workflow.token.document.disposition || 1;
-    const id = target.disposition === disposition ? 'heal' : 'damage';
-    const activity = itemUtils.getActivityByIdentifier(workflow.item, id);
-    if (!activity) {
-        Logging.addMacroWarning('chris-premades', 'channel-divinity', 'Could not find an activity with identifier ' + id);
-        return;
-    }
-    await workflowUtils.syntheticActivityRoll(activity, [target]);
+    await Promise.all(Array.from(workflow.failedSaves).map(t => {
+        if (t.actor?.system.attributes.hp.value === 0) return;
+        return effectUtils.createEffects(t.actor, [turnData]);
+    }));
 }
 async function damageType({workflow}) {
     const types = automationUtils.getConfigValue(workflow.item, 'damageTypes') ?? [];
@@ -44,16 +46,13 @@ export const channelDivinity = {
     name: 'Channel Divinity',
     version: '2.0.3',
     rules: '2024',
-    roll: [
+    notes: channelDivinityLegacy.notes,
+    roll: channelDivinityLegacy.roll,
+    called: [
         {
-            pass: 'activityPreambleComplete',
-            macro: preTurnUndead,
-            priority: 50
-        },
-        {
-            pass: 'activityRollFinished',
-            macro: postTurnUndead,
-            priority: 50
+            pass: 'actorChannelDivinityCleric',
+            macro: promptChannelDivinities,
+            priority: 200
         }
     ],
     config: {
@@ -102,21 +101,10 @@ export const channelDivinity = {
         }
     ]
 };
-export const divineSpark = {
-    name: 'Divine Spark',
-    version: channelDivinity.version,
-    rules: channelDivinity.rules,
-    roll: [
-        {
-            pass: 'activityRollFinished',
-            macro: spark,
-            priority: 50
-        }
-    ]
-};
 export const divineSparkDamage = {
     name: 'Divine Spark Damage',
-    ...divineSpark,
+    version: channelDivinity.version,
+    rules: channelDivinity.rules,
     roll: [
         {
             pass: 'activityDamageRoll',
@@ -124,4 +112,16 @@ export const divineSparkDamage = {
             priority: 50
         },
     ]
+};
+export const turnUndead = {
+    name: 'Turn Undead',
+    ...divineSparkDamage,
+    roll: [
+        turnUndeadLegacy.roll[0],
+        {
+            pass: 'activityRollFinished',
+            macro: applyTurnUndead,
+            priority: 50
+        }
+    ],
 };

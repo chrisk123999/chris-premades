@@ -1,64 +1,68 @@
 {
-  "name": "Sear Undead",
+  "name": "Destroy Undead",
   "type": "feat",
   "effects": [],
   "system": {
     "activities": {
-      "damageSeaUnclass": {
+      "ggKv8up0FoqheD2F": {
         "type": "damage",
-        "_id": "damageSeaUnclass",
+        "_id": "ggKv8up0FoqheD2F",
         "img": "",
         "sort": 0,
         "activation": {
           "type": "special",
-          "value": 1,
-          "condition": "",
-          "override": false
+          "override": false,
+          "condition": ""
         },
         "consumption": {
-          "targets": [],
           "scaling": {
-            "allowed": false,
-            "max": ""
+            "allowed": false
           },
-          "spellSlot": true
+          "spellSlot": true,
+          "targets": []
         },
         "description": {
           "chatFlavor": ""
         },
         "duration": {
           "units": "inst",
-          "special": "",
           "concentration": false,
           "override": false
         },
         "effects": [],
-        "flags": {},
+        "flags": {
+          "cat": {
+            "macros": {
+              "roll": [
+                {
+                  "source": "chris-premades",
+                  "rules": "2014",
+                  "identifier": "destroy-undead"
+                }
+              ]
+            }
+          }
+        },
         "range": {
-          "value": "5",
           "units": "any",
-          "special": "",
-          "override": false
+          "override": false,
+          "special": ""
         },
         "target": {
-          "prompt": true,
+          "template": {
+            "contiguous": false,
+            "stationary": false,
+            "units": "ft",
+            "type": ""
+          },
           "affects": {
-            "count": "",
-            "type": "creature",
             "choice": false,
+            "type": "creature",
+            "count": "",
             "special": ""
           },
-          "template": {
-            "count": "",
-            "contiguous": false,
-            "type": "",
-            "size": "",
-            "width": "",
-            "height": "",
-            "units": "ft",
-            "stationary": false
-          },
-          "override": false
+          "override": false,
+          "prompt": true
         },
         "uses": {
           "spent": 0,
@@ -83,13 +87,13 @@
             {
               "custom": {
                 "enabled": true,
-                "formula": "(@abilities.wis.mod)d8"
+                "formula": "99999"
               },
               "number": null,
               "denomination": null,
               "bonus": "",
               "types": [
-                "radiant"
+                "none"
               ],
               "scaling": {
                 "number": 1
@@ -117,19 +121,19 @@
           "triggeredActivityConditionText": "",
           "triggeredActivityTargets": "targets",
           "triggeredActivityRollAs": "self",
-          "confirmTargets": "default",
-          "automationOnly": false,
-          "identifier": "",
           "triggeredActivityConsume": true,
           "triggeredActivityConfigure": true,
           "autoConsume": false,
           "forceConsumeDialog": "default",
           "forceRollDialog": "default",
           "forceDamageDialog": "default",
+          "confirmTargets": "default",
           "autoTargetType": "any",
           "autoTargetAction": "default",
+          "automationOnly": false,
           "otherActivityCompatible": false,
           "otherActivityAsParentType": true,
+          "identifier": "",
           "displayActivityName": false,
           "rollMode": "default",
           "chooseEffects": false,
@@ -137,7 +141,7 @@
           "ignoreFullCover": false,
           "removeChatButtons": "default",
           "magicEffect": false,
-          "magicDamage": true,
+          "magicDamage": false,
           "noConcentrationCheck": false,
           "skipConcentrationCheck": false,
           "autoCEEffects": "default"
@@ -183,13 +187,13 @@
       "value": "",
       "chat": ""
     },
-    "identifier": "sear-undead",
+    "identifier": "destroy-undead",
     "source": {
-      "book": "PHB 2024",
+      "book": "PHB",
       "page": "",
       "license": "",
       "custom": "",
-      "rules": "2024",
+      "rules": "2014",
       "revision": 1
     },
     "crewed": false,
@@ -203,19 +207,11 @@
     "requirements": "",
     "type": {
       "value": "class",
-      "subtype": "channelDivinity"
+      "subtype": ""
     }
   },
   "flags": {
-    "dnd5e": {
-      "last": {
-        "damageSeaUnclass": {
-          "damageType": {
-            "0": "radiant"
-          }
-        }
-      }
-    },
+    "dnd5e": {},
     "cat": {
       "automation": {
         "source": "chris-premades",
@@ -223,8 +219,8 @@
       }
     }
   },
-  "img": "icons/magic/fire/flame-burning-skeleton-explosion.webp",
-  "folder": "zpnSU81c3nPjSzE1",
-  "_id": "zniR4MgJlDCt7YP0",
-  "_key": "!items!zniR4MgJlDCt7YP0"
+  "img": "icons/magic/death/skull-horned-worn-fire-blue.webp",
+  "folder": "3c0NSnjmkxO9LGz0",
+  "_id": "Lz1xcppxkHcoIvl0",
+  "_key": "!items!Lz1xcppxkHcoIvl0"
 }
