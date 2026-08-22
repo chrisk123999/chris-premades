@@ -44,6 +44,7 @@
             },
             "ShadowSummon": "Shadow Summon",
             "SmokeSummon": "Smoke Summon",
+            "Smite": "Smite",
             "SneakAttack": {
                 "Name": "Sneak Attack"
             },
@@ -120,6 +121,7 @@
             "CompendiumName": "{option} Compendium Name",
             "Conditions": "Conditions",
             "CreateActivity": "Create Activity",
+            "CreatureTypes": "Creature Types",
             "CriticalOnly": "Critical Only",
             "CustomAvatar": "Custom Avatar",
             "CustomName": "Custom Name",
@@ -252,6 +254,7 @@
                     "Zombie": "Zombie"
                 },
                 "ArcaneGrimoire": "Arcane Recovery Bonus",
+                "ChannelDivinity": "Choose a channel divinity effect:",
                 "Rage": {
                     "AllowConcentration": "Allow Concentration",
                     "AllowHeavyArmor": "Allow Heavy Armor",
@@ -326,6 +329,7 @@
                     "UseRollTotalBy": "Use {itemName} for {name}? (Roll Total: {rollTotal})"
                 },
                 "DangerSense": "This save is from an effect you can see.",
+                "DestroyUndead": "Maximum CR",
                 "ExpertDivination": {
                     "MaxSlotLevel": "Maximum Slot Level",
                     "Select": "What level spell slot do you want to regain?",
