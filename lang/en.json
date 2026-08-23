@@ -201,6 +201,7 @@
             "SoundRanged": "Ranged Sound",
             "SpawnActivity": "Spawn Activity",
             "SpecificAnimation": "{option} Animation",
+            "SpellLevel": "Spell Level",
             "SpellSchool": "Spell School",
             "SpellSchools": "Spell Schools",
             "SpellSlot": "{option} Spell Slot",
@@ -287,9 +288,14 @@
                     "ItemTypeHint": "Limit this feature to certain item types.",
                     "RollActivity": "Roll this activity when used.",
                     "RollItem": "Roll this item when used.",
+                    "SpellLevelHint": "Limit this feature by spell level.",
                     "SpellSchoolHint": "Limit this feature by spell school."
                 },
                 "ConsumeItemToUse": "Consume {item} to use this feature?",
+                "DamageBonusToOneRoll": {
+                    "BonusDamageType": "Bonus Damage Type",
+                    "Costs": "Use Activity Costs"
+                },
                 "MovementAnimation": {
                     "MoveAnimation": "Move Animation",
                     "MovementEffect": "Movement Effect",
@@ -344,6 +350,10 @@
                     "ExcludedCreatureTypes": "Excluded Creature Types",
                     "HealingMultiplier": "Healing Multiplier",
                     "NecromancyMultiplier": "Necromancy Healing Multiplier"
+                },
+                "HarnessDivinePower": {
+                    "Prompt": "Choose {maxAmount} slots to recover.",
+                    "NoMissing": "You do not have any eligible missing spell slots!"
                 },
                 "ManifestMind": {
                     "Far": "{actorName}'s Manifest Mind is too far away. Remove it?",

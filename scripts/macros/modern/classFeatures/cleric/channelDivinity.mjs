@@ -4,7 +4,7 @@ async function promptChannelDivinities({data: {workflow}}) {
     if (!workflow) return;
     const notFound = id => Logging.addMacroWarning('chris-premades', 'channel-divinity', 'Could not find an activity with identifier ' + id);
     const choices = [];
-    const turn = itemUtils.getActivityByIdentifier(workflow.item, 'turn');
+    const turn = itemUtils.getActivityByIdentifier(workflow.item, 'turn-undead');
     if (!turn) notFound('turn');
     else choices.push(turn);
     const target = workflow.targets.first()?.document;
@@ -110,7 +110,7 @@ export const divineSparkDamage = {
             pass: 'activityDamageRoll',
             macro: damageType,
             priority: 50
-        },
+        }
     ]
 };
 export const turnUndead = {
@@ -123,5 +123,5 @@ export const turnUndead = {
             macro: applyTurnUndead,
             priority: 50
         }
-    ],
+    ]
 };

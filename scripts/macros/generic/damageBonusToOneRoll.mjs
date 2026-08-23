@@ -22,13 +22,16 @@ async function damage({document, workflow}) {
     if (config.itemType.length) {
         if (!config.itemType.includes(workflow.item.type)) return;
     }
+    if (config.spellLevel.length) {
+        if(workflow.castData?.castLevel !== undefined && !config.spellLevel.includes(String(workflow.castData.castLevel))) return;
+    }
     if (config.spellSchool.length) {
         if (!config.spellSchool.includes(workflow.item.system.school)) return;
     }
     const multiSingleTarget = workflow.workflowOptions['chris-premades']?.multiSingleTarget;
     if (multiSingleTarget && document.flags['chris-premades']?.lastUse === multiSingleTarget.rollID) return;
-    const optional = multiSingleTarget ? multiSingleTarget.remainingAttacks > 1 : false;
-    return new DamageBonus(document, {formula: config.bonus, optional})
+    const optional = config.useActivityCosts || (multiSingleTarget ? multiSingleTarget.remainingAttacks > 1 : false);
+    const bonus = new DamageBonus(document, {formula: config.bonus, optional, type: config.bonusDamageType})
         .withOnUse(async ({bonus}) => {
             if (multiSingleTarget) await documentUtils.setFlag(document, 'chris-premades', 'lastUse', multiSingleTarget.rollID);
             const item = bonus.document.documentName === 'Item' ? bonus.document : bonus.activity?.item;
@@ -40,8 +43,14 @@ async function damage({document, workflow}) {
                 if (!activity) return;
                 await workflowUtils.completeActivityUse(activity, Array.from(bonus.targets ?? []));
             }
-        })
-        .initialize();
+        });
+    if (config.useActivityCosts) {
+        if (!workflow.hitTargets.size) return;
+        bonus.withDefaultCosts().initialize();
+        if (!DamageBonus.CheckCost(bonus)) return;
+    } else
+        bonus.initialize();
+    return bonus;
 }
 export const damageBonusToOneRoll = {
     rules: 'all',
@@ -80,6 +89,13 @@ export const damageBonusToOneRoll = {
             type: 'text',
             label: 'CHRISPREMADES.Config.DamageBonus',
             category: 'behavior'
+        },
+        bonusDamageType: {
+            default: '',
+            type: 'select',
+            category: 'behavior',
+            label: 'CHRISPREMADES.Macros.Generic.DamageBonusToOneRoll.BonusDamageType',
+            get options() { return constants.damageTypeOptions(); }
         },
         damageType: {
             default: [],
@@ -124,6 +140,14 @@ export const damageBonusToOneRoll = {
             category: 'behavior',
             label:'CHRISPREMADES.Macros.Generic.Common.RollItem'
         },
+        spellLevel: {
+            default: [],
+            type: 'select-many',
+            category: 'behavior',
+            label: 'CHRISPREMADES.Config.SpellLevel',
+            hint: 'CHRISPREMADES.Macros.Generic.Common.SpellLevelHint',
+            get options() { return constants.spellSlotOptions(); }
+        },
         spellSchool: {
             default: [],
             type: 'select-many',
@@ -131,6 +155,12 @@ export const damageBonusToOneRoll = {
             label: 'CHRISPREMADES.Config.SpellSchool',
             hint: 'CHRISPREMADES.Macros.Generic.Common.SpellSchoolHint',
             get options() { return constants.spellSchoolOptions(); }
+        },
+        useActivityCosts: {
+            default: false,
+            type: 'checkbox',
+            category: 'behavior',
+            label:'CHRISPREMADES.Macros.Generic.DamageBonusToOneRoll.Costs'
         }
     }
 };

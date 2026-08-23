@@ -10,7 +10,7 @@ async function collectChannelDivinities({workflow}) {
     await workflowUtils.syntheticActivityRoll(choice, workflow.targets.map(t => t.document));
 }
 async function promptTurnUndead({data, document: activity}) {
-    return itemUtils.getActivityByIdentifier(activity.item, 'turn');
+    return itemUtils.getActivityByIdentifier(activity.item, 'turn-undead');
 }
 async function preTurnUndead({workflow}) {
     if (!workflow.targets.size) return;

@@ -10,6 +10,8 @@
 ## Updated Legacy Automations:
 - Channel Divinity (Cleric)
 - Destroy Undead
+- Harness Divine Power
+- Blessed Strikes
 ## Updated Modern Automations:
 - Channel Divinity (Cleric)
 - Sear Undead

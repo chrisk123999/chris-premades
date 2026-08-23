@@ -637,7 +637,7 @@
           "triggeredActivityRollAs": "self",
           "confirmTargets": "default",
           "automationOnly": false,
-          "identifier": "turn",
+          "identifier": "turn-undead",
           "triggeredActivityConsume": true,
           "triggeredActivityConfigure": true,
           "autoConsume": false,

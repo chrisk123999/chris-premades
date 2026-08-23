@@ -8,6 +8,7 @@ export {magicalInspiration as 'magical-inspiration', magicalInspirationEffect} f
 // Cleric
 export {channelDivinity as 'channel-divinity', turnUndead} from './legacy/classFeatures/cleric/channelDivinity.mjs';
 export {destroyUndead as 'destroy-undead'} from './legacy/classFeatures/cleric/destroyUndead.mjs';
+export {harnessDivinePower as 'harness-divine-power'} from './legacy/classFeatures/cleric/harnessDivinePower.mjs';
 // Wizard
 export {bladesong as 'bladesong'} from './legacy/classFeatures/wizard/bladeSinging/bladesong.mjs';
 export {songOfDefense as 'song-of-defense'} from './legacy/classFeatures/wizard/bladeSinging/songOfDefense.mjs';
