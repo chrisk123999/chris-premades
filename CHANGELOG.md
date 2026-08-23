@@ -7,6 +7,7 @@
 - Brutal Strike
 - Generic: multiSingleTarget
 - Empowered Evocation
+- Song of Defense
 ## Updated Legacy Automations:
 - Channel Divinity (Cleric)
 - Destroy Undead

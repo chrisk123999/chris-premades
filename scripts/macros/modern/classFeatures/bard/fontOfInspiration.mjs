@@ -5,8 +5,9 @@ async function spendSpellSlot({document: activity, config}) {
         genericUtils.notify('CHRISPREMADES.Macros.Modern.FontOfInspiration.NoSlots', {type: 'warn'});
         return true;
     }
-    const selection = await dialogUtils.selectSpellSlot(activity.actor, activity.item.name, 'CHRISPREMADES.Macros.Modern.FontOfInspiration.Prompt', {no: true});
-    if (!selection) return true;
+    const selection = await dialogUtils.selectSpellSlots(activity.actor, activity.item.name, 'CHRISPREMADES.Macros.Modern.FontOfInspiration.Prompt', {maxAmount: 1, maxAmountMode: 'count'});
+    const target = activity.actor.system.spells[selection?.[0]?.key]?.level;
+    if (!target) return true;
     const data = activity.toObject();
     data.consumption.targets = [
         {
@@ -15,7 +16,7 @@ async function spendSpellSlot({document: activity, config}) {
             value: '-1'
         },
         {
-            target: selection,
+            target,
             type: 'spellSlots',
             value: '1'
         }
