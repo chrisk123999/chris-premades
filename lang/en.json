@@ -21,6 +21,7 @@
             },
             "Default": "Default",
             "DefaultSummon": "Default Summon",
+            "DivineStrike": "Divine Strike",
             "EarthSummon": "Earth Summon",
             "EldritchBlast": "Eldritch Blast",
             "FiendSummon": "Fiend Summon",
@@ -294,6 +295,7 @@
                 "ConsumeItemToUse": "Consume {item} to use this feature?",
                 "DamageBonusToOneRoll": {
                     "BonusDamageType": "Bonus Damage Type",
+                    "BonusDamageTypeHint": "Damage types to offer as choices for this bonus.",
                     "Costs": "Use Activity Costs"
                 },
                 "MovementAnimation": {
@@ -421,6 +423,7 @@
                 "GreaterDivineIntervention": {
                     "RestFormula": "Rest Recovery Formula"
                 },
+                "ImprovedPotentSpellcasting": "Select an ally to give temporary hit points to:",
                 "MemorizeSpell": {
                     "Prepare": "Select a spell to prepare:",
                     "Unprepare": "Select a spell to unprepare:"

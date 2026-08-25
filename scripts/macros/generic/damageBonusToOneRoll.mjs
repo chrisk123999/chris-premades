@@ -1,8 +1,12 @@
 import {automationUtils, constants, DamageBonus, documentUtils, workflowUtils} from '../../proxy.mjs';
 async function damage({document, workflow}) {
-    if (!workflow.targets.size) return;
+    if (!workflow.targets.size || (!workflow.activity.hasDamage && !workflow.activity.hasHealing)) return;
     const config = automationUtils.getGenericConfigValues(document, 'chris-premades', 'damageBonusToOneRoll', Object.keys(damageBonusToOneRoll.genericConfig));
     if (!config.bonus.length) return;
+    const multiSingleTarget = workflow.workflowOptions['chris-premades']?.multiSingleTarget;
+    if (multiSingleTarget && document.flags['chris-premades']?.lastUse === multiSingleTarget.rollID) return;
+    const optional = config.useActivityCosts || (multiSingleTarget ? multiSingleTarget.remainingAttacks > 1 : false);
+    if (optional && workflow.activity.hasAttack && !workflow.hitTargets.size) return;
     if (config.attackType.length) {   
         if (!workflowUtils.isAttackType(workflow, config.attackType)) return;
     }
@@ -23,14 +27,11 @@ async function damage({document, workflow}) {
         if (!config.itemType.includes(workflow.item.type)) return;
     }
     if (config.spellLevel.length) {
-        if(workflow.castData?.castLevel !== undefined && !config.spellLevel.includes(String(workflow.castData.castLevel))) return;
+        if(!config.spellLevel.includes(String(workflowUtils.getCastLevel(workflow)))) return;
     }
     if (config.spellSchool.length) {
         if (!config.spellSchool.includes(workflow.item.system.school)) return;
     }
-    const multiSingleTarget = workflow.workflowOptions['chris-premades']?.multiSingleTarget;
-    if (multiSingleTarget && document.flags['chris-premades']?.lastUse === multiSingleTarget.rollID) return;
-    const optional = config.useActivityCosts || (multiSingleTarget ? multiSingleTarget.remainingAttacks > 1 : false);
     const bonus = new DamageBonus(document, {formula: config.bonus, optional, type: config.bonusDamageType})
         .withOnUse(async ({bonus}) => {
             if (multiSingleTarget) await documentUtils.setFlag(document, 'chris-premades', 'lastUse', multiSingleTarget.rollID);
@@ -91,10 +92,11 @@ export const damageBonusToOneRoll = {
             category: 'behavior'
         },
         bonusDamageType: {
-            default: '',
-            type: 'select',
+            default: [],
+            type: 'select-many',
             category: 'behavior',
             label: 'CHRISPREMADES.Macros.Generic.DamageBonusToOneRoll.BonusDamageType',
+            hint: 'CHRISPREMADES.Macros.Generic.DamageBonusToOneRoll.BonusDamageTypeHint',
             get options() { return constants.damageTypeOptions(); }
         },
         damageType: {

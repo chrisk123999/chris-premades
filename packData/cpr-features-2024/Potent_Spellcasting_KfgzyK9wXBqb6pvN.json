@@ -1,0 +1,82 @@
+{
+  "name": "Potent Spellcasting",
+  "type": "feat",
+  "effects": [],
+  "system": {
+    "activities": {},
+    "uses": {
+      "spent": 0,
+      "recovery": [],
+      "max": ""
+    },
+    "advancement": {},
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "identifier": "blessed-strikes-potent-spellcasting",
+    "source": {
+      "book": "PHB 2024",
+      "page": "",
+      "license": "",
+      "custom": "",
+      "rules": "2024",
+      "revision": 1
+    },
+    "crewed": false,
+    "enchant": {},
+    "prerequisites": {
+      "items": [],
+      "level": 8,
+      "repeatable": false
+    },
+    "properties": [],
+    "requirements": "",
+    "type": {
+      "value": "class",
+      "subtype": ""
+    }
+  },
+  "flags": {
+    "dnd5e": {},
+    "cat": {
+      "genericConfig": {
+        "chris-premades": {
+          "damageBonusToOneRoll": {
+            "attackType": "",
+            "bonus": "@abilities.wis.mod",
+            "bonusDamageType": "",
+            "damageType": [],
+            "healingType": [],
+            "identifiers": [],
+            "itemType": [],
+            "rollActivity": "",
+            "rollItem": false,
+            "spellLevel": [
+              "0"
+            ],
+            "spellSchool": [],
+            "useActivityCosts": false
+          }
+        }
+      },
+      "macros": {
+        "roll": [
+          {
+            "source": "chris-premades",
+            "identifier": "damageBonusToOneRoll",
+            "rules": "all"
+          }
+        ]
+      },
+      "automation": {
+        "source": "chris-premades",
+        "version": "2.0.3"
+      }
+    }
+  },
+  "img": "icons/magic/life/cross-yellow-green.webp",
+  "folder": "zpnSU81c3nPjSzE1",
+  "_id": "KfgzyK9wXBqb6pvN",
+  "_key": "!items!KfgzyK9wXBqb6pvN"
+}
