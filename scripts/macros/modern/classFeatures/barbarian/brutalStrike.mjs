@@ -33,7 +33,7 @@ async function preAttack({document: activity, identifier, workflow}) {
 async function damage({document: activity, workflow}) {
     const formula = workflowUtils.getWorkflowProperty(workflow, 'brutalStrikesDamage');
     if (!formula || !workflow.hitTargets.size) return;
-    return new DamageBonus(activity, {formula, optional: false}).initialize();
+    return new DamageBonus(activity, {formula, optional: false}).initialize(workflow);
 }
 async function doStrike({workflow}) {
     const activities = workflowUtils.getWorkflowProperty(workflow, 'brutalStrikesActivities');

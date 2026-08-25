@@ -31,7 +31,7 @@ async function useInspiration({document: effect, roll, workflow}) {
     if (!formula) return;
     return new D20Bonus(effect, {action: 'special', actor: effect.parent, formula})
         .withOnUse(postUseInspiration)
-        .initialize();
+        .initialize(workflow);
 }
 async function postUseInspiration({bonus}) {
     await automationUtils.calledEvent('useBardicInspiration', bonus.actor, {canOverlap: true, data: {

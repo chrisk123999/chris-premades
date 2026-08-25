@@ -32,7 +32,7 @@ async function damage({document, workflow}) {
     if (config.spellSchool.length) {
         if (!config.spellSchool.includes(workflow.item.system.school)) return;
     }
-    const bonus = new DamageBonus(document, {formula: config.bonus, optional, type: config.bonusDamageType})
+    const bonus = new DamageBonus(document, {formula: config.bonus, optional, type: config.bonusDamageType, allowCritical: config.allowCritical})
         .withOnUse(async ({bonus}) => {
             if (multiSingleTarget) await documentUtils.setFlag(document, 'chris-premades', 'lastUse', multiSingleTarget.rollID);
             const item = bonus.document.documentName === 'Item' ? bonus.document : bonus.activity?.item;
@@ -47,10 +47,10 @@ async function damage({document, workflow}) {
         });
     if (config.useActivityCosts) {
         if (!workflow.hitTargets.size) return;
-        bonus.withDefaultCosts().initialize();
+        bonus.withDefaultCosts().initialize(workflow);
         if (!DamageBonus.CheckCost(bonus)) return;
     } else
-        bonus.initialize();
+        bonus.initialize(workflow);
     return bonus;
 }
 export const damageBonusToOneRoll = {
@@ -163,6 +163,13 @@ export const damageBonusToOneRoll = {
             type: 'checkbox',
             category: 'behavior',
             label:'CHRISPREMADES.Macros.Generic.DamageBonusToOneRoll.Costs'
+        },
+        allowCritical: {
+            default: true,
+            type: 'checkbox',
+            category: 'behavior',
+            label:'CHRISPREMADES.Macros.Generic.DamageBonusToOneRoll.Critical',
+            hint:'CHRISPREMADES.Macros.Generic.DamageBonusToOneRoll.CriticalHint'
         }
     }
 };

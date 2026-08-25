@@ -296,7 +296,9 @@
                 "DamageBonusToOneRoll": {
                     "BonusDamageType": "Bonus Damage Type",
                     "BonusDamageTypeHint": "Damage types to offer as choices for this bonus.",
-                    "Costs": "Use Activity Costs"
+                    "Costs": "Use Activity Costs",
+                    "Critical": "Allow Critical",
+                    "CriticalHint": "Critical hit rules can be applied to this bonus."
                 },
                 "MovementAnimation": {
                     "MoveAnimation": "Move Animation",

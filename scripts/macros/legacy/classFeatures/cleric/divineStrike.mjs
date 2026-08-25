@@ -22,7 +22,7 @@ async function damage({document: activity, workflow}) {
             if (playAnimation) animation.animation.macros.play(workflow);
             await workflowUtils.syntheticActivityRoll(activity, []);
         })
-        .initialize();
+        .initialize(workflow);
 }
 export const divineStrike = {
     name: 'Divine Strike',
