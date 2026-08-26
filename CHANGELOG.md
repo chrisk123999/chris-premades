@@ -2,6 +2,8 @@
 ## Bug Fixes
 - Empowered Strikes
 - Cleave Mastery (Thanks Lymsical)
+- DMG Cleave
+- Martial Arts (modern)
 
 # 1.5.44 Release:
 ## Bug Fixes

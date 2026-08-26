@@ -17,20 +17,16 @@ export async function cleave(workflow) {
     let selection = await dialogUtils.selectTargetDialog('CHRISPREMADES.Settings.cleave.Name', 'CHRISPREMADES.Cleave.Use', nearbyTargets, {skipDeadAndUnconscious: false, buttons: 'yesNo'});
     if (!selection?.length) return;
     selection = selection[0];
-    let featureData = await compendiumUtils.getItemFromCompendium(constants.packs.miscellaneousItems, 'DMG Cleave', {object: true, getDescription: true});
-    let attackId = Object.keys(featureData.system.activities)[0];
-    featureData.system.activities[attackId].damage.parts = Object.entries(leftoverDamage).filter(d => d[1] > 0).map(([type, amount]) => ({
-        custom: {enabled: true, formula: amount},
-        types: [type]
-    }));
+    let featureData = await compendiumUtils.getItemFromCompendium(constants.packs.miscellaneousItems, 'DMG Cleave', {object: true, getDescription: true});  
     if (workflow.item.system.properties.has('mgc')) featureData.system.properties.push('mgc');
     genericUtils.setProperty(featureData, 'flags.chris-premades.setAttackRoll.formula', workflow.attackRoll.total);
+    genericUtils.setProperty(featureData, 'flags.chris-premades.setDamageRoll.typesAmountsMap', leftoverDamage);
     await workflowUtils.syntheticItemDataRoll(featureData, workflow.actor, [selection]);
 }
 function collectDamage(list, hp) {
     let pool = hp;
     let total = {};
-    list.sort((a,b) => a.active.multiplier - b.active.multiplier);
+    list.sort((a,b) => b.active.multiplier - a.active.multiplier);
     for (let entry of list) {
         if (entry.active.multiplier === 0) continue;
         total[entry.type] ??= 0;

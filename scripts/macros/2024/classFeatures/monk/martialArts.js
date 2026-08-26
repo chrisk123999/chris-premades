@@ -3,10 +3,12 @@ async function attack({trigger: {entity: item}, workflow}) {
     if (!workflowUtils.isAttackType(workflow, 'weaponAttack')) return;
     let validateWeaponType = itemUtils.getConfig(item, 'validateWeaponType');
     if (validateWeaponType) {
-        let isNatural = workflow.item.system.type.value === 'natural';
+        let type = workflow.item.system.type.value;
+        if (['simpleR', 'martialR'].includes(type)) return;
+        if (type === 'martialM' && !workflow.item.system.properties.has('lgt')) return;
+        let isNatural = type === 'natural';
         let isUnarmed = constants.unarmedAttacks.includes(genericUtils.getIdentifier(workflow.item));
         if (!isUnarmed && isNatural) return;
-        if (['martialM', 'martialR'].includes(workflow.item.system.type.value) && !workflow.item.system.properties.has('lgt')) return;
     }
     let classIdentifier = itemUtils.getConfig(item, 'classIdentifier');
     let scaleIdentifier = itemUtils.getConfig(item, 'scaleIdentifier');

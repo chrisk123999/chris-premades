@@ -2,12 +2,15 @@ import {rollUtils} from '../../../utils.js';
 async function attack({trigger, workflow}) {
     let flagData = workflow.item.flags['chris-premades']?.setAttackRoll;
     let roll;
-    if (flagData.formula) {
+    if (flagData?.formula) {
         roll = await rollUtils.rollDice(String(flagData.formula));
-    } else if (flagData.rollJSON) {
+    } else if (flagData?.rollJSON) {
         roll = await Roll.fromData(flagData.rollJSON);
     }
-    if (roll) await workflow.setAttackRoll(roll);
+    if (roll) {
+        if (workflow.isFumble) workflow.tracker.fumble.reset();
+        await workflow.setAttackRoll(roll);
+    }
 }
 export let setAttackRoll = {
     name: 'Set Attack Roll',
