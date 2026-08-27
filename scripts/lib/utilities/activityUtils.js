@@ -63,11 +63,21 @@ function withChangedDamage(activity, formulaOrObj, types=[], {specificIndex = 0}
         // as time goes on that we'll want to account for, but this should be an okay start.
         if (activityData.damage.includeBase && !activityData.damage.parts[specificIndex]) {
             activityData.damage.includeBase = false;
-            activityData.damage.parts[specificIndex] = {
-                number: number,
-                denomination: denomination,
-                bonus: bonus + ' + @mod ' + (magicalBonus ? '+ ' + magicalBonus : '')
-            };
+            if (isFormula) {
+                if (formula?.toString()?.length)
+                    activityData.damage.parts[specificIndex] = {
+                        custom: {
+                            enabled: true,
+                            formula: formula.toString()
+                        }
+                    };
+            } else {
+                activityData.damage.parts[specificIndex] = {
+                    number: number,
+                    denomination: denomination,
+                    bonus: bonus + ' + @mod ' + (magicalBonus ? '+ ' + magicalBonus : '')
+                };
+            }
         }
         else if (activityData.damage.parts[specificIndex]) {
             let isCustom = activityData.damage.parts[specificIndex].custom.enabled;

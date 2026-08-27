@@ -1,3 +1,7 @@
+# 1.5.46 Release:
+## Bug Fixes
+- Empowered Strikes
+
 # 1.5.45 Release:
 ## Bug Fixes
 - Empowered Strikes
