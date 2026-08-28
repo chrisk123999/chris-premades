@@ -53,15 +53,34 @@ Hooks.once('catReady', () => {
 
 // returns an object that may overwrite any keys in defaultInfo, or add config, notes, scales, type
 function infoFetcherCallback(_document, defaultInfo) {
-    const macroGroup = defaultInfo.rules === '2024' ? modern :
-        defaultInfo.rules === '2014' ? legacy : all;
+    const rules = defaultInfo.rules || 'all';
+    const collection = getMacroCollection(rules);
     let identifier = defaultInfo.identifier;
     if (defaultInfo.sourceType) identifier += '|' + defaultInfo.sourceType;
-    const macro = macroGroup[identifier];
-    if (macro) return {
-        config: macro.config,
-        notes: macro.notes,
-        scales: macro.scales,
-        version: macro.version
+    const macro = collection[identifier] ?? collection[defaultInfo.identifier];
+    const allMacro = all[identifier] ?? all[defaultInfo.identifier];
+    if (macro || allMacro) return {
+        scales: getScale(macro, rules) ?? getScale(allMacro, 'all'),
+        version: macro?.version ?? allMacro?.version,
+        config: macro?.config ?? allMacro?.config,
+        notes: macro?.notes ?? allMacro?.notes
     };
+}
+
+function getMacroCollection(rules) {
+    switch(rules) {
+        case '2024': return modern;
+        case '2014': return legacy;
+        default: return all;
+    }
+}
+
+function getScale(macro, rules) {
+    if (!macro?.scales?.length) return;
+    return macro.scales.map(i => ({
+        classIdentifier: i.classIdentifier,
+        identifier: i.identifier,
+        source: 'chris-premades',
+        rules
+    }));
 }
