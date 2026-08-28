@@ -4,7 +4,7 @@ async function attune(item, activity, actor) {
     const identifier = documentUtils.getIdentifier(activity);
     const spellIdentifiers = automationUtils.getConfigValue(item, identifier) ?? [];
     if (!spellIdentifiers.length) return;
-    const levels = (itemUtils.getSourceClass(item) ?? actor.classes.wizard)?.system?.levels;
+    const levels = (itemUtils.getAdvancementSourceItem(item) ?? actor.classes.wizard)?.system?.levels;
     if (!levels) return;
     const maxLevel = Math.min(9, Math.ceil(levels / 2));
     const spellDatas = (await Promise.all(spellIdentifiers.map(async spellIdentifier => {

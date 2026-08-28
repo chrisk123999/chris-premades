@@ -27,8 +27,8 @@ async function damage({document, workflow}) {
             if (actorUtils.getItemByIdentifier(workflow.actor, 'deathStrike')) workflowUtils.setWorkflowProperty(workflow, 'deathStrike', true);
             const assassinate = actorUtils.getItemByIdentifier(workflow.actor, 'assassinate');
             if (assassinate) {
-                const classIdentifier = itemUtils.getSourceClassIdentifier(document);
-                if (classIdentifier) formula += ' + ' + workflow.actor.classes[classIdentifier].system.levels;
+                const sourceClass = itemUtils.getAdvancementSourceItem(document);
+                if (sourceClass) formula += ' + ' + sourceClass.system.levels;
             }
         }
     }

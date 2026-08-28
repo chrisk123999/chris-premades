@@ -24,7 +24,7 @@ async function late({document, workflow}) {
     const spellLevel = workflowUtils.getCastLevel(workflow);
     if (!spellLevel) return;
     if (workflowUtils.isSustainedRoll(workflow)) return;
-    const sourceClass = itemUtils.getSourceClass(document) ?? workflow.actor.classes.wizard;
+    const sourceClass = itemUtils.getAdvancementSourceItem(document) ?? workflow.actor.classes.wizard;
     if (!sourceClass) return;
     const spellcastingAbility = automationUtils.getConfigValue(document, 'spellcastingAbility');
     const maxUses = sourceClass.system.levels * 2 + workflow.actor.system.abilities[spellcastingAbility].mod;

@@ -1,7 +1,7 @@
 import {actorUtils, itemUtils} from '../../../../../proxy.mjs';
 async function early({workflow}) {
     if (!workflow.targets.size) return;
-    const levels = itemUtils.getSourceClass(workflow.item)?.system?.levels ?? workflow.actor.classes.wizard?.system?.levels;
+    const levels = itemUtils.getAdvancementSourceItem(workflow.item)?.system?.levels ?? workflow.actor.classes.wizard?.system?.levels;
     if (!levels) return;
     const maxSize = levels >= 10 ? 4 : 3;
     const invalid = [...workflow.targets].filter(token => actorUtils.getSize(token.actor) > maxSize);
