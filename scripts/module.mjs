@@ -51,14 +51,14 @@ Hooks.once('catReady', () => {
     api.registerAutomationModule('chris-premades', {ignoredPackIds, infoFetcherCallback});
 });
 
-// returns an object that may overwrite any keys in defaultInfo, or add config, notes, scales, type
+// result is merged back into defaultInfo and used for the registered automation
 function infoFetcherCallback(_document, defaultInfo) {
     const rules = defaultInfo.rules || 'all';
     const collection = getMacroCollection(rules);
-    let identifier = defaultInfo.identifier;
-    if (defaultInfo.sourceType) identifier += '|' + defaultInfo.sourceType;
-    const macro = collection[identifier] ?? collection[defaultInfo.identifier];
-    const allMacro = all[identifier] ?? all[defaultInfo.identifier];
+    const baseID = defaultInfo.identifier;
+    const sourcedID = baseID + '|' + defaultInfo.sourceType;
+    const macro = collection[baseID] ?? collection[sourcedID];
+    const allMacro = all[baseID] ?? all[sourcedID];
     if (macro || allMacro) return {
         scales: getScale(macro, rules) ?? getScale(allMacro, 'all'),
         version: macro?.version ?? allMacro?.version,
