@@ -58,6 +58,7 @@
       },
       "automation": {
         "source": "chris-premades",
+        "sourceType": "class:barbarian",
         "version": "2.0.2"
       }
     }
