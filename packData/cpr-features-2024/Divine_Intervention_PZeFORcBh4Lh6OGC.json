@@ -1,98 +1,40 @@
 {
-  "_id": "UjhOKkz6tavZ1Ajx",
-  "name": "Greater Divine Intervention",
+  "name": "Divine Intervention",
   "type": "feat",
-  "effects": [
-    {
-      "name": "Divine Intervention Blocked",
-      "img": "icons/magic/light/beam-rays-yellow-blue.webp",
-      "origin": "",
-      "type": "enchantment",
-      "_id": "AuSrhdfJagarZrWb",
-      "system": {
-        "changes": [
-          {
-            "key": "system.uses.recovery",
-            "type": "override",
-            "value": {
-              "period": "none",
-              "type": "none"
-            },
-            "phase": "initial",
-            "priority": null
-          }
-        ]
-      },
-      "disabled": false,
-      "start": null,
-      "duration": {
-        "value": null,
-        "units": "seconds",
-        "expiry": null,
-        "expired": false
-      },
-      "description": "",
-      "tint": "#ffffff",
-      "transfer": false,
-      "statuses": [],
-      "showIcon": 1,
-      "folder": null,
-      "sort": 0,
-      "flags": {
-        "dnd5e": {
-          "riders": {
-            "statuses": []
-          }
-        },
-        "dae": {
-          "enableCondition": "",
-          "disableCondition": "",
-          "expiryMode": "delete",
-          "macroRepeat": "none",
-          "specialDuration": []
-        },
-        "core": {
-          "overlay": false
-        },
-        "cat": {
-          "macros": {
-            "rest": [
-              {
-                "source": "chris-premades",
-                "rules": "2024",
-                "identifier": "greater-divine-intervention-rest"
-              }
-            ]
-          }
-        }
-      },
-      "_key": "!items.effects!UjhOKkz6tavZ1Ajx.AuSrhdfJagarZrWb"
-    }
-  ],
+  "effects": [],
   "system": {
     "activities": {
-      "h5S1kV6kJkW6u2hc": {
+      "utilityDiInclass": {
         "type": "utility",
-        "_id": "h5S1kV6kJkW6u2hc",
-        "img": "",
+        "_id": "utilityDiInclass",
+        "img": null,
         "sort": 0,
         "activation": {
-          "type": "special",
-          "override": false,
-          "condition": ""
+          "type": "action",
+          "override": false
         },
         "consumption": {
+          "targets": [
+            {
+              "type": "itemUses",
+              "target": "",
+              "value": "1",
+              "scaling": {
+                "mode": "",
+                "formula": ""
+              }
+            }
+          ],
           "scaling": {
-            "allowed": false
+            "allowed": false,
+            "max": ""
           },
-          "spellSlot": true,
-          "targets": []
+          "spellSlot": true
         },
-        "description": {
-          "chatFlavor": ""
-        },
+        "description": {},
         "duration": {
           "units": "inst",
+          "special": "",
           "concentration": false,
           "override": false
         },
@@ -104,14 +46,7 @@
                 {
                   "source": "chris-premades",
                   "rules": "2024",
-                  "identifier": "greater-divine-intervention"
-                }
-              ],
-              "called": [
-                {
-                  "source": "chris-premades",
-                  "rules": "2024",
-                  "identifier": "greater-divine-intervention"
+                  "identifier": "divine-intervention"
                 }
               ]
             }
@@ -119,43 +54,42 @@
         },
         "range": {
           "units": "self",
-          "override": false,
-          "special": ""
+          "special": "",
+          "override": false
         },
         "target": {
-          "template": {
-            "contiguous": false,
-            "stationary": false,
-            "units": "ft",
-            "type": ""
-          },
+          "prompt": true,
           "affects": {
+            "count": "",
+            "type": "",
             "choice": false,
-            "type": ""
+            "special": ""
           },
-          "override": false,
-          "prompt": true
+          "template": {
+            "count": "",
+            "contiguous": false,
+            "type": "",
+            "size": "",
+            "width": "",
+            "height": "",
+            "units": "ft",
+            "stationary": false
+          },
+          "override": false
         },
         "uses": {
           "spent": 0,
-          "recovery": [],
-          "max": ""
+          "recovery": []
         },
         "visibility": {
-          "level": {
-            "min": null,
-            "max": null
-          },
+          "level": {},
           "requireAttunement": false,
           "requireIdentification": false,
-          "requireMagic": false,
-          "identifier": ""
+          "requireMagic": false
         },
         "roll": {
           "prompt": false,
-          "visible": false,
-          "name": "",
-          "formula": ""
+          "visible": false
         },
         "useConditionText": "",
         "useConditionReason": "",
@@ -177,19 +111,19 @@
           "triggeredActivityConditionText": "",
           "triggeredActivityTargets": "targets",
           "triggeredActivityRollAs": "self",
+          "confirmTargets": "default",
+          "automationOnly": false,
+          "identifier": "",
           "triggeredActivityConsume": true,
           "triggeredActivityConfigure": true,
           "autoConsume": false,
           "forceConsumeDialog": "default",
           "forceRollDialog": "default",
           "forceDamageDialog": "default",
-          "confirmTargets": "default",
           "autoTargetType": "any",
           "autoTargetAction": "default",
-          "automationOnly": false,
           "otherActivityCompatible": true,
           "otherActivityAsParentType": true,
-          "identifier": "",
           "displayActivityName": false,
           "rollMode": "default",
           "chooseEffects": false,
@@ -231,20 +165,25 @@
           "animationIntensity": 5
         },
         "otherActivityId": "none",
-        "otherActivityAsParentType": true,
-        "name": ""
+        "otherActivityAsParentType": true
       }
     },
     "uses": {
-      "spent": null,
-      "recovery": [],
-      "max": ""
+      "spent": 0,
+      "max": "1",
+      "recovery": [
+        {
+          "period": "lr",
+          "type": "recoverAll"
+        }
+      ]
     },
+    "advancement": {},
     "description": {
       "value": "",
       "chat": ""
     },
-    "identifier": "greater-divine-intervention",
+    "identifier": "divine-intervention",
     "source": {
       "book": "PHB 2024",
       "page": "",
@@ -253,12 +192,11 @@
       "rules": "2024",
       "revision": 1
     },
-    "advancement": [],
-    "cover": null,
     "crewed": false,
     "enchant": {},
     "prerequisites": {
-      "level": 20,
+      "items": [],
+      "level": 10,
       "repeatable": false
     },
     "properties": [],
@@ -272,12 +210,13 @@
     "dnd5e": {},
     "cat": {
       "automation": {
-        "version": "2.0.3",
-        "source": "chris-premades"
+        "source": "chris-premades",
+        "version": "2.0.3"
       }
     }
   },
-  "img": "icons/magic/light/beam-rays-yellow-blue.webp",
+  "img": "icons/magic/light/explosion-star-glow-blue-purple.webp",
   "folder": "zpnSU81c3nPjSzE1",
-  "_key": "!items!UjhOKkz6tavZ1Ajx"
+  "_id": "PZeFORcBh4Lh6OGC",
+  "_key": "!items!PZeFORcBh4Lh6OGC"
 }

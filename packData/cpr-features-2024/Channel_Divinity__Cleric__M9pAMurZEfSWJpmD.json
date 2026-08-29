@@ -917,7 +917,8 @@
     "cat": {
       "automation": {
         "source": "chris-premades",
-        "version": "2.0.3"
+        "version": "2.0.3",
+        "sourceType": "class:cleric"
       }
     }
   },
