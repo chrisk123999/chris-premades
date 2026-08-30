@@ -726,14 +726,14 @@
                 {
                   "source": "chris-premades",
                   "rules": "2024",
-                  "identifier": "channel-divinity"
+                  "identifier": "channel-divinity|class:cleric"
                 }
               ],
               "called": [
                 {
                   "source": "chris-premades",
                   "rules": "2024",
-                  "identifier": "channel-divinity"
+                  "identifier": "channel-divinity|class:cleric"
                 }
               ]
             }

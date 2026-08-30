@@ -297,14 +297,14 @@
                 {
                   "source": "chris-premades",
                   "rules": "2014",
-                  "identifier": "channel-divinity"
+                  "identifier": "channel-divinity|class:cleric"
                 }
               ],
               "called": [
                 {
                   "source": "chris-premades",
                   "rules": "2014",
-                  "identifier": "channel-divinity"
+                  "identifier": "channel-divinity|class:cleric"
                 }
               ]
             }

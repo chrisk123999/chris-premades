@@ -1,5 +1,5 @@
 import {actorUtils, automationUtils, constants, dialogUtils, documentUtils, effectUtils, itemUtils, Logging, workflowUtils} from '../../../../proxy.mjs';
-import {'channel-divinity' as channelDivinityLegacy, turnUndead as turnUndeadLegacy} from '../../../legacy.mjs';
+import {'channel-divinity|class:cleric' as channelDivinityLegacy, turnUndead as turnUndeadLegacy} from '../../../legacy.mjs';
 async function promptChannelDivinities({data: {workflow}}) {
     if (!workflow) return;
     const notFound = id => Logging.addMacroWarning('chris-premades', 'channel-divinity', 'Could not find an activity with identifier ' + id);
