@@ -6,7 +6,7 @@ async function onCast({document: item, workflow}) {
     if (workflow.item.type !== 'spell') return;
     if (workflowUtils.getWorkflowProperty(workflow, 'thrumOfTheLand')) return;
     const isLeyline = !!workflow.item.flags['chris-premades']?.naturalAttunement;
-    const levels = (itemUtils.getSourceClass(item) ?? workflow.actor.classes.wizard)?.system?.levels ?? 0;
+    const levels = (itemUtils.getAdvancementSourceItem(item) ?? workflow.actor.classes.wizard)?.system?.levels ?? 0;
     const isHighLevel = levels >= 14 && (workflowUtils.getCastLevel(workflow) ?? 0) >= 6;
     if (!isLeyline && !isHighLevel) return;
     if (!isLeyline && !item.system.uses.value) return;

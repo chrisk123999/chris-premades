@@ -48,35 +48,39 @@ Hooks.once('catReady', () => {
         }
     });
     api.registerSourceName('chris-premades', 'Cauldron of Plentiful Resources');
-    const configsAll = {};
-    const notesAll = {};
-    const versionsAll= {};
-    const scalesAll = {};
-    Object.entries(all).map(([identifier, value]) => {
-        if (value.config) configsAll[identifier] = value.config;
-        if (value.notes) notesAll[identifier] = value.notes;
-        if (value.version) versionsAll[identifier] = value.version;
-        if (value.scales) scalesAll[identifier] = value.scales.map(i => ({source: 'chris-premades', identifier: i.identifier, classIdentifier: i.classIdentifier, rules: 'all'}));
-    });
-    const configs2024 = {};
-    const notes2024 = {};
-    const versions2024 = {};
-    const scales2024 = {};
-    Object.entries(modern).map(([identifier, value]) => {
-        if (value.config) configs2024[identifier] = value.config;
-        if (value.notes) notes2024[identifier] = value.notes;
-        if (value.version) versions2024[identifier] = value.version;
-        if (value.scales) scales2024[identifier] = value.scales.map(i => ({source: 'chris-premades', identifier: i.identifier, classIdentifier: i.classIdentifier, rules: '2024'}));
-    });
-    const configs2014 = {};
-    const notes2014 = {};
-    const versions2014 = {};
-    const scales2014 = {};
-    Object.entries(legacy).map(([identifier, value]) => {
-        if (value.config) configs2014[identifier] = value.config;
-        if (value.notes) notes2014[identifier] = value.notes;
-        if (value.version) versions2014[identifier] = value.version;
-        if (value.scales) scales2014[identifier] = value.scales.map(i => ({source: 'chris-premades', identifier: i.identifier, classIdentifier: i.classIdentifier, rules: '2014'}));
-    });
-    api.registerAutomationModule('chris-premades', {ignoredPackIds, configs2014, configs2024, configsAll, versions2014, versions2024, versionsAll, notes2014, notes2024, notesAll, scales2014, scales2024, scalesAll});
+    api.registerAutomationModule('chris-premades', {ignoredPackIds, infoFetcherCallback});
 });
+
+// result is merged back into defaultInfo and used for the registered automation
+function infoFetcherCallback(_document, defaultInfo) {
+    const rules = defaultInfo.rules || 'all';
+    const collection = getMacroCollection(rules);
+    const baseID = defaultInfo.identifier;
+    const sourcedID = baseID + '|' + defaultInfo.sourceType;
+    const macro = collection[baseID] ?? collection[sourcedID];
+    const allMacro = all[baseID] ?? all[sourcedID];
+    if (macro || allMacro) return {
+        scales: getScale(macro, rules) ?? getScale(allMacro, 'all'),
+        version: macro?.version ?? allMacro?.version,
+        config: macro?.config ?? allMacro?.config,
+        notes: macro?.notes ?? allMacro?.notes
+    };
+}
+
+function getMacroCollection(rules) {
+    switch(rules) {
+        case '2024': return modern;
+        case '2014': return legacy;
+        default: return all;
+    }
+}
+
+function getScale(macro, rules) {
+    if (!macro?.scales?.length) return;
+    return macro.scales.map(i => ({
+        classIdentifier: i.classIdentifier,
+        identifier: i.identifier,
+        source: 'chris-premades',
+        rules
+    }));
+}
