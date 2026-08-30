@@ -5,6 +5,11 @@ export {endRage, keepRage} from './legacy/classFeatures/barbarian/rage.mjs';
 // Bard
 export {countercharm, countercharmAura} from './legacy/classFeatures/bard/countercharm.mjs';
 export {magicalInspiration as 'magical-inspiration', magicalInspirationEffect} from './legacy/classFeatures/bard/magicalInspiration.mjs';
+// Cleric
+export {channelDivinity as 'channel-divinity', turnUndead} from './legacy/classFeatures/cleric/channelDivinity.mjs';
+export {destroyUndead as 'destroy-undead'} from './legacy/classFeatures/cleric/destroyUndead.mjs';
+export {divineStrike as 'divine-strike'} from './legacy/classFeatures/cleric/divineStrike.mjs';
+export {harnessDivinePower as 'harness-divine-power'} from './legacy/classFeatures/cleric/harnessDivinePower.mjs';
 // Wizard
 export {bladesong as 'bladesong'} from './legacy/classFeatures/wizard/bladeSinging/bladesong.mjs';
 export {songOfDefense as 'song-of-defense'} from './legacy/classFeatures/wizard/bladeSinging/songOfDefense.mjs';

@@ -1,140 +1,64 @@
 {
-  "_id": "UjhOKkz6tavZ1Ajx",
-  "name": "Greater Divine Intervention",
+  "name": "Sear Undead",
   "type": "feat",
-  "effects": [
-    {
-      "name": "Divine Intervention Blocked",
-      "img": "icons/magic/light/beam-rays-yellow-blue.webp",
-      "origin": "",
-      "type": "enchantment",
-      "_id": "AuSrhdfJagarZrWb",
-      "system": {
-        "changes": [
-          {
-            "key": "system.uses.recovery",
-            "type": "override",
-            "value": {
-              "period": "none",
-              "type": "none"
-            },
-            "phase": "initial",
-            "priority": null
-          }
-        ]
-      },
-      "disabled": false,
-      "start": null,
-      "duration": {
-        "value": null,
-        "units": "seconds",
-        "expiry": null,
-        "expired": false
-      },
-      "description": "",
-      "tint": "#ffffff",
-      "transfer": false,
-      "statuses": [],
-      "showIcon": 1,
-      "folder": null,
-      "sort": 0,
-      "flags": {
-        "dnd5e": {
-          "riders": {
-            "statuses": []
-          }
-        },
-        "dae": {
-          "enableCondition": "",
-          "disableCondition": "",
-          "expiryMode": "delete",
-          "macroRepeat": "none",
-          "specialDuration": []
-        },
-        "core": {
-          "overlay": false
-        },
-        "cat": {
-          "macros": {
-            "rest": [
-              {
-                "source": "chris-premades",
-                "rules": "2024",
-                "identifier": "greater-divine-intervention-rest"
-              }
-            ]
-          }
-        }
-      },
-      "_key": "!items.effects!UjhOKkz6tavZ1Ajx.AuSrhdfJagarZrWb"
-    }
-  ],
+  "effects": [],
   "system": {
     "activities": {
-      "h5S1kV6kJkW6u2hc": {
-        "type": "utility",
-        "_id": "h5S1kV6kJkW6u2hc",
+      "damageSeaUnclass": {
+        "type": "damage",
+        "_id": "damageSeaUnclass",
         "img": "",
         "sort": 0,
         "activation": {
           "type": "special",
-          "override": false,
-          "condition": ""
+          "value": 1,
+          "condition": "",
+          "override": false
         },
         "consumption": {
+          "targets": [],
           "scaling": {
-            "allowed": false
+            "allowed": false,
+            "max": ""
           },
-          "spellSlot": true,
-          "targets": []
+          "spellSlot": true
         },
         "description": {
           "chatFlavor": ""
         },
         "duration": {
           "units": "inst",
+          "special": "",
           "concentration": false,
           "override": false
         },
         "effects": [],
-        "flags": {
-          "cat": {
-            "macros": {
-              "roll": [
-                {
-                  "source": "chris-premades",
-                  "rules": "2024",
-                  "identifier": "greater-divine-intervention"
-                }
-              ],
-              "called": [
-                {
-                  "source": "chris-premades",
-                  "rules": "2024",
-                  "identifier": "greater-divine-intervention"
-                }
-              ]
-            }
-          }
-        },
+        "flags": {},
         "range": {
-          "units": "self",
-          "override": false,
-          "special": ""
+          "value": "5",
+          "units": "any",
+          "special": "",
+          "override": false
         },
         "target": {
-          "template": {
-            "contiguous": false,
-            "stationary": false,
-            "units": "ft",
-            "type": ""
-          },
+          "prompt": true,
           "affects": {
+            "count": "",
+            "type": "creature",
             "choice": false,
-            "type": ""
+            "special": ""
           },
-          "override": false,
-          "prompt": true
+          "template": {
+            "count": "",
+            "contiguous": false,
+            "type": "",
+            "size": "",
+            "width": "",
+            "height": "",
+            "units": "ft",
+            "stationary": false
+          },
+          "override": false
         },
         "uses": {
           "spent": 0,
@@ -151,11 +75,27 @@
           "requireMagic": false,
           "identifier": ""
         },
-        "roll": {
-          "prompt": false,
-          "visible": false,
-          "name": "",
-          "formula": ""
+        "damage": {
+          "critical": {
+            "allow": false
+          },
+          "parts": [
+            {
+              "custom": {
+                "enabled": true,
+                "formula": "(@abilities.wis.mod)d8"
+              },
+              "number": null,
+              "denomination": null,
+              "bonus": "",
+              "types": [
+                "radiant"
+              ],
+              "scaling": {
+                "number": 1
+              }
+            }
+          ]
         },
         "useConditionText": "",
         "useConditionReason": "",
@@ -177,19 +117,19 @@
           "triggeredActivityConditionText": "",
           "triggeredActivityTargets": "targets",
           "triggeredActivityRollAs": "self",
+          "confirmTargets": "default",
+          "automationOnly": false,
+          "identifier": "",
           "triggeredActivityConsume": true,
           "triggeredActivityConfigure": true,
           "autoConsume": false,
           "forceConsumeDialog": "default",
           "forceRollDialog": "default",
           "forceDamageDialog": "default",
-          "confirmTargets": "default",
           "autoTargetType": "any",
           "autoTargetAction": "default",
-          "automationOnly": false,
-          "otherActivityCompatible": true,
+          "otherActivityCompatible": false,
           "otherActivityAsParentType": true,
-          "identifier": "",
           "displayActivityName": false,
           "rollMode": "default",
           "chooseEffects": false,
@@ -197,7 +137,7 @@
           "ignoreFullCover": false,
           "removeChatButtons": "default",
           "magicEffect": false,
-          "magicDamage": false,
+          "magicDamage": true,
           "noConcentrationCheck": false,
           "skipConcentrationCheck": false,
           "autoCEEffects": "default"
@@ -230,21 +170,20 @@
           "animationSpeed": 5,
           "animationIntensity": 5
         },
-        "otherActivityId": "none",
-        "otherActivityAsParentType": true,
         "name": ""
       }
     },
     "uses": {
-      "spent": null,
+      "spent": 0,
       "recovery": [],
       "max": ""
     },
+    "advancement": {},
     "description": {
       "value": "",
       "chat": ""
     },
-    "identifier": "greater-divine-intervention",
+    "identifier": "sear-undead",
     "source": {
       "book": "PHB 2024",
       "page": "",
@@ -253,31 +192,39 @@
       "rules": "2024",
       "revision": 1
     },
-    "advancement": [],
-    "cover": null,
     "crewed": false,
     "enchant": {},
     "prerequisites": {
-      "level": 20,
+      "items": [],
+      "level": 5,
       "repeatable": false
     },
     "properties": [],
     "requirements": "",
     "type": {
       "value": "class",
-      "subtype": ""
+      "subtype": "channelDivinity"
     }
   },
   "flags": {
-    "dnd5e": {},
+    "dnd5e": {
+      "last": {
+        "damageSeaUnclass": {
+          "damageType": {
+            "0": "radiant"
+          }
+        }
+      }
+    },
     "cat": {
       "automation": {
-        "version": "2.0.3",
-        "source": "chris-premades"
+        "source": "chris-premades",
+        "version": "2.0.3"
       }
     }
   },
-  "img": "icons/magic/light/beam-rays-yellow-blue.webp",
+  "img": "icons/magic/fire/flame-burning-skeleton-explosion.webp",
   "folder": "zpnSU81c3nPjSzE1",
-  "_key": "!items!UjhOKkz6tavZ1Ajx"
+  "_id": "zniR4MgJlDCt7YP0",
+  "_key": "!items!zniR4MgJlDCt7YP0"
 }

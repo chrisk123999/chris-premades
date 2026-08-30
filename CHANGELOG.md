@@ -8,8 +8,21 @@
 - Generic: multiSingleTarget
 - Empowered Evocation
 - Song of Defense
+- Greater Divine Intervention
 ## Updated Legacy Automations:
+- Channel Divinity (Cleric)
+- Destroy Undead
+- Harness Divine Power
+- Blessed Strikes
+- Potent Spellcasting
+- Divine Strike
 ## Updated Modern Automations:
+- Channel Divinity (Cleric)
+- Sear Undead
+- Potent Spellcasting
+- Improved Potent Spellcasting
+- Divine Strike
+- Divine Intervention
 
 # 2.0.2 Pre-Release:
 ## Update Notes:

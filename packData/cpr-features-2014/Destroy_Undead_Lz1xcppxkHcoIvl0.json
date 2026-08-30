@@ -1,79 +1,12 @@
 {
-  "_id": "UjhOKkz6tavZ1Ajx",
-  "name": "Greater Divine Intervention",
+  "name": "Destroy Undead",
   "type": "feat",
-  "effects": [
-    {
-      "name": "Divine Intervention Blocked",
-      "img": "icons/magic/light/beam-rays-yellow-blue.webp",
-      "origin": "",
-      "type": "enchantment",
-      "_id": "AuSrhdfJagarZrWb",
-      "system": {
-        "changes": [
-          {
-            "key": "system.uses.recovery",
-            "type": "override",
-            "value": {
-              "period": "none",
-              "type": "none"
-            },
-            "phase": "initial",
-            "priority": null
-          }
-        ]
-      },
-      "disabled": false,
-      "start": null,
-      "duration": {
-        "value": null,
-        "units": "seconds",
-        "expiry": null,
-        "expired": false
-      },
-      "description": "",
-      "tint": "#ffffff",
-      "transfer": false,
-      "statuses": [],
-      "showIcon": 1,
-      "folder": null,
-      "sort": 0,
-      "flags": {
-        "dnd5e": {
-          "riders": {
-            "statuses": []
-          }
-        },
-        "dae": {
-          "enableCondition": "",
-          "disableCondition": "",
-          "expiryMode": "delete",
-          "macroRepeat": "none",
-          "specialDuration": []
-        },
-        "core": {
-          "overlay": false
-        },
-        "cat": {
-          "macros": {
-            "rest": [
-              {
-                "source": "chris-premades",
-                "rules": "2024",
-                "identifier": "greater-divine-intervention-rest"
-              }
-            ]
-          }
-        }
-      },
-      "_key": "!items.effects!UjhOKkz6tavZ1Ajx.AuSrhdfJagarZrWb"
-    }
-  ],
+  "effects": [],
   "system": {
     "activities": {
-      "h5S1kV6kJkW6u2hc": {
-        "type": "utility",
-        "_id": "h5S1kV6kJkW6u2hc",
+      "ggKv8up0FoqheD2F": {
+        "type": "damage",
+        "_id": "ggKv8up0FoqheD2F",
         "img": "",
         "sort": 0,
         "activation": {
@@ -103,22 +36,15 @@
               "roll": [
                 {
                   "source": "chris-premades",
-                  "rules": "2024",
-                  "identifier": "greater-divine-intervention"
-                }
-              ],
-              "called": [
-                {
-                  "source": "chris-premades",
-                  "rules": "2024",
-                  "identifier": "greater-divine-intervention"
+                  "rules": "2014",
+                  "identifier": "destroy-undead"
                 }
               ]
             }
           }
         },
         "range": {
-          "units": "self",
+          "units": "any",
           "override": false,
           "special": ""
         },
@@ -131,7 +57,9 @@
           },
           "affects": {
             "choice": false,
-            "type": ""
+            "type": "creature",
+            "count": "",
+            "special": ""
           },
           "override": false,
           "prompt": true
@@ -151,11 +79,27 @@
           "requireMagic": false,
           "identifier": ""
         },
-        "roll": {
-          "prompt": false,
-          "visible": false,
-          "name": "",
-          "formula": ""
+        "damage": {
+          "critical": {
+            "allow": false
+          },
+          "parts": [
+            {
+              "custom": {
+                "enabled": true,
+                "formula": "99999"
+              },
+              "number": null,
+              "denomination": null,
+              "bonus": "",
+              "types": [
+                "none"
+              ],
+              "scaling": {
+                "number": 1
+              }
+            }
+          ]
         },
         "useConditionText": "",
         "useConditionReason": "",
@@ -187,7 +131,7 @@
           "autoTargetType": "any",
           "autoTargetAction": "default",
           "automationOnly": false,
-          "otherActivityCompatible": true,
+          "otherActivityCompatible": false,
           "otherActivityAsParentType": true,
           "identifier": "",
           "displayActivityName": false,
@@ -230,35 +174,33 @@
           "animationSpeed": 5,
           "animationIntensity": 5
         },
-        "otherActivityId": "none",
-        "otherActivityAsParentType": true,
         "name": ""
       }
     },
     "uses": {
-      "spent": null,
+      "spent": 0,
       "recovery": [],
       "max": ""
     },
+    "advancement": {},
     "description": {
       "value": "",
       "chat": ""
     },
-    "identifier": "greater-divine-intervention",
+    "identifier": "destroy-undead",
     "source": {
-      "book": "PHB 2024",
+      "book": "PHB",
       "page": "",
       "license": "",
       "custom": "",
-      "rules": "2024",
+      "rules": "2014",
       "revision": 1
     },
-    "advancement": [],
-    "cover": null,
     "crewed": false,
     "enchant": {},
     "prerequisites": {
-      "level": 20,
+      "items": [],
+      "level": 5,
       "repeatable": false
     },
     "properties": [],
@@ -272,12 +214,13 @@
     "dnd5e": {},
     "cat": {
       "automation": {
-        "version": "2.0.3",
-        "source": "chris-premades"
+        "source": "chris-premades",
+        "version": "2.0.3"
       }
     }
   },
-  "img": "icons/magic/light/beam-rays-yellow-blue.webp",
-  "folder": "zpnSU81c3nPjSzE1",
-  "_key": "!items!UjhOKkz6tavZ1Ajx"
+  "img": "icons/magic/death/skull-horned-worn-fire-blue.webp",
+  "folder": "3c0NSnjmkxO9LGz0",
+  "_id": "Lz1xcppxkHcoIvl0",
+  "_key": "!items!Lz1xcppxkHcoIvl0"
 }

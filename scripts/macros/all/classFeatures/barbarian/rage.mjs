@@ -59,7 +59,7 @@ async function rageDamage({document: effect, workflow}) {
     if (!workflowUtils.isAttackType(workflow, allowedAttack)) return;
     const formula = effect.flags['chris-premades']?.rage?.bonus;
     if (!formula) return Logging.addMacroWarning('chris-premades', 'rage', 'Rage damage bonus formula not found!');
-    return new DamageBonus(effect, {formula, optional: false}).initialize();
+    return new DamageBonus(effect, {formula, optional: false}).initialize(workflow);
 }
 export const rage = {
     name: 'Rage',

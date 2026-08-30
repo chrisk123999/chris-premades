@@ -21,6 +21,7 @@
             },
             "Default": "Default",
             "DefaultSummon": "Default Summon",
+            "DivineStrike": "Divine Strike",
             "EarthSummon": "Earth Summon",
             "EldritchBlast": "Eldritch Blast",
             "FiendSummon": "Fiend Summon",
@@ -44,6 +45,7 @@
             },
             "ShadowSummon": "Shadow Summon",
             "SmokeSummon": "Smoke Summon",
+            "Smite": "Smite",
             "SneakAttack": {
                 "Name": "Sneak Attack"
             },
@@ -120,6 +122,7 @@
             "CompendiumName": "{option} Compendium Name",
             "Conditions": "Conditions",
             "CreateActivity": "Create Activity",
+            "CreatureTypes": "Creature Types",
             "CriticalOnly": "Critical Only",
             "CustomAvatar": "Custom Avatar",
             "CustomName": "Custom Name",
@@ -199,6 +202,7 @@
             "SoundRanged": "Ranged Sound",
             "SpawnActivity": "Spawn Activity",
             "SpecificAnimation": "{option} Animation",
+            "SpellLevel": "Spell Level",
             "SpellSchool": "Spell School",
             "SpellSchools": "Spell Schools",
             "SpellSlot": "{option} Spell Slot",
@@ -252,6 +256,7 @@
                     "Zombie": "Zombie"
                 },
                 "ArcaneGrimoire": "Arcane Recovery Bonus",
+                "ChannelDivinity": "Choose a channel divinity effect:",
                 "Rage": {
                     "AllowConcentration": "Allow Concentration",
                     "AllowHeavyArmor": "Allow Heavy Armor",
@@ -284,9 +289,17 @@
                     "ItemTypeHint": "Limit this feature to certain item types.",
                     "RollActivity": "Roll this activity when used.",
                     "RollItem": "Roll this item when used.",
+                    "SpellLevelHint": "Limit this feature by spell level.",
                     "SpellSchoolHint": "Limit this feature by spell school."
                 },
                 "ConsumeItemToUse": "Consume {item} to use this feature?",
+                "DamageBonusToOneRoll": {
+                    "BonusDamageType": "Bonus Damage Type",
+                    "BonusDamageTypeHint": "Damage types to offer as choices for this bonus.",
+                    "Costs": "Use Activity Costs",
+                    "Critical": "Allow Critical",
+                    "CriticalHint": "Critical hit rules can be applied to this bonus."
+                },
                 "MovementAnimation": {
                     "MoveAnimation": "Move Animation",
                     "MovementEffect": "Movement Effect",
@@ -326,6 +339,7 @@
                     "UseRollTotalBy": "Use {itemName} for {name}? (Roll Total: {rollTotal})"
                 },
                 "DangerSense": "This save is from an effect you can see.",
+                "DestroyUndead": "Maximum CR",
                 "ExpertDivination": {
                     "MaxSlotLevel": "Maximum Slot Level",
                     "Select": "What level spell slot do you want to regain?",
@@ -340,6 +354,10 @@
                     "ExcludedCreatureTypes": "Excluded Creature Types",
                     "HealingMultiplier": "Healing Multiplier",
                     "NecromancyMultiplier": "Necromancy Healing Multiplier"
+                },
+                "HarnessDivinePower": {
+                    "Prompt": "Choose {maxAmount} slots to recover.",
+                    "NoMissing": "You do not have any eligible missing spell slots!"
                 },
                 "ManifestMind": {
                     "Far": "{actorName}'s Manifest Mind is too far away. Remove it?",
@@ -407,6 +425,7 @@
                 "GreaterDivineIntervention": {
                     "RestFormula": "Rest Recovery Formula"
                 },
+                "ImprovedPotentSpellcasting": "Select an ally to give temporary hit points to:",
                 "MemorizeSpell": {
                     "Prepare": "Select a spell to prepare:",
                     "Unprepare": "Select a spell to unprepare:"
