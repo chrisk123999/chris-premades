@@ -14,7 +14,7 @@ export {countercharm} from './modern/classFeatures/bard/countercharm.mjs';
 export {fontOfInspiration as 'font-of-inspiration'} from './modern/classFeatures/bard/fontOfInspiration.mjs';
 // Cleric
 export {blessingOfTheTrickster as 'blessing-of-the-trickster'} from './modern/classFeatures/cleric/trickery/blessingOfTheTrickster.mjs';
-export {channelDivinity as 'channel-divinity', divineSparkDamage, turnUndead} from './modern/classFeatures/cleric/channelDivinity.mjs';
+export {channelDivinity as 'channel-divinity|class:cleric', divineSparkDamage, turnUndead} from './modern/classFeatures/cleric/channelDivinity.mjs';
 export {discipleOfLife as 'disciple-of-life'} from './modern/classFeatures/cleric/life/discipleOfLife.mjs';
 export {divineIntervention as 'divine-intervention'} from './modern/classFeatures/cleric/divineIntervention.mjs';
 export {divineStrike as 'blessed-strikes-divine-strike'} from './modern/classFeatures/cleric/divineStrike.mjs';

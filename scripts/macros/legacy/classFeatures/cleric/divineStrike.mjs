@@ -17,7 +17,8 @@ async function damage({document: activity, workflow}) {
     }
     const animation = automationUtils.getResolvedAnimation(activity.item, 'animation', config.animation);
     const playAnimation = animation?.animation && animationUtils.sequencerCheck() && animationUtils.jb2aCheck() === 'patreon' && animationUtils.aseCheck();
-    return new DamageBonus(activity, {formula: config.formula, type: damageType}).withDefaultCosts()
+    return new DamageBonus(activity, {formula: config.formula, type: damageType})
+        .withDefaultCosts()
         .withOnUse(async ({workflow}) => {
             if (playAnimation) animation.animation.macros.play(workflow);
             await workflowUtils.syntheticActivityRoll(activity, []);
