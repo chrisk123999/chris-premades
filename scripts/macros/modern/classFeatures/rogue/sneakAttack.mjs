@@ -32,7 +32,14 @@ async function bonus({workflow, document}) {
     return new DamageBonus(document, {action: 'special', actor: document.actor, formula, maxTargets: 1}).withOnUse(use).withValidation(validate).initialize();
 }
 async function use({workflow, bonus, otherBonuses}) {
-
+    const inCombat = workflow.token.document.inCombat;
+    await workflowUtils.completeItemUse(bonus.document, workflow.targets, {fast: true, consumeResources: inCombat, consumeUsage: inCombat});
+    const animationSetting = automationUtils.getConfigValue(bonus.document, 'animation');
+    const animation = animationUtils.getAnimation(animationSetting);
+    if (!animation) return;
+    const targetToken = workflow.targets.first().document;
+    const attackType = workflow.rangeDetails.range > 5 ? 'ranged' : workflow.defaultDamageType;
+    await animation.macros.attack(workflow.token.document, targetToken, attackType);
 }
 async function validate({rollTotal, bonus, workflow, otherBonuses}) {
     const diceCost = otherBonuses.reduce((acc, b) => {
