@@ -1,5 +1,79 @@
-import {automationUtils, documentUtils, itemUtils, tokenUtils, workflowUtils, dialogUtils, actorUtils, animationUtils, Logging} from '../../../../proxy.mjs';
-async function damage({document, workflow}) {
+import {automationUtils, documentUtils, itemUtils, tokenUtils, workflowUtils, dialogUtils, actorUtils, animationUtils, Logging, DamageBonus} from '../../../../proxy.mjs';
+async function bonus({workflow, document}) {
+    if (workflow.hitTargets.size != 1 || !workflow.item || !workflow.activity) return;
+    if (!document.system.uses.value) return;
+    const additionalIdentifiers = await automationUtils.calledEvent('sneakAttackAdditionalIdentifiers', workflow.actor, {multiResult: true, canOverlap: true, data: {workflow}});
+    const identifier = documentUtils.getIdentifier(workflow.item);
+    if (!(workflowUtils.getActionType(workflow) === 'rwak' || workflow.item.system.properties.has('fin') || additionalIdentifiers.includes(identifier))) return;
+    let doSneak = false;
+    const rollType = (workflow.advantage && !workflow.disadvantage) ? 'advantage' : (!workflow.advantage && workflow.disadvantage) ? 'disadvantage' : 'normal';
+    if (rollType === 'advantage') doSneak = true;
+    const targetToken = workflow.targets.first().document;
+    if (!doSneak && rollType != 'disadvantage') {
+        const nearbyTokens = tokenUtils.findNearby(targetToken, 5, {disposition: 'enemy'}).filter(token => token != workflow.token.document);
+        if (nearbyTokens.length) doSneak = true;
+    }
+    doSneak ||= await automationUtils.calledEvent('sneakAttackDoSneak', workflow.actor, {data: {workflow}});
+    if (!doSneak) {
+        Logging.addMacroWarning('chris-premades', 'sneakAttack', 'Attack does not qualify for Sneak Attack.');
+        return;
+    }
+    let formula = automationUtils.getConfigValue(document, 'formula');
+    const inCombat = workflow.token.document.inCombat;
+    if (inCombat) {
+        if (workflow.token.document.combatant.combat.round === 1) {
+            const assassinate = actorUtils.getItemByIdentifier(workflow.actor, 'assassinate');
+            if (assassinate) {
+                const classIdentifier = itemUtils.getSourceClassIdentifier(document);
+                if (classIdentifier) formula += ' + ' + workflow.actor.classes[classIdentifier].system.levels;
+            }
+        }
+    }
+    return new DamageBonus(document, {action: 'special', actor: document.actor, formula, maxTargets: 1}).withOnUse(use).withValidation(validate).initialize();
+}
+async function use({workflow, bonus, otherBonuses}) {
+
+}
+async function validate({rollTotal, bonus, workflow, otherBonuses}) {
+    const diceCost = otherBonuses.reduce((acc, b) => {
+        if (!b.active) return acc;
+        if (b.tags.has('cunningStrike')) {
+            const cost = b.document.uses.max ?? 0;
+            return acc + cost;
+        }
+        return acc;
+    }, 0);
+    const damageRoll = new Roll(bonus.baseFormula);
+    const dieData = damageRoll.terms.reduce((acc, term) => {
+        if (term.faces && term.number) {
+            acc.totals[term.faces] = (acc.totals[term.faces] ?? 0) + term.number;
+            if (acc.totals[term.faces] > acc.maxCount) {
+                acc.maxCount = acc.totals[term.faces];
+                acc.targetFace = term.faces;
+            }
+        }
+        return acc;
+    }, {totals: {}, targetFace: null, maxCount: 0});
+    let originalNumber = dieData.maxCount;
+    let targetFace = dieData.targetFace;
+    if (diceCost > originalNumber) return false;
+    let remainingCost = diceCost;
+    if (remainingCost > 0 && targetFace) {
+        for (let term of damageRoll.terms) {
+            if (term.faces === targetFace && term.number > 0 && remainingCost > 0) {
+                const deduction = Math.min(term.number, remainingCost);
+                term.number -= deduction;
+                remainingCost -= deduction;
+            }
+        }
+    }
+    const newFormula = Roll.fromTerms(damageRoll.terms).formula;
+    bonus.roll = new bonus.rollClass(newFormula, bonus.roll.data, bonus.roll.options);
+}
+
+
+
+async function damageOld({document, workflow}) {
     if (workflow.hitTargets.size != 1 || !workflow.item || !workflow.activity) return;
     if (!document.system.uses.value) return;
     const additionalIdentifiers = await automationUtils.calledEvent('sneakAttackAdditionalIdentifiers', workflow.actor, {multiResult: true, canOverlap: true, data: {workflow}});
@@ -105,8 +179,8 @@ export const sneakAttack = {
     rules: '2024',
     roll: [
         {
-            pass: 'actorDamageRollBonuses',
-            macro: damage,
+            pass: 'actorOptionalBonusDamage',
+            macro: bonus,
             priority: 250
         }
     ],
