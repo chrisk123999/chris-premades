@@ -29,7 +29,7 @@ async function bonus({workflow, document}) {
             }
         }
     }
-    return new DamageBonus(document, {action: 'special', actor: document.actor, formula, maxTargets: 1}).withOnUse(use).withValidation(validate).initialize();
+    return new DamageBonus(document, {action: 'special', actor: document.actor, formula, maxTargets: 1}).withOnUse(use).withValidation(validate).initialize(workflow);
 }
 async function use({workflow, bonus, otherBonuses}) {
     const inCombat = workflow.token.document.inCombat;
@@ -77,9 +77,7 @@ async function validate({rollTotal, bonus, workflow, otherBonuses}) {
     const newFormula = Roll.fromTerms(damageRoll.terms).formula;
     bonus.roll = new bonus.rollClass(newFormula, bonus.roll.data, bonus.roll.options);
 }
-
-
-
+/*
 async function damageOld({document, workflow}) {
     if (workflow.hitTargets.size != 1 || !workflow.item || !workflow.activity) return;
     if (!document.system.uses.value) return;
@@ -179,7 +177,7 @@ async function damageOld({document, workflow}) {
     if (!animation) return;
     const attackType = workflow.rangeDetails.range > 5 ? 'ranged' : workflow.defaultDamageType;
     await animation.macros.attack(workflow.token.document, targetToken, attackType);
-}
+} */
 export const sneakAttack = {
     name: 'Sneak Attack',
     version: '2.0.1',
