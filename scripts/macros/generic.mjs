@@ -11,3 +11,4 @@ export {movementAnimation} from './generic/movementAnimation.mjs';
 export {checkModifier, saveModifier, skillModifier, toolModifier} from './generic/rollModifier.mjs';
 export {additionalTargets} from './generic/additionalTargets.mjs';
 export {damageBonusToOneRoll} from './generic/damageBonusToOneRoll.mjs';
+export {passiveAura} from './generic/passiveAura.mjs';

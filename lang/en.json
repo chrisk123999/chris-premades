@@ -44,8 +44,8 @@
                 "Message": "Right click to add waypoints. Left click to finish."
             },
             "ShadowSummon": "Shadow Summon",
-            "SmokeSummon": "Smoke Summon",
             "Smite": "Smite",
+            "SmokeSummon": "Smoke Summon",
             "SneakAttack": {
                 "Name": "Sneak Attack"
             },
@@ -70,20 +70,20 @@
             "ArmorTypes": "Armor Types",
             "AttackActivity": "Attack Activity",
             "AttackBonus": "Attack Bonus",
-            "Attacker": "Attacker",
-            "Attacks": "Attacks",
             "AttackType": {
                 "Label": "Attack Type",
                 "attack": "Attack",
                 "meleeAttack": "Melee Attack",
-                "rangedAttack": "Ranged Attack",
-                "weaponAttack": "Weapon Attack",
-                "spellAttack": "Spell Attack",
-                "rangedWeaponAttack": "Ranged Weapon Attack",
+                "meleeSpellAttack": "Melee Spell Attack",
                 "meleeWeaponAttack": "Melee Weapon Attack",
+                "rangedAttack": "Ranged Attack",
                 "rangedSpellAttack": "Ranged Spell Attack",
-                "meleeSpellAttack": "Melee Spell Attack"
+                "rangedWeaponAttack": "Ranged Weapon Attack",
+                "spellAttack": "Spell Attack",
+                "weaponAttack": "Weapon Attack"
             },
+            "Attacker": "Attacker",
+            "Attacks": "Attacks",
             "AutoApply": "Auto Apply",
             "BaseAttacks": "Base Attacks",
             "BaseDiceNumber": "Base Dice Number",
@@ -136,11 +136,14 @@
             "DarknessAnimation": "Darkness Animation",
             "DashAnimation": "Dash Animation",
             "DiceSize": "Dice Size",
+            "DisableConditions": "Disable Conditions",
             "DisplayFormulaRoll": "Display Formula Roll",
             "DisplayHint": "Display Hint",
             "Disposition": "Disposition",
+            "Dispositions": "Dispositions",
             "Distance": "Distance",
             "DurationSeconds": "Duration (Seconds)",
+            "Effect": "Effect",
             "Enable3rdPartyReaction": "Enable 3rd Party Reaction",
             "EnablePrompt": "Enable Reaction Prompt",
             "Expire": "Expiration",
@@ -156,6 +159,7 @@
             "IgnoredConditions": "Ignored Conditions",
             "IgnoredCreatureTypes": "Ignored Creature Types",
             "ImmuneCreatures": "Immune Creature Types",
+            "IncludeSelf": "Include Self",
             "ItemDelete": "GM Confirms Item Deletion",
             "ItemTypes": "Item Types",
             "Items": "Items",
@@ -189,6 +193,7 @@
             "Saves": "Saves",
             "Scale": "Scale",
             "ScaleIdentifier": "Scale Identifier",
+            "SelfDisableConditions": "Self Disable Conditions",
             "ShowIcon": "Always Show Aura Icon",
             "ShowRoll": "Show Roll",
             "SimultaneousUses": "Simultaneous Uses",
@@ -356,8 +361,8 @@
                     "NecromancyMultiplier": "Necromancy Healing Multiplier"
                 },
                 "HarnessDivinePower": {
-                    "Prompt": "Choose {maxAmount} slots to recover.",
-                    "NoMissing": "You do not have any eligible missing spell slots!"
+                    "NoMissing": "You do not have any eligible missing spell slots!",
+                    "Prompt": "Choose {maxAmount} slots to recover."
                 },
                 "ManifestMind": {
                     "Far": "{actorName}'s Manifest Mind is too far away. Remove it?",
