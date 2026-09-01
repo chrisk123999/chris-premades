@@ -22,8 +22,7 @@ async function damage({document: activity, workflow}) {
         .withOnUse(async ({workflow}) => {
             if (playAnimation) animation.animation.macros.play(workflow);
             await workflowUtils.syntheticActivityRoll(activity, []);
-        })
-        .initialize(workflow);
+        });
 }
 export const divineStrike = {
     name: 'Divine Strike',

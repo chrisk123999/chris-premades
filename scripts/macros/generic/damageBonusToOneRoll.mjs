@@ -49,8 +49,7 @@ async function damage({document, workflow}) {
         if (!workflow.hitTargets.size) return;
         bonus.withDefaultCosts().initialize(workflow);
         if (!DamageBonus.CheckCost(bonus)) return;
-    } else
-        bonus.initialize(workflow);
+    }
     return bonus;
 }
 export const damageBonusToOneRoll = {

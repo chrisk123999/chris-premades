@@ -18,8 +18,7 @@ async function damageHealing({document: effect, workflow}) {
     const formula = effect.flags['chris-premades']?.bardicInspiration;
     if (!formula) return;
     return new DamageBonus(effect, {action: 'special', actor: effect.parent, formula, maxTargets: 1, allowCritical: false})
-        .withOnUse(bardicInspiration.use)
-        .initialize(workflow);
+        .withOnUse(bardicInspiration.use);
 }
 export const magicalInspiration = {
     name: 'Magical Inspiration',

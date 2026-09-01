@@ -1,4 +1,4 @@
-import {automationUtils, documentUtils, itemUtils, tokenUtils, workflowUtils, dialogUtils, actorUtils, animationUtils, Logging, DamageBonus} from '../../../../proxy.mjs';
+import {automationUtils, documentUtils, itemUtils, tokenUtils, workflowUtils, actorUtils, animationUtils, Logging, DamageBonus} from '../../../../proxy.mjs';
 async function bonus({workflow, document}) {
     if (workflow.hitTargets.size != 1 || !workflow.item || !workflow.activity) return;
     if (!document.system.uses.value) return;
@@ -29,7 +29,9 @@ async function bonus({workflow, document}) {
             }
         }
     }
-    return new DamageBonus(document, {action: 'special', actor: document.actor, formula, maxTargets: 1}).withOnUse(use).withValidation(validate).initialize(workflow);
+    return new DamageBonus(document, {action: 'special', formula})
+        .withValidation(validate)
+        .withOnUse(use);
 }
 async function use({workflow, bonus, otherBonuses}) {
     const inCombat = workflow.token.document.inCombat;

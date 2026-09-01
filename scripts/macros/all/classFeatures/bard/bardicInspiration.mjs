@@ -30,8 +30,7 @@ async function useInspiration({document: effect, roll, workflow}) {
     const formula = effect.flags['chris-premades']?.bardicInspiration;
     if (!formula) return;
     return new D20Bonus(effect, {action: 'special', actor: effect.parent, formula})
-        .withOnUse(postUseInspiration)
-        .initialize(workflow);
+        .withOnUse(postUseInspiration);
 }
 async function postUseInspiration({bonus}) {
     await automationUtils.calledEvent('useBardicInspiration', bonus.actor, {canOverlap: true, data: {
