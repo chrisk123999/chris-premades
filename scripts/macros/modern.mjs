@@ -43,6 +43,8 @@ export {tireless} from './modern/classFeatures/ranger/tireless.mjs';
 // Rogue
 export {improvedCunningStrike as 'improved-cunning-strike'} from './modern/classFeatures/rogue/improvedCunningStrike.mjs';
 export {sneakAttack as 'sneak-attack'} from './modern/classFeatures/rogue/sneakAttack.mjs';
+// Sanguine Thief
+export {stolenPower as 'stolen-power'} from './modern/classFeatures/rogue/sanguineThief/stolenPower.mjs';
 // Wizard
 export {arcaneRecovery as 'arcane-recovery'} from './modern/classFeatures/wizard/arcaneRecovery.mjs';
 export {memorizeSpell as 'memorize-spell'} from './modern/classFeatures/wizard/memorizeSpell.mjs';
