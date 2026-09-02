@@ -6,7 +6,7 @@
     {
       "name": "Divine Intervention Blocked",
       "img": "icons/magic/light/beam-rays-yellow-blue.webp",
-      "origin": "",
+      "origin": null,
       "type": "enchantment",
       "_id": "AuSrhdfJagarZrWb",
       "system": {

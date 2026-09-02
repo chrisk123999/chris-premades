@@ -11,3 +11,4 @@ export {rageDefault, rageLightning, rageSaiyan} from './animations/rage.mjs';
 export {instinctivePounce} from './animations/instinctivePounce.mjs';
 export {smite} from './animations/smite.mjs';
 export {divineStrike} from './animations/divineStrike.mjs';
+export {hide} from './animations/hide.mjs';

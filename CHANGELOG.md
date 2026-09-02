@@ -2,7 +2,7 @@
 ## Update Notes:
 - CPR for v14 does not contain all automations that previously existed in V13.
 - Requires CAT version X.Y.Z.
-- Added Generic: damageBonusToOneRoll, passiveAura
+- Added Generic: damageBonusToOneRoll, passiveAura, hide
 ## Bug Fixes:
 - Brutal Strike
 - Generic: multiSingleTarget
@@ -24,6 +24,7 @@
 - Divine Strike
 - Divine Intervention
 - Sneak Attack
+- Cunning Action
 ## New Modern Automations:
 - Hand of Death
 

@@ -1,4 +1,4 @@
-import {animationUtils, automationUtils, documentUtils, effectUtils} from '../../proxy.mjs';
+import {automationUtils, documentUtils, effectUtils} from '../../proxy.mjs';
 async function use({document, workflow}) {
     const {animation: selectLocationsAnimation, options: selectLocationsOptions} = automationUtils.getResolvedAnimation(document, 'selectLocationsAnimation', {source: 'chris-premades', identifier: 'movementAnimation'});
     if (!selectLocationsAnimation) return;
