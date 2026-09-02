@@ -37,6 +37,7 @@ Hooks.once('catReady', () => {
         api.registerFnMacro(functionData);
         if (value.scales) {
             value.scales.forEach(i => {
+                if (!i.data) return;
                 api.registerScale({
                     source: 'chris-premades',
                     rules: value.rules ?? 'all',

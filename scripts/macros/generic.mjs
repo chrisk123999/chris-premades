@@ -13,3 +13,4 @@ export {additionalTargets} from './generic/additionalTargets.mjs';
 export {damageBonusToOneRoll} from './generic/damageBonusToOneRoll.mjs';
 export {passiveAura} from './generic/passiveAura.mjs';
 export {hide} from './generic/hide.mjs';
+export {conditionAutoSave} from './generic/conditionAutoSave.mjs';
