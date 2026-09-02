@@ -1,4 +1,4 @@
-import {automationUtils, documentUtils, itemUtils, tokenUtils, workflowUtils, actorUtils, animationUtils, Logging, DamageBonus} from '../../../../proxy.mjs';
+import {automationUtils, documentUtils, itemUtils, tokenUtils, workflowUtils, actorUtils, animationUtils, Logging, DamageBonus, rollUtils} from '../../../../proxy.mjs';
 async function bonus({workflow, document}) {
     if (workflow.hitTargets.size != 1 || !workflow.item || !workflow.activity) return;
     if (!document.system.uses.value) return;
@@ -76,8 +76,9 @@ async function validate({rollTotal, bonus, workflow, otherBonuses}) {
             }
         }
     }
-    const newFormula = Roll.fromTerms(damageRoll.terms).formula;
-    bonus.roll = new bonus.rollClass(newFormula, bonus.roll.data, bonus.roll.options);
+    let newFormula = Roll.fromTerms(damageRoll.terms).formula;
+    if (workflow.isCritical) newFormula = rollUtils.getCriticalFormula(newFormula, bonus.document, bonus.roll.options.critical);
+    bonus.roll = new bonus.rollClass(newFormula, bonus.roll.data, {...bonus.roll.options, isCritical: workflow.isCritical});
 }
 /*
 async function damageOld({document, workflow}) {
