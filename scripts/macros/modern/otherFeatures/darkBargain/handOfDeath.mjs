@@ -29,7 +29,7 @@ async function damage({document, ditem, actor, targetToken}) {
     await workflowUtils.completeActivityUse(document, [targetToken]);
 }
 async function dead({document, token, actor, effect}) {
-    if (!effect.statuses.includes('dead') || !document.item.system.uses.value) return;
+    if (!effect.statuses?.includes('dead') || !document.item.system.uses.value) return;
     const selection = await dialogUtils.confirmUseItem(document);
     if (!selection) return;
     await documentUtils.update(actor, {'system.attributes.hp.value': Math.floor(actor.system.attributes.hp.max / 2)});
