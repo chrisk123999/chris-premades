@@ -24,6 +24,11 @@ function createProxy(targetPath) {
                 return childProxy;
             }
             if (typeof value === 'function') {
+                const isClass = /^\s*class\b/.test(value.toString()) || (typeof prop === 'string' && /^[A-Z]/.test(prop));
+                if (isClass) {
+                    cache.set(prop, value);
+                    return value;
+                }
                 const boundFunction = value.bind(currentContext);
                 cache.set(prop, boundFunction);
                 return boundFunction;

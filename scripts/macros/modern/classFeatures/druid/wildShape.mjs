@@ -1,5 +1,5 @@
-import {automationUtils, compendiumUtils, constants, dialogUtils, documentUtils, genericUtils, itemUtils, Logging, rollUtils} from '../../../../proxy.mjs';
-async function chooseForm({identifier, workflow}) {
+import {applications, automationUtils, compendiumUtils, constants, dialogUtils, documentUtils, genericUtils, itemUtils, Logging, rollUtils, uiUtils, workflowUtils} from '../../../../proxy.mjs';
+async function learnShape({identifier, workflow}) {
     const config = automationUtils.getConfigValues(workflow.item, Object.keys(wildShape.config));
     const classItem = workflow.actor.classes[config.classIdentifier] ?? itemUtils.getAdvancementSourceItem(workflow.item);
     const maxForms = (await rollUtils.rollDice(config.forms, {document: workflow.activity})).total;
@@ -11,13 +11,12 @@ async function chooseForm({identifier, workflow}) {
     const wildShapeActivity = itemUtils.getActivityByIdentifier(workflow.item, 'change-shape');
     if (!wildShapeActivity) return Logging.addMacroWarning('chris-premades', identifier, 'Missing wild shape activity: change-shape');
     const forms = (await Promise.all(wildShapeActivity.profiles.map(p => fromUuid(p.uuid)))).filter(Boolean);
-    console.log('FORMS', {forms, maxForms});
     if (forms.length > maxForms) return genericUtils.notify(_loc('CHRISPREMADES.Macros.Modern.WildShape.MaxKnown', {count: forms.length, max: maxForms}), {type: 'warn'});
     let selected = await fromUuid(workflow.workflowOptions['chris-premades']?.preselectedWildShape);
     if (!selected && forms.length) {
         const addNoneDocument = forms.length < maxForms;
-        const content = _loc('CHRISPREMADES.Macros.Modern.WildShape.ChooseForm') +
-            (addNoneDocument ? _loc('CHRISPREMADES.Macros.Modern.WildShape.ChooseNewForm') : '.');
+        const content = _loc('CHRISPREMADES.Macros.Modern.WildShape.ChooseShape') +
+            (addNoneDocument ? _loc('CHRISPREMADES.Macros.Modern.WildShape.ChooseNewShape') : '.');
         selected = await dialogUtils.selectDocumentDialog(workflow.item.name, content, forms, {showCR: true, displayReference: true, addNoneDocument});
     }
     if (!selected && forms.length >= maxForms) return;
@@ -39,8 +38,79 @@ async function chooseForm({identifier, workflow}) {
     }
     await documentUtils.update(wildShapeActivity, {profiles: wildShapeActivity.profiles});
 }
-async function changeShape({actor, document: activity}) {
-
+async function preWildShape({actor, config, document: activity, token}) {
+    if (config.midiOptions['chris-premades']?.wildShape) return;
+    if (!activity.item.system.uses.value) return;
+    const forms = (await Promise.all(activity.profiles.map(async p => ({actor: await fromUuid(p.uuid), id: p._id})))).filter(Boolean);
+    if (!forms.length) {
+        genericUtils.notify('CHRISPREMADES.Macros.All.WildShape.NoShapes', {type: 'warn'});
+        return true;
+    }
+    const rules = documentUtils.getRules(activity.item);
+    const getTags = a => {
+        const tags = [{label: _loc('DND5E.CRLabel', {cr: dnd5e.utils.formatCR(a.system.details.cr || 0, {narrow: false})}), id: 'cr'}];
+        if (rules === '2014') tags.push({label: `${_loc('DND5E.HP')} ${a.system.attributes.hp.effectiveMax}`, id: 'hp'});
+        tags.push(
+            {label: `${_loc('DND5E.AC')} ${a.system.attributes.ac.value}`, id: 'ac'},
+            ...Object.entries(CONFIG.DND5E.movementTypes).map(([key, {label, hidden}]) => {
+                const value = a.system.attributes.movement[key];
+                return (value && !hidden) ? {label: `${label} ${value}`, id: key} : false;
+            }).filter(Boolean),
+            ...Object.entries(CONFIG.DND5E.senses).map(([key, label]) => {
+                const value = a.system.attributes.senses.ranges[key];
+                return value ? {label: `${label} ${value}`, id: key} : false;
+            }).filter(Boolean)
+        );
+        return tags;
+    };
+    const inputs = [['radio', forms.map(f => ({
+        label: f.actor.name,
+        name: f.id,
+        options: {
+            image: f.actor.img,
+            isChecked: f.id === activity.flags['chris-premades']?.previousShape,
+            tags: getTags(f.actor)
+        }
+    })), {displayAsRows: true, legend: 'CHRISPREMADES.Macros.All.WildShape.KnownShapes', radioName: 'shape'}]];
+    if (!inputs[0][1].some(radio => radio.options.isChecked)) inputs[0][1][0].options.isChecked = true;
+    const equipment = actor.items.filter(i => i.system.equipped && i.type !== 'container');
+    if (equipment.length) {
+        equipment.sort((a, b) => b.name.localeCompare(a.name, game.i18n.lang));
+        const entries = await Promise.all(equipment.map(async e => ({
+            label: e.name,
+            name: 'items.' + e.id,
+            options: {
+                tooltip: await uiUtils.enrichHTML(e.system.description.value, e.getRollData()),
+                isChecked: e.flags['chris-premades']?.wildShape?.wear,
+                image: e.img
+            }
+        })));
+        inputs.push(['checkbox', entries, {displayAsRows: true, legend: 'TYPES.Item.equipment'}]);
+    }
+    const choices = await applications.DialogApp.dialog(activity.item.name, 'CHRISPREMADES.Macros.All.WildShape.Prompt', inputs, 'okCancel');
+    if (!choices?.buttons) return true;
+    const keepItems = [];
+    const itemChoices = Object.entries(choices.items ?? {});
+    if (itemChoices.length) {
+        const updates = [];
+        for (const [id, keep] of itemChoices) {
+            const item = actor.items.get(id);
+            if (!item) continue;
+            if (keep) keepItems.push(item);
+            if (!!item.flags['chris-premades']?.wildShape?.wear === keep) continue;
+            updates.push({_id: id, 'flags.chris-premades.wildShape.wear': keep});
+        }
+        if (updates.length) await documentUtils.updateEmbeddedDocuments(actor, 'Item', updates);
+    }
+    await workflowUtils.syntheticActivityRoll(activity, [token], {
+        config: {transform: {profile: choices.shape}},
+        options: {'chris-premades': {wildShape: true, wildShapeItems: keepItems}}
+    });
+    return true;
+}
+async function postWildShape({workflow}) {
+    const keepItems = workflow.workflowOptions['chris-premades']?.wildShapeItems;
+    console.log('KEEP ITEMS', keepItems);
 }
 export const wildShape = {
     name: 'Wild Shape',
@@ -48,8 +118,13 @@ export const wildShape = {
     rules: '2024',
     roll: [
         {
+            pass: 'activityPreTargeting',
+            macro: preWildShape,
+            priority: 50
+        },
+        {
             pass: 'activityRollFinished',
-            macro: changeShape,
+            macro: postWildShape,
             priority: 50
         }
     ],
@@ -63,7 +138,7 @@ export const wildShape = {
         forms: {
             default: '@scale.druid.known-forms',
             type: 'text',
-            label: 'CHRISPREMADES.Macros.Modern.WildShape.KnownForms',
+            label: 'CHRISPREMADES.Macros.All.WildShape.KnownShapes',
             category: 'behavior'
         },
         cr: {
@@ -167,7 +242,7 @@ export const wildShapeChooseForms = {
     roll: [
         {
             pass: 'activityRollFinished',
-            macro: chooseForm,
+            macro: learnShape,
             priority: 50
         }
     ]

@@ -275,7 +275,10 @@
                 "WildShape": {
                     "GrantFlySpeed": "Class Level for Fly Speed",
                     "GrantSwimSpeed": "Class Level for Swim Speed",
+                    "KnownShapes": "Known Shapes",
                     "MaxCR": "Max CR",
+                    "NoShapes": "You have no known wild shapes!",
+                    "Prompt": "Choose a wild shape and any equipment your new shape will continue wearing:",
                     "ShapeCompendiums": "Wild Shape Compendiums",
                     "ShapeCompendiumsHint": "Use these compendiums instead of the monster compendiums configured in settings."
                 }
@@ -466,9 +469,8 @@
                 },
                 "WildShape": {
                     "Choose": "Choose a wild shape:",
-                    "ChooseForm": "Choose a wild shape to replace",
-                    "ChooseNewForm": ", or choose 'None' to learn a new wild shape.",
-                    "KnownForms": "Known Forms",
+                    "ChooseShape": "Choose a wild shape to replace",
+                    "ChooseNewShape": ", or choose 'None' to learn a new wild shape.",
                     "MaxKnown": "You know too many wild shapes! ({count} of {max})"
                 }
             }
