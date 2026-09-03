@@ -271,7 +271,14 @@
                     "HeavyArmor": "You are wearing heavy armor and cannot rage!",
                     "Spellcasting": "You can't spellcast while raging!"
                 },
-                "SuperiorInspiration": "Minimum Inspirations"
+                "SuperiorInspiration": "Minimum Inspirations",
+                "WildShape": {
+                    "GrantFlySpeed": "Class Level for Fly Speed",
+                    "GrantSwimSpeed": "Class Level for Swim Speed",
+                    "MaxCR": "Max CR",
+                    "ShapeCompendiums": "Wild Shape Compendiums",
+                    "ShapeCompendiumsHint": "Use these compendiums instead of the monster compendiums configured in settings."
+                }
             },
             "Generic": {
                 "AdditionalTargets": {
@@ -456,6 +463,13 @@
                 "WildResurgence": {
                     "NoSpellSlots": "You have no expended spell slots to restore!",
                     "WildShapeUses": "You still have Wild Shape uses remaining!"
+                },
+                "WildShape": {
+                    "Choose": "Choose a wild shape:",
+                    "ChooseForm": "Choose a wild shape to replace",
+                    "ChooseNewForm": ", or choose 'None' to learn a new wild shape.",
+                    "KnownForms": "Known Forms",
+                    "MaxKnown": "You know too many wild shapes! ({count} of {max})"
                 }
             }
         },
