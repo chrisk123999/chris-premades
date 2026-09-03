@@ -50,5 +50,8 @@ export {arcaneRecovery as 'arcane-recovery'} from './modern/classFeatures/wizard
 export {memorizeSpell as 'memorize-spell'} from './modern/classFeatures/wizard/memorizeSpell.mjs';
 // ** Spells
 export {chromaticOrb as 'chromatic-orb'} from './modern/spells/chromaticOrb.mjs';
+// ** Species Features
+// Grim Hollow Heritage Traits
+export {firstStrike as 'first-strike'} from './modern/speciesFeatures/grimHollowHeritageTraits/firstStrike.mjs';
 // ** Dark Bargains
 export {handOfDeath as 'hand-of-death', handOfDeathDeathKnell, handOfDeathClingToLife} from './modern/otherFeatures/darkBargain/handOfDeath.mjs';

@@ -1,5 +1,5 @@
-import {automationUtils, constants} from '../../proxy.mjs';
-async function save({config, options, document}) {
+import {automationUtils, constants, workflowUtils} from '../../proxy.mjs';
+async function save({config, options, document, token}) {
     const activity = config.cat?.activity;
     if (!activity) return;
     const conditions = config.cat?.conditions;
@@ -13,6 +13,9 @@ async function save({config, options, document}) {
     if (!hasTargetCondition) return;
     options.minimum = Math.max(options.minimum ?? 0, options.successValue ?? 99);
     options.auto = true;
+    const display = automationUtils.getGenericConfigValue(document, 'chris-premades', 'conditionAutoSave', 'display');
+    if (!display) return;
+    await workflowUtils.completeItemUse(document, [token]);
 }
 export const conditionAutoSave = {
     rules: 'all',
@@ -40,6 +43,12 @@ export const conditionAutoSave = {
             type: 'checkbox',
             category: 'behavior',
             label: 'CHRISPREMADES.Config.Magical'
+        },
+        display: {
+            default: true,
+            type: 'checkbox',
+            category: 'behavior',
+            label: 'CHRISPREMADES.Config.Display'
         }
     }
 };

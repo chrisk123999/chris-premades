@@ -138,6 +138,7 @@
             "DashAnimation": "Dash Animation",
             "DiceSize": "Dice Size",
             "DisableConditions": "Disable Conditions",
+            "Display": "Display",
             "DisplayFormulaRoll": "Display Formula Roll",
             "DisplayHint": "Display Hint",
             "Disposition": "Disposition",
@@ -315,6 +316,10 @@
                 "MultiSingleTarget": {
                     "Context": "How many? (Max: {totalTargets})",
                     "Reaction": "Use a reaction?"
+                },
+                "PreventDeath": {
+                    "DeathOnly": "Killed Outright Only",
+                    "InstantDeath": "Include Killed Outright"
                 }
             },
             "Legacy": {
