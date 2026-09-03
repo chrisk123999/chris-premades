@@ -14,7 +14,7 @@ async function use({workflow}) {
         }
         return a.identifier;
     });
-    const choice = await compendiumUtils.getSpellFromLists([`class:${config.classIdentifier}`], {
+    const choice = await compendiumUtils.selectSpellFromLists([`class:${config.classIdentifier}`], {
         filters: [{o: 'NOT', v: {k: 'system.activation.type', o: 'exact', v: 'reaction'}}],
         maxLevel: config.maxLevel,
         title: workflow.item.name,
