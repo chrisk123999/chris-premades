@@ -54,5 +54,7 @@ export {chromaticOrb as 'chromatic-orb'} from './modern/spells/chromaticOrb.mjs'
 // Grim Hollow Heritage Traits
 export {firstStrike as 'first-strike'} from './modern/speciesFeatures/grimHollowHeritageTraits/firstStrike.mjs';
 export {restorativeRest as 'restorative-rest'} from './modern/speciesFeatures/grimHollowHeritageTraits/restorativeRest.mjs';
+export {powerNap as 'power-nap'} from './modern/speciesFeatures/grimHollowHeritageTraits/powerNap.mjs';
+export {extremeResilience as 'extreme-resilience'} from './modern/speciesFeatures/grimHollowHeritageTraits/extremeResilience.mjs';
 // ** Dark Bargains
 export {handOfDeath as 'hand-of-death', handOfDeathDeathKnell, handOfDeathClingToLife} from './modern/otherFeatures/darkBargain/handOfDeath.mjs';

@@ -430,6 +430,9 @@
                     "BaseMaxJumps": "Base Max Jumps",
                     "TargetDamageSelection": "Select Damage Type For Each Target"
                 },
+                "ExtremeResilience": {
+                    "Select": "Select a feature to recover a use of."
+                },
                 "FontOfInspiration": {
                     "NoSlots": "You have no remaining spell slots!",
                     "Prompt": "Select a spell slot to spend."
@@ -441,6 +444,9 @@
                 "MemorizeSpell": {
                     "Prepare": "Select a spell to prepare:",
                     "Unprepare": "Select a spell to unprepare:"
+                },
+                "PowerNap": {
+                    "Select": "Select a hit die to recover."
                 },
                 "Rage": {
                     "EndEarly": "{actorName} has not attacked an enemy, forced an enemy to make a save, or continued their rage since their last turn. Remove Rage?"
