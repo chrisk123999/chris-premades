@@ -7,6 +7,8 @@ export {relentlessRage as 'relentless-rage'} from './all/classFeatures/barbarian
 // Bard
 export {bardicInspiration as 'bardic-inspiration', bardicInspirationEffect} from './all/classFeatures/bard/bardicInspiration.mjs';
 export {superiorInspiration as 'superior-inspiration'} from './all/classFeatures/bard/superiorInspiration.mjs';
+// Druid
+export {wildShape as 'wild-shape', wildShapeChooseForms, wildShapeRevert} from './all/classFeatures/druid/wildShape.mjs';
 // Rogue
 export {steadyAim as 'steady-aim'} from './all/classFeatures/rogue/steadyAim.mjs';
 // Equipment

@@ -273,14 +273,19 @@
                 },
                 "SuperiorInspiration": "Minimum Inspirations",
                 "WildShape": {
+                    "Choose": "Choose a wild shape:",
+                    "ChooseForm": "Choose a wild shape to replace",
+                    "ChooseNewForm": ", or choose 'None' to learn a new wild shape.",
                     "GrantFlySpeed": "Class Level for Fly Speed",
                     "GrantSwimSpeed": "Class Level for Swim Speed",
-                    "KnownShapes": "Known Shapes",
+                    "KnownForms": "Known Forms",
                     "MaxCR": "Max CR",
-                    "NoShapes": "You have no known wild shapes!",
-                    "Prompt": "Choose a wild shape and any equipment your new shape will continue wearing:",
-                    "ShapeCompendiums": "Wild Shape Compendiums",
-                    "ShapeCompendiumsHint": "Use these compendiums instead of the monster compendiums configured in settings."
+                    "MaxKnown": "You know too many wild shapes! ({count} of {max})",
+                    "NoForms": "You have no known wild shapes!",
+                    "Prompt": "Choose a wild shape and any equipment your new form will continue wearing:",
+                    "Revert": "Wild Shape: Revert",
+                    "FormCompendiums": "Wild Shape Compendiums",
+                    "FormCompendiumsHint": "Use these compendiums instead of the monster compendiums configured in settings."
                 }
             },
             "Generic": {
@@ -466,12 +471,6 @@
                 "WildResurgence": {
                     "NoSpellSlots": "You have no expended spell slots to restore!",
                     "WildShapeUses": "You still have Wild Shape uses remaining!"
-                },
-                "WildShape": {
-                    "Choose": "Choose a wild shape:",
-                    "ChooseShape": "Choose a wild shape to replace",
-                    "ChooseNewShape": ", or choose 'None' to learn a new wild shape.",
-                    "MaxKnown": "You know too many wild shapes! ({count} of {max})"
                 }
             }
         },
