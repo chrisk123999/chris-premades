@@ -26,6 +26,7 @@ export {wardingFlare as 'warding-flare'} from './modern/classFeatures/cleric/lig
 export {archdruid} from './modern/classFeatures/druid/archdruid.mjs';
 export {elementalFuryPotentSpellcasting as 'elemental-fury-potent-spellcasting'} from './modern/classFeatures/druid/potentSpellcasting.mjs';
 export {wildResurgence as 'wild-resurgence'} from './modern/classFeatures/druid/wildResurgence.mjs';
+export {wildShape as 'wild-shape'} from './modern/classFeatures/druid/wildShape.mjs';
 export {lunarForm as 'lunar-form'} from './modern/classFeatures/druid/moon/lunarForm.mjs';
 // Fighter
 export {heroicWarrior as 'heroic-warrior'} from './modern/classFeatures/fighter/heroicWarrior.mjs';
