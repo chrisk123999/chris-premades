@@ -1,4 +1,4 @@
-import {automationUtils, documentUtils, itemUtils, tokenUtils, workflowUtils, actorUtils, animationUtils, Logging, DamageBonus, rollUtils} from '../../../../proxy.mjs';
+import {automationUtils, documentUtils, itemUtils, tokenUtils, workflowUtils, actorUtils, animationUtils, Logging, DamageBonus} from '../../../../proxy.mjs';
 async function bonus({workflow, document}) {
     if (workflow.hitTargets.size != 1 || !workflow.item || !workflow.activity) return;
     if (!document.system.uses.value) return;
@@ -18,6 +18,7 @@ async function bonus({workflow, document}) {
         Logging.addMacroWarning('chris-premades', 'sneakAttack', 'Attack does not qualify for Sneak Attack.');
         return;
     }
+    workflowUtils.setWorkflowProperty(workflow, 'canSneak', true);
     let formula = automationUtils.getConfigValue(document, 'formula');
     const inCombat = workflow.token.document.inCombat;
     if (inCombat) {
@@ -29,19 +30,19 @@ async function bonus({workflow, document}) {
             }
         }
     }
-    return new DamageBonus(document, {action: 'special', formula})
-        .withValidation(validate)
-        .withOnUse(use);
+    return new DamageBonus(document, {action: 'special', formula}).withValidation(validate).withOnUse(use);
 }
 async function use({workflow, bonus, otherBonuses}) {
     const inCombat = workflow.token.document.inCombat;
     await workflowUtils.completeItemUse(bonus.document, workflow.targets, {fast: true, consumeResources: inCombat, consumeUsage: inCombat});
     const animationSetting = automationUtils.getConfigValue(bonus.document, 'animation');
     const animation = animationUtils.getAnimation(animationSetting);
-    if (!animation) return;
     const targetToken = workflow.targets.first().document;
-    const attackType = workflow.rangeDetails.range > 5 ? 'ranged' : workflow.defaultDamageType;
-    await animation.macros.attack(workflow.token.document, targetToken, attackType);
+    if (animation) {
+        const attackType = workflow.rangeDetails.range > 5 ? 'ranged' : workflow.defaultDamageType;
+        await animation.macros.attack(workflow.token.document, targetToken, attackType);
+    }
+    await automationUtils.calledEvent('sneakAttackUsed', workflow.actor, {data: {workflow, targetToken}});
 }
 async function validate({rollTotal, bonus, workflow, otherBonuses}) {
     const diceCost = otherBonuses.reduce((acc, b) => {
@@ -76,9 +77,8 @@ async function validate({rollTotal, bonus, workflow, otherBonuses}) {
             }
         }
     }
-    let newFormula = Roll.fromTerms(damageRoll.terms).formula;
-    if (workflow.isCritical) newFormula = rollUtils.getCriticalFormula(newFormula, bonus.document, bonus.roll.options.critical);
-    bonus.roll = new bonus.rollClass(newFormula, bonus.roll.data, {...bonus.roll.options, isCritical: workflow.isCritical});
+    const newFormula = Roll.fromTerms(damageRoll.terms).formula;
+    bonus.roll = new bonus.rollClass(newFormula, bonus.roll.data, bonus.roll.options);
 }
 /*
 async function damageOld({document, workflow}) {

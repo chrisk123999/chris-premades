@@ -44,10 +44,20 @@ export {tireless} from './modern/classFeatures/ranger/tireless.mjs';
 // Rogue
 export {improvedCunningStrike as 'improved-cunning-strike'} from './modern/classFeatures/rogue/improvedCunningStrike.mjs';
 export {sneakAttack as 'sneak-attack'} from './modern/classFeatures/rogue/sneakAttack.mjs';
+// Sanguine Thief
+export {stolenPower as 'stolen-power'} from './modern/classFeatures/rogue/sanguineThief/stolenPower.mjs';
 // Wizard
 export {arcaneRecovery as 'arcane-recovery'} from './modern/classFeatures/wizard/arcaneRecovery.mjs';
 export {memorizeSpell as 'memorize-spell'} from './modern/classFeatures/wizard/memorizeSpell.mjs';
 // ** Spells
 export {chromaticOrb as 'chromatic-orb'} from './modern/spells/chromaticOrb.mjs';
+// ** Species Features
+// Grim Hollow Heritage Traits
+export {firstStrike as 'first-strike'} from './modern/speciesFeatures/grimHollowHeritageTraits/firstStrike.mjs';
+export {restorativeRest as 'restorative-rest'} from './modern/speciesFeatures/grimHollowHeritageTraits/restorativeRest.mjs';
+export {powerNap as 'power-nap'} from './modern/speciesFeatures/grimHollowHeritageTraits/powerNap.mjs';
+export {extremeResilience as 'extreme-resilience'} from './modern/speciesFeatures/grimHollowHeritageTraits/extremeResilience.mjs';
 // ** Dark Bargains
 export {handOfDeath as 'hand-of-death', handOfDeathDeathKnell, handOfDeathClingToLife} from './modern/otherFeatures/darkBargain/handOfDeath.mjs';
+// ** Monster Features
+export {shieldGuardianBound, shieldGuardianBoundBind, shieldGuardianBoundDamage} from './modern/monsters/construct/shieldGuardian/bound.mjs';

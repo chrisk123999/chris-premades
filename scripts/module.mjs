@@ -1,4 +1,4 @@
-import {Logging, api, constants as catConstants} from './proxy.mjs';
+import {api, constants as catConstants} from './proxy.mjs';
 import constants from './constants.mjs';
 import * as animations from './macros/animations.mjs';
 import {all, generic, legacy, modern} from './macros.mjs';
@@ -37,6 +37,7 @@ Hooks.once('catReady', () => {
         api.registerFnMacro(functionData);
         if (value.scales) {
             value.scales.forEach(i => {
+                if (!i.data) return;
                 api.registerScale({
                     source: 'chris-premades',
                     rules: value.rules ?? 'all',
@@ -60,6 +61,7 @@ function infoFetcherCallback(_document, defaultInfo) {
     const macro = collection[baseID] ?? collection[sourcedID];
     const allMacro = all[baseID] ?? all[sourcedID];
     if (macro || allMacro) return {
+        monsterIdentifier: macro?.monsterIdentifier ?? allMacro?.monsterIdentifier,
         scales: getScale(macro, rules) ?? getScale(allMacro, 'all'),
         version: macro?.version ?? allMacro?.version,
         config: macro?.config ?? allMacro?.config,
