@@ -58,3 +58,5 @@ export {powerNap as 'power-nap'} from './modern/speciesFeatures/grimHollowHerita
 export {extremeResilience as 'extreme-resilience'} from './modern/speciesFeatures/grimHollowHeritageTraits/extremeResilience.mjs';
 // ** Dark Bargains
 export {handOfDeath as 'hand-of-death', handOfDeathDeathKnell, handOfDeathClingToLife} from './modern/otherFeatures/darkBargain/handOfDeath.mjs';
+// ** Monster Features
+export {shieldGuardianBound, shieldGuardianBoundBind, shieldGuardianBoundDamage} from './modern/monsters/construct/shieldGuardian/bound.mjs';
