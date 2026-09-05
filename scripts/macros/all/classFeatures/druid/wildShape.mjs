@@ -31,7 +31,7 @@ async function learnForm({identifier, workflow}) {
     const excludeMovement = [];
     if (!config.canFly) excludeMovement.push('fly');
     if (!config.canSwim) excludeMovement.push('swim');
-    const choice = await compendiumUtils.selectNPCFromCompendiums({
+    const choice = await compendiumUtils.selectActor({
         hint: _loc('CHRISPREMADES.Macros.All.WildShape.Choose'),
         creatureTypes: config.creatureTypes,
         title: workflow.item.name,
@@ -75,7 +75,8 @@ async function preWildShape({actor, config, document: activity, token}) {
         genericUtils.notify('CHRISPREMADES.Macros.All.WildShape.NoForms', {type: 'warn'});
         return true;
     }
-    const getTags = a => {
+    const getTags = data => {
+        const a = data.actor;
         const tags = [{label: _loc('DND5E.CRLabel', {cr: dnd5e.utils.formatCR(a.system.details.cr || 0, {narrow: false})}), id: 'cr'}];
         if (rules === '2014') tags.push({label: `${_loc('DND5E.HP')} ${a.system.attributes.hp.effectiveMax}`, id: 'hp'});
         tags.push(
@@ -89,7 +90,7 @@ async function preWildShape({actor, config, document: activity, token}) {
                 return value ? {label: `${label} ${value}`, id: key} : false;
             }).filter(Boolean)
         );
-        if (a.source) tags.push({label: a.source.name, id: 'source'});
+        if (data.source) tags.push({label: data.source.name, id: 'source'});
         return tags;
     };
     const inputs = [['radio', forms.map(f => ({
@@ -98,7 +99,7 @@ async function preWildShape({actor, config, document: activity, token}) {
         options: {
             image: f.actor.img,
             isChecked: f.id === activity.flags['chris-premades']?.previousShape,
-            tags: getTags(f.actor)
+            tags: getTags(f)
         }
     })), {displayAsRows: true, legend: 'CHRISPREMADES.Macros.All.WildShape.KnownForms', radioName: 'shape'}]];
     if (!inputs[0][1].some(radio => radio.options.isChecked)) inputs[0][1][0].options.isChecked = true;
@@ -235,7 +236,7 @@ export const wildShape = {
     name: 'Wild Shape',
     version: '2.0.3',
     rules: 'all',
-    notes: 'Use the "actorWildShape" called event (async) to modify the wild shape active effect and worn items.\n\tData available: actor, newActor, keepItems, effectData, rules.\nUse the "actorWildShapeForms" called event (async) to provide additional actor documents as choices. Return {actor, source}, where where source is the granting item and will be rolled if the actor is used.\n\tData available: activity, actor, canFly, canSwim, cr, creatureTypes, packs, rules.',
+    notes: 'Use the "actorWildShape" called event (async) to modify the wild shape active effect and worn items.\n\tData available: actor, newActor, keepItems, effectData, rules.\nUse the "actorWildShapeForms" called event (async) to provide additional actor documents as choices. Return {actor, source}, where source is the granting item and will be rolled if the actor is used.\n\tData available: activity, actor, canFly, canSwim, cr, creatureTypes, packs, rules.',
     revert: calledRevert,
     roll: [
         {
