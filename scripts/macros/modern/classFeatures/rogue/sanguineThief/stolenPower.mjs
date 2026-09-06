@@ -15,6 +15,13 @@ export const stolenPower = {
             label: 'CHRISPREMADES.Config.ClassIdentifier',
             category: 'behavior',
             hint: ''
+        },
+        diceSize: {
+            default: 'd12',
+            type: 'text',
+            label: 'CHRISPREMADES.Config.DieSize',
+            category: 'behavior',
+            hint: ''
         }
     }
 };

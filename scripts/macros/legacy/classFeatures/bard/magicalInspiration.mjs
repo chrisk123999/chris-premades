@@ -22,7 +22,7 @@ async function damageHealing({document: effect, workflow}) {
 }
 export const magicalInspiration = {
     name: 'Magical Inspiration',
-    version: '2.0.3',
+    version: '2.0.2',
     rules: '2014',
     called: [
         {

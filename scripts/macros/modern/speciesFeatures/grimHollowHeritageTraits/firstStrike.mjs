@@ -11,7 +11,7 @@ async function bonus({workflow, document}) {
 }
 export const firstStrike = {
     name: 'First Strike',
-    version: '2.0.4',
+    version: '2.0.3',
     rules: '2024',
     roll: [
         {

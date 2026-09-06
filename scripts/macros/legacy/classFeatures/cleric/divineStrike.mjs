@@ -26,7 +26,7 @@ async function damage({document: activity, workflow}) {
 }
 export const divineStrike = {
     name: 'Divine Strike',
-    version: '2.0.4',
+    version: '2.0.3',
     rules: '2014',
     roll: [
         {

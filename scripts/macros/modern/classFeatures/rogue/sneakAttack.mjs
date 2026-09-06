@@ -183,7 +183,7 @@ async function damageOld({document, workflow}) {
 } */
 export const sneakAttack = {
     name: 'Sneak Attack',
-    version: '2.0.2',
+    version: '2.0.1',
     rules: '2024',
     roll: [
         {

@@ -50,6 +50,7 @@ export {arcaneRecovery as 'arcane-recovery'} from './modern/classFeatures/wizard
 export {memorizeSpell as 'memorize-spell'} from './modern/classFeatures/wizard/memorizeSpell.mjs';
 // ** Spells
 export {chromaticOrb as 'chromatic-orb'} from './modern/spells/chromaticOrb.mjs';
+export {crimsonLash as 'crimson-lash'} from './modern/spells/crimsonLash.mjs';
 // ** Species Features
 // Grim Hollow Heritage Traits
 export {firstStrike as 'first-strike'} from './modern/speciesFeatures/grimHollowHeritageTraits/firstStrike.mjs';

@@ -26,6 +26,10 @@ const packs = {
         automationItems: 'chris-premades.CPRAutomationItems'
     }
 };
+const sangromancyFeatures = [
+    'stolen-power'
+];
 export default {
-    packs
+    packs,
+    sangromancyFeatures
 };

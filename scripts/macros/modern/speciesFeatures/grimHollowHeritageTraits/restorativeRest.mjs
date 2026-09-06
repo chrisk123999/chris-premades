@@ -8,7 +8,7 @@ async function bonus({document, roll, workflow}) {
 }
 export const restorativeRest = {
     name: 'Restorative Rest',
-    version: '2.0.4',
+    version: '2.0.3',
     rules: '2024',
     roll: [
         {

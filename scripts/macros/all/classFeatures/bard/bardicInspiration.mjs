@@ -45,7 +45,7 @@ async function postUseInspiration({bonus}) {
 }
 export const bardicInspiration = {
     name: 'Bardic Inspiration',
-    version: '2.0.4',
+    version: '2.0.2',
     rules: 'all',
     notes: 'Use the "actorPreCreateBardicInspiration" called event (async) to modify the bardic inspiration effect.\n\tData available: activity, effectData, rules, sourceActor, sourceToken, targetActor, targetToken.\nUse "actorCreatedBardicInspiration" (async) to respond when inspiration is granted.\n\tData available: activity, effect, rules, sourceActor, sourceToken, targetActor, targetToken.\nUse "actorUseBardicInspiration" to respond when inspiration is used.\n\tData available: bonus, sourceActor, targetActor.',
     use: postUseInspiration,
