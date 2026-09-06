@@ -1,0 +1,84 @@
+{
+  "name": "Improved Potent Spellcasting",
+  "type": "feat",
+  "effects": [],
+  "system": {
+    "activities": {},
+    "uses": {
+      "spent": 0,
+      "recovery": [],
+      "max": ""
+    },
+    "advancement": {},
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "identifier": "improved-elemental-fury",
+    "source": {
+      "book": "PHB 2024",
+      "page": "",
+      "license": "",
+      "custom": "",
+      "rules": "2024",
+      "revision": 1
+    },
+    "crewed": false,
+    "enchant": {},
+    "prerequisites": {
+      "items": [],
+      "level": 15,
+      "repeatable": false
+    },
+    "properties": [],
+    "requirements": "",
+    "type": {
+      "value": "class",
+      "subtype": ""
+    }
+  },
+  "flags": {
+    "dnd5e": {},
+    "cat": {
+      "alternateAttributes": {
+        "Range": [
+          {
+            "value": "300",
+            "restrictions": {
+              "RangeUnits": {
+                "value": [
+                  "ft"
+                ],
+                "invert": false
+              },
+              "MinimumBaseRange": {
+                "value": [
+                  "10"
+                ]
+              },
+              "SourceType": {
+                "value": [
+                  "class:druid"
+                ]
+              },
+              "Level": {
+                "value": [
+                  "0"
+                ],
+                "invert": false
+              }
+            }
+          }
+        ]
+      },
+      "automation": {
+        "version": "2.0.3",
+        "source": "chris-premades"
+      }
+    }
+  },
+  "img": "icons/magic/nature/leaf-arrowheads-glow-green.webp",
+  "folder": "bbR7kJffMX4MkL49",
+  "_id": "hW58GWMBKWhu9Lwp",
+  "_key": "!items!hW58GWMBKWhu9Lwp"
+}

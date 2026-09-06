@@ -1,0 +1,82 @@
+{
+  "folder": "bbR7kJffMX4MkL49",
+  "name": "Potent Spellcasting",
+  "type": "feat",
+  "_id": "TGlrHJHNckNX8VS8",
+  "img": "icons/magic/nature/leaf-rune-glow-green.webp",
+  "system": {
+    "activities": {},
+    "uses": {
+      "spent": 0,
+      "recovery": [],
+      "max": ""
+    },
+    "advancement": [],
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "identifier": "elemental-fury-potent-spellcasting",
+    "source": {
+      "revision": 1,
+      "rules": "2024",
+      "book": "",
+      "page": "",
+      "custom": "PHB 2024",
+      "license": ""
+    },
+    "crewed": false,
+    "enchant": {},
+    "prerequisites": {
+      "items": [],
+      "repeatable": false,
+      "level": 7
+    },
+    "properties": [],
+    "requirements": "",
+    "type": {
+      "value": "class",
+      "subtype": ""
+    }
+  },
+  "effects": [],
+  "flags": {
+    "dnd5e": {},
+    "cat": {
+      "automation": {
+        "version": "2.0.3"
+      },
+      "macros": {
+        "roll": [
+          {
+            "source": "chris-premades",
+            "identifier": "damageBonusToOneRoll",
+            "rules": "all"
+          }
+        ]
+      },
+      "genericConfig": {
+        "chris-premades": {
+          "damageBonusToOneRoll": {
+            "attackType": "",
+            "bonus": "@abilities.wis.mod",
+            "bonusDamageType": [],
+            "damageType": [],
+            "healingType": [],
+            "identifiers": [],
+            "itemType": [],
+            "rollActivity": "",
+            "rollItem": false,
+            "spellLevel": [
+              "0"
+            ],
+            "spellSchool": [],
+            "useActivityCosts": false,
+            "allowCritical": true
+          }
+        }
+      }
+    }
+  },
+  "_key": "!items!TGlrHJHNckNX8VS8"
+}
