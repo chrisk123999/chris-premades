@@ -49,7 +49,7 @@ async function forcefulBlowPush({document: activity, workflow}) {
 }
 export const brutalStrike = {
     name: 'Brutal Strike',
-    version: '2.0.2',
+    version: '2.0.3',
     rules: '2024',
     notes: 'Use the "actorBrutalStrike" called event (async) to modify the array of activities used as choices.\n\tData available: activities, workflow.',
     roll: [
@@ -60,6 +60,7 @@ export const brutalStrike = {
         },
         {
             pass: 'actorOptionalBonusDamage',
+            phase: 'postResult',
             macro: damage,
             priority: 200
         },

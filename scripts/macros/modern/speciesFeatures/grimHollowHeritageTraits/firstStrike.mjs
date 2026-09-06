@@ -11,11 +11,12 @@ async function bonus({workflow, document}) {
 }
 export const firstStrike = {
     name: 'First Strike',
-    version: '2.0.3',
+    version: '2.0.4',
     rules: '2024',
     roll: [
         {
             pass: 'actorOptionalBonusDamage',
+            phase: 'postResult',
             macro: bonus,
             priority: 250
         }

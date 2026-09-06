@@ -183,11 +183,12 @@ async function damageOld({document, workflow}) {
 } */
 export const sneakAttack = {
     name: 'Sneak Attack',
-    version: '2.0.1',
+    version: '2.0.2',
     rules: '2024',
     roll: [
         {
             pass: 'actorOptionalBonusDamage',
+            phase: 'postResult',
             macro: bonus,
             priority: 250
         }

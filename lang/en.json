@@ -308,7 +308,15 @@
                     "BonusDamageTypeHint": "Damage types to offer as choices for this bonus.",
                     "Costs": "Use Activity Costs",
                     "Critical": "Allow Critical",
-                    "CriticalHint": "Critical hit rules can be applied to this bonus."
+                    "CriticalHint": "Critical hit rules can be applied to this bonus.",
+                    "Phase": "Bonus Phase",
+                    "PhaseHint": "When the bonus is offered. Before the Roll spends the resource whether or not the attack lands.",
+                    "Phases": {
+                        "all": "Every Phase",
+                        "postResult": "After the Result",
+                        "preResult": "Before the Result",
+                        "preRoll": "Before the Roll"
+                    }
                 },
                 "MovementAnimation": {
                     "MoveAnimation": "Move Animation",
