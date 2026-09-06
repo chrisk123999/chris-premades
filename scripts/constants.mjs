@@ -21,6 +21,9 @@ const packs = {
     },
     samples: {
         embeddedMacros: 'chris-premades.CPREmbeddedMacroSampleItems'
+    },
+    misc: {
+        automationItems: 'chris-premades.CPRAutomationItems'
     }
 };
 export default {

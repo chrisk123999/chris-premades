@@ -184,6 +184,13 @@
       "path": "packs/cpr-embedded-macro-sample-items",
       "type": "Item",
       "module": "chris-premades"
+    },
+    {
+      "name": "CPRAutomationItems",
+      "label": "CPR Automation Items",
+      "path": "packs/cpr-automation-items",
+      "type": "Item",
+      "module": "chris-premades"
     }
   ],
   "packFolders": [
@@ -220,7 +227,8 @@
         }
       ],
       "packs": [
-        "CPREmbeddedMacroSampleItems"
+        "CPREmbeddedMacroSampleItems",
+        "CPRAutomationItems"
       ]
     }
   ],

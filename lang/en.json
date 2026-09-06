@@ -153,6 +153,7 @@
             "FavoriteActivities": "Favorite Activities",
             "Formula": "Formula",
             "Grids": "Grids",
+            "HalfDamage": "Half Damage",
             "HealingType": "Healing Type",
             "HideToken": "Hide Token",
             "HitPoints": "Hit Points",
@@ -191,6 +192,7 @@
             "RealDarkness": "Use Real Darkness",
             "RecallActivity": "Recall Activity",
             "Remember": "Remember and auto-apply choices",
+            "RemoveOnSave": "Remove On Save",
             "SaveAbilities": "Save Abilities",
             "SaveDC": "Save DC",
             "Saves": "Saves",
@@ -320,6 +322,11 @@
                 "PreventDeath": {
                     "DeathOnly": "Killed Outright Only",
                     "InstantDeath": "Include Killed Outright"
+                },
+                "ReduceMaxHP": {
+                    "LongRestCures": "Long Rest Cures",
+                    "ReduceByRoll": "Reduce By Roll",
+                    "ShortRestCures": "Short Rest Cures"
                 }
             },
             "Legacy": {

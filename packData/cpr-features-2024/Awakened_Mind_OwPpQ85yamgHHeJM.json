@@ -1,0 +1,75 @@
+{
+  "type": "feat",
+  "name": "Awakened Mind",
+  "img": "icons/magic/perception/third-eye-blue-red.webp",
+  "system": {
+    "activities": {},
+    "uses": {
+      "spent": 0,
+      "recovery": []
+    },
+    "advancement": {},
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "identifier": "awakened-mind",
+    "source": {
+      "revision": 1,
+      "rules": "2024",
+      "book": "",
+      "page": "",
+      "custom": "",
+      "license": ""
+    },
+    "crewed": false,
+    "enchant": {},
+    "prerequisites": {
+      "items": [],
+      "repeatable": false
+    },
+    "properties": [],
+    "requirements": "",
+    "type": {
+      "value": "race",
+      "subtype": ""
+    }
+  },
+  "effects": [],
+  "folder": "qszA3cg87mjNcVc1",
+  "flags": {
+    "cat": {
+      "genericConfig": {
+        "chris-premades": {
+          "conditionAutoSave": {
+            "conditions": [
+              "incapacitated",
+              "stunned",
+              "unconscious"
+            ],
+            "magical": true,
+            "display": true
+          }
+        }
+      },
+      "macros": {
+        "save": [
+          {
+            "source": "chris-premades",
+            "identifier": "conditionAutoSave",
+            "rules": "all"
+          }
+        ]
+      },
+      "automation": {
+        "source": "chris-premades",
+        "version": "0"
+      }
+    },
+    "dnd5e": {
+      "-=riders": null
+    }
+  },
+  "_id": "OwPpQ85yamgHHeJM",
+  "_key": "!items!OwPpQ85yamgHHeJM"
+}

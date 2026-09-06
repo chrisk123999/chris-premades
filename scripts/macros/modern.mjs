@@ -56,7 +56,8 @@ export {firstStrike as 'first-strike'} from './modern/speciesFeatures/grimHollow
 export {restorativeRest as 'restorative-rest'} from './modern/speciesFeatures/grimHollowHeritageTraits/restorativeRest.mjs';
 export {powerNap as 'power-nap'} from './modern/speciesFeatures/grimHollowHeritageTraits/powerNap.mjs';
 export {extremeResilience as 'extreme-resilience'} from './modern/speciesFeatures/grimHollowHeritageTraits/extremeResilience.mjs';
+export {etherealFade as 'ethereal-fade', etherealFadeEnd} from './modern/speciesFeatures/grimHollowHeritageTraits/etherealFade.mjs';
 // ** Dark Bargains
 export {handOfDeath as 'hand-of-death', handOfDeathDeathKnell, handOfDeathClingToLife} from './modern/otherFeatures/darkBargain/handOfDeath.mjs';
 // ** Monster Features
-export {shieldGuardianBound, shieldGuardianBoundBind, shieldGuardianBoundDamage} from './modern/monsters/construct/shieldGuardian/bound.mjs';
+export {shieldGuardianBound as 'bound|shield-guardian', shieldGuardianBoundBind, shieldGuardianBoundDamage} from './modern/monsters/construct/shieldGuardian/bound.mjs';

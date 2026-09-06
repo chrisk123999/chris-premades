@@ -12,7 +12,8 @@ let packs = [
     'cpr-misc-2024',
     'cpr-embedded-macro-sample-items',
     'cpr-summons-2014',
-    'cpr-summons-2024'
+    'cpr-summons-2024',
+    'cpr-automation-items'
 ];
 for (let i of packs) {
     await compilePack('./packData/' + i, './packs/' + i, {log: true});
