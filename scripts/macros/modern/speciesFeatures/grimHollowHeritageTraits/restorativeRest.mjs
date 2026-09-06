@@ -8,11 +8,12 @@ async function bonus({document, roll, workflow}) {
 }
 export const restorativeRest = {
     name: 'Restorative Rest',
-    version: '2.0.3',
+    version: '2.0.4',
     rules: '2024',
-    roll: [ 
+    roll: [
         {
             pass: 'actorOptionalBonusAttack',
+            phase: 'preResult',
             macro: bonus,
             priority: 300
         }
@@ -20,6 +21,7 @@ export const restorativeRest = {
     check: [
         {
             pass: 'actorOptionalBonus',
+            phase: 'preResult',
             macro: bonus,
             priority: 300
         }
@@ -27,6 +29,7 @@ export const restorativeRest = {
     save: [
         {
             pass: 'actorOptionalBonus',
+            phase: 'preResult',
             macro: bonus,
             priority: 300
         }
@@ -34,6 +37,7 @@ export const restorativeRest = {
     skill: [
         {
             pass: 'actorOptionalBonus',
+            phase: 'preResult',
             macro: bonus,
             priority: 300
         }
@@ -42,6 +46,7 @@ export const restorativeRest = {
     tool: [
         {
             pass: 'actorOptionalBonus',
+            phase: 'preResult',
             macro: bonus,
             priority: 300
         }

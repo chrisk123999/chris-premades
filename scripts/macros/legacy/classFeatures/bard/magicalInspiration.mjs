@@ -22,7 +22,7 @@ async function damageHealing({document: effect, workflow}) {
 }
 export const magicalInspiration = {
     name: 'Magical Inspiration',
-    version: '2.0.2',
+    version: '2.0.3',
     rules: '2014',
     called: [
         {
@@ -36,9 +36,10 @@ export const magicalInspirationEffect = {
     name: magicalInspiration.name,
     version: magicalInspiration.version,
     rules: magicalInspiration.rules,
-    roll: [ 
+    roll: [
         {
             pass: 'actorOptionalBonusDamage',
+            phase: 'postResult',
             macro: damageHealing,
             priority: 300
         }
