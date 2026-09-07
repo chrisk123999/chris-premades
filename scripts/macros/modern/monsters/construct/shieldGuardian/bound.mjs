@@ -1,7 +1,7 @@
 import {activityUtils, actorUtils, automationUtils, tokenUtils, workflowUtils} from '../../../../../proxy.mjs';
 async function bind({document, workflow}) {
     if (!workflow.targets.size) return;
-    await automationUtils.setConfigValue(document, 'target', workflow.targets.first().actor.uuid);
+    await automationUtils.setConfigValue(document.item, 'target', workflow.targets.first().actor.uuid);
 }
 async function damaged({document, ditem, targetToken}) {
     if (!ditem.isHit || ditem.damageDetail[0]?.type === 'none' || (ditem.oldHP <= ditem.newHP && ditem.newTempHP >= ditem.oldTempHP)) return;
