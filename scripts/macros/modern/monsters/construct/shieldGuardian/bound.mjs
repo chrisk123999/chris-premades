@@ -16,7 +16,7 @@ async function damaged({document, ditem, targetToken}) {
     const remainingDamage = ditem.totalDamage - transferDamage;
     workflowUtils.setDamageItemDamage(ditem, remainingDamage);
     const activityData = activityUtils.getDamageModifiedActivityData(document, String(transferDamage));
-    await workflowUtils.syntheticActivityDataRoll(activityData, document, [guardianToken]);
+    await workflowUtils.syntheticActivityDataRoll(activityData, document.item, [guardianToken]);
 }
 export const shieldGuardianBound = {
     name: 'Bound',

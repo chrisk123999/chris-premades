@@ -45,6 +45,7 @@ export {improvedCunningStrike as 'improved-cunning-strike'} from './modern/class
 export {sneakAttack as 'sneak-attack'} from './modern/classFeatures/rogue/sneakAttack.mjs';
 // Sanguine Thief
 export {stolenPower as 'stolen-power'} from './modern/classFeatures/rogue/sanguineThief/stolenPower.mjs';
+export {stealBlood as 'steal-blood'} from './modern/classFeatures/rogue/sanguineThief/stealBlood.mjs';
 // Wizard
 export {arcaneRecovery as 'arcane-recovery'} from './modern/classFeatures/wizard/arcaneRecovery.mjs';
 export {memorizeSpell as 'memorize-spell'} from './modern/classFeatures/wizard/memorizeSpell.mjs';
