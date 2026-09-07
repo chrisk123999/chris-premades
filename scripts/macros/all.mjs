@@ -9,6 +9,7 @@ export {bardicInspiration as 'bardic-inspiration', bardicInspirationEffect} from
 export {superiorInspiration as 'superior-inspiration'} from './all/classFeatures/bard/superiorInspiration.mjs';
 // Druid
 export {wildShape as 'wild-shape', wildShapeChooseForms, wildShapeRevert} from './all/classFeatures/druid/wildShape.mjs';
+export {beastSpells as 'beast-spells'} from './all/classFeatures/druid/beastSpells.mjs';
 // Rogue
 export {steadyAim as 'steady-aim'} from './all/classFeatures/rogue/steadyAim.mjs';
 // Equipment
