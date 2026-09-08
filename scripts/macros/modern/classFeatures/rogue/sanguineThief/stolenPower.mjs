@@ -17,7 +17,7 @@ export const stolenPower = {
             hint: ''
         },
         diceSize: {
-            default: 'd12',
+            default: 'd8',
             type: 'text',
             label: 'CHRISPREMADES.Config.DieSize',
             category: 'behavior',
