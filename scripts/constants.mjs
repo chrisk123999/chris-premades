@@ -17,8 +17,15 @@ const packs = {
     },
     samples: {
         embeddedMacros: 'chris-premades.CPREmbeddedMacroSampleItems'
+    },
+    misc: {
+        automationItems: 'chris-premades.CPRAutomationItems'
     }
 };
+const sangromancyFeatures = [
+    'stolen-power'
+];
 export default {
-    packs
+    packs,
+    sangromancyFeatures
 };

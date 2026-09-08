@@ -9,7 +9,7 @@ async function use({document, workflow, castData}) {
     if (!sourceActor) return await exit();
     const description = automationUtils.getConfigValue(workflow.item, 'slamDescription');
     const translate = 'CHRISPREMADES.Macros.Legacy.AnimateObjects.SlamName';
-    const attackData = await compendiumUtils.getDocumentByIdentifier('chris-premades.CPRFeatures2014', 'animate-objects-slam', {object: true, description, translate});
+    const attackData = await compendiumUtils.getDocumentByIdentifier('chris-premades.AutomationItems', 'animate-objects-slam', {object: true, description, translate});
     if (!attackData) return await exit();
     const weights = {};
     const documents = [];

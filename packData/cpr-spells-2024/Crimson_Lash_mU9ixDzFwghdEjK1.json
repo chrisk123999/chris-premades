@@ -1,0 +1,337 @@
+{
+  "type": "spell",
+  "system": {
+    "activities": {
+      "utilityCrimsLash": {
+        "type": "utility",
+        "_id": "utilityCrimsLash",
+        "img": "",
+        "sort": 0,
+        "activation": {
+          "type": "action",
+          "override": false
+        },
+        "consumption": {
+          "spellSlot": true,
+          "targets": [],
+          "scaling": {
+            "allowed": false,
+            "max": ""
+          }
+        },
+        "description": {
+          "chatFlavor": ""
+        },
+        "duration": {
+          "units": "inst",
+          "concentration": false,
+          "override": false
+        },
+        "effects": [
+          {
+            "_id": "tTvTxsmuYB304EVq",
+            "level": {}
+          }
+        ],
+        "flags": {},
+        "range": {
+          "units": "self",
+          "override": false
+        },
+        "target": {
+          "template": {
+            "contiguous": false,
+            "stationary": false,
+            "units": "ft"
+          },
+          "affects": {
+            "choice": false
+          },
+          "override": false,
+          "prompt": true
+        },
+        "uses": {
+          "spent": 0,
+          "recovery": [],
+          "max": ""
+        },
+        "visibility": {
+          "level": {
+            "min": null,
+            "max": null
+          },
+          "requireAttunement": false,
+          "requireIdentification": false,
+          "requireMagic": false
+        },
+        "roll": {
+          "prompt": false,
+          "visible": false,
+          "name": "",
+          "formula": ""
+        },
+        "useConditionText": "",
+        "useConditionReason": "",
+        "effectConditionText": "",
+        "macroData": {
+          "name": "",
+          "command": ""
+        },
+        "ignoreTraits": {
+          "idi": false,
+          "idr": false,
+          "idv": false,
+          "ida": false,
+          "idm": false
+        },
+        "midiProperties": {
+          "ignoreTraits": [],
+          "triggeredActivityId": "none",
+          "triggeredActivityConditionText": "",
+          "triggeredActivityTargets": "targets",
+          "triggeredActivityRollAs": "self",
+          "confirmTargets": "default",
+          "automationOnly": false,
+          "identifier": "",
+          "triggeredActivityConsume": true,
+          "triggeredActivityConfigure": true,
+          "autoConsume": false,
+          "forceConsumeDialog": "default",
+          "forceRollDialog": "default",
+          "forceDamageDialog": "default",
+          "autoTargetType": "any",
+          "autoTargetAction": "default",
+          "otherActivityCompatible": false,
+          "otherActivityAsParentType": true,
+          "displayActivityName": false,
+          "rollMode": "default",
+          "chooseEffects": false,
+          "toggleEffect": false,
+          "ignoreFullCover": false,
+          "removeChatButtons": "default",
+          "magicEffect": false,
+          "magicDamage": false,
+          "noConcentrationCheck": false,
+          "skipConcentrationCheck": false,
+          "autoCEEffects": "default"
+        },
+        "isOverTimeFlag": false,
+        "overTimeProperties": {
+          "saveRemoves": true,
+          "rollAs": "target",
+          "preRemoveConditionText": "",
+          "postRemoveConditionText": ""
+        },
+        "regionBehavior": {
+          "enabled": false,
+          "dispositionFilter": -1,
+          "excludeSource": true,
+          "oncePerTurn": true,
+          "wallRestriction": "none",
+          "regionVisibility": 2,
+          "attachToken": "default",
+          "rules": []
+        },
+        "regionLight": {
+          "enabled": false,
+          "dim": 0,
+          "bright": 0,
+          "color": null,
+          "alpha": 0.5,
+          "luminosity": 0.5,
+          "animationType": "",
+          "animationSpeed": 5,
+          "animationIntensity": 5
+        },
+        "otherActivityId": "none",
+        "otherActivityAsParentType": true,
+        "name": ""
+      }
+    },
+    "uses": {
+      "spent": null,
+      "max": "",
+      "recovery": []
+    },
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "identifier": "crimson-lash",
+    "source": {
+      "book": "GHPG",
+      "page": "",
+      "license": "",
+      "custom": "",
+      "rules": "2024",
+      "revision": 1
+    },
+    "activation": {
+      "type": "bonus",
+      "value": 1,
+      "condition": ""
+    },
+    "duration": {
+      "value": "1",
+      "units": "minute"
+    },
+    "level": 1,
+    "materials": {
+      "value": "",
+      "consumed": false,
+      "cost": 0,
+      "supply": 0
+    },
+    "method": "spell",
+    "properties": [
+      "somatic"
+    ],
+    "range": {
+      "units": "self"
+    },
+    "school": "con",
+    "target": {
+      "affects": {
+        "count": "",
+        "type": "self",
+        "choice": false,
+        "special": ""
+      },
+      "template": {
+        "count": "",
+        "contiguous": false,
+        "type": "",
+        "size": "",
+        "width": "",
+        "height": "",
+        "units": "ft",
+        "stationary": false
+      }
+    },
+    "prepared": 1
+  },
+  "effects": [
+    {
+      "name": "Crimson Lash",
+      "img": "icons/skills/wounds/blood-spurt-spray-red.webp",
+      "origin": "Actor.RiswynnLv0500000.Item.lf8kRqMjJI5E9lzk",
+      "transfer": false,
+      "_id": "tTvTxsmuYB304EVq",
+      "type": "base",
+      "system": {
+        "changes": []
+      },
+      "disabled": false,
+      "start": null,
+      "duration": {
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "statuses": [],
+      "showIcon": 1,
+      "folder": null,
+      "sort": 0,
+      "flags": {
+        "cat": {
+          "identifier": "crimsonLashEffect"
+        },
+        "dnd5e": {
+          "riders": {
+            "statuses": []
+          }
+        },
+        "dae": {
+          "enableCondition": "",
+          "disableCondition": "",
+          "stackable": "noneName",
+          "expiryMode": "default",
+          "durationExpression": "",
+          "macroRepeat": "none",
+          "disableIncapacitated": false,
+          "selfTarget": false,
+          "selfTargetAlways": false,
+          "dontApply": false,
+          "specialDuration": [],
+          "phaseStamped": true
+        },
+        "core": {
+          "overlay": false
+        }
+      },
+      "_key": "!items.effects!mU9ixDzFwghdEjK1.tTvTxsmuYB304EVq"
+    }
+  ],
+  "name": "Crimson Lash",
+  "flags": {
+    "ddbimporter": {
+      "id": 25124932,
+      "definitionId": 3014222,
+      "entityTypeId": 435869154,
+      "dndbeyond": {
+        "lookup": "generic",
+        "lookupName": "generic",
+        "level": null,
+        "castAtLevel": null,
+        "homebrew": false,
+        "sourceCategoryId": 18
+      },
+      "originalName": "Crimson Lash",
+      "sources": [
+        {
+          "sourceId": 207,
+          "pageNumber": 190,
+          "sourceType": 1
+        }
+      ],
+      "tags": [
+        "Sangromancy"
+      ],
+      "version": "7.3.15",
+      "is2014": false,
+      "is2024": true,
+      "addSpellEffects": true,
+      "legacy": false,
+      "defaultAdditionalActivities": {
+        "enabled": true,
+        "data": {}
+      },
+      "effectsApplied": true
+    },
+    "midi-qol": {
+      "removeAttackDamageButtons": "default"
+    },
+    "midiProperties": {
+      "confirmTargets": "default",
+      "magicdam": true,
+      "magiceffect": true
+    },
+    "spell-class-filter-for-5e": {},
+    "tidy5e-sheet": {},
+    "cat": {
+      "macros": {
+        "roll": [
+          {
+            "source": "chris-premades",
+            "rules": "2024",
+            "identifier": "crimson-lash"
+          }
+        ]
+      },
+      "automation": {
+        "source": "chris-premades",
+        "version": "2.0.3"
+      }
+    },
+    "dnd5e": {
+      "-=riders": null
+    }
+  },
+  "folder": "pfzYb8UerE97sz8L",
+  "img": "icons/skills/wounds/blood-spurt-spray-red.webp",
+  "_id": "mU9ixDzFwghdEjK1",
+  "_key": "!items!mU9ixDzFwghdEjK1"
+}

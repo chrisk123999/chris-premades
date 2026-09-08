@@ -10,7 +10,8 @@ let itemPacks = [
     'cpr-spells-2024',
     'cpr-equipment-2024',
     'cpr-misc-2024',
-    'cpr-embedded-macro-sample-items'
+    'cpr-embedded-macro-sample-items',
+    'cpr-automation-items'
 ];
 let actorPacks = [
     'cpr-summons-2014',

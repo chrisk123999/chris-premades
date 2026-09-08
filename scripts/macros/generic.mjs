@@ -17,3 +17,4 @@ export {correctSpellLink} from './generic/correctSpellLink.mjs';
 export {conditionAutoSave} from './generic/conditionAutoSave.mjs';
 export {preventDeath} from './generic/preventDeath.mjs';
 export {unhideActivities} from './generic/unhideActivities.mjs';
+export {reduceMaxHP} from './generic/reduceMaxHP.mjs';

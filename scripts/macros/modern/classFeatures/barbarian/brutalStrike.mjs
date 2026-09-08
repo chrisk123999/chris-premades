@@ -60,6 +60,7 @@ export const brutalStrike = {
         },
         {
             pass: 'actorOptionalBonusDamage',
+            phase: 'postResult',
             macro: damage,
             priority: 200
         },

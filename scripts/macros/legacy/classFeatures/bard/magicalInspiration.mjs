@@ -36,9 +36,10 @@ export const magicalInspirationEffect = {
     name: magicalInspiration.name,
     version: magicalInspiration.version,
     rules: magicalInspiration.rules,
-    roll: [ 
+    roll: [
         {
             pass: 'actorOptionalBonusDamage',
+            phase: 'postResult',
             macro: damageHealing,
             priority: 300
         }

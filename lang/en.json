@@ -137,6 +137,7 @@
             "DarknessAnimation": "Darkness Animation",
             "DashAnimation": "Dash Animation",
             "DiceSize": "Dice Size",
+            "DieSize": "Die Size",
             "DisableConditions": "Disable Conditions",
             "Display": "Display",
             "DisplayFormulaRoll": "Display Formula Roll",
@@ -153,6 +154,7 @@
             "FavoriteActivities": "Favorite Activities",
             "Formula": "Formula",
             "Grids": "Grids",
+            "HalfDamage": "Half Damage",
             "HealingType": "Healing Type",
             "HideToken": "Hide Token",
             "HitPoints": "Hit Points",
@@ -191,6 +193,7 @@
             "RealDarkness": "Use Real Darkness",
             "RecallActivity": "Recall Activity",
             "Remember": "Remember and auto-apply choices",
+            "RemoveOnSave": "Remove On Save",
             "SaveAbilities": "Save Abilities",
             "SaveDC": "Save DC",
             "Saves": "Saves",
@@ -324,7 +327,15 @@
                     "BonusDamageTypeHint": "Damage types to offer as choices for this bonus.",
                     "Costs": "Use Activity Costs",
                     "Critical": "Allow Critical",
-                    "CriticalHint": "Critical hit rules can be applied to this bonus."
+                    "CriticalHint": "Critical hit rules can be applied to this bonus.",
+                    "Phase": "Bonus Phase",
+                    "PhaseHint": "When the bonus is offered. Before the Roll spends the resource whether or not the attack lands.",
+                    "Phases": {
+                        "all": "Every Phase",
+                        "postResult": "After the Result",
+                        "preResult": "Before the Result",
+                        "preRoll": "Before the Roll"
+                    }
                 },
                 "MovementAnimation": {
                     "MoveAnimation": "Move Animation",
@@ -338,6 +349,11 @@
                 "PreventDeath": {
                     "DeathOnly": "Killed Outright Only",
                     "InstantDeath": "Include Killed Outright"
+                },
+                "ReduceMaxHP": {
+                    "LongRestCures": "Long Rest Cures",
+                    "ReduceByRoll": "Reduce By Roll",
+                    "ShortRestCures": "Short Rest Cures"
                 }
             },
             "Legacy": {

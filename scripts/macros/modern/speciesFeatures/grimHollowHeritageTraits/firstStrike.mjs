@@ -16,6 +16,7 @@ export const firstStrike = {
     roll: [
         {
             pass: 'actorOptionalBonusDamage',
+            phase: 'postResult',
             macro: bonus,
             priority: 250
         }

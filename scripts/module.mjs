@@ -2,24 +2,9 @@ import {api, constants as catConstants} from './proxy.mjs';
 import constants from './constants.mjs';
 import * as animations from './macros/animations.mjs';
 import {all, generic, legacy, modern} from './macros.mjs';
-Hooks.once('i18nInit', () => {
-
-});
-Hooks.once('init', () => {
-
-});
-Hooks.once('libWrapper.Ready', () => {
-
-});
-Hooks.once('ready', () => {
-    
-});
-Hooks.once('catInit', () => {
-
-});
 Hooks.once('catReady', () => {
     const validKeys = [...catConstants.triggerTypes(), 'rules', 'generic', 'genericConfig', 'documents'];
-    const ignoredPackIds = [constants.packs.samples.embeddedMacros];
+    const ignoredPackIds = [constants.packs.samples.embeddedMacros, constants.packs.misc.automationItems];
     Object.entries(animations).forEach(([identifier, value]) => api.registerAnimation({
         ...value,
         source: 'chris-premades',

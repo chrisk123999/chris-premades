@@ -32,7 +32,7 @@ async function beginRage({workflow}) {
     const effectData = documentUtils.getEffectData(workflow.activity, sourceEffect.id, {createAnimation: config.animation, deleteAnimation: config.animation, unhideActivities, rules, specialDuration, vae});
     genericUtils.setProperty(effectData, 'flags.chris-premades.rage', config);
     const calledData = {
-        activity: workflow.activity, 
+        activity: workflow.activity,
         actor: workflow.actor,
         rules,
         token: workflow.token.document
@@ -71,7 +71,7 @@ export const rage = {
             pass: 'activityPreambleComplete',
             macro: preChecks,
             priority: 100
-        },   
+        },
         {
             pass: 'activityRollFinished',
             macro: beginRage,
@@ -156,6 +156,7 @@ export const raging = {
         },
         {
             pass: 'actorOptionalBonusDamage',
+            phase: 'postResult',
             macro: rageDamage,
             priority: 100
         }

@@ -1,0 +1,92 @@
+{
+  "name": "Stolen Power",
+  "type": "feat",
+  "effects": [],
+  "system": {
+    "activities": {},
+    "uses": {
+      "spent": 0,
+      "max": "@scale.rogue.sneak-attack.number",
+      "recovery": [
+        {
+          "period": "lr",
+          "type": "recoverAll"
+        }
+      ]
+    },
+    "advancement": {},
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "identifier": "stolen-power",
+    "source": {
+      "book": "GHPG",
+      "page": "",
+      "license": "",
+      "custom": "",
+      "rules": "2024",
+      "revision": 1
+    },
+    "crewed": false,
+    "enchant": {},
+    "prerequisites": {
+      "items": [],
+      "level": 3,
+      "repeatable": false
+    },
+    "properties": [],
+    "requirements": "",
+    "type": {
+      "value": "class",
+      "subtype": ""
+    }
+  },
+  "flags": {
+    "ddbimporter": {
+      "isChoiceFeature": false,
+      "id": 12075859,
+      "type": "class",
+      "entityTypeId": 12168134,
+      "is2014": false,
+      "is2024": true,
+      "legacy": false,
+      "originalName": "Stolen Power",
+      "dndbeyond": {
+        "requiredLevel": 3,
+        "displayOrder": 200,
+        "featureType": 1,
+        "class": "Rogue",
+        "classId": 2566905,
+        "entityType": "class-feature",
+        "levelScale": null,
+        "levelScales": [],
+        "limitedUse": [
+          {
+            "level": null,
+            "uses": 1
+          }
+        ]
+      },
+      "class": "Rogue",
+      "classId": 2190883,
+      "subClass": "Sanguine Thief",
+      "subClassId": 2566905,
+      "importId": "9DKnTcCCYKaphoVB"
+    },
+    "dnd5e": {
+      "advancementOrigin": "errhfrujwPVxf3K5",
+      "-=riders": null
+    },
+    "cat": {
+      "automation": {
+        "source": "chris-premades",
+        "version": "0"
+      }
+    }
+  },
+  "img": "icons/skills/wounds/blood-spurt-spray-red.webp",
+  "folder": "W5S0oZnCAlkC9k0b",
+  "_id": "OFzYYQfKzymgZHXd",
+  "_key": "!items!OFzYYQfKzymgZHXd"
+}

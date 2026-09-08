@@ -188,6 +188,7 @@ export const sneakAttack = {
     roll: [
         {
             pass: 'actorOptionalBonusDamage',
+            phase: 'postResult',
             macro: bonus,
             priority: 250
         }
