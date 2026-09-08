@@ -478,6 +478,9 @@
                 "StalkersFlurry": {
                     "IncludeSelf": "Include Self"
                 },
+                "StealBlood": {
+                    "Validate": "Sneak Attack must be active before using Steal Blood!"
+                },
                 "UnarguableWizardry": {
                     "Prompt": "Unarguable Wizardry"
                 },

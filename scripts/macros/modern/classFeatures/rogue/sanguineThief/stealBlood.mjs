@@ -1,8 +1,8 @@
 import {actorUtils, DamageBonus, dialogUtils, itemUtils, workflowUtils} from '../../../../../proxy.mjs';
-async function validate({rollTotal, bonus, workflow, otherBonuses}) {
-    console.log(otherBonuses);
-    console.log(otherBonuses.find(otherBonus => otherBonus.identifier === 'sneakAttack')?.active);
-    return otherBonuses.find(otherBonus => otherBonus.identifier === 'sneakAttack')?.active;
+function validate({rollTotal, bonus, workflow, otherBonuses}) {
+    const valid = otherBonuses.find(otherBonus => otherBonus.identifier === 'sneak-attack')?.active;
+    if (!valid) bonus.validateHints.push({label: _loc('CHRISPREMADES.Macros.Modern.StealBlood.Validate')});
+    return valid;
 }
 async function use({workflow, bonus, otherBonuses}) {
     const isBloodied = actorUtils.isBloodied(workflow.actor);
@@ -18,7 +18,6 @@ async function use({workflow, bonus, otherBonuses}) {
 }
 async function bonus({workflow, document}) {
     const canSneak = workflowUtils.getWorkflowProperty(workflow, 'canSneak');
-    console.log(canSneak);
     if (!canSneak) return;
     return new DamageBonus(document, {action: 'special'}).withValidation(validate).withOnUse(use);  
 }
