@@ -213,6 +213,8 @@
             "SoundRanged": "Ranged Sound",
             "SpawnActivity": "Spawn Activity",
             "SpecificAnimation": "{option} Animation",
+            "SpellCompendiums": "Spell Compendiums",
+            "SpellIdentifier": "Spell Identifier",
             "SpellLevel": "Spell Level",
             "SpellSchool": "Spell School",
             "SpellSchools": "Spell Schools",
@@ -276,7 +278,22 @@
                     "HeavyArmor": "You are wearing heavy armor and cannot rage!",
                     "Spellcasting": "You can't spellcast while raging!"
                 },
-                "SuperiorInspiration": "Minimum Inspirations"
+                "SuperiorInspiration": "Minimum Inspirations",
+                "WildShape": {
+                    "Choose": "Choose a wild shape:",
+                    "ChooseForm": "Choose a wild shape to replace",
+                    "ChooseNewForm": ", or choose 'None' to learn a new wild shape.",
+                    "GrantFlySpeed": "Class Level for Fly Speed",
+                    "GrantSwimSpeed": "Class Level for Swim Speed",
+                    "KnownForms": "Known Forms",
+                    "MaxCR": "Max CR",
+                    "MaxKnown": "You know too many wild shapes! ({count} of {max})",
+                    "NoForms": "You have no known wild shapes!",
+                    "Prompt": "Choose a wild shape and any equipment your new form will continue wearing:",
+                    "Revert": "Wild Shape: Revert",
+                    "FormCompendiums": "Wild Shape Compendiums",
+                    "FormCompendiumsHint": "Use these compendiums instead of the monster compendiums configured in settings."
+                }
             },
             "Generic": {
                 "AdditionalTargets": {
@@ -298,6 +315,7 @@
                     "HealingTypeHint": "Limit this feature by a list of dealt healing types.",
                     "IdentifierHint": "Limit this feature to a list of specific items.",
                     "ItemTypeHint": "Limit this feature to certain item types.",
+                    "PacksHint": "Use these compendiums instead of the ones configured in settings.",
                     "RollActivity": "Roll this activity when used.",
                     "RollItem": "Roll this item when used.",
                     "SpellLevelHint": "Limit this feature by spell level.",

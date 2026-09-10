@@ -1,0 +1,62 @@
+{
+  "name": "Beast Spells",
+  "type": "feat",
+  "effects": [],
+  "system": {
+    "activities": {},
+    "uses": {
+      "spent": 0,
+      "recovery": [],
+      "max": ""
+    },
+    "advancement": {},
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "identifier": "beast-spells",
+    "source": {
+      "book": "PHB",
+      "page": "",
+      "license": "",
+      "custom": "",
+      "rules": "2014",
+      "revision": 1
+    },
+    "crewed": false,
+    "enchant": {},
+    "prerequisites": {
+      "items": [],
+      "level": 18,
+      "repeatable": false
+    },
+    "properties": [],
+    "requirements": "",
+    "type": {
+      "value": "class",
+      "subtype": ""
+    }
+  },
+  "flags": {
+    "dnd5e": {},
+    "cat": {
+      "macros": {
+        "called": [
+          {
+            "source": "chris-premades",
+            "rules": "all",
+            "identifier": "beast-spells"
+          }
+        ]
+      },
+      "automation": {
+        "source": "chris-premades",
+        "version": "2.0.3"
+      }
+    }
+  },
+  "img": "icons/creatures/abilities/stinger-poison-green.webp",
+  "folder": "HPNohpxDJVTcZMqJ",
+  "_id": "HD6zyVxDN6c3JeAK",
+  "_key": "!items!HD6zyVxDN6c3JeAK"
+}

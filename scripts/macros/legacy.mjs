@@ -10,6 +10,8 @@ export {channelDivinity as 'channel-divinity|class:cleric', turnUndead} from './
 export {destroyUndead as 'destroy-undead'} from './legacy/classFeatures/cleric/destroyUndead.mjs';
 export {divineStrike as 'divine-strike'} from './legacy/classFeatures/cleric/divineStrike.mjs';
 export {harnessDivinePower as 'harness-divine-power'} from './legacy/classFeatures/cleric/harnessDivinePower.mjs';
+// Druid
+export {wildShape as 'wild-shape', wildShapeActive} from './legacy/classFeatures/druid/wildShape.mjs';
 // Wizard
 export {bladesong as 'bladesong'} from './legacy/classFeatures/wizard/bladeSinging/bladesong.mjs';
 export {songOfDefense as 'song-of-defense'} from './legacy/classFeatures/wizard/bladeSinging/songOfDefense.mjs';

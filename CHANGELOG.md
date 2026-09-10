@@ -5,7 +5,7 @@
 - Added Generic: damageBonusToOneRoll, passiveAura, hide
 ## Bug Fixes:
 - Brutal Strike
-- Generic: multiSingleTarget
+- Generic: multiSingleTarget, correctSpellLink
 - Empowered Evocation
 - Song of Defense
 - Greater Divine Intervention
@@ -16,6 +16,9 @@
 - Blessed Strikes
 - Potent Spellcasting
 - Divine Strike
+- Wild Shape
+- Wild Companion
+- Beast Spells
 ## Updated Modern Automations:
 - Channel Divinity (Cleric)
 - Sear Undead
@@ -25,6 +28,10 @@
 - Divine Intervention
 - Sneak Attack
 - Cunning Action
+- Wild Shape
+- Wild Companion
+- Elemental Fury
+- Beast Spells
 ## New Modern Automations:
 - Hand of Death
 

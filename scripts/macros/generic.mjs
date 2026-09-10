@@ -13,6 +13,7 @@ export {additionalTargets} from './generic/additionalTargets.mjs';
 export {damageBonusToOneRoll} from './generic/damageBonusToOneRoll.mjs';
 export {passiveAura} from './generic/passiveAura.mjs';
 export {hide} from './generic/hide.mjs';
+export {correctSpellLink} from './generic/correctSpellLink.mjs';
 export {conditionAutoSave} from './generic/conditionAutoSave.mjs';
 export {preventDeath} from './generic/preventDeath.mjs';
 export {unhideActivities} from './generic/unhideActivities.mjs';
