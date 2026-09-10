@@ -7,8 +7,9 @@ async function getConfigs(item) {
     const forms = (await rollUtils.rollDice(config.forms, {document: item})).total;
     const cr = (await rollUtils.rollDice(config.cr, {document: item})).total;
     const packs = config.packs.map(p => p.split(':')[1]).filter(Boolean);
-    const canFly = classItem.system.levels >= (config.grantFlySpeed || 99);
-    const canSwim = classItem.system.levels >= (config.grantSwimSpeed ?? 0);
+    const level = classItem?.system.levels ?? 0;
+    const canFly = level >= (config.grantFlySpeed || 99);
+    const canSwim = level >= (config.grantSwimSpeed ?? 0);
     if (!forms) return Logging.addMacroWarning('chris-premades', identifier, 'Could not evaluate wild shape count scale value: ' + config.forms);
     if (cr === undefined) return Logging.addMacroWarning('chris-premades', identifier, 'Could not evaluate wild shape CR scale value: ' + config.cr);
     return {...config, canFly, canSwim, cr, forms, packs};
