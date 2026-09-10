@@ -18,6 +18,7 @@
 - Divine Strike
 - Wild Shape
 - Wild Companion
+- Beast Spells
 ## Updated Modern Automations:
 - Channel Divinity (Cleric)
 - Sear Undead
@@ -29,6 +30,8 @@
 - Cunning Action
 - Wild Shape
 - Wild Companion
+- Elemental Fury
+- Beast Spells
 ## New Modern Automations:
 - Hand of Death
 
