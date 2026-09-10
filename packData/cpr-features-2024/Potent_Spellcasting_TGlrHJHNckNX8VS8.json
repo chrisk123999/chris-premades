@@ -44,6 +44,7 @@
     "dnd5e": {},
     "cat": {
       "automation": {
+        "source": "chris-premades",
         "version": "2.0.3"
       },
       "macros": {
