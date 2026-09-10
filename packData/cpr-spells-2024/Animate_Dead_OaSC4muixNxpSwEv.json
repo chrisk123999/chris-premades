@@ -892,44 +892,6 @@
   ],
   "name": "Animate Dead",
   "flags": {
-    "ddbimporter": {
-      "id": 136039,
-      "definitionId": 1996,
-      "entityTypeId": 435869154,
-      "dndbeyond": {
-        "lookup": "generic",
-        "lookupName": "generic",
-        "level": null,
-        "castAtLevel": null,
-        "homebrew": false,
-        "sourceCategoryId": 26
-      },
-      "originalName": "Animate Dead",
-      "sources": [
-        {
-          "sourceId": 1,
-          "pageNumber": null,
-          "sourceType": 2
-        },
-        {
-          "sourceId": 2,
-          "pageNumber": 212,
-          "sourceType": 1
-        }
-      ],
-      "tags": [
-        "Creation"
-      ],
-      "version": "7.3.15",
-      "is2014": true,
-      "is2024": false,
-      "addSpellEffects": true,
-      "legacy": true,
-      "effectsApplied": true,
-      "disposition": {
-        "match": true
-      }
-    },
     "midi-qol": {
       "removeAttackDamageButtons": "default"
     },
@@ -950,9 +912,7 @@
         "summons": []
       }
     },
-    "dnd5e": {
-      "-=riders": null
-    }
+    "dnd5e": {}
   },
   "img": "icons/magic/death/undead-skeleton-energy-green.webp",
   "folder": "dIULQZnOw9ECXyoi",

@@ -364,42 +364,6 @@
   "effects": [],
   "name": "Animate Objects",
   "flags": {
-    "ddbimporter": {
-      "id": 136046,
-      "definitionId": 1997,
-      "entityTypeId": 435869154,
-      "dndbeyond": {
-        "lookup": "generic",
-        "lookupName": "generic",
-        "level": null,
-        "castAtLevel": null,
-        "homebrew": false,
-        "sourceCategoryId": 26
-      },
-      "originalName": "Animate Objects",
-      "sources": [
-        {
-          "sourceId": 1,
-          "pageNumber": null,
-          "sourceType": 2
-        },
-        {
-          "sourceId": 2,
-          "pageNumber": 213,
-          "sourceType": 1
-        }
-      ],
-      "tags": [
-        "Creation",
-        "Damage"
-      ],
-      "version": "7.3.15",
-      "is2014": true,
-      "is2024": false,
-      "addSpellEffects": true,
-      "legacy": true,
-      "effectsApplied": true
-    },
     "midi-qol": {
       "removeAttackDamageButtons": "default"
     },

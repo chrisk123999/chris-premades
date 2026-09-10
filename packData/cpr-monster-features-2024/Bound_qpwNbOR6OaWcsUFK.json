@@ -362,12 +362,6 @@
   },
   "effects": [],
   "flags": {
-    "ddbimporter": {
-      "levelBonus": false,
-      "profBonus": false,
-      "spellSave": false,
-      "dndbeyond": {}
-    },
     "cat": {
       "automation": {
         "source": "chris-premades",
@@ -378,7 +372,6 @@
       }
     },
     "dnd5e": {
-      "-=riders": null,
       "last": {
         "ZJUE7ro7hc1RCA1t": {
           "damageType": {

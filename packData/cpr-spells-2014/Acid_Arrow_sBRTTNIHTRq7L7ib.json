@@ -493,44 +493,6 @@
   ],
   "name": "Acid Arrow",
   "flags": {
-    "ddbimporter": {
-      "id": 2323,
-      "definitionId": 1988,
-      "entityTypeId": 435869154,
-      "dndbeyond": {
-        "lookup": "generic",
-        "lookupName": "generic",
-        "level": null,
-        "castAtLevel": null,
-        "homebrew": false,
-        "sourceCategoryId": 26
-      },
-      "originalName": "Acid Arrow",
-      "sources": [
-        {
-          "sourceId": 1,
-          "pageNumber": null,
-          "sourceType": 2
-        },
-        {
-          "sourceId": 2,
-          "pageNumber": null,
-          "sourceType": 1
-        }
-      ],
-      "tags": [
-        "Damage"
-      ],
-      "version": "7.3.15",
-      "is2014": true,
-      "is2024": false,
-      "addSpellEffects": true,
-      "legacy": true,
-      "noEffectIds": [
-        "addEndOfTarTuDa1"
-      ],
-      "effectsApplied": true
-    },
     "midi-qol": {
       "removeAttackDamageButtons": "default",
       "forceCEOff": true
@@ -542,9 +504,7 @@
     },
     "spell-class-filter-for-5e": {},
     "tidy5e-sheet": {},
-    "dnd5e": {
-      "-=riders": null
-    },
+    "dnd5e": {},
     "cat": {
       "automation": {
         "source": "chris-premades",

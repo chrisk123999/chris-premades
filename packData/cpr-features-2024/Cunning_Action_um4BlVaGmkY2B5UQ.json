@@ -675,10 +675,7 @@
   ],
   "flags": {
     "dnd5e": {
-      "sourceId": "Compendium.dnd5e.classes24.Item.phbrgeCunningAct",
-      "advancementOrigin": "CqmrnNL3Ah75KIAB.MWgIb29krlDy6YW6",
-      "advancementRoot": "CqmrnNL3Ah75KIAB.MWgIb29krlDy6YW6",
-      "-=riders": null
+      "sourceId": "Compendium.dnd5e.classes24.Item.phbrgeCunningAct"
     },
     "cat": {
       "automation": {

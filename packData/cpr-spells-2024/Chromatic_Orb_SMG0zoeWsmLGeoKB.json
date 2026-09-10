@@ -448,36 +448,6 @@
   "effects": [],
   "name": "Chromatic Orb",
   "flags": {
-    "ddbimporter": {
-      "id": 21171474,
-      "definitionId": 2618966,
-      "entityTypeId": 435869154,
-      "dndbeyond": {
-        "lookup": "generic",
-        "lookupName": "generic",
-        "level": null,
-        "castAtLevel": null,
-        "homebrew": false,
-        "sourceCategoryId": 24
-      },
-      "originalName": "Chromatic Orb",
-      "sources": [
-        {
-          "sourceId": 145,
-          "pageNumber": 249,
-          "sourceType": 1
-        }
-      ],
-      "tags": [
-        "Damage"
-      ],
-      "version": "7.3.15",
-      "is2014": false,
-      "is2024": true,
-      "addSpellEffects": true,
-      "legacy": false,
-      "effectsApplied": true
-    },
     "midi-qol": {
       "removeAttackDamageButtons": "default"
     },
@@ -489,7 +459,6 @@
     "spell-class-filter-for-5e": {},
     "tidy5e-sheet": {},
     "dnd5e": {
-      "-=riders": null,
       "last": {
         "attackChromOrbII": {
           "damageType": {

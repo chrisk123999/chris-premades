@@ -3904,8 +3904,7 @@
       },
       "riders": {
         "activity": []
-      },
-      "-=riders": null
+      }
     },
     "midi-qol": {
       "removeAttackDamageButtons": "default",

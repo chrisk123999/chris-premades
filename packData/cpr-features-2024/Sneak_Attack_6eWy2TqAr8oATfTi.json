@@ -199,10 +199,7 @@
   "effects": [],
   "flags": {
     "dnd5e": {
-      "sourceId": "Compendium.dnd5e.classes24.Item.phbrgeSneakAttac",
-      "advancementOrigin": "CqmrnNL3Ah75KIAB.4lvoA3fvGLv15lyc",
-      "advancementRoot": "CqmrnNL3Ah75KIAB.4lvoA3fvGLv15lyc",
-      "-=riders": null
+      "sourceId": "Compendium.dnd5e.classes24.Item.phbrgeSneakAttac"
     },
     "cat": {
       "automation": {

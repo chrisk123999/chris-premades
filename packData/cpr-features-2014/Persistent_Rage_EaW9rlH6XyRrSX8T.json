@@ -44,9 +44,7 @@
     }
   },
   "flags": {
-    "dnd5e": {
-      "advancementOrigin": "nwupzjujWuejv7P9"
-    },
+    "dnd5e": {},
     "cat": {
       "automation": {
         "source": "chris-premades",

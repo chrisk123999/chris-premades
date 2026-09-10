@@ -43,41 +43,7 @@
     }
   },
   "flags": {
-    "ddbimporter": {
-      "isChoiceFeature": false,
-      "id": 12075859,
-      "type": "class",
-      "entityTypeId": 12168134,
-      "is2014": false,
-      "is2024": true,
-      "legacy": false,
-      "originalName": "Stolen Power",
-      "dndbeyond": {
-        "requiredLevel": 3,
-        "displayOrder": 200,
-        "featureType": 1,
-        "class": "Rogue",
-        "classId": 2566905,
-        "entityType": "class-feature",
-        "levelScale": null,
-        "levelScales": [],
-        "limitedUse": [
-          {
-            "level": null,
-            "uses": 1
-          }
-        ]
-      },
-      "class": "Rogue",
-      "classId": 2190883,
-      "subClass": "Sanguine Thief",
-      "subClassId": 2566905,
-      "importId": "9DKnTcCCYKaphoVB"
-    },
-    "dnd5e": {
-      "advancementOrigin": "errhfrujwPVxf3K5",
-      "-=riders": null
-    },
+    "dnd5e": {},
     "cat": {
       "automation": {
         "source": "chris-premades",

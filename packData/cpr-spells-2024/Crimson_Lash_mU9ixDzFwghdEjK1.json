@@ -267,40 +267,6 @@
   ],
   "name": "Crimson Lash",
   "flags": {
-    "ddbimporter": {
-      "id": 25124932,
-      "definitionId": 3014222,
-      "entityTypeId": 435869154,
-      "dndbeyond": {
-        "lookup": "generic",
-        "lookupName": "generic",
-        "level": null,
-        "castAtLevel": null,
-        "homebrew": false,
-        "sourceCategoryId": 18
-      },
-      "originalName": "Crimson Lash",
-      "sources": [
-        {
-          "sourceId": 207,
-          "pageNumber": 190,
-          "sourceType": 1
-        }
-      ],
-      "tags": [
-        "Sangromancy"
-      ],
-      "version": "7.3.15",
-      "is2014": false,
-      "is2024": true,
-      "addSpellEffects": true,
-      "legacy": false,
-      "defaultAdditionalActivities": {
-        "enabled": true,
-        "data": {}
-      },
-      "effectsApplied": true
-    },
     "midi-qol": {
       "removeAttackDamageButtons": "default"
     },
@@ -326,9 +292,7 @@
         "version": "2.0.3"
       }
     },
-    "dnd5e": {
-      "-=riders": null
-    }
+    "dnd5e": {}
   },
   "folder": "pfzYb8UerE97sz8L",
   "img": "icons/skills/wounds/blood-spurt-spray-red.webp",

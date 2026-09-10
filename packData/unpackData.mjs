@@ -22,6 +22,7 @@ for (let i of itemPacks) {
         delete entry._stats;
         delete entry.sort;
         delete entry.ownership;
+        delete entry.flags.ddbimporter;
         for (const i in entry.effects)
         {
             if (entry.effects[i]._stats) delete entry.effects[i]._stats;
@@ -29,6 +30,9 @@ for (let i of itemPacks) {
         if (entry.system?.source?.sourceClass) delete entry.system.source.sourceClass;
         if (entry.flags.core?.sourceId) delete entry.flags.core.sourceId;
         if (entry.system?.materials?.value) entry.system.materials.value = '';
+        if (entry.flags.dnd5e?.advancementRoot) delete entry.flags.dnd5e.advancementRoot;
+        if (entry.flags.dnd5e?.advancementOrigin) delete entry.flags.dnd5e.advancementOrigin;
+        if (entry.flags.dnd5e?.['-=riders'] !== undefined) delete entry.flags.dnd5e['-=riders'];
     }});
 }
 for (let i of actorPacks) {
