@@ -130,6 +130,7 @@
             "CustomToken": "Custom Token",
             "DC": "DC",
             "DamageBonus": "Damage Bonus",
+            "DamageModifier": "Damage Modifier",
             "DamageScaleIdentifier": "Damage Scale Identifier",
             "DamageType": "Damage Type",
             "DamageTypes": "Damage Types",
@@ -270,6 +271,13 @@
                 },
                 "ArcaneGrimoire": "Arcane Recovery Bonus",
                 "ChannelDivinity": "Choose a channel divinity effect:",
+                "Dueling": "Identifiers for exceptions to the requirements of this feature.",
+                "Interception": {
+                    "Equipped": "Equipped Items",
+                    "EquippedHint": "One or more of these item types must be equipped.",
+                    "Prompt": "Use {item} to reduce the damage dealt to {name}?"
+                },
+                "Protection": "Spend a reaction to protect {name}?",
                 "Rage": {
                     "AllowConcentration": "Allow Concentration",
                     "AllowHeavyArmor": "Allow Heavy Armor",

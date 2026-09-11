@@ -1,0 +1,66 @@
+{
+  "name": "Great Weapon Fighting",
+  "type": "feat",
+  "effects": [],
+  "system": {
+    "activities": {},
+    "uses": {
+      "spent": 0,
+      "recovery": [],
+      "max": ""
+    },
+    "advancement": {},
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "identifier": "fighting-style-great-weapon-fighting",
+    "source": {
+      "book": "PHB",
+      "page": "",
+      "license": "",
+      "custom": "",
+      "rules": "2014",
+      "revision": 1
+    },
+    "crewed": false,
+    "enchant": {},
+    "prerequisites": {
+      "items": [],
+      "level": 1,
+      "repeatable": false
+    },
+    "properties": [],
+    "requirements": "",
+    "type": {
+      "value": "class",
+      "subtype": "fightingStyle"
+    }
+  },
+  "flags": {
+    "dnd5e": {},
+    "cat": {
+      "alternateAttributes": {},
+      "automation": {
+        "source": "chris-premades",
+        "version": "2.0.3"
+      },
+      "macros": {
+        "roll": [
+          {
+            "source": "chris-premades",
+            "rules": "all",
+            "identifier": "fighting-style-great-weapon-fighting"
+          }
+        ]
+      },
+      "config": {
+        "modifier": "r1<3"
+      }
+    }
+  },
+  "img": "icons/weapons/axes/axe-battle-skull-black.webp",
+  "folder": "CIKnrWi8pzShUTW9",
+  "_id": "GdBcBcGPes10nJ6v",
+  "_key": "!items!GdBcBcGPes10nJ6v"
+}

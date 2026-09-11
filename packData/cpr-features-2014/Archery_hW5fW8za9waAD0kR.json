@@ -1,0 +1,133 @@
+{
+  "name": "Archery",
+  "type": "feat",
+  "effects": [
+    {
+      "name": "Archery",
+      "statuses": [],
+      "system": {
+        "changes": [
+          {
+            "key": "system.bonuses.rwak.attack",
+            "value": 2,
+            "type": "add",
+            "priority": 18,
+            "phase": "initial"
+          }
+        ]
+      },
+      "duration": {
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
+      },
+      "tint": "#ffffff",
+      "transfer": true,
+      "disabled": false,
+      "showIcon": 1,
+      "flags": {
+        "dae": {
+          "transfer": true,
+          "stackable": "noneNameOnly",
+          "disableCondition": "",
+          "expiryMode": "default",
+          "durationExpression": "",
+          "macroRepeat": "none",
+          "disableIncapacitated": false,
+          "specialDuration": []
+        },
+        "ddbimporter": {
+          "disabled": false,
+          "passive": true,
+          "itemId": 191,
+          "itemEntityTypeId": 12168134
+        },
+        "midi-qol": {
+          "forceCEOff": true
+        },
+        "core": {
+          "overlay": false
+        },
+        "dnd5e": {
+          "riders": {
+            "statuses": []
+          }
+        }
+      },
+      "description": "",
+      "img": "icons/weapons/bows/longbow-recurve-leather-red.webp",
+      "_id": "0hMwAFZ6nbS6Aozy",
+      "type": "base",
+      "start": null,
+      "origin": "Compendium.chris-premades.CPRFeatures2014.Item.hW5fW8za9waAD0kR",
+      "folder": null,
+      "sort": 0,
+      "_key": "!items.effects!hW5fW8za9waAD0kR.0hMwAFZ6nbS6Aozy"
+    }
+  ],
+  "system": {
+    "activities": {},
+    "uses": {
+      "spent": 0,
+      "recovery": [],
+      "max": ""
+    },
+    "advancement": {},
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "identifier": "fighting-style-archery",
+    "source": {
+      "book": "PHB",
+      "page": "",
+      "license": "",
+      "custom": "",
+      "rules": "2014",
+      "revision": 1
+    },
+    "crewed": false,
+    "enchant": {},
+    "prerequisites": {
+      "items": [],
+      "level": 1,
+      "repeatable": false
+    },
+    "properties": [],
+    "requirements": "",
+    "type": {
+      "value": "class",
+      "subtype": "fightingStyle"
+    }
+  },
+  "flags": {
+    "dae": {
+      "alwaysActive": false,
+      "activeEquipped": false
+    },
+    "midi-qol": {
+      "removeAttackDamageButtons": "default",
+      "forceCEOff": true
+    },
+    "midiProperties": {
+      "confirmTargets": "default"
+    },
+    "dnd5e": {
+      "riders": {
+        "activity": [],
+        "effect": []
+      }
+    },
+    "cat": {
+      "automation": {
+        "source": "chris-premades",
+        "version": "2.0.3"
+      }
+    }
+  },
+  "img": "icons/weapons/bows/longbow-recurve-leather-red.webp",
+  "folder": "CIKnrWi8pzShUTW9",
+  "_id": "hW5fW8za9waAD0kR",
+  "_key": "!items!hW5fW8za9waAD0kR"
+}
