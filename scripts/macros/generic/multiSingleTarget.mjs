@@ -22,7 +22,7 @@ async function use({document, workflow}) {
     if (utilityRollAsDamage) {
         let total = rollUtils.getRollsTotal(workflow.utilityRolls);
         if (workflowUtils.getWorkflowProperty(workflow, 'maxDamage')) {
-            const formula = workflow.utilityRolls.reduce((acc, roll) => acc += roll.formula , '');
+            const formula = workflow.utilityRolls.map(r => r.formula).join(' + ');
             total = (await rollUtils.rollDice(formula, {document, options: {maximize: true}}))?.total ?? total;
         }
         const activityData = activityUtils.getDamageModifiedActivityData(attackActivity, total);
