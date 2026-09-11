@@ -20,13 +20,22 @@ async function use({document, workflow}) {
     let validTargets = workflow.targets.map(token => token.document);
     const utilityRollAsDamage = workflow.utilityRolls ? automationUtils.getGenericConfigValue(document, 'chris-premades', 'multiSingleTarget', 'utilityRollAsDamage') : false;
     if (utilityRollAsDamage) {
-        const activityData = activityUtils.getDamageModifiedActivityData(attackActivity, rollUtils.getRollsTotal(workflow.utilityRolls));
+        let total = rollUtils.getRollsTotal(workflow.utilityRolls);
+        if (workflowUtils.getWorkflowProperty(workflow, 'maxDamage')) {
+            const formula = workflow.utilityRolls.reduce((acc, roll) => acc += roll.formula , '');
+            total = (await rollUtils.rollDice(formula, {document, options: {maximize: true}}))?.total ?? total;
+        }
+        const activityData = activityUtils.getDamageModifiedActivityData(attackActivity, total);
         attackActivity = activityUtils.syntheticActivity(activityData, workflow.item);
     }
-    const options = {workflowOptions: {'chris-premades': {multiSingleTarget: {
-        rollID: document.uuid + '|' + workflow.id,
-        remainingAttacks
-    }}}};
+    const options = {
+        spellSlot: false,
+        atLevel: workflow.castData?.castLevel,
+        options: {workflowOptions: {'chris-premades': {multiSingleTarget: {
+            rollID: document.uuid + '|' + workflow.id,
+            remainingAttacks
+        }}}}
+    };
     while (remainingAttacks > 0 && validTargets.size > 0) {
         let dialogResult = await dialogUtils.selectTargetDialog(
             workflow.item.name, 
@@ -68,11 +77,11 @@ async function use({document, workflow}) {
                     break; 
                 }
                 let workflow;
-                options.workflowOptions['chris-premades'].multiSingleTarget.remainingAttacks = remainingAttacks;
+                options.options.workflowOptions['chris-premades'].multiSingleTarget.remainingAttacks = remainingAttacks;
                 if (utilityRollAsDamage) {
-                    workflow = await workflowUtils.syntheticActivityRoll(attackActivity, [targetDoc], {options});
+                    workflow = await workflowUtils.syntheticActivityRoll(attackActivity, [targetDoc], options);
                 } else {
-                    workflow = await workflowUtils.completeActivityUse(attackActivity, [targetDoc], {autoDamage: true, fast: true, options});
+                    workflow = await workflowUtils.completeActivityUse(attackActivity, [targetDoc], {autoDamage: true, fast: true, ...options});
                 }
                 if (!workflow.hitTargets.size) reacted = true;
                 if (animation && animation.macros?.attack) await animation.macros.attack(workflow.token.document, targetDoc, {missed: reacted, ...animationOptions});

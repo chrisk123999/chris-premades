@@ -1,6 +1,9 @@
 import {activityUtils, automationUtils, constants, dialogUtils, documentUtils, itemUtils, workflowUtils} from '../../../../../proxy.mjs';
-async function damage({document, workflow}) {
+async function early({document, workflow}) {
+    if (document.flags['chris-premades']?.overchannel?.active) return;
+    if (workflow.workflowOptions['chris-premades']?.multiSingleTarget) return;
     if (workflow.item?.type !== 'spell') return;
+    if (!workflow.activity.hasDamage && !workflow.item.flags.cat?.macros?.roll?.some(m => m.identifier === 'multiSingleTarget')) return;
     const spellLevel = workflowUtils.getCastLevel(workflow);
     const maxSpellLevel = automationUtils.getConfigValue(document, 'maxSpellLevel') ?? 5;
     if (!spellLevel || spellLevel > maxSpellLevel) return;
@@ -14,21 +17,28 @@ async function damage({document, workflow}) {
         selection = await dialogUtils.confirmUseItem(document);
     }
     if (!selection) return;
+    workflowUtils.setWorkflowProperty(workflow, 'maxDamage', true);
+    await documentUtils.setFlag(document, 'chris-premades', 'overchannel.active', true);
+}
+async function damage({document, workflow}) {
+    if (!document.flags['chris-premades']?.overchannel?.active) return;  
     const damageRolls = await Promise.all(workflow.damageRolls.map(async roll => {
         const maxed = await roll.reroll({maximize: true});
         maxed.options.cat = {...(maxed.options.cat ?? {}), noManualRoll: true};
         return maxed;
     }));
     await workflow.setDamageRolls(damageRolls);
-    workflowUtils.setWorkflowProperty(workflow, 'overchannel.active', true);
+    workflowUtils.setWorkflowProperty(workflow, 'maxDamage', true);
 }
 async function late({document, workflow}) {
-    if (!workflowUtils.getWorkflowProperty(workflow, 'overchannel.active')) return;
+    if (document.uuid === workflow.item.uuid) return;
+    if (!document.flags['chris-premades']?.overchannel?.active) return;
+    if (workflow.workflowOptions['chris-premades']?.multiSingleTarget) return;
     const timesUsed = document.flags['chris-premades']?.overchannel?.timesUsed ?? 0;
+    await documentUtils.update(document, {flags: {'chris-premades': {overchannel: {active: false, timesUsed: timesUsed + 1}}}});
     let numDice;
     if (timesUsed) numDice = workflowUtils.getCastLevel(workflow) * (timesUsed + 1);
     await workflowUtils.completeActivityUse(itemUtils.getActivityByIdentifier(document, 'overchannel'));
-    await documentUtils.setFlag(document, 'chris-premades', 'overchannel.timesUsed', timesUsed + 1);
     if (!numDice) return;
     const feature = itemUtils.getActivityByIdentifier(document, 'overchannelDamage');
     if (!feature) return;
@@ -46,14 +56,19 @@ export const overchannel = {
     rules: '2014',
     roll: [
         {
+            pass: 'actorPreambleComplete',
+            macro: early,
+            priority: 200
+        },
+        {
             pass: 'actorDamageRoll',
             macro: damage,
-            priority: 50
+            priority: 200
         },
         {
             pass: 'actorRollFinished',
             macro: late,
-            priority: 50
+            priority: 200
         }
     ],
     rest: [
