@@ -1,3 +1,10 @@
+# 1.5.47 Release:
+## Bug Fixes
+- Overchannel
+- Magic Missile
+- Scorching Ray
+- Deflect Attacks (Thanks Silves)
+
 # 1.5.46 Release:
 ## Bug Fixes
 - Empowered Strikes

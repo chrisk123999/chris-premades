@@ -15,7 +15,7 @@ async function damageApplication({trigger: {entity: item}, workflow, ditem}) {
     if (!selection) return;
     let reduceActivity = activityUtils.getActivityByIdentifier(item, 'use', {strict: true});
     if (!reduceActivity) return;
-    let targetWorkflow = await socket.executeAsUser(sockets.syntheticActivityDataRoll.name, userId, reduceActivity.toObject(), item.uuid, [workflow.hitTargets.first().document.uuid]);
+    let targetWorkflow = await workflowUtils.syntheticActivityRoll(reduceActivity, [workflow.hitTargets.first()], {userId});
     let reduction = targetWorkflow.utilityRolls[0].total;
     let originalDetail = genericUtils.deepClone(ditem.damageDetail);
     for (let dmg of originalDetail) {

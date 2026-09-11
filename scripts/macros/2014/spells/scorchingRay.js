@@ -63,6 +63,7 @@ async function use({workflow}) {
     let lastColor = Math.floor((Math.random() * colors.length));
     let firstRun = true;
     let skipDead = false;
+    let totalRays = maxRays;
     start: while (maxRays > 0) {
         let nearbyTargets;
         let selection;
@@ -84,7 +85,10 @@ async function use({workflow}) {
             if (isNaN(numRays) || numRays == 0) continue;
             if (skipDead && targetToken.actor.system.attributes.hp.value === 0) continue;
             for (let i = 0; i < numRays; i++) {
-                let featureWorkflow = await workflowUtils.syntheticActivityRoll(feature, [targetToken], {options: {workflowOptions: {targetConfirmation: 'none'}}});
+                let featureWorkflow = await workflowUtils.syntheticActivityRoll(feature, [targetToken], {options: {
+                    'chris-premades': {multiWorkflowAttack: totalRays - maxRays},
+                    workflowOptions: {targetConfirmation: 'none'}
+                }});
                 maxRays -= 1;
                 if (shouldPlayAnimation) {
                     if (animation === 'simple') {

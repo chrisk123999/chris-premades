@@ -1,7 +1,8 @@
 import {activityUtils, actorUtils, animationUtils, dialogUtils, effectUtils, errors, genericUtils, itemUtils, socketUtils, workflowUtils} from '../../../utils.js';
 async function use({workflow}) {
     if (!workflow.targets.size) return;
-    let maxMissiles = 2 + workflowUtils.getCastLevel(workflow);
+    let castLevel = workflowUtils.getCastLevel(workflow);
+    let maxMissiles = 2 + castLevel;
     let selection = await dialogUtils.selectTargetDialog(workflow.item.name, genericUtils.format('CHRISPREMADES.Macros.MagicMissile.Select', {maxMissiles}), workflow.targets, {
         type: 'selectAmount',
         maxAmount: maxMissiles
@@ -23,7 +24,8 @@ async function use({workflow}) {
     let damageType = feature.damage.parts[0].types.first();
     let activityData;
     if (!rollEach) {
-        let damageRoll = await new CONFIG.Dice.DamageRoll(damageFormula, workflow.activity.getRollData(), {type: damageType}).evaluate();
+        let maximize = genericUtils.getProperty(workflow, 'workflowOptions.chris-premades.overchannel.active');
+        let damageRoll = await new CONFIG.Dice.DamageRoll(damageFormula, workflow.activity.getRollData(), {type: damageType}).evaluate({maximize});
         await MidiQOL.displayDSNForRoll(damageRoll);
         activityData = activityUtils.withChangedDamage(featureFlat, damageRoll.total.toString(), [damageType]);
     }
@@ -33,6 +35,8 @@ async function use({workflow}) {
     let lastColor = Math.floor((Math.random() * colors.length));
     let colorSelection = itemUtils.getConfig(workflow.item, 'color');
     let sound = itemUtils.getConfig(workflow.item, 'sound');
+    let totalCount = selection.reduce((acc, entry) => acc + parseInt(entry.value), 0);
+    let remaining = totalCount;
     if (playAnimation && colorSelection === 'random' || colorSelection === 'cycle') await animationUtils.preloadAnimations('jb2a.magic_missile');
     for (let {document: targetToken, value: numBolts} of selection) {
         if (isNaN(numBolts) || numBolts == 0) continue;
@@ -78,13 +82,21 @@ async function use({workflow}) {
                     
                     .play();
             }
+            const options = {
+                atLevel: castLevel,
+                options: {
+                    'chris-premades': {multiWorkflowAttack: totalCount - remaining},
+                    workflowOptions: {targetConfirmation: 'none'}
+                }
+            };
             if (isShielded) {
                 await workflowUtils.syntheticActivityDataRoll(shieldedFeatureData, workflow.item, workflow.actor, [targetToken], {options: {workflowOptions: {targetConfirmation: 'none'}}});
             } else if (rollEach) {
-                await workflowUtils.syntheticActivityRoll(feature, [targetToken], {options: {workflowOptions: {targetConfirmation: 'none'}}});
+                await workflowUtils.syntheticActivityRoll(feature, [targetToken], options);
             } else {
-                await workflowUtils.syntheticActivityDataRoll(activityData, workflow.item, workflow.actor, [targetToken], {options: {workflowOptions: {targetConfirmation: 'none'}}});
+                await workflowUtils.syntheticActivityDataRoll(activityData, workflow.item, workflow.actor, [targetToken], options);
             }
+            remaining--;
         }
     }
 }

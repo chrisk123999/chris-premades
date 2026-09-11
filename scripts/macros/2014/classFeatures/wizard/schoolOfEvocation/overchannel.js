@@ -1,6 +1,11 @@
 import {activityUtils, dialogUtils, genericUtils, workflowUtils} from '../../../../../utils.js';
-async function damage({trigger: {entity: item}, workflow}) {
+const multiWorkflowSpells = [
+    'magicMissile',
+    'scorchingRay'
+];
+async function early({trigger: {entity: item}, workflow}) {
     if (workflow.item.type !== 'spell') return;
+    if (!workflow.activity.hasDamage && !multiWorkflowSpells.includes(activityUtils.getIdentifier(workflow.activity))) return;
     let spellLevel = workflowUtils.getCastLevel(workflow);
     if (!spellLevel || spellLevel > 5) return;
     let timesUsed = item.flags['chris-premades'].overchannel?.timesUsed;
@@ -12,16 +17,23 @@ async function damage({trigger: {entity: item}, workflow}) {
     } else {
         confirmText = genericUtils.format('CHRISPREMADES.Dialog.Use', {itemName: item.name});
     }
-    let selection = await dialogUtils.confirm(item.name, confirmText);
+    let active = item.flags['chris-premades'].overchannel?.active;
+    let multiWorkflow = workflow.workflowOptions['chris-premades']?.multiWorkflowAttack > 0;
+    let selection = active || (!multiWorkflow && await dialogUtils.confirm(item.name, confirmText));
     if (!selection) return;
-    let damageRolls = await Promise.all(workflow.damageRolls.map(async roll => {
+    genericUtils.setProperty(workflow, 'workflowOptions.chris-premades.overchannel.active', true);
+    if (!active) await genericUtils.setFlag(item, 'chris-premades', 'overchannel.active', true);
+}
+async function damage({trigger: {entity: item}, workflow}) {
+    if (!item.flags['chris-premades'].overchannel?.active) return;
+    await workflow.setDamageRolls(await Promise.all(workflow.damageRolls.map(async roll => {
         return await roll.reroll({maximize: true});
-    }));
-    await workflow.setDamageRolls(damageRolls);
-    await genericUtils.setFlag(item, 'chris-premades', 'overchannel.active', true);
+    })));
+    genericUtils.setProperty(workflow, 'workflowOptions.chris-premades.overchannel.active', true);
 }
 async function late({trigger: {entity: item}, workflow}) {
     if (!item.flags['chris-premades'].overchannel?.active) return;
+    if (workflow.workflowOptions['chris-premades']?.multiWorkflowAttack !== undefined) return;
     await genericUtils.setFlag(item, 'chris-premades', 'overchannel.active', false);
     let timesUsed = item.flags['chris-premades'].overchannel?.timesUsed ?? 0;
     let numDice;
@@ -43,14 +55,19 @@ export let overchannel = {
     midi: {
         actor: [
             {
+                pass: 'preambleComplete',
+                macro: early,
+                priority: 350
+            },
+            {
                 pass: 'damageRollComplete',
                 macro: damage,
-                priority: 50
+                priority: 350
             },
             {
                 pass: 'rollFinished',
                 macro: late,
-                priority: 50
+                priority: 350
             }
         ]
     },

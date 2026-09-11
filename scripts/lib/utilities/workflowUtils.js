@@ -193,7 +193,7 @@ function modifyDamageAppliedFlat(ditem, modificationAmount, {type = 'none', mult
             }
         }
     }
-    if (modificationAmount < 0) modificationAmount = Math.max(modificationAmount, -ditem.hpDamage - ditem.tempDamage);
+    if (modificationAmount < 0) modificationAmount = Math.max(modificationAmount, -ditem.totalDamage);
     ditem.damageDetail.push({
         value: modificationAmount,
         active: {multiplier},
