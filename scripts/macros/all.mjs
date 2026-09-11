@@ -14,6 +14,14 @@ export {beastSpells as 'beast-spells'} from './all/classFeatures/druid/beastSpel
 export {steadyAim as 'steady-aim'} from './all/classFeatures/rogue/steadyAim.mjs';
 // Equipment
 export {arcaneGrimoire as 'arcane-grimoire-1', arcaneGrimoire as 'arcane-grimoire-2', arcaneGrimoire as 'arcane-grimoire-3'} from './all/equipment/arcaneGrimoire.mjs';
+// Fighting Styles
+export {dueling} from './all/fightingStyles/dueling.mjs';
+export {dueling as 'fighting-style-dueling'} from './all/fightingStyles/dueling.mjs';
+export {greatWeaponFighting as 'great-weapon-fighting'} from './all/fightingStyles/greatWeaponFighting.mjs';
+export {greatWeaponFighting as 'fighting-style-great-weapon-fighting'} from './all/fightingStyles/greatWeaponFighting.mjs';
+export {interception} from './all/fightingStyles/interception.mjs';
+export {interception as 'fighting-style-interception'} from './all/fightingStyles/interception.mjs';
+export {protection} from './all/fightingStyles/protection.mjs';
 // Spells
 export {acidArrow as 'acid-arrow'} from './all/spells/acidArrow.mjs';
 export {animateDead as 'animate-dead', animateDeadSummon as 'animate-dead-summon', animateDeadPlace as 'animate-dead-place', animateDeadRecall as 'animate-dead-recall', animateDeadReassert as 'animate-dead-reassert', animateDeadEffectDeleted as 'animate-dead-effect-deleted'} from './all/spells/animateDead.mjs';

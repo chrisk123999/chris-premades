@@ -1,0 +1,78 @@
+{
+  "name": "Dueling",
+  "type": "feat",
+  "effects": [],
+  "system": {
+    "activities": {},
+    "uses": {
+      "spent": 0,
+      "recovery": [],
+      "max": ""
+    },
+    "advancement": {},
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "identifier": "dueling",
+    "source": {
+      "book": "PHB 2024",
+      "page": "",
+      "license": "",
+      "custom": "",
+      "rules": "2024",
+      "revision": 1
+    },
+    "crewed": false,
+    "enchant": {},
+    "prerequisites": {
+      "items": [],
+      "repeatable": false,
+      "level": null
+    },
+    "properties": [],
+    "requirements": "",
+    "type": {
+      "value": "feat",
+      "subtype": "fightingStyle"
+    }
+  },
+  "flags": {
+    "dae": {
+      "alwaysActive": false,
+      "activeEquipped": false
+    },
+    "midi-qol": {
+      "removeAttackDamageButtons": "default",
+      "forceCEOff": true
+    },
+    "midiProperties": {
+      "confirmTargets": "default"
+    },
+    "dnd5e": {
+      "riders": {
+        "activity": [],
+        "effect": []
+      }
+    },
+    "cat": {
+      "automation": {
+        "source": "chris-premades",
+        "version": "2.0.3"
+      },
+      "macros": {
+        "roll": [
+          {
+            "source": "chris-premades",
+            "rules": "all",
+            "identifier": "dueling"
+          }
+        ]
+      }
+    }
+  },
+  "img": "icons/weapons/swords/swords-sharp-worn.webp",
+  "folder": "tBfYZGTEVaaUDePZ",
+  "_id": "WnxbpU1Yt80lipV9",
+  "_key": "!items!WnxbpU1Yt80lipV9"
+}

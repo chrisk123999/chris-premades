@@ -1,0 +1,65 @@
+{
+  "name": "Great Weapon Fighting",
+  "type": "feat",
+  "effects": [],
+  "system": {
+    "activities": {},
+    "uses": {
+      "spent": 0,
+      "recovery": [],
+      "max": ""
+    },
+    "advancement": {},
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "identifier": "great-weapon-fighting",
+    "source": {
+      "book": "PHB 2024",
+      "page": "",
+      "license": "",
+      "custom": "",
+      "rules": "2024",
+      "revision": 1
+    },
+    "crewed": false,
+    "enchant": {},
+    "prerequisites": {
+      "items": [],
+      "repeatable": false,
+      "level": null
+    },
+    "properties": [],
+    "requirements": "",
+    "type": {
+      "value": "feat",
+      "subtype": "fightingStyle"
+    }
+  },
+  "flags": {
+    "cat": {
+      "alternateAttributes": {},
+      "automation": {
+        "source": "chris-premades",
+        "version": "2.0.3"
+      },
+      "macros": {
+        "roll": [
+          {
+            "source": "chris-premades",
+            "rules": "all",
+            "identifier": "great-weapon-fighting"
+          }
+        ]
+      },
+      "config": {
+        "modifier": "min3"
+      }
+    }
+  },
+  "img": "icons/weapons/axes/axe-battle-skull-black.webp",
+  "folder": "tBfYZGTEVaaUDePZ",
+  "_id": "M6F4UMY6iimTskxW",
+  "_key": "!items!M6F4UMY6iimTskxW"
+}

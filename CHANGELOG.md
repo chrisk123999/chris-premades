@@ -20,6 +20,12 @@
 - Wild Shape
 - Wild Companion
 - Beast Spells
+- Archery
+- Defense
+- Dueling
+- Great Weapon Fighting
+- Interception
+- Protection
 ## Updated Modern Automations:
 - Channel Divinity (Cleric)
 - Sear Undead
@@ -33,6 +39,12 @@
 - Wild Companion
 - Elemental Fury
 - Beast Spells
+- Archery
+- Defense
+- Dueling
+- Great Weapon Fighting
+- Interception
+- Protection
 ## New Modern Automations:
 - Hand of Death
 
