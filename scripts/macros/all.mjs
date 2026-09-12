@@ -22,6 +22,7 @@ export {greatWeaponFighting as 'fighting-style-great-weapon-fighting'} from './a
 export {interception} from './all/fightingStyles/interception.mjs';
 export {interception as 'fighting-style-interception'} from './all/fightingStyles/interception.mjs';
 export {protection} from './all/fightingStyles/protection.mjs';
+export {unarmedFighting} from './all/fightingStyles/unarmedFighting.mjs';
 // Spells
 export {acidArrow as 'acid-arrow'} from './all/spells/acidArrow.mjs';
 export {animateDead as 'animate-dead', animateDeadSummon as 'animate-dead-summon', animateDeadPlace as 'animate-dead-place', animateDeadRecall as 'animate-dead-recall', animateDeadReassert as 'animate-dead-reassert', animateDeadEffectDeleted as 'animate-dead-effect-deleted'} from './all/spells/animateDead.mjs';

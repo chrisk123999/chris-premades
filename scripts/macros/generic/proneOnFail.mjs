@@ -1,4 +1,7 @@
-import {actorUtils} from '../../proxy.mjs';
+import {actorUtils, workflowUtils} from '../../proxy.mjs';
+async function macroConditions({workflow}) {
+    workflowUtils.addMacroConditions(workflow, 'prone');
+}
 async function fail({workflow}) {
     await Promise.all(workflow.failedSaves.map(async token => {
         if (!token.actor) return;
@@ -10,10 +13,15 @@ export const proneOnFail = {
     version: '2.0.0',
     category: 'utility',
     generic: true,
-    documents: ['item'],
+    documents: ['activity'],
     roll: [
         {
-            pass: 'itemRollFinished',
+            pass: 'activityPreambleComplete',
+            macro: macroConditions,
+            priority: 50
+        },
+        {
+            pass: 'activityRollFinished',
             macro: fail,
             priority: 50
         }

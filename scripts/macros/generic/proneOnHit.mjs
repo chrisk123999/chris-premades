@@ -10,10 +10,10 @@ export const proneOnHit = {
     version: '2.0.0',
     category: 'utility',
     generic: true,
-    documents: ['item'],
+    documents: ['activity'],
     roll: [
         {
-            pass: 'itemRollFinished',
+            pass: 'activityRollFinished',
             macro: late,
             priority: 50
         }

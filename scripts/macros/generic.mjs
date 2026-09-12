@@ -18,3 +18,4 @@ export {conditionAutoSave} from './generic/conditionAutoSave.mjs';
 export {preventDeath} from './generic/preventDeath.mjs';
 export {unhideActivities} from './generic/unhideActivities.mjs';
 export {reduceMaxHP} from './generic/reduceMaxHP.mjs';
+export {pushOnFail} from './generic/pushOnFail.mjs';

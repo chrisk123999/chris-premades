@@ -161,7 +161,7 @@ async function postWildShape({workflow}) {
     if (!effectID) return;
     const effectData = documentUtils.getEffectData(workflow.activity, effectID);
     const keepItems = workflow.workflowOptions['chris-premades']?.wildShapeItems ?? [];
-    const revertFeature = await compendiumUtils.getDocumentByIdentifier(cpr.packs.legacy.misc, 'wild-shape-revert', {
+    const revertFeature = await compendiumUtils.getDocumentByIdentifier(cpr.packs.misc.automationItems, 'wild-shape-revert', {
         translate: 'CHRISPREMADES.Macros.All.WildShape.Revert',
         object: true
     });

@@ -67,3 +67,5 @@ export {etherealFade as 'ethereal-fade', etherealFadeEnd} from './modern/species
 export {handOfDeath as 'hand-of-death', handOfDeathDeathKnell, handOfDeathClingToLife} from './modern/otherFeatures/darkBargain/handOfDeath.mjs';
 // ** Monster Features
 export {shieldGuardianBound as 'bound|shield-guardian', shieldGuardianBoundBind, shieldGuardianBoundDamage} from './modern/monsters/construct/shieldGuardian/bound.mjs';
+// ** Misc
+export {unarmedStrike as 'unarmed-strike'} from './modern/misc/unarmedStrike.mjs';

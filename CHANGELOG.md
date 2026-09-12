@@ -2,10 +2,10 @@
 ## Update Notes:
 - CPR for v14 does not contain all automations that previously existed in V13.
 - Requires CAT version X.Y.Z.
-- Added Generic: damageBonusToOneRoll, passiveAura, hide, correctSpellLink
+- Added Generic: damageBonusToOneRoll, passiveAura, hide, correctSpellLink, pushOnFail
 ## Bug Fixes:
 - Brutal Strike
-- Generic: multiSingleTarget
+- Generic: multiSingleTarget, proneOnHit, proneOnFail
 - Empowered Evocation
 - Song of Defense
 - Greater Divine Intervention
@@ -26,6 +26,9 @@
 - Great Weapon Fighting
 - Interception
 - Protection
+- Thrown Weapon Fighting
+- Unarmed Fighting
+- Unarmed Strike
 ## Updated Modern Automations:
 - Channel Divinity (Cleric)
 - Sear Undead
@@ -45,6 +48,9 @@
 - Great Weapon Fighting
 - Interception
 - Protection
+- Thrown Weapon Fighting
+- Unarmed Fighthing
+- Unarmed Strike
 ## New Modern Automations:
 - Hand of Death
 

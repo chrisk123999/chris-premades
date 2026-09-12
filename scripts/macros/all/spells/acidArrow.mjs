@@ -23,7 +23,7 @@ async function damage({workflow}) {
     let damageRoll = await rollUtils.damageRoll(String(Math.floor(workflow.damageRoll.total / 2)), workflow.item);
     workflowUtils.applyWorkflowDamage(workflow.token, damageRoll, workflow.defaultDamageType, missedTargets, {flavor: _loc('CHRISPREMADES.Macros.Legacy.AcidArrow.HalfDamage'), sourceItem: workflow.item});
 }
-export let acidArrow = {
+export const acidArrow = {
     version: '2.0.2',
     rules: 'all',
     roll: [
