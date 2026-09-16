@@ -153,6 +153,7 @@
             "Expire": "Expiration",
             "FailedSave": "Failed Save",
             "FavoriteActivities": "Favorite Activities",
+            "FlatDC": "Flat DC",
             "Formula": "Formula",
             "Grids": "Grids",
             "HalfDamage": "Half Damage",
@@ -348,6 +349,16 @@
                         "preRoll": "Before the Roll"
                     }
                 },
+                "Grapple": {
+                    "ActivityInfo": "Use Activity Info",
+                    "ActivityInfoHint": "Icons, item name, and roll DC will be taken from the parent save activity.",
+                    "AutoHint": "Apply grapple without rolling dice.",
+                    "ConditionsHint": "Additional conditions to attach to the grapple effect.",
+                    "FlatDCHint": "Overrides activity info if present.",
+                    "ReplaceActivity": "Replace Activity",
+                    "ReplaceActivityHint": "The parent activity roll will be discarded and replaced by the grapple macro.",
+                    "Size": "Check Target Size"
+                },
                 "MovementAnimation": {
                     "MoveAnimation": "Move Animation",
                     "MovementEffect": "Movement Effect",
@@ -512,10 +523,6 @@
                 },
                 "UnarguableWizardry": {
                     "Prompt": "Unarguable Wizardry"
-                },
-                "UnarmedStrike": {
-                    "GrappleSize": "Target is too big to be grappled!",
-                    "ShoveSize": "Target is too big to be shoved!"
                 },
                 "WildResurgence": {
                     "NoSpellSlots": "You have no expended spell slots to restore!",

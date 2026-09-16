@@ -181,7 +181,7 @@ async function postWildShape({workflow}) {
     itemData.push(revertFeature);
     await documentUtils.createEmbeddedDocuments(newActor, 'Item', itemData, {keepId: true});
     const revert = actorUtils.getItemByIdentifier(newActor, 'wild-shape-revert');
-    if (revert) await newActor.system.addFavorite({id: revert.getRelativeUUID(newActor), type: 'item'});
+    if (revert) await actorUtils.addFavorites(newActor, [revert]);
 }
 async function revert({workflow}) {
     const effect = actorUtils.getEffectByIdentifier(workflow.actor, 'wild-shape-effect');

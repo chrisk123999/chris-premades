@@ -203,17 +203,39 @@
           "concentration": false,
           "override": false
         },
-        "effects": [
-          {
-            "_id": "jgSrccQQLSjLyqKU",
-            "level": {
-              "min": null,
-              "max": null
+        "effects": [],
+        "flags": {
+          "cat": {
+            "genericConfig": {
+              "chris-premades": {
+                "grapple": {
+                  "auto": false,
+                  "checkSize": true,
+                  "dc": "",
+                  "conditions": [],
+                  "useActivityInfo": true,
+                  "replaceActivity": true
+                }
+              }
             },
-            "onSave": false
+            "macros": {
+              "roll": [
+                {
+                  "source": "chris-premades",
+                  "identifier": "grapple",
+                  "rules": "all"
+                }
+              ],
+              "grapple": [
+                {
+                  "source": "chris-premades",
+                  "identifier": "grapple",
+                  "rules": "all"
+                }
+              ]
+            }
           }
-        ],
-        "flags": {},
+        },
         "range": {
           "value": "5",
           "units": "ft",
@@ -305,7 +327,7 @@
           "autoTargetAction": "default",
           "otherActivityCompatible": false,
           "otherActivityAsParentType": true,
-          "displayActivityName": false,
+          "displayActivityName": true,
           "rollMode": "default",
           "chooseEffects": false,
           "toggleEffect": false,
@@ -483,7 +505,7 @@
           "autoTargetAction": "default",
           "otherActivityCompatible": false,
           "otherActivityAsParentType": true,
-          "displayActivityName": false,
+          "displayActivityName": true,
           "rollMode": "default",
           "chooseEffects": false,
           "toggleEffect": false,
@@ -660,7 +682,7 @@
           "autoTargetAction": "default",
           "otherActivityCompatible": false,
           "otherActivityAsParentType": true,
-          "displayActivityName": false,
+          "displayActivityName": true,
           "rollMode": "default",
           "chooseEffects": false,
           "toggleEffect": false,
@@ -789,67 +811,7 @@
     },
     "mastery": ""
   },
-  "effects": [
-    {
-      "name": "Grappled",
-      "statuses": [
-        "grappled"
-      ],
-      "system": {
-        "changes": []
-      },
-      "duration": {
-        "value": null,
-        "units": "seconds",
-        "expiry": null,
-        "expired": false
-      },
-      "tint": "#ffffff",
-      "transfer": false,
-      "disabled": false,
-      "showIcon": 1,
-      "flags": {
-        "dae": {
-          "transfer": false,
-          "stackable": "noneNameOnly",
-          "specialDuration": [],
-          "enableCondition": "",
-          "disableCondition": "",
-          "expiryMode": "delete",
-          "durationExpression": "",
-          "macroRepeat": "none",
-          "disableIncapacitated": false,
-          "selfTarget": false,
-          "selfTargetAlways": false,
-          "dontApply": true
-        },
-        "ddbimporter": {
-          "disabled": false,
-          "activityMatch": "Grapple"
-        },
-        "midi-qol": {
-          "forceCEOff": true
-        },
-        "core": {
-          "overlay": false
-        },
-        "dnd5e": {
-          "riders": {
-            "statuses": []
-          }
-        }
-      },
-      "description": "",
-      "_id": "jgSrccQQLSjLyqKU",
-      "img": "icons/skills/melee/unarmed-punch-fist.webp",
-      "type": "base",
-      "start": null,
-      "origin": null,
-      "folder": null,
-      "sort": 0,
-      "_key": "!items.effects!OEaoocaDgDveYENy.jgSrccQQLSjLyqKU"
-    }
-  ],
+  "effects": [],
   "flags": {
     "dnd5e": {},
     "cat": {
