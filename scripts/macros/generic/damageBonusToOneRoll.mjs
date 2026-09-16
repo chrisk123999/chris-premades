@@ -1,14 +1,12 @@
 import {automationUtils, constants, DamageBonus, documentUtils, workflowUtils} from '../../proxy.mjs';
-async function damage({document, workflow, phase}) {
+async function damage({document, workflow}) {
     if (!workflow.targets.size || (!workflow.activity.hasDamage && !workflow.activity.hasHealing)) return;
     const config = automationUtils.getGenericConfigValues(document, 'chris-premades', 'damageBonusToOneRoll', Object.keys(damageBonusToOneRoll.genericConfig));
-    if (config.phase !== 'all' && phase !== config.phase) return;
     if (!config.bonus.length) return;
-    const resolved = phase === 'postResult';
     const multiSingleTarget = workflow.workflowOptions['chris-premades']?.multiSingleTarget;
     if (multiSingleTarget && document.flags['chris-premades']?.lastUse === multiSingleTarget.rollID) return;
     const optional = config.useActivityCosts || (multiSingleTarget ? multiSingleTarget.remainingAttacks > 1 : false);
-    if (resolved && optional && workflow.activity.hasAttack && !workflow.hitTargets.size) return;
+    if (optional && workflow.activity.hasAttack && !workflow.hitTargets.size) return;
     if (config.attackType.length) {
         if (!workflowUtils.isAttackType(workflow, config.attackType)) return;
     }
@@ -48,7 +46,7 @@ async function damage({document, workflow, phase}) {
             }
         });
     if (config.useActivityCosts) {
-        if (resolved && !workflow.hitTargets.size) return;
+        if (!workflow.hitTargets.size) return;
         bonus.withDefaultCosts().initialize(workflow);
         if (!DamageBonus.CheckCost(bonus)) return;
     }
@@ -56,14 +54,13 @@ async function damage({document, workflow, phase}) {
 }
 export const damageBonusToOneRoll = {
     rules: 'all',
-    version: '2.0.2',
+    version: '2.0.3',
     category: 'damage',
     generic: true,
     documents: ['activeeffect', 'item'],
     roll: [
         {
             pass: 'actorOptionalBonusDamage',
-            phase: ['preRoll', 'preResult', 'postResult'],
             macro: damage,
             priority: 250
         }
@@ -131,19 +128,6 @@ export const damageBonusToOneRoll = {
             label: 'CHRISPREMADES.Config.ItemTypes',
             hint: 'CHRISPREMADES.Macros.Generic.Common.ItemTypeHint',
             get options() { return constants.usableItemTypes(); }
-        },
-        phase: {
-            default: 'postResult',
-            type: 'select',
-            category: 'behavior',
-            label: 'CHRISPREMADES.Macros.Generic.DamageBonusToOneRoll.Phase',
-            hint: 'CHRISPREMADES.Macros.Generic.DamageBonusToOneRoll.PhaseHint',
-            get options() { return [
-                'preRoll',
-                'preResult',
-                'postResult',
-                'all'
-            ].map(p => ({value: p, label: _loc('CHRISPREMADES.Macros.Generic.DamageBonusToOneRoll.Phases.' + p)})); }
         },
         rollActivity: {
             default: '',

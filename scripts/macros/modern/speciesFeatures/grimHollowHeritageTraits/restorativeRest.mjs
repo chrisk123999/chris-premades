@@ -1,19 +1,19 @@
 import {automationUtils, D20Bonus} from '../../../../proxy.mjs';
-async function bonus({document, roll, workflow}) {
+function validate({roll}) {
+    return roll?.isFumble ? 'CHRISPREMADES.Macros.Generic.Common.Fumble' : true;
+}
+async function bonus({document}) {
     if (!document.system.uses.value) return;
-    if (!roll) roll = workflow.attackRoll;
-    if (roll.isFumble) return;
     const formula = automationUtils.getConfigValue(document, 'formula');
-    return new D20Bonus(document, {action: 'special', formula}).withDefaultCosts().withDefaultOnUse();
+    return new D20Bonus(document, {action: 'special', formula}).withValidation(validate).withDefaultCosts().withDefaultOnUse();
 }
 export const restorativeRest = {
     name: 'Restorative Rest',
-    version: '2.0.3',
+    version: '2.0.4',
     rules: '2024',
     roll: [
         {
             pass: 'actorOptionalBonusAttack',
-            phase: 'preResult',
             macro: bonus,
             priority: 300
         }
@@ -21,7 +21,6 @@ export const restorativeRest = {
     check: [
         {
             pass: 'actorOptionalBonus',
-            phase: 'preResult',
             macro: bonus,
             priority: 300
         }
@@ -29,7 +28,6 @@ export const restorativeRest = {
     save: [
         {
             pass: 'actorOptionalBonus',
-            phase: 'preResult',
             macro: bonus,
             priority: 300
         }
@@ -37,7 +35,6 @@ export const restorativeRest = {
     skill: [
         {
             pass: 'actorOptionalBonus',
-            phase: 'preResult',
             macro: bonus,
             priority: 300
         }
@@ -46,7 +43,6 @@ export const restorativeRest = {
     tool: [
         {
             pass: 'actorOptionalBonus',
-            phase: 'preResult',
             macro: bonus,
             priority: 300
         }
