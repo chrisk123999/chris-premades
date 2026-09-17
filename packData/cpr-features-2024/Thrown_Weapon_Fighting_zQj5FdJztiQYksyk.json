@@ -1,0 +1,101 @@
+{
+  "name": "Thrown Weapon Fighting",
+  "type": "feat",
+  "effects": [],
+  "system": {
+    "activities": {},
+    "uses": {
+      "spent": 0,
+      "recovery": [],
+      "max": ""
+    },
+    "advancement": {},
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "identifier": "thrown-weapon-fighting",
+    "source": {
+      "book": "PHB 2024",
+      "page": "",
+      "license": "",
+      "custom": "",
+      "rules": "2024",
+      "revision": 1
+    },
+    "crewed": false,
+    "enchant": {},
+    "prerequisites": {
+      "items": [],
+      "repeatable": false,
+      "level": null
+    },
+    "properties": [],
+    "requirements": "",
+    "type": {
+      "value": "feat",
+      "subtype": "fightingStyle"
+    }
+  },
+  "flags": {
+    "dae": {
+      "alwaysActive": false,
+      "activeEquipped": false
+    },
+    "midi-qol": {
+      "removeAttackDamageButtons": "default",
+      "forceCEOff": true
+    },
+    "midiProperties": {
+      "confirmTargets": "default"
+    },
+    "dnd5e": {
+      "riders": {
+        "activity": [],
+        "effect": []
+      }
+    },
+    "cat": {
+      "genericConfig": {
+        "chris-premades": {
+          "damageBonusToOneRoll": {
+            "attackType": "rangedWeaponAttack",
+            "bonus": "2",
+            "bonusDamageType": [],
+            "damageType": [],
+            "healingType": [],
+            "identifiers": [],
+            "itemType": [],
+            "phase": "postResult",
+            "rollActivity": "",
+            "rollItem": false,
+            "spellLevel": [],
+            "spellSchool": [],
+            "useActivityCosts": false,
+            "allowCritical": true,
+            "properties": [
+              "thr"
+            ]
+          }
+        }
+      },
+      "macros": {
+        "roll": [
+          {
+            "source": "chris-premades",
+            "identifier": "damageBonusToOneRoll",
+            "rules": "all"
+          }
+        ]
+      },
+      "automation": {
+        "source": "chris-premades",
+        "version": "2.0.3"
+      }
+    }
+  },
+  "img": "icons/weapons/thrown/daggers-kunai-purple.webp",
+  "folder": "tBfYZGTEVaaUDePZ",
+  "_id": "zQj5FdJztiQYksyk",
+  "_key": "!items!zQj5FdJztiQYksyk"
+}

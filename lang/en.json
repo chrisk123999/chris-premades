@@ -130,6 +130,7 @@
             "CustomToken": "Custom Token",
             "DC": "DC",
             "DamageBonus": "Damage Bonus",
+            "DamageModifier": "Damage Modifier",
             "DamageScaleIdentifier": "Damage Scale Identifier",
             "DamageType": "Damage Type",
             "DamageTypes": "Damage Types",
@@ -152,6 +153,7 @@
             "Expire": "Expiration",
             "FailedSave": "Failed Save",
             "FavoriteActivities": "Favorite Activities",
+            "FlatDC": "Flat DC",
             "Formula": "Formula",
             "Grids": "Grids",
             "HalfDamage": "Half Damage",
@@ -186,6 +188,7 @@
             "PlayTeleportAnimation": "Play Teleport Animation",
             "PlayTokenAnimation": "Play Token Animation",
             "PromptToUse": "Prompt to use",
+            "Properties": "Item Properties",
             "Range": "Range",
             "RangeFrom": "Range From",
             "ReactionEffectIdentifiers": "Reaction Effect Identifiers",
@@ -270,6 +273,13 @@
                 },
                 "ArcaneGrimoire": "Arcane Recovery Bonus",
                 "ChannelDivinity": "Choose a channel divinity effect:",
+                "Dueling": "Identifiers for exceptions to the requirements of this feature.",
+                "Interception": {
+                    "Equipped": "Equipped Items",
+                    "EquippedHint": "One or more of these item types must be equipped.",
+                    "Prompt": "Use {item} to reduce the damage dealt to {name}?"
+                },
+                "Protection": "Spend a reaction to protect {name}?",
                 "Rage": {
                     "AllowConcentration": "Allow Concentration",
                     "AllowHeavyArmor": "Allow Heavy Armor",
@@ -279,6 +289,7 @@
                     "Spellcasting": "You can't spellcast while raging!"
                 },
                 "SuperiorInspiration": "Minimum Inspirations",
+                "UnarmedFighting": "Deal damage to which grappled creature?",
                 "WildShape": {
                     "Choose": "Choose a wild shape:",
                     "ChooseForm": "Choose a wild shape to replace",
@@ -319,7 +330,8 @@
                     "RollActivity": "Roll this activity when used.",
                     "RollItem": "Roll this item when used.",
                     "SpellLevelHint": "Limit this feature by spell level.",
-                    "SpellSchoolHint": "Limit this feature by spell school."
+                    "SpellSchoolHint": "Limit this feature by spell school.",
+                    "PropertyHint": "Limt this feature by any matching item property."
                 },
                 "ConsumeItemToUse": "Consume {item} to use this feature?",
                 "DamageBonusToOneRoll": {
@@ -328,6 +340,16 @@
                     "Costs": "Use Activity Costs",
                     "Critical": "Allow Critical",
                     "CriticalHint": "Critical hit rules can be applied to this bonus."
+                },
+                "Grapple": {
+                    "ActivityInfo": "Use Activity Info",
+                    "ActivityInfoHint": "Icons, item name, and roll DC will be taken from the parent save activity.",
+                    "AutoHint": "Apply grapple without rolling dice.",
+                    "ConditionsHint": "Additional conditions to attach to the grapple effect.",
+                    "FlatDCHint": "Overrides activity info if present.",
+                    "ReplaceActivity": "Replace Activity",
+                    "ReplaceActivityHint": "The parent activity roll will be discarded and replaced by the grapple macro.",
+                    "Size": "Check Target Size"
                 },
                 "MovementAnimation": {
                     "MoveAnimation": "Move Animation",

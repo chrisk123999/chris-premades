@@ -1,61 +1,64 @@
 {
-  "name": "Primal Strike",
+  "name": "Protection",
   "type": "feat",
   "effects": [],
   "system": {
     "activities": {
-      "D7TjIMWatAuh804H": {
+      "utilityFiSPclass": {
         "type": "utility",
-        "_id": "D7TjIMWatAuh804H",
+        "_id": "utilityFiSPclass",
         "img": "",
-        "sort": 100000,
+        "sort": 0,
         "activation": {
-          "type": "special",
-          "override": false,
-          "condition": ""
+          "type": "reaction",
+          "value": 1,
+          "condition": "",
+          "override": false
         },
         "consumption": {
+          "targets": [],
           "scaling": {
-            "allowed": false
+            "allowed": false,
+            "max": ""
           },
-          "spellSlot": true,
-          "targets": [
-            {
-              "type": "itemUses",
-              "value": "1",
-              "target": "",
-              "scaling": {}
-            }
-          ]
+          "spellSlot": true
         },
         "description": {
           "chatFlavor": ""
         },
         "duration": {
           "units": "inst",
+          "special": "",
           "concentration": false,
           "override": false
         },
         "effects": [],
         "flags": {},
         "range": {
-          "units": "self",
-          "override": false,
-          "special": ""
+          "value": "5",
+          "units": "ft",
+          "special": "",
+          "override": false
         },
         "target": {
-          "template": {
-            "contiguous": false,
-            "stationary": false,
-            "units": "ft",
-            "type": ""
-          },
+          "prompt": true,
           "affects": {
+            "count": "1",
+            "type": "creature",
             "choice": false,
-            "type": ""
+            "special": ""
           },
-          "override": false,
-          "prompt": true
+          "template": {
+            "count": "",
+            "contiguous": false,
+            "type": "",
+            "size": "",
+            "width": "",
+            "height": "",
+            "units": "ft",
+            "stationary": false
+          },
+          "override": false
         },
         "uses": {
           "spent": 0,
@@ -78,7 +81,7 @@
           "name": "",
           "formula": ""
         },
-        "useConditionText": "",
+        "useConditionText": "false",
         "useConditionReason": "",
         "effectConditionText": "",
         "macroData": {
@@ -98,19 +101,19 @@
           "triggeredActivityConditionText": "",
           "triggeredActivityTargets": "targets",
           "triggeredActivityRollAs": "self",
+          "confirmTargets": "default",
+          "automationOnly": false,
+          "identifier": "",
           "triggeredActivityConsume": true,
           "triggeredActivityConfigure": true,
           "autoConsume": false,
           "forceConsumeDialog": "default",
           "forceRollDialog": "default",
           "forceDamageDialog": "default",
-          "confirmTargets": "default",
           "autoTargetType": "any",
           "autoTargetAction": "default",
-          "automationOnly": false,
           "otherActivityCompatible": false,
           "otherActivityAsParentType": true,
-          "identifier": "",
           "displayActivityName": false,
           "rollMode": "default",
           "chooseEffects": false,
@@ -158,86 +161,57 @@
     },
     "uses": {
       "spent": 0,
-      "recovery": [
-        {
-          "period": "turnStart",
-          "type": "recoverAll"
-        }
-      ],
-      "max": "1"
+      "recovery": [],
+      "max": ""
     },
     "advancement": {},
     "description": {
       "value": "",
       "chat": ""
     },
-    "identifier": "elemental-fury-primal-strike",
+    "identifier": "fighting-style-protection",
     "source": {
-      "book": "PHB 2024",
+      "book": "PHB",
       "page": "",
       "license": "",
       "custom": "",
-      "rules": "2024",
+      "rules": "2014",
       "revision": 1
     },
     "crewed": false,
     "enchant": {},
     "prerequisites": {
       "items": [],
-      "level": 7,
+      "level": 1,
       "repeatable": false
     },
     "properties": [],
     "requirements": "",
     "type": {
       "value": "class",
-      "subtype": ""
+      "subtype": "fightingStyle"
     }
   },
   "flags": {
     "dnd5e": {},
     "cat": {
-      "genericConfig": {
-        "chris-premades": {
-          "damageBonusToOneRoll": {
-            "attackType": "weaponAttack",
-            "bonus": "@scale.druid.elemental-fury",
-            "bonusDamageType": [
-              "cold",
-              "fire",
-              "lightning",
-              "thunder"
-            ],
-            "damageType": [],
-            "healingType": [],
-            "identifiers": [],
-            "itemType": [],
-            "rollActivity": "D7TjIMWatAuh804H",
-            "rollItem": false,
-            "spellLevel": [],
-            "spellSchool": [],
-            "useActivityCosts": true,
-            "allowCritical": true
-          }
-        }
+      "automation": {
+        "source": "chris-premades",
+        "version": "2.0.3"
       },
       "macros": {
         "roll": [
           {
             "source": "chris-premades",
-            "identifier": "damageBonusToOneRoll",
-            "rules": "all"
+            "rules": "all",
+            "identifier": "protection"
           }
         ]
-      },
-      "automation": {
-        "source": "chris-premades",
-        "version": "2.0.3"
       }
     }
   },
-  "img": "icons/magic/nature/hand-weapon-wood-bark-brown.webp",
-  "folder": "bbR7kJffMX4MkL49",
-  "_id": "oHu2YXhrtKVpNNCU",
-  "_key": "!items!oHu2YXhrtKVpNNCU"
+  "img": "icons/equipment/shield/Scutum-steel-worn.webp",
+  "folder": "CIKnrWi8pzShUTW9",
+  "_id": "pmpmtloDSa2AJLhi",
+  "_key": "!items!pmpmtloDSa2AJLhi"
 }

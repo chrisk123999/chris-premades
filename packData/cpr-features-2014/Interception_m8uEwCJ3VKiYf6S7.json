@@ -1,67 +1,64 @@
 {
-  "name": "Wild Shape: Revert",
+  "name": "Interception",
   "type": "feat",
-  "_id": "1X4Zy7bGv2d7xBTo",
-  "img": "icons/creatures/mammals/elk-moose-marked-green.webp",
+  "effects": [],
   "system": {
     "activities": {
-      "yK5wLgcYiIGhcWTF": {
+      "utilityFiSIclass": {
         "type": "utility",
-        "_id": "yK5wLgcYiIGhcWTF",
+        "_id": "utilityFiSIclass",
         "img": "",
         "sort": 0,
         "activation": {
-          "type": "bonus",
-          "override": false,
-          "condition": ""
+          "type": "reaction",
+          "value": 1,
+          "condition": "",
+          "override": false
         },
         "consumption": {
+          "targets": [],
           "scaling": {
-            "allowed": false
+            "allowed": false,
+            "max": ""
           },
-          "spellSlot": true,
-          "targets": []
+          "spellSlot": true
         },
         "description": {
           "chatFlavor": ""
         },
         "duration": {
           "units": "inst",
+          "special": "",
           "concentration": false,
           "override": false
         },
         "effects": [],
-        "flags": {
-          "cat": {
-            "macros": {
-              "roll": [
-                {
-                  "source": "chris-premades",
-                  "rules": "all",
-                  "identifier": "wildShapeRevert"
-                }
-              ]
-            }
-          }
-        },
+        "flags": {},
         "range": {
-          "units": "self",
-          "override": false,
-          "special": ""
+          "value": "5",
+          "units": "ft",
+          "special": "",
+          "override": false
         },
         "target": {
-          "template": {
-            "contiguous": false,
-            "stationary": false,
-            "units": "ft",
-            "type": ""
-          },
+          "prompt": true,
           "affects": {
+            "count": "1",
+            "type": "creature",
             "choice": false,
-            "type": ""
+            "special": ""
           },
-          "override": false,
-          "prompt": true
+          "template": {
+            "count": "",
+            "contiguous": false,
+            "type": "",
+            "size": "",
+            "width": "",
+            "height": "",
+            "units": "ft",
+            "stationary": false
+          },
+          "override": false
         },
         "uses": {
           "spent": 0,
@@ -79,12 +76,12 @@
           "identifier": ""
         },
         "roll": {
+          "formula": "1d10 + @prof",
+          "name": "Reduce Damage Roll",
           "prompt": false,
-          "visible": false,
-          "name": "",
-          "formula": ""
+          "visible": false
         },
-        "useConditionText": "",
+        "useConditionText": "false",
         "useConditionReason": "",
         "effectConditionText": "",
         "macroData": {
@@ -104,19 +101,19 @@
           "triggeredActivityConditionText": "",
           "triggeredActivityTargets": "targets",
           "triggeredActivityRollAs": "self",
+          "confirmTargets": "default",
+          "automationOnly": false,
+          "identifier": "",
           "triggeredActivityConsume": true,
           "triggeredActivityConfigure": true,
           "autoConsume": false,
           "forceConsumeDialog": "default",
           "forceRollDialog": "default",
           "forceDamageDialog": "default",
-          "confirmTargets": "default",
           "autoTargetType": "any",
           "autoTargetAction": "default",
-          "automationOnly": false,
           "otherActivityCompatible": false,
           "otherActivityAsParentType": true,
-          "identifier": "",
           "displayActivityName": false,
           "rollMode": "default",
           "chooseEffects": false,
@@ -172,31 +169,56 @@
       "value": "",
       "chat": ""
     },
-    "identifier": "wild-shape-revert",
+    "identifier": "fighting-style-interception",
     "source": {
-      "revision": 1,
-      "rules": "",
-      "book": "",
+      "book": "PHB",
       "page": "",
+      "license": "",
       "custom": "",
-      "license": ""
+      "rules": "2014",
+      "revision": 1
     },
     "crewed": false,
     "enchant": {},
     "prerequisites": {
       "items": [],
-      "repeatable": false,
-      "level": null
+      "level": 1,
+      "repeatable": false
     },
     "properties": [],
     "requirements": "",
     "type": {
-      "value": "",
-      "subtype": ""
+      "value": "class",
+      "subtype": "fightingStyle"
     }
   },
-  "effects": [],
-  "folder": null,
-  "flags": {},
-  "_key": "!items!1X4Zy7bGv2d7xBTo"
+  "flags": {
+    "midi-qol": {
+      "removeAttackDamageButtons": "default",
+      "forceCEOff": true
+    },
+    "midiProperties": {
+      "confirmTargets": "default"
+    },
+    "dnd5e": {},
+    "cat": {
+      "automation": {
+        "source": "chris-premades",
+        "version": "2.0.3"
+      },
+      "macros": {
+        "roll": [
+          {
+            "source": "chris-premades",
+            "rules": "all",
+            "identifier": "fighting-style-interception"
+          }
+        ]
+      }
+    }
+  },
+  "img": "icons/skills/melee/shield-damaged-broken-blue.webp",
+  "folder": "CIKnrWi8pzShUTW9",
+  "_id": "m8uEwCJ3VKiYf6S7",
+  "_key": "!items!m8uEwCJ3VKiYf6S7"
 }

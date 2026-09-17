@@ -1,61 +1,63 @@
 {
-  "name": "Primal Strike",
+  "name": "Interception",
   "type": "feat",
   "effects": [],
   "system": {
     "activities": {
-      "D7TjIMWatAuh804H": {
+      "utilityInterfeat": {
         "type": "utility",
-        "_id": "D7TjIMWatAuh804H",
+        "_id": "utilityInterfeat",
         "img": "",
-        "sort": 100000,
+        "sort": 0,
         "activation": {
-          "type": "special",
+          "type": "reaction",
           "override": false,
           "condition": ""
         },
         "consumption": {
+          "targets": [],
           "scaling": {
-            "allowed": false
+            "allowed": false,
+            "max": ""
           },
-          "spellSlot": true,
-          "targets": [
-            {
-              "type": "itemUses",
-              "value": "1",
-              "target": "",
-              "scaling": {}
-            }
-          ]
+          "spellSlot": true
         },
         "description": {
           "chatFlavor": ""
         },
         "duration": {
           "units": "inst",
+          "special": "",
           "concentration": false,
           "override": false
         },
         "effects": [],
         "flags": {},
         "range": {
-          "units": "self",
-          "override": false,
-          "special": ""
+          "value": "5",
+          "units": "ft",
+          "special": "",
+          "override": false
         },
         "target": {
-          "template": {
-            "contiguous": false,
-            "stationary": false,
-            "units": "ft",
-            "type": ""
-          },
+          "prompt": true,
           "affects": {
+            "count": "1",
+            "type": "creature",
             "choice": false,
-            "type": ""
+            "special": ""
           },
-          "override": false,
-          "prompt": true
+          "template": {
+            "count": "",
+            "contiguous": false,
+            "type": "",
+            "size": "",
+            "width": "",
+            "height": "",
+            "units": "ft",
+            "stationary": false
+          },
+          "override": false
         },
         "uses": {
           "spent": 0,
@@ -73,12 +75,12 @@
           "identifier": ""
         },
         "roll": {
+          "formula": "1d10 + @prof",
+          "name": "Reduce Damage Roll",
           "prompt": false,
-          "visible": false,
-          "name": "",
-          "formula": ""
+          "visible": false
         },
-        "useConditionText": "",
+        "useConditionText": "false",
         "useConditionReason": "",
         "effectConditionText": "",
         "macroData": {
@@ -98,19 +100,19 @@
           "triggeredActivityConditionText": "",
           "triggeredActivityTargets": "targets",
           "triggeredActivityRollAs": "self",
+          "confirmTargets": "default",
+          "automationOnly": false,
+          "identifier": "",
           "triggeredActivityConsume": true,
           "triggeredActivityConfigure": true,
           "autoConsume": false,
           "forceConsumeDialog": "default",
           "forceRollDialog": "default",
           "forceDamageDialog": "default",
-          "confirmTargets": "default",
           "autoTargetType": "any",
           "autoTargetAction": "default",
-          "automationOnly": false,
           "otherActivityCompatible": false,
           "otherActivityAsParentType": true,
-          "identifier": "",
           "displayActivityName": false,
           "rollMode": "default",
           "chooseEffects": false,
@@ -158,20 +160,15 @@
     },
     "uses": {
       "spent": 0,
-      "recovery": [
-        {
-          "period": "turnStart",
-          "type": "recoverAll"
-        }
-      ],
-      "max": "1"
+      "recovery": [],
+      "max": ""
     },
     "advancement": {},
     "description": {
       "value": "",
       "chat": ""
     },
-    "identifier": "elemental-fury-primal-strike",
+    "identifier": "interception",
     "source": {
       "book": "PHB 2024",
       "page": "",
@@ -184,60 +181,43 @@
     "enchant": {},
     "prerequisites": {
       "items": [],
-      "level": 7,
-      "repeatable": false
+      "repeatable": false,
+      "level": null
     },
     "properties": [],
     "requirements": "",
     "type": {
-      "value": "class",
-      "subtype": ""
+      "value": "feat",
+      "subtype": "fightingStyle"
     }
   },
   "flags": {
+    "midi-qol": {
+      "removeAttackDamageButtons": "default",
+      "forceCEOff": true
+    },
+    "midiProperties": {
+      "confirmTargets": "default"
+    },
     "dnd5e": {},
     "cat": {
-      "genericConfig": {
-        "chris-premades": {
-          "damageBonusToOneRoll": {
-            "attackType": "weaponAttack",
-            "bonus": "@scale.druid.elemental-fury",
-            "bonusDamageType": [
-              "cold",
-              "fire",
-              "lightning",
-              "thunder"
-            ],
-            "damageType": [],
-            "healingType": [],
-            "identifiers": [],
-            "itemType": [],
-            "rollActivity": "D7TjIMWatAuh804H",
-            "rollItem": false,
-            "spellLevel": [],
-            "spellSchool": [],
-            "useActivityCosts": true,
-            "allowCritical": true
-          }
-        }
+      "automation": {
+        "source": "chris-premades",
+        "version": "2.0.3"
       },
       "macros": {
         "roll": [
           {
             "source": "chris-premades",
-            "identifier": "damageBonusToOneRoll",
-            "rules": "all"
+            "rules": "all",
+            "identifier": "interception"
           }
         ]
-      },
-      "automation": {
-        "source": "chris-premades",
-        "version": "2.0.3"
       }
     }
   },
-  "img": "icons/magic/nature/hand-weapon-wood-bark-brown.webp",
-  "folder": "bbR7kJffMX4MkL49",
-  "_id": "oHu2YXhrtKVpNNCU",
-  "_key": "!items!oHu2YXhrtKVpNNCU"
+  "img": "icons/skills/melee/shield-damaged-broken-blue.webp",
+  "folder": "tBfYZGTEVaaUDePZ",
+  "_id": "JgYEQCNqrkEQavJC",
+  "_key": "!items!JgYEQCNqrkEQavJC"
 }

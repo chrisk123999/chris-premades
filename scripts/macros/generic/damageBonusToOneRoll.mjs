@@ -23,6 +23,9 @@ async function damage({document, workflow}) {
     if (config.identifiers.length) {
         if (!config.identifiers.includes(documentUtils.getIdentifier(workflow.item))) return;
     }
+    if (config.properties.length) {
+        if (!config.properties.some(p => workflow.item.system.properties?.has(p))) return;
+    }
     if (config.itemType.length) {
         if (!config.itemType.includes(workflow.item.type)) return;
     }
@@ -66,6 +69,33 @@ export const damageBonusToOneRoll = {
         }
     ],
     genericConfig: {
+        bonus: {
+            default: '',
+            type: 'text',
+            label: 'CHRISPREMADES.Config.DamageBonus',
+            category: 'behavior'
+        },
+        bonusDamageType: {
+            default: [],
+            type: 'select-many',
+            category: 'behavior',
+            label: 'CHRISPREMADES.Macros.Generic.DamageBonusToOneRoll.BonusDamageType',
+            hint: 'CHRISPREMADES.Macros.Generic.DamageBonusToOneRoll.BonusDamageTypeHint',
+            get options() { return constants.damageTypeOptions(); }
+        },
+        phase: {
+            default: 'postResult',
+            type: 'select',
+            category: 'behavior',
+            label: 'CHRISPREMADES.Macros.Generic.DamageBonusToOneRoll.Phase',
+            hint: 'CHRISPREMADES.Macros.Generic.DamageBonusToOneRoll.PhaseHint',
+            get options() { return [
+                'preRoll',
+                'preResult',
+                'postResult',
+                'all'
+            ].map(p => ({value: p, label: _loc('CHRISPREMADES.Macros.Generic.DamageBonusToOneRoll.Phases.' + p)})); }
+        },
         attackType: {
             default: '',
             type: 'select',
@@ -83,20 +113,6 @@ export const damageBonusToOneRoll = {
                 'rangedSpellAttack',
                 'meleeSpellAttack'
             ].map(a => ({value: a, label: _loc('CHRISPREMADES.Config.AttackType.' + a)})); }
-        },
-        bonus: {
-            default: '',
-            type: 'text',
-            label: 'CHRISPREMADES.Config.DamageBonus',
-            category: 'behavior'
-        },
-        bonusDamageType: {
-            default: [],
-            type: 'select-many',
-            category: 'behavior',
-            label: 'CHRISPREMADES.Macros.Generic.DamageBonusToOneRoll.BonusDamageType',
-            hint: 'CHRISPREMADES.Macros.Generic.DamageBonusToOneRoll.BonusDamageTypeHint',
-            get options() { return constants.damageTypeOptions(); }
         },
         damageType: {
             default: [],
@@ -121,6 +137,14 @@ export const damageBonusToOneRoll = {
             label: 'CHRISPREMADES.Config.Identifiers',
             hint: 'CHRISPREMADES.Macros.Generic.Common.IdentifierHint'
         },
+        properties: {
+            default: [],
+            type: 'select-many',
+            category: 'behavior',
+            label: 'CHRISPREMADES.Config.Properties',
+            hint: 'CHRISPREMADES.Macros.Generic.Common.PropertyHint',
+            get options() { return constants.itemProperties(); }
+        },
         itemType: {
             default: [],
             type: 'select-many',
@@ -128,18 +152,6 @@ export const damageBonusToOneRoll = {
             label: 'CHRISPREMADES.Config.ItemTypes',
             hint: 'CHRISPREMADES.Macros.Generic.Common.ItemTypeHint',
             get options() { return constants.usableItemTypes(); }
-        },
-        rollActivity: {
-            default: '',
-            type: 'selectActivity',
-            category: 'behavior',
-            label: 'CHRISPREMADES.Macros.Generic.Common.RollActivity'
-        },
-        rollItem: {
-            default: false,
-            type: 'checkbox',
-            category: 'behavior',
-            label:'CHRISPREMADES.Macros.Generic.Common.RollItem'
         },
         spellLevel: {
             default: [],
@@ -156,6 +168,18 @@ export const damageBonusToOneRoll = {
             label: 'CHRISPREMADES.Config.SpellSchool',
             hint: 'CHRISPREMADES.Macros.Generic.Common.SpellSchoolHint',
             get options() { return constants.spellSchoolOptions(); }
+        },
+        rollActivity: {
+            default: '',
+            type: 'selectActivity',
+            category: 'behavior',
+            label: 'CHRISPREMADES.Macros.Generic.Common.RollActivity'
+        },
+        rollItem: {
+            default: false,
+            type: 'checkbox',
+            category: 'behavior',
+            label:'CHRISPREMADES.Macros.Generic.Common.RollItem'
         },
         useActivityCosts: {
             default: false,

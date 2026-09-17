@@ -1,16 +1,16 @@
 {
-  "name": "Primal Strike",
+  "name": "Wild Shape: Revert",
   "type": "feat",
-  "effects": [],
+  "img": "icons/creatures/mammals/elk-moose-marked-green.webp",
   "system": {
     "activities": {
-      "D7TjIMWatAuh804H": {
+      "yK5wLgcYiIGhcWTF": {
         "type": "utility",
-        "_id": "D7TjIMWatAuh804H",
+        "_id": "yK5wLgcYiIGhcWTF",
         "img": "",
-        "sort": 100000,
+        "sort": 0,
         "activation": {
-          "type": "special",
+          "type": "bonus",
           "override": false,
           "condition": ""
         },
@@ -19,14 +19,7 @@
             "allowed": false
           },
           "spellSlot": true,
-          "targets": [
-            {
-              "type": "itemUses",
-              "value": "1",
-              "target": "",
-              "scaling": {}
-            }
-          ]
+          "targets": []
         },
         "description": {
           "chatFlavor": ""
@@ -37,7 +30,19 @@
           "override": false
         },
         "effects": [],
-        "flags": {},
+        "flags": {
+          "cat": {
+            "macros": {
+              "roll": [
+                {
+                  "source": "chris-premades",
+                  "rules": "all",
+                  "identifier": "wildShapeRevert"
+                }
+              ]
+            }
+          }
+        },
         "range": {
           "units": "self",
           "override": false,
@@ -158,86 +163,40 @@
     },
     "uses": {
       "spent": 0,
-      "recovery": [
-        {
-          "period": "turnStart",
-          "type": "recoverAll"
-        }
-      ],
-      "max": "1"
+      "recovery": [],
+      "max": ""
     },
     "advancement": {},
     "description": {
       "value": "",
       "chat": ""
     },
-    "identifier": "elemental-fury-primal-strike",
+    "identifier": "wild-shape-revert",
     "source": {
-      "book": "PHB 2024",
+      "revision": 1,
+      "rules": "",
+      "book": "",
       "page": "",
-      "license": "",
       "custom": "",
-      "rules": "2024",
-      "revision": 1
+      "license": ""
     },
     "crewed": false,
     "enchant": {},
     "prerequisites": {
       "items": [],
-      "level": 7,
-      "repeatable": false
+      "repeatable": false,
+      "level": null
     },
     "properties": [],
     "requirements": "",
     "type": {
-      "value": "class",
+      "value": "",
       "subtype": ""
     }
   },
-  "flags": {
-    "dnd5e": {},
-    "cat": {
-      "genericConfig": {
-        "chris-premades": {
-          "damageBonusToOneRoll": {
-            "attackType": "weaponAttack",
-            "bonus": "@scale.druid.elemental-fury",
-            "bonusDamageType": [
-              "cold",
-              "fire",
-              "lightning",
-              "thunder"
-            ],
-            "damageType": [],
-            "healingType": [],
-            "identifiers": [],
-            "itemType": [],
-            "rollActivity": "D7TjIMWatAuh804H",
-            "rollItem": false,
-            "spellLevel": [],
-            "spellSchool": [],
-            "useActivityCosts": true,
-            "allowCritical": true
-          }
-        }
-      },
-      "macros": {
-        "roll": [
-          {
-            "source": "chris-premades",
-            "identifier": "damageBonusToOneRoll",
-            "rules": "all"
-          }
-        ]
-      },
-      "automation": {
-        "source": "chris-premades",
-        "version": "2.0.3"
-      }
-    }
-  },
-  "img": "icons/magic/nature/hand-weapon-wood-bark-brown.webp",
-  "folder": "bbR7kJffMX4MkL49",
-  "_id": "oHu2YXhrtKVpNNCU",
-  "_key": "!items!oHu2YXhrtKVpNNCU"
+  "effects": [],
+  "folder": null,
+  "flags": {},
+  "_id": "XjyH4JeFHX8ypknJ",
+  "_key": "!items!XjyH4JeFHX8ypknJ"
 }

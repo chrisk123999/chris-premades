@@ -1,0 +1,133 @@
+{
+  "name": "Defense",
+  "type": "feat",
+  "effects": [
+    {
+      "name": "Defense",
+      "statuses": [],
+      "system": {
+        "changes": [
+          {
+            "key": "system.attributes.ac.bonus",
+            "value": 1,
+            "type": "add",
+            "priority": 18,
+            "phase": "initial"
+          }
+        ]
+      },
+      "duration": {
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
+      },
+      "tint": "#ffffff",
+      "transfer": true,
+      "disabled": false,
+      "showIcon": 1,
+      "flags": {
+        "dae": {
+          "transfer": true,
+          "stackable": "noneNameOnly",
+          "disableCondition": "!attributes.ac.equippedArmor",
+          "expiryMode": "delete",
+          "durationExpression": "",
+          "macroRepeat": "none",
+          "disableIncapacitated": false,
+          "specialDuration": []
+        },
+        "ddbimporter": {
+          "disabled": false,
+          "passive": true,
+          "itemId": 1789128,
+          "itemEntityTypeId": 1088085227
+        },
+        "midi-qol": {
+          "forceCEOff": true
+        },
+        "core": {
+          "overlay": false
+        },
+        "dnd5e": {
+          "riders": {
+            "statuses": []
+          }
+        }
+      },
+      "description": "",
+      "img": "icons/equipment/shield/buckler-wooden-boss-glowing-blue.webp",
+      "_id": "cCZR8d9yjODuPFtN",
+      "type": "base",
+      "start": null,
+      "origin": "Compendium.chris-premades.CPRFeatures2024.Item.ZmF0ZZGVZhj92nGt",
+      "folder": null,
+      "sort": 0,
+      "_key": "!items.effects!ZmF0ZZGVZhj92nGt.cCZR8d9yjODuPFtN"
+    }
+  ],
+  "system": {
+    "activities": {},
+    "uses": {
+      "spent": 0,
+      "recovery": [],
+      "max": ""
+    },
+    "advancement": {},
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "identifier": "defense",
+    "source": {
+      "book": "PHB 2024",
+      "page": "",
+      "license": "",
+      "custom": "",
+      "rules": "2024",
+      "revision": 1
+    },
+    "crewed": false,
+    "enchant": {},
+    "prerequisites": {
+      "items": [],
+      "repeatable": false,
+      "level": null
+    },
+    "properties": [],
+    "requirements": "",
+    "type": {
+      "value": "feat",
+      "subtype": "fightingStyle"
+    }
+  },
+  "flags": {
+    "midi-qol": {
+      "removeAttackDamageButtons": "default",
+      "forceCEOff": true
+    },
+    "midiProperties": {
+      "confirmTargets": "default"
+    },
+    "dae": {
+      "alwaysActive": false,
+      "activeEquipped": false
+    },
+    "dnd5e": {
+      "riders": {
+        "activity": [],
+        "effect": []
+      }
+    },
+    "cat": {
+      "automation": {
+        "source": "chris-premades",
+        "version": "2.0.3"
+      }
+    }
+  },
+  "img": "icons/equipment/shield/buckler-wooden-boss-glowing-blue.webp",
+  "folder": "tBfYZGTEVaaUDePZ",
+  "_id": "ZmF0ZZGVZhj92nGt",
+  "_key": "!items!ZmF0ZZGVZhj92nGt"
+}

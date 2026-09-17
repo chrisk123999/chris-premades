@@ -53,6 +53,9 @@ export {memorizeSpell as 'memorize-spell'} from './modern/classFeatures/wizard/m
 // ** Spells
 export {chromaticOrb as 'chromatic-orb'} from './modern/spells/chromaticOrb.mjs';
 export {crimsonLash as 'crimson-lash'} from './modern/spells/crimsonLash.mjs';
+// ** Features
+// Fighting Styles
+export {protectionMoved} from './modern/feats/protection.mjs';
 // ** Species Features
 // Grim Hollow Heritage Traits
 export {firstStrike as 'first-strike'} from './modern/speciesFeatures/grimHollowHeritageTraits/firstStrike.mjs';
@@ -64,3 +67,5 @@ export {etherealFade as 'ethereal-fade', etherealFadeEnd} from './modern/species
 export {handOfDeath as 'hand-of-death', handOfDeathDeathKnell, handOfDeathClingToLife} from './modern/otherFeatures/darkBargain/handOfDeath.mjs';
 // ** Monster Features
 export {shieldGuardianBound as 'bound|shield-guardian', shieldGuardianBoundBind, shieldGuardianBoundDamage} from './modern/monsters/construct/shieldGuardian/bound.mjs';
+// ** Misc
+export {unarmedStrike as 'unarmed-strike'} from './modern/misc/unarmedStrike.mjs';
