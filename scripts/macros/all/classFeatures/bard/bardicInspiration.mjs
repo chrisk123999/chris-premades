@@ -28,13 +28,7 @@ async function useInspiration({document: effect}) {
     const phase = rules === '2024' ? 'postResult' : rules === '2014' ? 'preResult' : ['preResult', 'postResult'];
     const formula = effect.flags['chris-premades']?.bardicInspiration;
     if (!formula) return;
-    return new D20Bonus(effect, {action: 'special', actor: effect.parent, formula, phase})
-        .withValidation(({roll, outcome}) => {
-            if (roll?.isFumble) return 'CHRISPREMADES.Macros.Generic.Common.Fumble';
-            if (rules === '2024' && outcome?.success) return 'CHRISPREMADES.Macros.All.BardicInspiration.AlreadySucceeded';
-            return true;
-        })
-        .withOnUse(postUseInspiration);
+    return new D20Bonus(effect, {action: 'special', actor: effect.parent, formula, phase}).withOnUse(postUseInspiration);
 }
 async function postUseInspiration({bonus}) {
     await automationUtils.calledEvent('useBardicInspiration', bonus.actor, {canOverlap: true, data: {

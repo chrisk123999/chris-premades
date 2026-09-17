@@ -269,9 +269,6 @@
                     "Zombie": "Zombie"
                 },
                 "ArcaneGrimoire": "Arcane Recovery Bonus",
-                "BardicInspiration": {
-                    "AlreadySucceeded": "the roll already succeeded!"
-                },
                 "ChannelDivinity": "Choose a channel divinity effect:",
                 "Rage": {
                     "AllowConcentration": "Allow Concentration",
@@ -315,7 +312,6 @@
                 "Common": {
                     "AttackTypeHint": "Limit this feature by attack type.",
                     "DamageTypeHint": "Limit this feature by a list of dealt damage types.",
-                    "Fumble": "the roll is a natural 1!",
                     "HealingTypeHint": "Limit this feature by a list of dealt healing types.",
                     "IdentifierHint": "Limit this feature to a list of specific items.",
                     "ItemTypeHint": "Limit this feature to certain item types.",

@@ -1,11 +1,8 @@
 import {automationUtils, D20Bonus} from '../../../../proxy.mjs';
-function validate({roll}) {
-    return roll?.isFumble ? 'CHRISPREMADES.Macros.Generic.Common.Fumble' : true;
-}
 async function bonus({document}) {
     if (!document.system.uses.value) return;
     const formula = automationUtils.getConfigValue(document, 'formula');
-    return new D20Bonus(document, {action: 'special', formula}).withValidation(validate).withDefaultCosts().withDefaultOnUse();
+    return new D20Bonus(document, {action: 'special', formula}).withDefaultCosts().withDefaultOnUse();
 }
 export const restorativeRest = {
     name: 'Restorative Rest',
