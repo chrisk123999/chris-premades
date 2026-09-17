@@ -156,7 +156,6 @@ export const raging = {
         },
         {
             pass: 'actorOptionalBonusDamage',
-            phase: 'postResult',
             macro: rageDamage,
             priority: 100
         }

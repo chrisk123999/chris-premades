@@ -28,7 +28,6 @@ export const stealBlood = {
     roll: [
         {
             pass: 'actorOptionalBonusDamage',
-            phase: 'postResult',
             macro: bonus,
             priority: 255
         }

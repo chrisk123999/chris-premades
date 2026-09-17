@@ -31,7 +31,6 @@ export const divineStrike = {
     roll: [
         {
             pass: 'actorOptionalBonusDamage',
-            phase: 'postResult',
             macro: damage,
             priority: 200
         }
