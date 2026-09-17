@@ -23,17 +23,12 @@ async function grantInspiration({workflow}) {
     if (!createdEffect) return;
     await automationUtils.calledEvent('createdBardicInspiration', workflow.actor, {canOverlap: true, data: {effect: createdEffect, ...calledData}});
 }
-async function useInspiration({document: effect, roll, workflow, phase, outcome}) {
+async function useInspiration({document: effect}) {
     const rules = documentUtils.getRules(effect);
-    const phases = rules === '2024' ? ['postResult'] : rules === '2014' ? ['preResult'] : ['preResult', 'postResult'];
-    if (!phases.includes(phase)) return;
-    if (!roll) roll = workflow.attackRoll;
-    if (roll.isFumble) return;
-    if (rules === '2024' && outcome?.success) return;
+    const phase = rules === '2024' ? 'postResult' : rules === '2014' ? 'preResult' : ['preResult', 'postResult'];
     const formula = effect.flags['chris-premades']?.bardicInspiration;
     if (!formula) return;
-    return new D20Bonus(effect, {action: 'special', actor: effect.parent, formula})
-        .withOnUse(postUseInspiration);
+    return new D20Bonus(effect, {action: 'special', actor: effect.parent, formula, phase}).withOnUse(postUseInspiration);
 }
 async function postUseInspiration({bonus}) {
     await automationUtils.calledEvent('useBardicInspiration', bonus.actor, {canOverlap: true, data: {
@@ -45,7 +40,7 @@ async function postUseInspiration({bonus}) {
 }
 export const bardicInspiration = {
     name: 'Bardic Inspiration',
-    version: '2.0.2',
+    version: '2.0.3',
     rules: 'all',
     notes: 'Use the "actorPreCreateBardicInspiration" called event (async) to modify the bardic inspiration effect.\n\tData available: activity, effectData, rules, sourceActor, sourceToken, targetActor, targetToken.\nUse "actorCreatedBardicInspiration" (async) to respond when inspiration is granted.\n\tData available: activity, effect, rules, sourceActor, sourceToken, targetActor, targetToken.\nUse "actorUseBardicInspiration" to respond when inspiration is used.\n\tData available: bonus, sourceActor, targetActor.',
     use: postUseInspiration,
@@ -102,7 +97,6 @@ export const bardicInspirationEffect = {
     roll: [
         {
             pass: 'actorOptionalBonusAttack',
-            phase: ['preResult', 'postResult'],
             macro: useInspiration,
             priority: 300
         }
@@ -110,7 +104,6 @@ export const bardicInspirationEffect = {
     check: [
         {
             pass: 'actorOptionalBonus',
-            phase: ['preResult', 'postResult'],
             macro: useInspiration,
             priority: 300
         }
@@ -118,7 +111,6 @@ export const bardicInspirationEffect = {
     save: [
         {
             pass: 'actorOptionalBonus',
-            phase: ['preResult', 'postResult'],
             macro: useInspiration,
             priority: 300
         }
@@ -126,7 +118,6 @@ export const bardicInspirationEffect = {
     skill: [
         {
             pass: 'actorOptionalBonus',
-            phase: ['preResult', 'postResult'],
             macro: useInspiration,
             priority: 300
         }
@@ -134,7 +125,6 @@ export const bardicInspirationEffect = {
     tool: [
         {
             pass: 'actorOptionalBonus',
-            phase: ['preResult', 'postResult'],
             macro: useInspiration,
             priority: 300
         }

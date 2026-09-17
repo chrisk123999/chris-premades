@@ -39,7 +39,6 @@ export const magicalInspirationEffect = {
     roll: [
         {
             pass: 'actorOptionalBonusDamage',
-            phase: 'postResult',
             macro: damageHealing,
             priority: 300
         }
