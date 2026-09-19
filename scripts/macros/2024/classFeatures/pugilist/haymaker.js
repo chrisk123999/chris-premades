@@ -39,7 +39,7 @@ export let haymaker = {
             {
                 pass: 'damageRollComplete',
                 macro: hit,
-                priority: 50
+                priority: 500
             },
             {
                 pass: 'rollFinished',

@@ -1,3 +1,14 @@
+# 1.5.48 Release:
+## Update Notes:
+- Removed the Overtime Creator. Use the editor from MidiQOL instead.
+# Bug Fixes
+- Deflect Attacks
+- Haymaker
+- DMG Cleave
+- Martial Arts (modern)
+- True Strike
+- Eldritch Cannon
+
 # 1.5.47 Release:
 ## Bug Fixes
 - Overchannel

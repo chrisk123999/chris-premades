@@ -21,7 +21,6 @@ async function damageApplication({trigger: {entity: item}, workflow, ditem}) {
     for (let dmg of originalDetail) {
         let multiplier = dmg.active.multiplier;
         if (dmg.active.immunity || multiplier === 0) continue;
-        if (!damageTypes.has(dmg.type)) continue;
         let distributedReduction = Math.min(dmg.damage, reduction);
         workflowUtils.modifyDamageAppliedFlat(ditem, -Math.ceil(distributedReduction * multiplier), {type: dmg.type, multiplier});
         reduction -= distributedReduction;

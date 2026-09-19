@@ -1,18 +1,19 @@
 import {compendiumUtils, constants, dialogUtils, genericUtils, tokenUtils, workflowUtils} from '../../utils.js';
 export async function cleave(workflow) {
     if (!workflow.token || workflow.hitTargets.size != 1 || workflow.activity?.actionType != 'mwak' || !workflow.damageList || !workflow.item) return;
+    let target = workflow.targets.first();
     let newHP = workflow.damageList[0].newHP;
     if (newHP != 0) return;
-    if (workflow.targets.first().actor.items.getName('Minion')) return;
+    if (target.actor.items.getName('Minion')) return;
     let oldHP = workflow.damageList[0].oldHP;
     let leftoverDamage = collectDamage(workflow.damageList[0].damageDetail, oldHP);
     if (!Object.values(leftoverDamage).some(v => v > 0)) return;
     let cleaveSetting = genericUtils.getCPRSetting('cleave');
     if (cleaveSetting === 2) {
-        let targetMaxHP = workflow.targets.first().actor.system.attributes.hp.max;
+        let targetMaxHP = target.actor.system.attributes.hp.max;
         if (oldHP != targetMaxHP) return;
     }
-    let nearbyTargets = tokenUtils.findNearby(workflow.token, workflow.rangeDetails.range ?? 5, 'enemy');
+    let nearbyTargets = tokenUtils.findNearby(target, 5, 'ally').filter(t => tokenUtils.getDistance(workflow.token, t) <= workflow.rangeDetails.range ?? 5);
     if (!nearbyTargets.length) return;
     let selection = await dialogUtils.selectTargetDialog('CHRISPREMADES.Settings.cleave.Name', 'CHRISPREMADES.Cleave.Use', nearbyTargets, {skipDeadAndUnconscious: false, buttons: 'yesNo'});
     if (!selection?.length) return;

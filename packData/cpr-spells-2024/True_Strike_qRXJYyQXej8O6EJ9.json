@@ -131,7 +131,10 @@
       "mode": "prepared",
       "prepared": false
     },
-    "properties": [],
+    "properties": [
+      "somatic",
+      "material"
+    ],
     "range": {
       "units": "self",
       "special": ""

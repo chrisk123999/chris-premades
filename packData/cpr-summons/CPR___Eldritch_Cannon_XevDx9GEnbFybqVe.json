@@ -82,13 +82,15 @@
         }
       },
       "movement": {
-        "burrow": null,
-        "climb": null,
-        "fly": null,
-        "swim": null,
-        "walk": 30,
+        "burrow": "",
+        "climb": "15",
+        "fly": "",
+        "swim": "",
+        "walk": "15",
         "units": "ft",
-        "hover": false
+        "hover": false,
+        "bonus": "",
+        "special": ""
       },
       "attunement": {
         "max": 3

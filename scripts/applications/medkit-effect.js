@@ -41,10 +41,6 @@ export class EffectMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
             template: 'modules/chris-premades/templates/medkit-effect-configure.hbs',
             scrollable: ['']
         },
-        overtime: {
-            template: 'modules/chris-premades/templates/medkit-effect-over-time.hbs',
-            scrollable: ['']
-        },
         embeddedMacros: {
             template: 'modules/chris-premades/templates/embedded-macros.hbs',
             scrollable: ['']
@@ -173,10 +169,6 @@ export class EffectMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
                     })))
                 }
             },
-            overTime: {
-                original: effect?.changes?.find(i => i.key === 'flags.midi-qol.OverTime')?.value,
-                show: effect?.changes?.find(i => i.key === 'flags.midi-qol.OverTime')?.value ? true : false
-            },
             macros: {
                 effect: JSON?.stringify(effect.flags['chris-premades']?.macros?.effect) ?? '',
                 aura: JSON?.stringify(effect.flags['chris-premades']?.macros?.aura) ?? '',
@@ -224,125 +216,6 @@ export class EffectMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
                 context.medkitColor = 'dodgerblue';
                 break;
         }
-        // Options for Over Time creator
-        let overTimeOptions = constants.overTimeOptions;
-        if (context.overTime.original) {
-            let values = context.overTime.original.split(',').map(pair => pair.split('=').map(value => value.trim()));
-            values.forEach(([key, value]) => genericUtils.setProperty(overTimeOptions.find(i => i.key === key) ?? {}, 'value', value));
-        }
-        overTimeOptions.forEach(i => genericUtils.setProperty(i, 'show', i.requires ? overTimeOptions.find(j => (j.key === i.requires) && j.value) ? true : false : true));
-        let fieldsets = {};
-        let updates = [];
-        overTimeOptions.forEach(i => {
-            if (!fieldsets[i.fieldset]) genericUtils.setProperty(fieldsets, i.fieldset, {
-                label: 'CHRISPREMADES.Medkit.Fieldsets.' + i.fieldset + '.Label',
-                tooltip: 'CHRISPREMADES.Medkit.Fieldsets.' + i.fieldset + '.Tooltip',
-                options: []
-            });
-            switch (i.type) {
-                case 'radio': {
-                    genericUtils.setProperty(i, 'isRadio', true);
-                    if (!i.value && (i.value != false)) genericUtils.setProperty(i, 'value', i.default);
-                    i.options.forEach(j => genericUtils.setProperty(j, 'isChecked', j.value === i.value ? true : false));
-                    break;
-                }
-                case 'text': {
-                    genericUtils.setProperty(i, 'isText', true);
-                    if (!i.value) genericUtils.setProperty(i, 'value', i.default ?? '');
-                    break;
-                }
-                case 'boolean': {
-                    genericUtils.setProperty(i, 'isCheckbox', true);
-                    if (!i.value && (i.value != false)) genericUtils.setProperty(i, 'value', i.default);
-                    genericUtils.setProperty(i, 'isChecked', i.value);
-                    break;
-                }
-                case 'select': {
-                    genericUtils.setProperty(i, 'isSelectOption', true);
-                    if (!i.value) genericUtils.setProperty(i, 'value', i.default);
-                    i.options.forEach(j => genericUtils.setProperty(j, 'isSelected', j.value === i.value));
-                    break;
-                }
-                case 'abilityOrSkill': {
-                    genericUtils.setProperty(i, 'isSelectOption', true);
-                    if (!i.value) genericUtils.setProperty(i, 'value', i.default);
-                    genericUtils.setProperty(i, 'optgroups', [
-                        {
-                            label: 'DND5E.Abilities',
-                            options: constants.abilityOptions().map(a => ({...a, isSelected: a.value === i.value}))
-                        },
-                        {
-                            label: 'DND5E.Skills',
-                            options: constants.skillOptions().map(s => ({...s, isSelected: s.value === i.value}))
-                        }
-                    ]);
-                    break;
-                }
-                case 'ability': {
-                    genericUtils.setProperty(i, 'isSelectOption', true);
-                    if (!i.value) genericUtils.setProperty(i, 'value', i.default);
-                    genericUtils.setProperty(i, 'options',
-                        constants.abilityOptions().map(a => ({...a, isSelected: a.value === i.value}))
-                    );
-                    break;
-                }
-                case 'saves': {
-                    genericUtils.setProperty(i, 'isSelectOption', true);
-                    if (!i.value) genericUtils.setProperty(i, 'value', i.default);
-                    genericUtils.setProperty(i, 'options', [
-                        {
-                            label: 'CHRISPREMADES.Medkit.Effect.OverTime.Labels.Spellcasting',
-                            value: '@attributes.spell.dc',
-                            isSelected: i.value === '@attributes.spell.dc'
-                        },
-                        {
-                            label: 'CHRISPREMADES.Medkit.Effect.OverTime.Labels.Item',
-                            value: '@item.save.dc',
-                            isSelected: i.value === '@item.save.dc'
-                        },
-                        {
-                            label: 'CHRISPREMADES.Medkit.Effect.OverTime.Labels.Activity',
-                            value: '$activity.dc',
-                            isSelected: i.value === '$activity.dc'
-                        },
-                        {
-                            label: 'CHRISPREMADES.Medkit.Effect.OverTime.Labels.Flat',
-                            value: 'flat', // Need to see if the actual value is a number
-                            isSelected: i.value === 'flat' // Make it add another box if this is true
-                        },
-                        {
-                            label: 'CHRISPREMADES.Medkit.Effect.OverTime.Labels.Ability',
-                            value: 'ability', // Need to see if the actual value is a ability
-                            isSelected: i.value === 'ability'
-                        }
-                    ]);
-                    if (Number(i.value)) {
-                        let currentValue = genericUtils.duplicate(i.value);
-                        updates.push({field: 'saveDCNumber', value: currentValue});
-                        i.value = 'flat';
-                        i.options.find(j => j.value === 'flat').isSelected = true;
-                    } else if ((i.key === 'saveDC') && (i?.value?.includes('@abilities.'))) {
-                        let currentValue = genericUtils.duplicate(i.value).match(/\.(.*?)\./)[1];
-                        updates.push({field: 'saveDCAbility', value: currentValue});
-                        i.value = 'ability';
-                        i.options.find(j => j.value === 'ability').isSelected = true;
-                    }
-                    break;
-                }
-                case 'damageTypes': {
-                    genericUtils.setProperty(i, 'isSelectOption', true);
-                    if (!i.value) genericUtils.setProperty(i, 'value', i.default);
-                    genericUtils.setProperty(i, 'options', constants.damageTypeOptions().concat(constants.healingTypeOptions()).map(t => ({...t, isSelected: t.value === i.value})));
-                    break;
-                }
-            }
-            fieldsets[i.fieldset].options.push(i);
-        });
-        updates.forEach(i => {
-            genericUtils.setProperty(fieldsets.rolls.options.find(k => k.key === i.field), 'show', true);
-            genericUtils.setProperty(fieldsets.rolls.options.find(k => k.key === i.field), 'value', i.value);
-        });
-        genericUtils.setProperty(context.overTime, 'fieldsets', fieldsets);
         return context;
     }
     // Allows the overTime fields to be shown
@@ -354,7 +227,6 @@ export class EffectMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
         }
         let currentTabId = this.element.querySelector('.item.active').getAttribute('data-tab');
         this.tabsData[currentTabId].cssClass = 'active';
-        this.context.overTime.show = true;
         await this.render(true);
         let newPos = {...this.position, height: this.element.scrollHeight};
         this.setPosition(newPos);
@@ -362,28 +234,6 @@ export class EffectMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
     // Saves the context data to the effect
     static async confirm(event, target) {
         let effectData = genericUtils.duplicate(this.effectDocument.toObject());
-        let overTimeFields = Object.values(this.context.overTime.fieldsets).flatMap(i => i.options);
-        let saveDCField = overTimeFields.find(i => i.key === 'saveDC');
-        if (saveDCField.value === 'flat') saveDCField.value = overTimeFields.find(i => i.key === 'saveDCNumber').value;
-        if (saveDCField.value === 'ability') saveDCField.value = '@abilities.' + overTimeFields.find(i => i.key === 'saveDCAbility').value + '.dc';
-        overTimeFields.splice(overTimeFields.findIndex(i => i.key === 'saveDCNumber'), 1);
-        overTimeFields.splice(overTimeFields.findIndex(i => i.key === 'saveDCAbility'), 1);
-        if (this.context.overTime.show) {
-            let overTimeValue = '';
-            overTimeFields.forEach(i => {
-                if (i.value && (i.value != '')) overTimeValue += i.key + '=' + i.value + ',';
-            });
-            if (effectData.changes.find(i => i.key === 'flags.midi-qol.OverTime')) {
-                effectData.changes.find(i => i.key === 'flags.midi-qol.OverTime').value = overTimeValue;
-            } else {
-                effectData.changes.push({
-                    key: 'flags.midi-qol.OverTime',
-                    value: overTimeValue,
-                    mode: 0,
-                    priority: 20
-                });
-            }
-        }
         let flagUpdates = {};
         genericUtils.setProperty(flagUpdates, 'noAnimation', this.context.configure.noAnimation.value);
         genericUtils.setProperty(flagUpdates, 'conditions', this.context.configure.conditions.value);
@@ -424,12 +274,6 @@ export class EffectMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
                     label: 'CHRISPREMADES.Medkit.Tabs.Configuration.Label',
                     tooltip: 'CHRISPREMADES.Medkit.Tabs.Configuration.Tooltip',
                     cssClass: 'active'
-                },
-                overtime: {
-                    icon: 'fa-solid fa-stopwatch',
-                    label: 'CHRISPREMADES.Medkit.Tabs.Overtime.Label',
-                    tooltip: 'CHRISPREMADES.Medkit.Tabs.Overtime.Tooltip',
-                    cssClass: ''
                 }
             };
             if (genericUtils.getCPRSetting('enableEmbeddedMacrosEditing')) {
@@ -482,68 +326,6 @@ export class EffectMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
                     case 'templateEffectActivities':
                         this.context.configure.templateEffectActivities.options.forEach(i => event.target.value.includes(i.value) ? i.isSelected = true : i.isSelected = false);
                         this.context.configure.templateEffectActivities.value = event.target.value;
-                }
-                break;
-            }
-            case 'overtime': {
-                switch (event.target.type) {
-                    case 'radio': {
-                        let option = this.context.overTime.fieldsets[event.target.getAttribute('data-fieldset')].options.find(i => i.key === event.target.name);
-                        option.value = event.target.id;
-                        option.options.forEach(i => i.isChecked = false);
-                        option.options.find(i => i.value === event.target.id).isChecked = true;
-                        break;
-                    }
-                    case 'text': {
-                        this.context.overTime.fieldsets[event.target.getAttribute('data-fieldset')].options.find(i => i.key === event.target.id).value = event.target.value;
-                        break;
-                    }
-                    case 'select-one': {
-                        let option = this.context.overTime.fieldsets[event.target.getAttribute('data-fieldset')].options.find(i => i.key === event.target.id);
-                        let targetValue = event.target.value === 'false' ? false : event.target.value;
-                        option.value = targetValue;
-                        (option?.options ?? option.optgroups.flatMap(i => i.options)).forEach(i => i.isSelected = false);
-                        (option?.options ?? option.optgroups.flatMap(i => i.options)).find(i => i.value === targetValue).isSelected = true;
-                        break;
-                    }
-                    case 'checkbox': {
-                        let option = this.context.overTime.fieldsets[event.target.getAttribute('data-fieldset')].options.find(i => i.key === event.target.id);
-                        option.value = event.target.checked;
-                        option.isChecked = event.target.checked;
-                        break;
-                    }
-                }
-                if (event.target.type === undefined && event.target.id === 'saveAbility') {
-                    let option = this.context.overTime.fieldsets.rolls.options.find(i => i.key === 'saveAbility');
-                    option.optgroups.flatMap(i => i.options).forEach(i => i.isSelected = event.target.value.includes(i.value) ? true : false);
-                    option.value = event.target.value;
-                }
-                Object.values(this.context.overTime.fieldsets).forEach(i => {
-                    i.options.forEach(j => {
-                        if (j.requires != 'other') genericUtils.setProperty(j, 'show', j.requires ? constants.overTimeOptions.find(k => (k.key === j.requires) && k.value) ? true : false : true);
-                    });
-                });
-                if (event.target.id === 'actionSave') {
-                    if (event.target.value === 'roll' || event.target.value === 'dialog') {
-                        this.context.overTime.fieldsets.rolls.options.find(i => i.key === 'saveAbility').isSelectOption = false;
-                        genericUtils.setProperty(this.context.overTime.fieldsets.rolls.options.find(i => i.key === 'saveAbility'), 'isSelectMultiple', true);
-                    } else {
-                        this.context.overTime.fieldsets.rolls.options.find(i => i.key === 'saveAbility').isSelectOption = true;
-                        genericUtils.setProperty(this.context.overTime.fieldsets.rolls.options.find(i => i.key === 'saveAbility'), 'isSelectMultiple', false);
-                    }
-                } else if (event.target.id === 'saveDC') {
-                    genericUtils.setProperty(this.context.overTime.fieldsets.rolls.options.find(i => i.key === 'saveDCNumber'), 'show', false);
-                    genericUtils.setProperty(this.context.overTime.fieldsets.rolls.options.find(i => i.key === 'saveDCAbility'), 'show', false);
-                    switch (this.context.overTime.fieldsets.rolls.options.find(i => i.key === 'saveDC').value) {
-                        case 'flat': {
-                            genericUtils.setProperty(this.context.overTime.fieldsets.rolls.options.find(i => i.key === 'saveDCNumber'), 'show', true);
-                            break;
-                        }
-                        case 'ability': {
-                            genericUtils.setProperty(this.context.overTime.fieldsets.rolls.options.find(i => i.key === 'saveDCAbility'), 'show', true);
-                            break;
-                        }
-                    }
                 }
                 break;
             }

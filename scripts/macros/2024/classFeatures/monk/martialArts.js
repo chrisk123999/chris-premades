@@ -26,7 +26,7 @@ async function attack({trigger: {entity: item}, workflow}) {
     }
     if (workflowUtils.isAttackType(workflow, 'meleeAttack')) {
         let defaultType = workflow.activity.attack.ability ?? 'str';
-        let abilities = [...workflow.item.system.availableAbilities, defaultType, 'dex'];
+        let abilities = [...(workflow.item.system.availableAbilities ?? []), defaultType, 'dex'];
         itemData.system.activities[workflow.activity.id].attack.ability = actorUtils.getBestAbility(workflow.actor, abilities);
     }
     workflow.item = await itemUtils.syntheticItem(itemData, workflow.actor);
