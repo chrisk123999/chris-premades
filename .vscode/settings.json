@@ -1,8 +1,11 @@
 {
+    "eslint.useFlatConfig": false,
     "javascript.preferences.importModuleSpecifierEnding": "js",
     "javascript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces": false,
     "javascript.preferences.quoteStyle": "single",
-    "javascript.preferences.autoImportFileExcludePatterns": ["**/node_modules/**"],
+    "javascript.preferences.autoImportFileExcludePatterns": [
+        "**/node_modules/**"
+    ],
     "i18n-ally.localesPaths": [
         "lang",
         "symlinks/foundryLang",

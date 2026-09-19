@@ -12,3 +12,5 @@ export {instinctivePounce} from './animations/instinctivePounce.mjs';
 export {smite} from './animations/smite.mjs';
 export {divineStrike} from './animations/divineStrike.mjs';
 export {hide} from './animations/hide.mjs';
+export {mistyStep} from './animations/teleport.mjs';
+export {moonFrenzy, shapeChange} from './animations/lycanthropy.mjs';

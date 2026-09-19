@@ -37,12 +37,6 @@
           "disableIncapacitated": false,
           "specialDuration": []
         },
-        "ddbimporter": {
-          "disabled": false,
-          "passive": true,
-          "itemId": 1789128,
-          "itemEntityTypeId": 1088085227
-        },
         "midi-qol": {
           "forceCEOff": true
         },

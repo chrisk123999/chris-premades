@@ -20,16 +20,9 @@
           "transfer": true,
           "stackable": "noneNameOnly"
         },
-        "ddbimporter": {
-          "disabled": false,
-          "passive": true,
-          "itemId": 12778281,
-          "itemEntityTypeId": 12168134
-        },
         "midi-qol": {
           "forceCEOff": true
-        },
-        "core": {}
+        }
       },
       "description": "",
       "img": "icons/magic/water/projectile-bolts-salvo-blue.webp",

@@ -12,6 +12,8 @@ export {wildShape as 'wild-shape', wildShapeChooseForms, wildShapeRevert} from '
 export {beastSpells as 'beast-spells'} from './all/classFeatures/druid/beastSpells.mjs';
 // Rogue
 export {steadyAim as 'steady-aim'} from './all/classFeatures/rogue/steadyAim.mjs';
+// Warlock
+export {oneWithShadows as 'one-with-shadows'} from './all/classFeatures/warlock/invocations/oneWithShadows.mjs';
 // Equipment
 export {arcaneGrimoire as 'arcane-grimoire-1', arcaneGrimoire as 'arcane-grimoire-2', arcaneGrimoire as 'arcane-grimoire-3'} from './all/equipment/arcaneGrimoire.mjs';
 // Fighting Styles
@@ -26,3 +28,5 @@ export {unarmedFighting} from './all/fightingStyles/unarmedFighting.mjs';
 // Spells
 export {acidArrow as 'acid-arrow'} from './all/spells/acidArrow.mjs';
 export {animateDead as 'animate-dead', animateDeadSummon as 'animate-dead-summon', animateDeadPlace as 'animate-dead-place', animateDeadRecall as 'animate-dead-recall', animateDeadReassert as 'animate-dead-reassert', animateDeadEffectDeleted as 'animate-dead-effect-deleted'} from './all/spells/animateDead.mjs';
+export {findFamiliar as 'find-familiar', findFamiliarTouch as 'find-familiar-touch'} from './all/spells/findFamiliar.mjs';
+export {hex, hexAttack as 'hex-attack'} from './all/spells/hex.mjs';

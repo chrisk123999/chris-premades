@@ -198,9 +198,6 @@
   },
   "effects": [],
   "flags": {
-    "dnd5e": {
-      "sourceId": "Compendium.dnd5e.classes24.Item.phbrgeSneakAttac"
-    },
     "cat": {
       "automation": {
         "source": "chris-premades",

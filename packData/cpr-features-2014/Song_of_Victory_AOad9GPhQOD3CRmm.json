@@ -33,7 +33,6 @@
     "enchant": {}
   },
   "flags": {
-    "core": {},
     "midiProperties": {
       "confirmTargets": "default",
       "autoFailFriendly": false,

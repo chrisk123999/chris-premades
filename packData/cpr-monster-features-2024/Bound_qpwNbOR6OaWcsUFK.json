@@ -370,15 +370,6 @@
       "config": {
         "target": "Actor.RiswynnLv0500000"
       }
-    },
-    "dnd5e": {
-      "last": {
-        "ZJUE7ro7hc1RCA1t": {
-          "damageType": {
-            "0": "none"
-          }
-        }
-      }
     }
   },
   "img": "icons/equipment/neck/amulet-carved-stone-spiral-blue.webp",

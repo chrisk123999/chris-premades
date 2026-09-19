@@ -196,7 +196,6 @@
     }
   },
   "flags": {
-    "dnd5e": {},
     "cat": {
       "automation": {
         "version": "2.0.2",

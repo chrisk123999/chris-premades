@@ -29,9 +29,6 @@
           "macroRepeat": "none",
           "specialDuration": []
         },
-        "ddbimporter": {
-          "disabled": false
-        },
         "midi-qol": {
           "forceCEOff": true
         },

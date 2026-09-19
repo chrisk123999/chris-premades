@@ -5,7 +5,7 @@
     {
       "name": "Reckless Defense",
       "img": "icons/skills/melee/strike-axe-blood-red.webp",
-      "origin": "Actor.vEcivv6DTofI2Lzw.Item.uukK5RkYosWloHSI",
+      "origin": null,
       "transfer": false,
       "_id": "sL3urkAFF3Kov6sz",
       "type": "base",
@@ -322,7 +322,6 @@
     }
   },
   "flags": {
-    "dnd5e": {},
     "cat": {
       "automation": {
         "source": "chris-premades",

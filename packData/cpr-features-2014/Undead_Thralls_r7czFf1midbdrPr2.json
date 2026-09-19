@@ -30,7 +30,6 @@
     "enchant": {}
   },
   "flags": {
-    "core": {},
     "midi-qol": {
       "effectActivation": false,
       "rollAttackPerTarget": "default",

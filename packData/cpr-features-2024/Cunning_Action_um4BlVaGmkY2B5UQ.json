@@ -569,7 +569,7 @@
     {
       "name": "Hidden",
       "img": "icons/containers/barrels/barrel-open-brown-red.webp",
-      "origin": "Actor.RiswynnLv0500000.Item.8D5MNyj6IOqJnc6L",
+      "origin": null,
       "duration": {
         "value": null,
         "units": "seconds",
@@ -618,7 +618,7 @@
     {
       "name": "Disengage",
       "img": "icons/skills/movement/feet-winged-boots-blue.webp",
-      "origin": "Actor.RiswynnLv0500000.Item.8D5MNyj6IOqJnc6L",
+      "origin": null,
       "transfer": false,
       "_id": "DwRojsYeC8kTO6yr",
       "type": "base",
@@ -674,9 +674,6 @@
     }
   ],
   "flags": {
-    "dnd5e": {
-      "sourceId": "Compendium.dnd5e.classes24.Item.phbrgeCunningAct"
-    },
     "cat": {
       "automation": {
         "source": "chris-premades",

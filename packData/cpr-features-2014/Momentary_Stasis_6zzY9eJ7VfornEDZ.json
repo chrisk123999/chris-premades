@@ -5,7 +5,7 @@
     {
       "name": "Momentary Stasis",
       "img": "icons/magic/control/encase-creature-monster-hold.webp",
-      "origin": "Actor.jFxyd72ph3VeP2u4.Item.4z6WS1ZW7HMb0MBT",
+      "origin": null,
       "transfer": false,
       "_id": "YkFaQkTJ9HlAgHKc",
       "type": "base",

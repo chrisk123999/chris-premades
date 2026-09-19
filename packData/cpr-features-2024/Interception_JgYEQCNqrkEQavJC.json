@@ -199,7 +199,6 @@
     "midiProperties": {
       "confirmTargets": "default"
     },
-    "dnd5e": {},
     "cat": {
       "automation": {
         "source": "chris-premades",

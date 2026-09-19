@@ -5,7 +5,7 @@
     {
       "name": "Turned",
       "img": "icons/magic/holy/barrier-shield-winged-blue.webp",
-      "origin": "Actor.JZBMDHV4ipB55aqn.Item.LLbggSzhqWhbdBxS",
+      "origin": null,
       "transfer": false,
       "_id": "sUj7QenTocykaUPO",
       "type": "base",
@@ -471,7 +471,6 @@
     }
   },
   "flags": {
-    "dnd5e": {},
     "cat": {
       "automation": {
         "source": "chris-premades",

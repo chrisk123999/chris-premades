@@ -152,7 +152,6 @@
     "crewed": false
   },
   "flags": {
-    "core": {},
     "midi-qol": {
       "effectActivation": false,
       "rollAttackPerTarget": "default",
@@ -190,13 +189,6 @@
       "riders": {
         "activity": [],
         "effect": []
-      },
-      "last": {
-        "Dfegz4nV8q1tRlDc": {
-          "damageType": {
-            "0": "healing"
-          }
-        }
       }
     },
     "cat": {

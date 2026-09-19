@@ -12,6 +12,8 @@
                 "TrailColor": "Trail Color"
             },
             "AirSummon": "Air Summon",
+            "ShapeChange": "Shape Change",
+            "MistyStep": "Misty Step",
             "CelestialSummon": "Celestial Summon",
             "CunningActionDash": {
                 "Name": "Cunning Action Dash"
@@ -50,7 +52,8 @@
             "SneakAttack": {
                 "Name": "Sneak Attack"
             },
-            "WaterSummon": "Water Summon"
+            "WaterSummon": "Water Summon",
+            "MoonFrenzy": "Moon Frenzy"
         },
         "Config": {
             "Abilities": "Abilities",
@@ -235,6 +238,8 @@
             "TokenAnimation": "Token Animation",
             "TokenAnimationScale": "Token Animation Scale",
             "TokenColor": "Token Color",
+            "AvatarImg": "Portrait Image",
+            "ImgPriority": "Image Priority",
             "TokenImg": "Token Image",
             "TokenImgPriority": "Token Image Priority",
             "TokenName": "Token Name",
@@ -249,7 +254,8 @@
             "Weapon": "Weapon",
             "WeaponProperties": "Weapon Properties",
             "WeaponType": "Weapon Type",
-            "WeaponTypes": "Weapon Types"
+            "WeaponTypes": "Weapon Types",
+            "MoonColor": "Red Moon"
         },
         "Error": {
             "ActorNotFound": "Could not find the summon actor. Check the CAT monster compendium settings and the spell's configured actor names."
@@ -257,6 +263,9 @@
         "Generic": {
             "CreatureNameAndSize": "{size} {name}",
             "SelectDamageType": "Select Damage Type"
+        },
+        "GenericEffects": {
+            "CriticalThreshold": "Critical Threshold"
         },
         "Macros": {
             "All": {
@@ -274,10 +283,28 @@
                 "ArcaneGrimoire": "Arcane Recovery Bonus",
                 "ChannelDivinity": "Choose a channel divinity effect:",
                 "Dueling": "Identifiers for exceptions to the requirements of this feature.",
+                "FindFamiliar": {
+                    "Choose": "Choose a familiar.",
+                    "Folder": "Familiar Actor Folder",
+                    "InvalidSpell": "Only spells with a range of touch can be cast through your familiar.",
+                    "NoActors": "No actors were found in the {folder} folder.",
+                    "ReactionUsed": "Your familiar has already used its reaction.",
+                    "TooFar": "Your familiar is not close enough.",
+                    "TouchRange": "Touch Spell Range",
+                    "Type": "Choose a creature type for your familiar."
+                },
+                "Hex": {
+                    "Hexed": "Hexed",
+                    "Multiple": "Choose which creature to move the hex from.",
+                    "SelectAbility": "Choose an ability for the target to have disadvantage on checks with."
+                },
                 "Interception": {
                     "Equipped": "Equipped Items",
                     "EquippedHint": "One or more of these item types must be equipped.",
                     "Prompt": "Use {item} to reduce the damage dealt to {name}?"
+                },
+                "OneWithShadows": {
+                    "Bright": "You can only use this in dim light or darkness."
                 },
                 "Protection": "Spend a reaction to protect {name}?",
                 "Rage": {
@@ -374,6 +401,9 @@
                 "AcidArrow": {
                     "HalfDamage": "Missed Target Damage"
                 },
+                "AmuletOfTheLycanthrope": {
+                    "SaveBonus": "Lycanthropy Save DC Bonus"
+                },
                 "AnimateObjects": {
                     "SlamName": "Slam",
                     "SummonName": "Animated Object"
@@ -398,12 +428,36 @@
                     "UseRollTotal": "Use {itemName}? (Roll Total: {rollTotal})",
                     "UseRollTotalBy": "Use {itemName} for {name}? (Roll Total: {rollTotal})"
                 },
+                "CreatePactWeapon": {
+                    "Existing": "Bond an existing weapon",
+                    "RangedWeapons": "Improved Pact Weapon Options",
+                    "Select": "Choose a weapon to create.",
+                    "SelectWeapon": "Choose a weapon to bond with.",
+                    "Summon": "Create a new weapon",
+                    "Type": "How do you want to create your pact weapon?",
+                    "Weapon": "Pact Weapon"
+                },
                 "DangerSense": "This save is from an effect you can see.",
                 "DestroyUndead": "Maximum CR",
+                "EldritchSmite": {
+                    "Prone": "Knock the target prone?"
+                },
                 "ExpertDivination": {
                     "MaxSlotLevel": "Maximum Slot Level",
                     "Select": "What level spell slot do you want to regain?",
                     "SlotRegained": "Spell slot (level {slotLevel}) regained!"
+                },
+                "FeyPresence": {
+                    "Select": "Choose a condition to apply."
+                },
+                "FormOfDread": {
+                    "Use": "Frighten the target?"
+                },
+                "FormOfTheBeast": {
+                    "Keen": "Tracking or Stalking Prey"
+                },
+                "GraspOfHadar": {
+                    "Select": "Choose a creature to pull with {item}."
                 },
                 "GravityWell": {
                     "AllowAllTargets": "Allow All Targets",
@@ -415,9 +469,29 @@
                     "HealingMultiplier": "Healing Multiplier",
                     "NecromancyMultiplier": "Necromancy Healing Multiplier"
                 },
+                "HarkonsBite": {
+                    "HybridAvatarImg": "Hybrid Form Portrait Image",
+                    "HybridTokenImg": "Hybrid Form Token Image",
+                    "Keen": "Keen Hearing and Smell",
+                    "WolfAvatarImg": "Wolf Form Portrait Image",
+                    "WolfTokenImg": "Wolf Form Token Image"
+                },
                 "HarnessDivinePower": {
                     "NoMissing": "You do not have any eligible missing spell slots!",
                     "Prompt": "Choose {maxAmount} slots to recover."
+                },
+                "HexWarrior": {
+                    "NoWeapons": "You have no eligible equipped weapons.",
+                    "SelectWeapon": "Choose a weapon to bond with."
+                },
+                "HexbladesCurse": {
+                    "CriticalThreshold": "Critical Threshold",
+                    "Transfer": "Move your curse to another creature?",
+                    "TransferRange": "Master of Hexes Range"
+                },
+                "InvestmentOfTheChainMaster": {
+                    "Movement": "Choose a movement type for your familiar.",
+                    "Speed": "Granted Movement Speed"
                 },
                 "ManifestMind": {
                     "Far": "{actorName}'s Manifest Mind is too far away. Remove it?",
@@ -444,6 +518,11 @@
                 "Rage": {
                     "EndEarly": "{actorName} has not attacked an enemy or taken damage since their last turn. Remove Rage?"
                 },
+                "RelentlessHex": {
+                    "Identifiers": "Curse Effect Identifiers",
+                    "NoTargets": "No cursed creature is within range!",
+                    "Select": "Which cursed creature do you teleport to?"
+                },
                 "SculptSpells": {
                     "Select": "Which targets succeed and take no damage? (Max: {max})"
                 },
@@ -463,6 +542,9 @@
                 }
             },
             "Modern": {
+                "AgonizingBlast": {
+                    "Select": "Choose the cantrips this invocation applies to."
+                },
                 "ArcaneRecovery": {
                     "Context": "You can recover a combined total of {totalSlots} spell slot levels.",
                     "Slot": "Level {slot} Slots"
@@ -481,6 +563,11 @@
                 "ExtremeResilience": {
                     "Select": "Select a feature to recover a use of."
                 },
+                "FelineForm": {
+                    "Actor": "Feline Actor Name",
+                    "Equipment": "Choose the equipment to keep worn in your new form.",
+                    "NoActor": "No actor named {name} was found in the world or the SRD."
+                },
                 "FontOfInspiration": {
                     "NoSlots": "You have no remaining spell slots!",
                     "Prompt": "Select a spell slot to spend."
@@ -493,8 +580,26 @@
                     "Prepare": "Select a spell to prepare:",
                     "Unprepare": "Select a spell to unprepare:"
                 },
+                "PactOfTheBlade": {
+                    "Conjure": "Choose a weapon to create.",
+                    "Name": "Pact Weapon",
+                    "ReplaceDamage": "Change the damage type of this attack?",
+                    "SelectBond": "Choose a weapon to bond with."
+                },
+                "PactOfTheChain": {
+                    "Attack": "Choose an attack for your familiar to make."
+                },
                 "PowerNap": {
                     "Select": "Select a hit die to recover."
+                },
+                "PsychicSpells": {
+                    "ChangeDamage": "Change the damage type from {from} to {to}?",
+                    "ChangeDamageMode": "Change Damage Type",
+                    "Modes": {
+                        "always": "Always",
+                        "never": "Never",
+                        "prompt": "Prompt"
+                    }
                 },
                 "Rage": {
                     "EndEarly": "{actorName} has not attacked an enemy, forced an enemy to make a save, or continued their rage since their last turn. Remove Rage?"
@@ -512,6 +617,17 @@
                 },
                 "StealBlood": {
                     "Validate": "Sneak Attack must be active before using Steal Blood!"
+                },
+                "StepsOfTheFey": {
+                    "Select": "Choose a creature to heal."
+                },
+                "SummonAberration": {
+                    "Claws": "Claws",
+                    "EyeRay": "Eye Ray",
+                    "Multiattack": "Multiattack",
+                    "PsychicSlam": "Psychic Slam",
+                    "Regeneration": "Regeneration",
+                    "WhisperingAura": "Whispering Aura"
                 },
                 "UnarguableWizardry": {
                     "Prompt": "Unarguable Wizardry"

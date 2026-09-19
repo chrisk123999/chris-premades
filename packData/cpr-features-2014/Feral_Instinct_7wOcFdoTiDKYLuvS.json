@@ -43,7 +43,7 @@
       "_id": "4ibgDcLP3Ak7c4bc",
       "type": "base",
       "start": null,
-      "origin": "Actor.vEcivv6DTofI2Lzw.Item.MAojlQZiH8Fwcgkq",
+      "origin": null,
       "folder": null,
       "sort": 0,
       "_key": "!items.effects!7wOcFdoTiDKYLuvS.4ibgDcLP3Ak7c4bc"
@@ -85,7 +85,6 @@
     }
   },
   "flags": {
-    "dnd5e": {},
     "cat": {
       "automation": {
         "source": "chris-premades",

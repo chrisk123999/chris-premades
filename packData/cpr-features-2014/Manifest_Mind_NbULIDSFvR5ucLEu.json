@@ -518,7 +518,6 @@
     "crewed": false
   },
   "flags": {
-    "core": {},
     "midi-qol": {
       "effectActivation": false,
       "onUseMacroName": "",

@@ -12,6 +12,28 @@ export {divineStrike as 'divine-strike'} from './legacy/classFeatures/cleric/div
 export {harnessDivinePower as 'harness-divine-power'} from './legacy/classFeatures/cleric/harnessDivinePower.mjs';
 // Druid
 export {wildShape as 'wild-shape', wildShapeActive} from './legacy/classFeatures/druid/wildShape.mjs';
+// Warlock
+export {createPactWeapon as 'create-pact-weapon'} from './legacy/classFeatures/warlock/boons/createPactWeapon.mjs';
+export {feyPresence as 'fey-presence'} from './legacy/classFeatures/warlock/archfey/feyPresence.mjs';
+export {mistyEscape as 'misty-escape'} from './legacy/classFeatures/warlock/archfey/mistyEscape.mjs';
+export {radiantSoul as 'radiant-soul'} from './legacy/classFeatures/warlock/celestial/radiantSoul.mjs';
+export {darkOnesBlessing as 'dark-ones-blessing'} from './legacy/classFeatures/warlock/fiend/darkOnesBlessing.mjs';
+export {hexWarrior as 'hex-warrior'} from './legacy/classFeatures/warlock/hexblade/hexWarrior.mjs';
+export {hexbladesCurse as 'hexblades-curse', hexbladesCurseSource as 'hexblades-curse-source', hexbladesCurseTarget as 'hexblades-curse-target'} from './legacy/classFeatures/warlock/hexblade/hexbladesCurse.mjs';
+export {agonizingBlast as 'agonizing-blast'} from './legacy/classFeatures/warlock/invocations/agonizingBlast.mjs';
+export {eldritchSmite as 'eldritch-smite'} from './legacy/classFeatures/warlock/invocations/eldritchSmite.mjs';
+export {giftOfTheProtectors as 'gift-of-the-protectors', giftOfTheProtectorsProtected as 'gift-of-the-protectors-protected'} from './legacy/classFeatures/warlock/invocations/giftOfTheProtectors.mjs';
+export {graspOfHadar as 'grasp-of-hadar'} from './legacy/classFeatures/warlock/invocations/graspOfHadar.mjs';
+export {lanceOfLethargy as 'lance-of-lethargy'} from './legacy/classFeatures/warlock/invocations/lanceOfLethargy.mjs';
+export {maddeningHex as 'maddening-hex'} from './legacy/classFeatures/warlock/invocations/maddeningHex.mjs';
+export {relentlessHex as 'relentless-hex'} from './legacy/classFeatures/warlock/invocations/relentlessHex.mjs';
+export {repellingBlast as 'repelling-blast'} from './legacy/classFeatures/warlock/invocations/repellingBlast.mjs';
+export {investmentOfTheChainMaster as 'investment-of-the-chain-master', investmentOfTheChainMasterResistance as 'investment-of-the-chain-master-resistance'} from './legacy/classFeatures/warlock/invocations/investmentOfTheChainMaster.mjs';
+export {tentacleOfTheDeeps as 'tentacle-of-the-deeps'} from './legacy/classFeatures/warlock/fathomless/tentacleOfTheDeeps.mjs';
+export {formOfTheBeastWarlock as 'form-of-the-beast-warlock', formOfTheBeastWarlockEffect as 'form-of-the-beast-warlock-effect'} from './legacy/classFeatures/warlock/predator/formOfTheBeast.mjs';
+export {formOfDread as 'form-of-dread'} from './legacy/classFeatures/warlock/undead/formOfDread.mjs';
+export {formOfDreadActive as 'form-of-dread-active'} from './legacy/classFeatures/warlock/undead/formOfDread.mjs';
+export {graveTouched as 'grave-touched'} from './legacy/classFeatures/warlock/undead/graveTouched.mjs';
 // Wizard
 export {bladesong as 'bladesong'} from './legacy/classFeatures/wizard/bladeSinging/bladesong.mjs';
 export {songOfDefense as 'song-of-defense'} from './legacy/classFeatures/wizard/bladeSinging/songOfDefense.mjs';
@@ -33,3 +55,6 @@ export {durableMagic as 'durable-magic'} from './legacy/classFeatures/wizard/war
 // ** Spells
 export {absorbElements as 'absorb-elements'} from './legacy/spells/absorbElements.mjs';
 export {animateObjects as 'animate-objects'} from './legacy/spells/animateObjects.mjs';
+// ** Items
+export {amuletOfTheLycanthrope as 'amulet-of-the-lycanthrope', amuletOfTheLycanthropeEffect as 'amulet-of-the-lycanthrope-effect'} from './legacy/items/amuletOfTheLycanthrope.mjs';
+export {harkonsBite as 'harkons-bite', harkonsBiteEffect as 'harkons-bite-effect'} from './legacy/items/harkonsBite.mjs';

@@ -165,13 +165,6 @@
       "riders": {
         "activity": [],
         "effect": []
-      },
-      "last": {
-        "healImpWaFlclass": {
-          "damageType": {
-            "0": "temphp"
-          }
-        }
       }
     },
     "cat": {
