@@ -9,14 +9,15 @@
       "transfer": false,
       "_id": "Xo0tWvbs1r7a0BWZ",
       "type": "base",
-      "system": {},
-      "changes": [],
+      "system": {
+        "changes": []
+      },
       "disabled": false,
       "duration": {
-        "combat": null,
-        "seconds": null,
-        "rounds": null,
-        "turns": null
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
       },
       "description": "",
       "tint": "#ffffff",
@@ -57,6 +58,9 @@
           }
         }
       },
+      "start": null,
+      "showIcon": 1,
+      "folder": null,
       "_key": "!items.effects!PUQzTi8O2WB73ufp.Xo0tWvbs1r7a0BWZ"
     }
   ],

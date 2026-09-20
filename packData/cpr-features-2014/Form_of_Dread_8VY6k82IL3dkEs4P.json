@@ -9,13 +9,15 @@
       "transfer": false,
       "_id": "vOG7KjGOAC4ZwNI5",
       "type": "base",
-      "system": {},
-      "changes": [],
+      "system": {
+        "changes": []
+      },
       "disabled": false,
       "duration": {
         "value": 1,
         "units": "rounds",
-        "expiry": "turnEnd"
+        "expiry": "turnEnd",
+        "expired": false
       },
       "description": "",
       "tint": "#ffffff",
@@ -46,6 +48,9 @@
         }
       },
       "sort": 0,
+      "showIcon": 2,
+      "start": null,
+      "folder": null,
       "_key": "!items.effects!8VY6k82IL3dkEs4P.vOG7KjGOAC4ZwNI5"
     },
     {
@@ -55,20 +60,22 @@
       "transfer": false,
       "_id": "KCQr6h9z31qD5i6T",
       "type": "base",
-      "system": {},
-      "changes": [
-        {
-          "key": "system.traits.ci.value",
-          "mode": 2,
-          "value": "frightened",
-          "priority": 20
-        }
-      ],
+      "system": {
+        "changes": [
+          {
+            "key": "system.traits.ci.value",
+            "value": "frightened",
+            "priority": 20,
+            "type": "add"
+          }
+        ]
+      },
       "disabled": false,
       "duration": {
         "value": null,
         "units": "seconds",
-        "expiry": null
+        "expiry": null,
+        "expired": false
       },
       "description": "",
       "tint": "#ffffff",
@@ -114,6 +121,9 @@
           }
         }
       },
+      "start": null,
+      "showIcon": 1,
+      "folder": null,
       "_key": "!items.effects!8VY6k82IL3dkEs4P.KCQr6h9z31qD5i6T"
     }
   ],

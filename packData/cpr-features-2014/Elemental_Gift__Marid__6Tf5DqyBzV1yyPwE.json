@@ -1,5 +1,5 @@
 {
-  "name": "Elemental Gift (Dao)",
+  "name": "Elemental Gift (Marid)",
   "type": "feat",
   "system": {
     "description": {
@@ -26,7 +26,7 @@
       "level": null
     },
     "activities": {},
-    "identifier": "elemental-gift-dao",
+    "identifier": "elemental-gift-marid",
     "enchant": {}
   },
   "flags": {
@@ -71,13 +71,13 @@
   },
   "effects": [
     {
-      "name": "Elemental Gift (Dao)",
+      "name": "Elemental Gift (Marid)",
       "origin": null,
       "duration": {
-        "rounds": null,
-        "seconds": null,
-        "combat": null,
-        "turns": null
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
       },
       "disabled": false,
       "flags": {
@@ -95,27 +95,31 @@
         }
       },
       "img": "icons/magic/control/debuff-energy-hold-levitate-yellow.webp",
-      "_id": "rHlNfmNqBMRBivFk",
+      "_id": "29aX9RTHLHEc45XC",
       "type": "base",
-      "system": {},
-      "changes": [
-        {
-          "key": "system.traits.dr.value",
-          "mode": 2,
-          "value": "bludgeoning",
-          "priority": 20
-        }
-      ],
+      "system": {
+        "changes": [
+          {
+            "key": "system.traits.dr.value",
+            "value": "cold",
+            "priority": 20,
+            "type": "add"
+          }
+        ]
+      },
       "description": "",
       "tint": "#ffffff",
       "transfer": true,
       "statuses": [],
       "sort": 0,
-      "_key": "!items.effects!r9OUASvLuDAReR2t.rHlNfmNqBMRBivFk"
+      "start": null,
+      "showIcon": 1,
+      "folder": null,
+      "_key": "!items.effects!6Tf5DqyBzV1yyPwE.29aX9RTHLHEc45XC"
     }
   ],
   "img": "icons/magic/control/debuff-energy-hold-levitate-yellow.webp",
   "folder": "cde8275a39420072",
-  "_id": "r9OUASvLuDAReR2t",
-  "_key": "!items!r9OUASvLuDAReR2t"
+  "_id": "6Tf5DqyBzV1yyPwE",
+  "_key": "!items!6Tf5DqyBzV1yyPwE"
 }

@@ -1,5 +1,5 @@
 {
-  "name": "Eldritch Invocations: One with Shadows",
+  "name": "Elemental Gift: Flight",
   "type": "feat",
   "system": {
     "description": {
@@ -12,13 +12,18 @@
       "rules": "2014"
     },
     "uses": {
-      "max": "",
-      "spent": 0,
-      "recovery": []
+      "max": "@prof",
+      "recovery": [
+        {
+          "period": "lr",
+          "type": "recoverAll"
+        }
+      ],
+      "spent": 0
     },
     "type": {
       "value": "class",
-      "subtype": "eldritchInvocation"
+      "subtype": ""
     },
     "requirements": "",
     "properties": [],
@@ -32,13 +37,23 @@
         "_id": "dnd5eactivity000",
         "type": "utility",
         "activation": {
-          "type": "action",
+          "type": "bonus",
           "value": 1,
           "condition": "",
           "override": false
         },
         "consumption": {
-          "targets": [],
+          "targets": [
+            {
+              "type": "itemUses",
+              "target": "",
+              "value": "1",
+              "scaling": {
+                "mode": "",
+                "formula": ""
+              }
+            }
+          ],
           "scaling": {
             "allowed": false,
             "max": ""
@@ -50,14 +65,14 @@
         },
         "duration": {
           "concentration": false,
-          "value": "7",
-          "units": "day",
+          "value": "10",
+          "units": "minute",
           "special": "",
           "override": false
         },
         "effects": [
           {
-            "_id": "YnE0Qmbjdsc1OwkA"
+            "_id": "6QwUd55vq9zKtms8"
           }
         ],
         "range": {
@@ -148,7 +163,7 @@
         "otherActivityId": "none"
       }
     },
-    "identifier": "one-with-shadows",
+    "identifier": "elemental-gift-flight",
     "enchant": {},
     "advancement": [],
     "crewed": false
@@ -156,16 +171,15 @@
   "flags": {
     "midi-qol": {
       "effectActivation": false,
-      "onUseMacroName": "",
-      "rollAttackPerTarget": "default",
       "itemCondition": "",
+      "reactionCondition": "",
+      "otherCondition": "",
       "effectCondition": "",
+      "rollAttackPerTarget": "default",
       "AoETargetType": "any",
       "AoETargetTypeIncludeSelf": true,
       "autoTarget": "default",
-      "removeAttackDamageButtons": "default",
-      "reactionCondition": "",
-      "otherCondition": ""
+      "removeAttackDamageButtons": "default"
     },
     "midiProperties": {
       "nodam": false,
@@ -198,27 +212,18 @@
       "automation": {
         "source": "chris-premades",
         "version": "2.0.0"
-      },
-      "macros": {
-        "roll": [
-          {
-            "source": "chris-premades",
-            "rules": "all",
-            "identifier": "one-with-shadows"
-          }
-        ]
       }
     }
   },
   "effects": [
     {
-      "name": "One with Shadows",
+      "name": "Elemental Gift: Flight",
       "origin": null,
       "duration": {
-        "rounds": null,
-        "seconds": null,
-        "combat": null,
-        "turns": null
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
       },
       "disabled": false,
       "flags": {
@@ -233,30 +238,44 @@
           "showIcon": false,
           "durationExpression": "",
           "macroRepeat": "none",
-          "specialDuration": [
-            "1Action",
-            "isMoved"
-          ]
+          "specialDuration": []
         },
         "core": {
           "overlay": false
         }
       },
-      "img": "icons/magic/perception/shadow-stealth-eyes-purple.webp",
-      "_id": "YnE0Qmbjdsc1OwkA",
+      "img": "icons/magic/control/debuff-energy-hold-levitate-yellow.webp",
+      "_id": "6QwUd55vq9zKtms8",
       "type": "base",
-      "system": {},
-      "changes": [],
+      "system": {
+        "changes": [
+          {
+            "key": "system.attributes.movement.fly",
+            "value": 30,
+            "priority": 20,
+            "type": "upgrade"
+          },
+          {
+            "key": "system.attributes.movement.hover",
+            "value": 1,
+            "priority": 20,
+            "type": "custom"
+          }
+        ]
+      },
       "description": "",
       "tint": "#ffffff",
       "transfer": false,
       "statuses": [],
       "sort": 0,
-      "_key": "!items.effects!M1kkWnzDKDvmwBQY.YnE0Qmbjdsc1OwkA"
+      "start": null,
+      "showIcon": 1,
+      "folder": null,
+      "_key": "!items.effects!ehZJ1CEcGEckR99T.6QwUd55vq9zKtms8"
     }
   ],
-  "img": "icons/magic/perception/shadow-stealth-eyes-purple.webp",
-  "folder": "7695c61f54bd3255",
-  "_id": "M1kkWnzDKDvmwBQY",
-  "_key": "!items!M1kkWnzDKDvmwBQY"
+  "img": "icons/magic/control/debuff-energy-hold-levitate-yellow.webp",
+  "folder": "cde8275a39420072",
+  "_id": "ehZJ1CEcGEckR99T",
+  "_key": "!items!ehZJ1CEcGEckR99T"
 }

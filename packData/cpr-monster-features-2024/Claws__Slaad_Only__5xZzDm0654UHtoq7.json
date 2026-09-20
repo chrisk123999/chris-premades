@@ -202,7 +202,8 @@
       "duration": {
         "value": 1,
         "units": "rounds",
-        "expiry": "turnStart"
+        "expiry": "turnStart",
+        "expired": false
       },
       "disabled": false,
       "flags": {
@@ -223,20 +224,24 @@
       "img": "icons/commodities/claws/claws-white.webp",
       "_id": "jTSlsy7Ghgvfrg9J",
       "type": "base",
-      "system": {},
-      "changes": [
-        {
-          "key": "system.traits.di.value",
-          "mode": 2,
-          "value": "healing",
-          "priority": 20
-        }
-      ],
+      "system": {
+        "changes": [
+          {
+            "key": "system.traits.di.value",
+            "value": "healing",
+            "priority": 20,
+            "type": "add"
+          }
+        ]
+      },
       "description": "",
       "tint": "#ffffff",
       "transfer": false,
       "statuses": [],
       "sort": 0,
+      "start": null,
+      "showIcon": 1,
+      "folder": null,
       "_key": "!items.effects!5xZzDm0654UHtoq7.jTSlsy7Ghgvfrg9J"
     }
   ],

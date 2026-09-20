@@ -6,55 +6,11 @@
       "img": "icons/equipment/neck/pendant-simple-tooth.webp",
       "name": "Harkon's Bite",
       "statuses": [],
-      "changes": [
-        {
-          "key": "system.bonuses.abilities.save",
-          "mode": 2,
-          "value": "1",
-          "priority": 20
-        },
-        {
-          "key": "system.bonuses.abilities.check",
-          "mode": 2,
-          "value": "1",
-          "priority": 18
-        },
-        {
-          "key": "system.traits.di.bypasses",
-          "mode": 0,
-          "value": "mgc",
-          "priority": 20
-        },
-        {
-          "key": "system.traits.di.bypasses",
-          "mode": 0,
-          "value": "sil",
-          "priority": 20
-        },
-        {
-          "key": "system.traits.di.value",
-          "mode": 2,
-          "value": "bludgeoning",
-          "priority": 20
-        },
-        {
-          "key": "system.traits.di.value",
-          "mode": 2,
-          "value": "slashing",
-          "priority": 20
-        },
-        {
-          "key": "system.traits.di.value",
-          "mode": 2,
-          "value": "piercing",
-          "priority": 20
-        }
-      ],
       "duration": {
-        "seconds": null,
-        "rounds": null,
-        "turns": null,
-        "combat": null
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
       },
       "tint": "#ffffff",
       "transfer": true,
@@ -85,9 +41,57 @@
       "description": "",
       "_id": "Ox2HzLG8BzKzStks",
       "type": "base",
-      "system": {},
+      "system": {
+        "changes": [
+          {
+            "key": "system.bonuses.abilities.save",
+            "value": 1,
+            "priority": 20,
+            "type": "add"
+          },
+          {
+            "key": "system.bonuses.abilities.check",
+            "value": 1,
+            "priority": 18,
+            "type": "add"
+          },
+          {
+            "key": "system.traits.di.bypasses",
+            "value": "mgc",
+            "priority": 20,
+            "type": "custom"
+          },
+          {
+            "key": "system.traits.di.bypasses",
+            "value": "sil",
+            "priority": 20,
+            "type": "custom"
+          },
+          {
+            "key": "system.traits.di.value",
+            "value": "bludgeoning",
+            "priority": 20,
+            "type": "add"
+          },
+          {
+            "key": "system.traits.di.value",
+            "value": "slashing",
+            "priority": 20,
+            "type": "add"
+          },
+          {
+            "key": "system.traits.di.value",
+            "value": "piercing",
+            "priority": 20,
+            "type": "add"
+          }
+        ]
+      },
       "origin": null,
       "sort": 0,
+      "start": null,
+      "showIcon": 1,
+      "folder": null,
       "_key": "!items.effects!MsolzJYEZJ3DeTVd.Ox2HzLG8BzKzStks"
     },
     {
@@ -97,21 +101,22 @@
       "transfer": false,
       "_id": "TwAh3f6pnCdFwveN",
       "type": "base",
-      "system": {},
-      "changes": [
-        {
-          "key": "system.attributes.ac.bonus",
-          "mode": 2,
-          "value": "1",
-          "priority": 20
-        }
-      ],
+      "system": {
+        "changes": [
+          {
+            "key": "system.attributes.ac.bonus",
+            "value": 1,
+            "priority": 20,
+            "type": "add"
+          }
+        ]
+      },
       "disabled": false,
       "duration": {
-        "combat": null,
-        "seconds": null,
-        "rounds": null,
-        "turns": null
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
       },
       "description": "",
       "tint": "#ffffff",
@@ -143,6 +148,9 @@
           "identifier": "harkonsBiteEffect"
         }
       },
+      "start": null,
+      "showIcon": 1,
+      "folder": null,
       "_key": "!items.effects!MsolzJYEZJ3DeTVd.TwAh3f6pnCdFwveN"
     },
     {
@@ -152,14 +160,15 @@
       "transfer": false,
       "_id": "u6U9Svgcq3YLbeB2",
       "type": "base",
-      "system": {},
-      "changes": [],
+      "system": {
+        "changes": []
+      },
       "disabled": false,
       "duration": {
-        "combat": null,
-        "seconds": null,
-        "rounds": null,
-        "turns": null
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
       },
       "description": "",
       "tint": "#ffffff",
@@ -191,6 +200,9 @@
           "identifier": "curseOfLycanthropy"
         }
       },
+      "start": null,
+      "showIcon": 1,
+      "folder": null,
       "_key": "!items.effects!MsolzJYEZJ3DeTVd.u6U9Svgcq3YLbeB2"
     }
   ],

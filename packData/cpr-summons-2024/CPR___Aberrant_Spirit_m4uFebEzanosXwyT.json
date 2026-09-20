@@ -626,9 +626,6 @@
       "src": "icons/svg/mystery-man.svg",
       "scaleX": 1,
       "scaleY": 1,
-      "offsetX": 0,
-      "offsetY": 0,
-      "rotation": 0,
       "tint": "#ffffff",
       "anchorX": 0.5,
       "anchorY": 0.5,
@@ -684,7 +681,7 @@
       "saturation": -1,
       "contrast": 0
     },
-    "detectionModes": [],
+    "detectionModes": {},
     "flags": {
       "wall-height": {
         "tokenHeight": 0
@@ -727,7 +724,8 @@
       "src": null,
       "disposition": false
     },
-    "movementAction": null
+    "movementAction": null,
+    "depth": 1
   },
   "items": [],
   "effects": [],

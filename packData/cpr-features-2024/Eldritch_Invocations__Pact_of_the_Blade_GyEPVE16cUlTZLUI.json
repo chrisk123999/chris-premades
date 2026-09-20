@@ -9,27 +9,28 @@
       "transfer": false,
       "_id": "zPDyKi5bKOD2esI8",
       "type": "base",
-      "system": {},
-      "changes": [
-        {
-          "key": "name",
-          "mode": 5,
-          "value": "{} (Pact of the Blade)",
-          "priority": 20
-        },
-        {
-          "key": "system.proficient",
-          "mode": 5,
-          "value": "1",
-          "priority": 20
-        }
-      ],
+      "system": {
+        "changes": [
+          {
+            "key": "name",
+            "value": "{} (Pact of the Blade)",
+            "priority": 20,
+            "type": "override"
+          },
+          {
+            "key": "system.proficient",
+            "value": 1,
+            "priority": 20,
+            "type": "override"
+          }
+        ]
+      },
       "disabled": false,
       "duration": {
-        "combat": null,
-        "seconds": null,
-        "rounds": null,
-        "turns": null
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
       },
       "description": "",
       "tint": "#ffffff",
@@ -75,6 +76,9 @@
           }
         }
       },
+      "start": null,
+      "showIcon": 1,
+      "folder": null,
       "_key": "!items.effects!GyEPVE16cUlTZLUI.zPDyKi5bKOD2esI8"
     },
     {
@@ -84,14 +88,15 @@
       "transfer": false,
       "_id": "abmetmTMaKHOpsuk",
       "type": "base",
-      "system": {},
-      "changes": [],
+      "system": {
+        "changes": []
+      },
       "disabled": false,
       "duration": {
-        "combat": null,
-        "seconds": null,
-        "rounds": null,
-        "turns": null
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
       },
       "description": "",
       "tint": "#ffffff",
@@ -123,6 +128,9 @@
           "identifier": "pactOfTheBladeSummonedWeapon"
         }
       },
+      "start": null,
+      "showIcon": 1,
+      "folder": null,
       "_key": "!items.effects!GyEPVE16cUlTZLUI.abmetmTMaKHOpsuk"
     }
   ],

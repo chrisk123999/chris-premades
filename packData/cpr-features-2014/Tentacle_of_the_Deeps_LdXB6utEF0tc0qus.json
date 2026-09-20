@@ -394,20 +394,22 @@
       "origin": null,
       "_id": "dGk56fiJYl8F4GNe",
       "type": "base",
-      "system": {},
-      "changes": [
-        {
-          "key": "system.attributes.movement.bonus",
-          "mode": 2,
-          "value": "-10",
-          "priority": 20
-        }
-      ],
+      "system": {
+        "changes": [
+          {
+            "key": "system.attributes.movement.bonus",
+            "value": -10,
+            "priority": 20,
+            "type": "add"
+          }
+        ]
+      },
       "disabled": false,
       "duration": {
         "value": 1,
         "units": "rounds",
-        "expiry": "turnStart"
+        "expiry": "turnStart",
+        "expired": false
       },
       "description": "",
       "tint": "#ffffff",
@@ -432,6 +434,9 @@
         }
       },
       "sort": 0,
+      "start": null,
+      "showIcon": 1,
+      "folder": null,
       "_key": "!items.effects!LdXB6utEF0tc0qus.dGk56fiJYl8F4GNe"
     }
   ],

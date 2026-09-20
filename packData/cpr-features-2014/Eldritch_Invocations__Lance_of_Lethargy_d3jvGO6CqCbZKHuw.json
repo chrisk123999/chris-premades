@@ -10,20 +10,22 @@
       "transfer": false,
       "_id": "ATeMeLl2JSzhJHvG",
       "type": "base",
-      "system": {},
-      "changes": [
-        {
-          "key": "system.attributes.movement.bonus",
-          "mode": 2,
-          "value": "-10",
-          "priority": 20
-        }
-      ],
+      "system": {
+        "changes": [
+          {
+            "key": "system.attributes.movement.bonus",
+            "value": -10,
+            "priority": 20,
+            "type": "add"
+          }
+        ]
+      },
       "disabled": false,
       "duration": {
         "value": null,
         "units": "rounds",
-        "expiry": "turnEnd"
+        "expiry": "turnEnd",
+        "expired": false
       },
       "description": "",
       "tint": "#ffffff",
@@ -52,6 +54,9 @@
         }
       },
       "sort": 0,
+      "start": null,
+      "showIcon": 1,
+      "folder": null,
       "_key": "!items.effects!d3jvGO6CqCbZKHuw.ATeMeLl2JSzhJHvG"
     }
   ],

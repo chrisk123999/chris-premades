@@ -9,14 +9,15 @@
       "transfer": false,
       "_id": "r7THuXROmINM2Qnt",
       "type": "base",
-      "system": {},
-      "changes": [],
+      "system": {
+        "changes": []
+      },
       "disabled": false,
       "duration": {
-        "combat": null,
-        "seconds": null,
-        "rounds": null,
-        "turns": null
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
       },
       "description": "",
       "tint": "#ffffff",
@@ -69,18 +70,20 @@
           }
         }
       },
+      "start": null,
+      "showIcon": 1,
+      "folder": null,
       "_key": "!items.effects!OsudEPOdw5VMIbjR.r7THuXROmINM2Qnt"
     },
     {
-      "changes": [],
       "transfer": false,
       "_id": "w2Q4B1P4wK0fqvx0",
       "disabled": false,
       "duration": {
-        "seconds": null,
-        "combat": null,
-        "rounds": null,
-        "turns": null
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
       },
       "origin": null,
       "tint": "#ffffff",
@@ -94,8 +97,13 @@
       "statuses": [],
       "img": "icons/skills/movement/figure-running-gray.webp",
       "type": "base",
-      "system": {},
+      "system": {
+        "changes": []
+      },
       "sort": 0,
+      "start": null,
+      "showIcon": 1,
+      "folder": null,
       "_key": "!items.effects!OsudEPOdw5VMIbjR.w2Q4B1P4wK0fqvx0"
     },
     {
@@ -105,14 +113,15 @@
       "transfer": false,
       "_id": "MoEJT2vF3KGWpE8M",
       "type": "base",
-      "system": {},
-      "changes": [],
+      "system": {
+        "changes": []
+      },
       "disabled": false,
       "duration": {
-        "combat": null,
-        "seconds": null,
-        "rounds": null,
-        "turns": null
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
       },
       "description": "",
       "tint": "#ffffff",
@@ -147,6 +156,9 @@
           "identifier": "hideEffect"
         }
       },
+      "start": null,
+      "showIcon": 1,
+      "folder": null,
       "_key": "!items.effects!OsudEPOdw5VMIbjR.MoEJT2vF3KGWpE8M"
     }
   ],

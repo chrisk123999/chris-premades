@@ -9,16 +9,7 @@ const foreignFlags = [
     'tidy5e-sheet'
 ];
 const worldReference = /^(Scene|Actor|Compendium\.world)\./;
-const volatileStats = ['compendiumSource', 'createdTime', 'duplicateSource', 'exportSource', 'lastModifiedBy', 'modifiedTime'];
 const volatileDuration = ['startTime', 'startRound', 'startTurn'];
-/**
- * Strip the `_stats` fields that churn between extractions.
- * @param {object} document A document's source data, mutated in place.
- * @returns {void}
- */
-function cleanStats(document) {
-    volatileStats.forEach(key => delete document._stats?.[key]);
-}
 function cleanString(string) {
     return string.replace(/⁠/gu, '').replace(/[‘’]/gu, '\'').replace(/[“”]/gu, '"');
 }
@@ -43,7 +34,7 @@ function cleanFlags(document) {
  * @returns {void}
  */
 export function cleanEntry(entry) {
-    cleanStats(entry);
+    delete entry._stats;
     delete entry.sort;
     delete entry.ownership;
     cleanFlags(entry);
@@ -56,7 +47,7 @@ export function cleanEntry(entry) {
     if (entry.system?.materials?.value) entry.system.materials.value = '';
     Object.values(entry.system?.activities ?? {}).forEach(activity => cleanFlags(activity));
     (entry.effects ?? []).forEach(effect => {
-        cleanStats(effect);
+        delete effect._stats;
         cleanFlags(effect);
         if (worldReference.test(effect.origin ?? '')) effect.origin = null;
         volatileDuration.forEach(key => delete effect.duration?.[key]);
