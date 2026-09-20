@@ -5,11 +5,10 @@ async function use({document, workflow}) {
     if (!sourceEffect) return;
     const {avatarImg, tokenImg, imgPriority} = automationUtils.getConfigValues(document, ['avatarImg', 'tokenImg', 'imgPriority']);
     const effectData = documentUtils.getEffectData(workflow.activity, sourceEffect.id, {
-        activityUuid: workflow.activity.uuid,
-        avatarImg: avatarImg || undefined,
-        tokenImg: tokenImg || undefined,
-        imgPriority
+        activityUuid: workflow.activity.uuid
     });
+    if (avatarImg) effectData.changes.push({key: 'img', mode: 5, value: avatarImg, priority: imgPriority});
+    if (tokenImg) effectData.changes.push({key: 'token.texture.src', mode: 5, value: tokenImg, priority: imgPriority});
     const createEffect = async () => await effectUtils.createEffects(workflow.actor, [effectData]);
     const {animation, options} = automationUtils.getResolvedAnimation(document, 'animation');
     if (!animation) return await createEffect();

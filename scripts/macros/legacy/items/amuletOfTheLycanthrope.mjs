@@ -12,11 +12,10 @@ async function use({document, workflow}) {
         activityUuid: workflow.activity.uuid,
         unhideActivities: identifiers,
         vae,
-        avatarImg: config.avatarImg || undefined,
-        tokenImg: config.tokenImg || undefined,
-        imgPriority: config.imgPriority,
         deleteAnimation: config.animation
     });
+    if (config.avatarImg) effectData.changes.push({key: 'img', mode: 5, value: config.avatarImg, priority: config.imgPriority});
+    if (config.tokenImg) effectData.changes.push({key: 'token.texture.src', mode: 5, value: config.tokenImg, priority: config.imgPriority});
     const createEffect = async () => {
         const existing = documentUtils.getEffectByIdentifier(workflow.actor, 'amuletOfTheLycanthropeEffect');
         if (existing) await documentUtils.deleteDocument(existing);

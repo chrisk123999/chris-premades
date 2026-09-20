@@ -16,11 +16,10 @@ async function shapechange({document, workflow}) {
         favoriteActivities: true,
         macros: [{type: 'effect', macros: [{source: 'chris-premades', rules: '2014', identifier: 'harkons-bite-effect'}]}],
         vae,
-        avatarImg: config[form + 'AvatarImg'] || undefined,
-        tokenImg: config[form + 'TokenImg'] || undefined,
-        imgPriority: config.imgPriority,
         deleteAnimation: config.animation
     });
+    if (config[form + 'AvatarImg']) effectData.changes.push({key: 'img', mode: 5, value: config[form + 'AvatarImg'], priority: config.imgPriority});
+    if (config[form + 'TokenImg']) effectData.changes.push({key: 'token.texture.src', mode: 5, value: config[form + 'TokenImg'], priority: config.imgPriority});
     if (!isHybrid) effectData.changes.push({key: 'system.attributes.movement.walk', mode: 4, value: '40', priority: 20});
     const createEffect = async () => {
         const existing = documentUtils.getEffectByIdentifier(workflow.actor, 'harkonsBiteEffect');
