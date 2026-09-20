@@ -221,12 +221,9 @@
       "origin": null,
       "duration": {
         "rounds": null,
-        "startTime": null,
         "seconds": null,
         "combat": null,
-        "turns": null,
-        "startRound": null,
-        "startTurn": null
+        "turns": null
       },
       "disabled": false,
       "flags": {

@@ -13,13 +13,10 @@
       "changes": [],
       "disabled": false,
       "duration": {
-        "startTime": null,
         "combat": null,
         "seconds": null,
         "rounds": null,
-        "turns": null,
-        "startRound": null,
-        "startTurn": null
+        "turns": null
       },
       "description": "",
       "tint": "#ffffff",
@@ -80,13 +77,10 @@
       "_id": "w2Q4B1P4wK0fqvx0",
       "disabled": false,
       "duration": {
-        "startTime": null,
         "seconds": null,
         "combat": null,
         "rounds": null,
-        "turns": null,
-        "startRound": null,
-        "startTurn": null
+        "turns": null
       },
       "origin": null,
       "tint": "#ffffff",
@@ -115,13 +109,10 @@
       "changes": [],
       "disabled": false,
       "duration": {
-        "startTime": null,
         "combat": null,
         "seconds": null,
         "rounds": null,
-        "turns": null,
-        "startRound": null,
-        "startTurn": null
+        "turns": null
       },
       "description": "",
       "tint": "#ffffff",

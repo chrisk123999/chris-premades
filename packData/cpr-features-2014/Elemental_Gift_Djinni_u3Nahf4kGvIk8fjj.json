@@ -75,12 +75,9 @@
       "origin": null,
       "duration": {
         "rounds": null,
-        "startTime": 1416,
         "seconds": null,
         "combat": null,
-        "turns": null,
-        "startRound": 237,
-        "startTurn": 6
+        "turns": null
       },
       "disabled": false,
       "flags": {

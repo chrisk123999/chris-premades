@@ -15,11 +15,8 @@
       ],
       "duration": {
         "seconds": null,
-        "startTime": null,
         "rounds": null,
         "turns": null,
-        "startRound": null,
-        "startTurn": null,
         "combat": null
       },
       "tint": "#ffffff",

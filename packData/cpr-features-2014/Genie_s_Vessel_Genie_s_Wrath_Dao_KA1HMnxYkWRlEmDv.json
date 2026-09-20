@@ -77,89 +77,32 @@
       "automation": {
         "source": "chris-premades",
         "version": "2.0.0"
+      },
+      "genericConfig": {
+        "chris-premades": {
+          "damageBonusToOneRoll": {
+            "bonus": "@prof",
+            "bonusDamageType": [
+              "bludgeoning"
+            ],
+            "attackType": "attack",
+            "maxTargets": 1,
+            "oncePerTurn": true
+          }
+        }
+      },
+      "macros": {
+        "roll": [
+          {
+            "source": "chris-premades",
+            "identifier": "damageBonusToOneRoll",
+            "rules": "2014"
+          }
+        ]
       }
     }
   },
-  "effects": [
-    {
-      "changes": [
-        {
-          "key": "flags.midi-qol.optional.geniesWrath.label",
-          "mode": 0,
-          "value": "Genie's Wrath",
-          "priority": 20
-        },
-        {
-          "key": "flags.midi-qol.optional.geniesWrath.count",
-          "mode": 0,
-          "value": "turn",
-          "priority": 20
-        },
-        {
-          "key": "flags.midi-qol.optional.geniesWrath.damage.msak",
-          "mode": 0,
-          "value": "+@prof[bludgeoning]",
-          "priority": 20
-        },
-        {
-          "key": "flags.midi-qol.optional.geniesWrath.damage.rsak",
-          "mode": 0,
-          "value": "+@prof[bludgeoning]",
-          "priority": 20
-        },
-        {
-          "key": "flags.midi-qol.optional.geniesWrath.damage.mwak",
-          "mode": 0,
-          "value": "+@prof[bludgeoning]",
-          "priority": 20
-        },
-        {
-          "key": "flags.midi-qol.optional.geniesWrath.damage.rwak",
-          "mode": 0,
-          "value": "+@prof[bludgeoning]",
-          "priority": 20
-        }
-      ],
-      "transfer": true,
-      "_id": "4oMwtaT7oruA2w4r",
-      "disabled": false,
-      "duration": {
-        "startTime": 1416,
-        "seconds": null,
-        "combat": null,
-        "rounds": null,
-        "turns": null,
-        "startRound": 237,
-        "startTurn": 6
-      },
-      "origin": null,
-      "tint": "#ffffff",
-      "flags": {
-        "dae": {
-          "selfTarget": false,
-          "selfTargetAlways": false,
-          "stackable": "noneName",
-          "durationExpression": "",
-          "macroRepeat": "none",
-          "specialDuration": [],
-          "disableCondition": "",
-          "disableIncapacitated": false,
-          "showIcon": false
-        },
-        "core": {
-          "overlay": false
-        }
-      },
-      "name": "Genie's Vessel: Genie's Wrath (Dao)",
-      "description": "",
-      "statuses": [],
-      "img": "icons/equipment/neck/necklace-carved-lantern-gold.webp",
-      "type": "base",
-      "system": {},
-      "sort": 0,
-      "_key": "!items.effects!KA1HMnxYkWRlEmDv.4oMwtaT7oruA2w4r"
-    }
-  ],
+  "effects": [],
   "img": "icons/equipment/neck/necklace-carved-lantern-gold.webp",
   "folder": "cde8275a39420072",
   "_id": "KA1HMnxYkWRlEmDv",

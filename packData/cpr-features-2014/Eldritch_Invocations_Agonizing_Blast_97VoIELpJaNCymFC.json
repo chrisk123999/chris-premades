@@ -71,10 +71,22 @@
         "roll": [
           {
             "source": "chris-premades",
-            "rules": "2014",
-            "identifier": "agonizing-blast"
+            "identifier": "damageBonusToOneRoll",
+            "rules": "2014"
           }
         ]
+      },
+      "genericConfig": {
+        "chris-premades": {
+          "damageBonusToOneRoll": {
+            "bonus": "@abilities.cha.mod",
+            "identifiers": [
+              "eldritch-blast"
+            ],
+            "everyRoll": true,
+            "allowCritical": false
+          }
+        }
       }
     }
   },

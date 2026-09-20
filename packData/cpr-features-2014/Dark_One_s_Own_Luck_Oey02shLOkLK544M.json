@@ -32,7 +32,169 @@
       "items": [],
       "repeatable": false
     },
-    "activities": {},
+    "activities": {
+      "utilityDoolClass": {
+        "name": "Dark One's Own Luck",
+        "type": "utility",
+        "_id": "utilityDoolClass",
+        "img": "",
+        "sort": 0,
+        "activation": {
+          "type": "special",
+          "value": null,
+          "condition": "",
+          "override": false
+        },
+        "consumption": {
+          "targets": [
+            {
+              "type": "itemUses",
+              "value": "1",
+              "target": "",
+              "scaling": {}
+            }
+          ],
+          "scaling": {
+            "allowed": false,
+            "max": ""
+          },
+          "spellSlot": false
+        },
+        "description": {
+          "chatFlavor": ""
+        },
+        "duration": {
+          "units": "inst",
+          "special": "",
+          "concentration": false,
+          "override": false
+        },
+        "effects": [],
+        "flags": {},
+        "range": {
+          "value": "",
+          "units": "self",
+          "special": "",
+          "override": false
+        },
+        "target": {
+          "prompt": false,
+          "affects": {
+            "count": "1",
+            "type": "self",
+            "choice": false,
+            "special": ""
+          },
+          "template": {
+            "count": "",
+            "contiguous": false,
+            "type": "",
+            "size": "",
+            "width": "",
+            "height": "",
+            "units": "ft",
+            "stationary": false
+          },
+          "override": false
+        },
+        "uses": {
+          "spent": 0,
+          "recovery": [],
+          "max": ""
+        },
+        "visibility": {
+          "level": {
+            "min": null,
+            "max": null
+          },
+          "requireAttunement": false,
+          "requireIdentification": false,
+          "requireMagic": false,
+          "identifier": ""
+        },
+        "roll": {
+          "formula": "",
+          "name": "",
+          "prompt": false,
+          "visible": false
+        },
+        "useConditionText": "",
+        "useConditionReason": "",
+        "effectConditionText": "",
+        "macroData": {
+          "name": "",
+          "command": ""
+        },
+        "ignoreTraits": {
+          "idi": false,
+          "idr": false,
+          "idv": false,
+          "ida": false,
+          "idm": false
+        },
+        "midiProperties": {
+          "ignoreTraits": [],
+          "triggeredActivityId": "none",
+          "triggeredActivityConditionText": "",
+          "triggeredActivityTargets": "targets",
+          "triggeredActivityRollAs": "self",
+          "confirmTargets": "default",
+          "automationOnly": false,
+          "identifier": "",
+          "triggeredActivityConsume": true,
+          "triggeredActivityConfigure": true,
+          "autoConsume": false,
+          "forceConsumeDialog": "default",
+          "forceRollDialog": "default",
+          "forceDamageDialog": "default",
+          "autoTargetType": "any",
+          "autoTargetAction": "default",
+          "otherActivityCompatible": false,
+          "otherActivityAsParentType": true,
+          "displayActivityName": false,
+          "rollMode": "default",
+          "chooseEffects": false,
+          "toggleEffect": false,
+          "ignoreFullCover": false,
+          "removeChatButtons": "default",
+          "magicEffect": false,
+          "magicDamage": false,
+          "noConcentrationCheck": false,
+          "skipConcentrationCheck": false,
+          "autoCEEffects": "default"
+        },
+        "isOverTimeFlag": false,
+        "overTimeProperties": {
+          "saveRemoves": true,
+          "rollAs": "target",
+          "preRemoveConditionText": "",
+          "postRemoveConditionText": ""
+        },
+        "regionBehavior": {
+          "enabled": false,
+          "dispositionFilter": -1,
+          "excludeSource": true,
+          "oncePerTurn": true,
+          "wallRestriction": "none",
+          "regionVisibility": 2,
+          "attachToken": "default",
+          "rules": []
+        },
+        "regionLight": {
+          "enabled": false,
+          "dim": 0,
+          "bright": 0,
+          "color": null,
+          "alpha": 0.5,
+          "luminosity": 0.5,
+          "animationType": "",
+          "animationSpeed": 5,
+          "animationIntensity": 5
+        },
+        "otherActivityId": "none",
+        "otherActivityAsParentType": true
+      }
+    },
     "identifier": "dark-ones-own-luck",
     "enchant": {},
     "advancement": [],
@@ -82,81 +244,52 @@
       "automation": {
         "source": "chris-premades",
         "version": "2.0.0"
+      },
+      "genericConfig": {
+        "chris-premades": {
+          "checkBonus": {
+            "bonus": "1d10",
+            "rollActivity": "utilityDoolClass",
+            "useActivityCosts": true
+          },
+          "saveBonus": {
+            "bonus": "1d10",
+            "rollActivity": "utilityDoolClass",
+            "useActivityCosts": true
+          },
+          "skillBonus": {
+            "bonus": "1d10",
+            "rollActivity": "utilityDoolClass",
+            "useActivityCosts": true
+          }
+        }
+      },
+      "macros": {
+        "check": [
+          {
+            "source": "chris-premades",
+            "identifier": "checkBonus",
+            "rules": "all"
+          }
+        ],
+        "save": [
+          {
+            "source": "chris-premades",
+            "identifier": "saveBonus",
+            "rules": "all"
+          }
+        ],
+        "skill": [
+          {
+            "source": "chris-premades",
+            "identifier": "skillBonus",
+            "rules": "all"
+          }
+        ]
       }
     }
   },
-  "effects": [
-    {
-      "name": "Dark One's Own Luck",
-      "origin": null,
-      "duration": {
-        "rounds": null,
-        "startTime": 1416,
-        "seconds": null,
-        "combat": null,
-        "turns": null,
-        "startRound": 237,
-        "startTurn": 6
-      },
-      "disabled": false,
-      "flags": {
-        "dae": {
-          "disableCondition": "",
-          "disableIncapacitated": false,
-          "stackable": "noneName",
-          "showIcon": false,
-          "durationExpression": "",
-          "macroRepeat": "none",
-          "specialDuration": []
-        },
-        "core": {
-          "overlay": false
-        }
-      },
-      "img": "icons/commodities/gems/gem-rough-square-red.webp",
-      "_id": "7C3wK1T9ainJVNK4",
-      "type": "base",
-      "system": {},
-      "changes": [
-        {
-          "key": "flags.midi-qol.optional.dool.label",
-          "mode": 0,
-          "value": "Dark One's Own Luck",
-          "priority": 20
-        },
-        {
-          "key": "flags.midi-qol.optional.dool.count",
-          "mode": 0,
-          "value": "ItemUses.Dark One's Own Luck",
-          "priority": 20
-        },
-        {
-          "key": "flags.midi-qol.optional.dool.save.all",
-          "mode": 0,
-          "value": "+1d10",
-          "priority": 20
-        },
-        {
-          "key": "flags.midi-qol.optional.dool.skill.all",
-          "mode": 0,
-          "value": "+1d10",
-          "priority": 20
-        },
-        {
-          "key": "flags.midi-qol.optional.dool.check.all",
-          "mode": 0,
-          "value": "+1d10",
-          "priority": 20
-        }
-      ],
-      "description": "",
-      "tint": "#ffffff",
-      "transfer": true,
-      "statuses": [],
-      "sort": 0,
-      "_key": "!items.effects!Oey02shLOkLK544M.7C3wK1T9ainJVNK4"
-    }
-  ],
+  "effects": [],
   "img": "icons/commodities/gems/gem-rough-square-red.webp",
   "folder": "4e67e12379f265b4",
   "_id": "Oey02shLOkLK544M",

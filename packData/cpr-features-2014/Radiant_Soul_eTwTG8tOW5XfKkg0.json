@@ -84,10 +84,27 @@
         "roll": [
           {
             "source": "chris-premades",
-            "rules": "2014",
-            "identifier": "radiant-soul"
+            "identifier": "damageBonusToOneRoll",
+            "rules": "2014"
           }
         ]
+      },
+      "genericConfig": {
+        "chris-premades": {
+          "damageBonusToOneRoll": {
+            "bonus": "@abilities.cha.mod",
+            "damageType": [
+              "fire",
+              "radiant"
+            ],
+            "itemType": [
+              "spell"
+            ],
+            "maxTargets": 1,
+            "oncePerTurn": true,
+            "allowCritical": false
+          }
+        }
       }
     }
   },

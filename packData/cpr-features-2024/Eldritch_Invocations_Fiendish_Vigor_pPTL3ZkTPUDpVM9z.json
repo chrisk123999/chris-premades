@@ -4,10 +4,10 @@
   "effects": [],
   "system": {
     "activities": {
-      "gZnUis9JoCpn77rx": {
-        "name": "False Life",
-        "type": "heal",
-        "_id": "gZnUis9JoCpn77rx",
+      "castFiendishVig": {
+        "type": "cast",
+        "_id": "castFiendishVig",
+        "img": "",
         "sort": 0,
         "activation": {
           "type": "action",
@@ -15,69 +15,66 @@
           "condition": ""
         },
         "consumption": {
-          "targets": [],
           "scaling": {
-            "allowed": false,
-            "max": ""
+            "allowed": false
           },
-          "spellSlot": false
+          "spellSlot": true,
+          "targets": []
         },
         "description": {
           "chatFlavor": ""
         },
         "duration": {
-          "units": "inst",
-          "special": "",
+          "units": "spec",
           "concentration": false,
-          "override": false
+          "override": true,
+          "special": "Next Long Rest"
         },
-        "effects": [],
+        "flags": {
+          "cat": {
+            "genericConfig": {}
+          }
+        },
         "range": {
-          "value": "",
           "units": "self",
-          "special": "",
           "override": false
         },
         "target": {
-          "prompt": false,
-          "affects": {
-            "count": "1",
-            "type": "self",
-            "choice": false,
-            "special": ""
-          },
           "template": {
-            "count": "",
             "contiguous": false,
-            "type": "",
-            "size": "",
-            "width": "",
-            "height": "",
+            "stationary": false,
             "units": "ft"
           },
-          "override": false
+          "affects": {
+            "choice": false
+          },
+          "override": false,
+          "prompt": true
         },
         "uses": {
           "spent": 0,
           "recovery": [],
           "max": ""
         },
-        "healing": {
-          "number": null,
-          "denomination": null,
-          "bonus": "",
-          "types": [
-            "temphp"
-          ],
-          "custom": {
-            "enabled": true,
-            "formula": "8 + 4"
+        "visibility": {
+          "level": {
+            "min": null,
+            "max": null
           },
-          "scaling": {
-            "mode": "whole",
-            "number": 1,
-            "formula": ""
-          }
+          "requireAttunement": false,
+          "requireIdentification": false,
+          "requireMagic": false,
+          "identifier": ""
+        },
+        "spell": {
+          "ability": "",
+          "challenge": {
+            "override": false
+          },
+          "level": 1,
+          "properties": [],
+          "spellbook": true,
+          "uuid": "Compendium.dnd5e.spells24.Item.phbsplFalseLife0"
         },
         "useConditionText": "",
         "useConditionReason": "",
@@ -99,18 +96,20 @@
           "triggeredActivityConditionText": "",
           "triggeredActivityTargets": "targets",
           "triggeredActivityRollAs": "self",
+          "triggeredActivityConsume": true,
+          "triggeredActivityConfigure": true,
           "autoConsume": false,
           "forceConsumeDialog": "default",
           "forceRollDialog": "default",
           "forceDamageDialog": "default",
-          "confirmTargets": "default",
+          "confirmTargets": "never",
           "autoTargetType": "any",
           "autoTargetAction": "default",
           "automationOnly": false,
           "otherActivityCompatible": true,
           "otherActivityAsParentType": true,
           "identifier": "",
-          "displayActivityName": true,
+          "displayActivityName": false,
           "rollMode": "default",
           "chooseEffects": false,
           "toggleEffect": false,
@@ -119,14 +118,38 @@
           "magicEffect": false,
           "magicDamage": false,
           "noConcentrationCheck": false,
+          "skipConcentrationCheck": false,
           "autoCEEffects": "default"
         },
         "isOverTimeFlag": false,
         "overTimeProperties": {
           "saveRemoves": true,
+          "rollAs": "target",
           "preRemoveConditionText": "",
           "postRemoveConditionText": ""
-        }
+        },
+        "regionBehavior": {
+          "enabled": false,
+          "dispositionFilter": -1,
+          "excludeSource": true,
+          "oncePerTurn": true,
+          "wallRestriction": "none",
+          "regionVisibility": 2,
+          "attachToken": "default",
+          "rules": []
+        },
+        "regionLight": {
+          "enabled": false,
+          "dim": 0,
+          "bright": 0,
+          "color": null,
+          "alpha": 0.5,
+          "luminosity": 0.5,
+          "animationType": "",
+          "animationSpeed": 5,
+          "animationIntensity": 5
+        },
+        "name": ""
       }
     },
     "uses": {
@@ -171,6 +194,22 @@
       "automation": {
         "source": "chris-premades",
         "version": "2.0.0"
+      },
+      "alternateAttributes": {
+        "RollModifier": [
+          {
+            "value": [
+              "min4"
+            ],
+            "restrictions": {
+              "SourceType": {
+                "value": [
+                  "feat:fiendish-vigor"
+                ]
+              }
+            }
+          }
+        ]
       }
     }
   },

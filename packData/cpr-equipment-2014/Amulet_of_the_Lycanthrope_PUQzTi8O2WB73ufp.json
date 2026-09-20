@@ -13,13 +13,10 @@
       "changes": [],
       "disabled": false,
       "duration": {
-        "startTime": null,
         "combat": null,
         "seconds": null,
         "rounds": null,
-        "turns": null,
-        "startRound": null,
-        "startTurn": null
+        "turns": null
       },
       "description": "",
       "tint": "#ffffff",

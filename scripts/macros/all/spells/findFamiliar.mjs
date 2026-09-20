@@ -1,7 +1,7 @@
 import {actorUtils, automationUtils, dialogUtils, documentUtils, effectUtils, genericUtils, summonUtils, tokenUtils} from '../../../proxy.mjs';
 const familiarActivities = ['find-familiar-pocket-dimension', 'find-familiar-touch'];
 function creatureTypeOptions() {
-    return ['celestial', 'fey', 'fiend'].map(value => ({value, label: CONFIG.DND5E.creatureTypes[value].label}));
+    return ['celestial', 'fey', 'fiend'].map(value => ({value, label: CONFIG.DND5E.creatureTypes[value].label, image: CONFIG.DND5E.creatureTypes[value].icon}));
 }
 const srdFamiliars = ['bat', 'cat', 'crab', 'frog', 'hawk', 'lizard', 'octopus', 'owl', 'poisonous-snake', 'quipper', 'rat', 'raven', 'sea-horse', 'spider', 'weasel'];
 async function srdActors() {
@@ -36,7 +36,7 @@ async function use({document, workflow}) {
     }
     const sourceActor = await dialogUtils.selectDocumentDialog(document.name, _loc('CHRISPREMADES.Macros.All.FindFamiliar.Choose'), actors, {sort: 'alphabetical'});
     if (!sourceActor) return;
-    const creatureType = await dialogUtils.buttonDialog(document.name, _loc('CHRISPREMADES.Macros.All.FindFamiliar.Type'), creatureTypeOptions().map(option => [option.label, option.value]));
+    const creatureType = automationUtils.getConfigValue(document, 'creatureType') || await dialogUtils.buttonDialog(document.name, _loc('CHRISPREMADES.Macros.All.FindFamiliar.Type'), creatureTypeOptions().map(option => [option.label, option.value, {image: option.image}]));
     if (!creatureType) return;
     const name = automationUtils.getConfigValue(document, 'name') || sourceActor.name;
     const updates = {system: {details: {type: {value: creatureType}}}};
@@ -137,6 +137,14 @@ export const findFamiliar = {
             type: 'text',
             label: 'CHRISPREMADES.Macros.All.FindFamiliar.Folder',
             category: 'summons'
+        },
+        creatureType: {
+            default: '',
+            type: 'select',
+            label: 'CHRISPREMADES.Macros.All.FindFamiliar.CreatureType',
+            hint: 'CHRISPREMADES.Macros.All.FindFamiliar.CreatureTypeHint',
+            category: 'summons',
+            get options() { return [{value: '', label: _loc('CHRISPREMADES.Macros.All.FindFamiliar.Ask')}, ...creatureTypeOptions()]; }
         },
         range: {
             default: 30,

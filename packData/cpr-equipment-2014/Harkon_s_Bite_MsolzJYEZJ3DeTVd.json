@@ -52,11 +52,8 @@
       ],
       "duration": {
         "seconds": null,
-        "startTime": 1374,
         "rounds": null,
         "turns": null,
-        "startRound": null,
-        "startTurn": null,
         "combat": null
       },
       "tint": "#ffffff",
@@ -111,13 +108,10 @@
       ],
       "disabled": false,
       "duration": {
-        "startTime": null,
         "combat": null,
         "seconds": null,
         "rounds": null,
-        "turns": null,
-        "startRound": null,
-        "startTurn": null
+        "turns": null
       },
       "description": "",
       "tint": "#ffffff",
@@ -162,13 +156,10 @@
       "changes": [],
       "disabled": false,
       "duration": {
-        "startTime": null,
         "combat": null,
         "seconds": null,
         "rounds": null,
-        "turns": null,
-        "startRound": null,
-        "startTurn": null
+        "turns": null
       },
       "description": "",
       "tint": "#ffffff",

@@ -284,7 +284,10 @@
                 "ChannelDivinity": "Choose a channel divinity effect:",
                 "Dueling": "Identifiers for exceptions to the requirements of this feature.",
                 "FindFamiliar": {
+                    "Ask": "Ask Each Time",
                     "Choose": "Choose a familiar.",
+                    "CreatureType": "Familiar Creature Type",
+                    "CreatureTypeHint": "Always summon this creature type instead of prompting. Wild Companion always summons a fey.",
                     "Folder": "Familiar Actor Folder",
                     "InvalidSpell": "Only spells with a range of touch can be cast through your familiar.",
                     "NoActors": "No actors were found in the {folder} folder.",
@@ -349,24 +352,38 @@
                 },
                 "Common": {
                     "AttackTypeHint": "Limit this feature by attack type.",
+                    "Costs": "Use Activity Costs",
                     "DamageTypeHint": "Limit this feature by a list of dealt damage types.",
                     "HealingTypeHint": "Limit this feature by a list of dealt healing types.",
                     "IdentifierHint": "Limit this feature to a list of specific items.",
                     "ItemTypeHint": "Limit this feature to certain item types.",
                     "PacksHint": "Use these compendiums instead of the ones configured in settings.",
+                    "Phase": "Phase",
+                    "PhaseHint": "When this bonus is offered during the roll.",
+                    "Phases": {
+                        "all": "Any Phase",
+                        "postResult": "After the Result",
+                        "preResult": "Before the Result",
+                        "preRoll": "Before the Roll"
+                    },
+                    "PropertyHint": "Limt this feature by any matching item property.",
                     "RollActivity": "Roll this activity when used.",
                     "RollItem": "Roll this item when used.",
                     "SpellLevelHint": "Limit this feature by spell level.",
-                    "SpellSchoolHint": "Limit this feature by spell school.",
-                    "PropertyHint": "Limt this feature by any matching item property."
+                    "SpellSchoolHint": "Limit this feature by spell school."
                 },
                 "ConsumeItemToUse": "Consume {item} to use this feature?",
                 "DamageBonusToOneRoll": {
                     "BonusDamageType": "Bonus Damage Type",
                     "BonusDamageTypeHint": "Damage types to offer as choices for this bonus.",
-                    "Costs": "Use Activity Costs",
                     "Critical": "Allow Critical",
-                    "CriticalHint": "Critical hit rules can be applied to this bonus."
+                    "CriticalHint": "Critical hit rules can be applied to this bonus.",
+                    "EveryRoll": "Apply to Every Roll",
+                    "EveryRollHint": "Add this bonus to each roll of a multi-attack rather than one of them.",
+                    "MaxTargets": "Max Targets",
+                    "MaxTargetsHint": "Limit the bonus to this many targets. 0 applies it to every target.",
+                    "OncePerTurn": "Once Per Turn",
+                    "OncePerTurnHint": "Offer this bonus only once on each of your turns."
                 },
                 "Grapple": {
                     "ActivityInfo": "Use Activity Info",
@@ -395,6 +412,15 @@
                     "LongRestCures": "Long Rest Cures",
                     "ReduceByRoll": "Reduce By Roll",
                     "ShortRestCures": "Short Rest Cures"
+                },
+                "RollBonus": {
+                    "AbilityHint": "Limit this bonus to a list of abilities.",
+                    "BonusHint": "Formula added to the roll when this bonus is taken.",
+                    "CostsHint": "Only offer this bonus when its costs can be paid.",
+                    "Optional": "Optional",
+                    "OptionalHint": "Prompt before the bonus is added, rather than always adding it.",
+                    "SkillHint": "Limit this bonus to a list of skills.",
+                    "ToolHint": "Limit this bonus to a list of tools."
                 }
             },
             "Legacy": {

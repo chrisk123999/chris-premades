@@ -16,11 +16,9 @@ export {wildShape as 'wild-shape', wildShapeActive} from './legacy/classFeatures
 export {createPactWeapon as 'create-pact-weapon'} from './legacy/classFeatures/warlock/boons/createPactWeapon.mjs';
 export {feyPresence as 'fey-presence'} from './legacy/classFeatures/warlock/archfey/feyPresence.mjs';
 export {mistyEscape as 'misty-escape'} from './legacy/classFeatures/warlock/archfey/mistyEscape.mjs';
-export {radiantSoul as 'radiant-soul'} from './legacy/classFeatures/warlock/celestial/radiantSoul.mjs';
 export {darkOnesBlessing as 'dark-ones-blessing'} from './legacy/classFeatures/warlock/fiend/darkOnesBlessing.mjs';
 export {hexWarrior as 'hex-warrior'} from './legacy/classFeatures/warlock/hexblade/hexWarrior.mjs';
 export {hexbladesCurse as 'hexblades-curse', hexbladesCurseSource as 'hexblades-curse-source', hexbladesCurseTarget as 'hexblades-curse-target'} from './legacy/classFeatures/warlock/hexblade/hexbladesCurse.mjs';
-export {agonizingBlast as 'agonizing-blast'} from './legacy/classFeatures/warlock/invocations/agonizingBlast.mjs';
 export {eldritchSmite as 'eldritch-smite'} from './legacy/classFeatures/warlock/invocations/eldritchSmite.mjs';
 export {giftOfTheProtectors as 'gift-of-the-protectors', giftOfTheProtectorsProtected as 'gift-of-the-protectors-protected'} from './legacy/classFeatures/warlock/invocations/giftOfTheProtectors.mjs';
 export {graspOfHadar as 'grasp-of-hadar'} from './legacy/classFeatures/warlock/invocations/graspOfHadar.mjs';

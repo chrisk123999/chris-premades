@@ -9,6 +9,16 @@ const foreignFlags = [
     'tidy5e-sheet'
 ];
 const worldReference = /^(Scene|Actor|Compendium\.world)\./;
+const volatileStats = ['compendiumSource', 'createdTime', 'duplicateSource', 'exportSource', 'lastModifiedBy', 'modifiedTime'];
+const volatileDuration = ['startTime', 'startRound', 'startTurn'];
+/**
+ * Strip the `_stats` fields that churn between extractions.
+ * @param {object} document A document's source data, mutated in place.
+ * @returns {void}
+ */
+function cleanStats(document) {
+    volatileStats.forEach(key => delete document._stats?.[key]);
+}
 function cleanString(string) {
     return string.replace(/⁠/gu, '').replace(/[‘’]/gu, '\'').replace(/[“”]/gu, '"');
 }
@@ -29,25 +39,27 @@ function cleanFlags(document) {
 }
 /**
  * Strip world state and foreign module data that should not ship in a compendium.
- * Shared by `unpackData.mjs`, which runs it on extraction, and `cleanData.mjs`, which runs it over
- * source files that were hand edited rather than extracted.
  * @param {object} entry A document's source data, mutated in place.
  * @returns {void}
  */
 export function cleanEntry(entry) {
-    delete entry._stats;
+    cleanStats(entry);
     delete entry.sort;
     delete entry.ownership;
     cleanFlags(entry);
     if (entry.name) entry.name = cleanString(entry.name);
-    if (entry.system?.description?.value) entry.system.description.value = cleanString(entry.system.description.value);
+    if (entry.system?.description) {
+        entry.system.description.value = '';
+        entry.system.description.chat = '';
+    }
     if (entry.system?.source?.sourceClass) delete entry.system.source.sourceClass;
     if (entry.system?.materials?.value) entry.system.materials.value = '';
     Object.values(entry.system?.activities ?? {}).forEach(activity => cleanFlags(activity));
     (entry.effects ?? []).forEach(effect => {
-        delete effect._stats;
+        cleanStats(effect);
         cleanFlags(effect);
         if (worldReference.test(effect.origin ?? '')) effect.origin = null;
+        volatileDuration.forEach(key => delete effect.duration?.[key]);
     });
     (entry.items ?? []).forEach(item => cleanEntry(item));
 }

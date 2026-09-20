@@ -179,7 +179,8 @@
     "cat": {
       "automation": {
         "source": "chris-premades",
-        "version": "2.0.0"
+        "version": "2.0.0",
+        "sourceType": "subclass:great-old-one"
       },
       "macros": {
         "roll": [
