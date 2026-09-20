@@ -1,6 +1,6 @@
-import {automationUtils, combatUtils, constants, DamageBonus, documentUtils, genericUtils, tokenUtils, workflowUtils} from '../../proxy.mjs';
+import {automationUtils, constants, DamageBonus, documentUtils, workflowUtils} from '../../proxy.mjs';
 import utils from '../../utils.mjs';
-async function damage({document, workflow, token}) {
+async function damage({document, workflow}) {
     if (!workflow.targets.size || (!workflow.activity.hasDamage && !workflow.activity.hasHealing)) return;
     const config = automationUtils.getGenericConfigValues(document, 'chris-premades', 'damageBonusToOneRoll', configKeys);
     if (!config.bonus.length) return;
@@ -37,16 +37,9 @@ async function damage({document, workflow, token}) {
     if (config.spellSchool.length) {
         if (!config.spellSchool.includes(workflow.item.system.school)) return;
     }
-    let combatData, stamps;
-    if (config.oncePerTurn) {
-        combatData = tokenUtils.getCombatData(token);
-        stamps = genericUtils.getProperty(document, 'flags.chris-premades.turnStamps') ?? [];
-        if (combatUtils.isStampedThisTurn(stamps, token.id, combatData)) return;
-    }
     const bonus = new DamageBonus(document, {formula: config.bonus, optional, type: config.bonusDamageType, maxTargets: config.maxTargets || undefined, allowCritical: config.allowCritical})
         .withOnUse(async ({bonus}) => {
             if (trackLastUse) await documentUtils.setFlag(document, 'chris-premades', 'lastUse', multiSingleTarget.rollID);
-            if (config.oncePerTurn) await documentUtils.setFlag(document, 'chris-premades', 'turnStamps', combatUtils.addTurnStamp(stamps, token.id, combatData));
             await utils.rollConfiguredSource(bonus, config, Array.from(bonus.targets ?? []));
         });
     if (config.useActivityCosts) {
@@ -58,7 +51,7 @@ async function damage({document, workflow, token}) {
 }
 export const damageBonusToOneRoll = {
     rules: 'all',
-    version: '2.0.3',
+    version: '2.0.4',
     category: 'damage',
     generic: true,
     documents: ['activeeffect', 'item'],
@@ -175,13 +168,6 @@ export const damageBonusToOneRoll = {
             category: 'behavior',
             label: 'CHRISPREMADES.Macros.Generic.DamageBonusToOneRoll.MaxTargets',
             hint: 'CHRISPREMADES.Macros.Generic.DamageBonusToOneRoll.MaxTargetsHint'
-        },
-        oncePerTurn: {
-            default: false,
-            type: 'checkbox',
-            category: 'behavior',
-            label: 'CHRISPREMADES.Macros.Generic.DamageBonusToOneRoll.OncePerTurn',
-            hint: 'CHRISPREMADES.Macros.Generic.DamageBonusToOneRoll.OncePerTurnHint'
         },
         everyRoll: {
             default: false,

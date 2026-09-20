@@ -381,9 +381,7 @@
                     "EveryRoll": "Apply to Every Roll",
                     "EveryRollHint": "Add this bonus to each roll of a multi-attack rather than one of them.",
                     "MaxTargets": "Max Targets",
-                    "MaxTargetsHint": "Limit the bonus to this many targets. 0 applies it to every target.",
-                    "OncePerTurn": "Once Per Turn",
-                    "OncePerTurnHint": "Offer this bonus only once on each of your turns."
+                    "MaxTargetsHint": "Limit the bonus to this many targets. 0 applies it to every target."
                 },
                 "Grapple": {
                     "ActivityInfo": "Use Activity Info",
