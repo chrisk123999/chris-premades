@@ -44,7 +44,8 @@ async function use({document, workflow}) {
             {
                 type: 'selectAmount',
                 maxAmount: remainingAttacks,
-                skipDeadAndUnconscious: skipDeadAndUnconscious 
+                requireTotal: true,
+                skipDeadAndUnconscious: skipDeadAndUnconscious
             }
         );
         if (!dialogResult) break;

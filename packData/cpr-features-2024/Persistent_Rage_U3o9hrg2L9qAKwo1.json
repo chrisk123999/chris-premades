@@ -177,7 +177,6 @@
     }
   },
   "flags": {
-    "dnd5e": {},
     "cat": {
       "automation": {
         "source": "chris-premades",

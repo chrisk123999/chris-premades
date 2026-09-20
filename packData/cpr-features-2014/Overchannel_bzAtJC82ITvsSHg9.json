@@ -284,7 +284,6 @@
     "crewed": false
   },
   "flags": {
-    "core": {},
     "midi-qol": {
       "effectActivation": false,
       "onUseMacroName": "",
@@ -323,13 +322,6 @@
       "riders": {
         "activity": [],
         "effect": []
-      },
-      "last": {
-        "IpdgSqvsaEzyHaap": {
-          "damageType": {
-            "0": "none"
-          }
-        }
       }
     },
     "cat": {

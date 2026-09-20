@@ -1,19 +1,21 @@
 import {automationUtils, constants, DamageBonus, documentUtils, workflowUtils} from '../../proxy.mjs';
+import utils from '../../utils.mjs';
 async function damage({document, workflow}) {
     if (!workflow.targets.size || (!workflow.activity.hasDamage && !workflow.activity.hasHealing)) return;
-    const config = automationUtils.getGenericConfigValues(document, 'chris-premades', 'damageBonusToOneRoll', Object.keys(damageBonusToOneRoll.genericConfig));
+    const config = automationUtils.getGenericConfigValues(document, 'chris-premades', 'damageBonusToOneRoll', configKeys);
     if (!config.bonus.length) return;
     const multiSingleTarget = workflow.workflowOptions['chris-premades']?.multiSingleTarget;
-    if (multiSingleTarget && document.flags['chris-premades']?.lastUse === multiSingleTarget.rollID) return;
-    const optional = config.useActivityCosts || (multiSingleTarget ? multiSingleTarget.remainingAttacks > 1 : false);
-    if (optional && workflow.activity.hasAttack && !workflow.hitTargets.size) return;
+    const trackLastUse = !config.everyRoll && multiSingleTarget;
+    if (trackLastUse && document.flags['chris-premades']?.lastUse === multiSingleTarget.rollID) return;
+    const needsHit = config.everyRoll || config.useActivityCosts || multiSingleTarget?.remainingAttacks > 1;
+    const optional = !config.everyRoll && needsHit;
+    if (needsHit && workflow.activity.hasAttack && !workflow.hitTargets.size) return;
     if (config.attackType.length) {
         if (!workflowUtils.isAttackType(workflow, config.attackType)) return;
     }
     if (config.damageType.length) {
-        const damage = workflow.activity.damage ?? workflow.activity.otherActivity?.damage;
-        if (!damage) return;
-        if (!damage.parts.some(p => config.damageType.some(d => p.types.has(d)))) return;
+        const rolled = workflowUtils.getDamageTypes(workflow.damageRolls);
+        if (!config.damageType.some(d => rolled.has(d))) return;
     }
     if (config.healingType.length) {
         const heal = workflow.activity.healing;
@@ -35,18 +37,10 @@ async function damage({document, workflow}) {
     if (config.spellSchool.length) {
         if (!config.spellSchool.includes(workflow.item.system.school)) return;
     }
-    const bonus = new DamageBonus(document, {formula: config.bonus, optional, type: config.bonusDamageType, allowCritical: config.allowCritical})
+    const bonus = new DamageBonus(document, {formula: config.bonus, optional, type: config.bonusDamageType, maxTargets: config.maxTargets || undefined, allowCritical: config.allowCritical})
         .withOnUse(async ({bonus}) => {
-            if (multiSingleTarget) await documentUtils.setFlag(document, 'chris-premades', 'lastUse', multiSingleTarget.rollID);
-            const item = bonus.document.documentName === 'Item' ? bonus.document : bonus.activity?.item;
-            if (!item) return;
-            if (config.rollItem) {
-                await workflowUtils.completeItemUse(item, Array.from(bonus.targets ?? []));
-            } else if (config.rollActivity) {
-                const activity = item.system.activities.get(config.rollActivity);
-                if (!activity) return;
-                await workflowUtils.completeActivityUse(activity, Array.from(bonus.targets ?? []));
-            }
+            if (trackLastUse) await documentUtils.setFlag(document, 'chris-premades', 'lastUse', multiSingleTarget.rollID);
+            await utils.rollConfiguredSource(bonus, config, Array.from(bonus.targets ?? []));
         });
     if (config.useActivityCosts) {
         if (!workflow.hitTargets.size) return;
@@ -57,7 +51,7 @@ async function damage({document, workflow}) {
 }
 export const damageBonusToOneRoll = {
     rules: 'all',
-    version: '2.0.3',
+    version: '2.0.4',
     category: 'damage',
     generic: true,
     documents: ['activeeffect', 'item'],
@@ -82,19 +76,6 @@ export const damageBonusToOneRoll = {
             label: 'CHRISPREMADES.Macros.Generic.DamageBonusToOneRoll.BonusDamageType',
             hint: 'CHRISPREMADES.Macros.Generic.DamageBonusToOneRoll.BonusDamageTypeHint',
             get options() { return constants.damageTypeOptions(); }
-        },
-        phase: {
-            default: 'postResult',
-            type: 'select',
-            category: 'behavior',
-            label: 'CHRISPREMADES.Macros.Generic.DamageBonusToOneRoll.Phase',
-            hint: 'CHRISPREMADES.Macros.Generic.DamageBonusToOneRoll.PhaseHint',
-            get options() { return [
-                'preRoll',
-                'preResult',
-                'postResult',
-                'all'
-            ].map(p => ({value: p, label: _loc('CHRISPREMADES.Macros.Generic.DamageBonusToOneRoll.Phases.' + p)})); }
         },
         attackType: {
             default: '',
@@ -181,11 +162,25 @@ export const damageBonusToOneRoll = {
             category: 'behavior',
             label:'CHRISPREMADES.Macros.Generic.Common.RollItem'
         },
+        maxTargets: {
+            default: 0,
+            type: 'number',
+            category: 'behavior',
+            label: 'CHRISPREMADES.Macros.Generic.DamageBonusToOneRoll.MaxTargets',
+            hint: 'CHRISPREMADES.Macros.Generic.DamageBonusToOneRoll.MaxTargetsHint'
+        },
+        everyRoll: {
+            default: false,
+            type: 'checkbox',
+            category: 'behavior',
+            label: 'CHRISPREMADES.Macros.Generic.DamageBonusToOneRoll.EveryRoll',
+            hint: 'CHRISPREMADES.Macros.Generic.DamageBonusToOneRoll.EveryRollHint'
+        },
         useActivityCosts: {
             default: false,
             type: 'checkbox',
             category: 'behavior',
-            label:'CHRISPREMADES.Macros.Generic.DamageBonusToOneRoll.Costs'
+            label:'CHRISPREMADES.Macros.Generic.Common.Costs'
         },
         allowCritical: {
             default: true,
@@ -196,3 +191,4 @@ export const damageBonusToOneRoll = {
         }
     }
 };
+const configKeys = Object.keys(damageBonusToOneRoll.genericConfig);

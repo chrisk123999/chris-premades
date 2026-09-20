@@ -900,8 +900,6 @@
       "magicdam": true,
       "magiceffect": true
     },
-    "spell-class-filter-for-5e": {},
-    "tidy5e-sheet": {},
     "cat": {
       "macros": {},
       "automation": {
@@ -912,8 +910,7 @@
       "config": {
         "summons": []
       }
-    },
-    "dnd5e": {}
+    }
   },
   "img": "icons/magic/death/undead-skeleton-energy-green.webp",
   "folder": "fmUgbBpzksaKMBK8",

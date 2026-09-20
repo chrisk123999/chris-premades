@@ -35,10 +35,6 @@
             "None"
           ]
         },
-        "ddbimporter": {
-          "disabled": false,
-          "activityMatch": "Turn Undead"
-        },
         "midi-qol": {
           "forceCEOff": true
         },
@@ -66,7 +62,7 @@
       "img": "icons/magic/holy/barrier-shield-winged-blue.webp",
       "type": "base",
       "start": null,
-      "origin": "Actor.3HDhoHko6l96f62D.Item.iwptKXxAbxqPOJMl",
+      "origin": null,
       "folder": null,
       "sort": 0,
       "_key": "!items.effects!M9pAMurZEfSWJpmD.HcjIwIiuE7Htjz7a"
@@ -74,7 +70,7 @@
     {
       "name": "Channel Divinity: Turn Undead",
       "img": "icons/magic/holy/barrier-shield-winged-blue.webp",
-      "origin": "Actor.3HDhoHko6l96f62D.Item.iwptKXxAbxqPOJMl",
+      "origin": null,
       "type": "base",
       "_id": "PhHhDCmfrdQVNb6T",
       "system": {
@@ -900,20 +896,6 @@
     }
   },
   "flags": {
-    "dnd5e": {
-      "last": {
-        "addDiviSpSaVsDa1": {
-          "damageType": {
-            "0": "none"
-          }
-        },
-        "healChanDivclass": {
-          "damageType": {
-            "0": "healing"
-          }
-        }
-      }
-    },
     "cat": {
       "automation": {
         "source": "chris-premades",

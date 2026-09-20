@@ -5,7 +5,7 @@
     {
       "name": "Staggered",
       "img": "icons/skills/wounds/injury-body-pain-gray.webp",
-      "origin": "Actor.vEcivv6DTofI2Lzw.Item.7UPp26HfZmC8H0iz",
+      "origin": null,
       "transfer": false,
       "_id": "rY4JP3bkCXbhSUUY",
       "type": "base",
@@ -64,7 +64,7 @@
     {
       "name": "Sundered",
       "img": "icons/skills/melee/hand-grip-staff-yellow-brown.webp",
-      "origin": "Actor.vEcivv6DTofI2Lzw.Item.7UPp26HfZmC8H0iz",
+      "origin": null,
       "transfer": false,
       "_id": "UpRs86uIuxnAagYq",
       "type": "base",
@@ -480,7 +480,6 @@
     }
   },
   "flags": {
-    "dnd5e": {},
     "cat": {
       "automation": {
         "source": "chris-premades",

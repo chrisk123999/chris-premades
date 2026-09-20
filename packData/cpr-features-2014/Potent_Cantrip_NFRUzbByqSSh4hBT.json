@@ -42,7 +42,6 @@
       "reactionCondition": "",
       "otherCondition": ""
     },
-    "core": {},
     "midiProperties": {
       "confirmTargets": "default",
       "autoFailFriendly": false,
@@ -68,7 +67,7 @@
   "effects": [
     {
       "name": "Potent Cantrip",
-      "origin": "Compendium.world.cpr-class-features.Item.XpGBKVTI9ePzKV77",
+      "origin": null,
       "duration": {
         "value": null,
         "units": "seconds",
@@ -77,7 +76,6 @@
       },
       "disabled": false,
       "flags": {
-        "dnd5e": {},
         "dae": {
           "disableCondition": "",
           "disableIncapacitated": false,

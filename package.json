@@ -9,6 +9,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack",
     "buildCompendiums": "node packData/packData.mjs",
+    "build:clean": "node packData/cleanData.mjs",
     "extractCompendiums": "node packData/unpackData.mjs"
   },
   "repository": {

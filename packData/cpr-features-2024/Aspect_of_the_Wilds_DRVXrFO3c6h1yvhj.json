@@ -31,10 +31,6 @@
           "durationExpression": "",
           "macroRepeat": "none"
         },
-        "ddbimporter": {
-          "disabled": false,
-          "activityMatch": "Owl"
-        },
         "midi-qol": {
           "forceCEOff": true
         },
@@ -104,10 +100,6 @@
           "durationExpression": "",
           "macroRepeat": "none"
         },
-        "ddbimporter": {
-          "disabled": false,
-          "activityMatch": "Panther"
-        },
         "midi-qol": {
           "forceCEOff": true
         },
@@ -169,10 +161,6 @@
           "showIcon": false,
           "durationExpression": "",
           "macroRepeat": "none"
-        },
-        "ddbimporter": {
-          "disabled": false,
-          "activityMatch": "Salmon"
         },
         "midi-qol": {
           "forceCEOff": true

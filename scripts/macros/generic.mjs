@@ -9,6 +9,7 @@ export {useOnDeath} from './generic/useOnDeath.mjs';
 export {advancedMeleeAttack} from './generic/advancedMeleeAttack.mjs';
 export {movementAnimation} from './generic/movementAnimation.mjs';
 export {checkModifier, saveModifier, skillModifier, toolModifier} from './generic/rollModifier.mjs';
+export {checkBonus, saveBonus, skillBonus, toolBonus} from './generic/rollBonus.mjs';
 export {additionalTargets} from './generic/additionalTargets.mjs';
 export {damageBonusToOneRoll} from './generic/damageBonusToOneRoll.mjs';
 export {passiveAura} from './generic/passiveAura.mjs';

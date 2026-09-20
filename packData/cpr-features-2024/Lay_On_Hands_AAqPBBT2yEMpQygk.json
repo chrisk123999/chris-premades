@@ -293,13 +293,6 @@
   },
   "flags": {
     "dnd5e": {
-      "last": {
-        "healLayOnHaclass": {
-          "damageType": {
-            "0": "healing"
-          }
-        }
-      },
       "riders": {
         "activity": []
       }

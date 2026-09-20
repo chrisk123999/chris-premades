@@ -174,13 +174,6 @@
       "confirmTargets": "default"
     },
     "dnd5e": {
-      "last": {
-        "healHeigFocclass": {
-          "damageType": {
-            "0": "temphp"
-          }
-        }
-      },
       "riders": {
         "activity": []
       }

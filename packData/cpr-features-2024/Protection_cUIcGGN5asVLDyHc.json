@@ -5,7 +5,7 @@
     {
       "name": "Protector",
       "img": "icons/equipment/shield/Scutum-steel-worn.webp",
-      "origin": "Actor.ihdatBcUAcMDE9w5.Item.LYkswvNGWM6TWW6n",
+      "origin": null,
       "type": "base",
       "_id": "GKbXacw46TVA8PcM",
       "system": {
@@ -66,7 +66,7 @@
     {
       "name": "Protected",
       "img": "icons/equipment/shield/Scutum-steel-worn.webp",
-      "origin": "Actor.ihdatBcUAcMDE9w5.Item.LYkswvNGWM6TWW6n",
+      "origin": null,
       "transfer": false,
       "_id": "oHoEgces2SlW1cej",
       "type": "base",

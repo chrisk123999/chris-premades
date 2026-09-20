@@ -379,7 +379,7 @@
     {
       "name": "Rage",
       "img": "icons/creatures/abilities/mouth-teeth-human.webp",
-      "origin": "Compendium.world.cpr-class-features-modern.Item.iwKyilAX7dxODBEP",
+      "origin": null,
       "transfer": false,
       "_id": "sL6Qn1ntvxrhFaYD",
       "type": "base",
@@ -504,8 +504,7 @@
         "source": "chris-premades",
         "version": "2.0.2"
       }
-    },
-    "dnd5e": {}
+    }
   },
   "_id": "lfaBKSayofKlWonJ",
   "_key": "!items!lfaBKSayofKlWonJ"

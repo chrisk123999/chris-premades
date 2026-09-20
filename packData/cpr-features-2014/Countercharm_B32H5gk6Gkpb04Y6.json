@@ -5,7 +5,7 @@
     {
       "name": "Countercharm",
       "img": "icons/magic/air/air-burst-spiral-pink.webp",
-      "origin": "Actor.vEcivv6DTofI2Lzw.Item.Shw7PpivrHk0boMf",
+      "origin": null,
       "transfer": false,
       "_id": "2tTU7pPzKPMYNHeK",
       "type": "base",
@@ -293,7 +293,6 @@
     }
   },
   "flags": {
-    "dnd5e": {},
     "cat": {
       "automation": {
         "source": "chris-premades",

@@ -5,7 +5,7 @@
     {
       "name": "Instinctive Pounce",
       "img": "icons/magic/control/debuff-energy-snare-brown.webp",
-      "origin": "Actor.vEcivv6DTofI2Lzw.Item.zDoNrLOFVjLUlqLb",
+      "origin": null,
       "transfer": false,
       "_id": "1QHMHTEkd0cARHWk",
       "type": "base",
@@ -269,7 +269,6 @@
     }
   },
   "flags": {
-    "dnd5e": {},
     "cat": {
       "automation": {
         "source": "chris-premades",

@@ -376,7 +376,7 @@
     {
       "name": "Hand of Death Aura",
       "img": "icons/magic/death/hand-undead-skeleton-fire-pink.webp",
-      "origin": "Actor.RiswynnLv0500000.Item.puWFcv8CwQqxkOrA",
+      "origin": null,
       "duration": {
         "value": null,
         "units": "seconds",
@@ -433,7 +433,7 @@
     {
       "name": "Hand of Death",
       "img": "icons/magic/death/hand-undead-skeleton-fire-pink.webp",
-      "origin": "Actor.RiswynnLv0500000.Item.puWFcv8CwQqxkOrA",
+      "origin": null,
       "duration": {
         "value": null,
         "units": "seconds",
@@ -486,7 +486,7 @@
     {
       "name": "Cling to Life",
       "img": "icons/magic/death/hand-undead-skeleton-fire-pink.webp",
-      "origin": "Actor.RiswynnLv0500000.Item.puWFcv8CwQqxkOrA",
+      "origin": null,
       "duration": {
         "value": null,
         "units": "seconds",
@@ -580,15 +580,6 @@
       "automation": {
         "source": "chris-premades",
         "version": "2.0.3"
-      }
-    },
-    "dnd5e": {
-      "last": {
-        "CvbWYXhtpTPxufWb": {
-          "damageType": {
-            "0": "healing"
-          }
-        }
       }
     }
   },

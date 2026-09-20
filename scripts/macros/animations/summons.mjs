@@ -2,6 +2,17 @@ import {animationUtils} from '../../proxy.mjs';
 async function prePlace(summon, location, preToken) {
     preToken.updateSource({alpha: 0});
 }
+async function preRemove(summon, token) {
+    /* eslint-disable indent */
+    await new Sequence()
+        .animation()
+            .on(token)
+            .opacity(0)
+            .fadeIn(500)
+        .wait(500)
+        .play();
+    /* eslint-enable indent */
+}
 async function defaultAnimation(summon, location, token) {
     const image = token.texture.src;
     const imageSize = token.width * token.texture.scaleX;
@@ -820,7 +831,8 @@ function createSummon(name, macro, requirements = []) {
         name: 'CHRISPREMADES.Animations.' + name + 'Summon',
         macros: {
             prePlace: prePlace,
-            postPlace: macro
+            postPlace: macro,
+            preRemove: preRemove
         },
         requirements: requirements,
         inputs: ['summon', 'location', 'token'],

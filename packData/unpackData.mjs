@@ -1,4 +1,5 @@
 import {extractPack} from '@foundryvtt/foundryvtt-cli';
+import {cleanEntry} from './cleanEntry.mjs';
 let itemPacks = [
     'cpr-features-2014',
     'cpr-monster-features-2014',
@@ -18,23 +19,8 @@ let actorPacks = [
     'cpr-summons-2024'
 ];
 for (let i of itemPacks) {
-    await extractPack('packs/' + i, 'packData/' + i, {log: true, documentType: 'Item', transformEntry: (entry) => {
-        delete entry._stats;
-        delete entry.sort;
-        delete entry.ownership;
-        delete entry.flags.ddbimporter;
-        for (const i in entry.effects)
-        {
-            if (entry.effects[i]._stats) delete entry.effects[i]._stats;
-        }
-        if (entry.system?.source?.sourceClass) delete entry.system.source.sourceClass;
-        if (entry.flags.core?.sourceId) delete entry.flags.core.sourceId;
-        if (entry.system?.materials?.value) entry.system.materials.value = '';
-        if (entry.flags.dnd5e?.advancementRoot) delete entry.flags.dnd5e.advancementRoot;
-        if (entry.flags.dnd5e?.advancementOrigin) delete entry.flags.dnd5e.advancementOrigin;
-        if (entry.flags.dnd5e?.['-=riders'] !== undefined) delete entry.flags.dnd5e['-=riders'];
-    }});
+    await extractPack('packs/' + i, 'packData/' + i, {log: true, documentType: 'Item', transformEntry: cleanEntry});
 }
 for (let i of actorPacks) {
-    await extractPack('packs/' + i, 'packData/' + i, {log: true, documentType: 'Actor', transformEntry: (entry) => {delete entry._stats; delete entry.sort; delete entry.ownership;}});
+    await extractPack('packs/' + i, 'packData/' + i, {log: true, documentType: 'Actor', transformEntry: cleanEntry});
 }

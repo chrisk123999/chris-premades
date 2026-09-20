@@ -207,15 +207,6 @@
     }
   },
   "flags": {
-    "dnd5e": {
-      "last": {
-        "damageSeaUnclass": {
-          "damageType": {
-            "0": "radiant"
-          }
-        }
-      }
-    },
     "cat": {
       "automation": {
         "source": "chris-premades",

@@ -254,17 +254,6 @@
   },
   "effects": [],
   "folder": "uH9uQViQNoIvog8X",
-  "flags": {
-    "dnd5e": {
-      "last": {
-        "2qgiwpyB6etm5pdR": {
-          "attackMode": "oneHanded",
-          "damageType": {
-            "0": "necrotic"
-          }
-        }
-      }
-    }
-  },
+  "flags": {},
   "_key": "!items!ltKwNXraCOmygfgF"
 }

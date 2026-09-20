@@ -47,6 +47,16 @@ export {sneakAttack as 'sneak-attack'} from './modern/classFeatures/rogue/sneakA
 // Sanguine Thief
 export {stolenPower as 'stolen-power'} from './modern/classFeatures/rogue/sanguineThief/stolenPower.mjs';
 export {stealBlood as 'steal-blood'} from './modern/classFeatures/rogue/sanguineThief/stealBlood.mjs';
+// Warlock
+export {stepsOfTheFey as 'steps-of-the-fey'} from './modern/classFeatures/warlock/archfey/stepsOfTheFey.mjs';
+export {felineForm as 'feline-form', felineFormActive as 'feline-form-active', felineFormRevert as 'feline-form-revert'} from './modern/classFeatures/warlock/feline/felineForm.mjs';
+export {createThrall as 'create-thrall', thrallBonus as 'thrall-bonus'} from './modern/classFeatures/warlock/greatOldOne/createThrall.mjs';
+export {awakenedMind as 'awakened-mind'} from './modern/classFeatures/warlock/greatOldOne/awakenedMind.mjs';
+export {psychicSpells as 'psychic-spells'} from './modern/classFeatures/warlock/greatOldOne/psychicSpells.mjs';
+export {thoughtShield as 'thought-shield'} from './modern/classFeatures/warlock/greatOldOne/thoughtShield.mjs';
+export {agonizingBlast as 'agonizing-blast'} from './modern/classFeatures/warlock/invocations/agonizingBlast.mjs';
+export {pactOfTheBlade as 'pact-of-the-blade', pactOfTheBladeAttack as 'pact-of-the-blade-attack'} from './modern/classFeatures/warlock/invocations/pactOfTheBlade.mjs';
+export {pactOfTheChain as 'pact-of-the-chain'} from './modern/classFeatures/warlock/invocations/pactOfTheChain.mjs';
 // Wizard
 export {arcaneRecovery as 'arcane-recovery'} from './modern/classFeatures/wizard/arcaneRecovery.mjs';
 export {memorizeSpell as 'memorize-spell'} from './modern/classFeatures/wizard/memorizeSpell.mjs';
@@ -56,6 +66,7 @@ export {crimsonLash as 'crimson-lash'} from './modern/spells/crimsonLash.mjs';
 // ** Features
 // Fighting Styles
 export {protectionMoved} from './modern/feats/protection.mjs';
+export {summonAberration as 'summon-aberration'} from './modern/spells/summonAberration.mjs';
 // ** Species Features
 // Grim Hollow Heritage Traits
 export {firstStrike as 'first-strike'} from './modern/speciesFeatures/grimHollowHeritageTraits/firstStrike.mjs';

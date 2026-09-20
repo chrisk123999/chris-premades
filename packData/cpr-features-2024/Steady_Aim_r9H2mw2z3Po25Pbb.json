@@ -31,9 +31,6 @@
           "durationExpression": "",
           "macroRepeat": "none"
         },
-        "ddbimporter": {
-          "disabled": false
-        },
         "midi-qol": {
           "forceCEOff": true
         },
@@ -102,9 +99,6 @@
           "dontApply": true,
           "durationExpression": "",
           "macroRepeat": "none"
-        },
-        "ddbimporter": {
-          "disabled": false
         },
         "midi-qol": {
           "forceCEOff": true

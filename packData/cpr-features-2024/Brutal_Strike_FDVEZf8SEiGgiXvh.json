@@ -41,10 +41,6 @@
           "selfTargetAlways": false,
           "dontApply": false
         },
-        "ddbimporter": {
-          "disabled": false,
-          "activityMatch": "Hamstrung Blow"
-        },
         "midi-qol": {
           "forceCEOff": true
         },
@@ -100,9 +96,6 @@
         },
         "effects": [],
         "flags": {
-          "ddbimporter": {
-            "noeffect": true
-          },
           "cat": {
             "macros": {
               "roll": [
@@ -597,7 +590,6 @@
     }
   },
   "flags": {
-    "dnd5e": {},
     "cat": {
       "automation": {
         "source": "chris-premades",

@@ -260,25 +260,12 @@
   },
   "effects": [],
   "flags": {
-    "infusions": {
-      "infused": false
-    },
     "midi-qol": {
       "removeAttackDamageButtons": "default",
       "forceCEOff": true
     },
     "midiProperties": {
       "confirmTargets": "default"
-    },
-    "dnd5e": {
-      "last": {
-        "attackUnarmStrik": {
-          "attackMode": "oneHanded",
-          "damageType": {
-            "0": "bludgeoning"
-          }
-        }
-      }
     },
     "cat": {
       "automation": {

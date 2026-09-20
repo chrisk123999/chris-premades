@@ -5,7 +5,7 @@
     {
       "name": "Natural Attunement",
       "img": "icons/magic/nature/leaf-juggle-humanoid-green.webp",
-      "origin": "Actor.OLjMQ9anz9G199WK.Item.k0aTxzBh48RA3L1u",
+      "origin": null,
       "transfer": false,
       "_id": "rg7s5iWOFFnihGpd",
       "type": "base",
