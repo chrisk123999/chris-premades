@@ -1,0 +1,11 @@
+{
+  "name": "Aberrant Mind",
+  "type": "Item",
+  "folder": "SorcererClsFeat1",
+  "color": null,
+  "sorting": "a",
+  "description": "",
+  "flags": {},
+  "_id": "SorcAberrantMnd1",
+  "_key": "!folders!SorcAberrantMnd1"
+}

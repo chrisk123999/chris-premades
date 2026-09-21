@@ -1,0 +1,11 @@
+{
+  "name": "Storm Sorcery",
+  "type": "Item",
+  "folder": "SorcererClsFeat1",
+  "color": null,
+  "sorting": "a",
+  "description": "",
+  "flags": {},
+  "_id": "SorcStormSorcry1",
+  "_key": "!folders!SorcStormSorcry1"
+}

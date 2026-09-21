@@ -1,6 +1,8 @@
 {
-  "name": "Eldritch Invocations: Investment of the Chain Master",
+  "folder": "SorcMetamagic001",
+  "name": "Twinned Spell",
   "type": "feat",
+  "img": "icons/magic/symbols/runes-star-blue.webp",
   "system": {
     "description": {
       "value": "",
@@ -12,85 +14,90 @@
       "rules": "2014"
     },
     "uses": {
-      "max": "",
       "spent": 0,
+      "max": "",
       "recovery": []
     },
     "type": {
       "value": "class",
-      "subtype": ""
+      "subtype": "metamagic"
     },
-    "requirements": "",
-    "properties": [],
     "prerequisites": {
       "level": null,
       "items": [],
       "repeatable": false
     },
+    "properties": [],
+    "requirements": "",
     "activities": {
-      "V6UqrfHpuZxRWruO": {
+      "dnd5eactivity000": {
+        "_id": "dnd5eactivity000",
         "type": "utility",
-        "_id": "V6UqrfHpuZxRWruO",
-        "sort": 0,
         "activation": {
-          "type": "bonus",
+          "type": "special",
           "value": null,
-          "override": false,
-          "condition": ""
+          "condition": "",
+          "override": false
         },
         "consumption": {
+          "targets": [],
           "scaling": {
-            "allowed": false
+            "allowed": false,
+            "max": ""
           },
-          "spellSlot": true,
-          "targets": []
+          "spellSlot": false
         },
         "description": {
-          "chatFlavor": "Find Familiar: Command"
+          "chatFlavor": ""
         },
         "duration": {
-          "units": "inst",
           "concentration": false,
+          "value": "",
+          "units": "inst",
+          "special": "",
           "override": false
         },
         "effects": [],
         "range": {
-          "override": false,
           "units": "self",
-          "special": ""
+          "special": "",
+          "override": false
         },
         "target": {
           "template": {
+            "count": "",
             "contiguous": false,
-            "units": "ft",
-            "type": ""
+            "type": "",
+            "size": "",
+            "width": "",
+            "height": "",
+            "units": "ft"
           },
           "affects": {
-            "choice": false,
             "count": "",
-            "type": ""
+            "type": "",
+            "choice": false,
+            "special": ""
           },
-          "override": false,
-          "prompt": true
+          "prompt": true,
+          "override": false
         },
         "uses": {
           "spent": 0,
-          "recovery": [],
-          "max": ""
+          "max": "",
+          "recovery": []
         },
         "roll": {
-          "prompt": false,
-          "visible": false,
+          "formula": "",
           "name": "",
-          "formula": ""
+          "prompt": false,
+          "visible": false
         },
+        "sort": 0,
         "useConditionText": "",
         "forceDialog": false,
         "effectConditionText": "",
         "midiAutomationOnly": false,
-        "name": "Find Familiar: Command",
-        "img": "icons/creatures/mammals/bat-giant-tattered-purple.webp",
-        "appliedEffects": [],
         "useConditionReason": "",
         "macroData": {
           "name": "",
@@ -118,8 +125,8 @@
           "automationOnly": false,
           "otherActivityCompatible": true,
           "otherActivityAsParentType": true,
-          "identifier": "find-familiar-command",
-          "displayActivityName": true,
+          "identifier": "metamagic",
+          "displayActivityName": false,
           "rollMode": "default",
           "chooseEffects": false,
           "toggleEffect": false,
@@ -137,76 +144,96 @@
           "postRemoveConditionText": ""
         },
         "otherActivityId": "none",
-        "identifier": "find-familiar-command",
         "flags": {
           "cat": {
-            "hidden": true
+            "macros": {
+              "roll": [
+                {
+                  "source": "chris-premades",
+                  "rules": "2014",
+                  "identifier": "twinned-spell"
+                }
+              ]
+            }
           }
         }
       },
-      "a8KJc6cG60OkjIlM": {
+      "twinnedSpellCost": {
+        "_id": "twinnedSpellCost",
         "type": "utility",
-        "_id": "a8KJc6cG60OkjIlM",
-        "sort": 0,
         "activation": {
-          "type": "bonus",
+          "type": "special",
           "value": null,
-          "override": false,
-          "condition": ""
+          "condition": "",
+          "override": false
         },
         "consumption": {
+          "targets": [
+            {
+              "type": "itemUses",
+              "value": "1",
+              "target": "feat:font-of-magic",
+              "scaling": {}
+            }
+          ],
           "scaling": {
-            "allowed": false
+            "allowed": false,
+            "max": ""
           },
-          "spellSlot": true,
-          "targets": []
+          "spellSlot": false
         },
         "description": {
-          "chatFlavor": "Flock of Familiars: Command"
+          "chatFlavor": ""
         },
         "duration": {
+          "value": "",
           "units": "inst",
+          "special": "",
           "concentration": false,
           "override": false
         },
         "effects": [],
         "range": {
-          "override": false,
+          "value": "",
           "units": "self",
-          "special": ""
+          "special": "",
+          "override": false
         },
         "target": {
-          "template": {
-            "contiguous": false,
-            "units": "ft",
-            "type": ""
-          },
+          "prompt": false,
           "affects": {
-            "choice": false,
             "count": "",
-            "type": ""
+            "type": "self",
+            "choice": false,
+            "special": ""
           },
-          "override": false,
-          "prompt": true
+          "template": {
+            "count": "",
+            "contiguous": false,
+            "type": "",
+            "size": "",
+            "width": "",
+            "height": "",
+            "units": "ft"
+          },
+          "override": false
         },
         "uses": {
           "spent": 0,
-          "recovery": [],
-          "max": ""
+          "max": "",
+          "recovery": []
         },
         "roll": {
-          "prompt": false,
-          "visible": false,
+          "formula": "",
           "name": "",
-          "formula": ""
+          "prompt": false,
+          "visible": false
         },
+        "sort": 100,
         "useConditionText": "",
         "forceDialog": false,
         "effectConditionText": "",
         "midiAutomationOnly": false,
-        "name": "Flock of Familiars: Command",
-        "img": "icons/creatures/mammals/bat-giant-tattered-purple.webp",
-        "appliedEffects": [],
         "useConditionReason": "",
         "macroData": {
           "name": "",
@@ -234,8 +261,8 @@
           "automationOnly": false,
           "otherActivityCompatible": true,
           "otherActivityAsParentType": true,
-          "identifier": "flock-of-familiars-command",
-          "displayActivityName": true,
+          "identifier": "twinned-spell-cost",
+          "displayActivityName": false,
           "rollMode": "default",
           "chooseEffects": false,
           "toggleEffect": false,
@@ -253,22 +280,22 @@
           "postRemoveConditionText": ""
         },
         "otherActivityId": "none",
-        "identifier": "flock-of-familiars-command",
         "flags": {
           "cat": {
             "hidden": true
           }
-        }
+        },
+        "name": "Sorcery Points"
       }
     },
-    "identifier": "investment-of-the-chain-master",
+    "identifier": "twinned-spell",
     "enchant": {},
     "advancement": [],
     "crewed": false
   },
+  "effects": [],
   "flags": {
     "midi-qol": {
-      "effectActivation": false,
       "rollAttackPerTarget": "default",
       "itemCondition": "",
       "effectCondition": "",
@@ -276,25 +303,20 @@
       "AoETargetTypeIncludeSelf": true,
       "autoTarget": "default",
       "removeAttackDamageButtons": "default",
-      "reactionCondition": "false",
+      "reactionCondition": "",
       "otherCondition": ""
     },
     "midiProperties": {
-      "nodam": false,
-      "fulldam": false,
-      "halfdam": false,
+      "confirmTargets": "default",
       "autoFailFriendly": false,
       "autoSaveFriendly": false,
-      "rollOther": false,
       "critOther": false,
       "offHandWeapon": false,
       "magicdam": false,
       "magiceffect": false,
-      "concentration": false,
+      "noConcentrationCheck": false,
       "toggleEffect": false,
       "ignoreTotalCover": false,
-      "confirmTargets": "default",
-      "noConcentrationCheck": false,
       "idr": false,
       "idi": false,
       "idv": false,
@@ -304,27 +326,16 @@
       "riders": {
         "activity": [],
         "effect": []
-      }
+      },
+      "dependents": []
     },
     "cat": {
       "automation": {
         "source": "chris-premades",
         "version": "2.0.0"
-      },
-      "macros": {
-        "summon": [
-          {
-            "source": "chris-premades",
-            "rules": "2014",
-            "identifier": "investment-of-the-chain-master"
-          }
-        ]
       }
     }
   },
-  "effects": [],
-  "img": "icons/creatures/mammals/bat-giant-tattered-purple.webp",
-  "folder": "7695c61f54bd3255",
-  "_id": "WiZCL89NhBSRXXWH",
-  "_key": "!items!WiZCL89NhBSRXXWH"
+  "_id": "bQMKcRUP9nHMlpYA",
+  "_key": "!items!bQMKcRUP9nHMlpYA"
 }

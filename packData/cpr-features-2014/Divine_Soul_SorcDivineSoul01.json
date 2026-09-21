@@ -1,0 +1,11 @@
+{
+  "name": "Divine Soul",
+  "type": "Item",
+  "folder": "SorcererClsFeat1",
+  "color": null,
+  "sorting": "a",
+  "description": "",
+  "flags": {},
+  "_id": "SorcDivineSoul01",
+  "_key": "!folders!SorcDivineSoul01"
+}

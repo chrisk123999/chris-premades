@@ -1,0 +1,11 @@
+{
+  "name": "Shadow Magic",
+  "type": "Item",
+  "folder": "SorcererClsFeat1",
+  "color": null,
+  "sorting": "a",
+  "description": "",
+  "flags": {},
+  "_id": "SorcShadowMagic1",
+  "_key": "!folders!SorcShadowMagic1"
+}

@@ -1,52 +1,90 @@
 {
-  "name": "Eldritch Invocations: Investment of the Chain Master",
-  "type": "feat",
+  "name": "Darkness",
+  "type": "spell",
+  "img": "icons/magic/unholy/orb-glowing-purple.webp",
   "system": {
     "description": {
       "value": "",
       "chat": ""
     },
     "source": {
+      "book": "PHB",
+      "page": "",
+      "license": "",
       "custom": "",
-      "revision": 1,
-      "rules": "2014"
+      "rules": "2014",
+      "revision": 1
+    },
+    "activation": {
+      "type": "action",
+      "condition": "",
+      "value": 1
+    },
+    "duration": {
+      "value": "10",
+      "units": "minute"
+    },
+    "target": {
+      "affects": {
+        "choice": false,
+        "count": "",
+        "type": ""
+      },
+      "template": {
+        "units": "ft",
+        "type": "sphere",
+        "size": "15",
+        "contiguous": false,
+        "count": ""
+      }
+    },
+    "range": {
+      "value": "60",
+      "units": "ft",
+      "special": ""
     },
     "uses": {
       "max": "",
       "spent": 0,
       "recovery": []
     },
-    "type": {
-      "value": "class",
-      "subtype": ""
+    "ability": "",
+    "level": 2,
+    "school": "evo",
+    "materials": {
+      "value": "",
+      "consumed": false,
+      "cost": 0,
+      "supply": 0
     },
-    "requirements": "",
-    "properties": [],
-    "prerequisites": {
-      "level": null,
-      "items": [],
-      "repeatable": false
+    "preparation": {
+      "mode": "prepared",
+      "prepared": false
     },
+    "properties": [
+      "vocal",
+      "material",
+      "concentration"
+    ],
     "activities": {
-      "V6UqrfHpuZxRWruO": {
+      "dnd5eactivity000": {
+        "_id": "dnd5eactivity000",
         "type": "utility",
-        "_id": "V6UqrfHpuZxRWruO",
-        "sort": 0,
         "activation": {
-          "type": "bonus",
+          "type": "action",
           "value": null,
-          "override": false,
-          "condition": ""
+          "override": false
         },
         "consumption": {
+          "targets": [],
           "scaling": {
-            "allowed": false
+            "allowed": false,
+            "max": ""
           },
-          "spellSlot": true,
-          "targets": []
+          "spellSlot": true
         },
         "description": {
-          "chatFlavor": "Find Familiar: Command"
+          "chatFlavor": ""
         },
         "duration": {
           "units": "inst",
@@ -56,41 +94,34 @@
         "effects": [],
         "range": {
           "override": false,
-          "units": "self",
-          "special": ""
+          "units": "self"
         },
         "target": {
+          "prompt": true,
           "template": {
             "contiguous": false,
-            "units": "ft",
-            "type": ""
+            "units": "ft"
           },
           "affects": {
-            "choice": false,
-            "count": "",
-            "type": ""
+            "choice": false
           },
-          "override": false,
-          "prompt": true
+          "override": false
         },
         "uses": {
           "spent": 0,
-          "recovery": [],
-          "max": ""
+          "max": "",
+          "recovery": []
         },
         "roll": {
-          "prompt": false,
-          "visible": false,
+          "formula": "",
           "name": "",
-          "formula": ""
+          "prompt": false,
+          "visible": false
         },
+        "sort": 0,
         "useConditionText": "",
         "forceDialog": false,
         "effectConditionText": "",
-        "midiAutomationOnly": false,
-        "name": "Find Familiar: Command",
-        "img": "icons/creatures/mammals/bat-giant-tattered-purple.webp",
-        "appliedEffects": [],
         "useConditionReason": "",
         "macroData": {
           "name": "",
@@ -118,8 +149,8 @@
           "automationOnly": false,
           "otherActivityCompatible": true,
           "otherActivityAsParentType": true,
-          "identifier": "find-familiar-command",
-          "displayActivityName": true,
+          "identifier": "darkness",
+          "displayActivityName": false,
           "rollMode": "default",
           "chooseEffects": false,
           "toggleEffect": false,
@@ -137,32 +168,47 @@
           "postRemoveConditionText": ""
         },
         "otherActivityId": "none",
-        "identifier": "find-familiar-command",
         "flags": {
           "cat": {
-            "hidden": true
+            "placed": {
+              "region": {
+                "visibility": {
+                  "obscured": true,
+                  "magicalDarkness": true
+                },
+                "regionVisibility": 0,
+                "macros": {
+                  "region": [
+                    {
+                      "source": "chris-premades",
+                      "rules": "all",
+                      "identifier": "darkness"
+                    }
+                  ]
+                }
+              }
+            }
           }
         }
       },
-      "a8KJc6cG60OkjIlM": {
+      "darknessSelfCast0": {
+        "_id": "darknessSelfCast0",
         "type": "utility",
-        "_id": "a8KJc6cG60OkjIlM",
-        "sort": 0,
         "activation": {
-          "type": "bonus",
+          "type": "action",
           "value": null,
-          "override": false,
-          "condition": ""
+          "override": false
         },
         "consumption": {
+          "targets": [],
           "scaling": {
-            "allowed": false
+            "allowed": false,
+            "max": ""
           },
-          "spellSlot": true,
-          "targets": []
+          "spellSlot": true
         },
         "description": {
-          "chatFlavor": "Flock of Familiars: Command"
+          "chatFlavor": ""
         },
         "duration": {
           "units": "inst",
@@ -171,42 +217,39 @@
         },
         "effects": [],
         "range": {
-          "override": false,
+          "value": "",
           "units": "self",
-          "special": ""
+          "special": "",
+          "override": true
         },
         "target": {
+          "prompt": true,
           "template": {
             "contiguous": false,
             "units": "ft",
-            "type": ""
+            "type": "radius",
+            "size": "15"
           },
           "affects": {
-            "choice": false,
-            "count": "",
-            "type": ""
+            "choice": false
           },
-          "override": false,
-          "prompt": true
+          "override": true
         },
         "uses": {
           "spent": 0,
-          "recovery": [],
-          "max": ""
+          "max": "",
+          "recovery": []
         },
         "roll": {
-          "prompt": false,
-          "visible": false,
+          "formula": "",
           "name": "",
-          "formula": ""
+          "prompt": false,
+          "visible": false
         },
+        "sort": 100,
         "useConditionText": "",
         "forceDialog": false,
         "effectConditionText": "",
-        "midiAutomationOnly": false,
-        "name": "Flock of Familiars: Command",
-        "img": "icons/creatures/mammals/bat-giant-tattered-purple.webp",
-        "appliedEffects": [],
         "useConditionReason": "",
         "macroData": {
           "name": "",
@@ -234,8 +277,8 @@
           "automationOnly": false,
           "otherActivityCompatible": true,
           "otherActivityAsParentType": true,
-          "identifier": "flock-of-familiars-command",
-          "displayActivityName": true,
+          "identifier": "darkness-self",
+          "displayActivityName": false,
           "rollMode": "default",
           "chooseEffects": false,
           "toggleEffect": false,
@@ -253,46 +296,65 @@
           "postRemoveConditionText": ""
         },
         "otherActivityId": "none",
-        "identifier": "flock-of-familiars-command",
         "flags": {
           "cat": {
-            "hidden": true
+            "placed": {
+              "region": {
+                "visibility": {
+                  "obscured": true,
+                  "magicalDarkness": true
+                },
+                "regionVisibility": 0,
+                "macros": {
+                  "region": [
+                    {
+                      "source": "chris-premades",
+                      "rules": "all",
+                      "identifier": "darkness"
+                    }
+                  ]
+                }
+              }
+            }
           }
-        }
+        },
+        "name": "Cast on Self"
       }
     },
-    "identifier": "investment-of-the-chain-master",
-    "enchant": {},
-    "advancement": [],
-    "crewed": false
+    "identifier": "darkness",
+    "sourceClass": "",
+    "method": "spell",
+    "prepared": 0
   },
+  "effects": [],
   "flags": {
     "midi-qol": {
+      "onUseMacroName": "",
       "effectActivation": false,
-      "rollAttackPerTarget": "default",
-      "itemCondition": "",
-      "effectCondition": "",
       "AoETargetType": "any",
       "AoETargetTypeIncludeSelf": true,
       "autoTarget": "default",
+      "rollAttackPerTarget": "default",
+      "itemCondition": "",
+      "effectCondition": "",
       "removeAttackDamageButtons": "default",
-      "reactionCondition": "false",
+      "reactionCondition": "",
       "otherCondition": ""
     },
     "midiProperties": {
       "nodam": false,
       "fulldam": false,
       "halfdam": false,
-      "autoFailFriendly": false,
-      "autoSaveFriendly": false,
       "rollOther": false,
       "critOther": false,
-      "offHandWeapon": false,
       "magicdam": false,
       "magiceffect": false,
       "concentration": false,
       "toggleEffect": false,
       "ignoreTotalCover": false,
+      "autoFailFriendly": false,
+      "offHandWeapon": false,
+      "autoSaveFriendly": false,
       "confirmTargets": "default",
       "noConcentrationCheck": false,
       "idr": false,
@@ -304,27 +366,17 @@
       "riders": {
         "activity": [],
         "effect": []
-      }
+      },
+      "dependents": []
     },
     "cat": {
       "automation": {
         "source": "chris-premades",
         "version": "2.0.0"
-      },
-      "macros": {
-        "summon": [
-          {
-            "source": "chris-premades",
-            "rules": "2014",
-            "identifier": "investment-of-the-chain-master"
-          }
-        ]
       }
     }
   },
-  "effects": [],
-  "img": "icons/creatures/mammals/bat-giant-tattered-purple.webp",
-  "folder": "7695c61f54bd3255",
-  "_id": "WiZCL89NhBSRXXWH",
-  "_key": "!items!WiZCL89NhBSRXXWH"
+  "folder": "ueMNujKhkNn2zCfl",
+  "_id": "MuWPhDrX6FoiiWxf",
+  "_key": "!items!MuWPhDrX6FoiiWxf"
 }

@@ -1,0 +1,11 @@
+{
+  "name": "Metamagic",
+  "type": "Item",
+  "folder": "SorcererClsFeat1",
+  "color": null,
+  "sorting": "a",
+  "description": "",
+  "flags": {},
+  "_id": "SorcMetamagic001",
+  "_key": "!folders!SorcMetamagic001"
+}

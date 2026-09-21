@@ -21,3 +21,4 @@ export {unhideActivities} from './generic/unhideActivities.mjs';
 export {reduceMaxHP} from './generic/reduceMaxHP.mjs';
 export {pushOnFail} from './generic/pushOnFail.mjs';
 export {grapple} from './generic/grapple.mjs';
+export {teleport} from './generic/teleport.mjs';

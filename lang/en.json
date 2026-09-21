@@ -12,14 +12,15 @@
                 "TrailColor": "Trail Color"
             },
             "AirSummon": "Air Summon",
-            "ShapeChange": "Shape Change",
-            "MistyStep": "Misty Step",
             "CelestialSummon": "Celestial Summon",
             "CunningActionDash": {
                 "Name": "Cunning Action Dash"
             },
             "CunningActionDisengage": {
                 "Name": "Cunning Action Disengage"
+            },
+            "Darkness": {
+                "Name": "Darkness"
             },
             "Default": "Default",
             "DefaultSummon": "Default Summon",
@@ -31,6 +32,8 @@
             "FutureSummon": "Future Summon",
             "Hide": "Hide",
             "MagicMissile": "Magic Missile",
+            "MistyStep": "Misty Step",
+            "MoonFrenzy": "Moon Frenzy",
             "NatureSummon": "Nature Summon",
             "Pounce": "Pounce",
             "Rage": {
@@ -47,13 +50,13 @@
                 "Message": "Right click to add waypoints. Left click to finish."
             },
             "ShadowSummon": "Shadow Summon",
+            "ShapeChange": "Shape Change",
             "Smite": "Smite",
             "SmokeSummon": "Smoke Summon",
             "SneakAttack": {
                 "Name": "Sneak Attack"
             },
-            "WaterSummon": "Water Summon",
-            "MoonFrenzy": "Moon Frenzy"
+            "WaterSummon": "Water Summon"
         },
         "Config": {
             "Abilities": "Abilities",
@@ -74,6 +77,8 @@
             "ArmorTypes": "Armor Types",
             "AttackActivity": "Attack Activity",
             "AttackBonus": "Attack Bonus",
+            "Attacker": "Attacker",
+            "Attacks": "Attacks",
             "AttackType": {
                 "Label": "Attack Type",
                 "attack": "Attack",
@@ -86,9 +91,8 @@
                 "spellAttack": "Spell Attack",
                 "weaponAttack": "Weapon Attack"
             },
-            "Attacker": "Attacker",
-            "Attacks": "Attacks",
             "AutoApply": "Auto Apply",
+            "AvatarImg": "Portrait Image",
             "BaseAttacks": "Base Attacks",
             "BaseDiceNumber": "Base Dice Number",
             "BaseHealing": "Base Healing",
@@ -131,7 +135,6 @@
             "CustomAvatar": "Custom Avatar",
             "CustomName": "Custom Name",
             "CustomToken": "Custom Token",
-            "DC": "DC",
             "DamageBonus": "Damage Bonus",
             "DamageModifier": "Damage Modifier",
             "DamageScaleIdentifier": "Damage Scale Identifier",
@@ -140,6 +143,7 @@
             "Dark": "Dark",
             "DarknessAnimation": "Darkness Animation",
             "DashAnimation": "Dash Animation",
+            "DC": "DC",
             "DiceSize": "Dice Size",
             "DieSize": "Die Size",
             "DisableConditions": "Disable Conditions",
@@ -167,11 +171,12 @@
             "Identifiers": "Identifiers",
             "IgnoredConditions": "Ignored Conditions",
             "IgnoredCreatureTypes": "Ignored Creature Types",
+            "ImgPriority": "Image Priority",
             "ImmuneCreatures": "Immune Creature Types",
             "IncludeSelf": "Include Self",
             "ItemDelete": "GM Confirms Item Deletion",
-            "ItemTypes": "Item Types",
             "Items": "Items",
+            "ItemTypes": "Item Types",
             "KeepTemplate": "Keep Template",
             "LineColor": "Line Color",
             "Magical": "Magical",
@@ -180,6 +185,7 @@
             "MaxSize": "Max Size",
             "MaxSpellLevel": "Max Spell Level",
             "MonsterName": "Monster Name",
+            "MoonColor": "Red Moon",
             "Multiplier": "Multiplier",
             "Name": "Name",
             "NoDCPrompt": "Prompt on no DC",
@@ -238,8 +244,6 @@
             "TokenAnimation": "Token Animation",
             "TokenAnimationScale": "Token Animation Scale",
             "TokenColor": "Token Color",
-            "AvatarImg": "Portrait Image",
-            "ImgPriority": "Image Priority",
             "TokenImg": "Token Image",
             "TokenImgPriority": "Token Image Priority",
             "TokenName": "Token Name",
@@ -254,8 +258,7 @@
             "Weapon": "Weapon",
             "WeaponProperties": "Weapon Properties",
             "WeaponType": "Weapon Type",
-            "WeaponTypes": "Weapon Types",
-            "MoonColor": "Red Moon"
+            "WeaponTypes": "Weapon Types"
         },
         "Error": {
             "ActorNotFound": "Could not find the summon actor. Check the CAT monster compendium settings and the spell's configured actor names."
@@ -282,6 +285,12 @@
                 },
                 "ArcaneGrimoire": "Arcane Recovery Bonus",
                 "ChannelDivinity": "Choose a channel divinity effect:",
+                "Darkness": {
+                    "SeeThroughIdentifiers": "See-Through Feature Identifiers",
+                    "SeeThroughIdentifiersHint": "Casting this spell through one of these features lets the caster see through the darkness it creates.",
+                    "SpreadAroundCorners": "Spreads Around Corners",
+                    "SpreadAroundCornersHint": "Bound the darkness by walls that block movement, letting it spread around corners. Requires Walled Templates."
+                },
                 "Dueling": "Identifiers for exceptions to the requirements of this feature.",
                 "FindFamiliar": {
                     "Ask": "Ask Each Time",
@@ -403,8 +412,13 @@
                     "Reaction": "Use a reaction?"
                 },
                 "PreventDeath": {
+                    "DCFromDamage": "Add Damage Dealt to DC",
                     "DeathOnly": "Killed Outright Only",
-                    "InstantDeath": "Include Killed Outright"
+                    "ExcludeCritical": "Ignore Critical Hits",
+                    "ExcludeDamageTypes": "Ignored Damage Types",
+                    "InstantDeath": "Include Killed Outright",
+                    "SaveActivity": "Survival Save Activity",
+                    "SaveActivityHint": "Roll this activity when the feature is used; a failed save stops it from preventing death."
                 },
                 "ReduceMaxHP": {
                     "LongRestCures": "Long Rest Cures",
@@ -419,6 +433,9 @@
                     "OptionalHint": "Prompt before the bonus is added, rather than always adding it.",
                     "SkillHint": "Limit this bonus to a list of skills.",
                     "ToolHint": "Limit this bonus to a list of tools."
+                },
+                "Teleport": {
+                    "RangeHint": "Maximum teleport distance. Leave blank to use the activity's own range."
                 }
             },
             "Legacy": {
@@ -504,14 +521,17 @@
                     "NoMissing": "You do not have any eligible missing spell slots!",
                     "Prompt": "Choose {maxAmount} slots to recover."
                 },
-                "HexWarrior": {
-                    "NoWeapons": "You have no eligible equipped weapons.",
-                    "SelectWeapon": "Choose a weapon to bond with."
-                },
                 "HexbladesCurse": {
                     "CriticalThreshold": "Critical Threshold",
                     "Transfer": "Move your curse to another creature?",
                     "TransferRange": "Master of Hexes Range"
+                },
+                "HexWarrior": {
+                    "NoWeapons": "You have no eligible equipped weapons.",
+                    "SelectWeapon": "Choose a weapon to bond with."
+                },
+                "HoundOfIllOmen": {
+                    "Disadvantage": "Hound of Ill Omen: Disadvantage"
                 },
                 "InvestmentOfTheChainMaster": {
                     "Movement": "Choose a movement type for your familiar.",
@@ -521,6 +541,19 @@
                     "Far": "{actorName}'s Manifest Mind is too far away. Remove it?",
                     "Invalid": "Invalid Action Type!",
                     "SummonName": "Manifest Mind"
+                },
+                "Metamagic": {
+                    "CarefulWhich": "Which targets automatically save? (Max {max})",
+                    "Empowered": "Spend {cost} Sorcery Point to reroll damage dice? (Max {max})",
+                    "HeightenedWhich": "Which target gets disadvantage?",
+                    "NoValid": "No applicable spells to cast!",
+                    "Rerolled": "Rerolling {dice}",
+                    "TransmutedFirst": "Which damage type will you replace?",
+                    "TransmutedSecond": "Which damage type would you like to use instead?",
+                    "TwinnedUpcast": "Not enough Sorcery Points to twin this spell when upcast!",
+                    "TwinnedUpcastTargets": "Cannot upcast & twin this spell!",
+                    "TwinnedWhich": "Spend the spell's level in Sorcery Points (minimum 1) and cast which spell?",
+                    "Which": "Spend {cost} Sorcery Point{plural} and cast which spell?"
                 },
                 "NaturalAttunement": {
                     "Arctic": "Arctic Spells",
@@ -539,6 +572,15 @@
                 "Overchannel": {
                     "Damage": "Use {itemName} at the cost of {damageFormula} damage?"
                 },
+                "PsionicSorcery": {
+                    "NoSpells": "No Psionic Spells you can afford to cast!",
+                    "Select": "Select which spell to cast:"
+                },
+                "PsionicSpells": {
+                    "Chosen": "Psionic Spells: {spells}",
+                    "NoSpells": "No spells to choose from!",
+                    "Select": "Select which spells are your Psionic Spells:"
+                },
                 "Rage": {
                     "EndEarly": "{actorName} has not attacked an enemy or taken damage since their last turn. Remove Rage?"
                 },
@@ -546,6 +588,10 @@
                     "Identifiers": "Curse Effect Identifiers",
                     "NoTargets": "No cursed creature is within range!",
                     "Select": "Which cursed creature do you teleport to?"
+                },
+                "RevelationInFlesh": {
+                    "NotEnough": "Not enough sorcery points!",
+                    "Select": "Select which benefits to gain:"
                 },
                 "SculptSpells": {
                     "Select": "Which targets succeed and take no damage? (Max: {max})"
