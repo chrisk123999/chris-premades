@@ -31,7 +31,7 @@ async function recall({document, workflow}) {
     await summonUtils.recallAllSourceSummons(document);
 }
 async function deleted({document, summon}) {
-    const summons = summonUtils.getSummonBySource(document).filter(i => i !== summon);
+    const summons = summonUtils.getSummonsBySource(document).filter(i => i !== summon);
     if (summons.length) return;
     const concentrationEffect = effectUtils.getConcentrationEffect(summon.owner, summon.sourceDocument);
     if (concentrationEffect) await documentUtils.deleteDocument(concentrationEffect);

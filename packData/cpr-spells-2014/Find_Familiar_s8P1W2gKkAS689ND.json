@@ -8,9 +8,10 @@
     "source": {
       "custom": "PHB 2024",
       "revision": 1,
-      "rules": "2024",
+      "rules": "2014",
       "book": "",
-      "page": ""
+      "page": "",
+      "license": ""
     },
     "activation": {
       "type": "hour",
@@ -30,7 +31,8 @@
       "template": {
         "units": "ft",
         "contiguous": false,
-        "type": ""
+        "type": "",
+        "stationary": false
       }
     },
     "range": {
@@ -51,10 +53,6 @@
       "consumed": true,
       "cost": 10,
       "supply": 0
-    },
-    "preparation": {
-      "mode": "prepared",
-      "prepared": false
     },
     "properties": [
       "vocal",
@@ -97,7 +95,8 @@
           "prompt": true,
           "template": {
             "contiguous": false,
-            "units": "ft"
+            "units": "ft",
+            "stationary": false
           },
           "affects": {
             "choice": false
@@ -138,7 +137,6 @@
           "triggeredActivityConditionText": "",
           "triggeredActivityTargets": "targets",
           "triggeredActivityRollAs": "self",
-          "forceDialog": false,
           "confirmTargets": "default",
           "autoTargetType": "any",
           "autoTargetAction": "default",
@@ -148,8 +146,7 @@
           "displayActivityName": true,
           "rollMode": "default",
           "chooseEffects": false,
-          "forceAttackDialog": false,
-          "forceDamageDialog": false,
+          "forceDamageDialog": "false",
           "otherActivityAsParentType": true,
           "toggleEffect": false,
           "ignoreFullCover": false,
@@ -157,16 +154,63 @@
           "magicEffect": false,
           "magicDamage": false,
           "noConcentrationCheck": false,
-          "autoCEEffects": "default"
+          "autoCEEffects": "default",
+          "triggeredActivityConsume": true,
+          "triggeredActivityConfigure": true,
+          "autoConsume": false,
+          "forceConsumeDialog": "default",
+          "forceRollDialog": "default",
+          "skipConcentrationCheck": false
         },
         "isOverTimeFlag": false,
         "overTimeProperties": {
           "saveRemoves": true,
           "preRemoveConditionText": "",
-          "postRemoveConditionText": ""
+          "postRemoveConditionText": "",
+          "rollAs": "target"
         },
         "otherActivityId": "none",
-        "identifier": "find-familiar"
+        "flags": {
+          "cat": {
+            "macros": {
+              "roll": [
+                {
+                  "source": "chris-premades",
+                  "rules": "all",
+                  "identifier": "find-familiar"
+                }
+              ]
+            }
+          }
+        },
+        "visibility": {
+          "level": {},
+          "requireAttunement": false,
+          "requireIdentification": false,
+          "requireMagic": false
+        },
+        "regionBehavior": {
+          "enabled": false,
+          "dispositionFilter": -1,
+          "excludeSource": true,
+          "oncePerTurn": true,
+          "wallRestriction": "none",
+          "regionVisibility": 2,
+          "attachToken": "default",
+          "rules": []
+        },
+        "regionLight": {
+          "enabled": false,
+          "dim": 0,
+          "bright": 0,
+          "color": null,
+          "alpha": 0.5,
+          "luminosity": 0.5,
+          "animationType": "",
+          "animationSpeed": 5,
+          "animationIntensity": 5
+        },
+        "otherActivityAsParentType": true
       },
       "Aw56bbUPaozKIi2r": {
         "type": "utility",
@@ -203,7 +247,8 @@
           "template": {
             "contiguous": false,
             "units": "ft",
-            "type": ""
+            "type": "",
+            "stationary": false
           },
           "affects": {
             "choice": false,
@@ -247,7 +292,6 @@
           "triggeredActivityConditionText": "",
           "triggeredActivityTargets": "targets",
           "triggeredActivityRollAs": "self",
-          "forceDialog": false,
           "confirmTargets": "default",
           "autoTargetType": "any",
           "autoTargetAction": "default",
@@ -257,8 +301,7 @@
           "displayActivityName": true,
           "rollMode": "default",
           "chooseEffects": false,
-          "forceAttackDialog": false,
-          "forceDamageDialog": false,
+          "forceDamageDialog": "false",
           "otherActivityAsParentType": true,
           "toggleEffect": false,
           "ignoreFullCover": false,
@@ -267,22 +310,63 @@
           "magicDamage": false,
           "noConcentrationCheck": false,
           "autoCEEffects": "default",
-          "forceConsumeDialog": "never"
+          "forceConsumeDialog": "never",
+          "triggeredActivityConsume": true,
+          "triggeredActivityConfigure": true,
+          "autoConsume": false,
+          "forceRollDialog": "default",
+          "skipConcentrationCheck": false
         },
         "isOverTimeFlag": false,
         "overTimeProperties": {
           "saveRemoves": true,
           "preRemoveConditionText": "",
-          "postRemoveConditionText": ""
+          "postRemoveConditionText": "",
+          "rollAs": "target"
         },
-        "appliedEffects": [],
         "otherActivityId": "none",
-        "identifier": "find-familiar-touch",
         "flags": {
           "cat": {
-            "hidden": true
+            "hidden": true,
+            "macros": {
+              "roll": [
+                {
+                  "source": "chris-premades",
+                  "rules": "all",
+                  "identifier": "find-familiar-touch"
+                }
+              ]
+            }
           }
-        }
+        },
+        "visibility": {
+          "level": {},
+          "requireAttunement": false,
+          "requireIdentification": false,
+          "requireMagic": false
+        },
+        "regionBehavior": {
+          "enabled": false,
+          "dispositionFilter": -1,
+          "excludeSource": true,
+          "oncePerTurn": true,
+          "wallRestriction": "none",
+          "regionVisibility": 2,
+          "attachToken": "default",
+          "rules": []
+        },
+        "regionLight": {
+          "enabled": false,
+          "dim": 0,
+          "bright": 0,
+          "color": null,
+          "alpha": 0.5,
+          "luminosity": 0.5,
+          "animationType": "",
+          "animationSpeed": 5,
+          "animationIntensity": 5
+        },
+        "otherActivityAsParentType": true
       },
       "S5yJQt7Z9un20Drv": {
         "type": "utility",
@@ -318,7 +402,8 @@
         "target": {
           "template": {
             "contiguous": false,
-            "units": "ft"
+            "units": "ft",
+            "stationary": false
           },
           "affects": {
             "choice": false
@@ -359,7 +444,6 @@
           "triggeredActivityConditionText": "",
           "triggeredActivityTargets": "targets",
           "triggeredActivityRollAs": "self",
-          "forceDialog": false,
           "confirmTargets": "default",
           "autoTargetType": "any",
           "autoTargetAction": "default",
@@ -369,8 +453,7 @@
           "displayActivityName": true,
           "rollMode": "default",
           "chooseEffects": false,
-          "forceAttackDialog": false,
-          "forceDamageDialog": false,
+          "forceDamageDialog": "false",
           "otherActivityAsParentType": true,
           "toggleEffect": false,
           "ignoreFullCover": false,
@@ -379,28 +462,69 @@
           "magicDamage": false,
           "noConcentrationCheck": false,
           "autoCEEffects": "default",
-          "forceConsumeDialog": "never"
+          "forceConsumeDialog": "never",
+          "triggeredActivityConsume": true,
+          "triggeredActivityConfigure": true,
+          "autoConsume": false,
+          "forceRollDialog": "default",
+          "skipConcentrationCheck": false
         },
         "isOverTimeFlag": false,
         "overTimeProperties": {
           "saveRemoves": true,
           "preRemoveConditionText": "",
-          "postRemoveConditionText": ""
+          "postRemoveConditionText": "",
+          "rollAs": "target"
         },
-        "appliedEffects": [],
         "otherActivityId": "none",
-        "identifier": "find-familiar-pocket-dimension",
         "flags": {
           "cat": {
-            "hidden": true
+            "hidden": true,
+            "macros": {
+              "roll": [
+                {
+                  "source": "chris-premades",
+                  "rules": "all",
+                  "identifier": "find-familiar-pocket"
+                }
+              ]
+            }
           }
-        }
+        },
+        "visibility": {
+          "level": {},
+          "requireAttunement": false,
+          "requireIdentification": false,
+          "requireMagic": false
+        },
+        "regionBehavior": {
+          "enabled": false,
+          "dispositionFilter": -1,
+          "excludeSource": true,
+          "oncePerTurn": true,
+          "wallRestriction": "none",
+          "regionVisibility": 2,
+          "attachToken": "default",
+          "rules": []
+        },
+        "regionLight": {
+          "enabled": false,
+          "dim": 0,
+          "bright": 0,
+          "color": null,
+          "alpha": 0.5,
+          "luminosity": 0.5,
+          "animationType": "",
+          "animationSpeed": 5,
+          "animationIntensity": 5
+        },
+        "otherActivityAsParentType": true
       }
     },
     "identifier": "find-familiar",
-    "sourceClass": "",
     "method": "spell",
-    "prepared": 0
+    "sourceItem": "class:bard",
+    "prepared": 1
   },
   "name": "Find Familiar",
   "flags": {
@@ -439,31 +563,17 @@
       "reactionCondition": "",
       "otherCondition": ""
     },
-    "dnd5e": {
-      "riders": {
-        "activity": [],
-        "effect": []
-      }
-    },
     "cat": {
       "automation": {
         "source": "chris-premades",
         "version": "2.0.0"
       },
-      "macros": {
-        "roll": [
-          {
-            "source": "chris-premades",
-            "rules": "all",
-            "identifier": "find-familiar"
-          }
-        ]
-      }
+      "macros": {}
     }
   },
   "effects": [],
   "img": "icons/commodities/materials/feathers-brown.webp",
-  "folder": null,
-  "_id": "GdV7YAgzesdeuxOY",
-  "_key": "!items!GdV7YAgzesdeuxOY"
+  "folder": "pfzYb8UerE97sz8L",
+  "_id": "s8P1W2gKkAS689ND",
+  "_key": "!items!s8P1W2gKkAS689ND"
 }

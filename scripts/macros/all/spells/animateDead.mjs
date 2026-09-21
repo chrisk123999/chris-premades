@@ -94,7 +94,7 @@ async function use({document, workflow, castData}) {
 async function reassert({document}) {
     let summonActivity = itemUtils.getActivityByIdentifier(document.item, 'animate-dead-summon');
     if (!summonActivity) return;
-    let summons = summonUtils.getSummonBySource(summonActivity);
+    let summons = summonUtils.getSummonsBySource(summonActivity);
     if (!summons.length) return;
     let maxReassert = automationUtils.getConfigValue(document.item, 'reassertMax');
     if (!maxReassert) return;
@@ -129,7 +129,7 @@ async function recall({document, workflow}) {
     await summonUtils.recallAllSourceSummons(document);
 }
 async function summonDeleted({document, summon}) {
-    const summons = summonUtils.getSummonBySource(document).filter(i => i !== summon);
+    const summons = summonUtils.getSummonsBySource(document).filter(i => i !== summon);
     if (summons.length) return;
     const otherActivities = ['animate-dead-place', 'animate-dead-recall', 'animate-dead-command', 'animate-dead-reassert'];
     await itemUtils.rehideActivities(document.item, otherActivities);
@@ -138,7 +138,7 @@ async function summonDeleted({document, summon}) {
 }
 async function effectDeleted({document}) {
     let sourceActivity = await effectUtils.getOriginActivity(document);
-    let summons = summonUtils.getSummonBySource(sourceActivity);
+    let summons = summonUtils.getSummonsBySource(sourceActivity);
     if (!summons.length) return;
     await Promise.all(summons.map(async i => await summonUtils.deleteSummon(i)));
 }

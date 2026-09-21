@@ -28,5 +28,5 @@ export {unarmedFighting} from './all/fightingStyles/unarmedFighting.mjs';
 // Spells
 export {acidArrow as 'acid-arrow'} from './all/spells/acidArrow.mjs';
 export {animateDead as 'animate-dead', animateDeadSummon as 'animate-dead-summon', animateDeadPlace as 'animate-dead-place', animateDeadRecall as 'animate-dead-recall', animateDeadReassert as 'animate-dead-reassert', animateDeadEffectDeleted as 'animate-dead-effect-deleted'} from './all/spells/animateDead.mjs';
-export {findFamiliar as 'find-familiar', findFamiliarTouch as 'find-familiar-touch'} from './all/spells/findFamiliar.mjs';
+export {findFamiliar as 'find-familiar', findFamiliarTouchEffect as 'find-familiar-touch-effect', findFamiliarTouch as 'find-familiar-touch', findFamiliarPocket as 'find-familiar-pocket'} from './all/spells/findFamiliar.mjs';
 export {hex, hexAttack as 'hex-attack'} from './all/spells/hex.mjs';

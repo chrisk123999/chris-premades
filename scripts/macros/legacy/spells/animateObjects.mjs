@@ -82,7 +82,7 @@ async function use({document, workflow, castData}) {
     if (workflow.token) await summonUtils.placeSummons(summons, document.range.value, {token: workflow.token.document});
 }
 async function summonDelete({document, summon}) {
-    const summons = summonUtils.getSummonBySource(document).filter(i => i !== summon);
+    const summons = summonUtils.getSummonsBySource(document).filter(i => i !== summon);
     if (summons.length) return;
     const otherActivities = ['animate-objects-command'];
     await itemUtils.rehideActivities(document.item, otherActivities);

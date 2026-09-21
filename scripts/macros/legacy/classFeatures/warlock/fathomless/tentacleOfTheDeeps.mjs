@@ -52,7 +52,7 @@ async function use({document, workflow}) {
 async function early({document, activity, actor}) {
     if (activity.identifier !== attackActivity) return;
     const markerEffect = documentUtils.getEffectByIdentifier(actor, 'tentacleOfTheDeeps');
-    const tentacleActor = summonUtils.getSummonBySource(document)[0]?.actor;
+    const tentacleActor = summonUtils.getSummonsBySource(document)[0]?.actor;
     if (!markerEffect || !tentacleActor) return;
     const effectData = rangeOverrideData(document, markerEffect);
     await effectUtils.createEffects(actor, [effectData]);
@@ -60,7 +60,7 @@ async function early({document, activity, actor}) {
 }
 async function late({document, workflow}) {
     if (workflow.activity.identifier !== attackActivity) return;
-    const tentacleActor = summonUtils.getSummonBySource(document)[0]?.actor;
+    const tentacleActor = summonUtils.getSummonsBySource(document)[0]?.actor;
     const effects = [documentUtils.getEffectByIdentifier(workflow.actor, 'tentacleOfTheDeepsAttack')];
     if (tentacleActor) effects.push(documentUtils.getEffectByIdentifier(tentacleActor, 'tentacleOfTheDeepsAttack'));
     for (const effect of effects.filter(effect => effect)) await documentUtils.deleteDocument(effect);

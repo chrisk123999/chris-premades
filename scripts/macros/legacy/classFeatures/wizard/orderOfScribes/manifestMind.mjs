@@ -35,7 +35,7 @@ async function use({document: item, workflow}) {
 }
 async function cast({document: item, workflow}) {
     if (workflow.activity.identifier !== 'manifestMindCast') return;
-    const [summon] = summonUtils.getSummonBySource(item);
+    const [summon] = summonUtils.getSummonsBySource(item);
     const mindToken = summon?.token;
     if (!mindToken) return;
     const effectData = documentUtils.getBaseEffectData(item, {
@@ -52,7 +52,7 @@ async function cast({document: item, workflow}) {
 }
 async function move({document: item, workflow}) {
     if (workflow.activity.identifier !== 'manifestMindMove') return;
-    const [summon] = summonUtils.getSummonBySource(item);
+    const [summon] = summonUtils.getSummonsBySource(item);
     if (!summon) return;
     await summon.move(30);
 }
@@ -63,7 +63,7 @@ async function dismiss({document: item, workflow}) {
 }
 async function turnEnd({document: effect, token}) {
     const item = actorUtils.getItemByIdentifier(effect.parent, 'manifest-mind');
-    const [summon] = item ? summonUtils.getSummonBySource(item) : [];
+    const [summon] = item ? summonUtils.getSummonsBySource(item) : [];
     const mindToken = summon?.token;
     if (!mindToken) return await documentUtils.deleteDocument(effect);
     if (tokenUtils.getDistance(token, mindToken) > 300) {

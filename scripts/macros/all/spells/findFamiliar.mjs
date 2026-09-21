@@ -1,5 +1,4 @@
-import {actorUtils, automationUtils, dialogUtils, documentUtils, effectUtils, genericUtils, summonUtils, tokenUtils} from '../../../proxy.mjs';
-const familiarActivities = ['find-familiar-pocket-dimension', 'find-familiar-touch'];
+import {actorUtils, automationUtils, dialogUtils, documentUtils, effectUtils, genericUtils, itemUtils, summonUtils, tokenUtils} from '../../../proxy.mjs';
 function creatureTypeOptions() {
     return ['celestial', 'fey', 'fiend'].map(value => ({value, label: CONFIG.DND5E.creatureTypes[value].label, image: CONFIG.DND5E.creatureTypes[value].icon}));
 }
@@ -8,7 +7,7 @@ async function srdActors() {
     const pack = game.packs.get('dnd5e.monsters');
     if (!pack) return [];
     const index = await pack.getIndex();
-    const entries = srdFamiliars.map(name => index.find(entry => entry.name.slugify() === name)).filter(entry => entry);
+    const entries = srdFamiliars.map(name => index.find(entry => entry.name.slugify() === name)).filter(Boolean);
     return await Promise.all(entries.map(entry => fromUuid(entry.uuid)));
 }
 async function sourceActors(folderName) {
@@ -24,55 +23,48 @@ async function sourceActors(folderName) {
     }
     return actors;
 }
-async function use({document, workflow}) {
-    if (workflow.activity.identifier !== 'find-familiar') return;
-    const existing = documentUtils.getEffectByIdentifier(workflow.actor, 'findFamiliar');
-    if (existing) await documentUtils.deleteDocument(existing);
-    const folder = automationUtils.getConfigValue(document, 'folder');
+async function summon({workflow, actor}) {
+    const identifier = documentUtils.getIdentifier(workflow.item);
+    const existing = summonUtils.getSummonsByIdentifier(identifier, {actor});
+    if (existing.length) return;
+    const folder = automationUtils.getConfigValue(workflow.item, 'folder');
     const actors = await sourceActors(folder);
     if (!actors.length) {
         genericUtils.notify(_loc('CHRISPREMADES.Macros.All.FindFamiliar.NoActors', {folder}), {type: 'warn', localize: false});
         return;
     }
-    const sourceActor = await dialogUtils.selectDocumentDialog(document.name, _loc('CHRISPREMADES.Macros.All.FindFamiliar.Choose'), actors, {sort: 'alphabetical'});
+    const sourceActor = await dialogUtils.selectDocumentDialog(workflow.item.name, 'CHRISPREMADES.Macros.All.FindFamiliar.Choose', actors, {sort: 'alphabetical'});
     if (!sourceActor) return;
-    const creatureType = automationUtils.getConfigValue(document, 'creatureType') || await dialogUtils.buttonDialog(document.name, _loc('CHRISPREMADES.Macros.All.FindFamiliar.Type'), creatureTypeOptions().map(option => [option.label, option.value, {image: option.image}]));
+    const creatureType = automationUtils.getConfigValue(workflow.item, 'creatureType') || await dialogUtils.buttonDialog(workflow.item.name, 'CHRISPREMADES.Macros.All.FindFamiliar.Type', creatureTypeOptions().map(option => [option.label, option.value, {image: option.image}]));
     if (!creatureType) return;
-    const name = automationUtils.getConfigValue(document, 'name') || sourceActor.name;
+    const name = automationUtils.getConfigValue(workflow.item, 'name') || sourceActor.name;
     const updates = {system: {details: {type: {value: creatureType}}}};
-    const markerEffectData = documentUtils.getBaseEffectData(workflow.activity, {
-        name: document.name,
-        img: document.img,
-        origin: document.uuid,
-        identifier: 'findFamiliar',
-        activityUuid: workflow.activity.uuid,
-        unhideActivities: familiarActivities
-    });
-    const [markerEffect] = await effectUtils.createEffects(workflow.actor, [markerEffectData]);
-    if (!markerEffect) return;
     const summon = await summonUtils.createSummon(workflow.actor, sourceActor, {
         name,
         updates,
-        animation: automationUtils.getConfigValue(document, creatureType + 'Animation'),
+        animation: automationUtils.getConfigValue(workflow.item, creatureType + 'Animation'),
         disposition: workflow.token.document.disposition,
-        parent: markerEffect,
-        sourceDocument: document
+        sourceDocument: workflow.item,
+        identifier,
+        dismissAtZero: true
     });
     if (!summon) return;
-    await summonUtils.placeSummons([summon], automationUtils.getConfigValue(document, 'range'), {token: workflow.token.document});
+    const effect = await itemUtils.unhideActivities(workflow.item, ['find-familiar-pocket-dimension', 'find-familiar-touch', 'find-familiar-place'], {favorite: true});
+    await documentUtils.makeDependent(summon.actor, [effect]);
+    await summon.place(workflow.activity.range.value, {token: workflow.token.document});
 }
-async function pocketDimension({document, workflow}) {
-    if (workflow.activity.identifier !== 'find-familiar-pocket-dimension') return;
-    const [summon] = summonUtils.getSummonBySource(document);
-    if (!summon) return;
-    if (summon.token) return await summon.recall();
-    await summonUtils.placeAllSourceSummons(document, automationUtils.getConfigValue(document, 'range'), {token: workflow.token.document});
+async function pocket({workflow}) {
+    const summons = summonUtils.getSummonsBySource(workflow.item);
+    if (!summons) return;
+    if (summons.find(i => i.token)) {
+        await summonUtils.recallAllSourceSummons(workflow.item);
+    } else {
+        await summonUtils.placeAllSourceSummons(workflow.item, workflow.activity.range.value, {token: workflow.token.document});
+    }
 }
 async function touch({document, workflow}) {
-    if (workflow.activity.identifier !== 'find-familiar-touch') return;
-    const [summon] = summonUtils.getSummonBySource(document);
-    const familiarToken = summon?.token;
-    if (!familiarToken) return;
+    const summon = summonUtils.getSummonsByIdentifier('findFamiliar', {actor: workflow.actor});
+    if (!summon) return;
     const effectData = documentUtils.getBaseEffectData(workflow.activity, {
         name: document.name + ': ' + workflow.activity.name,
         img: document.img,
@@ -80,18 +72,32 @@ async function touch({document, workflow}) {
         identifier: 'findFamiliarTouch',
         duration: {seconds: 1},
         specialDuration: ['madeAttack'],
-        macros: [{type: 'roll', macros: [{source: 'chris-premades', rules: 'all', identifier: 'find-familiar-touch'}]}],
-        changes: [
+        macros: [
             {
-                key: 'flags.midi-qol.rangeOverride.attack.all',
-                mode: 0,
-                value: 1,
-                priority: 20
+                type: 'roll',
+                macros: [
+                    {
+                        source: 'chris-premades',
+                        rules: 'all',
+                        identifier:
+                        'find-familiar-touch-effect'
+                    }
+                ]
             }
-        ]
+        ],
+        system: {
+            changes: [
+                {
+                    key: 'flags.midi-qol.rangeOverride.attack.all',
+                    mode: 0,
+                    value: 1,
+                    priority: 20
+                }
+            ]
+        }
     });
     const [casterEffect] = await effectUtils.createEffects(workflow.actor, [effectData]);
-    await effectUtils.createEffects(familiarToken.actor, [effectData], {parentEntity: casterEffect});
+    await effectUtils.createEffects(summon.actor, [effectData], {parentEntity: casterEffect});
 }
 async function early({document, workflow, token}) {
     if (workflow.item.type !== 'spell' || workflow.item.system.range.units !== 'touch') {
@@ -99,7 +105,7 @@ async function early({document, workflow, token}) {
         return true;
     }
     const originActivity = await effectUtils.getOriginActivity(document);
-    const [summon] = summonUtils.getSummonBySource(originActivity?.item);
+    const [summon] = summonUtils.getSummonsBySource(originActivity?.item);
     const familiarToken = summon?.token;
     if (!familiarToken) {
         genericUtils.notify('CHRISPREMADES.Macros.All.FindFamiliar.TooFar', {type: 'info'});
@@ -121,9 +127,11 @@ export const findFamiliar = {
     version: '2.0.0',
     rules: 'all',
     roll: [
-        {pass: 'itemRollFinished', macro: use, priority: 50},
-        {pass: 'itemRollFinished', macro: pocketDimension, priority: 50},
-        {pass: 'itemRollFinished', macro: touch, priority: 50}
+        {
+            pass: 'activityRollFinished',
+            macro: summon,
+            priority: 50
+        }
     ],
     config: {
         name: {
@@ -145,12 +153,6 @@ export const findFamiliar = {
             hint: 'CHRISPREMADES.Macros.All.FindFamiliar.CreatureTypeHint',
             category: 'summons',
             get options() { return [{value: '', label: _loc('CHRISPREMADES.Macros.All.FindFamiliar.Ask')}, ...creatureTypeOptions()]; }
-        },
-        range: {
-            default: 30,
-            type: 'number',
-            label: 'CHRISPREMADES.Config.Range',
-            category: 'summons'
         },
         touchRange: {
             default: 100,
@@ -181,11 +183,39 @@ export const findFamiliar = {
         }
     }
 };
-export const findFamiliarTouch = {
+export const findFamiliarTouchEffect = {
     name: 'Find Familiar: Touch',
-    version: '2.0.0',
+    version: findFamiliar.version,
     rules: 'all',
     roll: [
-        {pass: 'actorPreambleComplete', macro: early, priority: 50}
+        {
+            pass: 'actorPreambleComplete',
+            macro: early,
+            priority: 50
+        }
+    ]
+};
+export const findFamiliarTouch = {
+    name: 'Find Familiar: Touch',
+    version: findFamiliar.version,
+    rules: 'all',
+    roll: [
+        {
+            pass: 'activityRollFinished',
+            macro: touch,
+            priority: 50
+        }
+    ]
+};
+export const findFamiliarPocket = {
+    name: 'Find Familiar: Pocket',
+    version: findFamiliar.version,
+    rules: 'all',
+    roll: [
+        {
+            pass: 'activityRollFinished',
+            macro: pocket,
+            priority: 50
+        }
     ]
 };
