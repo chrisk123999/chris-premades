@@ -173,10 +173,10 @@
             "placed": {
               "region": {
                 "visibility": {
-                  "obscured": true,
+                  "obscured": false,
                   "magicalDarkness": true
                 },
-                "regionVisibility": 0,
+                "coreVisibility": 0,
                 "macros": {
                   "region": [
                     {
@@ -191,8 +191,8 @@
           }
         }
       },
-      "darknessSelfCast0": {
-        "_id": "darknessSelfCast0",
+      "x15gKcBWY0fmarfK": {
+        "_id": "x15gKcBWY0fmarfK",
         "type": "utility",
         "activation": {
           "type": "action",
@@ -301,10 +301,10 @@
             "placed": {
               "region": {
                 "visibility": {
-                  "obscured": true,
+                  "obscured": false,
                   "magicalDarkness": true
                 },
-                "regionVisibility": 0,
+                "coreVisibility": 0,
                 "macros": {
                   "region": [
                     {

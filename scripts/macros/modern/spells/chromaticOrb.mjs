@@ -81,7 +81,7 @@ export const chromaticOrb = {
             label: 'CHRISPREMADES.Config.PlayAnimation',
             type: 'checkbox',
             default: true,
-            category: 'animation'
+            category: 'animations'
         },
         alwaysBounce: {
             label: 'CHRISPREMADES.Macros.Legacy.ChaosBolt.AlwaysBounce',

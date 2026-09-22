@@ -9,7 +9,7 @@ async function shapechange({document, workflow}) {
     const identifiers = isHybrid ? ['bite', 'claws', 'human'] : ['bite', 'human'];
     const activities = identifiers.map(identifier => itemUtils.getActivityByIdentifier(document, identifier)).filter(activity => activity);
     const vae = activities.map(activity => ({type: 'use', name: activity.name, identifier: 'harkons-bite', activityIdentifier: activity.identifier}));
-    const config = automationUtils.getConfigValues(document, [form + 'AvatarImg', form + 'TokenImg', 'imgPriority', 'animation']);
+    const config = automationUtils.getConfigValues(document, ['animation']);
     const effectData = documentUtils.getEffectData(workflow.activity, sourceEffect.id, {
         activityUuid: workflow.activity.uuid,
         unhideActivities: identifiers,
@@ -18,9 +18,8 @@ async function shapechange({document, workflow}) {
         vae,
         deleteAnimation: config.animation
     });
-    if (config[form + 'AvatarImg']) effectData.changes.push({key: 'img', mode: 5, value: config[form + 'AvatarImg'], priority: config.imgPriority});
-    if (config[form + 'TokenImg']) effectData.changes.push({key: 'token.texture.src', mode: 5, value: config[form + 'TokenImg'], priority: config.imgPriority});
-    if (!isHybrid) effectData.changes.push({key: 'system.attributes.movement.walk', mode: 4, value: '40', priority: 20});
+    effectUtils.pushImageChanges(effectData, document, {identifier: form});
+    if (!isHybrid) effectData.system.changes.push({key: 'system.attributes.movement.walk', type: 'upgrade', value: '40', priority: 20});
     const createEffect = async () => {
         const existing = documentUtils.getEffectByIdentifier(workflow.actor, 'harkonsBiteEffect');
         if (existing) await documentUtils.deleteDocument(existing);
@@ -96,46 +95,20 @@ export const harkonsBite = {
     skill: [
         {pass: 'actorContext', macro: keenHearingAndSmell, priority: 50}
     ],
-    config: {
-        imgPriority: {
-            default: 50,
-            type: 'number',
-            label: 'CHRISPREMADES.Config.ImgPriority',
-            category: 'visuals'
-        },
-        hybridTokenImg: {
-            default: '',
-            type: 'file',
-            label: 'CHRISPREMADES.Macros.Legacy.HarkonsBite.HybridTokenImg',
-            category: 'visuals'
-        },
-        hybridAvatarImg: {
-            default: '',
-            type: 'file',
-            label: 'CHRISPREMADES.Macros.Legacy.HarkonsBite.HybridAvatarImg',
-            category: 'visuals'
-        },
-        wolfTokenImg: {
-            default: '',
-            type: 'file',
-            label: 'CHRISPREMADES.Macros.Legacy.HarkonsBite.WolfTokenImg',
-            category: 'visuals'
-        },
-        wolfAvatarImg: {
-            default: '',
-            type: 'file',
-            label: 'CHRISPREMADES.Macros.Legacy.HarkonsBite.WolfAvatarImg',
-            category: 'visuals'
-        },
-        animation: {
-            default: {
-                source: 'chris-premades',
-                identifier: 'moonFrenzy'
-            },
-            type: 'selectAnimation',
-            inputs: ['token', 'options'],
-            label: 'CHRISPREMADES.Config.Animation',
-            category: 'visuals'
-        }
+    get config() {
+        return {
+            ...effectUtils.getImageConfig({identifier: 'hybrid', avatarLabel: 'CHRISPREMADES.Macros.Legacy.HarkonsBite.HybridAvatarImg', tokenLabel: 'CHRISPREMADES.Macros.Legacy.HarkonsBite.HybridTokenImg'}),
+            ...effectUtils.getImageConfig({identifier: 'wolf', avatarLabel: 'CHRISPREMADES.Macros.Legacy.HarkonsBite.WolfAvatarImg', tokenLabel: 'CHRISPREMADES.Macros.Legacy.HarkonsBite.WolfTokenImg'}),
+            animation: {
+                default: {
+                    source: 'chris-premades',
+                    identifier: 'moonFrenzy'
+                },
+                type: 'selectAnimation',
+                inputs: ['token', 'options'],
+                label: 'CHRISPREMADES.Config.Animation',
+                category: 'visuals'
+            }
+        };
     }
 };

@@ -45,7 +45,7 @@ async function early({document, workflow}) {
             {
                 key: 'flags.midi-qol.grants.criticalThreshold',
                 value: automationUtils.getConfigValue(originItem, 'criticalThreshold'),
-                mode: 5,
+                type: 'override',
                 priority: 20
             }
         ]

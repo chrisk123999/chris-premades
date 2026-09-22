@@ -92,7 +92,6 @@
                 "weaponAttack": "Weapon Attack"
             },
             "AutoApply": "Auto Apply",
-            "AvatarImg": "Portrait Image",
             "BaseAttacks": "Base Attacks",
             "BaseDiceNumber": "Base Dice Number",
             "BaseHealing": "Base Healing",
@@ -171,7 +170,6 @@
             "Identifiers": "Identifiers",
             "IgnoredConditions": "Ignored Conditions",
             "IgnoredCreatureTypes": "Ignored Creature Types",
-            "ImgPriority": "Image Priority",
             "ImmuneCreatures": "Immune Creature Types",
             "IncludeSelf": "Include Self",
             "ItemDelete": "GM Confirms Item Deletion",
@@ -244,7 +242,6 @@
             "TokenAnimation": "Token Animation",
             "TokenAnimationScale": "Token Animation Scale",
             "TokenColor": "Token Color",
-            "TokenImg": "Token Image",
             "TokenImgPriority": "Token Image Priority",
             "TokenName": "Token Name",
             "TokenSound": "Token Animation Sound",

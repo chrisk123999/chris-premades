@@ -42,7 +42,7 @@ export const warpingImplosion = {
             type: 'selectAnimation',
             inputs: ['token', 'options'],
             label: 'CHRISPREMADES.Config.Animation',
-            category: 'animation'
+            category: 'animations'
         }
     }
 };

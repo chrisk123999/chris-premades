@@ -33,7 +33,7 @@ export const teleport = {
             },
             type: 'selectAnimation',
             inputs: ['token', 'options'],
-            category: 'animation',
+            category: 'animations',
             label: 'CHRISPREMADES.Config.Animation'
         }
     }

@@ -1,5 +1,4 @@
 import {documentUtils, effectUtils} from '../../../../../proxy.mjs';
-import utils from '../../../../../utils.mjs';
 async function use({document, workflow}) {
     const sourceEffect = documentUtils.getEffectByIdentifier(document.item, 'umbralFormEffect');
     if (!sourceEffect) return;
@@ -8,7 +7,7 @@ async function use({document, workflow}) {
         unhideActivities: ['dismiss'],
         favoriteActivities: true
     });
-    utils.pushImageChanges(effectData, document);
+    effectUtils.pushImageChanges(effectData, document);
     await effectUtils.createEffects(workflow.actor, [effectData]);
 }
 async function dismiss({workflow}) {
@@ -22,8 +21,8 @@ export const umbralForm = {
     roll: [
         {pass: 'activityRollFinished', macro: use, priority: 50}
     ],
-    config: {
-        ...utils.imageConfig
+    get config() {
+        return effectUtils.getImageConfig();
     }
 };
 export const umbralFormDismiss = {

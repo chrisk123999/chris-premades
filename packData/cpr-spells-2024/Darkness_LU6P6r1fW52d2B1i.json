@@ -32,7 +32,7 @@
       },
       "template": {
         "units": "ft",
-        "type": "radius",
+        "type": "sphere",
         "size": "15",
         "contiguous": false,
         "count": ""
@@ -172,10 +172,10 @@
             "placed": {
               "region": {
                 "visibility": {
-                  "obscured": true,
+                  "obscured": false,
                   "magicalDarkness": true
                 },
-                "regionVisibility": 0,
+                "coreVisibility": 0,
                 "macros": {
                   "region": [
                     {

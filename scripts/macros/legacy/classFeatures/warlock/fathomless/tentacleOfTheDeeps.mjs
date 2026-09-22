@@ -12,7 +12,7 @@ function rangeOverrideData(item, parent) {
         changes: [
             {
                 key: 'flags.midi-qol.rangeOverride.attack.all',
-                mode: 0,
+                type: 'custom',
                 value: 1,
                 priority: 20
             }

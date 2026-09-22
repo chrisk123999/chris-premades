@@ -12,13 +12,13 @@ async function late({document: item, workflow}) {
         changes: [
             {
                 key: 'system.attributes.ac.bonus',
-                mode: 2,
+                type: 'add',
                 value: 2,
                 priority: 20
             },
             {
                 key: 'system.bonuses.abilities.save',
-                mode: 2,
+                type: 'add',
                 value: 2,
                 priority: 20
             }

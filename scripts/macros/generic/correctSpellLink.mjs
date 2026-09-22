@@ -3,8 +3,8 @@ async function linkSpell({document: item}) {
     const config = automationUtils.getGenericConfigValues(item, 'chris-premades', 'correctSpellLink', Object.keys(correctSpellLink.genericConfig));
     const activity = item.system.activities.get(config.activity);
     if (!config.identifier || !activity) return;
-    const uuid = await compendiumUtils.getSpellUuid(config.identifier, {packIds: config.packIds});
-    if (uuid) await activityUtils.correctSpellLink(activity, uuid);
+    const spell = await compendiumUtils.getSpell(config.identifier, {packIds: config.packIds});
+    if (spell) await activityUtils.correctSpellLink(activity, spell); 
 }
 export const correctSpellLink = {
     version: '2.0.3',

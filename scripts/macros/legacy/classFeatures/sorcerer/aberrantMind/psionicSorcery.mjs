@@ -1,5 +1,4 @@
 import {actorUtils, dialogUtils, genericUtils, itemUtils, workflowUtils} from '../../../../../proxy.mjs';
-import utils from '../../../../../utils.mjs';
 import {subtleComponents} from '../metamagic.mjs';
 async function use({document, workflow}) {
     const psionicSpells = actorUtils.getItemByIdentifier(workflow.actor, 'psionic-spells');
@@ -12,7 +11,7 @@ async function use({document, workflow}) {
     }
     const selection = await dialogUtils.selectDocumentDialog(document.item.name, _loc('CHRISPREMADES.Macros.Legacy.PsionicSorcery.Select'), spells, {sort: 'level', showSpellLevel: true});
     if (!selection) return;
-    await utils.spendScaledCost(document.item, 'psionic-sorcery-cost', selection.system.level);
+    await workflowUtils.spendScaledCost(document.item, 'psionic-sorcery-cost', selection.system.level);
     const spellData = selection.toObject();
     const removed = [...subtleComponents, ...(spellData.system.materials.consumed ? [] : ['material'])];
     spellData.system.properties = spellData.system.properties.filter(property => !removed.includes(property));

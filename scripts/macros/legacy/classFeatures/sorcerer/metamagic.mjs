@@ -1,5 +1,4 @@
 import {actorUtils, automationUtils, constants, dialogUtils, documentUtils, effectUtils, genericUtils, itemUtils, rollUtils, workflowUtils} from '../../../../proxy.mjs';
-import utils from '../../../../utils.mjs';
 export const subtleComponents = ['vocal', 'somatic'];
 function getAvailablePoints(actor) {
     return actorUtils.getItemByIdentifier(actor, 'font-of-magic')?.system.uses.value ?? 0;
@@ -77,7 +76,7 @@ async function earlyCareful({document: effect, workflow}) {
     if (!targets.length) return;
     const selection = await dialogUtils.selectTargetDialog(effect.name, _loc('CHRISPREMADES.Macros.Legacy.Metamagic.CarefulWhich', {max}), targets, {type: 'multiple', maxAmount: max});
     if (!selection?.result?.length) return;
-    await applySaveModifier(effect, selection.result, [{key: 'flags.midi-qol.min.ability.save.all', value: '100', mode: 5, priority: 120}]);
+    await applySaveModifier(effect, selection.result, [{key: 'flags.midi-qol.min.ability.save.all', value: '100', type: 'override', priority: 120}]);
 }
 async function useDistant({document, workflow}) {
     const selection = await selectSpell(document, getValidSpells(workflow.actor, spell => ['touch', 'ft'].includes(spell.system.range.units) && spell.system.target.affects.type && spell.system.target.affects.type !== 'self'));
@@ -146,7 +145,7 @@ async function earlyHeightened({document: effect, workflow}) {
     if (!targets.length) return;
     const selection = await dialogUtils.selectTargetDialog(effect.name, _loc('CHRISPREMADES.Macros.Legacy.Metamagic.HeightenedWhich'), targets);
     if (!selection?.result) return;
-    await applySaveModifier(effect, [selection.result], [{key: 'flags.midi-qol.disadvantage.save.all', value: '1', mode: 5, priority: 20}]);
+    await applySaveModifier(effect, [selection.result], [{key: 'flags.midi-qol.disadvantage.save.all', value: '1', type: 'override', priority: 20}]);
 }
 async function useQuickened({document, workflow}) {
     const selection = await selectSpell(document, getValidSpells(workflow.actor, spell => spell.system.activation.type === 'action'));
@@ -253,7 +252,7 @@ async function earlyTwinned({workflow}) {
     }
     const cost = Math.max(1, castLevel);
     if (getAvailablePoints(workflow.actor) < cost) return await abortTwinned(workflow, 'CHRISPREMADES.Macros.Legacy.Metamagic.TwinnedUpcast');
-    await utils.spendScaledCost(metamagic, 'twinned-spell-cost', cost);
+    await workflowUtils.spendScaledCost(metamagic, 'twinned-spell-cost', cost);
 }
 export const carefulSpell = {
     name: 'Metamagic: Careful Spell',

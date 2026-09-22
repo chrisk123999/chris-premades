@@ -18,7 +18,7 @@ function hexedEffectData(activity, document, seconds, ability) {
         changes: [
             {
                 key: 'flags.midi-qol.disadvantage.check.' + ability,
-                mode: 0,
+                type: 'custom',
                 value: true,
                 priority: 20
             }

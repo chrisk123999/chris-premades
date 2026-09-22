@@ -3,12 +3,10 @@ async function use({document, workflow}) {
     if (workflow.activity.identifier !== 'form-of-dread') return;
     const sourceEffect = documentUtils.getEffectByIdentifier(document, 'formOfDreadActive');
     if (!sourceEffect) return;
-    const {avatarImg, tokenImg, imgPriority} = automationUtils.getConfigValues(document, ['avatarImg', 'tokenImg', 'imgPriority']);
     const effectData = documentUtils.getEffectData(workflow.activity, sourceEffect.id, {
         activityUuid: workflow.activity.uuid
     });
-    if (avatarImg) effectData.changes.push({key: 'img', mode: 5, value: avatarImg, priority: imgPriority});
-    if (tokenImg) effectData.changes.push({key: 'token.texture.src', mode: 5, value: tokenImg, priority: imgPriority});
+    effectUtils.pushImageChanges(effectData, document);
     const createEffect = async () => await effectUtils.createEffects(workflow.actor, [effectData]);
     const {animation, options} = automationUtils.getResolvedAnimation(document, 'animation');
     if (!animation) return await createEffect();
@@ -31,35 +29,20 @@ export const formOfDread = {
     roll: [
         {pass: 'itemRollFinished', macro: use, priority: 50}
     ],
-    config: {
-        tokenImg: {
-            default: '',
-            type: 'file',
-            label: 'CHRISPREMADES.Config.TokenImg',
-            category: 'visuals'
-        },
-        avatarImg: {
-            default: '',
-            type: 'file',
-            label: 'CHRISPREMADES.Config.AvatarImg',
-            category: 'visuals'
-        },
-        imgPriority: {
-            default: 50,
-            type: 'number',
-            label: 'CHRISPREMADES.Config.ImgPriority',
-            category: 'visuals'
-        },
-        animation: {
-            default: {
-                source: 'chris-premades',
-                identifier: 'shapeChange'
-            },
-            type: 'selectAnimation',
-            inputs: ['token', 'options'],
-            label: 'CHRISPREMADES.Config.Animation',
-            category: 'visuals'
-        }
+    get config() {
+        return {
+            ...effectUtils.getImageConfig(),
+            animation: {
+                default: {
+                    source: 'chris-premades',
+                    identifier: 'shapeChange'
+                },
+                type: 'selectAnimation',
+                inputs: ['token', 'options'],
+                label: 'CHRISPREMADES.Config.Animation',
+                category: 'visuals'
+            }
+        };
     }
 };
 export const formOfDreadActive = {

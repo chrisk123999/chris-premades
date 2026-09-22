@@ -15,7 +15,6 @@ async function use({document, workflow}) {
         size: 'med',
         duration: activityUtils.getDuration(workflow.activity),
         updates: {system: {details: {type: {value: 'monstrosity'}}, attributes: {hp: {temp: Math.floor(levels / 2)}}}},
-        disposition: workflow.token.document.disposition,
         sourceDocument: document,
         dismissAtZero: true,
         parent: markerEffect,
@@ -47,7 +46,7 @@ async function disadvantage({document, workflow}) {
         duration: {turns: 1},
         specialDuration: ['endOfWorkflow'],
         changes: [
-            {key: 'flags.midi-qol.disadvantage.save.all', value: '1', mode: 5, priority: 120}
+            {key: 'flags.midi-qol.disadvantage.save.all', value: '1', type: 'override', priority: 120}
         ]
     });
     await Promise.all(marked.map(async targetToken => await effectUtils.createEffects(targetToken.actor, [effectData])));

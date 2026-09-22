@@ -5,7 +5,7 @@ function bondData(document, workflow, weapon) {
     const changes = [
         {
             key: 'name',
-            mode: 5,
+            type: 'override',
             value: '{} (' + _loc('CHRISPREMADES.Macros.Modern.PactOfTheBlade.Name') + ')',
             priority: 20
         }
@@ -15,7 +15,7 @@ function bondData(document, workflow, weapon) {
     if (weapon.system.properties.has('fin')) abilities.push('dex');
     if (actorUtils.getBestAbility(workflow.actor, abilities) === ability) changes.push({
         key: 'activities[attack].attack.ability',
-        mode: 5,
+        type: 'override',
         value: ability,
         priority: 20
     });
