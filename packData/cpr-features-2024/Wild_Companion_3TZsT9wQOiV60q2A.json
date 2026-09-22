@@ -81,7 +81,7 @@
             "material"
           ],
           "spellbook": true,
-          "uuid": "Compendium.dnd5e.spells24.phbsplFindFamili",
+          "uuid": "Compendium.chris-premades.CPRSpells2024.Item.XCcUasyN7iXawQuF",
           "ability": "",
           "level": 1
         },
@@ -199,15 +199,6 @@
       "automation": {
         "source": "chris-premades",
         "version": "2.0.3"
-      },
-      "genericConfig": {
-        "chris-premades": {
-          "correctSpellLink": {
-            "activity": "9IAD7uGwHYv4aRyM",
-            "identifier": "find-familiar",
-            "packIds": []
-          }
-        }
       },
       "macros": {
         "item": [

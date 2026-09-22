@@ -82,7 +82,7 @@
             "material"
           ],
           "spellbook": true,
-          "uuid": "Compendium.dnd5e.spells.JGT5bNqu9REL7Fuz",
+          "uuid": "Compendium.chris-premades.CPRSpells2014.Item.s8P1W2gKkAS689ND",
           "ability": "",
           "level": 1
         },
@@ -197,15 +197,6 @@
   },
   "flags": {
     "cat": {
-      "genericConfig": {
-        "chris-premades": {
-          "correctSpellLink": {
-            "activity": "9IAD7uGwHYv4aRyM",
-            "identifier": "find-familiar",
-            "packIds": []
-          }
-        }
-      },
       "macros": {
         "item": [
           {
