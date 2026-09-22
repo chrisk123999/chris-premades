@@ -43,7 +43,7 @@ async function cast({document: item, workflow}) {
         img: item.img,
         origin: item.uuid,
         duration: {seconds: 1},
-        changes: [{key: 'flags.midi-qol.rangeOverride.attack.all', mode: 0, value: 1, priority: 20}],
+        changes: [{key: 'flags.midi-qol.rangeOverride.attack.all', type: 'custom', value: 1, priority: 20}],
         macros: [{type: 'roll', macros: [{source: 'chris-premades', rules: '2014', identifier: 'manifest-mind-cast'}]}]
     });
     const [casterEffect] = await effectUtils.createEffects(workflow.actor, [effectData], {specialDuration: ['spellCast']});

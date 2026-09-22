@@ -17,14 +17,14 @@ async function use({workflow}) {
         origin: workflow.item.uuid,
         identifier: 'bladesong',
         changes: [
-            {key: 'system.attributes.ac.bonus', mode: 2, value: bonus, priority: 20},
-            {key: 'system.attributes.movement.walk', mode: 2, value: '+10', priority: 20},
-            {key: 'flags.midi-qol.advantage.skill.acr', mode: 0, value: '1', priority: 20},
-            {key: 'system.attributes.concentration.bonuses.save', mode: 2, value: bonus, priority: 20}
+            {key: 'system.attributes.ac.bonus', type: 'add', value: bonus, priority: 20},
+            {key: 'system.attributes.movement.walk', type: 'add', value: '+10', priority: 20},
+            {key: 'flags.midi-qol.advantage.skill.acr', type: 'custom', value: '1', priority: 20},
+            {key: 'system.attributes.concentration.bonuses.save', type: 'add', value: bonus, priority: 20}
         ]
     });
     if (actorUtils.getItemByIdentifier(workflow.actor, 'song-of-victory')) {
-        effectData.changes.push({key: 'system.bonuses.mwak.damage', mode: 2, value: bonus, priority: 20});
+        effectData.system.changes.push({key: 'system.bonuses.mwak.damage', type: 'add', value: bonus, priority: 20});
     }
     const macros = [];
     if (actorUtils.getItemByIdentifier(workflow.actor, 'song-of-defense')) {

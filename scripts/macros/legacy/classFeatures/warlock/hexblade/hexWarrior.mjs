@@ -17,23 +17,25 @@ async function use({document, workflow}) {
         name: document.name,
         img: document.img,
         origin: document.uuid,
-        changes: [
-            {
-                key: 'name',
-                mode: 5,
-                value: '{} (' + document.name + ')',
-                priority: 20
-            }
-        ]
+        system: {
+            changes: [
+                {
+                    key: 'name',
+                    type: 'override',
+                    value: '{} (' + document.name + ')',
+                    priority: 20
+                }
+            ]
+        }
     };
     genericUtils.setProperty(effectData, 'flags.cat.identifier', 'hexWarriorWeapon');
     const ability = automationUtils.getConfigValue(document, 'ability');
     const weaponAbility = selection.system.activities.getByType('attack')[0]?.attack.ability || 'str';
     const abilities = [weaponAbility, ability];
     if (selection.system.properties.has('fin')) abilities.push('dex');
-    if (actorUtils.getBestAbility(workflow.actor, abilities) === ability) effectData.changes.push({
+    if (actorUtils.getBestAbility(workflow.actor, abilities) === ability) effectData.system.changes.push({
         key: 'activities[attack].attack.ability',
-        mode: 5,
+        type: 'override',
         value: ability,
         priority: 20
     });

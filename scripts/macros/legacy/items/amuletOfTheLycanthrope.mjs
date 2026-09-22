@@ -7,15 +7,14 @@ async function use({document, workflow}) {
     const identifiers = ['claws', 'human'];
     const activities = identifiers.map(identifier => itemUtils.getActivityByIdentifier(document, identifier)).filter(activity => activity);
     const vae = activities.map(activity => ({type: 'use', name: activity.name, identifier: 'amulet-of-the-lycanthrope', activityIdentifier: activity.identifier}));
-    const config = automationUtils.getConfigValues(document, ['avatarImg', 'tokenImg', 'imgPriority', 'animation']);
+    const config = automationUtils.getConfigValues(document, ['animation']);
     const effectData = documentUtils.getEffectData(workflow.activity, sourceEffect.id, {
         activityUuid: workflow.activity.uuid,
         unhideActivities: identifiers,
         vae,
         deleteAnimation: config.animation
     });
-    if (config.avatarImg) effectData.changes.push({key: 'img', mode: 5, value: config.avatarImg, priority: config.imgPriority});
-    if (config.tokenImg) effectData.changes.push({key: 'token.texture.src', mode: 5, value: config.tokenImg, priority: config.imgPriority});
+    effectUtils.pushImageChanges(effectData, document);
     const createEffect = async () => {
         const existing = documentUtils.getEffectByIdentifier(workflow.actor, 'amuletOfTheLycanthropeEffect');
         if (existing) await documentUtils.deleteDocument(existing);
@@ -73,53 +72,38 @@ export const amuletOfTheLycanthrope = {
         {pass: 'actorPreambleComplete', macro: saveBonus, priority: 50},
         {pass: 'actorDamageRollComplete', macro: damage, priority: 60}
     ],
-    config: {
-        formula: {
-            default: '1d8',
-            type: 'text',
-            label: 'CHRISPREMADES.Config.Formula',
-            category: 'homebrew'
-        },
-        saveBonus: {
-            default: 3,
-            type: 'number',
-            label: 'CHRISPREMADES.Macros.Legacy.AmuletOfTheLycanthrope.SaveBonus',
-            category: 'homebrew'
-        },
-        damageType: {
-            default: 'necrotic',
-            type: 'select',
-            label: 'CHRISPREMADES.Config.DamageType',
-            category: 'homebrew',
-            get options() { return constants.damageTypeOptions(); }
-        },
-        tokenImg: {
-            default: '',
-            type: 'file',
-            label: 'CHRISPREMADES.Config.TokenImg',
-            category: 'visuals'
-        },
-        avatarImg: {
-            default: '',
-            type: 'file',
-            label: 'CHRISPREMADES.Config.AvatarImg',
-            category: 'visuals'
-        },
-        imgPriority: {
-            default: 50,
-            type: 'number',
-            label: 'CHRISPREMADES.Config.ImgPriority',
-            category: 'visuals'
-        },
-        animation: {
-            default: {
-                source: 'chris-premades',
-                identifier: 'moonFrenzy'
+    get config() {
+        return {
+            ...effectUtils.getImageConfig(),
+            formula: {
+                default: '1d8',
+                type: 'text',
+                label: 'CHRISPREMADES.Config.Formula',
+                category: 'homebrew'
             },
-            type: 'selectAnimation',
-            inputs: ['token', 'options'],
-            label: 'CHRISPREMADES.Config.Animation',
-            category: 'visuals'
-        }
+            saveBonus: {
+                default: 3,
+                type: 'number',
+                label: 'CHRISPREMADES.Macros.Legacy.AmuletOfTheLycanthrope.SaveBonus',
+                category: 'homebrew'
+            },
+            damageType: {
+                default: 'necrotic',
+                type: 'select',
+                label: 'CHRISPREMADES.Config.DamageType',
+                category: 'homebrew',
+                get options() { return constants.damageTypeOptions(); }
+            },
+            animation: {
+                default: {
+                    source: 'chris-premades',
+                    identifier: 'moonFrenzy'
+                },
+                type: 'selectAnimation',
+                inputs: ['token', 'options'],
+                label: 'CHRISPREMADES.Config.Animation',
+                category: 'visuals'
+            }
+        };
     }
 };

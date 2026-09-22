@@ -36,13 +36,13 @@ export function addThrallBonuses(summonData, workflow) {
         changes: [
             {
                 key: 'flags.chris-premades.hexBonusDamageType',
-                mode: 5,
+                type: 'override',
                 value: damageType,
                 priority: 20
             },
             {
                 key: 'flags.chris-premades.summonerUuid',
-                mode: 5,
+                type: 'override',
                 value: workflow.actor.uuid,
                 priority: 20
             }

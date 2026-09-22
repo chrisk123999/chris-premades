@@ -14,3 +14,4 @@ export {divineStrike} from './animations/divineStrike.mjs';
 export {hide} from './animations/hide.mjs';
 export {mistyStep} from './animations/teleport.mjs';
 export {moonFrenzy, shapeChange} from './animations/lycanthropy.mjs';
+export {darknessSphere} from './animations/darkness.mjs';

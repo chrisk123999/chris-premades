@@ -32,6 +32,17 @@ export {formOfTheBeastWarlock as 'form-of-the-beast-warlock', formOfTheBeastWarl
 export {formOfDread as 'form-of-dread'} from './legacy/classFeatures/warlock/undead/formOfDread.mjs';
 export {formOfDreadActive as 'form-of-dread-active'} from './legacy/classFeatures/warlock/undead/formOfDread.mjs';
 export {graveTouched as 'grave-touched'} from './legacy/classFeatures/warlock/undead/graveTouched.mjs';
+// Sorcerer
+export {carefulSpell as 'careful-spell', carefulSpellEffect as 'careful-spell-effect', distantSpell as 'distant-spell', empoweredSpell as 'empowered-spell', extendedSpell as 'extended-spell', heightenedSpell as 'heightened-spell', heightenedSpellEffect as 'heightened-spell-effect', quickenedSpell as 'quickened-spell', seekingSpell as 'seeking-spell', subtleSpell as 'subtle-spell', transmutedSpell as 'transmuted-spell', twinnedSpell as 'twinned-spell', twinnedSpellCast as 'twinned-spell-cast'} from './legacy/classFeatures/sorcerer/metamagic.mjs';
+export {psionicSorcery as 'psionic-sorcery'} from './legacy/classFeatures/sorcerer/aberrantMind/psionicSorcery.mjs';
+export {psionicSpells as 'psionic-spells'} from './legacy/classFeatures/sorcerer/aberrantMind/psionicSpells.mjs';
+export {revelationInFlesh as 'revelation-in-flesh'} from './legacy/classFeatures/sorcerer/aberrantMind/revelationInFlesh.mjs';
+export {telepathicSpeech as 'telepathic-speech'} from './legacy/classFeatures/sorcerer/aberrantMind/telepathicSpeech.mjs';
+export {warpingImplosion as 'warping-implosion'} from './legacy/classFeatures/sorcerer/aberrantMind/warpingImplosion.mjs';
+export {favoredByTheGods as 'favored-by-the-gods'} from './legacy/classFeatures/sorcerer/divineSoul/favoredByTheGods.mjs';
+export {houndOfIllOmen as 'hound-of-ill-omen'} from './legacy/classFeatures/sorcerer/shadowMagic/houndOfIllOmen.mjs';
+export {umbralForm as 'umbral-form', umbralFormDismiss as 'umbral-form-dismiss'} from './legacy/classFeatures/sorcerer/shadowMagic/umbralForm.mjs';
+export {heartOfTheStorm as 'heart-of-the-storm'} from './legacy/classFeatures/sorcerer/stormSorcery/heartOfTheStorm.mjs';
 // Wizard
 export {bladesong as 'bladesong'} from './legacy/classFeatures/wizard/bladeSinging/bladesong.mjs';
 export {songOfDefense as 'song-of-defense'} from './legacy/classFeatures/wizard/bladeSinging/songOfDefense.mjs';

@@ -1,9 +1,9 @@
-import {dataUtils, workflowUtils} from './proxy.mjs';
+import {automationUtils, dataUtils, workflowUtils} from './proxy.mjs';
 function addEffectMacro(effectData, {type, macroIdentifier, rules, effectIdentifier}) {
     return dataUtils.buildEffectData(effectData, {
         macros: [
             {
-                type, 
+                type,
                 macros: [
                     {
                         source: 'chris-premades',

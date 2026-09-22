@@ -44,9 +44,9 @@ async function concentration({workflow}) {
     if (workflowUtils.getWorkflowProperty(workflow, 'thrumOfTheLand') !== 'concentration') return;
     const effect = effectUtils.getConcentrationEffect(workflow.actor, workflow.item);
     if (!effect) return;
-    const changes = effect.toObject().changes;
-    changes.push({key: 'flags.midi-qol.advantage.concentration', mode: 0, value: '1', priority: 20});
-    const updates = {changes};
+    const changes = effect.toObject().system.changes;
+    changes.push({key: 'flags.midi-qol.advantage.concentration', type: 'custom', value: '1', priority: 20});
+    const updates = {'system.changes': changes};
     if (effect.duration.value) updates['duration.value'] = effect.duration.value * 2;
     await documentUtils.update(effect, updates);
 }

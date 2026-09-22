@@ -22,7 +22,7 @@ async function use({document, workflow}) {
     if (workflow.activity.identifier !== 'transform') return;
     const sourceEffect = documentUtils.getEffectByIdentifier(document, 'formOfTheBeastEffect');
     if (!sourceEffect) return;
-    const config = automationUtils.getConfigValues(document, ['classIdentifier', 'avatarImg', 'tokenImg', 'imgPriority', 'animation', 'diceSteps', 'maxDenomination', 'itemIdentifiers', 'activityIdentifiers']);
+    const config = automationUtils.getConfigValues(document, ['classIdentifier', 'animation', 'diceSteps', 'maxDenomination', 'itemIdentifiers', 'activityIdentifiers']);
     const levels = workflow.actor.classes[config.classIdentifier]?.system.levels ?? 0;
     const identifiers = ['bite', 'claw'];
     if (levels >= 5) identifiers.push('dash', 'hide');
@@ -36,8 +36,7 @@ async function use({document, workflow}) {
         deleteAnimation: config.animation,
         copyConfigs: {classIdentifier: config.classIdentifier, diceSteps: config.diceSteps, maxDenomination: config.maxDenomination, itemIdentifiers: config.itemIdentifiers, activityIdentifiers: config.activityIdentifiers}
     });
-    if (config.avatarImg) effectData.changes.push({key: 'img', mode: 5, value: config.avatarImg, priority: config.imgPriority});
-    if (config.tokenImg) effectData.changes.push({key: 'token.texture.src', mode: 5, value: config.tokenImg, priority: config.imgPriority});
+    effectUtils.pushImageChanges(effectData, document);
     const createEffect = async () => {
         const existing = documentUtils.getEffectByIdentifier(workflow.actor, 'formOfTheBeastEffect');
         if (existing) {
@@ -68,65 +67,50 @@ export const formOfTheBeastWarlock = {
         {pass: 'itemRollFinished', macro: use, priority: 50},
         {pass: 'itemPreambleComplete', macro: attack, priority: 25}
     ],
-    config: {
-        classIdentifier: {
-            default: 'warlock',
-            type: 'text',
-            label: 'CHRISPREMADES.Config.ClassIdentifier',
-            category: 'homebrew'
-        },
-        diceSteps: {
-            default: 2,
-            type: 'number',
-            label: 'CHRISPREMADES.Config.DiceSize',
-            category: 'homebrew'
-        },
-        maxDenomination: {
-            default: 12,
-            type: 'number',
-            label: 'CHRISPREMADES.Config.Max',
-            category: 'homebrew'
-        },
-        itemIdentifiers: {
-            default: ['harkons-bite'],
-            type: 'selectIdentifiers',
-            label: 'CHRISPREMADES.Config.Identifiers',
-            category: 'homebrew'
-        },
-        activityIdentifiers: {
-            default: ['bite', 'claws'],
-            type: 'selectIdentifiers',
-            label: 'CHRISPREMADES.Config.Activities',
-            category: 'homebrew'
-        },
-        tokenImg: {
-            default: '',
-            type: 'file',
-            label: 'CHRISPREMADES.Config.TokenImg',
-            category: 'visuals'
-        },
-        avatarImg: {
-            default: '',
-            type: 'file',
-            label: 'CHRISPREMADES.Config.AvatarImg',
-            category: 'visuals'
-        },
-        imgPriority: {
-            default: 50,
-            type: 'number',
-            label: 'CHRISPREMADES.Config.ImgPriority',
-            category: 'visuals'
-        },
-        animation: {
-            default: {
-                source: 'chris-premades',
-                identifier: 'shapeChange'
+    get config() {
+        return {
+            ...effectUtils.getImageConfig(),
+            classIdentifier: {
+                default: 'warlock',
+                type: 'text',
+                label: 'CHRISPREMADES.Config.ClassIdentifier',
+                category: 'homebrew'
             },
-            type: 'selectAnimation',
-            inputs: ['token', 'options'],
-            label: 'CHRISPREMADES.Config.Animation',
-            category: 'visuals'
-        }
+            diceSteps: {
+                default: 2,
+                type: 'number',
+                label: 'CHRISPREMADES.Config.DiceSize',
+                category: 'homebrew'
+            },
+            maxDenomination: {
+                default: 12,
+                type: 'number',
+                label: 'CHRISPREMADES.Config.Max',
+                category: 'homebrew'
+            },
+            itemIdentifiers: {
+                default: ['harkons-bite'],
+                type: 'selectIdentifiers',
+                label: 'CHRISPREMADES.Config.Identifiers',
+                category: 'homebrew'
+            },
+            activityIdentifiers: {
+                default: ['bite', 'claws'],
+                type: 'selectIdentifiers',
+                label: 'CHRISPREMADES.Config.Activities',
+                category: 'homebrew'
+            },
+            animation: {
+                default: {
+                    source: 'chris-premades',
+                    identifier: 'shapeChange'
+                },
+                type: 'selectAnimation',
+                inputs: ['token', 'options'],
+                label: 'CHRISPREMADES.Config.Animation',
+                category: 'visuals'
+            }
+        };
     }
 };
 async function supernaturallyKeen({skillId}) {

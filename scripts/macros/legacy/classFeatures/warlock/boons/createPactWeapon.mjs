@@ -57,23 +57,23 @@ async function enchant({document, workflow, improved, hexWarrior, validWeapons})
         changes: [
             {
                 key: 'name',
-                mode: 5,
+                type: 'override',
                 value: '{} (' + _loc('CHRISPREMADES.Macros.Legacy.CreatePactWeapon.Weapon') + ')',
                 priority: 20
             }
         ]
     });
-    if (improved) effectData.changes.push({
+    if (improved) effectData.system.changes.push({
         key: 'system.magicalBonus',
-        mode: 4,
+        type: 'upgrade',
         value: 1,
         priority: 20
     });
     if (hexWarrior) {
         const ability = bestAbility(workflow.actor, weapon, automationUtils.getConfigValue(hexWarrior, 'ability'));
-        if (ability) effectData.changes.push({
+        if (ability) effectData.system.changes.push({
             key: 'activities[attack].attack.ability',
-            mode: 5,
+            type: 'override',
             value: ability,
             priority: 20
         });

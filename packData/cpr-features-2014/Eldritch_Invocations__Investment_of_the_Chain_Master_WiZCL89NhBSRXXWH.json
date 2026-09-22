@@ -312,13 +312,6 @@
         "version": "2.0.0"
       },
       "macros": {
-        "roll": [
-          {
-            "source": "chris-premades",
-            "rules": "2014",
-            "identifier": "investment-of-the-chain-master"
-          }
-        ],
         "summon": [
           {
             "source": "chris-premades",

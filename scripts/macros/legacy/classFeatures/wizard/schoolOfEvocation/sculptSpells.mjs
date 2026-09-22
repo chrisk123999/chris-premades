@@ -22,10 +22,12 @@ async function early({document: item, workflow}) {
         name: item.name,
         img: item.img,
         origin: item.uuid,
-        changes: [
-            {key: 'flags.midi-qol.min.ability.save.all', mode: 5, value: 100, priority: 120},
-            {key: 'flags.midi-qol.superSaver.all', mode: 0, value: 1, priority: 20}
-        ],
+        system: {
+            changes: [
+                {key: 'flags.midi-qol.min.ability.save.all', type: 'override', value: 100, priority: 120},
+                {key: 'flags.midi-qol.superSaver.all', type: 'custom', value: 1, priority: 20}
+            ]
+        },
         flags: {cat: {noAnimation: true}}
     };
     for (const target of selection) {

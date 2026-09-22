@@ -10,6 +10,11 @@ const foreignFlags = [
 ];
 const worldReference = /^(Scene|Actor|Compendium\.world)\./;
 const volatileDuration = ['startTime', 'startRound', 'startTurn'];
+const keptStats = ['coreVersion', 'systemId', 'systemVersion'];
+function cleanStats(document) {
+    if (!document._stats) return;
+    document._stats = Object.fromEntries(keptStats.map(key => [key, document._stats[key]]));
+}
 function cleanString(string) {
     return string.replace(/⁠/gu, '').replace(/[‘’]/gu, '\'').replace(/[“”]/gu, '"');
 }
@@ -34,7 +39,7 @@ function cleanFlags(document) {
  * @returns {void}
  */
 export function cleanEntry(entry) {
-    delete entry._stats;
+    cleanStats(entry);
     delete entry.sort;
     delete entry.ownership;
     cleanFlags(entry);
@@ -47,7 +52,7 @@ export function cleanEntry(entry) {
     if (entry.system?.materials?.value) entry.system.materials.value = '';
     Object.values(entry.system?.activities ?? {}).forEach(activity => cleanFlags(activity));
     (entry.effects ?? []).forEach(effect => {
-        delete effect._stats;
+        cleanStats(effect);
         cleanFlags(effect);
         if (worldReference.test(effect.origin ?? '')) effect.origin = null;
         volatileDuration.forEach(key => delete effect.duration?.[key]);

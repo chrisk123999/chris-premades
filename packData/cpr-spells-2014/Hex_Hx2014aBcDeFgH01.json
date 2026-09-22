@@ -66,8 +66,8 @@
       "prepared": false
     },
     "activities": {
-      "hexCastActivity00": {
-        "_id": "hexCastActivity00",
+      "eoK2FfKQ2wpD2AkJ": {
+        "_id": "eoK2FfKQ2wpD2AkJ",
         "type": "utility",
         "activation": {
           "type": "bonus",
@@ -176,8 +176,8 @@
         "otherActivityId": "none",
         "name": "Cast"
       },
-      "hexMoveActivity00": {
-        "_id": "hexMoveActivity00",
+      "7eYhPFiPG1hOcmUT": {
+        "_id": "7eYhPFiPG1hOcmUT",
         "type": "utility",
         "activation": {
           "type": "bonus",

@@ -43,7 +43,7 @@ async function use({document, workflow}) {
                 'system.changes': [
                     {
                         key: 'system.attributes.hp.tempmax',
-                        mode: 2,
+                        type: 'add',
                         value: Math.max(-totalMax, currentReduction - targetDamage),
                         priority: 20
                     }
@@ -58,7 +58,7 @@ async function use({document, workflow}) {
                     changes: [
                         {
                             key: 'system.attributes.hp.tempmax',
-                            mode: 2,
+                            type: 'add',
                             value: -targetDamage,
                             priority: 20
                         }

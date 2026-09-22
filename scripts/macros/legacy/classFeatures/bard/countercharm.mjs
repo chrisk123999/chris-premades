@@ -20,7 +20,7 @@ async function aura({actor: target, document: effect, identifier}) {
         img: effect.img,
         origin: effect.origin,
         flags: {dae: {showIcon: true}},
-        system: {changes: effect.changes}
+        system: {changes: effect.toObject().system.changes}
     }};
 }
 export const countercharm = {

@@ -18,7 +18,7 @@ function hexedEffectData(activity, document, seconds, ability) {
         changes: [
             {
                 key: 'flags.midi-qol.disadvantage.check.' + ability,
-                mode: 0,
+                type: 'custom',
                 value: true,
                 priority: 20
             }
@@ -56,7 +56,7 @@ async function use({document, workflow}) {
     for (const target of workflow.targets) {
         await effectUtils.createEffects(target.actor, [hexedEffectData(workflow.activity, document, seconds, ability)], {parentEntity: casterEffect});
     }
-    if (concentrationEffect) await documentUtils.update(concentrationEffect, {'duration.seconds': seconds});
+    if (concentrationEffect) await documentUtils.update(concentrationEffect, {'duration.value': seconds, 'duration.units': 'seconds'});
 }
 async function move({document, workflow}) {
     if (workflow.activity.identifier !== 'hex-move' || workflow.targets.size !== 1) return;

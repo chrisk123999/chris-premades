@@ -48,13 +48,13 @@ export const acidArrow = {
             label: 'CHRISPREMADES.Config.PlayAnimation',
             type: 'checkbox',
             default: true,
-            category: 'animation'
+            category: 'animations'
         },
         color: {
             label: 'CHRISPREMADES.Config.Color',
             type: 'select',
             default: 'green',
-            category: 'animation',
+            category: 'animations',
             options: [
                 {
                     value: 'blue',
@@ -96,7 +96,7 @@ export const acidArrow = {
             label: 'CHRISPREMADES.Config.Sound',
             type: 'file',
             default: '',
-            category: 'animation'
+            category: 'animations'
         }
     }
 };
