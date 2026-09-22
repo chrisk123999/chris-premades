@@ -11,7 +11,7 @@
 - Song of Defense
 - Greater Divine Intervention
 - Overchannel
-## New Legacy Automations:
+## Updated Legacy Automations:
 - Eldritch Blast
 - Eldritch Invocations: Agonizing Blast
 - Eldritch Invocations: Devil's Sight
@@ -70,7 +70,6 @@
 - Umbral Form
 - Hound of Ill Omen
 - Heart of the Storm
-## Updated Legacy Automations:
 - Channel Divinity (Cleric)
 - Destroy Undead
 - Harness Divine Power
@@ -111,7 +110,6 @@
 - Thrown Weapon Fighting
 - Unarmed Fighthing
 - Unarmed Strike
-## New Modern Automations:
 - Hand of Death
 - Eldritch Blast
 - Eldritch Invocations: Agonizing Blast
