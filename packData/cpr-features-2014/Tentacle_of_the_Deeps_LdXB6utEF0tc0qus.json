@@ -437,11 +437,21 @@
       "start": null,
       "showIcon": 1,
       "folder": null,
+      "_stats": {
+        "coreVersion": "14.364",
+        "systemId": null,
+        "systemVersion": null
+      },
       "_key": "!items.effects!LdXB6utEF0tc0qus.dGk56fiJYl8F4GNe"
     }
   ],
   "img": "icons/commodities/biological/tentacle-purple-white.webp",
   "folder": "16e6f03470905fc7",
   "_id": "LdXB6utEF0tc0qus",
+  "_stats": {
+    "coreVersion": "14.364",
+    "systemId": null,
+    "systemVersion": null
+  },
   "_key": "!items!LdXB6utEF0tc0qus"
 }

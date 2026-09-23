@@ -256,11 +256,21 @@
       "start": null,
       "showIcon": 1,
       "folder": null,
+      "_stats": {
+        "coreVersion": "14.364",
+        "systemId": null,
+        "systemVersion": null
+      },
       "_key": "!items.effects!M1kkWnzDKDvmwBQY.YnE0Qmbjdsc1OwkA"
     }
   ],
   "img": "icons/magic/perception/shadow-stealth-eyes-purple.webp",
   "folder": "7695c61f54bd3255",
   "_id": "M1kkWnzDKDvmwBQY",
+  "_stats": {
+    "coreVersion": "14.364",
+    "systemId": null,
+    "systemVersion": null
+  },
   "_key": "!items!M1kkWnzDKDvmwBQY"
 }

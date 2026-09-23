@@ -93,5 +93,10 @@
   "img": "icons/magic/unholy/beam-ringed-impact-purple.webp",
   "folder": "7695c61f54bd3255",
   "_id": "cTzm4EVf6o1ZTWbT",
+  "_stats": {
+    "coreVersion": "14.364",
+    "systemId": null,
+    "systemVersion": null
+  },
   "_key": "!items!cTzm4EVf6o1ZTWbT"
 }

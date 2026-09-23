@@ -221,5 +221,10 @@
   },
   "folder": null,
   "_id": "ETcCeFLM5rUttsb7",
+  "_stats": {
+    "coreVersion": "14.364",
+    "systemId": null,
+    "systemVersion": null
+  },
   "_key": "!items!ETcCeFLM5rUttsb7"
 }

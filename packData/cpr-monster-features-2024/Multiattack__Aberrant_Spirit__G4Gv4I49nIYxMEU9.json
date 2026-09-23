@@ -191,5 +191,10 @@
   },
   "folder": null,
   "_id": "G4Gv4I49nIYxMEU9",
+  "_stats": {
+    "coreVersion": "14.364",
+    "systemId": null,
+    "systemVersion": null
+  },
   "_key": "!items!G4Gv4I49nIYxMEU9"
 }

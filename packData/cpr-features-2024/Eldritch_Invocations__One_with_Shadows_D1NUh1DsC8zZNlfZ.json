@@ -180,5 +180,10 @@
   "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
   "folder": "2bb147f7e222b3d4",
   "_id": "D1NUh1DsC8zZNlfZ",
+  "_stats": {
+    "coreVersion": "14.364",
+    "systemId": null,
+    "systemVersion": null
+  },
   "_key": "!items!D1NUh1DsC8zZNlfZ"
 }

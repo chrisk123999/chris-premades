@@ -61,6 +61,11 @@
       "origin": null,
       "folder": null,
       "sort": 0,
+      "_stats": {
+        "coreVersion": "14.364",
+        "systemId": null,
+        "systemVersion": null
+      },
       "_key": "!items.effects!FDVEZf8SEiGgiXvh.Sk2FDMCdg4R3oinU"
     }
   ],
@@ -600,5 +605,10 @@
   "img": "icons/skills/melee/strike-axe-blood-red.webp",
   "folder": "epodEYV6OzWsQdIP",
   "_id": "FDVEZf8SEiGgiXvh",
+  "_stats": {
+    "coreVersion": "14.364",
+    "systemId": null,
+    "systemVersion": null
+  },
   "_key": "!items!FDVEZf8SEiGgiXvh"
 }

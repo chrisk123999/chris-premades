@@ -613,6 +613,11 @@
           "overlay": false
         }
       },
+      "_stats": {
+        "coreVersion": "14.364",
+        "systemId": null,
+        "systemVersion": null
+      },
       "_key": "!items.effects!um4BlVaGmkY2B5UQ.qcM2hg18rQEZDsMP"
     },
     {
@@ -670,6 +675,11 @@
           "overlay": false
         }
       },
+      "_stats": {
+        "coreVersion": "14.364",
+        "systemId": null,
+        "systemVersion": null
+      },
       "_key": "!items.effects!um4BlVaGmkY2B5UQ.DwRojsYeC8kTO6yr"
     }
   ],
@@ -682,5 +692,10 @@
     }
   },
   "_id": "um4BlVaGmkY2B5UQ",
+  "_stats": {
+    "coreVersion": "14.364",
+    "systemId": null,
+    "systemVersion": null
+  },
   "_key": "!items!um4BlVaGmkY2B5UQ"
 }

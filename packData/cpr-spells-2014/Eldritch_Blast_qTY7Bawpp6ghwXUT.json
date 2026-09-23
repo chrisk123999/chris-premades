@@ -398,5 +398,10 @@
   "img": "icons/magic/fire/projectile-fireball-smoke-teal.webp",
   "folder": "GbWRILwidOlJKUg5",
   "_id": "qTY7Bawpp6ghwXUT",
+  "_stats": {
+    "coreVersion": "14.364",
+    "systemId": null,
+    "systemVersion": null
+  },
   "_key": "!items!qTY7Bawpp6ghwXUT"
 }

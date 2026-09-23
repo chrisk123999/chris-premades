@@ -453,6 +453,11 @@
           "identifier": "etherealFadeEffect"
         }
       },
+      "_stats": {
+        "coreVersion": "14.364",
+        "systemId": null,
+        "systemVersion": null
+      },
       "_key": "!items.effects!9Vq2mXfsB4gvbHoC.8zIPlkxICKROIGzq"
     }
   ],
@@ -467,5 +472,10 @@
     }
   },
   "_id": "9Vq2mXfsB4gvbHoC",
+  "_stats": {
+    "coreVersion": "14.364",
+    "systemId": null,
+    "systemVersion": null
+  },
   "_key": "!items!9Vq2mXfsB4gvbHoC"
 }

@@ -46,6 +46,11 @@
       "origin": null,
       "folder": null,
       "sort": 0,
+      "_stats": {
+        "coreVersion": "14.364",
+        "systemId": null,
+        "systemVersion": null
+      },
       "_key": "!items.effects!7wOcFdoTiDKYLuvS.4ibgDcLP3Ak7c4bc"
     }
   ],
@@ -95,5 +100,10 @@
   "img": "icons/creatures/mammals/wolf-howl-moon-forest-blue.webp",
   "folder": "oHVJeSGqBDErtjs9",
   "_id": "7wOcFdoTiDKYLuvS",
+  "_stats": {
+    "coreVersion": "14.364",
+    "systemId": null,
+    "systemVersion": null
+  },
   "_key": "!items!7wOcFdoTiDKYLuvS"
 }

@@ -216,5 +216,10 @@
   "img": "icons/skills/melee/weapons-crossed-swords-yellow-teal.webp",
   "folder": "3c0NSnjmkxO9LGz0",
   "_id": "iAi5mUGMH7VkLFi7",
+  "_stats": {
+    "coreVersion": "14.364",
+    "systemId": null,
+    "systemVersion": null
+  },
   "_key": "!items!iAi5mUGMH7VkLFi7"
 }

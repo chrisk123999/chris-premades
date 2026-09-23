@@ -375,5 +375,10 @@
   "img": "icons/equipment/neck/amulet-carved-stone-spiral-blue.webp",
   "folder": "c7XNjfTijXEYrA7p",
   "_id": "qpwNbOR6OaWcsUFK",
+  "_stats": {
+    "coreVersion": "14.364",
+    "systemId": null,
+    "systemVersion": null
+  },
   "_key": "!items!qpwNbOR6OaWcsUFK"
 }

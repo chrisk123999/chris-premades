@@ -212,11 +212,21 @@
       "start": null,
       "showIcon": 1,
       "folder": null,
+      "_stats": {
+        "coreVersion": "14.364",
+        "systemId": null,
+        "systemVersion": null
+      },
       "_key": "!items.effects!eTF3L09ihlLT1a0k.RXZSqkLCei6opPi3"
     }
   ],
   "img": "icons/creatures/mammals/bat-giant-tattered-purple.webp",
   "folder": null,
   "_id": "eTF3L09ihlLT1a0k",
+  "_stats": {
+    "coreVersion": "14.364",
+    "systemId": null,
+    "systemVersion": null
+  },
   "_key": "!items!eTF3L09ihlLT1a0k"
 }

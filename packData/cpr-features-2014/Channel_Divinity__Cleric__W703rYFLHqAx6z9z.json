@@ -66,6 +66,11 @@
           ]
         }
       },
+      "_stats": {
+        "coreVersion": "14.364",
+        "systemId": null,
+        "systemVersion": null
+      },
       "_key": "!items.effects!W703rYFLHqAx6z9z.sUj7QenTocykaUPO"
     }
   ],
@@ -482,5 +487,10 @@
   "img": "icons/magic/holy/barrier-shield-winged-blue.webp",
   "folder": "3c0NSnjmkxO9LGz0",
   "_id": "W703rYFLHqAx6z9z",
+  "_stats": {
+    "coreVersion": "14.364",
+    "systemId": null,
+    "systemVersion": null
+  },
   "_key": "!items!W703rYFLHqAx6z9z"
 }

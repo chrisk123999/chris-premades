@@ -187,5 +187,10 @@
   "img": "icons/skills/movement/arrows-up-trio-red.webp",
   "folder": "tJ727NhyyBNb6ZNf",
   "_id": "yW8YXAo7j5jed5ug",
+  "_stats": {
+    "coreVersion": "14.364",
+    "systemId": null,
+    "systemVersion": null
+  },
   "_key": "!items!yW8YXAo7j5jed5ug"
 }

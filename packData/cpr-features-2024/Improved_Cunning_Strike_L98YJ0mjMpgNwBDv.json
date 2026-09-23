@@ -51,5 +51,10 @@
   "img": "icons/skills/melee/blade-tip-smoke-green.webp",
   "folder": "oeHJD6UoRsmQIVlo",
   "_id": "L98YJ0mjMpgNwBDv",
+  "_stats": {
+    "coreVersion": "14.364",
+    "systemId": null,
+    "systemVersion": null
+  },
   "_key": "!items!L98YJ0mjMpgNwBDv"
 }

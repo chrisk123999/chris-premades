@@ -871,6 +871,11 @@
       "start": null,
       "showIcon": 1,
       "folder": null,
+      "_stats": {
+        "coreVersion": "14.364",
+        "systemId": null,
+        "systemVersion": null
+      },
       "_key": "!items.effects!fNFaGC5ukldGywT5.FmShdBSB0XIQpGbC"
     },
     {
@@ -931,6 +936,11 @@
       "start": null,
       "showIcon": 1,
       "folder": null,
+      "_stats": {
+        "coreVersion": "14.364",
+        "systemId": null,
+        "systemVersion": null
+      },
       "_key": "!items.effects!fNFaGC5ukldGywT5.tCiHrWUKfdPm9niX"
     },
     {
@@ -992,6 +1002,11 @@
       "start": null,
       "showIcon": 1,
       "folder": null,
+      "_stats": {
+        "coreVersion": "14.364",
+        "systemId": null,
+        "systemVersion": null
+      },
       "_key": "!items.effects!fNFaGC5ukldGywT5.JXKrsIr6JxwVNEUC"
     },
     {
@@ -1052,6 +1067,11 @@
       "start": null,
       "showIcon": 1,
       "folder": null,
+      "_stats": {
+        "coreVersion": "14.364",
+        "systemId": null,
+        "systemVersion": null
+      },
       "_key": "!items.effects!fNFaGC5ukldGywT5.JUfGfWqfQolFVpws"
     },
     {
@@ -1112,6 +1132,11 @@
       "start": null,
       "showIcon": 1,
       "folder": null,
+      "_stats": {
+        "coreVersion": "14.364",
+        "systemId": null,
+        "systemVersion": null
+      },
       "_key": "!items.effects!fNFaGC5ukldGywT5.NPArcFqxKGU16ayx"
     },
     {
@@ -1172,6 +1197,11 @@
       "start": null,
       "showIcon": 1,
       "folder": null,
+      "_stats": {
+        "coreVersion": "14.364",
+        "systemId": null,
+        "systemVersion": null
+      },
       "_key": "!items.effects!fNFaGC5ukldGywT5.ogU8CIDSZc5aQY2i"
     },
     {
@@ -1232,6 +1262,11 @@
       "start": null,
       "showIcon": 1,
       "folder": null,
+      "_stats": {
+        "coreVersion": "14.364",
+        "systemId": null,
+        "systemVersion": null
+      },
       "_key": "!items.effects!fNFaGC5ukldGywT5.Qbggj1SH69rZjfyH"
     },
     {
@@ -1292,6 +1327,11 @@
       "start": null,
       "showIcon": 1,
       "folder": null,
+      "_stats": {
+        "coreVersion": "14.364",
+        "systemId": null,
+        "systemVersion": null
+      },
       "_key": "!items.effects!fNFaGC5ukldGywT5.yCsvmxxxLteBKZTd"
     },
     {
@@ -1352,6 +1392,11 @@
       "start": null,
       "showIcon": 1,
       "folder": null,
+      "_stats": {
+        "coreVersion": "14.364",
+        "systemId": null,
+        "systemVersion": null
+      },
       "_key": "!items.effects!fNFaGC5ukldGywT5.iKqE83lvddNzuxsR"
     },
     {
@@ -1413,6 +1458,11 @@
       "start": null,
       "showIcon": 1,
       "folder": null,
+      "_stats": {
+        "coreVersion": "14.364",
+        "systemId": null,
+        "systemVersion": null
+      },
       "_key": "!items.effects!fNFaGC5ukldGywT5.61L86HIsWDgPKN3Y"
     }
   ],
@@ -1450,6 +1500,11 @@
         "hash": 1314176793
       }
     }
+  },
+  "_stats": {
+    "coreVersion": "14.364",
+    "systemId": null,
+    "systemVersion": null
   },
   "_key": "!items!fNFaGC5ukldGywT5"
 }

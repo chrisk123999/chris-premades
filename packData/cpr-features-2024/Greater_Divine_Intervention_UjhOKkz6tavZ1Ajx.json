@@ -66,6 +66,11 @@
           }
         }
       },
+      "_stats": {
+        "coreVersion": "14.364",
+        "systemId": null,
+        "systemVersion": null
+      },
       "_key": "!items.effects!UjhOKkz6tavZ1Ajx.AuSrhdfJagarZrWb"
     }
   ],
@@ -278,5 +283,10 @@
   },
   "img": "icons/magic/light/beam-rays-yellow-blue.webp",
   "folder": "zpnSU81c3nPjSzE1",
+  "_stats": {
+    "coreVersion": "14.364",
+    "systemId": null,
+    "systemVersion": null
+  },
   "_key": "!items!UjhOKkz6tavZ1Ajx"
 }

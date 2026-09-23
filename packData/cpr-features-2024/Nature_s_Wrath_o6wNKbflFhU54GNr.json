@@ -64,6 +64,11 @@
       "start": null,
       "showIcon": 1,
       "folder": null,
+      "_stats": {
+        "coreVersion": "14.364",
+        "systemId": null,
+        "systemVersion": null
+      },
       "_key": "!items.effects!o6wNKbflFhU54GNr.teBKkh0U5ZnqakiO"
     }
   ],
@@ -282,5 +287,10 @@
   "img": "icons/magic/nature/root-vine-beanstolk-green.webp",
   "folder": "Fz4cmoD9hIPrijxr",
   "_id": "o6wNKbflFhU54GNr",
+  "_stats": {
+    "coreVersion": "14.364",
+    "systemId": null,
+    "systemVersion": null
+  },
   "_key": "!items!o6wNKbflFhU54GNr"
 }

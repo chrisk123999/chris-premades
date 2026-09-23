@@ -198,5 +198,10 @@
   "folder": null,
   "flags": {},
   "_id": "XjyH4JeFHX8ypknJ",
+  "_stats": {
+    "coreVersion": "14.364",
+    "systemId": null,
+    "systemVersion": null
+  },
   "_key": "!items!XjyH4JeFHX8ypknJ"
 }

@@ -92,6 +92,11 @@
       "origin": null,
       "folder": null,
       "sort": 0,
+      "_stats": {
+        "coreVersion": "14.364",
+        "systemId": null,
+        "systemVersion": null
+      },
       "_key": "!items.effects!A42YTmqrQVDbjAoK.xLMT680N5hgZ4eve"
     }
   ],
@@ -329,5 +334,10 @@
   "img": "icons/magic/control/buff-flight-wings-runes-blue.webp",
   "folder": "jv1qLsd4LTtCBvYj",
   "_id": "A42YTmqrQVDbjAoK",
+  "_stats": {
+    "coreVersion": "14.364",
+    "systemId": null,
+    "systemVersion": null
+  },
   "_key": "!items!A42YTmqrQVDbjAoK"
 }

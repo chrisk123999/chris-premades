@@ -214,5 +214,10 @@
   "img": "icons/creatures/abilities/cougar-pounce-stalk-black.webp",
   "folder": "bbR7kJffMX4MkL49",
   "_id": "3TZsT9wQOiV60q2A",
+  "_stats": {
+    "coreVersion": "14.364",
+    "systemId": null,
+    "systemVersion": null
+  },
   "_key": "!items!3TZsT9wQOiV60q2A"
 }

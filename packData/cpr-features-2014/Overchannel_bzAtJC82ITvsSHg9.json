@@ -347,5 +347,10 @@
   "img": "icons/magic/acid/projectile-faceted-glob.webp",
   "folder": "uosKFvpruT2UNHCY",
   "_id": "bzAtJC82ITvsSHg9",
+  "_stats": {
+    "coreVersion": "14.364",
+    "systemId": null,
+    "systemVersion": null
+  },
   "_key": "!items!bzAtJC82ITvsSHg9"
 }

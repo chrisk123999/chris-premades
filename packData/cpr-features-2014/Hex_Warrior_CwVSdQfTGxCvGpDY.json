@@ -206,5 +206,10 @@
   "img": "icons/weapons/daggers/dagger-poisoned-curved-green.webp",
   "folder": "592829a68d26d388",
   "_id": "CwVSdQfTGxCvGpDY",
+  "_stats": {
+    "coreVersion": "14.364",
+    "systemId": null,
+    "systemVersion": null
+  },
   "_key": "!items!CwVSdQfTGxCvGpDY"
 }

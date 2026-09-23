@@ -70,5 +70,10 @@
   "img": "icons/magic/control/buff-flight-wings-runes-blue-white.webp",
   "folder": "sH07KvkHrUmypHgu",
   "_id": "AOad9GPhQOD3CRmm",
+  "_stats": {
+    "coreVersion": "14.364",
+    "systemId": null,
+    "systemVersion": null
+  },
   "_key": "!items!AOad9GPhQOD3CRmm"
 }

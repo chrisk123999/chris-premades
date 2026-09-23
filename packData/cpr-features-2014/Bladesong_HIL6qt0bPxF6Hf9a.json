@@ -198,5 +198,10 @@
   "img": "icons/skills/melee/maneuver-greatsword-yellow.webp",
   "folder": "sH07KvkHrUmypHgu",
   "_id": "HIL6qt0bPxF6Hf9a",
+  "_stats": {
+    "coreVersion": "14.364",
+    "systemId": null,
+    "systemVersion": null
+  },
   "_key": "!items!HIL6qt0bPxF6Hf9a"
 }

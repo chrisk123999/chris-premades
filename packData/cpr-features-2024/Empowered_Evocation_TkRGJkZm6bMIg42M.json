@@ -74,5 +74,10 @@
   "img": "icons/magic/fire/explosion-mushroom-nuke-orange.webp",
   "folder": "iuhl7BPBelyJKbji",
   "_id": "TkRGJkZm6bMIg42M",
+  "_stats": {
+    "coreVersion": "14.364",
+    "systemId": null,
+    "systemVersion": null
+  },
   "_key": "!items!TkRGJkZm6bMIg42M"
 }

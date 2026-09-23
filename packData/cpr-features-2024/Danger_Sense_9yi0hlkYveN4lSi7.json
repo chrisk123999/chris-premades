@@ -53,6 +53,11 @@
           "overlay": false
         }
       },
+      "_stats": {
+        "coreVersion": "14.364",
+        "systemId": null,
+        "systemVersion": null
+      },
       "_key": "!items.effects!9yi0hlkYveN4lSi7.zIEnZNl2XrET6Ljm"
     }
   ],
@@ -102,5 +107,10 @@
   "img": "icons/magic/perception/eye-ringed-glow-angry-red.webp",
   "folder": "epodEYV6OzWsQdIP",
   "_id": "9yi0hlkYveN4lSi7",
+  "_stats": {
+    "coreVersion": "14.364",
+    "systemId": null,
+    "systemVersion": null
+  },
   "_key": "!items!9yi0hlkYveN4lSi7"
 }

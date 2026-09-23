@@ -74,5 +74,10 @@
   "img": "icons/weapons/swords/swords-sharp-worn.webp",
   "folder": "tBfYZGTEVaaUDePZ",
   "_id": "WnxbpU1Yt80lipV9",
+  "_stats": {
+    "coreVersion": "14.364",
+    "systemId": null,
+    "systemVersion": null
+  },
   "_key": "!items!WnxbpU1Yt80lipV9"
 }

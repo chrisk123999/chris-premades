@@ -239,5 +239,10 @@
   "img": "icons/magic/holy/prayer-hands-glowing-yellow.webp",
   "folder": "zpnSU81c3nPjSzE1",
   "_id": "vUGo1L0bAft8OO3Y",
+  "_stats": {
+    "coreVersion": "14.364",
+    "systemId": null,
+    "systemVersion": null
+  },
   "_key": "!items!vUGo1L0bAft8OO3Y"
 }

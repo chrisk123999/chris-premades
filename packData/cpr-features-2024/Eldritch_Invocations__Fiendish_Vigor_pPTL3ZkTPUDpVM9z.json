@@ -4,9 +4,9 @@
   "effects": [],
   "system": {
     "activities": {
-      "NasKo2pRzYJBpFPA": {
+      "castFiendishVig": {
         "type": "cast",
-        "_id": "NasKo2pRzYJBpFPA",
+        "_id": "castFiendishVig",
         "img": "",
         "sort": 0,
         "activation": {
@@ -216,5 +216,10 @@
   "img": "icons/magic/death/undead-zombie-grave-green.webp",
   "folder": "2bb147f7e222b3d4",
   "_id": "pPTL3ZkTPUDpVM9z",
+  "_stats": {
+    "coreVersion": "14.364",
+    "systemId": null,
+    "systemVersion": null
+  },
   "_key": "!items!pPTL3ZkTPUDpVM9z"
 }

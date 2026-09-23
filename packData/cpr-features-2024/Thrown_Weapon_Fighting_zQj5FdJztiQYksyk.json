@@ -96,5 +96,10 @@
   "img": "icons/weapons/thrown/daggers-kunai-purple.webp",
   "folder": "tBfYZGTEVaaUDePZ",
   "_id": "zQj5FdJztiQYksyk",
+  "_stats": {
+    "coreVersion": "14.364",
+    "systemId": null,
+    "systemVersion": null
+  },
   "_key": "!items!zQj5FdJztiQYksyk"
 }

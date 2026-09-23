@@ -135,6 +135,11 @@
       "start": null,
       "showIcon": 1,
       "folder": null,
+      "_stats": {
+        "coreVersion": "14.364",
+        "systemId": null,
+        "systemVersion": null
+      },
       "_key": "!items.effects!g3q67i1LwgGqE3W3.XcW5ncZZzYbanmQq"
     }
   ],
@@ -319,5 +324,10 @@
   "img": "icons/magic/defensive/shield-barrier-blue.webp",
   "folder": "tJ727NhyyBNb6ZNf",
   "_id": "g3q67i1LwgGqE3W3",
+  "_stats": {
+    "coreVersion": "14.364",
+    "systemId": null,
+    "systemVersion": null
+  },
   "_key": "!items!g3q67i1LwgGqE3W3"
 }

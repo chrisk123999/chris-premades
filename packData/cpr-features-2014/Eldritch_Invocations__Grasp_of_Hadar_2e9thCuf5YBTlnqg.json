@@ -84,5 +84,10 @@
   "img": "icons/magic/unholy/hand-light-pink.webp",
   "folder": "7695c61f54bd3255",
   "_id": "2e9thCuf5YBTlnqg",
+  "_stats": {
+    "coreVersion": "14.364",
+    "systemId": null,
+    "systemVersion": null
+  },
   "_key": "!items!2e9thCuf5YBTlnqg"
 }

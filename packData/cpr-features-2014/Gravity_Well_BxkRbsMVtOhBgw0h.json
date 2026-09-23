@@ -52,5 +52,10 @@
   "img": "icons/magic/unholy/orb-beam-pink.webp",
   "folder": "jKrhZq22E49LdIVg",
   "_id": "BxkRbsMVtOhBgw0h",
+  "_stats": {
+    "coreVersion": "14.364",
+    "systemId": null,
+    "systemVersion": null
+  },
   "_key": "!items!BxkRbsMVtOhBgw0h"
 }

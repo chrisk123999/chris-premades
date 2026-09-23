@@ -225,5 +225,10 @@
   "img": "icons/magic/control/debuff-energy-hold-levitate-pink.webp",
   "folder": "25d631e9ae839bdd",
   "_id": "Z0QwtbldPBb3iDU9",
+  "_stats": {
+    "coreVersion": "14.364",
+    "systemId": null,
+    "systemVersion": null
+  },
   "_key": "!items!Z0QwtbldPBb3iDU9"
 }

@@ -63,5 +63,10 @@
   "img": "icons/skills/wounds/injury-face-impact-orange.webp",
   "folder": "oHVJeSGqBDErtjs9",
   "_id": "EaW9rlH6XyRrSX8T",
+  "_stats": {
+    "coreVersion": "14.364",
+    "systemId": null,
+    "systemVersion": null
+  },
   "_key": "!items!EaW9rlH6XyRrSX8T"
 }

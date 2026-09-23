@@ -359,5 +359,10 @@
   "img": "icons/magic/perception/orb-crystal-ball-scrying-blue.webp",
   "folder": "20e9fb4536f02f37",
   "_id": "QUwzs6W6WUEhrksA",
+  "_stats": {
+    "coreVersion": "14.364",
+    "systemId": null,
+    "systemVersion": null
+  },
   "_key": "!items!QUwzs6W6WUEhrksA"
 }

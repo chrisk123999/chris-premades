@@ -80,6 +80,11 @@
           }
         }
       },
+      "_stats": {
+        "coreVersion": "14.364",
+        "systemId": null,
+        "systemVersion": null
+      },
       "_key": "!items.effects!B32H5gk6Gkpb04Y6.2tTU7pPzKPMYNHeK"
     }
   ],
@@ -303,5 +308,10 @@
   "img": "icons/magic/air/air-burst-spiral-pink.webp",
   "folder": "H09zLwugbHnO8ugI",
   "_id": "B32H5gk6Gkpb04Y6",
+  "_stats": {
+    "coreVersion": "14.364",
+    "systemId": null,
+    "systemVersion": null
+  },
   "_key": "!items!B32H5gk6Gkpb04Y6"
 }
