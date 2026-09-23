@@ -4,12 +4,19 @@ async function select(token, range, {dark = false, displayHint = true} = {}) {
     const positions = [];
     let i = 0;
     let cancelled = false;
+    let centerpoint = token.object.center;
+    // const cost = token.object._getMovementCostFunction();
     const fade = dark ? 'jb2a.particles.outward.blue.01.03' : 'jb2a.particles.outward.purple.01.03';
     const offset = {x: token.object.w / 2, y: token.object.h / 2};
     while (!cancelled) {
-        positions[i] = await crosshairUtils.aimCrosshair({token, maxRange: range});
+        if (range <= 0) break;
+        positions[i] = await crosshairUtils.aimCrosshair({token, maxRange: range, centerpoint});
         if (positions[i].cancelled) {
-            positions.push(positions[i]);
+            const point = positions[i];
+            const moved = canvas.grid.measurePath([{x: centerpoint.x - offset.x, y: centerpoint.y - offset.y}, point]);
+            centerpoint = {x: point.x + offset.x, y: point.y + offset.y};
+            range -= moved?.distance ?? 0;
+            positions.push(point);
             i++;
             /* eslint-disable indent */
             new Sequence()

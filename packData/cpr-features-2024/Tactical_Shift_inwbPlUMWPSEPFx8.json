@@ -105,8 +105,29 @@
                   "source": "chris-premades",
                   "rules": "2024",
                   "identifier": "tactical-shift"
+                },
+                {
+                  "source": "chris-premades",
+                  "identifier": "movementAnimation",
+                  "rules": "all"
                 }
               ]
+            },
+            "genericConfig": {
+              "chris-premades": {
+                "movementAnimation": {
+                  "range": "floor(0.1 * @attributes.movement.speed) * 5",
+                  "selectLocationsAnimation": {
+                    "source": "chris-premades",
+                    "identifier": "selectLocations"
+                  },
+                  "moveAnimation": {
+                    "source": "chris-premades",
+                    "identifier": "cunningActionDash"
+                  },
+                  "movementEffect": ""
+                }
+              }
             }
           }
         },

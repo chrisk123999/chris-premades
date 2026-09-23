@@ -1,4 +1,3 @@
-import {instinctivePounce} from '../../../all/classFeatures/barbarian/instinctivePounce.mjs';
 import {dialogUtils, documentUtils, workflowUtils} from '../../../../proxy.mjs';
 async function use({document: activity, workflow}) {
     if (documentUtils.getIdentifier(workflow.item) !== 'second-wind') return;
@@ -14,8 +13,6 @@ export const tacticalShift = {
             pass: 'actorRollFinished',
             macro: use,
             priority: 300
-        },
-        ...instinctivePounce.roll
-    ],
-    config: instinctivePounce.config
+        }
+    ]
 };

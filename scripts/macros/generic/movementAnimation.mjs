@@ -1,10 +1,12 @@
-import {automationUtils, documentUtils, effectUtils} from '../../proxy.mjs';
+import {automationUtils, documentUtils, effectUtils, rollUtils} from '../../proxy.mjs';
 async function use({document, workflow}) {
+    const rangeFormula = automationUtils.getGenericConfigValue(document, 'chris-premades', 'movementAnimation', 'range');
+    const range = (await rollUtils.rollDice(rangeFormula, {document}))?.total ?? 0;
+    if (!range) return; 
     const {animation: selectLocationsAnimation, options: selectLocationsOptions} = automationUtils.getResolvedAnimation(document, 'selectLocationsAnimation', {source: 'chris-premades', identifier: 'movementAnimation'});
     if (!selectLocationsAnimation) return;
     const {animation: moveAnimation} = automationUtils.getResolvedAnimation(document, 'moveAnimation', {source: 'chris-premades', identifier: 'movementAnimation'});
     if (!moveAnimation) return;
-    const range = workflow.actor.system.attributes.movement.max;
     const positions = await selectLocationsAnimation.macros?.select(workflow.token.document, range, selectLocationsOptions);
     if (!positions?.length) return;
     const movementEffectId = automationUtils.getGenericConfigValue(document, 'chris-premades', 'movementAnimation', 'movementEffect');
@@ -35,6 +37,12 @@ export const movementAnimation = {
         }
     ],
     genericConfig: {
+        range: {
+            default: '@attributes.movement.max',
+            type: 'text',
+            label: 'CHRISPREMADES.Config.Distance',
+            category: 'behavior'
+        },
         selectLocationsAnimation: {
             default: {
                 source: 'chris-premades',

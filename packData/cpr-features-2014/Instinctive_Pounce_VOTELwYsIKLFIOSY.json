@@ -112,8 +112,29 @@
                   "source": "chris-premades",
                   "rules": "all",
                   "identifier": "instinctive-pounce"
+                },
+                {
+                  "source": "chris-premades",
+                  "identifier": "movementAnimation",
+                  "rules": "all"
                 }
               ]
+            },
+            "genericConfig": {
+              "chris-premades": {
+                "movementAnimation": {
+                  "range": "floor(0.1 * @attributes.movement.speed) * 5",
+                  "selectLocationsAnimation": {
+                    "source": "chris-premades",
+                    "identifier": "selectLocations"
+                  },
+                  "moveAnimation": {
+                    "source": "chris-premades",
+                    "identifier": "instinctivePounce"
+                  },
+                  "movementEffect": ""
+                }
+              }
             }
           }
         },

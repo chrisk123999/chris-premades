@@ -2,6 +2,8 @@
 ## Update Notes:
 - CPR for v14 does not contain all automations that previously existed in V13.
 ## Bug Fixes:
+- Generic: movementAnimation
+- Instinctive Pounce
 ## Updated Legacy Automations:
 - Indomitable
 - Second Wind
