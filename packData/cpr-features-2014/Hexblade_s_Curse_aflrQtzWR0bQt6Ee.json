@@ -348,5 +348,10 @@
   "img": "icons/magic/death/projectile-skull-flaming-green.webp",
   "folder": "592829a68d26d388",
   "_id": "aflrQtzWR0bQt6Ee",
+  "_stats": {
+    "coreVersion": "14.364",
+    "systemId": null,
+    "systemVersion": null
+  },
   "_key": "!items!aflrQtzWR0bQt6Ee"
 }

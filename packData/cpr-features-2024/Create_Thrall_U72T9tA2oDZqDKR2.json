@@ -62,5 +62,10 @@
   "img": "icons/commodities/treasure/doll-mummy.webp",
   "folder": "20e9fb4536f02f37",
   "_id": "U72T9tA2oDZqDKR2",
+  "_stats": {
+    "coreVersion": "14.364",
+    "systemId": null,
+    "systemVersion": null
+  },
   "_key": "!items!U72T9tA2oDZqDKR2"
 }

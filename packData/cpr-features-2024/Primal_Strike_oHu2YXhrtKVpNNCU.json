@@ -238,5 +238,10 @@
   "img": "icons/magic/nature/hand-weapon-wood-bark-brown.webp",
   "folder": "bbR7kJffMX4MkL49",
   "_id": "oHu2YXhrtKVpNNCU",
+  "_stats": {
+    "coreVersion": "14.364",
+    "systemId": null,
+    "systemVersion": null
+  },
   "_key": "!items!oHu2YXhrtKVpNNCU"
 }

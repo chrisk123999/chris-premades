@@ -60,6 +60,11 @@
           "identifier": ""
         }
       },
+      "_stats": {
+        "coreVersion": "14.364",
+        "systemId": null,
+        "systemVersion": null
+      },
       "_key": "!items.effects!ulioXsH7u8KY1tp6.sL3urkAFF3Kov6sz"
     },
     {
@@ -119,6 +124,11 @@
         "cat": {
           "identifier": "recklessAttackEffect"
         }
+      },
+      "_stats": {
+        "coreVersion": "14.364",
+        "systemId": null,
+        "systemVersion": null
       },
       "_key": "!items.effects!ulioXsH7u8KY1tp6.Ackd1KmH9F5CK44T"
     }
@@ -332,5 +342,10 @@
   "img": "icons/skills/melee/strike-axe-blood-red.webp",
   "folder": "oHVJeSGqBDErtjs9",
   "_id": "ulioXsH7u8KY1tp6",
+  "_stats": {
+    "coreVersion": "14.364",
+    "systemId": null,
+    "systemVersion": null
+  },
   "_key": "!items!ulioXsH7u8KY1tp6"
 }

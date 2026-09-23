@@ -71,6 +71,11 @@
       "start": null,
       "showIcon": 1,
       "folder": null,
+      "_stats": {
+        "coreVersion": "14.364",
+        "systemId": null,
+        "systemVersion": null
+      },
       "_key": "!items.effects!r9H2mw2z3Po25Pbb.jHASsgwKNPnYIDFd"
     },
     {
@@ -166,6 +171,11 @@
       "start": null,
       "showIcon": 1,
       "folder": null,
+      "_stats": {
+        "coreVersion": "14.364",
+        "systemId": null,
+        "systemVersion": null
+      },
       "_key": "!items.effects!r9H2mw2z3Po25Pbb.N01wiTCKbCxIdvP1"
     }
   ],
@@ -378,5 +388,10 @@
   "img": "icons/skills/ranged/target-bullseye-arrow-green.webp",
   "folder": "oeHJD6UoRsmQIVlo",
   "_id": "r9H2mw2z3Po25Pbb",
+  "_stats": {
+    "coreVersion": "14.364",
+    "systemId": null,
+    "systemVersion": null
+  },
   "_key": "!items!r9H2mw2z3Po25Pbb"
 }

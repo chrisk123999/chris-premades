@@ -97,5 +97,10 @@
   "img": "icons/magic/defensive/shield-barrier-glowing-triangle-blue.webp",
   "folder": "z0BdCKoHiCFxYvnn",
   "_id": "Ye4bP1izxB0p9axW",
+  "_stats": {
+    "coreVersion": "14.364",
+    "systemId": null,
+    "systemVersion": null
+  },
   "_key": "!items!Ye4bP1izxB0p9axW"
 }

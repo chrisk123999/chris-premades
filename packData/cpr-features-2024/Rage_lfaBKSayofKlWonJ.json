@@ -494,6 +494,11 @@
           "identifier": "rage"
         }
       },
+      "_stats": {
+        "coreVersion": "14.364",
+        "systemId": null,
+        "systemVersion": null
+      },
       "_key": "!items.effects!lfaBKSayofKlWonJ.sL6Qn1ntvxrhFaYD"
     }
   ],
@@ -507,5 +512,10 @@
     }
   },
   "_id": "lfaBKSayofKlWonJ",
+  "_stats": {
+    "coreVersion": "14.364",
+    "systemId": null,
+    "systemVersion": null
+  },
   "_key": "!items!lfaBKSayofKlWonJ"
 }

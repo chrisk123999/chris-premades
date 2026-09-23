@@ -219,5 +219,10 @@
     }
   },
   "_id": "NyIoFgUzxqO7lUnX",
+  "_stats": {
+    "coreVersion": "14.364",
+    "systemId": null,
+    "systemVersion": null
+  },
   "_key": "!items!NyIoFgUzxqO7lUnX"
 }

@@ -71,5 +71,10 @@
   "img": "icons/skills/melee/unarmed-punch-fist-yellow-red.webp",
   "folder": "epodEYV6OzWsQdIP",
   "_id": "fYzYiy0lSCO07MTm",
+  "_stats": {
+    "coreVersion": "14.364",
+    "systemId": null,
+    "systemVersion": null
+  },
   "_key": "!items!fYzYiy0lSCO07MTm"
 }

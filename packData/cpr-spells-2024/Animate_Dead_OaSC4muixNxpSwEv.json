@@ -887,6 +887,11 @@
           "overlay": false
         }
       },
+      "_stats": {
+        "coreVersion": "14.364",
+        "systemId": null,
+        "systemVersion": null
+      },
       "_key": "!items.effects!OaSC4muixNxpSwEv.jKNpERXLw7BKSvPE"
     }
   ],
@@ -914,5 +919,10 @@
   "img": "icons/magic/death/undead-skeleton-energy-green.webp",
   "folder": "dIULQZnOw9ECXyoi",
   "_id": "OaSC4muixNxpSwEv",
+  "_stats": {
+    "coreVersion": "14.364",
+    "systemId": null,
+    "systemVersion": null
+  },
   "_key": "!items!OaSC4muixNxpSwEv"
 }

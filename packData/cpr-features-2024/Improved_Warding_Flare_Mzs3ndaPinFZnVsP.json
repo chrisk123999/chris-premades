@@ -185,5 +185,10 @@
   "img": "icons/magic/light/beam-red-orange.webp",
   "folder": "b2hup0AAa9gHlL4c",
   "_id": "Mzs3ndaPinFZnVsP",
+  "_stats": {
+    "coreVersion": "14.364",
+    "systemId": null,
+    "systemVersion": null
+  },
   "_key": "!items!Mzs3ndaPinFZnVsP"
 }

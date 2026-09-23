@@ -718,5 +718,10 @@
       "identifier": "animatedObject"
     }
   },
+  "_stats": {
+    "coreVersion": "14.364",
+    "systemId": null,
+    "systemVersion": null
+  },
   "_key": "!actors!DhxfrShh1J9dRGTb"
 }

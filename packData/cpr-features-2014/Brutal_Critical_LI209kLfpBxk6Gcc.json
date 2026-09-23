@@ -56,5 +56,10 @@
   "img": "icons/skills/melee/strike-axe-blood-red.webp",
   "folder": "oHVJeSGqBDErtjs9",
   "_id": "LI209kLfpBxk6Gcc",
+  "_stats": {
+    "coreVersion": "14.364",
+    "systemId": null,
+    "systemVersion": null
+  },
   "_key": "!items!LI209kLfpBxk6Gcc"
 }

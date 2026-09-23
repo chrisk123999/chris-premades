@@ -445,5 +445,10 @@
   "img": "icons/creatures/unholy/demon-fanged-horned-yellow.webp",
   "folder": "DcgJ2vpIHp0WNqL4",
   "_id": "PxQLTkGBdU7VQxxv",
+  "_stats": {
+    "coreVersion": "14.364",
+    "systemId": null,
+    "systemVersion": null
+  },
   "_key": "!items!PxQLTkGBdU7VQxxv"
 }

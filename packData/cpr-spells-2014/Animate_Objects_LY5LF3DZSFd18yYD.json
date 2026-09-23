@@ -383,5 +383,10 @@
   "img": "icons/magic/water/bubbles-air-water-blue.webp",
   "folder": "3y34My6b7sqUmzuk",
   "_id": "LY5LF3DZSFd18yYD",
+  "_stats": {
+    "coreVersion": "14.364",
+    "systemId": null,
+    "systemVersion": null
+  },
   "_key": "!items!LY5LF3DZSFd18yYD"
 }

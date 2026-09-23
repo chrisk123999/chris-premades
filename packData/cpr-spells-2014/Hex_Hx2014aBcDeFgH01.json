@@ -320,5 +320,10 @@
   "img": "icons/magic/unholy/strike-hand-glow-pink.webp",
   "folder": "pfzYb8UerE97sz8L",
   "_id": "Hx2014aBcDeFgH01",
+  "_stats": {
+    "coreVersion": "14.364",
+    "systemId": null,
+    "systemVersion": null
+  },
   "_key": "!items!Hx2014aBcDeFgH01"
 }

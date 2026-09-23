@@ -69,6 +69,11 @@
       "start": null,
       "showIcon": 1,
       "folder": null,
+      "_stats": {
+        "coreVersion": "14.364",
+        "systemId": null,
+        "systemVersion": null
+      },
       "_key": "!items.effects!DRVXrFO3c6h1yvhj.Bpz3jrM68RVa44c6"
     },
     {
@@ -131,6 +136,11 @@
       "start": null,
       "showIcon": 1,
       "folder": null,
+      "_stats": {
+        "coreVersion": "14.364",
+        "systemId": null,
+        "systemVersion": null
+      },
       "_key": "!items.effects!DRVXrFO3c6h1yvhj.Qy91nKOF36woVSjO"
     },
     {
@@ -193,6 +203,11 @@
       "start": null,
       "showIcon": 1,
       "folder": null,
+      "_stats": {
+        "coreVersion": "14.364",
+        "systemId": null,
+        "systemVersion": null
+      },
       "_key": "!items.effects!DRVXrFO3c6h1yvhj.WGpMwa7L3FumVkSY"
     }
   ],
@@ -542,5 +557,10 @@
   "img": "icons/creatures/abilities/cougar-pounce-stalk-black.webp",
   "folder": "qSAs7whspnYRp9nE",
   "_id": "DRVXrFO3c6h1yvhj",
+  "_stats": {
+    "coreVersion": "14.364",
+    "systemId": null,
+    "systemVersion": null
+  },
   "_key": "!items!DRVXrFO3c6h1yvhj"
 }

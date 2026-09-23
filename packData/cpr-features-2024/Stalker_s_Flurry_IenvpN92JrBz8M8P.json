@@ -217,6 +217,11 @@
       "showIcon": 2,
       "start": null,
       "folder": null,
+      "_stats": {
+        "coreVersion": "14.364",
+        "systemId": null,
+        "systemVersion": null
+      },
       "_key": "!items.effects!IenvpN92JrBz8M8P.poQSTY3F70fkSIdL"
     }
   ],
@@ -233,6 +238,11 @@
         "version": "2.0.0"
       }
     }
+  },
+  "_stats": {
+    "coreVersion": "14.364",
+    "systemId": null,
+    "systemVersion": null
   },
   "_key": "!items!IenvpN92JrBz8M8P"
 }

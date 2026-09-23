@@ -117,11 +117,21 @@
       },
       "showIcon": 1,
       "folder": null,
+      "_stats": {
+        "coreVersion": "14.364",
+        "systemId": null,
+        "systemVersion": null
+      },
       "_key": "!items.effects!NFRUzbByqSSh4hBT.ioQnlwNg0QsSG1Lg"
     }
   ],
   "img": "icons/magic/fire/blast-jet-stream-splash.webp",
   "folder": "uosKFvpruT2UNHCY",
   "_id": "NFRUzbByqSSh4hBT",
+  "_stats": {
+    "coreVersion": "14.364",
+    "systemId": null,
+    "systemVersion": null
+  },
   "_key": "!items!NFRUzbByqSSh4hBT"
 }

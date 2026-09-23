@@ -63,5 +63,10 @@
   "img": "icons/magic/nature/leaf-drip-light-green.webp",
   "folder": "MRJmz2jwnCOjB3QV",
   "_id": "DyGxP43Fg6ggkfqN",
+  "_stats": {
+    "coreVersion": "14.364",
+    "systemId": null,
+    "systemVersion": null
+  },
   "_key": "!items!DyGxP43Fg6ggkfqN"
 }

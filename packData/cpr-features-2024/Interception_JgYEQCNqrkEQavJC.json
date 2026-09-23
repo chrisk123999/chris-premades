@@ -218,5 +218,10 @@
   "img": "icons/skills/melee/shield-damaged-broken-blue.webp",
   "folder": "tBfYZGTEVaaUDePZ",
   "_id": "JgYEQCNqrkEQavJC",
+  "_stats": {
+    "coreVersion": "14.364",
+    "systemId": null,
+    "systemVersion": null
+  },
   "_key": "!items!JgYEQCNqrkEQavJC"
 }

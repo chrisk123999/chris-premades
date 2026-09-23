@@ -56,6 +56,11 @@
       "start": null,
       "showIcon": 1,
       "folder": null,
+      "_stats": {
+        "coreVersion": "14.364",
+        "systemId": null,
+        "systemVersion": null
+      },
       "_key": "!items.effects!Wlzp5Fyl71ToUdvT.BfngdUGWguKYWj8w"
     }
   ],
@@ -271,5 +276,10 @@
   "img": "icons/magic/unholy/orb-swirling-teal.webp",
   "folder": "20e9fb4536f02f37",
   "_id": "Wlzp5Fyl71ToUdvT",
+  "_stats": {
+    "coreVersion": "14.364",
+    "systemId": null,
+    "systemVersion": null
+  },
   "_key": "!items!Wlzp5Fyl71ToUdvT"
 }

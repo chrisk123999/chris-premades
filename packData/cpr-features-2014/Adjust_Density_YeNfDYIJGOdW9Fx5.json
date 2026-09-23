@@ -68,6 +68,11 @@
       "start": null,
       "showIcon": 1,
       "folder": null,
+      "_stats": {
+        "coreVersion": "14.364",
+        "systemId": null,
+        "systemVersion": null
+      },
       "_key": "!items.effects!YeNfDYIJGOdW9Fx5.bLTlxaBH2ZhVxJYK"
     },
     {
@@ -136,6 +141,11 @@
       "start": null,
       "showIcon": 1,
       "folder": null,
+      "_stats": {
+        "coreVersion": "14.364",
+        "systemId": null,
+        "systemVersion": null
+      },
       "_key": "!items.effects!YeNfDYIJGOdW9Fx5.kYlmqnfak1QqXWZZ"
     }
   ],
@@ -457,5 +467,10 @@
   "img": "icons/magic/unholy/orb-beam-pink.webp",
   "folder": "jKrhZq22E49LdIVg",
   "_id": "YeNfDYIJGOdW9Fx5",
+  "_stats": {
+    "coreVersion": "14.364",
+    "systemId": null,
+    "systemVersion": null
+  },
   "_key": "!items!YeNfDYIJGOdW9Fx5"
 }

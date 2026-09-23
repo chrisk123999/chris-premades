@@ -57,6 +57,11 @@
       "origin": "Compendium.chris-premades.CPRFeatures2024.Item.ZmF0ZZGVZhj92nGt",
       "folder": null,
       "sort": 0,
+      "_stats": {
+        "coreVersion": "14.364",
+        "systemId": null,
+        "systemVersion": null
+      },
       "_key": "!items.effects!ZmF0ZZGVZhj92nGt.cCZR8d9yjODuPFtN"
     }
   ],
@@ -123,5 +128,10 @@
   "img": "icons/equipment/shield/buckler-wooden-boss-glowing-blue.webp",
   "folder": "tBfYZGTEVaaUDePZ",
   "_id": "ZmF0ZZGVZhj92nGt",
+  "_stats": {
+    "coreVersion": "14.364",
+    "systemId": null,
+    "systemVersion": null
+  },
   "_key": "!items!ZmF0ZZGVZhj92nGt"
 }

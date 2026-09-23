@@ -191,5 +191,10 @@
   "img": "icons/sundries/books/book-symbol-skull-grey.webp",
   "folder": "7695c61f54bd3255",
   "_id": "6ngXagQKqrpFgKk0",
+  "_stats": {
+    "coreVersion": "14.364",
+    "systemId": null,
+    "systemVersion": null
+  },
   "_key": "!items!6ngXagQKqrpFgKk0"
 }

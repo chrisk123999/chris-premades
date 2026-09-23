@@ -318,5 +318,10 @@
   "img": "icons/magic/fire/projectile-meteor-salvo-heavy-teal.webp",
   "folder": "jv1qLsd4LTtCBvYj",
   "_id": "XTMiUwKF3kEI3u4O",
+  "_stats": {
+    "coreVersion": "14.364",
+    "systemId": null,
+    "systemVersion": null
+  },
   "_key": "!items!XTMiUwKF3kEI3u4O"
 }

@@ -67,6 +67,11 @@
           "identifier": "recklessAttackEffect"
         }
       },
+      "_stats": {
+        "coreVersion": "14.364",
+        "systemId": null,
+        "systemVersion": null
+      },
       "_key": "!items.effects!jVPL64zRIoGXY5t6.sL3urkAFF3Kov6sz"
     }
   ],
@@ -275,5 +280,10 @@
   "img": "icons/skills/melee/strike-axe-blood-red.webp",
   "folder": "epodEYV6OzWsQdIP",
   "_id": "jVPL64zRIoGXY5t6",
+  "_stats": {
+    "coreVersion": "14.364",
+    "systemId": null,
+    "systemVersion": null
+  },
   "_key": "!items!jVPL64zRIoGXY5t6"
 }

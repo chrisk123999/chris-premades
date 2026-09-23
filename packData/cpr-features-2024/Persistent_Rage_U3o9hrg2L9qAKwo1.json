@@ -187,5 +187,10 @@
   "img": "icons/skills/wounds/injury-face-impact-orange.webp",
   "folder": "epodEYV6OzWsQdIP",
   "_id": "U3o9hrg2L9qAKwo1",
+  "_stats": {
+    "coreVersion": "14.364",
+    "systemId": null,
+    "systemVersion": null
+  },
   "_key": "!items!U3o9hrg2L9qAKwo1"
 }

@@ -73,5 +73,10 @@
   "img": "icons/weapons/swords/greatsword-evil-green.webp",
   "folder": "7695c61f54bd3255",
   "_id": "wPPTPz1vKopMXXiI",
+  "_stats": {
+    "coreVersion": "14.364",
+    "systemId": null,
+    "systemVersion": null
+  },
   "_key": "!items!wPPTPz1vKopMXXiI"
 }

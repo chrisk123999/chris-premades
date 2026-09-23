@@ -212,5 +212,10 @@
   "img": "icons/equipment/shield/Scutum-steel-worn.webp",
   "folder": "CIKnrWi8pzShUTW9",
   "_id": "pmpmtloDSa2AJLhi",
+  "_stats": {
+    "coreVersion": "14.364",
+    "systemId": null,
+    "systemVersion": null
+  },
   "_key": "!items!pmpmtloDSa2AJLhi"
 }

@@ -211,5 +211,10 @@
   "img": "icons/magic/air/air-burst-spiral-pink.webp",
   "folder": "jv1qLsd4LTtCBvYj",
   "_id": "RwhGdA5IkHqAJSHu",
+  "_stats": {
+    "coreVersion": "14.364",
+    "systemId": null,
+    "systemVersion": null
+  },
   "_key": "!items!RwhGdA5IkHqAJSHu"
 }

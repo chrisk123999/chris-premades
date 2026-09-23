@@ -57,5 +57,10 @@
   "img": "icons/creatures/abilities/stinger-poison-green.webp",
   "folder": "HPNohpxDJVTcZMqJ",
   "_id": "HD6zyVxDN6c3JeAK",
+  "_stats": {
+    "coreVersion": "14.364",
+    "systemId": null,
+    "systemVersion": null
+  },
   "_key": "!items!HD6zyVxDN6c3JeAK"
 }

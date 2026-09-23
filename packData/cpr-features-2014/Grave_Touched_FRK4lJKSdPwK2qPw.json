@@ -99,5 +99,10 @@
   "img": "icons/environment/settlement/graveyard-tombstone-night.webp",
   "folder": "c278ed560f7563d5",
   "_id": "FRK4lJKSdPwK2qPw",
+  "_stats": {
+    "coreVersion": "14.364",
+    "systemId": null,
+    "systemVersion": null
+  },
   "_key": "!items!FRK4lJKSdPwK2qPw"
 }

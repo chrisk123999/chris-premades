@@ -627,5 +627,10 @@
   },
   "folder": null,
   "_id": "kQ3vTn8aLpZx7Wme",
+  "_stats": {
+    "coreVersion": "14.364",
+    "systemId": null,
+    "systemVersion": null
+  },
   "_key": "!actors!kQ3vTn8aLpZx7Wme"
 }

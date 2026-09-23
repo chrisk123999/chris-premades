@@ -221,5 +221,10 @@
   "img": "icons/magic/time/clock-stopwatch-white-blue.webp",
   "folder": "p6WgctgCVjbpGALP",
   "_id": "plskD0ozshwphW3J",
+  "_stats": {
+    "coreVersion": "14.364",
+    "systemId": null,
+    "systemVersion": null
+  },
   "_key": "!items!plskD0ozshwphW3J"
 }

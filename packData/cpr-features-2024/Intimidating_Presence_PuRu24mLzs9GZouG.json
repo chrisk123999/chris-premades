@@ -58,6 +58,11 @@
       "start": null,
       "showIcon": 1,
       "folder": null,
+      "_stats": {
+        "coreVersion": "14.364",
+        "systemId": null,
+        "systemVersion": null
+      },
       "_key": "!items.effects!PuRu24mLzs9GZouG.jrVGjhi5tcCklGHd"
     }
   ],
@@ -256,5 +261,10 @@
   "img": "icons/creatures/magical/construct-iron-stomping-yellow.webp",
   "folder": "N37OuKFecWTC4LE4",
   "_id": "PuRu24mLzs9GZouG",
+  "_stats": {
+    "coreVersion": "14.364",
+    "systemId": null,
+    "systemVersion": null
+  },
   "_key": "!items!PuRu24mLzs9GZouG"
 }

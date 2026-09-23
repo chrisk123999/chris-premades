@@ -428,6 +428,11 @@
           "overlay": false
         }
       },
+      "_stats": {
+        "coreVersion": "14.364",
+        "systemId": null,
+        "systemVersion": null
+      },
       "_key": "!items.effects!k3vnzDWKHM4CkHZX.5KzkvsZIfvZ2L9fY"
     },
     {
@@ -480,6 +485,11 @@
         "core": {
           "overlay": false
         }
+      },
+      "_stats": {
+        "coreVersion": "14.364",
+        "systemId": null,
+        "systemVersion": null
       },
       "_key": "!items.effects!k3vnzDWKHM4CkHZX.9sKLSvV4TdrFcVht"
     },
@@ -537,6 +547,11 @@
           "identifier": "clingToLifeEffect"
         }
       },
+      "_stats": {
+        "coreVersion": "14.364",
+        "systemId": null,
+        "systemVersion": null
+      },
       "_key": "!items.effects!k3vnzDWKHM4CkHZX.6BcqEJrmi5vHYvR9"
     }
   ],
@@ -584,5 +599,10 @@
     }
   },
   "_id": "k3vnzDWKHM4CkHZX",
+  "_stats": {
+    "coreVersion": "14.364",
+    "systemId": null,
+    "systemVersion": null
+  },
   "_key": "!items!k3vnzDWKHM4CkHZX"
 }

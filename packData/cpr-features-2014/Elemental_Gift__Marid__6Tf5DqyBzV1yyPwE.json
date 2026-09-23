@@ -115,11 +115,21 @@
       "start": null,
       "showIcon": 1,
       "folder": null,
+      "_stats": {
+        "coreVersion": "14.364",
+        "systemId": null,
+        "systemVersion": null
+      },
       "_key": "!items.effects!6Tf5DqyBzV1yyPwE.29aX9RTHLHEc45XC"
     }
   ],
   "img": "icons/magic/control/debuff-energy-hold-levitate-yellow.webp",
   "folder": "cde8275a39420072",
   "_id": "6Tf5DqyBzV1yyPwE",
+  "_stats": {
+    "coreVersion": "14.364",
+    "systemId": null,
+    "systemVersion": null
+  },
   "_key": "!items!6Tf5DqyBzV1yyPwE"
 }

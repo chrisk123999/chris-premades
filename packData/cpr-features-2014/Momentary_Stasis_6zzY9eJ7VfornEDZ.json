@@ -74,6 +74,11 @@
       "showIcon": 2,
       "start": null,
       "folder": null,
+      "_stats": {
+        "coreVersion": "14.364",
+        "systemId": null,
+        "systemVersion": null
+      },
       "_key": "!items.effects!6zzY9eJ7VfornEDZ.YkFaQkTJ9HlAgHKc"
     }
   ],
@@ -284,5 +289,10 @@
   "img": "icons/magic/control/encase-creature-monster-hold.webp",
   "folder": "p6WgctgCVjbpGALP",
   "_id": "6zzY9eJ7VfornEDZ",
+  "_stats": {
+    "coreVersion": "14.364",
+    "systemId": null,
+    "systemVersion": null
+  },
   "_key": "!items!6zzY9eJ7VfornEDZ"
 }

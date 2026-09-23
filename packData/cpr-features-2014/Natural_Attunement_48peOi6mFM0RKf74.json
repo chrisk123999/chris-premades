@@ -58,6 +58,11 @@
       "start": null,
       "showIcon": 1,
       "folder": null,
+      "_stats": {
+        "coreVersion": "14.364",
+        "systemId": null,
+        "systemVersion": null
+      },
       "_key": "!items.effects!48peOi6mFM0RKf74.rg7s5iWOFFnihGpd"
     }
   ],
@@ -908,5 +913,10 @@
   "img": "icons/magic/nature/leaf-juggle-humanoid-green.webp",
   "folder": "MRJmz2jwnCOjB3QV",
   "_id": "48peOi6mFM0RKf74",
+  "_stats": {
+    "coreVersion": "14.364",
+    "systemId": null,
+    "systemVersion": null
+  },
   "_key": "!items!48peOi6mFM0RKf74"
 }

@@ -71,6 +71,11 @@
           "identifier": "wild-shape-effect"
         }
       },
+      "_stats": {
+        "coreVersion": "14.364",
+        "systemId": null,
+        "systemVersion": null
+      },
       "_key": "!items.effects!NdDHzWYbZEToqEwu.JPBO8ED1L162QMzv"
     }
   ],
@@ -488,5 +493,10 @@
   "img": "icons/creatures/mammals/elk-moose-marked-green.webp",
   "folder": "HPNohpxDJVTcZMqJ",
   "_id": "NdDHzWYbZEToqEwu",
+  "_stats": {
+    "coreVersion": "14.364",
+    "systemId": null,
+    "systemVersion": null
+  },
   "_key": "!items!NdDHzWYbZEToqEwu"
 }

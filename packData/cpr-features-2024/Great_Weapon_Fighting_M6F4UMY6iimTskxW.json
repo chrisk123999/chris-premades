@@ -61,5 +61,10 @@
   "img": "icons/weapons/axes/axe-battle-skull-black.webp",
   "folder": "tBfYZGTEVaaUDePZ",
   "_id": "M6F4UMY6iimTskxW",
+  "_stats": {
+    "coreVersion": "14.364",
+    "systemId": null,
+    "systemVersion": null
+  },
   "_key": "!items!M6F4UMY6iimTskxW"
 }

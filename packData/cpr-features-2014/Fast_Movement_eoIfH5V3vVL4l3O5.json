@@ -51,6 +51,11 @@
       "origin": null,
       "folder": null,
       "sort": 0,
+      "_stats": {
+        "coreVersion": "14.364",
+        "systemId": null,
+        "systemVersion": null
+      },
       "_key": "!items.effects!eoIfH5V3vVL4l3O5.bG13dHCGCzRSYvMZ"
     }
   ],
@@ -99,5 +104,10 @@
   "img": "icons/skills/movement/feet-winged-boots-brown.webp",
   "folder": "oHVJeSGqBDErtjs9",
   "_id": "eoIfH5V3vVL4l3O5",
+  "_stats": {
+    "coreVersion": "14.364",
+    "systemId": null,
+    "systemVersion": null
+  },
   "_key": "!items!eoIfH5V3vVL4l3O5"
 }

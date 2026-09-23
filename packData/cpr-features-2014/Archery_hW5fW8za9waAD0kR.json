@@ -57,6 +57,11 @@
       "origin": "Compendium.chris-premades.CPRFeatures2014.Item.hW5fW8za9waAD0kR",
       "folder": null,
       "sort": 0,
+      "_stats": {
+        "coreVersion": "14.364",
+        "systemId": null,
+        "systemVersion": null
+      },
       "_key": "!items.effects!hW5fW8za9waAD0kR.0hMwAFZ6nbS6Aozy"
     }
   ],
@@ -123,5 +128,10 @@
   "img": "icons/weapons/bows/longbow-recurve-leather-red.webp",
   "folder": "CIKnrWi8pzShUTW9",
   "_id": "hW5fW8za9waAD0kR",
+  "_stats": {
+    "coreVersion": "14.364",
+    "systemId": null,
+    "systemVersion": null
+  },
   "_key": "!items!hW5fW8za9waAD0kR"
 }

@@ -213,5 +213,10 @@
   "img": "icons/creatures/eyes/lizard-single-slit-blue.webp",
   "folder": "4e67e12379f265b4",
   "_id": "WLhrpCs0JDCAPfCK",
+  "_stats": {
+    "coreVersion": "14.364",
+    "systemId": null,
+    "systemVersion": null
+  },
   "_key": "!items!WLhrpCs0JDCAPfCK"
 }
