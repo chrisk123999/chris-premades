@@ -10,6 +10,8 @@ export {superiorInspiration as 'superior-inspiration'} from './all/classFeatures
 // Druid
 export {beastSpells as 'beast-spells'} from './all/classFeatures/druid/beastSpells.mjs';
 export {wildShape as 'wild-shape', wildShapeChooseForms, wildShapeRevert} from './all/classFeatures/druid/wildShape.mjs';
+// Fighter
+export {indomitable} from './all/classFeatures/fighter/indomitable.mjs';
 // Rogue
 export {steadyAim as 'steady-aim'} from './all/classFeatures/rogue/steadyAim.mjs';
 // Warlock

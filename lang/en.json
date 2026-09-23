@@ -694,6 +694,7 @@
                     "Regeneration": "Regeneration",
                     "WhisperingAura": "Whispering Aura"
                 },
+                "TacticalMind": "Did the check succeed? (Roll Total: {total})",
                 "UnarguableWizardry": {
                     "Prompt": "Unarguable Wizardry"
                 },

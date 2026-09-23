@@ -21,7 +21,7 @@ async function simplePounce(workflow, movement) {
 }
 export const instinctivePounce = {
     name: 'Instinctive Pounce',
-    version: '2.0.2',
+    version: '2.0.4',
     rules: 'all',
     called: [
         {

@@ -1,4 +1,4 @@
-import {documentUtils, workflowUtils} from '../../../../proxy.mjs';
+import {documentUtils, workflowUtils} from '../../../../../proxy.mjs';
 async function use({document}) {
     if (!document.actor.system.attributes.inspiration) await documentUtils.update(document.actor, {'system.attributes.inspiration': true});
 }

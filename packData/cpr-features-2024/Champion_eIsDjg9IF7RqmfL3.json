@@ -1,0 +1,16 @@
+{
+  "type": "Item",
+  "folder": "8ax5XkSTWyxxPBH8",
+  "name": "Champion",
+  "color": null,
+  "sorting": "a",
+  "_id": "eIsDjg9IF7RqmfL3",
+  "description": "",
+  "flags": {},
+  "_stats": {
+    "coreVersion": "14.364",
+    "systemId": "dnd5e",
+    "systemVersion": "5.3.3"
+  },
+  "_key": "!folders!eIsDjg9IF7RqmfL3"
+}

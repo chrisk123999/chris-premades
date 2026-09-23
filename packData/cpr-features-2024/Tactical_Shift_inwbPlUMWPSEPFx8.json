@@ -1,10 +1,10 @@
 {
-  "name": "Instinctive Pounce",
+  "name": "Tactical Shift",
   "type": "feat",
   "effects": [
     {
-      "name": "Instinctive Pounce",
-      "img": "icons/magic/control/debuff-energy-snare-brown.webp",
+      "name": "Tactical Shift",
+      "img": "icons/skills/trades/academics-investigation-puzzles.webp",
       "origin": null,
       "transfer": false,
       "_id": "1QHMHTEkd0cARHWk",
@@ -59,10 +59,10 @@
       },
       "_stats": {
         "coreVersion": "14.364",
-        "systemId": null,
-        "systemVersion": null
+        "systemId": "dnd5e",
+        "systemVersion": "5.3.3"
       },
-      "_key": "!items.effects!lJYI1hUrH8gqwMGq.1QHMHTEkd0cARHWk"
+      "_key": "!items.effects!inwbPlUMWPSEPFx8.1QHMHTEkd0cARHWk"
     }
   ],
   "system": {
@@ -100,18 +100,11 @@
         "flags": {
           "cat": {
             "macros": {
-              "called": [
-                {
-                  "source": "chris-premades",
-                  "rules": "all",
-                  "identifier": "instinctive-pounce"
-                }
-              ],
               "roll": [
                 {
                   "source": "chris-premades",
-                  "rules": "all",
-                  "identifier": "instinctive-pounce"
+                  "rules": "2024",
+                  "identifier": "tactical-shift"
                 }
               ]
             }
@@ -250,7 +243,7 @@
       "value": "",
       "chat": ""
     },
-    "identifier": "instinctive-pounce",
+    "identifier": "tactical-shift",
     "source": {
       "book": "PHB 2024",
       "page": "",
@@ -263,7 +256,7 @@
     "enchant": {},
     "prerequisites": {
       "items": [],
-      "level": 7,
+      "level": 5,
       "repeatable": false
     },
     "properties": [],
@@ -281,13 +274,13 @@
       }
     }
   },
-  "img": "icons/magic/control/debuff-energy-snare-brown.webp",
-  "folder": "epodEYV6OzWsQdIP",
-  "_id": "lJYI1hUrH8gqwMGq",
+  "img": "icons/skills/trades/academics-investigation-puzzles.webp",
+  "folder": "8ax5XkSTWyxxPBH8",
   "_stats": {
     "coreVersion": "14.364",
     "systemId": "dnd5e",
     "systemVersion": "5.3.3"
   },
-  "_key": "!items!lJYI1hUrH8gqwMGq"
+  "_id": "inwbPlUMWPSEPFx8",
+  "_key": "!items!inwbPlUMWPSEPFx8"
 }
