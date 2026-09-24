@@ -1,15 +1,23 @@
 import {animationUtils, crosshairUtils, genericUtils} from '../../proxy.mjs';
-async function select(token, range, {dark = false, displayHint = true} = {}) {
+async function select(token, range, {dark = false, displayHint = true, spendMovement = true} = {}) {
     if (displayHint) genericUtils.notify('CHRISPREMADES.Animations.SelectLocations.Message');
     const positions = [];
     let i = 0;
     let cancelled = false;
+    let centerpoint = token.getCenterPoint();
     const fade = dark ? 'jb2a.particles.outward.blue.01.03' : 'jb2a.particles.outward.purple.01.03';
     const offset = {x: token.object.w / 2, y: token.object.h / 2};
     while (!cancelled) {
-        positions[i] = await crosshairUtils.aimCrosshair({token, maxRange: range});
+        if (range <= 0) break;
+        positions[i] = await crosshairUtils.aimCrosshair({token, maxRange: range, centerpoint});
         if (positions[i].cancelled) {
-            positions.push(positions[i]);
+            const point = positions[i];
+            positions.push(point);
+            if (spendMovement) {
+                const moved = token.measureMovementPath([{x: centerpoint.x - offset.x, y: centerpoint.y - offset.y}, point]);
+                centerpoint = token.getCenterPoint(point);
+                range -= moved?.cost ?? 0;
+            }
             i++;
             /* eslint-disable indent */
             new Sequence()
@@ -51,7 +59,7 @@ async function select(token, range, {dark = false, displayHint = true} = {}) {
     return positions;
 }
 export const selectLocations = {
-    name: 'CHRISPREMADES.Animations.SelectLocation.Name',
+    name: 'CHRISPREMADES.Animations.SelectLocations.Name',
     macros: {
         select
     },
@@ -65,7 +73,12 @@ export const selectLocations = {
             default: false
         },
         displayHint: {
-            label: 'CHRISPREMADES.Animations.SelectLocation.DisplayHint',
+            label: 'CHRISPREMADES.Animations.SelectLocations.DisplayHint',
+            type: 'checkbox',
+            default: true
+        },
+        spendMovement: {
+            label: 'CHRISPREMADES.Animations.SelectLocations.SpendMovement',
             type: 'checkbox',
             default: true
         }

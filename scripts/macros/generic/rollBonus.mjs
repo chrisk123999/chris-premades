@@ -1,6 +1,6 @@
-import {automationUtils, constants, D20Bonus} from '../../proxy.mjs';
+import {automationUtils, constants, D20Bonus, dialogUtils, workflowUtils} from '../../proxy.mjs';
 import utils from '../../utils.mjs';
-function roll({document, config, macroClass: {identifier}}) {
+function roll({document, config, macroClass: {identifier}, message}) {
     const settings = automationUtils.getGenericConfigValues(document, 'chris-premades', identifier, configKeys);
     if (!settings.bonus?.length) return;
     if (settings.ability?.length && !settings.ability.includes(config.ability)) return;
@@ -11,12 +11,25 @@ function roll({document, config, macroClass: {identifier}}) {
         phase: settings.phase === 'all' ? Object.values(constants.bonusPhases) : settings.phase,
         optional: settings.optional
     });
-    if (settings.rollItem || settings.rollActivity) bonus.withOnUse(async ({bonus}) => await utils.rollConfiguredSource(bonus, settings));
+    if (settings.rollItem || settings.rollActivity) bonus.withOnUse(async ({bonus}) => {
+        settings.storedOptionalBonus = bonus;
+        if (!settings.consumeSuccessOnly) await utils.rollConfiguredSource(bonus, settings);
+        else workflowUtils.setWorkflowProperty(message, identifier, settings);
+    });
     if (settings.useActivityCosts) {
         bonus.withDefaultCosts().initialize();
         if (!D20Bonus.CheckCost(bonus)) return;
     }
     return bonus;
+}
+async function onSuccess({macroClass: {identifier}, message, roll}) {
+    const settings = workflowUtils.getWorkflowProperty(message, identifier);
+    if (!settings?.consumeSuccessOnly) return;
+    let consume = roll.isSuccess;
+    if (!roll.isSuccess && !roll.isFailure)
+        consume ||= await dialogUtils.confirm(settings.storedOptionalBonus.name, _loc('CHRISPREMADES.Macros.Generic.RollBonus.Success', {total: roll.total}));
+    settings.consume = consume;
+    await utils.rollConfiguredSource(settings.storedOptionalBonus, settings);
 }
 const genericConfig = {
     bonus: {
@@ -67,6 +80,13 @@ const genericConfig = {
         category: 'behavior',
         label: 'CHRISPREMADES.Macros.Generic.Common.Costs',
         hint: 'CHRISPREMADES.Macros.Generic.RollBonus.CostsHint'
+    },
+    consumeSuccessOnly: {
+        default: false,
+        type: 'checkbox',
+        category: 'behavior',
+        label: 'CHRISPREMADES.Macros.Generic.RerollWithBonus.ConsumeSuccess',
+        hint: 'CHRISPREMADES.Macros.Generic.RerollWithBonus.ConsumeSuccessHint'
     }
 };
 const skillConfig = {
@@ -91,7 +111,7 @@ const base = {
     version: '1.0.0',
     category: 'utility',
     generic: true,
-    documents: ['activeeffect', 'item'],
+    documents: ['activeeffect', 'activity', 'item'],
     genericConfig
 };
 const pass = [
@@ -99,6 +119,11 @@ const pass = [
         pass: 'actorOptionalBonus',
         macro: roll,
         priority: 250
+    },
+    {
+        pass: 'actorPost',
+        macro: onSuccess,
+        priority: 300
     }
 ];
 export const checkBonus = {...base, check: pass};
