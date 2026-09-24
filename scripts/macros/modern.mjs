@@ -31,7 +31,6 @@ export {lunarForm as 'lunar-form'} from './modern/classFeatures/druid/moon/lunar
 // Fighter
 export {heroicWarrior as 'heroic-warrior'} from './modern/classFeatures/fighter/champion/heroicWarrior.mjs';
 export {studiedAttacks as 'studied-attacks'} from './modern/classFeatures/fighter/studiedAttacks.mjs';
-export {tacticalMind as 'tactical-mind'} from './modern/classFeatures/fighter/tacticalMind.mjs';
 export {tacticalShift as 'tactical-shift'} from './modern/classFeatures/fighter/tacticalShift.mjs';
 // Monk
 export {empoweredStrikes as 'empowered-strikes'} from './modern/classFeatures/monk/empoweredStrikes.mjs';

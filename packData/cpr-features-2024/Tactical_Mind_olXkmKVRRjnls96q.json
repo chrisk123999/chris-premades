@@ -207,24 +207,60 @@
         "check": [
           {
             "source": "chris-premades",
-            "rules": "all",
-            "identifier": "tactical-mind"
+            "identifier": "checkBonus",
+            "rules": "all"
           }
         ],
         "skill": [
           {
             "source": "chris-premades",
-            "rules": "all",
-            "identifier": "tactical-mind"
+            "identifier": "skillBonus",
+            "rules": "all"
           }
         ],
         "tool": [
           {
             "source": "chris-premades",
-            "rules": "all",
-            "identifier": "tactical-mind"
+            "identifier": "toolBonus",
+            "rules": "all"
           }
         ]
+      },
+      "genericConfig": {
+        "chris-premades": {
+          "checkBonus": {
+            "bonus": "1d10",
+            "phase": "postResult",
+            "ability": [],
+            "optional": true,
+            "rollActivity": "utilityTaMiclass",
+            "rollItem": false,
+            "useActivityCosts": true,
+            "consumeSuccessOnly": true
+          },
+          "skillBonus": {
+            "bonus": "1d10",
+            "phase": "postResult",
+            "ability": [],
+            "optional": true,
+            "rollActivity": "utilityTaMiclass",
+            "rollItem": false,
+            "useActivityCosts": true,
+            "consumeSuccessOnly": true,
+            "skill": []
+          },
+          "toolBonus": {
+            "bonus": "1d10",
+            "phase": "postResult",
+            "ability": [],
+            "optional": true,
+            "rollActivity": "utilityTaMiclass",
+            "rollItem": false,
+            "useActivityCosts": true,
+            "consumeSuccessOnly": true,
+            "tool": []
+          }
+        }
       }
     }
   },

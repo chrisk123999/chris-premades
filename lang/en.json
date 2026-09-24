@@ -186,6 +186,7 @@
             "MoonColor": "Red Moon",
             "Multiplier": "Multiplier",
             "Name": "Name",
+            "None": "None",
             "NoDCPrompt": "Prompt on no DC",
             "Number": "Number",
             "Opacity": "Opacity",
@@ -420,6 +421,15 @@
                     "ReduceByRoll": "Reduce By Roll",
                     "ShortRestCures": "Short Rest Cures"
                 },
+                "RerollWithBonus": {
+                    "Consume": "Consume",
+                    "ConsumeSuccess": "Consume On Success",
+                    "ConsumeSuccessHint": "Costs are consumed only if the roll succeeds with the bonus.",
+                    "Failed": "Failed Only",
+                    "FailedHint": "This feature can be used on failed rolls only.",
+                    "Once": "Once Per Roll",
+                    "OnceHint": "This feature can be used once per roll."
+                },
                 "RollBonus": {
                     "AbilityHint": "Limit this bonus to a list of abilities.",
                     "BonusHint": "Formula added to the roll when this bonus is taken.",
@@ -427,6 +437,7 @@
                     "Optional": "Optional",
                     "OptionalHint": "Prompt before the bonus is added, rather than always adding it.",
                     "SkillHint": "Limit this bonus to a list of skills.",
+                    "Success": "Did the roll succeed? (Roll Total: {total})",
                     "ToolHint": "Limit this bonus to a list of tools."
                 },
                 "Teleport": {
@@ -694,7 +705,6 @@
                     "Regeneration": "Regeneration",
                     "WhisperingAura": "Whispering Aura"
                 },
-                "TacticalMind": "Did the check succeed? (Roll Total: {total})",
                 "UnarguableWizardry": {
                     "Prompt": "Unarguable Wizardry"
                 },

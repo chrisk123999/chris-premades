@@ -1,9 +1,11 @@
 # 2.0.4 Pre-Release:
 ## Update Notes:
 - CPR for v14 does not contain all automations that previously existed in V13.
+- Generic Macros: `{type}Bonus` and `reroll{Type}WithBonus`, where type is check, save, skill, or tool.
 ## Bug Fixes:
-- Generic: movementAnimation
+- Generic: `movementAnimation`
 - Instinctive Pounce
+- Cunning Action
 ## Updated Legacy Automations:
 - Indomitable
 - Second Wind

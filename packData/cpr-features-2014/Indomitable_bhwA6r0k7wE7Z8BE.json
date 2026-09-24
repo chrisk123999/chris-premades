@@ -215,8 +215,8 @@
         "save": [
           {
             "source": "chris-premades",
-            "rules": "all",
-            "identifier": "indomitable"
+            "identifier": "rerollSaveWithBonus",
+            "rules": "all"
           }
         ]
       },
@@ -226,6 +226,19 @@
       "automation": {
         "source": "chris-premades",
         "version": "2.0.4"
+      },
+      "genericConfig": {
+        "chris-premades": {
+          "rerollSaveWithBonus": {
+            "bonus": "",
+            "ability": [],
+            "failedOnly": true,
+            "oncePerRoll": true,
+            "consume": "always",
+            "rollActivity": "utilityIndoclass",
+            "rollItem": true
+          }
+        }
       }
     }
   },

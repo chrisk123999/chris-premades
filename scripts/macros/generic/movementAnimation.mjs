@@ -2,7 +2,7 @@ import {automationUtils, documentUtils, effectUtils, rollUtils} from '../../prox
 async function use({document, workflow}) {
     const rangeFormula = automationUtils.getGenericConfigValue(document, 'chris-premades', 'movementAnimation', 'range');
     const range = (await rollUtils.rollDice(rangeFormula, {document}))?.total ?? 0;
-    if (!range) return; 
+    if (!range) return;
     const {animation: selectLocationsAnimation, options: selectLocationsOptions} = automationUtils.getResolvedAnimation(document, 'selectLocationsAnimation', {source: 'chris-premades', identifier: 'movementAnimation'});
     if (!selectLocationsAnimation) return;
     const {animation: moveAnimation} = automationUtils.getResolvedAnimation(document, 'moveAnimation', {source: 'chris-premades', identifier: 'movementAnimation'});

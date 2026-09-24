@@ -207,14 +207,27 @@
         "save": [
           {
             "source": "chris-premades",
-            "rules": "all",
-            "identifier": "indomitable"
+            "identifier": "rerollSaveWithBonus",
+            "rules": "all"
           }
         ]
       },
       "automation": {
         "source": "chris-premades",
         "version": "2.0.4"
+      },
+      "genericConfig": {
+        "chris-premades": {
+          "rerollSaveWithBonus": {
+            "bonus": "@classes.fighter.levels",
+            "ability": [],
+            "failedOnly": true,
+            "oncePerRoll": true,
+            "consume": "always",
+            "rollActivity": "bVArouNENAKLfilg",
+            "rollItem": true
+          }
+        }
       }
     }
   },
