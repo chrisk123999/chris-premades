@@ -180,5 +180,10 @@
   "img": "icons/magic/light/beam-rays-blue.webp",
   "folder": "SorcDivineSoul01",
   "_id": "Qt0G29csHWoR8qJu",
+  "_stats": {
+    "coreVersion": "14.364",
+    "systemId": null,
+    "systemVersion": null
+  },
   "_key": "!items!Qt0G29csHWoR8qJu"
 }

@@ -312,5 +312,10 @@
   },
   "img": "icons/magic/unholy/orb-swirling-teal.webp",
   "folder": "SorcAberrantMnd1",
+  "_stats": {
+    "coreVersion": "14.364",
+    "systemId": null,
+    "systemVersion": null
+  },
   "_key": "!items!TjTR1spYhu0E36ac"
 }

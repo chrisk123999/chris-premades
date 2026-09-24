@@ -159,5 +159,10 @@
   },
   "img": "icons/sundries/books/book-symbol-spiral-silver-blue.webp",
   "folder": "SorcAberrantMnd1",
+  "_stats": {
+    "coreVersion": "14.364",
+    "systemId": null,
+    "systemVersion": null
+  },
   "_key": "!items!xYUzCobE9DuYbocJ"
 }

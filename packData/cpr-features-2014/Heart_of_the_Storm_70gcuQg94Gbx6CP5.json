@@ -227,10 +227,10 @@
       "name": "Heart of the Storm",
       "origin": null,
       "duration": {
-        "rounds": null,
-        "seconds": null,
-        "combat": null,
-        "turns": null
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
       },
       "disabled": false,
       "flags": {
@@ -277,11 +277,25 @@
       "tint": "#ffffff",
       "transfer": true,
       "statuses": [],
+      "_stats": {
+        "coreVersion": "14.364",
+        "systemId": null,
+        "systemVersion": null
+      },
+      "start": null,
+      "showIcon": 1,
+      "folder": null,
+      "sort": 0,
       "_key": "!items.effects!70gcuQg94Gbx6CP5.2MM1ygAWAFLZ2wkl"
     }
   ],
   "img": "icons/magic/air/wind-tornado-wall-blue.webp",
   "folder": "SorcStormSorcry1",
   "_id": "70gcuQg94Gbx6CP5",
+  "_stats": {
+    "coreVersion": "14.364",
+    "systemId": null,
+    "systemVersion": null
+  },
   "_key": "!items!70gcuQg94Gbx6CP5"
 }

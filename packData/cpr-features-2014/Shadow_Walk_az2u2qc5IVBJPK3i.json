@@ -207,5 +207,10 @@
   "img": "icons/magic/air/air-wave-gust-blue.webp",
   "folder": "SorcShadowMagic1",
   "_id": "az2u2qc5IVBJPK3i",
+  "_stats": {
+    "coreVersion": "14.364",
+    "systemId": null,
+    "systemVersion": null
+  },
   "_key": "!items!az2u2qc5IVBJPK3i"
 }

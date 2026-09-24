@@ -7,10 +7,10 @@
       "name": "Aquatic Adaptation",
       "statuses": [],
       "duration": {
-        "seconds": null,
-        "rounds": null,
-        "turns": null,
-        "combat": null
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
       },
       "tint": "#ffffff",
       "transfer": false,
@@ -56,16 +56,25 @@
         ]
       },
       "origin": null,
+      "_stats": {
+        "coreVersion": "14.364",
+        "systemId": null,
+        "systemVersion": null
+      },
+      "start": null,
+      "showIcon": 1,
+      "folder": null,
+      "sort": 0,
       "_key": "!items.effects!PPc30arCOfDZYCxp.nPNVWkzjmG20WFnQ"
     },
     {
       "name": "Glistening Flight",
       "statuses": [],
       "duration": {
-        "seconds": null,
-        "rounds": null,
-        "turns": null,
-        "combat": null
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
       },
       "tint": "#ffffff",
       "transfer": false,
@@ -110,23 +119,32 @@
           },
           {
             "key": "system.attributes.movement.hover",
-            "value": "true",
+            "value": true,
             "priority": 20,
             "type": "custom"
           }
         ]
       },
       "origin": null,
+      "_stats": {
+        "coreVersion": "14.364",
+        "systemId": null,
+        "systemVersion": null
+      },
+      "start": null,
+      "showIcon": 1,
+      "folder": null,
+      "sort": 0,
       "_key": "!items.effects!PPc30arCOfDZYCxp.x1WmVQRlhi067I04"
     },
     {
       "name": "See the Invisible",
       "statuses": [],
       "duration": {
-        "seconds": null,
-        "rounds": null,
-        "turns": null,
-        "combat": null
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
       },
       "tint": "#ffffff",
       "transfer": false,
@@ -171,23 +189,32 @@
           },
           {
             "key": "ATL.detectionModes.seeInvisibility.range",
-            "value": "60",
+            "value": 60,
             "priority": 20,
             "type": "upgrade"
           }
         ]
       },
       "origin": null,
+      "_stats": {
+        "coreVersion": "14.364",
+        "systemId": null,
+        "systemVersion": null
+      },
+      "start": null,
+      "showIcon": 1,
+      "folder": null,
+      "sort": 0,
       "_key": "!items.effects!PPc30arCOfDZYCxp.dtEqpnPPpogd50nq"
     },
     {
       "name": "Wormlike Movement",
       "statuses": [],
       "duration": {
-        "seconds": null,
-        "rounds": null,
-        "turns": null,
-        "combat": null
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
       },
       "tint": "#ffffff",
       "transfer": false,
@@ -226,6 +253,15 @@
         "changes": []
       },
       "origin": null,
+      "_stats": {
+        "coreVersion": "14.364",
+        "systemId": null,
+        "systemVersion": null
+      },
+      "start": null,
+      "showIcon": 1,
+      "folder": null,
+      "sort": 0,
       "_key": "!items.effects!PPc30arCOfDZYCxp.NCiWKAuD9jvRPzig"
     }
   ],
@@ -520,5 +556,10 @@
   },
   "img": "icons/magic/control/silhouette-hold-change-blue.webp",
   "folder": "SorcAberrantMnd1",
+  "_stats": {
+    "coreVersion": "14.364",
+    "systemId": null,
+    "systemVersion": null
+  },
   "_key": "!items!PPc30arCOfDZYCxp"
 }

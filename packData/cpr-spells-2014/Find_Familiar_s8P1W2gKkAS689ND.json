@@ -575,5 +575,10 @@
   "img": "icons/commodities/materials/feathers-brown.webp",
   "folder": "pfzYb8UerE97sz8L",
   "_id": "s8P1W2gKkAS689ND",
+  "_stats": {
+    "coreVersion": "14.364",
+    "systemId": null,
+    "systemVersion": null
+  },
   "_key": "!items!s8P1W2gKkAS689ND"
 }

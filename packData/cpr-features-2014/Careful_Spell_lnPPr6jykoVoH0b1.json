@@ -212,5 +212,10 @@
     }
   },
   "_id": "lnPPr6jykoVoH0b1",
+  "_stats": {
+    "coreVersion": "14.364",
+    "systemId": null,
+    "systemVersion": null
+  },
   "_key": "!items!lnPPr6jykoVoH0b1"
 }
