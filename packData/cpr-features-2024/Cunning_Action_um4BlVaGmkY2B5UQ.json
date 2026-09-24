@@ -60,8 +60,9 @@
         "effects": [],
         "range": {
           "override": false,
-          "units": "self",
-          "special": ""
+          "units": "ft",
+          "special": "",
+          "value": "@attributes.movement.max"
         },
         "target": {
           "template": {

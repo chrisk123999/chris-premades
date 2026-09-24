@@ -42,12 +42,11 @@
                 "Saiyan": "Saiyan"
             },
             "ScorchingRay": "Scorching Ray",
-            "SelectLocation": {
-                "DisplayHint": "Display Hint",
-                "Name": "Select Location"
-            },
             "SelectLocations": {
-                "Message": "Right click to add waypoints. Left click to finish."
+                "DisplayHint": "Display Hint",
+                "Message": "Right click to add waypoints. Left click to finish.",
+                "Name": "Select Location",
+                "SpendMovement": "Spend Movement"
             },
             "ShadowSummon": "Shadow Summon",
             "ShapeChange": "Shape Change",
@@ -401,6 +400,7 @@
                 "MovementAnimation": {
                     "MoveAnimation": "Move Animation",
                     "MovementEffect": "Movement Effect",
+                    "NoMovement": "No movement remaining!",
                     "SelectAnimation": "Selection Animation"
                 },
                 "MultiSingleTarget": {
