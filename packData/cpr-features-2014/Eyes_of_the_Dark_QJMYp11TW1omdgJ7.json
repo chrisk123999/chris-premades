@@ -6,10 +6,10 @@
       "name": "Eyes of the Dark",
       "statuses": [],
       "duration": {
-        "seconds": null,
-        "rounds": null,
-        "turns": null,
-        "combat": null
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
       },
       "tint": "#ffffff",
       "transfer": true,
@@ -47,13 +47,22 @@
         "changes": [
           {
             "key": "system.attributes.senses.darkvision",
-            "value": "120",
+            "value": 120,
             "priority": 10,
             "type": "upgrade"
           }
         ]
       },
       "origin": null,
+      "_stats": {
+        "coreVersion": "14.364",
+        "systemId": null,
+        "systemVersion": null
+      },
+      "start": null,
+      "showIcon": 1,
+      "folder": null,
+      "sort": 0,
       "_key": "!items.effects!QJMYp11TW1omdgJ7.3oSNVEHw2zlcgY6R"
     }
   ],
@@ -236,5 +245,10 @@
   "img": "icons/magic/perception/eye-ringed-glow-angry-small-teal.webp",
   "folder": "SorcShadowMagic1",
   "_id": "QJMYp11TW1omdgJ7",
+  "_stats": {
+    "coreVersion": "14.364",
+    "systemId": null,
+    "systemVersion": null
+  },
   "_key": "!items!QJMYp11TW1omdgJ7"
 }

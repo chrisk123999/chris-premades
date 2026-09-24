@@ -1,0 +1,16 @@
+{
+  "type": "Item",
+  "folder": "esNnzs4d7xTOm6Ve",
+  "name": "Fighter",
+  "color": null,
+  "sorting": "a",
+  "_id": "Oz52XoWXHOkDQLvw",
+  "description": "",
+  "flags": {},
+  "_stats": {
+    "coreVersion": "14.364",
+    "systemId": "dnd5e",
+    "systemVersion": "5.3.3"
+  },
+  "_key": "!folders!Oz52XoWXHOkDQLvw"
+}

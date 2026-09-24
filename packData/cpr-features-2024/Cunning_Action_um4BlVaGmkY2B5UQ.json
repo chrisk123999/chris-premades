@@ -13,7 +13,8 @@
       "rules": "2024",
       "revision": 1,
       "license": "CC-BY-4.0",
-      "book": ""
+      "book": "PHB 2024",
+      "page": ""
     },
     "uses": {
       "max": "",
@@ -59,8 +60,9 @@
         "effects": [],
         "range": {
           "override": false,
-          "units": "self",
-          "special": ""
+          "units": "ft",
+          "special": "",
+          "value": "@attributes.movement.max"
         },
         "target": {
           "template": {
@@ -615,8 +617,8 @@
       },
       "_stats": {
         "coreVersion": "14.364",
-        "systemId": null,
-        "systemVersion": null
+        "systemId": "dnd5e",
+        "systemVersion": "5.3.3"
       },
       "_key": "!items.effects!um4BlVaGmkY2B5UQ.qcM2hg18rQEZDsMP"
     },
@@ -662,12 +664,12 @@
           "enableCondition": "",
           "disableCondition": "",
           "stackable": "noneName",
-          "expiryMode": "default",
+          "expiryMode": "delete",
           "durationExpression": "",
           "macroRepeat": "none",
           "disableIncapacitated": false,
           "selfTarget": false,
-          "selfTargetAlways": false,
+          "selfTargetAlways": true,
           "dontApply": false,
           "specialDuration": []
         },
@@ -677,8 +679,8 @@
       },
       "_stats": {
         "coreVersion": "14.364",
-        "systemId": null,
-        "systemVersion": null
+        "systemId": "dnd5e",
+        "systemVersion": "5.3.3"
       },
       "_key": "!items.effects!um4BlVaGmkY2B5UQ.DwRojsYeC8kTO6yr"
     }
@@ -687,15 +689,15 @@
     "cat": {
       "automation": {
         "source": "chris-premades",
-        "version": "0"
+        "version": "2.0.4"
       }
     }
   },
   "_id": "um4BlVaGmkY2B5UQ",
   "_stats": {
     "coreVersion": "14.364",
-    "systemId": null,
-    "systemVersion": null
+    "systemId": "dnd5e",
+    "systemVersion": "5.3.3"
   },
   "_key": "!items!um4BlVaGmkY2B5UQ"
 }

@@ -81,10 +81,10 @@
       },
       "disabled": false,
       "duration": {
-        "combat": null,
-        "seconds": null,
-        "rounds": null,
-        "turns": null
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
       },
       "description": "",
       "tint": "#ffffff",
@@ -118,6 +118,15 @@
           ]
         }
       },
+      "_stats": {
+        "coreVersion": "14.364",
+        "systemId": null,
+        "systemVersion": null
+      },
+      "start": null,
+      "showIcon": 1,
+      "folder": null,
+      "sort": 0,
       "_key": "!items.effects!zyQIlXVfluKjWVpL.CAIhnqA17jsXhHUe"
     }
   ],
@@ -456,5 +465,10 @@
   "img": "icons/creatures/mammals/humanoid-cat-skulking-teal.webp",
   "folder": "SorcShadowMagic1",
   "_id": "zyQIlXVfluKjWVpL",
+  "_stats": {
+    "coreVersion": "14.364",
+    "systemId": null,
+    "systemVersion": null
+  },
   "_key": "!items!zyQIlXVfluKjWVpL"
 }

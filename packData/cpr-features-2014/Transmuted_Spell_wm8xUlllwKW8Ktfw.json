@@ -220,5 +220,10 @@
   "effects": [],
   "folder": "SorcMetamagic001",
   "_id": "wm8xUlllwKW8Ktfw",
+  "_stats": {
+    "coreVersion": "14.364",
+    "systemId": null,
+    "systemVersion": null
+  },
   "_key": "!items!wm8xUlllwKW8Ktfw"
 }

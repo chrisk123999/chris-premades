@@ -14,10 +14,10 @@
       },
       "disabled": false,
       "duration": {
-        "seconds": null,
-        "combat": null,
-        "rounds": null,
-        "turns": null
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
       },
       "description": "",
       "origin": null,
@@ -51,6 +51,15 @@
           ]
         }
       },
+      "_stats": {
+        "coreVersion": "14.364",
+        "systemId": null,
+        "systemVersion": null
+      },
+      "start": null,
+      "showIcon": 1,
+      "folder": null,
+      "sort": 0,
       "_key": "!items.effects!0EhMm1y7BLjw3h7w.XfSgEqO5crP5FFdi"
     },
     {
@@ -64,10 +73,10 @@
       },
       "disabled": false,
       "duration": {
-        "seconds": null,
-        "combat": null,
-        "rounds": null,
-        "turns": null
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
       },
       "description": "",
       "origin": null,
@@ -98,6 +107,15 @@
           "identifier": "telepathicSpeechTarget"
         }
       },
+      "_stats": {
+        "coreVersion": "14.364",
+        "systemId": null,
+        "systemVersion": null
+      },
+      "start": null,
+      "showIcon": 1,
+      "folder": null,
+      "sort": 0,
       "_key": "!items.effects!0EhMm1y7BLjw3h7w.HqYie1XSqgikOFpw"
     }
   ],
@@ -266,5 +284,10 @@
   },
   "img": "icons/magic/control/hypnosis-mesmerism-eye.webp",
   "folder": "SorcAberrantMnd1",
+  "_stats": {
+    "coreVersion": "14.364",
+    "systemId": null,
+    "systemVersion": null
+  },
   "_key": "!items!0EhMm1y7BLjw3h7w"
 }

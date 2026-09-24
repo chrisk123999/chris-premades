@@ -29,7 +29,9 @@ export {primalStrike as 'elemental-fury-primal-strike'} from './modern/classFeat
 export {wildResurgence as 'wild-resurgence'} from './modern/classFeatures/druid/wildResurgence.mjs';
 export {wildShape as 'wild-shape'} from './modern/classFeatures/druid/wildShape.mjs';
 // Fighter
-export {heroicWarrior as 'heroic-warrior'} from './modern/classFeatures/fighter/heroicWarrior.mjs';
+export {heroicWarrior as 'heroic-warrior'} from './modern/classFeatures/fighter/champion/heroicWarrior.mjs';
+export {studiedAttacks as 'studied-attacks'} from './modern/classFeatures/fighter/studiedAttacks.mjs';
+export {tacticalShift as 'tactical-shift'} from './modern/classFeatures/fighter/tacticalShift.mjs';
 // Monk
 export {empoweredStrikes as 'empowered-strikes'} from './modern/classFeatures/monk/empoweredStrikes.mjs';
 export {heightenedFocus as 'heightened-focus'} from './modern/classFeatures/monk/heightenedFocus.mjs';

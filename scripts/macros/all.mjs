@@ -14,6 +14,8 @@ export {wildShape as 'wild-shape', wildShapeChooseForms, wildShapeRevert} from '
 export {beguilingTwist as 'beguiling-twist'} from './all/classFeatures/ranger/feyWanderer/beguilingTwist.mjs';
 export {dreadfulStrikes as 'dreadful-strikes'} from './all/classFeatures/ranger/feyWanderer/dreadfulStrikes.mjs';
 export {umbralSight as 'umbral-sight'} from './all/classFeatures/ranger/gloomStalker/umbralSight.mjs';
+// Fighter
+export {indomitable} from './all/classFeatures/fighter/indomitable.mjs';
 // Rogue
 export {steadyAim as 'steady-aim'} from './all/classFeatures/rogue/steadyAim.mjs';
 // Warlock

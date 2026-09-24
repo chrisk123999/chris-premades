@@ -207,5 +207,10 @@
   "img": "icons/magic/earth/explosion-lava-stone-green.webp",
   "folder": "jv1qLsd4LTtCBvYj",
   "_id": "S4YTwKY5KbO6GY94",
+  "_stats": {
+    "coreVersion": "14.364",
+    "systemId": null,
+    "systemVersion": null
+  },
   "_key": "!items!S4YTwKY5KbO6GY94"
 }

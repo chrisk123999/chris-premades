@@ -166,7 +166,7 @@
     }
   },
   "effects": [],
-  "folder": "8ax5XkSTWyxxPBH8",
+  "folder": "eIsDjg9IF7RqmfL3",
   "flags": {
     "dnd5e": {
       "riders": {
@@ -196,5 +196,10 @@
     }
   },
   "_id": "AI3PBh0JFTIHJQvI",
+  "_stats": {
+    "coreVersion": "14.364",
+    "systemId": null,
+    "systemVersion": null
+  },
   "_key": "!items!AI3PBh0JFTIHJQvI"
 }
