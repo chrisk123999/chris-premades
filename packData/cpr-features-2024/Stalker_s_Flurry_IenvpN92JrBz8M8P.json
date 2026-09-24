@@ -68,7 +68,9 @@
           "parts": []
         },
         "save": {
-          "ability": [],
+          "ability": [
+            "wis"
+          ],
           "dc": {
             "calculation": "spellcasting",
             "formula": ""
@@ -104,7 +106,7 @@
           "automationOnly": false,
           "otherActivityCompatible": true,
           "otherActivityAsParentType": true,
-          "identifier": "",
+          "identifier": "stalkers-flurry-mass-fear",
           "displayActivityName": false,
           "rollMode": "default",
           "chooseEffects": false,
@@ -129,7 +131,8 @@
         "img": "",
         "appliedEffects": [
           "poQSTY3F70fkSIdL"
-        ]
+        ],
+        "identifier": "stalkers-flurry-mass-fear"
       }
     },
     "uses": {
@@ -167,7 +170,7 @@
   },
   "effects": [
     {
-      "name": "Stalker's Fury: Mass Fear",
+      "name": "Stalker's Flurry: Mass Fear",
       "img": "icons/magic/unholy/hand-weapon-glow-black-green.webp",
       "origin": "Compendium.chris-premades.CPRClassFeatures2024.Item.IenvpN92JrBz8M8P",
       "transfer": false,

@@ -37,6 +37,10 @@ async function damage({document, workflow}) {
     if (config.spellSchool.length) {
         if (!config.spellSchool.includes(workflow.item.system.school)) return;
     }
+    if (config.targetWounded) {
+        const hp = (workflow.hitTargets.first() ?? workflow.targets.first())?.actor?.system.attributes.hp;
+        if (!hp || hp.value >= hp.max) return;
+    }
     const bonus = new DamageBonus(document, {formula: config.bonus, optional, type: config.bonusDamageType, maxTargets: config.maxTargets || undefined, allowCritical: config.allowCritical})
         .withOnUse(async ({bonus}) => {
             if (trackLastUse) await documentUtils.setFlag(document, 'chris-premades', 'lastUse', multiSingleTarget.rollID);
@@ -51,7 +55,7 @@ async function damage({document, workflow}) {
 }
 export const damageBonusToOneRoll = {
     rules: 'all',
-    version: '2.0.4',
+    version: '2.1.0',
     category: 'damage',
     generic: true,
     documents: ['activeeffect', 'item'],
@@ -175,6 +179,13 @@ export const damageBonusToOneRoll = {
             category: 'behavior',
             label: 'CHRISPREMADES.Macros.Generic.DamageBonusToOneRoll.EveryRoll',
             hint: 'CHRISPREMADES.Macros.Generic.DamageBonusToOneRoll.EveryRollHint'
+        },
+        targetWounded: {
+            default: false,
+            type: 'checkbox',
+            category: 'behavior',
+            label: 'CHRISPREMADES.Macros.Generic.DamageBonusToOneRoll.TargetWounded',
+            hint: 'CHRISPREMADES.Macros.Generic.DamageBonusToOneRoll.TargetWoundedHint'
         },
         useActivityCosts: {
             default: false,

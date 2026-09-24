@@ -22,8 +22,8 @@ async function use({document, workflow}) {
         const slide = Math.min(0, 5 - distance);
         if (slide) await tokenUtils.slideToken(targetToken, {sourceToken, distance: slide});
     }
-    const {animation} = automationUtils.getResolvedAnimation(document, 'animation');
-    await tokenUtils.teleportToken(sourceToken, {animation, range: workflow.activity.range.value});
+    const {animation, options} = automationUtils.getResolvedAnimation(document, 'animation');
+    await tokenUtils.teleportToken(sourceToken, {animation, options, range: workflow.activity.range.value});
 }
 export const warpingImplosion = {
     name: 'Warping Implosion',

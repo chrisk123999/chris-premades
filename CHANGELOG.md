@@ -1,3 +1,62 @@
+# 2.0.4 Pre-Release:
+## Update Notes:
+- CPR for v14 does not contain all automations that previously existed in V13.
+- Requires CAT version 0.0.9.
+- Added Generic: `selectDamageType`, for attacks whose damage has more than one type.
+- Improved Generic: `damageBonusToOneRoll` gains `targetWounded`.
+- Improved Generic: `movementAnimation` gains `movementType`, choosing which speed bounds the crosshair. Defaults to the fastest, as before.
+- Infused Strikes exposes its formula and range, Exceptional Training its damage type, and Stalker's Flurry a separate Sudden Strike range.
+## Bug Fixes:
+- Summon Aberration: the summon's features are fetched in one pass, so a missing pack item no longer leaves a half built summon behind.
+- Stalker's Flurry: Mass Fear now targets creatures around the creature you hit rather than around you, no longer asks you to save against your own effect, and its save ability was missing.
+- Darkness: real darkness now works for cube and rectangle regions, not just spheres.
+- Hex: the caster's effect is now a child of the concentration effect, so dropping concentration removes it.
+- Eldritch Invocations: Pact of the Chain now finds the familiar by summon identifier, so it works with more than one copy of Find Familiar on the sheet.
+- Summon Aberration sets the summon's challenge rating from the caster's proficiency again, which the v13 conversion dropped.
+- Warping Implosion and the teleport generic pass the animation's own config through to it. Nothing forwarded those options, so a configured teleport animation always ran on its defaults.
+## New Legacy Automations:
+- Dash
+- Disengage (opportunity attack immunity needs gambits-premades)
+- Dodge
+- Help
+- Hunter's Mark
+- Misty Step
+- Summon Fey
+- Primal Companion
+- Exceptional Training
+- Drake Companion
+- Colossus Slayer
+- Favored Foe
+- Dread Ambusher
+- Umbral Sight
+- Beguiling Twist
+- Dreadful Strikes
+## New Modern Automations:
+- Dash
+- Disengage (opportunity attack immunity needs gambits-premades)
+- Dodge
+- Help
+- Hunter's Mark
+- Misty Step
+- Summon Fey
+- Primal Companion
+- Exceptional Training
+- Share Spells
+- Favored Enemy
+- Dread Ambusher
+- Shadowy Dodge
+- Umbral Sight
+- Beguiling Twist
+- Dreadful Strikes
+- Misty Wanderer
+- Fey Reinforcements
+- Nature's Veil
+- Otherworldly Glamour
+- Precise Hunter
+- Bestial Fury
+## Animations:
+- Misty Step gains a colour option.
+
 # 2.0.3 Pre-Release:
 ## Update Notes:
 - CPR for v14 does not contain all automations that previously existed in V13.

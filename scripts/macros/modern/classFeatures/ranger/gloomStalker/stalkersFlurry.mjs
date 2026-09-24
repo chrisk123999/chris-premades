@@ -19,6 +19,12 @@ export const stalkersFlurry = {
             label: 'CHRISPREMADES.Config.DamageType',
             category: 'homebrew'
         },
+        suddenStrikeRange: {
+            default: 5,
+            type: 'number',
+            label: 'CHRISPREMADES.Macros.Modern.StalkersFlurry.SuddenStrikeRange',
+            category: 'homebrew'
+        },
         range: {
             default: 10,
             type: 'number',
@@ -26,7 +32,7 @@ export const stalkersFlurry = {
             category: 'homebrew'
         },
         includeSelf: {
-            default: true,
+            default: false,
             type: 'checkbox',
             label: 'CHRISPREMADES.Macros.Modern.StalkersFlurry.IncludeSelf',
             category: 'homebrew'

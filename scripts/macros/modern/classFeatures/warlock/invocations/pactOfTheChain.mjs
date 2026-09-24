@@ -2,8 +2,7 @@ import {actorUtils, dialogUtils, summonUtils, workflowUtils} from '../../../../.
 async function use({document, workflow}) {
     if (workflow.activity.identifier !== 'familiar-attack') return;
     if (!workflow.targets.size) return;
-    const findFamiliar = actorUtils.getItemByIdentifier(workflow.actor, 'find-familiar');
-    const familiarToken = summonUtils.getSummonsBySource(findFamiliar)[0]?.token;
+    const familiarToken = summonUtils.getSummonsByIdentifier('find-familiar', {actor: workflow.actor})[0]?.token;
     if (!familiarToken || actorUtils.hasUsedReaction(familiarToken.actor)) return;
     const attacks = familiarToken.actor.items.filter(item => item.hasAttack);
     if (!attacks.length) return;

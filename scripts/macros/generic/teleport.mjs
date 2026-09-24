@@ -1,9 +1,9 @@
 import {automationUtils, tokenUtils} from '../../proxy.mjs';
 async function use({document, workflow}) {
     if (!workflow.token) return;
-    const {animation} = automationUtils.getResolvedAnimation(document, 'animation', {source: 'chris-premades', identifier: 'teleport'});
+    const {animation, options} = automationUtils.getResolvedAnimation(document, 'animation', {source: 'chris-premades', identifier: 'teleport'});
     const range = automationUtils.getGenericConfigValue(document, 'chris-premades', 'teleport', 'range') || workflow.activity.range.value;
-    await tokenUtils.teleportToken(workflow.token.document, {animation, range});
+    await tokenUtils.teleportToken(workflow.token.document, {animation, options, range});
 }
 export const teleport = {
     rules: 'all',
