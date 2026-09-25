@@ -1,5 +1,5 @@
 import cprConstants from '../../../../../constants.mjs';
-import {automationUtils, compendiumUtils, genericUtils, itemUtils, summonUtils} from '../../../../../proxy.mjs';
+import {actorUtils, automationUtils, compendiumUtils, genericUtils, itemUtils, summonUtils} from '../../../../../proxy.mjs';
 const creatureTypes = {
     'primal-companion-land': 'land',
     'primal-companion-sea': 'sea',
@@ -49,7 +49,7 @@ async function use({document, workflow}) {
     const hitPoints = creatureType === 'sky' ? 4 + (4 * levels) : 5 + (5 * levels);
     const updates = {
         system: {
-            details: {cr: (4 * prof) - 7},
+            details: {cr: actorUtils.getCR(workflow.actor)},
             attributes: {
                 ac: {flat: 13 + prof},
                 hp: {formula: String(hitPoints), max: hitPoints, value: hitPoints},

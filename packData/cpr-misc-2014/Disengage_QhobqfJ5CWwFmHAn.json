@@ -85,7 +85,7 @@
           },
           "affects": {
             "count": "",
-            "type": "self",
+            "type": "",
             "choice": false,
             "special": ""
           },

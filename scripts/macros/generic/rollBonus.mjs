@@ -1,5 +1,4 @@
 import {automationUtils, constants, D20Bonus, dialogUtils, workflowUtils} from '../../proxy.mjs';
-import utils from '../../utils.mjs';
 function roll({document, config, macroClass: {identifier}, message}) {
     const settings = automationUtils.getGenericConfigValues(document, 'chris-premades', identifier, configKeys);
     if (!settings.bonus?.length) return;
@@ -13,7 +12,7 @@ function roll({document, config, macroClass: {identifier}, message}) {
     });
     if (settings.rollItem || settings.rollActivity) bonus.withOnUse(async ({bonus}) => {
         settings.storedOptionalBonus = bonus;
-        if (!settings.consumeSuccessOnly) await utils.rollConfiguredSource(bonus, settings);
+        if (!settings.consumeSuccessOnly) await workflowUtils.rollConfiguredSource(bonus, settings);
         else workflowUtils.setWorkflowProperty(message, identifier, settings);
     });
     if (settings.useActivityCosts) {
@@ -29,7 +28,7 @@ async function onSuccess({macroClass: {identifier}, message, roll}) {
     if (!roll.isSuccess && !roll.isFailure)
         consume ||= await dialogUtils.confirm(settings.storedOptionalBonus.name, _loc('CHRISPREMADES.Macros.Generic.RollBonus.Success', {total: roll.total}));
     settings.consume = consume;
-    await utils.rollConfiguredSource(settings.storedOptionalBonus, settings);
+    await workflowUtils.rollConfiguredSource(settings.storedOptionalBonus, settings);
 }
 const genericConfig = {
     bonus: {

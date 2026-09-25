@@ -34,7 +34,7 @@ async function use({document, workflow}) {
     const hp = 5 + (classLevel * 5);
     const updates = {
         system: {
-            details: {cr: (4 * prof) - 7},
+            details: {cr: actorUtils.getCR(workflow.actor)},
             attributes: {
                 ac: {flat: 14 + prof},
                 hp: {formula: String(hp), max: hp, value: hp}

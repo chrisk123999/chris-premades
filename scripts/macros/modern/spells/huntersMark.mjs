@@ -1,4 +1,3 @@
-import utils from '../../../utils.mjs';
 import {actorUtils, automationUtils, constants, DamageBonus, dialogUtils, documentUtils, effectUtils, genericUtils, itemUtils, queryUtils, tokenUtils, workflowUtils} from '../../../proxy.mjs';
 function getDamageConfig(actor, document) {
     const foeSlayer = actorUtils.getItemByIdentifier(actor, 'foe-slayer');
@@ -22,7 +21,7 @@ async function use({document, workflow}) {
         if (concentrationEffect) await documentUtils.deleteDocument(concentrationEffect);
         return;
     }
-    const seconds = utils.getScaledDuration(workflow);
+    const seconds = workflowUtils.getScaledDuration(workflow);
     const casterEffectData = documentUtils.getBaseEffectData(workflow.activity, {
         name: document.name,
         img: document.img,

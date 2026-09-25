@@ -1,5 +1,4 @@
 import {automationUtils, constants, DamageBonus, dialogUtils, documentUtils, effectUtils, genericUtils, workflowUtils} from '../../../proxy.mjs';
-import utils from '../../../utils.mjs';
 function abilityOptions() {
     return Object.values(CONFIG.DND5E.abilities).map(ability => [ability.label, ability.abbreviation]);
 }
@@ -30,7 +29,7 @@ async function use({document, workflow}) {
     if (!workflow.targets.size) return await cancel();
     const ability = await dialogUtils.buttonDialog(document.name, _loc('CHRISPREMADES.Macros.All.Hex.SelectAbility'), abilityOptions());
     if (!ability) return await cancel();
-    const seconds = utils.getScaledDuration(workflow);
+    const seconds = workflowUtils.getScaledDuration(workflow);
     const casterEffectData = documentUtils.getBaseEffectData(workflow.activity, {
         name: document.name,
         img: document.img,

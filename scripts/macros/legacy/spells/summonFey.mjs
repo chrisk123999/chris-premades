@@ -1,5 +1,4 @@
 import cprConstants from '../../../constants.mjs';
-import utils from '../../../utils.mjs';
 import {actorUtils, automationUtils, compendiumUtils, dialogUtils, documentUtils, effectUtils, genericUtils, itemUtils, summonUtils, tokenUtils, workflowUtils} from '../../../proxy.mjs';
 const creatureTypes = {
     'summon-fey-fuming': 'fuming',
@@ -35,11 +34,11 @@ async function use({document, workflow}) {
     const spellLevel = workflowUtils.getCastLevel(workflow);
     const items = await Promise.all([
         getFeature('summon-fey-multiattack', {translate: _loc(translations + 'Multiattack', {numAttacks: Math.floor(spellLevel / 2)})}),
-        getFeature('summon-fey-shortsword', {translate: translations + 'Shortsword', flatAttack: utils.getSpellAttackBonus(document)}),
+        getFeature('summon-fey-shortsword', {translate: translations + 'Shortsword', flatAttack: itemUtils.getSpellAttackBonus(document)}),
         getFeature('summon-fey-fey-step', {translate: translations + 'FeyStep'}),
         getMoodFeature(document, creatureType)
     ]);
-    if (items[1]) utils.addDamageBonus(items[1], spellLevel);
+    if (items[1]) itemUtils.addDamageBonus(items[1], spellLevel);
     if (items.some(item => !item)) {
         genericUtils.notify('CHRISPREMADES.Error.MissingPackItem', {type: 'warn'});
         if (concentrationEffect) await documentUtils.deleteDocument(concentrationEffect);
@@ -48,7 +47,7 @@ async function use({document, workflow}) {
     const hp = automationUtils.getConfigValue(document, 'baseHitPoints') + ((spellLevel - 3) * 10);
     const updates = {
         system: {
-            details: {cr: (4 * workflow.actor.system.attributes.prof) - 7},
+            details: {cr: actorUtils.getCR(workflow.actor)},
             attributes: {
                 ac: {flat: 12 + spellLevel},
                 hp: {formula: String(hp), max: hp, value: hp}

@@ -1,6 +1,5 @@
 import cprConstants from '../../../constants.mjs';
-import utils from '../../../utils.mjs';
-import {automationUtils, compendiumUtils, documentUtils, effectUtils, genericUtils, itemUtils, Logging, summonUtils, workflowUtils} from '../../../proxy.mjs';
+import {actorUtils, automationUtils, compendiumUtils, documentUtils, effectUtils, genericUtils, itemUtils, Logging, summonUtils, workflowUtils} from '../../../proxy.mjs';
 import {addThrallBonuses} from '../classFeatures/warlock/greatOldOne/createThrall.mjs';
 const creatureTypes = {
     'summon-aberration-beholderkin': 'beholderkin',
@@ -29,10 +28,10 @@ async function use({document, workflow}) {
     const spellLevel = workflowUtils.getCastLevel(workflow);
     const saveDC = itemUtils.getSaveDC(document);
     const items = [await getFeature('summon-aberration-multiattack', {translate: translations + 'Multiattack'})];
-    const attackBonus = utils.getSpellAttackBonus(document);
+    const attackBonus = itemUtils.getSpellAttackBonus(document);
     for (const entry of typeItems[creatureType]) {
         const feature = await getFeature(entry.identifier, {translate: entry.translate, flatAttack: entry.flatAttack ? attackBonus : undefined, flatDC: entry.flatDC ? saveDC : undefined});
-        if (feature && entry.flatAttack) utils.addDamageBonus(feature, spellLevel);
+        if (feature && entry.flatAttack) itemUtils.addDamageBonus(feature, spellLevel);
         items.push(feature);
     }
     if (items.some(item => !item)) {
@@ -43,7 +42,7 @@ async function use({document, workflow}) {
     const hp = automationUtils.getConfigValue(document, 'baseHitPoints') + ((spellLevel - 4) * 10);
     let updates = {
         system: {
-            details: {cr: (4 * workflow.actor.system.attributes.prof) - 7},
+            details: {cr: actorUtils.getCR(workflow.actor)},
             attributes: {
                 ac: {flat: 11 + spellLevel},
                 hp: {formula: String(hp), max: hp, value: hp}

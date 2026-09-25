@@ -1,5 +1,4 @@
 import {automationUtils, DamageBonus, dialogUtils, documentUtils, effectUtils, genericUtils, itemUtils, queryUtils, tokenUtils, workflowUtils} from '../../../proxy.mjs';
-import utils from '../../../utils.mjs';
 function markedEffectData(activity, document, seconds) {
     return documentUtils.getBaseEffectData(activity, {
         name: _loc('CHRISPREMADES.Macros.Legacy.HuntersMark.Marked'),
@@ -17,7 +16,7 @@ async function use({document, workflow}) {
         if (concentrationEffect) await documentUtils.deleteDocument(concentrationEffect);
         return;
     }
-    const seconds = utils.getScaledDuration(workflow);
+    const seconds = workflowUtils.getScaledDuration(workflow);
     const casterEffectData = documentUtils.getBaseEffectData(workflow.activity, {
         name: document.name,
         img: document.img,
