@@ -1,4 +1,4 @@
-import {dataUtils, workflowUtils} from './proxy.mjs';
+import {dataUtils} from './proxy.mjs';
 function addEffectMacro(effectData, {type, macroIdentifier, rules, effectIdentifier}) {
     return dataUtils.buildEffectData(effectData, {
         macros: [
@@ -16,15 +16,6 @@ function addEffectMacro(effectData, {type, macroIdentifier, rules, effectIdentif
         ]
     });
 }
-async function rollConfiguredSource(bonus, config, targets = []) {
-    const item = bonus.document.documentName === 'Item' ? bonus.document : bonus.activity?.item;
-    if (!item) return;
-    if (config.rollItem) return await workflowUtils.completeItemUse(item, targets);
-    if (!config.rollActivity) return;
-    const activity = item.system.activities.get(config.rollActivity);
-    if (activity) await workflowUtils.completeActivityUse(activity, targets, {consumeResources: config.consume, consumeUsage: config.consume});
-}
 export default {
-    addEffectMacro,
-    rollConfiguredSource
+    addEffectMacro
 };

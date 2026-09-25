@@ -1,11 +1,6 @@
-import {automationUtils, constants, dialogUtils, documentUtils, effectUtils, genericUtils, workflowUtils, DamageBonus} from '../../../proxy.mjs';
-const castDurations = {1: 3600, 2: 3600, 3: 28800, 4: 28800};
+import {automationUtils, constants, DamageBonus, dialogUtils, documentUtils, effectUtils, genericUtils, workflowUtils} from '../../../proxy.mjs';
 function abilityOptions() {
     return Object.values(CONFIG.DND5E.abilities).map(ability => [ability.label, ability.abbreviation]);
-}
-function getDuration(workflow) {
-    const seconds = castDurations[workflowUtils.getCastLevel(workflow)] ?? 86400;
-    return Math.min(seconds * workflow.item.system.duration.value, 86400);
 }
 function hexedEffectData(activity, document, seconds, ability) {
     return documentUtils.getBaseEffectData(activity, {
@@ -34,7 +29,7 @@ async function use({document, workflow}) {
     if (!workflow.targets.size) return await cancel();
     const ability = await dialogUtils.buttonDialog(document.name, _loc('CHRISPREMADES.Macros.All.Hex.SelectAbility'), abilityOptions());
     if (!ability) return await cancel();
-    const seconds = getDuration(workflow);
+    const seconds = workflowUtils.getScaledDuration(workflow);
     const casterEffectData = documentUtils.getBaseEffectData(workflow.activity, {
         name: document.name,
         img: document.img,
@@ -51,7 +46,7 @@ async function use({document, workflow}) {
         formula: automationUtils.getConfigValue(document, 'formula'),
         ability
     });
-    const [casterEffect] = await effectUtils.createEffects(workflow.actor, [casterEffectData]);
+    const [casterEffect] = await effectUtils.createEffects(workflow.actor, [casterEffectData], {parentEntity: concentrationEffect});
     if (!casterEffect) return;
     for (const target of workflow.targets) {
         await effectUtils.createEffects(target.actor, [hexedEffectData(workflow.activity, document, seconds, ability)], {parentEntity: casterEffect});

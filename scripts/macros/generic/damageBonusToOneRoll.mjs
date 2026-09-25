@@ -1,5 +1,4 @@
-import {automationUtils, constants, DamageBonus, documentUtils, workflowUtils} from '../../proxy.mjs';
-import utils from '../../utils.mjs';
+import {actorUtils, automationUtils, constants, DamageBonus, documentUtils, workflowUtils} from '../../proxy.mjs';
 async function damage({document, workflow}) {
     if (!workflow.targets.size || (!workflow.activity.hasDamage && !workflow.activity.hasHealing)) return;
     const config = automationUtils.getGenericConfigValues(document, 'chris-premades', 'damageBonusToOneRoll', configKeys);
@@ -37,10 +36,14 @@ async function damage({document, workflow}) {
     if (config.spellSchool.length) {
         if (!config.spellSchool.includes(workflow.item.system.school)) return;
     }
+    if (config.targetWounded) {
+        const actor = (workflow.hitTargets.first() ?? workflow.targets.first())?.actor;
+        if (!actor || !actorUtils.isWounded(actor)) return;
+    }
     const bonus = new DamageBonus(document, {formula: config.bonus, optional, type: config.bonusDamageType, maxTargets: config.maxTargets || undefined, allowCritical: config.allowCritical})
         .withOnUse(async ({bonus}) => {
             if (trackLastUse) await documentUtils.setFlag(document, 'chris-premades', 'lastUse', multiSingleTarget.rollID);
-            await utils.rollConfiguredSource(bonus, config, Array.from(bonus.targets ?? []));
+            await workflowUtils.rollConfiguredSource(bonus, config, Array.from(bonus.targets ?? []));
         });
     if (config.useActivityCosts) {
         if (!workflow.hitTargets.size) return;
@@ -51,7 +54,7 @@ async function damage({document, workflow}) {
 }
 export const damageBonusToOneRoll = {
     rules: 'all',
-    version: '2.0.4',
+    version: '2.1.0',
     category: 'damage',
     generic: true,
     documents: ['activeeffect', 'item'],
@@ -175,6 +178,13 @@ export const damageBonusToOneRoll = {
             category: 'behavior',
             label: 'CHRISPREMADES.Macros.Generic.DamageBonusToOneRoll.EveryRoll',
             hint: 'CHRISPREMADES.Macros.Generic.DamageBonusToOneRoll.EveryRollHint'
+        },
+        targetWounded: {
+            default: false,
+            type: 'checkbox',
+            category: 'behavior',
+            label: 'CHRISPREMADES.Macros.Generic.DamageBonusToOneRoll.TargetWounded',
+            hint: 'CHRISPREMADES.Macros.Generic.DamageBonusToOneRoll.TargetWoundedHint'
         },
         useActivityCosts: {
             default: false,

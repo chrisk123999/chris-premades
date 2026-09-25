@@ -2,13 +2,20 @@ import {actorUtils, automationUtils, documentUtils, genericUtils, regionUtils} f
 function getOriginItem(region) {
     return regionUtils.getActivity(region)?.item;
 }
+function getShapeMetrics(region) {
+    const shape = region.shapes[0];
+    if (shape?.radius != undefined) return {x: Math.round(shape.x), y: Math.round(shape.y), radius: shape.radius};
+    if (shape?.width != undefined) return {x: Math.round(shape.x + (shape.width / 2)), y: Math.round(shape.y + (shape.height / 2)), radius: Math.hypot(shape.width, shape.height) / 2};
+    const bounds = region.object?.bounds;
+    return {x: Math.round(region.object?.center.x ?? 0), y: Math.round(region.object?.center.y ?? 0), radius: bounds ? Math.hypot(bounds.width, bounds.height) / 2 : 0};
+}
 function getLightRadius(region, token) {
-    const radius = (region.shapes[0]?.radius ?? 0) - (token?.object?.externalRadius ?? 0);
+    const radius = getShapeMetrics(region).radius - (token?.object?.externalRadius ?? 0);
     return Math.max(radius, 0) / region.parent.grid.size * region.parent.grid.distance;
 }
 function getLightPosition(region) {
-    const shape = region.shapes[0];
-    return {x: shape?.x ?? region.object?.center.x, y: shape?.y ?? region.object?.center.y};
+    const {x, y} = getShapeMetrics(region);
+    return {x, y};
 }
 async function darkenToken(token, region, animationType) {
     const light = genericUtils.duplicate(token._source.light);
@@ -24,12 +31,10 @@ async function createLight(region, animationType) {
     await documentUtils.makeDependent(region, [light]);
     return {darknessLight: light.id};
 }
-async function getSeeingTokens(region, workflow) {
+function getSeeingTokens(region, workflow) {
     const identifiers = automationUtils.getConfigValue(getOriginItem(region), 'seeThroughIdentifiers') ?? [];
     if (!identifiers.length || !workflow?.token) return;
-    const castUuid = workflow.item?.flags.dnd5e?.cachedFor;
-    if (!castUuid) return;
-    const castActivity = await fromUuid(castUuid, {relative: workflow.actor});
+    const castActivity = workflow.item?.system.linkedActivity;
     if (!castActivity) return;
     if (!identifiers.includes(documentUtils.getIdentifier(castActivity.item))) return;
     return [workflow.token.document.uuid];
@@ -39,7 +44,7 @@ async function created({document: region, workflow}) {
     const originItem = activity?.item;
     if (!originItem) return;
     const updates = {name: originItem.name};
-    const seeingTokens = await getSeeingTokens(region, workflow);
+    const seeingTokens = getSeeingTokens(region, workflow);
     if (seeingTokens) genericUtils.setProperty(updates, 'flags.cat.canSeeTokens', seeingTokens);
     if (automationUtils.getConfigValue(originItem, 'spreadAroundCorners')) {
         genericUtils.setProperty(updates, 'flags.walledtemplates.wallRestriction', 'move');

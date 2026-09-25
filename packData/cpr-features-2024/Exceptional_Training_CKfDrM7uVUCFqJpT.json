@@ -1,0 +1,66 @@
+{
+  "folder": "LoYeCPG5LZHY1Sul",
+  "name": "Exceptional Training",
+  "type": "feat",
+  "_id": "CKfDrM7uVUCFqJpT",
+  "img": "icons/creatures/abilities/cougar-roar-rush-orange.webp",
+  "system": {
+    "activities": {},
+    "uses": {
+      "spent": 0,
+      "recovery": [],
+      "max": ""
+    },
+    "advancement": [],
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "identifier": "exceptional-training",
+    "source": {
+      "revision": 1,
+      "rules": "2024",
+      "book": "",
+      "page": "",
+      "custom": "PHB 2024",
+      "license": ""
+    },
+    "crewed": false,
+    "enchant": {},
+    "prerequisites": {
+      "items": [],
+      "repeatable": false,
+      "level": null
+    },
+    "properties": [],
+    "requirements": "",
+    "type": {
+      "value": "class",
+      "subtype": ""
+    }
+  },
+  "effects": [],
+  "flags": {
+    "dnd5e": {
+      "riders": {
+        "activity": []
+      }
+    },
+    "cat": {
+      "automation": {
+        "source": "chris-premades",
+        "version": "2.0.0"
+      },
+      "macros": {
+        "summon": [
+          {
+            "source": "chris-premades",
+            "rules": "2024",
+            "identifier": "exceptional-training"
+          }
+        ]
+      }
+    }
+  },
+  "_key": "!items!CKfDrM7uVUCFqJpT"
+}

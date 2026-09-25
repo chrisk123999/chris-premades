@@ -194,6 +194,7 @@
             "PlayAnimation": "Play Animation",
             "PlayTeleportAnimation": "Play Teleport Animation",
             "PlayTokenAnimation": "Play Token Animation",
+            "PromptMove": "Prompt to Move",
             "PromptToUse": "Prompt to use",
             "Properties": "Item Properties",
             "Range": "Range",
@@ -256,7 +257,8 @@
             "WeaponTypes": "Weapon Types"
         },
         "Error": {
-            "ActorNotFound": "Could not find the summon actor. Check the CAT monster compendium settings and the spell's configured actor names."
+            "ActorNotFound": "Could not find the summon actor. Check the CAT monster compendium settings and the spell's configured actor names.",
+            "MissingPackItem": "Could not find a required compendium item. Check the CAT monster feature compendium settings."
         },
         "Generic": {
             "CreatureNameAndSize": "{size} {name}",
@@ -279,6 +281,9 @@
                     "Zombie": "Zombie"
                 },
                 "ArcaneGrimoire": "Arcane Recovery Bonus",
+                "BeguilingTwist": {
+                    "Select": "Which Condition?"
+                },
                 "ChannelDivinity": "Choose a channel divinity effect:",
                 "Darkness": {
                     "SeeThroughIdentifiers": "See-Through Feature Identifiers",
@@ -384,6 +389,10 @@
                     "CriticalHint": "Critical hit rules can be applied to this bonus.",
                     "EveryRoll": "Apply to Every Roll",
                     "EveryRollHint": "Add this bonus to each roll of a multi-attack rather than one of them.",
+                    "OncePerTurn": "Once Per Turn",
+                    "OncePerTurnHint": "Limit this bonus to one use per turn.",
+                    "TargetWounded": "Target Already Wounded",
+                    "TargetWoundedHint": "Only apply the bonus when the target is missing hit points.",
                     "MaxTargets": "Max Targets",
                     "MaxTargetsHint": "Limit the bonus to this many targets. 0 applies it to every target."
                 },
@@ -399,6 +408,8 @@
                 },
                 "MovementAnimation": {
                     "MoveAnimation": "Move Animation",
+                  "Fastest": "Fastest Speed",
+                  "MovementType": "Movement Used",
                     "MovementEffect": "Movement Effect",
                     "NoMovement": "No movement remaining!",
                     "SelectAnimation": "Selection Animation"
@@ -439,6 +450,9 @@
                     "SkillHint": "Limit this bonus to a list of skills.",
                     "Success": "Did the roll succeed? (Roll Total: {total})",
                     "ToolHint": "Limit this bonus to a list of tools."
+                },
+                "SelectDamageType": {
+                    "DamageTypeHint": "Prompt for a damage type when this item is rolled."
                 },
                 "Teleport": {
                     "RangeHint": "Maximum teleport distance. Leave blank to use the activity's own range."
@@ -486,6 +500,18 @@
                 },
                 "DangerSense": "This save is from an effect you can see.",
                 "DestroyUndead": "Maximum CR",
+                "DrakeCompanion": {
+                    "Bite": "Bite",
+                    "Dodge": "Dodge",
+                    "DraconicEssence": "Draconic Essence",
+                    "InfusedStrikes": "Infused Strikes",
+                    "ReactionRange": "Reaction Range",
+                    "Resistance": "Use reaction to grant resistance to damage?",
+                    "ResistanceSelf": "Use reaction to get resistance to damage?",
+                    "Select": "What Drake type?",
+                    "Self": "Yes: Self",
+                    "Summon": "Yes: Drake Companion"
+                },
                 "EldritchSmite": {
                     "Prone": "Knock the target prone?"
                 },
@@ -538,6 +564,13 @@
                 },
                 "HoundOfIllOmen": {
                     "Disadvantage": "Hound of Ill Omen: Disadvantage"
+                },
+                "HuntersMark": {
+                    "Marked": "Hunter's Mark: Marked",
+                    "MovePrompt": "Move the mark to a new target?",
+                    "MoveSelect": "Which target would you like to mark?",
+                    "Multiple": "Which target would you like to unmark?",
+                    "NoTargets": "No valid targets within range!"
                 },
                 "InvestmentOfTheChainMaster": {
                     "Movement": "Choose a movement type for your familiar.",
@@ -606,6 +639,15 @@
                     "ReductionPerLevel": "Damage Reduction Per Spell Slot Level",
                     "Select": "Use your reaction to spend a spell slot to reduce damage?"
                 },
+                "SummonFey": {
+                    "FeyStep": "Fey Step",
+                    "Fuming": "Fuming",
+                    "Mirthful": "Mirthful",
+                    "Multiattack": "Multiattack ({numAttacks} Attacks)",
+                    "Select": "Who to charm?",
+                    "Shortsword": "Shortsword",
+                    "Tricksy": "Tricksy"
+                },
                 "ThrumOfTheLand": {
                     "Attack": "+{bonus} to attack rolls",
                     "AttackBonus": "Attack Roll Bonus",
@@ -651,10 +693,20 @@
                 "GreaterDivineIntervention": {
                     "RestFormula": "Rest Recovery Formula"
                 },
+                "HuntersMark": {
+                    "Marked": "Hunter's Mark: Marked",
+                    "MovePrompt": "Move the mark to a new target?",
+                    "MoveSelect": "Which target would you like to mark?",
+                    "Multiple": "Which target would you like to unmark?",
+                    "NoTargets": "No valid targets within range!"
+                },
                 "ImprovedPotentSpellcasting": "Select an ally to give temporary hit points to:",
                 "MemorizeSpell": {
                     "Prepare": "Select a spell to prepare:",
                     "Unprepare": "Select a spell to unprepare:"
+                },
+                "MistyWanderer": {
+                    "TeleportAlly": "Teleport a willing ally?"
                 },
                 "PactOfTheBlade": {
                     "Conjure": "Choose a weapon to create.",
@@ -683,12 +735,24 @@
                 "RendMind": {
                     "RestoreAndUse": "Restore and use {item}?"
                 },
+                "ShadowyDodge": {
+                    "Use": "Use {item}?"
+                },
+                "ShareSpells": {
+                    "Confirm": "Share {spell} with {name}?"
+                },
                 "SneakAttack": {
                     "Auto": "Automatically Use",
                     "UseAnotherCunningStrike": "Use another cunning strike?",
                     "UseCunningStrike": "Use cunning strike?"
                 },
                 "StalkersFlurry": {
+                    "MassFear": "Mass Fear",
+                    "NoTargets": "No creature in range.",
+                    "Select": "Effect",
+                    "SuddenStrike": "Sudden Strike",
+                    "SuddenStrikeRange": "Sudden Strike Range",
+                    "Use": "Use {item}?",
                     "IncludeSelf": "Include Self"
                 },
                 "StealBlood": {
@@ -705,6 +769,15 @@
                     "Regeneration": "Regeneration",
                     "WhisperingAura": "Whispering Aura"
                 },
+                "SummonFey": {
+                    "FeyBlade": "Fey Blade",
+                    "FeyStep": "Fey Step",
+                    "Fuming": "Fuming",
+                    "Mirthful": "Mirthful",
+                    "Multiattack": "Multiattack ({numAttacks} Attacks)",
+                    "Select": "Who to charm?",
+                    "Tricksy": "Tricksy"
+                },
                 "UnarguableWizardry": {
                     "Prompt": "Unarguable Wizardry"
                 },
@@ -716,6 +789,17 @@
         },
         "Summons": {
             "CreatureNames": {
+                "BeastOfTheLand": "Beast of the Land",
+                "BeastOfTheSea": "Beast of the Sea",
+                "BeastOfTheSky": "Beast of the Sky",
+                "DrakeCompanionAcid": "Drake Companion: Acid",
+                "DrakeCompanionCold": "Drake Companion: Cold",
+                "DrakeCompanionFire": "Drake Companion: Fire",
+                "DrakeCompanionLightning": "Drake Companion: Lightning",
+                "DrakeCompanionPoison": "Drake Companion: Poison",
+                "FeySpiritFuming": "Fey Spirit (Fuming)",
+                "FeySpiritMirthful": "Fey Spirit (Mirthful)",
+                "FeySpiritTricksy": "Fey Spirit (Tricksy)",
                 "ManifestMind": "Manifest Mind",
                 "Skeleton": "Skeleton",
                 "Zombie": "Zombie"

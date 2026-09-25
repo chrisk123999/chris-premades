@@ -25,7 +25,7 @@ async function use({document, workflow}) {
 }
 export const movementAnimation = {
     rules: 'all',
-    version: '2.0.2',
+    version: '2.1.0',
     category: 'movement',
     generic: true,
     documents: ['activity'],
