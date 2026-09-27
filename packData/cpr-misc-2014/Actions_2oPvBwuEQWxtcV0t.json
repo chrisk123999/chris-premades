@@ -7,5 +7,10 @@
   "_id": "2oPvBwuEQWxtcV0t",
   "description": "",
   "flags": {},
+  "_stats": {
+    "coreVersion": "14.364",
+    "systemId": "dnd5e",
+    "systemVersion": "5.3.3"
+  },
   "_key": "!folders!2oPvBwuEQWxtcV0t"
 }

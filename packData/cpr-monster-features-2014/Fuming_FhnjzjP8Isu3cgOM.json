@@ -193,6 +193,11 @@
       "showIcon": 2,
       "start": null,
       "folder": null,
+      "_stats": {
+        "coreVersion": "14.364",
+        "systemId": null,
+        "systemVersion": null
+      },
       "_key": "!items.effects!FhnjzjP8Isu3cgOM.9j8yZYQqQOpBvSCv"
     }
   ],
@@ -244,5 +249,10 @@
   },
   "folder": null,
   "_id": "FhnjzjP8Isu3cgOM",
+  "_stats": {
+    "coreVersion": "14.364",
+    "systemId": null,
+    "systemVersion": null
+  },
   "_key": "!items!FhnjzjP8Isu3cgOM"
 }

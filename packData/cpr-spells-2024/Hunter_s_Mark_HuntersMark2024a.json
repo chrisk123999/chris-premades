@@ -327,5 +327,10 @@
   "img": "icons/weapons/bows/shortbow-recurve-yellow.webp",
   "folder": "CVVxOC68UMmmK5zv",
   "_id": "HuntersMark2024a",
+  "_stats": {
+    "coreVersion": "14.364",
+    "systemId": null,
+    "systemVersion": null
+  },
   "_key": "!items!HuntersMark2024a"
 }

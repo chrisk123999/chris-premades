@@ -178,10 +178,10 @@
       },
       "disabled": false,
       "duration": {
-        "combat": null,
-        "seconds": null,
-        "rounds": 2,
-        "turns": null
+        "value": 2,
+        "units": "rounds",
+        "expiry": "turnStart",
+        "expired": false
       },
       "description": "",
       "tint": "#ffffff",
@@ -217,6 +217,14 @@
           ]
         }
       },
+      "_stats": {
+        "coreVersion": "14.364",
+        "systemId": null,
+        "systemVersion": null
+      },
+      "showIcon": 2,
+      "start": null,
+      "folder": null,
       "_key": "!items.effects!nlIXTJZZrBFctu5v.b0kFhxzHCc2sVHuB"
     }
   ],
@@ -232,6 +240,11 @@
         "version": "2.0.0"
       }
     }
+  },
+  "_stats": {
+    "coreVersion": "14.364",
+    "systemId": null,
+    "systemVersion": null
   },
   "_key": "!items!nlIXTJZZrBFctu5v"
 }

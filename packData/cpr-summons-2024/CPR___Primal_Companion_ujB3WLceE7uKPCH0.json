@@ -735,5 +735,10 @@
   },
   "folder": null,
   "_id": "ujB3WLceE7uKPCH0",
+  "_stats": {
+    "coreVersion": "14.364",
+    "systemId": null,
+    "systemVersion": null
+  },
   "_key": "!actors!ujB3WLceE7uKPCH0"
 }

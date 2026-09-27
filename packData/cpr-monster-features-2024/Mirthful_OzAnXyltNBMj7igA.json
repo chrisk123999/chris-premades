@@ -176,9 +176,10 @@
       },
       "disabled": false,
       "duration": {
-        "seconds": 60,
         "expiry": "sourceEnd",
-        "expired": false
+        "expired": false,
+        "value": 60,
+        "units": "seconds"
       },
       "description": "",
       "tint": "#ffffff",
@@ -204,6 +205,11 @@
       "showIcon": 2,
       "start": null,
       "folder": null,
+      "_stats": {
+        "coreVersion": "14.364",
+        "systemId": null,
+        "systemVersion": null
+      },
       "_key": "!items.effects!OzAnXyltNBMj7igA.PjgP9c2N1ghvr0JW"
     }
   ],
@@ -255,5 +261,10 @@
   },
   "folder": null,
   "_id": "OzAnXyltNBMj7igA",
+  "_stats": {
+    "coreVersion": "14.364",
+    "systemId": null,
+    "systemVersion": null
+  },
   "_key": "!items!OzAnXyltNBMj7igA"
 }

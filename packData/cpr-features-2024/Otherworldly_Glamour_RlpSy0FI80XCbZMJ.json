@@ -58,10 +58,10 @@
       },
       "disabled": false,
       "duration": {
-        "combat": null,
-        "seconds": null,
-        "rounds": null,
-        "turns": null
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
       },
       "description": "",
       "tint": "#ffffff",
@@ -89,6 +89,14 @@
           "identifier": "otherworldlyGlamour"
         }
       },
+      "_stats": {
+        "coreVersion": "14.364",
+        "systemId": null,
+        "systemVersion": null
+      },
+      "start": null,
+      "showIcon": 1,
+      "folder": null,
       "_key": "!items.effects!RlpSy0FI80XCbZMJ.KxOPnPEEJEw22paL"
     }
   ],
@@ -104,6 +112,11 @@
         "version": "2.0.0"
       }
     }
+  },
+  "_stats": {
+    "coreVersion": "14.364",
+    "systemId": null,
+    "systemVersion": null
   },
   "_key": "!items!RlpSy0FI80XCbZMJ"
 }

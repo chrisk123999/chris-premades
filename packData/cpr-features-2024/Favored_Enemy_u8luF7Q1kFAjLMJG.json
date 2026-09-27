@@ -172,5 +172,10 @@
     }
   },
   "_id": "u8luF7Q1kFAjLMJG",
+  "_stats": {
+    "coreVersion": "14.364",
+    "systemId": null,
+    "systemVersion": null
+  },
   "_key": "!items!u8luF7Q1kFAjLMJG"
 }
