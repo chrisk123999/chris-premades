@@ -81,5 +81,10 @@
   "img": "icons/magic/light/explosion-glow-spiral-yellow.webp",
   "folder": null,
   "_id": "m6yXdObVnsJS9bp3",
+  "_stats": {
+    "coreVersion": "14.364",
+    "systemId": null,
+    "systemVersion": null
+  },
   "_key": "!items!m6yXdObVnsJS9bp3"
 }

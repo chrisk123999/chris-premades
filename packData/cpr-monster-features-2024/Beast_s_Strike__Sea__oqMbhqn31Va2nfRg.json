@@ -212,7 +212,12 @@
         "changes": []
       },
       "disabled": false,
-      "duration": {},
+      "duration": {
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
+      },
       "description": "",
       "tint": "#ffffff",
       "statuses": [
@@ -229,6 +234,11 @@
       "showIcon": 2,
       "start": null,
       "folder": null,
+      "_stats": {
+        "coreVersion": "14.364",
+        "systemId": null,
+        "systemVersion": null
+      },
       "_key": "!items.effects!oqMbhqn31Va2nfRg.primalSeaGrapple"
     }
   ],
@@ -291,5 +301,10 @@
   },
   "folder": null,
   "_id": "oqMbhqn31Va2nfRg",
+  "_stats": {
+    "coreVersion": "14.364",
+    "systemId": null,
+    "systemVersion": null
+  },
   "_key": "!items!oqMbhqn31Va2nfRg"
 }

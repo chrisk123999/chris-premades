@@ -227,10 +227,10 @@
       "name": "Beguiling Twist",
       "origin": null,
       "duration": {
-        "rounds": null,
-        "seconds": null,
-        "combat": null,
-        "turns": null
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
       },
       "disabled": false,
       "flags": {
@@ -273,6 +273,14 @@
       "transfer": true,
       "statuses": [],
       "sort": 0,
+      "_stats": {
+        "coreVersion": "14.364",
+        "systemId": null,
+        "systemVersion": null
+      },
+      "start": null,
+      "showIcon": 1,
+      "folder": null,
       "_key": "!items.effects!lE8oqeAPZ1uN7De4.KwtGqbLcd2LCxmJ6"
     },
     {
@@ -294,10 +302,10 @@
       },
       "disabled": false,
       "duration": {
-        "combat": null,
-        "seconds": 60,
-        "rounds": null,
-        "turns": null
+        "value": 60,
+        "units": "seconds",
+        "expiry": "turnStart",
+        "expired": false
       },
       "tint": "#ffffff",
       "statuses": [
@@ -316,6 +324,16 @@
           "identifier": "beguilingTwistCharmed"
         }
       },
+      "_stats": {
+        "coreVersion": "14.364",
+        "systemId": null,
+        "systemVersion": null
+      },
+      "showIcon": 2,
+      "start": null,
+      "description": "",
+      "folder": null,
+      "sort": 0,
       "_key": "!items.effects!lE8oqeAPZ1uN7De4.OyGhdSOmK56Vu7qr"
     },
     {
@@ -337,10 +355,10 @@
       },
       "disabled": false,
       "duration": {
-        "combat": null,
-        "seconds": 60,
-        "rounds": null,
-        "turns": null
+        "value": 60,
+        "units": "seconds",
+        "expiry": "turnStart",
+        "expired": false
       },
       "tint": "#ffffff",
       "statuses": [
@@ -359,11 +377,26 @@
           "identifier": "beguilingTwistFrightened"
         }
       },
+      "_stats": {
+        "coreVersion": "14.364",
+        "systemId": null,
+        "systemVersion": null
+      },
+      "showIcon": 2,
+      "start": null,
+      "description": "",
+      "folder": null,
+      "sort": 0,
       "_key": "!items.effects!lE8oqeAPZ1uN7De4.UrNeY67bFBJFNLpN"
     }
   ],
   "img": "icons/magic/control/debuff-chains-ropes-purple.webp",
   "folder": "WHDBHS3P5SPcWYBI",
   "_id": "lE8oqeAPZ1uN7De4",
+  "_stats": {
+    "coreVersion": "14.364",
+    "systemId": null,
+    "systemVersion": null
+  },
   "_key": "!items!lE8oqeAPZ1uN7De4"
 }

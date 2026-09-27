@@ -94,8 +94,8 @@
       "sort": 0,
       "_stats": {
         "coreVersion": "14.364",
-        "systemId": null,
-        "systemVersion": null
+        "systemId": "dnd5e",
+        "systemVersion": "5.3.3"
       },
       "_key": "!items.effects!Dh7L8DCZvqPaPygm.xLMT680N5hgZ4eve"
     }
@@ -327,7 +327,7 @@
     "cat": {
       "automation": {
         "source": "chris-premades",
-        "version": "2.0.2"
+        "version": "2.0.3"
       }
     }
   },
@@ -336,8 +336,8 @@
   "_id": "Dh7L8DCZvqPaPygm",
   "_stats": {
     "coreVersion": "14.364",
-    "systemId": null,
-    "systemVersion": null
+    "systemId": "dnd5e",
+    "systemVersion": "5.3.3"
   },
   "_key": "!items!Dh7L8DCZvqPaPygm"
 }

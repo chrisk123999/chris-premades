@@ -217,10 +217,10 @@
       "name": "Dread Ambusher",
       "origin": null,
       "duration": {
-        "rounds": null,
-        "seconds": null,
-        "combat": null,
-        "turns": null
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
       },
       "disabled": false,
       "flags": {
@@ -257,16 +257,24 @@
       "transfer": true,
       "statuses": [],
       "sort": 0,
+      "_stats": {
+        "coreVersion": "14.364",
+        "systemId": null,
+        "systemVersion": null
+      },
+      "start": null,
+      "showIcon": 1,
+      "folder": null,
       "_key": "!items.effects!bUzCKk5OsA1xq60k.AsFR96MLzD5fUtCv"
     },
     {
       "name": "Dread Ambusher: First Turn Movement",
       "origin": null,
       "duration": {
-        "rounds": null,
-        "seconds": null,
-        "combat": null,
-        "turns": null
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
       },
       "disabled": false,
       "flags": {
@@ -299,7 +307,7 @@
         "changes": [
           {
             "key": "system.attributes.movement.walk",
-            "value": "10",
+            "value": 10,
             "priority": 20,
             "type": "add"
           }
@@ -310,16 +318,24 @@
       "transfer": false,
       "statuses": [],
       "sort": 0,
+      "_stats": {
+        "coreVersion": "14.364",
+        "systemId": null,
+        "systemVersion": null
+      },
+      "start": null,
+      "showIcon": 1,
+      "folder": null,
       "_key": "!items.effects!bUzCKk5OsA1xq60k.IBxft7zQZw2Hyx1c"
     },
     {
       "name": "Dread Ambusher: First Turn Damage",
       "origin": null,
       "duration": {
-        "rounds": null,
-        "seconds": null,
-        "combat": null,
-        "turns": null
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
       },
       "disabled": false,
       "flags": {
@@ -385,11 +401,24 @@
       "transfer": false,
       "statuses": [],
       "sort": 0,
+      "_stats": {
+        "coreVersion": "14.364",
+        "systemId": null,
+        "systemVersion": null
+      },
+      "start": null,
+      "showIcon": 1,
+      "folder": null,
       "_key": "!items.effects!bUzCKk5OsA1xq60k.NybzyOXod0y2YrlX"
     }
   ],
   "img": "icons/skills/melee/blade-tips-triple-bent-white.webp",
   "folder": "Rum3fpAMhXHSJoCS",
   "_id": "bUzCKk5OsA1xq60k",
+  "_stats": {
+    "coreVersion": "14.364",
+    "systemId": null,
+    "systemVersion": null
+  },
   "_key": "!items!bUzCKk5OsA1xq60k"
 }

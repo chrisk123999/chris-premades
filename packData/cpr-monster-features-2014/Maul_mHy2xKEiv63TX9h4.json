@@ -241,5 +241,10 @@
   },
   "folder": null,
   "_id": "mHy2xKEiv63TX9h4",
+  "_stats": {
+    "coreVersion": "14.364",
+    "systemId": null,
+    "systemVersion": null
+  },
   "_key": "!items!mHy2xKEiv63TX9h4"
 }

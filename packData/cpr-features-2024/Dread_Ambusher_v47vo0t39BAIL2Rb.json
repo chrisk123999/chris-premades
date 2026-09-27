@@ -364,10 +364,10 @@
       "name": "Dread Ambusher",
       "origin": null,
       "duration": {
-        "rounds": null,
-        "seconds": null,
-        "combat": null,
-        "turns": null
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
       },
       "disabled": false,
       "flags": {
@@ -404,16 +404,24 @@
       "transfer": true,
       "statuses": [],
       "sort": 0,
+      "_stats": {
+        "coreVersion": "14.364",
+        "systemId": null,
+        "systemVersion": null
+      },
+      "start": null,
+      "showIcon": 1,
+      "folder": null,
       "_key": "!items.effects!v47vo0t39BAIL2Rb.AsFR96MLzD5fUtCv"
     },
     {
       "name": "Dread Ambusher: First Turn Movement",
       "origin": null,
       "duration": {
-        "rounds": null,
-        "seconds": null,
-        "combat": null,
-        "turns": null
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
       },
       "disabled": false,
       "flags": {
@@ -446,7 +454,7 @@
         "changes": [
           {
             "key": "system.attributes.movement.walk",
-            "value": "10",
+            "value": 10,
             "priority": 20,
             "type": "add"
           }
@@ -457,11 +465,24 @@
       "transfer": false,
       "statuses": [],
       "sort": 0,
+      "_stats": {
+        "coreVersion": "14.364",
+        "systemId": null,
+        "systemVersion": null
+      },
+      "start": null,
+      "showIcon": 1,
+      "folder": null,
       "_key": "!items.effects!v47vo0t39BAIL2Rb.IBxft7zQZw2Hyx1c"
     }
   ],
   "img": "icons/skills/melee/blade-tips-triple-bent-white.webp",
   "folder": "A4Ha88zT5hRgm5WM",
   "_id": "v47vo0t39BAIL2Rb",
+  "_stats": {
+    "coreVersion": "14.364",
+    "systemId": null,
+    "systemVersion": null
+  },
   "_key": "!items!v47vo0t39BAIL2Rb"
 }

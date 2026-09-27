@@ -441,5 +441,10 @@
   "img": "icons/creatures/mammals/elk-moose-marked-green.webp",
   "folder": "fmUgbBpzksaKMBK8",
   "_id": "bBrn1kpnRUHEWELc",
+  "_stats": {
+    "coreVersion": "14.364",
+    "systemId": null,
+    "systemVersion": null
+  },
   "_key": "!items!bBrn1kpnRUHEWELc"
 }

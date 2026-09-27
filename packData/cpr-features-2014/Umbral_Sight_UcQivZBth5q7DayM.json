@@ -87,10 +87,10 @@
       "name": "Umbral Sight",
       "origin": null,
       "duration": {
-        "rounds": null,
-        "seconds": null,
-        "combat": null,
-        "turns": null
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
       },
       "disabled": false,
       "flags": {
@@ -116,13 +116,13 @@
         "changes": [
           {
             "key": "system.attributes.senses.ranges.darkvision",
-            "value": "30",
+            "value": 30,
             "priority": 20,
             "type": "upgrade"
           },
           {
             "key": "system.attributes.senses.ranges.darkvision",
-            "value": "30",
+            "value": 30,
             "priority": 40,
             "type": "add"
           }
@@ -133,11 +133,24 @@
       "transfer": true,
       "statuses": [],
       "sort": 0,
+      "_stats": {
+        "coreVersion": "14.364",
+        "systemId": null,
+        "systemVersion": null
+      },
+      "start": null,
+      "showIcon": 1,
+      "folder": null,
       "_key": "!items.effects!UcQivZBth5q7DayM.Vlwv9kt1dP2aItx1"
     }
   ],
   "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
   "folder": "Rum3fpAMhXHSJoCS",
   "_id": "UcQivZBth5q7DayM",
+  "_stats": {
+    "coreVersion": "14.364",
+    "systemId": null,
+    "systemVersion": null
+  },
   "_key": "!items!UcQivZBth5q7DayM"
 }

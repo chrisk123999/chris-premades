@@ -479,5 +479,10 @@
   "img": "icons/commodities/claws/claw-lizard-white-black.webp",
   "folder": "acMOlj4Qxst44J0s",
   "_id": "gc9AdzxkNM6i82d3",
+  "_stats": {
+    "coreVersion": "14.364",
+    "systemId": null,
+    "systemVersion": null
+  },
   "_key": "!items!gc9AdzxkNM6i82d3"
 }

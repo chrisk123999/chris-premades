@@ -209,13 +209,23 @@
       },
       "sort": 0,
       "start": null,
-      "showIcon": 1,
+      "showIcon": 2,
       "folder": null,
+      "_stats": {
+        "coreVersion": "14.364",
+        "systemId": null,
+        "systemVersion": null
+      },
       "_key": "!items.effects!2oCSVxhwYSDwVDvB.rGR2liWPrLm6JeYM"
     }
   ],
   "img": "icons/equipment/shield/buckler-wooden-boss-lightning.webp",
   "folder": null,
   "_id": "2oCSVxhwYSDwVDvB",
+  "_stats": {
+    "coreVersion": "14.364",
+    "systemId": null,
+    "systemVersion": null
+  },
   "_key": "!items!2oCSVxhwYSDwVDvB"
 }

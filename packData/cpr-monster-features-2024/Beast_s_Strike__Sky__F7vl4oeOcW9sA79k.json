@@ -250,5 +250,10 @@
   },
   "folder": null,
   "_id": "F7vl4oeOcW9sA79k",
+  "_stats": {
+    "coreVersion": "14.364",
+    "systemId": null,
+    "systemVersion": null
+  },
   "_key": "!items!F7vl4oeOcW9sA79k"
 }

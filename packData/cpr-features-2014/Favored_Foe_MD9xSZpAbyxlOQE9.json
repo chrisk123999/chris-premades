@@ -360,5 +360,10 @@
   "img": "icons/magic/perception/eye-ringed-glow-angry-large-red.webp",
   "folder": "KxzmDE0dBxF6xJL7",
   "_id": "MD9xSZpAbyxlOQE9",
+  "_stats": {
+    "coreVersion": "14.364",
+    "systemId": null,
+    "systemVersion": null
+  },
   "_key": "!items!MD9xSZpAbyxlOQE9"
 }
