@@ -71,6 +71,6 @@ export {absorbElements as 'absorb-elements'} from './legacy/spells/absorbElement
 export {animateObjects as 'animate-objects'} from './legacy/spells/animateObjects.mjs';
 export {huntersMark as 'hunters-mark', huntersMarkAttack as 'hunters-mark-attack'} from './legacy/spells/huntersMark.mjs';
 export {summonFey as 'summon-fey', summonFeyFeyStep as 'summon-fey-fey-step'} from './legacy/spells/summonFey.mjs';
-// ** Items
-export {amuletOfTheLycanthrope as 'amulet-of-the-lycanthrope', amuletOfTheLycanthropeEffect as 'amulet-of-the-lycanthrope-effect'} from './legacy/items/amuletOfTheLycanthrope.mjs';
-export {harkonsBite as 'harkons-bite', harkonsBiteEffect as 'harkons-bite-effect'} from './legacy/items/harkonsBite.mjs';
+// ** Equipment
+export {amuletOfTheLycanthrope as 'amulet-of-the-lycanthrope', amuletOfTheLycanthropeEffect as 'amulet-of-the-lycanthrope-effect'} from './legacy/equipment/amuletOfTheLycanthrope.mjs';
+export {harkonsBite as 'harkons-bite', harkonsBiteEffect as 'harkons-bite-effect'} from './legacy/equipment/harkonsBite.mjs';

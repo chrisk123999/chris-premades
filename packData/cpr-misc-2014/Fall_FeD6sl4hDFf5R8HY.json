@@ -1,63 +1,68 @@
 {
-  "name": "Unarmed Strike",
-  "type": "weapon",
+  "folder": "2oPvBwuEQWxtcV0t",
+  "name": "Fall",
+  "type": "feat",
+  "_id": "FeD6sl4hDFf5R8HY",
+  "img": "icons/magic/control/silhouette-fall-slip-prone.webp",
   "system": {
     "activities": {
-      "attackUnarmStrik": {
-        "name": "Unarmed Strike",
-        "type": "attack",
-        "_id": "attackUnarmStrik",
+      "yYvsNkWh78he2fI4": {
+        "type": "damage",
         "img": "",
-        "sort": 0,
+        "sort": 200000,
         "activation": {
-          "type": "action",
-          "value": 1,
-          "condition": "",
-          "override": false
+          "type": "special",
+          "override": false,
+          "condition": ""
         },
         "consumption": {
-          "targets": [],
           "scaling": {
-            "allowed": false,
-            "max": ""
+            "allowed": false
           },
-          "spellSlot": true
+          "spellSlot": true,
+          "targets": []
         },
         "description": {
           "chatFlavor": ""
         },
         "duration": {
           "units": "inst",
-          "special": "",
           "concentration": false,
           "override": false
         },
         "effects": [],
-        "flags": {},
+        "flags": {
+          "cat": {
+            "macros": {
+              "roll": [
+                {
+                  "source": "chris-premades",
+                  "rules": "all",
+                  "identifier": "fall"
+                }
+              ]
+            }
+          }
+        },
         "range": {
-          "value": "5",
-          "units": "ft",
-          "override": false
+          "units": "self",
+          "override": false,
+          "special": ""
         },
         "target": {
-          "prompt": true,
+          "template": {
+            "contiguous": false,
+            "stationary": false,
+            "units": "ft",
+            "type": ""
+          },
           "affects": {
-            "count": "1",
-            "type": "creature",
             "choice": false,
+            "type": "self",
             "special": ""
           },
-          "template": {
-            "count": "",
-            "contiguous": false,
-            "type": "",
-            "size": "",
-            "width": "",
-            "height": "",
-            "units": "ft",
-            "stationary": false
-          },
-          "override": false
+          "override": false,
+          "prompt": true
         },
         "uses": {
           "spent": 0,
@@ -74,28 +79,32 @@
           "requireMagic": false,
           "identifier": ""
         },
-        "attack": {
-          "ability": "",
-          "bonus": "",
-          "critical": {
-            "threshold": null
-          },
-          "flat": false,
-          "type": {
-            "value": "melee",
-            "classification": "unarmed"
-          }
-        },
         "damage": {
           "critical": {
-            "bonus": ""
+            "allow": false
           },
-          "includeBase": true,
-          "parts": []
+          "parts": [
+            {
+              "custom": {
+                "enabled": true,
+                "formula": "0"
+              },
+              "number": null,
+              "denomination": null,
+              "bonus": "",
+              "types": [
+                "bludgeoning"
+              ],
+              "scaling": {
+                "number": 1
+              }
+            }
+          ]
         },
         "useConditionText": "",
         "useConditionReason": "",
         "effectConditionText": "",
+        "otherActivityId": "none",
         "macroData": {
           "name": "",
           "command": ""
@@ -113,19 +122,19 @@
           "triggeredActivityConditionText": "",
           "triggeredActivityTargets": "targets",
           "triggeredActivityRollAs": "self",
-          "confirmTargets": "default",
-          "automationOnly": false,
-          "identifier": "unarmed-strike",
           "triggeredActivityConsume": true,
           "triggeredActivityConfigure": true,
           "autoConsume": false,
           "forceConsumeDialog": "default",
           "forceRollDialog": "default",
           "forceDamageDialog": "default",
+          "confirmTargets": "default",
           "autoTargetType": "any",
           "autoTargetAction": "default",
-          "otherActivityCompatible": true,
+          "automationOnly": false,
+          "otherActivityCompatible": false,
           "otherActivityAsParentType": true,
+          "identifier": "",
           "displayActivityName": false,
           "rollMode": "default",
           "chooseEffects": false,
@@ -166,13 +175,8 @@
           "animationSpeed": 5,
           "animationIntensity": 5
         },
-        "otherActivityId": "",
-        "otherActivityAsParentType": true,
-        "attackMode": "oneHanded",
-        "ammunition": "",
-        "otherActivityUuid": "",
-        "attackRollPerTarget": "default",
-        "fumbleThreshold": 1
+        "name": "",
+        "_id": "yYvsNkWh78he2fI4"
       }
     },
     "uses": {
@@ -180,93 +184,36 @@
       "recovery": [],
       "max": ""
     },
+    "advancement": {},
     "description": {
       "value": "",
       "chat": ""
     },
-    "identifier": "unarmed-strike",
+    "identifier": "fall",
     "source": {
-      "book": "SRD 5.1",
-      "page": "",
-      "license": "",
-      "custom": "",
+      "revision": 1,
       "rules": "2014",
-      "revision": 1
+      "book": "",
+      "page": "",
+      "custom": "",
+      "license": ""
     },
-    "identified": true,
-    "unidentified": {
-      "description": ""
-    },
-    "container": null,
-    "quantity": 1,
-    "weight": {
-      "value": 0,
-      "units": "lb"
-    },
-    "price": {
-      "value": 0,
-      "denomination": "gp"
-    },
-    "rarity": "",
-    "attunement": "",
-    "attuned": false,
-    "equipped": true,
-    "crew": {
-      "value": []
-    },
-    "ammunition": {},
-    "armor": {},
-    "damage": {
-      "base": {
-        "number": null,
-        "denomination": null,
-        "bonus": "",
-        "types": [
-          "bludgeoning"
-        ],
-        "custom": {
-          "enabled": true,
-          "formula": "1 + @mod"
-        },
-        "scaling": {
-          "mode": "whole",
-          "number": 1,
-          "formula": ""
-        }
-      },
-      "versatile": {
-        "types": [],
-        "custom": {
-          "enabled": false
-        },
-        "scaling": {
-          "number": 1
-        }
-      }
+    "crewed": false,
+    "enchant": {},
+    "prerequisites": {
+      "items": [],
+      "repeatable": false,
+      "level": null
     },
     "properties": [],
-    "proficient": 1,
-    "range": {
-      "value": null,
-      "units": "ft",
-      "long": null,
-      "reach": null
-    },
+    "requirements": "",
     "type": {
-      "value": "unarmed",
-      "baseItem": ""
-    },
-    "mastery": ""
+      "value": "",
+      "subtype": ""
+    }
   },
   "effects": [],
   "flags": {
-    "midi-qol": {
-      "removeAttackDamageButtons": "default",
-      "forceCEOff": true
-    },
-    "midiProperties": {
-      "confirmTargets": "default"
-    },
     "cat": {
       "automation": {
         "source": "chris-premades",
@@ -274,13 +221,10 @@
       }
     }
   },
-  "img": "icons/skills/melee/unarmed-punch-fist.webp",
-  "folder": null,
-  "_id": "avzqwyEa8jL02Zy9",
   "_stats": {
     "coreVersion": "14.364",
     "systemId": "dnd5e",
     "systemVersion": "5.3.3"
   },
-  "_key": "!items!avzqwyEa8jL02Zy9"
+  "_key": "!items!FeD6sl4hDFf5R8HY"
 }

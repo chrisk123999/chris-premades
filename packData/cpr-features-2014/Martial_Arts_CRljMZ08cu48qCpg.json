@@ -1,0 +1,174 @@
+{
+  "name": "Martial Arts",
+  "type": "feat",
+  "effects": [],
+  "system": {
+    "activities": {},
+    "uses": {
+      "spent": 0,
+      "recovery": [],
+      "max": ""
+    },
+    "advancement": {},
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "identifier": "martial-arts",
+    "source": {
+      "book": "PHB",
+      "page": "",
+      "license": "",
+      "custom": "",
+      "rules": "2014",
+      "revision": 1
+    },
+    "crewed": false,
+    "enchant": {},
+    "prerequisites": {
+      "items": [],
+      "level": 1,
+      "repeatable": false
+    },
+    "properties": [],
+    "requirements": "",
+    "type": {
+      "value": "class",
+      "subtype": ""
+    }
+  },
+  "flags": {
+    "midi-qol": {
+      "removeAttackDamageButtons": "default",
+      "forceCEOff": true
+    },
+    "midiProperties": {
+      "confirmTargets": "default"
+    },
+    "cat": {
+      "alternateAttributes": {
+        "DamageFormula": [
+          {
+            "value": "@scale.monk.martial-arts",
+            "restrictions": {
+              "WeaponType": {
+                "value": [
+                  "simpleM",
+                  "unarmed"
+                ],
+                "invert": false
+              },
+              "Property": {
+                "value": [
+                  "hvy",
+                  "two"
+                ],
+                "invert": true,
+                "requireAll": false
+              },
+              "Armor": {
+                "value": [
+                  "light",
+                  "medium",
+                  "heavy",
+                  "shield"
+                ],
+                "invert": true,
+                "requireAll": false
+              }
+            }
+          },
+          {
+            "value": "@scale.monk.martial-arts",
+            "restrictions": {
+              "Identifier": {
+                "value": [
+                  "unarmed-strike"
+                ]
+              },
+              "Armor": {
+                "value": [
+                  "light",
+                  "medium",
+                  "heavy",
+                  "shield"
+                ],
+                "invert": true,
+                "requireAll": false
+              }
+            }
+          }
+        ],
+        "Ability": [
+          {
+            "value": [
+              "dex"
+            ],
+            "restrictions": {
+              "Property": {
+                "value": [
+                  "hvy",
+                  "two"
+                ],
+                "invert": true,
+                "requireAll": false
+              },
+              "WeaponType": {
+                "value": [
+                  "simpleM",
+                  "unarmed"
+                ],
+                "invert": false
+              },
+              "Armor": {
+                "value": [
+                  "light",
+                  "medium",
+                  "heavy",
+                  "shield"
+                ],
+                "invert": true,
+                "requireAll": false
+              }
+            }
+          },
+          {
+            "value": [
+              "dex"
+            ],
+            "restrictions": {
+              "Identifier": {
+                "value": [
+                  "unarmed-strike"
+                ]
+              },
+              "Armor": {
+                "value": [
+                  "light",
+                  "medium",
+                  "heavy",
+                  "shield"
+                ],
+                "invert": true,
+                "requireAll": false
+              }
+            }
+          }
+        ]
+      },
+      "automation": {
+        "source": "chris-premades",
+        "version": "2.0.4"
+      }
+    }
+  },
+  "img": "icons/magic/defensive/shield-barrier-blades-teal.webp",
+  "folder": "nH8135F1PzU9skht",
+  "_stats": {
+    "coreVersion": "14.364",
+    "systemId": "dnd5e",
+    "systemVersion": "5.3.3"
+  },
+  "_id": "CRljMZ08cu48qCpg",
+  "_key": "!items!CRljMZ08cu48qCpg"
+}

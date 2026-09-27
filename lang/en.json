@@ -166,6 +166,7 @@
             "HideToken": "Hide Token",
             "HitPoints": "Hit Points",
             "HitTarget": "Hit Target",
+            "Identifier": "Identifier",
             "Identifiers": "Identifiers",
             "IgnoredConditions": "Ignored Conditions",
             "IgnoredCreatureTypes": "Ignored Creature Types",
@@ -194,8 +195,9 @@
             "PlayAnimation": "Play Animation",
             "PlayTeleportAnimation": "Play Teleport Animation",
             "PlayTokenAnimation": "Play Token Animation",
+            "PromptTargets": "Prompt for Targets",
             "PromptMove": "Prompt to Move",
-            "PromptToUse": "Prompt to use",
+            "PromptToUse": "Prompt to Use",
             "Properties": "Item Properties",
             "Range": "Range",
             "RangeFrom": "Range From",
@@ -292,6 +294,16 @@
                     "SpreadAroundCornersHint": "Bound the darkness by walls that block movement, letting it spread around corners. Requires Walled Templates."
                 },
                 "Dueling": "Identifiers for exceptions to the requirements of this feature.",
+                "Fall": {
+                    "Acr": "Yes (Acrobatics)",
+                    "Ath": "Yes (Athletics)",
+                    "Creature": "Onto Another Creature",
+                    "Ground": "Onto Ground",
+                    "Reaction": "Use your reaction to hit the surface head or feet first?",
+                    "Tiny": "One or both creatures are tiny!",
+                    "Type": "Type of Fall:",
+                    "Water": "Into Water"
+                },
                 "FindFamiliar": {
                     "Ask": "Ask Each Time",
                     "Choose": "Choose a familiar.",
@@ -305,6 +317,7 @@
                     "TouchRange": "Touch Spell Range",
                     "Type": "Choose a creature type for your familiar."
                 },
+                "FlurryOfBlows": "Identifier of the item to be rolled repeatedly.",
                 "Hex": {
                     "Hexed": "Hexed",
                     "Multiple": "Choose which creature to move the hex from.",

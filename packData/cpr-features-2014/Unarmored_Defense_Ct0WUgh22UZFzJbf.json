@@ -1,0 +1,92 @@
+{
+  "name": "Unarmored Defense",
+  "type": "feat",
+  "effects": [],
+  "system": {
+    "activities": {},
+    "uses": {
+      "spent": 0,
+      "recovery": []
+    },
+    "advancement": {},
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "identifier": "unarmored-defense",
+    "source": {
+      "book": "PHB",
+      "page": "",
+      "license": "",
+      "custom": "",
+      "rules": "2014",
+      "revision": 1
+    },
+    "crewed": false,
+    "enchant": {},
+    "prerequisites": {
+      "items": [],
+      "level": 1,
+      "repeatable": false
+    },
+    "properties": [],
+    "requirements": "",
+    "type": {
+      "value": "class",
+      "subtype": ""
+    }
+  },
+  "flags": {
+    "midi-qol": {
+      "removeAttackDamageButtons": "default",
+      "forceCEOff": true
+    },
+    "midiProperties": {
+      "confirmTargets": "default"
+    },
+    "dae": {
+      "alwaysActive": false,
+      "activeEquipped": false
+    },
+    "dnd5e": {
+      "riders": {
+        "activity": [],
+        "effect": []
+      }
+    },
+    "cat": {
+      "alternateAttributes": {
+        "ACFormula": [
+          {
+            "value": "10 + @abilities.dex.mod + @abilities.wis.mod",
+            "restrictions": {
+              "Armor": {
+                "value": [
+                  "light",
+                  "medium",
+                  "heavy",
+                  "shield"
+                ],
+                "invert": true,
+                "requireAll": false
+              }
+            }
+          }
+        ]
+      },
+      "automation": {
+        "source": "chris-premades",
+        "version": "2.0.4"
+      }
+    }
+  },
+  "img": "icons/magic/control/buff-flight-wings-runes-red.webp",
+  "folder": "nH8135F1PzU9skht",
+  "_stats": {
+    "coreVersion": "14.364",
+    "systemId": "dnd5e",
+    "systemVersion": "5.3.3"
+  },
+  "_id": "Ct0WUgh22UZFzJbf",
+  "_key": "!items!Ct0WUgh22UZFzJbf"
+}

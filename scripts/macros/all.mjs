@@ -16,12 +16,15 @@ export {dreadfulStrikes as 'dreadful-strikes'} from './all/classFeatures/ranger/
 export {umbralSight as 'umbral-sight'} from './all/classFeatures/ranger/gloomStalker/umbralSight.mjs';
 // Fighter
 export {indomitable} from './all/classFeatures/fighter/indomitable.mjs';
+// Monk
+export {flurryOfBlows as 'ki', flurryOfBlows as 'monks-focus'} from './all/classFeatures/monk/flurryOfBlows.mjs';
 // Rogue
 export {steadyAim as 'steady-aim'} from './all/classFeatures/rogue/steadyAim.mjs';
 // Warlock
 export {oneWithShadows as 'one-with-shadows'} from './all/classFeatures/warlock/invocations/oneWithShadows.mjs';
 // Actions
 export {help} from './all/actions/help.mjs';
+export {fall} from './all/actions/fall.mjs';
 // Equipment
 export {arcaneGrimoire as 'arcane-grimoire-1', arcaneGrimoire as 'arcane-grimoire-2', arcaneGrimoire as 'arcane-grimoire-3'} from './all/equipment/arcaneGrimoire.mjs';
 // Fighting Styles
