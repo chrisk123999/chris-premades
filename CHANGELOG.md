@@ -5,6 +5,7 @@
 - Generic Macros:
   - `selectDamageType`, for attacks whose damage has more than one type.
   - `{type}Bonus` and `reroll{Type}WithBonus`, where type is check, save, skill, or tool.
+  - `choiceRemoveCondition`, prompts to remove the source of a status effect.
 - Infused Strikes exposes its formula and range, Exceptional Training its damage type, and Stalker's Flurry a separate Sudden Strike range.
 ## Bug Fixes:
 - Summon Aberration: the summon's features are fetched in one pass, so a missing pack item no longer leaves a half built summon behind.
@@ -38,6 +39,12 @@
 - Dreadful Strikes
 - Indomitable
 - Second Wind
+- Martial Arts
+- Unarmored Defense (Monk)
+- Unarmored Movement
+- Ki
+- Slow Fall
+- Stillness of Mind
 ## Updated Modern Automations:
 - Dash
 - Disengage (opportunity attack immunity needs gambits-premades)
@@ -66,8 +73,19 @@
 - Studied Attacks
 - Tactical Mind
 - Tactical Shift
+- Martial Arts
+- Unarmored Defense (Monk)
+- Unarmored Movement
+- Monk's Focus
+- Uncanny Metabolism
+- Deflect Attacks
+- Slow Fall
+- Self-Restoration
+- Deflect Energy
 ## Animations:
 - Misty Step gains a colour option.
+- Flurry of Blows
+- Step of the Wind
 
 # 2.0.3 Pre-Release:
 ## Update Notes:

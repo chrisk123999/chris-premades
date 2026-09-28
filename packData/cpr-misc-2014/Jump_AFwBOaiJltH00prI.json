@@ -1,599 +1,18 @@
 {
-  "name": "Ki",
+  "folder": "2oPvBwuEQWxtcV0t",
+  "name": "Jump",
   "type": "feat",
-  "effects": [
-    {
-      "name": "Dodge",
-      "origin": null,
-      "duration": {
-        "value": null,
-        "units": "seconds",
-        "expiry": null,
-        "expired": false
-      },
-      "disabled": false,
-      "flags": {
-        "dae": {
-          "enableCondition": "",
-          "disableCondition": "",
-          "disableIncapacitated": false,
-          "selfTarget": false,
-          "selfTargetAlways": true,
-          "dontApply": false,
-          "stackable": "noneName",
-          "showIcon": false,
-          "durationExpression": "",
-          "macroRepeat": "none",
-          "expiryMode": "delete",
-          "specialDuration": []
-        },
-        "core": {
-          "overlay": false
-        },
-        "cat": {
-          "identifier": "dodge",
-          "specialDuration": [
-            "turnStart",
-            "incapacitated",
-            "zeroSpeed"
-          ]
-        },
-        "dnd5e": {
-          "riders": {
-            "statuses": []
-          }
-        }
-      },
-      "img": "icons/skills/melee/shield-block-gray-orange.webp",
-      "_id": "WH8GlbXXlFWNqgW9",
-      "type": "base",
-      "system": {
-        "changes": [
-          {
-            "key": "flags.midi-qol.grants.disadvantage.attack.all",
-            "value": "canSee(tokenUuid, targetUuid)",
-            "priority": 20,
-            "type": "custom",
-            "phase": "initial"
-          },
-          {
-            "key": "flags.midi-qol.advantage.save.dex",
-            "value": 1,
-            "priority": 20,
-            "type": "custom",
-            "phase": "initial"
-          }
-        ]
-      },
-      "description": "",
-      "tint": "#ffffff",
-      "transfer": false,
-      "statuses": [
-        "dodging"
-      ],
-      "sort": 0,
-      "_stats": {
-        "coreVersion": "14.364",
-        "systemId": "dnd5e",
-        "systemVersion": "5.3.3"
-      },
-      "showIcon": 2,
-      "start": null,
-      "folder": null,
-      "_key": "!items.effects!02NOkS9NWeMjIdrz.WH8GlbXXlFWNqgW9"
-    },
-    {
-      "name": "Dash",
-      "img": "icons/skills/movement/figure-running-gray.webp",
-      "origin": null,
-      "transfer": false,
-      "_id": "NLqKas9cKwNIPWp4",
-      "type": "base",
-      "system": {
-        "changes": []
-      },
-      "disabled": false,
-      "start": null,
-      "duration": {
-        "value": null,
-        "units": "seconds",
-        "expiry": "sourceEnd",
-        "expired": false
-      },
-      "description": "",
-      "tint": "#ffffff",
-      "statuses": [],
-      "showIcon": 1,
-      "folder": null,
-      "sort": 0,
-      "flags": {
-        "dnd5e": {
-          "riders": {
-            "statuses": []
-          }
-        },
-        "dae": {
-          "enableCondition": "",
-          "disableCondition": "",
-          "stackable": "noneName",
-          "expiryMode": "delete",
-          "durationExpression": "",
-          "macroRepeat": "none",
-          "disableIncapacitated": false,
-          "selfTarget": false,
-          "selfTargetAlways": true,
-          "dontApply": false,
-          "specialDuration": []
-        },
-        "core": {
-          "overlay": false
-        },
-        "cat": {
-          "macros": {
-            "called": [
-              {
-                "source": "chris-premades",
-                "rules": "all",
-                "identifier": "stepOfTheWindJump"
-              }
-            ]
-          }
-        }
-      },
-      "_stats": {
-        "coreVersion": "14.364",
-        "systemId": "dnd5e",
-        "systemVersion": "5.3.3"
-      },
-      "_key": "!items.effects!02NOkS9NWeMjIdrz.NLqKas9cKwNIPWp4"
-    },
-    {
-      "name": "Disengage",
-      "origin": null,
-      "duration": {
-        "value": null,
-        "units": "seconds",
-        "expiry": "sourceEnd",
-        "expired": false
-      },
-      "disabled": false,
-      "flags": {
-        "dae": {
-          "enableCondition": "",
-          "disableCondition": "",
-          "disableIncapacitated": false,
-          "selfTarget": false,
-          "selfTargetAlways": true,
-          "dontApply": false,
-          "stackable": "noneName",
-          "showIcon": false,
-          "durationExpression": "",
-          "macroRepeat": "none",
-          "expiryMode": "delete",
-          "specialDuration": []
-        },
-        "core": {
-          "overlay": false
-        },
-        "cat": {
-          "identifier": "disengage",
-          "specialDuration": [],
-          "macros": {
-            "called": [
-              {
-                "source": "chris-premades",
-                "rules": "all",
-                "identifier": "stepOfTheWindJump"
-              }
-            ]
-          }
-        },
-        "dnd5e": {
-          "riders": {
-            "statuses": []
-          }
-        }
-      },
-      "img": "icons/skills/movement/feet-spurred-boots-brown.webp",
-      "_id": "Z7kHV4dkDTBXs3Lw",
-      "type": "base",
-      "system": {
-        "changes": [
-          {
-            "key": "flags.gambits-premades.oaImmunity",
-            "type": "override",
-            "value": 1,
-            "phase": "initial",
-            "priority": 20
-          }
-        ]
-      },
-      "description": "",
-      "tint": "#ffffff",
-      "transfer": false,
-      "statuses": [],
-      "sort": 0,
-      "_stats": {
-        "coreVersion": "14.364",
-        "systemId": "dnd5e",
-        "systemVersion": "5.3.3"
-      },
-      "start": null,
-      "showIcon": 1,
-      "folder": null,
-      "_key": "!items.effects!02NOkS9NWeMjIdrz.Z7kHV4dkDTBXs3Lw"
-    }
-  ],
+  "img": "icons/skills/movement/arrow-upward-blue.webp",
   "system": {
     "activities": {
-      "utilityPaDeclNe1": {
-        "name": "Patient Defense",
+      "DEKe3Xrso1x2f679": {
         "type": "utility",
-        "_id": "utilityPaDeclNe1",
+        "name": "Long Jump",
+        "_id": "DEKe3Xrso1x2f679",
         "img": "",
         "sort": 0,
         "activation": {
-          "type": "bonus",
-          "value": 1,
-          "condition": "",
-          "override": false
-        },
-        "consumption": {
-          "targets": [
-            {
-              "type": "itemUses",
-              "value": "1",
-              "target": "",
-              "scaling": {}
-            }
-          ],
-          "scaling": {
-            "allowed": false,
-            "max": ""
-          },
-          "spellSlot": true
-        },
-        "description": {
-          "chatFlavor": ""
-        },
-        "duration": {
-          "units": "inst",
-          "special": "",
-          "concentration": false,
-          "override": false
-        },
-        "effects": [
-          {
-            "_id": "WH8GlbXXlFWNqgW9",
-            "level": {
-              "min": null,
-              "max": null
-            }
-          }
-        ],
-        "flags": {},
-        "range": {
-          "units": "self",
-          "special": "",
-          "override": false
-        },
-        "target": {
-          "prompt": true,
-          "affects": {
-            "count": "",
-            "type": "",
-            "choice": false,
-            "special": ""
-          },
-          "template": {
-            "count": "",
-            "contiguous": false,
-            "type": "",
-            "size": "",
-            "width": "",
-            "height": "",
-            "units": "ft",
-            "stationary": false
-          },
-          "override": false
-        },
-        "uses": {
-          "spent": 0,
-          "recovery": [],
-          "max": ""
-        },
-        "visibility": {
-          "level": {
-            "min": null,
-            "max": null
-          },
-          "requireAttunement": false,
-          "requireIdentification": false,
-          "requireMagic": false,
-          "identifier": ""
-        },
-        "roll": {
-          "prompt": false,
-          "visible": false,
-          "name": "",
-          "formula": ""
-        },
-        "useConditionText": "",
-        "useConditionReason": "",
-        "effectConditionText": "",
-        "otherActivityId": "",
-        "macroData": {
-          "name": "",
-          "command": ""
-        },
-        "ignoreTraits": {
-          "idi": false,
-          "idr": false,
-          "idv": false,
-          "ida": false,
-          "idm": false
-        },
-        "midiProperties": {
-          "ignoreTraits": [],
-          "triggeredActivityId": "none",
-          "triggeredActivityConditionText": "",
-          "triggeredActivityTargets": "targets",
-          "triggeredActivityRollAs": "self",
-          "confirmTargets": "default",
-          "automationOnly": false,
-          "identifier": "patient-defense",
-          "triggeredActivityConsume": true,
-          "triggeredActivityConfigure": true,
-          "autoConsume": false,
-          "forceConsumeDialog": "default",
-          "forceRollDialog": "default",
-          "forceDamageDialog": "default",
-          "autoTargetType": "any",
-          "autoTargetAction": "default",
-          "otherActivityCompatible": false,
-          "otherActivityAsParentType": true,
-          "displayActivityName": true,
-          "rollMode": "default",
-          "chooseEffects": false,
-          "toggleEffect": false,
-          "ignoreFullCover": false,
-          "removeChatButtons": "default",
-          "magicEffect": false,
-          "magicDamage": false,
-          "noConcentrationCheck": false,
-          "skipConcentrationCheck": false,
-          "autoCEEffects": "default"
-        },
-        "isOverTimeFlag": false,
-        "overTimeProperties": {
-          "saveRemoves": true,
-          "rollAs": "target",
-          "preRemoveConditionText": "",
-          "postRemoveConditionText": ""
-        },
-        "regionBehavior": {
-          "enabled": false,
-          "dispositionFilter": -1,
-          "excludeSource": true,
-          "oncePerTurn": true,
-          "wallRestriction": "none",
-          "regionVisibility": 2,
-          "attachToken": "default",
-          "rules": []
-        },
-        "regionLight": {
-          "enabled": false,
-          "dim": 0,
-          "bright": 0,
-          "color": null,
-          "alpha": 0.5,
-          "luminosity": 0.5,
-          "animationType": "",
-          "animationSpeed": 5,
-          "animationIntensity": 5
-        },
-        "otherActivityAsParentType": true
-      },
-      "utilitySOTWclNe2": {
-        "name": "Step of the Wind (Dash)",
-        "type": "utility",
-        "_id": "utilitySOTWclNe2",
-        "img": "",
-        "sort": 0,
-        "activation": {
-          "type": "bonus",
-          "value": 1,
-          "condition": "",
-          "override": false
-        },
-        "consumption": {
-          "targets": [
-            {
-              "type": "itemUses",
-              "value": "1",
-              "target": "",
-              "scaling": {}
-            }
-          ],
-          "scaling": {
-            "allowed": false,
-            "max": ""
-          },
-          "spellSlot": true
-        },
-        "description": {
-          "chatFlavor": ""
-        },
-        "duration": {
-          "units": "inst",
-          "special": "",
-          "concentration": false,
-          "override": false
-        },
-        "effects": [
-          {
-            "_id": "NLqKas9cKwNIPWp4",
-            "level": {}
-          }
-        ],
-        "flags": {
-          "cat": {
-            "genericConfig": {
-              "chris-premades": {
-                "movementAnimation": {
-                  "selectLocationsAnimation": {
-                    "source": "chris-premades",
-                    "identifier": "selectLocations"
-                  },
-                  "moveAnimation": {
-                    "source": "chris-premades",
-                    "identifier": "stepOfTheWind"
-                  },
-                  "movementEffect": ""
-                }
-              }
-            },
-            "macros": {
-              "roll": [
-                {
-                  "source": "chris-premades",
-                  "identifier": "movementAnimation",
-                  "rules": "all"
-                }
-              ]
-            }
-          }
-        },
-        "range": {
-          "units": "ft",
-          "special": "",
-          "override": false,
-          "value": "@attributes.movement.max"
-        },
-        "target": {
-          "prompt": true,
-          "affects": {
-            "count": "",
-            "type": "",
-            "choice": false,
-            "special": ""
-          },
-          "template": {
-            "count": "",
-            "contiguous": false,
-            "type": "",
-            "size": "",
-            "width": "",
-            "height": "",
-            "units": "ft",
-            "stationary": false
-          },
-          "override": false
-        },
-        "uses": {
-          "spent": 0,
-          "recovery": [],
-          "max": ""
-        },
-        "visibility": {
-          "level": {
-            "min": null,
-            "max": null
-          },
-          "requireAttunement": false,
-          "requireIdentification": false,
-          "requireMagic": false,
-          "identifier": ""
-        },
-        "roll": {
-          "prompt": false,
-          "visible": false,
-          "name": "",
-          "formula": ""
-        },
-        "useConditionText": "",
-        "useConditionReason": "",
-        "effectConditionText": "",
-        "otherActivityId": "",
-        "macroData": {
-          "name": "",
-          "command": ""
-        },
-        "ignoreTraits": {
-          "idi": false,
-          "idr": false,
-          "idv": false,
-          "ida": false,
-          "idm": false
-        },
-        "midiProperties": {
-          "ignoreTraits": [],
-          "triggeredActivityId": "none",
-          "triggeredActivityConditionText": "",
-          "triggeredActivityTargets": "targets",
-          "triggeredActivityRollAs": "self",
-          "confirmTargets": "default",
-          "automationOnly": false,
-          "identifier": "step-of-the-wind-dash",
-          "triggeredActivityConsume": true,
-          "triggeredActivityConfigure": true,
-          "autoConsume": false,
-          "forceConsumeDialog": "default",
-          "forceRollDialog": "default",
-          "forceDamageDialog": "default",
-          "autoTargetType": "any",
-          "autoTargetAction": "default",
-          "otherActivityCompatible": false,
-          "otherActivityAsParentType": true,
-          "displayActivityName": true,
-          "rollMode": "default",
-          "chooseEffects": false,
-          "toggleEffect": false,
-          "ignoreFullCover": false,
-          "removeChatButtons": "default",
-          "magicEffect": false,
-          "magicDamage": false,
-          "noConcentrationCheck": false,
-          "skipConcentrationCheck": false,
-          "autoCEEffects": "default"
-        },
-        "isOverTimeFlag": false,
-        "overTimeProperties": {
-          "saveRemoves": true,
-          "rollAs": "target",
-          "preRemoveConditionText": "",
-          "postRemoveConditionText": ""
-        },
-        "regionBehavior": {
-          "enabled": false,
-          "dispositionFilter": -1,
-          "excludeSource": true,
-          "oncePerTurn": true,
-          "wallRestriction": "none",
-          "regionVisibility": 2,
-          "attachToken": "default",
-          "rules": []
-        },
-        "regionLight": {
-          "enabled": false,
-          "dim": 0,
-          "bright": 0,
-          "color": null,
-          "alpha": 0.5,
-          "luminosity": 0.5,
-          "animationType": "",
-          "animationSpeed": 5,
-          "animationIntensity": 5
-        },
-        "otherActivityAsParentType": true
-      },
-      "JAOibfCQHHt4TPtL": {
-        "type": "utility",
-        "_id": "JAOibfCQHHt4TPtL",
-        "img": "",
-        "sort": -100000,
-        "activation": {
-          "type": "bonus",
+          "type": "special",
           "override": false,
           "condition": ""
         },
@@ -602,14 +21,7 @@
             "allowed": false
           },
           "spellSlot": true,
-          "targets": [
-            {
-              "type": "itemUses",
-              "value": "1",
-              "target": "",
-              "scaling": {}
-            }
-          ]
+          "targets": []
         },
         "description": {
           "chatFlavor": ""
@@ -622,21 +34,47 @@
         "effects": [],
         "flags": {
           "cat": {
+            "genericConfig": {
+              "chris-premades": {
+                "movementAnimation": {
+                  "selectLocationsAnimation": {
+                    "source": "chris-premades",
+                    "identifier": "selectLocations"
+                  },
+                  "moveAnimation": {
+                    "source": "chris-premades",
+                    "identifier": "instinctivePounce"
+                  },
+                  "movementEffect": ""
+                }
+              }
+            },
             "macros": {
               "roll": [
                 {
                   "source": "chris-premades",
                   "rules": "all",
-                  "identifier": "ki"
+                  "identifier": "jump"
+                },
+                {
+                  "source": "chris-premades",
+                  "rules": "all",
+                  "identifier": "longJump"
+                },
+                {
+                  "source": "chris-premades",
+                  "identifier": "movementAnimation",
+                  "rules": "all"
                 }
               ]
             }
           }
         },
         "range": {
-          "units": "any",
+          "units": "self",
           "override": false,
-          "special": ""
+          "special": "",
+          "value": ""
         },
         "target": {
           "template": {
@@ -647,9 +85,7 @@
           },
           "affects": {
             "choice": false,
-            "type": "",
-            "count": "1",
-            "special": ""
+            "type": ""
           },
           "override": false,
           "prompt": true
@@ -673,7 +109,7 @@
           "prompt": false,
           "visible": false,
           "name": "",
-          "formula": ""
+          "formula": "@abilities.str.value[feet]"
         },
         "useConditionText": "",
         "useConditionReason": "",
@@ -708,7 +144,160 @@
           "automationOnly": false,
           "otherActivityCompatible": false,
           "otherActivityAsParentType": true,
-          "identifier": "flurry-of-blows",
+          "identifier": "long-jump",
+          "displayActivityName": true,
+          "rollMode": "default",
+          "chooseEffects": false,
+          "toggleEffect": false,
+          "ignoreFullCover": false,
+          "removeChatButtons": "default",
+          "magicEffect": false,
+          "magicDamage": false,
+          "noConcentrationCheck": false,
+          "skipConcentrationCheck": false,
+          "autoCEEffects": "default"
+        },
+        "isOverTimeFlag": false,
+        "overTimeProperties": {
+          "saveRemoves": true,
+          "rollAs": "target",
+          "preRemoveConditionText": "",
+          "postRemoveConditionText": ""
+        },
+        "regionBehavior": {
+          "enabled": false,
+          "dispositionFilter": -1,
+          "excludeSource": true,
+          "oncePerTurn": true,
+          "wallRestriction": "none",
+          "regionVisibility": 2,
+          "attachToken": "default",
+          "rules": []
+        },
+        "regionLight": {
+          "enabled": false,
+          "dim": 0,
+          "bright": 0,
+          "color": null,
+          "alpha": 0.5,
+          "luminosity": 0.5,
+          "animationType": "",
+          "animationSpeed": 5,
+          "animationIntensity": 5
+        },
+        "otherActivityAsParentType": true
+      },
+      "O5d84Y6RBhzHWpF2": {
+        "type": "check",
+        "name": "Low Obstacle",
+        "_id": "O5d84Y6RBhzHWpF2",
+        "img": "",
+        "sort": 100000,
+        "activation": {
+          "type": "special",
+          "override": false,
+          "condition": ""
+        },
+        "consumption": {
+          "scaling": {
+            "allowed": false
+          },
+          "spellSlot": true,
+          "targets": []
+        },
+        "description": {
+          "chatFlavor": ""
+        },
+        "duration": {
+          "units": "inst",
+          "concentration": false,
+          "override": false
+        },
+        "effects": [],
+        "flags": {
+          "cat": {
+            "hidden": true
+          }
+        },
+        "range": {
+          "units": "self",
+          "override": false,
+          "special": ""
+        },
+        "target": {
+          "template": {
+            "contiguous": false,
+            "stationary": false,
+            "units": "ft",
+            "type": ""
+          },
+          "affects": {
+            "choice": false,
+            "type": "self",
+            "special": ""
+          },
+          "override": false,
+          "prompt": true
+        },
+        "uses": {
+          "spent": 0,
+          "recovery": [],
+          "max": ""
+        },
+        "visibility": {
+          "level": {
+            "min": null,
+            "max": null
+          },
+          "requireAttunement": false,
+          "requireIdentification": false,
+          "requireMagic": false,
+          "identifier": ""
+        },
+        "check": {
+          "associated": [
+            "ath"
+          ],
+          "dc": {
+            "calculation": "",
+            "formula": "10"
+          },
+          "ability": ""
+        },
+        "useConditionText": "",
+        "useConditionReason": "",
+        "effectConditionText": "",
+        "otherActivityId": "none",
+        "macroData": {
+          "name": "",
+          "command": ""
+        },
+        "ignoreTraits": {
+          "idi": false,
+          "idr": false,
+          "idv": false,
+          "ida": false,
+          "idm": false
+        },
+        "midiProperties": {
+          "ignoreTraits": [],
+          "triggeredActivityId": "none",
+          "triggeredActivityConditionText": "",
+          "triggeredActivityTargets": "targets",
+          "triggeredActivityRollAs": "self",
+          "triggeredActivityConsume": true,
+          "triggeredActivityConfigure": true,
+          "autoConsume": false,
+          "forceConsumeDialog": "default",
+          "forceRollDialog": "default",
+          "forceDamageDialog": "default",
+          "confirmTargets": "default",
+          "autoTargetType": "any",
+          "autoTargetAction": "default",
+          "automationOnly": true,
+          "otherActivityCompatible": false,
+          "otherActivityAsParentType": true,
+          "identifier": "lowObstacle",
           "displayActivityName": true,
           "rollMode": "default",
           "chooseEffects": false,
@@ -750,72 +339,210 @@
           "animationIntensity": 5
         },
         "otherActivityAsParentType": true,
-        "name": "Flurry of Blows"
+        "damage": {
+          "onSave": "half",
+          "parts": [],
+          "critical": {
+            "allow": false
+          }
+        },
+        "friendlySave": "default"
       },
-      "dIxlVXtFrdcfcpaf": {
-        "type": "utility",
-        "name": "Step of the Wind (Disengage)",
+      "MLn8F54NlNK4h77T": {
+        "type": "check",
+        "name": "Difficult Terrain",
+        "_id": "MLn8F54NlNK4h77T",
         "img": "",
-        "sort": 100000,
+        "sort": 200000,
         "activation": {
-          "type": "bonus",
-          "value": 1,
-          "condition": "",
-          "override": false
+          "type": "special",
+          "override": false,
+          "condition": ""
         },
         "consumption": {
-          "targets": [
-            {
-              "type": "itemUses",
-              "value": "1",
-              "target": "",
-              "scaling": {}
-            }
-          ],
           "scaling": {
-            "allowed": false,
-            "max": ""
+            "allowed": false
           },
-          "spellSlot": true
+          "spellSlot": true,
+          "targets": []
         },
         "description": {
           "chatFlavor": ""
         },
         "duration": {
           "units": "inst",
-          "special": "",
           "concentration": false,
           "override": false
         },
-        "effects": [
-          {
-            "_id": "Z7kHV4dkDTBXs3Lw",
-            "level": {}
-          }
-        ],
+        "effects": [],
         "flags": {
           "cat": {
-            "genericConfig": {
-              "chris-premades": {
-                "movementAnimation": {
-                  "selectLocationsAnimation": {
-                    "source": "chris-premades",
-                    "identifier": "selectLocations"
-                  },
-                  "moveAnimation": {
-                    "source": "chris-premades",
-                    "identifier": "stepOfTheWind"
-                  },
-                  "movementEffect": ""
-                }
-              }
-            },
+            "hidden": true
+          }
+        },
+        "range": {
+          "units": "self",
+          "override": false,
+          "special": ""
+        },
+        "target": {
+          "template": {
+            "contiguous": false,
+            "stationary": false,
+            "units": "ft",
+            "type": ""
+          },
+          "affects": {
+            "choice": false,
+            "type": "self",
+            "special": ""
+          },
+          "override": false,
+          "prompt": true
+        },
+        "uses": {
+          "spent": 0,
+          "recovery": [],
+          "max": ""
+        },
+        "visibility": {
+          "level": {
+            "min": null,
+            "max": null
+          },
+          "requireAttunement": false,
+          "requireIdentification": false,
+          "requireMagic": false,
+          "identifier": ""
+        },
+        "check": {
+          "associated": [
+            "acr"
+          ],
+          "dc": {
+            "calculation": "",
+            "formula": "10"
+          },
+          "ability": ""
+        },
+        "useConditionText": "",
+        "useConditionReason": "",
+        "effectConditionText": "",
+        "otherActivityId": "none",
+        "macroData": {
+          "name": "",
+          "command": ""
+        },
+        "ignoreTraits": {
+          "idi": false,
+          "idr": false,
+          "idv": false,
+          "ida": false,
+          "idm": false
+        },
+        "midiProperties": {
+          "ignoreTraits": [],
+          "triggeredActivityId": "none",
+          "triggeredActivityConditionText": "",
+          "triggeredActivityTargets": "targets",
+          "triggeredActivityRollAs": "self",
+          "triggeredActivityConsume": true,
+          "triggeredActivityConfigure": true,
+          "autoConsume": false,
+          "forceConsumeDialog": "default",
+          "forceRollDialog": "default",
+          "forceDamageDialog": "default",
+          "confirmTargets": "default",
+          "autoTargetType": "any",
+          "autoTargetAction": "default",
+          "automationOnly": true,
+          "otherActivityCompatible": false,
+          "otherActivityAsParentType": true,
+          "identifier": "difficultTerrain",
+          "displayActivityName": true,
+          "rollMode": "default",
+          "chooseEffects": false,
+          "toggleEffect": false,
+          "ignoreFullCover": false,
+          "removeChatButtons": "default",
+          "magicEffect": false,
+          "magicDamage": false,
+          "noConcentrationCheck": false,
+          "skipConcentrationCheck": false,
+          "autoCEEffects": "default"
+        },
+        "isOverTimeFlag": false,
+        "overTimeProperties": {
+          "saveRemoves": true,
+          "rollAs": "target",
+          "preRemoveConditionText": "",
+          "postRemoveConditionText": ""
+        },
+        "regionBehavior": {
+          "enabled": false,
+          "dispositionFilter": -1,
+          "excludeSource": true,
+          "oncePerTurn": true,
+          "wallRestriction": "none",
+          "regionVisibility": 2,
+          "attachToken": "default",
+          "rules": []
+        },
+        "regionLight": {
+          "enabled": false,
+          "dim": 0,
+          "bright": 0,
+          "color": null,
+          "alpha": 0.5,
+          "luminosity": 0.5,
+          "animationType": "",
+          "animationSpeed": 5,
+          "animationIntensity": 5
+        },
+        "otherActivityAsParentType": true,
+        "damage": {
+          "onSave": "half",
+          "parts": [],
+          "critical": {
+            "allow": false
+          }
+        },
+        "friendlySave": "default"
+      },
+      "DctwphLAs6tayPce": {
+        "type": "utility",
+        "_id": "DctwphLAs6tayPce",
+        "img": "",
+        "sort": 300000,
+        "activation": {
+          "type": "special",
+          "override": false,
+          "condition": ""
+        },
+        "consumption": {
+          "scaling": {
+            "allowed": false
+          },
+          "spellSlot": true,
+          "targets": []
+        },
+        "description": {
+          "chatFlavor": ""
+        },
+        "duration": {
+          "units": "inst",
+          "concentration": false,
+          "override": false
+        },
+        "effects": [],
+        "flags": {
+          "cat": {
             "macros": {
               "roll": [
                 {
                   "source": "chris-premades",
-                  "identifier": "movementAnimation",
-                  "rules": "all"
+                  "rules": "all",
+                  "identifier": "jump"
                 }
               ]
             }
@@ -823,28 +550,22 @@
         },
         "range": {
           "units": "self",
-          "special": "",
-          "override": false
+          "override": false,
+          "special": ""
         },
         "target": {
-          "prompt": true,
-          "affects": {
-            "count": "",
-            "type": "",
-            "choice": false,
-            "special": ""
-          },
           "template": {
-            "count": "",
             "contiguous": false,
-            "type": "",
-            "size": "",
-            "width": "",
-            "height": "",
+            "stationary": false,
             "units": "ft",
-            "stationary": false
+            "type": ""
           },
-          "override": false
+          "affects": {
+            "choice": false,
+            "type": ""
+          },
+          "override": false,
+          "prompt": true
         },
         "uses": {
           "spent": 0,
@@ -864,13 +585,13 @@
         "roll": {
           "prompt": false,
           "visible": false,
-          "formula": "",
-          "name": ""
+          "name": "",
+          "formula": "floor((max(3, 3 + @abilities.str.mod) / 2))[feet]"
         },
         "useConditionText": "",
         "useConditionReason": "",
         "effectConditionText": "",
-        "otherActivityId": "",
+        "otherActivityId": "none",
         "macroData": {
           "name": "",
           "command": ""
@@ -888,19 +609,19 @@
           "triggeredActivityConditionText": "",
           "triggeredActivityTargets": "targets",
           "triggeredActivityRollAs": "self",
-          "confirmTargets": "default",
-          "automationOnly": false,
-          "identifier": "step-of-the-wind-disengage",
           "triggeredActivityConsume": true,
           "triggeredActivityConfigure": true,
           "autoConsume": false,
           "forceConsumeDialog": "default",
           "forceRollDialog": "default",
           "forceDamageDialog": "default",
+          "confirmTargets": "default",
           "autoTargetType": "any",
           "autoTargetAction": "default",
+          "automationOnly": false,
           "otherActivityCompatible": false,
           "otherActivityAsParentType": true,
+          "identifier": "standing-high-jump",
           "displayActivityName": true,
           "rollMode": "default",
           "chooseEffects": false,
@@ -942,105 +663,212 @@
           "animationIntensity": 5
         },
         "otherActivityAsParentType": true,
-        "_id": "dIxlVXtFrdcfcpaf"
+        "name": "Standing High Jump"
+      },
+      "aNxN2K3SMgui6sGS": {
+        "type": "utility",
+        "name": "Running High Jump",
+        "_id": "aNxN2K3SMgui6sGS",
+        "img": "",
+        "sort": 400000,
+        "activation": {
+          "type": "special",
+          "override": false,
+          "condition": ""
+        },
+        "consumption": {
+          "scaling": {
+            "allowed": false
+          },
+          "spellSlot": true,
+          "targets": []
+        },
+        "description": {
+          "chatFlavor": ""
+        },
+        "duration": {
+          "units": "inst",
+          "concentration": false,
+          "override": false
+        },
+        "effects": [],
+        "flags": {
+          "cat": {
+            "macros": {
+              "roll": [
+                {
+                  "source": "chris-premades",
+                  "rules": "all",
+                  "identifier": "jump"
+                }
+              ]
+            }
+          }
+        },
+        "range": {
+          "units": "self",
+          "override": false,
+          "special": ""
+        },
+        "target": {
+          "template": {
+            "contiguous": false,
+            "stationary": false,
+            "units": "ft",
+            "type": ""
+          },
+          "affects": {
+            "choice": false,
+            "type": ""
+          },
+          "override": false,
+          "prompt": true
+        },
+        "uses": {
+          "spent": 0,
+          "recovery": [],
+          "max": ""
+        },
+        "visibility": {
+          "level": {
+            "min": null,
+            "max": null
+          },
+          "requireAttunement": false,
+          "requireIdentification": false,
+          "requireMagic": false,
+          "identifier": ""
+        },
+        "roll": {
+          "prompt": false,
+          "visible": false,
+          "name": "",
+          "formula": "max(3, 3 + @abilities.str.mod)[feet]"
+        },
+        "useConditionText": "",
+        "useConditionReason": "",
+        "effectConditionText": "",
+        "otherActivityId": "none",
+        "macroData": {
+          "name": "",
+          "command": ""
+        },
+        "ignoreTraits": {
+          "idi": false,
+          "idr": false,
+          "idv": false,
+          "ida": false,
+          "idm": false
+        },
+        "midiProperties": {
+          "ignoreTraits": [],
+          "triggeredActivityId": "none",
+          "triggeredActivityConditionText": "",
+          "triggeredActivityTargets": "targets",
+          "triggeredActivityRollAs": "self",
+          "triggeredActivityConsume": true,
+          "triggeredActivityConfigure": true,
+          "autoConsume": false,
+          "forceConsumeDialog": "default",
+          "forceRollDialog": "default",
+          "forceDamageDialog": "default",
+          "confirmTargets": "default",
+          "autoTargetType": "any",
+          "autoTargetAction": "default",
+          "automationOnly": false,
+          "otherActivityCompatible": false,
+          "otherActivityAsParentType": true,
+          "identifier": "running-high-jump",
+          "displayActivityName": true,
+          "rollMode": "default",
+          "chooseEffects": false,
+          "toggleEffect": false,
+          "ignoreFullCover": false,
+          "removeChatButtons": "default",
+          "magicEffect": false,
+          "magicDamage": false,
+          "noConcentrationCheck": false,
+          "skipConcentrationCheck": false,
+          "autoCEEffects": "default"
+        },
+        "isOverTimeFlag": false,
+        "overTimeProperties": {
+          "saveRemoves": true,
+          "rollAs": "target",
+          "preRemoveConditionText": "",
+          "postRemoveConditionText": ""
+        },
+        "regionBehavior": {
+          "enabled": false,
+          "dispositionFilter": -1,
+          "excludeSource": true,
+          "oncePerTurn": true,
+          "wallRestriction": "none",
+          "regionVisibility": 2,
+          "attachToken": "default",
+          "rules": []
+        },
+        "regionLight": {
+          "enabled": false,
+          "dim": 0,
+          "bright": 0,
+          "color": null,
+          "alpha": 0.5,
+          "luminosity": 0.5,
+          "animationType": "",
+          "animationSpeed": 5,
+          "animationIntensity": 5
+        },
+        "otherActivityAsParentType": true
       }
     },
     "uses": {
       "spent": 0,
-      "max": "@classes.monk.levels",
-      "recovery": [
-        {
-          "period": "sr",
-          "type": "recoverAll"
-        },
-        {
-          "period": "lr",
-          "type": "recoverAll"
-        }
-      ]
+      "recovery": [],
+      "max": ""
     },
     "advancement": {},
     "description": {
       "value": "",
       "chat": ""
     },
-    "identifier": "ki",
+    "identifier": "jump",
     "source": {
-      "book": "PHB",
-      "page": "",
-      "license": "",
-      "custom": "",
+      "revision": 1,
       "rules": "2014",
-      "revision": 1
+      "book": "",
+      "page": "",
+      "custom": "",
+      "license": ""
     },
     "crewed": false,
     "enchant": {},
     "prerequisites": {
       "items": [],
-      "level": 2,
-      "repeatable": false
+      "repeatable": false,
+      "level": null
     },
     "properties": [],
     "requirements": "",
     "type": {
-      "value": "class",
-      "subtype": "ki"
+      "value": "",
+      "subtype": ""
     }
   },
+  "effects": [],
   "flags": {
-    "midi-qol": {
-      "removeAttackDamageButtons": "default",
-      "forceCEOff": true
-    },
-    "midiProperties": {
-      "confirmTargets": "default"
-    },
     "cat": {
-      "genericConfig": {
-        "chris-premades": {
-          "multiAttack": {
-            "attacks": [
-              "Actor.uiz71ngpHUaUfjBA.Item.Sdb0AMcVRCrfenIk",
-              "Actor.uiz71ngpHUaUfjBA.Item.oXCwAgiI7p4ph9BL",
-              "Actor.BMSxFesL1bGqgCO4"
-            ],
-            "activity": "JAOibfCQHHt4TPtL"
-          }
-        }
-      },
-      "animationGenericConfig": {
-        "chris-premades": {
-          "advancedMeleeAttack": {
-            "chris-premades": {
-              "advancedMeleeAttack": {
-                "trailColor": "random"
-              }
-            }
-          }
-        }
-      },
-      "macros": {
-        "roll": [
-          {
-            "source": "chris-premades",
-            "identifier": "multiAttack",
-            "rules": "all"
-          }
-        ]
-      },
       "automation": {
         "source": "chris-premades",
         "version": "2.0.4"
       }
     }
   },
-  "img": "icons/magic/symbols/runes-star-pentagon-blue.webp",
-  "folder": "nH8135F1PzU9skht",
   "_stats": {
     "coreVersion": "14.364",
     "systemId": "dnd5e",
     "systemVersion": "5.3.3"
   },
-  "_id": "02NOkS9NWeMjIdrz",
-  "_key": "!items!02NOkS9NWeMjIdrz"
+  "_id": "AFwBOaiJltH00prI",
+  "_key": "!items!AFwBOaiJltH00prI"
 }

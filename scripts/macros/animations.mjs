@@ -15,3 +15,5 @@ export {hide} from './animations/hide.mjs';
 export {mistyStep} from './animations/teleport.mjs';
 export {moonFrenzy, shapeChange} from './animations/lycanthropy.mjs';
 export {darknessSphere} from './animations/darkness.mjs';
+export {flurryOfBlows} from './animations/flurryOfBlows.mjs';
+export {stepOfTheWind} from './animations/stepOfTheWind.mjs';

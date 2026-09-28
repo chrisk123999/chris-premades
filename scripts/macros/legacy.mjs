@@ -12,6 +12,8 @@ export {divineStrike as 'divine-strike'} from './legacy/classFeatures/cleric/div
 export {harnessDivinePower as 'harness-divine-power'} from './legacy/classFeatures/cleric/harnessDivinePower.mjs';
 // Druid
 export {wildShape as 'wild-shape', wildShapeActive} from './legacy/classFeatures/druid/wildShape.mjs';
+// Monk
+export {stunningStrike as 'stunning-strike'} from './legacy/classFeatures/monk/stunningStrike.mjs';
 // Ranger
 export {exceptionalTraining as 'exceptional-training'} from './legacy/classFeatures/ranger/beastMaster/exceptionalTraining.mjs';
 export {primalCompanion as 'primal-companion'} from './legacy/classFeatures/ranger/beastMaster/primalCompanion.mjs';

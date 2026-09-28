@@ -29,6 +29,7 @@
             "EldritchBlast": "Eldritch Blast",
             "FiendSummon": "Fiend Summon",
             "FireSummon": "Fire Summon",
+            "FlurryOfBlows": "Flurry of Blows", 
             "FutureSummon": "Future Summon",
             "Hide": "Hide",
             "MagicMissile": "Magic Missile",
@@ -55,6 +56,7 @@
             "SneakAttack": {
                 "Name": "Sneak Attack"
             },
+            "StepOfTheWind": "Step of the Wind",
             "WaterSummon": "Water Summon"
         },
         "Config": {
@@ -253,6 +255,7 @@
             "TurnTrigger": "Turn Trigger",
             "UseFormula": "Use Formula",
             "UtilityRollAsDamage": "Utility Roll As Damage",
+            "ValidateWeapon": "Validate Weapon",
             "Weapon": "Weapon",
             "WeaponProperties": "Weapon Properties",
             "WeaponType": "Weapon Type",
@@ -264,7 +267,9 @@
         },
         "Generic": {
             "CreatureNameAndSize": "{size} {name}",
-            "SelectDamageType": "Select Damage Type"
+            "SelectDamageType": "Select Damage Type",
+            "SelectTarget": "Select a target.",
+            "SelectTargets": "Select up to {maxAmount} targets."
         },
         "GenericEffects": {
             "CriticalThreshold": "Critical Threshold"
@@ -317,7 +322,7 @@
                     "TouchRange": "Touch Spell Range",
                     "Type": "Choose a creature type for your familiar."
                 },
-                "FlurryOfBlows": "Identifier of the item to be rolled repeatedly.",
+                "FlurryOfBlows": "Identifier of the attack item.",
                 "Hex": {
                     "Hexed": "Hexed",
                     "Multiple": "Choose which creature to move the hex from.",
@@ -327,6 +332,10 @@
                     "Equipped": "Equipped Items",
                     "EquippedHint": "One or more of these item types must be equipped.",
                     "Prompt": "Use {item} to reduce the damage dealt to {name}?"
+                },
+                "Jump": {
+                    "DifficultTerrain": "Landing in difficult terrain?",
+                    "LowObstacle": "Is there a low obstacle?"
                 },
                 "OneWithShadows": {
                     "Bright": "You can only use this in dim light or darkness."
@@ -372,6 +381,7 @@
                     "SelectNearbyTargets": "Select targets.",
                     "Weapon": "Attack with what weapon?"
                 },
+                "ChoiceRemoveCondition": "Select a condition to remove:",
                 "Common": {
                     "AttackTypeHint": "Limit this feature by attack type.",
                     "Costs": "Use Activity Costs",
@@ -691,6 +701,7 @@
                     "BaseMaxJumps": "Base Max Jumps",
                     "TargetDamageSelection": "Select Damage Type For Each Target"
                 },
+                "DeflectAttacks": "Redirect Attack?",
                 "ExtremeResilience": {
                     "Select": "Select a feature to recover a use of."
                 },
