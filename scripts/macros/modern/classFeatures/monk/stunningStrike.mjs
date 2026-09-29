@@ -12,7 +12,7 @@ async function stun({document: activity, workflow}) {
     if (!valid.size) return;
     const focus = actorUtils.getItemByIdentifier(activity.actor, 'monks-focus', {type: 'feat'});
     if (!focus?.system.uses.value) return;
-    if (automationUtils.getConfigValue(activity.item, 'validate')) {
+    if (automationUtils.getConfigValue(activity.item, 'validate') && !workflow.item.flags['chris-premades']?.dedicatedWeapon) {
         const type = workflow.item.system.type.value;
         const unarmed = type === 'unarmed' || documentUtils.getIdentifier(workflow.item) === 'unarmed-strike';
         if (!unarmed && type === 'natural') return;

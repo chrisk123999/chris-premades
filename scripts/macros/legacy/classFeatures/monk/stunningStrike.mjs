@@ -1,7 +1,7 @@
 import {actorUtils, dialogUtils, workflowUtils} from '../../../../proxy.mjs';
 async function stun({document: activity, workflow}) {
     if (!workflow.hitTargets.size) return;
-    if (!workflowUtils.isAttackType(workflow, 'meleeAttack')) return;
+    if (!workflowUtils.isAttackType(workflow, 'meleeWeaponAttack')) return;
     const valid = workflow.hitTargets.filter(t => {
         if (t.actor.system.attributes.hp.value <= 0) return;
         if (actorUtils.getEffectByIdentifier(t.actor, 'stunning-strike')) return;

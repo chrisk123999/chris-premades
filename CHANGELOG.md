@@ -50,6 +50,9 @@
 - Diamond Soul
 - Empty Body
 - Perfect Self
+- Dedicated Weapon
+- Quickened Healing
+- Focused Aim
 ## Updated Modern Automations:
 - Dash
 - Disengage (opportunity attack immunity needs gambits-premades)

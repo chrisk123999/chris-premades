@@ -13,6 +13,8 @@ export {harnessDivinePower as 'harness-divine-power'} from './legacy/classFeatur
 // Druid
 export {wildShape as 'wild-shape', wildShapeActive} from './legacy/classFeatures/druid/wildShape.mjs';
 // Monk
+export {dedicatedWeapon as 'dedicated-weapon'} from './legacy/classFeatures/monk/dedicatedWeapon.mjs';
+export {focusedAim as 'focused-aim'} from './legacy/classFeatures/monk/focusedAim.mjs';
 export {stunningStrike as 'stunning-strike'} from './legacy/classFeatures/monk/stunningStrike.mjs';
 // Ranger
 export {exceptionalTraining as 'exceptional-training'} from './legacy/classFeatures/ranger/beastMaster/exceptionalTraining.mjs';

@@ -157,6 +157,7 @@
             "Effect": "Effect",
             "Enable3rdPartyReaction": "Enable 3rd Party Reaction",
             "EnablePrompt": "Enable Reaction Prompt",
+            "ExcludeWeaponProperties": "Exclude Weapon Properties",
             "Expire": "Expiration",
             "FailedSave": "Failed Save",
             "FavoriteActivities": "Favorite Activities",
@@ -525,6 +526,13 @@
                     "Weapon": "Pact Weapon"
                 },
                 "DangerSense": "This save is from an effect you can see.",
+                "DedicatedWeapon": {
+                    "Auto": "Auto Roll On Rests",
+                    "Choose": "Choose a weapon.",
+                    "Current": "Current",
+                    "NoValid": "No valid weapons available!",
+                    "Proficiency": "Require Proficiency"
+                },
                 "DestroyUndead": "Maximum CR",
                 "DrakeCompanion": {
                     "Bite": "Bite",
