@@ -557,6 +557,7 @@
                 "FeyPresence": {
                     "Select": "Choose a condition to apply."
                 },
+                "FocusedAim": "Identifier For Resources Item",
                 "FormOfDread": {
                     "Use": "Frighten the target?"
                 },
