@@ -1,16 +1,66 @@
 {
-  "name": "Superior Inspiration",
+  "name": "Diamond Soul",
   "type": "feat",
-  "effects": [],
+  "effects": [
+    {
+      "name": "Diamond Soul",
+      "statuses": [],
+      "system": {
+        "changes": [
+          {
+            "key": "flags.dnd5e.diamondSoul",
+            "value": true,
+            "type": "override",
+            "priority": 20,
+            "phase": "initial"
+          }
+        ]
+      },
+      "duration": {
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
+      },
+      "tint": "#ffffff",
+      "transfer": true,
+      "disabled": false,
+      "showIcon": 1,
+      "flags": {
+        "dae": {
+          "transfer": true,
+          "stackable": "noneNameOnly",
+          "specialDuration": []
+        },
+        "midi-qol": {
+          "forceCEOff": true
+        }
+      },
+      "description": "",
+      "img": "icons/commodities/gems/gem-faceted-cushion-teal-black.webp",
+      "_id": "mBCqZAaCJiCHdXQT",
+      "type": "base",
+      "start": null,
+      "origin": null,
+      "folder": null,
+      "sort": 0,
+      "_stats": {
+        "coreVersion": "14.364",
+        "systemId": "dnd5e",
+        "systemVersion": "5.3.3"
+      },
+      "_key": "!items.effects!i0mtHqGkAqj7rA5t.mBCqZAaCJiCHdXQT"
+    }
+  ],
   "system": {
     "activities": {
-      "InJHi9J1tz8HL1Jt": {
+      "m4u9acZRiVUaDcqR": {
         "type": "utility",
-        "_id": "InJHi9J1tz8HL1Jt",
+        "_id": "m4u9acZRiVUaDcqR",
         "img": "",
         "sort": 0,
         "activation": {
-          "type": "encounter",
+          "type": "special",
           "override": false,
           "condition": ""
         },
@@ -22,8 +72,8 @@
           "targets": [
             {
               "type": "itemUses",
-              "value": "-2",
-              "target": "feat:bardic-inspiration",
+              "value": "1",
+              "target": "feat:ki",
               "scaling": {}
             }
           ]
@@ -37,28 +87,7 @@
           "override": false
         },
         "effects": [],
-        "flags": {
-          "cat": {
-            "macros": {
-              "combat": [
-                {
-                  "source": "chris-premades",
-                  "identifier": "combatStartItemUses",
-                  "rules": "all"
-                }
-              ]
-            },
-            "genericConfig": {
-              "chris-premades": {
-                "combatStartItemUses": {
-                  "identifier": "bardic-inspiration",
-                  "minimum": 2,
-                  "fromZeroOnly": false
-                }
-              }
-            }
-          }
-        },
+        "flags": {},
         "range": {
           "units": "self",
           "override": false,
@@ -102,6 +131,7 @@
         "useConditionText": "",
         "useConditionReason": "",
         "effectConditionText": "",
+        "otherActivityId": "none",
         "macroData": {
           "name": "",
           "command": ""
@@ -172,7 +202,6 @@
           "animationSpeed": 5,
           "animationIntensity": 5
         },
-        "otherActivityId": "none",
         "otherActivityAsParentType": true,
         "name": ""
       }
@@ -182,25 +211,25 @@
       "recovery": [],
       "max": ""
     },
+    "advancement": {},
     "description": {
       "value": "",
       "chat": ""
     },
-    "identifier": "superior-inspiration",
+    "identifier": "diamond-soul",
     "source": {
-      "book": "",
+      "book": "PHB",
       "page": "",
       "license": "",
-      "custom": "PHB 2024",
-      "rules": "2024",
+      "custom": "",
+      "rules": "2014",
       "revision": 1
     },
-    "advancement": [],
-    "cover": null,
     "crewed": false,
     "enchant": {},
     "prerequisites": {
-      "level": 18,
+      "items": [],
+      "level": 14,
       "repeatable": false
     },
     "properties": [],
@@ -211,23 +240,49 @@
     }
   },
   "flags": {
+    "midi-qol": {
+      "removeAttackDamageButtons": "default",
+      "forceCEOff": true
+    },
+    "midiProperties": {
+      "confirmTargets": "default"
+    },
     "cat": {
-      "automation": {
-        "version": "2.0.4",
-        "source": "chris-premades"
+      "genericConfig": {
+        "chris-premades": {
+          "rerollSaveWithBonus": {
+            "bonus": "",
+            "ability": [],
+            "failedOnly": true,
+            "oncePerRoll": true,
+            "consume": "always",
+            "rollActivity": "m4u9acZRiVUaDcqR",
+            "rollItem": false
+          }
+        }
       },
-      "config": {
-        "minimum": 2
+      "macros": {
+        "save": [
+          {
+            "source": "chris-premades",
+            "identifier": "rerollSaveWithBonus",
+            "rules": "all"
+          }
+        ]
+      },
+      "automation": {
+        "source": "chris-premades",
+        "version": "2.0.4"
       }
     }
   },
-  "img": "icons/magic/earth/explosion-lava-stone-green.webp",
-  "folder": "jv1qLsd4LTtCBvYj",
-  "_id": "S4YTwKY5KbO6GY94",
+  "img": "icons/commodities/gems/gem-faceted-cushion-teal-black.webp",
+  "folder": "nH8135F1PzU9skht",
   "_stats": {
     "coreVersion": "14.364",
     "systemId": "dnd5e",
     "systemVersion": "5.3.3"
   },
-  "_key": "!items!S4YTwKY5KbO6GY94"
+  "_id": "i0mtHqGkAqj7rA5t",
+  "_key": "!items!i0mtHqGkAqj7rA5t"
 }

@@ -1032,10 +1032,24 @@
               "roll": [
                 {
                   "source": "chris-premades",
-                  "rules": "all",
-                  "identifier": "monks-focus"
+                  "identifier": "extraAttack",
+                  "rules": "all"
                 }
               ]
+            },
+            "genericConfig": {
+              "chris-premades": {
+                "extraAttack": {
+                  "attacks": 2,
+                  "prompt": true,
+                  "skip": true,
+                  "identifier": "unarmed-strike",
+                  "animation": {
+                    "source": "chris-premades",
+                    "identifier": "flurryOfBlows"
+                  }
+                }
+              }
             }
           }
         },

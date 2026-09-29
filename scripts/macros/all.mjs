@@ -6,7 +6,6 @@ export {rage, raging} from './all/classFeatures/barbarian/rage.mjs';
 export {relentlessRage as 'relentless-rage'} from './all/classFeatures/barbarian/relentlessRage.mjs';
 // Bard
 export {bardicInspiration as 'bardic-inspiration', bardicInspirationEffect} from './all/classFeatures/bard/bardicInspiration.mjs';
-export {superiorInspiration as 'superior-inspiration'} from './all/classFeatures/bard/superiorInspiration.mjs';
 // Druid
 export {beastSpells as 'beast-spells'} from './all/classFeatures/druid/beastSpells.mjs';
 export {wildShape as 'wild-shape', wildShapeChooseForms, wildShapeRevert} from './all/classFeatures/druid/wildShape.mjs';
@@ -17,7 +16,6 @@ export {umbralSight as 'umbral-sight'} from './all/classFeatures/ranger/gloomSta
 // Fighter
 export {indomitable} from './all/classFeatures/fighter/indomitable.mjs';
 // Monk
-export {flurryOfBlows as 'ki', flurryOfBlows as 'monks-focus', stepOfTheWindJump} from './all/classFeatures/monk/flurryOfBlows.mjs';
 export {slowFall as 'slow-fall'} from './all/classFeatures/monk/slowFall.mjs';
 // Rogue
 export {steadyAim as 'steady-aim'} from './all/classFeatures/rogue/steadyAim.mjs';

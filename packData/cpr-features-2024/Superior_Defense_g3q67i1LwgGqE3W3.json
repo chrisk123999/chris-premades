@@ -23,11 +23,12 @@
           "showIcon": false,
           "disableIncapacitated": false,
           "selfTarget": false,
-          "selfTargetAlways": false,
+          "selfTargetAlways": true,
           "dontApply": false,
           "durationExpression": "",
           "macroRepeat": "none",
-          "specialDuration": []
+          "specialDuration": [],
+          "expiryMode": "default"
         },
         "midi-qol": {
           "forceCEOff": true
@@ -48,6 +49,11 @@
             "incapacitated"
           ],
           "templateEffectActivities": []
+        },
+        "cat": {
+          "specialDuration": [
+            "incapacitated"
+          ]
         }
       },
       "description": "",
@@ -58,75 +64,87 @@
         "changes": [
           {
             "key": "system.traits.dr.value",
+            "type": "add",
             "value": "bludgeoning",
-            "priority": 20,
-            "type": "add"
+            "phase": "final",
+            "priority": 20
           },
           {
             "key": "system.traits.dr.value",
+            "type": "add",
             "value": "piercing",
-            "priority": 20,
-            "type": "add"
+            "phase": "final",
+            "priority": 20
           },
           {
             "key": "system.traits.dr.value",
+            "type": "add",
             "value": "slashing",
-            "priority": 20,
-            "type": "add"
+            "phase": "final",
+            "priority": 20
           },
           {
             "key": "system.traits.dr.value",
+            "type": "add",
             "value": "necrotic",
-            "priority": 20,
-            "type": "add"
+            "phase": "final",
+            "priority": 20
           },
           {
             "key": "system.traits.dr.value",
+            "type": "add",
             "value": "acid",
-            "priority": 20,
-            "type": "add"
+            "phase": "final",
+            "priority": 20
           },
           {
             "key": "system.traits.dr.value",
+            "type": "add",
             "value": "cold",
-            "priority": 20,
-            "type": "add"
+            "phase": "final",
+            "priority": 20
           },
           {
             "key": "system.traits.dr.value",
+            "type": "add",
             "value": "fire",
-            "priority": 20,
-            "type": "add"
+            "phase": "final",
+            "priority": 20
           },
           {
             "key": "system.traits.dr.value",
+            "type": "add",
             "value": "lightning",
-            "priority": 20,
-            "type": "add"
+            "phase": "final",
+            "priority": 20
           },
           {
             "key": "system.traits.dr.value",
+            "type": "add",
             "value": "thunder",
-            "priority": 20,
-            "type": "add"
+            "phase": "final",
+            "priority": 20
           },
           {
             "key": "system.traits.dr.value",
+            "type": "add",
             "value": "poison",
-            "priority": 20,
-            "type": "add"
+            "phase": "final",
+            "priority": 20
           },
           {
             "key": "system.traits.dr.value",
+            "type": "add",
             "value": "psychic",
-            "priority": 20,
-            "type": "add"
+            "phase": "final",
+            "priority": 20
           },
           {
             "key": "system.traits.dr.value",
+            "type": "add",
             "value": "radiant",
-            "priority": 20,
-            "type": "add"
+            "phase": "final",
+            "priority": 20
           }
         ]
       },
@@ -137,8 +155,8 @@
       "folder": null,
       "_stats": {
         "coreVersion": "14.364",
-        "systemId": null,
-        "systemVersion": null
+        "systemId": "dnd5e",
+        "systemVersion": "5.3.3"
       },
       "_key": "!items.effects!g3q67i1LwgGqE3W3.XcW5ncZZzYbanmQq"
     }
@@ -179,7 +197,11 @@
         },
         "effects": [
           {
-            "_id": "XcW5ncZZzYbanmQq"
+            "_id": "XcW5ncZZzYbanmQq",
+            "level": {
+              "min": null,
+              "max": null
+            }
           }
         ],
         "range": {
@@ -195,7 +217,7 @@
           },
           "affects": {
             "choice": false,
-            "type": "self",
+            "type": "",
             "special": ""
           },
           "override": false,
@@ -262,7 +284,15 @@
         },
         "otherActivityId": "none",
         "otherActivityAsParentType": true,
-        "name": ""
+        "name": "",
+        "img": "",
+        "visibility": {
+          "level": {
+            "min": null,
+            "max": null
+          },
+          "identifier": ""
+        }
       }
     },
     "uses": {
@@ -310,14 +340,10 @@
     "midiProperties": {
       "confirmTargets": "default"
     },
-    "dnd5e": {
-      "riders": {
-        "activity": []
-      }
-    },
     "cat": {
       "automation": {
-        "version": "1.0.0"
+        "version": "2.0.4",
+        "source": "chris-premades"
       }
     }
   },
@@ -326,8 +352,8 @@
   "_id": "g3q67i1LwgGqE3W3",
   "_stats": {
     "coreVersion": "14.364",
-    "systemId": null,
-    "systemVersion": null
+    "systemId": "dnd5e",
+    "systemVersion": "5.3.3"
   },
   "_key": "!items!g3q67i1LwgGqE3W3"
 }

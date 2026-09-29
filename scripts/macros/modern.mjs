@@ -36,8 +36,6 @@ export {tacticalShift as 'tactical-shift'} from './modern/classFeatures/fighter/
 export {deflectAttacks as 'deflect-attacks'} from './modern/classFeatures/monk/deflectAttacks.mjs';
 export {empoweredStrikes as 'empowered-strikes'} from './modern/classFeatures/monk/empoweredStrikes.mjs';
 export {heightenedFocus as 'heightened-focus'} from './modern/classFeatures/monk/heightenedFocus.mjs';
-export {perfectFocus as 'perfect-focus'} from './modern/classFeatures/monk/perfectFocus.mjs';
-export {selfRestoration as 'self-restoration'} from './modern/classFeatures/monk/selfRestoration.mjs';
 export {stunningStrike as 'stunning-strike'} from './modern/classFeatures/monk/stunningStrike.mjs';
 // Paladin
 export {layOnHands as 'lay-on-hands'} from './modern/classFeatures/paladin/layOnHands.mjs';

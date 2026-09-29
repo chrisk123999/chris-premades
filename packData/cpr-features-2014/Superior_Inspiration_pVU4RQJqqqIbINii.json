@@ -19,7 +19,14 @@
             "allowed": false
           },
           "spellSlot": true,
-          "targets": []
+          "targets": [
+            {
+              "type": "itemUses",
+              "value": "-1",
+              "target": "feat:bardic-inspiration",
+              "scaling": {}
+            }
+          ]
         },
         "description": {
           "chatFlavor": ""
@@ -36,10 +43,19 @@
               "combat": [
                 {
                   "source": "chris-premades",
-                  "rules": "all",
-                  "identifier": "superior-inspiration"
+                  "identifier": "combatStartItemUses",
+                  "rules": "all"
                 }
               ]
+            },
+            "genericConfig": {
+              "chris-premades": {
+                "combatStartItemUses": {
+                  "identifier": "bardic-inspiration",
+                  "minimum": 1,
+                  "fromZeroOnly": true
+                }
+              }
             }
           }
         },
@@ -198,7 +214,7 @@
   "flags": {
     "cat": {
       "automation": {
-        "version": "2.0.2",
+        "version": "2.0.4",
         "source": "chris-premades"
       }
     }
@@ -208,8 +224,8 @@
   "_id": "pVU4RQJqqqIbINii",
   "_stats": {
     "coreVersion": "14.364",
-    "systemId": null,
-    "systemVersion": null
+    "systemId": "dnd5e",
+    "systemVersion": "5.3.3"
   },
   "_key": "!items!pVU4RQJqqqIbINii"
 }

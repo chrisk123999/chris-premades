@@ -1,16 +1,16 @@
-import {actorUtils, automationUtils, constants, dialogUtils, documentUtils, workflowUtils} from '../../proxy.mjs';
-function getConditions(activity) {
-    const settings = automationUtils.getGenericConfigValues(activity, 'chris-premades', 'choiceRemoveCondition', configKeys);
+import {actorUtils, automationUtils, constants, dialogUtils, documentUtils, queryUtils, workflowUtils} from '../../proxy.mjs';
+function getConditions(activity, macroID) {
+    const settings = automationUtils.getGenericConfigValues(activity, 'chris-premades', macroID, configKeys);
     return actorUtils.getStatusSources(activity.actor, settings.conditions);
 }
-async function preChecks({activity, config}) {
+async function preChecks({activity, config, macroClass: {identifier}}) {
     const prefetched = workflowUtils.getWorkflowProperty(config.workflow, 'choiceRemoveCondition');
     if (prefetched?.length) {
         const refetched = prefetched.map(e => activity.actor.effects.get(e._id)).filter(e => e instanceof ActiveEffect.implementation);
         workflowUtils.setWorkflowProperty(config.workflow, 'choiceRemoveCondition', refetched);
         return;
     }
-    const effects = getConditions(activity);
+    const effects = getConditions(activity, identifier);
     if (!effects?.length) return true;
     workflowUtils.setWorkflowProperty(config.workflow, 'choiceRemoveCondition', effects);
 }
@@ -32,13 +32,19 @@ async function remove({workflow}) {
         await documentUtils.deleteDocument(selection);
     }
 }
+async function rollFeature({document: activity, macroClass: {identifier}}) {
+    const conditions = getConditions(activity, identifier);
+    if (!conditions?.length) return;
+    const options = {};
+    workflowUtils.setWorkflowProperty(options, 'choiceRemoveCondition', conditions);
+    await workflowUtils.syntheticActivityRoll(activity, [], {options, userId: queryUtils.firstOwner(activity.actor, true)});
+}
 export const choiceRemoveCondition = {
     rules: 'all',
     version: '2.0.4',
     category: 'utility',
     generic: true,
     documents: ['activity'],
-    getConditions,
     roll: [
         {
             pass: 'activityPreTargeting',
@@ -62,3 +68,23 @@ export const choiceRemoveCondition = {
     }
 };
 const configKeys = Object.keys(choiceRemoveCondition.genericConfig);
+export const turnEndChoiceRemoveCondition = {
+    ...choiceRemoveCondition,
+    combat: [
+        {
+            pass: 'actorTurnEnd',
+            macro: rollFeature,
+            priority: 200
+        }
+    ]
+};
+export const turnStartChoiceRemoveCondition = {
+    ...choiceRemoveCondition,
+    combat: [
+        {
+            pass: 'actorTurnStart',
+            macro: rollFeature,
+            priority: 200
+        }
+    ]
+};

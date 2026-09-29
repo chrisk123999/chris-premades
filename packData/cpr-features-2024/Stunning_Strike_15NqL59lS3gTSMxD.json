@@ -45,6 +45,9 @@
           "riders": {
             "statuses": []
           }
+        },
+        "cat": {
+          "identifier": "stunning-strike"
         }
       },
       "description": "",

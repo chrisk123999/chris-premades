@@ -34,7 +34,7 @@
           "cat": {
             "genericConfig": {
               "chris-premades": {
-                "choiceRemoveCondition": {
+                "turnEndChoiceRemoveCondition": {
                   "conditions": [
                     "charmed",
                     "frightened",
@@ -44,17 +44,17 @@
               }
             },
             "macros": {
-              "combat": [
-                {
-                  "source": "chris-premades",
-                  "rules": "2024",
-                  "identifier": "self-restoration"
-                }
-              ],
               "roll": [
                 {
                   "source": "chris-premades",
-                  "identifier": "choiceRemoveCondition",
+                  "identifier": "turnEndChoiceRemoveCondition",
+                  "rules": "all"
+                }
+              ],
+              "combat": [
+                {
+                  "source": "chris-premades",
+                  "identifier": "turnEndChoiceRemoveCondition",
                   "rules": "all"
                 }
               ]

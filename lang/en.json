@@ -322,7 +322,6 @@
                     "TouchRange": "Touch Spell Range",
                     "Type": "Choose a creature type for your familiar."
                 },
-                "FlurryOfBlows": "Identifier of the attack item.",
                 "Hex": {
                     "Hexed": "Hexed",
                     "Multiple": "Choose which creature to move the hex from.",
@@ -349,7 +348,6 @@
                     "HeavyArmor": "You are wearing heavy armor and cannot rage!",
                     "Spellcasting": "You can't spellcast while raging!"
                 },
-                "SuperiorInspiration": "Minimum Inspirations",
                 "UnarmedFighting": "Deal damage to which grappled creature?",
                 "WildShape": {
                     "Choose": "Choose a wild shape:",
@@ -404,6 +402,10 @@
                     "SpellLevelHint": "Limit this feature by spell level.",
                     "SpellSchoolHint": "Limit this feature by spell school."
                 },
+                "CombatStartItemUses": {
+                    "FromZero": "Trigger From Zero Only",
+                    "Minimum": "Minimum Item Uses"
+                },
                 "ConsumeItemToUse": "Consume {item} to use this feature?",
                 "DamageBonusToOneRoll": {
                     "BonusDamageType": "Bonus Damage Type",
@@ -419,6 +421,7 @@
                     "MaxTargets": "Max Targets",
                     "MaxTargetsHint": "Limit the bonus to this many targets. 0 applies it to every target."
                 },
+                "ExtraAttack": "Identifier of the attack item.",
                 "Grapple": {
                     "ActivityInfo": "Use Activity Info",
                     "ActivityInfoHint": "Icons, item name, and roll DC will be taken from the parent save activity.",
@@ -716,6 +719,10 @@
                 },
                 "GreaterDivineIntervention": {
                     "RestFormula": "Rest Recovery Formula"
+                },
+                "HeightenedFocus": {
+                    "Prompt": "Bring an ally with you?",
+                    "PromptNoAnimation": "Bring an ally with you?<br>Choose a target, move your token, then submit this prompt."
                 },
                 "HuntersMark": {
                     "Marked": "Hunter's Mark: Marked",
