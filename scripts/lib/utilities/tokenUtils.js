@@ -341,14 +341,6 @@ async function grappleHelper(sourceToken, targetToken, item, {noContest = false,
             }
         });
     }
-    let grappledEffect = effectUtils.getEffectByStatusID(targetToken.actor, 'grappled');
-    let timePassed = 0;
-    while (!grappledEffect && timePassed < 1000) {
-        await genericUtils.sleep(100);
-        grappledEffect = effectUtils.getEffectByStatusID(targetToken.actor, 'grappled');
-        timePassed += 100;
-    }
-    if (grappledEffect) await effectUtils.addDependent(grappledEffect, [targetEffect]);
     if (game.modules.get('Rideable')?.active) game.Rideable.Mount([targetToken.document], sourceToken.document, {Grappled: true, MountingEffectsOverride: ['Grappled']});
 }
 function isGrappledBy(target, source) {

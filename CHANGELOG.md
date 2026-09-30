@@ -1,3 +1,13 @@
+# 1.5.49 Release:
+# Bug Fixes
+- Blessed Strikes
+- Command
+- Flash of Genius
+- Grapple Escape
+- Instinctive Pounce
+- School of Hard Knocks
+- Song of Defense
+
 # 1.5.48 Release:
 ## Update Notes:
 - Removed the Overtime Creator. Use the editor from MidiQOL instead.

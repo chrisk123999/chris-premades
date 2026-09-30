@@ -40,5 +40,12 @@ export let potentSpellcasting = {
             category: 'homebrew',
             homebrew: true
         }
-    ]
+    ],
+    ddbi: {
+        removedItems: {
+            'Blessed Strikes: Potent Spellcasting': [
+                'Blessed Strikes'
+            ]
+        }
+    }
 };

@@ -37,7 +37,7 @@
         "_id": "4kQdAu844v4SqFFV",
         "sort": 0,
         "activation": {
-          "type": "bonus",
+          "type": "special",
           "override": false,
           "condition": ""
         },
@@ -183,7 +183,7 @@
       },
       "info": {
         "identifier": "instinctivePounce",
-        "version": "1.5.26",
+        "version": "1.5.49",
         "source": "chris-premades",
         "hasAnimation": true
       }

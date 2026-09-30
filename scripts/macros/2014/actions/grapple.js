@@ -17,7 +17,10 @@ async function escape({workflow}) {
     }
     if (!targetToken) targetToken = potentialTargets[0];
     let escapeFlags = genericUtils.getProperty(workflow.item, 'flags.chris-premades.grapple.' + targetToken.id);
-    let inputs = [[CONFIG.DND5E.skills.ath.label, 'ath'], [CONFIG.DND5E.skills.acr.label, 'acr']];
+    let inputs = ['acr', 'ath'].map(s => {
+        let skill = workflow.actor.system.skills[s].total;
+        return [`${CONFIG.DND5E.skills[s].label} (${skill > 0 ? '+' : ''}${skill})`, s];
+    });
     let selection = await dialogUtils.buttonDialog(workflow.item.name, 'CHRISPREMADES.Macros.Grapple.ChooseSkillEscape', inputs, {displayAsRows: true});
     if (!selection) return;
     let sourceRollOptions = {};

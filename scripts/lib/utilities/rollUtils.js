@@ -66,14 +66,14 @@ async function contestedRoll({sourceToken, targetToken, sourceRollType, targetRo
 async function requestRoll(token, request, ability, options = {}) {
     let userID = socketUtils.firstOwner(token, true);
     let data = {
+        displayOptions: options,
         saveDetails: {
             actorUuid: token.document.uuid,
             rollType: request,
             rollAbilities: [ability],
             rollDC: options.target,
             advantage: options.advantage,
-            disadvantage: options.disadvantage,
-            displayOptions: options
+            disadvantage: options.disadvantage
         }
     };
     switch(request) {
@@ -84,9 +84,11 @@ async function requestRoll(token, request, ability, options = {}) {
             genericUtils.setProperty(data.saveDetails, 'rollAbilities', [ability]);
             break;
         case 'skill':
+            genericUtils.setProperty(data.saveDetails, 'rollAbilities', [token.actor.system.skills[ability]?.ability ?? CONFIG.DND5E.skills[ability]?.ability ?? '']);
             genericUtils.setProperty(data.saveDetails, 'rollSkills', [ability]);
             break;
         case 'tool':
+            genericUtils.setProperty(data.saveDetails, 'rollAbilities', [token.actor.system.tools[ability]?.ability ?? CONFIG.DND5E.tools[ability]?.ability ?? '']);
             genericUtils.setProperty(data.saveDetails, 'rollTools', [ability]);
             break;
         case 'deathSave':

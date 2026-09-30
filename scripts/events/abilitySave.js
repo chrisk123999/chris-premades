@@ -306,6 +306,7 @@ async function rollSave(wrapped, config, dialog = {}, message = {}) {
     let returnData = await wrapped(config, dialog, {...message, create: false});
     returnData = returnData?.[0];
     if (!returnData) return;
+    returnData.options.target ??= config.midiOptions?.target;
     let oldOptions = returnData.options;
     returnData = await executeBonusMacroPass(this, 'bonus', saveId, options, returnData, config, dialog, message);
     if (token) {

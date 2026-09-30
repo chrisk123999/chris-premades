@@ -54,5 +54,12 @@ export let divineStrike = {
             category: 'homebrew',
             homebrew: true
         }
-    ]
+    ],
+    ddbi: {
+        removedItems: {
+            'Blessed Strikes: Divine Strike': [
+                'Blessed Strikes'
+            ]
+        }
+    }
 };

@@ -60,6 +60,7 @@ async function applyEffect({trigger: {token: self}, workflow}) {
 }
 async function endangerDamage({trigger: {entity: effect}, workflow}) {
     if (effect.flags['chris-premades']?.originWorkflow === workflow.id) return;
+    if (!workflowUtils.isAttackType(workflow, 'attack')) return;
     if (!workflow.hitTargets.size) return;
     await Promise.all(workflow.damageRolls.map(async (roll, i, rolls) => rolls[i] = await roll.reroll({maximize: true})));
     await workflow.setDamageRolls(workflow.damageRolls);

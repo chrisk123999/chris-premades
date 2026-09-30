@@ -1,5 +1,6 @@
 import {actorUtils, dialogUtils, genericUtils, itemUtils, socketUtils, workflowUtils} from '../../../../../utils.js';
 async function damageApplication({trigger: {token}, ditem}) {
+    if (!ditem.isHit || !ditem.totalDamage) return;
     if (!actorUtils.hasSpellSlots(token.actor)) return;
     if (actorUtils.hasUsedReaction(token.actor)) return;
     let originItem = itemUtils.getItemByIdentifier(token.actor, 'songOfDefense');
