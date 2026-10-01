@@ -1,7 +1,6 @@
 import {automationUtils, D20Bonus, documentUtils, effectUtils, genericUtils} from '../../../../proxy.mjs';
 async function grantInspiration({workflow}) {
     if (workflow.targets.size !== 1) return;
-    if (!workflow.item.system.uses.value) return;
     const sourceEffect = workflow.item.effects.contents[0];
     if (!sourceEffect) return;
     const target = workflow.targets.first().document;

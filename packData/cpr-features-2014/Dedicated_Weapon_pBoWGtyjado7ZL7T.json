@@ -1,16 +1,101 @@
 {
-  "name": "Superior Inspiration",
+  "name": "Dedicated Weapon",
   "type": "feat",
-  "effects": [],
+  "effects": [
+    {
+      "name": "Dedicated Weapon",
+      "img": "icons/weapons/fist/punch-dagger-curved-purple.webp",
+      "origin": "Compendium.chris-premades.CPRFeatures2014.Item.pBoWGtyjado7ZL7T",
+      "type": "enchantment",
+      "_id": "RARHQnemQDs1aDkT",
+      "system": {
+        "changes": [
+          {
+            "key": "name",
+            "type": "override",
+            "value": "Dedicated {}",
+            "phase": "final",
+            "priority": null
+          },
+          {
+            "key": "system.ability",
+            "type": "override",
+            "value": "dex",
+            "phase": "initial",
+            "priority": null
+          },
+          {
+            "key": "system.damage.base.custom.enabled",
+            "type": "override",
+            "value": true,
+            "phase": "initial",
+            "priority": null
+          },
+          {
+            "key": "system.damage.base.custom.formula",
+            "type": "override",
+            "value": "@scale.monk.martial-arts + @mod",
+            "phase": "initial",
+            "priority": null
+          },
+          {
+            "key": "flags.chris-premades.dedicatedWeapon",
+            "type": "override",
+            "value": true,
+            "phase": "initial",
+            "priority": null
+          }
+        ]
+      },
+      "disabled": false,
+      "start": null,
+      "duration": {
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "transfer": false,
+      "statuses": [],
+      "showIcon": 1,
+      "folder": null,
+      "sort": 0,
+      "flags": {
+        "dnd5e": {
+          "riders": {
+            "statuses": []
+          }
+        },
+        "dae": {
+          "enableCondition": "",
+          "disableCondition": "",
+          "expiryMode": "delete",
+          "macroRepeat": "none",
+          "specialDuration": []
+        },
+        "core": {
+          "overlay": false
+        }
+      },
+      "_stats": {
+        "coreVersion": "14.364",
+        "systemId": "dnd5e",
+        "systemVersion": "5.3.3"
+      },
+      "_key": "!items.effects!pBoWGtyjado7ZL7T.RARHQnemQDs1aDkT"
+    }
+  ],
   "system": {
     "activities": {
-      "InJHi9J1tz8HL1Jt": {
+      "QAQwwX7ZqIDhIMvG": {
         "type": "utility",
-        "_id": "InJHi9J1tz8HL1Jt",
+        "_id": "QAQwwX7ZqIDhIMvG",
         "img": "",
         "sort": 0,
         "activation": {
-          "type": "encounter",
+          "type": "shortRest",
           "override": false,
           "condition": ""
         },
@@ -19,20 +104,13 @@
             "allowed": false
           },
           "spellSlot": true,
-          "targets": [
-            {
-              "type": "itemUses",
-              "value": "-2",
-              "target": "feat:bardic-inspiration",
-              "scaling": {}
-            }
-          ]
+          "targets": []
         },
         "description": {
           "chatFlavor": ""
         },
         "duration": {
-          "units": "inst",
+          "units": "dstr",
           "concentration": false,
           "override": false
         },
@@ -40,22 +118,20 @@
         "flags": {
           "cat": {
             "macros": {
-              "combat": [
+              "roll": [
                 {
                   "source": "chris-premades",
-                  "identifier": "combatStartItemUses",
-                  "rules": "all"
+                  "rules": "2014",
+                  "identifier": "dedicated-weapon"
+                }
+              ],
+              "rest": [
+                {
+                  "source": "chris-premades",
+                  "rules": "2014",
+                  "identifier": "dedicated-weapon"
                 }
               ]
-            },
-            "genericConfig": {
-              "chris-premades": {
-                "combatStartItemUses": {
-                  "identifier": "bardic-inspiration",
-                  "minimum": 2,
-                  "fromZeroOnly": false
-                }
-              }
             }
           }
         },
@@ -102,6 +178,7 @@
         "useConditionText": "",
         "useConditionReason": "",
         "effectConditionText": "",
+        "otherActivityId": "none",
         "macroData": {
           "name": "",
           "command": ""
@@ -172,35 +249,34 @@
           "animationSpeed": 5,
           "animationIntensity": 5
         },
-        "otherActivityId": "none",
         "otherActivityAsParentType": true,
         "name": ""
       }
     },
     "uses": {
-      "spent": null,
+      "spent": 0,
       "recovery": [],
       "max": ""
     },
+    "advancement": {},
     "description": {
       "value": "",
       "chat": ""
     },
-    "identifier": "superior-inspiration",
+    "identifier": "dedicated-weapon",
     "source": {
-      "book": "",
+      "book": "TCoE",
       "page": "",
       "license": "",
-      "custom": "PHB 2024",
-      "rules": "2024",
+      "custom": "",
+      "rules": "2014",
       "revision": 1
     },
-    "advancement": [],
-    "cover": null,
     "crewed": false,
     "enchant": {},
     "prerequisites": {
-      "level": 18,
+      "items": [],
+      "level": 2,
       "repeatable": false
     },
     "properties": [],
@@ -213,21 +289,18 @@
   "flags": {
     "cat": {
       "automation": {
-        "version": "2.0.4",
-        "source": "chris-premades"
-      },
-      "config": {
-        "minimum": 2
+        "source": "chris-premades",
+        "version": "2.0.4"
       }
     }
   },
-  "img": "icons/magic/earth/explosion-lava-stone-green.webp",
-  "folder": "jv1qLsd4LTtCBvYj",
-  "_id": "S4YTwKY5KbO6GY94",
+  "img": "icons/weapons/fist/punch-dagger-curved-purple.webp",
+  "folder": "nH8135F1PzU9skht",
   "_stats": {
     "coreVersion": "14.364",
     "systemId": "dnd5e",
     "systemVersion": "5.3.3"
   },
-  "_key": "!items!S4YTwKY5KbO6GY94"
+  "_id": "pBoWGtyjado7ZL7T",
+  "_key": "!items!pBoWGtyjado7ZL7T"
 }

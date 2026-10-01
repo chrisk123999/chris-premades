@@ -165,10 +165,10 @@
       "name": "Dodge",
       "origin": null,
       "duration": {
-        "rounds": null,
-        "seconds": null,
-        "combat": null,
-        "turns": null
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
       },
       "disabled": false,
       "flags": {
@@ -182,7 +182,9 @@
           "stackable": "noneName",
           "showIcon": false,
           "durationExpression": "",
-          "macroRepeat": "none"
+          "macroRepeat": "none",
+          "expiryMode": "delete",
+          "specialDuration": []
         },
         "core": {
           "overlay": false
@@ -190,8 +192,15 @@
         "cat": {
           "identifier": "dodge",
           "specialDuration": [
-            "turnStart"
+            "turnStart",
+            "incapacitated",
+            "zeroSpeed"
           ]
+        },
+        "dnd5e": {
+          "riders": {
+            "statuses": []
+          }
         }
       },
       "img": "icons/skills/melee/shield-block-gray-orange.webp",
@@ -201,15 +210,17 @@
         "changes": [
           {
             "key": "flags.midi-qol.grants.disadvantage.attack.all",
-            "value": 1,
-            "priority": 20,
-            "type": "custom"
+            "type": "custom",
+            "value": "canSee(tokenUuid, targetUuid)",
+            "phase": "initial",
+            "priority": 20
           },
           {
             "key": "flags.midi-qol.advantage.save.dex",
+            "type": "custom",
             "value": 1,
-            "priority": 20,
-            "type": "custom"
+            "phase": "initial",
+            "priority": 20
           }
         ]
       },
@@ -220,6 +231,14 @@
         "dodging"
       ],
       "sort": 0,
+      "_stats": {
+        "coreVersion": "14.364",
+        "systemId": "dnd5e",
+        "systemVersion": "5.3.3"
+      },
+      "showIcon": 2,
+      "start": null,
+      "folder": null,
       "_key": "!items.effects!JUmfJw5mkkQSRzG4.P7TOUwV2i65sR7Fo"
     }
   ],
@@ -273,5 +292,10 @@
   },
   "folder": "jCoKvU1chpjD6Jlr",
   "_id": "JUmfJw5mkkQSRzG4",
+  "_stats": {
+    "coreVersion": "14.364",
+    "systemId": null,
+    "systemVersion": null
+  },
   "_key": "!items!JUmfJw5mkkQSRzG4"
 }

@@ -6,7 +6,6 @@ export {rage, raging} from './all/classFeatures/barbarian/rage.mjs';
 export {relentlessRage as 'relentless-rage'} from './all/classFeatures/barbarian/relentlessRage.mjs';
 // Bard
 export {bardicInspiration as 'bardic-inspiration', bardicInspirationEffect} from './all/classFeatures/bard/bardicInspiration.mjs';
-export {superiorInspiration as 'superior-inspiration'} from './all/classFeatures/bard/superiorInspiration.mjs';
 // Druid
 export {beastSpells as 'beast-spells'} from './all/classFeatures/druid/beastSpells.mjs';
 export {wildShape as 'wild-shape', wildShapeChooseForms, wildShapeRevert} from './all/classFeatures/druid/wildShape.mjs';
@@ -16,12 +15,16 @@ export {dreadfulStrikes as 'dreadful-strikes'} from './all/classFeatures/ranger/
 export {umbralSight as 'umbral-sight'} from './all/classFeatures/ranger/gloomStalker/umbralSight.mjs';
 // Fighter
 export {indomitable} from './all/classFeatures/fighter/indomitable.mjs';
+// Monk
+export {slowFall as 'slow-fall'} from './all/classFeatures/monk/slowFall.mjs';
 // Rogue
 export {steadyAim as 'steady-aim'} from './all/classFeatures/rogue/steadyAim.mjs';
 // Warlock
 export {oneWithShadows as 'one-with-shadows'} from './all/classFeatures/warlock/invocations/oneWithShadows.mjs';
 // Actions
+export {fall} from './all/actions/fall.mjs';
 export {help} from './all/actions/help.mjs';
+export {jump, longJump} from './all/actions/jump.mjs';
 // Equipment
 export {arcaneGrimoire as 'arcane-grimoire-1', arcaneGrimoire as 'arcane-grimoire-2', arcaneGrimoire as 'arcane-grimoire-3'} from './all/equipment/arcaneGrimoire.mjs';
 // Fighting Styles

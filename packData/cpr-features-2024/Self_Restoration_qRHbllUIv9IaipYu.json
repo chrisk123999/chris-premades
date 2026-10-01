@@ -1,16 +1,16 @@
 {
-  "name": "Superior Inspiration",
+  "name": "Self-Restoration",
   "type": "feat",
   "effects": [],
   "system": {
     "activities": {
-      "InJHi9J1tz8HL1Jt": {
+      "8xBzvZFwbggZHkSR": {
         "type": "utility",
-        "_id": "InJHi9J1tz8HL1Jt",
+        "_id": "8xBzvZFwbggZHkSR",
         "img": "",
         "sort": 0,
         "activation": {
-          "type": "encounter",
+          "type": "special",
           "override": false,
           "condition": ""
         },
@@ -19,14 +19,7 @@
             "allowed": false
           },
           "spellSlot": true,
-          "targets": [
-            {
-              "type": "itemUses",
-              "value": "-2",
-              "target": "feat:bardic-inspiration",
-              "scaling": {}
-            }
-          ]
+          "targets": []
         },
         "description": {
           "chatFlavor": ""
@@ -39,23 +32,32 @@
         "effects": [],
         "flags": {
           "cat": {
+            "genericConfig": {
+              "chris-premades": {
+                "turnEndChoiceRemoveCondition": {
+                  "conditions": [
+                    "charmed",
+                    "frightened",
+                    "poisoned"
+                  ]
+                }
+              }
+            },
             "macros": {
+              "roll": [
+                {
+                  "source": "chris-premades",
+                  "identifier": "turnEndChoiceRemoveCondition",
+                  "rules": "all"
+                }
+              ],
               "combat": [
                 {
                   "source": "chris-premades",
-                  "identifier": "combatStartItemUses",
+                  "identifier": "turnEndChoiceRemoveCondition",
                   "rules": "all"
                 }
               ]
-            },
-            "genericConfig": {
-              "chris-premades": {
-                "combatStartItemUses": {
-                  "identifier": "bardic-inspiration",
-                  "minimum": 2,
-                  "fromZeroOnly": false
-                }
-              }
             }
           }
         },
@@ -96,12 +98,13 @@
         "roll": {
           "prompt": false,
           "visible": false,
-          "name": "",
-          "formula": ""
+          "formula": "",
+          "name": ""
         },
         "useConditionText": "",
         "useConditionReason": "",
         "effectConditionText": "",
+        "otherActivityId": "none",
         "macroData": {
           "name": "",
           "command": ""
@@ -172,35 +175,34 @@
           "animationSpeed": 5,
           "animationIntensity": 5
         },
-        "otherActivityId": "none",
         "otherActivityAsParentType": true,
         "name": ""
       }
     },
     "uses": {
-      "spent": null,
+      "spent": 0,
       "recovery": [],
       "max": ""
     },
+    "advancement": {},
     "description": {
       "value": "",
       "chat": ""
     },
-    "identifier": "superior-inspiration",
+    "identifier": "self-restoration",
     "source": {
-      "book": "",
+      "book": "PHB 2024",
       "page": "",
       "license": "",
-      "custom": "PHB 2024",
+      "custom": "",
       "rules": "2024",
       "revision": 1
     },
-    "advancement": [],
-    "cover": null,
     "crewed": false,
     "enchant": {},
     "prerequisites": {
-      "level": 18,
+      "items": [],
+      "level": 10,
       "repeatable": false
     },
     "properties": [],
@@ -213,21 +215,18 @@
   "flags": {
     "cat": {
       "automation": {
-        "version": "2.0.4",
-        "source": "chris-premades"
-      },
-      "config": {
-        "minimum": 2
+        "source": "chris-premades",
+        "version": "2.0.4"
       }
     }
   },
-  "img": "icons/magic/earth/explosion-lava-stone-green.webp",
-  "folder": "jv1qLsd4LTtCBvYj",
-  "_id": "S4YTwKY5KbO6GY94",
+  "img": "icons/magic/holy/prayer-hands-glowing-yellow-white.webp",
+  "folder": "tJ727NhyyBNb6ZNf",
   "_stats": {
     "coreVersion": "14.364",
     "systemId": "dnd5e",
     "systemVersion": "5.3.3"
   },
-  "_key": "!items!S4YTwKY5KbO6GY94"
+  "_id": "qRHbllUIv9IaipYu",
+  "_key": "!items!qRHbllUIv9IaipYu"
 }

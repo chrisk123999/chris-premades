@@ -1,21 +1,34 @@
 {
-  "name": "Heightened Focus",
+  "name": "Uncanny Metabolism",
   "type": "feat",
   "effects": [],
   "system": {
     "activities": {
-      "healHeigFocclass": {
-        "name": "",
+      "healUncaMetclass": {
         "type": "heal",
-        "_id": "healHeigFocclass",
+        "_id": "healUncaMetclass",
+        "img": "",
         "sort": 0,
         "activation": {
-          "type": "special",
+          "type": "encounter",
           "override": false,
           "condition": ""
         },
         "consumption": {
-          "targets": [],
+          "targets": [
+            {
+              "type": "itemUses",
+              "value": "-@classes.monk.levels",
+              "target": "feat:monks-focus",
+              "scaling": {}
+            },
+            {
+              "type": "itemUses",
+              "value": "1",
+              "target": "",
+              "scaling": {}
+            }
+          ],
           "scaling": {
             "allowed": false,
             "max": ""
@@ -32,8 +45,8 @@
           "override": false
         },
         "effects": [],
+        "flags": {},
         "range": {
-          "value": "",
           "units": "self",
           "special": "",
           "override": false
@@ -41,7 +54,7 @@
         "target": {
           "prompt": true,
           "affects": {
-            "count": "1",
+            "count": "",
             "type": "self",
             "choice": false,
             "special": ""
@@ -53,7 +66,8 @@
             "size": "",
             "width": "",
             "height": "",
-            "units": "ft"
+            "units": "ft",
+            "stationary": false
           },
           "override": false
         },
@@ -62,16 +76,26 @@
           "recovery": [],
           "max": ""
         },
+        "visibility": {
+          "level": {
+            "min": null,
+            "max": null
+          },
+          "requireAttunement": false,
+          "requireIdentification": false,
+          "requireMagic": false,
+          "identifier": ""
+        },
         "healing": {
           "number": null,
           "denomination": null,
           "bonus": "",
           "types": [
-            "temphp"
+            "healing"
           ],
           "custom": {
             "enabled": true,
-            "formula": "2@scale.monk.martial-arts.die"
+            "formula": "@scale.monk.martial-arts.die + @classes.monk.levels"
           },
           "scaling": {
             "mode": "whole",
@@ -82,6 +106,7 @@
         "useConditionText": "",
         "useConditionReason": "",
         "effectConditionText": "",
+        "otherActivityId": "",
         "macroData": {
           "name": "",
           "command": ""
@@ -102,6 +127,8 @@
           "confirmTargets": "default",
           "automationOnly": false,
           "identifier": "",
+          "triggeredActivityConsume": true,
+          "triggeredActivityConfigure": true,
           "autoConsume": false,
           "forceConsumeDialog": "default",
           "forceRollDialog": "default",
@@ -119,46 +146,56 @@
           "magicEffect": false,
           "magicDamage": false,
           "noConcentrationCheck": false,
-          "autoCEEffects": "none"
+          "skipConcentrationCheck": false,
+          "autoCEEffects": "default"
         },
         "isOverTimeFlag": false,
         "overTimeProperties": {
           "saveRemoves": true,
+          "rollAs": "target",
           "preRemoveConditionText": "",
           "postRemoveConditionText": ""
         },
-        "flags": {
-          "cat": {
-            "macros": {
-              "roll": [
-                {
-                  "source": "chris-premades",
-                  "rules": "2024",
-                  "identifier": "heightened-focus"
-                }
-              ],
-              "called": [
-                {
-                  "source": "chris-premades",
-                  "rules": "2024",
-                  "identifier": "heightened-focus"
-                }
-              ]
-            }
-          }
-        }
+        "regionBehavior": {
+          "enabled": false,
+          "dispositionFilter": -1,
+          "excludeSource": true,
+          "oncePerTurn": true,
+          "wallRestriction": "none",
+          "regionVisibility": 2,
+          "attachToken": "default",
+          "rules": []
+        },
+        "regionLight": {
+          "enabled": false,
+          "dim": 0,
+          "bright": 0,
+          "color": null,
+          "alpha": 0.5,
+          "luminosity": 0.5,
+          "animationType": "",
+          "animationSpeed": 5,
+          "animationIntensity": 5
+        },
+        "name": ""
       }
     },
     "uses": {
       "spent": 0,
-      "recovery": []
+      "max": "1",
+      "recovery": [
+        {
+          "period": "lr",
+          "type": "recoverAll"
+        }
+      ]
     },
-    "advancement": [],
+    "advancement": {},
     "description": {
       "value": "",
       "chat": ""
     },
-    "identifier": "heightened-focus",
+    "identifier": "uncanny-metabolism",
     "source": {
       "book": "PHB 2024",
       "page": "",
@@ -171,7 +208,7 @@
     "enchant": {},
     "prerequisites": {
       "items": [],
-      "level": 10,
+      "level": 2,
       "repeatable": false
     },
     "properties": [],
@@ -182,30 +219,20 @@
     }
   },
   "flags": {
-    "dae": {
-      "alwaysActive": false,
-      "activeEquipped": false
-    },
-    "midi-qol": {
-      "removeAttackDamageButtons": "default",
-      "forceCEOff": true
-    },
-    "midiProperties": {
-      "confirmTargets": "default"
-    },
     "cat": {
       "automation": {
+        "source": "chris-premades",
         "version": "2.0.4"
       }
     }
   },
-  "img": "icons/skills/movement/arrows-up-trio-red.webp",
+  "img": "icons/magic/life/cross-area-circle-green-white.webp",
   "folder": "tJ727NhyyBNb6ZNf",
-  "_id": "yW8YXAo7j5jed5ug",
   "_stats": {
     "coreVersion": "14.364",
     "systemId": "dnd5e",
     "systemVersion": "5.3.3"
   },
-  "_key": "!items!yW8YXAo7j5jed5ug"
+  "_id": "Cag0cFgxVn53133p",
+  "_key": "!items!Cag0cFgxVn53133p"
 }

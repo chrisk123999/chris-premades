@@ -23,3 +23,6 @@ export {pushOnFail} from './generic/pushOnFail.mjs';
 export {grapple} from './generic/grapple.mjs';
 export {teleport} from './generic/teleport.mjs';
 export {rerollCheckWithBonus, rerollSaveWithBonus, rerollSkillWithBonus, rerollToolWithBonus} from './generic/rerollWithBonus.mjs';
+export {choiceRemoveCondition, turnStartChoiceRemoveCondition, turnEndChoiceRemoveCondition} from './generic/choiceRemoveCondition.mjs';
+export {extraAttack} from './generic/extraAttack.mjs';
+export {combatStartItemUses} from './generic/combatStartItemUses.mjs';

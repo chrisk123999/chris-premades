@@ -75,7 +75,7 @@
           "identifier": ""
         },
         "attack": {
-          "ability": "str",
+          "ability": "",
           "bonus": "",
           "critical": {
             "threshold": null
@@ -253,7 +253,7 @@
       "reach": null
     },
     "type": {
-      "value": "natural",
+      "value": "unarmed",
       "baseItem": ""
     },
     "mastery": ""
@@ -270,7 +270,7 @@
     "cat": {
       "automation": {
         "source": "chris-premades",
-        "version": "2.0.3"
+        "version": "2.0.4"
       }
     }
   },
@@ -279,8 +279,8 @@
   "_id": "avzqwyEa8jL02Zy9",
   "_stats": {
     "coreVersion": "14.364",
-    "systemId": null,
-    "systemVersion": null
+    "systemId": "dnd5e",
+    "systemVersion": "5.3.3"
   },
   "_key": "!items!avzqwyEa8jL02Zy9"
 }

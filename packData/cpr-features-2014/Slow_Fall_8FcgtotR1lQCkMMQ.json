@@ -1,87 +1,92 @@
 {
-  "name": "Heightened Focus",
+  "name": "Slow Fall",
   "type": "feat",
   "effects": [],
   "system": {
     "activities": {
-      "healHeigFocclass": {
-        "name": "",
-        "type": "heal",
-        "_id": "healHeigFocclass",
+      "A2kC8G5iMvbMJtpe": {
+        "type": "utility",
+        "_id": "A2kC8G5iMvbMJtpe",
+        "img": "",
         "sort": 0,
         "activation": {
-          "type": "special",
+          "type": "reaction",
           "override": false,
           "condition": ""
         },
         "consumption": {
-          "targets": [],
           "scaling": {
-            "allowed": false,
-            "max": ""
+            "allowed": false
           },
-          "spellSlot": true
+          "spellSlot": true,
+          "targets": []
         },
         "description": {
           "chatFlavor": ""
         },
         "duration": {
           "units": "inst",
-          "special": "",
           "concentration": false,
           "override": false
         },
         "effects": [],
+        "flags": {
+          "cat": {
+            "macros": {
+              "roll": [
+                {
+                  "source": "chris-premades",
+                  "rules": "all",
+                  "identifier": "slow-fall"
+                }
+              ]
+            }
+          }
+        },
         "range": {
-          "value": "",
           "units": "self",
-          "special": "",
-          "override": false
+          "override": false,
+          "special": ""
         },
         "target": {
-          "prompt": true,
-          "affects": {
-            "count": "1",
-            "type": "self",
-            "choice": false,
-            "special": ""
-          },
           "template": {
-            "count": "",
             "contiguous": false,
-            "type": "",
-            "size": "",
-            "width": "",
-            "height": "",
-            "units": "ft"
+            "stationary": false,
+            "units": "ft",
+            "type": ""
           },
-          "override": false
+          "affects": {
+            "choice": false,
+            "type": ""
+          },
+          "override": false,
+          "prompt": true
         },
         "uses": {
           "spent": 0,
           "recovery": [],
           "max": ""
         },
-        "healing": {
-          "number": null,
-          "denomination": null,
-          "bonus": "",
-          "types": [
-            "temphp"
-          ],
-          "custom": {
-            "enabled": true,
-            "formula": "2@scale.monk.martial-arts.die"
+        "visibility": {
+          "level": {
+            "min": null,
+            "max": null
           },
-          "scaling": {
-            "mode": "whole",
-            "number": 1,
-            "formula": ""
-          }
+          "requireAttunement": false,
+          "requireIdentification": false,
+          "requireMagic": false,
+          "identifier": ""
         },
-        "useConditionText": "",
+        "roll": {
+          "prompt": false,
+          "visible": false,
+          "formula": "5 * @classes.monk.levels",
+          "name": ""
+        },
+        "useConditionText": "false",
         "useConditionReason": "",
         "effectConditionText": "",
+        "otherActivityId": "none",
         "macroData": {
           "name": "",
           "command": ""
@@ -99,17 +104,19 @@
           "triggeredActivityConditionText": "",
           "triggeredActivityTargets": "targets",
           "triggeredActivityRollAs": "self",
-          "confirmTargets": "default",
-          "automationOnly": false,
-          "identifier": "",
+          "triggeredActivityConsume": true,
+          "triggeredActivityConfigure": true,
           "autoConsume": false,
           "forceConsumeDialog": "default",
           "forceRollDialog": "default",
           "forceDamageDialog": "default",
+          "confirmTargets": "default",
           "autoTargetType": "any",
           "autoTargetAction": "default",
+          "automationOnly": false,
           "otherActivityCompatible": false,
           "otherActivityAsParentType": true,
+          "identifier": "",
           "displayActivityName": false,
           "rollMode": "default",
           "chooseEffects": false,
@@ -119,59 +126,65 @@
           "magicEffect": false,
           "magicDamage": false,
           "noConcentrationCheck": false,
-          "autoCEEffects": "none"
+          "skipConcentrationCheck": false,
+          "autoCEEffects": "default"
         },
         "isOverTimeFlag": false,
         "overTimeProperties": {
           "saveRemoves": true,
+          "rollAs": "target",
           "preRemoveConditionText": "",
           "postRemoveConditionText": ""
         },
-        "flags": {
-          "cat": {
-            "macros": {
-              "roll": [
-                {
-                  "source": "chris-premades",
-                  "rules": "2024",
-                  "identifier": "heightened-focus"
-                }
-              ],
-              "called": [
-                {
-                  "source": "chris-premades",
-                  "rules": "2024",
-                  "identifier": "heightened-focus"
-                }
-              ]
-            }
-          }
-        }
+        "regionBehavior": {
+          "enabled": false,
+          "dispositionFilter": -1,
+          "excludeSource": true,
+          "oncePerTurn": true,
+          "wallRestriction": "none",
+          "regionVisibility": 2,
+          "attachToken": "default",
+          "rules": []
+        },
+        "regionLight": {
+          "enabled": false,
+          "dim": 0,
+          "bright": 0,
+          "color": null,
+          "alpha": 0.5,
+          "luminosity": 0.5,
+          "animationType": "",
+          "animationSpeed": 5,
+          "animationIntensity": 5
+        },
+        "otherActivityAsParentType": true,
+        "name": ""
       }
     },
     "uses": {
       "spent": 0,
-      "recovery": []
+      "recovery": [],
+      "max": ""
     },
-    "advancement": [],
+    "advancement": {},
     "description": {
       "value": "",
       "chat": ""
     },
-    "identifier": "heightened-focus",
+    "identifier": "slow-fall",
     "source": {
-      "book": "PHB 2024",
+      "book": "PHB",
       "page": "",
       "license": "",
       "custom": "",
-      "rules": "2024",
+      "rules": "2014",
       "revision": 1
     },
     "crewed": false,
     "enchant": {},
     "prerequisites": {
       "items": [],
-      "level": 10,
+      "level": 4,
       "repeatable": false
     },
     "properties": [],
@@ -182,30 +195,20 @@
     }
   },
   "flags": {
-    "dae": {
-      "alwaysActive": false,
-      "activeEquipped": false
-    },
-    "midi-qol": {
-      "removeAttackDamageButtons": "default",
-      "forceCEOff": true
-    },
-    "midiProperties": {
-      "confirmTargets": "default"
-    },
     "cat": {
       "automation": {
+        "source": "chris-premades",
         "version": "2.0.4"
       }
     }
   },
-  "img": "icons/skills/movement/arrows-up-trio-red.webp",
-  "folder": "tJ727NhyyBNb6ZNf",
-  "_id": "yW8YXAo7j5jed5ug",
+  "img": "icons/equipment/finger/ring-winged-gold-blue.webp",
+  "folder": "nH8135F1PzU9skht",
   "_stats": {
     "coreVersion": "14.364",
     "systemId": "dnd5e",
     "systemVersion": "5.3.3"
   },
-  "_key": "!items!yW8YXAo7j5jed5ug"
+  "_id": "8FcgtotR1lQCkMMQ",
+  "_key": "!items!8FcgtotR1lQCkMMQ"
 }

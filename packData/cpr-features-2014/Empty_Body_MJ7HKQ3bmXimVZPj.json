@@ -1,0 +1,544 @@
+{
+  "name": "Empty Body",
+  "type": "feat",
+  "effects": [
+    {
+      "name": "Empty Body",
+      "statuses": [
+        "invisible"
+      ],
+      "system": {
+        "changes": [
+          {
+            "key": "system.traits.dr.value",
+            "type": "add",
+            "value": "acid",
+            "phase": "final",
+            "priority": null
+          },
+          {
+            "key": "system.traits.dr.value",
+            "type": "add",
+            "value": "bludgeoning",
+            "phase": "final",
+            "priority": null
+          },
+          {
+            "key": "system.traits.dr.value",
+            "type": "add",
+            "value": "cold",
+            "phase": "final",
+            "priority": null
+          },
+          {
+            "key": "system.traits.dr.value",
+            "type": "add",
+            "value": "fire",
+            "phase": "final",
+            "priority": null
+          },
+          {
+            "key": "system.traits.dr.value",
+            "type": "add",
+            "value": "lightning",
+            "phase": "final",
+            "priority": null
+          },
+          {
+            "key": "system.traits.dr.value",
+            "type": "add",
+            "value": "necrotic",
+            "phase": "final",
+            "priority": null
+          },
+          {
+            "key": "system.traits.dr.value",
+            "type": "add",
+            "value": "piercing",
+            "phase": "final",
+            "priority": null
+          },
+          {
+            "key": "system.traits.dr.value",
+            "type": "add",
+            "value": "poison",
+            "phase": "final",
+            "priority": null
+          },
+          {
+            "key": "system.traits.dr.value",
+            "type": "add",
+            "value": "psychic",
+            "phase": "final",
+            "priority": null
+          },
+          {
+            "key": "system.traits.dr.value",
+            "type": "add",
+            "value": "radiant",
+            "phase": "final",
+            "priority": null
+          },
+          {
+            "key": "system.traits.dr.value",
+            "type": "add",
+            "value": "slashing",
+            "phase": "final",
+            "priority": null
+          },
+          {
+            "key": "system.traits.dr.value",
+            "type": "add",
+            "value": "thunder",
+            "phase": "final",
+            "priority": null
+          }
+        ]
+      },
+      "duration": {
+        "value": 60,
+        "units": "seconds",
+        "expiry": "turnStart",
+        "expired": false
+      },
+      "tint": "#ffffff",
+      "transfer": false,
+      "disabled": false,
+      "showIcon": 1,
+      "flags": {
+        "dae": {
+          "transfer": false,
+          "stackable": "noneNameOnly",
+          "enableCondition": "",
+          "disableCondition": "",
+          "expiryMode": "delete",
+          "durationExpression": "",
+          "macroRepeat": "none",
+          "disableIncapacitated": false,
+          "selfTarget": false,
+          "selfTargetAlways": true,
+          "dontApply": false,
+          "specialDuration": []
+        },
+        "midi-qol": {
+          "forceCEOff": true
+        },
+        "core": {
+          "overlay": false
+        },
+        "dnd5e": {
+          "riders": {
+            "statuses": []
+          }
+        }
+      },
+      "description": "",
+      "_id": "2gRjkq6X6tYTh0BC",
+      "img": "icons/magic/unholy/orb-swirling-teal.webp",
+      "type": "base",
+      "start": null,
+      "origin": null,
+      "folder": null,
+      "sort": 0,
+      "_stats": {
+        "coreVersion": "14.364",
+        "systemId": "dnd5e",
+        "systemVersion": "5.3.3"
+      },
+      "_key": "!items.effects!MJ7HKQ3bmXimVZPj.2gRjkq6X6tYTh0BC"
+    }
+  ],
+  "system": {
+    "activities": {
+      "utilityEmBoclass": {
+        "name": "Go Invisible",
+        "type": "utility",
+        "_id": "utilityEmBoclass",
+        "img": "",
+        "sort": 0,
+        "activation": {
+          "type": "action",
+          "value": 1,
+          "condition": "",
+          "override": false
+        },
+        "consumption": {
+          "targets": [
+            {
+              "type": "itemUses",
+              "value": "4",
+              "target": "i1vj0qNcLmwXexU2",
+              "scaling": {}
+            }
+          ],
+          "scaling": {
+            "allowed": false,
+            "max": ""
+          },
+          "spellSlot": true
+        },
+        "description": {
+          "chatFlavor": ""
+        },
+        "duration": {
+          "value": "1",
+          "units": "minute",
+          "special": "",
+          "concentration": false,
+          "override": false
+        },
+        "effects": [
+          {
+            "_id": "2gRjkq6X6tYTh0BC",
+            "level": {
+              "min": null,
+              "max": null
+            }
+          }
+        ],
+        "flags": {},
+        "range": {
+          "units": "self",
+          "special": "",
+          "override": false
+        },
+        "target": {
+          "prompt": true,
+          "affects": {
+            "count": "",
+            "type": "",
+            "choice": false,
+            "special": ""
+          },
+          "template": {
+            "count": "",
+            "contiguous": false,
+            "type": "",
+            "size": "",
+            "width": "",
+            "height": "",
+            "units": "ft",
+            "stationary": false
+          },
+          "override": false
+        },
+        "uses": {
+          "spent": 0,
+          "recovery": [],
+          "max": ""
+        },
+        "visibility": {
+          "level": {
+            "min": null,
+            "max": null
+          },
+          "requireAttunement": false,
+          "requireIdentification": false,
+          "requireMagic": false,
+          "identifier": ""
+        },
+        "roll": {
+          "prompt": false,
+          "visible": false,
+          "formula": "",
+          "name": ""
+        },
+        "useConditionText": "",
+        "useConditionReason": "",
+        "effectConditionText": "",
+        "otherActivityId": "",
+        "macroData": {
+          "name": "",
+          "command": ""
+        },
+        "ignoreTraits": {
+          "idi": false,
+          "idr": false,
+          "idv": false,
+          "ida": false,
+          "idm": false
+        },
+        "midiProperties": {
+          "ignoreTraits": [],
+          "triggeredActivityId": "none",
+          "triggeredActivityConditionText": "",
+          "triggeredActivityTargets": "targets",
+          "triggeredActivityRollAs": "self",
+          "confirmTargets": "default",
+          "automationOnly": false,
+          "identifier": "",
+          "triggeredActivityConsume": true,
+          "triggeredActivityConfigure": true,
+          "autoConsume": false,
+          "forceConsumeDialog": "default",
+          "forceRollDialog": "default",
+          "forceDamageDialog": "default",
+          "autoTargetType": "any",
+          "autoTargetAction": "default",
+          "otherActivityCompatible": false,
+          "otherActivityAsParentType": true,
+          "displayActivityName": false,
+          "rollMode": "default",
+          "chooseEffects": false,
+          "toggleEffect": false,
+          "ignoreFullCover": false,
+          "removeChatButtons": "default",
+          "magicEffect": false,
+          "magicDamage": false,
+          "noConcentrationCheck": false,
+          "skipConcentrationCheck": false,
+          "autoCEEffects": "default"
+        },
+        "isOverTimeFlag": false,
+        "overTimeProperties": {
+          "saveRemoves": true,
+          "rollAs": "target",
+          "preRemoveConditionText": "",
+          "postRemoveConditionText": ""
+        },
+        "regionBehavior": {
+          "enabled": false,
+          "dispositionFilter": -1,
+          "excludeSource": true,
+          "oncePerTurn": true,
+          "wallRestriction": "none",
+          "regionVisibility": 2,
+          "attachToken": "default",
+          "rules": []
+        },
+        "regionLight": {
+          "enabled": false,
+          "dim": 0,
+          "bright": 0,
+          "color": null,
+          "alpha": 0.5,
+          "luminosity": 0.5,
+          "animationType": "",
+          "animationSpeed": 5,
+          "animationIntensity": 5
+        },
+        "otherActivityAsParentType": true
+      },
+      "addAstralProjec1": {
+        "name": "Astral Projection",
+        "type": "cast",
+        "_id": "addAstralProjec1",
+        "img": "",
+        "sort": 0,
+        "activation": {
+          "type": "action",
+          "value": 1,
+          "condition": "",
+          "override": false
+        },
+        "consumption": {
+          "scaling": {
+            "allowed": false
+          },
+          "spellSlot": true,
+          "targets": [
+            {
+              "type": "itemUses",
+              "value": "8",
+              "target": "i1vj0qNcLmwXexU2",
+              "scaling": {}
+            }
+          ]
+        },
+        "description": {
+          "chatFlavor": ""
+        },
+        "duration": {
+          "value": "1",
+          "units": "minute",
+          "special": "",
+          "concentration": false,
+          "override": false
+        },
+        "flags": {},
+        "range": {
+          "value": "5",
+          "units": "ft",
+          "special": "",
+          "override": false
+        },
+        "target": {
+          "prompt": true,
+          "affects": {
+            "count": "",
+            "type": "",
+            "choice": false,
+            "special": ""
+          },
+          "template": {
+            "count": "",
+            "contiguous": false,
+            "type": "",
+            "size": "",
+            "width": "",
+            "height": "",
+            "units": "ft",
+            "stationary": false
+          },
+          "override": false
+        },
+        "uses": {
+          "spent": 0,
+          "recovery": [],
+          "max": ""
+        },
+        "visibility": {
+          "level": {
+            "min": null,
+            "max": null
+          },
+          "requireAttunement": false,
+          "requireIdentification": false,
+          "requireMagic": false,
+          "identifier": ""
+        },
+        "spell": {
+          "properties": [
+            "material"
+          ],
+          "spellbook": true,
+          "challenge": {
+            "override": false
+          },
+          "uuid": "Compendium.dnd5e.spells.TIoadMIsUKD4edXi",
+          "ability": ""
+        },
+        "useConditionText": "",
+        "useConditionReason": "",
+        "effectConditionText": "",
+        "otherActivityId": "",
+        "macroData": {
+          "name": "",
+          "command": ""
+        },
+        "ignoreTraits": {
+          "idi": false,
+          "idr": false,
+          "idv": false,
+          "ida": false,
+          "idm": false
+        },
+        "midiProperties": {
+          "ignoreTraits": [],
+          "triggeredActivityId": "none",
+          "triggeredActivityConditionText": "",
+          "triggeredActivityTargets": "targets",
+          "triggeredActivityRollAs": "self",
+          "confirmTargets": "never",
+          "automationOnly": false,
+          "identifier": "",
+          "triggeredActivityConsume": true,
+          "triggeredActivityConfigure": true,
+          "autoConsume": false,
+          "forceConsumeDialog": "default",
+          "forceRollDialog": "default",
+          "forceDamageDialog": "default",
+          "autoTargetType": "any",
+          "autoTargetAction": "default",
+          "otherActivityCompatible": true,
+          "otherActivityAsParentType": true,
+          "displayActivityName": false,
+          "rollMode": "default",
+          "chooseEffects": false,
+          "toggleEffect": false,
+          "ignoreFullCover": false,
+          "removeChatButtons": "default",
+          "magicEffect": false,
+          "magicDamage": false,
+          "noConcentrationCheck": false,
+          "skipConcentrationCheck": false,
+          "autoCEEffects": "default"
+        },
+        "isOverTimeFlag": false,
+        "overTimeProperties": {
+          "saveRemoves": true,
+          "rollAs": "target",
+          "preRemoveConditionText": "",
+          "postRemoveConditionText": ""
+        },
+        "regionBehavior": {
+          "enabled": false,
+          "dispositionFilter": -1,
+          "excludeSource": true,
+          "oncePerTurn": true,
+          "wallRestriction": "none",
+          "regionVisibility": 2,
+          "attachToken": "default",
+          "rules": []
+        },
+        "regionLight": {
+          "enabled": false,
+          "dim": 0,
+          "bright": 0,
+          "color": null,
+          "alpha": 0.5,
+          "luminosity": 0.5,
+          "animationType": "",
+          "animationSpeed": 5,
+          "animationIntensity": 5
+        }
+      }
+    },
+    "uses": {
+      "spent": null,
+      "recovery": [],
+      "max": ""
+    },
+    "advancement": {},
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "identifier": "empty-body",
+    "source": {
+      "book": "PHB",
+      "page": "",
+      "license": "",
+      "custom": "",
+      "rules": "2014",
+      "revision": 1
+    },
+    "crewed": false,
+    "enchant": {},
+    "prerequisites": {
+      "items": [],
+      "level": 18,
+      "repeatable": false
+    },
+    "properties": [],
+    "requirements": "",
+    "type": {
+      "value": "class",
+      "subtype": ""
+    }
+  },
+  "flags": {
+    "midi-qol": {
+      "removeAttackDamageButtons": "default",
+      "forceCEOff": true
+    },
+    "midiProperties": {
+      "confirmTargets": "default"
+    },
+    "cat": {
+      "automation": {
+        "source": "chris-premades",
+        "version": "2.0.4"
+      }
+    }
+  },
+  "img": "icons/magic/unholy/orb-swirling-teal.webp",
+  "folder": "nH8135F1PzU9skht",
+  "_stats": {
+    "coreVersion": "14.364",
+    "systemId": "dnd5e",
+    "systemVersion": "5.3.3"
+  },
+  "_id": "MJ7HKQ3bmXimVZPj",
+  "_key": "!items!MJ7HKQ3bmXimVZPj"
+}

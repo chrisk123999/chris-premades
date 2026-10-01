@@ -1,22 +1,252 @@
 {
-  "name": "Unarmed Strike",
-  "type": "weapon",
+  "name": "Ki",
+  "type": "feat",
+  "effects": [
+    {
+      "name": "Dodge",
+      "origin": null,
+      "duration": {
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
+      },
+      "disabled": false,
+      "flags": {
+        "dae": {
+          "enableCondition": "",
+          "disableCondition": "",
+          "disableIncapacitated": false,
+          "selfTarget": false,
+          "selfTargetAlways": true,
+          "dontApply": false,
+          "stackable": "noneName",
+          "showIcon": false,
+          "durationExpression": "",
+          "macroRepeat": "none",
+          "expiryMode": "delete",
+          "specialDuration": []
+        },
+        "core": {
+          "overlay": false
+        },
+        "cat": {
+          "identifier": "dodge",
+          "specialDuration": [
+            "turnStart",
+            "incapacitated",
+            "zeroSpeed"
+          ]
+        },
+        "dnd5e": {
+          "riders": {
+            "statuses": []
+          }
+        }
+      },
+      "img": "icons/skills/melee/shield-block-gray-orange.webp",
+      "_id": "WH8GlbXXlFWNqgW9",
+      "type": "base",
+      "system": {
+        "changes": [
+          {
+            "key": "flags.midi-qol.grants.disadvantage.attack.all",
+            "value": "canSee(tokenUuid, targetUuid)",
+            "priority": 20,
+            "type": "custom",
+            "phase": "initial"
+          },
+          {
+            "key": "flags.midi-qol.advantage.save.dex",
+            "value": 1,
+            "priority": 20,
+            "type": "custom",
+            "phase": "initial"
+          }
+        ]
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "transfer": false,
+      "statuses": [
+        "dodging"
+      ],
+      "sort": 0,
+      "_stats": {
+        "coreVersion": "14.364",
+        "systemId": "dnd5e",
+        "systemVersion": "5.3.3"
+      },
+      "showIcon": 2,
+      "start": null,
+      "folder": null,
+      "_key": "!items.effects!02NOkS9NWeMjIdrz.WH8GlbXXlFWNqgW9"
+    },
+    {
+      "name": "Dash",
+      "img": "icons/skills/movement/figure-running-gray.webp",
+      "origin": null,
+      "transfer": false,
+      "_id": "NLqKas9cKwNIPWp4",
+      "type": "base",
+      "system": {
+        "changes": []
+      },
+      "disabled": false,
+      "start": null,
+      "duration": {
+        "value": null,
+        "units": "seconds",
+        "expiry": "sourceEnd",
+        "expired": false
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "statuses": [],
+      "showIcon": 1,
+      "folder": null,
+      "sort": 0,
+      "flags": {
+        "dnd5e": {
+          "riders": {
+            "statuses": []
+          }
+        },
+        "dae": {
+          "enableCondition": "",
+          "disableCondition": "",
+          "stackable": "noneName",
+          "expiryMode": "delete",
+          "durationExpression": "",
+          "macroRepeat": "none",
+          "disableIncapacitated": false,
+          "selfTarget": false,
+          "selfTargetAlways": true,
+          "dontApply": false,
+          "specialDuration": []
+        },
+        "core": {
+          "overlay": false
+        },
+        "cat": {
+          "macros": {
+            "called": [
+              {
+                "source": "chris-premades",
+                "rules": "all",
+                "identifier": "stepOfTheWindJump"
+              }
+            ]
+          }
+        }
+      },
+      "_stats": {
+        "coreVersion": "14.364",
+        "systemId": "dnd5e",
+        "systemVersion": "5.3.3"
+      },
+      "_key": "!items.effects!02NOkS9NWeMjIdrz.NLqKas9cKwNIPWp4"
+    },
+    {
+      "name": "Disengage",
+      "origin": null,
+      "duration": {
+        "value": null,
+        "units": "seconds",
+        "expiry": "sourceEnd",
+        "expired": false
+      },
+      "disabled": false,
+      "flags": {
+        "dae": {
+          "enableCondition": "",
+          "disableCondition": "",
+          "disableIncapacitated": false,
+          "selfTarget": false,
+          "selfTargetAlways": true,
+          "dontApply": false,
+          "stackable": "noneName",
+          "showIcon": false,
+          "durationExpression": "",
+          "macroRepeat": "none",
+          "expiryMode": "delete",
+          "specialDuration": []
+        },
+        "core": {
+          "overlay": false
+        },
+        "cat": {
+          "identifier": "disengage",
+          "specialDuration": [],
+          "macros": {
+            "called": [
+              {
+                "source": "chris-premades",
+                "rules": "all",
+                "identifier": "stepOfTheWindJump"
+              }
+            ]
+          }
+        },
+        "dnd5e": {
+          "riders": {
+            "statuses": []
+          }
+        }
+      },
+      "img": "icons/skills/movement/feet-spurred-boots-brown.webp",
+      "_id": "Z7kHV4dkDTBXs3Lw",
+      "type": "base",
+      "system": {
+        "changes": [
+          {
+            "key": "flags.gambits-premades.oaImmunity",
+            "type": "override",
+            "value": 1,
+            "phase": "initial",
+            "priority": 20
+          }
+        ]
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "transfer": false,
+      "statuses": [],
+      "sort": 0,
+      "_stats": {
+        "coreVersion": "14.364",
+        "systemId": "dnd5e",
+        "systemVersion": "5.3.3"
+      },
+      "start": null,
+      "showIcon": 1,
+      "folder": null,
+      "_key": "!items.effects!02NOkS9NWeMjIdrz.Z7kHV4dkDTBXs3Lw"
+    }
+  ],
   "system": {
     "activities": {
-      "attackUnarmStrik": {
-        "name": "Unarmed Strike",
-        "type": "attack",
-        "_id": "attackUnarmStrik",
-        "img": "icons/skills/melee/unarmed-punch-fist.webp",
+      "utilityPaDeclNe1": {
+        "name": "Patient Defense",
+        "type": "utility",
+        "_id": "utilityPaDeclNe1",
+        "img": "",
         "sort": 0,
         "activation": {
-          "type": "action",
+          "type": "bonus",
           "value": 1,
           "condition": "",
           "override": false
         },
         "consumption": {
-          "targets": [],
+          "targets": [
+            {
+              "type": "itemUses",
+              "value": "1",
+              "target": "",
+              "scaling": {}
+            }
+          ],
           "scaling": {
             "allowed": false,
             "max": ""
@@ -32,18 +262,26 @@
           "concentration": false,
           "override": false
         },
-        "effects": [],
+        "effects": [
+          {
+            "_id": "WH8GlbXXlFWNqgW9",
+            "level": {
+              "min": null,
+              "max": null
+            }
+          }
+        ],
         "flags": {},
         "range": {
-          "value": "5",
-          "units": "ft",
+          "units": "self",
+          "special": "",
           "override": false
         },
         "target": {
           "prompt": true,
           "affects": {
-            "count": "1",
-            "type": "creature",
+            "count": "",
+            "type": "",
             "choice": false,
             "special": ""
           },
@@ -74,28 +312,16 @@
           "requireMagic": false,
           "identifier": ""
         },
-        "attack": {
-          "ability": "",
-          "bonus": "",
-          "critical": {
-            "threshold": null
-          },
-          "flat": false,
-          "type": {
-            "value": "melee",
-            "classification": "unarmed"
-          }
-        },
-        "damage": {
-          "critical": {
-            "bonus": ""
-          },
-          "includeBase": true,
-          "parts": []
+        "roll": {
+          "prompt": false,
+          "visible": false,
+          "name": "",
+          "formula": ""
         },
         "useConditionText": "",
         "useConditionReason": "",
         "effectConditionText": "",
+        "otherActivityId": "",
         "macroData": {
           "name": "",
           "command": ""
@@ -115,7 +341,7 @@
           "triggeredActivityRollAs": "self",
           "confirmTargets": "default",
           "automationOnly": false,
-          "identifier": "unarmed-strike",
+          "identifier": "patient-defense",
           "triggeredActivityConsume": true,
           "triggeredActivityConfigure": true,
           "autoConsume": false,
@@ -124,9 +350,9 @@
           "forceDamageDialog": "default",
           "autoTargetType": "any",
           "autoTargetAction": "default",
-          "otherActivityCompatible": true,
+          "otherActivityCompatible": false,
           "otherActivityAsParentType": true,
-          "displayActivityName": false,
+          "displayActivityName": true,
           "rollMode": "default",
           "chooseEffects": false,
           "toggleEffect": false,
@@ -166,28 +392,29 @@
           "animationSpeed": 5,
           "animationIntensity": 5
         },
-        "otherActivityId": "",
-        "otherActivityAsParentType": true,
-        "attackMode": "oneHanded",
-        "ammunition": "",
-        "otherActivityUuid": "",
-        "attackRollPerTarget": "default",
-        "fumbleThreshold": 1
+        "otherActivityAsParentType": true
       },
-      "addGrapple1IIIII": {
-        "name": "Grapple",
-        "type": "save",
-        "_id": "addGrapple1IIIII",
-        "img": "icons/magic/control/buff-strength-muscle-damage-red.webp",
+      "utilitySOTWclNe2": {
+        "name": "Step of the Wind (Dash)",
+        "type": "utility",
+        "_id": "utilitySOTWclNe2",
+        "img": "",
         "sort": 0,
         "activation": {
-          "type": "action",
+          "type": "bonus",
           "value": 1,
           "condition": "",
           "override": false
         },
         "consumption": {
-          "targets": [],
+          "targets": [
+            {
+              "type": "itemUses",
+              "value": "1",
+              "target": "",
+              "scaling": {}
+            }
+          ],
           "scaling": {
             "allowed": false,
             "max": ""
@@ -203,18 +430,26 @@
           "concentration": false,
           "override": false
         },
-        "effects": [],
+        "effects": [
+          {
+            "_id": "NLqKas9cKwNIPWp4",
+            "level": {}
+          }
+        ],
         "flags": {
           "cat": {
             "genericConfig": {
               "chris-premades": {
-                "grapple": {
-                  "auto": false,
-                  "checkSize": true,
-                  "dc": "",
-                  "conditions": [],
-                  "useActivityInfo": true,
-                  "replaceActivity": true
+                "movementAnimation": {
+                  "selectLocationsAnimation": {
+                    "source": "chris-premades",
+                    "identifier": "selectLocations"
+                  },
+                  "moveAnimation": {
+                    "source": "chris-premades",
+                    "identifier": "stepOfTheWind"
+                  },
+                  "movementEffect": ""
                 }
               }
             },
@@ -222,14 +457,7 @@
               "roll": [
                 {
                   "source": "chris-premades",
-                  "identifier": "grapple",
-                  "rules": "all"
-                }
-              ],
-              "grapple": [
-                {
-                  "source": "chris-premades",
-                  "identifier": "grapple",
+                  "identifier": "movementAnimation",
                   "rules": "all"
                 }
               ]
@@ -237,16 +465,16 @@
           }
         },
         "range": {
-          "value": "5",
           "units": "ft",
           "special": "",
-          "override": false
+          "override": false,
+          "value": "@attributes.movement.max"
         },
         "target": {
           "prompt": true,
           "affects": {
-            "count": "1",
-            "type": "creature",
+            "count": "",
+            "type": "",
             "choice": false,
             "special": ""
           },
@@ -277,26 +505,16 @@
           "requireMagic": false,
           "identifier": ""
         },
-        "damage": {
-          "onSave": "half",
-          "critical": {
-            "allow": false
-          },
-          "parts": []
-        },
-        "save": {
-          "dc": {
-            "formula": "8 + @mod + @prof",
-            "calculation": ""
-          },
-          "ability": [
-            "str",
-            "dex"
-          ]
+        "roll": {
+          "prompt": false,
+          "visible": false,
+          "name": "",
+          "formula": ""
         },
         "useConditionText": "",
         "useConditionReason": "",
         "effectConditionText": "",
+        "otherActivityId": "",
         "macroData": {
           "name": "",
           "command": ""
@@ -316,7 +534,7 @@
           "triggeredActivityRollAs": "self",
           "confirmTargets": "default",
           "automationOnly": false,
-          "identifier": "grapple",
+          "identifier": "step-of-the-wind-dash",
           "triggeredActivityConsume": true,
           "triggeredActivityConfigure": true,
           "autoConsume": false,
@@ -367,36 +585,37 @@
           "animationSpeed": 5,
           "animationIntensity": 5
         },
-        "otherActivityId": "none",
-        "otherActivityAsParentType": true,
-        "friendlySave": "default"
+        "otherActivityAsParentType": true
       },
-      "addShove2IIIIIII": {
-        "name": "Shove (Prone)",
-        "type": "save",
-        "_id": "addShove2IIIIIII",
-        "img": "icons/skills/melee/unarmed-punch-fist-white.webp",
-        "sort": 0,
+      "JAOibfCQHHt4TPtL": {
+        "type": "utility",
+        "_id": "JAOibfCQHHt4TPtL",
+        "img": "",
+        "sort": -100000,
         "activation": {
-          "type": "action",
-          "value": 1,
-          "condition": "",
-          "override": false
+          "type": "bonus",
+          "override": false,
+          "condition": ""
         },
         "consumption": {
-          "targets": [],
           "scaling": {
-            "allowed": false,
-            "max": ""
+            "allowed": false
           },
-          "spellSlot": true
+          "spellSlot": true,
+          "targets": [
+            {
+              "type": "itemUses",
+              "value": "1",
+              "target": "",
+              "scaling": {}
+            }
+          ]
         },
         "description": {
           "chatFlavor": ""
         },
         "duration": {
           "units": "inst",
-          "special": "",
           "concentration": false,
           "override": false
         },
@@ -407,38 +626,47 @@
               "roll": [
                 {
                   "source": "chris-premades",
-                  "identifier": "proneOnFail",
+                  "identifier": "extraAttack",
                   "rules": "all"
                 }
               ]
+            },
+            "genericConfig": {
+              "chris-premades": {
+                "extraAttack": {
+                  "attacks": 2,
+                  "prompt": true,
+                  "skip": true,
+                  "identifier": "unarmed-strike",
+                  "animation": {
+                    "source": "chris-premades",
+                    "identifier": "flurryOfBlows"
+                  }
+                }
+              }
             }
           }
         },
         "range": {
-          "value": "5",
-          "units": "ft",
-          "special": "",
-          "override": false
+          "units": "any",
+          "override": false,
+          "special": ""
         },
         "target": {
-          "prompt": true,
+          "template": {
+            "contiguous": false,
+            "stationary": false,
+            "units": "ft",
+            "type": ""
+          },
           "affects": {
-            "count": "1",
-            "type": "creature",
             "choice": false,
+            "type": "",
+            "count": "1",
             "special": ""
           },
-          "template": {
-            "count": "",
-            "contiguous": false,
-            "type": "",
-            "size": "",
-            "width": "",
-            "height": "",
-            "units": "ft",
-            "stationary": false
-          },
-          "override": false
+          "override": false,
+          "prompt": true
         },
         "uses": {
           "spent": 0,
@@ -455,26 +683,16 @@
           "requireMagic": false,
           "identifier": ""
         },
-        "damage": {
-          "onSave": "half",
-          "critical": {
-            "allow": false
-          },
-          "parts": []
-        },
-        "save": {
-          "dc": {
-            "formula": "8 + @mod + @prof",
-            "calculation": ""
-          },
-          "ability": [
-            "str",
-            "dex"
-          ]
+        "roll": {
+          "prompt": false,
+          "visible": false,
+          "name": "",
+          "formula": ""
         },
         "useConditionText": "",
         "useConditionReason": "",
         "effectConditionText": "",
+        "otherActivityId": "none",
         "macroData": {
           "name": "",
           "command": ""
@@ -492,19 +710,19 @@
           "triggeredActivityConditionText": "",
           "triggeredActivityTargets": "targets",
           "triggeredActivityRollAs": "self",
-          "confirmTargets": "default",
-          "automationOnly": false,
-          "identifier": "shove-prone",
           "triggeredActivityConsume": true,
           "triggeredActivityConfigure": true,
           "autoConsume": false,
           "forceConsumeDialog": "default",
           "forceRollDialog": "default",
           "forceDamageDialog": "default",
+          "confirmTargets": "default",
           "autoTargetType": "any",
           "autoTargetAction": "default",
+          "automationOnly": false,
           "otherActivityCompatible": false,
           "otherActivityAsParentType": true,
+          "identifier": "flurry-of-blows",
           "displayActivityName": true,
           "rollMode": "default",
           "chooseEffects": false,
@@ -545,23 +763,29 @@
           "animationSpeed": 5,
           "animationIntensity": 5
         },
-        "otherActivityId": "none",
         "otherActivityAsParentType": true,
-        "friendlySave": "default"
+        "name": "Flurry of Blows"
       },
-      "kRIJgiljYddoSmNP": {
-        "type": "save",
-        "name": "Shove (Push)",
-        "img": "icons/skills/melee/unarmed-punch-fist-white.webp",
+      "dIxlVXtFrdcfcpaf": {
+        "type": "utility",
+        "name": "Step of the Wind (Disengage)",
+        "img": "",
         "sort": 100000,
         "activation": {
-          "type": "action",
+          "type": "bonus",
           "value": 1,
           "condition": "",
           "override": false
         },
         "consumption": {
-          "targets": [],
+          "targets": [
+            {
+              "type": "itemUses",
+              "value": "1",
+              "target": "",
+              "scaling": {}
+            }
+          ],
           "scaling": {
             "allowed": false,
             "max": ""
@@ -577,14 +801,34 @@
           "concentration": false,
           "override": false
         },
-        "effects": [],
+        "effects": [
+          {
+            "_id": "Z7kHV4dkDTBXs3Lw",
+            "level": {}
+          }
+        ],
         "flags": {
           "cat": {
+            "genericConfig": {
+              "chris-premades": {
+                "movementAnimation": {
+                  "selectLocationsAnimation": {
+                    "source": "chris-premades",
+                    "identifier": "selectLocations"
+                  },
+                  "moveAnimation": {
+                    "source": "chris-premades",
+                    "identifier": "stepOfTheWind"
+                  },
+                  "movementEffect": ""
+                }
+              }
+            },
             "macros": {
               "roll": [
                 {
                   "source": "chris-premades",
-                  "identifier": "pushOnFail",
+                  "identifier": "movementAnimation",
                   "rules": "all"
                 }
               ]
@@ -592,16 +836,15 @@
           }
         },
         "range": {
-          "value": "5",
-          "units": "ft",
+          "units": "self",
           "special": "",
           "override": false
         },
         "target": {
           "prompt": true,
           "affects": {
-            "count": "1",
-            "type": "creature",
+            "count": "",
+            "type": "",
             "choice": false,
             "special": ""
           },
@@ -632,26 +875,16 @@
           "requireMagic": false,
           "identifier": ""
         },
-        "damage": {
-          "onSave": "half",
-          "critical": {
-            "allow": false
-          },
-          "parts": []
-        },
-        "save": {
-          "dc": {
-            "formula": "8 + @mod + @prof",
-            "calculation": ""
-          },
-          "ability": [
-            "str",
-            "dex"
-          ]
+        "roll": {
+          "prompt": false,
+          "visible": false,
+          "formula": "",
+          "name": ""
         },
         "useConditionText": "",
         "useConditionReason": "",
         "effectConditionText": "",
+        "otherActivityId": "",
         "macroData": {
           "name": "",
           "command": ""
@@ -671,7 +904,7 @@
           "triggeredActivityRollAs": "self",
           "confirmTargets": "default",
           "automationOnly": false,
-          "identifier": "shove-push",
+          "identifier": "step-of-the-wind-disengage",
           "triggeredActivityConsume": true,
           "triggeredActivityConfigure": true,
           "autoConsume": false,
@@ -722,120 +955,106 @@
           "animationSpeed": 5,
           "animationIntensity": 5
         },
-        "otherActivityId": "none",
         "otherActivityAsParentType": true,
-        "friendlySave": "default",
-        "_id": "kRIJgiljYddoSmNP"
+        "_id": "dIxlVXtFrdcfcpaf"
       }
     },
     "uses": {
       "spent": 0,
-      "recovery": [],
-      "max": ""
+      "max": "@classes.monk.levels",
+      "recovery": [
+        {
+          "period": "sr",
+          "type": "recoverAll"
+        },
+        {
+          "period": "lr",
+          "type": "recoverAll"
+        }
+      ]
     },
+    "advancement": {},
     "description": {
       "value": "",
       "chat": ""
     },
-    "identifier": "unarmed-strike",
+    "identifier": "ki",
     "source": {
-      "book": "PHB 2024",
+      "book": "PHB",
       "page": "",
       "license": "",
       "custom": "",
-      "rules": "2024",
+      "rules": "2014",
       "revision": 1
     },
-    "identified": true,
-    "unidentified": {
-      "description": ""
-    },
-    "container": null,
-    "quantity": 1,
-    "weight": {
-      "value": 0,
-      "units": "lb"
-    },
-    "price": {
-      "value": 0,
-      "denomination": "gp"
-    },
-    "rarity": "",
-    "attunement": "",
-    "attuned": false,
-    "equipped": true,
-    "crew": {
-      "value": []
-    },
-    "ammunition": {},
-    "armor": {},
-    "damage": {
-      "base": {
-        "number": null,
-        "denomination": null,
-        "bonus": "",
-        "types": [
-          "bludgeoning"
-        ],
-        "custom": {
-          "enabled": true,
-          "formula": "1 + @mod"
-        },
-        "scaling": {
-          "mode": "whole",
-          "number": 1,
-          "formula": ""
-        }
-      },
-      "versatile": {
-        "types": [],
-        "custom": {
-          "enabled": false
-        },
-        "scaling": {
-          "number": 1
-        }
-      }
+    "crewed": false,
+    "enchant": {},
+    "prerequisites": {
+      "items": [],
+      "level": 2,
+      "repeatable": false
     },
     "properties": [],
-    "proficient": 1,
-    "range": {
-      "value": null,
-      "units": "ft",
-      "long": null,
-      "reach": null
-    },
+    "requirements": "",
     "type": {
-      "value": "unarmed",
-      "baseItem": ""
-    },
-    "mastery": ""
+      "value": "class",
+      "subtype": "ki"
+    }
   },
-  "effects": [],
   "flags": {
+    "midi-qol": {
+      "removeAttackDamageButtons": "default",
+      "forceCEOff": true
+    },
+    "midiProperties": {
+      "confirmTargets": "default"
+    },
     "cat": {
-      "automation": {
-        "source": "chris-premades",
-        "version": "2.0.4"
+      "genericConfig": {
+        "chris-premades": {
+          "multiAttack": {
+            "attacks": [
+              "Actor.uiz71ngpHUaUfjBA.Item.Sdb0AMcVRCrfenIk",
+              "Actor.uiz71ngpHUaUfjBA.Item.oXCwAgiI7p4ph9BL",
+              "Actor.BMSxFesL1bGqgCO4"
+            ],
+            "activity": "JAOibfCQHHt4TPtL"
+          }
+        }
+      },
+      "animationGenericConfig": {
+        "chris-premades": {
+          "advancedMeleeAttack": {
+            "chris-premades": {
+              "advancedMeleeAttack": {
+                "trailColor": "random"
+              }
+            }
+          }
+        }
       },
       "macros": {
         "roll": [
           {
             "source": "chris-premades",
-            "rules": "2024",
-            "identifier": "unarmed-strike"
+            "identifier": "multiAttack",
+            "rules": "all"
           }
         ]
+      },
+      "automation": {
+        "source": "chris-premades",
+        "version": "2.0.4"
       }
     }
   },
-  "img": "icons/skills/melee/unarmed-punch-fist.webp",
-  "folder": null,
-  "_id": "OEaoocaDgDveYENy",
+  "img": "icons/magic/symbols/runes-star-pentagon-blue.webp",
+  "folder": "nH8135F1PzU9skht",
   "_stats": {
     "coreVersion": "14.364",
     "systemId": "dnd5e",
     "systemVersion": "5.3.3"
   },
-  "_key": "!items!OEaoocaDgDveYENy"
+  "_id": "02NOkS9NWeMjIdrz",
+  "_key": "!items!02NOkS9NWeMjIdrz"
 }

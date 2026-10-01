@@ -12,6 +12,10 @@ export {divineStrike as 'divine-strike'} from './legacy/classFeatures/cleric/div
 export {harnessDivinePower as 'harness-divine-power'} from './legacy/classFeatures/cleric/harnessDivinePower.mjs';
 // Druid
 export {wildShape as 'wild-shape', wildShapeActive} from './legacy/classFeatures/druid/wildShape.mjs';
+// Monk
+export {dedicatedWeapon as 'dedicated-weapon'} from './legacy/classFeatures/monk/dedicatedWeapon.mjs';
+export {focusedAim as 'focused-aim'} from './legacy/classFeatures/monk/focusedAim.mjs';
+export {stunningStrike as 'stunning-strike'} from './legacy/classFeatures/monk/stunningStrike.mjs';
 // Ranger
 export {exceptionalTraining as 'exceptional-training'} from './legacy/classFeatures/ranger/beastMaster/exceptionalTraining.mjs';
 export {primalCompanion as 'primal-companion'} from './legacy/classFeatures/ranger/beastMaster/primalCompanion.mjs';
@@ -71,6 +75,6 @@ export {absorbElements as 'absorb-elements'} from './legacy/spells/absorbElement
 export {animateObjects as 'animate-objects'} from './legacy/spells/animateObjects.mjs';
 export {huntersMark as 'hunters-mark', huntersMarkAttack as 'hunters-mark-attack'} from './legacy/spells/huntersMark.mjs';
 export {summonFey as 'summon-fey', summonFeyFeyStep as 'summon-fey-fey-step'} from './legacy/spells/summonFey.mjs';
-// ** Items
-export {amuletOfTheLycanthrope as 'amulet-of-the-lycanthrope', amuletOfTheLycanthropeEffect as 'amulet-of-the-lycanthrope-effect'} from './legacy/items/amuletOfTheLycanthrope.mjs';
-export {harkonsBite as 'harkons-bite', harkonsBiteEffect as 'harkons-bite-effect'} from './legacy/items/harkonsBite.mjs';
+// ** Equipment
+export {amuletOfTheLycanthrope as 'amulet-of-the-lycanthrope', amuletOfTheLycanthropeEffect as 'amulet-of-the-lycanthrope-effect'} from './legacy/equipment/amuletOfTheLycanthrope.mjs';
+export {harkonsBite as 'harkons-bite', harkonsBiteEffect as 'harkons-bite-effect'} from './legacy/equipment/harkonsBite.mjs';

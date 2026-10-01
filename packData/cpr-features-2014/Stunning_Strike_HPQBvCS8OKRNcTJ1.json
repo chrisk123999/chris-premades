@@ -1,82 +1,156 @@
 {
-  "name": "Superior Inspiration",
+  "name": "Stunning Strike",
   "type": "feat",
-  "effects": [],
+  "effects": [
+    {
+      "name": "Stunning Strike: Stunned",
+      "statuses": [
+        "stunned"
+      ],
+      "system": {
+        "changes": []
+      },
+      "duration": {
+        "value": 1,
+        "units": "rounds",
+        "expiry": "sourceEnd",
+        "expired": false
+      },
+      "tint": "#ffffff",
+      "transfer": false,
+      "disabled": false,
+      "showIcon": 1,
+      "flags": {
+        "dae": {
+          "transfer": false,
+          "stackable": "noneName",
+          "specialDuration": [],
+          "enableCondition": "",
+          "disableCondition": "",
+          "expiryMode": "delete",
+          "durationExpression": "",
+          "macroRepeat": "none",
+          "disableIncapacitated": false,
+          "selfTarget": false,
+          "selfTargetAlways": false,
+          "dontApply": false
+        },
+        "midi-qol": {
+          "forceCEOff": true
+        },
+        "core": {
+          "overlay": false
+        },
+        "dnd5e": {
+          "riders": {
+            "statuses": []
+          }
+        },
+        "cat": {
+          "identifier": "stunning-strike"
+        }
+      },
+      "description": "",
+      "_id": "VbsuvIU5RWdbK5D8",
+      "img": "icons/skills/melee/unarmed-punch-fist.webp",
+      "type": "base",
+      "start": null,
+      "origin": null,
+      "folder": null,
+      "sort": 0,
+      "_stats": {
+        "coreVersion": "14.364",
+        "systemId": "dnd5e",
+        "systemVersion": "5.3.3"
+      },
+      "_key": "!items.effects!HPQBvCS8OKRNcTJ1.VbsuvIU5RWdbK5D8"
+    }
+  ],
   "system": {
     "activities": {
-      "InJHi9J1tz8HL1Jt": {
-        "type": "utility",
-        "_id": "InJHi9J1tz8HL1Jt",
+      "saveStunStrclass": {
+        "type": "save",
+        "_id": "saveStunStrclass",
         "img": "",
         "sort": 0,
         "activation": {
-          "type": "encounter",
-          "override": false,
-          "condition": ""
+          "type": "special",
+          "value": 1,
+          "condition": "",
+          "override": false
         },
         "consumption": {
-          "scaling": {
-            "allowed": false
-          },
-          "spellSlot": true,
           "targets": [
             {
               "type": "itemUses",
-              "value": "-2",
-              "target": "feat:bardic-inspiration",
+              "value": "1",
+              "target": "feat:ki",
               "scaling": {}
             }
-          ]
+          ],
+          "scaling": {
+            "allowed": false,
+            "max": ""
+          },
+          "spellSlot": true
         },
         "description": {
           "chatFlavor": ""
         },
         "duration": {
-          "units": "inst",
+          "units": "spec",
+          "special": "",
           "concentration": false,
           "override": false
         },
-        "effects": [],
+        "effects": [
+          {
+            "_id": "VbsuvIU5RWdbK5D8",
+            "level": {
+              "min": null,
+              "max": null
+            },
+            "onSave": false
+          }
+        ],
         "flags": {
           "cat": {
             "macros": {
-              "combat": [
+              "roll": [
                 {
                   "source": "chris-premades",
-                  "identifier": "combatStartItemUses",
-                  "rules": "all"
+                  "rules": "2014",
+                  "identifier": "stunning-strike"
                 }
               ]
-            },
-            "genericConfig": {
-              "chris-premades": {
-                "combatStartItemUses": {
-                  "identifier": "bardic-inspiration",
-                  "minimum": 2,
-                  "fromZeroOnly": false
-                }
-              }
             }
           }
         },
         "range": {
-          "units": "self",
-          "override": false,
-          "special": ""
+          "value": "5",
+          "units": "any",
+          "special": "",
+          "override": false
         },
         "target": {
-          "template": {
-            "contiguous": false,
-            "stationary": false,
-            "units": "ft",
-            "type": ""
-          },
+          "prompt": true,
           "affects": {
+            "count": "",
+            "type": "creature",
             "choice": false,
-            "type": ""
+            "special": ""
           },
-          "override": false,
-          "prompt": true
+          "template": {
+            "count": "",
+            "contiguous": false,
+            "type": "",
+            "size": "",
+            "width": "",
+            "height": "",
+            "units": "ft",
+            "stationary": false
+          },
+          "override": false
         },
         "uses": {
           "spent": 0,
@@ -93,15 +167,26 @@
           "requireMagic": false,
           "identifier": ""
         },
-        "roll": {
-          "prompt": false,
-          "visible": false,
-          "name": "",
-          "formula": ""
+        "damage": {
+          "onSave": "half",
+          "critical": {
+            "allow": false
+          },
+          "parts": []
+        },
+        "save": {
+          "dc": {
+            "formula": "",
+            "calculation": "wis"
+          },
+          "ability": [
+            "con"
+          ]
         },
         "useConditionText": "",
         "useConditionReason": "",
         "effectConditionText": "",
+        "otherActivityId": "",
         "macroData": {
           "name": "",
           "command": ""
@@ -119,19 +204,19 @@
           "triggeredActivityConditionText": "",
           "triggeredActivityTargets": "targets",
           "triggeredActivityRollAs": "self",
+          "confirmTargets": "default",
+          "automationOnly": false,
+          "identifier": "",
           "triggeredActivityConsume": true,
           "triggeredActivityConfigure": true,
           "autoConsume": false,
           "forceConsumeDialog": "default",
           "forceRollDialog": "default",
           "forceDamageDialog": "default",
-          "confirmTargets": "default",
           "autoTargetType": "any",
           "autoTargetAction": "default",
-          "automationOnly": false,
           "otherActivityCompatible": false,
           "otherActivityAsParentType": true,
-          "identifier": "",
           "displayActivityName": false,
           "rollMode": "default",
           "chooseEffects": false,
@@ -172,35 +257,35 @@
           "animationSpeed": 5,
           "animationIntensity": 5
         },
-        "otherActivityId": "none",
         "otherActivityAsParentType": true,
+        "friendlySave": "default",
         "name": ""
       }
     },
     "uses": {
-      "spent": null,
+      "spent": 0,
       "recovery": [],
       "max": ""
     },
+    "advancement": {},
     "description": {
       "value": "",
       "chat": ""
     },
-    "identifier": "superior-inspiration",
+    "identifier": "stunning-strike",
     "source": {
-      "book": "",
+      "book": "PHB",
       "page": "",
       "license": "",
-      "custom": "PHB 2024",
-      "rules": "2024",
+      "custom": "",
+      "rules": "2014",
       "revision": 1
     },
-    "advancement": [],
-    "cover": null,
     "crewed": false,
     "enchant": {},
     "prerequisites": {
-      "level": 18,
+      "items": [],
+      "level": 5,
       "repeatable": false
     },
     "properties": [],
@@ -211,23 +296,27 @@
     }
   },
   "flags": {
+    "midi-qol": {
+      "removeAttackDamageButtons": "default",
+      "forceCEOff": true
+    },
+    "midiProperties": {
+      "confirmTargets": "default"
+    },
     "cat": {
       "automation": {
-        "version": "2.0.4",
-        "source": "chris-premades"
-      },
-      "config": {
-        "minimum": 2
+        "source": "chris-premades",
+        "version": "2.0.4"
       }
     }
   },
-  "img": "icons/magic/earth/explosion-lava-stone-green.webp",
-  "folder": "jv1qLsd4LTtCBvYj",
-  "_id": "S4YTwKY5KbO6GY94",
+  "img": "icons/skills/melee/unarmed-punch-fist.webp",
+  "folder": "nH8135F1PzU9skht",
   "_stats": {
     "coreVersion": "14.364",
     "systemId": "dnd5e",
     "systemVersion": "5.3.3"
   },
-  "_key": "!items!S4YTwKY5KbO6GY94"
+  "_id": "HPQBvCS8OKRNcTJ1",
+  "_key": "!items!HPQBvCS8OKRNcTJ1"
 }

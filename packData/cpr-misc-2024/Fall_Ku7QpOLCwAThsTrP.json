@@ -1,16 +1,17 @@
 {
-  "name": "Superior Inspiration",
+  "folder": "jCoKvU1chpjD6Jlr",
+  "name": "Fall",
   "type": "feat",
-  "effects": [],
+  "img": "icons/magic/control/silhouette-fall-slip-prone.webp",
   "system": {
     "activities": {
-      "InJHi9J1tz8HL1Jt": {
-        "type": "utility",
-        "_id": "InJHi9J1tz8HL1Jt",
+      "TXcMoPJXoSJw6Aen": {
+        "type": "damage",
+        "_id": "TXcMoPJXoSJw6Aen",
         "img": "",
-        "sort": 0,
+        "sort": 100000,
         "activation": {
-          "type": "encounter",
+          "type": "special",
           "override": false,
           "condition": ""
         },
@@ -19,14 +20,7 @@
             "allowed": false
           },
           "spellSlot": true,
-          "targets": [
-            {
-              "type": "itemUses",
-              "value": "-2",
-              "target": "feat:bardic-inspiration",
-              "scaling": {}
-            }
-          ]
+          "targets": []
         },
         "description": {
           "chatFlavor": ""
@@ -40,22 +34,13 @@
         "flags": {
           "cat": {
             "macros": {
-              "combat": [
+              "roll": [
                 {
                   "source": "chris-premades",
-                  "identifier": "combatStartItemUses",
-                  "rules": "all"
+                  "rules": "all",
+                  "identifier": "fall"
                 }
               ]
-            },
-            "genericConfig": {
-              "chris-premades": {
-                "combatStartItemUses": {
-                  "identifier": "bardic-inspiration",
-                  "minimum": 2,
-                  "fromZeroOnly": false
-                }
-              }
             }
           }
         },
@@ -73,7 +58,9 @@
           },
           "affects": {
             "choice": false,
-            "type": ""
+            "type": "self",
+            "special": "",
+            "count": ""
           },
           "override": false,
           "prompt": true
@@ -93,15 +80,32 @@
           "requireMagic": false,
           "identifier": ""
         },
-        "roll": {
-          "prompt": false,
-          "visible": false,
-          "name": "",
-          "formula": ""
+        "damage": {
+          "critical": {
+            "allow": false
+          },
+          "parts": [
+            {
+              "custom": {
+                "enabled": true,
+                "formula": "0"
+              },
+              "number": null,
+              "denomination": null,
+              "bonus": "",
+              "types": [
+                "bludgeoning"
+              ],
+              "scaling": {
+                "number": 1
+              }
+            }
+          ]
         },
         "useConditionText": "",
         "useConditionReason": "",
         "effectConditionText": "",
+        "otherActivityId": "none",
         "macroData": {
           "name": "",
           "command": ""
@@ -172,62 +176,56 @@
           "animationSpeed": 5,
           "animationIntensity": 5
         },
-        "otherActivityId": "none",
-        "otherActivityAsParentType": true,
         "name": ""
       }
     },
     "uses": {
-      "spent": null,
+      "spent": 0,
       "recovery": [],
       "max": ""
     },
+    "advancement": {},
     "description": {
       "value": "",
       "chat": ""
     },
-    "identifier": "superior-inspiration",
+    "identifier": "fall",
     "source": {
+      "revision": 1,
+      "rules": "2024",
       "book": "",
       "page": "",
-      "license": "",
-      "custom": "PHB 2024",
-      "rules": "2024",
-      "revision": 1
+      "custom": "",
+      "license": ""
     },
-    "advancement": [],
-    "cover": null,
     "crewed": false,
     "enchant": {},
     "prerequisites": {
-      "level": 18,
-      "repeatable": false
+      "items": [],
+      "repeatable": false,
+      "level": null
     },
     "properties": [],
     "requirements": "",
     "type": {
-      "value": "class",
+      "value": "",
       "subtype": ""
     }
   },
+  "effects": [],
   "flags": {
     "cat": {
       "automation": {
-        "version": "2.0.4",
-        "source": "chris-premades"
-      },
-      "config": {
-        "minimum": 2
+        "source": "chris-premades",
+        "version": "2.0.4"
       }
     }
   },
-  "img": "icons/magic/earth/explosion-lava-stone-green.webp",
-  "folder": "jv1qLsd4LTtCBvYj",
-  "_id": "S4YTwKY5KbO6GY94",
   "_stats": {
     "coreVersion": "14.364",
     "systemId": "dnd5e",
     "systemVersion": "5.3.3"
   },
-  "_key": "!items!S4YTwKY5KbO6GY94"
+  "_id": "Ku7QpOLCwAThsTrP",
+  "_key": "!items!Ku7QpOLCwAThsTrP"
 }

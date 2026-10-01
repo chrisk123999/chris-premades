@@ -5,6 +5,7 @@
 - Generic Macros:
   - `selectDamageType`, for attacks whose damage has more than one type.
   - `{type}Bonus` and `reroll{Type}WithBonus`, where type is check, save, skill, or tool.
+  - `choiceRemoveCondition` with `turnStart` and `turnEnd` variants. Prompts to remove the source of a status effect.
 - Infused Strikes exposes its formula and range, Exceptional Training its damage type, and Stalker's Flurry a separate Sudden Strike range.
 ## Bug Fixes:
 - Summon Aberration: the summon's features are fetched in one pass, so a missing pack item no longer leaves a half built summon behind.
@@ -16,9 +17,11 @@
 - Warping Implosion and the teleport generic pass the animation's own config through to it. Nothing forwarded those options, so a configured teleport animation always ran on its defaults.
 - Generic Macros:
   - `damageBonusToOneRoll` gains `targetWounded`.
-  - `movementAnimation` gains `movementType`, choosing which speed bounds the crosshair. Defaults to the fastest, as before.
 - Instinctive Pounce
 - Cunning Action
+- Heightened Focus
+- Perfect Focus
+- Superior Defense
 ## Updated Legacy Automations:
 - Dash
 - Disengage (opportunity attack immunity needs gambits-premades)
@@ -38,6 +41,18 @@
 - Dreadful Strikes
 - Indomitable
 - Second Wind
+- Martial Arts
+- Unarmored Defense (Monk)
+- Unarmored Movement
+- Ki
+- Slow Fall
+- Stillness of Mind
+- Diamond Soul
+- Empty Body
+- Perfect Self
+- Dedicated Weapon
+- Quickened Healing
+- Focused Aim
 ## Updated Modern Automations:
 - Dash
 - Disengage (opportunity attack immunity needs gambits-premades)
@@ -66,8 +81,20 @@
 - Studied Attacks
 - Tactical Mind
 - Tactical Shift
+- Martial Arts
+- Unarmored Defense (Monk)
+- Unarmored Movement
+- Monk's Focus
+- Uncanny Metabolism
+- Deflect Attacks
+- Slow Fall
+- Self-Restoration
+- Deflect Energy
+- Disciplined Survivor
 ## Animations:
 - Misty Step gains a colour option.
+- Flurry of Blows
+- Step of the Wind
 
 # 2.0.3 Pre-Release:
 ## Update Notes:

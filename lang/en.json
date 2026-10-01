@@ -29,6 +29,7 @@
             "EldritchBlast": "Eldritch Blast",
             "FiendSummon": "Fiend Summon",
             "FireSummon": "Fire Summon",
+            "FlurryOfBlows": "Flurry of Blows", 
             "FutureSummon": "Future Summon",
             "Hide": "Hide",
             "MagicMissile": "Magic Missile",
@@ -55,6 +56,7 @@
             "SneakAttack": {
                 "Name": "Sneak Attack"
             },
+            "StepOfTheWind": "Step of the Wind",
             "WaterSummon": "Water Summon"
         },
         "Config": {
@@ -155,6 +157,7 @@
             "Effect": "Effect",
             "Enable3rdPartyReaction": "Enable 3rd Party Reaction",
             "EnablePrompt": "Enable Reaction Prompt",
+            "ExcludeWeaponProperties": "Exclude Weapon Properties",
             "Expire": "Expiration",
             "FailedSave": "Failed Save",
             "FavoriteActivities": "Favorite Activities",
@@ -166,6 +169,7 @@
             "HideToken": "Hide Token",
             "HitPoints": "Hit Points",
             "HitTarget": "Hit Target",
+            "Identifier": "Identifier",
             "Identifiers": "Identifiers",
             "IgnoredConditions": "Ignored Conditions",
             "IgnoredCreatureTypes": "Ignored Creature Types",
@@ -194,8 +198,9 @@
             "PlayAnimation": "Play Animation",
             "PlayTeleportAnimation": "Play Teleport Animation",
             "PlayTokenAnimation": "Play Token Animation",
+            "PromptTargets": "Prompt for Targets",
             "PromptMove": "Prompt to Move",
-            "PromptToUse": "Prompt to use",
+            "PromptToUse": "Prompt to Use",
             "Properties": "Item Properties",
             "Range": "Range",
             "RangeFrom": "Range From",
@@ -251,6 +256,7 @@
             "TurnTrigger": "Turn Trigger",
             "UseFormula": "Use Formula",
             "UtilityRollAsDamage": "Utility Roll As Damage",
+            "ValidateWeapon": "Validate Weapon",
             "Weapon": "Weapon",
             "WeaponProperties": "Weapon Properties",
             "WeaponType": "Weapon Type",
@@ -262,7 +268,9 @@
         },
         "Generic": {
             "CreatureNameAndSize": "{size} {name}",
-            "SelectDamageType": "Select Damage Type"
+            "SelectDamageType": "Select Damage Type",
+            "SelectTarget": "Select a target.",
+            "SelectTargets": "Select up to {maxAmount} targets."
         },
         "GenericEffects": {
             "CriticalThreshold": "Critical Threshold"
@@ -292,6 +300,16 @@
                     "SpreadAroundCornersHint": "Bound the darkness by walls that block movement, letting it spread around corners. Requires Walled Templates."
                 },
                 "Dueling": "Identifiers for exceptions to the requirements of this feature.",
+                "Fall": {
+                    "Acr": "Yes (Acrobatics)",
+                    "Ath": "Yes (Athletics)",
+                    "Creature": "Onto Another Creature",
+                    "Ground": "Onto Ground",
+                    "Reaction": "Use your reaction to hit the surface head or feet first?",
+                    "Tiny": "One or both creatures are tiny!",
+                    "Type": "Type of Fall:",
+                    "Water": "Into Water"
+                },
                 "FindFamiliar": {
                     "Ask": "Ask Each Time",
                     "Choose": "Choose a familiar.",
@@ -315,6 +333,10 @@
                     "EquippedHint": "One or more of these item types must be equipped.",
                     "Prompt": "Use {item} to reduce the damage dealt to {name}?"
                 },
+                "Jump": {
+                    "DifficultTerrain": "Landing in difficult terrain?",
+                    "LowObstacle": "Is there a low obstacle?"
+                },
                 "OneWithShadows": {
                     "Bright": "You can only use this in dim light or darkness."
                 },
@@ -327,7 +349,6 @@
                     "HeavyArmor": "You are wearing heavy armor and cannot rage!",
                     "Spellcasting": "You can't spellcast while raging!"
                 },
-                "SuperiorInspiration": "Minimum Inspirations",
                 "UnarmedFighting": "Deal damage to which grappled creature?",
                 "WildShape": {
                     "Choose": "Choose a wild shape:",
@@ -359,6 +380,7 @@
                     "SelectNearbyTargets": "Select targets.",
                     "Weapon": "Attack with what weapon?"
                 },
+                "ChoiceRemoveCondition": "Select a condition to remove:",
                 "Common": {
                     "AttackTypeHint": "Limit this feature by attack type.",
                     "Costs": "Use Activity Costs",
@@ -381,6 +403,10 @@
                     "SpellLevelHint": "Limit this feature by spell level.",
                     "SpellSchoolHint": "Limit this feature by spell school."
                 },
+                "CombatStartItemUses": {
+                    "FromZero": "Trigger From Zero Only",
+                    "Minimum": "Minimum Item Uses"
+                },
                 "ConsumeItemToUse": "Consume {item} to use this feature?",
                 "DamageBonusToOneRoll": {
                     "BonusDamageType": "Bonus Damage Type",
@@ -396,6 +422,7 @@
                     "MaxTargets": "Max Targets",
                     "MaxTargetsHint": "Limit the bonus to this many targets. 0 applies it to every target."
                 },
+                "ExtraAttack": "Identifier of the attack item.",
                 "Grapple": {
                     "ActivityInfo": "Use Activity Info",
                     "ActivityInfoHint": "Icons, item name, and roll DC will be taken from the parent save activity.",
@@ -499,6 +526,13 @@
                     "Weapon": "Pact Weapon"
                 },
                 "DangerSense": "This save is from an effect you can see.",
+                "DedicatedWeapon": {
+                    "Auto": "Auto Roll On Rests",
+                    "Choose": "Choose a weapon.",
+                    "Current": "Current",
+                    "NoValid": "No valid weapons available!",
+                    "Proficiency": "Require Proficiency"
+                },
                 "DestroyUndead": "Maximum CR",
                 "DrakeCompanion": {
                     "Bite": "Bite",
@@ -523,6 +557,7 @@
                 "FeyPresence": {
                     "Select": "Choose a condition to apply."
                 },
+                "FocusedAim": "Identifier For Resources Item",
                 "FormOfDread": {
                     "Use": "Frighten the target?"
                 },
@@ -678,6 +713,7 @@
                     "BaseMaxJumps": "Base Max Jumps",
                     "TargetDamageSelection": "Select Damage Type For Each Target"
                 },
+                "DeflectAttacks": "Redirect Attack?",
                 "ExtremeResilience": {
                     "Select": "Select a feature to recover a use of."
                 },
@@ -692,6 +728,10 @@
                 },
                 "GreaterDivineIntervention": {
                     "RestFormula": "Rest Recovery Formula"
+                },
+                "HeightenedFocus": {
+                    "Prompt": "Bring an ally with you?",
+                    "PromptNoAnimation": "Bring an ally with you?<br>Choose a target, move your token, then submit this prompt."
                 },
                 "HuntersMark": {
                     "Marked": "Hunter's Mark: Marked",

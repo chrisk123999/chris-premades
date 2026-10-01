@@ -1,4 +1,4 @@
-import {automationUtils, constants, dialogUtils, rollUtils, workflowUtils} from '../../proxy.mjs';
+import {activityUtils, automationUtils, constants, dialogUtils, rollUtils, workflowUtils} from '../../proxy.mjs';
 async function reroll({actor, config, dialog, document: item, message, roll, macroClass: {identifier}, checkId, saveId, skillId, toolId}) {
     const settings = automationUtils.getGenericConfigValues(item, 'chris-premades', identifier, configKeys);
     if (settings.failedOnly && roll.isSuccess) return;
@@ -6,8 +6,9 @@ async function reroll({actor, config, dialog, document: item, message, roll, mac
     if (settings.ability?.length && !settings.ability.includes(config.ability)) return;
     if (settings.skill?.length && !settings.skill.includes(config.skill)) return;
     if (settings.tool?.length && !settings.tool.includes(config.tool)) return;
-    if (settings.consume) {
-        if (!item.system.uses.value) return;
+    const activity = item.system.activities.get(settings.rollActivity);
+    if (activity && settings.consume) {
+        if (!activityUtils.checkCosts(activity)) return;
         if (!await dialogUtils.confirmUseRollTotal(item, roll.total)) return;
     }
     const rerollConfig = {...config};
@@ -26,7 +27,6 @@ async function reroll({actor, config, dialog, document: item, message, roll, mac
     if (!newRoll) return roll;
     let consume = !!settings.consume;
     if (settings.consume === 'success' && !newRoll.isSuccess) consume = false;
-    const activity = item.system.activities.get(settings.rollActivity);
     if (activity) await workflowUtils.syntheticActivityRoll(activity, [], {consumeResources: consume, consumeUsage: consume});
     else if (settings.rollItem) await workflowUtils.syntheticItemRoll(item, [], {consumeResources: consume, consumeUsage: consume});
     return rollUtils.replaceRollShowDiscarded(roll, newRoll);
