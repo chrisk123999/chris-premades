@@ -54,10 +54,20 @@ export {relentlessHunter as 'relentless-hunter'} from './modern/classFeatures/ra
 export {tireless} from './modern/classFeatures/ranger/tireless.mjs';
 // Rogue
 export {improvedCunningStrike as 'improved-cunning-strike'} from './modern/classFeatures/rogue/improvedCunningStrike.mjs';
-export {sneakAttack as 'sneak-attack'} from './modern/classFeatures/rogue/sneakAttack.mjs';
+export {strokeOfLuck as 'stroke-of-luck'} from './modern/classFeatures/rogue/strokeOfLuck.mjs';
+// Arcane Trickster
+export {magicalAmbush as 'magical-ambush'} from './modern/classFeatures/rogue/arcaneTrickster/magicalAmbush.mjs';
+export {spellThief as 'spell-thief'} from './modern/classFeatures/rogue/arcaneTrickster/spellThief.mjs';
+export {versatileTrickster as 'versatile-trickster'} from './modern/classFeatures/rogue/arcaneTrickster/versatileTrickster.mjs';
+// Assassin
+export {assassinate} from './modern/classFeatures/rogue/assassin/assassinate.mjs';
+export {deathStrike as 'death-strike'} from './modern/classFeatures/rogue/assassin/deathStrike.mjs';
+export {envenomWeapons as 'envenom-weapons'} from './modern/classFeatures/rogue/assassin/envenomWeapons.mjs';
 // Sanguine Thief
 export {stealBlood as 'steal-blood'} from './modern/classFeatures/rogue/sanguineThief/stealBlood.mjs';
 export {stolenPower as 'stolen-power'} from './modern/classFeatures/rogue/sanguineThief/stolenPower.mjs';
+// Soulknife
+export {psionicPower as 'psionic-power'} from './modern/classFeatures/rogue/soulknife/psionicPower.mjs';
 // Warlock
 export {stepsOfTheFey as 'steps-of-the-fey'} from './modern/classFeatures/warlock/archfey/stepsOfTheFey.mjs';
 export {felineForm as 'feline-form', felineFormActive as 'feline-form-active', felineFormRevert as 'feline-form-revert'} from './modern/classFeatures/warlock/feline/felineForm.mjs';

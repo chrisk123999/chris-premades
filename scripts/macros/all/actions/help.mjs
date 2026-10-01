@@ -4,14 +4,13 @@ async function use({document: item, workflow}) {
     const targetToken = workflow.targets.first().document;
     const sourceToken = workflow.token.document;
     const ally = !tokenUtils.isEnemy(sourceToken, targetToken);
-    const seconds = tokenUtils.getCombatData(sourceToken).inCombat ? 12 : 3600;
     const effectData = documentUtils.getBaseEffectData(workflow.activity, {
         name: item.name,
         img: item.img,
         origin: item.uuid,
         identifier: ally ? 'helpAlly' : 'helpEnemy',
         activityUuid: workflow.activity.uuid,
-        duration: {seconds},
+        duration: {value: 1, units: 'rounds', expiry: 'turnStart'},
         changes: ally ? [
             {
                 key: 'flags.midi-qol.advantage.ability.all',
@@ -27,9 +26,13 @@ async function use({document: item, workflow}) {
                 type: 'custom'
             }
         ],
-        specialDuration: ally ? ['turnStart'] : ['turnStart', 'attackedByAnotherCreature']
+        specialDuration: ally ? [] : ['attackedByAnotherCreature']
     });
-    await effectUtils.createEffects(targetToken.actor, [effectData]);
+    const macros = ally ? ['check', 'skill', 'tool'].map(type => ({type, macros: [{source: 'chris-premades', identifier: 'helpAlly', rules: 'all'}]})) : undefined;
+    await effectUtils.createEffects(targetToken.actor, [effectData], {macros});
+}
+async function consumed({document}) {
+    await documentUtils.deleteDocument(document);
 }
 export const help = {
     name: 'Help',
@@ -42,4 +45,19 @@ export const help = {
             priority: 50
         }
     ]
+};
+const consumedPass = [
+    {
+        pass: 'actorPost',
+        macro: consumed,
+        priority: 50
+    }
+];
+export const helpAlly = {
+    name: 'Help',
+    version: '2.0.0',
+    rules: 'all',
+    check: consumedPass,
+    skill: consumedPass,
+    tool: consumedPass
 };

@@ -18,13 +18,16 @@ export {indomitable} from './all/classFeatures/fighter/indomitable.mjs';
 // Monk
 export {slowFall as 'slow-fall'} from './all/classFeatures/monk/slowFall.mjs';
 // Rogue
+export {sneakAttack as 'sneak-attack'} from './all/classFeatures/rogue/sneakAttack.mjs';
 export {steadyAim as 'steady-aim'} from './all/classFeatures/rogue/steadyAim.mjs';
+// Soulknife
+export {psychicBlades as 'psychic-blades'} from './all/classFeatures/rogue/soulknife/psychicBlades.mjs';
 // Warlock
 export {oneWithShadows as 'one-with-shadows'} from './all/classFeatures/warlock/invocations/oneWithShadows.mjs';
 // Actions
 export {fall} from './all/actions/fall.mjs';
-export {help} from './all/actions/help.mjs';
 export {jump, longJump} from './all/actions/jump.mjs';
+export {help, helpAlly} from './all/actions/help.mjs';
 // Equipment
 export {arcaneGrimoire as 'arcane-grimoire-1', arcaneGrimoire as 'arcane-grimoire-2', arcaneGrimoire as 'arcane-grimoire-3'} from './all/equipment/arcaneGrimoire.mjs';
 // Fighting Styles

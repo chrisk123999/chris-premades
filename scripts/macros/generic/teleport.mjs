@@ -1,13 +1,15 @@
 import {automationUtils, tokenUtils} from '../../proxy.mjs';
 async function use({document, workflow}) {
     if (!workflow.token) return;
+    const config = automationUtils.getGenericConfigValues(document, 'chris-premades', 'teleport', configKeys);
     const {animation, options} = automationUtils.getResolvedAnimation(document, 'animation', {source: 'chris-premades', identifier: 'teleport'});
-    const range = automationUtils.getGenericConfigValue(document, 'chris-premades', 'teleport', 'range') || workflow.activity.range.value;
+    const rolledRange = config.rangeFromRoll ? workflow.utilityRolls?.[0]?.total : undefined;
+    const range = rolledRange || config.range || workflow.activity.range.value;
     await tokenUtils.teleportToken(workflow.token.document, {animation, options, range});
 }
 export const teleport = {
     rules: 'all',
-    version: '2.0.0',
+    version: '2.1.0',
     category: 'movement',
     generic: true,
     documents: ['activity'],
@@ -26,6 +28,13 @@ export const teleport = {
             label: 'CHRISPREMADES.Config.Range',
             hint: 'CHRISPREMADES.Macros.Generic.Teleport.RangeHint'
         },
+        rangeFromRoll: {
+            default: false,
+            type: 'checkbox',
+            category: 'behavior',
+            label: 'CHRISPREMADES.Macros.Generic.Teleport.RangeFromRoll',
+            hint: 'CHRISPREMADES.Macros.Generic.Teleport.RangeFromRollHint'
+        },
         animation: {
             default: {
                 source: 'chris-premades',
@@ -38,3 +47,4 @@ export const teleport = {
         }
     }
 };
+const configKeys = Object.keys(teleport.genericConfig);

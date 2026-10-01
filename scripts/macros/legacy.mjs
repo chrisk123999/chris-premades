@@ -22,6 +22,19 @@ export {primalCompanion as 'primal-companion'} from './legacy/classFeatures/rang
 export {drakeCompanionInfuse as 'drake-companion-infused-strikes', drakeCompanionResistance as 'drake-companion-resistance', drakeCompanionSummon as 'drake-companion-summon'} from './legacy/classFeatures/ranger/drakewarden/drakeCompanion.mjs';
 export {favoredFoe as 'favored-foe'} from './legacy/classFeatures/ranger/favoredFoe.mjs';
 export {dreadAmbusher as 'dread-ambusher'} from './legacy/classFeatures/ranger/gloomStalker/dreadAmbusher.mjs';
+// Rogue
+// Inquisitive
+export {insightfulFighting as 'insightful-fighting'} from './legacy/classFeatures/rogue/inquisitive/insightfulFighting.mjs';
+// Mastermind
+export {insightfulManipulator as 'insightful-manipulator'} from './legacy/classFeatures/rogue/mastermind/insightfulManipulator.mjs';
+// Phantom
+export {deathsFriend as 'deaths-friend'} from './legacy/classFeatures/rogue/phantom/deathsFriend.mjs';
+export {wailsFromTheGrave as 'wails-from-the-grave'} from './legacy/classFeatures/rogue/phantom/wailsFromTheGrave.mjs';
+// Soulknife
+export {homingStrikes as 'homing-strikes'} from './legacy/classFeatures/rogue/soulknife/homingStrikes.mjs';
+export {psionicEnergy as 'psionic-energy'} from './legacy/classFeatures/rogue/soulknife/psionicEnergy.mjs';
+// Swashbuckler
+export {rakishAudacity as 'rakish-audacity'} from './legacy/classFeatures/rogue/swashbuckler/rakishAudacity.mjs';
 // Warlock
 export {feyPresence as 'fey-presence'} from './legacy/classFeatures/warlock/archfey/feyPresence.mjs';
 export {mistyEscape as 'misty-escape'} from './legacy/classFeatures/warlock/archfey/mistyEscape.mjs';

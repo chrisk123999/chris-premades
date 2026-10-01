@@ -1,7 +1,9 @@
-import {automationUtils, documentUtils, effectUtils, genericUtils, tokenUtils} from '../../proxy.mjs';
+import {automationUtils, documentUtils, effectUtils, genericUtils, rollUtils, tokenUtils} from '../../proxy.mjs';
 async function use({document, workflow}) {
+    const distanceFormula = automationUtils.getGenericConfigValue(document, 'chris-premades', 'movementAnimation', 'distance');
+    const distance = distanceFormula ? rollUtils.rollDiceSync(distanceFormula, {document: workflow.actor}).total : 0;
     const bonus = workflow.activity.range.value || workflow.rangeDetails.range;
-    const range = bonus || tokenUtils.movementSpent(workflow.token.document, true);
+    const range = distance || bonus || tokenUtils.movementSpent(workflow.token.document, true);
     if (!range) return genericUtils.notify('CHRISPREMADES.Macros.Generic.MovementAnimation.NoMovement', {type: 'warn'});
     const {animation: selectLocationsAnimation, options: selectLocationsOptions} = automationUtils.getResolvedAnimation(document, 'selectLocationsAnimation', {source: 'chris-premades', identifier: 'movementAnimation'});
     if (!selectLocationsAnimation) return;
@@ -25,7 +27,7 @@ async function use({document, workflow}) {
 }
 export const movementAnimation = {
     rules: 'all',
-    version: '2.1.0',
+    version: '2.2.0',
     category: 'movement',
     generic: true,
     documents: ['activity'],
@@ -56,6 +58,12 @@ export const movementAnimation = {
             inputs: ['token', 'positions'],
             label: 'CHRISPREMADES.Macros.Generic.MovementAnimation.MoveAnimation',
             hint: ''
+        },
+        distance: {
+            default: '',
+            type: 'text',
+            label: 'CHRISPREMADES.Macros.Generic.MovementAnimation.Distance',
+            hint: 'CHRISPREMADES.Macros.Generic.MovementAnimation.DistanceHint'
         },
         movementEffect: {
             default: '',

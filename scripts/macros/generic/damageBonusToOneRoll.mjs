@@ -1,4 +1,39 @@
 import {actorUtils, automationUtils, constants, DamageBonus, documentUtils, workflowUtils} from '../../proxy.mjs';
+export function validateRequiredBonus(otherBonuses, requiredBonus) {
+    return requiredBonus.every(identifier => otherBonuses.some(other => other.identifier === identifier && other.active)) || 'CHRISPREMADES.Macros.Generic.Common.RequiredBonusInvalid';
+}
+export const identifiersConfig = {
+    default: [],
+    type: 'selectIdentifiers',
+    category: 'behavior',
+    label: 'CHRISPREMADES.Config.Identifiers',
+    hint: 'CHRISPREMADES.Macros.Generic.Common.IdentifierHint'
+};
+export const attackTypeConfig = {
+    default: '',
+    type: 'select',
+    category: 'behavior',
+    label: 'CHRISPREMADES.Config.AttackType.Label',
+    hint: 'CHRISPREMADES.Macros.Generic.Common.AttackTypeHint',
+    get options() { return [
+        'attack',
+        'meleeAttack',
+        'rangedAttack',
+        'weaponAttack',
+        'spellAttack',
+        'rangedWeaponAttack',
+        'meleeWeaponAttack',
+        'rangedSpellAttack',
+        'meleeSpellAttack'
+    ].map(a => ({value: a, label: _loc('CHRISPREMADES.Config.AttackType.' + a)})); }
+};
+export const requiredBonusConfig = {
+    default: [],
+    type: 'selectIdentifiers',
+    category: 'behavior',
+    label: 'CHRISPREMADES.Macros.Generic.Common.RequiredBonus',
+    hint: 'CHRISPREMADES.Macros.Generic.Common.RequiredBonusHint'
+};
 async function damage({document, workflow}) {
     if (!workflow.targets.size || (!workflow.activity.hasDamage && !workflow.activity.hasHealing)) return;
     const config = automationUtils.getGenericConfigValues(document, 'chris-premades', 'damageBonusToOneRoll', configKeys);
@@ -40,11 +75,15 @@ async function damage({document, workflow}) {
         const actor = (workflow.hitTargets.first() ?? workflow.targets.first())?.actor;
         if (!actor || !actorUtils.isWounded(actor)) return;
     }
+    const targets = config.targetEffects.length ? workflow.hitTargets.filter(token => token.actor && config.targetEffects.some(identifier => documentUtils.getEffectByIdentifier(token.actor, identifier, {multiple: true, sourceActor: workflow.actor}).length)) : undefined;
+    if (targets && !targets.size) return;
     const bonus = new DamageBonus(document, {formula: config.bonus, optional, type: config.bonusDamageType, maxTargets: config.maxTargets || undefined, allowCritical: config.allowCritical})
+        .withValidation(({otherBonuses}) => validateRequiredBonus(otherBonuses, config.requiredBonus))
         .withOnUse(async ({bonus}) => {
             if (trackLastUse) await documentUtils.setFlag(document, 'chris-premades', 'lastUse', multiSingleTarget.rollID);
             await workflowUtils.rollConfiguredSource(bonus, config, Array.from(bonus.targets ?? []));
         });
+    if (targets) bonus.targets = targets.map(token => token.document);
     if (config.useActivityCosts) {
         if (!workflow.hitTargets.size) return;
         bonus.withDefaultCosts().initialize(workflow);
@@ -54,7 +93,7 @@ async function damage({document, workflow}) {
 }
 export const damageBonusToOneRoll = {
     rules: 'all',
-    version: '2.1.0',
+    version: '2.2.0',
     category: 'damage',
     generic: true,
     documents: ['activeeffect', 'item'],
@@ -80,24 +119,7 @@ export const damageBonusToOneRoll = {
             hint: 'CHRISPREMADES.Macros.Generic.DamageBonusToOneRoll.BonusDamageTypeHint',
             get options() { return constants.damageTypeOptions(); }
         },
-        attackType: {
-            default: '',
-            type: 'select',
-            category: 'behavior',
-            label: 'CHRISPREMADES.Config.AttackType.Label',
-            hint: 'CHRISPREMADES.Macros.Generic.Common.AttackTypeHint',
-            get options() { return [
-                'attack',
-                'meleeAttack',
-                'rangedAttack',
-                'weaponAttack',
-                'spellAttack',
-                'rangedWeaponAttack',
-                'meleeWeaponAttack',
-                'rangedSpellAttack',
-                'meleeSpellAttack'
-            ].map(a => ({value: a, label: _loc('CHRISPREMADES.Config.AttackType.' + a)})); }
-        },
+        attackType: attackTypeConfig,
         damageType: {
             default: [],
             type: 'select-many',
@@ -114,13 +136,7 @@ export const damageBonusToOneRoll = {
             hint: 'CHRISPREMADES.Macros.Generic.Common.HealingTypeHint',
             get options() { return constants.healingTypeOptions(); }
         },
-        identifiers: {
-            default: [],
-            type: 'selectIdentifiers',
-            category: 'behavior',
-            label: 'CHRISPREMADES.Config.Identifiers',
-            hint: 'CHRISPREMADES.Macros.Generic.Common.IdentifierHint'
-        },
+        identifiers: identifiersConfig,
         properties: {
             default: [],
             type: 'select-many',
@@ -186,6 +202,14 @@ export const damageBonusToOneRoll = {
             label: 'CHRISPREMADES.Macros.Generic.DamageBonusToOneRoll.TargetWounded',
             hint: 'CHRISPREMADES.Macros.Generic.DamageBonusToOneRoll.TargetWoundedHint'
         },
+        targetEffects: {
+            default: [],
+            type: 'selectIdentifiers',
+            category: 'behavior',
+            label: 'CHRISPREMADES.Macros.Generic.DamageBonusToOneRoll.TargetEffects',
+            hint: 'CHRISPREMADES.Macros.Generic.DamageBonusToOneRoll.TargetEffectsHint'
+        },
+        requiredBonus: requiredBonusConfig,
         useActivityCosts: {
             default: false,
             type: 'checkbox',

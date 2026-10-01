@@ -13,7 +13,7 @@
         "changes": [
           {
             "key": "flags.midi-qol.OverTime",
-            "value": "turn=end,allowIncapacitated=true,rollType=save,saveAbility=str,saveDC=$activity.dc,saveDamage=nodamage,saveRemove=true,rollMode=publicroll,",
+            "value": "turn=end,allowIncapacitated=true,rollType=save,saveAbility=str,saveDC=$activity.dc,saveDamage=nodamage,saveCount=1,rollMode=publicroll,",
             "priority": 20,
             "type": "custom"
           }
