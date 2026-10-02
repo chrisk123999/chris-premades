@@ -242,9 +242,6 @@
               "chris-premades": {
                 "attackRider": {
                   "tag": "cunningStrike",
-                  "requiredBonus": [
-                    "sneak-attack"
-                  ],
                   "workflowProperty": "canSneak",
                   "requiredItems": [
                     "poisoners-kit"

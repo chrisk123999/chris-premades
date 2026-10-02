@@ -22,26 +22,39 @@ async function bonus({workflow, document}) {
         const classLevels = workflow.actor.classes[automationUtils.getConfigValue(document, 'classIdentifier')]?.system.levels;
         if (classLevels) formula += ' + ' + classLevels;
     }
+    const extraFormulas = await automationUtils.calledEvent('sneakAttackFormula', workflow.actor, {multiResult: true, canOverlap: true, data: {workflow}});
+    extraFormulas.filter(Boolean).forEach(extra => formula += ' + ' + extra);
     const type = workflow.damageRolls[0]?.options.type ?? workflow.defaultDamageType;
     const optional = !automationUtils.getConfigValue(document, 'auto');
     const riders = await getTaggedRiders(workflow.actor, workflow, 'cunningStrike');
+    const extraRiders = await getTaggedRiders(workflow.actor, workflow, 'sneakAttack');
     const strikes = [];
+    const extras = [];
     const bonus = new DamageBonus(document, {action: 'special', formula, type, optional})
         .withValidation(args => validate({...args, strikes}))
         .withOnUse(async args => {
             await use(args);
-            if (strikes.length) addRiders(workflow, strikes.map(strike => strike.uuid));
+            const selected = [...strikes, ...extras];
+            if (selected.length) addRiders(workflow, selected.map(activity => activity.uuid));
         });
-    if (!riders.activities.length) return bonus;
-    return bonus.withInputs([['comboboxMulti', [{
-        name: 'cunningStrike',
-        label: 'CHRISPREMADES.Macros.All.SneakAttack.CunningStrike',
+    const inputs = [
+        riderInput('cunningStrike', 'CHRISPREMADES.Macros.All.SneakAttack.CunningStrike', riders, strikes),
+        riderInput('sneakAttackRiders', 'CHRISPREMADES.Macros.All.SneakAttack.Riders', extraRiders, extras)
+    ].filter(Boolean);
+    if (!inputs.length) return bonus;
+    return bonus.withInputs([['comboboxMulti', inputs]]);
+}
+function riderInput(name, label, riders, selected) {
+    if (!riders.activities.length) return;
+    return {
+        name,
+        label,
         options: {
             maxTotal: riders.limit,
             options: riders.activities.map(activity => ({value: activity.uuid, label: activity.name, image: activity.img})),
-            onchange: ({input}) => strikes.splice(0, strikes.length, ...riders.activities.filter(activity => input.options.some(option => option.selected && option.value === activity.uuid)))
+            onchange: ({input}) => selected.splice(0, selected.length, ...riders.activities.filter(activity => input.options.some(option => option.selected && option.value === activity.uuid)))
         }
-    }]]]);
+    };
 }
 async function use({workflow, bonus}) {
     const inCombat = workflow.token.document.inCombat;
@@ -125,7 +138,7 @@ export const sneakAttack = {
             hint: ''
         }
     },
-    notes: 'Use the "actorSneakAttackAdditionalIdentifiers" called event (async) to let another attacking item qualify. Return its item identifier.\n\tData available: workflow.\nUse "actorSneakAttackDoSneak" (async) to qualify an attack that has no advantage and no ally beside the target. Return true to qualify. The attack may have disadvantage.\n\tData available: workflow.\nUse "actorSneakAttackUsed" (async) to respond after Sneak Attack is used. A truthy return skips later subscribers.\n\tData available: targetToken, workflow.\nWhen an attack qualifies, the "canSneak" workflow property is set for damage bonuses above priority 250.',
+    notes: 'Use the "actorSneakAttackAdditionalIdentifiers" called event (async) to let another attacking item qualify. Return its item identifier.\n\tData available: workflow.\nUse "actorSneakAttackDoSneak" (async) to qualify an attack that has no advantage and no ally beside the target. Return true to qualify. The attack may have disadvantage.\n\tData available: workflow.\nUse "actorSneakAttackFormula" (async) to add to the Sneak Attack formula. Return a formula string, which is appended.\n\tData available: workflow.\nattackRider activities tagged "sneakAttack" are offered as Sneak Attack sub-inputs.\nUse "actorSneakAttackUsed" (async) to respond after Sneak Attack is used. A truthy return skips later subscribers.\n\tData available: targetToken, workflow.\nWhen an attack qualifies, the "canSneak" workflow property is set for damage bonuses above priority 250.',
     scales: [
         {
             identifier: 'sneak-attack',

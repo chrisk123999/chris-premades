@@ -1,5 +1,5 @@
 import {actorUtils, automationUtils, constants, DamageBonus, documentUtils, rollUtils, workflowUtils} from '../../proxy.mjs';
-import {attackTypeConfig, identifiersConfig, requiredBonusConfig, validateRequiredBonus} from './damageBonusToOneRoll.mjs';
+import {attackTypeConfig, identifiersConfig} from './damageBonusToOneRoll.mjs';
 export function addRiders(workflow, uuids) {
     const riders = workflowUtils.getWorkflowProperty(workflow, 'attackRiders') ?? [];
     workflowUtils.setWorkflowProperty(workflow, 'attackRiders', [...riders, ...uuids]);
@@ -32,7 +32,6 @@ async function damage({document: activity, actor, workflow}) {
     const config = automationUtils.getGenericConfigValues(activity, 'chris-premades', 'attackRider', configKeys);
     if (config.tag || !applies(activity, actor, workflow, config)) return;
     const bonus = new DamageBonus(activity, {formula: config.bonus})
-        .withValidation(({otherBonuses}) => validateRequiredBonus(otherBonuses, config.requiredBonus))
         .withOnUse(({workflow, bonus}) => addRiders(workflow, [bonus.document.uuid]));
     if (config.useActivityCosts) {
         bonus.withDefaultCosts().initialize(workflow);
@@ -89,7 +88,6 @@ export const attackRider = {
             label: 'CHRISPREMADES.Macros.Generic.AttackRider.Limit',
             hint: 'CHRISPREMADES.Macros.Generic.AttackRider.LimitHint'
         },
-        requiredBonus: requiredBonusConfig,
         workflowProperty: {
             default: '',
             type: 'text',

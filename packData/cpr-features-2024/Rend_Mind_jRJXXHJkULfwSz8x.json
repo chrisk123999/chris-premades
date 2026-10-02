@@ -203,7 +203,7 @@
         "otherActivityId": "",
         "otherActivityAsParentType": true,
         "friendlySave": "default",
-        "name": "",
+        "name": "Rend Mind",
         "identifier": "rend-mind",
         "flags": {
           "cat": {
@@ -219,9 +219,7 @@
             "genericConfig": {
               "chris-premades": {
                 "attackRider": {
-                  "requiredBonus": [
-                    "sneak-attack"
-                  ],
+                  "tag": "sneakAttack",
                   "identifiers": [
                     "psychic-blades"
                   ]

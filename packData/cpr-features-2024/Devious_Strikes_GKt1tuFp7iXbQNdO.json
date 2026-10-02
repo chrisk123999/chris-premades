@@ -347,9 +347,6 @@
               "chris-premades": {
                 "attackRider": {
                   "tag": "cunningStrike",
-                  "requiredBonus": [
-                    "sneak-attack"
-                  ],
                   "workflowProperty": "canSneak"
                 }
               }
@@ -500,9 +497,6 @@
               "chris-premades": {
                 "attackRider": {
                   "tag": "cunningStrike",
-                  "requiredBonus": [
-                    "sneak-attack"
-                  ],
                   "workflowProperty": "canSneak"
                 }
               }
@@ -652,9 +646,6 @@
               "chris-premades": {
                 "attackRider": {
                   "tag": "cunningStrike",
-                  "requiredBonus": [
-                    "sneak-attack"
-                  ],
                   "workflowProperty": "canSneak"
                 }
               }

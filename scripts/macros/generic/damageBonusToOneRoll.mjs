@@ -1,7 +1,4 @@
 import {actorUtils, automationUtils, constants, DamageBonus, documentUtils, workflowUtils} from '../../proxy.mjs';
-export function validateRequiredBonus(otherBonuses, requiredBonus) {
-    return requiredBonus.every(identifier => otherBonuses.some(other => other.identifier === identifier && other.active)) || 'CHRISPREMADES.Macros.Generic.Common.RequiredBonusInvalid';
-}
 export const identifiersConfig = {
     default: [],
     type: 'selectIdentifiers',
@@ -15,24 +12,7 @@ export const attackTypeConfig = {
     category: 'behavior',
     label: 'CHRISPREMADES.Config.AttackType.Label',
     hint: 'CHRISPREMADES.Macros.Generic.Common.AttackTypeHint',
-    get options() { return [
-        'attack',
-        'meleeAttack',
-        'rangedAttack',
-        'weaponAttack',
-        'spellAttack',
-        'rangedWeaponAttack',
-        'meleeWeaponAttack',
-        'rangedSpellAttack',
-        'meleeSpellAttack'
-    ].map(a => ({value: a, label: _loc('CHRISPREMADES.Config.AttackType.' + a)})); }
-};
-export const requiredBonusConfig = {
-    default: [],
-    type: 'selectIdentifiers',
-    category: 'behavior',
-    label: 'CHRISPREMADES.Macros.Generic.Common.RequiredBonus',
-    hint: 'CHRISPREMADES.Macros.Generic.Common.RequiredBonusHint'
+    get options() { return constants.attackTypeOptions(); }
 };
 async function damage({document, workflow}) {
     if (!workflow.targets.size || (!workflow.activity.hasDamage && !workflow.activity.hasHealing)) return;
@@ -78,7 +58,6 @@ async function damage({document, workflow}) {
     const targets = config.targetEffects.length ? workflow.hitTargets.filter(token => token.actor && config.targetEffects.some(identifier => documentUtils.getEffectByIdentifier(token.actor, identifier, {multiple: true, sourceActor: workflow.actor}).length)) : undefined;
     if (targets && !targets.size) return;
     const bonus = new DamageBonus(document, {formula: config.bonus, optional, type: config.bonusDamageType, maxTargets: config.maxTargets || undefined, allowCritical: config.allowCritical})
-        .withValidation(({otherBonuses}) => validateRequiredBonus(otherBonuses, config.requiredBonus))
         .withOnUse(async ({bonus}) => {
             if (trackLastUse) await documentUtils.setFlag(document, 'chris-premades', 'lastUse', multiSingleTarget.rollID);
             await workflowUtils.rollConfiguredSource(bonus, config, Array.from(bonus.targets ?? []));
@@ -209,7 +188,6 @@ export const damageBonusToOneRoll = {
             label: 'CHRISPREMADES.Macros.Generic.DamageBonusToOneRoll.TargetEffects',
             hint: 'CHRISPREMADES.Macros.Generic.DamageBonusToOneRoll.TargetEffectsHint'
         },
-        requiredBonus: requiredBonusConfig,
         useActivityCosts: {
             default: false,
             type: 'checkbox',

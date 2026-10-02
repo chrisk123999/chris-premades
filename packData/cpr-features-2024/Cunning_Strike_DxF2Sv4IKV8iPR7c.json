@@ -287,9 +287,6 @@
               "chris-premades": {
                 "attackRider": {
                   "tag": "cunningStrike",
-                  "requiredBonus": [
-                    "sneak-attack"
-                  ],
                   "workflowProperty": "canSneak",
                   "requiredItems": [
                     "poisoners-kit"
@@ -446,9 +443,6 @@
               "chris-premades": {
                 "attackRider": {
                   "tag": "cunningStrike",
-                  "requiredBonus": [
-                    "sneak-attack"
-                  ],
                   "workflowProperty": "canSneak",
                   "maxSize": "lg"
                 }
@@ -491,7 +485,8 @@
           }
         ],
         "range": {
-          "units": "self",
+          "value": "floor(0.1 * @attributes.movement.speed) * 5",
+          "units": "ft",
           "special": "",
           "override": false
         },
@@ -597,13 +592,7 @@
               "chris-premades": {
                 "attackRider": {
                   "tag": "cunningStrike",
-                  "requiredBonus": [
-                    "sneak-attack"
-                  ],
                   "workflowProperty": "canSneak"
-                },
-                "movementAnimation": {
-                  "distance": "@attributes.movement.walk / 2"
                 }
               }
             }

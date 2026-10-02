@@ -186,9 +186,7 @@
             "genericConfig": {
               "chris-premades": {
                 "attackRider": {
-                  "requiredBonus": [
-                    "sneak-attack"
-                  ],
+                  "tag": "sneakAttack",
                   "identifiers": [
                     "psychic-blades"
                   ]
@@ -196,7 +194,8 @@
               }
             }
           }
-        }
+        },
+        "name": "Rend Mind"
       },
       "rMr14RestoreUseA": {
         "type": "utility",

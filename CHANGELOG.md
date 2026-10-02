@@ -25,11 +25,10 @@
 - Summon Aberration sets the summon's challenge rating from the caster's proficiency again, which the v13 conversion dropped.
 - Warping Implosion and the teleport generic pass the animation's own config through to it. Nothing forwarded those options, so a configured teleport animation always ran on its defaults.
 - Generic Macros:
-  - `damageBonusToOneRoll` gains `targetWounded`, `targetEffects` and `requiredBonus`.
+  - `damageBonusToOneRoll` gains `targetWounded` and `targetEffects`.
   - `skillBonus` and `toolBonus` gain `proficientOnly`.
   - `summon` gains `moveActivityId`, `maxDistance` and `replaceExisting`.
   - `teleport` gains `rangeFromRoll`.
-  - `movementAnimation` gains `distance`.
 - Steady Aim: moving now spends the feature, and Infiltration Expertise is found again.
 - Help: the ally's advantage ends after their next ability check, skill or tool roll.
 - Beguiling Twist, Intimidating Presence and Nature's Wrath end their effect on one successful save.

@@ -68,26 +68,13 @@
         "version": "2.0.0"
       },
       "macros": {
-        "roll": [
+        "called": [
           {
             "source": "chris-premades",
-            "rules": "all",
-            "identifier": "damageBonusToOneRoll"
+            "rules": "2014",
+            "identifier": "eye-for-weakness"
           }
         ]
-      },
-      "genericConfig": {
-        "chris-premades": {
-          "damageBonusToOneRoll": {
-            "bonus": "3d6",
-            "requiredBonus": [
-              "sneak-attack"
-            ],
-            "targetEffects": [
-              "insightfulFightingTarget"
-            ]
-          }
-        }
       }
     }
   },

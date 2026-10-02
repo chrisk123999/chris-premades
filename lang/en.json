@@ -81,16 +81,7 @@
             "Attacker": "Attacker",
             "Attacks": "Attacks",
             "AttackType": {
-                "Label": "Attack Type",
-                "attack": "Attack",
-                "meleeAttack": "Melee Attack",
-                "meleeSpellAttack": "Melee Spell Attack",
-                "meleeWeaponAttack": "Melee Weapon Attack",
-                "rangedAttack": "Ranged Attack",
-                "rangedSpellAttack": "Ranged Spell Attack",
-                "rangedWeaponAttack": "Ranged Weapon Attack",
-                "spellAttack": "Spell Attack",
-                "weaponAttack": "Weapon Attack"
+                "Label": "Attack Type"
             },
             "AutoApply": "Auto Apply",
             "BaseAttacks": "Base Attacks",
@@ -351,7 +342,8 @@
                 },
                 "SneakAttack": {
                     "Auto": "Automatically Use",
-                    "CunningStrike": "Cunning Strike"
+                    "CunningStrike": "Cunning Strike",
+                    "Riders": "Additional Riders"
                 },
                 "UnarmedFighting": "Deal damage to which grappled creature?",
                 "WildShape": {
@@ -416,9 +408,6 @@
                         "preRoll": "Before the Roll"
                     },
                     "PropertyHint": "Limt this feature by any matching item property.",
-                    "RequiredBonus": "Required Bonuses",
-                    "RequiredBonusHint": "Only apply this bonus while bonuses with these identifiers are also applied to the roll.",
-                    "RequiredBonusInvalid": "a required bonus is not active",
                     "RollActivity": "Roll this activity when used.",
                     "RollItem": "Roll this item when used.",
                     "SpellLevelHint": "Limit this feature by spell level.",
@@ -467,8 +456,6 @@
                     "Size": "Check Target Size"
                 },
                 "MovementAnimation": {
-                    "Distance": "Distance",
-                    "DistanceHint": "Formula for the distance that can be moved, e.g. @attributes.movement.walk / 2. Blank uses the activity range or the remaining movement.",
                     "MoveAnimation": "Move Animation",
                   "Fastest": "Fastest Speed",
                   "MovementType": "Movement Used",

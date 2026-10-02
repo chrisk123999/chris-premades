@@ -24,6 +24,7 @@ export {favoredFoe as 'favored-foe'} from './legacy/classFeatures/ranger/favored
 export {dreadAmbusher as 'dread-ambusher'} from './legacy/classFeatures/ranger/gloomStalker/dreadAmbusher.mjs';
 // Rogue
 // Inquisitive
+export {eyeForWeakness as 'eye-for-weakness'} from './legacy/classFeatures/rogue/inquisitive/eyeForWeakness.mjs';
 export {insightfulFighting as 'insightful-fighting'} from './legacy/classFeatures/rogue/inquisitive/insightfulFighting.mjs';
 // Mastermind
 export {insightfulManipulator as 'insightful-manipulator'} from './legacy/classFeatures/rogue/mastermind/insightfulManipulator.mjs';
@@ -31,7 +32,6 @@ export {insightfulManipulator as 'insightful-manipulator'} from './legacy/classF
 export {deathsFriend as 'deaths-friend'} from './legacy/classFeatures/rogue/phantom/deathsFriend.mjs';
 export {wailsFromTheGrave as 'wails-from-the-grave'} from './legacy/classFeatures/rogue/phantom/wailsFromTheGrave.mjs';
 // Soulknife
-export {homingStrikes as 'homing-strikes'} from './legacy/classFeatures/rogue/soulknife/homingStrikes.mjs';
 export {psionicEnergy as 'psionic-energy'} from './legacy/classFeatures/rogue/soulknife/psionicEnergy.mjs';
 // Swashbuckler
 export {rakishAudacity as 'rakish-audacity'} from './legacy/classFeatures/rogue/swashbuckler/rakishAudacity.mjs';
