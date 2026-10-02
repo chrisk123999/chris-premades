@@ -153,6 +153,7 @@
 - Stroke of Luck
 - Uncanny Dodge
 - Versatile Trickster
+- Tinker's Magic
 ## Animations:
 - Misty Step gains a colour option.
 - Flurry of Blows

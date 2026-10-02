@@ -929,6 +929,14 @@
                     "Select": "Who to charm?",
                     "Tricksy": "Tricksy"
                 },
+                "TinkersMagic": {
+                    "CustomCompendium": "Custom Mundane Item Compendium",
+                    "CustomCompendiumHint": "Use items from the specified compendium instead of the standard list.",
+                    "NeedTools": "You must have at least one of these tools equipped to use {feature}! [{tools}]",
+                    "Prompt": "Choose an item to create:",
+                    "RequireTools": "Require Tools",
+                    "RequireToolsHint": "At least one of these tools must be equipped to use this feature."
+                },
                 "UnarguableWizardry": {
                     "Prompt": "Unarguable Wizardry"
                 },
