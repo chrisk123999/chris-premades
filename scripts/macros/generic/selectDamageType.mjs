@@ -28,7 +28,7 @@ export const selectDamageType = {
             category: 'behavior',
             label: 'CHRISPREMADES.Config.DamageType',
             hint: 'CHRISPREMADES.Macros.Generic.SelectDamageType.DamageTypeHint',
-            get options() { return constants.damageTypeOptions(); }
+            get options() { return constants.damageTypeOptions; }
         }
     }
 };

@@ -70,7 +70,7 @@ export const additionalTargets = {
             category: 'behavior',
             label: 'CHRISPREMADES.Config.DamageType',
             hint: 'CHRISPREMADES.Macros.Generic.Common.DamageTypeHint',
-            get options() { return constants.damageTypeOptions(); }
+            get options() { return constants.damageTypeOptions; }
         },
         healingType: {
             default: [],
@@ -78,7 +78,7 @@ export const additionalTargets = {
             category: 'behavior',
             label: 'CHRISPREMADES.Config.HealingType',
             hint: 'CHRISPREMADES.Macros.Generic.Common.HealingTypeHint',
-            get options() { return constants.healingTypeOptions(); }
+            get options() { return constants.healingTypeOptions; }
         },
         identifiers: {
             default: [],
@@ -93,7 +93,7 @@ export const additionalTargets = {
             category: 'behavior',
             label: 'CHRISPREMADES.Config.ItemTypes',
             hint: 'CHRISPREMADES.Macros.Generic.Common.ItemTypeHint',
-            get options() { return constants.usableItemTypes(); }
+            get options() { return constants.usableItemTypes; }
         },
         disposition: {
             default: 'ally',

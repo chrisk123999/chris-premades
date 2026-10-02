@@ -14,7 +14,7 @@ export const stalkersFlurry = {
             default: 'psychic',
             type: 'select',
             get options() {
-                return constants.damageTypeOptions();
+                return constants.damageTypeOptions;
             },
             label: 'CHRISPREMADES.Config.DamageType',
             category: 'homebrew'

@@ -36,7 +36,7 @@ export const eldritchSmite = {
             type: 'select',
             label: 'CHRISPREMADES.Config.DamageType',
             category: 'homebrew',
-            get options() { return constants.damageTypeOptions(); }
+            get options() { return constants.damageTypeOptions; }
         }
     }
 };

@@ -77,7 +77,7 @@ const genericConfig = {
         category: 'behavior',
         label: 'CHRISPREMADES.Config.Abilities',
         hint: 'CHRISPREMADES.Macros.Generic.RollBonus.AbilityHint',
-        get options() { return constants.abilityOptions(); }
+        get options() { return constants.abilityOptions; }
     },
     optional: {
         default: true,
@@ -119,7 +119,7 @@ const skillConfig = {
     category: 'behavior',
     label: 'CHRISPREMADES.Config.Skills',
     hint: 'CHRISPREMADES.Macros.Generic.RollBonus.SkillHint',
-    get options() { return constants.skillOptions(); }
+    get options() { return constants.skillOptions; }
 };
 const toolConfig = {
     default: [],
@@ -127,7 +127,7 @@ const toolConfig = {
     category: 'behavior',
     label: 'CHRISPREMADES.Config.Tools',
     hint: 'CHRISPREMADES.Macros.Generic.RollBonus.ToolHint',
-    get options() { return constants.toolOptions(); }
+    get options() { return constants.toolOptions; }
 };
 const proficientOnlyConfig = {
     default: false,

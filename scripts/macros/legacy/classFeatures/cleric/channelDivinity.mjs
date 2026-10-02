@@ -58,7 +58,7 @@ export const channelDivinity = {
             type: 'select-many',
             category: 'homebrew',
             label: 'CHRISPREMADES.Config.CreatureTypes',
-            get options() { return constants.creatureTypeOptions(); }
+            get options() { return constants.creatureTypeOptions; }
         },
         classIdentifier: {
             default: 'cleric',

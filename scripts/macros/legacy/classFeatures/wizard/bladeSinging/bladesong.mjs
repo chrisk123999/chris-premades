@@ -58,7 +58,7 @@ export const bladesong = {
         spellcastingAbility: {
             default: 'int',
             type: 'select',
-            get options() { return constants.abilityOptions(); },
+            get options() { return constants.abilityOptions; },
             label: 'CHRISPREMADES.Config.Ability',
             category: 'homebrew'
         }

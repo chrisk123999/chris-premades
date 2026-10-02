@@ -89,7 +89,7 @@ export const overchannel = {
             default: 'necrotic',
             type: 'select',
             get options() {
-                return constants.damageTypeOptions();
+                return constants.damageTypeOptions;
             },
             label: 'CHRISPREMADES.Config.DamageType',
             category: 'damage'
@@ -98,7 +98,7 @@ export const overchannel = {
             default: 'd12',
             type: 'select',
             get options() {
-                return constants.diceSizeOptions();
+                return constants.diceSizeOptions;
             },
             label: 'CHRISPREMADES.Config.DiceSize',
             category: 'damage'

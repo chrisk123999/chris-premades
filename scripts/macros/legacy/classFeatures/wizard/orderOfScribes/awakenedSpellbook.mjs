@@ -70,7 +70,7 @@ export const awakenedSpellbook = {
             type: 'select-many',
             label: 'CHRISPREMADES.Macros.Legacy.AwakenedSpellbook.ExtraDamageTypes',
             category: 'damage',
-            get options() { return constants.damageTypeOptions(); }
+            get options() { return constants.damageTypeOptions; }
         }
     }
 };

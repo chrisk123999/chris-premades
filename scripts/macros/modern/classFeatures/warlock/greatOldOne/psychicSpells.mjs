@@ -49,14 +49,14 @@ export const psychicSpells = {
             type: 'select',
             label: 'CHRISPREMADES.Config.DamageType',
             category: 'homebrew',
-            get options() { return constants.damageTypeOptions(); }
+            get options() { return constants.damageTypeOptions; }
         },
         spellSchools: {
             default: ['enc', 'ill'],
             type: 'select-many',
             label: 'CHRISPREMADES.Config.SpellSchools',
             category: 'homebrew',
-            get options() { return constants.spellSchoolOptions(); }
+            get options() { return constants.spellSchoolOptions; }
         }
     }
 };

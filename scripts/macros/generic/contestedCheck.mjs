@@ -49,7 +49,7 @@ export const contestedCheck = {
             category: 'behavior',
             label: 'CHRISPREMADES.Config.Skills',
             hint: 'CHRISPREMADES.Macros.Generic.ContestedCheck.SourceSkillsHint',
-            get options() { return constants.skillOptions(); }
+            get options() { return constants.skillOptions; }
         },
         sourceAbilities: {
             default: [],
@@ -57,7 +57,7 @@ export const contestedCheck = {
             category: 'behavior',
             label: 'CHRISPREMADES.Config.Abilities',
             hint: 'CHRISPREMADES.Macros.Generic.ContestedCheck.SourceAbilitiesHint',
-            get options() { return constants.abilityOptions(); }
+            get options() { return constants.abilityOptions; }
         },
         advantageMaxSize: {
             default: '',
@@ -65,7 +65,7 @@ export const contestedCheck = {
             category: 'behavior',
             label: 'CHRISPREMADES.Config.MaxSize',
             hint: 'CHRISPREMADES.Macros.Generic.ContestedCheck.AdvantageMaxSizeHint',
-            get options() { return [{value: '', label: 'CHRISPREMADES.Config.None'}, ...constants.sizeOptions()]; }
+            get options() { return [{value: '', label: 'CHRISPREMADES.Config.None'}, ...constants.sizeOptions]; }
         },
         sizeCheck: {
             default: '',

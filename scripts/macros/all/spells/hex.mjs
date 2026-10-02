@@ -99,7 +99,7 @@ export const hex = {
             type: 'select',
             label: 'CHRISPREMADES.Config.DamageType',
             category: 'homebrew',
-            get options() { return constants.damageTypeOptions(); }
+            get options() { return constants.damageTypeOptions; }
         },
         formula: {
             default: '1d6',

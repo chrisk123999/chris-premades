@@ -14,7 +14,7 @@ export const foeSlayer = {
             default: 'force',
             type: 'select',
             get options() {
-                return constants.damageTypeOptions();
+                return constants.damageTypeOptions;
             },
             label: 'CHRISPREMADES.Config.DamageType',
             category: 'homebrew'

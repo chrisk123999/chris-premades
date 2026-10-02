@@ -138,7 +138,7 @@ export const reduceMaxHP = {
             type: 'select-many',
             category: 'behavior',
             label: 'CHRISPREMADES.Config.DamageTypes',
-            get options() {return constants.damageTypeOptions();}
+            get options() {return constants.damageTypeOptions;}
         }
     }
 };

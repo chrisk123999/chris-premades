@@ -44,7 +44,7 @@ export const grimHarvest = {
             type: 'select-many',
             label: 'CHRISPREMADES.Macros.Legacy.GrimHarvest.ExcludedCreatureTypes',
             category: 'targeting',
-            get options() { return constants.creatureTypeOptions(); }
+            get options() { return constants.creatureTypeOptions; }
         },
         healingMultiplier: {
             default: 2,

@@ -43,7 +43,7 @@ export const greatWeaponFighting = {
             type: 'select-many',
             label: 'CHRISPREMADES.Config.WeaponProperties',
             category: 'behavior',
-            get options() { return constants.itemProperties(); }
+            get options() { return constants.itemProperties; }
         }
     }
 };

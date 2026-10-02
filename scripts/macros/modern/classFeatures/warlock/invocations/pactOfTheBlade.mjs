@@ -100,21 +100,21 @@ export const pactOfTheBlade = {
             type: 'select-many',
             label: 'CHRISPREMADES.Config.WeaponTypes',
             category: 'mechanics',
-            get options() { return constants.weaponOptions(); }
+            get options() { return constants.weaponOptions; }
         },
         ability: {
             default: 'cha',
             type: 'select',
             label: 'CHRISPREMADES.Config.Ability',
             category: 'homebrew',
-            get options() { return constants.abilityOptions(); }
+            get options() { return constants.abilityOptions; }
         },
         damageTypes: {
             default: ['necrotic', 'psychic', 'radiant'],
             type: 'select-many',
             label: 'CHRISPREMADES.Config.DamageTypes',
             category: 'homebrew',
-            get options() { return constants.damageTypeOptions(); }
+            get options() { return constants.damageTypeOptions; }
         }
     }
 };

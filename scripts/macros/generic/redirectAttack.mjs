@@ -57,7 +57,7 @@ export const redirectAttack = {
             category: 'behavior',
             label: 'CHRISPREMADES.Config.Disposition',
             hint: 'CHRISPREMADES.Macros.Generic.RedirectAttack.DispositionHint',
-            get options() { return [{value: '', label: _loc('CHRISPREMADES.Config.All')}, ...constants.dispositionOptions()]; }
+            get options() { return [{value: '', label: _loc('CHRISPREMADES.Config.All')}, ...constants.dispositionOptions]; }
         },
         sizes: {
             default: [],
@@ -65,7 +65,7 @@ export const redirectAttack = {
             category: 'behavior',
             label: 'CHRISPREMADES.Config.SizeLimit',
             hint: 'CHRISPREMADES.Macros.Generic.RedirectAttack.SizesHint',
-            get options() { return constants.sizeOptions(); }
+            get options() { return constants.sizeOptions; }
         },
         swapPlaces: {
             default: false,

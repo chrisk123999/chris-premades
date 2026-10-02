@@ -66,14 +66,14 @@ export const dedicatedWeapon = {
             type: 'select-many',
             category: 'behavior',
             label: 'CHRISPREMADES.Config.ExcludeWeaponProperties',
-            get options() { return constants.itemProperties(); }
+            get options() { return constants.itemProperties; }
         },
         type: {
             default: ['simpleM', 'simpleR', 'martialM', 'martialR'],
             type: 'select-many',
             category: 'behavior',
             label: 'CHRISPREMADES.Config.WeaponTypes',
-            get options() { return constants.weaponTypes(); }
+            get options() { return constants.weaponTypes; }
         }
     }
 };

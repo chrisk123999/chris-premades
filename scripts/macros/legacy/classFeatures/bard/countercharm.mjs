@@ -40,7 +40,7 @@ export const countercharm = {
             type: 'select-many',
             category: 'behavior',
             label: 'CHRISPREMADES.Config.BlockingConditions',
-            get options() { return constants.statusOptions(); }
+            get options() { return constants.statusOptions; }
         },
         distance: {
             default: 30,

@@ -40,7 +40,7 @@ export const checkModifier = {
             type: 'select-many',
             category: 'behavior',
             label: 'CHRISPREMADES.Config.Abilities',
-            get options() { return constants.abilityOptions(); }
+            get options() { return constants.abilityOptions; }
         }
     }
 };
@@ -67,7 +67,7 @@ export const skillModifier = {
             type: 'select-many',
             category: 'behavior',
             label: 'CHRISPREMADES.Config.Skills',
-            get options() { return constants.skillOptions(); }
+            get options() { return constants.skillOptions; }
         }
     }
 };
@@ -85,7 +85,7 @@ export const toolModifier = {
             type: 'select-many',
             category: 'behavior',
             label: 'CHRISPREMADES.Config.Tools',
-            get options() { return constants.toolOptions(); }
+            get options() { return constants.toolOptions; }
         }
     }
 };

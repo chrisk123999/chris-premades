@@ -72,14 +72,14 @@ export const arcaneWard = {
         spellcastingAbility: {
             default: 'int',
             type: 'select',
-            get options() { return constants.abilityOptions(); },
+            get options() { return constants.abilityOptions; },
             label: 'CHRISPREMADES.Config.Ability',
             category: 'homebrew'
         },
         school: {
             default: 'abj',
             type: 'select',
-            get options() { return constants.spellSchoolOptions(); },
+            get options() { return constants.spellSchoolOptions; },
             label: 'CHRISPREMADES.Config.SpellSchool',
             category: 'mechanics'
         }

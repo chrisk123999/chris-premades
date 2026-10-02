@@ -12,17 +12,27 @@ function createProxy(targetPath) {
         get: function(target, prop) {
             if (prop === 'then' || typeof prop === 'symbol') return undefined;
             if (!game.modules.get('cat')?.active) return;
-            if (cache.has(prop)) return cache.get(prop);
             const currentContext = getTarget();
             if (!currentContext || currentContext[prop] === undefined) {
                 throw new Error('Property ' + String(prop) + ' does not exist on globalThis.cat.' + targetPath.join('.'));
             }
             const value = currentContext[prop];
+            // let getters through
+            let curr = currentContext;
+            while (curr) {
+                const descriptor = Object.getOwnPropertyDescriptor(curr, prop);
+                if (descriptor && descriptor.get !== undefined) return value;
+                curr = Object.getPrototypeOf(curr);
+            }
+            if (cache.has(prop)) return cache.get(prop);
+            // step down through object chains unless it's an array/set/map etc
             if (typeof value === 'object' && value !== null) {
+                if (typeof value[Symbol.iterator] === 'function') return value;
                 const childProxy = createProxy(targetPath.concat([prop]));
                 cache.set(prop, childProxy);
                 return childProxy;
             }
+            // let classes through and rebind functions
             if (typeof value === 'function') {
                 const isClass = /^\s*class\b/.test(value.toString()) || (typeof prop === 'string' && /^[A-Z]/.test(prop));
                 if (isClass) {

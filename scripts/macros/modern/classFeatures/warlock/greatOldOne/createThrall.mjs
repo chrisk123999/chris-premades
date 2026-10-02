@@ -93,14 +93,14 @@ export const createThrall = {
             type: 'select',
             label: 'CHRISPREMADES.Config.Ability',
             category: 'homebrew',
-            get options() { return constants.abilityOptions(); }
+            get options() { return constants.abilityOptions; }
         },
         damageType: {
             default: 'psychic',
             type: 'select',
             label: 'CHRISPREMADES.Config.DamageType',
             category: 'homebrew',
-            get options() { return constants.damageTypeOptions(); }
+            get options() { return constants.damageTypeOptions; }
         }
     }
 };

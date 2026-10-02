@@ -43,7 +43,7 @@ export const specialItemUse = {
             category: 'behavior',
             label: 'CHRISPREMADES.Config.ItemTypes',
             hint: 'CHRISPREMADES.Macros.Generic.SpecialItemUse.ItemTypesHint',
-            get options() { return constants.usableItemTypes(); }
+            get options() { return constants.usableItemTypes; }
         },
         equippedOnly: {
             default: false,
@@ -64,7 +64,7 @@ export const specialItemUse = {
             category: 'behavior',
             label: 'CHRISPREMADES.Macros.Generic.SpecialItemUse.ActivationTypes',
             hint: 'CHRISPREMADES.Macros.Generic.SpecialItemUse.ActivationTypesHint',
-            get options() { return constants.activationTypeOptions(); }
+            get options() { return constants.activationTypeOptions; }
         },
         excludeActivityTypes: {
             default: [],
@@ -72,7 +72,7 @@ export const specialItemUse = {
             category: 'behavior',
             label: 'CHRISPREMADES.Macros.Generic.SpecialItemUse.ExcludeActivityTypes',
             hint: 'CHRISPREMADES.Macros.Generic.SpecialItemUse.ExcludeActivityTypesHint',
-            get options() { return constants.activityTypeOptions(); }
+            get options() { return constants.activityTypeOptions; }
         },
         consumeUsage: {
             default: false,

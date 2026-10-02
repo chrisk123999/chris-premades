@@ -58,7 +58,7 @@ export const hexWarrior = {
             type: 'select',
             label: 'CHRISPREMADES.Config.Ability',
             category: 'homebrew',
-            get options() { return constants.abilityOptions(); }
+            get options() { return constants.abilityOptions; }
         }
     }
 };

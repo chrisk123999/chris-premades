@@ -275,21 +275,21 @@ export const wildShape = {
             type: 'select',
             label: 'CHRISPREMADES.Macros.All.WildShape.GrantFlySpeed',
             category: 'behavior',
-            get options() { return constants.characterLevelOptions(); }
+            get options() { return constants.characterLevelOptions; }
         },
         grantSwimSpeed: {
             default: 4,
             type: 'select',
             label: 'CHRISPREMADES.Macros.All.WildShape.GrantSwimSpeed',
             category: 'behavior',
-            get options() { return constants.characterLevelOptions(); }
+            get options() { return constants.characterLevelOptions; }
         },
         creatureTypes: {
             default: ['beast'],
             type: 'select-many',
             label: 'CHRISPREMADES.Config.CreatureTypes',
             category: 'behavior',
-            get options() { return constants.creatureTypeOptions(); }
+            get options() { return constants.creatureTypeOptions; }
         },
         packs: {
             default: [],

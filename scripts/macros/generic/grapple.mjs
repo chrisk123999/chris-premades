@@ -67,7 +67,7 @@ export const grapple = {
             category: 'behavior',
             label: 'CHRISPREMADES.Config.Conditions',
             hint: 'CHRISPREMADES.Macros.Generic.Grapple.ConditionsHint',
-            get options() { return constants.statusOptions(); }
+            get options() { return constants.statusOptions; }
         },
         useActivityInfo: {
             default: true,

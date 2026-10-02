@@ -45,7 +45,7 @@ const genericConfig = {
         category: 'behavior',
         label: 'CHRISPREMADES.Config.Abilities',
         hint: 'CHRISPREMADES.Macros.Generic.RollBonus.AbilityHint',
-        get options() { return constants.abilityOptions(); }
+        get options() { return constants.abilityOptions; }
     },
     failedOnly: {
         default: true,
@@ -92,7 +92,7 @@ const skill = {
     category: 'behavior',
     label: 'CHRISPREMADES.Config.Skills',
     hint: 'CHRISPREMADES.Macros.Generic.RollBonus.SkillHint',
-    get options() { return constants.skillOptions(); }
+    get options() { return constants.skillOptions; }
 };
 const tool = {
     default: [],
@@ -100,7 +100,7 @@ const tool = {
     category: 'behavior',
     label: 'CHRISPREMADES.Config.Tools',
     hint: 'CHRISPREMADES.Macros.Generic.RollBonus.ToolHint',
-    get options() { return constants.toolOptions(); }
+    get options() { return constants.toolOptions; }
 };
 const configKeys = [...Object.keys(genericConfig), 'skill', 'tool'];
 const base = {

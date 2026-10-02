@@ -44,7 +44,7 @@ export const expertDivination = {
             type: 'select',
             label: 'CHRISPREMADES.Config.SpellSchool',
             category: 'mechanics',
-            get options() { return constants.spellSchoolOptions(); }
+            get options() { return constants.spellSchoolOptions; }
         }
     }
 };

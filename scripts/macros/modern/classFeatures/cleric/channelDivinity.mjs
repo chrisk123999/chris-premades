@@ -61,14 +61,14 @@ export const channelDivinity = {
             type: 'select-many',
             category: 'homebrew',
             label: 'CHRISPREMADES.Config.CreatureTypes',
-            get options() { return constants.creatureTypeOptions(); }
+            get options() { return constants.creatureTypeOptions; }
         },
         damageTypes: {
             default: ['necrotic', 'radiant'],
             type: 'select-many',
             category: 'behavior',
             label: 'CHRISPREMADES.Config.DamageTypes',
-            get options() { return constants.damageTypeOptions(); }
+            get options() { return constants.damageTypeOptions; }
         },
         classIdentifier: {
             default: 'cleric',

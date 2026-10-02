@@ -72,7 +72,7 @@ export const preventDeath = {
             type: 'select-many',
             category: 'behavior',
             label: 'CHRISPREMADES.Macros.Generic.PreventDeath.ExcludeDamageTypes',
-            get options() { return constants.damageTypeOptions(); }
+            get options() { return constants.damageTypeOptions; }
         },
         display: {
             default: true,

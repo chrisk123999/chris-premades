@@ -85,7 +85,7 @@ async function use({document, workflow}) {
     const improved = actorUtils.getItemByIdentifier(workflow.actor, 'improved-pact-weapon');
     const hexWarrior = actorUtils.getItemByIdentifier(workflow.actor, 'hex-warrior');
     let validWeapons = workflow.actor.items.filter(item => item.type === 'weapon' && item.system.properties.has('mgc') && item.system.identifier !== 'pact-weapon');
-    if (!improved) validWeapons = validWeapons.filter(item => constants.meleeWeaponOptions().some(option => option.value === item.system.type.baseItem));
+    if (!improved) validWeapons = validWeapons.filter(item => constants.meleeWeaponOptions.some(option => option.value === item.system.type.baseItem));
     if (!validWeapons.length) return await conjure({document, workflow, improved, hexWarrior});
     const pactType = await dialogUtils.buttonDialog(document.name, _loc('CHRISPREMADES.Macros.Legacy.CreatePactWeapon.Type'), [
         [_loc('CHRISPREMADES.Macros.Legacy.CreatePactWeapon.Existing'), 'enchant'],
@@ -117,14 +117,14 @@ export const createPactWeapon = {
             type: 'select-many',
             label: 'CHRISPREMADES.Config.WeaponTypes',
             category: 'mechanics',
-            get options() { return constants.meleeWeaponOptions(); }
+            get options() { return constants.meleeWeaponOptions; }
         },
         rangedWeapons: {
             default: ['shortbow', 'longbow', 'lightcrossbow', 'heavycrossbow'],
             type: 'select-many',
             label: 'CHRISPREMADES.Macros.Legacy.CreatePactWeapon.RangedWeapons',
             category: 'mechanics',
-            get options() { return constants.rangedWeaponOptions(); }
+            get options() { return constants.rangedWeaponOptions; }
         }
     }
 };

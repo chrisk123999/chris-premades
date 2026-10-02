@@ -66,7 +66,7 @@ export const divineIntervention = {
             type: 'select',
             label: 'CHRISPREMADES.Config.MaxLevel',
             category: 'behavior',
-            get options() { return constants.spellSlotOptions(); }
+            get options() { return constants.spellSlotOptions; }
         }
     }
 };

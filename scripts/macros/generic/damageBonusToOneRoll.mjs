@@ -12,7 +12,7 @@ export const attackTypeConfig = {
     category: 'behavior',
     label: 'CHRISPREMADES.Config.AttackType.Label',
     hint: 'CHRISPREMADES.Macros.Generic.Common.AttackTypeHint',
-    get options() { return constants.attackTypeOptions(); }
+    get options() { return constants.attackTypeOptions; }
 };
 async function damage({document, workflow}) {
     if (!workflow.targets.size || (!workflow.activity.hasDamage && !workflow.activity.hasHealing)) return;
@@ -96,7 +96,7 @@ export const damageBonusToOneRoll = {
             category: 'behavior',
             label: 'CHRISPREMADES.Macros.Generic.DamageBonusToOneRoll.BonusDamageType',
             hint: 'CHRISPREMADES.Macros.Generic.DamageBonusToOneRoll.BonusDamageTypeHint',
-            get options() { return constants.damageTypeOptions(); }
+            get options() { return constants.damageTypeOptions; }
         },
         attackType: attackTypeConfig,
         damageType: {
@@ -105,7 +105,7 @@ export const damageBonusToOneRoll = {
             category: 'behavior',
             label: 'CHRISPREMADES.Config.DamageType',
             hint: 'CHRISPREMADES.Macros.Generic.Common.DamageTypeHint',
-            get options() { return constants.damageTypeOptions(); }
+            get options() { return constants.damageTypeOptions; }
         },
         healingType: {
             default: [],
@@ -113,7 +113,7 @@ export const damageBonusToOneRoll = {
             category: 'behavior',
             label: 'CHRISPREMADES.Config.HealingType',
             hint: 'CHRISPREMADES.Macros.Generic.Common.HealingTypeHint',
-            get options() { return constants.healingTypeOptions(); }
+            get options() { return constants.healingTypeOptions; }
         },
         identifiers: identifiersConfig,
         properties: {
@@ -122,7 +122,7 @@ export const damageBonusToOneRoll = {
             category: 'behavior',
             label: 'CHRISPREMADES.Config.Properties',
             hint: 'CHRISPREMADES.Macros.Generic.Common.PropertyHint',
-            get options() { return constants.itemProperties(); }
+            get options() { return constants.itemProperties; }
         },
         itemType: {
             default: [],
@@ -130,7 +130,7 @@ export const damageBonusToOneRoll = {
             category: 'behavior',
             label: 'CHRISPREMADES.Config.ItemTypes',
             hint: 'CHRISPREMADES.Macros.Generic.Common.ItemTypeHint',
-            get options() { return constants.usableItemTypes(); }
+            get options() { return constants.usableItemTypes; }
         },
         spellLevel: {
             default: [],
@@ -138,7 +138,7 @@ export const damageBonusToOneRoll = {
             category: 'behavior',
             label: 'CHRISPREMADES.Config.SpellLevel',
             hint: 'CHRISPREMADES.Macros.Generic.Common.SpellLevelHint',
-            get options() { return constants.spellSlotOptions(); }
+            get options() { return constants.spellSlotOptions; }
         },
         spellSchool: {
             default: [],
@@ -146,7 +146,7 @@ export const damageBonusToOneRoll = {
             category: 'behavior',
             label: 'CHRISPREMADES.Config.SpellSchool',
             hint: 'CHRISPREMADES.Macros.Generic.Common.SpellSchoolHint',
-            get options() { return constants.spellSchoolOptions(); }
+            get options() { return constants.spellSchoolOptions; }
         },
         rollActivity: {
             default: '',

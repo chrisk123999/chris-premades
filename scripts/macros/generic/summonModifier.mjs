@@ -51,7 +51,7 @@ export const summonModifier = {
             category: 'behavior',
             label: 'CHRISPREMADES.Config.CreatureTypes',
             hint: 'CHRISPREMADES.Macros.Generic.SummonModifier.CreatureTypesHint',
-            get options() { return constants.creatureTypeOptions(); }
+            get options() { return constants.creatureTypeOptions; }
         },
         effect: {
             default: '',

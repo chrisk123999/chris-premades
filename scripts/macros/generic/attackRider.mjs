@@ -103,7 +103,7 @@ export const attackRider = {
             category: 'behavior',
             label: 'CHRISPREMADES.Config.MaxSize',
             hint: 'CHRISPREMADES.Macros.Generic.AttackRider.MaxSizeHint',
-            get options() { return [{value: '', label: 'CHRISPREMADES.Config.None'}, ...constants.sizeOptions()]; }
+            get options() { return [{value: '', label: 'CHRISPREMADES.Config.None'}, ...constants.sizeOptions]; }
         },
         requiredItems: {
             default: [],

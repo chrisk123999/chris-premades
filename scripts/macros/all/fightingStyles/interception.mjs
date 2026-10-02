@@ -49,7 +49,7 @@ export const interception = {
             category: 'behavior',
             get options() { return [
                 {label: CONFIG.DND5E.armorTypes.shield, value: 'shield'},
-                ...constants.weaponTypes()
+                ...constants.weaponTypes
             ]; }
         }
     }

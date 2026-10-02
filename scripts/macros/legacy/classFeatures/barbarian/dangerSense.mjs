@@ -24,14 +24,14 @@ export const dangerSense = {
             type: 'select-many',
             label: 'CHRISPREMADES.Config.SaveAbilities',
             category: 'behavior',
-            get options() { return constants.abilityOptions(); }
+            get options() { return constants.abilityOptions; }
         },
         conditions: {
             default: ['blinded', 'deafened', 'incapacitated'],
             type: 'select-many',
             label: 'CHRISPREMADES.Config.BlockingConditions',
             category: 'behavior',
-            get options() { return constants.statusOptions(); }
+            get options() { return constants.statusOptions; }
         }
     }
 };

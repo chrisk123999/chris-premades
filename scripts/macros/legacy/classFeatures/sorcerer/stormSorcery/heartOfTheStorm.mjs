@@ -27,7 +27,7 @@ export const heartOfTheStorm = {
             type: 'select-many',
             label: 'CHRISPREMADES.Config.DamageTypes',
             category: 'homebrew',
-            get options() { return constants.damageTypeOptions(); }
+            get options() { return constants.damageTypeOptions; }
         }
     }
 };

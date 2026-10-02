@@ -18,7 +18,7 @@ async function use({document: activity, workflow}) {
     if (!config.effect) return;
     const actors = workflow.targets.size ? Array.from(workflow.targets, token => token.actor).filter(Boolean) : [workflow.actor];
     const parentEntity = effectUtils.getConcentrationEffect(workflow.actor, activity.item);
-    const options = {skills: constants.skillOptions(), tools: constants.toolOptions()};
+    const options = {skills: constants.skillOptions, tools: constants.toolOptions};
     for (const actor of actors) {
         const choices = getChoices(actor, config.traits, config.proficiency, options);
         if (!choices.length) continue;

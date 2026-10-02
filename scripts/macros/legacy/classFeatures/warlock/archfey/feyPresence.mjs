@@ -2,7 +2,7 @@ import {actorUtils, automationUtils, constants, dialogUtils, documentUtils, effe
 async function use({document, workflow}) {
     if (!workflow.failedSaves.size) return;
     const conditions = automationUtils.getConfigValue(document, 'conditions');
-    const options = constants.statusOptions().filter(option => conditions.includes(option.value));
+    const options = constants.statusOptions.filter(option => conditions.includes(option.value));
     if (!options.length) return;
     let selection = options[0].value;
     if (options.length > 1) {
@@ -34,7 +34,7 @@ export const feyPresence = {
             type: 'select-many',
             label: 'CHRISPREMADES.Config.Conditions',
             category: 'homebrew',
-            get options() { return constants.statusOptions(); }
+            get options() { return constants.statusOptions; }
         }
     }
 };
