@@ -3,7 +3,6 @@ import constants from './constants.mjs';
 import * as animations from './macros/animations.mjs';
 import {all, generic, legacy, modern} from './macros.mjs';
 Hooks.once('catReady', () => {
-    console.log('TRIGGERS', catConstants.triggerTypes);
     const validKeys = [...catConstants.triggerTypes, 'rules', 'generic', 'genericConfig', 'documents'];
     const ignoredPackIds = [constants.packs.samples.embeddedMacros, constants.packs.misc.automationItems];
     Object.entries(animations).forEach(([identifier, value]) => api.registerAnimation({
