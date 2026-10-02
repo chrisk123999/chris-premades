@@ -1,0 +1,137 @@
+{
+  "name": "Magical Ambush",
+  "type": "feat",
+  "effects": [
+    {
+      "name": "Magical Ambush",
+      "transfer": false,
+      "img": "icons/creatures/claws/claw-curved-poison-purple.webp",
+      "_id": "4L3IObId9eiljf3M",
+      "type": "base",
+      "system": {
+        "changes": [
+          {
+            "key": "flags.midi-qol.disadvantage.save.all",
+            "value": 1,
+            "priority": 20,
+            "type": "custom"
+          }
+        ]
+      },
+      "disabled": false,
+      "duration": {
+        "value": 1,
+        "units": "turns",
+        "expiry": "turnEnd",
+        "expired": false
+      },
+      "description": "",
+      "origin": null,
+      "tint": "#ffffff",
+      "statuses": [],
+      "sort": 0,
+      "flags": {
+        "dnd5e": {
+          "riders": {
+            "statuses": []
+          },
+          "dependents": []
+        },
+        "dae": {
+          "enableCondition": "",
+          "disableCondition": "",
+          "stackable": "noneName",
+          "showIcon": false,
+          "disableIncapacitated": false,
+          "selfTarget": false,
+          "selfTargetAlways": false,
+          "dontApply": false,
+          "durationExpression": "",
+          "macroRepeat": "none",
+          "specialDuration": []
+        },
+        "core": {
+          "overlay": false
+        },
+        "cat": {
+          "identifier": "magicalAmbushEffect"
+        }
+      },
+      "start": null,
+      "showIcon": 1,
+      "folder": null,
+      "_stats": {
+        "coreVersion": "14.364",
+        "systemId": "dnd5e",
+        "systemVersion": "5.3.3"
+      },
+      "_key": "!items.effects!qHKNHEwFZUG7xu3v.4L3IObId9eiljf3M"
+    }
+  ],
+  "system": {
+    "activities": {},
+    "uses": {
+      "spent": 0,
+      "recovery": []
+    },
+    "advancement": [],
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "identifier": "magical-ambush",
+    "source": {
+      "book": "PHB 2024",
+      "page": "",
+      "license": "",
+      "custom": "",
+      "rules": "2024",
+      "revision": 1
+    },
+    "crewed": false,
+    "enchant": {},
+    "prerequisites": {
+      "level": 9,
+      "items": [],
+      "repeatable": false
+    },
+    "properties": [],
+    "requirements": "",
+    "type": {
+      "value": "class",
+      "subtype": ""
+    }
+  },
+  "flags": {
+    "dnd5e": {
+      "riders": {
+        "activity": [],
+        "effect": []
+      }
+    },
+    "cat": {
+      "automation": {
+        "source": "chris-premades",
+        "version": "2.0.0"
+      },
+      "macros": {
+        "roll": [
+          {
+            "source": "chris-premades",
+            "rules": "2024",
+            "identifier": "magical-ambush"
+          }
+        ]
+      }
+    }
+  },
+  "img": "icons/creatures/claws/claw-curved-poison-purple.webp",
+  "folder": "ejZnLv70JJzvdWaC",
+  "_id": "qHKNHEwFZUG7xu3v",
+  "_stats": {
+    "coreVersion": "14.364",
+    "systemId": "dnd5e",
+    "systemVersion": "5.3.3"
+  },
+  "_key": "!items!qHKNHEwFZUG7xu3v"
+}

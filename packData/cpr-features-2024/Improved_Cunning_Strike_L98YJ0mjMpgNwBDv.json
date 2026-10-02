@@ -43,8 +43,18 @@
       }
     },
     "cat": {
+      "macros": {
+        "called": [
+          {
+            "source": "chris-premades",
+            "rules": "2024",
+            "identifier": "improved-cunning-strike"
+          }
+        ]
+      },
       "automation": {
-        "version": "2.0.0"
+        "source": "chris-premades",
+        "version": "2.0.1"
       }
     }
   },

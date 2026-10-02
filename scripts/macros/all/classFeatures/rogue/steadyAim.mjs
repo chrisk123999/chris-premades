@@ -1,19 +1,24 @@
-import {actorUtils, combatUtils, documentUtils, effectUtils} from '../../../../proxy.mjs';
+import {actorUtils, combatUtils, documentUtils, effectUtils, workflowUtils} from '../../../../proxy.mjs';
 async function moved({document, token}) {
     if (!token.inCombat || !combatUtils.isOwnTurn(token) || !document.system.uses.value) return;
-    await documentUtils.update(document, {'system.uses.spent': document.system.uses.spent + 1});
+    const activity = document.system.activities.contents[0];
+    if (!activity) return;
+    const activityData = activity.toObject();
+    activityData.effects = [];
+    activityData.activation.type = '';
+    await workflowUtils.syntheticActivityDataRoll(activityData, document, [], {options: {workflowOptions: {steadyAimLockout: true}}});
 }
-async function use({document, actor}) {
-    const infiltrationExpertise = actorUtils.getItemByIdentifier(actor, 'infiltrationExpertise');
-    if (infiltrationExpertise) return;
-    const sourceEffect = documentUtils.getEffectByIdentifier(document, 'steadyAimMovement');
+async function use({document, workflow}) {
+    if (workflow.workflowOptions?.steadyAimLockout) return;
+    if (actorUtils.getItemByIdentifier(workflow.actor, 'infiltration-expertise')) return;
+    const sourceEffect = documentUtils.getEffectByIdentifier(document, 'steady-aim-movement');
     if (!sourceEffect) return;
     const effectData = documentUtils.getEffectData(document, sourceEffect.id);
-    await effectUtils.createEffects(actor, [effectData]);
+    await effectUtils.createEffects(workflow.actor, [effectData]);
 }
 export const steadyAim = {
     name: 'Steady Aim',
-    version: '2.0.3',
+    version: '2.0.4',
     rules: 'all',
     roll: [
         {
@@ -22,7 +27,7 @@ export const steadyAim = {
             priority: 50
         }
     ],
-    movement: [
+    move: [
         {
             pass: 'actorMoved',
             macro: moved,

@@ -6,6 +6,15 @@
   - `selectDamageType`, for attacks whose damage has more than one type.
   - `{type}Bonus` and `reroll{Type}WithBonus`, where type is check, save, skill, or tool.
   - `choiceRemoveCondition` with `turnStart` and `turnEnd` variants. Prompts to remove the source of a status effect.
+  - `attackRider`, an activity offered as an extra damage option on a hit, rolled after the attack.
+  - `attackBonus`, the attack roll variant of `{type}Bonus`.
+  - `contestedCheck`, rolling the user's best listed skill or ability as the activity's check DC.
+  - `proficiencyChoice`, applying an effect for a chosen skill or tool proficiency.
+  - `redirectAttack`, a reaction moving an incoming attack to a nearby creature.
+  - `restoreUses`, restoring an item's uses through one of its activities.
+  - `specialItemUse`, using another item without spending its action.
+  - `summonModifier`, adding an effect or magical weapons to matching summons.
+  - `useOnEvent`, using an activity after a short or long rest.
 - Infused Strikes exposes its formula and range, Exceptional Training its damage type, and Stalker's Flurry a separate Sudden Strike range.
 ## Bug Fixes:
 - Summon Aberration: the summon's features are fetched in one pass, so a missing pack item no longer leaves a half built summon behind.
@@ -16,7 +25,13 @@
 - Summon Aberration sets the summon's challenge rating from the caster's proficiency again, which the v13 conversion dropped.
 - Warping Implosion and the teleport generic pass the animation's own config through to it. Nothing forwarded those options, so a configured teleport animation always ran on its defaults.
 - Generic Macros:
-  - `damageBonusToOneRoll` gains `targetWounded`.
+  - `damageBonusToOneRoll` gains `targetWounded` and `targetEffects`.
+  - `skillBonus` and `toolBonus` gain `proficientOnly`.
+  - `summon` gains `moveActivityId`, `maxDistance` and `replaceExisting`.
+  - `teleport` gains `rangeFromRoll`.
+- Steady Aim: moving now spends the feature, and Infiltration Expertise is found again.
+- Help: the ally's advantage ends after their next ability check, skill or tool roll.
+- Beguiling Twist, Intimidating Presence and Nature's Wrath end their effect on one successful save.
 - Instinctive Pounce
 - Cunning Action
 - Heightened Focus
@@ -53,6 +68,26 @@
 - Dedicated Weapon
 - Quickened Healing
 - Focused Aim
+- Death's Friend
+- Evasion
+- Eye for Weakness
+- Ghost Walk
+- Insightful Fighting
+- Insightful Manipulator
+- Master of Tactics
+- Misdirection
+- Psionic Power: Psionic Energy
+- Psionic Power: Recovery
+- Psychic Blades
+- Rakish Audacity
+- Rend Mind
+- Sneak Attack
+- Soul Blades: Homing Strikes
+- Soul of Deceit
+- Steady Aim
+- Tokens of the Departed
+- Wails from the Grave
+- Whispers of the Dead
 ## Updated Modern Automations:
 - Dash
 - Disengage (opportunity attack immunity needs gambits-premades)
@@ -91,6 +126,33 @@
 - Self-Restoration
 - Deflect Energy
 - Disciplined Survivor
+- Assassinate
+- Cunning Strike
+- Death Strike
+- Devious Strikes
+- Elusive
+- Envenom Weapons
+- Evasion
+- Fast Hands
+- Improved Cunning Strike
+- Infiltration Expertise
+- Mage Hand
+- Mage Hand Legerdemain
+- Magical Ambush
+- Psionic Power
+- Psychic Blades
+- Psychic Veil
+- Reliable Talent
+- Rend Mind
+- Second-Story Work
+- Slippery Mind
+- Sneak Attack
+- Soul Blades
+- Spell Thief
+- Steady Aim
+- Stroke of Luck
+- Uncanny Dodge
+- Versatile Trickster
 ## Animations:
 - Misty Step gains a colour option.
 - Flurry of Blows

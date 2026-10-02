@@ -1,0 +1,149 @@
+{
+  "name": "Rakish Audacity",
+  "type": "feat",
+  "system": {
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "source": {
+      "custom": "Rogue : Swashbuckler",
+      "revision": 1,
+      "rules": "2014"
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "recovery": []
+    },
+    "type": {
+      "value": "class",
+      "subtype": ""
+    },
+    "requirements": "",
+    "properties": [],
+    "prerequisites": {
+      "level": null
+    },
+    "activities": {},
+    "identifier": "rakish-audacity",
+    "enchant": {}
+  },
+  "flags": {
+    "dae": {
+      "alwaysActive": false,
+      "activeEquipped": false
+    },
+    "midi-qol": {
+      "forceCEOff": true,
+      "rollAttackPerTarget": "default",
+      "itemCondition": "",
+      "effectCondition": "",
+      "AoETargetType": "any",
+      "AoETargetTypeIncludeSelf": true,
+      "autoTarget": "default",
+      "removeAttackDamageButtons": "default",
+      "reactionCondition": "",
+      "otherCondition": ""
+    },
+    "midiProperties": {
+      "confirmTargets": "default",
+      "autoFailFriendly": false,
+      "autoSaveFriendly": false,
+      "critOther": false,
+      "offHandWeapon": false,
+      "magicdam": false,
+      "magiceffect": false,
+      "noConcentrationCheck": false,
+      "toggleEffect": false,
+      "ignoreTotalCover": false,
+      "idr": false,
+      "idi": false,
+      "idv": false,
+      "ida": false
+    },
+    "dnd5e": {
+      "riders": {
+        "activity": []
+      }
+    },
+    "cat": {
+      "automation": {
+        "source": "chris-premades",
+        "version": "2.0.0"
+      },
+      "macros": {
+        "called": [
+          {
+            "source": "chris-premades",
+            "rules": "2014",
+            "identifier": "rakish-audacity"
+          }
+        ]
+      }
+    }
+  },
+  "effects": [
+    {
+      "name": "Rakish Audacity",
+      "origin": null,
+      "duration": {
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
+      },
+      "disabled": false,
+      "flags": {
+        "dae": {
+          "disableCondition": "",
+          "disableIncapacitated": false,
+          "stackable": "noneName",
+          "showIcon": false,
+          "durationExpression": "",
+          "macroRepeat": "none",
+          "specialDuration": []
+        },
+        "core": {
+          "overlay": false
+        }
+      },
+      "img": "icons/skills/melee/sword-stuck-glowing-pink.webp",
+      "_id": "EHC2UovejvdLXl6I",
+      "type": "base",
+      "system": {
+        "changes": [
+          {
+            "key": "system.attributes.init.bonus",
+            "value": "@abilities.cha.mod",
+            "priority": 20,
+            "type": "add"
+          }
+        ]
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "transfer": true,
+      "statuses": [],
+      "sort": 0,
+      "start": null,
+      "showIcon": 1,
+      "folder": null,
+      "_stats": {
+        "coreVersion": "14.364",
+        "systemId": "dnd5e",
+        "systemVersion": "5.3.3"
+      },
+      "_key": "!items.effects!ype78BCNyypbBIT5.EHC2UovejvdLXl6I"
+    }
+  ],
+  "img": "icons/skills/melee/sword-stuck-glowing-pink.webp",
+  "folder": "4UG2fUzu9fFqabnc",
+  "_id": "ype78BCNyypbBIT5",
+  "_stats": {
+    "coreVersion": "14.364",
+    "systemId": "dnd5e",
+    "systemVersion": "5.3.3"
+  },
+  "_key": "!items!ype78BCNyypbBIT5"
+}

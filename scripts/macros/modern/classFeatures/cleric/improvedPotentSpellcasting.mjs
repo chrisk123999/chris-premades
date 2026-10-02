@@ -3,7 +3,7 @@ async function giveTempHP({document: activity, workflow}) {
     if (workflow.item?.type !== 'spell') return;
     if (workflowUtils.getCastLevel(workflow) !== 0) return;
     const classIdentifier = automationUtils.getConfigValue(activity.item, 'classIdentifier');
-    if (itemUtils.getSourceClassIdentifier(workflow.item) !== classIdentifier) return;
+    if (itemUtils.getAdvancementSourceItem(workflow.item)?.identifier !== classIdentifier) return;
     if (workflowUtils.isSustainedRoll(workflow)) return;
     if (!workflow.damageList.some(d => d.totalDamage > 0)) return;
     const near = tokenUtils.findNearby(workflow.token.document, activity.range.value ?? 60, {disposition: 'ally', includeToken: true});

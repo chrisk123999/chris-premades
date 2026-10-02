@@ -81,16 +81,7 @@
             "Attacker": "Attacker",
             "Attacks": "Attacks",
             "AttackType": {
-                "Label": "Attack Type",
-                "attack": "Attack",
-                "meleeAttack": "Melee Attack",
-                "meleeSpellAttack": "Melee Spell Attack",
-                "meleeWeaponAttack": "Melee Weapon Attack",
-                "rangedAttack": "Ranged Attack",
-                "rangedSpellAttack": "Ranged Spell Attack",
-                "rangedWeaponAttack": "Ranged Weapon Attack",
-                "spellAttack": "Spell Attack",
-                "weaponAttack": "Weapon Attack"
+                "Label": "Attack Type"
             },
             "AutoApply": "Auto Apply",
             "BaseAttacks": "Base Attacks",
@@ -349,6 +340,11 @@
                     "HeavyArmor": "You are wearing heavy armor and cannot rage!",
                     "Spellcasting": "You can't spellcast while raging!"
                 },
+                "SneakAttack": {
+                    "Auto": "Automatically Use",
+                    "CunningStrike": "Cunning Strike",
+                    "Riders": "Additional Riders"
+                },
                 "UnarmedFighting": "Deal damage to which grappled creature?",
                 "WildShape": {
                     "Choose": "Choose a wild shape:",
@@ -373,6 +369,20 @@
                     "NeutralTarget": "Neutral",
                     "RangeFromHint": "The token from which to measure range.",
                     "TargetHint": "Any value less than one will count as unlimited."
+                },
+                "AttackRider": {
+                    "BonusHint": "Extra damage added to the roll when this option is chosen.",
+                    "Limit": "Limit",
+                    "LimitHint": "How many tagged options can be chosen for one damage roll.",
+                    "MaxSizeHint": "Only offer this option when every hit target is this size or smaller.",
+                    "RequiredItems": "Required Items",
+                    "RequiredItemsHint": "Only offer this option when the actor has an item with one of these identifiers.",
+                    "SuppressedBy": "Suppressed By",
+                    "SuppressedByHint": "Do not offer this option when the actor has an item with one of these identifiers.",
+                    "Tag": "Tag",
+                    "TagHint": "Tagged options are offered as choices under the bonus that owns the tag instead of as separate bonuses.",
+                    "WorkflowProperty": "Workflow Property",
+                    "WorkflowPropertyHint": "Only offer this option when an earlier bonus has set this workflow property."
                 },
                 "BladeSpell": {
                     "ReplaceDamage": "Replace damage?",
@@ -408,6 +418,16 @@
                     "Minimum": "Minimum Item Uses"
                 },
                 "ConsumeItemToUse": "Consume {item} to use this feature?",
+                "ContestedCheck": {
+                    "AdvantageMaxSizeHint": "Roll the contest with advantage when every target is this size or smaller.",
+                    "Grapple": "Grapple",
+                    "ShoveProne": "Shove (Prone)",
+                    "ShovePush": "Shove (Push)",
+                    "SizeCheck": "Size Check",
+                    "SizeCheckHint": "Remove targets that are too large or immune for this grapple or shove.",
+                    "SourceAbilitiesHint": "Ability checks the user contests with when no skill is set. The highest modifier is rolled.",
+                    "SourceSkillsHint": "Skills the user contests with. The highest total is rolled. The activity's own check is the target's side."
+                },
                 "DamageBonusToOneRoll": {
                     "BonusDamageType": "Bonus Damage Type",
                     "BonusDamageTypeHint": "Damage types to offer as choices for this bonus.",
@@ -417,6 +437,8 @@
                     "EveryRollHint": "Add this bonus to each roll of a multi-attack rather than one of them.",
                     "OncePerTurn": "Once Per Turn",
                     "OncePerTurnHint": "Limit this bonus to one use per turn.",
+                    "TargetEffects": "Target Effects",
+                    "TargetEffectsHint": "Only apply this bonus to hit targets that carry one of these effects created by you.",
                     "TargetWounded": "Target Already Wounded",
                     "TargetWoundedHint": "Only apply the bonus when the target is missing hit points.",
                     "MaxTargets": "Max Targets",
@@ -454,6 +476,25 @@
                     "SaveActivity": "Survival Save Activity",
                     "SaveActivityHint": "Roll this activity when the feature is used; a failed save stops it from preventing death."
                 },
+                "ProficiencyChoice": {
+                    "EffectHint": "Effect applied to each target. The {key} placeholder in its change keys becomes the chosen skill or tool path.",
+                    "Proficiency": "Proficiency",
+                    "ProficiencyHint": "Limit the choices by the target's current proficiency.",
+                    "Prompt": "Choose a skill or tool for {name}.",
+                    "Traits": "Choices",
+                    "TraitsHint": "Offer skills, tools, or both."
+                },
+                "RedirectAttack": {
+                    "ActivityHint": "Activity rolled when the attack is redirected. Leave blank to use the item.",
+                    "DispositionHint": "Disposition relative to the creature being attacked.",
+                    "RangeHint": "Maximum distance between the creature being attacked and the new target.",
+                    "RequireCover": "Require Cover",
+                    "RequireCoverHint": "Only offer the redirect while the creature being attacked has cover from the attacker.",
+                    "Select": "Use {item} to redirect {attack} to another creature?",
+                    "SizesHint": "Limit the new target to these sizes.",
+                    "SwapPlaces": "Swap Places",
+                    "SwapPlacesHint": "The creature being attacked and the new target swap places."
+                },
                 "ReduceMaxHP": {
                     "LongRestCures": "Long Rest Cures",
                     "ReduceByRoll": "Reduce By Roll",
@@ -468,12 +509,24 @@
                     "Once": "Once Per Roll",
                     "OnceHint": "This feature can be used once per roll."
                 },
+                "RestoreUses": {
+                    "NoneSpent": "You have no expended {item} uses to restore!",
+                    "NotEmpty": "You still have {item} uses remaining!",
+                    "OfferRestore": "Offer Restore When Empty",
+                    "OfferRestoreHint": "When another activity needs a use and none remain, offer to run the restore activity first.",
+                    "RequireEmpty": "Only Restore When Empty",
+                    "RequireEmptyHint": "Block the restore activity while uses remain.",
+                    "RestoreActivity": "Restore Activity",
+                    "RestoreActivityHint": "Activity that restores this item's uses. Leave blank to use the first activity that restores a use of this item."
+                },
                 "RollBonus": {
                     "AbilityHint": "Limit this bonus to a list of abilities.",
                     "BonusHint": "Formula added to the roll when this bonus is taken.",
                     "CostsHint": "Only offer this bonus when its costs can be paid.",
                     "Optional": "Optional",
                     "OptionalHint": "Prompt before the bonus is added, rather than always adding it.",
+                    "ProficientOnly": "Proficient Only",
+                    "ProficientOnlyHint": "Only offer this bonus on skills or tools the actor is proficient with.",
                     "SkillHint": "Limit this bonus to a list of skills.",
                     "Success": "Did the roll succeed? (Roll Total: {total})",
                     "ToolHint": "Limit this bonus to a list of tools."
@@ -481,8 +534,52 @@
                 "SelectDamageType": {
                     "DamageTypeHint": "Prompt for a damage type when this item is rolled."
                 },
+                "SpecialItemUse": {
+                    "ActivationTypes": "Activation Types",
+                    "ActivationTypesHint": "Only activities with one of these activation types can be used. Leave empty to allow any.",
+                    "ActivityIdentifier": "Activity Identifier",
+                    "ActivityIdentifierHint": "Use only the activity with this identifier. Leave blank to allow any matching activity.",
+                    "ConsumeResources": "Consume Resources",
+                    "ConsumeResourcesHint": "Spend the resources the used activity consumes.",
+                    "ConsumeUsage": "Consume Uses",
+                    "ConsumeUsageHint": "Spend the used item or activity's own uses.",
+                    "EquippedOnly": "Equipped Items Only",
+                    "ExcludeActivityTypes": "Excluded Activity Types",
+                    "ExcludeActivityTypesHint": "Activities of these types cannot be used.",
+                    "IdentifiersHint": "Items this feature can use. When set, item types are ignored.",
+                    "ItemTypesHint": "Item types this feature can use when no identifiers are set.",
+                    "SelectActivity": "Which activity?",
+                    "SelectItem": "Which item?"
+                },
+                "Summon": {
+                    "MaxDistance": "Maximum Distance",
+                    "MaxDistanceHint": "Summons farther than this many feet from you are dismissed when you or they move. 0 disables it.",
+                    "MoveActivity": "Move Activity",
+                    "MoveActivityHint": "Rolling this activity moves this item's placed summons up to the activity's range.",
+                    "ReplaceExisting": "Replace Existing Summons",
+                    "ReplaceExistingHint": "Dismiss this item's existing summons before creating new ones."
+                },
+                "SummonModifier": {
+                    "Confirm": "Apply {document} to {summon}?",
+                    "CreatureTypesHint": "Only modify summons of these creature types. Leave empty for any creature type.",
+                    "EffectHint": "Effect from this item to add to the summon.",
+                    "MagicalWeaponsHint": "The summon's items that deal damage count as magical.",
+                    "SourceIdentifiersHint": "Only modify summons created by items with these identifiers. Leave empty for any summon."
+                },
                 "Teleport": {
+                    "RangeFromRoll": "Range From Utility Roll",
+                    "RangeFromRollHint": "Use the activity's utility roll total as the maximum teleport distance. Falls back to Range, then the activity's own range, when nothing was rolled.",
                     "RangeHint": "Maximum teleport distance. Leave blank to use the activity's own range."
+                },
+                "UseOnEvent": {
+                    "Empty": "All Empty",
+                    "Events": "Events",
+                    "EventsHint": "Use this activity after these events. Short Rest also fires after a long rest.",
+                    "LongRest": "Long Rest",
+                    "NotFull": "Any Spent",
+                    "PoolCondition": "Recovery Condition",
+                    "PoolConditionHint": "Only use this activity when the items whose uses it recovers are in this state.",
+                    "ShortRest": "Short Rest"
                 }
             },
             "Legacy": {
@@ -607,6 +704,20 @@
                     "Multiple": "Which target would you like to unmark?",
                     "NoTargets": "No valid targets within range!"
                 },
+                "InsightfulManipulator": {
+                    "ChaScore": "Charisma Score",
+                    "Equal": "{ability} is equal to yours.",
+                    "EqualLevel": "Class levels are equal.",
+                    "Higher": "{ability} is higher than yours.",
+                    "HigherLevel": "Levels are higher than yours.",
+                    "IntScore": "Intelligence Score",
+                    "Levels": "Class Levels",
+                    "Lower": "{ability} is lower than yours.",
+                    "LowerLevel": "Levels are lower than yours.",
+                    "NoLevel": "No class levels.",
+                    "Select": "Select information to learn:",
+                    "WisScore": "Wisdom Score"
+                },
                 "InvestmentOfTheChainMaster": {
                     "Movement": "Choose a movement type for your familiar.",
                     "Speed": "Granted Movement Speed"
@@ -692,6 +803,11 @@
                     "Select": "Apply a {itemName} benefit to {spellName}? (Attuned leyline: {terrain})",
                     "SelectASpell": "Select a spell:",
                     "Unattuned": "Not attuned"
+                },
+                "WailsFromTheGrave": {
+                    "MustSpend": "{feature} has no uses remaining. You must spend {name} to activate it.",
+                    "Select": "Choose a second creature within 30 feet of the target for {item}.",
+                    "Spend": "Spend {name} to use {feature} without consuming uses?"
                 }
             },
             "Modern": {
@@ -772,19 +888,14 @@
                 "Rage": {
                     "EndEarly": "{actorName} has not attacked an enemy, forced an enemy to make a save, or continued their rage since their last turn. Remove Rage?"
                 },
-                "RendMind": {
-                    "RestoreAndUse": "Restore and use {item}?"
-                },
                 "ShadowyDodge": {
                     "Use": "Use {item}?"
                 },
                 "ShareSpells": {
                     "Confirm": "Share {spell} with {name}?"
                 },
-                "SneakAttack": {
-                    "Auto": "Automatically Use",
-                    "UseAnotherCunningStrike": "Use another cunning strike?",
-                    "UseCunningStrike": "Use cunning strike?"
+                "SpellThief": {
+                    "Disabled": "Disabled"
                 },
                 "StalkersFlurry": {
                     "MassFear": "Mass Fear",
@@ -820,6 +931,9 @@
                 },
                 "UnarguableWizardry": {
                     "Prompt": "Unarguable Wizardry"
+                },
+                "VersatileTrickster": {
+                    "Select": "Trip which other creature within 5 feet of the spectral hand?"
                 },
                 "WildResurgence": {
                     "NoSpellSlots": "You have no expended spell slots to restore!",
