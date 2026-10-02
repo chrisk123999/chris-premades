@@ -1,5 +1,6 @@
 function createProxy(targetPath) {
     const cache = new Map();
+    const getters = new Set();
     const getTarget = () => {
         let currentContext = globalThis.cat;
         if (!currentContext) throw new Error("globalThis.cat is not initialized yet. CAT isn't ready yet.");
@@ -16,15 +17,15 @@ function createProxy(targetPath) {
             if (!currentContext || currentContext[prop] === undefined) {
                 throw new Error('Property ' + String(prop) + ' does not exist on globalThis.cat.' + targetPath.join('.'));
             }
-            const value = currentContext[prop];
-            // let getters through
-            let curr = currentContext;
-            while (curr) {
-                const descriptor = Object.getOwnPropertyDescriptor(curr, prop);
-                if (descriptor && descriptor.get !== undefined) return value;
-                curr = Object.getPrototypeOf(curr);
-            }
             if (cache.has(prop)) return cache.get(prop);
+            const value = currentContext[prop];
+            if (getters.has(prop)) return value;
+            // let getters through
+            const descriptor = Object.getOwnPropertyDescriptor(currentContext, prop);
+            if (descriptor && descriptor.get !== undefined) {
+                getters.add(prop);
+                return value;
+            }
             // step down through object chains unless it's an array/set/map etc
             if (typeof value === 'object' && value !== null) {
                 if (typeof value[Symbol.iterator] === 'function') return value;
