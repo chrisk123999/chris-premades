@@ -1,4 +1,6 @@
 // ** Class Features
+// Artificer
+export {tinkersMagic as 'tinkers-magic'} from './modern/classFeatures/artificer/tinkersMagic.mjs';
 // Barbarian
 export {intimidatingPresence as 'intimidating-presence'} from './modern/classFeatures/barbarian/berserker/intimidatingPresence.mjs';
 export {brutalStrike as 'brutal-strike', forcefulBlow} from './modern/classFeatures/barbarian/brutalStrike.mjs';
