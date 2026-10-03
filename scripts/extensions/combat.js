@@ -47,10 +47,10 @@ function legendaryActionsPrompt(combat, data, options, id) {
                         combatant.actor?.system.resources?.legact?.value >= k.activation?.value;
                     })) filteredItems.push(j);
                 }));
-                docs.push(filteredItems);
+                if (filteredItems.length) docs.push(filteredItems);
                 return docs;
             }, []);
-            if (documents) {
+            if (documents.length) {
                 genericUtils.setFlag(combat, 'chris-premades', 'lastPrompt', {round: combat.current.round, turn: combat.current.turn});
                 prompt(documents);
                 return false;

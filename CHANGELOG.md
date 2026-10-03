@@ -1,3 +1,7 @@
+# 1.5.50 Release
+# Bug Fixes
+- Legendary Actions Prompt
+
 # 1.5.49 Release:
 # Bug Fixes
 - Blessed Strikes
