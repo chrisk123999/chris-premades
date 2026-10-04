@@ -36,6 +36,16 @@ async function use({trigger, workflow}) {
                     }
                 }
             ]
+        ],
+        [
+            'checkbox',
+            [
+                {
+                    label: 'CHRISPREMADES.Macros.Fall.Update',
+                    name: 'update',
+                    options: {isChecked: true}
+                }
+            ]
         ]
     ], 'okCancel');
     if (!selection?.buttons) return;
@@ -83,6 +93,7 @@ async function use({trigger, workflow}) {
     await ground(workflow.actor);
     await workflowUtils.replaceDamage(workflow, damageFormula, {damageType: 'bludgeoning'});
     if (otherTarget) await workflowUtils.applyDamage([targetToken], workflow.damageTotal, 'bludgeoning');
+    if (selection.update) await genericUtils.update(workflow.token.document, {elevation: workflow.token.document.elevation - selection.distance});
 }
 export let fall = {
     name: 'Fall',

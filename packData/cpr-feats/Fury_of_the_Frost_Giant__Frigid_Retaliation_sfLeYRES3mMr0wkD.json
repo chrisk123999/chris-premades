@@ -206,7 +206,7 @@
       "rollAttackPerTarget": "default",
       "removeAttackDamageButtons": "default",
       "itemCondition": "",
-      "reactionCondition": "reaction === 'isDamaged' && computeDistance(tokenUuid, targetUuid) <= 30 && canSee(targetUuid, tokenUuid)",
+      "reactionCondition": "reaction === 'isDamaged' && getDistance(tokenUuid, targetUuid) <= 30 && canSee(targetUuid, tokenUuid)",
       "effectCondition": "",
       "AoETargetType": "any",
       "AoETargetTypeIncludeSelf": true,
@@ -245,7 +245,7 @@
     "chris-premades": {
       "info": {
         "name": "Fury of the Frost Giant: Frigid Retaliation",
-        "version": "1.1.10",
+        "version": "1.5.50",
         "identifier": "frigidRetaliation",
         "source": "chris-premades"
       }

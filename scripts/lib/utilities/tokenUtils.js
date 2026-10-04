@@ -1,6 +1,6 @@
 import {actorUtils, compendiumUtils, constants, dialogUtils, effectUtils, errors, genericUtils, itemUtils, rollUtils, socketUtils, templateUtils, workflowUtils} from '../../utils.js';
 function getDistance(sourceToken, targetToken, {wallsBlock, checkCover} = {}) {
-    return MidiQOL.computeDistance(sourceToken, targetToken, {wallsBlock, includeCover: checkCover});
+    return MidiQOL.getDistance(sourceToken, targetToken, {wallsBlock, includeCover: checkCover});
 }
 function checkCollision(token, ray) {
     return token.checkCollision(ray.B, {origin: ray.A, type: 'move', mode: 'any'});

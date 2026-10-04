@@ -8,7 +8,11 @@ async function send(item, options) {
         name: 'CHRISPREMADES.Item.Send',
         icon: '<i class="fa-solid fa-hand-holding"></i>',
         callback: async () => {
-            let actors = game.actors.filter(i => i.id != item.actor.id && (i.hasPlayerOwner || (i.type === 'group' && (i.ownership[game.user.id] >= 2 || i.ownership.default >= 2)))).map(j => ({
+            let assignedUsers = new Set(game.users.filter(u => u.active && u.character).map(u => u.character.id));
+            let actors = game.actors.filter(i => i.id != item.actor.id && (i.hasPlayerOwner || (i.type === 'group' && (i.ownership[game.user.id] >= 2 || i.ownership.default >= 2)))).sort((a, b) => {
+                let userCompare = assignedUsers.has(b.id) + (-1 * assignedUsers.has(a.id));
+                return userCompare ? userCompare : a.name.localeCompare(b.name);
+            }).map(j => ({
                 label: j.name,
                 name: j.id,
                 options: {

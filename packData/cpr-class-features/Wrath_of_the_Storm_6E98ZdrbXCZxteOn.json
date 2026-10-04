@@ -200,7 +200,7 @@
       "rollAttackPerTarget": "default",
       "removeAttackDamageButtons": "default",
       "itemCondition": "",
-      "reactionCondition": "reaction === 'isHit' && canSee(targetUuid, tokenUuid) && computeDistance(targetUuid, tokenUuid) <= 5",
+      "reactionCondition": "reaction === 'isHit' && canSee(targetUuid, tokenUuid) && getDistance(targetUuid, tokenUuid) <= 5",
       "effectCondition": "",
       "AoETargetType": "any",
       "AoETargetTypeIncludeSelf": true,
@@ -247,7 +247,7 @@
     "chris-premades": {
       "info": {
         "name": "Wrath of the Storm",
-        "version": "1.1.10",
+        "version": "1.5.50",
         "identifier": "wrathOfTheStorm",
         "source": "chris-premades"
       },

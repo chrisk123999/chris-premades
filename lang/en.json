@@ -1552,6 +1552,7 @@
                 "Target": "Select one target and try again!",
                 "Tiny": "One or both creatures are tiny!",
                 "Type": "Type of Fall:",
+                "Update": "Update Token Elevation",
                 "Water": "Into Water"
             },
             "FallenPuppet": {

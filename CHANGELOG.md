@@ -1,6 +1,15 @@
 # 1.5.50 Release
+## API Update Notes:
+- Swapped all `MidiQOL.computeDistance` to `MidiQOL.getDistance`. This helper respects distance measurement settings like fudge factor or token perimeter.
+## Update Notes:
+- CPR now requires ***MidiQOL v13.0.66 or higher***.
+- Fall Action now updates token elevation by default.
+- "Send" option in item context menu sorts active user assigned characters to the top, if any.
 # Bug Fixes
 - Legendary Actions Prompt
+- Primal Strike
+- Frigid Retaliation
+- Wrath of the Storm
 
 # 1.5.49 Release:
 # Bug Fixes

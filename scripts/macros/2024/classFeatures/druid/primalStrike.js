@@ -12,7 +12,7 @@ async function damage({trigger: {entity: item}, workflow}) {
     let selection = await dialogUtils.selectDamageType(itemUtils.getConfig(item, 'damageTypes'), workflow.item.name, genericUtils.format('CHRISPREMADES.Dialog.UseWeaponDamageExtra', {itemName: item.name, bonusFormula: bonusFormula}), {addNo: true});
     if (!selection || selection === 'no') return;
     await workflowUtils.bonusDamage(workflow, bonusFormula, {damageType: selection});
-    await workflowUtils.completeActivityUse(item.system.activities.contents[0], {}, {configure: false});
+    await workflowUtils.syntheticItemRoll(item, [], {consumeUsage: true, consumeResources: true});
 }
 export let elementalFuryPrimalStrike = {
     name: 'Elemental Fury: Primal Strike',
