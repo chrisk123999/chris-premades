@@ -125,7 +125,7 @@
               "roll": [
                 {
                   "source": "chris-premades",
-                  "rules": "2024",
+                  "rules": "all",
                   "identifier": "attackBonus"
                 }
               ]
@@ -266,7 +266,7 @@
               "roll": [
                 {
                   "source": "chris-premades",
-                  "rules": "2024",
+                  "rules": "all",
                   "identifier": "teleport"
                 }
               ]

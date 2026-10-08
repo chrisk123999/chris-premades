@@ -55,7 +55,10 @@ async function damage({document, workflow}) {
         const actor = (workflow.hitTargets.first() ?? workflow.targets.first())?.actor;
         if (!actor || !actorUtils.isWounded(actor)) return;
     }
-    const targets = config.targetEffects.length ? workflow.hitTargets.filter(token => token.actor && config.targetEffects.some(identifier => documentUtils.getEffectByIdentifier(token.actor, identifier, {multiple: true, sourceActor: workflow.actor}).length)) : undefined;
+    const hasEffect = actor => !config.targetEffects.length || config.targetEffects.some(identifier => documentUtils.getEffectByIdentifier(actor, identifier, {multiple: true, sourceActor: workflow.actor}).length);
+    const hasType = actor => !config.targetCreatureTypes.length || config.targetCreatureTypes.includes(actorUtils.typeOrRace(actor));
+    const narrowed = config.targetEffects.length || config.targetCreatureTypes.length;
+    const targets = narrowed ? workflow.hitTargets.filter(token => token.actor && hasEffect(token.actor) && hasType(token.actor)) : undefined;
     if (targets && !targets.size) return;
     const bonus = new DamageBonus(document, {formula: config.bonus, optional, type: config.bonusDamageType, maxTargets: config.maxTargets || undefined, allowCritical: config.allowCritical})
         .withOnUse(async ({bonus}) => {
@@ -72,7 +75,7 @@ async function damage({document, workflow}) {
 }
 export const damageBonusToOneRoll = {
     rules: 'all',
-    version: '2.2.0',
+    version: '2.3.0',
     category: 'damage',
     generic: true,
     documents: ['activeeffect', 'item'],
@@ -187,6 +190,14 @@ export const damageBonusToOneRoll = {
             category: 'behavior',
             label: 'CHRISPREMADES.Macros.Generic.DamageBonusToOneRoll.TargetEffects',
             hint: 'CHRISPREMADES.Macros.Generic.DamageBonusToOneRoll.TargetEffectsHint'
+        },
+        targetCreatureTypes: {
+            default: [],
+            type: 'select-many',
+            category: 'behavior',
+            label: 'CHRISPREMADES.Macros.Generic.DamageBonusToOneRoll.TargetCreatureTypes',
+            hint: 'CHRISPREMADES.Macros.Generic.DamageBonusToOneRoll.TargetCreatureTypesHint',
+            get options() { return constants.creatureTypeOptions; }
         },
         useActivityCosts: {
             default: false,

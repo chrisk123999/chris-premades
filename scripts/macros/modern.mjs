@@ -37,8 +37,6 @@ export {deflectAttacks as 'deflect-attacks'} from './modern/classFeatures/monk/d
 export {empoweredStrikes as 'empowered-strikes'} from './modern/classFeatures/monk/empoweredStrikes.mjs';
 export {heightenedFocus as 'heightened-focus'} from './modern/classFeatures/monk/heightenedFocus.mjs';
 export {stunningStrike as 'stunning-strike'} from './modern/classFeatures/monk/stunningStrike.mjs';
-// Paladin
-export {layOnHands as 'lay-on-hands'} from './modern/classFeatures/paladin/layOnHands.mjs';
 // Ranger
 export {exceptionalTraining as 'exceptional-training'} from './modern/classFeatures/ranger/beastMaster/exceptionalTraining.mjs';
 export {bestialFury as 'bestial-fury', primalCompanion as 'primal-companion'} from './modern/classFeatures/ranger/beastMaster/primalCompanion.mjs';
@@ -82,6 +80,8 @@ export {pactOfTheChain as 'pact-of-the-chain'} from './modern/classFeatures/warl
 export {arcaneRecovery as 'arcane-recovery'} from './modern/classFeatures/wizard/arcaneRecovery.mjs';
 export {memorizeSpell as 'memorize-spell'} from './modern/classFeatures/wizard/memorizeSpell.mjs';
 // ** Spells
+export {banishingSmite as 'banishing-smite'} from './modern/spells/banishingSmite.mjs';
+export {wiltingSmite as 'wilting-smite'} from './modern/spells/wiltingSmite.mjs';
 export {chromaticOrb as 'chromatic-orb'} from './modern/spells/chromaticOrb.mjs';
 export {crimsonLash as 'crimson-lash'} from './modern/spells/crimsonLash.mjs';
 export {huntersMark as 'hunters-mark', huntersMarkAttack as 'hunters-mark-attack'} from './modern/spells/huntersMark.mjs';

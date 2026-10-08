@@ -558,24 +558,6 @@
   "folder": "ivhuUGV1jl42kqnO",
   "flags": {
     "cat": {
-      "genericConfig": {
-        "chris-premades": {
-          "passiveAura": {
-            "effect": "5KzkvsZIfvZ2L9fY",
-            "dispositions": [
-              "ally",
-              "enemy"
-            ],
-            "includeSelf": false,
-            "distance": "10",
-            "disableConditions": [],
-            "selfDisableConditions": [
-              "incapacitated",
-              "dead"
-            ]
-          }
-        }
-      },
       "macros": {
         "item": [
           {
@@ -587,14 +569,31 @@
         "aura": [
           {
             "source": "chris-premades",
-            "identifier": "passiveAura",
-            "rules": "all"
+            "rules": "all",
+            "identifier": "aura"
           }
         ]
       },
       "automation": {
         "source": "chris-premades",
-        "version": "2.0.3"
+        "version": "2.0.4"
+      },
+      "genericConfig": {
+        "chris-premades": {
+          "aura": {
+            "radius": "10",
+            "dispositions": [
+              "ally",
+              "enemy"
+            ],
+            "includeSelf": false,
+            "sourceDisable": [
+              "incapacitated",
+              "dead"
+            ],
+            "effect": "5KzkvsZIfvZ2L9fY"
+          }
+        }
       }
     }
   },

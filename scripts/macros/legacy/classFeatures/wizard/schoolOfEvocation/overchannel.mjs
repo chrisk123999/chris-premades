@@ -21,7 +21,7 @@ async function early({document, workflow}) {
     await documentUtils.setFlag(document, 'chris-premades', 'overchannel.active', true);
 }
 async function damage({document, workflow}) {
-    if (!document.flags['chris-premades']?.overchannel?.active) return;  
+    if (!document.flags['chris-premades']?.overchannel?.active) return;
     const damageRolls = await Promise.all(workflow.damageRolls.map(async roll => {
         const maxed = await roll.reroll({maximize: true});
         maxed.options.cat = {...(maxed.options.cat ?? {}), noManualRoll: true};

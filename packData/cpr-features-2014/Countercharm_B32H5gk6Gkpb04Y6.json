@@ -73,10 +73,21 @@
             "aura": [
               {
                 "source": "chris-premades",
-                "rules": "2014",
-                "identifier": "countercharmAura"
+                "rules": "all",
+                "identifier": "aura"
               }
             ]
+          },
+          "genericConfig": {
+            "chris-premades": {
+              "aura": {
+                "includeSelf": false,
+                "targetDisable": [
+                  "deafened"
+                ],
+                "effect": "GfVDcBZ6UHNwHsPL"
+              }
+            }
           }
         }
       },
@@ -86,6 +97,65 @@
         "systemVersion": null
       },
       "_key": "!items.effects!B32H5gk6Gkpb04Y6.2tTU7pPzKPMYNHeK"
+    },
+    {
+      "name": "Countercharm",
+      "img": "icons/magic/air/air-burst-spiral-pink.webp",
+      "origin": null,
+      "transfer": false,
+      "_id": "GfVDcBZ6UHNwHsPL",
+      "type": "base",
+      "system": {
+        "changes": [
+          {
+            "key": "flags.cat.CR.charmed",
+            "type": "custom",
+            "value": true,
+            "phase": "final",
+            "priority": null
+          },
+          {
+            "key": "flags.cat.CR.frightened",
+            "type": "custom",
+            "value": true,
+            "phase": "final",
+            "priority": null
+          }
+        ]
+      },
+      "disabled": false,
+      "start": null,
+      "duration": {
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "statuses": [],
+      "showIcon": 2,
+      "folder": null,
+      "sort": 0,
+      "flags": {
+        "dnd5e": {
+          "riders": {
+            "statuses": []
+          }
+        },
+        "core": {
+          "overlay": false
+        },
+        "cat": {
+          "identifier": "countercharmAura"
+        }
+      },
+      "_stats": {
+        "coreVersion": "14.364",
+        "systemId": null,
+        "systemVersion": null
+      },
+      "_key": "!items.effects!B32H5gk6Gkpb04Y6.GfVDcBZ6UHNwHsPL"
     }
   ],
   "system": {
@@ -301,7 +371,7 @@
     "cat": {
       "automation": {
         "source": "chris-premades",
-        "version": "2.0.2"
+        "version": "2.0.3"
       }
     }
   },

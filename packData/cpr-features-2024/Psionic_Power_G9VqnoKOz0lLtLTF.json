@@ -380,14 +380,14 @@
         "skill": [
           {
             "source": "chris-premades",
-            "rules": "2024",
+            "rules": "all",
             "identifier": "skillBonus"
           }
         ],
         "tool": [
           {
             "source": "chris-premades",
-            "rules": "2024",
+            "rules": "all",
             "identifier": "toolBonus"
           }
         ]

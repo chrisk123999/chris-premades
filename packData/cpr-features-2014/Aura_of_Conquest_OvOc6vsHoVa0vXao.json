@@ -1,0 +1,300 @@
+{
+  "name": "Aura of Conquest",
+  "type": "feat",
+  "effects": [
+    {
+      "name": "Aura of Conquest",
+      "img": "icons/skills/melee/weapons-crossed-swords-white-blue.webp",
+      "origin": null,
+      "transfer": false,
+      "_id": "auraConqSpeed001",
+      "type": "base",
+      "system": {
+        "changes": [
+          {
+            "key": "system.attributes.movement.walk",
+            "type": "override",
+            "value": "0",
+            "phase": "final",
+            "priority": null
+          },
+          {
+            "key": "system.attributes.movement.burrow",
+            "type": "override",
+            "value": "0",
+            "phase": "final",
+            "priority": null
+          },
+          {
+            "key": "system.attributes.movement.climb",
+            "type": "override",
+            "value": "0",
+            "phase": "final",
+            "priority": null
+          },
+          {
+            "key": "system.attributes.movement.fly",
+            "type": "override",
+            "value": "0",
+            "phase": "final",
+            "priority": null
+          },
+          {
+            "key": "system.attributes.movement.swim",
+            "type": "override",
+            "value": "0",
+            "phase": "final",
+            "priority": null
+          }
+        ]
+      },
+      "disabled": false,
+      "start": null,
+      "duration": {
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "statuses": [],
+      "showIcon": 2,
+      "folder": null,
+      "sort": 0,
+      "flags": {
+        "dnd5e": {
+          "riders": {
+            "statuses": []
+          }
+        },
+        "core": {
+          "overlay": false
+        },
+        "cat": {
+          "identifier": "auraOfConquest"
+        }
+      },
+      "_stats": {
+        "coreVersion": "14.364",
+        "systemId": null,
+        "systemVersion": null
+      },
+      "_key": "!items.effects!OvOc6vsHoVa0vXao.auraConqSpeed001"
+    }
+  ],
+  "system": {
+    "activities": {
+      "auraConqDamage01": {
+        "_id": "auraConqDamage01",
+        "type": "damage",
+        "name": "Aura of Conquest: Damage",
+        "img": "",
+        "sort": 0,
+        "activation": {
+          "type": "special",
+          "value": 1,
+          "condition": "",
+          "override": false
+        },
+        "consumption": {
+          "targets": [],
+          "scaling": {
+            "allowed": false,
+            "max": ""
+          },
+          "spellSlot": true
+        },
+        "description": {
+          "chatFlavor": ""
+        },
+        "duration": {
+          "units": "inst",
+          "concentration": false,
+          "override": false,
+          "value": "",
+          "special": ""
+        },
+        "effects": [],
+        "range": {
+          "units": "spec",
+          "special": "",
+          "override": false
+        },
+        "target": {
+          "prompt": false,
+          "affects": {
+            "count": "1",
+            "type": "creature",
+            "choice": false,
+            "special": ""
+          },
+          "template": {
+            "count": "",
+            "contiguous": false,
+            "type": "",
+            "size": "",
+            "width": "",
+            "height": "",
+            "units": "ft",
+            "stationary": false
+          },
+          "override": false
+        },
+        "uses": {
+          "spent": 0,
+          "recovery": [],
+          "max": ""
+        },
+        "damage": {
+          "critical": {
+            "allow": false,
+            "bonus": ""
+          },
+          "parts": [
+            {
+              "custom": {
+                "enabled": true,
+                "formula": "floor(@classes.paladin.levels / 2)"
+              },
+              "number": null,
+              "denomination": null,
+              "bonus": "",
+              "types": [
+                "psychic"
+              ],
+              "scaling": {
+                "number": 1
+              }
+            }
+          ]
+        },
+        "visibility": {
+          "level": {
+            "min": null,
+            "max": null
+          },
+          "requireAttunement": false,
+          "requireIdentification": false,
+          "requireMagic": false,
+          "identifier": ""
+        },
+        "midiProperties": {
+          "ignoreTraits": [],
+          "triggeredActivityId": "none",
+          "triggeredActivityConditionText": "",
+          "triggeredActivityTargets": "targets",
+          "triggeredActivityRollAs": "self",
+          "triggeredActivityConsume": true,
+          "triggeredActivityConfigure": true,
+          "autoConsume": false,
+          "forceConsumeDialog": "default",
+          "forceRollDialog": "default",
+          "forceDamageDialog": "default",
+          "confirmTargets": "default",
+          "autoTargetType": "any",
+          "autoTargetAction": "default",
+          "automationOnly": false,
+          "otherActivityCompatible": false,
+          "otherActivityAsParentType": true,
+          "identifier": "",
+          "displayActivityName": false,
+          "rollMode": "default",
+          "chooseEffects": false,
+          "toggleEffect": false,
+          "ignoreFullCover": false,
+          "removeChatButtons": "default",
+          "magicEffect": false,
+          "magicDamage": false,
+          "noConcentrationCheck": false,
+          "skipConcentrationCheck": false,
+          "autoCEEffects": "default"
+        },
+        "identifier": "aura-of-conquest-damage",
+        "flags": {
+          "cat": {
+            "hidden": true
+          }
+        }
+      }
+    },
+    "uses": {
+      "spent": 0,
+      "recovery": [],
+      "max": ""
+    },
+    "advancement": {},
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "identifier": "aura-of-conquest",
+    "source": {
+      "book": "",
+      "page": "",
+      "license": "",
+      "custom": "Paladin : Oath of Conquest",
+      "rules": "2014",
+      "revision": 1
+    },
+    "crewed": false,
+    "enchant": {},
+    "prerequisites": {
+      "items": [],
+      "level": 7,
+      "repeatable": false
+    },
+    "properties": [],
+    "requirements": "",
+    "type": {
+      "value": "class",
+      "subtype": ""
+    }
+  },
+  "flags": {
+    "cat": {
+      "automation": {
+        "source": "chris-premades",
+        "version": "2.0.0"
+      },
+      "macros": {
+        "aura": [
+          {
+            "source": "chris-premades",
+            "rules": "all",
+            "identifier": "aura"
+          }
+        ]
+      },
+      "genericConfig": {
+        "chris-premades": {
+          "aura": {
+            "radius": "10 + 20 * floor(@classes.paladin.levels / 18)",
+            "dispositions": [
+              "enemy"
+            ],
+            "sourceDisable": [
+              "incapacitated",
+              "dead"
+            ],
+            "effect": "auraConqSpeed001",
+            "turnStartActivity": "auraConqDamage01",
+            "oncePerTurn": true,
+            "sourceStatuses": [
+              "frightened"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "img": "icons/skills/melee/weapons-crossed-swords-white-blue.webp",
+  "folder": "X2I8GshQxgyapcNG",
+  "_id": "OvOc6vsHoVa0vXao",
+  "_stats": {
+    "coreVersion": "14.364",
+    "systemId": null,
+    "systemVersion": null
+  },
+  "_key": "!items!OvOc6vsHoVa0vXao"
+}

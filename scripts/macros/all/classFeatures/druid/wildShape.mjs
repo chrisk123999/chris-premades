@@ -150,8 +150,9 @@ async function preWildShape({actor, config, document: activity, token}) {
         activityData.profiles?.push({_id: id, uuid: choices.shape});
         genericUtils.setProperty(rollOptions, 'config.transform.profile', id);
         await workflowUtils.syntheticActivityDataRoll(activityData, refetchedItem, [token], rollOptions);
-    } else 
+    } else {
         await workflowUtils.syntheticActivityRoll(activity, [token], rollOptions);
+    }
     return true;
 }
 async function postWildShape({workflow}) {

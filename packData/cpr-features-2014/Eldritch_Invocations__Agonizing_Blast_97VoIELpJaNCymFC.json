@@ -72,7 +72,7 @@
           {
             "source": "chris-premades",
             "identifier": "damageBonusToOneRoll",
-            "rules": "2014"
+            "rules": "all"
           }
         ]
       },

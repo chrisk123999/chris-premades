@@ -1,41 +1,18 @@
-import {actorUtils, automationUtils, dialogUtils, documentUtils, effectUtils, genericUtils, itemUtils, summonUtils, tokenUtils} from '../../../proxy.mjs';
-function creatureTypeOptions() {
-    return ['celestial', 'fey', 'fiend'].map(value => ({value, label: CONFIG.DND5E.creatureTypes[value].label, image: CONFIG.DND5E.creatureTypes[value].icon}));
-}
+import {actorUtils, automationUtils, compendiumUtils, constants, dialogUtils, documentUtils, effectUtils, folderUtils, genericUtils, itemUtils, summonUtils, tokenUtils} from '../../../proxy.mjs';
 const srdFamiliars = ['bat', 'cat', 'crab', 'frog', 'hawk', 'lizard', 'octopus', 'owl', 'poisonous-snake', 'quipper', 'rat', 'raven', 'sea-horse', 'spider', 'weasel'];
-async function srdActors() {
-    const pack = game.packs.get('dnd5e.monsters');
-    if (!pack) return [];
-    const index = await pack.getIndex();
-    const entries = srdFamiliars.map(name => index.find(entry => entry.name.slugify() === name)).filter(Boolean);
-    return await Promise.all(entries.map(entry => fromUuid(entry.uuid)));
-}
-async function sourceActors(folderName) {
-    if (!folderName) return await srdActors();
-    const actors = game.actors.filter(actor => actor.folder?.name === folderName);
-    for (const pack of game.packs) {
-        if (pack.documentName !== 'Actor') continue;
-        const folderIds = pack.folders.filter(packFolder => packFolder.name === folderName).map(packFolder => packFolder.id);
-        if (!folderIds.length) continue;
-        const index = await pack.getIndex();
-        const entries = index.filter(entry => folderIds.includes(entry.folder));
-        actors.push(...await Promise.all(entries.map(entry => fromUuid(entry.uuid))));
-    }
-    return actors;
-}
 async function summon({workflow, actor}) {
     const identifier = documentUtils.getIdentifier(workflow.item);
     const existing = summonUtils.getSummonsByIdentifier(identifier, {actor});
     if (existing.length) return;
     const folder = automationUtils.getConfigValue(workflow.item, 'folder');
-    const actors = await sourceActors(folder);
+    const actors = folder ? await folderUtils.getActorsInFolder(folder) : await compendiumUtils.getDocumentsBySlug('dnd5e.monsters', srdFamiliars);
     if (!actors.length) {
         genericUtils.notify(_loc('CHRISPREMADES.Macros.All.FindFamiliar.NoActors', {folder}), {type: 'warn', localize: false});
         return;
     }
     const sourceActor = await dialogUtils.selectDocumentDialog(workflow.item.name, 'CHRISPREMADES.Macros.All.FindFamiliar.Choose', actors, {sort: 'alphabetical'});
     if (!sourceActor) return;
-    const creatureType = automationUtils.getConfigValue(workflow.item, 'creatureType') || await dialogUtils.buttonDialog(workflow.item.name, 'CHRISPREMADES.Macros.All.FindFamiliar.Type', creatureTypeOptions().map(option => [option.label, option.value, {image: option.image}]));
+    const creatureType = automationUtils.getConfigValue(workflow.item, 'creatureType') || await dialogUtils.buttonDialog(workflow.item.name, 'CHRISPREMADES.Macros.All.FindFamiliar.Type', constants.spiritTypeOptions.map(option => [option.label, option.value, {image: option.image}]));
     if (!creatureType) return;
     const name = automationUtils.getConfigValue(workflow.item, 'name') || sourceActor.name;
     const updates = {system: {details: {type: {value: creatureType}}}};
@@ -124,7 +101,7 @@ async function early({document, workflow, token}) {
 }
 export const findFamiliar = {
     name: 'Find Familiar',
-    version: '2.0.0',
+    version: '2.0.1',
     rules: 'all',
     roll: [
         {
@@ -152,7 +129,7 @@ export const findFamiliar = {
             label: 'CHRISPREMADES.Macros.All.FindFamiliar.CreatureType',
             hint: 'CHRISPREMADES.Macros.All.FindFamiliar.CreatureTypeHint',
             category: 'summons',
-            get options() { return [{value: '', label: _loc('CHRISPREMADES.Macros.All.FindFamiliar.Ask')}, ...creatureTypeOptions()]; }
+            get options() { return [{value: '', label: _loc('CHRISPREMADES.Macros.All.FindFamiliar.Ask')}, ...constants.spiritTypeOptions]; }
         },
         touchRange: {
             default: 100,
