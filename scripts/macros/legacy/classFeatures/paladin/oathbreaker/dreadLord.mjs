@@ -18,7 +18,7 @@ async function attacked({document, sourceToken, workflow}) {
 }
 export const dreadLord = {
     name: 'Dread Lord',
-    version: '2.0.0',
+    version: '2.0.4',
     rules: '2014',
     roll: [
         {

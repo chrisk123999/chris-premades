@@ -25,7 +25,7 @@ async function offer({document: item, workflow}) {
 }
 export const inspiringSmite = {
     name: 'Channel Divinity: Inspiring Smite',
-    version: '2.0.0',
+    version: '2.0.4',
     rules: '2014',
     roll: [
         {

@@ -330,7 +330,7 @@
     "cat": {
       "automation": {
         "source": "chris-premades",
-        "version": "2.0.0"
+        "version": "2.0.4"
       }
     }
   },
@@ -361,7 +361,7 @@
           "identifier": "thunderousSmite",
           "automation": {
             "source": "chris-premades",
-            "version": "2.0.0",
+            "version": "2.0.4",
             "rules": "2014"
           },
           "genericConfig": {

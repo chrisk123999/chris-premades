@@ -10,7 +10,7 @@ async function save({config, document}) {
 }
 export const holyNimbus = {
     name: 'Holy Nimbus',
-    version: '2.0.0',
+    version: '2.0.4',
     rules: '2014',
     save: [
         {

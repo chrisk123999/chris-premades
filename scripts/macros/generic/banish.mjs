@@ -12,7 +12,7 @@ async function deleted({document}) {
 }
 export const banish = {
     rules: 'all',
-    version: '2.0.0',
+    version: '2.0.4',
     category: 'mechanics',
     generic: true,
     documents: ['activeeffect'],

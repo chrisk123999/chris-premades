@@ -299,7 +299,7 @@
     },
     "cat": {
       "automation": {
-        "version": "2.0.1"
+        "version": "2.0.4"
       },
       "macros": {
         "roll": [

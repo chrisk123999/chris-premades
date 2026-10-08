@@ -11,7 +11,7 @@ async function early({document, workflow}) {
         duration: {turns: 1},
         specialDuration: ['endOfWorkflow'],
         changes: [
-            {key: 'flags.midi-qol.min.ability.save.all', value: '100', type: 'override', priority: 120}
+            {key: 'flags.midi-qol.success.ability.save.all', value: 'true', type: 'override', priority: 120}
         ]
     });
     await Promise.all(immuneTokens.map(token => effectUtils.createEffects(token.actor, [effectData])));
@@ -30,7 +30,7 @@ async function use({document, workflow}) {
 }
 export const controlUndead = {
     name: 'Channel Divinity: Control Undead',
-    version: '2.0.0',
+    version: '2.0.4',
     rules: '2014',
     roll: [
         {pass: 'itemPreambleComplete', macro: early, priority: 100},

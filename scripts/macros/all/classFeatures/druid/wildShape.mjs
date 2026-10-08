@@ -236,7 +236,7 @@ async function wildShapeExpire({document: effect, overflowDamage}) {
 }
 export const wildShape = {
     name: 'Wild Shape',
-    version: '2.0.3',
+    version: '2.0.4',
     rules: 'all',
     notes: 'Use the "actorWildShape" called event (async) to modify the wild shape active effect and worn items.\n\tData available: actor, newActor, keepItems, effectData, rules.\nUse the "actorWildShapeForms" called event (async) to provide additional actor documents as choices. Return {actor, source}, where source is the granting item and will be rolled if the actor is used.\n\tData available: activity, actor, canFly, canSwim, cr, creatureTypes, packs, rules.',
     revert: calledRevert,

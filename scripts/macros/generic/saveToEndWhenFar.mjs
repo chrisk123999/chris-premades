@@ -13,7 +13,7 @@ async function turnEnd({document: effect, token}) {
 }
 export const saveToEndWhenFar = {
     rules: 'all',
-    version: '2.0.0',
+    version: '2.0.4',
     category: 'mechanics',
     generic: true,
     documents: ['activeeffect'],

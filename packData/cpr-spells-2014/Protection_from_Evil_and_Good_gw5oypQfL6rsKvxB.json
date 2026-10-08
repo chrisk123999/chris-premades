@@ -135,7 +135,7 @@
     "cat": {
       "automation": {
         "source": "chris-premades",
-        "version": "2.0.0"
+        "version": "2.0.4"
       }
     }
   },
@@ -157,7 +157,7 @@
         "rounds": null,
         "turns": null
       },
-      "description": "<p>Until the spell ends, you are protected against certain types of creatures: aberrations, celestials, elementals, fey, fiends, and undead.</p><p>The protection grants several benefits. Creatures of those types have disadvantage on attack rolls against you. You also can't be &amp;reference[charmed apply=false], &amp;reference[frightened apply=false], or possessed by them. If you are already charmed, frightened, or possessed by such a creature, you have advantage on any new saving throw against the relevant effect.</p>",
+      "description": "",
       "tint": "#ffffff",
       "statuses": [],
       "sort": 0,

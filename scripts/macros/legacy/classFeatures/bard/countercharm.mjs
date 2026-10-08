@@ -11,7 +11,7 @@ async function begin({workflow}) {
 }
 export const countercharm = {
     name: 'Countercharm',
-    version: '2.0.3',
+    version: '2.0.4',
     rules: '2014',
     roll: [
         {

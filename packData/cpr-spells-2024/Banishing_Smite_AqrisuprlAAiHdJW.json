@@ -354,9 +354,9 @@
             "priority": 20
           },
           {
-            "key": "flags.midi-qol.min.ability.save.all",
+            "key": "flags.midi-qol.success.ability.save.all",
             "type": "custom",
-            "value": "99",
+            "value": "true",
             "phase": "initial",
             "priority": 20
           },
@@ -441,7 +441,7 @@
     "cat": {
       "automation": {
         "source": "chris-premades",
-        "version": "2.0.0"
+        "version": "2.0.4"
       },
       "macros": {
         "roll": [

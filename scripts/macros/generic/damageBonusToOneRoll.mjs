@@ -75,7 +75,7 @@ async function damage({document, workflow}) {
 }
 export const damageBonusToOneRoll = {
     rules: 'all',
-    version: '2.3.0',
+    version: '2.0.4',
     category: 'damage',
     generic: true,
     documents: ['activeeffect', 'item'],

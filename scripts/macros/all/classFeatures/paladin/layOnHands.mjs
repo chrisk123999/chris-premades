@@ -21,7 +21,7 @@ async function cure({workflow}) {
 }
 export const layOnHands = {
     name: 'Lay On Hands',
-    version: '2.0.1',
+    version: '2.0.4',
     rules: 'all',
     roll: [
         {

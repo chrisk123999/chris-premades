@@ -44,7 +44,7 @@ async function rider({document: effect, workflow}) {
 }
 export const nextHitRider = {
     rules: 'all',
-    version: '2.0.0',
+    version: '2.0.4',
     category: 'damage',
     generic: true,
     documents: ['activeeffect'],

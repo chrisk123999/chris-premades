@@ -101,7 +101,7 @@ async function early({document, workflow, token}) {
 }
 export const findFamiliar = {
     name: 'Find Familiar',
-    version: '2.0.1',
+    version: '2.0.4',
     rules: 'all',
     roll: [
         {

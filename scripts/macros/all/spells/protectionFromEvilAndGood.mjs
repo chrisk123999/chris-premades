@@ -31,7 +31,7 @@ function immune({document, effect}) {
 }
 export const protectionFromEvilAndGood = {
     name: 'Protection from Evil and Good',
-    version: '2.0.0',
+    version: '2.0.4',
     rules: 'all',
     roll: [
         {

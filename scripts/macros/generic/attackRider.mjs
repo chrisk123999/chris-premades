@@ -65,7 +65,7 @@ async function rider({document: activity, actor, token, workflow}) {
 }
 export const attackRider = {
     rules: 'all',
-    version: '2.1.0',
+    version: '2.0.4',
     category: 'damage',
     generic: true,
     documents: ['activity'],
