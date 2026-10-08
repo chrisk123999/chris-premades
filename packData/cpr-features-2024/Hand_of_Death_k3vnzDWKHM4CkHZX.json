@@ -568,7 +568,7 @@
         ],
         "aura": [
           {
-            "source": "chris-premades",
+            "source": "cat",
             "rules": "all",
             "identifier": "aura"
           }
@@ -579,7 +579,7 @@
         "version": "2.0.4"
       },
       "genericConfig": {
-        "chris-premades": {
+        "cat": {
           "aura": {
             "radius": "10",
             "dispositions": [

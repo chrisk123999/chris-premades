@@ -2,7 +2,6 @@ export {actionDismissal} from './generic/actionDismissal.mjs';
 export {additionalTargets} from './generic/additionalTargets.mjs';
 export {advancedMeleeAttack} from './generic/advancedMeleeAttack.mjs';
 export {attackRider} from './generic/attackRider.mjs';
-export {aura} from './generic/aura.mjs';
 export {banish} from './generic/banish.mjs';
 export {choiceRemoveCondition, turnEndChoiceRemoveCondition, turnStartChoiceRemoveCondition} from './generic/choiceRemoveCondition.mjs';
 export {combatStartItemUses} from './generic/combatStartItemUses.mjs';

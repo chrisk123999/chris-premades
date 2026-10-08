@@ -72,14 +72,14 @@
           "macros": {
             "aura": [
               {
-                "source": "chris-premades",
+                "source": "cat",
                 "rules": "all",
                 "identifier": "aura"
               }
             ]
           },
           "genericConfig": {
-            "chris-premades": {
+            "cat": {
               "aura": {
                 "includeSelf": false,
                 "targetDisable": [

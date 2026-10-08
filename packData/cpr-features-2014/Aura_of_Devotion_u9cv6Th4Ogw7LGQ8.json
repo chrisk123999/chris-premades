@@ -92,14 +92,14 @@
       "macros": {
         "aura": [
           {
-            "source": "chris-premades",
+            "source": "cat",
             "rules": "all",
             "identifier": "aura"
           }
         ]
       },
       "genericConfig": {
-        "chris-premades": {
+        "cat": {
           "aura": {
             "radius": "10 + 20 * floor(@classes.paladin.levels / 18)",
             "sourceDisable": [

@@ -47,7 +47,7 @@
             ],
             "aura": [
               {
-                "source": "chris-premades",
+                "source": "cat",
                 "rules": "all",
                 "identifier": "aura"
               }
@@ -60,7 +60,9 @@
                   "stdBJRUQD41rPxoW"
                 ],
                 "favorite": true
-              },
+              }
+            },
+            "cat": {
               "aura": {
                 "effect": "dLrdShdwTmplt001"
               }
@@ -133,14 +135,14 @@
           "macros": {
             "aura": [
               {
-                "source": "chris-premades",
+                "source": "cat",
                 "rules": "all",
                 "identifier": "aura"
               }
             ]
           },
           "genericConfig": {
-            "chris-premades": {
+            "cat": {
               "aura": {
                 "dispositions": [
                   "enemy"

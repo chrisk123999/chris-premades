@@ -15,14 +15,16 @@
   - `specialItemUse`, using another item without spending its action.
   - `summonModifier`, adding an effect or magical weapons to matching summons.
   - `useOnEvent`, using an activity after a short or long rest.
-  - `aura`, an aura on an item, activity or effect. It covers radius, dispositions, creature types, statuses applied by the source, disabling statuses, walls, separate ally and enemy effects, a stacking value, enter, exit and turn activities, and an optional filter macro.
   - `nextHitRider`, adding damage and a rider activity to the caster's next qualifying hit.
   - `targetCreatureTypes`, dropping targets outside the chosen creature types, with an optional checklist of targets for area activities.
   - `saveToEndWhenFar`, a save at the end of the creature's turn that ends the effect when the creature is farther than a set distance from its source.
   - `banish`, hiding a token while its effect lasts.
-- Removed the `passiveAura` generic macro. Countercharm and Hand of Death use `aura`.
+- Removed the `passiveAura` generic macro. Aura features, including Countercharm and Hand of Death, use CAT's `aura` generic.
+- The `aura` generic macro moved to CAT. Aura items already in a world need their automation reapplied.
 - Infused Strikes exposes its formula and range, Exceptional Training its damage type, and Stalker's Flurry a separate Sudden Strike range.
-- Inspiring Smite, Control Undead and Wilting Smite expose a class identifier, and Inspiring Smite its range.
+- Inspiring Smite and Control Undead expose a class identifier, and Inspiring Smite its range.
+- Wilting Smite spends its two dice from any class's Hit Dice or a Sangromancy Dice pool.
+- Crimson Lash and Wilting Smite offer the Full-Blooded, Sangromantic Initiate and Stage 3 Boon: Sangromancy Specialist pools alongside Stolen Power. Each pool's die size is configurable.
 - Find Familiar and Find Steed list actors from a folder of that name in any Actor compendium, not just the world.
 ## Bug Fixes:
 - Summon Aberration: the summon's features are fetched in one pass, so a missing pack item no longer leaves a half built summon behind.
@@ -211,6 +213,9 @@
 - Staggering Smite
 - Banishing Smite
 - Hand of Death
+- Full-Blooded
+- Sangromantic Initiate
+- Stage 3 Boon: Sangromancy Specialist
 ## Animations:
 - Misty Step gains a colour option.
 - Flurry of Blows
