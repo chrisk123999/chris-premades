@@ -54,6 +54,7 @@ export function cleanEntry(entry) {
     (entry.effects ?? []).forEach(effect => {
         cleanStats(effect);
         cleanFlags(effect);
+        if (effect.description) effect.description = '';
         if (worldReference.test(effect.origin ?? '')) effect.origin = null;
         volatileDuration.forEach(key => delete effect.duration?.[key]);
     });

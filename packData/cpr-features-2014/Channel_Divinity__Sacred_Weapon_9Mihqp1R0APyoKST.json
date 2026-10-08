@@ -1,0 +1,276 @@
+{
+  "name": "Channel Divinity: Sacred Weapon",
+  "type": "feat",
+  "effects": [
+    {
+      "name": "Channel Divinity: Sacred Weapon",
+      "img": "icons/weapons/swords/sword-gold-holy.webp",
+      "origin": null,
+      "type": "enchantment",
+      "_id": "sAcWpnEnch0Prof1",
+      "system": {
+        "changes": [
+          {
+            "key": "name",
+            "type": "override",
+            "value": "{} (Sacred)",
+            "phase": "final",
+            "priority": null
+          },
+          {
+            "key": "activities[attack].attack.bonus",
+            "type": "add",
+            "value": "+max(@abilities.cha.mod, 1)",
+            "phase": "initial",
+            "priority": null
+          },
+          {
+            "key": "system.properties",
+            "type": "add",
+            "value": "mgc",
+            "phase": "initial",
+            "priority": null
+          }
+        ]
+      },
+      "disabled": false,
+      "start": null,
+      "duration": {
+        "value": 60,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "transfer": false,
+      "statuses": [],
+      "showIcon": 1,
+      "folder": null,
+      "sort": 0,
+      "flags": {
+        "dnd5e": {
+          "riders": {
+            "statuses": []
+          }
+        },
+        "cat": {
+          "specialDuration": [
+            "zeroHP"
+          ]
+        }
+      },
+      "_stats": {
+        "coreVersion": "14.364",
+        "systemId": "dnd5e",
+        "systemVersion": "5.3.3"
+      },
+      "_key": "!items.effects!9Mihqp1R0APyoKST.sAcWpnEnch0Prof1"
+    },
+    {
+      "name": "Sacred Weapon",
+      "img": "icons/weapons/swords/sword-gold-holy.webp",
+      "origin": null,
+      "type": "base",
+      "_id": "sAcWpnRider0Lght",
+      "system": {
+        "changes": [
+          {
+            "key": "token.light.bright",
+            "type": "upgrade",
+            "value": 20,
+            "phase": "initial",
+            "priority": null
+          },
+          {
+            "key": "token.light.dim",
+            "type": "upgrade",
+            "value": 40,
+            "phase": "initial",
+            "priority": null
+          }
+        ]
+      },
+      "disabled": false,
+      "start": null,
+      "duration": {
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "transfer": false,
+      "statuses": [],
+      "showIcon": 1,
+      "folder": null,
+      "sort": 0,
+      "flags": {
+        "dnd5e": {
+          "riders": {
+            "statuses": []
+          }
+        }
+      },
+      "_stats": {
+        "coreVersion": "14.364",
+        "systemId": "dnd5e",
+        "systemVersion": "5.3.3"
+      },
+      "_key": "!items.effects!9Mihqp1R0APyoKST.sAcWpnRider0Lght"
+    }
+  ],
+  "system": {
+    "activities": {
+      "dnd5eactivity000": {
+        "type": "utility",
+        "_id": "dnd5eactivity000",
+        "img": "",
+        "sort": 0,
+        "activation": {
+          "type": "action",
+          "value": 1,
+          "override": false,
+          "condition": ""
+        },
+        "consumption": {
+          "scaling": {
+            "allowed": false
+          },
+          "spellSlot": true,
+          "targets": [
+            {
+              "type": "itemUses",
+              "target": "feat:channel-divinity",
+              "value": "1",
+              "scaling": {}
+            }
+          ]
+        },
+        "description": {
+          "chatFlavor": ""
+        },
+        "duration": {
+          "units": "minute",
+          "value": "1",
+          "concentration": false,
+          "override": false
+        },
+        "effects": [],
+        "range": {
+          "units": "self",
+          "override": false,
+          "special": ""
+        },
+        "target": {
+          "template": {
+            "count": "",
+            "contiguous": false,
+            "type": "",
+            "size": "",
+            "width": "",
+            "height": "",
+            "units": "ft"
+          },
+          "affects": {
+            "count": "",
+            "type": "self",
+            "choice": false,
+            "special": ""
+          },
+          "prompt": false,
+          "override": true
+        },
+        "uses": {
+          "spent": 0,
+          "recovery": [],
+          "max": ""
+        },
+        "visibility": {
+          "level": {
+            "min": null,
+            "max": null
+          },
+          "requireAttunement": false,
+          "requireIdentification": false,
+          "requireMagic": false,
+          "identifier": ""
+        },
+        "name": "",
+        "roll": {
+          "formula": "",
+          "name": "",
+          "prompt": false,
+          "visible": false
+        }
+      }
+    },
+    "uses": {
+      "spent": 0,
+      "recovery": [],
+      "max": ""
+    },
+    "advancement": {},
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "identifier": "channel-divinity-sacred-weapon",
+    "source": {
+      "book": "",
+      "page": "",
+      "license": "",
+      "custom": "",
+      "rules": "2014",
+      "revision": 1
+    },
+    "crewed": false,
+    "enchant": {},
+    "prerequisites": {
+      "items": [],
+      "level": null,
+      "repeatable": false
+    },
+    "properties": [],
+    "requirements": "",
+    "type": {
+      "value": "class",
+      "subtype": ""
+    }
+  },
+  "flags": {
+    "dnd5e": {
+      "riders": {
+        "activity": [],
+        "effect": [
+          "sAcWpnRider0Lght"
+        ]
+      }
+    },
+    "cat": {
+      "automation": {
+        "source": "chris-premades",
+        "version": "2.0.4"
+      },
+      "macros": {
+        "roll": [
+          {
+            "source": "chris-premades",
+            "rules": "2014",
+            "identifier": "channel-divinity-sacred-weapon"
+          }
+        ]
+      }
+    }
+  },
+  "img": "icons/weapons/swords/sword-gold-holy.webp",
+  "folder": "O3mbtsqIsuMeDSaq",
+  "_stats": {
+    "coreVersion": "14.364",
+    "systemId": "dnd5e",
+    "systemVersion": "5.3.3"
+  },
+  "_id": "9Mihqp1R0APyoKST",
+  "_key": "!items!9Mihqp1R0APyoKST"
+}

@@ -1,0 +1,133 @@
+{
+  "folder": "KgK97fRED9Mg1rAg",
+  "name": "Aura of Hate",
+  "type": "feat",
+  "img": "icons/skills/melee/strike-flail-spiked-pink.webp",
+  "system": {
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "source": {
+      "custom": "Paladin",
+      "revision": 1,
+      "rules": "2014"
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "recovery": []
+    },
+    "type": {
+      "value": "class",
+      "subtype": ""
+    },
+    "prerequisites": {
+      "level": null
+    },
+    "properties": [],
+    "requirements": "",
+    "activities": {},
+    "identifier": "aura-of-hate",
+    "enchant": {}
+  },
+  "effects": [
+    {
+      "name": "Aura of Hate",
+      "img": "icons/skills/melee/strike-flail-spiked-pink.webp",
+      "origin": null,
+      "transfer": false,
+      "_id": "hA7eAuraTpl0Kq3M",
+      "type": "base",
+      "system": {
+        "changes": [
+          {
+            "key": "system.bonuses.mwak.damage",
+            "type": "add",
+            "value": "+@auraValue",
+            "phase": "initial",
+            "priority": 20
+          }
+        ]
+      },
+      "disabled": false,
+      "start": null,
+      "duration": {
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "statuses": [],
+      "showIcon": 2,
+      "folder": null,
+      "sort": 0,
+      "flags": {
+        "dnd5e": {
+          "riders": {
+            "statuses": []
+          }
+        },
+        "core": {
+          "overlay": false
+        },
+        "cat": {
+          "identifier": "auraOfHateAura"
+        }
+      },
+      "_stats": {
+        "coreVersion": "14.364",
+        "systemId": null,
+        "systemVersion": null
+      },
+      "_key": "!items.effects!nvaUJ5v9N2kZ55Zr.hA7eAuraTpl0Kq3M"
+    }
+  ],
+  "flags": {
+    "cat": {
+      "automation": {
+        "source": "chris-premades",
+        "version": "2.0.4"
+      },
+      "macros": {
+        "aura": [
+          {
+            "source": "cat",
+            "rules": "all",
+            "identifier": "aura"
+          }
+        ]
+      },
+      "genericConfig": {
+        "cat": {
+          "aura": {
+            "radius": "10 + 20 * floor(@classes.paladin.levels / 18)",
+            "sourceDisable": [
+              "dead"
+            ],
+            "effect": "hA7eAuraTpl0Kq3M",
+            "value": "max(@abilities.cha.mod, 1)",
+            "stackHighest": true,
+            "dispositions": [
+              "ally",
+              "enemy"
+            ],
+            "creatureTypes": [
+              "undead",
+              "fiend"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "_id": "nvaUJ5v9N2kZ55Zr",
+  "_stats": {
+    "coreVersion": "14.364",
+    "systemId": null,
+    "systemVersion": null
+  },
+  "_key": "!items!nvaUJ5v9N2kZ55Zr"
+}

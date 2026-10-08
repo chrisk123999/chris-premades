@@ -137,7 +137,6 @@
             "DC": "DC",
             "DiceSize": "Dice Size",
             "DieSize": "Die Size",
-            "DisableConditions": "Disable Conditions",
             "Display": "Display",
             "DisplayFormulaRoll": "Display Formula Roll",
             "DisplayHint": "Display Hint",
@@ -165,7 +164,6 @@
             "IgnoredConditions": "Ignored Conditions",
             "IgnoredCreatureTypes": "Ignored Creature Types",
             "ImmuneCreatures": "Immune Creature Types",
-            "IncludeSelf": "Include Self",
             "ItemDelete": "GM Confirms Item Deletion",
             "Items": "Items",
             "ItemTypes": "Item Types",
@@ -206,7 +204,6 @@
             "Saves": "Saves",
             "Scale": "Scale",
             "ScaleIdentifier": "Scale Identifier",
-            "SelfDisableConditions": "Self Disable Conditions",
             "ShowIcon": "Always Show Aura Icon",
             "ShowRoll": "Show Roll",
             "SimultaneousUses": "Simultaneous Uses",
@@ -328,10 +325,17 @@
                     "DifficultTerrain": "Landing in difficult terrain?",
                     "LowObstacle": "Is there a low obstacle?"
                 },
+                "LayOnHands": {
+                    "NoDisease": "The target is not diseased.",
+                    "NoPoison": "The target is not poisoned."
+                },
                 "OneWithShadows": {
                     "Bright": "You can only use this in dim light or darkness."
                 },
                 "Protection": "Spend a reaction to protect {name}?",
+                "ProtectionFromEvilAndGood": {
+                    "ConditionsHint": "The target cannot gain these conditions from the listed creature types. Saves to end one it already has are made with advantage."
+                },
                 "Rage": {
                     "AllowConcentration": "Allow Concentration",
                     "AllowHeavyArmor": "Allow Heavy Armor",
@@ -371,16 +375,25 @@
                     "TargetHint": "Any value less than one will count as unlimited."
                 },
                 "AttackRider": {
+                    "BonusDamageTypeHint": "Damage type of the extra damage. Uses the attack's damage type when empty.",
                     "BonusHint": "Extra damage added to the roll when this option is chosen.",
+                    "CreatureTypeBonus": "Creature Type Bonus",
+                    "CreatureTypeBonusHint": "Extra damage added to the bonus when every hit target is one of the Target Creature Types.",
                     "Limit": "Limit",
                     "LimitHint": "How many tagged options can be chosen for one damage roll.",
                     "MaxSizeHint": "Only offer this option when every hit target is this size or smaller.",
+                    "OwnTurn": "Own Turn Only",
+                    "OwnTurnHint": "In combat, only offer this option on the attacker's own turn.",
                     "RequiredItems": "Required Items",
                     "RequiredItemsHint": "Only offer this option when the actor has an item with one of these identifiers.",
+                    "SelfAsTouch": "Self Range as Touch",
+                    "SelfAsTouchHint": "When the activity's range is Self, roll it on the hit targets instead of the attacker.",
                     "SuppressedBy": "Suppressed By",
                     "SuppressedByHint": "Do not offer this option when the actor has an item with one of these identifiers.",
                     "Tag": "Tag",
                     "TagHint": "Tagged options are offered as choices under the bonus that owns the tag instead of as separate bonuses.",
+                    "TargetCreatureTypes": "Target Creature Types",
+                    "TargetCreatureTypesHint": "Creature types that receive the Creature Type Bonus.",
                     "WorkflowProperty": "Workflow Property",
                     "WorkflowPropertyHint": "Only offer this option when an earlier bonus has set this workflow property."
                 },
@@ -437,6 +450,8 @@
                     "EveryRollHint": "Add this bonus to each roll of a multi-attack rather than one of them.",
                     "OncePerTurn": "Once Per Turn",
                     "OncePerTurnHint": "Limit this bonus to one use per turn.",
+                    "TargetCreatureTypes": "Target Creature Types",
+                    "TargetCreatureTypesHint": "Only apply this bonus to hit targets of these creature types.",
                     "TargetEffects": "Target Effects",
                     "TargetEffectsHint": "Only apply this bonus to hit targets that carry one of these effects created by you.",
                     "TargetWounded": "Target Already Wounded",
@@ -466,6 +481,18 @@
                 "MultiSingleTarget": {
                     "Context": "How many? (Max: {totalTargets})",
                     "Reaction": "Use a reaction?"
+                },
+                "NextHitRider": {
+                    "BonusDamageTypeHint": "Damage type of the bonus. None uses the attack's damage type.",
+                    "BonusHint": "Extra damage added on the next hit. @scaling is the number of levels the spell was upcast.",
+                    "EndSpell": "End Spell",
+                    "EndSpellHint": "When the spell ends after the rider activity is rolled.",
+                    "EndSpellOptions": {
+                        "always": "Always",
+                        "never": "Never",
+                        "onSave": "When the Target Saves"
+                    },
+                    "RollActivityHint": "Activity rolled on the hit target after the bonus damage."
                 },
                 "PreventDeath": {
                     "DCFromDamage": "Add Damage Dealt to DC",
@@ -531,6 +558,10 @@
                     "Success": "Did the roll succeed? (Roll Total: {total})",
                     "ToolHint": "Limit this bonus to a list of tools."
                 },
+                "SaveToEndWhenFar": {
+                    "DistanceHint": "The save is offered only when the creature ends its turn farther than this from the effect's source.",
+                    "RollActivityHint": "Save activity on the source item rolled at the end of the creature's turn. A success removes this effect."
+                },
                 "SelectDamageType": {
                     "DamageTypeHint": "Prompt for a damage type when this item is rolled."
                 },
@@ -565,6 +596,16 @@
                     "EffectHint": "Effect from this item to add to the summon.",
                     "MagicalWeaponsHint": "The summon's items that deal damage count as magical.",
                     "SourceIdentifiersHint": "Only modify summons created by items with these identifiers. Leave empty for any summon."
+                },
+                "TargetCreatureTypes": {
+                    "AliveOnly": "Living Targets Only",
+                    "AliveOnlyHint": "Remove targets at 0 hit points.",
+                    "ChooseTargets": "Choose Targets",
+                    "ChooseTargetsHint": "For area activities, show a checklist of the remaining targets after filtering and keep only the ones picked.",
+                    "ChooseTargetsSelect": "Choose the creatures to affect.",
+                    "CreatureTypesHint": "Keep only targets of these creature types. Leave empty to skip the creature type check.",
+                    "Invert": "Invert",
+                    "InvertHint": "Remove targets of the selected creature types instead of keeping them."
                 },
                 "Teleport": {
                     "RangeFromRoll": "Range From Utility Roll",
@@ -613,6 +654,9 @@
                     "UseRollTotal": "Use {itemName}? (Roll Total: {rollTotal})",
                     "UseRollTotalBy": "Use {itemName} for {name}? (Roll Total: {rollTotal})"
                 },
+                "ControlUndead": {
+                    "InvalidTarget": "Invalid Target"
+                },
                 "CreatePactWeapon": {
                     "Existing": "Bond an existing weapon",
                     "RangedWeapons": "Improved Pact Weapon Options",
@@ -631,6 +675,11 @@
                     "Proficiency": "Require Proficiency"
                 },
                 "DestroyUndead": "Maximum CR",
+                "DivineSmite": {
+                    "Ranged": "Allow Smites on Ranged Attacks",
+                    "Slot": "Spell Slot",
+                    "Unarmed": "Allow Smites on Unarmed Strikes"
+                },
                 "DrakeCompanion": {
                     "Bite": "Bite",
                     "Dodge": "Dodge",
@@ -653,6 +702,18 @@
                 },
                 "FeyPresence": {
                     "Select": "Choose a condition to apply."
+                },
+                "FindSteed": {
+                    "Ask": "Ask Each Time",
+                    "Choose": "Choose a form for your steed.",
+                    "CreatureType": "Steed Creature Type",
+                    "CreatureTypeHint": "Always summon this creature type instead of prompting.",
+                    "Folder": "Steed Actor Folder",
+                    "FolderHint": "Leave empty to choose from the SRD steeds.",
+                    "Language": "Choose a language your steed can understand.",
+                    "NoActors": "No actors were found in the {folder} folder.",
+                    "Target": "Also target your steed?",
+                    "Type": "Choose a creature type for your steed."
                 },
                 "FocusedAim": "Identifier For Resources Item",
                 "FormOfDread": {
@@ -694,6 +755,9 @@
                     "NoWeapons": "You have no eligible equipped weapons.",
                     "SelectWeapon": "Choose a weapon to bond with."
                 },
+                "HolyNimbus": {
+                    "Save": "Holy Nimbus"
+                },
                 "HoundOfIllOmen": {
                     "Disadvantage": "Hound of Ill Omen: Disadvantage"
                 },
@@ -717,6 +781,10 @@
                     "NoLevel": "No class levels.",
                     "Select": "Select information to learn:",
                     "WisScore": "Wisdom Score"
+                },
+                "InspiringSmite": {
+                    "Offer": "Use {item} to grant temporary hit points?",
+                    "Select": "Distribute {total} temporary hit points among allies within 30 feet."
                 },
                 "InvestmentOfTheChainMaster": {
                     "Movement": "Choose a movement type for your familiar.",
@@ -777,6 +845,9 @@
                 "RevelationInFlesh": {
                     "NotEnough": "Not enough sorcery points!",
                     "Select": "Select which benefits to gain:"
+                },
+                "SacredWeapon": {
+                    "Select": "Choose a weapon to imbue."
                 },
                 "SculptSpells": {
                     "Select": "Which targets succeed and take no damage? (Max: {max})"

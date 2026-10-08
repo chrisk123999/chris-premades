@@ -1,0 +1,424 @@
+{
+  "name": "Staggering Smite",
+  "type": "spell",
+  "system": {
+    "source": {
+      "custom": "",
+      "book": "PHB",
+      "page": "278",
+      "license": "",
+      "revision": 1,
+      "rules": "2014"
+    },
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "level": 4,
+    "school": "evo",
+    "properties": [
+      "vocal",
+      "concentration",
+      "mgc"
+    ],
+    "materials": {
+      "value": "",
+      "consumed": false,
+      "cost": 0,
+      "supply": 0
+    },
+    "target": {
+      "affects": {
+        "type": "self",
+        "count": "0",
+        "choice": false,
+        "special": ""
+      },
+      "template": {
+        "units": "ft",
+        "contiguous": false,
+        "type": ""
+      }
+    },
+    "range": {
+      "value": "0",
+      "units": "self",
+      "special": ""
+    },
+    "activation": {
+      "type": "bonus",
+      "condition": "",
+      "value": 1
+    },
+    "duration": {
+      "value": "1",
+      "units": "minute"
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "recovery": []
+    },
+    "preparation": {
+      "mode": "prepared",
+      "prepared": false
+    },
+    "activities": {
+      "azuoZ5g8ebgFPjUH": {
+        "type": "utility",
+        "_id": "azuoZ5g8ebgFPjUH",
+        "sort": 0,
+        "activation": {
+          "type": "bonus",
+          "value": null,
+          "override": false,
+          "condition": ""
+        },
+        "consumption": {
+          "spellSlot": true,
+          "targets": [],
+          "scaling": {
+            "allowed": false,
+            "max": ""
+          }
+        },
+        "description": {},
+        "duration": {
+          "units": "inst",
+          "concentration": false,
+          "override": false
+        },
+        "effects": [
+          {
+            "_id": "sNk4Wq7LdRz2PvTa",
+            "level": {}
+          }
+        ],
+        "range": {
+          "override": false,
+          "units": "self"
+        },
+        "target": {
+          "template": {
+            "contiguous": false,
+            "units": "ft",
+            "stationary": false
+          },
+          "affects": {
+            "choice": false,
+            "count": "",
+            "type": "",
+            "special": ""
+          },
+          "override": false,
+          "prompt": false
+        },
+        "uses": {
+          "spent": 0,
+          "recovery": []
+        },
+        "roll": {
+          "prompt": false,
+          "visible": false
+        },
+        "useConditionText": "",
+        "forceDialog": false,
+        "effectConditionText": "",
+        "macroData": {
+          "name": "",
+          "command": ""
+        },
+        "ignoreTraits": {
+          "idi": false,
+          "idr": false,
+          "idv": false,
+          "ida": false,
+          "idm": false
+        },
+        "midiProperties": {
+          "ignoreTraits": [],
+          "triggeredActivityId": "none",
+          "triggeredActivityConditionText": "",
+          "triggeredActivityTargets": "targets",
+          "triggeredActivityRollAs": "self",
+          "confirmTargets": "default",
+          "autoTargetType": "any",
+          "autoTargetAction": "default",
+          "automationOnly": false,
+          "otherActivityCompatible": true,
+          "identifier": "",
+          "displayActivityName": false,
+          "rollMode": "default",
+          "chooseEffects": false,
+          "toggleEffect": false,
+          "ignoreFullCover": false,
+          "removeChatButtons": "default",
+          "magicEffect": false,
+          "magicDamage": false,
+          "noConcentrationCheck": false,
+          "autoCEEffects": "default"
+        },
+        "name": "Cast",
+        "identifier": "staggering-smite",
+        "img": "icons/magic/fire/dagger-rune-enchant-flame-strong-green.webp"
+      },
+      "96bwOirqaXMrMx0E": {
+        "type": "save",
+        "_id": "96bwOirqaXMrMx0E",
+        "sort": 0,
+        "activation": {
+          "type": "special",
+          "value": null,
+          "override": true,
+          "condition": ""
+        },
+        "consumption": {
+          "scaling": {
+            "allowed": false
+          },
+          "spellSlot": false,
+          "targets": []
+        },
+        "description": {
+          "chatFlavor": ""
+        },
+        "duration": {
+          "units": "spec",
+          "concentration": false,
+          "override": true,
+          "special": ""
+        },
+        "effects": [
+          {
+            "_id": "vRubZXNSzOcxjsgY",
+            "onSave": false,
+            "level": {}
+          }
+        ],
+        "range": {
+          "override": true,
+          "units": "any",
+          "special": ""
+        },
+        "target": {
+          "template": {
+            "contiguous": false,
+            "units": "ft",
+            "type": ""
+          },
+          "affects": {
+            "choice": false,
+            "count": "1",
+            "type": "creature",
+            "special": ""
+          },
+          "override": true,
+          "prompt": true
+        },
+        "uses": {
+          "spent": 0,
+          "recovery": [],
+          "max": ""
+        },
+        "damage": {
+          "parts": [],
+          "onSave": "none"
+        },
+        "save": {
+          "ability": [
+            "wis"
+          ],
+          "dc": {
+            "calculation": "spellcasting",
+            "formula": ""
+          }
+        },
+        "useConditionText": "",
+        "forceDialog": false,
+        "effectConditionText": "",
+        "name": "Stagger",
+        "img": "icons/magic/fire/dagger-rune-enchant-flame-strong-green.webp",
+        "macroData": {
+          "name": "",
+          "command": ""
+        },
+        "ignoreTraits": {
+          "idi": false,
+          "idr": false,
+          "idv": false,
+          "ida": false,
+          "idm": false
+        },
+        "midiProperties": {
+          "ignoreTraits": [],
+          "triggeredActivityId": "none",
+          "triggeredActivityConditionText": "",
+          "triggeredActivityTargets": "targets",
+          "triggeredActivityRollAs": "self",
+          "confirmTargets": "default",
+          "autoTargetType": "any",
+          "autoTargetAction": "default",
+          "automationOnly": false,
+          "otherActivityCompatible": false,
+          "identifier": "",
+          "displayActivityName": false,
+          "rollMode": "default",
+          "chooseEffects": false,
+          "toggleEffect": false,
+          "ignoreFullCover": false,
+          "removeChatButtons": "default",
+          "magicEffect": false,
+          "magicDamage": false,
+          "noConcentrationCheck": false,
+          "autoCEEffects": "default"
+        },
+        "identifier": "staggering-smite-stagger",
+        "flags": {
+          "cat": {
+            "hidden": true
+          }
+        }
+      }
+    },
+    "identifier": "staggering-smite",
+    "sourceClass": "",
+    "ability": "",
+    "method": "spell",
+    "prepared": 0
+  },
+  "img": "icons/magic/fire/dagger-rune-enchant-flame-strong-green.webp",
+  "flags": {
+    "cat": {
+      "automation": {
+        "source": "chris-premades",
+        "version": "2.0.4"
+      }
+    }
+  },
+  "effects": [
+    {
+      "name": "Staggering Smite",
+      "img": "icons/magic/fire/dagger-rune-enchant-flame-strong-green.webp",
+      "origin": null,
+      "_id": "sNk4Wq7LdRz2PvTa",
+      "type": "base",
+      "system": {
+        "changes": []
+      },
+      "disabled": false,
+      "duration": {
+        "value": 1,
+        "units": "minutes",
+        "expiry": null,
+        "expired": false
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "transfer": false,
+      "statuses": [],
+      "sort": 0,
+      "flags": {
+        "core": {
+          "overlay": false
+        },
+        "cat": {
+          "identifier": "staggeringSmite",
+          "macros": {
+            "roll": [
+              {
+                "source": "chris-premades",
+                "rules": "all",
+                "identifier": "nextHitRider"
+              }
+            ]
+          },
+          "genericConfig": {
+            "chris-premades": {
+              "nextHitRider": {
+                "bonus": "4d6",
+                "bonusDamageType": "psychic",
+                "attackType": "meleeWeaponAttack",
+                "rollActivity": "96bwOirqaXMrMx0E",
+                "endSpell": "always"
+              }
+            }
+          }
+        }
+      },
+      "start": null,
+      "showIcon": 1,
+      "folder": null,
+      "_stats": {
+        "coreVersion": "14.364",
+        "systemId": null,
+        "systemVersion": null
+      },
+      "_key": "!items.effects!G745yc1awAaRUtRd.sNk4Wq7LdRz2PvTa"
+    },
+    {
+      "name": "Staggering Smite: Stagger",
+      "img": "icons/magic/fire/dagger-rune-enchant-flame-strong-green.webp",
+      "origin": null,
+      "_id": "vRubZXNSzOcxjsgY",
+      "type": "base",
+      "system": {
+        "changes": [
+          {
+            "key": "flags.midi-qol.disadvantage.attack.all",
+            "value": 1,
+            "priority": 20,
+            "type": "add"
+          },
+          {
+            "key": "flags.midi-qol.disadvantage.check.all",
+            "value": 1,
+            "priority": 20,
+            "type": "add"
+          }
+        ]
+      },
+      "disabled": false,
+      "duration": {
+        "value": 1,
+        "units": "rounds",
+        "expiry": "turnEnd",
+        "expired": false
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "transfer": false,
+      "statuses": [
+        "reaction"
+      ],
+      "sort": 0,
+      "flags": {
+        "dae": {
+          "stackable": "noneName"
+        },
+        "core": {
+          "overlay": false
+        },
+        "cat": {
+          "identifier": "staggeringSmiteStagger"
+        }
+      },
+      "start": null,
+      "showIcon": 1,
+      "folder": null,
+      "_stats": {
+        "coreVersion": "14.364",
+        "systemId": null,
+        "systemVersion": null
+      },
+      "_key": "!items.effects!G745yc1awAaRUtRd.vRubZXNSzOcxjsgY"
+    }
+  ],
+  "folder": "CGiJKfw3RkosMaqN",
+  "_id": "G745yc1awAaRUtRd",
+  "_stats": {
+    "coreVersion": "14.364",
+    "systemId": null,
+    "systemVersion": null
+  },
+  "_key": "!items!G745yc1awAaRUtRd"
+}

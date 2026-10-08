@@ -1,0 +1,323 @@
+{
+  "_id": "ycOsfLttdroJsxvG",
+  "name": "Channel Divinity: Control Undead",
+  "type": "feat",
+  "system": {
+    "activities": {
+      "dnd5eactivity000": {
+        "_id": "dnd5eactivity000",
+        "type": "save",
+        "activation": {
+          "type": "action",
+          "value": 1,
+          "condition": "",
+          "override": false
+        },
+        "consumption": {
+          "targets": [
+            {
+              "type": "itemUses",
+              "value": "1",
+              "target": "feat:channel-divinity",
+              "scaling": {}
+            }
+          ],
+          "scaling": {
+            "allowed": false,
+            "max": ""
+          },
+          "spellSlot": false
+        },
+        "description": {
+          "chatFlavor": ""
+        },
+        "duration": {
+          "concentration": false,
+          "value": "24",
+          "units": "hour",
+          "special": "",
+          "override": false
+        },
+        "effects": [],
+        "range": {
+          "value": "30",
+          "units": "ft",
+          "special": "",
+          "override": false
+        },
+        "target": {
+          "template": {
+            "count": "",
+            "contiguous": false,
+            "type": "",
+            "size": "",
+            "width": "",
+            "height": "",
+            "units": "ft"
+          },
+          "affects": {
+            "count": "1",
+            "type": "creature",
+            "choice": false,
+            "special": ""
+          },
+          "prompt": true,
+          "override": false
+        },
+        "uses": {
+          "spent": 0,
+          "max": "",
+          "recovery": []
+        },
+        "damage": {
+          "onSave": "half",
+          "parts": [],
+          "critical": {
+            "allow": false
+          }
+        },
+        "save": {
+          "ability": [
+            "wis"
+          ],
+          "dc": {
+            "calculation": "spellcasting",
+            "formula": ""
+          }
+        },
+        "sort": 0,
+        "useConditionText": "",
+        "forceDialog": false,
+        "effectConditionText": "",
+        "midiAutomationOnly": false,
+        "useConditionReason": "",
+        "macroData": {
+          "name": "",
+          "command": ""
+        },
+        "ignoreTraits": {
+          "idi": false,
+          "idr": false,
+          "idv": false,
+          "ida": false,
+          "idm": false
+        },
+        "midiProperties": {
+          "ignoreTraits": [],
+          "triggeredActivityId": "none",
+          "triggeredActivityConditionText": "",
+          "triggeredActivityTargets": "targets",
+          "triggeredActivityRollAs": "self",
+          "forceDialog": false,
+          "forceAttackDialog": false,
+          "forceDamageDialog": false,
+          "confirmTargets": "default",
+          "autoTargetType": "any",
+          "autoTargetAction": "default",
+          "automationOnly": false,
+          "otherActivityCompatible": true,
+          "otherActivityAsParentType": true,
+          "identifier": "control-undead",
+          "displayActivityName": false,
+          "rollMode": "default",
+          "chooseEffects": false,
+          "toggleEffect": false,
+          "ignoreFullCover": false,
+          "removeChatButtons": "default",
+          "magicEffect": false,
+          "magicDamage": false,
+          "noConcentrationCheck": false,
+          "autoCEEffects": "default"
+        },
+        "isOverTimeFlag": false,
+        "overTimeProperties": {
+          "saveRemoves": true,
+          "preRemoveConditionText": "",
+          "postRemoveConditionText": ""
+        },
+        "otherActivityId": "",
+        "otherActivityAsParentType": true,
+        "friendlySave": "default"
+      }
+    },
+    "uses": {
+      "spent": 0,
+      "max": "",
+      "recovery": []
+    },
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "identifier": "channel-divinity-control-undead",
+    "source": {
+      "custom": "",
+      "revision": 1,
+      "rules": "2014"
+    },
+    "advancement": [],
+    "crewed": false,
+    "enchant": {},
+    "prerequisites": {
+      "level": null,
+      "items": [],
+      "repeatable": false
+    },
+    "properties": [],
+    "requirements": "",
+    "type": {
+      "value": "class",
+      "subtype": "channelDivinity"
+    }
+  },
+  "flags": {
+    "dnd5e": {
+      "riders": {
+        "activity": [],
+        "effect": []
+      },
+      "dependents": []
+    },
+    "cat": {
+      "automation": {
+        "source": "chris-premades",
+        "version": "2.0.4"
+      },
+      "macros": {
+        "roll": [
+          {
+            "source": "chris-premades",
+            "rules": "all",
+            "identifier": "targetCreatureTypes"
+          },
+          {
+            "source": "chris-premades",
+            "rules": "2014",
+            "identifier": "channel-divinity-control-undead"
+          }
+        ]
+      },
+      "genericConfig": {
+        "chris-premades": {
+          "targetCreatureTypes": {
+            "creatureTypes": [
+              "undead"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "img": "icons/magic/unholy/strike-body-explode-disintegrate.webp",
+  "folder": "KgK97fRED9Mg1rAg",
+  "_stats": {
+    "coreVersion": "14.364",
+    "systemId": "dnd5e",
+    "systemVersion": "5.3.3"
+  },
+  "effects": [
+    {
+      "name": "Channel Divinity: Control Undead",
+      "img": "icons/magic/unholy/strike-body-explode-disintegrate.webp",
+      "origin": null,
+      "transfer": false,
+      "_id": "ssf3wptVRpgtltRU",
+      "type": "base",
+      "system": {
+        "changes": []
+      },
+      "disabled": false,
+      "duration": {
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "statuses": [],
+      "sort": 0,
+      "flags": {
+        "dae": {
+          "enableCondition": "",
+          "disableCondition": "",
+          "disableIncapacitated": false,
+          "selfTarget": false,
+          "selfTargetAlways": false,
+          "dontApply": true,
+          "stackable": "noneName",
+          "showIcon": false,
+          "durationExpression": "",
+          "macroRepeat": "none"
+        },
+        "core": {
+          "overlay": false
+        },
+        "cat": {
+          "identifier": "controlUndead"
+        }
+      },
+      "_stats": {
+        "coreVersion": "14.364",
+        "systemId": "dnd5e",
+        "systemVersion": "5.3.3"
+      },
+      "start": null,
+      "showIcon": 1,
+      "folder": null,
+      "_key": "!items.effects!ycOsfLttdroJsxvG.ssf3wptVRpgtltRU"
+    },
+    {
+      "name": "Controlled",
+      "img": "icons/magic/unholy/strike-body-explode-disintegrate.webp",
+      "origin": null,
+      "transfer": false,
+      "_id": "YsTfnfPBFbQiPDUk",
+      "type": "base",
+      "system": {
+        "changes": []
+      },
+      "disabled": false,
+      "duration": {
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "statuses": [],
+      "sort": 0,
+      "flags": {
+        "dae": {
+          "enableCondition": "",
+          "disableCondition": "",
+          "disableIncapacitated": false,
+          "selfTarget": false,
+          "selfTargetAlways": false,
+          "dontApply": true,
+          "stackable": "noneName",
+          "showIcon": false,
+          "durationExpression": "",
+          "macroRepeat": "none"
+        },
+        "core": {
+          "overlay": false
+        },
+        "cat": {
+          "identifier": "controlUndeadControlled"
+        }
+      },
+      "_stats": {
+        "coreVersion": "14.364",
+        "systemId": "dnd5e",
+        "systemVersion": "5.3.3"
+      },
+      "start": null,
+      "showIcon": 1,
+      "folder": null,
+      "_key": "!items.effects!ycOsfLttdroJsxvG.YsTfnfPBFbQiPDUk"
+    }
+  ],
+  "_key": "!items!ycOsfLttdroJsxvG"
+}

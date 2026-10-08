@@ -1,0 +1,303 @@
+{
+  "type": "spell",
+  "system": {
+    "activities": {
+      "sH1n1ngSm1teRdr0": {
+        "type": "utility",
+        "_id": "sH1n1ngSm1teRdr0",
+        "sort": 0,
+        "activation": {
+          "type": "bonus",
+          "value": 1,
+          "override": false
+        },
+        "consumption": {
+          "scaling": {
+            "allowed": true
+          },
+          "spellSlot": true,
+          "targets": []
+        },
+        "description": {
+          "chatFlavor": ""
+        },
+        "duration": {
+          "units": "minute",
+          "value": "1",
+          "concentration": true,
+          "override": true
+        },
+        "effects": [
+          {
+            "_id": "sH1n1ngSm1teEff0"
+          }
+        ],
+        "range": {
+          "units": "touch",
+          "special": "",
+          "override": true
+        },
+        "target": {
+          "template": {
+            "contiguous": false,
+            "units": "ft",
+            "type": ""
+          },
+          "affects": {
+            "choice": false,
+            "count": "",
+            "type": "creature"
+          },
+          "override": false,
+          "prompt": true
+        },
+        "uses": {
+          "spent": 0,
+          "recovery": [],
+          "max": ""
+        },
+        "roll": {
+          "prompt": false,
+          "visible": false,
+          "name": "",
+          "formula": ""
+        },
+        "useConditionText": "",
+        "useConditionReason": "",
+        "effectConditionText": "",
+        "macroData": {
+          "name": "",
+          "command": ""
+        },
+        "ignoreTraits": {
+          "idi": false,
+          "idr": false,
+          "idv": false,
+          "ida": false,
+          "idm": false
+        },
+        "midiProperties": {
+          "ignoreTraits": [],
+          "triggeredActivityId": "none",
+          "triggeredActivityConditionText": "",
+          "triggeredActivityTargets": "targets",
+          "triggeredActivityRollAs": "self",
+          "autoConsume": false,
+          "forceConsumeDialog": "default",
+          "forceRollDialog": "default",
+          "forceDamageDialog": "default",
+          "confirmTargets": "never",
+          "autoTargetType": "any",
+          "autoTargetAction": "default",
+          "automationOnly": false,
+          "otherActivityCompatible": true,
+          "otherActivityAsParentType": true,
+          "identifier": "shining-smite-rider",
+          "displayActivityName": false,
+          "rollMode": "default",
+          "chooseEffects": false,
+          "toggleEffect": false,
+          "ignoreFullCover": false,
+          "removeChatButtons": "default",
+          "magicEffect": false,
+          "magicDamage": false,
+          "noConcentrationCheck": false,
+          "autoCEEffects": "default"
+        },
+        "isOverTimeFlag": false,
+        "overTimeProperties": {
+          "saveRemoves": true,
+          "preRemoveConditionText": "",
+          "postRemoveConditionText": ""
+        },
+        "otherActivityId": "none",
+        "otherActivityAsParentType": true,
+        "name": "Shining Smite",
+        "identifier": "shining-smite-rider",
+        "flags": {
+          "cat": {
+            "macros": {
+              "roll": [
+                {
+                  "source": "chris-premades",
+                  "rules": "all",
+                  "identifier": "attackRider"
+                }
+              ]
+            },
+            "genericConfig": {
+              "chris-premades": {
+                "attackRider": {
+                  "bonus": "2d6",
+                  "bonusDamageType": "radiant",
+                  "attackType": "meleeWeaponAttack",
+                  "ownTurn": true,
+                  "useActivityCosts": true
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "uses": {
+      "spent": null,
+      "max": "",
+      "recovery": []
+    },
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "identifier": "shining-smite",
+    "source": {
+      "book": "PHB 2024",
+      "page": "",
+      "license": "",
+      "custom": "",
+      "rules": "2024",
+      "revision": 1
+    },
+    "activation": {
+      "type": "bonus",
+      "value": 1,
+      "condition": ""
+    },
+    "duration": {
+      "value": "1",
+      "units": "minute"
+    },
+    "level": 2,
+    "materials": {
+      "value": "",
+      "consumed": false,
+      "cost": 0,
+      "supply": 0
+    },
+    "properties": [
+      "vocal",
+      "concentration"
+    ],
+    "range": {
+      "units": "self"
+    },
+    "school": "trs",
+    "target": {
+      "affects": {
+        "count": "",
+        "type": "creature",
+        "choice": false,
+        "special": ""
+      },
+      "template": {
+        "count": "",
+        "contiguous": false,
+        "type": "",
+        "size": "",
+        "width": "",
+        "height": "",
+        "units": "ft"
+      }
+    },
+    "method": "spell",
+    "prepared": 1,
+    "sourceClass": ""
+  },
+  "effects": [
+    {
+      "name": "Shining Smite",
+      "img": "icons/skills/melee/strike-sword-dagger-runes-yellow.webp",
+      "origin": null,
+      "transfer": false,
+      "_id": "sH1n1ngSm1teEff0",
+      "type": "base",
+      "system": {
+        "changes": [
+          {
+            "key": "token.light.bright",
+            "type": "upgrade",
+            "value": 5,
+            "phase": "initial",
+            "priority": null
+          },
+          {
+            "key": "flags.midi-qol.grants.advantage.attack.all",
+            "type": "override",
+            "value": 1,
+            "phase": "initial",
+            "priority": null
+          },
+          {
+            "key": "system.traits.ci.value",
+            "type": "add",
+            "value": "invisible",
+            "phase": "initial",
+            "priority": 20
+          }
+        ]
+      },
+      "disabled": false,
+      "start": null,
+      "duration": {
+        "value": 1,
+        "units": "minutes",
+        "expiry": null,
+        "expired": false
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "statuses": [],
+      "showIcon": 1,
+      "folder": null,
+      "sort": 0,
+      "flags": {
+        "dnd5e": {
+          "riders": {
+            "statuses": []
+          }
+        },
+        "cat": {
+          "identifier": "shiningSmite"
+        }
+      },
+      "_stats": {
+        "coreVersion": "14.364",
+        "systemId": "dnd5e",
+        "systemVersion": "5.3.3"
+      },
+      "_key": "!items.effects!4N3giP0alIZDP5U7.sH1n1ngSm1teEff0"
+    }
+  ],
+  "name": "Shining Smite",
+  "flags": {
+    "midi-qol": {
+      "removeAttackDamageButtons": "default"
+    },
+    "midiProperties": {
+      "confirmTargets": "default",
+      "magicdam": true,
+      "magiceffect": true
+    },
+    "dnd5e": {
+      "riders": {
+        "activity": [],
+        "effect": []
+      }
+    },
+    "cat": {
+      "automation": {
+        "source": "chris-premades",
+        "version": "2.0.4"
+      }
+    }
+  },
+  "img": "icons/skills/melee/strike-sword-dagger-runes-yellow.webp",
+  "folder": "GPvmZmeZsEcVPYFH",
+  "_id": "4N3giP0alIZDP5U7",
+  "_stats": {
+    "coreVersion": "14.364",
+    "systemId": "dnd5e",
+    "systemVersion": "5.3.3"
+  },
+  "_key": "!items!4N3giP0alIZDP5U7"
+}

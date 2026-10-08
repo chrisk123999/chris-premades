@@ -1,0 +1,212 @@
+{
+  "_id": "gw5oypQfL6rsKvxB",
+  "name": "Protection from Evil and Good",
+  "type": "spell",
+  "system": {
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "source": {
+      "custom": "",
+      "book": "",
+      "page": "",
+      "license": "CC-BY-4.0",
+      "rules": "2014"
+    },
+    "activation": {
+      "type": "action",
+      "condition": "",
+      "value": 1
+    },
+    "duration": {
+      "value": "10",
+      "units": "minute"
+    },
+    "target": {
+      "affects": {
+        "type": "creature",
+        "count": "1",
+        "choice": false,
+        "special": ""
+      },
+      "template": {
+        "units": "",
+        "contiguous": false,
+        "type": ""
+      }
+    },
+    "range": {
+      "units": "touch",
+      "special": ""
+    },
+    "uses": {
+      "max": "",
+      "recovery": [],
+      "spent": 0
+    },
+    "level": 1,
+    "school": "abj",
+    "materials": {
+      "value": "",
+      "consumed": true,
+      "cost": 0,
+      "supply": 0
+    },
+    "preparation": {
+      "mode": "prepared",
+      "prepared": false
+    },
+    "properties": [
+      "vocal",
+      "somatic",
+      "material",
+      "concentration"
+    ],
+    "activities": {
+      "dnd5eactivity000": {
+        "_id": "dnd5eactivity000",
+        "type": "utility",
+        "activation": {
+          "type": "action",
+          "value": null,
+          "override": false
+        },
+        "consumption": {
+          "targets": [],
+          "scaling": {
+            "allowed": false,
+            "max": ""
+          },
+          "spellSlot": true
+        },
+        "description": {
+          "chatFlavor": ""
+        },
+        "duration": {
+          "units": "inst",
+          "concentration": false,
+          "override": false
+        },
+        "effects": [
+          {
+            "_id": "6AM7tNmtE61BDJpv"
+          }
+        ],
+        "range": {
+          "override": false
+        },
+        "target": {
+          "prompt": true,
+          "template": {
+            "contiguous": false,
+            "units": "ft"
+          },
+          "affects": {
+            "choice": false
+          },
+          "override": false
+        },
+        "roll": {
+          "formula": "",
+          "name": "",
+          "prompt": false,
+          "visible": false
+        },
+        "uses": {
+          "spent": 0,
+          "recovery": [],
+          "max": ""
+        },
+        "sort": 0,
+        "name": "Cast",
+        "img": "",
+        "visibility": {
+          "level": {
+            "min": null,
+            "max": null
+          }
+        }
+      }
+    },
+    "identifier": "protection-from-evil-and-good"
+  },
+  "flags": {
+    "cat": {
+      "automation": {
+        "source": "chris-premades",
+        "version": "2.0.4"
+      }
+    }
+  },
+  "img": "icons/magic/light/orb-container-orange.webp",
+  "effects": [
+    {
+      "name": "Protection from Evil and Good",
+      "img": "icons/magic/light/orb-container-orange.webp",
+      "origin": "Compendium.dnd5e.spells.Item.xmDBqZhRVrtLP8h2",
+      "transfer": false,
+      "_id": "6AM7tNmtE61BDJpv",
+      "type": "base",
+      "system": {},
+      "changes": [],
+      "disabled": false,
+      "duration": {
+        "combat": null,
+        "seconds": 600,
+        "rounds": null,
+        "turns": null
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "statuses": [],
+      "sort": 0,
+      "flags": {
+        "dnd5e": {
+          "riders": {
+            "statuses": []
+          }
+        },
+        "cat": {
+          "identifier": "protectionFromEvilAndGood",
+          "macros": {
+            "roll": [
+              {
+                "source": "chris-premades",
+                "rules": "all",
+                "identifier": "protection-from-evil-and-good"
+              }
+            ],
+            "save": [
+              {
+                "source": "chris-premades",
+                "rules": "all",
+                "identifier": "protection-from-evil-and-good"
+              }
+            ],
+            "effect": [
+              {
+                "source": "chris-premades",
+                "rules": "all",
+                "identifier": "protection-from-evil-and-good"
+              }
+            ]
+          }
+        }
+      },
+      "_stats": {
+        "coreVersion": "14.364",
+        "systemId": "dnd5e",
+        "systemVersion": "5.3.3"
+      },
+      "_key": "!items.effects!gw5oypQfL6rsKvxB.6AM7tNmtE61BDJpv"
+    }
+  ],
+  "folder": "pfzYb8UerE97sz8L",
+  "_stats": {
+    "coreVersion": "14.364",
+    "systemId": "dnd5e",
+    "systemVersion": "5.3.3"
+  },
+  "_key": "!items!gw5oypQfL6rsKvxB"
+}

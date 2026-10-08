@@ -1,0 +1,449 @@
+{
+  "name": "Holy Nimbus",
+  "type": "feat",
+  "system": {
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "source": {
+      "custom": "",
+      "revision": 1,
+      "rules": "2014"
+    },
+    "uses": {
+      "max": "1",
+      "recovery": [
+        {
+          "period": "lr",
+          "type": "recoverAll"
+        }
+      ],
+      "spent": 0
+    },
+    "type": {
+      "value": "class",
+      "subtype": ""
+    },
+    "requirements": "",
+    "properties": [],
+    "prerequisites": {
+      "level": null,
+      "items": [],
+      "repeatable": false
+    },
+    "activities": {
+      "dnd5eactivity000": {
+        "type": "utility",
+        "_id": "dnd5eactivity000",
+        "img": "icons/magic/light/explosion-star-large-blue-yellow.webp",
+        "sort": 0,
+        "activation": {
+          "type": "action",
+          "value": 1,
+          "override": false,
+          "condition": ""
+        },
+        "consumption": {
+          "scaling": {
+            "allowed": false
+          },
+          "spellSlot": true,
+          "targets": [
+            {
+              "type": "itemUses",
+              "value": "1",
+              "target": "",
+              "scaling": {}
+            }
+          ]
+        },
+        "description": {
+          "chatFlavor": ""
+        },
+        "duration": {
+          "units": "minute",
+          "value": "1",
+          "special": "",
+          "concentration": false,
+          "override": false
+        },
+        "effects": [
+          {
+            "_id": "hNmBuSe4fFcT0r7Q"
+          }
+        ],
+        "flags": {},
+        "range": {
+          "units": "self",
+          "special": "",
+          "override": false
+        },
+        "target": {
+          "template": {
+            "contiguous": false,
+            "stationary": false,
+            "units": "ft",
+            "type": ""
+          },
+          "affects": {
+            "count": "",
+            "type": "self",
+            "choice": false,
+            "special": ""
+          },
+          "override": true,
+          "prompt": false
+        },
+        "uses": {
+          "spent": 0,
+          "recovery": [],
+          "max": ""
+        },
+        "visibility": {
+          "level": {
+            "min": null,
+            "max": null
+          },
+          "requireAttunement": false,
+          "requireIdentification": false,
+          "requireMagic": false,
+          "identifier": ""
+        },
+        "roll": {
+          "prompt": false,
+          "visible": false,
+          "name": "",
+          "formula": ""
+        },
+        "useConditionText": "",
+        "useConditionReason": "",
+        "effectConditionText": "",
+        "otherActivityId": "none",
+        "macroData": {
+          "name": "",
+          "command": ""
+        },
+        "ignoreTraits": {
+          "idi": false,
+          "idr": false,
+          "idv": false,
+          "ida": false,
+          "idm": false
+        },
+        "midiProperties": {
+          "ignoreTraits": [],
+          "triggeredActivityId": "none",
+          "triggeredActivityConditionText": "",
+          "triggeredActivityTargets": "targets",
+          "triggeredActivityRollAs": "self",
+          "triggeredActivityConsume": true,
+          "triggeredActivityConfigure": true,
+          "autoConsume": false,
+          "forceConsumeDialog": "default",
+          "forceRollDialog": "default",
+          "forceDamageDialog": "default",
+          "confirmTargets": "default",
+          "autoTargetType": "any",
+          "autoTargetAction": "default",
+          "automationOnly": false,
+          "otherActivityCompatible": true,
+          "otherActivityAsParentType": true,
+          "identifier": "",
+          "displayActivityName": false,
+          "rollMode": "default",
+          "chooseEffects": false,
+          "toggleEffect": false,
+          "ignoreFullCover": false,
+          "removeChatButtons": "default",
+          "magicEffect": false,
+          "magicDamage": false,
+          "noConcentrationCheck": false,
+          "skipConcentrationCheck": false,
+          "autoCEEffects": "default"
+        },
+        "isOverTimeFlag": false,
+        "overTimeProperties": {
+          "saveRemoves": true,
+          "rollAs": "target",
+          "preRemoveConditionText": "",
+          "postRemoveConditionText": ""
+        },
+        "regionBehavior": {
+          "enabled": false,
+          "dispositionFilter": -1,
+          "excludeSource": true,
+          "oncePerTurn": true,
+          "wallRestriction": "none",
+          "regionVisibility": 2,
+          "attachToken": "default",
+          "rules": []
+        },
+        "regionLight": {
+          "enabled": false,
+          "dim": 0,
+          "bright": 0,
+          "color": null,
+          "alpha": 0.5,
+          "luminosity": 0.5,
+          "animationType": "",
+          "animationSpeed": 5,
+          "animationIntensity": 5
+        },
+        "otherActivityAsParentType": true,
+        "name": "Holy Nimbus",
+        "identifier": "holy-nimbus"
+      },
+      "X7cukgOVGq2Hz0Kt": {
+        "_id": "X7cukgOVGq2Hz0Kt",
+        "type": "damage",
+        "activation": {
+          "type": "special",
+          "value": null,
+          "override": false,
+          "condition": ""
+        },
+        "consumption": {
+          "targets": [],
+          "scaling": {
+            "allowed": false,
+            "max": ""
+          },
+          "spellSlot": true
+        },
+        "description": {
+          "chatFlavor": ""
+        },
+        "duration": {
+          "concentration": false,
+          "value": "",
+          "units": "inst",
+          "special": "",
+          "override": false
+        },
+        "effects": [],
+        "range": {
+          "units": "any",
+          "special": "",
+          "override": false
+        },
+        "target": {
+          "template": {
+            "count": "",
+            "contiguous": false,
+            "type": "",
+            "size": "",
+            "width": "",
+            "height": "",
+            "units": "ft"
+          },
+          "affects": {
+            "count": "1",
+            "type": "creature",
+            "choice": false,
+            "special": ""
+          },
+          "prompt": false,
+          "override": false
+        },
+        "uses": {
+          "spent": 0,
+          "max": "",
+          "recovery": []
+        },
+        "damage": {
+          "critical": {
+            "allow": false,
+            "bonus": ""
+          },
+          "parts": [
+            {
+              "custom": {
+                "enabled": true,
+                "formula": "10"
+              },
+              "number": null,
+              "denomination": null,
+              "bonus": "",
+              "types": [
+                "radiant"
+              ],
+              "scaling": {
+                "number": 1
+              }
+            }
+          ]
+        },
+        "sort": 0,
+        "useConditionText": "",
+        "forceDialog": false,
+        "effectConditionText": "",
+        "midiAutomationOnly": false,
+        "name": "Holy Nimbus: Damage",
+        "useConditionReason": "",
+        "macroData": {
+          "name": "",
+          "command": ""
+        },
+        "ignoreTraits": {
+          "idi": false,
+          "idr": false,
+          "idv": false,
+          "ida": false,
+          "idm": false
+        },
+        "midiProperties": {
+          "ignoreTraits": [],
+          "triggeredActivityId": "none",
+          "triggeredActivityConditionText": "",
+          "triggeredActivityTargets": "targets",
+          "triggeredActivityRollAs": "self",
+          "forceDialog": false,
+          "forceAttackDialog": false,
+          "forceDamageDialog": false,
+          "confirmTargets": "never",
+          "autoTargetType": "any",
+          "autoTargetAction": "default",
+          "automationOnly": false,
+          "otherActivityCompatible": false,
+          "otherActivityAsParentType": true,
+          "identifier": "",
+          "displayActivityName": false,
+          "rollMode": "default",
+          "chooseEffects": false,
+          "toggleEffect": false,
+          "ignoreFullCover": false,
+          "removeChatButtons": "default",
+          "magicEffect": false,
+          "magicDamage": false,
+          "noConcentrationCheck": false,
+          "autoCEEffects": "default"
+        },
+        "isOverTimeFlag": false,
+        "overTimeProperties": {
+          "saveRemoves": true,
+          "preRemoveConditionText": "",
+          "postRemoveConditionText": ""
+        },
+        "img": "icons/magic/light/explosion-star-large-blue-yellow.webp",
+        "identifier": "holy-nimbus-damage",
+        "flags": {
+          "cat": {
+            "hidden": true
+          }
+        }
+      }
+    },
+    "identifier": "holy-nimbus",
+    "enchant": {},
+    "advancement": [],
+    "crewed": false
+  },
+  "flags": {
+    "dnd5e": {
+      "riders": {
+        "activity": [],
+        "effect": []
+      }
+    },
+    "cat": {
+      "automation": {
+        "source": "chris-premades",
+        "version": "2.0.4"
+      }
+    }
+  },
+  "effects": [
+    {
+      "name": "Holy Nimbus",
+      "img": "icons/magic/light/explosion-star-large-blue-yellow.webp",
+      "origin": null,
+      "transfer": false,
+      "_id": "hNmBuSe4fFcT0r7Q",
+      "type": "base",
+      "system": {
+        "changes": [
+          {
+            "key": "token.light.bright",
+            "value": "30",
+            "priority": 20,
+            "type": "upgrade"
+          },
+          {
+            "key": "token.light.dim",
+            "value": "60",
+            "priority": 20,
+            "type": "upgrade"
+          }
+        ]
+      },
+      "disabled": false,
+      "duration": {
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "statuses": [],
+      "sort": 0,
+      "flags": {
+        "core": {
+          "overlay": false
+        },
+        "dae": {
+          "stackable": "noneName",
+          "specialDuration": []
+        },
+        "cat": {
+          "identifier": "holyNimbus",
+          "macros": {
+            "save": [
+              {
+                "source": "chris-premades",
+                "rules": "2014",
+                "identifier": "holy-nimbus"
+              }
+            ],
+            "aura": [
+              {
+                "source": "cat",
+                "rules": "all",
+                "identifier": "aura"
+              }
+            ]
+          },
+          "genericConfig": {
+            "cat": {
+              "aura": {
+                "dispositions": [
+                  "enemy"
+                ],
+                "turnStartActivity": "X7cukgOVGq2Hz0Kt"
+              }
+            }
+          }
+        }
+      },
+      "start": null,
+      "showIcon": 0,
+      "folder": null,
+      "_stats": {
+        "coreVersion": "14.364",
+        "systemId": null,
+        "systemVersion": null
+      },
+      "_key": "!items.effects!PPZOh2UDM7YApVDh.hNmBuSe4fFcT0r7Q"
+    }
+  ],
+  "img": "icons/magic/light/explosion-star-large-blue-yellow.webp",
+  "folder": "O3mbtsqIsuMeDSaq",
+  "_id": "PPZOh2UDM7YApVDh",
+  "_stats": {
+    "coreVersion": "14.364",
+    "systemId": "dnd5e",
+    "systemVersion": "5.3.3"
+  },
+  "_key": "!items!PPZOh2UDM7YApVDh"
+}
