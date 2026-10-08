@@ -1,3 +1,5 @@
+// Artificer
+export {swapArtificerPlan, useArtificerPlan, fromPlanSwapArtificerPlan, fromPlanCreateArtificerPlan} from './all/classFeatures/artificer/useOrSwapPlan.mjs';
 // Barbarian
 export {indomitableMight as 'indomitable-might'} from './all/classFeatures/barbarian/indomitableMight.mjs';
 export {instinctivePounce as 'instinctive-pounce'} from './all/classFeatures/barbarian/instinctivePounce.mjs';

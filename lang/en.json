@@ -280,6 +280,22 @@
                     "Zombie": "Zombie"
                 },
                 "ArcaneGrimoire": "Arcane Recovery Bonus",
+                "ArtificerPlans": {
+                    "AllCreated": "You do not have a known artificer plan that has not already been created!",
+                    "AlreadyCreated": "The plan {item} has already been created!",
+                    "Choose": "Choose an item plan to learn:",
+                    "ChooseSwapPlan": "Choose a Magic Item Plan to swap out",
+                    "Create": "Choose an item plan to create:",
+                    "CustomCompendium": "Custom Magic Item Compendium",
+                    "Known": "Known Plans",
+                    "LearnNew": "Learn A New Plan",
+                    "Limit": "Magic Item Limit",
+                    "MaxCreated": "You have created the maximum number of items! ({count} of {max})",
+                    "MaxKnown": "You have learned the maximum number of artificer plans! ({count} of {max})",
+                    "NoPlans": "You have no known artificer plans!",
+                    "NotPrepared": "(NOT PREPARED)",
+                    "NotPreparedPrompt": "Your plans for these items are not prepared: {items}. Roll each plan item to link it to a compendium item."
+                },
                 "BeguilingTwist": {
                     "Select": "Which Condition?"
                 },
@@ -704,6 +720,9 @@
                     "Multiple": "Which target would you like to unmark?",
                     "NoTargets": "No valid targets within range!"
                 },
+                "InfuseItem": {
+                    "PlanName": "Infusion"
+                },
                 "InsightfulManipulator": {
                     "ChaScore": "Charisma Score",
                     "Equal": "{ability} is equal to yours.",
@@ -887,6 +906,10 @@
                 },
                 "Rage": {
                     "EndEarly": "{actorName} has not attacked an enemy, forced an enemy to make a save, or continued their rage since their last turn. Remove Rage?"
+                },
+                "ReplicateMagicItem": {
+                    "NotFound": "Could not find a magic item for the selected plan! ({plan})",
+                    "PlanName": "Magic Item Plans"
                 },
                 "ShadowyDodge": {
                     "Use": "Use {item}?"

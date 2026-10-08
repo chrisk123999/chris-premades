@@ -1,3 +1,5 @@
+// Artificer
+export {infuseItem as 'infuse-item'} from './legacy/classFeatures/artificer/infuseItem.mjs';
 // Barbarian
 export {brutalCritical as 'brutal-critical'} from './legacy/classFeatures/barbarian/brutalCritical.mjs';
 export {dangerSense as 'danger-sense'} from './legacy/classFeatures/barbarian/dangerSense.mjs';

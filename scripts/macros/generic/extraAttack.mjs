@@ -45,7 +45,10 @@ function getNearby(token, range, skipDead) {
 }
 async function getTargets(workflow, range, maxAmount, skipDeadAndUnconscious, nearby) {
     if (!nearby?.length) nearby = getNearby(workflow.token.document, range, skipDeadAndUnconscious);
-    if (!nearby.length) return genericUtils.notify('CHRISPREMADES.Macros.Legacy.HuntersMark.NoTargets', {type: 'warn'});
+    if (!nearby.length) {
+        genericUtils.notify('CHRISPREMADES.Macros.Legacy.HuntersMark.NoTargets', {type: 'warn'});
+        return;
+    }
     if (nearby.length === 1) return {result: [{document: nearby[0], value: maxAmount}], skip: skipDeadAndUnconscious};
     const selection = await dialogUtils.selectTargetDialog(
         workflow.item.name, 

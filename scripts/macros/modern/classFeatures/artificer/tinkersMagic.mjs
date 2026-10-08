@@ -18,7 +18,7 @@ const itemIDs = new Set([
 ]);
 async function use({workflow}) {
     const config = automationUtils.getConfigValues(workflow.item, Object.keys(tinkersMagic.config));
-    if (config.requireTools?.length && !workflow.actor.itemTypes.tool.some(t => config.requireTools.includes(t.system.type?.baseItem) && t.system.equipped)) {
+    if (config.requireTools?.length && !workflow.actor.itemTypes.tool.some(t => t.system.equipped && config.requireTools.includes(t.system.type?.baseItem))) {
         const tools = constants.toolOptions.filter(o => config.requireTools.includes(o.value)).map(t => t.label).join(', ');
         genericUtils.notify('CHRISPREMADES.Macros.Modern.TinkersMagic.NeedTools', {type: 'warn', format: {feature: workflow.item.name, tools}});
         return;
@@ -35,8 +35,8 @@ async function use({workflow}) {
     };
     if (config.itemTypes?.length) options.lockedFilters.types = new Set(config.itemTypes);
     if (config.compendium?.length) options.packIds = config.compendium.map(c => c.split(':')[1]);
-    else options.filterPredicate = (entry) => itemIDs.has(entry.system.identifier);
-    const item = (await compendiumUtils.selectFromCompendiumBrowser('items', options))?.[0];
+    else options.filterPredicate = entry => itemIDs.has(entry.system.identifier);
+    const item = (await compendiumUtils.selectFromCompendiumBrowser('physical', options))?.[0];
     if (!item) return;
     let parentEntity = actorUtils.getEffectByIdentifier(workflow.actor, 'tinkersMagic');
     parentEntity ??= (await effectUtils.createEffects(workflow.actor, [{
