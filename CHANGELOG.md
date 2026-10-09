@@ -217,7 +217,7 @@
 - Sangromantic Initiate
 - Stage 3 Boon: Sangromancy Specialist
 ## Animations:
-- Misty Step gains a colour option.
+- Misty Step gains a color option.
 - Flurry of Blows
 - Step of the Wind
 
