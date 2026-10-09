@@ -374,20 +374,20 @@
     "cat": {
       "automation": {
         "source": "chris-premades",
-        "version": "2.0.0"
+        "version": "2.0.4"
       },
       "macros": {
         "skill": [
           {
             "source": "chris-premades",
-            "rules": "2024",
+            "rules": "all",
             "identifier": "skillBonus"
           }
         ],
         "tool": [
           {
             "source": "chris-premades",
-            "rules": "2024",
+            "rules": "all",
             "identifier": "toolBonus"
           }
         ]

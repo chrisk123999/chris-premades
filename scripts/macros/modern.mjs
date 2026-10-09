@@ -40,8 +40,6 @@ export {deflectAttacks as 'deflect-attacks'} from './modern/classFeatures/monk/d
 export {empoweredStrikes as 'empowered-strikes'} from './modern/classFeatures/monk/empoweredStrikes.mjs';
 export {heightenedFocus as 'heightened-focus'} from './modern/classFeatures/monk/heightenedFocus.mjs';
 export {stunningStrike as 'stunning-strike'} from './modern/classFeatures/monk/stunningStrike.mjs';
-// Paladin
-export {layOnHands as 'lay-on-hands'} from './modern/classFeatures/paladin/layOnHands.mjs';
 // Ranger
 export {exceptionalTraining as 'exceptional-training'} from './modern/classFeatures/ranger/beastMaster/exceptionalTraining.mjs';
 export {bestialFury as 'bestial-fury', primalCompanion as 'primal-companion'} from './modern/classFeatures/ranger/beastMaster/primalCompanion.mjs';
@@ -84,7 +82,11 @@ export {pactOfTheChain as 'pact-of-the-chain'} from './modern/classFeatures/warl
 // Wizard
 export {arcaneRecovery as 'arcane-recovery'} from './modern/classFeatures/wizard/arcaneRecovery.mjs';
 export {memorizeSpell as 'memorize-spell'} from './modern/classFeatures/wizard/memorizeSpell.mjs';
+// Sangromancer
+export {fullBlooded as 'full-blooded'} from './modern/classFeatures/wizard/sangromancer/fullBlooded.mjs';
 // ** Spells
+export {banishingSmite as 'banishing-smite'} from './modern/spells/banishingSmite.mjs';
+export {wiltingSmite as 'wilting-smite'} from './modern/spells/wiltingSmite.mjs';
 export {chromaticOrb as 'chromatic-orb'} from './modern/spells/chromaticOrb.mjs';
 export {crimsonLash as 'crimson-lash'} from './modern/spells/crimsonLash.mjs';
 export {huntersMark as 'hunters-mark', huntersMarkAttack as 'hunters-mark-attack'} from './modern/spells/huntersMark.mjs';
@@ -93,6 +95,8 @@ export {summonFey as 'summon-fey', summonFeyFeyStep as 'summon-fey-fey-step'} fr
 // ** Features
 // Fighting Styles
 export {protectionMoved} from './modern/feats/protection.mjs';
+// General Feats
+export {sangromanticInitiate as 'sangromantic-initiate'} from './modern/feats/sangromanticInitiate.mjs';
 // ** Species Features
 // Grim Hollow Heritage Traits
 export {etherealFade as 'ethereal-fade', etherealFadeEnd} from './modern/speciesFeatures/grimHollowHeritageTraits/etherealFade.mjs';
@@ -102,6 +106,8 @@ export {powerNap as 'power-nap'} from './modern/speciesFeatures/grimHollowHerita
 export {restorativeRest as 'restorative-rest'} from './modern/speciesFeatures/grimHollowHeritageTraits/restorativeRest.mjs';
 // ** Dark Bargains
 export {handOfDeath as 'hand-of-death', handOfDeathClingToLife, handOfDeathDeathKnell} from './modern/otherFeatures/darkBargain/handOfDeath.mjs';
+// ** Vampire Boons
+export {sangromancySpecialist as 'stage-3-boon-sangromancy-specialist'} from './modern/otherFeatures/sangromancySpecialist.mjs';
 // ** Monster Features
 export {shieldGuardianBound as 'bound|shield-guardian', shieldGuardianBoundBind, shieldGuardianBoundDamage} from './modern/monsters/construct/shieldGuardian/bound.mjs';
 // ** Misc

@@ -24,7 +24,7 @@ async function early({document: item, workflow}) {
         origin: item.uuid,
         system: {
             changes: [
-                {key: 'flags.midi-qol.min.ability.save.all', type: 'override', value: 100, priority: 120},
+                {key: 'flags.midi-qol.success.ability.save.all', type: 'override', value: 'true', priority: 120},
                 {key: 'flags.midi-qol.superSaver.all', type: 'custom', value: 1, priority: 20}
             ]
         },
@@ -36,7 +36,7 @@ async function early({document: item, workflow}) {
 }
 export const sculptSpells = {
     name: 'Sculpt Spells',
-    version: '2.0.0',
+    version: '2.0.4',
     rules: '2014',
     roll: [
         {

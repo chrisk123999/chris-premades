@@ -23,6 +23,9 @@ const packs = {
     }
 };
 const sangromancyFeatures = [
+    'full-blooded',
+    'stage-3-boon-sangromancy-specialist',
+    'sangromantic-initiate',
     'stolen-power'
 ];
 export default {

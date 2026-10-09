@@ -1,0 +1,78 @@
+{
+  "name": "Purity of Spirit",
+  "type": "feat",
+  "effects": [],
+  "system": {
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "source": {
+      "custom": "Paladin : Oath of Devotion",
+      "revision": 1,
+      "rules": "2014"
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "recovery": []
+    },
+    "type": {
+      "value": "class",
+      "subtype": ""
+    },
+    "requirements": "",
+    "properties": [],
+    "prerequisites": {
+      "level": null
+    },
+    "activities": {},
+    "identifier": "purity-of-spirit",
+    "enchant": {}
+  },
+  "flags": {
+    "dnd5e": {
+      "riders": {
+        "activity": []
+      }
+    },
+    "cat": {
+      "macros": {
+        "roll": [
+          {
+            "source": "chris-premades",
+            "rules": "all",
+            "identifier": "protection-from-evil-and-good"
+          }
+        ],
+        "save": [
+          {
+            "source": "chris-premades",
+            "rules": "all",
+            "identifier": "protection-from-evil-and-good"
+          }
+        ],
+        "effect": [
+          {
+            "source": "chris-premades",
+            "rules": "all",
+            "identifier": "protection-from-evil-and-good"
+          }
+        ]
+      },
+      "automation": {
+        "source": "chris-premades",
+        "version": "2.0.4"
+      }
+    }
+  },
+  "img": "icons/magic/defensive/shield-barrier-flaming-diamond-blue-yellow.webp",
+  "folder": "O3mbtsqIsuMeDSaq",
+  "_id": "IRgVw4B9LUmoygy0",
+  "_stats": {
+    "coreVersion": "14.364",
+    "systemId": null,
+    "systemVersion": null
+  },
+  "_key": "!items!IRgVw4B9LUmoygy0"
+}

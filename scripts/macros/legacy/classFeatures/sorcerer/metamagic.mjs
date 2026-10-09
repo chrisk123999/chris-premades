@@ -76,7 +76,7 @@ async function earlyCareful({document: effect, workflow}) {
     if (!targets.length) return;
     const selection = await dialogUtils.selectTargetDialog(effect.name, _loc('CHRISPREMADES.Macros.Legacy.Metamagic.CarefulWhich', {max}), targets, {type: 'multiple', maxAmount: max});
     if (!selection?.result?.length) return;
-    await applySaveModifier(effect, selection.result, [{key: 'flags.midi-qol.min.ability.save.all', value: '100', type: 'override', priority: 120}]);
+    await applySaveModifier(effect, selection.result, [{key: 'flags.midi-qol.success.ability.save.all', value: 'true', type: 'override', priority: 120}]);
 }
 async function useDistant({document, workflow}) {
     const selection = await selectSpell(document, getValidSpells(workflow.actor, spell => ['touch', 'ft'].includes(spell.system.range.units) && spell.system.target.affects.type && spell.system.target.affects.type !== 'self'));
@@ -256,7 +256,7 @@ async function earlyTwinned({workflow}) {
 }
 export const carefulSpell = {
     name: 'Metamagic: Careful Spell',
-    version: '2.0.0',
+    version: '2.0.4',
     rules: '2014',
     roll: [
         {pass: 'itemRollFinished', macro: useCareful, priority: 50}

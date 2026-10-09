@@ -19,6 +19,8 @@ export {umbralSight as 'umbral-sight'} from './all/classFeatures/ranger/gloomSta
 export {indomitable} from './all/classFeatures/fighter/indomitable.mjs';
 // Monk
 export {slowFall as 'slow-fall'} from './all/classFeatures/monk/slowFall.mjs';
+// Paladin
+export {layOnHands as 'lay-on-hands'} from './all/classFeatures/paladin/layOnHands.mjs';
 // Rogue
 export {sneakAttack as 'sneak-attack'} from './all/classFeatures/rogue/sneakAttack.mjs';
 export {steadyAim as 'steady-aim'} from './all/classFeatures/rogue/steadyAim.mjs';
@@ -28,8 +30,8 @@ export {psychicBlades as 'psychic-blades'} from './all/classFeatures/rogue/soulk
 export {oneWithShadows as 'one-with-shadows'} from './all/classFeatures/warlock/invocations/oneWithShadows.mjs';
 // Actions
 export {fall} from './all/actions/fall.mjs';
-export {jump, longJump} from './all/actions/jump.mjs';
 export {help, helpAlly} from './all/actions/help.mjs';
+export {jump, longJump} from './all/actions/jump.mjs';
 // Equipment
 export {arcaneGrimoire as 'arcane-grimoire-1', arcaneGrimoire as 'arcane-grimoire-2', arcaneGrimoire as 'arcane-grimoire-3'} from './all/equipment/arcaneGrimoire.mjs';
 // Fighting Styles
@@ -44,3 +46,4 @@ export {animateDead as 'animate-dead', animateDeadEffectDeleted as 'animate-dead
 export {darkness as 'darkness'} from './all/spells/darkness.mjs';
 export {findFamiliar as 'find-familiar', findFamiliarPocket as 'find-familiar-pocket', findFamiliarTouch as 'find-familiar-touch', findFamiliarTouchEffect as 'find-familiar-touch-effect'} from './all/spells/findFamiliar.mjs';
 export {hex, hexAttack as 'hex-attack'} from './all/spells/hex.mjs';
+export {protectionFromEvilAndGood as 'protection-from-evil-and-good'} from './all/spells/protectionFromEvilAndGood.mjs';

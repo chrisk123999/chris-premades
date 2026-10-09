@@ -34,7 +34,17 @@
   - `specialItemUse`, using another item without spending its action.
   - `summonModifier`, adding an effect or magical weapons to matching summons.
   - `useOnEvent`, using an activity after a short or long rest.
+  - `nextHitRider`, adding damage and a rider activity to the caster's next qualifying hit.
+  - `targetCreatureTypes`, dropping targets outside the chosen creature types, with an optional checklist of targets for area activities.
+  - `saveToEndWhenFar`, a save at the end of the creature's turn that ends the effect when the creature is farther than a set distance from its source.
+  - `banish`, hiding a token while its effect lasts.
+- Removed the `passiveAura` generic macro. Aura features, including Countercharm and Hand of Death, use CAT's `aura` generic.
+- The `aura` generic macro moved to CAT. Aura items already in a world need their automation reapplied.
 - Infused Strikes exposes its formula and range, Exceptional Training its damage type, and Stalker's Flurry a separate Sudden Strike range.
+- Inspiring Smite and Control Undead expose a class identifier, and Inspiring Smite its range.
+- Wilting Smite spends its two dice from any class's Hit Dice or a Sangromancy Dice pool.
+- Crimson Lash and Wilting Smite offer the Full-Blooded, Sangromantic Initiate and Stage 3 Boon: Sangromancy Specialist pools alongside Stolen Power. Each pool's die size is configurable.
+- Find Familiar and Find Steed list actors from a folder of that name in any Actor compendium, not just the world.
 ## Bug Fixes:
 - Summon Aberration: the summon's features are fetched in one pass, so a missing pack item no longer leaves a half built summon behind.
 - Stalker's Flurry: Mass Fear now targets creatures around the creature you hit rather than around you, no longer asks you to save against your own effect, and its save ability was missing.
@@ -48,6 +58,9 @@
   - `skillBonus` and `toolBonus` gain `proficientOnly`.
   - `summon` gains `moveActivityId`, `maxDistance` and `replaceExisting`.
   - `teleport` gains `rangeFromRoll`.
+  - `attackRider` gains `bonusDamageType`, `ownTurn`, `selfAsTouch`, `creatureTypeBonus` and `targetCreatureTypes`. It upcasts with the chosen slot and offers a free cast granted by another feature.
+  - `damageBonusToOneRoll` gains `targetCreatureTypes`.
+- Removed a duplicate Blessed Strikes: Potent Spellcasting item.
 - Steady Aim: moving now spends the feature, and Infiltration Expertise is found again.
 - Help: the ally's advantage ends after their next ability check, skill or tool roll.
 - Beguiling Twist, Intimidating Presence and Nature's Wrath end their effect on one successful save.
@@ -107,6 +120,38 @@
 - Tokens of the Departed
 - Wails from the Grave
 - Whispers of the Dead
+- Channel Divinity
+- Lay on Hands
+- Aura of Protection
+- Aura of Courage
+- Divine Smite
+- Sacred Weapon
+- Turn the Faithless
+- Aura of Devotion
+- Purity of Spirit
+- Holy Nimbus
+- Nature's Wrath
+- Aura of Warding
+- Guided Strike
+- Aura of Conquest
+- Inspiring Smite
+- Peerless Athlete
+- Aura of Alacrity
+- Control Undead
+- Dreadful Aspect
+- Aura of Hate
+- Dread Lord
+- Aura of Clarity
+- Countercharm
+- Protection from Evil and Good
+- Searing Smite
+- Thunderous Smite
+- Wrathful Smite
+- Branding Smite
+- Find Steed
+- Blinding Smite
+- Staggering Smite
+- Find Greater Steed
 ## Updated Modern Automations:
 - Dash
 - Disengage (opportunity attack immunity needs gambits-premades)
@@ -172,8 +217,26 @@
 - Stroke of Luck
 - Uncanny Dodge
 - Versatile Trickster
+- Channel Divinity (Paladin)
+- Lay On Hands
+- Nature's Wrath
+- Paladin's Smite
+- Divine Smite
+- Searing Smite
+- Thunderous Smite
+- Wrathful Smite
+- Protection from Evil and Good
+- Shining Smite
+- Wilting Smite
+- Blinding Smite
+- Staggering Smite
+- Banishing Smite
+- Hand of Death
+- Full-Blooded
+- Sangromantic Initiate
+- Stage 3 Boon: Sangromancy Specialist
 ## Animations:
-- Misty Step gains a colour option.
+- Misty Step gains a color option.
 - Flurry of Blows
 - Step of the Wind
 

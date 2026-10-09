@@ -58,7 +58,7 @@ async function nearbyDied({document, effect, token, actor}) {
 }
 export const handOfDeath = {
     name: 'Hand of Death',
-    version: '2.0.3',
+    version: '2.0.4',
     rules: '2024',
     item: [
         {

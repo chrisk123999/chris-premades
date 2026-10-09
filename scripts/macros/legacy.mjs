@@ -21,7 +21,7 @@ export {brutalCritical as 'brutal-critical'} from './legacy/classFeatures/barbar
 export {dangerSense as 'danger-sense'} from './legacy/classFeatures/barbarian/dangerSense.mjs';
 export {endRage, keepRage} from './legacy/classFeatures/barbarian/rage.mjs';
 // Bard
-export {countercharm, countercharmAura} from './legacy/classFeatures/bard/countercharm.mjs';
+export {countercharm} from './legacy/classFeatures/bard/countercharm.mjs';
 export {magicalInspiration as 'magical-inspiration', magicalInspirationEffect} from './legacy/classFeatures/bard/magicalInspiration.mjs';
 // Cleric
 export {channelDivinity as 'channel-divinity|class:cleric', turnUndead} from './legacy/classFeatures/cleric/channelDivinity.mjs';
@@ -34,6 +34,16 @@ export {wildShape as 'wild-shape', wildShapeActive} from './legacy/classFeatures
 export {dedicatedWeapon as 'dedicated-weapon'} from './legacy/classFeatures/monk/dedicatedWeapon.mjs';
 export {focusedAim as 'focused-aim'} from './legacy/classFeatures/monk/focusedAim.mjs';
 export {stunningStrike as 'stunning-strike'} from './legacy/classFeatures/monk/stunningStrike.mjs';
+// Paladin
+export {divineSmite as 'divine-smite'} from './legacy/classFeatures/paladin/divineSmite.mjs';
+// Oath of Devotion
+export {holyNimbus as 'holy-nimbus'} from './legacy/classFeatures/paladin/oathOfDevotion/holyNimbus.mjs';
+export {sacredWeapon as 'channel-divinity-sacred-weapon'} from './legacy/classFeatures/paladin/oathOfDevotion/sacredWeapon.mjs';
+// Oath of Glory
+export {inspiringSmite as 'channel-divinity-inspiring-smite'} from './legacy/classFeatures/paladin/oathOfGlory/inspiringSmite.mjs';
+// Oathbreaker
+export {controlUndead as 'channel-divinity-control-undead'} from './legacy/classFeatures/paladin/oathbreaker/controlUndead.mjs';
+export {dreadLord as 'dread-lord', dreadLordShadow as 'dread-lord-shadow'} from './legacy/classFeatures/paladin/oathbreaker/dreadLord.mjs';
 // Ranger
 export {exceptionalTraining as 'exceptional-training'} from './legacy/classFeatures/ranger/beastMaster/exceptionalTraining.mjs';
 export {primalCompanion as 'primal-companion'} from './legacy/classFeatures/ranger/beastMaster/primalCompanion.mjs';
@@ -104,6 +114,7 @@ export {durableMagic as 'durable-magic'} from './legacy/classFeatures/wizard/war
 // ** Spells
 export {absorbElements as 'absorb-elements'} from './legacy/spells/absorbElements.mjs';
 export {animateObjects as 'animate-objects'} from './legacy/spells/animateObjects.mjs';
+export {findGreaterSteed as 'find-greater-steed', findSteed as 'find-steed', findSteedActive as 'find-steed-active', findSteedDismiss as 'find-steed-dismiss'} from './legacy/spells/findSteed.mjs';
 export {huntersMark as 'hunters-mark', huntersMarkAttack as 'hunters-mark-attack'} from './legacy/spells/huntersMark.mjs';
 export {summonFey as 'summon-fey', summonFeyFeyStep as 'summon-fey-fey-step'} from './legacy/spells/summonFey.mjs';
 // ** Equipment
