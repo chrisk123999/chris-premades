@@ -1,3 +1,22 @@
+# 2.0.5 Pre-Release: (work in progress)
+## Update Notes:
+- CPR for v14 does not contain all automations that previously existed in V13.
+- Requires CAT version 0.X.Y.
+- Generic Macros:
+  - `ignoreCover`, cancels cover with an attack bonus.
+## Updated Legacy Automations:
+- Infuse Item
+- Infusion: Arcane Propulsion Armor
+- Infusion: Armor of Magical Strength
+- Infusion: Boots of the Winding Path
+- Infusion: Enhanced Arcane Focus
+- Infusion: Resistant Armor
+- Infusion: Replicate Magic Item
+## Updated Modern Automations:
+- Tinker's Magic
+- Magic Item Plans
+- Replicate Magic Item
+
 # 2.0.4 Pre-Release:
 ## Update Notes:
 - CPR for v14 does not contain all automations that previously existed in V13.
@@ -153,7 +172,6 @@
 - Stroke of Luck
 - Uncanny Dodge
 - Versatile Trickster
-- Tinker's Magic
 ## Animations:
 - Misty Step gains a colour option.
 - Flurry of Blows

@@ -7,9 +7,12 @@ const keys = {
     itemHolder: 'artificerItemHolder',
     planIdentifier: 'magic-item-plans',
     createdItemFlag: 'artificerMagicItem',
-    calledEventPass: 'artificerPlanFilter',
+    infusionOptionsMarker: 'infusionOptions',
+    calledEventInfusionItems: 'infusionItems',
+    calledEventPlanFilter: 'artificerPlanFilter',
     planTemplateFlag: 'artificerPlanTemplateUuid',
     preselectedMarker: 'preselectedArtificerPlan',
+    prechecksComplete: 'infusionPrechecksComplete',
     createdEffectIdentifier: 'createdArtificerPlan'
 };
 async function swapPlan({macroClass: {identifier, source}, workflow}) {
@@ -38,7 +41,7 @@ async function swapPlan({macroClass: {identifier, source}, workflow}) {
     }
     if (!selected) return Logging.addMacroWarning(source, identifier, 'Artificer plan swap exited early due to a declined prompt.');
     if (selected.id === 'makeNewPlan') selected = false;
-    await automationUtils.calledEvent(keys.calledEventPass, workflow.actor, {canOverlap: true, data});
+    await automationUtils.calledEvent(keys.calledEventPlanFilter, workflow.actor, {canOverlap: true, data});
     if (data.itemTypes?.length) genericUtils.setProperty(data, 'lockedFilters.types', new Set(data.itemTypes));
     if (data.predicates?.length) data.filterPredicate = entry => data.predicates.every(fn => fn(entry));
     const plan = (await compendiumUtils.selectFromCompendiumBrowser(data.tab, {
@@ -113,7 +116,10 @@ async function usePlan({macroClass: {identifier, source}, workflow}) {
         const infusionActivity = itemUtils.getActivityByIdentifier(selected, keys.createActivity);
         if (!infusionActivity) 
             return Logging.addMacroWarning(source, identifier, `Artificer infusion failed due to missing create activity with identifier: ${keys.createActivity}`);
-        return await workflowUtils.syntheticActivityRoll(infusionActivity, [itemHolder]); // infusion macro expected to hook up dependent active effect
+        const options = {};
+        workflowUtils.setWorkflowProperty(options, keys.prechecksComplete, true);
+        // infusion macro expected to hook up dependent active effect
+        return await workflowUtils.syntheticActivityRoll(infusionActivity, [itemHolder], {options});
     }
     const data = (await fromUuid(selected.flags[source]?.[keys.planTemplateFlag]))?.toObject();
     if (!data) return genericUtils.notify('CHRISPREMADES.Macros.Modern.ReplicateMagicItem.NotFound', {type: 'warn', format: {item: selected.name}});
@@ -145,6 +151,23 @@ async function fromPlanCreatePlan({actor, document: activity, macroClass: {sourc
         return await rollFeature(actor, keys.createActivity, activity.item);
     await markPlansNotPrepared(source, actor, activity.item);
     return true;
+}
+async function preInfusion({workflow}) {
+    if (!workflowUtils.getWorkflowProperty(workflow, keys.prechecksComplete)) {
+        rollFeature(workflow.actor, keys.createActivity, workflow.item, workflow.targets.map(t => t.document));
+        workflow.aborted = true;
+        return true;
+    }
+    const infusionIdentifier = documentUtils.getIdentifier(workflow.item);
+    const targetActor = workflow.targets.first()?.actor ?? workflow.actor;
+    const items = (await automationUtils.calledEvent(keys.calledEventInfusionItems, workflow.actor, {
+        canOverlap: true,
+        multiResult: true,
+        data: {infusionIdentifier, targetActor}
+    }))?.flat().filter(i => i instanceof Item.implementation);
+    if (!items?.length) return;
+    const uniqueItems = [...new Map(items.map(item => [item.id, item])).values()];
+    workflowUtils.setWorkflowProperty(workflow, keys.infusionOptionsMarker, uniqueItems);
 }
 // helpers
 async function getConfig(workflow, source, identifier) {
@@ -194,20 +217,20 @@ async function markPlansNotPrepared(source, actor, planTemplate) {
     }});
     await documentUtils.updateEmbeddedDocuments(actor, 'Item', updates);
 }
-async function rollFeature(actor, activityID, plan) {
+async function rollFeature(actor, activityID, plan, targets) {
     const feature = actorUtils.getItemByIdentifiers(actor, ['replicate-magic-item', 'infuse-item'], {type: 'feat'});
     if (!feature) return true;
     const activity = itemUtils.getActivityByIdentifier(feature, activityID);
     if (!activity) return true;
     const options = {};
     workflowUtils.setWorkflowProperty(options, keys.preselectedMarker, plan.uuid);
-    await workflowUtils.syntheticActivityRoll(activity, [], {options});
+    await workflowUtils.syntheticActivityRoll(activity, targets, {options});
     return true;
 }
 export const swapArtificerPlan = {
     version: '2.0.4',
     rules: 'all',
-    notes: 'Target a willing creature to create an item or infusion in their inventory. The item is otherwise made on this character.\n\nUse the "actorArtificerPlanFilter" called event (async) to modify the compendium filters used to present plans to learn.\n\tData available: classIdentifier, createdLimit, itemTypes, known, packIds, tab.\nSet additional required filters under "lockedFilters.additional".',
+    notes: 'Target a willing creature to create an item or infusion in their inventory. The item is otherwise made on this character.\n\nUse the "actorArtificerPlanFilter" called event (async) to modify the compendium filters used to present plans to learn.\n\tData available: classIdentifier, createdLimit, itemTypes, known, packIds, tab.\nSet additional required filters under "lockedFilters.additional".\nReturn an item or array of items from the "actorInfusionItems" called event (async) to create the list of items available for an infusion.\n\tData available: infusionIdentifier, targetActor.',
     keys,
     roll: [
         {
@@ -308,6 +331,17 @@ export const fromPlanCreateArtificerPlan = {
         {
             pass: 'activityPreTargeting',
             macro: fromPlanCreatePlan,
+            priority: 50
+        }
+    ]
+};
+export const infusionPrechecks = {
+    version: swapArtificerPlan.version,
+    rules: swapArtificerPlan.rules,
+    roll: [
+        {
+            pass: 'activityPreItemRoll',
+            macro: preInfusion,
             priority: 50
         }
     ]

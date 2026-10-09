@@ -721,7 +721,17 @@
                     "NoTargets": "No valid targets within range!"
                 },
                 "InfuseItem": {
-                    "PlanName": "Infusion"
+                    "ArcanePropulsionGauntlet": "Arcane Propulsion Gauntlet",
+                    "BootsOfTheWindingPath": "Boots of the Winding Path",
+                    "ChooseItem": "Choose a target item:",
+                    "ExtraBonus": "Grant +2 Bonus",
+                    "NoArmor": "Target has no valid non-magical armor!",
+                    "NoFoci": "Target has no valid non-magical rod, staff, or wand!",
+                    "NoShield": "Target has no valid non-magical shield!",
+                    "NotProne": "You are not prone!",
+                    "NoWeapon": "Target has no valid non-magical weapon!",
+                    "PlanName": "Infusion",
+                    "Resistance": "Resistance Type"
                 },
                 "InsightfulManipulator": {
                     "ChaScore": "Charisma Score",

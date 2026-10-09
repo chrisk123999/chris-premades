@@ -34,3 +34,4 @@ export {restoreUses} from './generic/restoreUses.mjs';
 export {contestedCheck} from './generic/contestedCheck.mjs';
 export {proficiencyChoice} from './generic/proficiencyChoice.mjs';
 export {redirectAttack} from './generic/redirectAttack.mjs';
+export {ignoreCover} from './generic/ignoreCover.mjs';

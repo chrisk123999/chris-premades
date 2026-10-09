@@ -49,11 +49,11 @@ async function planFilter({document: item, data}) {
             if (bonus == 1 && type === 'shield' && rarity === 'uncommon') return true;
             if (bonus == 1 && entry.type === 'weapon' && rarity === 'uncommon') return true;
             if (props.includes('repeating') || id.startsWith('repeating-shot')) return true;
-            if (props.includes('returning') || id.startsWith('returning')) return true;
+            if (props.includes('ret') || id.startsWith('returning')) return true;
         }
         if (tier2) {
             if (armorBonus == 1 && rarity === 'rare') return true;
-            if (props.includes('dazzling') || id.startsWith('dazzling')) return true;
+            if (id.startsWith('dazzling')) return true;
         }
         if (tier3) {
             if (bonus == 2 && type === 'shield' && rarity === 'rare') return true;
