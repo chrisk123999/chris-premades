@@ -83,6 +83,10 @@
             "identifier": "sculpt-spells"
           }
         ]
+      },
+      "automation": {
+        "source": "chris-premades",
+        "version": "2.1.0"
       }
     }
   },
@@ -91,9 +95,9 @@
   "folder": "uosKFvpruT2UNHCY",
   "_id": "hijGGCJ38Rgk7Z7t",
   "_stats": {
-    "coreVersion": "14.364",
-    "systemId": null,
-    "systemVersion": null
+    "coreVersion": "14.369",
+    "systemId": "dnd5e",
+    "systemVersion": "6.0.6"
   },
   "_key": "!items!hijGGCJ38Rgk7Z7t"
 }

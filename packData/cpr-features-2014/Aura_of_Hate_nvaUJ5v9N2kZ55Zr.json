@@ -42,16 +42,18 @@
       "system": {
         "changes": [
           {
-            "key": "system.bonuses.mwak.damage",
+            "key": "system.rolls.damage.mwak.bonus",
             "type": "add",
             "value": "+@auraValue",
             "phase": "initial",
-            "priority": 20
+            "priority": 20,
+            "_id": "8lYEhkbQYWoEwSOc",
+            "conditions": "{}",
+            "replacement": ""
           }
         ]
       },
       "disabled": false,
-      "start": null,
       "duration": {
         "value": null,
         "units": "seconds",
@@ -78,9 +80,9 @@
         }
       },
       "_stats": {
-        "coreVersion": "14.364",
-        "systemId": null,
-        "systemVersion": null
+        "coreVersion": "14.369",
+        "systemId": "dnd5e",
+        "systemVersion": "6.0.6"
       },
       "_key": "!items.effects!nvaUJ5v9N2kZ55Zr.hA7eAuraTpl0Kq3M"
     }
@@ -125,9 +127,9 @@
   },
   "_id": "nvaUJ5v9N2kZ55Zr",
   "_stats": {
-    "coreVersion": "14.364",
-    "systemId": null,
-    "systemVersion": null
+    "coreVersion": "14.369",
+    "systemId": "dnd5e",
+    "systemVersion": "6.0.6"
   },
   "_key": "!items!nvaUJ5v9N2kZ55Zr"
 }

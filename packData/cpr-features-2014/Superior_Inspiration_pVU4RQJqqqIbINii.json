@@ -37,28 +37,7 @@
           "override": false
         },
         "effects": [],
-        "flags": {
-          "cat": {
-            "macros": {
-              "combat": [
-                {
-                  "source": "chris-premades",
-                  "identifier": "combatStartItemUses",
-                  "rules": "all"
-                }
-              ]
-            },
-            "genericConfig": {
-              "chris-premades": {
-                "combatStartItemUses": {
-                  "identifier": "bardic-inspiration",
-                  "minimum": 1,
-                  "fromZeroOnly": true
-                }
-              }
-            }
-          }
-        },
+        "flags": {},
         "range": {
           "units": "self",
           "override": false,
@@ -214,8 +193,26 @@
   "flags": {
     "cat": {
       "automation": {
-        "version": "2.0.4",
+        "version": "2.1.0",
         "source": "chris-premades"
+      },
+      "macros": {
+        "item": [
+          {
+            "source": "chris-premades",
+            "identifier": "itemRecovery",
+            "rules": "all"
+          }
+        ]
+      },
+      "genericConfig": {
+        "chris-premades": {
+          "itemRecovery": {
+            "identifier": "bardic-inspiration",
+            "period": "initiative",
+            "formula": "1 - sign(@item.uses.value)"
+          }
+        }
       }
     }
   },
@@ -223,9 +220,9 @@
   "folder": "H09zLwugbHnO8ugI",
   "_id": "pVU4RQJqqqIbINii",
   "_stats": {
-    "coreVersion": "14.364",
+    "coreVersion": "14.369",
     "systemId": "dnd5e",
-    "systemVersion": "5.3.3"
+    "systemVersion": "6.0.6"
   },
   "_key": "!items!pVU4RQJqqqIbINii"
 }

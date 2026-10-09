@@ -1,12 +1,11 @@
 import {actorUtils, automationUtils, constants, dialogUtils, documentUtils, effectUtils, genericUtils, itemUtils} from '../../../../../proxy.mjs';
-function bestAbility(actor, item, ability) {
-    const activities = item.system.activities;
-    const attack = activities.getByType ? activities.getByType('attack')[0] : Object.values(activities).find(activity => activity.type === 'attack');
-    const weaponAbility = attack?.attack.ability || 'str';
-    const abilities = [weaponAbility, ability];
-    const properties = item.system.properties;
-    if (properties.has ? properties.has('fin') : properties.includes('fin')) abilities.push('dex');
-    return actorUtils.getBestAbility(actor, abilities) === ability ? ability : undefined;
+function hexWarriorChange(hexWarrior) {
+    return {
+        key: 'activities[attack].attack.abilities',
+        type: 'add',
+        value: automationUtils.getConfigValue(hexWarrior, 'ability'),
+        priority: 20
+    };
 }
 async function pactEffect({document, workflow}) {
     await clearPactWeapon(workflow.actor);
@@ -33,14 +32,16 @@ async function conjure({document, workflow, improved, hexWarrior}) {
     weaponData.system.equipped = true;
     weaponData.system.properties.push('mgc');
     if (improved) weaponData.system.magicalBonus = Math.max(1, weaponData.system.magicalBonus ?? 0);
-    if (hexWarrior) {
-        const ability = bestAbility(workflow.actor, weaponData, automationUtils.getConfigValue(hexWarrior, 'ability'));
-        const attackActivityId = Object.entries(weaponData.system.activities).find(entry => entry[1].type === 'attack')?.[0];
-        if (ability && attackActivityId) weaponData.system.activities[attackActivityId].attack.ability = ability;
-    }
     genericUtils.setProperty(weaponData, 'system.identifier', 'pact-weapon');
     const effect = await pactEffect({document, workflow});
-    await itemUtils.createItems(workflow.actor, [weaponData], {parentEntity: effect, favorite: true});
+    const [weapon] = await itemUtils.createItems(workflow.actor, [weaponData], {parentEntity: effect, favorite: true});
+    if (!weapon || !hexWarrior) return;
+    await itemUtils.enchantItem(weapon, documentUtils.getBaseEffectData(workflow.activity, {
+        name: hexWarrior.name,
+        img: hexWarrior.img,
+        origin: hexWarrior.uuid,
+        changes: [hexWarriorChange(hexWarrior)]
+    }));
 }
 async function enchant({document, workflow, improved, hexWarrior, validWeapons}) {
     const weapon = validWeapons.length === 1 ? validWeapons[0] : await dialogUtils.selectDocumentDialog(document.name, _loc('CHRISPREMADES.Macros.Legacy.CreatePactWeapon.SelectWeapon'), validWeapons, {sort: 'alphabetical'});
@@ -69,15 +70,7 @@ async function enchant({document, workflow, improved, hexWarrior, validWeapons})
         value: 1,
         priority: 20
     });
-    if (hexWarrior) {
-        const ability = bestAbility(workflow.actor, weapon, automationUtils.getConfigValue(hexWarrior, 'ability'));
-        if (ability) effectData.system.changes.push({
-            key: 'activities[attack].attack.ability',
-            type: 'override',
-            value: ability,
-            priority: 20
-        });
-    }
+    if (hexWarrior) effectData.system.changes.push(hexWarriorChange(hexWarrior));
     await itemUtils.enchantItem(weapon, effectData);
 }
 async function use({document, workflow}) {

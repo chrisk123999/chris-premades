@@ -168,11 +168,10 @@
           "animationSpeed": 5,
           "animationIntensity": 5
         },
-        "otherActivityId": "",
+        "otherActivityId": "none",
         "otherActivityAsParentType": true,
         "attackMode": "oneHanded",
         "ammunition": "",
-        "otherActivityUuid": "",
         "attackRollPerTarget": "default",
         "fumbleThreshold": 1
       }
@@ -254,11 +253,18 @@
   },
   "effects": [],
   "folder": "uH9uQViQNoIvog8X",
-  "flags": {},
+  "flags": {
+    "cat": {
+      "automation": {
+        "source": "chris-premades",
+        "version": "2.1.0"
+      }
+    }
+  },
   "_stats": {
     "coreVersion": "14.364",
-    "systemId": null,
-    "systemVersion": null
+    "systemId": "dnd5e",
+    "systemVersion": "6.0.6"
   },
   "_key": "!items!ltKwNXraCOmygfgF"
 }

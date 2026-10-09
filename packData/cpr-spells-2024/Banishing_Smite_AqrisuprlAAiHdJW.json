@@ -329,8 +329,7 @@
       }
     },
     "method": "spell",
-    "prepared": 1,
-    "sourceClass": ""
+    "prepared": 1
   },
   "effects": [
     {
@@ -342,44 +341,61 @@
           {
             "key": "flags.midi-qol.superSaver.all",
             "type": "custom",
-            "value": "1",
+            "value": 1,
             "phase": "initial",
-            "priority": 20
+            "priority": 20,
+            "_id": "rFwKYVdju8WwLwoD",
+            "conditions": "{}",
+            "replacement": ""
           },
           {
             "key": "system.attributes.ac.bonus",
             "type": "upgrade",
-            "value": "99",
+            "value": 99,
             "phase": "initial",
-            "priority": 20
+            "priority": 20,
+            "_id": "vxwv4MvnAqjwQuYn",
+            "conditions": "{}",
+            "replacement": ""
           },
           {
             "key": "flags.midi-qol.success.ability.save.all",
             "type": "custom",
-            "value": "true",
+            "value": true,
             "phase": "initial",
-            "priority": 20
+            "priority": 20,
+            "_id": "lWqw0cyhIoHqlBDU",
+            "conditions": "{}",
+            "replacement": ""
           },
           {
             "key": "flags.midi-qol.grants.noCritical.all",
             "type": "custom",
-            "value": "1",
+            "value": 1,
             "phase": "initial",
-            "priority": 20
+            "priority": 20,
+            "_id": "6cTJfqCM0alb3TU6",
+            "conditions": "{}",
+            "replacement": ""
           },
           {
             "key": "flags.midi-qol.neverTarget",
             "type": "custom",
-            "value": "1",
+            "value": 1,
             "phase": "initial",
-            "priority": 20
+            "priority": 20,
+            "_id": "4CZ3DsdGIlKGiRg5",
+            "conditions": "{}",
+            "replacement": ""
           }
-        ]
+        ],
+        "magical": true
       },
       "duration": {
         "value": 0,
         "units": "rounds",
-        "expired": false
+        "expired": false,
+        "expiry": "turnStart"
       },
       "tint": "#ffffff",
       "transfer": false,
@@ -402,20 +418,20 @@
           }
         },
         "dae": {
-          "stackable": "multi"
+          "stackable": "multi",
+          "expiryMode": "delete"
         }
       },
       "description": "",
       "_id": "UoD6VPnqomTghzQn",
       "type": "base",
-      "start": null,
       "origin": null,
       "folder": null,
       "sort": 0,
       "_stats": {
-        "coreVersion": "14.364",
+        "coreVersion": "14.369",
         "systemId": "dnd5e",
-        "systemVersion": "5.3.3"
+        "systemVersion": "6.0.6"
       },
       "_key": "!items.effects!AqrisuprlAAiHdJW.UoD6VPnqomTghzQn"
     }
@@ -441,7 +457,7 @@
     "cat": {
       "automation": {
         "source": "chris-premades",
-        "version": "2.0.4"
+        "version": "2.1.0"
       },
       "macros": {
         "roll": [
@@ -458,9 +474,9 @@
   "folder": "NiZrtuHI7PwyPEJc",
   "_id": "AqrisuprlAAiHdJW",
   "_stats": {
-    "coreVersion": "14.364",
+    "coreVersion": "14.369",
     "systemId": "dnd5e",
-    "systemVersion": "5.3.3"
+    "systemVersion": "6.0.6"
   },
   "_key": "!items!AqrisuprlAAiHdJW"
 }

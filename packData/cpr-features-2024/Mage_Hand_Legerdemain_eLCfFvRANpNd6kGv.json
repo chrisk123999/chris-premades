@@ -34,7 +34,6 @@
           "enableCondition": "",
           "disableCondition": "",
           "stackable": "noneName",
-          "showIcon": false,
           "disableIncapacitated": false,
           "selfTarget": false,
           "selfTargetAlways": false,
@@ -52,13 +51,12 @@
           ]
         }
       },
-      "start": null,
       "showIcon": 1,
       "folder": null,
       "_stats": {
         "coreVersion": "14.364",
         "systemId": "dnd5e",
-        "systemVersion": "5.3.3"
+        "systemVersion": "6.0.6"
       },
       "_key": "!items.effects!eLCfFvRANpNd6kGv.lgdmInvisibleHnd"
     }
@@ -508,9 +506,9 @@
   "folder": "ejZnLv70JJzvdWaC",
   "_id": "eLCfFvRANpNd6kGv",
   "_stats": {
-    "coreVersion": "14.364",
+    "coreVersion": "14.369",
     "systemId": "dnd5e",
-    "systemVersion": "5.3.3"
+    "systemVersion": "6.0.6"
   },
   "_key": "!items!eLCfFvRANpNd6kGv"
 }

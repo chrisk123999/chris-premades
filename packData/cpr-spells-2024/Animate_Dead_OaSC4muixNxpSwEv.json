@@ -835,7 +835,7 @@
     {
       "name": "Animate Dead Summoner",
       "img": "icons/magic/death/undead-skeleton-energy-green.webp",
-      "origin": "Item.zHoEjMf9Hk1jObin",
+      "origin": null,
       "duration": {
         "value": null,
         "units": "seconds",
@@ -846,9 +846,12 @@
       "type": "base",
       "_id": "jKNpERXLw7BKSvPE",
       "system": {
-        "changes": []
+        "changes": [],
+        "magical": true,
+        "origin": {
+          "item": "Item.zHoEjMf9Hk1jObin"
+        }
       },
-      "start": null,
       "description": "",
       "tint": "#ffffff",
       "transfer": false,
@@ -888,9 +891,9 @@
         }
       },
       "_stats": {
-        "coreVersion": "14.364",
-        "systemId": null,
-        "systemVersion": null
+        "coreVersion": "14.369",
+        "systemId": "dnd5e",
+        "systemVersion": "6.0.6"
       },
       "_key": "!items.effects!OaSC4muixNxpSwEv.jKNpERXLw7BKSvPE"
     }
@@ -920,9 +923,9 @@
   "folder": "dIULQZnOw9ECXyoi",
   "_id": "OaSC4muixNxpSwEv",
   "_stats": {
-    "coreVersion": "14.364",
-    "systemId": null,
-    "systemVersion": null
+    "coreVersion": "14.369",
+    "systemId": "dnd5e",
+    "systemVersion": "6.0.6"
   },
   "_key": "!items!OaSC4muixNxpSwEv"
 }

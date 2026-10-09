@@ -92,7 +92,7 @@ async function remove({document: effect}) {
         origin: effect.origin,
         identifier: 'hexbladesCurseTarget',
         activityUuid: originActivity.uuid,
-        duration: {seconds: effect.duration.remaining},
+        duration: {value: effect.duration.secondsRemaining, units: 'seconds'},
         specialDuration: ['zeroHP'],
         macros: [{type: 'effect', macros: [{source: 'chris-premades', rules: '2014', identifier: 'hexblades-curse-target'}]}]
     });

@@ -18,7 +18,6 @@
       "disabled": false,
       "flags": {
         "dae": {
-          "showIcon": false,
           "transfer": false,
           "stackable": "noneNameOnly",
           "enableCondition": "",
@@ -50,34 +49,45 @@
       "system": {
         "changes": [
           {
-            "key": "system.attributes.movement.fly",
+            "key": "system.attributes.movement.speeds.fly",
             "value": 10,
             "priority": 2,
-            "type": "upgrade"
+            "type": "upgrade",
+            "phase": "initial",
+            "_id": "7dB0vnfIBVqHiHCi",
+            "conditions": "{}",
+            "replacement": ""
           },
           {
             "key": "system.attributes.movement.hover",
             "value": true,
             "priority": 2,
-            "type": "override"
+            "type": "override",
+            "phase": "initial",
+            "_id": "3YVL3H8Idhd21uiv",
+            "conditions": "{}",
+            "replacement": ""
           },
           {
             "key": "flags.midi-qol.grants.disadvantage.attack.all",
             "value": 1,
             "priority": 20,
-            "type": "add"
+            "type": "add",
+            "phase": "initial",
+            "_id": "W1NZf17R0HJ6RDem",
+            "conditions": "{}",
+            "replacement": ""
           }
         ]
       },
       "origin": null,
       "sort": 0,
-      "start": null,
       "showIcon": 1,
       "folder": null,
       "_stats": {
-        "coreVersion": "14.364",
+        "coreVersion": "14.369",
         "systemId": "dnd5e",
-        "systemVersion": "5.3.3"
+        "systemVersion": "6.0.6"
       },
       "_key": "!items.effects!sh9FM8X43RsJIj3B.uLTzEfjN3hktPd32"
     }
@@ -438,9 +448,9 @@
   "folder": "F8h08o7wIe67W3Mw",
   "_id": "sh9FM8X43RsJIj3B",
   "_stats": {
-    "coreVersion": "14.364",
+    "coreVersion": "14.369",
     "systemId": "dnd5e",
-    "systemVersion": "5.3.3"
+    "systemVersion": "6.0.6"
   },
   "_key": "!items!sh9FM8X43RsJIj3B"
 }

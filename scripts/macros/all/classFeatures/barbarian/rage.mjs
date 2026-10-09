@@ -63,7 +63,7 @@ async function rageDamage({document: effect, workflow}) {
 }
 export const rage = {
     name: 'Rage',
-    version: '2.0.2',
+    version: '2.1.0',
     rules: 'all',
     notes: 'Use the "actorPreCreateRageEffect" called event (async) to modify the rage effect.\n\tData available: actor, activity, effectData, rules, token.\nUse "actorRageBegin" (async) to respond when rage starts.\n\tData available: actor, activity, effect, rules, token.',
     roll: [

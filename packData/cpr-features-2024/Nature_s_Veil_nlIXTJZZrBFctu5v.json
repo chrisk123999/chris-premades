@@ -169,12 +169,15 @@
     {
       "name": "Nature's Veil",
       "img": "icons/magic/nature/leaf-armor-scale-green.webp",
-      "origin": "Compendium.chris-premades.CPRClassFeatures2024.Item.nlIXTJZZrBFctu5v",
+      "origin": null,
       "transfer": false,
       "_id": "b0kFhxzHCc2sVHuB",
       "type": "base",
       "system": {
-        "changes": []
+        "changes": [],
+        "origin": {
+          "item": "Compendium.chris-premades.CPRFeatures2024.Item.nlIXTJZZrBFctu5v"
+        }
       },
       "disabled": false,
       "duration": {
@@ -199,13 +202,13 @@
           "enableCondition": "",
           "disableCondition": "",
           "stackable": "noneName",
-          "showIcon": false,
           "disableIncapacitated": false,
           "selfTarget": false,
           "selfTargetAlways": false,
           "dontApply": false,
           "durationExpression": "",
-          "macroRepeat": "none"
+          "macroRepeat": "none",
+          "expiryMode": "delete"
         },
         "core": {
           "overlay": false
@@ -218,12 +221,11 @@
         }
       },
       "_stats": {
-        "coreVersion": "14.364",
-        "systemId": null,
-        "systemVersion": null
+        "coreVersion": "14.369",
+        "systemId": "dnd5e",
+        "systemVersion": "6.0.6"
       },
       "showIcon": 2,
-      "start": null,
       "folder": null,
       "_key": "!items.effects!nlIXTJZZrBFctu5v.b0kFhxzHCc2sVHuB"
     }
@@ -237,14 +239,14 @@
     "cat": {
       "automation": {
         "source": "chris-premades",
-        "version": "2.0.0"
+        "version": "2.1.0"
       }
     }
   },
   "_stats": {
-    "coreVersion": "14.364",
-    "systemId": null,
-    "systemVersion": null
+    "coreVersion": "14.369",
+    "systemId": "dnd5e",
+    "systemVersion": "6.0.6"
   },
   "_key": "!items!nlIXTJZZrBFctu5v"
 }

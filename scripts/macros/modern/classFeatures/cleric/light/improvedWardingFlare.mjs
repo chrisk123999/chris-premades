@@ -1,11 +1,6 @@
-import {actorUtils, documentUtils} from '../../../../../proxy.mjs';
+import {addItemRecovery} from '../../../../generic/itemRecovery.mjs';
 async function added({document}) {
-    const wardingFlare = actorUtils.getItemByIdentifier(document.actor, 'warding-flare');
-    if (!wardingFlare) return;
-    if (wardingFlare.system.uses.recovery.find(i => i.period === 'sr')) return;
-    const recovery = wardingFlare.toObject().system.uses.recovery;
-    recovery.push({formula: undefined, period: 'sr', type: 'recoverAll'});
-    await documentUtils.update(wardingFlare, {'system.uses.recovery': recovery});
+    await addItemRecovery(document, 'warding-flare', {period: 'sr', type: 'recoverAll'});
 }
 export const improvedWardingFlare = {
     name: 'Improved Warding Flare',

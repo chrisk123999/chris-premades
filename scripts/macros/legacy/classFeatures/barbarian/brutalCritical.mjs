@@ -2,10 +2,12 @@ import {automationUtils, rollUtils, workflowUtils} from '../../../../proxy.mjs';
 async function critical({document: item, workflow}) {
     if (!workflow.isCritical) return;
     if (!workflowUtils.isAttackType(workflow, 'meleeWeaponAttack')) return;
-    const formula = workflow.damageRolls[0].formula;
+    const faces = workflow.damageRolls[0].dice[0]?.faces;
+    if (!faces) return;
     const dice = automationUtils.getConfigValue(item, 'bonus');
     const bonusDice = (await rollUtils.rollDice(dice, {document: item})).total;
-    workflow.damageRolls[0] = await rollUtils.damageRoll(formula, item, {flavor: item.name, isCritical: true, critOptions: {bonusDice, multiplier: 1}});
+    if (!bonusDice) return;
+    workflow.damageRolls[0] = await rollUtils.addToRoll(workflow.damageRolls[0], bonusDice + 'd' + faces);
     await workflow.setDamageRolls(workflow.damageRolls);
     await workflowUtils.completeItemUse(item);
 }

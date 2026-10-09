@@ -211,9 +211,9 @@
   "img": "icons/magic/unholy/strike-body-explode-disintegrate.webp",
   "folder": "KgK97fRED9Mg1rAg",
   "_stats": {
-    "coreVersion": "14.364",
+    "coreVersion": "14.369",
     "systemId": "dnd5e",
-    "systemVersion": "5.3.3"
+    "systemVersion": "6.0.6"
   },
   "effects": [
     {
@@ -246,7 +246,6 @@
           "selfTargetAlways": false,
           "dontApply": true,
           "stackable": "noneName",
-          "showIcon": false,
           "durationExpression": "",
           "macroRepeat": "none"
         },
@@ -260,9 +259,8 @@
       "_stats": {
         "coreVersion": "14.364",
         "systemId": "dnd5e",
-        "systemVersion": "5.3.3"
+        "systemVersion": "6.0.6"
       },
-      "start": null,
       "showIcon": 1,
       "folder": null,
       "_key": "!items.effects!ycOsfLttdroJsxvG.ssf3wptVRpgtltRU"
@@ -297,7 +295,6 @@
           "selfTargetAlways": false,
           "dontApply": true,
           "stackable": "noneName",
-          "showIcon": false,
           "durationExpression": "",
           "macroRepeat": "none"
         },
@@ -311,9 +308,8 @@
       "_stats": {
         "coreVersion": "14.364",
         "systemId": "dnd5e",
-        "systemVersion": "5.3.3"
+        "systemVersion": "6.0.6"
       },
-      "start": null,
       "showIcon": 1,
       "folder": null,
       "_key": "!items.effects!ycOsfLttdroJsxvG.YsTfnfPBFbQiPDUk"

@@ -209,7 +209,7 @@
     "cat": {
       "automation": {
         "source": "chris-premades",
-        "version": "2.0.0"
+        "version": "2.1.0"
       },
       "macros": {
         "roll": [
@@ -238,7 +238,6 @@
           "disableCondition": "",
           "disableIncapacitated": false,
           "stackable": "noneName",
-          "showIcon": false,
           "durationExpression": "",
           "macroRepeat": "none"
         },
@@ -258,13 +257,21 @@
             "key": "flags.cat.CR.charmed",
             "value": true,
             "priority": null,
-            "type": "custom"
+            "type": "custom",
+            "phase": "initial",
+            "_id": "c3uvulxbTVzdoOtR",
+            "conditions": "{}",
+            "replacement": ""
           },
           {
             "key": "flags.cat.CR.frightened",
             "value": true,
             "priority": null,
-            "type": "custom"
+            "type": "custom",
+            "phase": "initial",
+            "_id": "jScDcM4ApeRQdbs6",
+            "conditions": "{}",
+            "replacement": ""
           }
         ]
       },
@@ -274,11 +281,10 @@
       "statuses": [],
       "sort": 0,
       "_stats": {
-        "coreVersion": "14.364",
-        "systemId": null,
-        "systemVersion": null
+        "coreVersion": "14.369",
+        "systemId": "dnd5e",
+        "systemVersion": "6.0.6"
       },
-      "start": null,
       "showIcon": 1,
       "folder": null,
       "_key": "!items.effects!lE8oqeAPZ1uN7De4.KwtGqbLcd2LCxmJ6"
@@ -294,9 +300,13 @@
         "changes": [
           {
             "key": "flags.midi-qol.OverTime",
-            "value": "turn=end,allowIncapacitated=true,rollType=save,saveAbility=wis,saveDC=$activity.dc,saveDamage=nodamage,saveCount=1,rollMode=publicroll,",
+            "value": "turn=end,allowIncapacitated=true,rollType=save,saveAbility=wis,saveDC=$activity.dc,saveDamage=nodamage,saveCount=1,rollMode=public,",
             "priority": 20,
-            "type": "custom"
+            "type": "custom",
+            "phase": "initial",
+            "_id": "AUdTXCkBmG31pKez",
+            "conditions": "{}",
+            "replacement": ""
           }
         ]
       },
@@ -322,15 +332,17 @@
         },
         "cat": {
           "identifier": "beguilingTwistCharmed"
+        },
+        "dae": {
+          "expiryMode": "delete"
         }
       },
       "_stats": {
-        "coreVersion": "14.364",
-        "systemId": null,
-        "systemVersion": null
+        "coreVersion": "14.369",
+        "systemId": "dnd5e",
+        "systemVersion": "6.0.6"
       },
       "showIcon": 2,
-      "start": null,
       "description": "",
       "folder": null,
       "sort": 0,
@@ -347,9 +359,13 @@
         "changes": [
           {
             "key": "flags.midi-qol.OverTime",
-            "value": "turn=end,allowIncapacitated=true,rollType=save,saveAbility=wis,saveDC=$activity.dc,saveDamage=nodamage,saveCount=1,rollMode=publicroll,",
+            "value": "turn=end,allowIncapacitated=true,rollType=save,saveAbility=wis,saveDC=$activity.dc,saveDamage=nodamage,saveCount=1,rollMode=public,",
             "priority": 20,
-            "type": "custom"
+            "type": "custom",
+            "phase": "initial",
+            "_id": "3ylOLPIC1vpftOCH",
+            "conditions": "{}",
+            "replacement": ""
           }
         ]
       },
@@ -375,15 +391,17 @@
         },
         "cat": {
           "identifier": "beguilingTwistFrightened"
+        },
+        "dae": {
+          "expiryMode": "delete"
         }
       },
       "_stats": {
-        "coreVersion": "14.364",
-        "systemId": null,
-        "systemVersion": null
+        "coreVersion": "14.369",
+        "systemId": "dnd5e",
+        "systemVersion": "6.0.6"
       },
       "showIcon": 2,
-      "start": null,
       "description": "",
       "folder": null,
       "sort": 0,
@@ -394,9 +412,9 @@
   "folder": "WHDBHS3P5SPcWYBI",
   "_id": "lE8oqeAPZ1uN7De4",
   "_stats": {
-    "coreVersion": "14.364",
-    "systemId": null,
-    "systemVersion": null
+    "coreVersion": "14.369",
+    "systemId": "dnd5e",
+    "systemVersion": "6.0.6"
   },
   "_key": "!items!lE8oqeAPZ1uN7De4"
 }

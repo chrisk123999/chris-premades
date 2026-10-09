@@ -49,13 +49,20 @@ export function cleanEntry(entry) {
         entry.system.description.chat = '';
     }
     if (entry.system?.source?.sourceClass) delete entry.system.source.sourceClass;
+    if (entry.system?.sourceClass === '') delete entry.system.sourceClass;
+    if (entry.system?.preparation && entry.system.method !== undefined) delete entry.system.preparation;
     if (entry.system?.materials?.value) entry.system.materials.value = '';
     Object.values(entry.system?.activities ?? {}).forEach(activity => cleanFlags(activity));
     (entry.effects ?? []).forEach(effect => {
         cleanStats(effect);
         cleanFlags(effect);
         if (effect.description) effect.description = '';
+        if (effect.flags?.dae?.showIcon === false) delete effect.flags.dae.showIcon;
         if (worldReference.test(effect.origin ?? '')) effect.origin = null;
+        Object.entries(effect.system?.origin ?? {}).forEach(([key, uuid]) => {
+            if (worldReference.test(uuid ?? '')) delete effect.system.origin[key];
+        });
+        delete effect.start;
         volatileDuration.forEach(key => delete effect.duration?.[key]);
     });
     (entry.items ?? []).forEach(item => cleanEntry(item));

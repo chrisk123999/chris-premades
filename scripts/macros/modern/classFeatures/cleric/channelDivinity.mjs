@@ -19,7 +19,7 @@ async function promptChannelDivinities({data: {workflow}}) {
 }
 async function applyTurnUndead({workflow}) {
     if (!workflow.failedSaves.size) return;
-    const turnedEffect = workflow.activity.effects[0]?.effect ?? workflow.item.effects.contents[0];
+    const turnedEffect = (await workflow.activity.effects[0]?.getEffect()) ?? workflow.item.effects.contents[0];
     if (!turnedEffect) return;
     const casterEffect = workflow.item.effects.contents.find(e => e.id !== turnedEffect.id);
     if (!casterEffect) return;

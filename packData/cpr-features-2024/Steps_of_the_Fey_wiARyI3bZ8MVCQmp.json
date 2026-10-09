@@ -15,7 +15,11 @@
             "key": "flags.midi-qol.disadvantage.attack.all",
             "value": "targetId != \"@token\"",
             "priority": 20,
-            "type": "custom"
+            "type": "custom",
+            "replacement": "origin",
+            "phase": "initial",
+            "_id": "eZGRQkSNiEHaMxyO",
+            "conditions": "{}"
           }
         ]
       },
@@ -41,26 +45,25 @@
           "enableCondition": "",
           "disableCondition": "",
           "stackable": "noneName",
-          "showIcon": false,
           "disableIncapacitated": false,
           "selfTarget": false,
           "selfTargetAlways": false,
           "dontApply": false,
           "durationExpression": "",
           "macroRepeat": "none",
-          "specialDuration": []
+          "specialDuration": [],
+          "expiryMode": "delete"
         },
         "core": {
           "overlay": false
         }
       },
-      "start": null,
       "showIcon": 1,
       "folder": null,
       "_stats": {
-        "coreVersion": "14.364",
-        "systemId": null,
-        "systemVersion": null
+        "coreVersion": "14.369",
+        "systemId": "dnd5e",
+        "systemVersion": "6.0.6"
       },
       "_key": "!items.effects!wiARyI3bZ8MVCQmp.l75I7bKQ13Uq0w1I"
     }
@@ -492,7 +495,7 @@
     "cat": {
       "automation": {
         "source": "chris-premades",
-        "version": "2.0.0"
+        "version": "2.1.0"
       },
       "macros": {
         "roll": [
@@ -509,9 +512,9 @@
   "folder": "970112c3e33734fb",
   "_id": "wiARyI3bZ8MVCQmp",
   "_stats": {
-    "coreVersion": "14.364",
-    "systemId": null,
-    "systemVersion": null
+    "coreVersion": "14.369",
+    "systemId": "dnd5e",
+    "systemVersion": "6.0.6"
   },
   "_key": "!items!wiARyI3bZ8MVCQmp"
 }

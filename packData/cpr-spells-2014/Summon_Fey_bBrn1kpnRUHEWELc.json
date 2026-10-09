@@ -53,10 +53,6 @@
       "cost": 300,
       "supply": 0
     },
-    "preparation": {
-      "mode": "prepared",
-      "prepared": false
-    },
     "properties": [
       "vocal",
       "somatic",
@@ -375,7 +371,6 @@
       }
     },
     "identifier": "summon-fey",
-    "sourceClass": "",
     "method": "spell",
     "prepared": 0
   },
@@ -442,9 +437,9 @@
   "folder": "fmUgbBpzksaKMBK8",
   "_id": "bBrn1kpnRUHEWELc",
   "_stats": {
-    "coreVersion": "14.364",
-    "systemId": null,
-    "systemVersion": null
+    "coreVersion": "14.369",
+    "systemId": "dnd5e",
+    "systemVersion": "6.0.6"
   },
   "_key": "!items!bBrn1kpnRUHEWELc"
 }

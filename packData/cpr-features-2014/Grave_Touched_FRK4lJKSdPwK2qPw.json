@@ -100,9 +100,9 @@
   "folder": "c278ed560f7563d5",
   "_id": "FRK4lJKSdPwK2qPw",
   "_stats": {
-    "coreVersion": "14.364",
-    "systemId": null,
-    "systemVersion": null
+    "coreVersion": "14.369",
+    "systemId": "dnd5e",
+    "systemVersion": "6.0.6"
   },
   "_key": "!items!FRK4lJKSdPwK2qPw"
 }

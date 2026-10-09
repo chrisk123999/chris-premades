@@ -16,12 +16,14 @@
             "type": "custom",
             "value": "workflow.token.document.uuid === \"@tokenUuid\"",
             "phase": "initial",
-            "priority": null
+            "priority": null,
+            "replacement": "origin",
+            "_id": "s5xewMJA67GQr4cZ",
+            "conditions": "{}"
           }
         ]
       },
       "disabled": false,
-      "start": null,
       "duration": {
         "value": 1,
         "units": "rounds",
@@ -63,9 +65,9 @@
         }
       },
       "_stats": {
-        "coreVersion": "14.364",
+        "coreVersion": "14.369",
         "systemId": "dnd5e",
-        "systemVersion": "5.3.3"
+        "systemVersion": "6.0.6"
       },
       "_key": "!items.effects!iTrs6iUkyc4oamtQ.5fMuTvTRi5U4OXQ7"
     }
@@ -287,9 +289,9 @@
   "img": "icons/sundries/documents/blueprint-axe.webp",
   "folder": "8ax5XkSTWyxxPBH8",
   "_stats": {
-    "coreVersion": "14.364",
+    "coreVersion": "14.369",
     "systemId": "dnd5e",
-    "systemVersion": "5.3.3"
+    "systemVersion": "6.0.6"
   },
   "_id": "iTrs6iUkyc4oamtQ",
   "_key": "!items!iTrs6iUkyc4oamtQ"

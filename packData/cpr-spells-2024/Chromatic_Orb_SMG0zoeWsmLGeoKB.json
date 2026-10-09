@@ -180,11 +180,10 @@
           "animationSpeed": 5,
           "animationIntensity": 5
         },
-        "otherActivityId": "",
+        "otherActivityId": "none",
         "otherActivityAsParentType": true,
         "attackMode": "",
         "ammunition": "",
-        "otherActivityUuid": "",
         "attackRollPerTarget": "default",
         "fumbleThreshold": 1,
         "name": "Attack"
@@ -368,11 +367,10 @@
           "animationSpeed": 5,
           "animationIntensity": 5
         },
-        "otherActivityId": "",
+        "otherActivityId": "none",
         "otherActivityAsParentType": true,
         "attackMode": "",
         "ammunition": "",
-        "otherActivityUuid": "",
         "attackRollPerTarget": "default",
         "fumbleThreshold": 1,
         "_id": "lU5DZnNrLFl1Nwp9",
@@ -467,9 +465,9 @@
   "folder": "CVVxOC68UMmmK5zv",
   "_id": "SMG0zoeWsmLGeoKB",
   "_stats": {
-    "coreVersion": "14.364",
-    "systemId": null,
-    "systemVersion": null
+    "coreVersion": "14.369",
+    "systemId": "dnd5e",
+    "systemVersion": "6.0.6"
   },
   "_key": "!items!SMG0zoeWsmLGeoKB"
 }

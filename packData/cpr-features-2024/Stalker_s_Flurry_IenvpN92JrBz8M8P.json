@@ -172,18 +172,21 @@
     {
       "name": "Stalker's Flurry: Mass Fear",
       "img": "icons/magic/unholy/hand-weapon-glow-black-green.webp",
-      "origin": "Compendium.chris-premades.CPRClassFeatures2024.Item.IenvpN92JrBz8M8P",
+      "origin": null,
       "transfer": false,
       "_id": "poQSTY3F70fkSIdL",
       "type": "base",
       "system": {
-        "changes": []
+        "changes": [],
+        "origin": {
+          "item": "Compendium.chris-premades.CPRFeatures2024.Item.IenvpN92JrBz8M8P"
+        }
       },
       "disabled": false,
       "duration": {
         "value": 2,
         "units": "rounds",
-        "expiry": "turnStart",
+        "expiry": "sourceStart",
         "expired": false
       },
       "description": "",
@@ -202,28 +205,25 @@
           "enableCondition": "",
           "disableCondition": "",
           "stackable": "noneName",
-          "showIcon": false,
           "disableIncapacitated": false,
           "selfTarget": false,
           "selfTargetAlways": false,
           "dontApply": false,
           "durationExpression": "",
           "macroRepeat": "none",
-          "specialDuration": [
-            "turnStartSource"
-          ]
+          "specialDuration": [],
+          "expiryMode": "delete"
         },
         "core": {
           "overlay": false
         }
       },
       "showIcon": 2,
-      "start": null,
       "folder": null,
       "_stats": {
-        "coreVersion": "14.364",
-        "systemId": null,
-        "systemVersion": null
+        "coreVersion": "14.369",
+        "systemId": "dnd5e",
+        "systemVersion": "6.0.6"
       },
       "_key": "!items.effects!IenvpN92JrBz8M8P.poQSTY3F70fkSIdL"
     }
@@ -238,14 +238,14 @@
     },
     "cat": {
       "automation": {
-        "version": "2.0.0"
+        "version": "2.1.0"
       }
     }
   },
   "_stats": {
-    "coreVersion": "14.364",
-    "systemId": null,
-    "systemVersion": null
+    "coreVersion": "14.369",
+    "systemId": "dnd5e",
+    "systemVersion": "6.0.6"
   },
   "_key": "!items!IenvpN92JrBz8M8P"
 }

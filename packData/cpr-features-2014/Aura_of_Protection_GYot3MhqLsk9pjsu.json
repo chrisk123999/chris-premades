@@ -71,15 +71,18 @@
       "system": {
         "changes": [
           {
-            "key": "system.bonuses.abilities.save",
+            "key": "system.rolls.ability.save.bonus",
             "type": "add",
             "value": "@auraValue",
-            "priority": 20
+            "priority": 20,
+            "phase": "initial",
+            "_id": "lglQCxc6Oi8dhWJu",
+            "conditions": "{}",
+            "replacement": ""
           }
         ]
       },
       "disabled": false,
-      "start": null,
       "duration": {
         "value": null,
         "units": "seconds",
@@ -101,9 +104,9 @@
         }
       },
       "_stats": {
-        "coreVersion": "14.364",
-        "systemId": null,
-        "systemVersion": null
+        "coreVersion": "14.369",
+        "systemId": "dnd5e",
+        "systemVersion": "6.0.6"
       },
       "_key": "!items.effects!GYot3MhqLsk9pjsu.uPr0tAuRaSv3Fx9Q"
     }
@@ -112,9 +115,9 @@
   "folder": "zPkRF8dbQaQ6ixi0",
   "_id": "GYot3MhqLsk9pjsu",
   "_stats": {
-    "coreVersion": "14.364",
-    "systemId": null,
-    "systemVersion": null
+    "coreVersion": "14.369",
+    "systemId": "dnd5e",
+    "systemVersion": "6.0.6"
   },
   "_key": "!items!GYot3MhqLsk9pjsu"
 }

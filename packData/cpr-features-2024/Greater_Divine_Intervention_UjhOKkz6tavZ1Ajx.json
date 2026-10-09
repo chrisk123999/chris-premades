@@ -19,12 +19,14 @@
               "type": "none"
             },
             "phase": "initial",
-            "priority": null
+            "priority": null,
+            "_id": "jkTkD1HJOVd4HCv4",
+            "conditions": "{}",
+            "replacement": ""
           }
         ]
       },
       "disabled": false,
-      "start": null,
       "duration": {
         "value": null,
         "units": "seconds",
@@ -67,9 +69,9 @@
         }
       },
       "_stats": {
-        "coreVersion": "14.364",
-        "systemId": null,
-        "systemVersion": null
+        "coreVersion": "14.369",
+        "systemId": "dnd5e",
+        "systemVersion": "6.0.6"
       },
       "_key": "!items.effects!UjhOKkz6tavZ1Ajx.AuSrhdfJagarZrWb"
     }
@@ -284,9 +286,9 @@
   "img": "icons/magic/light/beam-rays-yellow-blue.webp",
   "folder": "zpnSU81c3nPjSzE1",
   "_stats": {
-    "coreVersion": "14.364",
-    "systemId": null,
-    "systemVersion": null
+    "coreVersion": "14.369",
+    "systemId": "dnd5e",
+    "systemVersion": "6.0.6"
   },
   "_key": "!items!UjhOKkz6tavZ1Ajx"
 }

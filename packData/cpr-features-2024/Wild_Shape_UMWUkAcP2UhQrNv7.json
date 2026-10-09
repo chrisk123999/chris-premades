@@ -5,14 +5,16 @@
     {
       "name": "Wild Shape",
       "img": "icons/creatures/mammals/elk-moose-marked-green.webp",
-      "origin": "Compendium.chris-premades.CPRFeatures2024.Item.UMWUkAcP2UhQrNv7",
+      "origin": null,
       "type": "base",
       "_id": "JPBO8ED1L162QMzv",
       "system": {
-        "changes": []
+        "changes": [],
+        "origin": {
+          "item": "Compendium.chris-premades.CPRFeatures2024.Item.UMWUkAcP2UhQrNv7"
+        }
       },
       "disabled": false,
-      "start": null,
       "duration": {
         "value": null,
         "units": "seconds",
@@ -66,9 +68,9 @@
         }
       },
       "_stats": {
-        "coreVersion": "14.364",
-        "systemId": null,
-        "systemVersion": null
+        "coreVersion": "14.369",
+        "systemId": "dnd5e",
+        "systemVersion": "6.0.6"
       },
       "_key": "!items.effects!UMWUkAcP2UhQrNv7.JPBO8ED1L162QMzv"
     }
@@ -463,9 +465,9 @@
   "folder": "bbR7kJffMX4MkL49",
   "_id": "UMWUkAcP2UhQrNv7",
   "_stats": {
-    "coreVersion": "14.364",
-    "systemId": null,
-    "systemVersion": null
+    "coreVersion": "14.369",
+    "systemId": "dnd5e",
+    "systemVersion": "6.0.6"
   },
   "_key": "!items!UMWUkAcP2UhQrNv7"
 }

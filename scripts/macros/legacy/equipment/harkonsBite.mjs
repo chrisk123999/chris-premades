@@ -19,7 +19,7 @@ async function shapechange({document, workflow}) {
         deleteAnimation: config.animation
     });
     effectUtils.pushImageChanges(effectData, document, {identifier: form});
-    if (!isHybrid) effectData.system.changes.push({key: 'system.attributes.movement.walk', type: 'upgrade', value: '40', priority: 20});
+    if (!isHybrid) effectData.system.changes.push({key: 'system.attributes.movement.speeds.walk', type: 'upgrade', value: '40', priority: 20});
     const createEffect = async () => {
         const existing = documentUtils.getEffectByIdentifier(workflow.actor, 'harkonsBiteEffect');
         if (existing) await documentUtils.deleteDocument(existing);

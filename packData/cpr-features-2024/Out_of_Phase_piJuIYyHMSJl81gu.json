@@ -199,7 +199,7 @@
     {
       "name": "Out of Phase",
       "img": "icons/magic/control/debuff-energy-hold-blue-yellow.webp",
-      "origin": "Item.P09qfKhahD5k1vJE",
+      "origin": null,
       "transfer": false,
       "_id": "DQOxfiyk0KRTqn6r",
       "type": "base",
@@ -210,19 +210,27 @@
             "type": "custom",
             "value": 1,
             "phase": "initial",
-            "priority": null
+            "priority": null,
+            "_id": "gWkszcFR9gFZrZW7",
+            "conditions": "{}",
+            "replacement": ""
           },
           {
             "key": "flags.cat.ignoreDifficultTerrain.tokens",
             "type": "custom",
             "value": 1,
             "phase": "final",
-            "priority": null
+            "priority": null,
+            "_id": "Cji7x9qmu74DwTu7",
+            "conditions": "{}",
+            "replacement": ""
           }
-        ]
+        ],
+        "origin": {
+          "item": "Item.P09qfKhahD5k1vJE"
+        }
       },
       "disabled": false,
-      "start": null,
       "duration": {
         "value": null,
         "units": "seconds",
@@ -265,20 +273,27 @@
         }
       },
       "_stats": {
-        "coreVersion": "14.364",
-        "systemId": null,
-        "systemVersion": null
+        "coreVersion": "14.369",
+        "systemId": "dnd5e",
+        "systemVersion": "6.0.6"
       },
       "_key": "!items.effects!piJuIYyHMSJl81gu.DQOxfiyk0KRTqn6r"
     }
   ],
   "folder": "qszA3cg87mjNcVc1",
-  "flags": {},
+  "flags": {
+    "cat": {
+      "automation": {
+        "source": "chris-premades",
+        "version": "2.1.0"
+      }
+    }
+  },
   "_id": "piJuIYyHMSJl81gu",
   "_stats": {
-    "coreVersion": "14.364",
-    "systemId": null,
-    "systemVersion": null
+    "coreVersion": "14.369",
+    "systemId": "dnd5e",
+    "systemVersion": "6.0.6"
   },
   "_key": "!items!piJuIYyHMSJl81gu"
 }

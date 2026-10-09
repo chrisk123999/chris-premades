@@ -36,8 +36,8 @@ async function react({document: item, workflow, sourceToken}) {
         ]
     });
     const casterItem = workflow.token.actor.items.get(workflow.item.id) ?? workflow.item;
-    const enchantments = await itemUtils.enchantItem(casterItem, enchantData);
-    if (enchantments?.length) await documentUtils.makeDependent(effect, enchantments);
+    const enchantment = await itemUtils.enchantItem(casterItem, enchantData);
+    if (enchantment) await documentUtils.makeDependent(effect, [enchantment]);
 }
 export const spellThief = {
     name: 'Spell Thief',

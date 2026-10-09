@@ -83,10 +83,10 @@ async function preWildShape({actor, config, document: activity, token}) {
         tags.push(
             {label: `${_loc('DND5E.AC')} ${a.system.attributes.ac.value}`, id: 'ac'},
             ...Object.entries(CONFIG.DND5E.movementTypes).map(([key, {label, hidden}]) => {
-                const value = a.system.attributes.movement[key];
+                const value = a.system.attributes.movement.speeds[key];
                 return (value && !hidden) ? {label: `${label} ${value}`, id: key} : false;
             }).filter(Boolean),
-            ...Object.entries(CONFIG.DND5E.senses).map(([key, label]) => {
+            ...Object.entries(CONFIG.DND5E.senses).map(([key, {label}]) => {
                 const value = a.system.attributes.senses.ranges[key];
                 return value ? {label: `${label} ${value}`, id: key} : false;
             }).filter(Boolean)

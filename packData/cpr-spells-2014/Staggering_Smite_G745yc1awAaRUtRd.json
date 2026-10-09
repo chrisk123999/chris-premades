@@ -59,10 +59,6 @@
       "spent": 0,
       "recovery": []
     },
-    "preparation": {
-      "mode": "prepared",
-      "prepared": false
-    },
     "activities": {
       "azuoZ5g8ebgFPjUH": {
         "type": "utility",
@@ -281,7 +277,6 @@
       }
     },
     "identifier": "staggering-smite",
-    "sourceClass": "",
     "ability": "",
     "method": "spell",
     "prepared": 0
@@ -291,7 +286,7 @@
     "cat": {
       "automation": {
         "source": "chris-premades",
-        "version": "2.0.4"
+        "version": "2.1.0"
       }
     }
   },
@@ -303,7 +298,8 @@
       "_id": "sNk4Wq7LdRz2PvTa",
       "type": "base",
       "system": {
-        "changes": []
+        "changes": [],
+        "magical": true
       },
       "disabled": false,
       "duration": {
@@ -345,13 +341,12 @@
           }
         }
       },
-      "start": null,
       "showIcon": 1,
       "folder": null,
       "_stats": {
-        "coreVersion": "14.364",
-        "systemId": null,
-        "systemVersion": null
+        "coreVersion": "14.369",
+        "systemId": "dnd5e",
+        "systemVersion": "6.0.6"
       },
       "_key": "!items.effects!G745yc1awAaRUtRd.sNk4Wq7LdRz2PvTa"
     },
@@ -364,18 +359,27 @@
       "system": {
         "changes": [
           {
-            "key": "flags.midi-qol.disadvantage.attack.all",
-            "value": 1,
+            "key": "system.rolls.attack.mode",
+            "value": -1,
             "priority": 20,
-            "type": "add"
+            "type": "add",
+            "phase": "initial",
+            "_id": "n2Vr65Y4Q7uaE7oF",
+            "conditions": "{}",
+            "replacement": ""
           },
           {
-            "key": "flags.midi-qol.disadvantage.check.all",
-            "value": 1,
+            "key": "system.rolls.ability.check.mode",
+            "value": -1,
             "priority": 20,
-            "type": "add"
+            "type": "add",
+            "phase": "initial",
+            "_id": "Tmcxx6zALAIdzRuI",
+            "conditions": "{}",
+            "replacement": ""
           }
-        ]
+        ],
+        "magical": true
       },
       "disabled": false,
       "duration": {
@@ -393,7 +397,8 @@
       "sort": 0,
       "flags": {
         "dae": {
-          "stackable": "noneName"
+          "stackable": "noneName",
+          "expiryMode": "delete"
         },
         "core": {
           "overlay": false
@@ -402,13 +407,12 @@
           "identifier": "staggeringSmiteStagger"
         }
       },
-      "start": null,
       "showIcon": 1,
       "folder": null,
       "_stats": {
-        "coreVersion": "14.364",
-        "systemId": null,
-        "systemVersion": null
+        "coreVersion": "14.369",
+        "systemId": "dnd5e",
+        "systemVersion": "6.0.6"
       },
       "_key": "!items.effects!G745yc1awAaRUtRd.vRubZXNSzOcxjsgY"
     }
@@ -416,9 +420,9 @@
   "folder": "CGiJKfw3RkosMaqN",
   "_id": "G745yc1awAaRUtRd",
   "_stats": {
-    "coreVersion": "14.364",
-    "systemId": null,
-    "systemVersion": null
+    "coreVersion": "14.369",
+    "systemId": "dnd5e",
+    "systemVersion": "6.0.6"
   },
   "_key": "!items!G745yc1awAaRUtRd"
 }

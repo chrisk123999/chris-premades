@@ -6,7 +6,7 @@ function markedEffectData(activity, document, seconds) {
         origin: document.uuid,
         identifier: 'huntersMarkMarked',
         activityUuid: activity.uuid,
-        duration: {seconds}
+        duration: {value: seconds, units: 'seconds'}
     });
 }
 async function use({document, workflow}) {
@@ -23,7 +23,7 @@ async function use({document, workflow}) {
         origin: document.uuid,
         identifier: 'huntersMark',
         activityUuid: workflow.activity.uuid,
-        duration: {seconds},
+        duration: {value: seconds, units: 'seconds'},
         unhideActivities: ['hunters-mark-move'],
         favoriteActivities: true,
         macros: [{type: 'roll', macros: [{source: 'chris-premades', rules: '2014', identifier: 'hunters-mark-attack'}]}]
@@ -69,7 +69,7 @@ async function move({document, workflow}) {
     const targets = markData.targets.filter(uuid => uuid !== previous?.uuid);
     targets.push(newTarget.uuid);
     await documentUtils.setFlag(casterEffect, 'chris-premades', 'huntersMark.targets', targets);
-    const effectData = markedEffectData(workflow.activity, document, casterEffect.duration.remaining);
+    const effectData = markedEffectData(workflow.activity, document, casterEffect.duration.secondsRemaining);
     await effectUtils.createEffects(newTarget.actor, [effectData], {parentEntity: casterEffect});
 }
 async function promptMove({document, token}) {

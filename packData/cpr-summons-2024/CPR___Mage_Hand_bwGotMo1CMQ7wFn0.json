@@ -730,15 +730,19 @@
       "showTokenPortrait": false
     },
     "cat": {
-      "identifier": "mageHand"
+      "identifier": "mageHand",
+      "automation": {
+        "source": "chris-premades",
+        "version": "2.1.0"
+      }
     }
   },
   "folder": null,
   "_id": "bwGotMo1CMQ7wFn0",
   "_stats": {
-    "coreVersion": "14.364",
+    "coreVersion": "14.369",
     "systemId": "dnd5e",
-    "systemVersion": "5.3.3"
+    "systemVersion": "6.0.6"
   },
   "_key": "!actors!bwGotMo1CMQ7wFn0"
 }

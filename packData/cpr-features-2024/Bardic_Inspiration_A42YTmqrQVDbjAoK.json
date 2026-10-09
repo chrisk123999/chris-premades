@@ -88,14 +88,13 @@
       "_id": "xLMT680N5hgZ4eve",
       "img": "icons/magic/control/buff-flight-wings-runes-blue.webp",
       "type": "base",
-      "start": null,
       "origin": null,
       "folder": null,
       "sort": 0,
       "_stats": {
         "coreVersion": "14.364",
-        "systemId": null,
-        "systemVersion": null
+        "systemId": "dnd5e",
+        "systemVersion": "6.0.6"
       },
       "_key": "!items.effects!A42YTmqrQVDbjAoK.xLMT680N5hgZ4eve"
     }
@@ -335,9 +334,9 @@
   "folder": "jv1qLsd4LTtCBvYj",
   "_id": "A42YTmqrQVDbjAoK",
   "_stats": {
-    "coreVersion": "14.364",
-    "systemId": null,
-    "systemVersion": null
+    "coreVersion": "14.369",
+    "systemId": "dnd5e",
+    "systemVersion": "6.0.6"
   },
   "_key": "!items!A42YTmqrQVDbjAoK"
 }

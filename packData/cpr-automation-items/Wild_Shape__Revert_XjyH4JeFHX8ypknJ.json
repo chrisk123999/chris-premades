@@ -196,12 +196,19 @@
   },
   "effects": [],
   "folder": null,
-  "flags": {},
+  "flags": {
+    "cat": {
+      "automation": {
+        "source": "chris-premades",
+        "version": "2.1.0"
+      }
+    }
+  },
   "_id": "XjyH4JeFHX8ypknJ",
   "_stats": {
     "coreVersion": "14.364",
-    "systemId": null,
-    "systemVersion": null
+    "systemId": "dnd5e",
+    "systemVersion": "6.0.6"
   },
   "_key": "!items!XjyH4JeFHX8ypknJ"
 }

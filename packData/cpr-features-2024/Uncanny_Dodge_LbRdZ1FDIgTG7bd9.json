@@ -38,19 +38,22 @@
             "key": "flags.midi-qol.uncanny-dodge",
             "value": 1,
             "priority": 20,
-            "type": "override"
+            "type": "override",
+            "phase": "initial",
+            "_id": "gRyMN6JrreLs3CKt",
+            "conditions": "{}",
+            "replacement": ""
           }
         ]
       },
       "origin": null,
       "sort": 0,
-      "start": null,
       "showIcon": 1,
       "folder": null,
       "_stats": {
-        "coreVersion": "14.364",
+        "coreVersion": "14.369",
         "systemId": "dnd5e",
-        "systemVersion": "5.3.3"
+        "systemVersion": "6.0.6"
       },
       "_key": "!items.effects!LbRdZ1FDIgTG7bd9.jvdtYTCzJr7zCKRV"
     }
@@ -119,7 +122,7 @@
           "prompt": false,
           "visible": false
         },
-        "useConditionText": "",
+        "useConditionText": "reaction == 'isHit'",
         "useConditionReason": "",
         "effectConditionText": "",
         "macroData": {
@@ -228,9 +231,9 @@
   "folder": "oeHJD6UoRsmQIVlo",
   "_id": "LbRdZ1FDIgTG7bd9",
   "_stats": {
-    "coreVersion": "14.364",
+    "coreVersion": "14.369",
     "systemId": "dnd5e",
-    "systemVersion": "5.3.3"
+    "systemVersion": "6.0.6"
   },
   "_key": "!items!LbRdZ1FDIgTG7bd9"
 }

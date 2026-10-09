@@ -8,12 +8,12 @@ async function use({document, workflow}) {
     if (!attacks.length) return;
     const selection = attacks.length === 1 ? attacks[0] : await dialogUtils.selectDocumentDialog(document.name, _loc('CHRISPREMADES.Macros.Modern.PactOfTheChain.Attack'), attacks, {sort: 'alphabetical'});
     if (!selection) return;
-    await workflowUtils.completeItemUse(selection, Array.from(workflow.targets, token => token.document), {autoDamage: true, fast: true});
+    await workflowUtils.completeItemUse(selection, Array.from(workflow.targets, token => token.document), {autoDamage: true, fast: true, options: {workflowOptions: {notReaction: true}}});
     await actorUtils.setReactionUsed(familiarToken.actor);
 }
 export const pactOfTheChain = {
     name: 'Eldritch Invocations: Pact of the Chain',
-    version: '2.0.0',
+    version: '2.1.0',
     rules: '2024',
     roll: [
         {pass: 'itemRollFinished', macro: use, priority: 50}

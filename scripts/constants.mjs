@@ -28,7 +28,18 @@ const sangromancyFeatures = [
     'sangromantic-initiate',
     'stolen-power'
 ];
+const darknessAnimationConfig = {
+    default: '',
+    type: 'select',
+    label: 'CHRISPREMADES.Config.DarknessAnimation',
+    hint: 'CHRISPREMADES.Config.DarknessAnimationHint',
+    category: 'mechanics',
+    get options() {
+        return [{value: '', label: _loc('DND5E.None')}, ...Object.entries(CONFIG.Canvas.darknessAnimations).map(([value, config]) => ({value, label: config.label}))];
+    }
+};
 export default {
     packs,
-    sangromancyFeatures
+    sangromancyFeatures,
+    darknessAnimationConfig
 };

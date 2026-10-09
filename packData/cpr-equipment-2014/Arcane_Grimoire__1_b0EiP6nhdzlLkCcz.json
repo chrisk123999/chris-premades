@@ -89,9 +89,9 @@
   "folder": "nvwKBMSV2OHzwAOe",
   "_id": "b0EiP6nhdzlLkCcz",
   "_stats": {
-    "coreVersion": "14.364",
-    "systemId": null,
-    "systemVersion": null
+    "coreVersion": "14.369",
+    "systemId": "dnd5e",
+    "systemVersion": "6.0.6"
   },
   "_key": "!items!b0EiP6nhdzlLkCcz"
 }

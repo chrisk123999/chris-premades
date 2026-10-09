@@ -219,8 +219,7 @@
       }
     },
     "method": "spell",
-    "prepared": 1,
-    "sourceClass": ""
+    "prepared": 1
   },
   "effects": [
     {
@@ -234,11 +233,16 @@
         "changes": [
           {
             "key": "flags.midi-qol.OverTime",
-            "value": "turn=end,allowIncapacitated=true,rollType=save,saveAbility=wis,saveDC=$activity.dc,saveDamage=nodamage,saveCount=1,saveMagic=true,rollMode=publicroll,",
+            "value": "turn=end,allowIncapacitated=true,rollType=save,saveAbility=wis,saveDC=$activity.dc,saveDamage=nodamage,saveCount=1,saveMagic=true,rollMode=public,",
             "priority": 20,
-            "type": "custom"
+            "type": "custom",
+            "phase": "initial",
+            "_id": "SorG13dDXMaF3zfP",
+            "conditions": "{}",
+            "replacement": ""
           }
-        ]
+        ],
+        "magical": true
       },
       "disabled": false,
       "duration": {
@@ -265,12 +269,11 @@
         }
       },
       "_stats": {
-        "coreVersion": "14.364",
+        "coreVersion": "14.369",
         "systemId": "dnd5e",
-        "systemVersion": "5.3.3"
+        "systemVersion": "6.0.6"
       },
       "showIcon": 2,
-      "start": null,
       "description": "",
       "folder": null,
       "sort": 0,
@@ -304,9 +307,9 @@
   "folder": "CVVxOC68UMmmK5zv",
   "_id": "yqZqt2OBh48dR7Jf",
   "_stats": {
-    "coreVersion": "14.364",
+    "coreVersion": "14.369",
     "systemId": "dnd5e",
-    "systemVersion": "5.3.3"
+    "systemVersion": "6.0.6"
   },
   "_key": "!items!yqZqt2OBh48dR7Jf"
 }

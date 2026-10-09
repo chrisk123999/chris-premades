@@ -54,14 +54,13 @@
       "_id": "VbsuvIU5RWdbK5D8",
       "img": "icons/skills/melee/unarmed-punch-fist.webp",
       "type": "base",
-      "start": null,
       "origin": null,
       "folder": null,
       "sort": 0,
       "_stats": {
         "coreVersion": "14.364",
         "systemId": "dnd5e",
-        "systemVersion": "5.3.3"
+        "systemVersion": "6.0.6"
       },
       "_key": "!items.effects!HPQBvCS8OKRNcTJ1.VbsuvIU5RWdbK5D8"
     }
@@ -313,9 +312,9 @@
   "img": "icons/skills/melee/unarmed-punch-fist.webp",
   "folder": "nH8135F1PzU9skht",
   "_stats": {
-    "coreVersion": "14.364",
+    "coreVersion": "14.369",
     "systemId": "dnd5e",
-    "systemVersion": "5.3.3"
+    "systemVersion": "6.0.6"
   },
   "_id": "HPQBvCS8OKRNcTJ1",
   "_key": "!items!HPQBvCS8OKRNcTJ1"

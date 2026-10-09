@@ -58,9 +58,9 @@
   "folder": "H09zLwugbHnO8ugI",
   "_id": "mfwreg10mFNOo4PP",
   "_stats": {
-    "coreVersion": "14.364",
-    "systemId": null,
-    "systemVersion": null
+    "coreVersion": "14.369",
+    "systemId": "dnd5e",
+    "systemVersion": "6.0.6"
   },
   "_key": "!items!mfwreg10mFNOo4PP"
 }

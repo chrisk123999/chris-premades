@@ -6,7 +6,7 @@ async function use({document, workflow}) {
         name: document.name,
         img: document.img,
         origin: document.uuid,
-        duration: {rounds: 1},
+        duration: {value: 1, units: 'rounds'},
         specialDuration: ['madeAttack', 'castSpell', 'turnStart']
     });
     effectData.statuses = ['invisible'];

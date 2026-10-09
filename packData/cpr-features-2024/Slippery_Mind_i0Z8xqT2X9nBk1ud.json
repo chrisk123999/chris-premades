@@ -14,13 +14,21 @@
             "key": "system.abilities.wis.proficient",
             "value": 1,
             "priority": 20,
-            "type": "upgrade"
+            "type": "upgrade",
+            "phase": "initial",
+            "_id": "2yO5jlOgQ0VV0e1S",
+            "conditions": "{}",
+            "replacement": ""
           },
           {
             "key": "system.abilities.cha.proficient",
             "value": 1,
             "priority": 20,
-            "type": "upgrade"
+            "type": "upgrade",
+            "phase": "initial",
+            "_id": "8OJtB9Ag8nAuBFnF",
+            "conditions": "{}",
+            "replacement": ""
           }
         ]
       },
@@ -46,7 +54,6 @@
           "enableCondition": "",
           "disableCondition": "",
           "stackable": "noneName",
-          "showIcon": false,
           "disableIncapacitated": false,
           "selfTarget": false,
           "selfTargetAlways": false,
@@ -59,13 +66,12 @@
           "overlay": false
         }
       },
-      "start": null,
       "showIcon": 1,
       "folder": null,
       "_stats": {
-        "coreVersion": "14.364",
+        "coreVersion": "14.369",
         "systemId": "dnd5e",
-        "systemVersion": "5.3.3"
+        "systemVersion": "6.0.6"
       },
       "_key": "!items.effects!i0Z8xqT2X9nBk1ud.TfWCJf15YSfpfpZk"
     }
@@ -121,9 +127,9 @@
   "folder": "oeHJD6UoRsmQIVlo",
   "_id": "i0Z8xqT2X9nBk1ud",
   "_stats": {
-    "coreVersion": "14.364",
+    "coreVersion": "14.369",
     "systemId": "dnd5e",
-    "systemVersion": "5.3.3"
+    "systemVersion": "6.0.6"
   },
   "_key": "!items!i0Z8xqT2X9nBk1ud"
 }

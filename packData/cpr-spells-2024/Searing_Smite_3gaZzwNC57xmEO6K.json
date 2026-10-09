@@ -331,8 +331,7 @@
       }
     },
     "method": "spell",
-    "prepared": 1,
-    "sourceClass": ""
+    "prepared": 1
   },
   "effects": [
     {
@@ -348,9 +347,14 @@
             "key": "flags.midi-qol.OverTime",
             "value": "turn=start,allowIncapacitated=true,rollType=save,saveAbility=con,saveDC=$activity.dc,saveDamage=fulldamage,saveMagic=true,saveCount=1,damageRoll=(1 + ##effect.flags.dnd5e.scaling)d6,damageType=fire,label=Searing Smite",
             "priority": 20,
-            "type": "custom"
+            "type": "custom",
+            "phase": "initial",
+            "_id": "t4EfvuFgCAFBw0bo",
+            "conditions": "{}",
+            "replacement": ""
           }
-        ]
+        ],
+        "magical": true
       },
       "disabled": false,
       "duration": {
@@ -374,15 +378,15 @@
         }
       },
       "_stats": {
-        "coreVersion": "14.364",
-        "systemId": null,
-        "systemVersion": null
+        "coreVersion": "14.369",
+        "systemId": "dnd5e",
+        "systemVersion": "6.0.6"
       },
       "showIcon": 1,
-      "start": null,
       "description": "",
       "folder": null,
       "sort": 0,
+      "tint": "#ffffff",
       "_key": "!items.effects!3gaZzwNC57xmEO6K.Gv6TnEa2WqMxB5zD"
     }
   ],
@@ -413,9 +417,9 @@
   "folder": "CVVxOC68UMmmK5zv",
   "_id": "3gaZzwNC57xmEO6K",
   "_stats": {
-    "coreVersion": "14.364",
+    "coreVersion": "14.369",
     "systemId": "dnd5e",
-    "systemVersion": "5.3.3"
+    "systemVersion": "6.0.6"
   },
   "_key": "!items!3gaZzwNC57xmEO6K"
 }

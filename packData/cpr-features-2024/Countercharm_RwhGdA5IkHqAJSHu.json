@@ -82,7 +82,7 @@
           "formula": "",
           "name": ""
         },
-        "useConditionText": "",
+        "useConditionText": "false",
         "useConditionReason": "",
         "effectConditionText": "",
         "macroData": {
@@ -212,9 +212,9 @@
   "folder": "jv1qLsd4LTtCBvYj",
   "_id": "RwhGdA5IkHqAJSHu",
   "_stats": {
-    "coreVersion": "14.364",
-    "systemId": null,
-    "systemVersion": null
+    "coreVersion": "14.369",
+    "systemId": "dnd5e",
+    "systemVersion": "6.0.6"
   },
   "_key": "!items!RwhGdA5IkHqAJSHu"
 }

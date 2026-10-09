@@ -189,8 +189,7 @@
         "units": "ft"
       }
     },
-    "prepared": 1,
-    "sourceClass": ""
+    "prepared": 1
   },
   "effects": [
     {
@@ -207,99 +206,139 @@
             "type": "add",
             "value": "-acid",
             "phase": "final",
-            "priority": null
+            "priority": null,
+            "_id": "dm9iQhFir4NfrpAM",
+            "conditions": "{}",
+            "replacement": ""
           },
           {
             "key": "system.traits.dr.value",
             "type": "add",
             "value": "-bludgeoning",
             "phase": "final",
-            "priority": null
+            "priority": null,
+            "_id": "wHzh8DgPKjL8b2pT",
+            "conditions": "{}",
+            "replacement": ""
           },
           {
             "key": "system.traits.dr.value",
             "type": "add",
             "value": "-cold",
             "phase": "final",
-            "priority": null
+            "priority": null,
+            "_id": "q8sCNxQD3TSt980k",
+            "conditions": "{}",
+            "replacement": ""
           },
           {
             "key": "system.traits.dr.value",
             "type": "add",
             "value": "-fire",
             "phase": "final",
-            "priority": null
+            "priority": null,
+            "_id": "Bpp9gYziZLkRM534",
+            "conditions": "{}",
+            "replacement": ""
           },
           {
             "key": "system.traits.dr.value",
             "type": "add",
             "value": "-force",
             "phase": "final",
-            "priority": null
+            "priority": null,
+            "_id": "l9dY5GlFKdRFMjdu",
+            "conditions": "{}",
+            "replacement": ""
           },
           {
             "key": "system.traits.dr.value",
             "type": "add",
             "value": "-lightning",
             "phase": "final",
-            "priority": null
+            "priority": null,
+            "_id": "crJVqke8VuPqawHP",
+            "conditions": "{}",
+            "replacement": ""
           },
           {
             "key": "system.traits.dr.value",
             "type": "add",
             "value": "-necrotic",
             "phase": "final",
-            "priority": null
+            "priority": null,
+            "_id": "lWUHt3XtYym5c9Iz",
+            "conditions": "{}",
+            "replacement": ""
           },
           {
             "key": "system.traits.dr.value",
             "type": "add",
             "value": "-piercing",
             "phase": "final",
-            "priority": null
+            "priority": null,
+            "_id": "74w4VDEXtlmPcsHt",
+            "conditions": "{}",
+            "replacement": ""
           },
           {
             "key": "system.traits.dr.value",
             "type": "add",
             "value": "-poison",
             "phase": "final",
-            "priority": null
+            "priority": null,
+            "_id": "nC7rg0BmV5TE4lkM",
+            "conditions": "{}",
+            "replacement": ""
           },
           {
             "key": "system.traits.dr.value",
             "type": "add",
             "value": "-psychic",
             "phase": "final",
-            "priority": null
+            "priority": null,
+            "_id": "A8E8ZoI9URerv46R",
+            "conditions": "{}",
+            "replacement": ""
           },
           {
             "key": "system.traits.dr.value",
             "type": "add",
             "value": "-radiant",
             "phase": "final",
-            "priority": null
+            "priority": null,
+            "_id": "Q73Fdrkbt5KM6Wi8",
+            "conditions": "{}",
+            "replacement": ""
           },
           {
             "key": "system.traits.dr.value",
             "type": "add",
             "value": "-slashing",
             "phase": "final",
-            "priority": null
+            "priority": null,
+            "_id": "NMxGJWSW3v5rOdaU",
+            "conditions": "{}",
+            "replacement": ""
           },
           {
             "key": "system.traits.dr.value",
             "type": "add",
             "value": "-thunder",
             "phase": "final",
-            "priority": null
+            "priority": null,
+            "_id": "awCQAKpyawfwPoRT",
+            "conditions": "{}",
+            "replacement": ""
           }
-        ]
+        ],
+        "magical": true
       },
       "disabled": false,
       "duration": {
         "value": 1,
         "units": "rounds",
-        "expiry": null,
+        "expiry": "sourceStart",
         "expired": false
       },
       "description": "",
@@ -317,17 +356,20 @@
         },
         "dae": {
           "stackable": "noneName",
-          "specialDuration": [
-            "turnStartSource"
-          ]
+          "specialDuration": [],
+          "expiryMode": "delete"
         },
         "cat": {
           "identifier": "wiltingSmite"
         }
       },
-      "start": null,
       "showIcon": 2,
       "folder": null,
+      "_stats": {
+        "coreVersion": "14.369",
+        "systemId": "dnd5e",
+        "systemVersion": "6.0.6"
+      },
       "_key": "!items.effects!IFEjs0FoNFS13Moh.ZRq0J4S0PcaF5KwG"
     }
   ],
@@ -350,7 +392,7 @@
     "cat": {
       "automation": {
         "source": "chris-premades",
-        "version": "2.0.4"
+        "version": "2.1.0"
       },
       "macros": {
         "called": [
@@ -367,9 +409,9 @@
   "folder": "ueMNujKhkNn2zCfl",
   "_id": "IFEjs0FoNFS13Moh",
   "_stats": {
-    "coreVersion": "14.364",
+    "coreVersion": "14.369",
     "systemId": "dnd5e",
-    "systemVersion": "5.3.3"
+    "systemVersion": "6.0.6"
   },
   "_key": "!items!IFEjs0FoNFS13Moh"
 }

@@ -12,22 +12,34 @@
       "system": {
         "changes": [
           {
-            "key": "flags.midi-qol.advantage.skill.acr",
-            "value": "1",
+            "key": "system.skills.acr.roll.mode",
+            "value": 1,
             "priority": 20,
-            "type": "add"
+            "type": "add",
+            "phase": "initial",
+            "_id": "VouLaOxstEZfn5uP",
+            "conditions": "{}",
+            "replacement": ""
           },
           {
-            "key": "flags.midi-qol.advantage.skill.ath",
-            "value": "1",
+            "key": "system.skills.ath.roll.mode",
+            "value": 1,
             "priority": 20,
-            "type": "add"
+            "type": "add",
+            "phase": "initial",
+            "_id": "vQCsHWyVx44aqcmm",
+            "conditions": "{}",
+            "replacement": ""
           },
           {
             "key": "system.attributes.encumbrance.multipliers.overall",
-            "value": "2",
+            "value": 2,
             "priority": 20,
-            "type": "multiply"
+            "type": "multiply",
+            "phase": "initial",
+            "_id": "d7v76wAT7ckOLFu2",
+            "conditions": "{}",
+            "replacement": ""
           }
         ]
       },
@@ -48,13 +60,12 @@
           "specialDuration": []
         }
       },
-      "start": null,
       "showIcon": 0,
       "folder": null,
       "_stats": {
-        "coreVersion": "14.364",
+        "coreVersion": "14.369",
         "systemId": "dnd5e",
-        "systemVersion": "5.3.3"
+        "systemVersion": "6.0.6"
       },
       "_key": "!items.effects!CVZhiuvMOmEXz0tf.m2El6Syhcs8YhED5"
     }
@@ -265,16 +276,16 @@
     "cat": {
       "automation": {
         "source": "chris-premades",
-        "version": "2.0.4"
+        "version": "2.1.0"
       }
     }
   },
   "img": "icons/skills/melee/unarmed-punch-fist-yellow-red.webp",
   "folder": "J4jh4imFy2BbW8Nh",
   "_stats": {
-    "coreVersion": "14.364",
+    "coreVersion": "14.369",
     "systemId": "dnd5e",
-    "systemVersion": "5.3.3"
+    "systemVersion": "6.0.6"
   },
   "_id": "CVZhiuvMOmEXz0tf",
   "_key": "!items!CVZhiuvMOmEXz0tf"

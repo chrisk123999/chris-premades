@@ -15,7 +15,7 @@ async function getActivityData({document, workflow}) {
 }
 async function early({document, workflow}) {
     if (workflow.item.type !== 'spell') return;
-    if (workflow.item.system.sourceClass !== automationUtils.getConfigValue(document, 'classIdentifier')) return;
+    if (workflow.item.system.classIdentifier !== automationUtils.getConfigValue(document, 'classIdentifier')) return;
     const itemData = workflow.item.toObject();
     itemData.system.activities[workflow.activity.id] = await getActivityData({document, workflow});
     const schools = automationUtils.getConfigValue(document, 'spellSchools');

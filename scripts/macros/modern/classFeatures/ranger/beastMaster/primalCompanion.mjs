@@ -53,7 +53,7 @@ async function use({document, workflow}) {
             attributes: {
                 ac: {flat: 13 + wisdom},
                 hp: {formula: String(hitPoints), max: hitPoints, value: hitPoints},
-                movement: movement[creatureType]
+                movement: {speeds: movement[creatureType]}
             }
         }
     };

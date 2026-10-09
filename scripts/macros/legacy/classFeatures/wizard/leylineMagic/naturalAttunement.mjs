@@ -22,7 +22,7 @@ async function attune(item, activity, actor) {
         genericUtils.notify(_loc('CHRISPREMADES.Macros.Legacy.NaturalAttunement.NoSpells', {terrain: activity.name}), {type: 'warn', localize: false});
         return;
     }
-    const sourceEffect = activity.effects[0]?.effect;
+    const sourceEffect = await activity.effects[0]?.getEffect();
     if (!sourceEffect) return;
     const existing = actorUtils.getEffectByIdentifier(actor, 'natural-attunement');
     if (existing) await documentUtils.deleteDocument(existing);
@@ -32,7 +32,7 @@ async function attune(item, activity, actor) {
     const items = await documentUtils.createEmbeddedDocuments(actor, 'Item', spellDatas);
     await documentUtils.makeDependent(effect, items);
     const links = items.map(spell => '@UUID[' + spell.uuid + ']{' + spell.name + '}').join(', ');
-    await documentUtils.setDescriptionBlock(item, '<p><b>' + _loc('CHRISPREMADES.Macros.Legacy.NaturalAttunement.ChosenTerrain') + ':</b> ' + activity.name + '</p><p><b>' + _loc('CHRISPREMADES.Macros.Legacy.NaturalAttunement.Spells') + ':</b> ' + links + '</p>');
+    await itemUtils.setDescriptionBlock(item, '<p><b>' + _loc('CHRISPREMADES.Macros.Legacy.NaturalAttunement.ChosenTerrain') + ':</b> ' + activity.name + '</p><p><b>' + _loc('CHRISPREMADES.Macros.Legacy.NaturalAttunement.Spells') + ':</b> ' + links + '</p>');
 }
 async function use({workflow}) {
     if (!terrains.includes(documentUtils.getIdentifier(workflow.activity))) return;
@@ -56,7 +56,7 @@ async function longRest({document: item}) {
 async function effectDeleted({document: effect}) {
     const item = actorUtils.getItemByIdentifier(effect.parent, 'natural-attunement');
     if (!item) return;
-    await documentUtils.setDescriptionBlock(item, '');
+    await itemUtils.setDescriptionBlock(item, '');
 }
 export const naturalAttunementEffect = {
     name: 'Natural Attunement: Effect',

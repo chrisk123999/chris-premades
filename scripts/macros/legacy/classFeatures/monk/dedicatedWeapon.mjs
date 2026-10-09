@@ -21,7 +21,7 @@ async function use({document: activity}) {
     if (!enchantData) return;
     const parentEffect = (await effectUtils.createEffects(activity.actor, [{
         name: activity.item.name,
-        descripiton: choice.name,
+        description: choice.name,
         img: activity.item.img,
         origin: activity.item.uuid,
         flags: {dae: { stackable: 'noneName'}}

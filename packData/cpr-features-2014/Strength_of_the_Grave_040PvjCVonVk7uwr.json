@@ -254,9 +254,9 @@
   "folder": "SorcShadowMagic1",
   "_id": "040PvjCVonVk7uwr",
   "_stats": {
-    "coreVersion": "14.364",
-    "systemId": null,
-    "systemVersion": null
+    "coreVersion": "14.369",
+    "systemId": "dnd5e",
+    "systemVersion": "6.0.6"
   },
   "_key": "!items!040PvjCVonVk7uwr"
 }

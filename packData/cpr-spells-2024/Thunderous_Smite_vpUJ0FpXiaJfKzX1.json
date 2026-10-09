@@ -209,8 +209,7 @@
       }
     },
     "method": "spell",
-    "prepared": 1,
-    "sourceClass": ""
+    "prepared": 1
   },
   "effects": [],
   "name": "Thunderous Smite",
@@ -240,9 +239,9 @@
   "folder": "CVVxOC68UMmmK5zv",
   "_id": "vpUJ0FpXiaJfKzX1",
   "_stats": {
-    "coreVersion": "14.364",
+    "coreVersion": "14.369",
     "systemId": "dnd5e",
-    "systemVersion": "5.3.3"
+    "systemVersion": "6.0.6"
   },
   "_key": "!items!vpUJ0FpXiaJfKzX1"
 }

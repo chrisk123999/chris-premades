@@ -58,10 +58,6 @@
       "cost": 0,
       "supply": 0
     },
-    "preparation": {
-      "mode": "prepared",
-      "prepared": true
-    },
     "activities": {
       "dnd5eactivity000": {
         "_id": "dnd5eactivity000",
@@ -304,7 +300,6 @@
           "preRemoveConditionText": "",
           "postRemoveConditionText": ""
         },
-        "otherActivityUuid": "",
         "img": "",
         "appliedEffects": [],
         "otherActivityAsParentType": true,
@@ -319,7 +314,6 @@
       }
     },
     "identifier": "eldritch-blast",
-    "sourceClass": "",
     "method": "spell",
     "prepared": 1
   },
@@ -397,9 +391,9 @@
   "folder": "REb9WDPmbn6kA7fP",
   "_id": "GIWWhOqWKRVbotF0",
   "_stats": {
-    "coreVersion": "14.364",
-    "systemId": null,
-    "systemVersion": null
+    "coreVersion": "14.369",
+    "systemId": "dnd5e",
+    "systemVersion": "6.0.6"
   },
   "_key": "!items!GIWWhOqWKRVbotF0"
 }

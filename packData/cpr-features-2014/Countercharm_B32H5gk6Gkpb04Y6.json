@@ -16,19 +16,24 @@
             "type": "custom",
             "value": true,
             "phase": "final",
-            "priority": null
+            "priority": null,
+            "_id": "IlniGslY44G34zH4",
+            "conditions": "{}",
+            "replacement": ""
           },
           {
             "key": "flags.cat.CR.frightened",
             "type": "custom",
             "value": true,
             "phase": "final",
-            "priority": null
+            "priority": null,
+            "_id": "4XLcJVQWpRa3YTFw",
+            "conditions": "{}",
+            "replacement": ""
           }
         ]
       },
       "disabled": false,
-      "start": null,
       "duration": {
         "value": 1,
         "units": "rounds",
@@ -92,9 +97,9 @@
         }
       },
       "_stats": {
-        "coreVersion": "14.364",
-        "systemId": null,
-        "systemVersion": null
+        "coreVersion": "14.369",
+        "systemId": "dnd5e",
+        "systemVersion": "6.0.6"
       },
       "_key": "!items.effects!B32H5gk6Gkpb04Y6.2tTU7pPzKPMYNHeK"
     },
@@ -112,19 +117,24 @@
             "type": "custom",
             "value": true,
             "phase": "final",
-            "priority": null
+            "priority": null,
+            "_id": "KZuL6zwd9EVmXafM",
+            "conditions": "{}",
+            "replacement": ""
           },
           {
             "key": "flags.cat.CR.frightened",
             "type": "custom",
             "value": true,
             "phase": "final",
-            "priority": null
+            "priority": null,
+            "_id": "h9nugHWLrj7w2RKr",
+            "conditions": "{}",
+            "replacement": ""
           }
         ]
       },
       "disabled": false,
-      "start": null,
       "duration": {
         "value": null,
         "units": "seconds",
@@ -151,9 +161,9 @@
         }
       },
       "_stats": {
-        "coreVersion": "14.364",
-        "systemId": null,
-        "systemVersion": null
+        "coreVersion": "14.369",
+        "systemId": "dnd5e",
+        "systemVersion": "6.0.6"
       },
       "_key": "!items.effects!B32H5gk6Gkpb04Y6.GfVDcBZ6UHNwHsPL"
     }
@@ -379,9 +389,9 @@
   "folder": "H09zLwugbHnO8ugI",
   "_id": "B32H5gk6Gkpb04Y6",
   "_stats": {
-    "coreVersion": "14.364",
-    "systemId": null,
-    "systemVersion": null
+    "coreVersion": "14.369",
+    "systemId": "dnd5e",
+    "systemVersion": "6.0.6"
   },
   "_key": "!items!B32H5gk6Gkpb04Y6"
 }

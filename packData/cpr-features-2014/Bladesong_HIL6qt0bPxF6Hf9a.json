@@ -191,6 +191,10 @@
             "identifier": "bladesong"
           }
         ]
+      },
+      "automation": {
+        "source": "chris-premades",
+        "version": "2.1.0"
       }
     }
   },
@@ -199,9 +203,9 @@
   "folder": "sH07KvkHrUmypHgu",
   "_id": "HIL6qt0bPxF6Hf9a",
   "_stats": {
-    "coreVersion": "14.364",
-    "systemId": null,
-    "systemVersion": null
+    "coreVersion": "14.369",
+    "systemId": "dnd5e",
+    "systemVersion": "6.0.6"
   },
   "_key": "!items!HIL6qt0bPxF6Hf9a"
 }
