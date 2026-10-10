@@ -4,7 +4,7 @@ const packs = {
         features: 'chris-premades.CPRFeatures2014',
         monsterFeatures: 'chris-premades.CPRMonsterFeatures2014',
         spells: 'chris-premades.CPRSpells2014',
-        items: 'chris-premades.CPREquipment2014',
+        equipment: 'chris-premades.CPREquipment2014',
         misc: 'chris-premades.CPRMisc2014'
     },
     modern: {
@@ -12,7 +12,7 @@ const packs = {
         features: 'chris-premades.CPRFeatures2024',
         monsterFeatures: 'chris-premades.CPRMonsterFeatures2024',
         spells: 'chris-premades.CPRSpells2024',
-        items: 'chris-premades.CPREquipment2024',
+        equipment: 'chris-premades.CPREquipment2024',
         misc: 'chris-premades.CPRMisc2024'
     },
     samples: {

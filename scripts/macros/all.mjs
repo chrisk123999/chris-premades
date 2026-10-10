@@ -1,3 +1,5 @@
+// Artificer
+export {swapArtificerPlan, useArtificerPlan, fromPlanSwapArtificerPlan, fromPlanCreateArtificerPlan, infusionPrechecks} from './all/classFeatures/artificer/useOrSwapPlan.mjs';
 // Barbarian
 export {indomitableMight as 'indomitable-might'} from './all/classFeatures/barbarian/indomitableMight.mjs';
 export {instinctivePounce as 'instinctive-pounce'} from './all/classFeatures/barbarian/instinctivePounce.mjs';
@@ -32,6 +34,9 @@ export {help, helpAlly} from './all/actions/help.mjs';
 export {jump, longJump} from './all/actions/jump.mjs';
 // Equipment
 export {arcaneGrimoire as 'arcane-grimoire-1', arcaneGrimoire as 'arcane-grimoire-2', arcaneGrimoire as 'arcane-grimoire-3'} from './all/equipment/arcaneGrimoire.mjs';
+export {mindSharpener as 'mind-sharpener'} from './all/equipment/mindSharpener.mjs';
+export {repulsionShield as 'repulsion-shield'} from './all/equipment/repulsionShield.mjs';
+export {spellRefuelingRing as 'spell-refueling-ring'} from './all/equipment/spellRefuelingRing.mjs';
 // Fighting Styles
 export {dueling, dueling as 'fighting-style-dueling'} from './all/fightingStyles/dueling.mjs';
 export {greatWeaponFighting as 'fighting-style-great-weapon-fighting', greatWeaponFighting as 'great-weapon-fighting'} from './all/fightingStyles/greatWeaponFighting.mjs';

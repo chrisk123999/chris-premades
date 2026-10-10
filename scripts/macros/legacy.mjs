@@ -1,3 +1,30 @@
+// Artificer
+export {infuseItem as 'infuse-item'} from './legacy/classFeatures/artificer/infuseItem.mjs';
+export {
+    infusionCollectArmors,
+    infusionCollectArmorShield,
+    infusionCollecArmorRobes,
+    infusionCollectFoci,
+    infusionCollectShield,
+    infusionCollectWeapons,
+    infusionCollectAmmoWeapons,
+    infusionCollectThrownWeapons,
+    infusionArcanePropulsion as 'infusion-arcane-propulsion-armor',
+    infusionArmorOfMagicalStrength as 'infusion-armor-of-magical-strength',
+    infusionArmorOfMagicalStrengthProne,
+    infusionBootsOfTheWindingPath as 'infusion-boots-of-the-winding-path',
+    infusionEnhancedArcaneFocus as 'infusion-enhanced-arcane-focus',
+    infusionEnhancedDefense as 'infusion-enhanced-defense',
+    infusionEnhancedWeapon as 'infusion-enhanced-weapon',
+    infusionHelmOfAwareness as 'infusion-helm-of-awareness',
+    infusionMindSharpener as 'infusion-mind-sharpener',
+    infusionRadiantWeapon as 'infusion-radiant-weapon',
+    infusionRepeatingShot as 'infusion-repeating-shot',
+    infusionRepulsionShield as 'infusion-repulsion-shield',
+    infusionResistantArmor as 'infusion-resistant-armor',
+    infusionReturningWeapon as 'infusion-returning-weapon',
+    infusionSpellRefuelingRing as 'infusion-spell-refueling-ring'
+} from './legacy/classFeatures/artificer/infusions.mjs';
 // Barbarian
 export {brutalCritical as 'brutal-critical'} from './legacy/classFeatures/barbarian/brutalCritical.mjs';
 export {dangerSense as 'danger-sense'} from './legacy/classFeatures/barbarian/dangerSense.mjs';

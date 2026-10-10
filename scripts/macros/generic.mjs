@@ -12,6 +12,7 @@ export {extraAttack} from './generic/extraAttack.mjs';
 export {grapple} from './generic/grapple.mjs';
 export {itemRecovery} from './generic/itemRecovery.mjs';
 export {hide} from './generic/hide.mjs';
+export {ignoreCover} from './generic/ignoreCover.mjs';
 export {movementAnimation} from './generic/movementAnimation.mjs';
 export {multiSingleTarget} from './generic/multiSingleTarget.mjs';
 export {negateDamageFromEffect} from './generic/negateDamageFromEffect.mjs';
