@@ -41,7 +41,9 @@
           "durationExpression": "",
           "macroRepeat": "none",
           "disableIncapacitated": false,
-          "specialDuration": [],
+          "specialDuration": [
+            "zeroHP"
+          ],
           "enableCondition": "",
           "selfTarget": false,
           "selfTargetAlways": false,
@@ -52,7 +54,6 @@
         },
         "cat": {
           "specialDuration": [
-            "zeroHP",
             "incapacitated"
           ],
           "macros": {
@@ -454,7 +455,7 @@
     "cat": {
       "automation": {
         "source": "chris-premades",
-        "version": "2.0.3"
+        "version": "2.1.2"
       },
       "config": {
         "grantSwimSpeed": ""

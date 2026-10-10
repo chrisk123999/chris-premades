@@ -32,7 +32,10 @@
           "selfTargetAlways": false,
           "dontApply": false,
           "durationExpression": "",
-          "macroRepeat": "none"
+          "macroRepeat": "none",
+          "specialDuration": [
+            "zeroHP"
+          ]
         },
         "core": {
           "overlay": false
@@ -43,10 +46,7 @@
           }
         },
         "cat": {
-          "identifier": "houndOfIllOmenTarget",
-          "specialDuration": [
-            "zeroHP"
-          ]
+          "identifier": "houndOfIllOmenTarget"
         }
       },
       "_stats": {
@@ -244,7 +244,7 @@
     "cat": {
       "automation": {
         "source": "chris-premades",
-        "version": "2.0.0"
+        "version": "2.1.2"
       },
       "macros": {
         "roll": [

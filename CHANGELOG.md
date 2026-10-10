@@ -6,6 +6,7 @@
 - New generic macros: `bladeSpell`, `pullOnFail`, `pullOnHit` and `spellAnimation`.
 - New generic animations: Beam Spell, Buff Spell, Burst Spell and Touch Spell.
 - New animations: Booming Blade, Green-Flame Blade and True Strike.
+- Effects that end on an attack, a spell cast or reaching 0 HP use midi-qol's special durations, following CAT 0.1.2. Items already in a world need their automation reapplied.
 
 # 2.1.1 Pre-Release:
 ## Update Notes:

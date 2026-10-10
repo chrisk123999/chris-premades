@@ -16,16 +16,16 @@
       "flags": {
         "dae": {
           "stackable": "noneName",
-          "expiryMode": "delete"
+          "expiryMode": "delete",
+          "specialDuration": [
+            "isSave"
+          ]
         },
         "core": {
           "statusId": ""
         },
         "cat": {
-          "identifier": "mindSliver",
-          "specialDuration": [
-            "rolledSave"
-          ]
+          "identifier": "mindSliver"
         }
       },
       "tint": "#ffffff",
