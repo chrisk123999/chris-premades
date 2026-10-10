@@ -48,7 +48,7 @@ async function touch({document, workflow}) {
         origin: document.uuid,
         identifier: 'findFamiliarTouch',
         duration: {value: 1, units: 'seconds'},
-        specialDuration: ['madeAttack'],
+        specialDuration: ['1Attack'],
         macros: [
             {
                 type: 'roll',

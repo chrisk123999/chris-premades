@@ -62,7 +62,7 @@
             "statuses": []
           }
         },
-        "cat": {
+        "dae": {
           "specialDuration": [
             "zeroHP"
           ]
@@ -264,7 +264,7 @@
     "cat": {
       "automation": {
         "source": "chris-premades",
-        "version": "2.0.4"
+        "version": "2.1.2"
       },
       "macros": {
         "roll": [

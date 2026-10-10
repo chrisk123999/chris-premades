@@ -7,7 +7,7 @@ async function use({document, workflow}) {
         img: document.img,
         origin: document.uuid,
         duration: {value: 1, units: 'rounds'},
-        specialDuration: ['madeAttack', 'castSpell', 'turnStart']
+        specialDuration: ['turnStart', '1Attack', '1Spell']
     });
     effectData.statuses = ['invisible'];
     await effectUtils.createEffects(workflow.actor, [effectData]);
