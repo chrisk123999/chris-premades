@@ -217,9 +217,9 @@
   "folder": "3c0NSnjmkxO9LGz0",
   "_id": "iAi5mUGMH7VkLFi7",
   "_stats": {
-    "coreVersion": "14.364",
-    "systemId": null,
-    "systemVersion": null
+    "coreVersion": "14.369",
+    "systemId": "dnd5e",
+    "systemVersion": "6.0.6"
   },
   "_key": "!items!iAi5mUGMH7VkLFi7"
 }

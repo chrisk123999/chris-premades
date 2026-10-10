@@ -821,19 +821,23 @@
       "system": {
         "changes": [
           {
-            "key": "system.bonuses.mwak.damage",
+            "key": "system.rolls.damage.mwak.bonus",
             "value": "+(@spellLevel)d6[acid]",
             "priority": 20,
             "type": "add",
-            "phase": "initial"
+            "phase": "initial",
+            "_id": "vzy0zNMkmRRqWF9i",
+            "conditions": "{}",
+            "replacement": ""
           }
-        ]
+        ],
+        "magical": true
       },
       "disabled": false,
       "duration": {
         "value": null,
         "units": "seconds",
-        "expiry": null,
+        "expiry": "sourceEnd",
         "expired": false
       },
       "description": "",
@@ -846,17 +850,16 @@
           "disableCondition": "",
           "disableIncapacitated": false,
           "stackable": "noneName",
-          "showIcon": false,
           "durationExpression": "",
           "macroRepeat": "none",
           "specialDuration": [
-            "turnEndSource",
             "1Hit:mwak"
           ],
           "enableCondition": "",
           "selfTarget": false,
           "selfTargetAlways": false,
-          "dontApply": false
+          "dontApply": false,
+          "expiryMode": "delete"
         },
         "dnd5e": {
           "riders": {
@@ -868,13 +871,12 @@
           "overlay": false
         }
       },
-      "start": null,
       "showIcon": 1,
       "folder": null,
       "_stats": {
-        "coreVersion": "14.364",
-        "systemId": null,
-        "systemVersion": null
+        "coreVersion": "14.369",
+        "systemId": "dnd5e",
+        "systemVersion": "6.0.6"
       },
       "_key": "!items.effects!fNFaGC5ukldGywT5.FmShdBSB0XIQpGbC"
     },
@@ -886,19 +888,23 @@
       "system": {
         "changes": [
           {
-            "key": "system.bonuses.mwak.damage",
+            "key": "system.rolls.damage.mwak.bonus",
             "value": "+(@spellLevel)d6[cold]",
             "priority": 20,
             "type": "add",
-            "phase": "initial"
+            "phase": "initial",
+            "_id": "qXESdhYZwiM5b9MX",
+            "conditions": "{}",
+            "replacement": ""
           }
-        ]
+        ],
+        "magical": true
       },
       "disabled": false,
       "duration": {
         "value": null,
         "units": "seconds",
-        "expiry": null,
+        "expiry": "sourceEnd",
         "expired": false
       },
       "description": "",
@@ -911,17 +917,16 @@
           "disableCondition": "",
           "disableIncapacitated": false,
           "stackable": "noneName",
-          "showIcon": false,
           "durationExpression": "",
           "macroRepeat": "none",
           "specialDuration": [
-            "turnEndSource",
             "1Hit:mwak"
           ],
           "enableCondition": "",
           "selfTarget": false,
           "selfTargetAlways": false,
-          "dontApply": false
+          "dontApply": false,
+          "expiryMode": "delete"
         },
         "dnd5e": {
           "riders": {
@@ -933,13 +938,12 @@
         }
       },
       "_id": "tCiHrWUKfdPm9niX",
-      "start": null,
       "showIcon": 1,
       "folder": null,
       "_stats": {
-        "coreVersion": "14.364",
-        "systemId": null,
-        "systemVersion": null
+        "coreVersion": "14.369",
+        "systemId": "dnd5e",
+        "systemVersion": "6.0.6"
       },
       "_key": "!items.effects!fNFaGC5ukldGywT5.tCiHrWUKfdPm9niX"
     },
@@ -951,19 +955,23 @@
       "system": {
         "changes": [
           {
-            "key": "system.bonuses.mwak.damage",
+            "key": "system.rolls.damage.mwak.bonus",
             "value": "+(@spellLevel)d6[fire]",
             "priority": 20,
             "type": "add",
-            "phase": "initial"
+            "phase": "initial",
+            "_id": "ZU8L7AIb3wB5gz1n",
+            "conditions": "{}",
+            "replacement": ""
           }
-        ]
+        ],
+        "magical": true
       },
       "disabled": false,
       "duration": {
         "value": null,
         "units": "seconds",
-        "expiry": null,
+        "expiry": "sourceEnd",
         "expired": false
       },
       "description": "",
@@ -976,17 +984,16 @@
           "disableCondition": "",
           "disableIncapacitated": false,
           "stackable": "noneName",
-          "showIcon": false,
           "durationExpression": "",
           "macroRepeat": "none",
           "specialDuration": [
-            "turnEndSource",
             "1Hit:mwak"
           ],
           "enableCondition": "",
           "selfTarget": false,
           "selfTargetAlways": false,
-          "dontApply": false
+          "dontApply": false,
+          "expiryMode": "delete"
         },
         "dnd5e": {
           "riders": {
@@ -999,13 +1006,12 @@
         }
       },
       "_id": "JXKrsIr6JxwVNEUC",
-      "start": null,
       "showIcon": 1,
       "folder": null,
       "_stats": {
-        "coreVersion": "14.364",
-        "systemId": null,
-        "systemVersion": null
+        "coreVersion": "14.369",
+        "systemId": "dnd5e",
+        "systemVersion": "6.0.6"
       },
       "_key": "!items.effects!fNFaGC5ukldGywT5.JXKrsIr6JxwVNEUC"
     },
@@ -1017,19 +1023,23 @@
       "system": {
         "changes": [
           {
-            "key": "system.bonuses.mwak.damage",
+            "key": "system.rolls.damage.mwak.bonus",
             "value": "+(@spellLevel)d6[thunder]",
             "priority": 20,
             "type": "add",
-            "phase": "initial"
+            "phase": "initial",
+            "_id": "IHkCw3KDSUmzct2i",
+            "conditions": "{}",
+            "replacement": ""
           }
-        ]
+        ],
+        "magical": true
       },
       "disabled": false,
       "duration": {
         "value": null,
         "units": "seconds",
-        "expiry": null,
+        "expiry": "sourceEnd",
         "expired": false
       },
       "description": "",
@@ -1042,17 +1052,16 @@
           "disableCondition": "",
           "disableIncapacitated": false,
           "stackable": "noneName",
-          "showIcon": false,
           "durationExpression": "",
           "macroRepeat": "none",
           "specialDuration": [
-            "turnEndSource",
             "1Hit:mwak"
           ],
           "enableCondition": "",
           "selfTarget": false,
           "selfTargetAlways": false,
-          "dontApply": false
+          "dontApply": false,
+          "expiryMode": "delete"
         },
         "dnd5e": {
           "riders": {
@@ -1064,20 +1073,19 @@
         }
       },
       "_id": "JUfGfWqfQolFVpws",
-      "start": null,
       "showIcon": 1,
       "folder": null,
       "_stats": {
-        "coreVersion": "14.364",
-        "systemId": null,
-        "systemVersion": null
+        "coreVersion": "14.369",
+        "systemId": "dnd5e",
+        "systemVersion": "6.0.6"
       },
       "_key": "!items.effects!fNFaGC5ukldGywT5.JUfGfWqfQolFVpws"
     },
     {
       "name": "Absorb Elements: Acid Resistance",
       "img": "icons/magic/defensive/shield-barrier-flaming-diamond-acid.webp",
-      "origin": "Item.EumGolPUB2feozAs",
+      "origin": null,
       "_id": "NPArcFqxKGU16ayx",
       "type": "base",
       "system": {
@@ -1087,15 +1095,22 @@
             "value": "acid",
             "priority": 20,
             "type": "add",
-            "phase": "initial"
+            "phase": "initial",
+            "_id": "hx6EyWMgNe4u4C8s",
+            "conditions": "{}",
+            "replacement": ""
           }
-        ]
+        ],
+        "magical": true,
+        "origin": {
+          "item": "Item.EumGolPUB2feozAs"
+        }
       },
       "disabled": false,
       "duration": {
         "value": null,
         "units": "seconds",
-        "expiry": null,
+        "expiry": "sourceStart",
         "expired": false
       },
       "description": "",
@@ -1108,16 +1123,14 @@
           "disableCondition": "",
           "disableIncapacitated": false,
           "stackable": "noneName",
-          "showIcon": false,
           "durationExpression": "",
           "macroRepeat": "none",
-          "specialDuration": [
-            "turnStartSource"
-          ],
+          "specialDuration": [],
           "enableCondition": "",
           "selfTarget": false,
           "selfTargetAlways": false,
-          "dontApply": false
+          "dontApply": false,
+          "expiryMode": "delete"
         },
         "dnd5e": {
           "riders": {
@@ -1129,20 +1142,19 @@
           "overlay": false
         }
       },
-      "start": null,
       "showIcon": 1,
       "folder": null,
       "_stats": {
-        "coreVersion": "14.364",
-        "systemId": null,
-        "systemVersion": null
+        "coreVersion": "14.369",
+        "systemId": "dnd5e",
+        "systemVersion": "6.0.6"
       },
       "_key": "!items.effects!fNFaGC5ukldGywT5.NPArcFqxKGU16ayx"
     },
     {
       "name": "Absorb Elements: Fire Resistance",
       "img": "icons/magic/defensive/shield-barrier-flaming-diamond-red.webp",
-      "origin": "Item.EumGolPUB2feozAs",
+      "origin": null,
       "type": "base",
       "system": {
         "changes": [
@@ -1151,15 +1163,22 @@
             "value": "fire",
             "priority": 20,
             "type": "add",
-            "phase": "initial"
+            "phase": "initial",
+            "_id": "QJjYpCPjflIrLXDF",
+            "conditions": "{}",
+            "replacement": ""
           }
-        ]
+        ],
+        "magical": true,
+        "origin": {
+          "item": "Item.EumGolPUB2feozAs"
+        }
       },
       "disabled": false,
       "duration": {
         "value": null,
         "units": "seconds",
-        "expiry": null,
+        "expiry": "sourceStart",
         "expired": false
       },
       "description": "",
@@ -1172,16 +1191,14 @@
           "disableCondition": "",
           "disableIncapacitated": false,
           "stackable": "noneName",
-          "showIcon": false,
           "durationExpression": "",
           "macroRepeat": "none",
-          "specialDuration": [
-            "turnStartSource"
-          ],
+          "specialDuration": [],
           "enableCondition": "",
           "selfTarget": false,
           "selfTargetAlways": false,
-          "dontApply": false
+          "dontApply": false,
+          "expiryMode": "delete"
         },
         "dnd5e": {
           "riders": {
@@ -1194,20 +1211,19 @@
         }
       },
       "_id": "ogU8CIDSZc5aQY2i",
-      "start": null,
       "showIcon": 1,
       "folder": null,
       "_stats": {
-        "coreVersion": "14.364",
-        "systemId": null,
-        "systemVersion": null
+        "coreVersion": "14.369",
+        "systemId": "dnd5e",
+        "systemVersion": "6.0.6"
       },
       "_key": "!items.effects!fNFaGC5ukldGywT5.ogU8CIDSZc5aQY2i"
     },
     {
       "name": "Absorb Elements: Cold Resistance",
       "img": "icons/magic/defensive/shield-barrier-flaming-diamond-blue-yellow.webp",
-      "origin": "Item.EumGolPUB2feozAs",
+      "origin": null,
       "type": "base",
       "system": {
         "changes": [
@@ -1216,15 +1232,22 @@
             "value": "cold",
             "priority": 20,
             "type": "add",
-            "phase": "initial"
+            "phase": "initial",
+            "_id": "m9z9UuMAnzkDEWBh",
+            "conditions": "{}",
+            "replacement": ""
           }
-        ]
+        ],
+        "magical": true,
+        "origin": {
+          "item": "Item.EumGolPUB2feozAs"
+        }
       },
       "disabled": false,
       "duration": {
         "value": null,
         "units": "seconds",
-        "expiry": null,
+        "expiry": "sourceStart",
         "expired": false
       },
       "description": "",
@@ -1237,16 +1260,14 @@
           "disableCondition": "",
           "disableIncapacitated": false,
           "stackable": "noneName",
-          "showIcon": false,
           "durationExpression": "",
           "macroRepeat": "none",
-          "specialDuration": [
-            "turnStartSource"
-          ],
+          "specialDuration": [],
           "enableCondition": "",
           "selfTarget": false,
           "selfTargetAlways": false,
-          "dontApply": false
+          "dontApply": false,
+          "expiryMode": "delete"
         },
         "dnd5e": {
           "riders": {
@@ -1259,20 +1280,19 @@
         }
       },
       "_id": "Qbggj1SH69rZjfyH",
-      "start": null,
       "showIcon": 1,
       "folder": null,
       "_stats": {
-        "coreVersion": "14.364",
-        "systemId": null,
-        "systemVersion": null
+        "coreVersion": "14.369",
+        "systemId": "dnd5e",
+        "systemVersion": "6.0.6"
       },
       "_key": "!items.effects!fNFaGC5ukldGywT5.Qbggj1SH69rZjfyH"
     },
     {
       "name": "Absorb Elements: Lightning Resistance",
       "img": "icons/magic/defensive/shield-barrier-flaming-diamond-blue.webp",
-      "origin": "Item.EumGolPUB2feozAs",
+      "origin": null,
       "type": "base",
       "system": {
         "changes": [
@@ -1281,15 +1301,22 @@
             "value": "lightning",
             "priority": 20,
             "type": "add",
-            "phase": "initial"
+            "phase": "initial",
+            "_id": "KxcGT0mixH9azAu9",
+            "conditions": "{}",
+            "replacement": ""
           }
-        ]
+        ],
+        "magical": true,
+        "origin": {
+          "item": "Item.EumGolPUB2feozAs"
+        }
       },
       "disabled": false,
       "duration": {
         "value": null,
         "units": "seconds",
-        "expiry": null,
+        "expiry": "sourceStart",
         "expired": false
       },
       "description": "",
@@ -1302,16 +1329,14 @@
           "disableCondition": "",
           "disableIncapacitated": false,
           "stackable": "noneName",
-          "showIcon": false,
           "durationExpression": "",
           "macroRepeat": "none",
-          "specialDuration": [
-            "turnStartSource"
-          ],
+          "specialDuration": [],
           "enableCondition": "",
           "selfTarget": false,
           "selfTargetAlways": false,
-          "dontApply": false
+          "dontApply": false,
+          "expiryMode": "delete"
         },
         "dnd5e": {
           "riders": {
@@ -1324,20 +1349,19 @@
         }
       },
       "_id": "yCsvmxxxLteBKZTd",
-      "start": null,
       "showIcon": 1,
       "folder": null,
       "_stats": {
-        "coreVersion": "14.364",
-        "systemId": null,
-        "systemVersion": null
+        "coreVersion": "14.369",
+        "systemId": "dnd5e",
+        "systemVersion": "6.0.6"
       },
       "_key": "!items.effects!fNFaGC5ukldGywT5.yCsvmxxxLteBKZTd"
     },
     {
       "name": "Absorb Elements: Thunder Resistance",
       "img": "icons/magic/defensive/shield-barrier-flaming-diamond-magenta.webp",
-      "origin": "Item.EumGolPUB2feozAs",
+      "origin": null,
       "type": "base",
       "system": {
         "changes": [
@@ -1346,15 +1370,22 @@
             "value": "thunder",
             "priority": 20,
             "type": "add",
-            "phase": "initial"
+            "phase": "initial",
+            "_id": "uBqtm9y1P5VPuKCK",
+            "conditions": "{}",
+            "replacement": ""
           }
-        ]
+        ],
+        "magical": true,
+        "origin": {
+          "item": "Item.EumGolPUB2feozAs"
+        }
       },
       "disabled": false,
       "duration": {
         "value": null,
         "units": "seconds",
-        "expiry": null,
+        "expiry": "sourceStart",
         "expired": false
       },
       "description": "",
@@ -1367,16 +1398,14 @@
           "disableCondition": "",
           "disableIncapacitated": false,
           "stackable": "noneName",
-          "showIcon": false,
           "durationExpression": "",
           "macroRepeat": "none",
-          "specialDuration": [
-            "turnStartSource"
-          ],
+          "specialDuration": [],
           "enableCondition": "",
           "selfTarget": false,
           "selfTargetAlways": false,
-          "dontApply": false
+          "dontApply": false,
+          "expiryMode": "delete"
         },
         "dnd5e": {
           "riders": {
@@ -1389,13 +1418,12 @@
         }
       },
       "_id": "iKqE83lvddNzuxsR",
-      "start": null,
       "showIcon": 1,
       "folder": null,
       "_stats": {
-        "coreVersion": "14.364",
-        "systemId": null,
-        "systemVersion": null
+        "coreVersion": "14.369",
+        "systemId": "dnd5e",
+        "systemVersion": "6.0.6"
       },
       "_key": "!items.effects!fNFaGC5ukldGywT5.iKqE83lvddNzuxsR"
     },
@@ -1407,19 +1435,23 @@
       "system": {
         "changes": [
           {
-            "key": "system.bonuses.mwak.damage",
+            "key": "system.rolls.damage.mwak.bonus",
             "value": "+(@spellLevel)d6[lightning]",
             "priority": 20,
             "type": "add",
-            "phase": "initial"
+            "phase": "initial",
+            "_id": "U3OydAEkOPob1Qhk",
+            "conditions": "{}",
+            "replacement": ""
           }
-        ]
+        ],
+        "magical": true
       },
       "disabled": false,
       "duration": {
         "value": null,
         "units": "seconds",
-        "expiry": null,
+        "expiry": "sourceEnd",
         "expired": false
       },
       "description": "",
@@ -1432,17 +1464,16 @@
           "disableCondition": "",
           "disableIncapacitated": false,
           "stackable": "noneName",
-          "showIcon": false,
           "durationExpression": "",
           "macroRepeat": "none",
           "specialDuration": [
-            "turnEndSource",
             "1Hit:mwak"
           ],
           "enableCondition": "",
           "selfTarget": false,
           "selfTargetAlways": false,
-          "dontApply": false
+          "dontApply": false,
+          "expiryMode": "delete"
         },
         "dnd5e": {
           "riders": {
@@ -1455,13 +1486,12 @@
         }
       },
       "_id": "61L86HIsWDgPKN3Y",
-      "start": null,
       "showIcon": 1,
       "folder": null,
       "_stats": {
-        "coreVersion": "14.364",
-        "systemId": null,
-        "systemVersion": null
+        "coreVersion": "14.369",
+        "systemId": "dnd5e",
+        "systemVersion": "6.0.6"
       },
       "_key": "!items.effects!fNFaGC5ukldGywT5.61L86HIsWDgPKN3Y"
     }
@@ -1496,15 +1526,15 @@
       "macros": {},
       "automation": {
         "source": "chris-premades",
-        "version": "2.0.2",
+        "version": "2.1.0",
         "hash": 1314176793
       }
     }
   },
   "_stats": {
-    "coreVersion": "14.364",
-    "systemId": null,
-    "systemVersion": null
+    "coreVersion": "14.369",
+    "systemId": "dnd5e",
+    "systemVersion": "6.0.6"
   },
   "_key": "!items!fNFaGC5ukldGywT5"
 }

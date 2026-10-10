@@ -1,7 +1,53 @@
 {
   "name": "Unarmored Defense",
   "type": "feat",
-  "effects": [],
+  "effects": [
+    {
+      "name": "Unarmored Defense",
+      "statuses": [],
+      "system": {
+        "changes": [
+          {
+            "key": "system.attributes.ac.calcs",
+            "value": "unarmoredBarb",
+            "type": "add",
+            "priority": 20,
+            "phase": "initial",
+            "_id": "B9DzZC3bvF0FzEqH",
+            "conditions": "{}",
+            "replacement": ""
+          }
+        ],
+        "origin": {
+          "item": "Compendium.chris-premades.CPRFeatures2014.Item.UXtf7mu9my8rhJeW"
+        }
+      },
+      "duration": {
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
+      },
+      "tint": "#ffffff",
+      "transfer": true,
+      "disabled": false,
+      "showIcon": 1,
+      "flags": {},
+      "description": "",
+      "img": "icons/magic/control/buff-flight-wings-runes-red.webp",
+      "_id": "SfZbtWM4jW6Cf2db",
+      "type": "base",
+      "origin": null,
+      "folder": null,
+      "sort": 0,
+      "_stats": {
+        "coreVersion": "14.369",
+        "systemId": "dnd5e",
+        "systemVersion": "6.0.6"
+      },
+      "_key": "!items.effects!UXtf7mu9my8rhJeW.SfZbtWM4jW6Cf2db"
+    }
+  ],
   "system": {
     "activities": {},
     "uses": {
@@ -39,26 +85,10 @@
   },
   "flags": {
     "cat": {
-      "alternateAttributes": {
-        "ACFormula": [
-          {
-            "value": "10 + @abilities.dex.mod + @abilities.con.mod",
-            "restrictions": {
-              "Armor": {
-                "value": [
-                  "unarmored"
-                ],
-                "requireAll": false,
-                "invert": false
-              }
-            }
-          }
-        ]
-      },
       "automation": {
         "source": "chris-premades",
         "sourceType": "class:barbarian",
-        "version": "2.0.2"
+        "version": "2.1.0"
       }
     }
   },
@@ -66,9 +96,9 @@
   "folder": "oHVJeSGqBDErtjs9",
   "_id": "UXtf7mu9my8rhJeW",
   "_stats": {
-    "coreVersion": "14.364",
-    "systemId": null,
-    "systemVersion": null
+    "coreVersion": "14.369",
+    "systemId": "dnd5e",
+    "systemVersion": "6.0.6"
   },
   "_key": "!items!UXtf7mu9my8rhJeW"
 }

@@ -40,7 +40,7 @@ async function use({document, workflow, castData, token}) { // trigger -> docume
     if (!nearbyTargets.length) return;
     let nextTarget = nearbyTargets[0];
     if (nearbyTargets.length > 1) {
-        const targetSelect = (await dialogUtils.selectTargetDialog(document.name, 'CHRISPREMADES.Macros.ChromaticOrb.Bounce', nearbyTargets, {skipDeadAndUnconscious: false}))?.result;
+        const targetSelect = (await dialogUtils.selectTargetDialog(document.name, 'CHRISPREMADES.Macros.Modern.ChromaticOrb.Bounce', nearbyTargets, {skipDeadAndUnconscious: false}))?.result;
         // Dialog utils now return an object with a result propety, so we take that directly. Also returns target as single or array depending on `type`, default is single
         if (targetSelect) {
             nextTarget = targetSelect;

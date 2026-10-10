@@ -59,10 +59,6 @@
       "cost": 0,
       "supply": 0
     },
-    "preparation": {
-      "mode": "prepared",
-      "prepared": false
-    },
     "activities": {
       "searingCast00001": {
         "_id": "searingCast00001",
@@ -311,7 +307,6 @@
       }
     },
     "identifier": "searing-smite",
-    "sourceClass": "",
     "method": "spell",
     "prepared": 0
   },
@@ -360,7 +355,6 @@
           "selfTargetAlways": false,
           "dontApply": false,
           "stackable": "noneName",
-          "showIcon": false,
           "durationExpression": "",
           "macroRepeat": "none",
           "specialDuration": []
@@ -395,7 +389,8 @@
       "_id": "srchSmiteCaster1",
       "type": "base",
       "system": {
-        "changes": []
+        "changes": [],
+        "magical": true
       },
       "description": "",
       "tint": "#ffffff",
@@ -403,11 +398,10 @@
       "statuses": [],
       "sort": 0,
       "_stats": {
-        "coreVersion": "14.364",
+        "coreVersion": "14.369",
         "systemId": "dnd5e",
-        "systemVersion": "5.3.3"
+        "systemVersion": "6.0.6"
       },
-      "start": null,
       "showIcon": 1,
       "folder": null,
       "_key": "!items.effects!x4lkzaK3aDLLKFVg.srchSmiteCaster1"
@@ -436,7 +430,6 @@
           "selfTargetAlways": false,
           "dontApply": false,
           "stackable": "noneName",
-          "showIcon": false,
           "durationExpression": "",
           "macroRepeat": "none",
           "specialDuration": []
@@ -455,11 +448,16 @@
         "changes": [
           {
             "key": "flags.midi-qol.OverTime",
-            "value": "turn=start,label=Searing Smite (Start of Turn),allowIncapacitated=true,rollType=save,saveAbility=con,saveDC=$activity.dc,saveMagic=true,saveDamage=nodamage,damageRoll=1d6,damageType=fire,saveCount=1,rollMode=publicroll,",
+            "value": "turn=start,label=Searing Smite (Start of Turn),allowIncapacitated=true,rollType=save,saveAbility=con,saveDC=$activity.dc,saveMagic=true,saveDamage=nodamage,damageRoll=1d6,damageType=fire,saveCount=1,rollMode=public,",
             "priority": 20,
-            "type": "custom"
+            "type": "custom",
+            "phase": "initial",
+            "_id": "r2qgpQJSNjUYKyIi",
+            "conditions": "{}",
+            "replacement": ""
           }
-        ]
+        ],
+        "magical": true
       },
       "description": "",
       "tint": "#ffffff",
@@ -467,11 +465,10 @@
       "statuses": [],
       "sort": 0,
       "_stats": {
-        "coreVersion": "14.364",
+        "coreVersion": "14.369",
         "systemId": "dnd5e",
-        "systemVersion": "5.3.3"
+        "systemVersion": "6.0.6"
       },
-      "start": null,
       "showIcon": 1,
       "folder": null,
       "_key": "!items.effects!x4lkzaK3aDLLKFVg.srchSmiteBurning"
@@ -481,9 +478,9 @@
   "folder": "pfzYb8UerE97sz8L",
   "_id": "x4lkzaK3aDLLKFVg",
   "_stats": {
-    "coreVersion": "14.364",
+    "coreVersion": "14.369",
     "systemId": "dnd5e",
-    "systemVersion": "5.3.3"
+    "systemVersion": "6.0.6"
   },
   "_key": "!items!x4lkzaK3aDLLKFVg"
 }

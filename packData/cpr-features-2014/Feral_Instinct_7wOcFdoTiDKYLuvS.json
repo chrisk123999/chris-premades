@@ -12,7 +12,10 @@
             "type": "add",
             "value": 1,
             "phase": "initial",
-            "priority": 20
+            "priority": 20,
+            "_id": "0YRXLyoLvxiX2ZPA",
+            "conditions": "{}",
+            "replacement": ""
           }
         ]
       },
@@ -42,14 +45,13 @@
       "img": "icons/creatures/mammals/wolf-howl-moon-forest-blue.webp",
       "_id": "4ibgDcLP3Ak7c4bc",
       "type": "base",
-      "start": null,
       "origin": null,
       "folder": null,
       "sort": 0,
       "_stats": {
-        "coreVersion": "14.364",
-        "systemId": null,
-        "systemVersion": null
+        "coreVersion": "14.369",
+        "systemId": "dnd5e",
+        "systemVersion": "6.0.6"
       },
       "_key": "!items.effects!7wOcFdoTiDKYLuvS.4ibgDcLP3Ak7c4bc"
     }
@@ -101,9 +103,9 @@
   "folder": "oHVJeSGqBDErtjs9",
   "_id": "7wOcFdoTiDKYLuvS",
   "_stats": {
-    "coreVersion": "14.364",
-    "systemId": null,
-    "systemVersion": null
+    "coreVersion": "14.369",
+    "systemId": "dnd5e",
+    "systemVersion": "6.0.6"
   },
   "_key": "!items!7wOcFdoTiDKYLuvS"
 }

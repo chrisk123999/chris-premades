@@ -181,8 +181,7 @@
           "enableCondition": "",
           "disableCondition": "",
           "disableIncapacitated": false,
-          "dontApply": false,
-          "showIcon": false
+          "dontApply": false
         },
         "core": {
           "overlay": false
@@ -204,18 +203,21 @@
             "key": "system.traits.dr.value",
             "value": "ALL",
             "priority": 20,
-            "type": "add"
+            "type": "add",
+            "phase": "initial",
+            "_id": "i0pd7Tp0ZmSnf8Ja",
+            "conditions": "{}",
+            "replacement": ""
           }
         ]
       },
       "sort": 0,
-      "start": null,
       "showIcon": 1,
       "folder": null,
       "_stats": {
-        "coreVersion": "14.364",
-        "systemId": null,
-        "systemVersion": null
+        "coreVersion": "14.369",
+        "systemId": "dnd5e",
+        "systemVersion": "6.0.6"
       },
       "_key": "!items.effects!eTF3L09ihlLT1a0k.RXZSqkLCei6opPi3"
     }
@@ -224,9 +226,9 @@
   "folder": null,
   "_id": "eTF3L09ihlLT1a0k",
   "_stats": {
-    "coreVersion": "14.364",
-    "systemId": null,
-    "systemVersion": null
+    "coreVersion": "14.369",
+    "systemId": "dnd5e",
+    "systemVersion": "6.0.6"
   },
   "_key": "!items!eTF3L09ihlLT1a0k"
 }

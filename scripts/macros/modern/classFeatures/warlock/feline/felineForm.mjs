@@ -34,7 +34,7 @@ async function use({document, workflow}) {
         img: document.img,
         origin: document.uuid,
         identifier: 'felineFormActive',
-        duration: {seconds: Math.floor(levels / 2) * 3600},
+        duration: {value: Math.floor(levels / 2), units: 'hours'},
         specialDuration: ['incapacitated', 'zeroHP'],
         vae: [{type: 'use', name: featureData.name, identifier: 'feline-form-revert'}],
         macros: [

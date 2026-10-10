@@ -15,67 +15,111 @@
             "key": "system.traits.dr.value",
             "value": "acid",
             "priority": 20,
-            "type": "add"
+            "type": "add",
+            "phase": "initial",
+            "_id": "PjkbPIQ50HexpGDJ",
+            "conditions": "{}",
+            "replacement": ""
           },
           {
             "key": "system.traits.dr.value",
             "value": "bludgeoning",
             "priority": 20,
-            "type": "add"
+            "type": "add",
+            "phase": "initial",
+            "_id": "y7UD4qCziPSWZy6z",
+            "conditions": "{}",
+            "replacement": ""
           },
           {
             "key": "system.traits.dr.value",
             "value": "cold",
             "priority": 20,
-            "type": "add"
+            "type": "add",
+            "phase": "initial",
+            "_id": "rrnskaKVZcnzuhHD",
+            "conditions": "{}",
+            "replacement": ""
           },
           {
             "key": "system.traits.dr.value",
             "value": "fire",
             "priority": 20,
-            "type": "add"
+            "type": "add",
+            "phase": "initial",
+            "_id": "pTs2QfSHgq4ieief",
+            "conditions": "{}",
+            "replacement": ""
           },
           {
             "key": "system.traits.dr.value",
             "value": "lightning",
             "priority": 20,
-            "type": "add"
+            "type": "add",
+            "phase": "initial",
+            "_id": "zMSTfET0rD0KlOUn",
+            "conditions": "{}",
+            "replacement": ""
           },
           {
             "key": "system.traits.dr.value",
             "value": "necrotic",
             "priority": 20,
-            "type": "add"
+            "type": "add",
+            "phase": "initial",
+            "_id": "HgKRzwLGRuECvFBc",
+            "conditions": "{}",
+            "replacement": ""
           },
           {
             "key": "system.traits.dr.value",
             "value": "piercing",
             "priority": 20,
-            "type": "add"
+            "type": "add",
+            "phase": "initial",
+            "_id": "BpVau4ZtW2GARWg7",
+            "conditions": "{}",
+            "replacement": ""
           },
           {
             "key": "system.traits.dr.value",
             "value": "poison",
             "priority": 20,
-            "type": "add"
+            "type": "add",
+            "phase": "initial",
+            "_id": "PzwiygZMornSOPWB",
+            "conditions": "{}",
+            "replacement": ""
           },
           {
             "key": "system.traits.dr.value",
             "value": "psychic",
             "priority": 20,
-            "type": "add"
+            "type": "add",
+            "phase": "initial",
+            "_id": "ujj7VjJCktWT4UId",
+            "conditions": "{}",
+            "replacement": ""
           },
           {
             "key": "system.traits.dr.value",
             "value": "slashing",
             "priority": 20,
-            "type": "add"
+            "type": "add",
+            "phase": "initial",
+            "_id": "8dQyosPD7QCRlQvu",
+            "conditions": "{}",
+            "replacement": ""
           },
           {
             "key": "system.traits.dr.value",
             "value": "thunder",
             "priority": 20,
-            "type": "add"
+            "type": "add",
+            "phase": "initial",
+            "_id": "zgXCpo9NaXUs6Lf0",
+            "conditions": "{}",
+            "replacement": ""
           }
         ]
       },
@@ -94,7 +138,6 @@
           "enableCondition": "",
           "disableCondition": "",
           "stackable": "noneName",
-          "showIcon": false,
           "disableIncapacitated": false,
           "selfTarget": false,
           "selfTargetAlways": false,
@@ -119,11 +162,10 @@
         }
       },
       "_stats": {
-        "coreVersion": "14.364",
-        "systemId": null,
-        "systemVersion": null
+        "coreVersion": "14.369",
+        "systemId": "dnd5e",
+        "systemVersion": "6.0.6"
       },
-      "start": null,
       "showIcon": 1,
       "folder": null,
       "sort": 0,
@@ -460,15 +502,21 @@
         "effect": []
       },
       "dependents": []
+    },
+    "cat": {
+      "automation": {
+        "source": "chris-premades",
+        "version": "2.1.0"
+      }
     }
   },
   "img": "icons/creatures/mammals/humanoid-cat-skulking-teal.webp",
   "folder": "SorcShadowMagic1",
   "_id": "zyQIlXVfluKjWVpL",
   "_stats": {
-    "coreVersion": "14.364",
-    "systemId": null,
-    "systemVersion": null
+    "coreVersion": "14.369",
+    "systemId": "dnd5e",
+    "systemVersion": "6.0.6"
   },
   "_key": "!items!zyQIlXVfluKjWVpL"
 }

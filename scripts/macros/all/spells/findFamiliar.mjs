@@ -47,7 +47,7 @@ async function touch({document, workflow}) {
         img: document.img,
         origin: document.uuid,
         identifier: 'findFamiliarTouch',
-        duration: {seconds: 1},
+        duration: {value: 1, units: 'seconds'},
         specialDuration: ['madeAttack'],
         macros: [
             {
@@ -62,16 +62,14 @@ async function touch({document, workflow}) {
                 ]
             }
         ],
-        system: {
-            changes: [
-                {
-                    key: 'flags.midi-qol.rangeOverride.attack.all',
-                    type: 'custom',
-                    value: 1,
-                    priority: 20
-                }
-            ]
-        }
+        changes: [
+            {
+                key: 'flags.midi-qol.rangeOverride.attack.all',
+                type: 'custom',
+                value: 1,
+                priority: 20
+            }
+        ]
     });
     const [casterEffect] = await effectUtils.createEffects(workflow.actor, [effectData]);
     await effectUtils.createEffects(summon.actor, [effectData], {parentEntity: casterEffect});

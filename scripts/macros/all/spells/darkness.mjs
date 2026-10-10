@@ -1,26 +1,22 @@
-import {actorUtils, automationUtils, documentUtils, genericUtils, regionUtils} from '../../../proxy.mjs';
+import cprConstants from '../../../constants.mjs';
+import {actorUtils, automationUtils, documentUtils, effectUtils, genericUtils, regionUtils} from '../../../proxy.mjs';
 function getOriginItem(region) {
     return regionUtils.getActivity(region)?.item;
 }
-function getShapeMetrics(region) {
-    const shape = region.shapes[0];
-    if (shape?.radius != undefined) return {x: Math.round(shape.x), y: Math.round(shape.y), radius: shape.radius};
-    if (shape?.width != undefined) return {x: Math.round(shape.x + (shape.width / 2)), y: Math.round(shape.y + (shape.height / 2)), radius: Math.hypot(shape.width, shape.height) / 2};
-    const bounds = region.object?.bounds;
-    return {x: Math.round(region.object?.center.x ?? 0), y: Math.round(region.object?.center.y ?? 0), radius: bounds ? Math.hypot(bounds.width, bounds.height) / 2 : 0};
-}
 function getLightRadius(region, token) {
-    const radius = getShapeMetrics(region).radius - (token?.object?.externalRadius ?? 0);
-    return Math.max(radius, 0) / region.parent.grid.size * region.parent.grid.distance;
+    const radius = regionUtils.getArea(region).radius - (token?.object?.externalRadius ?? 0);
+    return Math.max(radius, 0) / region.parent.dimensions.distancePixels;
 }
 function getLightPosition(region) {
-    const {x, y} = getShapeMetrics(region);
-    return {x, y};
+    const {x, y} = regionUtils.getArea(region);
+    return {x: Math.round(x), y: Math.round(y)};
 }
-async function darkenToken(token, region, animationType) {
-    const light = genericUtils.duplicate(token._source.light);
-    await documentUtils.update(token, {light: {negative: true, dim: getLightRadius(region, token), bright: 0, animation: {type: animationType}}});
-    return {darknessToken: {id: token.id, light}};
+async function darkenToken(token, region, activity, animationType) {
+    if (!token.actor) return;
+    const changes = Object.entries({negative: true, dim: getLightRadius(region, token), bright: 0, 'animation.type': animationType}).map(([key, value]) => ({key: 'token.light.' + key, type: 'override', value, priority: 20}));
+    const effectData = documentUtils.getBaseEffectData(activity, {name: activity.item.name, img: activity.item.img, origin: activity.uuid, changes});
+    const [effect] = await effectUtils.createEffects(token.actor, [effectData]);
+    if (effect) await documentUtils.makeDependent(region, [effect]);
 }
 async function createLight(region, animationType) {
     const [light] = await documentUtils.createEmbeddedDocuments(region.parent, 'AmbientLight', [{
@@ -39,23 +35,30 @@ function getSeeingTokens(region, workflow) {
     if (!identifiers.includes(documentUtils.getIdentifier(castActivity.item))) return;
     return [workflow.token.document.uuid];
 }
+function getDarkenedToken(region, activity, workflow) {
+    if (region.attachment?.token) return region.attachment.token;
+    if (activity.target.template.type !== 'radius') return;
+    return workflow?.token?.document ?? actorUtils.getFirstToken(activity.actor);
+}
 async function created({document: region, workflow}) {
     const activity = regionUtils.getActivity(region);
     const originItem = activity?.item;
     if (!originItem) return;
+    if (automationUtils.getConfigValue(originItem, 'spreadAroundCorners')) await regionUtils.spreadAroundCorners(region);
     const updates = {name: originItem.name};
     const seeingTokens = getSeeingTokens(region, workflow);
     if (seeingTokens) genericUtils.setProperty(updates, 'flags.cat.canSeeTokens', seeingTokens);
-    if (automationUtils.getConfigValue(originItem, 'spreadAroundCorners')) {
-        genericUtils.setProperty(updates, 'flags.walledtemplates.wallRestriction', 'move');
-        genericUtils.setProperty(updates, 'flags.walledtemplates.wallsBlock', 'recurse');
-    }
     const useRealDarkness = automationUtils.getConfigValue(originItem, 'useRealDarkness');
     if (useRealDarkness) {
         const animationType = automationUtils.getConfigValue(originItem, 'darknessAnimation');
-        const token = activity.target.template.type === 'radius' ? workflow?.token?.document ?? actorUtils.getFirstToken(activity.actor) : undefined;
-        const flags = token ? await darkenToken(token, region, animationType) : await createLight(region, animationType);
-        if (flags) genericUtils.setProperty(updates, 'flags.chris-premades', flags);
+        const token = getDarkenedToken(region, activity, workflow);
+        if (token) {
+            await darkenToken(token, region, activity, animationType);
+            genericUtils.setProperty(updates, 'flags.chris-premades.darknessToken', true);
+        } else {
+            const flags = await createLight(region, animationType);
+            if (flags) genericUtils.setProperty(updates, 'flags.chris-premades', flags);
+        }
     }
     await documentUtils.update(region, updates);
     if (useRealDarkness) return;
@@ -71,8 +74,6 @@ async function updated({document: region, updates}) {
 }
 async function deleted({document: region}) {
     const {darknessLight, darknessToken} = region.flags['chris-premades'] ?? {};
-    const token = region.parent.tokens.get(darknessToken?.id);
-    if (token) await documentUtils.update(token, {light: darknessToken.light});
     const originItem = getOriginItem(region);
     if (!originItem || darknessLight || darknessToken) return;
     const {animation} = automationUtils.getResolvedAnimation(originItem, 'animation');
@@ -108,15 +109,7 @@ export const darkness = {
             label: 'CHRISPREMADES.Config.RealDarkness',
             category: 'mechanics'
         },
-        darknessAnimation: {
-            default: '',
-            type: 'select',
-            label: 'CHRISPREMADES.Config.DarknessAnimation',
-            category: 'mechanics',
-            get options() {
-                return [{value: '', label: _loc('DND5E.None')}, ...Object.entries(CONFIG.Canvas.darknessAnimations).map(([value, config]) => ({value, label: config.label}))];
-            }
-        },
+        darknessAnimation: cprConstants.darknessAnimationConfig,
         animation: {
             default: {
                 source: 'chris-premades',

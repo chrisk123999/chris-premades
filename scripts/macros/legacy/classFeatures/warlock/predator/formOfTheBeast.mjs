@@ -30,7 +30,7 @@ async function use({document, workflow}) {
     const vae = activities.map(activity => ({type: 'use', name: activity.name, identifier: 'form-of-the-beast-warlock', activityIdentifier: activity.identifier}));
     const effectData = documentUtils.getEffectData(workflow.activity, sourceEffect.id, {
         activityUuid: workflow.activity.uuid,
-        duration: levels >= 6 ? {seconds: 3600} : undefined,
+        duration: levels >= 6 ? {value: 1, units: 'hours'} : undefined,
         unhideActivities: identifiers,
         vae,
         deleteAnimation: config.animation,

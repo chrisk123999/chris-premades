@@ -56,17 +56,20 @@ async function use({document, workflow, castData}) {
                 img: document.item.img,
                 origin: document.uuid,
                 duration: {
-                    seconds: activityUtils.getDuration(document)
+                    value: activityUtils.getDuration(document),
+                    units: 'seconds'
                 },
                 start: ActiveEffect.implementation.getEffectStart(),
-                changes: [
-                    {
-                        key: 'token.disposition',
-                        priority: 10,
-                        type: 'override',
-                        value: workflow.token.document.disposition
-                    }
-                ],
+                system: {
+                    changes: [
+                        {
+                            key: 'token.disposition',
+                            priority: 10,
+                            type: 'override',
+                            value: workflow.token.document.disposition
+                        }
+                    ]
+                },
                 flags: {
                     cat: {
                         identifier: 'animate-dead-controlled'
@@ -102,7 +105,7 @@ async function reassert({document}) {
     let selectedSummons = [];
     if (validSummons.length > maxReassert) {
         let selection = await dialogUtils.selectDocumentDialog(
-            'CHRISPREMADES.Macros.All.AnimateDead.SelectSummons.Title',
+            'CHRISPREMADES.Macros.All.AnimateDead.Reassert.Title',
             _loc('CHRISPREMADES.Macros.All.AnimateDead.Reassert.Content', {max: maxReassert}),
             validSummons,
             {max: maxReassert, checkbox: true, labels: validSummons.reduce((acc, i) => {

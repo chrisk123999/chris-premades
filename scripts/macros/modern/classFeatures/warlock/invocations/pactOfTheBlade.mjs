@@ -1,24 +1,20 @@
 import {actorUtils, automationUtils, constants, dialogUtils, documentUtils, effectUtils, genericUtils, itemUtils} from '../../../../../proxy.mjs';
 const bondIdentifier = 'pactOfTheBladeBondedEnchantment';
-function bondData(document, workflow, weapon) {
-    const ability = automationUtils.getConfigValue(document, 'ability');
+function bondData(document, workflow) {
     const changes = [
         {
             key: 'name',
             type: 'override',
             value: '{} (' + _loc('CHRISPREMADES.Macros.Modern.PactOfTheBlade.Name') + ')',
             priority: 20
+        },
+        {
+            key: 'activities[attack].attack.abilities',
+            type: 'add',
+            value: automationUtils.getConfigValue(document, 'ability'),
+            priority: 20
         }
     ];
-    const weaponAbility = weapon.system.activities?.getByType?.('attack')[0]?.attack.ability || 'str';
-    const abilities = [weaponAbility, ability];
-    if (weapon.system.properties.has('fin')) abilities.push('dex');
-    if (actorUtils.getBestAbility(workflow.actor, abilities) === ability) changes.push({
-        key: 'activities[attack].attack.ability',
-        type: 'override',
-        value: ability,
-        priority: 20
-    });
     return documentUtils.getBaseEffectData(workflow.activity, {
         name: document.name,
         img: document.img,
@@ -44,7 +40,7 @@ async function bond({document, workflow}) {
     const selection = validWeapons.length === 1 ? validWeapons[0] : await dialogUtils.selectDocumentDialog(document.name, _loc('CHRISPREMADES.Macros.Modern.PactOfTheBlade.SelectBond'), validWeapons, {sort: 'alphabetical'});
     if (!selection) return;
     await clearBonds(workflow.actor);
-    await itemUtils.enchantItem(selection, bondData(document, workflow, selection));
+    await itemUtils.enchantItem(selection, bondData(document, workflow));
 }
 async function conjure({document, workflow}) {
     if (workflow.activity.identifier !== 'conjure') return;
@@ -70,7 +66,7 @@ async function conjure({document, workflow}) {
     genericUtils.setProperty(itemData, 'system.source.rules', '2024');
     const [weapon] = await itemUtils.createItems(workflow.actor, [itemData], {parentEntity: markerEffect, favorite: true});
     if (!weapon) return;
-    await itemUtils.enchantItem(weapon, bondData(document, workflow, weapon));
+    await itemUtils.enchantItem(weapon, bondData(document, workflow));
 }
 async function damage({workflow}) {
     const feature = actorUtils.getItemByIdentifier(workflow.actor, 'pact-of-the-blade');

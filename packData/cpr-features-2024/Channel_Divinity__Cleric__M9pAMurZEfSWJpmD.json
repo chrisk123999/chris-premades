@@ -31,9 +31,7 @@
           "selfTarget": false,
           "selfTargetAlways": false,
           "dontApply": true,
-          "specialDuration": [
-            "None"
-          ]
+          "specialDuration": []
         },
         "midi-qol": {
           "forceCEOff": true
@@ -61,14 +59,13 @@
       "_id": "HcjIwIiuE7Htjz7a",
       "img": "icons/magic/holy/barrier-shield-winged-blue.webp",
       "type": "base",
-      "start": null,
       "origin": null,
       "folder": null,
       "sort": 0,
       "_stats": {
         "coreVersion": "14.364",
-        "systemId": null,
-        "systemVersion": null
+        "systemId": "dnd5e",
+        "systemVersion": "6.0.6"
       },
       "_key": "!items.effects!M9pAMurZEfSWJpmD.HcjIwIiuE7Htjz7a"
     },
@@ -82,7 +79,6 @@
         "changes": []
       },
       "disabled": false,
-      "start": null,
       "duration": {
         "value": null,
         "units": "seconds",
@@ -127,8 +123,8 @@
       },
       "_stats": {
         "coreVersion": "14.364",
-        "systemId": null,
-        "systemVersion": null
+        "systemId": "dnd5e",
+        "systemVersion": "6.0.6"
       },
       "_key": "!items.effects!M9pAMurZEfSWJpmD.PhHhDCmfrdQVNb6T"
     }
@@ -918,9 +914,9 @@
   "folder": "zpnSU81c3nPjSzE1",
   "_id": "M9pAMurZEfSWJpmD",
   "_stats": {
-    "coreVersion": "14.364",
-    "systemId": null,
-    "systemVersion": null
+    "coreVersion": "14.369",
+    "systemId": "dnd5e",
+    "systemVersion": "6.0.6"
   },
   "_key": "!items!M9pAMurZEfSWJpmD"
 }

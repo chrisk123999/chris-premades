@@ -14,7 +14,11 @@
             "key": "flags.midi-qol.grants.noAdvantage.attack.all",
             "value": "!workflow?.targets?.first()?.actor?.statuses?.has('incapacitated')",
             "priority": 20,
-            "type": "custom"
+            "type": "custom",
+            "phase": "initial",
+            "_id": "7NxwQy5MKVBzToDm",
+            "conditions": "{}",
+            "replacement": ""
           }
         ]
       },
@@ -40,7 +44,6 @@
           "enableCondition": "",
           "disableCondition": "",
           "stackable": "noneName",
-          "showIcon": false,
           "disableIncapacitated": false,
           "selfTarget": false,
           "selfTargetAlways": false,
@@ -53,13 +56,12 @@
           "overlay": false
         }
       },
-      "start": null,
       "showIcon": 1,
       "folder": null,
       "_stats": {
-        "coreVersion": "14.364",
+        "coreVersion": "14.369",
         "systemId": "dnd5e",
-        "systemVersion": "5.3.3"
+        "systemVersion": "6.0.6"
       },
       "_key": "!items.effects!guatjif0fGktHzFI.SaU9twsq0lyW0j0u"
     }
@@ -115,9 +117,9 @@
   "folder": "oeHJD6UoRsmQIVlo",
   "_id": "guatjif0fGktHzFI",
   "_stats": {
-    "coreVersion": "14.364",
+    "coreVersion": "14.369",
     "systemId": "dnd5e",
-    "systemVersion": "5.3.3"
+    "systemVersion": "6.0.6"
   },
   "_key": "!items!guatjif0fGktHzFI"
 }

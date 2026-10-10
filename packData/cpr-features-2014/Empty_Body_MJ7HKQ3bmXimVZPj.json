@@ -14,84 +14,120 @@
             "type": "add",
             "value": "acid",
             "phase": "final",
-            "priority": null
+            "priority": null,
+            "_id": "ubRTEauVKAJGR1dM",
+            "conditions": "{}",
+            "replacement": ""
           },
           {
             "key": "system.traits.dr.value",
             "type": "add",
             "value": "bludgeoning",
             "phase": "final",
-            "priority": null
+            "priority": null,
+            "_id": "hRu87IWBkcJwVv9W",
+            "conditions": "{}",
+            "replacement": ""
           },
           {
             "key": "system.traits.dr.value",
             "type": "add",
             "value": "cold",
             "phase": "final",
-            "priority": null
+            "priority": null,
+            "_id": "ibNKfZwrzKvbl452",
+            "conditions": "{}",
+            "replacement": ""
           },
           {
             "key": "system.traits.dr.value",
             "type": "add",
             "value": "fire",
             "phase": "final",
-            "priority": null
+            "priority": null,
+            "_id": "OyY1nC0ZvSFj15ul",
+            "conditions": "{}",
+            "replacement": ""
           },
           {
             "key": "system.traits.dr.value",
             "type": "add",
             "value": "lightning",
             "phase": "final",
-            "priority": null
+            "priority": null,
+            "_id": "qVG9FrpErItoJeQm",
+            "conditions": "{}",
+            "replacement": ""
           },
           {
             "key": "system.traits.dr.value",
             "type": "add",
             "value": "necrotic",
             "phase": "final",
-            "priority": null
+            "priority": null,
+            "_id": "imylzeBzdhNYmchz",
+            "conditions": "{}",
+            "replacement": ""
           },
           {
             "key": "system.traits.dr.value",
             "type": "add",
             "value": "piercing",
             "phase": "final",
-            "priority": null
+            "priority": null,
+            "_id": "Le9kAR9oPwEn8LGD",
+            "conditions": "{}",
+            "replacement": ""
           },
           {
             "key": "system.traits.dr.value",
             "type": "add",
             "value": "poison",
             "phase": "final",
-            "priority": null
+            "priority": null,
+            "_id": "1T7oheHRPVDwCEXV",
+            "conditions": "{}",
+            "replacement": ""
           },
           {
             "key": "system.traits.dr.value",
             "type": "add",
             "value": "psychic",
             "phase": "final",
-            "priority": null
+            "priority": null,
+            "_id": "4l8nxom90qbgHjhx",
+            "conditions": "{}",
+            "replacement": ""
           },
           {
             "key": "system.traits.dr.value",
             "type": "add",
             "value": "radiant",
             "phase": "final",
-            "priority": null
+            "priority": null,
+            "_id": "koeWXdp9HE7QLB45",
+            "conditions": "{}",
+            "replacement": ""
           },
           {
             "key": "system.traits.dr.value",
             "type": "add",
             "value": "slashing",
             "phase": "final",
-            "priority": null
+            "priority": null,
+            "_id": "NOpN1439Pnq37FvL",
+            "conditions": "{}",
+            "replacement": ""
           },
           {
             "key": "system.traits.dr.value",
             "type": "add",
             "value": "thunder",
             "phase": "final",
-            "priority": null
+            "priority": null,
+            "_id": "taKio9z7QPTBKRxk",
+            "conditions": "{}",
+            "replacement": ""
           }
         ]
       },
@@ -136,14 +172,13 @@
       "_id": "2gRjkq6X6tYTh0BC",
       "img": "icons/magic/unholy/orb-swirling-teal.webp",
       "type": "base",
-      "start": null,
       "origin": null,
       "folder": null,
       "sort": 0,
       "_stats": {
-        "coreVersion": "14.364",
+        "coreVersion": "14.369",
         "systemId": "dnd5e",
-        "systemVersion": "5.3.3"
+        "systemVersion": "6.0.6"
       },
       "_key": "!items.effects!MJ7HKQ3bmXimVZPj.2gRjkq6X6tYTh0BC"
     }
@@ -535,9 +570,9 @@
   "img": "icons/magic/unholy/orb-swirling-teal.webp",
   "folder": "nH8135F1PzU9skht",
   "_stats": {
-    "coreVersion": "14.364",
+    "coreVersion": "14.369",
     "systemId": "dnd5e",
-    "systemVersion": "5.3.3"
+    "systemVersion": "6.0.6"
   },
   "_id": "MJ7HKQ3bmXimVZPj",
   "_key": "!items!MJ7HKQ3bmXimVZPj"

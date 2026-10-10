@@ -41,28 +41,7 @@
           "override": false
         },
         "effects": [],
-        "flags": {
-          "cat": {
-            "genericConfig": {
-              "chris-premades": {
-                "combatStartItemUses": {
-                  "identifier": "ki",
-                  "minimum": 4,
-                  "fromZeroOnly": true
-                }
-              }
-            },
-            "macros": {
-              "combat": [
-                {
-                  "source": "chris-premades",
-                  "identifier": "combatStartItemUses",
-                  "rules": "all"
-                }
-              ]
-            }
-          }
-        },
+        "flags": {},
         "range": {
           "units": "self",
           "special": "",
@@ -223,16 +202,34 @@
     "cat": {
       "automation": {
         "source": "chris-premades",
-        "version": "2.0.4"
+        "version": "2.1.0"
+      },
+      "macros": {
+        "item": [
+          {
+            "source": "chris-premades",
+            "identifier": "itemRecovery",
+            "rules": "all"
+          }
+        ]
+      },
+      "genericConfig": {
+        "chris-premades": {
+          "itemRecovery": {
+            "identifier": "ki",
+            "period": "initiative",
+            "formula": "(1 - sign(@item.uses.value)) * 4"
+          }
+        }
       }
     }
   },
   "img": "icons/magic/perception/third-eye-blue-red.webp",
   "folder": "nH8135F1PzU9skht",
   "_stats": {
-    "coreVersion": "14.364",
+    "coreVersion": "14.369",
     "systemId": "dnd5e",
-    "systemVersion": "5.3.3"
+    "systemVersion": "6.0.6"
   },
   "_id": "66vHW915TsHxyUoN",
   "_key": "!items!66vHW915TsHxyUoN"

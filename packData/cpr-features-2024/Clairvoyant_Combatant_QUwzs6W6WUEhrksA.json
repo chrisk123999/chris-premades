@@ -360,9 +360,9 @@
   "folder": "20e9fb4536f02f37",
   "_id": "QUwzs6W6WUEhrksA",
   "_stats": {
-    "coreVersion": "14.364",
-    "systemId": null,
-    "systemVersion": null
+    "coreVersion": "14.369",
+    "systemId": "dnd5e",
+    "systemVersion": "6.0.6"
   },
   "_key": "!items!QUwzs6W6WUEhrksA"
 }

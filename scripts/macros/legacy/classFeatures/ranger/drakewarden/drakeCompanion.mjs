@@ -42,7 +42,7 @@ async function use({document, workflow}) {
             traits: {di: {value: [damageType]}}
         }
     };
-    if (upgrades) genericUtils.setProperty(updates, 'system.attributes.movement.fly', 40);
+    if (upgrades) genericUtils.setProperty(updates, 'system.attributes.movement.speeds.fly', 40);
     const markerEffectData = documentUtils.getBaseEffectData(workflow.activity, {
         name: document.name,
         img: document.img,

@@ -55,10 +55,6 @@
       "cost": 0,
       "supply": 0
     },
-    "preparation": {
-      "mode": "prepared",
-      "prepared": false
-    },
     "properties": [
       "vocal"
     ],
@@ -190,7 +186,6 @@
       }
     },
     "identifier": "misty-step",
-    "sourceClass": "",
     "method": "spell",
     "prepared": 0
   },
@@ -247,9 +242,9 @@
   "folder": "ueMNujKhkNn2zCfl",
   "_id": "SVAci8FYOO83jEQX",
   "_stats": {
-    "coreVersion": "14.364",
-    "systemId": null,
-    "systemVersion": null
+    "coreVersion": "14.369",
+    "systemId": "dnd5e",
+    "systemVersion": "6.0.6"
   },
   "_key": "!items!SVAci8FYOO83jEQX"
 }

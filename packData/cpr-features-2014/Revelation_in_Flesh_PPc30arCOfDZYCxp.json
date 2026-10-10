@@ -25,7 +25,6 @@
           "selfTarget": false,
           "selfTargetAlways": false,
           "dontApply": true,
-          "showIcon": false,
           "durationExpression": "",
           "macroRepeat": "none"
         },
@@ -48,20 +47,23 @@
       "system": {
         "changes": [
           {
-            "key": "system.attributes.movement.swim",
-            "value": "2 * @attributes.movement.walk",
+            "key": "system.attributes.movement.speeds.swim",
+            "value": "2 * @attributes.movement.speeds.walk",
             "priority": 20,
-            "type": "upgrade"
+            "type": "upgrade",
+            "phase": "initial",
+            "_id": "Pa3E0msdv71UtNQh",
+            "conditions": "{}",
+            "replacement": ""
           }
         ]
       },
       "origin": null,
       "_stats": {
-        "coreVersion": "14.364",
-        "systemId": null,
-        "systemVersion": null
+        "coreVersion": "14.369",
+        "systemId": "dnd5e",
+        "systemVersion": "6.0.6"
       },
-      "start": null,
       "showIcon": 1,
       "folder": null,
       "sort": 0,
@@ -89,7 +91,6 @@
           "selfTarget": false,
           "selfTargetAlways": false,
           "dontApply": true,
-          "showIcon": false,
           "durationExpression": "",
           "macroRepeat": "none"
         },
@@ -112,26 +113,33 @@
       "system": {
         "changes": [
           {
-            "key": "system.attributes.movement.fly",
-            "value": "@attributes.movement.walk",
+            "key": "system.attributes.movement.speeds.fly",
+            "value": "@attributes.movement.speeds.walk",
             "priority": 20,
-            "type": "upgrade"
+            "type": "upgrade",
+            "phase": "initial",
+            "_id": "k0H90rKbDHLrYBQ6",
+            "conditions": "{}",
+            "replacement": ""
           },
           {
             "key": "system.attributes.movement.hover",
             "value": true,
             "priority": 20,
-            "type": "custom"
+            "type": "custom",
+            "phase": "initial",
+            "_id": "AU7Gr7sg0GPwgL8i",
+            "conditions": "{}",
+            "replacement": ""
           }
         ]
       },
       "origin": null,
       "_stats": {
-        "coreVersion": "14.364",
-        "systemId": null,
-        "systemVersion": null
+        "coreVersion": "14.369",
+        "systemId": "dnd5e",
+        "systemVersion": "6.0.6"
       },
-      "start": null,
       "showIcon": 1,
       "folder": null,
       "sort": 0,
@@ -159,7 +167,6 @@
           "selfTarget": false,
           "selfTargetAlways": false,
           "dontApply": true,
-          "showIcon": false,
           "durationExpression": "",
           "macroRepeat": "none"
         },
@@ -185,23 +192,40 @@
             "key": "system.attributes.senses.special",
             "value": ";See Invisibility (60ft)",
             "priority": 1,
-            "type": "add"
+            "type": "add",
+            "phase": "initial",
+            "_id": "yEQpBqVpgvVyQb82",
+            "conditions": "{}",
+            "replacement": ""
           },
           {
-            "key": "ATL.detectionModes.seeInvisibility.range",
+            "key": "token.detectionModes.seeInvisibility.enabled",
+            "value": true,
+            "priority": 19,
+            "type": "override",
+            "phase": "initial",
+            "_id": "H5c6b9RabSoipnkw",
+            "conditions": "{}",
+            "replacement": ""
+          },
+          {
+            "key": "token.detectionModes.seeInvisibility.range",
             "value": 60,
             "priority": 20,
-            "type": "upgrade"
+            "type": "upgrade",
+            "phase": "initial",
+            "_id": "UzUOtKtiRfKgJdWO",
+            "conditions": "{}",
+            "replacement": ""
           }
         ]
       },
       "origin": null,
       "_stats": {
-        "coreVersion": "14.364",
-        "systemId": null,
-        "systemVersion": null
+        "coreVersion": "14.369",
+        "systemId": "dnd5e",
+        "systemVersion": "6.0.6"
       },
-      "start": null,
       "showIcon": 1,
       "folder": null,
       "sort": 0,
@@ -229,7 +253,6 @@
           "selfTarget": false,
           "selfTargetAlways": false,
           "dontApply": true,
-          "showIcon": false,
           "durationExpression": "",
           "macroRepeat": "none"
         },
@@ -255,10 +278,9 @@
       "origin": null,
       "_stats": {
         "coreVersion": "14.364",
-        "systemId": null,
-        "systemVersion": null
+        "systemId": "dnd5e",
+        "systemVersion": "6.0.6"
       },
-      "start": null,
       "showIcon": 1,
       "folder": null,
       "sort": 0,
@@ -557,9 +579,9 @@
   "img": "icons/magic/control/silhouette-hold-change-blue.webp",
   "folder": "SorcAberrantMnd1",
   "_stats": {
-    "coreVersion": "14.364",
-    "systemId": null,
-    "systemVersion": null
+    "coreVersion": "14.369",
+    "systemId": "dnd5e",
+    "systemVersion": "6.0.6"
   },
   "_key": "!items!PPc30arCOfDZYCxp"
 }

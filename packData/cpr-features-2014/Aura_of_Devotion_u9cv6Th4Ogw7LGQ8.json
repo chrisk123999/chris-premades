@@ -16,12 +16,14 @@
             "type": "add",
             "value": "charmed",
             "phase": "initial",
-            "priority": 20
+            "priority": 20,
+            "_id": "gFbAi7eSKHiJhtvA",
+            "conditions": "{}",
+            "replacement": ""
           }
         ]
       },
       "disabled": false,
-      "start": null,
       "duration": {
         "value": null,
         "units": "seconds",
@@ -48,9 +50,9 @@
         }
       },
       "_stats": {
-        "coreVersion": "14.364",
-        "systemId": null,
-        "systemVersion": null
+        "coreVersion": "14.369",
+        "systemId": "dnd5e",
+        "systemVersion": "6.0.6"
       },
       "_key": "!items.effects!u9cv6Th4Ogw7LGQ8.dVtnAuraChrmImm1"
     }
@@ -116,9 +118,9 @@
   "folder": "O3mbtsqIsuMeDSaq",
   "_id": "u9cv6Th4Ogw7LGQ8",
   "_stats": {
-    "coreVersion": "14.364",
-    "systemId": null,
-    "systemVersion": null
+    "coreVersion": "14.369",
+    "systemId": "dnd5e",
+    "systemVersion": "6.0.6"
   },
   "_key": "!items!u9cv6Th4Ogw7LGQ8"
 }

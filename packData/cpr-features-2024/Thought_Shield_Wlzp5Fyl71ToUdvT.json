@@ -16,7 +16,6 @@
       "disabled": false,
       "flags": {
         "dae": {
-          "showIcon": false,
           "transfer": true,
           "stackable": "noneNameOnly",
           "disableCondition": "",
@@ -47,19 +46,25 @@
             "key": "system.traits.dr.value",
             "value": "psychic",
             "priority": 1,
-            "type": "add"
+            "type": "add",
+            "phase": "initial",
+            "_id": "TqVy7rs0T5Mz6aFY",
+            "conditions": "{}",
+            "replacement": ""
           }
-        ]
+        ],
+        "origin": {
+          "item": "Compendium.chris-premades.CPRFeatures2024.Item.Wlzp5Fyl71ToUdvT"
+        }
       },
-      "origin": "Compendium.chris-premades.CPRClassFeatures2024.Item.Wlzp5Fyl71ToUdvT",
+      "origin": null,
       "sort": 0,
-      "start": null,
       "showIcon": 1,
       "folder": null,
       "_stats": {
-        "coreVersion": "14.364",
-        "systemId": null,
-        "systemVersion": null
+        "coreVersion": "14.369",
+        "systemId": "dnd5e",
+        "systemVersion": "6.0.6"
       },
       "_key": "!items.effects!Wlzp5Fyl71ToUdvT.BfngdUGWguKYWj8w"
     }
@@ -260,7 +265,7 @@
     "cat": {
       "automation": {
         "source": "chris-premades",
-        "version": "2.0.0"
+        "version": "2.1.0"
       },
       "macros": {
         "roll": [
@@ -277,9 +282,9 @@
   "folder": "20e9fb4536f02f37",
   "_id": "Wlzp5Fyl71ToUdvT",
   "_stats": {
-    "coreVersion": "14.364",
-    "systemId": null,
-    "systemVersion": null
+    "coreVersion": "14.369",
+    "systemId": "dnd5e",
+    "systemVersion": "6.0.6"
   },
   "_key": "!items!Wlzp5Fyl71ToUdvT"
 }

@@ -13,9 +13,13 @@
         "changes": [
           {
             "key": "flags.midi-qol.OverTime",
-            "value": "turn=end,allowIncapacitated=true,rollType=save,saveAbility=str,saveDC=$activity.dc,saveDamage=nodamage,saveCount=1,rollMode=publicroll,",
+            "value": "turn=end,allowIncapacitated=true,rollType=save,saveAbility=str,saveDC=$activity.dc,saveDamage=nodamage,saveCount=1,rollMode=public,",
             "priority": 20,
-            "type": "custom"
+            "type": "custom",
+            "phase": "initial",
+            "_id": "oL9N1kS9v8QTSgsC",
+            "conditions": "{}",
+            "replacement": ""
           }
         ]
       },
@@ -40,7 +44,6 @@
           "enableCondition": "",
           "disableCondition": "",
           "stackable": "noneName",
-          "showIcon": false,
           "disableIncapacitated": false,
           "selfTarget": false,
           "selfTargetAlways": false,
@@ -58,13 +61,12 @@
           ]
         }
       },
-      "start": null,
       "showIcon": 1,
       "folder": null,
       "_stats": {
-        "coreVersion": "14.364",
-        "systemId": null,
-        "systemVersion": null
+        "coreVersion": "14.369",
+        "systemId": "dnd5e",
+        "systemVersion": "6.0.6"
       },
       "_key": "!items.effects!o6wNKbflFhU54GNr.teBKkh0U5ZnqakiO"
     }
@@ -302,9 +304,9 @@
   "folder": "Fz4cmoD9hIPrijxr",
   "_id": "o6wNKbflFhU54GNr",
   "_stats": {
-    "coreVersion": "14.364",
-    "systemId": null,
-    "systemVersion": null
+    "coreVersion": "14.369",
+    "systemId": "dnd5e",
+    "systemVersion": "6.0.6"
   },
   "_key": "!items!o6wNKbflFhU54GNr"
 }

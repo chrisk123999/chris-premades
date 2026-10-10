@@ -238,7 +238,6 @@
           "disableCondition": "",
           "disableIncapacitated": false,
           "stackable": "noneName",
-          "showIcon": false,
           "durationExpression": "",
           "macroRepeat": "none"
         },
@@ -263,13 +262,21 @@
             "key": "system.traits.dr.value",
             "value": "thunder",
             "priority": 20,
-            "type": "add"
+            "type": "add",
+            "phase": "initial",
+            "_id": "Kv2Ob0AMGAVaRL5q",
+            "conditions": "{}",
+            "replacement": ""
           },
           {
             "key": "system.traits.dr.value",
             "value": "lightning",
             "priority": 20,
-            "type": "add"
+            "type": "add",
+            "phase": "initial",
+            "_id": "60VFRFM40Vo5wctr",
+            "conditions": "{}",
+            "replacement": ""
           }
         ]
       },
@@ -278,11 +285,10 @@
       "transfer": true,
       "statuses": [],
       "_stats": {
-        "coreVersion": "14.364",
-        "systemId": null,
-        "systemVersion": null
+        "coreVersion": "14.369",
+        "systemId": "dnd5e",
+        "systemVersion": "6.0.6"
       },
-      "start": null,
       "showIcon": 1,
       "folder": null,
       "sort": 0,
@@ -293,9 +299,9 @@
   "folder": "SorcStormSorcry1",
   "_id": "70gcuQg94Gbx6CP5",
   "_stats": {
-    "coreVersion": "14.364",
-    "systemId": null,
-    "systemVersion": null
+    "coreVersion": "14.369",
+    "systemId": "dnd5e",
+    "systemVersion": "6.0.6"
   },
   "_key": "!items!70gcuQg94Gbx6CP5"
 }

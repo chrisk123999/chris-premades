@@ -10,6 +10,7 @@ export {contestedCheck} from './generic/contestedCheck.mjs';
 export {damageBonusToOneRoll} from './generic/damageBonusToOneRoll.mjs';
 export {extraAttack} from './generic/extraAttack.mjs';
 export {grapple} from './generic/grapple.mjs';
+export {itemRecovery} from './generic/itemRecovery.mjs';
 export {hide} from './generic/hide.mjs';
 export {movementAnimation} from './generic/movementAnimation.mjs';
 export {multiSingleTarget} from './generic/multiSingleTarget.mjs';

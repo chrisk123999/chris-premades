@@ -1,4 +1,5 @@
 import {actorUtils, documentUtils, genericUtils, itemUtils} from '../../../../proxy.mjs';
+import {addItemRecovery} from '../../../generic/itemRecovery.mjs';
 async function early({document}) {
     const spells = document.actor.system.spells ?? {};
     if (Object.values(spells).some(i => i.max > 0 && i.value < i.max)) return;
@@ -9,15 +10,7 @@ async function added({document}) {
     const actor = document.actor;
     const wildShape = actorUtils.getItemByIdentifier(actor, 'wild-shape');
     if (!wildShape) return;
-    if (!wildShape.system.uses.recovery.find(i => i.period === 'initiative')) {
-        const newRecovery = wildShape.toObject().system.uses.recovery;
-        newRecovery.push({
-            formula: '1 - sign(@item.uses.value)',
-            period: 'initiative',
-            type: 'formula'
-        });
-        await documentUtils.update(wildShape, {'system.uses.recovery': newRecovery});
-    }
+    await addItemRecovery(document, 'wild-shape', {period: 'initiative', type: 'formula', formula: '1 - sign(@item.uses.value)'});
     const archdruidActivity = itemUtils.getActivityByIdentifier(document, 'archdruid');
     if (!archdruidActivity) return;
     if (archdruidActivity.consumption.scaling.max === '') {

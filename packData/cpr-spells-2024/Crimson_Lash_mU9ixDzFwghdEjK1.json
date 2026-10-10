@@ -219,10 +219,10 @@
       "_id": "tTvTxsmuYB304EVq",
       "type": "base",
       "system": {
-        "changes": []
+        "changes": [],
+        "magical": true
       },
       "disabled": false,
-      "start": null,
       "duration": {
         "value": null,
         "units": "seconds",
@@ -263,9 +263,9 @@
         }
       },
       "_stats": {
-        "coreVersion": "14.364",
-        "systemId": null,
-        "systemVersion": null
+        "coreVersion": "14.369",
+        "systemId": "dnd5e",
+        "systemVersion": "6.0.6"
       },
       "_key": "!items.effects!mU9ixDzFwghdEjK1.tTvTxsmuYB304EVq"
     }
@@ -300,9 +300,9 @@
   "img": "icons/skills/wounds/blood-spurt-spray-red.webp",
   "_id": "mU9ixDzFwghdEjK1",
   "_stats": {
-    "coreVersion": "14.364",
-    "systemId": null,
-    "systemVersion": null
+    "coreVersion": "14.369",
+    "systemId": "dnd5e",
+    "systemVersion": "6.0.6"
   },
   "_key": "!items!mU9ixDzFwghdEjK1"
 }

@@ -7,7 +7,7 @@ async function buff({summon, updates}) {
     if (!wizardLevels) return;
     const sourceActor = await summon.getSourceActor();
     const hp = sourceActor.system.attributes.hp;
-    const bonuses = sourceActor.system.bonuses;
+    const damageBonuses = sourceActor.system.rolls.damage;
     const prof = owner.system.attributes.prof;
     genericUtils.mergeObject(updates, {
         system: {
@@ -18,9 +18,11 @@ async function buff({summon, updates}) {
                     formula: hp.formula ? hp.formula + ' + ' + wizardLevels : String(wizardLevels)
                 }
             },
-            bonuses: {
-                mwak: {damage: bonuses.mwak.damage ? bonuses.mwak.damage + ' + ' + prof : String(prof)},
-                rwak: {damage: bonuses.rwak.damage ? bonuses.rwak.damage + ' + ' + prof : String(prof)}
+            rolls: {
+                damage: {
+                    mwak: {bonus: damageBonuses.mwak.bonus ? damageBonuses.mwak.bonus + ' + ' + prof : String(prof)},
+                    rwak: {bonus: damageBonuses.rwak.bonus ? damageBonuses.rwak.bonus + ' + ' + prof : String(prof)}
+                }
             }
         }
     });

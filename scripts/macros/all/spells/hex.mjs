@@ -9,7 +9,7 @@ function hexedEffectData(activity, document, seconds, ability) {
         origin: document.uuid,
         identifier: 'hexed',
         activityUuid: activity.uuid,
-        duration: {seconds},
+        duration: {value: seconds, units: 'seconds'},
         changes: [
             {
                 key: 'flags.midi-qol.disadvantage.check.' + ability,
@@ -36,7 +36,7 @@ async function use({document, workflow}) {
         origin: document.uuid,
         identifier: 'hex',
         activityUuid: workflow.activity.uuid,
-        duration: {seconds},
+        duration: {value: seconds, units: 'seconds'},
         unhideActivities: ['hex-move'],
         macros: [{type: 'roll', macros: [{source: 'chris-premades', rules: 'all', identifier: 'hex-attack'}]}]
     });
@@ -72,7 +72,7 @@ async function move({document, workflow}) {
     const targets = hexData.targets.filter(uuid => uuid !== previous?.uuid);
     targets.push(newTarget.uuid);
     await documentUtils.setFlag(casterEffect, 'chris-premades', 'hex.targets', targets);
-    const effectData = hexedEffectData(workflow.activity, document, casterEffect.duration.remaining, hexData.ability);
+    const effectData = hexedEffectData(workflow.activity, document, casterEffect.duration.secondsRemaining, hexData.ability);
     await effectUtils.createEffects(newTarget.actor, [effectData], {parentEntity: casterEffect});
 }
 async function damage({document, workflow}) {

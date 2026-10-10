@@ -166,11 +166,10 @@
           "animationSpeed": 5,
           "animationIntensity": 5
         },
-        "otherActivityId": "",
+        "otherActivityId": "none",
         "otherActivityAsParentType": true,
         "attackMode": "oneHanded",
         "ammunition": "",
-        "otherActivityUuid": "",
         "attackRollPerTarget": "default",
         "fumbleThreshold": 1
       }
@@ -278,9 +277,9 @@
   "folder": null,
   "_id": "avzqwyEa8jL02Zy9",
   "_stats": {
-    "coreVersion": "14.364",
+    "coreVersion": "14.369",
     "systemId": "dnd5e",
-    "systemVersion": "5.3.3"
+    "systemVersion": "6.0.6"
   },
   "_key": "!items!avzqwyEa8jL02Zy9"
 }

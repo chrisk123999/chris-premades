@@ -132,7 +132,8 @@
             "DamageType": "Damage Type",
             "DamageTypes": "Damage Types",
             "Dark": "Dark",
-            "DarknessAnimation": "Darkness Animation",
+            "DarknessAnimation": "Real Darkness Light Effect",
+            "DarknessAnimationHint": "Light effect for the darkness created when Use Real Darkness is on. Not used by the animation below.",
             "DashAnimation": "Dash Animation",
             "DC": "DC",
             "DiceSize": "Dice Size",
@@ -270,7 +271,8 @@
                     "NotFound": "{creature} actor not found in Monster Compendium, please configure Animate Dead manually.",
                     "Reassert": {
                         "Content": "Select summons to reassert control over (Max {max})",
-                        "Label": "Seconds Remaining: {time}"
+                        "Label": "Seconds Remaining: {time}",
+                        "Title": "Reassert Control"
                     },
                     "ReassertMax": "Max Summons to Reassert",
                     "Skeleton": "Skeleton",
@@ -285,7 +287,7 @@
                     "SeeThroughIdentifiers": "See-Through Feature Identifiers",
                     "SeeThroughIdentifiersHint": "Casting this spell through one of these features lets the caster see through the darkness it creates.",
                     "SpreadAroundCorners": "Spreads Around Corners",
-                    "SpreadAroundCornersHint": "Bound the darkness by walls that block movement, letting it spread around corners. Requires Walled Templates."
+                    "SpreadAroundCornersHint": "A placed darkness flows around wall corners instead of stopping at the first wall. Darkness cast on yourself stops at walls."
                 },
                 "Dueling": "Identifiers for exceptions to the requirements of this feature.",
                 "Fall": {
@@ -469,6 +471,10 @@
                     "ReplaceActivity": "Replace Activity",
                     "ReplaceActivityHint": "The parent activity roll will be discarded and replaced by the grapple macro.",
                     "Size": "Check Target Size"
+                },
+                "ItemRecovery": {
+                    "FormulaHint": "Formula for the uses recovered. Leave empty to recover all uses.",
+                    "Period": "Recovery Period"
                 },
                 "MovementAnimation": {
                     "MoveAnimation": "Move Animation",
@@ -898,6 +904,7 @@
                 },
                 "ChromaticOrb": {
                     "BaseMaxJumps": "Base Max Jumps",
+                    "Bounce": "Who should the spell bounce to?",
                     "TargetDamageSelection": "Select Damage Type For Each Target"
                 },
                 "DeflectAttacks": "Redirect Attack?",

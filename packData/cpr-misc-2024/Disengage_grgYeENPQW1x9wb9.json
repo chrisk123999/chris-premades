@@ -208,7 +208,6 @@
           "selfTargetAlways": false,
           "dontApply": false,
           "stackable": "noneName",
-          "showIcon": false,
           "durationExpression": "",
           "macroRepeat": "none"
         },
@@ -231,7 +230,11 @@
             "key": "flags.gambits-premades.oaImmunity",
             "value": 1,
             "priority": 20,
-            "type": "override"
+            "type": "override",
+            "phase": "initial",
+            "_id": "Hl0112m1NPcVCL2K",
+            "conditions": "{}",
+            "replacement": ""
           }
         ]
       },
@@ -241,11 +244,10 @@
       "statuses": [],
       "sort": 0,
       "_stats": {
-        "coreVersion": "14.364",
-        "systemId": null,
-        "systemVersion": null
+        "coreVersion": "14.369",
+        "systemId": "dnd5e",
+        "systemVersion": "6.0.6"
       },
-      "start": null,
       "showIcon": 1,
       "folder": null,
       "_key": "!items.effects!grgYeENPQW1x9wb9.a5nwFdkUmvBforC9"
@@ -302,9 +304,9 @@
   "folder": "jCoKvU1chpjD6Jlr",
   "_id": "grgYeENPQW1x9wb9",
   "_stats": {
-    "coreVersion": "14.364",
-    "systemId": null,
-    "systemVersion": null
+    "coreVersion": "14.369",
+    "systemId": "dnd5e",
+    "systemVersion": "6.0.6"
   },
   "_key": "!items!grgYeENPQW1x9wb9"
 }

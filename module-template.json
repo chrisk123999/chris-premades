@@ -63,9 +63,9 @@
         "id": "dnd5e",
         "type": "system",
         "compatibility": {
-          "minimum": "5.3.3",
-          "verified": "5.3.3",
-          "maximum": "5.9.9"
+          "minimum": "6.0.0",
+          "verified": "6.0.6",
+          "maximum": "6.999"
         }
       }
     ],
@@ -74,21 +74,21 @@
         "id": "midi-qol",
         "type": "module",
         "compatibility": {
-          "minimum": "13.0.17"
+          "minimum": "14.6.0"
         }
       },
       {
         "id": "dae",
         "type": "module",
         "compatibility": {
-          "minimum": "13.0.4"
+          "minimum": "14.6.0"
         }
       },
       {
         "id": "cat",
         "type": "module",
         "compatibility": {
-          "minimum": "0.0.9"
+          "minimum": "0.1.0"
         }
       }
     ]

@@ -119,15 +119,7 @@ export const summonFey = {
             label: 'CHRISPREMADES.Config.RealDarkness',
             category: 'mechanics'
         },
-        darknessAnimation: {
-            default: '',
-            type: 'select',
-            label: 'CHRISPREMADES.Config.DarknessAnimation',
-            category: 'mechanics',
-            get options() {
-                return [{value: '', label: _loc('DND5E.None')}, ...Object.entries(CONFIG.Canvas.darknessAnimations).map(([value, config]) => ({value, label: config.label}))];
-            }
-        }
+        darknessAnimation: cprConstants.darknessAnimationConfig
     }
 };
 export const summonFeyFeyStep = {

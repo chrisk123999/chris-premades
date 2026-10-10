@@ -12,7 +12,6 @@
         "changes": []
       },
       "disabled": false,
-      "start": null,
       "duration": {
         "value": null,
         "units": "seconds",
@@ -63,8 +62,8 @@
       },
       "_stats": {
         "coreVersion": "14.364",
-        "systemId": null,
-        "systemVersion": null
+        "systemId": "dnd5e",
+        "systemVersion": "6.0.6"
       },
       "_key": "!items.effects!cUIcGGN5asVLDyHc.GKbXacw46TVA8PcM"
     },
@@ -82,12 +81,14 @@
             "type": "override",
             "value": true,
             "phase": "initial",
-            "priority": null
+            "priority": null,
+            "_id": "xgsFqXXh67MwCGl3",
+            "conditions": "{}",
+            "replacement": ""
           }
         ]
       },
       "disabled": false,
-      "start": null,
       "duration": {
         "value": null,
         "units": "seconds",
@@ -136,9 +137,9 @@
         }
       },
       "_stats": {
-        "coreVersion": "14.364",
-        "systemId": null,
-        "systemVersion": null
+        "coreVersion": "14.369",
+        "systemId": "dnd5e",
+        "systemVersion": "6.0.6"
       },
       "_key": "!items.effects!cUIcGGN5asVLDyHc.oHoEgces2SlW1cej"
     }
@@ -362,9 +363,9 @@
   "folder": "tBfYZGTEVaaUDePZ",
   "_id": "cUIcGGN5asVLDyHc",
   "_stats": {
-    "coreVersion": "14.364",
-    "systemId": null,
-    "systemVersion": null
+    "coreVersion": "14.369",
+    "systemId": "dnd5e",
+    "systemVersion": "6.0.6"
   },
   "_key": "!items!cUIcGGN5asVLDyHc"
 }

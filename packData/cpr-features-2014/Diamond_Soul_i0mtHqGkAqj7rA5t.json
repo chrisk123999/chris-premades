@@ -12,7 +12,10 @@
             "value": true,
             "type": "override",
             "priority": 20,
-            "phase": "initial"
+            "phase": "initial",
+            "_id": "mDwzPPC0p2LtvmiS",
+            "conditions": "{}",
+            "replacement": ""
           }
         ]
       },
@@ -40,14 +43,13 @@
       "img": "icons/commodities/gems/gem-faceted-cushion-teal-black.webp",
       "_id": "mBCqZAaCJiCHdXQT",
       "type": "base",
-      "start": null,
       "origin": null,
       "folder": null,
       "sort": 0,
       "_stats": {
-        "coreVersion": "14.364",
+        "coreVersion": "14.369",
         "systemId": "dnd5e",
-        "systemVersion": "5.3.3"
+        "systemVersion": "6.0.6"
       },
       "_key": "!items.effects!i0mtHqGkAqj7rA5t.mBCqZAaCJiCHdXQT"
     }
@@ -279,9 +281,9 @@
   "img": "icons/commodities/gems/gem-faceted-cushion-teal-black.webp",
   "folder": "nH8135F1PzU9skht",
   "_stats": {
-    "coreVersion": "14.364",
+    "coreVersion": "14.369",
     "systemId": "dnd5e",
-    "systemVersion": "5.3.3"
+    "systemVersion": "6.0.6"
   },
   "_id": "i0mtHqGkAqj7rA5t",
   "_key": "!items!i0mtHqGkAqj7rA5t"

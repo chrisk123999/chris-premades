@@ -212,9 +212,9 @@
   },
   "_id": "62I3K9Vh0Qld23HQ",
   "_stats": {
-    "coreVersion": "14.364",
-    "systemId": null,
-    "systemVersion": null
+    "coreVersion": "14.369",
+    "systemId": "dnd5e",
+    "systemVersion": "6.0.6"
   },
   "_key": "!items!62I3K9Vh0Qld23HQ"
 }

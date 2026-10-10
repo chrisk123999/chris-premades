@@ -205,8 +205,7 @@
       }
     },
     "method": "spell",
-    "prepared": 1,
-    "sourceClass": ""
+    "prepared": 1
   },
   "effects": [
     {
@@ -216,7 +215,8 @@
       "_id": "G7UhVsjX9WYhII6f",
       "type": "base",
       "system": {
-        "changes": []
+        "changes": [],
+        "magical": true
       },
       "disabled": false,
       "duration": {
@@ -235,7 +235,7 @@
       "flags": {
         "dae": {
           "stackable": "noneName",
-          "showIcon": true
+          "expiryMode": "delete"
         },
         "core": {
           "overlay": false
@@ -244,13 +244,12 @@
           "identifier": "staggeringSmite"
         }
       },
-      "start": null,
-      "showIcon": 1,
+      "showIcon": 2,
       "folder": null,
       "_stats": {
-        "coreVersion": "14.364",
+        "coreVersion": "14.369",
         "systemId": "dnd5e",
-        "systemVersion": "5.3.3"
+        "systemVersion": "6.0.6"
       },
       "_key": "!items.effects!pWhk7JxUZQJWJpkk.G7UhVsjX9WYhII6f"
     }
@@ -274,7 +273,7 @@
     "cat": {
       "automation": {
         "source": "chris-premades",
-        "version": "2.0.4"
+        "version": "2.1.0"
       }
     }
   },
@@ -282,9 +281,9 @@
   "folder": "DcgJ2vpIHp0WNqL4",
   "_id": "pWhk7JxUZQJWJpkk",
   "_stats": {
-    "coreVersion": "14.364",
+    "coreVersion": "14.369",
     "systemId": "dnd5e",
-    "systemVersion": "5.3.3"
+    "systemVersion": "6.0.6"
   },
   "_key": "!items!pWhk7JxUZQJWJpkk"
 }

@@ -120,20 +120,20 @@ async function damageEmpowered({document, workflow}) {
         flavor: _loc('CHRISPREMADES.Macros.Legacy.Metamagic.Rerolled', {dice: rerolls.map(reroll => 'd' + reroll.faces + ' (' + reroll.original + ')').join(', ')}),
         rolls: resolved
     };
-    ChatMessage.implementation.applyRollMode(messageData, game.settings.get('core', 'rollMode'));
+    ChatMessage.implementation.applyMode(messageData, CONFIG.Dice.BasicRoll.getMessageMode());
     await ChatMessage.implementation.create(messageData);
     await workflow.setDamageRolls(workflow.damageRolls);
 }
 async function useExtended({document, workflow}) {
-    const selection = await selectSpell(document, getValidSpells(workflow.actor, spell => (spell.system.duration.getEffectData().seconds ?? 0) >= 60));
+    const selection = await selectSpell(document, getValidSpells(workflow.actor, spell => (effectUtils.durationToSeconds(spell.system.duration.getEffectData()) ?? 0) >= 60));
     if (!selection) return;
-    const oldSeconds = selection.system.duration.getEffectData().seconds;
+    const oldSeconds = effectUtils.durationToSeconds(selection.system.duration.getEffectData());
     const newSeconds = Math.min(86400, oldSeconds * 2);
     const castWorkflow = await recast(selection, workflow, {'system.duration': {value: String(newSeconds / 60), units: 'minute'}});
     const actors = new Set([workflow.actor, ...Array.from(castWorkflow?.targets ?? [], token => (token.document ?? token).actor)].filter(actor => actor));
     await Promise.all(Array.from(actors, async actor => {
-        const effects = actor.effects.filter(effect => effect.origin?.startsWith(selection.uuid) && effect.duration.units === 'seconds' && effect.duration.value === oldSeconds);
-        await Promise.all(effects.map(async effect => await documentUtils.update(effect, {'duration.value': newSeconds})));
+        const effects = actor.effects.filter(effect => effect.origin?.startsWith(selection.uuid) && effectUtils.durationToSeconds(effect.duration) === oldSeconds);
+        await Promise.all(effects.map(async effect => await documentUtils.update(effect, {'duration.value': newSeconds, 'duration.units': 'seconds'})));
     }));
 }
 async function useHeightened({document, workflow}) {
@@ -237,8 +237,7 @@ async function useTwinned({document, workflow}) {
 }
 async function abortTwinned(workflow, message) {
     genericUtils.notify(message, {type: 'info'});
-    const castLevel = workflowUtils.getCastLevel(workflow);
-    if (castLevel) await actorUtils.recoverSpellSlots(workflow.actor, castLevel);
+    workflow.aborted = true;
     const concentration = effectUtils.getConcentrationEffect(workflow.actor, workflow.item);
     if (concentration) await documentUtils.deleteDocument(concentration);
     return true;

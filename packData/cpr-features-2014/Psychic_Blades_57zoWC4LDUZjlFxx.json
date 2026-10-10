@@ -179,7 +179,6 @@
           "postRemoveConditionText": ""
         },
         "otherActivityAsParentType": true,
-        "otherActivityUuid": "",
         "attackRollPerTarget": "default",
         "fumbleThreshold": 1,
         "identifier": "melee",
@@ -344,7 +343,6 @@
           "postRemoveConditionText": ""
         },
         "otherActivityAsParentType": true,
-        "otherActivityUuid": "",
         "attackRollPerTarget": "default",
         "fumbleThreshold": 1,
         "identifier": "ranged",
@@ -509,7 +507,6 @@
           "postRemoveConditionText": ""
         },
         "otherActivityAsParentType": true,
-        "otherActivityUuid": "",
         "attackRollPerTarget": "default",
         "fumbleThreshold": 1,
         "identifier": "bonus-melee",
@@ -675,7 +672,6 @@
           "postRemoveConditionText": ""
         },
         "otherActivityAsParentType": true,
-        "otherActivityUuid": "",
         "attackRollPerTarget": "default",
         "fumbleThreshold": 1,
         "identifier": "bonus-ranged",
@@ -742,15 +738,17 @@
               }
             ]
           }
+        },
+        "dae": {
+          "expiryMode": "delete"
         }
       },
-      "start": null,
       "showIcon": 1,
       "folder": null,
       "_stats": {
         "coreVersion": "14.364",
         "systemId": "dnd5e",
-        "systemVersion": "5.3.3"
+        "systemVersion": "6.0.6"
       },
       "_key": "!items.effects!57zoWC4LDUZjlFxx.pBwin14BonusAtkE"
     }
@@ -797,7 +795,7 @@
     "cat": {
       "automation": {
         "source": "chris-premades",
-        "version": "2.0.0"
+        "version": "2.1.0"
       },
       "macros": {
         "roll": [
@@ -819,9 +817,9 @@
   },
   "_id": "57zoWC4LDUZjlFxx",
   "_stats": {
-    "coreVersion": "14.364",
+    "coreVersion": "14.369",
     "systemId": "dnd5e",
-    "systemVersion": "5.3.3"
+    "systemVersion": "6.0.6"
   },
   "_key": "!items!57zoWC4LDUZjlFxx"
 }

@@ -20,7 +20,6 @@
           "stackable": "noneNameOnly",
           "enableCondition": "",
           "disableCondition": "",
-          "showIcon": false,
           "disableIncapacitated": false,
           "selfTarget": false,
           "selfTargetAlways": true,
@@ -67,96 +66,131 @@
             "type": "add",
             "value": "bludgeoning",
             "phase": "final",
-            "priority": 20
+            "priority": 20,
+            "_id": "LAhR6bnX9UFFeX7O",
+            "conditions": "{}",
+            "replacement": ""
           },
           {
             "key": "system.traits.dr.value",
             "type": "add",
             "value": "piercing",
             "phase": "final",
-            "priority": 20
+            "priority": 20,
+            "_id": "zMlXALajNmV6HAW1",
+            "conditions": "{}",
+            "replacement": ""
           },
           {
             "key": "system.traits.dr.value",
             "type": "add",
             "value": "slashing",
             "phase": "final",
-            "priority": 20
+            "priority": 20,
+            "_id": "e5djvmwowhUIvvkK",
+            "conditions": "{}",
+            "replacement": ""
           },
           {
             "key": "system.traits.dr.value",
             "type": "add",
             "value": "necrotic",
             "phase": "final",
-            "priority": 20
+            "priority": 20,
+            "_id": "feLNPE8Y1ncHQUrY",
+            "conditions": "{}",
+            "replacement": ""
           },
           {
             "key": "system.traits.dr.value",
             "type": "add",
             "value": "acid",
             "phase": "final",
-            "priority": 20
+            "priority": 20,
+            "_id": "EU3TlpfXOlRq3xhZ",
+            "conditions": "{}",
+            "replacement": ""
           },
           {
             "key": "system.traits.dr.value",
             "type": "add",
             "value": "cold",
             "phase": "final",
-            "priority": 20
+            "priority": 20,
+            "_id": "nkO4231wvLgsToAm",
+            "conditions": "{}",
+            "replacement": ""
           },
           {
             "key": "system.traits.dr.value",
             "type": "add",
             "value": "fire",
             "phase": "final",
-            "priority": 20
+            "priority": 20,
+            "_id": "mf5M4xo0oi9365Ha",
+            "conditions": "{}",
+            "replacement": ""
           },
           {
             "key": "system.traits.dr.value",
             "type": "add",
             "value": "lightning",
             "phase": "final",
-            "priority": 20
+            "priority": 20,
+            "_id": "454KP3SWZdaUO1Mb",
+            "conditions": "{}",
+            "replacement": ""
           },
           {
             "key": "system.traits.dr.value",
             "type": "add",
             "value": "thunder",
             "phase": "final",
-            "priority": 20
+            "priority": 20,
+            "_id": "iav1RMDARvr9HG0X",
+            "conditions": "{}",
+            "replacement": ""
           },
           {
             "key": "system.traits.dr.value",
             "type": "add",
             "value": "poison",
             "phase": "final",
-            "priority": 20
+            "priority": 20,
+            "_id": "LywJAJALh5j5DmC2",
+            "conditions": "{}",
+            "replacement": ""
           },
           {
             "key": "system.traits.dr.value",
             "type": "add",
             "value": "psychic",
             "phase": "final",
-            "priority": 20
+            "priority": 20,
+            "_id": "Ko1DkIfBzAJ8UWiy",
+            "conditions": "{}",
+            "replacement": ""
           },
           {
             "key": "system.traits.dr.value",
             "type": "add",
             "value": "radiant",
             "phase": "final",
-            "priority": 20
+            "priority": 20,
+            "_id": "WGHMkYpnodlMPiB3",
+            "conditions": "{}",
+            "replacement": ""
           }
         ]
       },
       "origin": null,
       "sort": 0,
-      "start": null,
       "showIcon": 1,
       "folder": null,
       "_stats": {
-        "coreVersion": "14.364",
+        "coreVersion": "14.369",
         "systemId": "dnd5e",
-        "systemVersion": "5.3.3"
+        "systemVersion": "6.0.6"
       },
       "_key": "!items.effects!g3q67i1LwgGqE3W3.XcW5ncZZzYbanmQq"
     }
@@ -351,9 +385,9 @@
   "folder": "tJ727NhyyBNb6ZNf",
   "_id": "g3q67i1LwgGqE3W3",
   "_stats": {
-    "coreVersion": "14.364",
+    "coreVersion": "14.369",
     "systemId": "dnd5e",
-    "systemVersion": "5.3.3"
+    "systemVersion": "6.0.6"
   },
   "_key": "!items!g3q67i1LwgGqE3W3"
 }

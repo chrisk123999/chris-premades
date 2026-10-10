@@ -265,9 +265,9 @@
   "folder": "cde8275a39420072",
   "_id": "EaHVXWkiEw0hJ3HW",
   "_stats": {
-    "coreVersion": "14.364",
-    "systemId": null,
-    "systemVersion": null
+    "coreVersion": "14.369",
+    "systemId": "dnd5e",
+    "systemVersion": "6.0.6"
   },
   "_key": "!items!EaHVXWkiEw0hJ3HW"
 }

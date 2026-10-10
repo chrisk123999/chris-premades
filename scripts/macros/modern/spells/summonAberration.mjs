@@ -49,7 +49,7 @@ async function use({document, workflow}) {
             }
         }
     };
-    if (creatureType === 'beholderkin') genericUtils.setProperty(updates, 'system.attributes.movement', {fly: 30, hover: true});
+    if (creatureType === 'beholderkin') genericUtils.setProperty(updates, 'system.attributes.movement', {speeds: {fly: 30}, hover: true});
     if (workflow.workflowOptions['chris-premades']?.createThrall) updates = addThrallBonuses(updates, workflow);
     const summon = await summonUtils.createSummon(workflow.actor, sourceActor, {
         items,

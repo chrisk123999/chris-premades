@@ -5,7 +5,7 @@
     {
       "name": "Danger Sense",
       "img": "icons/magic/perception/eye-ringed-glow-angry-red.webp",
-      "origin": "Compendium.chris-premades.CPRClassFeatures2024.Item.9yi0hlkYveN4lSi7",
+      "origin": null,
       "type": "base",
       "_id": "zIEnZNl2XrET6Ljm",
       "system": {
@@ -15,12 +15,17 @@
             "type": "custom",
             "value": "!statuses.incapacitated",
             "phase": "initial",
-            "priority": null
+            "priority": null,
+            "_id": "NExqqkC9UjiDeosL",
+            "conditions": "{}",
+            "replacement": ""
           }
-        ]
+        ],
+        "origin": {
+          "item": "Compendium.chris-premades.CPRFeatures2024.Item.9yi0hlkYveN4lSi7"
+        }
       },
       "disabled": false,
-      "start": null,
       "duration": {
         "value": null,
         "units": "seconds",
@@ -54,9 +59,9 @@
         }
       },
       "_stats": {
-        "coreVersion": "14.364",
-        "systemId": null,
-        "systemVersion": null
+        "coreVersion": "14.369",
+        "systemId": "dnd5e",
+        "systemVersion": "6.0.6"
       },
       "_key": "!items.effects!9yi0hlkYveN4lSi7.zIEnZNl2XrET6Ljm"
     }
@@ -100,7 +105,7 @@
     "cat": {
       "automation": {
         "source": "chris-premades",
-        "version": "2.0.2"
+        "version": "2.1.0"
       }
     }
   },
@@ -108,9 +113,9 @@
   "folder": "epodEYV6OzWsQdIP",
   "_id": "9yi0hlkYveN4lSi7",
   "_stats": {
-    "coreVersion": "14.364",
-    "systemId": null,
-    "systemVersion": null
+    "coreVersion": "14.369",
+    "systemId": "dnd5e",
+    "systemVersion": "6.0.6"
   },
   "_key": "!items!9yi0hlkYveN4lSi7"
 }

@@ -375,23 +375,29 @@
     {
       "name": "Ethereal Fade",
       "img": "icons/magic/control/debuff-energy-hold-levitate-blue-yellow.webp",
-      "origin": "Item.6Xlvq6X2M4jLCMsB",
+      "origin": null,
       "transfer": false,
       "_id": "8zIPlkxICKROIGzq",
       "type": "base",
       "system": {
         "changes": [
           {
-            "key": "system.attributes.movement.fly",
+            "key": "system.attributes.movement.speeds.fly",
             "type": "upgrade",
-            "value": "@attributes.movement.walk",
+            "value": "@attributes.movement.speeds.walk",
             "phase": "initial",
-            "priority": null
+            "priority": null,
+            "_id": "ZxwZ2rcokpEHd4WP",
+            "conditions": "{}",
+            "replacement": ""
           }
-        ]
+        ],
+        "magical": true,
+        "origin": {
+          "item": "Item.6Xlvq6X2M4jLCMsB"
+        }
       },
       "disabled": false,
-      "start": null,
       "duration": {
         "value": null,
         "units": "seconds",
@@ -454,9 +460,9 @@
         }
       },
       "_stats": {
-        "coreVersion": "14.364",
-        "systemId": null,
-        "systemVersion": null
+        "coreVersion": "14.369",
+        "systemId": "dnd5e",
+        "systemVersion": "6.0.6"
       },
       "_key": "!items.effects!9Vq2mXfsB4gvbHoC.8zIPlkxICKROIGzq"
     }
@@ -473,9 +479,9 @@
   },
   "_id": "9Vq2mXfsB4gvbHoC",
   "_stats": {
-    "coreVersion": "14.364",
-    "systemId": null,
-    "systemVersion": null
+    "coreVersion": "14.369",
+    "systemId": "dnd5e",
+    "systemVersion": "6.0.6"
   },
   "_key": "!items!9Vq2mXfsB4gvbHoC"
 }

@@ -1,4 +1,4 @@
-import {automationUtils, constants, documentUtils, rollUtils, tokenUtils} from '../../proxy.mjs';
+import {automationUtils, constants, documentUtils, rollUtils, tokenUtils, workflowUtils} from '../../proxy.mjs';
 async function doGrapple({document: activity, token, workflow}) {
     const config = automationUtils.getGenericConfigValues(activity, 'chris-premades', 'grapple', Object.keys(grapple.genericConfig));
     const data = {
@@ -12,6 +12,7 @@ async function doGrapple({document: activity, token, workflow}) {
         if (target.actor) await tokenUtils.grapple(token, target, data);
     }
     if (config.replaceActivity) {
+        workflowUtils.setWorkflowProperty(workflow, 'keepConsumption', true);
         workflow.aborted = true;
         return true;
     }

@@ -1,12 +1,5 @@
 import {actorUtils, applications, automationUtils, dialogUtils, genericUtils, rollUtils, workflowUtils} from '../../../proxy.mjs';
-const fallData = { // DND5E v6 placeholder
-    damageDie: 'd6',
-    damageType: 'bludgeoning',
-    distancePerDie: 10,
-    maximumDice: 20
-};
 async function doFall({workflow}) {
-    const data = CONFIG.DND5E.falling ?? fallData;
     const rollDC = automationUtils.getConfigValue(workflow.item, 'rollDC');
     const selection = await applications.DialogApp.dialog(workflow.item.name, '', [
         ['number', [
@@ -27,10 +20,9 @@ async function doFall({workflow}) {
         ]]
     ], 'okCancel');
     if (!selection?.buttons) return;
-    const diceNum = Math.min((Math.floor(selection.distance / data.distancePerDie)), data.maximumDice);
-    if (diceNum === 0) return;
+    let formula = dnd5e.rules.getFallDamageFormula(selection.distance, canvas.grid.units);
+    if (!formula) return;
     let otherTarget = false;
-    let formula = diceNum + data.damageDie;
     const target = game.user.targets.first()?.document;
     switch(selection.type) {
         case 'water': {
@@ -42,7 +34,7 @@ async function doFall({workflow}) {
             ], {displayAsRows: true});
             if (!reaction) break;
             const check = await rollUtils.requestRoll(workflow.actor, 'skill', reaction, {rollDC});
-            if (check.isSuccess) formula = 'floor(' + formula + ' / 2)';
+            if (check?.isSuccess) formula = 'floor(' + formula + ' / 2)';
             await actorUtils.setReactionUsed(workflow.actor);
             break;
         }
@@ -50,12 +42,12 @@ async function doFall({workflow}) {
             const targetSize = actorUtils.getSize(target.actor);
             const sourceSize = actorUtils.getSize(workflow.actor);
             if (sourceSize === 0 || targetSize === 0) {
-                genericUtils.notify('CHRISPREMADES.Macros.Fall.Tiny');
+                genericUtils.notify('CHRISPREMADES.Macros.All.Fall.Tiny');
                 await ground(workflow.actor);
                 break;
             }
             let save = await rollUtils.requestRoll(target.actor, 'save', 'dex', {rollDC});
-            if (save.isSuccess) break;
+            if (save?.isSuccess) break;
             formula = 'floor(' + formula + ' / 2)';
             otherTarget = true;
             if (targetSize - sourceSize >= 2) break;
@@ -64,7 +56,7 @@ async function doFall({workflow}) {
         }
     }
     await ground(workflow.actor);
-    await workflow.setDamageRolls([await rollUtils.damageRoll(formula, workflow.activity, {type: data.damageType})]);
+    await workflow.setDamageRolls([await rollUtils.damageRoll(formula, workflow.activity, {type: CONFIG.DND5E.falling.damageType})]);
     if (otherTarget) await workflowUtils.applyDamage([target], workflow.damageTotal, 'bludgeoning');
 }
 async function ground(actor) {

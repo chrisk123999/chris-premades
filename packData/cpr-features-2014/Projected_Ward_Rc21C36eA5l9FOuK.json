@@ -202,6 +202,10 @@
             "identifier": "projected-ward"
           }
         ]
+      },
+      "automation": {
+        "source": "chris-premades",
+        "version": "2.1.0"
       }
     }
   },
@@ -210,9 +214,9 @@
   "folder": "z0BdCKoHiCFxYvnn",
   "_id": "Rc21C36eA5l9FOuK",
   "_stats": {
-    "coreVersion": "14.364",
-    "systemId": null,
-    "systemVersion": null
+    "coreVersion": "14.369",
+    "systemId": "dnd5e",
+    "systemVersion": "6.0.6"
   },
   "_key": "!items!Rc21C36eA5l9FOuK"
 }

@@ -698,6 +698,9 @@
         "token-highlight-scale": 1.5,
         "token-combat-animation": "",
         "token-highlight": ""
+      },
+      "dnd5e": {
+        "lockScale": true
       }
     },
     "randomImg": false,
@@ -734,15 +737,19 @@
       "concentration-damage": 0
     },
     "cat": {
-      "identifier": "drakeCompanion"
+      "identifier": "drakeCompanion",
+      "automation": {
+        "source": "chris-premades",
+        "version": "2.1.0"
+      }
     }
   },
   "folder": null,
   "_id": "NsSpRaDifgCMsTEw",
   "_stats": {
-    "coreVersion": "14.364",
-    "systemId": null,
-    "systemVersion": null
+    "coreVersion": "14.369",
+    "systemId": "dnd5e",
+    "systemVersion": "6.0.6"
   },
   "_key": "!actors!NsSpRaDifgCMsTEw"
 }

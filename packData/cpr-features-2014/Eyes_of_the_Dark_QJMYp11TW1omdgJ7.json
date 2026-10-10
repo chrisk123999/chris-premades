@@ -16,7 +16,6 @@
       "disabled": false,
       "flags": {
         "dae": {
-          "showIcon": false,
           "transfer": true,
           "stackable": "noneNameOnly",
           "disableCondition": "",
@@ -46,20 +45,23 @@
       "system": {
         "changes": [
           {
-            "key": "system.attributes.senses.darkvision",
+            "key": "system.attributes.senses.ranges.darkvision",
             "value": 120,
             "priority": 10,
-            "type": "upgrade"
+            "type": "upgrade",
+            "phase": "initial",
+            "_id": "yU6S8yqbSYN5mNff",
+            "conditions": "{}",
+            "replacement": ""
           }
         ]
       },
       "origin": null,
       "_stats": {
-        "coreVersion": "14.364",
-        "systemId": null,
-        "systemVersion": null
+        "coreVersion": "14.369",
+        "systemId": "dnd5e",
+        "systemVersion": "6.0.6"
       },
-      "start": null,
       "showIcon": 1,
       "folder": null,
       "sort": 0,
@@ -240,15 +242,21 @@
         "effect": []
       },
       "dependents": []
+    },
+    "cat": {
+      "automation": {
+        "source": "chris-premades",
+        "version": "2.1.0"
+      }
     }
   },
   "img": "icons/magic/perception/eye-ringed-glow-angry-small-teal.webp",
   "folder": "SorcShadowMagic1",
   "_id": "QJMYp11TW1omdgJ7",
   "_stats": {
-    "coreVersion": "14.364",
-    "systemId": null,
-    "systemVersion": null
+    "coreVersion": "14.369",
+    "systemId": "dnd5e",
+    "systemVersion": "6.0.6"
   },
   "_key": "!items!QJMYp11TW1omdgJ7"
 }

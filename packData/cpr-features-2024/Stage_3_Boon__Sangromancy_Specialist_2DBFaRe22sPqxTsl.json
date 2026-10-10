@@ -53,9 +53,9 @@
   "folder": "VG5pGXJoZX17RByH",
   "_id": "2DBFaRe22sPqxTsl",
   "_stats": {
-    "coreVersion": "14.364",
-    "systemId": null,
-    "systemVersion": null
+    "coreVersion": "14.369",
+    "systemId": "dnd5e",
+    "systemVersion": "6.0.6"
   },
   "_key": "!items!2DBFaRe22sPqxTsl"
 }

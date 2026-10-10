@@ -397,7 +397,7 @@
     "cat": {
       "automation": {
         "source": "chris-premades",
-        "version": "2.0.4"
+        "version": "2.1.0"
       }
     }
   },
@@ -408,12 +408,14 @@
       "name": "Branding Smite",
       "statuses": [],
       "system": {
-        "changes": []
+        "changes": [],
+        "magical": true
       },
       "duration": {
         "value": 1,
-        "units": "minute",
-        "expired": false
+        "units": "seconds",
+        "expired": false,
+        "expiry": "turnStart"
       },
       "tint": "#ffffff",
       "transfer": false,
@@ -426,7 +428,8 @@
           "selfTarget": false,
           "selfTargetAlways": false,
           "dontApply": false,
-          "specialDuration": []
+          "specialDuration": [],
+          "expiryMode": "delete"
         },
         "core": {
           "overlay": false
@@ -462,14 +465,13 @@
       "description": "",
       "_id": "brSmiteCaster001",
       "type": "base",
-      "start": null,
       "origin": null,
       "folder": null,
       "sort": 0,
       "_stats": {
-        "coreVersion": "14.364",
-        "systemId": null,
-        "systemVersion": null
+        "coreVersion": "14.369",
+        "systemId": "dnd5e",
+        "systemVersion": "6.0.6"
       },
       "_key": "!items.effects!cAhCNQn8DhzRS4o4.brSmiteCaster001"
     },
@@ -484,21 +486,29 @@
             "type": "upgrade",
             "value": 5,
             "phase": "initial",
-            "priority": null
+            "priority": null,
+            "_id": "G3HyHsUcJAAO7T2N",
+            "conditions": "{}",
+            "replacement": ""
           },
           {
             "key": "system.traits.ci.value",
             "type": "add",
             "value": "invisible",
             "phase": "initial",
-            "priority": null
+            "priority": null,
+            "_id": "CEkW4SV5Nl1SIaMo",
+            "conditions": "{}",
+            "replacement": ""
           }
-        ]
+        ],
+        "magical": true
       },
       "duration": {
         "value": 1,
-        "units": "minute",
-        "expired": false
+        "units": "seconds",
+        "expired": false,
+        "expiry": "turnStart"
       },
       "tint": "#ffffff",
       "transfer": false,
@@ -511,7 +521,8 @@
           "selfTarget": false,
           "selfTargetAlways": false,
           "dontApply": false,
-          "specialDuration": []
+          "specialDuration": [],
+          "expiryMode": "delete"
         },
         "core": {
           "overlay": false
@@ -528,14 +539,13 @@
       "description": "",
       "_id": "brSmiteBranded01",
       "type": "base",
-      "start": null,
       "origin": null,
       "folder": null,
       "sort": 0,
       "_stats": {
-        "coreVersion": "14.364",
-        "systemId": null,
-        "systemVersion": null
+        "coreVersion": "14.369",
+        "systemId": "dnd5e",
+        "systemVersion": "6.0.6"
       },
       "_key": "!items.effects!cAhCNQn8DhzRS4o4.brSmiteBranded01"
     }
@@ -543,9 +553,9 @@
   "folder": "ueMNujKhkNn2zCfl",
   "_id": "cAhCNQn8DhzRS4o4",
   "_stats": {
-    "coreVersion": "14.364",
-    "systemId": null,
-    "systemVersion": null
+    "coreVersion": "14.369",
+    "systemId": "dnd5e",
+    "systemVersion": "6.0.6"
   },
   "_key": "!items!cAhCNQn8DhzRS4o4"
 }

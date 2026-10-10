@@ -23,7 +23,7 @@ async function preTurnUndead({workflow}) {
 }
 async function postTurnUndead({workflow}) {
     if (!workflow.failedSaves.size) return;
-    const turnedEffect = workflow.activity.effects[0]?.effect ?? workflow.item.effects.contents[0];
+    const turnedEffect = (await workflow.activity.effects[0]?.getEffect()) ?? workflow.item.effects.contents[0];
     if (!turnedEffect) return;
     const destroyUndead = actorUtils.getItemByIdentifier(workflow.actor, 'destroy-undead');
     if (destroyUndead) await workflowUtils.syntheticItemRoll(destroyUndead, workflow.failedSaves.map(t => t.document));

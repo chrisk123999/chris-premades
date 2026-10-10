@@ -16,7 +16,6 @@
       "disabled": false,
       "flags": {
         "dae": {
-          "showIcon": false,
           "transfer": true,
           "stackable": "noneNameOnly",
           "specialDuration": [],
@@ -50,25 +49,32 @@
             "key": "flags.midi-qol.advantage.save.con",
             "value": "items.some(i => i.identifier === 'tokens-of-the-departed' && i.uses?.value > 0)",
             "priority": 20,
-            "type": "custom"
+            "type": "custom",
+            "phase": "initial",
+            "_id": "xt28Wdt975KW1d8t",
+            "conditions": "{}",
+            "replacement": ""
           },
           {
             "key": "flags.midi-qol.advantage.deathSave",
             "value": "items.some(i => i.identifier === 'tokens-of-the-departed' && i.uses?.value > 0)",
             "priority": 20,
-            "type": "custom"
+            "type": "custom",
+            "phase": "initial",
+            "_id": "x4MpbmwYhJyYjq2p",
+            "conditions": "{}",
+            "replacement": ""
           }
         ]
       },
       "origin": null,
       "sort": 0,
-      "start": null,
       "showIcon": 1,
       "folder": null,
       "_stats": {
-        "coreVersion": "14.364",
+        "coreVersion": "14.369",
         "systemId": "dnd5e",
-        "systemVersion": "5.3.3"
+        "systemVersion": "6.0.6"
       },
       "_key": "!items.effects!FcPzaDbMl7SqYYF9.VIick3K2Poos0qUW"
     }
@@ -537,9 +543,9 @@
   "folder": "F8h08o7wIe67W3Mw",
   "_id": "FcPzaDbMl7SqYYF9",
   "_stats": {
-    "coreVersion": "14.364",
+    "coreVersion": "14.369",
     "systemId": "dnd5e",
-    "systemVersion": "5.3.3"
+    "systemVersion": "6.0.6"
   },
   "_key": "!items!FcPzaDbMl7SqYYF9"
 }

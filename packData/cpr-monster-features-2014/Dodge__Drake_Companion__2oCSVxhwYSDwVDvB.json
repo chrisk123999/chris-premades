@@ -145,7 +145,7 @@
     "cat": {
       "automation": {
         "source": "chris-premades",
-        "version": "2.0.0"
+        "version": "2.1.0"
       }
     }
   },
@@ -172,8 +172,7 @@
           "enableCondition": "",
           "disableCondition": "",
           "disableIncapacitated": false,
-          "dontApply": false,
-          "showIcon": false
+          "dontApply": false
         },
         "core": {
           "overlay": false
@@ -197,24 +196,21 @@
             "key": "flags.midi-qol.grants.disadvantage.attack.all",
             "value": 1,
             "priority": 20,
-            "type": "custom"
-          },
-          {
-            "key": "flags.midi-qol.advantage.save.dex",
-            "value": 1,
-            "priority": 20,
-            "type": "custom"
+            "type": "custom",
+            "phase": "initial",
+            "_id": "a46NvlSBwyNdodBP",
+            "conditions": "{}",
+            "replacement": ""
           }
         ]
       },
       "sort": 0,
-      "start": null,
       "showIcon": 2,
       "folder": null,
       "_stats": {
-        "coreVersion": "14.364",
-        "systemId": null,
-        "systemVersion": null
+        "coreVersion": "14.369",
+        "systemId": "dnd5e",
+        "systemVersion": "6.0.6"
       },
       "_key": "!items.effects!2oCSVxhwYSDwVDvB.rGR2liWPrLm6JeYM"
     }
@@ -223,9 +219,9 @@
   "folder": null,
   "_id": "2oCSVxhwYSDwVDvB",
   "_stats": {
-    "coreVersion": "14.364",
-    "systemId": null,
-    "systemVersion": null
+    "coreVersion": "14.369",
+    "systemId": "dnd5e",
+    "systemVersion": "6.0.6"
   },
   "_key": "!items!2oCSVxhwYSDwVDvB"
 }

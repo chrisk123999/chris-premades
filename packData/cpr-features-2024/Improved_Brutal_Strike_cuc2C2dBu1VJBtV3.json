@@ -12,16 +12,18 @@
       "system": {
         "changes": [
           {
-            "key": "flags.midi-qol.disadvantage.save.all",
-            "type": "override",
-            "value": true,
+            "key": "system.rolls.ability.save.mode",
+            "type": "add",
+            "value": -1,
             "phase": "initial",
-            "priority": null
+            "priority": null,
+            "_id": "obJPCiTCY8ljZjDV",
+            "conditions": "{}",
+            "replacement": ""
           }
         ]
       },
       "disabled": false,
-      "start": null,
       "duration": {
         "value": null,
         "units": "seconds",
@@ -60,9 +62,9 @@
         }
       },
       "_stats": {
-        "coreVersion": "14.364",
-        "systemId": null,
-        "systemVersion": null
+        "coreVersion": "14.369",
+        "systemId": "dnd5e",
+        "systemVersion": "6.0.6"
       },
       "_key": "!items.effects!cuc2C2dBu1VJBtV3.rY4JP3bkCXbhSUUY"
     },
@@ -80,12 +82,14 @@
             "type": "override",
             "value": 5,
             "phase": "initial",
-            "priority": null
+            "priority": null,
+            "_id": "ei8Xu18wSDX9EdLh",
+            "conditions": "{}",
+            "replacement": ""
           }
         ]
       },
       "disabled": false,
-      "start": null,
       "duration": {
         "value": 1,
         "units": "rounds",
@@ -133,9 +137,9 @@
         }
       },
       "_stats": {
-        "coreVersion": "14.364",
-        "systemId": null,
-        "systemVersion": null
+        "coreVersion": "14.369",
+        "systemId": "dnd5e",
+        "systemVersion": "6.0.6"
       },
       "_key": "!items.effects!cuc2C2dBu1VJBtV3.UpRs86uIuxnAagYq"
     }
@@ -493,7 +497,7 @@
     "cat": {
       "automation": {
         "source": "chris-premades",
-        "version": "2.0.2"
+        "version": "2.1.0"
       },
       "macros": {
         "called": [
@@ -510,9 +514,9 @@
   "folder": "epodEYV6OzWsQdIP",
   "_id": "cuc2C2dBu1VJBtV3",
   "_stats": {
-    "coreVersion": "14.364",
-    "systemId": null,
-    "systemVersion": null
+    "coreVersion": "14.369",
+    "systemId": "dnd5e",
+    "systemVersion": "6.0.6"
   },
   "_key": "!items!cuc2C2dBu1VJBtV3"
 }

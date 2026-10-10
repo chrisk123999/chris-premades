@@ -23,7 +23,7 @@ async function getMoodFeature(document, creatureType) {
 }
 function getDuration(workflow) {
     const activity = workflow.item.system.linkedActivity;
-    return documentUtils.getIdentifier(activity?.item) === 'fey-reinforcements' ? 60 : 3600;
+    return activity && documentUtils.getIdentifier(activity.item) === 'fey-reinforcements' ? 60 : 3600;
 }
 async function use({document, workflow}) {
     const creatureType = creatureTypes[workflow.activity.identifier];
@@ -123,15 +123,7 @@ export const summonFey = {
             label: 'CHRISPREMADES.Config.RealDarkness',
             category: 'mechanics'
         },
-        darknessAnimation: {
-            default: '',
-            type: 'select',
-            label: 'CHRISPREMADES.Config.DarknessAnimation',
-            category: 'mechanics',
-            get options() {
-                return [{value: '', label: _loc('DND5E.None')}, ...Object.entries(CONFIG.Canvas.darknessAnimations).map(([value, config]) => ({value, label: config.label}))];
-            }
-        }
+        darknessAnimation: cprConstants.darknessAnimationConfig
     }
 };
 export const summonFeyFeyStep = {

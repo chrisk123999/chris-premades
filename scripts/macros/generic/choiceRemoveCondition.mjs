@@ -26,7 +26,7 @@ async function remove({workflow}) {
     );
     if (!selection) return;
     exhaustion--;
-    if (selection.id === CONFIG.statusEffects.find(s => s.id === 'exhaustion')?._id ?? 'dnd5eexhaustion0') {
+    if (selection.id === CONFIG.ActiveEffect.documentClass.ID.EXHAUSTION) {
         await documentUtils.update(workflow.actor, {'system.attributes.exhaustion': exhaustion});
     } else {
         await documentUtils.deleteDocument(selection);

@@ -43,18 +43,25 @@
     {
       "name": "Otherworldly Glamour",
       "img": "icons/magic/light/orb-hands-humanoid-yellow.webp",
-      "origin": "Compendium.chris-premades.CPRClassFeatures2024.Item.RlpSy0FI80XCbZMJ",
+      "origin": null,
       "_id": "KxOPnPEEJEw22paL",
       "type": "base",
       "system": {
         "changes": [
           {
-            "key": "system.abilities.cha.bonuses.check",
+            "key": "system.abilities.cha.check.roll.bonus",
             "value": "max(1, @abilities.wis.mod)",
             "priority": 20,
-            "type": "add"
+            "type": "add",
+            "phase": "initial",
+            "_id": "nc3vZqlH0gtHy1qN",
+            "conditions": "{}",
+            "replacement": ""
           }
-        ]
+        ],
+        "origin": {
+          "item": "Compendium.chris-premades.CPRFeatures2024.Item.RlpSy0FI80XCbZMJ"
+        }
       },
       "disabled": false,
       "duration": {
@@ -77,7 +84,6 @@
         "dae": {
           "disableCondition": "",
           "stackable": "noneName",
-          "showIcon": false,
           "disableIncapacitated": false,
           "durationExpression": "",
           "macroRepeat": "none"
@@ -90,11 +96,10 @@
         }
       },
       "_stats": {
-        "coreVersion": "14.364",
-        "systemId": null,
-        "systemVersion": null
+        "coreVersion": "14.369",
+        "systemId": "dnd5e",
+        "systemVersion": "6.0.6"
       },
-      "start": null,
       "showIcon": 1,
       "folder": null,
       "_key": "!items.effects!RlpSy0FI80XCbZMJ.KxOPnPEEJEw22paL"
@@ -109,14 +114,14 @@
     "cat": {
       "automation": {
         "source": "chris-premades",
-        "version": "2.0.0"
+        "version": "2.1.0"
       }
     }
   },
   "_stats": {
-    "coreVersion": "14.364",
-    "systemId": null,
-    "systemVersion": null
+    "coreVersion": "14.369",
+    "systemId": "dnd5e",
+    "systemVersion": "6.0.6"
   },
   "_key": "!items!RlpSy0FI80XCbZMJ"
 }

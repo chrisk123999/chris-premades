@@ -8,11 +8,14 @@
       "system": {
         "changes": [
           {
-            "key": "system.attributes.movement.walk",
+            "key": "system.attributes.movement.speeds.walk",
             "value": 10,
             "type": "add",
             "priority": 9,
-            "phase": "initial"
+            "phase": "initial",
+            "_id": "PnNmS2ZBmkNR9rmZ",
+            "conditions": "{}",
+            "replacement": ""
           }
         ]
       },
@@ -47,14 +50,13 @@
       "img": "icons/skills/movement/feet-winged-boots-brown.webp",
       "_id": "bG13dHCGCzRSYvMZ",
       "type": "base",
-      "start": null,
       "origin": null,
       "folder": null,
       "sort": 0,
       "_stats": {
-        "coreVersion": "14.364",
-        "systemId": null,
-        "systemVersion": null
+        "coreVersion": "14.369",
+        "systemId": "dnd5e",
+        "systemVersion": "6.0.6"
       },
       "_key": "!items.effects!vl9Nsjc84Rv4LUyY.bG13dHCGCzRSYvMZ"
     }
@@ -105,9 +107,9 @@
   "folder": "epodEYV6OzWsQdIP",
   "_id": "vl9Nsjc84Rv4LUyY",
   "_stats": {
-    "coreVersion": "14.364",
-    "systemId": null,
-    "systemVersion": null
+    "coreVersion": "14.369",
+    "systemId": "dnd5e",
+    "systemVersion": "6.0.6"
   },
   "_key": "!items!vl9Nsjc84Rv4LUyY"
 }

@@ -239,9 +239,9 @@
   "folder": "bbR7kJffMX4MkL49",
   "_id": "oHu2YXhrtKVpNNCU",
   "_stats": {
-    "coreVersion": "14.364",
-    "systemId": null,
-    "systemVersion": null
+    "coreVersion": "14.369",
+    "systemId": "dnd5e",
+    "systemVersion": "6.0.6"
   },
   "_key": "!items!oHu2YXhrtKVpNNCU"
 }

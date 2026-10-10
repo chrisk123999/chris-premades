@@ -125,28 +125,7 @@
           },
           "identifier": ""
         },
-        "flags": {
-          "cat": {
-            "genericConfig": {
-              "chris-premades": {
-                "combatStartItemUses": {
-                  "identifier": "monks-focus",
-                  "minimum": 4,
-                  "fromZeroOnly": false
-                }
-              }
-            },
-            "macros": {
-              "combat": [
-                {
-                  "source": "chris-premades",
-                  "identifier": "combatStartItemUses",
-                  "rules": "all"
-                }
-              ]
-            }
-          }
-        }
+        "flags": {}
       }
     },
     "uses": {
@@ -184,19 +163,36 @@
   "flags": {
     "cat": {
       "automation": {
-        "version": "2.0.4",
+        "version": "2.1.0",
         "source": "chris-premades"
       },
-      "macros": {}
+      "macros": {
+        "item": [
+          {
+            "source": "chris-premades",
+            "identifier": "itemRecovery",
+            "rules": "all"
+          }
+        ]
+      },
+      "genericConfig": {
+        "chris-premades": {
+          "itemRecovery": {
+            "identifier": "monks-focus",
+            "period": "initiative",
+            "formula": "max(0, 4 - @item.uses.value)"
+          }
+        }
+      }
     }
   },
   "img": "icons/creatures/eyes/humanoid-single-blind.webp",
   "folder": "tJ727NhyyBNb6ZNf",
   "_id": "b5YXQHORw9vIKmaF",
   "_stats": {
-    "coreVersion": "14.364",
+    "coreVersion": "14.369",
     "systemId": "dnd5e",
-    "systemVersion": "5.3.3"
+    "systemVersion": "6.0.6"
   },
   "_key": "!items!b5YXQHORw9vIKmaF"
 }

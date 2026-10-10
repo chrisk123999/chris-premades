@@ -158,7 +158,7 @@ async function attack(sourceToken, targetTokens, {soundMelee, soundRanged, enabl
     const gridSize = sourceToken.parent.grid.size;
     async function meleeAttack(targetToken, randMelee, randTrail, impact, isMirrored, targetScale) {
         const amplitude = Sequencer.Helpers.random_float_between(0.0, 0.2);
-        const hitRay = new Ray(sourceToken, targetToken);
+        const hitRay = new foundry.canvas.geometry.Ray(sourceToken, targetToken);
         const shakeDirection = {x: Math.sign(hitRay.dx), y: Math.sign(hitRay.dy)};
         const values = {
             x: [0, -amplitude * shakeDirection.y, amplitude * shakeDirection.y, (-amplitude * shakeDirection.y) / 4, (amplitude * shakeDirection.y) / 4, 0],
@@ -239,7 +239,7 @@ async function attack(sourceToken, targetTokens, {soundMelee, soundRanged, enabl
     }
     async function rangedAttack(targetToken, targetScale) {
         const amplitude = Sequencer.Helpers.random_float_between(0.0, 0.2);
-        const hitRay = new Ray(sourceToken, targetToken);
+        const hitRay = new foundry.canvas.geometry.Ray(sourceToken, targetToken);
         const shakeDirection = {x: Math.sign(hitRay.dx), y: Math.sign(hitRay.dy)};
         const values = {
             x: [0, -amplitude * shakeDirection.y, amplitude * shakeDirection.y, (-amplitude * shakeDirection.y) / 4, (amplitude * shakeDirection.y) / 4, 0],

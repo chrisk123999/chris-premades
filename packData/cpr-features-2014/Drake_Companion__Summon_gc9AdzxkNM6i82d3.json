@@ -480,9 +480,9 @@
   "folder": "acMOlj4Qxst44J0s",
   "_id": "gc9AdzxkNM6i82d3",
   "_stats": {
-    "coreVersion": "14.364",
-    "systemId": null,
-    "systemVersion": null
+    "coreVersion": "14.369",
+    "systemId": "dnd5e",
+    "systemVersion": "6.0.6"
   },
   "_key": "!items!gc9AdzxkNM6i82d3"
 }

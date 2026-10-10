@@ -7,7 +7,7 @@ function rangeOverrideData(item, parent) {
         img: item.img,
         origin: item.uuid,
         identifier: 'tentacleOfTheDeepsAttack',
-        duration: {seconds: 1},
+        duration: {value: 1, units: 'seconds'},
         parentEntity: parent,
         changes: [
             {
