@@ -1,13 +1,14 @@
 {
-  "folder": "nvwKBMSV2OHzwAOe",
-  "name": "Boots of the Winding Path",
+  "folder": "7oCfRMcgCyAkhSWB",
+  "name": "Spell-Refueling Ring",
   "type": "equipment",
-  "img": "icons/equipment/feet/boots-armored-green.webp",
+  "_id": "fNOtb0krvdTJzdlQ",
+  "img": "icons/equipment/finger/ring-band-engraved-teal.webp",
   "system": {
     "activities": {
-      "clTm4sFegFBWdCXX": {
+      "QUf04Xu7cbvIXpxy": {
         "type": "utility",
-        "_id": "clTm4sFegFBWdCXX",
+        "_id": "QUf04Xu7cbvIXpxy",
         "img": "",
         "sort": 0,
         "activation": {
@@ -20,7 +21,14 @@
             "allowed": false
           },
           "spellSlot": true,
-          "targets": []
+          "targets": [
+            {
+              "type": "itemUses",
+              "value": "1",
+              "target": "",
+              "scaling": {}
+            }
+          ]
         },
         "description": {
           "chatFlavor": ""
@@ -33,33 +41,20 @@
         "effects": [],
         "flags": {
           "cat": {
-            "genericConfig": {
-              "chris-premades": {
-                "teleport": {
-                  "range": "",
-                  "rangeFromRoll": false,
-                  "animation": {
-                    "source": "chris-premades",
-                    "identifier": "mistyStep"
-                  }
-                }
-              }
-            },
             "macros": {
               "roll": [
                 {
                   "source": "chris-premades",
-                  "identifier": "teleport",
-                  "rules": "all"
+                  "rules": "all",
+                  "identifier": "spell-refueling-ring"
                 }
               ]
             }
           }
         },
         "range": {
-          "units": "ft",
+          "units": "self",
           "override": false,
-          "value": "15",
           "special": ""
         },
         "target": {
@@ -94,8 +89,8 @@
         "roll": {
           "prompt": false,
           "visible": false,
-          "formula": "",
-          "name": ""
+          "name": "",
+          "formula": ""
         },
         "useConditionText": "",
         "useConditionReason": "",
@@ -177,19 +172,24 @@
     },
     "uses": {
       "spent": 0,
-      "recovery": [],
-      "max": ""
+      "recovery": [
+        {
+          "period": "dawn",
+          "type": "recoverAll"
+        }
+      ],
+      "max": "1"
     },
     "description": {
       "value": "",
       "chat": ""
     },
-    "identifier": "boots-of-the-winding-path",
+    "identifier": "spell-refueling-ring",
     "source": {
       "revision": 1,
-      "rules": "2014",
-      "book": "TCoE",
-      "page": "",
+      "rules": "2024",
+      "book": "EFotA",
+      "page": "112",
       "custom": "",
       "license": ""
     },
@@ -204,7 +204,7 @@
       "units": "lb"
     },
     "price": {
-      "value": 0,
+      "value": 400,
       "denomination": "gp"
     },
     "rarity": "uncommon",
@@ -225,7 +225,7 @@
     ],
     "strength": null,
     "type": {
-      "value": "clothing",
+      "value": "ring",
       "baseItem": ""
     }
   },
@@ -243,6 +243,5 @@
     "systemId": "dnd5e",
     "systemVersion": "5.3.3"
   },
-  "_id": "CEr2H64BZKoibLSJ",
-  "_key": "!items!CEr2H64BZKoibLSJ"
+  "_key": "!items!fNOtb0krvdTJzdlQ"
 }

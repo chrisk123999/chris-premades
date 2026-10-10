@@ -228,7 +228,7 @@ async function rollFeature(actor, activityID, plan, targets) {
     return true;
 }
 export const swapArtificerPlan = {
-    version: '2.0.4',
+    version: '2.0.5',
     rules: 'all',
     notes: 'Target a willing creature to create an item or infusion in their inventory. The item is otherwise made on this character.\n\nUse the "actorArtificerPlanFilter" called event (async) to modify the compendium filters used to present plans to learn.\n\tData available: classIdentifier, createdLimit, itemTypes, known, packIds, tab.\nSet additional required filters under "lockedFilters.additional".\nReturn an item or array of items from the "actorInfusionItems" called event (async) to create the list of items available for an infusion.\n\tData available: infusionIdentifier, targetActor.',
     keys,

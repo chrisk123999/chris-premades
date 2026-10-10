@@ -68,7 +68,7 @@ async function planFilter({document: item, data}) {
 }
 export const replicateMagicItem = {
     name: 'Replicate Magic Item',
-    version: '2.0.4',
+    version: '2.0.5',
     rules: '2024',
     notes: swapArtificerPlan.notes,
     config: swapArtificerPlan.config,

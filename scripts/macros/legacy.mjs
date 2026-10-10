@@ -14,7 +14,16 @@ export {
     infusionArmorOfMagicalStrengthProne,
     infusionBootsOfTheWindingPath as 'infusion-boots-of-the-winding-path',
     infusionEnhancedArcaneFocus as 'infusion-enhanced-arcane-focus',
-    infusionResistantArmor as 'infusion-resistant-armor'
+    infusionEnhancedDefense as 'infusion-enhanced-defense',
+    infusionEnhancedWeapon as 'infusion-enhanced-weapon',
+    infusionHelmOfAwareness as 'infusion-helm-of-awareness',
+    infusionMindSharpener as 'infusion-mind-sharpener',
+    infusionRadiantWeapon as 'infusion-radiant-weapon',
+    infusionRepeatingShot as 'infusion-repeating-shot',
+    infusionRepulsionShield as 'infusion-repulsion-shield',
+    infusionResistantArmor as 'infusion-resistant-armor',
+    infusionReturningWeapon as 'infusion-returning-weapon',
+    infusionSpellRefuelingRing as 'infusion-spell-refueling-ring'
 } from './legacy/classFeatures/artificer/infusions.mjs';
 // Barbarian
 export {brutalCritical as 'brutal-critical'} from './legacy/classFeatures/barbarian/brutalCritical.mjs';

@@ -1,16 +1,19 @@
 {
-  "name": "Infusion: Resistant Armor",
+  "folder": "lnb5XwKs7AKQ9Xna",
+  "name": "Radiant Weapon Activities",
   "type": "feat",
+  "_id": "D1qgu1N2GY4f7fiO",
+  "img": "icons/magic/symbols/runes-etched-steel-blade.webp",
   "system": {
     "activities": {
-      "f0oxcp8TVjAVx0LE": {
+      "D9dCMcB5hQEcmYuY": {
         "type": "utility",
-        "name": "Swap Infusion",
-        "_id": "f0oxcp8TVjAVx0LE",
+        "name": "Light",
+        "_id": "D9dCMcB5hQEcmYuY",
         "img": "",
-        "sort": 100000,
+        "sort": 0,
         "activation": {
-          "type": "special",
+          "type": "bonus",
           "override": false,
           "condition": ""
         },
@@ -29,20 +32,13 @@
           "concentration": false,
           "override": false
         },
-        "effects": [],
-        "flags": {
-          "cat": {
-            "macros": {
-              "roll": [
-                {
-                  "source": "chris-premades",
-                  "rules": "all",
-                  "identifier": "fromPlanSwapArtificerPlan"
-                }
-              ]
-            }
+        "effects": [
+          {
+            "_id": "Jk34JQYJy4YXM2wp",
+            "level": {}
           }
-        },
+        ],
+        "flags": {},
         "range": {
           "units": "self",
           "override": false,
@@ -116,11 +112,11 @@
           "automationOnly": false,
           "otherActivityCompatible": false,
           "otherActivityAsParentType": true,
-          "identifier": "swap-plan",
+          "identifier": "radiant-weapon-light",
           "displayActivityName": false,
           "rollMode": "default",
           "chooseEffects": false,
-          "toggleEffect": false,
+          "toggleEffect": true,
           "ignoreFullCover": false,
           "removeChatButtons": "default",
           "magicEffect": false,
@@ -159,14 +155,13 @@
         },
         "otherActivityAsParentType": true
       },
-      "wxZjAFBI5JNez1JA": {
-        "type": "utility",
-        "name": "Create Infusion",
-        "_id": "wxZjAFBI5JNez1JA",
+      "PEbkRgMn3oitZMMH": {
+        "type": "save",
+        "_id": "PEbkRgMn3oitZMMH",
         "img": "",
-        "sort": 0,
+        "sort": 100000,
         "activation": {
-          "type": "longRest",
+          "type": "reaction",
           "override": false,
           "condition": ""
         },
@@ -175,44 +170,41 @@
             "allowed": false
           },
           "spellSlot": true,
-          "targets": []
+          "targets": [
+            {
+              "type": "itemUses",
+              "value": "1",
+              "target": "",
+              "scaling": {}
+            }
+          ]
         },
         "description": {
           "chatFlavor": ""
         },
         "duration": {
-          "units": "disp",
+          "units": "spec",
           "concentration": false,
-          "override": false
+          "override": false,
+          "special": ""
         },
-        "effects": [],
+        "effects": [
+          {
+            "_id": "Fhbctu4SvDdFhY0V",
+            "onSave": false,
+            "level": {
+              "min": null,
+              "max": null
+            }
+          }
+        ],
         "flags": {
           "cat": {
-            "macros": {
-              "roll": [
-                {
-                  "source": "chris-premades",
-                  "rules": "2014",
-                  "identifier": "infusion-resistant-armor"
-                },
-                {
-                  "source": "chris-premades",
-                  "rules": "all",
-                  "identifier": "infusionPrechecks"
-                }
-              ],
-              "called": [
-                {
-                  "source": "chris-premades",
-                  "rules": "2014",
-                  "identifier": "infusionCollectArmors"
-                }
-              ]
-            }
+            "hidden": true
           }
         },
         "range": {
-          "units": "touch",
+          "units": "any",
           "override": false,
           "special": ""
         },
@@ -225,7 +217,7 @@
           },
           "affects": {
             "choice": false,
-            "type": "object",
+            "type": "creature",
             "count": "1",
             "special": ""
           },
@@ -247,13 +239,23 @@
           "requireMagic": false,
           "identifier": ""
         },
-        "roll": {
-          "prompt": false,
-          "visible": false,
-          "name": "",
-          "formula": ""
+        "damage": {
+          "onSave": "half",
+          "critical": {
+            "allow": false
+          },
+          "parts": []
         },
-        "useConditionText": "",
+        "save": {
+          "ability": [
+            "con"
+          ],
+          "dc": {
+            "calculation": "spellcasting",
+            "formula": ""
+          }
+        },
+        "useConditionText": "reaction === 'isHit'",
         "useConditionReason": "",
         "effectConditionText": "",
         "otherActivityId": "none",
@@ -283,10 +285,10 @@
           "confirmTargets": "default",
           "autoTargetType": "any",
           "autoTargetAction": "default",
-          "automationOnly": false,
+          "automationOnly": true,
           "otherActivityCompatible": false,
           "otherActivityAsParentType": true,
-          "identifier": "create-plan",
+          "identifier": "radiant-weapon-blind",
           "displayActivityName": false,
           "rollMode": "default",
           "chooseEffects": false,
@@ -327,11 +329,13 @@
           "animationSpeed": 5,
           "animationIntensity": 5
         },
-        "otherActivityAsParentType": true
+        "otherActivityAsParentType": true,
+        "friendlySave": "default",
+        "name": "Blind"
       }
     },
     "uses": {
-      "spent": null,
+      "spent": 0,
       "recovery": [],
       "max": ""
     },
@@ -340,120 +344,53 @@
       "value": "",
       "chat": ""
     },
-    "identifier": "infusion-resistant-armor",
+    "identifier": "radiant-weapon-activities",
     "source": {
-      "book": "TCoE",
-      "page": "",
-      "license": "",
-      "custom": "",
-      "rules": "2014",
-      "revision": 1
+      "revision": 1,
+      "rules": "2024"
     },
     "crewed": false,
-    "enchant": {
-      "max": "",
-      "period": ""
-    },
+    "enchant": {},
     "prerequisites": {
       "items": [],
-      "level": 6,
-      "repeatable": false
+      "repeatable": false,
+      "level": null
     },
     "properties": [],
-    "requirements": "6th-level Artificer",
+    "requirements": "",
     "type": {
-      "value": "enchantment",
-      "subtype": "artificerInfusion"
+      "value": "",
+      "subtype": ""
     }
   },
   "effects": [
     {
-      "img": "icons/magic/defensive/shield-barrier-glowing-blue.webp",
-      "name": "Infusion: Resistant Armor",
-      "statuses": [],
-      "system": {
-        "changes": [
-          {
-            "key": "system.properties",
-            "type": "add",
-            "value": "mgc",
-            "phase": "initial",
-            "priority": 20
-          },
-          {
-            "key": "system.attunement",
-            "type": "override",
-            "value": "required",
-            "phase": "initial",
-            "priority": 20
-          },
-          {
-            "key": "name",
-            "type": "add",
-            "value": ": Resistant Armor",
-            "phase": "final",
-            "priority": 20
-          }
-        ]
-      },
-      "duration": {
-        "value": null,
-        "units": "seconds",
-        "expiry": null,
-        "expired": false
-      },
-      "tint": "#ffffff",
+      "name": "Radiant Weapon Light",
+      "img": "icons/magic/symbols/runes-etched-steel-blade.webp",
+      "origin": "Compendium.chris-premades.CPRAutomationItems.Item.D1qgu1N2GY4f7fiO",
       "transfer": false,
-      "disabled": false,
-      "showIcon": 1,
-      "flags": {
-        "dae": {
-          "transfer": false,
-          "stackable": "noneNameOnly",
-          "enableCondition": "",
-          "disableCondition": "",
-          "expiryMode": "delete",
-          "macroRepeat": "none",
-          "specialDuration": []
-        },
-        "midi-qol": {
-          "forceCEOff": true
-        },
-        "core": {
-          "overlay": false
-        },
-        "dnd5e": {
-          "riders": {
-            "statuses": []
-          }
-        }
-      },
-      "description": "",
-      "_id": "kIRqC1Mip5ajbfm2",
-      "origin": null,
-      "type": "enchantment",
-      "start": null,
-      "folder": null,
-      "sort": 0,
-      "_stats": {
-        "coreVersion": "14.364",
-        "systemId": "dnd5e",
-        "systemVersion": "5.3.3"
-      },
-      "_key": "!items.effects!zeV3nzhfVrOl7AbB.kIRqC1Mip5ajbfm2"
-    },
-    {
-      "name": "Resistant Armor",
-      "img": "icons/magic/defensive/shield-barrier-glowing-blue.webp",
-      "origin": "Compendium.chris-premades.CPRFeatures2014.Item.zeV3nzhfVrOl7AbB",
+      "_id": "Jk34JQYJy4YXM2wp",
       "type": "base",
-      "_id": "nKsZhAKB64F29ye7",
       "system": {
         "changes": [
           {
-            "key": "system.traits.dr.value",
-            "type": "add",
-            "value": "acid",
+            "key": "token.light.bright",
+            "type": "upgrade",
+            "value": 30,
+            "phase": "final",
+            "priority": null
+          },
+          {
+            "key": "token.light.dim",
+            "type": "upgrade",
+            "value": 60,
+            "phase": "final",
+            "priority": null
+          },
+          {
+            "key": "token.light.animation.type",
+            "type": "override",
+            "value": "torch",
             "phase": "final",
             "priority": null
           }
@@ -469,7 +406,6 @@
       },
       "description": "",
       "tint": "#ffffff",
-      "transfer": false,
       "statuses": [],
       "showIcon": 1,
       "folder": null,
@@ -481,20 +417,23 @@
           }
         },
         "dae": {
+          "enableCondition": "",
           "disableCondition": "",
           "stackable": "noneName",
           "expiryMode": "delete",
           "durationExpression": "",
           "macroRepeat": "none",
           "disableIncapacitated": false,
-          "specialDuration": [],
-          "enableCondition": "",
           "selfTarget": false,
-          "selfTargetAlways": false,
-          "dontApply": false
+          "selfTargetAlways": true,
+          "dontApply": false,
+          "specialDuration": []
         },
         "core": {
           "overlay": false
+        },
+        "cat": {
+          "identifier": "radiantWeaponLight"
         }
       },
       "_stats": {
@@ -502,24 +441,73 @@
         "systemId": "dnd5e",
         "systemVersion": "5.3.3"
       },
-      "_key": "!items.effects!zeV3nzhfVrOl7AbB.nKsZhAKB64F29ye7"
+      "_key": "!items.effects!D1qgu1N2GY4f7fiO.Jk34JQYJy4YXM2wp"
+    },
+    {
+      "name": "Radiant Weapon Blind",
+      "img": "icons/magic/symbols/runes-etched-steel-blade.webp",
+      "origin": "Compendium.chris-premades.CPRAutomationItems.Item.D1qgu1N2GY4f7fiO",
+      "transfer": false,
+      "_id": "Fhbctu4SvDdFhY0V",
+      "type": "base",
+      "system": {
+        "changes": []
+      },
+      "disabled": false,
+      "start": null,
+      "duration": {
+        "value": 1,
+        "units": "rounds",
+        "expiry": "targetEnd",
+        "expired": false
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "statuses": [
+        "blinded"
+      ],
+      "showIcon": 1,
+      "folder": null,
+      "sort": 9999,
+      "flags": {
+        "dnd5e": {
+          "riders": {
+            "statuses": []
+          }
+        },
+        "dae": {
+          "enableCondition": "",
+          "disableCondition": "",
+          "stackable": "noneName",
+          "expiryMode": "delete",
+          "durationExpression": "",
+          "macroRepeat": "none",
+          "disableIncapacitated": false,
+          "selfTarget": false,
+          "selfTargetAlways": false,
+          "dontApply": false,
+          "specialDuration": []
+        },
+        "core": {
+          "overlay": false
+        },
+        "cat": {
+          "identifier": "radiantWeaponBlind"
+        }
+      },
+      "_stats": {
+        "coreVersion": "14.364",
+        "systemId": "dnd5e",
+        "systemVersion": "5.3.3"
+      },
+      "_key": "!items.effects!D1qgu1N2GY4f7fiO.Fhbctu4SvDdFhY0V"
     }
   ],
-  "flags": {
-    "cat": {
-      "automation": {
-        "source": "chris-premades",
-        "version": "2.0.5"
-      }
-    }
-  },
-  "img": "icons/magic/defensive/shield-barrier-glowing-blue.webp",
-  "folder": "Jop9YZCm0OFshULP",
+  "flags": {},
   "_stats": {
     "coreVersion": "14.364",
     "systemId": "dnd5e",
     "systemVersion": "5.3.3"
   },
-  "_id": "zeV3nzhfVrOl7AbB",
-  "_key": "!items!zeV3nzhfVrOl7AbB"
+  "_key": "!items!D1qgu1N2GY4f7fiO"
 }

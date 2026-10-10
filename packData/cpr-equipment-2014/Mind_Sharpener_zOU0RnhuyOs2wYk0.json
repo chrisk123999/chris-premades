@@ -1,17 +1,17 @@
 {
   "folder": "nvwKBMSV2OHzwAOe",
-  "name": "Boots of the Winding Path",
+  "name": "Mind Sharpener",
   "type": "equipment",
-  "img": "icons/equipment/feet/boots-armored-green.webp",
+  "img": "icons/equipment/finger/ring-ball-thorns-bronze.webp",
   "system": {
     "activities": {
-      "clTm4sFegFBWdCXX": {
+      "scK0mPLzmezznjZY": {
         "type": "utility",
-        "_id": "clTm4sFegFBWdCXX",
+        "_id": "scK0mPLzmezznjZY",
         "img": "",
         "sort": 0,
         "activation": {
-          "type": "bonus",
+          "type": "reaction",
           "override": false,
           "condition": ""
         },
@@ -20,7 +20,14 @@
             "allowed": false
           },
           "spellSlot": true,
-          "targets": []
+          "targets": [
+            {
+              "type": "itemUses",
+              "value": "1",
+              "target": "",
+              "scaling": {}
+            }
+          ]
         },
         "description": {
           "chatFlavor": ""
@@ -33,33 +40,20 @@
         "effects": [],
         "flags": {
           "cat": {
-            "genericConfig": {
-              "chris-premades": {
-                "teleport": {
-                  "range": "",
-                  "rangeFromRoll": false,
-                  "animation": {
-                    "source": "chris-premades",
-                    "identifier": "mistyStep"
-                  }
-                }
-              }
-            },
             "macros": {
-              "roll": [
+              "save": [
                 {
                   "source": "chris-premades",
-                  "identifier": "teleport",
-                  "rules": "all"
+                  "rules": "all",
+                  "identifier": "mind-sharpener"
                 }
               ]
             }
           }
         },
         "range": {
-          "units": "ft",
+          "units": "self",
           "override": false,
-          "value": "15",
           "special": ""
         },
         "target": {
@@ -97,7 +91,7 @@
           "formula": "",
           "name": ""
         },
-        "useConditionText": "",
+        "useConditionText": "false",
         "useConditionReason": "",
         "effectConditionText": "",
         "otherActivityId": "none",
@@ -130,7 +124,7 @@
           "automationOnly": false,
           "otherActivityCompatible": false,
           "otherActivityAsParentType": true,
-          "identifier": "",
+          "identifier": "mind-sharpener-succeed",
           "displayActivityName": false,
           "rollMode": "default",
           "chooseEffects": false,
@@ -177,14 +171,20 @@
     },
     "uses": {
       "spent": 0,
-      "recovery": [],
-      "max": ""
+      "recovery": [
+        {
+          "period": "dawn",
+          "type": "formula",
+          "formula": "1d4"
+        }
+      ],
+      "max": "4"
     },
     "description": {
       "value": "",
       "chat": ""
     },
-    "identifier": "boots-of-the-winding-path",
+    "identifier": "mind-sharpener",
     "source": {
       "revision": 1,
       "rules": "2014",
@@ -204,12 +204,12 @@
       "units": "lb"
     },
     "price": {
-      "value": 0,
+      "value": 400,
       "denomination": "gp"
     },
     "rarity": "uncommon",
-    "attunement": "required",
-    "attuned": true,
+    "attunement": "",
+    "attuned": false,
     "equipped": true,
     "crew": {
       "value": []
@@ -225,7 +225,7 @@
     ],
     "strength": null,
     "type": {
-      "value": "clothing",
+      "value": "ring",
       "baseItem": ""
     }
   },
@@ -243,6 +243,6 @@
     "systemId": "dnd5e",
     "systemVersion": "5.3.3"
   },
-  "_id": "CEr2H64BZKoibLSJ",
-  "_key": "!items!CEr2H64BZKoibLSJ"
+  "_id": "zOU0RnhuyOs2wYk0",
+  "_key": "!items!zOU0RnhuyOs2wYk0"
 }

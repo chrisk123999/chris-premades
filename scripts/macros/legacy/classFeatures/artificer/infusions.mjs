@@ -71,7 +71,7 @@ async function collectThrownWeapons({document: activity, data}) {
 }
 // helpers
 /** @returns {Promise<undefined|{effect: foundry.documents.ActiveEffect, enchant: foundry.documents.ActiveEffect, item: foundry.documents.Item}>} */
-async function defaultGetDocuments(workflow, {effect, enchant = true, source = 'chris-premades', identifier, label} = {}) {
+async function defaultGetDocuments(workflow, {effect, enchant = true, source, identifier, label} = {}) {
     const items = workflowUtils.getWorkflowProperty(workflow, artificer.keys.infusionOptionsMarker);
     if (!items?.length) return;
     let fetchedEffect, fetchedEnchant;
@@ -104,7 +104,7 @@ async function getParentEffect(infusion, createdDocument) {
     }], {parentEntity: createdDocument}))?.[0];
 }
 /** @returns {Promise<undefined|foundry.documents.ActiveEffect>} */
-async function applyEnchant(enchant, targetItem, workflow, {effect, item, favoriteItems, source = 'chris-premades', identifier, label} = {}) {
+async function applyEnchant(enchant, targetItem, workflow, {effect, item, favoriteItems, source, identifier, label} = {}) {
     enchant.origin = workflow.item.uuid;
     if (effect) effect.transfer = true;
     const created = await itemUtils.enchantItem(targetItem, enchant, {
@@ -117,6 +117,39 @@ async function applyEnchant(enchant, targetItem, workflow, {effect, item, favori
     if (!parent) return Logging.addMacroWarning(source, identifier, `${label} infusion failed to create parent effect. (self uuid) ${workflow.actor.uuid} (target item uuid) ${targetItem.uuid}`);
     await documentUtils.makeDependent(parent, [created]);
     return created;
+}
+async function copyActivities(workflow, identifier, activityIdentifiers, {pack, favoriteActivities, source, macro, label} = {}) {
+    const data = await defaultGetDocuments(workflow, {source, identifier: macro, label});
+    if (!data) return;
+    const item = await compendiumUtils.getDocumentByIdentifier(pack, identifier);
+    if (!item) return Logging.addMacroWarning(source, macro, `${label} infusion failed due to a missing pack item! (pack) ${pack} (identifier) ${identifier}`);
+    const activityData = [];
+    for (const id of activityIdentifiers) {
+        const activity = itemUtils.getActivityByIdentifier(item, id);
+        if (!activity) return Logging.addMacroWarning(source, macro, `${label} infusion failed due to a missing activity! (item) ${item.uuid} (identifier) ${id}`);
+        activityData.push(activity.toObject());
+    }
+    const enchant = await applyEnchant(data.enchant, data.item, workflow, {source, identifier: macro, label});
+    if (!enchant) return;
+    let favorites = [];
+    await documentUtils.update(data.item, activityData.reduce((obj, a) => {
+        if (favoriteActivities?.includes(a.identifier)) favorites.push(a._id);
+        genericUtils.setProperty(a, 'flags.dnd5e.dependentOn', enchant.uuid);
+        obj.system.activities[a._id] = a;
+        return obj;
+    }, {system: {activities: {}}}));
+    if (favorites.length) favorites = favorites.map(id => data.item.system.activities.get(id)).filter(Boolean);
+    if (favorites.length) await actorUtils.addFavorites(data.item.actor, favorites);
+}
+async function simpleCreateItem(workflow, identifier, translate, {favorite, source, macro, label} = {}) {
+    const itemData = await compendiumUtils.getDocumentByIdentifier(cpr.packs.legacy.equipment, identifier, {translate, object: true});
+    if (!itemData) return Logging.addMacroWarning(source, macro, `${label} infusion failed due to a missing pack item! (pack) ${cpr.packs.legacy.equipment} (identifier) ${identifier}`);
+    genericUtils.setProperty(itemData, `flags.${source}.${artificer.keys.createdItemFlag}`, workflow.item.uuid);
+    const target = workflow.targets.first()?.actor ?? workflow.actor;
+    const item = (await itemUtils.createItems(target, [itemData], {favorite}))?.[0];
+    if (!item) return Logging.addMacroWarning(source, macro, `${label} infusion failed to create item. (self uuid) ${workflow.actor.uuid} (target uuid) ${target.uuid}`);
+    const parent = await getParentEffect(workflow.item, item);
+    if (parent) await documentUtils.makeDependent(parent, [item]);
 }
 // infusions
 async function arcanePropulsion({macroClass: {source, identifier}, workflow}) {
@@ -131,25 +164,18 @@ async function arcanePropulsion({macroClass: {source, identifier}, workflow}) {
     await applyEnchant(data.enchant, data.item, workflow, {effect: data.effect, item: gauntlet, favoriteItems: true, source, identifier, label});
 }
 async function magicalStrength({macroClass: {source, identifier}, workflow}) {
-    const label = 'Armor of Magical Strength';
-    const data = await defaultGetDocuments(workflow, {source, identifier, label});
-    if (!data) return;
-    const activityHolder = await compendiumUtils.getDocumentByIdentifier(cpr.packs.misc.automationItems, 'armor-of-magical-strength-activities');
-    if (!activityHolder) return Logging.addMacroWarning(source, identifier, `${label} infusion failed due to a missing pack item! (pack) ${cpr.packs.misc.automationItems} (identifier) armor-of-magical-strength-activities`);
-    const checkSave = itemUtils.getActivityByIdentifier(activityHolder, 'check-save-bonus')?.toObject();
-    if (!checkSave) return Logging.addMacroWarning(source, identifier, `${label} infusion failed due to a missing activity! (item) ${activityHolder.uuid} (identifier) check-save-bonus`);
-    const avoidProne = itemUtils.getActivityByIdentifier(activityHolder, 'avoid-prone')?.toObject();
-    if (!avoidProne) return Logging.addMacroWarning(source, identifier, `${label} infusion failed due to a missing activity! (item) ${activityHolder.uuid} (identifier) avoid-prone`);
-    const enchant = await applyEnchant(data.enchant, data.item, workflow, {effect: data.effect, source, identifier, label});
-    if (!enchant) return;
-    genericUtils.setProperty(checkSave, 'flags.dnd5e.dependentOn', enchant.uuid);
-    genericUtils.setProperty(avoidProne, 'flags.dnd5e.dependentOn', enchant.uuid);
-    await documentUtils.update(data.item, {'system.activities': {
-        [checkSave._id]: checkSave,
-        [avoidProne._id]: avoidProne
-    }});
-    const createdAvoidProne = data.item.system.activities.get(avoidProne._id);
-    if (createdAvoidProne) await actorUtils.addFavorites(data.item.actor, [createdAvoidProne]);
+    await copyActivities(
+        workflow,
+        'armor-of-magical-strength-activities',
+        ['check-save-bonus', 'avoid-prone'],
+        {
+            pack: cpr.packs.misc.automationItems,
+            favoriteActivities: ['avoid-prone'],
+            label: 'Armor of Magical Strength',
+            macro: identifier,
+            source
+        }
+    );
 }
 async function magicalStrengthProne({workflow}) {
     const prone = actorUtils.getStatusSources(workflow.actor, ['prone']);
@@ -157,18 +183,12 @@ async function magicalStrengthProne({workflow}) {
     else genericUtils.notify('CHRISPREMADES.Macros.Legacy.InfuseItem.NotProne');
 }
 async function bootsWinding({macroClass: {source, identifier}, workflow}) {
-    const label = 'Boots of the Winding Path';
-    const boots = await compendiumUtils.getDocumentByIdentifier(cpr.packs.legacy.equipment, 'boots-of-the-winding-path', {
-        translate: 'CHRISPREMADES.Macros.Legacy.InfuseItem.BootsOfTheWindingPath',
-        object: true
-    });
-    if (!boots) return Logging.addMacroWarning(source, identifier, `${label} infusion failed due to a missing pack item! (pack) ${cpr.packs.legacy.equipment} (identifier) boots-of-the-winding-path`);
-    genericUtils.setProperty(boots, `flags.${source}.${artificer.keys.createdItemFlag}`, workflow.item.uuid);
-    const target = workflow.targets.first()?.actor ?? workflow.actor;
-    const item = (await itemUtils.createItems(target, [boots], {favorite: true}))?.[0];
-    if (!item) return Logging.addMacroWarning(source, identifier, `${label} infusion failed to create item. (self uuid) ${workflow.actor.uuid} (target uuid) ${target.uuid}`);
-    const parent = await getParentEffect(workflow.item, item);
-    if (parent) await documentUtils.makeDependent(parent, [item]);
+    await simpleCreateItem(
+        workflow,
+        'boots-of-the-winding-path',
+        'CHRISPREMADES.Macros.Legacy.InfuseItem.BootsOfTheWindingPath',
+        {favorite: true, source, macro: identifier, label: 'Boots of the Winding Path'}
+    );
 }
 async function enhancedFocus({macroClass: {source, identifier}, workflow}) {
     const label = 'Enhanced Arcane Focus';
@@ -181,6 +201,103 @@ async function enhancedFocus({macroClass: {source, identifier}, workflow}) {
         change.value = 2;
     }
     await applyEnchant(data.enchant, data.item, workflow, {effect: data.effect, source, identifier, label});
+}
+async function enhancedDefense({macroClass: {source, identifier}, workflow}) {
+    const label = 'Enhanced Defense';
+    const config = automationUtils.getConfigValues(workflow.item, Object.keys(bonusConfig));
+    config.level = workflow.actor.classes[config.classIdentifer]?.system.levels ?? 0;
+    const data = await defaultGetDocuments(workflow, {source, identifier, label});
+    if (!data) return;
+    if (config.level >= config.grantExtraBonus) for (const change of data.enchant.system.changes) {
+        if (change.key === 'system.armor.magicalBonus') change.value = 2;
+    }
+    await applyEnchant(data.enchant, data.item, workflow, {source, identifier, label});
+}
+async function enhancedWeapon({macroClass: {source, identifier}, workflow}) {
+    const label = 'Enhanced Weapon';
+    const config = automationUtils.getConfigValues(workflow.item, Object.keys(bonusConfig));
+    config.level = workflow.actor.classes[config.classIdentifer]?.system.levels ?? 0;
+    const data = await defaultGetDocuments(workflow, {source, identifier, label});
+    if (!data) return;
+    if (config.level >= config.grantExtraBonus) for (const change of data.enchant.system.changes) {
+        if (change.key === 'system.magicalBonus') change.value = 2;
+    }
+    await applyEnchant(data.enchant, data.item, workflow, {source, identifier, label});
+}
+async function helmOfAwareness({macroClass: {source, identifier}, workflow}) {
+    await simpleCreateItem(
+        workflow,
+        'helm-of-awareness',
+        'CHRISPREMADES.Macros.Legacy.InfuseItem.HelmAwareness',
+        {source, macro: identifier, label: 'Helm of Awareness'}
+    );
+}
+async function homonculus({macroClass: {source, identifier}, workflow}) {
+    // TODO fetch summon and summon items
+}
+async function mindSharpener({macroClass: {source, identifier}, workflow}) {
+    await copyActivities(
+        workflow,
+        'mind-sharpener',
+        ['mind-sharpener-succeed'],
+        {
+            pack: cpr.packs.legacy.equipment,
+            label: 'Mind Sharpener',
+            macro: identifier,
+            source
+        }
+    );
+}
+async function radiantWeapon({macroClass: {source, identifier}, workflow}) {
+    const label = 'Radiant Weapon';
+    const data = await defaultGetDocuments(workflow, {source, identifier, label});
+    if (!data) return;
+    const item = await compendiumUtils.getDocumentByIdentifier(cpr.packs.misc.automationItems, 'radiant-weapon-activities');
+    if (!item) return Logging.addMacroWarning(source, identifier, `${label} infusion failed due to a missing pack item! (pack) ${cpr.packs.misc.automationItems} (identifier) radiant-weapon-activities`);
+    const activityData = [];
+    for (const id of ['radiant-weapon-light', 'radiant-weapon-blind']) {
+        const activity = itemUtils.getActivityByIdentifier(item, id);
+        if (!activity) return Logging.addMacroWarning(source, identifier, `${label} infusion failed due to a missing activity! (item) ${item.uuid} (identifier) ${id}`);
+        activityData.push(activity.toObject());
+    }
+    data.enchant.origin = workflow.item.uuid;
+    const effects = item.effects.map(e => {
+        const effectData = e.toObject();
+        effectData.origin = data.item.uuid;
+        return effectData;
+    });
+    const enchant = await itemUtils.enchantItem(data.item, data.enchant, {effects});
+    if (!enchant) return Logging.addMacroError(source, identifier, `${label} infusion failed to create enchantment. (self uuid) ${workflow.actor.uuid} (target item uuid) ${data.item.uuid}`);
+    const light = documentUtils.getEffectByIdentifier(data.item, 'radiantWeaponLight');
+    const blind = documentUtils.getEffectByIdentifier(data.item, 'radiantWeaponBlind');
+    const parent = await getParentEffect(workflow.item, enchant);
+    if (!parent) return Logging.addMacroWarning(source, identifier, `${label} infusion failed to create parent effect. (self uuid) ${workflow.actor.uuid} (target item uuid) ${data.item.uuid}`);
+    await documentUtils.makeDependent(parent, [enchant]);
+    await documentUtils.update(data.item, activityData.reduce((obj, a, i) => {
+        const effect = a.midiProperties.identifier === 'radiant-weapon-light' ? light : blind;
+        genericUtils.setProperty(a, 'flags.dnd5e.dependentOn', enchant.uuid);
+        obj.system.activities[a._id] = a;
+        a.effects = [{_id: effect._id}];
+        return obj;
+    }, {system: {activities: {}}}));
+}
+async function repeatingShot({macroClass: {source, identifier}, workflow}) {
+    const label = 'Repeating Shot';
+    const data = await defaultGetDocuments(workflow, {source, identifier, label});
+    if (data) await applyEnchant(data.enchant, data.item, workflow, {source, identifier, label});
+}
+async function repulsionShield({macroClass: {source, identifier}, workflow}) {
+    await copyActivities(
+        workflow,
+        'repulsion-shield',
+        ['repulsion-shield-push'],
+        {
+            pack: cpr.packs.legacy.equipment,
+            label: 'Repulsion Shield',
+            macro: identifier,
+            source
+        }
+    );
 }
 async function resistantArmor({macroClass: {source, identifier}, workflow}) {
     const label = 'Resistant Armor';
@@ -226,8 +343,21 @@ async function resistantArmor({macroClass: {source, identifier}, workflow}) {
     if (resistanceChange) resistanceChange.value = choices.resistance;
     await applyEnchant(enchant, item, workflow, {effect, source, identifier, label});
 }
+async function returningWeapon({macroClass: {source, identifier}, workflow}) {
+    const label = 'Returning Weapon';
+    const data = await defaultGetDocuments(workflow, {source, identifier, label});
+    if (data) await applyEnchant(data.enchant, data.item, workflow, {source, identifier, label});
+}
+async function spellRing({macroClass: {source, identifier}, workflow}) {
+    await simpleCreateItem(
+        workflow,
+        'spell-refueling-ring',
+        'CHRISPREMADES.Macros.Legacy.InfuseItem.SpellRing',
+        {favorite: true, source, macro: identifier, label: 'Spell-Refueling Ring'}
+    );
+}
 const metadata = {
-    version: '2.0.4',
+    version: '2.0.5',
     rules: '2014'
 };
 const bonusConfig = {
@@ -262,6 +392,13 @@ export const infusionArmorOfMagicalStrength = rollMacro(magicalStrength);
 export const infusionArmorOfMagicalStrengthProne = rollMacro(magicalStrengthProne);
 export const infusionBootsOfTheWindingPath = rollMacro(bootsWinding);
 export const infusionEnhancedArcaneFocus = {...rollMacro(enhancedFocus), config: bonusConfig};
+export const infusionEnhancedDefense = {...rollMacro(enhancedDefense), config: bonusConfig};
+export const infusionEnhancedWeapon = {...rollMacro(enhancedWeapon), config: bonusConfig};
+export const infusionHelmOfAwareness = rollMacro(helmOfAwareness);
+export const infusionMindSharpener = rollMacro(mindSharpener);
+export const infusionRadiantWeapon = rollMacro(radiantWeapon);
+export const infusionRepeatingShot = rollMacro(repeatingShot);
+export const infusionRepulsionShield = rollMacro(repulsionShield);
 export const infusionResistantArmor = {
     ...rollMacro(resistantArmor),
     config: {
@@ -274,3 +411,5 @@ export const infusionResistantArmor = {
         }
     }
 };
+export const infusionReturningWeapon = rollMacro(returningWeapon);
+export const infusionSpellRefuelingRing = rollMacro(spellRing);

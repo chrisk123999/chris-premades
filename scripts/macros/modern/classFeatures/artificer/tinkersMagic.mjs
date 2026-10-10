@@ -64,7 +64,7 @@ async function remove({document: effect}) {
 }
 export const tinkersMagic = {
     name: 'Tinker\'s Magic',
-    version: '2.0.4',
+    version: '2.0.5',
     rules: '2024',
     notes: 'Target a willing creature to create an item in their inventory. The item is otherwise made on this character.',
     roll: [

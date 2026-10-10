@@ -1,17 +1,18 @@
 {
   "folder": "nvwKBMSV2OHzwAOe",
-  "name": "Boots of the Winding Path",
+  "name": "Repulsion Shield",
   "type": "equipment",
-  "img": "icons/equipment/feet/boots-armored-green.webp",
+  "img": "icons/equipment/shield/heater-steel-engraved-lance-rest.webp",
   "system": {
     "activities": {
-      "clTm4sFegFBWdCXX": {
+      "jyZi6agocxiN3C9l": {
         "type": "utility",
-        "_id": "clTm4sFegFBWdCXX",
+        "name": "Push",
+        "_id": "jyZi6agocxiN3C9l",
         "img": "",
         "sort": 0,
         "activation": {
-          "type": "bonus",
+          "type": "reaction",
           "override": false,
           "condition": ""
         },
@@ -20,7 +21,14 @@
             "allowed": false
           },
           "spellSlot": true,
-          "targets": []
+          "targets": [
+            {
+              "type": "itemUses",
+              "value": "1",
+              "target": "",
+              "scaling": {}
+            }
+          ]
         },
         "description": {
           "chatFlavor": ""
@@ -35,13 +43,8 @@
           "cat": {
             "genericConfig": {
               "chris-premades": {
-                "teleport": {
-                  "range": "",
-                  "rangeFromRoll": false,
-                  "animation": {
-                    "source": "chris-premades",
-                    "identifier": "mistyStep"
-                  }
+                "pushOnFail": {
+                  "distance": "15"
                 }
               }
             },
@@ -49,7 +52,12 @@
               "roll": [
                 {
                   "source": "chris-premades",
-                  "identifier": "teleport",
+                  "rules": "all",
+                  "identifier": "repulsion-shield"
+                },
+                {
+                  "source": "chris-premades",
+                  "identifier": "pushOnFail",
                   "rules": "all"
                 }
               ]
@@ -57,10 +65,10 @@
           }
         },
         "range": {
-          "units": "ft",
+          "units": "any",
           "override": false,
-          "value": "15",
-          "special": ""
+          "special": "",
+          "value": ""
         },
         "target": {
           "template": {
@@ -94,10 +102,10 @@
         "roll": {
           "prompt": false,
           "visible": false,
-          "formula": "",
-          "name": ""
+          "name": "",
+          "formula": ""
         },
-        "useConditionText": "",
+        "useConditionText": "false",
         "useConditionReason": "",
         "effectConditionText": "",
         "otherActivityId": "none",
@@ -130,7 +138,7 @@
           "automationOnly": false,
           "otherActivityCompatible": false,
           "otherActivityAsParentType": true,
-          "identifier": "",
+          "identifier": "repulsion-shield-push",
           "displayActivityName": false,
           "rollMode": "default",
           "chooseEffects": false,
@@ -171,20 +179,25 @@
           "animationSpeed": 5,
           "animationIntensity": 5
         },
-        "otherActivityAsParentType": true,
-        "name": ""
+        "otherActivityAsParentType": true
       }
     },
     "uses": {
       "spent": 0,
-      "recovery": [],
-      "max": ""
+      "recovery": [
+        {
+          "period": "dawn",
+          "type": "formula",
+          "formula": "1d4"
+        }
+      ],
+      "max": "4"
     },
     "description": {
       "value": "",
       "chat": ""
     },
-    "identifier": "boots-of-the-winding-path",
+    "identifier": "repulsion-shield",
     "source": {
       "revision": 1,
       "rules": "2014",
@@ -204,20 +217,20 @@
       "units": "lb"
     },
     "price": {
-      "value": 0,
+      "value": 400,
       "denomination": "gp"
     },
     "rarity": "uncommon",
     "attunement": "required",
-    "attuned": true,
+    "attuned": false,
     "equipped": true,
     "crew": {
       "value": []
     },
     "armor": {
-      "value": null,
+      "value": 2,
       "dex": null,
-      "magicalBonus": ""
+      "magicalBonus": "1"
     },
     "proficient": null,
     "properties": [
@@ -225,8 +238,8 @@
     ],
     "strength": null,
     "type": {
-      "value": "clothing",
-      "baseItem": ""
+      "value": "shield",
+      "baseItem": "shield"
     }
   },
   "effects": [],
@@ -243,6 +256,6 @@
     "systemId": "dnd5e",
     "systemVersion": "5.3.3"
   },
-  "_id": "CEr2H64BZKoibLSJ",
-  "_key": "!items!CEr2H64BZKoibLSJ"
+  "_id": "mCjDBbamYNO7Kj4s",
+  "_key": "!items!mCjDBbamYNO7Kj4s"
 }

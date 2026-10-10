@@ -10,12 +10,26 @@
 - Infusion: Armor of Magical Strength
 - Infusion: Boots of the Winding Path
 - Infusion: Enhanced Arcane Focus
+- Infusion: Enhanced Defense
+- Infusion: Enhanced Weapon
+- Infusion: Helm of Awareness
+- Infusion: Mind Sharpener
+- Infusion: Radiant Weapon
+- Infusion: Repeating Shot
+- Infusion: Repulsion Shield
 - Infusion: Resistant Armor
+- Infusion: Returning Weapon
+- Infusion: Spell-Refueling Ring
 - Infusion: Replicate Magic Item
 ## Updated Modern Automations:
 - Tinker's Magic
 - Magic Item Plans
 - Replicate Magic Item
+- Boots of the Winding Path
+- Helm of Awareness
+- Mind Sharpener
+- Repulsion Shield
+- Spell-Refueling Ring
 
 # 2.0.4 Pre-Release:
 ## Update Notes:

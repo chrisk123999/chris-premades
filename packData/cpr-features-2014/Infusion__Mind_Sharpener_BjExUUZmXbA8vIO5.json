@@ -1,5 +1,5 @@
 {
-  "name": "Infusion: Resistant Armor",
+  "name": "Infusion: Mind Sharpener",
   "type": "feat",
   "system": {
     "activities": {
@@ -189,23 +189,23 @@
         "flags": {
           "cat": {
             "macros": {
-              "roll": [
-                {
-                  "source": "chris-premades",
-                  "rules": "2014",
-                  "identifier": "infusion-resistant-armor"
-                },
-                {
-                  "source": "chris-premades",
-                  "rules": "all",
-                  "identifier": "infusionPrechecks"
-                }
-              ],
               "called": [
                 {
                   "source": "chris-premades",
                   "rules": "2014",
-                  "identifier": "infusionCollectArmors"
+                  "identifier": "infusionCollecArmorRobes"
+                }
+              ],
+              "roll": [
+                {
+                  "source": "chris-premades",
+                  "rules": "all",
+                  "identifier": "infusionPrechecks"
+                },
+                {
+                  "source": "chris-premades",
+                  "rules": "2014",
+                  "identifier": "infusion-mind-sharpener"
                 }
               ]
             }
@@ -340,7 +340,7 @@
       "value": "",
       "chat": ""
     },
-    "identifier": "infusion-resistant-armor",
+    "identifier": "infusion-mind-sharpener",
     "source": {
       "book": "TCoE",
       "page": "",
@@ -356,11 +356,11 @@
     },
     "prerequisites": {
       "items": [],
-      "level": 6,
+      "level": 1,
       "repeatable": false
     },
     "properties": [],
-    "requirements": "6th-level Artificer",
+    "requirements": "1st-level Artificer",
     "type": {
       "value": "enchantment",
       "subtype": "artificerInfusion"
@@ -368,8 +368,8 @@
   },
   "effects": [
     {
-      "img": "icons/magic/defensive/shield-barrier-glowing-blue.webp",
-      "name": "Infusion: Resistant Armor",
+      "img": "icons/equipment/chest/coat-collared-red-gold.webp",
+      "name": "Mind Sharpener",
       "statuses": [],
       "system": {
         "changes": [
@@ -381,18 +381,29 @@
             "priority": 20
           },
           {
-            "key": "system.attunement",
-            "type": "override",
-            "value": "required",
-            "phase": "initial",
+            "key": "name",
+            "type": "add",
+            "value": ": Mind Sharpener",
+            "phase": "final",
             "priority": 20
           },
           {
-            "key": "name",
-            "type": "add",
-            "value": ": Resistant Armor",
-            "phase": "final",
-            "priority": 20
+            "key": "system.uses.max",
+            "type": "override",
+            "value": 4,
+            "phase": "initial",
+            "priority": null
+          },
+          {
+            "key": "system.uses.recovery",
+            "type": "override",
+            "value": {
+              "period": "dawn",
+              "type": "formula",
+              "formula": "1d4"
+            },
+            "phase": "initial",
+            "priority": null
           }
         ]
       },
@@ -412,7 +423,7 @@
           "stackable": "noneNameOnly",
           "enableCondition": "",
           "disableCondition": "",
-          "expiryMode": "delete",
+          "expiryMode": "default",
           "macroRepeat": "none",
           "specialDuration": []
         },
@@ -429,10 +440,17 @@
         }
       },
       "description": "",
-      "_id": "kIRqC1Mip5ajbfm2",
+      "_id": "vM4uSKoCzarS09H5",
       "origin": null,
       "type": "enchantment",
-      "start": null,
+      "start": {
+        "time": 3936,
+        "combat": null,
+        "combatant": null,
+        "initiative": null,
+        "round": null,
+        "turn": null
+      },
       "folder": null,
       "sort": 0,
       "_stats": {
@@ -440,69 +458,7 @@
         "systemId": "dnd5e",
         "systemVersion": "5.3.3"
       },
-      "_key": "!items.effects!zeV3nzhfVrOl7AbB.kIRqC1Mip5ajbfm2"
-    },
-    {
-      "name": "Resistant Armor",
-      "img": "icons/magic/defensive/shield-barrier-glowing-blue.webp",
-      "origin": "Compendium.chris-premades.CPRFeatures2014.Item.zeV3nzhfVrOl7AbB",
-      "type": "base",
-      "_id": "nKsZhAKB64F29ye7",
-      "system": {
-        "changes": [
-          {
-            "key": "system.traits.dr.value",
-            "type": "add",
-            "value": "acid",
-            "phase": "final",
-            "priority": null
-          }
-        ]
-      },
-      "disabled": false,
-      "start": null,
-      "duration": {
-        "value": null,
-        "units": "seconds",
-        "expiry": null,
-        "expired": false
-      },
-      "description": "",
-      "tint": "#ffffff",
-      "transfer": false,
-      "statuses": [],
-      "showIcon": 1,
-      "folder": null,
-      "sort": 0,
-      "flags": {
-        "dnd5e": {
-          "riders": {
-            "statuses": []
-          }
-        },
-        "dae": {
-          "disableCondition": "",
-          "stackable": "noneName",
-          "expiryMode": "delete",
-          "durationExpression": "",
-          "macroRepeat": "none",
-          "disableIncapacitated": false,
-          "specialDuration": [],
-          "enableCondition": "",
-          "selfTarget": false,
-          "selfTargetAlways": false,
-          "dontApply": false
-        },
-        "core": {
-          "overlay": false
-        }
-      },
-      "_stats": {
-        "coreVersion": "14.364",
-        "systemId": "dnd5e",
-        "systemVersion": "5.3.3"
-      },
-      "_key": "!items.effects!zeV3nzhfVrOl7AbB.nKsZhAKB64F29ye7"
+      "_key": "!items.effects!BjExUUZmXbA8vIO5.vM4uSKoCzarS09H5"
     }
   ],
   "flags": {
@@ -513,13 +469,13 @@
       }
     }
   },
-  "img": "icons/magic/defensive/shield-barrier-glowing-blue.webp",
+  "img": "icons/equipment/chest/coat-collared-red-gold.webp",
   "folder": "Jop9YZCm0OFshULP",
   "_stats": {
     "coreVersion": "14.364",
     "systemId": "dnd5e",
     "systemVersion": "5.3.3"
   },
-  "_id": "zeV3nzhfVrOl7AbB",
-  "_key": "!items!zeV3nzhfVrOl7AbB"
+  "_id": "BjExUUZmXbA8vIO5",
+  "_key": "!items!BjExUUZmXbA8vIO5"
 }

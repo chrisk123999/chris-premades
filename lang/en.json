@@ -789,13 +789,15 @@
                     "BootsOfTheWindingPath": "Boots of the Winding Path",
                     "ChooseItem": "Choose a target item:",
                     "ExtraBonus": "Grant +2 Bonus",
+                    "HelmAwareness": "Helm of Awareness",
                     "NoArmor": "Target has no valid non-magical armor!",
                     "NoFoci": "Target has no valid non-magical rod, staff, or wand!",
                     "NoShield": "Target has no valid non-magical shield!",
-                    "NotProne": "You are not prone!",
+                    "NotProne": "You have no prone status to remove!",
                     "NoWeapon": "Target has no valid non-magical weapon!",
                     "PlanName": "Infusion",
-                    "Resistance": "Resistance Type"
+                    "Resistance": "Resistance Type",
+                    "SpellRing": "Spell-Refueling Ring"
                 },
                 "InsightfulManipulator": {
                     "ChaScore": "Charisma Score",

@@ -33,7 +33,7 @@ async function infusionFilter({document: item, data}) {
 }
 export const infuseItem = {
     name: 'Infuse Item',
-    version: '2.0.4',
+    version: '2.0.5',
     rules: '2014',
     notes: swapArtificerPlan.notes,
     config: swapArtificerPlan.config,
