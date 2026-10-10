@@ -17,7 +17,7 @@ async function late({document: item, workflow}) {
                 priority: 20
             },
             {
-                key: 'system.bonuses.abilities.save',
+                key: 'system.rolls.ability.save.bonus',
                 type: 'add',
                 value: 2,
                 priority: 20

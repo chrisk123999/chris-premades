@@ -89,7 +89,6 @@
           "disableCondition": "",
           "disableIncapacitated": true,
           "stackable": "noneName",
-          "showIcon": false,
           "durationExpression": "",
           "macroRepeat": "none",
           "specialDuration": []
@@ -107,7 +106,11 @@
             "key": "flags.midi-qol.superSaver.dex",
             "value": 1,
             "priority": 20,
-            "type": "override"
+            "type": "override",
+            "phase": "initial",
+            "_id": "bW7XOoo72l3TOljv",
+            "conditions": "{}",
+            "replacement": ""
           }
         ]
       },
@@ -116,13 +119,12 @@
       "transfer": true,
       "statuses": [],
       "sort": 0,
-      "start": null,
       "showIcon": 1,
       "folder": null,
       "_stats": {
-        "coreVersion": "14.364",
+        "coreVersion": "14.369",
         "systemId": "dnd5e",
-        "systemVersion": "5.3.3"
+        "systemVersion": "6.0.6"
       },
       "_key": "!items.effects!Rn7utjYc1Rhhgj59.fssexnMf2uQGamUV"
     }
@@ -131,9 +133,9 @@
   "folder": "oeHJD6UoRsmQIVlo",
   "_id": "Rn7utjYc1Rhhgj59",
   "_stats": {
-    "coreVersion": "14.364",
+    "coreVersion": "14.369",
     "systemId": "dnd5e",
-    "systemVersion": "5.3.3"
+    "systemVersion": "6.0.6"
   },
   "_key": "!items!Rn7utjYc1Rhhgj59"
 }

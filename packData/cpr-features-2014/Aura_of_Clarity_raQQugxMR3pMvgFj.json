@@ -16,12 +16,14 @@
             "type": "add",
             "value": "blinded",
             "phase": "initial",
-            "priority": null
+            "priority": null,
+            "_id": "u6jBzB50wp7jzp1v",
+            "conditions": "{}",
+            "replacement": ""
           }
         ]
       },
       "disabled": false,
-      "start": null,
       "duration": {
         "value": null,
         "units": "seconds",
@@ -48,9 +50,9 @@
         }
       },
       "_stats": {
-        "coreVersion": "14.364",
-        "systemId": null,
-        "systemVersion": null
+        "coreVersion": "14.369",
+        "systemId": "dnd5e",
+        "systemVersion": "6.0.6"
       },
       "_key": "!items.effects!raQQugxMR3pMvgFj.qNhoUlGDKksarnps"
     },
@@ -68,12 +70,14 @@
             "type": "add",
             "value": "invisible",
             "phase": "initial",
-            "priority": null
+            "priority": null,
+            "_id": "je9aB08BbczNQpKs",
+            "conditions": "{}",
+            "replacement": ""
           }
         ]
       },
       "disabled": false,
-      "start": null,
       "duration": {
         "value": null,
         "units": "seconds",
@@ -100,9 +104,9 @@
         }
       },
       "_stats": {
-        "coreVersion": "14.364",
-        "systemId": null,
-        "systemVersion": null
+        "coreVersion": "14.369",
+        "systemId": "dnd5e",
+        "systemVersion": "6.0.6"
       },
       "_key": "!items.effects!raQQugxMR3pMvgFj.ciGpAlA3HKB2Ee5O"
     }
@@ -175,9 +179,9 @@
   "folder": "ZuOA3Eh3lfy1jxir",
   "_id": "raQQugxMR3pMvgFj",
   "_stats": {
-    "coreVersion": "14.364",
-    "systemId": null,
-    "systemVersion": null
+    "coreVersion": "14.369",
+    "systemId": "dnd5e",
+    "systemVersion": "6.0.6"
   },
   "_key": "!items!raQQugxMR3pMvgFj"
 }

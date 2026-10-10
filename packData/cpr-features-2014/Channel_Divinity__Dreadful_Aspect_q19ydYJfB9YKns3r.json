@@ -399,7 +399,6 @@
         "changes": []
       },
       "disabled": false,
-      "start": null,
       "duration": {
         "value": null,
         "units": "seconds",
@@ -459,8 +458,8 @@
       },
       "_stats": {
         "coreVersion": "14.364",
-        "systemId": null,
-        "systemVersion": null
+        "systemId": "dnd5e",
+        "systemVersion": "6.0.6"
       },
       "_key": "!items.effects!q19ydYJfB9YKns3r.fQ3mV8nWk1xZp7Hs"
     }
@@ -493,9 +492,9 @@
   "folder": "KgK97fRED9Mg1rAg",
   "_id": "q19ydYJfB9YKns3r",
   "_stats": {
-    "coreVersion": "14.364",
-    "systemId": null,
-    "systemVersion": null
+    "coreVersion": "14.369",
+    "systemId": "dnd5e",
+    "systemVersion": "6.0.6"
   },
   "_key": "!items!q19ydYJfB9YKns3r"
 }

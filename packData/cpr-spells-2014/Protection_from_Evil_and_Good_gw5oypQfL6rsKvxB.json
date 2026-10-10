@@ -53,10 +53,6 @@
       "cost": 0,
       "supply": 0
     },
-    "preparation": {
-      "mode": "prepared",
-      "prepared": false
-    },
     "properties": [
       "vocal",
       "somatic",
@@ -129,13 +125,15 @@
         }
       }
     },
-    "identifier": "protection-from-evil-and-good"
+    "identifier": "protection-from-evil-and-good",
+    "method": "spell",
+    "prepared": 0
   },
   "flags": {
     "cat": {
       "automation": {
         "source": "chris-premades",
-        "version": "2.0.4"
+        "version": "2.1.0"
       }
     }
   },
@@ -144,18 +142,23 @@
     {
       "name": "Protection from Evil and Good",
       "img": "icons/magic/light/orb-container-orange.webp",
-      "origin": "Compendium.dnd5e.spells.Item.xmDBqZhRVrtLP8h2",
+      "origin": null,
       "transfer": false,
       "_id": "6AM7tNmtE61BDJpv",
       "type": "base",
-      "system": {},
-      "changes": [],
+      "system": {
+        "changes": [],
+        "magical": true,
+        "origin": {
+          "item": "Compendium.dnd5e.spells.Item.xmDBqZhRVrtLP8h2"
+        }
+      },
       "disabled": false,
       "duration": {
-        "combat": null,
-        "seconds": 600,
-        "rounds": null,
-        "turns": null
+        "value": 600,
+        "units": "seconds",
+        "expiry": "turnStart",
+        "expired": false
       },
       "description": "",
       "tint": "#ffffff",
@@ -192,21 +195,26 @@
               }
             ]
           }
+        },
+        "dae": {
+          "expiryMode": "delete"
         }
       },
       "_stats": {
-        "coreVersion": "14.364",
+        "coreVersion": "14.369",
         "systemId": "dnd5e",
-        "systemVersion": "5.3.3"
+        "systemVersion": "6.0.6"
       },
+      "showIcon": 1,
+      "folder": null,
       "_key": "!items.effects!gw5oypQfL6rsKvxB.6AM7tNmtE61BDJpv"
     }
   ],
   "folder": "pfzYb8UerE97sz8L",
   "_stats": {
-    "coreVersion": "14.364",
+    "coreVersion": "14.369",
     "systemId": "dnd5e",
-    "systemVersion": "5.3.3"
+    "systemVersion": "6.0.6"
   },
   "_key": "!items!gw5oypQfL6rsKvxB"
 }

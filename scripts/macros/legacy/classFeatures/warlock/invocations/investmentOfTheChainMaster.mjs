@@ -6,7 +6,7 @@ async function familiar({document, summon, updates}) {
         [CONFIG.DND5E.movementTypes.fly.label, 'fly'],
         [CONFIG.DND5E.movementTypes.swim.label, 'swim']
     ]);
-    if (movement) genericUtils.setProperty(updates, 'system.attributes.movement.' + movement, automationUtils.getConfigValue(document, 'speed'));
+    if (movement) genericUtils.setProperty(updates, 'system.attributes.movement.speeds.' + movement, automationUtils.getConfigValue(document, 'speed'));
     const saveDC = itemUtils.getSaveDC(summon.sourceDocument);
     const sourceActor = await summon.getSourceActor();
     updates.items ??= sourceActor.items.map(item => item.toObject());

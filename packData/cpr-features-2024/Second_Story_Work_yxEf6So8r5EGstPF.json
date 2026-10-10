@@ -30,22 +30,25 @@
       "system": {
         "changes": [
           {
-            "key": "system.attributes.movement.climb",
-            "value": "@attributes.movement.walk",
+            "key": "system.attributes.movement.speeds.climb",
+            "value": "@attributes.movement.speeds.walk",
             "priority": 5,
-            "type": "upgrade"
+            "type": "upgrade",
+            "phase": "initial",
+            "_id": "yHCYTtmNJIkpoCgC",
+            "conditions": "{}",
+            "replacement": ""
           }
         ]
       },
       "origin": null,
       "sort": 0,
-      "start": null,
       "showIcon": 1,
       "folder": null,
       "_stats": {
-        "coreVersion": "14.364",
+        "coreVersion": "14.369",
         "systemId": "dnd5e",
-        "systemVersion": "5.3.3"
+        "systemVersion": "6.0.6"
       },
       "_key": "!items.effects!yxEf6So8r5EGstPF.rH8msZ30PMa9mt5j"
     }
@@ -113,9 +116,9 @@
   "folder": "SVB4droy60pWrptr",
   "_id": "yxEf6So8r5EGstPF",
   "_stats": {
-    "coreVersion": "14.364",
+    "coreVersion": "14.369",
     "systemId": "dnd5e",
-    "systemVersion": "5.3.3"
+    "systemVersion": "6.0.6"
   },
   "_key": "!items!yxEf6So8r5EGstPF"
 }

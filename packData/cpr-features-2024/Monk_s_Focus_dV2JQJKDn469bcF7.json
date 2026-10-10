@@ -13,7 +13,6 @@
         "changes": []
       },
       "disabled": false,
-      "start": null,
       "duration": {
         "value": null,
         "units": "seconds",
@@ -63,7 +62,7 @@
       "_stats": {
         "coreVersion": "14.364",
         "systemId": "dnd5e",
-        "systemVersion": "5.3.3"
+        "systemVersion": "6.0.6"
       },
       "_key": "!items.effects!dV2JQJKDn469bcF7.3DORPcLP4rwuXXy5"
     },
@@ -86,7 +85,6 @@
           "selfTargetAlways": true,
           "dontApply": false,
           "stackable": "noneName",
-          "showIcon": false,
           "durationExpression": "",
           "macroRepeat": "none",
           "expiryMode": "delete",
@@ -116,7 +114,10 @@
             "type": "override",
             "value": 1,
             "phase": "initial",
-            "priority": 20
+            "priority": 20,
+            "_id": "Ul3pU8F6o2cpOUDV",
+            "conditions": "{}",
+            "replacement": ""
           }
         ]
       },
@@ -126,11 +127,10 @@
       "statuses": [],
       "sort": 0,
       "_stats": {
-        "coreVersion": "14.364",
+        "coreVersion": "14.369",
         "systemId": "dnd5e",
-        "systemVersion": "5.3.3"
+        "systemVersion": "6.0.6"
       },
-      "start": null,
       "showIcon": 1,
       "folder": null,
       "_key": "!items.effects!dV2JQJKDn469bcF7.cY3555i6KoFvCyOj"
@@ -154,7 +154,6 @@
           "selfTargetAlways": true,
           "dontApply": false,
           "stackable": "noneName",
-          "showIcon": false,
           "durationExpression": "",
           "macroRepeat": "none",
           "expiryMode": "delete",
@@ -187,14 +186,10 @@
             "value": "canSee(tokenUuid, targetUuid)",
             "priority": 20,
             "type": "custom",
-            "phase": "initial"
-          },
-          {
-            "key": "flags.midi-qol.advantage.save.dex",
-            "value": 1,
-            "priority": 20,
-            "type": "custom",
-            "phase": "initial"
+            "phase": "initial",
+            "_id": "dRGgK3IADcGUbMbM",
+            "conditions": "{}",
+            "replacement": ""
           }
         ]
       },
@@ -206,12 +201,11 @@
       ],
       "sort": 0,
       "_stats": {
-        "coreVersion": "14.364",
+        "coreVersion": "14.369",
         "systemId": "dnd5e",
-        "systemVersion": "5.3.3"
+        "systemVersion": "6.0.6"
       },
       "showIcon": 2,
-      "start": null,
       "folder": null,
       "_key": "!items.effects!dV2JQJKDn469bcF7.y2Mez3eJbfs3n6FJ"
     }
@@ -1223,16 +1217,16 @@
     "cat": {
       "automation": {
         "source": "chris-premades",
-        "version": "2.0.4"
+        "version": "2.1.0"
       }
     }
   },
   "img": "icons/creatures/eyes/human-single-brown.webp",
   "folder": "tJ727NhyyBNb6ZNf",
   "_stats": {
-    "coreVersion": "14.364",
+    "coreVersion": "14.369",
     "systemId": "dnd5e",
-    "systemVersion": "5.3.3"
+    "systemVersion": "6.0.6"
   },
   "_id": "dV2JQJKDn469bcF7",
   "_key": "!items!dV2JQJKDn469bcF7"

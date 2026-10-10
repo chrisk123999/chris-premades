@@ -1,4 +1,4 @@
-import {actorUtils, automationUtils, constants, dialogUtils, documentUtils, genericUtils, itemUtils} from '../../../../../proxy.mjs';
+import {automationUtils, constants, dialogUtils, documentUtils, genericUtils, itemUtils} from '../../../../../proxy.mjs';
 async function use({document, workflow}) {
     const weapons = workflow.actor.items.filter(item => item.type === 'weapon' && !item.system.properties.has('two'));
     const existing = weapons.map(item => documentUtils.getEffectByIdentifier(item, 'hexWarriorWeapon')).find(effect => effect);
@@ -29,14 +29,10 @@ async function use({document, workflow}) {
         }
     };
     genericUtils.setProperty(effectData, 'flags.cat.identifier', 'hexWarriorWeapon');
-    const ability = automationUtils.getConfigValue(document, 'ability');
-    const weaponAbility = selection.system.activities.getByType('attack')[0]?.attack.ability || 'str';
-    const abilities = [weaponAbility, ability];
-    if (selection.system.properties.has('fin')) abilities.push('dex');
-    if (actorUtils.getBestAbility(workflow.actor, abilities) === ability) effectData.system.changes.push({
-        key: 'activities[attack].attack.ability',
-        type: 'override',
-        value: ability,
+    effectData.system.changes.push({
+        key: 'activities[attack].attack.abilities',
+        type: 'add',
+        value: automationUtils.getConfigValue(document, 'ability'),
         priority: 20
     });
     await itemUtils.enchantItem(selection, effectData);

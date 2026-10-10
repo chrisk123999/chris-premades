@@ -33,19 +33,22 @@
             "key": "system.attributes.init.roll.mode",
             "value": 1,
             "priority": 20,
-            "type": "add"
+            "type": "add",
+            "phase": "initial",
+            "_id": "ZB3W9SPUZbvtAs0A",
+            "conditions": "{}",
+            "replacement": ""
           }
         ]
       },
       "origin": null,
       "sort": 0,
-      "start": null,
       "showIcon": 1,
       "folder": null,
       "_stats": {
-        "coreVersion": "14.364",
+        "coreVersion": "14.369",
         "systemId": "dnd5e",
-        "systemVersion": "5.3.3"
+        "systemVersion": "6.0.6"
       },
       "_key": "!items.effects!CPih8oOWMG9Ylarz.jnNOrGfA3tLn0Xxq"
     }
@@ -122,9 +125,9 @@
   "folder": "QKZ26IX9ZmsoXKsL",
   "_id": "CPih8oOWMG9Ylarz",
   "_stats": {
-    "coreVersion": "14.364",
+    "coreVersion": "14.369",
     "systemId": "dnd5e",
-    "systemVersion": "5.3.3"
+    "systemVersion": "6.0.6"
   },
   "_key": "!items!CPih8oOWMG9Ylarz"
 }

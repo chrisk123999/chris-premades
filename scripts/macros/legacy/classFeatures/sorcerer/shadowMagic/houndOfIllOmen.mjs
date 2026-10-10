@@ -6,7 +6,7 @@ async function use({document, workflow}) {
     if (!sourceActor) return;
     const targetToken = workflow.targets.first();
     const markerEffect = documentUtils.getEffectByIdentifier(targetToken.actor, 'houndOfIllOmenTarget');
-    await Promise.all(summonUtils.getSummonBySource(document).map(async summon => await summonUtils.deleteSummon(summon)));
+    await Promise.all(summonUtils.getSummonsBySource(document).map(async summon => await summonUtils.deleteSummon(summon)));
     const {name, avatarImg, tokenImg, animation, sounds, items, initiative} = summonData;
     const classIdentifier = automationUtils.getConfigValue(document, 'classIdentifier');
     const levels = workflow.actor.classes[classIdentifier]?.system.levels ?? 0;
@@ -30,7 +30,7 @@ async function use({document, workflow}) {
 }
 async function disadvantage({document, workflow}) {
     if (workflow.item.type !== 'spell' || !workflow.targets.size) return;
-    const houndToken = summonUtils.getSummonBySource(document)[0]?.token;
+    const houndToken = summonUtils.getSummonsBySource(document)[0]?.token;
     if (!houndToken) return;
     const distance = automationUtils.getConfigValue(document, 'distance');
     const marked = Array.from(workflow.targets, target => target.document ?? target).filter(targetToken => {
@@ -43,7 +43,7 @@ async function disadvantage({document, workflow}) {
         name: _loc('CHRISPREMADES.Macros.Legacy.HoundOfIllOmen.Disadvantage'),
         img: constants.tempConditionIcon,
         origin: document.uuid,
-        duration: {turns: 1},
+        duration: {value: 1, units: 'turns'},
         specialDuration: ['endOfWorkflow'],
         changes: [
             {key: 'flags.midi-qol.disadvantage.save.all', value: '1', type: 'override', priority: 120}

@@ -77,6 +77,10 @@
             "identifier": "expert-divination"
           }
         ]
+      },
+      "automation": {
+        "source": "chris-premades",
+        "version": "2.1.0"
       }
     }
   },
@@ -85,9 +89,9 @@
   "folder": "5DW39pBNCPMriELR",
   "_id": "qIjUpMXCFHPz7eqn",
   "_stats": {
-    "coreVersion": "14.364",
-    "systemId": null,
-    "systemVersion": null
+    "coreVersion": "14.369",
+    "systemId": "dnd5e",
+    "systemVersion": "6.0.6"
   },
   "_key": "!items!qIjUpMXCFHPz7eqn"
 }

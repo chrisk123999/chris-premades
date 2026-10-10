@@ -386,40 +386,54 @@
             "type": "add",
             "value": "bludgeoning",
             "phase": "final",
-            "priority": null
+            "priority": null,
+            "_id": "9wl7xepM9DJgIxrQ",
+            "conditions": "{}",
+            "replacement": ""
           },
           {
             "key": "system.traits.dr.value",
             "type": "add",
             "value": "piercing",
             "phase": "final",
-            "priority": null
+            "priority": null,
+            "_id": "iyWibOjNsmNNwoG9",
+            "conditions": "{}",
+            "replacement": ""
           },
           {
             "key": "system.traits.dr.value",
             "type": "add",
             "value": "slashing",
             "phase": "final",
-            "priority": null
+            "priority": null,
+            "_id": "rygKEFsV4zWnIih3",
+            "conditions": "{}",
+            "replacement": ""
           },
           {
-            "key": "flags.midi-qol.advantage.check.str",
-            "type": "custom",
-            "value": true,
+            "key": "system.abilities.str.check.roll.mode",
+            "type": "add",
+            "value": 1,
             "phase": "initial",
-            "priority": null
+            "priority": null,
+            "_id": "2EGSbPM9n2gocAwa",
+            "conditions": "{}",
+            "replacement": ""
           },
           {
-            "key": "flags.midi-qol.advantage.save.str",
-            "type": "custom",
-            "value": true,
+            "key": "system.abilities.str.save.roll.mode",
+            "type": "add",
+            "value": 1,
             "phase": "initial",
-            "priority": null
+            "priority": null,
+            "_id": "8p6cHHJqP0pEA9f5",
+            "conditions": "{}",
+            "replacement": ""
           }
         ]
       },
       "disabled": false,
-      "start": null,
       "duration": {
         "value": null,
         "units": "seconds",
@@ -491,9 +505,9 @@
         }
       },
       "_stats": {
-        "coreVersion": "14.364",
-        "systemId": null,
-        "systemVersion": null
+        "coreVersion": "14.369",
+        "systemId": "dnd5e",
+        "systemVersion": "6.0.6"
       },
       "_key": "!items.effects!TpvlZoB9bvas5M2G.sL6Qn1ntvxrhFaYD"
     }
@@ -503,15 +517,15 @@
     "cat": {
       "automation": {
         "source": "chris-premades",
-        "version": "2.0.2"
+        "version": "2.1.0"
       }
     }
   },
   "_id": "TpvlZoB9bvas5M2G",
   "_stats": {
-    "coreVersion": "14.364",
-    "systemId": null,
-    "systemVersion": null
+    "coreVersion": "14.369",
+    "systemId": "dnd5e",
+    "systemVersion": "6.0.6"
   },
   "_key": "!items!TpvlZoB9bvas5M2G"
 }

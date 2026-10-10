@@ -8,7 +8,7 @@ async function use({workflow}) {
     const effectData = enchantment.toObject();
     delete effectData._id;
     effectData.origin = workflow.item.uuid;
-    const [applied] = await itemUtils.enchantItem(weapon, effectData) ?? [];
+    const applied = await itemUtils.enchantItem(weapon, effectData);
     if (!applied) return;
     const lights = workflow.item.effects.filter(effect => effect.type !== 'enchantment').map(effect => {
         const lightData = effect.toObject();

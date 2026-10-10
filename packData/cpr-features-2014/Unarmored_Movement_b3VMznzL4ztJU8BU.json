@@ -8,11 +8,14 @@
       "system": {
         "changes": [
           {
-            "key": "system.attributes.movement.walk",
+            "key": "system.attributes.movement.speeds.walk",
             "value": "@scale.monk.unarmored-movement.value",
             "type": "add",
             "priority": 20,
-            "phase": "initial"
+            "phase": "initial",
+            "_id": "xzC9CJgryZA4Umby",
+            "conditions": "{}",
+            "replacement": ""
           }
         ]
       },
@@ -61,14 +64,13 @@
       "img": "icons/magic/control/debuff-energy-snare-brown.webp",
       "_id": "45Gfbf57TmBJ1Flx",
       "type": "base",
-      "start": null,
       "origin": null,
       "folder": null,
       "sort": 0,
       "_stats": {
-        "coreVersion": "14.364",
+        "coreVersion": "14.369",
         "systemId": "dnd5e",
-        "systemVersion": "5.3.3"
+        "systemVersion": "6.0.6"
       },
       "_key": "!items.effects!b3VMznzL4ztJU8BU.45Gfbf57TmBJ1Flx"
     }
@@ -135,9 +137,9 @@
   "img": "icons/magic/control/debuff-energy-snare-brown.webp",
   "folder": "nH8135F1PzU9skht",
   "_stats": {
-    "coreVersion": "14.364",
+    "coreVersion": "14.369",
     "systemId": "dnd5e",
-    "systemVersion": "5.3.3"
+    "systemVersion": "6.0.6"
   },
   "_id": "b3VMznzL4ztJU8BU",
   "_key": "!items!b3VMznzL4ztJU8BU"

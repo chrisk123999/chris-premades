@@ -68,9 +68,9 @@
   "folder": "uosKFvpruT2UNHCY",
   "_id": "Pb1DsJlC9F3DCGKa",
   "_stats": {
-    "coreVersion": "14.364",
-    "systemId": null,
-    "systemVersion": null
+    "coreVersion": "14.369",
+    "systemId": "dnd5e",
+    "systemVersion": "6.0.6"
   },
   "_key": "!items!Pb1DsJlC9F3DCGKa"
 }

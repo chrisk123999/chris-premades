@@ -23,13 +23,13 @@
           ],
           "enableCondition": "",
           "disableCondition": "",
-          "showIcon": false,
           "disableIncapacitated": false,
           "selfTarget": false,
           "selfTargetAlways": false,
           "dontApply": false,
           "durationExpression": "",
-          "macroRepeat": "none"
+          "macroRepeat": "none",
+          "expiryMode": "delete"
         },
         "midi-qol": {
           "forceCEOff": true
@@ -59,22 +59,25 @@
       "system": {
         "changes": [
           {
-            "key": "flags.midi-qol.advantage.attack.all",
+            "key": "system.rolls.attack.mode",
             "value": 1,
             "priority": 20,
-            "type": "custom"
+            "type": "add",
+            "phase": "initial",
+            "_id": "PSd4RA1hPZjiabVi",
+            "conditions": "{}",
+            "replacement": ""
           }
         ]
       },
       "origin": null,
       "sort": 0,
-      "start": null,
       "showIcon": 1,
       "folder": null,
       "_stats": {
-        "coreVersion": "14.364",
-        "systemId": null,
-        "systemVersion": null
+        "coreVersion": "14.369",
+        "systemId": "dnd5e",
+        "systemVersion": "6.0.6"
       },
       "_key": "!items.effects!r9H2mw2z3Po25Pbb.jHASsgwKNPnYIDFd"
     },
@@ -97,13 +100,13 @@
           "specialDuration": [],
           "enableCondition": "",
           "disableCondition": "",
-          "showIcon": false,
           "disableIncapacitated": false,
           "selfTarget": false,
           "selfTargetAlways": false,
           "dontApply": true,
           "durationExpression": "",
-          "macroRepeat": "none"
+          "macroRepeat": "none",
+          "expiryMode": "delete"
         },
         "midi-qol": {
           "forceCEOff": true
@@ -135,46 +138,25 @@
       "system": {
         "changes": [
           {
-            "key": "system.attributes.movement.walk",
+            "key": "system.attributes.movement.multiplier",
             "value": 0,
             "priority": 100,
-            "type": "override"
-          },
-          {
-            "key": "system.attributes.movement.fly",
-            "value": 0,
-            "priority": 100,
-            "type": "override"
-          },
-          {
-            "key": "system.attributes.movement.swim",
-            "value": 0,
-            "priority": 100,
-            "type": "override"
-          },
-          {
-            "key": "system.attributes.movement.climb",
-            "value": 0,
-            "priority": 100,
-            "type": "override"
-          },
-          {
-            "key": "system.attributes.movement.burrow",
-            "value": 0,
-            "priority": 100,
-            "type": "override"
+            "type": "override",
+            "phase": "initial",
+            "_id": "3MdOAHDQIbljr7AZ",
+            "conditions": "{}",
+            "replacement": ""
           }
         ]
       },
       "origin": null,
       "sort": 0,
-      "start": null,
       "showIcon": 1,
       "folder": null,
       "_stats": {
-        "coreVersion": "14.364",
-        "systemId": null,
-        "systemVersion": null
+        "coreVersion": "14.369",
+        "systemId": "dnd5e",
+        "systemVersion": "6.0.6"
       },
       "_key": "!items.effects!r9H2mw2z3Po25Pbb.N01wiTCKbCxIdvP1"
     }
@@ -365,7 +347,7 @@
     },
     "cat": {
       "automation": {
-        "version": "2.0.4"
+        "version": "2.1.0"
       },
       "macros": {
         "roll": [
@@ -389,9 +371,9 @@
   "folder": "oeHJD6UoRsmQIVlo",
   "_id": "r9H2mw2z3Po25Pbb",
   "_stats": {
-    "coreVersion": "14.364",
-    "systemId": null,
-    "systemVersion": null
+    "coreVersion": "14.369",
+    "systemId": "dnd5e",
+    "systemVersion": "6.0.6"
   },
   "_key": "!items!r9H2mw2z3Po25Pbb"
 }

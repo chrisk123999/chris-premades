@@ -39,7 +39,6 @@ async function attacked({workflow}) {
         if (!protectorEffect) return;
         const protectedEffect = (await effectUtils.createEffects(target.actor, [protectedData], {parentEntity: protectorEffect}))?.[0];
         if (!protectedEffect) return;
-        await documentUtils.makeDependent(protectedEffect, [protectorEffect]);
         await workflowUtils.syntheticItemRoll(protection, [target]);
         workflow.tracker.disadvantage.add('protection', protection.name);
         return;

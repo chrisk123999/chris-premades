@@ -190,11 +190,10 @@
           "animationSpeed": 5,
           "animationIntensity": 5
         },
-        "otherActivityId": "",
+        "otherActivityId": "none",
         "otherActivityAsParentType": true,
         "attackMode": "",
         "ammunition": "",
-        "otherActivityUuid": "",
         "attackRollPerTarget": "default",
         "fumbleThreshold": 1
       },
@@ -432,9 +431,13 @@
             "type": "custom",
             "value": "end-turn-damage",
             "phase": "initial",
-            "priority": null
+            "priority": null,
+            "_id": "xv1JRLAhVMhiUVk6",
+            "conditions": "{}",
+            "replacement": ""
           }
-        ]
+        ],
+        "magical": true
       },
       "duration": {
         "value": 0,
@@ -476,14 +479,13 @@
       "description": "",
       "_id": "QHZHgnmFa2DGA3wa",
       "type": "base",
-      "start": null,
       "origin": null,
       "folder": null,
       "sort": 0,
       "_stats": {
-        "coreVersion": "14.364",
-        "systemId": null,
-        "systemVersion": null
+        "coreVersion": "14.369",
+        "systemId": "dnd5e",
+        "systemVersion": "6.0.6"
       },
       "_key": "!items.effects!sBRTTNIHTRq7L7ib.QHZHgnmFa2DGA3wa"
     }
@@ -511,9 +513,9 @@
   "folder": "ueMNujKhkNn2zCfl",
   "_id": "sBRTTNIHTRq7L7ib",
   "_stats": {
-    "coreVersion": "14.364",
-    "systemId": null,
-    "systemVersion": null
+    "coreVersion": "14.369",
+    "systemId": "dnd5e",
+    "systemVersion": "6.0.6"
   },
   "_key": "!items!sBRTTNIHTRq7L7ib"
 }

@@ -1,9 +1,16 @@
-# 2.0.5 Pre-Release: (work in progress)
+# 2.1.0 Pre-Release:
 ## Update Notes:
-- CPR for v14 does not contain all automations that previously existed in V13.
-- Requires CAT version 0.X.Y.
+- Requires dnd5e 6.0 or later, CAT 0.1.0, midi-qol 14.6.0 or later, and DAE 14.6.0 or later.
+- Compendiums are migrated to dnd5e 6. Effects use native expiry, roll modes and token keys instead of DAE special durations, midi advantage flags and ATL keys.
+- Items already in a world need their automation reapplied.
 - Generic Macros:
   - `ignoreCover`, cancels cover with an attack bonus.
+  - `itemRecovery`, adjusts use recovery on a specified item by enchantment.
+## Bug Fixes:
+- Rage, Bladesong and contested checks no longer spend their uses or spell slots when blocked or cancelled.
+- Darkness: the "Spreads Around Corners" option works again, without Walled Templates.
+- Superior Inspiration, Perfect Self and Perfect Focus recover uses when you roll initiative.
+- Also fixed: Aspect of the Wilds, Brutal Critical, Dedicated Weapon, Drake Companion, Extended Spell, Fall, Fiendish Vigor, Find Familiar, Hex, Hex Warrior, Hound of Ill Omen, Hunter's Mark, Manifest Mind, Movement Animation, Natural Attunement, Pact of the Blade, Pact of the Chain, Protection, Psychic Blades, Spell Thief, Steady Aim, Stunning Strike, Summon Fey, Unarmored Defense, Undead Thralls and Wild Shape.
 ## Updated Legacy Automations:
 - Infuse Item
 - Infusion: Arcane Propulsion Armor

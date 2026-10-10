@@ -12,9 +12,15 @@
             "value": 1,
             "type": "add",
             "priority": 18,
-            "phase": "initial"
+            "phase": "initial",
+            "_id": "aIJtIViKWNMhwV7b",
+            "conditions": "{}",
+            "replacement": ""
           }
-        ]
+        ],
+        "origin": {
+          "item": "Compendium.chris-premades.CPRFeatures2024.Item.ZmF0ZZGVZhj92nGt"
+        }
       },
       "duration": {
         "value": null,
@@ -53,14 +59,13 @@
       "img": "icons/equipment/shield/buckler-wooden-boss-glowing-blue.webp",
       "_id": "cCZR8d9yjODuPFtN",
       "type": "base",
-      "start": null,
-      "origin": "Compendium.chris-premades.CPRFeatures2024.Item.ZmF0ZZGVZhj92nGt",
+      "origin": null,
       "folder": null,
       "sort": 0,
       "_stats": {
-        "coreVersion": "14.364",
-        "systemId": null,
-        "systemVersion": null
+        "coreVersion": "14.369",
+        "systemId": "dnd5e",
+        "systemVersion": "6.0.6"
       },
       "_key": "!items.effects!TGbvmUe8h0FX0Rky.cCZR8d9yjODuPFtN"
     }
@@ -129,9 +134,9 @@
   "folder": "CIKnrWi8pzShUTW9",
   "_id": "TGbvmUe8h0FX0Rky",
   "_stats": {
-    "coreVersion": "14.364",
-    "systemId": null,
-    "systemVersion": null
+    "coreVersion": "14.369",
+    "systemId": "dnd5e",
+    "systemVersion": "6.0.6"
   },
   "_key": "!items!TGbvmUe8h0FX0Rky"
 }

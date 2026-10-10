@@ -16,12 +16,14 @@
             "type": "override",
             "value": 1,
             "phase": "initial",
-            "priority": null
+            "priority": null,
+            "_id": "H4OcubQ4uSOuW16c",
+            "conditions": "{}",
+            "replacement": ""
           }
         ]
       },
       "disabled": false,
-      "start": null,
       "duration": {
         "value": null,
         "units": "seconds",
@@ -61,16 +63,16 @@
         }
       },
       "_stats": {
-        "coreVersion": "14.364",
-        "systemId": null,
-        "systemVersion": null
+        "coreVersion": "14.369",
+        "systemId": "dnd5e",
+        "systemVersion": "6.0.6"
       },
       "_key": "!items.effects!ulioXsH7u8KY1tp6.sL3urkAFF3Kov6sz"
     },
     {
       "name": "Reckless Attack",
       "img": "icons/skills/melee/strike-axe-blood-red.webp",
-      "origin": "Compendium.chris-premades.CPRClassFeatures2014.Item.xmf9t4HXC6V64qO4",
+      "origin": null,
       "transfer": false,
       "_id": "Ackd1KmH9F5CK44T",
       "type": "base",
@@ -81,12 +83,17 @@
             "type": "add",
             "value": "workflow.activity.ability === 'str'",
             "phase": "initial",
-            "priority": null
+            "priority": null,
+            "_id": "areSRNRBPUETxjjC",
+            "conditions": "{}",
+            "replacement": ""
           }
-        ]
+        ],
+        "origin": {
+          "item": "Compendium.chris-premades.CPRFeatures2014.Item.xmf9t4HXC6V64qO4"
+        }
       },
       "disabled": false,
-      "start": null,
       "duration": {
         "value": 1,
         "units": "turns",
@@ -126,9 +133,9 @@
         }
       },
       "_stats": {
-        "coreVersion": "14.364",
-        "systemId": null,
-        "systemVersion": null
+        "coreVersion": "14.369",
+        "systemId": "dnd5e",
+        "systemVersion": "6.0.6"
       },
       "_key": "!items.effects!ulioXsH7u8KY1tp6.Ackd1KmH9F5CK44T"
     }
@@ -335,7 +342,7 @@
     "cat": {
       "automation": {
         "source": "chris-premades",
-        "version": "2.0.2"
+        "version": "2.1.0"
       }
     }
   },
@@ -343,9 +350,9 @@
   "folder": "oHVJeSGqBDErtjs9",
   "_id": "ulioXsH7u8KY1tp6",
   "_stats": {
-    "coreVersion": "14.364",
-    "systemId": null,
-    "systemVersion": null
+    "coreVersion": "14.369",
+    "systemId": "dnd5e",
+    "systemVersion": "6.0.6"
   },
   "_key": "!items!ulioXsH7u8KY1tp6"
 }

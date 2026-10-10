@@ -99,7 +99,6 @@
           "disableCondition": "",
           "disableIncapacitated": false,
           "stackable": "noneName",
-          "showIcon": false,
           "durationExpression": "",
           "macroRepeat": "none",
           "specialDuration": []
@@ -114,10 +113,14 @@
       "system": {
         "changes": [
           {
-            "key": "system.attributes.init.bonus",
+            "key": "system.attributes.init.roll.bonus",
             "value": "@abilities.cha.mod",
             "priority": 20,
-            "type": "add"
+            "type": "add",
+            "phase": "initial",
+            "_id": "wprBo2qaWih37j5n",
+            "conditions": "{}",
+            "replacement": ""
           }
         ]
       },
@@ -126,13 +129,12 @@
       "transfer": true,
       "statuses": [],
       "sort": 0,
-      "start": null,
       "showIcon": 1,
       "folder": null,
       "_stats": {
-        "coreVersion": "14.364",
+        "coreVersion": "14.369",
         "systemId": "dnd5e",
-        "systemVersion": "5.3.3"
+        "systemVersion": "6.0.6"
       },
       "_key": "!items.effects!ype78BCNyypbBIT5.EHC2UovejvdLXl6I"
     }
@@ -141,9 +143,9 @@
   "folder": "4UG2fUzu9fFqabnc",
   "_id": "ype78BCNyypbBIT5",
   "_stats": {
-    "coreVersion": "14.364",
+    "coreVersion": "14.369",
     "systemId": "dnd5e",
-    "systemVersion": "5.3.3"
+    "systemVersion": "6.0.6"
   },
   "_key": "!items!ype78BCNyypbBIT5"
 }

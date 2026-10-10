@@ -12,44 +12,18 @@
       "system": {
         "changes": [
           {
-            "key": "system.attributes.movement.walk",
+            "key": "system.attributes.movement.multiplier",
             "type": "override",
-            "value": "0",
-            "phase": "final",
-            "priority": null
-          },
-          {
-            "key": "system.attributes.movement.burrow",
-            "type": "override",
-            "value": "0",
-            "phase": "final",
-            "priority": null
-          },
-          {
-            "key": "system.attributes.movement.climb",
-            "type": "override",
-            "value": "0",
-            "phase": "final",
-            "priority": null
-          },
-          {
-            "key": "system.attributes.movement.fly",
-            "type": "override",
-            "value": "0",
-            "phase": "final",
-            "priority": null
-          },
-          {
-            "key": "system.attributes.movement.swim",
-            "type": "override",
-            "value": "0",
-            "phase": "final",
-            "priority": null
+            "value": 0,
+            "phase": "initial",
+            "priority": null,
+            "_id": "16FuySJLxGOr1Kst",
+            "conditions": "{}",
+            "replacement": ""
           }
         ]
       },
       "disabled": false,
-      "start": null,
       "duration": {
         "value": null,
         "units": "seconds",
@@ -76,9 +50,9 @@
         }
       },
       "_stats": {
-        "coreVersion": "14.364",
-        "systemId": null,
-        "systemVersion": null
+        "coreVersion": "14.369",
+        "systemId": "dnd5e",
+        "systemVersion": "6.0.6"
       },
       "_key": "!items.effects!OvOc6vsHoVa0vXao.auraConqSpeed001"
     }
@@ -255,7 +229,7 @@
     "cat": {
       "automation": {
         "source": "chris-premades",
-        "version": "2.0.4"
+        "version": "2.1.0"
       },
       "macros": {
         "aura": [
@@ -292,9 +266,9 @@
   "folder": "X2I8GshQxgyapcNG",
   "_id": "OvOc6vsHoVa0vXao",
   "_stats": {
-    "coreVersion": "14.364",
-    "systemId": null,
-    "systemVersion": null
+    "coreVersion": "14.369",
+    "systemId": "dnd5e",
+    "systemVersion": "6.0.6"
   },
   "_key": "!items!OvOc6vsHoVa0vXao"
 }

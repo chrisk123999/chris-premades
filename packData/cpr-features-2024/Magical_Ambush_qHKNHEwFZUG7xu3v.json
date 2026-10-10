@@ -11,10 +11,14 @@
       "system": {
         "changes": [
           {
-            "key": "flags.midi-qol.disadvantage.save.all",
-            "value": 1,
+            "key": "system.rolls.ability.save.mode",
+            "value": -1,
             "priority": 20,
-            "type": "custom"
+            "type": "add",
+            "phase": "initial",
+            "_id": "ADaVqurye5DMgyNL",
+            "conditions": "{}",
+            "replacement": ""
           }
         ]
       },
@@ -41,14 +45,14 @@
           "enableCondition": "",
           "disableCondition": "",
           "stackable": "noneName",
-          "showIcon": false,
           "disableIncapacitated": false,
           "selfTarget": false,
           "selfTargetAlways": false,
           "dontApply": false,
           "durationExpression": "",
           "macroRepeat": "none",
-          "specialDuration": []
+          "specialDuration": [],
+          "expiryMode": "delete"
         },
         "core": {
           "overlay": false
@@ -57,13 +61,12 @@
           "identifier": "magicalAmbushEffect"
         }
       },
-      "start": null,
       "showIcon": 1,
       "folder": null,
       "_stats": {
-        "coreVersion": "14.364",
+        "coreVersion": "14.369",
         "systemId": "dnd5e",
-        "systemVersion": "5.3.3"
+        "systemVersion": "6.0.6"
       },
       "_key": "!items.effects!qHKNHEwFZUG7xu3v.4L3IObId9eiljf3M"
     }
@@ -112,7 +115,7 @@
     "cat": {
       "automation": {
         "source": "chris-premades",
-        "version": "2.0.0"
+        "version": "2.1.0"
       },
       "macros": {
         "roll": [
@@ -129,9 +132,9 @@
   "folder": "ejZnLv70JJzvdWaC",
   "_id": "qHKNHEwFZUG7xu3v",
   "_stats": {
-    "coreVersion": "14.364",
+    "coreVersion": "14.369",
     "systemId": "dnd5e",
-    "systemVersion": "5.3.3"
+    "systemVersion": "6.0.6"
   },
   "_key": "!items!qHKNHEwFZUG7xu3v"
 }

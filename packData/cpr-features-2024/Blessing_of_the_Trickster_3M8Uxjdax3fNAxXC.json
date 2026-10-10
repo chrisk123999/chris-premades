@@ -12,10 +12,14 @@
       "system": {
         "changes": [
           {
-            "key": "flags.midi-qol.advantage.skill.ste",
+            "key": "system.skills.ste.roll.mode",
             "value": 1,
             "priority": 20,
-            "type": "custom"
+            "type": "add",
+            "phase": "initial",
+            "_id": "a0KQMNoDIbmnij0b",
+            "conditions": "{}",
+            "replacement": ""
           }
         ]
       },
@@ -40,7 +44,6 @@
           "enableCondition": "",
           "disableCondition": "",
           "stackable": "noneName",
-          "showIcon": false,
           "disableIncapacitated": false,
           "selfTarget": false,
           "selfTargetAlways": false,
@@ -53,13 +56,12 @@
           "overlay": false
         }
       },
-      "start": null,
       "showIcon": 1,
       "folder": null,
       "_stats": {
-        "coreVersion": "14.364",
-        "systemId": null,
-        "systemVersion": null
+        "coreVersion": "14.369",
+        "systemId": "dnd5e",
+        "systemVersion": "6.0.6"
       },
       "_key": "!items.effects!3M8Uxjdax3fNAxXC.Ns6ZImvsnZkxFelb"
     }
@@ -223,7 +225,7 @@
     },
     "cat": {
       "automation": {
-        "version": "2.0.0"
+        "version": "2.1.0"
       },
       "macros": {
         "roll": [
@@ -240,9 +242,9 @@
   "folder": "nnm5B1oG4Oihshed",
   "_id": "3M8Uxjdax3fNAxXC",
   "_stats": {
-    "coreVersion": "14.364",
-    "systemId": null,
-    "systemVersion": null
+    "coreVersion": "14.369",
+    "systemId": "dnd5e",
+    "systemVersion": "6.0.6"
   },
   "_key": "!items!3M8Uxjdax3fNAxXC"
 }

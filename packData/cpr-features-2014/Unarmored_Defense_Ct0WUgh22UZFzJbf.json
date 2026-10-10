@@ -1,7 +1,53 @@
 {
   "name": "Unarmored Defense",
   "type": "feat",
-  "effects": [],
+  "effects": [
+    {
+      "name": "Unarmored Defense",
+      "statuses": [],
+      "system": {
+        "changes": [
+          {
+            "key": "system.attributes.ac.calcs",
+            "value": "unarmoredMonk",
+            "type": "add",
+            "priority": 20,
+            "phase": "initial",
+            "_id": "605707sU5H7ctW35",
+            "conditions": "{}",
+            "replacement": ""
+          }
+        ],
+        "origin": {
+          "item": "Compendium.chris-premades.CPRFeatures2014.Item.Ct0WUgh22UZFzJbf"
+        }
+      },
+      "duration": {
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
+      },
+      "tint": "#ffffff",
+      "transfer": true,
+      "disabled": false,
+      "showIcon": 1,
+      "flags": {},
+      "description": "",
+      "img": "icons/magic/control/buff-flight-wings-runes-red.webp",
+      "_id": "dTdb7JLryVcQxvnx",
+      "type": "base",
+      "origin": null,
+      "folder": null,
+      "sort": 0,
+      "_stats": {
+        "coreVersion": "14.369",
+        "systemId": "dnd5e",
+        "systemVersion": "6.0.6"
+      },
+      "_key": "!items.effects!Ct0WUgh22UZFzJbf.dTdb7JLryVcQxvnx"
+    }
+  ],
   "system": {
     "activities": {},
     "uses": {
@@ -55,37 +101,18 @@
       }
     },
     "cat": {
-      "alternateAttributes": {
-        "ACFormula": [
-          {
-            "value": "10 + @abilities.dex.mod + @abilities.wis.mod",
-            "restrictions": {
-              "Armor": {
-                "value": [
-                  "light",
-                  "medium",
-                  "heavy",
-                  "shield"
-                ],
-                "invert": true,
-                "requireAll": false
-              }
-            }
-          }
-        ]
-      },
       "automation": {
         "source": "chris-premades",
-        "version": "2.0.4"
+        "version": "2.1.0"
       }
     }
   },
   "img": "icons/magic/control/buff-flight-wings-runes-red.webp",
   "folder": "nH8135F1PzU9skht",
   "_stats": {
-    "coreVersion": "14.364",
+    "coreVersion": "14.369",
     "systemId": "dnd5e",
-    "systemVersion": "5.3.3"
+    "systemVersion": "6.0.6"
   },
   "_id": "Ct0WUgh22UZFzJbf",
   "_key": "!items!Ct0WUgh22UZFzJbf"

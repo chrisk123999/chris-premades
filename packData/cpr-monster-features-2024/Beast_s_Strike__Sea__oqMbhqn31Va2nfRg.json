@@ -232,12 +232,11 @@
         }
       },
       "showIcon": 2,
-      "start": null,
       "folder": null,
       "_stats": {
         "coreVersion": "14.364",
-        "systemId": null,
-        "systemVersion": null
+        "systemId": "dnd5e",
+        "systemVersion": "6.0.6"
       },
       "_key": "!items.effects!oqMbhqn31Va2nfRg.primalSeaGrapple"
     }
@@ -302,9 +301,9 @@
   "folder": null,
   "_id": "oqMbhqn31Va2nfRg",
   "_stats": {
-    "coreVersion": "14.364",
-    "systemId": null,
-    "systemVersion": null
+    "coreVersion": "14.369",
+    "systemId": "dnd5e",
+    "systemVersion": "6.0.6"
   },
   "_key": "!items!oqMbhqn31Va2nfRg"
 }

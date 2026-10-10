@@ -32,7 +32,6 @@
           "selfTargetAlways": false,
           "dontApply": true,
           "stackable": "noneName",
-          "showIcon": false,
           "durationExpression": "",
           "macroRepeat": "none"
         },
@@ -53,10 +52,9 @@
       },
       "_stats": {
         "coreVersion": "14.364",
-        "systemId": null,
-        "systemVersion": null
+        "systemId": "dnd5e",
+        "systemVersion": "6.0.6"
       },
-      "start": null,
       "showIcon": 1,
       "folder": null,
       "sort": 0,
@@ -91,7 +89,6 @@
           "selfTargetAlways": false,
           "dontApply": true,
           "stackable": "noneName",
-          "showIcon": false,
           "durationExpression": "",
           "macroRepeat": "none"
         },
@@ -109,10 +106,9 @@
       },
       "_stats": {
         "coreVersion": "14.364",
-        "systemId": null,
-        "systemVersion": null
+        "systemId": "dnd5e",
+        "systemVersion": "6.0.6"
       },
-      "start": null,
       "showIcon": 1,
       "folder": null,
       "sort": 0,
@@ -285,9 +281,9 @@
   "img": "icons/magic/control/hypnosis-mesmerism-eye.webp",
   "folder": "SorcAberrantMnd1",
   "_stats": {
-    "coreVersion": "14.364",
-    "systemId": null,
-    "systemVersion": null
+    "coreVersion": "14.369",
+    "systemId": "dnd5e",
+    "systemVersion": "6.0.6"
   },
   "_key": "!items!0EhMm1y7BLjw3h7w"
 }

@@ -13,9 +13,13 @@
         "changes": [
           {
             "key": "flags.midi-qol.OverTime",
-            "value": "turn=end,label=Nature's Wrath (End of Turn),allowIncapacitated=true,rollType=save,saveAbility=str|dex,saveDC=$activity.dc,saveDamage=nodamage,saveCount=1,rollMode=publicroll,",
+            "value": "turn=end,label=Nature's Wrath (End of Turn),allowIncapacitated=true,rollType=save,saveAbility=str|dex,saveDC=$activity.dc,saveDamage=nodamage,saveCount=1,rollMode=public,",
             "priority": 20,
-            "type": "custom"
+            "type": "custom",
+            "phase": "initial",
+            "_id": "fGeS4OLNaTDWMXb8",
+            "conditions": "{}",
+            "replacement": ""
           }
         ]
       },
@@ -39,7 +43,6 @@
           "selfTargetAlways": false,
           "dontApply": false,
           "stackable": "noneName",
-          "showIcon": false,
           "durationExpression": "",
           "macroRepeat": "none",
           "specialDuration": []
@@ -54,13 +57,12 @@
           ]
         }
       },
-      "start": null,
       "showIcon": 1,
       "folder": null,
       "_stats": {
-        "coreVersion": "14.364",
+        "coreVersion": "14.369",
         "systemId": "dnd5e",
-        "systemVersion": "5.3.3"
+        "systemVersion": "6.0.6"
       },
       "_key": "!items.effects!njIch8l9HhabFOUY.DadAFOrwuQzfQghg"
     }
@@ -284,9 +286,9 @@
   "folder": "JQjWar8Wjz4uGhjI",
   "_id": "njIch8l9HhabFOUY",
   "_stats": {
-    "coreVersion": "14.364",
+    "coreVersion": "14.369",
     "systemId": "dnd5e",
-    "systemVersion": "5.3.3"
+    "systemVersion": "6.0.6"
   },
   "_key": "!items!njIch8l9HhabFOUY"
 }

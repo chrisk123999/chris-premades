@@ -4,9 +4,9 @@
   "effects": [],
   "system": {
     "activities": {
-      "castFiendishVig": {
+      "castFiendishVigr": {
         "type": "cast",
-        "_id": "castFiendishVig",
+        "_id": "castFiendishVigr",
         "img": "",
         "sort": 0,
         "activation": {
@@ -217,9 +217,9 @@
   "folder": "2bb147f7e222b3d4",
   "_id": "pPTL3ZkTPUDpVM9z",
   "_stats": {
-    "coreVersion": "14.364",
-    "systemId": null,
-    "systemVersion": null
+    "coreVersion": "14.369",
+    "systemId": "dnd5e",
+    "systemVersion": "6.0.6"
   },
   "_key": "!items!pPTL3ZkTPUDpVM9z"
 }

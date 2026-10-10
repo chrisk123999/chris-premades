@@ -194,13 +194,20 @@
       "subtype": ""
     }
   },
-  "flags": {},
+  "flags": {
+    "cat": {
+      "automation": {
+        "source": "chris-premades",
+        "version": "2.1.0"
+      }
+    }
+  },
   "img": "icons/equipment/finger/ring-winged-gold-blue.webp",
   "folder": "tJ727NhyyBNb6ZNf",
   "_stats": {
-    "coreVersion": "14.364",
+    "coreVersion": "14.369",
     "systemId": "dnd5e",
-    "systemVersion": "5.3.3"
+    "systemVersion": "6.0.6"
   },
   "_id": "afI1mFqFi4wr6Iep",
   "_key": "!items!afI1mFqFi4wr6Iep"

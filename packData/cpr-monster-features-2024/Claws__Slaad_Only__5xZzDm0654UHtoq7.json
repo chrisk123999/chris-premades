@@ -185,7 +185,6 @@
           "postRemoveConditionText": ""
         },
         "otherActivityAsParentType": true,
-        "otherActivityUuid": "",
         "attackRollPerTarget": "default",
         "fumbleThreshold": 1
       }
@@ -211,14 +210,14 @@
           "disableCondition": "",
           "disableIncapacitated": false,
           "stackable": "noneName",
-          "showIcon": false,
           "durationExpression": "",
           "macroRepeat": "none",
           "specialDuration": [],
           "enableCondition": "",
           "selfTarget": false,
           "selfTargetAlways": false,
-          "dontApply": false
+          "dontApply": false,
+          "expiryMode": "delete"
         }
       },
       "img": "icons/commodities/claws/claws-white.webp",
@@ -230,7 +229,11 @@
             "key": "system.traits.di.value",
             "value": "healing",
             "priority": 20,
-            "type": "add"
+            "type": "add",
+            "phase": "initial",
+            "_id": "AnAsHGmdE8ItSu00",
+            "conditions": "{}",
+            "replacement": ""
           }
         ]
       },
@@ -239,13 +242,12 @@
       "transfer": false,
       "statuses": [],
       "sort": 0,
-      "start": null,
       "showIcon": 1,
       "folder": null,
       "_stats": {
-        "coreVersion": "14.364",
-        "systemId": null,
-        "systemVersion": null
+        "coreVersion": "14.369",
+        "systemId": "dnd5e",
+        "systemVersion": "6.0.6"
       },
       "_key": "!items.effects!5xZzDm0654UHtoq7.jTSlsy7Ghgvfrg9J"
     }
@@ -295,16 +297,16 @@
     "cat": {
       "automation": {
         "source": "chris-premades",
-        "version": "2.0.0"
+        "version": "2.1.0"
       }
     }
   },
   "folder": null,
   "_id": "5xZzDm0654UHtoq7",
   "_stats": {
-    "coreVersion": "14.364",
-    "systemId": null,
-    "systemVersion": null
+    "coreVersion": "14.369",
+    "systemId": "dnd5e",
+    "systemVersion": "6.0.6"
   },
   "_key": "!items!5xZzDm0654UHtoq7"
 }

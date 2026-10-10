@@ -18,13 +18,13 @@ async function use({workflow}) {
         identifier: 'bladesong',
         changes: [
             {key: 'system.attributes.ac.bonus', type: 'add', value: bonus, priority: 20},
-            {key: 'system.attributes.movement.walk', type: 'add', value: '+10', priority: 20},
+            {key: 'system.attributes.movement.speeds.walk', type: 'add', value: '+10', priority: 20},
             {key: 'flags.midi-qol.advantage.skill.acr', type: 'custom', value: '1', priority: 20},
-            {key: 'system.attributes.concentration.bonuses.save', type: 'add', value: bonus, priority: 20}
+            {key: 'system.attributes.concentration.roll.bonus', type: 'add', value: bonus, priority: 20}
         ]
     });
     if (actorUtils.getItemByIdentifier(workflow.actor, 'song-of-victory')) {
-        effectData.system.changes.push({key: 'system.bonuses.mwak.damage', type: 'add', value: bonus, priority: 20});
+        effectData.system.changes.push({key: 'system.rolls.damage.mwak.bonus', type: 'add', value: bonus, priority: 20});
     }
     const macros = [];
     if (actorUtils.getItemByIdentifier(workflow.actor, 'song-of-defense')) {
@@ -34,7 +34,7 @@ async function use({workflow}) {
 }
 export const bladesong = {
     name: 'Bladesong',
-    version: '2.0.0',
+    version: '2.1.0',
     rules: '2014',
     roll: [
         {

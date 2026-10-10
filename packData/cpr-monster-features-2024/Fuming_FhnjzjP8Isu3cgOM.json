@@ -157,10 +157,14 @@
       "system": {
         "changes": [
           {
-            "key": "flags.midi-qol.advantage.attack.all",
+            "key": "system.rolls.attack.mode",
             "value": 1,
             "priority": 20,
-            "type": "custom"
+            "type": "add",
+            "phase": "initial",
+            "_id": "6o05bGWATp5p8RWj",
+            "conditions": "{}",
+            "replacement": ""
           }
         ]
       },
@@ -188,15 +192,17 @@
           "specialDuration": [
             "madeAttack"
           ]
+        },
+        "dae": {
+          "expiryMode": "delete"
         }
       },
       "showIcon": 2,
-      "start": null,
       "folder": null,
       "_stats": {
-        "coreVersion": "14.364",
-        "systemId": null,
-        "systemVersion": null
+        "coreVersion": "14.369",
+        "systemId": "dnd5e",
+        "systemVersion": "6.0.6"
       },
       "_key": "!items.effects!FhnjzjP8Isu3cgOM.9j8yZYQqQOpBvSCv"
     }
@@ -243,16 +249,16 @@
     "cat": {
       "automation": {
         "source": "chris-premades",
-        "version": "2.0.0"
+        "version": "2.1.0"
       }
     }
   },
   "folder": null,
   "_id": "FhnjzjP8Isu3cgOM",
   "_stats": {
-    "coreVersion": "14.364",
-    "systemId": null,
-    "systemVersion": null
+    "coreVersion": "14.369",
+    "systemId": "dnd5e",
+    "systemVersion": "6.0.6"
   },
   "_key": "!items!FhnjzjP8Isu3cgOM"
 }

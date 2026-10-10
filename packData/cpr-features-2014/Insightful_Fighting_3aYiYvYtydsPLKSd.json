@@ -273,7 +273,6 @@
           "selfTargetAlways": false,
           "dontApply": false,
           "stackable": "noneName",
-          "showIcon": false,
           "durationExpression": "",
           "macroRepeat": "none",
           "specialDuration": []
@@ -296,13 +295,12 @@
       "transfer": false,
       "statuses": [],
       "sort": 0,
-      "start": null,
       "showIcon": 1,
       "folder": null,
       "_stats": {
         "coreVersion": "14.364",
         "systemId": "dnd5e",
-        "systemVersion": "5.3.3"
+        "systemVersion": "6.0.6"
       },
       "_key": "!items.effects!3aYiYvYtydsPLKSd.InFiTargetEffec1"
     }
@@ -311,9 +309,9 @@
   "folder": "cZ9H14zCRzQkMq34",
   "_id": "3aYiYvYtydsPLKSd",
   "_stats": {
-    "coreVersion": "14.364",
+    "coreVersion": "14.369",
     "systemId": "dnd5e",
-    "systemVersion": "5.3.3"
+    "systemVersion": "6.0.6"
   },
   "_key": "!items!3aYiYvYtydsPLKSd"
 }

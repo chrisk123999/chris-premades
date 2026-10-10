@@ -108,7 +108,7 @@
           "visible": false
         },
         "sort": 0,
-        "useConditionText": "",
+        "useConditionText": "reaction == 'isDamaged'",
         "forceDialog": false,
         "effectConditionText": "",
         "midiAutomationOnly": false,
@@ -226,9 +226,9 @@
   "folder": "25d631e9ae839bdd",
   "_id": "Z0QwtbldPBb3iDU9",
   "_stats": {
-    "coreVersion": "14.364",
-    "systemId": null,
-    "systemVersion": null
+    "coreVersion": "14.369",
+    "systemId": "dnd5e",
+    "systemVersion": "6.0.6"
   },
   "_key": "!items!Z0QwtbldPBb3iDU9"
 }

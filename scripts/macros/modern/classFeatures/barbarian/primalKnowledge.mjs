@@ -18,7 +18,7 @@ async function skill({actor, config, document: rageEffect}) {
     if (abil === ability) return;
     const original = actor.system.abilities[abil];
     const replacement = actor.system.abilities[ability];
-    if (original.mod + original.checkBonus >= replacement.mod + replacement.checkBonus) return;
+    if (original.mod + original.check.bonus >= replacement.mod + replacement.check.bonus) return;
     await workflowUtils.completeItemUse(item);
     config.ability = ability;
 }

@@ -34,19 +34,22 @@
             "key": "flags.dnd5e.reliableTalent",
             "value": true,
             "priority": 20,
-            "type": "override"
+            "type": "override",
+            "phase": "initial",
+            "_id": "PVz5q4EcaCmv2n67",
+            "conditions": "{}",
+            "replacement": ""
           }
         ]
       },
       "origin": null,
       "sort": 0,
-      "start": null,
       "showIcon": 1,
       "folder": null,
       "_stats": {
-        "coreVersion": "14.364",
+        "coreVersion": "14.369",
         "systemId": "dnd5e",
-        "systemVersion": "5.3.3"
+        "systemVersion": "6.0.6"
       },
       "_key": "!items.effects!oJINosdd6w2qMVk6.TL3canJkR60dtCxr"
     }
@@ -110,9 +113,9 @@
   "folder": "oeHJD6UoRsmQIVlo",
   "_id": "oJINosdd6w2qMVk6",
   "_stats": {
-    "coreVersion": "14.364",
+    "coreVersion": "14.369",
     "systemId": "dnd5e",
-    "systemVersion": "5.3.3"
+    "systemVersion": "6.0.6"
   },
   "_key": "!items!oJINosdd6w2qMVk6"
 }

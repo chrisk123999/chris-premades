@@ -46,7 +46,6 @@
           "disableCondition": "",
           "disableIncapacitated": false,
           "stackable": "noneName",
-          "showIcon": false,
           "durationExpression": "",
           "macroRepeat": "none",
           "specialDuration": []
@@ -64,7 +63,11 @@
             "key": "system.attributes.senses.ranges.devilsSight",
             "value": 120,
             "priority": 20,
-            "type": "upgrade"
+            "type": "upgrade",
+            "phase": "initial",
+            "_id": "slmB6O50KwMhcVGa",
+            "conditions": "{}",
+            "replacement": ""
           }
         ]
       },
@@ -73,13 +76,12 @@
       "transfer": true,
       "statuses": [],
       "sort": 0,
-      "start": null,
       "showIcon": 1,
       "folder": null,
       "_stats": {
-        "coreVersion": "14.364",
-        "systemId": null,
-        "systemVersion": null
+        "coreVersion": "14.369",
+        "systemId": "dnd5e",
+        "systemVersion": "6.0.6"
       },
       "_key": "!items.effects!WnSK5FEZZczufpLa.rUEjGG86zp4AAKkz"
     }
@@ -127,9 +129,9 @@
   "folder": "7695c61f54bd3255",
   "_id": "WnSK5FEZZczufpLa",
   "_stats": {
-    "coreVersion": "14.364",
-    "systemId": null,
-    "systemVersion": null
+    "coreVersion": "14.369",
+    "systemId": "dnd5e",
+    "systemVersion": "6.0.6"
   },
   "_key": "!items!WnSK5FEZZczufpLa"
 }

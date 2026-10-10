@@ -8,13 +8,19 @@
       "system": {
         "changes": [
           {
-            "key": "system.bonuses.rwak.attack",
+            "key": "system.rolls.attack.rwak.bonus",
             "value": 2,
             "type": "add",
             "priority": 18,
-            "phase": "initial"
+            "phase": "initial",
+            "_id": "a1SCO90KY6dZrxXt",
+            "conditions": "{}",
+            "replacement": ""
           }
-        ]
+        ],
+        "origin": {
+          "item": "Compendium.chris-premades.CPRFeatures2024.Item.WgcDnzo76MkDTaHg"
+        }
       },
       "duration": {
         "value": null,
@@ -53,14 +59,13 @@
       "img": "icons/weapons/bows/longbow-recurve-leather-red.webp",
       "_id": "0hMwAFZ6nbS6Aozy",
       "type": "base",
-      "start": null,
-      "origin": "Compendium.chris-premades.CPRFeatures2024.Item.WgcDnzo76MkDTaHg",
+      "origin": null,
       "folder": null,
       "sort": 0,
       "_stats": {
-        "coreVersion": "14.364",
-        "systemId": null,
-        "systemVersion": null
+        "coreVersion": "14.369",
+        "systemId": "dnd5e",
+        "systemVersion": "6.0.6"
       },
       "_key": "!items.effects!WgcDnzo76MkDTaHg.0hMwAFZ6nbS6Aozy"
     }
@@ -129,9 +134,9 @@
   "folder": "tBfYZGTEVaaUDePZ",
   "_id": "WgcDnzo76MkDTaHg",
   "_stats": {
-    "coreVersion": "14.364",
-    "systemId": null,
-    "systemVersion": null
+    "coreVersion": "14.369",
+    "systemId": "dnd5e",
+    "systemVersion": "6.0.6"
   },
   "_key": "!items!WgcDnzo76MkDTaHg"
 }

@@ -15,13 +15,21 @@
             "key": "name",
             "value": "{} (Pact of the Blade)",
             "priority": 20,
-            "type": "override"
+            "type": "override",
+            "phase": "initial",
+            "_id": "00QaqllggySNh65i",
+            "conditions": "{}",
+            "replacement": ""
           },
           {
             "key": "system.proficient",
             "value": 1,
             "priority": 20,
-            "type": "override"
+            "type": "override",
+            "phase": "initial",
+            "_id": "vsrg0xfG9ElyLDRg",
+            "conditions": "{}",
+            "replacement": ""
           }
         ]
       },
@@ -46,7 +54,6 @@
           "enableCondition": "",
           "disableCondition": "",
           "stackable": "noneName",
-          "showIcon": false,
           "disableIncapacitated": false,
           "selfTarget": false,
           "selfTargetAlways": false,
@@ -76,13 +83,12 @@
           }
         }
       },
-      "start": null,
       "showIcon": 1,
       "folder": null,
       "_stats": {
-        "coreVersion": "14.364",
-        "systemId": null,
-        "systemVersion": null
+        "coreVersion": "14.369",
+        "systemId": "dnd5e",
+        "systemVersion": "6.0.6"
       },
       "_key": "!items.effects!GyEPVE16cUlTZLUI.zPDyKi5bKOD2esI8"
     },
@@ -117,7 +123,6 @@
           "enableCondition": "",
           "disableCondition": "",
           "stackable": "noneName",
-          "showIcon": true,
           "disableIncapacitated": false,
           "selfTarget": false,
           "selfTargetAlways": false,
@@ -133,13 +138,12 @@
           "identifier": "pactOfTheBladeSummonedWeapon"
         }
       },
-      "start": null,
-      "showIcon": 1,
+      "showIcon": 2,
       "folder": null,
       "_stats": {
         "coreVersion": "14.364",
-        "systemId": null,
-        "systemVersion": null
+        "systemId": "dnd5e",
+        "systemVersion": "6.0.6"
       },
       "_key": "!items.effects!GyEPVE16cUlTZLUI.abmetmTMaKHOpsuk"
     }
@@ -429,9 +433,9 @@
   "folder": "2bb147f7e222b3d4",
   "_id": "GyEPVE16cUlTZLUI",
   "_stats": {
-    "coreVersion": "14.364",
-    "systemId": null,
-    "systemVersion": null
+    "coreVersion": "14.369",
+    "systemId": "dnd5e",
+    "systemVersion": "6.0.6"
   },
   "_key": "!items!GyEPVE16cUlTZLUI"
 }

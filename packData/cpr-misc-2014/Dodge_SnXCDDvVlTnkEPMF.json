@@ -180,7 +180,6 @@
           "selfTargetAlways": false,
           "dontApply": false,
           "stackable": "noneName",
-          "showIcon": false,
           "durationExpression": "",
           "macroRepeat": "none",
           "expiryMode": "delete",
@@ -213,14 +212,10 @@
             "type": "custom",
             "value": "canSee(tokenUuid, targetUuid)",
             "phase": "initial",
-            "priority": 20
-          },
-          {
-            "key": "flags.midi-qol.advantage.save.dex",
-            "type": "custom",
-            "value": 1,
-            "phase": "initial",
-            "priority": 20
+            "priority": 20,
+            "_id": "nGEzdniQskNuKCDY",
+            "conditions": "{}",
+            "replacement": ""
           }
         ]
       },
@@ -232,12 +227,11 @@
       ],
       "sort": 0,
       "_stats": {
-        "coreVersion": "14.364",
+        "coreVersion": "14.369",
         "systemId": "dnd5e",
-        "systemVersion": "5.3.3"
+        "systemVersion": "6.0.6"
       },
       "showIcon": 2,
-      "start": null,
       "folder": null,
       "_key": "!items.effects!SnXCDDvVlTnkEPMF.V1UlFlIoagB51wyS"
     }
@@ -286,16 +280,16 @@
     "cat": {
       "automation": {
         "source": "chris-premades",
-        "version": "2.0.0"
+        "version": "2.1.0"
       }
     }
   },
   "folder": "2oPvBwuEQWxtcV0t",
   "_id": "SnXCDDvVlTnkEPMF",
   "_stats": {
-    "coreVersion": "14.364",
-    "systemId": null,
-    "systemVersion": null
+    "coreVersion": "14.369",
+    "systemId": "dnd5e",
+    "systemVersion": "6.0.6"
   },
   "_key": "!items!SnXCDDvVlTnkEPMF"
 }

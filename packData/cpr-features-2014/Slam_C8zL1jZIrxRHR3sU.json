@@ -184,7 +184,6 @@
           "rollAs": "target"
         },
         "otherActivityAsParentType": true,
-        "otherActivityUuid": "",
         "attackRollPerTarget": "default",
         "fumbleThreshold": 1,
         "flags": {},
@@ -264,13 +263,19 @@
       "idi": false,
       "idv": false,
       "ida": false
+    },
+    "cat": {
+      "automation": {
+        "source": "chris-premades",
+        "version": "2.1.0"
+      }
     }
   },
   "_id": "C8zL1jZIrxRHR3sU",
   "_stats": {
-    "coreVersion": "14.364",
-    "systemId": null,
-    "systemVersion": null
+    "coreVersion": "14.369",
+    "systemId": "dnd5e",
+    "systemVersion": "6.0.6"
   },
   "_key": "!items!C8zL1jZIrxRHR3sU"
 }

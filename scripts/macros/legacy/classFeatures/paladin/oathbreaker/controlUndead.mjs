@@ -8,7 +8,7 @@ async function early({document, workflow}) {
         name: _loc('CHRISPREMADES.Macros.Legacy.ControlUndead.InvalidTarget'),
         img: constants.tempConditionIcon,
         origin: document.uuid,
-        duration: {turns: 1},
+        duration: {value: 1, units: 'turns'},
         specialDuration: ['endOfWorkflow'],
         changes: [
             {key: 'flags.midi-qol.success.ability.save.all', value: 'true', type: 'override', priority: 120}
