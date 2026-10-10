@@ -96,8 +96,12 @@ export {durableMagic as 'durable-magic'} from './legacy/classFeatures/wizard/war
 // ** Spells
 export {absorbElements as 'absorb-elements'} from './legacy/spells/absorbElements.mjs';
 export {animateObjects as 'animate-objects'} from './legacy/spells/animateObjects.mjs';
+export {boomingBladeMoved as 'booming-blade-moved'} from './legacy/spells/boomingBlade.mjs';
+export {chillTouch as 'chill-touch', chillTouchUndead as 'chill-touch-undead'} from './legacy/spells/chillTouch.mjs';
 export {findGreaterSteed as 'find-greater-steed', findSteed as 'find-steed', findSteedActive as 'find-steed-active', findSteedDismiss as 'find-steed-dismiss'} from './legacy/spells/findSteed.mjs';
 export {huntersMark as 'hunters-mark', huntersMarkAttack as 'hunters-mark-attack'} from './legacy/spells/huntersMark.mjs';
+export {lightningLure as 'lightning-lure'} from './legacy/spells/lightningLure.mjs';
+export {shockingGrasp as 'shocking-grasp'} from './legacy/spells/shockingGrasp.mjs';
 export {summonFey as 'summon-fey', summonFeyFeyStep as 'summon-fey-fey-step'} from './legacy/spells/summonFey.mjs';
 // ** Equipment
 export {amuletOfTheLycanthrope as 'amulet-of-the-lycanthrope', amuletOfTheLycanthropeEffect as 'amulet-of-the-lycanthrope-effect'} from './legacy/equipment/amuletOfTheLycanthrope.mjs';

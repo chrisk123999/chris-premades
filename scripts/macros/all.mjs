@@ -45,3 +45,4 @@ export {darkness as 'darkness'} from './all/spells/darkness.mjs';
 export {findFamiliar as 'find-familiar', findFamiliarPocket as 'find-familiar-pocket', findFamiliarTouch as 'find-familiar-touch', findFamiliarTouchEffect as 'find-familiar-touch-effect'} from './all/spells/findFamiliar.mjs';
 export {hex, hexAttack as 'hex-attack'} from './all/spells/hex.mjs';
 export {protectionFromEvilAndGood as 'protection-from-evil-and-good'} from './all/spells/protectionFromEvilAndGood.mjs';
+export {tollTheDead as 'toll-the-dead'} from './all/spells/tollTheDead.mjs';

@@ -46,8 +46,8 @@ async function cast({document: item, workflow}) {
         changes: [{key: 'flags.midi-qol.rangeOverride.attack.all', type: 'custom', value: 1, priority: 20}],
         macros: [{type: 'roll', macros: [{source: 'chris-premades', rules: '2014', identifier: 'manifest-mind-cast'}]}]
     });
-    const [casterEffect] = await effectUtils.createEffects(workflow.actor, [effectData], {specialDuration: ['castSpell']});
-    const [mindEffect] = await effectUtils.createEffects(mindToken.actor, [effectData], {specialDuration: ['castSpell']});
+    const [casterEffect] = await effectUtils.createEffects(workflow.actor, [effectData], {specialDuration: ['1Spell']});
+    const [mindEffect] = await effectUtils.createEffects(mindToken.actor, [effectData], {specialDuration: ['1Spell']});
     if (casterEffect && mindEffect) await documentUtils.makeDependent(casterEffect, [mindEffect]);
 }
 async function move({document: item, workflow}) {

@@ -105,7 +105,9 @@
           "durationExpression": "",
           "macroRepeat": "none",
           "disableIncapacitated": false,
-          "specialDuration": [],
+          "specialDuration": [
+            "zeroHP"
+          ],
           "enableCondition": "",
           "selfTarget": false,
           "selfTargetAlways": false,
@@ -116,8 +118,7 @@
         },
         "cat": {
           "specialDuration": [
-            "incapacitated",
-            "zeroHP"
+            "incapacitated"
           ]
         }
       },
@@ -905,7 +906,7 @@
     "cat": {
       "automation": {
         "source": "chris-premades",
-        "version": "2.0.3",
+        "version": "2.1.2",
         "sourceType": "class:cleric"
       }
     }

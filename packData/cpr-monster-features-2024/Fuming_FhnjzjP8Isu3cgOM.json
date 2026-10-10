@@ -188,13 +188,11 @@
         "core": {
           "overlay": false
         },
-        "cat": {
-          "specialDuration": [
-            "madeAttack"
-          ]
-        },
         "dae": {
-          "expiryMode": "delete"
+          "expiryMode": "delete",
+          "specialDuration": [
+            "1Attack"
+          ]
         }
       },
       "showIcon": 2,
@@ -249,7 +247,7 @@
     "cat": {
       "automation": {
         "source": "chris-premades",
-        "version": "2.1.0"
+        "version": "2.1.2"
       }
     }
   },

@@ -1,3 +1,13 @@
+# 2.1.2 Pre-Release:
+## Update Notes:
+- Automated cantrips:
+  - 2014: Blade Ward, Booming Blade, Chill Touch, Green-Flame Blade, Lightning Lure, Mind Sliver, Sapping Sting, Shocking Grasp, Thorn Whip and Toll the Dead.
+  - 2024: Acid Splash, Blade Ward, Chill Touch, Dissolution, Guidance, Mind Sliver, Resistance, Shocking Grasp, Thorn Whip, Toll the Dead and True Strike.
+- New generic macros: `bladeSpell`, `pullOnFail`, `pullOnHit` and `spellAnimation`.
+- New generic animations: Beam Spell, Buff Spell, Burst Spell and Touch Spell.
+- New animations: Booming Blade, Green-Flame Blade and True Strike.
+- Effects that end on an attack, a spell cast or reaching 0 HP use midi-qol's special durations, following CAT 0.1.2. Items already in a world need their automation reapplied.
+
 # 2.1.1 Pre-Release:
 ## Update Notes:
 - Requires dnd5e 6.0 or later, CAT 0.1.0, midi-qol 14.6.0 or later, and DAE 14.6.0 or later.

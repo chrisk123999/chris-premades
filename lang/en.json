@@ -3,15 +3,32 @@
         "Animations": {
             "AdvancedMeleeAttack": {
                 "AttackDelay": "Attack Delay",
+                "AttackDelayHint": "Milliseconds to wait before attacking the next target.",
                 "EnableBlood": "Enable Blood",
+                "EnableBloodHint": "Splash blood off the target with each attack.",
                 "EnableReturn": "Enable Return Animation",
+                "EnableReturnHint": "Show a thrown weapon flying back to the attacker. Only bones, chakrams, greatswords, hammers and shields have one.",
                 "EnableShake": "Enable Shake",
+                "EnableShakeHint": "Shake the target's token with each attack.",
                 "EnableSwitchDistance": "Allow Thrown",
+                "EnableSwitchDistanceHint": "Throw the weapon at targets beyond melee reach instead of swinging it.",
                 "ImpactFile": "Impact File",
+                "ImpactFileHint": "Image or animation played on the target at the moment of impact.",
                 "Name": "Advanced Melee Attack",
-                "TrailColor": "Trail Color"
+                "SoundDelayHint": "Milliseconds to wait before the throw sound plays.",
+                "SoundMeleeHint": "Audio file played with each swing.",
+                "SoundRangedHint": "Audio file played with each throw.",
+                "TrailColor": "Trail Color",
+                "TrailColorHint": "Color of the streak that follows the weapon swing. None hides the streak.",
+                "WeaponHint": "Weapon sprite swung or thrown at the target."
             },
             "AirSummon": "Air Summon",
+            "BoomingBlade": "Booming Blade",
+            "BoomingBladeColorHint": "Color of the static crackling around the sheathed creature while the spell lasts. Colors beyond blue need JB2A Patreon.",
+            "CastBeam": "Beam Spell",
+            "CastBuff": "Buff Spell",
+            "CastBurst": "Burst Spell",
+            "CastTouch": "Touch Spell",
             "CelestialSummon": "Celestial Summon",
             "CunningActionDash": {
                 "Name": "Cunning Action Dash"
@@ -20,20 +37,28 @@
                 "Name": "Cunning Action Disengage"
             },
             "Darkness": {
-                "Name": "Darkness"
+                "Name": "Darkness",
+                "OpacityHint": "How solid the black cloud looks, from 0 for invisible to 1 for fully opaque.",
+                "ScaleHint": "Size of the black cloud relative to the darkness area."
             },
             "Default": "Default",
             "DefaultSummon": "Default Summon",
             "DivineStrike": "Divine Strike",
             "EarthSummon": "Earth Summon",
             "EldritchBlast": "Eldritch Blast",
+            "EldritchBlastColorHint": "Color of each beam. Random picks a color per beam; Cycle steps through the colors in turn. Colors beyond purple need JB2A Patreon.",
             "FiendSummon": "Fiend Summon",
             "FireSummon": "Fire Summon",
             "FlurryOfBlows": "Flurry of Blows", 
             "FutureSummon": "Future Summon",
+            "GreenFlameBlade": "Green-Flame Blade",
+            "GreenFlameBladeColorHint": "Color of the flames on the target and the fire bolt that leaps to the second creature. Colors beyond orange need JB2A Patreon.",
+            "Guidance": "Guidance",
             "Hide": "Hide",
             "MagicMissile": "Magic Missile",
+            "MagicMissileColorHint": "Color of each dart. Random picks a color per dart; Cycle steps through the colors in turn. Colors beyond purple need JB2A Patreon.",
             "MistyStep": "Misty Step",
+            "MistyStepColorHint": "Color of the mist that swallows the token and the mist it steps out of. Colors beyond blue need JB2A Patreon.",
             "MoonFrenzy": "Moon Frenzy",
             "NatureSummon": "Nature Summon",
             "Pounce": "Pounce",
@@ -43,20 +68,59 @@
                 "Saiyan": "Saiyan"
             },
             "ScorchingRay": "Scorching Ray",
+            "ScorchingRayColorHint": "Color of each ray. Colors beyond orange need JB2A Patreon.",
+            "ScorchingRayTypeHint": "Simple: a plain fiery ray per attack; Complex: an evocation circle under the caster and rays trailing sparks.",
             "SelectLocations": {
-                "DisplayHint": "Display Hint",
+                "DarkHint": "Use the dark particle burst at each placed waypoint.",
+                "DisplayHint": "Show Instructions",
+                "DisplayHintHint": "Show a notice explaining how to place waypoints when selection starts.",
                 "Message": "Right click to add waypoints. Left click to finish.",
                 "Name": "Select Location",
-                "SpendMovement": "Spend Movement"
+                "SpendMovement": "Spend Movement",
+                "SpendMovementHint": "Each waypoint uses up range measured from the previous one; off measures every waypoint from the starting position."
             },
             "ShadowSummon": "Shadow Summon",
             "ShapeChange": "Shape Change",
+            "ShockingGrasp": "Shocking Grasp",
             "Smite": "Smite",
+            "SmiteColorHint": "Color of the divine burst on the target. Colors beyond blue need JB2A Patreon.",
             "SmokeSummon": "Smoke Summon",
             "SneakAttack": {
                 "Name": "Sneak Attack"
             },
+            "SpellParts": {
+                "Aura": "Persistent Aura",
+                "BuffColorHint": "Color of the cast and buff glow. Colors beyond the free set need JB2A Patreon.",
+                "Cast": "Caster Flourish",
+                "CastHint": "Play a casting flourish on the caster before the effect.",
+                "ColorHint": "Auto picks a color from the spell's damage type. Colors beyond the free set need JB2A Patreon.",
+                "CopySlide": "Slide a Copy",
+                "CopySlideHint": "Hide a pulled token and slide a copy of it to its new position. Off moves the token itself.",
+                "Detailed": "Detailed Animation",
+                "DetailedHint": "Lightning style only. Use the full sequence with arcs from the caster; off plays a simpler impact on the target.",
+                "PersistentHint": "Keep a looping effect on the target while the effect lasts; it fades out when the effect ends.",
+                "Shake": "Target Shake",
+                "ShakeHint": "Shake the target's token on a hit or failed save.",
+                "Shield": "Persistent Shield",
+                "Style": "Style",
+                "StyleBeamHint": "Strands: crackling energy strands from caster to target; Projectile: a single bolt fired at the target; Lightning: a discharge that follows the target, bursting at the caster if it ends adjacent. Blue lightning uses Animated Spell Effects: Cartoon when active.",
+                "StyleBurstHint": "Bell: a tolling bell; Impact: a single burst; Splash: a liquid splash; Drain: strands drawn out of the target.",
+                "Styles": {
+                    "Bell": "Bell",
+                    "Drain": "Drain",
+                    "Impact": "Impact",
+                    "Lightning": "Lightning",
+                    "Projectile": "Projectile",
+                    "Splash": "Splash",
+                    "Strands": "Strands",
+                    "Strike": "Strike"
+                },
+                "StyleTouchHint": "Lightning: electric arcs from the caster and static on the target; Strike: a glowing magical fist strike."
+            },
             "StepOfTheWind": "Step of the Wind",
+            "SummonSoundHint": "Audio file played as the summon appears.",
+            "TollTheDead": "Toll the Dead",
+            "TrueStrike": "True Strike",
             "WaterSummon": "Water Summon"
         },
         "Config": {
@@ -99,13 +163,16 @@
             "Clear": "Clear saved choices each combat",
             "Color": "Color",
             "Colors": {
+                "Auto": "Auto (Damage Type)",
                 "Blue": "Blue",
+                "Blue02": "Blue 2",
                 "Cycle": "Cycle",
                 "DarkGreen": "Dark Green",
                 "DarkPink": "Dark Pink",
                 "DarkPurple": "Dark Purple",
                 "DarkRed": "Dark Red",
                 "Green": "Green",
+                "Green02": "Green 2",
                 "Grey": "Grey",
                 "LightBlue": "Light Blue",
                 "LightGreen": "Light Green",
@@ -131,7 +198,7 @@
             "DamageScaleIdentifier": "Damage Scale Identifier",
             "DamageType": "Damage Type",
             "DamageTypes": "Damage Types",
-            "Dark": "Dark",
+            "Dark": "Dark Waypoint Particles",
             "DarknessAnimation": "Real Darkness Light Effect",
             "DarknessAnimationHint": "Light effect for the darkness created when Use Real Darkness is on. Not used by the animation below.",
             "DashAnimation": "Dash Animation",
@@ -177,6 +244,7 @@
             "MaxSpellLevel": "Max Spell Level",
             "MonsterName": "Monster Name",
             "MoonColor": "Red Moon",
+            "MoonColorHint": "Tint the moon, moonbeam and energy rings red; off leaves them white.",
             "Multiplier": "Multiplier",
             "Name": "Name",
             "None": "None",
@@ -213,6 +281,7 @@
             "SkipDeadAndUnconscious": "Skip Dead And Unconscious",
             "SlamDescription": "Description for Slam Attack",
             "Sound": "Sound",
+            "SoundHint": "Audio file played with each projectile.",
             "SoundDelay": "Sound Delay",
             "SoundMelee": "Melee Sound",
             "SoundRanged": "Ranged Sound",
@@ -230,7 +299,8 @@
             "Target": "Target",
             "Time": "Time",
             "TimeFormat": "Time Format",
-            "TintMap": "Tint Map",
+            "TintMap": "Tint Scene",
+            "TintMapHint": "Pulse a red tint over the scene background during the transformation.",
             "Token": "Token",
             "TokenAnimation": "Token Animation",
             "TokenAnimationScale": "Token Animation Scale",
@@ -400,6 +470,35 @@
                     "WorkflowPropertyHint": "Only offer this option when an earlier bonus has set this workflow property."
                 },
                 "BladeSpell": {
+                    "AbilityHint": "Ability used for the weapon's attack and damage rolls. Spellcasting uses this spell's spellcasting ability.",
+                    "ActivityIdHint": "Only run when this activity is used. Leave blank to run on any activity.",
+                    "ActivityNearby": "Nearby Activity",
+                    "ActivityNearbyHint": "Activity used against creatures near the hit target. The activity's target count limits how many can be chosen.",
+                    "ActivityNearbyRange": "Nearby Activity Range",
+                    "ActivityNearbyRangeHint": "Distance from the hit target in which creatures can be chosen for the nearby activity.",
+                    "ActivityOnHit": "On-Hit Activity",
+                    "ActivityOnHitHint": "Activity used against the target when the weapon attack hits.",
+                    "BonusDamageDieDenominationHint": "Die size of the extra damage dice added to the weapon attack. 0 adds none.",
+                    "BonusDamageDieFormula": "Extra Dice Formula",
+                    "BonusDamageDieFormulaHint": "Formula for the number of extra damage dice. Leave blank to use cantrip scaling.",
+                    "BonusDamageTypes": "Extra Damage Types",
+                    "BonusDamageTypesHint": "Damage types of the extra damage dice.",
+                    "DamageTypesHint": "Damage types that can replace the weapon's damage type.",
+                    "EffectNearby": "Nearby Effect",
+                    "EffectNearbyHint": "Effect applied to creatures near the hit target.",
+                    "EffectNearbyRange": "Nearby Effect Range",
+                    "EffectNearbyRangeHint": "Distance from the hit target in which creatures can receive the nearby effect.",
+                    "EffectNearbyTargets": "Nearby Effect Targets",
+                    "EffectNearbyTargetsHint": "Maximum number of creatures that receive the nearby effect.",
+                    "MeleeOnly": "Melee Weapons Only",
+                    "MeleeOnlyHint": "Only offer equipped melee weapons.",
+                    "NoWeapons": "No valid weapon equipped.",
+                    "OnHitEffect": "On-Hit Effect",
+                    "OnHitEffectHint": "Effect applied to the target when the weapon attack hits.",
+                    "OptionalDamageReplacement": "Optional Damage Replacement",
+                    "OptionalDamageReplacementHint": "Let the caster keep the weapon's normal damage type.",
+                    "ProficientOnly": "Proficient Weapons Only",
+                    "ProficientOnlyHint": "Only offer weapons the caster is proficient with.",
                     "ReplaceDamage": "Replace damage?",
                     "SelectNearbyTarget": "Select targets.",
                     "SelectNearbyTargets": "Select targets.",
@@ -516,6 +615,16 @@
                     "Prompt": "Choose a skill or tool for {name}.",
                     "Traits": "Choices",
                     "TraitsHint": "Offer skills, tools, or both."
+                },
+                "PushOnFail": {
+                    "AnimationHint": "Animation played from the user to each target. The movement runs inside it.",
+                    "Choose": "Choose Distance",
+                    "ChooseHint": "Prompt for the distance in 5 ft steps up to the maximum. When off, the target moves the full distance.",
+                    "DistanceHint": "Maximum distance moved, in feet. Accepts a formula.",
+                    "MaxSizeHint": "Targets larger than this size are not moved.",
+                    "Prompt": "How far does {target} move?",
+                    "StopAdjacent": "Stop Adjacent",
+                    "StopAdjacentHint": "A pull never moves the target closer than adjacent to the user."
                 },
                 "RedirectAttack": {
                     "ActivityHint": "Activity rolled when the attack is redirected. Leave blank to use the item.",
@@ -652,6 +761,9 @@
                 "Bladesong": {
                     "ArmorRestriction": "You can't use Bladesong while wearing medium or heavy armor or wielding a shield.",
                     "EnforceArmorRestriction": "Enforce Armor Restriction"
+                },
+                "BoomingBlade": {
+                    "WillingMove": "Did {actorName} move willingly?"
                 },
                 "ChaosBolt": {
                     "AlwaysBounce": "Always Bounce"
@@ -858,6 +970,10 @@
                 "SculptSpells": {
                     "Select": "Which targets succeed and take no damage? (Max: {max})"
                 },
+                "ShockingGrasp": {
+                    "MetalArmor": "Metal Armor",
+                    "MetalArmorHint": "Base armor types that count as metal. The attack has advantage against a target wearing one of them."
+                },
                 "SongOfDefense": {
                     "ReductionPerLevel": "Damage Reduction Per Spell Slot Level",
                     "Select": "Use your reaction to spend a spell slot to reduce damage?"
@@ -922,6 +1038,13 @@
                 },
                 "GreaterDivineIntervention": {
                     "RestFormula": "Rest Recovery Formula"
+                },
+                "Guidance": {
+                    "Modes": {
+                        "auto": "Automatic",
+                        "never": "Never",
+                        "prompt": "Prompt"
+                    }
                 },
                 "HeightenedFocus": {
                     "Prompt": "Bring an ally with you?",
