@@ -1,4 +1,4 @@
-# 2.1.0 Pre-Release:
+# 2.1.1 Pre-Release:
 ## Update Notes:
 - Requires dnd5e 6.0 or later, CAT 0.1.0, midi-qol 14.6.0 or later, and DAE 14.6.0 or later.
 - Compendiums are migrated to dnd5e 6. Effects use native expiry, roll modes and token keys instead of DAE special durations, midi advantage flags and ATL keys.
