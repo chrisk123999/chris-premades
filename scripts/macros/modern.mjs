@@ -84,9 +84,13 @@ export {fullBlooded as 'full-blooded'} from './modern/classFeatures/wizard/sangr
 // ** Spells
 export {banishingSmite as 'banishing-smite'} from './modern/spells/banishingSmite.mjs';
 export {wiltingSmite as 'wilting-smite'} from './modern/spells/wiltingSmite.mjs';
+export {bladeWard as 'blade-ward'} from './modern/spells/bladeWard.mjs';
 export {chromaticOrb as 'chromatic-orb'} from './modern/spells/chromaticOrb.mjs';
 export {crimsonLash as 'crimson-lash'} from './modern/spells/crimsonLash.mjs';
+export {guidance} from './modern/spells/guidance.mjs';
 export {huntersMark as 'hunters-mark', huntersMarkAttack as 'hunters-mark-attack'} from './modern/spells/huntersMark.mjs';
+export {resistance, resistanceEffect as 'resistance-effect'} from './modern/spells/resistance.mjs';
+export {shockingGrasp as 'shocking-grasp'} from './modern/spells/shockingGrasp.mjs';
 export {summonAberration as 'summon-aberration'} from './modern/spells/summonAberration.mjs';
 export {summonFey as 'summon-fey', summonFeyFeyStep as 'summon-fey-fey-step'} from './modern/spells/summonFey.mjs';
 // ** Features
