@@ -1,0 +1,16 @@
+{
+  "type": "Item",
+  "folder": null,
+  "name": "Summon Items (All Rules)",
+  "color": null,
+  "sorting": "a",
+  "_id": "LMfgYwuo2ZcYqe1b",
+  "description": "",
+  "flags": {},
+  "_stats": {
+    "coreVersion": "14.369",
+    "systemId": "dnd5e",
+    "systemVersion": "6.0.6"
+  },
+  "_key": "!folders!LMfgYwuo2ZcYqe1b"
+}

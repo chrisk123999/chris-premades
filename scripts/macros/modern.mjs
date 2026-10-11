@@ -92,7 +92,7 @@ export {huntersMark as 'hunters-mark', huntersMarkAttack as 'hunters-mark-attack
 export {resistance, resistanceEffect as 'resistance-effect'} from './modern/spells/resistance.mjs';
 export {shockingGrasp as 'shocking-grasp'} from './modern/spells/shockingGrasp.mjs';
 export {summonAberration as 'summon-aberration'} from './modern/spells/summonAberration.mjs';
-export {summonFey as 'summon-fey', summonFeyFeyStep as 'summon-fey-fey-step'} from './modern/spells/summonFey.mjs';
+export {summonFey as 'summon-fey'} from './modern/spells/summonFey.mjs';
 // ** Features
 // Fighting Styles
 export {protectionMoved} from './modern/feats/protection.mjs';

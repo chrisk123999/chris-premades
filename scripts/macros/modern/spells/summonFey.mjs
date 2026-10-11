@@ -1,16 +1,17 @@
 import cprConstants from '../../../constants.mjs';
-import {actorUtils, automationUtils, compendiumUtils, dialogUtils, documentUtils, effectUtils, genericUtils, itemUtils, summonUtils, tokenUtils, workflowUtils} from '../../../proxy.mjs';
+import {actorUtils, automationUtils, compendiumUtils, documentUtils, effectUtils, genericUtils, itemUtils, summonUtils, tokenUtils, workflowUtils} from '../../../proxy.mjs';
 const creatureTypes = {
     'summon-fey-fuming': 'fuming',
     'summon-fey-mirthful': 'mirthful',
     'summon-fey-tricksy': 'tricksy'
 };
 const translations = 'CHRISPREMADES.Macros.Modern.SummonFey.';
-async function getFeature(identifier, {translate, flatAttack, flatDC} = {}) {
-    return await compendiumUtils.getDocumentByIdentifier(cprConstants.packs.modern.monsterFeatures, identifier, {object: true, translate, flatAttack, flatDC});
+async function getFeature(identifier, {translate, flatAttack, flatDC, pack = cprConstants.packs.misc.automationItems} = {}) {
+    return await compendiumUtils.getDocumentByIdentifier(pack, identifier, {object: true, translate, flatAttack, flatDC});
 }
 async function getMoodFeature(document, creatureType) {
-    const feature = await getFeature('summon-fey-' + creatureType, {
+    const featureID = 'summon-fey-' + (creatureType === 'tricksy' ? creatureType + '-modern' : creatureType);
+    const feature = await getFeature(featureID, {
         translate: translations + creatureType.capitalize(),
         flatDC: creatureType === 'mirthful' ? itemUtils.getSaveDC(document) : undefined
     });
@@ -37,9 +38,9 @@ async function use({document, workflow}) {
     }
     const spellLevel = workflowUtils.getCastLevel(workflow);
     const items = await Promise.all([
-        getFeature('summon-fey-multiattack', {translate: _loc(translations + 'Multiattack', {numAttacks: Math.floor(spellLevel / 2)})}),
+        getFeature('multiattack', {translate: _loc(translations + 'Multiattack', {numAttacks: Math.floor(spellLevel / 2)})}),
         getFeature('summon-fey-fey-blade', {translate: translations + 'FeyBlade', flatAttack: itemUtils.getSpellAttackBonus(document)}),
-        getFeature('summon-fey-fey-step', {translate: translations + 'FeyStep'}),
+        getFeature('fey-step', {translate: translations + 'FeyStep', pack: cprConstants.packs.legacy.monsterFeatures}),
         getMoodFeature(document, creatureType)
     ]);
     if (items[1]) itemUtils.addDamageBonus(items[1], spellLevel);
@@ -58,6 +59,7 @@ async function use({document, workflow}) {
             }
         }
     };
+    genericUtils.setProperty(updates, 'flags.cat.automation.rules', '2024');
     const summon = await summonUtils.createSummon(workflow.actor, sourceActor, {
         items,
         updates,
@@ -73,20 +75,6 @@ async function use({document, workflow}) {
     });
     if (!summon) return;
     await summonUtils.placeSummons([summon], automationUtils.getConfigValue(document, 'range'), {token: workflow.token.document});
-}
-async function feyStep({document, workflow}) {
-    const {animation, options} = automationUtils.getResolvedAnimation(document, 'animation');
-    await tokenUtils.teleportToken(workflow.token.document, {range: workflow.activity.range.value, animation, options});
-    const moodItem = actorUtils.getItemByIdentifiers(workflow.actor, Object.keys(creatureTypes));
-    if (!moodItem) return;
-    const identifier = documentUtils.getIdentifier(moodItem);
-    if (identifier === 'summon-fey-fuming') return await workflowUtils.completeItemUse(moodItem);
-    if (identifier === 'summon-fey-tricksy') return await workflowUtils.syntheticItemRoll(moodItem);
-    const nearby = tokenUtils.findNearby(workflow.token.document, 10, {disposition: 'enemy'});
-    if (!nearby.length) return;
-    const selection = await dialogUtils.selectTargetDialog(document.name + ': ' + moodItem.name, translations + 'Select', nearby);
-    if (!selection?.result) return;
-    await workflowUtils.syntheticItemRoll(moodItem, [selection.result]);
 }
 const summonConfig = creatureType => ({
     [creatureType + 'Name']: {default: '', type: 'text', label: 'CHRISPREMADES.Config.CustomName', category: 'summons'},
@@ -124,22 +112,5 @@ export const summonFey = {
             category: 'mechanics'
         },
         darknessAnimation: cprConstants.darknessAnimationConfig
-    }
-};
-export const summonFeyFeyStep = {
-    name: 'Summon Fey: Fey Step',
-    version: summonFey.version,
-    rules: summonFey.rules,
-    roll: [
-        {pass: 'itemRollFinished', macro: feyStep, priority: 50}
-    ],
-    config: {
-        animation: {
-            default: {source: 'chris-premades', identifier: 'mistyStep'},
-            type: 'selectAnimation',
-            inputs: ['token', 'options'],
-            label: 'CHRISPREMADES.Config.Animation',
-            category: 'animations'
-        }
     }
 };

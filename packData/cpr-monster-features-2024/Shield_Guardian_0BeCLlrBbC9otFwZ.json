@@ -1,0 +1,16 @@
+{
+  "type": "Item",
+  "folder": "o8KSut83fmOmMNkQ",
+  "name": "Shield Guardian",
+  "color": null,
+  "sorting": "a",
+  "_id": "0BeCLlrBbC9otFwZ",
+  "description": "",
+  "flags": {},
+  "_stats": {
+    "coreVersion": "14.369",
+    "systemId": "dnd5e",
+    "systemVersion": "6.0.6"
+  },
+  "_key": "!folders!0BeCLlrBbC9otFwZ"
+}
