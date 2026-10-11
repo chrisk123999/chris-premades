@@ -7,6 +7,16 @@
 - New generic animations: Beam Spell, Buff Spell, Burst Spell and Touch Spell.
 - New animations: Booming Blade, Green-Flame Blade and True Strike.
 - Effects that end on an attack, a spell cast or reaching 0 HP use midi-qol's special durations, following CAT 0.1.2. Items already in a world need their automation reapplied.
+- `teleport` only allows spaces the user can see. Turn off its Require Sight option for teleports that need no sight.
+- Automations log why they stopped early to the CAT Troubleshooter's Logs tab. Problems a player can fix still show a notification, and missing item data or configuration shows a warning.
+## Bug Fixes:
+- `preventDeath`: "Include Killed Outright" now includes damage that kills outright. It previously excluded it.
+- Relentless Endurance no longer works against damage that kills outright. Strength of the Grave still does.
+- `summon`: "Maximum Distance" also dismisses summons when the summon moves. Mage Hand vanishes when moved more than 30 feet away.
+- Careful Spell, Sculpt Spells and Control Undead grant automatic save successes on the triggering roll instead of through a temporary effect.
+- Heightened Spell, Hound of Ill Omen and Magical Ambush grant save disadvantage on the triggering roll instead of through a temporary effect.
+- Find Familiar: the touch activity finds the familiar, and recasting while a familiar is summoned is refused without spending the slot.
+- Fixed Crimson Lash erroring when its dialog is cancelled, Improved Brutal Strike applying to non-attacks, and Summon Aberration erroring when its actor or features are missing.
 
 # 2.1.1 Pre-Release:
 ## Update Notes:

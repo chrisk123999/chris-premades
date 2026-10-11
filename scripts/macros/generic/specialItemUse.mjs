@@ -1,4 +1,4 @@
-import {actorUtils, automationUtils, constants, dialogUtils, workflowUtils} from '../../proxy.mjs';
+import {actorUtils, automationUtils, constants, dialogUtils, documentUtils, Logging, workflowUtils} from '../../proxy.mjs';
 async function use({document, workflow}) {
     const config = automationUtils.getGenericConfigValues(document, 'chris-premades', 'specialItemUse', configKeys);
     const validActivity = activity => activity.canUse && !activity.flags.cat?.hidden
@@ -7,7 +7,7 @@ async function use({document, workflow}) {
         && !config.excludeActivityTypes.includes(activity.type);
     const items = config.identifiers.length ? actorUtils.getItemByIdentifiers(workflow.actor, config.identifiers, {multiple: true}) : workflow.actor.items.filter(item => config.itemTypes.includes(item.type));
     const candidates = items.filter(item => item !== document.item && (!config.equippedOnly || item.system.equipped) && item.system.activities?.some(validActivity));
-    if (!candidates.length) return;
+    if (!candidates.length) return Logging.addMacroWarning('CPR', documentUtils.getIdentifier(document.item), 'No valid item to use.');
     const item = candidates.length === 1 ? candidates[0] : await dialogUtils.selectDocumentDialog(document.item.name, 'CHRISPREMADES.Macros.Generic.SpecialItemUse.SelectItem', candidates, {sort: 'alphabetical'});
     if (!item) return;
     const activities = item.system.activities.filter(validActivity);
@@ -16,6 +16,21 @@ async function use({document, workflow}) {
     const targets = Array.from(workflow.targets).map(token => token.document ?? token);
     await workflowUtils.specialItemUse(item, targets, document.item, {activity, consumeUsage: config.consumeUsage, consumeResources: config.consumeResources});
 }
+/**
+ * Uses an activity from another of the user's items once the roll finishes.
+ * Bound on an activity. Fires on `activityRollFinished`.
+ * The item and activity are prompted for when more than one qualifies.
+ *
+ * Config:
+ * - `identifiers`: items this feature can use. When set, item types are ignored.
+ * - `itemTypes`: item types this feature can use when no identifiers are set.
+ * - `equippedOnly`: only equipped items can be used.
+ * - `activityIdentifier`: use only the activity with this identifier. Leave blank to allow any matching activity.
+ * - `activationTypes`: only activities with one of these activation types can be used. Leave empty to allow any.
+ * - `excludeActivityTypes`: activities of these types cannot be used.
+ * - `consumeUsage`: spend the used item or activity's own uses.
+ * - `consumeResources`: spend the resources the used activity consumes.
+ */
 export const specialItemUse = {
     rules: 'all',
     version: '2.0.0',

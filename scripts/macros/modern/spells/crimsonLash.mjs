@@ -4,8 +4,8 @@ async function use({document, workflow}) {
     const features = constants.sangromancyFeatures.map(identifier => actorUtils.getItemByIdentifier(workflow.actor, identifier)).filter(item => item?.system?.uses?.value);
     const hd = workflow.actor.system.attributes.hd.value;
     if (!hd && !features.length) return;
-    const selection = (await dialogUtils.selectHitDie(workflow.actor, workflow.item.name, '', {additionalItems: features}))?.find(i => i.amount);
-    if (!selection.amount) return;
+    const selection = (await dialogUtils.selectHitDie(workflow.actor, workflow.item.name, '', {additionalItems: features}) || []).find(i => i.amount);
+    if (!selection?.amount) return;
     let diceSize;
     if (selection.document.type === 'class') {
         await documentUtils.update(selection.document, {'system.hd.spent': selection.document.system.hd.spent + 1});

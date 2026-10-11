@@ -14,6 +14,22 @@ async function roll({document: item, config, macroClass: {identifier}, roll}) {
     roll.resetFormula();
     return await roll.reroll();
 }
+/**
+ * Adds d20 modifiers to a roll and rerolls it.
+ * Bound on an effect or an item. Fires on `actorBonus`.
+ *
+ * Variants:
+ * - `checkModifier`: ability checks.
+ * - `saveModifier`: saving throws.
+ * - `skillModifier`: skill checks. Adds the `skill` config.
+ * - `toolModifier`: tool checks. Adds the `tool` config.
+ *
+ * Config:
+ * - `modifier`: comma-separated d20 modifiers. Modifiers already on the roll are skipped.
+ * - `ability`: limit the modifier to a list of abilities.
+ * - `skill`: limit the modifier to a list of skills.
+ * - `tool`: limit the modifier to a list of tools.
+ */
 export const checkModifier = {
     rules: 'all',
     version: '2.0.2',

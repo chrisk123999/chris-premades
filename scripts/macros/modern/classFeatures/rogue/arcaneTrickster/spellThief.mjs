@@ -1,4 +1,4 @@
-import {actorUtils, dialogUtils, documentUtils, effectUtils, itemUtils, queryUtils, workflowUtils} from '../../../../../proxy.mjs';
+import {actorUtils, dialogUtils, documentUtils, effectUtils, itemUtils, Logging, queryUtils, workflowUtils} from '../../../../../proxy.mjs';
 async function react({document: item, workflow, sourceToken}) {
     if (workflow.item?.type !== 'spell' || !item.system.uses.value) return;
     if (actorUtils.hasUsedReaction(sourceToken.actor)) return;
@@ -6,7 +6,7 @@ async function react({document: item, workflow, sourceToken}) {
     const selection = await dialogUtils.confirmUseItem(item, {userId});
     if (!selection) return;
     const activity = itemUtils.getActivityByIdentifier(item, 'use');
-    if (!activity) return;
+    if (!activity) return Logging.addMacroWarning('CPR', 'spell-thief', 'Spell Thief activity missing from item.', {notify: 'warn'});
     const activityData = activity.toObject();
     activityData.save.ability = [workflow.item.system.ability || workflow.actor.system.attributes.spellcasting || 'int'];
     const reactionWorkflow = await workflowUtils.syntheticActivityDataRoll(activityData, item, [workflow.token.document], {userId});
@@ -14,9 +14,9 @@ async function react({document: item, workflow, sourceToken}) {
     const removedTarget = Array.from(workflow.targets).find(target => (target.document ?? target) === sourceToken);
     if (removedTarget) await workflowUtils.removeTargets(workflow, [removedTarget]);
     if (!workflow.item.system.level) return;
-    if (!actorUtils.hasSpellSlots(sourceToken.actor, workflow.item.system.level)) return;
+    if (!actorUtils.hasSpellSlots(sourceToken.actor, workflow.item.system.level)) return Logging.addMacroWarning('CPR', 'spell-thief', 'No spell slot of that level to steal.');
     const sourceEffect = item.effects.contents[0];
-    if (!sourceEffect) return;
+    if (!sourceEffect) return Logging.addMacroWarning('CPR', 'spell-thief', 'Spell Thief effect missing from item.', {notify: 'warn'});
     const effectData = documentUtils.getEffectData(activity, sourceEffect.id);
     const effect = (await effectUtils.createEffects(sourceToken.actor, [effectData]))?.[0];
     if (!effect) return;

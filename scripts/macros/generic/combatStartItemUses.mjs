@@ -12,6 +12,15 @@ async function combatStart({document: activity, macroClass: {source, identifier}
     }];
     await workflowUtils.syntheticActivityDataRoll(data, activity.item, []);
 }
+/**
+ * Rolls this activity at combat start to restore another item's uses up to a minimum.
+ * Bound on an activity. Fires on `actorCombatStart`.
+ *
+ * Config:
+ * - `identifier`: identifier of the item whose uses are restored.
+ * - `minimum`: uses are raised to this value when below it.
+ * - `fromZeroOnly`: only trigger when the item has no uses left.
+ */
 export const combatStartItemUses = {
     version: '2.0.4',
     rules: 'all',

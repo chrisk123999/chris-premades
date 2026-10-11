@@ -1,4 +1,4 @@
-import {dialogUtils, queryUtils} from '../../../../../proxy.mjs';
+import {dialogUtils, Logging, queryUtils} from '../../../../../proxy.mjs';
 function compare(type, actor, targetActor) {
     if (type === 'levels') {
         const sourceLevel = actor.system.details.level;
@@ -16,7 +16,7 @@ function compare(type, actor, targetActor) {
     return _loc('CHRISPREMADES.Macros.Legacy.InsightfulManipulator.Equal', {ability});
 }
 async function use({document, actor, workflow}) {
-    if (!workflow.targets.size) return;
+    if (!workflow.targets.size) return Logging.addMacroWarning('CPR', 'insightful-manipulator', 'No target selected.');
     const options = [
         ['CHRISPREMADES.Macros.Legacy.InsightfulManipulator.IntScore', 'int'],
         ['CHRISPREMADES.Macros.Legacy.InsightfulManipulator.WisScore', 'wis'],

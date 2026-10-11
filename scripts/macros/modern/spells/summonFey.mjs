@@ -1,5 +1,5 @@
 import cprConstants from '../../../constants.mjs';
-import {actorUtils, automationUtils, compendiumUtils, documentUtils, effectUtils, genericUtils, itemUtils, summonUtils, tokenUtils, workflowUtils} from '../../../proxy.mjs';
+import {actorUtils, automationUtils, compendiumUtils, documentUtils, effectUtils, genericUtils, itemUtils, Logging, summonUtils, tokenUtils, workflowUtils} from '../../../proxy.mjs';
 const creatureTypes = {
     'summon-fey-fuming': 'fuming',
     'summon-fey-mirthful': 'mirthful',
@@ -32,7 +32,7 @@ async function use({document, workflow}) {
     const concentrationEffect = effectUtils.getConcentrationEffect(workflow.actor, workflow.item);
     const sourceActor = await compendiumUtils.getDocumentByIdentifier(cprConstants.packs.modern.summons, 'feySpirit');
     if (!sourceActor) {
-        genericUtils.notify('CHRISPREMADES.Error.ActorNotFound', {type: 'warn'});
+        Logging.addMacroWarning('CPR', 'summon-fey', 'CHRISPREMADES.Error.ActorNotFound', {notify: 'warn'});
         if (concentrationEffect) await documentUtils.deleteDocument(concentrationEffect);
         return;
     }
@@ -45,7 +45,7 @@ async function use({document, workflow}) {
     ]);
     if (items[1]) itemUtils.addDamageBonus(items[1], spellLevel);
     if (items.some(item => !item)) {
-        genericUtils.notify('CHRISPREMADES.Error.MissingPackItem', {type: 'warn'});
+        Logging.addMacroWarning('CPR', 'summon-fey', 'CHRISPREMADES.Error.MissingPackItem', {notify: 'warn'});
         if (concentrationEffect) await documentUtils.deleteDocument(concentrationEffect);
         return;
     }

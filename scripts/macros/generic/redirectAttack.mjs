@@ -23,6 +23,19 @@ async function redirect({document: item, workflow, sourceToken, token: attackerT
     const targets = Array.from(workflow.targets, t => t.document ?? t).filter(t => t.id !== sourceToken.id);
     await workflowUtils.updateTargets(workflow, [...targets, newTarget]);
 }
+/**
+ * Offers to redirect an attack against the user to another nearby creature.
+ * Bound on an item. Fires on `targetTargeting`.
+ * Nothing is offered once the user's reaction is spent.
+ *
+ * Config:
+ * - `activityId`: activity rolled when the attack is redirected. Leave blank to use the item.
+ * - `range`: maximum distance between the creature being attacked and the new target.
+ * - `disposition`: disposition of the new target relative to the creature being attacked.
+ * - `sizes`: limit the new target to these sizes.
+ * - `swapPlaces`: the creature being attacked and the new target swap places.
+ * - `requireCover`: only offer the redirect while the creature being attacked has cover from the attacker.
+ */
 export const redirectAttack = {
     rules: 'all',
     version: '2.0.0',

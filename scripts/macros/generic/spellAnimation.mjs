@@ -20,6 +20,13 @@ export function playTargetAnimations(workflow, {animation, options}) {
 function late({document, workflow}) {
     playTargetAnimations(workflow, automationUtils.getResolvedAnimation(document, 'animation', {source: 'chris-premades', identifier: 'spellAnimation'}));
 }
+/**
+ * Plays an animation from the user to each target once the roll finishes.
+ * Bound on an item. Fires on `itemRollFinished`.
+ *
+ * Config:
+ * - `animation`: played from the user to each target. Receives the damage type and each target's hit or save result.
+ */
 export const spellAnimation = {
     rules: 'all',
     version: '2.0.0',

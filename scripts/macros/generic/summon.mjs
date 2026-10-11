@@ -1,11 +1,11 @@
-import {activityUtils, automationUtils, documentUtils, effectUtils, itemUtils, summonUtils, tokenUtils} from '../../proxy.mjs';
+import {activityUtils, actorUtils, automationUtils, documentUtils, effectUtils, itemUtils, Logging, summonUtils, tokenUtils} from '../../proxy.mjs';
 function getOtherActivityIdentifiers(document, {placeActivityId, recallActivityId, moveActivityId}) {
     return [placeActivityId, recallActivityId, moveActivityId].map(id => document.system.activities.get(id)).filter(Boolean).map(activity => documentUtils.getIdentifier(activity));
 }
 async function use({document, workflow}) {
     const config = automationUtils.getGenericConfigValues(document, 'chris-premades', 'summon', configKeys);
     if (config.activityId != workflow.activity.id) return;
-    if (!config.summons.length) return;
+    if (!config.summons.length) return Logging.addMacroWarning('CPR', documentUtils.getIdentifier(document), 'No summon creatures configured.', {notify: 'warn'});
     if (config.replaceExisting) await Promise.all(summonUtils.getSummonsBySource(document).map(summon => summonUtils.deleteSummon(summon)));
     const duration = activityUtils.getDuration(workflow.activity);
     const parent = effectUtils.getConcentrationEffect(workflow.actor, workflow.item);
@@ -35,10 +35,11 @@ async function move({document, workflow}) {
     if (activityId != workflow.activity.id) return;
     const summons = summonUtils.getSummonsBySource(document).filter(summon => summon.token);
     for (const summon of summons) await summon.move(workflow.activity.range.value, {token: workflow.token?.document});
-    await leash({document, token: workflow.token?.document});
+    await leash({document});
 }
-async function leash({document, token}) {
+async function leash({document}) {
     const maxDistance = automationUtils.getGenericConfigValue(document, 'chris-premades', 'summon', 'maxDistance');
+    const token = actorUtils.getFirstToken(document.actor);
     if (!maxDistance || !token) return;
     const summons = summonUtils.getSummonsBySource(document).filter(summon => summon.token && tokenUtils.getDistance(token, summon.token) > maxDistance);
     await Promise.all(summons.map(summon => summonUtils.deleteSummon(summon)));
@@ -53,6 +54,22 @@ async function deleted({document, summon}) {
     if (!otherActivityIdentifiers.length) return;
     await itemUtils.rehideActivities(document, otherActivityIdentifiers, {favorite: config.favorite ?? false});
 }
+/**
+ * Creates summons from this item and handles placing, recalling, moving and dismissing them.
+ * Bound on an item. Fires on `itemRollFinished`, `nearbyMoved` and `delete`.
+ * Creating summons unhides the place, recall and move activities.
+ * When the last summon is deleted, concentration ends and those activities are hidden again.
+ *
+ * Config:
+ * - `activityId`: activity that creates the summons.
+ * - `placeActivityId`: activity that places this item's summons within its range.
+ * - `recallActivityId`: activity that recalls this item's summons.
+ * - `moveActivityId`: rolling this activity moves this item's placed summons up to the activity's range.
+ * - `summons`: summons created by the create activity.
+ * - `maxDistance`: summons farther than this many feet from the summoner are dismissed when either moves. 0 disables it.
+ * - `replaceExisting`: dismiss this item's existing summons before creating new ones.
+ * - `favorite`: favorite the unhidden activities.
+ */
 export const summon = {
     rules: 'all',
     version: '1.8.0',
@@ -83,7 +100,7 @@ export const summon = {
     ],
     move: [
         {
-            pass: 'actorMoved',
+            pass: 'nearbyMoved',
             macro: leash,
             priority: 50
         }

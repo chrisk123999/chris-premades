@@ -1,4 +1,4 @@
-import {actorUtils, automationUtils, combatUtils, constants, DamageBonus, documentUtils, effectUtils, itemUtils, rollUtils, workflowUtils} from '../../proxy.mjs';
+import {actorUtils, automationUtils, combatUtils, constants, DamageBonus, documentUtils, effectUtils, itemUtils, Logging, rollUtils, workflowUtils} from '../../proxy.mjs';
 import {attackTypeConfig, identifiersConfig} from './damageBonusToOneRoll.mjs';
 export function addRiders(workflow, uuids) {
     const riders = workflowUtils.getWorkflowProperty(workflow, 'attackRiders') ?? [];
@@ -43,7 +43,7 @@ async function damage({document: activity, actor, workflow}) {
         });
     if (config.useActivityCosts) {
         bonus.withDefaultCosts().withDefaultScaling().initialize(workflow);
-        if (!DamageBonus.CheckCost(bonus)) return;
+        if (!DamageBonus.CheckCost(bonus)) return Logging.addMacroWarning('CPR', documentUtils.getIdentifier(activity.item), 'Not enough uses or resources.');
     }
     return bonus;
 }
@@ -63,6 +63,27 @@ async function rider({document: activity, actor, token, workflow}) {
     }
     await automationUtils.calledEvent('attackRiderUsed', actor, {canOverlap: true, data: {activity, riderWorkflow, targets, workflow}});
 }
+/**
+ * Offers this activity as an optional damage bonus on a hit, then rolls it on the hit targets.
+ * Bound on an activity. Fires on `actorOptionalBonusDamage` and `actorRollFinished`.
+ *
+ * Config:
+ * - `bonus`: extra damage added to the roll when this option is chosen.
+ * - `bonusDamageType`: damage type of the extra damage. Empty uses the attack's damage type.
+ * - `creatureTypeBonus`: extra damage added when every hit target is one of `targetCreatureTypes`.
+ * - `targetCreatureTypes`: creature types that receive `creatureTypeBonus`.
+ * - `tag`: tagged options are offered as choices under the bonus that owns the tag.
+ * - `limit`: how many tagged options can be chosen for one damage roll.
+ * - `workflowProperty`: only offer when an earlier bonus has set this workflow property.
+ * - `identifiers`: only offer for attacks with items that have one of these identifiers.
+ * - `attackType`: only offer for this attack type.
+ * - `maxSize`: only offer when every hit target is this size or smaller.
+ * - `requiredItems`: only offer when the actor has an item with one of these identifiers.
+ * - `suppressedBy`: do not offer when the actor has an item with one of these identifiers.
+ * - `ownTurn`: in combat, only offer on the attacker's own turn.
+ * - `selfAsTouch`: a Self range activity is rolled on the hit targets instead of the attacker.
+ * - `useActivityCosts`: apply the activity's costs and scaling. Not offered when they cannot be paid.
+ */
 export const attackRider = {
     rules: 'all',
     version: '2.0.4',

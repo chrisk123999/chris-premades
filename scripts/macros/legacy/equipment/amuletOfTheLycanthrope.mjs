@@ -1,9 +1,9 @@
-import {automationUtils, constants, documentUtils, effectUtils, itemUtils, workflowUtils} from '../../../proxy.mjs';
+import {automationUtils, constants, documentUtils, effectUtils, itemUtils, Logging, workflowUtils} from '../../../proxy.mjs';
 async function use({document, workflow}) {
     if (workflow.activity.identifier !== 'use') return;
-    if (!itemUtils.getEquipmentState(document)) return;
+    if (!itemUtils.getEquipmentState(document)) return Logging.addMacroWarning('CPR', 'amulet-of-the-lycanthrope', 'Amulet must be equipped.');
     const sourceEffect = documentUtils.getEffectByIdentifier(document, 'amuletOfTheLycanthropeEffect');
-    if (!sourceEffect) return;
+    if (!sourceEffect) return Logging.addMacroWarning('CPR', 'amulet-of-the-lycanthrope', 'Lycanthrope effect missing from item.', {notify: 'warn'});
     const identifiers = ['claws', 'human'];
     const activities = identifiers.map(identifier => itemUtils.getActivityByIdentifier(document, identifier)).filter(activity => activity);
     const vae = activities.map(activity => ({type: 'use', name: activity.name, identifier: 'amulet-of-the-lycanthrope', activityIdentifier: activity.identifier}));

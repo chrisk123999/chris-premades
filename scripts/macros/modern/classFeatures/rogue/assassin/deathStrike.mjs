@@ -1,8 +1,8 @@
-import {automationUtils, itemUtils, rollUtils, workflowUtils} from '../../../../../proxy.mjs';
+import {automationUtils, itemUtils, Logging, rollUtils, workflowUtils} from '../../../../../proxy.mjs';
 async function useSave({document: item, data: {workflow, targetToken}}) {
     if (workflow.token?.document.combatant?.combat.round !== 1) return;
     const activity = itemUtils.getActivityByIdentifier(item, 'death-strike');
-    if (!activity) return;
+    if (!activity) return Logging.addMacroWarning('CPR', 'death-strike', 'Death Strike activity missing from item.', {notify: 'warn'});
     const saveWorkflow = await workflowUtils.syntheticActivityRoll(activity, [targetToken]);
     if (!saveWorkflow?.failedSaves.size) return;
     workflowUtils.setWorkflowProperty(workflow, 'deathStrike', true);

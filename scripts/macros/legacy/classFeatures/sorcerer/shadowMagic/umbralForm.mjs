@@ -1,7 +1,7 @@
-import {documentUtils, effectUtils} from '../../../../../proxy.mjs';
+import {documentUtils, effectUtils, Logging} from '../../../../../proxy.mjs';
 async function use({document, workflow}) {
     const sourceEffect = documentUtils.getEffectByIdentifier(document.item, 'umbralFormEffect');
-    if (!sourceEffect) return;
+    if (!sourceEffect) return Logging.addMacroWarning('CPR', 'umbral-form', 'Umbral Form effect missing from item.', {notify: 'warn'});
     const effectData = documentUtils.getEffectData(workflow.activity, sourceEffect.id, {
         activityUuid: workflow.activity.uuid,
         unhideActivities: ['dismiss'],

@@ -83,6 +83,22 @@ async function use({document, workflow}) {
         if (Math.abs(token.actor.system.attributes.hp.tempmax) >= totalMax) actorUtils.applyConditions(token.actor, ['dead'], {overlay: true});
     }));
 }
+/**
+ * Reduces the hit point maximum of targets by the damage dealt or by a rolled formula.
+ * Bound on an activity. Fires on `activityRollFinished`.
+ * Nothing happens when no target was hit.
+ * Repeat uses add to the existing reduction from the same activity.
+ * A target whose reduction reaches its hit point maximum is marked dead.
+ *
+ * Config:
+ * - `reduceByRoll`: formula rolled once per use. Its total is used instead of the damage dealt.
+ * - `halfDamage`: halve the reduction, rounded down.
+ * - `checkSaves`: only targets that failed the save are reduced.
+ * - `removeOnSave`: with `checkSaves`, a successful save removes the existing reduction from this activity.
+ * - `shortRestCures`: the reduction ends on a short rest.
+ * - `longRestCures`: the reduction ends on a long rest. Ignored when `shortRestCures` is on.
+ * - `damageTypes`: only damage of these types counts. Ignored when `reduceByRoll` is set.
+ */
 export const reduceMaxHP = {
     rules: 'all',
     version: '2.0.3',

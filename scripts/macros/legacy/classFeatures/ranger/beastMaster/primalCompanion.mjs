@@ -1,5 +1,5 @@
 import cprConstants from '../../../../../constants.mjs';
-import {actorUtils, automationUtils, compendiumUtils, genericUtils, itemUtils, summonUtils} from '../../../../../proxy.mjs';
+import {actorUtils, automationUtils, compendiumUtils, genericUtils, itemUtils, Logging, summonUtils} from '../../../../../proxy.mjs';
 const creatureTypes = {
     'primal-companion-land': 'land',
     'primal-companion-sea': 'sea',
@@ -37,9 +37,9 @@ async function use({document, workflow}) {
         getFeatures(cprConstants.packs.misc.automationItems, ['primal-companion-primal-bond', ...beastFeatures[creatureType]], {flatAttack, flatDC: 8 + flatAttack}),
         getFeatures(cprConstants.packs.legacy.misc, actions)
     ]);
-    if (!sourceActor) return genericUtils.notify('CHRISPREMADES.Error.ActorNotFound', {type: 'warn'});
+    if (!sourceActor) return Logging.addMacroWarning('CPR', 'primal-companion', 'CHRISPREMADES.Error.ActorNotFound', {notify: 'warn'});
     const items = [...features, ...actionItems];
-    if (items.some(itemData => !itemData)) return genericUtils.notify('CHRISPREMADES.Error.MissingPackItem', {type: 'warn'});
+    if (items.some(itemData => !itemData)) return Logging.addMacroWarning('CPR', 'primal-companion', 'CHRISPREMADES.Error.MissingPackItem', {notify: 'warn'});
     items.forEach(itemData => {
         if (!Object.values(itemData.system.activities ?? {}).some(activityData => activityData.type === 'attack')) return;
         const macros = genericUtils.getProperty(itemData, 'flags.cat.macros.roll') ?? [];

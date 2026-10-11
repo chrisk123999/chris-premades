@@ -1,4 +1,4 @@
-import {automationUtils, dialogUtils, documentUtils} from '../../../../proxy.mjs';
+import {automationUtils, dialogUtils, documentUtils, Logging} from '../../../../proxy.mjs';
 async function use({workflow}) {
     const classIdentifier = automationUtils.getConfigValue(workflow.item, 'classIdentifier');
     const validSpells = workflow.actor.items.filter(item => item.type === 'spell'
@@ -9,7 +9,7 @@ async function use({workflow}) {
         && [0, 1].includes(item.system.prepared));
     const unpreparedSpells = validSpells.filter(item => item.system.prepared === 0);
     const preparedSpells = validSpells.filter(item => item.system.prepared === 1);
-    if (!unpreparedSpells.length || !preparedSpells.length) return;
+    if (!unpreparedSpells.length || !preparedSpells.length) return Logging.addMacroWarning('CPR', 'memorize-spell', 'No valid spells to swap.');
     const spellToPrepare = await dialogUtils.selectDocumentDialog(workflow.item.name, _loc('CHRISPREMADES.Macros.Modern.MemorizeSpell.Prepare'), unpreparedSpells, {showSpellLevel: true});
     if (!spellToPrepare) return;
     const spellToUnprepare = await dialogUtils.selectDocumentDialog(workflow.item.name, _loc('CHRISPREMADES.Macros.Modern.MemorizeSpell.Unprepare'), preparedSpells, {showSpellLevel: true});

@@ -1,19 +1,19 @@
 import {automationUtils, DamageBonus, documentUtils, effectUtils, genericUtils, Logging, workflowUtils} from '../../../../proxy.mjs';
 async function preChecks({workflow}) {
     if (workflow.actor.system.attributes.ac.equippedArmor?.system.type.value === 'heavy' && !automationUtils.getConfigValue(workflow.item, 'allowHeavyArmor')) {
-        genericUtils.notify('CHRISPREMADES.Macros.All.Rage.HeavyArmor', {type: 'warn'});
+        Logging.addMacroWarning('CPR', 'rage', 'CHRISPREMADES.Macros.All.Rage.HeavyArmor', {notify: 'warn'});
         workflow.aborted = true;
         return true;
     }
     if (automationUtils.getConfigValue(workflow.item, 'allowConcentration')) return;
     const effects = Array.from(workflow.actor.concentration.effects);
     if (!effects.length) return;
-    genericUtils.notify('CHRISPREMADES.Macros.All.Rage.Concentration', {type: 'warn'});
+    Logging.addMacroWarning('CPR', 'rage', 'CHRISPREMADES.Macros.All.Rage.Concentration', {notify: 'warn'});
     await documentUtils.deleteEmbeddedDocuments(workflow.actor, 'ActiveEffect', effects.map(e => e.id));
 }
 async function beginRage({workflow}) {
     const sourceEffect = workflow.item.effects.contents[0];
-    if (!sourceEffect) return;
+    if (!sourceEffect) return Logging.addMacroWarning('CPR', 'rage', 'Rage effect missing from item.', {notify: 'warn'});
     let vae, unhideActivities, specialDuration;
     const rules = documentUtils.getRules(workflow.item) || '2014';
     const config = automationUtils.getConfigValues(workflow.item, ['animation', 'bonus', 'allowConcentration', 'allowHeavyArmor', 'allowSpellcasting']);
@@ -46,7 +46,7 @@ async function beginRage({workflow}) {
 async function spellcasting({document: effect, workflow}) {
     if (workflow.item.type !== 'spell') return;
     const exit = reason => {
-        genericUtils.notify('CHRISPREMADES.Macros.All.Rage.' + reason, {type: 'warn'});
+        Logging.addMacroWarning('CPR', 'raging', 'CHRISPREMADES.Macros.All.Rage.' + reason, {notify: 'warn'});
         workflow.aborted = true;
     };
     if (workflow.activity.duration.concentration && !effect.flags['chris-premades']?.rage?.allowConcentration) return exit('Concentration');
@@ -58,7 +58,7 @@ async function rageDamage({document: effect, workflow}) {
     const allowedAttack = documentUtils.getRules(effect) === '2024' ? 'attack' : 'meleeWeaponAttack';
     if (!workflowUtils.isAttackType(workflow, allowedAttack)) return;
     const formula = effect.flags['chris-premades']?.rage?.bonus;
-    if (!formula) return Logging.addMacroWarning('chris-premades', 'rage', 'Rage damage bonus formula not found!');
+    if (!formula) return Logging.addMacroWarning('CPR', 'rage', 'Rage damage bonus formula not found!', {notify: 'warn'});
     return new DamageBonus(effect, {formula, optional: false});
 }
 export const rage = {

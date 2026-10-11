@@ -1,4 +1,4 @@
-import {actorUtils, automationUtils, constants, dialogUtils, documentUtils, queryUtils, workflowUtils} from '../../proxy.mjs';
+import {actorUtils, automationUtils, constants, dialogUtils, documentUtils, Logging, queryUtils, workflowUtils} from '../../proxy.mjs';
 function getConditions(activity, macroID) {
     const settings = automationUtils.getGenericConfigValues(activity, 'chris-premades', macroID, configKeys);
     return actorUtils.getStatusSources(activity.actor, settings.conditions);
@@ -11,7 +11,10 @@ async function preChecks({activity, config, macroClass: {identifier}}) {
         return;
     }
     const effects = getConditions(activity, identifier);
-    if (!effects?.length) return true;
+    if (!effects?.length) {
+        Logging.addMacroWarning('CPR', documentUtils.getIdentifier(activity.item), 'No removable conditions on actor.');
+        return true;
+    }
     workflowUtils.setWorkflowProperty(config.workflow, 'choiceRemoveCondition', effects);
 }
 async function remove({workflow}) {
@@ -39,6 +42,19 @@ async function rollFeature({document: activity, macroClass: {identifier}}) {
     workflowUtils.setWorkflowProperty(options, 'choiceRemoveCondition', conditions);
     await workflowUtils.syntheticActivityRoll(activity, [], {options, userId: queryUtils.firstOwner(activity.actor, true)});
 }
+/**
+ * Prompts to remove one of the listed conditions from the user once the roll finishes.
+ * Bound on an activity. Fires on `activityPreTargeting` and `activityRollFinished`.
+ *
+ * Variants:
+ * - `choiceRemoveCondition`: runs when the activity is used.
+ * - `turnEndChoiceRemoveCondition`: also rolls the activity on `actorTurnEnd` when a listed condition is present.
+ * - `turnStartChoiceRemoveCondition`: also rolls the activity on `actorTurnStart` when a listed condition is present.
+ *
+ * Config:
+ * - `conditions`: conditions that can be removed. The use is cancelled when the user has none of them.
+ *   Choosing exhaustion lowers it by one level.
+ */
 export const choiceRemoveCondition = {
     rules: 'all',
     version: '2.0.4',

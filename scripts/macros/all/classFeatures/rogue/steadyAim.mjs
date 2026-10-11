@@ -1,4 +1,4 @@
-import {actorUtils, combatUtils, documentUtils, effectUtils, workflowUtils} from '../../../../proxy.mjs';
+import {actorUtils, combatUtils, documentUtils, effectUtils, Logging, workflowUtils} from '../../../../proxy.mjs';
 async function moved({document, token}) {
     if (!token.inCombat || !combatUtils.isOwnTurn(token) || !document.system.uses.value) return;
     const activity = document.system.activities.contents[0];
@@ -12,7 +12,7 @@ async function use({document, workflow}) {
     if (workflow.workflowOptions?.steadyAimLockout) return;
     if (actorUtils.getItemByIdentifier(workflow.actor, 'infiltration-expertise')) return;
     const sourceEffect = documentUtils.getEffectByIdentifier(document, 'steady-aim-movement');
-    if (!sourceEffect) return;
+    if (!sourceEffect) return Logging.addMacroWarning('CPR', 'steady-aim', 'Steady Aim movement effect missing from item.', {notify: 'warn'});
     const effectData = documentUtils.getEffectData(document, sourceEffect.id);
     await effectUtils.createEffects(workflow.actor, [effectData]);
 }

@@ -1,9 +1,9 @@
-import {activityUtils, automationUtils, constants, documentUtils, effectUtils, summonUtils, tokenUtils} from '../../../../../proxy.mjs';
+import {activityUtils, automationUtils, documentUtils, Logging, summonUtils, tokenUtils, workflowUtils} from '../../../../../proxy.mjs';
 async function use({document, workflow}) {
-    if (!workflow.targets.size) return;
+    if (!workflow.targets.size) return Logging.addMacroWarning('CPR', 'hound-of-ill-omen', 'No target selected.');
     const [summonData] = automationUtils.getConfigValue(document, 'summons') ?? [];
     const sourceActor = summonData?.sourceActorUuid ? await fromUuid(summonData.sourceActorUuid) : undefined;
-    if (!sourceActor) return;
+    if (!sourceActor) return Logging.addMacroWarning('CPR', 'hound-of-ill-omen', 'Hound summon actor not configured.', {notify: 'warn'});
     const targetToken = workflow.targets.first();
     const markerEffect = documentUtils.getEffectByIdentifier(targetToken.actor, 'houndOfIllOmenTarget');
     await Promise.all(summonUtils.getSummonsBySource(document).map(async summon => await summonUtils.deleteSummon(summon)));
@@ -39,17 +39,7 @@ async function disadvantage({document, workflow}) {
         return range >= 0 && range <= distance;
     });
     if (!marked.length) return;
-    const effectData = documentUtils.getBaseEffectData(document, {
-        name: _loc('CHRISPREMADES.Macros.Legacy.HoundOfIllOmen.Disadvantage'),
-        img: constants.tempConditionIcon,
-        origin: document.uuid,
-        duration: {value: 1, units: 'turns'},
-        specialDuration: ['endOfWorkflow'],
-        changes: [
-            {key: 'flags.midi-qol.disadvantage.save.all', value: '1', type: 'override', priority: 120}
-        ]
-    });
-    await Promise.all(marked.map(async targetToken => await effectUtils.createEffects(targetToken.actor, [effectData])));
+    marked.forEach(targetToken => workflowUtils.grantRollModifier(workflow, 'dis', targetToken.id, 'hound-of-ill-omen', _loc('CHRISPREMADES.Macros.Legacy.HoundOfIllOmen.Disadvantage')));
 }
 export const houndOfIllOmen = {
     name: 'Hound of Ill Omen',

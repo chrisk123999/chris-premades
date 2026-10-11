@@ -1,11 +1,11 @@
-import {actorUtils, automationUtils, dialogUtils, documentUtils, effectUtils, genericUtils, itemUtils, queryUtils} from '../../../../../proxy.mjs';
+import {actorUtils, automationUtils, dialogUtils, documentUtils, effectUtils, genericUtils, itemUtils, Logging, queryUtils} from '../../../../../proxy.mjs';
 const terrains = ['arctic', 'coast', 'desert', 'forest', 'grassland', 'mountain', 'swamp'];
 async function attune(item, activity, actor) {
     const identifier = documentUtils.getIdentifier(activity);
     const spellIdentifiers = automationUtils.getConfigValue(item, identifier) ?? [];
-    if (!spellIdentifiers.length) return;
+    if (!spellIdentifiers.length) return Logging.addMacroWarning('CPR', 'natural-attunement', 'No spells configured for this terrain.', {notify: 'warn'});
     const levels = (itemUtils.getAdvancementSourceItem(item) ?? actor.classes.wizard)?.system?.levels;
-    if (!levels) return;
+    if (!levels) return Logging.addMacroWarning('CPR', 'natural-attunement', 'Wizard class levels not found.', {notify: 'warn'});
     const maxLevel = Math.min(9, Math.ceil(levels / 2));
     const spellDatas = (await Promise.all(spellIdentifiers.map(async spellIdentifier => {
         const document = await automationUtils.getSourceDocumentByIdentifier(spellIdentifier, 'Spell');
@@ -19,11 +19,11 @@ async function attune(item, activity, actor) {
         return data;
     }))).filter(i => i);
     if (!spellDatas.length) {
-        genericUtils.notify(_loc('CHRISPREMADES.Macros.Legacy.NaturalAttunement.NoSpells', {terrain: activity.name}), {type: 'warn', localize: false});
+        Logging.addMacroWarning('CPR', 'natural-attunement', 'CHRISPREMADES.Macros.Legacy.NaturalAttunement.NoSpells', {notify: 'warn', format: {terrain: activity.name}});
         return;
     }
     const sourceEffect = await activity.effects[0]?.getEffect();
-    if (!sourceEffect) return;
+    if (!sourceEffect) return Logging.addMacroWarning('CPR', 'natural-attunement', 'Attunement effect missing from activity.', {notify: 'warn'});
     const existing = actorUtils.getEffectByIdentifier(actor, 'natural-attunement');
     if (existing) await documentUtils.deleteDocument(existing);
     const effectData = documentUtils.getEffectData(activity, sourceEffect.id, {macros: [{type: 'effect', macros: [{source: 'chris-premades', rules: '2014', identifier: 'natural-attunement-effect'}]}]});

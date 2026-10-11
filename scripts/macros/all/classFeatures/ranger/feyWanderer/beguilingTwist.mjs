@@ -1,4 +1,4 @@
-import {dialogUtils, documentUtils, effectUtils} from '../../../../../proxy.mjs';
+import {dialogUtils, documentUtils, effectUtils, Logging} from '../../../../../proxy.mjs';
 const conditions = [
     ['DND5E.ConCharmed', 'beguilingTwistCharmed'],
     ['DND5E.ConFrightened', 'beguilingTwistFrightened']
@@ -6,7 +6,7 @@ const conditions = [
 async function use({document: item, workflow}) {
     if (workflow.targets.size !== 1 || !workflow.failedSaves.size) return;
     const available = conditions.filter(([, identifier]) => documentUtils.getEffectByIdentifier(item, identifier));
-    if (!available.length) return;
+    if (!available.length) return Logging.addMacroWarning('CPR', 'beguiling-twist', 'Charmed/Frightened effects missing from item.', {notify: 'warn'});
     const selection = available.length === 1
         ? available[0][1]
         : await dialogUtils.buttonDialog(item.name, 'CHRISPREMADES.Macros.All.BeguilingTwist.Select', available);

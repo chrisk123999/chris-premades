@@ -8,6 +8,14 @@ async function damageType({document: item, workflow}) {
     await workflow.setDamageRolls(workflow.damageRolls);
     workflow.defaultDamageType = selection;
 }
+/**
+ * Prompts for a damage type and applies it to every damage roll.
+ * Bound on an item. Fires on `itemDamageRoll`.
+ * No prompt is shown when fewer than two types are available.
+ *
+ * Config:
+ * - `damageType`: damage types offered. Leave empty to use the types of the activity's first damage part.
+ */
 export const selectDamageType = {
     rules: 'all',
     version: '2.0.0',

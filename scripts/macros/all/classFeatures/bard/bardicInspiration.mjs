@@ -1,8 +1,8 @@
-import {automationUtils, D20Bonus, documentUtils, effectUtils, genericUtils} from '../../../../proxy.mjs';
+import {automationUtils, D20Bonus, documentUtils, effectUtils, genericUtils, Logging} from '../../../../proxy.mjs';
 async function grantInspiration({workflow}) {
-    if (workflow.targets.size !== 1) return;
+    if (workflow.targets.size !== 1) return Logging.addMacroWarning('CPR', 'bardic-inspiration', 'Select exactly one target.');
     const sourceEffect = workflow.item.effects.contents[0];
-    if (!sourceEffect) return;
+    if (!sourceEffect) return Logging.addMacroWarning('CPR', 'bardic-inspiration', 'Inspiration effect missing from item.', {notify: 'warn'});
     const target = workflow.targets.first().document;
     const rules = documentUtils.getRules(workflow.item);
     const formula = Roll.replaceFormulaData(automationUtils.getConfigValue(workflow.item, 'bonus'), workflow.activity.getRollData());
@@ -26,7 +26,7 @@ async function useInspiration({document: effect}) {
     const rules = documentUtils.getRules(effect);
     const phase = rules === '2024' ? 'postResult' : rules === '2014' ? 'preResult' : ['preResult', 'postResult'];
     const formula = effect.flags['chris-premades']?.bardicInspiration;
-    if (!formula) return;
+    if (!formula) return Logging.addMacroWarning('CPR', 'bardicInspirationEffect', 'Bardic Inspiration die formula not found.', {notify: 'warn'});
     return new D20Bonus(effect, {action: 'special', actor: effect.parent, formula, phase}).withOnUse(postUseInspiration);
 }
 async function postUseInspiration({bonus}) {

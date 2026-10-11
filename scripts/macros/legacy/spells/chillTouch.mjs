@@ -1,4 +1,4 @@
-import {actorUtils, automationUtils, constants, documentUtils, effectUtils} from '../../../proxy.mjs';
+import {actorUtils, automationUtils, constants, documentUtils, effectUtils, Logging} from '../../../proxy.mjs';
 import {playTargetAnimations} from '../../generic/spellAnimation.mjs';
 async function use({document, workflow}) {
     playTargetAnimations(workflow, automationUtils.getResolvedAnimation(document, 'animation'));
@@ -6,7 +6,7 @@ async function use({document, workflow}) {
     const affectedTargets = Array.from(workflow.hitTargets).filter(token => token.actor && creatureTypes.includes(actorUtils.typeOrRace(token.actor)));
     if (!affectedTargets.length) return;
     const sourceEffect = documentUtils.getEffectByIdentifier(document, 'chillTouchUndead');
-    if (!sourceEffect) return;
+    if (!sourceEffect) return Logging.addMacroWarning('CPR', 'chill-touch', 'Undead effect missing from item.', {notify: 'warn'});
     const effectData = documentUtils.getEffectData(workflow.activity, sourceEffect.id, {activityUuid: workflow.activity.uuid});
     if (!effectData) return;
     await Promise.all(affectedTargets.map(token => effectUtils.createEffects(token.actor, [effectData])));

@@ -1,7 +1,7 @@
-import {genericUtils, tokenUtils} from '../../../../../proxy.mjs';
+import {Logging, tokenUtils} from '../../../../../proxy.mjs';
 async function early({token}) {
     if (tokenUtils.getLightLevel(token) !== 'bright') return;
-    genericUtils.notify('CHRISPREMADES.Macros.All.OneWithShadows.Bright', {type: 'info'});
+    Logging.addMacroWarning('CPR', 'one-with-shadows', 'CHRISPREMADES.Macros.All.OneWithShadows.Bright', {notify: 'info'});
     return true;
 }
 export const oneWithShadows = {

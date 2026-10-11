@@ -1,7 +1,7 @@
-import {actorUtils, dialogUtils, effectUtils, itemUtils} from '../../../../../proxy.mjs';
+import {actorUtils, dialogUtils, effectUtils, itemUtils, Logging} from '../../../../../proxy.mjs';
 async function use({workflow}) {
     const weapons = actorUtils.getEquippedWeapons(workflow.actor);
-    if (!weapons.length) return;
+    if (!weapons.length) return Logging.addMacroWarning('CPR', 'channel-divinity-sacred-weapon', 'No equipped weapon.');
     const weapon = weapons.length === 1 ? weapons[0] : await dialogUtils.selectDocumentDialog(workflow.item.name, 'CHRISPREMADES.Macros.Legacy.SacredWeapon.Select', weapons, {sort: 'alphabetical'});
     if (!weapon) return;
     const enchantment = workflow.item.effects.find(effect => effect.type === 'enchantment');

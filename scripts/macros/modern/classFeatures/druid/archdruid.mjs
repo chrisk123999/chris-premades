@@ -1,9 +1,9 @@
-import {actorUtils, documentUtils, genericUtils, itemUtils} from '../../../../proxy.mjs';
+import {actorUtils, documentUtils, itemUtils, Logging} from '../../../../proxy.mjs';
 import {addItemRecovery} from '../../../generic/itemRecovery.mjs';
 async function early({document}) {
     const spells = document.actor.system.spells ?? {};
     if (Object.values(spells).some(i => i.max > 0 && i.value < i.max)) return;
-    genericUtils.notify('CHRISPREMADES.Macros.Modern.Archdruid.NoSpellSlots', {type: 'info'});
+    Logging.addMacroWarning('CPR', 'archdruid', 'CHRISPREMADES.Macros.Modern.Archdruid.NoSpellSlots', {notify: 'info'});
     return true;
 }
 async function added({document}) {

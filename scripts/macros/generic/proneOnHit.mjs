@@ -5,6 +5,10 @@ async function late({workflow}) {
         await actorUtils.applyConditions(token.actor, ['prone']);
     }));
 }
+/**
+ * Knocks prone each target that was hit.
+ * Bound on an activity. Fires on `activityRollFinished`.
+ */
 export const proneOnHit = {
     rules: 'all',
     version: '2.0.0',

@@ -1,7 +1,7 @@
-import {animationUtils, automationUtils, DamageBonus, workflowUtils} from '../../../../proxy.mjs';
+import {animationUtils, automationUtils, DamageBonus, Logging, workflowUtils} from '../../../../proxy.mjs';
 async function damage({document: activity, workflow}) {
-    if (!activity.item.system.uses.value) return;
     if (workflow.hitTargets.size !== 1 || workflow.isFumble || !workflowUtils.isAttackType(workflow, 'weaponAttack')) return;
+    if (!activity.item.system.uses.value) return Logging.addMacroWarning('CPR', 'divine-strike', 'Already used this turn.');
     const config = automationUtils.getConfigValues(activity.item, ['formula', 'classIdentifier']);
     const subclass = workflow.actor.classes[config.classIdentifier]?.subclass?.identifier;
     let damageType = 'radiant';

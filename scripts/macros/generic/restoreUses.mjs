@@ -1,4 +1,4 @@
-import {activityUtils, automationUtils, dialogUtils, genericUtils, workflowUtils} from '../../proxy.mjs';
+import {activityUtils, automationUtils, dialogUtils, documentUtils, Logging, workflowUtils} from '../../proxy.mjs';
 function isOwnUses(item, target) {
     return target.type === 'itemUses' && (!target.target || target.target === item.id);
 }
@@ -9,11 +9,11 @@ async function early({document, activity, config}) {
     const uses = document.system.uses;
     if (activity.id === restoreActivity.id) {
         if (!uses.spent) {
-            genericUtils.notify('CHRISPREMADES.Macros.Generic.RestoreUses.NoneSpent', {type: 'info', format: {item: document.name}});
+            Logging.addMacroWarning('CPR', documentUtils.getIdentifier(document), 'CHRISPREMADES.Macros.Generic.RestoreUses.NoneSpent', {notify: 'info', format: {item: document.name}});
             return true;
         }
         if (settings.requireEmpty && uses.value) {
-            genericUtils.notify('CHRISPREMADES.Macros.Generic.RestoreUses.NotEmpty', {type: 'info', format: {item: document.name}});
+            Logging.addMacroWarning('CPR', documentUtils.getIdentifier(document), 'CHRISPREMADES.Macros.Generic.RestoreUses.NotEmpty', {notify: 'info', format: {item: document.name}});
             return true;
         }
         return;
@@ -32,6 +32,17 @@ async function early({document, activity, config}) {
     await workflowUtils.completeActivityUse(freshActivity, targets, {consumeUsage: config.consumeUsage !== false, consumeResources: config.consume?.resources !== false});
     return true;
 }
+/**
+ * Controls when this item's restore activity can be used, and offers it when the item runs out of uses.
+ * Bound on an item. Fires on `itemPreTargeting`.
+ * The restore activity is blocked while no uses are spent.
+ * When the offered restore runs, the original activity is used again afterwards.
+ *
+ * Config:
+ * - `restoreActivity`: activity that restores this item's uses. Blank uses the first activity that restores one.
+ * - `requireEmpty`: block the restore activity while uses remain.
+ * - `offerRestore`: when another activity needs a use and none remain, offer to run the restore activity first.
+ */
 export const restoreUses = {
     rules: 'all',
     version: '2.0.0',

@@ -4,6 +4,13 @@ async function use({document, workflow}) {
     if (activityId && activityId !== workflow.activity.id) return;
     await documentUtils.deleteDocument(document);
 }
+/**
+ * Deletes the item once its roll finishes.
+ * Bound on an item. Fires on `itemRollFinished`.
+ *
+ * Config:
+ * - `activityId`: only delete when this activity is used. Blank deletes on any activity.
+ */
 export const actionDismissal = {
     rules: 'all',
     version: '2.0.0',

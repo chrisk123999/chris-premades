@@ -1,4 +1,4 @@
-import {automationUtils, constants, dialogUtils, documentUtils, effectUtils} from '../../proxy.mjs';
+import {automationUtils, constants, dialogUtils, documentUtils, effectUtils, Logging} from '../../proxy.mjs';
 function getChoices(actor, traits, proficiency, options) {
     return traits.flatMap(trait => options[trait].map(({value, label, image}) => ({
         id: trait + '.' + value,
@@ -15,7 +15,7 @@ function getChoices(actor, traits, proficiency, options) {
 }
 async function use({document: activity, workflow}) {
     const config = automationUtils.getGenericConfigValues(activity, 'chris-premades', 'proficiencyChoice', configKeys);
-    if (!config.effect) return;
+    if (!config.effect) return Logging.addMacroWarning('CPR', documentUtils.getIdentifier(activity.item), 'No proficiency effect configured.', {notify: 'warn'});
     const actors = workflow.targets.size ? Array.from(workflow.targets, token => token.actor).filter(Boolean) : [workflow.actor];
     const parentEntity = effectUtils.getConcentrationEffect(workflow.actor, activity.item);
     const options = {skills: constants.skillOptions, tools: constants.toolOptions};
@@ -38,6 +38,16 @@ async function use({document: activity, workflow}) {
         await effectUtils.createEffects(actor, [effectData], {parentEntity});
     }
 }
+/**
+ * Prompts for a skill or tool for each target and applies an effect built around the choice.
+ * Bound on an activity. Fires on `activityRollFinished`.
+ * With no targets, the user is prompted instead.
+ *
+ * Config:
+ * - `effect`: effect applied to each target. The {key} placeholder in its change keys becomes the chosen path.
+ * - `traits`: offer skills, tools, or both.
+ * - `proficiency`: limit the choices by the target's current proficiency.
+ */
 export const proficiencyChoice = {
     rules: 'all',
     version: '2.0.0',

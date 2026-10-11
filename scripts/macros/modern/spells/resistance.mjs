@@ -1,4 +1,4 @@
-import {automationUtils, combatUtils, constants, dialogUtils, documentUtils, effectUtils, genericUtils, rollUtils, tokenUtils, workflowUtils} from '../../../proxy.mjs';
+import {automationUtils, combatUtils, constants, dialogUtils, documentUtils, effectUtils, genericUtils, Logging, rollUtils, tokenUtils, workflowUtils} from '../../../proxy.mjs';
 async function use({document, workflow}) {
     const concentrationEffect = effectUtils.getConcentrationEffect(workflow.actor, workflow.item);
     const cancel = async () => {
@@ -9,7 +9,7 @@ async function use({document, workflow}) {
     const damageType = await dialogUtils.selectDamageType(damageTypes, document.name, 'CHRISPREMADES.Generic.SelectDamageType');
     if (!damageType) return await cancel();
     const sourceEffect = documentUtils.getEffectByIdentifier(document, 'resistanceEffect');
-    if (!sourceEffect) return;
+    if (!sourceEffect) return Logging.addMacroWarning('CPR', 'resistance', 'Resistance effect missing from item.', {notify: 'warn'});
     const effectData = documentUtils.getEffectData(workflow.activity, sourceEffect.id, {parentEntity: concentrationEffect});
     effectData.name = `${effectData.name}: ${CONFIG.DND5E.damageTypes[damageType]?.label ?? damageType}`;
     genericUtils.setProperty(effectData, 'flags.chris-premades.resistance', {

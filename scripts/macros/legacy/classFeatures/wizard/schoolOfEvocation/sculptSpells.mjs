@@ -18,13 +18,13 @@ async function early({document: item, workflow}) {
         selection = dialogSelection.result;
     }
     if (!selection.length) return;
+    selection.forEach(target => workflowUtils.grantRollModifier(workflow, 'succeed', target.id, 'sculpt-spells', item.name));
     const effectData = {
         name: item.name,
         img: item.img,
         origin: item.uuid,
         system: {
             changes: [
-                {key: 'flags.midi-qol.success.ability.save.all', type: 'override', value: 'true', priority: 120},
                 {key: 'flags.midi-qol.superSaver.all', type: 'custom', value: 1, priority: 20}
             ]
         },

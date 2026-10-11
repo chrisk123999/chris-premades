@@ -8,6 +8,10 @@ async function fail({workflow}) {
         await actorUtils.applyConditions(token.actor, ['prone']);
     }));
 }
+/**
+ * Knocks prone each target that failed the save.
+ * Bound on an activity. Fires on `activityPreambleComplete` and `activityRollFinished`.
+ */
 export const proneOnFail = {
     rules: 'all',
     version: '2.0.0',

@@ -1,4 +1,4 @@
-import {automationUtils, dialogUtils, animationUtils, rollUtils, tokenUtils, itemUtils, constants, workflowUtils} from '../../../proxy.mjs'; // Utils come from a proxy from CAT now
+import {automationUtils, dialogUtils, animationUtils, rollUtils, tokenUtils, itemUtils, constants, Logging, workflowUtils} from '../../../proxy.mjs'; // Utils come from a proxy from CAT now
 async function damage({document, workflow}) { // trigger -> document
     if (!workflow.hitTargets.size) return;
     const damageTypes = automationUtils.getConfigValue(document.item, 'damageTypes'); // itemUtils.getConfig -> automationUtils.getConfigValue -- workflow.item -> document.item
@@ -12,7 +12,7 @@ async function use({document, workflow, castData, token}) { // trigger -> docume
     if (!token) return; // Token is included in scope since this is from a workflow
     const lastTargetUuid = document.flags['chris-premades']?.chromaticOrb?.lastTargetUuid ?? workflow.token.document.uuid;
     const lastTarget = await fromUuid(lastTargetUuid);
-    if (automationUtils.getConfigValue(document, 'playAnimation') && animationUtils.jb2aCheck()) {
+    if (automationUtils.getConfigValue(document, 'playAnimation') && animationUtils.jb2aCheck() && animationUtils.sequencerCheck()) {
         const anim = 'jb2a.ranged.03.projectile.01.bluegreen';
         await new Sequence()
             .effect()
@@ -58,7 +58,7 @@ async function use({document, workflow, castData, token}) { // trigger -> docume
         }
     }, {keepId: true});
     const activity = itemUtils.getActivityByIdentifier(workflow.item, 'chromaticOrbBounce'); //  activityUtils.getAc... -> itemUtils.getAc... -- No longer needs {strict: true}
-    if (!activity) return;
+    if (!activity) return Logging.addMacroWarning('CPR', 'chromatic-orb', 'Bounce activity missing from item.', {notify: 'warn'});
     await workflowUtils.syntheticActivityRoll(activity, [nextTarget], {atLevel: castLevel});
 }
 export const chromaticOrb = {
