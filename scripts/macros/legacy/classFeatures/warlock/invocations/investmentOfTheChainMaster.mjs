@@ -16,7 +16,7 @@ async function familiar({document, summon, updates}) {
             if (activityData.type === 'save') genericUtils.setProperty(activityData, 'save.dc', {calculation: '', formula: String(saveDC), value: saveDC});
         });
     });
-    const resistance = await compendiumUtils.getDocumentByIdentifier(cprConstants.packs.legacy.monsterFeatures, 'investment-of-the-chain-master-resistance', {object: true});
+    const resistance = await compendiumUtils.getDocumentByIdentifier(cprConstants.packs.misc.automationItems, 'investment-of-the-chain-master-resistance', {object: true});
     delete resistance._id;
     updates.items.push(resistance);
     await itemUtils.unhideActivities(document, ['find-familiar-command']);

@@ -322,8 +322,8 @@
             "WeaponTypes": "Weapon Types"
         },
         "Error": {
-            "ActorNotFound": "Could not find the summon actor. Check the CAT monster compendium settings and the spell's configured actor names.",
-            "MissingPackItem": "Could not find a required compendium item. Check the CAT monster feature compendium settings."
+            "ActorNotFound": "Could not find the summon actor.",
+            "MissingPackItem": "Could not find a required compendium item."
         },
         "Generic": {
             "CreatureNameAndSize": "{size} {name}",
@@ -1155,7 +1155,7 @@
                 "SummonAberration": {
                     "Claws": "Claws",
                     "EyeRay": "Eye Ray",
-                    "Multiattack": "Multiattack",
+                    "Multiattack": "Multiattack ({numAttacks} Attacks)",
                     "PsychicSlam": "Psychic Slam",
                     "Regeneration": "Regeneration",
                     "WhisperingAura": "Whispering Aura"

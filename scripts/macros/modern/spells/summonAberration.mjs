@@ -8,12 +8,20 @@ const creatureTypes = {
 };
 const translations = 'CHRISPREMADES.Macros.Modern.SummonAberration.';
 const typeItems = {
-    beholderkin: [{identifier: 'summon-aberration-eye-ray', translate: translations + 'EyeRay', flatAttack: true}],
-    slaad: [{identifier: 'summon-aberration-claws', translate: translations + 'Claws', flatAttack: true}, {identifier: 'summon-aberration-regeneration', translate: translations + 'Regeneration', hidden: true}],
-    mindFlayer: [{identifier: 'summon-aberration-psychic-slam', translate: translations + 'PsychicSlam', flatAttack: true}, {identifier: 'summon-aberration-whispering-aura', translate: translations + 'WhisperingAura', flatDC: true, hidden: true}]
+    beholderkin: [
+        {identifier: 'summon-aberration-eye-ray', translate: translations + 'EyeRay', flatAttack: true}
+    ],
+    slaad: [
+        {identifier: 'summon-aberration-claws', translate: translations + 'Claws', flatAttack: true},
+        {identifier: 'summon-aberration-regeneration', translate: translations + 'Regeneration', hidden: true}
+    ],
+    mindFlayer: [
+        {identifier: 'summon-aberration-psychic-slam', translate: translations + 'PsychicSlam', flatAttack: true},
+        {identifier: 'summon-aberration-whispering-aura', translate: translations + 'WhisperingAura', flatDC: true, hidden: true}
+    ]
 };
 async function getFeature(identifier, {translate, flatAttack, flatDC} = {}) {
-    return await compendiumUtils.getDocumentByIdentifier(cprConstants.packs.modern.monsterFeatures, identifier, {object: true, translate, flatAttack, flatDC});
+    return await compendiumUtils.getDocumentByIdentifier(cprConstants.packs.misc.automationItems, identifier, {object: true, translate, flatAttack, flatDC});
 }
 async function use({document, workflow}) {
     const creatureType = creatureTypes[workflow.activity.identifier];
@@ -27,7 +35,7 @@ async function use({document, workflow}) {
     }
     const spellLevel = workflowUtils.getCastLevel(workflow);
     const saveDC = itemUtils.getSaveDC(document);
-    const items = [await getFeature('summon-aberration-multiattack', {translate: translations + 'Multiattack'})];
+    const items = [await getFeature('multiattack', {translate: _loc(translations + 'Multiattack', {numAttacks: Math.floor(spellLevel / 2)})})];
     const attackBonus = itemUtils.getSpellAttackBonus(document);
     for (const entry of typeItems[creatureType]) {
         const feature = await getFeature(entry.identifier, {translate: entry.translate, flatAttack: entry.flatAttack ? attackBonus : undefined, flatDC: entry.flatDC ? saveDC : undefined});

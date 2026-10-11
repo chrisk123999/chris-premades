@@ -3,12 +3,12 @@ import {actorUtils, automationUtils, compendiumUtils, DamageBonus, dialogUtils, 
 const translations = 'CHRISPREMADES.Macros.Legacy.DrakeCompanion.';
 const damageTypes = ['acid', 'cold', 'fire', 'lightning', 'poison'];
 const sizes = ['sm', 'med', 'lg'];
-async function getFeature(identifier, translate) {
-    return await compendiumUtils.getDocumentByIdentifier(cprConstants.packs.legacy.monsterFeatures, identifier, {object: true, translate});
+async function getFeature(identifier, translate, pack = cprConstants.packs.misc.automationItems) {
+    return await compendiumUtils.getDocumentByIdentifier(pack, identifier, {object: true, translate});
 }
 function getUpgrades(actor, classIdentifier) {
     const classLevel = actor.classes?.[classIdentifier]?.system.levels;
-    if (!classLevel) return;
+    if (!classLevel) return {classLevel: 0, upgrades: 0};
     return {classLevel, upgrades: Math.floor((classLevel + 1) / 8)};
 }
 async function use({document, workflow}) {
@@ -21,7 +21,7 @@ async function use({document, workflow}) {
     const [sourceActor, ...items] = await Promise.all([
         compendiumUtils.getDocumentByIdentifier(cprConstants.packs.legacy.summons, 'drakeCompanion'),
         getFeature('drake-companion-draconic-essence', translations + 'DraconicEssence'),
-        getFeature('drake-companion-infused-strikes', translations + 'InfusedStrikes'),
+        getFeature('drake-companion-infused-strikes', translations + 'InfusedStrikes', cprConstants.packs.legacy.monsterFeatures),
         getFeature('drake-companion-bite', translations + 'Bite'),
         getFeature('drake-companion-dodge', translations + 'Dodge')
     ]);

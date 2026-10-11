@@ -12,7 +12,7 @@ const creatureNames = {
 };
 const beastFeatures = {
     land: ['primal-companion-charge', 'primal-companion-maul'],
-    sea: ['primal-companion-amphibious', 'primal-companion-binding-strike'],
+    sea: ['amphibious', 'primal-companion-binding-strike'],
     sky: ['primal-companion-flyby', 'primal-companion-shred']
 };
 const movement = {
@@ -34,7 +34,7 @@ async function use({document, workflow}) {
     const flatAttack = prof + workflow.actor.system.abilities.wis.mod;
     const [sourceActor, features, actionItems] = await Promise.all([
         compendiumUtils.getDocumentByIdentifier(cprConstants.packs.legacy.summons, 'primalCompanion'),
-        getFeatures(cprConstants.packs.legacy.monsterFeatures, ['primal-companion-primal-bond', ...beastFeatures[creatureType]], {flatAttack, flatDC: 8 + flatAttack}),
+        getFeatures(cprConstants.packs.misc.automationItems, ['primal-companion-primal-bond', ...beastFeatures[creatureType]], {flatAttack, flatDC: 8 + flatAttack}),
         getFeatures(cprConstants.packs.legacy.misc, actions)
     ]);
     if (!sourceActor) return genericUtils.notify('CHRISPREMADES.Error.ActorNotFound', {type: 'warn'});

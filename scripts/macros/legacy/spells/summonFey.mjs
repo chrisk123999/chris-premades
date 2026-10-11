@@ -6,11 +6,12 @@ const creatureTypes = {
     'summon-fey-tricksy': 'tricksy'
 };
 const translations = 'CHRISPREMADES.Macros.Legacy.SummonFey.';
-async function getFeature(identifier, {translate, flatAttack, flatDC} = {}) {
-    return await compendiumUtils.getDocumentByIdentifier(cprConstants.packs.legacy.monsterFeatures, identifier, {object: true, translate, flatAttack, flatDC});
+async function getFeature(identifier, {translate, flatAttack, flatDC, pack = cprConstants.packs.misc.automationItems} = {}) {
+    return await compendiumUtils.getDocumentByIdentifier(pack, identifier, {object: true, translate, flatAttack, flatDC});
 }
 async function getMoodFeature(document, creatureType) {
-    const feature = await getFeature('summon-fey-' + creatureType, {
+    const featureID = 'summon-fey-' + (creatureType === 'tricksy' ? creatureType + '-legacy' : creatureType);
+    const feature = await getFeature(featureID, {
         translate: translations + creatureType.capitalize(),
         flatDC: creatureType === 'mirthful' ? itemUtils.getSaveDC(document) : undefined
     });
@@ -33,9 +34,9 @@ async function use({document, workflow}) {
     }
     const spellLevel = workflowUtils.getCastLevel(workflow);
     const items = await Promise.all([
-        getFeature('summon-fey-multiattack', {translate: _loc(translations + 'Multiattack', {numAttacks: Math.floor(spellLevel / 2)})}),
+        getFeature('multiattack', {translate: _loc(translations + 'Multiattack', {numAttacks: Math.floor(spellLevel / 2)})}),
         getFeature('summon-fey-shortsword', {translate: translations + 'Shortsword', flatAttack: itemUtils.getSpellAttackBonus(document)}),
-        getFeature('summon-fey-fey-step', {translate: translations + 'FeyStep'}),
+        getFeature('fey-step', {translate: translations + 'FeyStep', pack: cprConstants.packs.legacy.monsterFeatures}),
         getMoodFeature(document, creatureType)
     ]);
     if (items[1]) itemUtils.addDamageBonus(items[1], spellLevel);
@@ -54,6 +55,7 @@ async function use({document, workflow}) {
             }
         }
     };
+    genericUtils.setProperty(updates, 'flags.cat.automation.rules', '2014');
     const summon = await summonUtils.createSummon(workflow.actor, sourceActor, {
         items,
         updates,
@@ -73,11 +75,12 @@ async function use({document, workflow}) {
 async function feyStep({document, workflow}) {
     const {animation, options} = automationUtils.getResolvedAnimation(document, 'animation');
     await tokenUtils.teleportToken(workflow.token.document, {range: workflow.activity.range.value, animation, options});
-    const moodItem = actorUtils.getItemByIdentifiers(workflow.actor, Object.keys(creatureTypes));
+    const tricksy = 'summon-fey-tricksy-' + (documentUtils.getRules(workflow.actor) === '2014' ? 'legacy' : 'modern');
+    const moodItem = actorUtils.getItemByIdentifiers(workflow.actor, ['summon-fey-fuming', 'summon-fey-mirthful', tricksy]);
     if (!moodItem) return;
     const identifier = documentUtils.getIdentifier(moodItem);
     if (identifier === 'summon-fey-fuming') return await workflowUtils.completeItemUse(moodItem);
-    if (identifier === 'summon-fey-tricksy') return await workflowUtils.syntheticItemRoll(moodItem);
+    if (identifier === tricksy) return await workflowUtils.syntheticItemRoll(moodItem);
     const nearby = tokenUtils.findNearby(workflow.token.document, 10, {disposition: 'enemy'});
     if (!nearby.length) return;
     const selection = await dialogUtils.selectTargetDialog(document.name + ': ' + moodItem.name, translations + 'Select', nearby);
@@ -123,7 +126,7 @@ export const summonFey = {
     }
 };
 export const summonFeyFeyStep = {
-    name: 'Summon Fey: Fey Step',
+    name: 'Fey Step',
     version: summonFey.version,
     rules: summonFey.rules,
     roll: [

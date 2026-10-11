@@ -134,7 +134,7 @@ export {findGreaterSteed as 'find-greater-steed', findSteed as 'find-steed', fin
 export {huntersMark as 'hunters-mark', huntersMarkAttack as 'hunters-mark-attack'} from './legacy/spells/huntersMark.mjs';
 export {lightningLure as 'lightning-lure'} from './legacy/spells/lightningLure.mjs';
 export {shockingGrasp as 'shocking-grasp'} from './legacy/spells/shockingGrasp.mjs';
-export {summonFey as 'summon-fey', summonFeyFeyStep as 'summon-fey-fey-step'} from './legacy/spells/summonFey.mjs';
+export {summonFey as 'summon-fey', summonFeyFeyStep as 'fey-step'} from './legacy/spells/summonFey.mjs';
 // ** Equipment
 export {amuletOfTheLycanthrope as 'amulet-of-the-lycanthrope', amuletOfTheLycanthropeEffect as 'amulet-of-the-lycanthrope-effect'} from './legacy/equipment/amuletOfTheLycanthrope.mjs';
 export {harkonsBite as 'harkons-bite', harkonsBiteEffect as 'harkons-bite-effect'} from './legacy/equipment/harkonsBite.mjs';
