@@ -5,7 +5,6 @@ export {attackRider} from './generic/attackRider.mjs';
 export {banish} from './generic/banish.mjs';
 export {bladeSpell} from './generic/bladeSpell.mjs';
 export {choiceRemoveCondition, turnEndChoiceRemoveCondition, turnStartChoiceRemoveCondition} from './generic/choiceRemoveCondition.mjs';
-export {combatStartItemUses} from './generic/combatStartItemUses.mjs';
 export {conditionAutoSave} from './generic/conditionAutoSave.mjs';
 export {contestedCheck} from './generic/contestedCheck.mjs';
 export {damageBonusToOneRoll} from './generic/damageBonusToOneRoll.mjs';

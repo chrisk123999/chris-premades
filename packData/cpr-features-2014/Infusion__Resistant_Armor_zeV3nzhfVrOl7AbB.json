@@ -432,7 +432,6 @@
       "_id": "kIRqC1Mip5ajbfm2",
       "origin": null,
       "type": "enchantment",
-      "start": null,
       "folder": null,
       "sort": 0,
       "_stats": {
@@ -460,7 +459,6 @@
         ]
       },
       "disabled": false,
-      "start": null,
       "duration": {
         "value": null,
         "units": "seconds",

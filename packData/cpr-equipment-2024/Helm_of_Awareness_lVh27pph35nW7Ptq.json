@@ -78,7 +78,6 @@
         ]
       },
       "disabled": false,
-      "start": null,
       "duration": {
         "value": null,
         "units": "seconds",

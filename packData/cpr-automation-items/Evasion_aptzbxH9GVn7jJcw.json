@@ -1,0 +1,118 @@
+{
+  "name": "Evasion",
+  "type": "feat",
+  "_id": "aptzbxH9GVn7jJcw",
+  "img": "icons/magic/light/beam-red-orange.webp",
+  "system": {
+    "activities": {},
+    "uses": {
+      "spent": 0,
+      "recovery": [],
+      "max": ""
+    },
+    "advancement": {},
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "identifier": "evasion",
+    "source": {
+      "revision": 1,
+      "rules": "2014",
+      "book": "",
+      "page": "",
+      "custom": "",
+      "license": ""
+    },
+    "crewed": false,
+    "enchant": {},
+    "prerequisites": {
+      "items": [],
+      "repeatable": false,
+      "level": null
+    },
+    "properties": [],
+    "requirements": "",
+    "type": {
+      "value": "monster",
+      "subtype": ""
+    }
+  },
+  "effects": [
+    {
+      "name": "Evasion",
+      "img": "icons/magic/light/beam-red-orange.webp",
+      "system": {
+        "magical": false,
+        "origin": {
+          "item": "Compendium.chris-premades.CPRAutomationItems.Item.aptzbxH9GVn7jJcw",
+          "actor": null,
+          "behavior": null,
+          "effect": null,
+          "message": null
+        },
+        "changes": [
+          {
+            "key": "flags.midi-qol.superSaver.dex",
+            "type": "custom",
+            "value": 1,
+            "phase": "initial",
+            "_id": "wDKRBeA6GhmvyDA9",
+            "conditions": "{}",
+            "replacement": "",
+            "priority": null
+          }
+        ],
+        "conditions": "{}",
+        "rider": {
+          "statuses": []
+        }
+      },
+      "type": "base",
+      "_id": "xMPJhZ4ilZsf5hd4",
+      "disabled": false,
+      "duration": {
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
+      },
+      "description": "",
+      "origin": "Compendium.chris-premades.CPRAutomationItems.Item.aptzbxH9GVn7jJcw",
+      "tint": "#ffffff",
+      "transfer": true,
+      "statuses": [],
+      "showIcon": 1,
+      "folder": null,
+      "sort": 0,
+      "flags": {
+        "dae": {
+          "disableCondition": "",
+          "stackable": "noneName",
+          "expiryMode": "delete",
+          "durationExpression": "",
+          "macroRepeat": "none",
+          "disableIncapacitated": false,
+          "specialDuration": []
+        },
+        "core": {
+          "overlay": false
+        }
+      },
+      "_stats": {
+        "coreVersion": "14.369",
+        "systemId": "dnd5e",
+        "systemVersion": "6.0.6"
+      },
+      "_key": "!items.effects!aptzbxH9GVn7jJcw.xMPJhZ4ilZsf5hd4"
+    }
+  ],
+  "folder": null,
+  "flags": {},
+  "_stats": {
+    "coreVersion": "14.369",
+    "systemId": "dnd5e",
+    "systemVersion": "6.0.6"
+  },
+  "_key": "!items!aptzbxH9GVn7jJcw"
+}

@@ -457,14 +457,6 @@
       "_id": "SEol8nv7uXbBLGSx",
       "origin": null,
       "type": "enchantment",
-      "start": {
-        "time": 3936,
-        "combat": null,
-        "combatant": null,
-        "initiative": null,
-        "round": null,
-        "turn": null
-      },
       "folder": null,
       "sort": 0,
       "_stats": {

@@ -543,10 +543,6 @@
                     "SpellLevelHint": "Limit this feature by spell level.",
                     "SpellSchoolHint": "Limit this feature by spell school."
                 },
-                "CombatStartItemUses": {
-                    "FromZero": "Trigger From Zero Only",
-                    "Minimum": "Minimum Item Uses"
-                },
                 "ConsumeItemToUse": "Consume {item} to use this feature?",
                 "ContestedCheck": {
                     "AdvantageMaxSizeHint": "Roll the contest with advantage when every target is this size or smaller.",
@@ -905,17 +901,25 @@
                 "InfuseItem": {
                     "ArcanePropulsionGauntlet": "Arcane Propulsion Gauntlet",
                     "BootsOfTheWindingPath": "Boots of the Winding Path",
+                    "ChannelMagic": "Channel Magic",
                     "ChooseItem": "Choose a target item:",
                     "ExtraBonus": "Grant +2 Bonus",
+                    "ForceStrike": "ForceStrike",
                     "HelmAwareness": "Helm of Awareness",
+                    "HomunculusNotActive": "Place your homunculus token before using its features.",
+                    "HomunculusHeart": "Heart of Homunculus Servant",
+                    "HomunculusServant": "Homunculus Servant",
+                    "InvalidSpell": "Only spells with a range of touch can be cast through your homunculus.",
                     "NoArmor": "Target has no valid non-magical armor!",
                     "NoFoci": "Target has no valid non-magical rod, staff, or wand!",
                     "NoShield": "Target has no valid non-magical shield!",
                     "NotProne": "You have no prone status to remove!",
                     "NoWeapon": "Target has no valid non-magical weapon!",
                     "PlanName": "Infusion",
+                    "ReactionUsed": "Your homunculus has already used its reaction.",
                     "Resistance": "Resistance Type",
-                    "SpellRing": "Spell-Refueling Ring"
+                    "SpellRing": "Spell-Refueling Ring",
+                    "TooFar": "Your homunculus is out of range for Channel Magic."
                 },
                 "InsightfulManipulator": {
                     "ChaScore": "Charisma Score",

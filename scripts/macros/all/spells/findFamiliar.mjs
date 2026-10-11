@@ -40,7 +40,7 @@ async function pocket({workflow}) {
     }
 }
 async function touch({document, workflow}) {
-    const summon = summonUtils.getSummonsByIdentifier('findFamiliar', {actor: workflow.actor});
+    const [summon] = summonUtils.getSummonsByIdentifier('findFamiliar', {actor: workflow.actor});
     if (!summon) return;
     const effectData = documentUtils.getBaseEffectData(workflow.activity, {
         name: document.name + ': ' + workflow.activity.name,

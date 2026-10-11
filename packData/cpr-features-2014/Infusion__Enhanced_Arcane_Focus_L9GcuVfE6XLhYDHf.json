@@ -432,14 +432,6 @@
       "_id": "nmzUohwqietW1PLl",
       "origin": null,
       "type": "enchantment",
-      "start": {
-        "time": 3936,
-        "combat": null,
-        "combatant": null,
-        "initiative": null,
-        "round": null,
-        "turn": null
-      },
       "folder": null,
       "sort": 0,
       "_stats": {
@@ -467,7 +459,6 @@
         ]
       },
       "disabled": false,
-      "start": null,
       "duration": {
         "value": null,
         "units": "seconds",

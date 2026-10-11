@@ -1,9 +1,14 @@
 # 2.1.2 Pre-Release:
 ## Update Notes:
-- Automated cantrips:
+- Automated Cantrips:
   - 2014: Blade Ward, Booming Blade, Chill Touch, Green-Flame Blade, Lightning Lure, Mind Sliver, Sapping Sting, Shocking Grasp, Thorn Whip and Toll the Dead.
   - 2024: Acid Splash, Blade Ward, Chill Touch, Dissolution, Guidance, Mind Sliver, Resistance, Shocking Grasp, Thorn Whip, Toll the Dead and True Strike.
-- New generic macros: `bladeSpell`, `pullOnFail`, `pullOnHit` and `spellAnimation`.
+- Automated Class Features:
+  - 2014 Artificer: base class and all infusions
+  - 2024 Artificer: base class
+- Automated Equipment:
+  - 2024: Boots of the Winding Path, Helm of Awareness, Mind Sharpener, Repulsion Shield, Spell-Refueling Ring
+- New generic macros: `bladeSpell`, `ignoreCover`, `pullOnFail`, `pullOnHit` and `spellAnimation`.
 - New generic animations: Beam Spell, Buff Spell, Burst Spell and Touch Spell.
 - New animations: Booming Blade, Green-Flame Blade and True Strike.
 - Effects that end on an attack, a spell cast or reaching 0 HP use midi-qol's special durations, following CAT 0.1.2. Items already in a world need their automation reapplied.
@@ -13,40 +18,12 @@
 - Requires dnd5e 6.0 or later, CAT 0.1.0, midi-qol 14.6.0 or later, and DAE 14.6.0 or later.
 - Compendiums are migrated to dnd5e 6. Effects use native expiry, roll modes and token keys instead of DAE special durations, midi advantage flags and ATL keys.
 - Items already in a world need their automation reapplied.
-- Generic Macros:
-  - `ignoreCover`, cancels cover with an attack bonus.
   - `itemRecovery`, adjusts use recovery on a specified item by enchantment.
 ## Bug Fixes:
 - Rage, Bladesong and contested checks no longer spend their uses or spell slots when blocked or cancelled.
 - Darkness: the "Spreads Around Corners" option works again, without Walled Templates.
 - Superior Inspiration, Perfect Self and Perfect Focus recover uses when you roll initiative.
 - Also fixed: Aspect of the Wilds, Brutal Critical, Dedicated Weapon, Drake Companion, Extended Spell, Fall, Fiendish Vigor, Find Familiar, Hex, Hex Warrior, Hound of Ill Omen, Hunter's Mark, Manifest Mind, Movement Animation, Natural Attunement, Pact of the Blade, Pact of the Chain, Protection, Psychic Blades, Spell Thief, Steady Aim, Stunning Strike, Summon Fey, Unarmored Defense, Undead Thralls and Wild Shape.
-## Updated Legacy Automations:
-- Infuse Item
-- Infusion: Arcane Propulsion Armor
-- Infusion: Armor of Magical Strength
-- Infusion: Boots of the Winding Path
-- Infusion: Enhanced Arcane Focus
-- Infusion: Enhanced Defense
-- Infusion: Enhanced Weapon
-- Infusion: Helm of Awareness
-- Infusion: Mind Sharpener
-- Infusion: Radiant Weapon
-- Infusion: Repeating Shot
-- Infusion: Repulsion Shield
-- Infusion: Resistant Armor
-- Infusion: Returning Weapon
-- Infusion: Spell-Refueling Ring
-- Infusion: Replicate Magic Item
-## Updated Modern Automations:
-- Tinker's Magic
-- Magic Item Plans
-- Replicate Magic Item
-- Boots of the Winding Path
-- Helm of Awareness
-- Mind Sharpener
-- Repulsion Shield
-- Spell-Refueling Ring
 
 # 2.0.4 Pre-Release:
 ## Update Notes:

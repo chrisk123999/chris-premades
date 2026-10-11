@@ -397,7 +397,6 @@
         ]
       },
       "disabled": false,
-      "start": null,
       "duration": {
         "value": null,
         "units": "seconds",
@@ -454,7 +453,6 @@
         "changes": []
       },
       "disabled": false,
-      "start": null,
       "duration": {
         "value": 1,
         "units": "rounds",
