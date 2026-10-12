@@ -1,4 +1,4 @@
-import {automationUtils, constants, dialogUtils, effectUtils, genericUtils, itemUtils, workflowUtils} from '../../../../proxy.mjs';
+import {automationUtils, constants, dialogUtils, effectUtils, genericUtils, itemUtils, Logging, workflowUtils} from '../../../../proxy.mjs';
 async function rest({document: activity}) {
     if (!automationUtils.getConfigValue(activity.item, 'auto')) return;
     await workflowUtils.syntheticActivityRoll(activity);
@@ -14,7 +14,7 @@ async function use({document: activity}) {
             tags[w.id] = _loc('CHRISPREMADES.Macros.Legacy.DedicatedWeapon.Current');
         return true;
     });
-    if (!items.length) return genericUtils.notify('CHRISPREMADES.Macros.Legacy.DedicatedWeapon.NoValid');
+    if (!items.length) return Logging.addMacroWarning('CPR', 'dedicated-weapon', 'CHRISPREMADES.Macros.Legacy.DedicatedWeapon.NoValid', {notify: 'info'});
     const choice = await dialogUtils.selectDocumentDialog(activity.item.name, '', items, {displayTooltips: true, addNoneDocument: true, tags});
     if (!choice) return;
     const enchantData = activity.item.effects.contents[0]?.toObject();

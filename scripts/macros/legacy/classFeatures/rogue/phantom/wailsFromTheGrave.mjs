@@ -1,13 +1,14 @@
-import {actorUtils, automationUtils, combatUtils, dialogUtils, itemUtils, tokenUtils, workflowUtils} from '../../../../../proxy.mjs';
+import {actorUtils, automationUtils, combatUtils, dialogUtils, itemUtils, Logging, tokenUtils, workflowUtils} from '../../../../../proxy.mjs';
 async function used({actor, data: {workflow, targetToken}}) {
     const item = actorUtils.getItemByIdentifier(actor, 'wails-from-the-grave');
     const activity = item ? itemUtils.getActivityByIdentifier(item, 'damage') : undefined;
-    if (!activity || !combatUtils.isOwnTurn(workflow.token)) return;
+    if (!combatUtils.isOwnTurn(workflow.token)) return;
+    if (!activity) return Logging.addMacroWarning('CPR', 'wails-from-the-grave', 'Damage activity missing from item.', {notify: 'warn'});
     const tokensOfTheDeparted = actorUtils.getItemByIdentifier(actor, 'tokens-of-the-departed');
     const tokenActivity = tokensOfTheDeparted?.system.uses.value ? itemUtils.getActivityByIdentifier(tokensOfTheDeparted, 'use-wail') : undefined;
-    if (!item.system.uses.value && !tokenActivity) return;
+    if (!item.system.uses.value && !tokenActivity) return Logging.addMacroWarning('CPR', 'wails-from-the-grave', 'No uses remaining.');
     const candidates = tokenUtils.findNearby(targetToken, 30, {disposition: 'ally'}).filter(token => tokenUtils.canSee(workflow.token.document, token));
-    if (!candidates.length) return;
+    if (!candidates.length) return Logging.addMacroWarning('CPR', 'wails-from-the-grave', 'No creature within 30 feet of the target.');
     const selection = await dialogUtils.selectTargetDialog(item.name, _loc('CHRISPREMADES.Macros.Legacy.WailsFromTheGrave.Select', {item: item.name}), candidates, {type: 'one'});
     if (!selection?.result) return;
     let spendToken = false;

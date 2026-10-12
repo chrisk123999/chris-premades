@@ -1,8 +1,8 @@
-import {actorUtils, automationUtils, documentUtils, effectUtils} from '../../proxy.mjs';
+import {actorUtils, automationUtils, documentUtils, effectUtils, Logging} from '../../proxy.mjs';
 async function use({document, workflow}) {
     if (workflow.failedSaves.size) return;
     const sourceEffectId = automationUtils.getGenericConfigValue(document, 'chris-premades', 'hide', 'effect');
-    if (!sourceEffectId) return;
+    if (!sourceEffectId) return Logging.addMacroWarning('CPR', documentUtils.getIdentifier(workflow.item), 'No hide effect configured.', {notify: 'warn'});
     const effectData = documentUtils.getEffectData(document, sourceEffectId);
     const macros = [];
     const supremeSneak = actorUtils.getItemByIdentifier(workflow.actor, 'supremeSneak');
@@ -15,6 +15,14 @@ async function use({document, workflow}) {
     const {animation} = automationUtils.getResolvedAnimation(document, 'animation', {source: 'chris-premades', identifier: 'hide', rules: 'all'});
     await effectUtils.createEffects(workflow.actor, [effectData], {macros, createAnimation: animation, deleteAnimation: animation});
 }
+/**
+ * Applies a hide effect to the user once the roll finishes, unless any target failed its save.
+ * Bound on an activity. Fires on `activityRollFinished`.
+ *
+ * Config:
+ * - `effect`: effect applied to the user.
+ * - `animation`: played when the effect is created and deleted.
+ */
 export const hide = {
     rules: 'all',
     version: '2.0.3',

@@ -1,4 +1,4 @@
-import {automationUtils, constants, dialogUtils, documentUtils, itemUtils, queryUtils, tokenUtils, workflowUtils} from '../../../../../proxy.mjs';
+import {automationUtils, constants, dialogUtils, documentUtils, itemUtils, Logging, queryUtils, tokenUtils, workflowUtils} from '../../../../../proxy.mjs';
 export async function arcaneWardHelper({document: item, ditem, projectedWard, token, targetToken}) {
     if (!ditem.isHit) return;
     const temp = ditem.oldTempHP * automationUtils.getConfigValue(item, 'tempFirst');
@@ -25,7 +25,7 @@ async function late({document, workflow}) {
     if (!spellLevel) return;
     if (workflowUtils.isSustainedRoll(workflow)) return;
     const sourceClass = itemUtils.getAdvancementSourceItem(document) ?? workflow.actor.classes.wizard;
-    if (!sourceClass) return;
+    if (!sourceClass) return Logging.addMacroWarning('CPR', 'arcane-ward', 'Wizard class not found.', {notify: 'warn'});
     const spellcastingAbility = automationUtils.getConfigValue(document, 'spellcastingAbility');
     const maxUses = sourceClass.system.levels * 2 + workflow.actor.system.abilities[spellcastingAbility].mod;
     let add = spellLevel * 2;

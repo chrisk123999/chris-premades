@@ -1,10 +1,10 @@
-import {actorUtils, automationUtils, constants, documentUtils, effectUtils, genericUtils} from '../../../../../proxy.mjs';
+import {actorUtils, automationUtils, constants, documentUtils, effectUtils, Logging} from '../../../../../proxy.mjs';
 async function preChecks({workflow}) {
     if (!automationUtils.getConfigValue(workflow.item, 'enforceArmorRestriction')) return;
     const armorType = workflow.actor.system.attributes.ac.equippedArmor?.system.type.value;
     const hasShield = !!workflow.actor.system.attributes.ac.equippedShield;
     if (!['medium', 'heavy'].includes(armorType) && !hasShield) return;
-    genericUtils.notify('CHRISPREMADES.Macros.Legacy.Bladesong.ArmorRestriction', {type: 'warn'});
+    Logging.addMacroWarning('CPR', 'bladesong', 'CHRISPREMADES.Macros.Legacy.Bladesong.ArmorRestriction', {notify: 'warn'});
     workflow.aborted = true;
     return true;
 }

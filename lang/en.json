@@ -164,6 +164,7 @@
             "Color": "Color",
             "Colors": {
                 "Auto": "Auto (Damage Type)",
+                "Black": "Black",
                 "Blue": "Blue",
                 "Blue02": "Blue 2",
                 "Cycle": "Cycle",
@@ -725,7 +726,9 @@
                 "Teleport": {
                     "RangeFromRoll": "Range From Utility Roll",
                     "RangeFromRollHint": "Use the activity's utility roll total as the maximum teleport distance. Falls back to Range, then the activity's own range, when nothing was rolled.",
-                    "RangeHint": "Maximum teleport distance. Leave blank to use the activity's own range."
+                    "RangeHint": "Maximum teleport distance. Leave blank to use the activity's own range.",
+                    "RequireSight": "Require Sight",
+                    "RequireSightHint": "Only allow spaces the user can see."
                 },
                 "UseOnEvent": {
                     "Empty": "All Empty",

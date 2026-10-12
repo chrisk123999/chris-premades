@@ -1,7 +1,7 @@
-import {actorUtils, automationUtils, dialogUtils, documentUtils, rollUtils, tokenUtils, workflowUtils} from '../../../../../proxy.mjs';
+import {actorUtils, automationUtils, dialogUtils, documentUtils, Logging, rollUtils, tokenUtils, workflowUtils} from '../../../../../proxy.mjs';
 async function use({workflow, actor, token, item, activity}) {
     const classIdentifier = automationUtils.getConfigValue(item, 'classIdentifier');
-    if (!actor.classes[classIdentifier]) return;
+    if (!actor.classes[classIdentifier]) return Logging.addMacroWarning('CPR', 'channel-divinity-inspiring-smite', 'Class not found; check class identifier config.', {notify: 'warn'});
     const targets = tokenUtils.findNearby(token, automationUtils.getConfigValue(item, 'range'), {disposition: 'ally', includeToken: true});
     if (!targets.length) return;
     const {roll} = await rollUtils.rollDice('2d8 + @classes.' + classIdentifier + '.levels', {document: activity, message: true, flavor: item.name, manual: true});
@@ -18,7 +18,7 @@ async function use({workflow, actor, token, item, activity}) {
 }
 async function offer({document: item, workflow}) {
     if (documentUtils.getIdentifier(workflow.item) !== 'divine-smite') return;
-    if (!actorUtils.getItemByIdentifier(workflow.actor, 'channel-divinity')?.system.uses?.value) return;
+    if (!actorUtils.getItemByIdentifier(workflow.actor, 'channel-divinity')?.system.uses?.value) return Logging.addMacroWarning('CPR', 'channel-divinity-inspiring-smite', 'No Channel Divinity uses remaining.');
     const selection = await dialogUtils.confirm(item.name, _loc('CHRISPREMADES.Macros.Legacy.InspiringSmite.Offer', {item: item.name}));
     if (!selection) return;
     await workflowUtils.completeItemUse(item);

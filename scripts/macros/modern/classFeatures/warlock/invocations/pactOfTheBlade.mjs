@@ -1,4 +1,4 @@
-import {actorUtils, automationUtils, constants, dialogUtils, documentUtils, effectUtils, genericUtils, itemUtils} from '../../../../../proxy.mjs';
+import {actorUtils, automationUtils, constants, dialogUtils, documentUtils, effectUtils, genericUtils, itemUtils, Logging} from '../../../../../proxy.mjs';
 const bondIdentifier = 'pactOfTheBladeBondedEnchantment';
 function bondData(document, workflow) {
     const changes = [
@@ -36,7 +36,7 @@ async function bond({document, workflow}) {
     if (workflow.activity.identifier !== 'bond') return;
     const baseWeapons = automationUtils.getConfigValue(document, 'weapons');
     const validWeapons = workflow.actor.itemTypes.weapon.filter(item => item.system.properties.has('mgc') && baseWeapons.includes(item.system.type.baseItem));
-    if (!validWeapons.length) return;
+    if (!validWeapons.length) return Logging.addMacroWarning('CPR', 'pact-of-the-blade', 'No magic weapon of a valid type.');
     const selection = validWeapons.length === 1 ? validWeapons[0] : await dialogUtils.selectDocumentDialog(document.name, _loc('CHRISPREMADES.Macros.Modern.PactOfTheBlade.SelectBond'), validWeapons, {sort: 'alphabetical'});
     if (!selection) return;
     await clearBonds(workflow.actor);
@@ -46,7 +46,7 @@ async function conjure({document, workflow}) {
     if (workflow.activity.identifier !== 'conjure') return;
     const baseWeapons = automationUtils.getConfigValue(document, 'weapons');
     const documents = (await Promise.all(baseWeapons.map(async id => await fromUuid(CONFIG.DND5E.weaponIds[id])))).filter(item => item);
-    if (!documents.length) return;
+    if (!documents.length) return Logging.addMacroWarning('CPR', 'pact-of-the-blade', 'No valid pact weapons found.');
     const selection = await dialogUtils.selectDocumentDialog(document.name, _loc('CHRISPREMADES.Macros.Modern.PactOfTheBlade.Conjure'), documents, {sort: 'alphabetical'});
     if (!selection) return;
     await clearBonds(workflow.actor);

@@ -1,4 +1,4 @@
-import {actorUtils, automationUtils, documentUtils, effectUtils, itemUtils, workflowUtils} from '../../../../../proxy.mjs';
+import {actorUtils, automationUtils, documentUtils, effectUtils, itemUtils, Logging, workflowUtils} from '../../../../../proxy.mjs';
 async function naturalAttack({document, workflow}) {
     if (!workflowUtils.isAttackType(workflow, 'meleeAttack')) return;
     let isNatural = workflow.item.system.type?.value === 'natural';
@@ -21,7 +21,7 @@ async function naturalAttack({document, workflow}) {
 async function use({document, workflow}) {
     if (workflow.activity.identifier !== 'transform') return;
     const sourceEffect = documentUtils.getEffectByIdentifier(document, 'formOfTheBeastEffect');
-    if (!sourceEffect) return;
+    if (!sourceEffect) return Logging.addMacroWarning('CPR', 'form-of-the-beast-warlock', 'Form of the Beast effect missing from item.', {notify: 'warn'});
     const config = automationUtils.getConfigValues(document, ['classIdentifier', 'animation', 'diceSteps', 'maxDenomination', 'itemIdentifiers', 'activityIdentifiers']);
     const levels = workflow.actor.classes[config.classIdentifier]?.system.levels ?? 0;
     const identifiers = ['bite', 'claw'];

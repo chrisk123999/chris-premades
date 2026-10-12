@@ -1,7 +1,7 @@
-import {documentUtils, effectUtils} from '../../../../../proxy.mjs';
+import {documentUtils, effectUtils, Logging} from '../../../../../proxy.mjs';
 async function use({document, workflow}) {
     const [casterEffect, targetEffect] = document.effects.filter(effect => !effect.transfer);
-    if (!casterEffect || !targetEffect) return;
+    if (!casterEffect || !targetEffect) return Logging.addMacroWarning('CPR', 'telepathic-speech', 'Telepathic Speech effects missing from item.', {notify: 'warn'});
     const [effect] = await effectUtils.createEffects(workflow.actor, [documentUtils.getEffectData(workflow.activity, casterEffect.id, {activityUuid: workflow.activity.uuid})]);
     if (!effect) return;
     const targetEffectData = documentUtils.getEffectData(workflow.activity, targetEffect.id, {activityUuid: workflow.activity.uuid});

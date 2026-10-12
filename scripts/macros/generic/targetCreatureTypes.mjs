@@ -15,6 +15,17 @@ async function filterTargets({document: item, workflow}) {
     const selection = await dialogUtils.selectTargetDialog(item.name, 'CHRISPREMADES.Macros.Generic.TargetCreatureTypes.ChooseTargetsSelect', candidates, {type: 'multiple', maxAmount: candidates.length, skipDeadAndUnconscious: false});
     await workflowUtils.updateTargets(workflow, selection?.result ?? []);
 }
+/**
+ * Removes targets that do not match the configured creature types.
+ * Bound on an item. Fires on `itemPreambleComplete`.
+ * Targets without an actor are always removed.
+ *
+ * Config:
+ * - `creatureTypes`: keep only targets of these creature types. Leave empty to skip the creature type check.
+ * - `invert`: remove targets of the selected creature types instead of keeping them.
+ * - `aliveOnly`: remove targets at 0 hit points.
+ * - `chooseTargets`: for area activities, pick which of the remaining targets to keep.
+ */
 export const targetCreatureTypes = {
     rules: 'all',
     version: '2.0.4',

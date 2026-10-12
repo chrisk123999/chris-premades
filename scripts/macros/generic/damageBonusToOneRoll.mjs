@@ -1,4 +1,4 @@
-import {actorUtils, automationUtils, constants, DamageBonus, documentUtils, workflowUtils} from '../../proxy.mjs';
+import {actorUtils, automationUtils, constants, DamageBonus, documentUtils, Logging, workflowUtils} from '../../proxy.mjs';
 export const identifiersConfig = {
     default: [],
     type: 'selectIdentifiers',
@@ -69,10 +69,35 @@ async function damage({document, workflow}) {
     if (config.useActivityCosts) {
         if (!workflow.hitTargets.size) return;
         bonus.withDefaultCosts().initialize(workflow);
-        if (!DamageBonus.CheckCost(bonus)) return;
+        if (!DamageBonus.CheckCost(bonus)) return Logging.addMacroWarning('CPR', documentUtils.getIdentifier(document), 'Not enough uses or resources.');
     }
     return bonus;
 }
+/**
+ * Offers a damage bonus on a matching damage or healing roll.
+ * Bound on an effect or an item. Fires on `actorOptionalBonusDamage`.
+ *
+ * Config:
+ * - `bonus`: damage bonus formula.
+ * - `bonusDamageType`: damage types offered as choices for this bonus.
+ * - `attackType`: only trigger for this attack type.
+ * - `damageType`: only trigger when the roll deals one of these damage types.
+ * - `healingType`: only trigger when the activity heals one of these healing types.
+ * - `identifiers`: only trigger for items with one of these identifiers.
+ * - `properties`: only trigger for items with one of these properties.
+ * - `itemType`: only trigger for these item types.
+ * - `spellLevel`: only trigger for spells cast at one of these levels.
+ * - `spellSchool`: only trigger for spells of these schools.
+ * - `rollActivity`: activity rolled when the bonus is used.
+ * - `rollItem`: roll this item when the bonus is used.
+ * - `maxTargets`: limit the bonus to this many targets. 0 applies it to every target.
+ * - `everyRoll`: add the bonus to every roll of a multi-attack. Off adds it to one roll.
+ * - `targetWounded`: only apply when the target is missing hit points.
+ * - `targetEffects`: only apply to hit targets that carry one of these effects created by the user.
+ * - `targetCreatureTypes`: only apply to hit targets of these creature types.
+ * - `useActivityCosts`: apply the item's default costs. Not offered when they cannot be paid.
+ * - `allowCritical`: critical hit rules can be applied to this bonus.
+ */
 export const damageBonusToOneRoll = {
     rules: 'all',
     version: '2.0.4',

@@ -1,12 +1,9 @@
-import {combatUtils, documentUtils, effectUtils} from '../../../../../proxy.mjs';
+import {combatUtils, workflowUtils} from '../../../../../proxy.mjs';
 async function cast({workflow, document}) {
     if (!workflow.targets.size || workflow.item?.type !== 'spell') return;
     if (!workflow.actor.statuses.has('invisible')) return;
     if (workflow.token.document.inCombat && !combatUtils.isOwnTurn(workflow.token.document)) return;
-    const sourceEffect = documentUtils.getEffectByIdentifier(document, 'magicalAmbushEffect');
-    if (!sourceEffect) return;
-    const effectData = documentUtils.getEffectData(document, sourceEffect.id, {specialDuration: ['endOfWorkflow']});
-    await Promise.all(Array.from(workflow.targets, token => effectUtils.createEffects(token.actor, [effectData])));
+    workflow.targets.forEach(token => workflowUtils.grantRollModifier(workflow, 'dis', token.id, 'magical-ambush', document.name));
 }
 export const magicalAmbush = {
     name: 'Magical Ambush',

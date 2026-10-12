@@ -4,11 +4,11 @@ async function addWish({document: activity, data}) {
 }
 async function applyCooldown({workflow, identifier}) {
     const divineIntervention = actorUtils.getItemByIdentifier(workflow.actor, 'divine-intervention');
-    if (!divineIntervention) return;
+    if (!divineIntervention) return Logging.addMacroWarning('CPR', identifier, 'Divine Intervention item not found.', {notify: 'warn'});
     const formula = automationUtils.getConfigValue(workflow.item, 'restFormula');
     const {roll} = await rollUtils.rollDice(formula, {document: workflow.activity, message: true, flavor: workflow.item.name});
     const effectId = workflow.item.effects.contents[0]?.id;
-    if (!effectId) return Logging.addMacroWarning('chris-premades', identifier, `${workflow.item.name} is missing an enchantment for the long rest cooldown!`);
+    if (!effectId) return Logging.addMacroWarning('CPR', identifier, `${workflow.item.name} is missing an enchantment for the long rest cooldown!`, {notify: 'warn'});
     const effectData = documentUtils.getEffectData(workflow.item, effectId);
     genericUtils.setProperty(effectData, 'flags.chris-premades.greaterDivineInterventionRest.value', roll.total - 1);
     await itemUtils.enchantItem(divineIntervention, effectData);

@@ -1,4 +1,4 @@
-import {actorUtils, automationUtils, constants, DamageBonus, documentUtils, effectUtils, workflowUtils} from '../../proxy.mjs';
+import {actorUtils, automationUtils, constants, DamageBonus, documentUtils, effectUtils, Logging, workflowUtils} from '../../proxy.mjs';
 import {attackTypeConfig} from './damageBonusToOneRoll.mjs';
 function getSpell(effect) {
     const item = effectUtils.getOriginActivitySync(effect)?.item;
@@ -11,7 +11,7 @@ async function damage({document: effect, workflow}) {
     const config = automationUtils.getGenericConfigValues(effect, 'chris-premades', 'nextHitRider', configKeys);
     if (!config.bonus || !workflowUtils.isAttackType(workflow, config.attackType || 'attack')) return;
     const {item, scaling} = getSpell(effect);
-    if (!item) return;
+    if (!item) return Logging.addMacroWarning('CPR', documentUtils.getIdentifier(effect), 'Origin spell not found.', {notify: 'warn'});
     const roll = new CONFIG.Dice.DamageRoll(config.bonus, {...item.getRollData(), scaling});
     const bonus = new DamageBonus(effect, {roll, optional: false, maxTargets: 1, maxScaling: 0, type: config.bonusDamageType})
         .withOnUse(({workflow, bonus}) => {
@@ -42,6 +42,17 @@ async function rider({document: effect, workflow}) {
     }
     await documentUtils.deleteDocument(effect);
 }
+/**
+ * Adds bonus damage to the next hit, then rolls a rider activity on the target and removes the effect.
+ * Bound on an effect. Fires on `actorOptionalBonusDamage` and `actorRollFinished`.
+ *
+ * Config:
+ * - `bonus`: extra damage added on the next hit. `@scaling` is the number of levels the spell was upcast.
+ * - `bonusDamageType`: damage type of the bonus. None uses the attack's damage type.
+ * - `attackType`: only trigger for this attack type. Empty matches any attack.
+ * - `rollActivity`: activity rolled on the hit target after the bonus damage.
+ * - `endSpell`: when the spell ends after the rider activity is rolled.
+ */
 export const nextHitRider = {
     rules: 'all',
     version: '2.0.4',

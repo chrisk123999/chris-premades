@@ -1,4 +1,4 @@
-import {actorUtils, automationUtils, combatUtils, DamageBonus, dialogUtils, rollUtils, tokenUtils, workflowUtils} from '../../../../proxy.mjs';
+import {actorUtils, automationUtils, combatUtils, DamageBonus, dialogUtils, Logging, rollUtils, tokenUtils, workflowUtils} from '../../../../proxy.mjs';
 async function preAttack({document: activity, identifier, workflow}) {
     if (!activity.item.system.uses.value) return;
     if (workflow.activity.ability !== 'str') return;
@@ -13,7 +13,7 @@ async function preAttack({document: activity, identifier, workflow}) {
     });
     await automationUtils.calledEvent('brutalStrike', workflow.actor, {canOverlap: true, multiResult: true, data});
     const choices = activities.filter(a => a instanceof dnd5e.dataModels.activity.BaseActivityData);
-    if (!choices?.length) return;
+    if (!choices?.length) return Logging.addMacroWarning('CPR', 'brutal-strike', 'No Brutal Strike options found.');
     const config = automationUtils.getConfigValues(activity.item, ['count', 'damage']);
     config.count = (await rollUtils.rollDice(config.count, {document: activity.item})).total;
     const options = {addNoneDocument: true, checkbox: true, max: config.count};

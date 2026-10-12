@@ -1,4 +1,4 @@
-import {automationUtils, rollUtils, dialogUtils, actorUtils, activityUtils, workflowUtils, queryUtils} from '../../proxy.mjs';
+import {automationUtils, rollUtils, dialogUtils, actorUtils, activityUtils, documentUtils, workflowUtils, queryUtils, Logging} from '../../proxy.mjs';
 async function use({document, workflow}) {
     const activityId = automationUtils.getGenericConfigValue(document, 'chris-premades', 'multiSingleTarget', 'activityId');
     if (activityId != workflow.activity.id || !workflow.targets.size) return;
@@ -9,9 +9,9 @@ async function use({document, workflow}) {
     if (!totalTargets) return;
     const skipDeadAndUnconscious = automationUtils.getGenericConfigValue(document, 'chris-premades', 'multiSingleTarget', 'skipDeadAndUnconscious');
     const attackActivityId = automationUtils.getGenericConfigValue(document, 'chris-premades', 'multiSingleTarget', 'attackActivityId');
-    if (!attackActivityId) return;
+    if (!attackActivityId) return Logging.addMacroWarning('CPR', documentUtils.getIdentifier(workflow.item), 'Attack activity not found.', {notify: 'warn'});
     let attackActivity = workflow.item.system.activities.get(attackActivityId);
-    if (!attackActivity) return;
+    if (!attackActivity) return Logging.addMacroWarning('CPR', documentUtils.getIdentifier(workflow.item), 'Attack activity not found.', {notify: 'warn'});
     const {animation, options: animationOptions} = automationUtils.getResolvedAnimation(document, 'animation', {source: 'chris-premades', identifier: 'multiSingleTarget'});
     if (animation?.macros?.start) await animation.macros.start(workflow.token.document, animationOptions);
     const reactionItemIdentifiers = automationUtils.getGenericConfigValue(document, 'chris-premades', 'multiSingleTarget', 'reactionItemIdentifiers');
@@ -96,6 +96,20 @@ async function use({document, workflow}) {
     }
     if (animation?.macros?.end) animation.macros.end(workflow.token.document);
 }
+/**
+ * Splits a rolled number of single-target attacks among the selected targets.
+ * Bound on an item. Fires on `itemRollFinished`.
+ *
+ * Config:
+ * - `activityId`: only run when this activity is used.
+ * - `formula`: number of attacks. `@item.level` and `@scaling` use the cast level and upcast levels.
+ * - `skipDeadAndUnconscious`: skip targets at 0 hit points.
+ * - `attackActivityId`: activity rolled once per attack.
+ * - `animation`: played from the user to the target on each attack.
+ * - `reactionItemIdentifiers`: spells a target is offered as a reaction before its attacks.
+ * - `reactionEffectIdentifiers`: effects that mark a target as having reacted, which plays the animation as a miss.
+ * - `utilityRollAsDamage`: the utility roll total replaces the attack activity's damage.
+ */
 export const multiSingleTarget = {
     rules: 'all',
     version: '1.6.1',

@@ -3,7 +3,7 @@ async function addActivities({data, document: item}) {
     data.activities.push(...item.system.activities.contents);
 }
 async function attackBonus({document: effect, workflow}) {
-    if (!workflowUtils.isAttackType(workflow, 'attack'));
+    if (!workflowUtils.isAttackType(workflow, 'attack')) return;
     const origin = await effectUtils.getOriginActivity(effect);
     if (!origin?.actor) return;
     if (origin.actor.id === workflow.actor.id) return;

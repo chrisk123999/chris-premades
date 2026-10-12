@@ -1,7 +1,7 @@
-import {dialogUtils, documentUtils, effectUtils, actorUtils, itemUtils, workflowUtils} from '../../../../../proxy.mjs';
+import {dialogUtils, documentUtils, effectUtils, actorUtils, itemUtils, Logging, workflowUtils} from '../../../../../proxy.mjs';
 async function use({document, workflow}) {
     const target = workflow.targets.first();
-    if (!target) return;
+    if (!target) return Logging.addMacroWarning('CPR', 'awakened-mind', 'No target selected.');
     let failedSave = false;
     const clairvoyant = actorUtils.getItemByIdentifier(workflow.actor, 'clairvoyant-combatant');
     const clairvoyantActivity = clairvoyant ? itemUtils.getActivityByIdentifier(clairvoyant, 'use') : undefined;

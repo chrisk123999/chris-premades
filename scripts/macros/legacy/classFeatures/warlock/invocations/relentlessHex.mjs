@@ -1,4 +1,4 @@
-import {actorUtils, animationUtils, automationUtils, crosshairUtils, dialogUtils, genericUtils, tokenUtils} from '../../../../../proxy.mjs';
+import {actorUtils, animationUtils, automationUtils, crosshairUtils, dialogUtils, Logging, tokenUtils} from '../../../../../proxy.mjs';
 async function use({document, workflow}) {
     const token = workflow.token.document;
     const range = automationUtils.getConfigValue(document, 'range');
@@ -6,7 +6,7 @@ async function use({document, workflow}) {
     const cursed = tokenUtils.findNearby(token, automationUtils.getConfigValue(document, 'teleportRange') + range, {disposition: 'enemy'})
         .filter(nearbyToken => identifiers.some(identifier => actorUtils.getEffectByIdentifier(nearbyToken.actor, identifier)));
     if (!cursed.length) {
-        genericUtils.notify('CHRISPREMADES.Macros.Legacy.RelentlessHex.NoTargets', {type: 'info'});
+        Logging.addMacroWarning('CPR', 'relentless-hex', 'CHRISPREMADES.Macros.Legacy.RelentlessHex.NoTargets', {notify: 'info'});
         return;
     }
     const targetToken = cursed.length === 1 ? cursed[0] : (await dialogUtils.selectTargetDialog(document.name, _loc('CHRISPREMADES.Macros.Legacy.RelentlessHex.Select'), cursed, {type: 'one'}))?.result;

@@ -17,6 +17,15 @@ async function save({config, options, document, token}) {
     if (!display) return;
     await workflowUtils.completeItemUse(document, [token]);
 }
+/**
+ * Makes the actor automatically succeed on saves against activities that apply one of the listed conditions.
+ * Bound on an item. Fires on `actorTargetSituational`.
+ *
+ * Config:
+ * - `conditions`: conditions that trigger the automatic success.
+ * - `magical`: only trigger against spells and magical items.
+ * - `display`: roll this item when it triggers.
+ */
 export const conditionAutoSave = {
     rules: 'all',
     version: '2.0.3',
