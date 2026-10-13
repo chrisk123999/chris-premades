@@ -1,13 +1,17 @@
-# 2.1.2 Pre-Release:
+# 2.1.3 Pre-Release: (work in progress)
 ## Update Notes:
-- Automated Cantrips:
-  - 2014: Blade Ward, Booming Blade, Chill Touch, Green-Flame Blade, Lightning Lure, Mind Sliver, Sapping Sting, Shocking Grasp, Thorn Whip and Toll the Dead.
-  - 2024: Acid Splash, Blade Ward, Chill Touch, Dissolution, Guidance, Mind Sliver, Resistance, Shocking Grasp, Thorn Whip, Toll the Dead and True Strike.
+- New generic macros: `ignoreCover`.
 - Automated Class Features:
   - 2014 Artificer: base class and all infusions
   - 2024 Artificer: base class
 - Automated Equipment:
   - 2024: Boots of the Winding Path, Helm of Awareness, Mind Sharpener, Repulsion Shield, Spell-Refueling Ring
+
+# 2.1.2 Pre-Release:
+## Update Notes:
+- Automated Cantrips:
+  - 2014: Blade Ward, Booming Blade, Chill Touch, Green-Flame Blade, Lightning Lure, Mind Sliver, Sapping Sting, Shocking Grasp, Thorn Whip and Toll the Dead.
+  - 2024: Acid Splash, Blade Ward, Chill Touch, Dissolution, Guidance, Mind Sliver, Resistance, Shocking Grasp, Thorn Whip, Toll the Dead and True Strike.
 - New generic macros: `bladeSpell`, `ignoreCover`, `pullOnFail`, `pullOnHit` and `spellAnimation`.
 - New generic animations: Beam Spell, Buff Spell, Burst Spell and Touch Spell.
 - New animations: Booming Blade, Green-Flame Blade and True Strike.
@@ -18,7 +22,7 @@
 - Requires dnd5e 6.0 or later, CAT 0.1.0, midi-qol 14.6.0 or later, and DAE 14.6.0 or later.
 - Compendiums are migrated to dnd5e 6. Effects use native expiry, roll modes and token keys instead of DAE special durations, midi advantage flags and ATL keys.
 - Items already in a world need their automation reapplied.
-  - `itemRecovery`, adjusts use recovery on a specified item by enchantment.
+- New generic macro: `itemRecovery`.
 ## Bug Fixes:
 - Rage, Bladesong and contested checks no longer spend their uses or spell slots when blocked or cancelled.
 - Darkness: the "Spreads Around Corners" option works again, without Walled Templates.

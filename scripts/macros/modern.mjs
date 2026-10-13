@@ -1,5 +1,6 @@
 // ** Class Features
 // Artificer
+export {magicItemTinker as 'magic-item-tinker', magicItemTinkerCharge, magicItemTinkerDrain, magicItemTinkerTransmute} from './modern/classFeatures/artificer/magicItemTinker.mjs';
 export {replicateMagicItem as 'replicate-magic-item'} from './modern/classFeatures/artificer/replicateMagicItem.mjs';
 export {tinkersMagic as 'tinkers-magic'} from './modern/classFeatures/artificer/tinkersMagic.mjs';
 // Barbarian

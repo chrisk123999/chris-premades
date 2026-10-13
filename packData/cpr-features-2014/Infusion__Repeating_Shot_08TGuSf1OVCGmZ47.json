@@ -378,35 +378,50 @@
             "type": "override",
             "value": 1,
             "phase": "initial",
-            "priority": 20
+            "priority": 20,
+            "_id": "tOvpaZNm6vV80OcV",
+            "conditions": "{}",
+            "replacement": ""
           },
           {
             "key": "system.properties",
             "type": "add",
             "value": "mgc",
             "phase": "initial",
-            "priority": 20
+            "priority": 20,
+            "_id": "bXXF4LxJTWwtVT7j",
+            "conditions": "{}",
+            "replacement": ""
           },
           {
             "key": "system.attunement",
             "type": "override",
             "value": "required",
             "phase": "initial",
-            "priority": 20
+            "priority": 20,
+            "_id": "HS87jZupOdWbt6F1",
+            "conditions": "{}",
+            "replacement": ""
           },
           {
             "key": "name",
             "type": "add",
             "value": ": Repeating Shot",
             "phase": "final",
-            "priority": 20
+            "priority": 20,
+            "_id": "EhcZ6havGOH201qZ",
+            "conditions": "{}",
+            "replacement": ""
           },
           {
             "key": "system.properties",
             "type": "subtract",
             "value": "lod",
             "phase": "initial",
-            "priority": null
+            "priority": null,
+            "_id": "y75VFR5mIhha9kzJ",
+            "conditions": "{}",
+            "replacement": ""
           }
         ]
       },
@@ -449,9 +464,9 @@
       "folder": null,
       "sort": 0,
       "_stats": {
-        "coreVersion": "14.364",
+        "coreVersion": "14.369",
         "systemId": "dnd5e",
-        "systemVersion": "5.3.3"
+        "systemVersion": "6.0.6"
       },
       "_key": "!items.effects!08TGuSf1OVCGmZ47.64KwpSej832ARulO"
     }
@@ -460,14 +475,14 @@
     "cat": {
       "automation": {
         "source": "chris-premades",
-        "version": "2.0.5"
+        "version": "2.1.3"
       }
     }
   },
   "img": "icons/weapons/ammunition/arrows-barbed-white.webp",
   "folder": "Jop9YZCm0OFshULP",
   "_stats": {
-    "coreVersion": "14.364",
+    "coreVersion": "14.369",
     "systemId": "dnd5e",
     "systemVersion": "5.3.3"
   },

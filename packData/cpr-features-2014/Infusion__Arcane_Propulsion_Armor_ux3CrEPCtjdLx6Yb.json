@@ -378,21 +378,30 @@
             "type": "add",
             "value": "mgc",
             "phase": "initial",
-            "priority": 20
+            "priority": 20,
+            "_id": "ANVUgKl89MZn6pTi",
+            "conditions": "{}",
+            "replacement": ""
           },
           {
             "key": "system.attunement",
             "type": "override",
             "value": "required",
             "phase": "initial",
-            "priority": 20
+            "priority": 20,
+            "_id": "OUgKtjYQBSKSYsqB",
+            "conditions": "{}",
+            "replacement": ""
           },
           {
             "key": "name",
             "type": "add",
             "value": ": Arcane Propulsion Armor",
             "phase": "final",
-            "priority": 20
+            "priority": 20,
+            "_id": "hIxO2EZVBQ2QdJ2Q",
+            "conditions": "{}",
+            "replacement": ""
           }
         ]
       },
@@ -435,16 +444,16 @@
       "folder": null,
       "sort": 0,
       "_stats": {
-        "coreVersion": "14.364",
+        "coreVersion": "14.369",
         "systemId": "dnd5e",
-        "systemVersion": "5.3.3"
+        "systemVersion": "6.0.6"
       },
       "_key": "!items.effects!ux3CrEPCtjdLx6Yb.pz097E0vqzxRE303"
     },
     {
       "name": "Arcane Propulsion Armor",
       "img": "icons/equipment/chest/breastplate-layered-steel-blue-gold.webp",
-      "origin": "Item.o8DJv6SvV8EBoJgN",
+      "origin": null,
       "type": "base",
       "_id": "ghrnoeI3PkCvBqBH",
       "system": {
@@ -454,9 +463,15 @@
             "type": "add",
             "value": 5,
             "phase": "initial",
-            "priority": null
+            "priority": null,
+            "_id": "LHLB3NUX6oaYx3Ca",
+            "conditions": "{}",
+            "replacement": ""
           }
-        ]
+        ],
+        "origin": {
+          "item": "Item.o8DJv6SvV8EBoJgN"
+        }
       },
       "disabled": false,
       "duration": {
@@ -496,9 +511,9 @@
         }
       },
       "_stats": {
-        "coreVersion": "14.364",
+        "coreVersion": "14.369",
         "systemId": "dnd5e",
-        "systemVersion": "5.3.3"
+        "systemVersion": "6.0.6"
       },
       "_key": "!items.effects!ux3CrEPCtjdLx6Yb.ghrnoeI3PkCvBqBH"
     }
@@ -507,14 +522,14 @@
     "cat": {
       "automation": {
         "source": "chris-premades",
-        "version": "2.0.5"
+        "version": "2.1.3"
       }
     }
   },
   "img": "icons/equipment/chest/breastplate-layered-steel-blue-gold.webp",
   "folder": "Jop9YZCm0OFshULP",
   "_stats": {
-    "coreVersion": "14.364",
+    "coreVersion": "14.369",
     "systemId": "dnd5e",
     "systemVersion": "5.3.3"
   },

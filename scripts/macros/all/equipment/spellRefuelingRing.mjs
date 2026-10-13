@@ -12,7 +12,7 @@ async function restore({workflow}) {
 }
 export const spellRefuelingRing = {
     name: 'Spell-Refueling Ring',
-    version: '2.0.5',
+    version: '2.1.3',
     rules: 'all',
     roll: [
         {

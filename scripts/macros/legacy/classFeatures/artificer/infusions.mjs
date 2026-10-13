@@ -464,7 +464,7 @@ async function spellRing({macroClass: {source, identifier}, workflow}) {
     );
 }
 const metadata = {
-    version: '2.0.5',
+    version: '2.1.3',
     rules: '2014'
 };
 const bonusConfig = {

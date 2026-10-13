@@ -127,7 +127,7 @@ async function usePlan({macroClass: {identifier, source}, workflow}) {
     const createdItem = (await itemUtils.createItems(itemHolder.actor, [data]))?.[0];
     if (!createdItem) return Logging.addMacroWarning(source, identifier, `Artificer replicate item failed to create item. (plan name) ${selected.name} (plan uuid) ${selected.uuid}`);
     const parentEffect = (await effectUtils.createEffects(workflow.actor, [{
-        name: createdItem.name,
+        name: `[${itemHolder.actor.name}] ${createdItem.name}`,
         img: selected.img,
         origin: selected.uuid,
         flags: {
@@ -228,10 +228,11 @@ async function rollFeature(actor, activityID, plan, targets) {
     return true;
 }
 export const swapArtificerPlan = {
-    version: '2.0.5',
+    version: '2.1.3',
     rules: 'all',
     notes: 'Target a willing creature to create an item or infusion in their inventory. The item is otherwise made on this character.\n\nUse the "actorArtificerPlanFilter" called event (async) to modify the compendium filters used to present plans to learn.\n\tData available: classIdentifier, createdLimit, itemTypes, known, packIds, tab.\nSet additional required filters under "lockedFilters.additional".\nReturn an item or array of items from the "actorInfusionItems" called event (async) to create the list of items available for an infusion.\n\tData available: infusionIdentifier, targetActor.',
     keys,
+    getPlansAndInfusions,
     roll: [
         {
             pass: 'activityRollFinished',

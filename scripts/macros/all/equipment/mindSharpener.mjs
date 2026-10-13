@@ -11,7 +11,7 @@ async function succeed({actor, config, document: activity, roll}) {
 }
 export const mindSharpener = {
     name: 'Mind Sharpener',
-    version: '2.0.5',
+    version: '2.1.3',
     rules: 'all',
     save: [
         {

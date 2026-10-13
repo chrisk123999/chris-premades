@@ -49,7 +49,7 @@
             "EldritchBlastColorHint": "Color of each beam. Random picks a color per beam; Cycle steps through the colors in turn. Colors beyond purple need JB2A Patreon.",
             "FiendSummon": "Fiend Summon",
             "FireSummon": "Fire Summon",
-            "FlurryOfBlows": "Flurry of Blows", 
+            "FlurryOfBlows": "Flurry of Blows",
             "FutureSummon": "Future Summon",
             "GreenFlameBlade": "Green-Flame Blade",
             "GreenFlameBladeColorHint": "Color of the flames on the target and the fire bolt that leaps to the second creature. Colors beyond orange need JB2A Patreon.",
@@ -531,12 +531,6 @@
                     "PacksHint": "Use these compendiums instead of the ones configured in settings.",
                     "Phase": "Phase",
                     "PhaseHint": "When this bonus is offered during the roll.",
-                    "Phases": {
-                        "all": "Any Phase",
-                        "postResult": "After the Result",
-                        "preResult": "Before the Result",
-                        "preRoll": "Before the Roll"
-                    },
                     "PropertyHint": "Limt this feature by any matching item property.",
                     "RollActivity": "Roll this activity when used.",
                     "RollItem": "Roll this item when used.",
@@ -589,8 +583,8 @@
                 },
                 "MovementAnimation": {
                     "MoveAnimation": "Move Animation",
-                  "Fastest": "Fastest Speed",
-                  "MovementType": "Movement Used",
+                    "Fastest": "Fastest Speed",
+                    "MovementType": "Movement Used",
                     "MovementEffect": "Movement Effect",
                     "NoMovement": "No movement remaining!",
                     "SelectAnimation": "Selection Animation"
@@ -1036,7 +1030,8 @@
                     "MustSpend": "{feature} has no uses remaining. You must spend {name} to activate it.",
                     "Select": "Choose a second creature within 30 feet of the target for {item}.",
                     "Spend": "Spend {name} to use {feature} without consuming uses?"
-                }
+                },
+                "RightToolForTheJob": "Choose a tool to create:"
             },
             "Modern": {
                 "AgonizingBlast": {
@@ -1093,6 +1088,18 @@
                     "NoTargets": "No valid targets within range!"
                 },
                 "ImprovedPotentSpellcasting": "Select an ally to give temporary hit points to:",
+                "MagicItemTinker": {
+                    "ChargePrompt": "Choose a spell slot to spend and an item to recharge:",
+                    "DeletePrompt": "Delete {item} to grant a {spellslot}?",
+                    "DrainCommon": "Drain Common Item",
+                    "DrainPrompt": "Choose an item to drain and gain a spell slot:",
+                    "DrainRare": "Drain Rare Item",
+                    "DrainUncommon": "Drain Uncommon Item",
+                    "DrainVeryRare": "Drain Very Rare Item",
+                    "NoItems": "No valid items available!",
+                    "NoSpell": "No Benefit",
+                    "TransmutePrompt": "Choose an item to transmute into another magic item:"
+                },
                 "MemorizeSpell": {
                     "Prepare": "Select a spell to prepare:",
                     "Unprepare": "Select a spell to unprepare:"

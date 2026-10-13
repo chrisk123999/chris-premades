@@ -30,6 +30,7 @@ export {
     infusionReturningWeapon as 'infusion-returning-weapon',
     infusionSpellRefuelingRing as 'infusion-spell-refueling-ring'
 } from './legacy/classFeatures/artificer/infusions.mjs';
+export {rightToolForTheJob as 'the-right-tool-for-the-job'} from './legacy/classFeatures/artificer/rightToolForTheJob.mjs';
 // Barbarian
 export {brutalCritical as 'brutal-critical'} from './legacy/classFeatures/barbarian/brutalCritical.mjs';
 export {dangerSense as 'danger-sense'} from './legacy/classFeatures/barbarian/dangerSense.mjs';

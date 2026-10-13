@@ -368,7 +368,14 @@
     }
   },
   "effects": [],
-  "flags": {},
+  "flags": {
+    "cat": {
+      "automation": {
+        "source": "chris-premades",
+        "version": "2.1.3"
+      }
+    }
+  },
   "img": "icons/commodities/gems/gem-cut-faceted-princess-purple.webp",
   "folder": "Jop9YZCm0OFshULP",
   "_stats": {

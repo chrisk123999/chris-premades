@@ -20,7 +20,7 @@ async function push({document: activity, sourceToken, workflow}) {
 }
 export const repulsionShield = {
     name: 'Repulsion Shield',
-    version: '2.0.5',
+    version: '2.1.3',
     rules: 'all',
     roll: [
         {
