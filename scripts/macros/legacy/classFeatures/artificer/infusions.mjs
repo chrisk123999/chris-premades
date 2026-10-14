@@ -2,29 +2,29 @@ import {actorUtils, applications, automationUtils, compendiumUtils, constants, d
 import {swapArtificerPlan as artificer} from '../../../all.mjs';
 import {default as cpr} from '../../../../constants.mjs';
 // called events
-async function collectArmors({document: activity, data}) {
+async function collectArmors({document: activity, data, macroClass: {identifier, source}}) {
     if (data.infusionIdentifier !== documentUtils.getIdentifier(activity.item)) return;
     const armor = data.targetActor.itemTypes.equipment.filter(i => i.system.isArmor && i.system.type?.value !== 'shield' && !i.system.properties.has('mgc'));
-    if (!armor.length) genericUtils.notify('CHRISPREMADES.Macros.Legacy.InfuseItem.NoArmor', {type: 'warn'}); 
+    if (!armor.length) Logging.addMacroWarning(source, identifier, 'CHRISPREMADES.Macros.Legacy.InfuseItem.NoArmor', {notify: 'warn'}); 
     return armor;
 }
-async function collectArmorShield({document: activity, data}) {
+async function collectArmorShield({document: activity, data, macroClass: {identifier, source}}) {
     if (data.infusionIdentifier !== documentUtils.getIdentifier(activity.item)) return;
     const armor = data.targetActor.itemTypes.equipment.filter(i => i.system.isArmor && !i.system.properties.has('mgc'));
-    if (!armor.length) genericUtils.notify('CHRISPREMADES.Macros.Legacy.InfuseItem.NoArmor', {type: 'warn'}); 
+    if (!armor.length) Logging.addMacroWarning(source, identifier, 'CHRISPREMADES.Macros.Legacy.InfuseItem.NoArmor', {notify: 'warn'}); 
     return armor;
 }
-async function collectArmorRobes({document: activity, data}) {
+async function collectArmorRobes({document: activity, data, macroClass: {identifier, source}}) {
     if (data.infusionIdentifier !== documentUtils.getIdentifier(activity.item)) return;
     const armor = data.targetActor.itemTypes.equipment.filter(i => 
         (i.system.isArmor || i.system.type?.value === 'clothing') &&
         i.system.type?.value !== 'shield' &&
         !i.system.properties.has('mgc')
     );
-    if (!armor.length) genericUtils.notify('CHRISPREMADES.Macros.Legacy.InfuseItem.NoArmor', {type: 'warn'}); 
+    if (!armor.length) Logging.addMacroWarning(source, identifier, 'CHRISPREMADES.Macros.Legacy.InfuseItem.NoArmor', {notify: 'warn'}); 
     return armor;
 }
-async function collectFoci({document: activity, data}) {
+async function collectFoci({document: activity, data, macroClass: {identifier, source}}) {
     if (data.infusionIdentifier !== documentUtils.getIdentifier(activity.item)) return;
     const foci = data.targetActor.items.filter(i =>
         i.system.properties &&
@@ -34,39 +34,39 @@ async function collectFoci({document: activity, data}) {
             ['rod', 'trinket', 'wand'].includes(i.system.type?.value)
         )
     );
-    if (!foci.length) genericUtils.notify('CHRISPREMADES.Macros.Legacy.InfuseItem.NoFoci', {type: 'warn'}); 
+    if (!foci.length) Logging.addMacroWarning(source, identifier, 'CHRISPREMADES.Macros.Legacy.InfuseItem.NoFoci', {notify: 'warn'}); 
     return foci;
 }
-async function collectShield({document: activity, data}) {
+async function collectShield({document: activity, data, macroClass: {identifier, source}}) {
     if (data.infusionIdentifier !== documentUtils.getIdentifier(activity.item)) return;
     const shield = data.targetActor.itemTypes.equipment.filter(i => i.system.type?.value === 'shield' && !i.system.properties.has('mgc'));
-    if (!shield.length) genericUtils.notify('CHRISPREMADES.Macros.Legacy.InfuseItem.NoShield', {type: 'warn'}); 
+    if (!shield.length) Logging.addMacroWarning(source, identifier, 'CHRISPREMADES.Macros.Legacy.InfuseItem.NoShield', {notify: 'warn'}); 
     return shield;
 }
-async function collectWeapons({document: activity, data}) {
+async function collectWeapons({document: activity, data, macroClass: {identifier, source}}) {
     if (data.infusionIdentifier !== documentUtils.getIdentifier(activity.item)) return;
     const weapon = data.targetActor.itemTypes.weapon.filter(i => !i.system.properties.has('mgc') && ['simpleM', 'simpleR', 'martialM', 'martialR'].includes(i.system.type?.value));
-    if (!weapon.length) genericUtils.notify('CHRISPREMADES.Macros.Legacy.InfuseItem.NoWeapon', {type: 'warn'}); 
+    if (!weapon.length) Logging.addMacroWarning(source, identifier, 'CHRISPREMADES.Macros.Legacy.InfuseItem.NoWeapon', {notify: 'warn'}); 
     return weapon;
 }
-async function collectAmmoWeapons({document: activity, data}) {
+async function collectAmmoWeapons({document: activity, data, macroClass: {identifier, source}}) {
     if (data.infusionIdentifier !== documentUtils.getIdentifier(activity.item)) return;
     const weapon = data.targetActor.itemTypes.weapon.filter(i => 
         !i.system.properties.has('mgc') &&
         i.system.properties.has('amm') &&
         ['simpleM', 'simpleR', 'martialM', 'martialR'].includes(i.system.type?.value)
     );
-    if (!weapon.length) genericUtils.notify('CHRISPREMADES.Macros.Legacy.InfuseItem.NoWeapon', {type: 'warn'}); 
+    if (!weapon.length) Logging.addMacroWarning(source, identifier, 'CHRISPREMADES.Macros.Legacy.InfuseItem.NoWeapon', {notify: 'warn'}); 
     return weapon;
 }
-async function collectThrownWeapons({document: activity, data}) {
+async function collectThrownWeapons({document: activity, data, macroClass: {identifier, source}}) {
     if (data.infusionIdentifier !== documentUtils.getIdentifier(activity.item)) return;
     const weapon = data.targetActor.itemTypes.weapon.filter(i => 
         !i.system.properties.has('mgc') &&
         i.system.properties.has('thr') &&
         ['simpleM', 'simpleR', 'martialM', 'martialR'].includes(i.system.type?.value)
     );
-    if (!weapon.length) genericUtils.notify('CHRISPREMADES.Macros.Legacy.InfuseItem.NoWeapon', {type: 'warn'}); 
+    if (!weapon.length) Logging.addMacroWarning(source, identifier, 'CHRISPREMADES.Macros.Legacy.InfuseItem.NoWeapon', {notify: 'warn'}); 
     return weapon;
 }
 // helpers
@@ -133,7 +133,7 @@ async function copyActivities(workflow, identifier, activityIdentifiers, {pack, 
     if (!enchant) return;
     let favorites = [];
     await documentUtils.update(data.item, activityData.reduce((obj, a) => {
-        if (favoriteActivities?.includes(a.identifier)) favorites.push(a._id);
+        if (favoriteActivities?.includes(a.midiProperties.identifier)) favorites.push(a._id);
         genericUtils.setProperty(a, 'flags.dnd5e.dependentOn', enchant.uuid);
         obj.system.activities[a._id] = a;
         return obj;
@@ -177,10 +177,16 @@ async function magicalStrength({macroClass: {source, identifier}, workflow}) {
         }
     );
 }
-async function magicalStrengthProne({workflow}) {
-    const prone = actorUtils.getStatusSources(workflow.actor, ['prone']);
-    if (prone?.length) await documentUtils.deleteDocument(prone[0]);
-    else genericUtils.notify('CHRISPREMADES.Macros.Legacy.InfuseItem.NotProne');
+async function magicalStrengthCheckProne({actor, config}) {
+    const prone = actorUtils.getStatusSources(actor, ['prone']);
+    if (!prone?.length) {
+        genericUtils.notify('CHRISPREMADES.Macros.Legacy.InfuseItem.NotProne');
+        return true;
+    }
+    workflowUtils.setWorkflowProperty(config.workflow, 'magicalStrengthProne', prone[0]);
+}
+async function magicalStrengthRemoveProne({workflow}) {
+    await documentUtils.deleteDocument(workflowUtils.getWorkflowProperty(workflow, 'magicalStrengthProne'));
 }
 async function bootsWinding({macroClass: {source, identifier}, workflow}) {
     await simpleCreateItem(
@@ -193,7 +199,7 @@ async function bootsWinding({macroClass: {source, identifier}, workflow}) {
 async function enhancedFocus({macroClass: {source, identifier}, workflow}) {
     const label = 'Enhanced Arcane Focus';
     const config = automationUtils.getConfigValues(workflow.item, Object.keys(bonusConfig));
-    config.level = workflow.actor.classes[config.classIdentifer]?.system.levels ?? 0;
+    config.level = workflow.actor.classes[config.classIdentifier]?.system.levels ?? 0;
     const data = await defaultGetDocuments(workflow, {effect: true, source, identifier, label});
     if (!data) return;
     if (config.level >= config.grantExtraBonus) for (const change of data.effect.system.changes) {
@@ -205,7 +211,7 @@ async function enhancedFocus({macroClass: {source, identifier}, workflow}) {
 async function enhancedDefense({macroClass: {source, identifier}, workflow}) {
     const label = 'Enhanced Defense';
     const config = automationUtils.getConfigValues(workflow.item, Object.keys(bonusConfig));
-    config.level = workflow.actor.classes[config.classIdentifer]?.system.levels ?? 0;
+    config.level = workflow.actor.classes[config.classIdentifier]?.system.levels ?? 0;
     const data = await defaultGetDocuments(workflow, {source, identifier, label});
     if (!data) return;
     if (config.level >= config.grantExtraBonus) for (const change of data.enchant.system.changes) {
@@ -216,7 +222,7 @@ async function enhancedDefense({macroClass: {source, identifier}, workflow}) {
 async function enhancedWeapon({macroClass: {source, identifier}, workflow}) {
     const label = 'Enhanced Weapon';
     const config = automationUtils.getConfigValues(workflow.item, Object.keys(bonusConfig));
-    config.level = workflow.actor.classes[config.classIdentifer]?.system.levels ?? 0;
+    config.level = workflow.actor.classes[config.classIdentifier]?.system.levels ?? 0;
     const data = await defaultGetDocuments(workflow, {source, identifier, label});
     if (!data) return;
     if (config.level >= config.grantExtraBonus) for (const change of data.enchant.system.changes) {
@@ -233,7 +239,7 @@ async function helmOfAwareness({macroClass: {source, identifier}, workflow}) {
     );
 }
 async function homunculus({macroClass: {source, identifier}, workflow}) {
-    const label = 'Homonculus Servant';
+    const label = 'Homunculus Servant';
     const actor = await compendiumUtils.getDocumentByIdentifier(cpr.packs.legacy.summons, 'homunculusServant');
     if (!actor) return Logging.addMacroWarning(source, identifier, `${label} infusion failed due to a missing pack item! (pack) ${cpr.packs.legacy.summons} (identifier) homunculusServant`);
     const flatAttack = workflow.actor.system.attributes.spell.attack;
@@ -241,7 +247,7 @@ async function homunculus({macroClass: {source, identifier}, workflow}) {
         {id: 'channel-magic', options: {object: true, translate: 'CHRISPREMADES.Macros.Legacy.InfuseItem.ChannelMagic'}},
         {id: 'evasion', options: {object: true}},
         {id: 'force-strike', options: {object: true, flatAttack, translate: 'CHRISPREMADES.Macros.Legacy.InfuseItem.ForceStrike'}},
-        {id: 'mending-homonculus-servant', options: {object: true}}
+        {id: 'mending-homunculus-servant', options: {object: true}}
     ];
     const items = await Promise.all(fetch.map(async i => {
         const item = await compendiumUtils.getDocumentByIdentifier(cpr.packs.misc.automationItems, i.id, i.options);
@@ -259,7 +265,7 @@ async function homunculus({macroClass: {source, identifier}, workflow}) {
     if (!parent) return;
     await documentUtils.makeDependent(parent, [sourceDocument]);
     const config = automationUtils.getConfigValues(workflow.item, Object.keys(infusionHomunculusServant.config));    
-    const level = workflow.actor.classes[config.classIdentifer]?.system.levels || 1;
+    const level = workflow.actor.classes[config.classIdentifier]?.system.levels || 1;
     const hp = (await rollUtils.rollDice(config.hp, {document: workflow.activity}))?.total || 1;
     const updates = { system: {
         details: {cr: actorUtils.getCR(workflow.actor)},
@@ -319,19 +325,19 @@ async function homunculusChannel({document: activity, macroClass: {source}}) {
     const [casterEffect] = await effectUtils.createEffects(activity.actor, [effectData]);
     await effectUtils.createEffects(summon.actor, [effectData], {parentEntity: casterEffect});
 }
-async function homunculusChannelEarly({document: effect, macroClass: {source}, workflow, token}) {
+async function homunculusChannelEarly({activity, document: effect, macroClass: {source}, token}) {
     const notify = msg => { 
         genericUtils.notify('CHRISPREMADES.Macros.Legacy.InfuseItem.' + msg); 
-        return workflow.aborted = true;
+        return true;
     };
-    if (workflow.item.type !== 'spell' || workflow.item.system.range.units !== 'touch') return notify('InvalidSpell');
-    const familiarToken = summonUtils.getSummonsByIdentifier('homunculusServant', {actor: workflow.actor})[0]?.token;
-    if (!familiarToken) return notify('TooFar');
+    if (activity.item.type !== 'spell' || activity.item.system.range.units !== 'touch') return notify('InvalidSpell');
+    const homunculus = summonUtils.getSummonsByIdentifier('homunculusServant', {actor: activity.actor})[0]?.token;
+    if (!homunculus) return notify('TooFar');
     const infusion = await fromUuid(effect.flags[source]?.infusion);
     const range = infusion ? automationUtils.getConfigValue(infusion, 'touchRange') : 120;
-    if (tokenUtils.getDistance(token, familiarToken) > range) return notify('TooFar');
-    if (actorUtils.hasUsedReaction(familiarToken.actor)) return notify('ReactionUsed');
-    await actorUtils.setReactionUsed(familiarToken.actor);
+    if (tokenUtils.getDistance(token, homunculus) > range) return notify('TooFar');
+    if (actorUtils.hasUsedReaction(homunculus.actor)) return notify('ReactionUsed');
+    await actorUtils.setReactionUsed(homunculus.actor);
 }
 async function homunculusCommand({document: activity}) {
     const summon = summonUtils.getSummonsByIdentifier('homunculusServant', {actor: activity.actor})[0];
@@ -468,7 +474,7 @@ const metadata = {
     rules: '2014'
 };
 const bonusConfig = {
-    classIdentifer: {
+    classIdentifier: {
         default: 'artificer',
         type: 'text',
         label: 'CHRISPREMADES.Config.ClassIdentifier',
@@ -486,7 +492,7 @@ const bonusConfig = {
 const calledMacro = fn => ({...metadata, called: [{pass: 'actorInfusionItems', macro: fn, priority: 200}]});
 export const infusionCollectArmors = calledMacro(collectArmors);
 export const infusionCollectArmorShield = calledMacro(collectArmorShield);
-export const infusionCollecArmorRobes = calledMacro(collectArmorRobes);
+export const infusionCollectArmorRobes = calledMacro(collectArmorRobes);
 export const infusionCollectFoci = calledMacro(collectFoci);
 export const infusionCollectShield = calledMacro(collectShield);
 export const infusionCollectWeapons = calledMacro(collectWeapons);
@@ -496,7 +502,21 @@ export const infusionCollectThrownWeapons = calledMacro(collectThrownWeapons);
 const rollMacro = fn => ({...metadata, roll: [{pass: 'activityRollFinished', macro: fn, priority: 50}]});
 export const infusionArcanePropulsion = rollMacro(arcanePropulsion);
 export const infusionArmorOfMagicalStrength = rollMacro(magicalStrength);
-export const infusionArmorOfMagicalStrengthProne = rollMacro(magicalStrengthProne);
+export const infusionArmorOfMagicalStrengthProne = {
+    ...metadata,
+    roll: [
+        {
+            pass: 'activityPreTargeting',
+            macro: magicalStrengthCheckProne,
+            priority: 50
+        },
+        {
+            pass: 'activityRollFinished',
+            macro: magicalStrengthRemoveProne,
+            priority: 50
+        }
+    ]
+};
 export const infusionBootsOfTheWindingPath = rollMacro(bootsWinding);
 export const infusionEnhancedArcaneFocus = {...rollMacro(enhancedFocus), config: bonusConfig};
 export const infusionEnhancedDefense = {...rollMacro(enhancedDefense), config: bonusConfig};
@@ -505,7 +525,7 @@ export const infusionHelmOfAwareness = rollMacro(helmOfAwareness);
 export const infusionHomunculusServant = {
     ...rollMacro(homunculus),
     config: {
-        classIdentifer: {
+        classIdentifier: {
             default: 'artificer',
             type: 'text',
             category: 'homebrew',
@@ -559,7 +579,7 @@ export const infusionHomunculusServantChannelEarly = {
     ...metadata,
     roll: [
         {
-            pass: 'actorPreItemRoll',
+            pass: 'actorPreTargeting',
             macro: homunculusChannelEarly,
             priority: 50
         }

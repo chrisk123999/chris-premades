@@ -3,7 +3,7 @@ export {infuseItem as 'infuse-item'} from './legacy/classFeatures/artificer/infu
 export {
     infusionCollectArmors,
     infusionCollectArmorShield,
-    infusionCollecArmorRobes,
+    infusionCollectArmorRobes,
     infusionCollectFoci,
     infusionCollectShield,
     infusionCollectWeapons,
@@ -31,6 +31,7 @@ export {
     infusionSpellRefuelingRing as 'infusion-spell-refueling-ring'
 } from './legacy/classFeatures/artificer/infusions.mjs';
 export {rightToolForTheJob as 'the-right-tool-for-the-job'} from './legacy/classFeatures/artificer/rightToolForTheJob.mjs';
+export {soulOfArtifice as 'soul-of-artifice'} from './legacy/classFeatures/artificer/soulOfArtifice.mjs';
 // Barbarian
 export {brutalCritical as 'brutal-critical'} from './legacy/classFeatures/barbarian/brutalCritical.mjs';
 export {dangerSense as 'danger-sense'} from './legacy/classFeatures/barbarian/dangerSense.mjs';

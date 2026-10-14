@@ -24,9 +24,9 @@ async function swapPlan({macroClass: {identifier, source}, workflow}) {
     if (data.compendium?.length) data.packIds = data.compendium.map(c => c.split(':')[1]);
     const existing = getPlansAndInfusions(workflow.actor, source);
     if (existing.length > data.known)
-        return genericUtils.notify('CHRISPREMADES.Macros.All.ArtificerPlans.MaxKnown', {type: 'warn', format: {count: existing.length, max: data.known}});
+        return Logging.addMacroWarning(source, identifier, 'CHRISPREMADES.Macros.All.ArtificerPlans.MaxKnown', {notify: 'warn', format: {count: existing.length, max: data.known}});
     let selected = await fromUuid(workflowUtils.getWorkflowProperty(workflow, keys.preselectedMarker));
-    if (!selected && existing.length > 0) {
+    if (!selected) {
         const belowLimit = existing.length < data.known;
         const prompt = _loc('CHRISPREMADES.Macros.All.ArtificerPlans.ChooseSwapPlan');
         if (belowLimit) {
@@ -95,23 +95,24 @@ async function usePlan({macroClass: {identifier, source}, workflow}) {
     if (!config) return;
     if (config.requireTools?.length && !workflow.actor.itemTypes.tool.some(t => t.system.equipped && config.requireTools.includes(t.system.type?.baseItem))) {
         const tools = constants.toolOptions.filter(o => config.requireTools.includes(o.value)).map(t => t.label).join(', ');
-        return genericUtils.notify('CHRISPREMADES.Macros.Modern.TinkersMagic.NeedTools', {type: 'warn', format: {feature: workflow.item.name, tools}});
+        return Logging.addMacroWarning(source, identifier, 'CHRISPREMADES.Macros.Modern.TinkersMagic.NeedTools', {notify: 'warn', format: {feature: workflow.item.name, tools}});
     }
     const created = actorUtils.getEffectByIdentifier(workflow.actor, keys.createdEffectIdentifier, {multiple: true});
     if (created.length >= config.createdLimit) 
-        return genericUtils.notify('CHRISPREMADES.Macros.All.ArtificerPlans.MaxCreated', {type: 'warn', format: {count: created.length, max: config.createdLimit}});
+        return Logging.addMacroWarning(source, identifier, 'CHRISPREMADES.Macros.All.ArtificerPlans.MaxCreated', {notify: 'warn', format: {count: created.length, max: config.createdLimit}});
     let selected = await fromUuid(workflowUtils.getWorkflowProperty(workflow, keys.preselectedMarker));
     if (selected && created.some(e => e.origin === selected.uuid))
-        return genericUtils.notify('CHRISPREMADES.Macros.All.ArtificerPlans.AlreadyCreated', {type: 'warn', format: {item: selected.name}});
+        return Logging.addMacroWarning(source, identifier, 'CHRISPREMADES.Macros.All.ArtificerPlans.AlreadyCreated', {notify: 'warn', format: {item: selected.name}});
     if (!selected) {
         let plans = getPlansAndInfusions(workflow.actor, source);
-        if (!plans.length) return genericUtils.notify('CHRISPREMADES.Macros.All.ArtificerPlans.NoPlans', {type: 'warn'});
+        if (!plans.length) return Logging.addMacroWarning(source, identifier, 'CHRISPREMADES.Macros.All.ArtificerPlans.NoPlans', {notify: 'warn'});
         plans = plans.filter(p => !created.some(c => c.origin === p.uuid));
-        if (!plans.length) return genericUtils.notify('CHRISPREMADES.Macros.All.ArtificerPlans.AllCreated', {type: 'warn'});
+        if (!plans.length) return Logging.addMacroWarning(source, identifier, 'CHRISPREMADES.Macros.All.ArtificerPlans.AllCreated', {notify: 'warn'});
         selected = await dialogUtils.selectDocumentDialog(workflow.item.name, 'CHRISPREMADES.Macros.All.ArtificerPlans.Create', plans, {displayTooltips: true});
     }
     if (!selected) return;
-    const itemHolder = await fromUuid(workflowUtils.getWorkflowProperty(workflow, keys.itemHolder)) ?? workflow.targets.first()?.document ?? workflow.token.document;
+    const itemHolder = await fromUuid(workflowUtils.getWorkflowProperty(workflow, keys.itemHolder)) ?? workflow.targets.first()?.document ?? workflow.token?.document;
+    if (!itemHolder) Logging.addMacroWarning(source, identifier, 'Feature was used without a token on a scene.');
     if (documentUtils.getIdentifier(selected).startsWith(keys.infusionIdentifier)) {
         const infusionActivity = itemUtils.getActivityByIdentifier(selected, keys.createActivity);
         if (!infusionActivity) 
@@ -119,15 +120,16 @@ async function usePlan({macroClass: {identifier, source}, workflow}) {
         const options = {};
         workflowUtils.setWorkflowProperty(options, keys.prechecksComplete, true);
         // infusion macro expected to hook up dependent active effect
-        return await workflowUtils.syntheticActivityRoll(infusionActivity, [itemHolder], {options});
+        return await workflowUtils.syntheticActivityRoll(infusionActivity, itemHolder ? [itemHolder] : [], {options});
     }
     const data = (await fromUuid(selected.flags[source]?.[keys.planTemplateFlag]))?.toObject();
-    if (!data) return genericUtils.notify('CHRISPREMADES.Macros.Modern.ReplicateMagicItem.NotFound', {type: 'warn', format: {item: selected.name}});
+    if (!data) return Logging.addMacroWarning(source, identifier, 'CHRISPREMADES.Macros.Modern.ReplicateMagicItem.NotFound', {notify: 'warn', format: {item: selected.name}});
     genericUtils.setProperty(data, `flags.${source}.${keys.createdItemFlag}`, selected.uuid);
-    const createdItem = (await itemUtils.createItems(itemHolder.actor, [data]))?.[0];
+    const targetActor = itemHolder?.actor ?? workflow.actor;
+    const createdItem = (await itemUtils.createItems(targetActor, [data]))?.[0];
     if (!createdItem) return Logging.addMacroWarning(source, identifier, `Artificer replicate item failed to create item. (plan name) ${selected.name} (plan uuid) ${selected.uuid}`);
     const parentEffect = (await effectUtils.createEffects(workflow.actor, [{
-        name: `[${itemHolder.actor.name}] ${createdItem.name}`,
+        name: `[${targetActor.name}] ${createdItem.name}`,
         img: selected.img,
         origin: selected.uuid,
         flags: {
@@ -141,15 +143,15 @@ async function usePlan({macroClass: {identifier, source}, workflow}) {
 async function added({actor, macroClass: {identifier, rules, source}}) {
     if (rules !== '2024') return; 
     const template = await getPlanTemplate(identifier, source);
-    if (template) await markPlansNotPrepared(source, actor, template);
+    if (template) await markPlansNotPrepared(source, actor, template, identifier);
 }
 async function fromPlanSwapPlan({actor, document: activity}) {
     return await rollFeature(actor, keys.swapActivity, activity.item);
 }
-async function fromPlanCreatePlan({actor, document: activity, macroClass: {source}}) {
+async function fromPlanCreatePlan({actor, document: activity, macroClass: {source, identifier}}) {
     if (activity.item.flags[source]?.[keys.planTemplateFlag])
         return await rollFeature(actor, keys.createActivity, activity.item);
-    await markPlansNotPrepared(source, actor, activity.item);
+    await markPlansNotPrepared(source, actor, activity.item, identifier);
     return true;
 }
 async function preInfusion({workflow}) {
@@ -177,6 +179,7 @@ async function getConfig(workflow, source, identifier) {
         createdLimit: (await rollUtils.rollDice(config.limit, {document: workflow.activity}))?.total ?? 0,
         known: (await rollUtils.rollDice(config.known, {document: workflow.activity}))?.total ?? 0
     };
+    data.itemTypes = [...data.itemTypes];
     if (data.known && data.createdLimit) return data;
     Logging.addMacroWarning(source, identifier, `Artificer class scale formula could not be evaluated: (known plans) ${config.known} | (created limit) ${config.limit}`);
 }
@@ -201,18 +204,19 @@ async function getPlanTemplate(identifier, source) {
     }
     return template;
 }
-async function markPlansNotPrepared(source, actor, planTemplate) {
+async function markPlansNotPrepared(source, actor, planTemplate, identifier) {
+    const name = _loc('CHRISPREMADES.Macros.Modern.ReplicateMagicItem.PlanName');
     const unprepared = actor.itemTypes.feat.filter(
-        i => !i.flags[source]?.[keys.planTemplateFlag] && i.name.includes(planTemplate.name)
+        i => !i.flags[source]?.[keys.planTemplateFlag] && i.name.includes(name)
     );
     if (!unprepared.length) return;
     const notPrepared = _loc('CHRISPREMADES.Macros.All.ArtificerPlans.NotPrepared');
     const itemName = i => i.name.split(':')[1]?.trim() || i.name;
     const updates = unprepared.map(u => genericUtils.mergeObject(genericUtils.duplicate(planTemplate), {
-        name: `${notPrepared} ${planTemplate.name}: ${itemName(u)}`,
+        name: `${notPrepared} ${name}: ${itemName(u)}`,
         _id: u._id
     }));
-    genericUtils.notify('CHRISPREMADES.Macros.All.ArtificerPlans.NotPreparedPrompt', {type: 'warn', format: {
+    Logging.addMacroWarning(source, identifier, 'CHRISPREMADES.Macros.All.ArtificerPlans.NotPreparedPrompt', {notify: 'warn', format: {
         items: unprepared.map(i => itemName(i)).join(', ')
     }});
     await documentUtils.updateEmbeddedDocuments(actor, 'Item', updates);

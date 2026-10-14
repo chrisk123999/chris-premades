@@ -1,6 +1,6 @@
 {
   "folder": "mFl38wkwM1La6kQt",
-  "name": "Mending (Homonculus Servant)",
+  "name": "Mending (Homunculus Servant)",
   "type": "feat",
   "_id": "7rGCIUOzbLx2NgHA",
   "img": "icons/skills/melee/hand-grip-staff-yellow-brown.webp",
@@ -174,7 +174,7 @@
       "value": "",
       "chat": ""
     },
-    "identifier": "mending-homonculus-servant",
+    "identifier": "mending-homunculus-servant",
     "source": {
       "revision": 1,
       "rules": "2014",

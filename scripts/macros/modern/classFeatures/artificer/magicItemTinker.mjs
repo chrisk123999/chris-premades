@@ -9,18 +9,19 @@ function log(source, identifier, msg) {
     Logging.addMacroWarning(source, identifier, msg);
     return true;
 }
-async function fetchItems(token, range = 5) {
+async function fetchItems(token, actor) {
     const items = (await Promise.all(
-        actorUtils.getEffectByIdentifier(token.actor, artificer.keys.createdEffectIdentifier, {multiple: true}).map(async e => {
+        actorUtils.getEffectByIdentifier(actor, artificer.keys.createdEffectIdentifier, {multiple: true}).map(async e => {
             const document = await fromUuid(e.flags.dnd5e?.dependentOn);
             return document?.documentName === 'ActiveEffect' ? document.item: document;
         })
     )).filter(i => {
         if (!i) return false;
-        if (i.actor.id === token.actor.id) return true;
+        if (i.actor.uuid === actor.uuid) return true;
+        if (!token) return false;
         const holder = actorUtils.getFirstToken(i.actor);
         if (!holder) return false;
-        return tokenUtils.getDistance(token, holder) <= range;
+        return tokenUtils.getDistance(token, holder) <= 5;
     });
     return items;
 }
@@ -40,7 +41,7 @@ async function makeInputs(items, getLabel) {
 async function chargePreCheck({document: activity, config, dialog, macroClass: {source, identifier}, token}) {
     const slots = dialogUtils.getSpellSlotOptions(activity.actor);
     if (!slots.length) return notify('CHRISPREMADES.Macros.Legacy.PsionicSpells.NoSpells');
-    const items = (await fetchItems(token)).filter(i => Number.isNumeric(i.system.uses.max) && i.system.uses.spent > 0);
+    const items = (await fetchItems(token, activity.actor)).filter(i => Number.isNumeric(i.system.uses?.max) && i.system.uses.spent > 0);
     if (!items.length) return notify('CHRISPREMADES.Macros.Modern.MagicItemTinker.NoItems');
     const choices = await applications.DialogApp.dialog(
         activity.item.name,
@@ -67,9 +68,9 @@ async function charge({workflow}) {
     if (!slot) return;
     await documentUtils.update(item, {'system.uses.spent': item.system.uses.spent - slot});
 }
-async function drain({document: activity, dialog, macroClass: {source, identifier}, token}) {
+async function drain({document: activity, macroClass: {source, identifier}, token}) {
     const settings = automationUtils.getConfigValues(activity.item, Object.keys(magicItemTinker.config));
-    const items = (await fetchItems(token)).filter(i => settings[i.system.rarity]);
+    const items = (await fetchItems(token, activity.actor)).filter(i => settings[i.system.rarity]);
     if (!items.length) return notify('CHRISPREMADES.Macros.Modern.MagicItemTinker.NoItems');
     const choices = await applications.DialogApp.dialog(
         activity.item.name,
@@ -93,7 +94,6 @@ async function drain({document: activity, dialog, macroClass: {source, identifie
     )) return log(source, identifier, 'Magic Item Tinker: Drain was cancelled by the GM.');
     await documentUtils.update(activity.actor, {[`system.spells.${slot}.value`]: activity.actor.system.spells[slot].value + 1 });
     await documentUtils.deleteDocument(item);
-    dialog.configure = false;
 }
 async function transmute({document: activity, macroClass: {source, identifier}, token}) {
     const feature = actorUtils.getItemByIdentifiers(activity.actor, ['replicate-magic-item', 'infuse-item'], {type: 'feat'});
@@ -102,7 +102,7 @@ async function transmute({document: activity, macroClass: {source, identifier}, 
     if (!createActivity) return log(source, identifier, `Magic Item Tinker: Transmute exited early due to a missing activity. (item) ${feature.uuid} (identifier) ${artificer.keys.createActivity}`);
     const plans = artificer.getPlansAndInfusions(activity.actor, source);
     if (!plans.length) return notify('CHRISPREMADES.Macros.All.ArtificerPlans.NoPlans');
-    const items = await fetchItems(token);
+    const items = await fetchItems(token, activity.actor);
     if (!items.length) return notify('CHRISPREMADES.Macros.Modern.MagicItemTinker.NoItems');
     const choices = await applications.DialogApp.dialog(
         activity.item.name,

@@ -29,7 +29,7 @@ async function damage({document, ditem, actor}) {
     const originActivity = await effectUtils.getOriginActivity(document);
     const originItem = originActivity?.item;
     if (!originItem) return;
-    await workflowUtils.preventZeroHP(ditem, {actor});
+    workflowUtils.preventZeroHP(ditem, {actor});
     const sourceEffect = documentUtils.getEffectByIdentifier(originItem.actor, 'giftOfTheProtectorsSource');
     await documentUtils.deleteDocument(document);
     if (sourceEffect) await documentUtils.deleteDocument(sourceEffect);

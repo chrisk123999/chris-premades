@@ -319,7 +319,8 @@
             "Weapon": "Weapon",
             "WeaponProperties": "Weapon Properties",
             "WeaponType": "Weapon Type",
-            "WeaponTypes": "Weapon Types"
+            "WeaponTypes": "Weapon Types",
+            "SpellList": "Spell List"
         },
         "Error": {
             "ActorNotFound": "Could not find the summon actor.",
@@ -452,6 +453,12 @@
                     "Revert": "Wild Shape: Revert",
                     "FormCompendiums": "Wild Shape Compendiums",
                     "FormCompendiumsHint": "Use these compendiums instead of the monster compendiums configured in settings."
+                },
+                "SpellStoringItem": {
+                    "NoItems": "You and your allies are not carrying any valid items for spell storing!",
+                    "Existing": "Existing Spell-Storing Item",
+                    "Prompt": "Choose an item in which to store a spell:",
+                    "Recharge": "{actor} recharges a spell-storing item, <b>{item}</b>, on {target} from {uses} to {max} uses."
                 }
             },
             "Generic": {
@@ -898,7 +905,7 @@
                     "ChannelMagic": "Channel Magic",
                     "ChooseItem": "Choose a target item:",
                     "ExtraBonus": "Grant +2 Bonus",
-                    "ForceStrike": "ForceStrike",
+                    "ForceStrike": "Force Strike",
                     "HelmAwareness": "Helm of Awareness",
                     "HomunculusNotActive": "Place your homunculus token before using its features.",
                     "HomunculusHeart": "Heart of Homunculus Servant",
@@ -993,6 +1000,7 @@
                     "NotEnough": "Not enough sorcery points!",
                     "Select": "Select which benefits to gain:"
                 },
+                "RightToolForTheJob": "Choose a tool to create:",
                 "SacredWeapon": {
                     "Select": "Choose a weapon to imbue."
                 },
@@ -1007,6 +1015,7 @@
                     "ReductionPerLevel": "Damage Reduction Per Spell Slot Level",
                     "Select": "Use your reaction to spend a spell slot to reduce damage?"
                 },
+                "SoulOfArtifice": "Choose an item to destroy:",
                 "SummonFey": {
                     "FeyStep": "Fey Step",
                     "Fuming": "Fuming",
@@ -1030,8 +1039,7 @@
                     "MustSpend": "{feature} has no uses remaining. You must spend {name} to activate it.",
                     "Select": "Choose a second creature within 30 feet of the target for {item}.",
                     "Spend": "Spend {name} to use {feature} without consuming uses?"
-                },
-                "RightToolForTheJob": "Choose a tool to create:"
+                }
             },
             "Modern": {
                 "AgonizingBlast": {
@@ -1193,6 +1201,11 @@
                 "WildResurgence": {
                     "NoSpellSlots": "You have no expended spell slots to restore!",
                     "WildShapeUses": "You still have Wild Shape uses remaining!"
+                },
+                "SoulOfArtifice": {
+                    "HPPerItem": "HP Per Item",
+                    "Prompt": "Choose items to destroy and recover {amount} hit points for each:",
+                    "Rarity": "Allowed Rarities"
                 }
             }
         },

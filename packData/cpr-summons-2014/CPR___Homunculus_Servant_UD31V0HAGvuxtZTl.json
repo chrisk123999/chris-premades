@@ -11,7 +11,7 @@
       "sp": 0,
       "cp": 0
     },
-    "identifier": "cpr-homonculus-servant",
+    "identifier": "cpr-homunculus-servant",
     "abilities": {
       "str": {
         "value": 4,
@@ -676,7 +676,7 @@
     }
   },
   "prototypeToken": {
-    "name": "CPR - Homonculus Servant",
+    "name": "CPR - Homunculus Servant",
     "displayName": 30,
     "actorLink": false,
     "width": 0.5,

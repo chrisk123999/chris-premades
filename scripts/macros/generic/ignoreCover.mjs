@@ -18,7 +18,7 @@ async function coverBonus({document, identifier, workflow}) {
 export const ignoreCover = {
     rules: 'all',
     version: '2.1.3',
-    category: 'utlity',
+    category: 'utility',
     generic: true,
     documents: ['activeeffect', 'item'],
     roll: [

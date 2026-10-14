@@ -53,14 +53,10 @@ async function use({workflow}) {
                 expiryMode: 'delete'
             }
         }
-    }], {macros: [{type: 'rest', macros: [{source: 'chris-premades', identifier: 'tinkers-magic', rules: tinkersMagic.rules}]}]}))?.[0];
+    }]))?.[0];
     if (!parentEntity) return;
     const target = workflow.targets.first()?.actor ?? workflow.actor;
     await itemUtils.createItems(target, [item.toObject()], {parentEntity});
-}
-// DAE long rest special duration suppresses instead of deleting, despite settings
-async function remove({document: effect}) {
-    await documentUtils.deleteDocument(effect);
 }
 export const tinkersMagic = {
     name: 'Tinker\'s Magic',
@@ -72,13 +68,6 @@ export const tinkersMagic = {
             pass: 'activityRollFinished',
             macro: use,
             priority: 50
-        }
-    ],
-    rest: [
-        {
-            pass: 'actorLong',
-            macro: remove,
-            priority: 200
         }
     ],
     config: {
@@ -100,7 +89,7 @@ export const tinkersMagic = {
             hint: 'CHRISPREMADES.Macros.Modern.TinkersMagic.CustomCompendiumHint'
         },
         itemTypes: {
-            default: ['container', 'consumable', 'loot'],
+            default: ['container', 'consumable', 'equipment', 'loot'],
             type: 'select-many',
             category: 'behavior',
             label: 'CHRISPREMADES.Config.ItemTypes',

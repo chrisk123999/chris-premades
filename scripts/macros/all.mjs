@@ -1,5 +1,6 @@
 // Artificer
 export {flashOfGenius as 'flash-of-genius'} from './all/classFeatures/artificer/flashOfGenius.mjs';
+export {spellStoringItem as 'spell-storing-item'} from './all/classFeatures/artificer/spellStoring.mjs';
 export {swapArtificerPlan, useArtificerPlan, fromPlanSwapArtificerPlan, fromPlanCreateArtificerPlan, infusionPrechecks} from './all/classFeatures/artificer/useOrSwapPlan.mjs';
 // Barbarian
 export {indomitableMight as 'indomitable-might'} from './all/classFeatures/barbarian/indomitableMight.mjs';
