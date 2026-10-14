@@ -69,7 +69,6 @@ export { targetCreatureTypes } from './generic/targetCreatureTypes.mjs';
 /*============================*/
 export { actionDismissal } from './generic/actionDismissal.mjs';
 export { choiceRemoveCondition, turnEndChoiceRemoveCondition, turnStartChoiceRemoveCondition } from './generic/choiceRemoveCondition.mjs';
-export { combatStartItemUses } from './generic/combatStartItemUses.mjs';
 export { contestedCheck } from './generic/contestedCheck.mjs';
 export { pullOnFail, pullOnHit, pushOnFail } from './generic/forcedMovement.mjs';
 export { grapple } from './generic/grapple.mjs';
