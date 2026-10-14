@@ -28,19 +28,6 @@
           "override": false
         },
         "effects": [],
-        "flags": {
-          "cat": {
-            "macros": {
-              "roll": [
-                {
-                  "source": "chris-premades",
-                  "rules": "2024",
-                  "identifier": "chromatic-orb"
-                }
-              ]
-            }
-          }
-        },
         "range": {
           "units": "self",
           "override": false
@@ -216,15 +203,7 @@
         "effects": [],
         "flags": {
           "cat": {
-            "macros": {
-              "roll": [
-                {
-                  "source": "chris-premades",
-                  "rules": "2024",
-                  "identifier": "chromatic-orb"
-                }
-              ]
-            }
+            "hidden": true
           }
         },
         "range": {
@@ -374,7 +353,8 @@
         "attackRollPerTarget": "default",
         "fumbleThreshold": 1,
         "_id": "lU5DZnNrLFl1Nwp9",
-        "name": "Bounce"
+        "name": "Bounce",
+        "identifier": "chromaticOrbBounce"
       }
     },
     "uses": {
@@ -457,7 +437,16 @@
     "cat": {
       "automation": {
         "source": "chris-premades",
-        "version": "2.0.2"
+        "version": "2.1.3"
+      },
+      "macros": {
+        "roll": [
+          {
+            "source": "chris-premades",
+            "rules": "2024",
+            "identifier": "chromatic-orb"
+          }
+        ]
       }
     }
   },

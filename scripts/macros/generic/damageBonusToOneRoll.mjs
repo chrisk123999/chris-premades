@@ -1,4 +1,4 @@
-import {actorUtils, automationUtils, constants, DamageBonus, documentUtils, Logging, workflowUtils} from '../../proxy.mjs';
+import {actorUtils, automationUtils, constants, DamageBonus, documentUtils, effectUtils, Logging, workflowUtils} from '../../proxy.mjs';
 export const identifiersConfig = {
     default: [],
     type: 'selectIdentifiers',
@@ -14,6 +14,11 @@ export const attackTypeConfig = {
     hint: 'CHRISPREMADES.Macros.Generic.Common.AttackTypeHint',
     get options() { return constants.attackTypeOptions; }
 };
+function getEffectRoll(effect, formula) {
+    const {castLevel, baseLevel} = documentUtils.getSavedCastData(effect);
+    const scaling = effect.flags.dnd5e?.scaling ?? Math.max(0, castLevel - baseLevel);
+    return new CONFIG.Dice.DamageRoll(formula, {...effectUtils.getActor(effect)?.getRollData(), scaling});
+}
 async function damage({document, workflow}) {
     if (!workflow.targets.size || (!workflow.activity.hasDamage && !workflow.activity.hasHealing)) return;
     const config = automationUtils.getGenericConfigValues(document, 'chris-premades', 'damageBonusToOneRoll', configKeys);
@@ -57,10 +62,11 @@ async function damage({document, workflow}) {
     }
     const hasEffect = actor => !config.targetEffects.length || config.targetEffects.some(identifier => documentUtils.getEffectByIdentifier(actor, identifier, {multiple: true, sourceActor: workflow.actor}).length);
     const hasType = actor => !config.targetCreatureTypes.length || config.targetCreatureTypes.includes(actorUtils.typeOrRace(actor));
-    const narrowed = config.targetEffects.length || config.targetCreatureTypes.length;
+    const narrowed = config.requireHit || config.targetEffects.length || config.targetCreatureTypes.length;
     const targets = narrowed ? workflow.hitTargets.filter(token => token.actor && hasEffect(token.actor) && hasType(token.actor)) : undefined;
     if (targets && !targets.size) return;
-    const bonus = new DamageBonus(document, {formula: config.bonus, optional, type: config.bonusDamageType, maxTargets: config.maxTargets || undefined, allowCritical: config.allowCritical})
+    const roll = document.documentName === 'ActiveEffect' ? getEffectRoll(document, config.bonus) : undefined;
+    const bonus = new DamageBonus(document, {roll, formula: config.bonus, optional, type: config.bonusDamageType, maxTargets: config.maxTargets || undefined, allowCritical: config.allowCritical})
         .withOnUse(async ({bonus}) => {
             if (trackLastUse) await documentUtils.setFlag(document, 'chris-premades', 'lastUse', multiSingleTarget.rollID);
             await workflowUtils.rollConfiguredSource(bonus, config, Array.from(bonus.targets ?? []));
@@ -78,7 +84,7 @@ async function damage({document, workflow}) {
  * Bound on an effect or an item. Fires on `actorOptionalBonusDamage`.
  *
  * Config:
- * - `bonus`: damage bonus formula.
+ * - `bonus`: damage bonus formula. On an effect, `@scaling` is the number of levels the spell that created it was upcast.
  * - `bonusDamageType`: damage types offered as choices for this bonus.
  * - `attackType`: only trigger for this attack type.
  * - `damageType`: only trigger when the roll deals one of these damage types.
@@ -92,6 +98,7 @@ async function damage({document, workflow}) {
  * - `rollItem`: roll this item when the bonus is used.
  * - `maxTargets`: limit the bonus to this many targets. 0 applies it to every target.
  * - `everyRoll`: add the bonus to every roll of a multi-attack. Off adds it to one roll.
+ * - `requireHit`: only apply to targets that were hit.
  * - `targetWounded`: only apply when the target is missing hit points.
  * - `targetEffects`: only apply to hit targets that carry one of these effects created by the user.
  * - `targetCreatureTypes`: only apply to hit targets of these creature types.
@@ -201,6 +208,13 @@ export const damageBonusToOneRoll = {
             category: 'behavior',
             label: 'CHRISPREMADES.Macros.Generic.DamageBonusToOneRoll.EveryRoll',
             hint: 'CHRISPREMADES.Macros.Generic.DamageBonusToOneRoll.EveryRollHint'
+        },
+        requireHit: {
+            default: false,
+            type: 'checkbox',
+            category: 'behavior',
+            label: 'CHRISPREMADES.Macros.Generic.DamageBonusToOneRoll.RequireHit',
+            hint: 'CHRISPREMADES.Macros.Generic.DamageBonusToOneRoll.RequireHitHint'
         },
         targetWounded: {
             default: false,

@@ -1,0 +1,249 @@
+{
+  "_id": "0c3ludPAeYqlacA7",
+  "name": "Arcane Vigor",
+  "type": "spell",
+  "img": "icons/magic/life/cross-embers-glow-yellow-purple.webp",
+  "system": {
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "source": {
+      "book": "PHB 2024",
+      "page": "",
+      "license": "",
+      "custom": "",
+      "revision": 1,
+      "rules": "2024"
+    },
+    "activation": {
+      "type": "bonus",
+      "value": 1,
+      "condition": ""
+    },
+    "duration": {
+      "value": "",
+      "units": "inst"
+    },
+    "target": {
+      "affects": {
+        "choice": false,
+        "special": "",
+        "count": "",
+        "type": "self"
+      },
+      "template": {
+        "count": "",
+        "contiguous": false,
+        "type": "",
+        "size": "",
+        "width": "",
+        "height": "",
+        "units": "ft"
+      }
+    },
+    "range": {
+      "units": "self",
+      "special": ""
+    },
+    "uses": {
+      "spent": null,
+      "max": "",
+      "recovery": []
+    },
+    "level": 2,
+    "school": "abj",
+    "properties": [
+      "vocal",
+      "somatic"
+    ],
+    "materials": {
+      "value": "",
+      "consumed": false,
+      "cost": 0,
+      "supply": 0
+    },
+    "activities": {
+      "1O3xKEvzHIATFqe6": {
+        "_id": "1O3xKEvzHIATFqe6",
+        "type": "heal",
+        "name": "",
+        "img": "",
+        "sort": 0,
+        "activation": {
+          "type": "bonus",
+          "value": null,
+          "override": false
+        },
+        "consumption": {
+          "spellSlot": true,
+          "targets": [],
+          "scaling": {
+            "allowed": false,
+            "max": ""
+          }
+        },
+        "description": {
+          "chatFlavor": ""
+        },
+        "duration": {
+          "units": "inst",
+          "concentration": false,
+          "override": false
+        },
+        "effects": [],
+        "range": {
+          "units": "self",
+          "override": false
+        },
+        "target": {
+          "template": {
+            "contiguous": false,
+            "units": "ft"
+          },
+          "affects": {
+            "choice": false
+          },
+          "override": false,
+          "prompt": true
+        },
+        "uses": {
+          "spent": 0,
+          "recovery": [],
+          "max": ""
+        },
+        "useConditionText": "",
+        "useConditionReason": "",
+        "effectConditionText": "",
+        "macroData": {
+          "name": "",
+          "command": ""
+        },
+        "ignoreTraits": {
+          "idi": false,
+          "idr": false,
+          "idv": false,
+          "ida": false,
+          "idm": false
+        },
+        "midiProperties": {
+          "ignoreTraits": [],
+          "triggeredActivityId": "none",
+          "triggeredActivityConditionText": "",
+          "triggeredActivityTargets": "targets",
+          "triggeredActivityRollAs": "self",
+          "confirmTargets": "default",
+          "automationOnly": false,
+          "identifier": "",
+          "autoTargetType": "any",
+          "autoTargetAction": "default",
+          "otherActivityCompatible": true,
+          "otherActivityAsParentType": true,
+          "displayActivityName": false,
+          "rollMode": "default",
+          "chooseEffects": false,
+          "toggleEffect": false,
+          "ignoreFullCover": false,
+          "removeChatButtons": "default",
+          "magicEffect": false,
+          "magicDamage": false,
+          "noConcentrationCheck": false,
+          "autoCEEffects": "default"
+        },
+        "isOverTimeFlag": false,
+        "overTimeProperties": {
+          "saveRemoves": true,
+          "preRemoveConditionText": "",
+          "postRemoveConditionText": ""
+        },
+        "otherActivityId": "none",
+        "healing": {
+          "number": null,
+          "denomination": null,
+          "bonus": "@mod",
+          "types": [
+            "healing"
+          ],
+          "custom": {
+            "enabled": false,
+            "formula": ""
+          },
+          "scaling": {
+            "mode": "",
+            "number": null,
+            "formula": ""
+          }
+        }
+      }
+    },
+    "identifier": "arcane-vigor",
+    "method": "spell",
+    "prepared": 0
+  },
+  "effects": [],
+  "folder": "GPvmZmeZsEcVPYFH",
+  "flags": {
+    "midi-qol": {
+      "removeAttackDamageButtons": "default",
+      "forceCEOff": true
+    },
+    "midiProperties": {
+      "confirmTargets": "default",
+      "magicdam": true,
+      "magiceffect": true
+    },
+    "dnd5e": {
+      "riders": {
+        "activity": [],
+        "effect": []
+      }
+    },
+    "cat": {
+      "automation": {
+        "source": "chris-premades",
+        "version": "2.1.3"
+      },
+      "macros": {
+        "roll": [
+          {
+            "source": "chris-premades",
+            "rules": "2024",
+            "identifier": "arcane-vigor"
+          },
+          {
+            "source": "chris-premades",
+            "rules": "all",
+            "identifier": "spellAnimation"
+          }
+        ]
+      },
+      "genericConfig": {
+        "chris-premades": {
+          "spellAnimation": {
+            "animation": {
+              "source": "chris-premades",
+              "identifier": "castBuff"
+            }
+          }
+        }
+      },
+      "animationGenericConfig": {
+        "chris-premades": {
+          "spellAnimation": {
+            "chris-premades": {
+              "castBuff": {
+                "color": "purple"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "_stats": {
+    "coreVersion": "14.369",
+    "systemId": "dnd5e",
+    "systemVersion": "6.0.6"
+  },
+  "_key": "!items!0c3ludPAeYqlacA7"
+}

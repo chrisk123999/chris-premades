@@ -448,16 +448,14 @@
     },
     "dnd5e": {
       "riders": {
-        "activity": [
-          "N4EumfAvDJdHqpNs"
-        ],
+        "activity": [],
         "effect": []
       }
     },
     "cat": {
       "automation": {
         "source": "chris-premades",
-        "version": "2.1.0"
+        "version": "2.1.3"
       },
       "macros": {
         "roll": [

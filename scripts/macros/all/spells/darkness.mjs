@@ -1,15 +1,12 @@
 import cprConstants from '../../../constants.mjs';
-import {actorUtils, automationUtils, documentUtils, effectUtils, genericUtils, regionUtils} from '../../../proxy.mjs';
+import {actorUtils, automationUtils, documentUtils, effectUtils, genericUtils, regionUtils, summonUtils} from '../../../proxy.mjs';
+import {createRegionLight, syncRegionLights} from '../../generic/moveRegion.mjs';
 function getOriginItem(region) {
     return regionUtils.getActivity(region)?.item;
 }
 function getLightRadius(region, token) {
     const radius = regionUtils.getArea(region).radius - (token?.object?.externalRadius ?? 0);
     return Math.max(radius, 0) / region.parent.dimensions.distancePixels;
-}
-function getLightPosition(region) {
-    const {x, y} = regionUtils.getArea(region);
-    return {x: Math.round(x), y: Math.round(y)};
 }
 async function darkenToken(token, region, activity, animationType) {
     if (!token.actor) return;
@@ -18,14 +15,9 @@ async function darkenToken(token, region, activity, animationType) {
     const [effect] = await effectUtils.createEffects(token.actor, [effectData]);
     if (effect) await documentUtils.makeDependent(region, [effect]);
 }
-async function createLight(region, animationType) {
-    const [light] = await documentUtils.createEmbeddedDocuments(region.parent, 'AmbientLight', [{
-        ...getLightPosition(region),
-        config: {negative: true, dim: getLightRadius(region), animation: {type: animationType}}
-    }]);
-    if (!light) return;
-    await documentUtils.makeDependent(region, [light]);
-    return {darknessLight: light.id};
+export async function createLight(region, animationType) {
+    const light = await createRegionLight(region, {negative: true, animation: {type: animationType}});
+    if (light) return {darknessLight: light.id};
 }
 function getSeeingTokens(region, workflow) {
     const identifiers = automationUtils.getConfigValue(getOriginItem(region), 'seeThroughIdentifiers') ?? [];
@@ -40,10 +32,25 @@ function getDarkenedToken(region, activity, workflow) {
     if (activity.target.template.type !== 'radius') return;
     return workflow?.token?.document ?? actorUtils.getFirstToken(activity.actor);
 }
+async function addTimer(activity, region) {
+    const effectData = documentUtils.getBaseEffectData(activity, {
+        name: activity.item.name,
+        img: activity.item.img,
+        origin: activity.uuid,
+        duration: {value: Number(activity.duration.value) || 1, units: 'rounds', expiry: 'targetEnd'},
+        macros: [{type: 'effect', macros: [{source: 'chris-premades', rules: 'all', identifier: 'darkness-timer'}]}]
+    });
+    genericUtils.setProperty(effectData, 'flags.chris-premades.darknessRegion', region.uuid);
+    const [effect] = await effectUtils.createEffects(activity.actor, [effectData]);
+    if (effect) await documentUtils.makeDependent(effect, [region]);
+}
 async function created({document: region, workflow}) {
     const activity = regionUtils.getActivity(region);
     const originItem = activity?.item;
     if (!originItem) return;
+    if (!activity.duration.concentration && activity.duration.units === 'round') await addTimer(activity, region);
+    const summonConcentration = summonUtils.getSummonData(activity.actor)?.parent;
+    if (summonConcentration && !region.flags.dnd5e?.dependentOn) await documentUtils.makeDependent(summonConcentration, [region]);
     if (automationUtils.getConfigValue(originItem, 'spreadAroundCorners')) await regionUtils.spreadAroundCorners(region);
     const updates = {name: originItem.name};
     const seeingTokens = getSeeingTokens(region, workflow);
@@ -65,12 +72,8 @@ async function created({document: region, workflow}) {
     const {animation, options} = automationUtils.getResolvedAnimation(originItem, 'animation');
     if (animation) await animation.macros?.darkness?.(region, options);
 }
-async function updated({document: region, updates}) {
-    const light = region.parent.lights.get(region.flags['chris-premades']?.darknessLight);
-    if (!updates?.shapes || !light) return;
-    const {x, y} = getLightPosition(region);
-    if (x === light.x && y === light.y) return;
-    await documentUtils.update(light, {x, y});
+async function moved({document: region}) {
+    await syncRegionLights(region);
 }
 async function deleted({document: region}) {
     const {darknessLight, darknessToken} = region.flags['chris-premades'] ?? {};
@@ -79,13 +82,25 @@ async function deleted({document: region}) {
     const {animation} = automationUtils.getResolvedAnimation(originItem, 'animation');
     if (animation) await animation.macros?.endDarkness?.(region);
 }
+async function timerEnded({document: effect}) {
+    const region = await fromUuid(effect.flags['chris-premades']?.darknessRegion ?? '');
+    if (region) await documentUtils.deleteDocument(region);
+}
+export const darknessTimer = {
+    name: 'Darkness Timer',
+    version: '2.1.3',
+    rules: 'all',
+    effect: [
+        {pass: 'deleted', macro: timerEnded, priority: 50}
+    ]
+};
 export const darkness = {
     name: 'Darkness',
     version: '2.0.0',
     rules: 'all',
     region: [
         {pass: 'created', macro: created, priority: 50},
-        {pass: 'updated', macro: updated, priority: 50},
+        {pass: 'moved', macro: moved, priority: 50},
         {pass: 'deleted', macro: deleted, priority: 50}
     ],
     config: {

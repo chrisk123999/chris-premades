@@ -208,9 +208,17 @@ export { harkonsBite as 'harkons-bite', harkonsBiteEffect as 'harkons-bite-effec
 export { absorbElements as 'absorb-elements' } from './legacy/spells/absorbElements.mjs';
 export { animateObjects as 'animate-objects' } from './legacy/spells/animateObjects.mjs';
 export { boomingBladeMoved as 'booming-blade-moved' } from './legacy/spells/boomingBlade.mjs';
+export { chaosBolt as 'chaos-bolt' } from './legacy/spells/chaosBolt.mjs';
 export { chillTouch as 'chill-touch', chillTouchUndead as 'chill-touch-undead' } from './legacy/spells/chillTouch.mjs';
 export { findGreaterSteed as 'find-greater-steed', findSteed as 'find-steed', findSteedActive as 'find-steed-active', findSteedDismiss as 'find-steed-dismiss' } from './legacy/spells/findSteed.mjs';
+export { flockOfFamiliars as 'flock-of-familiars' } from './legacy/spells/flockOfFamiliars.mjs';
+export { healingSpiritHeal as 'healing-spirit-heal' } from './legacy/spells/healingSpirit.mjs';
 export { huntersMark as 'hunters-mark', huntersMarkAttack as 'hunters-mark-attack' } from './legacy/spells/huntersMark.mjs';
 export { lightningLure as 'lightning-lure' } from './legacy/spells/lightningLure.mjs';
+export { maximiliansEarthenGrasp as 'maximilians-earthen-grasp' } from './legacy/spells/maximiliansEarthenGrasp.mjs';
+export { rayOfEnfeeblement as 'ray-of-enfeeblement', rayOfEnfeeblementEnfeebled as 'ray-of-enfeeblement-enfeebled' } from './legacy/spells/rayOfEnfeeblement.mjs';
+export { shadowBlade as 'shadow-blade', shadowBladeSword as 'shadow-blade-sword' } from './legacy/spells/shadowBlade.mjs';
 export { shockingGrasp as 'shocking-grasp' } from './legacy/spells/shockingGrasp.mjs';
 export { summonFey as 'summon-fey', summonFeyFeyStep as 'fey-step' } from './legacy/spells/summonFey.mjs';
+export { tashasCausticBrew as 'tashas-caustic-brew' } from './legacy/spells/tashasCausticBrew.mjs';
+export { witherAndBloom as 'wither-and-bloom' } from './legacy/spells/witherAndBloom.mjs';

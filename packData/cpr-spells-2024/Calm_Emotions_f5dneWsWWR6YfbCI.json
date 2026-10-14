@@ -1,0 +1,437 @@
+{
+  "type": "spell",
+  "system": {
+    "activities": {
+      "saveCalmEmotioII": {
+        "type": "save",
+        "_id": "saveCalmEmotioII",
+        "sort": 0,
+        "name": "Suppress",
+        "img": "",
+        "identifier": "suppress",
+        "activation": {
+          "type": "action",
+          "value": null,
+          "override": false
+        },
+        "consumption": {
+          "spellSlot": true,
+          "targets": [],
+          "scaling": {
+            "allowed": false,
+            "max": ""
+          }
+        },
+        "description": {
+          "chatFlavor": ""
+        },
+        "duration": {
+          "units": "inst",
+          "concentration": false,
+          "override": false
+        },
+        "effects": [
+          {
+            "_id": "gkRnT26WoS3a7z2q",
+            "onSave": false
+          }
+        ],
+        "range": {
+          "override": false
+        },
+        "target": {
+          "template": {
+            "contiguous": false,
+            "units": "ft"
+          },
+          "affects": {
+            "choice": false
+          },
+          "override": false,
+          "prompt": true
+        },
+        "uses": {
+          "spent": 0,
+          "recovery": [],
+          "max": ""
+        },
+        "damage": {
+          "parts": [],
+          "onSave": "none",
+          "critical": {
+            "allow": false
+          }
+        },
+        "save": {
+          "ability": [
+            "cha"
+          ],
+          "dc": {
+            "formula": "",
+            "calculation": "spellcasting"
+          }
+        },
+        "useConditionText": "",
+        "effectConditionText": "",
+        "macroData": {
+          "name": "",
+          "command": ""
+        },
+        "ignoreTraits": {
+          "idi": false,
+          "idr": false,
+          "idv": false,
+          "ida": false
+        },
+        "midiProperties": {
+          "ignoreTraits": [],
+          "triggeredActivityId": "none",
+          "triggeredActivityConditionText": "",
+          "triggeredActivityTargets": "targets",
+          "triggeredActivityRollAs": "self",
+          "forceDialog": false,
+          "confirmTargets": "default",
+          "automationOnly": false,
+          "identifier": "suppress"
+        },
+        "appliedEffects": [
+          "gkRnT26WoS3a7z2q"
+        ]
+      },
+      "saveCalmIndiffer": {
+        "type": "save",
+        "_id": "saveCalmIndiffer",
+        "sort": 1,
+        "name": "Indifference",
+        "img": "",
+        "identifier": "indifference",
+        "activation": {
+          "type": "action",
+          "value": null,
+          "override": false
+        },
+        "consumption": {
+          "spellSlot": true,
+          "targets": [],
+          "scaling": {
+            "allowed": false,
+            "max": ""
+          }
+        },
+        "description": {
+          "chatFlavor": ""
+        },
+        "duration": {
+          "units": "inst",
+          "concentration": false,
+          "override": false
+        },
+        "effects": [
+          {
+            "_id": "rhL9mcbMEPnBM0r7",
+            "onSave": false
+          }
+        ],
+        "range": {
+          "override": false
+        },
+        "target": {
+          "template": {
+            "contiguous": false,
+            "units": "ft"
+          },
+          "affects": {
+            "choice": false
+          },
+          "override": false,
+          "prompt": true
+        },
+        "uses": {
+          "spent": 0,
+          "recovery": [],
+          "max": ""
+        },
+        "damage": {
+          "parts": [],
+          "onSave": "none",
+          "critical": {
+            "allow": false
+          }
+        },
+        "save": {
+          "ability": [
+            "cha"
+          ],
+          "dc": {
+            "formula": "",
+            "calculation": "spellcasting"
+          }
+        },
+        "useConditionText": "",
+        "effectConditionText": "",
+        "macroData": {
+          "name": "",
+          "command": ""
+        },
+        "ignoreTraits": {
+          "idi": false,
+          "idr": false,
+          "idv": false,
+          "ida": false
+        },
+        "midiProperties": {
+          "ignoreTraits": [],
+          "triggeredActivityId": "none",
+          "triggeredActivityConditionText": "",
+          "triggeredActivityTargets": "targets",
+          "triggeredActivityRollAs": "self",
+          "forceDialog": false,
+          "confirmTargets": "default",
+          "automationOnly": false,
+          "identifier": "indifference"
+        },
+        "appliedEffects": [
+          "rhL9mcbMEPnBM0r7"
+        ]
+      }
+    },
+    "uses": {
+      "spent": null,
+      "max": "",
+      "recovery": []
+    },
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "identifier": "calm-emotions",
+    "source": {
+      "book": "",
+      "page": "",
+      "license": "",
+      "custom": "PHB 2024",
+      "rules": "2024",
+      "revision": 1
+    },
+    "activation": {
+      "type": "action",
+      "value": 1,
+      "condition": ""
+    },
+    "duration": {
+      "value": "1",
+      "units": "minute"
+    },
+    "level": 2,
+    "materials": {
+      "value": "",
+      "consumed": false,
+      "cost": 0,
+      "supply": 0
+    },
+    "properties": [
+      "vocal",
+      "somatic",
+      "concentration"
+    ],
+    "range": {
+      "value": "60",
+      "units": "ft"
+    },
+    "school": "enc",
+    "target": {
+      "affects": {
+        "count": "",
+        "type": "",
+        "choice": false,
+        "special": ""
+      },
+      "template": {
+        "count": "",
+        "contiguous": false,
+        "type": "sphere",
+        "size": "20",
+        "width": "",
+        "height": "",
+        "units": "ft"
+      }
+    },
+    "method": "spell",
+    "prepared": 0
+  },
+  "effects": [
+    {
+      "name": "Calm Emotions: Condition Immunity",
+      "transfer": false,
+      "img": "icons/magic/control/buff-luck-fortune-rainbow.webp",
+      "_id": "gkRnT26WoS3a7z2q",
+      "type": "base",
+      "system": {
+        "changes": [
+          {
+            "key": "system.traits.ci.value",
+            "type": "add",
+            "value": "charmed",
+            "phase": "initial",
+            "priority": 20
+          },
+          {
+            "key": "system.traits.ci.value",
+            "type": "add",
+            "value": "frightened",
+            "phase": "initial",
+            "priority": 20
+          }
+        ]
+      },
+      "disabled": false,
+      "duration": {
+        "value": 1,
+        "units": "minutes",
+        "expiry": null,
+        "expired": false
+      },
+      "description": "",
+      "origin": null,
+      "tint": "#ffffff",
+      "statuses": [],
+      "flags": {
+        "core": {
+          "overlay": false
+        },
+        "cat": {
+          "identifier": "calmEmotionsSuppress",
+          "animation": {
+            "create": {
+              "source": "chris-premades",
+              "identifier": "calmEmotions"
+            },
+            "delete": {
+              "source": "chris-premades",
+              "identifier": "calmEmotions"
+            }
+          }
+        }
+      },
+      "sort": 0,
+      "_stats": {
+        "coreVersion": "14.369",
+        "systemId": "dnd5e",
+        "systemVersion": "6.0.6"
+      },
+      "_key": "!items.effects!f5dneWsWWR6YfbCI.gkRnT26WoS3a7z2q"
+    },
+    {
+      "name": "Calm Emotions: Indifferent",
+      "transfer": false,
+      "img": "icons/magic/control/buff-luck-fortune-rainbow.webp",
+      "_id": "rhL9mcbMEPnBM0r7",
+      "type": "base",
+      "system": {
+        "changes": []
+      },
+      "disabled": false,
+      "duration": {
+        "value": 1,
+        "units": "minutes",
+        "expiry": null,
+        "expired": false
+      },
+      "description": "",
+      "origin": null,
+      "tint": "#ffffff",
+      "statuses": [],
+      "flags": {
+        "dae": {
+          "specialDuration": [
+            "isDamaged"
+          ]
+        },
+        "core": {
+          "overlay": false
+        },
+        "cat": {
+          "identifier": "calmEmotionsIndifference",
+          "animation": {
+            "create": {
+              "source": "chris-premades",
+              "identifier": "calmEmotions"
+            },
+            "delete": {
+              "source": "chris-premades",
+              "identifier": "calmEmotions"
+            }
+          }
+        }
+      },
+      "sort": 0,
+      "_stats": {
+        "coreVersion": "14.369",
+        "systemId": "dnd5e",
+        "systemVersion": "6.0.6"
+      },
+      "_key": "!items.effects!f5dneWsWWR6YfbCI.rhL9mcbMEPnBM0r7"
+    }
+  ],
+  "name": "Calm Emotions",
+  "flags": {
+    "midi-qol": {
+      "removeAttackDamageButtons": "default"
+    },
+    "midiProperties": {
+      "confirmTargets": "default",
+      "magicdam": true,
+      "magiceffect": true
+    },
+    "dnd5e": {
+      "riders": {
+        "activity": [],
+        "effect": []
+      }
+    },
+    "cat": {
+      "automation": {
+        "source": "chris-premades",
+        "version": "2.1.3"
+      },
+      "macros": {
+        "roll": [
+          {
+            "source": "chris-premades",
+            "rules": "all",
+            "identifier": "targetCreatureTypes"
+          },
+          {
+            "source": "chris-premades",
+            "rules": "all",
+            "identifier": "areaAnimation"
+          }
+        ]
+      },
+      "genericConfig": {
+        "chris-premades": {
+          "targetCreatureTypes": {
+            "creatureTypes": [
+              "humanoid"
+            ]
+          },
+          "areaAnimation": {
+            "animation": {
+              "source": "chris-premades",
+              "identifier": "calmEmotions"
+            }
+          }
+        }
+      }
+    }
+  },
+  "img": "icons/magic/control/buff-luck-fortune-rainbow.webp",
+  "folder": "GPvmZmeZsEcVPYFH",
+  "_id": "f5dneWsWWR6YfbCI",
+  "_stats": {
+    "coreVersion": "14.369",
+    "systemId": "dnd5e",
+    "systemVersion": "6.0.6"
+  },
+  "_key": "!items!f5dneWsWWR6YfbCI"
+}

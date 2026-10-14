@@ -1,0 +1,750 @@
+{
+  "name": "Flame Blade",
+  "type": "spell",
+  "system": {
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "source": {
+      "book": "PHB",
+      "page": "",
+      "license": "",
+      "custom": "",
+      "rules": "2014",
+      "revision": 1
+    },
+    "activation": {
+      "type": "bonus",
+      "condition": "",
+      "value": 1
+    },
+    "duration": {
+      "value": "10",
+      "units": "minute"
+    },
+    "target": {
+      "affects": {
+        "type": "self",
+        "count": "",
+        "choice": false,
+        "special": ""
+      },
+      "template": {
+        "units": "ft",
+        "contiguous": false,
+        "type": ""
+      }
+    },
+    "range": {
+      "units": "self",
+      "special": ""
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "recovery": []
+    },
+    "ability": "",
+    "level": 2,
+    "school": "evo",
+    "materials": {
+      "value": "",
+      "consumed": false,
+      "cost": 0,
+      "supply": 0
+    },
+    "properties": [
+      "vocal",
+      "somatic",
+      "material",
+      "concentration"
+    ],
+    "activities": {
+      "dnd5eactivity000": {
+        "_id": "dnd5eactivity000",
+        "type": "utility",
+        "name": "Cast",
+        "identifier": "cast",
+        "img": "",
+        "sort": 0,
+        "activation": {
+          "type": "bonus",
+          "value": null,
+          "override": false,
+          "condition": ""
+        },
+        "consumption": {
+          "spellSlot": true,
+          "targets": [],
+          "scaling": {
+            "allowed": false,
+            "max": ""
+          }
+        },
+        "description": {
+          "chatFlavor": ""
+        },
+        "duration": {
+          "units": "inst",
+          "concentration": false,
+          "override": false
+        },
+        "effects": [
+          {
+            "_id": "flameBladeEffec1",
+            "level": {}
+          }
+        ],
+        "range": {
+          "override": false,
+          "units": "self"
+        },
+        "target": {
+          "template": {
+            "contiguous": false,
+            "units": "ft",
+            "stationary": false
+          },
+          "affects": {
+            "choice": false
+          },
+          "override": false,
+          "prompt": false
+        },
+        "uses": {
+          "spent": 0,
+          "recovery": [],
+          "max": ""
+        },
+        "roll": {
+          "prompt": false,
+          "visible": false,
+          "name": "",
+          "formula": ""
+        },
+        "useConditionText": "",
+        "useConditionReason": "",
+        "effectConditionText": "",
+        "macroData": {
+          "name": "",
+          "command": ""
+        },
+        "ignoreTraits": {
+          "idi": false,
+          "idr": false,
+          "idv": false,
+          "ida": false,
+          "idm": false
+        },
+        "midiProperties": {
+          "ignoreTraits": [],
+          "triggeredActivityId": "none",
+          "triggeredActivityConditionText": "",
+          "triggeredActivityTargets": "targets",
+          "triggeredActivityRollAs": "self",
+          "confirmTargets": "default",
+          "autoTargetType": "any",
+          "autoTargetAction": "default",
+          "automationOnly": false,
+          "otherActivityCompatible": true,
+          "identifier": "cast",
+          "displayActivityName": false,
+          "rollMode": "default",
+          "autoConsume": false,
+          "forceConsumeDialog": "default",
+          "forceRollDialog": "default",
+          "forceDamageDialog": "default",
+          "otherActivityAsParentType": true,
+          "chooseEffects": false,
+          "toggleEffect": false,
+          "ignoreFullCover": false,
+          "removeChatButtons": "default",
+          "magicEffect": false,
+          "magicDamage": false,
+          "noConcentrationCheck": false,
+          "autoCEEffects": "default",
+          "triggeredActivityConsume": true,
+          "triggeredActivityConfigure": true,
+          "skipConcentrationCheck": false
+        },
+        "isOverTimeFlag": false,
+        "overTimeProperties": {
+          "saveRemoves": true,
+          "preRemoveConditionText": "",
+          "postRemoveConditionText": "",
+          "rollAs": "target"
+        },
+        "otherActivityId": "none",
+        "otherActivityAsParentType": true,
+        "flags": {},
+        "visibility": {
+          "level": {},
+          "requireAttunement": false,
+          "requireIdentification": false,
+          "requireMagic": false
+        },
+        "regionBehavior": {
+          "enabled": false,
+          "dispositionFilter": -1,
+          "excludeSource": true,
+          "oncePerTurn": true,
+          "wallRestriction": "none",
+          "regionVisibility": 2,
+          "rules": [],
+          "attachToken": "default"
+        },
+        "regionLight": {
+          "enabled": false,
+          "dim": 0,
+          "bright": 0,
+          "color": null,
+          "alpha": 0.5,
+          "luminosity": 0.5,
+          "animationType": "",
+          "animationSpeed": 5,
+          "animationIntensity": 5
+        }
+      },
+      "XUxXL8BmqvrpnQxc": {
+        "_id": "XUxXL8BmqvrpnQxc",
+        "type": "attack",
+        "name": "Flame Blade Scimitar",
+        "identifier": "scimitar",
+        "img": "",
+        "sort": 1,
+        "activation": {
+          "type": "action",
+          "value": null,
+          "override": true,
+          "condition": ""
+        },
+        "consumption": {
+          "spellSlot": false,
+          "targets": [],
+          "scaling": {
+            "allowed": false,
+            "max": ""
+          }
+        },
+        "description": {
+          "chatFlavor": ""
+        },
+        "duration": {
+          "units": "inst",
+          "concentration": false,
+          "override": true
+        },
+        "effects": [],
+        "range": {
+          "override": true,
+          "units": "ft",
+          "special": "",
+          "value": "5"
+        },
+        "target": {
+          "template": {
+            "contiguous": false,
+            "units": "ft",
+            "type": "",
+            "stationary": false
+          },
+          "affects": {
+            "choice": false,
+            "count": "1",
+            "type": "creature",
+            "special": ""
+          },
+          "override": true,
+          "prompt": false
+        },
+        "uses": {
+          "spent": 0,
+          "recovery": [],
+          "max": ""
+        },
+        "useConditionText": "",
+        "useConditionReason": "",
+        "effectConditionText": "",
+        "macroData": {
+          "name": "",
+          "command": ""
+        },
+        "ignoreTraits": {
+          "idi": false,
+          "idr": false,
+          "idv": false,
+          "ida": false,
+          "idm": false
+        },
+        "midiProperties": {
+          "ignoreTraits": [],
+          "triggeredActivityId": "none",
+          "triggeredActivityConditionText": "",
+          "triggeredActivityTargets": "targets",
+          "triggeredActivityRollAs": "self",
+          "confirmTargets": "default",
+          "autoTargetType": "any",
+          "autoTargetAction": "default",
+          "automationOnly": false,
+          "otherActivityCompatible": true,
+          "identifier": "scimitar",
+          "displayActivityName": false,
+          "rollMode": "default",
+          "autoConsume": false,
+          "forceConsumeDialog": "default",
+          "forceRollDialog": "default",
+          "forceDamageDialog": "default",
+          "otherActivityAsParentType": true,
+          "chooseEffects": false,
+          "toggleEffect": false,
+          "ignoreFullCover": false,
+          "removeChatButtons": "default",
+          "magicEffect": false,
+          "magicDamage": false,
+          "noConcentrationCheck": false,
+          "autoCEEffects": "default",
+          "triggeredActivityConsume": true,
+          "triggeredActivityConfigure": true,
+          "skipConcentrationCheck": false
+        },
+        "isOverTimeFlag": false,
+        "overTimeProperties": {
+          "saveRemoves": true,
+          "preRemoveConditionText": "",
+          "postRemoveConditionText": "",
+          "rollAs": "target"
+        },
+        "otherActivityId": "none",
+        "otherActivityAsParentType": true,
+        "flags": {
+          "cat": {
+            "hidden": true,
+            "macros": {
+              "roll": [
+                {
+                  "source": "chris-premades",
+                  "rules": "all",
+                  "identifier": "inheritCastLevel"
+                }
+              ]
+            }
+          }
+        },
+        "visibility": {
+          "level": {},
+          "requireAttunement": false,
+          "requireIdentification": false,
+          "requireMagic": false
+        },
+        "regionBehavior": {
+          "enabled": false,
+          "dispositionFilter": -1,
+          "excludeSource": true,
+          "oncePerTurn": true,
+          "wallRestriction": "none",
+          "regionVisibility": 2,
+          "rules": [],
+          "attachToken": "default"
+        },
+        "regionLight": {
+          "enabled": false,
+          "dim": 0,
+          "bright": 0,
+          "color": null,
+          "alpha": 0.5,
+          "luminosity": 0.5,
+          "animationType": "",
+          "animationSpeed": 5,
+          "animationIntensity": 5
+        },
+        "attack": {
+          "ability": "spellcasting",
+          "bonus": "",
+          "critical": {
+            "threshold": null
+          },
+          "flat": false,
+          "type": {
+            "value": "melee",
+            "classification": "spell"
+          }
+        },
+        "damage": {
+          "critical": {
+            "bonus": ""
+          },
+          "includeBase": true,
+          "parts": [
+            {
+              "custom": {
+                "enabled": false,
+                "formula": ""
+              },
+              "number": 3,
+              "denomination": 6,
+              "bonus": "",
+              "types": [
+                "fire"
+              ],
+              "scaling": {
+                "mode": "half",
+                "number": 1,
+                "formula": ""
+              }
+            }
+          ]
+        },
+        "attackMode": "",
+        "ammunition": "",
+        "otherActivityUuid": "",
+        "attackRollPerTarget": "default",
+        "fumbleThreshold": 1
+      },
+      "1iCHtkZUVXhJUSep": {
+        "_id": "1iCHtkZUVXhJUSep",
+        "type": "utility",
+        "name": "Evoke Flame Blade",
+        "identifier": "evoke",
+        "img": "",
+        "sort": 2,
+        "activation": {
+          "type": "bonus",
+          "value": null,
+          "override": false,
+          "condition": ""
+        },
+        "consumption": {
+          "spellSlot": false,
+          "targets": [],
+          "scaling": {
+            "allowed": false,
+            "max": ""
+          }
+        },
+        "description": {
+          "chatFlavor": ""
+        },
+        "duration": {
+          "units": "inst",
+          "concentration": false,
+          "override": true
+        },
+        "effects": [],
+        "range": {
+          "override": false,
+          "units": "self"
+        },
+        "target": {
+          "template": {
+            "contiguous": false,
+            "units": "ft",
+            "stationary": false
+          },
+          "affects": {
+            "choice": false
+          },
+          "override": false,
+          "prompt": false
+        },
+        "uses": {
+          "spent": 0,
+          "recovery": [],
+          "max": ""
+        },
+        "roll": {
+          "prompt": false,
+          "visible": false,
+          "name": "",
+          "formula": ""
+        },
+        "useConditionText": "",
+        "useConditionReason": "",
+        "effectConditionText": "",
+        "macroData": {
+          "name": "",
+          "command": ""
+        },
+        "ignoreTraits": {
+          "idi": false,
+          "idr": false,
+          "idv": false,
+          "ida": false,
+          "idm": false
+        },
+        "midiProperties": {
+          "ignoreTraits": [],
+          "triggeredActivityId": "none",
+          "triggeredActivityConditionText": "",
+          "triggeredActivityTargets": "targets",
+          "triggeredActivityRollAs": "self",
+          "confirmTargets": "default",
+          "autoTargetType": "any",
+          "autoTargetAction": "default",
+          "automationOnly": false,
+          "otherActivityCompatible": true,
+          "identifier": "evoke",
+          "displayActivityName": false,
+          "rollMode": "default",
+          "autoConsume": false,
+          "forceConsumeDialog": "default",
+          "forceRollDialog": "default",
+          "forceDamageDialog": "default",
+          "otherActivityAsParentType": true,
+          "chooseEffects": false,
+          "toggleEffect": false,
+          "ignoreFullCover": false,
+          "removeChatButtons": "default",
+          "magicEffect": false,
+          "magicDamage": false,
+          "noConcentrationCheck": false,
+          "autoCEEffects": "default",
+          "triggeredActivityConsume": true,
+          "triggeredActivityConfigure": true,
+          "skipConcentrationCheck": false
+        },
+        "isOverTimeFlag": false,
+        "overTimeProperties": {
+          "saveRemoves": true,
+          "preRemoveConditionText": "",
+          "postRemoveConditionText": "",
+          "rollAs": "target"
+        },
+        "otherActivityId": "none",
+        "otherActivityAsParentType": true,
+        "flags": {
+          "cat": {
+            "hidden": true,
+            "macros": {
+              "roll": [
+                {
+                  "source": "chris-premades",
+                  "rules": "all",
+                  "identifier": "inheritCastLevel"
+                }
+              ]
+            }
+          }
+        },
+        "visibility": {
+          "level": {},
+          "requireAttunement": false,
+          "requireIdentification": false,
+          "requireMagic": false
+        },
+        "regionBehavior": {
+          "enabled": false,
+          "dispositionFilter": -1,
+          "excludeSource": true,
+          "oncePerTurn": true,
+          "wallRestriction": "none",
+          "regionVisibility": 2,
+          "rules": [],
+          "attachToken": "default"
+        },
+        "regionLight": {
+          "enabled": false,
+          "dim": 0,
+          "bright": 0,
+          "color": null,
+          "alpha": 0.5,
+          "luminosity": 0.5,
+          "animationType": "",
+          "animationSpeed": 5,
+          "animationIntensity": 5
+        }
+      }
+    },
+    "identifier": "flame-blade",
+    "method": "spell",
+    "prepared": 0
+  },
+  "flags": {
+    "midiProperties": {
+      "confirmTargets": "default",
+      "autoFailFriendly": false,
+      "autoSaveFriendly": false,
+      "critOther": false,
+      "offHandWeapon": false,
+      "magicdam": true,
+      "magiceffect": true,
+      "noConcentrationCheck": false,
+      "toggleEffect": false,
+      "ignoreTotalCover": false,
+      "idr": false,
+      "idi": false,
+      "idv": false,
+      "ida": false
+    },
+    "midi-qol": {
+      "rollAttackPerTarget": "default",
+      "removeAttackDamageButtons": "default",
+      "itemCondition": "",
+      "effectCondition": "",
+      "AoETargetType": "any",
+      "AoETargetTypeIncludeSelf": true,
+      "autoTarget": "default",
+      "reactionCondition": "",
+      "otherCondition": ""
+    },
+    "dnd5e": {
+      "riders": {
+        "activity": [],
+        "effect": []
+      }
+    },
+    "cat": {
+      "automation": {
+        "source": "chris-premades",
+        "version": "2.1.3"
+      },
+      "macros": {
+        "roll": [
+          {
+            "source": "chris-premades",
+            "rules": "all",
+            "identifier": "spellAnimation"
+          }
+        ]
+      },
+      "genericConfig": {
+        "chris-premades": {
+          "spellAnimation": {
+            "animation": {
+              "source": "chris-premades",
+              "identifier": "flameBlade"
+            }
+          }
+        }
+      }
+    }
+  },
+  "img": "icons/magic/fire/projectile-bolt-zigzag-orange.webp",
+  "effects": [
+    {
+      "img": "icons/magic/fire/projectile-bolt-zigzag-orange.webp",
+      "name": "Flame Blade",
+      "statuses": [],
+      "system": {
+        "changes": [
+          {
+            "key": "token.light.dim",
+            "type": "upgrade",
+            "value": 20,
+            "phase": "initial",
+            "priority": 20,
+            "_id": "fBladeLightDim01",
+            "conditions": "{}",
+            "replacement": ""
+          },
+          {
+            "key": "token.light.bright",
+            "type": "upgrade",
+            "value": 10,
+            "phase": "initial",
+            "priority": 20,
+            "_id": "fBladeLightBrt01",
+            "conditions": "{}",
+            "replacement": ""
+          }
+        ],
+        "magical": true
+      },
+      "duration": {
+        "value": null,
+        "units": "seconds",
+        "expired": false,
+        "expiry": null
+      },
+      "tint": "#ffffff",
+      "transfer": false,
+      "disabled": false,
+      "showIcon": 1,
+      "flags": {
+        "dae": {
+          "transfer": false,
+          "stackable": "noneName",
+          "selfTarget": false,
+          "selfTargetAlways": false,
+          "dontApply": false,
+          "specialDuration": [],
+          "expiryMode": "delete"
+        },
+        "core": {
+          "overlay": false
+        },
+        "dnd5e": {
+          "riders": {
+            "statuses": []
+          }
+        },
+        "cat": {
+          "identifier": "flameBlade",
+          "macros": {
+            "effect": [
+              {
+                "source": "chris-premades",
+                "rules": "all",
+                "identifier": "unhideActivities"
+              }
+            ]
+          },
+          "genericConfig": {
+            "chris-premades": {
+              "unhideActivities": {
+                "activityIds": [
+                  "XUxXL8BmqvrpnQxc",
+                  "1iCHtkZUVXhJUSep"
+                ],
+                "favorite": true
+              }
+            }
+          },
+          "vae": {
+            "buttons": [
+              {
+                "type": "use",
+                "name": "Flame Blade Scimitar",
+                "itemIdentifier": "flame-blade",
+                "activityIdentifier": "scimitar"
+              },
+              {
+                "type": "use",
+                "name": "Evoke Flame Blade",
+                "itemIdentifier": "flame-blade",
+                "activityIdentifier": "evoke"
+              }
+            ]
+          },
+          "animation": {
+            "create": {
+              "source": "chris-premades",
+              "identifier": "flameBlade",
+              "config": {}
+            }
+          }
+        }
+      },
+      "description": "",
+      "_id": "flameBladeEffec1",
+      "type": "base",
+      "origin": null,
+      "folder": null,
+      "sort": 0,
+      "_stats": {
+        "coreVersion": "14.369",
+        "systemId": "dnd5e",
+        "systemVersion": "6.0.6"
+      },
+      "_key": "!items.effects!Vy05AC8r73JEKUvy.flameBladeEffec1"
+    }
+  ],
+  "folder": "ueMNujKhkNn2zCfl",
+  "_id": "Vy05AC8r73JEKUvy",
+  "_stats": {
+    "coreVersion": "14.369",
+    "systemId": "dnd5e",
+    "systemVersion": "6.0.6"
+  },
+  "_key": "!items!Vy05AC8r73JEKUvy"
+}

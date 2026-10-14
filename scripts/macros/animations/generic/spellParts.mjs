@@ -112,6 +112,12 @@ export function addCast(sequence, sourceToken, targetToken, {file, side, wait}) 
 export function playOnEffect(play) {
     return (effect, token, config, {sourceToken, activity} = {}) => play(sourceToken, token, {damageType: activity?.damage?.parts?.[0]?.types?.first(), ...config});
 }
+export function persistName(prefix, effect) {
+    return prefix + ' ' + effect.uuid;
+}
+export function endPersist(prefix) {
+    return (effect, token) => Sequencer.EffectManager.endEffects({name: persistName(prefix, effect), object: token});
+}
 export function addShake(sequence, token, {opacity = 0.5, duration = 1000, fadeIn = 0, fadeOut = 250, playIf = true} = {}) {
     /* eslint-disable indent */
     sequence

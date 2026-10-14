@@ -16,7 +16,7 @@ async function use({document: item, workflow}) {
         identifier: 'manifestMind',
         activityUuid: workflow.activity.uuid,
         unhideActivities: mindActivities,
-        unhideActivitiesFavorite: true,
+        favoriteActivities: true,
         macros: [{type: 'combat', macros: [{source: 'chris-premades', rules: '2014', identifier: 'manifest-mind'}]}]
     });
     const [markerEffect] = await effectUtils.createEffects(workflow.actor, [effectData]);
@@ -83,7 +83,7 @@ async function early({activity, actor}) {
 }
 export const manifestMind = {
     name: 'Manifest Mind: Summon',
-    version: '2.0.0',
+    version: '2.1.3',
     rules: '2014',
     roll: [
         {pass: 'itemRollFinished', macro: use, priority: 50},

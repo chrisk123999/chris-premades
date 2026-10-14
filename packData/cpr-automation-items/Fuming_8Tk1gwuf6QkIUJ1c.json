@@ -55,8 +55,8 @@
         },
         "duration": {
           "concentration": false,
-          "value": "1",
-          "units": "turn",
+          "value": "",
+          "units": "inst",
           "special": "",
           "override": false,
           "expiry": null
@@ -234,9 +234,9 @@
       },
       "disabled": false,
       "duration": {
-        "value": 1,
-        "units": "turns",
-        "expiry": "turnStart",
+        "value": 0,
+        "units": "rounds",
+        "expiry": "turnEnd",
         "expired": false
       },
       "description": "",
@@ -309,7 +309,7 @@
     "cat": {
       "automation": {
         "source": "chris-premades",
-        "version": "2.1.2"
+        "version": "2.1.3"
       }
     }
   },

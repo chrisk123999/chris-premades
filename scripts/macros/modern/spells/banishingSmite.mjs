@@ -5,10 +5,7 @@ async function banish({document, actor, workflow}) {
     if (!activity) return;
     const maxHp = automationUtils.getConfigValue(document, 'hp');
     const targets = Array.from(workflow.targets, token => token.document ?? token).filter(token => token.actor && token.actor.system.attributes.hp.value <= maxHp);
-    const endSpell = async () => {
-        const concentration = effectUtils.getConcentrationEffect(actor, document);
-        if (concentration) await documentUtils.deleteDocument(concentration);
-    };
+    const endSpell = () => effectUtils.endConcentration(actor, document);
     if (!targets.length) return await endSpell();
     await workflowUtils.syntheticActivityRoll(activity, targets, {consumeUsage: false, consumeResources: false, spellSlot: false, config: {concentration: {begin: false}}});
     const banished = targets.filter(token => documentUtils.getEffectByIdentifier(token.actor, 'banished', {sourceActor: actor}));

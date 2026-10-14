@@ -1,3 +1,43 @@
+# 2.1.3 Pre-Release:
+## Update Notes:
+- Requires CAT 0.1.3.
+- Automated 1st-level spells:
+  - 2014: Armor of Agathys, Arms of Hadar, Bless, Burning Hands, Chaos Bolt, Charm Person, Chromatic Orb, Compelled Duel, Detect Magic, Earth Tremor, Faerie Fire, Fog Cloud, Frost Fingers, Grease, Guiding Bolt, Hail of Thorns, Heroism, Ice Knife, Magic Missile, Sanctuary, Shield, Shield of Faith, Tasha's Caustic Brew, Thunderwave and Veil of Dusk.
+  - 2024: Animal Friendship, Armor of Agathys, Arms of Hadar, Bane, Bless, Burning Hands, Charm Person, Chromatic Orb, Command, Compelled Duel, Detect Magic, Faerie Fire, False Life, Fog Cloud, Forest Guard, Grease, Guiding Bolt, Hail of Thorns, Heroism, Ice Knife, Magic Missile, Sanctuary, Shield, Shield of Faith, Spellfire Flare, Sprout Foliage and Thunderwave.
+- New generic macros: `areaAnimation`, `endIfUnaffected`, `inheritCastLevel`, `moveRegion` and `reflectOnHit`.
+- `attackRider` and `nextHitRider` can also target creatures near the hit target.
+- `multiSingleTarget` skips its dialog when there is only one target.
+- New generic animation: Area Spell.
+- New animations: Alter Self, Armor of Agathys, Arms of Hadar, Bless, Blindness/Deafness, Blur, Burning Hands, Calm Emotions, Charm Person, Chromatic Orb, Compelled Duel, Crown of Madness, Detect Magic, Detect Thoughts, Dust Devil, Earth Tremor, Enlarge/Reduce, Faerie Fire, Flame Blade, Flaming Sphere, Fog Cloud, Frost Fingers, Grease, Guiding Bolt, Gust of Wind, Hail of Thorns, Healing Spirit, Heat Metal, Ice Knife, Maximilian's Earthen Grasp, Mirror Image, Moonbeam, Rime's Binding Ice, Sanctuary, Shadow Blade, Spellfire Flare, Spike Growth, Spiritual Weapon, Spray of Cards, Summer Winds, Tasha's Caustic Brew, Vortex Warp, Warding Bond, Wither and Bloom and Zone of Truth.
+- Magic Missile's darts launch from an arc around the caster.
+- `selectDamageType` has a Remember Choice option that offers "Don't ask again this combat". Pact of the Blade, Heart of the Storm, Channel Divinity and Awakened Spellbook offer it too.
+- `targetCreatureTypes` has Exclude Summoner and Maximum CR options, and Choose Targets always removes the user.
+- Automated 2nd-level spells:
+  - 2014: Borrowed Knowledge, Crown of Madness, Darkbolt, Detect Thoughts, Dragon's Breath, Dust Devil, Enlarge/Reduce, Flame Blade, Flaming Sphere, Flock of Familiars, Gust of Wind, Healing Spirit, Heat Metal, Hold Person, Magic Weapon, Maximilian's Earthen Grasp, Mirror Image, Moonbeam, Pass without Trace, Ray of Enfeeblement, Rime's Binding Ice, Scorching Ray, Shadow Blade, Spike Growth, Spiritual Weapon, Spray of Cards, Summon Beast, Vortex Warp, Warding Bond, Wither and Bloom and Zone of Truth.
+  - 2024: Aid, Alter Self, Animal Messenger, Arcane Vigor, Barkskin, Blindness/Deafness, Blood Sacrifice, Blur, Calm Emotions, Crown of Madness, Death Armor, Detect Thoughts, Dragon's Breath, Enlarge/Reduce, Find Steed, Flame Blade, Flaming Sphere, Gust of Wind, Heat Metal, Hold Person, Magic Weapon, Mirror Image, Moonbeam, Pass without Trace, Ray of Enfeeblement, Scorching Ray, Spike Growth, Spiritual Weapon, Summer Winds, Summon Beast, Warding Bond and Zone of Truth.
+- New summons: Bestial Spirit, Dust Devil, Earthen Hand, Flaming Sphere, Forest Guard, Healing Spirit, Otherworldly Steed and Spiritual Weapon.
+- `damageBonusToOneRoll` can require a hit, and `@scaling` in its bonus resolves to the creating spell's upcast levels.
+- `summon` supports per-summon disposition, formula-based actor updates, cast-level scaling of summon items and a follow-up activity after summoning or moving.
+- `multiSingleTarget` can combine attacks into one attack roll per target.
+- `reflectOnHit` can be limited to once per turn.
+- `teleport` can move creatures that failed their save, and its range accepts formulas.
+- Find Familiar delivers touch spells through the closest of several familiars from the same spell.
+- New homebrew options: Compelled Duel distance, Ice Knife explosion radius, Chaos Bolt bounce range and damage types, Forest Guard shrub range and die, Shadow Blade dice, Mirror Image duplicate AC, Summon Beast speeds and attacks, Find Steed fly speed and damage types, Healing Spirit and Summer Winds creature types, Enlarge/Reduce size steps, Dragon's Breath dice, Ray of Enfeeblement damage multiplier, Wither and Bloom Hit Dice, Alter Self dice and Animate Objects extra objects.
+## Bug Fixes:
+- `pushOnFail` and `pullOnFail` no longer stop later macros in the same roll.
+- `attackRider` no longer adds the rider's damage to the weapon roll when it has no bonus formula.
+- Dreadful Aspect, Turn the Faithless, Fey Presence, Nature's Wrath and Whispering Aura no longer affect their user. Whispering Aura also skips its summoner.
+- Manifest Mind's activities show on the actor sheet and are favorited after manifesting.
+- Banishing Smite and Stalker's Flurry hide their helper activities through CAT instead of dnd5e riders.
+- Tricksy's Darkness ends at the end of the fey's next turn, or earlier when Summon Fey's concentration ends.
+- Fey Presence, Form of Dread, Countercharm and Lance of Lethargy no longer end a turn early when you are last in initiative.
+- Branding Smite lasts 1 minute instead of ending at the start of your next turn.
+- Steady Aim and the fey spirit's Fuming end at the end of the current turn instead of the start of your next one.
+- Shocking Grasp and Staggering Smite end on the target's next turn instead of yours.
+- Channel Divinity refunds its use when you choose None or close the dialog.
+- `summon` with Replace Existing no longer hides the new summon's activities.
+- Summon uses and formulas resolve `@mod` from the summoning activity.
+
 # 2.1.2 Pre-Release:
 ## Update Notes:
 - Automated cantrips:

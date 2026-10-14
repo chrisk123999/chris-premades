@@ -1,0 +1,605 @@
+{
+  "name": "Gust of Wind",
+  "type": "spell",
+  "system": {
+    "source": {
+      "custom": "",
+      "book": "PHB",
+      "page": "248",
+      "license": "",
+      "revision": 1,
+      "rules": "2014"
+    },
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "level": 2,
+    "school": "evo",
+    "properties": [
+      "vocal",
+      "somatic",
+      "material",
+      "concentration",
+      "mgc"
+    ],
+    "materials": {
+      "value": "",
+      "consumed": false,
+      "cost": 0,
+      "supply": 0
+    },
+    "target": {
+      "affects": {
+        "choice": false,
+        "count": "",
+        "type": ""
+      },
+      "template": {
+        "units": "ft",
+        "width": "10",
+        "type": "line",
+        "size": "60",
+        "contiguous": false,
+        "count": ""
+      }
+    },
+    "range": {
+      "value": "0",
+      "units": "self",
+      "special": ""
+    },
+    "activation": {
+      "type": "action",
+      "condition": "",
+      "value": 1
+    },
+    "duration": {
+      "value": "1",
+      "units": "minute"
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "recovery": []
+    },
+    "ability": "",
+    "activities": {
+      "dnd5eactivity000": {
+        "_id": "dnd5eactivity000",
+        "type": "utility",
+        "activation": {
+          "type": "action",
+          "value": null,
+          "override": false
+        },
+        "consumption": {
+          "targets": [],
+          "scaling": {
+            "allowed": false,
+            "max": ""
+          },
+          "spellSlot": true
+        },
+        "description": {
+          "chatFlavor": ""
+        },
+        "duration": {
+          "units": "inst",
+          "concentration": false,
+          "override": false
+        },
+        "effects": [
+          {
+            "_id": "gstWndCaster0001"
+          }
+        ],
+        "range": {
+          "override": false,
+          "units": "self"
+        },
+        "target": {
+          "prompt": true,
+          "template": {
+            "contiguous": false,
+            "units": "ft"
+          },
+          "affects": {
+            "choice": false
+          },
+          "override": false
+        },
+        "uses": {
+          "spent": 0,
+          "max": "",
+          "recovery": []
+        },
+        "roll": {
+          "formula": "",
+          "name": "",
+          "prompt": false,
+          "visible": false
+        },
+        "sort": 0,
+        "useConditionText": "",
+        "forceDialog": false,
+        "effectConditionText": "",
+        "midiAutomationOnly": false,
+        "name": "Gust of Wind",
+        "img": "icons/magic/nature/leaf-juggle-humanoid-green.webp",
+        "useConditionReason": "",
+        "macroData": {
+          "name": "",
+          "command": ""
+        },
+        "ignoreTraits": {
+          "idi": false,
+          "idr": false,
+          "idv": false,
+          "ida": false,
+          "idm": false
+        },
+        "midiProperties": {
+          "ignoreTraits": [],
+          "triggeredActivityId": "none",
+          "triggeredActivityConditionText": "",
+          "triggeredActivityTargets": "targets",
+          "triggeredActivityRollAs": "self",
+          "forceDialog": false,
+          "forceAttackDialog": false,
+          "forceDamageDialog": false,
+          "confirmTargets": "default",
+          "autoTargetType": "any",
+          "autoTargetAction": "default",
+          "automationOnly": false,
+          "otherActivityCompatible": true,
+          "otherActivityAsParentType": true,
+          "identifier": "gust-of-wind",
+          "displayActivityName": false,
+          "rollMode": "default",
+          "chooseEffects": false,
+          "toggleEffect": false,
+          "ignoreFullCover": false,
+          "removeChatButtons": "default",
+          "magicEffect": false,
+          "magicDamage": false,
+          "noConcentrationCheck": false,
+          "autoCEEffects": "default"
+        },
+        "isOverTimeFlag": false,
+        "overTimeProperties": {
+          "saveRemoves": true,
+          "preRemoveConditionText": "",
+          "postRemoveConditionText": ""
+        },
+        "otherActivityId": "none",
+        "identifier": "gust-of-wind",
+        "flags": {
+          "cat": {
+            "placed": {
+              "region": {
+                "attachToCaster": true,
+                "activities": [
+                  {
+                    "id": "ueIqmLJxfIHB3pg8",
+                    "triggers": [
+                      "turnStart"
+                    ],
+                    "disposition": "all",
+                    "oncePerTurn": false
+                  }
+                ]
+              }
+            }
+          }
+        }
+      },
+      "8XgeeMBhoV28UgPF": {
+        "type": "utility",
+        "_id": "8XgeeMBhoV28UgPF",
+        "sort": 0,
+        "activation": {
+          "type": "bonus",
+          "value": null,
+          "override": true,
+          "condition": ""
+        },
+        "consumption": {
+          "scaling": {
+            "allowed": false
+          },
+          "spellSlot": false,
+          "targets": []
+        },
+        "description": {
+          "chatFlavor": ""
+        },
+        "duration": {
+          "units": "inst",
+          "concentration": false,
+          "override": true
+        },
+        "effects": [],
+        "range": {
+          "override": true,
+          "units": "any",
+          "special": ""
+        },
+        "target": {
+          "template": {
+            "contiguous": false,
+            "units": "ft",
+            "type": ""
+          },
+          "affects": {
+            "choice": false,
+            "count": "",
+            "type": ""
+          },
+          "override": false,
+          "prompt": true
+        },
+        "uses": {
+          "spent": 0,
+          "recovery": [],
+          "max": ""
+        },
+        "roll": {
+          "prompt": false,
+          "visible": false,
+          "name": "",
+          "formula": ""
+        },
+        "useConditionText": "",
+        "forceDialog": false,
+        "effectConditionText": "",
+        "midiAutomationOnly": false,
+        "name": "Gust of Wind: Move",
+        "img": "icons/magic/nature/leaf-juggle-humanoid-green.webp",
+        "appliedEffects": [],
+        "useConditionReason": "",
+        "macroData": {
+          "name": "",
+          "command": ""
+        },
+        "ignoreTraits": {
+          "idi": false,
+          "idr": false,
+          "idv": false,
+          "ida": false,
+          "idm": false
+        },
+        "midiProperties": {
+          "ignoreTraits": [],
+          "triggeredActivityId": "none",
+          "triggeredActivityConditionText": "",
+          "triggeredActivityTargets": "targets",
+          "triggeredActivityRollAs": "self",
+          "forceDialog": false,
+          "forceAttackDialog": false,
+          "forceDamageDialog": false,
+          "confirmTargets": "default",
+          "autoTargetType": "any",
+          "autoTargetAction": "default",
+          "automationOnly": false,
+          "otherActivityCompatible": true,
+          "otherActivityAsParentType": true,
+          "identifier": "gust-of-wind-move",
+          "displayActivityName": false,
+          "rollMode": "default",
+          "chooseEffects": false,
+          "toggleEffect": false,
+          "ignoreFullCover": false,
+          "removeChatButtons": "default",
+          "magicEffect": false,
+          "magicDamage": false,
+          "noConcentrationCheck": false,
+          "autoCEEffects": "default"
+        },
+        "isOverTimeFlag": false,
+        "overTimeProperties": {
+          "saveRemoves": true,
+          "preRemoveConditionText": "",
+          "postRemoveConditionText": ""
+        },
+        "otherActivityId": "none",
+        "identifier": "gust-of-wind-move",
+        "flags": {
+          "cat": {
+            "hidden": true,
+            "macros": {
+              "roll": [
+                {
+                  "source": "chris-premades",
+                  "rules": "all",
+                  "identifier": "inheritCastLevel"
+                },
+                {
+                  "source": "chris-premades",
+                  "rules": "all",
+                  "identifier": "moveRegion"
+                }
+              ]
+            },
+            "genericConfig": {
+              "chris-premades": {
+                "moveRegion": {
+                  "sourceActivityId": "dnd5eactivity000",
+                  "maxRange": 0
+                }
+              }
+            }
+          }
+        }
+      },
+      "ueIqmLJxfIHB3pg8": {
+        "type": "save",
+        "_id": "ueIqmLJxfIHB3pg8",
+        "sort": 0,
+        "activation": {
+          "type": "special",
+          "value": null,
+          "override": true,
+          "condition": ""
+        },
+        "consumption": {
+          "scaling": {
+            "allowed": false
+          },
+          "spellSlot": false,
+          "targets": []
+        },
+        "description": {
+          "chatFlavor": ""
+        },
+        "duration": {
+          "units": "inst",
+          "concentration": false,
+          "override": true
+        },
+        "effects": [],
+        "range": {
+          "override": true,
+          "units": "any",
+          "special": ""
+        },
+        "target": {
+          "template": {
+            "contiguous": false,
+            "units": "ft",
+            "type": ""
+          },
+          "affects": {
+            "choice": false,
+            "count": "",
+            "type": "creature",
+            "special": ""
+          },
+          "override": true,
+          "prompt": true
+        },
+        "uses": {
+          "spent": 0,
+          "recovery": [],
+          "max": ""
+        },
+        "damage": {
+          "parts": [],
+          "critical": {
+            "allow": false
+          },
+          "onSave": "none"
+        },
+        "save": {
+          "ability": [
+            "str"
+          ],
+          "dc": {
+            "calculation": "spellcasting",
+            "formula": ""
+          }
+        },
+        "useConditionText": "",
+        "forceDialog": false,
+        "effectConditionText": "",
+        "midiAutomationOnly": false,
+        "name": "Gust of Wind: Push",
+        "img": "icons/magic/nature/leaf-juggle-humanoid-green.webp",
+        "appliedEffects": [],
+        "useConditionReason": "",
+        "macroData": {
+          "name": "",
+          "command": ""
+        },
+        "ignoreTraits": {
+          "idi": false,
+          "idr": false,
+          "idv": false,
+          "ida": false,
+          "idm": false
+        },
+        "midiProperties": {
+          "ignoreTraits": [],
+          "triggeredActivityId": "none",
+          "triggeredActivityConditionText": "",
+          "triggeredActivityTargets": "targets",
+          "triggeredActivityRollAs": "self",
+          "forceDialog": false,
+          "forceAttackDialog": false,
+          "forceDamageDialog": false,
+          "confirmTargets": "default",
+          "autoTargetType": "any",
+          "autoTargetAction": "default",
+          "automationOnly": false,
+          "otherActivityCompatible": true,
+          "otherActivityAsParentType": true,
+          "identifier": "gust-of-wind-push",
+          "displayActivityName": false,
+          "rollMode": "default",
+          "chooseEffects": false,
+          "toggleEffect": false,
+          "ignoreFullCover": false,
+          "removeChatButtons": "default",
+          "magicEffect": false,
+          "magicDamage": false,
+          "noConcentrationCheck": false,
+          "autoCEEffects": "default"
+        },
+        "isOverTimeFlag": false,
+        "overTimeProperties": {
+          "saveRemoves": true,
+          "preRemoveConditionText": "",
+          "postRemoveConditionText": ""
+        },
+        "otherActivityId": "",
+        "otherActivityAsParentType": true,
+        "friendlySave": "default",
+        "identifier": "gust-of-wind-push",
+        "flags": {
+          "cat": {
+            "hidden": true
+          }
+        }
+      }
+    },
+    "identifier": "gust-of-wind",
+    "method": "spell",
+    "prepared": 0
+  },
+  "img": "icons/magic/nature/leaf-juggle-humanoid-green.webp",
+  "flags": {
+    "midiProperties": {
+      "magicdam": true,
+      "magiceffect": true,
+      "confirmTargets": "default",
+      "autoFailFriendly": false,
+      "autoSaveFriendly": false,
+      "critOther": false,
+      "offHandWeapon": false,
+      "concentration": true,
+      "noConcentrationCheck": false,
+      "toggleEffect": false,
+      "ignoreTotalCover": false,
+      "nodam": false,
+      "fulldam": false,
+      "halfdam": false,
+      "idr": false,
+      "idi": false,
+      "idv": false,
+      "ida": false
+    },
+    "midi-qol": {
+      "AoETargetType": "any",
+      "AoETargetTypeIncludeSelf": false,
+      "autoTarget": "default",
+      "rollAttackPerTarget": "default",
+      "itemCondition": "",
+      "effectCondition": "",
+      "onUseMacroName": "",
+      "removeAttackDamageButtons": "default",
+      "reactionCondition": "",
+      "otherCondition": ""
+    },
+    "dnd5e": {
+      "riders": {
+        "activity": [],
+        "effect": []
+      }
+    },
+    "cat": {
+      "automation": {
+        "source": "chris-premades",
+        "version": "2.1.3"
+      },
+      "macros": {
+        "roll": [
+          {
+            "source": "chris-premades",
+            "rules": "all",
+            "identifier": "gust-of-wind"
+          }
+        ]
+      }
+    }
+  },
+  "effects": [
+    {
+      "name": "Gust of Wind",
+      "img": "icons/magic/nature/leaf-juggle-humanoid-green.webp",
+      "origin": null,
+      "transfer": false,
+      "_id": "gstWndCaster0001",
+      "type": "base",
+      "system": {
+        "changes": []
+      },
+      "disabled": false,
+      "duration": {
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "statuses": [],
+      "showIcon": 1,
+      "folder": null,
+      "sort": 0,
+      "flags": {
+        "dnd5e": {
+          "riders": {
+            "statuses": []
+          }
+        },
+        "dae": {
+          "enableCondition": "",
+          "disableCondition": "",
+          "stackable": "noneName",
+          "expiryMode": "delete",
+          "durationExpression": "",
+          "macroRepeat": "none",
+          "disableIncapacitated": false,
+          "selfTarget": false,
+          "selfTargetAlways": true,
+          "dontApply": false,
+          "specialDuration": []
+        },
+        "core": {
+          "overlay": false
+        },
+        "cat": {
+          "identifier": "gustOfWind",
+          "unhideActivities": [
+            "gust-of-wind-move"
+          ],
+          "favoriteActivities": true,
+          "vae": {
+            "buttons": [
+              {
+                "type": "use",
+                "name": "Gust of Wind: Move",
+                "itemIdentifier": "gust-of-wind",
+                "activityIdentifier": "gust-of-wind-move"
+              }
+            ]
+          }
+        }
+      },
+      "_stats": {
+        "coreVersion": "14.369",
+        "systemId": "dnd5e",
+        "systemVersion": "6.0.6"
+      },
+      "_key": "!items.effects!447wkmGCCZ6ncoHZ.gstWndCaster0001"
+    }
+  ],
+  "folder": "ueMNujKhkNn2zCfl",
+  "_id": "447wkmGCCZ6ncoHZ",
+  "_stats": {
+    "coreVersion": "14.369",
+    "systemId": "dnd5e",
+    "systemVersion": "6.0.6"
+  },
+  "_key": "!items!447wkmGCCZ6ncoHZ"
+}

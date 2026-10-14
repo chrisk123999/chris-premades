@@ -1,0 +1,620 @@
+{
+  "type": "spell",
+  "system": {
+    "activities": {
+      "uTHHfLVdIvc80Dl9": {
+        "type": "utility",
+        "_id": "uTHHfLVdIvc80Dl9",
+        "sort": 0,
+        "activation": {
+          "type": "action",
+          "override": false
+        },
+        "consumption": {
+          "scaling": {
+            "allowed": false
+          },
+          "spellSlot": true,
+          "targets": []
+        },
+        "description": {
+          "chatFlavor": ""
+        },
+        "duration": {
+          "units": "inst",
+          "concentration": false,
+          "override": false
+        },
+        "effects": [],
+        "range": {
+          "units": "self",
+          "override": false
+        },
+        "target": {
+          "template": {
+            "contiguous": false,
+            "units": "ft"
+          },
+          "affects": {
+            "choice": false
+          },
+          "override": false,
+          "prompt": true
+        },
+        "uses": {
+          "spent": 0,
+          "recovery": [],
+          "max": ""
+        },
+        "roll": {
+          "prompt": false,
+          "visible": false,
+          "name": "",
+          "formula": ""
+        },
+        "useConditionText": "",
+        "useConditionReason": "",
+        "effectConditionText": "",
+        "macroData": {
+          "name": "",
+          "command": ""
+        },
+        "ignoreTraits": {
+          "idi": false,
+          "idr": false,
+          "idv": false,
+          "ida": false,
+          "idm": false
+        },
+        "midiProperties": {
+          "ignoreTraits": [],
+          "triggeredActivityId": "none",
+          "triggeredActivityConditionText": "",
+          "triggeredActivityTargets": "targets",
+          "triggeredActivityRollAs": "self",
+          "autoConsume": false,
+          "forceConsumeDialog": "default",
+          "forceRollDialog": "default",
+          "forceDamageDialog": "default",
+          "confirmTargets": "default",
+          "autoTargetType": "any",
+          "autoTargetAction": "default",
+          "automationOnly": false,
+          "otherActivityCompatible": false,
+          "otherActivityAsParentType": true,
+          "identifier": "forest-guard",
+          "displayActivityName": false,
+          "rollMode": "default",
+          "chooseEffects": false,
+          "toggleEffect": false,
+          "ignoreFullCover": false,
+          "removeChatButtons": "default",
+          "magicEffect": false,
+          "magicDamage": false,
+          "noConcentrationCheck": false,
+          "autoCEEffects": "none"
+        },
+        "isOverTimeFlag": false,
+        "overTimeProperties": {
+          "saveRemoves": true,
+          "preRemoveConditionText": "",
+          "postRemoveConditionText": ""
+        },
+        "otherActivityId": "none",
+        "otherActivityAsParentType": true,
+        "name": "Cast",
+        "identifier": "forest-guard"
+      },
+      "TAdtvAG3uW0NDe4H": {
+        "type": "attack",
+        "_id": "TAdtvAG3uW0NDe4H",
+        "sort": 0,
+        "activation": {
+          "type": "bonus",
+          "value": 1,
+          "override": true,
+          "condition": ""
+        },
+        "consumption": {
+          "scaling": {
+            "allowed": false
+          },
+          "spellSlot": false,
+          "targets": []
+        },
+        "description": {
+          "chatFlavor": ""
+        },
+        "duration": {
+          "units": "inst",
+          "concentration": false,
+          "override": true
+        },
+        "effects": [],
+        "range": {
+          "units": "any",
+          "override": true,
+          "special": ""
+        },
+        "target": {
+          "template": {
+            "contiguous": false,
+            "units": "ft",
+            "type": ""
+          },
+          "affects": {
+            "choice": false,
+            "type": "creature",
+            "count": "1",
+            "special": ""
+          },
+          "override": true,
+          "prompt": true
+        },
+        "uses": {
+          "spent": 0,
+          "recovery": [],
+          "max": ""
+        },
+        "attack": {
+          "critical": {
+            "threshold": null
+          },
+          "flat": false,
+          "type": {
+            "value": "",
+            "classification": ""
+          },
+          "ability": "",
+          "bonus": ""
+        },
+        "damage": {
+          "critical": {
+            "bonus": ""
+          },
+          "includeBase": true,
+          "parts": [
+            {
+              "custom": {
+                "enabled": false,
+                "formula": ""
+              },
+              "number": 1,
+              "denomination": 4,
+              "bonus": "",
+              "types": [
+                "slashing"
+              ],
+              "scaling": {
+                "mode": "",
+                "number": 1
+              }
+            }
+          ]
+        },
+        "useConditionText": "",
+        "useConditionReason": "",
+        "effectConditionText": "",
+        "macroData": {
+          "name": "",
+          "command": ""
+        },
+        "ignoreTraits": {
+          "idi": false,
+          "idr": false,
+          "idv": false,
+          "ida": false,
+          "idm": false
+        },
+        "midiProperties": {
+          "ignoreTraits": [],
+          "triggeredActivityId": "none",
+          "triggeredActivityConditionText": "",
+          "triggeredActivityTargets": "targets",
+          "triggeredActivityRollAs": "self",
+          "autoConsume": false,
+          "forceConsumeDialog": "never",
+          "forceRollDialog": "default",
+          "forceDamageDialog": "default",
+          "confirmTargets": "default",
+          "autoTargetType": "any",
+          "autoTargetAction": "default",
+          "automationOnly": false,
+          "otherActivityCompatible": true,
+          "otherActivityAsParentType": true,
+          "identifier": "forest-guard-attack",
+          "displayActivityName": false,
+          "rollMode": "default",
+          "chooseEffects": false,
+          "toggleEffect": false,
+          "ignoreFullCover": false,
+          "removeChatButtons": "default",
+          "magicEffect": false,
+          "magicDamage": false,
+          "noConcentrationCheck": false,
+          "autoCEEffects": "none"
+        },
+        "isOverTimeFlag": false,
+        "overTimeProperties": {
+          "saveRemoves": true,
+          "preRemoveConditionText": "",
+          "postRemoveConditionText": ""
+        },
+        "otherActivityId": "",
+        "otherActivityAsParentType": true,
+        "attackMode": "",
+        "ammunition": "",
+        "otherActivityUuid": "",
+        "attackRollPerTarget": "default",
+        "fumbleThreshold": 1,
+        "name": "Direct Shrub",
+        "identifier": "forest-guard-attack",
+        "flags": {
+          "cat": {
+            "hidden": true
+          }
+        }
+      },
+      "MscbYYydQXA52xdB": {
+        "type": "attack",
+        "sort": 0,
+        "activation": {
+          "type": "special",
+          "override": true,
+          "condition": ""
+        },
+        "consumption": {
+          "scaling": {
+            "allowed": false
+          },
+          "spellSlot": false,
+          "targets": []
+        },
+        "description": {
+          "chatFlavor": ""
+        },
+        "duration": {
+          "units": "inst",
+          "concentration": false,
+          "override": true
+        },
+        "effects": [],
+        "range": {
+          "units": "any",
+          "override": true,
+          "special": ""
+        },
+        "target": {
+          "template": {
+            "contiguous": false,
+            "units": "ft",
+            "type": ""
+          },
+          "affects": {
+            "choice": false,
+            "count": "1",
+            "type": "creature",
+            "special": ""
+          },
+          "override": true,
+          "prompt": true
+        },
+        "uses": {
+          "spent": 0,
+          "recovery": [],
+          "max": ""
+        },
+        "attack": {
+          "critical": {
+            "threshold": null
+          },
+          "flat": false,
+          "type": {
+            "value": "",
+            "classification": ""
+          },
+          "ability": "",
+          "bonus": ""
+        },
+        "damage": {
+          "critical": {
+            "bonus": ""
+          },
+          "includeBase": true,
+          "parts": [
+            {
+              "custom": {
+                "enabled": false,
+                "formula": ""
+              },
+              "number": 1,
+              "denomination": 4,
+              "bonus": "",
+              "types": [
+                "slashing"
+              ],
+              "scaling": {
+                "mode": "",
+                "number": 1
+              }
+            }
+          ]
+        },
+        "useConditionText": "",
+        "useConditionReason": "",
+        "effectConditionText": "",
+        "macroData": {
+          "name": "",
+          "command": ""
+        },
+        "ignoreTraits": {
+          "idi": false,
+          "idr": false,
+          "idv": false,
+          "ida": false,
+          "idm": false
+        },
+        "midiProperties": {
+          "ignoreTraits": [],
+          "triggeredActivityId": "none",
+          "triggeredActivityConditionText": "",
+          "triggeredActivityTargets": "targets",
+          "triggeredActivityRollAs": "self",
+          "autoConsume": false,
+          "forceConsumeDialog": "never",
+          "forceRollDialog": "default",
+          "forceDamageDialog": "default",
+          "confirmTargets": "default",
+          "autoTargetType": "any",
+          "autoTargetAction": "default",
+          "automationOnly": false,
+          "otherActivityCompatible": true,
+          "otherActivityAsParentType": true,
+          "identifier": "forest-guard-lash",
+          "displayActivityName": false,
+          "rollMode": "default",
+          "chooseEffects": false,
+          "toggleEffect": false,
+          "ignoreFullCover": false,
+          "removeChatButtons": "default",
+          "magicEffect": false,
+          "magicDamage": false,
+          "noConcentrationCheck": false,
+          "autoCEEffects": "none"
+        },
+        "isOverTimeFlag": false,
+        "overTimeProperties": {
+          "saveRemoves": true,
+          "preRemoveConditionText": "",
+          "postRemoveConditionText": ""
+        },
+        "otherActivityId": "",
+        "otherActivityAsParentType": true,
+        "attackMode": "",
+        "ammunition": "",
+        "otherActivityUuid": "",
+        "attackRollPerTarget": "default",
+        "fumbleThreshold": 1,
+        "name": "Shrub Lash",
+        "_id": "MscbYYydQXA52xdB",
+        "identifier": "forest-guard-lash",
+        "flags": {
+          "cat": {
+            "hidden": true
+          }
+        }
+      }
+    },
+    "uses": {
+      "spent": null,
+      "max": "",
+      "recovery": []
+    },
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "identifier": "forest-guard",
+    "source": {
+      "book": "OTTG",
+      "page": "",
+      "license": "",
+      "custom": "",
+      "rules": "2024",
+      "revision": 1
+    },
+    "activation": {
+      "type": "action",
+      "value": 1,
+      "condition": ""
+    },
+    "duration": {
+      "value": "10",
+      "units": "minute"
+    },
+    "level": 1,
+    "materials": {
+      "value": "",
+      "consumed": false,
+      "cost": 0,
+      "supply": 0
+    },
+    "method": "spell",
+    "prepared": 1,
+    "properties": [
+      "vocal",
+      "somatic"
+    ],
+    "range": {
+      "value": "60",
+      "units": "ft"
+    },
+    "school": "con",
+    "target": {
+      "affects": {
+        "count": "",
+        "type": "",
+        "choice": false,
+        "special": ""
+      },
+      "template": {
+        "count": "",
+        "contiguous": false,
+        "type": "",
+        "size": "",
+        "width": "",
+        "height": "",
+        "units": "ft"
+      }
+    }
+  },
+  "effects": [
+    {
+      "name": "Forest Guard: Thorns",
+      "img": "icons/environment/wilderness/tree-ash.webp",
+      "origin": null,
+      "transfer": false,
+      "_id": "fgThornsAura0001",
+      "type": "base",
+      "system": {
+        "changes": []
+      },
+      "disabled": false,
+      "duration": {
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "statuses": [],
+      "sort": 0,
+      "flags": {
+        "core": {
+          "overlay": false
+        },
+        "cat": {
+          "identifier": "forestGuardThorns",
+          "macros": {
+            "aura": [
+              {
+                "source": "cat",
+                "rules": "all",
+                "identifier": "aura"
+              }
+            ]
+          },
+          "genericConfig": {
+            "cat": {
+              "aura": {
+                "radius": "10",
+                "dispositions": [
+                  "enemy"
+                ],
+                "includeSelf": false,
+                "enterActivity": "MscbYYydQXA52xdB",
+                "turnStartActivity": "MscbYYydQXA52xdB",
+                "oncePerTurn": true,
+                "enterOnCreate": false
+              }
+            }
+          }
+        }
+      },
+      "_stats": {
+        "coreVersion": "14.369",
+        "systemId": "dnd5e",
+        "systemVersion": "6.0.6"
+      },
+      "_key": "!items.effects!YdjhN9yA6zyegRBH.fgThornsAura0001"
+    }
+  ],
+  "name": "Forest Guard",
+  "flags": {
+    "midi-qol": {
+      "removeAttackDamageButtons": "default"
+    },
+    "midiProperties": {
+      "confirmTargets": "default",
+      "magicdam": true,
+      "magiceffect": true
+    },
+    "dnd5e": {
+      "riders": {
+        "activity": [],
+        "effect": []
+      }
+    },
+    "cat": {
+      "automation": {
+        "source": "chris-premades",
+        "version": "2.1.3"
+      },
+      "macros": {
+        "roll": [
+          {
+            "source": "chris-premades",
+            "rules": "all",
+            "identifier": "summon"
+          },
+          {
+            "source": "chris-premades",
+            "rules": "2024",
+            "identifier": "forest-guard"
+          }
+        ],
+        "summon": [
+          {
+            "source": "chris-premades",
+            "rules": "all",
+            "identifier": "summon"
+          },
+          {
+            "source": "chris-premades",
+            "rules": "2024",
+            "identifier": "forest-guard"
+          }
+        ]
+      },
+      "genericConfig": {
+        "chris-premades": {
+          "summon": {
+            "activityId": "uTHHfLVdIvc80Dl9",
+            "summons": [
+              {
+                "sourceActorUuid": "Compendium.chris-premades.CPRSummons2024.Actor.GNOKbwiiDRiW0UuM",
+                "sourceActorName": "CPR - Forest Guard",
+                "name": "Forest Guard",
+                "initiative": "none",
+                "animation": {
+                  "source": "chris-premades",
+                  "identifier": "natureSummon"
+                }
+              }
+            ],
+            "replaceExisting": false,
+            "favorite": false
+          }
+        }
+      },
+      "animationConfig": {
+        "chris-premades": {
+          "castTouch": {
+            "style": "strike",
+            "color": "green"
+          }
+        }
+      }
+    }
+  },
+  "img": "icons/environment/wilderness/tree-ash.webp",
+  "folder": "pfzYb8UerE97sz8L",
+  "_id": "YdjhN9yA6zyegRBH",
+  "_stats": {
+    "coreVersion": "14.369",
+    "systemId": "dnd5e",
+    "systemVersion": "6.0.6"
+  },
+  "_key": "!items!YdjhN9yA6zyegRBH"
+}
