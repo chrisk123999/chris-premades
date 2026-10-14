@@ -132,7 +132,12 @@
         "appliedEffects": [
           "poQSTY3F70fkSIdL"
         ],
-        "identifier": "stalkers-flurry-mass-fear"
+        "identifier": "stalkers-flurry-mass-fear",
+        "flags": {
+          "cat": {
+            "hidden": true
+          }
+        }
       }
     },
     "uses": {
@@ -231,14 +236,12 @@
   "flags": {
     "dnd5e": {
       "riders": {
-        "activity": [
-          "CX5xxiZxmD8ZBH1a"
-        ]
+        "activity": []
       }
     },
     "cat": {
       "automation": {
-        "version": "2.1.0"
+        "version": "2.1.3"
       }
     }
   },

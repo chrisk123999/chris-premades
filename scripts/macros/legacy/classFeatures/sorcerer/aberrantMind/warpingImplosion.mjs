@@ -1,11 +1,17 @@
-import {actorUtils, automationUtils, dialogUtils, genericUtils, itemUtils, tokenUtils, workflowUtils} from '../../../../../proxy.mjs';
+import {actorUtils, automationUtils, dialogUtils, genericUtils, itemUtils, Logging, tokenUtils, workflowUtils} from '../../../../../proxy.mjs';
 async function early({document, config, dialog}) {
     if (document.item.system.uses.value) return;
     const spendActivity = itemUtils.getActivityByIdentifier(document.item, 'warping-implosion-cost');
-    if (!spendActivity) return true;
+    if (!spendActivity) {
+        Logging.addMacroWarning('CPR', 'warping-implosion', 'Sorcery point cost activity missing.', {notify: 'warn'});
+        return true;
+    }
     const sorceryPoints = actorUtils.getItemByIdentifier(document.actor, 'font-of-magic');
     const cost = Number(spendActivity.consumption.targets[0]?.value ?? 0);
-    if (!sorceryPoints || sorceryPoints.system.uses.value < cost) return true;
+    if (!sorceryPoints || sorceryPoints.system.uses.value < cost) {
+        Logging.addMacroWarning('CPR', 'warping-implosion', 'Not enough sorcery points.');
+        return true;
+    }
     const selection = await dialogUtils.confirmUseExtraCost(document.item, cost, sorceryPoints.name);
     if (!selection) return true;
     dialog.configure = false;

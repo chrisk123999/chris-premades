@@ -157,6 +157,32 @@ const pass = [
         priority: 300
     }
 ];
+/**
+ * Offers a bonus formula on a d20 roll.
+ * Bound on an effect, an activity or an item.
+ *
+ * Variants:
+ * - `attackBonus`: attack rolls. Fires on `actorOptionalBonusAttack` and `actorAttackRollComplete`.
+ * - `checkBonus`: ability checks. Fires on `actorOptionalBonus` and `actorPost`.
+ * - `saveBonus`: saving throws. Fires on `actorOptionalBonus` and `actorPost`.
+ * - `skillBonus`: skill checks. Fires on `actorOptionalBonus` and `actorPost`.
+ * - `toolBonus`: tool checks. Fires on `actorOptionalBonus` and `actorPost`.
+ *
+ * Config:
+ * - `bonus`: formula added to the roll when this bonus is taken.
+ * - `phase`: when this bonus is offered during the roll.
+ * - `ability`: limit this bonus to a list of abilities.
+ * - `optional`: prompt before the bonus is added. When off, it is always added.
+ * - `rollActivity`: roll this activity when the bonus is used.
+ * - `rollItem`: roll this item when the bonus is used.
+ * - `useActivityCosts`: only offer this bonus when its costs can be paid.
+ * - `consumeSuccessOnly`: costs are spent only if the roll succeeds. On attacks, only if a target was hit.
+ * - `identifiers`: `attackBonus` only. Limit this bonus to attacks from these items.
+ * - `attackType`: `attackBonus` only. Limit this bonus by attack type.
+ * - `skill`: `skillBonus` only. Limit this bonus to a list of skills.
+ * - `tool`: `toolBonus` only. Limit this bonus to a list of tools.
+ * - `proficientOnly`: `skillBonus` and `toolBonus` only. Offer this bonus only on proficient skills or tools.
+ */
 export const attackBonus = {
     ...base,
     roll: [

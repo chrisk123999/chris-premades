@@ -29,7 +29,7 @@ async function use({document, workflow}) {
     const concentrationEffect = effectUtils.getConcentrationEffect(workflow.actor, workflow.item);
     const sourceActor = await compendiumUtils.getDocumentByIdentifier(cprConstants.packs.modern.summons, 'aberrantSpirit');
     if (!sourceActor) {
-        Logging.addMacroError('Missing the Aberrant Spirit summon actor!');
+        Logging.addMacroWarning('CPR', 'summon-aberration', 'CHRISPREMADES.Error.ActorNotFound', {notify: 'error'});
         if (concentrationEffect) await documentUtils.deleteDocument(concentrationEffect);
         return;
     }
@@ -43,7 +43,7 @@ async function use({document, workflow}) {
         items.push(feature);
     }
     if (items.some(item => !item)) {
-        Logging.addMacroError('Missing an Aberrant Spirit summon feature!');
+        Logging.addMacroWarning('CPR', 'summon-aberration', 'CHRISPREMADES.Error.MissingPackItem', {notify: 'error'});
         if (concentrationEffect) await documentUtils.deleteDocument(concentrationEffect);
         return;
     }

@@ -1,9 +1,9 @@
-import {activityUtils, automationUtils, dialogUtils, queryUtils, workflowUtils} from '../../proxy.mjs';
+import {activityUtils, automationUtils, dialogUtils, documentUtils, Logging, queryUtils, workflowUtils} from '../../proxy.mjs';
 async function use(activity, token, event) {
     const config = automationUtils.getGenericConfigValues(activity, 'chris-premades', 'useOnEvent', configKeys);
     if (!config.events.includes(event)) return;
     if (event === 'long' && config.events.includes('short')) return;
-    if (!activityUtils.checkCosts(activity)) return;
+    if (!activityUtils.checkCosts(activity)) return Logging.addMacroWarning('CPR', documentUtils.getIdentifier(activity.item), 'Not enough uses to trigger on rest.');
     const pools = activityUtils.getRecoveryPools(activity).filter(({document}) => document.documentName === 'Item').map(({document}) => document);
     if (config.poolCondition === 'empty' && !(pools.length && pools.every(pool => !pool.system.uses.value))) return;
     if (config.poolCondition === 'notFull' && !pools.some(pool => pool.system.uses.spent)) return;
@@ -20,6 +20,16 @@ async function short({document, token}) {
 async function long({document, token}) {
     await use(document, token, 'long');
 }
+/**
+ * Uses this activity after a rest.
+ * Bound on an activity. Fires on `actorShort` and `actorLong`.
+ * Nothing happens when the activity's costs cannot be paid.
+ *
+ * Config:
+ * - `events`: use this activity after these events. Short Rest also fires after a long rest.
+ * - `poolCondition`: only use this activity when the items whose uses it recovers are in this state.
+ * - `confirm`: prompt the owner before the activity is used.
+ */
 export const useOnEvent = {
     rules: 'all',
     version: '2.0.0',

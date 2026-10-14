@@ -1,8 +1,8 @@
-import {actorUtils, dialogUtils, genericUtils, workflowUtils} from '../../../../proxy.mjs';
+import {actorUtils, dialogUtils, Logging, workflowUtils} from '../../../../proxy.mjs';
 async function spendSpellSlot({document: activity, config}) {
     if (config.fontOfInspiration) return;
     if (!actorUtils.hasSpellSlots(activity.actor)) {
-        genericUtils.notify('CHRISPREMADES.Macros.Modern.FontOfInspiration.NoSlots', {type: 'warn'});
+        Logging.addMacroWarning('CPR', 'font-of-inspiration', 'CHRISPREMADES.Macros.Modern.FontOfInspiration.NoSlots', {notify: 'warn'});
         return true;
     }
     const selection = await dialogUtils.selectSpellSlots(activity.actor, activity.item.name, 'CHRISPREMADES.Macros.Modern.FontOfInspiration.Prompt', {maxAmount: 1, maxAmountMode: 'count'});

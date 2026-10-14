@@ -1,11 +1,12 @@
-import {actorUtils, automationUtils, constants, dialogUtils, documentUtils, effectUtils, genericUtils, itemUtils, queryUtils, tokenUtils, workflowUtils, DamageBonus} from '../../../../../proxy.mjs';
+import {actorUtils, automationUtils, constants, dialogUtils, documentUtils, effectUtils, genericUtils, itemUtils, Logging, queryUtils, tokenUtils, workflowUtils, DamageBonus} from '../../../../../proxy.mjs';
 function getCursedToken(effect, workflow) {
     const targetId = effect.flags['chris-premades']?.hexbladesCurse?.target;
     if (!targetId) return;
     return workflow.targets.find(token => token.document.id === targetId)?.document;
 }
 async function use({document, workflow}) {
-    if (workflow.activity.identifier !== 'hexblades-curse' || workflow.targets.size !== 1) return;
+    if (workflow.activity.identifier !== 'hexblades-curse') return;
+    if (workflow.targets.size !== 1) return Logging.addMacroWarning('CPR', 'hexblades-curse', 'Select exactly one target.');
     const targetToken = workflow.targets.first().document;
     const sourceEffectData = documentUtils.getBaseEffectData(workflow.activity, {
         name: document.name,

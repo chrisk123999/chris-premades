@@ -1,9 +1,9 @@
-import {automationUtils, dialogUtils, actorUtils, workflowUtils, tokenUtils, genericUtils} from '../../proxy.mjs';
+import {automationUtils, dialogUtils, actorUtils, documentUtils, workflowUtils, tokenUtils, Logging} from '../../proxy.mjs';
 async function use({document: activity, workflow, macroClass: {source, identifier}}) {
     const config = automationUtils.getGenericConfigValues(activity, source, identifier, Object.keys(extraAttack.genericConfig));
     if (!config.prompt) return;
     const strike = actorUtils.getItemByIdentifier(workflow.actor, config.identifier);
-    if (!strike) return;
+    if (!strike) return Logging.addMacroWarning('CPR', documentUtils.getIdentifier(workflow.item), 'Attack item not found on actor.', {notify: 'warn'});
     const range = strike.system.range.value || strike.system.range.reach;
     const bonuses = await automationUtils.calledEvent('extraAttack', workflow.actor, {multiResult: true, canOverlap: true, data: {workflow, baseCount: config.attacks, macroActivity: activity}}) ?? [];
     let totalAttacks = config.attacks;
@@ -45,10 +45,7 @@ function getNearby(token, range, skipDead) {
 }
 async function getTargets(workflow, range, maxAmount, skipDeadAndUnconscious, nearby) {
     if (!nearby?.length) nearby = getNearby(workflow.token.document, range, skipDeadAndUnconscious);
-    if (!nearby.length) {
-        genericUtils.notify('CHRISPREMADES.Macros.Legacy.HuntersMark.NoTargets', {type: 'warn'});
-        return;
-    }
+    if (!nearby.length) return Logging.addMacroWarning('CPR', documentUtils.getIdentifier(workflow.item), 'CHRISPREMADES.Macros.Legacy.HuntersMark.NoTargets', {notify: 'warn'});
     if (nearby.length === 1) return {result: [{document: nearby[0], value: maxAmount}], skip: skipDeadAndUnconscious};
     const selection = await dialogUtils.selectTargetDialog(
         workflow.item.name, 
@@ -63,6 +60,17 @@ async function getTargets(workflow, range, maxAmount, skipDeadAndUnconscious, ne
     );
     if (selection?.result?.length) return selection;
 }
+/**
+ * Splits a number of attacks with another item among nearby enemies once the roll finishes.
+ * Bound on an activity. Fires on `activityRollFinished`.
+ *
+ * Config:
+ * - `attacks`: number of attacks made.
+ * - `prompt`: make the attacks automatically. Off leaves them to be rolled by hand.
+ * - `skip`: skip dead and unconscious targets.
+ * - `identifier`: identifier of the attack item.
+ * - `animation`: played from the user to the target on each attack.
+ */
 export const extraAttack = {
     rules: 'all',
     version: '2.0.4',

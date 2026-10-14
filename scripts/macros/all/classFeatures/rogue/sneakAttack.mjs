@@ -1,11 +1,13 @@
 import {actorUtils, animationUtils, automationUtils, DamageBonus, documentUtils, Logging, tokenUtils, workflowUtils} from '../../../../proxy.mjs';
 import {addRiders, getTaggedRiders} from '../../../generic/attackRider.mjs';
 async function bonus({workflow, document}) {
-    if (workflow.hitTargets.size !== 1 || !workflow.item || !workflow.activity) return;
-    if (!document.system.uses.value) return;
+    if (!workflow.item || !workflow.activity) return;
+    if (!workflow.hitTargets.size) return;
+    if (workflow.hitTargets.size > 1) return Logging.addMacroWarning('CPR', 'sneak-attack', 'Attack must hit exactly one target.');
     const additionalIdentifiers = await automationUtils.calledEvent('sneakAttackAdditionalIdentifiers', workflow.actor, {multiResult: true, canOverlap: true, data: {workflow}});
     const identifier = documentUtils.getIdentifier(workflow.item);
-    if (!(workflowUtils.getActionType(workflow) === 'rwak' || workflow.item.system.properties.has('fin') || additionalIdentifiers.includes(identifier))) return;
+    if (!(workflowUtils.getActionType(workflow) === 'rwak' || workflow.item.system.properties.has('fin') || additionalIdentifiers.includes(identifier))) return Logging.addMacroWarning('CPR', 'sneak-attack', 'Weapon must be finesse or ranged.');
+    if (!document.system.uses.value) return Logging.addMacroWarning('CPR', 'sneak-attack', 'Already used this turn.');
     let doSneak = workflow.advantage && !workflow.disadvantage;
     if (!doSneak && (workflow.advantage || !workflow.disadvantage)) {
         const targetToken = workflow.targets.first().document;
@@ -13,7 +15,7 @@ async function bonus({workflow, document}) {
     }
     doSneak ||= await automationUtils.calledEvent('sneakAttackDoSneak', workflow.actor, {data: {workflow}});
     if (!doSneak) {
-        Logging.addMacroWarning('chris-premades', 'sneakAttack', 'Attack does not qualify for Sneak Attack.');
+        Logging.addMacroWarning('CPR', 'sneak-attack', 'Attack does not qualify for Sneak Attack.');
         return;
     }
     workflowUtils.setWorkflowProperty(workflow, 'canSneak', true);
@@ -43,6 +45,10 @@ async function bonus({workflow, document}) {
     ].filter(Boolean);
     if (!inputs.length) return bonus;
     return bonus.withInputs([['comboboxMulti', inputs]]);
+}
+async function missed({workflow, document}) {
+    if (!workflow.item || !workflowUtils.isAttackType(workflow, 'attack') || workflow.hitTargets.size || !document.system.uses.value) return;
+    Logging.addMacroWarning('CPR', 'sneak-attack', 'Attack missed.');
 }
 function riderInput(name, label, riders, selected) {
     if (!riders.activities.length) return;
@@ -101,6 +107,11 @@ export const sneakAttack = {
         {
             pass: 'actorOptionalBonusDamage',
             macro: bonus,
+            priority: 250
+        },
+        {
+            pass: 'actorRollFinished',
+            macro: missed,
             priority: 250
         }
     ],

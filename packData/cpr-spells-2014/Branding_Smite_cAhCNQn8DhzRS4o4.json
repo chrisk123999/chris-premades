@@ -397,7 +397,7 @@
     "cat": {
       "automation": {
         "source": "chris-premades",
-        "version": "2.1.0"
+        "version": "2.1.3"
       }
     }
   },
@@ -412,7 +412,7 @@
         "magical": true
       },
       "duration": {
-        "value": 1,
+        "value": 60,
         "units": "seconds",
         "expired": false,
         "expiry": "turnStart"
@@ -505,7 +505,7 @@
         "magical": true
       },
       "duration": {
-        "value": 1,
+        "value": 60,
         "units": "seconds",
         "expired": false,
         "expiry": "turnStart"

@@ -1,4 +1,4 @@
-import {actorUtils, dialogUtils, genericUtils, itemUtils, workflowUtils} from '../../../../../proxy.mjs';
+import {actorUtils, dialogUtils, itemUtils, Logging, workflowUtils} from '../../../../../proxy.mjs';
 import {subtleComponents} from '../metamagic.mjs';
 async function use({document, workflow}) {
     const psionicSpells = actorUtils.getItemByIdentifier(workflow.actor, 'psionic-spells');
@@ -6,7 +6,7 @@ async function use({document, workflow}) {
     const available = actorUtils.getItemByIdentifier(workflow.actor, 'font-of-magic')?.system.uses.value ?? 0;
     const spells = spellIds.map(id => workflow.actor.items.get(id)).filter(spell => spell && spell.system.level <= available);
     if (!spells.length) {
-        genericUtils.notify('CHRISPREMADES.Macros.Legacy.PsionicSorcery.NoSpells', {type: 'info'});
+        Logging.addMacroWarning('CPR', 'psionic-sorcery', 'CHRISPREMADES.Macros.Legacy.PsionicSorcery.NoSpells', {notify: 'info'});
         return;
     }
     const selection = await dialogUtils.selectDocumentDialog(document.item.name, _loc('CHRISPREMADES.Macros.Legacy.PsionicSorcery.Select'), spells, {sort: 'level', showSpellLevel: true});

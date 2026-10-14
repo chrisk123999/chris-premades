@@ -1,9 +1,12 @@
-import {actorUtils, dialogUtils, documentUtils, genericUtils} from '../../../../../proxy.mjs';
+import {actorUtils, dialogUtils, documentUtils, genericUtils, Logging} from '../../../../../proxy.mjs';
 async function preTargeting({document, config, dialog}) {
     if (document.system.uses.value) return;
     dialog.configure = false;
     const rage = actorUtils.getItemByIdentifier(document.actor, 'rage');
-    if (!rage?.system?.uses?.value) return true;
+    if (!rage?.system?.uses?.value) {
+        Logging.addMacroWarning('CPR', 'intimidating-presence', 'No uses or Rage uses remaining.');
+        return true;
+    }
     const selection = await dialogUtils.confirm(document.name, _loc('CHRISPREMADES.Macros.Generic.ConsumeItemToUse', {item: rage.name}));
     if (!selection) return true;
     genericUtils.setProperty(config, 'consume.resources', false);

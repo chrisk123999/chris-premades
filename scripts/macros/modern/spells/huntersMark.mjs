@@ -1,4 +1,4 @@
-import {actorUtils, automationUtils, constants, DamageBonus, dialogUtils, documentUtils, effectUtils, genericUtils, itemUtils, queryUtils, tokenUtils, workflowUtils} from '../../../proxy.mjs';
+import {actorUtils, automationUtils, constants, DamageBonus, dialogUtils, documentUtils, effectUtils, genericUtils, itemUtils, Logging, queryUtils, tokenUtils, workflowUtils} from '../../../proxy.mjs';
 function getDamageConfig(actor, document) {
     const foeSlayer = actorUtils.getItemByIdentifier(actor, 'foe-slayer');
     const source = foeSlayer && automationUtils.getConfigValue(foeSlayer, 'formula') ? foeSlayer : document;
@@ -16,11 +16,11 @@ function markedEffectData(activity, document, seconds) {
 }
 async function use({document, workflow}) {
     if (workflow.activity.identifier !== 'hunters-mark') return;
-    const concentrationEffect = effectUtils.getConcentrationEffect(workflow.actor, workflow.item);
     if (!workflow.targets.size) {
-        if (concentrationEffect) await documentUtils.deleteDocument(concentrationEffect);
+        await effectUtils.endConcentration(workflow.actor, workflow.item);
         return;
     }
+    const concentrationEffect = effectUtils.getConcentrationEffect(workflow.actor, workflow.item);
     const seconds = workflowUtils.getScaledDuration(workflow);
     const casterEffectData = documentUtils.getBaseEffectData(workflow.activity, {
         name: document.name,
@@ -49,7 +49,7 @@ function isValidTarget(token, marked) {
 }
 async function selectNewTarget(document, token, range, marked, prefix, {userId} = {}) {
     const candidates = tokenUtils.findNearby(token, range, {disposition: 'enemy', includeIncapacitated: false}).filter(candidate => isValidTarget(candidate, marked));
-    if (!candidates.length) return genericUtils.notify(prefix + '.NoTargets', {type: 'info'});
+    if (!candidates.length) return Logging.addMacroWarning('CPR', 'hunters-mark', prefix + '.NoTargets', {notify: 'info'});
     const selection = await dialogUtils.selectTargetDialog(document.name, _loc(prefix + '.MoveSelect'), candidates, {userId});
     return selection?.result;
 }

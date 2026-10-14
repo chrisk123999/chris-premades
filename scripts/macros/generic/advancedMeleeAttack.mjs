@@ -8,6 +8,14 @@ async function use({document, workflow}) {
     animationOptions.switchDistance = workflow.rangeDetails.range;
     await animation.macros.attack(workflow.token.document, workflow.targets.map(token => token.document), animationOptions);
 }
+/**
+ * Plays a melee attack animation from the user to each target after the attack roll.
+ * Bound on an item. Fires on `itemAttackRollComplete`.
+ *
+ * Config:
+ * - `activityId`: only animate when this activity is used.
+ * - `animation`: played from the user to the targets, using the attack's range as the switch distance.
+ */
 export const advancedMeleeAttack = {
     rules: 'all',
     version: '2.0.1',

@@ -33,8 +33,8 @@ async function finished({document: activity, macroClass: {identifier}, workflow}
     const animation = automationUtils.getResolvedAnimation(activity, 'animation', {source: 'chris-premades', identifier});
     const damageType = workflowUtils.getDamageTypes(workflow.damageRolls ?? []).first();
     const move = token => moveTarget(activity, config, workflow.token.document, token.document, direction, maximum, animation, damageType);
-    if (!config.choose) return await Promise.all(tokens.map(move));
-    for (const token of tokens) await move(token);
+    if (config.choose) for (const token of tokens) await move(token);
+    else await Promise.all(tokens.map(move));
 }
 function buildConfig(animationIdentifier) {
     return {
@@ -94,6 +94,22 @@ const base = {
         }
     ]
 };
+/**
+ * Moves targets toward or away from the user once the roll finishes.
+ * Bound on an activity. Fires on `activityRollFinished`.
+ *
+ * Variants:
+ * - `pushOnFail`: pushes targets that failed the save.
+ * - `pullOnFail`: pulls targets that failed the save.
+ * - `pullOnHit`: pulls targets that were hit.
+ *
+ * Config:
+ * - `distance`: maximum distance in feet. Accepts a formula, rolled once per use.
+ * - `choose`: prompt for the distance in 5 ft steps up to the maximum.
+ * - `stopAdjacent`: a pull never moves the target past adjacent.
+ * - `maxSize`: targets larger than this size are not moved.
+ * - `animation`: played from the user to each target. The move runs inside it.
+ */
 export const pushOnFail = {...base, genericConfig: buildConfig()};
 export const pullOnFail = {...base, genericConfig: buildConfig('castBeam')};
 export const pullOnHit = {...base, genericConfig: buildConfig('castBeam')};

@@ -1,4 +1,4 @@
-import {actorUtils, combatUtils, documentUtils, effectUtils, itemUtils, tokenUtils, workflowUtils} from '../../../../../proxy.mjs';
+import {actorUtils, combatUtils, documentUtils, effectUtils, itemUtils, Logging, tokenUtils, workflowUtils} from '../../../../../proxy.mjs';
 const bonusAttacks = ['bonus-melee', 'bonus-ranged'];
 const rangedAttacks = ['ranged', 'bonus-ranged'];
 async function additionalIdentifiers({document}) {
@@ -23,7 +23,7 @@ async function late({document, actor, activity, token}) {
 async function vex({document, workflow}) {
     if (!workflow.hitTargets.size || !workflowUtils.isAttackType(workflow, 'attack')) return;
     const vexActivity = itemUtils.getActivityByIdentifier(document, 'vex');
-    if (!vexActivity) return;
+    if (!vexActivity) return Logging.addMacroWarning('CPR', 'psychic-blades', 'Vex activity missing from item.', {notify: 'warn'});
     await workflowUtils.syntheticActivityRoll(vexActivity, [workflow.hitTargets.first().document]);
 }
 export const psychicBlades = {

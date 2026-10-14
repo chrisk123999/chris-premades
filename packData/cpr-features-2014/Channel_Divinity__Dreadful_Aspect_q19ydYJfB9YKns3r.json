@@ -83,7 +83,7 @@
             "count": "",
             "type": "creature",
             "choice": false,
-            "special": ""
+            "special": "-self"
           },
           "template": {
             "contiguous": false,
@@ -468,7 +468,7 @@
     "cat": {
       "automation": {
         "source": "chris-premades",
-        "version": "2.0.4"
+        "version": "2.1.3"
       },
       "macros": {
         "roll": [

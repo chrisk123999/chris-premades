@@ -8,6 +8,14 @@ async function created({document}) {
     const effect = await itemUtils.unhideActivities(activity.item, activityIds, {favorite, ids: true});
     await documentUtils.makeDependent(document, [effect]);
 }
+/**
+ * Unhides activities on the effect's origin item while the effect exists.
+ * Bound on an effect. Fires on `created`.
+ *
+ * Config:
+ * - `activityIds`: activities to unhide.
+ * - `favorite`: favorite the unhidden activities.
+ */
 export const unhideActivities = {
     rules: 'all',
     version: '2.0.3',

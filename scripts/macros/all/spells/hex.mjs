@@ -1,4 +1,4 @@
-import {automationUtils, constants, DamageBonus, dialogUtils, documentUtils, effectUtils, genericUtils, workflowUtils} from '../../../proxy.mjs';
+import {automationUtils, constants, DamageBonus, dialogUtils, documentUtils, effectUtils, genericUtils, Logging, workflowUtils} from '../../../proxy.mjs';
 function abilityOptions() {
     return Object.values(CONFIG.DND5E.abilities).map(ability => [ability.label, ability.abbreviation]);
 }
@@ -23,10 +23,11 @@ function hexedEffectData(activity, document, seconds, ability) {
 async function use({document, workflow}) {
     if (workflow.activity.identifier !== 'hex') return;
     const concentrationEffect = effectUtils.getConcentrationEffect(workflow.actor, workflow.item);
-    const cancel = async () => {
-        if (concentrationEffect) await documentUtils.deleteDocument(concentrationEffect);
-    };
-    if (!workflow.targets.size) return await cancel();
+    const cancel = () => effectUtils.endConcentration(workflow.actor, workflow.item);
+    if (!workflow.targets.size) {
+        Logging.addMacroWarning('CPR', 'hex', 'No target selected.');
+        return await cancel();
+    }
     const ability = await dialogUtils.buttonDialog(document.name, _loc('CHRISPREMADES.Macros.All.Hex.SelectAbility'), abilityOptions());
     if (!ability) return await cancel();
     const seconds = workflowUtils.getScaledDuration(workflow);
@@ -56,7 +57,7 @@ async function use({document, workflow}) {
 async function move({document, workflow}) {
     if (workflow.activity.identifier !== 'hex-move' || workflow.targets.size !== 1) return;
     const casterEffect = documentUtils.getEffectByIdentifier(workflow.actor, 'hex');
-    if (!casterEffect) return;
+    if (!casterEffect) return Logging.addMacroWarning('CPR', 'hex', 'No active Hex to move.');
     const hexData = casterEffect.flags['chris-premades'].hex;
     const current = hexData.targets.map(uuid => fromUuidSync(uuid)).filter(token => token);
     let previous = current[0];

@@ -1,10 +1,10 @@
-import {actorUtils, dialogUtils, documentUtils, effectUtils, genericUtils, workflowUtils} from '../../../../../proxy.mjs';
+import {actorUtils, dialogUtils, documentUtils, effectUtils, Logging, workflowUtils} from '../../../../../proxy.mjs';
 async function use({document, workflow}) {
     const sourceEffects = document.item.effects.filter(effect => !effect.transfer);
-    if (!sourceEffects.length) return;
+    if (!sourceEffects.length) return Logging.addMacroWarning('CPR', 'revelation-in-flesh', 'Transformation effects missing from item.', {notify: 'warn'});
     const available = actorUtils.getItemByIdentifier(workflow.actor, 'font-of-magic')?.system.uses.value ?? 0;
     if (!available) {
-        genericUtils.notify('CHRISPREMADES.Macros.Legacy.RevelationInFlesh.NotEnough', {type: 'info'});
+        Logging.addMacroWarning('CPR', 'revelation-in-flesh', 'CHRISPREMADES.Macros.Legacy.RevelationInFlesh.NotEnough', {notify: 'info'});
         return;
     }
     const selection = await dialogUtils.selectDocumentDialog(document.item.name, _loc('CHRISPREMADES.Macros.Legacy.RevelationInFlesh.Select'), sourceEffects, {

@@ -5,6 +5,13 @@ async function damage({document, workflow, ditem, targetToken}) {
     if (!actorUtils.getEffects(targetToken.actor).some(effect => identifiers.includes(documentUtils.getIdentifier(effect)))) return;
     workflowUtils.negateDamageItemDamage(ditem);
 }
+/**
+ * Negates the item's damage to targets that carry one of the listed effects.
+ * Bound on an item. Fires on `itemDamageComplete`.
+ *
+ * Config:
+ * - `identifiers`: identifiers of the effects that negate the damage.
+ */
 export const negateDamageFromEffect = {
     rules: 'all',
     version: '1.6.1',

@@ -1,11 +1,11 @@
-import {automationUtils, constants, dialogUtils, documentUtils, genericUtils, itemUtils} from '../../../../../proxy.mjs';
+import {automationUtils, constants, dialogUtils, documentUtils, genericUtils, itemUtils, Logging} from '../../../../../proxy.mjs';
 async function use({document, workflow}) {
     const weapons = workflow.actor.items.filter(item => item.type === 'weapon' && !item.system.properties.has('two'));
     const existing = weapons.map(item => documentUtils.getEffectByIdentifier(item, 'hexWarriorWeapon')).find(effect => effect);
     if (existing) await documentUtils.deleteDocument(existing);
     const validWeapons = weapons.filter(item => item.system.equipped && !documentUtils.getEffectByIdentifier(item, 'pactWeapon'));
     if (!validWeapons.length) {
-        genericUtils.notify('CHRISPREMADES.Macros.Legacy.HexWarrior.NoWeapons', {type: 'info'});
+        Logging.addMacroWarning('CPR', 'hex-warrior', 'CHRISPREMADES.Macros.Legacy.HexWarrior.NoWeapons', {notify: 'info'});
         return;
     }
     let selection = validWeapons[0];

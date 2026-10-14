@@ -21,6 +21,18 @@ async function addConditions({document: activity, data}) {
     const conditions = automationUtils.getGenericConfigValue(activity, 'chris-premades', 'grapple', 'conditions');
     if (conditions.length) data.targetEffectData.flags.cat.conditions.push(...conditions);
 }
+/**
+ * Attempts to grapple each target before the activity rolls.
+ * Bound on an activity. Fires on `activityPreItemRoll` and `actorPreGrapple`.
+ *
+ * Config:
+ * - `auto`: apply the grapple without rolling dice.
+ * - `checkSize`: check target size.
+ * - `dc`: flat DC formula. Overrides activity info if present.
+ * - `conditions`: additional conditions attached to the grapple effect.
+ * - `useActivityInfo`: icons, item name, and roll DC are taken from the parent activity.
+ * - `replaceActivity`: the parent activity roll is discarded and replaced by the grapple.
+ */
 export const grapple = {
     rules: 'all',
     version: '2.0.3',

@@ -1,5 +1,5 @@
 import cprConstants from '../../../../../constants.mjs';
-import {actorUtils, automationUtils, compendiumUtils, DamageBonus, dialogUtils, documentUtils, effectUtils, genericUtils, itemUtils, queryUtils, summonUtils, tokenUtils, workflowUtils} from '../../../../../proxy.mjs';
+import {actorUtils, automationUtils, compendiumUtils, DamageBonus, dialogUtils, documentUtils, effectUtils, genericUtils, itemUtils, Logging, queryUtils, summonUtils, tokenUtils, workflowUtils} from '../../../../../proxy.mjs';
 const translations = 'CHRISPREMADES.Macros.Legacy.DrakeCompanion.';
 const damageTypes = ['acid', 'cold', 'fire', 'lightning', 'poison'];
 const sizes = ['sm', 'med', 'lg'];
@@ -25,8 +25,8 @@ async function use({document, workflow}) {
         getFeature('drake-companion-bite', translations + 'Bite'),
         getFeature('drake-companion-dodge', translations + 'Dodge')
     ]);
-    if (!sourceActor) return genericUtils.notify('CHRISPREMADES.Error.ActorNotFound', {type: 'warn'});
-    if (items.some(item => !item)) return genericUtils.notify('CHRISPREMADES.Error.MissingPackItem', {type: 'warn'});
+    if (!sourceActor) return Logging.addMacroWarning('CPR', 'drake-companion-summon', 'CHRISPREMADES.Error.ActorNotFound', {notify: 'warn'});
+    if (items.some(item => !item)) return Logging.addMacroWarning('CPR', 'drake-companion-summon', 'CHRISPREMADES.Error.MissingPackItem', {notify: 'warn'});
     const [, strikes, bite] = items;
     genericUtils.setProperty(strikes, 'flags.cat.config.damageType', damageType);
     if (upgrades) Object.values(bite.system.activities)[0].damage.parts.push({number: upgrades, denomination: 6, types: [damageType]});

@@ -118,6 +118,27 @@ const pass = [
         priority: 300
     }
 ];
+/**
+ * Rerolls a d20 roll with an added bonus and keeps the new result.
+ * Bound on an item. Fires on `actorBonus`.
+ *
+ * Variants:
+ * - `rerollCheckWithBonus`: rerolls ability checks.
+ * - `rerollSaveWithBonus`: rerolls saving throws.
+ * - `rerollSkillWithBonus`: rerolls skill checks. Adds the `skill` config.
+ * - `rerollToolWithBonus`: rerolls tool checks. Adds the `tool` config.
+ *
+ * Config:
+ * - `bonus`: formula added to the reroll.
+ * - `ability`: limit the reroll to a list of abilities.
+ * - `failedOnly`: the reroll is offered on failed rolls only.
+ * - `oncePerRoll`: the reroll can be used once per roll.
+ * - `consume`: spend costs always or only when the reroll succeeds. With an activity set, costs must be payable first.
+ * - `rollActivity`: roll this activity when used.
+ * - `rollItem`: roll this item when used and no activity is set.
+ * - `skill`: limit the reroll to a list of skills.
+ * - `tool`: limit the reroll to a list of tools.
+ */
 export const rerollCheckWithBonus = {...base, check: pass};
 export const rerollSaveWithBonus = {...base, save: pass};
 export const rerollSkillWithBonus = {...base, skill: pass, genericConfig: {...genericConfig, skill}};

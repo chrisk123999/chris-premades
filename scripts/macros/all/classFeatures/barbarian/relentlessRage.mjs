@@ -8,7 +8,7 @@ async function damaged({document: activity, ditem, targetToken}) {
     const save = await workflowUtils.completeActivityUse(activity, [targetToken]);
     if (save.failedSaveUuids?.length || save.failedSaves?.size) return;
     const heal = itemUtils.getActivityByIdentifier(activity.item, 'heal');
-    if (!heal) return Logging.addMacroWarning('chris-premades', 'relentless-rage', 'Heal activity not found!');
+    if (!heal) return Logging.addMacroWarning('CPR', 'relentless-rage', 'Heal activity not found!', {notify: 'warn'});
     const hp = (await rollUtils.rollDice(heal.healing.formula, {document: activity})).total;
     const change = ditem.oldHP - hp;
     if (change < 0) await workflowUtils.completeActivityUse(heal, [targetToken]);

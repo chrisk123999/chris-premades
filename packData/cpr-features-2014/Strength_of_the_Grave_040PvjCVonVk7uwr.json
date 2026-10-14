@@ -221,12 +221,12 @@
     "cat": {
       "automation": {
         "source": "chris-premades",
-        "version": "2.0.4"
+        "version": "2.0.5"
       },
       "genericConfig": {
         "chris-premades": {
           "preventDeath": {
-            "killedOutright": false,
+            "killedOutright": true,
             "deathOnly": false,
             "saveActivity": "dnd5eactivity100",
             "dcFromDamage": true,

@@ -10,6 +10,10 @@ async function created({document}) {
 async function deleted({document}) {
     await setHidden(document, false);
 }
+/**
+ * Hides the affected actor's tokens while the effect exists and reveals them when it is deleted.
+ * Bound on an effect. Fires on `created` and `deleted`.
+ */
 export const banish = {
     rules: 'all',
     version: '2.0.4',

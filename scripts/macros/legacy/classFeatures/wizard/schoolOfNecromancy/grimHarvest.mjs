@@ -1,4 +1,4 @@
-import {activityUtils, actorUtils, automationUtils, combatUtils, constants, documentUtils, genericUtils, itemUtils, tokenUtils, workflowUtils} from '../../../../../proxy.mjs';
+import {activityUtils, actorUtils, automationUtils, combatUtils, constants, documentUtils, genericUtils, itemUtils, Logging, tokenUtils, workflowUtils} from '../../../../../proxy.mjs';
 async function late({document: item, workflow, token}) {
     if (!workflow.hitTargets.size || !workflow.damageList) return;
     const combatData = tokenUtils.getCombatData(token);
@@ -22,7 +22,7 @@ async function late({document: item, workflow, token}) {
     const necromancyMultiplier = automationUtils.getConfigValue(item, 'necromancyMultiplier') ?? 3;
     const healingAmount = spellLevel * (spellSchool === 'nec' ? necromancyMultiplier : healingMultiplier);
     const feature = itemUtils.getActivityByIdentifier(item, 'grimHarvest');
-    if (!feature) return;
+    if (!feature) return Logging.addMacroWarning('CPR', 'grim-harvest', 'Grim Harvest healing activity missing.', {notify: 'warn'});
     const activityData = activityUtils.getDamageModifiedActivityData(feature, healingAmount);
     await workflowUtils.syntheticActivityDataRoll(activityData, item, [token]);
     await documentUtils.update(item, {'flags.cat.grimHarvest.stamps': combatUtils.addTurnStamp(stamps, token.id, combatData)});

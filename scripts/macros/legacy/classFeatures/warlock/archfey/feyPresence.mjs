@@ -13,7 +13,7 @@ async function use({document, workflow}) {
         name: document.name,
         img: document.img,
         origin: document.uuid,
-        duration: {value: 1, units: 'rounds', expiry: 'turnEnd'}
+        duration: {value: 1, units: 'rounds', expiry: 'sourceEnd'}
     });
     effectData.statuses = [selection];
     for (const target of workflow.failedSaves) {

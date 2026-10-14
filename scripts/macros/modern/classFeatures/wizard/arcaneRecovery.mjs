@@ -1,6 +1,6 @@
-import {actorUtils, automationUtils, dialogUtils, rollUtils} from '../../../../proxy.mjs';
+import {actorUtils, automationUtils, dialogUtils, Logging, rollUtils} from '../../../../proxy.mjs';
 async function use({workflow}) {
-    if (!Object.values(workflow.actor.system.spells).some(s => s.max > 0 && s.value < s.max)) return;
+    if (!Object.values(workflow.actor.system.spells).some(s => s.max > 0 && s.value < s.max)) return Logging.addMacroWarning('CPR', 'arcane-recovery', 'No expended spell slots.');
     const formula = automationUtils.getConfigValue(workflow.item, 'formula');
     const bonuses = await automationUtils.calledEvent('arcaneRecoveryBonus', workflow.actor, {multiResult: true, canOverlap: true, data: {workflow}}) ?? [];
     const bonus = bonuses.reduce((total, value) => total + (value.bonus ?? 0), 0);

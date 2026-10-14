@@ -1,13 +1,16 @@
-import {actorUtils, automationUtils, compendiumUtils, constants, dialogUtils, documentUtils, effectUtils, folderUtils, genericUtils, itemUtils, summonUtils, tokenUtils} from '../../../proxy.mjs';
-const srdFamiliars = ['bat', 'cat', 'crab', 'frog', 'hawk', 'lizard', 'octopus', 'owl', 'poisonous-snake', 'quipper', 'rat', 'raven', 'sea-horse', 'spider', 'weasel'];
-async function summon({workflow, actor}) {
+import {actorUtils, automationUtils, compendiumUtils, constants, dialogUtils, documentUtils, effectUtils, folderUtils, itemUtils, Logging, summonUtils, tokenUtils} from '../../../proxy.mjs';
+export const srdFamiliars = ['bat', 'cat', 'crab', 'frog', 'hawk', 'lizard', 'octopus', 'owl', 'poisonous-snake', 'quipper', 'rat', 'raven', 'sea-horse', 'spider', 'weasel'];
+async function preventRecast({document: activity}) {
+    if (!summonUtils.getSummonsBySource(activity.item).length) return;
+    Logging.addMacroWarning('CPR', documentUtils.getIdentifier(activity.item), 'A familiar is already summoned.');
+    return true;
+}
+async function summon({workflow}) {
     const identifier = documentUtils.getIdentifier(workflow.item);
-    const existing = summonUtils.getSummonsByIdentifier(identifier, {actor});
-    if (existing.length) return;
     const folder = automationUtils.getConfigValue(workflow.item, 'folder');
     const actors = folder ? await folderUtils.getActorsInFolder(folder) : await compendiumUtils.getDocumentsBySlug('dnd5e.monsters', srdFamiliars);
     if (!actors.length) {
-        genericUtils.notify(_loc('CHRISPREMADES.Macros.All.FindFamiliar.NoActors', {folder}), {type: 'warn', localize: false});
+        Logging.addMacroWarning('CPR', identifier, 'CHRISPREMADES.Macros.All.FindFamiliar.NoActors', {notify: 'warn', format: {folder}});
         return;
     }
     const sourceActor = await dialogUtils.selectDocumentDialog(workflow.item.name, 'CHRISPREMADES.Macros.All.FindFamiliar.Choose', actors, {sort: 'alphabetical'});
@@ -32,7 +35,7 @@ async function summon({workflow, actor}) {
 }
 async function pocket({workflow}) {
     const summons = summonUtils.getSummonsBySource(workflow.item);
-    if (!summons) return;
+    if (!summons.length) return Logging.addMacroWarning('CPR', 'find-familiar-pocket', 'No familiar summoned.');
     if (summons.find(i => i.token)) {
         await summonUtils.recallAllSourceSummons(workflow.item);
     } else {
@@ -40,8 +43,8 @@ async function pocket({workflow}) {
     }
 }
 async function touch({document, workflow}) {
-    const [summon] = summonUtils.getSummonsByIdentifier('findFamiliar', {actor: workflow.actor});
-    if (!summon) return;
+    const summons = summonUtils.getSummonsBySource(workflow.item);
+    if (!summons.length) return Logging.addMacroWarning('CPR', 'find-familiar-touch', 'No familiar summoned.');
     const effectData = documentUtils.getBaseEffectData(workflow.activity, {
         name: document.name + ': ' + workflow.activity.name,
         img: document.img,
@@ -72,29 +75,28 @@ async function touch({document, workflow}) {
         ]
     });
     const [casterEffect] = await effectUtils.createEffects(workflow.actor, [effectData]);
-    await effectUtils.createEffects(summon.actor, [effectData], {parentEntity: casterEffect});
+    await Promise.all(summons.map(summon => effectUtils.createEffects(summon.actor, [effectData], {parentEntity: casterEffect})));
 }
 async function early({document, workflow, token}) {
     if (workflow.item.type !== 'spell' || workflow.item.system.range.units !== 'touch') {
-        genericUtils.notify('CHRISPREMADES.Macros.All.FindFamiliar.InvalidSpell', {type: 'info'});
+        Logging.addMacroWarning('CPR', 'find-familiar-touch-effect', 'CHRISPREMADES.Macros.All.FindFamiliar.InvalidSpell', {notify: 'info'});
         return true;
     }
     const originActivity = await effectUtils.getOriginActivity(document);
-    const [summon] = summonUtils.getSummonsBySource(originActivity?.item);
-    const familiarToken = summon?.token;
-    if (!familiarToken) {
-        genericUtils.notify('CHRISPREMADES.Macros.All.FindFamiliar.TooFar', {type: 'info'});
+    const familiarTokens = summonUtils.getSummonsBySource(originActivity?.item).map(summon => summon.token).filter(Boolean);
+    const range = familiarTokens.length ? automationUtils.getConfigValue(originActivity.item, 'touchRange') : 0;
+    const inRange = familiarTokens.filter(familiarToken => tokenUtils.getDistance(token, familiarToken) <= range);
+    if (!inRange.length) {
+        Logging.addMacroWarning('CPR', 'find-familiar-touch-effect', 'CHRISPREMADES.Macros.All.FindFamiliar.TooFar', {notify: 'info'});
         return true;
     }
-    const range = automationUtils.getConfigValue(originActivity.item, 'touchRange');
-    if (tokenUtils.getDistance(token, familiarToken) > range) {
-        genericUtils.notify('CHRISPREMADES.Macros.All.FindFamiliar.TooFar', {type: 'info'});
+    const available = inRange.filter(familiarToken => !actorUtils.hasUsedReaction(familiarToken.actor));
+    if (!available.length) {
+        Logging.addMacroWarning('CPR', 'find-familiar-touch-effect', 'CHRISPREMADES.Macros.All.FindFamiliar.ReactionUsed', {notify: 'info'});
         return true;
     }
-    if (actorUtils.hasUsedReaction(familiarToken.actor)) {
-        genericUtils.notify('CHRISPREMADES.Macros.All.FindFamiliar.ReactionUsed', {type: 'info'});
-        return true;
-    }
+    const target = workflow.targets.first()?.document;
+    const [familiarToken] = target ? available.sort((a, b) => tokenUtils.getDistance(target, a) - tokenUtils.getDistance(target, b)) : available;
     await actorUtils.setReactionUsed(familiarToken.actor);
 }
 export const findFamiliar = {
@@ -102,6 +104,11 @@ export const findFamiliar = {
     version: '2.0.4',
     rules: 'all',
     roll: [
+        {
+            pass: 'activityPreTargeting',
+            macro: preventRecast,
+            priority: 50
+        },
         {
             pass: 'activityRollFinished',
             macro: summon,

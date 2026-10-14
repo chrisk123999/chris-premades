@@ -1,88 +1,73 @@
-import {automationUtils, dialogUtils, animationUtils, rollUtils, tokenUtils, itemUtils, constants, workflowUtils} from '../../../proxy.mjs'; // Utils come from a proxy from CAT now
-async function damage({document, workflow}) { // trigger -> document
+import {automationUtils, constants, dialogUtils, documentUtils, itemUtils, Logging, rollUtils, tokenUtils, workflowUtils} from '../../../proxy.mjs';
+import {applyDamageType} from '../../generic/selectDamageType.mjs';
+import {getDamageType} from '../../generic/spellAnimation.mjs';
+async function damage({document, workflow}) {
     if (!workflow.hitTargets.size) return;
-    const damageTypes = automationUtils.getConfigValue(document.item, 'damageTypes'); // itemUtils.getConfig -> automationUtils.getConfigValue -- workflow.item -> document.item
+    const damageTypes = automationUtils.getConfigValue(document, 'damageTypes');
     if (!damageTypes.length) return;
-    let damageType = document.flags['chris-premades']?.chromaticOrb?.damageType ?? await dialogUtils.selectDamageType(damageTypes, document.name, 'CHRISPREMADES.Generic.SelectDamageType');
-    if (!damageType) damageType = damageTypes[0];
-    workflow.damageRolls.forEach(roll => roll.options.type = damageType);
-    await workflow.setDamageRolls(workflow.damageRolls);
+    await applyDamageType(workflow, workflow.workflowOptions?.['chris-premades']?.chromaticOrb?.damageType ?? (await dialogUtils.selectDamageType(damageTypes, document.name, 'CHRISPREMADES.Generic.SelectDamageType') || damageTypes[0]));
 }
-async function use({document, workflow, castData, token}) { // trigger -> document
-    if (!token) return; // Token is included in scope since this is from a workflow
-    const lastTargetUuid = document.flags['chris-premades']?.chromaticOrb?.lastTargetUuid ?? workflow.token.document.uuid;
-    const lastTarget = await fromUuid(lastTargetUuid);
-    if (automationUtils.getConfigValue(document, 'playAnimation') && animationUtils.jb2aCheck()) {
-        const anim = 'jb2a.ranged.03.projectile.01.bluegreen';
-        await new Sequence()
-            .effect()
-            .atLocation(lastTarget.object)
-            .stretchTo(workflow.targets.first())
-            .file(anim)
-            .missed(!workflow.hitTargets.size)
-            .filter('ColorMatrix', animationUtils.colorMatrix(anim, workflow.damageRolls?.[0]?.options?.type ?? 'none'))
-            .waitUntilFinished()
-            .play();
-    }
-    if (!workflow.damageRolls || !workflow.hitTargets.size) return;
-    const alwaysBounce = automationUtils.getConfigValue(document.item, 'alwaysBounce');
-    const canBounce = alwaysBounce || rollUtils.hasDuplicateDie([workflow.damageRolls[0]]);
-    if (!canBounce) return;
-    const baseMaxJumps = automationUtils.getConfigValue(document.item, 'baseMaxJumps');
-    const castLevel = document.item.flags['chris-premades']?.chromaticOrb?.castLevel ?? castData.castLevel; // Cast Data is always includded in scope
-    let bouncesLeft = document.item.flags['chris-premades']?.chromaticOrb?.bouncesLeft ?? baseMaxJumps + castLevel - 1;
-    if (bouncesLeft <= 0) return;
-    bouncesLeft--;
-    const ignoredTargetUuids = document.item.flags['chris-premades']?.chromaticOrb?.ignoredTargetUuids ?? [];
-    const range = automationUtils.getConfigValue(document.item, 'range');
-    const nearbyTargets = tokenUtils.findNearby(workflow.targets.first().document, range, {disposition: 'ally'}).filter(i => !ignoredTargetUuids.includes(i.uuid));
-    // Uses document now instead of token placeable, disposition is now in options, return gives documents as well now.
+export async function playBolt(document, workflow, target, state) {
+    const {animation, options} = automationUtils.getResolvedAnimation(document, 'animation');
+    const sourceToken = (state && fromUuidSync(state.lastTargetUuid)) ?? workflow.token.document;
+    if (animation) await animation.macros.play(sourceToken, target.document, {...options, cast: options.cast && !state, damageType: getDamageType(workflow), hit: workflow.hitTargets.has(target)});
+}
+export async function bounce(document, target, {state, stateKey, activityIdentifier, range, dialogText, castLevel, extraState = {}}) {
+    const ignoredUuids = [...(state?.ignoredUuids ?? []), target.document.uuid];
+    const nearbyTargets = tokenUtils.findNearby(target.document, range, {disposition: 'ally'}).filter(token => !ignoredUuids.includes(token.uuid));
     if (!nearbyTargets.length) return;
     let nextTarget = nearbyTargets[0];
     if (nearbyTargets.length > 1) {
-        const targetSelect = (await dialogUtils.selectTargetDialog(document.name, 'CHRISPREMADES.Macros.Modern.ChromaticOrb.Bounce', nearbyTargets, {skipDeadAndUnconscious: false}))?.result;
-        // Dialog utils now return an object with a result propety, so we take that directly. Also returns target as single or array depending on `type`, default is single
-        if (targetSelect) {
-            nextTarget = targetSelect;
-        } else return;
+        nextTarget = (await dialogUtils.selectTargetDialog(document.name, dialogText, nearbyTargets, {skipDeadAndUnconscious: false}))?.result;
+        if (!nextTarget) return;
     }
-    const perTargetDamageType = automationUtils.getConfigValue(document.item, 'perTargetDamageType');
-    ignoredTargetUuids.push(workflow.targets.first().document.uuid);
-    workflow.item = workflow.item.clone({
-        'flags.chris-premades.chromaticOrb': {
-            ignoredTargetUuids,
-            damageType: perTargetDamageType ? undefined : workflow.damageRolls[0].options.type,
-            bouncesLeft,
-            castLevel,
-            lastTargetUuid: workflow.targets.first().document.uuid
+    const activity = itemUtils.getActivityByIdentifier(document, activityIdentifier);
+    if (!activity) return Logging.addMacroWarning('CPR', documentUtils.getIdentifier(document), 'Bounce activity missing from item.', {notify: 'warn'});
+    await workflowUtils.syntheticActivityRoll(activity, [nextTarget], {
+        atLevel: castLevel,
+        options: {workflowOptions: {'chris-premades': {[stateKey]: {...extraState, ignoredUuids, castLevel, lastTargetUuid: target.document.uuid}}}}
+    });
+}
+async function use({document, workflow, castData}) {
+    const target = workflow.targets.first();
+    if (!workflow.token || !target) return;
+    const state = workflow.workflowOptions?.['chris-premades']?.chromaticOrb;
+    await playBolt(document, workflow, target, state);
+    if (!workflow.hitTargets.has(target) || !workflow.damageRolls?.length) return;
+    if (!automationUtils.getConfigValue(document, 'alwaysBounce') && !rollUtils.hasDuplicateDie([workflow.damageRolls[0]])) return;
+    const castLevel = state?.castLevel ?? castData.castLevel;
+    const bouncesLeft = state?.bouncesLeft ?? automationUtils.getConfigValue(document, 'baseMaxJumps') + castLevel - 1;
+    if (bouncesLeft <= 0) return;
+    await bounce(document, target, {
+        state,
+        stateKey: 'chromaticOrb',
+        activityIdentifier: 'chromaticOrbBounce',
+        range: automationUtils.getConfigValue(document, 'range'),
+        dialogText: 'CHRISPREMADES.Macros.Modern.ChromaticOrb.Bounce',
+        castLevel,
+        extraState: {
+            bouncesLeft: bouncesLeft - 1,
+            damageType: automationUtils.getConfigValue(document, 'perTargetDamageType') ? undefined : workflow.damageRolls[0].options.type
         }
-    }, {keepId: true});
-    const activity = itemUtils.getActivityByIdentifier(workflow.item, 'chromaticOrbBounce'); //  activityUtils.getAc... -> itemUtils.getAc... -- No longer needs {strict: true}
-    if (!activity) return;
-    await workflowUtils.syntheticActivityRoll(activity, [nextTarget], {atLevel: castLevel});
+    });
 }
 export const chromaticOrb = {
-    version: '2.0.2',
-    rules: '2024', // `rules` is now the number (2014 vs 2024) because item rules have the number. Folders in CPR are modern vs legacy because the rules setting is modern vs legacy.
-    roll: [ // Midi item and midi actor passes have been combined into `roll`
+    name: 'Chromatic Orb',
+    version: '2.1.3',
+    rules: '2024',
+    roll: [
         {
-            pass: 'activityRollFinished',
-            macro: use,
+            pass: 'itemDamageRoll',
+            macro: damage,
             priority: 50
         },
         {
-            pass: 'activityDamageRoll', // Runs on damage roll, and only for its own activity.
-            macro: damage,
+            pass: 'itemRollFinished',
+            macro: use,
             priority: 50
         }
     ],
-    config: { // Config is now an object instead of an array, `value` is now the key
-        playAnimation: {
-            label: 'CHRISPREMADES.Config.PlayAnimation',
-            type: 'checkbox',
-            default: true,
-            category: 'animations'
-        },
+    config: {
         alwaysBounce: {
             label: 'CHRISPREMADES.Macros.Legacy.ChaosBolt.AlwaysBounce',
             type: 'checkbox',
@@ -101,9 +86,7 @@ export const chromaticOrb = {
             label: 'CHRISPREMADES.Config.DamageTypes',
             type: 'select-many',
             default: ['acid', 'cold', 'fire', 'lightning', 'poison', 'thunder'],
-            get options() { // Anything using a helper in the config needs to use a getter because constants will not be set when the module is first loaded
-                return constants.damageTypeOptions;
-            },
+            get options() { return constants.damageTypeOptions; },
             category: 'homebrew',
             homebrew: true
         },
@@ -120,6 +103,16 @@ export const chromaticOrb = {
             default: 30,
             homebrew: true,
             category: 'homebrew'
+        },
+        animation: {
+            default: {
+                source: 'chris-premades',
+                identifier: 'chromaticOrb'
+            },
+            type: 'selectAnimation',
+            inputs: ['sourceToken', 'targetToken', 'options'],
+            label: 'CHRISPREMADES.Config.Animation',
+            category: 'animations'
         }
     }
 };

@@ -24,6 +24,17 @@ async function preCreate({document, actor, summon, updates}) {
         if (!itemData.system.properties?.includes('mgc')) itemData.system.properties?.push('mgc');
     });
 }
+/**
+ * Modifies summons as they are created.
+ * Bound on an item. Fires on `actorPreCreate`.
+ *
+ * Config:
+ * - `sourceIdentifiers`: only modify summons created by items with these identifiers. Leave empty for any summon.
+ * - `creatureTypes`: only modify summons of these creature types. Leave empty for any creature type.
+ * - `effect`: effect from this item to add to the summon.
+ * - `magicalWeapons`: the summon's items that deal damage count as magical.
+ * - `confirm`: prompt the owner before the summon is modified.
+ */
 export const summonModifier = {
     rules: 'all',
     version: '2.0.0',

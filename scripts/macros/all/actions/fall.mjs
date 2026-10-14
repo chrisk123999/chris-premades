@@ -1,4 +1,4 @@
-import {actorUtils, applications, automationUtils, dialogUtils, genericUtils, rollUtils, workflowUtils} from '../../../proxy.mjs';
+import {actorUtils, applications, automationUtils, dialogUtils, Logging, rollUtils, workflowUtils} from '../../../proxy.mjs';
 async function doFall({workflow}) {
     const rollDC = automationUtils.getConfigValue(workflow.item, 'rollDC');
     const selection = await applications.DialogApp.dialog(workflow.item.name, '', [
@@ -42,7 +42,7 @@ async function doFall({workflow}) {
             const targetSize = actorUtils.getSize(target.actor);
             const sourceSize = actorUtils.getSize(workflow.actor);
             if (sourceSize === 0 || targetSize === 0) {
-                genericUtils.notify('CHRISPREMADES.Macros.All.Fall.Tiny');
+                Logging.addMacroWarning('CPR', 'fall', 'CHRISPREMADES.Macros.All.Fall.Tiny', {notify: 'info'});
                 await ground(workflow.actor);
                 break;
             }

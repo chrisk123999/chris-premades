@@ -1,5 +1,5 @@
 import cprConstants from '../../../../../constants.mjs';
-import {automationUtils, compendiumUtils, constants, dialogUtils, documentUtils, effectUtils, genericUtils, itemUtils} from '../../../../../proxy.mjs';
+import {automationUtils, compendiumUtils, constants, dialogUtils, documentUtils, effectUtils, genericUtils, itemUtils, Logging} from '../../../../../proxy.mjs';
 const srdActors = 'dnd5e.actors24';
 async function transformActor(document) {
     const name = automationUtils.getConfigValue(document, 'actorName');
@@ -8,7 +8,7 @@ async function transformActor(document) {
 async function early({document, message}) {
     const actor = await transformActor(document);
     if (!actor) {
-        genericUtils.notify(_loc('CHRISPREMADES.Macros.Modern.FelineForm.NoActor', {name: automationUtils.getConfigValue(document, 'actorName')}), {type: 'warn', localize: false});
+        Logging.addMacroWarning('CPR', 'feline-form', 'CHRISPREMADES.Macros.Modern.FelineForm.NoActor', {notify: 'warn', format: {name: automationUtils.getConfigValue(document, 'actorName')}});
         return true;
     }
     genericUtils.setProperty(message, 'data.flags.dnd5e.transform.uuid', actor.uuid);

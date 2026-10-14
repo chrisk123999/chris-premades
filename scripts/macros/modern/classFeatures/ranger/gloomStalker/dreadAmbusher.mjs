@@ -1,4 +1,4 @@
-import {actorUtils, automationUtils, constants, DamageBonus, dialogUtils, genericUtils, itemUtils, tokenUtils, workflowUtils} from '../../../../../proxy.mjs';
+import {actorUtils, automationUtils, constants, DamageBonus, dialogUtils, itemUtils, Logging, tokenUtils, workflowUtils} from '../../../../../proxy.mjs';
 async function turnStart({document: item, round}) {
     if (round !== 1) return;
     const activity = itemUtils.getActivityByIdentifier(item, 'dread-ambusher-ambush');
@@ -42,7 +42,7 @@ async function suddenStrike(workflow, stalkersFlurry) {
     const nearTarget = tokenUtils.findNearby(targetToken, automationUtils.getConfigValue(stalkersFlurry, 'suddenStrikeRange'), {disposition: 'ally'});
     const candidates = tokenUtils.findNearby(workflow.token.document, workflow.rangeDetails.range, {disposition: 'enemy'})
         .filter(candidate => candidate !== targetToken && nearTarget.includes(candidate));
-    if (!candidates.length) return genericUtils.notify('CHRISPREMADES.Macros.Modern.StalkersFlurry.NoTargets', {type: 'info'});
+    if (!candidates.length) return Logging.addMacroWarning('CPR', 'dread-ambusher', 'CHRISPREMADES.Macros.Modern.StalkersFlurry.NoTargets', {notify: 'info'});
     const selection = await dialogUtils.selectTargetDialog(_loc('CHRISPREMADES.Macros.Modern.StalkersFlurry.SuddenStrike'), _loc('DND5E.Target'), candidates, {buttons: 'yesNo'});
     if (!selection?.result) return;
     await workflowUtils.completeItemUse(workflow.item, [selection.result], {fast: true});
@@ -54,7 +54,7 @@ async function massFear(workflow, stalkersFlurry) {
     const includeSelf = automationUtils.getConfigValue(stalkersFlurry, 'includeSelf');
     const targets = tokenUtils.findNearby(workflow.hitTargets.first().document, range, {includeToken: true})
         .filter(target => includeSelf || target.actor !== workflow.actor);
-    if (!targets.length) return genericUtils.notify('CHRISPREMADES.Macros.Modern.StalkersFlurry.NoTargets', {type: 'info'});
+    if (!targets.length) return Logging.addMacroWarning('CPR', 'dread-ambusher', 'CHRISPREMADES.Macros.Modern.StalkersFlurry.NoTargets', {notify: 'info'});
     await workflowUtils.completeActivityUse(activity, targets);
 }
 export const dreadAmbusher = {

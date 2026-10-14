@@ -1,4 +1,4 @@
-import {automationUtils, constants, dialogUtils, documentUtils, tokenUtils, workflowUtils} from '../../proxy.mjs';
+import {automationUtils, constants, dialogUtils, documentUtils, Logging, tokenUtils, workflowUtils} from '../../proxy.mjs';
 async function extraTarget({document: item, workflow}) {
     if (!workflow.targets.size) return;
     const config = automationUtils.getGenericConfigValues(item, 'chris-premades', 'additionalTargets', Object.keys(additionalTargets.genericConfig));
@@ -46,10 +46,26 @@ async function extraTarget({document: item, workflow}) {
     if (config.rollItem) await workflowUtils.completeItemUse(item);
     else {
         const activity = item.system.activities.get(config.rollActivity);
-        if (!activity) return;
+        if (!activity) return Logging.addMacroWarning('CPR', documentUtils.getIdentifier(item), 'Configured roll activity not found.', {notify: 'warn'});
         await workflowUtils.completeActivityUse(activity);
     }
 }
+/**
+ * Prompts to add nearby tokens as extra targets of a matching item, then rolls this item or an activity.
+ * Bound on an item. Fires on `actorTargeting`.
+ *
+ * Config:
+ * - `damageType`: only trigger when the used activity deals one of these damage types.
+ * - `healingType`: only trigger when the used activity heals one of these healing types.
+ * - `identifiers`: only trigger for items with one of these identifiers.
+ * - `itemType`: only trigger for these item types.
+ * - `disposition`: which tokens can be added, relative to the measuring token.
+ * - `range`: distance in feet within which tokens can be added.
+ * - `rangeFrom`: measure range from each target or from the attacker.
+ * - `rollActivity`: activity rolled after targets are added.
+ * - `rollItem`: roll this item instead of `rollActivity`.
+ * - `targets`: how many extra targets can be chosen. Any value below one is unlimited.
+ */
 export const additionalTargets = {
     rules: 'all',
     version: '2.0.2',

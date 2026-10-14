@@ -1,8 +1,8 @@
-import {dialogUtils, documentUtils, genericUtils, itemUtils} from '../../../../../proxy.mjs';
+import {dialogUtils, documentUtils, itemUtils, Logging} from '../../../../../proxy.mjs';
 async function use({document, workflow}) {
     const spells = workflow.actor.items.filter(spell => spell.type === 'spell');
     if (!spells.length) {
-        genericUtils.notify('CHRISPREMADES.Macros.Legacy.PsionicSpells.NoSpells', {type: 'info'});
+        Logging.addMacroWarning('CPR', 'psionic-spells', 'CHRISPREMADES.Macros.Legacy.PsionicSpells.NoSpells', {notify: 'info'});
         return;
     }
     const checked = new Set(document.flags['chris-premades']?.psionicSpells?.spells ?? []);

@@ -1,4 +1,4 @@
-import {actorUtils, automationUtils, constants, dialogUtils, documentUtils, effectUtils, genericUtils, itemUtils, rollUtils, workflowUtils} from '../../../../proxy.mjs';
+import {actorUtils, automationUtils, constants, dialogUtils, documentUtils, effectUtils, genericUtils, itemUtils, Logging, rollUtils, workflowUtils} from '../../../../proxy.mjs';
 export const subtleComponents = ['vocal', 'somatic'];
 function getAvailablePoints(actor) {
     return actorUtils.getItemByIdentifier(actor, 'font-of-magic')?.system.uses.value ?? 0;
@@ -20,7 +20,7 @@ function getTargets(workflow) {
 }
 async function selectSpell(item, spells) {
     if (!spells.length) {
-        genericUtils.notify('CHRISPREMADES.Macros.Legacy.Metamagic.NoValid', {type: 'info'});
+        Logging.addMacroWarning('CPR', documentUtils.getIdentifier(item), 'CHRISPREMADES.Macros.Legacy.Metamagic.NoValid', {notify: 'info'});
         return;
     }
     const cost = getCost(getMetamagicActivity(item));
@@ -54,16 +54,6 @@ async function useMarked(document, workflow, identifier) {
     await castSpell(selection, workflow);
     if (effect) await documentUtils.deleteDocument(effect);
 }
-async function applySaveModifier(effect, targets, changes) {
-    const effectData = documentUtils.getBaseEffectData(effect, {
-        name: effect.name,
-        img: constants.tempConditionIcon,
-        origin: effect.uuid,
-        changes,
-        specialDuration: ['forceSave']
-    });
-    await Promise.all(targets.map(async target => await effectUtils.createEffects(target.actor, [effectData], {parentEntity: effect})));
-}
 async function useCareful({document, workflow}) {
     await useMarked(document, workflow, 'careful-spell-effect');
 }
@@ -76,7 +66,7 @@ async function earlyCareful({document: effect, workflow}) {
     if (!targets.length) return;
     const selection = await dialogUtils.selectTargetDialog(effect.name, _loc('CHRISPREMADES.Macros.Legacy.Metamagic.CarefulWhich', {max}), targets, {type: 'multiple', maxAmount: max});
     if (!selection?.result?.length) return;
-    await applySaveModifier(effect, selection.result, [{key: 'flags.midi-qol.success.ability.save.all', value: 'true', type: 'override', priority: 120}]);
+    selection.result.forEach(target => workflowUtils.grantRollModifier(workflow, 'succeed', target.id, 'careful-spell', effect.name));
 }
 async function useDistant({document, workflow}) {
     const selection = await selectSpell(document, getValidSpells(workflow.actor, spell => ['touch', 'ft'].includes(spell.system.range.units) && spell.system.target.affects.type && spell.system.target.affects.type !== 'self'));
@@ -88,7 +78,7 @@ async function damageEmpowered({document, workflow}) {
     if (!workflow.hitTargets.size || workflow.item.type !== 'spell' || !workflow.damageRolls?.length) return;
     const activity = getMetamagicActivity(document);
     const cost = getCost(activity);
-    if (getAvailablePoints(workflow.actor) < cost) return;
+    if (getAvailablePoints(workflow.actor) < cost) return Logging.addMacroWarning('CPR', 'empowered-spell', 'Not enough sorcery points.');
     const max = getCharismaMax(workflow.actor);
     const selection = await dialogUtils.selectDie(workflow.damageRolls, document.name, _loc('CHRISPREMADES.Macros.Legacy.Metamagic.Empowered', {cost, max}), {max});
     if (!selection?.length) return;
@@ -145,7 +135,7 @@ async function earlyHeightened({document: effect, workflow}) {
     if (!targets.length) return;
     const selection = await dialogUtils.selectTargetDialog(effect.name, _loc('CHRISPREMADES.Macros.Legacy.Metamagic.HeightenedWhich'), targets);
     if (!selection?.result) return;
-    await applySaveModifier(effect, [selection.result], [{key: 'flags.midi-qol.disadvantage.save.all', value: '1', type: 'override', priority: 20}]);
+    workflowUtils.grantRollModifier(workflow, 'dis', selection.result.id, 'heightened-spell', effect.name);
 }
 async function useQuickened({document, workflow}) {
     const selection = await selectSpell(document, getValidSpells(workflow.actor, spell => spell.system.activation.type === 'action'));
@@ -156,7 +146,7 @@ async function attackSeeking({document, workflow}) {
     if (!workflow.attackRoll || !workflow.targets.size || workflow.item.type !== 'spell') return;
     if (Array.from(workflow.targets).every(target => (target.actor?.system.attributes.ac.value ?? Infinity) <= workflow.attackRoll.total)) return;
     const activity = getMetamagicActivity(document);
-    if (getAvailablePoints(workflow.actor) < getCost(activity)) return;
+    if (getAvailablePoints(workflow.actor) < getCost(activity)) return Logging.addMacroWarning('CPR', 'seeking-spell', 'Not enough sorcery points.');
     const selection = await dialogUtils.confirmUseForRollTotal(document, workflow.item.name, workflow.attackRoll.total);
     if (!selection) return;
     await workflowUtils.completeActivityUse(activity, []);
@@ -187,7 +177,7 @@ function getTransmutedUpdates(spell, oldType, newType) {
 }
 async function useTransmuted({document, workflow}) {
     const transmutableTypes = new Set(automationUtils.getConfigValue(document, 'damageTypes'));
-    if (!transmutableTypes.size) return;
+    if (!transmutableTypes.size) return Logging.addMacroWarning('CPR', 'transmuted-spell', 'No damage types configured.', {notify: 'warn'});
     const selection = await selectSpell(document, getValidSpells(workflow.actor, spell => itemUtils.getItemDamageTypes(spell).intersects(transmutableTypes)));
     if (!selection) return;
     const currentTypes = Array.from(itemUtils.getItemDamageTypes(selection).intersection(transmutableTypes));
@@ -210,7 +200,7 @@ async function useTwinned({document, workflow}) {
     const available = getAvailablePoints(workflow.actor);
     const spells = getValidSpells(workflow.actor, spell => isTwinnable(spell) && Math.max(1, spell.system.level) <= available && spell.system.source.rules === '2014');
     if (!spells.length) {
-        genericUtils.notify('CHRISPREMADES.Macros.Legacy.Metamagic.NoValid', {type: 'info'});
+        Logging.addMacroWarning('CPR', 'twinned-spell', 'CHRISPREMADES.Macros.Legacy.Metamagic.NoValid', {notify: 'info'});
         return;
     }
     const selection = await dialogUtils.selectDocumentDialog(document.item.name, _loc('CHRISPREMADES.Macros.Legacy.Metamagic.TwinnedWhich'), spells, {
@@ -236,15 +226,14 @@ async function useTwinned({document, workflow}) {
     });
 }
 async function abortTwinned(workflow, message) {
-    genericUtils.notify(message, {type: 'info'});
+    Logging.addMacroWarning('CPR', 'twinned-spell-cast', message, {notify: 'info'});
     workflow.aborted = true;
-    const concentration = effectUtils.getConcentrationEffect(workflow.actor, workflow.item);
-    if (concentration) await documentUtils.deleteDocument(concentration);
+    await effectUtils.endConcentration(workflow.actor, workflow.item);
     return true;
 }
 async function earlyTwinned({workflow}) {
     const metamagic = actorUtils.getItemByIdentifier(workflow.actor, 'twinned-spell');
-    if (!metamagic) return;
+    if (!metamagic) return Logging.addMacroWarning('CPR', 'twinned-spell-cast', 'Twinned Spell feature not found on actor.', {notify: 'warn'});
     const castLevel = workflowUtils.getCastLevel(workflow) ?? workflow.item.system.level;
     if (!isTwinnable(workflow.item, castLevel)) {
         return await abortTwinned(workflow, 'CHRISPREMADES.Macros.Legacy.Metamagic.TwinnedUpcastTargets');

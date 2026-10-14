@@ -1,4 +1,4 @@
-import {actorUtils, automationUtils, constants, dialogUtils, documentUtils, effectUtils, genericUtils, rollUtils, tokenUtils, workflowUtils} from '../../proxy.mjs';
+import {actorUtils, automationUtils, constants, dialogUtils, documentUtils, effectUtils, genericUtils, Logging, rollUtils, tokenUtils, workflowUtils} from '../../proxy.mjs';
 async function selectNearby(document, targets, count) {
     if (targets.length <= count) return targets;
     const content = count > 1 ? 'CHRISPREMADES.Macros.Generic.BladeSpell.SelectNearbyTargets' : 'CHRISPREMADES.Macros.Generic.BladeSpell.SelectNearbyTarget';
@@ -9,7 +9,7 @@ async function selectNearby(document, targets, count) {
 async function use({document, workflow}) {
     const config = automationUtils.getGenericConfigValues(document, 'chris-premades', 'bladeSpell', configKeys);
     if (config.activityId && config.activityId !== workflow.activity.id) return;
-    if (workflow.targets.size !== 1) return;
+    if (workflow.targets.size !== 1) return Logging.addMacroWarning('CPR', documentUtils.getIdentifier(workflow.item), 'Select exactly one target.');
     const targetToken = workflow.targets.first().document;
     const weapons = actorUtils.getEquippedWeapons(workflow.actor).filter(weapon =>
         weapon.system.activities.getByType('attack').length &&
@@ -17,7 +17,7 @@ async function use({document, workflow}) {
         (!config.proficientOnly || weapon.system.proficiencyMultiplier >= 1)
     );
     if (!weapons.length) {
-        genericUtils.notify('CHRISPREMADES.Macros.Generic.BladeSpell.NoWeapons', {type: 'warn'});
+        Logging.addMacroWarning('CPR', documentUtils.getIdentifier(workflow.item), 'CHRISPREMADES.Macros.Generic.BladeSpell.NoWeapons', {notify: 'warn'});
         return;
     }
     const weapon = weapons.length === 1 ? weapons[0] : await dialogUtils.selectDocumentDialog(document.name, 'CHRISPREMADES.Macros.Generic.BladeSpell.Weapon', weapons);
@@ -73,6 +73,29 @@ async function use({document, workflow}) {
         await workflowUtils.completeActivityUse(activity, targets, {spellSlot: false});
     }
 }
+/**
+ * Makes an attack with one of the caster's equipped weapons against a single target, then applies on-hit riders.
+ * Bound on an item. Fires on `itemRollFinished`.
+ *
+ * Config:
+ * - `activityId`: only run when this activity is used. Blank runs on any activity.
+ * - `meleeOnly`: only offer equipped melee weapons.
+ * - `proficientOnly`: only offer weapons the caster is proficient with.
+ * - `ability`: ability for the weapon's attack and damage rolls. Spellcasting uses this spell's ability.
+ * - `damageTypes`: damage types that can replace the weapon's damage type.
+ * - `optionalDamageReplacement`: let the caster keep the weapon's normal damage type.
+ * - `bonusDamageDieFormula`: number of extra damage dice. Blank uses cantrip scaling.
+ * - `bonusDamageDieDenomination`: die size of the extra damage dice. 0 adds none.
+ * - `bonusDamageTypes`: damage types of the extra damage dice.
+ * - `onHitEffect`: effect applied to the target when the weapon attack hits.
+ * - `activityOnHit`: activity used against the target when the weapon attack hits.
+ * - `effectNearby`: effect applied to chosen creatures near the hit target.
+ * - `effectNearbyRange`: distance from the hit target in which creatures can receive the nearby effect.
+ * - `effectNearbyTargets`: maximum number of creatures that receive the nearby effect.
+ * - `activityNearby`: activity used against creatures near the hit target. Its target count limits the choices.
+ * - `activityNearbyRange`: distance from the hit target in which creatures can be chosen for the nearby activity.
+ * - `animation`: attack played from the caster to the target. A leap plays from the hit target to each nearby target.
+ */
 export const bladeSpell = {
     rules: 'all',
     version: '2.0.0',

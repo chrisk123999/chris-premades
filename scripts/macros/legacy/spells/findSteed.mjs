@@ -1,4 +1,4 @@
-import {automationUtils, compendiumUtils, constants, dialogUtils, documentUtils, effectUtils, folderUtils, genericUtils, summonUtils, tokenUtils, workflowUtils} from '../../../proxy.mjs';
+import {automationUtils, compendiumUtils, constants, dialogUtils, documentUtils, effectUtils, folderUtils, Logging, summonUtils, tokenUtils, workflowUtils} from '../../../proxy.mjs';
 const srdSteeds = {
     'find-steed': ['warhorse', 'pony', 'camel', 'elk', 'mastiff'],
     'find-greater-steed': ['griffon', 'pegasus', 'dire-wolf', 'rhinoceros', 'saber-toothed-tiger']
@@ -12,7 +12,7 @@ async function summon({workflow}) {
     const folder = automationUtils.getConfigValue(workflow.item, 'folder');
     const actors = folder ? await folderUtils.getActorsInFolder(folder) : await compendiumUtils.getDocumentsBySlug('dnd5e.monsters', srdSteeds[identifier] ?? []);
     if (!actors.length) {
-        genericUtils.notify(_loc('CHRISPREMADES.Macros.Legacy.FindSteed.NoActors', {folder}), {type: 'warn', localize: false});
+        Logging.addMacroWarning('CPR', 'find-steed', 'CHRISPREMADES.Macros.Legacy.FindSteed.NoActors', {notify: 'warn', format: {folder}});
         return;
     }
     const sourceActor = await dialogUtils.selectDocumentDialog(workflow.item.name, 'CHRISPREMADES.Macros.Legacy.FindSteed.Choose', actors, {sort: 'alphabetical'});

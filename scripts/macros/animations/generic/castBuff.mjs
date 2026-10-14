@@ -1,5 +1,5 @@
 import {animationUtils} from '../../../proxy.mjs';
-import {addCast, colorOption, getPalette, makePreset, partOption} from './spellParts.mjs';
+import {addCast, colorOption, getPalette, makePreset, partOption, persistName} from './spellParts.mjs';
 const colorMap = {
     yellow: 'Yellow',
     blue: 'Blue',
@@ -26,9 +26,6 @@ const shields = {
         blue: 'jb2a.shield.01.{part}.blue'
     }
 };
-function getName(effect) {
-    return 'castBuff ' + effect.uuid;
-}
 function addShield(sequence, effect, targetToken, file) {
     /* eslint-disable indent */
     sequence
@@ -39,7 +36,7 @@ function addShield(sequence, effect, targetToken, file) {
             .zIndex(1)
             .waitUntilFinished(-250)
         .effect()
-            .name(getName(effect))
+            .name(persistName('castBuff', effect))
             .file(file.replace('{part}', 'loop'))
             .attachTo(targetToken)
             .scaleToObject(1.6)
@@ -79,7 +76,7 @@ async function create(effect, targetToken, {color = 'yellow', cast = true, aura 
     if (aura && files.aura) {
         sequence
             .effect()
-                .name(getName(effect))
+                .name(persistName('castBuff', effect))
                 .file(files.aura)
                 .attachTo(targetToken)
                 .scaleToObject(1.8)
@@ -93,7 +90,7 @@ async function create(effect, targetToken, {color = 'yellow', cast = true, aura 
     await sequence.play();
 }
 async function remove(effect, targetToken, {color = 'yellow', shield = false} = {}) {
-    await Sequencer.EffectManager.endEffects({name: getName(effect), object: targetToken});
+    await Sequencer.EffectManager.endEffects({name: persistName('castBuff', effect), object: targetToken});
     if (!shield) return;
     const file = getPalette(shields, color);
     if (file) await new Sequence().effect().file(file.replace('{part}', 'outro_fade')).atLocation(targetToken).scaleToObject(1.6).play();
