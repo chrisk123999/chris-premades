@@ -1,10 +1,13 @@
 import {automationUtils, rollUtils, dialogUtils, actorUtils, activityUtils, documentUtils, workflowUtils, queryUtils, Logging} from '../../proxy.mjs';
+export function resolveCastFormula(formula, castData) {
+    if (castData?.castLevel) formula = formula.replaceAll('@item.level', castData.castLevel);
+    if (castData?.scaling) formula = formula.replaceAll('@scaling', castData.scaling);
+    return formula;
+}
 async function use({document, workflow}) {
     const activityId = automationUtils.getGenericConfigValue(document, 'chris-premades', 'multiSingleTarget', 'activityId');
     if (activityId != workflow.activity.id || !workflow.targets.size) return;
-    let formula = automationUtils.getGenericConfigValue(document, 'chris-premades', 'multiSingleTarget', 'formula');
-    if (workflow.castData?.castLevel) formula = formula.replaceAll('@item.level', workflow.castData.castLevel);
-    if (workflow.castData?.scaling) formula = formula.replaceAll('@scaling', workflow.castData.scaling);
+    const formula = resolveCastFormula(automationUtils.getGenericConfigValue(document, 'chris-premades', 'multiSingleTarget', 'formula'), workflow.castData);
     const totalTargets = (await rollUtils.rollDice(formula, {document: workflow.activity})).total;
     if (!totalTargets) return;
     const skipDeadAndUnconscious = automationUtils.getGenericConfigValue(document, 'chris-premades', 'multiSingleTarget', 'skipDeadAndUnconscious');
@@ -28,6 +31,7 @@ async function use({document, workflow}) {
         const activityData = activityUtils.getDamageModifiedActivityData(attackActivity, total);
         attackActivity = activityUtils.syntheticActivity(activityData, workflow.item);
     }
+    const combineAttacks = automationUtils.getGenericConfigValue(document, 'chris-premades', 'multiSingleTarget', 'combineAttacks');
     const options = {
         spellSlot: false,
         atLevel: workflow.castData?.castLevel,
@@ -37,17 +41,20 @@ async function use({document, workflow}) {
         }}}}
     };
     while (remainingAttacks > 0 && validTargets.size > 0) {
-        let dialogResult = await dialogUtils.selectTargetDialog(
-            workflow.item.name, 
-            _loc('CHRISPREMADES.Macros.Generic.MultiSingleTarget.Context', {totalTargets: remainingAttacks, skipDeadAndUnconscious}), 
-            validTargets, 
-            {
-                type: 'selectAmount',
-                maxAmount: remainingAttacks,
-                requireTotal: true,
-                skipDeadAndUnconscious: skipDeadAndUnconscious
-            }
-        );
+        const dialogResult = validTargets.size === 1
+            ? {result: [{document: validTargets.first(), value: remainingAttacks}], skip: skipDeadAndUnconscious}
+            : await dialogUtils.selectTargetDialog(
+                workflow.item.name,
+                _loc('CHRISPREMADES.Macros.Generic.MultiSingleTarget.Context', {totalTargets: remainingAttacks, skipDeadAndUnconscious}),
+                validTargets,
+                {
+                    type: 'selectAmount',
+                    maxAmount: remainingAttacks,
+                    requireTotal: true,
+                    skipDeadAndUnconscious: skipDeadAndUnconscious,
+                    coverToken: workflow.token.document
+                }
+            );
         if (!dialogResult) break;
         let { result: selection, skip: currentSkip } = dialogResult;
         if (!selection || !selection.length) break;
@@ -72,6 +79,18 @@ async function use({document, workflow}) {
                     if (reactionEffect) reacted = true;
                 }
             }
+            if (combineAttacks) {
+                options.options.workflowOptions['chris-premades'].multiSingleTarget.remainingAttacks = remainingAttacks;
+                const part = attackActivity.damage.parts[0];
+                const activityData = activityUtils.getDamageModifiedActivityData(attackActivity, {number: attacks, denomination: part?.denomination, bonus: part?.bonus});
+                const attackWorkflow = await workflowUtils.syntheticActivityDataRoll(activityData, workflow.item, [targetDoc], options);
+                for (let i = 0; i < attacks; i++) {
+                    if (animation?.macros?.attack) await animation.macros.attack(workflow.token.document, targetDoc, {missed: reacted || !attackWorkflow?.hitTargets.size, ...animationOptions});
+                }
+                remainingAttacks -= attacks;
+                if (currentSkip && targetDoc.actor.system.attributes.hp.value <= 0) validTargets = validTargets.filter(t => t.id !== targetDoc.id);
+                continue;
+            }
             for (let i = 0; i < attacks; i++) {
                 if (currentSkip && targetDoc.actor.system.attributes.hp.value <= 0) {
                     validTargets = validTargets.filter(t => t.id !== targetDoc.id);
@@ -84,8 +103,7 @@ async function use({document, workflow}) {
                 } else {
                     workflow = await workflowUtils.completeActivityUse(attackActivity, [targetDoc], {autoDamage: true, fast: true, ...options});
                 }
-                if (!workflow.hitTargets.size) reacted = true;
-                if (animation && animation.macros?.attack) await animation.macros.attack(workflow.token.document, targetDoc, {missed: reacted, ...animationOptions});
+                if (animation && animation.macros?.attack) await animation.macros.attack(workflow.token.document, targetDoc, {missed: reacted || !workflow.hitTargets.size, ...animationOptions});
                 remainingAttacks--;
                 if (currentSkip && targetDoc.actor.system.attributes.hp.value <= 0) {
                     validTargets = validTargets.filter(t => t.id !== targetDoc.id);
@@ -109,6 +127,7 @@ async function use({document, workflow}) {
  * - `reactionItemIdentifiers`: spells a target is offered as a reaction before its attacks.
  * - `reactionEffectIdentifiers`: effects that mark a target as having reacted, which plays the animation as a miss.
  * - `utilityRollAsDamage`: the utility roll total replaces the attack activity's damage.
+ * - `combineAttacks`: roll one attack per target, with the first damage part's dice number set to the attacks allocated to it.
  */
 export const multiSingleTarget = {
     rules: 'all',
@@ -175,6 +194,12 @@ export const multiSingleTarget = {
             type: 'checkbox',
             label: 'CHRISPREMADES.Config.UtilityRollAsDamage',
             hint: ''
+        },
+        combineAttacks: {
+            default: false,
+            type: 'checkbox',
+            label: 'CHRISPREMADES.Macros.Generic.MultiSingleTarget.CombineAttacks',
+            hint: 'CHRISPREMADES.Macros.Generic.MultiSingleTarget.CombineAttacksHint'
         }
     }
 };

@@ -82,7 +82,7 @@
             "count": "",
             "type": "creature",
             "choice": false,
-            "special": ""
+            "special": "-self"
           },
           "prompt": true,
           "override": false
@@ -268,7 +268,23 @@
     "cat": {
       "automation": {
         "source": "chris-premades",
-        "version": "2.0.0"
+        "version": "2.1.3"
+      },
+      "macros": {
+        "roll": [
+          {
+            "source": "chris-premades",
+            "rules": "all",
+            "identifier": "targetCreatureTypes"
+          }
+        ]
+      },
+      "genericConfig": {
+        "chris-premades": {
+          "targetCreatureTypes": {
+            "excludeSummoner": true
+          }
+        }
       }
     }
   },

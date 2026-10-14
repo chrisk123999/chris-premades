@@ -1,9 +1,7 @@
 import {automationUtils, combatUtils, constants, dialogUtils, documentUtils, effectUtils, genericUtils, Logging, rollUtils, tokenUtils, workflowUtils} from '../../../proxy.mjs';
 async function use({document, workflow}) {
     const concentrationEffect = effectUtils.getConcentrationEffect(workflow.actor, workflow.item);
-    const cancel = async () => {
-        if (concentrationEffect) await documentUtils.deleteDocument(concentrationEffect);
-    };
+    const cancel = () => effectUtils.endConcentration(workflow.actor, workflow.item);
     if (!workflow.targets.size) return await cancel();
     const damageTypes = automationUtils.getConfigValue(document, 'damageTypes');
     const damageType = await dialogUtils.selectDamageType(damageTypes, document.name, 'CHRISPREMADES.Generic.SelectDamageType');

@@ -11,11 +11,11 @@ function markedEffectData(activity, document, seconds) {
 }
 async function use({document, workflow}) {
     if (workflow.activity.identifier !== 'hunters-mark') return;
-    const concentrationEffect = effectUtils.getConcentrationEffect(workflow.actor, workflow.item);
     if (!workflow.targets.size) {
-        if (concentrationEffect) await documentUtils.deleteDocument(concentrationEffect);
+        await effectUtils.endConcentration(workflow.actor, workflow.item);
         return;
     }
+    const concentrationEffect = effectUtils.getConcentrationEffect(workflow.actor, workflow.item);
     const seconds = workflowUtils.getScaledDuration(workflow);
     const casterEffectData = documentUtils.getBaseEffectData(workflow.activity, {
         name: document.name,

@@ -1,4 +1,5 @@
 import {actorUtils, automationUtils, constants, dialogUtils, documentUtils, effectUtils, genericUtils, itemUtils, Logging} from '../../../../../proxy.mjs';
+import {applyDamageType, rememberCombat} from '../../../../generic/selectDamageType.mjs';
 const bondIdentifier = 'pactOfTheBladeBondedEnchantment';
 function bondData(document, workflow) {
     const changes = [
@@ -75,12 +76,10 @@ async function damage({workflow}) {
     if (!damageTypes.length) return;
     let damageType = damageTypes[0];
     if (damageTypes.length > 1) {
-        damageType = await dialogUtils.selectDamageType(damageTypes, feature.name, _loc('CHRISPREMADES.Macros.Modern.PactOfTheBlade.ReplaceDamage'), {addNo: true});
+        damageType = await dialogUtils.selectDamageType(damageTypes, feature.name, _loc('CHRISPREMADES.Macros.Modern.PactOfTheBlade.ReplaceDamage'), {addNo: true, ...rememberCombat(workflow.token, feature)});
         if (!damageType) return;
     }
-    const rolls = workflow.damageRolls;
-    rolls.forEach(roll => roll.options.type = damageType);
-    await workflow.setDamageRolls(rolls);
+    await applyDamageType(workflow, damageType);
 }
 export const pactOfTheBlade = {
     name: 'Eldritch Invocations: Pact of the Blade',

@@ -1,0 +1,16 @@
+{
+  "type": "Item",
+  "folder": "2WVx1t3xRWSxA5Iw",
+  "name": "Healing Spirit",
+  "color": null,
+  "sorting": "a",
+  "_id": "i8o0eS77dZm2Z5eL",
+  "description": "",
+  "flags": {},
+  "_stats": {
+    "coreVersion": "14.369",
+    "systemId": "dnd5e",
+    "systemVersion": "6.0.6"
+  },
+  "_key": "!folders!i8o0eS77dZm2Z5eL"
+}

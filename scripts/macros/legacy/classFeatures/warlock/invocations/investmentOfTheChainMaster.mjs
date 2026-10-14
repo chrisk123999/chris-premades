@@ -1,7 +1,8 @@
 import cprConstants from '../../../../../constants.mjs';
 import {actorUtils, automationUtils, compendiumUtils, dialogUtils, genericUtils, itemUtils, queryUtils, summonUtils, workflowUtils} from '../../../../../proxy.mjs';
 async function familiar({document, summon, updates}) {
-    if (summon.sourceDocument?.identifier !== 'find-familiar') return;
+    const sourceIdentifier = summon.sourceDocument?.identifier;
+    if (!['find-familiar', 'flock-of-familiars'].includes(sourceIdentifier)) return;
     const movement = await dialogUtils.buttonDialog(document.name, _loc('CHRISPREMADES.Macros.Legacy.InvestmentOfTheChainMaster.Movement'), [
         [CONFIG.DND5E.movementTypes.fly.label, 'fly'],
         [CONFIG.DND5E.movementTypes.swim.label, 'swim']
@@ -19,7 +20,8 @@ async function familiar({document, summon, updates}) {
     const resistance = await compendiumUtils.getDocumentByIdentifier(cprConstants.packs.misc.automationItems, 'investment-of-the-chain-master-resistance', {object: true});
     delete resistance._id;
     updates.items.push(resistance);
-    await itemUtils.unhideActivities(document, ['find-familiar-command']);
+    if (sourceIdentifier === 'flock-of-familiars' && summonUtils.getSummonsByIdentifier('find-familiar', {actor: summon.owner}).length) return;
+    await itemUtils.unhideActivities(document, [sourceIdentifier + '-command']);
 }
 async function hit({document, workflow, sourceToken}) {
     if (!sourceToken || !workflow.hitTargets.has(sourceToken.object)) return;

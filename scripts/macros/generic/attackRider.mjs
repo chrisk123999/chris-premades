@@ -1,5 +1,16 @@
-import {actorUtils, automationUtils, combatUtils, constants, DamageBonus, documentUtils, effectUtils, itemUtils, Logging, rollUtils, workflowUtils} from '../../proxy.mjs';
+import {actorUtils, automationUtils, combatUtils, constants, DamageBonus, documentUtils, effectUtils, itemUtils, Logging, rollUtils, tokenUtils, workflowUtils} from '../../proxy.mjs';
 import {attackTypeConfig, identifiersConfig} from './damageBonusToOneRoll.mjs';
+export const riderNearbyRangeConfig = {
+    default: 0,
+    type: 'number',
+    category: 'behavior',
+    label: 'CHRISPREMADES.Macros.Generic.Common.RiderNearbyRange',
+    hint: 'CHRISPREMADES.Macros.Generic.Common.RiderNearbyRangeHint'
+};
+export function withNearby(tokens, range) {
+    if (!range) return tokens;
+    return Array.from(new Set([...tokens, ...tokens.flatMap(token => tokenUtils.findNearby(token, range)).filter(token => token.actor)]));
+}
 export function addRiders(workflow, uuids) {
     const riders = workflowUtils.getWorkflowProperty(workflow, 'attackRiders') ?? [];
     workflowUtils.setWorkflowProperty(workflow, 'attackRiders', [...riders, ...uuids]);
@@ -42,7 +53,10 @@ async function damage({document: activity, actor, workflow}) {
             workflowUtils.setWorkflowProperty(workflow, 'attackRiderScaling', {...scaling, [bonus.document.uuid]: bonus.scalingIncrease});
         });
     if (config.useActivityCosts) {
-        bonus.withDefaultCosts().withDefaultScaling().initialize(workflow);
+        bonus.withDefaultCosts();
+        if (formula) bonus.withDefaultScaling();
+        else bonus.withScalingHandler(({bonus: current}) => current.roll);
+        bonus.initialize(workflow);
         if (!DamageBonus.CheckCost(bonus)) return Logging.addMacroWarning('CPR', documentUtils.getIdentifier(activity.item), 'Not enough uses or resources.');
     }
     return bonus;
@@ -50,7 +64,8 @@ async function damage({document: activity, actor, workflow}) {
 async function rider({document: activity, actor, token, workflow}) {
     if (!workflowUtils.getWorkflowProperty(workflow, 'attackRiders')?.includes(activity.uuid)) return;
     const selfOnly = activity.range.units === 'self' && !automationUtils.getGenericConfigValue(activity, 'chris-premades', 'attackRider', 'selfAsTouch');
-    const targets = selfOnly ? (token ? [token.document ?? token] : []) : Array.from(workflow.hitTargets, target => target.document ?? target);
+    const hitTargets = Array.from(workflow.hitTargets, target => target.document ?? target);
+    const targets = selfOnly ? (token ? [token.document ?? token] : []) : withNearby(hitTargets, automationUtils.getGenericConfigValue(activity, 'chris-premades', 'attackRider', 'riderNearbyRange'));
     const scaling = workflowUtils.getWorkflowProperty(workflow, 'attackRiderScaling')?.[activity.uuid] ?? 0;
     const options = {consumeUsage: false, config: {scaling}};
     if (activity.item.system.linkedActivity) options.config.cause = {activity: activity.item.getFlag('dnd5e', 'cachedFor'), resources: true};
@@ -82,6 +97,7 @@ async function rider({document: activity, actor, token, workflow}) {
  * - `suppressedBy`: do not offer when the actor has an item with one of these identifiers.
  * - `ownTurn`: in combat, only offer on the attacker's own turn.
  * - `selfAsTouch`: a Self range activity is rolled on the hit targets instead of the attacker.
+ * - `riderNearbyRange`: the activity also targets creatures within this many feet of the hit targets. 0 targets the hit targets only.
  * - `useActivityCosts`: apply the activity's costs and scaling. Not offered when they cannot be paid.
  */
 export const attackRider = {
@@ -194,6 +210,7 @@ export const attackRider = {
             label: 'CHRISPREMADES.Macros.Generic.AttackRider.SelfAsTouch',
             hint: 'CHRISPREMADES.Macros.Generic.AttackRider.SelfAsTouchHint'
         },
+        riderNearbyRange: riderNearbyRangeConfig,
         useActivityCosts: {
             default: false,
             type: 'checkbox',

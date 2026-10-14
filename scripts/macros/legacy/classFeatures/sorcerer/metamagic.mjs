@@ -228,8 +228,7 @@ async function useTwinned({document, workflow}) {
 async function abortTwinned(workflow, message) {
     Logging.addMacroWarning('CPR', 'twinned-spell-cast', message, {notify: 'info'});
     workflow.aborted = true;
-    const concentration = effectUtils.getConcentrationEffect(workflow.actor, workflow.item);
-    if (concentration) await documentUtils.deleteDocument(concentration);
+    await effectUtils.endConcentration(workflow.actor, workflow.item);
     return true;
 }
 async function earlyTwinned({workflow}) {

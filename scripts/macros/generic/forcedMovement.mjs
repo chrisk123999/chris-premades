@@ -33,8 +33,8 @@ async function finished({document: activity, macroClass: {identifier}, workflow}
     const animation = automationUtils.getResolvedAnimation(activity, 'animation', {source: 'chris-premades', identifier});
     const damageType = workflowUtils.getDamageTypes(workflow.damageRolls ?? []).first();
     const move = token => moveTarget(activity, config, workflow.token.document, token.document, direction, maximum, animation, damageType);
-    if (!config.choose) return await Promise.all(tokens.map(move));
-    for (const token of tokens) await move(token);
+    if (config.choose) for (const token of tokens) await move(token);
+    else await Promise.all(tokens.map(move));
 }
 function buildConfig(animationIdentifier) {
     return {

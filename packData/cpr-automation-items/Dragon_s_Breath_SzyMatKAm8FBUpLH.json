@@ -1,0 +1,16 @@
+{
+  "type": "Item",
+  "folder": "ZCV85zJw13PtU6JO",
+  "name": "Dragon's Breath",
+  "color": null,
+  "sorting": "a",
+  "_id": "SzyMatKAm8FBUpLH",
+  "description": "",
+  "flags": {},
+  "_stats": {
+    "coreVersion": "14.369",
+    "systemId": "dnd5e",
+    "systemVersion": "6.0.6"
+  },
+  "_key": "!folders!SzyMatKAm8FBUpLH"
+}

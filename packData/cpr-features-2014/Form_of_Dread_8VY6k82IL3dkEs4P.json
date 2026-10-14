@@ -16,7 +16,7 @@
       "duration": {
         "value": 1,
         "units": "rounds",
-        "expiry": "turnEnd",
+        "expiry": "sourceEnd",
         "expired": false
       },
       "description": "",
@@ -516,7 +516,7 @@
     "cat": {
       "automation": {
         "source": "chris-premades",
-        "version": "2.1.0"
+        "version": "2.1.3"
       },
       "macros": {
         "roll": [

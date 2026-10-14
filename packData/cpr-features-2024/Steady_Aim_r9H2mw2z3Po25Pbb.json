@@ -6,9 +6,9 @@
       "name": "Steady Aim: Bonus",
       "statuses": [],
       "duration": {
-        "value": 1,
-        "units": "turns",
-        "expiry": "turnStart",
+        "value": 0,
+        "units": "rounds",
+        "expiry": "turnEnd",
         "expired": false
       },
       "tint": "#ffffff",
@@ -85,9 +85,9 @@
       "name": "Steady Aim: Speed Reduction",
       "statuses": [],
       "duration": {
-        "value": 1,
-        "units": "turns",
-        "expiry": "turnStart",
+        "value": 0,
+        "units": "rounds",
+        "expiry": "turnEnd",
         "expired": false
       },
       "tint": "#ffffff",
@@ -347,7 +347,7 @@
     },
     "cat": {
       "automation": {
-        "version": "2.1.0"
+        "version": "2.1.3"
       },
       "macros": {
         "roll": [

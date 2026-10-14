@@ -1,10 +1,10 @@
-import {automationUtils, compendiumUtils, summonUtils, activityUtils, effectUtils, itemUtils, dialogUtils, documentUtils, genericUtils, actorUtils} from '../../../proxy.mjs';
+import {automationUtils, compendiumUtils, summonUtils, activityUtils, effectUtils, itemUtils, dialogUtils, genericUtils, actorUtils} from '../../../proxy.mjs';
 async function use({document, workflow, castData}) {
     const concentrationEffect = effectUtils.getConcentrationEffect(workflow.actor, workflow.item);
-    const exit = async () => {if (concentrationEffect) await documentUtils.deleteDocument(concentrationEffect);};
+    const exit = () => effectUtils.endConcentration(workflow.actor, workflow.item);
     const baseCount = workflow.activity.target.affects.count ?? 10;
     const scaling = castData.scaling ?? 0;
-    const totalSummons = Math.floor(baseCount + (scaling * 2));
+    const totalSummons = Math.floor(baseCount + (scaling * automationUtils.getConfigValue(workflow.item, 'extraPerLevel')));
     const sourceActor = await compendiumUtils.getDocumentByIdentifier('chris-premades.CPRSummons2014', 'animatedObject');
     if (!sourceActor) return await exit();
     const description = automationUtils.getConfigValue(workflow.item, 'slamDescription');
@@ -160,6 +160,12 @@ export const animateObjects = {
             inputs: ['summon', 'location', 'token'], 
             label: 'CHRISPREMADES.Config.Animation', 
             category: 'animations'
+        },
+        extraPerLevel: {
+            default: 2,
+            type: 'number',
+            label: 'CHRISPREMADES.Macros.Legacy.AnimateObjects.ExtraPerLevel',
+            category: 'homebrew'
         },
         slamDescription: {
             default: '',

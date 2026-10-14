@@ -554,11 +554,7 @@
     },
     "dnd5e": {
       "riders": {
-        "activity": [
-          "6eQ5MVjY8T3wMI0D",
-          "7E1fhTlMy7P1n8Ie",
-          "MlaokNtpT6OTiNVQ"
-        ],
+        "activity": [],
         "effect": []
       }
     },
@@ -574,7 +570,7 @@
       },
       "automation": {
         "source": "chris-premades",
-        "version": "2.1.0"
+        "version": "2.1.3"
       }
     }
   },

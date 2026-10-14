@@ -1,4 +1,5 @@
 import {actorUtils, automationUtils, combatUtils, constants, dialogUtils, documentUtils, genericUtils, itemUtils, rollUtils, tokenUtils, workflowUtils} from '../../../../../proxy.mjs';
+import {rememberCombat} from '../../../../generic/selectDamageType.mjs';
 async function damage({document: item, workflow, token}) {
     if (!workflow.targets.size) return;
     const oncePerTurn = automationUtils.getConfigValue(item, 'oncePerTurn');
@@ -40,7 +41,7 @@ async function damage({document: item, workflow, token}) {
     values = values.difference(new Set(['healing', 'temphp', 'none', 'midi-none']));
     if (oldDamageTypes.size === 1) values = values.difference(oldDamageTypes);
     if (!values.size) return;
-    const selection = await dialogUtils.selectDamageType(Array.from(values), item.name, 'CHRISPREMADES.Macros.Legacy.AwakenedSpellbook.Select', {addNo: true, sort: 'alphabetical'});
+    const selection = await dialogUtils.selectDamageType(Array.from(values), item.name, 'CHRISPREMADES.Macros.Legacy.AwakenedSpellbook.Select', {addNo: true, sort: 'alphabetical', ...rememberCombat(token ?? workflow.token, item)});
     if (!selection) return;
     const newRolls = [];
     for (const oldRoll of oldDamageRolls) newRolls.push(await rollUtils.getChangedDamageRoll(oldRoll, selection));

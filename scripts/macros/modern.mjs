@@ -197,14 +197,25 @@ export { restorativeRest as 'restorative-rest' } from './modern/speciesFeatures/
 /*===============================*/
 /*            SPELLS             */
 /*===============================*/
+export { aid } from './modern/spells/aid.mjs';
+export { alterSelf as 'alter-self' } from './modern/spells/alterSelf.mjs';
+export { arcaneVigor as 'arcane-vigor' } from './modern/spells/arcaneVigor.mjs';
 export { banishingSmite as 'banishing-smite' } from './modern/spells/banishingSmite.mjs';
 export { bladeWard as 'blade-ward' } from './modern/spells/bladeWard.mjs';
 export { chromaticOrb as 'chromatic-orb' } from './modern/spells/chromaticOrb.mjs';
+export { commandEffect as 'command-effect' } from './modern/spells/command.mjs';
 export { crimsonLash as 'crimson-lash' } from './modern/spells/crimsonLash.mjs';
+export { findSteed as 'find-steed', findSteedLifeBond as 'find-steed-life-bond', otherworldlySteedFeyStep as 'otherworldly-steed-fey-step' } from './modern/spells/findSteed.mjs';
+export { forestGuard as 'forest-guard' } from './modern/spells/forestGuard.mjs';
 export { guidance } from './modern/spells/guidance.mjs';
 export { huntersMark as 'hunters-mark', huntersMarkAttack as 'hunters-mark-attack' } from './modern/spells/huntersMark.mjs';
+export { magicWeapon as 'magic-weapon' } from './modern/spells/magicWeapon.mjs';
+export { rayOfEnfeeblement as 'ray-of-enfeeblement' } from './modern/spells/rayOfEnfeeblement.mjs';
 export { resistance, resistanceEffect as 'resistance-effect' } from './modern/spells/resistance.mjs';
 export { shockingGrasp as 'shocking-grasp' } from './modern/spells/shockingGrasp.mjs';
+export { spellfireFlare as 'spellfire-flare' } from './modern/spells/spellfireFlare.mjs';
+export { sproutFoliage as 'sprout-foliage' } from './modern/spells/sproutFoliage.mjs';
+export { summerWinds as 'summer-winds' } from './modern/spells/summerWinds.mjs';
 export { summonAberration as 'summon-aberration' } from './modern/spells/summonAberration.mjs';
 export { summonFey as 'summon-fey' } from './modern/spells/summonFey.mjs';
 export { wiltingSmite as 'wilting-smite' } from './modern/spells/wiltingSmite.mjs';

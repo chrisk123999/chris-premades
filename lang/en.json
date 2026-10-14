@@ -49,7 +49,7 @@
             "EldritchBlastColorHint": "Color of each beam. Random picks a color per beam; Cycle steps through the colors in turn. Colors beyond purple need JB2A Patreon.",
             "FiendSummon": "Fiend Summon",
             "FireSummon": "Fire Summon",
-            "FlurryOfBlows": "Flurry of Blows", 
+            "FlurryOfBlows": "Flurry of Blows",
             "FutureSummon": "Future Summon",
             "GreenFlameBlade": "Green-Flame Blade",
             "GreenFlameBladeColorHint": "Color of the flames on the target and the fire bolt that leaps to the second creature. Colors beyond orange need JB2A Patreon.",
@@ -113,15 +113,122 @@
                     "Projectile": "Projectile",
                     "Splash": "Splash",
                     "Strands": "Strands",
-                    "Strike": "Strike"
+                    "Strike": "Strike",
+                    "Classic": "Classic",
+                    "Detailed": "Detailed"
                 },
-                "StyleTouchHint": "Lightning: electric arcs from the caster and static on the target; Strike: a glowing magical fist strike."
+                "StyleTouchHint": "Lightning: electric arcs from the caster and static on the target; Strike: a glowing magical fist strike.",
+                "Impact": "Target Impacts",
+                "ImpactHint": "Play an impact on each target that failed its save or was hit.",
+                "Persist": "Persistent Area",
+                "PersistHint": "Keep a looping effect over the area until the area is removed.",
+                "Tether": "Tether"
             },
             "StepOfTheWind": "Step of the Wind",
             "SummonSoundHint": "Audio file played as the summon appears.",
             "TollTheDead": "Toll the Dead",
             "TrueStrike": "True Strike",
-            "WaterSummon": "Water Summon"
+            "WaterSummon": "Water Summon",
+            "CastArea": "Area Spell",
+            "ArmorOfAgathys": "Armor of Agathys",
+            "ArmsOfHadar": {
+                "Name": "Arms of Hadar",
+                "Pull": "Pull Targets",
+                "PullHint": "Briefly drag each creature that failed its save toward the caster. Tentacles are added when Animated Spell Effects: Cartoon is active."
+            },
+            "Bane": "Bane",
+            "Bless": "Bless",
+            "BlessColorHint": "Color of the blessing on the caster and each target. Colors beyond yellow and purple need JB2A Patreon.",
+            "BurningHands": "Burning Hands",
+            "BurningHandsStyleHint": "Detailed: hand flare, smoke and a flame cone. Classic: the spinning evocation sigil and flame cone from earlier versions.",
+            "EarthTremor": "Earth Tremor",
+            "EarthTremorShakeHint": "Shake every creature caught in the tremor.",
+            "FrostFingers": "Frost Fingers",
+            "ChromaticOrb": "Chromatic Orb",
+            "CharmPerson": "Charm Person",
+            "CharmPersonColorHint": "Color of the hearts around the charmed creature and of the heart marker that stays while the charm lasts. Colors beyond pink need JB2A Patreon.",
+            "CompelledDuel": "Compelled Duel",
+            "CompelledDuelColorHint": "Color of the cast, the tether and the chains on the dueling creature. Colors beyond red and blue need JB2A Patreon.",
+            "DetectMagic": {
+                "Name": "Detect Magic",
+                "ColorHint": "Color of the detection circle. Colors beyond blue need JB2A Patreon.",
+                "OpacityHint": "How solid the detection circle looks, from 0 for invisible to 1 for fully opaque.",
+                "SoundHint": "Sound played when the spell starts. Leave empty for none."
+            },
+            "FaerieFire": {
+                "Name": "Faerie Fire",
+                "ColorHint": "Color of the burst and of the outline on affected creatures. Colors beyond green need JB2A Patreon."
+            },
+            "FogCloud": {
+                "Name": "Fog Cloud",
+                "OpacityHint": "How solid the fog looks, from 0 for invisible to 1 for fully opaque.",
+                "ScaleHint": "Size of the fog relative to the fog cloud area."
+            },
+            "Grease": {
+                "Name": "Grease"
+            },
+            "GuidingBolt": "Guiding Bolt",
+            "HailOfThorns": "Hail of Thorns",
+            "IceKnife": "Ice Knife",
+            "SpellfireFlare": "Spellfire Flare",
+            "SpellfireFlareColorHint": "Color of each bolt. Random picks a color per bolt. Colors beyond blue-green need JB2A Patreon.",
+            "Sanctuary": "Sanctuary",
+            "TashasCausticBrew": "Tasha's Caustic Brew",
+            "CrownOfMadness": "Crown of Madness",
+            "CrownOfMadnessColorHint": "Color of the cast, the curse burst and the crown that circles the charmed creature's head while the spell lasts. Colors beyond red need JB2A Patreon.",
+            "DetectThoughts": {
+                "Name": "Detect Thoughts",
+                "ColorHint": "Color of the mind-reading aura and probe. Colors beyond purple need JB2A Patreon.",
+                "OpacityHint": "How solid the aura looks, from 0 for invisible to 1 for fully opaque."
+            },
+            "EnlargeReduce": "Enlarge/Reduce",
+            "FlameBlade": "Flame Blade",
+            "FlameBladeColorHint": "Color of the blade and its flames. Colors beyond orange need JB2A Patreon.",
+            "FlamingSphere": "Flaming Sphere",
+            "FlamingSphereBurn": "Flaming Sphere Burn",
+            "GustOfWind": {
+                "Name": "Gust of Wind"
+            },
+            "HealingSpiritSummon": "Healing Spirit Summon",
+            "HeatMetal": "Heat Metal",
+            "MaximiliansEarthenGrasp": "Maximilian's Earthen Grasp",
+            "MirrorImage": "Mirror Image",
+            "Moonbeam": {
+                "Name": "Moonbeam",
+                "ImpactHint": "Flash the beam when it appears and on each creature it engulfs.",
+                "OpacityHint": "How solid the beam looks, from 0 for invisible to 1 for fully opaque.",
+                "ScaleHint": "Size of the beam relative to the spell's area."
+            },
+            "RimesBindingIce": "Rime's Binding Ice",
+            "ShadowBlade": "Shadow Blade",
+            "SpikeGrowth": {
+                "Name": "Spike Growth",
+                "OpacityHint": "How solid the spikes look, from 0 for invisible to 1 for fully opaque."
+            },
+            "SpiritualWeapon": "Spiritual Weapon",
+            "SprayOfCards": "Spray of Cards",
+            "SprayOfCardsColorHint": "Colour of the card projectiles. Without JB2A Patreon, a blue cone plays instead.",
+            "VortexWarp": "Vortex Warp",
+            "WardingBond": "Warding Bond",
+            "WardingBondTetherHint": "Show a persistent tether between the caster and the warded creature while the bond lasts.",
+            "WitherAndBloom": "Wither and Bloom",
+            "ZoneOfTruth": {
+                "Name": "Zone of Truth"
+            },
+            "AlterSelf": "Alter Self",
+            "BlindnessDeafness": "Blindness/Deafness",
+            "BlindnessDeafnessColorHint": "Color of the curse burst on the target. Colors beyond red need JB2A Patreon.",
+            "Blur": "Blur",
+            "CalmEmotions": {
+                "Name": "Calm Emotions",
+                "ColorHint": "Color of the calming pulse over the area and of the glow that stays on affected creatures while the spell lasts. Colors beyond blue need JB2A Patreon."
+            },
+            "SummerWinds": "Summer Winds",
+            "DustDevil": "Dust Devil",
+            "DustDevilBlueGrey": "Dust Devil (Blue Grey)",
+            "DustDevilBlueWhite": "Dust Devil (Blue White)",
+            "DustDevilContact": "Dust Devil: Contact",
+            "DustDevilDebrisCloud": "Dust Devil: Debris Cloud"
         },
         "Config": {
             "Abilities": "Abilities",
@@ -183,7 +290,12 @@
                 "Rainbow": "Rainbow",
                 "Random": "Random",
                 "Red": "Red",
-                "Yellow": "Yellow"
+                "Yellow": "Yellow",
+                "Teal": "Teal",
+                "GreenOrange": "Green Orange",
+                "BlueGreen": "Blue-Green",
+                "PinkPurple": "Pink-Purple",
+                "White": "White"
             },
             "CombatOnly": "Only Enable When in Combat",
             "CompendiumName": "{option} Compendium Name",
@@ -437,6 +549,95 @@
                     "Revert": "Wild Shape: Revert",
                     "FormCompendiums": "Wild Shape Compendiums",
                     "FormCompendiumsHint": "Use these compendiums instead of the monster compendiums configured in settings."
+                },
+                "CompelledDuel": {
+                    "EndEffect": "The caster ended their turn more than {distance} feet from the target. End Compelled Duel?",
+                    "TeleportAnimation": "Return Animation"
+                },
+                "FogCloud": {
+                    "SpreadAroundCorners": "Spreads Around Corners",
+                    "SpreadAroundCornersHint": "The fog flows around wall corners instead of stopping at the first wall."
+                },
+                "Sanctuary": {
+                    "Failed": "Cannot attack this target - must choose another target or lose their attack/spell!"
+                },
+                "DragonsBreath": {
+                    "DragonBreath": "Dragon Breath",
+                    "BonusDice": "Bonus Dice",
+                    "BonusDiceHint": "Added to the spell level to get the number of damage dice."
+                },
+                "GustOfWind": {
+                    "DistanceHint": "How far, in feet, a creature that fails the save is pushed along the line.",
+                    "NoRegion": "No Gust of Wind line was placed or found.",
+                    "SkipCaster": "The caster is not affected by their own Gust of Wind."
+                },
+                "HeatMetal": {
+                    "Drop": "Drop the heated object?",
+                    "MustDrop": "Failed the save and must drop the heated object!",
+                    "Unable": "Unable to Drop"
+                },
+                "MirrorImage": {
+                    "Hit": "Attack hit a duplicate and destroyed it.",
+                    "Miss": "Attack targeted a duplicate and missed.",
+                    "Duplicates": "Duplicates",
+                    "Thresholds": "Redirect Thresholds",
+                    "ThresholdsHint": "2014 rules only. Comma-separated d20 results needed to redirect an attack to a duplicate, listed for 1, 2, then 3 or more remaining duplicates.",
+                    "DieSizeHint": "2024 rules only. Die rolled for each remaining duplicate when the caster is hit.",
+                    "Threshold": "Duplicate Hit Threshold",
+                    "ThresholdHint": "2024 rules only. Minimum result on any duplicate die for the attack to hit a duplicate instead.",
+                    "DuplicateBaseAC": "Duplicate Base AC",
+                    "DuplicateBaseACHint": "Added to your Dexterity modifier to set the AC of each duplicate."
+                },
+                "Moonbeam": {
+                    "LightColor": "Light Color",
+                    "LightColorHint": "Hex color of the dim light that fills the beam. Leave empty for uncolored light.",
+                    "LightAnimation": "Light Animation",
+                    "LightAnimationHint": "Animation applied to the light that fills the beam.",
+                    "ShapechangerIdentifiers": "Shapechanger Feature Identifiers",
+                    "ShapechangerIdentifiersHint": "A creature with a feature using one of these identifiers, or with the shapechanger subtype, makes the save with disadvantage. Only the 2014 spell uses this.",
+                    "Shapechanger": "Shapechanger",
+                    "ShapechangerDisadvantage": "Moonbeam: Shapechanger"
+                },
+                "SpiritualWeapon": {
+                    "Style": "Choose the weapon's style.",
+                    "Weapon": "Choose the weapon's form.",
+                    "Color": "Choose the weapon's color.",
+                    "Styles": {
+                        "Astral": "Astral",
+                        "Dark": "Dark",
+                        "Flaming": "Flaming",
+                        "Liquid": "Liquid",
+                        "Simple": "Simple",
+                        "Spectral": "Spectral"
+                    },
+                    "OutOfReach": "The target is not within reach of the spiritual weapon.",
+                    "MissingFile": "The saved spiritual weapon token could not be resolved to a file.",
+                    "SavedTokenImg": "Saved Weapon Token",
+                    "SavedTokenImgHint": "Token art saved from the weapon picker. When set, the picker is skipped. Clear it to choose again on the next cast.",
+                    "Reach": "Weapon Reach",
+                    "ReachHint": "Distance in feet from the weapon that an attack target must be within."
+                },
+                "SummonBeast": {
+                    "Multiattack": "Multiattack ({numAttacks} Attacks)",
+                    "Maul": "Maul",
+                    "Rend": "Rend",
+                    "Flyby": "Flyby",
+                    "PackTactics": "Pack Tactics",
+                    "WaterBreathing": "Water Breathing",
+                    "HitPointsPerLevel": "Hit Points per Level Above 2nd",
+                    "AirSpeed": "Air Fly Speed",
+                    "LandSpeed": "Land Climb Speed",
+                    "WaterSpeed": "Water Swim Speed",
+                    "AttacksDivisor": "Attacks Divisor",
+                    "AttacksDivisorHint": "The spell level is divided by this number, rounded down, to get the number of Multiattack attacks."
+                },
+                "WardingBond": {
+                    "Distance": "The bonded creatures are more than the maximum distance apart. End Warding Bond?",
+                    "MaxDistanceHint": "The bond ends when the caster and the target are farther apart than this many feet. 0 disables the check.",
+                    "NoToken": "Warding Bond needs the caster's token on the scene."
+                },
+                "EnlargeReduce": {
+                    "SizeSteps": "Size Categories"
                 }
             },
             "Generic": {
@@ -526,7 +727,9 @@
                     "RollActivity": "Roll this activity when used.",
                     "RollItem": "Roll this item when used.",
                     "SpellLevelHint": "Limit this feature by spell level.",
-                    "SpellSchoolHint": "Limit this feature by spell school."
+                    "SpellSchoolHint": "Limit this feature by spell school.",
+                    "RiderNearbyRange": "Nearby Range",
+                    "RiderNearbyRangeHint": "The rider activity also targets creatures within this distance of the hit target. 0 targets the hit target only."
                 },
                 "CombatStartItemUses": {
                     "FromZero": "Trigger From Zero Only",
@@ -559,7 +762,9 @@
                     "TargetWounded": "Target Already Wounded",
                     "TargetWoundedHint": "Only apply the bonus when the target is missing hit points.",
                     "MaxTargets": "Max Targets",
-                    "MaxTargetsHint": "Limit the bonus to this many targets. 0 applies it to every target."
+                    "MaxTargetsHint": "Limit the bonus to this many targets. 0 applies it to every target.",
+                    "RequireHit": "Require Hit",
+                    "RequireHitHint": "Only apply this bonus to targets that were hit."
                 },
                 "ExtraAttack": "Identifier of the attack item.",
                 "Grapple": {
@@ -578,15 +783,17 @@
                 },
                 "MovementAnimation": {
                     "MoveAnimation": "Move Animation",
-                  "Fastest": "Fastest Speed",
-                  "MovementType": "Movement Used",
+                    "Fastest": "Fastest Speed",
+                    "MovementType": "Movement Used",
                     "MovementEffect": "Movement Effect",
                     "NoMovement": "No movement remaining!",
                     "SelectAnimation": "Selection Animation"
                 },
                 "MultiSingleTarget": {
                     "Context": "How many? (Max: {totalTargets})",
-                    "Reaction": "Use a reaction?"
+                    "Reaction": "Use a reaction?",
+                    "CombineAttacks": "Combine Attacks",
+                    "CombineAttacksHint": "Roll one attack per target. The attack's first damage part rolls one die per attack allocated to that target."
                 },
                 "NextHitRider": {
                     "BonusDamageTypeHint": "Damage type of the bonus. None uses the attack's damage type.",
@@ -679,7 +886,9 @@
                     "RollActivityHint": "Save activity on the source item rolled at the end of the creature's turn. A success removes this effect."
                 },
                 "SelectDamageType": {
-                    "DamageTypeHint": "Prompt for a damage type when this item is rolled."
+                    "DamageTypeHint": "Prompt for a damage type when this item is rolled.",
+                    "RememberChoice": "Remember Choice",
+                    "RememberChoiceHint": "Offer \"Don't ask again this combat\" on the damage type prompt."
                 },
                 "SpecialItemUse": {
                     "ActivationTypes": "Activation Types",
@@ -704,7 +913,19 @@
                     "MoveActivity": "Move Activity",
                     "MoveActivityHint": "Rolling this activity moves this item's placed summons up to the activity's range.",
                     "ReplaceExisting": "Replace Existing Summons",
-                    "ReplaceExistingHint": "Dismiss this item's existing summons before creating new ones."
+                    "ReplaceExistingHint": "Dismiss this item's existing summons before creating new ones.",
+                    "FollowUpActivity": "Follow-Up Activity",
+                    "FollowUpActivityHint": "Activity rolled on a creature picked within the follow-up range of each summon. Uses and spell slots are not spent.",
+                    "FollowUpTiming": "Follow-Up Timing",
+                    "FollowUpTimingHint": "Roll the follow-up after the summons are created, after they move, or both.",
+                    "FollowUpTimingOptions": {
+                        "both": "After Summoning and Moving",
+                        "create": "After Summoning",
+                        "move": "After Moving"
+                    },
+                    "FollowUpRange": "Follow-Up Range",
+                    "FollowUpRangeHint": "Feet from the summon a follow-up target can be picked.",
+                    "FollowUpTarget": "Choose a creature for the follow-up."
                 },
                 "SummonModifier": {
                     "Confirm": "Apply {document} to {summon}?",
@@ -717,18 +938,27 @@
                     "AliveOnly": "Living Targets Only",
                     "AliveOnlyHint": "Remove targets at 0 hit points.",
                     "ChooseTargets": "Choose Targets",
-                    "ChooseTargetsHint": "For area activities, show a checklist of the remaining targets after filtering and keep only the ones picked.",
+                    "ChooseTargetsHint": "For area activities, show a checklist of the remaining targets after filtering and keep only the ones picked. The user is always removed.",
                     "ChooseTargetsSelect": "Choose the creatures to affect.",
                     "CreatureTypesHint": "Keep only targets of these creature types. Leave empty to skip the creature type check.",
+                    "ExcludeSummoner": "Exclude Summoner",
+                    "ExcludeSummonerHint": "Remove the summoner when a summoned creature uses this item.",
                     "Invert": "Invert",
-                    "InvertHint": "Remove targets of the selected creature types instead of keeping them."
+                    "InvertHint": "Remove targets of the selected creature types instead of keeping them.",
+                    "MaxSizeHint": "Remove targets larger than this size.",
+                    "MaxCR": "Maximum CR",
+                    "MaxCRHint": "Remove targets above this challenge rating. -1 skips the check."
                 },
                 "Teleport": {
                     "RangeFromRoll": "Range From Utility Roll",
                     "RangeFromRollHint": "Use the activity's utility roll total as the maximum teleport distance. Falls back to Range, then the activity's own range, when nothing was rolled.",
                     "RangeHint": "Maximum teleport distance. Leave blank to use the activity's own range.",
                     "RequireSight": "Require Sight",
-                    "RequireSightHint": "Only allow spaces the user can see."
+                    "RequireSightHint": "Only allow spaces the user can see.",
+                    "Targets": "Teleported Creatures",
+                    "TargetsHint": "Teleport the user, or each target that failed its save. The user picks every destination, measured from the user.",
+                    "Self": "Self",
+                    "FailedSaves": "Failed Saves"
                 },
                 "UseOnEvent": {
                     "Empty": "All Empty",
@@ -739,6 +969,40 @@
                     "PoolCondition": "Recovery Condition",
                     "PoolConditionHint": "Only use this activity when the items whose uses it recovers are in this state.",
                     "ShortRest": "Short Rest"
+                },
+                "ReflectOnHit": {
+                    "NoActivity": "Reflect activity not found on the effect's source item.",
+                    "RangeHint": "Only trigger when the attacker is within this distance. 0 ignores distance.",
+                    "RequireTempHP": "Require Temporary Hit Points",
+                    "RequireTempHPHint": "Only trigger while the effect's bearer has temporary hit points.",
+                    "RollActivityHint": "Activity on the effect's source item rolled against the attacker, at the level the effect was cast.",
+                    "OncePerTurn": "Once Per Turn",
+                    "OncePerTurnHint": "Only trigger once per turn for each bearer. Outside combat it always triggers."
+                },
+                "ProneOnFail": {
+                    "SkipProne": "Skip Prone Targets",
+                    "SkipProneHint": "Targets that are already prone or immune to it do not roll the save. The use is cancelled when no target is left."
+                },
+                "EndIfUnaffected": {
+                    "Condition": "End When",
+                    "ConditionHint": "End concentration on the spell when the roll has this outcome.",
+                    "ConditionOptions": {
+                        "failedSave": "No Failed Saves",
+                        "noTargets": "No Targets",
+                        "noHits": "No Hits"
+                    },
+                    "ActivityHint": "Only check uses of this activity. Leave empty to check every activity."
+                },
+                "MoveRegion": {
+                    "SourceActivity": "Source Activity",
+                    "SourceActivityHint": "Activity that placed the region this activity moves.",
+                    "MaxRange": "Maximum Range",
+                    "MaxRangeHint": "Furthest the region's centre can move from its old centre. 0 ignores distance.",
+                    "PinToCaster": "Pin to Caster",
+                    "PinToCasterHint": "Attach the moved region to the user's token and skip the range check.",
+                    "NoSourceActivity": "Source activity for the region move not found.",
+                    "NoRegion": "No placed region found to move.",
+                    "TooFar": "The area can only move up to {maxRange} feet."
                 }
             },
             "Legacy": {
@@ -750,7 +1014,8 @@
                 },
                 "AnimateObjects": {
                     "SlamName": "Slam",
-                    "SummonName": "Animated Object"
+                    "SummonName": "Animated Object",
+                    "ExtraPerLevel": "Extra Objects per Level"
                 },
                 "ArcaneWard": {
                     "Protect": "Protect {tokenName} with your arcane ward?",
@@ -769,7 +1034,9 @@
                     "WillingMove": "Did {actorName} move willingly?"
                 },
                 "ChaosBolt": {
-                    "AlwaysBounce": "Always Bounce"
+                    "AlwaysBounce": "Always Bounce",
+                    "Bounce": "Who should the Chaos Bolt bounce to?",
+                    "DamageTypesHint": "Damage types for d8 results 1 to 8, in order, separated by commas."
                 },
                 "ChronalShift": {
                     "UseRollTotal": "Use {itemName}? (Roll Total: {rollTotal})",
@@ -1004,6 +1271,29 @@
                     "MustSpend": "{feature} has no uses remaining. You must spend {name} to activate it.",
                     "Select": "Choose a second creature within 30 feet of the target for {item}.",
                     "Spend": "Spend {name} to use {feature} without consuming uses?"
+                },
+                "FlockOfFamiliars": {
+                    "Type": "Choose a creature type for your familiars.",
+                    "CreatureTypeHint": "Always summon this creature type instead of prompting. Without it, the familiars match your Find Familiar familiar if you have one.",
+                    "BaseSummons": "Base Familiars",
+                    "BaseSummonsHint": "Familiars summoned at 2nd level. Each slot level above 2nd adds one, and having a Find Familiar familiar removes one."
+                },
+                "HealingSpirit": {
+                    "Apply": "Heal {name} with the Healing Spirit? ({uses} uses remaining)"
+                },
+                "MaximiliansEarthenGrasp": {
+                    "Grasping": "Earthen Grasp: Grasping",
+                    "OutOfReach": "The earthen hand can only grasp a creature within its reach.",
+                    "NoTarget": "The earthen hand is not restraining a creature."
+                },
+                "ShadowBlade": {
+                    "Sword": "Shadow Blade Sword"
+                },
+                "WitherAndBloom": {
+                    "SelectTarget": "Who can roll unspent Hit Dice?",
+                    "SelectHitDie": "Select how many Hit Dice to roll.",
+                    "HitDiceOffset": "Hit Dice Offset",
+                    "HitDiceOffsetHint": "Added to the spell level to get the maximum number of Hit Dice spent."
                 }
             },
             "Modern": {
@@ -1142,6 +1432,46 @@
                 "WildResurgence": {
                     "NoSpellSlots": "You have no expended spell slots to restore!",
                     "WildShapeUses": "You still have Wild Shape uses remaining!"
+                },
+                "Command": {
+                    "Approach": "You must move toward the caster by the shortest and most direct route, ending your turn if you move within 5 feet of them.",
+                    "Drop": "You must drop whatever you are holding and then end your turn.",
+                    "Flee": "You must spend your turn moving away from the caster by the fastest available means.",
+                    "Grovel": "You have the Prone condition and must end your turn.",
+                    "Halt": "You must not move, and you take no action or Bonus Action this turn."
+                },
+                "ForestGuard": {
+                    "NoShrub": "None of your shrubs are within {distance} feet of the target!"
+                },
+                "Aid": {
+                    "MissingEffect": "Aid effect missing from item."
+                },
+                "AlterSelf": {
+                    "SelectGrowth": "Choose your natural weapon.",
+                    "Claws": "Claws",
+                    "Fangs": "Fangs",
+                    "Horns": "Horns",
+                    "Hooves": "Hooves",
+                    "NoUnarmedStrike": "Alter Self needs an Unarmed Strike item (identifier unarmed-strike) on the actor.",
+                    "Denomination": "Natural Weapon Die Size"
+                },
+                "ArcaneVigor": {
+                    "Choose": "Select hit dice to use:"
+                },
+                "FindSteed": {
+                    "HitPointsPerLevel": "Hit Points per Spell Level",
+                    "BaseArmorClass": "Base Armor Class",
+                    "BaseArmorClassHint": "The steed's AC is this value plus the spell's level.",
+                    "FlyLevel": "Fly Speed Spell Level",
+                    "FlyLevelHint": "Minimum spell level at which the steed gains a 60 ft. fly speed.",
+                    "LifeBondRange": "Life Bond Range",
+                    "CelestialDamageType": "Celestial Damage Type",
+                    "FeyDamageType": "Fey Damage Type",
+                    "FiendDamageType": "Fiend Damage Type",
+                    "FlySpeed": "Fly Speed"
+                },
+                "SummerWinds": {
+                    "MissingActivity": "Summer Winds is missing its undead save activity."
                 }
             }
         },
@@ -1160,7 +1490,10 @@
                 "FeySpiritTricksy": "Fey Spirit (Tricksy)",
                 "ManifestMind": "Manifest Mind",
                 "Skeleton": "Skeleton",
-                "Zombie": "Zombie"
+                "Zombie": "Zombie",
+                "BestialSpiritAir": "Bestial Spirit (Air)",
+                "BestialSpiritLand": "Bestial Spirit (Land)",
+                "BestialSpiritWater": "Bestial Spirit (Water)"
             },
             "SelectSummons": "Select Summons (Max {max})"
         }

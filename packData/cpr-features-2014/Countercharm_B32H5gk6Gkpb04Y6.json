@@ -37,7 +37,7 @@
       "duration": {
         "value": 1,
         "units": "rounds",
-        "expiry": "turnEnd",
+        "expiry": "sourceEnd",
         "expired": false
       },
       "description": "",
@@ -136,9 +136,9 @@
       },
       "disabled": false,
       "duration": {
-        "value": null,
-        "units": "seconds",
-        "expiry": null,
+        "value": 1,
+        "units": "rounds",
+        "expiry": "sourceEnd",
         "expired": false
       },
       "description": "",
@@ -381,7 +381,7 @@
     "cat": {
       "automation": {
         "source": "chris-premades",
-        "version": "2.0.4"
+        "version": "2.1.3"
       }
     }
   },

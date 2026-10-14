@@ -6,7 +6,10 @@ async function collectChannelDivinities({workflow}) {
     if (!choices?.length) return;
     const options = {addNoneDocument: true, checkbox: true, max: 1};
     const choice = await dialogUtils.selectDocumentDialog(activity.item.name, 'CHRISPREMADES.Macros.All.ChannelDivinity', choices, options);
-    if (!choice) return;
+    if (!choice) {
+        await workflow.refundConsumption();
+        return;
+    }
     await workflowUtils.syntheticActivityRoll(choice, workflow.targets.map(t => t.document));
 }
 async function promptTurnUndead({data, document: activity}) {

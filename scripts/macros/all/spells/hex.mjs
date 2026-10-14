@@ -23,9 +23,7 @@ function hexedEffectData(activity, document, seconds, ability) {
 async function use({document, workflow}) {
     if (workflow.activity.identifier !== 'hex') return;
     const concentrationEffect = effectUtils.getConcentrationEffect(workflow.actor, workflow.item);
-    const cancel = async () => {
-        if (concentrationEffect) await documentUtils.deleteDocument(concentrationEffect);
-    };
+    const cancel = () => effectUtils.endConcentration(workflow.actor, workflow.item);
     if (!workflow.targets.size) {
         Logging.addMacroWarning('CPR', 'hex', 'No target selected.');
         return await cancel();
