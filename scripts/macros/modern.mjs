@@ -197,7 +197,6 @@ export { restorativeRest as 'restorative-rest' } from './modern/speciesFeatures/
 /*===============================*/
 /*            SPELLS             */
 /*===============================*/
-export { aid } from './modern/spells/aid.mjs';
 export { alterSelf as 'alter-self' } from './modern/spells/alterSelf.mjs';
 export { arcaneVigor as 'arcane-vigor' } from './modern/spells/arcaneVigor.mjs';
 export { banishingSmite as 'banishing-smite' } from './modern/spells/banishingSmite.mjs';

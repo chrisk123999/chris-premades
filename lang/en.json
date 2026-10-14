@@ -1441,9 +1441,6 @@
                 "ForestGuard": {
                     "NoShrub": "None of your shrubs are within {distance} feet of the target!"
                 },
-                "Aid": {
-                    "MissingEffect": "Aid effect missing from item."
-                },
                 "AlterSelf": {
                     "SelectGrowth": "Choose your natural weapon.",
                     "Claws": "Claws",
