@@ -620,7 +620,6 @@
                     "Existing": "Existing Spell-Storing Item",
                     "Prompt": "Choose an item in which to store a spell:",
                     "Recharge": "{actor} recharges a spell-storing item, <b>{item}</b>, on {target} from {uses} to {max} uses."
-
                 },
                 "SpiritualWeapon": {
                     "Style": "Choose the weapon's style.",
