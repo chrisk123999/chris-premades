@@ -69,7 +69,7 @@ const genericConfig = {
         category: 'behavior',
         label: 'CHRISPREMADES.Macros.Generic.Common.Phase',
         hint: 'CHRISPREMADES.Macros.Generic.Common.PhaseHint',
-        get options() { return [...Object.keys(constants.bonusPhases), 'all'].map(p => ({value: p, label: _loc('CHRISPREMADES.Macros.Generic.Common.Phases.' + p)})); }
+        get options() { return constants.bonusPhaseOptions; }
     },
     ability: {
         default: [],

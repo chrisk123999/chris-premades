@@ -4,7 +4,12 @@
 - Automated 1st-level spells:
   - 2014: Armor of Agathys, Arms of Hadar, Bless, Burning Hands, Chaos Bolt, Charm Person, Chromatic Orb, Compelled Duel, Detect Magic, Earth Tremor, Faerie Fire, Fog Cloud, Frost Fingers, Grease, Guiding Bolt, Hail of Thorns, Heroism, Ice Knife, Magic Missile, Sanctuary, Shield, Shield of Faith, Tasha's Caustic Brew, Thunderwave and Veil of Dusk.
   - 2024: Animal Friendship, Armor of Agathys, Arms of Hadar, Bane, Bless, Burning Hands, Charm Person, Chromatic Orb, Command, Compelled Duel, Detect Magic, Faerie Fire, False Life, Fog Cloud, Forest Guard, Grease, Guiding Bolt, Hail of Thorns, Heroism, Ice Knife, Magic Missile, Sanctuary, Shield, Shield of Faith, Spellfire Flare, Sprout Foliage and Thunderwave.
-- New generic macros: `areaAnimation`, `endIfUnaffected`, `inheritCastLevel`, `moveRegion` and `reflectOnHit`.
+- Automated Class Features:
+  - 2014 Artificer: base class and all infusions
+  - 2024 Artificer: base class
+- Automated Equipment:
+  - 2024: Boots of the Winding Path, Helm of Awareness, Mind Sharpener, Repulsion Shield, Spell-Refueling Ring
+- New generic macros: `areaAnimation`, `endIfUnaffected`, `ignoreCover`, `inheritCastLevel`, `moveRegion` and `reflectOnHit`.
 - `attackRider` and `nextHitRider` can also target creatures near the hit target.
 - `multiSingleTarget` skips its dialog when there is only one target.
 - New generic animation: Area Spell.
@@ -40,7 +45,7 @@
 
 # 2.1.2 Pre-Release:
 ## Update Notes:
-- Automated cantrips:
+- Automated Cantrips:
   - 2014: Blade Ward, Booming Blade, Chill Touch, Green-Flame Blade, Lightning Lure, Mind Sliver, Sapping Sting, Shocking Grasp, Thorn Whip and Toll the Dead.
   - 2024: Acid Splash, Blade Ward, Chill Touch, Dissolution, Guidance, Mind Sliver, Resistance, Shocking Grasp, Thorn Whip, Toll the Dead and True Strike.
 - New generic macros: `bladeSpell`, `pullOnFail`, `pullOnHit` and `spellAnimation`.

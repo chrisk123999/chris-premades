@@ -432,7 +432,8 @@
             "Weapon": "Weapon",
             "WeaponProperties": "Weapon Properties",
             "WeaponType": "Weapon Type",
-            "WeaponTypes": "Weapon Types"
+            "WeaponTypes": "Weapon Types",
+            "SpellList": "Spell List"
         },
         "Error": {
             "ActorNotFound": "Could not find the summon actor.",
@@ -462,6 +463,22 @@
                     "Zombie": "Zombie"
                 },
                 "ArcaneGrimoire": "Arcane Recovery Bonus",
+                "ArtificerPlans": {
+                    "AllCreated": "You do not have a known artificer plan that has not already been created!",
+                    "AlreadyCreated": "The plan {item} has already been created!",
+                    "Choose": "Choose an item plan to learn:",
+                    "ChooseSwapPlan": "Choose a Magic Item Plan to swap out",
+                    "Create": "Choose an item plan to create:",
+                    "CustomCompendium": "Custom Magic Item Compendium",
+                    "Known": "Known Plans",
+                    "LearnNew": "Learn A New Plan",
+                    "Limit": "Magic Item Limit",
+                    "MaxCreated": "You have created the maximum number of items! ({count} of {max})",
+                    "MaxKnown": "You have learned the maximum number of artificer plans! ({count} of {max})",
+                    "NoPlans": "You have no known artificer plans!",
+                    "NotPrepared": "(NOT PREPARED)",
+                    "NotPreparedPrompt": "Your plans for these items are not prepared: {items}. Roll each plan item to link it to a compendium item."
+                },
                 "BeguilingTwist": {
                     "Select": "Which Condition?"
                 },
@@ -598,6 +615,12 @@
                     "Shapechanger": "Shapechanger",
                     "ShapechangerDisadvantage": "Moonbeam: Shapechanger"
                 },
+                "SpellStoringItem": {
+                    "NoItems": "You and your allies are not carrying any valid items for spell storing!",
+                    "Existing": "Existing Spell-Storing Item",
+                    "Prompt": "Choose an item in which to store a spell:",
+                    "Recharge": "{actor} recharges a spell-storing item, <b>{item}</b>, on {target} from {uses} to {max} uses."
+                },
                 "SpiritualWeapon": {
                     "Style": "Choose the weapon's style.",
                     "Weapon": "Choose the weapon's form.",
@@ -717,12 +740,6 @@
                     "PacksHint": "Use these compendiums instead of the ones configured in settings.",
                     "Phase": "Phase",
                     "PhaseHint": "When this bonus is offered during the roll.",
-                    "Phases": {
-                        "all": "Any Phase",
-                        "postResult": "After the Result",
-                        "preResult": "Before the Result",
-                        "preRoll": "Before the Roll"
-                    },
                     "PropertyHint": "Limt this feature by any matching item property.",
                     "RollActivity": "Roll this activity when used.",
                     "RollItem": "Roll this item when used.",
@@ -730,10 +747,6 @@
                     "SpellSchoolHint": "Limit this feature by spell school.",
                     "RiderNearbyRange": "Nearby Range",
                     "RiderNearbyRangeHint": "The rider activity also targets creatures within this distance of the hit target. 0 targets the hit target only."
-                },
-                "CombatStartItemUses": {
-                    "FromZero": "Trigger From Zero Only",
-                    "Minimum": "Minimum Item Uses"
                 },
                 "ConsumeItemToUse": "Consume {item} to use this feature?",
                 "ContestedCheck": {
@@ -1154,6 +1167,29 @@
                     "Multiple": "Which target would you like to unmark?",
                     "NoTargets": "No valid targets within range!"
                 },
+                "InfuseItem": {
+                    "ArcanePropulsionGauntlet": "Arcane Propulsion Gauntlet",
+                    "BootsOfTheWindingPath": "Boots of the Winding Path",
+                    "ChannelMagic": "Channel Magic",
+                    "ChooseItem": "Choose a target item:",
+                    "ExtraBonus": "Grant +2 Bonus",
+                    "ForceStrike": "Force Strike",
+                    "HelmAwareness": "Helm of Awareness",
+                    "HomunculusNotActive": "Place your homunculus token before using its features.",
+                    "HomunculusHeart": "Heart of Homunculus Servant",
+                    "HomunculusServant": "Homunculus Servant",
+                    "InvalidSpell": "Only spells with a range of touch can be cast through your homunculus.",
+                    "NoArmor": "Target has no valid non-magical armor!",
+                    "NoFoci": "Target has no valid non-magical rod, staff, or wand!",
+                    "NoShield": "Target has no valid non-magical shield!",
+                    "NotProne": "You have no prone status to remove!",
+                    "NoWeapon": "Target has no valid non-magical weapon!",
+                    "PlanName": "Infusion",
+                    "ReactionUsed": "Your homunculus has already used its reaction.",
+                    "Resistance": "Resistance Type",
+                    "SpellRing": "Spell-Refueling Ring",
+                    "TooFar": "Your homunculus is out of range for Channel Magic."
+                },
                 "InsightfulManipulator": {
                     "ChaScore": "Charisma Score",
                     "Equal": "{ability} is equal to yours.",
@@ -1232,6 +1268,7 @@
                     "NotEnough": "Not enough sorcery points!",
                     "Select": "Select which benefits to gain:"
                 },
+                "RightToolForTheJob": "Choose a tool to create:",
                 "SacredWeapon": {
                     "Select": "Choose a weapon to imbue."
                 },
@@ -1246,6 +1283,7 @@
                     "ReductionPerLevel": "Damage Reduction Per Spell Slot Level",
                     "Select": "Use your reaction to spend a spell slot to reduce damage?"
                 },
+                "SoulOfArtifice": "Choose an item to destroy:",
                 "SummonFey": {
                     "FeyStep": "Fey Step",
                     "Fuming": "Fuming",
@@ -1349,6 +1387,18 @@
                     "NoTargets": "No valid targets within range!"
                 },
                 "ImprovedPotentSpellcasting": "Select an ally to give temporary hit points to:",
+                "MagicItemTinker": {
+                    "ChargePrompt": "Choose a spell slot to spend and an item to recharge:",
+                    "DeletePrompt": "Delete {item} to grant a {spellslot}?",
+                    "DrainCommon": "Drain Common Item",
+                    "DrainPrompt": "Choose an item to drain and gain a spell slot:",
+                    "DrainRare": "Drain Rare Item",
+                    "DrainUncommon": "Drain Uncommon Item",
+                    "DrainVeryRare": "Drain Very Rare Item",
+                    "NoItems": "No valid items available!",
+                    "NoSpell": "No Benefit",
+                    "TransmutePrompt": "Choose an item to transmute into another magic item:"
+                },
                 "MemorizeSpell": {
                     "Prepare": "Select a spell to prepare:",
                     "Unprepare": "Select a spell to unprepare:"
@@ -1380,11 +1430,20 @@
                 "Rage": {
                     "EndEarly": "{actorName} has not attacked an enemy, forced an enemy to make a save, or continued their rage since their last turn. Remove Rage?"
                 },
+                "ReplicateMagicItem": {
+                    "NotFound": "Could not find a magic item for the selected plan! ({plan})",
+                    "PlanName": "Magic Item Plans"
+                },
                 "ShadowyDodge": {
                     "Use": "Use {item}?"
                 },
                 "ShareSpells": {
                     "Confirm": "Share {spell} with {name}?"
+                },
+                "SoulOfArtifice": {
+                    "HPPerItem": "HP Per Item",
+                    "Prompt": "Choose items to destroy and recover {amount} hit points for each:",
+                    "Rarity": "Allowed Rarities"
                 },
                 "SpellThief": {
                     "Disabled": "Disabled"
@@ -1420,6 +1479,14 @@
                     "Multiattack": "Multiattack ({numAttacks} Attacks)",
                     "Select": "Who to charm?",
                     "Tricksy": "Tricksy"
+                },
+                "TinkersMagic": {
+                    "CustomCompendium": "Custom Mundane Item Compendium",
+                    "CustomCompendiumHint": "Use items from the specified compendium instead of the standard list.",
+                    "NeedTools": "You must have at least one of these tools equipped to use {feature}! [{tools}]",
+                    "Prompt": "Choose an item to create:",
+                    "RequireTools": "Require Tools",
+                    "RequireToolsHint": "At least one of these tools must be equipped to use this feature."
                 },
                 "UnarguableWizardry": {
                     "Prompt": "Unarguable Wizardry"

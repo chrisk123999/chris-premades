@@ -25,7 +25,7 @@ async function damage({document, ditem, actor, targetToken}) {
     const selection = await dialogUtils.confirmUseItem(document, {userId: queryUtils.firstOwner(document.actor, true)});
     if (!selection) return;
     const targetHP = Math.floor(maxHP / 2);
-    await workflowUtils.preventZeroHP(ditem, {targetHP, deathOnly: true, actor});
+    workflowUtils.preventZeroHP(ditem, {targetHP, deathOnly: true, actor});
     await workflowUtils.completeActivityUse(document, [targetToken]);
 }
 async function dead({document, token, actor, effect}) {

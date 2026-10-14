@@ -11,6 +11,14 @@
 /*===============================*/
 
 /*********************************/
+/*           Artificer           */
+/*********************************/
+export { magicItemTinker as 'magic-item-tinker', magicItemTinkerCharge, magicItemTinkerDrain, magicItemTinkerTransmute } from './modern/classFeatures/artificer/magicItemTinker.mjs';
+export { replicateMagicItem as 'replicate-magic-item' } from './modern/classFeatures/artificer/replicateMagicItem.mjs';
+export { soulOfArtifice as 'soul-of-artifice' } from './modern/classFeatures/artificer/soulOfArtifice.mjs';
+export { tinkersMagic as 'tinkers-magic' } from './modern/classFeatures/artificer/tinkersMagic.mjs';
+
+/*********************************/
 /*           Barbarian           */
 /*********************************/
 export { brutalStrike as 'brutal-strike', forcefulBlow } from './modern/classFeatures/barbarian/brutalStrike.mjs';

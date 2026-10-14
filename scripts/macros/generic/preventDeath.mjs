@@ -3,7 +3,7 @@ async function damage({document, ditem, actor, targetToken, workflow}) {
     if (!ditem.isHit) return;
     const resultingHP = ditem.oldHP + (ditem.oldTempHP ?? 0) - ditem.totalDamage;
     if (resultingHP > 0) return;
-    const maxHP = actor.system.attributes.hp.max;
+    const maxHP = actor.system.attributes.hp.effectiveMax;
     const config = automationUtils.getGenericConfigValues(document, 'chris-premades', 'preventDeath', Object.keys(preventDeath.genericConfig));
     if (!config.killedOutright && resultingHP <= -maxHP) return;
     if (config.deathOnly && resultingHP > -maxHP) return;
@@ -20,7 +20,7 @@ async function damage({document, ditem, actor, targetToken, workflow}) {
         const saveWorkflow = await workflowUtils.syntheticActivityDataRoll(activityData, document, [targetToken]);
         if (saveWorkflow?.failedSaves.size) return;
     }
-    await workflowUtils.preventZeroHP(ditem);
+    workflowUtils.preventZeroHP(ditem);
     if (config.display && !saveActivity) await workflowUtils.completeItemUse(document, [targetToken]);
 }
 /**

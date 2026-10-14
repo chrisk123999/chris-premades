@@ -19,6 +19,13 @@ export { jump, longJump } from './all/actions/jump.mjs';
 /*============================*/
 
 /******************************/
+/*         Artificer          */
+/******************************/
+export { flashOfGenius as 'flash-of-genius' } from './all/classFeatures/artificer/flashOfGenius.mjs';
+export { spellStoringItem as 'spell-storing-item' } from './all/classFeatures/artificer/spellStoring.mjs';
+export { swapArtificerPlan, useArtificerPlan, fromPlanSwapArtificerPlan, fromPlanCreateArtificerPlan, infusionPrechecks } from './all/classFeatures/artificer/useOrSwapPlan.mjs';
+
+/******************************/
 /*         Barbarian          */
 /******************************/
 export { indomitableMight as 'indomitable-might' } from './all/classFeatures/barbarian/indomitableMight.mjs';
@@ -84,6 +91,9 @@ export { oneWithShadows as 'one-with-shadows' } from './all/classFeatures/warloc
 /*         EQUIPMENT          */
 /*============================*/
 export { arcaneGrimoire as 'arcane-grimoire-1', arcaneGrimoire as 'arcane-grimoire-2', arcaneGrimoire as 'arcane-grimoire-3' } from './all/equipment/arcaneGrimoire.mjs';
+export { mindSharpener as 'mind-sharpener' } from './all/equipment/mindSharpener.mjs';
+export { repulsionShield as 'repulsion-shield' } from './all/equipment/repulsionShield.mjs';
+export { spellRefuelingRing as 'spell-refueling-ring' } from './all/equipment/spellRefuelingRing.mjs';
 
 /*============================*/
 /*      FIGHTING STYLES       */
