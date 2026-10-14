@@ -136,8 +136,7 @@
               "chris-premades": {
                 "moveRegion": {
                   "sourceActivityId": "TUR8EQbqALJeQGMV",
-                  "maxRange": 60,
-                  "pinToCaster": false
+                  "maxRange": 60
                 }
               }
             }

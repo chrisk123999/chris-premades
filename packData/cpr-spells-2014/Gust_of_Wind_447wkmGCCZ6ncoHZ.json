@@ -325,8 +325,7 @@
               "chris-premades": {
                 "moveRegion": {
                   "sourceActivityId": "dnd5eactivity000",
-                  "maxRange": 0,
-                  "pinToCaster": true
+                  "maxRange": 0
                 }
               }
             }

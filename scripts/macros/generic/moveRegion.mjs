@@ -36,7 +36,7 @@ async function use({document, workflow}) {
         await documentUtils.deleteDocument(newRegion);
         return Logging.addMacroWarning('CPR', identifier, 'CHRISPREMADES.Macros.Generic.MoveRegion.NoRegion');
     }
-    if (!config.pinToCaster && config.maxRange) {
+    if (config.maxRange) {
         const oldArea = regionUtils.getArea(region);
         const newArea = regionUtils.getArea(newRegion);
         const distance = Math.hypot(newArea.x - oldArea.x, newArea.y - oldArea.y) / region.parent.dimensions.distancePixels;
@@ -46,10 +46,8 @@ async function use({document, workflow}) {
         }
     }
     const {shapes, elevation, levels} = newRegion.toObject();
-    const updates = {shapes, elevation, levels};
-    if (config.pinToCaster && workflow.token) updates.attachment = {token: workflow.token.document.id};
     await documentUtils.deleteDocument(newRegion);
-    await documentUtils.update(region, updates);
+    await documentUtils.update(region, {shapes, elevation, levels});
     await syncRegionLights(region);
 }
 /**
@@ -60,7 +58,6 @@ async function use({document, workflow}) {
  * Config:
  * - `sourceActivityId`: activity that placed the region being moved.
  * - `maxRange`: furthest the region's centre can move, in scene units. 0 ignores distance.
- * - `pinToCaster`: attach the moved region to the user's token and skip the range check.
  */
 export const moveRegion = {
     rules: 'all',
@@ -89,13 +86,6 @@ export const moveRegion = {
             category: 'behavior',
             label: 'CHRISPREMADES.Macros.Generic.MoveRegion.MaxRange',
             hint: 'CHRISPREMADES.Macros.Generic.MoveRegion.MaxRangeHint'
-        },
-        pinToCaster: {
-            default: false,
-            type: 'checkbox',
-            category: 'behavior',
-            label: 'CHRISPREMADES.Macros.Generic.MoveRegion.PinToCaster',
-            hint: 'CHRISPREMADES.Macros.Generic.MoveRegion.PinToCasterHint'
         }
     }
 };

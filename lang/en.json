@@ -998,8 +998,6 @@
                     "SourceActivityHint": "Activity that placed the region this activity moves.",
                     "MaxRange": "Maximum Range",
                     "MaxRangeHint": "Furthest the region's centre can move from its old centre. 0 ignores distance.",
-                    "PinToCaster": "Pin to Caster",
-                    "PinToCasterHint": "Attach the moved region to the user's token and skip the range check.",
                     "NoSourceActivity": "Source activity for the region move not found.",
                     "NoRegion": "No placed region found to move.",
                     "TooFar": "The area can only move up to {maxRange} feet."
