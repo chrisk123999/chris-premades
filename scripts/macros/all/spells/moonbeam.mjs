@@ -15,8 +15,7 @@ async function created({document: region, workflow}) {
     await createRegionLight(region, {color: color || null, animation: {type: animationType || null}});
     playAreaAnimation(workflow, automationUtils.getResolvedAnimation(originItem, 'animation'), {region});
 }
-async function updated({document: region, updates}) {
-    if (!updates?.shapes) return;
+async function moved({document: region}) {
     const originItem = regionUtils.getActivity(region)?.item;
     if (!originItem) return;
     const {animation, options} = automationUtils.getResolvedAnimation(originItem, 'animation');
@@ -46,7 +45,7 @@ export const moonbeam = {
     rules: 'all',
     region: [
         {pass: 'created', macro: created, priority: 50},
-        {pass: 'updated', macro: updated, priority: 50}
+        {pass: 'moved', macro: moved, priority: 50}
     ],
     roll: [
         {pass: 'activityRollFinished', macro: pulse, priority: 50}

@@ -72,8 +72,8 @@ async function created({document: region, workflow}) {
     const {animation, options} = automationUtils.getResolvedAnimation(originItem, 'animation');
     if (animation) await animation.macros?.darkness?.(region, options);
 }
-async function updated({document: region, updates}) {
-    if (updates?.shapes) await syncRegionLights(region);
+async function moved({document: region}) {
+    await syncRegionLights(region);
 }
 async function deleted({document: region}) {
     const {darknessLight, darknessToken} = region.flags['chris-premades'] ?? {};
@@ -100,7 +100,7 @@ export const darkness = {
     rules: 'all',
     region: [
         {pass: 'created', macro: created, priority: 50},
-        {pass: 'updated', macro: updated, priority: 50},
+        {pass: 'moved', macro: moved, priority: 50},
         {pass: 'deleted', macro: deleted, priority: 50}
     ],
     config: {
