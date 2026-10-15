@@ -37,6 +37,12 @@ export { unarguableWizardry as 'unarguable-wizardry' } from './modern/classFeatu
 /*          Wild Heart           */
 export { aspectOfTheWilds as 'aspect-of-the-wilds' } from './modern/classFeatures/barbarian/wildHeart/aspectOfTheWilds.mjs';
 
+/*           World Tree          */
+export { batteringRoots as 'battering-roots' } from './modern/classFeatures/barbarian/worldTree/batteringRoots.mjs';
+export { branchesOfTheTree as 'branches-of-the-tree' } from './modern/classFeatures/barbarian/worldTree/branchesOfTheTree.mjs';
+export { travelAlongTheTree as 'travel-along-the-tree', travelAlongTheTreePreChecks }  from './modern/classFeatures/barbarian/worldTree/travelAlongTheTree.mjs';
+export { vitalityOfTheTree as 'vitality-of-the-tree', lifeGivingForce } from './modern/classFeatures/barbarian/worldTree/vitalityOfTheTree.mjs';
+
 /*********************************/
 /*             Bard              */
 /*********************************/

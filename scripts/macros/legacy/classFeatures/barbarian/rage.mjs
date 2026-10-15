@@ -1,4 +1,4 @@
-import {actorUtils, combatUtils, dialogUtils, documentUtils, genericUtils, queryUtils, tokenUtils, workflowUtils} from '../../../../proxy.mjs';
+import {actorUtils, dialogUtils, documentUtils, genericUtils, queryUtils, tokenUtils, workflowUtils} from '../../../../proxy.mjs';
 async function setTurn(combatData, rageEffect) {
     await documentUtils.update(rageEffect, {'flags.chris-premades.rage.turn': combatData});
 }
