@@ -62,7 +62,7 @@
     "activities": {
       "dnd5eactivity000": {
         "_id": "dnd5eactivity000",
-        "type": "utility",
+        "type": "summon",
         "activation": {
           "type": "action",
           "value": null,
@@ -104,12 +104,6 @@
           "spent": 0,
           "max": "",
           "recovery": []
-        },
-        "roll": {
-          "formula": "",
-          "name": "",
-          "prompt": false,
-          "visible": false
         },
         "sort": 0,
         "useConditionText": "",
@@ -164,7 +158,43 @@
           "postRemoveConditionText": ""
         },
         "otherActivityId": "none",
-        "identifier": "maximilians-earthen-grasp"
+        "identifier": "maximilians-earthen-grasp",
+        "profiles": [
+          {
+            "_id": "earthenHand00001",
+            "uuid": "Compendium.chris-premades.CPRSummons2014.Actor.Avns8ZGoWiXxjifR",
+            "count": "1",
+            "cr": "",
+            "level": {
+              "min": null,
+              "max": null
+            },
+            "name": "",
+            "types": []
+          }
+        ],
+        "summon": {
+          "mode": "",
+          "prompt": true
+        },
+        "bonuses": {
+          "ac": "",
+          "hd": "",
+          "hp": "",
+          "attackDamage": "",
+          "saveDamage": "",
+          "healing": ""
+        },
+        "match": {
+          "ability": "",
+          "attacks": false,
+          "disposition": false,
+          "proficiency": false,
+          "saves": false
+        },
+        "creatureSizes": [],
+        "creatureTypes": [],
+        "tempHP": ""
       },
       "orOXndIPdFWGNWwO": {
         "type": "save",
@@ -629,42 +659,38 @@
         "roll": [
           {
             "source": "chris-premades",
-            "rules": "all",
-            "identifier": "summon"
-          },
-          {
-            "source": "chris-premades",
             "rules": "2014",
             "identifier": "maximilians-earthen-grasp"
           }
         ],
         "summon": [
           {
-            "source": "chris-premades",
+            "source": "cat",
             "rules": "all",
             "identifier": "summon"
           }
         ],
         "move": [
           {
-            "source": "chris-premades",
+            "source": "cat",
             "rules": "all",
             "identifier": "summon"
           }
         ]
       },
       "genericConfig": {
-        "chris-premades": {
+        "cat": {
           "summon": {
             "activityId": "dnd5eactivity000",
             "moveActivityId": "mxEarthGraspMove",
             "followUpActivityId": "orOXndIPdFWGNWwO",
             "followUpTiming": "both",
             "followUpRange": 5,
+            "replaceExisting": true,
+            "favorite": true,
             "summons": [
               {
-                "sourceActorUuid": "Compendium.chris-premades.CPRSummons2014.Actor.Avns8ZGoWiXxjifR",
-                "sourceActorName": "CPR - Earthen Hand",
+                "profile": "earthenHand00001",
                 "name": "Earthen Hand",
                 "initiative": "none",
                 "animation": {
@@ -672,9 +698,7 @@
                   "identifier": "earthSummon"
                 }
               }
-            ],
-            "replaceExisting": true,
-            "favorite": true
+            ]
           }
         }
       }

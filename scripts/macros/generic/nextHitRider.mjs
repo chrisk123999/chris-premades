@@ -1,5 +1,5 @@
 import {actorUtils, automationUtils, constants, DamageBonus, documentUtils, effectUtils, Logging, workflowUtils} from '../../proxy.mjs';
-import {riderNearbyRangeConfig, withNearby} from './attackRider.mjs';
+import {playRiderAnimation, riderNearbyRangeConfig, withNearby} from './attackRider.mjs';
 import {attackTypeConfig} from './damageBonusToOneRoll.mjs';
 function getSpell(effect) {
     const item = effectUtils.getOriginActivitySync(effect)?.item;
@@ -34,7 +34,9 @@ async function rider({document: effect, workflow}) {
     if (!targetUuids) return;
     const {item, concentration, scaling} = getSpell(effect);
     const activity = config.rollActivity ? item?.system.activities.get(config.rollActivity) : undefined;
-    const targets = withNearby(targetUuids.map(uuid => fromUuidSync(uuid, {strict: false})).filter(token => token?.actor), config.riderNearbyRange);
+    const hitTokens = targetUuids.map(uuid => fromUuidSync(uuid, {strict: false})).filter(Boolean);
+    const targets = withNearby(hitTokens.filter(token => token.actor), config.riderNearbyRange);
+    playRiderAnimation(effect, 'nextHitRider', hitTokens, workflow.token?.document);
     const endFirst = config.endSpell === 'always';
     if (endFirst) await documentUtils.deleteDocument(concentration ?? effect);
     let riderWorkflow;
@@ -63,6 +65,7 @@ async function rider({document: effect, workflow}) {
  * - `rollActivity`: activity rolled on the hit target after the bonus damage.
  * - `riderNearbyRange`: the rider activity also targets creatures within this many feet of the hit target. 0 targets the hit target only.
  * - `endSpell`: when the spell ends after the rider activity is rolled.
+ * - `animation`: played on the hit target when the rider triggers.
  */
 export const nextHitRider = {
     rules: 'all',
@@ -84,6 +87,14 @@ export const nextHitRider = {
         }
     ],
     genericConfig: {
+        animation: {
+            default: {source: 'none', identifier: 'none'},
+            type: 'selectAnimation',
+            inputs: ['targetToken'],
+            category: 'animations',
+            label: 'CHRISPREMADES.Config.Animation',
+            hint: 'CHRISPREMADES.Macros.Generic.Common.RiderAnimationHint'
+        },
         bonus: {
             default: '',
             type: 'text',

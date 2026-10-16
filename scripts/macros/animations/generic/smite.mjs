@@ -1,4 +1,5 @@
 import {animationUtils} from '../../../proxy.mjs';
+import {pickFile} from './spellParts.mjs';
 const colorMap = {
     orange: 'Orange',
     blueyellow: 'Blue',
@@ -10,7 +11,7 @@ const colorMap = {
     yellowhite: 'Yellow'
 };
 function play(targetToken, {color = 'blueyellow'} = {}) {
-    const path = 'jb2a.divine_smite.target.' + color;
+    const path = pickFile('jb2a.divine_smite.target.' + color, 'jb2a.divine_smite.target.blueyellow');
     /* eslint-disable indent */
     new Sequence()
         .effect()

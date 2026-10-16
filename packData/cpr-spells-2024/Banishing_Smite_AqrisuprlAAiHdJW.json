@@ -128,7 +128,22 @@
                   "bonusDamageType": "force",
                   "attackType": "meleeWeaponAttack",
                   "ownTurn": true,
-                  "useActivityCosts": true
+                  "useActivityCosts": true,
+                  "animation": {
+                    "source": "chris-premades",
+                    "identifier": "smite"
+                  }
+                }
+              }
+            },
+            "animationGenericConfig": {
+              "chris-premades": {
+                "attackRider": {
+                  "chris-premades": {
+                    "smite": {
+                      "color": "blueyellow"
+                    }
+                  }
                 }
               }
             }

@@ -3,7 +3,7 @@
   "system": {
     "activities": {
       "fIyjRy9HfceGWgFO": {
-        "type": "utility",
+        "type": "summon",
         "_id": "fIyjRy9HfceGWgFO",
         "sort": 0,
         "activation": {
@@ -45,12 +45,6 @@
           "spent": 0,
           "recovery": [],
           "max": ""
-        },
-        "roll": {
-          "prompt": false,
-          "visible": false,
-          "name": "",
-          "formula": ""
         },
         "useConditionText": "",
         "useConditionReason": "",
@@ -103,7 +97,43 @@
         "otherActivityId": "none",
         "otherActivityAsParentType": true,
         "name": "Spawn",
-        "identifier": "spawn"
+        "identifier": "spawn",
+        "profiles": [
+          {
+            "_id": "mageHand00000001",
+            "uuid": "Compendium.chris-premades.CPRSummons2024.Actor.bwGotMo1CMQ7wFn0",
+            "count": "1",
+            "cr": "",
+            "level": {
+              "min": null,
+              "max": null
+            },
+            "name": "",
+            "types": []
+          }
+        ],
+        "summon": {
+          "mode": "",
+          "prompt": true
+        },
+        "bonuses": {
+          "ac": "",
+          "hd": "",
+          "hp": "",
+          "attackDamage": "",
+          "saveDamage": "",
+          "healing": ""
+        },
+        "match": {
+          "ability": "",
+          "attacks": false,
+          "disposition": false,
+          "proficiency": false,
+          "saves": false
+        },
+        "creatureSizes": [],
+        "creatureTypes": [],
+        "tempHP": ""
       },
       "l1UMiVaDUVthOExU": {
         "type": "utility",
@@ -297,40 +327,35 @@
     "cat": {
       "automation": {
         "source": "chris-premades",
-        "version": "2.0.0"
+        "version": "2.1.3"
       },
       "macros": {
-        "roll": [
-          {
-            "source": "chris-premades",
-            "rules": "all",
-            "identifier": "summon"
-          }
-        ],
         "summon": [
           {
-            "source": "chris-premades",
+            "source": "cat",
             "rules": "all",
             "identifier": "summon"
           }
         ],
         "move": [
           {
-            "source": "chris-premades",
+            "source": "cat",
             "rules": "all",
             "identifier": "summon"
           }
         ]
       },
       "genericConfig": {
-        "chris-premades": {
+        "cat": {
           "summon": {
             "activityId": "fIyjRy9HfceGWgFO",
             "moveActivityId": "l1UMiVaDUVthOExU",
+            "replaceExisting": true,
+            "favorite": true,
+            "maxDistance": 30,
             "summons": [
               {
-                "sourceActorUuid": "Compendium.chris-premades.CPRSummons2024.Actor.bwGotMo1CMQ7wFn0",
-                "sourceActorName": "CPR - Mage Hand",
+                "profile": "mageHand00000001",
                 "name": "Mage Hand",
                 "initiative": "none",
                 "animation": {
@@ -338,10 +363,7 @@
                   "identifier": "defaultSummon"
                 }
               }
-            ],
-            "replaceExisting": true,
-            "favorite": true,
-            "maxDistance": 30
+            ]
           }
         }
       }

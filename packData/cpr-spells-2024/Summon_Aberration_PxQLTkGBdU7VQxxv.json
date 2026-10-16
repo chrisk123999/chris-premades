@@ -62,7 +62,7 @@
     "activities": {
       "dnd5eactivity000": {
         "_id": "dnd5eactivity000",
-        "type": "utility",
+        "type": "summon",
         "activation": {
           "type": "action",
           "value": null,
@@ -87,7 +87,7 @@
         "effects": [],
         "range": {
           "override": false,
-          "units": "self"
+          "units": "ft"
         },
         "target": {
           "prompt": true,
@@ -105,16 +105,10 @@
           "max": "",
           "recovery": []
         },
-        "roll": {
-          "formula": "",
-          "name": "",
-          "prompt": false,
-          "visible": false
-        },
         "sort": 0,
         "useConditionText": "",
         "effectConditionText": "",
-        "name": "Beholderkin",
+        "name": "",
         "useConditionReason": "",
         "macroData": {
           "name": "",
@@ -139,8 +133,8 @@
           "autoTargetAction": "default",
           "automationOnly": false,
           "otherActivityCompatible": true,
-          "identifier": "summon-aberration-beholderkin",
-          "displayActivityName": true,
+          "identifier": "summon",
+          "displayActivityName": false,
           "rollMode": "default",
           "chooseEffects": false,
           "toggleEffect": false,
@@ -161,217 +155,67 @@
           "postRemoveConditionText": ""
         },
         "otherActivityId": "none",
-        "identifier": "summon-aberration-beholderkin"
-      },
-      "2xATI9pMQv2oVnE7": {
-        "type": "utility",
-        "activation": {
-          "type": "action",
-          "value": null,
-          "override": false
-        },
-        "consumption": {
-          "targets": [],
-          "scaling": {
-            "allowed": false,
-            "max": ""
+        "identifier": "summon",
+        "profiles": [
+          {
+            "count": "1",
+            "cr": "",
+            "level": {
+              "min": null,
+              "max": null
+            },
+            "name": "Beholderkin",
+            "types": [],
+            "_id": "aberrantBeholdkn",
+            "uuid": "Compendium.chris-premades.CPRSummons2024.Actor.m4uFebEzanosXwyT"
           },
-          "spellSlot": true
-        },
-        "description": {
-          "chatFlavor": ""
-        },
-        "duration": {
-          "units": "inst",
-          "concentration": false,
-          "override": false
-        },
-        "effects": [],
-        "range": {
-          "override": false,
-          "units": "self"
-        },
-        "target": {
-          "prompt": true,
-          "template": {
-            "contiguous": false,
-            "units": "ft"
+          {
+            "count": "1",
+            "cr": "",
+            "level": {
+              "min": null,
+              "max": null
+            },
+            "name": "Slaad",
+            "types": [],
+            "_id": "aberrantSlaad000",
+            "uuid": "Compendium.chris-premades.CPRSummons2024.Actor.m4uFebEzanosXwyT"
           },
-          "affects": {
-            "choice": false
-          },
-          "override": false
+          {
+            "count": "1",
+            "cr": "",
+            "level": {
+              "min": null,
+              "max": null
+            },
+            "name": "Mind Flayer",
+            "types": [],
+            "_id": "aberrantMindFlyr",
+            "uuid": "Compendium.chris-premades.CPRSummons2024.Actor.m4uFebEzanosXwyT"
+          }
+        ],
+        "summon": {
+          "mode": "",
+          "prompt": true
         },
-        "uses": {
-          "spent": 0,
-          "max": "",
-          "recovery": []
+        "bonuses": {
+          "ac": "@item.level",
+          "hd": "",
+          "hp": "10 * (@item.level - 4)",
+          "attackDamage": "",
+          "saveDamage": "",
+          "healing": ""
         },
-        "roll": {
-          "formula": "",
-          "name": "",
-          "prompt": false,
-          "visible": false
+        "match": {
+          "ability": "",
+          "attacks": false,
+          "disposition": false,
+          "proficiency": false,
+          "saves": false
         },
-        "sort": 0,
-        "useConditionText": "",
-        "effectConditionText": "",
-        "name": "Slaad",
-        "_id": "2xATI9pMQv2oVnE7",
-        "useConditionReason": "",
-        "macroData": {
-          "name": "",
-          "command": ""
-        },
-        "ignoreTraits": {
-          "idi": false,
-          "idr": false,
-          "idv": false,
-          "ida": false,
-          "idm": false
-        },
-        "midiProperties": {
-          "ignoreTraits": [],
-          "triggeredActivityId": "none",
-          "triggeredActivityConditionText": "",
-          "triggeredActivityTargets": "targets",
-          "triggeredActivityRollAs": "self",
-          "forceDialog": false,
-          "confirmTargets": "default",
-          "autoTargetType": "any",
-          "autoTargetAction": "default",
-          "automationOnly": false,
-          "otherActivityCompatible": true,
-          "identifier": "summon-aberration-slaad",
-          "displayActivityName": true,
-          "rollMode": "default",
-          "chooseEffects": false,
-          "toggleEffect": false,
-          "ignoreFullCover": false,
-          "forceAttackDialog": false,
-          "forceDamageDialog": false,
-          "otherActivityAsParentType": true,
-          "removeChatButtons": "default",
-          "magicEffect": false,
-          "magicDamage": false,
-          "noConcentrationCheck": false,
-          "autoCEEffects": "default"
-        },
-        "isOverTimeFlag": false,
-        "overTimeProperties": {
-          "saveRemoves": true,
-          "preRemoveConditionText": "",
-          "postRemoveConditionText": ""
-        },
-        "otherActivityId": "none",
-        "img": "",
-        "appliedEffects": [],
-        "identifier": "summon-aberration-slaad"
-      },
-      "Ykxed0BXKRXWlwiA": {
-        "type": "utility",
-        "activation": {
-          "type": "action",
-          "value": null,
-          "override": false
-        },
-        "consumption": {
-          "targets": [],
-          "scaling": {
-            "allowed": false,
-            "max": ""
-          },
-          "spellSlot": true
-        },
-        "description": {
-          "chatFlavor": ""
-        },
-        "duration": {
-          "units": "inst",
-          "concentration": false,
-          "override": false
-        },
-        "effects": [],
-        "range": {
-          "override": false,
-          "units": "self"
-        },
-        "target": {
-          "prompt": true,
-          "template": {
-            "contiguous": false,
-            "units": "ft"
-          },
-          "affects": {
-            "choice": false
-          },
-          "override": false
-        },
-        "uses": {
-          "spent": 0,
-          "max": "",
-          "recovery": []
-        },
-        "roll": {
-          "formula": "",
-          "name": "",
-          "prompt": false,
-          "visible": false
-        },
-        "sort": 0,
-        "useConditionText": "",
-        "effectConditionText": "",
-        "name": "Mind Flayer",
-        "_id": "Ykxed0BXKRXWlwiA",
-        "useConditionReason": "",
-        "macroData": {
-          "name": "",
-          "command": ""
-        },
-        "ignoreTraits": {
-          "idi": false,
-          "idr": false,
-          "idv": false,
-          "ida": false,
-          "idm": false
-        },
-        "midiProperties": {
-          "ignoreTraits": [],
-          "triggeredActivityId": "none",
-          "triggeredActivityConditionText": "",
-          "triggeredActivityTargets": "targets",
-          "triggeredActivityRollAs": "self",
-          "forceDialog": false,
-          "confirmTargets": "default",
-          "autoTargetType": "any",
-          "autoTargetAction": "default",
-          "automationOnly": false,
-          "otherActivityCompatible": true,
-          "identifier": "summon-aberration-mind-flayer",
-          "displayActivityName": true,
-          "rollMode": "default",
-          "chooseEffects": false,
-          "toggleEffect": false,
-          "ignoreFullCover": false,
-          "forceAttackDialog": false,
-          "forceDamageDialog": false,
-          "otherActivityAsParentType": true,
-          "removeChatButtons": "default",
-          "magicEffect": false,
-          "magicDamage": false,
-          "noConcentrationCheck": false,
-          "autoCEEffects": "default"
-        },
-        "isOverTimeFlag": false,
-        "overTimeProperties": {
-          "saveRemoves": true,
-          "preRemoveConditionText": "",
-          "postRemoveConditionText": ""
-        },
-        "otherActivityId": "none",
-        "img": "",
-        "appliedEffects": [],
-        "identifier": "summon-aberration-mind-flayer"
+        "creatureSizes": [],
+        "creatureTypes": [],
+        "tempHP": ""
       }
     },
     "identifier": "summon-aberration",
@@ -423,16 +267,147 @@
     "cat": {
       "automation": {
         "source": "chris-premades",
-        "version": "2.0.0"
+        "version": "2.1.3"
       },
       "macros": {
-        "roll": [
+        "move": [
           {
-            "source": "chris-premades",
-            "rules": "2024",
-            "identifier": "summon-aberration"
+            "source": "cat",
+            "rules": "all",
+            "identifier": "summon"
+          }
+        ],
+        "summon": [
+          {
+            "source": "cat",
+            "rules": "all",
+            "identifier": "summon"
           }
         ]
+      },
+      "genericConfig": {
+        "cat": {
+          "summon": {
+            "activityId": "dnd5eactivity000",
+            "summons": [
+              {
+                "profile": "aberrantBeholdkn",
+                "initiative": "follows",
+                "animation": {
+                  "source": "chris-premades",
+                  "identifier": "shadowSummon"
+                },
+                "updates": [
+                  {
+                    "path": "system.details.cr",
+                    "value": "@ownerCR",
+                    "mode": "formula"
+                  },
+                  {
+                    "path": "system.attributes.movement.speeds.fly",
+                    "value": "30",
+                    "mode": "formula"
+                  },
+                  {
+                    "path": "system.attributes.movement.hover",
+                    "value": true,
+                    "mode": "literal"
+                  }
+                ],
+                "items": [
+                  {
+                    "uuid": "Compendium.chris-premades.CPRAutomationItems.Item.PpBDRqIqH6fixhMd",
+                    "name": "CHRISPREMADES.Summons.Multiattack",
+                    "scaling": {
+                      "attacks": "floor(@castLevel / 2)"
+                    }
+                  },
+                  {
+                    "uuid": "Compendium.chris-premades.CPRAutomationItems.Item.ko7UCtIF2AD9riB4",
+                    "name": "CHRISPREMADES.Macros.Modern.SummonAberration.EyeRay",
+                    "matchAttack": true,
+                    "scaling": {
+                      "damageBonus": "3 + @castLevel"
+                    }
+                  }
+                ]
+              },
+              {
+                "profile": "aberrantSlaad000",
+                "initiative": "follows",
+                "animation": {
+                  "source": "chris-premades",
+                  "identifier": "shadowSummon"
+                },
+                "updates": [
+                  {
+                    "path": "system.details.cr",
+                    "value": "@ownerCR",
+                    "mode": "formula"
+                  }
+                ],
+                "items": [
+                  {
+                    "uuid": "Compendium.chris-premades.CPRAutomationItems.Item.PpBDRqIqH6fixhMd",
+                    "name": "CHRISPREMADES.Summons.Multiattack",
+                    "scaling": {
+                      "attacks": "floor(@castLevel / 2)"
+                    }
+                  },
+                  {
+                    "uuid": "Compendium.chris-premades.CPRAutomationItems.Item.ip8XUyBjJtvjHaMX",
+                    "name": "CHRISPREMADES.Summons.Features.Claws",
+                    "matchAttack": true,
+                    "scaling": {
+                      "damageBonus": "3 + @castLevel"
+                    }
+                  },
+                  {
+                    "uuid": "Compendium.chris-premades.CPRAutomationItems.Item.gDIXqXS4TPQM8fLg",
+                    "name": "CHRISPREMADES.Macros.Modern.SummonAberration.Regeneration"
+                  }
+                ]
+              },
+              {
+                "profile": "aberrantMindFlyr",
+                "initiative": "follows",
+                "animation": {
+                  "source": "chris-premades",
+                  "identifier": "shadowSummon"
+                },
+                "updates": [
+                  {
+                    "path": "system.details.cr",
+                    "value": "@ownerCR",
+                    "mode": "formula"
+                  }
+                ],
+                "items": [
+                  {
+                    "uuid": "Compendium.chris-premades.CPRAutomationItems.Item.PpBDRqIqH6fixhMd",
+                    "name": "CHRISPREMADES.Summons.Multiattack",
+                    "scaling": {
+                      "attacks": "floor(@castLevel / 2)"
+                    }
+                  },
+                  {
+                    "uuid": "Compendium.chris-premades.CPRAutomationItems.Item.KcxqAE2CqVvKBGaV",
+                    "name": "CHRISPREMADES.Macros.Modern.SummonAberration.PsychicSlam",
+                    "matchAttack": true,
+                    "scaling": {
+                      "damageBonus": "3 + @castLevel"
+                    }
+                  },
+                  {
+                    "uuid": "Compendium.chris-premades.CPRAutomationItems.Item.WHiMmnT8JeU1fmrp",
+                    "name": "CHRISPREMADES.Macros.Modern.SummonAberration.WhisperingAura",
+                    "matchDC": true
+                  }
+                ]
+              }
+            ]
+          }
+        }
       }
     }
   },

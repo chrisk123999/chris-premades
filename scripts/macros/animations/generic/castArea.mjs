@@ -1,5 +1,6 @@
-import {regionUtils} from '../../../proxy.mjs';
-import {addCast, addImpact, casts, colorOption, getColor, getPalette, partOption} from './spellParts.mjs';
+import {automationUtils, effectUtils, regionUtils} from '../../../proxy.mjs';
+import {getCastDamageType} from '../../generic/selectDamageType.mjs';
+import {addCast, addImpact, casts, colorOption, endPersist, getColor, getPalette, partOption, persistName} from './spellParts.mjs';
 const colorMap = {
     orange: 'Orange',
     blue: 'Blue',
@@ -108,20 +109,20 @@ function addArea(sequence, geometry, file) {
     if (geometry.end) section.atLocation(geometry.origin).stretchTo(geometry.end);
     else section.atLocation(geometry.center).size(geometry.size).rotate(-geometry.rotation);
 }
-function addPersist(sequence, region, geometry, file) {
-    const section = sequence.effect().name('castArea ' + region.uuid).file(file);
-    if (region.attachment?.token) section.attachTo(region.attachment.token);
-    else section.atLocation(geometry.center);
+function addPersist(sequence, document, file, {center, token, size, mask}) {
+    const section = sequence.effect().name(persistName('castArea', document)).file(file);
+    if (token) section.attachTo(token);
+    else section.atLocation(center);
+    if (mask) section.mask(mask);
     /* eslint-disable indent */
     section
-        .size(geometry.end ? geometry.size * 2 : geometry.size * Math.SQRT2)
-        .mask(region)
+        .size(size)
         .belowTokens()
         .opacity(0.6)
         .fadeIn(1000)
         .fadeOut(1000)
         .persist()
-        .tieToDocuments(region);
+        .tieToDocuments(document);
     /* eslint-enable indent */
 }
 async function play(sourceToken, region, {color = 'auto', cast = true, impact = true, persist = false, damageType, targets = [], radius} = {}) {
@@ -136,13 +137,27 @@ async function play(sourceToken, region, {color = 'auto', cast = true, impact = 
         sequence.wait(500);
         targets.filter(target => target.saved === false || target.hit === true).forEach(target => addImpact(sequence, target.token, color));
     }
-    if (persist && region) addPersist(sequence, region, geometry, getPalette(palettes.persist, color));
+    if (persist && region) addPersist(sequence, region, getPalette(palettes.persist, color), {center: geometry.center, token: region.attachment?.token, size: geometry.end ? geometry.size * 2 : geometry.size * Math.SQRT2, mask: region});
+    await sequence.play();
+}
+// Plays the area around the effect's actor and, with persist, keeps it there while the effect lasts. The radius comes from the effect's aura.
+async function create(effect, token, {color = 'auto', cast = true, impact = false, persist = false, radius} = {}) {
+    radius ??= Number(automationUtils.getGenericConfigValue(effect, 'cat', 'aura', 'radius')) || 0;
+    color = getColor(color, getCastDamageType(effectUtils.getOriginActivitySync(effect)?.item));
+    await play(token, undefined, {color, cast, impact, radius});
+    if (!persist) return;
+    const file = getPalette(palettes.persist, color);
+    if (!file) return;
+    const sequence = new Sequence();
+    addPersist(sequence, effect, file, {token, size: getAreaGeometry(token, undefined, {radius}).size});
     await sequence.play();
 }
 export const castArea = {
     name: 'CHRISPREMADES.Animations.CastArea',
     macros: {
-        play
+        play,
+        create,
+        delete: endPersist('castArea')
     },
     inputs: ['sourceToken', 'region', 'options'],
     requirements: ['JB2A_DnD5e'],

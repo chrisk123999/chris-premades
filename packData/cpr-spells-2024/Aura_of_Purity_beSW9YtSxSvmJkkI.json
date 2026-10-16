@@ -1,0 +1,389 @@
+{
+  "name": "Aura of Purity",
+  "type": "spell",
+  "_id": "beSW9YtSxSvmJkkI",
+  "img": "icons/magic/life/heart-cross-strong-purple-orange.webp",
+  "system": {
+    "activities": {
+      "TOlXUmtMhrzmZNRk": {
+        "type": "utility",
+        "_id": "TOlXUmtMhrzmZNRk",
+        "sort": 0,
+        "activation": {
+          "type": "action",
+          "value": null,
+          "override": false
+        },
+        "consumption": {
+          "scaling": {
+            "allowed": false
+          },
+          "spellSlot": true,
+          "targets": []
+        },
+        "description": {
+          "value": ""
+        },
+        "duration": {
+          "units": "inst",
+          "concentration": false,
+          "override": false,
+          "expiry": null
+        },
+        "effects": [
+          {
+            "_id": "auraOfPurityHost"
+          }
+        ],
+        "range": {
+          "override": false,
+          "units": "self"
+        },
+        "target": {
+          "prompt": true,
+          "template": {
+            "contiguous": false,
+            "units": "ft"
+          },
+          "affects": {
+            "choice": false
+          },
+          "override": false
+        },
+        "uses": {
+          "spent": 0,
+          "recovery": []
+        },
+        "roll": {
+          "prompt": false,
+          "visible": false
+        },
+        "useConditionText": "",
+        "useConditionReason": "",
+        "effectConditionText": "",
+        "macroData": {
+          "name": "",
+          "command": ""
+        },
+        "ignoreTraits": {
+          "idi": false,
+          "idr": false,
+          "idv": false,
+          "ida": false,
+          "idm": false
+        },
+        "midiProperties": {
+          "ignoreTraits": [],
+          "triggeredActivityId": "none",
+          "triggeredActivityConditionText": "",
+          "triggeredActivityTargets": "targets",
+          "triggeredActivityRollAs": "self",
+          "confirmTargets": "default",
+          "autoTargetType": "any",
+          "autoTargetAction": "default",
+          "automationOnly": false,
+          "otherActivityCompatible": true,
+          "identifier": "",
+          "displayActivityName": false,
+          "rollMode": "default",
+          "chooseEffects": false,
+          "triggeredActivityConsume": true,
+          "triggeredActivityConfigure": true,
+          "autoConsume": false,
+          "forceConsumeDialog": "default",
+          "forceRollDialog": "default",
+          "forceDamageDialog": "default",
+          "otherActivityAsParentType": true,
+          "toggleEffect": false,
+          "ignoreFullCover": false,
+          "removeChatButtons": "default",
+          "magicEffect": false,
+          "magicDamage": false,
+          "noConcentrationCheck": false,
+          "skipConcentrationCheck": false,
+          "autoCEEffects": "default"
+        },
+        "isOverTimeFlag": false,
+        "overTimeProperties": {
+          "saveRemoves": true,
+          "preRemoveConditionText": "",
+          "postRemoveConditionText": "",
+          "rollAs": "target"
+        },
+        "img": null,
+        "behaviors": [],
+        "flags": {},
+        "visibility": {
+          "level": {},
+          "requireAttunement": false,
+          "requireIdentification": false,
+          "requireMagic": false
+        },
+        "otherActivityId": null,
+        "regionBehavior": {
+          "enabled": false,
+          "dispositionFilter": -1,
+          "excludeSource": true,
+          "oncePerTurn": true,
+          "wallRestriction": "none",
+          "regionVisibility": 2,
+          "attachToken": "default",
+          "templateOrigin": "default",
+          "rules": []
+        },
+        "regionLight": {
+          "enabled": false,
+          "dim": 0,
+          "bright": 0,
+          "color": null,
+          "alpha": 0.5,
+          "luminosity": 0.5,
+          "animationType": "",
+          "animationSpeed": 5,
+          "animationIntensity": 5
+        },
+        "otherActivityAsParentType": true
+      }
+    },
+    "uses": {
+      "spent": 0,
+      "recovery": [],
+      "max": ""
+    },
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "identifier": "aura-of-purity",
+    "source": {
+      "revision": 1,
+      "rules": "2024",
+      "book": "",
+      "page": "",
+      "custom": "",
+      "license": ""
+    },
+    "activation": {
+      "type": "action",
+      "value": null,
+      "condition": ""
+    },
+    "duration": {
+      "units": "minute",
+      "value": "10",
+      "expiry": null
+    },
+    "level": 4,
+    "materials": {
+      "value": "",
+      "consumed": false,
+      "cost": 0,
+      "supply": 0
+    },
+    "properties": [
+      "vocal",
+      "concentration"
+    ],
+    "range": {
+      "units": "self",
+      "special": ""
+    },
+    "school": "abj",
+    "target": {
+      "template": {
+        "contiguous": false,
+        "units": "ft",
+        "type": "",
+        "stationary": false,
+        "size": "",
+        "count": "",
+        "width": "",
+        "height": ""
+      },
+      "affects": {
+        "choice": false,
+        "type": "self",
+        "special": "",
+        "count": ""
+      }
+    },
+    "method": "spell",
+    "prepared": 0
+  },
+  "effects": [
+    {
+      "_id": "auraOfPurityHost",
+      "name": "Aura of Purity",
+      "img": "icons/magic/life/heart-cross-strong-purple-orange.webp",
+      "type": "base",
+      "transfer": false,
+      "disabled": false,
+      "system": {
+        "changes": []
+      },
+      "flags": {
+        "cat": {
+          "identifier": "auraOfPurity",
+          "animation": {
+            "create": {
+              "source": "chris-premades",
+              "identifier": "castBuff",
+              "config": {
+                "color": "green",
+                "aura": true
+              }
+            },
+            "delete": {
+              "source": "chris-premades",
+              "identifier": "castBuff",
+              "config": {
+                "color": "green",
+                "aura": true
+              }
+            }
+          },
+          "macros": {
+            "aura": [
+              {
+                "source": "cat",
+                "rules": "all",
+                "identifier": "aura"
+              }
+            ]
+          },
+          "genericConfig": {
+            "cat": {
+              "aura": {
+                "radius": "30",
+                "dispositions": [
+                  "ally"
+                ],
+                "includeSelf": true,
+                "effect": "auraOfPurityAura"
+              }
+            }
+          }
+        }
+      },
+      "statuses": [],
+      "description": "",
+      "_key": "!items.effects!beSW9YtSxSvmJkkI.auraOfPurityHost",
+      "_stats": {
+        "coreVersion": "14.369",
+        "systemId": "dnd5e",
+        "systemVersion": "6.0.6"
+      }
+    },
+    {
+      "_id": "auraOfPurityAura",
+      "name": "Aura of Purity: Aura",
+      "img": "icons/magic/life/heart-cross-strong-purple-orange.webp",
+      "type": "base",
+      "transfer": false,
+      "disabled": false,
+      "system": {
+        "changes": [
+          {
+            "key": "system.traits.dr.value",
+            "type": "add",
+            "value": "poison",
+            "priority": 20
+          },
+          {
+            "key": "flags.cat.CR.blinded",
+            "type": "override",
+            "value": "1",
+            "priority": 20
+          },
+          {
+            "key": "flags.cat.CR.charmed",
+            "type": "override",
+            "value": "1",
+            "priority": 20
+          },
+          {
+            "key": "flags.cat.CR.deafened",
+            "type": "override",
+            "value": "1",
+            "priority": 20
+          },
+          {
+            "key": "flags.cat.CR.frightened",
+            "type": "override",
+            "value": "1",
+            "priority": 20
+          },
+          {
+            "key": "flags.cat.CR.paralyzed",
+            "type": "override",
+            "value": "1",
+            "priority": 20
+          },
+          {
+            "key": "flags.cat.CR.poisoned",
+            "type": "override",
+            "value": "1",
+            "priority": 20
+          },
+          {
+            "key": "flags.cat.CR.stunned",
+            "type": "override",
+            "value": "1",
+            "priority": 20
+          }
+        ]
+      },
+      "flags": {
+        "cat": {
+          "identifier": "auraOfPurityAura"
+        }
+      },
+      "statuses": [],
+      "description": "",
+      "_key": "!items.effects!beSW9YtSxSvmJkkI.auraOfPurityAura",
+      "_stats": {
+        "coreVersion": "14.369",
+        "systemId": "dnd5e",
+        "systemVersion": "6.0.6"
+      }
+    }
+  ],
+  "folder": null,
+  "flags": {
+    "midi-qol": {
+      "rollAttackPerTarget": "default",
+      "removeAttackDamageButtons": "default",
+      "itemCondition": "",
+      "reactionCondition": "",
+      "otherCondition": "",
+      "effectCondition": ""
+    },
+    "midiProperties": {
+      "autoFailFriendly": false,
+      "autoSaveFriendly": false,
+      "magicdam": false,
+      "magiceffect": false,
+      "noConcentrationCheck": false,
+      "toggleEffect": false,
+      "ignoreTotalCover": false
+    },
+    "dnd5e": {
+      "riders": {
+        "activity": [],
+        "effect": []
+      }
+    },
+    "cat": {
+      "automation": {
+        "source": "chris-premades",
+        "version": "2.1.3"
+      }
+    }
+  },
+  "_stats": {
+    "coreVersion": "14.369",
+    "systemId": "dnd5e",
+    "systemVersion": "6.0.6"
+  },
+  "_key": "!items!beSW9YtSxSvmJkkI"
+}

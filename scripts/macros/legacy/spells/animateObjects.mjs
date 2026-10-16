@@ -8,7 +8,7 @@ async function use({document, workflow, castData}) {
     const sourceActor = await compendiumUtils.getDocumentByIdentifier('chris-premades.CPRSummons2014', 'animatedObject');
     if (!sourceActor) return await exit();
     const description = automationUtils.getConfigValue(workflow.item, 'slamDescription');
-    const translate = 'CHRISPREMADES.Macros.Legacy.AnimateObjects.SlamName';
+    const translate = 'CHRISPREMADES.Summons.Features.Slam';
     const attackData = await compendiumUtils.getDocumentByIdentifier('chris-premades.AutomationItems', 'animate-objects-slam', {object: true, description, translate});
     if (!attackData) return await exit();
     const weights = {};

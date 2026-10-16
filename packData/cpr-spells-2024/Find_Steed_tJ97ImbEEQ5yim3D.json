@@ -60,7 +60,7 @@
     "activities": {
       "fxgJMXA6DMqMcAtq": {
         "_id": "fxgJMXA6DMqMcAtq",
-        "type": "utility",
+        "type": "summon",
         "activation": {
           "type": "action",
           "value": null,
@@ -85,7 +85,7 @@
         "effects": [],
         "range": {
           "override": false,
-          "units": "self"
+          "units": "ft"
         },
         "target": {
           "prompt": true,
@@ -102,17 +102,11 @@
           "spent": 0,
           "max": "",
           "recovery": []
-        },
-        "roll": {
-          "formula": "",
-          "name": "",
-          "prompt": false,
-          "visible": false
         },
         "sort": 0,
         "useConditionText": "",
         "effectConditionText": "",
-        "name": "Celestial",
+        "name": "",
         "useConditionReason": "",
         "macroData": {
           "name": "",
@@ -137,8 +131,8 @@
           "autoTargetAction": "default",
           "automationOnly": false,
           "otherActivityCompatible": true,
-          "identifier": "find-steed-celestial",
-          "displayActivityName": true,
+          "identifier": "summon",
+          "displayActivityName": false,
           "rollMode": "default",
           "chooseEffects": false,
           "toggleEffect": false,
@@ -159,216 +153,68 @@
           "postRemoveConditionText": ""
         },
         "otherActivityId": "none",
-        "identifier": "find-steed-celestial",
-        "img": "icons/creatures/abilities/wings-birdlike-blue.webp"
-      },
-      "Edv1IL7D9nPsuby7": {
-        "_id": "Edv1IL7D9nPsuby7",
-        "type": "utility",
-        "activation": {
-          "type": "action",
-          "value": null,
-          "override": false
-        },
-        "consumption": {
-          "targets": [],
-          "scaling": {
-            "allowed": false,
-            "max": ""
+        "identifier": "summon",
+        "img": "icons/creatures/abilities/wings-birdlike-blue.webp",
+        "profiles": [
+          {
+            "count": "1",
+            "cr": "",
+            "level": {
+              "min": null,
+              "max": null
+            },
+            "name": "Celestial",
+            "types": [],
+            "_id": "steedCelestial00",
+            "uuid": "Compendium.chris-premades.CPRSummons2024.Actor.RAV4iEEvNeVzHAHB"
           },
-          "spellSlot": true
-        },
-        "description": {
-          "chatFlavor": ""
-        },
-        "duration": {
-          "units": "inst",
-          "concentration": false,
-          "override": false
-        },
-        "effects": [],
-        "range": {
-          "override": false,
-          "units": "self"
-        },
-        "target": {
-          "prompt": true,
-          "template": {
-            "contiguous": false,
-            "units": "ft"
+          {
+            "count": "1",
+            "cr": "",
+            "level": {
+              "min": null,
+              "max": null
+            },
+            "name": "Fey",
+            "types": [],
+            "_id": "steedFey00000000",
+            "uuid": "Compendium.chris-premades.CPRSummons2024.Actor.RAV4iEEvNeVzHAHB"
           },
-          "affects": {
-            "choice": false
-          },
-          "override": false
+          {
+            "count": "1",
+            "cr": "",
+            "level": {
+              "min": null,
+              "max": null
+            },
+            "name": "Fiend",
+            "types": [],
+            "_id": "steedFiend000000",
+            "uuid": "Compendium.chris-premades.CPRSummons2024.Actor.RAV4iEEvNeVzHAHB"
+          }
+        ],
+        "summon": {
+          "mode": "",
+          "prompt": true
         },
-        "uses": {
-          "spent": 0,
-          "max": "",
-          "recovery": []
+        "bonuses": {
+          "ac": "",
+          "hd": "",
+          "hp": "",
+          "attackDamage": "",
+          "saveDamage": "",
+          "healing": ""
         },
-        "roll": {
-          "formula": "",
-          "name": "",
-          "prompt": false,
-          "visible": false
+        "match": {
+          "ability": "",
+          "attacks": false,
+          "disposition": false,
+          "proficiency": false,
+          "saves": false
         },
-        "sort": 1,
-        "useConditionText": "",
-        "effectConditionText": "",
-        "name": "Fey",
-        "useConditionReason": "",
-        "macroData": {
-          "name": "",
-          "command": ""
-        },
-        "ignoreTraits": {
-          "idi": false,
-          "idr": false,
-          "idv": false,
-          "ida": false,
-          "idm": false
-        },
-        "midiProperties": {
-          "ignoreTraits": [],
-          "triggeredActivityId": "none",
-          "triggeredActivityConditionText": "",
-          "triggeredActivityTargets": "targets",
-          "triggeredActivityRollAs": "self",
-          "forceDialog": false,
-          "confirmTargets": "default",
-          "autoTargetType": "any",
-          "autoTargetAction": "default",
-          "automationOnly": false,
-          "otherActivityCompatible": true,
-          "identifier": "find-steed-fey",
-          "displayActivityName": true,
-          "rollMode": "default",
-          "chooseEffects": false,
-          "toggleEffect": false,
-          "ignoreFullCover": false,
-          "forceAttackDialog": false,
-          "forceDamageDialog": false,
-          "otherActivityAsParentType": true,
-          "removeChatButtons": "default",
-          "magicEffect": false,
-          "magicDamage": false,
-          "noConcentrationCheck": false,
-          "autoCEEffects": "default"
-        },
-        "isOverTimeFlag": false,
-        "overTimeProperties": {
-          "saveRemoves": true,
-          "preRemoveConditionText": "",
-          "postRemoveConditionText": ""
-        },
-        "otherActivityId": "none",
-        "identifier": "find-steed-fey",
-        "img": "icons/creatures/magical/fae-fairy-winged-glowing-green.webp"
-      },
-      "Kd2IPTyy70OBbKcA": {
-        "_id": "Kd2IPTyy70OBbKcA",
-        "type": "utility",
-        "activation": {
-          "type": "action",
-          "value": null,
-          "override": false
-        },
-        "consumption": {
-          "targets": [],
-          "scaling": {
-            "allowed": false,
-            "max": ""
-          },
-          "spellSlot": true
-        },
-        "description": {
-          "chatFlavor": ""
-        },
-        "duration": {
-          "units": "inst",
-          "concentration": false,
-          "override": false
-        },
-        "effects": [],
-        "range": {
-          "override": false,
-          "units": "self"
-        },
-        "target": {
-          "prompt": true,
-          "template": {
-            "contiguous": false,
-            "units": "ft"
-          },
-          "affects": {
-            "choice": false
-          },
-          "override": false
-        },
-        "uses": {
-          "spent": 0,
-          "max": "",
-          "recovery": []
-        },
-        "roll": {
-          "formula": "",
-          "name": "",
-          "prompt": false,
-          "visible": false
-        },
-        "sort": 2,
-        "useConditionText": "",
-        "effectConditionText": "",
-        "name": "Fiend",
-        "useConditionReason": "",
-        "macroData": {
-          "name": "",
-          "command": ""
-        },
-        "ignoreTraits": {
-          "idi": false,
-          "idr": false,
-          "idv": false,
-          "ida": false,
-          "idm": false
-        },
-        "midiProperties": {
-          "ignoreTraits": [],
-          "triggeredActivityId": "none",
-          "triggeredActivityConditionText": "",
-          "triggeredActivityTargets": "targets",
-          "triggeredActivityRollAs": "self",
-          "forceDialog": false,
-          "confirmTargets": "default",
-          "autoTargetType": "any",
-          "autoTargetAction": "default",
-          "automationOnly": false,
-          "otherActivityCompatible": true,
-          "identifier": "find-steed-fiend",
-          "displayActivityName": true,
-          "rollMode": "default",
-          "chooseEffects": false,
-          "toggleEffect": false,
-          "ignoreFullCover": false,
-          "forceAttackDialog": false,
-          "forceDamageDialog": false,
-          "otherActivityAsParentType": true,
-          "removeChatButtons": "default",
-          "magicEffect": false,
-          "magicDamage": false,
-          "noConcentrationCheck": false,
-          "autoCEEffects": "default"
-        },
-        "isOverTimeFlag": false,
-        "overTimeProperties": {
-          "saveRemoves": true,
-          "preRemoveConditionText": "",
-          "postRemoveConditionText": ""
-        },
-        "otherActivityId": "none",
-        "identifier": "find-steed-fiend",
-        "img": "icons/magic/death/skull-horned-goat-pentagram-red.webp"
+        "creatureSizes": [],
+        "creatureTypes": [],
+        "tempHP": ""
       }
     },
     "identifier": "find-steed",
@@ -423,13 +269,216 @@
         "version": "2.1.3"
       },
       "macros": {
-        "roll": [
+        "move": [
+          {
+            "source": "cat",
+            "rules": "all",
+            "identifier": "summon"
+          }
+        ],
+        "summon": [
+          {
+            "source": "cat",
+            "rules": "all",
+            "identifier": "summon"
+          },
           {
             "source": "chris-premades",
             "rules": "2024",
             "identifier": "find-steed"
           }
         ]
+      },
+      "genericConfig": {
+        "cat": {
+          "summon": {
+            "activityId": "fxgJMXA6DMqMcAtq",
+            "replaceExisting": true,
+            "summons": [
+              {
+                "profile": "steedCelestial00",
+                "initiative": "follows",
+                "dismissAtZero": true,
+                "animation": {
+                  "source": "chris-premades",
+                  "identifier": "celestialSummon"
+                },
+                "updates": [
+                  {
+                    "path": "system.details.cr",
+                    "value": "@ownerCR",
+                    "mode": "formula"
+                  },
+                  {
+                    "path": "system.details.type.value",
+                    "value": "celestial",
+                    "mode": "literal"
+                  },
+                  {
+                    "path": "system.attributes.ac.override",
+                    "value": "10 + @castLevel",
+                    "mode": "formula"
+                  },
+                  {
+                    "path": "system.attributes.hp.max",
+                    "value": "5 + 10 * @castLevel",
+                    "mode": "formula"
+                  },
+                  {
+                    "path": "system.attributes.hp.value",
+                    "value": "5 + 10 * @castLevel",
+                    "mode": "formula"
+                  },
+                  {
+                    "path": "system.attributes.movement.speeds.fly",
+                    "value": "60 * min(1, floor(@castLevel / 4))",
+                    "mode": "formula"
+                  }
+                ],
+                "items": [
+                  {
+                    "uuid": "Compendium.chris-premades.CPRAutomationItems.Item.BpNOPIS7GUWj0mpb"
+                  },
+                  {
+                    "uuid": "Compendium.chris-premades.CPRAutomationItems.Item.DJZw8E7itZSicJ1M",
+                    "matchAttack": true,
+                    "scaling": {
+                      "damageBonus": "@castLevel",
+                      "damageTypes": [
+                        "radiant"
+                      ]
+                    }
+                  },
+                  {
+                    "uuid": "Compendium.chris-premades.CPRAutomationItems.Item.CKF2ULgxlewtsHmS",
+                    "scaling": {
+                      "healingBonus": "@castLevel"
+                    }
+                  }
+                ]
+              },
+              {
+                "profile": "steedFey00000000",
+                "initiative": "follows",
+                "dismissAtZero": true,
+                "animation": {
+                  "source": "chris-premades",
+                  "identifier": "natureSummon"
+                },
+                "updates": [
+                  {
+                    "path": "system.details.cr",
+                    "value": "@ownerCR",
+                    "mode": "formula"
+                  },
+                  {
+                    "path": "system.details.type.value",
+                    "value": "fey",
+                    "mode": "literal"
+                  },
+                  {
+                    "path": "system.attributes.ac.override",
+                    "value": "10 + @castLevel",
+                    "mode": "formula"
+                  },
+                  {
+                    "path": "system.attributes.hp.max",
+                    "value": "5 + 10 * @castLevel",
+                    "mode": "formula"
+                  },
+                  {
+                    "path": "system.attributes.hp.value",
+                    "value": "5 + 10 * @castLevel",
+                    "mode": "formula"
+                  },
+                  {
+                    "path": "system.attributes.movement.speeds.fly",
+                    "value": "60 * min(1, floor(@castLevel / 4))",
+                    "mode": "formula"
+                  }
+                ],
+                "items": [
+                  {
+                    "uuid": "Compendium.chris-premades.CPRAutomationItems.Item.BpNOPIS7GUWj0mpb"
+                  },
+                  {
+                    "uuid": "Compendium.chris-premades.CPRAutomationItems.Item.DJZw8E7itZSicJ1M",
+                    "matchAttack": true,
+                    "scaling": {
+                      "damageBonus": "@castLevel",
+                      "damageTypes": [
+                        "psychic"
+                      ]
+                    }
+                  },
+                  {
+                    "uuid": "Compendium.chris-premades.CPRAutomationItems.Item.uqGsfsTJbakb0rt0"
+                  }
+                ]
+              },
+              {
+                "profile": "steedFiend000000",
+                "initiative": "follows",
+                "dismissAtZero": true,
+                "animation": {
+                  "source": "chris-premades",
+                  "identifier": "fiendSummon"
+                },
+                "updates": [
+                  {
+                    "path": "system.details.cr",
+                    "value": "@ownerCR",
+                    "mode": "formula"
+                  },
+                  {
+                    "path": "system.details.type.value",
+                    "value": "fiend",
+                    "mode": "literal"
+                  },
+                  {
+                    "path": "system.attributes.ac.override",
+                    "value": "10 + @castLevel",
+                    "mode": "formula"
+                  },
+                  {
+                    "path": "system.attributes.hp.max",
+                    "value": "5 + 10 * @castLevel",
+                    "mode": "formula"
+                  },
+                  {
+                    "path": "system.attributes.hp.value",
+                    "value": "5 + 10 * @castLevel",
+                    "mode": "formula"
+                  },
+                  {
+                    "path": "system.attributes.movement.speeds.fly",
+                    "value": "60 * min(1, floor(@castLevel / 4))",
+                    "mode": "formula"
+                  }
+                ],
+                "items": [
+                  {
+                    "uuid": "Compendium.chris-premades.CPRAutomationItems.Item.BpNOPIS7GUWj0mpb"
+                  },
+                  {
+                    "uuid": "Compendium.chris-premades.CPRAutomationItems.Item.DJZw8E7itZSicJ1M",
+                    "matchAttack": true,
+                    "scaling": {
+                      "damageBonus": "@castLevel",
+                      "damageTypes": [
+                        "necrotic"
+                      ]
+                    }
+                  },
+                  {
+                    "uuid": "Compendium.chris-premades.CPRAutomationItems.Item.bYpebglSouWvt1WT",
+                    "matchDC": true
+                  }
+                ]
+              }
+            ]
+          }
+        }
       }
     }
   },

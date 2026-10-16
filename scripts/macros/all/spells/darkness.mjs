@@ -32,25 +32,12 @@ function getDarkenedToken(region, activity, workflow) {
     if (activity.target.template.type !== 'radius') return;
     return workflow?.token?.document ?? actorUtils.getFirstToken(activity.actor);
 }
-async function addTimer(activity, region) {
-    const effectData = documentUtils.getBaseEffectData(activity, {
-        name: activity.item.name,
-        img: activity.item.img,
-        origin: activity.uuid,
-        duration: {value: Number(activity.duration.value) || 1, units: 'rounds', expiry: 'targetEnd'},
-        macros: [{type: 'effect', macros: [{source: 'chris-premades', rules: 'all', identifier: 'darkness-timer'}]}]
-    });
-    genericUtils.setProperty(effectData, 'flags.chris-premades.darknessRegion', region.uuid);
-    const [effect] = await effectUtils.createEffects(activity.actor, [effectData]);
-    if (effect) await documentUtils.makeDependent(effect, [region]);
-}
 async function created({document: region, workflow}) {
     const activity = regionUtils.getActivity(region);
     const originItem = activity?.item;
     if (!originItem) return;
-    if (!activity.duration.concentration && activity.duration.units === 'round') await addTimer(activity, region);
-    const summonConcentration = summonUtils.getSummonData(activity.actor)?.parent;
-    if (summonConcentration && !region.flags.dnd5e?.dependentOn) await documentUtils.makeDependent(summonConcentration, [region]);
+    if (!activity.duration.concentration && activity.duration.units === 'round') await regionUtils.addRegionTimer(activity, region);
+    if (!region.flags.dnd5e?.dependentOn) await summonUtils.makeDependentOnParent(activity.actor, [region]);
     if (automationUtils.getConfigValue(originItem, 'spreadAroundCorners')) await regionUtils.spreadAroundCorners(region);
     const updates = {name: originItem.name};
     const seeingTokens = getSeeingTokens(region, workflow);
@@ -82,18 +69,6 @@ async function deleted({document: region}) {
     const {animation} = automationUtils.getResolvedAnimation(originItem, 'animation');
     if (animation) await animation.macros?.endDarkness?.(region);
 }
-async function timerEnded({document: effect}) {
-    const region = await fromUuid(effect.flags['chris-premades']?.darknessRegion ?? '');
-    if (region) await documentUtils.deleteDocument(region);
-}
-export const darknessTimer = {
-    name: 'Darkness Timer',
-    version: '2.1.3',
-    rules: 'all',
-    effect: [
-        {pass: 'deleted', macro: timerEnded, priority: 50}
-    ]
-};
 export const darkness = {
     name: 'Darkness',
     version: '2.0.0',

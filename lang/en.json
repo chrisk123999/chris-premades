@@ -90,6 +90,7 @@
             },
             "SpellParts": {
                 "Aura": "Persistent Aura",
+                "Circle": "Rune Circle",
                 "BuffColorHint": "Color of the cast and buff glow. Colors beyond the free set need JB2A Patreon.",
                 "Cast": "Caster Flourish",
                 "CastHint": "Play a casting flourish on the caster before the effect.",
@@ -122,6 +123,7 @@
                 "ImpactHint": "Play an impact on each target that failed its save or was hit.",
                 "Persist": "Persistent Area",
                 "PersistHint": "Keep a looping effect over the area until the area is removed.",
+                "Shimmer": "Heat Embers",
                 "Tether": "Tether"
             },
             "StepOfTheWind": "Step of the Wind",
@@ -216,9 +218,35 @@
                 "Name": "Zone of Truth"
             },
             "AlterSelf": "Alter Self",
+            "AntilifeShell": "Antilife Shell",
+            "AntilifeShellCircleHint": "Show the rune circle on the ground under the barrier.",
+            "BigbysHandSummon": "Bigby's Hand",
+            "AnimateDeadSummon": "Animate Dead",
+            "DivineSmite": "Divine Smite",
+            "Hex": "Hex",
             "BlindnessDeafness": "Blindness/Deafness",
             "BlindnessDeafnessColorHint": "Color of the curse burst on the target. Colors beyond red need JB2A Patreon.",
+            "Blink": "Blink",
+            "SpiritGuardians": "Spirit Guardians",
+            "SpiritGuardiansColorHint": "Color of the guardian spirits. Auto uses the damage type chosen when the spell is cast: radiant spirits are blue and gold, necrotic spirits are dark purple. Colors beyond blue and gold need JB2A Patreon.",
             "Blur": "Blur",
+            "Fly": "Fly",
+            "HuntersMark": "Hunter's Mark",
+            "SleetStorm": "Sleet Storm",
+            "Banishment": "Banishment",
+            "CallLightning": "Call Lightning",
+            "Cloudkill": "Cloudkill",
+            "FarStep": "Far Step",
+            "FarStepBorder": "Far Step: Border",
+            "FireShield": "Fire Shield",
+            "FireShieldVariant": "Shield",
+            "FireShieldWarm": "Warm",
+            "FireShieldChill": "Chill",
+            "IceStorm": "Ice Storm",
+            "ThunderStep": "Thunder Step",
+            "TidalWave": "Tidal Wave",
+            "WallOfFire": "Wall of Fire",
+            "WallOfFireShimmerHint": "Show drifting embers over the burning side of the wall. Needs JB2A Patreon.",
             "CalmEmotions": {
                 "Name": "Calm Emotions",
                 "ColorHint": "Color of the calming pulse over the area and of the glow that stays on affected creatures while the spell lasts. Colors beyond blue need JB2A Patreon."
@@ -228,7 +256,20 @@
             "DustDevilBlueGrey": "Dust Devil (Blue Grey)",
             "DustDevilBlueWhite": "Dust Devil (Blue White)",
             "DustDevilContact": "Dust Devil: Contact",
-            "DustDevilDebrisCloud": "Dust Devil: Debris Cloud"
+            "DustDevilDebrisCloud": "Dust Devil: Debris Cloud",
+            "Wall": "Wall",
+            "WindWall": "Wind Wall",
+            "WallOfSand": "Wall of Sand",
+            "WallOfWater": "Wall of Water",
+            "WallOfSnow": "Wall of Snow",
+            "WallOfDeath": "Wall of Death",
+            "WallOfForce": "Wall of Force",
+            "WallOfLight": "Wall of Light",
+            "WallOfStone": "Wall of Stone",
+            "WallOfIce": "Wall of Ice",
+            "WallOfThorns": "Wall of Thorns",
+            "WallOfGloom": "Wall of Gloom",
+            "PrismaticWall": "Prismatic Wall"
         },
         "Config": {
             "Abilities": "Abilities",
@@ -273,6 +314,9 @@
                 "Auto": "Auto (Damage Type)",
                 "Black": "Black",
                 "Blue": "Blue",
+                "BlueYellow": "Blue Yellow",
+                "DarkBlue": "Dark Blue",
+                "WhiteBlue": "White Blue",
                 "Blue02": "Blue 2",
                 "Cycle": "Cycle",
                 "DarkGreen": "Dark Green",
@@ -300,7 +344,6 @@
             "CombatOnly": "Only Enable When in Combat",
             "CompendiumName": "{option} Compendium Name",
             "Conditions": "Conditions",
-            "CreateActivity": "Create Activity",
             "CreatureTypes": "Creature Types",
             "CriticalOnly": "Critical Only",
             "CustomAvatar": "Custom Avatar",
@@ -365,7 +408,6 @@
             "Number": "Number",
             "Opacity": "Opacity",
             "Percentage": "Percentage",
-            "PlaceActivity": "Place Activity",
             "PlayAnimation": "Play Animation",
             "PlayTeleportAnimation": "Play Teleport Animation",
             "PlayTokenAnimation": "Play Token Animation",
@@ -378,7 +420,6 @@
             "ReactionEffectIdentifiers": "Reaction Effect Identifiers",
             "ReactionItemIdentifiers": "Reaction Item Identifiers",
             "RealDarkness": "Use Real Darkness",
-            "RecallActivity": "Recall Activity",
             "Remember": "Remember and auto-apply choices",
             "RemoveOnSave": "Remove On Save",
             "SaveAbilities": "Save Abilities",
@@ -450,6 +491,25 @@
         },
         "Macros": {
             "All": {
+                "Banishment": {
+                    "Native": "Which banished creatures are native to a different plane?"
+                },
+                "BestowCurse": {
+                    "Ability": "Which ability is cursed?"
+                },
+                "CallLightning": {
+                    "Storming": "Is it already storming where you cast the spell?"
+                },
+                "VampiricTouch": {
+                    "HealingMultiplier": "Healing Multiplier"
+                },
+                "WallOfFire": {
+                    "Heat": "Heat",
+                    "PreviewHeat": "{count} in the heat"
+                },
+                "HungerOfHadar": {
+                    "Upcast": "Which damage increases with the higher spell slot?"
+                },
                 "AnimateDead": {
                     "Controlled": "Controlled",
                     "NotFound": "{creature} actor not found in Monster Compendium, please configure Animate Dead manually.",
@@ -641,18 +701,10 @@
                     "ReachHint": "Distance in feet from the weapon that an attack target must be within."
                 },
                 "SummonBeast": {
-                    "Multiattack": "Multiattack ({numAttacks} Attacks)",
                     "Maul": "Maul",
-                    "Rend": "Rend",
                     "Flyby": "Flyby",
                     "PackTactics": "Pack Tactics",
-                    "WaterBreathing": "Water Breathing",
-                    "HitPointsPerLevel": "Hit Points per Level Above 2nd",
-                    "AirSpeed": "Air Fly Speed",
-                    "LandSpeed": "Land Climb Speed",
-                    "WaterSpeed": "Water Swim Speed",
-                    "AttacksDivisor": "Attacks Divisor",
-                    "AttacksDivisorHint": "The spell level is divided by this number, rounded down, to get the number of Multiattack attacks."
+                    "WaterBreathing": "Water Breathing"
                 },
                 "WardingBond": {
                     "Distance": "The bonded creatures are more than the maximum distance apart. End Warding Bond?",
@@ -661,6 +713,76 @@
                 },
                 "EnlargeReduce": {
                     "SizeSteps": "Size Categories"
+                },
+                "SummonUndead": {
+                    "DeathlyTouch": "Deathly Touch",
+                    "FesteringAura": "Festering Aura",
+                    "GraveBolt": "Grave Bolt",
+                    "IncorporealPassage": "Incorporeal Passage",
+                    "RottingClaw": "Rotting Claw",
+                    "RottingClawParalyze": "Rotting Claw: Paralyze"
+                },
+                "SummonShadowspawn": {
+                    "ChillingRend": "Chilling Rend",
+                    "DreadfulScream": "Dreadful Scream",
+                    "ShadowStealth": "Shadow Stealth",
+                    "TerrorFrenzy": "Terror Frenzy",
+                    "WeightOfSorrow": "Weight of Sorrow"
+                },
+                "SummonConstruct": {
+                    "BerserkLashing": "Berserk Lashing",
+                    "HeatedBody": "Heated Body",
+                    "StoneLethargy": "Stone Lethargy"
+                },
+                "SummonElemental": {
+                    "AmorphousForm": "Amorphous Form"
+                },
+                "SummonFey": {
+                    "Select": "Who to charm?"
+                },
+                "SummonCelestial": {
+                    "HealingTouch": "Healing Touch",
+                    "RadiantBow": "Radiant Bow",
+                    "RadiantMace": "Radiant Mace",
+                    "Temp": "Choose who gains the temporary hit points."
+                },
+                "SummonDraconicSpirit": {
+                    "BreathWeapon": "Breath Weapon",
+                    "SharedResistances": "Shared Resistances",
+                    "ResistanceType": "Choose a damage type to share resistance to."
+                },
+                "SummonFiend": {
+                    "DeathThroes": "Death Throes",
+                    "DevilsSight": "Devil's Sight",
+                    "FieryStrike": "Fiery Strike",
+                    "HurlFlame": "Hurl Flame",
+                    "MagicResistance": "Magic Resistance"
+                },
+                "GuardianOfFaith": {
+                    "Damage": "Guardian of Faith: Damage"
+                },
+                "PrismaticWall": {
+                    "LayerDestroyed": "The {layer} layer of the Prismatic Wall is destroyed.",
+                    "Layers": {
+                        "red": "red",
+                        "orange": "orange",
+                        "yellow": "yellow",
+                        "green": "green",
+                        "blue": "blue",
+                        "indigo": "indigo",
+                        "violet": "violet"
+                    },
+                    "Petrified": "Prismatic Wall: Petrified",
+                    "OtherPlane": "Prismatic Wall: Another Plane"
+                },
+                "WallOfWater": {
+                    "Frozen": "Frozen Wall of Water"
+                },
+                "WallOfDeath": {
+                    "Siphon": "Use your reaction to gain {amount} temporary hit points from Wall of Death?"
+                },
+                "WallOfStone": {
+                    "Escape": "{name} is enclosed by the wall. Use its reaction to move out?"
                 }
             },
             "Generic": {
@@ -670,6 +792,9 @@
                     "NeutralTarget": "Neutral",
                     "RangeFromHint": "The token from which to measure range.",
                     "TargetHint": "Any value less than one will count as unlimited."
+                },
+                "AuraDesignation": {
+                    "Prompt": "Choose creatures the spell leaves unaffected. You are always one."
                 },
                 "AttackRider": {
                     "BonusDamageTypeHint": "Damage type of the extra damage. Uses the attack's damage type when empty.",
@@ -746,7 +871,8 @@
                     "SpellLevelHint": "Limit this feature by spell level.",
                     "SpellSchoolHint": "Limit this feature by spell school.",
                     "RiderNearbyRange": "Nearby Range",
-                    "RiderNearbyRangeHint": "The rider activity also targets creatures within this distance of the hit target. 0 targets the hit target only."
+                    "RiderNearbyRangeHint": "The rider activity also targets creatures within this distance of the hit target. 0 targets the hit target only.",
+                    "RiderAnimationHint": "Played on the hit target when the rider is used."
                 },
                 "ConsumeItemToUse": "Consume {item} to use this feature?",
                 "ContestedCheck": {
@@ -776,6 +902,8 @@
                     "TargetWoundedHint": "Only apply the bonus when the target is missing hit points.",
                     "MaxTargets": "Max Targets",
                     "MaxTargetsHint": "Limit the bonus to this many targets. 0 applies it to every target.",
+                    "AttackerRange": "Attacker Range",
+                    "AttackerRangeHint": "Only add the bonus against targets within this many feet of the attacker. 0 ignores distance.",
                     "RequireHit": "Require Hit",
                     "RequireHitHint": "Only apply this bonus to targets that were hit."
                 },
@@ -901,7 +1029,9 @@
                 "SelectDamageType": {
                     "DamageTypeHint": "Prompt for a damage type when this item is rolled.",
                     "RememberChoice": "Remember Choice",
-                    "RememberChoiceHint": "Offer \"Don't ask again this combat\" on the damage type prompt."
+                    "RememberChoiceHint": "Offer \"Don't ask again this combat\" on the damage type prompt.",
+                    "AtCast": "Choose When Cast",
+                    "AtCastHint": "Prompt once when the spell is cast and use that damage type for every later damage roll."
                 },
                 "SpecialItemUse": {
                     "ActivationTypes": "Activation Types",
@@ -920,26 +1050,6 @@
                     "SelectActivity": "Which activity?",
                     "SelectItem": "Which item?"
                 },
-                "Summon": {
-                    "MaxDistance": "Maximum Distance",
-                    "MaxDistanceHint": "Summons farther than this many feet from you are dismissed when you or they move. 0 disables it.",
-                    "MoveActivity": "Move Activity",
-                    "MoveActivityHint": "Rolling this activity moves this item's placed summons up to the activity's range.",
-                    "ReplaceExisting": "Replace Existing Summons",
-                    "ReplaceExistingHint": "Dismiss this item's existing summons before creating new ones.",
-                    "FollowUpActivity": "Follow-Up Activity",
-                    "FollowUpActivityHint": "Activity rolled on a creature picked within the follow-up range of each summon. Uses and spell slots are not spent.",
-                    "FollowUpTiming": "Follow-Up Timing",
-                    "FollowUpTimingHint": "Roll the follow-up after the summons are created, after they move, or both.",
-                    "FollowUpTimingOptions": {
-                        "both": "After Summoning and Moving",
-                        "create": "After Summoning",
-                        "move": "After Moving"
-                    },
-                    "FollowUpRange": "Follow-Up Range",
-                    "FollowUpRangeHint": "Feet from the summon a follow-up target can be picked.",
-                    "FollowUpTarget": "Choose a creature for the follow-up."
-                },
                 "SummonModifier": {
                     "Confirm": "Apply {document} to {summon}?",
                     "CreatureTypesHint": "Only modify summons of these creature types. Leave empty for any creature type.",
@@ -956,6 +1066,8 @@
                     "CreatureTypesHint": "Keep only targets of these creature types. Leave empty to skip the creature type check.",
                     "ExcludeSummoner": "Exclude Summoner",
                     "ExcludeSummonerHint": "Remove the summoner when a summoned creature uses this item.",
+                    "MinIntelligence": "Minimum Intelligence",
+                    "MinIntelligenceHint": "Remove targets with a lower Intelligence score. 0 turns the check off.",
                     "Invert": "Invert",
                     "InvertHint": "Remove targets of the selected creature types instead of keeping them.",
                     "MaxSizeHint": "Remove targets larger than this size.",
@@ -963,15 +1075,25 @@
                     "MaxCRHint": "Remove targets above this challenge rating. -1 skips the check."
                 },
                 "Teleport": {
+                    "CompanionMaxSize": "Companions No Larger Than User",
+                    "CompanionRange": "Companion Range",
+                    "Companions": "Companions",
+                    "CompanionsHint": "How many allies within Companion Range the user may bring along. They keep their position relative to the user.",
+                    "SelectCompanions": "Choose the creatures teleporting with you.",
                     "RangeFromRoll": "Range From Utility Roll",
                     "RangeFromRollHint": "Use the activity's utility roll total as the maximum teleport distance. Falls back to Range, then the activity's own range, when nothing was rolled.",
                     "RangeHint": "Maximum teleport distance. Leave blank to use the activity's own range.",
                     "RequireSight": "Require Sight",
                     "RequireSightHint": "Only allow spaces the user can see.",
                     "Targets": "Teleported Creatures",
-                    "TargetsHint": "Teleport the user, or each target that failed its save. The user picks every destination, measured from the user.",
+                    "TargetsHint": "Teleport the user, each target that failed its save, or the user to a space near one of the targets. Range is measured from the user, or from the chosen target for Near a Target.",
                     "Self": "Self",
-                    "FailedSaves": "Failed Saves"
+                    "FailedSaves": "Failed Saves",
+                    "NearTarget": "Near a Target",
+                    "Swap": "Swap With a Target",
+                    "ExcludeUser": "Exclude the User",
+                    "ExcludeUserHint": "On a self teleport, remove the user from the activity's targets. Use for areas centred on the space the user leaves.",
+                    "SelectNear": "Choose the creature to appear next to."
                 },
                 "UseOnEvent": {
                     "Empty": "All Empty",
@@ -981,7 +1103,9 @@
                     "NotFull": "Any Spent",
                     "PoolCondition": "Recovery Condition",
                     "PoolConditionHint": "Only use this activity when the items whose uses it recovers are in this state.",
-                    "ShortRest": "Short Rest"
+                    "ShortRest": "Short Rest",
+                    "TurnStart": "Start of Turn",
+                    "TurnEnd": "End of Turn"
                 },
                 "ReflectOnHit": {
                     "NoActivity": "Reflect activity not found on the effect's source item.",
@@ -1014,9 +1138,26 @@
                     "NoSourceActivity": "Source activity for the region move not found.",
                     "NoRegion": "No placed region found to move.",
                     "TooFar": "The area can only move up to {maxRange} feet."
+                },
+                "Wall": {
+                    "PreviewSaves": "{count} make the save",
+                    "PreviewInside": "{count} inside",
+                    "FreeDraw": "Free-Draw Wall",
+                    "FreeDrawHint": "Draw the wall as a path of several segments instead of one straight line.",
+                    "MovementCost": "Slow Movement",
+                    "HarmfulSide": "Harmful Side",
+                    "PreviewSide": "{count} on the harmful side",
+                    "PreviewPushed": "{count} pushed aside",
+                    "Zone": "Within 20 Feet",
+                    "FrigidAir": "Frigid Air",
+                    "Designate": "Choose creatures that can pass through and stay near the wall without harm. You are always one."
                 }
             },
             "Legacy": {
+                "Antagonize": {
+                    "Victim": "Choose the creature it attacks.",
+                    "Weapon": "Choose the weapon it attacks with."
+                },
                 "AcidArrow": {
                     "HalfDamage": "Missed Target Damage"
                 },
@@ -1024,7 +1165,6 @@
                     "SaveBonus": "Lycanthropy Save DC Bonus"
                 },
                 "AnimateObjects": {
-                    "SlamName": "Slam",
                     "SummonName": "Animated Object",
                     "ExtraPerLevel": "Extra Objects per Level"
                 },
@@ -1288,8 +1428,6 @@
                     "FeyStep": "Fey Step",
                     "Fuming": "Fuming",
                     "Mirthful": "Mirthful",
-                    "Multiattack": "Multiattack ({numAttacks} Attacks)",
-                    "Select": "Who to charm?",
                     "Shortsword": "Shortsword",
                     "Tricksy": "Tricksy"
                 },
@@ -1330,9 +1468,59 @@
                     "SelectHitDie": "Select how many Hit Dice to roll.",
                     "HitDiceOffset": "Hit Dice Offset",
                     "HitDiceOffsetHint": "Added to the spell level to get the maximum number of Hit Dice spent."
+                },
+                "DancingSword": {
+                    "TooFar": "The weapon can only fly 30 feet before it attacks."
+                },
+                "ManifestEcho": {
+                    "Echo": "Echo of {name}",
+                    "Far": "{actorName}'s echo is more than 30 feet away. Destroy it?",
+                    "NoWeapons": "No equipped weapons to attack with.",
+                    "RangeOverride": "Attacking from Echo",
+                    "Weapon": "Choose a weapon.",
+                    "Which": "Choose an echo."
+                },
+                "SpiritTotem": {
+                    "Detect": "{name}: ability checks made to detect creatures",
+                    "HawkAttack": "Use your reaction to give {name} advantage on this attack?"
+                },
+                "WildSurge": {
+                    "BoltOfLight": "Bolt of Light",
+                    "FlowersAndVines": "Flowers and Vines",
+                    "IntangibleSpirit": "Intangible Spirit",
+                    "MagicInfusion": "Magic Infusion",
+                    "ProtectiveLights": "Protective Lights",
+                    "Retribution": "Retribution",
+                    "Select": "Choose a Wild Surge effect.",
+                    "SelectWeapon": "Choose a weapon to infuse.",
+                    "ShadowyTendrils": "Shadowy Tendrils",
+                    "Target": "Choose a target for the bolt.",
+                    "Teleport": "Teleport"
+                },
+                "SummonWildfireSpirit": {
+                    "FieryTeleportation": "Fiery Teleportation",
+                    "FlameSeed": "Flame Seed"
+                },
+                "SpiritOfDeath": {
+                    "HauntCreature": "Haunt Creature",
+                    "ReapingScythe": "Reaping Scythe",
+                    "IncorporealMovement": "Incorporeal Movement",
+                    "InvalidTarget": "The spirit can only attack the creature it is haunting."
+                },
+                "BigbysHand": {
+                    "ClenchedFist": "Clenched Fist",
+                    "ForcefulHand": "Forceful Hand",
+                    "GraspingHand": "Grasping Hand",
+                    "InterposingHand": "Interposing Hand",
+                    "Big": "The target is too large to grasp.",
+                    "NoGrapple": "The hand is not grappling a creature.",
+                    "HalfCover": "Half Cover (Bigby's Hand)"
                 }
             },
             "Modern": {
+                "AuraOfVitality": {
+                    "Select": "Choose a creature in the aura to heal."
+                },
                 "AgonizingBlast": {
                     "Select": "Choose the cantrips this invocation applies to."
                 },
@@ -1464,9 +1652,7 @@
                     "Select": "Choose a creature to heal."
                 },
                 "SummonAberration": {
-                    "Claws": "Claws",
                     "EyeRay": "Eye Ray",
-                    "Multiattack": "Multiattack ({numAttacks} Attacks)",
                     "PsychicSlam": "Psychic Slam",
                     "Regeneration": "Regeneration",
                     "WhisperingAura": "Whispering Aura"
@@ -1476,8 +1662,6 @@
                     "FeyStep": "Fey Step",
                     "Fuming": "Fuming",
                     "Mirthful": "Mirthful",
-                    "Multiattack": "Multiattack ({numAttacks} Attacks)",
-                    "Select": "Who to charm?",
                     "Tricksy": "Tricksy"
                 },
                 "TinkersMagic": {
@@ -1521,16 +1705,7 @@
                     "Choose": "Select hit dice to use:"
                 },
                 "FindSteed": {
-                    "HitPointsPerLevel": "Hit Points per Spell Level",
-                    "BaseArmorClass": "Base Armor Class",
-                    "BaseArmorClassHint": "The steed's AC is this value plus the spell's level.",
-                    "FlyLevel": "Fly Speed Spell Level",
-                    "FlyLevelHint": "Minimum spell level at which the steed gains a 60 ft. fly speed.",
-                    "LifeBondRange": "Life Bond Range",
-                    "CelestialDamageType": "Celestial Damage Type",
-                    "FeyDamageType": "Fey Damage Type",
-                    "FiendDamageType": "Fiend Damage Type",
-                    "FlySpeed": "Fly Speed"
+                    "LifeBondRange": "Life Bond Range"
                 },
                 "SummerWinds": {
                     "MissingActivity": "Summer Winds is missing its undead save activity."
@@ -1539,6 +1714,14 @@
         },
         "Summons": {
             "CreatureNames": {
+                "WildfireSpirit": "Wildfire Spirit",
+                "DancingItem": "Dancing Item",
+                "ForceSculpture": "Force Sculpture",
+                "Flumph": "Flumph",
+                "Pixie": "Pixie",
+                "SpiritTotemBear": "Bear Spirit",
+                "SpiritTotemHawk": "Hawk Spirit",
+                "SpiritTotemUnicorn": "Unicorn Spirit",
                 "BeastOfTheLand": "Beast of the Land",
                 "BeastOfTheSea": "Beast of the Sea",
                 "BeastOfTheSky": "Beast of the Sky",
@@ -1555,9 +1738,47 @@
                 "Zombie": "Zombie",
                 "BestialSpiritAir": "Bestial Spirit (Air)",
                 "BestialSpiritLand": "Bestial Spirit (Land)",
-                "BestialSpiritWater": "Bestial Spirit (Water)"
+                "BestialSpiritWater": "Bestial Spirit (Water)",
+                "UndeadSpiritGhostly": "Undead Spirit (Ghostly)",
+                "UndeadSpiritPutrid": "Undead Spirit (Putrid)",
+                "UndeadSpiritSkeletal": "Undead Spirit (Skeletal)",
+                "ShadowSpiritFury": "Shadow Spirit (Fury)",
+                "ShadowSpiritDespair": "Shadow Spirit (Despair)",
+                "ShadowSpiritFear": "Shadow Spirit (Fear)",
+                "ConstructSpiritClay": "Construct Spirit (Clay)",
+                "ConstructSpiritMetal": "Construct Spirit (Metal)",
+                "ConstructSpiritStone": "Construct Spirit (Stone)",
+                "ElementalSpiritAir": "Elemental Spirit (Air)",
+                "ElementalSpiritEarth": "Elemental Spirit (Earth)",
+                "ElementalSpiritFire": "Elemental Spirit (Fire)",
+                "ElementalSpiritWater": "Elemental Spirit (Water)",
+                "ReaperSpirit": "Reaper Spirit",
+                "CelestialSpiritAvenger": "Celestial Spirit (Avenger)",
+                "CelestialSpiritDefender": "Celestial Spirit (Defender)",
+                "DraconicSpirit": "Draconic Spirit",
+                "DraconicSpiritChromatic": "Draconic Spirit (Chromatic)",
+                "DraconicSpiritMetallic": "Draconic Spirit (Metallic)",
+                "DraconicSpiritGem": "Draconic Spirit (Gem)",
+                "FiendishSpiritDemon": "Fiendish Spirit (Demon)",
+                "FiendishSpiritDevil": "Fiendish Spirit (Devil)",
+                "FiendishSpiritYugoloth": "Fiendish Spirit (Yugoloth)",
+                "GuardianOfFaith": "Guardian of Faith",
+                "BigbysHand": "Bigby's Hand",
+                "FeywildSpirit": "Feywild Spirit",
+                "AnimatedObjectTiny": "Tiny Animated Object",
+                "AnimatedObjectSmall": "Small Animated Object",
+                "AnimatedObjectMedium": "Medium Animated Object",
+                "AnimatedObjectLarge": "Large Animated Object",
+                "AnimatedObjectHuge": "Huge Animated Object"
             },
-            "SelectSummons": "Select Summons (Max {max})"
+            "SelectSummons": "Select Summons (Max {max})",
+            "Multiattack": "Multiattack ({attacks} Attacks)",
+            "Features": {
+                "Bite": "Bite",
+                "Claws": "Claws",
+                "Rend": "Rend",
+                "Slam": "Slam"
+            }
         }
     }
 }

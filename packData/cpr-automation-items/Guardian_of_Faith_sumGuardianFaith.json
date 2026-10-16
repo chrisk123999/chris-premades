@@ -1,0 +1,16 @@
+{
+  "type": "Item",
+  "folder": "LMfgYwuo2ZcYqe1b",
+  "name": "Guardian of Faith",
+  "color": null,
+  "sorting": "a",
+  "_id": "sumGuardianFaith",
+  "description": "",
+  "flags": {},
+  "_stats": {
+    "coreVersion": "14.369",
+    "systemId": "dnd5e",
+    "systemVersion": "6.0.6"
+  },
+  "_key": "!folders!sumGuardianFaith"
+}

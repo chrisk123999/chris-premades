@@ -142,7 +142,7 @@
           "autoTargetAction": "default",
           "automationOnly": false,
           "otherActivityCompatible": true,
-          "identifier": "",
+          "identifier": "staggering-smite",
           "displayActivityName": false,
           "rollMode": "default",
           "chooseEffects": false,
@@ -256,7 +256,7 @@
           "autoTargetAction": "default",
           "automationOnly": false,
           "otherActivityCompatible": false,
-          "identifier": "",
+          "identifier": "staggering-smite-stagger",
           "displayActivityName": false,
           "rollMode": "default",
           "chooseEffects": false,
@@ -335,7 +335,22 @@
                 "bonusDamageType": "psychic",
                 "attackType": "meleeWeaponAttack",
                 "rollActivity": "96bwOirqaXMrMx0E",
-                "endSpell": "always"
+                "endSpell": "always",
+                "animation": {
+                  "source": "chris-premades",
+                  "identifier": "smite"
+                }
+              }
+            }
+          },
+          "animationGenericConfig": {
+            "chris-premades": {
+              "nextHitRider": {
+                "chris-premades": {
+                  "smite": {
+                    "color": "purplepink"
+                  }
+                }
               }
             }
           }

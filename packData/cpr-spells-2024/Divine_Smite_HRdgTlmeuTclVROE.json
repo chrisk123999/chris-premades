@@ -132,7 +132,11 @@
                   "targetCreatureTypes": [
                     "undead",
                     "fiend"
-                  ]
+                  ],
+                  "animation": {
+                    "source": "chris-premades",
+                    "identifier": "divineSmite"
+                  }
                 }
               }
             }
@@ -221,7 +225,7 @@
     "cat": {
       "automation": {
         "source": "chris-premades",
-        "version": "2.0.4"
+        "version": "2.1.3"
       }
     }
   },

@@ -1,8 +1,8 @@
-import {automationUtils, effectUtils, genericUtils, itemUtils, Logging, tokenUtils, workflowUtils} from '../../../proxy.mjs';
+import {automationUtils, effectUtils, genericUtils, itemUtils, Logging, regionUtils, tokenUtils, workflowUtils} from '../../../proxy.mjs';
 function getRegion(item, scene) {
     const activity = itemUtils.getActivityByIdentifier(item, 'gust-of-wind');
     if (!activity || !scene) return;
-    return scene.regions.filter(region => region.flags.dnd5e?.activity === activity.uuid).sort((a, b) => (a._stats.createdTime ?? 0) - (b._stats.createdTime ?? 0)).at(-1);
+    return regionUtils.getPlacedRegions(scene, activity).at(-1);
 }
 async function early({workflow}) {
     if (workflow.activity.identifier !== 'gust-of-wind-push' || !workflow.token) return;

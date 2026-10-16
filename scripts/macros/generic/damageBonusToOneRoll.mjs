@@ -1,4 +1,4 @@
-import {actorUtils, automationUtils, constants, DamageBonus, documentUtils, effectUtils, Logging, workflowUtils} from '../../proxy.mjs';
+import {actorUtils, automationUtils, constants, DamageBonus, documentUtils, effectUtils, Logging, tokenUtils, workflowUtils} from '../../proxy.mjs';
 export const identifiersConfig = {
     default: [],
     type: 'selectIdentifiers',
@@ -62,8 +62,9 @@ async function damage({document, workflow}) {
     }
     const hasEffect = actor => !config.targetEffects.length || config.targetEffects.some(identifier => documentUtils.getEffectByIdentifier(actor, identifier, {multiple: true, sourceActor: workflow.actor}).length);
     const hasType = actor => !config.targetCreatureTypes.length || config.targetCreatureTypes.includes(actorUtils.typeOrRace(actor));
-    const narrowed = config.requireHit || config.targetEffects.length || config.targetCreatureTypes.length;
-    const targets = narrowed ? workflow.hitTargets.filter(token => token.actor && hasEffect(token.actor) && hasType(token.actor)) : undefined;
+    const inRange = token => !config.attackerRange || (workflow.token && tokenUtils.getDistance(workflow.token.document, token.document) <= config.attackerRange);
+    const narrowed = config.requireHit || config.targetEffects.length || config.targetCreatureTypes.length || config.attackerRange;
+    const targets = narrowed ? workflow.hitTargets.filter(token => token.actor && hasEffect(token.actor) && hasType(token.actor) && inRange(token)) : undefined;
     if (targets && !targets.size) return;
     const roll = document.documentName === 'ActiveEffect' ? getEffectRoll(document, config.bonus) : undefined;
     const bonus = new DamageBonus(document, {roll, formula: config.bonus, optional, type: config.bonusDamageType, maxTargets: config.maxTargets || undefined, allowCritical: config.allowCritical})
@@ -99,6 +100,7 @@ async function damage({document, workflow}) {
  * - `maxTargets`: limit the bonus to this many targets. 0 applies it to every target.
  * - `everyRoll`: add the bonus to every roll of a multi-attack. Off adds it to one roll.
  * - `requireHit`: only apply to targets that were hit.
+ * - `attackerRange`: only apply to targets within this many feet of the attacker. 0 ignores distance.
  * - `targetWounded`: only apply when the target is missing hit points.
  * - `targetEffects`: only apply to hit targets that carry one of these effects created by the user.
  * - `targetCreatureTypes`: only apply to hit targets of these creature types.
@@ -107,7 +109,7 @@ async function damage({document, workflow}) {
  */
 export const damageBonusToOneRoll = {
     rules: 'all',
-    version: '2.0.4',
+    version: '2.1.3',
     category: 'damage',
     generic: true,
     documents: ['activeeffect', 'item'],
@@ -215,6 +217,13 @@ export const damageBonusToOneRoll = {
             category: 'behavior',
             label: 'CHRISPREMADES.Macros.Generic.DamageBonusToOneRoll.RequireHit',
             hint: 'CHRISPREMADES.Macros.Generic.DamageBonusToOneRoll.RequireHitHint'
+        },
+        attackerRange: {
+            default: 0,
+            type: 'number',
+            category: 'behavior',
+            label: 'CHRISPREMADES.Macros.Generic.DamageBonusToOneRoll.AttackerRange',
+            hint: 'CHRISPREMADES.Macros.Generic.DamageBonusToOneRoll.AttackerRangeHint'
         },
         targetWounded: {
             default: false,

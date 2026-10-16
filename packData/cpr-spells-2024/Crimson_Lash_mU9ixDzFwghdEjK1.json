@@ -237,7 +237,23 @@
       "sort": 0,
       "flags": {
         "cat": {
-          "identifier": "crimsonLashEffect"
+          "identifier": "crimsonLashEffect",
+          "animation": {
+            "create": {
+              "source": "chris-premades",
+              "identifier": "castBuff",
+              "config": {
+                "color": "red"
+              }
+            },
+            "delete": {
+              "source": "chris-premades",
+              "identifier": "castBuff",
+              "config": {
+                "color": "red"
+              }
+            }
+          }
         },
         "dnd5e": {
           "riders": {
@@ -292,7 +308,7 @@
       },
       "automation": {
         "source": "chris-premades",
-        "version": "2.0.3"
+        "version": "2.1.3"
       }
     }
   },

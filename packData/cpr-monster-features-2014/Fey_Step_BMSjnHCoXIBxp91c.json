@@ -242,7 +242,7 @@
         "roll": [
           {
             "source": "chris-premades",
-            "rules": "2014",
+            "rules": "all",
             "identifier": "fey-step"
           }
         ]

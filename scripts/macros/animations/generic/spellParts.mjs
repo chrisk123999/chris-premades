@@ -1,4 +1,12 @@
 import {animationUtils} from '../../../proxy.mjs';
+/**
+ * The first Sequencer database entry that exists, so Patreon-only assets fall back to free ones.
+ * @param {...string} files Database paths, best first.
+ * @returns {string|undefined}
+ */
+export function pickFile(...files) {
+    return files.find(file => Sequencer.Database.entryExists(file));
+}
 const fallbackColors = {
     dark_purple: 'purple',
     dark_red: 'red',
@@ -111,6 +119,15 @@ export function addCast(sequence, sourceToken, targetToken, {file, side, wait}) 
 }
 export function playOnEffect(play) {
     return (effect, token, config, {sourceToken, activity} = {}) => play(sourceToken, token, {damageType: activity?.damage?.parts?.[0]?.types?.first(), ...config});
+}
+/**
+ * Diameter in grid units of an aura of this radius around a token.
+ * @param {object} token Token the aura surrounds.
+ * @param {number} radius Aura radius in scene units.
+ * @returns {number}
+ */
+export function auraSize(token, radius) {
+    return radius * 2 / token.parent.grid.distance + token.width;
 }
 export function persistName(prefix, effect) {
     return prefix + ' ' + effect.uuid;

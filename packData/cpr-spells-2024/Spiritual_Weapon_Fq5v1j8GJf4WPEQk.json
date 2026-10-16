@@ -60,7 +60,7 @@
     "activities": {
       "dnd5eactivity000": {
         "_id": "dnd5eactivity000",
-        "type": "utility",
+        "type": "summon",
         "activation": {
           "type": "action",
           "value": null,
@@ -101,12 +101,6 @@
           "spent": 0,
           "max": "",
           "recovery": []
-        },
-        "roll": {
-          "formula": "",
-          "name": "",
-          "prompt": false,
-          "visible": false
         },
         "sort": 0,
         "useConditionText": "",
@@ -159,7 +153,43 @@
           "postRemoveConditionText": ""
         },
         "otherActivityId": "none",
-        "identifier": "spiritual-weapon"
+        "identifier": "spiritual-weapon",
+        "profiles": [
+          {
+            "_id": "spiritualWeapon1",
+            "uuid": "Compendium.chris-premades.CPRSummons2014.Actor.DEGjDyJThp7ejY5h",
+            "count": "1",
+            "cr": "",
+            "level": {
+              "min": null,
+              "max": null
+            },
+            "name": "",
+            "types": []
+          }
+        ],
+        "summon": {
+          "mode": "",
+          "prompt": true
+        },
+        "bonuses": {
+          "ac": "",
+          "hd": "",
+          "hp": "",
+          "attackDamage": "",
+          "saveDamage": "",
+          "healing": ""
+        },
+        "match": {
+          "ability": "",
+          "attacks": false,
+          "disposition": false,
+          "proficiency": false,
+          "saves": false
+        },
+        "creatureSizes": [],
+        "creatureTypes": [],
+        "tempHP": ""
       },
       "wwl3vHU7NxtsAFOg": {
         "type": "attack",
@@ -339,11 +369,6 @@
           {
             "source": "chris-premades",
             "rules": "all",
-            "identifier": "summon"
-          },
-          {
-            "source": "chris-premades",
-            "rules": "all",
             "identifier": "spiritual-weapon"
           }
         ],
@@ -351,26 +376,34 @@
           {
             "source": "chris-premades",
             "rules": "all",
-            "identifier": "summon"
+            "identifier": "spiritual-weapon"
           },
           {
-            "source": "chris-premades",
+            "source": "cat",
             "rules": "all",
-            "identifier": "spiritual-weapon"
+            "identifier": "summon"
+          }
+        ],
+        "move": [
+          {
+            "source": "cat",
+            "rules": "all",
+            "identifier": "summon"
           }
         ]
       },
       "genericConfig": {
-        "chris-premades": {
+        "cat": {
           "summon": {
             "activityId": "dnd5eactivity000",
             "followUpActivityId": "wwl3vHU7NxtsAFOg",
             "followUpTiming": "create",
             "followUpRange": 5,
+            "replaceExisting": true,
+            "favorite": true,
             "summons": [
               {
-                "sourceActorUuid": "Compendium.chris-premades.CPRSummons2014.Actor.DEGjDyJThp7ejY5h",
-                "sourceActorName": "CPR - Spiritual Weapon",
+                "profile": "spiritualWeapon1",
                 "name": "Spiritual Weapon",
                 "initiative": "none",
                 "animation": {
@@ -378,9 +411,7 @@
                   "identifier": "celestialSummon"
                 }
               }
-            ],
-            "replaceExisting": true,
-            "favorite": true
+            ]
           }
         }
       }

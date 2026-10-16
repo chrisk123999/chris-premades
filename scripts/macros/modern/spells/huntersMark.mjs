@@ -5,13 +5,16 @@ function getDamageConfig(actor, document) {
     return automationUtils.getConfigValues(source, ['formula', 'damageType']);
 }
 function markedEffectData(activity, document, seconds) {
+    const animation = automationUtils.getConfigValue(document, 'animation');
     return documentUtils.getBaseEffectData(activity, {
         name: _loc('CHRISPREMADES.Macros.Modern.HuntersMark.Marked'),
         img: document.img,
         origin: document.uuid,
         identifier: 'huntersMarkMarked',
         activityUuid: activity.uuid,
-        duration: {value: seconds, units: 'seconds'}
+        duration: {value: seconds, units: 'seconds'},
+        createAnimation: animation,
+        deleteAnimation: animation
     });
 }
 async function use({document, workflow}) {
@@ -114,6 +117,16 @@ export const huntersMark = {
         {pass: 'actorTurnStart', macro: promptMove, priority: 50}
     ],
     config: {
+        animation: {
+            default: {
+                source: 'chris-premades',
+                identifier: 'huntersMark'
+            },
+            type: 'selectAnimation',
+            inputs: ['targetToken'],
+            label: 'CHRISPREMADES.Config.Animation',
+            category: 'animations'
+        },
         promptMove: {
             default: true,
             type: 'checkbox',

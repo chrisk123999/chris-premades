@@ -3,7 +3,7 @@
   "system": {
     "activities": {
       "e1mCIrR78dOTWlMv": {
-        "type": "utility",
+        "type": "summon",
         "_id": "e1mCIrR78dOTWlMv",
         "sort": 0,
         "activation": {
@@ -45,12 +45,6 @@
           "spent": 0,
           "recovery": [],
           "max": ""
-        },
-        "roll": {
-          "prompt": false,
-          "visible": false,
-          "name": "",
-          "formula": ""
         },
         "useConditionText": "",
         "useConditionReason": "",
@@ -104,7 +98,43 @@
         "otherActivityAsParentType": true,
         "name": "Flaming Sphere",
         "identifier": "summon",
-        "img": "icons/magic/light/explosion-star-orange.webp"
+        "img": "icons/magic/light/explosion-star-orange.webp",
+        "profiles": [
+          {
+            "_id": "flamingSphere001",
+            "uuid": "Compendium.chris-premades.CPRSummons2014.Actor.5U8e9C3Ssas3acSE",
+            "count": "1",
+            "cr": "",
+            "level": {
+              "min": null,
+              "max": null
+            },
+            "name": "",
+            "types": []
+          }
+        ],
+        "summon": {
+          "mode": "",
+          "prompt": true
+        },
+        "bonuses": {
+          "ac": "",
+          "hd": "",
+          "hp": "",
+          "attackDamage": "",
+          "saveDamage": "",
+          "healing": ""
+        },
+        "match": {
+          "ability": "",
+          "attacks": false,
+          "disposition": false,
+          "proficiency": false,
+          "saves": false
+        },
+        "creatureSizes": [],
+        "creatureTypes": [],
+        "tempHP": ""
       },
       "nwAFaDn6e3VQsM6s": {
         "type": "utility",
@@ -478,17 +508,19 @@
           {
             "source": "chris-premades",
             "rules": "all",
-            "identifier": "summon"
-          },
-          {
-            "source": "chris-premades",
-            "rules": "all",
             "identifier": "spellAnimation"
           }
         ],
         "summon": [
           {
-            "source": "chris-premades",
+            "source": "cat",
+            "rules": "all",
+            "identifier": "summon"
+          }
+        ],
+        "move": [
+          {
+            "source": "cat",
             "rules": "all",
             "identifier": "summon"
           }
@@ -496,16 +528,25 @@
       },
       "genericConfig": {
         "chris-premades": {
+          "spellAnimation": {
+            "animation": {
+              "source": "chris-premades",
+              "identifier": "flamingSphereBurn"
+            }
+          }
+        },
+        "cat": {
           "summon": {
             "activityId": "e1mCIrR78dOTWlMv",
             "moveActivityId": "nwAFaDn6e3VQsM6s",
             "followUpActivityId": "0AktUE4i8FLHqI0r",
             "followUpTiming": "move",
             "followUpRange": 5,
+            "replaceExisting": true,
+            "favorite": true,
             "summons": [
               {
-                "sourceActorUuid": "Compendium.chris-premades.CPRSummons2014.Actor.5U8e9C3Ssas3acSE",
-                "sourceActorName": "CPR - Flaming Sphere",
+                "profile": "flamingSphere001",
                 "name": "Flaming Sphere",
                 "initiative": "none",
                 "animation": {
@@ -529,15 +570,7 @@
                   }
                 ]
               }
-            ],
-            "replaceExisting": true,
-            "favorite": true
-          },
-          "spellAnimation": {
-            "animation": {
-              "source": "chris-premades",
-              "identifier": "flamingSphereBurn"
-            }
+            ]
           }
         }
       }

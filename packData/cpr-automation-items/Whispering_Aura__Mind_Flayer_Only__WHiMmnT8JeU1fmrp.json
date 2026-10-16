@@ -183,7 +183,35 @@
         "otherActivityId": "",
         "img": null,
         "behaviors": [],
-        "flags": {},
+        "flags": {
+          "cat": {
+            "macros": {
+              "combat": [
+                {
+                  "source": "chris-premades",
+                  "rules": "all",
+                  "identifier": "useOnEvent"
+                }
+              ],
+              "rest": [
+                {
+                  "source": "chris-premades",
+                  "rules": "all",
+                  "identifier": "useOnEvent"
+                }
+              ]
+            },
+            "genericConfig": {
+              "chris-premades": {
+                "useOnEvent": {
+                  "events": [
+                    "turnStart"
+                  ]
+                }
+              }
+            }
+          }
+        },
         "visibility": {
           "level": {},
           "requireAttunement": false,

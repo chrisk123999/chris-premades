@@ -64,7 +64,7 @@
     "activities": {
       "dnd5eactivity000": {
         "_id": "dnd5eactivity000",
-        "type": "utility",
+        "type": "summon",
         "activation": {
           "type": "bonus",
           "value": null,
@@ -106,12 +106,6 @@
           "spent": 0,
           "max": "",
           "recovery": []
-        },
-        "roll": {
-          "formula": "",
-          "name": "",
-          "prompt": false,
-          "visible": false
         },
         "sort": 0,
         "useConditionText": "",
@@ -163,7 +157,43 @@
         },
         "otherActivityId": "none",
         "identifier": "summon",
-        "name": "Summon"
+        "name": "Summon",
+        "profiles": [
+          {
+            "_id": "healingSpirit001",
+            "uuid": "Compendium.chris-premades.CPRSummons2014.Actor.ahMRaiJtKgYPjweL",
+            "count": "1",
+            "cr": "",
+            "level": {
+              "min": null,
+              "max": null
+            },
+            "name": "",
+            "types": []
+          }
+        ],
+        "summon": {
+          "mode": "",
+          "prompt": true
+        },
+        "bonuses": {
+          "ac": "",
+          "hd": "",
+          "hp": "",
+          "attackDamage": "",
+          "saveDamage": "",
+          "healing": ""
+        },
+        "match": {
+          "ability": "",
+          "attacks": false,
+          "disposition": false,
+          "proficiency": false,
+          "saves": false
+        },
+        "creatureSizes": [],
+        "creatureTypes": [],
+        "tempHP": ""
       },
       "isywerxrNlQLHU5L": {
         "_id": "isywerxrNlQLHU5L",
@@ -328,30 +358,31 @@
         "version": "2.1.3"
       },
       "macros": {
-        "roll": [
+        "summon": [
           {
-            "source": "chris-premades",
+            "source": "cat",
             "rules": "all",
             "identifier": "summon"
           }
         ],
-        "summon": [
+        "move": [
           {
-            "source": "chris-premades",
+            "source": "cat",
             "rules": "all",
             "identifier": "summon"
           }
         ]
       },
       "genericConfig": {
-        "chris-premades": {
+        "cat": {
           "summon": {
             "activityId": "dnd5eactivity000",
             "moveActivityId": "isywerxrNlQLHU5L",
+            "replaceExisting": true,
+            "favorite": true,
             "summons": [
               {
-                "sourceActorUuid": "Compendium.chris-premades.CPRSummons2014.Actor.ahMRaiJtKgYPjweL",
-                "sourceActorName": "CPR - Healing Spirit",
+                "profile": "healingSpirit001",
                 "name": "Healing Spirit",
                 "initiative": "none",
                 "animation": {
@@ -368,9 +399,7 @@
                   }
                 ]
               }
-            ],
-            "replaceExisting": true,
-            "favorite": true
+            ]
           }
         }
       }

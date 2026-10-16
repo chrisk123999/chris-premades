@@ -3,7 +3,7 @@
   "system": {
     "activities": {
       "uTHHfLVdIvc80Dl9": {
-        "type": "utility",
+        "type": "summon",
         "_id": "uTHHfLVdIvc80Dl9",
         "sort": 0,
         "activation": {
@@ -45,12 +45,6 @@
           "spent": 0,
           "recovery": [],
           "max": ""
-        },
-        "roll": {
-          "prompt": false,
-          "visible": false,
-          "name": "",
-          "formula": ""
         },
         "useConditionText": "",
         "useConditionReason": "",
@@ -103,7 +97,43 @@
         "otherActivityId": "none",
         "otherActivityAsParentType": true,
         "name": "Cast",
-        "identifier": "forest-guard"
+        "identifier": "forest-guard",
+        "profiles": [
+          {
+            "_id": "forestGuard00001",
+            "uuid": "Compendium.chris-premades.CPRSummons2024.Actor.GNOKbwiiDRiW0UuM",
+            "count": "1",
+            "cr": "",
+            "level": {
+              "min": null,
+              "max": null
+            },
+            "name": "",
+            "types": []
+          }
+        ],
+        "summon": {
+          "mode": "",
+          "prompt": true
+        },
+        "bonuses": {
+          "ac": "",
+          "hd": "",
+          "hp": "",
+          "attackDamage": "",
+          "saveDamage": "",
+          "healing": ""
+        },
+        "match": {
+          "ability": "",
+          "attacks": false,
+          "disposition": false,
+          "proficiency": false,
+          "saves": false
+        },
+        "creatureSizes": [],
+        "creatureTypes": [],
+        "tempHP": ""
       },
       "TAdtvAG3uW0NDe4H": {
         "type": "attack",
@@ -555,11 +585,6 @@
         "roll": [
           {
             "source": "chris-premades",
-            "rules": "all",
-            "identifier": "summon"
-          },
-          {
-            "source": "chris-premades",
             "rules": "2024",
             "identifier": "forest-guard"
           }
@@ -567,24 +592,32 @@
         "summon": [
           {
             "source": "chris-premades",
-            "rules": "all",
-            "identifier": "summon"
-          },
-          {
-            "source": "chris-premades",
             "rules": "2024",
             "identifier": "forest-guard"
+          },
+          {
+            "source": "cat",
+            "rules": "all",
+            "identifier": "summon"
+          }
+        ],
+        "move": [
+          {
+            "source": "cat",
+            "rules": "all",
+            "identifier": "summon"
           }
         ]
       },
       "genericConfig": {
-        "chris-premades": {
+        "cat": {
           "summon": {
             "activityId": "uTHHfLVdIvc80Dl9",
+            "replaceExisting": false,
+            "favorite": false,
             "summons": [
               {
-                "sourceActorUuid": "Compendium.chris-premades.CPRSummons2024.Actor.GNOKbwiiDRiW0UuM",
-                "sourceActorName": "CPR - Forest Guard",
+                "profile": "forestGuard00001",
                 "name": "Forest Guard",
                 "initiative": "none",
                 "animation": {
@@ -592,9 +625,7 @@
                   "identifier": "natureSummon"
                 }
               }
-            ],
-            "replaceExisting": false,
-            "favorite": false
+            ]
           }
         }
       },
