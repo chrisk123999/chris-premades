@@ -17,17 +17,23 @@ async function early({document, activity, config}) {
     await workflowUtils.completeItemUse(document, [], {consumeUsage: false, consumeResources: false});
     return true;
 }
-export function addThrallBonuses(summonData, workflow) {
-    const feature = actorUtils.getItemByIdentifier(workflow.actor, 'create-thrall');
-    if (!feature) return summonData;
+async function thrall({document, actor, summon, updates}) {
+    if (!summon.workflowOptions['chris-premades']?.createThrall) return;
+    if (documentUtils.getIdentifier(summon.sourceDocument?.item ?? summon.sourceDocument) !== automationUtils.getConfigValue(document, 'spellIdentifier')) return;
+    addThrallBonuses(updates, actor, await summon.getSourceActor());
+}
+function addThrallBonuses(summonData, actor, sourceActor) {
+    const feature = actorUtils.getItemByIdentifier(actor, 'create-thrall');
+    if (!feature) return;
     const classIdentifier = automationUtils.getConfigValue(feature, 'classIdentifier');
     const ability = automationUtils.getConfigValue(feature, 'ability');
-    const levels = workflow.actor.classes[classIdentifier]?.system.levels;
-    if (!levels) return summonData;
-    const mod = workflow.actor.system.abilities[ability]?.mod ?? 0;
+    const levels = actor.classes[classIdentifier]?.system.levels;
+    if (!levels) return;
+    const mod = actor.system.abilities[ability]?.mod ?? 0;
     const damageType = automationUtils.getConfigValue(feature, 'damageType');
     genericUtils.setProperty(summonData, 'system.attributes.hp.temp', levels + mod);
-    genericUtils.setProperty(summonData, 'effects', [documentUtils.getBaseEffectData(feature, {
+    summonData.effects ??= sourceActor.effects.map(effect => effect.toObject());
+    summonData.effects.push(documentUtils.getBaseEffectData(feature, {
         name: feature.name,
         img: feature.img,
         origin: feature.uuid,
@@ -43,12 +49,11 @@ export function addThrallBonuses(summonData, workflow) {
             {
                 key: 'flags.chris-premades.summonerUuid',
                 type: 'override',
-                value: workflow.actor.uuid,
+                value: actor.uuid,
                 priority: 20
             }
         ]
-    })]);
-    return summonData;
+    }));
 }
 async function hexBonus({document, workflow, token}) {
     if (!workflow.hitTargets.size || !workflowUtils.isAttackType(workflow, 'attack')) return;
@@ -70,10 +75,13 @@ async function hexBonus({document, workflow, token}) {
 }
 export const createThrall = {
     name: 'Create Thrall',
-    version: '2.0.0',
+    version: '2.1.3',
     rules: '2024',
     roll: [
         {pass: 'actorPreTargeting', macro: early, priority: 50}
+    ],
+    summon: [
+        {pass: 'actorPreCreate', macro: thrall, priority: 50}
     ],
     config: {
         spellIdentifier: {

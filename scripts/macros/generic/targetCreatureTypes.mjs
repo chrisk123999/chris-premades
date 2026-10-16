@@ -12,6 +12,7 @@ async function filterTargets({document: item, workflow}) {
         if (config.aliveOnly && target.actor.system.attributes.hp.value <= 0) return true;
         if (maxSize !== undefined && actorUtils.getSize(target.actor) > maxSize) return true;
         if (config.maxCR >= 0 && actorUtils.getLevelOrCR(target.actor) > config.maxCR) return true;
+        if (config.minIntelligence && (target.actor.system.abilities.int?.value ?? 0) < config.minIntelligence) return true;
         if (!config.creatureTypes.length) return false;
         return config.creatureTypes.includes(actorUtils.typeOrRace(target.actor)) === config.invert;
     });
@@ -33,12 +34,13 @@ async function filterTargets({document: item, workflow}) {
  * - `aliveOnly`: remove targets at 0 hit points.
  * - `maxSize`: remove targets larger than this size.
  * - `maxCR`: remove targets above this challenge rating. -1 skips the check.
+ * - `minIntelligence`: remove targets with a lower Intelligence score. 0 skips the check.
  * - `chooseTargets`: for area activities, pick which of the remaining targets to keep. The user is always removed.
  * - `excludeSummoner`: remove the summoner of a summoned user.
  */
 export const targetCreatureTypes = {
     rules: 'all',
-    version: '2.0.4',
+    version: '2.1.3',
     category: 'targeting',
     generic: true,
     documents: ['item'],
@@ -93,6 +95,13 @@ export const targetCreatureTypes = {
             category: 'behavior',
             label: 'CHRISPREMADES.Macros.Generic.TargetCreatureTypes.ChooseTargets',
             hint: 'CHRISPREMADES.Macros.Generic.TargetCreatureTypes.ChooseTargetsHint'
+        },
+        minIntelligence: {
+            default: 0,
+            type: 'number',
+            category: 'behavior',
+            label: 'CHRISPREMADES.Macros.Generic.TargetCreatureTypes.MinIntelligence',
+            hint: 'CHRISPREMADES.Macros.Generic.TargetCreatureTypes.MinIntelligenceHint'
         },
         excludeSummoner: {
             default: false,

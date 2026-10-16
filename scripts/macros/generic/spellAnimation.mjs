@@ -15,7 +15,11 @@ export function getTargetResults(workflow) {
 export function playTargetAnimations(workflow, {animation, options}) {
     if (!workflow.token || !workflow.targets.size || !animation?.macros?.play) return;
     const damageType = getDamageType(workflow);
-    for (const token of workflow.targets) animation.macros.play(workflow.token.document, token.document, {...options, damageType, ...getTargetResult(workflow, token)});
+    for (const token of workflow.targets) {
+        const self = token.document === workflow.token.document;
+        if (self && workflow.activity?.type === 'utility') continue;
+        animation.macros.play(self ? undefined : workflow.token.document, token.document, {...options, damageType, ...getTargetResult(workflow, token)});
+    }
 }
 function late({document, workflow}) {
     playTargetAnimations(workflow, automationUtils.getResolvedAnimation(document, 'animation', {source: 'chris-premades', identifier: 'spellAnimation'}));

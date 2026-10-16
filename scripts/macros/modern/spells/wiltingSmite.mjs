@@ -12,7 +12,7 @@ async function spendHitDice({document: item, actor, data}) {
 }
 export const wiltingSmite = {
     name: 'Wilting Smite',
-    version: '2.0.4',
+    version: '2.1.3',
     rules: '2024',
     called: [
         {

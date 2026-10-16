@@ -6,7 +6,7 @@ async function buff({summon, updates}) {
     const wizardLevels = owner?.classes?.wizard?.system?.levels;
     if (!wizardLevels) return Logging.addMacroWarning('CPR', 'undead-thralls', 'Wizard class levels not found.', {notify: 'warn'});
     const sourceActor = await summon.getSourceActor();
-    const hp = sourceActor.system.attributes.hp;
+    const hp = {...sourceActor.system.attributes.hp, ...updates.system?.attributes?.hp};
     const damageBonuses = sourceActor.system.rolls.damage;
     const prof = owner.system.attributes.prof;
     genericUtils.mergeObject(updates, {

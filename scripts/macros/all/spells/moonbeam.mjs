@@ -1,15 +1,10 @@
-import {actorUtils, automationUtils, documentUtils, itemUtils, regionUtils, workflowUtils} from '../../../proxy.mjs';
+import {actorUtils, automationUtils, regionUtils, workflowUtils} from '../../../proxy.mjs';
 import {playAreaAnimation} from '../../generic/areaAnimation.mjs';
-import {createRegionLight} from '../../generic/moveRegion.mjs';
+import {createRegionLight, prepareMovableRegion} from '../../generic/moveRegion.mjs';
 async function created({document: region, workflow}) {
     const originItem = regionUtils.getActivity(region)?.item;
     if (!originItem) return;
-    await documentUtils.update(region, {name: originItem.name});
-    const moveActivity = itemUtils.getActivityByIdentifier(originItem, 'moonbeamMove');
-    if (moveActivity) {
-        const unhideEffect = await itemUtils.unhideActivities(originItem, [moveActivity.id], {ids: true, favorite: true});
-        if (unhideEffect) await documentUtils.makeDependent(region, [unhideEffect]);
-    }
+    await prepareMovableRegion(region, originItem, 'moonbeamMove');
     const color = automationUtils.getConfigValue(originItem, 'lightColor');
     const animationType = automationUtils.getConfigValue(originItem, 'lightAnimation');
     await createRegionLight(region, {color: color || null, animation: {type: animationType || null}});

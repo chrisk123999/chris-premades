@@ -1140,6 +1140,26 @@
         },
         "core": {
           "overlay": false
+        },
+        "cat": {
+          "animation": {
+            "create": {
+              "source": "chris-premades",
+              "identifier": "castBuff",
+              "config": {
+                "color": "green",
+                "shield": true
+              }
+            },
+            "delete": {
+              "source": "chris-premades",
+              "identifier": "castBuff",
+              "config": {
+                "color": "green",
+                "shield": true
+              }
+            }
+          }
         }
       },
       "showIcon": 1,
@@ -1208,6 +1228,26 @@
         },
         "core": {
           "overlay": false
+        },
+        "cat": {
+          "animation": {
+            "create": {
+              "source": "chris-premades",
+              "identifier": "castBuff",
+              "config": {
+                "color": "red",
+                "shield": true
+              }
+            },
+            "delete": {
+              "source": "chris-premades",
+              "identifier": "castBuff",
+              "config": {
+                "color": "red",
+                "shield": true
+              }
+            }
+          }
         }
       },
       "_id": "ogU8CIDSZc5aQY2i",
@@ -1277,6 +1317,26 @@
         },
         "core": {
           "overlay": false
+        },
+        "cat": {
+          "animation": {
+            "create": {
+              "source": "chris-premades",
+              "identifier": "castBuff",
+              "config": {
+                "color": "blue",
+                "shield": true
+              }
+            },
+            "delete": {
+              "source": "chris-premades",
+              "identifier": "castBuff",
+              "config": {
+                "color": "blue",
+                "shield": true
+              }
+            }
+          }
         }
       },
       "_id": "Qbggj1SH69rZjfyH",
@@ -1346,6 +1406,26 @@
         },
         "core": {
           "overlay": false
+        },
+        "cat": {
+          "animation": {
+            "create": {
+              "source": "chris-premades",
+              "identifier": "castBuff",
+              "config": {
+                "color": "purple",
+                "shield": true
+              }
+            },
+            "delete": {
+              "source": "chris-premades",
+              "identifier": "castBuff",
+              "config": {
+                "color": "purple",
+                "shield": true
+              }
+            }
+          }
         }
       },
       "_id": "yCsvmxxxLteBKZTd",
@@ -1415,6 +1495,26 @@
         },
         "core": {
           "overlay": false
+        },
+        "cat": {
+          "animation": {
+            "create": {
+              "source": "chris-premades",
+              "identifier": "castBuff",
+              "config": {
+                "color": "blue",
+                "shield": true
+              }
+            },
+            "delete": {
+              "source": "chris-premades",
+              "identifier": "castBuff",
+              "config": {
+                "color": "blue",
+                "shield": true
+              }
+            }
+          }
         }
       },
       "_id": "iKqE83lvddNzuxsR",
@@ -1526,7 +1626,7 @@
       "macros": {},
       "automation": {
         "source": "chris-premades",
-        "version": "2.1.0",
+        "version": "2.1.3",
         "hash": 1314176793
       }
     }

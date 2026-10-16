@@ -62,7 +62,7 @@
     "activities": {
       "dnd5eactivity000": {
         "_id": "dnd5eactivity000",
-        "type": "utility",
+        "type": "summon",
         "activation": {
           "type": "action",
           "value": null,
@@ -87,7 +87,7 @@
         "effects": [],
         "range": {
           "override": false,
-          "units": "self"
+          "units": "ft"
         },
         "target": {
           "prompt": true,
@@ -104,17 +104,11 @@
           "spent": 0,
           "max": "",
           "recovery": []
-        },
-        "roll": {
-          "formula": "",
-          "name": "",
-          "prompt": false,
-          "visible": false
         },
         "sort": 0,
         "useConditionText": "",
         "effectConditionText": "",
-        "name": "Air",
+        "name": "",
         "useConditionReason": "",
         "macroData": {
           "name": "",
@@ -139,8 +133,8 @@
           "autoTargetAction": "default",
           "automationOnly": false,
           "otherActivityCompatible": true,
-          "identifier": "summon-beast-air",
-          "displayActivityName": true,
+          "identifier": "summon",
+          "displayActivityName": false,
           "rollMode": "default",
           "chooseEffects": false,
           "toggleEffect": false,
@@ -161,213 +155,67 @@
           "postRemoveConditionText": ""
         },
         "otherActivityId": "none",
-        "identifier": "summon-beast-air"
-      },
-      "lLTntnInyPjJ8yGa": {
-        "_id": "lLTntnInyPjJ8yGa",
-        "type": "utility",
-        "activation": {
-          "type": "action",
-          "value": null,
-          "override": false
-        },
-        "consumption": {
-          "targets": [],
-          "scaling": {
-            "allowed": false,
-            "max": ""
+        "identifier": "summon",
+        "profiles": [
+          {
+            "_id": "bestialSpiritAir",
+            "uuid": "Compendium.chris-premades.CPRSummons2024.Actor.iXvRlAE4ugbyHobA",
+            "count": "1",
+            "cr": "",
+            "level": {
+              "min": null,
+              "max": null
+            },
+            "name": "Air",
+            "types": []
           },
-          "spellSlot": true
-        },
-        "description": {
-          "chatFlavor": ""
-        },
-        "duration": {
-          "units": "inst",
-          "concentration": false,
-          "override": false
-        },
-        "effects": [],
-        "range": {
-          "override": false,
-          "units": "self"
-        },
-        "target": {
-          "prompt": true,
-          "template": {
-            "contiguous": false,
-            "units": "ft"
+          {
+            "_id": "bestialSpiritLnd",
+            "uuid": "Compendium.chris-premades.CPRSummons2024.Actor.iXvRlAE4ugbyHobA",
+            "count": "1",
+            "cr": "",
+            "level": {
+              "min": null,
+              "max": null
+            },
+            "name": "Land",
+            "types": []
           },
-          "affects": {
-            "choice": false
-          },
-          "override": false
+          {
+            "_id": "bestialSpiritWtr",
+            "uuid": "Compendium.chris-premades.CPRSummons2024.Actor.iXvRlAE4ugbyHobA",
+            "count": "1",
+            "cr": "",
+            "level": {
+              "min": null,
+              "max": null
+            },
+            "name": "Water",
+            "types": []
+          }
+        ],
+        "summon": {
+          "mode": "",
+          "prompt": true
         },
-        "uses": {
-          "spent": 0,
-          "max": "",
-          "recovery": []
+        "bonuses": {
+          "ac": "@item.level",
+          "hd": "",
+          "hp": "5 * (@item.level - 2)",
+          "attackDamage": "",
+          "saveDamage": "",
+          "healing": ""
         },
-        "roll": {
-          "formula": "",
-          "name": "",
-          "prompt": false,
-          "visible": false
+        "match": {
+          "ability": "",
+          "attacks": false,
+          "disposition": false,
+          "proficiency": false,
+          "saves": false
         },
-        "sort": 1,
-        "useConditionText": "",
-        "effectConditionText": "",
-        "name": "Land",
-        "useConditionReason": "",
-        "macroData": {
-          "name": "",
-          "command": ""
-        },
-        "ignoreTraits": {
-          "idi": false,
-          "idr": false,
-          "idv": false,
-          "ida": false,
-          "idm": false
-        },
-        "midiProperties": {
-          "ignoreTraits": [],
-          "triggeredActivityId": "none",
-          "triggeredActivityConditionText": "",
-          "triggeredActivityTargets": "targets",
-          "triggeredActivityRollAs": "self",
-          "forceDialog": false,
-          "confirmTargets": "default",
-          "autoTargetType": "any",
-          "autoTargetAction": "default",
-          "automationOnly": false,
-          "otherActivityCompatible": true,
-          "identifier": "summon-beast-land",
-          "displayActivityName": true,
-          "rollMode": "default",
-          "chooseEffects": false,
-          "toggleEffect": false,
-          "ignoreFullCover": false,
-          "forceAttackDialog": false,
-          "forceDamageDialog": false,
-          "otherActivityAsParentType": true,
-          "removeChatButtons": "default",
-          "magicEffect": false,
-          "magicDamage": false,
-          "noConcentrationCheck": false,
-          "autoCEEffects": "default"
-        },
-        "isOverTimeFlag": false,
-        "overTimeProperties": {
-          "saveRemoves": true,
-          "preRemoveConditionText": "",
-          "postRemoveConditionText": ""
-        },
-        "otherActivityId": "none",
-        "identifier": "summon-beast-land"
-      },
-      "vpRDAOyANpK84V5Y": {
-        "_id": "vpRDAOyANpK84V5Y",
-        "type": "utility",
-        "activation": {
-          "type": "action",
-          "value": null,
-          "override": false
-        },
-        "consumption": {
-          "targets": [],
-          "scaling": {
-            "allowed": false,
-            "max": ""
-          },
-          "spellSlot": true
-        },
-        "description": {
-          "chatFlavor": ""
-        },
-        "duration": {
-          "units": "inst",
-          "concentration": false,
-          "override": false
-        },
-        "effects": [],
-        "range": {
-          "override": false,
-          "units": "self"
-        },
-        "target": {
-          "prompt": true,
-          "template": {
-            "contiguous": false,
-            "units": "ft"
-          },
-          "affects": {
-            "choice": false
-          },
-          "override": false
-        },
-        "uses": {
-          "spent": 0,
-          "max": "",
-          "recovery": []
-        },
-        "roll": {
-          "formula": "",
-          "name": "",
-          "prompt": false,
-          "visible": false
-        },
-        "sort": 2,
-        "useConditionText": "",
-        "effectConditionText": "",
-        "name": "Water",
-        "useConditionReason": "",
-        "macroData": {
-          "name": "",
-          "command": ""
-        },
-        "ignoreTraits": {
-          "idi": false,
-          "idr": false,
-          "idv": false,
-          "ida": false,
-          "idm": false
-        },
-        "midiProperties": {
-          "ignoreTraits": [],
-          "triggeredActivityId": "none",
-          "triggeredActivityConditionText": "",
-          "triggeredActivityTargets": "targets",
-          "triggeredActivityRollAs": "self",
-          "forceDialog": false,
-          "confirmTargets": "default",
-          "autoTargetType": "any",
-          "autoTargetAction": "default",
-          "automationOnly": false,
-          "otherActivityCompatible": true,
-          "identifier": "summon-beast-water",
-          "displayActivityName": true,
-          "rollMode": "default",
-          "chooseEffects": false,
-          "toggleEffect": false,
-          "ignoreFullCover": false,
-          "forceAttackDialog": false,
-          "forceDamageDialog": false,
-          "otherActivityAsParentType": true,
-          "removeChatButtons": "default",
-          "magicEffect": false,
-          "magicDamage": false,
-          "noConcentrationCheck": false,
-          "autoCEEffects": "default"
-        },
-        "isOverTimeFlag": false,
-        "overTimeProperties": {
-          "saveRemoves": true,
-          "preRemoveConditionText": "",
-          "postRemoveConditionText": ""
-        },
-        "otherActivityId": "none",
-        "identifier": "summon-beast-water"
+        "creatureSizes": [],
+        "creatureTypes": [],
+        "tempHP": ""
       }
     },
     "identifier": "summon-beast",
@@ -422,13 +270,189 @@
         "version": "2.1.3"
       },
       "macros": {
-        "roll": [
+        "move": [
           {
-            "source": "chris-premades",
+            "source": "cat",
             "rules": "all",
-            "identifier": "summon-beast"
+            "identifier": "summon"
+          }
+        ],
+        "summon": [
+          {
+            "source": "cat",
+            "rules": "all",
+            "identifier": "summon"
           }
         ]
+      },
+      "genericConfig": {
+        "cat": {
+          "summon": {
+            "activityId": "dnd5eactivity000",
+            "summons": [
+              {
+                "profile": "bestialSpiritAir",
+                "name": "CHRISPREMADES.Summons.CreatureNames.BestialSpiritAir",
+                "initiative": "follows",
+                "animation": {
+                  "source": "chris-premades",
+                  "identifier": "airSummon"
+                },
+                "updates": [
+                  {
+                    "path": "system.details.cr",
+                    "value": "@ownerCR",
+                    "mode": "formula"
+                  },
+                  {
+                    "path": "system.attributes.hp.max",
+                    "value": "20",
+                    "mode": "formula"
+                  },
+                  {
+                    "path": "system.attributes.hp.value",
+                    "value": "20",
+                    "mode": "formula"
+                  },
+                  {
+                    "path": "system.attributes.movement.speeds.fly",
+                    "value": "60",
+                    "mode": "formula"
+                  }
+                ],
+                "items": [
+                  {
+                    "uuid": "Compendium.chris-premades.CPRAutomationItems.Item.PpBDRqIqH6fixhMd",
+                    "name": "CHRISPREMADES.Summons.Multiattack",
+                    "scaling": {
+                      "attacks": "floor(@castLevel / 2)"
+                    }
+                  },
+                  {
+                    "uuid": "Compendium.chris-premades.CPRAutomationItems.Item.Rb7nKq2VdXw4tLsE",
+                    "name": "CHRISPREMADES.Summons.Features.Rend",
+                    "matchAttack": true,
+                    "scaling": {
+                      "damageBonus": "4 + @castLevel"
+                    }
+                  },
+                  {
+                    "uuid": "Compendium.chris-premades.CPRAutomationItems.Item.7PiINvzuseoRdSJW",
+                    "name": "CHRISPREMADES.Macros.All.SummonBeast.Flyby"
+                  }
+                ]
+              },
+              {
+                "profile": "bestialSpiritLnd",
+                "name": "CHRISPREMADES.Summons.CreatureNames.BestialSpiritLand",
+                "initiative": "follows",
+                "animation": {
+                  "source": "chris-premades",
+                  "identifier": "earthSummon"
+                },
+                "updates": [
+                  {
+                    "path": "system.details.cr",
+                    "value": "@ownerCR",
+                    "mode": "formula"
+                  },
+                  {
+                    "path": "system.attributes.hp.max",
+                    "value": "30",
+                    "mode": "formula"
+                  },
+                  {
+                    "path": "system.attributes.hp.value",
+                    "value": "30",
+                    "mode": "formula"
+                  },
+                  {
+                    "path": "system.attributes.movement.speeds.climb",
+                    "value": "30",
+                    "mode": "formula"
+                  }
+                ],
+                "items": [
+                  {
+                    "uuid": "Compendium.chris-premades.CPRAutomationItems.Item.PpBDRqIqH6fixhMd",
+                    "name": "CHRISPREMADES.Summons.Multiattack",
+                    "scaling": {
+                      "attacks": "floor(@castLevel / 2)"
+                    }
+                  },
+                  {
+                    "uuid": "Compendium.chris-premades.CPRAutomationItems.Item.Rb7nKq2VdXw4tLsE",
+                    "name": "CHRISPREMADES.Summons.Features.Rend",
+                    "matchAttack": true,
+                    "scaling": {
+                      "damageBonus": "4 + @castLevel"
+                    }
+                  },
+                  {
+                    "uuid": "Compendium.chris-premades.CPRAutomationItems.Item.RrNRsdNTt0n6aMig",
+                    "name": "CHRISPREMADES.Macros.All.SummonBeast.PackTactics"
+                  }
+                ]
+              },
+              {
+                "profile": "bestialSpiritWtr",
+                "name": "CHRISPREMADES.Summons.CreatureNames.BestialSpiritWater",
+                "initiative": "follows",
+                "animation": {
+                  "source": "chris-premades",
+                  "identifier": "waterSummon"
+                },
+                "updates": [
+                  {
+                    "path": "system.details.cr",
+                    "value": "@ownerCR",
+                    "mode": "formula"
+                  },
+                  {
+                    "path": "system.attributes.hp.max",
+                    "value": "30",
+                    "mode": "formula"
+                  },
+                  {
+                    "path": "system.attributes.hp.value",
+                    "value": "30",
+                    "mode": "formula"
+                  },
+                  {
+                    "path": "system.attributes.movement.speeds.swim",
+                    "value": "30",
+                    "mode": "formula"
+                  }
+                ],
+                "items": [
+                  {
+                    "uuid": "Compendium.chris-premades.CPRAutomationItems.Item.PpBDRqIqH6fixhMd",
+                    "name": "CHRISPREMADES.Summons.Multiattack",
+                    "scaling": {
+                      "attacks": "floor(@castLevel / 2)"
+                    }
+                  },
+                  {
+                    "uuid": "Compendium.chris-premades.CPRAutomationItems.Item.Rb7nKq2VdXw4tLsE",
+                    "name": "CHRISPREMADES.Summons.Features.Rend",
+                    "matchAttack": true,
+                    "scaling": {
+                      "damageBonus": "4 + @castLevel"
+                    }
+                  },
+                  {
+                    "uuid": "Compendium.chris-premades.CPRAutomationItems.Item.RrNRsdNTt0n6aMig",
+                    "name": "CHRISPREMADES.Macros.All.SummonBeast.PackTactics"
+                  },
+                  {
+                    "uuid": "Compendium.chris-premades.CPRAutomationItems.Item.qiPRLFT4Ykh2d1pz",
+                    "name": "CHRISPREMADES.Macros.All.SummonBeast.WaterBreathing"
+                  }
+                ]
+              }
+            ]
+          }
+        }
       }
     }
   },

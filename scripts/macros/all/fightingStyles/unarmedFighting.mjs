@@ -1,8 +1,6 @@
-import {actorUtils, dialogUtils, queryUtils, workflowUtils} from '../../../proxy.mjs';
+import {dialogUtils, queryUtils, tokenUtils, workflowUtils} from '../../../proxy.mjs';
 async function turnStart({document: item, token}) {
-    const grappled = actorUtils.getEffectByIdentifier(token.actor, 'grappleSource', {multiple: true})
-        .map(e => token.parent.tokens.get(e.flags.cat?.grapple?.tokenId))
-        .filter(Boolean);
+    const grappled = tokenUtils.getGrappled(token);
     if (!grappled.length) return;
     let target = grappled[0];
     const userId = queryUtils.firstOwner(token.actor, true);

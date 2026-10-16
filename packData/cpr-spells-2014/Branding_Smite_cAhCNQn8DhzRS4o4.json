@@ -447,7 +447,11 @@
                 "bonus": "(2 + @scaling)d6",
                 "bonusDamageType": "radiant",
                 "attackType": "weaponAttack",
-                "rollActivity": "brandSmiteRider1"
+                "rollActivity": "brandSmiteRider1",
+                "animation": {
+                  "source": "chris-premades",
+                  "identifier": "smite"
+                }
               }
             }
           },
@@ -459,6 +463,17 @@
                 "identifier": "nextHitRider"
               }
             ]
+          },
+          "animationGenericConfig": {
+            "chris-premades": {
+              "nextHitRider": {
+                "chris-premades": {
+                  "smite": {
+                    "color": "yellowhite"
+                  }
+                }
+              }
+            }
           }
         }
       },

@@ -1,0 +1,16 @@
+{
+  "type": "Item",
+  "folder": "LMfgYwuo2ZcYqe1b",
+  "name": "Summon Undead",
+  "color": null,
+  "sorting": "a",
+  "_id": "sumUndeadFolder1",
+  "description": "",
+  "flags": {},
+  "_stats": {
+    "coreVersion": "14.369",
+    "systemId": "dnd5e",
+    "systemVersion": "6.0.6"
+  },
+  "_key": "!folders!sumUndeadFolder1"
+}

@@ -122,7 +122,22 @@
                   "bonusDamageType": "psychic",
                   "attackType": "meleeWeaponAttack",
                   "ownTurn": true,
-                  "useActivityCosts": true
+                  "useActivityCosts": true,
+                  "animation": {
+                    "source": "chris-premades",
+                    "identifier": "smite"
+                  }
+                }
+              }
+            },
+            "animationGenericConfig": {
+              "chris-premades": {
+                "attackRider": {
+                  "chris-premades": {
+                    "smite": {
+                      "color": "purplepink"
+                    }
+                  }
                 }
               }
             }
@@ -273,7 +288,7 @@
     "cat": {
       "automation": {
         "source": "chris-premades",
-        "version": "2.1.0"
+        "version": "2.1.3"
       }
     }
   },

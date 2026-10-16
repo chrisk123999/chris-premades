@@ -257,8 +257,19 @@
     "cat": {
       "automation": {
         "source": "chris-premades",
-        "version": "2.0.0"
-      }
+        "version": "2.1.3"
+      },
+      "config": {
+        "spreadAroundCorners": true,
+        "animation": {
+          "source": "chris-premades",
+          "identifier": "darknessSphere"
+        }
+      },
+      "inheritConfig": [
+        "useRealDarkness",
+        "darknessAnimation"
+      ]
     }
   },
   "folder": "WtMPbOTVqQwsN1Bl",
