@@ -889,13 +889,6 @@
       "riders": {
         "activity": [],
         "effect": []
-      },
-      "last": {
-        "tAjeZyBWfeVS9wtD": {
-          "damageType": {
-            "0": "cold"
-          }
-        }
       }
     },
     "cat": {
@@ -989,12 +982,12 @@
       },
       "statuses": [],
       "description": "",
-      "_key": "!items.effects!3t98iJbNxqoUSgEK.fireShieldWarmE1",
       "_stats": {
         "coreVersion": "14.369",
         "systemId": "dnd5e",
         "systemVersion": "6.0.6"
-      }
+      },
+      "_key": "!items.effects!3t98iJbNxqoUSgEK.fireShieldWarmE1"
     },
     {
       "_id": "fireShieldChillE",
@@ -1070,12 +1063,12 @@
       },
       "statuses": [],
       "description": "",
-      "_key": "!items.effects!3t98iJbNxqoUSgEK.fireShieldChillE",
       "_stats": {
         "coreVersion": "14.369",
         "systemId": "dnd5e",
         "systemVersion": "6.0.6"
-      }
+      },
+      "_key": "!items.effects!3t98iJbNxqoUSgEK.fireShieldChillE"
     }
   ],
   "img": "icons/magic/defensive/shield-barrier-flaming-pentagon-red.webp",

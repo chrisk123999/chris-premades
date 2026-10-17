@@ -181,9 +181,7 @@
         "img": "",
         "otherActivityId": "none",
         "behaviors": [],
-        "flags": {
-          "cat": {}
-        },
+        "flags": {},
         "visibility": {
           "level": {},
           "requireAttunement": false,
@@ -435,13 +433,6 @@
       "riders": {
         "activity": [],
         "effect": []
-      },
-      "last": {
-        "lPHL3nOMjsIHZuBI": {
-          "damageType": {
-            "0": "radiant"
-          }
-        }
       }
     },
     "cat": {
@@ -497,16 +488,15 @@
       "flags": {},
       "statuses": [],
       "description": "",
-      "_key": "!items.effects!1Z3tR4yDPjQDHxbM.spiritGuardSlowE",
       "_stats": {
         "coreVersion": "14.369",
         "systemId": "dnd5e",
         "systemVersion": "6.0.6"
-      }
+      },
+      "_key": "!items.effects!1Z3tR4yDPjQDHxbM.spiritGuardSlowE"
     },
     {
       "_id": "spiritGuardAura1",
-      "_key": "!items.effects!1Z3tR4yDPjQDHxbM.spiritGuardAura1",
       "_stats": {
         "coreVersion": "14.369",
         "systemId": "dnd5e",
@@ -569,7 +559,8 @@
             }
           }
         }
-      }
+      },
+      "_key": "!items.effects!1Z3tR4yDPjQDHxbM.spiritGuardAura1"
     }
   ],
   "img": "icons/magic/defensive/shield-barrier-blades-teal.webp",

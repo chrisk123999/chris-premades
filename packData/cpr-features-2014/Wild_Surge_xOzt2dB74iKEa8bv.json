@@ -1482,23 +1482,6 @@
       "riders": {
         "activity": [],
         "effect": []
-      },
-      "last": {
-        "neBFHkmgFVJTEtwu": {
-          "damageType": {
-            "0": "radiant"
-          }
-        },
-        "yZL9ocYC0HK89HO1": {
-          "damageType": {
-            "0": "necrotic"
-          }
-        },
-        "Z6hDqRP21vKrzDZc": {
-          "damageType": {
-            "0": "force"
-          }
-        }
       }
     },
     "cat": {
@@ -1609,7 +1592,6 @@
           "selfTargetAlways": false,
           "dontApply": false,
           "stackable": "multi",
-          "showIcon": false,
           "durationExpression": "",
           "macroRepeat": "none",
           "specialDuration": [
@@ -1621,7 +1603,6 @@
         }
       },
       "sort": 0,
-      "start": null,
       "showIcon": 1,
       "folder": null,
       "_stats": {
@@ -1651,12 +1632,12 @@
       "flags": {},
       "statuses": [],
       "description": "",
-      "_key": "!items.effects!xOzt2dB74iKEa8bv.protectiveLight1",
       "_stats": {
         "coreVersion": "14.369",
         "systemId": "dnd5e",
         "systemVersion": "6.0.6"
-      }
+      },
+      "_key": "!items.effects!xOzt2dB74iKEa8bv.protectiveLight1"
     },
     {
       "_id": "flowersAndVines1",
@@ -1678,12 +1659,12 @@
       "flags": {},
       "statuses": [],
       "description": "",
-      "_key": "!items.effects!xOzt2dB74iKEa8bv.flowersAndVines1",
       "_stats": {
         "coreVersion": "14.369",
         "systemId": "dnd5e",
         "systemVersion": "6.0.6"
-      }
+      },
+      "_key": "!items.effects!xOzt2dB74iKEa8bv.flowersAndVines1"
     }
   ],
   "img": "icons/magic/fire/projectile-wave-arrow.webp",

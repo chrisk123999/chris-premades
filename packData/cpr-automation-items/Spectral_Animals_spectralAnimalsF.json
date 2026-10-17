@@ -222,13 +222,13 @@
         ]
       },
       "flags": {},
-      "_key": "!items.effects!spectralAnimalsF.spectralStrAdvEf",
       "_stats": {
         "coreVersion": "14.369",
         "systemId": "dnd5e",
         "systemVersion": "6.0.6"
       },
-      "description": ""
+      "description": "",
+      "_key": "!items.effects!spectralAnimalsF.spectralStrAdvEf"
     },
     {
       "_id": "spectralAuraHost",
@@ -266,13 +266,13 @@
           }
         }
       },
-      "_key": "!items.effects!spectralAnimalsF.spectralAuraHost",
       "_stats": {
         "coreVersion": "14.369",
         "systemId": "dnd5e",
         "systemVersion": "6.0.6"
       },
-      "description": ""
+      "description": "",
+      "_key": "!items.effects!spectralAnimalsF.spectralAuraHost"
     }
   ],
   "folder": "sumConjAnimalsFd",
@@ -307,10 +307,10 @@
       }
     }
   },
-  "_key": "!items!spectralAnimalsF",
   "_stats": {
     "coreVersion": "14.369",
     "systemId": "dnd5e",
     "systemVersion": "6.0.6"
-  }
+  },
+  "_key": "!items!spectralAnimalsF"
 }

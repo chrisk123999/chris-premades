@@ -652,18 +652,6 @@
       "riders": {
         "activity": [],
         "effect": []
-      },
-      "last": {
-        "w7SvOc1YLH8F3fja": {
-          "damageType": {
-            "0": "acid"
-          }
-        },
-        "1RnpgyKvLWraMv2k": {
-          "damageType": {
-            "0": "cold"
-          }
-        }
       }
     },
     "cat": {
@@ -725,12 +713,12 @@
         "blinded"
       ],
       "description": "",
-      "_key": "!items.effects!jX0TbdULDigW3FuJ.hungerBlinded001",
       "_stats": {
         "coreVersion": "14.369",
         "systemId": "dnd5e",
         "systemVersion": "6.0.6"
-      }
+      },
+      "_key": "!items.effects!jX0TbdULDigW3FuJ.hungerBlinded001"
     }
   ],
   "img": "icons/magic/water/barrier-ice-shield.webp",

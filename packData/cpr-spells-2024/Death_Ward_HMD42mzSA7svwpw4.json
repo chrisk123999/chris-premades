@@ -256,12 +256,12 @@
       },
       "statuses": [],
       "description": "",
-      "_key": "!items.effects!HMD42mzSA7svwpw4.deathWardEffect1",
       "_stats": {
         "coreVersion": "14.369",
         "systemId": "dnd5e",
         "systemVersion": "6.0.6"
-      }
+      },
+      "_key": "!items.effects!HMD42mzSA7svwpw4.deathWardEffect1"
     }
   ],
   "flags": {

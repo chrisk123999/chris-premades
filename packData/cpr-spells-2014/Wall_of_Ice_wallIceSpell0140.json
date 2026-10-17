@@ -54,7 +54,7 @@
     "level": 6,
     "school": "evo",
     "materials": {
-      "value": "A small piece of quartz",
+      "value": "",
       "consumed": false,
       "cost": 0,
       "supply": 0
@@ -135,7 +135,7 @@
           },
           "affects": {
             "count": "",
-            "type": "creature",
+            "type": "",
             "choice": false,
             "special": ""
           },
@@ -336,7 +336,7 @@
           },
           "affects": {
             "count": "",
-            "type": "creature",
+            "type": "",
             "choice": false,
             "special": ""
           },
@@ -694,10 +694,10 @@
   "img": "icons/magic/water/barrier-ice-crystal-wall-faceted.webp",
   "effects": [],
   "folder": null,
-  "_key": "!items!wallIceSpell0140",
   "_stats": {
     "coreVersion": "14.369",
     "systemId": "dnd5e",
     "systemVersion": "6.0.6"
-  }
+  },
+  "_key": "!items!wallIceSpell0140"
 }

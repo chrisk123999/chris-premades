@@ -450,13 +450,6 @@
       "riders": {
         "activity": [],
         "effect": []
-      },
-      "last": {
-        "dVDb1NqKUitfS4oK": {
-          "damageType": {
-            "0": "necrotic"
-          }
-        }
       }
     },
     "cat": {
@@ -527,12 +520,12 @@
       },
       "statuses": [],
       "description": "",
-      "_key": "!items.effects!mbRmjaNYiCUT76kw.vampiricTouchEf1",
       "_stats": {
         "coreVersion": "14.369",
         "systemId": "dnd5e",
         "systemVersion": "6.0.6"
-      }
+      },
+      "_key": "!items.effects!mbRmjaNYiCUT76kw.vampiricTouchEf1"
     }
   ],
   "img": "icons/magic/unholy/hand-claw-fog-green.webp",

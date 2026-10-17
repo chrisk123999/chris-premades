@@ -447,13 +447,6 @@
       "riders": {
         "activity": [],
         "effect": []
-      },
-      "last": {
-        "gATi3EgZG2Mh4GCk": {
-          "damageType": {
-            "0": "radiant"
-          }
-        }
       }
     },
     "cat": {
@@ -539,12 +532,12 @@
       },
       "statuses": [],
       "description": "",
-      "_key": "!items.effects!aUTbQTjDNAVZOZik.sickRadSickened1",
       "_stats": {
         "coreVersion": "14.369",
         "systemId": "dnd5e",
         "systemVersion": "6.0.6"
-      }
+      },
+      "_key": "!items.effects!aUTbQTjDNAVZOZik.sickRadSickened1"
     }
   ],
   "img": "icons/magic/light/orb-beams-green.webp",

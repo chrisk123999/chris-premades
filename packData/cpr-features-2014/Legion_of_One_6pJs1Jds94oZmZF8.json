@@ -109,12 +109,12 @@
       "flags": {},
       "statuses": [],
       "description": "",
-      "_key": "!items.effects!6pJs1Jds94oZmZF8.legionOfOneFlag1",
       "_stats": {
         "coreVersion": "14.369",
         "systemId": "dnd5e",
         "systemVersion": "6.0.6"
-      }
+      },
+      "_key": "!items.effects!6pJs1Jds94oZmZF8.legionOfOneFlag1"
     }
   ],
   "img": "icons/magic/defensive/illusion-evasion-echo-purple.webp",

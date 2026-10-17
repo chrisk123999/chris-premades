@@ -55,7 +55,7 @@
       "concentration"
     ],
     "materials": {
-      "value": "a piece of quartz",
+      "value": "",
       "consumed": false,
       "cost": 0,
       "supply": 0
@@ -130,7 +130,7 @@
           },
           "affects": {
             "count": "",
-            "type": "creature",
+            "type": "",
             "choice": false,
             "special": ""
           },
@@ -331,7 +331,7 @@
           },
           "affects": {
             "count": "",
-            "type": "creature",
+            "type": "",
             "choice": false,
             "special": ""
           },
@@ -697,10 +697,10 @@
       }
     }
   },
-  "_key": "!items!wallIceSpell0240",
   "_stats": {
     "coreVersion": "14.369",
     "systemId": "dnd5e",
     "systemVersion": "6.0.6"
-  }
+  },
+  "_key": "!items!wallIceSpell0240"
 }

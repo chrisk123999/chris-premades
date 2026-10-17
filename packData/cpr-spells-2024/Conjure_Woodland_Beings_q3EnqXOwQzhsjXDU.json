@@ -121,9 +121,7 @@
         "name": "Conjure Woodland Beings",
         "img": "icons/magic/nature/instrument-recorder-leaves.webp",
         "behaviors": [],
-        "flags": {
-          "cat": {}
-        },
+        "flags": {},
         "visibility": {
           "level": {},
           "requireAttunement": false,
@@ -405,7 +403,6 @@
   "effects": [
     {
       "_id": "cwbAuraEffect001",
-      "_key": "!items.effects!q3EnqXOwQzhsjXDU.cwbAuraEffect001",
       "name": "Conjure Woodland Beings",
       "img": "icons/magic/nature/instrument-recorder-leaves.webp",
       "type": "base",
@@ -462,7 +459,8 @@
             }
           }
         }
-      }
+      },
+      "_key": "!items.effects!q3EnqXOwQzhsjXDU.cwbAuraEffect001"
     }
   ],
   "folder": null,

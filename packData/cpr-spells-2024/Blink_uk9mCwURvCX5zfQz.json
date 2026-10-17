@@ -414,12 +414,12 @@
       },
       "statuses": [],
       "description": "",
-      "_key": "!items.effects!uk9mCwURvCX5zfQz.blinkActiveEff01",
       "_stats": {
         "coreVersion": "14.369",
         "systemId": "dnd5e",
         "systemVersion": "6.0.6"
-      }
+      },
+      "_key": "!items.effects!uk9mCwURvCX5zfQz.blinkActiveEff01"
     },
     {
       "_id": "blinkAwayEffect1",
@@ -489,49 +489,16 @@
       },
       "statuses": [],
       "description": "",
-      "_key": "!items.effects!uk9mCwURvCX5zfQz.blinkAwayEffect1",
       "_stats": {
         "coreVersion": "14.369",
         "systemId": "dnd5e",
         "systemVersion": "6.0.6"
-      }
+      },
+      "_key": "!items.effects!uk9mCwURvCX5zfQz.blinkAwayEffect1"
     }
   ],
   "name": "Blink",
   "flags": {
-    "ddbimporter": {
-      "id": 21171310,
-      "definitionId": 2618939,
-      "entityTypeId": 435869154,
-      "dndbeyond": {
-        "lookup": "generic",
-        "lookupName": "generic",
-        "level": null,
-        "castAtLevel": null,
-        "homebrew": false
-      },
-      "originalName": "Blink",
-      "sources": [
-        {
-          "sourceId": 148,
-          "pageNumber": 248,
-          "sourceType": 1
-        }
-      ],
-      "tags": [
-        "Utility"
-      ],
-      "version": "6.0.61",
-      "is2014": false,
-      "is2024": true,
-      "addSpellEffects": true,
-      "legacy": false,
-      "defaultAdditionalActivities": {
-        "enabled": true,
-        "data": {}
-      },
-      "effectsApplied": true
-    },
     "midi-qol": {
       "removeAttackDamageButtons": "default"
     },

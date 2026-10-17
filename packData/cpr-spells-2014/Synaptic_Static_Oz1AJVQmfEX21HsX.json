@@ -285,13 +285,6 @@
       "riders": {
         "activity": [],
         "effect": []
-      },
-      "last": {
-        "dnd5eactivity000": {
-          "damageType": {
-            "0": "psychic"
-          }
-        }
       }
     },
     "cat": {
@@ -360,7 +353,6 @@
           "specialDuration": [],
           "disableIncapacitated": false,
           "dontApply": false,
-          "showIcon": false,
           "enableCondition": "",
           "disableCondition": ""
         },
@@ -414,7 +406,6 @@
         }
       },
       "sort": 0,
-      "start": null,
       "showIcon": 1,
       "folder": null,
       "_stats": {

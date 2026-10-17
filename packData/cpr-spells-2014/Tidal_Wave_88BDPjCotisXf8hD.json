@@ -43,13 +43,6 @@
       "riders": {
         "activity": [],
         "effect": []
-      },
-      "last": {
-        "dnd5eactivity000": {
-          "damageType": {
-            "0": "bludgeoning"
-          }
-        }
       }
     },
     "cat": {

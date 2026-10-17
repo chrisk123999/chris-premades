@@ -57,7 +57,7 @@
       "concentration"
     ],
     "materials": {
-      "value": "a drop of molasses",
+      "value": "",
       "consumed": false,
       "cost": 0,
       "supply": 0
@@ -310,7 +310,6 @@
         }
       },
       "sort": 0,
-      "start": null,
       "showIcon": 1,
       "folder": null,
       "_key": "!items.effects!phbsplSlow000000.z1lkguBohjqXRSHm"

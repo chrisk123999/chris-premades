@@ -267,12 +267,12 @@
       },
       "statuses": [],
       "description": "",
-      "_key": "!items.effects!beSW9YtSxSvmJkkI.auraOfPurityHost",
       "_stats": {
         "coreVersion": "14.369",
         "systemId": "dnd5e",
         "systemVersion": "6.0.6"
-      }
+      },
+      "_key": "!items.effects!beSW9YtSxSvmJkkI.auraOfPurityHost"
     },
     {
       "_id": "auraOfPurityAura",
@@ -340,12 +340,12 @@
       },
       "statuses": [],
       "description": "",
-      "_key": "!items.effects!beSW9YtSxSvmJkkI.auraOfPurityAura",
       "_stats": {
         "coreVersion": "14.369",
         "systemId": "dnd5e",
         "systemVersion": "6.0.6"
-      }
+      },
+      "_key": "!items.effects!beSW9YtSxSvmJkkI.auraOfPurityAura"
     }
   ],
   "folder": null,

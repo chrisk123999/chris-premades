@@ -288,13 +288,6 @@
       "riders": {
         "activity": [],
         "effect": []
-      },
-      "last": {
-        "attackSteeWinStr": {
-          "damageType": {
-            "0": "force"
-          }
-        }
       }
     },
     "cat": {

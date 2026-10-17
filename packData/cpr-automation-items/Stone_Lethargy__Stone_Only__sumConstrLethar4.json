@@ -214,7 +214,7 @@
   "effects": [
     {
       "name": "Stone Lethargy (Stone Only)",
-      "origin": "Compendium.world.cpr-summon-features.Item.c298imTuv4oBN9BF",
+      "origin": null,
       "duration": {
         "value": 1,
         "units": "rounds",
@@ -230,7 +230,6 @@
           "disableCondition": "",
           "disableIncapacitated": false,
           "stackable": "noneName",
-          "showIcon": false,
           "durationExpression": "",
           "macroRepeat": "none",
           "specialDuration": [
@@ -289,7 +288,6 @@
       "transfer": false,
       "statuses": [],
       "sort": 0,
-      "start": null,
       "showIcon": 1,
       "folder": null,
       "_stats": {
@@ -336,7 +334,6 @@
       "ida": false
     },
     "dnd5e": {
-      "persistSourceMigration": true,
       "riders": {
         "activity": []
       }

@@ -253,13 +253,6 @@
     "dnd5e": {
       "riders": {
         "activity": []
-      },
-      "last": {
-        "saveBlightIIIIII": {
-          "damageType": {
-            "0": "necrotic"
-          }
-        }
       }
     },
     "cat": {

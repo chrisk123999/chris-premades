@@ -54,7 +54,7 @@
     "level": 3,
     "school": "evo",
     "materials": {
-      "value": "a handful of sand",
+      "value": "",
       "consumed": false,
       "cost": 0,
       "supply": 0
@@ -128,7 +128,7 @@
           },
           "affects": {
             "count": "",
-            "type": "creature",
+            "type": "",
             "choice": false,
             "special": ""
           },
@@ -282,19 +282,19 @@
       "description": "",
       "tint": "#ffffff",
       "origin": null,
-      "_key": "!items.effects!wallSandSpell014.wallSandBlind001",
       "_stats": {
         "coreVersion": "14.369",
         "systemId": "dnd5e",
         "systemVersion": "6.0.6"
-      }
+      },
+      "_key": "!items.effects!wallSandSpell014.wallSandBlind001"
     }
   ],
   "folder": null,
-  "_key": "!items!wallSandSpell014",
   "_stats": {
     "coreVersion": "14.369",
     "systemId": "dnd5e",
     "systemVersion": "6.0.6"
-  }
+  },
+  "_key": "!items!wallSandSpell014"
 }

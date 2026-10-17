@@ -915,7 +915,6 @@
       "statuses": [],
       "sort": 0,
       "flags": {},
-      "start": null,
       "showIcon": 1,
       "folder": null,
       "_stats": {
@@ -929,18 +928,6 @@
   "folder": "circleShepherd01",
   "flags": {
     "dnd5e": {
-      "last": {
-        "zI5Lx0w8o6zdByWG": {
-          "damageType": {
-            "0": "temphp"
-          }
-        },
-        "HiUnGrT7PENuJLR4": {
-          "damageType": {
-            "0": "healing"
-          }
-        }
-      },
       "riders": {
         "activity": []
       }

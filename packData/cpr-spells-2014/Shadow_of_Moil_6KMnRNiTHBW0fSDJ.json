@@ -417,13 +417,6 @@
       "riders": {
         "activity": [],
         "effect": []
-      },
-      "last": {
-        "qkZY73cK8uBw5zTf": {
-          "damageType": {
-            "0": "necrotic"
-          }
-        }
       }
     },
     "cat": {
@@ -505,12 +498,12 @@
       },
       "statuses": [],
       "description": "",
-      "_key": "!items.effects!6KMnRNiTHBW0fSDJ.shadowOfMoilEff1",
       "_stats": {
         "coreVersion": "14.369",
         "systemId": "dnd5e",
         "systemVersion": "6.0.6"
-      }
+      },
+      "_key": "!items.effects!6KMnRNiTHBW0fSDJ.shadowOfMoilEff1"
     }
   ],
   "img": "icons/commodities/gems/pearl-swirl-teal.webp",

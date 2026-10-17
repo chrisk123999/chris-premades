@@ -59,7 +59,7 @@
       "concentration"
     ],
     "materials": {
-      "value": "a fan and a feather",
+      "value": "",
       "consumed": false,
       "cost": 0,
       "supply": 0
@@ -113,7 +113,7 @@
           "affects": {
             "choice": false,
             "count": "",
-            "type": "creature",
+            "type": "",
             "special": ""
           },
           "override": true
@@ -288,10 +288,10 @@
       }
     }
   },
-  "_key": "!items!M3m5bfKJks6Qn9HZ",
   "_stats": {
     "coreVersion": "14.369",
     "systemId": "dnd5e",
     "systemVersion": "6.0.6"
-  }
+  },
+  "_key": "!items!M3m5bfKJks6Qn9HZ"
 }

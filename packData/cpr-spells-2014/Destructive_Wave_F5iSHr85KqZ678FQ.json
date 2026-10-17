@@ -313,13 +313,6 @@
       "otherCondition": ""
     },
     "dnd5e": {
-      "last": {
-        "dnd5eactivity000": {
-          "damageType": {
-            "0": "thunder"
-          }
-        }
-      },
       "riders": {
         "activity": [],
         "effect": []

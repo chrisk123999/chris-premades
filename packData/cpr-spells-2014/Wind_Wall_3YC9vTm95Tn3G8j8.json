@@ -54,7 +54,7 @@
     "level": 3,
     "school": "evo",
     "materials": {
-      "value": "A tiny fan and a feather of exotic origin",
+      "value": "",
       "consumed": false,
       "cost": 0,
       "supply": 0
@@ -114,7 +114,7 @@
           "affects": {
             "choice": false,
             "count": "",
-            "type": "creature",
+            "type": "",
             "special": ""
           },
           "override": true
@@ -285,10 +285,10 @@
   "img": "icons/magic/air/wind-tornado-wall-blue.webp",
   "effects": [],
   "folder": null,
-  "_key": "!items!3YC9vTm95Tn3G8j8",
   "_stats": {
     "coreVersion": "14.369",
     "systemId": "dnd5e",
     "systemVersion": "6.0.6"
-  }
+  },
+  "_key": "!items!3YC9vTm95Tn3G8j8"
 }

@@ -287,12 +287,12 @@
         "incapacitated"
       ],
       "description": "",
-      "_key": "!items.effects!FRDM1w1P29eWChZl.banishedEffect01",
       "_stats": {
         "coreVersion": "14.369",
         "systemId": "dnd5e",
         "systemVersion": "6.0.6"
-      }
+      },
+      "_key": "!items.effects!FRDM1w1P29eWChZl.banishedEffect01"
     }
   ],
   "name": "Banishment",

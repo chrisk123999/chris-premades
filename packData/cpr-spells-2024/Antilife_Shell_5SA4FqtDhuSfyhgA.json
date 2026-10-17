@@ -154,8 +154,7 @@
         "height": "",
         "units": "ft"
       }
-    },
-    "sourceClass": ""
+    }
   },
   "effects": [
     {
@@ -194,12 +193,12 @@
       },
       "statuses": [],
       "description": "",
-      "_key": "!items.effects!5SA4FqtDhuSfyhgA.antilifeShellE01",
       "_stats": {
         "coreVersion": "14.369",
         "systemId": "dnd5e",
         "systemVersion": "6.0.6"
-      }
+      },
+      "_key": "!items.effects!5SA4FqtDhuSfyhgA.antilifeShellE01"
     }
   ],
   "name": "Antilife Shell",
@@ -228,10 +227,10 @@
   "img": "icons/magic/earth/orb-stone-smoke-teal.webp",
   "folder": null,
   "_id": "5SA4FqtDhuSfyhgA",
-  "_key": "!items!5SA4FqtDhuSfyhgA",
   "_stats": {
     "coreVersion": "14.369",
     "systemId": "dnd5e",
     "systemVersion": "6.0.6"
-  }
+  },
+  "_key": "!items!5SA4FqtDhuSfyhgA"
 }

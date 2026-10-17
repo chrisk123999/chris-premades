@@ -627,7 +627,6 @@
           "enableCondition": "",
           "disableCondition": "",
           "stackable": "noneName",
-          "showIcon": false,
           "disableIncapacitated": false,
           "selfTarget": false,
           "selfTargetAlways": false,
@@ -642,7 +641,6 @@
           "overlay": false
         }
       },
-      "start": null,
       "showIcon": 1,
       "folder": null,
       "_stats": {

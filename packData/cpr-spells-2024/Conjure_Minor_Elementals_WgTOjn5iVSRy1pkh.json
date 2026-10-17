@@ -267,12 +267,12 @@
       },
       "statuses": [],
       "description": "",
-      "_key": "!items.effects!WgTOjn5iVSRy1pkh.conjMinorElemEf1",
       "_stats": {
         "coreVersion": "14.369",
         "systemId": "dnd5e",
         "systemVersion": "6.0.6"
-      }
+      },
+      "_key": "!items.effects!WgTOjn5iVSRy1pkh.conjMinorElemEf1"
     }
   ],
   "folder": null,

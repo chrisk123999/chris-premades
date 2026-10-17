@@ -118,9 +118,7 @@
         "name": "",
         "img": null,
         "behaviors": [],
-        "flags": {
-          "cat": {}
-        },
+        "flags": {},
         "visibility": {
           "level": {},
           "requireAttunement": false,
@@ -450,7 +448,6 @@
           "enableCondition": "",
           "disableCondition": "",
           "stackable": "noneName",
-          "showIcon": false,
           "disableIncapacitated": false,
           "selfTarget": false,
           "selfTargetAlways": false,
@@ -465,7 +462,6 @@
           "overlay": false
         }
       },
-      "start": null,
       "showIcon": 1,
       "folder": null,
       "_stats": {
@@ -547,7 +543,6 @@
           "enableCondition": "",
           "disableCondition": "",
           "stackable": "noneName",
-          "showIcon": false,
           "disableIncapacitated": false,
           "selfTarget": true,
           "selfTargetAlways": false,
@@ -602,7 +597,6 @@
           }
         }
       },
-      "start": null,
       "showIcon": 1,
       "folder": null,
       "_stats": {
@@ -626,13 +620,6 @@
     "dnd5e": {
       "riders": {
         "activity": []
-      },
-      "last": {
-        "GdHXQRhSX1PG21aO": {
-          "damageType": {
-            "0": "thunder"
-          }
-        }
       }
     },
     "cat": {

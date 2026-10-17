@@ -69,6 +69,46 @@ export function addFill(sequence, region, file, {prefix, opacity = 1, belowToken
     /* eslint-enable indent */
 }
 /**
+ * Repeat a looping square asset at even spacing along a wall's whole path
+ * @param {Sequence} sequence Sequence to add to.
+ * @param {object} region Wall region the effects are tied to.
+ * @param {object} path Drawn wall path.
+ * @param {string} file Asset repeated along the path.
+ * @param {string} prefix Persist name prefix.
+ */
+export function addTiles(sequence, region, path, file, prefix) {
+    const tile = region.parent.grid.size * 1.5;
+    const spacing = tile * 0.4;
+    const points = [];
+    let travelled = 0;
+    let next = 0;
+    for (const [start, end] of regionUtils.pathSegments(path)) {
+        const length = Math.hypot(end.x - start.x, end.y - start.y);
+        for (; next <= travelled + length; next += spacing) {
+            const fraction = length ? (next - travelled) / length : 0;
+            points.push({x: start.x + (end.x - start.x) * fraction, y: start.y + (end.y - start.y) * fraction});
+        }
+        travelled += length;
+    }
+    points.forEach(point => {
+        /* eslint-disable indent */
+        sequence
+            .effect()
+                .name(persistName(prefix, region))
+                .file(file)
+                .atLocation(point)
+                .size(tile)
+                .randomRotation()
+                .mask(region)
+                .belowTokens()
+                .fadeIn(500)
+                .fadeOut(1000)
+                .persist()
+                .tieToDocuments(region);
+        /* eslint-enable indent */
+    });
+}
+/**
  * Place a looping dome or globe asset over a ring wall, persisting until the region is deleted.
  * @param {Sequence} sequence Sequence to add to.
  * @param {object} region Wall region the effect is tied to.
@@ -184,8 +224,7 @@ const wallStyles = {
     },
     wallOfThorns: {
         castColor: 'green',
-        fills: ['jb2a.entangle.02.loop.02.green', 'jb2a.entangle.green'],
-        fillOptions: {opacity: 1, belowTokens: true}
+        tiles: ['jb2a.entangle.02.loop.02.green', 'jb2a.entangle.green']
     },
     wallOfGloom: {
         castColor: 'dark_purple',
@@ -200,15 +239,17 @@ const wallStyles = {
         stripOptions: {scale: 0.6, opacity: 0.85}
     }
 };
-function addWall(sequence, region, path, flats, {strips = [], domes = [], fills = [], stripOptions = {}, fillOptions = {}}) {
+function addWall(sequence, region, path, flats, {strips = [], domes = [], fills = [], tiles = [], stripOptions = {}, fillOptions = {}}) {
     const prefix = 'wall';
     const dome = path.ring && pickFile(...domes);
     const strip = pickFile(...strips);
     const fill = pickFile(...fills);
+    const tile = pickFile(...tiles);
     if (dome) addDome(sequence, region, path.ring, dome, {prefix});
     else if (strip) addStrips(sequence, region, path, strip, {prefix, ...stripOptions});
+    if (tile) addTiles(sequence, region, path, tile, prefix);
     if (fill) addFill(sequence, region, fill, {prefix, ...fillOptions});
-    const flatFile = fill ?? strip;
+    const flatFile = fill ?? strip ?? tile;
     if (flatFile) flats.forEach(flat => addFill(sequence, flat, flatFile, {prefix, opacity: 0.6, belowTokens: false}));
 }
 async function play(sourceToken, region, {style = 'wallOfForce', cast = true, path, flats = []} = {}) {
@@ -228,9 +269,7 @@ async function reshape(region, {style = 'wallOfForce', path} = {}) {
     addWall(sequence, region, path, [], wallStyles[style] ?? wallStyles.wallOfForce);
     await sequence.play();
 }
-/**
- * Wall spell animation: a cast, an optional burst along the wall, then looping strips along each segment, a dome over rings, or a fill over the wall's area, in the chosen style.
- */
+/** Wall spell animation */
 export const wall = {
     name: 'CHRISPREMADES.Animations.Wall',
     macros: {play, reshape},

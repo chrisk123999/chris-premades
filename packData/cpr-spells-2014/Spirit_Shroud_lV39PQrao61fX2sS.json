@@ -901,12 +901,12 @@
       },
       "statuses": [],
       "description": "",
-      "_key": "!items.effects!lV39PQrao61fX2sS.shroudEffectNec0",
       "_stats": {
         "coreVersion": "14.369",
         "systemId": "dnd5e",
         "systemVersion": "6.0.6"
-      }
+      },
+      "_key": "!items.effects!lV39PQrao61fX2sS.shroudEffectNec0"
     },
     {
       "_id": "shroudEffectRad0",
@@ -984,12 +984,12 @@
       },
       "statuses": [],
       "description": "",
-      "_key": "!items.effects!lV39PQrao61fX2sS.shroudEffectRad0",
       "_stats": {
         "coreVersion": "14.369",
         "systemId": "dnd5e",
         "systemVersion": "6.0.6"
-      }
+      },
+      "_key": "!items.effects!lV39PQrao61fX2sS.shroudEffectRad0"
     },
     {
       "_id": "shroudEffectCol0",
@@ -1067,12 +1067,12 @@
       },
       "statuses": [],
       "description": "",
-      "_key": "!items.effects!lV39PQrao61fX2sS.shroudEffectCol0",
       "_stats": {
         "coreVersion": "14.369",
         "systemId": "dnd5e",
         "systemVersion": "6.0.6"
-      }
+      },
+      "_key": "!items.effects!lV39PQrao61fX2sS.shroudEffectCol0"
     },
     {
       "_id": "shroudNoHealing1",
@@ -1100,12 +1100,12 @@
       },
       "statuses": [],
       "description": "",
-      "_key": "!items.effects!lV39PQrao61fX2sS.shroudNoHealing1",
       "_stats": {
         "coreVersion": "14.369",
         "systemId": "dnd5e",
         "systemVersion": "6.0.6"
-      }
+      },
+      "_key": "!items.effects!lV39PQrao61fX2sS.shroudNoHealing1"
     },
     {
       "_id": "shroudSlowEff001",
@@ -1133,12 +1133,12 @@
       },
       "statuses": [],
       "description": "",
-      "_key": "!items.effects!lV39PQrao61fX2sS.shroudSlowEff001",
       "_stats": {
         "coreVersion": "14.369",
         "systemId": "dnd5e",
         "systemVersion": "6.0.6"
-      }
+      },
+      "_key": "!items.effects!lV39PQrao61fX2sS.shroudSlowEff001"
     }
   ],
   "flags": {

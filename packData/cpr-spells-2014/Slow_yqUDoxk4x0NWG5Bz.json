@@ -52,7 +52,7 @@
     "level": 3,
     "school": "trs",
     "materials": {
-      "value": "A drop of molasses.",
+      "value": "",
       "consumed": false,
       "cost": 0,
       "supply": 0
@@ -353,7 +353,6 @@
         "magical": false
       },
       "sort": 0,
-      "start": null,
       "showIcon": 1,
       "folder": null,
       "_key": "!items.effects!yqUDoxk4x0NWG5Bz.YtN8kTDQyxFaxpEx"

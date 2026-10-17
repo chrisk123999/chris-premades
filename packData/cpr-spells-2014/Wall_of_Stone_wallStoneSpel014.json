@@ -54,7 +54,7 @@
     "level": 5,
     "school": "evo",
     "materials": {
-      "value": "A small block of granite",
+      "value": "",
       "consumed": false,
       "cost": 0,
       "supply": 0
@@ -130,7 +130,7 @@
           },
           "affects": {
             "count": "",
-            "type": "creature",
+            "type": "",
             "choice": false,
             "special": ""
           },
@@ -293,7 +293,7 @@
           },
           "affects": {
             "count": "",
-            "type": "creature",
+            "type": "",
             "choice": false,
             "special": ""
           },
@@ -577,10 +577,10 @@
   "img": "icons/commodities/stone/paver-brick-brown.webp",
   "effects": [],
   "folder": null,
-  "_key": "!items!wallStoneSpel014",
   "_stats": {
     "coreVersion": "14.369",
     "systemId": "dnd5e",
     "systemVersion": "6.0.6"
-  }
+  },
+  "_key": "!items!wallStoneSpel014"
 }

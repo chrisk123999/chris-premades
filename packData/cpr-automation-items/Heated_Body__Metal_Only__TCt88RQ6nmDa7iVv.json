@@ -243,13 +243,13 @@
           }
         }
       },
-      "_key": "!items.effects!TCt88RQ6nmDa7iVv.heatedBodyEffect",
       "_stats": {
         "coreVersion": "14.369",
         "systemId": "dnd5e",
         "systemVersion": "6.0.6"
       },
-      "description": ""
+      "description": "",
+      "_key": "!items.effects!TCt88RQ6nmDa7iVv.heatedBodyEffect"
     }
   ],
   "flags": {
@@ -287,7 +287,6 @@
       "ida": false
     },
     "dnd5e": {
-      "persistSourceMigration": true,
       "riders": {
         "activity": [],
         "effect": []

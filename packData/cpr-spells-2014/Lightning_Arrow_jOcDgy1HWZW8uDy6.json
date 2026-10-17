@@ -439,12 +439,12 @@
       },
       "statuses": [],
       "description": "",
-      "_key": "!items.effects!jOcDgy1HWZW8uDy6.lightningArrowE1",
       "_stats": {
         "coreVersion": "14.369",
         "systemId": "dnd5e",
         "systemVersion": "6.0.6"
-      }
+      },
+      "_key": "!items.effects!jOcDgy1HWZW8uDy6.lightningArrowE1"
     }
   ],
   "flags": {
@@ -486,13 +486,6 @@
       "riders": {
         "activity": [],
         "effect": []
-      },
-      "last": {
-        "u3RB5D5RyAK9VmES": {
-          "damageType": {
-            "0": "lightning"
-          }
-        }
       }
     },
     "cat": {

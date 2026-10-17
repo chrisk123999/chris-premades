@@ -48,7 +48,7 @@
         "expiry": null,
         "expired": false
       },
-      "origin": "Compendium.world.cpr-summon-features.Item.6YNzsgot01xXdOip",
+      "origin": null,
       "tint": "#ffffff",
       "flags": {
         "dae": {
@@ -59,10 +59,8 @@
           "macroRepeat": "none",
           "specialDuration": [],
           "disableCondition": "",
-          "disableIncapacitated": false,
-          "showIcon": false
-        },
-        "core": {}
+          "disableIncapacitated": false
+        }
       },
       "name": "Terror Frenzy",
       "description": "",
@@ -96,7 +94,6 @@
         }
       },
       "sort": 0,
-      "start": null,
       "showIcon": 1,
       "folder": null,
       "_stats": {

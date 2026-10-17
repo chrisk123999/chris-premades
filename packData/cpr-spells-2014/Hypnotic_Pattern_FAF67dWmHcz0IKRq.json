@@ -23,10 +23,8 @@
           "macroRepeat": "none",
           "specialDuration": [],
           "disableIncapacitated": false,
-          "dontApply": false,
-          "showIcon": false
+          "dontApply": false
         },
-        "core": {},
         "cat": {
           "specialDuration": [
             "damaged"
@@ -59,7 +57,6 @@
         }
       },
       "sort": 0,
-      "start": null,
       "showIcon": 1,
       "folder": null,
       "_stats": {

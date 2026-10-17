@@ -322,12 +322,12 @@
       },
       "statuses": [],
       "description": "",
-      "_key": "!items.effects!KAYtfGt5Z3hHcVkN.beaconOfHopeEff1",
       "_stats": {
         "coreVersion": "14.369",
         "systemId": "dnd5e",
         "systemVersion": "6.0.6"
-      }
+      },
+      "_key": "!items.effects!KAYtfGt5Z3hHcVkN.beaconOfHopeEff1"
     }
   ],
   "img": "icons/magic/light/explosion-star-blue-yellow.webp",

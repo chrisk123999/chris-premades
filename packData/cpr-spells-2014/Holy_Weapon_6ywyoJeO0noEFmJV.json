@@ -629,7 +629,6 @@
           "selfTargetAlways": false,
           "dontApply": false,
           "stackable": "noneName",
-          "showIcon": false,
           "durationExpression": "",
           "macroRepeat": "none",
           "specialDuration": []
@@ -659,7 +658,6 @@
         }
       },
       "sort": 0,
-      "start": null,
       "showIcon": 1,
       "folder": null,
       "_stats": {
@@ -720,12 +718,12 @@
       },
       "statuses": [],
       "description": "",
-      "_key": "!items.effects!6ywyoJeO0noEFmJV.holyWeaponEnch01",
       "_stats": {
         "coreVersion": "14.369",
         "systemId": "dnd5e",
         "systemVersion": "6.0.6"
-      }
+      },
+      "_key": "!items.effects!6ywyoJeO0noEFmJV.holyWeaponEnch01"
     },
     {
       "_id": "holyWeaponLight1",
@@ -753,12 +751,12 @@
       "flags": {},
       "statuses": [],
       "description": "",
-      "_key": "!items.effects!6ywyoJeO0noEFmJV.holyWeaponLight1",
       "_stats": {
         "coreVersion": "14.369",
         "systemId": "dnd5e",
         "systemVersion": "6.0.6"
-      }
+      },
+      "_key": "!items.effects!6ywyoJeO0noEFmJV.holyWeaponLight1"
     }
   ],
   "flags": {
@@ -799,13 +797,6 @@
       "riders": {
         "activity": [],
         "effect": []
-      },
-      "last": {
-        "RlP3i72tgXrqH7aQ": {
-          "damageType": {
-            "0": "radiant"
-          }
-        }
       }
     },
     "cat": {

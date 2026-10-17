@@ -458,13 +458,13 @@
           "identifier": "conjure-elemental-restrained"
         }
       },
-      "_key": "!items.effects!conjElementSpirt.conjElemRestrain",
       "_stats": {
         "coreVersion": "14.369",
         "systemId": "dnd5e",
         "systemVersion": "6.0.6"
       },
-      "description": ""
+      "description": "",
+      "_key": "!items.effects!conjElementSpirt.conjElemRestrain"
     }
   ],
   "folder": "conjElemental24F",
@@ -508,10 +508,10 @@
       }
     }
   },
-  "_key": "!items!conjElementSpirt",
   "_stats": {
     "coreVersion": "14.369",
     "systemId": "dnd5e",
     "systemVersion": "6.0.6"
-  }
+  },
+  "_key": "!items!conjElementSpirt"
 }

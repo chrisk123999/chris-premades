@@ -347,10 +347,8 @@
             "turnStartSource"
           ],
           "disableIncapacitated": false,
-          "dontApply": false,
-          "showIcon": false
-        },
-        "core": {}
+          "dontApply": false
+        }
       },
       "name": "Raulothim's Psychic Lance",
       "description": "",
@@ -375,7 +373,6 @@
         }
       },
       "sort": 0,
-      "start": null,
       "showIcon": 1,
       "folder": null,
       "_stats": {

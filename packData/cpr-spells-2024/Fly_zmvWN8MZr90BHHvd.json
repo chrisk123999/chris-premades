@@ -299,12 +299,12 @@
       },
       "statuses": [],
       "description": "",
-      "_key": "!items.effects!zmvWN8MZr90BHHvd.flyFlyingEffect1",
       "_stats": {
         "coreVersion": "14.369",
         "systemId": "dnd5e",
         "systemVersion": "6.0.6"
-      }
+      },
+      "_key": "!items.effects!zmvWN8MZr90BHHvd.flyFlyingEffect1"
     }
   ],
   "img": "icons/commodities/treasure/trinket-wing-white.webp",

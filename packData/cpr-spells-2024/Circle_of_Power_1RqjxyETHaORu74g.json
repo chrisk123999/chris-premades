@@ -272,12 +272,12 @@
       },
       "statuses": [],
       "description": "",
-      "_key": "!items.effects!1RqjxyETHaORu74g.circleOfPowerHos",
       "_stats": {
         "coreVersion": "14.369",
         "systemId": "dnd5e",
         "systemVersion": "6.0.6"
-      }
+      },
+      "_key": "!items.effects!1RqjxyETHaORu74g.circleOfPowerHos"
     },
     {
       "_id": "circleOfPowerAur",
@@ -309,12 +309,12 @@
       },
       "statuses": [],
       "description": "",
-      "_key": "!items.effects!1RqjxyETHaORu74g.circleOfPowerAur",
       "_stats": {
         "coreVersion": "14.369",
         "systemId": "dnd5e",
         "systemVersion": "6.0.6"
-      }
+      },
+      "_key": "!items.effects!1RqjxyETHaORu74g.circleOfPowerAur"
     }
   ],
   "folder": null,

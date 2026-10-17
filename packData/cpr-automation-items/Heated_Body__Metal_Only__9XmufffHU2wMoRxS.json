@@ -242,13 +242,13 @@
           }
         }
       },
-      "_key": "!items.effects!9XmufffHU2wMoRxS.heatedBodyEffect",
       "_stats": {
         "coreVersion": "14.369",
         "systemId": "dnd5e",
         "systemVersion": "6.0.6"
       },
-      "description": ""
+      "description": "",
+      "_key": "!items.effects!9XmufffHU2wMoRxS.heatedBodyEffect"
     }
   ],
   "flags": {

@@ -58,12 +58,12 @@
       "flags": {},
       "statuses": [],
       "description": "",
-      "_key": "!items.effects!KpKmo0tN3NiVFBZG.irrepressAllyEff",
       "_stats": {
         "coreVersion": "14.369",
         "systemId": "dnd5e",
         "systemVersion": "6.0.6"
-      }
+      },
+      "_key": "!items.effects!KpKmo0tN3NiVFBZG.irrepressAllyEff"
     },
     {
       "_id": "irrepressFoeEff0",
@@ -85,12 +85,12 @@
       "flags": {},
       "statuses": [],
       "description": "",
-      "_key": "!items.effects!KpKmo0tN3NiVFBZG.irrepressFoeEff0",
       "_stats": {
         "coreVersion": "14.369",
         "systemId": "dnd5e",
         "systemVersion": "6.0.6"
-      }
+      },
+      "_key": "!items.effects!KpKmo0tN3NiVFBZG.irrepressFoeEff0"
     }
   ],
   "flags": {

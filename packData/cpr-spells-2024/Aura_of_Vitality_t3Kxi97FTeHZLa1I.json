@@ -421,12 +421,12 @@
       },
       "statuses": [],
       "description": "",
-      "_key": "!items.effects!t3Kxi97FTeHZLa1I.auraVitalityHost",
       "_stats": {
         "coreVersion": "14.369",
         "systemId": "dnd5e",
         "systemVersion": "6.0.6"
-      }
+      },
+      "_key": "!items.effects!t3Kxi97FTeHZLa1I.auraVitalityHost"
     }
   ],
   "name": "Aura of Vitality",
@@ -453,13 +453,6 @@
       "riders": {
         "activity": [],
         "effect": []
-      },
-      "last": {
-        "AKDhT9uFmO6Zbwu2": {
-          "damageType": {
-            "0": "healing"
-          }
-        }
       }
     },
     "cat": {

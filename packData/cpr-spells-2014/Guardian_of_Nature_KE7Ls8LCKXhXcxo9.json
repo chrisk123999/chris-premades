@@ -480,12 +480,12 @@
       },
       "statuses": [],
       "description": "",
-      "_key": "!items.effects!KE7Ls8LCKXhXcxo9.primalBeastEff01",
       "_stats": {
         "coreVersion": "14.369",
         "systemId": "dnd5e",
         "systemVersion": "6.0.6"
-      }
+      },
+      "_key": "!items.effects!KE7Ls8LCKXhXcxo9.primalBeastEff01"
     },
     {
       "_id": "greatTreeEffect1",
@@ -538,12 +538,12 @@
       },
       "statuses": [],
       "description": "",
-      "_key": "!items.effects!KE7Ls8LCKXhXcxo9.greatTreeEffect1",
       "_stats": {
         "coreVersion": "14.369",
         "systemId": "dnd5e",
         "systemVersion": "6.0.6"
-      }
+      },
+      "_key": "!items.effects!KE7Ls8LCKXhXcxo9.greatTreeEffect1"
     }
   ],
   "img": "icons/magic/nature/lotus-glow-pink.webp",

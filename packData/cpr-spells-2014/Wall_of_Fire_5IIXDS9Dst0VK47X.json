@@ -111,7 +111,7 @@
           "affects": {
             "choice": false,
             "count": "",
-            "type": "creature",
+            "type": "",
             "special": ""
           }
         },
@@ -326,7 +326,7 @@
           "affects": {
             "choice": false,
             "count": "",
-            "type": "creature",
+            "type": "",
             "special": ""
           }
         },
@@ -715,18 +715,6 @@
       "otherCondition": ""
     },
     "dnd5e": {
-      "last": {
-        "dnd5eactivity000": {
-          "damageType": {
-            "0": "fire"
-          }
-        },
-        "3q1oadEkwGxlMeHO": {
-          "damageType": {
-            "0": "fire"
-          }
-        }
-      },
       "riders": {
         "activity": [],
         "effect": []

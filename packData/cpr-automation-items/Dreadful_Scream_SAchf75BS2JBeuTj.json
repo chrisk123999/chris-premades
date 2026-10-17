@@ -247,10 +247,8 @@
           "enableCondition": "",
           "disableCondition": "",
           "disableIncapacitated": false,
-          "dontApply": false,
-          "showIcon": false
-        },
-        "core": {}
+          "dontApply": false
+        }
       },
       "name": "Dreadful Scream",
       "description": "",
@@ -286,7 +284,6 @@
         }
       },
       "sort": 0,
-      "start": null,
       "showIcon": 1,
       "folder": null,
       "_stats": {

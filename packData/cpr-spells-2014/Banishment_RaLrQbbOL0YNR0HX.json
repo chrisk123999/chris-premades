@@ -378,12 +378,12 @@
         "incapacitated"
       ],
       "description": "",
-      "_key": "!items.effects!RaLrQbbOL0YNR0HX.banishedEffect01",
       "_stats": {
         "coreVersion": "14.369",
         "systemId": "dnd5e",
         "systemVersion": "6.0.6"
-      }
+      },
+      "_key": "!items.effects!RaLrQbbOL0YNR0HX.banishedEffect01"
     }
   ],
   "img": "icons/magic/unholy/orb-swirling-teal.webp",

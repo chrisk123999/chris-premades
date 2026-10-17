@@ -134,7 +134,7 @@
           },
           "affects": {
             "count": "",
-            "type": "creature",
+            "type": "",
             "choice": false,
             "special": ""
           },
@@ -303,7 +303,7 @@
           },
           "affects": {
             "count": "",
-            "type": "creature",
+            "type": "",
             "choice": false,
             "special": ""
           },
@@ -2121,12 +2121,12 @@
       "description": "",
       "tint": "#ffffff",
       "origin": null,
-      "_key": "!items.effects!prismWallSpel014.prismGlareBlind1",
       "_stats": {
         "coreVersion": "14.369",
         "systemId": "dnd5e",
         "systemVersion": "6.0.6"
-      }
+      },
+      "_key": "!items.effects!prismWallSpel014.prismGlareBlind1"
     },
     {
       "_id": "prismIndigoRest1",
@@ -2165,12 +2165,12 @@
       "description": "",
       "tint": "#ffffff",
       "origin": null,
-      "_key": "!items.effects!prismWallSpel014.prismIndigoRest1",
       "_stats": {
         "coreVersion": "14.369",
         "systemId": "dnd5e",
         "systemVersion": "6.0.6"
-      }
+      },
+      "_key": "!items.effects!prismWallSpel014.prismIndigoRest1"
     },
     {
       "_id": "prismVioletBlnd1",
@@ -2209,19 +2209,19 @@
       "description": "",
       "tint": "#ffffff",
       "origin": null,
-      "_key": "!items.effects!prismWallSpel014.prismVioletBlnd1",
       "_stats": {
         "coreVersion": "14.369",
         "systemId": "dnd5e",
         "systemVersion": "6.0.6"
-      }
+      },
+      "_key": "!items.effects!prismWallSpel014.prismVioletBlnd1"
     }
   ],
   "folder": null,
-  "_key": "!items!prismWallSpel014",
   "_stats": {
     "coreVersion": "14.369",
     "systemId": "dnd5e",
     "systemVersion": "6.0.6"
-  }
+  },
+  "_key": "!items!prismWallSpel014"
 }

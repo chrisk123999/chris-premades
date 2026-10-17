@@ -213,7 +213,7 @@
   "effects": [
     {
       "name": "Rotting Claw: Paralyze",
-      "origin": "Compendium.world.cpr-summon-features.Item.IZ7NJF2GIR5AtbQf",
+      "origin": null,
       "duration": {
         "value": 1,
         "units": "rounds",
@@ -222,7 +222,6 @@
       },
       "disabled": false,
       "flags": {
-        "dnd5e": {},
         "dae": {
           "enableCondition": "",
           "disableCondition": "",
@@ -231,7 +230,6 @@
           "selfTargetAlways": false,
           "dontApply": false,
           "stackable": "noneName",
-          "showIcon": false,
           "durationExpression": "",
           "macroRepeat": "none",
           "specialDuration": [
@@ -264,7 +262,6 @@
         "paralyzed"
       ],
       "sort": 0,
-      "start": null,
       "showIcon": 1,
       "folder": null,
       "_stats": {

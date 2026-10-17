@@ -53,10 +53,6 @@
       "cost": 0,
       "supply": 0
     },
-    "preparation": {
-      "mode": "prepared",
-      "prepared": false
-    },
     "properties": [
       "vocal",
       "somatic",
@@ -642,7 +638,6 @@
       }
     },
     "identifier": "bestow-curse",
-    "sourceClass": "",
     "method": "spell",
     "prepared": 0
   },
@@ -682,7 +677,6 @@
       "idv": false,
       "ida": false
     },
-    "core": {},
     "dnd5e": {
       "riders": {
         "activity": [],
@@ -767,12 +761,12 @@
       "description": "",
       "origin": null,
       "sort": 0,
-      "_key": "!items.effects!E3iKd6QczqJIRwJg.bestowCurseAbilE",
       "_stats": {
         "coreVersion": "14.369",
         "systemId": "dnd5e",
         "systemVersion": "6.0.6"
-      }
+      },
+      "_key": "!items.effects!E3iKd6QczqJIRwJg.bestowCurseAbilE"
     },
     {
       "_id": "bestowCurseDmgE1",
@@ -800,12 +794,12 @@
       "description": "",
       "origin": null,
       "sort": 0,
-      "_key": "!items.effects!E3iKd6QczqJIRwJg.bestowCurseDmgE1",
       "_stats": {
         "coreVersion": "14.369",
         "systemId": "dnd5e",
         "systemVersion": "6.0.6"
-      }
+      },
+      "_key": "!items.effects!E3iKd6QczqJIRwJg.bestowCurseDmgE1"
     },
     {
       "_id": "bestowCurseAttkE",
@@ -842,12 +836,12 @@
       "description": "",
       "origin": null,
       "sort": 0,
-      "_key": "!items.effects!E3iKd6QczqJIRwJg.bestowCurseAttkE",
       "_stats": {
         "coreVersion": "14.369",
         "systemId": "dnd5e",
         "systemVersion": "6.0.6"
-      }
+      },
+      "_key": "!items.effects!E3iKd6QczqJIRwJg.bestowCurseAttkE"
     },
     {
       "_id": "bestowCurseTurnE",
@@ -882,12 +876,12 @@
       "description": "",
       "origin": null,
       "sort": 0,
-      "_key": "!items.effects!E3iKd6QczqJIRwJg.bestowCurseTurnE",
       "_stats": {
         "coreVersion": "14.369",
         "systemId": "dnd5e",
         "systemVersion": "6.0.6"
-      }
+      },
+      "_key": "!items.effects!E3iKd6QczqJIRwJg.bestowCurseTurnE"
     },
     {
       "_id": "bestowCurseOthrE",
@@ -915,12 +909,12 @@
       "description": "",
       "origin": null,
       "sort": 0,
-      "_key": "!items.effects!E3iKd6QczqJIRwJg.bestowCurseOthrE",
       "_stats": {
         "coreVersion": "14.369",
         "systemId": "dnd5e",
         "systemVersion": "6.0.6"
-      }
+      },
+      "_key": "!items.effects!E3iKd6QczqJIRwJg.bestowCurseOthrE"
     },
     {
       "_id": "bestowCurseSrcE1",
@@ -971,21 +965,21 @@
       "description": "",
       "origin": null,
       "sort": 0,
-      "_key": "!items.effects!E3iKd6QczqJIRwJg.bestowCurseSrcE1",
       "_stats": {
         "coreVersion": "14.369",
         "systemId": "dnd5e",
         "systemVersion": "6.0.6"
-      }
+      },
+      "_key": "!items.effects!E3iKd6QczqJIRwJg.bestowCurseSrcE1"
     }
   ],
   "img": "icons/magic/symbols/triangle-glow-purple.webp",
   "folder": null,
   "_id": "E3iKd6QczqJIRwJg",
-  "_key": "!items!E3iKd6QczqJIRwJg",
   "_stats": {
     "coreVersion": "14.369",
     "systemId": "dnd5e",
     "systemVersion": "6.0.6"
-  }
+  },
+  "_key": "!items!E3iKd6QczqJIRwJg"
 }

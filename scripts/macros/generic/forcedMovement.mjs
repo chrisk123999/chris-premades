@@ -18,9 +18,14 @@ async function getDistance(activity, config, sourceToken, targetToken, direction
 }
 async function moveTarget(activity, config, sourceToken, targetToken, direction, maximum, {animation, options}, damageType) {
     const distance = await getDistance(activity, config, sourceToken, targetToken, direction, maximum);
-    const move = distance ? () => tokenUtils.slideToken(targetToken, {sourceToken, distance: direction * genericUtils.convertDistance(sourceToken.parent, distance)}) : undefined;
+    let moved = false;
+    const move = distance ? async () => {
+        if (moved) return;
+        moved = true;
+        await tokenUtils.slideToken(targetToken, {sourceToken, distance: direction * genericUtils.convertDistance(sourceToken.parent, distance)});
+    } : undefined;
     if (animation?.macros?.play) await animation.macros.play(sourceToken, targetToken, {...options, damageType, move});
-    else if (move) await move();
+    if (move) await move();
     await targetToken.object?.movementAnimationPromise;
 }
 async function finished({document: activity, macroClass: {identifier}, workflow}) {

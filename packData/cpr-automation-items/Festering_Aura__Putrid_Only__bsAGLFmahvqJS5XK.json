@@ -213,7 +213,7 @@
   "effects": [
     {
       "name": "Festering Aura",
-      "origin": "Compendium.world.cpr-summon-features.Item.x8cJEC8kWDWhr4cV",
+      "origin": null,
       "duration": {
         "value": 1,
         "units": "rounds",
@@ -222,12 +222,10 @@
       },
       "disabled": false,
       "flags": {
-        "dnd5e": {},
         "dae": {
           "disableCondition": "",
           "disableIncapacitated": false,
           "stackable": "noneName",
-          "showIcon": false,
           "durationExpression": "",
           "macroRepeat": "none",
           "specialDuration": [
@@ -264,7 +262,6 @@
         "poisoned"
       ],
       "sort": 0,
-      "start": null,
       "showIcon": 1,
       "folder": null,
       "_stats": {

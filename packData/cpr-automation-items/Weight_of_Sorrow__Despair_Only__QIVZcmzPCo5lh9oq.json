@@ -200,7 +200,7 @@
   "effects": [
     {
       "name": "Weight of Sorrow",
-      "origin": "Compendium.world.cpr-summon-features.Item.qfskNelMDRL7hcts",
+      "origin": null,
       "duration": {
         "value": 1,
         "units": "rounds",
@@ -209,7 +209,6 @@
       },
       "disabled": false,
       "flags": {
-        "dnd5e": {},
         "dae": {
           "enableCondition": "",
           "disableCondition": "",
@@ -218,7 +217,6 @@
           "selfTargetAlways": false,
           "dontApply": false,
           "stackable": "noneName",
-          "showIcon": false,
           "durationExpression": "",
           "macroRepeat": "none",
           "specialDuration": [
@@ -260,7 +258,6 @@
       "transfer": false,
       "statuses": [],
       "sort": 0,
-      "start": null,
       "showIcon": 1,
       "folder": null,
       "_stats": {

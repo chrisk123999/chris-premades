@@ -261,13 +261,6 @@
       "ida": false
     },
     "dnd5e": {
-      "last": {
-        "dnd5eactivity000": {
-          "damageType": {
-            "0": "healing"
-          }
-        }
-      },
       "riders": {
         "activity": [],
         "effect": []

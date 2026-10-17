@@ -315,12 +315,12 @@
       },
       "statuses": [],
       "description": "",
-      "_key": "!items.effects!0feMjFbdNwhkHnnr.auraOfPurityHost",
       "_stats": {
         "coreVersion": "14.369",
         "systemId": "dnd5e",
         "systemVersion": "6.0.6"
-      }
+      },
+      "_key": "!items.effects!0feMjFbdNwhkHnnr.auraOfPurityHost"
     },
     {
       "_id": "auraOfPurityAura",
@@ -394,12 +394,12 @@
       },
       "statuses": [],
       "description": "",
-      "_key": "!items.effects!0feMjFbdNwhkHnnr.auraOfPurityAura",
       "_stats": {
         "coreVersion": "14.369",
         "systemId": "dnd5e",
         "systemVersion": "6.0.6"
-      }
+      },
+      "_key": "!items.effects!0feMjFbdNwhkHnnr.auraOfPurityAura"
     }
   ],
   "img": "icons/magic/life/heart-cross-strong-purple-orange.webp",

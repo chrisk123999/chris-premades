@@ -320,12 +320,12 @@
       },
       "statuses": [],
       "description": "",
-      "_key": "!items.effects!8v2wUjwtjHglTKda.skillEmpowered01",
       "_stats": {
         "coreVersion": "14.369",
         "systemId": "dnd5e",
         "systemVersion": "6.0.6"
-      }
+      },
+      "_key": "!items.effects!8v2wUjwtjHglTKda.skillEmpowered01"
     }
   ],
   "img": "icons/magic/symbols/runes-star-orange.webp",

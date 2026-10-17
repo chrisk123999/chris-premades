@@ -409,7 +409,6 @@
           "disableCondition": "",
           "disableIncapacitated": false,
           "stackable": "noneName",
-          "showIcon": false,
           "durationExpression": "",
           "macroRepeat": "none",
           "specialDuration": [
@@ -441,7 +440,6 @@
         }
       },
       "sort": 0,
-      "start": null,
       "showIcon": 1,
       "folder": null,
       "_stats": {
@@ -475,13 +473,13 @@
           ]
         }
       },
-      "_key": "!items.effects!LzdvM82MkZymIp4T.hauntedMarker001",
       "_stats": {
         "coreVersion": "14.369",
         "systemId": "dnd5e",
         "systemVersion": "6.0.6"
       },
-      "description": ""
+      "description": "",
+      "_key": "!items.effects!LzdvM82MkZymIp4T.hauntedMarker001"
     }
   ],
   "folder": "sumSpiritDeathFd",

@@ -491,12 +491,12 @@
       },
       "statuses": [],
       "description": "",
-      "_key": "!items.effects!3oAqhbjL7IJYQfG9.auraOfLifeHost01",
       "_stats": {
         "coreVersion": "14.369",
         "systemId": "dnd5e",
         "systemVersion": "6.0.6"
-      }
+      },
+      "_key": "!items.effects!3oAqhbjL7IJYQfG9.auraOfLifeHost01"
     },
     {
       "_id": "auraOfLifeAura01",
@@ -529,12 +529,12 @@
       },
       "statuses": [],
       "description": "",
-      "_key": "!items.effects!3oAqhbjL7IJYQfG9.auraOfLifeAura01",
       "_stats": {
         "coreVersion": "14.369",
         "systemId": "dnd5e",
         "systemVersion": "6.0.6"
-      }
+      },
+      "_key": "!items.effects!3oAqhbjL7IJYQfG9.auraOfLifeAura01"
     }
   ],
   "img": "icons/magic/life/heart-area-circle-red-green.webp",

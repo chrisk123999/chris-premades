@@ -67,6 +67,8 @@
 - Channel Divinity refunds its use when you choose None or close the dialog.
 - `summon` with Replace Existing no longer hides the new summon's activities.
 - Summon uses and formulas resolve `@mod` from the summoning activity.
+- `bladeSpell` no longer fast forwards.
+- `pushOnFail`, `pullOnFail` and `pullOnHit` move the target with any chosen animation.
 
 # 2.1.2 Pre-Release:
 ## Update Notes:
