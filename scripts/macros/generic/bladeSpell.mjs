@@ -45,7 +45,7 @@ async function use({document, workflow}) {
             types: config.bonusDamageTypes
         });
     });
-    const attackWorkflow = await workflowUtils.syntheticItemDataRoll(itemData, workflow.actor, [targetToken]);
+    const attackWorkflow = await workflowUtils.syntheticItemDataRoll(itemData, workflow.actor, [targetToken], {fast: false, options: {workflowOptions: {autoRollAttack: true, fastForwardDamage: true}}});
     if (!attackWorkflow) return;
     const hitTarget = attackWorkflow.hitTargets.first()?.document;
     const {animation, options: animationOptions} = automationUtils.getResolvedAnimation(document, 'animation', {source: 'chris-premades', identifier: 'bladeSpell'});
