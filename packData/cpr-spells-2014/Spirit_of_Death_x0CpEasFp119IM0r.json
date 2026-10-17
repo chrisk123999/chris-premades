@@ -1,0 +1,366 @@
+{
+  "name": "Spirit of Death",
+  "type": "spell",
+  "_id": "x0CpEasFp119IM0r",
+  "img": "icons/magic/death/weapon-scythe-rune-green.webp",
+  "system": {
+    "activities": {
+      "S5dZwCxg8PRAgtd1": {
+        "type": "summon",
+        "_id": "S5dZwCxg8PRAgtd1",
+        "sort": 0,
+        "activation": {
+          "type": "action",
+          "value": null,
+          "override": false
+        },
+        "consumption": {
+          "scaling": {
+            "allowed": false
+          },
+          "spellSlot": true,
+          "targets": []
+        },
+        "description": {
+          "value": ""
+        },
+        "duration": {
+          "units": "inst",
+          "concentration": false,
+          "override": false,
+          "expiry": null
+        },
+        "effects": [],
+        "range": {
+          "override": false,
+          "units": "ft"
+        },
+        "target": {
+          "template": {
+            "contiguous": false,
+            "units": "ft",
+            "stationary": false
+          },
+          "affects": {
+            "choice": false
+          },
+          "override": false,
+          "prompt": true
+        },
+        "uses": {
+          "spent": 0,
+          "recovery": []
+        },
+        "useConditionText": "",
+        "effectConditionText": "",
+        "macroData": {
+          "name": "",
+          "command": ""
+        },
+        "ignoreTraits": {
+          "idi": false,
+          "idr": false,
+          "idv": false,
+          "ida": false,
+          "idm": false
+        },
+        "midiProperties": {
+          "confirmTargets": "default",
+          "automationOnly": false,
+          "identifier": "summon",
+          "ignoreTraits": [],
+          "triggeredActivityId": "none",
+          "triggeredActivityConditionText": "",
+          "triggeredActivityTargets": "targets",
+          "triggeredActivityRollAs": "self",
+          "triggeredActivityConsume": true,
+          "triggeredActivityConfigure": true,
+          "autoConsume": false,
+          "forceConsumeDialog": "default",
+          "forceRollDialog": "default",
+          "forceDamageDialog": "default",
+          "autoTargetType": "any",
+          "autoTargetAction": "default",
+          "otherActivityCompatible": true,
+          "otherActivityAsParentType": true,
+          "displayActivityName": false,
+          "rollMode": "default",
+          "chooseEffects": false,
+          "toggleEffect": false,
+          "ignoreFullCover": false,
+          "removeChatButtons": "default",
+          "magicEffect": false,
+          "magicDamage": false,
+          "noConcentrationCheck": false,
+          "skipConcentrationCheck": false,
+          "autoCEEffects": "default"
+        },
+        "img": null,
+        "behaviors": [],
+        "flags": {},
+        "visibility": {
+          "level": {},
+          "requireAttunement": false,
+          "requireIdentification": false,
+          "requireMagic": false
+        },
+        "useConditionReason": "",
+        "otherActivityId": null,
+        "isOverTimeFlag": false,
+        "overTimeProperties": {
+          "saveRemoves": true,
+          "rollAs": "target",
+          "preRemoveConditionText": "",
+          "postRemoveConditionText": ""
+        },
+        "regionBehavior": {
+          "enabled": false,
+          "dispositionFilter": -1,
+          "excludeSource": true,
+          "oncePerTurn": true,
+          "wallRestriction": "none",
+          "regionVisibility": 2,
+          "attachToken": "default",
+          "templateOrigin": "default",
+          "rules": []
+        },
+        "regionLight": {
+          "enabled": false,
+          "dim": 0,
+          "bright": 0,
+          "color": null,
+          "alpha": 0.5,
+          "luminosity": 0.5,
+          "animationType": "",
+          "animationSpeed": 5,
+          "animationIntensity": 5
+        },
+        "otherActivityAsParentType": true,
+        "name": "",
+        "identifier": "summon",
+        "profiles": [
+          {
+            "count": "1",
+            "cr": "",
+            "level": {
+              "min": null,
+              "max": null
+            },
+            "name": "",
+            "types": [],
+            "_id": "reaperSpirit0000",
+            "uuid": "Compendium.chris-premades.CPRSummons2014.Actor.3XxBL9IirskVKEul"
+          }
+        ],
+        "summon": {
+          "mode": "",
+          "prompt": true
+        },
+        "bonuses": {
+          "ac": "@item.level",
+          "hd": "",
+          "hp": "",
+          "attackDamage": "",
+          "saveDamage": "",
+          "healing": ""
+        },
+        "match": {
+          "ability": "",
+          "attacks": false,
+          "disposition": false,
+          "proficiency": false,
+          "saves": false
+        },
+        "creatureSizes": [],
+        "creatureTypes": [],
+        "tempHP": ""
+      }
+    },
+    "uses": {
+      "spent": 0,
+      "recovery": [],
+      "max": ""
+    },
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "identifier": "spirit-of-death",
+    "source": {
+      "revision": 1,
+      "rules": "2014",
+      "book": "The Book of Many Things",
+      "page": "50",
+      "custom": "",
+      "license": ""
+    },
+    "activation": {
+      "type": "action",
+      "value": null,
+      "condition": ""
+    },
+    "duration": {
+      "units": "hour",
+      "value": "1",
+      "expiry": null
+    },
+    "level": 4,
+    "materials": {
+      "value": "",
+      "consumed": false,
+      "cost": 0,
+      "supply": 0
+    },
+    "properties": [
+      "vocal",
+      "somatic",
+      "material",
+      "concentration"
+    ],
+    "range": {
+      "units": "ft",
+      "special": "",
+      "value": "60"
+    },
+    "school": "nec",
+    "target": {
+      "template": {
+        "contiguous": false,
+        "units": "ft",
+        "type": "",
+        "stationary": false
+      },
+      "affects": {
+        "choice": false,
+        "type": "any",
+        "special": "",
+        "count": ""
+      }
+    },
+    "method": "spell",
+    "prepared": 0
+  },
+  "effects": [],
+  "folder": null,
+  "flags": {
+    "midi-qol": {
+      "AoETargetType": "any",
+      "AoETargetTypeIncludeSelf": true,
+      "autoTarget": "default",
+      "rollAttackPerTarget": "default",
+      "removeAttackDamageButtons": "default",
+      "itemCondition": "",
+      "reactionCondition": "",
+      "otherCondition": "",
+      "effectCondition": ""
+    },
+    "midiProperties": {
+      "autoFailFriendly": false,
+      "autoSaveFriendly": false,
+      "magicdam": false,
+      "magiceffect": false,
+      "noConcentrationCheck": false,
+      "toggleEffect": false,
+      "ignoreTotalCover": false,
+      "idr": false,
+      "idi": false,
+      "idv": false,
+      "ida": false
+    },
+    "dnd5e": {
+      "riders": {
+        "activity": [],
+        "effect": []
+      }
+    },
+    "cat": {
+      "automation": {
+        "source": "chris-premades",
+        "version": "2.1.3"
+      },
+      "macros": {
+        "move": [
+          {
+            "source": "cat",
+            "rules": "all",
+            "identifier": "summon"
+          }
+        ],
+        "summon": [
+          {
+            "source": "cat",
+            "rules": "all",
+            "identifier": "summon"
+          }
+        ]
+      },
+      "genericConfig": {
+        "cat": {
+          "summon": {
+            "activityId": "S5dZwCxg8PRAgtd1",
+            "summons": [
+              {
+                "profile": "reaperSpirit0000",
+                "name": "CHRISPREMADES.Summons.CreatureNames.ReaperSpirit",
+                "initiative": "follows",
+                "animation": {
+                  "source": "chris-premades",
+                  "identifier": "shadowSummon"
+                },
+                "updates": [
+                  {
+                    "path": "system.details.cr",
+                    "value": "@ownerCR",
+                    "mode": "formula"
+                  },
+                  {
+                    "path": "system.attributes.hp.max",
+                    "value": "40 + 10 * (@castLevel - 4)",
+                    "mode": "formula"
+                  },
+                  {
+                    "path": "system.attributes.hp.value",
+                    "value": "40 + 10 * (@castLevel - 4)",
+                    "mode": "formula"
+                  }
+                ],
+                "items": [
+                  {
+                    "uuid": "Compendium.chris-premades.CPRAutomationItems.Item.PpBDRqIqH6fixhMd",
+                    "name": "CHRISPREMADES.Summons.Multiattack",
+                    "scaling": {
+                      "attacks": "floor(@castLevel / 2)"
+                    }
+                  },
+                  {
+                    "uuid": "Compendium.chris-premades.CPRAutomationItems.Item.etECGgcdEZT5pyi4",
+                    "name": "CHRISPREMADES.Macros.Legacy.SpiritOfDeath.ReapingScythe",
+                    "matchAttack": true,
+                    "scaling": {
+                      "damageBonus": "3 + @castLevel"
+                    }
+                  },
+                  {
+                    "uuid": "Compendium.chris-premades.CPRAutomationItems.Item.LzdvM82MkZymIp4T",
+                    "name": "CHRISPREMADES.Macros.Legacy.SpiritOfDeath.HauntCreature",
+                    "matchDC": true
+                  },
+                  {
+                    "uuid": "Compendium.chris-premades.CPRAutomationItems.Item.mJblPKCx6HTzUIOz",
+                    "name": "CHRISPREMADES.Macros.Legacy.SpiritOfDeath.IncorporealMovement"
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      }
+    }
+  },
+  "_stats": {
+    "coreVersion": "14.369",
+    "systemId": "dnd5e",
+    "systemVersion": "6.0.6"
+  },
+  "_key": "!items!x0CpEasFp119IM0r"
+}

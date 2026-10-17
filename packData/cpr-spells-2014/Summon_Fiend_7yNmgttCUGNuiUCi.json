@@ -1,0 +1,509 @@
+{
+  "type": "spell",
+  "system": {
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "source": {
+      "custom": "",
+      "revision": 1,
+      "rules": "2014"
+    },
+    "activation": {
+      "type": "action",
+      "condition": "",
+      "value": 1
+    },
+    "duration": {
+      "value": "1",
+      "units": "hour",
+      "expiry": null
+    },
+    "target": {
+      "affects": {
+        "choice": false,
+        "count": "",
+        "type": ""
+      },
+      "template": {
+        "units": "ft",
+        "contiguous": false,
+        "type": "",
+        "stationary": false
+      }
+    },
+    "range": {
+      "value": "90",
+      "units": "ft",
+      "special": ""
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "recovery": []
+    },
+    "ability": "",
+    "level": 6,
+    "school": "con",
+    "materials": {
+      "value": "",
+      "consumed": false,
+      "cost": 600,
+      "supply": 0
+    },
+    "properties": [
+      "vocal",
+      "somatic",
+      "material",
+      "concentration"
+    ],
+    "activities": {
+      "dnd5eactivity000": {
+        "_id": "dnd5eactivity000",
+        "type": "summon",
+        "activation": {
+          "type": "action",
+          "value": null,
+          "override": false
+        },
+        "consumption": {
+          "targets": [],
+          "scaling": {
+            "allowed": false,
+            "max": ""
+          },
+          "spellSlot": true
+        },
+        "description": {
+          "chatFlavor": "",
+          "value": ""
+        },
+        "duration": {
+          "units": "inst",
+          "concentration": false,
+          "override": false,
+          "expiry": null
+        },
+        "effects": [],
+        "range": {
+          "override": false,
+          "units": "ft"
+        },
+        "target": {
+          "prompt": true,
+          "template": {
+            "contiguous": false,
+            "units": "ft",
+            "stationary": false
+          },
+          "affects": {
+            "choice": false
+          },
+          "override": false
+        },
+        "uses": {
+          "spent": 0,
+          "max": "",
+          "recovery": []
+        },
+        "sort": 0,
+        "useConditionText": "",
+        "effectConditionText": "",
+        "name": "",
+        "useConditionReason": "",
+        "macroData": {
+          "name": "",
+          "command": ""
+        },
+        "ignoreTraits": {
+          "idi": false,
+          "idr": false,
+          "idv": false,
+          "ida": false,
+          "idm": false
+        },
+        "midiProperties": {
+          "ignoreTraits": [],
+          "triggeredActivityId": "none",
+          "triggeredActivityConditionText": "",
+          "triggeredActivityTargets": "targets",
+          "triggeredActivityRollAs": "self",
+          "forceDamageDialog": "false",
+          "confirmTargets": "default",
+          "autoTargetType": "any",
+          "autoTargetAction": "default",
+          "automationOnly": false,
+          "otherActivityCompatible": true,
+          "otherActivityAsParentType": true,
+          "identifier": "summon",
+          "displayActivityName": false,
+          "rollMode": "default",
+          "chooseEffects": false,
+          "toggleEffect": false,
+          "ignoreFullCover": false,
+          "removeChatButtons": "default",
+          "magicEffect": false,
+          "magicDamage": false,
+          "noConcentrationCheck": false,
+          "autoCEEffects": "default",
+          "triggeredActivityConsume": true,
+          "triggeredActivityConfigure": true,
+          "autoConsume": false,
+          "forceConsumeDialog": "default",
+          "forceRollDialog": "default",
+          "skipConcentrationCheck": false
+        },
+        "isOverTimeFlag": false,
+        "overTimeProperties": {
+          "saveRemoves": true,
+          "preRemoveConditionText": "",
+          "postRemoveConditionText": "",
+          "rollAs": "target"
+        },
+        "otherActivityId": "none",
+        "img": null,
+        "behaviors": [],
+        "flags": {},
+        "visibility": {
+          "level": {},
+          "requireAttunement": false,
+          "requireIdentification": false,
+          "requireMagic": false
+        },
+        "regionBehavior": {
+          "enabled": false,
+          "dispositionFilter": -1,
+          "excludeSource": true,
+          "oncePerTurn": true,
+          "wallRestriction": "none",
+          "regionVisibility": 2,
+          "attachToken": "default",
+          "templateOrigin": "default",
+          "rules": []
+        },
+        "regionLight": {
+          "enabled": false,
+          "dim": 0,
+          "bright": 0,
+          "color": null,
+          "alpha": 0.5,
+          "luminosity": 0.5,
+          "animationType": "",
+          "animationSpeed": 5,
+          "animationIntensity": 5
+        },
+        "otherActivityAsParentType": true,
+        "identifier": "summon",
+        "profiles": [
+          {
+            "count": "1",
+            "cr": "",
+            "level": {
+              "min": null,
+              "max": null
+            },
+            "name": "Demon",
+            "types": [],
+            "_id": "fiendDemon000000",
+            "uuid": "Compendium.chris-premades.CPRSummons2014.Actor.UWYxIdLzdJcjVow5"
+          },
+          {
+            "count": "1",
+            "cr": "",
+            "level": {
+              "min": null,
+              "max": null
+            },
+            "name": "Devil",
+            "types": [],
+            "_id": "fiendDevil000000",
+            "uuid": "Compendium.chris-premades.CPRSummons2014.Actor.UWYxIdLzdJcjVow5"
+          },
+          {
+            "count": "1",
+            "cr": "",
+            "level": {
+              "min": null,
+              "max": null
+            },
+            "name": "Yugoloth",
+            "types": [],
+            "_id": "fiendYugoloth000",
+            "uuid": "Compendium.chris-premades.CPRSummons2014.Actor.UWYxIdLzdJcjVow5"
+          }
+        ],
+        "summon": {
+          "mode": "",
+          "prompt": true
+        },
+        "bonuses": {
+          "ac": "@item.level",
+          "hd": "",
+          "hp": "15 * (@item.level - 6)",
+          "attackDamage": "",
+          "saveDamage": "",
+          "healing": ""
+        },
+        "match": {
+          "ability": "",
+          "attacks": false,
+          "disposition": false,
+          "proficiency": false,
+          "saves": false
+        },
+        "creatureSizes": [],
+        "creatureTypes": [],
+        "tempHP": ""
+      }
+    },
+    "identifier": "summon-fiend",
+    "method": "spell",
+    "prepared": 0
+  },
+  "name": "Summon Fiend",
+  "flags": {
+    "midi-qol": {
+      "effectActivation": false,
+      "onUseMacroName": "",
+      "rollAttackPerTarget": "default",
+      "itemCondition": "",
+      "reactionCondition": "",
+      "otherCondition": "",
+      "effectCondition": "",
+      "AoETargetType": "any",
+      "AoETargetTypeIncludeSelf": true,
+      "autoTarget": "default",
+      "removeAttackDamageButtons": "default"
+    },
+    "midiProperties": {
+      "nodam": false,
+      "fulldam": false,
+      "halfdam": false,
+      "autoFailFriendly": false,
+      "autoSaveFriendly": false,
+      "rollOther": false,
+      "critOther": false,
+      "offHandWeapon": false,
+      "magicdam": false,
+      "magiceffect": false,
+      "concentration": false,
+      "toggleEffect": false,
+      "ignoreTotalCover": false,
+      "confirmTargets": "never",
+      "noConcentrationCheck": false,
+      "idr": false,
+      "idi": false,
+      "idv": false,
+      "ida": false
+    },
+    "dnd5e": {
+      "riders": {
+        "activity": [],
+        "effect": []
+      }
+    },
+    "cat": {
+      "automation": {
+        "source": "chris-premades",
+        "version": "2.1.3"
+      },
+      "macros": {
+        "move": [
+          {
+            "source": "cat",
+            "rules": "all",
+            "identifier": "summon"
+          }
+        ],
+        "summon": [
+          {
+            "source": "cat",
+            "rules": "all",
+            "identifier": "summon"
+          },
+          {
+            "source": "chris-premades",
+            "rules": "all",
+            "identifier": "summon-fiend"
+          }
+        ]
+      },
+      "genericConfig": {
+        "cat": {
+          "summon": {
+            "activityId": "dnd5eactivity000",
+            "summons": [
+              {
+                "profile": "fiendDemon000000",
+                "name": "CHRISPREMADES.Summons.CreatureNames.FiendishSpiritDemon",
+                "initiative": "follows",
+                "dismissAtZero": true,
+                "animation": {
+                  "source": "chris-premades",
+                  "identifier": "fiendSummon"
+                },
+                "updates": [
+                  {
+                    "path": "system.details.cr",
+                    "value": "@ownerCR",
+                    "mode": "formula"
+                  },
+                  {
+                    "path": "system.attributes.movement.speeds.climb",
+                    "value": "40",
+                    "mode": "formula"
+                  }
+                ],
+                "items": [
+                  {
+                    "uuid": "Compendium.chris-premades.CPRAutomationItems.Item.PpBDRqIqH6fixhMd",
+                    "name": "CHRISPREMADES.Summons.Multiattack",
+                    "scaling": {
+                      "attacks": "floor(@castLevel / 2)"
+                    }
+                  },
+                  {
+                    "uuid": "Compendium.chris-premades.CPRAutomationItems.Item.OHzM2dNm9ZIZjUtk",
+                    "name": "CHRISPREMADES.Macros.All.SummonFiend.MagicResistance"
+                  },
+                  {
+                    "uuid": "Compendium.chris-premades.CPRAutomationItems.Item.NMMNhjX7Ah5ApDG2",
+                    "name": "CHRISPREMADES.Summons.Features.Bite",
+                    "matchAttack": true,
+                    "scaling": {
+                      "damageBonus": "3 + @castLevel"
+                    }
+                  },
+                  {
+                    "uuid": "Compendium.chris-premades.CPRAutomationItems.Item.V9T7JULDCvh18kyv",
+                    "name": "CHRISPREMADES.Macros.All.SummonFiend.DeathThroes",
+                    "matchDC": true,
+                    "scaling": {
+                      "damageBonus": "@castLevel"
+                    }
+                  }
+                ]
+              },
+              {
+                "profile": "fiendDevil000000",
+                "name": "CHRISPREMADES.Summons.CreatureNames.FiendishSpiritDevil",
+                "initiative": "follows",
+                "dismissAtZero": false,
+                "animation": {
+                  "source": "chris-premades",
+                  "identifier": "fiendSummon"
+                },
+                "updates": [
+                  {
+                    "path": "system.details.cr",
+                    "value": "@ownerCR",
+                    "mode": "formula"
+                  },
+                  {
+                    "path": "system.attributes.movement.speeds.fly",
+                    "value": "60",
+                    "mode": "formula"
+                  },
+                  {
+                    "path": "system.attributes.hp.max",
+                    "value": "40",
+                    "mode": "formula"
+                  },
+                  {
+                    "path": "system.attributes.hp.value",
+                    "value": "40",
+                    "mode": "formula"
+                  }
+                ],
+                "items": [
+                  {
+                    "uuid": "Compendium.chris-premades.CPRAutomationItems.Item.PpBDRqIqH6fixhMd",
+                    "name": "CHRISPREMADES.Summons.Multiattack",
+                    "scaling": {
+                      "attacks": "floor(@castLevel / 2)"
+                    }
+                  },
+                  {
+                    "uuid": "Compendium.chris-premades.CPRAutomationItems.Item.OHzM2dNm9ZIZjUtk",
+                    "name": "CHRISPREMADES.Macros.All.SummonFiend.MagicResistance"
+                  },
+                  {
+                    "uuid": "Compendium.chris-premades.CPRAutomationItems.Item.olowTmI0mXZynjBE",
+                    "name": "CHRISPREMADES.Macros.All.SummonFiend.HurlFlame",
+                    "matchAttack": true,
+                    "scaling": {
+                      "damageBonus": "3 + @castLevel"
+                    }
+                  },
+                  {
+                    "uuid": "Compendium.chris-premades.CPRAutomationItems.Item.gxaCZr9RF4lpGl7y",
+                    "name": "CHRISPREMADES.Macros.All.SummonFiend.DevilsSight"
+                  }
+                ]
+              },
+              {
+                "profile": "fiendYugoloth000",
+                "name": "CHRISPREMADES.Summons.CreatureNames.FiendishSpiritYugoloth",
+                "initiative": "follows",
+                "dismissAtZero": false,
+                "animation": {
+                  "source": "chris-premades",
+                  "identifier": "fiendSummon"
+                },
+                "updates": [
+                  {
+                    "path": "system.details.cr",
+                    "value": "@ownerCR",
+                    "mode": "formula"
+                  },
+                  {
+                    "path": "system.attributes.hp.max",
+                    "value": "60",
+                    "mode": "formula"
+                  },
+                  {
+                    "path": "system.attributes.hp.value",
+                    "value": "60",
+                    "mode": "formula"
+                  }
+                ],
+                "items": [
+                  {
+                    "uuid": "Compendium.chris-premades.CPRAutomationItems.Item.PpBDRqIqH6fixhMd",
+                    "name": "CHRISPREMADES.Summons.Multiattack",
+                    "scaling": {
+                      "attacks": "floor(@castLevel / 2)"
+                    }
+                  },
+                  {
+                    "uuid": "Compendium.chris-premades.CPRAutomationItems.Item.OHzM2dNm9ZIZjUtk",
+                    "name": "CHRISPREMADES.Macros.All.SummonFiend.MagicResistance"
+                  },
+                  {
+                    "uuid": "Compendium.chris-premades.CPRAutomationItems.Item.FZXwJE3sr0883bGp",
+                    "name": "CHRISPREMADES.Summons.Features.Claws",
+                    "matchAttack": true,
+                    "scaling": {
+                      "damageBonus": "3 + @castLevel"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      }
+    }
+  },
+  "effects": [],
+  "img": "icons/magic/fire/explosion-embers-evade-silhouette.webp",
+  "folder": null,
+  "_id": "7yNmgttCUGNuiUCi",
+  "_stats": {
+    "coreVersion": "14.369",
+    "systemId": "dnd5e",
+    "systemVersion": "6.0.6"
+  },
+  "_key": "!items!7yNmgttCUGNuiUCi"
+}

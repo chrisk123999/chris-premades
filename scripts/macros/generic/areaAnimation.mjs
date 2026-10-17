@@ -1,4 +1,4 @@
-import {automationUtils} from '../../proxy.mjs';
+import {automationUtils, regionUtils} from '../../proxy.mjs';
 import {getDamageType, getTargetResults} from './spellAnimation.mjs';
 export function playAreaAnimation(workflow, {animation, options}, {region = workflow.template, radius = Number(workflow.activity?.target?.template?.size) || 0} = {}) {
     if (!workflow.token || !animation?.macros?.play) return;
@@ -6,7 +6,13 @@ export function playAreaAnimation(workflow, {animation, options}, {region = work
     return animation.macros.play(workflow.token.document, region, {...options, damageType: getDamageType(workflow), targets, radius});
 }
 function late({document, workflow}) {
-    playAreaAnimation(workflow, automationUtils.getResolvedAnimation(document, 'animation', {source: 'chris-premades', identifier: 'areaAnimation'}));
+    const areaType = workflow.activity?.target?.template?.type;
+    if (!workflow.template && areaType && !areaType.endsWith('NoTemplate')) return;
+    const placed = workflow.token ? regionUtils.getPlacedRegions(workflow.token.document.parent, workflow.item).at(-1) : undefined;
+    const ownRegion = placed && regionUtils.getActivity(placed)?.uuid === workflow.activity?.uuid ? placed : undefined;
+    if (!workflow.template && placed && !ownRegion) return;
+    const region = workflow.template ?? ownRegion;
+    playAreaAnimation(workflow, automationUtils.getResolvedAnimation(document, 'animation', {source: 'chris-premades', identifier: 'areaAnimation'}), {region});
 }
 /**
  * Plays an animation over the area the item placed once the roll finishes.

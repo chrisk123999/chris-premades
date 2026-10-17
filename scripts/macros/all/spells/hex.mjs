@@ -1,6 +1,6 @@
 import {automationUtils, constants, DamageBonus, dialogUtils, documentUtils, effectUtils, genericUtils, Logging, workflowUtils} from '../../../proxy.mjs';
-function abilityOptions() {
-    return Object.values(CONFIG.DND5E.abilities).map(ability => [ability.label, ability.abbreviation]);
+export function abilityOptions() {
+    return Object.entries(CONFIG.DND5E.abilities).map(([key, {label}]) => [label, key]);
 }
 function hexedEffectData(activity, document, seconds, ability) {
     return documentUtils.getBaseEffectData(activity, {
@@ -19,6 +19,11 @@ function hexedEffectData(activity, document, seconds, ability) {
             }
         ]
     });
+}
+// Plays the Hex animation from the caster onto a newly cursed target.
+function playHex(item, sourceToken, targetToken) {
+    const {animation, options} = automationUtils.getResolvedAnimation(item, 'animation');
+    animation?.macros?.play?.(sourceToken, targetToken, options);
 }
 async function use({document, workflow}) {
     if (workflow.activity.identifier !== 'hex') return;
@@ -50,6 +55,7 @@ async function use({document, workflow}) {
     const [casterEffect] = await effectUtils.createEffects(workflow.actor, [casterEffectData], {parentEntity: concentrationEffect});
     if (!casterEffect) return;
     for (const target of workflow.targets) {
+        playHex(document, workflow.token?.document, target.document);
         await effectUtils.createEffects(target.actor, [hexedEffectData(workflow.activity, document, seconds, ability)], {parentEntity: casterEffect});
     }
     if (concentrationEffect) await documentUtils.update(concentrationEffect, {'duration.value': seconds, 'duration.units': 'seconds'});
@@ -70,6 +76,7 @@ async function move({document, workflow}) {
         if (hexedEffect) await documentUtils.deleteDocument(hexedEffect);
     }
     const newTarget = workflow.targets.first().document;
+    playHex(document, workflow.token?.document, newTarget);
     const targets = hexData.targets.filter(uuid => uuid !== previous?.uuid);
     targets.push(newTarget.uuid);
     await documentUtils.setFlag(casterEffect, 'chris-premades', 'hex.targets', targets);
@@ -82,7 +89,12 @@ async function damage({document, workflow}) {
     if (!hexData) return;
     const targets = Array.from(workflow.hitTargets, token => token.document).filter(token => hexData.targets.includes(token.uuid));
     if (!targets.length) return;
-    const bonus = new DamageBonus(document, {formula: hexData.formula, optional: false, type: hexData.damageType});
+    const bonus = new DamageBonus(document, {formula: hexData.formula, optional: false, type: hexData.damageType})
+        .withOnUse(({bonus}) => {
+            const item = fromUuidSync(document.origin, {strict: false});
+            const {animation, options} = item ? automationUtils.getResolvedAnimation(item, 'animation') : {};
+            if (animation?.macros?.damage) bonus.targets.forEach(token => animation.macros.damage(token.document ?? token, options));
+        });
     bonus.targets = targets;
     return bonus;
 }
@@ -107,6 +119,16 @@ export const hex = {
             type: 'text',
             label: 'CHRISPREMADES.Config.Formula',
             category: 'homebrew'
+        },
+        animation: {
+            default: {
+                source: 'chris-premades',
+                identifier: 'hex'
+            },
+            type: 'selectAnimation',
+            inputs: ['sourceToken', 'targetToken', 'options'],
+            label: 'CHRISPREMADES.Config.Animation',
+            category: 'animations'
         }
     }
 };

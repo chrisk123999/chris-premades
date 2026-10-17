@@ -175,7 +175,8 @@
           "postRemoveConditionText": ""
         },
         "otherActivityId": "none",
-        "name": "Cast"
+        "name": "Cast",
+        "identifier": "wrathful-smite"
       },
       "2H1ITC8FQ8gEFkd9": {
         "type": "save",
@@ -306,7 +307,8 @@
           "cat": {
             "hidden": true
           }
-        }
+        },
+        "identifier": "wrathful-smite-frighten"
       }
     },
     "identifier": "wrathful-smite",
@@ -318,7 +320,7 @@
     "cat": {
       "automation": {
         "source": "chris-premades",
-        "version": "2.0.4"
+        "version": "2.1.3"
       }
     }
   },
@@ -374,7 +376,22 @@
                 "bonusDamageType": "psychic",
                 "attackType": "meleeWeaponAttack",
                 "rollActivity": "2H1ITC8FQ8gEFkd9",
-                "endSpell": "onSave"
+                "endSpell": "onSave",
+                "animation": {
+                  "source": "chris-premades",
+                  "identifier": "smite"
+                }
+              }
+            }
+          },
+          "animationGenericConfig": {
+            "chris-premades": {
+              "nextHitRider": {
+                "chris-premades": {
+                  "smite": {
+                    "color": "purplepink"
+                  }
+                }
               }
             }
           }

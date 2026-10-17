@@ -1,0 +1,236 @@
+{
+  "type": "spell",
+  "system": {
+    "activities": {
+      "utilityAntilShel": {
+        "type": "utility",
+        "_id": "utilityAntilShel",
+        "sort": 0,
+        "activation": {
+          "type": "action",
+          "value": null,
+          "override": false
+        },
+        "consumption": {
+          "spellSlot": true,
+          "targets": [],
+          "scaling": {
+            "allowed": false,
+            "max": ""
+          }
+        },
+        "description": {
+          "chatFlavor": ""
+        },
+        "duration": {
+          "units": "inst",
+          "concentration": false,
+          "override": false
+        },
+        "effects": [
+          {
+            "_id": "antilifeShellE01"
+          }
+        ],
+        "range": {
+          "override": false
+        },
+        "target": {
+          "template": {
+            "contiguous": false,
+            "units": "ft",
+            "type": "",
+            "size": "",
+            "count": ""
+          },
+          "affects": {
+            "choice": false,
+            "count": "",
+            "type": "self",
+            "special": ""
+          },
+          "override": true,
+          "prompt": false
+        },
+        "uses": {
+          "spent": 0,
+          "recovery": [],
+          "max": ""
+        },
+        "roll": {
+          "prompt": false,
+          "visible": false,
+          "name": "",
+          "formula": ""
+        },
+        "useConditionText": "",
+        "effectConditionText": "",
+        "macroData": {
+          "name": "",
+          "command": ""
+        },
+        "ignoreTraits": {
+          "idi": false,
+          "idr": false,
+          "idv": false,
+          "ida": false
+        },
+        "midiProperties": {
+          "ignoreTraits": [],
+          "triggeredActivityId": "none",
+          "triggeredActivityConditionText": "",
+          "triggeredActivityTargets": "targets",
+          "triggeredActivityRollAs": "self",
+          "forceDialog": false,
+          "confirmTargets": "default",
+          "automationOnly": false,
+          "identifier": "antilife-shell"
+        },
+        "name": "",
+        "flags": {},
+        "identifier": "antilife-shell"
+      }
+    },
+    "uses": {
+      "spent": null,
+      "max": "",
+      "recovery": []
+    },
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "identifier": "antilife-shell",
+    "source": {
+      "book": "",
+      "page": "",
+      "license": "",
+      "custom": "PHB 2024",
+      "rules": "2024",
+      "revision": 1
+    },
+    "activation": {
+      "type": "action",
+      "value": 1,
+      "condition": ""
+    },
+    "duration": {
+      "value": "1",
+      "units": "hour"
+    },
+    "level": 5,
+    "materials": {
+      "value": "",
+      "consumed": false,
+      "cost": 0,
+      "supply": 0
+    },
+    "preparation": {
+      "mode": "prepared",
+      "prepared": false
+    },
+    "properties": [
+      "vocal",
+      "somatic",
+      "concentration"
+    ],
+    "range": {
+      "units": "self"
+    },
+    "school": "abj",
+    "target": {
+      "affects": {
+        "count": "",
+        "type": "",
+        "choice": false,
+        "special": ""
+      },
+      "template": {
+        "count": "",
+        "contiguous": false,
+        "type": "radius",
+        "size": "10",
+        "width": "",
+        "height": "",
+        "units": "ft"
+      }
+    }
+  },
+  "effects": [
+    {
+      "_id": "antilifeShellE01",
+      "name": "Antilife Shell",
+      "img": "icons/magic/earth/orb-stone-smoke-teal.webp",
+      "type": "base",
+      "transfer": false,
+      "disabled": false,
+      "system": {
+        "changes": []
+      },
+      "flags": {
+        "cat": {
+          "identifier": "antilifeShell",
+          "macros": {
+            "move": [
+              {
+                "source": "chris-premades",
+                "rules": "2024",
+                "identifier": "antilife-shell"
+              }
+            ]
+          },
+          "animation": {
+            "create": {
+              "source": "chris-premades",
+              "identifier": "antilifeShell"
+            },
+            "delete": {
+              "source": "chris-premades",
+              "identifier": "antilifeShell"
+            }
+          }
+        }
+      },
+      "statuses": [],
+      "description": "",
+      "_stats": {
+        "coreVersion": "14.369",
+        "systemId": "dnd5e",
+        "systemVersion": "6.0.6"
+      },
+      "_key": "!items.effects!5SA4FqtDhuSfyhgA.antilifeShellE01"
+    }
+  ],
+  "name": "Antilife Shell",
+  "flags": {
+    "midi-qol": {
+      "removeAttackDamageButtons": "default"
+    },
+    "midiProperties": {
+      "confirmTargets": "default",
+      "magicdam": true,
+      "magiceffect": true
+    },
+    "dnd5e": {
+      "riders": {
+        "activity": [],
+        "effect": []
+      }
+    },
+    "cat": {
+      "automation": {
+        "source": "chris-premades",
+        "version": "2.1.3"
+      }
+    }
+  },
+  "img": "icons/magic/earth/orb-stone-smoke-teal.webp",
+  "folder": null,
+  "_id": "5SA4FqtDhuSfyhgA",
+  "_stats": {
+    "coreVersion": "14.369",
+    "systemId": "dnd5e",
+    "systemVersion": "6.0.6"
+  },
+  "_key": "!items!5SA4FqtDhuSfyhgA"
+}

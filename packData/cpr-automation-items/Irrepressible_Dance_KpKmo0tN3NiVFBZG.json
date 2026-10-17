@@ -1,0 +1,172 @@
+{
+  "name": "Irrepressible Dance",
+  "type": "feat",
+  "img": "icons/tools/instruments/bell-brass-brown.webp",
+  "system": {
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "source": {
+      "custom": "",
+      "revision": 1,
+      "rules": "2014",
+      "book": "",
+      "page": "",
+      "license": ""
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "recovery": []
+    },
+    "type": {
+      "value": "monster",
+      "subtype": ""
+    },
+    "requirements": "",
+    "properties": [],
+    "prerequisites": {
+      "level": null,
+      "items": [],
+      "repeatable": false
+    },
+    "activities": {},
+    "identifier": "dancing-item-irrepressible-dance",
+    "enchant": {},
+    "advancement": {},
+    "crewed": false
+  },
+  "effects": [
+    {
+      "_id": "irrepressAllyEff",
+      "name": "Irrepressible Dance",
+      "img": "icons/tools/instruments/bell-brass-brown.webp",
+      "type": "base",
+      "transfer": false,
+      "disabled": false,
+      "system": {
+        "changes": [
+          {
+            "key": "system.attributes.movement.speeds.walk",
+            "type": "add",
+            "value": "10",
+            "priority": 20
+          }
+        ]
+      },
+      "flags": {},
+      "statuses": [],
+      "description": "",
+      "_stats": {
+        "coreVersion": "14.369",
+        "systemId": "dnd5e",
+        "systemVersion": "6.0.6"
+      },
+      "_key": "!items.effects!KpKmo0tN3NiVFBZG.irrepressAllyEff"
+    },
+    {
+      "_id": "irrepressFoeEff0",
+      "name": "Irrepressible Dance",
+      "img": "icons/tools/instruments/bell-brass-brown.webp",
+      "type": "base",
+      "transfer": false,
+      "disabled": false,
+      "system": {
+        "changes": [
+          {
+            "key": "system.attributes.movement.speeds.walk",
+            "type": "add",
+            "value": "-10",
+            "priority": 20
+          }
+        ]
+      },
+      "flags": {},
+      "statuses": [],
+      "description": "",
+      "_stats": {
+        "coreVersion": "14.369",
+        "systemId": "dnd5e",
+        "systemVersion": "6.0.6"
+      },
+      "_key": "!items.effects!KpKmo0tN3NiVFBZG.irrepressFoeEff0"
+    }
+  ],
+  "flags": {
+    "midiProperties": {
+      "confirmTargets": "default",
+      "autoFailFriendly": false,
+      "autoSaveFriendly": false,
+      "critOther": false,
+      "offHandWeapon": false,
+      "magicdam": false,
+      "magiceffect": false,
+      "concentration": false,
+      "noConcentrationCheck": false,
+      "toggleEffect": false,
+      "ignoreTotalCover": false,
+      "idr": false,
+      "idi": false,
+      "idv": false,
+      "ida": false
+    },
+    "midi-qol": {
+      "rollAttackPerTarget": "default",
+      "effectActivation": false,
+      "itemCondition": "",
+      "effectCondition": "",
+      "AoETargetType": "any",
+      "AoETargetTypeIncludeSelf": true,
+      "autoTarget": "default",
+      "removeAttackDamageButtons": "default",
+      "reactionCondition": "",
+      "otherCondition": ""
+    },
+    "dnd5e": {
+      "riders": {
+        "activity": []
+      }
+    },
+    "cat": {
+      "automation": {
+        "source": "chris-premades",
+        "version": "2.1.3"
+      },
+      "macros": {
+        "aura": [
+          {
+            "source": "cat",
+            "rules": "all",
+            "identifier": "aura"
+          }
+        ]
+      },
+      "genericConfig": {
+        "cat": {
+          "aura": {
+            "radius": "10",
+            "dispositions": [
+              "ally",
+              "enemy"
+            ],
+            "includeSelf": false,
+            "sourceDisable": [
+              "incapacitated"
+            ],
+            "effect": "irrepressAllyEff",
+            "enemyEffect": "irrepressFoeEff0"
+          }
+        }
+      }
+    }
+  },
+  "folder": "dancingItemFold1",
+  "_id": "KpKmo0tN3NiVFBZG",
+  "_stats": {
+    "coreVersion": "14.369",
+    "systemId": "dnd5e",
+    "systemVersion": "6.0.6"
+  },
+  "_key": "!items!KpKmo0tN3NiVFBZG"
+}

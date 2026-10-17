@@ -64,9 +64,10 @@
           "chatFlavor": ""
         },
         "duration": {
-          "units": "inst",
+          "value": "1",
+          "units": "minute",
           "concentration": false,
-          "override": false
+          "override": true
         },
         "range": {
           "units": "self",
@@ -255,7 +256,7 @@
     "cat": {
       "automation": {
         "source": "chris-premades",
-        "version": "2.0.0"
+        "version": "2.1.3"
       }
     }
   },

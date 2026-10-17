@@ -1,8 +1,10 @@
 import {animationUtils} from '../../../proxy.mjs';
-async function prePlace(summon, location, preToken) {
+/** Hide a summon until its placement animation reveals it. */
+export async function prePlace(summon, location, preToken) {
     preToken.updateSource({alpha: 0});
 }
-async function preRemove(summon, token) {
+/** Fade a summon out when it is dismissed. */
+export async function preRemove(summon, token) {
     /* eslint-disable indent */
     await new Sequence()
         .animation()

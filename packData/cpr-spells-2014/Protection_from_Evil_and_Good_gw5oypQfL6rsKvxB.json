@@ -133,7 +133,7 @@
     "cat": {
       "automation": {
         "source": "chris-premades",
-        "version": "2.1.0"
+        "version": "2.1.3"
       }
     }
   },
@@ -194,6 +194,24 @@
                 "identifier": "protection-from-evil-and-good"
               }
             ]
+          },
+          "animation": {
+            "create": {
+              "source": "chris-premades",
+              "identifier": "castBuff",
+              "config": {
+                "color": "yellow",
+                "shield": true
+              }
+            },
+            "delete": {
+              "source": "chris-premades",
+              "identifier": "castBuff",
+              "config": {
+                "color": "yellow",
+                "shield": true
+              }
+            }
           }
         },
         "dae": {

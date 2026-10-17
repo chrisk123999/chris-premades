@@ -62,7 +62,7 @@
     "activities": {
       "dnd5eactivity000": {
         "_id": "dnd5eactivity000",
-        "type": "utility",
+        "type": "summon",
         "activation": {
           "type": "action",
           "value": null,
@@ -87,7 +87,7 @@
         "effects": [],
         "range": {
           "override": false,
-          "units": "self"
+          "units": "ft"
         },
         "target": {
           "prompt": true,
@@ -105,16 +105,10 @@
           "max": "",
           "recovery": []
         },
-        "roll": {
-          "formula": "",
-          "name": "",
-          "prompt": false,
-          "visible": false
-        },
         "sort": 0,
         "useConditionText": "",
         "effectConditionText": "",
-        "name": "Fuming",
+        "name": "",
         "useConditionReason": "",
         "macroData": {
           "name": "",
@@ -139,8 +133,8 @@
           "autoTargetAction": "default",
           "automationOnly": false,
           "otherActivityCompatible": true,
-          "identifier": "summon-fey-fuming",
-          "displayActivityName": true,
+          "identifier": "summon",
+          "displayActivityName": false,
           "rollMode": "default",
           "chooseEffects": false,
           "toggleEffect": false,
@@ -161,213 +155,67 @@
           "postRemoveConditionText": ""
         },
         "otherActivityId": "none",
-        "identifier": "summon-fey-fuming"
-      },
-      "CAf37djCobZOJeou": {
-        "_id": "CAf37djCobZOJeou",
-        "type": "utility",
-        "activation": {
-          "type": "action",
-          "value": null,
-          "override": false
-        },
-        "consumption": {
-          "targets": [],
-          "scaling": {
-            "allowed": false,
-            "max": ""
+        "identifier": "summon",
+        "profiles": [
+          {
+            "count": "1",
+            "cr": "",
+            "level": {
+              "min": null,
+              "max": null
+            },
+            "name": "Fuming",
+            "types": [],
+            "_id": "feySpiritFuming0",
+            "uuid": "Compendium.chris-premades.CPRSummons2014.Actor.Db6CbORhqzqK7bp5"
           },
-          "spellSlot": true
-        },
-        "description": {
-          "chatFlavor": ""
-        },
-        "duration": {
-          "units": "inst",
-          "concentration": false,
-          "override": false
-        },
-        "effects": [],
-        "range": {
-          "override": false,
-          "units": "self"
-        },
-        "target": {
-          "prompt": true,
-          "template": {
-            "contiguous": false,
-            "units": "ft"
+          {
+            "count": "1",
+            "cr": "",
+            "level": {
+              "min": null,
+              "max": null
+            },
+            "name": "Mirthful",
+            "types": [],
+            "_id": "feySpiritMirthfl",
+            "uuid": "Compendium.chris-premades.CPRSummons2014.Actor.Db6CbORhqzqK7bp5"
           },
-          "affects": {
-            "choice": false
-          },
-          "override": false
+          {
+            "count": "1",
+            "cr": "",
+            "level": {
+              "min": null,
+              "max": null
+            },
+            "name": "Tricksy",
+            "types": [],
+            "_id": "feySpiritTricksy",
+            "uuid": "Compendium.chris-premades.CPRSummons2014.Actor.Db6CbORhqzqK7bp5"
+          }
+        ],
+        "summon": {
+          "mode": "",
+          "prompt": true
         },
-        "uses": {
-          "spent": 0,
-          "max": "",
-          "recovery": []
+        "bonuses": {
+          "ac": "@item.level",
+          "hd": "",
+          "hp": "10 * (@item.level - 3)",
+          "attackDamage": "",
+          "saveDamage": "",
+          "healing": ""
         },
-        "roll": {
-          "formula": "",
-          "name": "",
-          "prompt": false,
-          "visible": false
+        "match": {
+          "ability": "",
+          "attacks": false,
+          "disposition": false,
+          "proficiency": false,
+          "saves": false
         },
-        "sort": 0,
-        "useConditionText": "",
-        "effectConditionText": "",
-        "name": "Mirthful",
-        "useConditionReason": "",
-        "macroData": {
-          "name": "",
-          "command": ""
-        },
-        "ignoreTraits": {
-          "idi": false,
-          "idr": false,
-          "idv": false,
-          "ida": false,
-          "idm": false
-        },
-        "midiProperties": {
-          "ignoreTraits": [],
-          "triggeredActivityId": "none",
-          "triggeredActivityConditionText": "",
-          "triggeredActivityTargets": "targets",
-          "triggeredActivityRollAs": "self",
-          "forceDialog": false,
-          "confirmTargets": "default",
-          "autoTargetType": "any",
-          "autoTargetAction": "default",
-          "automationOnly": false,
-          "otherActivityCompatible": true,
-          "identifier": "summon-fey-mirthful",
-          "displayActivityName": true,
-          "rollMode": "default",
-          "chooseEffects": false,
-          "toggleEffect": false,
-          "ignoreFullCover": false,
-          "forceAttackDialog": false,
-          "forceDamageDialog": false,
-          "otherActivityAsParentType": true,
-          "removeChatButtons": "default",
-          "magicEffect": false,
-          "magicDamage": false,
-          "noConcentrationCheck": false,
-          "autoCEEffects": "default"
-        },
-        "isOverTimeFlag": false,
-        "overTimeProperties": {
-          "saveRemoves": true,
-          "preRemoveConditionText": "",
-          "postRemoveConditionText": ""
-        },
-        "otherActivityId": "none",
-        "identifier": "summon-fey-mirthful"
-      },
-      "jNwabrvVFwiAX08x": {
-        "_id": "jNwabrvVFwiAX08x",
-        "type": "utility",
-        "activation": {
-          "type": "action",
-          "value": null,
-          "override": false
-        },
-        "consumption": {
-          "targets": [],
-          "scaling": {
-            "allowed": false,
-            "max": ""
-          },
-          "spellSlot": true
-        },
-        "description": {
-          "chatFlavor": ""
-        },
-        "duration": {
-          "units": "inst",
-          "concentration": false,
-          "override": false
-        },
-        "effects": [],
-        "range": {
-          "override": false,
-          "units": "self"
-        },
-        "target": {
-          "prompt": true,
-          "template": {
-            "contiguous": false,
-            "units": "ft"
-          },
-          "affects": {
-            "choice": false
-          },
-          "override": false
-        },
-        "uses": {
-          "spent": 0,
-          "max": "",
-          "recovery": []
-        },
-        "roll": {
-          "formula": "",
-          "name": "",
-          "prompt": false,
-          "visible": false
-        },
-        "sort": 0,
-        "useConditionText": "",
-        "effectConditionText": "",
-        "name": "Tricksy",
-        "useConditionReason": "",
-        "macroData": {
-          "name": "",
-          "command": ""
-        },
-        "ignoreTraits": {
-          "idi": false,
-          "idr": false,
-          "idv": false,
-          "ida": false,
-          "idm": false
-        },
-        "midiProperties": {
-          "ignoreTraits": [],
-          "triggeredActivityId": "none",
-          "triggeredActivityConditionText": "",
-          "triggeredActivityTargets": "targets",
-          "triggeredActivityRollAs": "self",
-          "forceDialog": false,
-          "confirmTargets": "default",
-          "autoTargetType": "any",
-          "autoTargetAction": "default",
-          "automationOnly": false,
-          "otherActivityCompatible": true,
-          "identifier": "summon-fey-tricksy",
-          "displayActivityName": true,
-          "rollMode": "default",
-          "chooseEffects": false,
-          "toggleEffect": false,
-          "ignoreFullCover": false,
-          "forceAttackDialog": false,
-          "forceDamageDialog": false,
-          "otherActivityAsParentType": true,
-          "removeChatButtons": "default",
-          "magicEffect": false,
-          "magicDamage": false,
-          "noConcentrationCheck": false,
-          "autoCEEffects": "default"
-        },
-        "isOverTimeFlag": false,
-        "overTimeProperties": {
-          "saveRemoves": true,
-          "preRemoveConditionText": "",
-          "postRemoveConditionText": ""
-        },
-        "otherActivityId": "none",
-        "identifier": "summon-fey-tricksy"
+        "creatureSizes": [],
+        "creatureTypes": [],
+        "tempHP": ""
       }
     },
     "identifier": "summon-fey",
@@ -419,16 +267,158 @@
     "cat": {
       "automation": {
         "source": "chris-premades",
-        "version": "2.0.0"
+        "version": "2.1.3"
       },
       "macros": {
-        "roll": [
+        "move": [
           {
-            "source": "chris-premades",
-            "rules": "2014",
-            "identifier": "summon-fey"
+            "source": "cat",
+            "rules": "all",
+            "identifier": "summon"
+          }
+        ],
+        "summon": [
+          {
+            "source": "cat",
+            "rules": "all",
+            "identifier": "summon"
           }
         ]
+      },
+      "genericConfig": {
+        "cat": {
+          "summon": {
+            "activityId": "dnd5eactivity000",
+            "summons": [
+              {
+                "profile": "feySpiritFuming0",
+                "name": "CHRISPREMADES.Summons.CreatureNames.FeySpiritFuming",
+                "initiative": "follows",
+                "animation": {
+                  "source": "chris-premades",
+                  "identifier": "natureSummon"
+                },
+                "updates": [
+                  {
+                    "path": "system.details.cr",
+                    "value": "@ownerCR",
+                    "mode": "formula"
+                  }
+                ],
+                "items": [
+                  {
+                    "uuid": "Compendium.chris-premades.CPRAutomationItems.Item.PpBDRqIqH6fixhMd",
+                    "name": "CHRISPREMADES.Summons.Multiattack",
+                    "scaling": {
+                      "attacks": "floor(@castLevel / 2)"
+                    }
+                  },
+                  {
+                    "uuid": "Compendium.chris-premades.CPRAutomationItems.Item.wv0h0w25HfhKC0PT",
+                    "name": "CHRISPREMADES.Macros.Legacy.SummonFey.Shortsword",
+                    "matchAttack": true,
+                    "scaling": {
+                      "damageBonus": "3 + @castLevel"
+                    }
+                  },
+                  {
+                    "uuid": "Compendium.chris-premades.CPRMonsterFeatures2014.Item.BMSjnHCoXIBxp91c",
+                    "name": "CHRISPREMADES.Macros.Legacy.SummonFey.FeyStep"
+                  },
+                  {
+                    "uuid": "Compendium.chris-premades.CPRAutomationItems.Item.8Tk1gwuf6QkIUJ1c",
+                    "name": "CHRISPREMADES.Macros.Legacy.SummonFey.Fuming",
+                    "matchDC": false
+                  }
+                ]
+              },
+              {
+                "profile": "feySpiritMirthfl",
+                "name": "CHRISPREMADES.Summons.CreatureNames.FeySpiritMirthful",
+                "initiative": "follows",
+                "animation": {
+                  "source": "chris-premades",
+                  "identifier": "natureSummon"
+                },
+                "updates": [
+                  {
+                    "path": "system.details.cr",
+                    "value": "@ownerCR",
+                    "mode": "formula"
+                  }
+                ],
+                "items": [
+                  {
+                    "uuid": "Compendium.chris-premades.CPRAutomationItems.Item.PpBDRqIqH6fixhMd",
+                    "name": "CHRISPREMADES.Summons.Multiattack",
+                    "scaling": {
+                      "attacks": "floor(@castLevel / 2)"
+                    }
+                  },
+                  {
+                    "uuid": "Compendium.chris-premades.CPRAutomationItems.Item.wv0h0w25HfhKC0PT",
+                    "name": "CHRISPREMADES.Macros.Legacy.SummonFey.Shortsword",
+                    "matchAttack": true,
+                    "scaling": {
+                      "damageBonus": "3 + @castLevel"
+                    }
+                  },
+                  {
+                    "uuid": "Compendium.chris-premades.CPRMonsterFeatures2014.Item.BMSjnHCoXIBxp91c",
+                    "name": "CHRISPREMADES.Macros.Legacy.SummonFey.FeyStep"
+                  },
+                  {
+                    "uuid": "Compendium.chris-premades.CPRAutomationItems.Item.9NlAtkVXK5HEJRjd",
+                    "name": "CHRISPREMADES.Macros.Legacy.SummonFey.Mirthful",
+                    "matchDC": true
+                  }
+                ]
+              },
+              {
+                "profile": "feySpiritTricksy",
+                "name": "CHRISPREMADES.Summons.CreatureNames.FeySpiritTricksy",
+                "initiative": "follows",
+                "animation": {
+                  "source": "chris-premades",
+                  "identifier": "natureSummon"
+                },
+                "updates": [
+                  {
+                    "path": "system.details.cr",
+                    "value": "@ownerCR",
+                    "mode": "formula"
+                  }
+                ],
+                "items": [
+                  {
+                    "uuid": "Compendium.chris-premades.CPRAutomationItems.Item.PpBDRqIqH6fixhMd",
+                    "name": "CHRISPREMADES.Summons.Multiattack",
+                    "scaling": {
+                      "attacks": "floor(@castLevel / 2)"
+                    }
+                  },
+                  {
+                    "uuid": "Compendium.chris-premades.CPRAutomationItems.Item.wv0h0w25HfhKC0PT",
+                    "name": "CHRISPREMADES.Macros.Legacy.SummonFey.Shortsword",
+                    "matchAttack": true,
+                    "scaling": {
+                      "damageBonus": "3 + @castLevel"
+                    }
+                  },
+                  {
+                    "uuid": "Compendium.chris-premades.CPRMonsterFeatures2014.Item.BMSjnHCoXIBxp91c",
+                    "name": "CHRISPREMADES.Macros.Legacy.SummonFey.FeyStep"
+                  },
+                  {
+                    "uuid": "Compendium.chris-premades.CPRAutomationItems.Item.OBylUzhxCl42tuK6",
+                    "name": "CHRISPREMADES.Macros.Legacy.SummonFey.Tricksy",
+                    "matchDC": false
+                  }
+                ]
+              }
+            ]
+          }
+        }
       }
     }
   },

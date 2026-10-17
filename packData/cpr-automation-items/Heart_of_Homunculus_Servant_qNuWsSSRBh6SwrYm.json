@@ -838,28 +838,21 @@
             "identifier": "infusionHomunculusServantDeath"
           },
           {
-            "source": "chris-premades",
-            "identifier": "summon",
-            "rules": "all"
-          }
-        ],
-        "roll": [
-          {
-            "source": "chris-premades",
-            "identifier": "summon",
-            "rules": "all"
+            "source": "cat",
+            "rules": "all",
+            "identifier": "summon"
           }
         ],
         "move": [
           {
-            "source": "chris-premades",
-            "identifier": "summon",
-            "rules": "all"
+            "source": "cat",
+            "rules": "all",
+            "identifier": "summon"
           }
         ]
       },
       "genericConfig": {
-        "chris-premades": {
+        "cat": {
           "summon": {
             "activityId": "",
             "placeActivityId": "V7O7OkZIg40kQE4a",

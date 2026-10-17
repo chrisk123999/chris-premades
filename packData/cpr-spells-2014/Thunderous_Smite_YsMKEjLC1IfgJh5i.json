@@ -325,7 +325,7 @@
     "cat": {
       "automation": {
         "source": "chris-premades",
-        "version": "2.0.4"
+        "version": "2.1.3"
       }
     }
   },
@@ -367,7 +367,11 @@
                 "bonusDamageType": "thunder",
                 "attackType": "meleeWeaponAttack",
                 "rollActivity": "JGOeVtHzEWoVsdIw",
-                "endSpell": "always"
+                "endSpell": "always",
+                "animation": {
+                  "source": "chris-premades",
+                  "identifier": "smite"
+                }
               }
             }
           },
@@ -379,6 +383,17 @@
                 "identifier": "nextHitRider"
               }
             ]
+          },
+          "animationGenericConfig": {
+            "chris-premades": {
+              "nextHitRider": {
+                "chris-premades": {
+                  "smite": {
+                    "color": "blueyellow"
+                  }
+                }
+              }
+            }
           }
         }
       },

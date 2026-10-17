@@ -1,0 +1,405 @@
+{
+  "name": "Conjure Elemental",
+  "system": {
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "source": {
+      "custom": "",
+      "rules": "2024",
+      "license": "CC-BY-4.0",
+      "book": "",
+      "page": "",
+      "revision": 2
+    },
+    "activation": {
+      "type": "action",
+      "condition": "",
+      "value": null
+    },
+    "duration": {
+      "value": "10",
+      "units": "minute",
+      "expiry": null
+    },
+    "target": {
+      "affects": {
+        "type": "space",
+        "count": "1",
+        "choice": false,
+        "special": ""
+      },
+      "template": {
+        "units": "ft",
+        "contiguous": false,
+        "type": "",
+        "stationary": false
+      }
+    },
+    "range": {
+      "value": "60",
+      "units": "ft",
+      "special": ""
+    },
+    "uses": {
+      "max": "",
+      "recovery": [],
+      "spent": 0
+    },
+    "level": 5,
+    "school": "con",
+    "properties": [
+      "vocal",
+      "somatic",
+      "concentration"
+    ],
+    "materials": {
+      "value": "",
+      "consumed": false,
+      "cost": 0,
+      "supply": 0
+    },
+    "activities": {
+      "dnd5eactivity000": {
+        "_id": "dnd5eactivity000",
+        "type": "summon",
+        "activation": {
+          "type": "action",
+          "value": null,
+          "override": false
+        },
+        "consumption": {
+          "targets": [],
+          "scaling": {
+            "allowed": false,
+            "max": ""
+          },
+          "spellSlot": true
+        },
+        "description": {
+          "chatFlavor": "",
+          "value": ""
+        },
+        "duration": {
+          "units": "inst",
+          "override": false,
+          "expiry": null,
+          "concentration": false
+        },
+        "range": {
+          "override": false,
+          "units": "self"
+        },
+        "target": {
+          "prompt": true,
+          "template": {
+            "contiguous": false,
+            "units": "ft",
+            "stationary": false
+          },
+          "affects": {
+            "choice": false
+          },
+          "override": false
+        },
+        "bonuses": {
+          "ac": "",
+          "hd": "",
+          "hp": "",
+          "attackDamage": "",
+          "saveDamage": "(@scaling)d8",
+          "healing": ""
+        },
+        "creatureSizes": [],
+        "creatureTypes": [],
+        "match": {
+          "saves": true,
+          "attacks": false,
+          "proficiency": false,
+          "ability": "",
+          "disposition": false
+        },
+        "profiles": [
+          {
+            "count": "",
+            "name": "",
+            "_id": "xvb2BTZQi942QVyI",
+            "uuid": "Compendium.dnd5e.actors24.Actor.phbsplConjuredEl",
+            "level": {
+              "min": null,
+              "max": null
+            },
+            "types": []
+          },
+          {
+            "count": "",
+            "name": "",
+            "_id": "rLsUbfInq7CCYy7G",
+            "uuid": "Compendium.dnd5e.actors24.Actor.phbConjuredEarth",
+            "level": {
+              "min": null,
+              "max": null
+            },
+            "types": []
+          },
+          {
+            "count": "",
+            "name": "",
+            "_id": "TDLfZ4CncKEEYZaq",
+            "uuid": "Compendium.dnd5e.actors24.Actor.phbConjuredFireE",
+            "level": {
+              "min": null,
+              "max": null
+            },
+            "types": []
+          },
+          {
+            "count": "",
+            "name": "",
+            "_id": "40IDS6d0353u3Dv4",
+            "uuid": "Compendium.dnd5e.actors24.Actor.phbConjuredWater",
+            "level": {
+              "min": null,
+              "max": null
+            },
+            "types": []
+          }
+        ],
+        "summon": {
+          "mode": "",
+          "prompt": true
+        },
+        "uses": {
+          "spent": 0,
+          "recovery": [],
+          "max": ""
+        },
+        "sort": 0,
+        "name": "Conjure",
+        "img": "",
+        "behaviors": [],
+        "effects": [],
+        "flags": {},
+        "visibility": {
+          "level": {},
+          "requireAttunement": false,
+          "requireIdentification": false,
+          "requireMagic": false
+        },
+        "useConditionText": "",
+        "useConditionReason": "",
+        "effectConditionText": "",
+        "otherActivityId": null,
+        "macroData": {
+          "name": "",
+          "command": ""
+        },
+        "ignoreTraits": {
+          "idi": false,
+          "idr": false,
+          "idv": false,
+          "ida": false,
+          "idm": false
+        },
+        "midiProperties": {
+          "ignoreTraits": [],
+          "triggeredActivityId": "none",
+          "triggeredActivityConditionText": "",
+          "triggeredActivityTargets": "targets",
+          "triggeredActivityRollAs": "self",
+          "triggeredActivityConsume": true,
+          "triggeredActivityConfigure": true,
+          "autoConsume": false,
+          "forceConsumeDialog": "default",
+          "forceRollDialog": "default",
+          "forceDamageDialog": "default",
+          "confirmTargets": "default",
+          "autoTargetType": "any",
+          "autoTargetAction": "default",
+          "automationOnly": false,
+          "otherActivityCompatible": true,
+          "otherActivityAsParentType": true,
+          "identifier": "",
+          "displayActivityName": false,
+          "rollMode": "default",
+          "chooseEffects": false,
+          "toggleEffect": false,
+          "ignoreFullCover": false,
+          "removeChatButtons": "default",
+          "magicEffect": false,
+          "magicDamage": false,
+          "noConcentrationCheck": false,
+          "skipConcentrationCheck": false,
+          "autoCEEffects": "default"
+        },
+        "isOverTimeFlag": false,
+        "overTimeProperties": {
+          "saveRemoves": true,
+          "rollAs": "target",
+          "preRemoveConditionText": "",
+          "postRemoveConditionText": ""
+        },
+        "regionBehavior": {
+          "enabled": false,
+          "dispositionFilter": -1,
+          "excludeSource": true,
+          "oncePerTurn": true,
+          "wallRestriction": "none",
+          "regionVisibility": 2,
+          "attachToken": "default",
+          "templateOrigin": "default",
+          "rules": []
+        },
+        "regionLight": {
+          "enabled": false,
+          "dim": 0,
+          "bright": 0,
+          "color": null,
+          "alpha": 0.5,
+          "luminosity": 0.5,
+          "animationType": "",
+          "animationSpeed": 5,
+          "animationIntensity": 5
+        },
+        "friendlySummon": false
+      }
+    },
+    "identifier": "conjure-elemental",
+    "method": "spell",
+    "prepared": 0
+  },
+  "_id": "phbsplConjureEle",
+  "type": "spell",
+  "img": "icons/creatures/magical/spirit-mischief-fire-ice-blue.webp",
+  "effects": [],
+  "flags": {
+    "dnd5e": {
+      "riders": {
+        "activity": [],
+        "effect": []
+      }
+    },
+    "cat": {
+      "automation": {
+        "source": "chris-premades",
+        "version": "2.1.3"
+      },
+      "macros": {
+        "move": [
+          {
+            "source": "cat",
+            "rules": "all",
+            "identifier": "summon"
+          }
+        ],
+        "summon": [
+          {
+            "source": "cat",
+            "rules": "all",
+            "identifier": "summon"
+          }
+        ]
+      },
+      "genericConfig": {
+        "cat": {
+          "summon": {
+            "activityId": "dnd5eactivity000",
+            "summons": [
+              {
+                "profile": "xvb2BTZQi942QVyI",
+                "initiative": "follows",
+                "animation": {
+                  "source": "chris-premades",
+                  "identifier": "airSummon"
+                },
+                "items": [
+                  {
+                    "uuid": "Compendium.chris-premades.CPRAutomationItems.Item.conjElementSpirt",
+                    "identifier": "air-element",
+                    "matchDC": true,
+                    "scaling": {
+                      "damageTypes": [
+                        "lightning"
+                      ],
+                      "damageBonus": "(@castLevel - 5)d8"
+                    }
+                  }
+                ]
+              },
+              {
+                "profile": "rLsUbfInq7CCYy7G",
+                "initiative": "follows",
+                "animation": {
+                  "source": "chris-premades",
+                  "identifier": "earthSummon"
+                },
+                "items": [
+                  {
+                    "uuid": "Compendium.chris-premades.CPRAutomationItems.Item.conjElementSpirt",
+                    "identifier": "earth-element",
+                    "matchDC": true,
+                    "scaling": {
+                      "damageTypes": [
+                        "thunder"
+                      ],
+                      "damageBonus": "(@castLevel - 5)d8"
+                    }
+                  }
+                ]
+              },
+              {
+                "profile": "TDLfZ4CncKEEYZaq",
+                "initiative": "follows",
+                "animation": {
+                  "source": "chris-premades",
+                  "identifier": "fireSummon"
+                },
+                "items": [
+                  {
+                    "uuid": "Compendium.chris-premades.CPRAutomationItems.Item.conjElementSpirt",
+                    "identifier": "fire-element",
+                    "matchDC": true,
+                    "scaling": {
+                      "damageTypes": [
+                        "fire"
+                      ],
+                      "damageBonus": "(@castLevel - 5)d8"
+                    }
+                  }
+                ]
+              },
+              {
+                "profile": "40IDS6d0353u3Dv4",
+                "initiative": "follows",
+                "animation": {
+                  "source": "chris-premades",
+                  "identifier": "waterSummon"
+                },
+                "items": [
+                  {
+                    "uuid": "Compendium.chris-premades.CPRAutomationItems.Item.conjElementSpirt",
+                    "identifier": "water-element",
+                    "matchDC": true,
+                    "scaling": {
+                      "damageTypes": [
+                        "cold"
+                      ],
+                      "damageBonus": "(@castLevel - 5)d8"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      }
+    }
+  },
+  "_stats": {
+    "coreVersion": "14.369",
+    "systemId": "dnd5e",
+    "systemVersion": "6.0.6"
+  },
+  "_key": "!items!phbsplConjureEle"
+}

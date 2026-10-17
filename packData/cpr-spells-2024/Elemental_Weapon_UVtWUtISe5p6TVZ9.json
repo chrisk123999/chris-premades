@@ -1,0 +1,1407 @@
+{
+  "name": "Elemental Weapon",
+  "type": "spell",
+  "img": "icons/magic/fire/dagger-rune-enchant-purple-orange.webp",
+  "system": {
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "source": {
+      "custom": "",
+      "book": "",
+      "page": "",
+      "license": "",
+      "revision": 1,
+      "rules": "2024"
+    },
+    "activation": {
+      "type": "action",
+      "condition": "",
+      "value": 1
+    },
+    "duration": {
+      "value": "1",
+      "units": "hour",
+      "expiry": null
+    },
+    "target": {
+      "affects": {
+        "type": "creature",
+        "count": "1",
+        "choice": false,
+        "special": ""
+      },
+      "template": {
+        "units": "ft",
+        "contiguous": false,
+        "type": "",
+        "stationary": false
+      }
+    },
+    "range": {
+      "units": "touch",
+      "special": ""
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "recovery": []
+    },
+    "ability": "",
+    "level": 3,
+    "school": "",
+    "properties": [
+      "vocal",
+      "somatic",
+      "concentration"
+    ],
+    "materials": {
+      "value": "",
+      "consumed": false,
+      "cost": 0,
+      "supply": 0
+    },
+    "activities": {
+      "dnd5eactivity000": {
+        "_id": "dnd5eactivity000",
+        "type": "enchant",
+        "activation": {
+          "type": "action",
+          "value": null,
+          "override": false
+        },
+        "consumption": {
+          "targets": [],
+          "scaling": {
+            "allowed": false,
+            "max": ""
+          },
+          "spellSlot": true
+        },
+        "description": {
+          "chatFlavor": "",
+          "value": ""
+        },
+        "duration": {
+          "units": "inst",
+          "concentration": false,
+          "override": false,
+          "expiry": null
+        },
+        "effects": [
+          {
+            "_id": "elemWpnaci1b0000",
+            "level": {
+              "min": null,
+              "max": 4
+            },
+            "riders": {
+              "activity": [],
+              "effect": [],
+              "item": []
+            }
+          },
+          {
+            "_id": "elemWpnaci2b0000",
+            "level": {
+              "min": 5,
+              "max": 6
+            },
+            "riders": {
+              "activity": [],
+              "effect": [],
+              "item": []
+            }
+          },
+          {
+            "_id": "elemWpnaci3b0000",
+            "level": {
+              "min": 7,
+              "max": null
+            },
+            "riders": {
+              "activity": [],
+              "effect": [],
+              "item": []
+            }
+          },
+          {
+            "_id": "elemWpncol1b0000",
+            "level": {
+              "min": null,
+              "max": 4
+            },
+            "riders": {
+              "activity": [],
+              "effect": [],
+              "item": []
+            }
+          },
+          {
+            "_id": "elemWpncol2b0000",
+            "level": {
+              "min": 5,
+              "max": 6
+            },
+            "riders": {
+              "activity": [],
+              "effect": [],
+              "item": []
+            }
+          },
+          {
+            "_id": "elemWpncol3b0000",
+            "level": {
+              "min": 7,
+              "max": null
+            },
+            "riders": {
+              "activity": [],
+              "effect": [],
+              "item": []
+            }
+          },
+          {
+            "_id": "elemWpnfir1b0000",
+            "level": {
+              "min": null,
+              "max": 4
+            },
+            "riders": {
+              "activity": [],
+              "effect": [],
+              "item": []
+            }
+          },
+          {
+            "_id": "elemWpnfir2b0000",
+            "level": {
+              "min": 5,
+              "max": 6
+            },
+            "riders": {
+              "activity": [],
+              "effect": [],
+              "item": []
+            }
+          },
+          {
+            "_id": "elemWpnfir3b0000",
+            "level": {
+              "min": 7,
+              "max": null
+            },
+            "riders": {
+              "activity": [],
+              "effect": [],
+              "item": []
+            }
+          },
+          {
+            "_id": "elemWpnlig1b0000",
+            "level": {
+              "min": null,
+              "max": 4
+            },
+            "riders": {
+              "activity": [],
+              "effect": [],
+              "item": []
+            }
+          },
+          {
+            "_id": "elemWpnlig2b0000",
+            "level": {
+              "min": 5,
+              "max": 6
+            },
+            "riders": {
+              "activity": [],
+              "effect": [],
+              "item": []
+            }
+          },
+          {
+            "_id": "elemWpnlig3b0000",
+            "level": {
+              "min": 7,
+              "max": null
+            },
+            "riders": {
+              "activity": [],
+              "effect": [],
+              "item": []
+            }
+          },
+          {
+            "_id": "elemWpnthu1b0000",
+            "level": {
+              "min": null,
+              "max": 4
+            },
+            "riders": {
+              "activity": [],
+              "effect": [],
+              "item": []
+            }
+          },
+          {
+            "_id": "elemWpnthu2b0000",
+            "level": {
+              "min": 5,
+              "max": 6
+            },
+            "riders": {
+              "activity": [],
+              "effect": [],
+              "item": []
+            }
+          },
+          {
+            "_id": "elemWpnthu3b0000",
+            "level": {
+              "min": 7,
+              "max": null
+            },
+            "riders": {
+              "activity": [],
+              "effect": [],
+              "item": []
+            }
+          }
+        ],
+        "range": {
+          "override": false,
+          "units": "self"
+        },
+        "target": {
+          "prompt": true,
+          "template": {
+            "contiguous": false,
+            "units": "ft",
+            "stationary": false
+          },
+          "affects": {
+            "choice": false
+          },
+          "override": false
+        },
+        "uses": {
+          "spent": 0,
+          "max": "",
+          "recovery": []
+        },
+        "sort": 0,
+        "useConditionText": "",
+        "effectConditionText": "",
+        "useConditionReason": "",
+        "macroData": {
+          "name": "",
+          "command": ""
+        },
+        "ignoreTraits": {
+          "idi": false,
+          "idr": false,
+          "idv": false,
+          "ida": false,
+          "idm": false
+        },
+        "midiProperties": {
+          "ignoreTraits": [],
+          "triggeredActivityId": "none",
+          "triggeredActivityConditionText": "",
+          "triggeredActivityTargets": "targets",
+          "triggeredActivityRollAs": "self",
+          "confirmTargets": "default",
+          "autoTargetType": "any",
+          "autoTargetAction": "default",
+          "automationOnly": false,
+          "otherActivityCompatible": true,
+          "identifier": "",
+          "displayActivityName": false,
+          "rollMode": "default",
+          "chooseEffects": false,
+          "forceDamageDialog": "false",
+          "otherActivityAsParentType": true,
+          "toggleEffect": false,
+          "ignoreFullCover": false,
+          "removeChatButtons": "default",
+          "magicEffect": false,
+          "magicDamage": false,
+          "noConcentrationCheck": false,
+          "autoCEEffects": "default",
+          "triggeredActivityConsume": true,
+          "triggeredActivityConfigure": true,
+          "autoConsume": false,
+          "forceConsumeDialog": "default",
+          "forceRollDialog": "default",
+          "skipConcentrationCheck": false
+        },
+        "isOverTimeFlag": false,
+        "overTimeProperties": {
+          "saveRemoves": true,
+          "preRemoveConditionText": "",
+          "postRemoveConditionText": "",
+          "rollAs": "target"
+        },
+        "otherActivityId": "none",
+        "img": null,
+        "behaviors": [],
+        "flags": {},
+        "visibility": {
+          "level": {},
+          "requireAttunement": false,
+          "requireIdentification": false,
+          "requireMagic": false
+        },
+        "regionBehavior": {
+          "enabled": false,
+          "dispositionFilter": -1,
+          "excludeSource": true,
+          "oncePerTurn": true,
+          "wallRestriction": "none",
+          "regionVisibility": 2,
+          "attachToken": "default",
+          "templateOrigin": "default",
+          "rules": []
+        },
+        "regionLight": {
+          "enabled": false,
+          "dim": 0,
+          "bright": 0,
+          "color": null,
+          "alpha": 0.5,
+          "luminosity": 0.5,
+          "animationType": "",
+          "animationSpeed": 5,
+          "animationIntensity": 5
+        },
+        "otherActivityAsParentType": true,
+        "enchant": {
+          "self": false
+        },
+        "restrictions": {
+          "allowMagical": false,
+          "type": "weapon",
+          "categories": [],
+          "properties": []
+        }
+      }
+    },
+    "identifier": "elemental-weapon",
+    "method": "spell",
+    "prepared": 0
+  },
+  "effects": [
+    {
+      "_id": "elemWpnaci1b0000",
+      "name": "Elemental Weapon: Acid +1",
+      "img": "icons/magic/fire/dagger-rune-enchant-purple-orange.webp",
+      "type": "enchantment",
+      "transfer": false,
+      "disabled": false,
+      "description": "",
+      "statuses": [],
+      "flags": {
+        "cat": {
+          "animation": {
+            "create": {
+              "source": "chris-premades",
+              "identifier": "castBuff",
+              "config": {
+                "color": "green"
+              }
+            },
+            "delete": {
+              "source": "chris-premades",
+              "identifier": "castBuff",
+              "config": {
+                "color": "green"
+              }
+            }
+          }
+        }
+      },
+      "system": {
+        "changes": [
+          {
+            "key": "name",
+            "type": "override",
+            "value": "{} (Acid)",
+            "priority": 20
+          },
+          {
+            "key": "system.properties",
+            "type": "add",
+            "value": "mgc",
+            "priority": 20
+          },
+          {
+            "key": "activities[attack].attack.bonus",
+            "type": "add",
+            "value": "1",
+            "priority": 20
+          },
+          {
+            "key": "activities[attack].damage.parts",
+            "type": "add",
+            "value": "[{\"number\":1,\"denomination\":4,\"types\":[\"acid\"]}]",
+            "priority": 20
+          }
+        ]
+      },
+      "_stats": {
+        "coreVersion": "14.369",
+        "systemId": "dnd5e",
+        "systemVersion": "6.0.6"
+      },
+      "_key": "!items.effects!UVtWUtISe5p6TVZ9.elemWpnaci1b0000"
+    },
+    {
+      "_id": "elemWpnaci2b0000",
+      "name": "Elemental Weapon: Acid +2",
+      "img": "icons/magic/fire/dagger-rune-enchant-purple-orange.webp",
+      "type": "enchantment",
+      "transfer": false,
+      "disabled": false,
+      "description": "",
+      "statuses": [],
+      "flags": {
+        "cat": {
+          "animation": {
+            "create": {
+              "source": "chris-premades",
+              "identifier": "castBuff",
+              "config": {
+                "color": "green"
+              }
+            },
+            "delete": {
+              "source": "chris-premades",
+              "identifier": "castBuff",
+              "config": {
+                "color": "green"
+              }
+            }
+          }
+        }
+      },
+      "system": {
+        "changes": [
+          {
+            "key": "name",
+            "type": "override",
+            "value": "{} (Acid)",
+            "priority": 20
+          },
+          {
+            "key": "system.properties",
+            "type": "add",
+            "value": "mgc",
+            "priority": 20
+          },
+          {
+            "key": "activities[attack].attack.bonus",
+            "type": "add",
+            "value": "2",
+            "priority": 20
+          },
+          {
+            "key": "activities[attack].damage.parts",
+            "type": "add",
+            "value": "[{\"number\":2,\"denomination\":4,\"types\":[\"acid\"]}]",
+            "priority": 20
+          }
+        ]
+      },
+      "_stats": {
+        "coreVersion": "14.369",
+        "systemId": "dnd5e",
+        "systemVersion": "6.0.6"
+      },
+      "_key": "!items.effects!UVtWUtISe5p6TVZ9.elemWpnaci2b0000"
+    },
+    {
+      "_id": "elemWpnaci3b0000",
+      "name": "Elemental Weapon: Acid +3",
+      "img": "icons/magic/fire/dagger-rune-enchant-purple-orange.webp",
+      "type": "enchantment",
+      "transfer": false,
+      "disabled": false,
+      "description": "",
+      "statuses": [],
+      "flags": {
+        "cat": {
+          "animation": {
+            "create": {
+              "source": "chris-premades",
+              "identifier": "castBuff",
+              "config": {
+                "color": "green"
+              }
+            },
+            "delete": {
+              "source": "chris-premades",
+              "identifier": "castBuff",
+              "config": {
+                "color": "green"
+              }
+            }
+          }
+        }
+      },
+      "system": {
+        "changes": [
+          {
+            "key": "name",
+            "type": "override",
+            "value": "{} (Acid)",
+            "priority": 20
+          },
+          {
+            "key": "system.properties",
+            "type": "add",
+            "value": "mgc",
+            "priority": 20
+          },
+          {
+            "key": "activities[attack].attack.bonus",
+            "type": "add",
+            "value": "3",
+            "priority": 20
+          },
+          {
+            "key": "activities[attack].damage.parts",
+            "type": "add",
+            "value": "[{\"number\":3,\"denomination\":4,\"types\":[\"acid\"]}]",
+            "priority": 20
+          }
+        ]
+      },
+      "_stats": {
+        "coreVersion": "14.369",
+        "systemId": "dnd5e",
+        "systemVersion": "6.0.6"
+      },
+      "_key": "!items.effects!UVtWUtISe5p6TVZ9.elemWpnaci3b0000"
+    },
+    {
+      "_id": "elemWpncol1b0000",
+      "name": "Elemental Weapon: Cold +1",
+      "img": "icons/magic/fire/dagger-rune-enchant-purple-orange.webp",
+      "type": "enchantment",
+      "transfer": false,
+      "disabled": false,
+      "description": "",
+      "statuses": [],
+      "flags": {
+        "cat": {
+          "animation": {
+            "create": {
+              "source": "chris-premades",
+              "identifier": "castBuff",
+              "config": {
+                "color": "blue"
+              }
+            },
+            "delete": {
+              "source": "chris-premades",
+              "identifier": "castBuff",
+              "config": {
+                "color": "blue"
+              }
+            }
+          }
+        }
+      },
+      "system": {
+        "changes": [
+          {
+            "key": "name",
+            "type": "override",
+            "value": "{} (Cold)",
+            "priority": 20
+          },
+          {
+            "key": "system.properties",
+            "type": "add",
+            "value": "mgc",
+            "priority": 20
+          },
+          {
+            "key": "activities[attack].attack.bonus",
+            "type": "add",
+            "value": "1",
+            "priority": 20
+          },
+          {
+            "key": "activities[attack].damage.parts",
+            "type": "add",
+            "value": "[{\"number\":1,\"denomination\":4,\"types\":[\"cold\"]}]",
+            "priority": 20
+          }
+        ]
+      },
+      "_stats": {
+        "coreVersion": "14.369",
+        "systemId": "dnd5e",
+        "systemVersion": "6.0.6"
+      },
+      "_key": "!items.effects!UVtWUtISe5p6TVZ9.elemWpncol1b0000"
+    },
+    {
+      "_id": "elemWpncol2b0000",
+      "name": "Elemental Weapon: Cold +2",
+      "img": "icons/magic/fire/dagger-rune-enchant-purple-orange.webp",
+      "type": "enchantment",
+      "transfer": false,
+      "disabled": false,
+      "description": "",
+      "statuses": [],
+      "flags": {
+        "cat": {
+          "animation": {
+            "create": {
+              "source": "chris-premades",
+              "identifier": "castBuff",
+              "config": {
+                "color": "blue"
+              }
+            },
+            "delete": {
+              "source": "chris-premades",
+              "identifier": "castBuff",
+              "config": {
+                "color": "blue"
+              }
+            }
+          }
+        }
+      },
+      "system": {
+        "changes": [
+          {
+            "key": "name",
+            "type": "override",
+            "value": "{} (Cold)",
+            "priority": 20
+          },
+          {
+            "key": "system.properties",
+            "type": "add",
+            "value": "mgc",
+            "priority": 20
+          },
+          {
+            "key": "activities[attack].attack.bonus",
+            "type": "add",
+            "value": "2",
+            "priority": 20
+          },
+          {
+            "key": "activities[attack].damage.parts",
+            "type": "add",
+            "value": "[{\"number\":2,\"denomination\":4,\"types\":[\"cold\"]}]",
+            "priority": 20
+          }
+        ]
+      },
+      "_stats": {
+        "coreVersion": "14.369",
+        "systemId": "dnd5e",
+        "systemVersion": "6.0.6"
+      },
+      "_key": "!items.effects!UVtWUtISe5p6TVZ9.elemWpncol2b0000"
+    },
+    {
+      "_id": "elemWpncol3b0000",
+      "name": "Elemental Weapon: Cold +3",
+      "img": "icons/magic/fire/dagger-rune-enchant-purple-orange.webp",
+      "type": "enchantment",
+      "transfer": false,
+      "disabled": false,
+      "description": "",
+      "statuses": [],
+      "flags": {
+        "cat": {
+          "animation": {
+            "create": {
+              "source": "chris-premades",
+              "identifier": "castBuff",
+              "config": {
+                "color": "blue"
+              }
+            },
+            "delete": {
+              "source": "chris-premades",
+              "identifier": "castBuff",
+              "config": {
+                "color": "blue"
+              }
+            }
+          }
+        }
+      },
+      "system": {
+        "changes": [
+          {
+            "key": "name",
+            "type": "override",
+            "value": "{} (Cold)",
+            "priority": 20
+          },
+          {
+            "key": "system.properties",
+            "type": "add",
+            "value": "mgc",
+            "priority": 20
+          },
+          {
+            "key": "activities[attack].attack.bonus",
+            "type": "add",
+            "value": "3",
+            "priority": 20
+          },
+          {
+            "key": "activities[attack].damage.parts",
+            "type": "add",
+            "value": "[{\"number\":3,\"denomination\":4,\"types\":[\"cold\"]}]",
+            "priority": 20
+          }
+        ]
+      },
+      "_stats": {
+        "coreVersion": "14.369",
+        "systemId": "dnd5e",
+        "systemVersion": "6.0.6"
+      },
+      "_key": "!items.effects!UVtWUtISe5p6TVZ9.elemWpncol3b0000"
+    },
+    {
+      "_id": "elemWpnfir1b0000",
+      "name": "Elemental Weapon: Fire +1",
+      "img": "icons/magic/fire/dagger-rune-enchant-purple-orange.webp",
+      "type": "enchantment",
+      "transfer": false,
+      "disabled": false,
+      "description": "",
+      "statuses": [],
+      "flags": {
+        "cat": {
+          "animation": {
+            "create": {
+              "source": "chris-premades",
+              "identifier": "castBuff",
+              "config": {
+                "color": "red"
+              }
+            },
+            "delete": {
+              "source": "chris-premades",
+              "identifier": "castBuff",
+              "config": {
+                "color": "red"
+              }
+            }
+          }
+        }
+      },
+      "system": {
+        "changes": [
+          {
+            "key": "name",
+            "type": "override",
+            "value": "{} (Fire)",
+            "priority": 20
+          },
+          {
+            "key": "system.properties",
+            "type": "add",
+            "value": "mgc",
+            "priority": 20
+          },
+          {
+            "key": "activities[attack].attack.bonus",
+            "type": "add",
+            "value": "1",
+            "priority": 20
+          },
+          {
+            "key": "activities[attack].damage.parts",
+            "type": "add",
+            "value": "[{\"number\":1,\"denomination\":4,\"types\":[\"fire\"]}]",
+            "priority": 20
+          }
+        ]
+      },
+      "_stats": {
+        "coreVersion": "14.369",
+        "systemId": "dnd5e",
+        "systemVersion": "6.0.6"
+      },
+      "_key": "!items.effects!UVtWUtISe5p6TVZ9.elemWpnfir1b0000"
+    },
+    {
+      "_id": "elemWpnfir2b0000",
+      "name": "Elemental Weapon: Fire +2",
+      "img": "icons/magic/fire/dagger-rune-enchant-purple-orange.webp",
+      "type": "enchantment",
+      "transfer": false,
+      "disabled": false,
+      "description": "",
+      "statuses": [],
+      "flags": {
+        "cat": {
+          "animation": {
+            "create": {
+              "source": "chris-premades",
+              "identifier": "castBuff",
+              "config": {
+                "color": "red"
+              }
+            },
+            "delete": {
+              "source": "chris-premades",
+              "identifier": "castBuff",
+              "config": {
+                "color": "red"
+              }
+            }
+          }
+        }
+      },
+      "system": {
+        "changes": [
+          {
+            "key": "name",
+            "type": "override",
+            "value": "{} (Fire)",
+            "priority": 20
+          },
+          {
+            "key": "system.properties",
+            "type": "add",
+            "value": "mgc",
+            "priority": 20
+          },
+          {
+            "key": "activities[attack].attack.bonus",
+            "type": "add",
+            "value": "2",
+            "priority": 20
+          },
+          {
+            "key": "activities[attack].damage.parts",
+            "type": "add",
+            "value": "[{\"number\":2,\"denomination\":4,\"types\":[\"fire\"]}]",
+            "priority": 20
+          }
+        ]
+      },
+      "_stats": {
+        "coreVersion": "14.369",
+        "systemId": "dnd5e",
+        "systemVersion": "6.0.6"
+      },
+      "_key": "!items.effects!UVtWUtISe5p6TVZ9.elemWpnfir2b0000"
+    },
+    {
+      "_id": "elemWpnfir3b0000",
+      "name": "Elemental Weapon: Fire +3",
+      "img": "icons/magic/fire/dagger-rune-enchant-purple-orange.webp",
+      "type": "enchantment",
+      "transfer": false,
+      "disabled": false,
+      "description": "",
+      "statuses": [],
+      "flags": {
+        "cat": {
+          "animation": {
+            "create": {
+              "source": "chris-premades",
+              "identifier": "castBuff",
+              "config": {
+                "color": "red"
+              }
+            },
+            "delete": {
+              "source": "chris-premades",
+              "identifier": "castBuff",
+              "config": {
+                "color": "red"
+              }
+            }
+          }
+        }
+      },
+      "system": {
+        "changes": [
+          {
+            "key": "name",
+            "type": "override",
+            "value": "{} (Fire)",
+            "priority": 20
+          },
+          {
+            "key": "system.properties",
+            "type": "add",
+            "value": "mgc",
+            "priority": 20
+          },
+          {
+            "key": "activities[attack].attack.bonus",
+            "type": "add",
+            "value": "3",
+            "priority": 20
+          },
+          {
+            "key": "activities[attack].damage.parts",
+            "type": "add",
+            "value": "[{\"number\":3,\"denomination\":4,\"types\":[\"fire\"]}]",
+            "priority": 20
+          }
+        ]
+      },
+      "_stats": {
+        "coreVersion": "14.369",
+        "systemId": "dnd5e",
+        "systemVersion": "6.0.6"
+      },
+      "_key": "!items.effects!UVtWUtISe5p6TVZ9.elemWpnfir3b0000"
+    },
+    {
+      "_id": "elemWpnlig1b0000",
+      "name": "Elemental Weapon: Lightning +1",
+      "img": "icons/magic/fire/dagger-rune-enchant-purple-orange.webp",
+      "type": "enchantment",
+      "transfer": false,
+      "disabled": false,
+      "description": "",
+      "statuses": [],
+      "flags": {
+        "cat": {
+          "animation": {
+            "create": {
+              "source": "chris-premades",
+              "identifier": "castBuff",
+              "config": {
+                "color": "purple"
+              }
+            },
+            "delete": {
+              "source": "chris-premades",
+              "identifier": "castBuff",
+              "config": {
+                "color": "purple"
+              }
+            }
+          }
+        }
+      },
+      "system": {
+        "changes": [
+          {
+            "key": "name",
+            "type": "override",
+            "value": "{} (Lightning)",
+            "priority": 20
+          },
+          {
+            "key": "system.properties",
+            "type": "add",
+            "value": "mgc",
+            "priority": 20
+          },
+          {
+            "key": "activities[attack].attack.bonus",
+            "type": "add",
+            "value": "1",
+            "priority": 20
+          },
+          {
+            "key": "activities[attack].damage.parts",
+            "type": "add",
+            "value": "[{\"number\":1,\"denomination\":4,\"types\":[\"lightning\"]}]",
+            "priority": 20
+          }
+        ]
+      },
+      "_stats": {
+        "coreVersion": "14.369",
+        "systemId": "dnd5e",
+        "systemVersion": "6.0.6"
+      },
+      "_key": "!items.effects!UVtWUtISe5p6TVZ9.elemWpnlig1b0000"
+    },
+    {
+      "_id": "elemWpnlig2b0000",
+      "name": "Elemental Weapon: Lightning +2",
+      "img": "icons/magic/fire/dagger-rune-enchant-purple-orange.webp",
+      "type": "enchantment",
+      "transfer": false,
+      "disabled": false,
+      "description": "",
+      "statuses": [],
+      "flags": {
+        "cat": {
+          "animation": {
+            "create": {
+              "source": "chris-premades",
+              "identifier": "castBuff",
+              "config": {
+                "color": "purple"
+              }
+            },
+            "delete": {
+              "source": "chris-premades",
+              "identifier": "castBuff",
+              "config": {
+                "color": "purple"
+              }
+            }
+          }
+        }
+      },
+      "system": {
+        "changes": [
+          {
+            "key": "name",
+            "type": "override",
+            "value": "{} (Lightning)",
+            "priority": 20
+          },
+          {
+            "key": "system.properties",
+            "type": "add",
+            "value": "mgc",
+            "priority": 20
+          },
+          {
+            "key": "activities[attack].attack.bonus",
+            "type": "add",
+            "value": "2",
+            "priority": 20
+          },
+          {
+            "key": "activities[attack].damage.parts",
+            "type": "add",
+            "value": "[{\"number\":2,\"denomination\":4,\"types\":[\"lightning\"]}]",
+            "priority": 20
+          }
+        ]
+      },
+      "_stats": {
+        "coreVersion": "14.369",
+        "systemId": "dnd5e",
+        "systemVersion": "6.0.6"
+      },
+      "_key": "!items.effects!UVtWUtISe5p6TVZ9.elemWpnlig2b0000"
+    },
+    {
+      "_id": "elemWpnlig3b0000",
+      "name": "Elemental Weapon: Lightning +3",
+      "img": "icons/magic/fire/dagger-rune-enchant-purple-orange.webp",
+      "type": "enchantment",
+      "transfer": false,
+      "disabled": false,
+      "description": "",
+      "statuses": [],
+      "flags": {
+        "cat": {
+          "animation": {
+            "create": {
+              "source": "chris-premades",
+              "identifier": "castBuff",
+              "config": {
+                "color": "purple"
+              }
+            },
+            "delete": {
+              "source": "chris-premades",
+              "identifier": "castBuff",
+              "config": {
+                "color": "purple"
+              }
+            }
+          }
+        }
+      },
+      "system": {
+        "changes": [
+          {
+            "key": "name",
+            "type": "override",
+            "value": "{} (Lightning)",
+            "priority": 20
+          },
+          {
+            "key": "system.properties",
+            "type": "add",
+            "value": "mgc",
+            "priority": 20
+          },
+          {
+            "key": "activities[attack].attack.bonus",
+            "type": "add",
+            "value": "3",
+            "priority": 20
+          },
+          {
+            "key": "activities[attack].damage.parts",
+            "type": "add",
+            "value": "[{\"number\":3,\"denomination\":4,\"types\":[\"lightning\"]}]",
+            "priority": 20
+          }
+        ]
+      },
+      "_stats": {
+        "coreVersion": "14.369",
+        "systemId": "dnd5e",
+        "systemVersion": "6.0.6"
+      },
+      "_key": "!items.effects!UVtWUtISe5p6TVZ9.elemWpnlig3b0000"
+    },
+    {
+      "_id": "elemWpnthu1b0000",
+      "name": "Elemental Weapon: Thunder +1",
+      "img": "icons/magic/fire/dagger-rune-enchant-purple-orange.webp",
+      "type": "enchantment",
+      "transfer": false,
+      "disabled": false,
+      "description": "",
+      "statuses": [],
+      "flags": {
+        "cat": {
+          "animation": {
+            "create": {
+              "source": "chris-premades",
+              "identifier": "castBuff",
+              "config": {
+                "color": "blue"
+              }
+            },
+            "delete": {
+              "source": "chris-premades",
+              "identifier": "castBuff",
+              "config": {
+                "color": "blue"
+              }
+            }
+          }
+        }
+      },
+      "system": {
+        "changes": [
+          {
+            "key": "name",
+            "type": "override",
+            "value": "{} (Thunder)",
+            "priority": 20
+          },
+          {
+            "key": "system.properties",
+            "type": "add",
+            "value": "mgc",
+            "priority": 20
+          },
+          {
+            "key": "activities[attack].attack.bonus",
+            "type": "add",
+            "value": "1",
+            "priority": 20
+          },
+          {
+            "key": "activities[attack].damage.parts",
+            "type": "add",
+            "value": "[{\"number\":1,\"denomination\":4,\"types\":[\"thunder\"]}]",
+            "priority": 20
+          }
+        ]
+      },
+      "_stats": {
+        "coreVersion": "14.369",
+        "systemId": "dnd5e",
+        "systemVersion": "6.0.6"
+      },
+      "_key": "!items.effects!UVtWUtISe5p6TVZ9.elemWpnthu1b0000"
+    },
+    {
+      "_id": "elemWpnthu2b0000",
+      "name": "Elemental Weapon: Thunder +2",
+      "img": "icons/magic/fire/dagger-rune-enchant-purple-orange.webp",
+      "type": "enchantment",
+      "transfer": false,
+      "disabled": false,
+      "description": "",
+      "statuses": [],
+      "flags": {
+        "cat": {
+          "animation": {
+            "create": {
+              "source": "chris-premades",
+              "identifier": "castBuff",
+              "config": {
+                "color": "blue"
+              }
+            },
+            "delete": {
+              "source": "chris-premades",
+              "identifier": "castBuff",
+              "config": {
+                "color": "blue"
+              }
+            }
+          }
+        }
+      },
+      "system": {
+        "changes": [
+          {
+            "key": "name",
+            "type": "override",
+            "value": "{} (Thunder)",
+            "priority": 20
+          },
+          {
+            "key": "system.properties",
+            "type": "add",
+            "value": "mgc",
+            "priority": 20
+          },
+          {
+            "key": "activities[attack].attack.bonus",
+            "type": "add",
+            "value": "2",
+            "priority": 20
+          },
+          {
+            "key": "activities[attack].damage.parts",
+            "type": "add",
+            "value": "[{\"number\":2,\"denomination\":4,\"types\":[\"thunder\"]}]",
+            "priority": 20
+          }
+        ]
+      },
+      "_stats": {
+        "coreVersion": "14.369",
+        "systemId": "dnd5e",
+        "systemVersion": "6.0.6"
+      },
+      "_key": "!items.effects!UVtWUtISe5p6TVZ9.elemWpnthu2b0000"
+    },
+    {
+      "_id": "elemWpnthu3b0000",
+      "name": "Elemental Weapon: Thunder +3",
+      "img": "icons/magic/fire/dagger-rune-enchant-purple-orange.webp",
+      "type": "enchantment",
+      "transfer": false,
+      "disabled": false,
+      "description": "",
+      "statuses": [],
+      "flags": {
+        "cat": {
+          "animation": {
+            "create": {
+              "source": "chris-premades",
+              "identifier": "castBuff",
+              "config": {
+                "color": "blue"
+              }
+            },
+            "delete": {
+              "source": "chris-premades",
+              "identifier": "castBuff",
+              "config": {
+                "color": "blue"
+              }
+            }
+          }
+        }
+      },
+      "system": {
+        "changes": [
+          {
+            "key": "name",
+            "type": "override",
+            "value": "{} (Thunder)",
+            "priority": 20
+          },
+          {
+            "key": "system.properties",
+            "type": "add",
+            "value": "mgc",
+            "priority": 20
+          },
+          {
+            "key": "activities[attack].attack.bonus",
+            "type": "add",
+            "value": "3",
+            "priority": 20
+          },
+          {
+            "key": "activities[attack].damage.parts",
+            "type": "add",
+            "value": "[{\"number\":3,\"denomination\":4,\"types\":[\"thunder\"]}]",
+            "priority": 20
+          }
+        ]
+      },
+      "_stats": {
+        "coreVersion": "14.369",
+        "systemId": "dnd5e",
+        "systemVersion": "6.0.6"
+      },
+      "_key": "!items.effects!UVtWUtISe5p6TVZ9.elemWpnthu3b0000"
+    }
+  ],
+  "folder": null,
+  "flags": {
+    "midiProperties": {
+      "confirmTargets": "default",
+      "autoFailFriendly": false,
+      "autoSaveFriendly": false,
+      "critOther": false,
+      "offHandWeapon": false,
+      "magicdam": false,
+      "magiceffect": false,
+      "noConcentrationCheck": false,
+      "toggleEffect": false,
+      "ignoreTotalCover": false,
+      "idr": false,
+      "idi": false,
+      "idv": false,
+      "ida": false
+    },
+    "midi-qol": {
+      "rollAttackPerTarget": "default",
+      "itemCondition": "",
+      "effectCondition": "",
+      "AoETargetType": "any",
+      "AoETargetTypeIncludeSelf": true,
+      "autoTarget": "default",
+      "removeAttackDamageButtons": "default",
+      "reactionCondition": "",
+      "otherCondition": ""
+    },
+    "dnd5e": {
+      "riders": {
+        "activity": [],
+        "effect": []
+      }
+    },
+    "cat": {
+      "automation": {
+        "source": "chris-premades",
+        "version": "2.1.3"
+      }
+    }
+  },
+  "_id": "UVtWUtISe5p6TVZ9",
+  "_stats": {
+    "coreVersion": "14.369",
+    "systemId": "dnd5e",
+    "systemVersion": "6.0.6"
+  },
+  "_key": "!items!UVtWUtISe5p6TVZ9"
+}

@@ -12,6 +12,7 @@ export { areaAnimation } from './generic/areaAnimation.mjs';
 export { endIfUnaffected } from './generic/endIfUnaffected.mjs';
 export { inheritCastLevel } from './generic/inheritCastLevel.mjs';
 export { moveRegion } from './generic/moveRegion.mjs';
+export { wallPanels, wallPermanence } from './generic/wallSpell.mjs';
 export { reflectOnHit } from './generic/reflectOnHit.mjs';
 export { spellAnimation } from './generic/spellAnimation.mjs';
 
@@ -52,13 +53,13 @@ export { teleport } from './generic/teleport.mjs';
 /*============================*/
 /*          SUMMONS           */
 /*============================*/
-export { summon } from './generic/summon.mjs';
 export { summonModifier } from './generic/summonModifier.mjs';
 
 /*============================*/
 /*         TARGETING          */
 /*============================*/
 export { additionalTargets } from './generic/additionalTargets.mjs';
+export { auraDesignation, grappledBySource, notDesignatedBySource, summonerOfSource } from './generic/auraFilters.mjs';
 export { extraAttack } from './generic/extraAttack.mjs';
 export { multiSingleTarget } from './generic/multiSingleTarget.mjs';
 export { redirectAttack } from './generic/redirectAttack.mjs';

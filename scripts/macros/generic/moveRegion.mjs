@@ -1,4 +1,4 @@
-import {automationUtils, documentUtils, Logging, regionUtils} from '../../proxy.mjs';
+import {automationUtils, documentUtils, itemUtils, Logging, regionUtils} from '../../proxy.mjs';
 function getRegionCenter(region) {
     const {x, y} = regionUtils.getArea(region);
     return {x: Math.round(x), y: Math.round(y)};
@@ -12,14 +12,27 @@ export async function createRegionLight(region, config = {}) {
     await documentUtils.makeDependent(region, [light]);
     return light;
 }
+/**
+ * Name a placed region after its spell and show the spell's move activity until the region is gone.
+ * @param {object} region Placed region.
+ * @param {object} item Spell that placed it.
+ * @param {string} moveIdentifier Identifier of the activity that moves the region.
+ * @returns {Promise<void>}
+ */
+export async function prepareMovableRegion(region, item, moveIdentifier) {
+    await documentUtils.update(region, {name: item.name});
+    const move = itemUtils.getActivityByIdentifier(item, moveIdentifier);
+    if (!move) return;
+    const unhideEffect = await itemUtils.unhideActivities(item, [move.id], {ids: true, favorite: true});
+    if (unhideEffect) await documentUtils.makeDependent(region, [unhideEffect]);
+}
 export async function syncRegionLights(region) {
     const {x, y} = getRegionCenter(region);
     const updates = region.parent.lights.filter(light => light.flags.dnd5e?.dependentOn === region.uuid && (light.x !== x || light.y !== y)).map(light => ({_id: light.id, x, y}));
     if (updates.length) await documentUtils.updateEmbeddedDocuments(region.parent, 'AmbientLight', updates);
 }
 function getPlacedRegion(activity, scene) {
-    const regions = scene.regions.filter(region => region.flags.dnd5e?.activity === activity.uuid);
-    return regions.sort((a, b) => (a._stats.createdTime ?? 0) - (b._stats.createdTime ?? 0)).at(-1);
+    return regionUtils.getPlacedRegions(scene, activity).at(-1);
 }
 async function use({document, workflow}) {
     const newRegion = workflow.template;

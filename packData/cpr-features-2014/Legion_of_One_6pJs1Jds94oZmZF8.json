@@ -1,0 +1,129 @@
+{
+  "name": "Legion of One",
+  "type": "feat",
+  "system": {
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "source": {
+      "custom": "",
+      "revision": 1,
+      "rules": "2014",
+      "book": "",
+      "page": "",
+      "license": ""
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "recovery": []
+    },
+    "type": {
+      "value": "class",
+      "subtype": ""
+    },
+    "requirements": "",
+    "properties": [],
+    "prerequisites": {
+      "level": null,
+      "items": [],
+      "repeatable": false
+    },
+    "activities": {},
+    "identifier": "legion-of-one",
+    "enchant": {},
+    "advancement": {},
+    "crewed": false
+  },
+  "flags": {
+    "midi-qol": {
+      "removeAttackDamageButtons": "default",
+      "rollAttackPerTarget": "default",
+      "itemCondition": "",
+      "effectCondition": "",
+      "AoETargetType": "any",
+      "AoETargetTypeIncludeSelf": true,
+      "autoTarget": "default",
+      "reactionCondition": "",
+      "otherCondition": ""
+    },
+    "midiProperties": {
+      "confirmTargets": "default",
+      "autoFailFriendly": false,
+      "autoSaveFriendly": false,
+      "rollOther": false,
+      "critOther": false,
+      "offHandWeapon": false,
+      "magicdam": false,
+      "magiceffect": false,
+      "concentration": false,
+      "noConcentrationCheck": false,
+      "toggleEffect": false,
+      "ignoreTotalCover": false,
+      "idr": false,
+      "idi": false,
+      "idv": false,
+      "ida": false
+    },
+    "dnd5e": {
+      "riders": {
+        "activity": [],
+        "effect": []
+      }
+    },
+    "cat": {
+      "automation": {
+        "source": "chris-premades",
+        "version": "2.1.3"
+      },
+      "macros": {
+        "combat": [
+          {
+            "source": "chris-premades",
+            "rules": "2014",
+            "identifier": "legion-of-one"
+          }
+        ]
+      }
+    }
+  },
+  "effects": [
+    {
+      "_id": "legionOfOneFlag1",
+      "name": "Legion of One",
+      "img": "icons/magic/defensive/illusion-evasion-echo-purple.webp",
+      "type": "base",
+      "transfer": true,
+      "disabled": false,
+      "system": {
+        "changes": [
+          {
+            "key": "flags.chris-premades.legionOfOne",
+            "type": "override",
+            "value": "1",
+            "priority": 20
+          }
+        ]
+      },
+      "flags": {},
+      "statuses": [],
+      "description": "",
+      "_stats": {
+        "coreVersion": "14.369",
+        "systemId": "dnd5e",
+        "systemVersion": "6.0.6"
+      },
+      "_key": "!items.effects!6pJs1Jds94oZmZF8.legionOfOneFlag1"
+    }
+  ],
+  "img": "icons/magic/defensive/illusion-evasion-echo-purple.webp",
+  "folder": "echoKnightFold01",
+  "_id": "6pJs1Jds94oZmZF8",
+  "_stats": {
+    "coreVersion": "14.369",
+    "systemId": "dnd5e",
+    "systemVersion": "6.0.6"
+  },
+  "_key": "!items!6pJs1Jds94oZmZF8"
+}

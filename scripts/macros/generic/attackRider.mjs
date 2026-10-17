@@ -11,6 +11,11 @@ export function withNearby(tokens, range) {
     if (!range) return tokens;
     return Array.from(new Set([...tokens, ...tokens.flatMap(token => tokenUtils.findNearby(token, range)).filter(token => token.actor)]));
 }
+// Plays the configured rider animation on each hit target.
+export function playRiderAnimation(document, identifier, targets, sourceToken) {
+    const {animation, options} = automationUtils.getResolvedAnimation(document, 'animation', {source: 'chris-premades', identifier});
+    if (animation?.macros?.play) targets.forEach(target => animation.macros.play(target.document ?? target, options, {sourceToken}));
+}
 export function addRiders(workflow, uuids) {
     const riders = workflowUtils.getWorkflowProperty(workflow, 'attackRiders') ?? [];
     workflowUtils.setWorkflowProperty(workflow, 'attackRiders', [...riders, ...uuids]);
@@ -71,6 +76,7 @@ async function rider({document: activity, actor, token, workflow}) {
     const options = {consumeUsage: false, config: {scaling}};
     if (activity.item.system.linkedActivity) options.config.cause = {activity: activity.item.getFlag('dnd5e', 'cachedFor'), resources: true};
     else if (scaling && activity.isSpell) options.atLevel = activity.item.system.level + scaling;
+    playRiderAnimation(activity, 'attackRider', hitTargets, workflow.token?.document);
     const riderWorkflow = await workflowUtils.completeActivityUse(activity, targets, options);
     if (!riderWorkflow) return;
     if (scaling) {
@@ -100,6 +106,7 @@ async function rider({document: activity, actor, token, workflow}) {
  * - `selfAsTouch`: a Self range activity is rolled on the hit targets instead of the attacker.
  * - `riderNearbyRange`: the activity also targets creatures within this many feet of the hit targets. 0 targets the hit targets only.
  * - `useActivityCosts`: apply the activity's costs and scaling. Not offered when they cannot be paid.
+ * - `animation`: played on each hit target when the rider is used.
  */
 export const attackRider = {
     rules: 'all',
@@ -122,6 +129,14 @@ export const attackRider = {
         }
     ],
     genericConfig: {
+        animation: {
+            default: {source: 'none', identifier: 'none'},
+            type: 'selectAnimation',
+            inputs: ['targetToken'],
+            category: 'animations',
+            label: 'CHRISPREMADES.Config.Animation',
+            hint: 'CHRISPREMADES.Macros.Generic.Common.RiderAnimationHint'
+        },
         bonus: {
             default: '',
             type: 'text',

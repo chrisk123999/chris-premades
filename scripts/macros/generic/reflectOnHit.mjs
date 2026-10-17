@@ -16,7 +16,8 @@ async function attacked({document: effect, sourceToken, workflow, castData}) {
     if (config.requireTempHP && !sourceToken.actor.system.attributes.hp.temp) return;
     if (config.range && tokenUtils.getDistance(sourceToken, workflow.token.document) > config.range) return;
     if (!isStrongest(effect, sourceToken.actor)) return;
-    const activity = effectUtils.getOriginActivitySync(effect)?.item?.system.activities.get(config.rollActivity);
+    const item = effect.transfer && effect.parent?.documentName === 'Item' ? effect.parent : effectUtils.getOriginActivitySync(effect)?.item;
+    const activity = item?.system.activities.get(config.rollActivity);
     if (!activity) return Logging.addMacroWarning('CPR', documentUtils.getIdentifier(effect), 'CHRISPREMADES.Macros.Generic.ReflectOnHit.NoActivity', {notify: 'warn'});
     if (config.oncePerTurn) {
         const combatData = tokenUtils.getCombatData(sourceToken);
@@ -29,7 +30,7 @@ async function attacked({document: effect, sourceToken, workflow, castData}) {
     await workflowUtils.syntheticActivityRoll(activity, [workflow.token.document], {atLevel: castData?.castLevel || undefined, consumeUsage: false, consumeResources: false, spellSlot: false});
 }
 /**
- * Rolls an activity from the effect's source item against each creature that hits the effect's bearer with an attack.
+ * Rolls an activity from the effect's source item, or the item a transferred effect sits on, against each creature that hits the effect's bearer with an attack.
  * Bound on an effect. Fires on `targetAttackRollComplete`, so it runs before the attack's damage is applied.
  * Each hit bearer reflects once, from its same-named effect with the highest cast level.
  *
@@ -43,7 +44,7 @@ async function attacked({document: effect, sourceToken, workflow, castData}) {
  */
 export const reflectOnHit = {
     rules: 'all',
-    version: '2.0.0',
+    version: '2.1.3',
     category: 'damage',
     generic: true,
     documents: ['activeeffect'],

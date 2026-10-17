@@ -40,8 +40,8 @@ function resolveFile(path) {
     if (!Sequencer.Database.entryExists(path)) return path;
     return Sequencer.Database.getEntry(path)?.file;
 }
-async function preCreate({document, summon, updates}) {
-    const summonData = automationUtils.getGenericConfigValue(document, 'chris-premades', 'summon', 'summons')?.find(data => data.sourceActorUuid === summon.sourceActorUuid);
+async function preCreate({document, updates}) {
+    const summonData = automationUtils.getGenericConfigValue(document, 'cat', 'summon', 'summons')?.[0];
     if (summonData?.tokenImg || !animationUtils.jb2aCheck() || !animationUtils.sequencerCheck()) return;
     const path = automationUtils.getConfigValue(document, 'savedTokenImg') || await pickWeapon(document, queryUtils.firstOwner(document.actor, true));
     if (!path) return;
