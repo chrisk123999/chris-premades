@@ -1352,6 +1352,11 @@
                     "Choice": "Choice Count",
                     "Use": "Sacrifice advantage to use {item}?"
                 },
+                "Cantrips": {
+                    "TrueStrike": "True Strike Bonus",
+                    "TrueStrikeAbility": "True Strike Attack Ability",
+                    "TrueStrikeRage": "True Strike Raging Bonus"
+                },
                 "ChromaticOrb": {
                     "BaseMaxJumps": "Base Max Jumps",
                     "Bounce": "Who should the spell bounce to?",
@@ -1449,6 +1454,17 @@
                     "HPPerItem": "HP Per Item",
                     "Prompt": "Choose items to destroy and recover {amount} hit points for each:",
                     "Rarity": "Allowed Rarities"
+                },
+                "Spells": {
+                    "BurningHandsDamage": "Burning Hands Damage",
+                    "BurningHandsType": "Burning Hands Type",
+                    "MagicMissile": "Choose your missiles:",
+                    "MagicMissileAttacks": "Magic Missile Attacks",
+                    "MagicMissileAttackAbility": "Magic Missile Attack Ability",
+                    "MagicMissileHint": "Weapon options in addition to those that match other restrictions.",
+                    "MagicMissileNote": "Throwing {weapon} ({num} of {total})",
+                    "MagicMissileWeapons": "Magic Missile Weapons",
+                    "MagicMissileWeaponProps": "Magic Missile Weapon Properties"
                 },
                 "SpellThief": {
                     "Disabled": "Disabled"

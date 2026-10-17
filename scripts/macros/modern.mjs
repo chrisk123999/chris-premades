@@ -32,12 +32,15 @@ export { extendRage, keepRage } from './modern/classFeatures/barbarian/rage.mjs'
 export { intimidatingPresence as 'intimidating-presence' } from './modern/classFeatures/barbarian/berserker/intimidatingPresence.mjs';
 
 /*         Muscle Wizard         */
+export { cantrips, cantripsShockingGrasp, cantripsTrueStrike } from './modern/classFeatures/barbarian/muscleWizard/cantrips.mjs';
+export { iCastFist as 'i-cast-fist' } from './modern/classFeatures/barbarian/muscleWizard/iCastFist.mjs';
+export { spells, spellsBurningHands, spellsMagicMissile, spellsShield, spellsShieldDamaged } from './modern/classFeatures/barbarian/muscleWizard/spells.mjs';
 export { unarguableWizardry as 'unarguable-wizardry' } from './modern/classFeatures/barbarian/muscleWizard/unarguableWizardry.mjs';
 
 /*          Wild Heart           */
 export { aspectOfTheWilds as 'aspect-of-the-wilds' } from './modern/classFeatures/barbarian/wildHeart/aspectOfTheWilds.mjs';
 
-/*           World Tree          */
+/*          World Tree           */
 export { batteringRoots as 'battering-roots' } from './modern/classFeatures/barbarian/worldTree/batteringRoots.mjs';
 export { branchesOfTheTree as 'branches-of-the-tree' } from './modern/classFeatures/barbarian/worldTree/branchesOfTheTree.mjs';
 export { travelAlongTheTree as 'travel-along-the-tree', travelAlongTheTreePreChecks }  from './modern/classFeatures/barbarian/worldTree/travelAlongTheTree.mjs';

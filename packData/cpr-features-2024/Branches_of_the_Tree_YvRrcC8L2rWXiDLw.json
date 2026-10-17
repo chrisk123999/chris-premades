@@ -211,7 +211,7 @@
           "visible": false,
           "bonus": ""
         },
-        "useConditionText": "",
+        "useConditionText": "false",
         "useConditionReason": "",
         "effectConditionText": "workflow.attackingToken.document.disposition * fromUuidSync(targetUuid)?.disposition <= 0",
         "otherActivityId": "",

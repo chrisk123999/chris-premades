@@ -4,7 +4,7 @@ async function preChecks({document: activity, macroClass: {identifier, source}})
         Logging.addMacroWarning(source, identifier, 'CHRISPREMADES.Macros.Modern.BranchesOfTheTree.Reaction', {notify: 'warn'});
         return true;
     }
-    if (!actorUtils.getEffectByIdentifier(activity.actor, 'rage')) {
+    if (!activity.actor.flags[source]?.raging) {
         Logging.addMacroWarning(source, identifier, 'CHRISPREMADES.Macros.Modern.BranchesOfTheTree.Rage', {notify: 'warn'});
         return true;
     }

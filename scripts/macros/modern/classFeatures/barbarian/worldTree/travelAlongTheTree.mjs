@@ -1,6 +1,6 @@
-import {actorUtils, applications, automationUtils, documentUtils, genericUtils, Logging, tokenUtils, workflowUtils} from '../../../../../proxy.mjs';
+import {applications, automationUtils, documentUtils, genericUtils, Logging, tokenUtils, workflowUtils} from '../../../../../proxy.mjs';
 async function preChecks({document: activity, macroClass: {identifier, source}}) {
-    if (actorUtils.getEffectByIdentifier(activity.actor, 'rage')) return;
+    if (activity.actor.flags[source]?.raging) return;
     Logging.addMacroWarning(source, identifier, 'CHRISPREMADES.Macros.Modern.BranchesOfTheTree.Rage', {notify: 'warn'});
     return true;
 }
@@ -47,7 +47,7 @@ async function groupTeleport({macroClass: {identifier, source}, workflow}) {
     const range = automationUtils.getConfigValue(workflow.item, 'allyRange');
     const {animation, options} = automationUtils.getResolvedAnimation(workflow.item, 'animation');
     await tokenUtils.teleportToken(workflow.token.document, {animation, options, range: workflow.activity.range.value || 150, requireSight: true});
-    const targets = Array.from(workflow.targets).filter(t => t.id !== workflow.token.id).map(t => t.document);
+    const targets = Array.from(workflow.targets).filter(t => t.id !== workflow.token.id && (t.document.disposition * workflow.token.document.disposition >= 0)).map(t => t.document);
     if (!targets.length) return Logging.addMacroWarning(source, identifier, 'Travel along the Tree group teleport exited early with no allies targeted.');
     const message = genericUtils.notify('', {progress: true});
     for (let i = 0; i < targets.length; i++) {

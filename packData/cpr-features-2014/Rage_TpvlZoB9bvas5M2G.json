@@ -430,6 +430,16 @@
             "_id": "8p6cHHJqP0pEA9f5",
             "conditions": "{}",
             "replacement": ""
+          },
+          {
+            "key": "flags.chris-premades.raging",
+            "type": "override",
+            "value": 1,
+            "phase": "initial",
+            "_id": "IYNk8SNsuw9fyuaj",
+            "conditions": "{}",
+            "replacement": "",
+            "priority": null
           }
         ]
       },
@@ -463,7 +473,8 @@
           "selfTarget": false,
           "selfTargetAlways": false,
           "dontApply": true,
-          "specialDuration": []
+          "specialDuration": [],
+          "applicationMode": "default"
         },
         "core": {
           "overlay": false
@@ -517,7 +528,7 @@
     "cat": {
       "automation": {
         "source": "chris-premades",
-        "version": "2.1.0"
+        "version": "2.1.3"
       }
     }
   },
