@@ -410,7 +410,12 @@
         "changes": []
       },
       "disabled": false,
-      "duration": {},
+      "duration": {
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
+      },
       "description": "",
       "origin": null,
       "transfer": false,
@@ -460,6 +465,13 @@
           }
         }
       },
+      "_stats": {
+        "coreVersion": "14.369",
+        "systemId": null,
+        "systemVersion": null
+      },
+      "showIcon": 1,
+      "folder": null,
       "_key": "!items.effects!q3EnqXOwQzhsjXDU.cwbAuraEffect001"
     }
   ],

@@ -34,6 +34,10 @@ export { persistentRage as 'persistent-rage' } from './all/classFeatures/barbari
 export { rage, raging } from './all/classFeatures/barbarian/rage.mjs';
 export { relentlessRage as 'relentless-rage' } from './all/classFeatures/barbarian/relentlessRage.mjs';
 
+/*          Berserker         */
+export { mindlessRage as 'mindless-rage' } from './all/classFeatures/barbarian/berserker/mindlessRage.mjs';
+export { retaliation } from './all/classFeatures/barbarian/berserker/retaliation.mjs';
+
 /******************************/
 /*            Bard            */
 /******************************/

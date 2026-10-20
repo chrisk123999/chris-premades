@@ -55,6 +55,10 @@ export { dangerSense as 'danger-sense' } from './legacy/classFeatures/barbarian/
 export { endRage, keepRage } from './legacy/classFeatures/barbarian/rage.mjs';
 export { wildSurge as 'wild-surge', wildSurgeRetribution as 'wild-surge-retribution' } from './legacy/classFeatures/barbarian/pathOfWildMagic/wildSurge.mjs';
 
+/*         Berserker          */
+export { frenzy, frenzyRageEnd } from './legacy/classFeatures/barbarian/berserker/frenzy.mjs';
+export { intimidatingPresence as 'intimidating-presence', extendIntimidatingPresence, immuneIntimidatingPresence } from './legacy/classFeatures/barbarian/berserker/intimidatingPresence.mjs';
+
 /******************************/
 /*            Bard            */
 /******************************/

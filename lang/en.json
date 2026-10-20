@@ -676,6 +676,7 @@
                     "Shapechanger": "Shapechanger",
                     "ShapechangerDisadvantage": "Moonbeam: Shapechanger"
                 },
+                "Retaliation": "Spend a reaction to make a counterattack?",
                 "SpellStoringItem": {
                     "NoItems": "You and your allies are not carrying any valid items for spell storing!",
                     "Existing": "Existing Spell-Storing Item",
@@ -1262,6 +1263,7 @@
                 "FormOfTheBeast": {
                     "Keen": "Tracking or Stalking Prey"
                 },
+                "Frenzy": "Make a bonus action attack with a melee weapon?",
                 "GraspOfHadar": {
                     "Select": "Choose a creature to pull with {item}."
                 },
@@ -1348,6 +1350,13 @@
                 "InspiringSmite": {
                     "Offer": "Use {item} to grant temporary hit points?",
                     "Select": "Distribute {total} temporary hit points among allies within 30 feet."
+                },
+                "IntimidatingPresence": {
+                    "Immune": "Immune",
+                    "ImmunityDuration": "Immunity Duration",
+                    "Range": "<b>{effect}</b> ends on {target} because they moved out of range!",
+                    "RangeLimit": "Effect ends beyond this range.",
+                    "Sight": "<b>{effect}</b> ends on {target} because they are out of sight!"
                 },
                 "InvestmentOfTheChainMaster": {
                     "Movement": "Choose a movement type for your familiar.",

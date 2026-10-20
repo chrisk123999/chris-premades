@@ -29,7 +29,7 @@ export { primalKnowldege as 'primal-knowledge', primalKnowledgeEffect } from './
 export { extendRage, keepRage } from './modern/classFeatures/barbarian/rage.mjs';
 
 /*           Berserker           */
-export { intimidatingPresence as 'intimidating-presence' } from './modern/classFeatures/barbarian/berserker/intimidatingPresence.mjs';
+export { frenzy, frenzyDamage } from './modern/classFeatures/barbarian/berserker/frenzy.mjs';
 
 /*         Muscle Wizard         */
 export { cantrips, cantripsShockingGrasp, cantripsTrueStrike } from './modern/classFeatures/barbarian/muscleWizard/cantrips.mjs';
