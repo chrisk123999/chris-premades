@@ -439,6 +439,17 @@ export class DialogApp extends HandlebarsApplicationMixin(ApplicationV2) {
             this._applyTooltips(element);
         });
     }
+    _removeElement(element) {
+        if (!element) return console.warn('CPR DialogApp tried to remove a null or undefined element.', {
+            id: this.id,
+            title: this.title,
+            state: this.state,
+            content: this.content,
+            removedElement: element,
+            thisElement: this.element
+        });
+        element.remove();
+    }
 }
 export class DialogManager {
     constructor() {

@@ -53,7 +53,7 @@ async function selectDialog(title, content, input = {label: 'Label', name: 'iden
     } else result = await DialogApp.dialog(title, content, inputs, buttons);
     return result?.[input.name];
 }
-async function selectTargetDialog(title, content, targets, {type = 'one', selectOptions = [], skipDeadAndUnconscious = true, coverToken = undefined, reverseCover = false, displayDistance = true, maxAmount = 1, minAmount = 0, userId = game.user.id, buttons = 'okCancel', maxes = {}} = {}) {
+async function selectTargetDialog(title, content, targets, {type = 'one', selectOptions = [], skipDeadAndUnconscious = true, coverToken = undefined, reverseCover = false, displayDistance = true, maxAmount = 1, minAmount = 0, userId = game.user.id, buttons = 'okCancel', maxes = {}, preselected = {}} = {}) {
     let inputs = [
         [type === 'multiple' ? 'checkbox' : type === 'number' ? 'number' : type === 'select' ? 'selectOption' : type === 'selectAmount' ? 'selectAmount' : 'radio']
     ];
@@ -82,7 +82,7 @@ async function selectTargetDialog(title, content, targets, {type = 'one', select
         }
         let image = i.document.texture.src;
         let value = i.id;
-        let isDefaultSelected = targetInputs.length === 0;
+        let isDefaultSelected = preselected[i.id] ?? targetInputs.length === 0;
         targetInputs.push({
             label: label,
             name: value,

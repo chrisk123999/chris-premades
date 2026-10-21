@@ -1,3 +1,11 @@
+# 1.5.51 Release
+## Update Notes
+- Any use of `flags.midi-qol.min.ability.save.all | override | 99` has been swapped for `flags.midi-qol.success.ability.save.all | override | true`. This rolls without a prompt, reducing the number of chat cards and dialogs shown to users.
+- Personal compendiums used as automation sources now show a label in brackets `[]` in the item medkit.
+## Bug Fixes
+- Careful Spell
+- Heroic Inspiration
+
 # 1.5.50 Release
 ## API Update Notes:
 - Swapped all `MidiQOL.computeDistance` to `MidiQOL.getDistance`. This helper respects distance measurement settings like fudge factor or token perimeter.
@@ -5,14 +13,14 @@
 - CPR now requires ***MidiQOL v13.0.66 or higher***.
 - Fall Action now updates token elevation by default.
 - "Send" option in item context menu sorts active user assigned characters to the top, if any.
-# Bug Fixes
+## Bug Fixes
 - Legendary Actions Prompt
 - Primal Strike
 - Frigid Retaliation
 - Wrath of the Storm
 
 # 1.5.49 Release:
-# Bug Fixes
+## Bug Fixes
 - Blessed Strikes
 - Command
 - Flash of Genius
@@ -24,7 +32,7 @@
 # 1.5.48 Release:
 ## Update Notes:
 - Removed the Overtime Creator. Use the editor from MidiQOL instead.
-# Bug Fixes
+## Bug Fixes
 - Deflect Attacks
 - Haymaker
 - DMG Cleave

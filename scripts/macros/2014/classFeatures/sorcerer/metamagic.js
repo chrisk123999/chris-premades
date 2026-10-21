@@ -46,9 +46,12 @@ async function earlyCareful({trigger: {entity: effect}, workflow}) {
     if (!originItem) return;
     let allowEnemies = itemUtils.getConfig(originItem, 'allowEnemies');
     if (!allowEnemies) targets = targets.filter(i => i.document.disposition === workflow.token.document.disposition);
+    let preselected = targets.reduce((obj, t) => (obj[t.id] = obj.count++ < max, obj), {count: 0});
     let selection = await dialogUtils.selectTargetDialog(effect.name, genericUtils.format('CHRISPREMADES.Macros.Metamagic.CarefulWhich', {max}), targets, {
+        skipDeadAndUnconscious: false,
         type: 'multiple',
-        maxAmount: max
+        maxAmount: max,
+        preselected
     });
     if (!selection?.length) return;
     selection = selection[0];
@@ -58,9 +61,9 @@ async function earlyCareful({trigger: {entity: effect}, workflow}) {
         origin: effect.uuid,
         changes: [
             {
-                key: 'flags.midi-qol.min.ability.save.all',
+                key: 'flags.midi-qol.success.ability.save.all',
                 mode: 5,
-                value: 100,
+                value: true,
                 priority: 120
             }
         ],

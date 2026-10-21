@@ -49,8 +49,8 @@ async function turnEarly({trigger, workflow}) {
         },
         changes: [
             {
-                key: 'flags.midi-qol.min.ability.save.wis',
-                value: 100,
+                key: 'flags.midi-qol.success.ability.save.wis',
+                value: true,
                 mode: 5,
                 priority: 120
             }

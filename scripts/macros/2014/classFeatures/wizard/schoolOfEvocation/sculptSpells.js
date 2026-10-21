@@ -23,9 +23,9 @@ async function early({trigger: {entity: item}, workflow}) {
         origin: item.uuid,
         changes: [
             {
-                key: 'flags.midi-qol.min.ability.save.all',
+                key: 'flags.midi-qol.success.ability.save.all',
                 mode: 5,
-                value: 100,
+                value: true,
                 priority: 120
             },
             {

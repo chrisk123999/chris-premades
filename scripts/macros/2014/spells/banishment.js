@@ -34,9 +34,9 @@ export async function banishmentHelper(workflow, otherPlanarTokens = []) {
                 priority: 20
             },
             {
-                key: 'flags.midi-qol.min.ability.save.all',
+                key: 'flags.midi-qol.success.ability.save.all',
                 mode: 5,
-                value: 99,
+                value: true,
                 priority: 20
             },
             {

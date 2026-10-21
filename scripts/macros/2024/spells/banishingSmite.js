@@ -5,7 +5,7 @@ async function veryEarly({dialog}) {
 }
 export let banishingSmite = {
     name: 'Banishing Smite',
-    version: '1.2.28',
+    version: '1.5.51',
     rules: 'modern',
     midi: {
         actor: divineSmite.midi.actor,

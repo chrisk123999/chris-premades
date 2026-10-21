@@ -27,7 +27,7 @@ async function damage(workflow) {
 async function saveSkillCheck(roll, actor, mode) {
     if (!actor.system.attributes.inspiration) return;
     let selection = await dialogUtils.selectDie([roll], 'CHRISPREMADES.HeroicInspiration.Name', genericUtils.format('CHRISPREMADES.Dialog.Use', {itemName: genericUtils.translate('CHRISPREMADES.HeroicInspiration.Name')}), {buttons: 'yesNo'});
-    if (!selection) return;
+    if (!selection?.[0]) return;
     let positions = selection[0].split('-').map(i => Number(i));
     let rolled = await rollUtils.rollDice('1d' + roll.terms[positions[1]].faces, {chatMessage: true, mode, flavor: genericUtils.translate('CHRISPREMADES.HeroicInspiration.Name')});
     let newRoll = rollUtils.updateDieResult(roll, positions[1], positions[2], rolled.roll.total);

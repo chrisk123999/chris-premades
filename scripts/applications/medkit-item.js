@@ -199,7 +199,9 @@ export class ItemMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
             this.availableAutomations.forEach(automation => {
                 let label;
                 if (automation.source.includes('.')) { // If it has . in the source, it's from a personal compendium
-                    label = game.packs.get(automation.source).metadata.label;
+                    let source = {};
+                    dnd5e.dataModels.shared.SourceField.prepareData.call(source, 'Compendium.' + automation.source);
+                    label = `${game.packs.get(automation.source).metadata.label} [${source.value}]`;
                 } else { // If it has a source otherwise, it's from a module
                     label = 'CHRISPREMADES.Medkit.ModuleIds.' + automation.source;
                 }

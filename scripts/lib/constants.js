@@ -578,8 +578,8 @@ const immuneEffectData = {
     },
     changes: [
         {
-            key: 'flags.midi-qol.min.ability.save.all',
-            value: 100,
+            key: 'flags.midi-qol.success.ability.save.all',
+            value: true,
             mode: 5,
             priority: 120
         }
