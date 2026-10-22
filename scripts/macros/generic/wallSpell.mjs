@@ -252,7 +252,17 @@ export const wallPermanence = {
 export async function designateCreatures(item, workflow, document, prompt = 'CHRISPREMADES.Macros.Generic.Wall.Designate', key = 'designated') {
     const scene = workflow.token?.document.parent ?? canvas.scene;
     const others = scene.tokens.filter(token => token.actor && token.id !== workflow.token?.id);
-    const picked = others.length ? (await dialogUtils.selectTargetDialog(item.name, _loc(prompt), others, {type: 'multiple', skipDeadAndUnconscious: false, userId: queryUtils.firstOwner(workflow.actor, true)}))?.result ?? [] : [];
+    let picked = [];
+    if (others.length) {
+        const preselected = others.reduce((obj, t) => (obj[t.id] = workflow.token.document.disposition * t.disposition >= 0, obj), {});
+        picked = (await dialogUtils.selectTargetDialog(item.name, _loc(prompt), others, {
+            userId: queryUtils.firstOwner(workflow.actor, true),
+            skipDeadAndUnconscious: false,
+            maxAmount: others.length,
+            type: 'multiple',
+            preselected
+        }))?.result;
+    }
     const designated = [workflow.actor.uuid, ...picked.map(token => token.actor?.uuid).filter(Boolean)];
     await documentUtils.setFlag(document, 'chris-premades', key, designated);
 }
