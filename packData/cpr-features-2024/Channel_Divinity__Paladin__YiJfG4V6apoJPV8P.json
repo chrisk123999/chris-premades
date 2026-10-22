@@ -215,7 +215,7 @@
       "value": "",
       "chat": ""
     },
-    "identifier": "channel-divinity-paladin",
+    "identifier": "channel-divinity",
     "source": {
       "book": "PHB 2024",
       "page": "",
@@ -247,7 +247,8 @@
     "cat": {
       "automation": {
         "source": "chris-premades",
-        "version": "2.0.4"
+        "version": "2.0.4",
+        "sourceType": "class:paladin"
       }
     }
   },
