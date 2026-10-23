@@ -31,6 +31,10 @@ export { extendRage, keepRage } from './modern/classFeatures/barbarian/rage.mjs'
 /*           Berserker           */
 export { frenzy, frenzyDamage } from './modern/classFeatures/barbarian/berserker/frenzy.mjs';
 
+/*            Zealot             */
+export { rageOfTheGods as 'rage-of-the-gods', rageOfTheGodsRevivification } from './modern/classFeatures/barbarian/zealot/rageOfTheGods.mjs';
+export { warriorOfTheGods as 'warrior-of-the-gods' } from './modern/classFeatures/barbarian/zealot/warriorOfTheGods.mjs';
+
 /*         Muscle Wizard         */
 export { cantrips, cantripsShockingGrasp, cantripsTrueStrike } from './modern/classFeatures/barbarian/muscleWizard/cantrips.mjs';
 export { iCastFist as 'i-cast-fist' } from './modern/classFeatures/barbarian/muscleWizard/iCastFist.mjs';

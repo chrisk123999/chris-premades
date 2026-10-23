@@ -550,6 +550,9 @@
                     "SpreadAroundCorners": "Spreads Around Corners",
                     "SpreadAroundCornersHint": "A placed darkness flows around wall corners instead of stopping at the first wall. Darkness cast on yourself stops at walls."
                 },
+                "DivineFury": {
+                    "FormulaHint": "An additional bonus. Evaluated and simplified into a numeric term."
+                },
                 "Dueling": "Identifiers for exceptions to the requirements of this feature.",
                 "Fall": {
                     "Acr": "Yes (Acrobatics)",
@@ -1637,6 +1640,7 @@
                 "Rage": {
                     "EndEarly": "{actorName} has not attacked an enemy, forced an enemy to make a save, or continued their rage since their last turn. Remove Rage?"
                 },
+                "RageOfTheGods": "Use {item} to save {token}?",
                 "ReplicateMagicItem": {
                     "NotFound": "Could not find a magic item for the selected plan! ({plan})",
                     "PlanName": "Magic Item Plans"
