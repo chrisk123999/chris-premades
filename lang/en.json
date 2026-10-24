@@ -953,6 +953,12 @@
                     },
                     "RollActivityHint": "Activity rolled on the hit target after the bonus damage."
                 },
+                "PackTactics": {
+                    "Allies": "Allies",
+                    "Grant": "Grant Advantage",
+                    "GrantHint": "Who gains advantage when the conditions of this feature are met.",
+                    "SelfAndAllies": "Self and Allies"
+                },
                 "PreventDeath": {
                     "DCFromDamage": "Add Damage Dealt to DC",
                     "DeathOnly": "Killed Outright Only",
@@ -1177,6 +1183,7 @@
                     "Protect": "Protect {tokenName} with your arcane ward?",
                     "TempHP": "Consume Temp HP First:"
                 },
+                "AspectBeastBear": "Is this a check to push, pull, lift, or break?",
                 "AwakenedSpellbook": {
                     "ExtraDamageTypes": "Additional Damage Types",
                     "OncePerTurn": "Once Per Turn",
@@ -1443,6 +1450,10 @@
                     "Mirthful": "Mirthful",
                     "Shortsword": "Shortsword",
                     "Tricksy": "Tricksy"
+                },
+                "TotemSpiritTiger": {
+                    "High": "High Jump Bonus",
+                    "Long": "Long Jump Bonus"
                 },
                 "ThrumOfTheLand": {
                     "Attack": "+{bonus} to attack rolls",

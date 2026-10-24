@@ -59,6 +59,11 @@ export { wildSurge as 'wild-surge', wildSurgeRetribution as 'wild-surge-retribut
 export { frenzy, frenzyRageEnd } from './legacy/classFeatures/barbarian/berserker/frenzy.mjs';
 export { intimidatingPresence as 'intimidating-presence', extendIntimidatingPresence, immuneIntimidatingPresence } from './legacy/classFeatures/barbarian/berserker/intimidatingPresence.mjs';
 
+/*        Totem Warrior       */
+export { bearAspect as 'aspect-of-the-beast-bear' } from './legacy/classFeatures/barbarian/totem/bearAspect.mjs';
+export { bearAttunement as 'totemic-attunement-bear' } from './legacy/classFeatures/barbarian/totem/bearAttunement.mjs';
+export { tigerTotem as 'totem-spirit-tiger' } from './legacy/classFeatures/barbarian/totem/tigerTotem.mjs';
+
 /******************************/
 /*            Bard            */
 /******************************/

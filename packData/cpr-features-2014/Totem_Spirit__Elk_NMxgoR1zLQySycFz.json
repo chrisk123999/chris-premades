@@ -1,0 +1,130 @@
+{
+  "name": "Totem Spirit: Elk",
+  "type": "feat",
+  "effects": [
+    {
+      "name": "Totem Spirit: Elk",
+      "img": "icons/commodities/treasure/trinket-totem-bone-green.webp",
+      "system": {
+        "magical": false,
+        "origin": {
+          "item": "Item.0QrlAgG3zSOFB24d",
+          "actor": null,
+          "behavior": null,
+          "effect": null,
+          "message": null
+        },
+        "changes": [
+          {
+            "key": "system.attributes.movement.speeds.walk",
+            "type": "add",
+            "value": 15,
+            "phase": "initial",
+            "_id": "qFb8kOopXZSPI6Un",
+            "conditions": "\"\"",
+            "replacement": "",
+            "priority": null
+          }
+        ],
+        "conditions": "{}",
+        "rider": {
+          "statuses": []
+        }
+      },
+      "type": "base",
+      "_id": "i37T8XHIHZUy0HH4",
+      "disabled": true,
+      "duration": {
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
+      },
+      "description": "",
+      "origin": "Compendium.chris-premades.CPRFeatures2014.Item.NMxgoR1zLQySycFz",
+      "tint": "#ffffff",
+      "transfer": true,
+      "statuses": [],
+      "showIcon": 1,
+      "folder": null,
+      "sort": 0,
+      "flags": {
+        "dae": {
+          "disableCondition": "!flags['chris-premades']?.raging",
+          "stackable": "noneName",
+          "expiryMode": "delete",
+          "durationExpression": "",
+          "macroRepeat": "none",
+          "disableIncapacitated": false,
+          "specialDuration": []
+        },
+        "core": {
+          "overlay": false
+        },
+        "cat": {
+          "disableCondition": [
+            "heavy"
+          ]
+        }
+      },
+      "_stats": {
+        "coreVersion": "14.369",
+        "systemId": "dnd5e",
+        "systemVersion": "6.0.6"
+      },
+      "_key": "!items.effects!NMxgoR1zLQySycFz.i37T8XHIHZUy0HH4"
+    }
+  ],
+  "system": {
+    "activities": {},
+    "uses": {
+      "recovery": [],
+      "max": "",
+      "spent": 0
+    },
+    "advancement": {},
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "identifier": "totem-spirit-elk",
+    "source": {
+      "book": "PHB",
+      "page": "",
+      "license": "",
+      "custom": "",
+      "rules": "2014",
+      "revision": 1
+    },
+    "crewed": false,
+    "enchant": {},
+    "prerequisites": {
+      "items": [],
+      "level": 3,
+      "repeatable": false
+    },
+    "properties": [],
+    "requirements": "",
+    "type": {
+      "value": "class",
+      "subtype": ""
+    }
+  },
+  "flags": {
+    "cat": {
+      "automation": {
+        "source": "chris-premades",
+        "version": "2.1.4"
+      }
+    }
+  },
+  "img": "icons/commodities/treasure/trinket-totem-bone-green.webp",
+  "folder": "dTFZ3KN5Hlhhzt4A",
+  "_stats": {
+    "coreVersion": "14.369",
+    "systemId": "dnd5e",
+    "systemVersion": "6.0.6"
+  },
+  "_id": "NMxgoR1zLQySycFz",
+  "_key": "!items!NMxgoR1zLQySycFz"
+}
