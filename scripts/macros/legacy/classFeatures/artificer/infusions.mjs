@@ -203,7 +203,14 @@ async function enhancedFocus({macroClass: {source, identifier}, workflow}) {
     const data = await defaultGetDocuments(workflow, {effect: true, source, identifier, label});
     if (!data) return;
     if (config.level >= config.grantExtraBonus) for (const change of data.effect.system.changes) {
-        if (!['system.bonuses.msak.attack', 'system.bonuses.rsak.attack', 'system.bonuses.spell.attack'].includes(change.key)) continue;
+        if (![
+            'system.bonuses.msak.attack',
+            'system.bonuses.rsak.attack',
+            'system.bonuses.spell.attack',
+            'system.rolls.attack.msak.bonus',
+            'system.rolls.attack.rsak.bonus',
+            'system.rolls.attack.spell.bonus'
+        ].includes(change.key)) continue;
         change.value = 2;
     }
     await applyEnchant(data.enchant, data.item, workflow, {effect: data.effect, source, identifier, label});

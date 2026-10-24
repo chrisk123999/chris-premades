@@ -27,6 +27,7 @@ function applies(activity, actor, workflow, config) {
     if (config.workflowProperty && !workflowUtils.getWorkflowProperty(workflow, config.workflowProperty)) return false;
     if (config.identifiers.length && !config.identifiers.includes(documentUtils.getIdentifier(workflow.item))) return false;
     if (config.attackType && !workflowUtils.isAttackType(workflow, config.attackType)) return false;
+    if (config.attackAbility.length && !config.attackAbility.includes(workflow.activity.ability)) return false;
     if (config.maxSize) {
         const maxSize = CONFIG.DND5E.actorSizes[config.maxSize]?.numerical;
         if (workflow.hitTargets.some(token => actorUtils.getSize(token.actor) > maxSize)) return false;
@@ -189,6 +190,14 @@ export const attackRider = {
         },
         identifiers: identifiersConfig,
         attackType: attackTypeConfig,
+        attackAbility: {
+            default: [],
+            type: 'select-many',
+            category: 'behavior',
+            label: 'CHRISPREMADES.Config.Abilities',
+            hint: 'CHRISPREMADES.Macros.Generic.RollBonus.AbilityHint',
+            get options() { return constants.abilityOptions; }
+        },
         maxSize: {
             default: '',
             type: 'select',

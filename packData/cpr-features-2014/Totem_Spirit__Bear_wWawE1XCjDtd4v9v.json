@@ -1,0 +1,237 @@
+{
+  "name": "Totem Spirit: Bear",
+  "type": "feat",
+  "effects": [
+    {
+      "name": "Totem Spirit: Bear",
+      "statuses": [],
+      "system": {
+        "changes": [
+          {
+            "key": "system.traits.dr.value",
+            "type": "add",
+            "value": "bludgeoning",
+            "priority": 20,
+            "phase": "initial",
+            "_id": "hj1m3ziB1gAcey4b",
+            "conditions": "{}",
+            "replacement": ""
+          },
+          {
+            "key": "system.traits.dr.value",
+            "type": "add",
+            "value": "piercing",
+            "priority": 20,
+            "phase": "initial",
+            "_id": "NzfjX68ytmsX7fjR",
+            "conditions": "{}",
+            "replacement": ""
+          },
+          {
+            "key": "system.traits.dr.value",
+            "type": "add",
+            "value": "slashing",
+            "priority": 20,
+            "phase": "initial",
+            "_id": "ZmppaTAcBNZfocFR",
+            "conditions": "{}",
+            "replacement": ""
+          },
+          {
+            "key": "system.traits.dr.value",
+            "type": "add",
+            "value": "necrotic",
+            "priority": 20,
+            "phase": "initial",
+            "_id": "OoisYsWM5dy0kLyj",
+            "conditions": "{}",
+            "replacement": ""
+          },
+          {
+            "key": "system.traits.dr.value",
+            "type": "add",
+            "value": "acid",
+            "priority": 20,
+            "phase": "initial",
+            "_id": "AjZ0VPe2euz1IHj0",
+            "conditions": "{}",
+            "replacement": ""
+          },
+          {
+            "key": "system.traits.dr.value",
+            "type": "add",
+            "value": "cold",
+            "priority": 20,
+            "phase": "initial",
+            "_id": "600mBdpKBOGoZDJx",
+            "conditions": "{}",
+            "replacement": ""
+          },
+          {
+            "key": "system.traits.dr.value",
+            "type": "add",
+            "value": "fire",
+            "priority": 20,
+            "phase": "initial",
+            "_id": "sKfGMBzmfwUWwFCI",
+            "conditions": "{}",
+            "replacement": ""
+          },
+          {
+            "key": "system.traits.dr.value",
+            "type": "add",
+            "value": "lightning",
+            "priority": 20,
+            "phase": "initial",
+            "_id": "KtYzXprmjrg9qwRd",
+            "conditions": "{}",
+            "replacement": ""
+          },
+          {
+            "key": "system.traits.dr.value",
+            "type": "add",
+            "value": "thunder",
+            "priority": 20,
+            "phase": "initial",
+            "_id": "w1nLYflp0BVZOLWL",
+            "conditions": "{}",
+            "replacement": ""
+          },
+          {
+            "key": "system.traits.dr.value",
+            "type": "add",
+            "value": "poison",
+            "priority": 20,
+            "phase": "initial",
+            "_id": "OAqd7DuiC6wEkHUA",
+            "conditions": "{}",
+            "replacement": ""
+          },
+          {
+            "key": "system.traits.dr.value",
+            "type": "add",
+            "value": "radiant",
+            "priority": 20,
+            "phase": "initial",
+            "_id": "4vZYWb65CANen87i",
+            "conditions": "{}",
+            "replacement": ""
+          },
+          {
+            "key": "system.traits.dr.value",
+            "type": "add",
+            "value": "force",
+            "priority": 20,
+            "phase": "initial",
+            "_id": "hb7VKOPJZW5MJ9lY",
+            "conditions": "{}",
+            "replacement": ""
+          }
+        ],
+        "origin": {
+          "behavior": null,
+          "item": "Compendium.chris-premades.CPRFeatures2014.Item.wWawE1XCjDtd4v9v",
+          "message": null
+        },
+        "conditions": "{}",
+        "magical": false,
+        "rider": {
+          "statuses": []
+        }
+      },
+      "duration": {
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
+      },
+      "tint": "#ffffff",
+      "transfer": true,
+      "disabled": true,
+      "showIcon": 1,
+      "flags": {
+        "dae": {
+          "transfer": true,
+          "stackable": "noneNameOnly",
+          "disableCondition": "!flags['chris-premades']?.raging",
+          "expiryMode": "delete",
+          "durationExpression": "",
+          "macroRepeat": "none",
+          "disableIncapacitated": false,
+          "specialDuration": []
+        },
+        "midi-qol": {
+          "forceCEOff": true
+        },
+        "core": {
+          "overlay": false
+        }
+      },
+      "description": "",
+      "img": "icons/commodities/treasure/trinket-totem-bone-green.webp",
+      "_id": "81BztojmERrWDoE8",
+      "type": "base",
+      "origin": "Compendium.chris-premades.CPRFeatures2014.Item.wWawE1XCjDtd4v9v",
+      "folder": null,
+      "sort": 0,
+      "_stats": {
+        "coreVersion": "14.369",
+        "systemId": "dnd5e",
+        "systemVersion": "6.0.6"
+      },
+      "_key": "!items.effects!wWawE1XCjDtd4v9v.81BztojmERrWDoE8"
+    }
+  ],
+  "system": {
+    "activities": {},
+    "uses": {
+      "spent": 0,
+      "recovery": [],
+      "max": ""
+    },
+    "advancement": {},
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "identifier": "totem-spirit-bear",
+    "source": {
+      "book": "PHB",
+      "page": "",
+      "license": "",
+      "custom": "",
+      "rules": "2014",
+      "revision": 1
+    },
+    "crewed": false,
+    "enchant": {},
+    "prerequisites": {
+      "items": [],
+      "level": 3,
+      "repeatable": false
+    },
+    "properties": [],
+    "requirements": "",
+    "type": {
+      "value": "class",
+      "subtype": ""
+    }
+  },
+  "flags": {
+    "cat": {
+      "automation": {
+        "source": "chris-premades",
+        "version": "2.1.4"
+      }
+    }
+  },
+  "img": "icons/commodities/treasure/trinket-totem-bone-green.webp",
+  "folder": "dTFZ3KN5Hlhhzt4A",
+  "_stats": {
+    "coreVersion": "14.369",
+    "systemId": "dnd5e",
+    "systemVersion": "6.0.6"
+  },
+  "_id": "wWawE1XCjDtd4v9v",
+  "_key": "!items!wWawE1XCjDtd4v9v"
+}

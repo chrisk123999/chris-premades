@@ -34,6 +34,15 @@ export { persistentRage as 'persistent-rage' } from './all/classFeatures/barbari
 export { rage, raging } from './all/classFeatures/barbarian/rage.mjs';
 export { relentlessRage as 'relentless-rage' } from './all/classFeatures/barbarian/relentlessRage.mjs';
 
+/*          Berserker         */
+export { mindlessRage as 'mindless-rage' } from './all/classFeatures/barbarian/berserker/mindlessRage.mjs';
+export { retaliation } from './all/classFeatures/barbarian/berserker/retaliation.mjs';
+
+/*           Zealot           */
+export { divineFury as 'divine-fury', divineFuryDamage } from './all/classFeatures/barbarian/zealot/divineFury.mjs';
+export { fanaticalFocus as 'fanatical-focus' } from './all/classFeatures/barbarian/zealot/fanaticalFocus.mjs';
+export { zealousPresence as 'zealous-presence' } from './all/classFeatures/barbarian/zealot/zealousPresence.mjs';
+
 /******************************/
 /*            Bard            */
 /******************************/

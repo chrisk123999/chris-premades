@@ -186,7 +186,7 @@
             "priority": 20,
             "key": "system.attributes.ac.bonus",
             "type": "add",
-            "value": "5"
+            "value": 5
           }
         ],
         "magical": true
@@ -232,7 +232,8 @@
                 "shield": true
               }
             }
-          }
+          },
+          "specialDuration": []
         }
       },
       "folder": null,

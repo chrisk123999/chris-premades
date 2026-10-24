@@ -1,0 +1,514 @@
+{
+  "name": "Intimidating Presence",
+  "type": "feat",
+  "effects": [
+    {
+      "name": "Intimidating Presence",
+      "statuses": [
+        "frightened"
+      ],
+      "system": {
+        "changes": [],
+        "origin": {
+          "actor": null,
+          "behavior": null,
+          "effect": null,
+          "item": null,
+          "message": null
+        },
+        "conditions": "{}",
+        "magical": false,
+        "rider": {
+          "statuses": []
+        }
+      },
+      "duration": {
+        "value": null,
+        "units": "seconds",
+        "expiry": "sourceEnd",
+        "expired": false
+      },
+      "tint": "#ffffff",
+      "transfer": false,
+      "disabled": false,
+      "showIcon": 1,
+      "flags": {
+        "dae": {
+          "transfer": false,
+          "stackable": "noneNameOnly",
+          "specialDuration": [],
+          "enableCondition": "",
+          "disableCondition": "",
+          "applicationMode": "default",
+          "expiryMode": "delete",
+          "durationExpression": "",
+          "macroRepeat": "none",
+          "disableIncapacitated": false,
+          "selfTarget": false,
+          "selfTargetAlways": false,
+          "dontApply": false
+        },
+        "midi-qol": {
+          "forceCEOff": true
+        },
+        "core": {
+          "overlay": false
+        },
+        "cat": {
+          "genericConfig": {
+            "chris-premades": {
+              "unhideActivities": {
+                "activityIds": [
+                  "2zlVJ8HHOMVacRUK"
+                ],
+                "favorite": true
+              }
+            }
+          },
+          "macros": {
+            "effect": [
+              {
+                "source": "chris-premades",
+                "rules": "2014",
+                "identifier": "intimidating-presence"
+              },
+              {
+                "source": "chris-premades",
+                "identifier": "unhideActivities",
+                "rules": "all"
+              }
+            ],
+            "combat": [
+              {
+                "source": "chris-premades",
+                "rules": "2014",
+                "identifier": "intimidating-presence"
+              }
+            ]
+          }
+        }
+      },
+      "description": "",
+      "_id": "RhiTBvtHpk84QESt",
+      "img": "icons/creatures/magical/construct-iron-stomping-yellow.webp",
+      "type": "base",
+      "origin": null,
+      "folder": null,
+      "sort": 0,
+      "_stats": {
+        "coreVersion": "14.369",
+        "systemId": "dnd5e",
+        "systemVersion": "6.0.6"
+      },
+      "_key": "!items.effects!QKJna2vFEEVgvI5J.RhiTBvtHpk84QESt"
+    }
+  ],
+  "system": {
+    "activities": {
+      "saveIntiPreclass": {
+        "name": "Save",
+        "type": "save",
+        "_id": "saveIntiPreclass",
+        "img": "",
+        "sort": 0,
+        "activation": {
+          "type": "action",
+          "value": 1,
+          "condition": "",
+          "override": false
+        },
+        "behaviors": [],
+        "consumption": {
+          "targets": [],
+          "scaling": {
+            "allowed": false,
+            "max": ""
+          },
+          "spellSlot": true
+        },
+        "description": {
+          "value": "",
+          "chatFlavor": ""
+        },
+        "duration": {
+          "value": "",
+          "units": "spec",
+          "special": "",
+          "expiry": "sourceEnd",
+          "concentration": false,
+          "override": false
+        },
+        "effects": [
+          {
+            "_id": "RhiTBvtHpk84QESt",
+            "level": {
+              "min": null,
+              "max": null
+            },
+            "uuid": null,
+            "onSave": false
+          }
+        ],
+        "flags": {
+          "cat": {
+            "macros": {
+              "roll": [
+                {
+                  "source": "chris-premades",
+                  "rules": "2014",
+                  "identifier": "immuneIntimidatingPresence"
+                }
+              ]
+            }
+          }
+        },
+        "range": {
+          "value": "30",
+          "units": "ft",
+          "special": "",
+          "override": false
+        },
+        "target": {
+          "prompt": true,
+          "affects": {
+            "count": "1",
+            "type": "creature",
+            "choice": true,
+            "special": ""
+          },
+          "template": {
+            "count": "",
+            "contiguous": false,
+            "type": "",
+            "size": "",
+            "width": "",
+            "height": "",
+            "units": "",
+            "stationary": false
+          },
+          "override": false
+        },
+        "uses": {
+          "spent": 0,
+          "recovery": [],
+          "max": ""
+        },
+        "visibility": {
+          "level": {
+            "min": null,
+            "max": null
+          },
+          "requireAttunement": false,
+          "requireIdentification": false,
+          "requireMagic": false,
+          "identifier": ""
+        },
+        "damage": {
+          "onSave": "half",
+          "critical": {
+            "allow": false
+          },
+          "parts": []
+        },
+        "save": {
+          "dc": {
+            "formula": "",
+            "calculation": "cha"
+          },
+          "ability": [
+            "wis"
+          ],
+          "visible": true,
+          "bonus": ""
+        },
+        "useConditionText": "",
+        "useConditionReason": "",
+        "effectConditionText": "",
+        "otherActivityId": "",
+        "macroData": {
+          "name": "",
+          "command": ""
+        },
+        "ignoreTraits": {
+          "idi": false,
+          "idr": false,
+          "idv": false,
+          "ida": false,
+          "idm": false
+        },
+        "midiProperties": {
+          "ignoreTraits": [],
+          "triggeredActivityId": "none",
+          "triggeredActivityConditionText": "",
+          "triggeredActivityTargets": "targets",
+          "triggeredActivityRollAs": "self",
+          "confirmTargets": "default",
+          "automationOnly": false,
+          "identifier": "itmp-save",
+          "triggeredActivityConsume": true,
+          "triggeredActivityConfigure": true,
+          "autoConsume": false,
+          "forceConsumeDialog": "default",
+          "forceRollDialog": "default",
+          "forceDamageDialog": "default",
+          "autoTargetType": "any",
+          "autoTargetAction": "default",
+          "otherActivityCompatible": false,
+          "otherActivityAsParentType": true,
+          "displayActivityName": false,
+          "rollMode": "default",
+          "chooseEffects": false,
+          "toggleEffect": false,
+          "ignoreFullCover": false,
+          "removeChatButtons": "default",
+          "magicEffect": false,
+          "magicDamage": false,
+          "noConcentrationCheck": false,
+          "skipConcentrationCheck": false,
+          "autoCEEffects": "default"
+        },
+        "isOverTimeFlag": false,
+        "overTimeProperties": {
+          "saveRemoves": true,
+          "rollAs": "target",
+          "preRemoveConditionText": "",
+          "postRemoveConditionText": ""
+        },
+        "regionBehavior": {
+          "enabled": false,
+          "dispositionFilter": -1,
+          "excludeSource": true,
+          "oncePerTurn": true,
+          "wallRestriction": "none",
+          "regionVisibility": 2,
+          "attachToken": "default",
+          "templateOrigin": "default",
+          "rules": []
+        },
+        "regionLight": {
+          "enabled": false,
+          "dim": 0,
+          "bright": 0,
+          "color": null,
+          "alpha": 0.5,
+          "luminosity": 0.5,
+          "animationType": "",
+          "animationSpeed": 5,
+          "animationIntensity": 5
+        },
+        "otherActivityAsParentType": true,
+        "friendlySave": "default"
+      },
+      "2zlVJ8HHOMVacRUK": {
+        "type": "utility",
+        "name": "Extend Duration",
+        "_id": "2zlVJ8HHOMVacRUK",
+        "img": "icons/creatures/magical/construct-iron-stomping-yellow.webp",
+        "sort": 100000,
+        "activation": {
+          "type": "action",
+          "override": false,
+          "condition": ""
+        },
+        "behaviors": [],
+        "consumption": {
+          "scaling": {
+            "allowed": false
+          },
+          "spellSlot": true,
+          "targets": []
+        },
+        "description": {
+          "value": "",
+          "chatFlavor": ""
+        },
+        "duration": {
+          "units": "inst",
+          "expiry": null,
+          "concentration": false,
+          "override": false
+        },
+        "effects": [],
+        "flags": {
+          "cat": {
+            "hidden": true,
+            "macros": {
+              "roll": [
+                {
+                  "source": "chris-premades",
+                  "rules": "2014",
+                  "identifier": "extendIntimidatingPresence"
+                }
+              ]
+            }
+          }
+        },
+        "range": {
+          "units": "self",
+          "override": false,
+          "special": ""
+        },
+        "target": {
+          "template": {
+            "contiguous": false,
+            "stationary": false,
+            "units": "ft",
+            "type": ""
+          },
+          "affects": {
+            "choice": false,
+            "type": ""
+          },
+          "override": false,
+          "prompt": true
+        },
+        "uses": {
+          "spent": 0,
+          "recovery": [],
+          "max": ""
+        },
+        "visibility": {
+          "level": {
+            "min": null,
+            "max": null
+          },
+          "requireAttunement": false,
+          "requireIdentification": false,
+          "requireMagic": false,
+          "identifier": ""
+        },
+        "roll": {
+          "prompt": false,
+          "visible": false,
+          "formula": "",
+          "name": ""
+        },
+        "useConditionText": "",
+        "useConditionReason": "",
+        "effectConditionText": "",
+        "otherActivityId": "none",
+        "macroData": {
+          "name": "",
+          "command": ""
+        },
+        "ignoreTraits": {
+          "idi": false,
+          "idr": false,
+          "idv": false,
+          "ida": false,
+          "idm": false
+        },
+        "midiProperties": {
+          "ignoreTraits": [],
+          "triggeredActivityId": "none",
+          "triggeredActivityConditionText": "",
+          "triggeredActivityTargets": "targets",
+          "triggeredActivityRollAs": "self",
+          "triggeredActivityConsume": true,
+          "triggeredActivityConfigure": true,
+          "autoConsume": false,
+          "forceConsumeDialog": "default",
+          "forceRollDialog": "default",
+          "forceDamageDialog": "default",
+          "confirmTargets": "default",
+          "autoTargetType": "any",
+          "autoTargetAction": "default",
+          "automationOnly": false,
+          "otherActivityCompatible": false,
+          "otherActivityAsParentType": true,
+          "identifier": "itmp-extend",
+          "displayActivityName": false,
+          "rollMode": "default",
+          "chooseEffects": false,
+          "toggleEffect": false,
+          "ignoreFullCover": false,
+          "removeChatButtons": "default",
+          "magicEffect": false,
+          "magicDamage": false,
+          "noConcentrationCheck": false,
+          "skipConcentrationCheck": false,
+          "autoCEEffects": "default"
+        },
+        "isOverTimeFlag": false,
+        "overTimeProperties": {
+          "saveRemoves": true,
+          "rollAs": "target",
+          "preRemoveConditionText": "",
+          "postRemoveConditionText": ""
+        },
+        "regionBehavior": {
+          "enabled": false,
+          "dispositionFilter": -1,
+          "excludeSource": true,
+          "oncePerTurn": true,
+          "wallRestriction": "none",
+          "regionVisibility": 2,
+          "attachToken": "default",
+          "templateOrigin": "default",
+          "rules": []
+        },
+        "regionLight": {
+          "enabled": false,
+          "dim": 0,
+          "bright": 0,
+          "color": null,
+          "alpha": 0.5,
+          "luminosity": 0.5,
+          "animationType": "",
+          "animationSpeed": 5,
+          "animationIntensity": 5
+        },
+        "otherActivityAsParentType": true
+      }
+    },
+    "uses": {
+      "spent": 0,
+      "recovery": [],
+      "max": ""
+    },
+    "advancement": {},
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "identifier": "intimidating-presence",
+    "source": {
+      "book": "PHB",
+      "page": "",
+      "license": "",
+      "custom": "",
+      "rules": "2014",
+      "revision": 1
+    },
+    "crewed": false,
+    "enchant": {},
+    "prerequisites": {
+      "items": [],
+      "level": 10,
+      "repeatable": false
+    },
+    "properties": [],
+    "requirements": "",
+    "type": {
+      "value": "class",
+      "subtype": ""
+    }
+  },
+  "flags": {
+    "cat": {
+      "automation": {
+        "source": "chris-premades",
+        "version": "2.1.4"
+      }
+    }
+  },
+  "img": "icons/creatures/magical/construct-iron-stomping-yellow.webp",
+  "folder": "dWIHfOzAir04kMR5",
+  "_stats": {
+    "coreVersion": "14.369",
+    "systemId": "dnd5e",
+    "systemVersion": "6.0.6"
+  },
+  "_id": "QKJna2vFEEVgvI5J",
+  "_key": "!items!QKJna2vFEEVgvI5J"
+}

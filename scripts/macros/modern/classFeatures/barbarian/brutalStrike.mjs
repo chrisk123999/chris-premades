@@ -16,7 +16,7 @@ async function preAttack({document: activity, identifier, workflow}) {
     if (!choices?.length) return Logging.addMacroWarning('CPR', 'brutal-strike', 'No Brutal Strike options found.');
     const config = automationUtils.getConfigValues(activity.item, ['count', 'damage']);
     config.count = (await rollUtils.rollDice(config.count, {document: activity.item})).total;
-    const options = {addNoneDocument: true, checkbox: true, max: config.count};
+    const options = {addNoneDocument: true, checkbox: true, displayTooltips: true, max: config.count};
     const choice = await dialogUtils.selectDocumentDialog(activity.item.name, _loc('CHRISPREMADES.Macros.Modern.BrutalStrike.Use', {item: activity.item.name}), choices, options);
     if (!choice) return;
     const chosen = [];

@@ -1,0 +1,73 @@
+{
+  "name": "Mindless Rage",
+  "type": "feat",
+  "effects": [],
+  "system": {
+    "activities": {},
+    "uses": {
+      "spent": 0,
+      "recovery": [],
+      "max": ""
+    },
+    "advancement": {},
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "identifier": "mindless-rage",
+    "source": {
+      "book": "PHB 2024",
+      "page": "",
+      "license": "",
+      "custom": "",
+      "rules": "2024",
+      "revision": 1
+    },
+    "crewed": false,
+    "enchant": {},
+    "prerequisites": {
+      "items": [],
+      "level": 6,
+      "repeatable": false
+    },
+    "properties": [],
+    "requirements": "",
+    "type": {
+      "value": "class",
+      "subtype": ""
+    }
+  },
+  "flags": {
+    "midi-qol": {
+      "removeAttackDamageButtons": "default",
+      "forceCEOff": true
+    },
+    "midiProperties": {
+      "confirmTargets": "default"
+    },
+    "cat": {
+      "automation": {
+        "source": "chris-premades",
+        "version": "2.1.4"
+      },
+      "macros": {
+        "called": [
+          {
+            "source": "chris-premades",
+            "rules": "all",
+            "identifier": "mindless-rage"
+          }
+        ]
+      }
+    }
+  },
+  "img": "icons/magic/fire/flame-burning-eye.webp",
+  "folder": "N37OuKFecWTC4LE4",
+  "_stats": {
+    "coreVersion": "14.369",
+    "systemId": "dnd5e",
+    "systemVersion": "6.0.6"
+  },
+  "_id": "WZ2zn42T6T4gttWj",
+  "_key": "!items!WZ2zn42T6T4gttWj"
+}
