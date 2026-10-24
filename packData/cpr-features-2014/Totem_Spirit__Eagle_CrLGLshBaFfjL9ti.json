@@ -1,75 +1,7 @@
 {
   "name": "Totem Spirit: Eagle",
   "type": "feat",
-  "effects": [
-    {
-      "name": "Totem Spirit: Eagle",
-      "img": "icons/commodities/treasure/trinket-totem-bone-green.webp",
-      "system": {
-        "magical": false,
-        "origin": {
-          "item": "Compendium.chris-premades.CPRFeatures2014.Item.CrLGLshBaFfjL9ti",
-          "actor": null,
-          "behavior": null,
-          "effect": null,
-          "message": null
-        },
-        "changes": [
-          {
-            "key": "flags.gambits-premades.oaDisadvantage",
-            "type": "override",
-            "value": true,
-            "phase": "initial",
-            "_id": "Uv6F1fwjbIVvecGK",
-            "conditions": "{}",
-            "replacement": "",
-            "priority": null
-          }
-        ],
-        "conditions": "{}",
-        "rider": {
-          "statuses": []
-        }
-      },
-      "type": "base",
-      "_id": "KXftkQXkCapa1pDV",
-      "disabled": true,
-      "duration": {
-        "value": null,
-        "units": "seconds",
-        "expiry": null,
-        "expired": false
-      },
-      "description": "",
-      "origin": "Compendium.chris-premades.CPRFeatures2014.Item.CrLGLshBaFfjL9ti",
-      "tint": "#ffffff",
-      "transfer": true,
-      "statuses": [],
-      "showIcon": 1,
-      "folder": null,
-      "sort": 0,
-      "flags": {
-        "dae": {
-          "disableCondition": "!flags['chris-premades']?.raging",
-          "stackable": "noneName",
-          "expiryMode": "delete",
-          "durationExpression": "",
-          "macroRepeat": "none",
-          "disableIncapacitated": false,
-          "specialDuration": []
-        },
-        "core": {
-          "overlay": false
-        }
-      },
-      "_stats": {
-        "coreVersion": "14.369",
-        "systemId": "dnd5e",
-        "systemVersion": "6.0.6"
-      },
-      "_key": "!items.effects!CrLGLshBaFfjL9ti.KXftkQXkCapa1pDV"
-    }
-  ],
+  "effects": [],
   "system": {
     "activities": {
       "R6UqELh3fFUUwRcw": {
@@ -292,6 +224,15 @@
       "automation": {
         "source": "chris-premades",
         "version": "2.1.4"
+      },
+      "macros": {
+        "called": [
+          {
+            "source": "chris-premades",
+            "rules": "2014",
+            "identifier": "totem-spirit-eagle"
+          }
+        ]
       }
     }
   },

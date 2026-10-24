@@ -1,73 +1,7 @@
 {
   "name": "Totemic Attunement: Eagle",
   "type": "feat",
-  "effects": [
-    {
-      "name": "Totemic Attunement: Eagle",
-      "statuses": [],
-      "system": {
-        "changes": [
-          {
-            "key": "system.attributes.movement.speeds.fly",
-            "type": "upgrade",
-            "value": "@attributes.movement.speeds.walk",
-            "phase": "initial",
-            "_id": "L8DavmnRHzrVh6RO",
-            "conditions": "{}",
-            "replacement": "",
-            "priority": null
-          }
-        ],
-        "origin": {
-          "actor": null,
-          "behavior": null,
-          "effect": null,
-          "item": null,
-          "message": null
-        },
-        "conditions": "{}",
-        "magical": false,
-        "rider": {
-          "statuses": []
-        }
-      },
-      "duration": {
-        "value": null,
-        "units": "seconds",
-        "expiry": null,
-        "expired": false
-      },
-      "tint": "#ffffff",
-      "transfer": true,
-      "disabled": true,
-      "showIcon": 1,
-      "flags": {
-        "dae": {
-          "transfer": true,
-          "stackable": "noneNameOnly",
-          "disableCondition": "!flags['chris-premades']?.raging",
-          "expiryMode": "delete",
-          "durationExpression": "",
-          "macroRepeat": "none",
-          "disableIncapacitated": false,
-          "specialDuration": []
-        }
-      },
-      "description": "",
-      "img": "icons/weapons/wands/wand-totem.webp",
-      "_id": "Dvz4qjeJ2iZpMCyR",
-      "type": "base",
-      "origin": "Item.MOQVZzyAl1gsEyRK",
-      "folder": null,
-      "sort": 0,
-      "_stats": {
-        "coreVersion": "14.369",
-        "systemId": "dnd5e",
-        "systemVersion": "6.0.6"
-      },
-      "_key": "!items.effects!voA5CPCg8Op8TByV.Dvz4qjeJ2iZpMCyR"
-    }
-  ],
+  "effects": [],
   "system": {
     "activities": {},
     "uses": {
@@ -108,6 +42,15 @@
       "automation": {
         "source": "chris-premades",
         "version": "2.1.4"
+      },
+      "macros": {
+        "called": [
+          {
+            "source": "chris-premades",
+            "rules": "2014",
+            "identifier": "totemic-attunement-eagle"
+          }
+        ]
       }
     }
   },

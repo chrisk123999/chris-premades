@@ -61,8 +61,8 @@ export { intimidatingPresence as 'intimidating-presence', extendIntimidatingPres
 
 /*        Totem Warrior       */
 export { bearAspect as 'aspect-of-the-beast-bear' } from './legacy/classFeatures/barbarian/totem/bearAspect.mjs';
-export { bearAttunement as 'totemic-attunement-bear' } from './legacy/classFeatures/barbarian/totem/bearAttunement.mjs';
-export { tigerTotem as 'totem-spirit-tiger' } from './legacy/classFeatures/barbarian/totem/tigerTotem.mjs';
+export { bearAttunement as 'totemic-attunement-bear', bearAttack, eagleAttunement as 'totemic-attunement-eagle' } from './legacy/classFeatures/barbarian/totem/totemicAttunement.mjs';
+export { bearTotem as 'totem-spirit-bear', eagleTotem as 'totem-spirit-eagle', tigerTotem as 'totem-spirit-tiger', tigerJump } from './legacy/classFeatures/barbarian/totem/totemSpirit.mjs';
 
 /******************************/
 /*            Bard            */
