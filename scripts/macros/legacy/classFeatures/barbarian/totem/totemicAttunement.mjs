@@ -1,5 +1,6 @@
 import {actorUtils, genericUtils, tokenUtils} from '../../../../../proxy.mjs';
 async function bear({data, document: item, macroClass: {source}}) {
+    data.effectData.system.changes.push({key: `flags.${source}.bear.active`, type: 'override', value: true});
     const macro = {source, rules: meta.rules, identifier: 'bearAttack'};
     genericUtils.setProperty(data.effectData, `flags.${source}.bear.name`, item.name);
     if (data.effectData.flags.cat?.macros?.roll)
@@ -14,7 +15,7 @@ async function attack({document: effect, macroClass: {identifier, source}, workf
     if (workflow.actor.system.traits.ci.value.has('frightened')) return;
     const self = actorUtils.getFirstToken(effect.actor);
     if (!self || !tokenUtils.canSee(workflow.token.document, self)) return;
-    if (target.actor.flags[source]?.raging && actorUtils.getItemByIdentifier(target.actor, 'totemic-attunement-bear')) return;
+    if (target.actor.flags[source]?.bear?.active) return;
     workflow.tracker.disadvantage.add(identifier, effect.flags[source]?.bear?.name ?? effect.name);
 }
 async function eagle({data}) {

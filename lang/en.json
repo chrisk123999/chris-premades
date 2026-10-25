@@ -1652,6 +1652,12 @@
                     "EndEarly": "{actorName} has not attacked an enemy, forced an enemy to make a save, or continued their rage since their last turn. Remove Rage?"
                 },
                 "RageOfTheGods": "Use {item} to save {token}?",
+                "RageOfTheWilds": {
+                    "Active": "You must have Rage of the {type} active to use this feature!",
+                    "Dual": "Choose addtional rage effects.",
+                    "Eagle": "Dash and Disengage with Rage of the Eagle?",
+                    "Single": "Choose a rage effect."
+                },
                 "ReplicateMagicItem": {
                     "NotFound": "Could not find a magic item for the selected plan! ({plan})",
                     "PlanName": "Magic Item Plans"

@@ -43,6 +43,8 @@ export { unarguableWizardry as 'unarguable-wizardry' } from './modern/classFeatu
 
 /*          Wild Heart           */
 export { aspectOfTheWilds as 'aspect-of-the-wilds' } from './modern/classFeatures/barbarian/wildHeart/aspectOfTheWilds.mjs';
+export { powerOfTheWilds as 'power-of-the-wilds', lionAttack } from './modern/classFeatures/barbarian/wildHeart/powerOfTheWilds.mjs';
+export { rageOfTheWilds as 'rage-of-the-wilds', rageOfTheWildsPreCheck, rageOfTheWildsUnfavorite } from './modern/classFeatures/barbarian/wildHeart/rageOfTheWilds.mjs';
 
 /*          World Tree           */
 export { batteringRoots as 'battering-roots' } from './modern/classFeatures/barbarian/worldTree/batteringRoots.mjs';
