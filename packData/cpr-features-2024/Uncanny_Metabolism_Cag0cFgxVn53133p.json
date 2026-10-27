@@ -95,7 +95,7 @@
           ],
           "custom": {
             "enabled": true,
-            "formula": "@scale.monk.martial-arts.die + @classes.monk.levels"
+            "formula": "@scale.monk.die + @classes.monk.levels"
           },
           "scaling": {
             "mode": "whole",
@@ -222,7 +222,7 @@
     "cat": {
       "automation": {
         "source": "chris-premades",
-        "version": "2.0.4"
+        "version": "2.1.4"
       }
     }
   },

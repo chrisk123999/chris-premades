@@ -1,0 +1,73 @@
+{
+  "name": "Genie's Splendor",
+  "type": "feat",
+  "system": {
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "source": {
+      "book": "FRHoF",
+      "page": "",
+      "license": "",
+      "custom": "",
+      "rules": "2024",
+      "revision": 1
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "recovery": []
+    },
+    "type": {
+      "value": "class",
+      "subtype": ""
+    },
+    "requirements": "",
+    "properties": [],
+    "prerequisites": {
+      "items": [],
+      "level": 3,
+      "repeatable": false
+    },
+    "activities": {},
+    "identifier": "genies-splendor",
+    "enchant": {}
+  },
+  "flags": {
+    "cat": {
+      "automation": {
+        "source": "chris-premades",
+        "version": "2.1.4"
+      },
+      "alternateAttributes": {
+        "ACFormula": [
+          {
+            "value": "10 + @abilities.dex.mod + @abilities.cha.mod",
+            "restrictions": {
+              "Armor": {
+                "value": [
+                  "light",
+                  "medium",
+                  "heavy"
+                ],
+                "invert": true,
+                "requireAll": false
+              }
+            }
+          }
+        ]
+      }
+    }
+  },
+  "effects": [],
+  "img": "icons/magic/control/control-influence-crown-gold.webp",
+  "folder": "nobleGeniesOath1",
+  "_id": "geniesSplendor01",
+  "_stats": {
+    "coreVersion": "14.369",
+    "systemId": "dnd5e",
+    "systemVersion": "6.0.6"
+  },
+  "_key": "!items!geniesSplendor01"
+}

@@ -18,6 +18,13 @@ export { replicateMagicItem as 'replicate-magic-item' } from './modern/classFeat
 export { soulOfArtifice as 'soul-of-artifice' } from './modern/classFeatures/artificer/soulOfArtifice.mjs';
 export { tinkersMagic as 'tinkers-magic' } from './modern/classFeatures/artificer/tinkersMagic.mjs';
 
+/*         Cartographer          */
+export { adventurersAtlas as 'adventurers-atlas' } from './modern/classFeatures/artificer/cartographer/adventurersAtlas.mjs';
+export { guidedPrecision as 'guided-precision' } from './modern/classFeatures/artificer/cartographer/guidedPrecision.mjs';
+export { ingeniousMovement as 'ingenious-movement' } from './modern/classFeatures/artificer/cartographer/ingeniousMovement.mjs';
+export { mappingMagic as 'mapping-magic' } from './modern/classFeatures/artificer/cartographer/mappingMagic.mjs';
+export { superiorAtlas as 'superior-atlas', superiorAtlasSafeHaven } from './modern/classFeatures/artificer/cartographer/superiorAtlas.mjs';
+
 /*********************************/
 /*           Barbarian           */
 /*********************************/
@@ -88,14 +95,18 @@ export { wildShape as 'wild-shape' } from './modern/classFeatures/druid/wildShap
 /*             Moon              */
 export { lunarForm as 'lunar-form' } from './modern/classFeatures/druid/moon/lunarForm.mjs';
 
+/*            Wicker             */
+export { bewitchedEffigy as 'bewitched-effigy', bewitchedEffigySacrifice as 'bewitched-effigy-sacrifice' } from './modern/classFeatures/druid/wicker/bewitchedEffigy.mjs';
+export { soulboundPoppet as 'soulbound-poppet', soulboundPoppetDoll as 'soulbound-poppet-doll' } from './modern/classFeatures/druid/wicker/soulboundPoppet.mjs';
+export { wickerRising as 'wicker-rising' } from './modern/classFeatures/druid/wicker/wickerRising.mjs';
+export { wickerToken as 'wicker-token' } from './modern/classFeatures/druid/wicker/wickerToken.mjs';
+export { wickerZenith as 'wicker-zenith' } from './modern/classFeatures/druid/wicker/wickerZenith.mjs';
+
 /*********************************/
 /*            Fighter            */
 /*********************************/
 export { studiedAttacks as 'studied-attacks' } from './modern/classFeatures/fighter/studiedAttacks.mjs';
 export { tacticalShift as 'tactical-shift' } from './modern/classFeatures/fighter/tacticalShift.mjs';
-
-/*           Champion            */
-export { heroicWarrior as 'heroic-warrior' } from './modern/classFeatures/fighter/champion/heroicWarrior.mjs';
 
 /*********************************/
 /*             Monk              */
@@ -104,6 +115,19 @@ export { deflectAttacks as 'deflect-attacks' } from './modern/classFeatures/monk
 export { empoweredStrikes as 'empowered-strikes' } from './modern/classFeatures/monk/empoweredStrikes.mjs';
 export { heightenedFocus as 'heightened-focus' } from './modern/classFeatures/monk/heightenedFocus.mjs';
 export { stunningStrike as 'stunning-strike' } from './modern/classFeatures/monk/stunningStrike.mjs';
+
+/*     Warrior of the Street     */
+export { combo, comboEffect } from './modern/classFeatures/monk/warriorOfTheStreet/combo.mjs';
+
+/*********************************/
+/*            Paladin            */
+/*********************************/
+
+/*         Noble Genies          */
+export { auraOfElementalShielding as 'aura-of-elemental-shielding' } from './modern/classFeatures/paladin/nobleGenies/auraOfElementalShielding.mjs';
+export { elementalRebuke as 'elemental-rebuke' } from './modern/classFeatures/paladin/nobleGenies/elementalRebuke.mjs';
+export { elementalStrike as 'elemental-strike' } from './modern/classFeatures/paladin/nobleGenies/elementalStrike.mjs';
+export { nobleScion as 'noble-scion' } from './modern/classFeatures/paladin/nobleGenies/nobleScion.mjs';
 
 /*********************************/
 /*            Ranger             */
@@ -183,8 +207,13 @@ export { fullBlooded as 'full-blooded' } from './modern/classFeatures/wizard/san
 /*===============================*/
 /*             FEATS             */
 /*===============================*/
+export { exploitOpening as 'exploit-opening' } from './modern/feats/exploitOpening.mjs';
+export { familyFirst as 'family-first' } from './modern/feats/familyFirst.mjs';
+export { oldBlessing as 'old-blessing' } from './modern/feats/oldBlessing.mjs';
 export { protectionMoved } from './modern/feats/protection.mjs';
 export { sangromanticInitiate as 'sangromantic-initiate' } from './modern/feats/sangromanticInitiate.mjs';
+export { tirelessReveler as 'tireless-reveler' } from './modern/feats/tirelessReveler.mjs';
+export { twistedHex as 'twisted-hex', twistedHexCharm as 'twisted-hex-charm' } from './modern/feats/twistedHex.mjs';
 
 /*===============================*/
 /*         MISCELLANEOUS         */
@@ -210,12 +239,23 @@ export { handOfDeath as 'hand-of-death', handOfDeathClingToLife, handOfDeathDeat
 /*       SPECIES FEATURES        */
 /*===============================*/
 
+/*            Dhampir            */
+export { vampiricBite as 'vampiric-bite' } from './modern/speciesFeatures/dhampir/vampiricBite.mjs';
+
 /*  Grim Hollow Heritage Traits  */
 export { etherealFade as 'ethereal-fade', etherealFadeEnd } from './modern/speciesFeatures/grimHollowHeritageTraits/etherealFade.mjs';
 export { extremeResilience as 'extreme-resilience' } from './modern/speciesFeatures/grimHollowHeritageTraits/extremeResilience.mjs';
 export { firstStrike as 'first-strike' } from './modern/speciesFeatures/grimHollowHeritageTraits/firstStrike.mjs';
 export { powerNap as 'power-nap' } from './modern/speciesFeatures/grimHollowHeritageTraits/powerNap.mjs';
 export { restorativeRest as 'restorative-rest' } from './modern/speciesFeatures/grimHollowHeritageTraits/restorativeRest.mjs';
+
+/*           Mandrake            */
+export { entanglingVines as 'entangling-vines' } from './modern/speciesFeatures/mandrake/entanglingVines.mjs';
+export { rootMagic as 'root-magic' } from './modern/speciesFeatures/mandrake/rootMagic.mjs';
+
+/*            Wulven             */
+export { naturalAttackClaws as 'natural-attack-claws' } from './modern/speciesFeatures/wulven/naturalAttack.mjs';
+export { packHunter as 'pack-hunter' } from './modern/speciesFeatures/wulven/packHunter.mjs';
 
 /*===============================*/
 /*            SPELLS             */
@@ -235,9 +275,11 @@ export { forestGuard as 'forest-guard' } from './modern/spells/forestGuard.mjs';
 export { guidance } from './modern/spells/guidance.mjs';
 export { hungerOfHadar as 'hunger-of-hadar' } from './modern/spells/hungerOfHadar.mjs';
 export { huntersMark as 'hunters-mark', huntersMarkAttack as 'hunters-mark-attack' } from './modern/spells/huntersMark.mjs';
+export { luckyCharm as 'lucky-charm', luckyCharmCaster as 'lucky-charm-caster', luckyCharmObject as 'lucky-charm-object' } from './modern/spells/luckyCharm.mjs';
 export { magicWeapon as 'magic-weapon' } from './modern/spells/magicWeapon.mjs';
 export { rayOfEnfeeblement as 'ray-of-enfeeblement' } from './modern/spells/rayOfEnfeeblement.mjs';
 export { resistance, resistanceEffect as 'resistance-effect' } from './modern/spells/resistance.mjs';
+export { sanctumOfTheShepherd as 'sanctum-of-the-shepherd', sanctumOfTheShepherdMarker as 'sanctum-of-the-shepherd-marker' } from './modern/spells/sanctumOfTheShepherd.mjs';
 export { shockingGrasp as 'shocking-grasp' } from './modern/spells/shockingGrasp.mjs';
 export { spellfireFlare as 'spellfire-flare' } from './modern/spells/spellfireFlare.mjs';
 export { sproutFoliage as 'sprout-foliage' } from './modern/spells/sproutFoliage.mjs';

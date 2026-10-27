@@ -1,0 +1,128 @@
+{
+  "name": "Aura of Protection",
+  "type": "feat",
+  "system": {
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "source": {
+      "book": "PHB 2024",
+      "page": "",
+      "license": "",
+      "custom": "",
+      "rules": "2024",
+      "revision": 1
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "recovery": []
+    },
+    "type": {
+      "value": "class",
+      "subtype": ""
+    },
+    "requirements": "",
+    "properties": [],
+    "prerequisites": {
+      "items": [],
+      "level": 6,
+      "repeatable": false
+    },
+    "activities": {},
+    "identifier": "aura-of-protection",
+    "enchant": {}
+  },
+  "flags": {
+    "cat": {
+      "automation": {
+        "source": "chris-premades",
+        "version": "2.1.4"
+      },
+      "macros": {
+        "aura": [
+          {
+            "source": "cat",
+            "rules": "all",
+            "identifier": "aura"
+          }
+        ]
+      },
+      "genericConfig": {
+        "cat": {
+          "aura": {
+            "radius": "10 + 20 * floor(@classes.paladin.levels / 18)",
+            "sourceDisable": [
+              "incapacitated",
+              "dead"
+            ],
+            "effect": "SL4uSAmmhC4Hq7ke",
+            "value": "max(@abilities.cha.mod, 1)",
+            "stackHighest": true
+          }
+        }
+      }
+    }
+  },
+  "effects": [
+    {
+      "name": "Aura of Protection",
+      "img": "icons/magic/defensive/shield-barrier-glowing-blue.webp",
+      "origin": null,
+      "transfer": false,
+      "_id": "SL4uSAmmhC4Hq7ke",
+      "type": "base",
+      "system": {
+        "changes": [
+          {
+            "key": "system.rolls.ability.save.bonus",
+            "type": "add",
+            "value": "@auraValue",
+            "priority": 20,
+            "phase": "initial",
+            "_id": "lglQCxc6Oi8dhWJu",
+            "conditions": "{}",
+            "replacement": ""
+          }
+        ]
+      },
+      "disabled": false,
+      "duration": {
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "statuses": [],
+      "showIcon": 2,
+      "folder": null,
+      "sort": 0,
+      "flags": {
+        "core": {
+          "overlay": false
+        },
+        "cat": {
+          "identifier": "auraOfProtectionAura"
+        }
+      },
+      "_stats": {
+        "coreVersion": "14.369",
+        "systemId": "dnd5e",
+        "systemVersion": "6.0.6"
+      },
+      "_key": "!items.effects!pKj2P55hy0EkFL0J.SL4uSAmmhC4Hq7ke"
+    }
+  ],
+  "img": "icons/magic/defensive/shield-barrier-glowing-blue.webp",
+  "folder": "bJCFudwxy4dFmGo1",
+  "_id": "pKj2P55hy0EkFL0J",
+  "_stats": {
+    "coreVersion": "14.369",
+    "systemId": "dnd5e",
+    "systemVersion": "6.0.6"
+  },
+  "_key": "!items!pKj2P55hy0EkFL0J"
+}

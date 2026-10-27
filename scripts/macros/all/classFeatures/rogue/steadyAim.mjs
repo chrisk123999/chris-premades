@@ -18,7 +18,7 @@ async function use({document, workflow}) {
 }
 export const steadyAim = {
     name: 'Steady Aim',
-    version: '2.1.3',
+    version: '2.1.4',
     rules: 'all',
     roll: [
         {

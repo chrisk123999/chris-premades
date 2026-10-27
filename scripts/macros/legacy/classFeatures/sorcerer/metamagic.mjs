@@ -64,7 +64,13 @@ async function earlyCareful({document: effect, workflow}) {
     let targets = getTargets(workflow);
     if (!originItem || !automationUtils.getConfigValue(originItem, 'allowEnemies')) targets = targets.filter(target => target.disposition === workflow.token.document.disposition);
     if (!targets.length) return;
-    const selection = await dialogUtils.selectTargetDialog(effect.name, _loc('CHRISPREMADES.Macros.Legacy.Metamagic.CarefulWhich', {max}), targets, {type: 'multiple', maxAmount: max});
+    const preselected = targets.reduce((obj, t) => (obj[t.id] = obj.count++ < max, obj), {count: 0});
+    const selection = await dialogUtils.selectTargetDialog(effect.name, _loc('CHRISPREMADES.Macros.Legacy.Metamagic.CarefulWhich', {max}), targets, {
+        skipDeadAndUnconscious: false,
+        type: 'multiple',
+        maxAmount: max,
+        preselected
+    });
     if (!selection?.result?.length) return;
     selection.result.forEach(target => workflowUtils.grantRollModifier(workflow, 'succeed', target.id, 'careful-spell', effect.name));
 }

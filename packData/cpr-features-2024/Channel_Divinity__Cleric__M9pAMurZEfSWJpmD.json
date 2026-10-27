@@ -906,8 +906,11 @@
     "cat": {
       "automation": {
         "source": "chris-premades",
-        "version": "2.1.2",
-        "sourceType": "class:cleric"
+        "version": "2.1.4",
+        "sourceType": "class:cleric",
+        "aliases": [
+          "channel-divinity-cleric"
+        ]
       }
     }
   },

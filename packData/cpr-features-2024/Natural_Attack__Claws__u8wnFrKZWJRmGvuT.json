@@ -1,0 +1,93 @@
+{
+  "name": "Natural Attack (Claws)",
+  "type": "feat",
+  "img": "icons/creatures/claws/claw-bear-paw-swipe-red.webp",
+  "system": {
+    "activities": {},
+    "uses": {
+      "spent": 0,
+      "recovery": []
+    },
+    "advancement": {},
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "identifier": "natural-attack-claws",
+    "source": {
+      "book": "GHPG",
+      "page": "",
+      "license": "",
+      "custom": "",
+      "rules": "2024",
+      "revision": 1
+    },
+    "crewed": false,
+    "enchant": {},
+    "prerequisites": {
+      "items": [],
+      "repeatable": false
+    },
+    "properties": [],
+    "requirements": "",
+    "type": {
+      "value": "race",
+      "subtype": ""
+    }
+  },
+  "effects": [],
+  "folder": "qszA3cg87mjNcVc1",
+  "flags": {
+    "cat": {
+      "automation": {
+        "source": "chris-premades",
+        "version": "2.1.4"
+      },
+      "macros": {
+        "roll": [
+          {
+            "source": "chris-premades",
+            "rules": "2024",
+            "identifier": "natural-attack-claws"
+          }
+        ]
+      },
+      "alternateAttributes": {
+        "DamageFormula": [
+          {
+            "value": "1d6",
+            "restrictions": {
+              "Identifier": {
+                "value": [
+                  "unarmed-strike"
+                ]
+              }
+            }
+          }
+        ],
+        "Ability": [
+          {
+            "value": [
+              "str",
+              "dex"
+            ],
+            "restrictions": {
+              "Identifier": {
+                "value": [
+                  "unarmed-strike"
+                ]
+              }
+            }
+          }
+        ]
+      }
+    }
+  },
+  "_id": "u8wnFrKZWJRmGvuT",
+  "_stats": {
+    "coreVersion": "14.369",
+    "systemId": "dnd5e",
+    "systemVersion": "6.0.6"
+  },
+  "_key": "!items!u8wnFrKZWJRmGvuT"
+}

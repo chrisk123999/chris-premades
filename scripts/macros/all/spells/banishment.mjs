@@ -14,7 +14,7 @@ async function banish({workflow}) {
 }
 export const banishment = {
     name: 'Banishment',
-    version: '2.1.3',
+    version: '2.1.4',
     rules: 'all',
     roll: [
         {pass: 'itemRollFinished', macro: banish, priority: 50}

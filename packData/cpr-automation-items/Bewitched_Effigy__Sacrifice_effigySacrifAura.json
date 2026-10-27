@@ -1,0 +1,120 @@
+{
+  "_id": "effigySacrifAura",
+  "name": "Bewitched Effigy: Sacrifice",
+  "img": "icons/magic/fire/flame-burning-skeleton-explosion.webp",
+  "type": "feat",
+  "system": {
+    "type": {
+      "value": "monster",
+      "subtype": ""
+    },
+    "identifier": "bewitched-effigy-sacrifice",
+    "activities": {},
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "source": {
+      "revision": 1,
+      "rules": "2024",
+      "book": "TCMP1",
+      "page": "",
+      "custom": "",
+      "license": ""
+    }
+  },
+  "effects": [
+    {
+      "name": "Bewitched Effigy: Sacrifice",
+      "img": "icons/magic/fire/flame-burning-skeleton-explosion.webp",
+      "origin": null,
+      "transfer": false,
+      "_id": "effigySacrifEff0",
+      "type": "base",
+      "system": {
+        "changes": [],
+        "origin": {
+          "actor": null,
+          "behavior": null,
+          "effect": null,
+          "item": null,
+          "message": null
+        },
+        "conditions": "{}",
+        "magical": false,
+        "rider": {
+          "statuses": []
+        }
+      },
+      "disabled": false,
+      "duration": {
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "statuses": [],
+      "sort": 0,
+      "flags": {
+        "cat": {
+          "identifier": "bewitchedEffigySacrifice",
+          "macros": {
+            "roll": [
+              {
+                "source": "chris-premades",
+                "rules": "2024",
+                "identifier": "bewitched-effigy-sacrifice"
+              }
+            ]
+          }
+        }
+      },
+      "showIcon": 1,
+      "folder": null,
+      "_stats": {
+        "coreVersion": "14.369",
+        "systemId": "dnd5e",
+        "systemVersion": "6.0.6"
+      },
+      "_key": "!items.effects!effigySacrifAura.effigySacrifEff0"
+    }
+  ],
+  "folder": "iBKx2hik5JNsAYwN",
+  "flags": {
+    "cat": {
+      "automation": {
+        "source": "chris-premades",
+        "version": "2.1.4"
+      },
+      "macros": {
+        "aura": [
+          {
+            "source": "cat",
+            "rules": "all",
+            "identifier": "aura"
+          }
+        ]
+      },
+      "genericConfig": {
+        "cat": {
+          "aura": {
+            "dispositions": [
+              "ally",
+              "enemy"
+            ],
+            "includeSelf": false,
+            "effect": "effigySacrifEff0"
+          }
+        }
+      }
+    }
+  },
+  "_stats": {
+    "coreVersion": "14.369",
+    "systemId": "dnd5e",
+    "systemVersion": "6.0.6"
+  },
+  "_key": "!items!effigySacrifAura"
+}

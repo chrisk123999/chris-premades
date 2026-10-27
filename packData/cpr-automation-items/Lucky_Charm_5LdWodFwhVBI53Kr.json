@@ -1,0 +1,108 @@
+{
+  "name": "Lucky Charm",
+  "type": "loot",
+  "img": "icons/commodities/flowers/clover.webp",
+  "system": {
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "source": {
+      "book": "TCMP1",
+      "page": "",
+      "license": "",
+      "custom": "",
+      "rules": "2024",
+      "revision": 1
+    },
+    "identified": true,
+    "unidentified": {
+      "description": ""
+    },
+    "container": null,
+    "quantity": 1,
+    "weight": {
+      "value": 0,
+      "units": "lb"
+    },
+    "price": {
+      "value": 0,
+      "denomination": "gp"
+    },
+    "rarity": "",
+    "type": {
+      "value": "gear",
+      "subtype": ""
+    },
+    "properties": [],
+    "identifier": "lucky-charm-object"
+  },
+  "effects": [
+    {
+      "_id": "luckyCharmBearer",
+      "name": "Lucky Charm",
+      "img": "icons/commodities/flowers/clover.webp",
+      "origin": null,
+      "transfer": true,
+      "type": "base",
+      "system": {
+        "changes": [
+          {
+            "key": "flags.midi-qol.advantage.all",
+            "type": "override",
+            "value": "1",
+            "phase": "initial",
+            "priority": 20
+          }
+        ]
+      },
+      "disabled": false,
+      "duration": {
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "statuses": [],
+      "sort": 0,
+      "flags": {
+        "cat": {
+          "identifier": "luckyCharmBearer"
+        }
+      },
+      "_stats": {
+        "coreVersion": "14.369",
+        "systemId": "dnd5e",
+        "systemVersion": "6.0.6"
+      },
+      "_key": "!items.effects!5LdWodFwhVBI53Kr.luckyCharmBearer"
+    }
+  ],
+  "flags": {
+    "cat": {
+      "automation": {
+        "source": "chris-premades",
+        "version": "2.1.4"
+      },
+      "macros": {
+        "item": [
+          {
+            "source": "chris-premades",
+            "rules": "2024",
+            "identifier": "lucky-charm-object"
+          }
+        ]
+      }
+    }
+  },
+  "folder": "DBfXwhLHPIUboy5D",
+  "_id": "5LdWodFwhVBI53Kr",
+  "_stats": {
+    "coreVersion": "14.369",
+    "systemId": "dnd5e",
+    "systemVersion": "6.0.6"
+  },
+  "_key": "!items!5LdWodFwhVBI53Kr"
+}

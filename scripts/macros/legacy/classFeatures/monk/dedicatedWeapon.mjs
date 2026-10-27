@@ -32,7 +32,7 @@ async function use({document: activity}) {
 }
 export const dedicatedWeapon = {
     name: 'Dedicated Weapon',
-    version: '2.0.4',
+    version: '2.1.4',
     rules: '2014',
     rest: [
         {

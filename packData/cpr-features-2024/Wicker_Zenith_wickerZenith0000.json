@@ -1,0 +1,87 @@
+{
+  "folder": "circleOfWicker00",
+  "name": "Wicker Zenith",
+  "type": "feat",
+  "_id": "wickerZenith0000",
+  "img": "icons/magic/nature/root-vine-beanstalk-moon.webp",
+  "system": {
+    "activities": {},
+    "uses": {
+      "spent": 0,
+      "recovery": [],
+      "max": ""
+    },
+    "advancement": [],
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "identifier": "wicker-zenith",
+    "source": {
+      "revision": 1,
+      "rules": "2024",
+      "book": "TCMP1",
+      "page": "",
+      "custom": "",
+      "license": ""
+    },
+    "crewed": false,
+    "enchant": {},
+    "prerequisites": {
+      "items": [],
+      "repeatable": false,
+      "level": 14
+    },
+    "properties": [],
+    "requirements": "Circle of Wicker",
+    "type": {
+      "value": "class",
+      "subtype": ""
+    }
+  },
+  "effects": [],
+  "flags": {
+    "cat": {
+      "automation": {
+        "source": "chris-premades",
+        "version": "2.1.4"
+      },
+      "macros": {
+        "called": [
+          {
+            "source": "chris-premades",
+            "rules": "2024",
+            "identifier": "wicker-zenith"
+          }
+        ],
+        "combat": [
+          {
+            "source": "chris-premades",
+            "rules": "2024",
+            "identifier": "wicker-zenith"
+          }
+        ]
+      },
+      "alternateAttributes": {
+        "DamageFormula": [
+          {
+            "value": "3d8 + @abilities.wis.mod",
+            "restrictions": {
+              "Identifier": {
+                "value": [
+                  "bewitched-effigy|sacrifice"
+                ]
+              }
+            }
+          }
+        ]
+      }
+    }
+  },
+  "_stats": {
+    "coreVersion": "14.369",
+    "systemId": "dnd5e",
+    "systemVersion": "6.0.6"
+  },
+  "_key": "!items!wickerZenith0000"
+}

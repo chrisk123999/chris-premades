@@ -14,15 +14,19 @@ async function roll({document: activity, macroClass: {identifier, source}, token
     if (formula === undefined) return log(`Flash of Genius exited early due to a failed formula parse. (formula) ${activity.roll.formula}`);
     const phase = automationUtils.getConfigValue(activity.item, 'phase');
     const bonus = new D20Bonus(activity, {formula, phase, targetActor: target.actor})
-        .withOnUse(() => workflowUtils.syntheticActivityRoll(activity, [target]))
+        .withOnUse(async () => {
+            await workflowUtils.syntheticActivityRoll(activity, [target]);
+            await automationUtils.calledEvent('flashOfGeniusUsed', activity.actor, {canOverlap: true, data: {activity, target}});
+        })
         .withDefaultCosts();
     return target.actor.uuid !== activity.actor.uuid ? bonus.withDefaultRequest() : bonus;
 }
 const macro = [{pass: 'sceneOptionalBonus',  macro: roll, priority: 500}];
 export const flashOfGenius = {
     name: 'Flash of Genius',
-    version: '2.1.3',
+    version: '2.1.4',
     rules: 'all',
+    notes: 'Use the "actorFlashOfGeniusUsed" called event (async) to respond after Flash of Genius is used.\n\tData available: activity, target.',
     check: macro,
     save: macro,
     skill: macro,

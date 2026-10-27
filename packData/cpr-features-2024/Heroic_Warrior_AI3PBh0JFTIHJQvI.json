@@ -33,7 +33,35 @@
           "override": false
         },
         "effects": [],
-        "flags": {},
+        "flags": {
+          "cat": {
+            "macros": {
+              "roll": [
+                {
+                  "source": "chris-premades",
+                  "identifier": "heroicInspiration",
+                  "rules": "all"
+                }
+              ],
+              "combat": [
+                {
+                  "source": "chris-premades",
+                  "identifier": "useOnEvent",
+                  "rules": "all"
+                }
+              ]
+            },
+            "genericConfig": {
+              "chris-premades": {
+                "useOnEvent": {
+                  "events": [
+                    "turnStart"
+                  ]
+                }
+              }
+            }
+          }
+        },
         "range": {
           "units": "self",
           "special": "",
@@ -175,23 +203,8 @@
     },
     "cat": {
       "automation": {
-        "version": "2.0.0"
-      },
-      "macros": {
-        "roll": [
-          {
-            "source": "chris-premades",
-            "rules": "2024",
-            "identifier": "heroic-warrior"
-          }
-        ],
-        "combat": [
-          {
-            "source": "chris-premades",
-            "rules": "2024",
-            "identifier": "heroic-warrior"
-          }
-        ]
+        "source": "chris-premades",
+        "version": "2.1.4"
       }
     }
   },

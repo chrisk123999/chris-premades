@@ -1,0 +1,111 @@
+{
+  "name": "Magic Item Master",
+  "type": "feat",
+  "effects": [
+    {
+      "name": "Magic Item Master",
+      "statuses": [],
+      "system": {
+        "changes": [
+          {
+            "priority": 20,
+            "phase": "initial",
+            "conditions": "{}",
+            "replacement": "",
+            "key": "system.attributes.attunement.max",
+            "value": 6,
+            "type": "upgrade",
+            "_id": "LgWyUJzTchng0001"
+          }
+        ]
+      },
+      "duration": {
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
+      },
+      "tint": "#ffffff",
+      "transfer": true,
+      "disabled": false,
+      "showIcon": 1,
+      "flags": {
+        "dae": {
+          "transfer": true,
+          "stackable": "noneNameOnly",
+          "disableCondition": "",
+          "expiryMode": "default",
+          "durationExpression": "",
+          "macroRepeat": "none",
+          "disableIncapacitated": false,
+          "specialDuration": []
+        }
+      },
+      "description": "",
+      "img": "icons/sundries/documents/blueprint-magical-brown.webp",
+      "_id": "LgWyUJzTPnFJ6Keu",
+      "type": "base",
+      "origin": null,
+      "folder": null,
+      "sort": 0,
+      "_stats": {
+        "coreVersion": "14.369",
+        "systemId": "dnd5e",
+        "systemVersion": "6.0.6"
+      },
+      "_key": "!items.effects!anRAIEcoslFCDmk2.LgWyUJzTPnFJ6Keu"
+    }
+  ],
+  "system": {
+    "activities": {},
+    "uses": {
+      "spent": 0,
+      "max": "",
+      "recovery": []
+    },
+    "advancement": {},
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "identifier": "magic-item-master",
+    "source": {
+      "book": "EFotA",
+      "page": "",
+      "license": "",
+      "custom": "",
+      "rules": "2024",
+      "revision": 1
+    },
+    "crewed": false,
+    "enchant": {},
+    "prerequisites": {
+      "items": [],
+      "level": 18,
+      "repeatable": false
+    },
+    "properties": [],
+    "requirements": "",
+    "type": {
+      "value": "class",
+      "subtype": ""
+    }
+  },
+  "flags": {
+    "cat": {
+      "automation": {
+        "source": "chris-premades",
+        "version": "2.1.4"
+      }
+    }
+  },
+  "img": "icons/sundries/documents/blueprint-magical-brown.webp",
+  "folder": "Phgwq5vw7siN2wVj",
+  "_stats": {
+    "coreVersion": "14.369",
+    "systemId": "dnd5e",
+    "systemVersion": "6.0.6"
+  },
+  "_id": "anRAIEcoslFCDmk2",
+  "_key": "!items!anRAIEcoslFCDmk2"
+}

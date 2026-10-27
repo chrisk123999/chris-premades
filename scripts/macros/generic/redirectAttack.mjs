@@ -38,7 +38,7 @@ async function redirect({document: item, workflow, sourceToken, token: attackerT
  */
 export const redirectAttack = {
     rules: 'all',
-    version: '2.0.0',
+    version: '2.1.4',
     category: 'targeting',
     generic: true,
     documents: ['item'],
@@ -70,7 +70,7 @@ export const redirectAttack = {
             category: 'behavior',
             label: 'CHRISPREMADES.Config.Disposition',
             hint: 'CHRISPREMADES.Macros.Generic.RedirectAttack.DispositionHint',
-            get options() { return [{value: '', label: _loc('CHRISPREMADES.Config.All')}, ...constants.dispositionOptions]; }
+            get options() { return [{value: '', label: 'CHRISPREMADES.Config.All'}, ...constants.dispositionOptions]; }
         },
         sizes: {
             default: [],

@@ -38,7 +38,7 @@ async function stun({document: activity, workflow}) {
 }
 export const stunningStrike = {
     name: 'Stunning Strike',
-    version: '2.0.4',
+    version: '2.1.4',
     rules: '2024',
     roll: [
         {
