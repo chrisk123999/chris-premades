@@ -231,8 +231,8 @@
                 },
                 {
                   "source": "chris-premades",
-                  "rules": "2024",
-                  "identifier": "travel-along-the-tree"
+                  "identifier": "teleport",
+                  "rules": "all"
                 }
               ],
               "called": [
@@ -242,6 +242,24 @@
                   "identifier": "travel-along-the-tree"
                 }
               ]
+            },
+            "genericConfig": {
+              "chris-premades": {
+                "teleport": {
+                  "targets": "self",
+                  "range": "",
+                  "rangeFromRoll": false,
+                  "requireSight": true,
+                  "companions": 6,
+                  "companionRange": 10,
+                  "companionMaxSize": false,
+                  "excludeUser": false,
+                  "animation": {
+                    "source": "chris-premades",
+                    "identifier": "mistyStep"
+                  }
+                }
+              }
             }
           }
         },

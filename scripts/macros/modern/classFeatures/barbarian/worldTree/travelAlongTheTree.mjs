@@ -1,4 +1,4 @@
-import {applications, automationUtils, documentUtils, genericUtils, Logging, tokenUtils, workflowUtils} from '../../../../../proxy.mjs';
+import {applications, automationUtils, documentUtils, Logging, tokenUtils, workflowUtils} from '../../../../../proxy.mjs';
 async function preChecks({document: activity, macroClass: {identifier, source}}) {
     if (activity.actor.flags[source]?.raging) return;
     Logging.addMacroWarning(source, identifier, 'CHRISPREMADES.Macros.Modern.BranchesOfTheTree.Rage', {notify: 'warn'});
@@ -11,11 +11,12 @@ async function rageBegin({document: activity, macroClass: {identifier, source}, 
     }
     const teleport = activity.item.system.activities.find(a => a.id !== activity.id);
     if (!teleport) return Logging.addMacroWarning(source, identifier, `Travel along the Tree is missing its teleport activity. (item) ${activity.item.uuid}`);
-    const nearRange = automationUtils.getConfigValue(activity.item, 'allyRange');
+    const nearRange = automationUtils.getGenericConfigValue(activity, source, 'teleport', 'companionRange') || 10;
     const near = tokenUtils.findNearby(token, nearRange, {disposition: 'ally'});
+    let preselected = 0;
     const subinputs = near.length ? [['comboboxMulti', [{
         label: 'CAT.OptionalBonus.Targets', name: 'targets', options: {maxTotal: activity.target.affects.count, options: near.map(t => ({
-            value: t.id, label: t.name, image: t.texture.src
+            value: t.id, label: t.name, image: t.texture.src, selected: preselected++ < activity.target.affects.count
         }))}
     }]]] : undefined;
     const choice = await applications.DialogApp.dialog(
@@ -41,23 +42,9 @@ async function rageBegin({document: activity, macroClass: {identifier, source}, 
 async function specialRoll(activity, targets = []) {
     const data = activity.toObject();
     data.activation.type = 'special';
-    await workflowUtils.syntheticActivityDataRoll(data, activity.item, targets);
-}
-async function groupTeleport({macroClass: {identifier, source}, workflow}) {
-    const range = automationUtils.getConfigValue(workflow.item, 'allyRange');
-    const {animation, options} = automationUtils.getResolvedAnimation(workflow.item, 'animation');
-    await tokenUtils.teleportToken(workflow.token.document, {animation, options, range: workflow.activity.range.value || 150, requireSight: true});
-    const targets = Array.from(workflow.targets).filter(t => t.id !== workflow.token.id && (t.document.disposition * workflow.token.document.disposition >= 0)).map(t => t.document);
-    if (!targets.length) return Logging.addMacroWarning(source, identifier, 'Travel along the Tree group teleport exited early with no allies targeted.');
-    const message = genericUtils.notify('', {progress: true});
-    for (let i = 0; i < targets.length; i++) {
-        message.update({pct: (i + 1) / targets.length, message: _loc('CHRISPREMADES.Macros.Modern.TravelAlongTheTree.Group', {
-            total: targets.length,
-            name: targets[i].name,
-            num: i + 1
-        })});
-        await tokenUtils.teleportToken(targets[i], {animation, options, range, centerpoint: workflow.token.center, requireSight: true});
-    }
+    const options = {};
+    workflowUtils.setWorkflowProperty(options, 'chris-premades.teleportCompanions', targets.map(t => t.id));
+    await workflowUtils.syntheticActivityDataRoll(data, activity.item, targets, {options});
 }
 export const travelAlongTheTree = {
     name: 'Travel along the Tree',
@@ -69,32 +56,7 @@ export const travelAlongTheTree = {
             macro: rageBegin,
             priority: 190 // before instinctive pounce
         }
-    ],
-    roll: [
-        {
-            pass: 'activityRollFinished',
-            macro: groupTeleport,
-            priority: 50
-        }
-    ],
-    config: {
-        allyRange: {
-            default: 10,
-            type: 'number',
-            category: 'behavior',
-            label: 'CHRISPREMADES.Macros.Generic.Common.RiderNearbyRange'
-        },
-        animation: {
-            default: {
-                source: 'chris-premades',
-                identifier: 'mistyStep'
-            },
-            type: 'selectAnimation',
-            inputs: ['token', 'options'],
-            category: 'animations',
-            label: 'CHRISPREMADES.Config.Animation'
-        }
-    }
+    ]
 };
 export const travelAlongTheTreePreChecks = {
     version: travelAlongTheTree.version,
