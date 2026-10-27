@@ -10,7 +10,7 @@ async function play(sourceToken, region, {cast = true, opacity = 0.8} = {}) {
         .effect()
             .name('spikeGrowth ' + region.uuid)
             .file('jb2a.entangle.brown')
-            .atLocation({x: area.x, y: area.y})
+            .attachTo(region)
             .mask(region)
             .size(area.radius * 2)
             .belowTokens()

@@ -1193,6 +1193,7 @@
                     "ArmorRestriction": "You can't use Bladesong while wearing medium or heavy armor or wielding a shield.",
                     "EnforceArmorRestriction": "Enforce Armor Restriction"
                 },
+                "BolsteringMagic": "The target must finish a long rest before gaining this benefit again!",
                 "BoomingBlade": {
                     "WillingMove": "Did {actorName} move willingly?"
                 },
